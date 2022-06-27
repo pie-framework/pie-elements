@@ -15,6 +15,16 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
               "label": "Lock Choice Order",
               "settings": true,
             },
+            "maxImageHeight": Object {
+              "prompt": 300,
+              "rationale": 300,
+              "teacherInstructions": 300,
+            },
+            "maxImageWidth": Object {
+              "prompt": 300,
+              "rationale": 300,
+              "teacherInstructions": 300,
+            },
             "maxResponseAreas": 10,
             "partialScoring": Object {
               "label": "Allow Partial Scoring",
@@ -147,6 +157,8 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
       >
         <EditableHtml
           markup=""
+          maxImageHeight={300}
+          maxImageWidth={300}
           nonEmpty={false}
           onChange={[Function]}
           toolbarOpts={
@@ -162,6 +174,8 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
         <EditableHtml
           disableUnderline={true}
           markup="Use the dropdowns to complete the sentence"
+          maxImageHeight={300}
+          maxImageWidth={300}
           nonEmpty={false}
           onChange={[Function]}
           toolbarOpts={
@@ -176,6 +190,8 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
       >
         <EditableHtml
           markup=""
+          maxImageHeight={300}
+          maxImageWidth={300}
           onChange={[Function]}
           toolbarOpts={
             Object {
@@ -257,6 +273,8 @@ There should be at least 1 and at most 10 response areas defined."
             >
               <EditableHtml
                 markup="rationale for cow"
+                maxImageHeight={300}
+                maxImageWidth={300}
                 onChange={[Function]}
               />
             </InputContainer>
@@ -274,6 +292,8 @@ There should be at least 1 and at most 10 response areas defined."
             >
               <EditableHtml
                 markup=""
+                maxImageHeight={300}
+                maxImageWidth={300}
                 onChange={[Function]}
               />
             </InputContainer>
@@ -291,6 +311,8 @@ There should be at least 1 and at most 10 response areas defined."
             >
               <EditableHtml
                 markup=""
+                maxImageHeight={300}
+                maxImageWidth={300}
                 onChange={[Function]}
               />
             </InputContainer>
@@ -323,6 +345,8 @@ There should be at least 1 and at most 10 response areas defined."
             >
               <EditableHtml
                 markup="rationale for over"
+                maxImageHeight={300}
+                maxImageWidth={300}
                 onChange={[Function]}
               />
             </InputContainer>
@@ -340,6 +364,8 @@ There should be at least 1 and at most 10 response areas defined."
             >
               <EditableHtml
                 markup=""
+                maxImageHeight={300}
+                maxImageWidth={300}
                 onChange={[Function]}
               />
             </InputContainer>
@@ -357,6 +383,8 @@ There should be at least 1 and at most 10 response areas defined."
             >
               <EditableHtml
                 markup=""
+                maxImageHeight={300}
+                maxImageWidth={300}
                 onChange={[Function]}
               />
             </InputContainer>
@@ -389,6 +417,8 @@ There should be at least 1 and at most 10 response areas defined."
             >
               <EditableHtml
                 markup="rationale for moon"
+                maxImageHeight={300}
+                maxImageWidth={300}
                 onChange={[Function]}
               />
             </InputContainer>
@@ -406,6 +436,8 @@ There should be at least 1 and at most 10 response areas defined."
             >
               <EditableHtml
                 markup=""
+                maxImageHeight={300}
+                maxImageWidth={300}
                 onChange={[Function]}
               />
             </InputContainer>
@@ -423,6 +455,8 @@ There should be at least 1 and at most 10 response areas defined."
             >
               <EditableHtml
                 markup=""
+                maxImageHeight={300}
+                maxImageWidth={300}
                 onChange={[Function]}
               />
             </InputContainer>
@@ -448,6 +482,16 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
             "lockChoiceOrder": Object {
               "label": "Lock Choice Order",
               "settings": true,
+            },
+            "maxImageHeight": Object {
+              "prompt": 300,
+              "rationale": 300,
+              "teacherInstructions": 300,
+            },
+            "maxImageWidth": Object {
+              "prompt": 300,
+              "rationale": 300,
+              "teacherInstructions": 300,
             },
             "maxResponseAreas": 10,
             "partialScoring": Object {
@@ -649,6 +693,8 @@ There should be at least 1 and at most 10 response areas defined."
             >
               <EditableHtml
                 markup="rationale for cow"
+                maxImageHeight={300}
+                maxImageWidth={300}
                 onChange={[Function]}
               />
             </InputContainer>
@@ -666,6 +712,8 @@ There should be at least 1 and at most 10 response areas defined."
             >
               <EditableHtml
                 markup=""
+                maxImageHeight={300}
+                maxImageWidth={300}
                 onChange={[Function]}
               />
             </InputContainer>
@@ -683,6 +731,8 @@ There should be at least 1 and at most 10 response areas defined."
             >
               <EditableHtml
                 markup=""
+                maxImageHeight={300}
+                maxImageWidth={300}
                 onChange={[Function]}
               />
             </InputContainer>
@@ -715,6 +765,8 @@ There should be at least 1 and at most 10 response areas defined."
             >
               <EditableHtml
                 markup="rationale for over"
+                maxImageHeight={300}
+                maxImageWidth={300}
                 onChange={[Function]}
               />
             </InputContainer>
@@ -732,6 +784,8 @@ There should be at least 1 and at most 10 response areas defined."
             >
               <EditableHtml
                 markup=""
+                maxImageHeight={300}
+                maxImageWidth={300}
                 onChange={[Function]}
               />
             </InputContainer>
@@ -749,6 +803,8 @@ There should be at least 1 and at most 10 response areas defined."
             >
               <EditableHtml
                 markup=""
+                maxImageHeight={300}
+                maxImageWidth={300}
                 onChange={[Function]}
               />
             </InputContainer>
@@ -781,6 +837,8 @@ There should be at least 1 and at most 10 response areas defined."
             >
               <EditableHtml
                 markup="rationale for moon"
+                maxImageHeight={300}
+                maxImageWidth={300}
                 onChange={[Function]}
               />
             </InputContainer>
@@ -798,6 +856,8 @@ There should be at least 1 and at most 10 response areas defined."
             >
               <EditableHtml
                 markup=""
+                maxImageHeight={300}
+                maxImageWidth={300}
                 onChange={[Function]}
               />
             </InputContainer>
@@ -815,6 +875,8 @@ There should be at least 1 and at most 10 response areas defined."
             >
               <EditableHtml
                 markup=""
+                maxImageHeight={300}
+                maxImageWidth={300}
                 onChange={[Function]}
               />
             </InputContainer>

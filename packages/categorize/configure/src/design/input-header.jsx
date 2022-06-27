@@ -21,7 +21,7 @@ export class InputHeader extends React.Component {
 
   static defaultProps = {};
   render() {
-    const { onChange, label, classes, className, imageSupport, toolbarOpts, spellCheck, error } = this.props;
+    const { onChange, label, classes, className, imageSupport, toolbarOpts, spellCheck, error, maxImageWidth, maxImageHeight } = this.props;
     const choicePlugins = {
       audio: { disabled: true },
       video: { disabled: true }
@@ -40,6 +40,8 @@ export class InputHeader extends React.Component {
           toolbarOpts={toolbarOpts}
           spellCheck={spellCheck}
           error={error}
+          maxImageWidth={maxImageWidth}
+          maxImageHeight={maxImageHeight}
         />
       </div>
     );

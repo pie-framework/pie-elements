@@ -165,7 +165,7 @@ export const validate = (model = {}, config = {}) => {
   const { minChoices = 2, maxChoices, maxResponseAreas } = config;
   const errors = {};
 
-  const nbOfResponseAreas = (markup.match(/\{\{(\d+)\}\}/g) || []).length;
+  const nbOfResponseAreas = ((markup || '').match(/\{\{(\d+)\}\}/g) || []).length;
   const nbOfChoices = (choices || []).length;
 
   if (nbOfResponseAreas > maxResponseAreas) {

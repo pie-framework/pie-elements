@@ -61,5 +61,21 @@ export default {
       settings: false,
       label: 'Toolbar Editor Position'
     },
+    maxImageWidth: {
+      teacherInstructions: 300,
+      prompt: 300,
+      rationale: 300,
+      rowLabel: 200,
+      categoryLabel: 260,
+      choices: 240
+    },
+    maxImageHeight: {
+      teacherInstructions: 300,
+      prompt: 300,
+      rationale: 300,
+      rowLabel: 100,
+      categoryLabel: 100,
+      choices: 150
+    }
   }
 };

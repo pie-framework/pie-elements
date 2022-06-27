@@ -354,9 +354,20 @@ class GeneralConfigBlock extends React.Component {
       spellCheckEnabled,
       errors = {}
     } = model;
-    const { rationale: cRationale = {}, prompt: cPrompt = {}, ignoreOrder: cIgnoreOrder = {}, allowTrailingZeros: cAllowTrailingZeros = {}, maxResponseAreas } = configuration || {};
+    const {
+      rationale: cRationale = {},
+      prompt: cPrompt = {},
+      ignoreOrder: cIgnoreOrder = {},
+      allowTrailingZeros: cAllowTrailingZeros = {},
+      maxResponseAreas,
+      maxImageWidth = {},
+      maxImageHeight = {}
+    } = configuration || {};
     const validationMessage = generateValidationMessage(configuration, model);
     const { responsesErrors, responseAreasError } = errors;
+
+    const defaultImageMaxWidth = maxImageWidth && maxImageWidth.prompt;
+    const defaultImageMaxHeight = maxImageHeight && maxImageHeight.prompt;
 
     const classNames = {
       editor: classes.responseEditor,
@@ -384,6 +395,8 @@ class GeneralConfigBlock extends React.Component {
               nonEmpty={false}
               toolbarOpts={toolbarOpts}
               spellCheck={spellCheckEnabled}
+              maxImageWidth={defaultImageMaxWidth}
+              maxImageHeight={defaultImageMaxHeight}
             />
           </InputContainer>
         )}
@@ -405,6 +418,8 @@ class GeneralConfigBlock extends React.Component {
               nonEmpty={false}
               toolbarOpts={toolbarOpts}
               spellCheck={spellCheckEnabled}
+              maxImageWidth={maxImageWidth && maxImageWidth.rationale || defaultImageMaxWidth}
+              maxImageHeight={maxImageHeight && maxImageHeight.rationale || defaultImageMaxHeight}
             />
           </InputContainer>
         )}

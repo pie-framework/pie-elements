@@ -34,6 +34,8 @@ exports[`GraphingConfig renders snapshot 1`] = `
         }
       }
       backgroundMarks={Array []}
+      collapsibleToolbar={true}
+      collapsibleToolbarTitle="Add Background Shapes to Graph"
       coordinatesOnHover={false}
       domain={
         Object {

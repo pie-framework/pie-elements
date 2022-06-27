@@ -149,7 +149,9 @@ export class Row extends React.Component {
       enableImages,
       toolbarOpts,
       spellCheck,
-      error
+      error,
+      maxImageWidth,
+      maxImageHeight
     } = this.props;
     const { dialog } = this.state;
     const opacity = isDragging ? 0 : 1;
@@ -190,6 +192,8 @@ export class Row extends React.Component {
               allowValidation
               activePlugins={filteredDefaultPlugins}
               spellCheck={spellCheck}
+              maxImageWidth={maxImageWidth}
+              maxImageHeight={maxImageHeight}
             />
           </div>
           {row.values.map((rowValue, rowIdx) => (

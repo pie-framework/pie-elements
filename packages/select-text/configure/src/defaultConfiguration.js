@@ -85,6 +85,16 @@ export default {
       settings: true,
       label: 'Mode'
     },
-    minTokens: 2
+    minTokens: 2,
+    maxImageWidth: {
+      teacherInstructions: 300,
+      prompt: 300,
+      rationale: 300,
+    },
+    maxImageHeight: {
+      teacherInstructions: 300,
+      prompt: 300,
+      rationale: 300,
+    }
   }
 };

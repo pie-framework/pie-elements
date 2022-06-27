@@ -152,6 +152,8 @@ export class Design extends React.Component {
       feedback = {},
       prompt = {},
       spellCheck = {},
+      maxImageWidth = {},
+      maxImageHeight = {}
     } = configuration || {};
     const {
       teacherInstructionsEnabled,
@@ -192,6 +194,9 @@ export class Design extends React.Component {
       c.correctResponseCount = this.countChoiceInCorrectResponse(c);
       return c;
     });
+
+    const defaultImageMaxWidth = maxImageWidth && maxImageWidth.prompt;
+    const defaultImageMaxHeight = maxImageHeight && maxImageHeight.prompt;
 
     return (
       <IdProvider value={this.uid}>
@@ -245,6 +250,8 @@ export class Design extends React.Component {
                   disableUnderline
                   toolbarOpts={toolbarOpts}
                   spellCheck={spellCheckEnabled}
+                  maxImageWidth={maxImageWidth && maxImageWidth.prompt}
+                  maxImageHeight={maxImageHeight && maxImageHeight.prompt}
                 />
               </InputContainer>
             )}
@@ -262,6 +269,8 @@ export class Design extends React.Component {
                   nonEmpty={false}
                   toolbarOpts={toolbarOpts}
                   spellCheck={spellCheckEnabled}
+                  maxImageWidth={maxImageWidth && maxImageWidth.teacherInstructions || defaultImageMaxWidth}
+                  maxImageHeight={maxImageHeight && maxImageHeight.teacherInstructions || defaultImageMaxHeight}
                 />
               </InputContainer>
             )}
@@ -279,6 +288,8 @@ export class Design extends React.Component {
                   nonEmpty={false}
                   toolbarOpts={toolbarOpts}
                   spellCheck={spellCheckEnabled}
+                  maxImageWidth={maxImageWidth && maxImageWidth.rationale || defaultImageMaxWidth}
+                  maxImageHeight={maxImageHeight && maxImageHeight.rationale || defaultImageMaxHeight}
                 />
               </InputContainer>
             )}
@@ -291,6 +302,8 @@ export class Design extends React.Component {
               toolbarOpts={toolbarOpts}
               spellCheck={spellCheckEnabled}
               configuration={configuration}
+              defaultImageMaxWidth={defaultImageMaxWidth}
+              defaultImageMaxHeight={defaultImageMaxHeight}
             />
 
             <Header
@@ -330,6 +343,8 @@ export class Design extends React.Component {
               toolbarOpts={toolbarOpts}
               spellCheck={spellCheckEnabled}
               configuration={configuration}
+              defaultImageMaxWidth={defaultImageMaxWidth}
+              defaultImageMaxHeight={defaultImageMaxHeight}
             />
 
             {feedbackEnabled && (

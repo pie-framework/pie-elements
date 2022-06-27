@@ -87,10 +87,15 @@ export class Configure extends React.Component {
       studentInstructions = {},
       teacherInstructions = {},
       prompt = {},
-      spellCheck = {}
+      spellCheck = {},
+      maxImageWidth = {},
+      maxImageHeight = {}
     } = configuration || {};
     const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled, spellCheckEnabled } =
       model || {};
+
+    const defaultImageMaxWidth = maxImageWidth && maxImageWidth.prompt;
+    const defaultImageMaxHeight = maxImageHeight && maxImageHeight.prompt;
 
     return (
       <layout.ConfigLayout
@@ -162,6 +167,8 @@ export class Configure extends React.Component {
                 imageSupport={imageSupport}
                 nonEmpty={false}
                 spellCheck={spellCheckEnabled}
+                maxImageWidth={maxImageWidth && maxImageWidth.teacherInstructions || defaultImageMaxWidth}
+                maxImageHeight={maxImageHeight && maxImageHeight.teacherInstructions || defaultImageMaxHeight}
               />
             </InputContainer>
           )}
@@ -179,6 +186,8 @@ export class Configure extends React.Component {
                 nonEmpty={false}
                 spellCheck={spellCheckEnabled}
                 disableUnderline
+                maxImageWidth={defaultImageMaxWidth}
+                maxImageHeight={defaultImageMaxHeight}
               />
             </InputContainer>
           )}
@@ -194,6 +203,8 @@ export class Configure extends React.Component {
                 onChange={this.onRationaleChange}
                 imageSupport={imageSupport}
                 spellCheck={spellCheckEnabled}
+                maxImageWidth={maxImageWidth && maxImageWidth.rationale || defaultImageMaxWidth}
+                maxImageHeight={maxImageHeight && maxImageHeight.rationale || defaultImageMaxHeight}
               />
             </InputContainer>
           )}

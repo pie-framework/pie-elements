@@ -74,6 +74,16 @@ exports[`Configure renders snapshot 1`] = `
     <Panel
       configuration={
         Object {
+          "maxImageHeight": Object {
+            "prompt": 300,
+            "rationale": 300,
+            "teacherInstructions": 300,
+          },
+          "maxImageWidth": Object {
+            "prompt": 300,
+            "rationale": 300,
+            "teacherInstructions": 300,
+          },
           "prompt": Object {
             "label": "Item Stem",
             "settings": true,
@@ -167,6 +177,8 @@ exports[`Configure renders snapshot 1`] = `
     >
       <EditableHtml
         markup=""
+        maxImageHeight={300}
+        maxImageWidth={300}
         nonEmpty={false}
         onChange={[Function]}
       />
@@ -177,6 +189,8 @@ exports[`Configure renders snapshot 1`] = `
       <EditableHtml
         disableUnderline={true}
         markup="Here goes item stem!"
+        maxImageHeight={300}
+        maxImageWidth={300}
         nonEmpty={false}
         onChange={[Function]}
       />
@@ -186,6 +200,8 @@ exports[`Configure renders snapshot 1`] = `
     >
       <EditableHtml
         markup="Rationale goes here!"
+        maxImageHeight={300}
+        maxImageWidth={300}
         onChange={[Function]}
       />
     </InputContainer>
