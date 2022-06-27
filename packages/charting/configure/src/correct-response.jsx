@@ -126,6 +126,8 @@ export class CorrectResponse extends React.Component {
       } = {},
     } = this.props;
 
+    const { categories } = this.state;
+
     let nextCategories = [];
 
     if (nextData.length > data.length && nextCorrectAnswerData.length > data.length) {
@@ -145,7 +147,7 @@ export class CorrectResponse extends React.Component {
 
       console.log(index, "index")
 
-      nextCategories = removeCategory(nextCorrectAnswerData, nextData, index);
+      nextCategories = removeCategory(categories, nextData, index);
     }
 
     if (!isEqual(nextCorrectAnswerData, this.props.model.correctAnswer.data)) {
