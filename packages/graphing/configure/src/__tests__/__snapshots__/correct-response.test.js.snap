@@ -2,9 +2,25 @@
 
 exports[`CorrectResponse renders snapshot 1`] = `
 <div>
-  Define Correct Response
+  <WithStyles(Typography)
+    component="div"
+    variant="subheading"
+  >
+    <span>
+      Define Tool Set and Correct Response
+    </span>
+  </WithStyles(Typography)>
+  <WithStyles(Typography)
+    component="div"
+    variant="body1"
+  >
+    <span>
+      Use this interface to choose which graphing tools students will be able to use, and to define the correct answer
+    </span>
+  </WithStyles(Typography)>
   <Tools
     classes={Object {}}
+    onDefaultToolChange={[Function]}
     toggleToolBarTool={[Function]}
     toolbarTools={
       Array [
@@ -21,12 +37,10 @@ exports[`CorrectResponse renders snapshot 1`] = `
       ]
     }
   />
-  <div>
-    <div
-      onClick={[Function]}
-    >
-      ADD ALTERNATE
-    </div>
+  <div
+    onClick={[Function]}
+  >
+    ADD ALTERNATE
   </div>
   <Component
     open={false}
@@ -36,18 +50,32 @@ exports[`CorrectResponse renders snapshot 1`] = `
 
 exports[`CorrectResponse: if answers is null it should still work as expected renders snapshot 1`] = `
 <div>
-  Define Correct Response
+  <WithStyles(Typography)
+    component="div"
+    variant="subheading"
+  >
+    <span>
+      Define Tool Set and Correct Response
+    </span>
+  </WithStyles(Typography)>
+  <WithStyles(Typography)
+    component="div"
+    variant="body1"
+  >
+    <span>
+      Use this interface to choose which graphing tools students will be able to use, and to define the correct answer
+    </span>
+  </WithStyles(Typography)>
   <Tools
     classes={Object {}}
+    onDefaultToolChange={[Function]}
     toggleToolBarTool={[Function]}
     toolbarTools={Array []}
   />
-  <div>
-    <div
-      onClick={[Function]}
-    >
-      ADD ALTERNATE
-    </div>
+  <div
+    onClick={[Function]}
+  >
+    ADD ALTERNATE
   </div>
   <Component
     open={false}
@@ -57,18 +85,32 @@ exports[`CorrectResponse: if answers is null it should still work as expected re
 
 exports[`CorrectResponse: if answers is undefined it should still work as expected renders snapshot 1`] = `
 <div>
-  Define Correct Response
+  <WithStyles(Typography)
+    component="div"
+    variant="subheading"
+  >
+    <span>
+      Define Tool Set and Correct Response
+    </span>
+  </WithStyles(Typography)>
+  <WithStyles(Typography)
+    component="div"
+    variant="body1"
+  >
+    <span>
+      Use this interface to choose which graphing tools students will be able to use, and to define the correct answer
+    </span>
+  </WithStyles(Typography)>
   <Tools
     classes={Object {}}
+    onDefaultToolChange={[Function]}
     toggleToolBarTool={[Function]}
     toolbarTools={Array []}
   />
-  <div>
-    <div
-      onClick={[Function]}
-    >
-      ADD ALTERNATE
-    </div>
+  <div
+    onClick={[Function]}
+  >
+    ADD ALTERNATE
   </div>
   <Component
     open={false}
@@ -78,7 +120,11 @@ exports[`CorrectResponse: if answers is undefined it should still work as expect
 
 exports[`Tools renders snapshot 1`] = `
 <div>
-  GRAPHING TOOLS
+  <div>
+    <span>
+      GRAPHING TOOLS
+    </span>
+  </div>
   <div />
 </div>
 `;

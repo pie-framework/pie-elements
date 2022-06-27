@@ -21,10 +21,8 @@ const styles = theme => ({
     display: 'flex',
     flexDirection: 'column'
   },
-  subheading: {
-    marginBottom: theme.spacing.unit * 2
-  },
-  body: {
+  subtitleText: {
+    marginTop: theme.spacing.unit * 1.5,
     marginBottom: theme.spacing.unit
   }
 });
@@ -151,11 +149,11 @@ export class GraphingConfig extends React.Component {
         </div>
 
         <div className={classes.graphConfig} key="graph">
-          <Typography component="div" variant="subheading2" className={classes.subheading}>
+          <Typography component="div" variant="subheading">
             <span>Define Graph Attributes</span>
           </Typography>
 
-          <Typography component="div" variant="body1" className={classes.body}>
+          <Typography component="div" variant="body1" className={classes.subtitleText}>
             <span>Use this interface to add/edit a title and/or labels, and to set background shapes</span>
           </Typography>
 

@@ -31,6 +31,7 @@ export class Main extends React.Component {
       backgroundMarks,
       coordinatesOnHover,
       correctResponse,
+      defaultTool,
       disabled,
       domain,
       labels,
@@ -92,6 +93,7 @@ export class Main extends React.Component {
           axesSettings={{ includeArrows: arrows }}
           backgroundMarks={backgroundMarks}
           coordinatesOnHover={coordinatesOnHover}
+          defaultTool={defaultTool}
           disabled={disabled}
           domain={domain}
           labels={labels}
