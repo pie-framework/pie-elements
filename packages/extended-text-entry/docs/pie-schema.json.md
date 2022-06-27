@@ -52,6 +52,18 @@ Whether a control to allow insertion of math forumulas should be displayed
 
 Default: `false`
 
+# `spanishInput` (boolean)
+
+Whether a control to allow insertion of spanish characters should be displayed
+
+Default: `false`
+
+# `specialInput` (boolean)
+
+Whether a control to allow insertion of special characters should be displayed
+
+Default: `false`
+
 # `multiple` (boolean)
 
 Indicates if multiple parts are enabled
