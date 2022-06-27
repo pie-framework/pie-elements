@@ -1485,6 +1485,22 @@
       "type": "boolean",
       "title": "coordinatesOnHover"
     },
+    "defaultTool": {
+      "description": "Indicates the default selected tool for the graph",
+      "enum": [
+        "circle",
+        "line",
+        "parabola",
+        "point",
+        "polygon",
+        "ray",
+        "segment",
+        "sine",
+        "vector"
+      ],
+      "type": "string",
+      "title": "defaultTool"
+    },
     "domain": {
       "title": "GraphSettings",
       "type": "object",
@@ -1755,6 +1771,7 @@
   "required": [
     "answers",
     "backgroundMarks",
+    "defaultTool",
     "domain",
     "element",
     "graph",

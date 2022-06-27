@@ -72,6 +72,22 @@ Additional restrictions:
 
 Indicates if coordinates of a point are displayed on hover
 
+# `defaultTool` (string, enum, required)
+
+Indicates the default selected tool for the graph
+
+This element must be one of the following enum values:
+
+* `circle`
+* `line`
+* `parabola`
+* `point`
+* `polygon`
+* `ray`
+* `segment`
+* `sine`
+* `vector`
+
 # `domain` (object, required)
 
 Properties of the `domain` object:
