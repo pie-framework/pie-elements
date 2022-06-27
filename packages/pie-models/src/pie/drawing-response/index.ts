@@ -1,5 +1,5 @@
 import { PieModel } from '../../PieModel';
-import { ConfigureProp, ConfigurePropWithEnabled } from '../ConfigurationProp';
+import { ConfigureProp, ConfigurePropWithEnabled, ConfigureMaxImageDimensionsProp } from '../ConfigurationProp';
 import { PromptConfig } from '../../PromptConfig';
 import { Dimension } from '../../Dimension';
 
@@ -79,4 +79,14 @@ export interface DrawingResponseConfigure extends PromptConfig {
    * Teacher Instructions configuration
    */
   teacherInstructions?: ConfigureProp;
+
+  /**
+   * Maximum image width for input fields
+   */
+  maxImageWidth?: ConfigureMaxImageDimensionsProp;
+
+  /**
+   * Maximum image height for input fields
+   */
+  maxImageHeight?: ConfigureMaxImageDimensionsProp;
 }

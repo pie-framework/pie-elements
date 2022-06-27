@@ -23,7 +23,7 @@ export class Root extends React.Component {
       onConfigurationChanged,
       imageSupport,
     } = this.props;
-    const { teacherInstructions = {}, spellCheck = {} } = configuration || {};
+    const { teacherInstructions = {}, spellCheck = {}, maxImageWidth = {}, maxImageHeight = {} } = configuration || {};
     const { spellCheckEnabled } = model || {};
 
     return (
@@ -59,6 +59,8 @@ export class Root extends React.Component {
                 imageSupport={imageSupport}
                 nonEmpty={false}
                 spellCheck={spellCheckEnabled}
+                maxImageWidth={maxImageWidth && maxImageWidth.teacherInstructions}
+                maxImageHeight={maxImageHeight && maxImageHeight.teacherInstructions}
               />
             </InputContainer>
           )}

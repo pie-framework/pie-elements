@@ -159,7 +159,9 @@ export class Design extends React.Component {
       rationale = {},
       scoringType = {},
       spellCheck = {},
-      highlightChoices = {}
+      highlightChoices = {},
+      maxImageWidth = {},
+      maxImageHeight = {}
     } = configuration || {};
     const {
       teacherInstructionsEnabled, promptEnabled, rationaleEnabled, spellCheckEnabled, feedbackEnabled, errors
@@ -168,6 +170,9 @@ export class Design extends React.Component {
     const { tokensError, selectionsError } = errors || {};
 
     const validationMessage = generateValidationMessage(configuration);
+
+    const defaultImageMaxWidth = maxImageWidth && maxImageWidth.prompt;
+    const defaultImageMaxHeight = maxImageHeight && maxImageHeight.prompt;
 
     switch (model.toolbarEditorPosition) {
       case 'top':
@@ -232,6 +237,8 @@ export class Design extends React.Component {
                 nonEmpty={false}
                 toolbarOpts={toolbarOpts}
                 spellCheck={spellCheckEnabled}
+                maxImageWidth={maxImageWidth && maxImageWidth.teacherInstructions || defaultImageMaxWidth}
+                maxImageHeight={maxImageHeight && maxImageHeight.teacherInstructions || defaultImageMaxHeight}
               />
             </InputContainer>
           )}
@@ -248,6 +255,8 @@ export class Design extends React.Component {
                 imageSupport={imageSupport}
                 toolbarOpts={toolbarOpts}
                 spellCheck={spellCheckEnabled}
+                maxImageWidth={defaultImageMaxWidth}
+                maxImageHeight={defaultImageMaxHeight}
               />
             </InputContainer>
           )}
@@ -264,6 +273,8 @@ export class Design extends React.Component {
                 imageSupport={imageSupport}
                 toolbarOpts={toolbarOpts}
                 spellCheck={spellCheckEnabled}
+                maxImageWidth={maxImageWidth && maxImageWidth.rationale || defaultImageMaxWidth}
+                maxImageHeight={maxImageHeight && maxImageHeight.rationale || defaultImageMaxHeight}
               />
             </InputContainer>
           )}

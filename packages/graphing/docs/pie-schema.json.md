@@ -352,6 +352,22 @@ Indicates the maximum value for the graph width and height
 
 Indicates the increase/decrease value for the graph width and height
 
+## `ConfigureMaxImageDimensionsProp` (object)
+
+Properties of the `ConfigureMaxImageDimensionsProp` object:
+
+### `teacherInstructions` (number)
+
+Indicates the max dimension for images in teacher instructions
+
+### `prompt` (number)
+
+Indicates the max dimension for images in prompt - this is also the default dimension for all other input fields if it's not specified
+
+### `rationale` (number)
+
+Indicates the max dimension for images in rationale
+
 ## `Answer` (object)
 
 Properties of the `Answer` object:

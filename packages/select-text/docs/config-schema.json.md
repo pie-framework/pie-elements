@@ -182,6 +182,38 @@ Minimum number of tokens
 
 Maximum number of tokens
 
+# `maxImageWidth` (object)
+
+Properties of the `maxImageWidth` object:
+
+## `teacherInstructions` (number)
+
+Indicates the max dimension for images in teacher instructions
+
+## `prompt` (number)
+
+Indicates the max dimension for images in prompt - this is also the default dimension for all other input fields if it's not specified
+
+## `rationale` (number)
+
+Indicates the max dimension for images in rationale
+
+# `maxImageHeight` (object)
+
+Properties of the `maxImageHeight` object:
+
+## `teacherInstructions` (number)
+
+Indicates the max dimension for images in teacher instructions
+
+## `prompt` (number)
+
+Indicates the max dimension for images in prompt - this is also the default dimension for all other input fields if it's not specified
+
+## `rationale` (number)
+
+Indicates the max dimension for images in rationale
+
 # `showPrompt` (boolean)
 
 Determines whether prompt field will be displayed or not
@@ -217,3 +249,19 @@ Indicates if the item has to be displayed in the Settings Panel
 ### `label` (string)
 
 Indicates the label for the item that has to be displayed in the Settings Panel
+
+## `ConfigureMaxImageDimensionsProp` (object)
+
+Properties of the `ConfigureMaxImageDimensionsProp` object:
+
+### `teacherInstructions` (number)
+
+Indicates the max dimension for images in teacher instructions
+
+### `prompt` (number)
+
+Indicates the max dimension for images in prompt - this is also the default dimension for all other input fields if it's not specified
+
+### `rationale` (number)
+
+Indicates the max dimension for images in rationale

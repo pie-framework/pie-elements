@@ -116,6 +116,16 @@ export default {
     coordinatesOnHover: {
       settings: true,
       label: 'Coordinates on Hover'
+    },
+    maxImageWidth: {
+      teacherInstructions: 300,
+      prompt: 300,
+      rationale: 300,
+    },
+    maxImageHeight: {
+      teacherInstructions: 300,
+      prompt: 300,
+      rationale: 300,
     }
   }
 };
