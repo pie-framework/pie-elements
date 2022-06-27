@@ -70,7 +70,9 @@ export class Choice extends React.Component {
       imageSupport,
       spellCheck,
       toolbarOpts,
-      error
+      error,
+      maxImageWidth,
+      maxImageHeight
     } = this.props;
 
     const draggable = canDrag(this.props);
@@ -99,6 +101,8 @@ export class Choice extends React.Component {
               toolbarOpts={toolbarOpts}
               spellCheck={spellCheck}
               error={error}
+              maxImageWidth={maxImageWidth}
+              maxImageHeight={maxImageHeight}
             />
             {error && <div className={classes.errorText}>{error}</div>}
           </span>
