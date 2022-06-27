@@ -166,7 +166,7 @@ export function model(question, session, env) {
 
     // added support for models without defaultTool defined; also used in packages/graphing/configure/src/index.js
     const toolbarToolsNoLabel = (toolbarTools || []).filter(tool => tool !== 'label');
-    const normalizedDefaultTool = defaultTool || toolbarToolsNoLabel.length && toolbarToolsNoLabel[0] || '';
+    const normalizedDefaultTool = defaultTool || (toolbarToolsNoLabel.length && toolbarToolsNoLabel[0]) || '';
 
     const base = {
       ...questionProps,
