@@ -22,7 +22,7 @@ const styles = (theme) => ({
   },
 });
 
-const addCategoryProps = (correctAnswer, data) => correctAnswer.map((correct, index) => ({ ...correct, editable: index < data.length ? data[index].editable : true, interactive: index < data.length ? data[index].interactive : true, deletable: index >= data.length ? true : false  }));;
+const addCategoryProps = (correctAnswer, data) => correctAnswer.map((correct, index) => ({ ...correct, editable: index < data.length ? data[index].editable : true, interactive: index < data.length ? data[index].interactive : true, deletable: index >= data.length ? true : false }));
 
 const updateCorrectResponseData = (correctAnswer, data) => {
   if (!correctAnswer) {
@@ -158,7 +158,7 @@ export class CorrectResponse extends React.Component {
         } else {
           label = answer.label;
           value = answer.value;
-          deletable = true
+          deletable = true;
         }
 
         nextCorrectAnswerData[currentIndex] = {
