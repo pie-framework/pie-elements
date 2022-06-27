@@ -33,6 +33,8 @@ export class ChartingConfig extends React.Component {
   render() {
     const { classes, model, charts } = this.props;
 
+    const configureData = model.data.map((categ, index) => ({ ...categ, index: index }));
+
     return (
       <div>
         Define Graph Attributes
@@ -50,7 +52,7 @@ export class ChartingConfig extends React.Component {
               domain={model.domain}
               range={model.range}
               charts={charts}
-              data={model.data}
+              data={configureData}
               title={model.title}
               onDataChange={this.changeData}
               addCategoryEnabled={true}
