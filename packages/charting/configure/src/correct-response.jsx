@@ -72,9 +72,7 @@ const insertCategory = (correctAnswer, data) => {
   return addCategoryProps(correctAnswerData, data);
 }
 
-const removeCategory = (correctAnswer, data, index) => {
-  const positionToRemove = index;
-
+const removeCategory = (correctAnswer, data, positionToRemove) => {
   correctAnswer.splice(positionToRemove, 1);
 
   const correctAnswerData = [...correctAnswer];
@@ -126,8 +124,6 @@ export class CorrectResponse extends React.Component {
       } = {},
     } = this.props;
 
-    const { categories } = this.state;
-
     let nextCategories = [];
 
     if (nextData.length > data.length && nextCorrectAnswerData.length > data.length) {
@@ -135,13 +131,10 @@ export class CorrectResponse extends React.Component {
     }
 
     if (nextData.length < data.length) {
-      console.log(data, nextData, "data, nextdata")
-      let index ;
+      const idxsNextData = nextData.map( x => x.index )
+      const idxsData = [...Array(data.length).keys()];
+      const idxsToRemove = idxsData.filter( x => !idxsNextData.includes(x))
 
-      let idxsNextData = nextData.map( x => x.index )
-      let idxsData = [...Array(data.length).keys()];
-      let idxsToRemove = idxsData.filter( x => !idxsNextData.includes(x) )
-      
       this.props.model.correctAnswer.data.splice(idxsToRemove[0], 1);
       nextCategories = removeCategory(categories, nextData, idxsToRemove[0]);
     }
