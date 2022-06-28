@@ -23,10 +23,33 @@ exports[`Configure renders snapshot 1`] = `
             },
           },
           "authoring": Object {
-            "enabled": false,
-            "label": "Allow authoring",
+            "axisLabel": Object {
+              "enabled": true,
+              "label": "Label",
+            },
+            "enabled": true,
+            "includeAxesEnabled": true,
+            "label": "Customize Grid Setup",
+            "labelStep": Object {
+              "enabled": true,
+              "label": "Label Interval",
+            },
+            "max": Object {
+              "enabled": true,
+              "label": "Max Value",
+            },
+            "min": Object {
+              "enabled": true,
+              "label": "Min Value",
+            },
             "settings": false,
+            "standardGridEnabled": true,
+            "step": Object {
+              "enabled": true,
+              "label": "Grid Interval",
+            },
           },
+          "availableTools": Array [],
           "coordinatesOnHover": Object {
             "label": "Coordinates on Hover",
             "settings": true,
@@ -43,6 +66,16 @@ exports[`Configure renders snapshot 1`] = `
             "enabled": true,
             "label": "Labels",
             "settings": false,
+          },
+          "maxImageHeight": Object {
+            "prompt": 300,
+            "rationale": 300,
+            "teacherInstructions": 300,
+          },
+          "maxImageWidth": Object {
+            "prompt": 300,
+            "rationale": 300,
+            "teacherInstructions": 300,
           },
           "padding": Object {
             "label": "Padding",
@@ -160,6 +193,8 @@ exports[`Configure renders snapshot 1`] = `
     >
       <EditableHtml
         markup=""
+        maxImageHeight={300}
+        maxImageWidth={300}
         nonEmpty={false}
         onChange={[Function]}
       />
@@ -170,6 +205,8 @@ exports[`Configure renders snapshot 1`] = `
       <EditableHtml
         disableUnderline={true}
         markup=""
+        maxImageHeight={300}
+        maxImageWidth={300}
         nonEmpty={false}
         onChange={[Function]}
       />
@@ -179,11 +216,42 @@ exports[`Configure renders snapshot 1`] = `
     >
       <EditableHtml
         markup=""
+        maxImageHeight={300}
+        maxImageWidth={300}
         onChange={[Function]}
       />
     </InputContainer>
     <WithStyles(GraphingConfig)
-      authoringEnabled={false}
+      authoring={
+        Object {
+          "axisLabel": Object {
+            "enabled": true,
+            "label": "Label",
+          },
+          "enabled": true,
+          "includeAxesEnabled": true,
+          "label": "Customize Grid Setup",
+          "labelStep": Object {
+            "enabled": true,
+            "label": "Label Interval",
+          },
+          "max": Object {
+            "enabled": true,
+            "label": "Max Value",
+          },
+          "min": Object {
+            "enabled": true,
+            "label": "Min Value",
+          },
+          "settings": false,
+          "standardGridEnabled": true,
+          "step": Object {
+            "enabled": true,
+            "label": "Grid Interval",
+          },
+        }
+      }
+      availableTools={Array []}
       graphDimensions={
         Object {
           "enabled": true,
@@ -239,6 +307,7 @@ exports[`Configure renders snapshot 1`] = `
       }
     />
     <WithStyles(CorrectResponse)
+      availableTools={Array []}
       model={
         Object {
           "answers": Object {},

@@ -32,14 +32,20 @@ export default class SelectText extends HTMLElement {
     if (this._model) {
       const generatedModel = generateModel(this._model) || {};
       const { tokens } = generatedModel;
+      let { selectedTokens } = s || {};
 
-      // make sure initial session tokens are parsed and have correct start and end (according to the regenerated model) - this case was introduced mostly for createCorrectSession
+      selectedTokens = selectedTokens || [];
 
-      // check if the selectedTokens have the correct start and end
-      const areCorrect = (s.selectedTokens || []).filter(({ start, end }) => tokens.find(({ start: tStart, end: tEnd }) => start === tStart && end === tEnd)).length;
+      // This case was introduced mostly for createCorrectSession:
+      // make sure initial session tokens are parsed and have correct start and end (according to the regenerated model)
+      const selectedTokenExistsInGeneratedTokens = s => tokens.find(({ start: tStart, end: tEnd }) => s.start === tStart && s.end === tEnd);
 
-      if (!areCorrect) {
-        const generatedModel = generateModel({ ...this._model, tokens: s.selectedTokens }) || {};
+      // check if ALL the selectedTokens have the correct start and end
+      const allAreCorrect = selectedTokens.reduce((acc, selectedToken) => acc && selectedTokenExistsInGeneratedTokens(selectedToken), true);
+
+      if (!allAreCorrect) {
+        // otherwise, make sure to parse selectedTokens as well
+        const generatedModel = generateModel({ ...this._model, tokens: selectedTokens }) || {};
         const { tokens } = generatedModel;
 
         if (tokens) {

@@ -62,10 +62,15 @@ export class Root extends React.Component {
       prompt = {},
       teacherInstructions = {},
       spellCheck = {},
+      maxImageWidth = {},
+      maxImageHeight = {}
     } = configuration || {};
     const { teacherInstructionsEnabled, promptEnabled, spellCheckEnabled, backgroundImageEnabled } =
       model || {};
     const toolbarOpts = {};
+
+    const defaultImageMaxWidth = maxImageWidth && maxImageWidth.prompt;
+    const defaultImageMaxHeight = maxImageHeight && maxImageHeight.prompt;
 
     switch (model.toolbarEditorPosition) {
       case 'top':
@@ -114,6 +119,8 @@ export class Root extends React.Component {
                   nonEmpty={false}
                   toolbarOpts={toolbarOpts}
                   spellCheck={spellCheckEnabled}
+                  maxImageWidth={maxImageWidth && maxImageWidth.teacherInstructions || defaultImageMaxWidth}
+                  maxImageHeight={maxImageHeight && maxImageHeight.teacherInstructions || defaultImageMaxHeight}
                 />
               </InputContainer>
             )}
@@ -126,6 +133,8 @@ export class Root extends React.Component {
                   toolbarOpts={toolbarOpts}
                   spellCheck={spellCheckEnabled}
                   imageSupport={imageSupport}
+                  maxImageWidth={defaultImageMaxWidth}
+                  maxImageHeight={defaultImageMaxHeight}
                 />
               </InputContainer>
             )}

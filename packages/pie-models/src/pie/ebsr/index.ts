@@ -85,6 +85,20 @@ export interface EbsrPie extends PieModel {
   scoringType?: 'auto' | 'rubric';
 }
 
+interface ConfigureMaxImageDimensionsProp {
+  /** Indicates the max dimension for images in teacher instructions */
+  teacherInstructions?: number;
+
+  /** Indicates the max dimension for images in prompt - this is also the default dimension for all other input fields if it's not specified */
+  prompt?: number;
+
+  /** Indicates the max dimension for images in rationale */
+  rationale?: number;
+
+  /** Indicates the max dimension for images in choices */
+  choices?: number;
+}
+
 interface PartConfiguration {
   /**
    * Indicates whether the Add Choice Button should be displayed
@@ -151,6 +165,26 @@ interface PartConfiguration {
    * @default: 2
    */
   gridColumns?: ConfigureProp;
+
+  /**
+   * Minimum number of answer choices
+   */
+  minAnswerChoices?: number;
+
+  /**
+   * Maximum number of answer choices
+   */
+  maxAnswerChoices?: number;
+
+  /**
+   * Maximum image width for input fields
+   */
+  maxImageWidth?: ConfigureMaxImageDimensionsProp;
+
+  /**
+   * Maximum image height for input fields
+   */
+  maxImageHeight?: ConfigureMaxImageDimensionsProp;
 }
 
 /**

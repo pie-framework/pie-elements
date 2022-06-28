@@ -1,11 +1,9 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import { GraphContainer, GridSetup, tools } from '@pie-lib/graphing';
+import { GraphContainer, GridSetup } from '@pie-lib/graphing';
 import { Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import { applyConstraints, getGridValues, getLabelValues } from './utils';
-
-const { allTools = [] } = tools;
 
 const styles = theme => ({
   container: {
@@ -23,10 +21,8 @@ const styles = theme => ({
     display: 'flex',
     flexDirection: 'column'
   },
-  subheading: {
-    marginBottom: theme.spacing.unit * 2
-  },
-  body: {
+  subtitleText: {
+    marginTop: theme.spacing.unit * 1.5,
     marginBottom: theme.spacing.unit
   }
 });
@@ -34,7 +30,7 @@ const styles = theme => ({
 export class GraphingConfig extends React.Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
-    authoringEnabled: PropTypes.bool,
+    authoring: PropTypes.object,
     graphDimensions: PropTypes.object,
     model: PropTypes.object.isRequired,
     onChange: PropTypes.func.isRequired,
@@ -96,7 +92,7 @@ export class GraphingConfig extends React.Component {
   };
 
   render() {
-    const { classes, model, graphDimensions } = this.props;
+    const { authoring = {}, availableTools = [], classes, model, graphDimensions = {}} = this.props;
     const {
       arrows,
       backgroundMarks,
@@ -109,7 +105,7 @@ export class GraphingConfig extends React.Component {
       title
     } = model || {};
     const graph = (model || {}).graph || {};
-    const { enabled, min, max, step } = graphDimensions || {};
+    const { enabled: dimensionsEnabled, min, max, step } = graphDimensions || {};
     const { gridValues, labelValues } = this.state;
 
     const sizeConstraints = {
@@ -118,29 +114,46 @@ export class GraphingConfig extends React.Component {
       step: step >= 1 ? Math.min(200, step) : 20
     };
 
+    const displayedFields = {
+      axisLabel: authoring.axisLabel,
+      dimensionsEnabled,
+      includeAxesEnabled: authoring.includeAxesEnabled,
+      labelStep: authoring.labelStep,
+      min: authoring.min,
+      max: authoring.max,
+      standardGridEnabled: authoring.standardGridEnabled,
+      step: authoring.step
+    };
+
+    const displayGridSetup = authoring.enabled &&
+      Object.values(displayedFields).some(field => typeof field === 'object' ? field.enabled : field);
+
     return (
       <div className={classes.container}>
         <div className={classes.gridConfig}>
-          <GridSetup
-            domain={domain}
-            dimensionsEnabled={enabled}
-            gridValues={gridValues}
-            includeAxes={includeAxes}
-            labelValues={labelValues}
-            range={range}
-            size={graph}
-            sizeConstraints={sizeConstraints}
-            standardGrid={standardGrid}
-            onChange={this.onConfigChange}
-          />
+          {displayGridSetup && (
+            <GridSetup
+              displayedFields={displayedFields}
+              domain={domain}
+              dimensionsEnabled={dimensionsEnabled}
+              gridValues={gridValues}
+              includeAxes={includeAxes}
+              labelValues={labelValues}
+              range={range}
+              size={graph}
+              sizeConstraints={sizeConstraints}
+              standardGrid={standardGrid}
+              onChange={this.onConfigChange}
+            />
+          )}
         </div>
 
         <div className={classes.graphConfig} key="graph">
-          <Typography component="div" variant="subheading2" className={classes.subheading}>
+          <Typography component="div" variant="subheading">
             <span>Define Graph Attributes</span>
           </Typography>
 
-          <Typography component="div" variant="body1" className={classes.body}>
+          <Typography component="div" variant="body1" className={classes.subtitleText}>
             <span>Use this interface to add/edit a title and/or labels, and to set background shapes</span>
           </Typography>
 
@@ -148,6 +161,8 @@ export class GraphingConfig extends React.Component {
             axesSettings={{ includeArrows: arrows }}
             backgroundMarks={[]}
             coordinatesOnHover={coordinatesOnHover}
+            collapsibleToolbar={true}
+            collapsibleToolbarTitle={'Add Background Shapes to Graph'}
             domain={domain}
             key="graphing-config"
             labels={labels}
@@ -156,7 +171,7 @@ export class GraphingConfig extends React.Component {
             range={range}
             size={{ width: graph.width, height: graph.height }}
             title={title}
-            toolbarTools={allTools}
+            toolbarTools={availableTools}
           />
         </div>
       </div>

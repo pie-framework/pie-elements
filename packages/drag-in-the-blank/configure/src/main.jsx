@@ -158,7 +158,9 @@ export class Main extends React.Component {
       choicesPosition = {},
       spellCheck = {},
       maxChoices,
-      maxResponseAreas
+      maxResponseAreas,
+      maxImageWidth = {},
+      maxImageHeight = {}
     } = configuration || {};
     const { rationaleEnabled, promptEnabled, teacherInstructionsEnabled, spellCheckEnabled, errors } =
       model || {};
@@ -166,6 +168,9 @@ export class Main extends React.Component {
 
     const { responseAreasError, choicesError }  = errors || {};
     const validationMessage = generateValidationMessage(configuration);
+
+    const defaultImageMaxWidth = maxImageWidth && maxImageWidth.prompt;
+    const defaultImageMaxHeight = maxImageHeight && maxImageHeight.prompt;
 
     switch (model.toolbarEditorPosition) {
       case 'top':
@@ -230,6 +235,8 @@ export class Main extends React.Component {
                   nonEmpty={false}
                   toolbarOpts={toolbarOpts}
                   spellCheck={spellCheckEnabled}
+                  maxImageWidth={maxImageWidth && maxImageWidth.teacherInstructions || defaultImageMaxWidth}
+                  maxImageHeight={maxImageHeight && maxImageHeight.teacherInstructions || defaultImageMaxHeight}
                 />
               </InputContainer>
             )}
@@ -247,6 +254,8 @@ export class Main extends React.Component {
                   disableUnderline
                   toolbarOpts={toolbarOpts}
                   spellCheck={spellCheckEnabled}
+                  maxImageWidth={defaultImageMaxWidth}
+                  maxImageHeight={defaultImageMaxHeight}
                 />
               </InputContainer>
             )}
@@ -308,6 +317,8 @@ export class Main extends React.Component {
                   imageSupport={imageSupport}
                   toolbarOpts={toolbarOpts}
                   spellCheck={spellCheckEnabled}
+                  maxImageWidth={maxImageWidth && maxImageWidth.rationale || defaultImageMaxWidth}
+                  maxImageHeight={maxImageHeight && maxImageHeight.rationale || defaultImageMaxHeight}
                 />
               </InputContainer>
             )}

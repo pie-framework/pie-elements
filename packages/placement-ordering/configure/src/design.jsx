@@ -98,7 +98,6 @@ export class Design extends React.Component {
       feedback = {},
       targetLabel = {},
       prompt = {},
-
       placementArea = {},
       numberedGuides = {},
       enableImages = {},
@@ -109,7 +108,9 @@ export class Design extends React.Component {
       studentInstructions = {},
       rationale = {},
       spellCheck = {},
-      scoringType = {}
+      scoringType = {},
+      maxImageWidth = {},
+      maxImageHeight = {}
     } = configuration || {};
     const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled, feedbackEnabled, choiceLabelEnabled, spellCheckEnabled, errors } =
       model || {};
@@ -121,6 +122,11 @@ export class Design extends React.Component {
       singularLabel = '',
       pluralLabel = ''
     } = choices && choices.label && getSingularAndPlural(choices.label) || {};
+
+    const defaultImageMaxWidth = maxImageWidth && maxImageWidth.prompt;
+    const defaultImageMaxHeight = maxImageHeight && maxImageHeight.prompt;
+    const maxChoicesImageWidth = maxImageWidth && model.placementArea ? maxImageWidth.choicesWithPlacementArea : maxImageWidth.choicesWithoutPlacementArea || defaultImageMaxWidth;
+    const maxChoicesImageHeight = maxImageHeight && maxImageHeight.choices || defaultImageMaxHeight;
 
     switch (model.toolbarEditorPosition) {
       case 'top':
@@ -195,6 +201,8 @@ export class Design extends React.Component {
               nonEmpty={false}
               toolbarOpts={toolbarOpts}
               spellCheck={spellCheckEnabled}
+              maxImageWidth={maxImageWidth && maxImageWidth.teacherInstructions || defaultImageMaxWidth}
+              maxImageHeight={maxImageHeight && maxImageHeight.teacherInstructions || defaultImageMaxHeight}
             />
           </InputContainer>
         )}
@@ -212,6 +220,8 @@ export class Design extends React.Component {
                 imageSupport={imageSupport}
                 toolbarOpts={toolbarOpts}
                 spellCheck={spellCheckEnabled}
+                maxImageWidth={maxImageWidth && maxImageWidth.prompt}
+                maxImageHeight={maxImageHeight && maxImageHeight.prompt}
               />
             </InputContainer>
             {rationaleEnabled && (
@@ -226,6 +236,8 @@ export class Design extends React.Component {
                   imageSupport={imageSupport}
                   toolbarOpts={toolbarOpts}
                   spellCheck={spellCheckEnabled}
+                  maxImageWidth={maxImageWidth && maxImageWidth.rationale || defaultImageMaxWidth}
+                  maxImageHeight={maxImageHeight && maxImageHeight.rationale || defaultImageMaxHeight}
                 />
               </InputContainer>
             )}
@@ -261,6 +273,8 @@ export class Design extends React.Component {
                   onChange={this.onChoiceAreaLabelChange}
                   toolbarOpts={toolbarOpts}
                   spellCheck={spellCheckEnabled}
+                  maxImageWidth={maxChoicesImageWidth}
+                  maxImageHeight={maxChoicesImageHeight}
                 />
               </InputContainer>
             )}
@@ -280,6 +294,8 @@ export class Design extends React.Component {
                   onChange={this.onAnswerAreaLabelChange}
                   toolbarOpts={toolbarOpts}
                   spellCheck={spellCheckEnabled}
+                  maxImageWidth={maxImageWidth && maxImageWidth.choicesWithPlacementArea || defaultImageMaxWidth}
+                  maxImageHeight={maxChoicesImageHeight}
                 />
               </InputContainer>
             )}
@@ -302,6 +318,8 @@ export class Design extends React.Component {
                 singularChoiceLabel={singularLabel}
                 pluralChoiceLabel={pluralLabel}
                 spellCheck={spellCheckEnabled}
+                maxImageWidth={maxChoicesImageWidth}
+                maxImageHeight={maxChoicesImageHeight}
               />
             </InputContainer>
           )}

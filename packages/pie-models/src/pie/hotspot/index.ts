@@ -2,7 +2,7 @@ import { Shape } from '../../Shape';
 import { Dimension } from '../../Dimension';
 import { PieModel } from '../../PieModel';
 import { PromptConfig } from '../../PromptConfig';
-import { ConfigureProp } from '../ConfigurationProp';
+import { ConfigureMaxImageDimensionsProp, ConfigureProp } from '../ConfigurationProp';
 
 /**
  * Model for the @pie-elements/hotspot Interaction
@@ -107,4 +107,14 @@ export interface HotspotConfigure extends PromptConfig {
    * Maximum number of selected shapes in correct answer
    */
   maxSelections?: number;
+
+  /**
+   * Maximum image width for input fields
+   */
+  maxImageWidth?: ConfigureMaxImageDimensionsProp;
+
+  /**
+   * Maximum image height for input fields
+   */
+  maxImageHeight?: ConfigureMaxImageDimensionsProp;
 }

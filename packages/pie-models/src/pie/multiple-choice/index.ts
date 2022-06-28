@@ -81,6 +81,20 @@ export interface MultipleChoicePie extends PieModel {
   accessibilityLabelsEnabled: boolean;
 }
 
+interface ConfigureMaxImageDimensionsProp {
+  /** Indicates the max dimension for images in teacher instructions */
+  teacherInstructions?: number;
+
+  /** Indicates the max dimension for images in prompt - this is also the default dimension for all other input fields if it's not specified */
+  prompt?: number;
+
+  /** Indicates the max dimension for images in rationale */
+  rationale?: number;
+
+  /** Indicates the max dimension for images in choices */
+  choices?: number;
+}
+
 /**
  * Config Object for @pie-elements/multiple-choice
  * @additionalProperties false
@@ -191,4 +205,14 @@ export interface MultipleChoiceConfigure extends PromptConfig {
    * Maximum number of answer choices
    */
   maxAnswerChoices?: number;
+
+  /**
+   * Maximum image width for input fields
+   */
+  maxImageWidth?: ConfigureMaxImageDimensionsProp;
+
+  /**
+   * Maximum image height for input fields
+   */
+  maxImageHeight?: ConfigureMaxImageDimensionsProp;
 }

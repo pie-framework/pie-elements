@@ -201,7 +201,9 @@ class Configure extends React.Component {
       scoringType = {},
       prompt = {},
       feedback = {},
-      spellCheck = {}
+      spellCheck = {},
+      maxImageWidth = {},
+      maxImageHeight = {}
     } = configuration || {};
     const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled, spellCheckEnabled, feedbackEnabled } =
       model || {};
@@ -216,6 +218,9 @@ class Configure extends React.Component {
         toolbarOpts.position = 'bottom';
         break;
     }
+
+    const defaultImageMaxWidth = maxImageWidth && maxImageWidth.prompt;
+    const defaultImageMaxHeight = maxImageHeight && maxImageHeight.prompt;
 
     log('[render] model', model);
 
@@ -271,6 +276,8 @@ class Configure extends React.Component {
                 nonEmpty={false}
                 toolbarOpts={toolbarOpts}
                 spellCheck={spellCheckEnabled}
+                maxImageWidth={maxImageWidth && maxImageWidth.teacherInstructions || defaultImageMaxWidth}
+                maxImageHeight={maxImageHeight && maxImageHeight.teacherInstructions || defaultImageMaxHeight}
               />
             </InputContainer>
           )}
@@ -289,6 +296,8 @@ class Configure extends React.Component {
                 disableUnderline
                 toolbarOpts={toolbarOpts}
                 spellCheck={spellCheckEnabled}
+                maxImageWidth={maxImageWidth && maxImageWidth.prompt}
+                maxImageHeight={maxImageHeight && maxImageHeight.prompt}
               />
             </InputContainer>
           )}
@@ -305,6 +314,8 @@ class Configure extends React.Component {
                 imageSupport={imageSupport}
                 toolbarOpts={toolbarOpts}
                 spellCheck={spellCheckEnabled}
+                maxImageWidth={maxImageWidth && maxImageWidth.rationale || defaultImageMaxWidth}
+                maxImageHeight={maxImageHeight && maxImageHeight.rationale || defaultImageMaxHeight}
               />
             </InputContainer>
           )}

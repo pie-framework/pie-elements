@@ -69,6 +69,16 @@ export default {
     title: {
       settings: false,
       label: 'Graph Title'
+    },
+    maxImageWidth: {
+      teacherInstructions: 300,
+      prompt: 300,
+      rationale: 300,
+    },
+    maxImageHeight: {
+      teacherInstructions: 300,
+      prompt: 300,
+      rationale: 300,
     }
   }
 };
