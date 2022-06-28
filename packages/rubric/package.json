@@ -1,6 +1,6 @@
 {
   "name": "@pie-element/rubric",
-  "version": "1.8.11",
+  "version": "2.0.0",
   "main": "lib/index.js",
   "module": "src/index.js",
   "description": "Rubric Scoring Interaction",

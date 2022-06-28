@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@5.14.14...@pie-element/number-line@6.0.0) (2022-06-28)
+
+
+### chore
+
+* Merge master with develop. ([cdca48a](https://github.com/pie-framework/pie-elements/commit/cdca48abaa1d4179e4a961e13d171e14b7ed2444))
+
+
+### BREAKING CHANGES
+
+* Image percent buttons were removed from toolbar.
+New properties maxImageWidth and maxImageHeight were added.
+
+
+
+
+
 ## [5.14.14](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@5.14.13...@pie-element/number-line@5.14.14) (2022-06-13)
 
 **Note:** Version bump only for package @pie-element/number-line

@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-configure@4.5.12...@pie-element/match-configure@5.0.0) (2022-06-28)
+
+
+### chore
+
+* Merge master with develop. ([cdca48a](https://github.com/pie-framework/pie-elements/commit/cdca48abaa1d4179e4a961e13d171e14b7ed2444))
+
+
+### BREAKING CHANGES
+
+* Image percent buttons were removed from toolbar.
+New properties maxImageWidth and maxImageHeight were added.
+
+
+
+
+
 ## [4.5.12](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-configure@4.5.11...@pie-element/match-configure@4.5.12) (2022-06-13)
 
 **Note:** Version bump only for package @pie-element/match-configure

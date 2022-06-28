@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-configure@7.0.26...@pie-element/ebsr-configure@8.0.0) (2022-06-28)
+
+
+### chore
+
+* Merge master with develop. ([cdca48a](https://github.com/pie-framework/pie-elements/commit/cdca48abaa1d4179e4a961e13d171e14b7ed2444))
+
+
+### BREAKING CHANGES
+
+* Image percent buttons were removed from toolbar.
+New properties maxImageWidth and maxImageHeight were added.
+
+
+
+
+
 ## [7.0.26](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-configure@7.0.25...@pie-element/ebsr-configure@7.0.26) (2022-06-13)
 
 **Note:** Version bump only for package @pie-element/ebsr-configure
