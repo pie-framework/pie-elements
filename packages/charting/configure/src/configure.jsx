@@ -1,6 +1,6 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import { chartTypes } from '@pie-lib/charting';
+import { chartTypes, ConfigureChartPanel } from '@pie-lib/charting';
 import { settings, layout, InputContainer } from '@pie-lib/config-ui';
 import PropTypes from 'prop-types';
 import debug from 'debug';
@@ -9,7 +9,7 @@ import EditableHtml from '@pie-lib/editable-html';
 
 import ChartingConfig from './charting-config';
 import CorrectResponse from './correct-response';
-import ChartType from './chart-type';
+
 
 const log = debug('@pie-element:graphing:configure');
 const { Panel, toggle, radio, numberFields } = settings;
@@ -87,10 +87,15 @@ export class Configure extends React.Component {
       studentInstructions = {},
       teacherInstructions = {},
       prompt = {},
-      spellCheck = {}
+      spellCheck = {},
+      maxImageWidth = {},
+      maxImageHeight = {}
     } = configuration || {};
     const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled, spellCheckEnabled } =
       model || {};
+
+    const defaultImageMaxWidth = maxImageWidth && maxImageWidth.prompt;
+    const defaultImageMaxHeight = maxImageHeight && maxImageHeight.prompt;
 
     return (
       <layout.ConfigLayout
@@ -162,6 +167,8 @@ export class Configure extends React.Component {
                 imageSupport={imageSupport}
                 nonEmpty={false}
                 spellCheck={spellCheckEnabled}
+                maxImageWidth={maxImageWidth && maxImageWidth.teacherInstructions || defaultImageMaxWidth}
+                maxImageHeight={maxImageHeight && maxImageHeight.teacherInstructions || defaultImageMaxHeight}
               />
             </InputContainer>
           )}
@@ -179,6 +186,8 @@ export class Configure extends React.Component {
                 nonEmpty={false}
                 spellCheck={spellCheckEnabled}
                 disableUnderline
+                maxImageWidth={defaultImageMaxWidth}
+                maxImageHeight={defaultImageMaxHeight}
               />
             </InputContainer>
           )}
@@ -194,13 +203,17 @@ export class Configure extends React.Component {
                 onChange={this.onRationaleChange}
                 imageSupport={imageSupport}
                 spellCheck={spellCheckEnabled}
+                maxImageWidth={maxImageWidth && maxImageWidth.rationale || defaultImageMaxWidth}
+                maxImageHeight={maxImageHeight && maxImageHeight.rationale || defaultImageMaxHeight}
               />
             </InputContainer>
           )}
 
-          <ChartType
-            value={model.chartType}
-            onChange={(e) => this.onChartTypeChange(e.target.value)}
+          <ConfigureChartPanel
+            config={graph}
+            model={model}
+            onChange={this.props.onModelChanged}
+            charts={charts}
           />
 
           <ChartingConfig

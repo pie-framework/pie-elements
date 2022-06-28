@@ -18,14 +18,28 @@ const sortedAnswers = answers => Object.keys(answers || {}).sort().reduce((resul
 
 export default class GraphLinesConfigure extends HTMLElement {
   static createDefaultModel = (model = {}) => {
-    const { answers = {}, domain = {}, graph = {}, range = {}, standardGrid } = model;
-    const normalizedModel = {
-      ...defaultValues.model,
-      ...model,
+    const normalizedModel = { ...defaultValues.model, ...model };
+    const {
+      answers = {},
+      domain = {},
+      defaultTool,
+      graph = {},
+      range = {},
+      standardGrid,
+      toolbarTools
+    } = normalizedModel;
+
+    // added support for models without defaultTool defined; also used in packages/graphing/controller/src/index.js
+    const toolbarToolsNoLabel = (toolbarTools || []).filter(tool => tool !== 'label');
+    const normalizedDefaultTool = defaultTool || toolbarToolsNoLabel.length && toolbarToolsNoLabel[0] || '';
+
+    return {
+      ...normalizedModel,
       answers: answers && answers.correctAnswer && {
         correctAnswer: answers.correctAnswer,
         ...sortedAnswers(answers)
       } || answers,
+      defaultTool: normalizedDefaultTool,
       range: standardGrid && {
         ...range,
         min: domain.min,
@@ -35,8 +49,6 @@ export default class GraphLinesConfigure extends HTMLElement {
       } || range,
       graph: standardGrid && { ...graph, height: graph.width } || graph
     };
-
-    return normalizedModel;
   };
 
   constructor() {

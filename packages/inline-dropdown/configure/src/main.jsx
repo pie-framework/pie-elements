@@ -398,7 +398,9 @@ export class Main extends React.Component {
       choiceRationale = {},
       teacherInstructions = {},
       spellCheck = {},
-      maxResponseAreas
+      maxResponseAreas,
+      maxImageWidth = {},
+      maxImageHeight = {}
     } = configuration || {};
     const {
       rationaleEnabled,
@@ -410,6 +412,9 @@ export class Main extends React.Component {
       errors
     } = model || {};
     const { responseAreasError } = errors || {};
+
+    const defaultImageMaxWidth = maxImageWidth && maxImageWidth.prompt;
+    const defaultImageMaxHeight = maxImageHeight && maxImageHeight.prompt;
 
     const renderChoiceRationale = () => (Object.keys(choices) || []).map(key =>
       <div key={key} className={classes.rationaleChoices}>
@@ -445,6 +450,8 @@ export class Main extends React.Component {
                     })
                   }
                   imageSupport={imageSupport}
+                  maxImageWidth={maxImageWidth && maxImageWidth.rationale || defaultImageMaxWidth}
+                  maxImageHeight={maxImageHeight && maxImageHeight.rationale || defaultImageMaxHeight}
                 />
               </InputContainer>
             )}
@@ -514,6 +521,8 @@ export class Main extends React.Component {
                   nonEmpty={false}
                   toolbarOpts={toolbarOpts}
                   spellCheck={spellCheckEnabled}
+                  maxImageWidth={maxImageWidth && maxImageWidth.teacherInstructions || defaultImageMaxWidth}
+                  maxImageHeight={maxImageHeight && maxImageHeight.teacherInstructions || defaultImageMaxHeight}
                 />
               </InputContainer>
             )}
@@ -532,6 +541,8 @@ export class Main extends React.Component {
                   disableUnderline
                   toolbarOpts={toolbarOpts}
                   spellCheck={spellCheckEnabled}
+                  maxImageWidth={defaultImageMaxWidth}
+                  maxImageHeight={defaultImageMaxHeight}
                 />
               </InputContainer>
             )}
@@ -548,6 +559,8 @@ export class Main extends React.Component {
                   imageSupport={imageSupport}
                   toolbarOpts={toolbarOpts}
                   spellCheck={spellCheckEnabled}
+                  maxImageWidth={maxImageWidth && maxImageWidth.rationale || defaultImageMaxWidth}
+                  maxImageHeight={maxImageHeight && maxImageHeight.rationale || defaultImageMaxHeight}
                 />
               </InputContainer>
             )}

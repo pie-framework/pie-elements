@@ -19,6 +19,16 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
               "label": "Lock Choice Order",
               "settings": true,
             },
+            "maxImageHeight": Object {
+              "prompt": 300,
+              "rationale": 300,
+              "teacherInstructions": 300,
+            },
+            "maxImageWidth": Object {
+              "prompt": 300,
+              "rationale": 300,
+              "teacherInstructions": 300,
+            },
             "maxResponseAreas": 10,
             "partialScoring": Object {
               "label": "Allow Partial Scoring",
@@ -109,6 +119,8 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
       >
         <EditableHtml
           markup=""
+          maxImageHeight={300}
+          maxImageWidth={300}
           nonEmpty={false}
           onChange={[Function]}
           toolbarOpts={
@@ -124,6 +136,8 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
         <EditableHtml
           disableUnderline={true}
           markup="<p>Solve the equation below.</p>"
+          maxImageHeight={300}
+          maxImageWidth={300}
           nonEmpty={false}
           onChange={[Function]}
           toolbarOpts={
@@ -245,6 +259,8 @@ There should be at least 3 tokens defined."
       >
         <EditableHtml
           markup="<p>A correct response is shown below:</p><ul><li>2/6 = 1/3</li><li>4/8 = 1/2</li><li>6/10 = 3/5</li><li>9/12 = 3/4</li></ul>"
+          maxImageHeight={300}
+          maxImageWidth={300}
           onChange={[Function]}
           toolbarOpts={
             Object {
@@ -276,6 +292,16 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
             "lockChoiceOrder": Object {
               "label": "Lock Choice Order",
               "settings": true,
+            },
+            "maxImageHeight": Object {
+              "prompt": 300,
+              "rationale": 300,
+              "teacherInstructions": 300,
+            },
+            "maxImageWidth": Object {
+              "prompt": 300,
+              "rationale": 300,
+              "teacherInstructions": 300,
             },
             "maxResponseAreas": 10,
             "partialScoring": Object {

@@ -162,6 +162,54 @@ Indicates if the item has to be displayed in the Settings Panel
 
 Indicates the label for the item that has to be displayed in the Settings Panel
 
+## `minAnswerChoices` (number)
+
+Minimum number of answer choices
+
+## `maxAnswerChoices` (number)
+
+Maximum number of answer choices
+
+## `maxImageWidth` (object)
+
+Properties of the `maxImageWidth` object:
+
+### `teacherInstructions` (number)
+
+Indicates the max dimension for images in teacher instructions
+
+### `prompt` (number)
+
+Indicates the max dimension for images in prompt - this is also the default dimension for all other input fields if it's not specified
+
+### `rationale` (number)
+
+Indicates the max dimension for images in rationale
+
+### `choices` (number)
+
+Indicates the max dimension for images in choices
+
+## `maxImageHeight` (object)
+
+Properties of the `maxImageHeight` object:
+
+### `teacherInstructions` (number)
+
+Indicates the max dimension for images in teacher instructions
+
+### `prompt` (number)
+
+Indicates the max dimension for images in prompt - this is also the default dimension for all other input fields if it's not specified
+
+### `rationale` (number)
+
+Indicates the max dimension for images in rationale
+
+### `choices` (number)
+
+Indicates the max dimension for images in choices
+
 # `partB` (object, required)
 
 Properties of the `partB` object:
@@ -321,6 +369,54 @@ Indicates if the item has to be displayed in the Settings Panel
 ### `label` (string)
 
 Indicates the label for the item that has to be displayed in the Settings Panel
+
+## `minAnswerChoices` (number)
+
+Minimum number of answer choices
+
+## `maxAnswerChoices` (number)
+
+Maximum number of answer choices
+
+## `maxImageWidth` (object)
+
+Properties of the `maxImageWidth` object:
+
+### `teacherInstructions` (number)
+
+Indicates the max dimension for images in teacher instructions
+
+### `prompt` (number)
+
+Indicates the max dimension for images in prompt - this is also the default dimension for all other input fields if it's not specified
+
+### `rationale` (number)
+
+Indicates the max dimension for images in rationale
+
+### `choices` (number)
+
+Indicates the max dimension for images in choices
+
+## `maxImageHeight` (object)
+
+Properties of the `maxImageHeight` object:
+
+### `teacherInstructions` (number)
+
+Indicates the max dimension for images in teacher instructions
+
+### `prompt` (number)
+
+Indicates the max dimension for images in prompt - this is also the default dimension for all other input fields if it's not specified
+
+### `rationale` (number)
+
+Indicates the max dimension for images in rationale
+
+### `choices` (number)
+
+Indicates the max dimension for images in choices
 
 # `partLabels` (object)
 
@@ -536,6 +632,54 @@ Indicates if the item has to be displayed in the Settings Panel
 
 Indicates the label for the item that has to be displayed in the Settings Panel
 
+### `minAnswerChoices` (number)
+
+Minimum number of answer choices
+
+### `maxAnswerChoices` (number)
+
+Maximum number of answer choices
+
+### `maxImageWidth` (object)
+
+Properties of the `maxImageWidth` object:
+
+#### `teacherInstructions` (number)
+
+Indicates the max dimension for images in teacher instructions
+
+#### `prompt` (number)
+
+Indicates the max dimension for images in prompt - this is also the default dimension for all other input fields if it's not specified
+
+#### `rationale` (number)
+
+Indicates the max dimension for images in rationale
+
+#### `choices` (number)
+
+Indicates the max dimension for images in choices
+
+### `maxImageHeight` (object)
+
+Properties of the `maxImageHeight` object:
+
+#### `teacherInstructions` (number)
+
+Indicates the max dimension for images in teacher instructions
+
+#### `prompt` (number)
+
+Indicates the max dimension for images in prompt - this is also the default dimension for all other input fields if it's not specified
+
+#### `rationale` (number)
+
+Indicates the max dimension for images in rationale
+
+#### `choices` (number)
+
+Indicates the max dimension for images in choices
+
 ## `ConfigureProp` (object)
 
 Properties of the `ConfigureProp` object:
@@ -547,3 +691,23 @@ Indicates if the item has to be displayed in the Settings Panel
 ### `label` (string)
 
 Indicates the label for the item that has to be displayed in the Settings Panel
+
+## `ConfigureMaxImageDimensionsProp` (object)
+
+Properties of the `ConfigureMaxImageDimensionsProp` object:
+
+### `teacherInstructions` (number)
+
+Indicates the max dimension for images in teacher instructions
+
+### `prompt` (number)
+
+Indicates the max dimension for images in prompt - this is also the default dimension for all other input fields if it's not specified
+
+### `rationale` (number)
+
+Indicates the max dimension for images in rationale
+
+### `choices` (number)
+
+Indicates the max dimension for images in choices

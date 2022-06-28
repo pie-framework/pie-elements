@@ -7,6 +7,16 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
       <Panel
         configuration={
           Object {
+            "maxImageHeight": Object {
+              "prompt": 300,
+              "rationale": 300,
+              "teacherInstructions": 300,
+            },
+            "maxImageWidth": Object {
+              "prompt": 300,
+              "rationale": 300,
+              "teacherInstructions": 300,
+            },
             "maxLengthPerChoice": Object {
               "label": "Maximum Length Per Choice",
               "settings": true,
@@ -126,6 +136,8 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
       >
         <EditableHtml
           markup=""
+          maxImageHeight={300}
+          maxImageWidth={300}
           nonEmpty={false}
           onChange={[Function]}
           spellCheck={true}
@@ -142,6 +154,8 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
         <EditableHtml
           disableUnderline={true}
           markup="Complete the sentence"
+          maxImageHeight={300}
+          maxImageWidth={300}
           nonEmpty={false}
           onChange={[Function]}
           spellCheck={true}
@@ -280,6 +294,8 @@ There should be at least 1 and at most 10 response areas defined."
       >
         <EditableHtml
           markup=""
+          maxImageHeight={300}
+          maxImageWidth={300}
           onChange={[Function]}
           spellCheck={true}
           toolbarOpts={
@@ -301,6 +317,16 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
       <Panel
         configuration={
           Object {
+            "maxImageHeight": Object {
+              "prompt": 300,
+              "rationale": 300,
+              "teacherInstructions": 300,
+            },
+            "maxImageWidth": Object {
+              "prompt": 300,
+              "rationale": 300,
+              "teacherInstructions": 300,
+            },
             "maxLengthPerChoice": Object {
               "label": "Maximum Length Per Choice",
               "settings": true,

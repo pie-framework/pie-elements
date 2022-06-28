@@ -23,6 +23,19 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
             "label": "Feedback",
             "settings": true,
           },
+          "maxImageHeight": Object {
+            "choices": 150,
+            "prompt": 300,
+            "rationale": 300,
+            "teacherInstructions": 300,
+          },
+          "maxImageWidth": Object {
+            "choicesWithPlacementArea": 240,
+            "choicesWithoutPlacementArea": 300,
+            "prompt": 300,
+            "rationale": 300,
+            "teacherInstructions": 300,
+          },
           "numberedGuides": Object {
             "label": "Numbered guides",
             "settings": true,
@@ -129,6 +142,8 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
   >
     <EditableHtml
       markup=""
+      maxImageHeight={300}
+      maxImageWidth={300}
       nonEmpty={false}
       onChange={[Function]}
       toolbarOpts={
@@ -146,6 +161,8 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
     >
       <EditableHtml
         markup="Item Stem goes here"
+        maxImageHeight={300}
+        maxImageWidth={300}
         onChange={[Function]}
         toolbarOpts={
           Object {
@@ -159,6 +176,8 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
     >
       <EditableHtml
         markup=""
+        maxImageHeight={300}
+        maxImageWidth={300}
         onChange={[Function]}
         toolbarOpts={
           Object {
@@ -208,6 +227,8 @@ The correct ordering should not be identical to the initial ordering."
       >
         <EditableHtml
           markup=""
+          maxImageHeight={150}
+          maxImageWidth={300}
           onChange={[Function]}
           toolbarOpts={
             Object {
@@ -225,6 +246,8 @@ The correct ordering should not be identical to the initial ordering."
         choicesLabel="Choices"
         correctResponse={Array []}
         disableImages={true}
+        maxImageHeight={150}
+        maxImageWidth={300}
         onChange={[Function]}
         placementArea={false}
         pluralChoiceLabel="Choices"
@@ -270,6 +293,19 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
             "enabled": true,
             "label": "Feedback",
             "settings": true,
+          },
+          "maxImageHeight": Object {
+            "choices": 150,
+            "prompt": 300,
+            "rationale": 300,
+            "teacherInstructions": 300,
+          },
+          "maxImageWidth": Object {
+            "choicesWithPlacementArea": 240,
+            "choicesWithoutPlacementArea": 300,
+            "prompt": 300,
+            "rationale": 300,
+            "teacherInstructions": 300,
           },
           "numberedGuides": Object {
             "label": "Numbered guides",
@@ -377,6 +413,8 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
   >
     <EditableHtml
       markup=""
+      maxImageHeight={300}
+      maxImageWidth={300}
       nonEmpty={false}
       onChange={[Function]}
       toolbarOpts={
@@ -394,6 +432,8 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
     >
       <EditableHtml
         markup="Item Stem goes here"
+        maxImageHeight={300}
+        maxImageWidth={300}
         onChange={[Function]}
         toolbarOpts={
           Object {
@@ -407,6 +447,8 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
     >
       <EditableHtml
         markup=""
+        maxImageHeight={300}
+        maxImageWidth={300}
         onChange={[Function]}
         toolbarOpts={
           Object {
@@ -456,6 +498,8 @@ The correct ordering should not be identical to the initial ordering."
       >
         <EditableHtml
           markup=""
+          maxImageHeight={150}
+          maxImageWidth={300}
           onChange={[Function]}
           toolbarOpts={
             Object {
@@ -473,6 +517,8 @@ The correct ordering should not be identical to the initial ordering."
         choicesLabel="Choices"
         correctResponse={Array []}
         disableImages={true}
+        maxImageHeight={150}
+        maxImageWidth={300}
         onChange={[Function]}
         placementArea={false}
         pluralChoiceLabel="Choices"

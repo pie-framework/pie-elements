@@ -206,6 +206,7 @@ describe('model', () => {
         prompt: 'This is prompt',
         rationale: 'Rationale',
         teacherInstructions: 'Teacher Instructions',
+        defaultTool: 'circle',
         ...extraQuestionProps,
       };
       const {

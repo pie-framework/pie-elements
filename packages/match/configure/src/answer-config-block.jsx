@@ -197,7 +197,7 @@ class AnswerConfigBlock extends React.Component {
       toolbarOpts,
       spellCheck
     } = this.props;
-    const { headers = {} } = configuration || {};
+    const { headers = {}, maxImageWidth = {}, maxImageHeight = {} } = configuration || {};
     const { dialog } = this.state;
     const { errors } = model || {};
     const { correctResponseError, rowsErrors } = errors || {};
@@ -208,6 +208,9 @@ class AnswerConfigBlock extends React.Component {
       audio: { disabled: true },
       video: { disabled: true }
     };
+
+    const defaultImageMaxWidth = maxImageWidth && maxImageWidth.prompt;
+    const defaultImageMaxHeight = maxImageHeight && maxImageHeight.prompt;
 
     return (
       <div className={classes.container}>
@@ -260,6 +263,8 @@ class AnswerConfigBlock extends React.Component {
               toolbarOpts={toolbarOpts}
               spellCheck={spellCheck}
               error={rowsErrors && rowsErrors[row.id]}
+              maxImageWidth={maxImageWidth && maxImageWidth.rowTitles || defaultImageMaxWidth}
+              maxImageHeight={maxImageHeight && maxImageHeight.rowTitles || defaultImageMaxHeight}
             />
           ))}
           <AddRow onAddClick={onAddRow} />

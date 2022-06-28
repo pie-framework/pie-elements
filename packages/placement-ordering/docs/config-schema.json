@@ -275,6 +275,78 @@
         }
       }
     },
+    "maxImageWidth": {
+      "title": "ConfigureMaxImageDimensionsProp",
+      "type": "object",
+      "properties": {
+        "teacherInstructions": {
+          "description": "Indicates the max dimension for images in teacher instructions",
+          "type": "number",
+          "title": "teacherInstructions"
+        },
+        "prompt": {
+          "description": "Indicates the max dimension for images in prompt - this is also the default dimension for all other input fields if it's not specified",
+          "type": "number",
+          "title": "prompt"
+        },
+        "rationale": {
+          "description": "Indicates the max dimension for images in rationale",
+          "type": "number",
+          "title": "rationale"
+        },
+        "choicesWithPlacementArea": {
+          "description": "Only available for the width prop: indicates the max width for images in choices and choices labels when placement area is enabled",
+          "type": "number",
+          "title": "choicesWithPlacementArea"
+        },
+        "choicesWithoutPlacementArea": {
+          "description": "Only available for the width prop: indicates the max width for images in choices and choices labels when placement area is disabled",
+          "type": "number",
+          "title": "choicesWithoutPlacementArea"
+        },
+        "choices": {
+          "description": "Only available for the height prop: indicates the max height for images in choices and choices labels",
+          "type": "number",
+          "title": "choices"
+        }
+      }
+    },
+    "maxImageHeight": {
+      "title": "ConfigureMaxImageDimensionsProp",
+      "type": "object",
+      "properties": {
+        "teacherInstructions": {
+          "description": "Indicates the max dimension for images in teacher instructions",
+          "type": "number",
+          "title": "teacherInstructions"
+        },
+        "prompt": {
+          "description": "Indicates the max dimension for images in prompt - this is also the default dimension for all other input fields if it's not specified",
+          "type": "number",
+          "title": "prompt"
+        },
+        "rationale": {
+          "description": "Indicates the max dimension for images in rationale",
+          "type": "number",
+          "title": "rationale"
+        },
+        "choicesWithPlacementArea": {
+          "description": "Only available for the width prop: indicates the max width for images in choices and choices labels when placement area is enabled",
+          "type": "number",
+          "title": "choicesWithPlacementArea"
+        },
+        "choicesWithoutPlacementArea": {
+          "description": "Only available for the width prop: indicates the max width for images in choices and choices labels when placement area is disabled",
+          "type": "number",
+          "title": "choicesWithoutPlacementArea"
+        },
+        "choices": {
+          "description": "Only available for the height prop: indicates the max height for images in choices and choices labels",
+          "type": "number",
+          "title": "choices"
+        }
+      }
+    },
     "showPrompt": {
       "description": "Determines whether prompt field will be displayed or not",
       "default": true,
@@ -308,6 +380,42 @@
           "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
           "type": "string",
           "title": "label"
+        }
+      }
+    },
+    "ConfigureMaxImageDimensionsProp": {
+      "title": "ConfigureMaxImageDimensionsProp",
+      "type": "object",
+      "properties": {
+        "teacherInstructions": {
+          "description": "Indicates the max dimension for images in teacher instructions",
+          "type": "number",
+          "title": "teacherInstructions"
+        },
+        "prompt": {
+          "description": "Indicates the max dimension for images in prompt - this is also the default dimension for all other input fields if it's not specified",
+          "type": "number",
+          "title": "prompt"
+        },
+        "rationale": {
+          "description": "Indicates the max dimension for images in rationale",
+          "type": "number",
+          "title": "rationale"
+        },
+        "choicesWithPlacementArea": {
+          "description": "Only available for the width prop: indicates the max width for images in choices and choices labels when placement area is enabled",
+          "type": "number",
+          "title": "choicesWithPlacementArea"
+        },
+        "choicesWithoutPlacementArea": {
+          "description": "Only available for the width prop: indicates the max width for images in choices and choices labels when placement area is disabled",
+          "type": "number",
+          "title": "choicesWithoutPlacementArea"
+        },
+        "choices": {
+          "description": "Only available for the height prop: indicates the max height for images in choices and choices labels",
+          "type": "number",
+          "title": "choices"
         }
       }
     }

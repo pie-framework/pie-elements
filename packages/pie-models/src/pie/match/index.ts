@@ -92,6 +92,20 @@ export interface MatchPie extends PieModel {
   toolbarEditorPosition?: 'bottom' | 'top';
 }
 
+interface ConfigureMaxImageDimensionsProp {
+  /** Indicates the max dimension for images in teacher instructions */
+  teacherInstructions?: number;
+
+  /** Indicates the max dimension for images in prompt - this is also the default dimension for all other input fields if it's not specified */
+  prompt?: number;
+
+  /** Indicates the max dimension for images in rationale */
+  rationale?: number;
+
+  /** Indicates the max dimension for images in row labels */
+  rowTitles?: number;
+}
+
 /**
  * Config Object for @pie-elements/match
  * @additionalProperties false
@@ -161,4 +175,14 @@ export interface MatchConfigure extends PromptConfig, CommonConfigSettings {
    * Teacher Instructions configuration
    */
   teacherInstructions?: ConfigureProp;
+
+  /**
+   * Maximum image width for input fields
+   */
+  maxImageWidth?: ConfigureMaxImageDimensionsProp;
+
+  /**
+   * Maximum image height for input fields
+   */
+  maxImageHeight?: ConfigureMaxImageDimensionsProp;
 }

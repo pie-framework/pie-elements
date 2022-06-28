@@ -211,6 +211,58 @@
         }
       }
     },
+    "maxImageWidth": {
+      "title": "ConfigureMaxImageDimensionsProp",
+      "type": "object",
+      "properties": {
+        "teacherInstructions": {
+          "description": "Indicates the max dimension for images in teacher instructions",
+          "type": "number",
+          "title": "teacherInstructions"
+        },
+        "prompt": {
+          "description": "Indicates the max dimension for images in prompt - this is also the default dimension for all other input fields if it's not specified",
+          "type": "number",
+          "title": "prompt"
+        },
+        "rationale": {
+          "description": "Indicates the max dimension for images in rationale",
+          "type": "number",
+          "title": "rationale"
+        },
+        "rowTitles": {
+          "description": "Indicates the max dimension for images in row labels",
+          "type": "number",
+          "title": "rowTitles"
+        }
+      }
+    },
+    "maxImageHeight": {
+      "title": "ConfigureMaxImageDimensionsProp",
+      "type": "object",
+      "properties": {
+        "teacherInstructions": {
+          "description": "Indicates the max dimension for images in teacher instructions",
+          "type": "number",
+          "title": "teacherInstructions"
+        },
+        "prompt": {
+          "description": "Indicates the max dimension for images in prompt - this is also the default dimension for all other input fields if it's not specified",
+          "type": "number",
+          "title": "prompt"
+        },
+        "rationale": {
+          "description": "Indicates the max dimension for images in rationale",
+          "type": "number",
+          "title": "rationale"
+        },
+        "rowTitles": {
+          "description": "Indicates the max dimension for images in row labels",
+          "type": "number",
+          "title": "rowTitles"
+        }
+      }
+    },
     "showPrompt": {
       "description": "Determines whether prompt field will be displayed or not",
       "default": true,
@@ -244,6 +296,32 @@
           "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
           "type": "string",
           "title": "label"
+        }
+      }
+    },
+    "ConfigureMaxImageDimensionsProp": {
+      "title": "ConfigureMaxImageDimensionsProp",
+      "type": "object",
+      "properties": {
+        "teacherInstructions": {
+          "description": "Indicates the max dimension for images in teacher instructions",
+          "type": "number",
+          "title": "teacherInstructions"
+        },
+        "prompt": {
+          "description": "Indicates the max dimension for images in prompt - this is also the default dimension for all other input fields if it's not specified",
+          "type": "number",
+          "title": "prompt"
+        },
+        "rationale": {
+          "description": "Indicates the max dimension for images in rationale",
+          "type": "number",
+          "title": "rationale"
+        },
+        "rowTitles": {
+          "description": "Indicates the max dimension for images in row labels",
+          "type": "number",
+          "title": "rowTitles"
         }
       }
     }

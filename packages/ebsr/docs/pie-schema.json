@@ -494,6 +494,68 @@
               "title": "label"
             }
           }
+        },
+        "minAnswerChoices": {
+          "description": "Minimum number of answer choices",
+          "type": "number",
+          "title": "minAnswerChoices"
+        },
+        "maxAnswerChoices": {
+          "description": "Maximum number of answer choices",
+          "type": "number",
+          "title": "maxAnswerChoices"
+        },
+        "maxImageWidth": {
+          "title": "ConfigureMaxImageDimensionsProp",
+          "type": "object",
+          "properties": {
+            "teacherInstructions": {
+              "description": "Indicates the max dimension for images in teacher instructions",
+              "type": "number",
+              "title": "teacherInstructions"
+            },
+            "prompt": {
+              "description": "Indicates the max dimension for images in prompt - this is also the default dimension for all other input fields if it's not specified",
+              "type": "number",
+              "title": "prompt"
+            },
+            "rationale": {
+              "description": "Indicates the max dimension for images in rationale",
+              "type": "number",
+              "title": "rationale"
+            },
+            "choices": {
+              "description": "Indicates the max dimension for images in choices",
+              "type": "number",
+              "title": "choices"
+            }
+          }
+        },
+        "maxImageHeight": {
+          "title": "ConfigureMaxImageDimensionsProp",
+          "type": "object",
+          "properties": {
+            "teacherInstructions": {
+              "description": "Indicates the max dimension for images in teacher instructions",
+              "type": "number",
+              "title": "teacherInstructions"
+            },
+            "prompt": {
+              "description": "Indicates the max dimension for images in prompt - this is also the default dimension for all other input fields if it's not specified",
+              "type": "number",
+              "title": "prompt"
+            },
+            "rationale": {
+              "description": "Indicates the max dimension for images in rationale",
+              "type": "number",
+              "title": "rationale"
+            },
+            "choices": {
+              "description": "Indicates the max dimension for images in choices",
+              "type": "number",
+              "title": "choices"
+            }
+          }
         }
       }
     },
@@ -510,6 +572,32 @@
           "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
           "type": "string",
           "title": "label"
+        }
+      }
+    },
+    "ConfigureMaxImageDimensionsProp": {
+      "title": "ConfigureMaxImageDimensionsProp",
+      "type": "object",
+      "properties": {
+        "teacherInstructions": {
+          "description": "Indicates the max dimension for images in teacher instructions",
+          "type": "number",
+          "title": "teacherInstructions"
+        },
+        "prompt": {
+          "description": "Indicates the max dimension for images in prompt - this is also the default dimension for all other input fields if it's not specified",
+          "type": "number",
+          "title": "prompt"
+        },
+        "rationale": {
+          "description": "Indicates the max dimension for images in rationale",
+          "type": "number",
+          "title": "rationale"
+        },
+        "choices": {
+          "description": "Indicates the max dimension for images in choices",
+          "type": "number",
+          "title": "choices"
         }
       }
     },
