@@ -132,12 +132,19 @@ export class CorrectResponse extends React.Component {
     }
 
     if (nextData.length < data.length) {
-      const idxsNextData = nextData.map( x => x.index )
-      const idxsData = [...Array(data.length).keys()];
-      const idxsToRemove = idxsData.filter( x => !idxsNextData.includes(x))
+      let removedIndex = nextData.length;
 
-      this.props.model.correctAnswer.data.splice(idxsToRemove[0], 1);
-      nextCategories = removeCategory(categories, nextData, idxsToRemove[0]);
+      // we need to remove the category from the correct answer data and categories, from the same index it was removed from the data
+      // index is a property of the nextData category
+      for (let index = 0; index < nextData.length; index++) {
+        if (nextData[index].index !== index) {
+            removedIndex = index;
+            break;
+        }
+      }
+
+      this.props.model.correctAnswer.data.splice(removedIndex, 1);
+      nextCategories = removeCategory(categories, nextData, removedIndex);
     }
 
     if (!isEqual(nextCorrectAnswerData, this.props.model.correctAnswer.data)) {
