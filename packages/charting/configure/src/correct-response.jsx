@@ -72,9 +72,7 @@ const insertCategory = (correctAnswer, data) => {
   return addCategoryProps(correctAnswerData, data);
 }
 
-const removeCategory = (correctAnswer, data) => {
-  const positionToRemove = data.length - 1
-
+const removeCategory = (correctAnswer, data, positionToRemove) => {
   correctAnswer.splice(positionToRemove, 1);
 
   const correctAnswerData = [...correctAnswer];
@@ -107,7 +105,7 @@ export class CorrectResponse extends React.Component {
       ...model,
       correctAnswer: {
         ...correctAnswer,
-        data: data.map(({ interactive, editable, ...keepAttrs }) => keepAttrs),
+        data: data.map(({ interactive, editable, index,  ...keepAttrs }) => keepAttrs),
       },
     });
   };
@@ -126,6 +124,7 @@ export class CorrectResponse extends React.Component {
       } = {},
     } = this.props;
 
+    const { categories } = this.state;
     let nextCategories = [];
 
     if (nextData.length > data.length && nextCorrectAnswerData.length > data.length) {
@@ -133,14 +132,24 @@ export class CorrectResponse extends React.Component {
     }
 
     if (nextData.length < data.length) {
-      nextCategories = removeCategory(nextCorrectAnswerData, nextData);
+      let removedIndex = nextData.length;
+
+      // we need to remove the category from the correct answer data and categories, from the same index it was removed from the data
+      // index is a property of the nextData category
+      for (let index = 0; index < nextData.length; index++) {
+        if (nextData[index].index !== index) {
+            removedIndex = index;
+            break;
+        }
+      }
+
+      this.props.model.correctAnswer.data.splice(removedIndex, 1);
+      nextCategories = removeCategory(categories, nextData, removedIndex);
     }
 
     if (!isEqual(nextCorrectAnswerData, this.props.model.correctAnswer.data)) {
       nextCategories = nextCorrectAnswerData.map((correct, index) => ({ ...correct, editable: index < data.length ? data[index].editable : true, interactive: index < data.length ? data[index].interactive : true }));
-    }
-
-    if (isEmpty(nextCategories)) {
+    }else if (isEmpty(nextCategories)) {
       nextCategories = updateCorrectResponseData(
         nextCorrectAnswerData,
         nextData
