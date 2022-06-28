@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@7.0.0...@pie-element/select-text@7.1.0) (2022-06-28)
+
+
+### Bug Fixes
+
+* **select-text:** In Browse, problems with certain Select Text items that have multiple correct answers ([72adc0d](https://github.com/pie-framework/pie-elements/commit/72adc0d3108a190b1ca8adeeb03469acd89472bc))
+
+
+### Features
+
+* **select-text:** add maxImageWidth and maxImageHeight props PD-1801 ([9e8b343](https://github.com/pie-framework/pie-elements/commit/9e8b343703de33597461b18611dbc34f8ef2b92c))
+* update documentation for items that have validation with settings configurable by client systems PD-1789 ([8ef69cc](https://github.com/pie-framework/pie-elements/commit/8ef69cc0c7439a5803dc95f570efc7cd24c8e334))
+* **select-text:** ui/ux for item validation - fix info tooltip ([3a7e153](https://github.com/pie-framework/pie-elements/commit/3a7e15302750ed1931fc6cfab47f49d09fffcfad))
+
+
+
+
+
 # [7.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@6.6.4...@pie-element/select-text@7.0.0) (2022-06-28)
 
 

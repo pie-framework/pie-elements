@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@5.0.0...@pie-element/hotspot@5.1.0) (2022-06-28)
+
+
+### Features
+
+* **hotspot:** add maxImageWidth and maxImageHeight props PD-1801 ([8325bc1](https://github.com/pie-framework/pie-elements/commit/8325bc1bb9014027349bfab863b56bb1d519e5ca))
+* update documentation for items that have validation with settings configurable by client systems PD-1789 ([8ef69cc](https://github.com/pie-framework/pie-elements/commit/8ef69cc0c7439a5803dc95f570efc7cd24c8e334))
+
+
+
+
+
 # [5.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@4.11.4...@pie-element/hotspot@5.0.0) (2022-06-28)
 
 

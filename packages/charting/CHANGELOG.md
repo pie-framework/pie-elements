@@ -3,6 +3,37 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@4.0.0...@pie-element/charting@5.0.0) (2022-06-28)
+
+
+### Bug Fixes
+
+* updated pie-lib since the previous version was a breaking change that was not released properly ([e51250d](https://github.com/pie-framework/pie-elements/commit/e51250dfe5b2d6593e186c685b6f75167479ff39))
+* **charting:** keep chart interactive in IBX preview mode PD-1365 ([f92515a](https://github.com/pie-framework/pie-elements/commit/f92515a7071c72cfcc07a830095cd70cc4740e58))
+
+
+### Features
+
+* **charting:** add maxImageWidth and maxImageHeight props PD-1801 ([0bff787](https://github.com/pie-framework/pie-elements/commit/0bff787ff2c9301138346f02e04646ee55f659fc))
+* **charting:** remove editCategoryEnabled property ([0ea2a3c](https://github.com/pie-framework/pie-elements/commit/0ea2a3cf9c4ebf09c493ad6aee02ee1cc1987b36))
+* **charting:** remove editCategoryEnabled property checkbox and usage. ([b844871](https://github.com/pie-framework/pie-elements/commit/b84487145c2d92edaaed2427070e4294b0681803))
+
+
+### Reverts
+
+* Revert "try to add student can add categories checkbox in pie-lib" ([0ba8f3f](https://github.com/pie-framework/pie-elements/commit/0ba8f3f80ea98eee535b0c2da1da92b4899ada83))
+
+
+### BREAKING CHANGES
+
+* **charting:** The editCategoryEnabled checkbox and property was removed.
+Enabled property will be used for each category.
+* **charting:** The editCategoryEnabled propery has been removed
+
+
+
+
+
 # [4.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@3.0.0...@pie-element/charting@4.0.0) (2022-06-28)
 
 

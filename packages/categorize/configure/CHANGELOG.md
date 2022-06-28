@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@6.0.0...@pie-element/categorize-configure@6.1.0) (2022-06-28)
+
+
+### Features
+
+* **categorize:**  add maxImageWidth and maxImageHeight props PD-1801 ([c438cea](https://github.com/pie-framework/pie-elements/commit/c438cea310e6e5cdfbd8c057fc9aadb36d53bb76))
+* **categorize:** implement generate validation message method, add info tooltip PD-1740 ([b315f4e](https://github.com/pie-framework/pie-elements/commit/b315f4ea0bc1461da0a8469bd9df383bc98e78ca))
+* **categorize:** implement ui/ux for validation PD-1740 ([0a05866](https://github.com/pie-framework/pie-elements/commit/0a05866af89b0123b8979ef3b4916af4b2a0cdf9))
+
+
+
+
+
 # [6.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@5.4.25...@pie-element/categorize-configure@6.0.0) (2022-06-28)
 
 

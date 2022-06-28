@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-configure@5.0.0...@pie-element/number-line-configure@5.1.0) (2022-06-28)
+
+
+### Features
+
+* **number-line:** ux/ui for validation PD-1748 ([ccfa5fe](https://github.com/pie-framework/pie-elements/commit/ccfa5fe9b39c4471a9769a943c117e35db4bfcc2))
+
+
+
+
+
 # [5.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-configure@4.9.13...@pie-element/number-line-configure@5.0.0) (2022-06-28)
 
 

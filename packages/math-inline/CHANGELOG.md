@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@6.0.0...@pie-element/math-inline@6.1.0) (2022-06-28)
+
+
+### Bug Fixes
+
+* **math-inline:** Math editors don't work on iPads PD-1837 ([51da315](https://github.com/pie-framework/pie-elements/commit/51da3156ec5ec3f51ee6bee3c8a35e5a8f1c9198))
+* tests ([671b33f](https://github.com/pie-framework/pie-elements/commit/671b33f0abe95d6de6f31851245fc8255981a262))
+
+
+### Features
+
+* **math-inline:** add maxImageWidth and maxImageHeight props PD-1801 ([24e60e2](https://github.com/pie-framework/pie-elements/commit/24e60e2d5e1bdc90530662f5c11528d67c2545ce))
+* update documentation for items that have validation with settings configurable by client systems PD-1789 ([8ef69cc](https://github.com/pie-framework/pie-elements/commit/8ef69cc0c7439a5803dc95f570efc7cd24c8e334))
+* **math-inline:** added configurable validation PD-1704 ([9275fb0](https://github.com/pie-framework/pie-elements/commit/9275fb0a13df7872706b17d61945854d9c6b93a2))
+* **math-inline:** implement ui/ux for validation PD-1705 ([74b9682](https://github.com/pie-framework/pie-elements/commit/74b968278cbe07fffd6979889bae91d137d334c3))
+
+
+
+
+
 # [6.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@5.9.12...@pie-element/math-inline@6.0.0) (2022-06-28)
 
 

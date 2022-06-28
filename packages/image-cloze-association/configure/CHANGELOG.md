@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association-configure@4.0.0...@pie-element/image-cloze-association-configure@4.1.0) (2022-06-28)
+
+
+### Features
+
+* **image-cloze-association:** add maxImageWidth and maxImageHeight props PD-1801 ([f4132c8](https://github.com/pie-framework/pie-elements/commit/f4132c81475ad141fae5c38def311ac7e9729a42))
+
+
+
+
+
 # [4.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association-configure@3.1.49...@pie-element/image-cloze-association-configure@4.0.0) (2022-06-28)
 
 

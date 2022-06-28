@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@6.0.0...@pie-element/math-inline-configure@6.1.0) (2022-06-28)
+
+
+### Bug Fixes
+
+* tests ([671b33f](https://github.com/pie-framework/pie-elements/commit/671b33f0abe95d6de6f31851245fc8255981a262))
+
+
+### Features
+
+* **math-inline:** add maxImageWidth and maxImageHeight props PD-1801 ([24e60e2](https://github.com/pie-framework/pie-elements/commit/24e60e2d5e1bdc90530662f5c11528d67c2545ce))
+* **math-inline:** implement ui/ux for validation PD-1705 ([74b9682](https://github.com/pie-framework/pie-elements/commit/74b968278cbe07fffd6979889bae91d137d334c3))
+
+
+
+
+
 # [6.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@5.6.21...@pie-element/math-inline-configure@6.0.0) (2022-06-28)
 
 

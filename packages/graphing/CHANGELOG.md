@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@4.0.0...@pie-element/graphing@4.1.0) (2022-06-28)
+
+
+### Bug Fixes
+
+* **graphing:** fixed horizontal/vertical gridlines when includeAxes is false PD-1842 ([df43a3b](https://github.com/pie-framework/pie-elements/commit/df43a3b3cf413468be1e98863c1b3f21e0c0b17c))
+
+
+### Features
+
+* **graphing:** add maxImageWidth and maxImageHeight props PD-1801 ([5d01857](https://github.com/pie-framework/pie-elements/commit/5d0185752ab1f1f9c3cf88232c522c0f742c3cb1))
+* **graphing:** Added default selected graphing tool property for gather PD-1689 ([57b4e4f](https://github.com/pie-framework/pie-elements/commit/57b4e4f75f0addf9f305e30304b0ba5f95de4571))
+* **graphing:** Added delete button for alternates + UI improvements PD-1606 ([1b56013](https://github.com/pie-framework/pie-elements/commit/1b56013ed6b1cd99951821f24b0ccbee3e5758de))
+* **graphing:** added grid setup pannel + refactoring PD-1679 PD-1692 PD-1685 ([54fae9e](https://github.com/pie-framework/pie-elements/commit/54fae9e83521c1f3ef50e75e1f7e2097e6312cd6))
+* **graphing:** added the ability to customize the Grid Setup Panel PD-1688 ([6353019](https://github.com/pie-framework/pie-elements/commit/63530198694f740e70e126884e1512d4c373dd64))
+* **graphing:** added the ability to predefine the available tools PD-1688 ([28b1c96](https://github.com/pie-framework/pie-elements/commit/28b1c96b11476003db261ddb7d2706017c3ffcaa))
+* **graphing:** Changed the consequences of toggling tools on or off PD-1608 ([ff6e28b](https://github.com/pie-framework/pie-elements/commit/ff6e28b9b73b1a1d68c1d741cf6d3ce5f4a45eed))
+* **graphing:** put background shapes tools into a collapsible pannel PD-1693 ([8ce35a5](https://github.com/pie-framework/pie-elements/commit/8ce35a59e999decfda58f09397b5f8005e3249e1))
+
+
+
+
+
 # [4.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@3.7.23...@pie-element/graphing@4.0.0) (2022-06-28)
 
 

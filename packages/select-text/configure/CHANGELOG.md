@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@6.0.0...@pie-element/select-text-configure@6.1.0) (2022-06-28)
+
+
+### Features
+
+* **select-text:** add maxImageWidth and maxImageHeight props PD-1801 ([9e8b343](https://github.com/pie-framework/pie-elements/commit/9e8b343703de33597461b18611dbc34f8ef2b92c))
+* **select-text:** ui/ux for item validation - fix info tooltip ([3a7e153](https://github.com/pie-framework/pie-elements/commit/3a7e15302750ed1931fc6cfab47f49d09fffcfad))
+
+
+
+
+
 # [6.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@5.3.4...@pie-element/select-text-configure@6.0.0) (2022-06-28)
 
 

@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@4.0.0...@pie-element/inline-dropdown@4.1.0) (2022-06-28)
+
+
+### Bug Fixes
+
+* inline-dropdown and drag-in-the-blank fix validation error PD-1848 ([24f50f1](https://github.com/pie-framework/pie-elements/commit/24f50f11ee681749e2849c84f178af2b67441454))
+
+
+### Features
+
+* **inline-dropdown:** add maxImageWidth and maxImageHeight props PD-1801 ([a2ad5d5](https://github.com/pie-framework/pie-elements/commit/a2ad5d5298e5696541f45ab8ca9e5675f5bb1a57))
+* **inline-dropdown, drag-in-the-blank, explicit-constructed-response:** set config default for maxRespponseAreas ([a9e9dc5](https://github.com/pie-framework/pie-elements/commit/a9e9dc5ff43199c946f4226790d924ab5d8674ed))
+* update documentation for items that have validation with settings configurable by client systems PD-1789 ([8ef69cc](https://github.com/pie-framework/pie-elements/commit/8ef69cc0c7439a5803dc95f570efc7cd24c8e334))
+
+
+
+
+
 # [4.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@3.11.4...@pie-element/inline-dropdown@4.0.0) (2022-06-28)
 
 

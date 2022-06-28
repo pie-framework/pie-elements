@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@6.0.0...@pie-element/number-line@6.1.0) (2022-06-28)
+
+
+### Features
+
+* **number-line:** created validate method in controller PD-1747 ([b1341ef](https://github.com/pie-framework/pie-elements/commit/b1341ef167b43ed6af17bf64d605a66d725b7e2c))
+* **number-line:** ux/ui for validation PD-1748 ([ccfa5fe](https://github.com/pie-framework/pie-elements/commit/ccfa5fe9b39c4471a9769a943c117e35db4bfcc2))
+
+
+
+
+
 # [6.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@5.14.14...@pie-element/number-line@6.0.0) (2022-06-28)
 
 

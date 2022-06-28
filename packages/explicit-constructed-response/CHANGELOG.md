@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@4.0.0...@pie-element/explicit-constructed-response@4.1.0) (2022-06-28)
+
+
+### Bug Fixes
+
+* **explicit-constructed-response:** change validation messsage ([dff4964](https://github.com/pie-framework/pie-elements/commit/dff49645a4b814686bfaba18298b064e174c717a))
+* clean up ([53cea01](https://github.com/pie-framework/pie-elements/commit/53cea01bd199a2f000035e9dad455fae5a6be452))
+* error fucntion ([9b4a145](https://github.com/pie-framework/pie-elements/commit/9b4a145874ad19c14f558dad8bf505d3ae8a3857))
+
+
+### Features
+
+* **inline-dropdown, drag-in-the-blank, explicit-constructed-response:** set config default for maxRespponseAreas ([a9e9dc5](https://github.com/pie-framework/pie-elements/commit/a9e9dc5ff43199c946f4226790d924ab5d8674ed))
+* PD-1706 validation ui/ux ([265c248](https://github.com/pie-framework/pie-elements/commit/265c248ecd10d7a108f8d4abddd40824e4b2f0f4))
+* update documentation for items that have validation with settings configurable by client systems PD-1789 ([8ef69cc](https://github.com/pie-framework/pie-elements/commit/8ef69cc0c7439a5803dc95f570efc7cd24c8e334))
+* **explicit-constructed-response:** added configurable validation PD-1706 ([327af4a](https://github.com/pie-framework/pie-elements/commit/327af4abe87af52389232c56afdd6e0dfd6c77f7))
+
+
+
+
+
 # [4.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@3.13.4...@pie-element/explicit-constructed-response@4.0.0) (2022-06-28)
 
 

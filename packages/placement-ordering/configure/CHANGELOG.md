@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-configure@6.0.0...@pie-element/placement-ordering-configure@6.1.0) (2022-06-28)
+
+
+### Features
+
+* **placement-ordering:** add maxImageWidth and maxImageHeight props PD-1801 ([dae17c0](https://github.com/pie-framework/pie-elements/commit/dae17c0567dfaf8a46228643977ff88ca934f1a6))
+* **placement-ordering:** implement ui/ux for validation PD-1744 ([e0a18f3](https://github.com/pie-framework/pie-elements/commit/e0a18f32b57ed7f4ec4c7431634700cbe2fbae33))
+
+
+
+
+
 # [6.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-configure@5.6.12...@pie-element/placement-ordering-configure@6.0.0) (2022-06-28)
 
 

@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-configure@5.0.0...@pie-element/match-configure@5.1.0) (2022-06-28)
+
+
+### Features
+
+* **match:** add maxImageWidth and maxImageHeight props PD-1801 ([d98c0db](https://github.com/pie-framework/pie-elements/commit/d98c0dbe6a7acb5d115a71a102553cd20b5a63d5))
+* **match:** implement validation ui/ux PD-1711 ([85cdff1](https://github.com/pie-framework/pie-elements/commit/85cdff133bb3373c33733b0e627241bf6880a738))
+
+
+
+
+
 # [5.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-configure@4.5.12...@pie-element/match-configure@5.0.0) (2022-06-28)
 
 

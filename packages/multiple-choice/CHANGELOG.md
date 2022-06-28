@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@7.0.0...@pie-element/multiple-choice@7.1.0) (2022-06-28)
+
+
+### Features
+
+* **multiple-choice:** add maxImageWidth and maxImageHeight props PD-1801 ([36b9617](https://github.com/pie-framework/pie-elements/commit/36b961715f3913606b8abb9e9aae764bf02c8d7a))
+
+
+
+
+
 # [7.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@6.3.4...@pie-element/multiple-choice@7.0.0) (2022-06-28)
 
 
