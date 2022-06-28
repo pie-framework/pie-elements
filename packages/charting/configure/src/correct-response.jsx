@@ -124,6 +124,7 @@ export class CorrectResponse extends React.Component {
       } = {},
     } = this.props;
 
+    const { categories } = this.state;
     let nextCategories = [];
 
     if (nextData.length > data.length && nextCorrectAnswerData.length > data.length) {
