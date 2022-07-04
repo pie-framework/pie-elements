@@ -73,7 +73,6 @@ const insertCategory = (correctAnswer, data) => {
 }
 
 const removeCategory = (correctAnswer, data, positionToRemove) => {
-  console.log(positionToRemove, "positionToRemove");
   correctAnswer.splice(positionToRemove, 1);
 
   const correctAnswerData = [...correctAnswer];
