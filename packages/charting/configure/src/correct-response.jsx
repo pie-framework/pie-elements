@@ -73,12 +73,14 @@ const insertCategory = (correctAnswer, data) => {
 }
 
 const removeCategory = (correctAnswer, data, positionToRemove) => {
+  console.log(positionToRemove, "positionToRemove");
   correctAnswer.splice(positionToRemove, 1);
 
   const correctAnswerData = [...correctAnswer];
 
   return addCategoryProps(correctAnswerData, data);
 }
+
 export class CorrectResponse extends React.Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
@@ -177,7 +179,7 @@ export class CorrectResponse extends React.Component {
       });
     }
 
-    if (!isEqual(nextCategories, data)) {
+    if (!isEqual(nextCategories, data) || (isEmpty(nextCategories) && isEmpty(data))) {
       this.setState({ categories: nextCategories });
     }
   }
