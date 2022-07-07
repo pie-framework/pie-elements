@@ -1,10 +1,11 @@
 export default {
   model: {
+    // !! configure src defaults models needs to have the same content as controller src defaults
     dimensions: {
       height: 100,
       width: 500
     },
-    prompt: 'This is the question prompt',
+    prompt: '',
     mathInput: false,
     spanishInput: false,
     specialInput: false,

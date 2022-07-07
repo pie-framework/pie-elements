@@ -56,7 +56,7 @@ class Configure extends React.Component {
   constructor(props) {
     super(props);
 
-    this.rowIdCounter = props.model.rows[props.model.rows.length - 1].id + 1;
+    this.rowIdCounter = props.model.rows[props.model.rows.length - 1]?.id + 1;
 
     this.state = {
       activeTab: 0

@@ -21,20 +21,7 @@ exports[`categorize renders snapshot 1`] = `
           "flex": 1,
         }
       }
-    >
-      <WithStyles(Categories)
-        categories={Array []}
-        model={
-          Object {
-            "categories": Array [],
-            "choices": Array [],
-            "correctResponse": Array [],
-          }
-        }
-        onDropChoice={[Function]}
-        onRemoveChoice={[Function]}
-      />
-    </div>
+    />
     <WithStyles(Choices)
       choicePosition="above"
       choices={Array []}
@@ -71,21 +58,7 @@ exports[`categorize renders snapshot with rationale 1`] = `
           "flex": 1,
         }
       }
-    >
-      <WithStyles(Categories)
-        categories={Array []}
-        model={
-          Object {
-            "categories": Array [],
-            "choices": Array [],
-            "correctResponse": Array [],
-            "rationale": "This is rationale",
-          }
-        }
-        onDropChoice={[Function]}
-        onRemoveChoice={[Function]}
-      />
-    </div>
+    />
     <WithStyles(Choices)
       choicePosition="above"
       choices={Array []}
@@ -148,21 +121,7 @@ exports[`categorize renders snapshot with teacherInstructions 1`] = `
           "flex": 1,
         }
       }
-    >
-      <WithStyles(Categories)
-        categories={Array []}
-        model={
-          Object {
-            "categories": Array [],
-            "choices": Array [],
-            "correctResponse": Array [],
-            "teacherInstructions": "These are teacher instructions",
-          }
-        }
-        onDropChoice={[Function]}
-        onRemoveChoice={[Function]}
-      />
-    </div>
+    />
     <WithStyles(Choices)
       choicePosition="above"
       choices={Array []}

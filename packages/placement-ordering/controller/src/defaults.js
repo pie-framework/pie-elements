@@ -1,21 +1,23 @@
 export default {
+  // !! configure src defaults models needs to have the same content as controller src defaults
   choiceLabel: '',
   choices: [],
   correctResponse: [],
   enableImages: false,
-  prompt: 'Item Stem goes here',
+  prompt: '',
   numberedGuides: false,
   orientation: 'vertical',
   partialScoring: true,
   placementArea: false,
-  choiceLabelEnabled: true,
   removeTilesAfterPlacing: true,
+  choiceLabelEnabled: true,
   scoringType: 'auto',
   targetLabel: '',
-  note: 'The answer shown above is the most common correct answer for this item. One or more additional correct answers are also defined, and will also be recognized as correct.',
   rationaleEnabled: true,
   feedbackEnabled: true,
   promptEnabled: true,
   teacherInstructionsEnabled: true,
-  studentInstructionsEnabled: true
+  studentInstructionsEnabled: true,
+  toolbarEditorPosition: 'bottom',
+  note: 'The answer shown above is the most common correct answer for this item. One or more additional correct answers are also defined, and will also be recognized as correct.',
 };

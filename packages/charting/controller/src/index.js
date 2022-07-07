@@ -1,5 +1,6 @@
 import debug from 'debug';
 import isEmpty from 'lodash/isEmpty';
+import defaults from './defaults.js';
 
 import { partialScoring } from '@pie-lib/controller-utils';
 
@@ -20,11 +21,7 @@ export const setCorrectness = (answers, partialScoring) => answers ? answers.map
 
 
 export const normalize = question => ({
-  addCategoryEnabled: true,
-  promptEnabled: true,
-  rationaleEnabled: true,
-  teacherInstructionsEnabled: true,
-  studentInstructionsEnabled: true,
+  ...defaults,
   ...question,
 });
 

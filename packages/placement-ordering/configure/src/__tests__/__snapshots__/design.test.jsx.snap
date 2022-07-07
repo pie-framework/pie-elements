@@ -117,11 +117,12 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
           "correctResponse": Array [],
           "enableImages": false,
           "feedbackEnabled": true,
+          "note": "The answer shown above is the most common correct answer for this item. One or more additional correct answers are also defined, and will also be recognized as correct.",
           "numberedGuides": false,
           "orientation": "vertical",
           "partialScoring": true,
           "placementArea": false,
-          "prompt": "Item Stem goes here",
+          "prompt": "",
           "promptEnabled": true,
           "rationaleEnabled": true,
           "removeTilesAfterPlacing": true,
@@ -160,7 +161,7 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
       label="ITEM STEM"
     >
       <EditableHtml
-        markup="Item Stem goes here"
+        markup=""
         maxImageHeight={300}
         maxImageWidth={300}
         onChange={[Function]}
@@ -388,11 +389,12 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
           "correctResponse": Array [],
           "enableImages": false,
           "feedbackEnabled": true,
+          "note": "The answer shown above is the most common correct answer for this item. One or more additional correct answers are also defined, and will also be recognized as correct.",
           "numberedGuides": false,
           "orientation": "vertical",
           "partialScoring": true,
           "placementArea": false,
-          "prompt": "Item Stem goes here",
+          "prompt": "",
           "promptEnabled": true,
           "rationaleEnabled": true,
           "removeTilesAfterPlacing": true,
@@ -431,7 +433,7 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
       label="ITEM STEM"
     >
       <EditableHtml
-        markup="Item Stem goes here"
+        markup=""
         maxImageHeight={300}
         maxImageWidth={300}
         onChange={[Function]}

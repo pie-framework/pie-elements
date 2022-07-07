@@ -1,3 +1,4 @@
+// !! configure src defaults models needs to have the same content as controller src defaults
 export default {
   model: {
     choices: [],

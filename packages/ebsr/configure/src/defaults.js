@@ -70,7 +70,7 @@ const partModel = base => ({
   choiceMode: 'radio',
   choices: [],
   choicePrefix: 'numbers',
-  prompt: 'Prompt',
+  prompt: '',
   rationaleEnabled: true,
   feedbackEnabled: true,
   promptEnabled: true,
@@ -85,12 +85,13 @@ const partModel = base => ({
 });
 
 export default {
+  // !! configure src defaults models needs to have the same content as controller src defaults
   model: {
     partLabels: true,
     partLabelType: 'Letters',
     partialScoring: false,
-    partA: partModel({ prompt: 'Prompt A' }),
-    partB: partModel({ prompt: 'Prompt B' })
+    partA: partModel({ prompt: '' }),
+    partB: partModel({ prompt: '' })
   },
   configuration: {
     partialScoring: {

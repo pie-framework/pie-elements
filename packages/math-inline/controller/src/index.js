@@ -143,11 +143,6 @@ export const normalize = (question) => {
 
   return {
     ...defaults,
-    feedbackEnabled: true,
-    promptEnabled: true,
-    rationaleEnabled: true,
-    teacherInstructionsEnabled: true,
-    studentInstructionsEnabled: true,
     ...question,
   }
 }

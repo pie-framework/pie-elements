@@ -1,8 +1,9 @@
 export default {
   model: {
+    // !! configure src defaults models needs to have the same content as controller src defaults
     disabled: false,
     mode: 'gather',
-    prompt: 'Use the dropdowns to complete the sentence',
+    prompt: '',
     shuffle: true,
     markup: '',
     choices: {},

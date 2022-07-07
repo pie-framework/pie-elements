@@ -7,7 +7,7 @@ export default {
     choiceMode: 'checkbox',
     choicePrefix: 'letters',
     choices: [],
-    prompt: 'Question Prompt goes here',
+    prompt: '',
     lockChoiceOrder: true,
     partialScoring: true,
     scoringType: 'auto',

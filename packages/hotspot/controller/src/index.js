@@ -9,11 +9,7 @@ import defaults from './defaults';
 const log = debug('pie-elements:hotspot:controller');
 
 export const normalize = question => ({
-  promptEnabled: true,
-  rationaleEnabled: true,
-  teacherInstructionsEnabled: true,
-  studentInstructionsEnabled: true,
-  strokeWidth: 5,
+  ...defaults,
   ...question,
 });
 

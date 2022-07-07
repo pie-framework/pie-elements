@@ -4,10 +4,7 @@ import defaults from './defaults';
 const log = debug('pie-elements:drawing-response:controller');
 
 export const normalize = question => ({
-  promptEnabled: true,
-  teacherInstructionsEnabled: true,
-  studentInstructionsEnabled: true,
-  backgroundImageEnabled: true,
+  ...defaults,
   ...question,
 });
 

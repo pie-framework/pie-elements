@@ -1,19 +1,23 @@
 export default {
+  // !! configure src defaults models needs to have the same content as controller src defaults
+  correctResponse: [],
   graph: {
-    domain: [-5, 5],
-    initialElements: [
-      {
-        type: 'point',
-        pointType: 'empty',
-        domainPosition: -1
-      }
-    ],
+    domain: { min: -5, max: 5 },
+    ticks: {
+      minor: 1,
+      major: 2
+    },
+    arrows: {
+      left: true,
+      right: true
+    },
     maxNumberOfPoints: 20,
-    tickLabelOverrides: [],
+    width: 500,
     initialType: 'PF',
+    exhibitOnly: false,
+    toolbarEditorPosition: 'bottom',
     availableTypes: {
       PF: true,
-      PE: true,
       LFF: true,
       LEF: true,
       LFE: true,
@@ -22,7 +26,8 @@ export default {
       RFP: true,
       REN: true,
       REP: true
-    }
+    },
+    initialElements: []
   },
   feedback: {
     correct: {
@@ -37,5 +42,5 @@ export default {
       default: 'Nearly',
       type: 'none'
     }
-  }
+  },
 };

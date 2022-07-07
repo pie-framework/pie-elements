@@ -1,24 +1,40 @@
+// !! configure src defaults models needs to have the same content as controller src defaults
 export default {
+  partLabels: true,
+  partLabelType: 'Letters',
+  partialScoring: false,
   partA: {
-    choicePrefix: 'letters',
-    choices: [
-      {
-        value: 'a',
-        label: 'label a',
-      }
-    ],
-    prompt: 'prompt a',
+    choiceMode: 'radio',
+    choices: [],
+    choicePrefix: 'numbers',
+    prompt: '',
+    teacherInstructions: '',
+    rationale: '',
+    spellCheckEnabled:true,
+    choicesLayout: 'vertical',
     disabled: false,
+    rationaleEnabled: true,
+    feedbackEnabled: true,
+    promptEnabled: true,
+    teacherInstructionsEnabled: true,
+    studentInstructionsEnabled: true,
+    gridColumns: '2',
   },
   partB: {
-    choicePrefix: 'letters',
-    choices: [
-      {
-        value: 'b',
-        label: 'label b',
-      },
-    ],
-    prompt: 'prompt b',
+    choiceMode: 'radio',
+    choices: [],
+    choicePrefix: 'numbers',
+    prompt: '',
+    teacherInstructions: '',
+    rationale: '',
+    spellCheckEnabled:true,
+    choicesLayout: 'vertical',
     disabled: false,
+    rationaleEnabled: true,
+    feedbackEnabled: true,
+    promptEnabled: true,
+    teacherInstructionsEnabled: true,
+    studentInstructionsEnabled: true,
+    gridColumns: '2',
   },
 };

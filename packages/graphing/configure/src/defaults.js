@@ -4,6 +4,7 @@ const { allTools = [] } = tools;
 
 export default {
   model: {
+    // !! configure src defaults models needs to have the same content as controller src defaults
     answers: {},
     arrows: {
       left: true,

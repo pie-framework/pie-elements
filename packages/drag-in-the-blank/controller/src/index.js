@@ -1,13 +1,11 @@
 import reduce from 'lodash/reduce';
 import isEmpty from 'lodash/isEmpty';
+import defaults from './defaults';
 import { getAllCorrectResponses, choiceIsEmpty } from './utils';
 import { lockChoices, getShuffledChoices, partialScoring } from '@pie-lib/controller-utils';
 
 export const normalize = question => ({
-  rationaleEnabled: true,
-  promptEnabled: true,
-  teacherInstructionsEnabled: true,
-  studentInstructionsEnabled: true,
+  ...defaults,
   ...question,
 });
 

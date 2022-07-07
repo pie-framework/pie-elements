@@ -13,6 +13,7 @@ const allTools = [
 ];
 
 /* model defaults */
+// !! configure src defaults models needs to have the same content as controller src defaults
 export default {
   answers: {},
   arrows: {
@@ -35,7 +36,6 @@ export default {
   },
   includeAxes: true,
   labels: {},
-  coordinatesOnHover: false,
   padding: true,
   prompt: '',
   range: {
@@ -49,6 +49,7 @@ export default {
   standardGrid: false,
   title: '',
   toolbarTools: allTools,
+    coordinatesOnHover: false,
   promptEnabled: true,
   rationaleEnabled: true,
   teacherInstructionsEnabled: true,

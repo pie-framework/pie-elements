@@ -1,6 +1,7 @@
 export default {
   model: {
-    prompt: 'This is the question prompt',
+    // !! configure src defaults models needs to have the same content as controller src defaults
+    prompt: '',
     toolbarEditorPosition: 'bottom',
     promptEnabled: true,
     imageUrl: '',

@@ -1,10 +1,17 @@
 export default {
+  choiceMode: 'checkbox',
+  choicePrefix: 'letters',
+  choices: [],
+  prompt: '',
+  lockChoiceOrder: true,
+  partialScoring: true,
+  scoringType: 'auto',
+  feedbackEnabled: true,
   promptEnabled: true,
   rationaleEnabled: true,
-  accessibilityLabelsEnabled: false,
   teacherInstructionsEnabled: true,
   studentInstructionsEnabled: true,
-  choicePrefix: 'letters',
+  toolbarEditorPosition: 'bottom',
   choicesLayout: 'vertical',
-  gridColumns: '2'
+  gridColumns: '2',
 };

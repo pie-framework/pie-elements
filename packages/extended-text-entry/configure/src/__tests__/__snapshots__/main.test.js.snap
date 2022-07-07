@@ -101,7 +101,7 @@ exports[`Render Main Component Match Snapshot 1`] = `
           "feedbackEnabled": true,
           "mathInput": false,
           "playerSpellCheckEnabled": true,
-          "prompt": "This is the question prompt",
+          "prompt": "",
           "promptEnabled": true,
           "rationaleEnabled": true,
           "spanishInput": false,
@@ -142,7 +142,7 @@ exports[`Render Main Component Match Snapshot 1`] = `
     >
       <EditableHtml
         imageSupport={Object {}}
-        markup="This is the question prompt"
+        markup=""
         maxImageHeight={300}
         maxImageWidth={300}
         nonEmpty={false}

@@ -1,4 +1,5 @@
 import debug from 'debug';
+import defaults from './defaults';
 import isEmpty from 'lodash/isEmpty';
 import { camelizeKeys } from 'humps';
 import { partialScoring } from '@pie-lib/controller-utils';
@@ -8,9 +9,7 @@ import { getAllUniqueCorrectness } from './utils';
 const log = debug('pie-elements:image-cloze-association:controller');
 
 export const normalize = question => ({
-  rationaleEnabled: true,
-  teacherInstructionsEnabled: true,
-  studentInstructionsEnabled: true,
+  ...defaults,
   ...question,
 });
 

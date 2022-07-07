@@ -21,19 +21,7 @@ exports[`categorize snapshots incorrect 1`] = `
           "flex": 1,
         }
       }
-    >
-      <WithStyles(Categories)
-        categories={Array []}
-        model={
-          Object {
-            "categories": Array [],
-            "choices": Array [],
-          }
-        }
-        onDropChoice={[Function]}
-        onRemoveChoice={[Function]}
-      />
-    </div>
+    />
     <WithStyles(Choices)
       choicePosition="above"
       choices={Array []}
@@ -69,19 +57,7 @@ exports[`categorize snapshots renders 1`] = `
           "flex": 1,
         }
       }
-    >
-      <WithStyles(Categories)
-        categories={Array []}
-        model={
-          Object {
-            "categories": Array [],
-            "choices": Array [],
-          }
-        }
-        onDropChoice={[Function]}
-        onRemoveChoice={[Function]}
-      />
-    </div>
+    />
     <WithStyles(Choices)
       choicePosition="above"
       choices={Array []}
@@ -117,34 +93,7 @@ exports[`categorize snapshots renders with feedback 1`] = `
           "flex": 1,
         }
       }
-    >
-      <WithStyles(Categories)
-        categories={Array []}
-        model={
-          Object {
-            "categories": Array [],
-            "choices": Array [],
-            "correctness": "correct",
-            "feedback": Object {
-              "correct": Object {
-                "default": "Correct",
-                "type": "default",
-              },
-              "incorrect": Object {
-                "default": "Incorrect",
-                "type": "default",
-              },
-              "partial": Object {
-                "default": "Nearly",
-                "type": "default",
-              },
-            },
-          }
-        }
-        onDropChoice={[Function]}
-        onRemoveChoice={[Function]}
-      />
-    </div>
+    />
     <WithStyles(Choices)
       choicePosition="above"
       choices={Array []}

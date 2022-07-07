@@ -61,28 +61,15 @@ const parsePart = (part, key, session, env) => {
 };
 
 export const normalize = ({ partA = {}, partB = {}, ...question }) => ({
-  partLabels: true,
-  partLabelType: 'Letters',
+  ...defaults,
   ...question,
   partA: {
     ...defaults.partA,
-    rationaleEnabled: true,
-    feedbackEnabled: true,
-    promptEnabled: true,
-    teacherInstructionsEnabled: true,
-    studentInstructionsEnabled: true,
-    gridColumns: '2',
     ...partA,
     choicesLayout: partA.choicesLayout || (partA.verticalMode === false && 'horizontal') || 'vertical'
   },
   partB: {
     ...defaults.partB,
-    rationaleEnabled: true,
-    promptEnabled: true,
-    feedbackEnabled: true,
-    teacherInstructionsEnabled: true,
-    studentInstructionsEnabled: true,
-    gridColumns: '2',
     ...partB,
     choicesLayout: partB.choicesLayout || (partB.verticalMode === false && 'horizontal') || 'vertical'
   }

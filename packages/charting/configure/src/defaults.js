@@ -3,39 +3,30 @@
  * rationale, scoringType, studentInstructions, teacherInstructions
  * so there's no implementation (they are only added in model)
  */
-
-
-// const createCategory = (label, value) => ({
-//   label,
-//   value,
-//   interactive: true,
-//   editable: true
-// });
-
 export default {
+  // !! configure src defaults models needs to have the same content as controller src defaults
   model: {
     addCategoryEnabled: true,
     categoryDefaultLabel: 'Category',
     chartType: 'lineCross',
     correctAnswer: {},
     data: [],
-    domain: {
-      label: 'Fruits',
-    },
+    domain: {},
     graph: {
-      width: 480,
-      height: 480
+      width: 450,
+      height: 450
     },
-    prompt: 'Here goes item stem!',
+    prompt: '',
     promptEnabled: true,
-    rationale: 'Rationale goes here!',
+    rationale: '',
     range: {
-      label: 'Amount',
-      max: 5.5,
+      label: '',
+      max: 4,
       min: 0,
+      labelStep: 1
     },
     scoringType: 'all or nothing',
-    title: 'This is a chart!',
+    title: '',
     rationaleEnabled: true,
     teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true,

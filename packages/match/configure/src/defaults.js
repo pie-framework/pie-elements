@@ -5,21 +5,16 @@
 
 export default {
   model: {
+    // !! configure src defaults models needs to have the same content as controller src defaults
     enableImages: true,
     headers: ['Column 1', 'Column 2', 'Column 3'],
     layout: 3,
     lockChoiceOrder: true,
     partialScoring: false,
     choiceMode: 'radio',
-    prompt: 'Prompt goes here',
+    prompt: '',
     toolbarEditorPosition: 'bottom',
-    rows: [
-      {
-        id: 1,
-        title: 'Question Text 1',
-        values: [false, false]
-      }
-    ],
+    rows: [],
     scoringType: 'auto',
     feedbackEnabled: true,
     promptEnabled: true,

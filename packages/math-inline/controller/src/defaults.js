@@ -1,26 +1,40 @@
 import { ResponseTypes } from './utils';
 
 export default {
+  // !! configure src defaults models needs to have the same content as controller src defaults
+  partialScoring: true,
   responseType: ResponseTypes.advanced,
   element: 'math-inline',
   feedback: {
     correct: {
       default: 'Correct',
-      type: 'none'
+      type: 'none',
     },
     incorrect: {
       default: 'Incorrect',
-      type: 'none'
+      type: 'none',
     },
     partial: {
       default: 'Nearly',
-      type: 'none'
-    }
+      type: 'none',
+    },
   },
-  note: 'The answer shown above is the primary correct answer specified by the author for this item, but other answers may also be recognized as correct.',
   equationEditor: '8',
   expression: '',
-  question: '',
+  rationale: '',
+  note:
+    'The answer shown above is the primary correct answer specified by the author for this item, but other answers may also be recognized as correct.',
+  prompt: '',
   responses: [],
-  customKeys: []
+  customKeys: [],
+  scoringType: 'auto',
+  toolbarEditorPosition: 'bottom',
+  validationDefault: 'literal',
+  ignoreOrderDefault: false,
+  allowTrailingZerosDefault: false,
+  feedbackEnabled: true,
+  promptEnabled: true,
+  rationaleEnabled: true,
+  teacherInstructionsEnabled: true,
+  studentInstructionsEnabled: true,
 };

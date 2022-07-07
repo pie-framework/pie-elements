@@ -1,4 +1,5 @@
 export const model = {
+  // !! configure src defaults models needs to have the same content as controller src defaults
   correctResponse: [],
   graph: {
     domain: { min: -5, max: 5 },

@@ -10,7 +10,7 @@ import {
   moveChoiceToCategory
 } from '@pie-lib/categorize';
 import { withDragContext, uid } from '@pie-lib/drag';
-import {color, Feedback, Collapsible, hasText, PreviewPrompt} from '@pie-lib/render-ui';
+import { color, Feedback, Collapsible, hasText, PreviewPrompt } from '@pie-lib/render-ui';
 import debug from 'debug';
 
 const log = debug('@pie-ui:categorize');
@@ -149,9 +149,9 @@ export class Categorize extends React.Component {
                 labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}
                 className={classes.collapsible}
               >
-                <PreviewPrompt prompt={model.teacherInstructions} />
+                <PreviewPrompt prompt={model.teacherInstructions}/>
               </Collapsible>
-              <br />
+              <br/>
             </React.Fragment>
           )
         }
@@ -164,38 +164,45 @@ export class Categorize extends React.Component {
           model.prompt && removeHTMLTags(model.prompt) &&
           <div
             className={classes.prompt}
-           >
-            <PreviewPrompt prompt={model.prompt} />
+          >
+            <PreviewPrompt prompt={model.prompt}/>
           </div>
         }
         <div className={classes.categorize} style={style}>
           <div style={{ display: 'flex', flex: 1 }}>
             {
-              rowLabels && nbOfRows && (
-                <div style={{ display: 'grid', marginRight: '20px' }}>
-                  {rowLabels.slice(0, nbOfRows).map((label, index) => (
-                    <div
-                      key={index}
-                      style={{
-                        alignItems: 'center',
-                        display: 'flex',
-                        justifyContent: 'center'
-                      }}
-                      dangerouslySetInnerHTML={{
-                        __html: label
-                      }}
-                    />
-                  ))}
-                </div>
-              )
+              rowLabels && nbOfRows
+                ? (
+                  <div style={{ display: 'grid', marginRight: '20px' }}>
+                    {rowLabels.slice(0, nbOfRows).map((label, index) => (
+                      <div
+                        key={index}
+                        style={{
+                          alignItems: 'center',
+                          display: 'flex',
+                          justifyContent: 'center'
+                        }}
+                        dangerouslySetInnerHTML={{
+                          __html: label
+                        }}
+                      />
+                    ))}
+                  </div>
+                )
+                : null
             }
-            <Categories
-              model={model}
-              disabled={model.disabled}
-              categories={categories}
-              onDropChoice={this.dropChoice}
-              onRemoveChoice={this.removeChoice}
-            />
+            {categories && categories.length
+              ? (
+                <Categories
+                  model={model}
+                  disabled={model.disabled}
+                  categories={categories}
+                  onDropChoice={this.dropChoice}
+                  onRemoveChoice={this.removeChoice}
+                />
+              )
+              : null
+            }
           </div>
           <Choices
             disabled={model.disabled}
@@ -216,7 +223,7 @@ export class Categorize extends React.Component {
               labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }}
               className={classes.collapsible}
             >
-              <PreviewPrompt prompt={model.rationale} />
+              <PreviewPrompt prompt={model.rationale}/>
             </Collapsible>
           )
         }
@@ -244,7 +251,7 @@ class CategorizeProvider extends React.Component {
   render() {
     return (
       <uid.Provider value={this.uid}>
-        <Categorize { ...this.props } />
+        <Categorize {...this.props} />
       </uid.Provider>
     );
   }

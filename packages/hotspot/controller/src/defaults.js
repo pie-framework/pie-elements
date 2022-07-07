@@ -1,5 +1,7 @@
 export default {
-  prompt: 'This is the question prompt',
+  // !! configure src defaults models needs to have the same content as controller src defaults
+  prompt: '',
+  toolbarEditorPosition: 'bottom',
   imageUrl: '',
   shapes: {
     rectangles: [],
@@ -18,5 +20,10 @@ export default {
   outlineColor: 'blue',
   outlineList: [
     'blue'
-  ]
+  ],
+  promptEnabled: true,
+  rationaleEnabled: true,
+  teacherInstructionsEnabled: true,
+  studentInstructionsEnabled: true,
+  strokeWidth: 5,
 };

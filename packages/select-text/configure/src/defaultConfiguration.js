@@ -1,20 +1,13 @@
-const tokens = () => [
-  {
-    text: '',
-    start: 0,
-    end: 0
-  }
-];
-
 export default {
   model: {
+    // !! configure src defaults models needs to have the same content as controller src defaults
     highlightChoices: false,
     partialScoring: false,
     maxSelections: 2,
     mode: 'sentence',
-    prompt: 'Question Prompt goes here',
+    prompt: '',
     text: '',
-    tokens: tokens(),
+    tokens: [],
     scoringType: 'auto',
     feedbackEnabled: true,
     rationaleEnabled: true,

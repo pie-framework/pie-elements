@@ -1,5 +1,6 @@
 import map from 'lodash/map';
 import reduce from 'lodash/reduce';
+import defaults from './defaults';
 import isEmpty from 'lodash/isEmpty';
 import {
   lockChoices,
@@ -18,11 +19,7 @@ const getFeedback = (correct) => {
 };
 
 export const normalize = (question) => ({
-  promptEnabled: true,
-  rationaleEnabled: true,
-  teacherInstructionsEnabled: true,
-  studentInstructionsEnabled: true,
-  choiceRationaleEnabled: true,
+  ...defaults,
   ...question,
 });
 
