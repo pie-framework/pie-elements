@@ -9,6 +9,7 @@ import EditableHtml from '@pie-lib/editable-html';
 
 import ChartingConfig from './charting-config';
 import CorrectResponse from './correct-response';
+import { applyConstraints, getGridValues, getLabelValues } from './utils';
 
 
 const log = debug('@pie-element:graphing:configure');
@@ -55,6 +56,25 @@ export class Configure extends React.Component {
     configuration: PropTypes.object.isRequired,
   };
 
+  constructor(props) {
+    super(props);
+    const { domain, range, graph } = props.model || {};
+    console.log(props.model)
+
+    console.log(domain, "domain")
+
+    const gridValues = {
+      range: getGridValues(range, graph.height, true)
+    };
+    console.log(gridValues, "gridValues")
+    const labelValues = {
+      range: getLabelValues(range.step || 1)
+    };
+    console.log(labelValues, "labelValues")
+
+    this.state = { gridValues, labelValues };
+  };
+
   static defaultProps = { classes: {} };
 
   onRationaleChange = (rationale) =>
@@ -68,6 +88,23 @@ export class Configure extends React.Component {
 
   onChartTypeChange = (chartType) =>
     this.props.onModelChanged({ ...this.props.model, chartType });
+
+  onConfigChange = config => {
+    const { model } = this.props;
+    const { gridValues: oldGridValues, labelValues: oldLabelValues } = this.state;
+    const updatedModel = { ...model, ...config };
+    const { graph, range } = updatedModel;
+    const gridValues = {};
+    const labelValues = {};
+
+    const rangeConstraints = applyConstraints(range, graph.height, oldGridValues.range, oldLabelValues.range);
+
+    gridValues.range = rangeConstraints.gridValues;
+    labelValues.range = rangeConstraints.labelValues;
+
+    this.setState({ gridValues, labelValues });
+    this.props.onModelChanged(updatedModel);
+  };
 
   render() {
     const {
@@ -93,6 +130,7 @@ export class Configure extends React.Component {
     } = configuration || {};
     const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled, spellCheckEnabled } =
       model || {};
+    const { gridValues, labelValues } = this.state;
 
     const defaultImageMaxWidth = maxImageWidth && maxImageWidth.prompt;
     const defaultImageMaxHeight = maxImageHeight && maxImageHeight.prompt;
@@ -212,7 +250,9 @@ export class Configure extends React.Component {
           <ConfigureChartPanel
             config={graph}
             model={model}
-            onChange={this.props.onModelChanged}
+            onChange={this.onConfigChange}
+            gridValues={gridValues}
+            labelValues={labelValues}
             charts={charts}
           />
 
