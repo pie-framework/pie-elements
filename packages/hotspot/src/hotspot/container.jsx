@@ -43,7 +43,8 @@ export class Container extends React.Component {
       onSelectChoice,
       shapes: { rectangles, polygons },
       scale: SCALE,
-      strokeWidth
+      strokeWidth,
+      showCorrect
     } = this.props;
 
     const width = withProp * SCALE;
@@ -78,6 +79,7 @@ export class Container extends React.Component {
               const selected = this.isSelected(shape);
               const isCorrect = isEvaluateMode ? this.correctness(shape.correct, selected) : undefined;
               const evaluateText = isEvaluateMode ? this.getEvaluateText(shape.correct, selected) : null;
+              const markAsCorrect = !!(isEvaluateMode && showCorrect && shape.correct);
 
               return (
                 <Rectangle
@@ -97,6 +99,7 @@ export class Container extends React.Component {
                   x={shape.x}
                   y={shape.y}
                   strokeWidth={strokeWidth}
+                  markAsCorrect={markAsCorrect}
                 />
               )
             })}
@@ -104,6 +107,7 @@ export class Container extends React.Component {
               const selected = this.isSelected(polygon);
               const isCorrect = isEvaluateMode ? this.correctness(polygon.correct, selected) : undefined;
               const evaluateText = isEvaluateMode ? this.getEvaluateText(polygon.correct, selected) : null;
+              const markAsCorrect = !!(isEvaluateMode && showCorrect && polygon.correct);
 
               return (
                 <Polygon
@@ -120,6 +124,7 @@ export class Container extends React.Component {
                   outlineColor={outlineColor}
                   points={polygon.points}
                   strokeWidth={strokeWidth}
+                  markAsCorrect={markAsCorrect}
                 />
               )
             })}
@@ -173,7 +178,8 @@ Container.propTypes = {
   session:PropTypes.object.isRequired,
   shapes:PropTypes.object.isRequired,
   strokeWidth: PropTypes.number,
-  scale: PropTypes.number
+  scale: PropTypes.number,
+  showCorrect: PropTypes.bool
 };
 
 Container.defaultProps = {

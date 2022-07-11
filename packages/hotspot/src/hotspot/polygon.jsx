@@ -51,9 +51,9 @@ class PolygonComponent extends React.Component {
     document.body.style.cursor = 'default';
   };
 
-  getEvaluateOutlineColor = (isCorrect, outlineColor) => isCorrect ? outlineColor : 'red';
+  getEvaluateOutlineColor = (isCorrect, markAsCorrect, outlineColor) => markAsCorrect ? 'green' : (isCorrect ? outlineColor : 'red')
 
-  getOutlineWidth = (selected, strokeWidth) => selected ? strokeWidth : 0;
+  getOutlineWidth = (selected, markAsCorrect, strokeWidth) => selected || markAsCorrect ? strokeWidth : 0;
 
   render() {
     const {
@@ -66,13 +66,14 @@ class PolygonComponent extends React.Component {
       points,
       evaluateText,
       strokeWidth,
-      scale
+      scale,
+      markAsCorrect
     } = this.props;
 
     const outlineColorParsed = isEvaluateMode
-      ? this.getEvaluateOutlineColor(isCorrect, outlineColor)
+      ? this.getEvaluateOutlineColor(isCorrect, markAsCorrect, outlineColor)
       : outlineColor;
-    const outlineWidth = this.getOutlineWidth(selected, strokeWidth);
+    const outlineWidth = this.getOutlineWidth(selected, markAsCorrect, strokeWidth);
 
     const pointsParsed = this.parsePointsForKonva(points);
     const center = this.getPolygonCenter(points);
@@ -144,7 +145,8 @@ PolygonComponent.propTypes = {
   selected: PropTypes.bool.isRequired,
   evaluateText: PropTypes.string,
   strokeWidth: PropTypes.number,
-  scale: PropTypes.number
+  scale: PropTypes.number,
+  markAsCorrect: PropTypes.bool.isRequired
 };
 
 PolygonComponent.defaultProps = {

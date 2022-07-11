@@ -32,9 +32,9 @@ class RectComponent extends React.Component {
     document.body.style.cursor = 'default';
   };
 
-  getEvaluateOutlineColor = (isCorrect, outlineColor) => isCorrect ? outlineColor : 'red';
+  getEvaluateOutlineColor = (isCorrect, markAsCorrect, outlineColor) => markAsCorrect ? 'green' : (isCorrect ? outlineColor : 'red')
 
-  getOutlineWidth = (selected, strokeWidth) => selected ? strokeWidth : 0;
+  getOutlineWidth = (selected, markAsCorrect, strokeWidth) => selected || markAsCorrect ? strokeWidth : 0;
 
   render() {
     const {
@@ -50,14 +50,15 @@ class RectComponent extends React.Component {
       y,
       evaluateText,
       strokeWidth,
-      scale
+      scale,
+      markAsCorrect
     } = this.props;
 
     const outlineColorParsed = isEvaluateMode
-      ? this.getEvaluateOutlineColor(isCorrect, outlineColor)
+      ? this.getEvaluateOutlineColor(isCorrect, markAsCorrect, outlineColor)
       : outlineColor;
 
-    const outlineWidth = this.getOutlineWidth(selected, strokeWidth);
+    const outlineWidth = this.getOutlineWidth(selected, markAsCorrect, strokeWidth);
 
     const iconX = (x + (width / 2)) - 10;
     const iconY = (y + (height / 2)) - 10;
@@ -132,7 +133,8 @@ RectComponent.propTypes = {
   y: PropTypes.number.isRequired,
   evaluateText: PropTypes.string,
   strokeWidth: PropTypes.number,
-  scale: PropTypes.number
+  scale: PropTypes.number,
+  markAsCorrect: PropTypes.bool.isRequired
 };
 
 RectComponent.defaultProps = {
