@@ -220,10 +220,26 @@ exports[`Configure renders snapshot 1`] = `
           },
         ]
       }
-      config={
+      gridValues={
         Object {
-          "height": 480,
-          "width": 480,
+          "range": Array [
+            0.2,
+            0.25,
+            0.5,
+            1,
+          ],
+        }
+      }
+      labelValues={
+        Object {
+          "range": Array [
+            0,
+            1,
+            2,
+            4,
+            5,
+            10,
+          ],
         }
       }
       model={
@@ -255,6 +271,7 @@ exports[`Configure renders snapshot 1`] = `
           "title": "This is a chart!",
         }
       }
+      onChange={[Function]}
     />
     <WithStyles(ChartingConfig)
       charts={
@@ -284,12 +301,6 @@ exports[`Configure renders snapshot 1`] = `
             "type": "linePlot",
           },
         ]
-      }
-      config={
-        Object {
-          "height": 480,
-          "width": 480,
-        }
       }
       model={
         Object {
