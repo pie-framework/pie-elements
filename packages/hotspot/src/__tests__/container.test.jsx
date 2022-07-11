@@ -4,6 +4,8 @@ import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import Konva from 'konva';
 
+import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
+
 import Container, { Container as ContainerComp } from '../hotspot/container';
 import HotspotComponent from '../hotspot/index';
 
@@ -57,6 +59,18 @@ describe('HotspotComponent', () => {
       />);
 
       expect(w).toMatchSnapshot();
+    });
+
+    describe('snapshot with CorrectAnswerToggle', () => {
+      it('rendered', () => {
+        let w = wrapper({
+          mode: 'evaluate',
+          responseCorrect: false
+        });
+
+        console.log(toJson(w))
+        expect(w.find(CorrectAnswerToggle)).to.have.lengthOf(1);
+      });
     });
   });
 });
