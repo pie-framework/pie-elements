@@ -1,4 +1,4 @@
-// this file is duplicated from graphing/configure/src/utils.js
+// this file is almost duplicated from graphing/configure/src/utils.js; the same logic must be used in charting
 import isEqual from 'lodash/isEqual';
 
 const VALID_GRID_VALUES = [

@@ -58,19 +58,15 @@ export class Configure extends React.Component {
 
   constructor(props) {
     super(props);
-    const { domain, range, graph } = props.model || {};
-    console.log(props.model)
-
-    console.log(domain, "domain")
+    const { range, graph } = props.model || {};
 
     const gridValues = {
       range: getGridValues(range, graph.height, true)
     };
-    console.log(gridValues, "gridValues")
+ 
     const labelValues = {
       range: getLabelValues(range.step || 1)
     };
-    console.log(labelValues, "labelValues")
 
     this.state = { gridValues, labelValues };
   };
