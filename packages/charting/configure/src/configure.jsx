@@ -248,7 +248,6 @@ export class Configure extends React.Component {
           )}
 
           <ConfigureChartPanel
-            config={graph}
             model={model}
             onChange={this.onConfigChange}
             gridValues={gridValues}
@@ -257,7 +256,6 @@ export class Configure extends React.Component {
           />
 
           <ChartingConfig
-            config={graph}
             model={model}
             onChange={onModelChanged}
             charts={charts}
