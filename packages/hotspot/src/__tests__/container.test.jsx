@@ -3,11 +3,20 @@ import _ from 'lodash';
 import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import Konva from 'konva';
+import { shallowChild } from '@pie-lib/test-utils';
 
 import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
 
 import Container, { Container as ContainerComp } from '../hotspot/container';
 import HotspotComponent from '../hotspot/index';
+import GeneralConfigBlock from '@pie-element/match-configure/src/general-config-block';
+import Select from '@material-ui/core/Select';
+
+global.MutationObserver = class {
+  constructor(callback) {}
+  disconnect() {}
+  observe(element, initObject) {}
+};
 
 Konva.isBrowser = false;
 
@@ -61,16 +70,16 @@ describe('HotspotComponent', () => {
       expect(w).toMatchSnapshot();
     });
 
-    describe('snapshot with CorrectAnswerToggle', () => {
-      it('rendered', () => {
-        let w = wrapper({
+    it('rendered', () => {
+      const testWrapper = shallowChild(HotspotComponent, {
+        model: {
           mode: 'evaluate',
-          responseCorrect: false
-        });
+          responseCorrect: false,
+        }
+      }, 1);
+      const component = testWrapper();
 
-        console.log(toJson(w))
-        expect(w.find(CorrectAnswerToggle)).to.have.lengthOf(1);
-      });
+      expect(component.find(CorrectAnswerToggle).length).toEqual(1);
     });
   });
 });
