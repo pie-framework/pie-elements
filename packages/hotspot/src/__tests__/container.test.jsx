@@ -3,14 +3,12 @@ import _ from 'lodash';
 import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import Konva from 'konva';
-import { shallowChild } from '@pie-lib/test-utils';
 
+import { shallowChild } from '@pie-lib/test-utils';
 import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
 
 import Container, { Container as ContainerComp } from '../hotspot/container';
 import HotspotComponent from '../hotspot/index';
-import GeneralConfigBlock from '@pie-element/match-configure/src/general-config-block';
-import Select from '@material-ui/core/Select';
 
 global.MutationObserver = class {
   constructor(callback) {}
@@ -69,18 +67,54 @@ describe('HotspotComponent', () => {
 
       expect(w).toMatchSnapshot();
     });
+  });
+});
 
-    it('rendered', () => {
-      const testWrapper = shallowChild(HotspotComponent, {
-        model: {
-          mode: 'evaluate',
-          responseCorrect: false,
-        }
-      }, 1);
-      const component = testWrapper();
+describe('CorrectAnswerToggle', () => {
+  let testWrapper, component, toggle;
+  const model = {
+    mode: 'evaluate',
+    responseCorrect: false,
+  };
+  const testWrapperFn = (props) => shallowChild(HotspotComponent, {
+    model: {
+      ...model,
+      ...props
+    }
+  }, 1);
 
-      expect(component.find(CorrectAnswerToggle).length).toEqual(1);
-    });
+  beforeEach(() => {
+    testWrapper = testWrapperFn({});
+    component = testWrapper();
+    toggle = component.find(CorrectAnswerToggle);
+  });
+
+  it('renders when the mode is evaluate and the response is incorrect', () => {
+    expect(toggle.length).toEqual(1);
+    expect(toggle.prop('show')).toEqual(true);
+  });
+
+  it('does not render outside of evaluate mode', () => {
+    const tw = testWrapperFn({ mode: 'gather' });
+    const c = tw();
+    const t = c.find(CorrectAnswerToggle);
+    expect(t.length).toEqual(0);
+  });
+
+  it('does not render if the response is correct', () => {
+    const tw = testWrapperFn({ responseCorrect: true });
+    const c = tw();
+    const t = c.find(CorrectAnswerToggle);
+    expect(t.length).toEqual(0);
+  });
+
+  it('toggles the state', () => {
+    component.setState({ showCorrect: false });
+    expect(component.state('showCorrect')).toEqual(false);
+    expect(toggle.prop('toggled')).toEqual(false);
+    component.instance().onToggle();
+    expect(component.state('showCorrect')).toEqual(true);
+    // expect(toggle.prop('toggled')).toEqual(true);
   });
 });
 
