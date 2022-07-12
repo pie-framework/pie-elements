@@ -8,6 +8,8 @@ exports[`Polygon snapshots evaluate with correct answer renders 1`] = `
     }
   }
   disabled={false}
+  evaluateText="Correctly
+selected"
   height={200}
   hotspotColor="rgba(137, 183, 244, 0.65)"
   id="1"
@@ -31,6 +33,7 @@ exports[`Polygon snapshots evaluate with correct answer renders 1`] = `
       },
     ]
   }
+  scale={1}
   selected={false}
   strokeWidth={5}
 />
@@ -44,6 +47,7 @@ exports[`Polygon snapshots hotspot color renders 1`] = `
     }
   }
   disabled={false}
+  evaluateText={null}
   height={200}
   hotspotColor="rgba(217, 30, 24, 0.65)"
   id="1"
@@ -67,6 +71,7 @@ exports[`Polygon snapshots hotspot color renders 1`] = `
       },
     ]
   }
+  scale={1}
   selected={false}
   strokeWidth={5}
 />
@@ -80,6 +85,7 @@ exports[`Polygon snapshots outline color renders 1`] = `
     }
   }
   disabled={false}
+  evaluateText={null}
   height={200}
   hotspotColor="rgba(137, 183, 244, 0.65)"
   id="1"
@@ -103,6 +109,7 @@ exports[`Polygon snapshots outline color renders 1`] = `
       },
     ]
   }
+  scale={1}
   selected={false}
   strokeWidth={5}
 />
@@ -116,6 +123,7 @@ exports[`Polygon snapshots outline width renders with default border width 1`] =
     }
   }
   disabled={false}
+  evaluateText={null}
   height={200}
   hotspotColor="rgba(137, 183, 244, 0.65)"
   id="1"
@@ -139,6 +147,7 @@ exports[`Polygon snapshots outline width renders with default border width 1`] =
       },
     ]
   }
+  scale={1}
   selected={false}
   strokeWidth={5}
 />
@@ -152,6 +161,7 @@ exports[`Polygon snapshots outline width renders with given border width 1`] = `
     }
   }
   disabled={false}
+  evaluateText={null}
   height={200}
   hotspotColor="rgba(137, 183, 244, 0.65)"
   id="1"
@@ -175,6 +185,7 @@ exports[`Polygon snapshots outline width renders with given border width 1`] = `
       },
     ]
   }
+  scale={1}
   selected={false}
   strokeWidth={10}
 />
