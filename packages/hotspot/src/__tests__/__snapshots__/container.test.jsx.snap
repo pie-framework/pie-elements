@@ -196,19 +196,6 @@ exports[`HotspotComponent renders snapshot 1`] = `
 />
 `;
 
-exports[`HotspotComponent renders snapshot with CorrectAnswerToggle rendered 1`] = `
-<HotspotComponent
-  classes={
-    Object {
-      "collapsible": "HotspotComponent-collapsible-1",
-      "prompt": "HotspotComponent-prompt-2",
-    }
-  }
-  mode="evaluate"
-  responseCorrect={false}
-/>
-`;
-
 exports[`HotspotComponent renders snapshot with padding having a size accordingly to strokeWidth 1`] = `
 <div
   style={
