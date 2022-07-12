@@ -82,8 +82,6 @@ class HotspotComponent extends React.Component {
     const isEvaluateMode = mode === 'evaluate';
     const showCorrectAnswerToggle = isEvaluateMode && !responseCorrect;
 
-    console.log('showCorrectAnswerToggle = showCorrectAnswerToggle', showCorrectAnswerToggle);
-
     return (
       <div>
         {showCorrectAnswerToggle && (
