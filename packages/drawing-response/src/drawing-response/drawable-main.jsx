@@ -240,7 +240,7 @@ export class DrawableMain extends React.Component {
     const imageWidth = imageDimensions?.width * scale;
 
     return (
-      <div>
+      <div className={classes.wrapper}>
         <div className={classes.undoControls}>
           <Button disabled={disabled} onClick={this.handleUndo} label="Undo"/>
           <Button disabled={disabled} onClick={this.handleClearAll} label="Clear all"/>
@@ -288,6 +288,9 @@ export class DrawableMain extends React.Component {
 }
 
 const styles = () => ({
+  wrapper: {
+    display: 'grid'
+  },
   base: {
     position: 'relative',
     width: '100%'
@@ -301,7 +304,8 @@ const styles = () => ({
     cursor: 'pointer'
   },
   undoControls: {
-    float: 'right',
+    // float: 'right',
+    justifySelf: 'right',
     marginTop: -43,
     width: 163
   }
