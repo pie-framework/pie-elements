@@ -3,6 +3,9 @@ import _ from 'lodash';
 import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import Konva from 'konva';
+import { Line } from 'react-konva';
+
+import { shallowChild } from '@pie-lib/test-utils';
 
 import Polygon from '../hotspot/polygon';
 
@@ -72,6 +75,45 @@ describe('Polygon', () => {
         const wrapper = mkWrapper({ isEvaluateMode: true, isCorrect: true, evaluateText: 'Correctly\nselected' });
         expect(toJson(wrapper)).toMatchSnapshot();
       });
+    });
+  });
+
+  describe('when showing correct answer (markAsCorrect = true)', () => {
+    let polygonComponent, lineComponent;
+
+    const model = {
+      classes: {
+        base: 'base'
+      },
+      height: 200,
+      hotspotColor: 'rgba(137, 183, 244, 0.65)',
+      id: '1',
+      isCorrect: false,
+      isEvaluateMode: true,
+      evaluateText: null,
+      disabled: false,
+      outlineColor: 'blue',
+      selected: false,
+      points: [{ x: 94, y: 4 }, { x: 89, y: 4 }, { x: 36, y: 40 }],
+      markAsCorrect: true,
+      onclick
+    };
+
+    const testWrapper = shallowChild(Polygon, {
+      ...model
+    }, 1);
+
+    beforeEach(() => {
+      polygonComponent = testWrapper();
+      lineComponent = polygonComponent.find(Line);
+    });
+
+    it('is rendered with a green outline color', () => {
+      expect(lineComponent.prop('stroke')).toEqual('green');
+    });
+
+    it('is rendered with an outline size > 0', () => {
+      expect(lineComponent.prop('strokeWidth')).toBeGreaterThan(0);
     });
   });
 });
