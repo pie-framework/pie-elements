@@ -105,7 +105,7 @@ describe('Rectangle', () => {
       x: 5,
       y: 5,
       markAsCorrect: true,
-      onclick
+      onClick
     };
 
     const testWrapper = shallowChild(Rectangle, {

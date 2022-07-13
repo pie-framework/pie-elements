@@ -96,7 +96,7 @@ describe('Polygon', () => {
       selected: false,
       points: [{ x: 94, y: 4 }, { x: 89, y: 4 }, { x: 36, y: 40 }],
       markAsCorrect: true,
-      onclick
+      onClick
     };
 
     const testWrapper = shallowChild(Polygon, {
