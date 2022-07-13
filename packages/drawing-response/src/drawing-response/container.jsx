@@ -259,12 +259,9 @@ const styles = theme => ({
     backgroundColor: '#fff'
   },
   toolbar: {
-    // backgroundColor: '#ECEDF1',
     borderBottom: '1px solid #E0E1E6',
     borderTopLeftRadius: '5px',
     borderTopRightRadius: '5px',
-    // display: 'flex',
-    // justifyContent: 'space-between',
     padding: '12px 8px 4px',
     boxSizing: 'border-box',
     maxWidth: 'calc(100% - 163px)', // 163px is the width set on undoControls
