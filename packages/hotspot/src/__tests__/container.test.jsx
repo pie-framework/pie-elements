@@ -114,7 +114,7 @@ describe('CorrectAnswerToggle', () => {
     expect(toggle.prop('toggled')).toEqual(false);
     component.instance().onToggle();
     expect(component.state('showCorrect')).toEqual(true);
-    // expect(toggle.prop('toggled')).toEqual(true);
+    expect(component.find(CorrectAnswerToggle).prop('toggled')).toEqual(true);
   });
 });
 
