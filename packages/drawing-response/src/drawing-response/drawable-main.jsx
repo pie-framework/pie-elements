@@ -289,7 +289,9 @@ export class DrawableMain extends React.Component {
 
 const styles = () => ({
   wrapper: {
-    display: 'grid'
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'flex-end'
   },
   base: {
     position: 'relative',
@@ -304,8 +306,6 @@ const styles = () => ({
     cursor: 'pointer'
   },
   undoControls: {
-    // float: 'right',
-    justifySelf: 'right',
     marginTop: -43,
     width: 163
   }
