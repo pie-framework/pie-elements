@@ -355,6 +355,7 @@ export class CorrectResponse extends React.Component {
                 backgroundMarks={backgroundMarks}
                 coordinatesOnHover={coordinatesOnHover}
                 domain={domain}
+                draggableTools={key === 'correctAnswer'}
                 labels={labels}
                 marks={marks}
                 onChangeMarks={newMarks => this.changeMarks(key, newMarks)}
@@ -362,6 +363,7 @@ export class CorrectResponse extends React.Component {
                 size={{width: graph.width, height: graph.height}}
                 title={title}
                 toolbarTools={toolbarTools}
+                onChangeTools={toolbarTools => this.updateModel({ toolbarTools })}
               />
             </div>
           )
