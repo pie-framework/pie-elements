@@ -200,21 +200,19 @@ export class Container extends Component {
 
         <div className={classes.box}>
           <div className={classes.toolbar}>
-            <div>
-              {TOOLS.map(tool => {
-                const { type, label, icon } = tool;
+            {TOOLS.map(tool => {
+              const { type, label, icon } = tool;
 
-                return (
-                  <Button
-                    title={label}
-                    key={type}
-                    disabled={this.checkIfToolIsDisabled(type)}
-                    onClick={() => this.handleMakeToolActive(tool)}
-                    label={<Icon path={icon} />}
-                  />
-                );
-              })}
-            </div>
+              return (
+                <Button
+                  title={label}
+                  key={type}
+                  disabled={this.checkIfToolIsDisabled(type)}
+                  onClick={() => this.handleMakeToolActive(tool)}
+                  label={<Icon path={icon} />}
+                />
+              );
+            })}
           </div>
 
           <div
@@ -253,19 +251,23 @@ const styles = theme => ({
   box: {
     border: '1px solid #E0E1E6',
     borderRadius: '5px',
-    marginTop: theme.spacing.unit * 2
+    marginTop: theme.spacing.unit * 2,
+    backgroundColor: '#ECEDF1'
   },
   drawableHeight: {
-    minHeight: 350
+    minHeight: 350,
+    backgroundColor: '#fff'
   },
   toolbar: {
-    backgroundColor: '#ECEDF1',
     borderBottom: '1px solid #E0E1E6',
     borderTopLeftRadius: '5px',
     borderTopRightRadius: '5px',
-    display: 'flex',
-    justifyContent: 'space-between',
-    padding: '12px 8px'
+    padding: '12px 8px 4px',
+    boxSizing: 'border-box',
+    maxWidth: 'calc(100% - 163px)', // 163px is the width set on undoControls
+    '& button': {
+      marginBottom: '8px'
+    }
   }
 });
 
