@@ -58,6 +58,16 @@ export default {
       enabled: true,
       label: 'Preserve aspect ratio'
     },
-    minShapes: 2
+    minShapes: 2,
+    maxImageWidth: {
+      teacherInstructions: 300,
+      prompt: 300,
+      rationale: 300,
+    },
+    maxImageHeight: {
+      teacherInstructions: 300,
+      prompt: 300,
+      rationale: 300,
+    }
   }
 };

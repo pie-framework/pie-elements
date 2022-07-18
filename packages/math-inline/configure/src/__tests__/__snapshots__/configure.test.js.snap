@@ -21,6 +21,16 @@ exports[`Configure renders correctly with snapshot 1`] = `
               "label": "Ignore Order",
               "settings": false,
             },
+            "maxImageHeight": Object {
+              "prompt": 300,
+              "rationale": 300,
+              "teacherInstructions": 300,
+            },
+            "maxImageWidth": Object {
+              "prompt": 300,
+              "rationale": 300,
+              "teacherInstructions": 300,
+            },
             "partialScoring": Object {
               "label": "Allow Partial Scoring",
               "settings": false,
@@ -157,6 +167,16 @@ exports[`Configure renders correctly with snapshot 1`] = `
                 "enabled": true,
                 "label": "Ignore Order",
                 "settings": false,
+              },
+              "maxImageHeight": Object {
+                "prompt": 300,
+                "rationale": 300,
+                "teacherInstructions": 300,
+              },
+              "maxImageWidth": Object {
+                "prompt": 300,
+                "rationale": 300,
+                "teacherInstructions": 300,
               },
               "partialScoring": Object {
                 "label": "Allow Partial Scoring",
@@ -301,6 +321,8 @@ exports[`GeneralConfigBlock renders correctly with snapshot 1`] = `
       className="GeneralConfigBlock-prompt-13"
       imageSupport={Object {}}
       markup=""
+      maxImageHeight={300}
+      maxImageWidth={300}
       nonEmpty={false}
       onChange={[Function]}
       onFocus={[Function]}

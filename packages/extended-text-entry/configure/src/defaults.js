@@ -6,6 +6,8 @@ export default {
     },
     prompt: 'This is the question prompt',
     mathInput: false,
+    spanishInput: false,
+    specialInput: false,
     equationEditor: 'Grade 8 - HS',
     feedbackEnabled: true,
     rationaleEnabled: true,
@@ -45,6 +47,16 @@ export default {
       label: 'Student response can include math notation',
       enabled: false,
     },
+    spanishInput: {
+      settings: true,
+      label: 'Students can insert Spanish',
+      enabled: false,
+    },
+    specialInput: {
+      settings: true,
+      label: 'Students can insert Special Characters',
+      enabled: false,
+    },
     multiple: {
       settings: false,
       label: 'Multiple Parts',
@@ -62,5 +74,13 @@ export default {
       settings: true,
       label: 'Teacher Instructions'
     },
+    maxImageWidth: {
+      teacherInstructions: 300,
+      prompt: 300
+    },
+    maxImageHeight: {
+      teacherInstructions: 300,
+      prompt: 300
+    }
   }
 };

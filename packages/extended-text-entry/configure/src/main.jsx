@@ -71,14 +71,21 @@ export class Main extends React.Component {
       prompt = {},
       studentInstructions = {},
       mathInput = {},
+      spanishInput = {},
+      specialInput = {},
       dimensions = {},
       equationEditor = {},
       spellCheck = {},
-      playerSpellCheck = {}
+      playerSpellCheck = {},
+      maxImageWidth = {},
+      maxImageHeight = {}
     } = configuration || {};
     const { teacherInstructionsEnabled, promptEnabled, feedbackEnabled, spellCheckEnabled } =
       model || {};
     const toolbarOpts = {};
+
+    const defaultImageMaxWidth = maxImageWidth && maxImageWidth.prompt;
+    const defaultImageMaxHeight = maxImageHeight && maxImageHeight.prompt;
 
     switch (model.toolbarEditorPosition) {
       case 'top':
@@ -116,6 +123,8 @@ export class Main extends React.Component {
                     'statistics',
                     'item-authoring',
                   ]),
+                spanishInput: spanishInput.settings && toggle(spanishInput.label),
+                specialInput: specialInput.settings && toggle(specialInput.label),
                 dimensions: numberFields(dimensions.label, {
                   width: {
                     label: 'Width (px)',
@@ -165,6 +174,8 @@ export class Main extends React.Component {
                 nonEmpty={false}
                 toolbarOpts={toolbarOpts}
                 spellCheck={spellCheckEnabled}
+                maxImageWidth={maxImageWidth && maxImageWidth.teacherInstructions || defaultImageMaxWidth}
+                maxImageHeight={maxImageHeight && maxImageHeight.teacherInstructions || defaultImageMaxHeight}
               />
             </InputContainer>
           )}
@@ -185,6 +196,8 @@ export class Main extends React.Component {
                 nonEmpty={false}
                 toolbarOpts={toolbarOpts}
                 spellCheck={spellCheckEnabled}
+                maxImageWidth={defaultImageMaxWidth}
+                maxImageHeight={defaultImageMaxHeight}
               />
             </InputContainer>
           )}

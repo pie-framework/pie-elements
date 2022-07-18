@@ -1,6 +1,6 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import { chartTypes } from '@pie-lib/charting';
+import { chartTypes, ConfigureChartPanel } from '@pie-lib/charting';
 import { settings, layout, InputContainer } from '@pie-lib/config-ui';
 import PropTypes from 'prop-types';
 import debug from 'debug';
@@ -9,7 +9,8 @@ import EditableHtml from '@pie-lib/editable-html';
 
 import ChartingConfig from './charting-config';
 import CorrectResponse from './correct-response';
-import ChartType from './chart-type';
+import { applyConstraints, getGridValues, getLabelValues } from './utils';
+
 
 const log = debug('@pie-element:graphing:configure');
 const { Panel, toggle, radio, numberFields } = settings;
@@ -55,6 +56,21 @@ export class Configure extends React.Component {
     configuration: PropTypes.object.isRequired,
   };
 
+  constructor(props) {
+    super(props);
+    const { range, graph } = props.model || {};
+
+    const gridValues = {
+      range: getGridValues(range, graph.height, true)
+    };
+ 
+    const labelValues = {
+      range: getLabelValues(range.step || 1)
+    };
+
+    this.state = { gridValues, labelValues };
+  };
+
   static defaultProps = { classes: {} };
 
   onRationaleChange = (rationale) =>
@@ -68,6 +84,23 @@ export class Configure extends React.Component {
 
   onChartTypeChange = (chartType) =>
     this.props.onModelChanged({ ...this.props.model, chartType });
+
+  onConfigChange = config => {
+    const { model } = this.props;
+    const { gridValues: oldGridValues, labelValues: oldLabelValues } = this.state;
+    const updatedModel = { ...model, ...config };
+    const { graph, range } = updatedModel;
+    const gridValues = {};
+    const labelValues = {};
+
+    const rangeConstraints = applyConstraints(range, graph.height, oldGridValues.range, oldLabelValues.range);
+
+    gridValues.range = rangeConstraints.gridValues;
+    labelValues.range = rangeConstraints.labelValues;
+
+    this.setState({ gridValues, labelValues });
+    this.props.onModelChanged(updatedModel);
+  };
 
   render() {
     const {
@@ -87,10 +120,16 @@ export class Configure extends React.Component {
       studentInstructions = {},
       teacherInstructions = {},
       prompt = {},
-      spellCheck = {}
+      spellCheck = {},
+      maxImageWidth = {},
+      maxImageHeight = {}
     } = configuration || {};
     const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled, spellCheckEnabled } =
       model || {};
+    const { gridValues, labelValues } = this.state;
+
+    const defaultImageMaxWidth = maxImageWidth && maxImageWidth.prompt;
+    const defaultImageMaxHeight = maxImageHeight && maxImageHeight.prompt;
 
     return (
       <layout.ConfigLayout
@@ -162,6 +201,8 @@ export class Configure extends React.Component {
                 imageSupport={imageSupport}
                 nonEmpty={false}
                 spellCheck={spellCheckEnabled}
+                maxImageWidth={maxImageWidth && maxImageWidth.teacherInstructions || defaultImageMaxWidth}
+                maxImageHeight={maxImageHeight && maxImageHeight.teacherInstructions || defaultImageMaxHeight}
               />
             </InputContainer>
           )}
@@ -179,6 +220,8 @@ export class Configure extends React.Component {
                 nonEmpty={false}
                 spellCheck={spellCheckEnabled}
                 disableUnderline
+                maxImageWidth={defaultImageMaxWidth}
+                maxImageHeight={defaultImageMaxHeight}
               />
             </InputContainer>
           )}
@@ -194,17 +237,21 @@ export class Configure extends React.Component {
                 onChange={this.onRationaleChange}
                 imageSupport={imageSupport}
                 spellCheck={spellCheckEnabled}
+                maxImageWidth={maxImageWidth && maxImageWidth.rationale || defaultImageMaxWidth}
+                maxImageHeight={maxImageHeight && maxImageHeight.rationale || defaultImageMaxHeight}
               />
             </InputContainer>
           )}
 
-          <ChartType
-            value={model.chartType}
-            onChange={(e) => this.onChartTypeChange(e.target.value)}
+          <ConfigureChartPanel
+            model={model}
+            onChange={this.onConfigChange}
+            gridValues={gridValues}
+            labelValues={labelValues}
+            charts={charts}
           />
 
           <ChartingConfig
-            config={graph}
             model={model}
             onChange={onModelChanged}
             charts={charts}

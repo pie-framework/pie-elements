@@ -91,6 +91,16 @@ export default {
       settings: true,
       label: 'Maximum Length Per Choice'
     },
-    maxResponseAreas: 10
+    maxResponseAreas: 10,
+    maxImageWidth: {
+      teacherInstructions: 300,
+      prompt: 300,
+      rationale: 300,
+    },
+    maxImageHeight: {
+      teacherInstructions: 300,
+      prompt: 300,
+      rationale: 300,
+    }
   }
 };

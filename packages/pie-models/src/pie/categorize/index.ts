@@ -126,6 +126,26 @@ export interface CategorizePie extends PieModel {
   toolbarEditorPosition?: 'bottom' | 'top';
 }
 
+interface ConfigureMaxImageDimensionsProp {
+  /** Indicates the max dimension for images in teacher instructions */
+  teacherInstructions?: number;
+
+  /** Indicates the max dimension for images in prompt - this is also the default dimension for all other input fields if it's not specified */
+  prompt?: number;
+
+  /** Indicates the max dimension for images in rationale */
+  rationale?: number;
+
+  /** Indicates the max dimension for images in choices */
+  choices?: number;
+
+  /** Indicates the max dimension for images in row labels */
+  rowLabel?: number;
+
+  /** Indicates the max dimension for images in category labels */
+  categoryLabel?: number;
+}
+
 /**
  * Config Object for @pie-elements/categorize
  * @additionalProperties false
@@ -177,4 +197,14 @@ export interface CategorizeConfigure
    * Maximum number of categories
    */
   maxCategories?: number
+
+  /**
+   * Maximum image width for input fields
+   */
+  maxImageWidth?: ConfigureMaxImageDimensionsProp;
+
+  /**
+   * Maximum image height for input fields
+   */
+  maxImageHeight?: ConfigureMaxImageDimensionsProp;
 }

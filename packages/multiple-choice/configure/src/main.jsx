@@ -133,7 +133,9 @@ const Design = withStyles(styles)((props) => {
     settingsPanelDisabled,
     choicesLayout,
     spellCheck = {},
-    gridColumns
+    gridColumns,
+    maxImageWidth = {},
+    maxImageHeight = {}
   } = configuration || {};
   let { maxAnswerChoices } = configuration || {};
   const {
@@ -175,6 +177,8 @@ const Design = withStyles(styles)((props) => {
   }
 
   const validationMessage = generateValidationMessage(configuration);
+  const defaultImageMaxWidth = maxImageWidth && maxImageWidth.prompt;
+  const defaultImageMaxHeight = maxImageHeight && maxImageHeight.prompt;
 
   const Content = (
     <div>
@@ -191,6 +195,8 @@ const Design = withStyles(styles)((props) => {
             nonEmpty={false}
             toolbarOpts={toolbarOpts}
             spellCheck={spellCheckEnabled}
+            maxImageWidth={maxImageWidth && maxImageWidth.teacherInstructions || defaultImageMaxWidth}
+            maxImageHeight={maxImageHeight && maxImageHeight.teacherInstructions || defaultImageMaxHeight}
           />
         </InputContainer>
       )}
@@ -206,6 +212,8 @@ const Design = withStyles(styles)((props) => {
             disableUnderline
             toolbarOpts={toolbarOpts}
             spellCheck={spellCheckEnabled}
+            maxImageWidth={maxImageWidth && maxImageWidth.prompt}
+            maxImageHeight={maxImageHeight && maxImageHeight.prompt}
           />
         </InputContainer>
       )}
@@ -246,6 +254,8 @@ const Design = withStyles(styles)((props) => {
             spellCheck={spellCheckEnabled}
             error={choicesErrors && choicesErrors[choice.value] ? choicesErrors[choice.value] : null}
             noCorrectAnswerError={correctResponseError}
+            maxImageWidth={maxImageWidth && maxImageWidth.choices || defaultImageMaxWidth}
+            maxImageHeight={maxImageHeight && maxImageHeight.choices || defaultImageMaxHeight}
           />
           {rationaleEnabled && (
             <InputContainer
@@ -266,6 +276,8 @@ const Design = withStyles(styles)((props) => {
                 toolbarOpts={toolbarOpts}
                 pluginProps={labelPlugins}
                 spellCheck={spellCheckEnabled}
+                maxImageWidth={maxImageWidth && maxImageWidth.rationale || defaultImageMaxWidth}
+                maxImageHeight={maxImageHeight && maxImageHeight.rationale || defaultImageMaxHeight}
               />
             </InputContainer>
           )}
@@ -287,6 +299,8 @@ const Design = withStyles(styles)((props) => {
                 imageSupport={imageSupport}
                 pluginProps={labelPlugins}
                 spellCheck={spellCheckEnabled}
+                maxImageWidth={maxImageWidth && maxImageWidth.choices || defaultImageMaxWidth}
+                maxImageHeight={maxImageHeight && maxImageHeight.choices || defaultImageMaxHeight}
               />
             </InputContainer>
           )}

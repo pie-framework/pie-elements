@@ -1485,6 +1485,22 @@
       "type": "boolean",
       "title": "coordinatesOnHover"
     },
+    "defaultTool": {
+      "description": "Indicates the default selected tool for the graph",
+      "enum": [
+        "circle",
+        "line",
+        "parabola",
+        "point",
+        "polygon",
+        "ray",
+        "segment",
+        "sine",
+        "vector"
+      ],
+      "type": "string",
+      "title": "defaultTool"
+    },
     "domain": {
       "title": "GraphSettings",
       "type": "object",
@@ -1548,6 +1564,11 @@
         "height",
         "width"
       ]
+    },
+    "includeAxes": {
+      "description": "Indicates if the graph axes and labels are enabled",
+      "type": "boolean",
+      "title": "includeAxes"
     },
     "labels": {
       "title": "Labels",
@@ -1721,6 +1742,11 @@
       "type": "boolean",
       "title": "spellCheckEnabled"
     },
+    "standardGrid": {
+      "description": "Indicates if some domain values will be synched to the range values",
+      "type": "boolean",
+      "title": "standardGrid"
+    },
     "studentInstructionsEnabled": {
       "description": "Indicates if Student Instructions are enabled",
       "type": "boolean",
@@ -1745,6 +1771,7 @@
   "required": [
     "answers",
     "backgroundMarks",
+    "defaultTool",
     "domain",
     "element",
     "graph",
@@ -1756,22 +1783,128 @@
     "teacherInstructionsEnabled"
   ],
   "definitions": {
-    "ConfigurePropWithEnabled": {
-      "title": "ConfigurePropWithEnabled",
+    "AuthoringConfigProp": {
+      "title": "AuthoringConfigProp",
       "type": "object",
       "properties": {
         "settings": {
-          "description": "Indicates if the item has to be displayed in the Settings Panel",
+          "description": "Indicates if the item is displayed in the Settings Panel",
           "type": "boolean",
           "title": "settings"
         },
         "label": {
-          "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+          "description": "Indicates the label for the item that is displayed in the Settings Panel",
           "type": "string",
           "title": "label"
         },
         "enabled": {
-          "description": "Indicates the value of the item if it affects config-ui\n(eg.: if item is a switch and displaying an input on the config-ui depends on the switch value: on/off)",
+          "description": "Indicates if the Grid Setup Panel is displayed",
+          "type": "boolean",
+          "title": "enabled"
+        },
+        "includeAxesEnabled": {
+          "description": "Indicates if the \"includeAxes\" toggle is displayed in the Grid Setup Panel",
+          "type": "boolean",
+          "title": "includeAxesEnabled"
+        },
+        "standardGridEnabled": {
+          "description": "Indicates if the \"standardGrid\" toggle is displayed in the Grid Setup Panel",
+          "type": "boolean",
+          "title": "standardGridEnabled"
+        },
+        "min": {
+          "title": "GridPanelConfigProp",
+          "type": "object",
+          "properties": {
+            "label": {
+              "description": "Indicates the label for the item that is displayed in the Grid Setup Panel",
+              "type": "string",
+              "title": "label"
+            },
+            "enabled": {
+              "description": "Indicates if the item is displayed in the Grid Setup Panel",
+              "type": "boolean",
+              "title": "enabled"
+            }
+          }
+        },
+        "max": {
+          "title": "GridPanelConfigProp",
+          "type": "object",
+          "properties": {
+            "label": {
+              "description": "Indicates the label for the item that is displayed in the Grid Setup Panel",
+              "type": "string",
+              "title": "label"
+            },
+            "enabled": {
+              "description": "Indicates if the item is displayed in the Grid Setup Panel",
+              "type": "boolean",
+              "title": "enabled"
+            }
+          }
+        },
+        "axisLabel": {
+          "title": "GridPanelConfigProp",
+          "type": "object",
+          "properties": {
+            "label": {
+              "description": "Indicates the label for the item that is displayed in the Grid Setup Panel",
+              "type": "string",
+              "title": "label"
+            },
+            "enabled": {
+              "description": "Indicates if the item is displayed in the Grid Setup Panel",
+              "type": "boolean",
+              "title": "enabled"
+            }
+          }
+        },
+        "step": {
+          "title": "GridPanelConfigProp",
+          "type": "object",
+          "properties": {
+            "label": {
+              "description": "Indicates the label for the item that is displayed in the Grid Setup Panel",
+              "type": "string",
+              "title": "label"
+            },
+            "enabled": {
+              "description": "Indicates if the item is displayed in the Grid Setup Panel",
+              "type": "boolean",
+              "title": "enabled"
+            }
+          }
+        },
+        "labelStep": {
+          "title": "GridPanelConfigProp",
+          "type": "object",
+          "properties": {
+            "label": {
+              "description": "Indicates the label for the item that is displayed in the Grid Setup Panel",
+              "type": "string",
+              "title": "label"
+            },
+            "enabled": {
+              "description": "Indicates if the item is displayed in the Grid Setup Panel",
+              "type": "boolean",
+              "title": "enabled"
+            }
+          }
+        }
+      }
+    },
+    "GridPanelConfigProp": {
+      "title": "GridPanelConfigProp",
+      "type": "object",
+      "properties": {
+        "label": {
+          "description": "Indicates the label for the item that is displayed in the Grid Setup Panel",
+          "type": "string",
+          "title": "label"
+        },
+        "enabled": {
+          "description": "Indicates if the item is displayed in the Grid Setup Panel",
           "type": "boolean",
           "title": "enabled"
         }
@@ -1861,6 +1994,84 @@
           "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
           "type": "string",
           "title": "label"
+        }
+      }
+    },
+    "DimensionsConfigProp": {
+      "title": "DimensionsConfigProp",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "Indicates if the item has to be displayed in the Settings Panel",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+          "type": "string",
+          "title": "label"
+        },
+        "enabled": {
+          "description": "Indicates if the graph dimensions are included in the Grid Setup Panel",
+          "type": "boolean",
+          "title": "enabled"
+        },
+        "min": {
+          "description": "Indicates the minimum value for the graph width and height",
+          "type": "number",
+          "title": "min"
+        },
+        "max": {
+          "description": "Indicates the maximum value for the graph width and height",
+          "type": "number",
+          "title": "max"
+        },
+        "step": {
+          "description": "Indicates the increase/decrease value for the graph width and height",
+          "type": "number",
+          "title": "step"
+        }
+      }
+    },
+    "ConfigurePropWithEnabled": {
+      "title": "ConfigurePropWithEnabled",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "Indicates if the item has to be displayed in the Settings Panel",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+          "type": "string",
+          "title": "label"
+        },
+        "enabled": {
+          "description": "Indicates the value of the item if it affects config-ui\n(eg.: if item is a switch and displaying an input on the config-ui depends on the switch value: on/off)",
+          "type": "boolean",
+          "title": "enabled"
+        }
+      }
+    },
+    "ConfigureMaxImageDimensionsProp": {
+      "title": "ConfigureMaxImageDimensionsProp",
+      "type": "object",
+      "properties": {
+        "teacherInstructions": {
+          "description": "Indicates the max dimension for images in teacher instructions",
+          "type": "number",
+          "title": "teacherInstructions"
+        },
+        "prompt": {
+          "description": "Indicates the max dimension for images in prompt - this is also the default dimension for all other input fields if it's not specified",
+          "type": "number",
+          "title": "prompt"
+        },
+        "rationale": {
+          "description": "Indicates the max dimension for images in rationale",
+          "type": "number",
+          "title": "rationale"
         }
       }
     },

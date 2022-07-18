@@ -44,7 +44,9 @@ export class Category extends React.Component {
       onAddChoice,
       imageSupport,
       spellCheck,
-      toolbarOpts
+      toolbarOpts,
+      maxImageWidth,
+      maxImageHeight
     } = this.props;
     return (
       <Card className={classNames(classes.category, className)}>
@@ -57,6 +59,8 @@ export class Category extends React.Component {
               imageSupport={imageSupport}
               toolbarOpts={toolbarOpts}
               spellCheck={spellCheck}
+              maxImageWidth={maxImageWidth}
+              maxImageHeight={maxImageHeight}
             />
           )
         }

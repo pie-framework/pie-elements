@@ -54,19 +54,9 @@ const getPartialScoring = ({ scoringType, env }) => {
   return partialScoring.enabled({ partialScoring: pS }, env);
 };
 
-export const orderCorrectAnswers = (questionPossibleAnswers) => {
-  questionPossibleAnswers = questionPossibleAnswers || {};
-
-  if (!questionPossibleAnswers.hasOwnProperty('correctAnswer')) {
-    sortedAnswers(questionPossibleAnswers);
-  }
-
-  return Object.assign({ correctAnswer: questionPossibleAnswers.correctAnswer }, sortedAnswers(questionPossibleAnswers));
-};
-
 export const getBestAnswer = (question, session, env = {}) => {
   // questionPossibleAnswers contains all possible answers (correct response and alternates);
-  let { answers: questionPossibleAnswers, scoringType } = question || {};
+  let { answers: questionPossibleAnswers = {}, scoringType } = question || {};
   let { answer } = session || {};
 
   // initialize answer if no values
@@ -76,7 +66,10 @@ export const getBestAnswer = (question, session, env = {}) => {
   if (isEmpty(questionPossibleAnswers)) {
     questionPossibleAnswers = { correctAnswer: initializeGraphMap() };
   } else {
-    orderCorrectAnswers(questionPossibleAnswers);
+    questionPossibleAnswers = {
+      correctAnswer: questionPossibleAnswers.correctAnswer,
+      ...sortedAnswers(questionPossibleAnswers)
+    };
   }
 
   const partialScoringEnabled = getPartialScoring({ scoringType, env });
@@ -139,7 +132,15 @@ export const normalize = question => ({ ...defaults, ...question });
 export function model(question, session, env) {
   return new Promise(resolve => {
     const normalizedQuestion = normalize(question);
-    const { prompt, promptEnabled, graph, answers, ...questionProps } = normalizedQuestion || {};
+    const {
+      defaultTool,
+      prompt,
+      promptEnabled,
+      graph,
+      answers,
+      toolbarTools,
+      ...questionProps
+    } = normalizedQuestion || {};
     let { arrows } = normalizedQuestion;
     const { mode, role } = env || {};
 
@@ -163,16 +164,22 @@ export function model(question, session, env) {
       }
     }
 
+    // added support for models without defaultTool defined; also used in packages/graphing/configure/src/index.js
+    const toolbarToolsNoLabel = (toolbarTools || []).filter(tool => tool !== 'label');
+    const normalizedDefaultTool = defaultTool || (toolbarToolsNoLabel.length && toolbarToolsNoLabel[0]) || '';
+
     const base = {
       ...questionProps,
       answers,
+      arrows,
+      defaultTool: normalizedDefaultTool,
       disabled: env.mode !== 'gather',
       prompt: promptEnabled ? prompt : null,
       rationale: null,
       size: graph,
       showToggle: env.mode === 'evaluate' && !isEmpty(answers),
       teacherInstructions: null,
-      arrows
+      toolbarTools
     };
 
     if (role === 'instructor' && (mode === 'view' || mode === 'evaluate')) {

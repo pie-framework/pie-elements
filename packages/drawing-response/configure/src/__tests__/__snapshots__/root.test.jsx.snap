@@ -11,6 +11,14 @@ exports[`Root snapshot renders 1`] = `
               "label": "Background Image",
               "settings": true,
             },
+            "maxImageHeight": Object {
+              "prompt": 300,
+              "teacherInstructions": 300,
+            },
+            "maxImageWidth": Object {
+              "prompt": 300,
+              "teacherInstructions": 300,
+            },
             "prompt": Object {
               "label": "Prompt",
               "settings": true,
@@ -60,6 +68,8 @@ exports[`Root snapshot renders 1`] = `
       >
         <EditableHtml
           markup="Test Prompt"
+          maxImageHeight={300}
+          maxImageWidth={300}
           onChange={[Function]}
           toolbarOpts={
             Object {

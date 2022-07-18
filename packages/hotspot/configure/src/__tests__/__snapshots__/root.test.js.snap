@@ -7,6 +7,16 @@ exports[`Root render renders 1`] = `
       <Panel
         configuration={
           Object {
+            "maxImageHeight": Object {
+              "prompt": 300,
+              "rationale": 300,
+              "teacherInstructions": 300,
+            },
+            "maxImageWidth": Object {
+              "prompt": 300,
+              "rationale": 300,
+              "teacherInstructions": 300,
+            },
             "minShapes": 2,
             "multipleCorrect": Object {
               "label": "Multiple Correct Responses",

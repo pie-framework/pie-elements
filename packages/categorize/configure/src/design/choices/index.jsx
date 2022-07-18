@@ -74,10 +74,16 @@ export class Choices extends React.Component {
       spellCheck,
       toolbarOpts,
       configuration,
+      defaultImageMaxWidth,
+      defaultImageMaxHeight
     } = this.props;
     const { errors } = model;
     const { choicesError, choicesErrors } = errors || {};
-    const { maxChoices } = configuration || {};
+    const {
+      maxChoices,
+      maxImageWidth = {},
+      maxImageHeight = {}
+    } = configuration || {};
 
     const categoryCountIsOne = this.allChoicesHaveCount(1);
     const choiceHolderStyle = {
@@ -112,6 +118,8 @@ export class Choices extends React.Component {
               toolbarOpts={toolbarOpts}
               spellCheck={spellCheck}
               error={choicesErrors && choicesErrors[h.id]}
+              maxImageWidth={maxImageWidth && maxImageWidth.choice || defaultImageMaxWidth}
+              maxImageHeight={maxImageHeight && maxImageHeight.choice || defaultImageMaxHeight}
             />
           ))}
         </div>

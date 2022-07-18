@@ -33,6 +33,7 @@ exports[`ImageContainer snapshot renders 1`] = `
             Object {
               "maxHeight": "auto",
               "maxWidth": "100%",
+              "width": undefined,
             }
           }
         />

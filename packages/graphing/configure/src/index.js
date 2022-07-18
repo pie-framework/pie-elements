@@ -3,31 +3,52 @@ import ReactDOM from 'react-dom';
 import Configure from './configure';
 import { DeleteImageEvent, InsertImageEvent, ModelUpdatedEvent } from '@pie-framework/pie-configure-events';
 import debug from 'debug';
-
 import defaultValues from './defaults';
 
 const log = debug('pie-elements:graphing:configure');
-import isEmpty from 'lodash/isEmpty';
 
 // this function is implemented in controller as well
-const sortedAnswers = (answers) => {
-  answers = answers || {};
-
-  return Object.keys(answers).sort().reduce((result, key) => {
+const sortedAnswers = answers => Object.keys(answers || {}).sort().reduce((result, key) => {
+  if (key !== 'correctAnswer') {
     result[key] = answers[key];
+  }
 
-    return result;
-  }, {});
-};
+  return result;
+}, {});
 
 export default class GraphLinesConfigure extends HTMLElement {
   static createDefaultModel = (model = {}) => {
+    const normalizedModel = { ...defaultValues.model, ...model };
+    const {
+      answers = {},
+      domain = {},
+      defaultTool,
+      graph = {},
+      range = {},
+      standardGrid,
+      toolbarTools
+    } = normalizedModel;
 
-    if (!isEmpty(model.answers) && model.answers.hasOwnProperty('correctAnswer')) {
-        model.answers = Object.assign({ correctAnswer: model.answers.correctAnswer }, sortedAnswers(model.answers));
-    }
+    // added support for models without defaultTool defined; also used in packages/graphing/controller/src/index.js
+    const toolbarToolsNoLabel = (toolbarTools || []).filter(tool => tool !== 'label');
+    const normalizedDefaultTool = defaultTool || toolbarToolsNoLabel.length && toolbarToolsNoLabel[0] || '';
 
-    return { ...defaultValues.model, ...model }
+    return {
+      ...normalizedModel,
+      answers: answers && answers.correctAnswer && {
+        correctAnswer: answers.correctAnswer,
+        ...sortedAnswers(answers)
+      } || answers,
+      defaultTool: normalizedDefaultTool,
+      range: standardGrid && {
+        ...range,
+        min: domain.min,
+        max: domain.max,
+        step: domain.step,
+        labelStep: domain.labelStep
+      } || range,
+      graph: standardGrid && { ...graph, height: graph.width } || graph
+    };
   };
 
   constructor() {

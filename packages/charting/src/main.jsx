@@ -55,7 +55,6 @@ export class Main extends React.Component {
       domain,
       range,
       title,
-      editCategoryEnabled,
       addCategoryEnabled,
       categoryDefaultLabel,
       rationale,
@@ -122,7 +121,6 @@ export class Main extends React.Component {
             data={correctData || categories}
             title={title}
             onDataChange={this.changeData}
-            editCategoryEnabled={false}
             addCategoryEnabled={false}
             categoryDefaultLabel={categoryDefaultLabel}
           />
@@ -143,7 +141,6 @@ export class Main extends React.Component {
             data={correctedAnswer || categories}
             title={title}
             onDataChange={this.changeData}
-            editCategoryEnabled={editCategoryEnabled}
             addCategoryEnabled={addCategoryEnabled}
             categoryDefaultLabel={categoryDefaultLabel}
           />

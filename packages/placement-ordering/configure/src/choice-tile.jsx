@@ -96,7 +96,9 @@ export class ChoiceTile extends React.Component {
       imageSupport,
       disableImages,
       spellCheck,
-      toolbarOpts
+      toolbarOpts,
+      maxImageWidth,
+      maxImageHeight
     } = this.props;
     const { dialog } = this.state;
 
@@ -132,6 +134,8 @@ export class ChoiceTile extends React.Component {
           activePlugins={filteredDefaultPlugins}
           spellCheck={spellCheck}
           allowValidation
+          maxImageWidth={maxImageWidth}
+          maxImageHeight={maxImageHeight}
         />
         {editable && (
           <div className={classes.controls}>

@@ -23,18 +23,59 @@ exports[`Configure renders snapshot 1`] = `
             },
           },
           "authoring": Object {
-            "enabled": false,
-            "label": "Allow authoring",
+            "axisLabel": Object {
+              "enabled": true,
+              "label": "Label",
+            },
+            "enabled": true,
+            "includeAxesEnabled": true,
+            "label": "Customize Grid Setup",
+            "labelStep": Object {
+              "enabled": true,
+              "label": "Label Interval",
+            },
+            "max": Object {
+              "enabled": true,
+              "label": "Max Value",
+            },
+            "min": Object {
+              "enabled": true,
+              "label": "Min Value",
+            },
             "settings": false,
+            "standardGridEnabled": true,
+            "step": Object {
+              "enabled": true,
+              "label": "Grid Interval",
+            },
           },
+          "availableTools": Array [],
           "coordinatesOnHover": Object {
             "label": "Coordinates on Hover",
             "settings": true,
+          },
+          "graphDimensions": Object {
+            "enabled": true,
+            "label": "Graph Dimensions",
+            "max": 800,
+            "min": 150,
+            "settings": false,
+            "step": 20,
           },
           "labels": Object {
             "enabled": true,
             "label": "Labels",
             "settings": false,
+          },
+          "maxImageHeight": Object {
+            "prompt": 300,
+            "rationale": 300,
+            "teacherInstructions": 300,
+          },
+          "maxImageWidth": Object {
+            "prompt": 300,
+            "rationale": 300,
+            "teacherInstructions": 300,
           },
           "padding": Object {
             "label": "Padding",
@@ -114,6 +155,7 @@ exports[`Configure renders snapshot 1`] = `
             "height": 500,
             "width": 500,
           },
+          "includeAxes": true,
           "labels": Object {},
           "padding": true,
           "prompt": "",
@@ -127,6 +169,7 @@ exports[`Configure renders snapshot 1`] = `
           },
           "rationale": "",
           "rationaleEnabled": true,
+          "standardGrid": false,
           "studentInstructionsEnabled": true,
           "teacherInstructionsEnabled": true,
           "title": "",
@@ -150,6 +193,8 @@ exports[`Configure renders snapshot 1`] = `
     >
       <EditableHtml
         markup=""
+        maxImageHeight={300}
+        maxImageWidth={300}
         nonEmpty={false}
         onChange={[Function]}
       />
@@ -160,6 +205,8 @@ exports[`Configure renders snapshot 1`] = `
       <EditableHtml
         disableUnderline={true}
         markup=""
+        maxImageHeight={300}
+        maxImageWidth={300}
         nonEmpty={false}
         onChange={[Function]}
       />
@@ -169,15 +216,50 @@ exports[`Configure renders snapshot 1`] = `
     >
       <EditableHtml
         markup=""
+        maxImageHeight={300}
+        maxImageWidth={300}
         onChange={[Function]}
       />
     </InputContainer>
     <WithStyles(GraphingConfig)
-      authoringEnabled={false}
-      config={
+      authoring={
         Object {
-          "height": 500,
-          "width": 500,
+          "axisLabel": Object {
+            "enabled": true,
+            "label": "Label",
+          },
+          "enabled": true,
+          "includeAxesEnabled": true,
+          "label": "Customize Grid Setup",
+          "labelStep": Object {
+            "enabled": true,
+            "label": "Label Interval",
+          },
+          "max": Object {
+            "enabled": true,
+            "label": "Max Value",
+          },
+          "min": Object {
+            "enabled": true,
+            "label": "Min Value",
+          },
+          "settings": false,
+          "standardGridEnabled": true,
+          "step": Object {
+            "enabled": true,
+            "label": "Grid Interval",
+          },
+        }
+      }
+      availableTools={Array []}
+      graphDimensions={
+        Object {
+          "enabled": true,
+          "label": "Graph Dimensions",
+          "max": 800,
+          "min": 150,
+          "settings": false,
+          "step": 20,
         }
       }
       model={
@@ -202,6 +284,7 @@ exports[`Configure renders snapshot 1`] = `
             "height": 500,
             "width": 500,
           },
+          "includeAxes": true,
           "labels": Object {},
           "padding": true,
           "prompt": "",
@@ -215,6 +298,7 @@ exports[`Configure renders snapshot 1`] = `
           },
           "rationale": "",
           "rationaleEnabled": true,
+          "standardGrid": false,
           "studentInstructionsEnabled": true,
           "teacherInstructionsEnabled": true,
           "title": "",
@@ -223,12 +307,7 @@ exports[`Configure renders snapshot 1`] = `
       }
     />
     <WithStyles(CorrectResponse)
-      config={
-        Object {
-          "height": 500,
-          "width": 500,
-        }
-      }
+      availableTools={Array []}
       model={
         Object {
           "answers": Object {},
@@ -251,6 +330,7 @@ exports[`Configure renders snapshot 1`] = `
             "height": 500,
             "width": 500,
           },
+          "includeAxes": true,
           "labels": Object {},
           "padding": true,
           "prompt": "",
@@ -264,6 +344,7 @@ exports[`Configure renders snapshot 1`] = `
           },
           "rationale": "",
           "rationaleEnabled": true,
+          "standardGrid": false,
           "studentInstructionsEnabled": true,
           "teacherInstructionsEnabled": true,
           "title": "",

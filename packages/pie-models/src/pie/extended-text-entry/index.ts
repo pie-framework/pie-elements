@@ -2,7 +2,7 @@ import { PromptConfig } from '../../PromptConfig';
 import { CommonConfigSettings } from '../../CommonConfigSettings';
 import { PieModel } from '../../PieModel';
 import { DefaultFeedbackType } from '../../Feedback';
-import { ConfigureProp, ConfigurePropWithEnabled } from '../ConfigurationProp';
+import { ConfigureProp, ConfigurePropWithEnabled, ConfigureMaxImageDimensionsProp } from '../ConfigurationProp';
 
 interface Dimensions {
   /**
@@ -53,6 +53,18 @@ export interface ExtendedTextEntryPie extends PieModel {
    * @default false
    */
   mathInput?: boolean;
+
+  /**
+   * Whether a control to allow insertion of spanish characters should be displayed
+   * @default false
+   */
+  spanishInput?: boolean;
+
+  /**
+   * Whether a control to allow insertion of special characters should be displayed
+   * @default false
+   */
+  specialInput?: boolean;
 
   /** Indicates if multiple parts are enabled */
   multiple?: boolean;
@@ -117,6 +129,16 @@ export interface ExtendedTextEntryConfigure
   mathInput?: ConfigureProp;
 
   /**
+   * Spanish Input configuration
+   */
+  spanishInput?: ConfigureProp;
+
+  /**
+   * Special Input configuration
+   */
+  specialInput?: ConfigureProp;
+
+  /**
    * Multiple Parts configuration
    */
   multiple?: ConfigurePropWithEnabled;
@@ -145,4 +167,14 @@ export interface ExtendedTextEntryConfigure
    * Dimensions configuration
    */
   dimensions?: ConfigureProp;
+
+  /**
+   * Maximum image width for input fields
+   */
+  maxImageWidth?: ConfigureMaxImageDimensionsProp;
+
+  /**
+   * Maximum image height for input fields
+   */
+  maxImageHeight?: ConfigureMaxImageDimensionsProp;
 }

@@ -74,7 +74,9 @@ export class Configure extends React.Component {
       scoringType = {},
       ignoreOrder = {},
       allowTrailingZeros={},
-      spellCheck = {}
+      spellCheck = {},
+      maxImageWidth = {},
+      maxImageHeight = {}
     } = configuration || {};
     log('[render] model', model);
     const { rationaleEnabled, promptEnabled, teacherInstructionsEnabled, feedbackEnabled, spellCheckEnabled } = model || {};
@@ -88,6 +90,9 @@ export class Configure extends React.Component {
         toolbarOpts.position = 'bottom';
         break;
     }
+
+    const defaultImageMaxWidth = maxImageWidth && maxImageWidth.prompt;
+    const defaultImageMaxHeight = maxImageHeight && maxImageHeight.prompt;
 
     return (
       <div>
@@ -138,6 +143,8 @@ export class Configure extends React.Component {
                     nonEmpty={false}
                     toolbarOpts={toolbarOpts}
                     spellCheck={spellCheckEnabled}
+                    maxImageWidth={maxImageWidth && maxImageWidth.teacherInstructions || defaultImageMaxWidth}
+                    maxImageHeight={maxImageHeight && maxImageHeight.teacherInstructions || defaultImageMaxHeight}
                   />
                 </InputContainer>
               )}

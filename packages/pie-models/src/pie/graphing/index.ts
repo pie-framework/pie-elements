@@ -1,7 +1,7 @@
 import { PromptConfig } from '../../PromptConfig';
 import { CommonConfigSettings } from '../../CommonConfigSettings';
 import { PieModel } from '../../PieModel';
-import { ConfigureProp, ConfigurePropWithEnabled } from '../ConfigurationProp';
+import { ConfigureMaxImageDimensionsProp, ConfigureProp, ConfigurePropWithEnabled } from '../ConfigurationProp';
 
 interface Graph {
   /** Width for graph representation */
@@ -166,11 +166,26 @@ export interface GraphingPie extends PieModel {
   /** Indicates if coordinates of a point are displayed on hover */
   coordinatesOnHover?: boolean;
 
+  /** Indicates the default selected tool for the graph */
+  defaultTool:
+      | 'point'
+      | 'segment'
+      | 'line'
+      | 'vector'
+      | 'circle'
+      | 'sine'
+      | 'polygon'
+      | 'ray'
+      | 'parabola';
+
   /** Indicates domain settings for the graph */
   domain: GraphSettings;
 
   /** Indicates the graph line model */
   graph: Graph;
+
+  /** Indicates if the graph axes and labels are enabled */
+  includeAxes?: boolean
 
   /** Indicates labels */
   labels?: Labels;
@@ -208,8 +223,11 @@ export interface GraphingPie extends PieModel {
   /** Indicates if Rationale are enabled */
   rationaleEnabled: boolean;
 
- /** Indicates if spellcheck is enabled for the author. Default value is true */
- spellCheckEnabled: boolean;
+  /** Indicates if spellcheck is enabled for the author. Default value is true */
+  spellCheckEnabled: boolean;
+
+  /** Indicates if some domain values will be synched to the range values */
+  standardGrid?: boolean;
 
   /** Indicates if Student Instructions are enabled */
   studentInstructionsEnabled: boolean;
@@ -249,15 +267,81 @@ interface ArrowsConfigProp {
   down?: ArrowsProp;
 }
 
+interface DimensionsConfigProp {
+  /**
+   * Indicates if the item has to be displayed in the Settings Panel
+   */
+  settings?: boolean;
+
+  /**
+   * Indicates the label for the item that has to be displayed in the Settings Panel
+   */
+  label?: string;
+
+  /**
+   * Indicates if the graph dimensions are included in the Grid Setup Panel
+   */
+  enabled?: boolean;
+
+  /** Indicates the minimum value for the graph width and height */
+  min?: number;
+
+  /** Indicates the maximum value for the graph width and height */
+  max?: number;
+
+  /** Indicates the increase/decrease value for the graph width and height */
+  step?: number;
+}
+
+interface GridPanelConfigProp {
+  /** Indicates the label for the item that is displayed in the Grid Setup Panel */
+  label?: string;
+
+  /** Indicates if the item is displayed in the Grid Setup Panel */
+  enabled?: boolean;
+}
+
+interface AuthoringConfigProp {
+  /** Indicates if the item is displayed in the Settings Panel */
+  settings?: boolean;
+
+  /** Indicates the label for the item that is displayed in the Settings Panel */
+  label?: string;
+
+  /** Indicates if the Grid Setup Panel is displayed */
+  enabled?: boolean;
+
+  /** Indicates if the "includeAxes" toggle is displayed in the Grid Setup Panel */
+  includeAxesEnabled?: boolean;
+
+  /** Indicates if the "standardGrid" toggle is displayed in the Grid Setup Panel */
+  standardGridEnabled?: boolean;
+
+  /** Axes minimum values configuration */
+  min?: GridPanelConfigProp;
+
+  /** Axes maximum values configuration */
+  max?: GridPanelConfigProp;
+
+  /** Axes labels configuration */
+  axisLabel?: GridPanelConfigProp;
+
+  /** Axes step values configuration */
+  step?: GridPanelConfigProp;
+
+  /** Axes label step values configuration */
+  labelStep?: GridPanelConfigProp;
+}
+
 /**
  * Config Object for @pie-elements/graphing
  * @additionalProperties false
  */
 export interface GraphingConfigure extends PromptConfig, CommonConfigSettings {
   /**
-   * Authoring configuration
+   * Grid Setup Panel configuration
    */
-  authoring?: ConfigurePropWithEnabled;
+  authoring?: AuthoringConfigProp;
 
   /**
    * Arrows configuration
@@ -265,9 +349,19 @@ export interface GraphingConfigure extends PromptConfig, CommonConfigSettings {
   arrows?: ArrowsConfigProp;
 
   /**
-   *  Coordinates configuration
+   * Graph toolbar tools configuration
+   */
+  availableTools?: string[];
+
+  /**
+   * Coordinates configuration
    */
   coordinatesOnHover?: ConfigureProp;
+
+  /**
+   * Graph dimensions configuration
+   */
+  graphDimensions?: DimensionsConfigProp;
 
   /**
    * Padding configuration
@@ -313,4 +407,14 @@ export interface GraphingConfigure extends PromptConfig, CommonConfigSettings {
    * Graph title configuration
    */
   title?: ConfigurePropWithEnabled;
+
+  /**
+   * Maximum image width for input fields
+   */
+  maxImageWidth?: ConfigureMaxImageDimensionsProp;
+
+  /**
+   * Maximum image height for input fields
+   */
+  maxImageHeight?: ConfigureMaxImageDimensionsProp;
 }

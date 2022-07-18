@@ -33,11 +33,13 @@ export class Container extends Component {
   }
 
   handleFileRead = (file) => {
-    const { onImageUpload } = this.props;
-    const reader = new FileReader();
+    if (file instanceof Blob) {
+      const { onImageUpload } = this.props;
+      const reader = new FileReader();
 
-    reader.onloadend = () => onImageUpload(reader.result);
-    reader.readAsDataURL(file)
+      reader.onloadend = () => onImageUpload(reader.result);
+      reader.readAsDataURL(file)
+    }
   };
 
   handleUploadImage = (e) => {

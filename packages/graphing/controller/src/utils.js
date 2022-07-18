@@ -29,15 +29,13 @@ export const equalVector = (vector1, vector2) => {
 };
 
 // this function is implemented in configure as well
-export const sortedAnswers = (answers) => {
-  answers = answers || {};
-
-  return Object.keys(answers).sort().reduce((result, key) => {
+export const sortedAnswers = answers => Object.keys(answers || {}).sort().reduce((result, key) => {
+  if (key !== 'correctAnswer') {
     result[key] = answers[key];
+  }
 
-    return result;
-  }, {});
-};
+  return result;
+}, {});
 
 const returnLineEquationCoefficients = line => {
   const xA = line.from.x;

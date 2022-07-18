@@ -30,6 +30,14 @@ export default {
     teacherInstructions: {
       settings: true,
       label: 'Teacher Instructions',
+    },
+    maxImageWidth: {
+      teacherInstructions: 300,
+      prompt: 300
+    },
+    maxImageHeight: {
+      teacherInstructions: 300,
+      prompt: 300
     }
   }
 };

@@ -91,5 +91,15 @@ export default {
       label: 'Allow Trailing Zeros',
       enabled: true
     },
+    maxImageWidth: {
+      teacherInstructions: 300,
+      prompt: 300,
+      rationale: 300,
+    },
+    maxImageHeight: {
+      teacherInstructions: 300,
+      prompt: 300,
+      rationale: 300,
+    }
   },
 };

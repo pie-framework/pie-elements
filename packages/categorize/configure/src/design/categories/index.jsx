@@ -50,7 +50,7 @@ const styles = theme => ({
   },
 });
 
-const RowLabel = withStyles(styles)(({ categoriesPerRow, classes, markup, imageSupport, onChange, toolbarOpts, spellCheck}) => {
+const RowLabel = withStyles(styles)(({ categoriesPerRow, classes, markup, imageSupport, onChange, toolbarOpts, spellCheck, maxImageWidth, maxImageHeight}) => {
   return (
     <div
       style={{
@@ -69,6 +69,8 @@ const RowLabel = withStyles(styles)(({ categoriesPerRow, classes, markup, imageS
         nonEmpty={false}
         toolbarOpts={toolbarOpts}
         spellCheck={spellCheck}
+        maxImageWidth={maxImageWidth}
+        maxImageHeight={maxImageHeight}
       />
     </div>
   );
@@ -189,12 +191,18 @@ export class Categories extends React.Component {
       imageSupport,
       toolbarOpts,
       spellCheck,
-      configuration
+      configuration,
+      defaultImageMaxHeight,
+      defaultImageMaxWidth
     } = this.props;
 
     const { categoriesPerRow, rowLabels, errors } = model;
     const { associationError, categoriesError } = errors || {};
-    const { maxCategories } = configuration || {};
+    const {
+      maxCategories,
+      maxImageWidth = {},
+      maxImageHeight = {}
+    } = configuration || {};
     const holderStyle = {
       gridTemplateColumns: `repeat(${categoriesPerRow}, 1fr)`
     };
@@ -250,6 +258,8 @@ export class Categories extends React.Component {
                     imageSupport={imageSupport}
                     toolbarOpts={toolbarOpts}
                     spellCheck={spellCheck}
+                    maxImageWidth={maxImageWidth && maxImageWidth.rowLabel || defaultImageMaxWidth}
+                    maxImageHeight={maxImageHeight && maxImageHeight.rowLabel || defaultImageMaxHeight}
                   />
                 )}
                 <Category
@@ -263,6 +273,8 @@ export class Categories extends React.Component {
                   onDeleteChoice={(choice, choiceIndex) =>
                     this.deleteChoiceFromCategory(category, choice, choiceIndex)
                   }
+                  maxImageWidth={maxImageWidth && maxImageWidth.categoryLabel || defaultImageMaxWidth}
+                  maxImageHeight={maxImageHeight && maxImageHeight.categoryLabel || defaultImageMaxHeight}
                 />
               </React.Fragment>
             );

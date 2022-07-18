@@ -24,6 +24,14 @@ exports[`Render Main Component Match Snapshot 1`] = `
             "label": "Student response can include math notation",
             "settings": true,
           },
+          "maxImageHeight": Object {
+            "prompt": 300,
+            "teacherInstructions": 300,
+          },
+          "maxImageWidth": Object {
+            "prompt": 300,
+            "teacherInstructions": 300,
+          },
           "multiple": Object {
             "enabled": false,
             "label": "Multiple Parts",
@@ -36,6 +44,16 @@ exports[`Render Main Component Match Snapshot 1`] = `
           },
           "prompt": Object {
             "label": "Prompt",
+            "settings": true,
+          },
+          "spanishInput": Object {
+            "enabled": false,
+            "label": "Students can insert Spanish",
+            "settings": true,
+          },
+          "specialInput": Object {
+            "enabled": false,
+            "label": "Students can insert Special Characters",
             "settings": true,
           },
           "spellCheck": Object {
@@ -67,6 +85,8 @@ exports[`Render Main Component Match Snapshot 1`] = `
             "multiple.enabled": false,
             "playerSpellCheckEnabled": undefined,
             "promptEnabled": undefined,
+            "spanishInput": undefined,
+            "specialInput": undefined,
             "spellCheckEnabled": false,
           },
         }
@@ -84,6 +104,8 @@ exports[`Render Main Component Match Snapshot 1`] = `
           "prompt": "This is the question prompt",
           "promptEnabled": true,
           "rationaleEnabled": true,
+          "spanishInput": false,
+          "specialInput": false,
           "spellCheckEnabled": true,
           "studentInstructionsEnabled": true,
           "teacherInstructionsEnabled": true,
@@ -102,6 +124,8 @@ exports[`Render Main Component Match Snapshot 1`] = `
       <EditableHtml
         imageSupport={Object {}}
         markup=""
+        maxImageHeight={300}
+        maxImageWidth={300}
         nonEmpty={false}
         onChange={[Function]}
         spellCheck={true}
@@ -119,6 +143,8 @@ exports[`Render Main Component Match Snapshot 1`] = `
       <EditableHtml
         imageSupport={Object {}}
         markup="This is the question prompt"
+        maxImageHeight={300}
+        maxImageWidth={300}
         nonEmpty={false}
         onChange={[Function]}
         spellCheck={true}

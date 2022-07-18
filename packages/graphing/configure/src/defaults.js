@@ -1,10 +1,6 @@
-import {tools} from '@pie-lib/graphing';
+import { tools } from '@pie-lib/graphing';
 
-const {allTools = []} = tools;
-/**
- * NOTE: There's no functionality described for padding
- * so there's no implementation (they are only added in model)
- */
+const { allTools = [] } = tools;
 
 export default {
   model: {
@@ -27,6 +23,7 @@ export default {
       width: 500,
       height: 500
     },
+    includeAxes: true,
     labels: {},
     padding: true,
     prompt: '',
@@ -38,6 +35,7 @@ export default {
       axisLabel: 'y'
     },
     rationale: '',
+    standardGrid: false,
     title: '',
     toolbarTools: allTools,
     coordinatesOnHover: false,
@@ -49,8 +47,30 @@ export default {
   configuration: {
     authoring: {
       settings: false,
-      label: 'Allow authoring',
-      enabled: false
+      label: 'Customize Grid Setup',
+      enabled: true,
+      includeAxesEnabled: true,
+      standardGridEnabled: true,
+      min: {
+        label: 'Min Value',
+        enabled: true
+      },
+      max: {
+        label: 'Max Value',
+        enabled: true
+      },
+      axisLabel: {
+        label: 'Label',
+        enabled: true
+      },
+      step: {
+        label: 'Grid Interval',
+        enabled: true
+      },
+      labelStep: {
+        label: 'Label Interval',
+        enabled: true
+      }
     },
     arrows: {
       settings: true,
@@ -67,6 +87,14 @@ export default {
       down: {
         label: 'down'
       }
+    },
+    graphDimensions: {
+      settings: false,
+      label: 'Graph Dimensions',
+      enabled: true,
+      min: 150,
+      max: 800,
+      step: 20
     },
     padding: {
       settings: false,
@@ -102,6 +130,7 @@ export default {
       label: 'Graph Title',
       enabled: true
     },
+    availableTools: allTools,
     spellCheck: {
       label: 'Spellcheck',
       settings:false,
@@ -110,6 +139,16 @@ export default {
     coordinatesOnHover: {
       settings: true,
       label: 'Coordinates on Hover'
+    },
+    maxImageWidth: {
+      teacherInstructions: 300,
+      prompt: 300,
+      rationale: 300,
+    },
+    maxImageHeight: {
+      teacherInstructions: 300,
+      prompt: 300,
+      rationale: 300,
     }
   }
 };

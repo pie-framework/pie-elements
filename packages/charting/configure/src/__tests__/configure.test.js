@@ -3,7 +3,6 @@ import { shallow } from 'enzyme';
 
 import { Configure } from '../configure';
 import { ChartingConfig } from '../charting-config';
-import ChartType from '../chart-type';
 import { CorrectResponse } from '../correct-response';
 import defaultValues from '../defaults';
 
@@ -154,22 +153,6 @@ describe('CorrectResponse', () => {
         w = wrapper();
     });
 
-    it('changes editCategoryEnabled', () => {
-      w.instance().changeEditable(false);
-
-      expect(onChange).toBeCalledWith(expect.objectContaining({
-        editCategoryEnabled: false
-      }));
-    });
-
-    it('changes addCategoryEnabled', () => {
-      w.instance().changeAddRemoveEnabled(true);
-
-      expect(onChange).toHaveBeenCalledWith(expect.objectContaining({
-        addCategoryEnabled: true
-      }));
-    });
-
     it('changes correctAnswer data', () => {
       w.instance().changeData([]);
 
@@ -232,30 +215,3 @@ describe('ChartingConfig', () => {
     })
   });
 });
-
-describe('ChartType', () => {
-  let wrapper;
-  let props;
-  const onChange = jest.fn();
-
-  beforeEach(() => {
-    props = {
-      classes: {},
-      value: 'bar',
-      onChange
-    };
-
-    wrapper = newProps => {
-      const configureProps = { ...props, newProps };
-
-      return shallow(<ChartType { ...configureProps } />);
-    };
-  });
-
-  describe('renders', () => {
-    it('snapshot', () => {
-      expect(wrapper()).toMatchSnapshot();
-    })
-  });
-});
-

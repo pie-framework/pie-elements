@@ -1,7 +1,7 @@
 import { PieModel } from '../../PieModel';
 import { PromptConfig } from '../../PromptConfig';
 import { CommonConfigSettings } from '../../CommonConfigSettings';
-import { ConfigureProp } from '../ConfigurationProp';
+import { ConfigureProp, ConfigureMaxImageDimensionsProp } from '../ConfigurationProp';
 
 interface ResponseContainer {
   /** The x coordinate of the response container */
@@ -119,4 +119,14 @@ export interface ImageClozeAssociationConfigure
    * Configuration for the author's spellcheck
    */
    spellCheck?: ConfigureProp;
+
+  /**
+   * Maximum image width for input fields
+   */
+  maxImageWidth?: ConfigureMaxImageDimensionsProp;
+
+  /**
+   * Maximum image height for input fields
+   */
+  maxImageHeight?: ConfigureMaxImageDimensionsProp;
 }
