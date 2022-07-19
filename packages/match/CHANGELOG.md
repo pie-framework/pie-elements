@@ -3,6 +3,84 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@5.0.0...@pie-element/match@5.1.0) (2022-06-28)
+
+
+### Features
+
+* **match:** add maxImageWidth and maxImageHeight props PD-1801 ([d98c0db](https://github.com/pie-framework/pie-elements/commit/d98c0dbe6a7acb5d115a71a102553cd20b5a63d5))
+* **match:** added validation PD-1710 ([9a7ff92](https://github.com/pie-framework/pie-elements/commit/9a7ff928926219d82b33d6a97df271bdbafff17d))
+* **match:** implement validation ui/ux PD-1711 ([85cdff1](https://github.com/pie-framework/pie-elements/commit/85cdff133bb3373c33733b0e627241bf6880a738))
+
+
+
+
+
+# [5.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@4.10.12...@pie-element/match@5.0.0) (2022-06-28)
+
+
+### chore
+
+* Merge master with develop. ([cdca48a](https://github.com/pie-framework/pie-elements/commit/cdca48abaa1d4179e4a961e13d171e14b7ed2444))
+
+
+### BREAKING CHANGES
+
+* Image percent buttons were removed from toolbar.
+New properties maxImageWidth and maxImageHeight were added.
+
+
+
+
+
+## [4.10.12](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@4.10.11...@pie-element/match@4.10.12) (2022-06-13)
+
+**Note:** Version bump only for package @pie-element/match
+
+
+
+
+
+## [4.10.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@4.10.10...@pie-element/match@4.10.11) (2022-05-30)
+
+**Note:** Version bump only for package @pie-element/match
+
+
+
+
+
+## [4.10.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@4.10.9...@pie-element/match@4.10.10) (2022-05-16)
+
+**Note:** Version bump only for package @pie-element/match
+
+
+
+
+
+## [4.10.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@4.10.8...@pie-element/match@4.10.9) (2022-05-09)
+
+**Note:** Version bump only for package @pie-element/match
+
+
+
+
+
+## [4.10.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@4.10.7...@pie-element/match@4.10.8) (2022-05-03)
+
+**Note:** Version bump only for package @pie-element/match
+
+
+
+
+
+## [4.10.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@4.10.6...@pie-element/match@4.10.7) (2022-04-12)
+
+**Note:** Version bump only for package @pie-element/match
+
+
+
+
+
 ## [4.10.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@4.10.5...@pie-element/match@4.10.6) (2022-03-28)
 
 **Note:** Version bump only for package @pie-element/match

@@ -3,6 +3,79 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/likert-configure@0.1.0...@pie-element/likert-configure@0.1.1) (2022-06-28)
+
+**Note:** Version bump only for package @pie-element/likert-configure
+
+
+
+
+
+# [0.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/likert-configure@0.0.45...@pie-element/likert-configure@0.1.0) (2022-06-28)
+
+
+### chore
+
+* Merge master with develop. ([cdca48a](https://github.com/pie-framework/pie-elements/commit/cdca48abaa1d4179e4a961e13d171e14b7ed2444))
+
+
+### BREAKING CHANGES
+
+* Image percent buttons were removed from toolbar.
+New properties maxImageWidth and maxImageHeight were added.
+
+
+
+
+
+## [0.0.45](https://github.com/pie-framework/pie-elements/compare/@pie-element/likert-configure@0.0.44...@pie-element/likert-configure@0.0.45) (2022-06-13)
+
+**Note:** Version bump only for package @pie-element/likert-configure
+
+
+
+
+
+## [0.0.44](https://github.com/pie-framework/pie-elements/compare/@pie-element/likert-configure@0.0.43...@pie-element/likert-configure@0.0.44) (2022-05-30)
+
+**Note:** Version bump only for package @pie-element/likert-configure
+
+
+
+
+
+## [0.0.43](https://github.com/pie-framework/pie-elements/compare/@pie-element/likert-configure@0.0.42...@pie-element/likert-configure@0.0.43) (2022-05-16)
+
+**Note:** Version bump only for package @pie-element/likert-configure
+
+
+
+
+
+## [0.0.42](https://github.com/pie-framework/pie-elements/compare/@pie-element/likert-configure@0.0.41...@pie-element/likert-configure@0.0.42) (2022-05-09)
+
+**Note:** Version bump only for package @pie-element/likert-configure
+
+
+
+
+
+## [0.0.41](https://github.com/pie-framework/pie-elements/compare/@pie-element/likert-configure@0.0.40...@pie-element/likert-configure@0.0.41) (2022-05-03)
+
+**Note:** Version bump only for package @pie-element/likert-configure
+
+
+
+
+
+## [0.0.40](https://github.com/pie-framework/pie-elements/compare/@pie-element/likert-configure@0.0.39...@pie-element/likert-configure@0.0.40) (2022-04-12)
+
+**Note:** Version bump only for package @pie-element/likert-configure
+
+
+
+
+
 ## [0.0.39](https://github.com/pie-framework/pie-elements/compare/@pie-element/likert-configure@0.0.38...@pie-element/likert-configure@0.0.39) (2022-03-28)
 
 **Note:** Version bump only for package @pie-element/likert-configure

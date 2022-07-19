@@ -3,6 +3,107 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@4.0.0...@pie-element/drag-in-the-blank@4.1.0) (2022-06-28)
+
+
+### Bug Fixes
+
+* inline-dropdown and drag-in-the-blank fix validation error PD-1848 ([24f50f1](https://github.com/pie-framework/pie-elements/commit/24f50f11ee681749e2849c84f178af2b67441454))
+* PD-1499 not having desired result (also, remove unnecessary code) - PD-1793 ([9987b4c](https://github.com/pie-framework/pie-elements/commit/9987b4c39f407ad7fab6db59cbe6ad1a66233cb6))
+* PD-1499 not having desired result with extended-text (TTS for math markup) - import renderMath - PD-1793 ([9d82035](https://github.com/pie-framework/pie-elements/commit/9d82035410eaee5f680bdddac42eac5e04cc8be0))
+* PD-1499 not having desired result with extended-text (TTS for math markup) PD-1793 ([c0f6d78](https://github.com/pie-framework/pie-elements/commit/c0f6d78b718303b152008447b30262e167438bf0))
+* tests ([7cb326c](https://github.com/pie-framework/pie-elements/commit/7cb326c70ba5c71c10017b238c2a32fa8a8c7bca))
+* **drag-in-the-blank:** set default value for minChoices in validation message ([cbc9b73](https://github.com/pie-framework/pie-elements/commit/cbc9b7340668fe7b27682688f26df71941a4cf23))
+
+
+### Features
+
+* **inline-dropdown, drag-in-the-blank, explicit-constructed-response:** set config default for maxRespponseAreas ([a9e9dc5](https://github.com/pie-framework/pie-elements/commit/a9e9dc5ff43199c946f4226790d924ab5d8674ed))
+* update documentation for items that have validation with settings configurable by client systems PD-1789 ([8ef69cc](https://github.com/pie-framework/pie-elements/commit/8ef69cc0c7439a5803dc95f570efc7cd24c8e334))
+* **drag-in-the-blank:** add generate validation message, tooltip and error messages PD-1709 ([d0f4c46](https://github.com/pie-framework/pie-elements/commit/d0f4c46eb7bbd4eaa22ea21495905dd052b87541))
+* **drag-in-the-blank:** added configurable validation PD-1708 ([def2446](https://github.com/pie-framework/pie-elements/commit/def2446ba6329bc22f2821a292f6bca28ea1b31a))
+* **drag-in-the-blank:** ui/ux validation ([4676876](https://github.com/pie-framework/pie-elements/commit/4676876293981f519831640e0e39b5d9f32aa2aa))
+
+
+
+
+
+# [4.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@3.13.13...@pie-element/drag-in-the-blank@4.0.0) (2022-06-28)
+
+
+### chore
+
+* Merge master with develop. ([cdca48a](https://github.com/pie-framework/pie-elements/commit/cdca48abaa1d4179e4a961e13d171e14b7ed2444))
+
+
+### BREAKING CHANGES
+
+* Image percent buttons were removed from toolbar.
+New properties maxImageWidth and maxImageHeight were added.
+
+
+
+
+
+## [3.13.13](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@3.13.12...@pie-element/drag-in-the-blank@3.13.13) (2022-06-13)
+
+**Note:** Version bump only for package @pie-element/drag-in-the-blank
+
+
+
+
+
+## [3.13.12](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@3.13.11...@pie-element/drag-in-the-blank@3.13.12) (2022-05-30)
+
+**Note:** Version bump only for package @pie-element/drag-in-the-blank
+
+
+
+
+
+## [3.13.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@3.13.10...@pie-element/drag-in-the-blank@3.13.11) (2022-05-19)
+
+
+### Bug Fixes
+
+* PD-1499 not having desired result with TTS - PD-1793 ([674432b](https://github.com/pie-framework/pie-elements/commit/674432b81b3577118ad5b8619f28a3d1ec0eefed))
+
+
+
+
+
+## [3.13.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@3.13.9...@pie-element/drag-in-the-blank@3.13.10) (2022-05-16)
+
+**Note:** Version bump only for package @pie-element/drag-in-the-blank
+
+
+
+
+
+## [3.13.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@3.13.8...@pie-element/drag-in-the-blank@3.13.9) (2022-05-09)
+
+**Note:** Version bump only for package @pie-element/drag-in-the-blank
+
+
+
+
+
+## [3.13.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@3.13.7...@pie-element/drag-in-the-blank@3.13.8) (2022-05-03)
+
+**Note:** Version bump only for package @pie-element/drag-in-the-blank
+
+
+
+
+
+## [3.13.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@3.13.6...@pie-element/drag-in-the-blank@3.13.7) (2022-04-12)
+
+**Note:** Version bump only for package @pie-element/drag-in-the-blank
+
+
+
+
+
 ## [3.13.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@3.13.5...@pie-element/drag-in-the-blank@3.13.6) (2022-03-28)
 
 **Note:** Version bump only for package @pie-element/drag-in-the-blank

@@ -3,6 +3,107 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@7.0.0...@pie-element/select-text@7.1.0) (2022-06-28)
+
+
+### Bug Fixes
+
+* **select-text:** In Browse, problems with certain Select Text items that have multiple correct answers ([72adc0d](https://github.com/pie-framework/pie-elements/commit/72adc0d3108a190b1ca8adeeb03469acd89472bc))
+
+
+### Features
+
+* **select-text:** add maxImageWidth and maxImageHeight props PD-1801 ([9e8b343](https://github.com/pie-framework/pie-elements/commit/9e8b343703de33597461b18611dbc34f8ef2b92c))
+* update documentation for items that have validation with settings configurable by client systems PD-1789 ([8ef69cc](https://github.com/pie-framework/pie-elements/commit/8ef69cc0c7439a5803dc95f570efc7cd24c8e334))
+* **select-text:** ui/ux for item validation - fix info tooltip ([3a7e153](https://github.com/pie-framework/pie-elements/commit/3a7e15302750ed1931fc6cfab47f49d09fffcfad))
+
+
+
+
+
+# [7.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@6.6.4...@pie-element/select-text@7.0.0) (2022-06-28)
+
+
+### chore
+
+* Merge master with develop. ([cdca48a](https://github.com/pie-framework/pie-elements/commit/cdca48abaa1d4179e4a961e13d171e14b7ed2444))
+
+
+### BREAKING CHANGES
+
+* Image percent buttons were removed from toolbar.
+New properties maxImageWidth and maxImageHeight were added.
+
+
+
+
+
+## [6.6.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@6.6.3...@pie-element/select-text@6.6.4) (2022-06-13)
+
+**Note:** Version bump only for package @pie-element/select-text
+
+
+
+
+
+## [6.6.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@6.6.2...@pie-element/select-text@6.6.3) (2022-05-30)
+
+**Note:** Version bump only for package @pie-element/select-text
+
+
+
+
+
+## [6.6.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@6.6.1...@pie-element/select-text@6.6.2) (2022-05-16)
+
+**Note:** Version bump only for package @pie-element/select-text
+
+
+
+
+
+## [6.6.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@6.6.0...@pie-element/select-text@6.6.1) (2022-05-09)
+
+**Note:** Version bump only for package @pie-element/select-text
+
+
+
+
+
+# [6.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@6.5.27...@pie-element/select-text@6.6.0) (2022-05-03)
+
+
+### Bug Fixes
+
+* added getters for the session PD-1668 ([de8a754](https://github.com/pie-framework/pie-elements/commit/de8a754f4580370b127257c435e43db405b4bdc4))
+* **select-text:** print - fix console warning PD-1657 ([1ebd5a4](https://github.com/pie-framework/pie-elements/commit/1ebd5a43612277e5d5273f598f3599de95b718f3))
+* **select-text:** rationale should not be displayed in student mode DNA-13619 ([0633a11](https://github.com/pie-framework/pie-elements/commit/0633a1169fbfc97035a54851273f05dfdd29e68d))
+* Fix select-text tokens. ([9da07f5](https://github.com/pie-framework/pie-elements/commit/9da07f51821dfcfe3a029de3cf018bcd5d4ebfd2))
+* in controller we don't have access to the model (text & tokens) parser functions, so I have added 2 props (oldStart and oldEnd) to compare the start & and of the selected tokens (which are parsed) with the correct tokens (which are not parsed). Also, for the createCorrectSession to work, we need to make sure that when session is set, we have the correct start & end for the tokens (that come unparsed from controller). ([d6670b5](https://github.com/pie-framework/pie-elements/commit/d6670b53185acedd3be2dfc37b8f3616c9ce27f3))
+* multiple tokens containing the same text (wrong token index) ([ac9d3a7](https://github.com/pie-framework/pie-elements/commit/ac9d3a71d35074d74ad7f2ec8c433555f8e8c186))
+* multiple tokens containing the same text + html ascii codes ([bb73710](https://github.com/pie-framework/pie-elements/commit/bb73710d68394a33447191e5d56dc1b7797bb0ed))
+* remove br parser and allowed div elements inside text ([2dfca2f](https://github.com/pie-framework/pie-elements/commit/2dfca2fb17841e8f25e0f0cb1c02a8d9fa4a9bb8))
+
+
+### Features
+
+* **select-text:** added configurable validation ([fcea834](https://github.com/pie-framework/pie-elements/commit/fcea834fc7d9d19dbd3bc65d10ef3ecbf2618097))
+* **select-text:** added configurable validation PD-1700 ([467f4a6](https://github.com/pie-framework/pie-elements/commit/467f4a640e560e26c932ce067b1b09ffe444b290))
+* **select-text:** implement print PD-1526 ([73348aa](https://github.com/pie-framework/pie-elements/commit/73348aa3b4b021e7d23a8a79e36c00bafb27dfb4))
+* **select-text:** ui/ux validation PD-1701 ([3ae2723](https://github.com/pie-framework/pie-elements/commit/3ae27238a70124dcf2b544f0f1c8ae93ddeb0f6e))
+
+
+
+
+
+## [6.5.27](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@6.5.26...@pie-element/select-text@6.5.27) (2022-04-12)
+
+**Note:** Version bump only for package @pie-element/select-text
+
+
+
+
+
 ## [6.5.26](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@6.5.25...@pie-element/select-text@6.5.26) (2022-03-28)
 
 **Note:** Version bump only for package @pie-element/select-text

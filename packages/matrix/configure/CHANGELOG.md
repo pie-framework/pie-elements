@@ -3,6 +3,79 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/matrix-configure@0.2.0...@pie-element/matrix-configure@0.2.1) (2022-06-28)
+
+**Note:** Version bump only for package @pie-element/matrix-configure
+
+
+
+
+
+# [0.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/matrix-configure@0.1.26...@pie-element/matrix-configure@0.2.0) (2022-06-28)
+
+
+### chore
+
+* Merge master with develop. ([cdca48a](https://github.com/pie-framework/pie-elements/commit/cdca48abaa1d4179e4a961e13d171e14b7ed2444))
+
+
+### BREAKING CHANGES
+
+* Image percent buttons were removed from toolbar.
+New properties maxImageWidth and maxImageHeight were added.
+
+
+
+
+
+## [0.1.26](https://github.com/pie-framework/pie-elements/compare/@pie-element/matrix-configure@0.1.25...@pie-element/matrix-configure@0.1.26) (2022-06-13)
+
+**Note:** Version bump only for package @pie-element/matrix-configure
+
+
+
+
+
+## [0.1.25](https://github.com/pie-framework/pie-elements/compare/@pie-element/matrix-configure@0.1.24...@pie-element/matrix-configure@0.1.25) (2022-05-30)
+
+**Note:** Version bump only for package @pie-element/matrix-configure
+
+
+
+
+
+## [0.1.24](https://github.com/pie-framework/pie-elements/compare/@pie-element/matrix-configure@0.1.23...@pie-element/matrix-configure@0.1.24) (2022-05-16)
+
+**Note:** Version bump only for package @pie-element/matrix-configure
+
+
+
+
+
+## [0.1.23](https://github.com/pie-framework/pie-elements/compare/@pie-element/matrix-configure@0.1.22...@pie-element/matrix-configure@0.1.23) (2022-05-09)
+
+**Note:** Version bump only for package @pie-element/matrix-configure
+
+
+
+
+
+## [0.1.22](https://github.com/pie-framework/pie-elements/compare/@pie-element/matrix-configure@0.1.21...@pie-element/matrix-configure@0.1.22) (2022-05-03)
+
+**Note:** Version bump only for package @pie-element/matrix-configure
+
+
+
+
+
+## [0.1.21](https://github.com/pie-framework/pie-elements/compare/@pie-element/matrix-configure@0.1.20...@pie-element/matrix-configure@0.1.21) (2022-04-12)
+
+**Note:** Version bump only for package @pie-element/matrix-configure
+
+
+
+
+
 ## [0.1.20](https://github.com/pie-framework/pie-elements/compare/@pie-element/matrix-configure@0.1.19...@pie-element/matrix-configure@0.1.20) (2022-03-28)
 
 **Note:** Version bump only for package @pie-element/matrix-configure

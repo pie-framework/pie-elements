@@ -3,6 +3,89 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response-configure@4.0.0...@pie-element/drawing-response-configure@4.1.0) (2022-06-28)
+
+
+### Bug Fixes
+
+* **drawing-response:** PD-1839 do not set image width if it's 0 ([ba4e321](https://github.com/pie-framework/pie-elements/commit/ba4e321f4fe3252e93ed125efbf93d684a2740f0))
+* add missing prop ([fd4220c](https://github.com/pie-framework/pie-elements/commit/fd4220c60d519dccd9a37ab3639d4feaa90a58a4))
+* **drawing-response:** fix width of image not being rendered correctly PD-1839 ([5599ff5](https://github.com/pie-framework/pie-elements/commit/5599ff5c4d03a1d0d86c687f2b781b92903e5a63))
+
+
+### Features
+
+* **drawing-response:** add maxImageWidth and maxImageHeight props PD-1801 ([4f1fb5d](https://github.com/pie-framework/pie-elements/commit/4f1fb5dfa4616c194eefd1702854a5aaa413ce1f))
+
+
+
+
+
+# [4.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response-configure@3.2.25...@pie-element/drawing-response-configure@4.0.0) (2022-06-28)
+
+
+### chore
+
+* Merge master with develop. ([cdca48a](https://github.com/pie-framework/pie-elements/commit/cdca48abaa1d4179e4a961e13d171e14b7ed2444))
+
+
+### BREAKING CHANGES
+
+* Image percent buttons were removed from toolbar.
+New properties maxImageWidth and maxImageHeight were added.
+
+
+
+
+
+## [3.2.25](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response-configure@3.2.24...@pie-element/drawing-response-configure@3.2.25) (2022-06-13)
+
+**Note:** Version bump only for package @pie-element/drawing-response-configure
+
+
+
+
+
+## [3.2.24](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response-configure@3.2.23...@pie-element/drawing-response-configure@3.2.24) (2022-05-30)
+
+**Note:** Version bump only for package @pie-element/drawing-response-configure
+
+
+
+
+
+## [3.2.23](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response-configure@3.2.22...@pie-element/drawing-response-configure@3.2.23) (2022-05-16)
+
+**Note:** Version bump only for package @pie-element/drawing-response-configure
+
+
+
+
+
+## [3.2.22](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response-configure@3.2.21...@pie-element/drawing-response-configure@3.2.22) (2022-05-09)
+
+**Note:** Version bump only for package @pie-element/drawing-response-configure
+
+
+
+
+
+## [3.2.21](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response-configure@3.2.20...@pie-element/drawing-response-configure@3.2.21) (2022-05-03)
+
+**Note:** Version bump only for package @pie-element/drawing-response-configure
+
+
+
+
+
+## [3.2.20](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response-configure@3.2.19...@pie-element/drawing-response-configure@3.2.20) (2022-04-12)
+
+**Note:** Version bump only for package @pie-element/drawing-response-configure
+
+
+
+
+
 ## [3.2.19](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response-configure@3.2.18...@pie-element/drawing-response-configure@3.2.19) (2022-03-28)
 
 **Note:** Version bump only for package @pie-element/drawing-response-configure

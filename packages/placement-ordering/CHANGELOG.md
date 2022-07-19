@@ -3,6 +3,85 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@8.0.0...@pie-element/placement-ordering@8.1.0) (2022-06-28)
+
+
+### Features
+
+* **placement-ordering:** add maxImageWidth and maxImageHeight props PD-1801 ([dae17c0](https://github.com/pie-framework/pie-elements/commit/dae17c0567dfaf8a46228643977ff88ca934f1a6))
+* **placement-ordering:** added validation PD-1743 ([a2f2611](https://github.com/pie-framework/pie-elements/commit/a2f2611da08ab41f2944b9dd5adaca1fc4821d8a))
+* **placement-ordering:** implement ui/ux for validation PD-1744 ([e0a18f3](https://github.com/pie-framework/pie-elements/commit/e0a18f32b57ed7f4ec4c7431634700cbe2fbae33))
+* **placement-ordering:** update docs ([96094af](https://github.com/pie-framework/pie-elements/commit/96094af26944b235f98b87a2e86270242c912264))
+
+
+
+
+
+# [8.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@7.8.12...@pie-element/placement-ordering@8.0.0) (2022-06-28)
+
+
+### chore
+
+* Merge master with develop. ([cdca48a](https://github.com/pie-framework/pie-elements/commit/cdca48abaa1d4179e4a961e13d171e14b7ed2444))
+
+
+### BREAKING CHANGES
+
+* Image percent buttons were removed from toolbar.
+New properties maxImageWidth and maxImageHeight were added.
+
+
+
+
+
+## [7.8.12](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@7.8.11...@pie-element/placement-ordering@7.8.12) (2022-06-13)
+
+**Note:** Version bump only for package @pie-element/placement-ordering
+
+
+
+
+
+## [7.8.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@7.8.10...@pie-element/placement-ordering@7.8.11) (2022-05-30)
+
+**Note:** Version bump only for package @pie-element/placement-ordering
+
+
+
+
+
+## [7.8.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@7.8.9...@pie-element/placement-ordering@7.8.10) (2022-05-16)
+
+**Note:** Version bump only for package @pie-element/placement-ordering
+
+
+
+
+
+## [7.8.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@7.8.8...@pie-element/placement-ordering@7.8.9) (2022-05-09)
+
+**Note:** Version bump only for package @pie-element/placement-ordering
+
+
+
+
+
+## [7.8.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@7.8.7...@pie-element/placement-ordering@7.8.8) (2022-05-03)
+
+**Note:** Version bump only for package @pie-element/placement-ordering
+
+
+
+
+
+## [7.8.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@7.8.6...@pie-element/placement-ordering@7.8.7) (2022-04-12)
+
+**Note:** Version bump only for package @pie-element/placement-ordering
+
+
+
+
+
 ## [7.8.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@7.8.5...@pie-element/placement-ordering@7.8.6) (2022-03-28)
 
 **Note:** Version bump only for package @pie-element/placement-ordering

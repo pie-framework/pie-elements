@@ -3,6 +3,90 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-configure@5.0.0...@pie-element/number-line-configure@5.1.0) (2022-06-28)
+
+
+### Features
+
+* **number-line:** ux/ui for validation PD-1748 ([ccfa5fe](https://github.com/pie-framework/pie-elements/commit/ccfa5fe9b39c4471a9769a943c117e35db4bfcc2))
+
+
+
+
+
+# [5.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-configure@4.9.13...@pie-element/number-line-configure@5.0.0) (2022-06-28)
+
+
+### chore
+
+* Merge master with develop. ([cdca48a](https://github.com/pie-framework/pie-elements/commit/cdca48abaa1d4179e4a961e13d171e14b7ed2444))
+
+
+### BREAKING CHANGES
+
+* Image percent buttons were removed from toolbar.
+New properties maxImageWidth and maxImageHeight were added.
+
+
+
+
+
+## [4.9.13](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-configure@4.9.12...@pie-element/number-line-configure@4.9.13) (2022-06-13)
+
+**Note:** Version bump only for package @pie-element/number-line-configure
+
+
+
+
+
+## [4.9.12](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-configure@4.9.11...@pie-element/number-line-configure@4.9.12) (2022-05-30)
+
+**Note:** Version bump only for package @pie-element/number-line-configure
+
+
+
+
+
+## [4.9.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-configure@4.9.10...@pie-element/number-line-configure@4.9.11) (2022-05-30)
+
+**Note:** Version bump only for package @pie-element/number-line-configure
+
+
+
+
+
+## [4.9.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-configure@4.9.9...@pie-element/number-line-configure@4.9.10) (2022-05-16)
+
+**Note:** Version bump only for package @pie-element/number-line-configure
+
+
+
+
+
+## [4.9.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-configure@4.9.8...@pie-element/number-line-configure@4.9.9) (2022-05-09)
+
+**Note:** Version bump only for package @pie-element/number-line-configure
+
+
+
+
+
+## [4.9.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-configure@4.9.7...@pie-element/number-line-configure@4.9.8) (2022-05-03)
+
+**Note:** Version bump only for package @pie-element/number-line-configure
+
+
+
+
+
+## [4.9.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-configure@4.9.6...@pie-element/number-line-configure@4.9.7) (2022-04-12)
+
+**Note:** Version bump only for package @pie-element/number-line-configure
+
+
+
+
+
 ## [4.9.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-configure@4.9.5...@pie-element/number-line-configure@4.9.6) (2022-03-28)
 
 **Note:** Version bump only for package @pie-element/number-line-configure

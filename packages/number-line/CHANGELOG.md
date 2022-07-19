@@ -3,6 +3,91 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@6.0.0...@pie-element/number-line@6.1.0) (2022-06-28)
+
+
+### Features
+
+* **number-line:** created validate method in controller PD-1747 ([b1341ef](https://github.com/pie-framework/pie-elements/commit/b1341ef167b43ed6af17bf64d605a66d725b7e2c))
+* **number-line:** ux/ui for validation PD-1748 ([ccfa5fe](https://github.com/pie-framework/pie-elements/commit/ccfa5fe9b39c4471a9769a943c117e35db4bfcc2))
+
+
+
+
+
+# [6.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@5.14.14...@pie-element/number-line@6.0.0) (2022-06-28)
+
+
+### chore
+
+* Merge master with develop. ([cdca48a](https://github.com/pie-framework/pie-elements/commit/cdca48abaa1d4179e4a961e13d171e14b7ed2444))
+
+
+### BREAKING CHANGES
+
+* Image percent buttons were removed from toolbar.
+New properties maxImageWidth and maxImageHeight were added.
+
+
+
+
+
+## [5.14.14](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@5.14.13...@pie-element/number-line@5.14.14) (2022-06-13)
+
+**Note:** Version bump only for package @pie-element/number-line
+
+
+
+
+
+## [5.14.13](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@5.14.12...@pie-element/number-line@5.14.13) (2022-05-30)
+
+**Note:** Version bump only for package @pie-element/number-line
+
+
+
+
+
+## [5.14.12](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@5.14.11...@pie-element/number-line@5.14.12) (2022-05-30)
+
+**Note:** Version bump only for package @pie-element/number-line
+
+
+
+
+
+## [5.14.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@5.14.10...@pie-element/number-line@5.14.11) (2022-05-16)
+
+**Note:** Version bump only for package @pie-element/number-line
+
+
+
+
+
+## [5.14.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@5.14.9...@pie-element/number-line@5.14.10) (2022-05-09)
+
+**Note:** Version bump only for package @pie-element/number-line
+
+
+
+
+
+## [5.14.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@5.14.8...@pie-element/number-line@5.14.9) (2022-05-03)
+
+**Note:** Version bump only for package @pie-element/number-line
+
+
+
+
+
+## [5.14.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@5.14.7...@pie-element/number-line@5.14.8) (2022-04-12)
+
+**Note:** Version bump only for package @pie-element/number-line
+
+
+
+
+
 ## [5.14.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@5.14.6...@pie-element/number-line@5.14.7) (2022-03-28)
 
 **Note:** Version bump only for package @pie-element/number-line

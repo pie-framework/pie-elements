@@ -3,6 +3,85 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@5.0.0...@pie-element/hotspot-configure@5.1.0) (2022-06-28)
+
+
+### Features
+
+* **hotspot:** add maxImageWidth and maxImageHeight props PD-1801 ([8325bc1](https://github.com/pie-framework/pie-elements/commit/8325bc1bb9014027349bfab863b56bb1d519e5ca))
+
+
+
+
+
+# [5.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@4.7.4...@pie-element/hotspot-configure@5.0.0) (2022-06-28)
+
+
+### chore
+
+* Merge master with develop. ([cdca48a](https://github.com/pie-framework/pie-elements/commit/cdca48abaa1d4179e4a961e13d171e14b7ed2444))
+
+
+### BREAKING CHANGES
+
+* Image percent buttons were removed from toolbar.
+New properties maxImageWidth and maxImageHeight were added.
+
+
+
+
+
+## [4.7.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@4.7.3...@pie-element/hotspot-configure@4.7.4) (2022-06-13)
+
+**Note:** Version bump only for package @pie-element/hotspot-configure
+
+
+
+
+
+## [4.7.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@4.7.2...@pie-element/hotspot-configure@4.7.3) (2022-05-30)
+
+**Note:** Version bump only for package @pie-element/hotspot-configure
+
+
+
+
+
+## [4.7.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@4.7.1...@pie-element/hotspot-configure@4.7.2) (2022-05-16)
+
+**Note:** Version bump only for package @pie-element/hotspot-configure
+
+
+
+
+
+## [4.7.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@4.7.0...@pie-element/hotspot-configure@4.7.1) (2022-05-09)
+
+**Note:** Version bump only for package @pie-element/hotspot-configure
+
+
+
+
+
+# [4.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@4.6.16...@pie-element/hotspot-configure@4.7.0) (2022-05-03)
+
+
+### Features
+
+* **hotspot:** PD-1703 implement ui/ux for item validation ([a962183](https://github.com/pie-framework/pie-elements/commit/a962183d0941936b69a95b32002135507d769170))
+
+
+
+
+
+## [4.6.16](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@4.6.15...@pie-element/hotspot-configure@4.6.16) (2022-04-12)
+
+**Note:** Version bump only for package @pie-element/hotspot-configure
+
+
+
+
+
 ## [4.6.15](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@4.6.14...@pie-element/hotspot-configure@4.6.15) (2022-03-28)
 
 **Note:** Version bump only for package @pie-element/hotspot-configure

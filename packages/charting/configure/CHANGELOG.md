@@ -3,6 +3,110 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-configure@4.0.0...@pie-element/charting-configure@5.0.0) (2022-06-28)
+
+
+### Bug Fixes
+
+* updated pie-lib since the previous version was a breaking change that was not released properly ([e51250d](https://github.com/pie-framework/pie-elements/commit/e51250dfe5b2d6593e186c685b6f75167479ff39))
+
+
+### Features
+
+* **charting:** add maxImageWidth and maxImageHeight props PD-1801 ([0bff787](https://github.com/pie-framework/pie-elements/commit/0bff787ff2c9301138346f02e04646ee55f659fc))
+* **charting:** remove editCategoryEnabled property ([0ea2a3c](https://github.com/pie-framework/pie-elements/commit/0ea2a3cf9c4ebf09c493ad6aee02ee1cc1987b36))
+* **charting:** remove editCategoryEnabled property checkbox and usage. ([b844871](https://github.com/pie-framework/pie-elements/commit/b84487145c2d92edaaed2427070e4294b0681803))
+
+
+### Reverts
+
+* Revert "try to add student can add categories checkbox in pie-lib" ([0ba8f3f](https://github.com/pie-framework/pie-elements/commit/0ba8f3f80ea98eee535b0c2da1da92b4899ada83))
+
+
+### BREAKING CHANGES
+
+* **charting:** The editCategoryEnabled checkbox and property was removed.
+Enabled property will be used for each category.
+* **charting:** The editCategoryEnabled propery has been removed
+
+
+
+
+
+# [4.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-configure@3.0.0...@pie-element/charting-configure@4.0.0) (2022-06-28)
+
+
+### chore
+
+* Merge master with develop. ([cdca48a](https://github.com/pie-framework/pie-elements/commit/cdca48abaa1d4179e4a961e13d171e14b7ed2444))
+
+
+### BREAKING CHANGES
+
+* Image percent buttons were removed from toolbar.
+New properties maxImageWidth and maxImageHeight were added.
+
+
+
+
+
+# [3.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-configure@2.1.49...@pie-element/charting-configure@3.0.0) (2022-06-13)
+
+
+### Features
+
+* **charting:** remove editCategoryEnabled property checkbox and usage. ([b5e6a93](https://github.com/pie-framework/pie-elements/commit/b5e6a93fb99c957bec304bac7d7bf34ee3c98f27))
+
+
+### BREAKING CHANGES
+
+* **charting:** The editCategoryEnabled checkbox and property was removed.
+Enabled property will be used for each category.
+
+
+
+
+
+## [2.1.49](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-configure@2.1.48...@pie-element/charting-configure@2.1.49) (2022-05-30)
+
+**Note:** Version bump only for package @pie-element/charting-configure
+
+
+
+
+
+## [2.1.48](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-configure@2.1.47...@pie-element/charting-configure@2.1.48) (2022-05-16)
+
+**Note:** Version bump only for package @pie-element/charting-configure
+
+
+
+
+
+## [2.1.47](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-configure@2.1.46...@pie-element/charting-configure@2.1.47) (2022-05-09)
+
+**Note:** Version bump only for package @pie-element/charting-configure
+
+
+
+
+
+## [2.1.46](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-configure@2.1.45...@pie-element/charting-configure@2.1.46) (2022-05-03)
+
+**Note:** Version bump only for package @pie-element/charting-configure
+
+
+
+
+
+## [2.1.45](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-configure@2.1.44...@pie-element/charting-configure@2.1.45) (2022-04-12)
+
+**Note:** Version bump only for package @pie-element/charting-configure
+
+
+
+
+
 ## [2.1.44](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-configure@2.1.43...@pie-element/charting-configure@2.1.44) (2022-03-28)
 
 **Note:** Version bump only for package @pie-element/charting-configure

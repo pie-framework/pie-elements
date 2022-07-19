@@ -3,6 +3,104 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@4.0.0...@pie-element/explicit-constructed-response@4.1.0) (2022-06-28)
+
+
+### Bug Fixes
+
+* **explicit-constructed-response:** change validation messsage ([dff4964](https://github.com/pie-framework/pie-elements/commit/dff49645a4b814686bfaba18298b064e174c717a))
+* clean up ([53cea01](https://github.com/pie-framework/pie-elements/commit/53cea01bd199a2f000035e9dad455fae5a6be452))
+* error fucntion ([9b4a145](https://github.com/pie-framework/pie-elements/commit/9b4a145874ad19c14f558dad8bf505d3ae8a3857))
+
+
+### Features
+
+* **inline-dropdown, drag-in-the-blank, explicit-constructed-response:** set config default for maxRespponseAreas ([a9e9dc5](https://github.com/pie-framework/pie-elements/commit/a9e9dc5ff43199c946f4226790d924ab5d8674ed))
+* PD-1706 validation ui/ux ([265c248](https://github.com/pie-framework/pie-elements/commit/265c248ecd10d7a108f8d4abddd40824e4b2f0f4))
+* update documentation for items that have validation with settings configurable by client systems PD-1789 ([8ef69cc](https://github.com/pie-framework/pie-elements/commit/8ef69cc0c7439a5803dc95f570efc7cd24c8e334))
+* **explicit-constructed-response:** added configurable validation PD-1706 ([327af4a](https://github.com/pie-framework/pie-elements/commit/327af4abe87af52389232c56afdd6e0dfd6c77f7))
+
+
+
+
+
+# [4.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@3.13.4...@pie-element/explicit-constructed-response@4.0.0) (2022-06-28)
+
+
+### chore
+
+* Merge master with develop. ([cdca48a](https://github.com/pie-framework/pie-elements/commit/cdca48abaa1d4179e4a961e13d171e14b7ed2444))
+
+
+### BREAKING CHANGES
+
+* Image percent buttons were removed from toolbar.
+New properties maxImageWidth and maxImageHeight were added.
+
+
+
+
+
+## [3.13.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@3.13.3...@pie-element/explicit-constructed-response@3.13.4) (2022-06-13)
+
+**Note:** Version bump only for package @pie-element/explicit-constructed-response
+
+
+
+
+
+## [3.13.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@3.13.2...@pie-element/explicit-constructed-response@3.13.3) (2022-05-30)
+
+**Note:** Version bump only for package @pie-element/explicit-constructed-response
+
+
+
+
+
+## [3.13.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@3.13.1...@pie-element/explicit-constructed-response@3.13.2) (2022-05-16)
+
+**Note:** Version bump only for package @pie-element/explicit-constructed-response
+
+
+
+
+
+## [3.13.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@3.13.0...@pie-element/explicit-constructed-response@3.13.1) (2022-05-09)
+
+**Note:** Version bump only for package @pie-element/explicit-constructed-response
+
+
+
+
+
+# [3.13.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@3.12.7...@pie-element/explicit-constructed-response@3.13.0) (2022-05-03)
+
+
+### Bug Fixes
+
+* added getters for the session PD-1668 ([de8a754](https://github.com/pie-framework/pie-elements/commit/de8a754f4580370b127257c435e43db405b4bdc4))
+* **explcit-constructed-response, inline-dropdown, drag-in-the-blank:** Fixed some math symbols rendering PD-1535 ([98b99ff](https://github.com/pie-framework/pie-elements/commit/98b99ff26742c15563b365c7fbb7fab981f057d8))
+* **explicit-constructed-response:** Adjusted minimum and maximum values for MaxLengthPerChoice PD-1552 ([3ab3398](https://github.com/pie-framework/pie-elements/commit/3ab3398cc8c92a0effc492f7dc06c92ffc51eac0))
+* **explicit-constructed-response:** Maximum Length field should always appear when Maximum Length Per Choice is set to true PD-1591 ([153123e](https://github.com/pie-framework/pie-elements/commit/153123ebb4162c8cb342bc7c6a979d68abc4b0c3))
+
+
+### Features
+
+* **choices:** implemented response deletion and undo capabilities [PD-1592] ([158a6e1](https://github.com/pie-framework/pie-elements/commit/158a6e1cb67a1804af28acb4c731daaf40d8435a))
+* **choices:** made sure adding a choice changes the markup [PD-1592] ([26768c0](https://github.com/pie-framework/pie-elements/commit/26768c0c04085d254633d099e45aaa68d7a4a269))
+
+
+
+
+
+## [3.12.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@3.12.6...@pie-element/explicit-constructed-response@3.12.7) (2022-04-12)
+
+**Note:** Version bump only for package @pie-element/explicit-constructed-response
+
+
+
+
+
 ## [3.12.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@3.12.5...@pie-element/explicit-constructed-response@3.12.6) (2022-03-28)
 
 **Note:** Version bump only for package @pie-element/explicit-constructed-response
