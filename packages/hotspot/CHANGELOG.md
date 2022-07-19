@@ -3,6 +3,96 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@5.0.0...@pie-element/hotspot@5.1.0) (2022-06-28)
+
+
+### Features
+
+* **hotspot:** add maxImageWidth and maxImageHeight props PD-1801 ([8325bc1](https://github.com/pie-framework/pie-elements/commit/8325bc1bb9014027349bfab863b56bb1d519e5ca))
+* update documentation for items that have validation with settings configurable by client systems PD-1789 ([8ef69cc](https://github.com/pie-framework/pie-elements/commit/8ef69cc0c7439a5803dc95f570efc7cd24c8e334))
+
+
+
+
+
+# [5.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@4.11.4...@pie-element/hotspot@5.0.0) (2022-06-28)
+
+
+### chore
+
+* Merge master with develop. ([cdca48a](https://github.com/pie-framework/pie-elements/commit/cdca48abaa1d4179e4a961e13d171e14b7ed2444))
+
+
+### BREAKING CHANGES
+
+* Image percent buttons were removed from toolbar.
+New properties maxImageWidth and maxImageHeight were added.
+
+
+
+
+
+## [4.11.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@4.11.3...@pie-element/hotspot@4.11.4) (2022-06-13)
+
+**Note:** Version bump only for package @pie-element/hotspot
+
+
+
+
+
+## [4.11.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@4.11.2...@pie-element/hotspot@4.11.3) (2022-05-30)
+
+**Note:** Version bump only for package @pie-element/hotspot
+
+
+
+
+
+## [4.11.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@4.11.1...@pie-element/hotspot@4.11.2) (2022-05-16)
+
+**Note:** Version bump only for package @pie-element/hotspot
+
+
+
+
+
+## [4.11.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@4.11.0...@pie-element/hotspot@4.11.1) (2022-05-09)
+
+**Note:** Version bump only for package @pie-element/hotspot
+
+
+
+
+
+# [4.11.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@4.10.17...@pie-element/hotspot@4.11.0) (2022-05-03)
+
+
+### Bug Fixes
+
+* added getters for the session PD-1668 ([de8a754](https://github.com/pie-framework/pie-elements/commit/de8a754f4580370b127257c435e43db405b4bdc4))
+* **hotspot:** add support for --pie-zoom css property PD-360 ([f2dc70d](https://github.com/pie-framework/pie-elements/commit/f2dc70dc4b27bdab76c68cd938dc1b734b50a80f))
+* **hotspot:** add support for --pie-zoom css property PD-360 (review) ([cf34390](https://github.com/pie-framework/pie-elements/commit/cf34390d29c9291bd82b75c649d5b4d1b6c78fdf))
+* **hotspot:** add support for removing --pie-zoom css property PD-360 ([3e7a293](https://github.com/pie-framework/pie-elements/commit/3e7a29385d84264b167ad5f2e9a75ef38e9c14f3))
+* **hotspot:** use "prompt" class on PreviewPrompt PD-1553 ([9650b64](https://github.com/pie-framework/pie-elements/commit/9650b646414ecb9ee6d9a362f4cc1a129d92d357))
+
+
+### Features
+
+* **hotspot:** added configurable validation PD-1702 ([18eb985](https://github.com/pie-framework/pie-elements/commit/18eb98568adf9248dc616a9ae71d9f8394b62fc1))
+* **hotspot:** PD-1703 implement ui/ux for item validation ([a962183](https://github.com/pie-framework/pie-elements/commit/a962183d0941936b69a95b32002135507d769170))
+
+
+
+
+
+## [4.10.17](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@4.10.16...@pie-element/hotspot@4.10.17) (2022-04-12)
+
+**Note:** Version bump only for package @pie-element/hotspot
+
+
+
+
+
 ## [4.10.16](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@4.10.15...@pie-element/hotspot@4.10.16) (2022-03-28)
 
 **Note:** Version bump only for package @pie-element/hotspot

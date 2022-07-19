@@ -3,6 +3,82 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@4.0.0...@pie-element/image-cloze-association@4.1.0) (2022-06-28)
+
+
+### Features
+
+* **image-cloze-association:** add maxImageWidth and maxImageHeight props PD-1801 ([f4132c8](https://github.com/pie-framework/pie-elements/commit/f4132c81475ad141fae5c38def311ac7e9729a42))
+
+
+
+
+
+# [4.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@3.6.31...@pie-element/image-cloze-association@4.0.0) (2022-06-28)
+
+
+### chore
+
+* Merge master with develop. ([cdca48a](https://github.com/pie-framework/pie-elements/commit/cdca48abaa1d4179e4a961e13d171e14b7ed2444))
+
+
+### BREAKING CHANGES
+
+* Image percent buttons were removed from toolbar.
+New properties maxImageWidth and maxImageHeight were added.
+
+
+
+
+
+## [3.6.31](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@3.6.30...@pie-element/image-cloze-association@3.6.31) (2022-06-13)
+
+**Note:** Version bump only for package @pie-element/image-cloze-association
+
+
+
+
+
+## [3.6.30](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@3.6.29...@pie-element/image-cloze-association@3.6.30) (2022-05-30)
+
+**Note:** Version bump only for package @pie-element/image-cloze-association
+
+
+
+
+
+## [3.6.29](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@3.6.28...@pie-element/image-cloze-association@3.6.29) (2022-05-16)
+
+**Note:** Version bump only for package @pie-element/image-cloze-association
+
+
+
+
+
+## [3.6.28](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@3.6.27...@pie-element/image-cloze-association@3.6.28) (2022-05-09)
+
+**Note:** Version bump only for package @pie-element/image-cloze-association
+
+
+
+
+
+## [3.6.27](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@3.6.26...@pie-element/image-cloze-association@3.6.27) (2022-05-03)
+
+**Note:** Version bump only for package @pie-element/image-cloze-association
+
+
+
+
+
+## [3.6.26](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@3.6.25...@pie-element/image-cloze-association@3.6.26) (2022-04-12)
+
+**Note:** Version bump only for package @pie-element/image-cloze-association
+
+
+
+
+
 ## [3.6.25](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@3.6.24...@pie-element/image-cloze-association@3.6.25) (2022-03-28)
 
 **Note:** Version bump only for package @pie-element/image-cloze-association

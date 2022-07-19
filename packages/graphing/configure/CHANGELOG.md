@@ -3,6 +3,113 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@4.0.0...@pie-element/graphing-configure@4.1.0) (2022-06-28)
+
+
+### Bug Fixes
+
+* **graphing:** fixed horizontal/vertical gridlines when includeAxes is false PD-1842 ([df43a3b](https://github.com/pie-framework/pie-elements/commit/df43a3b3cf413468be1e98863c1b3f21e0c0b17c))
+
+
+### Features
+
+* **graphing:** add maxImageWidth and maxImageHeight props PD-1801 ([5d01857](https://github.com/pie-framework/pie-elements/commit/5d0185752ab1f1f9c3cf88232c522c0f742c3cb1))
+* **graphing:** Added default selected graphing tool property for gather PD-1689 ([57b4e4f](https://github.com/pie-framework/pie-elements/commit/57b4e4f75f0addf9f305e30304b0ba5f95de4571))
+* **graphing:** Added delete button for alternates + UI improvements PD-1606 ([1b56013](https://github.com/pie-framework/pie-elements/commit/1b56013ed6b1cd99951821f24b0ccbee3e5758de))
+* **graphing:** added grid setup pannel + refactoring PD-1679 PD-1692 PD-1685 ([54fae9e](https://github.com/pie-framework/pie-elements/commit/54fae9e83521c1f3ef50e75e1f7e2097e6312cd6))
+* **graphing:** added the ability to customize the Grid Setup Panel PD-1688 ([6353019](https://github.com/pie-framework/pie-elements/commit/63530198694f740e70e126884e1512d4c373dd64))
+* **graphing:** added the ability to predefine the available tools PD-1688 ([28b1c96](https://github.com/pie-framework/pie-elements/commit/28b1c96b11476003db261ddb7d2706017c3ffcaa))
+* **graphing:** Changed the consequences of toggling tools on or off PD-1608 ([ff6e28b](https://github.com/pie-framework/pie-elements/commit/ff6e28b9b73b1a1d68c1d741cf6d3ce5f4a45eed))
+* **graphing:** put background shapes tools into a collapsible pannel PD-1693 ([8ce35a5](https://github.com/pie-framework/pie-elements/commit/8ce35a59e999decfda58f09397b5f8005e3249e1))
+
+
+
+
+
+# [4.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@3.3.23...@pie-element/graphing-configure@4.0.0) (2022-06-28)
+
+
+### chore
+
+* Merge master with develop. ([cdca48a](https://github.com/pie-framework/pie-elements/commit/cdca48abaa1d4179e4a961e13d171e14b7ed2444))
+
+
+### BREAKING CHANGES
+
+* Image percent buttons were removed from toolbar.
+New properties maxImageWidth and maxImageHeight were added.
+
+
+
+
+
+## [3.3.23](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@3.3.22...@pie-element/graphing-configure@3.3.23) (2022-06-13)
+
+
+### Bug Fixes
+
+* **graphing:** fixed horizontal/vertical gridlines when includeAxes is false PD-1842 (merged with develop) ([52f38ea](https://github.com/pie-framework/pie-elements/commit/52f38ea44fb9be0e438537abb0ecf1e1308a8834))
+
+
+
+
+
+## [3.3.22](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@3.3.21...@pie-element/graphing-configure@3.3.22) (2022-06-13)
+
+**Note:** Version bump only for package @pie-element/graphing-configure
+
+
+
+
+
+## [3.3.21](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@3.3.20...@pie-element/graphing-configure@3.3.21) (2022-05-30)
+
+**Note:** Version bump only for package @pie-element/graphing-configure
+
+
+
+
+
+## [3.3.20](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@3.3.19...@pie-element/graphing-configure@3.3.20) (2022-05-16)
+
+**Note:** Version bump only for package @pie-element/graphing-configure
+
+
+
+
+
+## [3.3.19](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@3.3.18...@pie-element/graphing-configure@3.3.19) (2022-05-09)
+
+**Note:** Version bump only for package @pie-element/graphing-configure
+
+
+
+
+
+## [3.3.18](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@3.3.17...@pie-element/graphing-configure@3.3.18) (2022-05-04)
+
+**Note:** Version bump only for package @pie-element/graphing-configure
+
+
+
+
+
+## [3.3.17](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@3.3.16...@pie-element/graphing-configure@3.3.17) (2022-05-03)
+
+**Note:** Version bump only for package @pie-element/graphing-configure
+
+
+
+
+
+## [3.3.16](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@3.3.15...@pie-element/graphing-configure@3.3.16) (2022-04-12)
+
+**Note:** Version bump only for package @pie-element/graphing-configure
+
+
+
+
+
 ## [3.3.15](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@3.3.14...@pie-element/graphing-configure@3.3.15) (2022-03-28)
 
 **Note:** Version bump only for package @pie-element/graphing-configure

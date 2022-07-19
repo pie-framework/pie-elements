@@ -3,6 +3,83 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-configure@8.0.0...@pie-element/ebsr-configure@8.1.0) (2022-06-28)
+
+
+### Features
+
+* **ebsr:** add maxImageWidth and maxImageHeight props PD-1801 ([61c9b25](https://github.com/pie-framework/pie-elements/commit/61c9b2511ab8ef1a146d86def588bf8517e23e96))
+* **ebsr:** implement item validation PD-1799 ([66e9ff1](https://github.com/pie-framework/pie-elements/commit/66e9ff1d0178e5ba6f4b07115f1efbf0c752e05f))
+
+
+
+
+
+# [8.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-configure@7.0.26...@pie-element/ebsr-configure@8.0.0) (2022-06-28)
+
+
+### chore
+
+* Merge master with develop. ([cdca48a](https://github.com/pie-framework/pie-elements/commit/cdca48abaa1d4179e4a961e13d171e14b7ed2444))
+
+
+### BREAKING CHANGES
+
+* Image percent buttons were removed from toolbar.
+New properties maxImageWidth and maxImageHeight were added.
+
+
+
+
+
+## [7.0.26](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-configure@7.0.25...@pie-element/ebsr-configure@7.0.26) (2022-06-13)
+
+**Note:** Version bump only for package @pie-element/ebsr-configure
+
+
+
+
+
+## [7.0.25](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-configure@7.0.24...@pie-element/ebsr-configure@7.0.25) (2022-05-30)
+
+**Note:** Version bump only for package @pie-element/ebsr-configure
+
+
+
+
+
+## [7.0.24](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-configure@7.0.23...@pie-element/ebsr-configure@7.0.24) (2022-05-16)
+
+**Note:** Version bump only for package @pie-element/ebsr-configure
+
+
+
+
+
+## [7.0.23](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-configure@7.0.22...@pie-element/ebsr-configure@7.0.23) (2022-05-09)
+
+**Note:** Version bump only for package @pie-element/ebsr-configure
+
+
+
+
+
+## [7.0.22](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-configure@7.0.21...@pie-element/ebsr-configure@7.0.22) (2022-05-03)
+
+**Note:** Version bump only for package @pie-element/ebsr-configure
+
+
+
+
+
+## [7.0.21](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-configure@7.0.20...@pie-element/ebsr-configure@7.0.21) (2022-04-12)
+
+**Note:** Version bump only for package @pie-element/ebsr-configure
+
+
+
+
+
 ## [7.0.20](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-configure@7.0.19...@pie-element/ebsr-configure@7.0.20) (2022-03-28)
 
 **Note:** Version bump only for package @pie-element/ebsr-configure

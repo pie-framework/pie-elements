@@ -3,6 +3,88 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@6.0.0...@pie-element/math-inline-configure@6.1.0) (2022-06-28)
+
+
+### Bug Fixes
+
+* tests ([671b33f](https://github.com/pie-framework/pie-elements/commit/671b33f0abe95d6de6f31851245fc8255981a262))
+
+
+### Features
+
+* **math-inline:** add maxImageWidth and maxImageHeight props PD-1801 ([24e60e2](https://github.com/pie-framework/pie-elements/commit/24e60e2d5e1bdc90530662f5c11528d67c2545ce))
+* **math-inline:** implement ui/ux for validation PD-1705 ([74b9682](https://github.com/pie-framework/pie-elements/commit/74b968278cbe07fffd6979889bae91d137d334c3))
+
+
+
+
+
+# [6.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@5.6.21...@pie-element/math-inline-configure@6.0.0) (2022-06-28)
+
+
+### chore
+
+* Merge master with develop. ([cdca48a](https://github.com/pie-framework/pie-elements/commit/cdca48abaa1d4179e4a961e13d171e14b7ed2444))
+
+
+### BREAKING CHANGES
+
+* Image percent buttons were removed from toolbar.
+New properties maxImageWidth and maxImageHeight were added.
+
+
+
+
+
+## [5.6.21](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@5.6.20...@pie-element/math-inline-configure@5.6.21) (2022-06-13)
+
+**Note:** Version bump only for package @pie-element/math-inline-configure
+
+
+
+
+
+## [5.6.20](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@5.6.19...@pie-element/math-inline-configure@5.6.20) (2022-05-30)
+
+**Note:** Version bump only for package @pie-element/math-inline-configure
+
+
+
+
+
+## [5.6.19](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@5.6.18...@pie-element/math-inline-configure@5.6.19) (2022-05-16)
+
+**Note:** Version bump only for package @pie-element/math-inline-configure
+
+
+
+
+
+## [5.6.18](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@5.6.17...@pie-element/math-inline-configure@5.6.18) (2022-05-09)
+
+**Note:** Version bump only for package @pie-element/math-inline-configure
+
+
+
+
+
+## [5.6.17](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@5.6.16...@pie-element/math-inline-configure@5.6.17) (2022-05-03)
+
+**Note:** Version bump only for package @pie-element/math-inline-configure
+
+
+
+
+
+## [5.6.16](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@5.6.15...@pie-element/math-inline-configure@5.6.16) (2022-04-12)
+
+**Note:** Version bump only for package @pie-element/math-inline-configure
+
+
+
+
+
 ## [5.6.15](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@5.6.14...@pie-element/math-inline-configure@5.6.15) (2022-03-28)
 
 **Note:** Version bump only for package @pie-element/math-inline-configure

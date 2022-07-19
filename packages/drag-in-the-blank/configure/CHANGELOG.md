@@ -3,6 +3,90 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-configure@4.0.0...@pie-element/drag-in-the-blank-configure@4.1.0) (2022-06-28)
+
+
+### Bug Fixes
+
+* tests ([7cb326c](https://github.com/pie-framework/pie-elements/commit/7cb326c70ba5c71c10017b238c2a32fa8a8c7bca))
+* **drag-in-the-blank:** set default value for minChoices in validation message ([cbc9b73](https://github.com/pie-framework/pie-elements/commit/cbc9b7340668fe7b27682688f26df71941a4cf23))
+
+
+### Features
+
+* **drag-in-the-blank:** add generate validation message, tooltip and error messages PD-1709 ([d0f4c46](https://github.com/pie-framework/pie-elements/commit/d0f4c46eb7bbd4eaa22ea21495905dd052b87541))
+* **drag-in-the-blank:** ui/ux validation ([4676876](https://github.com/pie-framework/pie-elements/commit/4676876293981f519831640e0e39b5d9f32aa2aa))
+* **inline-dropdown, drag-in-the-blank, explicit-constructed-response:** set config default for maxRespponseAreas ([a9e9dc5](https://github.com/pie-framework/pie-elements/commit/a9e9dc5ff43199c946f4226790d924ab5d8674ed))
+
+
+
+
+
+# [4.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-configure@3.6.25...@pie-element/drag-in-the-blank-configure@4.0.0) (2022-06-28)
+
+
+### chore
+
+* Merge master with develop. ([cdca48a](https://github.com/pie-framework/pie-elements/commit/cdca48abaa1d4179e4a961e13d171e14b7ed2444))
+
+
+### BREAKING CHANGES
+
+* Image percent buttons were removed from toolbar.
+New properties maxImageWidth and maxImageHeight were added.
+
+
+
+
+
+## [3.6.25](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-configure@3.6.24...@pie-element/drag-in-the-blank-configure@3.6.25) (2022-06-13)
+
+**Note:** Version bump only for package @pie-element/drag-in-the-blank-configure
+
+
+
+
+
+## [3.6.24](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-configure@3.6.23...@pie-element/drag-in-the-blank-configure@3.6.24) (2022-05-30)
+
+**Note:** Version bump only for package @pie-element/drag-in-the-blank-configure
+
+
+
+
+
+## [3.6.23](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-configure@3.6.22...@pie-element/drag-in-the-blank-configure@3.6.23) (2022-05-16)
+
+**Note:** Version bump only for package @pie-element/drag-in-the-blank-configure
+
+
+
+
+
+## [3.6.22](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-configure@3.6.21...@pie-element/drag-in-the-blank-configure@3.6.22) (2022-05-09)
+
+**Note:** Version bump only for package @pie-element/drag-in-the-blank-configure
+
+
+
+
+
+## [3.6.21](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-configure@3.6.20...@pie-element/drag-in-the-blank-configure@3.6.21) (2022-05-03)
+
+**Note:** Version bump only for package @pie-element/drag-in-the-blank-configure
+
+
+
+
+
+## [3.6.20](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-configure@3.6.19...@pie-element/drag-in-the-blank-configure@3.6.20) (2022-04-12)
+
+**Note:** Version bump only for package @pie-element/drag-in-the-blank-configure
+
+
+
+
+
 ## [3.6.19](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-configure@3.6.18...@pie-element/drag-in-the-blank-configure@3.6.19) (2022-03-28)
 
 **Note:** Version bump only for package @pie-element/drag-in-the-blank-configure

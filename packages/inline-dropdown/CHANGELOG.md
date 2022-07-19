@@ -3,6 +3,102 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@4.0.0...@pie-element/inline-dropdown@4.1.0) (2022-06-28)
+
+
+### Bug Fixes
+
+* inline-dropdown and drag-in-the-blank fix validation error PD-1848 ([24f50f1](https://github.com/pie-framework/pie-elements/commit/24f50f11ee681749e2849c84f178af2b67441454))
+
+
+### Features
+
+* **inline-dropdown:** add maxImageWidth and maxImageHeight props PD-1801 ([a2ad5d5](https://github.com/pie-framework/pie-elements/commit/a2ad5d5298e5696541f45ab8ca9e5675f5bb1a57))
+* **inline-dropdown, drag-in-the-blank, explicit-constructed-response:** set config default for maxRespponseAreas ([a9e9dc5](https://github.com/pie-framework/pie-elements/commit/a9e9dc5ff43199c946f4226790d924ab5d8674ed))
+* update documentation for items that have validation with settings configurable by client systems PD-1789 ([8ef69cc](https://github.com/pie-framework/pie-elements/commit/8ef69cc0c7439a5803dc95f570efc7cd24c8e334))
+
+
+
+
+
+# [4.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@3.11.4...@pie-element/inline-dropdown@4.0.0) (2022-06-28)
+
+
+### chore
+
+* Merge master with develop. ([cdca48a](https://github.com/pie-framework/pie-elements/commit/cdca48abaa1d4179e4a961e13d171e14b7ed2444))
+
+
+### BREAKING CHANGES
+
+* Image percent buttons were removed from toolbar.
+New properties maxImageWidth and maxImageHeight were added.
+
+
+
+
+
+## [3.11.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@3.11.3...@pie-element/inline-dropdown@3.11.4) (2022-06-13)
+
+**Note:** Version bump only for package @pie-element/inline-dropdown
+
+
+
+
+
+## [3.11.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@3.11.2...@pie-element/inline-dropdown@3.11.3) (2022-05-30)
+
+**Note:** Version bump only for package @pie-element/inline-dropdown
+
+
+
+
+
+## [3.11.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@3.11.1...@pie-element/inline-dropdown@3.11.2) (2022-05-16)
+
+**Note:** Version bump only for package @pie-element/inline-dropdown
+
+
+
+
+
+## [3.11.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@3.11.0...@pie-element/inline-dropdown@3.11.1) (2022-05-09)
+
+**Note:** Version bump only for package @pie-element/inline-dropdown
+
+
+
+
+
+# [3.11.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@3.10.7...@pie-element/inline-dropdown@3.11.0) (2022-05-03)
+
+
+### Bug Fixes
+
+* added getters for the session PD-1668 ([de8a754](https://github.com/pie-framework/pie-elements/commit/de8a754f4580370b127257c435e43db405b4bdc4))
+* **explcit-constructed-response, inline-dropdown, drag-in-the-blank:** Fixed some math symbols rendering PD-1535 ([98b99ff](https://github.com/pie-framework/pie-elements/commit/98b99ff26742c15563b365c7fbb7fab981f057d8))
+
+
+### Features
+
+* **inline-dropdown:** added configurable validation ([268a876](https://github.com/pie-framework/pie-elements/commit/268a8766c963a35aa7ca2f3831b870f411d1ad10))
+* **inline-dropdown:** added configurable validation PD-1698 ([c326731](https://github.com/pie-framework/pie-elements/commit/c3267310c3620037402b722104dcdf0358e74d42))
+* **inline-dropdown:** added configurable validation PD-1698 ([68405ab](https://github.com/pie-framework/pie-elements/commit/68405ab78680cdc7fda1d893c78ebb4880fbed86))
+* **inline-dropdown:** added validation UI improvements PD-1698 ([477066b](https://github.com/pie-framework/pie-elements/commit/477066b51d746d37ba8ba81ece42c95972466fc3))
+* **inline-dropdown:** ui/ux for validation PD-1699 ([d277f49](https://github.com/pie-framework/pie-elements/commit/d277f4958284cfc8dc8b16df49de924f1810c159))
+
+
+
+
+
+## [3.10.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@3.10.6...@pie-element/inline-dropdown@3.10.7) (2022-04-12)
+
+**Note:** Version bump only for package @pie-element/inline-dropdown
+
+
+
+
+
 ## [3.10.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@3.10.5...@pie-element/inline-dropdown@3.10.6) (2022-03-28)
 
 **Note:** Version bump only for package @pie-element/inline-dropdown

@@ -128,6 +128,9 @@ export class ImageContainer extends Component {
     const fitsContainer = x <= maxImageWidth + 5;
     const hasMinimumWidth = x > 150 && y > 150;
 
+    const keepAspectRatioWidth = x > y ? x : 'auto';
+    const keepAspectRatioHeight = x > y ? 'auto' : y;
+
     if (fitsContainer && hasMinimumWidth) {
       box.style.width = `${x}px`;
       box.style.height = `${x/imageAspectRatio}px`;
@@ -168,7 +171,8 @@ export class ImageContainer extends Component {
       dropzoneActive,
       dragEnabled,
       maxImageHeight,
-      maxImageWidth
+      maxImageWidth,
+      dimensions,
     } = this.state;
 
     return (

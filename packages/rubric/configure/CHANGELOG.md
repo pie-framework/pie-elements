@@ -3,6 +3,79 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric-configure@2.0.0...@pie-element/rubric-configure@2.0.1) (2022-06-28)
+
+**Note:** Version bump only for package @pie-element/rubric-configure
+
+
+
+
+
+# [2.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric-configure@1.2.47...@pie-element/rubric-configure@2.0.0) (2022-06-28)
+
+
+### chore
+
+* Merge master with develop. ([cdca48a](https://github.com/pie-framework/pie-elements/commit/cdca48abaa1d4179e4a961e13d171e14b7ed2444))
+
+
+### BREAKING CHANGES
+
+* Image percent buttons were removed from toolbar.
+New properties maxImageWidth and maxImageHeight were added.
+
+
+
+
+
+## [1.2.47](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric-configure@1.2.46...@pie-element/rubric-configure@1.2.47) (2022-06-13)
+
+**Note:** Version bump only for package @pie-element/rubric-configure
+
+
+
+
+
+## [1.2.46](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric-configure@1.2.45...@pie-element/rubric-configure@1.2.46) (2022-05-30)
+
+**Note:** Version bump only for package @pie-element/rubric-configure
+
+
+
+
+
+## [1.2.45](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric-configure@1.2.44...@pie-element/rubric-configure@1.2.45) (2022-05-16)
+
+**Note:** Version bump only for package @pie-element/rubric-configure
+
+
+
+
+
+## [1.2.44](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric-configure@1.2.43...@pie-element/rubric-configure@1.2.44) (2022-05-09)
+
+**Note:** Version bump only for package @pie-element/rubric-configure
+
+
+
+
+
+## [1.2.43](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric-configure@1.2.42...@pie-element/rubric-configure@1.2.43) (2022-05-03)
+
+**Note:** Version bump only for package @pie-element/rubric-configure
+
+
+
+
+
+## [1.2.42](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric-configure@1.2.41...@pie-element/rubric-configure@1.2.42) (2022-04-12)
+
+**Note:** Version bump only for package @pie-element/rubric-configure
+
+
+
+
+
 ## [1.2.41](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric-configure@1.2.40...@pie-element/rubric-configure@1.2.41) (2022-03-22)
 
 **Note:** Version bump only for package @pie-element/rubric-configure

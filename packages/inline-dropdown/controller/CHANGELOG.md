@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-controller@3.4.0...@pie-element/inline-dropdown-controller@4.0.0) (2022-06-28)
+
+
+### chore
+
+* Merge master with develop. ([cdca48a](https://github.com/pie-framework/pie-elements/commit/cdca48abaa1d4179e4a961e13d171e14b7ed2444))
+
+
+### BREAKING CHANGES
+
+* Image percent buttons were removed from toolbar.
+New properties maxImageWidth and maxImageHeight were added.
+
+
+
+
+
+# [3.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-controller@3.3.5...@pie-element/inline-dropdown-controller@3.4.0) (2022-05-03)
+
+
+### Features
+
+* **inline-dropdown:** added configurable validation ([268a876](https://github.com/pie-framework/pie-elements/commit/268a8766c963a35aa7ca2f3831b870f411d1ad10))
+* **inline-dropdown:** added configurable validation PD-1698 ([c326731](https://github.com/pie-framework/pie-elements/commit/c3267310c3620037402b722104dcdf0358e74d42))
+* **inline-dropdown:** added configurable validation PD-1698 ([68405ab](https://github.com/pie-framework/pie-elements/commit/68405ab78680cdc7fda1d893c78ebb4880fbed86))
+
+
+
+
+
 ## [3.3.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-controller@3.3.4...@pie-element/inline-dropdown-controller@3.3.5) (2022-03-22)
 
 **Note:** Version bump only for package @pie-element/inline-dropdown-controller

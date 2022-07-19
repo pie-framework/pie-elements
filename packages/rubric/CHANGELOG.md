@@ -3,6 +3,79 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric@2.0.0...@pie-element/rubric@2.0.1) (2022-06-28)
+
+**Note:** Version bump only for package @pie-element/rubric
+
+
+
+
+
+# [2.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric@1.8.11...@pie-element/rubric@2.0.0) (2022-06-28)
+
+
+### chore
+
+* Merge master with develop. ([cdca48a](https://github.com/pie-framework/pie-elements/commit/cdca48abaa1d4179e4a961e13d171e14b7ed2444))
+
+
+### BREAKING CHANGES
+
+* Image percent buttons were removed from toolbar.
+New properties maxImageWidth and maxImageHeight were added.
+
+
+
+
+
+## [1.8.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric@1.8.10...@pie-element/rubric@1.8.11) (2022-06-13)
+
+**Note:** Version bump only for package @pie-element/rubric
+
+
+
+
+
+## [1.8.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric@1.8.9...@pie-element/rubric@1.8.10) (2022-05-30)
+
+**Note:** Version bump only for package @pie-element/rubric
+
+
+
+
+
+## [1.8.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric@1.8.8...@pie-element/rubric@1.8.9) (2022-05-16)
+
+**Note:** Version bump only for package @pie-element/rubric
+
+
+
+
+
+## [1.8.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric@1.8.7...@pie-element/rubric@1.8.8) (2022-05-09)
+
+**Note:** Version bump only for package @pie-element/rubric
+
+
+
+
+
+## [1.8.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric@1.8.6...@pie-element/rubric@1.8.7) (2022-05-03)
+
+**Note:** Version bump only for package @pie-element/rubric
+
+
+
+
+
+## [1.8.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric@1.8.5...@pie-element/rubric@1.8.6) (2022-04-12)
+
+**Note:** Version bump only for package @pie-element/rubric
+
+
+
+
+
 ## [1.8.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric@1.8.4...@pie-element/rubric@1.8.5) (2022-03-22)
 
 **Note:** Version bump only for package @pie-element/rubric

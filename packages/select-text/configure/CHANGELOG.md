@@ -3,6 +3,95 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@6.0.0...@pie-element/select-text-configure@6.1.0) (2022-06-28)
+
+
+### Features
+
+* **select-text:** add maxImageWidth and maxImageHeight props PD-1801 ([9e8b343](https://github.com/pie-framework/pie-elements/commit/9e8b343703de33597461b18611dbc34f8ef2b92c))
+* **select-text:** ui/ux for item validation - fix info tooltip ([3a7e153](https://github.com/pie-framework/pie-elements/commit/3a7e15302750ed1931fc6cfab47f49d09fffcfad))
+
+
+
+
+
+# [6.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@5.3.4...@pie-element/select-text-configure@6.0.0) (2022-06-28)
+
+
+### chore
+
+* Merge master with develop. ([cdca48a](https://github.com/pie-framework/pie-elements/commit/cdca48abaa1d4179e4a961e13d171e14b7ed2444))
+
+
+### BREAKING CHANGES
+
+* Image percent buttons were removed from toolbar.
+New properties maxImageWidth and maxImageHeight were added.
+
+
+
+
+
+## [5.3.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@5.3.3...@pie-element/select-text-configure@5.3.4) (2022-06-13)
+
+**Note:** Version bump only for package @pie-element/select-text-configure
+
+
+
+
+
+## [5.3.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@5.3.2...@pie-element/select-text-configure@5.3.3) (2022-05-30)
+
+**Note:** Version bump only for package @pie-element/select-text-configure
+
+
+
+
+
+## [5.3.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@5.3.1...@pie-element/select-text-configure@5.3.2) (2022-05-16)
+
+**Note:** Version bump only for package @pie-element/select-text-configure
+
+
+
+
+
+## [5.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@5.3.0...@pie-element/select-text-configure@5.3.1) (2022-05-09)
+
+**Note:** Version bump only for package @pie-element/select-text-configure
+
+
+
+
+
+# [5.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@5.2.23...@pie-element/select-text-configure@5.3.0) (2022-05-03)
+
+
+### Bug Fixes
+
+* Fix select-text tokens. ([9da07f5](https://github.com/pie-framework/pie-elements/commit/9da07f51821dfcfe3a029de3cf018bcd5d4ebfd2))
+* in controller we don't have access to the model (text & tokens) parser functions, so I have added 2 props (oldStart and oldEnd) to compare the start & and of the selected tokens (which are parsed) with the correct tokens (which are not parsed). Also, for the createCorrectSession to work, we need to make sure that when session is set, we have the correct start & end for the tokens (that come unparsed from controller). ([d6670b5](https://github.com/pie-framework/pie-elements/commit/d6670b53185acedd3be2dfc37b8f3616c9ce27f3))
+* multiple tokens containing the same text (wrong token index) ([ac9d3a7](https://github.com/pie-framework/pie-elements/commit/ac9d3a71d35074d74ad7f2ec8c433555f8e8c186))
+* multiple tokens containing the same text + html ascii codes ([bb73710](https://github.com/pie-framework/pie-elements/commit/bb73710d68394a33447191e5d56dc1b7797bb0ed))
+* remove br parser and allowed div elements inside text ([2dfca2f](https://github.com/pie-framework/pie-elements/commit/2dfca2fb17841e8f25e0f0cb1c02a8d9fa4a9bb8))
+
+
+### Features
+
+* **select-text:** ui/ux validation PD-1701 ([3ae2723](https://github.com/pie-framework/pie-elements/commit/3ae27238a70124dcf2b544f0f1c8ae93ddeb0f6e))
+
+
+
+
+
+## [5.2.23](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@5.2.22...@pie-element/select-text-configure@5.2.23) (2022-04-12)
+
+**Note:** Version bump only for package @pie-element/select-text-configure
+
+
+
+
+
 ## [5.2.22](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@5.2.21...@pie-element/select-text-configure@5.2.22) (2022-03-28)
 
 **Note:** Version bump only for package @pie-element/select-text-configure

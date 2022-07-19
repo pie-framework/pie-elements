@@ -3,6 +3,101 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@7.0.0...@pie-element/extended-text-entry@7.1.0) (2022-06-28)
+
+
+### Bug Fixes
+
+* PD-1499 not having desired result (also, remove unnecessary code) - PD-1793 ([9987b4c](https://github.com/pie-framework/pie-elements/commit/9987b4c39f407ad7fab6db59cbe6ad1a66233cb6))
+* PD-1499 not having desired result with extended-text (TTS for math markup) - import renderMath - PD-1793 ([2db2559](https://github.com/pie-framework/pie-elements/commit/2db2559c9bc14dd052a3fa643528e81c7751e521))
+* PD-1499 not having desired result with extended-text (TTS for math markup) PD-1793 ([c0f6d78](https://github.com/pie-framework/pie-elements/commit/c0f6d78b718303b152008447b30262e167438bf0))
+
+
+### Features
+
+* **extended-text-entry:** add maxImageWidth and maxImageHeight props PD-1801 ([82b1404](https://github.com/pie-framework/pie-elements/commit/82b1404a25c67d21599c916574a9caa66b536584))
+* **input:** added configurability for inserting spanish and special characters [PD-1461], [PD-1462] ([11f381e](https://github.com/pie-framework/pie-elements/commit/11f381ea44a3ae2b2c5c189dc53932d689c8e044))
+
+
+
+
+
+# [7.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.8.13...@pie-element/extended-text-entry@7.0.0) (2022-06-28)
+
+
+### chore
+
+* Merge master with develop. ([cdca48a](https://github.com/pie-framework/pie-elements/commit/cdca48abaa1d4179e4a961e13d171e14b7ed2444))
+
+
+### BREAKING CHANGES
+
+* Image percent buttons were removed from toolbar.
+New properties maxImageWidth and maxImageHeight were added.
+
+
+
+
+
+## [6.8.13](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.8.12...@pie-element/extended-text-entry@6.8.13) (2022-06-13)
+
+**Note:** Version bump only for package @pie-element/extended-text-entry
+
+
+
+
+
+## [6.8.12](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.8.11...@pie-element/extended-text-entry@6.8.12) (2022-05-30)
+
+**Note:** Version bump only for package @pie-element/extended-text-entry
+
+
+
+
+
+## [6.8.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.8.10...@pie-element/extended-text-entry@6.8.11) (2022-05-19)
+
+
+### Bug Fixes
+
+* PD-1499 not having desired result with TTS - PD-1793 ([674432b](https://github.com/pie-framework/pie-elements/commit/674432b81b3577118ad5b8619f28a3d1ec0eefed))
+
+
+
+
+
+## [6.8.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.8.9...@pie-element/extended-text-entry@6.8.10) (2022-05-16)
+
+**Note:** Version bump only for package @pie-element/extended-text-entry
+
+
+
+
+
+## [6.8.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.8.8...@pie-element/extended-text-entry@6.8.9) (2022-05-09)
+
+**Note:** Version bump only for package @pie-element/extended-text-entry
+
+
+
+
+
+## [6.8.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.8.7...@pie-element/extended-text-entry@6.8.8) (2022-05-03)
+
+**Note:** Version bump only for package @pie-element/extended-text-entry
+
+
+
+
+
+## [6.8.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.8.6...@pie-element/extended-text-entry@6.8.7) (2022-04-12)
+
+**Note:** Version bump only for package @pie-element/extended-text-entry
+
+
+
+
+
 ## [6.8.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.8.5...@pie-element/extended-text-entry@6.8.6) (2022-03-28)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry

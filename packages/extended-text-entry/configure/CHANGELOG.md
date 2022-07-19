@@ -3,6 +3,83 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-configure@6.0.0...@pie-element/extended-text-entry-configure@6.1.0) (2022-06-28)
+
+
+### Features
+
+* **extended-text-entry:** add maxImageWidth and maxImageHeight props PD-1801 ([82b1404](https://github.com/pie-framework/pie-elements/commit/82b1404a25c67d21599c916574a9caa66b536584))
+* **input:** added configurability for inserting spanish and special characters [PD-1461], [PD-1462] ([11f381e](https://github.com/pie-framework/pie-elements/commit/11f381ea44a3ae2b2c5c189dc53932d689c8e044))
+
+
+
+
+
+# [6.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-configure@5.4.21...@pie-element/extended-text-entry-configure@6.0.0) (2022-06-28)
+
+
+### chore
+
+* Merge master with develop. ([cdca48a](https://github.com/pie-framework/pie-elements/commit/cdca48abaa1d4179e4a961e13d171e14b7ed2444))
+
+
+### BREAKING CHANGES
+
+* Image percent buttons were removed from toolbar.
+New properties maxImageWidth and maxImageHeight were added.
+
+
+
+
+
+## [5.4.21](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-configure@5.4.20...@pie-element/extended-text-entry-configure@5.4.21) (2022-06-13)
+
+**Note:** Version bump only for package @pie-element/extended-text-entry-configure
+
+
+
+
+
+## [5.4.20](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-configure@5.4.19...@pie-element/extended-text-entry-configure@5.4.20) (2022-05-30)
+
+**Note:** Version bump only for package @pie-element/extended-text-entry-configure
+
+
+
+
+
+## [5.4.19](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-configure@5.4.18...@pie-element/extended-text-entry-configure@5.4.19) (2022-05-16)
+
+**Note:** Version bump only for package @pie-element/extended-text-entry-configure
+
+
+
+
+
+## [5.4.18](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-configure@5.4.17...@pie-element/extended-text-entry-configure@5.4.18) (2022-05-09)
+
+**Note:** Version bump only for package @pie-element/extended-text-entry-configure
+
+
+
+
+
+## [5.4.17](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-configure@5.4.16...@pie-element/extended-text-entry-configure@5.4.17) (2022-05-03)
+
+**Note:** Version bump only for package @pie-element/extended-text-entry-configure
+
+
+
+
+
+## [5.4.16](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-configure@5.4.15...@pie-element/extended-text-entry-configure@5.4.16) (2022-04-12)
+
+**Note:** Version bump only for package @pie-element/extended-text-entry-configure
+
+
+
+
+
 ## [5.4.15](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-configure@5.4.14...@pie-element/extended-text-entry-configure@5.4.15) (2022-03-28)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry-configure

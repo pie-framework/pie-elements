@@ -3,6 +3,86 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@7.0.0...@pie-element/categorize@7.1.0) (2022-06-28)
+
+
+### Features
+
+* **categorize:**  add maxImageWidth and maxImageHeight props PD-1801 ([c438cea](https://github.com/pie-framework/pie-elements/commit/c438cea310e6e5cdfbd8c057fc9aadb36d53bb76))
+* update documentation for items that have validation with settings configurable by client systems PD-1789 ([8ef69cc](https://github.com/pie-framework/pie-elements/commit/8ef69cc0c7439a5803dc95f570efc7cd24c8e334))
+* **categorize:** added configurable validation PD-1739 ([c0d8275](https://github.com/pie-framework/pie-elements/commit/c0d827559fd43106e907967c111912ad92366e8e))
+* **categorize:** implement generate validation message method, add info tooltip PD-1740 ([b315f4e](https://github.com/pie-framework/pie-elements/commit/b315f4ea0bc1461da0a8469bd9df383bc98e78ca))
+* **categorize:** implement ui/ux for validation PD-1740 ([0a05866](https://github.com/pie-framework/pie-elements/commit/0a05866af89b0123b8979ef3b4916af4b2a0cdf9))
+
+
+
+
+
+# [7.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@6.9.21...@pie-element/categorize@7.0.0) (2022-06-28)
+
+
+### chore
+
+* Merge master with develop. ([cdca48a](https://github.com/pie-framework/pie-elements/commit/cdca48abaa1d4179e4a961e13d171e14b7ed2444))
+
+
+### BREAKING CHANGES
+
+* Image percent buttons were removed from toolbar.
+New properties maxImageWidth and maxImageHeight were added.
+
+
+
+
+
+## [6.9.21](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@6.9.20...@pie-element/categorize@6.9.21) (2022-06-13)
+
+**Note:** Version bump only for package @pie-element/categorize
+
+
+
+
+
+## [6.9.20](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@6.9.19...@pie-element/categorize@6.9.20) (2022-05-30)
+
+**Note:** Version bump only for package @pie-element/categorize
+
+
+
+
+
+## [6.9.19](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@6.9.18...@pie-element/categorize@6.9.19) (2022-05-16)
+
+**Note:** Version bump only for package @pie-element/categorize
+
+
+
+
+
+## [6.9.18](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@6.9.17...@pie-element/categorize@6.9.18) (2022-05-09)
+
+**Note:** Version bump only for package @pie-element/categorize
+
+
+
+
+
+## [6.9.17](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@6.9.16...@pie-element/categorize@6.9.17) (2022-05-03)
+
+**Note:** Version bump only for package @pie-element/categorize
+
+
+
+
+
+## [6.9.16](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@6.9.15...@pie-element/categorize@6.9.16) (2022-04-12)
+
+**Note:** Version bump only for package @pie-element/categorize
+
+
+
+
+
 ## [6.9.15](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@6.9.14...@pie-element/categorize@6.9.15) (2022-03-28)
 
 **Note:** Version bump only for package @pie-element/categorize
