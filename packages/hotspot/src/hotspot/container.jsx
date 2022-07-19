@@ -100,6 +100,7 @@ export class Container extends React.Component {
                   y={shape.y}
                   strokeWidth={strokeWidth}
                   markAsCorrect={markAsCorrect}
+                  showCorrectEnabled={showCorrect}
                 />
               )
             })}
