@@ -76,7 +76,7 @@ export default class Ebsr extends HTMLElement {
   }
 
   setPartModel(part, key) {
-    if (this._model && this._model[key]) {
+    if (this._model && this._model[key] && part) {
       const { mode } = this._model;
 
       part.model = {
@@ -88,7 +88,7 @@ export default class Ebsr extends HTMLElement {
   }
 
   setPartSession(part, key) {
-    if (this._session && this._model) {
+    if (this._session && this._model && part) {
       const { value } = this._session;
       part.session = value && value[key] ? value[key] : { id: key };
     }
