@@ -2202,7 +2202,7 @@
     lodash "^4.17.21"
     mathjs "^9.4.2"
 
-"@pie-framework/mathquill@^1.1.0", "@pie-framework/mathquill@^1.1.2":
+"@pie-framework/mathquill@^1.1.2":
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/@pie-framework/mathquill/-/mathquill-1.1.2.tgz#ea644244364b9ea0cd3db0588e5a52e7dfc2dbb6"
   integrity sha512-0nTq2oXqsr3YVQcrKyjmAfigBfDkieCPzkgMEcte/wtMIrO0Z7B5Wlor0pocw3dhIB7jzPLVPMBJkXTocRh5rQ==
