@@ -53,7 +53,7 @@ class PolygonComponent extends React.Component {
 
   getEvaluateOutlineColor = (isCorrect, markAsCorrect, outlineColor) => markAsCorrect ? 'green' : (isCorrect ? outlineColor : 'red')
 
-  getOutlineWidth = (selected, markAsCorrect, strokeWidth) => selected || markAsCorrect ? strokeWidth : 0;
+  getOutlineWidth = (showCorrectEnabled, selected, markAsCorrect, strokeWidth) => markAsCorrect || (!markAsCorrect && !showCorrectEnabled && selected) ? strokeWidth : 0;
 
   render() {
     const {
@@ -67,33 +67,50 @@ class PolygonComponent extends React.Component {
       evaluateText,
       strokeWidth,
       scale,
-      markAsCorrect
+      markAsCorrect,
+      showCorrectEnabled
     } = this.props;
 
     const outlineColorParsed = isEvaluateMode
       ? this.getEvaluateOutlineColor(isCorrect, markAsCorrect, outlineColor)
       : outlineColor;
-    const outlineWidth = this.getOutlineWidth(selected, markAsCorrect, strokeWidth);
+    const outlineWidth = this.getOutlineWidth(showCorrectEnabled, selected, markAsCorrect, strokeWidth);
 
     const pointsParsed = this.parsePointsForKonva(points);
     const center = this.getPolygonCenter(points);
     const iconX = center[0];
     const iconY = center[1];
 
-    // Correctly selected hotspot: white checkmark in green circle (plus the selected hotspot will have a heavy outline, as on “Gather”)
-    // Correctly not selected hotspot: none
-    // Incorrectly selected hostpot: white “X” in red circle, plus the heavy outline around the selection should appear in red
-    // Incorrectly not selected hotspot: white “X” in red circle
+    // "Show Correct Answer" Enabled:
+    //   - Correctly Selected: white checkmark in green circle
+    //   - Correctly Not Selected: none
+    //   - Incorrectly Selected: none
+    //   - Incorrectly Not Selected: white checkmark in green circle
+    // "Show Correct Answer" Disabled:
+    //   - Correctly Selected:
+    //     - white checkmark in green circle
+    //     - heavy outline, as on “Gather”
+    //   - Correctly Not Selected: none
+    //   - Incorrectly Selected:
+    //     - white "X" in red circle
+    //     - heavy outline around the selection should appear in red
+    //   - Incorrectly Not Selected: white "X" in red circle
     let iconSrc;
 
-    if (selected) {
-      if (isCorrect) {
+    if (showCorrectEnabled) {
+      if ((selected && isCorrect) || (!selected && !isCorrect)) {
         iconSrc = faCorrect;
-      } else {
+      }
+    } else {
+      if (selected) {
+        if (isCorrect) {
+          iconSrc = faCorrect;
+        } else {
+          iconSrc = faWrong;
+        }
+      } else if (!isCorrect) {
         iconSrc = faWrong;
       }
-    } else if (!isCorrect) {
-      iconSrc = faWrong;
     }
 
     return (
@@ -146,7 +163,8 @@ PolygonComponent.propTypes = {
   evaluateText: PropTypes.string,
   strokeWidth: PropTypes.number,
   scale: PropTypes.number,
-  markAsCorrect: PropTypes.bool.isRequired
+  markAsCorrect: PropTypes.bool.isRequired,
+  showCorrectEnabled: PropTypes.bool.isRequired
 };
 
 PolygonComponent.defaultProps = {

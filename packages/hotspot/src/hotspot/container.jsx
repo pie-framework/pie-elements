@@ -126,6 +126,7 @@ export class Container extends React.Component {
                   points={polygon.points}
                   strokeWidth={strokeWidth}
                   markAsCorrect={markAsCorrect}
+                  showCorrectEnabled={showCorrect}
                 />
               )
             })}

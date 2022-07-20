@@ -34,14 +34,6 @@ class RectComponent extends React.Component {
 
   getEvaluateOutlineColor = (isCorrect, markAsCorrect, outlineColor) => markAsCorrect ? 'green' : (isCorrect ? outlineColor : 'red')
 
-  // getOutlineWidth = (showCorrectEnabled, selected, markAsCorrect, strokeWidth) => {
-  //   // selected || markAsCorrect ? strokeWidth : 0
-  //   if (markAsCorrect) return strokeWidth;
-  //   if (showCorrectEnabled) return 0;
-  //   if (selected) return strokeWidth;
-  //   return 0;
-  // };
-
   getOutlineWidth = (showCorrectEnabled, selected, markAsCorrect, strokeWidth) => markAsCorrect || (!markAsCorrect && !showCorrectEnabled && selected) ? strokeWidth : 0;
 
   render() {
@@ -103,15 +95,6 @@ class RectComponent extends React.Component {
         iconSrc = faWrong;
       }
     }
-    // if (selected) {
-    //   if (isCorrect) {
-    //     iconSrc = faCorrect;
-    //   } else {
-    //     iconSrc = faWrong;
-    //   }
-    // } else if (!isCorrect) {
-    //   iconSrc = faWrong;
-    // }
 
     return (
       <Group scaleX={scale} scaleY={scale}>
