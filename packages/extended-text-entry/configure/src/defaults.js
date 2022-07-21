@@ -48,12 +48,12 @@ export default {
       enabled: false,
     },
     spanishInput: {
-      settings: true,
+      settings: false,
       label: 'Students can insert Spanish',
       enabled: false,
     },
     specialInput: {
-      settings: true,
+      settings: false,
       label: 'Students can insert Special Characters',
       enabled: false,
     },
