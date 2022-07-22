@@ -109,8 +109,7 @@ const styles = (theme) => ({
   },
   tooltip: {
     fontSize: '12px',
-    whiteSpace: 'pre',
-    maxWidth: '500px',
+    whiteSpace: 'pre-wrap',
   },
   errorText: {
     fontSize: '12px',
