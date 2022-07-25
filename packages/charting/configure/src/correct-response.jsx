@@ -111,7 +111,7 @@ export class CorrectResponse extends React.Component {
       ...model,
       correctAnswer: {
         ...correctAnswer,
-        data: data.map(({ interactive, editable, index,  ...keepAttrs }) => keepAttrs),
+        data: data.map(({ interactive, editable, index, ...keepAttrs }) => keepAttrs),
       },
     });
   };
@@ -144,8 +144,8 @@ export class CorrectResponse extends React.Component {
       // index is a property of the nextData category
       for (let index = 0; index < nextData.length; index++) {
         if (nextData[index].index !== index) {
-            removedIndex = index;
-            break;
+          removedIndex = index;
+          break;
         }
       }
 
@@ -155,7 +155,7 @@ export class CorrectResponse extends React.Component {
 
     if (!isEqual(nextCorrectAnswerData, this.props.model.correctAnswer.data)) {
       nextCategories = nextCorrectAnswerData.map((correct, index) => ({ ...correct, editable: index < data.length ? data[index].editable : true, interactive: index < data.length ? data[index].interactive : true }));
-    }else if (isEmpty(nextCategories)) {
+    } else if (isEmpty(nextCategories)) {
       nextCategories = updateCorrectResponseData(
         nextCorrectAnswerData,
         nextData
@@ -197,27 +197,27 @@ export class CorrectResponse extends React.Component {
         Define Correct Response
 
         <div className={classes.container} >
-        <div className={classes.column} key="graph">
-        <Typography component="div" type="body1">
+          <div className={classes.column} key="graph">
+            <Typography component="div" type="body1">
               <span>Use the tools below to define the correct answer.</span>
             </Typography>
 
-        <div key={`correct-response-graph-${model.correctAnswer.name}`}>
-   
-          <Chart
-            chartType={model.chartType}
-            size={model.graph}
-            domain={model.domain}
-            range={model.range}
-            charts={charts}
-            data={categories}
-            title={model.title}
-            onDataChange={(data) => this.changeData(data)}
-            addCategoryEnabled={model.addCategoryEnabled}
-            categoryDefaultLabel={model.categoryDefaultLabel}
-          />
-        </div>
-        </div>
+            <div key={`correct-response-graph-${model.correctAnswer.name}`}>
+
+              <Chart
+                chartType={model.chartType}
+                size={model.graph}
+                domain={model.domain}
+                range={model.range}
+                charts={charts}
+                data={categories}
+                title={model.title}
+                onDataChange={(data) => this.changeData(data)}
+                addCategoryEnabled={model.addCategoryEnabled}
+                categoryDefaultLabel={model.categoryDefaultLabel}
+              />
+            </div>
+          </div>
         </div>
       </div>
     );
