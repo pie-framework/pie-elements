@@ -5,12 +5,14 @@ import { Chart } from '@pie-lib/charting';
 import isEqual from 'lodash/isEqual';
 import isEmpty from 'lodash/isEmpty';
 
+import Typography from '@material-ui/core/Typography';
+
 const styles = (theme) => ({
   container: {
-    border: '2px solid #ababab',
-    borderRadius: '4px',
-    padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 4}px`,
-    background: '#fafafa',
+    marginTop: theme.spacing.unit * 3,
+    marginBottom: theme.spacing.unit * 3,
+    display: 'flex',
+    flex: 1,
   },
   button: {
     marginTop: theme.spacing.unit * 3,
@@ -20,6 +22,9 @@ const styles = (theme) => ({
     width: 'fit-content',
     borderRadius: '4px',
   },
+  column: {
+    flex: 1
+  }
 });
 
 const addCategoryProps = (correctAnswer, data) => correctAnswer.map((correct, index) => ({ ...correct, editable: index < data.length ? data[index].editable : true, interactive: index < data.length ? data[index].interactive : true, deletable: index >= data.length ? true : false }));
@@ -184,14 +189,21 @@ export class CorrectResponse extends React.Component {
   }
 
   render() {
-    const { model, charts } = this.props;
+    const { classes, model, charts } = this.props;
     const { categories } = this.state;
 
     return (
       <div>
         Define Correct Response
+
+        <div className={classes.container} >
+        <div className={classes.column} key="graph">
+        <Typography component="div" type="body1">
+              <span>Use the tools below to define the correct answer.</span>
+            </Typography>
+
         <div key={`correct-response-graph-${model.correctAnswer.name}`}>
-          <p>{model.correctAnswer.name}</p>
+   
           <Chart
             chartType={model.chartType}
             size={model.graph}
@@ -204,6 +216,8 @@ export class CorrectResponse extends React.Component {
             addCategoryEnabled={model.addCategoryEnabled}
             categoryDefaultLabel={model.categoryDefaultLabel}
           />
+        </div>
+        </div>
         </div>
       </div>
     );
