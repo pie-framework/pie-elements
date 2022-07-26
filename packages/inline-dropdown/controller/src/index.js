@@ -103,6 +103,8 @@ export function model(question, session, env, updateSession) {
       }
     }
 
+    console.log('choices,', choices);
+
     let teacherInstructions = null;
     let rationale = null;
 
@@ -252,8 +254,8 @@ export const createCorrectResponseSession = (question, env) => {
 };
 
 export const validate = (model = {}, config = {}) => {
-  const { markup } = model;
-  const { maxResponseAreas } = config;
+  const { markup, choices } = model;
+  const { maxResponseAreas, maxResponseAreaChoices } = config;
   const errors = {};
 
   const nbOfResponseAreas = ((markup || '').match(/\{\{(\d+)\}\}/g) || []).length;
@@ -263,6 +265,12 @@ export const validate = (model = {}, config = {}) => {
   } else if (nbOfResponseAreas < 1) {
     errors.responseAreasError = 'There should be defined at least 1 response area.';
   }
+
+  (Object.keys(choices) || []).forEach(choiceKey => {
+    if (choices[choiceKey] && choices[choiceKey].length > maxResponseAreaChoices) {
+      errors.responseAreaChoicesError = `No more than ${maxResponseAreaChoices} choices per response area should be defined.`;
+    }
+  });
 
   return errors;
 };

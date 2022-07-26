@@ -24,6 +24,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Info from '@material-ui/icons/Info';
 import InlineDropdownToolbar from './inline-dropdown-toolbar';
 import { generateValidationMessage } from './utils';
+import config from "@pie-element/categorize-configure/src/design/choices/config";
 
 const { toggle, Panel } = settings;
 
@@ -325,6 +326,25 @@ export class Main extends React.Component {
 
   onAddChoice = (index, label) => {
     const { respAreaChoices } = this.state;
+    const { maxResponseAreaChoices } = this.props.configuration;
+
+    if (respAreaChoices[index] && respAreaChoices[index].length >= maxResponseAreaChoices)  {
+      this.setState({
+        dialog: {
+          open: true,
+          message: `There are only ${maxResponseAreaChoices} answers allowed per choice.`,
+          onOk: () => {
+            this.setState({
+              dialog: {
+                open: false
+              }
+            });
+          }
+        }
+      });
+
+      return;
+    }
 
     if (!respAreaChoices[index]) {
       respAreaChoices[index] = [];
@@ -411,7 +431,7 @@ export class Main extends React.Component {
       spellCheckEnabled,
       errors
     } = model || {};
-    const { responseAreasError } = errors || {};
+    const { responseAreasError, responseAreaChoicesError } = errors || {};
 
     const defaultImageMaxWidth = maxImageWidth && maxImageWidth.prompt;
     const defaultImageMaxHeight = maxImageHeight && maxImageHeight.prompt;
@@ -580,6 +600,7 @@ export class Main extends React.Component {
               </Tooltip>
             </div>
             {responseAreasError && <div className={classes.errorText}>{responseAreasError}</div>}
+            {responseAreaChoicesError && <div className={classes.errorText}>{responseAreaChoicesError}</div>}
 
             <InfoDialog
               open={dialog.open}

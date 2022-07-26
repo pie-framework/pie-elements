@@ -50,6 +50,7 @@ export default {
       label: 'Toolbar Editor Position'
     },
     maxResponseAreas: 10,
+    maxResponseAreaChoices: 10,
     maxImageWidth: {
       teacherInstructions: 300,
       prompt: 300,
