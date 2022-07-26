@@ -103,8 +103,6 @@ export function model(question, session, env, updateSession) {
       }
     }
 
-    console.log('choices,', choices);
-
     let teacherInstructions = null;
     let rationale = null;
 

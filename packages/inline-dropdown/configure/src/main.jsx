@@ -24,7 +24,6 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Info from '@material-ui/icons/Info';
 import InlineDropdownToolbar from './inline-dropdown-toolbar';
 import { generateValidationMessage } from './utils';
-import config from "@pie-element/categorize-configure/src/design/choices/config";
 
 const { toggle, Panel } = settings;
 
