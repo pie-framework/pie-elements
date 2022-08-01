@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
+import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
 import {Collapsible, hasText, PreviewPrompt} from '@pie-lib/render-ui';
 import { withStyles } from '@material-ui/core/styles';
 
@@ -71,16 +72,26 @@ class HotspotComponent extends React.Component {
         dimensions,
         rationale,
         teacherInstructions,
-        strokeWidth
+        strokeWidth,
+        responseCorrect
       },
       onSelectChoice,
       classes
     } = this.props;
-
+    const { showCorrect } = this.state;
     const isEvaluateMode = mode === 'evaluate';
+    const showCorrectAnswerToggle = isEvaluateMode && !responseCorrect;
 
     return (
       <div>
+        {showCorrectAnswerToggle && (
+          <CorrectAnswerToggle
+            show={showCorrectAnswerToggle}
+            toggled={showCorrect}
+            onToggle={this.onToggle.bind(this)}
+          />
+        )}
+        {showCorrectAnswerToggle && <br />}
         {
           teacherInstructions && hasText(teacherInstructions) && (
             <Collapsible
@@ -116,6 +127,7 @@ class HotspotComponent extends React.Component {
             disabled={disabled}
             strokeWidth={strokeWidth}
             scale={this.state.scale}
+            showCorrect={showCorrect}
           />
         ) : null}
 
