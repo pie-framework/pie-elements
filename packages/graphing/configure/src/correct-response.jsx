@@ -354,6 +354,8 @@ export class CorrectResponse extends React.Component {
                 axesSettings={{ includeArrows: arrows }}
                 backgroundMarks={backgroundMarks}
                 coordinatesOnHover={coordinatesOnHover}
+                disabledLabels={true}
+                disabledTitle={true}
                 domain={domain}
                 draggableTools={key === 'correctAnswer'}
                 labels={labels}
