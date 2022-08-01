@@ -122,8 +122,14 @@ export class Configure extends React.Component {
       maxImageWidth = {},
       maxImageHeight = {}
     } = configuration || {};
-    const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled, spellCheckEnabled } =
-      model || {};
+    const {
+      labelsEnabled,
+      promptEnabled,
+      rationaleEnabled,
+      spellCheckEnabled,
+      teacherInstructionsEnabled,
+      titleEnabled
+    } = model || {};
 
     log('[render] model', model);
 
@@ -146,9 +152,9 @@ export class Configure extends React.Component {
                   up: arrows.up,
                   down: arrows.down
                 }),
-                'title.enabled': title.settings && toggle(title.label, true),
+                titleEnabled: title.settings && toggle(title.label),
                 padding: padding.settings && toggle(padding.label),
-                labels: labels.settings && toggle(labels.label),
+                labelsEnabled: labels.settings && toggle(labels.label),
                 coordinatesOnHover: coordinatesOnHover.settings && toggle(coordinatesOnHover.label),
               },
               Properties: {
@@ -240,6 +246,8 @@ export class Configure extends React.Component {
             availableTools={availableTools}
             graphDimensions={graphDimensions}
             model={model}
+            showLabels={labelsEnabled}
+            showTitle={titleEnabled}
             onChange={this.props.onModelChanged}
           />
 

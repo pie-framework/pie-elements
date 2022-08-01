@@ -217,6 +217,14 @@ Indicates teacher instructions
 
 Indicates graph title
 
+# `labelsEnabled` (boolean)
+
+Indicates if the graph labels are displayed
+
+# `titleEnabled` (boolean)
+
+Indicates if the graph title is displayed
+
 # `toolbarTools` (array)
 
 Indicates the tools that have to be displayed in toolbar

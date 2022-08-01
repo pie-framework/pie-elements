@@ -35,12 +35,14 @@ export class Main extends React.Component {
       disabled,
       domain,
       labels,
+      labelsEnabled,
       prompt,
       range,
       rationale,
       size,
       showToggle,
       title,
+      titleEnabled,
       teacherInstructions,
       toolbarTools
     } = model || {};
@@ -95,11 +97,15 @@ export class Main extends React.Component {
           coordinatesOnHover={coordinatesOnHover}
           defaultTool={defaultTool}
           disabled={disabled}
+          disabledLabels={true}
+          disabledTitle={true}
           domain={domain}
           labels={labels}
           marks={marks}
           onChangeMarks={onAnswersChange}
           range={range}
+          showLabels={labelsEnabled}
+          showTitle={titleEnabled}
           size={size}
           title={title}
           toolbarTools={toolbarTools}

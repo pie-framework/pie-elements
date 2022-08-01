@@ -58,6 +58,18 @@ export class GraphingConfig extends React.Component {
     this.props.onChange(model);
   };
 
+  changeLabels = labels => {
+    const { model, onChange } = this.props;
+
+    onChange({ ...model, labels });
+  };
+
+  changeTitle = title => {
+    const { model, onChange } = this.props;
+
+    onChange({ ...model, title });
+  };
+
   onConfigChange = config => {
     const { model, onChange } = this.props;
     const { gridValues: oldGridValues, labelValues: oldLabelValues } = this.state;
@@ -92,7 +104,15 @@ export class GraphingConfig extends React.Component {
   };
 
   render() {
-    const { authoring = {}, availableTools = [], classes, model, graphDimensions = {}} = this.props;
+    const {
+      authoring = {},
+      availableTools = [],
+      classes,
+      graphDimensions = {},
+      model,
+      showLabels,
+      showTitle
+    } = this.props;
     const {
       arrows,
       backgroundMarks,
@@ -167,8 +187,12 @@ export class GraphingConfig extends React.Component {
             key="graphing-config"
             labels={labels}
             marks={backgroundMarks}
+            onChangeLabels={this.changeLabels}
             onChangeMarks={this.changeBackgroundMarks}
+            onChangeTitle={this.changeTitle}
             range={range}
+            showLabels={showLabels}
+            showTitle={showTitle}
             size={{ width: graph.width, height: graph.height }}
             title={title}
             toolbarTools={availableTools}

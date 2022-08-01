@@ -25,6 +25,7 @@ export default {
     },
     includeAxes: true,
     labels: {},
+    labelsEnabled: true,
     padding: true,
     prompt: '',
     range: {
@@ -37,6 +38,7 @@ export default {
     rationale: '',
     standardGrid: false,
     title: '',
+    titleEnabled: true,
     toolbarTools: allTools,
     coordinatesOnHover: false,
     promptEnabled: true,
@@ -101,8 +103,8 @@ export default {
       label: 'Padding'
     },
     labels: {
-      settings: false,
-      label: 'Labels',
+      settings: true,
+      label: 'Graph Labels',
       enabled: true
     },
     prompt: {
@@ -126,7 +128,7 @@ export default {
       label: 'Teacher Instructions'
     },
     title: {
-      settings: false,
+      settings: true,
       label: 'Graph Title',
       enabled: true
     },
