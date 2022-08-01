@@ -2,7 +2,7 @@
 
 exports[`ChartingConfig renders snapshot 1`] = `
 <div>
-  Define Graph Attributes
+  Define Initial Chart Attributes
   <div>
     <div
       key="graph"
@@ -12,7 +12,7 @@ exports[`ChartingConfig renders snapshot 1`] = `
         type="body1"
       >
         <span>
-          Use the tools below to set background shapes
+          Use the tools below to set up the chart as it will initially appear to students.
         </span>
       </WithStyles(Typography)>
       <Chart
@@ -155,7 +155,7 @@ exports[`Configure renders snapshot 1`] = `
       type="body1"
     >
       <span>
-        This interaction asks a student to draw a chart that meets specific criteria. The student will draw a category on the chart by clicking Add Category and dragging the top part of the category.
+        This item type provides various types of interactive charts. Depending upon how an item is configured, students can change the heights of bars (or other similar chart elements) created by the author; relabel bars created by the author; and/or add new bars, label them, and set their heights.
       </span>
     </WithStyles(Typography)>
     <InputContainer
@@ -404,36 +404,49 @@ exports[`Configure renders snapshot 1`] = `
 exports[`CorrectResponse renders snapshot 1`] = `
 <div>
   Define Correct Response
-  <div
-    key="correct-response-graph-undefined"
-  >
-    <p />
-    <Chart
-      addCategoryEnabled={true}
-      categoryDefaultLabel="Category"
-      chartType="lineCross"
-      data={Array []}
-      domain={
-        Object {
-          "label": "Fruits",
-        }
-      }
-      onDataChange={[Function]}
-      range={
-        Object {
-          "label": "Amount",
-          "max": 5.5,
-          "min": 0,
-        }
-      }
-      size={
-        Object {
-          "height": 480,
-          "width": 480,
-        }
-      }
-      title="This is a chart!"
-    />
+  <div>
+    <div
+      key="graph"
+    >
+      <WithStyles(Typography)
+        component="div"
+        type="body1"
+      >
+        <span>
+          Use the tools below to define the correct answer.
+        </span>
+      </WithStyles(Typography)>
+      <div
+        key="correct-response-graph-undefined"
+      >
+        <Chart
+          addCategoryEnabled={true}
+          categoryDefaultLabel="Category"
+          chartType="lineCross"
+          data={Array []}
+          domain={
+            Object {
+              "label": "Fruits",
+            }
+          }
+          onDataChange={[Function]}
+          range={
+            Object {
+              "label": "Amount",
+              "max": 5.5,
+              "min": 0,
+            }
+          }
+          size={
+            Object {
+              "height": 480,
+              "width": 480,
+            }
+          }
+          title="This is a chart!"
+        />
+      </div>
+    </div>
   </div>
 </div>
 `;

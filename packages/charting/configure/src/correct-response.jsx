@@ -5,12 +5,14 @@ import { Chart } from '@pie-lib/charting';
 import isEqual from 'lodash/isEqual';
 import isEmpty from 'lodash/isEmpty';
 
+import Typography from '@material-ui/core/Typography';
+
 const styles = (theme) => ({
   container: {
-    border: '2px solid #ababab',
-    borderRadius: '4px',
-    padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 4}px`,
-    background: '#fafafa',
+    marginTop: theme.spacing.unit * 3,
+    marginBottom: theme.spacing.unit * 3,
+    display: 'flex',
+    flex: 1,
   },
   button: {
     marginTop: theme.spacing.unit * 3,
@@ -20,6 +22,9 @@ const styles = (theme) => ({
     width: 'fit-content',
     borderRadius: '4px',
   },
+  column: {
+    flex: 1
+  }
 });
 
 const addCategoryProps = (correctAnswer, data) => correctAnswer.map((correct, index) => ({ ...correct, editable: index < data.length ? data[index].editable : true, interactive: index < data.length ? data[index].interactive : true, deletable: index >= data.length ? true : false }));
@@ -106,7 +111,7 @@ export class CorrectResponse extends React.Component {
       ...model,
       correctAnswer: {
         ...correctAnswer,
-        data: data.map(({ interactive, editable, index,  ...keepAttrs }) => keepAttrs),
+        data: data.map(({ interactive, editable, index, ...keepAttrs }) => keepAttrs),
       },
     });
   };
@@ -139,8 +144,8 @@ export class CorrectResponse extends React.Component {
       // index is a property of the nextData category
       for (let index = 0; index < nextData.length; index++) {
         if (nextData[index].index !== index) {
-            removedIndex = index;
-            break;
+          removedIndex = index;
+          break;
         }
       }
 
@@ -150,7 +155,7 @@ export class CorrectResponse extends React.Component {
 
     if (!isEqual(nextCorrectAnswerData, this.props.model.correctAnswer.data)) {
       nextCategories = nextCorrectAnswerData.map((correct, index) => ({ ...correct, editable: index < data.length ? data[index].editable : true, interactive: index < data.length ? data[index].interactive : true }));
-    }else if (isEmpty(nextCategories)) {
+    } else if (isEmpty(nextCategories)) {
       nextCategories = updateCorrectResponseData(
         nextCorrectAnswerData,
         nextData
@@ -184,26 +189,35 @@ export class CorrectResponse extends React.Component {
   }
 
   render() {
-    const { model, charts } = this.props;
+    const { classes, model, charts } = this.props;
     const { categories } = this.state;
 
     return (
       <div>
         Define Correct Response
-        <div key={`correct-response-graph-${model.correctAnswer.name}`}>
-          <p>{model.correctAnswer.name}</p>
-          <Chart
-            chartType={model.chartType}
-            size={model.graph}
-            domain={model.domain}
-            range={model.range}
-            charts={charts}
-            data={categories}
-            title={model.title}
-            onDataChange={(data) => this.changeData(data)}
-            addCategoryEnabled={model.addCategoryEnabled}
-            categoryDefaultLabel={model.categoryDefaultLabel}
-          />
+
+        <div className={classes.container} >
+          <div className={classes.column} key="graph">
+            <Typography component="div" type="body1">
+              <span>Use the tools below to define the correct answer.</span>
+            </Typography>
+
+            <div key={`correct-response-graph-${model.correctAnswer.name}`}>
+
+              <Chart
+                chartType={model.chartType}
+                size={model.graph}
+                domain={model.domain}
+                range={model.range}
+                charts={charts}
+                data={categories}
+                title={model.title}
+                onDataChange={(data) => this.changeData(data)}
+                addCategoryEnabled={model.addCategoryEnabled}
+                categoryDefaultLabel={model.categoryDefaultLabel}
+              />
+            </div>
+          </div>
         </div>
       </div>
     );
