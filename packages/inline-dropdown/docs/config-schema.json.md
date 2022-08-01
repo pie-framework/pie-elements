@@ -126,6 +126,10 @@ Indicates the label for the item that has to be displayed in the Settings Panel
 
 Maximum number of response areas
 
+# `maxResponseAreaChoices` (number)
+
+Maximum number of choices per response area
+
 # `maxImageWidth` (object)
 
 Properties of the `maxImageWidth` object:

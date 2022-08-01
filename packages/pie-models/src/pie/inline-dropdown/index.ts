@@ -159,6 +159,11 @@ export interface InlineDropdownConfigure
   maxResponseAreas?: number;
 
   /**
+   * Maximum number of choices per response area
+   */
+  maxResponseAreaChoices?: number;
+
+  /**
    * Maximum image width for input fields
    */
   maxImageWidth?: ConfigureMaxImageDimensionsProp;

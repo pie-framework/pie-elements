@@ -25,6 +25,7 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
               "rationale": 300,
               "teacherInstructions": 300,
             },
+            "maxResponseAreaChoices": 10,
             "maxResponseAreas": 10,
             "partialScoring": Object {
               "label": "Allow Partial Scoring",
@@ -493,6 +494,7 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
               "rationale": 300,
               "teacherInstructions": 300,
             },
+            "maxResponseAreaChoices": 10,
             "maxResponseAreas": 10,
             "partialScoring": Object {
               "label": "Allow Partial Scoring",
