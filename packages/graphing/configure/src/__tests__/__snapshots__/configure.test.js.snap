@@ -64,8 +64,8 @@ exports[`Configure renders snapshot 1`] = `
           },
           "labels": Object {
             "enabled": true,
-            "label": "Labels",
-            "settings": false,
+            "label": "Graph Labels",
+            "settings": true,
           },
           "maxImageHeight": Object {
             "prompt": 300,
@@ -109,7 +109,7 @@ exports[`Configure renders snapshot 1`] = `
           "title": Object {
             "enabled": true,
             "label": "Graph Title",
-            "settings": false,
+            "settings": true,
           },
         }
       }
@@ -118,9 +118,9 @@ exports[`Configure renders snapshot 1`] = `
           "Item Type": Object {
             "arrows": undefined,
             "coordinatesOnHover": undefined,
-            "labels": false,
+            "labelsEnabled": undefined,
             "padding": false,
-            "title.enabled": false,
+            "titleEnabled": undefined,
           },
           "Properties": Object {
             "authoring.enabled": false,
@@ -157,6 +157,7 @@ exports[`Configure renders snapshot 1`] = `
           },
           "includeAxes": true,
           "labels": Object {},
+          "labelsEnabled": true,
           "padding": true,
           "prompt": "",
           "promptEnabled": true,
@@ -173,6 +174,7 @@ exports[`Configure renders snapshot 1`] = `
           "studentInstructionsEnabled": true,
           "teacherInstructionsEnabled": true,
           "title": "",
+          "titleEnabled": true,
           "toolbarTools": Array [],
         }
       }
@@ -286,6 +288,7 @@ exports[`Configure renders snapshot 1`] = `
           },
           "includeAxes": true,
           "labels": Object {},
+          "labelsEnabled": true,
           "padding": true,
           "prompt": "",
           "promptEnabled": true,
@@ -302,9 +305,12 @@ exports[`Configure renders snapshot 1`] = `
           "studentInstructionsEnabled": true,
           "teacherInstructionsEnabled": true,
           "title": "",
+          "titleEnabled": true,
           "toolbarTools": Array [],
         }
       }
+      showLabels={true}
+      showTitle={true}
     />
     <WithStyles(CorrectResponse)
       availableTools={Array []}
@@ -332,6 +338,7 @@ exports[`Configure renders snapshot 1`] = `
           },
           "includeAxes": true,
           "labels": Object {},
+          "labelsEnabled": true,
           "padding": true,
           "prompt": "",
           "promptEnabled": true,
@@ -348,6 +355,7 @@ exports[`Configure renders snapshot 1`] = `
           "studentInstructionsEnabled": true,
           "teacherInstructionsEnabled": true,
           "title": "",
+          "titleEnabled": true,
           "toolbarTools": Array [],
         }
       }
