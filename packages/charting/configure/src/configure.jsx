@@ -132,8 +132,6 @@ export class Configure extends React.Component {
     const defaultImageMaxWidth = maxImageWidth && maxImageWidth.prompt;
     const defaultImageMaxHeight = maxImageHeight && maxImageHeight.prompt;
 
-    console.log(chartDimensions, "chartDimensions");
-
     return (
       <layout.ConfigLayout
         settings={

@@ -51,9 +51,9 @@ export default {
       label: 'Chart Dimensions',
       showInConfigPanel: true,
       width: {
-        min: 100,
-        max: 800,
-        step: 10
+        min: 50,
+        max: 700,
+        step: 20
       },
       height: {
         min: 400,
