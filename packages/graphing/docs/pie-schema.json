@@ -1690,6 +1690,16 @@
       "type": "string",
       "title": "title"
     },
+    "labelsEnabled": {
+      "description": "Indicates if the graph labels are displayed",
+      "type": "boolean",
+      "title": "labelsEnabled"
+    },
+    "titleEnabled": {
+      "description": "Indicates if the graph title is displayed",
+      "type": "boolean",
+      "title": "titleEnabled"
+    },
     "toolbarTools": {
       "description": "Indicates the tools that have to be displayed in toolbar",
       "type": "array",

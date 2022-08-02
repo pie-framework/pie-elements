@@ -168,6 +168,11 @@
       "type": "number",
       "title": "maxResponseAreas"
     },
+    "maxResponseAreaChoices": {
+      "description": "Maximum number of choices per response area",
+      "type": "number",
+      "title": "maxResponseAreaChoices"
+    },
     "maxImageWidth": {
       "title": "ConfigureMaxImageDimensionsProp",
       "type": "object",

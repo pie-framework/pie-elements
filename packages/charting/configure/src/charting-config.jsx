@@ -35,12 +35,12 @@ export class ChartingConfig extends React.Component {
 
     return (
       <div>
-        Define Graph Attributes
+        Define Initial Chart Attributes
 
         <div className={classes.container}>
           <div className={classes.column} key="graph">
             <Typography component="div" type="body1">
-              <span>Use the tools below to set background shapes</span>
+              <span>Use the tools below to set up the chart as it will initially appear to students.</span>
             </Typography>
 
             <Chart
