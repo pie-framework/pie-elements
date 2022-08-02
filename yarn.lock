@@ -2652,7 +2652,7 @@
   resolved "https://registry.yarnpkg.com/@pie-lib/style-utils/-/style-utils-0.1.25.tgz#f2d6cda6764d1d75347d910de187fe6cd4f161e1"
   integrity sha512-HMsAFef6WvIWacbu9xqZMkAnpGCl7XQ0ZoDnEBYZkyUHb1IUp/mfd8qlRQHHswUdpAhBQrkN+TpyUF/EKkJMxQ==
 
-"@pie-lib/test-utils@^0.2.13":
+"@pie-lib/test-utils@^0.2.13", "@pie-lib/test-utils@^0.2.19":
   version "0.2.19"
   resolved "https://registry.yarnpkg.com/@pie-lib/test-utils/-/test-utils-0.2.19.tgz#655afd9d4a396ddea5e07df751d97fc644e696ca"
   integrity sha512-RbNuq6hbPH8pejROms3XXuFHD1JoyTvtpaG/9Rya4bKFo9onZK3IyiqpaeInOtpE1wM2MhVC84MYmdHGEOvhhQ==
