@@ -3,6 +3,35 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@12.0.0...@pie-element/pie-models@12.1.0) (2022-08-02)
+
+
+### Features
+
+* **categorize:**  add maxImageWidth and maxImageHeight props PD-1801 ([c438cea](https://github.com/pie-framework/pie-elements/commit/c438cea310e6e5cdfbd8c057fc9aadb36d53bb76))
+* **charting:** add maxImageWidth and maxImageHeight props PD-1801 ([0bff787](https://github.com/pie-framework/pie-elements/commit/0bff787ff2c9301138346f02e04646ee55f659fc))
+* **drawing-response:** add maxImageWidth and maxImageHeight props PD-1801 ([4f1fb5d](https://github.com/pie-framework/pie-elements/commit/4f1fb5dfa4616c194eefd1702854a5aaa413ce1f))
+* **ebsr:** add maxImageWidth and maxImageHeight props PD-1801 ([61c9b25](https://github.com/pie-framework/pie-elements/commit/61c9b2511ab8ef1a146d86def588bf8517e23e96))
+* **extended-text-entry:** add maxImageWidth and maxImageHeight props PD-1801 ([82b1404](https://github.com/pie-framework/pie-elements/commit/82b1404a25c67d21599c916574a9caa66b536584))
+* **graphing:** add maxImageWidth and maxImageHeight props PD-1801 ([5d01857](https://github.com/pie-framework/pie-elements/commit/5d0185752ab1f1f9c3cf88232c522c0f742c3cb1))
+* **graphing:** Added default selected graphing tool property for gather PD-1689 ([57b4e4f](https://github.com/pie-framework/pie-elements/commit/57b4e4f75f0addf9f305e30304b0ba5f95de4571))
+* **graphing:** added the ability to customize the Grid Setup Panel PD-1688 ([6353019](https://github.com/pie-framework/pie-elements/commit/63530198694f740e70e126884e1512d4c373dd64))
+* **hotspot:** add maxImageWidth and maxImageHeight props PD-1801 ([8325bc1](https://github.com/pie-framework/pie-elements/commit/8325bc1bb9014027349bfab863b56bb1d519e5ca))
+* **image-cloze-association:** add maxImageWidth and maxImageHeight props PD-1801 ([f4132c8](https://github.com/pie-framework/pie-elements/commit/f4132c81475ad141fae5c38def311ac7e9729a42))
+* **inline-dropdown:** add maxImageWidth and maxImageHeight props PD-1801 ([a2ad5d5](https://github.com/pie-framework/pie-elements/commit/a2ad5d5298e5696541f45ab8ca9e5675f5bb1a57))
+* **inline-dropdown:** add missing configurable validation. Added maxResponseAreaChoices property to configuration ([5cfff17](https://github.com/pie-framework/pie-elements/commit/5cfff17c5df2c149c1b6e29a4109f3ff6b850110))
+* **input:** added configurability for inserting spanish and special characters [PD-1461], [PD-1462] ([11f381e](https://github.com/pie-framework/pie-elements/commit/11f381ea44a3ae2b2c5c189dc53932d689c8e044))
+* **match:** add maxImageWidth and maxImageHeight props PD-1801 ([d98c0db](https://github.com/pie-framework/pie-elements/commit/d98c0dbe6a7acb5d115a71a102553cd20b5a63d5))
+* **math-inline:** add maxImageWidth and maxImageHeight props PD-1801 ([24e60e2](https://github.com/pie-framework/pie-elements/commit/24e60e2d5e1bdc90530662f5c11528d67c2545ce))
+* **multiple-choice:** add maxImageWidth and maxImageHeight props PD-1801 ([36b9617](https://github.com/pie-framework/pie-elements/commit/36b961715f3913606b8abb9e9aae764bf02c8d7a))
+* **placement-ordering:** update docs ([96094af](https://github.com/pie-framework/pie-elements/commit/96094af26944b235f98b87a2e86270242c912264))
+* **select-text:** add maxImageWidth and maxImageHeight props PD-1801 ([9e8b343](https://github.com/pie-framework/pie-elements/commit/9e8b343703de33597461b18611dbc34f8ef2b92c))
+* update documentation for items that have validation with settings configurable by client systems PD-1789 ([8ef69cc](https://github.com/pie-framework/pie-elements/commit/8ef69cc0c7439a5803dc95f570efc7cd24c8e334))
+
+
+
+
+
 # [12.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@11.0.18...@pie-element/pie-models@12.0.0) (2022-06-28)
 
 

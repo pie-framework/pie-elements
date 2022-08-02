@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@5.1.3...@pie-element/hotspot@5.2.0) (2022-08-02)
+
+
+### Bug Fixes
+
+* **hotspot:** added missing dependencies ([3e9b133](https://github.com/pie-framework/pie-elements/commit/3e9b13378dab6a8a96e0a68be934314310f41b25))
+* tests ([573155a](https://github.com/pie-framework/pie-elements/commit/573155abf2bdbfdcc0167f41307349fe547680d9))
+
+
+### Features
+
+* **hotspot:** updated polygon & polygon tests so that incorrect answers won't be marked in "Show Correct Answer" mode PD-1814 ([7598036](https://github.com/pie-framework/pie-elements/commit/7598036037da8ba97f401d7cf21ebd2657bef329))
+* **hotspot:** updated rectangle and rectangle tests so that incorrect answers won't be marked in "Show Correct Answer" mode PD-1814 ([f6f98ab](https://github.com/pie-framework/pie-elements/commit/f6f98ab7419a34a1797880ef46d77b3f13a2c411))
+
+
+
+
+
 ## [5.1.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@5.1.2...@pie-element/hotspot@5.1.3) (2022-07-22)
 
 **Note:** Version bump only for package @pie-element/hotspot

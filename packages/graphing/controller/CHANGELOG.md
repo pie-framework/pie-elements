@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-controller@4.0.0...@pie-element/graphing-controller@4.1.0) (2022-08-02)
+
+
+### Features
+
+* **graphing:** Added default selected graphing tool property for gather PD-1689 ([57b4e4f](https://github.com/pie-framework/pie-elements/commit/57b4e4f75f0addf9f305e30304b0ba5f95de4571))
+* **graphing:** added grid setup pannel + refactoring PD-1679 PD-1692 PD-1685 ([54fae9e](https://github.com/pie-framework/pie-elements/commit/54fae9e83521c1f3ef50e75e1f7e2097e6312cd6))
+* **graphing:** Added the ability to edit title and labels PD-1605 ([7aac4a0](https://github.com/pie-framework/pie-elements/commit/7aac4a0a2cdd06209912a9edbed6cd1d911c5773))
+
+
+
+
+
 # [4.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-controller@3.4.6...@pie-element/graphing-controller@4.0.0) (2022-06-28)
 
 

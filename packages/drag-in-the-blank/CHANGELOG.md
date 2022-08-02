@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.1.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@4.1.3...@pie-element/drag-in-the-blank@4.1.4) (2022-08-02)
+
+
+### Bug Fixes
+
+* tests ([11adb8a](https://github.com/pie-framework/pie-elements/commit/11adb8a0d878203b3c1754686026ccb973fa9a34))
+* **drag-in-the-blank:** add back audio and video buttons in response template toolbar ([ebbd2bd](https://github.com/pie-framework/pie-elements/commit/ebbd2bd8c8e8fc696ae393e486577b0c3afa7d8e))
+
+
+
+
+
 ## [4.1.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@4.1.2...@pie-element/drag-in-the-blank@4.1.3) (2022-07-22)
 
 **Note:** Version bump only for package @pie-element/drag-in-the-blank

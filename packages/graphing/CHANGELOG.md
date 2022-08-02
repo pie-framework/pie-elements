@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@4.1.3...@pie-element/graphing@4.2.0) (2022-08-02)
+
+
+### Features
+
+* **graphing:** Added the ability to edit title and labels PD-1605 ([7aac4a0](https://github.com/pie-framework/pie-elements/commit/7aac4a0a2cdd06209912a9edbed6cd1d911c5773))
+
+
+
+
+
 ## [4.1.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@4.1.2...@pie-element/graphing@4.1.3) (2022-07-22)
 
 **Note:** Version bump only for package @pie-element/graphing

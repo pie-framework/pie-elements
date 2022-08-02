@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.1.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@6.1.3...@pie-element/math-inline@6.1.4) (2022-08-02)
+
+
+### Bug Fixes
+
+* **math-inline:** fix validation message tooltip style PD-1897 ([27c0d50](https://github.com/pie-framework/pie-elements/commit/27c0d504a37fee6e0005f217b38b512491e7f307))
+
+
+
+
+
 ## [6.1.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@6.1.2...@pie-element/math-inline@6.1.3) (2022-07-22)
 
 **Note:** Version bump only for package @pie-element/math-inline
