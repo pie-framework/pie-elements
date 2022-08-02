@@ -312,8 +312,10 @@ export class CorrectResponse extends React.Component {
       domain,
       graph = {},
       labels,
+      labelsEnabled,
       range,
       title,
+      titleEnabled,
       toolbarTools
     } = model || {};
 
@@ -354,12 +356,16 @@ export class CorrectResponse extends React.Component {
                 axesSettings={{ includeArrows: arrows }}
                 backgroundMarks={backgroundMarks}
                 coordinatesOnHover={coordinatesOnHover}
+                disabledLabels={true}
+                disabledTitle={true}
                 domain={domain}
                 draggableTools={key === 'correctAnswer'}
                 labels={labels}
                 marks={marks}
                 onChangeMarks={newMarks => this.changeMarks(key, newMarks)}
                 range={range}
+                showLabels={labelsEnabled}
+                showTitle={titleEnabled}
                 size={{width: graph.width, height: graph.height}}
                 title={title}
                 toolbarTools={toolbarTools}

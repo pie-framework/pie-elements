@@ -63,7 +63,7 @@ export class Configure extends React.Component {
     const gridValues = {
       range: getGridValues(range, graph.height, true)
     };
- 
+
     const labelValues = {
       range: getLabelValues(range.step || 1)
     };
@@ -182,10 +182,7 @@ export class Configure extends React.Component {
         <div className={classes.content}>
           <Typography component="div" type="body1">
             <span>
-              This interaction asks a student to draw a chart that meets
-              specific criteria. The student will draw a category on the chart
-              by clicking Add Category and dragging the top part of the
-              category.
+              This item type provides various types of interactive charts. Depending upon how an item is configured, students can change the heights of bars (or other similar chart elements) created by the author; relabel bars created by the author; and/or add new bars, label them, and set their heights.
             </span>
           </Typography>
 
