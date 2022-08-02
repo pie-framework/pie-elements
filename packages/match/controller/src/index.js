@@ -18,12 +18,20 @@ const getResponseCorrectness = (model, answers, env = {}) => {
     return 'unanswered';
   }
 
-  const totalCorrectAnswers  = checkboxMode ? getTotalCorrectAnswers(model) : getTotalCorrect(model);
-  const correctAnswers = checkboxMode
-    ? getCheckboxes(rows, answers).correctAnswers
-    : getCorrectRadios(rows, answers);
+  const totalCorrectAnswers = checkboxMode ? getTotalCorrectAnswers(model) : getTotalCorrect(model);
+  let correctAnswers;
+  let incorrectAnswers = 0;
 
-  if (totalCorrectAnswers === correctAnswers) {
+  if (checkboxMode) {
+    const checkboxes = getCheckboxes(rows, answers);
+
+    correctAnswers = checkboxes.correctAnswers;
+    incorrectAnswers = checkboxes.incorrectAnswers;
+  } else {
+    correctAnswers = getCorrectRadios(rows, answers);
+  }
+
+  if (totalCorrectAnswers === correctAnswers && !incorrectAnswers) {
     return 'correct';
   } else if (correctAnswers === 0) {
     return 'incorrect';
@@ -49,9 +57,9 @@ const getCheckboxes = (rows, answers) => {
 
     if (answer) {
       row.values.forEach((v, i) => {
-        if (answer[i] && answer[i] === v ) {
+        if (answer[i] && answer[i] === v) {
           correctAnswers += 1;
-        } else if (answer[i] && answer[i] !== v ){
+        } else if (answer[i] && answer[i] !== v) {
           incorrectAnswers += 1;
         }
       });
@@ -84,7 +92,7 @@ const getTotalCorrectAnswers = question => {
 
   question.rows.forEach(row => {
     row.values.forEach(value => {
-      if(value) {
+      if (value) {
         noOfTotalCorrectAnswers += 1;
       }
     });
@@ -96,7 +104,7 @@ const getTotalCorrectAnswers = question => {
 const getPartialScore = (question, answers) => {
   const checkboxMode = question.choiceMode === 'checkbox';
 
-  if(checkboxMode) {
+  if (checkboxMode) {
     const { correctAnswers, incorrectAnswers } = getCheckboxes(question.rows, answers);
     const totalCorrect = getTotalCorrectAnswers(question);
 
