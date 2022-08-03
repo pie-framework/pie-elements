@@ -1,6 +1,43 @@
 const E234 = {
+  choicesPosition: 'below',
+  lockChoiceOrder: false,
+  choices: [
+    {
+      content: 'built on board',
+      id: '0',
+      categoryCount: 1,
+    },
+    {
+      content: 'shipped from Earth',
+      id: '1',
+      categoryCount: 1,
+    },
+    {
+      id: '2',
+      categoryCount: 1,
+      content: 'carried on board',
+    },
+    {
+      categoryCount: 1,
+      content: 'rebuilt when lost or broken',
+      id: '3',
+    },
+  ],
+  categories: [
+    {
+      id: '0',
+      label: 'Traditional Equipment',
+    },
+    {
+      id: '1',
+      label: '3D-Printed Equipment',
+    },
+  ],
+  categoriesPerRow: 2,
   rationale:
     '<p>Traditional equipment must be carried on board or shipped from Earth. 3D-printed equipment can be built on demand or rebuilt if it gets lost or broken.</p>',
+  prompt:
+    '<p>Drag <span class="relative-emphasis">two</span> phrases into each of the categories.</p>',
   partialScoring: true,
   correctResponse: [
     {
@@ -12,90 +49,6 @@ const E234 = {
       category: '1',
     },
   ],
-  "categories": [
-  {
-    "label": "Category",
-    "id": "0"
-  },
-  {
-    "id": "1",
-    "label": ""
-  },
-  {
-    "id": "2",
-    "label": ""
-  },
-  {
-    "id": "3",
-    "label": ""
-  },
-  {
-    "id": "4",
-    "label": ""
-  },
-  {
-    "label": "",
-    "id": "5"
-  },
-  {
-    "label": "",
-    "id": "6"
-  },
-  {
-    "label": "",
-    "id": "7"
-  },
-  {
-    "id": "8",
-    "label": ""
-  },
-  {
-    "label": "",
-    "id": "9"
-  },
-  {
-    "label": "",
-    "id": "10"
-  }
-],
-  "categoriesPerRow": 1,
-  "choices": [
-  {
-    "content": "Factor of 75",
-    "id": "0"
-  },
-  {
-    "id": "1",
-    "content": "Multiple of 7"
-  },
-  {
-    "content": "Integers that can be multiplied together to get another number.&#160;",
-    "id": "2"
-  },
-  {
-    "id": "3",
-    "content": "A number that is the result of multiplying a number by an integer.&#160;"
-  }
-],
-  "choicesLabel": "",
-  "choicesPosition": "left",
-  "disabled": false,
-  "lockChoiceOrder": true,
-  "prompt": "<p>Sameera&#160;wants to find all&#160;of&#160;the factors of 75&#160;and some of&#160;the multiples of 7.</p><p>Drag and drop the correct&#160;definitions into each box and each number into the correct box in the table below.&#160;</p>",
-  "rowLabels": [
-  "Factor Defintion",
-  "Multiples Defintion",
-  "3",
-  "5",
-  "15",
-  "21",
-  "25",
-  "35",
-  "56",
-  "75",
-  "98"
-],
-
 };
 // const E236 = {
 //   choices: [
@@ -326,5 +279,64 @@ const E234 = {
 exports.model = (id, element) => ({
   id,
   element,
-...E234
+  promptEnabled: true,
+
+  choices: [
+    {
+      id: 'id-mar',
+      content: '<div>mar</div>',
+    },
+    {
+      id: 'id-para',
+      content: '<div>para</div>',
+    },
+    {
+      id: 'id-rosie',
+      content: '<div>rosie</div>',
+    },
+    {
+      id: 'id-morcov',
+      content: '<div>morcov</div>',
+      categoryCount: 2,
+    },
+  ],
+  choicesPosition: 'below',
+  choicesLabel: '',
+  lockChoiceOrder: true,
+  removeTilesAfterPlacing: false,
+  categoriesPerRow: 2,
+  categories: [
+    {
+      id: 'id-fructe',
+      label: '<div>fructe</div>',
+    },
+    {
+      id: 'id-legume',
+      label: '<div>legume</div>',
+    },
+  ],
+  alternates: [],
+  correctResponse: [
+    {
+      category: 'id-fructe',
+      choices: ['id-mar', 'id-mar', 'id-mar', 'id-para'],
+      alternateResponses: [
+        ['id-mar', 'id-para', 'id-rosie'],
+        ['id-mar', 'id-para', 'id-rosie'],
+      ],
+    },
+    {
+      category: 'id-legume',
+      choices: ['id-rosie', 'id-rosie', 'id-morcov'],
+      alternateResponses: [['id-rosie', 'id-morcov'], ['id-morcov']],
+    },
+  ],
+  note: 'The answer shown above is the most common correct answer for this item. One or more additional correct answers are also defined, and will also be recognized as correct.',
+  rowLabels: ['', ''],
+  partialScoring: true,
+  feedbackEnabled: true,
+  rationaleEnabled: true,
+  teacherInstructionsEnabled: true,
+  studentInstructionsEnabled: true,
+  toolbarEditorPosition: 'bottom',
 });
