@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.1.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@5.1.4...@pie-element/match@5.1.5) (2022-08-03)
+
+
+### Bug Fixes
+
+* **match:** Scoring is broken for checkbox-based Match items where student has checked all the correct answers and also incorrect answers PD-1930 ([d471d0b](https://github.com/pie-framework/pie-elements/commit/d471d0b0d2ad1ff87a5509395478a431f0d69ce5))
+
+
+
+
+
 ## [5.1.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@5.1.3...@pie-element/match@5.1.4) (2022-08-02)
 
 **Note:** Version bump only for package @pie-element/match

@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-controller@4.4.8...@pie-element/match-controller@4.5.0) (2022-08-03)
+
+
+### Bug Fixes
+
+* **match:** Scoring is broken for checkbox-based Match items where student has checked all the correct answers and also incorrect answers PD-1930 ([d471d0b](https://github.com/pie-framework/pie-elements/commit/d471d0b0d2ad1ff87a5509395478a431f0d69ce5))
+
+
+### Features
+
+* **match:** added validation PD-1710 ([9a7ff92](https://github.com/pie-framework/pie-elements/commit/9a7ff928926219d82b33d6a97df271bdbafff17d))
+* **match:** implement validation ui/ux PD-1711 ([85cdff1](https://github.com/pie-framework/pie-elements/commit/85cdff133bb3373c33733b0e627241bf6880a738))
+
+
+
+
+
 ## [4.4.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-controller@4.4.7...@pie-element/match-controller@4.4.8) (2022-05-16)
 
 **Note:** Version bump only for package @pie-element/match-controller
