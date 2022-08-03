@@ -140,6 +140,7 @@ export class Categorize extends React.Component {
     const nbOfRows = categories && Math.ceil(categories.length / categoriesPerRow) || 0;
     const displayNote = (showCorrect || mode === 'view' && role === 'instructor') && showNote && note;
 
+    const extraLabel = model.choicesPosition === 'left' || model.choicesPosition === 'right';
     return (
       <div className={classes.mainContainer}>
         {
@@ -172,9 +173,9 @@ export class Categorize extends React.Component {
           <div style={{ display: 'flex', flex: 1 }}>
             {
               rowLabels && nbOfRows && (
-                <div style={{ display: 'grid', marginRight: '20px' }}>
+                <div style={{ display: 'grid', marginRight: '20px', gridRowGap: '24px', marginTop: '20px' }}>
                   {rowLabels.slice(0, nbOfRows).map((label, index) => (
-                    <div
+                    <><div
                       key={index}
                       style={{
                         alignItems: 'center',
@@ -185,6 +186,7 @@ export class Categorize extends React.Component {
                         __html: label
                       }}
                     />
+                    </>
                   ))}
                 </div>
               )
