@@ -28,6 +28,8 @@ export class ChartingConfig extends React.Component {
 
   changeData = data => this.props.onChange({ ...this.props.model, data });
 
+  changeTitle = title => this.props.onChange({ ...this.props.model, title });
+
   changeAddRemoveEnabled = value => this.props.onChange({ ...this.props.model, addCategoryEnabled: value });
 
   render() {
@@ -54,6 +56,7 @@ export class ChartingConfig extends React.Component {
               data={model.data.map((category, index) => ({ ...category, index: index }))}
               title={model.title}
               onDataChange={this.changeData}
+              onChangeTitle={this.changeTitle}
               addCategoryEnabled={true}
               categoryDefaultLabel={model.categoryDefaultLabel}
             />
