@@ -85,12 +85,12 @@ export class ImageContainer extends Component {
   handleInputClick = () => this.input.click();
 
   handleOnImageLoad = ({ target: { offsetHeight, offsetWidth } }) => {
-    const { onUpdateImageDimension } = this.props;
+    const { onUpdateImageDimension, imageDimensions } = this.props;
     const resizeHandle = this.resize;
 
     const dimensions = {
-      height: offsetHeight,
-      width: offsetWidth,
+      height: (imageDimensions && imageDimensions.height) || offsetHeight,
+      width: (imageDimensions && imageDimensions.width) || offsetWidth,
     };
 
     this.setState({ dimensions });
