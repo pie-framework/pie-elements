@@ -122,7 +122,8 @@ export class Configure extends React.Component {
       prompt = {},
       spellCheck = {},
       maxImageWidth = {},
-      maxImageHeight = {}
+      maxImageHeight = {},
+      placeholderMessages = {}
     } = configuration || {};
     const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled, spellCheckEnabled } =
       model || {};
@@ -252,6 +253,7 @@ export class Configure extends React.Component {
             model={model}
             onChange={onModelChanged}
             charts={charts}
+            placeholderMessages={placeholderMessages}
           />
 
           <CorrectResponse

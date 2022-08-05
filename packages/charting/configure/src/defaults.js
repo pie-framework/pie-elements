@@ -68,7 +68,11 @@ export default {
     },
     title: {
       settings: false,
-      label: 'Graph Title'
+      label: 'Chart Title'
+    },
+    placeholderMessages: {
+      title: "Click here to add a title",
+      labels: "Click here to add a label for this axis",
     },
     maxImageWidth: {
       teacherInstructions: 300,

@@ -192,6 +192,8 @@ export class CorrectResponse extends React.Component {
     const { classes, model, charts } = this.props;
     const { categories } = this.state;
 
+    console.log(model.title, "title in correct response");
+
     return (
       <div>
         Define Correct Response

@@ -30,10 +30,12 @@ export class ChartingConfig extends React.Component {
 
   changeTitle = title => this.props.onChange({ ...this.props.model, title });
 
-  changeAddRemoveEnabled = value => this.props.onChange({ ...this.props.model, addCategoryEnabled: value });
+  changeLabels = labels => this.props.onChange({ ...this.props.model, labels });
 
   render() {
-    const { classes, model, charts } = this.props;
+    const { classes, model, charts, placeholderMessages } = this.props;
+
+    console.log(placeholderMessages, "placeholderMessages in charting config");
 
     return (
       <div>
@@ -57,8 +59,10 @@ export class ChartingConfig extends React.Component {
               title={model.title}
               onDataChange={this.changeData}
               onChangeTitle={this.changeTitle}
+              onChangeLabels={this.changeLabels}
               addCategoryEnabled={true}
               categoryDefaultLabel={model.categoryDefaultLabel}
+              placeholderMessages={placeholderMessages}
             />
              <div>
               <Checkbox
