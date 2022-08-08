@@ -117,9 +117,11 @@ export class GraphingConfig extends React.Component {
       availableTools = [],
       classes,
       graphDimensions = {},
+      labelsPlaceholders,
       model,
       showLabels,
-      showTitle
+      showTitle,
+      titlePlaceholder
     } = this.props;
     const {
       arrows,
@@ -195,6 +197,7 @@ export class GraphingConfig extends React.Component {
             domain={domain}
             key="graphing-config"
             labels={labels}
+            labelsPlaceholders={labelsPlaceholders}
             marks={backgroundMarks}
             onChangeLabels={this.changeLabels}
             onChangeMarks={this.changeBackgroundMarks}
@@ -205,6 +208,7 @@ export class GraphingConfig extends React.Component {
             showTitle={showTitle}
             size={{ width: graph.width, height: graph.height }}
             title={title}
+            titlePlaceholder={titlePlaceholder}
             toolbarTools={availableTools}
           />
         </div>
