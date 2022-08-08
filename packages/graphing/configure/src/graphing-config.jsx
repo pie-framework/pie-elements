@@ -49,7 +49,7 @@ export class GraphingConfig extends React.Component {
       range: getLabelValues(range.step)
     };
 
-    this.state = { gridValues, labelValues };
+    this.state = { gridValues, labelValues, showPixelGuides: false };
   };
 
   changeBackgroundMarks = backgroundMarks => {
@@ -103,6 +103,14 @@ export class GraphingConfig extends React.Component {
     onChange(updatedModel);
   };
 
+  onChangeView = (event, expanded) => {
+    const { graphDimensions: { enabled } = {}} = this.props;
+
+    if (enabled) {
+      this.setState({ showPixelGuides: expanded });
+    }
+  };
+
   render() {
     const {
       authoring = {},
@@ -126,7 +134,7 @@ export class GraphingConfig extends React.Component {
     } = model || {};
     const graph = (model || {}).graph || {};
     const { enabled: dimensionsEnabled, min, max, step } = graphDimensions || {};
-    const { gridValues, labelValues } = this.state;
+    const { gridValues, labelValues, showPixelGuides } = this.state;
 
     const sizeConstraints = {
       min: Math.max(150, min),
@@ -164,6 +172,7 @@ export class GraphingConfig extends React.Component {
               sizeConstraints={sizeConstraints}
               standardGrid={standardGrid}
               onChange={this.onConfigChange}
+              onChangeView={this.onChangeView}
             />
           )}
         </div>
@@ -192,6 +201,7 @@ export class GraphingConfig extends React.Component {
             onChangeTitle={this.changeTitle}
             range={range}
             showLabels={showLabels}
+            showPixelGuides={showPixelGuides}
             showTitle={showTitle}
             size={{ width: graph.width, height: graph.height }}
             title={title}
