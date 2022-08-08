@@ -191,6 +191,7 @@ export class CorrectResponse extends React.Component {
   render() {
     const { classes, model, charts } = this.props;
     const { categories } = this.state;
+    const labels = { left: model.range?.label || "", bottom: model.domain.label || "" };
 
     console.log(model.title, "title in correct response");
 
@@ -211,6 +212,7 @@ export class CorrectResponse extends React.Component {
                 size={model.graph}
                 domain={model.domain}
                 range={model.range}
+                labels={labels}
                 charts={charts}
                 data={categories}
                 title={model.title}

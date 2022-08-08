@@ -30,12 +30,13 @@ export class ChartingConfig extends React.Component {
 
   changeTitle = title => this.props.onChange({ ...this.props.model, title });
 
-  changeLabels = labels => this.props.onChange({ ...this.props.model, labels });
+  changeLefLabel = (range) => this.props.onChange({ ...this.props.model, range });
+
+  changeRightLabel = (domain) => this.props.onChange({ ...this.props.model, domain });
 
   render() {
-    const { classes, model, charts, placeholderMessages } = this.props;
-
-    console.log(placeholderMessages, "placeholderMessages in charting config");
+    const { classes, model, charts, placeholderMessages, onChange } = this.props;
+    const labels = { left: model.range?.label || "", bottom: model.domain.label || "" };
 
     return (
       <div>
@@ -54,12 +55,15 @@ export class ChartingConfig extends React.Component {
               domain={model.domain}
               range={model.range}
               charts={charts}
+              labels={labels}
               // index is a property used for setting the correct answer data; it's needed in order to remove categories from other data sets from the same index it was removed from the initial data
               data={model.data.map((category, index) => ({ ...category, index: index }))}
               title={model.title}
+              onChange={onChange}
               onDataChange={this.changeData}
               onChangeTitle={this.changeTitle}
-              onChangeLabels={this.changeLabels}
+              onChangeLeftLabel={this.changeLefLabel}
+              onChangeRightLabel={this.changeRightLabel}
               addCategoryEnabled={true}
               categoryDefaultLabel={model.categoryDefaultLabel}
               placeholderMessages={placeholderMessages}

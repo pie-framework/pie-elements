@@ -112,7 +112,7 @@ export class Configure extends React.Component {
       imageSupport,
     } = this.props;
     log('[render] model', model);
-    const { graph } = model;
+    const { graph, range, domain } = model;
     const {
       title = {},
       rationale = {},
