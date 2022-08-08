@@ -7,10 +7,10 @@
   },
   "dependencies": {
     "@material-ui/core": "^3.9.2",
-    "@pie-lib/config-ui": "^11.0.10",
-    "@pie-lib/correct-answer-toggle": "^2.3.41",
+    "@pie-lib/config-ui": "^11.0.11",
+    "@pie-lib/correct-answer-toggle": "^2.3.42",
     "@pie-lib/math-rendering": "^2.4.5",
-    "@pie-lib/render-ui": "^4.13.1",
+    "@pie-lib/render-ui": "^4.13.2",
     "classnames": "^2.2.5",
     "debug": "^4.1.1",
     "enzyme-to-json": "^3.3.3",
