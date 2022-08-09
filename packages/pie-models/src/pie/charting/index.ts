@@ -59,6 +59,14 @@ interface Answer {
   data: [Category];
 }
 
+interface Placeholder {
+  /** Indicates placeholder message if title is not defined */
+  title: string;
+
+  /** Indicates placeholder message if labels for range or domain are not defined */
+  labels: string;
+}
+
 /**
  * NOTE: There's no functionality described for studentInstructions
  * so there's no implementation (they are only added in model)
@@ -118,6 +126,9 @@ export interface ChartingPie extends PieModel {
 
   /** Indicates chart title */
   title?: string;
+
+    /** Indicates placeholder messages */
+    placeholderMessages?:Placeholder;
 
   /** Indicates if Rationale are enabled */
   rationaleEnabled: boolean;

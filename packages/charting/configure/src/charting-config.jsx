@@ -28,6 +28,8 @@ export class ChartingConfig extends React.Component {
 
   changeData = data => this.props.onChange({ ...this.props.model, data });
 
+  changeAddRemoveEnabled = value => this.props.onChange({ ...this.props.model, addCategoryEnabled: value });
+
   changeTitle = title => this.props.onChange({ ...this.props.model, title });
 
   changeLefLabel = (range) => this.props.onChange({ ...this.props.model, range });

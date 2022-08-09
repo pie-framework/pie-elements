@@ -138,6 +138,18 @@ Indicates teacher instructions
 
 Indicates chart title
 
+# `placeholderMessages` (object)
+
+Properties of the `placeholderMessages` object:
+
+## `title` (string, required)
+
+Indicates placeholder message if title is not defined
+
+## `labels` (string, required)
+
+Indicates placeholder message if labels for range or domain are not defined
+
 # `rationaleEnabled` (boolean, required)
 
 Indicates if Rationale are enabled
@@ -308,3 +320,15 @@ Width for chart representation
 ### `height` (number, required)
 
 Height for chart representation
+
+## `Placeholder` (object)
+
+Properties of the `Placeholder` object:
+
+### `title` (string, required)
+
+Indicates placeholder message if title is not defined
+
+### `labels` (string, required)
+
+Indicates placeholder message if labels for range or domain are not defined
