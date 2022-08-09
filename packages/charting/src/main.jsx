@@ -61,7 +61,7 @@ export class Main extends React.Component {
       correctedAnswer,
       correctAnswer,
     } = model;
-    const labels = { left: model.range?.label || "", bottom: model.domain.label || "" };
+  
     const correctData =
       correctAnswer && correctAnswer.data
         ? correctAnswer.data.map((data) => {
@@ -119,7 +119,6 @@ export class Main extends React.Component {
               chartTypes.LinePlot(),
             ]}
             data={correctData || categories}
-            labels={labels}
             title={title}
             onDataChange={this.changeData}
             addCategoryEnabled={false}
@@ -140,7 +139,6 @@ export class Main extends React.Component {
               chartTypes.LinePlot(),
             ]}
             data={correctedAnswer || categories}
-            labels={labels}
             title={title}
             onDataChange={this.changeData}
             addCategoryEnabled={addCategoryEnabled}

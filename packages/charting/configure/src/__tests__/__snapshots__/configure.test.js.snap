@@ -26,6 +26,16 @@ exports[`ChartingConfig renders snapshot 1`] = `
             "label": "Fruits",
           }
         }
+        labels={
+          Object {
+            "bottom": "Fruits",
+            "left": "Amount",
+          }
+        }
+        onChange={[MockFunction]}
+        onChangeLeftLabel={[Function]}
+        onChangeRightLabel={[Function]}
+        onChangeTitle={[Function]}
         onDataChange={[Function]}
         range={
           Object {
@@ -70,6 +80,10 @@ exports[`Configure renders snapshot 1`] = `
             "rationale": 300,
             "teacherInstructions": 300,
           },
+          "placeholderMessages": Object {
+            "labels": "Click here to add a label for this axis",
+            "title": "Click here to add a title",
+          },
           "prompt": Object {
             "label": "Item Stem",
             "settings": true,
@@ -96,7 +110,7 @@ exports[`Configure renders snapshot 1`] = `
             "settings": true,
           },
           "title": Object {
-            "label": "Graph Title",
+            "label": "Chart Title",
             "settings": false,
           },
         }
@@ -331,6 +345,12 @@ exports[`Configure renders snapshot 1`] = `
           "title": "This is a chart!",
         }
       }
+      placeholderMessages={
+        Object {
+          "labels": "Click here to add a label for this axis",
+          "title": "Click here to add a title",
+        }
+      }
     />
     <WithStyles(CorrectResponse)
       charts={
@@ -427,6 +447,12 @@ exports[`CorrectResponse renders snapshot 1`] = `
           domain={
             Object {
               "label": "Fruits",
+            }
+          }
+          labels={
+            Object {
+              "bottom": "Fruits",
+              "left": "Amount",
             }
           }
           onDataChange={[Function]}

@@ -36,7 +36,6 @@ export class ChartingConfig extends React.Component {
 
   render() {
     const { classes, model, charts, placeholderMessages, onChange } = this.props;
-    const labels = { left: model.range?.label || "", bottom: model.domain.label || "" };
 
     return (
       <div>
@@ -55,11 +54,9 @@ export class ChartingConfig extends React.Component {
               domain={model.domain}
               range={model.range}
               charts={charts}
-              labels={labels}
               // index is a property used for setting the correct answer data; it's needed in order to remove categories from other data sets from the same index it was removed from the initial data
               data={model.data.map((category, index) => ({ ...category, index: index }))}
               title={model.title}
-              onChange={onChange}
               onDataChange={this.changeData}
               onChangeTitle={this.changeTitle}
               onChangeLeftLabel={this.changeLefLabel}
