@@ -26,13 +26,6 @@ exports[`ChartingConfig renders snapshot 1`] = `
             "label": "Fruits",
           }
         }
-        labels={
-          Object {
-            "bottom": "Fruits",
-            "left": "Amount",
-          }
-        }
-        onChange={[MockFunction]}
         onChangeLeftLabel={[Function]}
         onChangeRightLabel={[Function]}
         onChangeTitle={[Function]}
@@ -447,12 +440,6 @@ exports[`CorrectResponse renders snapshot 1`] = `
           domain={
             Object {
               "label": "Fruits",
-            }
-          }
-          labels={
-            Object {
-              "bottom": "Fruits",
-              "left": "Amount",
             }
           }
           onDataChange={[Function]}
