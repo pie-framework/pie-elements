@@ -37,7 +37,7 @@ export class ChartingConfig extends React.Component {
   changeRightLabel = (domain) => this.props.onChange({ ...this.props.model, domain });
 
   render() {
-    const { classes, model, charts, placeholderMessages, onChange } = this.props;
+    const { classes, model, charts, placeholderMessages } = this.props;
 
     return (
       <div>
