@@ -34,7 +34,6 @@ export class ChartingConfig extends React.Component {
         open: false
       },
       correctAnswer: props.model.correctAnswer
-    
     };
   }
 
@@ -46,7 +45,7 @@ export class ChartingConfig extends React.Component {
   changeData = data => this.props.onChange({ ...this.props.model, data });
 
   changeAddRemoveEnabled = value => {
-    const {correctAnswer} = this.state;
+    const { correctAnswer } = this.state;
 
     if (!value) {
       this.setState({
@@ -60,13 +59,13 @@ export class ChartingConfig extends React.Component {
         }
       });
     } else {
-    this.props.onChange({ ...this.props.model, addCategoryEnabled: value });
+      this.props.onChange({ ...this.props.model, addCategoryEnabled: value });
     }
   }
 
   render() {
     const { classes, model, charts } = this.props;
-    const { dialog,correctAnswer } = this.state;
+    const { dialog } = this.state;
 
     return (
       <div>
@@ -92,7 +91,7 @@ export class ChartingConfig extends React.Component {
               addCategoryEnabled={true}
               categoryDefaultLabel={model.categoryDefaultLabel}
             />
-             <div>
+            <div>
               <Checkbox
                 checked={model.addCategoryEnabled}
                 onChange={(e) => {
@@ -103,12 +102,12 @@ export class ChartingConfig extends React.Component {
             </div>
 
             <AlertDialog
-          open={dialog.open}
-          title={dialog.title}
-          text={dialog.text}
-          onClose={dialog.onClose}
-          onConfirm={dialog.onConfirm}
-        />
+              open={dialog.open}
+              title={dialog.title}
+              text={dialog.text}
+              onClose={dialog.onClose}
+              onConfirm={dialog.onConfirm}
+            />
           </div>
 
         </div>
