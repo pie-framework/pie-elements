@@ -27,6 +27,17 @@ export class ChartingConfig extends React.Component {
     charts: PropTypes.array
   };
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      dialog: {
+        open: false
+      },
+      correctAnswer: props.model.correctAnswer
+    
+    };
+  }
+
   state = {
     dialog: {
       open: false
@@ -43,6 +54,7 @@ export class ChartingConfig extends React.Component {
   changeAddRemoveEnabled = value => {
     console.log(value, "value")
     console.log(!value, "!!!!!value")
+    const correctAnswer = this.state.correctAnswer;
     if (!value) {
       this.setState({
         dialog: {
@@ -50,7 +62,7 @@ export class ChartingConfig extends React.Component {
           title: 'Warning',
           text: `This change will remove any correct answer categories that are not part of the initial item configuration.`,
           onConfirm: () => this.handleAlertDialog(
-            false, this.props.onChange({ ...this.props.model, addCategoryEnabled: value })),
+            false, this.props.onChange({ ...this.props.model, addCategoryEnabled: value, correctAnswer: correctAnswer })),
           onClose: () => this.handleAlertDialog(false)
         }
       });
@@ -61,8 +73,9 @@ export class ChartingConfig extends React.Component {
 
   render() {
     const { classes, model, charts } = this.props;
-    const { dialog } = this.state;
-
+    const { dialog,correctAnswer } = this.state;
+console.log(model, "model in config")
+console.log(correctAnswer, "correctAnswer in config from state")
     return (
       <div>
         Define Initial Chart Attributes

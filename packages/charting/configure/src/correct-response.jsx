@@ -34,6 +34,8 @@ const updateCorrectResponseData = (correctAnswer, data) => {
     return data;
   }
 
+  console.log(correctAnswer, data, "correctAnswer, data")
+
   const correctAnswerData = [...correctAnswer];
 
   let correctResponseDefinition = [];
@@ -191,6 +193,7 @@ export class CorrectResponse extends React.Component {
   render() {
     const { classes, model, charts } = this.props;
     const { categories } = this.state;
+    console.log(categories, "categories");
 
     return (
       <div>
