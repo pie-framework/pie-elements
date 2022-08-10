@@ -38,12 +38,6 @@ export class ChartingConfig extends React.Component {
     };
   }
 
-  state = {
-    dialog: {
-      open: false
-    }
-  };
-
   handleAlertDialog = (open, callback) =>
     this.setState({
       dialog: { open }
@@ -52,9 +46,8 @@ export class ChartingConfig extends React.Component {
   changeData = data => this.props.onChange({ ...this.props.model, data });
 
   changeAddRemoveEnabled = value => {
-    console.log(value, "value")
-    console.log(!value, "!!!!!value")
-    const correctAnswer = this.state.correctAnswer;
+    const {correctAnswer} = this.state;
+
     if (!value) {
       this.setState({
         dialog: {
@@ -74,8 +67,7 @@ export class ChartingConfig extends React.Component {
   render() {
     const { classes, model, charts } = this.props;
     const { dialog,correctAnswer } = this.state;
-console.log(model, "model in config")
-console.log(correctAnswer, "correctAnswer in config from state")
+
     return (
       <div>
         Define Initial Chart Attributes
