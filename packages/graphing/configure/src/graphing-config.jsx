@@ -1,7 +1,7 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import { GraphContainer, GridSetup } from '@pie-lib/graphing';
-import { Typography } from '@material-ui/core';
+import { MenuItem, Select, Typography, OutlinedInput } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import { applyConstraints, getGridValues, getLabelValues } from './utils';
 
@@ -11,7 +11,7 @@ const styles = theme => ({
     flexWrap: 'wrap',
     marginBottom: theme.spacing.unit * 7
   },
-  gridConfig: {
+  gridConfigWrapper: {
     display: 'flex',
     flexDirection: 'column',
     marginRight: theme.spacing.unit * 4,
@@ -24,6 +24,18 @@ const styles = theme => ({
   subtitleText: {
     marginTop: theme.spacing.unit * 1.5,
     marginBottom: theme.spacing.unit
+  },
+  gridConfig: {
+    display: 'flex',
+    alignItems: 'center',
+    width: '100%',
+    marginBottom: '16px'
+  },
+  gridConfigLabel: {
+    padding: '0 8px'
+  },
+  gridConfigSelect: {
+    flex: '1'
   }
 });
 
@@ -32,6 +44,7 @@ export class GraphingConfig extends React.Component {
     classes: PropTypes.object.isRequired,
     authoring: PropTypes.object,
     graphDimensions: PropTypes.object,
+    gridConfigurations: PropTypes.array,
     model: PropTypes.object.isRequired,
     onChange: PropTypes.func.isRequired,
   };
@@ -49,7 +62,7 @@ export class GraphingConfig extends React.Component {
       range: getLabelValues(range.step)
     };
 
-    this.state = { gridValues, labelValues };
+    this.state = { gridValues, labelValues, selectedGrid: 0 };
   };
 
   changeBackgroundMarks = backgroundMarks => {
@@ -103,11 +116,21 @@ export class GraphingConfig extends React.Component {
     onChange(updatedModel);
   };
 
+  changeGridConfiguration = (event) => {
+    const { gridConfigurations, model, onChange } = this.props;
+    const { value } = event.target;
+    const { label, ...updatedModel } = gridConfigurations[value] || {};
+
+    this.setState({ selectedGrid: value });
+    onChange({ ...model, ...updatedModel });
+  };
+
   render() {
     const {
       authoring = {},
       availableTools = [],
       classes,
+      gridConfigurations = [],
       graphDimensions = {},
       model,
       showLabels,
@@ -126,7 +149,7 @@ export class GraphingConfig extends React.Component {
     } = model || {};
     const graph = (model || {}).graph || {};
     const { enabled: dimensionsEnabled, min, max, step } = graphDimensions || {};
-    const { gridValues, labelValues } = this.state;
+    const { gridValues, labelValues, selectedGrid } = this.state;
 
     const sizeConstraints = {
       min: Math.max(150, min),
@@ -150,7 +173,25 @@ export class GraphingConfig extends React.Component {
 
     return (
       <div className={classes.container}>
-        <div className={classes.gridConfig}>
+        <div className={classes.gridConfigWrapper}>
+          {gridConfigurations && gridConfigurations.length ? (
+            <div className={classes.gridConfig}>
+              <Typography component="div" variant="subheading" className={classes.gridConfigLabel}>
+                <span>Grid Configuration</span>
+              </Typography>
+              <Select
+                input={<OutlinedInput />}
+                className={classes.gridConfigSelect}
+                displayEmpty
+                onChange={this.changeGridConfiguration}
+                value={selectedGrid}
+              >
+                {(gridConfigurations || []).map((config, index) =>
+                  <MenuItem key={index} value={index}>{config.label}</MenuItem>
+                )}
+              </Select>
+            </div>
+          ) : null}
           {displayGridSetup && (
             <GridSetup
               displayedFields={displayedFields}

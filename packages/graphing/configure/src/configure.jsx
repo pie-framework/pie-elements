@@ -109,6 +109,7 @@ export class Configure extends React.Component {
       authoring = {},
       availableTools = [],
       coordinatesOnHover = {},
+      gridConfigurations = [],
       graphDimensions = {},
       labels = {},
       padding = {},
@@ -244,6 +245,7 @@ export class Configure extends React.Component {
           <GraphingConfig
             authoring={authoring}
             availableTools={availableTools}
+            gridConfigurations={gridConfigurations}
             graphDimensions={graphDimensions}
             model={model}
             showLabels={labelsEnabled}

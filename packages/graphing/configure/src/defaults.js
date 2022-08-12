@@ -90,6 +90,197 @@ export default {
         label: 'down'
       }
     },
+    gridConfigurations: [{
+        label: '4-quadrant coordinate grid, -10 to 10',
+        arrows: {
+          left: true,
+          right: true,
+          up: true,
+          down: true
+        },
+        domain: {
+          min: -10,
+          max: 10,
+          step: 1,
+          padding: 0,
+          labelStep: 1,
+          axisLabel: '<i>x</i>'
+        },
+        graph: {
+          width: 480,
+          height: 480,
+        },
+        includeAxes: true,
+        labels: {
+          top: '',
+          right: '',
+          bottom: '',
+          left: ''
+        },
+        padding: true,
+        range: {
+          min: -10,
+          max: 10,
+          step: 1,
+          padding: 0,
+          labelStep: 1,
+          axisLabel: '<i>y</i>'
+        },
+        standardGrid: true,
+        title: ''
+      }, {
+        label: '0 to 10 on both axes',
+        arrows: {
+          left: false,
+          right: true,
+          up: true,
+          down: false
+        },
+        domain: {
+          min: 0,
+          max: 10,
+          step: 1,
+          padding: 0,
+          labelStep: 1,
+          axisLabel: '<i>x</i>'
+        },
+        graph: {
+          width: 480,
+          height: 480,
+        },
+        includeAxes: true,
+        labels: {
+          top: '',
+          right: '',
+          bottom: '',
+          left: ''
+        },
+        padding: true,
+        range: {
+          min: 0,
+          max: 10,
+          step: 1,
+          padding: 0,
+          labelStep: 1,
+          axisLabel: '<i>y</i>'
+        },
+        standardGrid: true,
+        title: ''
+      }, {
+        label: '0 to 20 on both axes',
+        arrows: {
+          left: false,
+          right: true,
+          up: true,
+          down: false
+        },
+        domain: {
+          min: 0,
+          max: 20,
+          step: 1,
+          padding: 0,
+          labelStep: 1,
+          axisLabel: '<i>x</i>'
+        },
+        graph: {
+          width: 480,
+          height: 480,
+        },
+        includeAxes: true,
+        labels: {
+          top: '',
+          right: '',
+          bottom: '',
+          left: ''
+        },
+        padding: true,
+        range: {
+          min: 0,
+          max: 20,
+          step: 1,
+          padding: 0,
+          labelStep: 1,
+          axisLabel: '<i>y</i>'
+        },
+        standardGrid: true,
+        title: ''
+      }, {
+        label: 'Sample Data Graph',
+        arrows: {
+          left: false,
+          right: true,
+          up: true,
+          down: false
+        },
+        domain: {
+          min: 0,
+          max: 30,
+          step: 1,
+          padding: 0,
+          labelStep: 2,
+          axisLabel: '<i>t</i>'
+        },
+        graph: {
+          width: 480,
+          height: 480,
+        },
+        includeAxes: true,
+        labels: {
+          top: '',
+          right: '',
+          bottom: 'Time (seconds)',
+          left: 'Distance (meters)'
+        },
+        padding: true,
+        range: {
+          min: 0,
+          max: 80,
+          step: 5,
+          padding: 0,
+          labelStep: 10,
+          axisLabel: '<i>d</i>'
+        },
+        standardGrid: false,
+        title: 'Distance as a function of time'
+      }, {
+        label: 'No Visible Axes',
+        arrows: {
+          left: false,
+          right: false,
+          up: false,
+          down: false
+        },
+        domain: {
+          min: 1,
+          max: 21,
+          step: 1,
+          padding: 0,
+          labelStep: 0,
+          axisLabel: ''
+        },
+        graph: {
+          width: 480,
+          height: 480,
+        },
+        includeAxes: false,
+        labels: {
+          top: '',
+          right: '',
+          bottom: '',
+          left: ''
+        },
+        padding: true,
+        range: {
+          min: 1,
+          max: 21,
+          step: 1,
+          padding: 0,
+          labelStep: 0,
+          axisLabel: ''
+        },
+        standardGrid: false,
+        title: ''
+    }],
     graphDimensions: {
       settings: false,
       label: 'Graph Dimensions',
