@@ -234,6 +234,219 @@
         }
       }
     },
+    "gridConfigurations": {
+      "description": "Grid default configurations",
+      "type": "array",
+      "items": {
+        "title": "GridConfigurationsProp",
+        "type": "object",
+        "properties": {
+          "label": {
+            "description": "Indicates the label for the configuration",
+            "type": "string",
+            "title": "label"
+          },
+          "arrows": {
+            "title": "Arrows",
+            "type": "object",
+            "properties": {
+              "left": {
+                "description": "Indicates if left arrow is enabled",
+                "type": "boolean",
+                "title": "left"
+              },
+              "right": {
+                "description": "Indicates if right arrow is enabled",
+                "type": "boolean",
+                "title": "right"
+              },
+              "up": {
+                "description": "Indicates if up arrow is enabled",
+                "type": "boolean",
+                "title": "up"
+              },
+              "down": {
+                "description": "Indicates if down arrow is enabled",
+                "type": "boolean",
+                "title": "down"
+              }
+            },
+            "required": [
+              "down",
+              "left",
+              "right",
+              "up"
+            ]
+          },
+          "domain": {
+            "title": "GraphSettings",
+            "type": "object",
+            "properties": {
+              "min": {
+                "description": "Min value",
+                "type": "number",
+                "title": "min"
+              },
+              "max": {
+                "description": "Max value",
+                "type": "number",
+                "title": "max"
+              },
+              "padding": {
+                "description": "Padding value",
+                "type": "number",
+                "title": "padding"
+              },
+              "step": {
+                "description": "Step value",
+                "type": "number",
+                "title": "step"
+              },
+              "labelStep": {
+                "description": "Label step value",
+                "type": "number",
+                "title": "labelStep"
+              },
+              "axisLabel": {
+                "description": "Axis Label",
+                "type": "string",
+                "title": "axisLabel"
+              }
+            },
+            "required": [
+              "axisLabel",
+              "labelStep",
+              "max",
+              "min",
+              "padding",
+              "step"
+            ]
+          },
+          "graph": {
+            "title": "Graph",
+            "type": "object",
+            "properties": {
+              "width": {
+                "description": "Width for graph representation",
+                "type": "number",
+                "title": "width"
+              },
+              "height": {
+                "description": "Height for graph representation",
+                "type": "number",
+                "title": "height"
+              }
+            },
+            "required": [
+              "height",
+              "width"
+            ]
+          },
+          "includeAxes": {
+            "description": "Indicates if the graph axes and labels are enabled",
+            "type": "boolean",
+            "title": "includeAxes"
+          },
+          "labels": {
+            "title": "Labels",
+            "type": "object",
+            "properties": {
+              "top": {
+                "description": "Label for top side of the graph",
+                "type": "string",
+                "title": "top"
+              },
+              "bottom": {
+                "description": "Label for bottom side of the graph",
+                "type": "string",
+                "title": "bottom"
+              },
+              "left": {
+                "description": "Label for left side of the graph",
+                "type": "string",
+                "title": "left"
+              },
+              "right": {
+                "description": "Label for right side of the graph",
+                "type": "string",
+                "title": "right"
+              }
+            },
+            "required": [
+              "bottom",
+              "left",
+              "right",
+              "top"
+            ]
+          },
+          "padding": {
+            "description": "Indicates if padding is enabled",
+            "type": "boolean",
+            "title": "padding"
+          },
+          "range": {
+            "title": "GraphSettings",
+            "type": "object",
+            "properties": {
+              "min": {
+                "description": "Min value",
+                "type": "number",
+                "title": "min"
+              },
+              "max": {
+                "description": "Max value",
+                "type": "number",
+                "title": "max"
+              },
+              "padding": {
+                "description": "Padding value",
+                "type": "number",
+                "title": "padding"
+              },
+              "step": {
+                "description": "Step value",
+                "type": "number",
+                "title": "step"
+              },
+              "labelStep": {
+                "description": "Label step value",
+                "type": "number",
+                "title": "labelStep"
+              },
+              "axisLabel": {
+                "description": "Axis Label",
+                "type": "string",
+                "title": "axisLabel"
+              }
+            },
+            "required": [
+              "axisLabel",
+              "labelStep",
+              "max",
+              "min",
+              "padding",
+              "step"
+            ]
+          },
+          "standardGrid": {
+            "description": "Indicates if some domain values will be synched to the range values",
+            "type": "boolean",
+            "title": "standardGrid"
+          },
+          "title": {
+            "description": "Indicates graph title",
+            "type": "string",
+            "title": "title"
+          }
+        },
+        "required": [
+          "domain",
+          "graph",
+          "range"
+        ]
+      },
+      "title": "gridConfigurations"
+    },
     "padding": {
       "title": "ConfigureProp",
       "type": "object",
@@ -444,6 +657,9 @@
       "title": "settingsPartialScoring"
     }
   },
+  "required": [
+    "gridConfigurations"
+  ],
   "definitions": {
     "AuthoringConfigProp": {
       "title": "AuthoringConfigProp",
@@ -694,6 +910,342 @@
           "title": "step"
         }
       }
+    },
+    "GridConfigurationsProp": {
+      "title": "GridConfigurationsProp",
+      "type": "object",
+      "properties": {
+        "label": {
+          "description": "Indicates the label for the configuration",
+          "type": "string",
+          "title": "label"
+        },
+        "arrows": {
+          "title": "Arrows",
+          "type": "object",
+          "properties": {
+            "left": {
+              "description": "Indicates if left arrow is enabled",
+              "type": "boolean",
+              "title": "left"
+            },
+            "right": {
+              "description": "Indicates if right arrow is enabled",
+              "type": "boolean",
+              "title": "right"
+            },
+            "up": {
+              "description": "Indicates if up arrow is enabled",
+              "type": "boolean",
+              "title": "up"
+            },
+            "down": {
+              "description": "Indicates if down arrow is enabled",
+              "type": "boolean",
+              "title": "down"
+            }
+          },
+          "required": [
+            "down",
+            "left",
+            "right",
+            "up"
+          ]
+        },
+        "domain": {
+          "title": "GraphSettings",
+          "type": "object",
+          "properties": {
+            "min": {
+              "description": "Min value",
+              "type": "number",
+              "title": "min"
+            },
+            "max": {
+              "description": "Max value",
+              "type": "number",
+              "title": "max"
+            },
+            "padding": {
+              "description": "Padding value",
+              "type": "number",
+              "title": "padding"
+            },
+            "step": {
+              "description": "Step value",
+              "type": "number",
+              "title": "step"
+            },
+            "labelStep": {
+              "description": "Label step value",
+              "type": "number",
+              "title": "labelStep"
+            },
+            "axisLabel": {
+              "description": "Axis Label",
+              "type": "string",
+              "title": "axisLabel"
+            }
+          },
+          "required": [
+            "axisLabel",
+            "labelStep",
+            "max",
+            "min",
+            "padding",
+            "step"
+          ]
+        },
+        "graph": {
+          "title": "Graph",
+          "type": "object",
+          "properties": {
+            "width": {
+              "description": "Width for graph representation",
+              "type": "number",
+              "title": "width"
+            },
+            "height": {
+              "description": "Height for graph representation",
+              "type": "number",
+              "title": "height"
+            }
+          },
+          "required": [
+            "height",
+            "width"
+          ]
+        },
+        "includeAxes": {
+          "description": "Indicates if the graph axes and labels are enabled",
+          "type": "boolean",
+          "title": "includeAxes"
+        },
+        "labels": {
+          "title": "Labels",
+          "type": "object",
+          "properties": {
+            "top": {
+              "description": "Label for top side of the graph",
+              "type": "string",
+              "title": "top"
+            },
+            "bottom": {
+              "description": "Label for bottom side of the graph",
+              "type": "string",
+              "title": "bottom"
+            },
+            "left": {
+              "description": "Label for left side of the graph",
+              "type": "string",
+              "title": "left"
+            },
+            "right": {
+              "description": "Label for right side of the graph",
+              "type": "string",
+              "title": "right"
+            }
+          },
+          "required": [
+            "bottom",
+            "left",
+            "right",
+            "top"
+          ]
+        },
+        "padding": {
+          "description": "Indicates if padding is enabled",
+          "type": "boolean",
+          "title": "padding"
+        },
+        "range": {
+          "title": "GraphSettings",
+          "type": "object",
+          "properties": {
+            "min": {
+              "description": "Min value",
+              "type": "number",
+              "title": "min"
+            },
+            "max": {
+              "description": "Max value",
+              "type": "number",
+              "title": "max"
+            },
+            "padding": {
+              "description": "Padding value",
+              "type": "number",
+              "title": "padding"
+            },
+            "step": {
+              "description": "Step value",
+              "type": "number",
+              "title": "step"
+            },
+            "labelStep": {
+              "description": "Label step value",
+              "type": "number",
+              "title": "labelStep"
+            },
+            "axisLabel": {
+              "description": "Axis Label",
+              "type": "string",
+              "title": "axisLabel"
+            }
+          },
+          "required": [
+            "axisLabel",
+            "labelStep",
+            "max",
+            "min",
+            "padding",
+            "step"
+          ]
+        },
+        "standardGrid": {
+          "description": "Indicates if some domain values will be synched to the range values",
+          "type": "boolean",
+          "title": "standardGrid"
+        },
+        "title": {
+          "description": "Indicates graph title",
+          "type": "string",
+          "title": "title"
+        }
+      },
+      "required": [
+        "domain",
+        "graph",
+        "range"
+      ]
+    },
+    "Arrows": {
+      "title": "Arrows",
+      "type": "object",
+      "properties": {
+        "left": {
+          "description": "Indicates if left arrow is enabled",
+          "type": "boolean",
+          "title": "left"
+        },
+        "right": {
+          "description": "Indicates if right arrow is enabled",
+          "type": "boolean",
+          "title": "right"
+        },
+        "up": {
+          "description": "Indicates if up arrow is enabled",
+          "type": "boolean",
+          "title": "up"
+        },
+        "down": {
+          "description": "Indicates if down arrow is enabled",
+          "type": "boolean",
+          "title": "down"
+        }
+      },
+      "required": [
+        "down",
+        "left",
+        "right",
+        "up"
+      ]
+    },
+    "GraphSettings": {
+      "title": "GraphSettings",
+      "type": "object",
+      "properties": {
+        "min": {
+          "description": "Min value",
+          "type": "number",
+          "title": "min"
+        },
+        "max": {
+          "description": "Max value",
+          "type": "number",
+          "title": "max"
+        },
+        "padding": {
+          "description": "Padding value",
+          "type": "number",
+          "title": "padding"
+        },
+        "step": {
+          "description": "Step value",
+          "type": "number",
+          "title": "step"
+        },
+        "labelStep": {
+          "description": "Label step value",
+          "type": "number",
+          "title": "labelStep"
+        },
+        "axisLabel": {
+          "description": "Axis Label",
+          "type": "string",
+          "title": "axisLabel"
+        }
+      },
+      "required": [
+        "axisLabel",
+        "labelStep",
+        "max",
+        "min",
+        "padding",
+        "step"
+      ]
+    },
+    "Graph": {
+      "title": "Graph",
+      "type": "object",
+      "properties": {
+        "width": {
+          "description": "Width for graph representation",
+          "type": "number",
+          "title": "width"
+        },
+        "height": {
+          "description": "Height for graph representation",
+          "type": "number",
+          "title": "height"
+        }
+      },
+      "required": [
+        "height",
+        "width"
+      ]
+    },
+    "Labels": {
+      "title": "Labels",
+      "type": "object",
+      "properties": {
+        "top": {
+          "description": "Label for top side of the graph",
+          "type": "string",
+          "title": "top"
+        },
+        "bottom": {
+          "description": "Label for bottom side of the graph",
+          "type": "string",
+          "title": "bottom"
+        },
+        "left": {
+          "description": "Label for left side of the graph",
+          "type": "string",
+          "title": "left"
+        },
+        "right": {
+          "description": "Label for right side of the graph",
+          "type": "string",
+          "title": "right"
+        }
+      },
+      "required": [
+        "bottom",
+        "left",
+        "right",
+        "top"
+      ]
     },
     "ConfigurePropWithEnabled": {
       "title": "ConfigurePropWithEnabled",
