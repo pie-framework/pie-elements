@@ -93,6 +93,13 @@ export class ImageContainer extends Component {
       width: (imageDimensions && imageDimensions.width) || offsetWidth || naturalWidth,
     };
 
+    // check if aspect ratio is not respected on replacing image
+    const imageAspectRatio = naturalWidth / naturalHeight;
+
+    if (dimensions.width !== dimensions.height * imageAspectRatio) {
+      dimensions.width = dimensions.height * imageAspectRatio;
+    }
+
     this.setState({ dimensions });
     onUpdateImageDimension(dimensions);
 
@@ -117,25 +124,24 @@ export class ImageContainer extends Component {
 
   startResizing = (e) => {
     const box = this.image;
-    const { maxImageWidth, dimensions } = this.state;
+    const { maxImageWidth, maxImageHeight, dimensions } = this.state;
 
     const bounds = e.target.getBoundingClientRect();
     const x = e.clientX - bounds.left;
     const y = e.clientY - bounds.top;
 
     const imageAspectRatio = dimensions.width / dimensions.height;
-
-    const fitsContainer = x <= maxImageWidth + 5;
+    const fitsContainer = x <= maxImageWidth + 5 && (x / imageAspectRatio) <= maxImageHeight + 5;
     const hasMinimumWidth = x > 150 && y > 150;
 
-    if (fitsContainer && hasMinimumWidth) {
+    if (fitsContainer && hasMinimumWidth && box) {
       box.style.width = `${x}px`;
-      box.style.height = `${x/imageAspectRatio}px`;
+      box.style.height = `${x / imageAspectRatio}px`;
 
       this.setState({
         dimensions: {
-          height:x/imageAspectRatio,
-          width:x,
+          width: x,
+          height: x / imageAspectRatio,
         },
       });
     }
