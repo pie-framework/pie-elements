@@ -135,6 +135,12 @@ export class Configure extends React.Component {
 
     const defaultImageMaxWidth = maxImageWidth && maxImageWidth.prompt;
     const defaultImageMaxHeight = maxImageHeight && maxImageHeight.prompt;
+    const labelsPlaceholders = {
+      top: labels.top,
+      right: labels.right,
+      bottom: labels.bottom,
+      left: labels.left,
+    };
 
     return (
       <layout.ConfigLayout
@@ -245,9 +251,11 @@ export class Configure extends React.Component {
             authoring={authoring}
             availableTools={availableTools}
             graphDimensions={graphDimensions}
+            labelsPlaceholders={labelsPlaceholders}
             model={model}
             showLabels={labelsEnabled}
             showTitle={titleEnabled}
+            titlePlaceholder={title.placeholder}
             onChange={this.props.onModelChanged}
           />
 
