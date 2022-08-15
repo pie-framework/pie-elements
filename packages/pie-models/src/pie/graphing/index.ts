@@ -339,6 +339,38 @@ interface AuthoringConfigProp {
   labelStep?: GridPanelConfigProp;
 }
 
+interface GridConfigurationsProp {
+  /** Indicates the label for the configuration */
+  label?: string;
+
+  /** Indicates if arrows are enabled */
+  arrows?: Arrows;
+
+  /** Indicates domain settings for the graph */
+  domain: GraphSettings;
+
+  /** Indicates the graph line model */
+  graph: Graph;
+
+  /** Indicates if the graph axes and labels are enabled */
+  includeAxes?: boolean
+
+  /** Indicates labels */
+  labels?: Labels;
+
+  /** Indicates if padding is enabled */
+  padding?: boolean;
+
+  /** Indicates range settings for the graph */
+  range: GraphSettings;
+
+  /** Indicates if some domain values will be synched to the range values */
+  standardGrid?: boolean;
+
+  /** Indicates graph title */
+  title?: string;
+}
+
 interface LabelsConfigProp extends ConfigurePropWithEnabled {
   /**
    * Indicates the placeholder for the top label
@@ -397,6 +429,11 @@ export interface GraphingConfigure extends PromptConfig, CommonConfigSettings {
    * Graph dimensions configuration
    */
   graphDimensions?: DimensionsConfigProp;
+
+  /**
+   * Grid default configurations
+   */
+  gridConfigurations: GridConfigurationsProp[];
 
   /**
    * Padding configuration

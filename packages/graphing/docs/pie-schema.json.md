@@ -455,6 +455,218 @@ Indicates the maximum value for the graph width and height
 
 Indicates the increase/decrease value for the graph width and height
 
+## `GridConfigurationsProp` (object)
+
+Properties of the `GridConfigurationsProp` object:
+
+### `label` (string)
+
+Indicates the label for the configuration
+
+### `arrows` (object)
+
+Properties of the `arrows` object:
+
+#### `left` (boolean, required)
+
+Indicates if left arrow is enabled
+
+#### `right` (boolean, required)
+
+Indicates if right arrow is enabled
+
+#### `up` (boolean, required)
+
+Indicates if up arrow is enabled
+
+#### `down` (boolean, required)
+
+Indicates if down arrow is enabled
+
+### `domain` (object, required)
+
+Properties of the `domain` object:
+
+#### `min` (number, required)
+
+Min value
+
+#### `max` (number, required)
+
+Max value
+
+#### `padding` (number, required)
+
+Padding value
+
+#### `step` (number, required)
+
+Step value
+
+#### `labelStep` (number, required)
+
+Label step value
+
+#### `axisLabel` (string, required)
+
+Axis Label
+
+### `graph` (object, required)
+
+Properties of the `graph` object:
+
+#### `width` (number, required)
+
+Width for graph representation
+
+#### `height` (number, required)
+
+Height for graph representation
+
+### `includeAxes` (boolean)
+
+Indicates if the graph axes and labels are enabled
+
+### `labels` (object)
+
+Properties of the `labels` object:
+
+#### `top` (string, required)
+
+Label for top side of the graph
+
+#### `bottom` (string, required)
+
+Label for bottom side of the graph
+
+#### `left` (string, required)
+
+Label for left side of the graph
+
+#### `right` (string, required)
+
+Label for right side of the graph
+
+### `padding` (boolean)
+
+Indicates if padding is enabled
+
+### `range` (object, required)
+
+Properties of the `range` object:
+
+#### `min` (number, required)
+
+Min value
+
+#### `max` (number, required)
+
+Max value
+
+#### `padding` (number, required)
+
+Padding value
+
+#### `step` (number, required)
+
+Step value
+
+#### `labelStep` (number, required)
+
+Label step value
+
+#### `axisLabel` (string, required)
+
+Axis Label
+
+### `standardGrid` (boolean)
+
+Indicates if some domain values will be synched to the range values
+
+### `title` (string)
+
+Indicates graph title
+
+## `Arrows` (object)
+
+Properties of the `Arrows` object:
+
+### `left` (boolean, required)
+
+Indicates if left arrow is enabled
+
+### `right` (boolean, required)
+
+Indicates if right arrow is enabled
+
+### `up` (boolean, required)
+
+Indicates if up arrow is enabled
+
+### `down` (boolean, required)
+
+Indicates if down arrow is enabled
+
+## `GraphSettings` (object)
+
+Properties of the `GraphSettings` object:
+
+### `min` (number, required)
+
+Min value
+
+### `max` (number, required)
+
+Max value
+
+### `padding` (number, required)
+
+Padding value
+
+### `step` (number, required)
+
+Step value
+
+### `labelStep` (number, required)
+
+Label step value
+
+### `axisLabel` (string, required)
+
+Axis Label
+
+## `Graph` (object)
+
+Properties of the `Graph` object:
+
+### `width` (number, required)
+
+Width for graph representation
+
+### `height` (number, required)
+
+Height for graph representation
+
+## `Labels` (object)
+
+Properties of the `Labels` object:
+
+### `top` (string, required)
+
+Label for top side of the graph
+
+### `bottom` (string, required)
+
+Label for bottom side of the graph
+
+### `left` (string, required)
+
+Label for left side of the graph
+
+### `right` (string, required)
+
+Label for right side of the graph
+
 ## `LabelsConfigProp` (object)
 
 Properties of the `LabelsConfigProp` object:
@@ -676,83 +888,3 @@ Indicates x coordinate
 ### `y` (number, required)
 
 Indicates y coordinate
-
-## `Arrows` (object)
-
-Properties of the `Arrows` object:
-
-### `left` (boolean, required)
-
-Indicates if left arrow is enabled
-
-### `right` (boolean, required)
-
-Indicates if right arrow is enabled
-
-### `up` (boolean, required)
-
-Indicates if up arrow is enabled
-
-### `down` (boolean, required)
-
-Indicates if down arrow is enabled
-
-## `GraphSettings` (object)
-
-Properties of the `GraphSettings` object:
-
-### `min` (number, required)
-
-Min value
-
-### `max` (number, required)
-
-Max value
-
-### `padding` (number, required)
-
-Padding value
-
-### `step` (number, required)
-
-Step value
-
-### `labelStep` (number, required)
-
-Label step value
-
-### `axisLabel` (string, required)
-
-Axis Label
-
-## `Graph` (object)
-
-Properties of the `Graph` object:
-
-### `width` (number, required)
-
-Width for graph representation
-
-### `height` (number, required)
-
-Height for graph representation
-
-## `Labels` (object)
-
-Properties of the `Labels` object:
-
-### `top` (string, required)
-
-Label for top side of the graph
-
-### `bottom` (string, required)
-
-Label for bottom side of the graph
-
-### `left` (string, required)
-
-Label for left side of the graph
-
-### `right` (string, required)
-
-Label for right side of the graph
