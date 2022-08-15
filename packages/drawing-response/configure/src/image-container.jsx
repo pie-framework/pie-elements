@@ -84,13 +84,13 @@ export class ImageContainer extends Component {
   handleDisableDrag = () => this.setState({ dragEnabled: false });
   handleInputClick = () => this.input.click();
 
-  handleOnImageLoad = ({ target: { offsetHeight, offsetWidth } }) => {
+  handleOnImageLoad = ({ target: { offsetHeight, offsetWidth, naturalHeight, naturalWidth } }) => {
     const { onUpdateImageDimension, imageDimensions } = this.props;
     const resizeHandle = this.resize;
 
     const dimensions = {
-      height: (imageDimensions && imageDimensions.height) || offsetHeight,
-      width: (imageDimensions && imageDimensions.width) || offsetWidth,
+      height: (imageDimensions && imageDimensions.height) || offsetHeight || naturalHeight,
+      width: (imageDimensions && imageDimensions.width) || offsetWidth || naturalWidth,
     };
 
     this.setState({ dimensions });
