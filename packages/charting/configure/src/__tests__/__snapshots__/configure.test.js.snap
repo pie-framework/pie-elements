@@ -49,6 +49,9 @@ exports[`ChartingConfig renders snapshot 1`] = `
         />
         Student can add categories
       </div>
+      <Component
+        open={false}
+      />
     </div>
   </div>
 </div>
