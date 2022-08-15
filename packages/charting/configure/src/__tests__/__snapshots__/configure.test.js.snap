@@ -60,6 +60,21 @@ exports[`Configure renders snapshot 1`] = `
     <Panel
       configuration={
         Object {
+          "chartDimensions": Object {
+            "height": Object {
+              "max": 700,
+              "min": 400,
+              "step": 20,
+            },
+            "label": "Chart Dimensions",
+            "settings": false,
+            "showInConfigPanel": true,
+            "width": Object {
+              "max": 700,
+              "min": 50,
+              "step": 20,
+            },
+          },
           "maxImageHeight": Object {
             "prompt": 300,
             "rationale": 300,
@@ -103,10 +118,6 @@ exports[`Configure renders snapshot 1`] = `
       }
       groups={
         Object {
-          "Item Type": Object {
-            "graph": undefined,
-            "title.enabled": false,
-          },
           "Properties": Object {
             "promptEnabled": undefined,
             "rationaleEnabled": undefined,
@@ -192,6 +203,23 @@ exports[`Configure renders snapshot 1`] = `
       />
     </InputContainer>
     <Component
+      chartDimensions={
+        Object {
+          "height": Object {
+            "max": 700,
+            "min": 400,
+            "step": 20,
+          },
+          "label": "Chart Dimensions",
+          "settings": false,
+          "showInConfigPanel": true,
+          "width": Object {
+            "max": 700,
+            "min": 50,
+            "step": 20,
+          },
+        }
+      }
       charts={
         Array [
           Object {
