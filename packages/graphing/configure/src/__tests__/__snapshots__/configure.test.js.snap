@@ -63,9 +63,13 @@ exports[`Configure renders snapshot 1`] = `
             "step": 20,
           },
           "labels": Object {
+            "bottom": "Click here to add a bottom label",
             "enabled": true,
             "label": "Graph Labels",
+            "left": "Click here to add a left label",
+            "right": "Click here to add a right label",
             "settings": true,
+            "top": "Click here to add a top label",
           },
           "maxImageHeight": Object {
             "prompt": 300,
@@ -109,6 +113,7 @@ exports[`Configure renders snapshot 1`] = `
           "title": Object {
             "enabled": true,
             "label": "Graph Title",
+            "placeholder": "Click here to add a title for this graph",
             "settings": true,
           },
         }
@@ -264,6 +269,14 @@ exports[`Configure renders snapshot 1`] = `
           "step": 20,
         }
       }
+      labelsPlaceholders={
+        Object {
+          "bottom": "Click here to add a bottom label",
+          "left": "Click here to add a left label",
+          "right": "Click here to add a right label",
+          "top": "Click here to add a top label",
+        }
+      }
       model={
         Object {
           "answers": Object {},
@@ -311,6 +324,7 @@ exports[`Configure renders snapshot 1`] = `
       }
       showLabels={true}
       showTitle={true}
+      titlePlaceholder="Click here to add a title for this graph"
     />
     <WithStyles(CorrectResponse)
       availableTools={Array []}

@@ -105,7 +105,11 @@ export default {
     labels: {
       settings: true,
       label: 'Graph Labels',
-      enabled: true
+      enabled: true,
+      top: 'Click here to add a top label',
+      right: 'Click here to add a right label',
+      bottom: 'Click here to add a bottom label',
+      left: 'Click here to add a left label'
     },
     prompt: {
       settings: true,
@@ -130,7 +134,8 @@ export default {
     title: {
       settings: true,
       label: 'Graph Title',
-      enabled: true
+      enabled: true,
+      placeholder: 'Click here to add a title for this graph'
     },
     availableTools: allTools,
     spellCheck: {
