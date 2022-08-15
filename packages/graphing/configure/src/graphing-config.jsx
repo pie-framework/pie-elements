@@ -62,7 +62,7 @@ export class GraphingConfig extends React.Component {
       range: getLabelValues(range.step)
     };
 
-    this.state = { gridValues, labelValues, selectedGrid: 0 };
+    this.state = { gridValues, labelValues, selectedGrid: 0, showPixelGuides: false };
   };
 
   changeBackgroundMarks = backgroundMarks => {
@@ -116,6 +116,14 @@ export class GraphingConfig extends React.Component {
     onChange(updatedModel);
   };
 
+  onChangeView = (event, expanded) => {
+    const { graphDimensions: { enabled } = {}} = this.props;
+
+    if (enabled) {
+      this.setState({ showPixelGuides: expanded });
+    }
+  };
+
   changeGridConfiguration = (event) => {
     const { gridConfigurations, model, onChange } = this.props;
     const { value } = event.target;
@@ -132,9 +140,11 @@ export class GraphingConfig extends React.Component {
       classes,
       gridConfigurations = [],
       graphDimensions = {},
+      labelsPlaceholders,
       model,
       showLabels,
-      showTitle
+      showTitle,
+      titlePlaceholder
     } = this.props;
     const {
       arrows,
@@ -149,7 +159,7 @@ export class GraphingConfig extends React.Component {
     } = model || {};
     const graph = (model || {}).graph || {};
     const { enabled: dimensionsEnabled, min, max, step } = graphDimensions || {};
-    const { gridValues, labelValues, selectedGrid } = this.state;
+    const { gridValues, labelValues, selectedGrid, showPixelGuides } = this.state;
 
     const sizeConstraints = {
       min: Math.max(150, min),
@@ -205,6 +215,7 @@ export class GraphingConfig extends React.Component {
               sizeConstraints={sizeConstraints}
               standardGrid={standardGrid}
               onChange={this.onConfigChange}
+              onChangeView={this.onChangeView}
             />
           )}
         </div>
@@ -227,15 +238,18 @@ export class GraphingConfig extends React.Component {
             domain={domain}
             key="graphing-config"
             labels={labels}
+            labelsPlaceholders={labelsPlaceholders}
             marks={backgroundMarks}
             onChangeLabels={this.changeLabels}
             onChangeMarks={this.changeBackgroundMarks}
             onChangeTitle={this.changeTitle}
             range={range}
             showLabels={showLabels}
+            showPixelGuides={showPixelGuides}
             showTitle={showTitle}
             size={{ width: graph.width, height: graph.height }}
             title={title}
+            titlePlaceholder={titlePlaceholder}
             toolbarTools={availableTools}
           />
         </div>

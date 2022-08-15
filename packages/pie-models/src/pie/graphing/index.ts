@@ -371,6 +371,35 @@ interface GridConfigurationsProp {
   title?: string;
 }
 
+interface LabelsConfigProp extends ConfigurePropWithEnabled {
+  /**
+   * Indicates the placeholder for the top label
+   */
+  top?: string;
+
+  /**
+   * Indicates the placeholder for the right label
+   */
+  right?: string;
+
+  /**
+   * Indicates the placeholder for the bottom label
+   */
+  bottom?: string;
+
+  /**
+   * Indicates the placeholder for the left label
+   */
+  left?: string;
+}
+
+interface TitleConfigProp extends ConfigurePropWithEnabled {
+  /**
+   * Indicates the placeholder for the title label
+   */
+  placeholder?: string;
+}
+
 /**
  * Config Object for @pie-elements/graphing
  * @additionalProperties false
@@ -414,7 +443,7 @@ export interface GraphingConfigure extends PromptConfig, CommonConfigSettings {
   /**
    * Labels configuration
    */
-  labels?: ConfigureProp;
+  labels?: LabelsConfigProp;
 
   /**
    * Rationale configuration
@@ -449,7 +478,7 @@ export interface GraphingConfigure extends PromptConfig, CommonConfigSettings {
   /**
    * Graph title configuration
    */
-  title?: ConfigurePropWithEnabled;
+  title?: TitleConfigProp;
 
   /**
    * Maximum image width for input fields

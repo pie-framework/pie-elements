@@ -667,9 +667,46 @@ Label for left side of the graph
 
 Label for right side of the graph
 
-## `ConfigurePropWithEnabled` (object)
+## `LabelsConfigProp` (object)
 
-Properties of the `ConfigurePropWithEnabled` object:
+Properties of the `LabelsConfigProp` object:
+
+### `top` (string)
+
+Indicates the placeholder for the top label
+
+### `right` (string)
+
+Indicates the placeholder for the right label
+
+### `bottom` (string)
+
+Indicates the placeholder for the bottom label
+
+### `left` (string)
+
+Indicates the placeholder for the left label
+
+### `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+### `label` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
+
+### `enabled` (boolean)
+
+Indicates the value of the item if it affects config-ui
+(eg.: if item is a switch and displaying an input on the config-ui depends on the switch value: on/off)
+
+## `TitleConfigProp` (object)
+
+Properties of the `TitleConfigProp` object:
+
+### `placeholder` (string)
+
+Indicates the placeholder for the title label
 
 ### `settings` (boolean)
 
