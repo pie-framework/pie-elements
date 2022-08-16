@@ -61,6 +61,7 @@ exports[`GraphingConfig renders snapshot 1`] = `
           "step": 1,
         }
       }
+      showPixelGuides={false}
       size={
         Object {
           "height": 500,

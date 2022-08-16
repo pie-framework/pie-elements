@@ -123,7 +123,8 @@ export class Configure extends React.Component {
       spellCheck = {},
       maxImageWidth = {},
       maxImageHeight = {},
-      placeholderMessages = {}
+      placeholderMessages = {},
+      chartDimensions = {},
     } = configuration || {};
     const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled, spellCheckEnabled } =
       model || {};
@@ -141,23 +142,6 @@ export class Configure extends React.Component {
             onChangeModel={onModelChanged}
             onChangeConfiguration={onConfigurationChanged}
             groups={{
-              'Item Type': {
-                'title.enabled': title.settings && toggle(title.label, true),
-                graph: numberFields('Graph Display Size', {
-                  width: {
-                    label: 'Width',
-                    suffix: 'px',
-                    min: 400,
-                    max: 700,
-                  },
-                  height: {
-                    label: 'Height',
-                    suffix: 'px',
-                    min: 400,
-                    max: 700,
-                  },
-                }),
-              },
               Properties: {
                 teacherInstructionsEnabled:
                   teacherInstructions.settings &&
@@ -246,6 +230,7 @@ export class Configure extends React.Component {
             onChange={this.onConfigChange}
             gridValues={gridValues}
             labelValues={labelValues}
+            chartDimensions={chartDimensions}
             charts={charts}
           />
 

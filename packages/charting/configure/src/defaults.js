@@ -46,6 +46,21 @@ export default {
       settings:false,
       enabled:true
     },
+    chartDimensions: {
+      settings: false,
+      label: 'Chart Dimensions',
+      showInConfigPanel: true,
+      width: {
+        min: 50,
+        max: 700,
+        step: 20
+      },
+      height: {
+        min: 400,
+        max: 700,
+        step: 20
+      },
+    },
     prompt: {
       settings: true,
       label: 'Item Stem'
