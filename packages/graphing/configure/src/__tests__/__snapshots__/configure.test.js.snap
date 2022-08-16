@@ -62,10 +62,211 @@ exports[`Configure renders snapshot 1`] = `
             "settings": false,
             "step": 20,
           },
+          "gridConfigurations": Array [
+            Object {
+              "arrows": Object {
+                "down": true,
+                "left": true,
+                "right": true,
+                "up": true,
+              },
+              "domain": Object {
+                "axisLabel": "<i>x</i>",
+                "labelStep": 1,
+                "max": 10,
+                "min": -10,
+                "padding": 0,
+                "step": 1,
+              },
+              "graph": Object {
+                "height": 480,
+                "width": 480,
+              },
+              "includeAxes": true,
+              "label": "4-quadrant coordinate grid, -10 to 10",
+              "labels": Object {
+                "bottom": "",
+                "left": "",
+                "right": "",
+                "top": "",
+              },
+              "padding": true,
+              "range": Object {
+                "axisLabel": "<i>y</i>",
+                "labelStep": 1,
+                "max": 10,
+                "min": -10,
+                "padding": 0,
+                "step": 1,
+              },
+              "standardGrid": true,
+              "title": "",
+            },
+            Object {
+              "arrows": Object {
+                "down": false,
+                "left": false,
+                "right": true,
+                "up": true,
+              },
+              "domain": Object {
+                "axisLabel": "<i>x</i>",
+                "labelStep": 1,
+                "max": 10,
+                "min": 0,
+                "padding": 0,
+                "step": 1,
+              },
+              "graph": Object {
+                "height": 480,
+                "width": 480,
+              },
+              "includeAxes": true,
+              "label": "0 to 10 on both axes",
+              "labels": Object {
+                "bottom": "",
+                "left": "",
+                "right": "",
+                "top": "",
+              },
+              "padding": true,
+              "range": Object {
+                "axisLabel": "<i>y</i>",
+                "labelStep": 1,
+                "max": 10,
+                "min": 0,
+                "padding": 0,
+                "step": 1,
+              },
+              "standardGrid": true,
+              "title": "",
+            },
+            Object {
+              "arrows": Object {
+                "down": false,
+                "left": false,
+                "right": true,
+                "up": true,
+              },
+              "domain": Object {
+                "axisLabel": "<i>x</i>",
+                "labelStep": 1,
+                "max": 20,
+                "min": 0,
+                "padding": 0,
+                "step": 1,
+              },
+              "graph": Object {
+                "height": 480,
+                "width": 480,
+              },
+              "includeAxes": true,
+              "label": "0 to 20 on both axes",
+              "labels": Object {
+                "bottom": "",
+                "left": "",
+                "right": "",
+                "top": "",
+              },
+              "padding": true,
+              "range": Object {
+                "axisLabel": "<i>y</i>",
+                "labelStep": 1,
+                "max": 20,
+                "min": 0,
+                "padding": 0,
+                "step": 1,
+              },
+              "standardGrid": true,
+              "title": "",
+            },
+            Object {
+              "arrows": Object {
+                "down": false,
+                "left": false,
+                "right": true,
+                "up": true,
+              },
+              "domain": Object {
+                "axisLabel": "<i>t</i>",
+                "labelStep": 2,
+                "max": 30,
+                "min": 0,
+                "padding": 0,
+                "step": 1,
+              },
+              "graph": Object {
+                "height": 480,
+                "width": 480,
+              },
+              "includeAxes": true,
+              "label": "Sample Data Graph",
+              "labels": Object {
+                "bottom": "Time (seconds)",
+                "left": "Distance (meters)",
+                "right": "",
+                "top": "",
+              },
+              "padding": true,
+              "range": Object {
+                "axisLabel": "<i>d</i>",
+                "labelStep": 10,
+                "max": 80,
+                "min": 0,
+                "padding": 0,
+                "step": 5,
+              },
+              "standardGrid": false,
+              "title": "Distance as a function of time",
+            },
+            Object {
+              "arrows": Object {
+                "down": false,
+                "left": false,
+                "right": false,
+                "up": false,
+              },
+              "domain": Object {
+                "axisLabel": "",
+                "labelStep": 0,
+                "max": 21,
+                "min": 1,
+                "padding": 0,
+                "step": 1,
+              },
+              "graph": Object {
+                "height": 480,
+                "width": 480,
+              },
+              "includeAxes": false,
+              "label": "No Visible Axes",
+              "labels": Object {
+                "bottom": "",
+                "left": "",
+                "right": "",
+                "top": "",
+              },
+              "padding": true,
+              "range": Object {
+                "axisLabel": "",
+                "labelStep": 0,
+                "max": 21,
+                "min": 1,
+                "padding": 0,
+                "step": 1,
+              },
+              "standardGrid": false,
+              "title": "",
+            },
+          ],
           "labels": Object {
+            "bottom": "Click here to add a bottom label",
             "enabled": true,
             "label": "Graph Labels",
+            "left": "Click here to add a left label",
+            "right": "Click here to add a right label",
             "settings": true,
+            "top": "Click here to add a top label",
           },
           "maxImageHeight": Object {
             "prompt": 300,
@@ -109,6 +310,7 @@ exports[`Configure renders snapshot 1`] = `
           "title": Object {
             "enabled": true,
             "label": "Graph Title",
+            "placeholder": "Click here to add a title for this graph",
             "settings": true,
           },
         }
@@ -264,6 +466,213 @@ exports[`Configure renders snapshot 1`] = `
           "step": 20,
         }
       }
+      gridConfigurations={
+        Array [
+          Object {
+            "arrows": Object {
+              "down": true,
+              "left": true,
+              "right": true,
+              "up": true,
+            },
+            "domain": Object {
+              "axisLabel": "<i>x</i>",
+              "labelStep": 1,
+              "max": 10,
+              "min": -10,
+              "padding": 0,
+              "step": 1,
+            },
+            "graph": Object {
+              "height": 480,
+              "width": 480,
+            },
+            "includeAxes": true,
+            "label": "4-quadrant coordinate grid, -10 to 10",
+            "labels": Object {
+              "bottom": "",
+              "left": "",
+              "right": "",
+              "top": "",
+            },
+            "padding": true,
+            "range": Object {
+              "axisLabel": "<i>y</i>",
+              "labelStep": 1,
+              "max": 10,
+              "min": -10,
+              "padding": 0,
+              "step": 1,
+            },
+            "standardGrid": true,
+            "title": "",
+          },
+          Object {
+            "arrows": Object {
+              "down": false,
+              "left": false,
+              "right": true,
+              "up": true,
+            },
+            "domain": Object {
+              "axisLabel": "<i>x</i>",
+              "labelStep": 1,
+              "max": 10,
+              "min": 0,
+              "padding": 0,
+              "step": 1,
+            },
+            "graph": Object {
+              "height": 480,
+              "width": 480,
+            },
+            "includeAxes": true,
+            "label": "0 to 10 on both axes",
+            "labels": Object {
+              "bottom": "",
+              "left": "",
+              "right": "",
+              "top": "",
+            },
+            "padding": true,
+            "range": Object {
+              "axisLabel": "<i>y</i>",
+              "labelStep": 1,
+              "max": 10,
+              "min": 0,
+              "padding": 0,
+              "step": 1,
+            },
+            "standardGrid": true,
+            "title": "",
+          },
+          Object {
+            "arrows": Object {
+              "down": false,
+              "left": false,
+              "right": true,
+              "up": true,
+            },
+            "domain": Object {
+              "axisLabel": "<i>x</i>",
+              "labelStep": 1,
+              "max": 20,
+              "min": 0,
+              "padding": 0,
+              "step": 1,
+            },
+            "graph": Object {
+              "height": 480,
+              "width": 480,
+            },
+            "includeAxes": true,
+            "label": "0 to 20 on both axes",
+            "labels": Object {
+              "bottom": "",
+              "left": "",
+              "right": "",
+              "top": "",
+            },
+            "padding": true,
+            "range": Object {
+              "axisLabel": "<i>y</i>",
+              "labelStep": 1,
+              "max": 20,
+              "min": 0,
+              "padding": 0,
+              "step": 1,
+            },
+            "standardGrid": true,
+            "title": "",
+          },
+          Object {
+            "arrows": Object {
+              "down": false,
+              "left": false,
+              "right": true,
+              "up": true,
+            },
+            "domain": Object {
+              "axisLabel": "<i>t</i>",
+              "labelStep": 2,
+              "max": 30,
+              "min": 0,
+              "padding": 0,
+              "step": 1,
+            },
+            "graph": Object {
+              "height": 480,
+              "width": 480,
+            },
+            "includeAxes": true,
+            "label": "Sample Data Graph",
+            "labels": Object {
+              "bottom": "Time (seconds)",
+              "left": "Distance (meters)",
+              "right": "",
+              "top": "",
+            },
+            "padding": true,
+            "range": Object {
+              "axisLabel": "<i>d</i>",
+              "labelStep": 10,
+              "max": 80,
+              "min": 0,
+              "padding": 0,
+              "step": 5,
+            },
+            "standardGrid": false,
+            "title": "Distance as a function of time",
+          },
+          Object {
+            "arrows": Object {
+              "down": false,
+              "left": false,
+              "right": false,
+              "up": false,
+            },
+            "domain": Object {
+              "axisLabel": "",
+              "labelStep": 0,
+              "max": 21,
+              "min": 1,
+              "padding": 0,
+              "step": 1,
+            },
+            "graph": Object {
+              "height": 480,
+              "width": 480,
+            },
+            "includeAxes": false,
+            "label": "No Visible Axes",
+            "labels": Object {
+              "bottom": "",
+              "left": "",
+              "right": "",
+              "top": "",
+            },
+            "padding": true,
+            "range": Object {
+              "axisLabel": "",
+              "labelStep": 0,
+              "max": 21,
+              "min": 1,
+              "padding": 0,
+              "step": 1,
+            },
+            "standardGrid": false,
+            "title": "",
+          },
+        ]
+      }
+      labelsPlaceholders={
+        Object {
+          "bottom": "Click here to add a bottom label",
+          "left": "Click here to add a left label",
+          "right": "Click here to add a right label",
+          "top": "Click here to add a top label",
+        }
+      }
       model={
         Object {
           "answers": Object {},
@@ -311,6 +720,7 @@ exports[`Configure renders snapshot 1`] = `
       }
       showLabels={true}
       showTitle={true}
+      titlePlaceholder="Click here to add a title for this graph"
     />
     <WithStyles(CorrectResponse)
       availableTools={Array []}
