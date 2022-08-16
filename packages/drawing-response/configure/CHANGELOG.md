@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.1.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response-configure@4.1.5...@pie-element/drawing-response-configure@4.1.6) (2022-08-16)
+
+
+### Bug Fixes
+
+* tests ([ae31244](https://github.com/pie-framework/pie-elements/commit/ae312449fcf05ec6787163259b3c75e15d42b261))
+* **drawing-respone:** make sure image dimensions are not reset in IBX in authoring and preview PD-1932 ([47fc982](https://github.com/pie-framework/pie-elements/commit/47fc982d21f992fecf61af96bc15744055787f78))
+* **drawing-response:** fix image aspect ratio PD-1934 ([0a094b8](https://github.com/pie-framework/pie-elements/commit/0a094b874abc81a6f642bf0bdece83ee2ce815a4))
+* **drawing-response:** fix svg not loading PD-1933 ([f65540e](https://github.com/pie-framework/pie-elements/commit/f65540e1627184d47f29ec3aeea0ad439ca07844))
+
+
+
+
+
 ## [4.1.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response-configure@4.1.4...@pie-element/drawing-response-configure@4.1.5) (2022-08-08)
 
 **Note:** Version bump only for package @pie-element/drawing-response-configure

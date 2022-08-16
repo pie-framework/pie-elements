@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@4.2.1...@pie-element/graphing@4.3.0) (2022-08-16)
+
+
+### Features
+
+* **graphing:** added pixel grid lines support PD-1719 ([d189bbf](https://github.com/pie-framework/pie-elements/commit/d189bbfa7e36fcc2f9a2aeb9dc6b8bb791e378f3))
+* **graphing:** added support for default grid configurations PD-1678 ([4132ebf](https://github.com/pie-framework/pie-elements/commit/4132ebfa1d70da4bdbd35e1cd2ca204483bfa429))
+
+
+
+
+
 ## [4.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@4.2.0...@pie-element/graphing@4.2.1) (2022-08-08)
 
 **Note:** Version bump only for package @pie-element/graphing
