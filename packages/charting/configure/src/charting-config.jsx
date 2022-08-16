@@ -2,6 +2,7 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { Chart } from '@pie-lib/charting';
+import { AlertDialog } from '@pie-lib/config-ui';
 import Checkbox from '@material-ui/core/Checkbox';
 
 import Typography from '@material-ui/core/Typography';
@@ -26,12 +27,45 @@ export class ChartingConfig extends React.Component {
     charts: PropTypes.array
   };
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      dialog: {
+        open: false
+      },
+      correctAnswer: props.model.correctAnswer
+    };
+  }
+
+  handleAlertDialog = (open, callback) =>
+    this.setState({
+      dialog: { open }
+    }, callback);
+
   changeData = data => this.props.onChange({ ...this.props.model, data });
 
-  changeAddRemoveEnabled = value => this.props.onChange({ ...this.props.model, addCategoryEnabled: value });
+  changeAddRemoveEnabled = value => {
+    const { correctAnswer } = this.state;
+
+    if (!value) {
+      this.setState({
+        dialog: {
+          open: true,
+          title: 'Warning',
+          text: `This change will remove any correct answer categories that are not part of the initial item configuration.`,
+          onConfirm: () => this.handleAlertDialog(
+            false, this.props.onChange({ ...this.props.model, addCategoryEnabled: value, correctAnswer: correctAnswer })),
+          onClose: () => this.handleAlertDialog(false)
+        }
+      });
+    } else {
+      this.props.onChange({ ...this.props.model, addCategoryEnabled: value });
+    }
+  }
 
   render() {
     const { classes, model, charts } = this.props;
+    const { dialog } = this.state;
 
     return (
       <div>
@@ -57,7 +91,7 @@ export class ChartingConfig extends React.Component {
               addCategoryEnabled={true}
               categoryDefaultLabel={model.categoryDefaultLabel}
             />
-             <div>
+            <div>
               <Checkbox
                 checked={model.addCategoryEnabled}
                 onChange={(e) => {
@@ -66,6 +100,14 @@ export class ChartingConfig extends React.Component {
               />
               Student can add categories
             </div>
+
+            <AlertDialog
+              open={dialog.open}
+              title={dialog.title}
+              text={dialog.text}
+              onClose={dialog.onClose}
+              onConfirm={dialog.onConfirm}
+            />
           </div>
 
         </div>

@@ -138,7 +138,7 @@ describe('ImageContainer', () => {
     });
 
     it('handleOnImageLoad calls onUpdateImageDimension', () => {
-      w.instance().handleOnImageLoad({ target: { offsetHeight: 50, offsetWidth: 50 }});
+      w.instance().handleOnImageLoad({ target: { offsetHeight: 50, offsetWidth: 50, naturalWidth: 50, naturalHeight: 50 }});
 
       expect(onUpdateImageDimension).toHaveBeenCalledWith({
         height: 50,
@@ -147,7 +147,7 @@ describe('ImageContainer', () => {
     });
 
     it('stopResizing calls onUpdateImageDimension', () => {
-      w.instance().handleOnImageLoad({ target: { offsetHeight: 50, offsetWidth: 50 }});
+      w.instance().handleOnImageLoad({ target: { offsetHeight: 50, offsetWidth: 50, naturalWidth: 50, naturalHeight: 50 }});
 
       expect(onUpdateImageDimension).toHaveBeenCalledWith(w.instance().state.dimensions);
     });
