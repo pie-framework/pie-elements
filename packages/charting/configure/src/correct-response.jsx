@@ -133,9 +133,9 @@ export class CorrectResponse extends React.Component {
     const { categories } = this.state;
     let nextCategories = [];
 
-    if (nextData.length > data.length && nextCorrectAnswerData.length > data.length) {
+    if ((nextData.length > data.length ) || (nextData.length > data.length && nextCorrectAnswerData.length > data.length)) {
       nextCategories = insertCategory(nextCorrectAnswerData, nextData);
-    }
+    } 
 
     if (nextData.length < data.length) {
       let removedIndex = nextData.length;
@@ -183,7 +183,7 @@ export class CorrectResponse extends React.Component {
       });
     }
 
-    if (!isEqual(nextCategories, data) || (isEmpty(nextCategories) && isEmpty(data))) {
+    if (!isEqual(nextCategories, data) || !isEqual(nextCategories, categories) || (isEmpty(nextCategories) && isEmpty(data))) {
       this.setState({ categories: nextCategories });
     }
   }
@@ -191,6 +191,7 @@ export class CorrectResponse extends React.Component {
   render() {
     const { classes, model, charts } = this.props;
     const { categories } = this.state;
+    console.log(model.correctAnswer.data, "model correct answer data")
 
     return (
       <div>

@@ -19,6 +19,36 @@ const styles = theme => ({
   }
 });
 
+const restoreCorrectAnswer = (correctAnswer, data) => {
+  if (!correctAnswer) {
+    return data;
+  }
+
+  let correctResponseDefinition = [];
+
+  data.forEach((category, currentIndex) => {
+    const editable = category.editable;
+    const interactive = category.interactive;
+
+    const label = (editable && correctAnswer[currentIndex]?.label)
+      ? correctAnswer[currentIndex].label
+      : category.label
+
+    const value = (interactive && correctAnswer[currentIndex]?.value)
+      ? correctAnswer[currentIndex].value
+      : category.value
+
+    correctResponseDefinition[currentIndex] = {
+      label: label,
+      value: value,
+      editable: category.editable,
+      interactive: category.interactive,
+    };
+  });
+
+  return correctResponseDefinition;
+};
+
 export class ChartingConfig extends React.Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
@@ -33,9 +63,12 @@ export class ChartingConfig extends React.Component {
       dialog: {
         open: false
       },
-      correctAnswer: props.model.correctAnswer
+     correctAnswer: restoreCorrectAnswer( props.model.correctAnswer.data,
+      props.model.data)
     };
   }
+
+
 
   handleAlertDialog = (open, callback) =>
     this.setState({
@@ -54,7 +87,7 @@ export class ChartingConfig extends React.Component {
           title: 'Warning',
           text: `This change will remove any correct answer categories that are not part of the initial item configuration.`,
           onConfirm: () => this.handleAlertDialog(
-            false, this.props.onChange({ ...this.props.model, addCategoryEnabled: value, correctAnswer: correctAnswer })),
+            false, this.props.onChange({ ...this.props.model, addCategoryEnabled: value, correctAnswer: {data: correctAnswer} })),
           onClose: () => this.handleAlertDialog(false)
         }
       });
