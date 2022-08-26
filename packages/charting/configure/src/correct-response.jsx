@@ -191,7 +191,6 @@ export class CorrectResponse extends React.Component {
   render() {
     const { classes, model, charts } = this.props;
     const { categories } = this.state;
-    console.log(model.correctAnswer.data, "model correct answer data")
 
     return (
       <div>

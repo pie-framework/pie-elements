@@ -68,8 +68,6 @@ export class ChartingConfig extends React.Component {
     };
   }
 
-
-
   handleAlertDialog = (open, callback) =>
     this.setState({
       dialog: { open }
@@ -78,7 +76,9 @@ export class ChartingConfig extends React.Component {
   changeData = data => this.props.onChange({ ...this.props.model, data });
 
   changeAddRemoveEnabled = value => {
-    const { correctAnswer } = this.state;
+    const correctAnswer  = restoreCorrectAnswer( this.props.model.correctAnswer.data,
+      this.props.model.data)
+    
 
     if (!value) {
       this.setState({
