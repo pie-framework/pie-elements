@@ -62,10 +62,8 @@ export class ChartingConfig extends React.Component {
     this.state = {
       dialog: {
         open: false
-      },
-     correctAnswer: restoreCorrectAnswer( props.model.correctAnswer.data,
-      props.model.data)
-    };
+      }
+    }
   }
 
   handleAlertDialog = (open, callback) =>
