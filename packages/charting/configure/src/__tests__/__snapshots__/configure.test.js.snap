@@ -362,6 +362,7 @@ exports[`Configure renders snapshot 1`] = `
           "title": "This is a chart!",
         }
       }
+      showPixelGuides={true}
     />
     <WithStyles(CorrectResponse)
       charts={
