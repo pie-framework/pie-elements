@@ -95,7 +95,7 @@ export class ChartingConfig extends React.Component {
   }
 
   render() {
-    const { classes, model, charts } = this.props;
+    const { classes, model, charts, showPixelGuides } = this.props;
     const { dialog } = this.state;
 
     return (
@@ -110,6 +110,7 @@ export class ChartingConfig extends React.Component {
 
             <Chart
               defineChart={true}
+              showPixelGuides={showPixelGuides}
               chartType={model.chartType}
               size={model.graph}
               domain={model.domain}

@@ -13,7 +13,7 @@ import { applyConstraints, getGridValues, getLabelValues } from './utils';
 
 
 const log = debug('@pie-element:graphing:configure');
-const { Panel, toggle, radio, numberFields } = settings;
+const { Panel, toggle, radio } = settings;
 
 const styles = (theme) => ({
   title: {
@@ -114,7 +114,6 @@ export class Configure extends React.Component {
     log('[render] model', model);
     const { graph } = model;
     const {
-      title = {},
       rationale = {},
       scoringType = {},
       studentInstructions = {},
@@ -128,6 +127,7 @@ export class Configure extends React.Component {
     const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled, spellCheckEnabled } =
       model || {};
     const { gridValues, labelValues } = this.state;
+    const showPixeGuides = chartDimensions.showInConfigPanel || true;
 
     const defaultImageMaxWidth = maxImageWidth && maxImageWidth.prompt;
     const defaultImageMaxHeight = maxImageHeight && maxImageHeight.prompt;
@@ -237,6 +237,7 @@ export class Configure extends React.Component {
             model={model}
             onChange={onModelChanged}
             charts={charts}
+            showPixelGuides={showPixeGuides}
           />
 
           <CorrectResponse
