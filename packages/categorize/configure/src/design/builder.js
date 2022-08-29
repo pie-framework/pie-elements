@@ -9,7 +9,9 @@ export const buildCategories = (categories, choices, correctResponse) => {
     if (cr) {
       category.choices = (cr.choices || []).map(choiceId => {
         const choice = choices.find(h => h.id === choiceId);
-        return Object.assign({}, { id: choice.id, content: choice.content });
+        if (choice) {
+          return Object.assign({}, { id: choice.id, content: choice.content });
+        }
       });
     }
 
