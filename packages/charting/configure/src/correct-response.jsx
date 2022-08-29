@@ -183,7 +183,6 @@ export class CorrectResponse extends React.Component {
       });
     }
 
-
     if (!isEqual(nextCategories, data) || !isEqual(nextCorrectAnswerData, categories)|| !isEqual(nextCategories, categories) || (isEmpty(nextCategories) && isEmpty(data))) {
       this.setState({ categories: nextCategories });
     }
