@@ -46,7 +46,7 @@ const updateCorrectResponseData = (correctAnswer, data) => {
       ? correctAnswer[currentIndex].label
       : category.label
 
-    const value = (interactive && correctAnswer[currentIndex]?.value)
+    const value = ((interactive && correctAnswer[currentIndex]?.value) || (interactive &&correctAnswer[currentIndex]?.value == 0))
       ? correctAnswer[currentIndex].value
       : category.value
 
@@ -183,7 +183,7 @@ export class CorrectResponse extends React.Component {
       });
     }
 
-    if (!isEqual(nextCategories, data) || (isEmpty(nextCategories) && isEmpty(data))) {
+    if (!isEqual(nextCategories, data) || !isEqual(nextCorrectAnswerData, categories) || (isEmpty(nextCategories) && isEmpty(data))) {
       this.setState({ categories: nextCategories });
     }
   }
