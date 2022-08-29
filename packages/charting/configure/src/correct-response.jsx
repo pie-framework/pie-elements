@@ -23,11 +23,17 @@ const styles = (theme) => ({
     borderRadius: '4px',
   },
   column: {
-    flex: 1
-  }
+    flex: 1,
+  },
 });
 
-const addCategoryProps = (correctAnswer, data) => correctAnswer.map((correct, index) => ({ ...correct, editable: index < data.length ? data[index].editable : true, interactive: index < data.length ? data[index].interactive : true, deletable: index >= data.length ? true : false }));
+const addCategoryProps = (correctAnswer, data) =>
+  correctAnswer.map((correct, index) => ({
+    ...correct,
+    editable: index < data.length ? data[index].editable : true,
+    interactive: index < data.length ? data[index].interactive : true,
+    deletable: index >= data.length ? true : false,
+  }));
 
 const updateCorrectResponseData = (correctAnswer, data) => {
   if (!correctAnswer) {
@@ -42,13 +48,16 @@ const updateCorrectResponseData = (correctAnswer, data) => {
     const editable = category.editable;
     const interactive = category.interactive;
 
-    const label = (editable && correctAnswer[currentIndex]?.label)
-      ? correctAnswer[currentIndex].label
-      : category.label
+    const label =
+      editable && correctAnswer[currentIndex]?.label
+        ? correctAnswer[currentIndex].label
+        : category.label;
 
-    const value = ((interactive && correctAnswer[currentIndex]?.value) || (interactive &&correctAnswer[currentIndex]?.value == 0))
-      ? correctAnswer[currentIndex].value
-      : category.value
+    const value =
+      (interactive && correctAnswer[currentIndex]?.value) ||
+      (interactive && correctAnswer[currentIndex]?.value == 0)
+        ? correctAnswer[currentIndex].value
+        : category.value;
 
     correctResponseDefinition[currentIndex] = {
       label: label,
@@ -59,9 +68,15 @@ const updateCorrectResponseData = (correctAnswer, data) => {
   });
 
   if (correctResponseDefinition.length < correctAnswer.length) {
-    const missingCategories = correctAnswerData.slice(correctResponseDefinition.length, correctAnswer.length)
+    const missingCategories = correctAnswerData.slice(
+      correctResponseDefinition.length,
+      correctAnswer.length
+    );
 
-    return addCategoryProps(correctResponseDefinition.concat(missingCategories), data);
+    return addCategoryProps(
+      correctResponseDefinition.concat(missingCategories),
+      data
+    );
   }
 
   return correctResponseDefinition;
@@ -69,13 +84,14 @@ const updateCorrectResponseData = (correctAnswer, data) => {
 
 const insertCategory = (correctAnswer, data) => {
   const positionToInsert = data.length - 1;
-  const { editable, interactive, deletable, ...categoryToInsert } = data[data.length - 1];
+  const { editable, interactive, deletable, ...categoryToInsert } =
+    data[data.length - 1];
 
   correctAnswer.splice(positionToInsert, 0, categoryToInsert);
   const correctAnswerData = [...correctAnswer];
 
   return addCategoryProps(correctAnswerData, data);
-}
+};
 
 const removeCategory = (correctAnswer, data, positionToRemove) => {
   correctAnswer.splice(positionToRemove, 1);
@@ -83,7 +99,7 @@ const removeCategory = (correctAnswer, data, positionToRemove) => {
   const correctAnswerData = [...correctAnswer];
 
   return addCategoryProps(correctAnswerData, data);
-}
+};
 
 export class CorrectResponse extends React.Component {
   static propTypes = {
@@ -99,7 +115,7 @@ export class CorrectResponse extends React.Component {
       categories: updateCorrectResponseData(
         props.model.correctAnswer.data,
         props.model.data
-      )
+      ),
     };
   }
 
@@ -111,7 +127,9 @@ export class CorrectResponse extends React.Component {
       ...model,
       correctAnswer: {
         ...correctAnswer,
-        data: data.map(({ interactive, editable, index, ...keepAttrs }) => keepAttrs),
+        data: data.map(
+          ({ interactive, editable, index, ...keepAttrs }) => keepAttrs
+        ),
       },
     });
   };
@@ -124,16 +142,12 @@ export class CorrectResponse extends React.Component {
       } = {},
     } = nextProps;
 
-    const {
-      model: {
-        data = [],
-      } = {},
-    } = this.props;
+    const { model: { data = [] } = {} } = this.props;
 
     const { categories } = this.state;
     let nextCategories = [];
 
-    if (nextData.length > data.length && nextCorrectAnswerData.length > data.length) {
+    if (nextData.length > data.length) {
       nextCategories = insertCategory(nextCorrectAnswerData, nextData);
     }
 
@@ -154,7 +168,11 @@ export class CorrectResponse extends React.Component {
     }
 
     if (!isEqual(nextCorrectAnswerData, this.props.model.correctAnswer.data)) {
-      nextCategories = nextCorrectAnswerData.map((correct, index) => ({ ...correct, editable: index < data.length ? data[index].editable : true, interactive: index < data.length ? data[index].interactive : true }));
+      nextCategories = nextCorrectAnswerData.map((correct, index) => ({
+        ...correct,
+        editable: index < data.length ? data[index].editable : true,
+        interactive: index < data.length ? data[index].interactive : true,
+      }));
     } else if (isEmpty(nextCategories)) {
       nextCategories = updateCorrectResponseData(
         nextCorrectAnswerData,
@@ -168,8 +186,12 @@ export class CorrectResponse extends React.Component {
         let deletable;
 
         if (dataExists) {
-          label = nextData[currentIndex].editable ? answer.label : nextData[currentIndex].label;
-          value = nextData[currentIndex].interactive ? answer.value : nextData[currentIndex].value;
+          label = nextData[currentIndex].editable
+            ? answer.label
+            : nextData[currentIndex].label;
+          value = nextData[currentIndex].interactive
+            ? answer.value
+            : nextData[currentIndex].value;
         } else {
           label = answer.label;
           value = answer.value;
@@ -183,7 +205,12 @@ export class CorrectResponse extends React.Component {
       });
     }
 
-    if (!isEqual(nextCategories, data) || !isEqual(nextCorrectAnswerData, categories) || (isEmpty(nextCategories) && isEmpty(data))) {
+    if (
+      !isEqual(nextCategories, data) ||
+      !isEqual(nextCorrectAnswerData, categories) ||
+      !isEqual(nextCategories, categories) ||
+      (isEmpty(nextCategories) && isEmpty(data))
+    ) {
       this.setState({ categories: nextCategories });
     }
   }
@@ -195,15 +222,13 @@ export class CorrectResponse extends React.Component {
     return (
       <div>
         Define Correct Response
-
-        <div className={classes.container} >
+        <div className={classes.container}>
           <div className={classes.column} key="graph">
             <Typography component="div" type="body1">
               <span>Use the tools below to define the correct answer.</span>
             </Typography>
 
             <div key={`correct-response-graph-${model.correctAnswer.name}`}>
-
               <Chart
                 chartType={model.chartType}
                 size={model.graph}
