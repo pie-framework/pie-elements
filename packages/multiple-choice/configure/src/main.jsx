@@ -135,7 +135,8 @@ const Design = withStyles(styles)((props) => {
     spellCheck = {},
     gridColumns,
     maxImageWidth = {},
-    maxImageHeight = {}
+    maxImageHeight = {},
+    pieApi
   } = configuration || {};
   let { maxAnswerChoices } = configuration || {};
   const {
@@ -197,6 +198,7 @@ const Design = withStyles(styles)((props) => {
             spellCheck={spellCheckEnabled}
             maxImageWidth={maxImageWidth && maxImageWidth.teacherInstructions || defaultImageMaxWidth}
             maxImageHeight={maxImageHeight && maxImageHeight.teacherInstructions || defaultImageMaxHeight}
+            pieApi={pieApi}
           />
         </InputContainer>
       )}
@@ -214,6 +216,7 @@ const Design = withStyles(styles)((props) => {
             spellCheck={spellCheckEnabled}
             maxImageWidth={maxImageWidth && maxImageWidth.prompt}
             maxImageHeight={maxImageHeight && maxImageHeight.prompt}
+            pieApi={pieApi}
           />
         </InputContainer>
       )}
@@ -278,6 +281,7 @@ const Design = withStyles(styles)((props) => {
                 spellCheck={spellCheckEnabled}
                 maxImageWidth={maxImageWidth && maxImageWidth.rationale || defaultImageMaxWidth}
                 maxImageHeight={maxImageHeight && maxImageHeight.rationale || defaultImageMaxHeight}
+                pieApi={pieApi}
               />
             </InputContainer>
           )}
@@ -301,6 +305,7 @@ const Design = withStyles(styles)((props) => {
                 spellCheck={spellCheckEnabled}
                 maxImageWidth={maxImageWidth && maxImageWidth.choices || defaultImageMaxWidth}
                 maxImageHeight={maxImageHeight && maxImageHeight.choices || defaultImageMaxHeight}
+                pieApi={pieApi}
               />
             </InputContainer>
           )}
