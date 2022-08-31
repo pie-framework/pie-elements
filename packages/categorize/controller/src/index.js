@@ -149,6 +149,11 @@ export const model = (question, session, env, updateSession) =>
 
     const lockChoiceOrder = lockChoices(normalizedQuestion, session, env);
 
+    const filteredCorrectResponse = correctResponse.map(response => {
+      const filteredChoices = (response.choices || []).filter(choice => choice !== 'null');
+      return { ...response, choices: filteredChoices};
+    });
+
     if (mode === 'evaluate' && feedbackEnabled) {
       fb = await getFeedbackForCorrectness(
         answerCorrectness,
@@ -160,7 +165,7 @@ export const model = (question, session, env, updateSession) =>
       choices = await getShuffledChoices(choices, session, updateSession, 'id');
     }
 
-    const alternates = getAlternates(correctResponse);
+    const alternates = getAlternates(filteredCorrectResponse);
     const out = {
       categories: categories || [],
       categoriesPerRow: categoriesPerRow || 2,
@@ -177,7 +182,7 @@ export const model = (question, session, env, updateSession) =>
       note,
       env,
       showNote: alternates && alternates.length > 0,
-      correctResponse: mode === 'evaluate' ? correctResponse : undefined,
+      correctResponse: mode === 'evaluate' ? filteredCorrectResponse : undefined,
     };
 
     if (role === 'instructor' && (mode === 'view' || mode === 'evaluate')) {
