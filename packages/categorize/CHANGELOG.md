@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.1.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@7.1.6...@pie-element/categorize@7.1.7) (2022-08-31)
+
+
+### Bug Fixes
+
+* **categorize:** filter choices to prevent crash of wrongly imported items PD-1982 ([05c5ead](https://github.com/pie-framework/pie-elements/commit/05c5eadd4275a6f29ec1cbde6ea699a8379b68d5))
+
+
+
+
+
 ## [7.1.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@7.1.5...@pie-element/categorize@7.1.6) (2022-08-16)
 
 **Note:** Version bump only for package @pie-element/categorize

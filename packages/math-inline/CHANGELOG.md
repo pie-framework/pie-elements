@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.1.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@6.1.6...@pie-element/math-inline@6.1.7) (2022-08-31)
+
+
+### Bug Fixes
+
+* **math-inline:** need to strip out the empty div tags when determining if the tooltip should be added to the dom PD-1844 ([9340d28](https://github.com/pie-framework/pie-elements/commit/9340d2875ac26a2fee7dc6f9aaa0685dea082689))
+
+
+
+
+
 ## [6.1.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@6.1.5...@pie-element/math-inline@6.1.6) (2022-08-16)
 
 **Note:** Version bump only for package @pie-element/math-inline
