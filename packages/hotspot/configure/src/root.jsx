@@ -83,7 +83,8 @@ export class Root extends React.Component {
       spellCheck = {},
       preserveAspectRatio = {},
       maxImageWidth = {},
-      maxImageHeight = {}
+      maxImageHeight = {},
+      pieApi
     } = configuration || {};
     const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled, spellCheckEnabled, errors } = model || {};
     const { shapesError, selectionsError } = errors || {};
@@ -144,6 +145,7 @@ export class Root extends React.Component {
                   spellCheck={spellCheckEnabled}
                   maxImageWidth={maxImageWidth && maxImageWidth.teacherInstructions || defaultImageMaxWidth}
                   maxImageHeight={maxImageHeight && maxImageHeight.teacherInstructions || defaultImageMaxHeight}
+                  pieApi={pieApi}
                 />
               </InputContainer>
             )}
@@ -158,6 +160,7 @@ export class Root extends React.Component {
                   spellCheck={spellCheckEnabled}
                   maxImageWidth={defaultImageMaxWidth}
                   maxImageHeight={defaultImageMaxHeight}
+                  pieApi={pieApi}
                 />
               </InputContainer>
             )}
@@ -175,6 +178,7 @@ export class Root extends React.Component {
                   spellCheck={spellCheckEnabled}
                   maxImageWidth={maxImageWidth && maxImageWidth.rationale || defaultImageMaxWidth}
                   maxImageHeight={maxImageHeight && maxImageHeight.rationale || defaultImageMaxHeight}
+                  pieApi={pieApi}
                 />
               </InputContainer>
             )}
