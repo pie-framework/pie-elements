@@ -123,6 +123,7 @@ export class Configure extends React.Component {
       maxImageWidth = {},
       maxImageHeight = {},
       chartDimensions = {},
+      pieApi
     } = configuration || {};
     const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled, spellCheckEnabled } =
       model || {};
@@ -184,6 +185,7 @@ export class Configure extends React.Component {
                 spellCheck={spellCheckEnabled}
                 maxImageWidth={maxImageWidth && maxImageWidth.teacherInstructions || defaultImageMaxWidth}
                 maxImageHeight={maxImageHeight && maxImageHeight.teacherInstructions || defaultImageMaxHeight}
+                pieApi={pieApi}
               />
             </InputContainer>
           )}
@@ -203,6 +205,7 @@ export class Configure extends React.Component {
                 disableUnderline
                 maxImageWidth={defaultImageMaxWidth}
                 maxImageHeight={defaultImageMaxHeight}
+                pieApi={pieApi}
               />
             </InputContainer>
           )}
@@ -220,6 +223,7 @@ export class Configure extends React.Component {
                 spellCheck={spellCheckEnabled}
                 maxImageWidth={maxImageWidth && maxImageWidth.rationale || defaultImageMaxWidth}
                 maxImageHeight={maxImageHeight && maxImageHeight.rationale || defaultImageMaxHeight}
+                pieApi={pieApi}
               />
             </InputContainer>
           )}
