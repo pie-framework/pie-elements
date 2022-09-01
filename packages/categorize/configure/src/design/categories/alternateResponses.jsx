@@ -41,7 +41,8 @@ export class AlternateResponses extends React.Component {
     className: PropTypes.string,
     categories: PropTypes.array,
     onModelChanged: PropTypes.func,
-    model: PropTypes.object.isRequired
+    model: PropTypes.object.isRequired,
+    pieApi: PropTypes.object
   };
 
   addChoiceToCategory = (choice, categoryId) => {
@@ -89,7 +90,8 @@ export class AlternateResponses extends React.Component {
       className,
       categories,
       imageSupport,
-      spellCheck
+      spellCheck,
+      pieApi
     } = this.props;
     const { categoriesPerRow } = model;
 
@@ -110,6 +112,7 @@ export class AlternateResponses extends React.Component {
               onDeleteChoice={(choice, choiceIndex) =>
                 this.deleteChoiceFromCategory(category, choice, choiceIndex)
               }
+              pieApi={pieApi}
             />
           ))}
         </div>

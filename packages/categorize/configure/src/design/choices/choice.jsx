@@ -38,7 +38,8 @@ export class Choice extends React.Component {
       delete: PropTypes.func.isRequired
     }),
     toolbarOpts: PropTypes.object,
-    error: PropTypes.string
+    error: PropTypes.string,
+    pieApi: PropTypes.object
   };
 
   static defaultProps = {};
@@ -72,7 +73,8 @@ export class Choice extends React.Component {
       toolbarOpts,
       error,
       maxImageWidth,
-      maxImageHeight
+      maxImageHeight,
+      pieApi
     } = this.props;
 
     const draggable = canDrag(this.props);
@@ -103,6 +105,7 @@ export class Choice extends React.Component {
               error={error}
               maxImageWidth={maxImageWidth}
               maxImageHeight={maxImageHeight}
+              pieApi={pieApi}
             />
             {error && <div className={classes.errorText}>{error}</div>}
           </span>

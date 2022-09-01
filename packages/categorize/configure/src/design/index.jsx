@@ -153,7 +153,8 @@ export class Design extends React.Component {
       prompt = {},
       spellCheck = {},
       maxImageWidth = {},
-      maxImageHeight = {}
+      maxImageHeight = {},
+      pieApi
     } = configuration || {};
     const {
       teacherInstructionsEnabled,
@@ -252,6 +253,7 @@ export class Design extends React.Component {
                   spellCheck={spellCheckEnabled}
                   maxImageWidth={maxImageWidth && maxImageWidth.prompt}
                   maxImageHeight={maxImageHeight && maxImageHeight.prompt}
+                  pieApi={pieApi}
                 />
               </InputContainer>
             )}
@@ -271,6 +273,7 @@ export class Design extends React.Component {
                   spellCheck={spellCheckEnabled}
                   maxImageWidth={maxImageWidth && maxImageWidth.teacherInstructions || defaultImageMaxWidth}
                   maxImageHeight={maxImageHeight && maxImageHeight.teacherInstructions || defaultImageMaxHeight}
+                  pieApi={pieApi}
                 />
               </InputContainer>
             )}
@@ -290,6 +293,7 @@ export class Design extends React.Component {
                   spellCheck={spellCheckEnabled}
                   maxImageWidth={maxImageWidth && maxImageWidth.rationale || defaultImageMaxWidth}
                   maxImageHeight={maxImageHeight && maxImageHeight.rationale || defaultImageMaxHeight}
+                  pieApi={pieApi}
                 />
               </InputContainer>
             )}
@@ -329,6 +333,7 @@ export class Design extends React.Component {
                     model={model}
                     categories={categoriesList}
                     onModelChanged={this.updateModel}
+                    pieApi={pieApi}
                   />
                 </React.Fragment>
               );

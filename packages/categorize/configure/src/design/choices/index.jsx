@@ -82,7 +82,8 @@ export class Choices extends React.Component {
     const {
       maxChoices,
       maxImageWidth = {},
-      maxImageHeight = {}
+      maxImageHeight = {},
+      pieApi
     } = configuration || {};
 
     const categoryCountIsOne = this.allChoicesHaveCount(1);
@@ -120,6 +121,7 @@ export class Choices extends React.Component {
               error={choicesErrors && choicesErrors[h.id]}
               maxImageWidth={maxImageWidth && maxImageWidth.choice || defaultImageMaxWidth}
               maxImageHeight={maxImageHeight && maxImageHeight.choice || defaultImageMaxHeight}
+              pieApi={pieApi}
             />
           ))}
         </div>
