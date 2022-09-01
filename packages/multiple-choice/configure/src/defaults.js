@@ -104,10 +104,8 @@ export default {
       choices: 300
     },
     pieApi: {
-      token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2kiOiJlZTI2Mjk5Yy1iYjhjLTRkYTItYmQ4Yi0wZDFjMzA1MDdiY2EiLCJqdGkiOiJjMjcwNDNlMC0yOTNiLTExZWQtYTMyMy01N2RiY2I0Yjc1MDciLCJpYXQiOjE2NjE5NTcyMTYsImV4cCI6MTY2MjA0MzYxNiwic2NvcGVzIjpbXX0.sZjdt_fUycGWpHgYRetxdtHT8lgswiYorR_oX-FPZo8',
-      host: 'https://develop.pie-api.io',
-      // token: '',
-      // host: ''
+      token: '',
+      host: ''
     }
   },
 };
