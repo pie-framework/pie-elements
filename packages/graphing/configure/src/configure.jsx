@@ -121,7 +121,8 @@ export class Configure extends React.Component {
       studentInstructions = {},
       teacherInstructions = {},
       maxImageWidth = {},
-      maxImageHeight = {}
+      maxImageHeight = {},
+      pieApi
     } = configuration || {};
     const {
       labelsEnabled,
@@ -208,6 +209,7 @@ export class Configure extends React.Component {
                 spellCheck={spellCheckEnabled}
                 maxImageWidth={maxImageWidth && maxImageWidth.teacherInstructions || defaultImageMaxWidth}
                 maxImageHeight={maxImageHeight && maxImageHeight.teacherInstructions || defaultImageMaxHeight}
+                pieApi={pieApi}
               />
             </InputContainer>
           )}
@@ -227,6 +229,7 @@ export class Configure extends React.Component {
                 disableUnderline
                 maxImageWidth={defaultImageMaxWidth}
                 maxImageHeight={defaultImageMaxHeight}
+                pieApi={pieApi}
               />
             </InputContainer>
           )}
@@ -244,6 +247,7 @@ export class Configure extends React.Component {
                 spellCheck={spellCheckEnabled}
                 maxImageWidth={maxImageWidth && maxImageWidth.rationale || defaultImageMaxWidth}
                 maxImageHeight={maxImageHeight && maxImageHeight.rationale || defaultImageMaxHeight}
+                pieApi={pieApi}
               />
             </InputContainer>
           )}
