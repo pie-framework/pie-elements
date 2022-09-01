@@ -160,7 +160,8 @@ export class Main extends React.Component {
       maxChoices,
       maxResponseAreas,
       maxImageWidth = {},
-      maxImageHeight = {}
+      maxImageHeight = {},
+      pieApi
     } = configuration || {};
     const { rationaleEnabled, promptEnabled, teacherInstructionsEnabled, spellCheckEnabled, errors } =
       model || {};
@@ -237,6 +238,7 @@ export class Main extends React.Component {
                   spellCheck={spellCheckEnabled}
                   maxImageWidth={maxImageWidth && maxImageWidth.teacherInstructions || defaultImageMaxWidth}
                   maxImageHeight={maxImageHeight && maxImageHeight.teacherInstructions || defaultImageMaxHeight}
+                  pieApi={pieApi}
                 />
               </InputContainer>
             )}
@@ -256,6 +258,7 @@ export class Main extends React.Component {
                   spellCheck={spellCheckEnabled}
                   maxImageWidth={defaultImageMaxWidth}
                   maxImageHeight={defaultImageMaxHeight}
+                  pieApi={pieApi}
                 />
               </InputContainer>
             )}
@@ -277,7 +280,6 @@ export class Main extends React.Component {
             {choicesError && <div className={classes.errorText}>{choicesError}</div>}
             <EditableHtml
               activePlugins={ALL_PLUGINS}
-              toolbarOpts={{ position: 'top' }}
               responseAreaProps={{
                 type: 'drag-in-the-blank',
                 options: {
@@ -293,6 +295,7 @@ export class Main extends React.Component {
               disableUnderline
               toolbarOpts={toolbarOpts}
               spellCheck={spellCheckEnabled}
+              pieApi={pieApi}
             />
             <Choices
               model={model}
@@ -300,6 +303,7 @@ export class Main extends React.Component {
               onChange={this.onResponsesChanged}
               toolbarOpts={toolbarOpts}
               maxChoices={maxChoices}
+              pieApi={pieApi}
             />
             {rationaleEnabled && (
               <InputContainer
@@ -315,6 +319,7 @@ export class Main extends React.Component {
                   spellCheck={spellCheckEnabled}
                   maxImageWidth={maxImageWidth && maxImageWidth.rationale || defaultImageMaxWidth}
                   maxImageHeight={maxImageHeight && maxImageHeight.rationale || defaultImageMaxHeight}
+                  pieApi={pieApi}
                 />
               </InputContainer>
             )}
