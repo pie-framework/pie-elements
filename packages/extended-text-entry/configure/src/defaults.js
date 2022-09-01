@@ -81,6 +81,10 @@ export default {
     maxImageHeight: {
       teacherInstructions: 300,
       prompt: 300
+    },
+    pieApi: {
+      token: '',
+      host: ''
     }
   }
 };

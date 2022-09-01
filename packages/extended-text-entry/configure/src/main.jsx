@@ -78,7 +78,8 @@ export class Main extends React.Component {
       spellCheck = {},
       playerSpellCheck = {},
       maxImageWidth = {},
-      maxImageHeight = {}
+      maxImageHeight = {},
+      pieApi
     } = configuration || {};
     const { teacherInstructionsEnabled, promptEnabled, feedbackEnabled, spellCheckEnabled } =
       model || {};
@@ -176,6 +177,7 @@ export class Main extends React.Component {
                 spellCheck={spellCheckEnabled}
                 maxImageWidth={maxImageWidth && maxImageWidth.teacherInstructions || defaultImageMaxWidth}
                 maxImageHeight={maxImageHeight && maxImageHeight.teacherInstructions || defaultImageMaxHeight}
+                pieApi={pieApi}
               />
             </InputContainer>
           )}
@@ -198,6 +200,7 @@ export class Main extends React.Component {
                 spellCheck={spellCheckEnabled}
                 maxImageWidth={defaultImageMaxWidth}
                 maxImageHeight={defaultImageMaxHeight}
+                pieApi={pieApi}
               />
             </InputContainer>
           )}
