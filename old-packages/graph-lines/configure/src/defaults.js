@@ -52,6 +52,10 @@ export default {
     teacherInstructions: {
       settings: false,
       label: 'Teacher Instructions'
+    },
+    pieApi: {
+      token: '',
+      host: ''
     }
   }
 };

@@ -110,7 +110,7 @@ export class GeneralConfigBlock extends React.Component {
       promptEnabled,
       rationaleEnabled
     } = this.props;
-    const { rationale: cRationale = {}, prompt: cPrompt = {} } =
+    const { rationale: cRationale = {}, prompt: cPrompt = {}, pieApi } =
       configuration || {};
 
     return (
@@ -122,6 +122,7 @@ export class GeneralConfigBlock extends React.Component {
               markup={prompt || ''}
               onChange={onPromptChange}
               imageSupport={imageSupport}
+              pieApi={pieApi}
             />
           </InputContainer>
         )}
@@ -199,6 +200,7 @@ export class GeneralConfigBlock extends React.Component {
               markup={rationale || ''}
               onChange={onRationaleChange}
               imageSupport={imageSupport}
+              pieApi={pieApi}
             />
           </InputContainer>
         )}
