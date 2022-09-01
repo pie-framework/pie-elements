@@ -63,7 +63,8 @@ export class Root extends React.Component {
       teacherInstructions = {},
       spellCheck = {},
       maxImageWidth = {},
-      maxImageHeight = {}
+      maxImageHeight = {},
+      pieApi
     } = configuration || {};
     const { teacherInstructionsEnabled, promptEnabled, spellCheckEnabled, backgroundImageEnabled } =
       model || {};
@@ -121,6 +122,7 @@ export class Root extends React.Component {
                   spellCheck={spellCheckEnabled}
                   maxImageWidth={maxImageWidth && maxImageWidth.teacherInstructions || defaultImageMaxWidth}
                   maxImageHeight={maxImageHeight && maxImageHeight.teacherInstructions || defaultImageMaxHeight}
+                  pieApi={pieApi}
                 />
               </InputContainer>
             )}
@@ -135,6 +137,7 @@ export class Root extends React.Component {
                   imageSupport={imageSupport}
                   maxImageWidth={defaultImageMaxWidth}
                   maxImageHeight={defaultImageMaxHeight}
+                  pieApi={pieApi}
                 />
               </InputContainer>
             )}
