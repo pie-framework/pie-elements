@@ -91,6 +91,7 @@ export class RespAreaToolbar extends React.Component {
   static propTypes = {
     classes: PropTypes.object,
     node: PropTypes.object,
+    pieApi: PropTypes.object,
     onDone: PropTypes.func,
     choices: PropTypes.array,
     onAddChoice: PropTypes.func.isRequired,
@@ -229,7 +230,7 @@ export class RespAreaToolbar extends React.Component {
   };
 
   render() {
-    const { classes, choices, spellCheck } = this.props;
+    const { classes, choices, spellCheck, pieApi } = this.props;
     const { respAreaMarkup, toolbarStyle } = this.state;
 
     const filteredDefaultPlugins = (DEFAULT_PLUGINS || []).filter(p => p !== 'table' && p !== 'bulleted-list' && p !== 'numbered-list');
@@ -275,6 +276,7 @@ export class RespAreaToolbar extends React.Component {
             pluginProps={labelPlugins}
             onBlur={this.onBlur}
             spellCheck={spellCheck}
+            pieApi={pieApi}
           />
           <i
             style={{

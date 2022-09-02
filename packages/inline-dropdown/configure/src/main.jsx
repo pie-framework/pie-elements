@@ -419,7 +419,8 @@ export class Main extends React.Component {
       spellCheck = {},
       maxResponseAreas,
       maxImageWidth = {},
-      maxImageHeight = {}
+      maxImageHeight = {},
+      pieApi
     } = configuration || {};
     const {
       rationaleEnabled,
@@ -471,6 +472,7 @@ export class Main extends React.Component {
                   imageSupport={imageSupport}
                   maxImageWidth={maxImageWidth && maxImageWidth.rationale || defaultImageMaxWidth}
                   maxImageHeight={maxImageHeight && maxImageHeight.rationale || defaultImageMaxHeight}
+                  pieApi={pieApi}
                 />
               </InputContainer>
             )}
@@ -542,6 +544,7 @@ export class Main extends React.Component {
                   spellCheck={spellCheckEnabled}
                   maxImageWidth={maxImageWidth && maxImageWidth.teacherInstructions || defaultImageMaxWidth}
                   maxImageHeight={maxImageHeight && maxImageHeight.teacherInstructions || defaultImageMaxHeight}
+                  pieApi={pieApi}
                 />
               </InputContainer>
             )}
@@ -562,6 +565,7 @@ export class Main extends React.Component {
                   spellCheck={spellCheckEnabled}
                   maxImageWidth={defaultImageMaxWidth}
                   maxImageHeight={defaultImageMaxHeight}
+                  pieApi={pieApi}
                 />
               </InputContainer>
             )}
@@ -580,6 +584,7 @@ export class Main extends React.Component {
                   spellCheck={spellCheckEnabled}
                   maxImageWidth={maxImageWidth && maxImageWidth.rationale || defaultImageMaxWidth}
                   maxImageHeight={maxImageHeight && maxImageHeight.rationale || defaultImageMaxHeight}
+                  pieApi={pieApi}
                 />
               </InputContainer>
             )}
@@ -634,6 +639,7 @@ export class Main extends React.Component {
                       onToolbarDone={onToolbarDone}
                       choices={respAreaChoices[node.data.get('index')]}
                       spellCheck={spellCheckEnabled}
+                      pieApi={pieApi}
                     />
                   );
                 }
@@ -647,6 +653,7 @@ export class Main extends React.Component {
               disabled={false}
               highlightShape={false}
               error={responseAreasError}
+              pieApi={pieApi}
             />
             <br />
             {choiceRationaleEnabled && renderChoiceRationale()}
