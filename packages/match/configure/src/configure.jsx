@@ -203,7 +203,8 @@ class Configure extends React.Component {
       feedback = {},
       spellCheck = {},
       maxImageWidth = {},
-      maxImageHeight = {}
+      maxImageHeight = {},
+      pieApi
     } = configuration || {};
     const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled, spellCheckEnabled, feedbackEnabled } =
       model || {};
@@ -278,6 +279,7 @@ class Configure extends React.Component {
                 spellCheck={spellCheckEnabled}
                 maxImageWidth={maxImageWidth && maxImageWidth.teacherInstructions || defaultImageMaxWidth}
                 maxImageHeight={maxImageHeight && maxImageHeight.teacherInstructions || defaultImageMaxHeight}
+                pieApi={pieApi}
               />
             </InputContainer>
           )}
@@ -298,6 +300,7 @@ class Configure extends React.Component {
                 spellCheck={spellCheckEnabled}
                 maxImageWidth={maxImageWidth && maxImageWidth.prompt}
                 maxImageHeight={maxImageHeight && maxImageHeight.prompt}
+                pieApi={pieApi}
               />
             </InputContainer>
           )}
@@ -316,6 +319,7 @@ class Configure extends React.Component {
                 spellCheck={spellCheckEnabled}
                 maxImageWidth={maxImageWidth && maxImageWidth.rationale || defaultImageMaxWidth}
                 maxImageHeight={maxImageHeight && maxImageHeight.rationale || defaultImageMaxHeight}
+                pieApi={pieApi}
               />
             </InputContainer>
           )}
@@ -334,6 +338,7 @@ class Configure extends React.Component {
             onDeleteRow={this.onDeleteRow}
             toolbarOpts={toolbarOpts}
             spellCheck={spellCheckEnabled}
+            pieApi={pieApi}
           />
           {feedbackEnabled && (
             <FeedbackConfig

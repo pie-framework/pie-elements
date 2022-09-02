@@ -78,6 +78,7 @@ class AnswerConfigBlock extends React.Component {
     classes: PropTypes.object.isRequired,
     model: PropTypes.object.isRequired,
     configuration: PropTypes.object.isRequired,
+    pieApi: PropTypes.object,
     onChange: PropTypes.func.isRequired,
     onDeleteRow: PropTypes.func.isRequired,
     onAddRow: PropTypes.func.isRequired,
@@ -195,7 +196,8 @@ class AnswerConfigBlock extends React.Component {
       imageSupport,
       configuration,
       toolbarOpts,
-      spellCheck
+      spellCheck,
+      pieApi
     } = this.props;
     const { headers = {}, maxImageWidth = {}, maxImageHeight = {} } = configuration || {};
     const { dialog } = this.state;
@@ -239,6 +241,7 @@ class AnswerConfigBlock extends React.Component {
                     autoWidthToolbar
                     allowValidation
                     spellCheck={spellCheck}
+                    pieApi={pieApi}
                   />
                 </div>
               ))}
@@ -265,6 +268,7 @@ class AnswerConfigBlock extends React.Component {
               error={rowsErrors && rowsErrors[row.id]}
               maxImageWidth={maxImageWidth && maxImageWidth.rowTitles || defaultImageMaxWidth}
               maxImageHeight={maxImageHeight && maxImageHeight.rowTitles || defaultImageMaxHeight}
+              pieApi={pieApi}
             />
           ))}
           <AddRow onAddClick={onAddRow} />

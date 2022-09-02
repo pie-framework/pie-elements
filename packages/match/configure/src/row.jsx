@@ -21,6 +21,7 @@ export class Row extends React.Component {
     classes: PropTypes.object.isRequired,
     model: PropTypes.object.isRequired,
     row: PropTypes.object.isRequired,
+    pieApi: PropTypes.object,
     idx: PropTypes.number.isRequired,
     isDragging: PropTypes.bool.isRequired,
     onDeleteRow: PropTypes.func.isRequired,
@@ -151,7 +152,8 @@ export class Row extends React.Component {
       spellCheck,
       error,
       maxImageWidth,
-      maxImageHeight
+      maxImageHeight,
+      pieApi
     } = this.props;
     const { dialog } = this.state;
     const opacity = isDragging ? 0 : 1;
@@ -194,6 +196,7 @@ export class Row extends React.Component {
               spellCheck={spellCheck}
               maxImageWidth={maxImageWidth}
               maxImageHeight={maxImageHeight}
+              pieApi={pieApi}
             />
           </div>
           {row.values.map((rowValue, rowIdx) => (
