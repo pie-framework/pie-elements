@@ -361,7 +361,8 @@ class GeneralConfigBlock extends React.Component {
       allowTrailingZeros: cAllowTrailingZeros = {},
       maxResponseAreas,
       maxImageWidth = {},
-      maxImageHeight = {}
+      maxImageHeight = {},
+      pieApi
     } = configuration || {};
     const validationMessage = generateValidationMessage(configuration, model);
     const { responsesErrors, responseAreasError } = errors;
@@ -397,6 +398,7 @@ class GeneralConfigBlock extends React.Component {
               spellCheck={spellCheckEnabled}
               maxImageWidth={defaultImageMaxWidth}
               maxImageHeight={defaultImageMaxHeight}
+              pieApi={pieApi}
             />
           </InputContainer>
         )}
@@ -420,6 +422,7 @@ class GeneralConfigBlock extends React.Component {
               spellCheck={spellCheckEnabled}
               maxImageWidth={maxImageWidth && maxImageWidth.rationale || defaultImageMaxWidth}
               maxImageHeight={maxImageHeight && maxImageHeight.rationale || defaultImageMaxHeight}
+              pieApi={pieApi}
             />
           </InputContainer>
         )}

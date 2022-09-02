@@ -76,7 +76,8 @@ export class Configure extends React.Component {
       allowTrailingZeros={},
       spellCheck = {},
       maxImageWidth = {},
-      maxImageHeight = {}
+      maxImageHeight = {},
+      pieApi
     } = configuration || {};
     log('[render] model', model);
     const { rationaleEnabled, promptEnabled, teacherInstructionsEnabled, feedbackEnabled, spellCheckEnabled } = model || {};
@@ -145,6 +146,7 @@ export class Configure extends React.Component {
                     spellCheck={spellCheckEnabled}
                     maxImageWidth={maxImageWidth && maxImageWidth.teacherInstructions || defaultImageMaxWidth}
                     maxImageHeight={maxImageHeight && maxImageHeight.teacherInstructions || defaultImageMaxHeight}
+                    pieApi={pieApi}
                   />
                 </InputContainer>
               )}
