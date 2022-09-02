@@ -23,7 +23,7 @@ export class Root extends React.Component {
       onConfigurationChanged,
       imageSupport,
     } = this.props;
-    const { teacherInstructions = {}, spellCheck = {}, maxImageWidth = {}, maxImageHeight = {} } = configuration || {};
+    const { teacherInstructions = {}, spellCheck = {}, maxImageWidth = {}, maxImageHeight = {}, pieApi } = configuration || {};
     const { spellCheckEnabled } = model || {};
 
     return (
@@ -61,6 +61,7 @@ export class Root extends React.Component {
                 spellCheck={spellCheckEnabled}
                 maxImageWidth={maxImageWidth && maxImageWidth.teacherInstructions}
                 maxImageHeight={maxImageHeight && maxImageHeight.teacherInstructions}
+                pieApi={pieApi}
               />
             </InputContainer>
           )}
