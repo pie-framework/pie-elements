@@ -51,7 +51,8 @@ const Design = withStyles(styles)(props => {
     prompt = {},
     teacherInstructions = {},
     scoringType = {},
-    spellCheck = {}
+    spellCheck = {},
+    pieApi
   } = configuration || {};
   const {
     teacherInstructionsEnabled, spellCheckEnabled
@@ -96,6 +97,7 @@ const Design = withStyles(styles)(props => {
                 imageSupport={imageSupport}
                 nonEmpty={false}
                 spellCheck={spellCheckEnabled}
+                pieApi={pieApi}
               />
             </InputContainer>
           )}
@@ -108,6 +110,7 @@ const Design = withStyles(styles)(props => {
               imageSupport={imageSupport}
               nonEmpty={!prompt.settings}
               spellCheck={spellCheckEnabled}
+              pieApi={pieApi}
               disableUnderline
             />
           </InputContainer>
