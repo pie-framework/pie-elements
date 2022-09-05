@@ -219,7 +219,8 @@ export class Main extends React.Component {
       showScorePointLabels,
       dragAndDrop,
       spellCheck = {},
-      width
+      width,
+      pieApi
     } = configuration || {};
     const { scales, excludeZero, description, pointLabels, standards, spellCheckEnabled } = model || {};
     const { showExcludeZeroDialog } = this.state || {};
@@ -269,6 +270,7 @@ export class Main extends React.Component {
                 enableDragAndDrop={dragAndDrop.enabled}
                 spellCheck={spellCheckEnabled}
                 width={adjustedWidth}
+                pieApi={pieApi}
                 {...this.props}
                 classes={{}}
               />
