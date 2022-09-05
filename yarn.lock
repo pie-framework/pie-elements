@@ -2167,6 +2167,28 @@
   dependencies:
     "@octokit/openapi-types" "^11.2.0"
 
+"@pie-element/multi-trait-rubric@^2.0.7":
+  version "2.0.7"
+  resolved "https://registry.yarnpkg.com/@pie-element/multi-trait-rubric/-/multi-trait-rubric-2.0.7.tgz#913b16be20ace5c489d7aa5fd1bc099161bc998b"
+  integrity sha512-kS4OEk69VRFngeT+rx2/lzclxW9TAG8q6qzawAO8LNc0M5SkPT9+GQRzik3ywnNyjcleNUzjhpQtpnTYiajQqg==
+  dependencies:
+    "@material-ui/core" "^3.9.2"
+    "@pie-framework/pie-player-events" "^0.1.0"
+    "@pie-lib/render-ui" "^4.13.3"
+    clsx "^1.1.1"
+    enzyme-to-json "^3.3.5"
+    prop-types "^15.6.1"
+    react "^16.8.1"
+    react-dom "^16.8.1"
+
+"@pie-element/rubric@^2.0.7":
+  version "2.0.7"
+  resolved "https://registry.yarnpkg.com/@pie-element/rubric/-/rubric-2.0.7.tgz#304d48a44db5f5248bcb940f3846a44a1e5dfb7f"
+  integrity sha512-SXisEgfqmPwxsnQXYc2SfMFYnLIufxxdh9Cr/Ihkopo2mAQrevzD39TKJdz/NHHU0uB1+S0E/W4P8XQId5MiYA==
+  dependencies:
+    "@material-ui/core" "^3.9.2"
+    prop-types "^15.7.2"
+
 "@pie-framework/build-helper@^5.2.9":
   version "5.2.9"
   resolved "https://registry.yarnpkg.com/@pie-framework/build-helper/-/build-helper-5.2.9.tgz#1a06eb0b7c471042eefce3d5f994192c6576d311"
@@ -2543,7 +2565,7 @@
     prop-types "^15.7.2"
     react-transition-group "^2.5.2"
 
-"@pie-lib/render-ui@^4.13.4":
+"@pie-lib/render-ui@^4.13.3", "@pie-lib/render-ui@^4.13.4":
   version "4.13.4"
   resolved "https://registry.yarnpkg.com/@pie-lib/render-ui/-/render-ui-4.13.4.tgz#8f5d6c2c4fc2f2e3b7f608e59f386199c66dbe55"
   integrity sha512-3SbhJxXHogCoCRxcarphIez//4vftX91cD0QGLK/vlxv+HGK8zfOV5hrMJI3k0XNtyszLQOpoGkayMTDbib+ow==
