@@ -110,7 +110,8 @@ export class Design extends React.Component {
       spellCheck = {},
       scoringType = {},
       maxImageWidth = {},
-      maxImageHeight = {}
+      maxImageHeight = {},
+      pieApi
     } = configuration || {};
     const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled, feedbackEnabled, choiceLabelEnabled, spellCheckEnabled, errors } =
       model || {};
@@ -203,6 +204,7 @@ export class Design extends React.Component {
               spellCheck={spellCheckEnabled}
               maxImageWidth={maxImageWidth && maxImageWidth.teacherInstructions || defaultImageMaxWidth}
               maxImageHeight={maxImageHeight && maxImageHeight.teacherInstructions || defaultImageMaxHeight}
+              pieApi={pieApi}
             />
           </InputContainer>
         )}
@@ -222,6 +224,7 @@ export class Design extends React.Component {
                 spellCheck={spellCheckEnabled}
                 maxImageWidth={maxImageWidth && maxImageWidth.prompt}
                 maxImageHeight={maxImageHeight && maxImageHeight.prompt}
+                pieApi={pieApi}
               />
             </InputContainer>
             {rationaleEnabled && (
@@ -238,6 +241,7 @@ export class Design extends React.Component {
                   spellCheck={spellCheckEnabled}
                   maxImageWidth={maxImageWidth && maxImageWidth.rationale || defaultImageMaxWidth}
                   maxImageHeight={maxImageHeight && maxImageHeight.rationale || defaultImageMaxHeight}
+                  pieApi={pieApi}
                 />
               </InputContainer>
             )}
@@ -275,6 +279,7 @@ export class Design extends React.Component {
                   spellCheck={spellCheckEnabled}
                   maxImageWidth={maxChoicesImageWidth}
                   maxImageHeight={maxChoicesImageHeight}
+                  pieApi={pieApi}
                 />
               </InputContainer>
             )}
@@ -296,6 +301,7 @@ export class Design extends React.Component {
                   spellCheck={spellCheckEnabled}
                   maxImageWidth={maxImageWidth && maxImageWidth.choicesWithPlacementArea || defaultImageMaxWidth}
                   maxImageHeight={maxChoicesImageHeight}
+                  pieApi={pieApi}
                 />
               </InputContainer>
             )}
