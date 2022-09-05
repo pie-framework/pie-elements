@@ -287,7 +287,7 @@ export class Main extends React.Component {
     const { classes, model, onChange, configuration } = this.props;
 
     const { graph, spellCheckEnabled, errors } = model || {};
-    const { prompt = {}, spellCheck = {} } = configuration || {};
+    const { prompt = {}, spellCheck = {}, pieApi } = configuration || {};
     const { widthError, domainError, maxError, pointsError, correctResponseError } = errors || {};
     const validationMessage = generateValidationMessage();
 
@@ -322,6 +322,7 @@ export class Main extends React.Component {
               disableUnderline
               toolbarOpts={toolbarOpts}
               spellCheck={spellCheckEnabled}
+              pieApi={pieApi}
             />
           </FormSection>
         )}
@@ -376,6 +377,7 @@ export class Main extends React.Component {
             onChange={this.changeGraphTitle}
             toolbarOpts={toolbarOpts}
             spellCheck={spellCheckEnabled}
+            pieApi={pieApi}
           />
         </FormSection>
         <FormSection label={'Limits'}>

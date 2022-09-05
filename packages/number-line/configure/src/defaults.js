@@ -54,4 +54,8 @@ export const configuration = {
     settings:false,
     enabled:true
   },
+  pieApi: {
+    token: '',
+    host: ''
+  }
 };
