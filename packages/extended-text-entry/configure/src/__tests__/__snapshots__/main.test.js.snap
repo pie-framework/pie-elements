@@ -37,6 +37,10 @@ exports[`Render Main Component Match Snapshot 1`] = `
             "label": "Multiple Parts",
             "settings": false,
           },
+          "pieApi": Object {
+            "host": "",
+            "token": "",
+          },
           "playerSpellCheck": Object {
             "enabled": true,
             "label": "Student Spellcheck",
@@ -128,6 +132,12 @@ exports[`Render Main Component Match Snapshot 1`] = `
         maxImageWidth={300}
         nonEmpty={false}
         onChange={[Function]}
+        pieApi={
+          Object {
+            "host": "",
+            "token": "",
+          }
+        }
         spellCheck={true}
         toolbarOpts={
           Object {
@@ -147,6 +157,12 @@ exports[`Render Main Component Match Snapshot 1`] = `
         maxImageWidth={300}
         nonEmpty={false}
         onChange={[Function]}
+        pieApi={
+          Object {
+            "host": "",
+            "token": "",
+          }
+        }
         spellCheck={true}
         toolbarOpts={
           Object {

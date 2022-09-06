@@ -34,6 +34,10 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
               "label": "Allow Partial Scoring",
               "settings": false,
             },
+            "pieApi": Object {
+              "host": "",
+              "token": "",
+            },
             "prompt": Object {
               "label": "Prompt",
               "settings": true,
@@ -123,6 +127,12 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
           maxImageWidth={300}
           nonEmpty={false}
           onChange={[Function]}
+          pieApi={
+            Object {
+              "host": "",
+              "token": "",
+            }
+          }
           toolbarOpts={
             Object {
               "position": "bottom",
@@ -140,6 +150,12 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
           maxImageWidth={300}
           nonEmpty={false}
           onChange={[Function]}
+          pieApi={
+            Object {
+              "host": "",
+              "token": "",
+            }
+          }
           toolbarOpts={
             Object {
               "position": "bottom",
@@ -181,6 +197,12 @@ There should be at least 3 tokens defined."
         markup="<span data-type=\\"drag_in_the_blank\\" data-index=\\"0\\" data-id=\\"0\\" data-value=\\"&lt;div&gt;6&lt;/div&gt;\\"></span> + <span data-type=\\"drag_in_the_blank\\" data-index=\\"1\\" data-id=\\"1\\" data-value=\\"&lt;div&gt;9&lt;/div&gt;\\"></span> = 15"
         nonEmpty={false}
         onChange={[Function]}
+        pieApi={
+          Object {
+            "host": "",
+            "token": "",
+          }
+        }
         responseAreaProps={
           Object {
             "maxResponseAreas": 10,
@@ -238,6 +260,12 @@ There should be at least 3 tokens defined."
           }
         }
         onChange={[Function]}
+        pieApi={
+          Object {
+            "host": "",
+            "token": "",
+          }
+        }
         toolbarOpts={
           Object {
             "position": "bottom",
@@ -252,6 +280,12 @@ There should be at least 3 tokens defined."
           maxImageHeight={300}
           maxImageWidth={300}
           onChange={[Function]}
+          pieApi={
+            Object {
+              "host": "",
+              "token": "",
+            }
+          }
           toolbarOpts={
             Object {
               "position": "bottom",
@@ -297,6 +331,10 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
             "partialScoring": Object {
               "label": "Allow Partial Scoring",
               "settings": false,
+            },
+            "pieApi": Object {
+              "host": "",
+              "token": "",
             },
             "prompt": Object {
               "label": "Prompt",
@@ -412,6 +450,12 @@ There should be at least 3 tokens defined."
         markup="<span data-type=\\"drag_in_the_blank\\" data-index=\\"0\\" data-id=\\"0\\" data-value=\\"&lt;div&gt;6&lt;/div&gt;\\"></span> + <span data-type=\\"drag_in_the_blank\\" data-index=\\"1\\" data-id=\\"1\\" data-value=\\"&lt;div&gt;9&lt;/div&gt;\\"></span> = 15"
         nonEmpty={false}
         onChange={[Function]}
+        pieApi={
+          Object {
+            "host": "",
+            "token": "",
+          }
+        }
         responseAreaProps={
           Object {
             "maxResponseAreas": 10,
@@ -469,6 +513,12 @@ There should be at least 3 tokens defined."
           }
         }
         onChange={[Function]}
+        pieApi={
+          Object {
+            "host": "",
+            "token": "",
+          }
+        }
         toolbarOpts={
           Object {
             "position": "bottom",

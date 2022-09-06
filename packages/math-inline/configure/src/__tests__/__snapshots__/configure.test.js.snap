@@ -35,6 +35,10 @@ exports[`Configure renders correctly with snapshot 1`] = `
               "label": "Allow Partial Scoring",
               "settings": false,
             },
+            "pieApi": Object {
+              "host": "",
+              "token": "",
+            },
             "prompt": Object {
               "label": "Prompt",
               "settings": true,
@@ -182,6 +186,10 @@ exports[`Configure renders correctly with snapshot 1`] = `
                 "label": "Allow Partial Scoring",
                 "settings": false,
               },
+              "pieApi": Object {
+                "host": "",
+                "token": "",
+              },
               "prompt": Object {
                 "label": "Prompt",
                 "settings": true,
@@ -326,6 +334,12 @@ exports[`GeneralConfigBlock renders correctly with snapshot 1`] = `
       nonEmpty={false}
       onChange={[Function]}
       onFocus={[Function]}
+      pieApi={
+        Object {
+          "host": "",
+          "token": "",
+        }
+      }
     />
   </InputContainer>
   <div
