@@ -63,11 +63,11 @@ class ComplexRubric extends HTMLElement {
   set model(m) {
     this._model = m;
 
-    customElements.whenDefined(RUBRIC_TAG_NAME).then(() => {
+    Promise.all([
+      customElements.whenDefined(RUBRIC_TAG_NAME),
+      customElements.whenDefined(MULTI_TRAIT_RUBRIC_TAG_NAME)
+    ]).then(() => {
       this.setRubricModel(this.simpleRubric);
-    });
-
-    customElements.whenDefined(MULTI_TRAIT_RUBRIC_TAG_NAME).then(() => {
       this.setMultiTraitRubricModel(this.multiTraitRubric);
     });
   }
@@ -82,7 +82,7 @@ class ComplexRubric extends HTMLElement {
 
   setRubricModel(simpleRubric) {
     if (this._model && this._model.rubrics && this._model.rubrics.simpleRubric) {
-      const { mode } = this._model;
+      const {mode} = this._model;
 
       simpleRubric.model = {
         ...this._model.rubrics.simpleRubric,
@@ -93,7 +93,7 @@ class ComplexRubric extends HTMLElement {
 
   setMultiTraitRubricModel(multiTraitRubric) {
     if (this._model && this._model.rubrics && this._model.rubrics.multiTraitRubric) {
-      const { mode } = this._model;
+      const {mode} = this._model;
 
       multiTraitRubric.model = {
         ...this._model.rubrics.multiTraitRubric,

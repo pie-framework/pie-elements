@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {settings, layout} from '@pie-lib/config-ui';
-import {withStyles} from '@material-ui/core/styles';
-import {FormControlLabel} from "@material-ui/core";
-import Radio from "@material-ui/core/Radio";
-import RadioGroup from "@material-ui/core/RadioGroup";
-import { withDragContext } from "@pie-lib/drag";
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import { settings, layout } from '@pie-lib/config-ui';
+import { withStyles } from '@material-ui/core/styles';
+import { FormControlLabel } from '@material-ui/core';
+import { withDragContext } from '@pie-lib/drag';
 
 const {Panel, toggle} = settings;
 
@@ -50,7 +50,7 @@ export class Main extends React.Component {
       onConfigurationChanged
     } = this.props;
     const {rubricType, rubrics = {}} = model;
-    const { multiTraitRubric } = configuration;
+    const {multiTraitRubric} = configuration;
     const {
       showStandards,
       showExcludeZero,
@@ -68,9 +68,9 @@ export class Main extends React.Component {
         <layout.ConfigLayout
           settings={
             <Panel
-              model={model}
+              model={model.rubrics.multiTraitRubric}
               onChangeModel={this.onModelChanged}
-              configuration={configuration}
+              configuration={configuration.multiTraitRubric}
               onChangeConfiguration={onConfigurationChanged}
               groups={{
                 Settings: {
@@ -97,11 +97,11 @@ export class Main extends React.Component {
                 aria-label='rubric-type'
                 name='rubricType'
                 value={rubricType}
+                defaultValue='simpleRubric'
                 onChange={this.onChangeRubricType}
               >
                 <FormControlLabel value={'simpleRubric'} control={<Radio/>} label='Simple Rubric'/>
-                <FormControlLabel value={'multiTraitRubric'} control={<Radio/>}
-                                  label='Multi Trait Rubric'/>
+                <FormControlLabel value={'multiTraitRubric'} control={<Radio/>} label='Multi Trait Rubric'/>
               </RadioGroup>
             </div>
             <div>

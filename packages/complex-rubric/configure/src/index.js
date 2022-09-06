@@ -4,8 +4,8 @@ import ReactDOM from 'react-dom';
 import RubricConfigure from '@pie-element/rubric/configure/lib';
 import MultiTraitRubricConfigure from '@pie-element/multi-trait-rubric/configure/lib';
 import debug from 'debug';
-import defaults from "lodash/defaults";
-import Main from "@pie-element/complex-rubric-configure/src/main";
+import defaults from 'lodash/defaults';
+import Main from '@pie-element/complex-rubric-configure/src/main';
 
 import sensibleDefaults from './defaults';
 
