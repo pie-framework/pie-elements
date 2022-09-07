@@ -7,7 +7,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { FormControlLabel } from '@material-ui/core';
 import { withDragContext } from '@pie-lib/drag';
 
-const {Panel, toggle} = settings;
+const { Panel, toggle } = settings;
 
 const styles = {
   rubric: {
@@ -27,13 +27,13 @@ export class Main extends React.Component {
   };
 
   onModelChanged = (model) => {
-    const {onModelChanged} = this.props;
+    const { onModelChanged } = this.props;
 
     return onModelChanged(model);
   }
 
   onChangeRubricType = (e) => {
-    const {model} = this.props;
+    const { model } = this.props;
 
     const rubricType = e.target.value;
     this.onModelChanged({
@@ -49,8 +49,8 @@ export class Main extends React.Component {
       configuration,
       onConfigurationChanged
     } = this.props;
-    const {rubricType, rubrics = {}} = model;
-    const {multiTraitRubric} = configuration;
+    const { rubricType, rubrics = {} } = model;
+    const { multiTraitRubric } = configuration;
     const {
       showStandards,
       showExcludeZero,
@@ -111,7 +111,7 @@ export class Main extends React.Component {
                 ref={ref => {
                   if (ref) {
                     this.simpleRubric = ref;
-                    this.simpleRubric._model = rubrics.simpleRubric
+                    this.simpleRubric.model = rubrics.simpleRubric;
                   }
                 }}
               /> : <multi-trait-rubric-configure
@@ -120,9 +120,8 @@ export class Main extends React.Component {
                 ref={ref => {
                   if (ref) {
                     this.multiTraitRubric = ref;
-                    this.multiTraitRubric._model = {
+                    this.multiTraitRubric.model = {
                       ...rubrics.multiTraitRubric,
-                      // disableDragContext: true
                     };
                     this.multiTraitRubric.configuration = multiTraitRubric;
                   }
@@ -136,4 +135,4 @@ export class Main extends React.Component {
   }
 }
 
-export default withDragContext(withStyles(styles)(Main));
+export default withStyles(styles)(Main);

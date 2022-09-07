@@ -9,8 +9,11 @@ const RUBRIC_TAG_NAME = 'complex-rubric-simple';
 const MULTI_TRAIT_RUBRIC_TAG_NAME = 'complex-rubric-multi-trait';
 const log = debug('pie-elements:ebsr');
 
-class ComplexRubricSimple extends Rubric {}
-class ComplexRubricMultiTrait extends MultiTraitRubric {}
+class ComplexRubricSimple extends Rubric {
+}
+
+class ComplexRubricMultiTrait extends MultiTraitRubric {
+}
 
 const defineRubrics = () => {
   if (!customElements.get(RUBRIC_TAG_NAME)) {
@@ -38,6 +41,7 @@ class ComplexRubric extends HTMLElement {
     super();
     this._model = {};
     this._session = {};
+    this._type = 'simpleRubric'
   }
 
   onSessionUpdated = (e) => {
@@ -60,16 +64,40 @@ class ComplexRubric extends HTMLElement {
     }
   };
 
+  set type(t) {
+    this._type = t;
+  }
+
+  get type() {
+    return this._type;
+  }
+
   set model(m) {
     this._model = m;
+    const oldType = this._type;
+    this.type = m.rubricType;
 
-    Promise.all([
-      customElements.whenDefined(RUBRIC_TAG_NAME),
-      customElements.whenDefined(MULTI_TRAIT_RUBRIC_TAG_NAME)
-    ]).then(() => {
-      this.setRubricModel(this.simpleRubric);
-      this.setMultiTraitRubricModel(this.multiTraitRubric);
-    });
+    if (this._type === 'simpleRubric') {
+      Promise.all([
+        customElements.whenDefined(RUBRIC_TAG_NAME),
+        // customElementsElements.whenDefined(MULTI_TRAIT_RUBRIC_TAG_NAME)
+      ]).then(() => {
+        this.setRubricModel(this.simpleRubric);
+        // this.setMultiTraitRubricModel(this.multiTraitRubric);
+      });
+    } else {
+      Promise.all([
+        // customElements.whenDefined(RUBRIC_TAG_NAME),
+        customElements.whenDefined(MULTI_TRAIT_RUBRIC_TAG_NAME)
+      ]).then(() => {
+        // this.setRubricModel(this.simpleRubric);
+        this.setMultiTraitRubricModel(this.multiTraitRubric);
+      });
+    }
+
+    if (oldType !== this.type) {
+      this._render();
+    }
   }
 
   set session(s) {
@@ -82,7 +110,7 @@ class ComplexRubric extends HTMLElement {
 
   setRubricModel(simpleRubric) {
     if (this._model && this._model.rubrics && this._model.rubrics.simpleRubric) {
-      const {mode} = this._model;
+      const { mode } = this._model;
 
       simpleRubric.model = {
         ...this._model.rubrics.simpleRubric,
@@ -93,7 +121,7 @@ class ComplexRubric extends HTMLElement {
 
   setMultiTraitRubricModel(multiTraitRubric) {
     if (this._model && this._model.rubrics && this._model.rubrics.multiTraitRubric) {
-      const {mode} = this._model;
+      const { mode } = this._model;
 
       multiTraitRubric.model = {
         ...this._model.rubrics.multiTraitRubric,
@@ -133,10 +161,11 @@ class ComplexRubric extends HTMLElement {
   }
 
   _render() {
+    // console.log('this._model.rubricType', this.props.model.rubricType);
     this.innerHTML = `
       <div>
-        <${RUBRIC_TAG_NAME} id="simpleRubric"></${RUBRIC_TAG_NAME}>
-        <${MULTI_TRAIT_RUBRIC_TAG_NAME} id="multiTraitRubric"></${MULTI_TRAIT_RUBRIC_TAG_NAME}>
+     <div style="${this._type === 'simpleRubric' ? `visibility: visible` : `visibility: hidden`}"><${RUBRIC_TAG_NAME} id="simpleRubric"></${RUBRIC_TAG_NAME}></div>
+       <div style="${this._type !== 'simpleRubric' ? `visibility: visible` : `visibility: hidden`}"> <${MULTI_TRAIT_RUBRIC_TAG_NAME} id="multiTraitRubric"></${MULTI_TRAIT_RUBRIC_TAG_NAME}></div>
       </div>
     `;
   }

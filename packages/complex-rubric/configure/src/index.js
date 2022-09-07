@@ -99,7 +99,6 @@ export default class ComplexRubricConfigureElement extends HTMLElement {
   }
 
   onModelUpdated = e => {
-
     if (e.target === this) {
       return;
     }

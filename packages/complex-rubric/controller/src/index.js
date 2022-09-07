@@ -1,10 +1,10 @@
 import defaults from './defaults';
 
 export function createDefaultModel(model = {}) {
-  return new Promise(resolve => resolve({...defaults, ...model}));
+  return new Promise(resolve => resolve({ ...defaults, ...model }));
 }
 
-export const normalize = question => ({...defaults, ...question});
+export const normalize = question => ({ ...defaults, ...question });
 
 /**
  *
@@ -17,7 +17,18 @@ export async function model(question, session, env) {
 
   if (normalizedQuestion.rubricType === 'simpleRubric') {
     return new Promise(resolve => {
-      resolve((env && env.role && env.role === 'instructor') ? normalizedQuestion : {});
+      resolve((env && env.role && env.role === 'instructor') ?
+        {
+          ...normalizedQuestion,
+          rubrics: {
+            ...normalizedQuestion.rubrics,
+            multiTraitRubric: {
+              ...normalizedQuestion.rubrics.multiTraitRubric,
+              visible: false
+            }
+          }
+        }
+        : {});
     });
   } else {
     if (!env.role || env.role === 'student' && normalizedQuestion.rubrics && normalizedQuestion.rubrics.multiTraitRubric) {
@@ -34,7 +45,11 @@ export async function model(question, session, env) {
       ...normalizedQuestion,
       rubrics: {
         ...normalizedQuestion.rubrics,
-        multiTraitRubric :{
+        simpleRubric: {
+          ...normalizedQuestion.rubrics.simpleRubric,
+          visible: false
+        },
+        multiTraitRubric: {
           ...normalizedQuestion.rubrics.multiTraitRubric,
           scales: parsedScales
         }
@@ -51,13 +66,13 @@ export const getScore = () => 0;
  * @param {Object} env
  */
 export function outcome(model, session, env) {
-  return new Promise(resolve => resolve({score: 0, empty: true}));
+  return new Promise(resolve => resolve({ score: 0, empty: true }));
 }
 
 export const createCorrectResponseSession = (question, env) => {
   return new Promise(resolve => {
     if (env.mode !== 'evaluate' && env.role === 'instructor') {
-      resolve({id: '1'});
+      resolve({ id: '1' });
     } else {
       resolve(null);
     }
