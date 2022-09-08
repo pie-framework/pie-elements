@@ -10,7 +10,8 @@
   },
   "dependencies": {
     "@material-ui/core": "^3.9.2",
-    "prop-types": "^15.7.2"
+    "prop-types": "^15.7.2",
+    "@pie-lib/rubric": "^0.4.39"
   },
   "author": "pie framework developers",
   "license": "ISC",

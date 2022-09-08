@@ -11,6 +11,7 @@
     "@pie-element/multi-trait-rubric": "^2.0.7",
     "@pie-element/rubric": "^2.0.7",
     "@pie-lib/drag": "^1.1.52",
+    "@pie-lib/rubric": "^0.4.39",
     "debug": "^4.1.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",

@@ -1,19 +1,12 @@
-import { SessionChangedEvent } from '@pie-framework/pie-player-events';
 import Rubric from '@pie-element/rubric';
 import MultiTraitRubric from '@pie-element/multi-trait-rubric';
-import get from 'lodash/get';
-import debug from 'debug';
+import { RUBRIC_TYPES } from '@pie-lib/rubric';
 
-const SESSION_CHANGED = SessionChangedEvent.TYPE;
 const RUBRIC_TAG_NAME = 'complex-rubric-simple';
 const MULTI_TRAIT_RUBRIC_TAG_NAME = 'complex-rubric-multi-trait';
-const log = debug('pie-elements:ebsr');
 
-class ComplexRubricSimple extends Rubric {
-}
-
-class ComplexRubricMultiTrait extends MultiTraitRubric {
-}
+class ComplexRubricSimple extends Rubric {}
+class ComplexRubricMultiTrait extends MultiTraitRubric {}
 
 const defineRubrics = () => {
   if (!customElements.get(RUBRIC_TAG_NAME)) {
@@ -27,42 +20,12 @@ const defineRubrics = () => {
 
 defineRubrics();
 
-const isNonEmptyArray = (a) => Array.isArray(a) && a.length > 0;
-
-export const isSessionComplete = (session) => {
-  const a = get(session, 'value.simpleRubric.value');
-  const b = get(session, 'value.multiTraitRubric.value');
-
-  return isNonEmptyArray(a) || isNonEmptyArray(b);
-};
-
 class ComplexRubric extends HTMLElement {
   constructor() {
     super();
     this._model = {};
-    this._session = {};
-    this._type = 'simpleRubric'
+    this._type = RUBRIC_TYPES.SIMPLE_RUBRIC;
   }
-
-  onSessionUpdated = (e) => {
-    if (e.target === this) {
-      return;
-    }
-
-    e.preventDefault();
-    e.stopImmediatePropagation();
-
-    const id = e.target.getAttribute('id');
-
-    if (id) {
-
-      if (e.update) {
-        this._model.rubrics[id] = e.update;
-      }
-      //TODO: accessing a private property here. The session event should contain the update in future to prevent this.
-      this.dispatchSessionChanged(e.srcElement._session, key);
-    }
-  };
 
   set type(t) {
     this._type = t;
@@ -77,35 +40,23 @@ class ComplexRubric extends HTMLElement {
     const oldType = this._type;
     this.type = m.rubricType;
 
-    if (this._type === 'simpleRubric') {
-      Promise.all([
-        customElements.whenDefined(RUBRIC_TAG_NAME),
-        // customElementsElements.whenDefined(MULTI_TRAIT_RUBRIC_TAG_NAME)
-      ]).then(() => {
-        this.setRubricModel(this.simpleRubric);
-        // this.setMultiTraitRubricModel(this.multiTraitRubric);
-      });
-    } else {
-      Promise.all([
-        // customElements.whenDefined(RUBRIC_TAG_NAME),
-        customElements.whenDefined(MULTI_TRAIT_RUBRIC_TAG_NAME)
-      ]).then(() => {
-        // this.setRubricModel(this.simpleRubric);
-        this.setMultiTraitRubricModel(this.multiTraitRubric);
-      });
+    switch (this._type) {
+      case RUBRIC_TYPES.SIMPLE_RUBRIC:
+      default:
+        customElements.whenDefined(RUBRIC_TAG_NAME).then(() => {
+          this.setRubricModel(this.simpleRubric);
+        });
+        break;
+      case RUBRIC_TYPES.MULTI_TRAIT_RUBRIC:
+        customElements.whenDefined(MULTI_TRAIT_RUBRIC_TAG_NAME).then(() =>{
+          this.setMultiTraitRubricModel(this.multiTraitRubric);
+        });
+        break;
     }
 
     if (oldType !== this.type) {
       this._render();
     }
-  }
-
-  set session(s) {
-    this._session = s;
-  }
-
-  get session() {
-    return this._session;
   }
 
   setRubricModel(simpleRubric) {
@@ -130,19 +81,6 @@ class ComplexRubric extends HTMLElement {
     }
   }
 
-  dispatchSessionChanged(partSession, key) {
-    this._session.value = {
-      ...this._session.value,
-      [key]: partSession,
-    };
-
-    log('[onSessionChanged] session: ', this._session);
-    const complete = isSessionComplete(this._session);
-    this.dispatchEvent(
-      new SessionChangedEvent(this.tagName.toLowerCase(), complete)
-    );
-  }
-
   get multiTraitRubric() {
     return this.querySelector(`${MULTI_TRAIT_RUBRIC_TAG_NAME}#multiTraitRubric`);
   }
@@ -153,19 +91,13 @@ class ComplexRubric extends HTMLElement {
 
   connectedCallback() {
     this._render();
-    this.addEventListener(SESSION_CHANGED, this.onSessionUpdated);
-  }
-
-  disconnectedCallback() {
-    this.removeEventListener(SESSION_CHANGED, this.onSessionUpdated);
   }
 
   _render() {
-    // console.log('this._model.rubricType', this.props.model.rubricType);
     this.innerHTML = `
       <div>
-     <div style="${this._type === 'simpleRubric' ? `visibility: visible` : `visibility: hidden`}"><${RUBRIC_TAG_NAME} id="simpleRubric"></${RUBRIC_TAG_NAME}></div>
-       <div style="${this._type !== 'simpleRubric' ? `visibility: visible` : `visibility: hidden`}"> <${MULTI_TRAIT_RUBRIC_TAG_NAME} id="multiTraitRubric"></${MULTI_TRAIT_RUBRIC_TAG_NAME}></div>
+        <div style="${this._type === RUBRIC_TYPES.SIMPLE_RUBRIC ? `visibility: visible` : `visibility: hidden`}"><${RUBRIC_TAG_NAME} id="simpleRubric"></${RUBRIC_TAG_NAME}></div>
+        <div style="${this._type !== RUBRIC_TYPES.SIMPLE_RUBRIC ? `visibility: visible` : `visibility: hidden`}"> <${MULTI_TRAIT_RUBRIC_TAG_NAME} id="multiTraitRubric"></${MULTI_TRAIT_RUBRIC_TAG_NAME}></div>
       </div>
     `;
   }

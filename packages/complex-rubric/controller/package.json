@@ -5,5 +5,8 @@
   "main": "lib/index.js",
   "scripts": {
     "test": "./node_modules/.bin/jest"
+  },
+  "dependencies": {
+    "@pie-lib/rubric": "^0.4.39"
   }
 }
