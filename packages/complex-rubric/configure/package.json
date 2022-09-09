@@ -10,12 +10,13 @@
     "@pie-framework/pie-configure-events": "^1.2.0",
     "@pie-element/multi-trait-rubric": "^2.0.7",
     "@pie-element/rubric": "^2.0.7",
-    "@pie-lib/drag": "^1.1.52",
     "@pie-lib/rubric": "^0.4.39",
+    "@material-ui/core": "^3.9.2",
     "debug": "^4.1.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "prop-types": "^15.6.2"
+    "prop-types": "^15.6.2",
+    "lodash": "^4.17.15"
   },
   "license": "ISC"
 }
