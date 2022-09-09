@@ -16,6 +16,7 @@ const rubricDefaultModel = {
 };
 
 const multiTraitDefaultConfiguration = {
+  settingsPanelDisabled: true,
   excludeZeroDialogBoxContent: {
     title: 'Exclude 0 (Zero) from Score Point Values.',
     text: `<div>
