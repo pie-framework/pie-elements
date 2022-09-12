@@ -217,8 +217,13 @@ export function createDefaultModel(model = {}) {
 
 // this function is duplicated in configure; at some point, use the same shared function
 const updateTicks = model => {
-  const { graph: { labelStep, ticks = {}} = {}} = model;
+  const { graph: { domain, labelStep, ticks = {}} = {}} = model;
   const { minor, major } = ticks;
+
+  if (domain) {
+    domain.min = Number(domain.min.toFixed(2));
+    domain.max = Number(domain.max.toFixed(2));
+  }
 
   if (labelStep && typeof labelStep === 'string' && labelStep.match(/^[1-9][0-9]*\/[1-9][0-9]*$/g)) {
     model.graph.fraction = true;
