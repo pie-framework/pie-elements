@@ -11,8 +11,8 @@ const updateTicks = model => {
   const { minor, major } = ticks;
 
   if (domain) {
-    domain.min = Number(domain.min.toFixed(2));
-    domain.max = Number(domain.max.toFixed(2));
+    domain.min = Number((domain.min || 0).toFixed(2));
+    domain.max = Number((domain.max || 0).toFixed(2));
   }
 
   if (labelStep && typeof labelStep === 'string' && labelStep.match(/^[1-9][0-9]*\/[1-9][0-9]*$/g)) {
