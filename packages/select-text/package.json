@@ -12,7 +12,7 @@
     "@pie-lib/correct-answer-toggle": "^2.3.44",
     "@pie-lib/math-rendering": "^2.5.0",
     "@pie-lib/render-ui": "^4.13.4",
-    "@pie-lib/text-select": "^1.8.23",
+    "@pie-lib/text-select": "^1.8.24",
     "prop-types": "^15.6.1",
     "react": "^16.8.1",
     "react-dom": "^16.8.1"

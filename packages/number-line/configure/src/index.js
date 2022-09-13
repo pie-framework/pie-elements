@@ -7,8 +7,13 @@ import * as math from 'mathjs';
 
 // this function is duplicated in controller; at some point, use the same shared function
 const updateTicks = model => {
-  const { graph: { labelStep, ticks = {}} = {}} = model;
+  const { graph: { domain, labelStep, ticks = {}} = {}} = model;
   const { minor, major } = ticks;
+
+  if (domain) {
+    domain.min = Number((domain.min || 0).toFixed(2));
+    domain.max = Number((domain.max || 0).toFixed(2));
+  }
 
   if (labelStep && typeof labelStep === 'string' && labelStep.match(/^[1-9][0-9]*\/[1-9][0-9]*$/g)) {
     model.graph.fraction = true;
