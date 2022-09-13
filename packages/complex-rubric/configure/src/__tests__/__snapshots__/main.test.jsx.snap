@@ -1,0 +1,100 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Main snapshot renders 1`] = `
+<div>
+  <div>
+    <div>
+      <RadioGroup
+        aria-label="rubric-type"
+        defaultValue="simpleRubric"
+        name="rubricType"
+        onChange={[Function]}
+        value="simpleRubric"
+      >
+        <WithStyles(WithFormControlContext(FormControlLabel))
+          control={<WithStyles(Radio) />}
+          label="Simple Rubric"
+          value="simpleRubric"
+        />
+        <WithStyles(WithFormControlContext(FormControlLabel))
+          control={<WithStyles(Radio) />}
+          label="Multi Trait Rubric"
+          value="multiTraitRubric"
+        />
+      </RadioGroup>
+    </div>
+    <div>
+      <rubric-configure
+        id="simpleRubric"
+        key="simple-rubric"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Main snapshot renders multi trait rubric 1`] = `
+<div>
+  <div>
+    <div>
+      <RadioGroup
+        aria-label="rubric-type"
+        defaultValue="simpleRubric"
+        name="rubricType"
+        onChange={[Function]}
+        value="multiTraitRubric"
+      >
+        <WithStyles(WithFormControlContext(FormControlLabel))
+          control={<WithStyles(Radio) />}
+          label="Simple Rubric"
+          value="simpleRubric"
+        />
+        <WithStyles(WithFormControlContext(FormControlLabel))
+          control={<WithStyles(Radio) />}
+          label="Multi Trait Rubric"
+          value="multiTraitRubric"
+        />
+      </RadioGroup>
+    </div>
+    <div>
+      <multi-trait-rubric-configure
+        id="multiTraitRubric"
+        key="multi-trait-rubric"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Main snapshot renders simple rubric 1`] = `
+<div>
+  <div>
+    <div>
+      <RadioGroup
+        aria-label="rubric-type"
+        defaultValue="simpleRubric"
+        name="rubricType"
+        onChange={[Function]}
+        value="simpleRubric"
+      >
+        <WithStyles(WithFormControlContext(FormControlLabel))
+          control={<WithStyles(Radio) />}
+          label="Simple Rubric"
+          value="simpleRubric"
+        />
+        <WithStyles(WithFormControlContext(FormControlLabel))
+          control={<WithStyles(Radio) />}
+          label="Multi Trait Rubric"
+          value="multiTraitRubric"
+        />
+      </RadioGroup>
+    </div>
+    <div>
+      <rubric-configure
+        id="simpleRubric"
+        key="simple-rubric"
+      />
+    </div>
+  </div>
+</div>
+`;
