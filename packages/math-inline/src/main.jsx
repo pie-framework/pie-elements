@@ -527,7 +527,15 @@ export class Main extends React.Component {
       </div>
     );
 
-    if (tooltipModeEnabled && (showCorrectAnswerToggle || teacherInstructions || rationale || feedback)) {
+    if (
+      tooltipModeEnabled
+      && (
+        showCorrectAnswerToggle
+        || (teacherInstructions && hasText(teacherInstructions))
+        || (rationale && hasText(rationale))
+        || feedback
+      )
+    ) {
       return (
         <Tooltip
           interactive
