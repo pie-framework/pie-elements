@@ -9,7 +9,7 @@
   "dependencies": {
     "@material-ui/core": "^3.9.2",
     "@pie-framework/pie-configure-events": "^1.2.0",
-    "@pie-lib/charting": "^5.1.7",
+    "@pie-lib/charting": "^5.1.8",
     "@pie-lib/config-ui": "^11.0.15",
     "@pie-lib/editable-html": "^9.1.5",
     "classnames": "^2.2.5",
