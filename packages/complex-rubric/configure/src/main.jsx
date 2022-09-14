@@ -42,10 +42,11 @@ export class Main extends React.Component {
   render() {
     const {
       classes,
-      model
+      model,
+      configuration
     } = this.props;
     const { rubricType, rubrics = {} } = model;
-
+    const { multiTraitRubric } = configuration;
     let rubricTag = '';
 
     switch (rubricType) {
@@ -90,8 +91,18 @@ export class Main extends React.Component {
               defaultValue={RUBRIC_TYPES.SIMPLE_RUBRIC}
               onChange={this.onChangeRubricType}
             >
-              <FormControlLabel value={RUBRIC_TYPES.SIMPLE_RUBRIC} control={<Radio/>} label='Simple Rubric'/>
-              <FormControlLabel value={RUBRIC_TYPES.MULTI_TRAIT_RUBRIC} control={<Radio/>} label='Multi Trait Rubric'/>
+              <FormControlLabel
+                value={RUBRIC_TYPES.SIMPLE_RUBRIC}
+                control={<Radio/>}
+                checked={rubricType === RUBRIC_TYPES.SIMPLE_RUBRIC}
+                label='Simple Rubric'
+              />
+              <FormControlLabel
+                value={RUBRIC_TYPES.MULTI_TRAIT_RUBRIC}
+                control={<Radio/>}
+                checked={rubricType === RUBRIC_TYPES.MULTI_TRAIT_RUBRIC}
+                label='Multi Trait Rubric'
+              />
             </RadioGroup>
           </div>
           <div>

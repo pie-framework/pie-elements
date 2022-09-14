@@ -9,9 +9,7 @@ jest.mock('@pie-lib/rubric', () => ({
 }));
 
 describe('complex rubric model', () => {
-
   let state = { ...defaultModel.model };
-
   let session = {};
   let env, result;
 
