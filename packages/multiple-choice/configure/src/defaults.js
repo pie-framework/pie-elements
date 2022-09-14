@@ -102,10 +102,6 @@ export default {
       prompt: 300,
       rationale: 300,
       choices: 300
-    },
-    pieApi: {
-      token: '',
-      host: ''
     }
   },
 };
