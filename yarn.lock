@@ -2167,7 +2167,7 @@
   dependencies:
     "@octokit/openapi-types" "^11.2.0"
 
-"@pie-element/multi-trait-rubric@^2.0.7":
+"@pie-element/multi-trait-rubric@^2.0.10", "@pie-element/multi-trait-rubric@^2.0.7":
   version "2.0.10"
   resolved "https://registry.yarnpkg.com/@pie-element/multi-trait-rubric/-/multi-trait-rubric-2.0.10.tgz#41f05a575c051d1b1c856d4f0381fcaf35c4880f"
   integrity sha512-tsDX7wfgF1Rx1do0IFo3RNkiRDNXIFPI4O3A95Jq9AEDbqfqDu/Z5M4U39Te23osXbfJQyuE2hFO5gd5w3PW5A==
@@ -2181,7 +2181,7 @@
     react "^16.8.1"
     react-dom "^16.8.1"
 
-"@pie-element/rubric@^2.0.7":
+"@pie-element/rubric@^2.0.10", "@pie-element/rubric@^2.0.7":
   version "2.0.10"
   resolved "https://registry.yarnpkg.com/@pie-element/rubric/-/rubric-2.0.10.tgz#c9fd11b80a5ff1caa48a22a388830d37e2ab6a68"
   integrity sha512-cvv9bWcEvvo/RfamV6suG322DOkzvco7vHOPhblra8NNqbretxwLz9Zu2lXnw4O7ncJ4/p4VjXnFeWKwnuATOA==
