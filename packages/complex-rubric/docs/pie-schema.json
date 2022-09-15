@@ -1,0 +1,994 @@
+{
+  "description": "Model for the ComplexRubricPie Interaction",
+  "additionalProperties": false,
+  "type": "object",
+  "properties": {
+    "rubricType": {
+      "title": "RubricType",
+      "enum": [
+        "multiTraitRubric",
+        "simpleRubric"
+      ],
+      "type": "string"
+    },
+    "rubrics": {
+      "title": "RubricModels",
+      "type": "object",
+      "properties": {
+        "simpleRubric": {
+          "description": "Model for the RubricPie Interaction",
+          "additionalProperties": false,
+          "title": "RubricPie",
+          "type": "object",
+          "properties": {
+            "points": {
+              "description": "Indicates the score points labels. Starting from 0 to max",
+              "type": "array",
+              "items": {
+                "description": "Allows manipulation and formatting of text strings and determination and location of substrings within strings.",
+                "type": "object",
+                "additionalProperties": false,
+                "patternProperties": {
+                  "^[0-9]+$": {
+                    "type": "string"
+                  }
+                }
+              },
+              "title": "points"
+            },
+            "sampleAnswers": {
+              "description": "Indicates the sample answers labels. Starting from 0 to max",
+              "type": "array",
+              "items": {
+                "description": "Allows manipulation and formatting of text strings and determination and location of substrings within strings.",
+                "type": "object",
+                "additionalProperties": false,
+                "patternProperties": {
+                  "^[0-9]+$": {
+                    "type": "string"
+                  }
+                }
+              },
+              "title": "sampleAnswers"
+            },
+            "maxPoints": {
+              "description": "Indicates the max limit for scoring points",
+              "type": "number",
+              "title": "maxPoints"
+            },
+            "excludeZeros": {
+              "description": "Indicates if point 0 should be shown",
+              "type": "boolean",
+              "title": "excludeZeros"
+            },
+            "id": {
+              "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
+              "type": "string",
+              "title": "id"
+            },
+            "element": {
+              "description": "The html Element tag name",
+              "type": "string",
+              "title": "element"
+            }
+          },
+          "required": [
+            "element",
+            "id"
+          ]
+        },
+        "multiTraitRubric": {
+          "description": "Model for the MultiTraitRubric Interaction",
+          "additionalProperties": false,
+          "title": "MultiTraitRubricPie",
+          "type": "object",
+          "properties": {
+            "halfScoring": {
+              "description": "Indicates if half scoring is enabled",
+              "type": "boolean",
+              "title": "halfScoring"
+            },
+            "pointLabels": {
+              "description": "Indicates if point labels should be shown",
+              "type": "boolean",
+              "title": "pointLabels"
+            },
+            "visibleToStudent": {
+              "description": "Indicates if should be visible to student",
+              "type": "boolean",
+              "title": "visibleToStudent"
+            },
+            "description": {
+              "description": "Indicates if description should be shown",
+              "type": "boolean",
+              "title": "description"
+            },
+            "standards": {
+              "description": "Indicates if standards should be shown",
+              "type": "boolean",
+              "title": "standards"
+            },
+            "excludeZero": {
+              "description": "Indicates if scoring should start at 0 or 1",
+              "type": "boolean",
+              "title": "excludeZero"
+            },
+            "spellCheckEnabled": {
+              "description": "Indicates if spellcheck is enabled for the author. Default value is true",
+              "type": "boolean",
+              "title": "spellCheckEnabled"
+            },
+            "scales": {
+              "description": "scales",
+              "type": "array",
+              "items": {
+                "title": "Scale",
+                "type": "object",
+                "properties": {
+                  "maxPoints": {
+                    "description": "Indicates max limit for scoring points",
+                    "type": "number",
+                    "title": "maxPoints"
+                  },
+                  "scorePointsLabels": {
+                    "description": "Score labels. Starting from 0 to max.",
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "title": "scorePointsLabels"
+                  },
+                  "traitLabel": {
+                    "description": "Trait label",
+                    "type": "string",
+                    "title": "traitLabel"
+                  },
+                  "traits": {
+                    "description": "Traits",
+                    "type": "array",
+                    "items": {
+                      "title": "Trait",
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "description": "Trait name",
+                          "type": "string",
+                          "title": "name"
+                        },
+                        "standards": {
+                          "description": "Trait standards",
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          },
+                          "title": "standards"
+                        },
+                        "description": {
+                          "description": "Trait description",
+                          "type": "string",
+                          "title": "description"
+                        },
+                        "scorePointsDescriptors": {
+                          "description": "Score point descriptors. Starting from 0 to max.",
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          },
+                          "title": "scorePointsDescriptors"
+                        }
+                      },
+                      "required": [
+                        "description",
+                        "name",
+                        "scorePointsDescriptors",
+                        "standards"
+                      ]
+                    },
+                    "title": "traits"
+                  }
+                },
+                "required": [
+                  "maxPoints",
+                  "scorePointsLabels",
+                  "traitLabel",
+                  "traits"
+                ]
+              },
+              "title": "scales"
+            },
+            "id": {
+              "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
+              "type": "string",
+              "title": "id"
+            },
+            "element": {
+              "description": "The html Element tag name",
+              "type": "string",
+              "title": "element"
+            }
+          },
+          "required": [
+            "element",
+            "id",
+            "scales",
+            "spellCheckEnabled"
+          ]
+        }
+      },
+      "required": [
+        "multiTraitRubric",
+        "simpleRubric"
+      ]
+    },
+    "id": {
+      "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
+      "type": "string",
+      "title": "id"
+    },
+    "element": {
+      "description": "The html Element tag name",
+      "type": "string",
+      "title": "element"
+    }
+  },
+  "required": [
+    "element",
+    "id",
+    "rubricType",
+    "rubrics"
+  ],
+  "definitions": {
+    "MultiTraitRubricConfigure": {
+      "description": "Config Object for @pie-elements/multi-trait-rubric",
+      "additionalProperties": false,
+      "title": "MultiTraitRubricConfigure",
+      "type": "object",
+      "properties": {
+        "excludeZeroDialogBoxContent": {
+          "title": "DialogContent",
+          "type": "object",
+          "properties": {
+            "title": {
+              "description": "Dialog box title",
+              "type": "string",
+              "title": "title"
+            },
+            "text": {
+              "description": "Dialog box text",
+              "type": "string",
+              "title": "text"
+            }
+          }
+        },
+        "includeZeroDialogBoxContent": {
+          "title": "DialogContent",
+          "type": "object",
+          "properties": {
+            "title": {
+              "description": "Dialog box title",
+              "type": "string",
+              "title": "title"
+            },
+            "text": {
+              "description": "Dialog box text",
+              "type": "string",
+              "title": "text"
+            }
+          }
+        },
+        "deleteTraitDialogBoxContent": {
+          "title": "DialogContent",
+          "type": "object",
+          "properties": {
+            "title": {
+              "description": "Dialog box title",
+              "type": "string",
+              "title": "title"
+            },
+            "text": {
+              "description": "Dialog box text",
+              "type": "string",
+              "title": "text"
+            }
+          }
+        },
+        "deleteScaleDialogBoxContent": {
+          "title": "DialogContent",
+          "type": "object",
+          "properties": {
+            "title": {
+              "description": "Dialog box title",
+              "type": "string",
+              "title": "title"
+            },
+            "text": {
+              "description": "Dialog box text",
+              "type": "string",
+              "title": "text"
+            }
+          }
+        },
+        "maxPointsDialogBoxContent": {
+          "title": "DialogContent",
+          "type": "object",
+          "properties": {
+            "title": {
+              "description": "Dialog box title",
+              "type": "string",
+              "title": "title"
+            },
+            "text": {
+              "description": "Dialog box text",
+              "type": "string",
+              "title": "text"
+            }
+          }
+        },
+        "showExcludeZero": {
+          "title": "ConfigureProp",
+          "type": "object",
+          "properties": {
+            "settings": {
+              "description": "Indicates if the item has to be displayed in the Settings Panel",
+              "type": "boolean",
+              "title": "settings"
+            },
+            "label": {
+              "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+              "type": "string",
+              "title": "label"
+            }
+          }
+        },
+        "showScorePointLabels": {
+          "title": "ConfigureProp",
+          "type": "object",
+          "properties": {
+            "settings": {
+              "description": "Indicates if the item has to be displayed in the Settings Panel",
+              "type": "boolean",
+              "title": "settings"
+            },
+            "label": {
+              "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+              "type": "string",
+              "title": "label"
+            }
+          }
+        },
+        "showDescription": {
+          "title": "ConfigureProp",
+          "type": "object",
+          "properties": {
+            "settings": {
+              "description": "Indicates if the item has to be displayed in the Settings Panel",
+              "type": "boolean",
+              "title": "settings"
+            },
+            "label": {
+              "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+              "type": "string",
+              "title": "label"
+            }
+          }
+        },
+        "showVisibleToStudent": {
+          "title": "ConfigureProp",
+          "type": "object",
+          "properties": {
+            "settings": {
+              "description": "Indicates if the item has to be displayed in the Settings Panel",
+              "type": "boolean",
+              "title": "settings"
+            },
+            "label": {
+              "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+              "type": "string",
+              "title": "label"
+            }
+          }
+        },
+        "showHalfScoring": {
+          "title": "ConfigureProp",
+          "type": "object",
+          "properties": {
+            "settings": {
+              "description": "Indicates if the item has to be displayed in the Settings Panel",
+              "type": "boolean",
+              "title": "settings"
+            },
+            "label": {
+              "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+              "type": "string",
+              "title": "label"
+            }
+          }
+        },
+        "spellCheck": {
+          "title": "ConfigureProp",
+          "type": "object",
+          "properties": {
+            "settings": {
+              "description": "Indicates if the item has to be displayed in the Settings Panel",
+              "type": "boolean",
+              "title": "settings"
+            },
+            "label": {
+              "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+              "type": "string",
+              "title": "label"
+            }
+          }
+        },
+        "width": {
+          "description": "How large (in px) should multi-trait-rubric be",
+          "type": "string",
+          "title": "width"
+        }
+      },
+      "required": [
+        "width"
+      ]
+    },
+    "DialogContent": {
+      "title": "DialogContent",
+      "type": "object",
+      "properties": {
+        "title": {
+          "description": "Dialog box title",
+          "type": "string",
+          "title": "title"
+        },
+        "text": {
+          "description": "Dialog box text",
+          "type": "string",
+          "title": "text"
+        }
+      }
+    },
+    "ConfigureProp": {
+      "title": "ConfigureProp",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "Indicates if the item has to be displayed in the Settings Panel",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+          "type": "string",
+          "title": "label"
+        }
+      }
+    },
+    "RubricType": {
+      "title": "RubricType",
+      "enum": [
+        "multiTraitRubric",
+        "simpleRubric"
+      ],
+      "type": "string"
+    },
+    "RubricModels": {
+      "title": "RubricModels",
+      "type": "object",
+      "properties": {
+        "simpleRubric": {
+          "description": "Model for the RubricPie Interaction",
+          "additionalProperties": false,
+          "title": "RubricPie",
+          "type": "object",
+          "properties": {
+            "points": {
+              "description": "Indicates the score points labels. Starting from 0 to max",
+              "type": "array",
+              "items": {
+                "description": "Allows manipulation and formatting of text strings and determination and location of substrings within strings.",
+                "type": "object",
+                "additionalProperties": false,
+                "patternProperties": {
+                  "^[0-9]+$": {
+                    "type": "string"
+                  }
+                }
+              },
+              "title": "points"
+            },
+            "sampleAnswers": {
+              "description": "Indicates the sample answers labels. Starting from 0 to max",
+              "type": "array",
+              "items": {
+                "description": "Allows manipulation and formatting of text strings and determination and location of substrings within strings.",
+                "type": "object",
+                "additionalProperties": false,
+                "patternProperties": {
+                  "^[0-9]+$": {
+                    "type": "string"
+                  }
+                }
+              },
+              "title": "sampleAnswers"
+            },
+            "maxPoints": {
+              "description": "Indicates the max limit for scoring points",
+              "type": "number",
+              "title": "maxPoints"
+            },
+            "excludeZeros": {
+              "description": "Indicates if point 0 should be shown",
+              "type": "boolean",
+              "title": "excludeZeros"
+            },
+            "id": {
+              "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
+              "type": "string",
+              "title": "id"
+            },
+            "element": {
+              "description": "The html Element tag name",
+              "type": "string",
+              "title": "element"
+            }
+          },
+          "required": [
+            "element",
+            "id"
+          ]
+        },
+        "multiTraitRubric": {
+          "description": "Model for the MultiTraitRubric Interaction",
+          "additionalProperties": false,
+          "title": "MultiTraitRubricPie",
+          "type": "object",
+          "properties": {
+            "halfScoring": {
+              "description": "Indicates if half scoring is enabled",
+              "type": "boolean",
+              "title": "halfScoring"
+            },
+            "pointLabels": {
+              "description": "Indicates if point labels should be shown",
+              "type": "boolean",
+              "title": "pointLabels"
+            },
+            "visibleToStudent": {
+              "description": "Indicates if should be visible to student",
+              "type": "boolean",
+              "title": "visibleToStudent"
+            },
+            "description": {
+              "description": "Indicates if description should be shown",
+              "type": "boolean",
+              "title": "description"
+            },
+            "standards": {
+              "description": "Indicates if standards should be shown",
+              "type": "boolean",
+              "title": "standards"
+            },
+            "excludeZero": {
+              "description": "Indicates if scoring should start at 0 or 1",
+              "type": "boolean",
+              "title": "excludeZero"
+            },
+            "spellCheckEnabled": {
+              "description": "Indicates if spellcheck is enabled for the author. Default value is true",
+              "type": "boolean",
+              "title": "spellCheckEnabled"
+            },
+            "scales": {
+              "description": "scales",
+              "type": "array",
+              "items": {
+                "title": "Scale",
+                "type": "object",
+                "properties": {
+                  "maxPoints": {
+                    "description": "Indicates max limit for scoring points",
+                    "type": "number",
+                    "title": "maxPoints"
+                  },
+                  "scorePointsLabels": {
+                    "description": "Score labels. Starting from 0 to max.",
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "title": "scorePointsLabels"
+                  },
+                  "traitLabel": {
+                    "description": "Trait label",
+                    "type": "string",
+                    "title": "traitLabel"
+                  },
+                  "traits": {
+                    "description": "Traits",
+                    "type": "array",
+                    "items": {
+                      "title": "Trait",
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "description": "Trait name",
+                          "type": "string",
+                          "title": "name"
+                        },
+                        "standards": {
+                          "description": "Trait standards",
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          },
+                          "title": "standards"
+                        },
+                        "description": {
+                          "description": "Trait description",
+                          "type": "string",
+                          "title": "description"
+                        },
+                        "scorePointsDescriptors": {
+                          "description": "Score point descriptors. Starting from 0 to max.",
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          },
+                          "title": "scorePointsDescriptors"
+                        }
+                      },
+                      "required": [
+                        "description",
+                        "name",
+                        "scorePointsDescriptors",
+                        "standards"
+                      ]
+                    },
+                    "title": "traits"
+                  }
+                },
+                "required": [
+                  "maxPoints",
+                  "scorePointsLabels",
+                  "traitLabel",
+                  "traits"
+                ]
+              },
+              "title": "scales"
+            },
+            "id": {
+              "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
+              "type": "string",
+              "title": "id"
+            },
+            "element": {
+              "description": "The html Element tag name",
+              "type": "string",
+              "title": "element"
+            }
+          },
+          "required": [
+            "element",
+            "id",
+            "scales",
+            "spellCheckEnabled"
+          ]
+        }
+      },
+      "required": [
+        "multiTraitRubric",
+        "simpleRubric"
+      ]
+    },
+    "RubricPie": {
+      "description": "Model for the RubricPie Interaction",
+      "additionalProperties": false,
+      "title": "RubricPie",
+      "type": "object",
+      "properties": {
+        "points": {
+          "description": "Indicates the score points labels. Starting from 0 to max",
+          "type": "array",
+          "items": {
+            "description": "Allows manipulation and formatting of text strings and determination and location of substrings within strings.",
+            "type": "object",
+            "additionalProperties": false,
+            "patternProperties": {
+              "^[0-9]+$": {
+                "type": "string"
+              }
+            }
+          },
+          "title": "points"
+        },
+        "sampleAnswers": {
+          "description": "Indicates the sample answers labels. Starting from 0 to max",
+          "type": "array",
+          "items": {
+            "description": "Allows manipulation and formatting of text strings and determination and location of substrings within strings.",
+            "type": "object",
+            "additionalProperties": false,
+            "patternProperties": {
+              "^[0-9]+$": {
+                "type": "string"
+              }
+            }
+          },
+          "title": "sampleAnswers"
+        },
+        "maxPoints": {
+          "description": "Indicates the max limit for scoring points",
+          "type": "number",
+          "title": "maxPoints"
+        },
+        "excludeZeros": {
+          "description": "Indicates if point 0 should be shown",
+          "type": "boolean",
+          "title": "excludeZeros"
+        },
+        "id": {
+          "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
+          "type": "string",
+          "title": "id"
+        },
+        "element": {
+          "description": "The html Element tag name",
+          "type": "string",
+          "title": "element"
+        }
+      },
+      "required": [
+        "element",
+        "id"
+      ]
+    },
+    "MultiTraitRubricPie": {
+      "description": "Model for the MultiTraitRubric Interaction",
+      "additionalProperties": false,
+      "title": "MultiTraitRubricPie",
+      "type": "object",
+      "properties": {
+        "halfScoring": {
+          "description": "Indicates if half scoring is enabled",
+          "type": "boolean",
+          "title": "halfScoring"
+        },
+        "pointLabels": {
+          "description": "Indicates if point labels should be shown",
+          "type": "boolean",
+          "title": "pointLabels"
+        },
+        "visibleToStudent": {
+          "description": "Indicates if should be visible to student",
+          "type": "boolean",
+          "title": "visibleToStudent"
+        },
+        "description": {
+          "description": "Indicates if description should be shown",
+          "type": "boolean",
+          "title": "description"
+        },
+        "standards": {
+          "description": "Indicates if standards should be shown",
+          "type": "boolean",
+          "title": "standards"
+        },
+        "excludeZero": {
+          "description": "Indicates if scoring should start at 0 or 1",
+          "type": "boolean",
+          "title": "excludeZero"
+        },
+        "spellCheckEnabled": {
+          "description": "Indicates if spellcheck is enabled for the author. Default value is true",
+          "type": "boolean",
+          "title": "spellCheckEnabled"
+        },
+        "scales": {
+          "description": "scales",
+          "type": "array",
+          "items": {
+            "title": "Scale",
+            "type": "object",
+            "properties": {
+              "maxPoints": {
+                "description": "Indicates max limit for scoring points",
+                "type": "number",
+                "title": "maxPoints"
+              },
+              "scorePointsLabels": {
+                "description": "Score labels. Starting from 0 to max.",
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "title": "scorePointsLabels"
+              },
+              "traitLabel": {
+                "description": "Trait label",
+                "type": "string",
+                "title": "traitLabel"
+              },
+              "traits": {
+                "description": "Traits",
+                "type": "array",
+                "items": {
+                  "title": "Trait",
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "description": "Trait name",
+                      "type": "string",
+                      "title": "name"
+                    },
+                    "standards": {
+                      "description": "Trait standards",
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "title": "standards"
+                    },
+                    "description": {
+                      "description": "Trait description",
+                      "type": "string",
+                      "title": "description"
+                    },
+                    "scorePointsDescriptors": {
+                      "description": "Score point descriptors. Starting from 0 to max.",
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "title": "scorePointsDescriptors"
+                    }
+                  },
+                  "required": [
+                    "description",
+                    "name",
+                    "scorePointsDescriptors",
+                    "standards"
+                  ]
+                },
+                "title": "traits"
+              }
+            },
+            "required": [
+              "maxPoints",
+              "scorePointsLabels",
+              "traitLabel",
+              "traits"
+            ]
+          },
+          "title": "scales"
+        },
+        "id": {
+          "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
+          "type": "string",
+          "title": "id"
+        },
+        "element": {
+          "description": "The html Element tag name",
+          "type": "string",
+          "title": "element"
+        }
+      },
+      "required": [
+        "element",
+        "id",
+        "scales",
+        "spellCheckEnabled"
+      ]
+    },
+    "Scale": {
+      "title": "Scale",
+      "type": "object",
+      "properties": {
+        "maxPoints": {
+          "description": "Indicates max limit for scoring points",
+          "type": "number",
+          "title": "maxPoints"
+        },
+        "scorePointsLabels": {
+          "description": "Score labels. Starting from 0 to max.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "scorePointsLabels"
+        },
+        "traitLabel": {
+          "description": "Trait label",
+          "type": "string",
+          "title": "traitLabel"
+        },
+        "traits": {
+          "description": "Traits",
+          "type": "array",
+          "items": {
+            "title": "Trait",
+            "type": "object",
+            "properties": {
+              "name": {
+                "description": "Trait name",
+                "type": "string",
+                "title": "name"
+              },
+              "standards": {
+                "description": "Trait standards",
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "title": "standards"
+              },
+              "description": {
+                "description": "Trait description",
+                "type": "string",
+                "title": "description"
+              },
+              "scorePointsDescriptors": {
+                "description": "Score point descriptors. Starting from 0 to max.",
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "title": "scorePointsDescriptors"
+              }
+            },
+            "required": [
+              "description",
+              "name",
+              "scorePointsDescriptors",
+              "standards"
+            ]
+          },
+          "title": "traits"
+        }
+      },
+      "required": [
+        "maxPoints",
+        "scorePointsLabels",
+        "traitLabel",
+        "traits"
+      ]
+    },
+    "Trait": {
+      "title": "Trait",
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "Trait name",
+          "type": "string",
+          "title": "name"
+        },
+        "standards": {
+          "description": "Trait standards",
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "standards"
+        },
+        "description": {
+          "description": "Trait description",
+          "type": "string",
+          "title": "description"
+        },
+        "scorePointsDescriptors": {
+          "description": "Score point descriptors. Starting from 0 to max.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "scorePointsDescriptors"
+        }
+      },
+      "required": [
+        "description",
+        "name",
+        "scorePointsDescriptors",
+        "standards"
+      ]
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

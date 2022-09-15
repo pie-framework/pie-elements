@@ -1,0 +1,25 @@
+{
+  "name": "@pie-element/complex-rubric",
+  "version": "0.0.1",
+  "main": "lib/index.js",
+  "module": "src/index.js",
+  "description": "Complex Rubric Scoring Interaction",
+  "repository": "pie-framework/pie-elements",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@material-ui/core": "^3.9.2",
+    "prop-types": "^15.7.2",
+    "@pie-lib/rubric": "^0.4.39"
+  },
+  "author": "pie framework developers",
+  "license": "ISC",
+  "gitHead": "0e14ff981bcdc8a89a0e58484026496701bfdbc3",
+  "scripts": {
+    "postpublish": "../../scripts/postpublish"
+  },
+  "exports": {
+    ".": "./src/index.js"
+  }
+}

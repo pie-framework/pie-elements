@@ -1,0 +1,12 @@
+{
+  "name": "@pie-element/complex-rubric-controller",
+  "private": true,
+  "version": "0.0.1",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/jest"
+  },
+  "dependencies": {
+    "@pie-lib/rubric": "^0.4.39"
+  }
+}
