@@ -2352,7 +2352,7 @@
     react-dnd "^11.1.3"
     react-dnd-html5-backend "^11.1.3"
 
-"@pie-lib/editable-html@^9.1.5", "@pie-lib/editable-html@^9.1.6":
+"@pie-lib/editable-html@^9.1.6":
   version "9.1.6"
   resolved "https://registry.yarnpkg.com/@pie-lib/editable-html/-/editable-html-9.1.6.tgz#c412987082bf0573b96b3e404b4ec8cc19b2d1e1"
   integrity sha512-rqLi5pW4FD8e7dGfmzaf5mKNqiE11RoNReSR0TwvookiYbt1jFh5lBqWR3+ZVJttarH/+8EhjhavuyrgAsiFSQ==
@@ -2587,22 +2587,6 @@
     "@material-ui/core" "^3.9.3"
     "@material-ui/icons" "^3.0.2"
     "@pie-lib/editable-html" "^9.1.6"
-    debug "^4.1.1"
-    editable-html "npm:@pie-lib/editable-html@^7.21.0"
-    lodash "^4.17.11"
-    prop-types "^15.7.2"
-    react "^16.8.1"
-    react-beautiful-dnd "^11.0.2"
-    react-dom "^16.9.0"
-
-"@pie-lib/rubric@^0.4.39":
-  version "0.4.39"
-  resolved "https://registry.yarnpkg.com/@pie-lib/rubric/-/rubric-0.4.39.tgz#c4f68fb72fff1ed4e0c4a221d57bd89c1d925199"
-  integrity sha512-sWfsY6m3JGvWcuKzVtpXoSc5k58XLTILP83MjdkChEPFAn4z7BkO7boiegjjWlhUjMTCi1chmd10aog2nURyKQ==
-  dependencies:
-    "@material-ui/core" "^3.9.3"
-    "@material-ui/icons" "^3.0.2"
-    "@pie-lib/editable-html" "^9.1.5"
     debug "^4.1.1"
     editable-html "npm:@pie-lib/editable-html@^7.21.0"
     lodash "^4.17.11"

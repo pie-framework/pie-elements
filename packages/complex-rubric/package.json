@@ -1,6 +1,6 @@
 {
   "name": "@pie-element/complex-rubric",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "main": "lib/index.js",
   "module": "src/index.js",
   "description": "Complex Rubric Scoring Interaction",
@@ -11,7 +11,7 @@
   "dependencies": {
     "@material-ui/core": "^3.9.2",
     "prop-types": "^15.7.2",
-    "@pie-lib/rubric": "^0.4.39"
+    "@pie-lib/rubric": "^0.5.1"
   },
   "author": "pie framework developers",
   "license": "ISC",
