@@ -2241,6 +2241,11 @@
   resolved "https://registry.yarnpkg.com/@pie-framework/pie-configure-events/-/pie-configure-events-1.2.0.tgz#b1a8dea620ac120fe768e4d6a624f40090d3f153"
   integrity sha512-6aFT2ckKLh3ECZ6eTgthkoa11sMxTeUHAau8UZ0CLLyCd2d0c0pzQaXY0D3bc0DL3++9u0t7DbZLleXrk/HDoA==
 
+"@pie-framework/pie-configure-events@^1.3.0":
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@pie-framework/pie-configure-events/-/pie-configure-events-1.3.0.tgz#51c0a57868880ae09296736344fa31fb02619594"
+  integrity sha512-H+lizaOPvgDEqTw+dmLwM/w8eDdxSaOV5tlK8OtPq5m7lt5iih6ZoQyg9V6FI9zgDdqUP3N8X5DyxHbzU9qTzQ==
+
 "@pie-framework/pie-player-events@^0.1.0":
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/@pie-framework/pie-player-events/-/pie-player-events-0.1.0.tgz#0150904118fd604559982ab658967811c053ffe3"
@@ -2329,6 +2334,40 @@
     lodash "^4.17.11"
     react-dnd "^11.1.3"
     react-dnd-html5-backend "^11.1.3"
+
+"@pie-lib/editable-html@7.17.4-next.556":
+  version "7.17.4-next.556"
+  resolved "https://registry.yarnpkg.com/@pie-lib/editable-html/-/editable-html-7.17.4-next.556.tgz#04a46e030331de6d6c6d5d41521c86ea15b9a785"
+  integrity sha512-Kr2a3231yKKn18iXaqzEEw5vYfbY6cwzckmv6e5ciKm7eOKZ3nR+aJVllIu0nymCbLdqrrq/lXOxCmgb58LB3A==
+  dependencies:
+    "@material-ui/core" "^3.8.3"
+    "@material-ui/icons" "^3.0.2"
+    "@material-ui/styles" "^3.0.0-alpha.10"
+    "@pie-lib/drag" "^1.1.52"
+    "@pie-lib/math-rendering" "^2.5.0"
+    "@pie-lib/math-toolbar" "^1.11.0"
+    "@pie-lib/render-ui" "^4.13.4"
+    change-case "^3.0.2"
+    classnames "^2.2.6"
+    debug "^4.1.1"
+    immutable "^4.0.0-rc.12"
+    keycode "^2.2.0"
+    lodash "^4.17.11"
+    prop-types "^15.6.2"
+    react-attr-converter "^0.3.1"
+    react-jss "^8.6.1"
+    react-portal "^4.2.0"
+    slate "^0.36.2"
+    slate-dev-environment "^0.2.0"
+    slate-edit-list "^0.11.3"
+    slate-edit-table "^0.17.0"
+    slate-html-serializer "^0.6.12"
+    slate-plain-serializer "^0.5.26"
+    slate-prop-types "^0.4.38"
+    slate-react "^0.14.3"
+    slate-schema-violations "^0.1.39"
+    slate-soft-break "^0.8.1"
+    to-style "^1.3.3"
 
 "@pie-lib/editable-html@^9.1.5":
   version "9.1.5"
@@ -2479,7 +2518,7 @@
     lodash "^4.17.11"
     mathjax-full "3.2.0"
 
-"@pie-lib/math-toolbar@^1.11.1":
+"@pie-lib/math-toolbar@^1.11.0", "@pie-lib/math-toolbar@^1.11.1":
   version "1.11.1"
   resolved "https://registry.yarnpkg.com/@pie-lib/math-toolbar/-/math-toolbar-1.11.1.tgz#bd9b8a359177b6249f7575f96aa71323ecb7a8f4"
   integrity sha512-nBWjBokA717KBAT6Jt/txlWFmYKFVGVRjH6WVzHjWcMQ+ozTaa6FXHWYQ7ZVBqM+SzdnjoJsMm9Gs9Tx27M3YQ==
