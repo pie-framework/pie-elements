@@ -1,6 +1,6 @@
 import { shallow } from 'enzyme';
 import React from 'react';
-import { Main } from '@pie-element/complex-rubric-configure/src/main';
+import { Main } from '../main';
 
 import defaults from '../defaults';
 
