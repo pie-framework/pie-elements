@@ -109,9 +109,13 @@ export class ChartingConfig extends React.Component {
 
   changeTitle = title => this.props.onChange({ ...this.props.model, title });
 
-  changeLefLabel = (range) => this.props.onChange({ ...this.props.model, range });
-
-  changeRightLabel = (domain) => this.props.onChange({ ...this.props.model, domain });
+  changeLabel = (type, label) => this.props.onChange({
+     ...this.props.model,
+     [type]: {
+      ...this.props.model[type],
+      label
+     },
+    })
 
   render() {
     const { classes, model, charts, placeholderMessages, showPixelGuides } = this.props;
@@ -145,8 +149,7 @@ export class ChartingConfig extends React.Component {
               title={model.title}
               onDataChange={this.changeData}
               onChangeTitle={this.changeTitle}
-              onChangeLeftLabel={this.changeLefLabel}
-              onChangeRightLabel={this.changeRightLabel}
+              onChangeLabels={this.changeLabel}
               addCategoryEnabled={true}
               categoryDefaultLabel={model.categoryDefaultLabel}
               placeholderMessages={placeholderMessages}
