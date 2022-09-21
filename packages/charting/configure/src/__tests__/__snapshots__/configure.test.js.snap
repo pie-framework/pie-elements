@@ -26,8 +26,7 @@ exports[`ChartingConfig renders snapshot 1`] = `
             "label": "Fruits",
           }
         }
-        onChangeLeftLabel={[Function]}
-        onChangeRightLabel={[Function]}
+        onChangeLabels={[Function]}
         onChangeTitle={[Function]}
         onDataChange={[Function]}
         range={
