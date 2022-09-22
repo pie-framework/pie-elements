@@ -80,6 +80,12 @@ exports[`Configure renders snapshot 1`] = `
               "step": 20,
             },
           },
+          "labelsPlaceholders": Object {
+            "bottom": "Click here to add a label for this axis",
+            "left": "Click here to add a label for this axis",
+            "right": "",
+            "top": "",
+          },
           "maxImageHeight": Object {
             "prompt": 300,
             "rationale": 300,
@@ -89,10 +95,6 @@ exports[`Configure renders snapshot 1`] = `
             "prompt": 300,
             "rationale": 300,
             "teacherInstructions": 300,
-          },
-          "placeholderMessages": Object {
-            "labels": "Click here to add a label for this axis",
-            "title": "Click here to add a title",
           },
           "prompt": Object {
             "label": "Item Stem",
@@ -123,6 +125,7 @@ exports[`Configure renders snapshot 1`] = `
             "label": "Chart Title",
             "settings": false,
           },
+          "titlePlaceholder": "Click here to add a title",
         }
       }
       groups={
@@ -339,6 +342,14 @@ exports[`Configure renders snapshot 1`] = `
           },
         ]
       }
+      labelsPlaceholders={
+        Object {
+          "bottom": "Click here to add a label for this axis",
+          "left": "Click here to add a label for this axis",
+          "right": "",
+          "top": "",
+        }
+      }
       model={
         Object {
           "addCategoryEnabled": true,
@@ -368,13 +379,8 @@ exports[`Configure renders snapshot 1`] = `
           "title": "This is a chart!",
         }
       }
-      placeholderMessages={
-        Object {
-          "labels": "Click here to add a label for this axis",
-          "title": "Click here to add a title",
-        }
-      }
       showPixelGuides={true}
+      titlePlaceholder="Click here to add a title"
     />
     <WithStyles(CorrectResponse)
       charts={
