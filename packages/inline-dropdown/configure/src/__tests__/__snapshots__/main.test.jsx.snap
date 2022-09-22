@@ -31,10 +31,6 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
               "label": "Allow Partial Scoring",
               "settings": false,
             },
-            "pieApi": Object {
-              "host": "",
-              "token": "",
-            },
             "prompt": Object {
               "label": "Prompt",
               "settings": true,
@@ -166,12 +162,6 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
           maxImageWidth={300}
           nonEmpty={false}
           onChange={[Function]}
-          pieApi={
-            Object {
-              "host": "",
-              "token": "",
-            }
-          }
           toolbarOpts={
             Object {
               "position": "bottom",
@@ -189,12 +179,6 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
           maxImageWidth={300}
           nonEmpty={false}
           onChange={[Function]}
-          pieApi={
-            Object {
-              "host": "",
-              "token": "",
-            }
-          }
           toolbarOpts={
             Object {
               "position": "bottom",
@@ -210,12 +194,6 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
           maxImageHeight={300}
           maxImageWidth={300}
           onChange={[Function]}
-          pieApi={
-            Object {
-              "host": "",
-              "token": "",
-            }
-          }
           toolbarOpts={
             Object {
               "position": "bottom",
@@ -254,12 +232,6 @@ There should be at most 10 choices defined per response area."
         highlightShape={false}
         markup="<div><p>The <span data-type=\\"inline_dropdown\\" data-index=\\"0\\" data-value=\\"cow \\"></span> jumped <span data-type=\\"inline_dropdown\\" data-index=\\"1\\" data-value=\\"over \\"></span> the <span data-type=\\"inline_dropdown\\" data-index=\\"2\\" data-value=\\"moon \\"></span></p></div>"
         onChange={[Function]}
-        pieApi={
-          Object {
-            "host": "",
-            "token": "",
-          }
-        }
         responseAreaProps={
           Object {
             "maxResponseAreas": 10,
@@ -306,12 +278,6 @@ There should be at most 10 choices defined per response area."
                 maxImageHeight={300}
                 maxImageWidth={300}
                 onChange={[Function]}
-                pieApi={
-                  Object {
-                    "host": "",
-                    "token": "",
-                  }
-                }
               />
             </InputContainer>
             <InputContainer
@@ -331,12 +297,6 @@ There should be at most 10 choices defined per response area."
                 maxImageHeight={300}
                 maxImageWidth={300}
                 onChange={[Function]}
-                pieApi={
-                  Object {
-                    "host": "",
-                    "token": "",
-                  }
-                }
               />
             </InputContainer>
             <InputContainer
@@ -356,12 +316,6 @@ There should be at most 10 choices defined per response area."
                 maxImageHeight={300}
                 maxImageWidth={300}
                 onChange={[Function]}
-                pieApi={
-                  Object {
-                    "host": "",
-                    "token": "",
-                  }
-                }
               />
             </InputContainer>
           </WithStyles(ExpansionPanelDetails)>
@@ -396,12 +350,6 @@ There should be at most 10 choices defined per response area."
                 maxImageHeight={300}
                 maxImageWidth={300}
                 onChange={[Function]}
-                pieApi={
-                  Object {
-                    "host": "",
-                    "token": "",
-                  }
-                }
               />
             </InputContainer>
             <InputContainer
@@ -421,12 +369,6 @@ There should be at most 10 choices defined per response area."
                 maxImageHeight={300}
                 maxImageWidth={300}
                 onChange={[Function]}
-                pieApi={
-                  Object {
-                    "host": "",
-                    "token": "",
-                  }
-                }
               />
             </InputContainer>
             <InputContainer
@@ -446,12 +388,6 @@ There should be at most 10 choices defined per response area."
                 maxImageHeight={300}
                 maxImageWidth={300}
                 onChange={[Function]}
-                pieApi={
-                  Object {
-                    "host": "",
-                    "token": "",
-                  }
-                }
               />
             </InputContainer>
           </WithStyles(ExpansionPanelDetails)>
@@ -486,12 +422,6 @@ There should be at most 10 choices defined per response area."
                 maxImageHeight={300}
                 maxImageWidth={300}
                 onChange={[Function]}
-                pieApi={
-                  Object {
-                    "host": "",
-                    "token": "",
-                  }
-                }
               />
             </InputContainer>
             <InputContainer
@@ -511,12 +441,6 @@ There should be at most 10 choices defined per response area."
                 maxImageHeight={300}
                 maxImageWidth={300}
                 onChange={[Function]}
-                pieApi={
-                  Object {
-                    "host": "",
-                    "token": "",
-                  }
-                }
               />
             </InputContainer>
             <InputContainer
@@ -536,12 +460,6 @@ There should be at most 10 choices defined per response area."
                 maxImageHeight={300}
                 maxImageWidth={300}
                 onChange={[Function]}
-                pieApi={
-                  Object {
-                    "host": "",
-                    "token": "",
-                  }
-                }
               />
             </InputContainer>
           </WithStyles(ExpansionPanelDetails)>
@@ -582,10 +500,6 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
             "partialScoring": Object {
               "label": "Allow Partial Scoring",
               "settings": false,
-            },
-            "pieApi": Object {
-              "host": "",
-              "token": "",
             },
             "prompt": Object {
               "label": "Prompt",
@@ -740,12 +654,6 @@ There should be at most 10 choices defined per response area."
         highlightShape={false}
         markup="<div><p>The <span data-type=\\"inline_dropdown\\" data-index=\\"0\\" data-value=\\"cow \\"></span> jumped <span data-type=\\"inline_dropdown\\" data-index=\\"1\\" data-value=\\"over \\"></span> the <span data-type=\\"inline_dropdown\\" data-index=\\"2\\" data-value=\\"moon \\"></span></p></div>"
         onChange={[Function]}
-        pieApi={
-          Object {
-            "host": "",
-            "token": "",
-          }
-        }
         responseAreaProps={
           Object {
             "maxResponseAreas": 10,
@@ -792,12 +700,6 @@ There should be at most 10 choices defined per response area."
                 maxImageHeight={300}
                 maxImageWidth={300}
                 onChange={[Function]}
-                pieApi={
-                  Object {
-                    "host": "",
-                    "token": "",
-                  }
-                }
               />
             </InputContainer>
             <InputContainer
@@ -817,12 +719,6 @@ There should be at most 10 choices defined per response area."
                 maxImageHeight={300}
                 maxImageWidth={300}
                 onChange={[Function]}
-                pieApi={
-                  Object {
-                    "host": "",
-                    "token": "",
-                  }
-                }
               />
             </InputContainer>
             <InputContainer
@@ -842,12 +738,6 @@ There should be at most 10 choices defined per response area."
                 maxImageHeight={300}
                 maxImageWidth={300}
                 onChange={[Function]}
-                pieApi={
-                  Object {
-                    "host": "",
-                    "token": "",
-                  }
-                }
               />
             </InputContainer>
           </WithStyles(ExpansionPanelDetails)>
@@ -882,12 +772,6 @@ There should be at most 10 choices defined per response area."
                 maxImageHeight={300}
                 maxImageWidth={300}
                 onChange={[Function]}
-                pieApi={
-                  Object {
-                    "host": "",
-                    "token": "",
-                  }
-                }
               />
             </InputContainer>
             <InputContainer
@@ -907,12 +791,6 @@ There should be at most 10 choices defined per response area."
                 maxImageHeight={300}
                 maxImageWidth={300}
                 onChange={[Function]}
-                pieApi={
-                  Object {
-                    "host": "",
-                    "token": "",
-                  }
-                }
               />
             </InputContainer>
             <InputContainer
@@ -932,12 +810,6 @@ There should be at most 10 choices defined per response area."
                 maxImageHeight={300}
                 maxImageWidth={300}
                 onChange={[Function]}
-                pieApi={
-                  Object {
-                    "host": "",
-                    "token": "",
-                  }
-                }
               />
             </InputContainer>
           </WithStyles(ExpansionPanelDetails)>
@@ -972,12 +844,6 @@ There should be at most 10 choices defined per response area."
                 maxImageHeight={300}
                 maxImageWidth={300}
                 onChange={[Function]}
-                pieApi={
-                  Object {
-                    "host": "",
-                    "token": "",
-                  }
-                }
               />
             </InputContainer>
             <InputContainer
@@ -997,12 +863,6 @@ There should be at most 10 choices defined per response area."
                 maxImageHeight={300}
                 maxImageWidth={300}
                 onChange={[Function]}
-                pieApi={
-                  Object {
-                    "host": "",
-                    "token": "",
-                  }
-                }
               />
             </InputContainer>
             <InputContainer
@@ -1022,12 +882,6 @@ There should be at most 10 choices defined per response area."
                 maxImageHeight={300}
                 maxImageWidth={300}
                 onChange={[Function]}
-                pieApi={
-                  Object {
-                    "host": "",
-                    "token": "",
-                  }
-                }
               />
             </InputContainer>
           </WithStyles(ExpansionPanelDetails)>
