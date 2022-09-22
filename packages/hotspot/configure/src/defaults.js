@@ -68,10 +68,6 @@ export default {
       teacherInstructions: 300,
       prompt: 300,
       rationale: 300,
-    },
-    pieApi: {
-      token: '',
-      host: ''
     }
   }
 };

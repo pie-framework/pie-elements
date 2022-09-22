@@ -26,10 +26,6 @@ exports[`Root render renders 1`] = `
               "label": "Allow Partial Scoring",
               "settings": false,
             },
-            "pieApi": Object {
-              "host": "",
-              "token": "",
-            },
             "preserveAspectRatio": Object {
               "enabled": true,
               "label": "Preserve aspect ratio",
