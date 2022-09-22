@@ -70,12 +70,10 @@ export default class ExtendedTextEntry extends HTMLElement {
   }
 
   insertSound(handler) {
-    console.log('insert: ', handler);
     this.dispatchEvent(new InsertSoundEvent(handler));
   }
 
   onDeleteSound(src, done) {
-    console.log('delete: ', src, done);
     this.dispatchEvent(new DeleteSoundEvent(src, done));
   }
 
