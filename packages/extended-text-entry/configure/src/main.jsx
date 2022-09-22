@@ -24,6 +24,7 @@ export class Main extends React.Component {
     model: PropTypes.object.isRequired,
     configuration: PropTypes.object.isRequired,
     imageSupport: PropTypes.object.isRequired,
+    uploadSoundSupport: PropTypes.object.isRequired,
     classes: PropTypes.object.isRequired,
   };
 
@@ -63,6 +64,7 @@ export class Main extends React.Component {
       configuration,
       onConfigurationChanged,
       imageSupport,
+      uploadSoundSupport
     } = this.props;
     const {
       multiple = {},
@@ -78,8 +80,7 @@ export class Main extends React.Component {
       spellCheck = {},
       playerSpellCheck = {},
       maxImageWidth = {},
-      maxImageHeight = {},
-      pieApi
+      maxImageHeight = {}
     } = configuration || {};
     const { teacherInstructionsEnabled, promptEnabled, feedbackEnabled, spellCheckEnabled } =
       model || {};
@@ -177,7 +178,7 @@ export class Main extends React.Component {
                 spellCheck={spellCheckEnabled}
                 maxImageWidth={maxImageWidth && maxImageWidth.teacherInstructions || defaultImageMaxWidth}
                 maxImageHeight={maxImageHeight && maxImageHeight.teacherInstructions || defaultImageMaxHeight}
-                pieApi={pieApi}
+                uploadSoundSupport={uploadSoundSupport}
               />
             </InputContainer>
           )}
@@ -200,7 +201,7 @@ export class Main extends React.Component {
                 spellCheck={spellCheckEnabled}
                 maxImageWidth={defaultImageMaxWidth}
                 maxImageHeight={defaultImageMaxHeight}
-                pieApi={pieApi}
+                uploadSoundSupport={uploadSoundSupport}
               />
             </InputContainer>
           )}

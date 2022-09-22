@@ -1,7 +1,9 @@
 import {
   ModelUpdatedEvent,
   DeleteImageEvent,
-  InsertImageEvent
+  InsertImageEvent,
+  InsertSoundEvent,
+  DeleteSoundEvent
 } from '@pie-framework/pie-configure-events';
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -67,6 +69,16 @@ export default class ExtendedTextEntry extends HTMLElement {
     this.dispatchEvent(new DeleteImageEvent(src, done));
   }
 
+  insertSound(handler) {
+    console.log('insert: ', handler);
+    this.dispatchEvent(new InsertSoundEvent(handler));
+  }
+
+  onDeleteSound(src, done) {
+    console.log('delete: ', src, done);
+    this.dispatchEvent(new DeleteSoundEvent(src, done));
+  }
+
   render() {
     if (this._model) {
       const element = React.createElement(Main, {
@@ -77,6 +89,10 @@ export default class ExtendedTextEntry extends HTMLElement {
         imageSupport: {
           add: this.insertImage.bind(this),
           delete: this.onDeleteImage.bind(this)
+        },
+        uploadSoundSupport: {
+          add: this.insertSound.bind(this),
+          delete: this.onDeleteSound.bind(this)
         }
       });
       ReactDOM.render(element, this);
