@@ -23,10 +23,6 @@ export default {
     prompt: {
       settings: true,
       label: 'Prompt'
-    },
-    pieApi: {
-      token: '',
-      host: ''
     }
   }
 };
