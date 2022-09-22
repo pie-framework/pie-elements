@@ -67,6 +67,7 @@ export class GeneralConfigBlock extends React.Component {
     prompt: PropTypes.string,
     rationale: PropTypes.string,
     imageSupport: PropTypes.object,
+    uploadSoundSupport: PropTypes.object,
     onRationaleChange: PropTypes.func,
     promptEnabled: PropTypes.bool,
     rationaleEnabled: PropTypes.bool
@@ -105,12 +106,13 @@ export class GeneralConfigBlock extends React.Component {
       rationale,
       prompt,
       imageSupport,
+      uploadSoundSupport,
       onPromptChange,
       onRationaleChange,
       promptEnabled,
       rationaleEnabled
     } = this.props;
-    const { rationale: cRationale = {}, prompt: cPrompt = {}, pieApi } =
+    const { rationale: cRationale = {}, prompt: cPrompt = {} } =
       configuration || {};
 
     return (
@@ -122,7 +124,7 @@ export class GeneralConfigBlock extends React.Component {
               markup={prompt || ''}
               onChange={onPromptChange}
               imageSupport={imageSupport}
-              pieApi={pieApi}
+              uploadSoundSupport={uploadSoundSupport}
             />
           </InputContainer>
         )}
@@ -200,7 +202,7 @@ export class GeneralConfigBlock extends React.Component {
               markup={rationale || ''}
               onChange={onRationaleChange}
               imageSupport={imageSupport}
-              pieApi={pieApi}
+              uploadSoundSupport={uploadSoundSupport}
             />
           </InputContainer>
         )}
