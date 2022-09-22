@@ -3,7 +3,9 @@ import ReactDOM from 'react-dom';
 import {
   ModelUpdatedEvent,
   DeleteImageEvent,
-  InsertImageEvent
+  InsertImageEvent,
+  InsertSoundEvent,
+  DeleteSoundEvent
 } from '@pie-framework/pie-configure-events';
 
 import Main from './main';
@@ -58,6 +60,14 @@ export default class CategorizeConfigure extends HTMLElement {
     this.dispatchEvent(new DeleteImageEvent(src, done));
   }
 
+  insertSound(handler) {
+    this.dispatchEvent(new InsertSoundEvent(handler));
+  }
+
+  onDeleteSound(src, done) {
+    this.dispatchEvent(new DeleteSoundEvent(src, done));
+  }
+
   render() {
     const el = React.createElement(Main, {
       model: this._model,
@@ -67,6 +77,10 @@ export default class CategorizeConfigure extends HTMLElement {
       imageSupport: {
         add: this.insertImage.bind(this),
         delete: this.onDeleteImage.bind(this)
+      },
+      uploadSoundSupport: {
+        add: this.insertSound.bind(this),
+        delete: this.onDeleteSound.bind(this)
       }
     });
     ReactDOM.render(el, this);

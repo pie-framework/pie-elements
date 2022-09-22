@@ -22,6 +22,10 @@ export class Choices extends React.Component {
       add: PropTypes.func.isRequired,
       delete: PropTypes.func.isRequired
     }),
+    uploadSoundSupport: PropTypes.shape({
+      add: PropTypes.func.isRequired,
+      delete: PropTypes.func.isRequired
+    }),
     toolbarOpts: PropTypes.object
   };
 
@@ -70,6 +74,7 @@ export class Choices extends React.Component {
       choices,
       model,
       imageSupport,
+      uploadSoundSupport,
       onModelChanged,
       spellCheck,
       toolbarOpts,
@@ -83,7 +88,6 @@ export class Choices extends React.Component {
       maxChoices,
       maxImageWidth = {},
       maxImageHeight = {},
-      pieApi
     } = configuration || {};
 
     const categoryCountIsOne = this.allChoicesHaveCount(1);
@@ -121,7 +125,7 @@ export class Choices extends React.Component {
               error={choicesErrors && choicesErrors[h.id]}
               maxImageWidth={maxImageWidth && maxImageWidth.choice || defaultImageMaxWidth}
               maxImageHeight={maxImageHeight && maxImageHeight.choice || defaultImageMaxHeight}
-              pieApi={pieApi}
+              uploadSoundSupport={uploadSoundSupport}
             />
           ))}
         </div>

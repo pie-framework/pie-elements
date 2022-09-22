@@ -124,12 +124,10 @@ export default class MultipleChoice extends HTMLElement {
   }
 
   insertSound(handler) {
-    console.log('=== insert handler: ', handler);
     this.dispatchEvent(new InsertSoundEvent(handler));
   }
 
   onDeleteSound(src, done) {
-    console.log('=== delete handler: ', { src, done });
     this.dispatchEvent(new DeleteSoundEvent(src, done));
   }
 
