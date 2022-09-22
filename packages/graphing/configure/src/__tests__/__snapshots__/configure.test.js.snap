@@ -282,10 +282,6 @@ exports[`Configure renders snapshot 1`] = `
             "label": "Padding",
             "settings": false,
           },
-          "pieApi": Object {
-            "host": "",
-            "token": "",
-          },
           "prompt": Object {
             "label": "Item Stem",
             "settings": true,
@@ -405,12 +401,6 @@ exports[`Configure renders snapshot 1`] = `
         maxImageWidth={300}
         nonEmpty={false}
         onChange={[Function]}
-        pieApi={
-          Object {
-            "host": "",
-            "token": "",
-          }
-        }
       />
     </InputContainer>
     <InputContainer
@@ -423,12 +413,6 @@ exports[`Configure renders snapshot 1`] = `
         maxImageWidth={300}
         nonEmpty={false}
         onChange={[Function]}
-        pieApi={
-          Object {
-            "host": "",
-            "token": "",
-          }
-        }
       />
     </InputContainer>
     <InputContainer
@@ -439,12 +423,6 @@ exports[`Configure renders snapshot 1`] = `
         maxImageHeight={300}
         maxImageWidth={300}
         onChange={[Function]}
-        pieApi={
-          Object {
-            "host": "",
-            "token": "",
-          }
-        }
       />
     </InputContainer>
     <WithStyles(GraphingConfig)
