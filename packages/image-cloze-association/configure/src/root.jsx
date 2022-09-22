@@ -22,8 +22,9 @@ export class Root extends React.Component {
       onModelChanged,
       onConfigurationChanged,
       imageSupport,
+      uploadSoundSupport
     } = this.props;
-    const { teacherInstructions = {}, spellCheck = {}, maxImageWidth = {}, maxImageHeight = {}, pieApi } = configuration || {};
+    const { teacherInstructions = {}, spellCheck = {}, maxImageWidth = {}, maxImageHeight = {} } = configuration || {};
     const { spellCheckEnabled } = model || {};
 
     return (
@@ -61,7 +62,7 @@ export class Root extends React.Component {
                 spellCheck={spellCheckEnabled}
                 maxImageWidth={maxImageWidth && maxImageWidth.teacherInstructions}
                 maxImageHeight={maxImageHeight && maxImageHeight.teacherInstructions}
-                pieApi={pieApi}
+                uploadSoundSupport={uploadSoundSupport}
               />
             </InputContainer>
           )}
@@ -93,6 +94,10 @@ Root.propTypes = {
   model: PropTypes.object.isRequired,
   configuration: PropTypes.object.isRequired,
   imageSupport: PropTypes.shape({
+    add: PropTypes.func.isRequired,
+    delete: PropTypes.func.isRequired,
+  }),
+  uploadSoundSupport: PropTypes.shape({
     add: PropTypes.func.isRequired,
     delete: PropTypes.func.isRequired,
   }),
