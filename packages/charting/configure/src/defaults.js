@@ -4,7 +4,6 @@
  * so there's no implementation (they are only added in model)
  */
 
-
 // const createCategory = (label, value) => ({
 //   label,
 //   value,
@@ -24,7 +23,7 @@ export default {
     },
     graph: {
       width: 480,
-      height: 480
+      height: 480,
     },
     prompt: 'Here goes item stem!',
     promptEnabled: true,
@@ -43,8 +42,8 @@ export default {
   configuration: {
     spellCheck: {
       label: 'Spellcheck',
-      settings:false,
-      enabled:true
+      settings: false,
+      enabled: true,
     },
     chartDimensions: {
       settings: false,
@@ -53,41 +52,44 @@ export default {
       width: {
         min: 50,
         max: 700,
-        step: 20
+        step: 20,
       },
       height: {
         min: 400,
         max: 700,
-        step: 20
+        step: 20,
       },
     },
     prompt: {
       settings: true,
-      label: 'Item Stem'
+      label: 'Item Stem',
     },
     rationale: {
       settings: true,
-      label: 'Rationale'
+      label: 'Rationale',
     },
     scoringType: {
       settings: false,
-      label: 'Scoring Type'
+      label: 'Scoring Type',
     },
     studentInstructions: {
       settings: false,
-      label: 'Student Instructions'
+      label: 'Student Instructions',
     },
     teacherInstructions: {
       settings: true,
-      label: 'Teacher Instructions'
+      label: 'Teacher Instructions',
     },
     title: {
       settings: false,
-      label: 'Chart Title'
+      label: 'Chart Title',
     },
-    placeholderMessages: {
-      title: "Click here to add a title",
-      labels: "Click here to add a label for this axis",
+    titlePlaceholder: 'Click here to add a title',
+    labelsPlaceholders: {
+      left: 'Click here to add a label for this axis',
+      right: '',
+      top: '',
+      bottom: 'Click here to add a label for this axis',
     },
     maxImageWidth: {
       teacherInstructions: 300,
@@ -98,6 +100,6 @@ export default {
       teacherInstructions: 300,
       prompt: 300,
       rationale: 300,
-    }
-  }
+    },
+  },
 };

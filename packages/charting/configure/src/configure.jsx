@@ -122,7 +122,8 @@ export class Configure extends React.Component {
       spellCheck = {},
       maxImageWidth = {},
       maxImageHeight = {},
-      placeholderMessages = {},
+      labelsPlaceholders = {},
+      titlePlaceholder = {},
       chartDimensions = {},
     } = configuration || {};
     const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled, spellCheckEnabled } =
@@ -238,7 +239,8 @@ export class Configure extends React.Component {
             model={model}
             onChange={onModelChanged}
             charts={charts}
-            placeholderMessages={placeholderMessages}
+            labelsPlaceholders={labelsPlaceholders}
+            titlePlaceholder={titlePlaceholder}
             showPixelGuides={showPixeGuides}
           />
 

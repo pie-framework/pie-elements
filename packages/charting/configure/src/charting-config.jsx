@@ -118,7 +118,7 @@ export class ChartingConfig extends React.Component {
     })
 
   render() {
-    const { classes, model, charts, placeholderMessages, showPixelGuides } = this.props;
+    const { classes, model, charts, labelsPlaceholders, titlePlaceholder, showPixelGuides } = this.props;
     const { dialog } = this.state;
 
     return (
@@ -152,7 +152,8 @@ export class ChartingConfig extends React.Component {
               onChangeLabels={this.changeLabel}
               addCategoryEnabled={true}
               categoryDefaultLabel={model.categoryDefaultLabel}
-              placeholderMessages={placeholderMessages}
+              labelsPlaceholders={labelsPlaceholders}
+              titlePlaceholder={titlePlaceholder}
             />
             <div>
               <Checkbox
