@@ -57,7 +57,7 @@ export class Choices extends React.Component {
     classes: PropTypes.object.isRequired,
     toolbarOpts: PropTypes.object,
     maxChoices: PropTypes.number,
-    pieApi: PropTypes.object
+    uploadSoundSupport: PropTypes.object
   };
 
   state = {
@@ -211,7 +211,7 @@ export class Choices extends React.Component {
       toolbarOpts,
       maxChoices,
       model: { choices },
-      pieApi
+      uploadSoundSupport
     } = this.props;
     const visibleChoices = this.getVisibleChoices() || [];
 
@@ -265,7 +265,7 @@ export class Choices extends React.Component {
                       }}
                       disableUnderline
                       toolbarOpts={toolbarOpts}
-                      pieApi={pieApi}
+                      uploadSoundSupport={uploadSoundSupport}
                     />
                   </div>
                 );

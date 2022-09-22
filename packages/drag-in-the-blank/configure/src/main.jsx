@@ -146,7 +146,8 @@ export class Main extends React.Component {
       model,
       configuration,
       onConfigurationChanged,
-      imageSupport
+      imageSupport,
+      uploadSoundSupport
     } = this.props;
     const {
       duplicates = {},
@@ -160,8 +161,7 @@ export class Main extends React.Component {
       maxChoices,
       maxResponseAreas,
       maxImageWidth = {},
-      maxImageHeight = {},
-      pieApi
+      maxImageHeight = {}
     } = configuration || {};
     const { rationaleEnabled, promptEnabled, teacherInstructionsEnabled, spellCheckEnabled, errors } =
       model || {};
@@ -238,7 +238,7 @@ export class Main extends React.Component {
                   spellCheck={spellCheckEnabled}
                   maxImageWidth={maxImageWidth && maxImageWidth.teacherInstructions || defaultImageMaxWidth}
                   maxImageHeight={maxImageHeight && maxImageHeight.teacherInstructions || defaultImageMaxHeight}
-                  pieApi={pieApi}
+                  uploadSoundSupport={uploadSoundSupport}
                 />
               </InputContainer>
             )}
@@ -258,7 +258,7 @@ export class Main extends React.Component {
                   spellCheck={spellCheckEnabled}
                   maxImageWidth={defaultImageMaxWidth}
                   maxImageHeight={defaultImageMaxHeight}
-                  pieApi={pieApi}
+                  uploadSoundSupport={uploadSoundSupport}
                 />
               </InputContainer>
             )}
@@ -295,7 +295,7 @@ export class Main extends React.Component {
               disableUnderline
               toolbarOpts={toolbarOpts}
               spellCheck={spellCheckEnabled}
-              pieApi={pieApi}
+              uploadSoundSupport={uploadSoundSupport}
             />
             <Choices
               model={model}
@@ -303,7 +303,7 @@ export class Main extends React.Component {
               onChange={this.onResponsesChanged}
               toolbarOpts={toolbarOpts}
               maxChoices={maxChoices}
-              pieApi={pieApi}
+              uploadSoundSupport={uploadSoundSupport}
             />
             {rationaleEnabled && (
               <InputContainer
@@ -319,7 +319,7 @@ export class Main extends React.Component {
                   spellCheck={spellCheckEnabled}
                   maxImageWidth={maxImageWidth && maxImageWidth.rationale || defaultImageMaxWidth}
                   maxImageHeight={maxImageHeight && maxImageHeight.rationale || defaultImageMaxHeight}
-                  pieApi={pieApi}
+                  uploadSoundSupport={uploadSoundSupport}
                 />
               </InputContainer>
             )}
