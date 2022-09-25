@@ -9,12 +9,6 @@ exports[`main snapshot renders 1`] = `
       disableUnderline={true}
       nonEmpty={false}
       onChange={[Function]}
-      pieApi={
-        Object {
-          "host": "",
-          "token": "",
-        }
-      }
       toolbarOpts={
         Object {
           "position": "bottom",
@@ -143,12 +137,6 @@ The correct answer should include at least one number line object."
     <EditableHtml
       markup=""
       onChange={[Function]}
-      pieApi={
-        Object {
-          "host": "",
-          "token": "",
-        }
-      }
       toolbarOpts={
         Object {
           "position": "bottom",
