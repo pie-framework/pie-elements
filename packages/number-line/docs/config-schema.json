@@ -52,23 +52,6 @@
       "default": true,
       "type": "boolean",
       "title": "settingsPartialScoring"
-    },
-    "pieApi": {
-      "description": "PIE Api config (used in file upload)",
-      "type": "object",
-      "title": "pieApi",
-      "properties": {
-        "token": {
-          "description": "PIE Api token",
-          "type": "string",
-          "title": "token"
-        },
-        "host": {
-          "description": "PIE Api host",
-          "type": "string",
-          "title": "host"
-        }
-      }
     }
   },
   "definitions": {

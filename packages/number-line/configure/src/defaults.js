@@ -53,9 +53,5 @@ export const configuration = {
     label: 'Spellcheck',
     settings:false,
     enabled:true
-  },
-  pieApi: {
-    token: '',
-    host: ''
   }
 };

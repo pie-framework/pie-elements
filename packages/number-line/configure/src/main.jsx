@@ -108,7 +108,8 @@ export class Main extends React.Component {
     classes: PropTypes.object.isRequired,
     model: PropTypes.object.isRequired,
     configuration: PropTypes.object.isRequired,
-    onChange: PropTypes.func.isRequired
+    onChange: PropTypes.func.isRequired,
+    uploadSoundSupport: PropTypes.object.isRequired
   };
 
   constructor(props) {
@@ -284,10 +285,10 @@ export class Main extends React.Component {
   onAddElement = this.addInitialView;
 
   render() {
-    const { classes, model, onChange, configuration } = this.props;
+    const { classes, model, onChange, configuration, uploadSoundSupport } = this.props;
 
     const { graph, spellCheckEnabled, errors } = model || {};
-    const { prompt = {}, spellCheck = {}, pieApi } = configuration || {};
+    const { prompt = {}, spellCheck = {} } = configuration || {};
     const { widthError, domainError, maxError, pointsError, correctResponseError } = errors || {};
     const validationMessage = generateValidationMessage();
 
@@ -322,7 +323,7 @@ export class Main extends React.Component {
               disableUnderline
               toolbarOpts={toolbarOpts}
               spellCheck={spellCheckEnabled}
-              pieApi={pieApi}
+              uploadSoundSupport={uploadSoundSupport}
             />
           </FormSection>
         )}
@@ -377,7 +378,7 @@ export class Main extends React.Component {
             onChange={this.changeGraphTitle}
             toolbarOpts={toolbarOpts}
             spellCheck={spellCheckEnabled}
-            pieApi={pieApi}
+            uploadSoundSupport={uploadSoundSupport}
           />
         </FormSection>
         <FormSection label={'Limits'}>
