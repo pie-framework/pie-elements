@@ -208,7 +208,7 @@ export class Main extends React.Component {
   }
 
   render() {
-    const { model, classes, configuration, onConfigurationChanged } = this.props || {};
+    const { model, classes, configuration, onConfigurationChanged, uploadSoundSupport } = this.props || {};
     const {
       showStandards,
       showExcludeZero,
@@ -220,7 +220,6 @@ export class Main extends React.Component {
       dragAndDrop,
       spellCheck = {},
       width,
-      pieApi
     } = configuration || {};
     const { scales, excludeZero, description, pointLabels, standards, spellCheckEnabled } = model || {};
     const { showExcludeZeroDialog } = this.state || {};
@@ -270,7 +269,7 @@ export class Main extends React.Component {
                 enableDragAndDrop={dragAndDrop.enabled}
                 spellCheck={spellCheckEnabled}
                 width={adjustedWidth}
-                pieApi={pieApi}
+                uploadSoundSupport={uploadSoundSupport}
                 {...this.props}
                 classes={{}}
               />
@@ -301,6 +300,7 @@ export class Main extends React.Component {
 Main.propTypes = {
   classes: PropTypes.object,
   model: PropTypes.object,
+  uploadSoundSupport: PropTypes.object,
   configuration: PropTypes.object,
   onModelChanged: PropTypes.func,
   onConfigurationChanged: PropTypes.func,

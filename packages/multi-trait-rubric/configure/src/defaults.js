@@ -99,10 +99,6 @@ export default {
       settings: true,
       label: 'Enable Drag and Drop',
       enabled: false,
-    },
-    pieApi: {
-      token: '',
-      host: ''
     }
   }
 };

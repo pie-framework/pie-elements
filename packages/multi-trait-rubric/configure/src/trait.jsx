@@ -112,7 +112,7 @@ export class TraitTile extends React.Component {
       currentPosition,
       secondaryBlockWidth,
       spellCheck,
-      pieApi
+      uploadSoundSupport
     } = this.props;
     const { anchorEl } = this.state;
 
@@ -164,7 +164,7 @@ export class TraitTile extends React.Component {
                 pluginProps={labelPlugins}
                 placeholder='Enter Trait'
                 spellCheck={spellCheck}
-                pieApi={pieApi}
+                uploadSoundSupport={uploadSoundSupport}
               />
             </PrimaryBlock>
             <SecondaryBlock
@@ -181,7 +181,7 @@ export class TraitTile extends React.Component {
                     onChange={standards => this.onTraitChanged({ standards: standards.split(',') })}
                     pluginProps={pluginProps}
                     spellCheck={spellCheck}
-                    pieApi={pieApi}
+                    uploadSoundSupport={uploadSoundSupport}
                   />
                 </Block>
               )}
@@ -194,7 +194,7 @@ export class TraitTile extends React.Component {
                       onChange={description => this.onTraitChanged({ description })}
                       pluginProps={pluginProps}
                       spellCheck={spellCheck}
-                      pieApi={pieApi}
+                      uploadSoundSupport={uploadSoundSupport}
                     />
                   </Block>
                 )}
@@ -220,7 +220,7 @@ export class TraitTile extends React.Component {
                         pluginProps={pluginProps}
                         alignToRight={remainingSpace < 296} // 296 is the space required for the toolbar
                         spellCheck={spellCheck}
-                        pieApi={pieApi}
+                        uploadSoundSupport={uploadSoundSupport}
                       />
                     </Block>
                   )
