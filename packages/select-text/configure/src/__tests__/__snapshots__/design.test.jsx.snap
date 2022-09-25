@@ -37,10 +37,6 @@ exports[`design snapshot renders all items except feedback 1`] = `
             "label": "Allow Partial Scoring",
             "settings": false,
           },
-          "pieApi": Object {
-            "host": "",
-            "token": "",
-          },
           "prompt": Object {
             "label": "Prompt",
             "settings": true,
@@ -209,10 +205,6 @@ exports[`design snapshot renders all items except the content input 1`] = `
             "label": "Allow Partial Scoring",
             "settings": false,
           },
-          "pieApi": Object {
-            "host": "",
-            "token": "",
-          },
           "prompt": Object {
             "label": "Prompt",
             "settings": true,
@@ -371,10 +363,6 @@ exports[`design snapshot renders all items with defaultProps 1`] = `
           "partialScoring": Object {
             "label": "Allow Partial Scoring",
             "settings": false,
-          },
-          "pieApi": Object {
-            "host": "",
-            "token": "",
           },
           "prompt": Object {
             "label": "Prompt",
@@ -543,10 +531,6 @@ exports[`design snapshot tokenizer renders with html entities 1`] = `
           "partialScoring": Object {
             "label": "Allow Partial Scoring",
             "settings": false,
-          },
-          "pieApi": Object {
-            "host": "",
-            "token": "",
           },
           "prompt": Object {
             "label": "Prompt",

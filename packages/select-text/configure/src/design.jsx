@@ -140,6 +140,7 @@ export class Design extends React.Component {
       model,
       classes,
       imageSupport,
+      uploadSoundSupport,
       onModelChanged,
       configuration,
       onConfigurationChanged
@@ -161,8 +162,7 @@ export class Design extends React.Component {
       spellCheck = {},
       highlightChoices = {},
       maxImageWidth = {},
-      maxImageHeight = {},
-      pieApi
+      maxImageHeight = {}
     } = configuration || {};
     const {
       teacherInstructionsEnabled, promptEnabled, rationaleEnabled, spellCheckEnabled, feedbackEnabled, errors
@@ -240,7 +240,7 @@ export class Design extends React.Component {
                 spellCheck={spellCheckEnabled}
                 maxImageWidth={maxImageWidth && maxImageWidth.teacherInstructions || defaultImageMaxWidth}
                 maxImageHeight={maxImageHeight && maxImageHeight.teacherInstructions || defaultImageMaxHeight}
-                pieApi={pieApi}
+                uploadSoundSupport={uploadSoundSupport}
               />
             </InputContainer>
           )}
@@ -259,7 +259,7 @@ export class Design extends React.Component {
                 spellCheck={spellCheckEnabled}
                 maxImageWidth={defaultImageMaxWidth}
                 maxImageHeight={defaultImageMaxHeight}
-                pieApi={pieApi}
+                uploadSoundSupport={uploadSoundSupport}
               />
             </InputContainer>
           )}
@@ -278,7 +278,7 @@ export class Design extends React.Component {
                 spellCheck={spellCheckEnabled}
                 maxImageWidth={maxImageWidth && maxImageWidth.rationale || defaultImageMaxWidth}
                 maxImageHeight={maxImageHeight && maxImageHeight.rationale || defaultImageMaxHeight}
-                pieApi={pieApi}
+                uploadSoundSupport={uploadSoundSupport}
               />
             </InputContainer>
           )}
