@@ -46,7 +46,11 @@ class Configure extends React.Component {
     imageSupport: PropTypes.shape({
       add: PropTypes.func.isRequired,
       delete: PropTypes.func.isRequired
-    })
+    }),
+    uploadSoundSupport: PropTypes.shape({
+      add: PropTypes.func.isRequired,
+      delete: PropTypes.func.isRequired
+    }),
   };
 
   static defaultProps = {
@@ -189,7 +193,8 @@ class Configure extends React.Component {
       imageSupport,
       onModelChanged,
       configuration,
-      onConfigurationChanged
+      onConfigurationChanged,
+      uploadSoundSupport
     } = this.props;
     const {
       enableImages = {},
@@ -203,8 +208,7 @@ class Configure extends React.Component {
       feedback = {},
       spellCheck = {},
       maxImageWidth = {},
-      maxImageHeight = {},
-      pieApi
+      maxImageHeight = {}
     } = configuration || {};
     const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled, spellCheckEnabled, feedbackEnabled } =
       model || {};
@@ -279,7 +283,7 @@ class Configure extends React.Component {
                 spellCheck={spellCheckEnabled}
                 maxImageWidth={maxImageWidth && maxImageWidth.teacherInstructions || defaultImageMaxWidth}
                 maxImageHeight={maxImageHeight && maxImageHeight.teacherInstructions || defaultImageMaxHeight}
-                pieApi={pieApi}
+                uploadSoundSupport={uploadSoundSupport}
               />
             </InputContainer>
           )}
@@ -300,7 +304,7 @@ class Configure extends React.Component {
                 spellCheck={spellCheckEnabled}
                 maxImageWidth={maxImageWidth && maxImageWidth.prompt}
                 maxImageHeight={maxImageHeight && maxImageHeight.prompt}
-                pieApi={pieApi}
+                uploadSoundSupport={uploadSoundSupport}
               />
             </InputContainer>
           )}
@@ -319,7 +323,7 @@ class Configure extends React.Component {
                 spellCheck={spellCheckEnabled}
                 maxImageWidth={maxImageWidth && maxImageWidth.rationale || defaultImageMaxWidth}
                 maxImageHeight={maxImageHeight && maxImageHeight.rationale || defaultImageMaxHeight}
-                pieApi={pieApi}
+                uploadSoundSupport={uploadSoundSupport}
               />
             </InputContainer>
           )}
@@ -338,7 +342,7 @@ class Configure extends React.Component {
             onDeleteRow={this.onDeleteRow}
             toolbarOpts={toolbarOpts}
             spellCheck={spellCheckEnabled}
-            pieApi={pieApi}
+            uploadSoundSupport={uploadSoundSupport}
           />
           {feedbackEnabled && (
             <FeedbackConfig

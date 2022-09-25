@@ -21,7 +21,6 @@ export class Row extends React.Component {
     classes: PropTypes.object.isRequired,
     model: PropTypes.object.isRequired,
     row: PropTypes.object.isRequired,
-    pieApi: PropTypes.object,
     idx: PropTypes.number.isRequired,
     isDragging: PropTypes.bool.isRequired,
     onDeleteRow: PropTypes.func.isRequired,
@@ -30,6 +29,10 @@ export class Row extends React.Component {
     connectDropTarget: PropTypes.func.isRequired,
     onMoveRow: PropTypes.func.isRequired,
     imageSupport: PropTypes.shape({
+      add: PropTypes.func.isRequired,
+      delete: PropTypes.func.isRequired
+    }),
+    uploadSoundSupport: PropTypes.shape({
       add: PropTypes.func.isRequired,
       delete: PropTypes.func.isRequired
     }),
@@ -153,7 +156,7 @@ export class Row extends React.Component {
       error,
       maxImageWidth,
       maxImageHeight,
-      pieApi
+      uploadSoundSupport
     } = this.props;
     const { dialog } = this.state;
     const opacity = isDragging ? 0 : 1;
@@ -196,7 +199,7 @@ export class Row extends React.Component {
               spellCheck={spellCheck}
               maxImageWidth={maxImageWidth}
               maxImageHeight={maxImageHeight}
-              pieApi={pieApi}
+              uploadSoundSupport={uploadSoundSupport}
             />
           </div>
           {row.values.map((rowValue, rowIdx) => (
