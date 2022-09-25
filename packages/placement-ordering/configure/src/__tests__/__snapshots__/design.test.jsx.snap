@@ -48,10 +48,6 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
             "label": "Allow Partial Scoring",
             "settings": false,
           },
-          "pieApi": Object {
-            "host": "",
-            "token": "",
-          },
           "placementArea": Object {
             "label": "Placement Area",
             "settings": true,
@@ -150,12 +146,6 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
       maxImageWidth={300}
       nonEmpty={false}
       onChange={[Function]}
-      pieApi={
-        Object {
-          "host": "",
-          "token": "",
-        }
-      }
       toolbarOpts={
         Object {
           "position": "bottom",
@@ -174,12 +164,6 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
         maxImageHeight={300}
         maxImageWidth={300}
         onChange={[Function]}
-        pieApi={
-          Object {
-            "host": "",
-            "token": "",
-          }
-        }
         toolbarOpts={
           Object {
             "position": "bottom",
@@ -195,12 +179,6 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
         maxImageHeight={300}
         maxImageWidth={300}
         onChange={[Function]}
-        pieApi={
-          Object {
-            "host": "",
-            "token": "",
-          }
-        }
         toolbarOpts={
           Object {
             "position": "bottom",
@@ -252,12 +230,6 @@ The correct ordering should not be identical to the initial ordering."
           maxImageHeight={150}
           maxImageWidth={300}
           onChange={[Function]}
-          pieApi={
-            Object {
-              "host": "",
-              "token": "",
-            }
-          }
           toolbarOpts={
             Object {
               "position": "bottom",
@@ -346,10 +318,6 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
           "partialScoring": Object {
             "label": "Allow Partial Scoring",
             "settings": false,
-          },
-          "pieApi": Object {
-            "host": "",
-            "token": "",
           },
           "placementArea": Object {
             "label": "Placement Area",
@@ -449,12 +417,6 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
       maxImageWidth={300}
       nonEmpty={false}
       onChange={[Function]}
-      pieApi={
-        Object {
-          "host": "",
-          "token": "",
-        }
-      }
       toolbarOpts={
         Object {
           "position": "bottom",
@@ -473,12 +435,6 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
         maxImageHeight={300}
         maxImageWidth={300}
         onChange={[Function]}
-        pieApi={
-          Object {
-            "host": "",
-            "token": "",
-          }
-        }
         toolbarOpts={
           Object {
             "position": "bottom",
@@ -494,12 +450,6 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
         maxImageHeight={300}
         maxImageWidth={300}
         onChange={[Function]}
-        pieApi={
-          Object {
-            "host": "",
-            "token": "",
-          }
-        }
         toolbarOpts={
           Object {
             "position": "bottom",
@@ -551,12 +501,6 @@ The correct ordering should not be identical to the initial ordering."
           maxImageHeight={150}
           maxImageWidth={300}
           onChange={[Function]}
-          pieApi={
-            Object {
-              "host": "",
-              "token": "",
-            }
-          }
           toolbarOpts={
             Object {
               "position": "bottom",
