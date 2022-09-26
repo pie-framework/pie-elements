@@ -141,7 +141,8 @@ describe('GeneralConfigBlock', () => {
       promptEnabled: true,
       configuration: defaultValues.configuration,
       onChange: jest.fn(),
-      imageSupport: {}
+      imageSupport: {},
+      uploadSoundSupport: {},
     };
 
     wrapper = shallowChild(GeneralConfigBlock, props, 1);
