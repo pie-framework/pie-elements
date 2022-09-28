@@ -14,7 +14,7 @@
     "@pie-framework/pie-player-events": "^0.1.0",
     "@pie-lib/editable-html": "^9.2.1",
     "@pie-lib/math-rendering": "^2.5.0",
-    "@pie-lib/render-ui": "^4.13.5",
+    "@pie-lib/render-ui": "^4.13.6",
     "classnames": "^2.2.5",
     "debug": "^4.1.1",
     "lodash.throttle": "^4.1.1",
