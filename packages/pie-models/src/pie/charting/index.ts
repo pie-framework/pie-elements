@@ -1,7 +1,11 @@
 import { PromptConfig } from '../../PromptConfig';
 import { CommonConfigSettings } from '../../CommonConfigSettings';
 import { PieModel } from '../../PieModel';
-import { ConfigureMaxImageDimensionsProp, ConfigureProp, ConfigurePropWithEnabled } from '../ConfigurationProp';
+import {
+  ConfigureMaxImageDimensionsProp,
+  ConfigureProp,
+  ConfigurePropWithEnabled,
+} from '../ConfigurationProp';
 
 interface Chart {
   /** Width for chart representation */
@@ -57,6 +61,14 @@ interface Answer {
 
   /** Indicates marks for the answer */
   data: [Category];
+}
+
+interface Placeholder {
+  /** Indicates placeholder message if title is not defined */
+  title: string;
+
+  /** Indicates placeholder message if labels for range or domain are not defined */
+  labels: string;
 }
 
 /**
@@ -119,6 +131,9 @@ export interface ChartingPie extends PieModel {
   /** Indicates chart title */
   title?: string;
 
+  /** Indicates placeholder messages */
+  placeholderMessages?: Placeholder;
+
   /** Indicates if Rationale are enabled */
   rationaleEnabled: boolean;
 
@@ -150,7 +165,7 @@ export interface ChartingConfigure extends PromptConfig, CommonConfigSettings {
   /**
    * Configuration for the author's spellcheck
    */
-   spellCheck?: ConfigureProp;
+  spellCheck?: ConfigureProp;
 
   /**
    * Scoring Type configuration
