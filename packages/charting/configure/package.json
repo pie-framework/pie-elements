@@ -12,6 +12,7 @@
     "@pie-lib/charting": "^5.2.0",
     "@pie-lib/config-ui": "^11.0.18",
     "@pie-lib/editable-html": "^9.2.1",
+    "@pie-lib/math-rendering": "^2.5.0",
     "classnames": "^2.2.5",
     "debug": "^4.1.1",
     "prop-types": "^15.6.2",
