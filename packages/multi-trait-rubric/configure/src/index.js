@@ -1,4 +1,8 @@
-import { ModelUpdatedEvent } from '@pie-framework/pie-configure-events';
+import {
+  ModelUpdatedEvent,
+  InsertSoundEvent,
+  DeleteSoundEvent
+} from '@pie-framework/pie-configure-events';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -39,6 +43,14 @@ export default class MultiTraitRubricElement extends HTMLElement {
     this._render();
   }
 
+  insertSound(handler) {
+    this.dispatchEvent(new InsertSoundEvent(handler));
+  }
+
+  onDeleteSound(src, done) {
+    this.dispatchEvent(new DeleteSoundEvent(src, done));
+  }
+
   _render() {
     if (this._model) {
       let element = React.createElement(Main, {
@@ -46,6 +58,10 @@ export default class MultiTraitRubricElement extends HTMLElement {
         configuration: this._configuration,
         onModelChanged: this.onModelChanged,
         onConfigurationChanged: this.onConfigurationChanged,
+        uploadSoundSupport: {
+          add: this.insertSound.bind(this),
+          delete: this.onDeleteSound.bind(this)
+        }
       });
 
       ReactDOM.render(element, this);

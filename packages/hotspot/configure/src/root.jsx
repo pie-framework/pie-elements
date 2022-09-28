@@ -65,6 +65,7 @@ export class Root extends React.Component {
       configuration,
       model,
       imageSupport,
+      uploadSoundSupport,
       onConfigurationChanged,
       onImageUpload,
       onModelChangedByConfig,
@@ -83,7 +84,7 @@ export class Root extends React.Component {
       spellCheck = {},
       preserveAspectRatio = {},
       maxImageWidth = {},
-      maxImageHeight = {}
+      maxImageHeight = {},
     } = configuration || {};
     const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled, spellCheckEnabled, errors } = model || {};
     const { shapesError, selectionsError } = errors || {};
@@ -144,6 +145,7 @@ export class Root extends React.Component {
                   spellCheck={spellCheckEnabled}
                   maxImageWidth={maxImageWidth && maxImageWidth.teacherInstructions || defaultImageMaxWidth}
                   maxImageHeight={maxImageHeight && maxImageHeight.teacherInstructions || defaultImageMaxHeight}
+                  uploadSoundSupport={uploadSoundSupport}
                 />
               </InputContainer>
             )}
@@ -158,6 +160,7 @@ export class Root extends React.Component {
                   spellCheck={spellCheckEnabled}
                   maxImageWidth={defaultImageMaxWidth}
                   maxImageHeight={defaultImageMaxHeight}
+                  uploadSoundSupport={uploadSoundSupport}
                 />
               </InputContainer>
             )}
@@ -175,6 +178,7 @@ export class Root extends React.Component {
                   spellCheck={spellCheckEnabled}
                   maxImageWidth={maxImageWidth && maxImageWidth.rationale || defaultImageMaxWidth}
                   maxImageHeight={maxImageHeight && maxImageHeight.rationale || defaultImageMaxHeight}
+                  uploadSoundSupport={uploadSoundSupport}
                 />
               </InputContainer>
             )}
@@ -311,6 +315,10 @@ Root.propTypes = {
   configuration: PropTypes.object,
   model: PropTypes.object.isRequired,
   imageSupport: PropTypes.shape({
+    add: PropTypes.func,
+    delete: PropTypes.func
+  }),
+  uploadSoundSupport: PropTypes.shape({
     add: PropTypes.func,
     delete: PropTypes.func
   }),

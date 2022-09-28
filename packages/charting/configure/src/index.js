@@ -1,6 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { DeleteImageEvent, InsertImageEvent, ModelUpdatedEvent } from '@pie-framework/pie-configure-events';
+import {
+  ModelUpdatedEvent,
+  DeleteImageEvent,
+  InsertImageEvent,
+  InsertSoundEvent,
+  DeleteSoundEvent
+} from '@pie-framework/pie-configure-events';
 import debug from 'debug';
 import Configure from './configure';
 import defaultValues from './defaults';
@@ -46,6 +52,14 @@ export default class GraphLinesConfigure extends HTMLElement {
     this.dispatchEvent(new DeleteImageEvent(src, done));
   }
 
+  insertSound(handler) {
+    this.dispatchEvent(new InsertSoundEvent(handler));
+  }
+
+  onDeleteSound(src, done) {
+    this.dispatchEvent(new DeleteSoundEvent(src, done));
+  }
+
   _render() {
     if (this._model) {
       const el = React.createElement(Configure, {
@@ -56,6 +70,10 @@ export default class GraphLinesConfigure extends HTMLElement {
         imageSupport: {
           add: this.insertImage.bind(this),
           delete: this.onDeleteImage.bind(this)
+        },
+        uploadSoundSupport: {
+          add: this.insertSound.bind(this),
+          delete: this.onDeleteSound.bind(this)
         }
       });
       ReactDOM.render(el, this);

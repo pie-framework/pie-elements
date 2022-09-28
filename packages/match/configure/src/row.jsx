@@ -32,6 +32,10 @@ export class Row extends React.Component {
       add: PropTypes.func.isRequired,
       delete: PropTypes.func.isRequired
     }),
+    uploadSoundSupport: PropTypes.shape({
+      add: PropTypes.func.isRequired,
+      delete: PropTypes.func.isRequired
+    }),
     enableImages: PropTypes.bool,
     toolbarOpts: PropTypes.object,
     error: PropTypes.string
@@ -151,7 +155,8 @@ export class Row extends React.Component {
       spellCheck,
       error,
       maxImageWidth,
-      maxImageHeight
+      maxImageHeight,
+      uploadSoundSupport
     } = this.props;
     const { dialog } = this.state;
     const opacity = isDragging ? 0 : 1;
@@ -194,6 +199,7 @@ export class Row extends React.Component {
               spellCheck={spellCheck}
               maxImageWidth={maxImageWidth}
               maxImageHeight={maxImageHeight}
+              uploadSoundSupport={uploadSoundSupport}
             />
           </div>
           {row.values.map((rowValue, rowIdx) => (

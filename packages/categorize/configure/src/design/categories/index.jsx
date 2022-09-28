@@ -50,7 +50,7 @@ const styles = theme => ({
   },
 });
 
-const RowLabel = withStyles(styles)(({ categoriesPerRow, classes, markup, imageSupport, onChange, toolbarOpts, spellCheck, maxImageWidth, maxImageHeight}) => {
+const RowLabel = withStyles(styles)(({ categoriesPerRow, classes, markup, imageSupport, onChange, toolbarOpts, spellCheck, maxImageWidth, maxImageHeight, uploadSoundSupport}) => {
   return (
     <div
       style={{
@@ -71,6 +71,7 @@ const RowLabel = withStyles(styles)(({ categoriesPerRow, classes, markup, imageS
         spellCheck={spellCheck}
         maxImageWidth={maxImageWidth}
         maxImageHeight={maxImageHeight}
+        uploadSoundSupport={uploadSoundSupport}
       />
     </div>
   );
@@ -79,6 +80,10 @@ const RowLabel = withStyles(styles)(({ categoriesPerRow, classes, markup, imageS
 export class Categories extends React.Component {
   static propTypes = {
     imageSupport: PropTypes.shape({
+      add: PropTypes.func.isRequired,
+      delete: PropTypes.func.isRequired
+    }),
+    uploadSoundSupport: PropTypes.shape({
       add: PropTypes.func.isRequired,
       delete: PropTypes.func.isRequired
     }),
@@ -189,6 +194,7 @@ export class Categories extends React.Component {
       className,
       categories,
       imageSupport,
+      uploadSoundSupport,
       toolbarOpts,
       spellCheck,
       configuration,
@@ -201,7 +207,7 @@ export class Categories extends React.Component {
     const {
       maxCategories,
       maxImageWidth = {},
-      maxImageHeight = {}
+      maxImageHeight = {},
     } = configuration || {};
     const holderStyle = {
       gridTemplateColumns: `repeat(${categoriesPerRow}, 1fr)`
@@ -260,6 +266,7 @@ export class Categories extends React.Component {
                     spellCheck={spellCheck}
                     maxImageWidth={maxImageWidth && maxImageWidth.rowLabel || defaultImageMaxWidth}
                     maxImageHeight={maxImageHeight && maxImageHeight.rowLabel || defaultImageMaxHeight}
+                    uploadSoundSupport={uploadSoundSupport}
                   />
                 )}
                 <Category
@@ -275,6 +282,7 @@ export class Categories extends React.Component {
                   }
                   maxImageWidth={maxImageWidth && maxImageWidth.categoryLabel || defaultImageMaxWidth}
                   maxImageHeight={maxImageHeight && maxImageHeight.categoryLabel || defaultImageMaxHeight}
+                  uploadSoundSupport={uploadSoundSupport}
                 />
               </React.Fragment>
             );

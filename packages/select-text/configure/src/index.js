@@ -2,9 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Main from './design';
 import {
+  ModelUpdatedEvent,
   DeleteImageEvent,
   InsertImageEvent,
-  ModelUpdatedEvent
+  InsertSoundEvent,
+  DeleteSoundEvent
 } from '@pie-framework/pie-configure-events';
 import defaultValues from './defaultConfiguration';
 import { generateModel }  from './utils';
@@ -67,6 +69,14 @@ export default class SelectTextConfigure extends HTMLElement {
     this.dispatchEvent(new DeleteImageEvent(src, done));
   }
 
+  insertSound(handler) {
+    this.dispatchEvent(new InsertSoundEvent(handler));
+  }
+
+  onDeleteSound(src, done) {
+    this.dispatchEvent(new DeleteSoundEvent(src, done));
+  }
+
   render() {
     if (this._model) {
       const el = React.createElement(Main, {
@@ -77,6 +87,10 @@ export default class SelectTextConfigure extends HTMLElement {
         imageSupport: {
           add: this.insertImage.bind(this),
           delete: this.onDeleteImage.bind(this)
+        },
+        uploadSoundSupport: {
+          add: this.insertSound.bind(this),
+          delete: this.onDeleteSound.bind(this)
         }
       });
 

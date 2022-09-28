@@ -42,7 +42,8 @@ export class Configure extends React.Component {
     classes: PropTypes.object,
     model: PropTypes.object.isRequired,
     configuration: PropTypes.object.isRequired,
-    imageSupport: PropTypes.object
+    imageSupport: PropTypes.object,
+    uploadSoundSupport: PropTypes.object
   };
 
   onChange = model => {
@@ -63,7 +64,15 @@ export class Configure extends React.Component {
   };
 
   render() {
-    const { classes, model, imageSupport, onModelChanged, configuration, onConfigurationChanged } = this.props;
+    const {
+      classes,
+      model,
+      imageSupport,
+      onModelChanged,
+      configuration,
+      onConfigurationChanged,
+      uploadSoundSupport
+    } = this.props;
     const {
       feedback = {},
       responseType = {},
@@ -76,7 +85,7 @@ export class Configure extends React.Component {
       allowTrailingZeros={},
       spellCheck = {},
       maxImageWidth = {},
-      maxImageHeight = {}
+      maxImageHeight = {},
     } = configuration || {};
     log('[render] model', model);
     const { rationaleEnabled, promptEnabled, teacherInstructionsEnabled, feedbackEnabled, spellCheckEnabled } = model || {};
@@ -145,12 +154,14 @@ export class Configure extends React.Component {
                     spellCheck={spellCheckEnabled}
                     maxImageWidth={maxImageWidth && maxImageWidth.teacherInstructions || defaultImageMaxWidth}
                     maxImageHeight={maxImageHeight && maxImageHeight.teacherInstructions || defaultImageMaxHeight}
+                    uploadSoundSupport={uploadSoundSupport}
                   />
                 </InputContainer>
               )}
 
               <GeneralConfigBlock
                 imageSupport={imageSupport}
+                uploadSoundSupport={uploadSoundSupport}
                 model={model}
                 configuration={configuration}
                 onChange={this.onChange}

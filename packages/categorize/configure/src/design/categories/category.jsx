@@ -22,7 +22,11 @@ export class Category extends React.Component {
       add: PropTypes.func.isRequired,
       delete: PropTypes.func.isRequired
     }),
-    toolbarOpts: PropTypes.object
+    toolbarOpts: PropTypes.object,
+    uploadSoundSupport: PropTypes.shape({
+      add: PropTypes.func.isRequired,
+      delete: PropTypes.func.isRequired
+    })
   };
 
   static defaultProps = {};
@@ -46,7 +50,8 @@ export class Category extends React.Component {
       spellCheck,
       toolbarOpts,
       maxImageWidth,
-      maxImageHeight
+      maxImageHeight,
+      uploadSoundSupport
     } = this.props;
     return (
       <Card className={classNames(classes.category, className)}>
@@ -61,6 +66,7 @@ export class Category extends React.Component {
               spellCheck={spellCheck}
               maxImageWidth={maxImageWidth}
               maxImageHeight={maxImageHeight}
+              uploadSoundSupport={uploadSoundSupport}
             />
           )
         }

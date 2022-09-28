@@ -1,7 +1,11 @@
 import Main from './main';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { ModelUpdatedEvent } from '@pie-framework/pie-configure-events';
+import {
+  ModelUpdatedEvent,
+  InsertSoundEvent,
+  DeleteSoundEvent
+} from '@pie-framework/pie-configure-events';
 import * as defaults from './defaults';
 import * as math from 'mathjs';
 
@@ -59,11 +63,23 @@ export default class NumberLine extends HTMLElement {
     this._rerender();
   };
 
+  insertSound(handler) {
+    this.dispatchEvent(new InsertSoundEvent(handler));
+  }
+
+  onDeleteSound(src, done) {
+    this.dispatchEvent(new DeleteSoundEvent(src, done));
+  }
+
   _rerender() {
     let element = React.createElement(Main, {
       model: this._model,
       configuration: this._configuration,
-      onChange: this.onChange
+      onChange: this.onChange,
+      uploadSoundSupport: {
+        add: this.insertSound.bind(this),
+        delete: this.onDeleteSound.bind(this)
+      }
     });
     ReactDOM.render(element, this);
   }

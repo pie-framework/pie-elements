@@ -2258,10 +2258,10 @@
     unist-util-modify-children "^1.0.0"
     unist-util-visit-children "^1.0.0"
 
-"@pie-framework/pie-configure-events@^1.2.0":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@pie-framework/pie-configure-events/-/pie-configure-events-1.2.0.tgz#b1a8dea620ac120fe768e4d6a624f40090d3f153"
-  integrity sha512-6aFT2ckKLh3ECZ6eTgthkoa11sMxTeUHAau8UZ0CLLyCd2d0c0pzQaXY0D3bc0DL3++9u0t7DbZLleXrk/HDoA==
+"@pie-framework/pie-configure-events@^1.3.0":
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@pie-framework/pie-configure-events/-/pie-configure-events-1.3.0.tgz#51c0a57868880ae09296736344fa31fb02619594"
+  integrity sha512-H+lizaOPvgDEqTw+dmLwM/w8eDdxSaOV5tlK8OtPq5m7lt5iih6ZoQyg9V6FI9zgDdqUP3N8X5DyxHbzU9qTzQ==
 
 "@pie-framework/pie-player-events@^0.1.0":
   version "0.1.0"
@@ -2351,6 +2351,40 @@
     lodash "^4.17.11"
     react-dnd "^11.1.3"
     react-dnd-html5-backend "^11.1.3"
+
+"@pie-lib/editable-html@^9.1.5", "@pie-lib/editable-html@^9.2.1":
+  version "9.2.1"
+  resolved "https://registry.yarnpkg.com/@pie-lib/editable-html/-/editable-html-9.2.1.tgz#28bb6820c3bafbedf2b64c54abe0d837782865f0"
+  integrity sha512-u6JSAMArhQ3mRbgcrIroiX5Co+beXlWO9BjlonTNnrcW/fMQxTcv8j5BiF0ErWVFM/bspee0xT3GXJ2xaY6/7A==
+  dependencies:
+    "@material-ui/core" "^3.8.3"
+    "@material-ui/icons" "^3.0.2"
+    "@material-ui/styles" "^3.0.0-alpha.10"
+    "@pie-lib/drag" "^1.1.52"
+    "@pie-lib/math-rendering" "^2.5.0"
+    "@pie-lib/math-toolbar" "^1.11.1"
+    "@pie-lib/render-ui" "^4.13.6"
+    change-case "^3.0.2"
+    classnames "^2.2.6"
+    debug "^4.1.1"
+    immutable "^4.0.0-rc.12"
+    keycode "^2.2.0"
+    lodash "^4.17.11"
+    prop-types "^15.6.2"
+    react-attr-converter "^0.3.1"
+    react-jss "^8.6.1"
+    react-portal "^4.2.0"
+    slate "^0.36.2"
+    slate-dev-environment "^0.2.0"
+    slate-edit-list "^0.11.3"
+    slate-edit-table "^0.17.0"
+    slate-html-serializer "^0.6.12"
+    slate-plain-serializer "^0.5.26"
+    slate-prop-types "^0.4.38"
+    slate-react "^0.14.3"
+    slate-schema-violations "^0.1.39"
+    slate-soft-break "^0.8.1"
+    to-style "^1.3.3"
 
 "@pie-lib/editable-html@^9.1.6":
   version "9.1.6"
@@ -2569,6 +2603,20 @@
   version "4.13.5"
   resolved "https://registry.yarnpkg.com/@pie-lib/render-ui/-/render-ui-4.13.5.tgz#55364cd3e3cecbb83926023149553b7acee786a6"
   integrity sha512-MXqRwh6yIasF1mQvkF29e8gQSrFhX4QkQI5nQJpIMLFYtBDJ4awd036O6JKwpM7FjhSXkAV4pyVkDwxH9nqkbg==
+  dependencies:
+    "@material-ui/core" "^3.8.3"
+    "@material-ui/icons" "^3.0.2"
+    "@pie-lib/icons" "^2.4.25"
+    "@pie-lib/math-rendering" "^2.5.0"
+    classnames "^2.2.6"
+    debug "^4.1.1"
+    prop-types "^15.7.2"
+    react-transition-group "^2.5.2"
+
+"@pie-lib/render-ui@^4.13.6":
+  version "4.13.6"
+  resolved "https://registry.yarnpkg.com/@pie-lib/render-ui/-/render-ui-4.13.6.tgz#40bb6d4113cd32b18d14484a776c0dc4f21d63a7"
+  integrity sha512-a1sSuWVBb3TTQp7/6F52wWjNXGH4ZD5l/eRpa5DvJ9+IzLMMD9Rz+3vOWfFi4uiMz2l3wJ2vLkqGrA3b3t37jQ==
   dependencies:
     "@material-ui/core" "^3.8.3"
     "@material-ui/icons" "^3.0.2"

@@ -54,6 +54,7 @@ export class Root extends React.Component {
       configuration,
       model,
       imageSupport,
+      uploadSoundSupport,
       onConfigurationChanged,
       onModelChanged,
     } = this.props;
@@ -121,6 +122,7 @@ export class Root extends React.Component {
                   spellCheck={spellCheckEnabled}
                   maxImageWidth={maxImageWidth && maxImageWidth.teacherInstructions || defaultImageMaxWidth}
                   maxImageHeight={maxImageHeight && maxImageHeight.teacherInstructions || defaultImageMaxHeight}
+                  uploadSoundSupport={uploadSoundSupport}
                 />
               </InputContainer>
             )}
@@ -135,6 +137,7 @@ export class Root extends React.Component {
                   imageSupport={imageSupport}
                   maxImageWidth={defaultImageMaxWidth}
                   maxImageHeight={defaultImageMaxHeight}
+                  uploadSoundSupport={uploadSoundSupport}
                 />
               </InputContainer>
             )}
@@ -181,6 +184,10 @@ Root.propTypes = {
   configuration: PropTypes.object,
   model: PropTypes.object.isRequired,
   imageSupport: PropTypes.shape({
+    add: PropTypes.func,
+    delete: PropTypes.func,
+  }),
+  uploadSoundSupport: PropTypes.shape({
     add: PropTypes.func,
     delete: PropTypes.func,
   }),

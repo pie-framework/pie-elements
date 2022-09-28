@@ -52,6 +52,7 @@ export class Configure extends React.Component {
     onConfigurationChanged: PropTypes.func,
     classes: PropTypes.object,
     imageSupport: PropTypes.object,
+    uploadSoundSupport: PropTypes.object,
     model: PropTypes.object.isRequired,
     configuration: PropTypes.object.isRequired,
   };
@@ -110,6 +111,7 @@ export class Configure extends React.Component {
       onConfigurationChanged,
       onModelChanged,
       imageSupport,
+      uploadSoundSupport
     } = this.props;
     log('[render] model', model);
     const { graph } = model;
@@ -186,6 +188,7 @@ export class Configure extends React.Component {
                 spellCheck={spellCheckEnabled}
                 maxImageWidth={maxImageWidth && maxImageWidth.teacherInstructions || defaultImageMaxWidth}
                 maxImageHeight={maxImageHeight && maxImageHeight.teacherInstructions || defaultImageMaxHeight}
+                uploadSoundSupport={uploadSoundSupport}
               />
             </InputContainer>
           )}
@@ -205,6 +208,7 @@ export class Configure extends React.Component {
                 disableUnderline
                 maxImageWidth={defaultImageMaxWidth}
                 maxImageHeight={defaultImageMaxHeight}
+                uploadSoundSupport={uploadSoundSupport}
               />
             </InputContainer>
           )}
@@ -222,6 +226,7 @@ export class Configure extends React.Component {
                 spellCheck={spellCheckEnabled}
                 maxImageWidth={maxImageWidth && maxImageWidth.rationale || defaultImageMaxWidth}
                 maxImageHeight={maxImageHeight && maxImageHeight.rationale || defaultImageMaxHeight}
+                uploadSoundSupport={uploadSoundSupport}
               />
             </InputContainer>
           )}

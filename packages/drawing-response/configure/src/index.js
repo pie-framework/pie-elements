@@ -2,6 +2,8 @@ import {
   ModelUpdatedEvent,
   DeleteImageEvent,
   InsertImageEvent,
+  InsertSoundEvent,
+  DeleteSoundEvent
 } from '@pie-framework/pie-configure-events';
 
 import React from 'react';
@@ -61,6 +63,14 @@ export default class DrawableResponseConfigure extends HTMLElement {
     this.dispatchEvent(new DeleteImageEvent(src, done));
   };
 
+  insertSound(handler) {
+    this.dispatchEvent(new InsertSoundEvent(handler));
+  }
+
+  onDeleteSound(src, done) {
+    this.dispatchEvent(new DeleteSoundEvent(src, done));
+  }
+
   _render() {
     log('_render');
     let element = React.createElement(Root, {
@@ -71,6 +81,10 @@ export default class DrawableResponseConfigure extends HTMLElement {
       imageSupport: {
         add: this.insertImage,
         delete: this.onDeleteImage
+      },
+      uploadSoundSupport: {
+        add: this.insertSound.bind(this),
+        delete: this.onDeleteSound.bind(this)
       }
     });
     ReactDOM.render(element, this);

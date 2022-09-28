@@ -88,6 +88,7 @@ export class Design extends React.Component {
       model,
       classes,
       imageSupport,
+      uploadSoundSupport,
       onModelChanged,
       configuration,
       onConfigurationChanged
@@ -203,6 +204,7 @@ export class Design extends React.Component {
               spellCheck={spellCheckEnabled}
               maxImageWidth={maxImageWidth && maxImageWidth.teacherInstructions || defaultImageMaxWidth}
               maxImageHeight={maxImageHeight && maxImageHeight.teacherInstructions || defaultImageMaxHeight}
+              uploadSoundSupport={uploadSoundSupport}
             />
           </InputContainer>
         )}
@@ -222,6 +224,7 @@ export class Design extends React.Component {
                 spellCheck={spellCheckEnabled}
                 maxImageWidth={maxImageWidth && maxImageWidth.prompt}
                 maxImageHeight={maxImageHeight && maxImageHeight.prompt}
+                uploadSoundSupport={uploadSoundSupport}
               />
             </InputContainer>
             {rationaleEnabled && (
@@ -238,6 +241,7 @@ export class Design extends React.Component {
                   spellCheck={spellCheckEnabled}
                   maxImageWidth={maxImageWidth && maxImageWidth.rationale || defaultImageMaxWidth}
                   maxImageHeight={maxImageHeight && maxImageHeight.rationale || defaultImageMaxHeight}
+                  uploadSoundSupport={uploadSoundSupport}
                 />
               </InputContainer>
             )}
@@ -275,6 +279,7 @@ export class Design extends React.Component {
                   spellCheck={spellCheckEnabled}
                   maxImageWidth={maxChoicesImageWidth}
                   maxImageHeight={maxChoicesImageHeight}
+                  uploadSoundSupport={uploadSoundSupport}
                 />
               </InputContainer>
             )}
@@ -296,6 +301,7 @@ export class Design extends React.Component {
                   spellCheck={spellCheckEnabled}
                   maxImageWidth={maxImageWidth && maxImageWidth.choicesWithPlacementArea || defaultImageMaxWidth}
                   maxImageHeight={maxChoicesImageHeight}
+                  uploadSoundSupport={uploadSoundSupport}
                 />
               </InputContainer>
             )}

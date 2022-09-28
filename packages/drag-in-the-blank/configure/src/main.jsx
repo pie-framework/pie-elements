@@ -146,7 +146,8 @@ export class Main extends React.Component {
       model,
       configuration,
       onConfigurationChanged,
-      imageSupport
+      imageSupport,
+      uploadSoundSupport
     } = this.props;
     const {
       duplicates = {},
@@ -237,6 +238,7 @@ export class Main extends React.Component {
                   spellCheck={spellCheckEnabled}
                   maxImageWidth={maxImageWidth && maxImageWidth.teacherInstructions || defaultImageMaxWidth}
                   maxImageHeight={maxImageHeight && maxImageHeight.teacherInstructions || defaultImageMaxHeight}
+                  uploadSoundSupport={uploadSoundSupport}
                 />
               </InputContainer>
             )}
@@ -256,6 +258,7 @@ export class Main extends React.Component {
                   spellCheck={spellCheckEnabled}
                   maxImageWidth={defaultImageMaxWidth}
                   maxImageHeight={defaultImageMaxHeight}
+                  uploadSoundSupport={uploadSoundSupport}
                 />
               </InputContainer>
             )}
@@ -277,7 +280,6 @@ export class Main extends React.Component {
             {choicesError && <div className={classes.errorText}>{choicesError}</div>}
             <EditableHtml
               activePlugins={ALL_PLUGINS}
-              toolbarOpts={{ position: 'top' }}
               responseAreaProps={{
                 type: 'drag-in-the-blank',
                 options: {
@@ -293,6 +295,7 @@ export class Main extends React.Component {
               disableUnderline
               toolbarOpts={toolbarOpts}
               spellCheck={spellCheckEnabled}
+              uploadSoundSupport={uploadSoundSupport}
             />
             <Choices
               model={model}
@@ -300,6 +303,7 @@ export class Main extends React.Component {
               onChange={this.onResponsesChanged}
               toolbarOpts={toolbarOpts}
               maxChoices={maxChoices}
+              uploadSoundSupport={uploadSoundSupport}
             />
             {rationaleEnabled && (
               <InputContainer
@@ -315,6 +319,7 @@ export class Main extends React.Component {
                   spellCheck={spellCheckEnabled}
                   maxImageWidth={maxImageWidth && maxImageWidth.rationale || defaultImageMaxWidth}
                   maxImageHeight={maxImageHeight && maxImageHeight.rationale || defaultImageMaxHeight}
+                  uploadSoundSupport={uploadSoundSupport}
                 />
               </InputContainer>
             )}

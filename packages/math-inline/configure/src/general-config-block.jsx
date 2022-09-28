@@ -150,6 +150,7 @@ class GeneralConfigBlock extends React.Component {
     classes: PropTypes.object.isRequired,
     model: PropTypes.object.isRequired,
     imageSupport: PropTypes.object,
+    uploadSoundSupport: PropTypes.object,
     configuration: PropTypes.object,
     onChange: PropTypes.func.isRequired,
     promptEnabled: PropTypes.bool,
@@ -337,6 +338,7 @@ class GeneralConfigBlock extends React.Component {
       classes,
       model,
       imageSupport,
+      uploadSoundSupport,
       configuration,
       promptEnabled,
       rationaleEnabled,
@@ -397,6 +399,7 @@ class GeneralConfigBlock extends React.Component {
               spellCheck={spellCheckEnabled}
               maxImageWidth={defaultImageMaxWidth}
               maxImageHeight={defaultImageMaxHeight}
+              uploadSoundSupport={uploadSoundSupport}
             />
           </InputContainer>
         )}
@@ -420,6 +423,7 @@ class GeneralConfigBlock extends React.Component {
               spellCheck={spellCheckEnabled}
               maxImageWidth={maxImageWidth && maxImageWidth.rationale || defaultImageMaxWidth}
               maxImageHeight={maxImageHeight && maxImageHeight.rationale || defaultImageMaxHeight}
+              uploadSoundSupport={uploadSoundSupport}
             />
           </InputContainer>
         )}

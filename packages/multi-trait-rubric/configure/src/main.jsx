@@ -208,7 +208,7 @@ export class Main extends React.Component {
   }
 
   render() {
-    const { model, classes, configuration, onConfigurationChanged } = this.props || {};
+    const { model, classes, configuration, onConfigurationChanged, uploadSoundSupport } = this.props || {};
     const {
       showStandards,
       showExcludeZero,
@@ -243,10 +243,11 @@ export class Main extends React.Component {
             enableDragAndDrop={dragAndDrop.enabled}
             spellCheck={spellCheckEnabled}
             width={adjustedWidth}
-            {...this.props}
-            classes={{}}
-          />
-        ))}
+            uploadSoundSupport={uploadSoundSupport}
+                {...this.props}
+                classes={{}}
+              />
+            ))}
 
         <MultiTraitButton onClick={this.onScaleAdded}>
           Add Scale
@@ -304,6 +305,7 @@ export class Main extends React.Component {
 Main.propTypes = {
   classes: PropTypes.object,
   model: PropTypes.object,
+  uploadSoundSupport: PropTypes.object,
   configuration: PropTypes.object,
   onModelChanged: PropTypes.func,
   onConfigurationChanged: PropTypes.func,

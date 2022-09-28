@@ -9,7 +9,7 @@
   "dependencies": {
     "@material-ui/core": "^3.9.2",
     "@pie-element/multiple-choice": "^7.1.0",
-    "@pie-framework/pie-configure-events": "^1.2.0",
+    "@pie-framework/pie-configure-events": "^1.3.0",
     "@pie-lib/config-ui": "^11.0.16",
     "lodash": "^4.17.15",
     "prop-types": "^15.6.2",

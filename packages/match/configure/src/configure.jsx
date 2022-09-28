@@ -46,7 +46,11 @@ class Configure extends React.Component {
     imageSupport: PropTypes.shape({
       add: PropTypes.func.isRequired,
       delete: PropTypes.func.isRequired
-    })
+    }),
+    uploadSoundSupport: PropTypes.shape({
+      add: PropTypes.func.isRequired,
+      delete: PropTypes.func.isRequired
+    }),
   };
 
   static defaultProps = {
@@ -189,7 +193,8 @@ class Configure extends React.Component {
       imageSupport,
       onModelChanged,
       configuration,
-      onConfigurationChanged
+      onConfigurationChanged,
+      uploadSoundSupport
     } = this.props;
     const {
       enableImages = {},
@@ -278,6 +283,7 @@ class Configure extends React.Component {
                 spellCheck={spellCheckEnabled}
                 maxImageWidth={maxImageWidth && maxImageWidth.teacherInstructions || defaultImageMaxWidth}
                 maxImageHeight={maxImageHeight && maxImageHeight.teacherInstructions || defaultImageMaxHeight}
+                uploadSoundSupport={uploadSoundSupport}
               />
             </InputContainer>
           )}
@@ -298,6 +304,7 @@ class Configure extends React.Component {
                 spellCheck={spellCheckEnabled}
                 maxImageWidth={maxImageWidth && maxImageWidth.prompt}
                 maxImageHeight={maxImageHeight && maxImageHeight.prompt}
+                uploadSoundSupport={uploadSoundSupport}
               />
             </InputContainer>
           )}
@@ -316,6 +323,7 @@ class Configure extends React.Component {
                 spellCheck={spellCheckEnabled}
                 maxImageWidth={maxImageWidth && maxImageWidth.rationale || defaultImageMaxWidth}
                 maxImageHeight={maxImageHeight && maxImageHeight.rationale || defaultImageMaxHeight}
+                uploadSoundSupport={uploadSoundSupport}
               />
             </InputContainer>
           )}
@@ -334,6 +342,7 @@ class Configure extends React.Component {
             onDeleteRow={this.onDeleteRow}
             toolbarOpts={toolbarOpts}
             spellCheck={spellCheckEnabled}
+            uploadSoundSupport={uploadSoundSupport}
           />
           {feedbackEnabled && (
             <FeedbackConfig

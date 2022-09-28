@@ -1,7 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import debug from 'debug';
-import {ModelUpdatedEvent} from '@pie-framework/pie-configure-events';
+import {
+  ModelUpdatedEvent,
+  InsertSoundEvent,
+  DeleteSoundEvent
+} from '@pie-framework/pie-configure-events';
 
 import Main from './main';
 import defaults from 'lodash/defaults';
@@ -78,6 +82,14 @@ export default class Likert extends HTMLElement {
     this._render();
   }
 
+  insertSound(handler) {
+    this.dispatchEvent(new InsertSoundEvent(handler));
+  }
+
+  onDeleteSound(src, done) {
+    this.dispatchEvent(new DeleteSoundEvent(src, done));
+  }
+
   _render() {
     log('_render');
     let element = React.createElement(Main, {
@@ -85,7 +97,11 @@ export default class Likert extends HTMLElement {
       configuration: this._configuration,
       onModelChanged: this.onModelChanged,
       onConfigurationChanged: this.onConfigurationChanged,
-      disableSidePanel: this._disableSidePanel
+      disableSidePanel: this._disableSidePanel,
+      uploadSoundSupport: {
+        add: this.insertSound.bind(this),
+        delete: this.onDeleteSound.bind(this)
+      }
     });
     ReactDOM.render(element, this);
   }

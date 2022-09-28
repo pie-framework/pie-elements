@@ -43,6 +43,7 @@ const Design = withStyles(styles)(props => {
     configuration,
     onPromptChanged,
     imageSupport,
+    uploadSoundSupport,
     onChangeModel,
     onConfigurationChanged,
     onTeacherInstructionsChanged
@@ -51,7 +52,7 @@ const Design = withStyles(styles)(props => {
     prompt = {},
     teacherInstructions = {},
     scoringType = {},
-    spellCheck = {}
+    spellCheck = {},
   } = configuration || {};
   const {
     teacherInstructionsEnabled, spellCheckEnabled
@@ -96,6 +97,7 @@ const Design = withStyles(styles)(props => {
                 imageSupport={imageSupport}
                 nonEmpty={false}
                 spellCheck={spellCheckEnabled}
+                uploadSoundSupport={uploadSoundSupport}
               />
             </InputContainer>
           )}
@@ -108,6 +110,7 @@ const Design = withStyles(styles)(props => {
               imageSupport={imageSupport}
               nonEmpty={!prompt.settings}
               spellCheck={spellCheckEnabled}
+              uploadSoundSupport={uploadSoundSupport}
               disableUnderline
             />
           </InputContainer>

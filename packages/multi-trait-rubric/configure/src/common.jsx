@@ -148,7 +148,7 @@ export const ScorePoint = withStyles({
   slateEditor: {
     fontFamily: 'Cerebri',
   },
-})(({ classes, scorePointsValue, scoreDescriptor, pluginProps, onChange, showScorePointLabels, alignToRight, spellCheck }) => {
+})(({ classes, scorePointsValue, scoreDescriptor, pluginProps, onChange, showScorePointLabels, alignToRight, spellCheck, uploadSoundSupport }) => {
 
   const scoreBoxClasses =
     showScorePointLabels ? classes.scorePointBox : `${classes.scorePointBox} ${classes.scorePointBoxDisabled}`;
@@ -170,6 +170,7 @@ export const ScorePoint = withStyles({
           activePlugins={filteredDefaultPlugins}
           spellCheck={spellCheck}
           toolbarOpts={alignToRight && { alignment: 'right' }}
+          uploadSoundSupport={uploadSoundSupport}
         /> : null}
       </div>
     </div>
@@ -238,7 +239,7 @@ export const SimpleInput = withStyles({
   slateEditor: {
     fontFamily: 'Cerebri',
   },
-})(({ classes, markup, onChange, pluginProps, label, spellCheck }) => (
+})(({ classes, markup, onChange, pluginProps, label, spellCheck, uploadSoundSupport }) => (
   <div className={classes.simpleInput}>
     {label && <div>{label}</div>}
 
@@ -251,6 +252,7 @@ export const SimpleInput = withStyles({
       pluginProps={pluginProps}
       activePlugins={filteredDefaultPlugins}
       spellCheck={spellCheck}
+      uploadSoundSupport={uploadSoundSupport}
     />
   </div>
 ));
@@ -281,7 +283,7 @@ export const UnderlinedInput = withStyles({
   slateEditor: {
     fontFamily: 'Cerebri',
   },
-})(({ classes, markup, onChange, pluginProps, label, placeholder, spellCheck }) => (
+})(({ classes, markup, onChange, pluginProps, label, placeholder, spellCheck, uploadSoundSupport }) => (
   <div className={classes.underlinedInputWrapper}>
     {label && <div>{label}</div>}
 
@@ -294,6 +296,7 @@ export const UnderlinedInput = withStyles({
       pluginProps={pluginProps}
       activePlugins={filteredDefaultPlugins}
       spellCheck={spellCheck}
+      uploadSoundSupport={uploadSoundSupport}
     />
   </div>
 ));
@@ -310,7 +313,7 @@ export const ExpandedInput = withStyles({
     margin: '10px',
     marginTop: 0
   },
-})(({ classes, markup, onChange, pluginProps, placeholder, alignToRight, spellCheck }) => (
+})(({ classes, markup, onChange, pluginProps, placeholder, alignToRight, spellCheck, uploadSoundSupport }) => (
   <div>
     <EditableHtml
       className={classes.prompt}
@@ -321,6 +324,7 @@ export const ExpandedInput = withStyles({
       pluginProps={pluginProps}
       toolbarOpts={alignToRight && { alignment: 'right' }}
       spellCheck={spellCheck}
+      uploadSoundSupport={uploadSoundSupport}
     />
   </div>
 ));
