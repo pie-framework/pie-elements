@@ -463,6 +463,26 @@
       "type": "string",
       "title": "title"
     },
+    "placeholderMessages": {
+      "title": "Placeholder",
+      "type": "object",
+      "properties": {
+        "title": {
+          "description": "Indicates placeholder message if title is not defined",
+          "type": "string",
+          "title": "title"
+        },
+        "labels": {
+          "description": "Indicates placeholder message if labels for range or domain are not defined",
+          "type": "string",
+          "title": "labels"
+        }
+      },
+      "required": [
+        "labels",
+        "title"
+      ]
+    },
     "rationaleEnabled": {
       "description": "Indicates if Rationale are enabled",
       "type": "boolean",
@@ -850,6 +870,26 @@
       "required": [
         "height",
         "width"
+      ]
+    },
+    "Placeholder": {
+      "title": "Placeholder",
+      "type": "object",
+      "properties": {
+        "title": {
+          "description": "Indicates placeholder message if title is not defined",
+          "type": "string",
+          "title": "title"
+        },
+        "labels": {
+          "description": "Indicates placeholder message if labels for range or domain are not defined",
+          "type": "string",
+          "title": "labels"
+        }
+      },
+      "required": [
+        "labels",
+        "title"
       ]
     }
   },
