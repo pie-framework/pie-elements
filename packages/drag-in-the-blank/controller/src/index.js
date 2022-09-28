@@ -175,9 +175,9 @@ export const validate = (model = {}, config = {}) => {
   }
 
   if (nbOfChoices < minChoices) {
-    errors.choicesError = `There should be at least ${minChoices} choices defined.`;
+    errors.choicesError = `There should be at least ${minChoices} tokens defined.`;
   } else if (nbOfChoices > maxChoices) {
-    errors.choicesError = `No more than ${maxChoices} choices should be defined.`;
+    errors.choicesError = `No more than ${maxChoices} tokens should be defined.`;
   }
 
   return errors;
