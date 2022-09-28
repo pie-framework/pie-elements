@@ -10,6 +10,7 @@ import {
 } from '@pie-framework/pie-configure-events';
 import debug from 'debug';
 import defaultValues from './defaults';
+import { renderMath } from '@pie-lib/math-rendering';
 
 const log = debug('pie-elements:graphing:configure');
 
@@ -119,7 +120,10 @@ export default class GraphLinesConfigure extends HTMLElement {
           delete: this.onDeleteSound.bind(this)
         }
       });
-      ReactDOM.render(el, this);
+
+      ReactDOM.render(el, this, () => {
+        renderMath(this);
+      });
     }
   }
 }
