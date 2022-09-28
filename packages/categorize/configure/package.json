@@ -15,7 +15,7 @@
     "@pie-lib/categorize": "^0.6.24",
     "@pie-lib/config-ui": "^11.0.15",
     "@pie-lib/drag": "^1.1.52",
-    "@pie-lib/editable-html": "7.17.4-next.556",
+    "@pie-lib/editable-html": "^9.2.1",
     "@pie-lib/render-ui": "^4.13.4",
     "classnames": "^2.2.5",
     "debug": "^3.1.0",
