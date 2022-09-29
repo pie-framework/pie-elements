@@ -1,20 +1,20 @@
 {
   "name": "@pie-element/complex-rubric",
   "repository": "pie-framework/pie-elements",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
     "@material-ui/core": "^3.9.2",
-    "prop-types": "^15.7.2",
-    "@pie-element/rubric": "^2.0.10",
-    "@pie-element/multi-trait-rubric": "^2.0.10",
+    "@pie-element/multi-trait-rubric": "^2.0.11",
+    "@pie-element/rubric": "^2.0.11",
     "@pie-framework/pie-player-events": "^0.1.0",
     "@pie-lib/rubric": "^0.5.4",
     "classnames": "^2.2.5",
     "debug": "^4.1.1",
-    "lodash": "^4.17.11"
+    "lodash": "^4.17.11",
+    "prop-types": "^15.7.2"
   },
   "gitHead": "0e14ff981bcdc8a89a0e58484026496701bfdbc3",
   "scripts": {
