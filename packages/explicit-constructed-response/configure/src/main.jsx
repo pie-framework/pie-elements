@@ -303,7 +303,8 @@ export class Main extends React.Component {
       model,
       configuration,
       onConfigurationChanged,
-      imageSupport
+      imageSupport,
+      uploadSoundSupport
     } = this.props;
     const {
       prompt = {},
@@ -391,6 +392,7 @@ export class Main extends React.Component {
                   spellCheck={spellCheckEnabled}
                   maxImageWidth={maxImageWidth && maxImageWidth.teacherInstructions || defaultImageMaxWidth}
                   maxImageHeight={maxImageHeight && maxImageHeight.teacherInstructions || defaultImageMaxHeight}
+                  uploadSoundSupport={uploadSoundSupport}
                 />
               </InputContainer>
             )}
@@ -410,6 +412,7 @@ export class Main extends React.Component {
                   spellCheck={spellCheckEnabled}
                   maxImageWidth={defaultImageMaxWidth}
                   maxImageHeight={defaultImageMaxHeight}
+                  uploadSoundSupport={uploadSoundSupport}
                 />
                 {/*<EditableHtmlNew*/}
                 {/*  className={classes.prompt}*/}
@@ -478,6 +481,7 @@ export class Main extends React.Component {
               disabled={false}
               highlightShape={false}
               error={responseAreasError}
+              uploadSoundSupport={uploadSoundSupport}
             />
             {!isEmpty(model.choices) && (
               <Typography className={classes.text}>
@@ -506,6 +510,7 @@ export class Main extends React.Component {
                   spellCheck={spellCheckEnabled}
                   maxImageWidth={maxImageWidth && maxImageWidth.rationale || defaultImageMaxWidth}
                   maxImageHeight={maxImageHeight && maxImageHeight.rationale || defaultImageMaxHeight}
+                  uploadSoundSupport={uploadSoundSupport}
                 />
               </InputContainer>
             )}

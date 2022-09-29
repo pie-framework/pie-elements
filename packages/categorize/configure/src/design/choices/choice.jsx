@@ -38,7 +38,11 @@ export class Choice extends React.Component {
       delete: PropTypes.func.isRequired
     }),
     toolbarOpts: PropTypes.object,
-    error: PropTypes.string
+    error: PropTypes.string,
+    uploadSoundSupport: PropTypes.shape({
+      add: PropTypes.func.isRequired,
+      delete: PropTypes.func.isRequired
+    })
   };
 
   static defaultProps = {};
@@ -72,7 +76,8 @@ export class Choice extends React.Component {
       toolbarOpts,
       error,
       maxImageWidth,
-      maxImageHeight
+      maxImageHeight,
+      uploadSoundSupport
     } = this.props;
 
     const draggable = canDrag(this.props);
@@ -103,6 +108,7 @@ export class Choice extends React.Component {
               error={error}
               maxImageWidth={maxImageWidth}
               maxImageHeight={maxImageHeight}
+              uploadSoundSupport={uploadSoundSupport}
             />
             {error && <div className={classes.errorText}>{error}</div>}
           </span>

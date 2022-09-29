@@ -29,6 +29,7 @@ export class Configure extends React.Component {
     onConfigurationChanged: PropTypes.func,
     classes: PropTypes.object,
     imageSupport: PropTypes.object,
+    uploadSoundSupport: PropTypes.object,
     model: PropTypes.object.isRequired,
     configuration: PropTypes.object.isRequired
   };
@@ -131,7 +132,8 @@ export class Configure extends React.Component {
       configuration,
       onConfigurationChanged,
       onModelChanged,
-      imageSupport
+      imageSupport,
+      uploadSoundSupport
     } = this.props;
     const config = model.graph;
 
@@ -208,6 +210,7 @@ export class Configure extends React.Component {
             promptEnabled={model && model.promptEnabled}
             onChange={this.onChange}
             imageSupport={imageSupport}
+            uploadSoundSupport={uploadSoundSupport}
           />
           <ChartConfig
             config={config}

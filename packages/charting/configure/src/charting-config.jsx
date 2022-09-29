@@ -107,8 +107,18 @@ export class ChartingConfig extends React.Component {
     }
   };
 
+  changeTitle = title => this.props.onChange({ ...this.props.model, title });
+
+  changeLabel = (type, label) => this.props.onChange({
+     ...this.props.model,
+     [type]: {
+      ...this.props.model[type],
+      label
+     },
+    })
+
   render() {
-    const { classes, model, charts, showPixelGuides } = this.props;
+    const { classes, model, charts, labelsPlaceholders, titlePlaceholder, showPixelGuides } = this.props;
     const { dialog } = this.state;
 
     return (
@@ -138,8 +148,12 @@ export class ChartingConfig extends React.Component {
               }))}
               title={model.title}
               onDataChange={this.changeData}
+              onChangeTitle={this.changeTitle}
+              onChangeLabels={this.changeLabel}
               addCategoryEnabled={true}
               categoryDefaultLabel={model.categoryDefaultLabel}
+              labelsPlaceholders={labelsPlaceholders}
+              titlePlaceholder={titlePlaceholder}
             />
             <div>
               <Checkbox

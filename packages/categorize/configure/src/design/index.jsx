@@ -38,6 +38,10 @@ export class Design extends React.Component {
       add: PropTypes.func.isRequired,
       delete: PropTypes.func.isRequired,
     }),
+    uploadSoundSupport: PropTypes.shape({
+      add: PropTypes.func.isRequired,
+      delete: PropTypes.func.isRequired,
+    }),
   };
 
   constructor(props) {
@@ -138,6 +142,7 @@ export class Design extends React.Component {
       className,
       model,
       imageSupport,
+      uploadSoundSupport,
       configuration,
       onChange,
       onConfigurationChanged,
@@ -252,6 +257,7 @@ export class Design extends React.Component {
                   spellCheck={spellCheckEnabled}
                   maxImageWidth={maxImageWidth && maxImageWidth.prompt}
                   maxImageHeight={maxImageHeight && maxImageHeight.prompt}
+                  uploadSoundSupport={uploadSoundSupport}
                 />
               </InputContainer>
             )}
@@ -271,6 +277,7 @@ export class Design extends React.Component {
                   spellCheck={spellCheckEnabled}
                   maxImageWidth={maxImageWidth && maxImageWidth.teacherInstructions || defaultImageMaxWidth}
                   maxImageHeight={maxImageHeight && maxImageHeight.teacherInstructions || defaultImageMaxHeight}
+                  uploadSoundSupport={uploadSoundSupport}
                 />
               </InputContainer>
             )}
@@ -290,12 +297,14 @@ export class Design extends React.Component {
                   spellCheck={spellCheckEnabled}
                   maxImageWidth={maxImageWidth && maxImageWidth.rationale || defaultImageMaxWidth}
                   maxImageHeight={maxImageHeight && maxImageHeight.rationale || defaultImageMaxHeight}
+                  uploadSoundSupport={uploadSoundSupport}
                 />
               </InputContainer>
             )}
 
             <Categories
               imageSupport={imageSupport}
+              uploadSoundSupport={uploadSoundSupport}
               model={model}
               categories={categories || []}
               onModelChanged={this.updateModel}
@@ -329,6 +338,7 @@ export class Design extends React.Component {
                     model={model}
                     categories={categoriesList}
                     onModelChanged={this.updateModel}
+                    uploadSoundSupport={uploadSoundSupport}
                   />
                 </React.Fragment>
               );
@@ -337,6 +347,7 @@ export class Design extends React.Component {
             <Divider />
             <Choices
               imageSupport={imageSupport}
+              uploadSoundSupport={uploadSoundSupport}
               choices={choices}
               model={model}
               onModelChanged={this.updateModel}

@@ -61,7 +61,7 @@ export class Main extends React.Component {
       correctedAnswer,
       correctAnswer,
     } = model;
-
+  
     const correctData =
       correctAnswer && correctAnswer.data
         ? correctAnswer.data.map((data) => {

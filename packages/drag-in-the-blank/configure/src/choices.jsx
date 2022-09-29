@@ -56,7 +56,8 @@ export class Choices extends React.Component {
     onChange: PropTypes.func.isRequired,
     classes: PropTypes.object.isRequired,
     toolbarOpts: PropTypes.object,
-    maxChoices: PropTypes.number
+    maxChoices: PropTypes.number,
+    uploadSoundSupport: PropTypes.object
   };
 
   state = {
@@ -209,7 +210,8 @@ export class Choices extends React.Component {
       duplicates,
       toolbarOpts,
       maxChoices,
-      model: { choices }
+      model: { choices },
+      uploadSoundSupport
     } = this.props;
     const visibleChoices = this.getVisibleChoices() || [];
 
@@ -263,6 +265,7 @@ export class Choices extends React.Component {
                       }}
                       disableUnderline
                       toolbarOpts={toolbarOpts}
+                      uploadSoundSupport={uploadSoundSupport}
                     />
                   </div>
                 );

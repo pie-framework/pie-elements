@@ -1,7 +1,9 @@
 import {
+  ModelUpdatedEvent,
   DeleteImageEvent,
   InsertImageEvent,
-  ModelUpdatedEvent
+  InsertSoundEvent,
+  DeleteSoundEvent
 } from '@pie-framework/pie-configure-events';
 
 import Main from './design';
@@ -93,6 +95,14 @@ export default class PlacementOrdering extends HTMLElement {
     this._rerender();
   }
 
+  insertSound(handler) {
+    this.dispatchEvent(new InsertSoundEvent(handler));
+  }
+
+  onDeleteSound(src, done) {
+    this.dispatchEvent(new DeleteSoundEvent(src, done));
+  }
+
   _rerender() {
     let element = React.createElement(Main, {
       model: this._model,
@@ -102,6 +112,10 @@ export default class PlacementOrdering extends HTMLElement {
       imageSupport: {
         add: this.insertImage,
         delete: this.deleteImage
+      },
+      uploadSoundSupport: {
+        add: this.insertSound.bind(this),
+        delete: this.onDeleteSound.bind(this)
       }
     });
     ReactDOM.render(element, this);

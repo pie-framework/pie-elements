@@ -5,7 +5,9 @@ import isEmpty from 'lodash/isEmpty';
 import {
   ModelUpdatedEvent,
   DeleteImageEvent,
-  InsertImageEvent
+  InsertImageEvent,
+  InsertSoundEvent,
+  DeleteSoundEvent
 } from '@pie-framework/pie-configure-events';
 import debug from 'debug';
 
@@ -75,6 +77,14 @@ export default class MathInlineConfigure extends HTMLElement {
     this.dispatchEvent(new DeleteImageEvent(src, done));
   }
 
+  insertSound(handler) {
+    this.dispatchEvent(new InsertSoundEvent(handler));
+  }
+
+  onDeleteSound(src, done) {
+    this.dispatchEvent(new DeleteSoundEvent(src, done));
+  }
+
   _render() {
     if (this._model) {
       const el = React.createElement(Configure, {
@@ -85,6 +95,10 @@ export default class MathInlineConfigure extends HTMLElement {
         imageSupport: {
           add: this.insertImage.bind(this),
           delete: this.onDeleteImage.bind(this)
+        },
+        uploadSoundSupport: {
+          add: this.insertSound.bind(this),
+          delete: this.onDeleteSound.bind(this)
         }
       });
 

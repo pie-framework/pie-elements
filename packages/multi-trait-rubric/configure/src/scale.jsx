@@ -238,7 +238,8 @@ export class Scale extends React.Component {
       showScorePointLabels,
       enableDragAndDrop,
       spellCheck,
-      width
+      width,
+      uploadSoundSupport
     } = this.props || {};
 
     const {
@@ -296,6 +297,7 @@ export class Scale extends React.Component {
           currentPosition={currentPosition}
           secondaryBlockWidth={secondaryBlockWidth}
           spellCheck={spellCheck}
+          uploadSoundSupport={uploadSoundSupport}
         />
 
         {traits.map((trait, index) => (
@@ -314,6 +316,7 @@ export class Scale extends React.Component {
             enableDragAndDrop={enableDragAndDrop}
             secondaryBlockWidth={secondaryBlockWidth}
             spellCheck={spellCheck}
+            uploadSoundSupport={uploadSoundSupport}
           />
         ))}
 
@@ -383,6 +386,7 @@ Scale.propTypes = {
   showStandards: PropTypes.bool,
   showLevelTagInput: PropTypes.bool,
   showDescription: PropTypes.bool,
+  uploadSoundSupport: PropTypes.object,
   showScorePointLabels: PropTypes.bool,
   enableDragAndDrop: PropTypes.bool,
 }
