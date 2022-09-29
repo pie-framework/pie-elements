@@ -93,7 +93,8 @@ export class TraitsHeaderTile extends React.Component {
       showScorePointLabels,
       secondaryBlockWidth,
       setSecondaryBlockRef,
-      spellCheck
+      spellCheck,
+      uploadSoundSupport
     } = this.props;
     const { anchorEl } = this.state;
 
@@ -107,6 +108,7 @@ export class TraitsHeaderTile extends React.Component {
               pluginProps={labelPlugins}
               spellCheck={spellCheck}
               label='Level Label'
+              uploadSoundSupport={uploadSoundSupport}
             />
           )}
 
@@ -197,6 +199,7 @@ export class TraitsHeaderTile extends React.Component {
                   onChange={scorePointLabel => this.onScorePointLabelChange({ scorePointLabel, value })}
                   alignToRight={remainingSpace < 296} // 296 is the space required for the toolbar
                   spellCheck={spellCheck}
+                  uploadSoundSupport={uploadSoundSupport}
                 />
               </Block>
             )
@@ -224,7 +227,8 @@ TraitsHeaderTile.propTypes = {
   secondaryBlockWidth: PropTypes.number,
   showDeleteScaleModal: PropTypes.func,
   showScorePointLabels: PropTypes.bool,
-  setSecondaryBlockRef: PropTypes.func
+  setSecondaryBlockRef: PropTypes.func,
+  uploadSoundSupport: PropTypes.object
 };
 
 export default withStyles(styles)(TraitsHeaderTile);

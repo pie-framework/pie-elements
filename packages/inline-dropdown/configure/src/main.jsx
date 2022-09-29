@@ -148,6 +148,10 @@ export class Main extends React.Component {
     imageSupport: PropTypes.shape({
       add: PropTypes.func.isRequired,
       delete: PropTypes.func.isRequired
+    }),
+    uploadSoundSupport: PropTypes.shape({
+      add: PropTypes.func.isRequired,
+      delete: PropTypes.func.isRequired
     })
   };
 
@@ -407,7 +411,8 @@ export class Main extends React.Component {
       model,
       configuration,
       onConfigurationChanged,
-      imageSupport
+      imageSupport,
+      uploadSoundSupport
     } = this.props;
     const {
       prompt = {},
@@ -419,7 +424,7 @@ export class Main extends React.Component {
       spellCheck = {},
       maxResponseAreas,
       maxImageWidth = {},
-      maxImageHeight = {}
+      maxImageHeight = {},
     } = configuration || {};
     const {
       rationaleEnabled,
@@ -471,6 +476,7 @@ export class Main extends React.Component {
                   imageSupport={imageSupport}
                   maxImageWidth={maxImageWidth && maxImageWidth.rationale || defaultImageMaxWidth}
                   maxImageHeight={maxImageHeight && maxImageHeight.rationale || defaultImageMaxHeight}
+                  uploadSoundSupport={uploadSoundSupport}
                 />
               </InputContainer>
             )}
@@ -542,6 +548,7 @@ export class Main extends React.Component {
                   spellCheck={spellCheckEnabled}
                   maxImageWidth={maxImageWidth && maxImageWidth.teacherInstructions || defaultImageMaxWidth}
                   maxImageHeight={maxImageHeight && maxImageHeight.teacherInstructions || defaultImageMaxHeight}
+                  uploadSoundSupport={uploadSoundSupport}
                 />
               </InputContainer>
             )}
@@ -562,6 +569,7 @@ export class Main extends React.Component {
                   spellCheck={spellCheckEnabled}
                   maxImageWidth={defaultImageMaxWidth}
                   maxImageHeight={defaultImageMaxHeight}
+                  uploadSoundSupport={uploadSoundSupport}
                 />
               </InputContainer>
             )}
@@ -580,6 +588,7 @@ export class Main extends React.Component {
                   spellCheck={spellCheckEnabled}
                   maxImageWidth={maxImageWidth && maxImageWidth.rationale || defaultImageMaxWidth}
                   maxImageHeight={maxImageHeight && maxImageHeight.rationale || defaultImageMaxHeight}
+                  uploadSoundSupport={uploadSoundSupport}
                 />
               </InputContainer>
             )}
@@ -634,6 +643,7 @@ export class Main extends React.Component {
                       onToolbarDone={onToolbarDone}
                       choices={respAreaChoices[node.data.get('index')]}
                       spellCheck={spellCheckEnabled}
+                      uploadSoundSupport={uploadSoundSupport}
                     />
                   );
                 }
@@ -647,6 +657,7 @@ export class Main extends React.Component {
               disabled={false}
               highlightShape={false}
               error={responseAreasError}
+              uploadSoundSupport={uploadSoundSupport}
             />
             <br />
             {choiceRationaleEnabled && renderChoiceRationale()}

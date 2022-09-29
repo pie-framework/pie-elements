@@ -326,6 +326,7 @@ exports[`GeneralConfigBlock renders correctly with snapshot 1`] = `
       nonEmpty={false}
       onChange={[Function]}
       onFocus={[Function]}
+      uploadSoundSupport={Object {}}
     />
   </InputContainer>
   <div

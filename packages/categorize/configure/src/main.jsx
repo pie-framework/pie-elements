@@ -12,7 +12,8 @@ export class Main extends React.Component {
     onConfigurationChanged: PropTypes.func,
     model: PropTypes.object.isRequired,
     onModelChanged: PropTypes.func.isRequired,
-    imageSupport: PropTypes.object
+    imageSupport: PropTypes.object,
+    uploadSoundSupport: PropTypes.object
   };
 
   static defaultProps = {};
@@ -31,6 +32,7 @@ export class Main extends React.Component {
       <div className={classNames(classes.main, className)}>
         <Design
           imageSupport={this.props.imageSupport}
+          uploadSoundSupport={this.props.uploadSoundSupport}
           title="Design"
           model={model}
           configuration={configuration}

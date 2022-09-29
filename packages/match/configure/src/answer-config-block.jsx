@@ -85,6 +85,10 @@ class AnswerConfigBlock extends React.Component {
       add: PropTypes.func.isRequired,
       delete: PropTypes.func.isRequired
     }),
+    uploadSoundSupport: PropTypes.shape({
+      add: PropTypes.func.isRequired,
+      delete: PropTypes.func.isRequired
+    }),
     toolbarOpts: PropTypes.object
   };
 
@@ -195,7 +199,8 @@ class AnswerConfigBlock extends React.Component {
       imageSupport,
       configuration,
       toolbarOpts,
-      spellCheck
+      spellCheck,
+      uploadSoundSupport
     } = this.props;
     const { headers = {}, maxImageWidth = {}, maxImageHeight = {} } = configuration || {};
     const { dialog } = this.state;
@@ -239,6 +244,7 @@ class AnswerConfigBlock extends React.Component {
                     autoWidthToolbar
                     allowValidation
                     spellCheck={spellCheck}
+                    uploadSoundSupport={uploadSoundSupport}
                   />
                 </div>
               ))}
@@ -265,6 +271,7 @@ class AnswerConfigBlock extends React.Component {
               error={rowsErrors && rowsErrors[row.id]}
               maxImageWidth={maxImageWidth && maxImageWidth.rowTitles || defaultImageMaxWidth}
               maxImageHeight={maxImageHeight && maxImageHeight.rowTitles || defaultImageMaxHeight}
+              uploadSoundSupport={uploadSoundSupport}
             />
           ))}
           <AddRow onAddClick={onAddRow} />

@@ -15,13 +15,17 @@ export class InputHeader extends React.Component {
       add: PropTypes.func.isRequired,
       delete: PropTypes.func.isRequired
     }),
+    uploadSoundSupport: PropTypes.shape({
+      add: PropTypes.func.isRequired,
+      delete: PropTypes.func.isRequired
+    }),
     toolbarOpts: PropTypes.object,
     error: PropTypes.string,
   };
 
   static defaultProps = {};
   render() {
-    const { onChange, label, classes, className, imageSupport, toolbarOpts, spellCheck, error, maxImageWidth, maxImageHeight } = this.props;
+    const { onChange, label, classes, className, imageSupport, toolbarOpts, spellCheck, error, maxImageWidth, maxImageHeight, uploadSoundSupport } = this.props;
     const choicePlugins = {
       audio: { disabled: true },
       video: { disabled: true }
@@ -42,6 +46,7 @@ export class InputHeader extends React.Component {
           error={error}
           maxImageWidth={maxImageWidth}
           maxImageHeight={maxImageHeight}
+          uploadSoundSupport={uploadSoundSupport}
         />
       </div>
     );

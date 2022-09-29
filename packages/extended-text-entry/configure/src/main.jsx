@@ -24,6 +24,7 @@ export class Main extends React.Component {
     model: PropTypes.object.isRequired,
     configuration: PropTypes.object.isRequired,
     imageSupport: PropTypes.object.isRequired,
+    uploadSoundSupport: PropTypes.object.isRequired,
     classes: PropTypes.object.isRequired,
   };
 
@@ -63,6 +64,7 @@ export class Main extends React.Component {
       configuration,
       onConfigurationChanged,
       imageSupport,
+      uploadSoundSupport
     } = this.props;
     const {
       multiple = {},
@@ -176,6 +178,7 @@ export class Main extends React.Component {
                 spellCheck={spellCheckEnabled}
                 maxImageWidth={maxImageWidth && maxImageWidth.teacherInstructions || defaultImageMaxWidth}
                 maxImageHeight={maxImageHeight && maxImageHeight.teacherInstructions || defaultImageMaxHeight}
+                uploadSoundSupport={uploadSoundSupport}
               />
             </InputContainer>
           )}
@@ -198,6 +201,7 @@ export class Main extends React.Component {
                 spellCheck={spellCheckEnabled}
                 maxImageWidth={defaultImageMaxWidth}
                 maxImageHeight={defaultImageMaxHeight}
+                uploadSoundSupport={uploadSoundSupport}
               />
             </InputContainer>
           )}

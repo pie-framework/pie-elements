@@ -140,6 +140,7 @@ export class Design extends React.Component {
       model,
       classes,
       imageSupport,
+      uploadSoundSupport,
       onModelChanged,
       configuration,
       onConfigurationChanged
@@ -239,6 +240,7 @@ export class Design extends React.Component {
                 spellCheck={spellCheckEnabled}
                 maxImageWidth={maxImageWidth && maxImageWidth.teacherInstructions || defaultImageMaxWidth}
                 maxImageHeight={maxImageHeight && maxImageHeight.teacherInstructions || defaultImageMaxHeight}
+                uploadSoundSupport={uploadSoundSupport}
               />
             </InputContainer>
           )}
@@ -257,6 +259,7 @@ export class Design extends React.Component {
                 spellCheck={spellCheckEnabled}
                 maxImageWidth={defaultImageMaxWidth}
                 maxImageHeight={defaultImageMaxHeight}
+                uploadSoundSupport={uploadSoundSupport}
               />
             </InputContainer>
           )}
@@ -275,6 +278,7 @@ export class Design extends React.Component {
                 spellCheck={spellCheckEnabled}
                 maxImageWidth={maxImageWidth && maxImageWidth.rationale || defaultImageMaxWidth}
                 maxImageHeight={maxImageHeight && maxImageHeight.rationale || defaultImageMaxHeight}
+                uploadSoundSupport={uploadSoundSupport}
               />
             </InputContainer>
           )}

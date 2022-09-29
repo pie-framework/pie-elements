@@ -208,7 +208,7 @@ export class Main extends React.Component {
   }
 
   render() {
-    const { model, classes, configuration, onConfigurationChanged } = this.props || {};
+    const { model, classes, configuration, onConfigurationChanged, uploadSoundSupport } = this.props || {};
     const {
       showStandards,
       showExcludeZero,
@@ -219,15 +219,45 @@ export class Main extends React.Component {
       showScorePointLabels,
       dragAndDrop,
       spellCheck = {},
-      width
+      width,
+      settingsPanelDisabled
     } = configuration || {};
     const { scales, excludeZero, description, pointLabels, standards, spellCheckEnabled } = model || {};
     const { showExcludeZeroDialog } = this.state || {};
     const adjustedWidth = parseInt(width) > parseInt(MIN_WIDTH) ? width : MIN_WIDTH;
 
+    const Content = (
+      <div style={{ width: adjustedWidth }}>
+        {(scales || []).map((scale, scaleIndex) => (
+          <Scale
+            key={`scale-${scaleIndex}`}
+            scale={scale}
+            scaleIndex={scaleIndex}
+            onScaleRemoved={this.onScaleRemoved}
+            onScaleChanged={this.onScaleChanged}
+            showStandards={standards}
+            showScorePointLabels={pointLabels}
+            showDescription={description}
+            showLevelTagInput={showLevelTagInput.enabled}
+            excludeZero={excludeZero}
+            enableDragAndDrop={dragAndDrop.enabled}
+            spellCheck={spellCheckEnabled}
+            width={adjustedWidth}
+            uploadSoundSupport={uploadSoundSupport}
+                {...this.props}
+                classes={{}}
+              />
+            ))}
+
+        <MultiTraitButton onClick={this.onScaleAdded}>
+          Add Scale
+        </MultiTraitButton>
+      </div>
+    );
+
     return (
       <div className={classes.design}>
-        <layout.ConfigLayout
+        {settingsPanelDisabled ? (Content) : <layout.ConfigLayout
           settings={
             <Panel
               model={model}
@@ -253,32 +283,8 @@ export class Main extends React.Component {
             />
           }
         >
-          <div style={{ width: adjustedWidth }}>
-            {(scales || []).map((scale, scaleIndex) => (
-              <Scale
-                key={`scale-${scaleIndex}`}
-                scale={scale}
-                scaleIndex={scaleIndex}
-                onScaleRemoved={this.onScaleRemoved}
-                onScaleChanged={this.onScaleChanged}
-                showStandards={standards}
-                showScorePointLabels={pointLabels}
-                showDescription={description}
-                showLevelTagInput={showLevelTagInput.enabled}
-                excludeZero={excludeZero}
-                enableDragAndDrop={dragAndDrop.enabled}
-                spellCheck={spellCheckEnabled}
-                width={adjustedWidth}
-                {...this.props}
-                classes={{}}
-              />
-            ))}
-
-            <MultiTraitButton onClick={this.onScaleAdded}>
-              Add Scale
-            </MultiTraitButton>
-          </div>
-        </layout.ConfigLayout>
+          {Content}
+        </layout.ConfigLayout>}
 
         <ExcludeZeroDialog
           open={showExcludeZeroDialog && !excludeZero}
@@ -299,6 +305,7 @@ export class Main extends React.Component {
 Main.propTypes = {
   classes: PropTypes.object,
   model: PropTypes.object,
+  uploadSoundSupport: PropTypes.object,
   configuration: PropTypes.object,
   onModelChanged: PropTypes.func,
   onConfigurationChanged: PropTypes.func,

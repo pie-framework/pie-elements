@@ -41,7 +41,11 @@ export class AlternateResponses extends React.Component {
     className: PropTypes.string,
     categories: PropTypes.array,
     onModelChanged: PropTypes.func,
-    model: PropTypes.object.isRequired
+    model: PropTypes.object.isRequired,
+    uploadSoundSupport: PropTypes.shape({
+      add: PropTypes.func.isRequired,
+      delete: PropTypes.func.isRequired
+    }),
   };
 
   addChoiceToCategory = (choice, categoryId) => {
@@ -89,7 +93,8 @@ export class AlternateResponses extends React.Component {
       className,
       categories,
       imageSupport,
-      spellCheck
+      spellCheck,
+      uploadSoundSupport
     } = this.props;
     const { categoriesPerRow } = model;
 
@@ -110,6 +115,7 @@ export class AlternateResponses extends React.Component {
               onDeleteChoice={(choice, choiceIndex) =>
                 this.deleteChoiceFromCategory(category, choice, choiceIndex)
               }
+              uploadSoundSupport={uploadSoundSupport}
             />
           ))}
         </div>

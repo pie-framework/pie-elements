@@ -41,6 +41,7 @@ export class Configure extends React.Component {
     onConfigurationChanged: PropTypes.func,
     classes: PropTypes.object,
     imageSupport: PropTypes.object,
+    uploadSoundSupport: PropTypes.object,
     model: PropTypes.object.isRequired,
     configuration: PropTypes.object.isRequired
   };
@@ -102,7 +103,8 @@ export class Configure extends React.Component {
       configuration,
       onConfigurationChanged,
       onModelChanged,
-      imageSupport
+      imageSupport,
+      uploadSoundSupport
     } = this.props;
     const {
       arrows = {},
@@ -208,6 +210,7 @@ export class Configure extends React.Component {
                 spellCheck={spellCheckEnabled}
                 maxImageWidth={maxImageWidth && maxImageWidth.teacherInstructions || defaultImageMaxWidth}
                 maxImageHeight={maxImageHeight && maxImageHeight.teacherInstructions || defaultImageMaxHeight}
+                uploadSoundSupport={uploadSoundSupport}
               />
             </InputContainer>
           )}
@@ -227,6 +230,7 @@ export class Configure extends React.Component {
                 disableUnderline
                 maxImageWidth={defaultImageMaxWidth}
                 maxImageHeight={defaultImageMaxHeight}
+                uploadSoundSupport={uploadSoundSupport}
               />
             </InputContainer>
           )}
@@ -244,6 +248,7 @@ export class Configure extends React.Component {
                 spellCheck={spellCheckEnabled}
                 maxImageWidth={maxImageWidth && maxImageWidth.rationale || defaultImageMaxWidth}
                 maxImageHeight={maxImageHeight && maxImageHeight.rationale || defaultImageMaxHeight}
+                uploadSoundSupport={uploadSoundSupport}
               />
             </InputContainer>
           )}
