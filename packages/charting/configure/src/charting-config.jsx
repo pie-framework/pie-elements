@@ -153,7 +153,7 @@ export class ChartingConfig extends React.Component {
               addCategoryEnabled={true}
               categoryDefaultLabel={model.categoryDefaultLabel}
               labelsPlaceholders={labelsPlaceholders}
-              titlePlaceholder={titlePlaceholder}
+              titlePlaceholder={titlePlaceholder.label}
             />
             <div>
               <Checkbox
