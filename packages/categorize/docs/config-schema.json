@@ -185,9 +185,8 @@
           "title": "categoryLabel"
         }
       }
-    }
-  },
-  "showPrompt": {
+    },
+    "showPrompt": {
       "description": "Determines whether prompt field will be displayed or not",
       "default": true,
       "type": "boolean",
