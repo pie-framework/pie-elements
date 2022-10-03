@@ -147,6 +147,28 @@ export interface ChartingPie extends PieModel {
   teacherInstructionsEnabled: boolean;
 }
 
+interface LabelsPlaceholderConfigProp extends ConfigurePropWithEnabled {
+  /**
+   * This value is empty for charting. The property exist in order to be consistent with graphing configuration.
+   */
+  top?: string;
+
+  /**
+   * This value is empty for charting. The property exist in order to be consistent with graphing configuration.
+   */
+  right?: string;
+
+  /**
+   * Indicates the placeholder for the bottom label
+   */
+  bottom?: string;
+
+  /**
+   * Indicates the placeholder for the left label
+   */
+  left?: string;
+}
+
 /**
  * Config Object for @pie-elements/charting
  * @additionalProperties false
@@ -166,6 +188,16 @@ export interface ChartingConfigure extends PromptConfig, CommonConfigSettings {
    * Configuration for the author's spellcheck
    */
   spellCheck?: ConfigureProp;
+
+   /**
+   * Configuration for the title's placeholder
+   */
+  titlePlaceholder?: ConfigureProp;
+
+  /**
+   * Labels Placeholder configuration
+   */
+   labelsPlaceholders?: LabelsPlaceholderConfigProp;
 
   /**
    * Scoring Type configuration
