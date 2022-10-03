@@ -121,6 +121,8 @@ export class ChartingConfig extends React.Component {
     const { classes, model, charts, labelsPlaceholders, titlePlaceholder, showPixelGuides } = this.props;
     const { dialog } = this.state;
 
+    console.log(titlePlaceholder, "title placehilder")
+
     return (
       <div>
         Define Initial Chart Attributes
@@ -153,7 +155,7 @@ export class ChartingConfig extends React.Component {
               addCategoryEnabled={true}
               categoryDefaultLabel={model.categoryDefaultLabel}
               labelsPlaceholders={labelsPlaceholders}
-              titlePlaceholder={titlePlaceholder.label}
+              titlePlaceholder={titlePlaceholder?.label}
             />
             <div>
               <Checkbox

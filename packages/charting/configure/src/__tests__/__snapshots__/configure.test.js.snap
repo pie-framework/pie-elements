@@ -125,7 +125,10 @@ exports[`Configure renders snapshot 1`] = `
             "label": "Chart Title",
             "settings": false,
           },
-          "titlePlaceholder": "Click here to add a title",
+          "titlePlaceholder": Object {
+            "label": "Click here to add a title",
+            "settings": false,
+          },
         }
       }
       groups={
@@ -380,7 +383,12 @@ exports[`Configure renders snapshot 1`] = `
         }
       }
       showPixelGuides={true}
-      titlePlaceholder="Click here to add a title"
+      titlePlaceholder={
+        Object {
+          "label": "Click here to add a title",
+          "settings": false,
+        }
+      }
     />
     <WithStyles(CorrectResponse)
       charts={
