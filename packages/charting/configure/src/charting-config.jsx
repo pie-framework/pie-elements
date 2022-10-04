@@ -121,8 +121,6 @@ export class ChartingConfig extends React.Component {
     const { classes, model, charts, labelsPlaceholders, titlePlaceholder, showPixelGuides } = this.props;
     const { dialog } = this.state;
 
-    console.log(titlePlaceholder, "title placehilder")
-
     return (
       <div>
         Define Initial Chart Attributes
