@@ -199,6 +199,7 @@ const Design = withStyles(styles)((props) => {
             maxImageWidth={maxImageWidth && maxImageWidth.teacherInstructions || defaultImageMaxWidth}
             maxImageHeight={maxImageHeight && maxImageHeight.teacherInstructions || defaultImageMaxHeight}
             uploadSoundSupport={uploadSoundSupport}
+            languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
           />
         </InputContainer>
       )}
@@ -217,6 +218,7 @@ const Design = withStyles(styles)((props) => {
             maxImageWidth={maxImageWidth && maxImageWidth.prompt}
             maxImageHeight={maxImageHeight && maxImageHeight.prompt}
             uploadSoundSupport={uploadSoundSupport}
+            languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
           />
         </InputContainer>
       )}
@@ -282,6 +284,7 @@ const Design = withStyles(styles)((props) => {
                 maxImageWidth={maxImageWidth && maxImageWidth.rationale || defaultImageMaxWidth}
                 maxImageHeight={maxImageHeight && maxImageHeight.rationale || defaultImageMaxHeight}
                 uploadSoundSupport={uploadSoundSupport}
+                languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               />
             </InputContainer>
           )}
@@ -306,6 +309,7 @@ const Design = withStyles(styles)((props) => {
                 maxImageWidth={maxImageWidth && maxImageWidth.choices || defaultImageMaxWidth}
                 maxImageHeight={maxImageHeight && maxImageHeight.choices || defaultImageMaxHeight}
                 uploadSoundSupport={uploadSoundSupport}
+                languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               />
             </InputContainer>
           )}

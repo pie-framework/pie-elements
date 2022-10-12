@@ -400,6 +400,7 @@ class GeneralConfigBlock extends React.Component {
               maxImageWidth={defaultImageMaxWidth}
               maxImageHeight={defaultImageMaxHeight}
               uploadSoundSupport={uploadSoundSupport}
+              languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
             />
           </InputContainer>
         )}
@@ -424,6 +425,7 @@ class GeneralConfigBlock extends React.Component {
               maxImageWidth={maxImageWidth && maxImageWidth.rationale || defaultImageMaxWidth}
               maxImageHeight={maxImageHeight && maxImageHeight.rationale || defaultImageMaxHeight}
               uploadSoundSupport={uploadSoundSupport}
+              languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
             />
           </InputContainer>
         )}

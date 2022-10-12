@@ -200,6 +200,7 @@ export class Row extends React.Component {
               maxImageWidth={maxImageWidth}
               maxImageHeight={maxImageHeight}
               uploadSoundSupport={uploadSoundSupport}
+              languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
             />
           </div>
           {row.values.map((rowValue, rowIdx) => (
