@@ -220,7 +220,9 @@ export class Main extends React.Component {
       dragAndDrop,
       spellCheck = {},
       width,
-      settingsPanelDisabled
+      settingsPanelDisabled,
+      showMaxPoint,
+      addScale
     } = configuration || {};
     const { scales, excludeZero, description, pointLabels, standards, spellCheckEnabled } = model || {};
     const { showExcludeZeroDialog } = this.state || {};
@@ -278,6 +280,8 @@ export class Main extends React.Component {
                   pointLabels: showScorePointLabels.settings && toggle(showScorePointLabels.label),
                   spellCheckEnabled:
                   spellCheck.settings && toggle(spellCheck.label),
+                  maxPointsEnabled: showMaxPoint.settings && toggle(showMaxPoint.label),
+                  addScaleEnabled: addScale.settings && toggle(addScale.label),
                 }
               }}
             />

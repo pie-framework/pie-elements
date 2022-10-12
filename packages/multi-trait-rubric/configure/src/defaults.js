@@ -99,6 +99,14 @@ export default {
       settings: true,
       label: 'Enable Drag and Drop',
       enabled: false,
+    },
+    showMaxPoint: {
+      settings: true,
+      label: 'Show Max Points Dropdown'
+    },
+    addScale: {
+      settings: true,
+      label: 'Add Scale Available'
     }
   }
 };
