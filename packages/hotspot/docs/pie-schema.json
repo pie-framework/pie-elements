@@ -225,6 +225,11 @@
       "type": "string",
       "title": "toolbarEditorPosition"
     },
+    "rubricEnabled": {
+      "description": "Indicates if Rubric is enabled",
+      "type": "boolean",
+      "title": "rubricEnabled"
+    },
     "id": {
       "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
       "type": "string",
@@ -243,6 +248,7 @@
     "multipleCorrect",
     "partialScoring",
     "rationaleEnabled",
+    "rubricEnabled",
     "shapes",
     "spellCheckEnabled",
     "strokeWidth",
