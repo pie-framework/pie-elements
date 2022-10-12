@@ -31,9 +31,6 @@ exports[`Trait Header snapshot renders 1`] = `
         Scale 
         1
       </div>
-      <WithStyles(Component)
-        maxPoints={2}
-      />
       <div>
         <WithStyles(IconButton)
           aria-controls="long-menu"
@@ -190,9 +187,6 @@ exports[`Trait Header snapshot renders without description 1`] = `
         Scale 
         1
       </div>
-      <WithStyles(Component)
-        maxPoints={2}
-      />
       <div>
         <WithStyles(IconButton)
           aria-controls="long-menu"
@@ -323,9 +317,6 @@ exports[`Trait Header snapshot renders without level tag input 1`] = `
         Scale 
         1
       </div>
-      <WithStyles(Component)
-        maxPoints={2}
-      />
       <div>
         <WithStyles(IconButton)
           aria-controls="long-menu"
@@ -482,9 +473,6 @@ exports[`Trait Header snapshot renders without score point labels 1`] = `
         Scale 
         1
       </div>
-      <WithStyles(Component)
-        maxPoints={2}
-      />
       <div>
         <WithStyles(IconButton)
           aria-controls="long-menu"
@@ -641,9 +629,6 @@ exports[`Trait Header snapshot renders without score point values 1`] = `
         Scale 
         1
       </div>
-      <WithStyles(Component)
-        maxPoints={2}
-      />
       <div>
         <WithStyles(IconButton)
           aria-controls="long-menu"
@@ -719,9 +704,6 @@ exports[`Trait Header snapshot renders without standards 1`] = `
         Scale 
         1
       </div>
-      <WithStyles(Component)
-        maxPoints={2}
-      />
       <div>
         <WithStyles(IconButton)
           aria-controls="long-menu"

@@ -7,6 +7,10 @@ exports[`Main snapshot renders 1`] = `
       <Panel
         configuration={
           Object {
+            "addScale": Object {
+              "label": "Add Scale Available",
+              "settings": true,
+            },
             "dragAndDrop": Object {
               "enabled": false,
               "label": "Enable Drag and Drop",
@@ -32,6 +36,10 @@ exports[`Main snapshot renders 1`] = `
               "label": "Show Level Tag Input",
               "settings": true,
             },
+            "showMaxPoint": Object {
+              "label": "Show Max Points Dropdown",
+              "settings": true,
+            },
             "showScorePointLabels": Object {
               "enabled": false,
               "label": "Show Score Point Labels",
@@ -52,7 +60,9 @@ exports[`Main snapshot renders 1`] = `
         groups={
           Object {
             "Properties": Object {
+              "addScaleEnabled": undefined,
               "description": undefined,
+              "maxPointsEnabled": undefined,
               "pointLabels": undefined,
               "spellCheckEnabled": undefined,
             },
@@ -289,6 +299,10 @@ Overall appearance is acceptable or better",
         classes={Object {}}
         configuration={
           Object {
+            "addScale": Object {
+              "label": "Add Scale Available",
+              "settings": true,
+            },
             "dragAndDrop": Object {
               "enabled": false,
               "label": "Enable Drag and Drop",
@@ -312,6 +326,10 @@ Overall appearance is acceptable or better",
             "showLevelTagInput": Object {
               "enabled": false,
               "label": "Show Level Tag Input",
+              "settings": true,
+            },
+            "showMaxPoint": Object {
+              "label": "Show Max Points Dropdown",
               "settings": true,
             },
             "showScorePointLabels": Object {
@@ -726,6 +744,10 @@ Writing is expressive, engaging and has lots of energy",
         classes={Object {}}
         configuration={
           Object {
+            "addScale": Object {
+              "label": "Add Scale Available",
+              "settings": true,
+            },
             "dragAndDrop": Object {
               "enabled": false,
               "label": "Enable Drag and Drop",
@@ -749,6 +771,10 @@ Writing is expressive, engaging and has lots of energy",
             "showLevelTagInput": Object {
               "enabled": false,
               "label": "Show Level Tag Input",
+              "settings": true,
+            },
+            "showMaxPoint": Object {
+              "label": "Show Max Points Dropdown",
               "settings": true,
             },
             "showScorePointLabels": Object {
@@ -1015,11 +1041,6 @@ Overall appearance is acceptable or better",
         showStandards={false}
         width="730px"
       />
-      <WithStyles(Component)
-        onClick={[Function]}
-      >
-        Add Scale
-      </WithStyles(Component)>
     </div>
   </ConfigLayout>
   <WithStyles(RawExcludeZeroDialog)
@@ -1042,6 +1063,10 @@ exports[`Main snapshot renders without scales 1`] = `
       <Panel
         configuration={
           Object {
+            "addScale": Object {
+              "label": "Add Scale Available",
+              "settings": true,
+            },
             "dragAndDrop": Object {
               "enabled": false,
               "label": "Enable Drag and Drop",
@@ -1067,6 +1092,10 @@ exports[`Main snapshot renders without scales 1`] = `
               "label": "Show Level Tag Input",
               "settings": true,
             },
+            "showMaxPoint": Object {
+              "label": "Show Max Points Dropdown",
+              "settings": true,
+            },
             "showScorePointLabels": Object {
               "enabled": false,
               "label": "Show Score Point Labels",
@@ -1087,7 +1116,9 @@ exports[`Main snapshot renders without scales 1`] = `
         groups={
           Object {
             "Properties": Object {
+              "addScaleEnabled": undefined,
               "description": undefined,
+              "maxPointsEnabled": undefined,
               "pointLabels": undefined,
               "spellCheckEnabled": undefined,
             },
@@ -1124,13 +1155,7 @@ exports[`Main snapshot renders without scales 1`] = `
           "width": "730px",
         }
       }
-    >
-      <WithStyles(Component)
-        onClick={[Function]}
-      >
-        Add Scale
-      </WithStyles(Component)>
-    </div>
+    />
   </ConfigLayout>
   <WithStyles(RawExcludeZeroDialog)
     cancel={[Function]}
