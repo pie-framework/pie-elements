@@ -78,6 +78,10 @@ exports[`design snapshot renders all items except feedback 1`] = `
             "label": "Tokens",
             "settings": true,
           },
+          "withRubric": Object {
+            "label": "Add Rubric",
+            "settings": true,
+          },
         }
       }
       groups={
@@ -85,6 +89,7 @@ exports[`design snapshot renders all items except feedback 1`] = `
           "Properties": Object {
             "promptEnabled": undefined,
             "rationaleEnabled": undefined,
+            "rubricEnabled": undefined,
             "scoringType": false,
             "spellCheckEnabled": false,
             "studentInstructionsEnabled": false,
@@ -246,6 +251,10 @@ exports[`design snapshot renders all items except the content input 1`] = `
             "label": "Tokens",
             "settings": true,
           },
+          "withRubric": Object {
+            "label": "Add Rubric",
+            "settings": true,
+          },
         }
       }
       groups={
@@ -253,6 +262,7 @@ exports[`design snapshot renders all items except the content input 1`] = `
           "Properties": Object {
             "promptEnabled": undefined,
             "rationaleEnabled": undefined,
+            "rubricEnabled": undefined,
             "scoringType": false,
             "spellCheckEnabled": false,
             "studentInstructionsEnabled": false,
@@ -405,6 +415,10 @@ exports[`design snapshot renders all items with defaultProps 1`] = `
             "label": "Tokens",
             "settings": true,
           },
+          "withRubric": Object {
+            "label": "Add Rubric",
+            "settings": true,
+          },
         }
       }
       groups={
@@ -412,6 +426,7 @@ exports[`design snapshot renders all items with defaultProps 1`] = `
           "Properties": Object {
             "promptEnabled": undefined,
             "rationaleEnabled": undefined,
+            "rubricEnabled": undefined,
             "scoringType": false,
             "spellCheckEnabled": false,
             "studentInstructionsEnabled": false,
@@ -573,6 +588,10 @@ exports[`design snapshot tokenizer renders with html entities 1`] = `
             "label": "Tokens",
             "settings": true,
           },
+          "withRubric": Object {
+            "label": "Add Rubric",
+            "settings": true,
+          },
         }
       }
       groups={
@@ -580,6 +599,7 @@ exports[`design snapshot tokenizer renders with html entities 1`] = `
           "Properties": Object {
             "promptEnabled": undefined,
             "rationaleEnabled": undefined,
+            "rubricEnabled": undefined,
             "scoringType": false,
             "spellCheckEnabled": false,
             "studentInstructionsEnabled": false,
