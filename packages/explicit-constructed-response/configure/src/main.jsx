@@ -393,6 +393,7 @@ export class Main extends React.Component {
                   maxImageWidth={maxImageWidth && maxImageWidth.teacherInstructions || defaultImageMaxWidth}
                   maxImageHeight={maxImageHeight && maxImageHeight.teacherInstructions || defaultImageMaxHeight}
                   uploadSoundSupport={uploadSoundSupport}
+                  languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
                 />
               </InputContainer>
             )}
@@ -413,6 +414,7 @@ export class Main extends React.Component {
                   maxImageWidth={defaultImageMaxWidth}
                   maxImageHeight={defaultImageMaxHeight}
                   uploadSoundSupport={uploadSoundSupport}
+                  languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
                 />
                 {/*<EditableHtmlNew*/}
                 {/*  className={classes.prompt}*/}
@@ -482,6 +484,7 @@ export class Main extends React.Component {
               highlightShape={false}
               error={responseAreasError}
               uploadSoundSupport={uploadSoundSupport}
+              languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
             />
             {!isEmpty(model.choices) && (
               <Typography className={classes.text}>
@@ -511,6 +514,7 @@ export class Main extends React.Component {
                   maxImageWidth={maxImageWidth && maxImageWidth.rationale || defaultImageMaxWidth}
                   maxImageHeight={maxImageHeight && maxImageHeight.rationale || defaultImageMaxHeight}
                   uploadSoundSupport={uploadSoundSupport}
+                  languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
                 />
               </InputContainer>
             )}

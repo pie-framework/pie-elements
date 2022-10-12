@@ -67,6 +67,16 @@ exports[`Root snapshot renders 1`] = `
         label="Item Stem"
       >
         <EditableHtml
+          languageCharactersProps={
+            Array [
+              Object {
+                "language": "spanish",
+              },
+              Object {
+                "language": "special",
+              },
+            ]
+          }
           markup="Test Prompt"
           maxImageHeight={300}
           maxImageWidth={300}

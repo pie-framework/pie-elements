@@ -63,6 +63,7 @@ export class Root extends React.Component {
                 maxImageWidth={maxImageWidth && maxImageWidth.teacherInstructions}
                 maxImageHeight={maxImageHeight && maxImageHeight.teacherInstructions}
                 uploadSoundSupport={uploadSoundSupport}
+                languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               />
             </InputContainer>
           )}

@@ -205,6 +205,7 @@ export class Design extends React.Component {
               maxImageWidth={maxImageWidth && maxImageWidth.teacherInstructions || defaultImageMaxWidth}
               maxImageHeight={maxImageHeight && maxImageHeight.teacherInstructions || defaultImageMaxHeight}
               uploadSoundSupport={uploadSoundSupport}
+              languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
             />
           </InputContainer>
         )}
@@ -225,6 +226,7 @@ export class Design extends React.Component {
                 maxImageWidth={maxImageWidth && maxImageWidth.prompt}
                 maxImageHeight={maxImageHeight && maxImageHeight.prompt}
                 uploadSoundSupport={uploadSoundSupport}
+                languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               />
             </InputContainer>
             {rationaleEnabled && (
@@ -242,6 +244,7 @@ export class Design extends React.Component {
                   maxImageWidth={maxImageWidth && maxImageWidth.rationale || defaultImageMaxWidth}
                   maxImageHeight={maxImageHeight && maxImageHeight.rationale || defaultImageMaxHeight}
                   uploadSoundSupport={uploadSoundSupport}
+                  languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
                 />
               </InputContainer>
             )}
@@ -280,6 +283,7 @@ export class Design extends React.Component {
                   maxImageWidth={maxChoicesImageWidth}
                   maxImageHeight={maxChoicesImageHeight}
                   uploadSoundSupport={uploadSoundSupport}
+                  languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
                 />
               </InputContainer>
             )}
@@ -302,6 +306,7 @@ export class Design extends React.Component {
                   maxImageWidth={maxImageWidth && maxImageWidth.choicesWithPlacementArea || defaultImageMaxWidth}
                   maxImageHeight={maxChoicesImageHeight}
                   uploadSoundSupport={uploadSoundSupport}
+                  languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
                 />
               </InputContainer>
             )}

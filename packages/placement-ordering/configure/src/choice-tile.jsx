@@ -136,6 +136,7 @@ export class ChoiceTile extends React.Component {
           allowValidation
           maxImageWidth={maxImageWidth}
           maxImageHeight={maxImageHeight}
+          languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
         />
         {editable && (
           <div className={classes.controls}>

@@ -47,6 +47,7 @@ export class InputHeader extends React.Component {
           maxImageWidth={maxImageWidth}
           maxImageHeight={maxImageHeight}
           uploadSoundSupport={uploadSoundSupport}
+          languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
         />
       </div>
     );

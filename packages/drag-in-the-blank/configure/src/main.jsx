@@ -239,6 +239,7 @@ export class Main extends React.Component {
                   maxImageWidth={maxImageWidth && maxImageWidth.teacherInstructions || defaultImageMaxWidth}
                   maxImageHeight={maxImageHeight && maxImageHeight.teacherInstructions || defaultImageMaxHeight}
                   uploadSoundSupport={uploadSoundSupport}
+                  languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
                 />
               </InputContainer>
             )}
@@ -259,6 +260,7 @@ export class Main extends React.Component {
                   maxImageWidth={defaultImageMaxWidth}
                   maxImageHeight={defaultImageMaxHeight}
                   uploadSoundSupport={uploadSoundSupport}
+                  languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
                 />
               </InputContainer>
             )}
@@ -296,6 +298,7 @@ export class Main extends React.Component {
               toolbarOpts={toolbarOpts}
               spellCheck={spellCheckEnabled}
               uploadSoundSupport={uploadSoundSupport}
+              languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
             />
             <Choices
               model={model}
@@ -320,6 +323,7 @@ export class Main extends React.Component {
                   maxImageWidth={maxImageWidth && maxImageWidth.rationale || defaultImageMaxWidth}
                   maxImageHeight={maxImageHeight && maxImageHeight.rationale || defaultImageMaxHeight}
                   uploadSoundSupport={uploadSoundSupport}
+                  languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
                 />
               </InputContainer>
             )}

@@ -396,6 +396,16 @@ exports[`Configure renders snapshot 1`] = `
       label="Teacher Instructions"
     >
       <EditableHtml
+        languageCharactersProps={
+          Array [
+            Object {
+              "language": "spanish",
+            },
+            Object {
+              "language": "special",
+            },
+          ]
+        }
         markup=""
         maxImageHeight={300}
         maxImageWidth={300}
@@ -408,6 +418,16 @@ exports[`Configure renders snapshot 1`] = `
     >
       <EditableHtml
         disableUnderline={true}
+        languageCharactersProps={
+          Array [
+            Object {
+              "language": "spanish",
+            },
+            Object {
+              "language": "special",
+            },
+          ]
+        }
         markup=""
         maxImageHeight={300}
         maxImageWidth={300}
@@ -419,6 +439,16 @@ exports[`Configure renders snapshot 1`] = `
       label="Rationale"
     >
       <EditableHtml
+        languageCharactersProps={
+          Array [
+            Object {
+              "language": "spanish",
+            },
+            Object {
+              "language": "special",
+            },
+          ]
+        }
         markup=""
         maxImageHeight={300}
         maxImageWidth={300}
