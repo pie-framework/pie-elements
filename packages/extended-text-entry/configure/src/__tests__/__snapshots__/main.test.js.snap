@@ -69,11 +69,16 @@ exports[`Render Main Component Match Snapshot 1`] = `
             "label": "Teacher Instructions",
             "settings": true,
           },
+          "withRubric": Object {
+            "label": "Add Rubric",
+            "settings": true,
+          },
         }
       }
       groups={
         Object {
           "Properties": Object {
+            "rubricEnabled": undefined,
             "studentInstructionsEnabled": false,
             "teacherInstructionsEnabled": undefined,
           },
