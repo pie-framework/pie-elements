@@ -120,6 +120,9 @@ export interface PlacementOrderingPie extends PieModel {
    * @default: 'bottom'
    */
   toolbarEditorPosition?: 'bottom' | 'top';
+
+  /** Indicates if Rubric is enabled */
+  rubricEnabled: boolean;
 }
 
 interface ConfigureMaxImageDimensionsProp {
@@ -207,7 +210,7 @@ export interface PlacementOrderingConfigure
   /**
    * Configuration for the author's spellcheck
    */
-   spellCheck?: ConfigureProp;
+  spellCheck?: ConfigureProp;
 
   /**
    * Remove tiles after placing configuration
@@ -243,4 +246,9 @@ export interface PlacementOrderingConfigure
    * Maximum image height for input fields
    */
   maxImageHeight?: ConfigureMaxImageDimensionsProp;
+
+  /**
+   * Rubric configuration
+   */
+  withRubric?: ConfigureProp;
 }
