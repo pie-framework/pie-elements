@@ -50,8 +50,8 @@ export class Configure extends React.Component {
 
   componentDidMount() {
     const { configuration, onModelChanged, model } = this.props;
-    const { availableTools } = configuration || {};
-    let { arrows } = model || {};
+    const { availableTools, withRubric } = configuration || {};
+    let { arrows, rubricEnabled } = model || {};
 
     // This is used for offering support for old models which have the property arrows: boolean
     // Same thing is set in the controller: packages/graphing/controller/src/index.js - model
@@ -181,7 +181,8 @@ export class Configure extends React.Component {
                     spellCheck.settings && toggle(spellCheck.label),
                 scoringType:
                   scoringType.settings &&
-                  radio(scoringType.label, ['dichotomous', 'partial scoring'])
+                  radio(scoringType.label, ['dichotomous', 'partial scoring']),
+                rubricEnabled: withRubric.settings && toggle(withRubric.label)
               }
             }}
           />

@@ -148,4 +148,5 @@ exports.model = (id, element) => ({
   },
   rationale: 'Rationale goes here',
   title: 'Graph title',
+  rubricEnabled: false
 });
