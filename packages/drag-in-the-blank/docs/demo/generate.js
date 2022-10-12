@@ -35,5 +35,6 @@ exports.model = (id, element) => ({
   'mode': 'gather',
   'disabled': false,
   'teacherInstructions': null,
-  'toolbarEditorPosition': 'bottom'
+  'toolbarEditorPosition': 'bottom',
+  'rubricEnabled': false
 });

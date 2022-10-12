@@ -161,10 +161,17 @@ export class Main extends React.Component {
       maxChoices,
       maxResponseAreas,
       maxImageWidth = {},
-      maxImageHeight = {}
+      maxImageHeight = {},
+      withRubric,
     } = configuration || {};
-    const { rationaleEnabled, promptEnabled, teacherInstructionsEnabled, spellCheckEnabled, errors } =
-      model || {};
+    const {
+      rationaleEnabled,
+      promptEnabled,
+      teacherInstructionsEnabled,
+      spellCheckEnabled,
+      errors,
+      rubricEnabled
+    } = model || {};
     const toolbarOpts = {};
 
     const { responseAreasError, choicesError }  = errors || {};
@@ -216,7 +223,8 @@ export class Main extends React.Component {
                     rationale.settings && toggle(rationale.label),
                     spellCheckEnabled:
                     spellCheck.settings && toggle(spellCheck.label),
-                  promptEnabled: prompt.settings && toggle(prompt.label)
+                  promptEnabled: prompt.settings && toggle(prompt.label),
+                  rubricEnabled: withRubric.settings && toggle(withRubric.label)
                 }
               }}
             />
