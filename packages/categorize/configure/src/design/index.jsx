@@ -158,7 +158,8 @@ export class Design extends React.Component {
       prompt = {},
       spellCheck = {},
       maxImageWidth = {},
-      maxImageHeight = {}
+      maxImageHeight = {},
+      withRubric
     } = configuration || {};
     const {
       teacherInstructionsEnabled,
@@ -166,7 +167,8 @@ export class Design extends React.Component {
       rationaleEnabled,
       feedbackEnabled,
       spellCheckEnabled,
-      errors
+      errors,
+      rubricEnabled
     } = model || {};
 
     const toolbarOpts = {};
@@ -235,6 +237,7 @@ export class Design extends React.Component {
                   scoringType:
                     scoringType.settings &&
                     radio(scoringType.label, ['auto', 'rubric']),
+                  rubricEnabled: withRubric.settings && toggle(withRubric.label)
                 },
               }}
             />

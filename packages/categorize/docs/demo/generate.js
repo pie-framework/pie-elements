@@ -339,4 +339,5 @@ exports.model = (id, element) => ({
   teacherInstructionsEnabled: true,
   studentInstructionsEnabled: true,
   toolbarEditorPosition: 'bottom',
+  rubricEnabled: false
 });
