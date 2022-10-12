@@ -101,5 +101,9 @@ export default {
       prompt: 300,
       rationale: 300,
     },
+    withRubric: {
+      settings: true,
+      label: 'Add Rubric'
+    }
   },
 };
