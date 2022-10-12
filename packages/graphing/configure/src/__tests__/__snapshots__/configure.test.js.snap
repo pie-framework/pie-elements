@@ -313,6 +313,10 @@ exports[`Configure renders snapshot 1`] = `
             "placeholder": "Click here to add a title for this graph",
             "settings": true,
           },
+          "withRubric": Object {
+            "label": "Add Rubric",
+            "settings": true,
+          },
         }
       }
       groups={
@@ -328,6 +332,7 @@ exports[`Configure renders snapshot 1`] = `
             "authoring.enabled": false,
             "promptEnabled": undefined,
             "rationaleEnabled": undefined,
+            "rubricEnabled": undefined,
             "scoringType": false,
             "spellCheckEnabled": false,
             "studentInstructionsEnabled": false,
