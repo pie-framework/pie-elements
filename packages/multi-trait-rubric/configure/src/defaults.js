@@ -7,6 +7,8 @@ export default {
     standards: false,
     scales: [],
     excludeZero: false,
+    maxPointsEnabled: true,
+    addScaleEnabled: true
   },
   configuration: {
     excludeZeroDialogBoxContent: {

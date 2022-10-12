@@ -239,7 +239,8 @@ export class Scale extends React.Component {
       enableDragAndDrop,
       spellCheck,
       width,
-      uploadSoundSupport
+      uploadSoundSupport,
+      maxPointsEnabled
     } = this.props || {};
 
     const {
@@ -298,6 +299,7 @@ export class Scale extends React.Component {
           secondaryBlockWidth={secondaryBlockWidth}
           spellCheck={spellCheck}
           uploadSoundSupport={uploadSoundSupport}
+          maxPointsEnabled={maxPointsEnabled}
         />
 
         {traits.map((trait, index) => (

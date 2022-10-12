@@ -224,7 +224,7 @@ export class Main extends React.Component {
       showMaxPoint,
       addScale
     } = configuration || {};
-    const { scales, excludeZero, description, pointLabels, standards, spellCheckEnabled } = model || {};
+    const { scales, excludeZero, description, pointLabels, standards, spellCheckEnabled, maxPointsEnabled, addScaleEnabled } = model || {};
     const { showExcludeZeroDialog } = this.state || {};
     const adjustedWidth = parseInt(width) > parseInt(MIN_WIDTH) ? width : MIN_WIDTH;
 
@@ -246,14 +246,12 @@ export class Main extends React.Component {
             spellCheck={spellCheckEnabled}
             width={adjustedWidth}
             uploadSoundSupport={uploadSoundSupport}
-                {...this.props}
-                classes={{}}
-              />
-            ))}
-
-        <MultiTraitButton onClick={this.onScaleAdded}>
-          Add Scale
-        </MultiTraitButton>
+            maxPointsEnabled={maxPointsEnabled}
+            {...this.props}
+            classes={{}}
+          />
+        ))}
+        {addScaleEnabled && <MultiTraitButton onClick={this.onScaleAdded}>Add Scale</MultiTraitButton>}
       </div>
     );
 
