@@ -50,8 +50,8 @@ export class Configure extends React.Component {
 
   componentDidMount() {
     const { configuration, onModelChanged, model } = this.props;
-    const { availableTools, withRubric } = configuration || {};
-    let { arrows, rubricEnabled } = model || {};
+    const { availableTools } = configuration || {};
+    let { arrows } = model || {};
 
     // This is used for offering support for old models which have the property arrows: boolean
     // Same thing is set in the controller: packages/graphing/controller/src/index.js - model
@@ -123,7 +123,8 @@ export class Configure extends React.Component {
       studentInstructions = {},
       teacherInstructions = {},
       maxImageWidth = {},
-      maxImageHeight = {}
+      maxImageHeight = {},
+      withRubric,
     } = configuration || {};
     const {
       labelsEnabled,
@@ -131,7 +132,8 @@ export class Configure extends React.Component {
       rationaleEnabled,
       spellCheckEnabled,
       teacherInstructionsEnabled,
-      titleEnabled
+      titleEnabled,
+      rubricEnabled
     } = model || {};
 
     log('[render] model', model);
