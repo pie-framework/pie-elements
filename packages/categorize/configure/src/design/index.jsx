@@ -159,7 +159,7 @@ export class Design extends React.Component {
       spellCheck = {},
       maxImageWidth = {},
       maxImageHeight = {},
-      withRubric
+      withRubric = {}
     } = configuration || {};
     const {
       teacherInstructionsEnabled,
