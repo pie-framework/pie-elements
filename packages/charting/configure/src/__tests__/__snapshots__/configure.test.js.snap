@@ -126,6 +126,10 @@ exports[`Configure renders snapshot 1`] = `
             "settings": false,
           },
           "titlePlaceholder": "Click here to add a title",
+          "withRubric": Object {
+            "label": "Add Rubric",
+            "settings": true,
+          },
         }
       }
       groups={
@@ -133,6 +137,7 @@ exports[`Configure renders snapshot 1`] = `
           "Properties": Object {
             "promptEnabled": undefined,
             "rationaleEnabled": undefined,
+            "rubricEnabled": undefined,
             "scoringType": false,
             "spellCheckEnabled": false,
             "studentInstructionsEnabled": false,
