@@ -1053,6 +1053,11 @@ Overall appearance is acceptable or better",
     changeExcludeZero={[Function]}
     open={false}
   />
+  <WithStyles(RawInfoDialog)
+    onClose={[Function]}
+    open={false}
+    text=""
+  />
 </div>
 `;
 
@@ -1166,6 +1171,11 @@ exports[`Main snapshot renders without scales 1`] = `
     cancel={[Function]}
     changeExcludeZero={[Function]}
     open={false}
+  />
+  <WithStyles(RawInfoDialog)
+    onClose={[Function]}
+    open={false}
+    text=""
   />
 </div>
 `;

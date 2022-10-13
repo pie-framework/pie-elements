@@ -109,6 +109,10 @@ export default {
     addScale: {
       settings: true,
       label: 'Add Scale Available'
-    }
+    },
+    minNoOfTraits: 2,
+    maxNoOfTraits: 10,
+    minNoOfScales: 2,
+    maxNoOfScales: 10,
   }
 };
