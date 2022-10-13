@@ -19,6 +19,10 @@ export default {
     },
     maxImageHeight: {
       teacherInstructions: 300
+    },
+    withRubric: {
+      settings: true,
+      label: 'Add Rubric'
     }
   }
 };
