@@ -51,6 +51,10 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
               "label": "Teacher Instructions",
               "settings": true,
             },
+            "withRubric": Object {
+              "label": "Add Rubric",
+              "settings": true,
+            },
           }
         }
         groups={
@@ -58,6 +62,7 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
             "Properties": Object {
               "promptEnabled": undefined,
               "rationaleEnabled": undefined,
+              "rubricEnabled": undefined,
               "spellCheckEnabled": false,
               "teacherInstructionsEnabled": undefined,
             },
@@ -355,6 +360,10 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
               "label": "Teacher Instructions",
               "settings": true,
             },
+            "withRubric": Object {
+              "label": "Add Rubric",
+              "settings": true,
+            },
           }
         }
         groups={
@@ -362,6 +371,7 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
             "Properties": Object {
               "promptEnabled": undefined,
               "rationaleEnabled": undefined,
+              "rubricEnabled": undefined,
               "spellCheckEnabled": false,
               "teacherInstructionsEnabled": undefined,
             },
