@@ -262,6 +262,18 @@ Only available for the width prop: indicates the max width for images in choices
 
 Only available for the height prop: indicates the max height for images in choices and choices labels
 
+# `withRubric` (object)
+
+Properties of the `withRubric` object:
+
+## `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+## `label` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
+
 # `showPrompt` (boolean)
 
 Determines whether prompt field will be displayed or not

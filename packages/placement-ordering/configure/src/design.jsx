@@ -111,10 +111,19 @@ export class Design extends React.Component {
       spellCheck = {},
       scoringType = {},
       maxImageWidth = {},
-      maxImageHeight = {}
+      maxImageHeight = {},
+      withRubric
     } = configuration || {};
-    const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled, feedbackEnabled, choiceLabelEnabled, spellCheckEnabled, errors } =
-      model || {};
+    const {
+      teacherInstructionsEnabled,
+      promptEnabled,
+      rationaleEnabled,
+      feedbackEnabled,
+      choiceLabelEnabled,
+      spellCheckEnabled,
+      errors,
+      rubricEnabled
+    } = model || {};
     const { orderError } = errors || {};
     const validationMessage = generateValidationMessage();
 
@@ -183,7 +192,8 @@ export class Design extends React.Component {
                 spellCheck.settings && toggle(spellCheck.label),
                 scoringType:
                   scoringType.settings &&
-                  radio(scoringType.label, ['auto', 'rubric'])
+                  radio(scoringType.label, ['auto', 'rubric']),
+                rubricEnabled: withRubric.settings && toggle(withRubric.label)
               }
             }}
           />
