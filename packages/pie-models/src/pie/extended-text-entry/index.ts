@@ -2,7 +2,11 @@ import { PromptConfig } from '../../PromptConfig';
 import { CommonConfigSettings } from '../../CommonConfigSettings';
 import { PieModel } from '../../PieModel';
 import { DefaultFeedbackType } from '../../Feedback';
-import { ConfigureProp, ConfigurePropWithEnabled, ConfigureMaxImageDimensionsProp } from '../ConfigurationProp';
+import {
+  ConfigureProp,
+  ConfigurePropWithEnabled,
+  ConfigureMaxImageDimensionsProp,
+} from '../ConfigurationProp';
 
 interface Dimensions {
   /**
@@ -109,6 +113,9 @@ export interface ExtendedTextEntryPie extends PieModel {
    * @default: 'bottom'
    */
   playersToolbarPosition?: 'bottom' | 'top';
+
+  /** Indicates if Rubric is enabled */
+  rubricEnabled: boolean;
 }
 
 /**
@@ -156,12 +163,12 @@ export interface ExtendedTextEntryConfigure
   /**
    * Configuration for the author's spellcheck
    */
-   spellCheck?: ConfigureProp;
+  spellCheck?: ConfigureProp;
 
-   /**
-    * Configuration for the player's spellcheck
-    */
-   playerSpellCheck?: ConfigureProp;
+  /**
+   * Configuration for the player's spellcheck
+   */
+  playerSpellCheck?: ConfigureProp;
 
   /**
    * Dimensions configuration
@@ -177,4 +184,9 @@ export interface ExtendedTextEntryConfigure
    * Maximum image height for input fields
    */
   maxImageHeight?: ConfigureMaxImageDimensionsProp;
+
+  /**
+   * Rubric configuration
+   */
+  withRubric?: ConfigureProp;
 }

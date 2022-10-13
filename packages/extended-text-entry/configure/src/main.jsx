@@ -80,10 +80,16 @@ export class Main extends React.Component {
       spellCheck = {},
       playerSpellCheck = {},
       maxImageWidth = {},
-      maxImageHeight = {}
+      maxImageHeight = {},
+      withRubric,
     } = configuration || {};
-    const { teacherInstructionsEnabled, promptEnabled, feedbackEnabled, spellCheckEnabled } =
-      model || {};
+    const {
+      teacherInstructionsEnabled,
+      promptEnabled,
+      feedbackEnabled,
+      spellCheckEnabled,
+      rubricEnabled
+    } = model || {};
     const toolbarOpts = {};
 
     const defaultImageMaxWidth = maxImageWidth && maxImageWidth.prompt;
@@ -157,6 +163,7 @@ export class Main extends React.Component {
                 studentInstructionsEnabled:
                   studentInstructions.settings &&
                   toggle(studentInstructions.label),
+                rubricEnabled: withRubric.settings && toggle(withRubric.label)
               },
             }}
           />
