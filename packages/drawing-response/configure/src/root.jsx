@@ -64,10 +64,16 @@ export class Root extends React.Component {
       teacherInstructions = {},
       spellCheck = {},
       maxImageWidth = {},
-      maxImageHeight = {}
+      maxImageHeight = {},
+      withRubric,
     } = configuration || {};
-    const { teacherInstructionsEnabled, promptEnabled, spellCheckEnabled, backgroundImageEnabled } =
-      model || {};
+    const {
+      teacherInstructionsEnabled,
+      promptEnabled,
+      spellCheckEnabled,
+      backgroundImageEnabled,
+      rubricEnabled
+    } = model || {};
     const toolbarOpts = {};
 
     const defaultImageMaxWidth = maxImageWidth && maxImageWidth.prompt;
@@ -102,6 +108,7 @@ export class Root extends React.Component {
                     toggle(teacherInstructions.label),
                   spellCheckEnabled:
                     spellCheck.settings && toggle(spellCheck.label),
+                  rubricEnabled: withRubric.settings && toggle(withRubric.label)
                 },
               }}
             />

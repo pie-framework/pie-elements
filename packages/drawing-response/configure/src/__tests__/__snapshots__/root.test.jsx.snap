@@ -32,11 +32,16 @@ exports[`Root snapshot renders 1`] = `
               "label": "Teacher Instructions",
               "settings": true,
             },
+            "withRubric": Object {
+              "label": "Add Rubric",
+              "settings": true,
+            },
           }
         }
         groups={
           Object {
             "Properties": Object {
+              "rubricEnabled": undefined,
               "spellCheckEnabled": false,
               "teacherInstructionsEnabled": undefined,
             },
