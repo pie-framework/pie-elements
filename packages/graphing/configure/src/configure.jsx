@@ -123,7 +123,8 @@ export class Configure extends React.Component {
       studentInstructions = {},
       teacherInstructions = {},
       maxImageWidth = {},
-      maxImageHeight = {}
+      maxImageHeight = {},
+      withRubric,
     } = configuration || {};
     const {
       labelsEnabled,
@@ -131,7 +132,8 @@ export class Configure extends React.Component {
       rationaleEnabled,
       spellCheckEnabled,
       teacherInstructionsEnabled,
-      titleEnabled
+      titleEnabled,
+      rubricEnabled
     } = model || {};
 
     log('[render] model', model);
@@ -181,7 +183,8 @@ export class Configure extends React.Component {
                     spellCheck.settings && toggle(spellCheck.label),
                 scoringType:
                   scoringType.settings &&
-                  radio(scoringType.label, ['dichotomous', 'partial scoring'])
+                  radio(scoringType.label, ['dichotomous', 'partial scoring']),
+                rubricEnabled: withRubric.settings && toggle(withRubric.label)
               }
             }}
           />
