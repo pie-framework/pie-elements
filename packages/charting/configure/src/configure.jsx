@@ -127,9 +127,15 @@ export class Configure extends React.Component {
       labelsPlaceholders = {},
       titlePlaceholder = {},
       chartDimensions = {},
+      withRubric,
     } = configuration || {};
-    const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled, spellCheckEnabled } =
-      model || {};
+    const {
+      teacherInstructionsEnabled,
+      promptEnabled,
+      rationaleEnabled,
+      spellCheckEnabled,
+      rubricEnabled
+    } = model || {};
     const { gridValues, labelValues } = this.state;
     const showPixeGuides = chartDimensions.showInConfigPanel || true;
 
@@ -162,6 +168,7 @@ export class Configure extends React.Component {
                     'all or nothing',
                     'partial scoring',
                   ]),
+                rubricEnabled: withRubric.settings && toggle(withRubric.label)
               },
             }}
           />

@@ -57,4 +57,5 @@ exports.model = (id, element) => ({
     labelStep: 1,
   },
   title: 'This is a chart!',
+  rubricEnabled: false
 });

@@ -503,6 +503,11 @@
       "type": "boolean",
       "title": "teacherInstructionsEnabled"
     },
+    "rubricEnabled": {
+      "description": "Indicates if Rubric is enabled",
+      "type": "boolean",
+      "title": "rubricEnabled"
+    },
     "id": {
       "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
       "type": "string",
@@ -526,6 +531,7 @@
     "id",
     "range",
     "rationaleEnabled",
+    "rubricEnabled",
     "spellCheckEnabled",
     "studentInstructionsEnabled",
     "teacherInstructionsEnabled"
