@@ -52,6 +52,10 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
               "label": "Toolbar Editor Position",
               "settings": false,
             },
+            "withRubric": Object {
+              "label": "Add Rubric",
+              "settings": true,
+            },
           }
         }
         groups={
@@ -60,6 +64,7 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
               "choiceRationaleEnabled": undefined,
               "promptEnabled": undefined,
               "rationaleEnabled": undefined,
+              "rubricEnabled": undefined,
               "spellCheckEnabled": false,
               "teacherInstructionsEnabled": undefined,
             },
@@ -562,6 +567,10 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
               "label": "Toolbar Editor Position",
               "settings": false,
             },
+            "withRubric": Object {
+              "label": "Add Rubric",
+              "settings": true,
+            },
           }
         }
         groups={
@@ -570,6 +579,7 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
               "choiceRationaleEnabled": undefined,
               "promptEnabled": undefined,
               "rationaleEnabled": undefined,
+              "rubricEnabled": undefined,
               "spellCheckEnabled": false,
               "teacherInstructionsEnabled": undefined,
             },
