@@ -161,6 +161,10 @@ This element must be one of the following enum values:
 
 Default: `": 'bottom'"`
 
+# `rubricEnabled` (boolean, required)
+
+Indicates if Rubric is enabled
+
 # `id` (string, required)
 
 Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.

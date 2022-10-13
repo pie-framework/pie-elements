@@ -85,8 +85,16 @@ export class Root extends React.Component {
       preserveAspectRatio = {},
       maxImageWidth = {},
       maxImageHeight = {},
+      withRubric
     } = configuration || {};
-    const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled, spellCheckEnabled, errors } = model || {};
+    const {
+      teacherInstructionsEnabled,
+      promptEnabled,
+      rationaleEnabled,
+      spellCheckEnabled,
+      errors,
+      rubricEnabled
+    } = model || {};
     const { shapesError, selectionsError } = errors || {};
     const toolbarOpts = {};
 
@@ -128,6 +136,7 @@ export class Root extends React.Component {
                   rationaleEnabled: rationale.settings && toggle(rationale.label),
                   spellCheckEnabled:
                     spellCheck.settings && toggle(spellCheck.label),
+                  rubricEnabled: withRubric.settings && toggle(withRubric.label)
                 }
               }}
             />
