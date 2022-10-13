@@ -86,9 +86,17 @@ export class Configure extends React.Component {
       spellCheck = {},
       maxImageWidth = {},
       maxImageHeight = {},
+      withRubric
     } = configuration || {};
     log('[render] model', model);
-    const { rationaleEnabled, promptEnabled, teacherInstructionsEnabled, feedbackEnabled, spellCheckEnabled } = model || {};
+    const {
+      rationaleEnabled,
+      promptEnabled,
+      teacherInstructionsEnabled,
+      feedbackEnabled,
+      spellCheckEnabled,
+      rubricEnabled
+    } = model || {};
     const toolbarOpts = {};
 
     switch (model.toolbarEditorPosition) {
@@ -135,6 +143,7 @@ export class Configure extends React.Component {
                     ignoreOrder.settings && toggle(ignoreOrder.label),
                   'allowTrailingZeros.enabled':
                     allowTrailingZeros.settings && toggle(allowTrailingZeros.label),
+                  rubricEnabled: withRubric.settings && toggle(withRubric.label)
                 },
               }}
             />
