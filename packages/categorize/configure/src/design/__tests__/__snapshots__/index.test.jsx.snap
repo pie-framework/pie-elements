@@ -11,6 +11,7 @@ exports[`Design snapshot renders 1`] = `
           Object {
             "Properties": Object {
               "rationaleEnabled": undefined,
+              "rubricEnabled": undefined,
               "scoringType": undefined,
               "spellCheckEnabled": undefined,
               "studentInstructionsEnabled": undefined,

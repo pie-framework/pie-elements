@@ -76,6 +76,10 @@ export default {
       rowLabel: 100,
       categoryLabel: 100,
       choices: 150
+    },
+    withRubric: {
+      settings: true,
+      label: 'Add Rubric'
     }
   }
 };
