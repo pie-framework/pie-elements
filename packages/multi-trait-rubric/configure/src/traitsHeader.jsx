@@ -94,7 +94,8 @@ export class TraitsHeaderTile extends React.Component {
       secondaryBlockWidth,
       setSecondaryBlockRef,
       spellCheck,
-      uploadSoundSupport
+      uploadSoundSupport,
+      maxPointsEnabled
     } = this.props;
     const { anchorEl } = this.state;
 
@@ -117,10 +118,10 @@ export class TraitsHeaderTile extends React.Component {
               Scale {scaleIndex + 1}
             </div>
 
-            <MaxPointsPicker
+            {maxPointsEnabled && <MaxPointsPicker
               maxPoints={maxPoints}
               onChange={updateMaxPointsFieldValue}
-            />
+            />}
 
             <div>
               <IconButton

@@ -10,7 +10,7 @@ import { layout, settings } from '@pie-lib/config-ui';
 
 import Scale from './scale';
 import { MultiTraitButton } from './common';
-import { ExcludeZeroDialog, excludeZeroTypes, IncludeZeroDialog } from './modals';
+import { ExcludeZeroDialog, excludeZeroTypes, IncludeZeroDialog, InfoDialog } from './modals';
 
 const { Panel, toggle } = settings;
 const MIN_WIDTH = '730px';
@@ -28,14 +28,26 @@ export class Main extends React.Component {
     showDeleteScaleDialog: false,
     showDeleteTraitDialog: false,
     showExcludeZeroDialog: false,
+    showInfoDialog: false,
+    infoDialogText: ''
   };
 
   onScaleAdded = () => {
-    const { model, onModelChanged } = this.props;
+    const { model, onModelChanged, configuration } = this.props;
     let { scales } = model || {};
+    const { maxNoOfScales } = configuration || {};
 
     if (!scales.length) {
       scales = [];
+    }
+
+    if (scales.length === maxNoOfScales) {
+      this.set({
+        infoDialogText: `There can't be more than ${maxNoOfScales} scales.`,
+        showInfoDialog: true
+      });
+
+      return false;
     }
 
     scales.push({
@@ -62,11 +74,22 @@ export class Main extends React.Component {
     onModelChanged({ ...model, scales });
   };
 
-  onScaleRemoved = (scaleIndex) => {
-    const { model, onModelChanged } = this.props;
+   onScaleRemoved = (scaleIndex) => {
+    const { model, onModelChanged, configuration } = this.props;
     let { scales } = model || {};
+    const { minNoOfScales } = configuration || {};
+
 
     if (scaleIndex < 0 || scaleIndex >= scales.length) return false;
+
+    if (scales.length === minNoOfScales) {
+      this.set({
+        infoDialogText: `There can't be less than ${minNoOfScales} scales.`,
+        showInfoDialog: true
+      });
+
+      return false;
+    }
 
     scales = [
       ...scales.slice(0, scaleIndex),
@@ -220,10 +243,14 @@ export class Main extends React.Component {
       dragAndDrop,
       spellCheck = {},
       width,
-      settingsPanelDisabled
+      settingsPanelDisabled,
+      showMaxPoint,
+      addScale,
+      maxNoOfTraits,
+      minNoOfTraits
     } = configuration || {};
-    const { scales, excludeZero, description, pointLabels, standards, spellCheckEnabled } = model || {};
-    const { showExcludeZeroDialog } = this.state || {};
+    const { scales, excludeZero, description, pointLabels, standards, spellCheckEnabled, maxPointsEnabled, addScaleEnabled } = model || {};
+    const { showExcludeZeroDialog, showInfoDialog, infoDialogText } = this.state || {};
     const adjustedWidth = parseInt(width) > parseInt(MIN_WIDTH) ? width : MIN_WIDTH;
 
     const Content = (
@@ -244,14 +271,14 @@ export class Main extends React.Component {
             spellCheck={spellCheckEnabled}
             width={adjustedWidth}
             uploadSoundSupport={uploadSoundSupport}
-                {...this.props}
-                classes={{}}
-              />
-            ))}
-
-        <MultiTraitButton onClick={this.onScaleAdded}>
-          Add Scale
-        </MultiTraitButton>
+            maxPointsEnabled={maxPointsEnabled}
+            maxNoOfTraits={maxNoOfTraits}
+            minNoOfTraits={minNoOfTraits}
+            {...this.props}
+            classes={{}}
+          />
+        ))}
+        {addScaleEnabled && <MultiTraitButton onClick={this.onScaleAdded}>Add Scale</MultiTraitButton>}
       </div>
     );
 
@@ -278,6 +305,8 @@ export class Main extends React.Component {
                   pointLabels: showScorePointLabels.settings && toggle(showScorePointLabels.label),
                   spellCheckEnabled:
                   spellCheck.settings && toggle(spellCheck.label),
+                  maxPointsEnabled: showMaxPoint.settings && toggle(showMaxPoint.label),
+                  addScaleEnabled: addScale.settings && toggle(addScale.label),
                 }
               }}
             />
@@ -296,6 +325,11 @@ export class Main extends React.Component {
           open={showExcludeZeroDialog && excludeZero}
           changeExcludeZero={this.changeExcludeZero}
           cancel={this.hideToggleExcludeZeroModal}
+        />
+        <InfoDialog
+          open={showInfoDialog}
+          text={infoDialogText}
+          onClose={() => this.set({ showInfoDialog: false })}
         />
       </div>
     );
