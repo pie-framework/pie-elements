@@ -48,6 +48,18 @@ export class Root extends React.Component {
     });
   };
 
+  componentDidMount() {
+    const { model, onModelChanged, configuration } = this.props || {};
+    const { withRubric } = configuration || {};
+
+    if (withRubric.enabled) {
+      onModelChanged({
+        ...model,
+        rubricEnabled: true,
+      });
+    }
+  }
+
   render() {
     const {
       classes,
