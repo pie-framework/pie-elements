@@ -117,7 +117,6 @@ const Design = withStyles(styles)((props) => {
     onTeacherInstructionsChanged,
   } = props;
 
-  console.log(props, "trhis props")
   const {
     prompt = {},
     addChoiceButton = {},
