@@ -9,8 +9,8 @@ const multiTraitDefaultModel = {
 };
 
 const rubricDefaultModel = {
-  points: ['nothing right', 'a teeny bit right', 'mostly right', 'bingo'],
-  sampleAnswers: [null, 'just right', 'not left', null],
+  points: ['', '', '', ''],
+  sampleAnswers: [null, null, null, null],
   maxPoints: 4,
   excludeZero: false
 };

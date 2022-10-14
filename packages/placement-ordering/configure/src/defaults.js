@@ -106,7 +106,7 @@ export default {
       choices: 150
     },
     withRubric: {
-      settings: true,
+      settings: false,
       label: 'Add Rubric'
     }
   }

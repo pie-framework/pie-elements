@@ -50,7 +50,7 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
             },
             "withRubric": Object {
               "label": "Add Rubric",
-              "settings": true,
+              "settings": false,
             },
           }
         }
@@ -60,7 +60,7 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
               "playerSpellCheckEnabled": undefined,
               "promptEnabled": undefined,
               "rationaleEnabled": undefined,
-              "rubricEnabled": undefined,
+              "rubricEnabled": false,
               "spellCheckEnabled": false,
               "teacherInstructionsEnabled": undefined,
             },
@@ -405,7 +405,7 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
             },
             "withRubric": Object {
               "label": "Add Rubric",
-              "settings": true,
+              "settings": false,
             },
           }
         }
@@ -415,7 +415,7 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
               "playerSpellCheckEnabled": undefined,
               "promptEnabled": undefined,
               "rationaleEnabled": undefined,
-              "rubricEnabled": undefined,
+              "rubricEnabled": false,
               "spellCheckEnabled": false,
               "teacherInstructionsEnabled": undefined,
             },

@@ -97,7 +97,7 @@ export default {
       rationale: 300,
     },
     withRubric: {
-      settings: true,
+      settings: false,
       label: 'Add Rubric'
     }
   }

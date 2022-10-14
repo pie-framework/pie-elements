@@ -87,7 +87,7 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
           },
           "withRubric": Object {
             "label": "Add Rubric",
-            "settings": true,
+            "settings": false,
           },
         }
       }
@@ -96,7 +96,7 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
           "Properties": Object {
             "promptEnabled": undefined,
             "rationaleEnabled": undefined,
-            "rubricEnabled": undefined,
+            "rubricEnabled": false,
             "scoringType": false,
             "spellCheckEnabled": false,
             "studentInstructionsEnabled": false,
@@ -403,7 +403,7 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
           },
           "withRubric": Object {
             "label": "Add Rubric",
-            "settings": true,
+            "settings": false,
           },
         }
       }
@@ -412,7 +412,7 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
           "Properties": Object {
             "promptEnabled": false,
             "rationaleEnabled": undefined,
-            "rubricEnabled": undefined,
+            "rubricEnabled": false,
             "scoringType": false,
             "spellCheckEnabled": false,
             "studentInstructionsEnabled": false,

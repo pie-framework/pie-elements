@@ -50,7 +50,7 @@ exports[`Root render renders 1`] = `
             },
             "withRubric": Object {
               "label": "Add Rubric",
-              "settings": true,
+              "settings": false,
             },
           }
         }
@@ -58,7 +58,7 @@ exports[`Root render renders 1`] = `
           Object {
             "Properties": Object {
               "rationaleEnabled": undefined,
-              "rubricEnabled": undefined,
+              "rubricEnabled": false,
               "spellCheckEnabled": false,
               "teacherInstructionsEnabled": undefined,
             },

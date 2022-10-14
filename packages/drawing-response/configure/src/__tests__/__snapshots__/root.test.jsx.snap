@@ -34,14 +34,14 @@ exports[`Root snapshot renders 1`] = `
             },
             "withRubric": Object {
               "label": "Add Rubric",
-              "settings": true,
+              "settings": false,
             },
           }
         }
         groups={
           Object {
             "Properties": Object {
-              "rubricEnabled": undefined,
+              "rubricEnabled": false,
               "spellCheckEnabled": false,
               "teacherInstructionsEnabled": undefined,
             },

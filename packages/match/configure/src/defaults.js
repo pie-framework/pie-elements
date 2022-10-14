@@ -94,7 +94,7 @@ export default {
       rowTitles: 150
     },
     withRubric: {
-      settings: true,
+      settings: false,
       label: 'Add Rubric'
     }
   }
