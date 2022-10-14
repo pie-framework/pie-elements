@@ -128,7 +128,7 @@ exports[`Configure renders snapshot 1`] = `
           "titlePlaceholder": "Click here to add a title",
           "withRubric": Object {
             "label": "Add Rubric",
-            "settings": true,
+            "settings": false,
           },
         }
       }
@@ -137,7 +137,7 @@ exports[`Configure renders snapshot 1`] = `
           "Properties": Object {
             "promptEnabled": undefined,
             "rationaleEnabled": undefined,
-            "rubricEnabled": undefined,
+            "rubricEnabled": false,
             "scoringType": false,
             "spellCheckEnabled": false,
             "studentInstructionsEnabled": false,

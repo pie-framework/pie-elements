@@ -66,7 +66,7 @@ exports[`Configure renders correctly with snapshot 1`] = `
             },
             "withRubric": Object {
               "label": "Add Rubric",
-              "settings": true,
+              "settings": false,
             },
           }
         }
@@ -76,7 +76,7 @@ exports[`Configure renders correctly with snapshot 1`] = `
               "allowTrailingZeros.enabled": false,
               "ignoreOrder.enabled": false,
               "rationaleEnabled": undefined,
-              "rubricEnabled": undefined,
+              "rubricEnabled": false,
               "scoringType": false,
               "spellCheckEnabled": false,
               "studentInstructionsEnabled": false,
@@ -218,7 +218,7 @@ exports[`Configure renders correctly with snapshot 1`] = `
               },
               "withRubric": Object {
                 "label": "Add Rubric",
-                "settings": true,
+                "settings": false,
               },
             }
           }

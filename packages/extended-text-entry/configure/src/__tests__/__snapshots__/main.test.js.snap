@@ -71,14 +71,14 @@ exports[`Render Main Component Match Snapshot 1`] = `
           },
           "withRubric": Object {
             "label": "Add Rubric",
-            "settings": true,
+            "settings": false,
           },
         }
       }
       groups={
         Object {
           "Properties": Object {
-            "rubricEnabled": undefined,
+            "rubricEnabled": false,
             "studentInstructionsEnabled": false,
             "teacherInstructionsEnabled": undefined,
           },
