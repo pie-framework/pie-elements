@@ -162,10 +162,17 @@ export class Design extends React.Component {
       spellCheck = {},
       highlightChoices = {},
       maxImageWidth = {},
-      maxImageHeight = {}
+      maxImageHeight = {},
+      withRubric
     } = configuration || {};
     const {
-      teacherInstructionsEnabled, promptEnabled, rationaleEnabled, spellCheckEnabled, feedbackEnabled, errors
+      teacherInstructionsEnabled,
+      promptEnabled,
+      rationaleEnabled,
+      spellCheckEnabled,
+      feedbackEnabled,
+      errors,
+      rubricEnabled
     } = model || {};
     const toolbarOpts = {};
     const { tokensError, selectionsError } = errors || {};
@@ -218,7 +225,8 @@ export class Design extends React.Component {
                     spellCheck.settings && toggle(spellCheck.label),
                 scoringType:
                   scoringType.settings &&
-                  radio(scoringType.label, ['auto', 'rubric'])
+                  radio(scoringType.label, ['auto', 'rubric']),
+                rubricEnabled: withRubric.settings && toggle(withRubric.label)
               }
             }}
           />
@@ -241,6 +249,7 @@ export class Design extends React.Component {
                 maxImageWidth={maxImageWidth && maxImageWidth.teacherInstructions || defaultImageMaxWidth}
                 maxImageHeight={maxImageHeight && maxImageHeight.teacherInstructions || defaultImageMaxHeight}
                 uploadSoundSupport={uploadSoundSupport}
+                languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               />
             </InputContainer>
           )}
@@ -260,6 +269,7 @@ export class Design extends React.Component {
                 maxImageWidth={defaultImageMaxWidth}
                 maxImageHeight={defaultImageMaxHeight}
                 uploadSoundSupport={uploadSoundSupport}
+                languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               />
             </InputContainer>
           )}
@@ -279,6 +289,7 @@ export class Design extends React.Component {
                 maxImageWidth={maxImageWidth && maxImageWidth.rationale || defaultImageMaxWidth}
                 maxImageHeight={maxImageHeight && maxImageHeight.rationale || defaultImageMaxHeight}
                 uploadSoundSupport={uploadSoundSupport}
+                languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               />
             </InputContainer>
           )}

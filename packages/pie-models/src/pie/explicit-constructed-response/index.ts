@@ -1,7 +1,10 @@
 import { PieModel } from '../../PieModel';
 import { PromptConfig } from '../../PromptConfig';
 import { CommonConfigSettings } from '../../CommonConfigSettings';
-import { ConfigureMaxImageDimensionsProp, ConfigureProp } from '../ConfigurationProp';
+import {
+  ConfigureMaxImageDimensionsProp,
+  ConfigureProp,
+} from '../ConfigurationProp';
 
 export interface Choice {
   /** The value for the choice */
@@ -84,6 +87,9 @@ export interface ExplicitConstructedResponsePie extends PieModel {
 
   /** Indicates the maximum length for each response area */
   maxLengthPerChoice?: number[];
+
+  /** Indicates if Rubric is enabled */
+  rubricEnabled: boolean;
 }
 
 /**
@@ -111,12 +117,12 @@ export interface ExplicitConstructedResponseConfigure
   /**
    * Configuration for the author's spellcheck
    */
-   spellCheck?: ConfigureProp;
+  spellCheck?: ConfigureProp;
 
-   /**
-    * Configuration for the player's spellcheck
-    */
-   playerSpellCheck?: ConfigureProp;
+  /**
+   * Configuration for the player's spellcheck
+   */
+  playerSpellCheck?: ConfigureProp;
 
   /**
    * Auto Scoring Type configuration
@@ -156,4 +162,9 @@ export interface ExplicitConstructedResponseConfigure
    * Maximum image height for input fields
    */
   maxImageHeight?: ConfigureMaxImageDimensionsProp;
+
+  /**
+   * Rubric configuration
+   */
+  withRubric?: ConfigureProp;
 }

@@ -245,6 +245,7 @@ class AnswerConfigBlock extends React.Component {
                     allowValidation
                     spellCheck={spellCheck}
                     uploadSoundSupport={uploadSoundSupport}
+                    languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
                   />
                 </div>
               ))}

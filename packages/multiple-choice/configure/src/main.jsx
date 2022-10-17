@@ -116,6 +116,7 @@ const Design = withStyles(styles)((props) => {
     onConfigurationChanged,
     onTeacherInstructionsChanged,
   } = props;
+
   const {
     prompt = {},
     addChoiceButton = {},
@@ -136,7 +137,8 @@ const Design = withStyles(styles)((props) => {
     spellCheck = {},
     gridColumns,
     maxImageWidth = {},
-    maxImageHeight = {}
+    maxImageHeight = {},
+    withRubric,
   } = configuration || {};
   let { maxAnswerChoices } = configuration || {};
   const {
@@ -148,7 +150,8 @@ const Design = withStyles(styles)((props) => {
     promptEnabled,
     spellCheckEnabled,
     choices,
-    errors
+    errors,
+    rubricEnabled
   } = model || {};
 
   const { choicesErrors, correctResponseError, answerChoicesError } = errors || {};
@@ -199,6 +202,7 @@ const Design = withStyles(styles)((props) => {
             maxImageWidth={maxImageWidth && maxImageWidth.teacherInstructions || defaultImageMaxWidth}
             maxImageHeight={maxImageHeight && maxImageHeight.teacherInstructions || defaultImageMaxHeight}
             uploadSoundSupport={uploadSoundSupport}
+            languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
           />
         </InputContainer>
       )}
@@ -217,6 +221,7 @@ const Design = withStyles(styles)((props) => {
             maxImageWidth={maxImageWidth && maxImageWidth.prompt}
             maxImageHeight={maxImageHeight && maxImageHeight.prompt}
             uploadSoundSupport={uploadSoundSupport}
+            languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
           />
         </InputContainer>
       )}
@@ -259,6 +264,7 @@ const Design = withStyles(styles)((props) => {
             noCorrectAnswerError={correctResponseError}
             maxImageWidth={maxImageWidth && maxImageWidth.choices || defaultImageMaxWidth}
             maxImageHeight={maxImageHeight && maxImageHeight.choices || defaultImageMaxHeight}
+            uploadSoundSupport={uploadSoundSupport}
           />
           {rationaleEnabled && (
             <InputContainer
@@ -282,6 +288,7 @@ const Design = withStyles(styles)((props) => {
                 maxImageWidth={maxImageWidth && maxImageWidth.rationale || defaultImageMaxWidth}
                 maxImageHeight={maxImageHeight && maxImageHeight.rationale || defaultImageMaxHeight}
                 uploadSoundSupport={uploadSoundSupport}
+                languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               />
             </InputContainer>
           )}
@@ -306,6 +313,7 @@ const Design = withStyles(styles)((props) => {
                 maxImageWidth={maxImageWidth && maxImageWidth.choices || defaultImageMaxWidth}
                 maxImageHeight={maxImageHeight && maxImageHeight.choices || defaultImageMaxHeight}
                 uploadSoundSupport={uploadSoundSupport}
+                languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               />
             </InputContainer>
           )}
@@ -388,6 +396,7 @@ const Design = withStyles(styles)((props) => {
                   scoringType:
                     scoringType.settings &&
                     radio(scoringType.label, ['auto', 'rubric']),
+                  rubricEnabled: withRubric.settings && toggle(withRubric.label)
                 },
               }}
             />

@@ -171,6 +171,7 @@ export const ScorePoint = withStyles({
           spellCheck={spellCheck}
           toolbarOpts={alignToRight && { alignment: 'right' }}
           uploadSoundSupport={uploadSoundSupport}
+          languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
         /> : null}
       </div>
     </div>
@@ -253,6 +254,7 @@ export const SimpleInput = withStyles({
       activePlugins={filteredDefaultPlugins}
       spellCheck={spellCheck}
       uploadSoundSupport={uploadSoundSupport}
+      languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
     />
   </div>
 ));
@@ -297,6 +299,7 @@ export const UnderlinedInput = withStyles({
       activePlugins={filteredDefaultPlugins}
       spellCheck={spellCheck}
       uploadSoundSupport={uploadSoundSupport}
+      languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
     />
   </div>
 ));
@@ -325,6 +328,7 @@ export const ExpandedInput = withStyles({
       toolbarOpts={alignToRight && { alignment: 'right' }}
       spellCheck={spellCheck}
       uploadSoundSupport={uploadSoundSupport}
+      languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
     />
   </div>
 ));

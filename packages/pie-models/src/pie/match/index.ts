@@ -90,6 +90,9 @@ export interface MatchPie extends PieModel {
    * @default: 'bottom'
    */
   toolbarEditorPosition?: 'bottom' | 'top';
+
+  /** Indicates if Rubric is enabled */
+  rubricEnabled: boolean;
 }
 
 interface ConfigureMaxImageDimensionsProp {
@@ -154,7 +157,7 @@ export interface MatchConfigure extends PromptConfig, CommonConfigSettings {
   /**
    * Configuration for the author's spellcheck
    */
-   spellCheck?: ConfigureProp;
+  spellCheck?: ConfigureProp;
 
   /**
    * Rationale configuration
@@ -185,4 +188,9 @@ export interface MatchConfigure extends PromptConfig, CommonConfigSettings {
    * Maximum image height for input fields
    */
   maxImageHeight?: ConfigureMaxImageDimensionsProp;
+
+  /**
+   * Rubric configuration
+   */
+  withRubric?: ConfigureProp;
 }

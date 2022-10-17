@@ -7,6 +7,8 @@ exports.model = (id, element) => ({
   pointLabels: true,
   description: false,
   standards: false,
+  maxPointsEnabled: true,
+  addScaleEnabled: true,
   scales: [
     {
       maxPoints: 4,

@@ -20,7 +20,7 @@ import {
 import {
   DecreaseMaxPoints,
   DeleteScale,
-  DeleteTrait,
+  DeleteTrait, InfoDialog,
 } from './modals';
 
 const AdjustedBlockWidth = BlockWidth + (2 * 8); // 8 is padding
@@ -52,7 +52,9 @@ export class Scale extends React.Component {
     showDeleteTraitDialog: false,
     currentPosition: 0,
     showRight: null,
-    showLeft: null
+    showLeft: null,
+    showInfoDialog: false,
+    infoDialogText: ''
   };
 
   set = (newState) => this.setState(newState);
@@ -143,10 +145,19 @@ export class Scale extends React.Component {
 
   onTraitRemoved = () => {
     const { traitToDeleteIndex } = this.state;
-    const { scale, scaleIndex, onScaleChanged } = this.props || {};
+    const { scale, scaleIndex, onScaleChanged, minNoOfTraits } = this.props || {};
     let { traits } = scale || {};
 
     if (traitToDeleteIndex < 0 || traitToDeleteIndex >= traits.length) return;
+
+    if (traits.length === minNoOfTraits) {
+      this.set({
+        infoDialogText: `There can't be less than ${minNoOfTraits} scales.`,
+        showInfoDialog: true
+      });
+
+      return false;
+    }
 
     traits = [
       ...traits.slice(0, traitToDeleteIndex),
@@ -159,8 +170,17 @@ export class Scale extends React.Component {
   }
 
   onTraitAdded = () => {
-    const { scale, scaleIndex, onScaleChanged } = this.props || {};
+    const { scale, scaleIndex, onScaleChanged, maxNoOfTraits } = this.props || {};
     const { traits, scorePointsLabels } = scale || {};
+
+    if (traits.length === maxNoOfTraits) {
+      this.set({
+        infoDialogText: `There can't be more than ${maxNoOfTraits} scales.`,
+        showInfoDialog: true
+      });
+
+      return false;
+    }
 
     traits.push({
       name: '',
@@ -187,7 +207,7 @@ export class Scale extends React.Component {
   }
 
   onTraitDropped = (source, newIndex) => {
-    const { scale, scaleIndex, onScaleChanged } = this.props || {};
+    const { scale, scaleIndex, onScaleChanged, maxNoOfTraits, minNoOfTraits } = this.props || {};
     const { traits } = scale || {};
     const { index: oldIndex } = source;
     const cup = traits[oldIndex];
@@ -239,7 +259,8 @@ export class Scale extends React.Component {
       enableDragAndDrop,
       spellCheck,
       width,
-      uploadSoundSupport
+      uploadSoundSupport,
+      maxPointsEnabled
     } = this.props || {};
 
     const {
@@ -255,7 +276,9 @@ export class Scale extends React.Component {
       showDeleteTraitDialog,
       currentPosition,
       showRight,
-      showLeft
+      showLeft,
+      showInfoDialog,
+      infoDialogText
     } = this.state;
 
     const scorePointsValues = [];
@@ -298,6 +321,7 @@ export class Scale extends React.Component {
           secondaryBlockWidth={secondaryBlockWidth}
           spellCheck={spellCheck}
           uploadSoundSupport={uploadSoundSupport}
+          maxPointsEnabled={maxPointsEnabled}
         />
 
         {traits.map((trait, index) => (
@@ -359,6 +383,11 @@ export class Scale extends React.Component {
           open={!!showDeleteTraitDialog}
           deleteTrait={this.onTraitRemoved}
           cancel={this.hideDeleteTraitModal}
+        />
+        <InfoDialog
+          open={showInfoDialog}
+          text={infoDialogText}
+          onClose={() => this.set({ showInfoDialog: false })}
         />
       </div>
     );

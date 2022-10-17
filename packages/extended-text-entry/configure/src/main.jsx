@@ -56,6 +56,18 @@ export class Main extends React.Component {
     onModelChanged(update);
   };
 
+  componentDidMount() {
+    const { model, onModelChanged, configuration } = this.props || {};
+    const { withRubric } = configuration || {};
+
+    if (withRubric.enabled) {
+      onModelChanged({
+        ...model,
+        rubricEnabled: true,
+      });
+    }
+  }
+
   render() {
     const {
       model,
@@ -80,10 +92,16 @@ export class Main extends React.Component {
       spellCheck = {},
       playerSpellCheck = {},
       maxImageWidth = {},
-      maxImageHeight = {}
+      maxImageHeight = {},
+      withRubric,
     } = configuration || {};
-    const { teacherInstructionsEnabled, promptEnabled, feedbackEnabled, spellCheckEnabled } =
-      model || {};
+    const {
+      teacherInstructionsEnabled,
+      promptEnabled,
+      feedbackEnabled,
+      spellCheckEnabled,
+      rubricEnabled
+    } = model || {};
     const toolbarOpts = {};
 
     const defaultImageMaxWidth = maxImageWidth && maxImageWidth.prompt;
@@ -157,6 +175,7 @@ export class Main extends React.Component {
                 studentInstructionsEnabled:
                   studentInstructions.settings &&
                   toggle(studentInstructions.label),
+                rubricEnabled: withRubric.settings && toggle(withRubric.label)
               },
             }}
           />
@@ -179,6 +198,7 @@ export class Main extends React.Component {
                 maxImageWidth={maxImageWidth && maxImageWidth.teacherInstructions || defaultImageMaxWidth}
                 maxImageHeight={maxImageHeight && maxImageHeight.teacherInstructions || defaultImageMaxHeight}
                 uploadSoundSupport={uploadSoundSupport}
+                languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               />
             </InputContainer>
           )}
@@ -202,6 +222,7 @@ export class Main extends React.Component {
                 maxImageWidth={defaultImageMaxWidth}
                 maxImageHeight={defaultImageMaxHeight}
                 uploadSoundSupport={uploadSoundSupport}
+                languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               />
             </InputContainer>
           )}

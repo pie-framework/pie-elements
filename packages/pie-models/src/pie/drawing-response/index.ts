@@ -1,5 +1,9 @@
 import { PieModel } from '../../PieModel';
-import { ConfigureProp, ConfigurePropWithEnabled, ConfigureMaxImageDimensionsProp } from '../ConfigurationProp';
+import {
+  ConfigureProp,
+  ConfigurePropWithEnabled,
+  ConfigureMaxImageDimensionsProp,
+} from '../ConfigurationProp';
 import { PromptConfig } from '../../PromptConfig';
 import { Dimension } from '../../Dimension';
 
@@ -48,6 +52,9 @@ export interface DrawingResponsePie extends PieModel {
    * @default: 'bottom'
    */
   toolbarEditorPosition?: 'bottom' | 'top';
+
+  /** Indicates if Rubric is enabled */
+  rubricEnabled: boolean;
 }
 
 /**
@@ -68,7 +75,7 @@ export interface DrawingResponseConfigure extends PromptConfig {
   /**
    * Configuration for the author's spellcheck
    */
-   spellCheck?: ConfigureProp;
+  spellCheck?: ConfigureProp;
 
   /**
    * Student Instructions configuration
@@ -89,4 +96,9 @@ export interface DrawingResponseConfigure extends PromptConfig {
    * Maximum image height for input fields
    */
   maxImageHeight?: ConfigureMaxImageDimensionsProp;
+
+  /**
+   * Rubric configuration
+   */
+  withRubric?: ConfigureProp;
 }

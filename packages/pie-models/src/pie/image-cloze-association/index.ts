@@ -1,7 +1,10 @@
 import { PieModel } from '../../PieModel';
 import { PromptConfig } from '../../PromptConfig';
 import { CommonConfigSettings } from '../../CommonConfigSettings';
-import { ConfigureProp, ConfigureMaxImageDimensionsProp } from '../ConfigurationProp';
+import {
+  ConfigureProp,
+  ConfigureMaxImageDimensionsProp,
+} from '../ConfigurationProp';
 
 interface ResponseContainer {
   /** The x coordinate of the response container */
@@ -101,6 +104,9 @@ export interface ImageClozeAssociationPie extends PieModel {
 
   /** Indicates if the response containers should have a dashed border */
   showDashedBorder?: boolean;
+
+  /** Indicates if Rubric is enabled */
+  rubricEnabled: boolean;
 }
 
 /**
@@ -118,7 +124,7 @@ export interface ImageClozeAssociationConfigure
   /**
    * Configuration for the author's spellcheck
    */
-   spellCheck?: ConfigureProp;
+  spellCheck?: ConfigureProp;
 
   /**
    * Maximum image width for input fields
@@ -129,4 +135,9 @@ export interface ImageClozeAssociationConfigure
    * Maximum image height for input fields
    */
   maxImageHeight?: ConfigureMaxImageDimensionsProp;
+
+  /**
+   * Rubric configuration
+   */
+  withRubric?: ConfigureProp;
 }
