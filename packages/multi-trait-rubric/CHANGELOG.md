@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric@2.0.11...@pie-element/multi-trait-rubric@2.1.0) (2022-10-17)
+
+
+### Bug Fixes
+
+* tests ([d165efc](https://github.com/pie-framework/pie-elements/commit/d165efcc2684e2452d1d20e5c10cc1a72b99afc0))
+
+
+### Features
+
+* update libs ([7e174fb](https://github.com/pie-framework/pie-elements/commit/7e174fba75e7ea668900ad5c103751cefe33e2af))
+* update pie-lib/rubric dependecies version ([5546015](https://github.com/pie-framework/pie-elements/commit/5546015c3923ce2e34ab810ccd698424c1009c03))
+* **complex-rubric:** PD-2013 implement new item type for rubrics ([33c08ff](https://github.com/pie-framework/pie-elements/commit/33c08ff8068255595e5bed7ac2d8675e57e2f925))
+* **complex-rubric, multi-trait-rubric:** add new settings panel properties ([58d55e8](https://github.com/pie-framework/pie-elements/commit/58d55e877602d2655c7767433bdb404e4693074b))
+* **docs:** update docs ([23cab69](https://github.com/pie-framework/pie-elements/commit/23cab69700cfee41395941f99599253cba8a28a3))
+* **multi-trait-rubric:** add min and max values in configuration for scales and traits PD-2040 ([e56041c](https://github.com/pie-framework/pie-elements/commit/e56041c6a150b701dcf878c7d20263d935e2bae2))
+* **multi-trait-rubric:** add pie-api config PD-23 ([5cda6c3](https://github.com/pie-framework/pie-elements/commit/5cda6c3536e2b710f2b3577ecbb2aaca683a6b88))
+* **multi-trait-rubric:** add uploadSoundSupport property PD-23-updated ([25fdba3](https://github.com/pie-framework/pie-elements/commit/25fdba377ad13fc1cc56fd54200b87d08571e7b9))
+* **multi-trait-rubric:** enable/disable max points and add scale PD-2040 ([e0c0a72](https://github.com/pie-framework/pie-elements/commit/e0c0a721ca0def0519987ab8cf09c36b058791dc))
+* enable spanish and special characters in author PD-2120 ([85fd3dd](https://github.com/pie-framework/pie-elements/commit/85fd3dd0fc10da1a2dfd5a842809c625790f8ba9))
+
+
+
+
+
 ## [2.0.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric@2.0.10...@pie-element/multi-trait-rubric@2.0.11) (2022-09-29)
 
 **Note:** Version bump only for package @pie-element/multi-trait-rubric

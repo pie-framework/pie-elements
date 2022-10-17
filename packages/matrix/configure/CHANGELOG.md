@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/matrix-configure@0.2.10...@pie-element/matrix-configure@0.3.0) (2022-10-17)
+
+
+### Features
+
+* update libs ([7e174fb](https://github.com/pie-framework/pie-elements/commit/7e174fba75e7ea668900ad5c103751cefe33e2af))
+* **matrix:** add pie-api config PD-23 ([4d44c51](https://github.com/pie-framework/pie-elements/commit/4d44c5166f32dbd5d2a7db4389af83f0b1c310d7))
+* **matrix:** add uploadSoundSupport property PD-23-updated ([9a7d609](https://github.com/pie-framework/pie-elements/commit/9a7d609136836d9c5d1137ed6e059446276dedc4))
+
+
+
+
+
 ## [0.2.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/matrix-configure@0.2.9...@pie-element/matrix-configure@0.2.10) (2022-09-29)
 
 **Note:** Version bump only for package @pie-element/matrix-configure

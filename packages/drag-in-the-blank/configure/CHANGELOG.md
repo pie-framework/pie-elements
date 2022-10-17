@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-configure@4.1.9...@pie-element/drag-in-the-blank-configure@4.2.0) (2022-10-17)
+
+
+### Bug Fixes
+
+* update snapshots ([9781596](https://github.com/pie-framework/pie-elements/commit/978159686bbbd6b727dff4b88ce4ab9606504586))
+
+
+### Features
+
+* set withRubric to false in item default configurations. Set rubricEnabled to true if it's enabled for drawing-response and extended-text-entry ([a209057](https://github.com/pie-framework/pie-elements/commit/a209057f5a3fa5438efc8595453c89c11959a8f5))
+* update libs ([7e174fb](https://github.com/pie-framework/pie-elements/commit/7e174fba75e7ea668900ad5c103751cefe33e2af))
+* **drag-in-the-blank:** add pie-api config PD-23 ([38d7fd5](https://github.com/pie-framework/pie-elements/commit/38d7fd58622bc0e9335c46351ff220b09ab08db6))
+* **drag-in-the-blank:** add settings to enable rubric. Add withRubric prop to configuration and rubricEnabled prop to model PD-2095 ([35462df](https://github.com/pie-framework/pie-elements/commit/35462df9cd6f70c9e4d730a133734b6d4932abd3))
+* **drag-in-the-blank:** updated snapshot PD-2095 ([53033c2](https://github.com/pie-framework/pie-elements/commit/53033c28156278737bc2fc77a787cbc6db6fecd2))
+* enable spanish and special characters in author PD-2120 ([85fd3dd](https://github.com/pie-framework/pie-elements/commit/85fd3dd0fc10da1a2dfd5a842809c625790f8ba9))
+* **drag-in-the-blank:** add uploadSoundSupport property PD-23-updated ([d8c826d](https://github.com/pie-framework/pie-elements/commit/d8c826d51d5090bdf38b9a3b8bfeeca71bc40e1b))
+
+
+
+
+
 ## [4.1.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-configure@4.1.8...@pie-element/drag-in-the-blank-configure@4.1.9) (2022-09-29)
 
 **Note:** Version bump only for package @pie-element/drag-in-the-blank-configure

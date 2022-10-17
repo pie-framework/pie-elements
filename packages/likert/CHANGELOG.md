@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/likert@0.2.10...@pie-element/likert@0.3.0) (2022-10-17)
+
+
+### Features
+
+* update libs ([7e174fb](https://github.com/pie-framework/pie-elements/commit/7e174fba75e7ea668900ad5c103751cefe33e2af))
+* **docs:** update docs ([23cab69](https://github.com/pie-framework/pie-elements/commit/23cab69700cfee41395941f99599253cba8a28a3))
+* **likert:** add pie-api config PD-23 ([6647257](https://github.com/pie-framework/pie-elements/commit/6647257d6fecadb8b656180a8fb0604ea8ef25dc))
+* **likert:** add uploadSoundSupport property PD-23-updated ([e316b05](https://github.com/pie-framework/pie-elements/commit/e316b0509e2534651ff964884d72106e11405eef))
+
+
+
+
+
 ## [0.2.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/likert@0.2.9...@pie-element/likert@0.2.10) (2022-09-29)
 
 **Note:** Version bump only for package @pie-element/likert

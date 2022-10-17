@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@6.1.9...@pie-element/math-inline@6.2.0) (2022-10-17)
+
+
+### Bug Fixes
+
+* update snapshots ([9781596](https://github.com/pie-framework/pie-elements/commit/978159686bbbd6b727dff4b88ce4ab9606504586))
+
+
+### Features
+
+* set withRubric to false in item default configurations. Set rubricEnabled to true if it's enabled for drawing-response and extended-text-entry ([a209057](https://github.com/pie-framework/pie-elements/commit/a209057f5a3fa5438efc8595453c89c11959a8f5))
+* update libs ([7e174fb](https://github.com/pie-framework/pie-elements/commit/7e174fba75e7ea668900ad5c103751cefe33e2af))
+* **docs:** update docs ([23cab69](https://github.com/pie-framework/pie-elements/commit/23cab69700cfee41395941f99599253cba8a28a3))
+* **math-inline:** add pie-api config PD-23 ([1a61ee3](https://github.com/pie-framework/pie-elements/commit/1a61ee39c184b4252446adf67b3ad38e40a0e39f))
+* **math-inline:** add settings to enable rubric. Add withRubric prop to configuration and rubricEnabled prop to model PD-2104 ([543e355](https://github.com/pie-framework/pie-elements/commit/543e3551cc43477edb153c6d97cea7c8c6588235))
+* **math-inline:** updated snapshot PD-2104 ([d1e9c23](https://github.com/pie-framework/pie-elements/commit/d1e9c2307dc108427bacfc106c00b3a5c624e930))
+* enable spanish and special characters in author PD-2120 ([85fd3dd](https://github.com/pie-framework/pie-elements/commit/85fd3dd0fc10da1a2dfd5a842809c625790f8ba9))
+* **math-inline:** add uploadSoundSupport property PD-23-updated ([85f07b0](https://github.com/pie-framework/pie-elements/commit/85f07b0eb5128019d83668783ea8990d0cfb16cd))
+
+
+
+
+
 ## [6.1.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@6.1.8...@pie-element/math-inline@6.1.9) (2022-09-29)
 
 **Note:** Version bump only for package @pie-element/math-inline

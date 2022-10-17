@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@4.1.9...@pie-element/explicit-constructed-response@4.2.0) (2022-10-17)
+
+
+### Bug Fixes
+
+* update snapshots ([9781596](https://github.com/pie-framework/pie-elements/commit/978159686bbbd6b727dff4b88ce4ab9606504586))
+
+
+### Features
+
+* set withRubric to false in item default configurations. Set rubricEnabled to true if it's enabled for drawing-response and extended-text-entry ([a209057](https://github.com/pie-framework/pie-elements/commit/a209057f5a3fa5438efc8595453c89c11959a8f5))
+* update libs ([7e174fb](https://github.com/pie-framework/pie-elements/commit/7e174fba75e7ea668900ad5c103751cefe33e2af))
+* **docs:** update docs ([23cab69](https://github.com/pie-framework/pie-elements/commit/23cab69700cfee41395941f99599253cba8a28a3))
+* **explicit-constructed-response:** add pie-api config PD-23 ([df3e8bd](https://github.com/pie-framework/pie-elements/commit/df3e8bdbb19a3d6356f4bd639ab34aaac5068d61))
+* **explicit-constructed-response:** add settings to enable rubric. Add withRubric prop to configuration and rubricEnabled prop to model PD-2097 ([8c0acd3](https://github.com/pie-framework/pie-elements/commit/8c0acd3c19cf0cbf9ef39e1e045f895f996c9127))
+* **explicit-constructed-response:** updated snapshot PD-2097 ([a04ac3d](https://github.com/pie-framework/pie-elements/commit/a04ac3d45a591db3513a9ccd1293d04e5dce5049))
+* enable spanish and special characters in author PD-2120 ([85fd3dd](https://github.com/pie-framework/pie-elements/commit/85fd3dd0fc10da1a2dfd5a842809c625790f8ba9))
+* **explicit-constructed-response:** add uploadSoundSupport property PD-23-updated ([f701b37](https://github.com/pie-framework/pie-elements/commit/f701b37884cb81499c1be1b16fa6de5c6d5a1b5f))
+
+
+
+
+
 ## [4.1.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@4.1.8...@pie-element/explicit-constructed-response@4.1.9) (2022-09-29)
 
 **Note:** Version bump only for package @pie-element/explicit-constructed-response

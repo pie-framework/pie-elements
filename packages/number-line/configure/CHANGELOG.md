@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-configure@5.1.10...@pie-element/number-line-configure@5.2.0) (2022-10-17)
+
+
+### Features
+
+* enable spanish and special characters in author PD-2120 ([85fd3dd](https://github.com/pie-framework/pie-elements/commit/85fd3dd0fc10da1a2dfd5a842809c625790f8ba9))
+* update libs ([7e174fb](https://github.com/pie-framework/pie-elements/commit/7e174fba75e7ea668900ad5c103751cefe33e2af))
+* **number-line:** add pie-api config PD-23 ([3c15653](https://github.com/pie-framework/pie-elements/commit/3c15653d208fcf7336388b84bb457293f0a03c35))
+* **number-line:** add uploadSoundSupport property PD-23-updated ([97a4f02](https://github.com/pie-framework/pie-elements/commit/97a4f02541b6f769e9329830233ef88437f0218b))
+
+
+
+
+
 ## [5.1.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-configure@5.1.9...@pie-element/number-line-configure@5.1.10) (2022-09-29)
 
 **Note:** Version bump only for package @pie-element/number-line-configure

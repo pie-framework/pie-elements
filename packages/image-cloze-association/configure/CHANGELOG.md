@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association-configure@4.1.9...@pie-element/image-cloze-association-configure@4.2.0) (2022-10-17)
+
+
+### Features
+
+* enable spanish and special characters in author PD-2120 ([85fd3dd](https://github.com/pie-framework/pie-elements/commit/85fd3dd0fc10da1a2dfd5a842809c625790f8ba9))
+* set withRubric to false in item default configurations. Set rubricEnabled to true if it's enabled for drawing-response and extended-text-entry ([a209057](https://github.com/pie-framework/pie-elements/commit/a209057f5a3fa5438efc8595453c89c11959a8f5))
+* update libs ([7e174fb](https://github.com/pie-framework/pie-elements/commit/7e174fba75e7ea668900ad5c103751cefe33e2af))
+* **image-cloze-association:** add pie-api config PD-23 ([cef5013](https://github.com/pie-framework/pie-elements/commit/cef50133f83f6dec1e3f0b993a24a35e86cfe159))
+* **image-cloze-association:** add settings to enable rubric. Add withRubric prop to configuration and rubricEnabled prop to model PD-2101 ([e6d1ba7](https://github.com/pie-framework/pie-elements/commit/e6d1ba7c700f6a637006cb3b5befbc77bad9a3e1))
+* **image-cloze-association:** add uploadSoundSupport property PD-23-updated ([d0d80dc](https://github.com/pie-framework/pie-elements/commit/d0d80dcf75586bdfc6d79585e4437aacc2734fea))
+
+
+
+
+
 ## [4.1.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association-configure@4.1.8...@pie-element/image-cloze-association-configure@4.1.9) (2022-09-29)
 
 **Note:** Version bump only for package @pie-element/image-cloze-association-configure

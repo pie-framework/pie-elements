@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@5.0.10...@pie-element/charting@5.1.0) (2022-10-17)
+
+
+### Bug Fixes
+
+* render math content in configure part PD-2082 ([732e5da](https://github.com/pie-framework/pie-elements/commit/732e5daa7da2a28a543c869133ef01733cd71818))
+* update snapshots ([9781596](https://github.com/pie-framework/pie-elements/commit/978159686bbbd6b727dff4b88ce4ab9606504586))
+
+
+### Features
+
+* set withRubric to false in item default configurations. Set rubricEnabled to true if it's enabled for drawing-response and extended-text-entry ([a209057](https://github.com/pie-framework/pie-elements/commit/a209057f5a3fa5438efc8595453c89c11959a8f5))
+* update libs ([7e174fb](https://github.com/pie-framework/pie-elements/commit/7e174fba75e7ea668900ad5c103751cefe33e2af))
+* **charting:** add pie-api config PD-23 ([b0f9e82](https://github.com/pie-framework/pie-elements/commit/b0f9e82c1c809b7f900b655aac6fce1375779679))
+* **charting:** add settings to enable rubric. Add withRubric prop to configuration and rubricEnabled prop to model PD-2094 ([a58f5af](https://github.com/pie-framework/pie-elements/commit/a58f5af7cc94f2c6e1debcdd51f62d19e36fed19))
+* **charting:** add uploadSoundSupport property PD-23-updated ([c17de2c](https://github.com/pie-framework/pie-elements/commit/c17de2c1ce6933c9a218d3198b333d827d9682b5))
+* **charting:** updated snapshot PD-2094 ([3c1b10c](https://github.com/pie-framework/pie-elements/commit/3c1b10c81f57598bc454aecb50dbbf9ecb1c517e))
+* enable spanish and special characters in author PD-2120 ([85fd3dd](https://github.com/pie-framework/pie-elements/commit/85fd3dd0fc10da1a2dfd5a842809c625790f8ba9))
+* **charting:** refactor ability to edit chart labels and title ([3d5be82](https://github.com/pie-framework/pie-elements/commit/3d5be82f1db8748d2adab0458137a3c9b7f17eb1))
+* **docs:** update docs ([23cab69](https://github.com/pie-framework/pie-elements/commit/23cab69700cfee41395941f99599253cba8a28a3))
+
+
+
+
+
 ## [5.0.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@5.0.9...@pie-element/charting@5.0.10) (2022-09-29)
 
 **Note:** Version bump only for package @pie-element/charting

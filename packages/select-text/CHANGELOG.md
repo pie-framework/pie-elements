@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@7.1.10...@pie-element/select-text@7.2.0) (2022-10-17)
+
+
+### Bug Fixes
+
+* update snapshots ([9781596](https://github.com/pie-framework/pie-elements/commit/978159686bbbd6b727dff4b88ce4ab9606504586))
+
+
+### Features
+
+* set withRubric to false in item default configurations. Set rubricEnabled to true if it's enabled for drawing-response and extended-text-entry ([a209057](https://github.com/pie-framework/pie-elements/commit/a209057f5a3fa5438efc8595453c89c11959a8f5))
+* update libs ([7e174fb](https://github.com/pie-framework/pie-elements/commit/7e174fba75e7ea668900ad5c103751cefe33e2af))
+* **docs:** update docs ([23cab69](https://github.com/pie-framework/pie-elements/commit/23cab69700cfee41395941f99599253cba8a28a3))
+* **select-text:** add pie-api config PD-23 ([b044d07](https://github.com/pie-framework/pie-elements/commit/b044d0750f42652d4bd9dc3d2a1b0111a478687f))
+* **select-text:** add settings to enable rubric. Add withRubric prop to configuration and rubricEnabled prop to model PD-2107 ([cb2eb3c](https://github.com/pie-framework/pie-elements/commit/cb2eb3ca4a67a74a0359c83c8022a0502ccb8cfa))
+* **select-text:** updated snapshot PD-2107 ([c98af93](https://github.com/pie-framework/pie-elements/commit/c98af93ce3bc0b1720f2dc3266f849dd1a4b4c14))
+* enable spanish and special characters in author PD-2120 ([85fd3dd](https://github.com/pie-framework/pie-elements/commit/85fd3dd0fc10da1a2dfd5a842809c625790f8ba9))
+* **select-text:** add uploadSoundSupport property PD-23-updated ([a6c33f5](https://github.com/pie-framework/pie-elements/commit/a6c33f502926c369131a5653a5fc34e5666d6a25))
+
+
+
+
+
 ## [7.1.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@7.1.9...@pie-element/select-text@7.1.10) (2022-09-29)
 
 **Note:** Version bump only for package @pie-element/select-text
