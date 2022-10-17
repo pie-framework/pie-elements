@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-configure@6.1.9...@pie-element/placement-ordering-configure@6.2.0) (2022-10-17)
+
+
+### Bug Fixes
+
+* update snapshots ([9781596](https://github.com/pie-framework/pie-elements/commit/978159686bbbd6b727dff4b88ce4ab9606504586))
+
+
+### Features
+
+* set withRubric to false in item default configurations. Set rubricEnabled to true if it's enabled for drawing-response and extended-text-entry ([a209057](https://github.com/pie-framework/pie-elements/commit/a209057f5a3fa5438efc8595453c89c11959a8f5))
+* update libs ([7e174fb](https://github.com/pie-framework/pie-elements/commit/7e174fba75e7ea668900ad5c103751cefe33e2af))
+* **placement-ordering:** add pie-api config PD-23 ([8f87b30](https://github.com/pie-framework/pie-elements/commit/8f87b301a88e676849e2ef8e6db138e11b003767))
+* **placement-ordering:** add settings to enable rubric. Add withRubric prop to configuration and rubricEnabled prop to model PD-2106 ([03968e5](https://github.com/pie-framework/pie-elements/commit/03968e52e450a1b031c460576bd996e54630844a))
+* **placement-ordering:** updated snapshot PD-2106 ([a4631de](https://github.com/pie-framework/pie-elements/commit/a4631de51d98124a6beb3fda2c5e7232e3476366))
+* enable spanish and special characters in author PD-2120 ([85fd3dd](https://github.com/pie-framework/pie-elements/commit/85fd3dd0fc10da1a2dfd5a842809c625790f8ba9))
+* **placement-ordering:** add uploadSoundSupport property PD-23-updated ([18ca247](https://github.com/pie-framework/pie-elements/commit/18ca247c942324dc8a32c1a94fbfc610160c05d6))
+
+
+
+
+
 ## [6.1.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-configure@6.1.8...@pie-element/placement-ordering-configure@6.1.9) (2022-09-29)
 
 **Note:** Version bump only for package @pie-element/placement-ordering-configure

@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-configure@6.1.9...@pie-element/extended-text-entry-configure@6.2.0) (2022-10-17)
+
+
+### Bug Fixes
+
+* update snapshots ([9781596](https://github.com/pie-framework/pie-elements/commit/978159686bbbd6b727dff4b88ce4ab9606504586))
+
+
+### Features
+
+* set withRubric to false in item default configurations. Set rubricEnabled to true if it's enabled for drawing-response and extended-text-entry ([a209057](https://github.com/pie-framework/pie-elements/commit/a209057f5a3fa5438efc8595453c89c11959a8f5))
+* update libs ([7e174fb](https://github.com/pie-framework/pie-elements/commit/7e174fba75e7ea668900ad5c103751cefe33e2af))
+* **extended-text-entry:** add pie-api config PD-23 ([59c151a](https://github.com/pie-framework/pie-elements/commit/59c151a668e6caf8828ee48547fbd34c0645f863))
+* **extended-text-entry:** add settings to enable rubric. Add withRubric prop to configuration and rubricEnabled prop to model PD-2098 ([1046c20](https://github.com/pie-framework/pie-elements/commit/1046c207db5d1246479ec2daf6219cb30a10ec00))
+* **extended-text-entry:** updated snapshot PD-2098 ([1c06fc3](https://github.com/pie-framework/pie-elements/commit/1c06fc37827b6aa93cbfaeedb43207408c910f3c))
+* enable spanish and special characters in author PD-2120 ([85fd3dd](https://github.com/pie-framework/pie-elements/commit/85fd3dd0fc10da1a2dfd5a842809c625790f8ba9))
+* **extended-text-entry:** add uploadSoundSupport property PD-23-updated ([bf1ce39](https://github.com/pie-framework/pie-elements/commit/bf1ce390aa95e0ae9b937391a08e70139e842aaa))
+
+
+
+
+
 ## [6.1.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-configure@6.1.8...@pie-element/extended-text-entry-configure@6.1.9) (2022-09-29)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry-configure

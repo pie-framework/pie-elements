@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@4.3.3...@pie-element/graphing@4.4.0) (2022-10-17)
+
+
+### Bug Fixes
+
+* render math content in configure part PD-2082 ([1609019](https://github.com/pie-framework/pie-elements/commit/1609019e82d4116b7dddfe3d9f701e4f1268c331))
+* update snapshots ([9781596](https://github.com/pie-framework/pie-elements/commit/978159686bbbd6b727dff4b88ce4ab9606504586))
+
+
+### Features
+
+* set withRubric to false in item default configurations. Set rubricEnabled to true if it's enabled for drawing-response and extended-text-entry ([a209057](https://github.com/pie-framework/pie-elements/commit/a209057f5a3fa5438efc8595453c89c11959a8f5))
+* update libs ([7e174fb](https://github.com/pie-framework/pie-elements/commit/7e174fba75e7ea668900ad5c103751cefe33e2af))
+* **complex-rubric:** write documentation PD-2013 ([eb6bc68](https://github.com/pie-framework/pie-elements/commit/eb6bc687e21d287ac413c31e9a7aa16ce295a848))
+* **graphing:** add pie-api config PD-23 ([885d882](https://github.com/pie-framework/pie-elements/commit/885d8826032476ac660bc20e7a44cd4f6f26f35d))
+* **graphing:** add settings to enable rubric. Add withRubric prop to configuration and rubricEnabled prop to model PD-2099 ([a7b78d8](https://github.com/pie-framework/pie-elements/commit/a7b78d8ff0263390723ce21f8547611b3dd1052f))
+* **graphing:** add uploadSoundSupport property PD-23-updated ([e96ca79](https://github.com/pie-framework/pie-elements/commit/e96ca794b8ed1eb4aab47b583caed0e6196d803f))
+* **graphing:** fixed the missing panel due to vars in wrong place PD-2099 ([82d1d0b](https://github.com/pie-framework/pie-elements/commit/82d1d0b403bcc8757399868e1f82e67fefc7d35c))
+* **graphing:** updated snapshot PD-2099 ([9cbcb88](https://github.com/pie-framework/pie-elements/commit/9cbcb88cbce3ba82569cafc74a98f0c843fe291f))
+* enable spanish and special characters in author PD-2120 ([85fd3dd](https://github.com/pie-framework/pie-elements/commit/85fd3dd0fc10da1a2dfd5a842809c625790f8ba9))
+
+
+
+
+
 ## [4.3.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@4.3.2...@pie-element/graphing@4.3.3) (2022-09-29)
 
 **Note:** Version bump only for package @pie-element/graphing

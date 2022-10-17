@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@5.2.5...@pie-element/hotspot@5.3.0) (2022-10-17)
+
+
+### Bug Fixes
+
+* update snapshots ([9781596](https://github.com/pie-framework/pie-elements/commit/978159686bbbd6b727dff4b88ce4ab9606504586))
+
+
+### Features
+
+* set withRubric to false in item default configurations. Set rubricEnabled to true if it's enabled for drawing-response and extended-text-entry ([a209057](https://github.com/pie-framework/pie-elements/commit/a209057f5a3fa5438efc8595453c89c11959a8f5))
+* update libs ([7e174fb](https://github.com/pie-framework/pie-elements/commit/7e174fba75e7ea668900ad5c103751cefe33e2af))
+* **docs:** update docs ([23cab69](https://github.com/pie-framework/pie-elements/commit/23cab69700cfee41395941f99599253cba8a28a3))
+* **hotspot:** add pie-api config PD-23 ([0791093](https://github.com/pie-framework/pie-elements/commit/0791093b9f36ab922de1af69e781d1856d3477be))
+* **hotspot:** add settings to enable rubric. Add withRubric prop to configuration and rubricEnabled prop to model PD-2100 ([fbddb7a](https://github.com/pie-framework/pie-elements/commit/fbddb7a0c11841ffd1fd4f93b77dc5331ac225fb))
+* **hotspot:** updated snapshot PD-2100 ([1af1e2a](https://github.com/pie-framework/pie-elements/commit/1af1e2af10b591bd61c02c8cc651035587a418ca))
+* enable spanish and special characters in author PD-2120 ([85fd3dd](https://github.com/pie-framework/pie-elements/commit/85fd3dd0fc10da1a2dfd5a842809c625790f8ba9))
+* **hotspot:** add uploadSoundSupport property PD-23-updated ([b438dfb](https://github.com/pie-framework/pie-elements/commit/b438dfbd5840081f0931bb50badf218b0385d62b))
+
+
+
+
+
 ## [5.2.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@5.2.4...@pie-element/hotspot@5.2.5) (2022-09-29)
 
 **Note:** Version bump only for package @pie-element/hotspot

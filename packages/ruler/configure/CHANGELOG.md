@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ruler-configure@3.0.10...@pie-element/ruler-configure@3.1.0) (2022-10-17)
+
+
+### Features
+
+* update libs ([7e174fb](https://github.com/pie-framework/pie-elements/commit/7e174fba75e7ea668900ad5c103751cefe33e2af))
+
+
+
+
+
 ## [3.0.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/ruler-configure@3.0.9...@pie-element/ruler-configure@3.0.10) (2022-09-29)
 
 **Note:** Version bump only for package @pie-element/ruler-configure

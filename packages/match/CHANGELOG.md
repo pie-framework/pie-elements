@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@5.1.10...@pie-element/match@5.2.0) (2022-10-17)
+
+
+### Features
+
+* enable spanish and special characters in author PD-2120 ([85fd3dd](https://github.com/pie-framework/pie-elements/commit/85fd3dd0fc10da1a2dfd5a842809c625790f8ba9))
+* set withRubric to false in item default configurations. Set rubricEnabled to true if it's enabled for drawing-response and extended-text-entry ([a209057](https://github.com/pie-framework/pie-elements/commit/a209057f5a3fa5438efc8595453c89c11959a8f5))
+* update libs ([7e174fb](https://github.com/pie-framework/pie-elements/commit/7e174fba75e7ea668900ad5c103751cefe33e2af))
+* **docs:** update docs ([23cab69](https://github.com/pie-framework/pie-elements/commit/23cab69700cfee41395941f99599253cba8a28a3))
+* **match:** add pie-api config PD-23 ([ac5ccb9](https://github.com/pie-framework/pie-elements/commit/ac5ccb90252590e4af2a2a65913800e86d95c467))
+* **match:** add settings to enable rubric. Add withRubric prop to configuration and rubricEnabled prop to model PD-2102 ([b0e09f9](https://github.com/pie-framework/pie-elements/commit/b0e09f94e582d6e9c18b1c34dd5517e907f0078d))
+* **match:** add uploadSoundSupport property PD-23-updated ([7bbc65f](https://github.com/pie-framework/pie-elements/commit/7bbc65f63df9d247b870e0c948024ded87493c2c))
+
+
+
+
+
 ## [5.1.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@5.1.9...@pie-element/match@5.1.10) (2022-09-29)
 
 **Note:** Version bump only for package @pie-element/match

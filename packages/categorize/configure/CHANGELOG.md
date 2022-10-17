@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@6.1.9...@pie-element/categorize-configure@6.2.0) (2022-10-17)
+
+
+### Features
+
+* enable spanish and special characters in author PD-2120 ([85fd3dd](https://github.com/pie-framework/pie-elements/commit/85fd3dd0fc10da1a2dfd5a842809c625790f8ba9))
+* set withRubric to false in item default configurations. Set rubricEnabled to true if it's enabled for drawing-response and extended-text-entry ([a209057](https://github.com/pie-framework/pie-elements/commit/a209057f5a3fa5438efc8595453c89c11959a8f5))
+* update libs ([7e174fb](https://github.com/pie-framework/pie-elements/commit/7e174fba75e7ea668900ad5c103751cefe33e2af))
+* **categorize:** add pie-api config PD-23 ([79a3424](https://github.com/pie-framework/pie-elements/commit/79a3424efbb4e32097028da0bada6c493ad4d0e5))
+* **categorize:** add settings to enable rubric. Add withRubric prop to configuration and rubricEnabled prop to model PD-2019 ([fc719ea](https://github.com/pie-framework/pie-elements/commit/fc719ea36f0a3fd74829e4e550222d1d1a9b0df8))
+* **categorize:** add uploadSoundSupport property PD-23-updated ([74eb10b](https://github.com/pie-framework/pie-elements/commit/74eb10b6187cdd5c068820e5079e88230246b0d4))
+* **categorize:** fix tests with default val for `withRubric` PD-2093 ([0113d16](https://github.com/pie-framework/pie-elements/commit/0113d1676a65c8ace6ccb1fbfc1a8540e11e3da1))
+
+
+
+
+
 ## [6.1.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@6.1.8...@pie-element/categorize-configure@6.1.9) (2022-09-29)
 
 **Note:** Version bump only for package @pie-element/categorize-configure

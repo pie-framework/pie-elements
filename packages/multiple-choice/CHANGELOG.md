@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@7.1.9...@pie-element/multiple-choice@7.2.0) (2022-10-17)
+
+
+### Bug Fixes
+
+* **multiple-choice:** add upload file option in choices ([1968e45](https://github.com/pie-framework/pie-elements/commit/1968e45753265c4e7267017b0d59cc745a115aa1))
+
+
+### Features
+
+* enable spanish and special characters in author PD-2120 ([85fd3dd](https://github.com/pie-framework/pie-elements/commit/85fd3dd0fc10da1a2dfd5a842809c625790f8ba9))
+* set withRubric to false in item default configurations. Set rubricEnabled to true if it's enabled for drawing-response and extended-text-entry ([a209057](https://github.com/pie-framework/pie-elements/commit/a209057f5a3fa5438efc8595453c89c11959a8f5))
+* update libs ([7e174fb](https://github.com/pie-framework/pie-elements/commit/7e174fba75e7ea668900ad5c103751cefe33e2af))
+* **categorize:** add pie-api config PD-23 ([79a3424](https://github.com/pie-framework/pie-elements/commit/79a3424efbb4e32097028da0bada6c493ad4d0e5))
+* **categorize:** add settings to enable rubric. Add withRubric prop to configuration and rubricEnabled prop to model PD-2019 ([fc719ea](https://github.com/pie-framework/pie-elements/commit/fc719ea36f0a3fd74829e4e550222d1d1a9b0df8))
+* **categorize:** add uploadSoundSupport property PD-23-updated ([74eb10b](https://github.com/pie-framework/pie-elements/commit/74eb10b6187cdd5c068820e5079e88230246b0d4))
+* **multiple-choice:** add pie-api config PD-23 ([2568ef7](https://github.com/pie-framework/pie-elements/commit/2568ef75200a95d014f803addda8addf520b2abc))
+* **multiple-choice:** add settings to enable rubric. Add withRubric prop to configuration and rubricEnabled prop to model PD-2019 ([92668e4](https://github.com/pie-framework/pie-elements/commit/92668e40e6e7f6a015c8ee49ab773c4d4cd09dc0))
+* **multiple-choice:** add uploadSoundSupport property + proper events emit events (wip) PD-23-updated ([488f422](https://github.com/pie-framework/pie-elements/commit/488f4224f95de2ffdcb11ac608d7c627146b6216))
+* **multiple-choice:** bump pie-configure-events and editable-html versions ([aaaaf46](https://github.com/pie-framework/pie-elements/commit/aaaaf46b44b0bed74fd09f05ccf5fcda2f8bb71f))
+
+
+
+
+
 ## [7.1.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@7.1.8...@pie-element/multiple-choice@7.1.9) (2022-09-29)
 
 **Note:** Version bump only for package @pie-element/multiple-choice

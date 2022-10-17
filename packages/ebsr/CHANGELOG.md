@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@8.1.9...@pie-element/ebsr@8.2.0) (2022-10-17)
+
+
+### Features
+
+* update libs ([7e174fb](https://github.com/pie-framework/pie-elements/commit/7e174fba75e7ea668900ad5c103751cefe33e2af))
+
+
+
+
+
 ## [8.1.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@8.1.8...@pie-element/ebsr@8.1.9) (2022-09-29)
 
 **Note:** Version bump only for package @pie-element/ebsr

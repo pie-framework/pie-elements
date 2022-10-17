@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response-configure@4.1.9...@pie-element/drawing-response-configure@4.2.0) (2022-10-17)
+
+
+### Bug Fixes
+
+* update snapshots ([9781596](https://github.com/pie-framework/pie-elements/commit/978159686bbbd6b727dff4b88ce4ab9606504586))
+
+
+### Features
+
+* set withRubric to false in item default configurations. Set rubricEnabled to true if it's enabled for drawing-response and extended-text-entry ([a209057](https://github.com/pie-framework/pie-elements/commit/a209057f5a3fa5438efc8595453c89c11959a8f5))
+* update libs ([7e174fb](https://github.com/pie-framework/pie-elements/commit/7e174fba75e7ea668900ad5c103751cefe33e2af))
+* **drawing-response:** add pie-api config PD-23 ([d98fc22](https://github.com/pie-framework/pie-elements/commit/d98fc225c16f6bc89631f72ea488ff67feab3872))
+* **drawing-response:** add settings to enable rubric. Add withRubric prop to configuration and rubricEnabled prop to model PD-2096 ([142429a](https://github.com/pie-framework/pie-elements/commit/142429a1a92af9e41f670d4f611e9bb62039a1f3))
+* **drawing-response:** updated snapshot PD-2096 ([4e1a63c](https://github.com/pie-framework/pie-elements/commit/4e1a63cf0840c2ac93de0b314d56b9bb6c3835ac))
+* enable spanish and special characters in author PD-2120 ([85fd3dd](https://github.com/pie-framework/pie-elements/commit/85fd3dd0fc10da1a2dfd5a842809c625790f8ba9))
+* **drawing-response:** add uploadSoundSupport property PD-23-updated ([9a0f0b4](https://github.com/pie-framework/pie-elements/commit/9a0f0b4adb5d3956240fdebc62485c27572be495))
+
+
+
+
+
 ## [4.1.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response-configure@4.1.8...@pie-element/drawing-response-configure@4.1.9) (2022-09-29)
 
 **Note:** Version bump only for package @pie-element/drawing-response-configure

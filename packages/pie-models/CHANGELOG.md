@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@12.1.2...@pie-element/pie-models@12.2.0) (2022-10-17)
+
+
+### Features
+
+* **categorize:** add settings to enable rubric. Add withRubric prop to configuration and rubricEnabled prop to model PD-2019 ([fc719ea](https://github.com/pie-framework/pie-elements/commit/fc719ea36f0a3fd74829e4e550222d1d1a9b0df8))
+* **charting:** add settings to enable rubric. Add withRubric prop to configuration and rubricEnabled prop to model PD-2094 ([a58f5af](https://github.com/pie-framework/pie-elements/commit/a58f5af7cc94f2c6e1debcdd51f62d19e36fed19))
+* **complex-rubric:** write documentation PD-2013 ([eb6bc68](https://github.com/pie-framework/pie-elements/commit/eb6bc687e21d287ac413c31e9a7aa16ce295a848))
+* **drag-in-the-blank:** add settings to enable rubric. Add withRubric prop to configuration and rubricEnabled prop to model PD-2095 ([35462df](https://github.com/pie-framework/pie-elements/commit/35462df9cd6f70c9e4d730a133734b6d4932abd3))
+* **drawing-response:** add settings to enable rubric. Add withRubric prop to configuration and rubricEnabled prop to model PD-2096 ([142429a](https://github.com/pie-framework/pie-elements/commit/142429a1a92af9e41f670d4f611e9bb62039a1f3))
+* **explicit-constructed-response:** add settings to enable rubric. Add withRubric prop to configuration and rubricEnabled prop to model PD-2097 ([8c0acd3](https://github.com/pie-framework/pie-elements/commit/8c0acd3c19cf0cbf9ef39e1e045f895f996c9127))
+* **extended-text-entry:** add settings to enable rubric. Add withRubric prop to configuration and rubricEnabled prop to model PD-2098 ([1046c20](https://github.com/pie-framework/pie-elements/commit/1046c207db5d1246479ec2daf6219cb30a10ec00))
+* **graphing:** add settings to enable rubric. Add withRubric prop to configuration and rubricEnabled prop to model PD-2099 ([a7b78d8](https://github.com/pie-framework/pie-elements/commit/a7b78d8ff0263390723ce21f8547611b3dd1052f))
+* **hotspot:** add settings to enable rubric. Add withRubric prop to configuration and rubricEnabled prop to model PD-2100 ([fbddb7a](https://github.com/pie-framework/pie-elements/commit/fbddb7a0c11841ffd1fd4f93b77dc5331ac225fb))
+* **image-cloze-association:** add settings to enable rubric. Add withRubric prop to configuration and rubricEnabled prop to model PD-2101 ([e6d1ba7](https://github.com/pie-framework/pie-elements/commit/e6d1ba7c700f6a637006cb3b5befbc77bad9a3e1))
+* **inline-dropdown:** add settings to enable rubric. Add withRubric prop to configuration and rubricEnabled prop to model PD-2092 ([1e3b2e6](https://github.com/pie-framework/pie-elements/commit/1e3b2e6348a76264145c118bdee709f8e61f189e))
+* **match:** add settings to enable rubric. Add withRubric prop to configuration and rubricEnabled prop to model PD-2102 ([b0e09f9](https://github.com/pie-framework/pie-elements/commit/b0e09f94e582d6e9c18b1c34dd5517e907f0078d))
+* **math-inline:** add settings to enable rubric. Add withRubric prop to configuration and rubricEnabled prop to model PD-2104 ([543e355](https://github.com/pie-framework/pie-elements/commit/543e3551cc43477edb153c6d97cea7c8c6588235))
+* **multiple-choice:** add settings to enable rubric. Add withRubric prop to configuration and rubricEnabled prop to model PD-2019 ([92668e4](https://github.com/pie-framework/pie-elements/commit/92668e40e6e7f6a015c8ee49ab773c4d4cd09dc0))
+* **placement-ordering:** add settings to enable rubric. Add withRubric prop to configuration and rubricEnabled prop to model PD-2106 ([03968e5](https://github.com/pie-framework/pie-elements/commit/03968e52e450a1b031c460576bd996e54630844a))
+* **select-text:** add settings to enable rubric. Add withRubric prop to configuration and rubricEnabled prop to model PD-2107 ([cb2eb3c](https://github.com/pie-framework/pie-elements/commit/cb2eb3ca4a67a74a0359c83c8022a0502ccb8cfa))
+
+
+
+
+
 ## [12.1.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@12.1.1...@pie-element/pie-models@12.1.2) (2022-09-29)
 
 **Note:** Version bump only for package @pie-element/pie-models

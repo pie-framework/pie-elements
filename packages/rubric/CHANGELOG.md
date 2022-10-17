@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric@2.0.11...@pie-element/rubric@2.1.0) (2022-10-17)
+
+
+### Bug Fixes
+
+* default rubric model ([6454f5f](https://github.com/pie-framework/pie-elements/commit/6454f5fbced5d843fe9500ca00db70d926a86819))
+* rubric imports ([4b8a9de](https://github.com/pie-framework/pie-elements/commit/4b8a9de461846ce1722f56208abb54999a59dc29))
+
+
+### Features
+
+* update pie-lib/rubric dependecies version ([5546015](https://github.com/pie-framework/pie-elements/commit/5546015c3923ce2e34ab810ccd698424c1009c03))
+* **rubric:** add settings panel to rubric PD-2040 ([697428f](https://github.com/pie-framework/pie-elements/commit/697428fb3f0562c3df54e35a4a7abca0e8719660))
+
+
+
+
+
 ## [2.0.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric@2.0.10...@pie-element/rubric@2.0.11) (2022-09-29)
 
 **Note:** Version bump only for package @pie-element/rubric
