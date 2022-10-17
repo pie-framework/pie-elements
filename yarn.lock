@@ -2254,7 +2254,7 @@
     debug "^4.1.1"
     lodash "^4.17.11"
 
-"@pie-lib/charting@^5.2.1":
+"@pie-lib/charting@^5.3.0":
   version "5.3.0"
   resolved "https://registry.yarnpkg.com/@pie-lib/charting/-/charting-5.3.0.tgz#1aa14b473756447d62c1289f060c167592511c73"
   integrity sha512-ovJHcDsHVwN+yBCpdTAQa7+5MgJ07bk4KnUIopWbdeVfW5peWUW1OhzYfYh3DCrycOU0mwyZNVD8e1JlQwYSkA==
@@ -2282,7 +2282,7 @@
     redux "^4.0.1"
     redux-undo beta
 
-"@pie-lib/config-ui@^11.0.19", "@pie-lib/config-ui@^11.0.20":
+"@pie-lib/config-ui@^11.0.20":
   version "11.0.20"
   resolved "https://registry.yarnpkg.com/@pie-lib/config-ui/-/config-ui-11.0.20.tgz#eb97d870a3184315fd87c88f6723dc0592e8c5de"
   integrity sha512-ItvVFhACzDM4dBqEl6B/7CnmAwHGpm/nHC/Ls4hyqad755Oc2ogoafNE156x3RUDSpISybJQSeUqTyJqzN952g==
@@ -2378,7 +2378,7 @@
     debug "^4.1.1"
     lodash "^4.17.11"
 
-"@pie-lib/graphing@^2.11.1":
+"@pie-lib/graphing@^2.11.2":
   version "2.11.2"
   resolved "https://registry.yarnpkg.com/@pie-lib/graphing/-/graphing-2.11.2.tgz#b71d141294c433322424b62e553220b385189c5e"
   integrity sha512-iHuTRSggHrdtccG7dZDhx43ZgIu7NNY3GTcdt9N4A2CnkqG/bu/Ykbnhoh6UurFpXaeC1AKXwso7a7OtckJRPg==
@@ -2557,10 +2557,10 @@
     prop-types "^15.7.2"
     react-transition-group "^2.5.2"
 
-"@pie-lib/rubric@0.5.4", "@pie-lib/rubric@^0.5.4":
-  version "0.5.4"
-  resolved "https://registry.yarnpkg.com/@pie-lib/rubric/-/rubric-0.5.4.tgz#e8d7ac476b2939a350bd9c91306b555e4a2a1804"
-  integrity sha512-X0xx8uJlKX7HfJbhaiq6uYmSiRO5mQJ4rwX/fJCrrl1Uc2q/SUsCmt4plzTDNBf0TfRWw4v+Ac5Czukwt5AVNw==
+"@pie-lib/rubric@0.6.0", "@pie-lib/rubric@^0.6.0":
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/@pie-lib/rubric/-/rubric-0.6.0.tgz#90a6c2d18aa662b023b0d7a1c6cba6f898df06e3"
+  integrity sha512-XAj/2tOz6ZsdV+AJyerAHglxdWgY9e4viNBjiTvLXOj+YO/nhYRRjD7kYugYpmxgPWJ85HlqUbVvvWb/4DQ0zA==
   dependencies:
     "@material-ui/core" "^3.9.3"
     "@material-ui/icons" "^3.0.2"
@@ -2573,7 +2573,7 @@
     react-beautiful-dnd "^11.0.2"
     react-dom "^16.9.0"
 
-"@pie-lib/scoring-config@^3.5.183":
+"@pie-lib/scoring-config@^3.5.184":
   version "3.5.184"
   resolved "https://registry.yarnpkg.com/@pie-lib/scoring-config/-/scoring-config-3.5.184.tgz#0c84bfa45c1996db9ccb9c4a8e69ab157d8ffc2f"
   integrity sha512-eR7TcNLH/sWtZL+CSYj4DAd6Nggj3WstFSHmJ5LggojkkVYmEKP0u2JaeT7yqBih8+8XOsktkPckVo5wk1f67w==
