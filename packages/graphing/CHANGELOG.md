@@ -3,6 +3,85 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.3.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@4.3.2...@pie-element/graphing@4.3.3) (2022-09-29)
+
+**Note:** Version bump only for package @pie-element/graphing
+
+
+
+
+
+## [4.3.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@4.3.1...@pie-element/graphing@4.3.2) (2022-09-14)
+
+**Note:** Version bump only for package @pie-element/graphing
+
+
+
+
+
+## [4.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@4.3.0...@pie-element/graphing@4.3.1) (2022-08-31)
+
+**Note:** Version bump only for package @pie-element/graphing
+
+
+
+
+
+# [4.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@4.2.1...@pie-element/graphing@4.3.0) (2022-08-16)
+
+
+### Features
+
+* **graphing:** added pixel grid lines support PD-1719 ([d189bbf](https://github.com/pie-framework/pie-elements/commit/d189bbfa7e36fcc2f9a2aeb9dc6b8bb791e378f3))
+* **graphing:** added support for default grid configurations PD-1678 ([4132ebf](https://github.com/pie-framework/pie-elements/commit/4132ebfa1d70da4bdbd35e1cd2ca204483bfa429))
+
+
+
+
+
+## [4.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@4.2.0...@pie-element/graphing@4.2.1) (2022-08-08)
+
+**Note:** Version bump only for package @pie-element/graphing
+
+
+
+
+
+# [4.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@4.1.3...@pie-element/graphing@4.2.0) (2022-08-02)
+
+
+### Features
+
+* **graphing:** Added the ability to edit title and labels PD-1605 ([7aac4a0](https://github.com/pie-framework/pie-elements/commit/7aac4a0a2cdd06209912a9edbed6cd1d911c5773))
+
+
+
+
+
+## [4.1.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@4.1.2...@pie-element/graphing@4.1.3) (2022-07-22)
+
+**Note:** Version bump only for package @pie-element/graphing
+
+
+
+
+
+## [4.1.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@4.1.1...@pie-element/graphing@4.1.2) (2022-07-20)
+
+**Note:** Version bump only for package @pie-element/graphing
+
+
+
+
+
+## [4.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@4.1.0...@pie-element/graphing@4.1.1) (2022-07-19)
+
+**Note:** Version bump only for package @pie-element/graphing
+
+
+
+
+
 # [4.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@4.0.0...@pie-element/graphing@4.1.0) (2022-06-28)
 
 

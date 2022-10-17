@@ -3,6 +3,54 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.16](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.7.15...@pie-element/passage@1.7.16) (2022-09-29)
+
+**Note:** Version bump only for package @pie-element/passage
+
+
+
+
+
+## [1.7.15](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.7.14...@pie-element/passage@1.7.15) (2022-09-14)
+
+**Note:** Version bump only for package @pie-element/passage
+
+
+
+
+
+## [1.7.14](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.7.13...@pie-element/passage@1.7.14) (2022-08-31)
+
+**Note:** Version bump only for package @pie-element/passage
+
+
+
+
+
+## [1.7.13](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.7.12...@pie-element/passage@1.7.13) (2022-08-16)
+
+**Note:** Version bump only for package @pie-element/passage
+
+
+
+
+
+## [1.7.12](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.7.11...@pie-element/passage@1.7.12) (2022-08-08)
+
+**Note:** Version bump only for package @pie-element/passage
+
+
+
+
+
+## [1.7.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.7.10...@pie-element/passage@1.7.11) (2022-07-19)
+
+**Note:** Version bump only for package @pie-element/passage
+
+
+
+
+
 ## [1.7.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.7.9...@pie-element/passage@1.7.10) (2022-06-13)
 
 **Note:** Version bump only for package @pie-element/passage

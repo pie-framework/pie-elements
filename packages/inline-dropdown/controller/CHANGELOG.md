@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-controller@4.0.0...@pie-element/inline-dropdown-controller@4.1.0) (2022-08-02)
+
+
+### Bug Fixes
+
+* inline-dropdown and drag-in-the-blank fix validation error PD-1848 ([24f50f1](https://github.com/pie-framework/pie-elements/commit/24f50f11ee681749e2849c84f178af2b67441454))
+
+
+### Features
+
+* PD-1896 remove unused import and console log ([de1090e](https://github.com/pie-framework/pie-elements/commit/de1090e3ee64b70a1120066b2281bb7c66837df3))
+* **inline-dropdown:** add missing configurable validation. Added maxResponseAreaChoices property to configuration ([5cfff17](https://github.com/pie-framework/pie-elements/commit/5cfff17c5df2c149c1b6e29a4109f3ff6b850110))
+
+
+
+
+
 # [4.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-controller@3.4.0...@pie-element/inline-dropdown-controller@4.0.0) (2022-06-28)
 
 
