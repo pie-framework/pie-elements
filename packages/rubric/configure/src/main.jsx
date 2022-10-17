@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Authoring } from '@pie-lib/rubric';
 import { withStyles } from '@material-ui/core/styles';
 import { layout, settings } from '@pie-lib/config-ui';
