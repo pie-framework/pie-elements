@@ -14,7 +14,7 @@
     "@pie-lib/config-ui": "^11.0.20",
     "@pie-lib/editable-html": "^9.2.2",
     "@pie-lib/render-ui": "^4.13.6",
-    "@pie-lib/rubric": "^0.5.4",
+    "@pie-lib/rubric": "^0.6.0",
     "@pie-lib/scoring-config": "^3.5.184",
     "debug": "^4.1.1",
     "react": "^16.8.6",

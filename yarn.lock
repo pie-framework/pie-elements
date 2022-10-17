@@ -2615,7 +2615,23 @@
     prop-types "^15.7.2"
     react-transition-group "^2.5.2"
 
-"@pie-lib/rubric@0.5.4", "@pie-lib/rubric@^0.5.4":
+"@pie-lib/rubric@0.6.0":
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/@pie-lib/rubric/-/rubric-0.6.0.tgz#90a6c2d18aa662b023b0d7a1c6cba6f898df06e3"
+  integrity sha512-XAj/2tOz6ZsdV+AJyerAHglxdWgY9e4viNBjiTvLXOj+YO/nhYRRjD7kYugYpmxgPWJ85HlqUbVvvWb/4DQ0zA==
+  dependencies:
+    "@material-ui/core" "^3.9.3"
+    "@material-ui/icons" "^3.0.2"
+    "@pie-lib/editable-html" "^9.2.2"
+    debug "^4.1.1"
+    editable-html "npm:@pie-lib/editable-html@^7.21.0"
+    lodash "^4.17.11"
+    prop-types "^15.7.2"
+    react "^16.8.1"
+    react-beautiful-dnd "^11.0.2"
+    react-dom "^16.9.0"
+
+"@pie-lib/rubric@^0.5.4":
   version "0.5.4"
   resolved "https://registry.yarnpkg.com/@pie-lib/rubric/-/rubric-0.5.4.tgz#e8d7ac476b2939a350bd9c91306b555e4a2a1804"
   integrity sha512-X0xx8uJlKX7HfJbhaiq6uYmSiRO5mQJ4rwX/fJCrrl1Uc2q/SUsCmt4plzTDNBf0TfRWw4v+Ac5Czukwt5AVNw==
