@@ -24,8 +24,14 @@ export class Root extends React.Component {
       imageSupport,
       uploadSoundSupport
     } = this.props;
-    const { teacherInstructions = {}, spellCheck = {}, maxImageWidth = {}, maxImageHeight = {} } = configuration || {};
-    const { spellCheckEnabled } = model || {};
+    const {
+      teacherInstructions = {},
+      spellCheck = {},
+      maxImageWidth = {},
+      maxImageHeight = {},
+      withRubric
+    } = configuration || {};
+    const { spellCheckEnabled, rubricEnabled } = model || {};
 
     return (
       <layout.ConfigLayout
@@ -42,6 +48,7 @@ export class Root extends React.Component {
                   toggle(teacherInstructions.label),
                 spellCheckEnabled:
                   spellCheck.settings && toggle(spellCheck.label),
+                rubricEnabled: withRubric.settings && toggle(withRubric.label)
               },
             }}
           />
@@ -63,6 +70,7 @@ export class Root extends React.Component {
                 maxImageWidth={maxImageWidth && maxImageWidth.teacherInstructions}
                 maxImageHeight={maxImageHeight && maxImageHeight.teacherInstructions}
                 uploadSoundSupport={uploadSoundSupport}
+                languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               />
             </InputContainer>
           )}

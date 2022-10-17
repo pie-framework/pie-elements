@@ -49,12 +49,12 @@ exports[`Render Main Component Match Snapshot 1`] = `
           "spanishInput": Object {
             "enabled": false,
             "label": "Students can insert Spanish",
-            "settings": false,
+            "settings": true,
           },
           "specialInput": Object {
             "enabled": false,
             "label": "Students can insert Special Characters",
-            "settings": false,
+            "settings": true,
           },
           "spellCheck": Object {
             "enabled": true,
@@ -69,11 +69,16 @@ exports[`Render Main Component Match Snapshot 1`] = `
             "label": "Teacher Instructions",
             "settings": true,
           },
+          "withRubric": Object {
+            "label": "Add Rubric",
+            "settings": false,
+          },
         }
       }
       groups={
         Object {
           "Properties": Object {
+            "rubricEnabled": false,
             "studentInstructionsEnabled": false,
             "teacherInstructionsEnabled": undefined,
           },
@@ -85,8 +90,8 @@ exports[`Render Main Component Match Snapshot 1`] = `
             "multiple.enabled": false,
             "playerSpellCheckEnabled": undefined,
             "promptEnabled": undefined,
-            "spanishInput": false,
-            "specialInput": false,
+            "spanishInput": undefined,
+            "specialInput": undefined,
             "spellCheckEnabled": false,
           },
         }
@@ -123,6 +128,16 @@ exports[`Render Main Component Match Snapshot 1`] = `
     >
       <EditableHtml
         imageSupport={Object {}}
+        languageCharactersProps={
+          Array [
+            Object {
+              "language": "spanish",
+            },
+            Object {
+              "language": "special",
+            },
+          ]
+        }
         markup=""
         maxImageHeight={300}
         maxImageWidth={300}
@@ -142,6 +157,16 @@ exports[`Render Main Component Match Snapshot 1`] = `
     >
       <EditableHtml
         imageSupport={Object {}}
+        languageCharactersProps={
+          Array [
+            Object {
+              "language": "spanish",
+            },
+            Object {
+              "language": "special",
+            },
+          ]
+        }
         markup="This is the question prompt"
         maxImageHeight={300}
         maxImageWidth={300}

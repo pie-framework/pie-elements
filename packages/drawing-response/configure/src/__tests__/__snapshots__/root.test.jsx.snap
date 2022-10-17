@@ -32,11 +32,16 @@ exports[`Root snapshot renders 1`] = `
               "label": "Teacher Instructions",
               "settings": true,
             },
+            "withRubric": Object {
+              "label": "Add Rubric",
+              "settings": false,
+            },
           }
         }
         groups={
           Object {
             "Properties": Object {
+              "rubricEnabled": false,
               "spellCheckEnabled": false,
               "teacherInstructionsEnabled": undefined,
             },
@@ -67,6 +72,16 @@ exports[`Root snapshot renders 1`] = `
         label="Item Stem"
       >
         <EditableHtml
+          languageCharactersProps={
+            Array [
+              Object {
+                "language": "spanish",
+              },
+              Object {
+                "language": "special",
+              },
+            ]
+          }
           markup="Test Prompt"
           maxImageHeight={300}
           maxImageWidth={300}

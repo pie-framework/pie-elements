@@ -79,6 +79,9 @@ export interface MultipleChoicePie extends PieModel {
 
   /** Indicates if Accessibility Labels are enabled */
   accessibilityLabelsEnabled: boolean;
+
+  /** Indicates if Rubric is enabled */
+  rubricEnabled: boolean;
 }
 
 interface ConfigureMaxImageDimensionsProp {
@@ -215,4 +218,10 @@ export interface MultipleChoiceConfigure extends PromptConfig {
    * Maximum image height for input fields
    */
   maxImageHeight?: ConfigureMaxImageDimensionsProp;
+
+  /**
+   * Rubric configuration
+   */
+  withRubric?: ConfigureProp;
+
 }

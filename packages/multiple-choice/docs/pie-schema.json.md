@@ -158,6 +158,10 @@ Indicates if Teacher Instructions are enabled
 
 Indicates if Accessibility Labels are enabled
 
+# `rubricEnabled` (boolean, required)
+
+Indicates if Rubric is enabled
+
 # `id` (string, required)
 
 Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.

@@ -38,6 +38,51 @@ Indicates if the item has to be displayed in the Settings Panel
 
 Indicates the label for the item that has to be displayed in the Settings Panel
 
+# `titlePlaceholder` (object)
+
+Properties of the `titlePlaceholder` object:
+
+## `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+## `label` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
+
+# `labelsPlaceholders` (object)
+
+Properties of the `labelsPlaceholders` object:
+
+## `top` (string)
+
+This value is empty for charting. The property exist in order to be consistent with graphing configuration.
+
+## `right` (string)
+
+This value is empty for charting. The property exist in order to be consistent with graphing configuration.
+
+## `bottom` (string)
+
+Indicates the placeholder for the bottom label
+
+## `left` (string)
+
+Indicates the placeholder for the left label
+
+## `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+## `label` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
+
+## `enabled` (boolean)
+
+Indicates the value of the item if it affects config-ui
+(eg.: if item is a switch and displaying an input on the config-ui depends on the switch value: on/off)
+
 # `scoringType` (object)
 
 Properties of the `scoringType` object:
@@ -123,6 +168,18 @@ Indicates the max dimension for images in prompt - this is also the default dime
 
 Indicates the max dimension for images in rationale
 
+# `withRubric` (object)
+
+Properties of the `withRubric` object:
+
+## `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+## `label` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
+
 # `showPrompt` (boolean)
 
 Determines whether prompt field will be displayed or not
@@ -158,6 +215,39 @@ Indicates if the item has to be displayed in the Settings Panel
 ### `label` (string)
 
 Indicates the label for the item that has to be displayed in the Settings Panel
+
+## `LabelsPlaceholderConfigProp` (object)
+
+Properties of the `LabelsPlaceholderConfigProp` object:
+
+### `top` (string)
+
+This value is empty for charting. The property exist in order to be consistent with graphing configuration.
+
+### `right` (string)
+
+This value is empty for charting. The property exist in order to be consistent with graphing configuration.
+
+### `bottom` (string)
+
+Indicates the placeholder for the bottom label
+
+### `left` (string)
+
+Indicates the placeholder for the left label
+
+### `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+### `label` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
+
+### `enabled` (boolean)
+
+Indicates the value of the item if it affects config-ui
+(eg.: if item is a switch and displaying an input on the config-ui depends on the switch value: on/off)
 
 ## `ConfigurePropWithEnabled` (object)
 

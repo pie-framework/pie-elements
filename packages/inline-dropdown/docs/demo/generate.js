@@ -73,5 +73,6 @@ exports.model = (id, element) => ({
   alternateResponse: {
     '2': ['2']
   },
-  choiceRationaleEnabled: false
+  choiceRationaleEnabled: false,
+  rubricEnabled: false
 });

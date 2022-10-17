@@ -247,5 +247,28 @@ RawDeleteTrait.propTypes = {
 
 const DeleteTrait = withStyles(styles)(RawDeleteTrait);
 
+const RawInfoDialog = ({ classes, open, text, onClose }) => (
+  <Dialog open={open} classes={{ paper: classes.root }}>
+    <DialogTitle classes={{root: classes.title}}>
+      {text}
+    </DialogTitle>
 
-export {ExcludeZeroDialog, IncludeZeroDialog, DecreaseMaxPoints, DeleteScale, DeleteTrait}
+    <DialogActions>
+      <Button classes={{ root: classes.button }} onClick={onClose}>
+        OK
+      </Button>
+
+    </DialogActions>
+  </Dialog>
+);
+
+RawInfoDialog.propTypes = {
+  classes: PropTypes.object,
+  open: PropTypes.bool,
+  text: PropTypes.string,
+  cancel: PropTypes.func,
+};
+
+const InfoDialog = withStyles(styles)(RawInfoDialog);
+
+export { ExcludeZeroDialog, IncludeZeroDialog, DecreaseMaxPoints, DeleteScale, DeleteTrait, InfoDialog }

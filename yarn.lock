@@ -2254,14 +2254,14 @@
     debug "^4.1.1"
     lodash "^4.17.11"
 
-"@pie-lib/charting@^5.2.1":
-  version "5.2.1"
-  resolved "https://registry.yarnpkg.com/@pie-lib/charting/-/charting-5.2.1.tgz#71bcd8c30577e9b6877bb2a3776dee6a73535b84"
-  integrity sha512-qKQCWUruqQVEyVlHdwumwkCWNO7mLhL1vUwANwkiLhQQpJoIBUk55yNYITlfwV6/FFvriCcNdYR3pUUlLZAL/A==
+"@pie-lib/charting@^5.3.0":
+  version "5.3.0"
+  resolved "https://registry.yarnpkg.com/@pie-lib/charting/-/charting-5.3.0.tgz#1aa14b473756447d62c1289f060c167592511c73"
+  integrity sha512-ovJHcDsHVwN+yBCpdTAQa7+5MgJ07bk4KnUIopWbdeVfW5peWUW1OhzYfYh3DCrycOU0mwyZNVD8e1JlQwYSkA==
   dependencies:
     "@mapbox/point-geometry" "^0.1.0"
     "@material-ui/core" "^3.8.3"
-    "@pie-lib/plot" "^2.5.1"
+    "@pie-lib/plot" "^2.5.2"
     "@vx/axis" "^0.0.183"
     "@vx/event" "^0.0.182"
     "@vx/grid" "^0.0.183"
@@ -2282,10 +2282,10 @@
     redux "^4.0.1"
     redux-undo beta
 
-"@pie-lib/config-ui@^11.0.19":
-  version "11.0.19"
-  resolved "https://registry.yarnpkg.com/@pie-lib/config-ui/-/config-ui-11.0.19.tgz#511ee21f1610580ca4ce1cc3716b9343152140b1"
-  integrity sha512-ckAjpLOm1jEubydjRVAjADoEZaIqJlKAQu0ZB7nlffJ3OWU20804iEzvWBvU/2NXWk30Z0Pqs+s8l9bRn19dhw==
+"@pie-lib/config-ui@^11.0.20":
+  version "11.0.20"
+  resolved "https://registry.yarnpkg.com/@pie-lib/config-ui/-/config-ui-11.0.20.tgz#eb97d870a3184315fd87c88f6723dc0592e8c5de"
+  integrity sha512-ItvVFhACzDM4dBqEl6B/7CnmAwHGpm/nHC/Ls4hyqad755Oc2ogoafNE156x3RUDSpISybJQSeUqTyJqzN952g==
   dependencies:
     "@material-ui/core" "^3.8.3"
     "@material-ui/icons" "^3.0.2"
@@ -2378,16 +2378,16 @@
     debug "^4.1.1"
     lodash "^4.17.11"
 
-"@pie-lib/graphing@^2.11.1":
-  version "2.11.1"
-  resolved "https://registry.yarnpkg.com/@pie-lib/graphing/-/graphing-2.11.1.tgz#74c347c6ad98301170c8a377fcf90037b34bf120"
-  integrity sha512-1+SbnQ9FYkbtYy60soTzWbwmKtJzvnXdUp/doAY8hAm6hZOyN886+O0baAXxLHcXaoQxamNI+pHK0Mr74xALww==
+"@pie-lib/graphing@^2.11.2":
+  version "2.11.2"
+  resolved "https://registry.yarnpkg.com/@pie-lib/graphing/-/graphing-2.11.2.tgz#b71d141294c433322424b62e553220b385189c5e"
+  integrity sha512-iHuTRSggHrdtccG7dZDhx43ZgIu7NNY3GTcdt9N4A2CnkqG/bu/Ykbnhoh6UurFpXaeC1AKXwso7a7OtckJRPg==
   dependencies:
     "@mapbox/point-geometry" "^0.1.0"
     "@material-ui/core" "^3.8.3"
     "@pie-lib/drag" "^1.1.52"
     "@pie-lib/graphing-utils" "^1.1.20"
-    "@pie-lib/plot" "^2.5.1"
+    "@pie-lib/plot" "^2.5.2"
     "@pie-lib/render-ui" "^4.13.6"
     "@vx/axis" "^0.0.189"
     "@vx/clip-path" "^0.0.189"
@@ -2505,10 +2505,10 @@
     keycode "^2.2.0"
     lodash "^4.17.11"
 
-"@pie-lib/plot@^2.5.1":
-  version "2.5.1"
-  resolved "https://registry.yarnpkg.com/@pie-lib/plot/-/plot-2.5.1.tgz#8d0af2bd2beb8559208937086c7a4016297d53ff"
-  integrity sha512-pRjHcveQJWBi8Pcf4qXfYjaaCVtFuG+a7G2noCu/MRVgaII72CYtsoyhImqX3Gh1r9G+cZipSpohXNMOX94NPA==
+"@pie-lib/plot@^2.5.2":
+  version "2.5.2"
+  resolved "https://registry.yarnpkg.com/@pie-lib/plot/-/plot-2.5.2.tgz#f8aff20f5ecaf9787a86c3cef0b056b27fce31cd"
+  integrity sha512-6F6Xpd9vyIcD+caciZQnXivmddSHDLhJvtG86IYSFWS0QNl4oOh2xE6BVizS5GqqXGoGY3/0sPVtj6dL3XXmtA==
   dependencies:
     "@mapbox/point-geometry" "^0.1.0"
     "@material-ui/core" "^3.8.3"
@@ -2557,10 +2557,10 @@
     prop-types "^15.7.2"
     react-transition-group "^2.5.2"
 
-"@pie-lib/rubric@0.5.4", "@pie-lib/rubric@^0.5.4":
-  version "0.5.4"
-  resolved "https://registry.yarnpkg.com/@pie-lib/rubric/-/rubric-0.5.4.tgz#e8d7ac476b2939a350bd9c91306b555e4a2a1804"
-  integrity sha512-X0xx8uJlKX7HfJbhaiq6uYmSiRO5mQJ4rwX/fJCrrl1Uc2q/SUsCmt4plzTDNBf0TfRWw4v+Ac5Czukwt5AVNw==
+"@pie-lib/rubric@0.6.0", "@pie-lib/rubric@^0.6.0":
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/@pie-lib/rubric/-/rubric-0.6.0.tgz#90a6c2d18aa662b023b0d7a1c6cba6f898df06e3"
+  integrity sha512-XAj/2tOz6ZsdV+AJyerAHglxdWgY9e4viNBjiTvLXOj+YO/nhYRRjD7kYugYpmxgPWJ85HlqUbVvvWb/4DQ0zA==
   dependencies:
     "@material-ui/core" "^3.9.3"
     "@material-ui/icons" "^3.0.2"
@@ -2573,14 +2573,14 @@
     react-beautiful-dnd "^11.0.2"
     react-dom "^16.9.0"
 
-"@pie-lib/scoring-config@^3.5.183":
-  version "3.5.183"
-  resolved "https://registry.yarnpkg.com/@pie-lib/scoring-config/-/scoring-config-3.5.183.tgz#d4edf67f737fa82638db32d8babbe963bbb8984f"
-  integrity sha512-Gz6oQsLc/OE4OgdiwuyF/8hRktPqIS6SksRFTe+W66hxpJvpWYQKLmYdn0hZu9MDW9J0Jvw0zDFJwDAIUl9pQA==
+"@pie-lib/scoring-config@^3.5.184":
+  version "3.5.184"
+  resolved "https://registry.yarnpkg.com/@pie-lib/scoring-config/-/scoring-config-3.5.184.tgz#0c84bfa45c1996db9ccb9c4a8e69ab157d8ffc2f"
+  integrity sha512-eR7TcNLH/sWtZL+CSYj4DAd6Nggj3WstFSHmJ5LggojkkVYmEKP0u2JaeT7yqBih8+8XOsktkPckVo5wk1f67w==
   dependencies:
     "@material-ui/core" "^3.8.3"
     "@material-ui/icons" "^3.0.2"
-    "@pie-lib/config-ui" "^11.0.19"
+    "@pie-lib/config-ui" "^11.0.20"
     classnames "^2.2.6"
     debug "^4.1.1"
     lodash "^4.17.11"

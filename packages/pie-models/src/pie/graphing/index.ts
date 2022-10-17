@@ -1,7 +1,11 @@
 import { PromptConfig } from '../../PromptConfig';
 import { CommonConfigSettings } from '../../CommonConfigSettings';
 import { PieModel } from '../../PieModel';
-import { ConfigureMaxImageDimensionsProp, ConfigureProp, ConfigurePropWithEnabled } from '../ConfigurationProp';
+import {
+  ConfigureMaxImageDimensionsProp,
+  ConfigureProp,
+  ConfigurePropWithEnabled,
+} from '../ConfigurationProp';
 
 interface Graph {
   /** Width for graph representation */
@@ -168,15 +172,15 @@ export interface GraphingPie extends PieModel {
 
   /** Indicates the default selected tool for the graph */
   defaultTool:
-      | 'point'
-      | 'segment'
-      | 'line'
-      | 'vector'
-      | 'circle'
-      | 'sine'
-      | 'polygon'
-      | 'ray'
-      | 'parabola';
+    | 'point'
+    | 'segment'
+    | 'line'
+    | 'vector'
+    | 'circle'
+    | 'sine'
+    | 'polygon'
+    | 'ray'
+    | 'parabola';
 
   /** Indicates domain settings for the graph */
   domain: GraphSettings;
@@ -185,7 +189,7 @@ export interface GraphingPie extends PieModel {
   graph: Graph;
 
   /** Indicates if the graph axes and labels are enabled */
-  includeAxes?: boolean
+  includeAxes?: boolean;
 
   /** Indicates labels */
   labels?: Labels;
@@ -240,6 +244,9 @@ export interface GraphingPie extends PieModel {
 
   /** Indicates if Teacher Instructions are enabled */
   teacherInstructionsEnabled: boolean;
+
+  /** Indicates if Rubric is enabled */
+  rubricEnabled: boolean;
 }
 
 interface ArrowsProp {
@@ -353,7 +360,7 @@ interface GridConfigurationsProp {
   graph: Graph;
 
   /** Indicates if the graph axes and labels are enabled */
-  includeAxes?: boolean
+  includeAxes?: boolean;
 
   /** Indicates labels */
   labels?: Labels;
@@ -453,7 +460,7 @@ export interface GraphingConfigure extends PromptConfig, CommonConfigSettings {
   /**
    * Configuration for the author's spellcheck
    */
-   spellCheck?: ConfigureProp;
+  spellCheck?: ConfigureProp;
 
   /**
    * Prompt configuration
@@ -489,4 +496,9 @@ export interface GraphingConfigure extends PromptConfig, CommonConfigSettings {
    * Maximum image height for input fields
    */
   maxImageHeight?: ConfigureMaxImageDimensionsProp;
+
+  /**
+   * Rubric configuration
+   */
+  withRubric?: ConfigureProp;
 }

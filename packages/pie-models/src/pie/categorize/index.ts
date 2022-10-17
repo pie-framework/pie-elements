@@ -124,6 +124,9 @@ export interface CategorizePie extends PieModel {
    * @default: 'bottom'
    */
   toolbarEditorPosition?: 'bottom' | 'top';
+
+  /** Indicates if Rubric is enabled */
+  rubricEnabled: boolean;
 }
 
 interface ConfigureMaxImageDimensionsProp {
@@ -196,7 +199,7 @@ export interface CategorizeConfigure
   /**
    * Maximum number of categories
    */
-  maxCategories?: number
+  maxCategories?: number;
 
   /**
    * Maximum image width for input fields
@@ -207,4 +210,9 @@ export interface CategorizeConfigure
    * Maximum image height for input fields
    */
   maxImageHeight?: ConfigureMaxImageDimensionsProp;
+
+  /**
+   * Rubric configuration
+   */
+  withRubric?: ConfigureProp;
 }

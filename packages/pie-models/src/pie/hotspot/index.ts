@@ -2,7 +2,10 @@ import { Shape } from '../../Shape';
 import { Dimension } from '../../Dimension';
 import { PieModel } from '../../PieModel';
 import { PromptConfig } from '../../PromptConfig';
-import { ConfigureMaxImageDimensionsProp, ConfigureProp } from '../ConfigurationProp';
+import {
+  ConfigureMaxImageDimensionsProp,
+  ConfigureProp,
+} from '../ConfigurationProp';
 
 /**
  * Model for the @pie-elements/hotspot Interaction
@@ -65,6 +68,9 @@ export interface HotspotPie extends PieModel {
    * @default: 'bottom'
    */
   toolbarEditorPosition?: 'bottom' | 'top';
+
+  /** Indicates if Rubric is enabled */
+  rubricEnabled: boolean;
 }
 
 /**
@@ -117,4 +123,9 @@ export interface HotspotConfigure extends PromptConfig {
    * Maximum image height for input fields
    */
   maxImageHeight?: ConfigureMaxImageDimensionsProp;
+
+  /**
+   * Rubric configuration
+   */
+  withRubric?: ConfigureProp;
 }
