@@ -145,6 +145,31 @@ export interface ChartingPie extends PieModel {
 
   /** Indicates if Teacher Instructions are enabled */
   teacherInstructionsEnabled: boolean;
+
+  /** Indicates if Rubric is enabled */
+  rubricEnabled: boolean;
+}
+
+interface LabelsPlaceholderConfigProp extends ConfigurePropWithEnabled {
+  /**
+   * This value is empty for charting. The property exist in order to be consistent with graphing configuration.
+   */
+  top?: string;
+
+  /**
+   * This value is empty for charting. The property exist in order to be consistent with graphing configuration.
+   */
+  right?: string;
+
+  /**
+   * Indicates the placeholder for the bottom label
+   */
+  bottom?: string;
+
+  /**
+   * Indicates the placeholder for the left label
+   */
+  left?: string;
 }
 
 /**
@@ -166,6 +191,16 @@ export interface ChartingConfigure extends PromptConfig, CommonConfigSettings {
    * Configuration for the author's spellcheck
    */
   spellCheck?: ConfigureProp;
+
+   /**
+   * Configuration for the title's placeholder
+   */
+  titlePlaceholder?: ConfigureProp;
+
+  /**
+   * Labels Placeholder configuration
+   */
+   labelsPlaceholders?: LabelsPlaceholderConfigProp;
 
   /**
    * Scoring Type configuration
@@ -196,4 +231,9 @@ export interface ChartingConfigure extends PromptConfig, CommonConfigSettings {
    * Maximum image height for input fields
    */
   maxImageHeight?: ConfigureMaxImageDimensionsProp;
+
+  /**
+   * Rubric configuration
+   */
+  withRubric?: ConfigureProp;
 }

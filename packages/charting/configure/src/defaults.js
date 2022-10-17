@@ -84,7 +84,10 @@ export default {
       settings: false,
       label: 'Chart Title',
     },
-    titlePlaceholder: 'Click here to add a title',
+    titlePlaceholder: {
+      settings: false,
+      label: 'Click here to add a title',
+    },
     labelsPlaceholders: {
       left: 'Click here to add a label for this axis',
       right: '',
@@ -101,5 +104,9 @@ export default {
       prompt: 300,
       rationale: 300,
     },
+    withRubric: {
+      settings: false,
+      label: 'Add Rubric'
+    }
   },
 };

@@ -72,6 +72,7 @@ const RowLabel = withStyles(styles)(({ categoriesPerRow, classes, markup, imageS
         maxImageWidth={maxImageWidth}
         maxImageHeight={maxImageHeight}
         uploadSoundSupport={uploadSoundSupport}
+        languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
       />
     </div>
   );

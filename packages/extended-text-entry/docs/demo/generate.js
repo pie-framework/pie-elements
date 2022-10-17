@@ -10,5 +10,6 @@ exports.model = (id, element) => ({
   mathInput: true,
   playersToolbarPosition: 'bottom',
   toolbarEditorPosition: 'bottom',
-  spellCheckEnabled: true
+  spellCheckEnabled: true,
+  rubricEnabled: false
 });

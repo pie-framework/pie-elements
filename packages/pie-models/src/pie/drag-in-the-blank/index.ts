@@ -1,7 +1,10 @@
 import { PieModel } from '../../PieModel';
 import { PromptConfig } from '../../PromptConfig';
 import { CommonConfigSettings } from '../../CommonConfigSettings';
-import { ConfigureMaxImageDimensionsProp, ConfigureProp } from '../ConfigurationProp';
+import {
+  ConfigureMaxImageDimensionsProp,
+  ConfigureProp,
+} from '../ConfigurationProp';
 
 export interface Choice {
   /** The value for the choice */
@@ -95,6 +98,9 @@ export interface DragInTheBlankPie extends PieModel {
    * @default: 'bottom'
    */
   toolbarEditorPosition?: 'bottom' | 'top';
+
+  /** Indicates if Rubric is enabled */
+  rubricEnabled: boolean;
 }
 
 /**
@@ -145,12 +151,12 @@ export interface DragInTheBlankConfigure
   /**
    * Minimum number of choices
    */
-  minChoices?: number
+  minChoices?: number;
 
   /**
    * Maximum number of choices
    */
-  maxChoices?: number
+  maxChoices?: number;
 
   /**
    * Maximum number of response areas
@@ -166,4 +172,9 @@ export interface DragInTheBlankConfigure
    * Maximum image height for input fields
    */
   maxImageHeight?: ConfigureMaxImageDimensionsProp;
+
+  /**
+   * Rubric configuration
+   */
+  withRubric?: ConfigureProp;
 }

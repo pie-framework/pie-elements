@@ -48,12 +48,17 @@ exports[`Root render renders 1`] = `
               "label": "Teacher Instructions",
               "settings": true,
             },
+            "withRubric": Object {
+              "label": "Add Rubric",
+              "settings": false,
+            },
           }
         }
         groups={
           Object {
             "Properties": Object {
               "rationaleEnabled": undefined,
+              "rubricEnabled": false,
               "spellCheckEnabled": false,
               "teacherInstructionsEnabled": undefined,
             },

@@ -37,5 +37,6 @@ const E262456 = {
 exports.model = (id, element) => ({
   id,
   element,
-  ...E262456
+  ...E262456,
+  rubricEnabled: false
 });

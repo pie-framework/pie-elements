@@ -64,6 +64,10 @@ exports[`Configure renders correctly with snapshot 1`] = `
               "label": "Teacher Instructions",
               "settings": true,
             },
+            "withRubric": Object {
+              "label": "Add Rubric",
+              "settings": false,
+            },
           }
         }
         groups={
@@ -72,6 +76,7 @@ exports[`Configure renders correctly with snapshot 1`] = `
               "allowTrailingZeros.enabled": false,
               "ignoreOrder.enabled": false,
               "rationaleEnabled": undefined,
+              "rubricEnabled": false,
               "scoringType": false,
               "spellCheckEnabled": false,
               "studentInstructionsEnabled": false,
@@ -211,6 +216,10 @@ exports[`Configure renders correctly with snapshot 1`] = `
                 "label": "Teacher Instructions",
                 "settings": true,
               },
+              "withRubric": Object {
+                "label": "Add Rubric",
+                "settings": false,
+              },
             }
           }
           model={
@@ -320,6 +329,16 @@ exports[`GeneralConfigBlock renders correctly with snapshot 1`] = `
     <EditableHtml
       className="GeneralConfigBlock-prompt-13"
       imageSupport={Object {}}
+      languageCharactersProps={
+        Array [
+          Object {
+            "language": "spanish",
+          },
+          Object {
+            "language": "special",
+          },
+        ]
+      }
       markup=""
       maxImageHeight={300}
       maxImageWidth={300}

@@ -158,7 +158,8 @@ export class Design extends React.Component {
       prompt = {},
       spellCheck = {},
       maxImageWidth = {},
-      maxImageHeight = {}
+      maxImageHeight = {},
+      withRubric = {}
     } = configuration || {};
     const {
       teacherInstructionsEnabled,
@@ -166,7 +167,8 @@ export class Design extends React.Component {
       rationaleEnabled,
       feedbackEnabled,
       spellCheckEnabled,
-      errors
+      errors,
+      rubricEnabled
     } = model || {};
 
     const toolbarOpts = {};
@@ -235,6 +237,7 @@ export class Design extends React.Component {
                   scoringType:
                     scoringType.settings &&
                     radio(scoringType.label, ['auto', 'rubric']),
+                  rubricEnabled: withRubric.settings && toggle(withRubric.label)
                 },
               }}
             />
@@ -258,6 +261,7 @@ export class Design extends React.Component {
                   maxImageWidth={maxImageWidth && maxImageWidth.prompt}
                   maxImageHeight={maxImageHeight && maxImageHeight.prompt}
                   uploadSoundSupport={uploadSoundSupport}
+                  languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
                 />
               </InputContainer>
             )}
@@ -278,6 +282,7 @@ export class Design extends React.Component {
                   maxImageWidth={maxImageWidth && maxImageWidth.teacherInstructions || defaultImageMaxWidth}
                   maxImageHeight={maxImageHeight && maxImageHeight.teacherInstructions || defaultImageMaxHeight}
                   uploadSoundSupport={uploadSoundSupport}
+                  languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
                 />
               </InputContainer>
             )}
@@ -298,6 +303,7 @@ export class Design extends React.Component {
                   maxImageWidth={maxImageWidth && maxImageWidth.rationale || defaultImageMaxWidth}
                   maxImageHeight={maxImageHeight && maxImageHeight.rationale || defaultImageMaxHeight}
                   uploadSoundSupport={uploadSoundSupport}
+                  languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
                 />
               </InputContainer>
             )}

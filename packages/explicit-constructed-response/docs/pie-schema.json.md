@@ -89,6 +89,10 @@ Indicates the maximum length for each response area
 
 The object is an array with all elements of the type `number`.
 
+# `rubricEnabled` (boolean, required)
+
+Indicates if Rubric is enabled
+
 # `id` (string, required)
 
 Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.

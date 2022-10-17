@@ -7,6 +7,16 @@ exports[`main snapshot renders 1`] = `
   >
     <EditableHtml
       disableUnderline={true}
+      languageCharactersProps={
+        Array [
+          Object {
+            "language": "spanish",
+          },
+          Object {
+            "language": "special",
+          },
+        ]
+      }
       nonEmpty={false}
       onChange={[Function]}
       toolbarOpts={
@@ -135,6 +145,16 @@ The correct answer should include at least one number line object."
     label="Title"
   >
     <EditableHtml
+      languageCharactersProps={
+        Array [
+          Object {
+            "language": "spanish",
+          },
+          Object {
+            "language": "special",
+          },
+        ]
+      }
       markup=""
       onChange={[Function]}
       toolbarOpts={

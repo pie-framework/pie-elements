@@ -269,6 +269,18 @@ Indicates the max dimension for images in rationale
 
 Indicates the max dimension for images in choices
 
+# `withRubric` (object)
+
+Properties of the `withRubric` object:
+
+## `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+## `label` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
+
 # `showPrompt` (boolean)
 
 Determines whether prompt field will be displayed or not

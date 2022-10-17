@@ -324,6 +324,7 @@ export class Main extends React.Component {
               toolbarOpts={toolbarOpts}
               spellCheck={spellCheckEnabled}
               uploadSoundSupport={uploadSoundSupport}
+              languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
             />
           </FormSection>
         )}
@@ -379,6 +380,7 @@ export class Main extends React.Component {
             toolbarOpts={toolbarOpts}
             spellCheck={spellCheckEnabled}
             uploadSoundSupport={uploadSoundSupport}
+            languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
           />
         </FormSection>
         <FormSection label={'Limits'}>

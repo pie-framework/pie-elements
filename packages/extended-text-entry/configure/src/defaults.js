@@ -48,12 +48,12 @@ export default {
       enabled: false,
     },
     spanishInput: {
-      settings: false,
+      settings: true,
       label: 'Students can insert Spanish',
       enabled: false,
     },
     specialInput: {
-      settings: false,
+      settings: true,
       label: 'Students can insert Special Characters',
       enabled: false,
     },
@@ -81,6 +81,10 @@ export default {
     maxImageHeight: {
       teacherInstructions: 300,
       prompt: 300
+    },
+    withRubric: {
+      settings: false,
+      label: 'Add Rubric'
     }
   }
 };
