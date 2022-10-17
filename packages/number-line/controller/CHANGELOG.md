@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-controller@4.3.25...@pie-element/number-line-controller@4.4.0) (2022-09-13)
+
+
+### Bug Fixes
+
+* **number-line:** adjust domain min and max values PD-1648 ([9d43265](https://github.com/pie-framework/pie-elements/commit/9d43265fe691b03eb30399fbf4227220a25b946b))
+
+
+### Features
+
+* **number-line:** created validate method in controller PD-1747 ([b1341ef](https://github.com/pie-framework/pie-elements/commit/b1341ef167b43ed6af17bf64d605a66d725b7e2c))
+
+
+
+
+
 ## [4.3.25](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-controller@4.3.24...@pie-element/number-line-controller@4.3.25) (2022-05-16)
 
 **Note:** Version bump only for package @pie-element/number-line-controller

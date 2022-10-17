@@ -3,6 +3,86 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.2.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-configure@4.2.4...@pie-element/inline-dropdown-configure@4.2.5) (2022-09-29)
+
+**Note:** Version bump only for package @pie-element/inline-dropdown-configure
+
+
+
+
+
+## [4.2.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-configure@4.2.3...@pie-element/inline-dropdown-configure@4.2.4) (2022-09-14)
+
+**Note:** Version bump only for package @pie-element/inline-dropdown-configure
+
+
+
+
+
+## [4.2.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-configure@4.2.2...@pie-element/inline-dropdown-configure@4.2.3) (2022-08-31)
+
+**Note:** Version bump only for package @pie-element/inline-dropdown-configure
+
+
+
+
+
+## [4.2.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-configure@4.2.1...@pie-element/inline-dropdown-configure@4.2.2) (2022-08-16)
+
+
+### Bug Fixes
+
+* **inline-dropdown:** update validation message ([a87ae23](https://github.com/pie-framework/pie-elements/commit/a87ae2369f438e4fd6902680c2a1fb4b3ef8ef3a))
+* **inline-dropdown:** update validation message ([99afc72](https://github.com/pie-framework/pie-elements/commit/99afc7208b5d9db307d6a0174c3945ddb77baaca))
+
+
+
+
+
+## [4.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-configure@4.2.0...@pie-element/inline-dropdown-configure@4.2.1) (2022-08-08)
+
+**Note:** Version bump only for package @pie-element/inline-dropdown-configure
+
+
+
+
+
+# [4.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-configure@4.1.3...@pie-element/inline-dropdown-configure@4.2.0) (2022-08-02)
+
+
+### Features
+
+* PD-1896 remove unused import and console log ([de1090e](https://github.com/pie-framework/pie-elements/commit/de1090e3ee64b70a1120066b2281bb7c66837df3))
+* **inline-dropdown:** add missing configurable validation. Added maxResponseAreaChoices property to configuration ([5cfff17](https://github.com/pie-framework/pie-elements/commit/5cfff17c5df2c149c1b6e29a4109f3ff6b850110))
+
+
+
+
+
+## [4.1.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-configure@4.1.2...@pie-element/inline-dropdown-configure@4.1.3) (2022-07-22)
+
+**Note:** Version bump only for package @pie-element/inline-dropdown-configure
+
+
+
+
+
+## [4.1.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-configure@4.1.1...@pie-element/inline-dropdown-configure@4.1.2) (2022-07-20)
+
+**Note:** Version bump only for package @pie-element/inline-dropdown-configure
+
+
+
+
+
+## [4.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-configure@4.1.0...@pie-element/inline-dropdown-configure@4.1.1) (2022-07-19)
+
+**Note:** Version bump only for package @pie-element/inline-dropdown-configure
+
+
+
+
+
 # [4.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-configure@4.0.0...@pie-element/inline-dropdown-configure@4.1.0) (2022-06-28)
 
 

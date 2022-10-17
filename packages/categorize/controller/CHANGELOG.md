@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-controller@5.2.8...@pie-element/categorize-controller@5.3.0) (2022-08-31)
+
+
+### Bug Fixes
+
+* **categorize:** filter choices to prevent crash of wrongly imported items PD-1982 ([05c5ead](https://github.com/pie-framework/pie-elements/commit/05c5eadd4275a6f29ec1cbde6ea699a8379b68d5))
+
+
+### Features
+
+* **categorize:** added configurable validation PD-1739 ([c0d8275](https://github.com/pie-framework/pie-elements/commit/c0d827559fd43106e907967c111912ad92366e8e))
+* **categorize:** implement generate validation message method, add info tooltip PD-1740 ([b315f4e](https://github.com/pie-framework/pie-elements/commit/b315f4ea0bc1461da0a8469bd9df383bc98e78ca))
+
+
+
+
+
 ## [5.2.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-controller@5.2.7...@pie-element/categorize-controller@5.2.8) (2022-05-16)
 
 **Note:** Version bump only for package @pie-element/categorize-controller
