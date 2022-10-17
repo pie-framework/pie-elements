@@ -116,6 +116,7 @@ const Design = withStyles(styles)((props) => {
     onConfigurationChanged,
     onTeacherInstructionsChanged,
   } = props;
+
   const {
     prompt = {},
     addChoiceButton = {},
@@ -263,6 +264,7 @@ const Design = withStyles(styles)((props) => {
             noCorrectAnswerError={correctResponseError}
             maxImageWidth={maxImageWidth && maxImageWidth.choices || defaultImageMaxWidth}
             maxImageHeight={maxImageHeight && maxImageHeight.choices || defaultImageMaxHeight}
+            uploadSoundSupport={uploadSoundSupport}
           />
           {rationaleEnabled && (
             <InputContainer
