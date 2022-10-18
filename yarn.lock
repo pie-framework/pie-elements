@@ -2557,7 +2557,7 @@
     prop-types "^15.7.2"
     react-transition-group "^2.5.2"
 
-"@pie-lib/rubric@0.6.0", "@pie-lib/rubric@^0.6.0":
+"@pie-lib/rubric@^0.6.0":
   version "0.6.0"
   resolved "https://registry.yarnpkg.com/@pie-lib/rubric/-/rubric-0.6.0.tgz#90a6c2d18aa662b023b0d7a1c6cba6f898df06e3"
   integrity sha512-XAj/2tOz6ZsdV+AJyerAHglxdWgY9e4viNBjiTvLXOj+YO/nhYRRjD7kYugYpmxgPWJ85HlqUbVvvWb/4DQ0zA==
