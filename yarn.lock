@@ -2167,6 +2167,14 @@
   dependencies:
     "@octokit/openapi-types" "^11.2.0"
 
+"@pie-element/rubric@^2.1.1":
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/@pie-element/rubric/-/rubric-2.1.1.tgz#f1878de94c12ee01f02b6602c4d35d24e3bd5c8e"
+  integrity sha512-JrcRu86NQf56rc+lKlhOkY1h17s9ZesPRKevxWX5/EKTKSYuwta+uyMJSNTHJGfDYfdyGUTFdG4ZcZ9cKgzyyg==
+  dependencies:
+    "@material-ui/core" "^3.9.2"
+    prop-types "^15.7.2"
+
 "@pie-framework/build-helper@^5.2.9":
   version "5.2.9"
   resolved "https://registry.yarnpkg.com/@pie-framework/build-helper/-/build-helper-5.2.9.tgz#1a06eb0b7c471042eefce3d5f994192c6576d311"
