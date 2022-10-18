@@ -46,7 +46,7 @@ export class Main extends React.Component {
       configuration
     } = this.props;
     const { rubricType, rubrics = {} } = model;
-    const { multiTraitRubric } = configuration;
+    const { multiTraitRubric, simpleRubric } = configuration;
     let rubricTag = '';
 
     switch (rubricType) {
@@ -59,6 +59,7 @@ export class Main extends React.Component {
             if (ref) {
               this.simpleRubric = ref;
               this.simpleRubric.model = rubrics.simpleRubric;
+              this.simpleRubric.configuration = simpleRubric;
             }
           }}
         />;

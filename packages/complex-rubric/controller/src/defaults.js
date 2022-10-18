@@ -110,12 +110,25 @@ const multiTraitDefaultConfiguration = {
   }
 };
 
+const rubricDefaultConfiguration = {
+  showExcludeZero: {
+    settings: true,
+    label: 'Ability to exclude zero',
+  },
+  showMaxPoint: {
+    settings: true,
+    label: 'Show max points dropdown'
+  },
+  settingsPanelDisabled: false
+};
+
 export default {
   model: {
     rubricType: 'simpleRubric',
     rubrics: { simpleRubric: rubricDefaultModel, multiTraitRubric: multiTraitDefaultModel }
   },
   configuration: {
-    multiTraitRubric: multiTraitDefaultConfiguration
+    multiTraitRubric: multiTraitDefaultConfiguration,
+    simpleRubric : rubricDefaultConfiguration
   }
 };
