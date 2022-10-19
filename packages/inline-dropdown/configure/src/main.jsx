@@ -442,12 +442,12 @@ export class Main extends React.Component {
     const defaultImageMaxWidth = maxImageWidth && maxImageWidth.prompt;
     const defaultImageMaxHeight = maxImageHeight && maxImageHeight.prompt;
 
-    const renderChoiceRationale = () => (Object.keys(choices) || []).map(key =>
+    const renderChoiceRationale = () => (Object.keys(choices) || []).map((key, index) =>
       <div key={key} className={classes.rationaleChoices}>
         <ExpansionPanel>
           <ExpansionPanelSummary expandIcon={<ExpandMoreIcon/>}>
             <Typography className={classes.text}>
-              {`Rationale for response area #${parseInt(key) + 1}`}
+              {`Rationale for response area #${index + 1}`}
             </Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails className={classes.panelDetails}>
