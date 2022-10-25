@@ -46,7 +46,7 @@ describe('point', () => {
   };
 
   describe('className', () => {
-    const f = opts => () => mkWrapper(opts).find('circle');
+    const f = opts => () => mkWrapper(opts).find('circle').last();
 
     assertProp(f({ selected: true }), 'className', 'point selected incorrect');
     assertProp(f({ selected: false }), 'className', 'point incorrect');
