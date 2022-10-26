@@ -221,6 +221,7 @@ There should be at least 1 and at most 10 response areas defined."
         </WithStyles(Tooltip)>
       </div>
       <EditableHtml
+        disableImageAlignmentButtons={true}
         disabled={false}
         highlightShape={false}
         languageCharactersProps={
@@ -521,6 +522,7 @@ There should be at least 1 and at most 10 response areas defined."
         </WithStyles(Tooltip)>
       </div>
       <EditableHtml
+        disableImageAlignmentButtons={true}
         disabled={false}
         highlightShape={false}
         languageCharactersProps={
