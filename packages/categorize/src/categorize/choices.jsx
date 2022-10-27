@@ -75,6 +75,7 @@ const styles = (theme) => ({
   wrapper: {
     flex: 1,
     padding: theme.spacing.unit,
+    touchAction: 'none',
   },
   choices: {
     padding: theme.spacing.unit / 2,
