@@ -202,6 +202,8 @@ export class Categorize extends React.Component {
             model={model}
             choices={choices}
             choicePosition={choicePosition}
+            onDropChoice={this.dropChoice}
+              onRemoveChoice={this.removeChoice}
           />
         </div>
         {displayNote && (

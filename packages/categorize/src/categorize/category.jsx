@@ -35,6 +35,8 @@ export class Category extends React.Component {
       correct,
     } = this.props;
 
+    console.log(this.props, "props in category")
+
     const names = classNames(classes.category, className);
     const placeholderNames = classNames(
       classes.placeholder,

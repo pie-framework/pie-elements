@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Choice, { ChoiceType } from './choice';
+import PlaceHolder from './droppable-placeholder';
 export { ChoiceType };
 
 const Blank = () => <div />;
@@ -36,8 +37,12 @@ export class Choices extends React.Component {
       choices = [],
       model,
       disabled,
+      onDropChoice,
+      onRemoveChoice,
       choicePosition,
     } = this.props;
+
+    console.log(this.props, " props in choices")
     let style = {
       textAlign: 'center',
     };
@@ -48,6 +53,11 @@ export class Choices extends React.Component {
 
     return (
       <div className={classes.wrapper}>
+         <PlaceHolder
+          onDropChoice={onDropChoice}
+          disabled={disabled}
+    
+          >
         {model.choicesLabel && model.choicesLabel !== '' && (
           <div className={classes.labelHolder} dangerouslySetInnerHTML={{__html: model.choicesLabel}}></div>
         )}
@@ -66,6 +76,7 @@ export class Choices extends React.Component {
             );
           })}
         </div>
+        </PlaceHolder>
       </div>
     );
   }
@@ -82,7 +93,7 @@ const styles = (theme) => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    flexWrap: 'wrap'
+  // flexWrap: 'wrap'
   },
   labelHolder: {
     margin: '0 auto',
