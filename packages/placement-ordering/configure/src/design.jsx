@@ -20,8 +20,6 @@ import pluralize from 'pluralize';
 
 import ChoiceEditor from './choice-editor';
 import { generateValidationMessage } from './utils';
-import isEqual from 'lodash/isEqual';
-import isEmpty from 'lodash/isEmpty';
 
 const log = debug('@pie-element:placement-ordering:design');
 const { Panel, toggle, radio } = settings;

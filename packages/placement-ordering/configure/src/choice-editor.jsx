@@ -307,23 +307,23 @@ class ChoiceEditor extends React.Component {
         <div className={classes.vtiler} style={style}>
 
           {ordering.tiles.map((c, index) => (
-              <ChoiceTile
-                choice={c}
-                index={index}
-                key={index}
-                imageSupport={imageSupport}
-                onDelete={this.onDelete.bind(this, c)}
-                onChoiceChange={this.onChoiceChange}
-                onDropChoice={(source, index) => this.onDropChoice(ordering, c, source, index)}
-                disableImages={disableImages}
-                toolbarOpts={toolbarOpts}
-                choices={choices}
-                choicesLabel={choicesLabel}
-                spellCheck={spellCheck}
-                maxImageWidth={maxImageWidth}
-                maxImageHeight={maxImageHeight}
-                error={errors && errors[c.id] ? errors[c.id] : null}
-              />
+            <ChoiceTile
+              choice={c}
+              index={index}
+              key={index}
+              imageSupport={imageSupport}
+              onDelete={this.onDelete.bind(this, c)}
+              onChoiceChange={this.onChoiceChange}
+              onDropChoice={(source, index) => this.onDropChoice(ordering, c, source, index)}
+              disableImages={disableImages}
+              toolbarOpts={toolbarOpts}
+              choices={choices}
+              choicesLabel={choicesLabel}
+              spellCheck={spellCheck}
+              maxImageWidth={maxImageWidth}
+              maxImageHeight={maxImageHeight}
+              error={errors && errors[c.id] ? errors[c.id] : null}
+            />
           ))}
         </div>
         <div className={classes.controls}>
