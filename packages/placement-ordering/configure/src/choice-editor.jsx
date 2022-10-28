@@ -12,6 +12,7 @@ import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogActions from '@material-ui/core/DialogActions';
+import { ChoiceConfiguration } from '@pie-lib/config-ui';
 
 export const InfoDialog = ({ title, open, onOk }) => (
   <Dialog open={open}>
@@ -150,7 +151,8 @@ class ChoiceEditor extends React.Component {
     placementArea: PropTypes.bool,
     singularChoiceLabel: PropTypes.string,
     pluralChoiceLabel: PropTypes.string,
-    choicesLabel: PropTypes.string
+    choicesLabel: PropTypes.string,
+    errors: PropTypes.object
   };
 
   state = {
@@ -191,8 +193,7 @@ class ChoiceEditor extends React.Component {
             }
           }
         });
-      }
-      else {
+      } else {
         const updatedChoices = choices.filter(c => c.id !== choice.id);
         const updatedCorrectResponse = correctResponse.filter(
           v => v.id !== choice.id
@@ -220,11 +221,10 @@ class ChoiceEditor extends React.Component {
             }
           }
         });
-      }
-      else {
+      } else {
         const freeId = findFreeChoiceSlot(choices);
         const id = `c${freeId}`;
-        const newChoice = {id, label: ''};
+        const newChoice = { id, label: '' };
 
         const newCorrectResponse = {
           id,
@@ -286,7 +286,8 @@ class ChoiceEditor extends React.Component {
       choicesLabel,
       spellCheck,
       maxImageWidth,
-      maxImageHeight
+      maxImageHeight,
+      errors
     } = this.props;
     const { dialog } = this.state;
 
@@ -306,22 +307,23 @@ class ChoiceEditor extends React.Component {
         <div className={classes.vtiler} style={style}>
 
           {ordering.tiles.map((c, index) => (
-            <ChoiceTile
-              choice={c}
-              index={index}
-              key={index}
-              imageSupport={imageSupport}
-              onDelete={this.onDelete.bind(this, c)}
-              onChoiceChange={this.onChoiceChange}
-              onDropChoice={(source, index) => this.onDropChoice(ordering, c, source, index)}
-              disableImages={disableImages}
-              toolbarOpts={toolbarOpts}
-              choices={choices}
-              choicesLabel={choicesLabel}
-              spellCheck={spellCheck}
-              maxImageWidth={maxImageWidth}
-              maxImageHeight={maxImageHeight}
-            />
+              <ChoiceTile
+                choice={c}
+                index={index}
+                key={index}
+                imageSupport={imageSupport}
+                onDelete={this.onDelete.bind(this, c)}
+                onChoiceChange={this.onChoiceChange}
+                onDropChoice={(source, index) => this.onDropChoice(ordering, c, source, index)}
+                disableImages={disableImages}
+                toolbarOpts={toolbarOpts}
+                choices={choices}
+                choicesLabel={choicesLabel}
+                spellCheck={spellCheck}
+                maxImageWidth={maxImageWidth}
+                maxImageHeight={maxImageHeight}
+                error={errors && errors[c.id] ? errors[c.id] : null}
+              />
           ))}
         </div>
         <div className={classes.controls}>
