@@ -2290,14 +2290,14 @@
     redux "^4.0.1"
     redux-undo beta
 
-"@pie-lib/config-ui@^11.0.20":
-  version "11.0.20"
-  resolved "https://registry.yarnpkg.com/@pie-lib/config-ui/-/config-ui-11.0.20.tgz#eb97d870a3184315fd87c88f6723dc0592e8c5de"
-  integrity sha512-ItvVFhACzDM4dBqEl6B/7CnmAwHGpm/nHC/Ls4hyqad755Oc2ogoafNE156x3RUDSpISybJQSeUqTyJqzN952g==
+"@pie-lib/config-ui@^11.0.21":
+  version "11.0.21"
+  resolved "https://registry.yarnpkg.com/@pie-lib/config-ui/-/config-ui-11.0.21.tgz#47e12c1a7bc8aefced96f424cbf0a6265d3798dc"
+  integrity sha512-CuRaKWreISZ809Vj0S1Gk9IXRyEURCFVsqwk56XnP1YCpQRgAjnTDyCzVyuLeoNBDqBUFP+b7om0IMoGrkYpzQ==
   dependencies:
     "@material-ui/core" "^3.8.3"
     "@material-ui/icons" "^3.0.2"
-    "@pie-lib/editable-html" "^9.2.2"
+    "@pie-lib/editable-html" "^9.2.3"
     "@pie-lib/icons" "^2.4.25"
     "@pie-lib/render-ui" "^4.13.6"
     classnames "^2.2.6"
@@ -2338,10 +2338,10 @@
     react-dnd "^11.1.3"
     react-dnd-html5-backend "^11.1.3"
 
-"@pie-lib/editable-html@^9.2.2":
-  version "9.2.2"
-  resolved "https://registry.yarnpkg.com/@pie-lib/editable-html/-/editable-html-9.2.2.tgz#e10b28d9039045a6337a26e79c89bb895aed4dbc"
-  integrity sha512-NxfiUyp/Ag5i+EJ9EKm5OQlps7uMjX86qTa/hklJ2m6g0Xr1qMeI5iZRHR72Dmc3gkSbeCjljNO1I+sqU7AMQw==
+"@pie-lib/editable-html@^9.2.3":
+  version "9.2.3"
+  resolved "https://registry.yarnpkg.com/@pie-lib/editable-html/-/editable-html-9.2.3.tgz#7f5ba65ef382c4692da7fe672053307f5d53f39f"
+  integrity sha512-mduMKhXsdxvbrIYCdMWltplHzC8xX5DpOkdfskTPY7nYYhoS9pZaeG3QljwA1Hs6ong3UhP3cH+tpRb1BdkXMA==
   dependencies:
     "@material-ui/core" "^3.8.3"
     "@material-ui/icons" "^3.0.2"
@@ -2424,10 +2424,10 @@
     classnames "^2.2.6"
     prop-types "^15.6.2"
 
-"@pie-lib/mask-markup@^1.12.14":
-  version "1.12.14"
-  resolved "https://registry.yarnpkg.com/@pie-lib/mask-markup/-/mask-markup-1.12.14.tgz#1c90776b5b7b16cf8d0ef33847d7f4d11b67859d"
-  integrity sha512-MgPo5wkBPTptsknLWQulok+7YvayPmYO11YPmEzBIAtFEGJQtsYHH5MlDywtLHqWfOTBBhQQY9PxONfqhFjW/Q==
+"@pie-lib/mask-markup@^1.12.15":
+  version "1.12.15"
+  resolved "https://registry.yarnpkg.com/@pie-lib/mask-markup/-/mask-markup-1.12.15.tgz#d3ca4c10fe2d5049bea53e0adea97b9af99ca5b5"
+  integrity sha512-wdrPUFZ66sByCkmQwDkjUFTADdO4rTViybHTLwwxl9oIo1jnXB+stT2Ohg4eAusvWVhhZN7kxsWZSWhmjS9dCA==
   dependencies:
     "@material-ui/core" "^3.9.3"
     "@pie-lib/drag" "^1.1.52"
@@ -2565,14 +2565,14 @@
     prop-types "^15.7.2"
     react-transition-group "^2.5.2"
 
-"@pie-lib/rubric@^0.6.0":
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/@pie-lib/rubric/-/rubric-0.6.0.tgz#90a6c2d18aa662b023b0d7a1c6cba6f898df06e3"
-  integrity sha512-XAj/2tOz6ZsdV+AJyerAHglxdWgY9e4viNBjiTvLXOj+YO/nhYRRjD7kYugYpmxgPWJ85HlqUbVvvWb/4DQ0zA==
+"@pie-lib/rubric@^0.6.1":
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/@pie-lib/rubric/-/rubric-0.6.1.tgz#f3f9d918493483de0dc4f3fd44de2adbeea74871"
+  integrity sha512-+vsWCawwrI5FpzPEmGuxfYK9CKhXsYaDZdgRgCf0ImI65IVyxEkzE+Ods4KT0neGA5CAQpcmth5Labdug42xCQ==
   dependencies:
     "@material-ui/core" "^3.9.3"
     "@material-ui/icons" "^3.0.2"
-    "@pie-lib/editable-html" "^9.2.2"
+    "@pie-lib/editable-html" "^9.2.3"
     debug "^4.1.1"
     editable-html "npm:@pie-lib/editable-html@^7.21.0"
     lodash "^4.17.11"
@@ -2581,14 +2581,14 @@
     react-beautiful-dnd "^11.0.2"
     react-dom "^16.9.0"
 
-"@pie-lib/scoring-config@^3.5.184":
-  version "3.5.184"
-  resolved "https://registry.yarnpkg.com/@pie-lib/scoring-config/-/scoring-config-3.5.184.tgz#0c84bfa45c1996db9ccb9c4a8e69ab157d8ffc2f"
-  integrity sha512-eR7TcNLH/sWtZL+CSYj4DAd6Nggj3WstFSHmJ5LggojkkVYmEKP0u2JaeT7yqBih8+8XOsktkPckVo5wk1f67w==
+"@pie-lib/scoring-config@^3.5.185":
+  version "3.5.185"
+  resolved "https://registry.yarnpkg.com/@pie-lib/scoring-config/-/scoring-config-3.5.185.tgz#b7e57ef3310d4775a408b62fd9734f3f51f0136e"
+  integrity sha512-GGZc22OaZAqrIGBNGARyXWHhFa3kzKSLW/h0cpqFUZsrlGNlZKEohUOBFTaKy5D9aLagtpwcEZNw8zF+rHhPCg==
   dependencies:
     "@material-ui/core" "^3.8.3"
     "@material-ui/icons" "^3.0.2"
-    "@pie-lib/config-ui" "^11.0.20"
+    "@pie-lib/config-ui" "^11.0.21"
     classnames "^2.2.6"
     debug "^4.1.1"
     lodash "^4.17.11"
