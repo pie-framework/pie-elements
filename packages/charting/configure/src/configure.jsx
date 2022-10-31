@@ -6,11 +6,76 @@ import PropTypes from 'prop-types';
 import debug from 'debug';
 import Typography from '@material-ui/core/Typography';
 import EditableHtml from '@pie-lib/editable-html';
+import isEqual from 'lodash/isEqual';
+import isEmpty from 'lodash/isEmpty';
+import pick from 'lodash/pick';
 
 import ChartingConfig from './charting-config';
 import CorrectResponse from './correct-response';
 import { applyConstraints, getGridValues, getLabelValues } from './utils';
 
+export const validate = (model = {}, config = {}) => {
+  const { correctAnswer, data, graph, range, chartType } = model || {};
+  const { max } = range || {};
+  const { data: correctData } = correctAnswer || {};
+  const { width, height } = graph || {};
+  const reversedCategories = [...correctData || []].reverse();
+
+  const errors = {};
+  const correctAnswerErrors = {};
+  const categoryErrors = {};
+
+  reversedCategories.forEach((category, index) => {
+    const {value, label} = category;
+
+    if (label === '' || label === '<div></div>') {
+      categoryErrors[value] = 'Content should not be empty.';
+    } else {
+      const identicalAnswer = reversedCategories.slice(index + 1).some(c => c.label === label);
+
+      if (identicalAnswer) {
+        categoryErrors[value] = 'Content should be unique.';
+      }
+    }
+  });
+
+  if (width <= 50 || width >= 800) {
+    errors.widthError = 'Width should be a value between 50 and 800';
+  }
+
+  if (height <= 400 || height >= 700) {
+    errors.heightError = 'Height should be a value between 400 and 700';
+  }
+
+
+  if (isEqual(data.map(category => pick(category, 'value', 'label')), correctData.map(category => pick(category, 'value', 'label')))) {
+    correctAnswerErrors.indenticalError = 'Correct answer should not be identical to the chart’s initial state';
+  }
+
+  if (correctData.length < 1 || correctData.length > 20) {
+    correctAnswerErrors.categoriesError = 'The correct answer should include between 1 and 20 categories.';
+  }
+
+  if (!isEmpty(categoryErrors)) {
+    errors.categoryErrors = categoryErrors;
+  }
+
+  if (!isEmpty(correctAnswerErrors)) {
+    errors.correctAnswerErrors = correctAnswerErrors;
+  }
+
+  if (chartType === 'dotPlot' || chartType === 'linePlot') {
+    if (max < 3 || max > 10 || !Number.isInteger(max)) {
+      errors.rangeError = 'The maximum value should be an integer between 3 and 10';
+    }
+  } else {
+    if (max < 0.05 || max > 10000) {
+      errors.rangeError = 'The maximum value should be an integer between 0.05 and 10000';
+    }
+  }
+
+  return errors;
+};
 
 const log = debug('@pie-element:graphing:configure');
 const { Panel, toggle, radio } = settings;
@@ -141,6 +206,8 @@ export class Configure extends React.Component {
 
     const defaultImageMaxWidth = maxImageWidth && maxImageWidth.prompt;
     const defaultImageMaxHeight = maxImageHeight && maxImageHeight.prompt;
+
+    console.log(validate(model,configuration), "VALIDATE")
 
     return (
       <layout.ConfigLayout
