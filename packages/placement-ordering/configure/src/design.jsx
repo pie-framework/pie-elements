@@ -124,7 +124,7 @@ export class Design extends React.Component {
       errors,
       rubricEnabled
     } = model || {};
-    const { orderError } = errors || {};
+    const { orderError, choicesErrors } = errors || {};
     const validationMessage = generateValidationMessage();
 
     const toolbarOpts = {};
@@ -341,6 +341,7 @@ export class Design extends React.Component {
                 spellCheck={spellCheckEnabled}
                 maxImageWidth={maxChoicesImageWidth}
                 maxImageHeight={maxChoicesImageHeight}
+                errors={choicesErrors}
               />
             </InputContainer>
           )}
