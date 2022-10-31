@@ -369,9 +369,9 @@ class Response extends React.Component {
                   onChange={this.onAlternateAnswerChange(alternateId)}
                   onFocus={this.onAlternateFocus(alternateId)}
                   onDone={this.onAlternateDone(alternateId)}
-                  error={error && error[altIdx + 1]}
+                  error={error && error[alternateId]}
                 />
-                {error && error[altIdx + 1] ? <div className={classes.errorText}>{error[altIdx + 1]}</div> : null}
+                {error && error[alternateId] ? <div className={classes.errorText}>{error[alternateId]}</div> : null}
               </div>
             ))}
             <div className={classes.configPanel}>
