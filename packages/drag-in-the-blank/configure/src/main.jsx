@@ -301,6 +301,7 @@ export class Main extends React.Component {
               markup={model.slateMarkup}
               onChange={this.onMarkupChanged}
               imageSupport={imageSupport}
+              disableImageAlignmentButtons={true}
               nonEmpty={false}
               disableUnderline
               toolbarOpts={toolbarOpts}
