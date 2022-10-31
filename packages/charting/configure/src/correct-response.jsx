@@ -218,6 +218,7 @@ export class CorrectResponse extends React.Component {
   render() {
     const { classes, model, charts } = this.props;
     const { categories } = this.state;
+    const { domain = {}, range = {} } = model || {};
 
     return (
       <div>
@@ -232,8 +233,8 @@ export class CorrectResponse extends React.Component {
               <Chart
                 chartType={model.chartType}
                 size={model.graph}
-                domain={model.domain}
-                range={model.range}
+                domain={domain}
+                range={range}
                 charts={charts}
                 data={categories}
                 title={model.title}
