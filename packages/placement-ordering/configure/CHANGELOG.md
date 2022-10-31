@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-configure@6.2.0...@pie-element/placement-ordering-configure@6.2.1) (2022-10-31)
+
+
+### Bug Fixes
+
+* add choices validation in controller method, remove from autoring PD-2152 ([8c49a7f](https://github.com/pie-framework/pie-elements/commit/8c49a7f6500bf541e03d86276292189aeadb465a))
+* imports and indentation ([f5e3b6b](https://github.com/pie-framework/pie-elements/commit/f5e3b6b1d025512354e57455bb89393ec6fdf968))
+
+
+
+
+
 # [6.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-configure@6.1.9...@pie-element/placement-ordering-configure@6.2.0) (2022-10-17)
 
 

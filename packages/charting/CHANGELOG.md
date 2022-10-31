@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@5.1.0...@pie-element/charting@5.1.1) (2022-10-31)
+
+
+### Bug Fixes
+
+* **charting:** add sanity checks for range and domain ([653e1e0](https://github.com/pie-framework/pie-elements/commit/653e1e0dea5f6a2453d17dfd2589e24509717775))
+
+
+
+
+
 # [5.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@5.0.10...@pie-element/charting@5.1.0) (2022-10-17)
 
 

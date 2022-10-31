@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@8.2.0...@pie-element/placement-ordering@8.2.1) (2022-10-31)
+
+
+### Bug Fixes
+
+* add choices validation in controller method, remove from autoring PD-2152 ([8c49a7f](https://github.com/pie-framework/pie-elements/commit/8c49a7f6500bf541e03d86276292189aeadb465a))
+* imports and indentation ([f5e3b6b](https://github.com/pie-framework/pie-elements/commit/f5e3b6b1d025512354e57455bb89393ec6fdf968))
+* **placement-ordering:** add sanity check for alternateResponses to prevent console.error if it's undefined PD-2135 ([5290755](https://github.com/pie-framework/pie-elements/commit/5290755b2b4a339f81835a6c8dfd0dacee540630))
+
+
+
+
+
 # [8.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@8.1.9...@pie-element/placement-ordering@8.2.0) (2022-10-17)
 
 
