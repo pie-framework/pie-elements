@@ -7,8 +7,8 @@
   "author": "Pie Framework Authors",
   "dependencies": {
     "@pie-framework/pie-configure-events": "^1.3.0",
-    "@pie-lib/rubric": "^0.6.0",
-    "@pie-lib/config-ui": "^11.0.20",
+    "@pie-lib/rubric": "^0.6.1",
+    "@pie-lib/config-ui": "^11.0.21",
     "@material-ui/core": "^3.9.2",
     "debug": "^4.1.1",
     "react": "^16.8.6",
