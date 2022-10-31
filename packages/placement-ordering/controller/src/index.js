@@ -73,7 +73,7 @@ export function model(question, session, env) {
     const normalizedQuestion = normalize(question);
     const base = {};
 
-    if (_.every(question.alternateResponses, _.isArray)) {
+    if (question.alternateResponses && _.every(question.alternateResponses, _.isArray)) {
       log('Deprecated structure of alternateResponses is in use');
       console.error('Deprecated structure of alternateResponses is in use');
     }
