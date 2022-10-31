@@ -11,11 +11,11 @@ exports[`Container snapshot renders 1`] = `
           "value": "transparent",
         },
         Object {
-          "label": "lightblue",
+          "label": "light blue",
           "value": "lightblue",
         },
         Object {
-          "label": "lightyellow",
+          "label": "light yellow",
           "value": "lightyellow",
         },
         Object {

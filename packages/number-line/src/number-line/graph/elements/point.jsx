@@ -169,13 +169,22 @@ export class Point extends React.Component {
         grid={[is]}
         bounds={scaledBounds}
       >
-        <circle
-          r="5"
-          strokeWidth="3"
-          className={circleClass}
-          cx={xScale(position)}
-          cy={y}
-        />
+        <g>
+          <circle
+            r="20"
+            strokeWidth="3"
+            style={{ fill: "transparent" }}
+            cx={xScale(position)}
+            cy={y}
+          />
+          <circle
+            r="5"
+            strokeWidth="3"
+            className={circleClass}
+            cx={xScale(position)}
+            cy={y}
+          />
+        </g>
       </Draggable>
     );
   }

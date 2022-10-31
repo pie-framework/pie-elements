@@ -482,6 +482,7 @@ export class Main extends React.Component {
               markup={model.slateMarkup}
               onChange={this.onChange}
               imageSupport={imageSupport}
+              disableImageAlignmentButtons={true}
               onBlur={this.onBlur}
               disabled={false}
               highlightShape={false}

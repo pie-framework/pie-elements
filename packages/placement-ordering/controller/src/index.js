@@ -7,6 +7,7 @@ import debug from 'debug';
 
 import defaults from './defaults';
 import isEqual from 'lodash/isEqual';
+import isEmpty from 'lodash/isEmpty';
 
 const log = debug('@pie-element:placement-ordering:controller');
 
@@ -73,7 +74,7 @@ export function model(question, session, env) {
     const normalizedQuestion = normalize(question);
     const base = {};
 
-    if (_.every(question.alternateResponses, _.isArray)) {
+    if (question.alternateResponses && _.every(question.alternateResponses, _.isArray)) {
       log('Deprecated structure of alternateResponses is in use');
       console.error('Deprecated structure of alternateResponses is in use');
     }
@@ -196,11 +197,32 @@ export const validate = (model = {}, config = {}) => {
   const { choices, correctResponse } = model;
   const errors = {};
 
+  const reversedChoices = [...choices || []].reverse();
+  const choicesErrors = {};
+
+  reversedChoices.forEach((choice, index) => {
+    const { id, label } = choice;
+
+    if (label === '' || label === '<div></div>') {
+      choicesErrors[id] = 'Content should not be empty.';
+    } else {
+      const identicalAnswer = reversedChoices.slice(index + 1).some(c => c.label === label);
+
+      if (identicalAnswer) {
+        choicesErrors[id] = 'Content should be unique.';
+      }
+    }
+  });
+
   const choicesIds = (choices || []).map(choice => choice.id);
   const correctResponseIds = (correctResponse || []).map(response => response.id || response);
 
   if (isEqual(choicesIds, correctResponseIds)) {
     errors.orderError = 'The correct ordering should not be identical to the initial ordering.';
+  }
+
+  if (!isEmpty(choicesErrors)) {
+    errors.choicesErrors = choicesErrors;
   }
 
   return errors;

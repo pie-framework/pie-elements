@@ -253,6 +253,7 @@ const Design = withStyles(styles)((props) => {
             data={choice}
             defaultFeedback={{}}
             imageSupport={imageSupport}
+            disableImageAlignmentButtons={true}
             onDelete={() => onRemoveChoice(index)}
             onChange={(c) => onChoiceChanged(index, c)}
             allowFeedBack={feedbackEnabled}
