@@ -59,7 +59,8 @@ export class Configure extends React.Component {
 
   constructor(props) {
     super(props);
-    const { range, graph } = props.model || {};
+    const { range = {}, graph } = props.model || {};
+
 
     const gridValues = {
       range: getGridValues(range, graph.height, true)
