@@ -28,6 +28,15 @@ export default class DrawableResponseConfigure extends HTMLElement {
     this.onModelChanged = this.onModelChanged.bind(this);
   }
 
+  verifyRubric = async (c) => {
+    const { withRubric } = c || {};
+
+    if (withRubric.enabled) {
+      this._model.rubricEnabled = true;
+      this.dispatchEvent(new ModelUpdatedEvent(this._model));
+    }
+  }
+
   set model(s) {
     this._model = DrawableResponseConfigure.createDefaultModel(s);
     this._render();
@@ -35,6 +44,9 @@ export default class DrawableResponseConfigure extends HTMLElement {
 
   set configuration(c) {
     this._configuration = c;
+
+    this.verifyRubric(this._configuration);
+
     this._render();
   }
 
@@ -52,6 +64,9 @@ export default class DrawableResponseConfigure extends HTMLElement {
 
   onConfigurationChanged = (c) => {
     this._configuration = c;
+
+    this.verifyRubric(this._configuration);
+
     this._render();
   };
 
