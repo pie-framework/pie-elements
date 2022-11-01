@@ -26,7 +26,7 @@ export default class ExtendedTextEntry extends HTMLElement {
   verifyRubric = async (c) => {
     const { withRubric } = c || {};
 
-    if (withRubric.enabled) {
+    if (withRubric.enabled && !this._model.rubricEnabled) {
       this._model.rubricEnabled = true;
       this.dispatchEvent(new ModelUpdatedEvent(this._model));
     }
