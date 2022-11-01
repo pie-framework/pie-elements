@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric@2.1.0...@pie-element/multi-trait-rubric@2.1.1) (2022-10-31)
+
+
+### Bug Fixes
+
+* **multi-trait-rubric:** add autoWidthToolbar property to editable html inside expanded input component PD-2129 ([043c298](https://github.com/pie-framework/pie-elements/commit/043c298b94facf8f4d2b9fb66170051e9fa0e91a))
+
+
+
+
+
 # [2.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric@2.0.11...@pie-element/multi-trait-rubric@2.1.0) (2022-10-17)
 
 

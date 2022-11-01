@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@6.2.0...@pie-element/math-inline@6.2.1) (2022-10-31)
+
+
+### Bug Fixes
+
+* **math-inline:** fix validation ui for alternate responses PD-2055 ([ac0273d](https://github.com/pie-framework/pie-elements/commit/ac0273d975b44c558e2ea3555c6787bcac04ec71))
+
+
+
+
+
 # [6.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@6.1.9...@pie-element/math-inline@6.2.0) (2022-10-17)
 
 
