@@ -48,7 +48,7 @@ class Palette extends React.Component {
                 value={value}
                 className={classnames(classes.item, {
                   [classes.blackColorItem]:
-                  value==='black'
+                   value === 'black'
                 })}
                 style={{ backgroundColor: value }}
               >
@@ -100,7 +100,7 @@ const styles = theme => ({
     marginTop: theme.spacing.unit * 2
   },
   blackColorItem: {
-    color:'#FFFFFF',
+    color:theme.palette.background.paper,
   },
   select: {
     fontSize: 'inherit',
