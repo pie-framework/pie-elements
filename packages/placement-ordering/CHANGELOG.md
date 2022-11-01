@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@8.2.1...@pie-element/placement-ordering@8.3.0) (2022-11-01)
+
+
+### Bug Fixes
+
+* **placement-ordering:** change labels to not be transformed to upper case PD-2154 ([1ababe8](https://github.com/pie-framework/pie-elements/commit/1ababe896ce692fb4ac6c76154faa96accbcdf46))
+* **placement-ordering:** remove 'Ordering' subtitle PD-2153 ([c0654a2](https://github.com/pie-framework/pie-elements/commit/c0654a2061f33adb2fa8c95a6db4c93fe551c67c))
+
+
+### Features
+
+* add a different property in the config, forceEnabled, to force a value ([300c664](https://github.com/pie-framework/pie-elements/commit/300c664618f46177137deef3bced2d096cdb8126))
+
+
+
+
+
 ## [8.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@8.2.0...@pie-element/placement-ordering@8.2.1) (2022-10-31)
 
 

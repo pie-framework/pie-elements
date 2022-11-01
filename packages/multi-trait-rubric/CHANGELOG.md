@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric@2.1.1...@pie-element/multi-trait-rubric@2.2.0) (2022-11-01)
+
+
+### Features
+
+* add a different property in the config, forceEnabled, to force a value ([300c664](https://github.com/pie-framework/pie-elements/commit/300c664618f46177137deef3bced2d096cdb8126))
+
+
+
+
+
 ## [2.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric@2.1.0...@pie-element/multi-trait-rubric@2.1.1) (2022-10-31)
 
 

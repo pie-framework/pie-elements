@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-configure@6.2.2...@pie-element/extended-text-entry-configure@6.3.0) (2022-11-01)
+
+
+### Features
+
+* add a different property in the config, forceEnabled, to force a value ([300c664](https://github.com/pie-framework/pie-elements/commit/300c664618f46177137deef3bced2d096cdb8126))
+
+
+
+
+
 ## [6.2.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-configure@6.2.1...@pie-element/extended-text-entry-configure@6.2.2) (2022-11-01)
 
 
