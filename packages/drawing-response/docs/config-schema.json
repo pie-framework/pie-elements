@@ -131,7 +131,7 @@
       }
     },
     "withRubric": {
-      "title": "ConfigureProp",
+      "title": "ConfigureWithForceProp",
       "type": "object",
       "properties": {
         "settings": {
@@ -143,6 +143,11 @@
           "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
           "type": "string",
           "title": "label"
+        },
+        "forceEnabled": {
+          "description": "Indicates the value for the toggle; if true, this property will not be visible in Settings Panel",
+          "type": "boolean",
+          "title": "forceEnabled"
         }
       }
     },
@@ -215,6 +220,27 @@
           "description": "Indicates the max dimension for images in rationale",
           "type": "number",
           "title": "rationale"
+        }
+      }
+    },
+    "ConfigureWithForceProp": {
+      "title": "ConfigureWithForceProp",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "Indicates if the item has to be displayed in the Settings Panel",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+          "type": "string",
+          "title": "label"
+        },
+        "forceEnabled": {
+          "description": "Indicates the value for the toggle; if true, this property will not be visible in Settings Panel",
+          "type": "boolean",
+          "title": "forceEnabled"
         }
       }
     }
