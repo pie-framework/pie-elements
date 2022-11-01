@@ -5,7 +5,7 @@ import { DefaultFeedbackType } from '../../Feedback';
 import {
   ConfigureProp,
   ConfigurePropWithEnabled,
-  ConfigureMaxImageDimensionsProp,
+  ConfigureMaxImageDimensionsProp, ConfigureWithForceProp,
 } from '../ConfigurationProp';
 
 interface Dimensions {
@@ -188,5 +188,5 @@ export interface ExtendedTextEntryConfigure
   /**
    * Rubric configuration
    */
-  withRubric?: ConfigureProp;
+  withRubric?: ConfigureWithForceProp;
 }

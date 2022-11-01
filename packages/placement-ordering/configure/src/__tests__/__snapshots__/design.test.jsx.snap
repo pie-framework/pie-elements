@@ -168,11 +168,9 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
       }
     />
   </InputContainer>
-  <FormSection
-    label="Ordering"
-  >
+  <FormSection>
     <InputContainer
-      label="ITEM STEM"
+      label="Item Stem"
     >
       <EditableHtml
         languageCharactersProps={
@@ -258,7 +256,7 @@ The correct ordering should not be identical to the initial ordering."
     </div>
     <div>
       <InputContainer
-        label="CHOICE LABEL"
+        label="Choice label"
       >
         <EditableHtml
           languageCharactersProps={
@@ -284,7 +282,7 @@ The correct ordering should not be identical to the initial ordering."
       </InputContainer>
     </div>
     <InputContainer
-      label="CHOICES"
+      label="Choices"
     >
       <WithStyles(ChoiceEditor)
         choices={Array []}
@@ -484,11 +482,9 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
       }
     />
   </InputContainer>
-  <FormSection
-    label="Ordering"
-  >
+  <FormSection>
     <InputContainer
-      label="ITEM STEM"
+      label="Item Stem"
     >
       <EditableHtml
         languageCharactersProps={
@@ -574,7 +570,7 @@ The correct ordering should not be identical to the initial ordering."
     </div>
     <div>
       <InputContainer
-        label="CHOICE LABEL"
+        label="Choice label"
       >
         <EditableHtml
           languageCharactersProps={
@@ -600,7 +596,7 @@ The correct ordering should not be identical to the initial ordering."
       </InputContainer>
     </div>
     <InputContainer
-      label="CHOICES"
+      label="Choices"
     >
       <WithStyles(ChoiceEditor)
         choices={Array []}

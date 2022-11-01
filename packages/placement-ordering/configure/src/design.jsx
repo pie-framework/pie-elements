@@ -221,9 +221,9 @@ export class Design extends React.Component {
         )}
 
         {promptEnabled && (
-          <FormSection label="Ordering">
+          <FormSection>
             <InputContainer
-              label={prompt && prompt.label && prompt.label.toUpperCase()}
+              label={prompt && prompt.label}
               className={classes.promptHolder}
             >
               <EditableHtml
@@ -280,7 +280,7 @@ export class Design extends React.Component {
                 label={
                   choiceLabel &&
                   choiceLabel.label &&
-                  `${singularLabel} label`.toUpperCase()
+                  `${singularLabel} label`
                 }
                 className={classes.promptHolder}
               >
@@ -303,7 +303,7 @@ export class Design extends React.Component {
                 label={
                   targetLabel &&
                   targetLabel.label &&
-                  targetLabel.label.toUpperCase()
+                  targetLabel.label
                 }
                 className={classes.promptHolder}
               >
@@ -324,7 +324,7 @@ export class Design extends React.Component {
 
           {choices.settings && (
             <InputContainer
-              label={choices && choices.label && pluralLabel.toUpperCase()}
+              label={choices && choices.label && pluralLabel}
               className={classes.promptHolder}
             >
               <ChoiceEditor

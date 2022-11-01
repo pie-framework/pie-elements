@@ -46,7 +46,7 @@
       "default": "Item Stemm",
       "type": "string",
       "title": "promptLabel"
-    },
+    }
   },
   "definitions": {
     "ConfigureProp": {
