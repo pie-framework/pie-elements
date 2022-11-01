@@ -221,7 +221,7 @@ export class Design extends React.Component {
         )}
 
         {promptEnabled && (
-          <FormSection label="Ordering">
+          <FormSection>
             <InputContainer
               label={prompt && prompt.label && prompt.label.toUpperCase()}
               className={classes.promptHolder}
