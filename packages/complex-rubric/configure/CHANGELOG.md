@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric-configure@1.2.2...@pie-element/complex-rubric-configure@1.2.3) (2022-11-02)
+
+
+### Bug Fixes
+
+* try re-trigger build ([36b1b59](https://github.com/pie-framework/pie-elements/commit/36b1b59874714d46fe060cb5e18173936073c44b))
+
+
+
+
+
+## [1.2.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric-configure@1.2.1...@pie-element/complex-rubric-configure@1.2.2) (2022-11-01)
+
+**Note:** Version bump only for package @pie-element/complex-rubric-configure
+
+
+
+
+
 ## [1.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric-configure@1.2.0...@pie-element/complex-rubric-configure@1.2.1) (2022-10-31)
 
 **Note:** Version bump only for package @pie-element/complex-rubric-configure

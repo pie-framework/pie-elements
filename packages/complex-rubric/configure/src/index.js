@@ -6,7 +6,6 @@ import MultiTraitRubricConfigure from '@pie-element/multi-trait-rubric/configure
 import debug from 'debug';
 import defaults from 'lodash/defaults';
 import Main from './main';
-
 import sensibleDefaults from './defaults';
 
 const MODEL_UPDATED = ModelUpdatedEvent.TYPE;
