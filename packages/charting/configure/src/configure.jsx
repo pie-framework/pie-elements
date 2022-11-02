@@ -39,8 +39,8 @@ export const validate = (model = {}, config = {}) => {
     }
   });
 
-  if (width <= 50 || width >= 800) {
-    errors.widthError = 'Width should be a value between 50 and 800';
+  if (width <= 50 || width >= 700) {
+    errors.widthError = 'Width should be a value between 50 and 700';
   }
 
   if (height <= 400 || height >= 700) {
@@ -76,6 +76,7 @@ export const validate = (model = {}, config = {}) => {
 
   return errors;
 };
+
 
 const log = debug('@pie-element:graphing:configure');
 const { Panel, toggle, radio } = settings;
@@ -199,14 +200,15 @@ export class Configure extends React.Component {
       promptEnabled,
       rationaleEnabled,
       spellCheckEnabled,
-      rubricEnabled
+      rubricEnabled,
+      // errors
     } = model || {};
     const { gridValues, labelValues } = this.state;
     const showPixeGuides = chartDimensions.showInConfigPanel || true;
 
     const defaultImageMaxWidth = maxImageWidth && maxImageWidth.prompt;
     const defaultImageMaxHeight = maxImageHeight && maxImageHeight.prompt;
-
+  const errors = validate(model,configuration);
     console.log(validate(model,configuration), "VALIDATE")
 
     return (
@@ -331,6 +333,7 @@ export class Configure extends React.Component {
             model={model}
             onChange={onModelChanged}
             charts={charts}
+            error={true}
           />
         </div>
       </layout.ConfigLayout>

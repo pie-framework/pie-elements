@@ -216,7 +216,7 @@ export class CorrectResponse extends React.Component {
   }
 
   render() {
-    const { classes, model, charts } = this.props;
+    const { classes, model, charts, error } = this.props;
     const { categories } = this.state;
 
     return (
@@ -240,6 +240,7 @@ export class CorrectResponse extends React.Component {
                 onDataChange={(data) => this.changeData(data)}
                 addCategoryEnabled={model.addCategoryEnabled}
                 categoryDefaultLabel={model.categoryDefaultLabel}
+                error={error}
               />
             </div>
           </div>
