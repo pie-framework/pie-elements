@@ -66,12 +66,6 @@ export class Config extends React.Component {
     this.props.onModelChanged({ choicesLabel: target.value });
   };
 
-  toggleShuffle = () => {
-    this.props.onModelChanged({
-      lockChoiceOrder: !this.props.config.lockChoiceOrder
-    });
-  };
-
   changePosition = position => {
     this.props.onModelChanged({ choicesPosition: position.value });
 
@@ -105,11 +99,6 @@ export class Config extends React.Component {
             label={'Remove all tiles after placing'}
             checked={categoryCountIsOne}
             onChange={this.toggleRemoveAllTiles}
-          />
-          <Checkbox
-            label={'Lock Choice Order'}
-            checked={config.lockChoiceOrder}
-            onChange={this.toggleShuffle}
           />
         </div>
 

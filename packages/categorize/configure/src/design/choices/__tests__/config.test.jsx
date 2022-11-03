@@ -90,16 +90,6 @@ describe('config', () => {
       });
     });
 
-    it('toggleShuffle', () => {
-      let w = wrapper();
-
-      w.instance().toggleShuffle();
-
-      expect(onModelChanged).toBeCalledWith({
-        lockChoiceOrder: false
-      });
-    });
-
     it('changePosition', () => {
       let w = wrapper();
 

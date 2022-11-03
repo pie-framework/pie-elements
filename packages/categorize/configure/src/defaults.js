@@ -30,8 +30,8 @@ export default {
       enabled: true
     },
     lockChoiceOrder: {
-      settings: false,
-      label: 'Lock Choice Order'
+      settings: true,
+      label: 'Lock Choice Order',
     },
     partialScoring: {
       settings: false,
