@@ -33,6 +33,10 @@ export default {
       settings: false,
       label: 'Lock Choice Order'
     },
+    categoriesPerRow: {
+      settings: true,
+      label: 'Categories per row'
+    },
     partialScoring: {
       settings: false,
       label: 'Allow Partial Scoring',

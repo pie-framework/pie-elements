@@ -97,14 +97,6 @@ export class Categories extends React.Component {
     toolbarOpts: PropTypes.object
   };
 
-  changeCategoryColumns = event => {
-    const numberValue = parseInt(event.target.value, 10);
-
-    if (numberValue && numberValue >= 1 && numberValue <= 4) {
-      this.props.onModelChanged({ categoriesPerRow: numberValue });
-    }
-  };
-
   add = () => {
     const { model } = this.props;
     const { categoriesPerRow } = model;
@@ -235,18 +227,6 @@ export class Categories extends React.Component {
         />
         {associationError && <div className={classes.errorText}>{associationError}</div>}
         {categoriesError && <div className={classes.errorText}>{categoriesError}</div>}
-        <div className={classes.row}>
-          <TextField
-            label="Categories per row"
-            type="number"
-            inputProps={{
-              min: 1,
-              max: 4
-            }}
-            value={categoriesPerRow}
-            onChange={this.changeCategoryColumns}
-          />
-        </div>
         <div className={classes.categoriesHolder} style={holderStyle}>
           {categories.map((category, index) => {
             const hasRowLabel = index % categoriesPerRow === 0;

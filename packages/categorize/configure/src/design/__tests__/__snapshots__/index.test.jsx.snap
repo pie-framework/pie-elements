@@ -18,6 +18,7 @@ exports[`Design snapshot renders 1`] = `
               "teacherInstructionsEnabled": undefined,
             },
             "Settings": Object {
+              "categoriesPerRow": undefined,
               "feedbackEnabled": undefined,
               "lockChoiceOrder": undefined,
               "partialScoring": undefined,

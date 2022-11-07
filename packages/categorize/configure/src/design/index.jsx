@@ -22,7 +22,7 @@ import { Divider } from './buttons';
 import { buildAlternateResponses, buildCategories } from './builder';
 import Header from './header';
 
-const { Panel, toggle, radio } = settings;
+const { Panel, toggle, radio, numberField } = settings;
 const { Provider: IdProvider } = uid;
 
 export class Design extends React.Component {
@@ -150,6 +150,7 @@ export class Design extends React.Component {
     const {
       partialScoring = {},
       lockChoiceOrder = {},
+      categoriesPerRow = {},
       teacherInstructions = {},
       studentInstructions = {},
       rationale = {},
@@ -220,6 +221,12 @@ export class Design extends React.Component {
                     partialScoring.settings && toggle(partialScoring.label),
                   lockChoiceOrder:
                     lockChoiceOrder.settings && toggle(lockChoiceOrder.label),
+                  categoriesPerRow: categoriesPerRow.settings && numberField(categoriesPerRow.label,
+                    {
+                          label: categoriesPerRow.label,
+                          min: 1,
+                          max: 4,
+                      }),
                   promptEnabled: prompt.settings && toggle(prompt.label),
                   feedbackEnabled: feedback.settings && toggle(feedback.label),
                 },

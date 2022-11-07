@@ -55,12 +55,6 @@ describe('Categories', () => {
   });
 
   describe('logic', () => {
-    describe('changeCategoryColumns', () => {
-      w = wrapper();
-      w.instance().changeCategoryColumns({ target: { value: 4 } });
-
-      expect(onModelChanged).toBeCalledWith({ categoriesPerRow: 4 });
-    });
 
     describe('add', () => {
       w = wrapper();
