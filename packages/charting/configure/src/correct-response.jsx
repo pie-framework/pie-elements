@@ -219,6 +219,10 @@ export class CorrectResponse extends React.Component {
     const { classes, model, charts, error } = this.props;
     const { categories } = this.state;
 
+    
+
+    console.log("error in correct-response pie elements", error)
+
     return (
       <div>
         Define Correct Response
@@ -240,7 +244,7 @@ export class CorrectResponse extends React.Component {
                 onDataChange={(data) => this.changeData(data)}
                 addCategoryEnabled={model.addCategoryEnabled}
                 categoryDefaultLabel={model.categoryDefaultLabel}
-                error={error}
+               error={error}
               />
             </div>
           </div>

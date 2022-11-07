@@ -27,14 +27,17 @@ export const validate = (model = {}, config = {}) => {
 
   reversedCategories.forEach((category, index) => {
     const {value, label} = category;
+    console.log(category, "category in validate")
+
+    console.log(label, "label in validate")
 
     if (label === '' || label === '<div></div>') {
-      categoryErrors[value] = 'Content should not be empty.';
+      categoryErrors[index] = 'Content should not be empty.';
     } else {
       const identicalAnswer = reversedCategories.slice(index + 1).some(c => c.label === label);
 
       if (identicalAnswer) {
-        categoryErrors[value] = 'Content should be unique.';
+        categoryErrors[index] = 'Content should be unique.';
       }
     }
   });
@@ -210,6 +213,7 @@ export class Configure extends React.Component {
     const defaultImageMaxHeight = maxImageHeight && maxImageHeight.prompt;
   const errors = validate(model,configuration);
     console.log(validate(model,configuration), "VALIDATE")
+    const { categoryErrors, correctResponseError, answerChoicesError } = errors || {};
 
     return (
       <layout.ConfigLayout
@@ -333,7 +337,7 @@ export class Configure extends React.Component {
             model={model}
             onChange={onModelChanged}
             charts={charts}
-            error={true}
+            error={categoryErrors && true}
           />
         </div>
       </layout.ConfigLayout>
