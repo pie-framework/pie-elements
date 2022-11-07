@@ -17,26 +17,27 @@ import { applyConstraints, getGridValues, getLabelValues } from './utils';
 export const validate = (model = {}, config = {}) => {
   const { correctAnswer, data } = model || {};
   const { data: correctData } = correctAnswer || {};
+  const categories = correctData || [];
 
   const errors = {};
   const correctAnswerErrors = {};
   const categoryErrors = {};
 
-  correctData.forEach((category, index) => {
-    const {label} = category;
+  categories.forEach((category, index) => {
+    const { label } = category;
 
     if (label === '' || label === '<div></div>') {
       categoryErrors[index] = 'Content should not be empty.';
     } else {
-      const identicalAnswer = correctData.slice(index + 1).some(c => c.label === label);
+      const identicalAnswer = categories.slice(index + 1).some(c => c.label === label);
 
       if (identicalAnswer) {
-        categoryErrors[index+1] = 'Content should be unique.';
+        categoryErrors[index + 1] = 'Content should be unique.';
       }
     }
   });
 
-  if (correctData.length < 1 || correctData.length > 20) {
+  if (categories.length < 1 || categories.length > 20) {
     correctAnswerErrors.categoriesError = 'The correct answer should include between 1 and 20 categories.';
   } else if (isEqual(data.map(category => pick(category, 'value', 'label')), correctData.map(category => pick(category, 'value', 'label')))) {
     correctAnswerErrors.indenticalError = 'Correct answer should not be identical to the chart’s initial state';
@@ -184,7 +185,7 @@ export class Configure extends React.Component {
 
     const defaultImageMaxWidth = maxImageWidth && maxImageWidth.prompt;
     const defaultImageMaxHeight = maxImageHeight && maxImageHeight.prompt;
-    const errors = validate(model,configuration);
+    const errors = validate(model, configuration);
 
     const { categoryErrors, correctAnswerErrors } = errors || {};
 
