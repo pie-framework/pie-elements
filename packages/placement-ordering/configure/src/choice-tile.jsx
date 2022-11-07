@@ -79,7 +79,6 @@ export class ChoiceTile extends React.Component {
     } = this.props;
     const { dialog } = this.state;
 
-    console.log('choice', this.props.choice);
     const dragSourceOpts = {}; //dropEffect: moveOnDrag ? 'move' : 'copy'};
 
     const choicePlugins = {
