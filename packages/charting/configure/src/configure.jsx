@@ -15,48 +15,31 @@ import CorrectResponse from './correct-response';
 import { applyConstraints, getGridValues, getLabelValues } from './utils';
 
 export const validate = (model = {}, config = {}) => {
-  const { correctAnswer, data, graph, range, chartType } = model || {};
-  const { max } = range || {};
+  const { correctAnswer, data } = model || {};
   const { data: correctData } = correctAnswer || {};
-  const { width, height } = graph || {};
-  const reversedCategories = [...correctData || []].reverse();
 
   const errors = {};
   const correctAnswerErrors = {};
   const categoryErrors = {};
 
-  reversedCategories.forEach((category, index) => {
-    const {value, label} = category;
-    console.log(category, "category in validate")
-
-    console.log(label, "label in validate")
+  correctData.forEach((category, index) => {
+    const {label} = category;
 
     if (label === '' || label === '<div></div>') {
       categoryErrors[index] = 'Content should not be empty.';
     } else {
-      const identicalAnswer = reversedCategories.slice(index + 1).some(c => c.label === label);
+      const identicalAnswer = correctData.slice(index + 1).some(c => c.label === label);
 
       if (identicalAnswer) {
-        categoryErrors[index] = 'Content should be unique.';
+        categoryErrors[index+1] = 'Content should be unique.';
       }
     }
   });
 
-  if (width <= 50 || width >= 700) {
-    errors.widthError = 'Width should be a value between 50 and 700';
-  }
-
-  if (height <= 400 || height >= 700) {
-    errors.heightError = 'Height should be a value between 400 and 700';
-  }
-
-
-  if (isEqual(data.map(category => pick(category, 'value', 'label')), correctData.map(category => pick(category, 'value', 'label')))) {
-    correctAnswerErrors.indenticalError = 'Correct answer should not be identical to the chart’s initial state';
-  }
-
   if (correctData.length < 1 || correctData.length > 20) {
     correctAnswerErrors.categoriesError = 'The correct answer should include between 1 and 20 categories.';
+  } else if (isEqual(data.map(category => pick(category, 'value', 'label')), correctData.map(category => pick(category, 'value', 'label')))) {
+    correctAnswerErrors.indenticalError = 'Correct answer should not be identical to the chart’s initial state';
   }
 
   if (!isEmpty(categoryErrors)) {
@@ -65,16 +48,6 @@ export const validate = (model = {}, config = {}) => {
 
   if (!isEmpty(correctAnswerErrors)) {
     errors.correctAnswerErrors = correctAnswerErrors;
-  }
-
-  if (chartType === 'dotPlot' || chartType === 'linePlot') {
-    if (max < 3 || max > 10 || !Number.isInteger(max)) {
-      errors.rangeError = 'The maximum value should be an integer between 3 and 10';
-    }
-  } else {
-    if (max < 0.05 || max > 10000) {
-      errors.rangeError = 'The maximum value should be an integer between 0.05 and 10000';
-    }
   }
 
   return errors;
@@ -211,9 +184,9 @@ export class Configure extends React.Component {
 
     const defaultImageMaxWidth = maxImageWidth && maxImageWidth.prompt;
     const defaultImageMaxHeight = maxImageHeight && maxImageHeight.prompt;
-  const errors = validate(model,configuration);
-    console.log(validate(model,configuration), "VALIDATE")
-    const { categoryErrors, correctResponseError, answerChoicesError } = errors || {};
+    const errors = validate(model,configuration);
+
+    const { categoryErrors, correctAnswerErrors } = errors || {};
 
     return (
       <layout.ConfigLayout
@@ -337,7 +310,8 @@ export class Configure extends React.Component {
             model={model}
             onChange={onModelChanged}
             charts={charts}
-            error={categoryErrors && true}
+            error={categoryErrors}
+            correctAnswerErrors={correctAnswerErrors}
           />
         </div>
       </layout.ConfigLayout>

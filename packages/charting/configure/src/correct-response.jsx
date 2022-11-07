@@ -25,6 +25,11 @@ const styles = (theme) => ({
   column: {
     flex: 1,
   },
+  noCorrectResponse: {
+    fontSize: '12px',
+    color: 'red',
+    paddingBottom: '20px'
+  }
 });
 
 const addCategoryProps = (correctAnswer, data) =>
@@ -216,18 +221,19 @@ export class CorrectResponse extends React.Component {
   }
 
   render() {
-    const { classes, model, charts, error } = this.props;
+    const { classes, model, charts, error, correctAnswerErrors } = this.props;
     const { categories } = this.state;
-
-    
-
-    console.log("error in correct-response pie elements", error)
 
     return (
       <div>
         Define Correct Response
         <div className={classes.container}>
           <div className={classes.column} key="graph">
+            {correctAnswerErrors && (
+              <Typography component="div" type="body1" className={classes.noCorrectResponse}>
+              <span>{correctAnswerErrors.indenticalError || correctAnswerErrors.categoriesError}</span>
+            </Typography>
+            )}
             <Typography component="div" type="body1">
               <span>Use the tools below to define the correct answer.</span>
             </Typography>
@@ -244,7 +250,7 @@ export class CorrectResponse extends React.Component {
                 onDataChange={(data) => this.changeData(data)}
                 addCategoryEnabled={model.addCategoryEnabled}
                 categoryDefaultLabel={model.categoryDefaultLabel}
-               error={error}
+                error={error}
               />
             </div>
           </div>
