@@ -282,7 +282,7 @@ The correct ordering should not be identical to the initial ordering."
       </InputContainer>
     </div>
     <InputContainer
-      label="Choices"
+      label="Student Choices"
     >
       <WithStyles(ChoiceEditor)
         choices={Array []}
@@ -596,7 +596,7 @@ The correct ordering should not be identical to the initial ordering."
       </InputContainer>
     </div>
     <InputContainer
-      label="Choices"
+      label="Student Choices"
     >
       <WithStyles(ChoiceEditor)
         choices={Array []}

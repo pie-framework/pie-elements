@@ -324,7 +324,7 @@ export class Design extends React.Component {
 
           {choices.settings && (
             <InputContainer
-              label={choices && choices.label && pluralLabel}
+              label={choices && choices.label && `Student ${pluralLabel}`}
               className={classes.promptHolder}
             >
               <ChoiceEditor

@@ -12,7 +12,6 @@ import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogActions from '@material-ui/core/DialogActions';
-import { ChoiceConfiguration } from '@pie-lib/config-ui';
 
 export const InfoDialog = ({ title, open, onOk }) => (
   <Dialog open={open}>
