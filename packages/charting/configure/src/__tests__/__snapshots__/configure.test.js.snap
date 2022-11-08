@@ -460,11 +460,6 @@ exports[`Configure renders snapshot 1`] = `
           "width": 480,
         }
       }
-      correctAnswerErrors={
-        Object {
-          "categoriesError": "The correct answer should include between 1 and 20 categories.",
-        }
-      }
       model={
         Object {
           "addCategoryEnabled": true,
