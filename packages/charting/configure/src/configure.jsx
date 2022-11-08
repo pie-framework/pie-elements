@@ -6,54 +6,10 @@ import PropTypes from 'prop-types';
 import debug from 'debug';
 import Typography from '@material-ui/core/Typography';
 import EditableHtml from '@pie-lib/editable-html';
-import isEqual from 'lodash/isEqual';
-import isEmpty from 'lodash/isEmpty';
-import pick from 'lodash/pick';
 
 import ChartingConfig from './charting-config';
 import CorrectResponse from './correct-response';
 import { applyConstraints, getGridValues, getLabelValues } from './utils';
-
-export const validate = (model = {}, config = {}) => {
-  const { correctAnswer, data } = model || {};
-  const { data: correctData } = correctAnswer || {};
-  const categories = correctData || [];
-
-  const errors = {};
-  const correctAnswerErrors = {};
-  const categoryErrors = {};
-
-  categories.forEach((category, index) => {
-    const { label } = category;
-
-    if (label === '' || label === '<div></div>') {
-      categoryErrors[index] = 'Content should not be empty.';
-    } else {
-      const identicalAnswer = categories.slice(index + 1).some(c => c.label === label);
-
-      if (identicalAnswer) {
-        categoryErrors[index + 1] = 'Content should be unique.';
-      }
-    }
-  });
-
-  if (categories.length < 1 || categories.length > 20) {
-    correctAnswerErrors.categoriesError = 'The correct answer should include between 1 and 20 categories.';
-  } else if (isEqual(data.map(category => pick(category, 'value', 'label')), correctData.map(category => pick(category, 'value', 'label')))) {
-    correctAnswerErrors.indenticalError = 'Correct answer should not be identical to the chart’s initial state';
-  }
-
-  if (!isEmpty(categoryErrors)) {
-    errors.categoryErrors = categoryErrors;
-  }
-
-  if (!isEmpty(correctAnswerErrors)) {
-    errors.correctAnswerErrors = correctAnswerErrors;
-  }
-
-  return errors;
-};
-
 
 const log = debug('@pie-element:graphing:configure');
 const { Panel, toggle, radio } = settings;
@@ -178,14 +134,13 @@ export class Configure extends React.Component {
       rationaleEnabled,
       spellCheckEnabled,
       rubricEnabled,
-      // errors
+      errors
     } = model || {};
     const { gridValues, labelValues } = this.state;
     const showPixeGuides = chartDimensions.showInConfigPanel || true;
 
     const defaultImageMaxWidth = maxImageWidth && maxImageWidth.prompt;
     const defaultImageMaxHeight = maxImageHeight && maxImageHeight.prompt;
-    const errors = validate(model, configuration);
 
     const { categoryErrors, correctAnswerErrors } = errors || {};
 

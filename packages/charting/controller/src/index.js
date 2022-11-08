@@ -252,65 +252,42 @@ export const createCorrectResponseSession = (question, env) => {
   });
 };
 
-// export const validate = (model = {}, config = {}) => {
-//   const { correctAnswer, data, graph, range, chartType } = model || {};
-//   const { max } = range || {};
-//   const { data: correctData } = correctAnswer || {};
-//   const { width, height } = graph || {};
-//   const reversedCategories = [...correctData || []].reverse();
+export const validate = (model = {}, config = {}) => {
+  const { correctAnswer, data } = model || {};
+  const { data: correctData } = correctAnswer || {};
+  const categories = correctData || [];
 
-//   const errors = {};
-//   const correctAnswerErrors = {};
-//   const categoryErrors = {};
+  const errors = {};
+  const correctAnswerErrors = {};
+  const categoryErrors = {};
 
-//   reversedCategories.forEach((category, index) => {
-//     const {value, label} = category;
+  categories.forEach((category, index) => {
+    const { label } = category;
 
-//     if (label === '' || label === '<div></div>') {
-//       categoryErrors[value] = 'Content should not be empty.';
-//     } else {
-//       const identicalAnswer = reversedCategories.slice(index + 1).some(c => c.label === label);
+    if (label === '' || label === '<div></div>') {
+      categoryErrors[index] = 'Content should not be empty.';
+    } else {
+      const identicalAnswer = categories.slice(index + 1).some(c => c.label === label);
 
-//       if (identicalAnswer) {
-//         categoryErrors[value] = 'Content should be unique.';
-//       }
-//     }
-//   });
+      if (identicalAnswer) {
+        categoryErrors[index + 1] = 'Content should be unique.';
+      }
+    }
+  });
 
-//   if (width <= 50 || width >= 800) {
-//     errors.widthError = 'Width should be a value between 50 and 800';
-//   }
+  if (categories.length < 1 || categories.length > 20) {
+    correctAnswerErrors.categoriesError = 'The correct answer should include between 1 and 20 categories.';
+  } else if (isEqual(data.map(category => pick(category, 'value', 'label')), correctData.map(category => pick(category, 'value', 'label')))) {
+    correctAnswerErrors.indenticalError = 'Correct answer should not be identical to the chart’s initial state';
+  }
 
-//   if (height <= 400 || height >= 700) {
-//     errors.heightError = 'Height should be a value between 400 and 700';
-//   }
+  if (!isEmpty(categoryErrors)) {
+    errors.categoryErrors = categoryErrors;
+  }
 
+  if (!isEmpty(correctAnswerErrors)) {
+    errors.correctAnswerErrors = correctAnswerErrors;
+  }
 
-//   if (isEqual(data.map(category => pick(category, 'value', 'label')), correctData.map(category => pick(category, 'value', 'label')))) {
-//     correctAnswerErrors.indenticalError = 'Correct answer should not be identical to the chart’s initial state';
-//   }
-
-//   if (correctData.length < 1 || correctData.length > 20) {
-//     correctAnswerErrors.categoriesError = 'The correct answer should include between 1 and 20 categories.';
-//   }
-
-//   if (!isEmpty(categoryErrors)) {
-//     errors.categoryErrors = categoryErrors;
-//   }
-
-//   if (!isEmpty(correctAnswerErrors)) {
-//     errors.correctAnswerErrors = correctAnswerErrors;
-//   }
-
-//   if (chartType === 'dotPlot' || chartType === 'linePlot') {
-//     if (max < 3 || max > 10 || !Number.isInteger(max)) {
-//       errors.rangeError = 'The maximum value should be an integer between 3 and 10';
-//     }
-//   } else {
-//     if (max < 0.05 || max > 10000) {
-//       errors.rangeError = 'The maximum value should be an integer between 0.05 and 10000';
-//     }
-//   }
-
-//   return errors;
-// };
+  return errors;
+};
