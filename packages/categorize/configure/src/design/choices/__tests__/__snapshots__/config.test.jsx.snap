@@ -6,10 +6,6 @@ exports[`config snapshot renders 1`] = `
 >
   <div>
     <Component
-      label="Remove all tiles after placing"
-      onChange={[Function]}
-    />
-    <Component
       checked={true}
       label="Lock Choice Order"
       onChange={[Function]}

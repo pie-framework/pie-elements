@@ -18,6 +18,7 @@ exports[`Design snapshot renders 1`] = `
               "teacherInstructionsEnabled": undefined,
             },
             "Settings": Object {
+              "allowMultiplePlacementsEnabled": undefined,
               "feedbackEnabled": undefined,
               "lockChoiceOrder": undefined,
               "partialScoring": undefined,
@@ -35,6 +36,7 @@ exports[`Design snapshot renders 1`] = `
             ],
             "choices": Array [
               Object {
+                "categoryCount": undefined,
                 "content": "content",
                 "correctResponseCount": 1,
                 "id": "1",
@@ -82,6 +84,7 @@ exports[`Design snapshot renders 1`] = `
             ],
             "choices": Array [
               Object {
+                "categoryCount": undefined,
                 "content": "content",
                 "correctResponseCount": 1,
                 "id": "1",
@@ -114,6 +117,7 @@ exports[`Design snapshot renders 1`] = `
         choices={
           Array [
             Object {
+              "categoryCount": undefined,
               "content": "content",
               "correctResponseCount": 1,
               "id": "1",
@@ -130,6 +134,7 @@ exports[`Design snapshot renders 1`] = `
             ],
             "choices": Array [
               Object {
+                "categoryCount": undefined,
                 "content": "content",
                 "correctResponseCount": 1,
                 "id": "1",

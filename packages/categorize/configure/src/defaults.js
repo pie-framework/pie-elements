@@ -5,6 +5,7 @@ export default {
     choicesLabel: '',
     lockChoiceOrder: true,
     removeTilesAfterPlacing: false,
+    allowMultiplePlacementsEnabled: 'Yes',
     categoriesPerRow: 2,
     categories: [],
     alternates: [],
@@ -32,6 +33,10 @@ export default {
     lockChoiceOrder: {
       settings: false,
       label: 'Lock Choice Order'
+    },
+    allowMultiplePlacements: {
+      settings: true,
+      label: 'Allow Multiple Placements'
     },
     partialScoring: {
       settings: false,
