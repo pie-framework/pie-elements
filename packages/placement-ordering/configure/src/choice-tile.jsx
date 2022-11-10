@@ -109,7 +109,6 @@ export class ChoiceTile extends React.Component {
           toolbarOpts={toolbarOpts}
           activePlugins={filteredDefaultPlugins}
           spellCheck={spellCheck}
-          allowValidation
           maxImageWidth={maxImageWidth}
           maxImageHeight={maxImageHeight}
           languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
