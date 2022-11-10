@@ -56,7 +56,8 @@ export class Choices extends React.Component {
          <PlaceHolder
           onDropChoice={onDropChoice}
           disabled={disabled}
-    
+          style={{background: 'none', }}
+          choiceBoard={true}
           >
         {model.choicesLabel && model.choicesLabel !== '' && (
           <div className={classes.labelHolder} dangerouslySetInnerHTML={{__html: model.choicesLabel}}></div>

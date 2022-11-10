@@ -26,7 +26,8 @@ export class DroppablePlaceholder extends React.Component {
       isOver,
       className,
       grid,
-      disabled
+      disabled,
+      choiceBoard
     } = this.props;
 
     return connectDropTarget(
@@ -36,6 +37,7 @@ export class DroppablePlaceholder extends React.Component {
           isOver={isOver}
           grid={grid}
           disabled={disabled}
+          choiceBoard={choiceBoard}
         >
           {children}
         </PlaceHolder>
