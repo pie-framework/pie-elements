@@ -82,8 +82,6 @@ export class Config extends React.Component {
 
     return (
       <div className={classNames(classes.config, className)}>
-        <div className={classes.row}>
-        </div>
         <div className={classes.configuration}>
           <TextField
             className={classes.label}
