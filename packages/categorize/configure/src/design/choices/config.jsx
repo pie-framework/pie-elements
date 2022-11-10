@@ -54,12 +54,6 @@ export class Config extends React.Component {
     this.props.onModelChanged({ choicesLabel: target.value });
   };
 
-  toggleShuffle = () => {
-    this.props.onModelChanged({
-      lockChoiceOrder: !this.props.config.lockChoiceOrder
-    });
-  };
-
   changePosition = position => {
     this.props.onModelChanged({ choicesPosition: position.value });
 
@@ -89,13 +83,7 @@ export class Config extends React.Component {
     return (
       <div className={classNames(classes.config, className)}>
         <div className={classes.row}>
-          <Checkbox
-            label={'Lock Choice Order'}
-            checked={config.lockChoiceOrder}
-            onChange={this.toggleShuffle}
-          />
         </div>
-
         <div className={classes.configuration}>
           <TextField
             className={classes.label}
