@@ -137,10 +137,10 @@ export class Design extends React.Component {
   };
 
   checkAllowMultiplePlacements = (allowMultiplePlacements, c) => {
-    if(allowMultiplePlacements === 'Yes'){
+    if( allowMultiplePlacements === 'Yes' ){
       return 0;
     }
-    if(allowMultiplePlacements === 'No'){
+    if( allowMultiplePlacements === 'No' ){
       return 1;
     }
     else{

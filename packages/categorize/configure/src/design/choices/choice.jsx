@@ -25,7 +25,7 @@ const canDrag = props => {
 
 export class Choice extends React.Component {
   static propTypes = {
-    allowMultiplePlacements:PropTypes.string,
+    allowMultiplePlacements: PropTypes.string,
     classes: PropTypes.object.isRequired,
     className: PropTypes.string,
     choice: PropTypes.object.isRequired,
