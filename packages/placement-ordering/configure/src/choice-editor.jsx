@@ -254,9 +254,9 @@ class ChoiceEditor extends React.Component {
       if (shuffledCorrect) {
         const shuffledTwice = shuffle(shuffled);
 
-        onChange(shuffledTwice, correctResponse);
+        onChange(shuffledTwice, correctResponse, true);
       } else {
-        onChange(shuffled, correctResponse);
+        onChange(shuffled, correctResponse, true);
       }
     };
 
