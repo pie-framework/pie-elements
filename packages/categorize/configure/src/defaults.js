@@ -77,9 +77,9 @@ export default {
       categoryLabel: 100,
       choices: 150
     },
-    withRubric: {
-      settings: false,
-      label: 'Add Rubric'
-    }
+    // withRubric: {
+    //   settings: false,
+    //   label: 'Add Rubric'
+    // }
   }
 };
