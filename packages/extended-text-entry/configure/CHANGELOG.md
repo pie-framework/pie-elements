@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-configure@6.3.0...@pie-element/extended-text-entry-configure@6.3.1) (2022-11-11)
+
+
+### Bug Fixes
+
+* **extended-text-entry:** add sanity checks for withRubric ([01ee1db](https://github.com/pie-framework/pie-elements/commit/01ee1db32ec5f6d6fc2602ee5d25ad5204ede456))
+
+
+
+
+
 # [6.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-configure@6.2.2...@pie-element/extended-text-entry-configure@6.3.0) (2022-11-01)
 
 

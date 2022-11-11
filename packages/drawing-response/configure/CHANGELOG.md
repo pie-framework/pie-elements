@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response-configure@4.3.0...@pie-element/drawing-response-configure@4.3.1) (2022-11-11)
+
+
+### Bug Fixes
+
+* **drawing-response:** add sanity checks for withRubric ([d22ea78](https://github.com/pie-framework/pie-elements/commit/d22ea78fc5b0a9dd73d3614fbd2a39b28183a991))
+
+
+
+
+
 # [4.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response-configure@4.2.2...@pie-element/drawing-response-configure@4.3.0) (2022-11-01)
 
 
