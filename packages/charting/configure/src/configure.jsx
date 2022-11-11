@@ -128,7 +128,7 @@ export class Configure extends React.Component {
       labelsPlaceholders = {},
       titlePlaceholder = {},
       chartDimensions = {},
-      withRubric,
+      withRubric = {},
     } = configuration || {};
     const {
       teacherInstructionsEnabled,
@@ -169,7 +169,7 @@ export class Configure extends React.Component {
                     'all or nothing',
                     'partial scoring',
                   ]),
-                rubricEnabled: withRubric.settings && toggle(withRubric.label)
+                rubricEnabled: withRubric?.settings && toggle(withRubric?.label)
               },
             }}
           />
