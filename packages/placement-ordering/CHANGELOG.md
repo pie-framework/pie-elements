@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@8.3.0...@pie-element/placement-ordering@8.3.1) (2022-11-11)
+
+
+### Bug Fixes
+
+* **placement-ordering:** add sanity checks for withRubric ([89f3a8a](https://github.com/pie-framework/pie-elements/commit/89f3a8ab13629bb3d6405955a7b0316d44be90c1))
+
+
+
+
+
 # [8.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@8.2.1...@pie-element/placement-ordering@8.3.0) (2022-11-01)
 
 

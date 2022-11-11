@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.4.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@5.4.0...@pie-element/hotspot@5.4.1) (2022-11-11)
+
+
+### Bug Fixes
+
+* **hotspot:** add sanity checks for withRubric ([b4d1fb8](https://github.com/pie-framework/pie-elements/commit/b4d1fb8089b87ff64759cea4add7ab870e702e0e))
+
+
+
+
+
 # [5.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@5.3.1...@pie-element/hotspot@5.4.0) (2022-11-01)
 
 

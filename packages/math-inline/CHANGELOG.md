@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.2.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@6.2.1...@pie-element/math-inline@6.2.2) (2022-11-11)
+
+
+### Bug Fixes
+
+* **math-inline:** add sanity checks for withRubric ([ede846e](https://github.com/pie-framework/pie-elements/commit/ede846ededcb531df4f68a35e007420051f1992d))
+
+
+
+
+
 ## [6.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@6.2.0...@pie-element/math-inline@6.2.1) (2022-10-31)
 
 

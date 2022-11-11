@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.2.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-configure@4.2.1...@pie-element/drag-in-the-blank-configure@4.2.2) (2022-11-11)
+
+
+### Bug Fixes
+
+* **drag-in-the-blank:** add sanity checks for withRubric ([709cdea](https://github.com/pie-framework/pie-elements/commit/709cdeaf53b19e44aab3be4250b01e8c50dcc645))
+
+
+
+
+
 ## [4.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-configure@4.2.0...@pie-element/drag-in-the-blank-configure@4.2.1) (2022-10-31)
 
 **Note:** Version bump only for package @pie-element/drag-in-the-blank-configure

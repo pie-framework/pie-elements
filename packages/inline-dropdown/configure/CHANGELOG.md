@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.3.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-configure@4.3.1...@pie-element/inline-dropdown-configure@4.3.2) (2022-11-11)
+
+
+### Bug Fixes
+
+* **inline-dropdown:** add sanity checks for withRubric ([25e5403](https://github.com/pie-framework/pie-elements/commit/25e540323dd33c43f67e2f8ade736a4fc98c96f2))
+
+
+
+
+
 ## [4.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-configure@4.3.0...@pie-element/inline-dropdown-configure@4.3.1) (2022-10-31)
 
 
