@@ -37,9 +37,9 @@ export default class DrawableResponseConfigure extends HTMLElement {
   }
 
   verifyRubric = async (c) => {
-    const { withRubric } = c || {};
+    const { withRubric = {} } = c || {};
 
-    if (withRubric.forceEnabled && !this._model.rubricEnabled) {
+    if (withRubric?.forceEnabled && !this._model.rubricEnabled) {
       this._model.rubricEnabled = true;
       this.dispatchEvent(new ModelUpdatedEvent(this._model));
     }
