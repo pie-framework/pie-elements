@@ -29,7 +29,7 @@ export class Root extends React.Component {
       spellCheck = {},
       maxImageWidth = {},
       maxImageHeight = {},
-      withRubric
+      withRubric = {}
     } = configuration || {};
     const { spellCheckEnabled, rubricEnabled } = model || {};
 
@@ -48,7 +48,7 @@ export class Root extends React.Component {
                   toggle(teacherInstructions.label),
                 spellCheckEnabled:
                   spellCheck.settings && toggle(spellCheck.label),
-                rubricEnabled: withRubric.settings && toggle(withRubric.label)
+                rubricEnabled: withRubric?.settings && toggle(withRubric?.label)
               },
             }}
           />
