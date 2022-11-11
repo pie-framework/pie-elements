@@ -81,7 +81,7 @@ export class Main extends React.Component {
       playerSpellCheck = {},
       maxImageWidth = {},
       maxImageHeight = {},
-      withRubric,
+      withRubric = {},
     } = configuration || {};
     const {
       teacherInstructionsEnabled,
@@ -162,7 +162,7 @@ export class Main extends React.Component {
                 studentInstructionsEnabled:
                   studentInstructions.settings &&
                   toggle(studentInstructions.label),
-                rubricEnabled: !withRubric.forceEnabled && withRubric.settings && toggle(withRubric.label)
+                rubricEnabled: !withRubric?.forceEnabled && withRubric?.settings && toggle(withRubric?.label)
               },
             }}
           />
