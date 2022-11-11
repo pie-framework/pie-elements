@@ -86,7 +86,7 @@ export class Configure extends React.Component {
       spellCheck = {},
       maxImageWidth = {},
       maxImageHeight = {},
-      withRubric
+      withRubric = {}
     } = configuration || {};
     log('[render] model', model);
     const {
@@ -143,7 +143,7 @@ export class Configure extends React.Component {
                     ignoreOrder.settings && toggle(ignoreOrder.label),
                   'allowTrailingZeros.enabled':
                     allowTrailingZeros.settings && toggle(allowTrailingZeros.label),
-                  rubricEnabled: withRubric.settings && toggle(withRubric.label)
+                  rubricEnabled: withRubric?.settings && toggle(withRubric?.label)
                 },
               }}
             />
