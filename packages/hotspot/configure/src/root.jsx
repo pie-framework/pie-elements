@@ -85,7 +85,7 @@ export class Root extends React.Component {
       preserveAspectRatio = {},
       maxImageWidth = {},
       maxImageHeight = {},
-      withRubric
+      withRubric = {}
     } = configuration || {};
     const {
       teacherInstructionsEnabled,
@@ -136,7 +136,7 @@ export class Root extends React.Component {
                   rationaleEnabled: rationale.settings && toggle(rationale.label),
                   spellCheckEnabled:
                     spellCheck.settings && toggle(spellCheck.label),
-                  rubricEnabled: withRubric.settings && toggle(withRubric.label)
+                  rubricEnabled: withRubric?.settings && toggle(withRubric?.label)
                 }
               }}
             />

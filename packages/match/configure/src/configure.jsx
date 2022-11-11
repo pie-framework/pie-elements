@@ -209,7 +209,7 @@ class Configure extends React.Component {
       spellCheck = {},
       maxImageWidth = {},
       maxImageHeight = {},
-      withRubric
+      withRubric = {}
     } = configuration || {};
     const {
       teacherInstructionsEnabled,
@@ -269,7 +269,7 @@ class Configure extends React.Component {
                 scoringType:
                   scoringType.settings &&
                   radio(scoringType.label, ['auto', 'rubric']),
-                rubricEnabled: withRubric.settings && toggle(withRubric.label)
+                rubricEnabled: withRubric?.settings && toggle(withRubric?.label)
               }
             }}
           />

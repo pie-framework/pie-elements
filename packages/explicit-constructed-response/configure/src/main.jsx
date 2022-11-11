@@ -317,7 +317,7 @@ export class Main extends React.Component {
       maxResponseAreas,
       maxImageWidth = {},
       maxImageHeight = {},
-      withRubric,
+      withRubric = {},
     } = configuration || {};
     const {
       teacherInstructionsEnabled,
@@ -373,7 +373,7 @@ export class Main extends React.Component {
                   spellCheck.settings && toggle(spellCheck.label),
                   playerSpellCheckEnabled:
                   playerSpellCheck.settings && toggle(playerSpellCheck.label),
-                  rubricEnabled: withRubric.settings && toggle(withRubric.label)
+                  rubricEnabled: withRubric?.settings && toggle(withRubric?.label)
                 }
               }}
             />

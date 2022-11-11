@@ -425,7 +425,7 @@ export class Main extends React.Component {
       maxResponseAreas,
       maxImageWidth = {},
       maxImageHeight = {},
-      withRubric,
+      withRubric = {},
     } = configuration || {};
     const {
       rationaleEnabled,
@@ -529,7 +529,7 @@ export class Main extends React.Component {
                   promptEnabled: prompt.settings && toggle(prompt.label),
                   spellCheckEnabled:
                   spellCheck.settings && toggle(spellCheck.label),
-                  rubricEnabled: withRubric.settings && toggle(withRubric.label)
+                  rubricEnabled: withRubric?.settings && toggle(withRubric?.label)
                 }
               }}
             />
