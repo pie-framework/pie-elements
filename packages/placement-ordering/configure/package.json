@@ -17,7 +17,7 @@
     "pluralize": "^8.0.0",
     "prop-types": "^15.6.2",
     "react": "^16.8.1",
-    "react-dnd": "^9.3.2",
+    "react-dnd": "^14.0.5",
     "react-dom": "^16.8.1"
   }
 }
