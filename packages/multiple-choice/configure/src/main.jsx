@@ -138,7 +138,7 @@ const Design = withStyles(styles)((props) => {
     gridColumns,
     maxImageWidth = {},
     maxImageHeight = {},
-    withRubric,
+    withRubric = {},
   } = configuration || {};
   let { maxAnswerChoices } = configuration || {};
   const {
@@ -397,7 +397,7 @@ const Design = withStyles(styles)((props) => {
                   scoringType:
                     scoringType.settings &&
                     radio(scoringType.label, ['auto', 'rubric']),
-                  rubricEnabled: withRubric.settings && toggle(withRubric.label)
+                  rubricEnabled: withRubric?.settings && toggle(withRubric?.label)
                 },
               }}
             />
