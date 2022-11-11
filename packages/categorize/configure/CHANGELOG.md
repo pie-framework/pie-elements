@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.2.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@6.2.1...@pie-element/categorize-configure@6.2.2) (2022-11-11)
+
+
+### Bug Fixes
+
+* add sanity checks ([1cfd187](https://github.com/pie-framework/pie-elements/commit/1cfd187d2c2bab2d589aa2d7b7563b1c69e3295e))
+
+
+
+
+
 ## [6.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@6.2.0...@pie-element/categorize-configure@6.2.1) (2022-10-31)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
