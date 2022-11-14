@@ -50,26 +50,8 @@ export class Config extends React.Component {
     anchorEl: null
   };
 
-  toggleRemoveAllTiles = () => {
-    const { config, onModelChanged } = this.props;
-
-    const allAtOne = this.props.allChoicesHaveCount(1);
-    const update = config.choices.map(c => {
-      c.categoryCount = allAtOne ? 0 : 1;
-      return c;
-    });
-
-    onModelChanged({ choices: update });
-  };
-
   changeLabel = ({ target }) => {
     this.props.onModelChanged({ choicesLabel: target.value });
-  };
-
-  toggleShuffle = () => {
-    this.props.onModelChanged({
-      lockChoiceOrder: !this.props.config.lockChoiceOrder
-    });
   };
 
   changePosition = position => {
@@ -100,19 +82,6 @@ export class Config extends React.Component {
 
     return (
       <div className={classNames(classes.config, className)}>
-        <div className={classes.row}>
-          <Checkbox
-            label={'Remove all tiles after placing'}
-            checked={categoryCountIsOne}
-            onChange={this.toggleRemoveAllTiles}
-          />
-          <Checkbox
-            label={'Lock Choice Order'}
-            checked={config.lockChoiceOrder}
-            onChange={this.toggleShuffle}
-          />
-        </div>
-
         <div className={classes.configuration}>
           <TextField
             className={classes.label}

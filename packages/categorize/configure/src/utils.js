@@ -12,3 +12,6 @@ export const generateValidationMessage = config => {
 
   return 'Validation requirements:' + validationMessage;
 };
+
+// used in controller too, for consistency modify it there too
+export const multiplePlacements = { enabled: 'Yes', disabled: 'No', perChoice: 'Set Per Choice' };
