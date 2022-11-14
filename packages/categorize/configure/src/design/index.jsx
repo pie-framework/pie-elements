@@ -143,9 +143,8 @@ export class Design extends React.Component {
     if (allowMultiplePlacements === 'No') {
       return 1;
     }
-    else {
-      return c.categoryCount || 0;
-    }
+    return c.categoryCount || 0;
+
   };
 
   render() {
