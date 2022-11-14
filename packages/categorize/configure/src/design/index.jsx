@@ -164,6 +164,7 @@ export class Design extends React.Component {
       partialScoring = {},
       lockChoiceOrder = {},
       categoriesPerRow = {},
+      choicesPosition = {},
       teacherInstructions = {},
       studentInstructions = {},
       rationale = {},
@@ -242,6 +243,14 @@ export class Design extends React.Component {
                           min: 1,
                           max: 4,
                       }),
+                  choicesPosition:
+                      choicesPosition.settings &&
+                      dropdown(choicesPosition.label, [
+                        'below',
+                        'above',
+                        'left',
+                        'right',
+                      ], ),
                   allowMultiplePlacementsEnabled:
                       allowMultiplePlacements.settings &&
                       dropdown(allowMultiplePlacements.label, [
