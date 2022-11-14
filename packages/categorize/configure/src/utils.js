@@ -12,3 +12,5 @@ export const generateValidationMessage = config => {
 
   return 'Validation requirements:' + validationMessage;
 };
+
+export const multiplePlacements = { enabled: 'Yes', disabled: 'No', perChoice: 'Set Per Choice' };

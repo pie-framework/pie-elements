@@ -1,3 +1,5 @@
+import { multiplePlacements } from './utils';
+
 export default {
   model: {
     choices: [],
@@ -5,6 +7,7 @@ export default {
     choicesLabel: '',
     lockChoiceOrder: true,
     removeTilesAfterPlacing: false,
+    allowMultiplePlacementsEnabled: multiplePlacements.enabled,
     categoriesPerRow: 2,
     categories: [],
     alternates: [],
@@ -30,8 +33,12 @@ export default {
       enabled: true
     },
     lockChoiceOrder: {
-      settings: false,
-      label: 'Lock Choice Order'
+      settings: true,
+      label: 'Lock Choice Order',
+    },
+    allowMultiplePlacements: {
+      settings: true,
+      label: 'Allow Multiple Placements'
     },
     categoriesPerRow: {
       settings: true,
