@@ -3,6 +3,41 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.2.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-configure@6.2.2...@pie-element/placement-ordering-configure@6.2.3) (2022-11-11)
+
+
+### Bug Fixes
+
+* **placement-ordering:** add sanity checks for withRubric ([89f3a8a](https://github.com/pie-framework/pie-elements/commit/89f3a8ab13629bb3d6405955a7b0316d44be90c1))
+
+
+
+
+
+## [6.2.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-configure@6.2.1...@pie-element/placement-ordering-configure@6.2.2) (2022-11-01)
+
+
+### Bug Fixes
+
+* **placement-ordering:** change labels to not be transformed to upper case PD-2154 ([1ababe8](https://github.com/pie-framework/pie-elements/commit/1ababe896ce692fb4ac6c76154faa96accbcdf46))
+* **placement-ordering:** remove 'Ordering' subtitle PD-2153 ([c0654a2](https://github.com/pie-framework/pie-elements/commit/c0654a2061f33adb2fa8c95a6db4c93fe551c67c))
+
+
+
+
+
+## [6.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-configure@6.2.0...@pie-element/placement-ordering-configure@6.2.1) (2022-10-31)
+
+
+### Bug Fixes
+
+* add choices validation in controller method, remove from autoring PD-2152 ([8c49a7f](https://github.com/pie-framework/pie-elements/commit/8c49a7f6500bf541e03d86276292189aeadb465a))
+* imports and indentation ([f5e3b6b](https://github.com/pie-framework/pie-elements/commit/f5e3b6b1d025512354e57455bb89393ec6fdf968))
+
+
+
+
+
 # [6.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-configure@6.1.9...@pie-element/placement-ordering-configure@6.2.0) (2022-10-17)
 
 

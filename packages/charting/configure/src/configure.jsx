@@ -58,7 +58,8 @@ export class Configure extends React.Component {
 
   constructor(props) {
     super(props);
-    const { range, graph } = props.model || {};
+    const { range = {}, graph } = props.model || {};
+
 
     const gridValues = {
       range: getGridValues(range, graph.height, true)
@@ -126,7 +127,7 @@ export class Configure extends React.Component {
       labelsPlaceholders = {},
       titlePlaceholder = {},
       chartDimensions = {},
-      withRubric,
+      withRubric = {},
     } = configuration || {};
     const {
       teacherInstructionsEnabled,
@@ -170,7 +171,7 @@ export class Configure extends React.Component {
                     'all or nothing',
                     'partial scoring',
                   ]),
-                rubricEnabled: withRubric.settings && toggle(withRubric.label)
+                rubricEnabled: withRubric?.settings && toggle(withRubric?.label)
               },
             }}
           />

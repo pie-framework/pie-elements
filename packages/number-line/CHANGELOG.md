@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@6.2.1...@pie-element/number-line@6.3.0) (2022-11-01)
+
+
+### Features
+
+* add a different property in the config, forceEnabled, to force a value ([300c664](https://github.com/pie-framework/pie-elements/commit/300c664618f46177137deef3bced2d096cdb8126))
+
+
+
+
+
+## [6.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@6.2.0...@pie-element/number-line@6.2.1) (2022-10-31)
+
+
+### Bug Fixes
+
+* **number-line:** fix tests in point ([9964d5a](https://github.com/pie-framework/pie-elements/commit/9964d5aece5f02434fb9b171c9eb254c0e27fb16))
+* **number-line:** increase draggable zone for number-line point, for better user experience on ipad ([12cfabd](https://github.com/pie-framework/pie-elements/commit/12cfabdd6d6d9f988a218241e22314f44844db92))
+
+
+
+
+
 # [6.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@6.1.10...@pie-element/number-line@6.2.0) (2022-10-17)
 
 

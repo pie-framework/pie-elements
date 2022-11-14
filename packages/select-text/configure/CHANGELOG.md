@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.2.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@6.2.1...@pie-element/select-text-configure@6.2.2) (2022-11-11)
+
+
+### Bug Fixes
+
+* **select-text:** add sanity checks for withRubric ([a1fa349](https://github.com/pie-framework/pie-elements/commit/a1fa34952fca2f75b36d64acfbb88727793fc25f))
+
+
+
+
+
+## [6.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@6.2.0...@pie-element/select-text-configure@6.2.1) (2022-10-31)
+
+**Note:** Version bump only for package @pie-element/select-text-configure
+
+
+
+
+
 # [6.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@6.1.10...@pie-element/select-text-configure@6.2.0) (2022-10-17)
 
 

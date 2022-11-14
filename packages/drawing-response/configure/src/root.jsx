@@ -48,18 +48,6 @@ export class Root extends React.Component {
     });
   };
 
-  componentDidMount() {
-    const { model, onModelChanged, configuration } = this.props || {};
-    const { withRubric } = configuration || {};
-
-    if (withRubric.enabled) {
-      onModelChanged({
-        ...model,
-        rubricEnabled: true,
-      });
-    }
-  }
-
   render() {
     const {
       classes,
@@ -77,14 +65,13 @@ export class Root extends React.Component {
       spellCheck = {},
       maxImageWidth = {},
       maxImageHeight = {},
-      withRubric,
+      withRubric = {},
     } = configuration || {};
     const {
       teacherInstructionsEnabled,
       promptEnabled,
       spellCheckEnabled,
       backgroundImageEnabled,
-      rubricEnabled
     } = model || {};
     const toolbarOpts = {};
 
@@ -120,7 +107,7 @@ export class Root extends React.Component {
                     toggle(teacherInstructions.label),
                   spellCheckEnabled:
                     spellCheck.settings && toggle(spellCheck.label),
-                  rubricEnabled: withRubric.settings && toggle(withRubric.label)
+                  rubricEnabled: !withRubric?.forceEnabled && withRubric?.settings && toggle(withRubric?.label)
                 },
               }}
             />

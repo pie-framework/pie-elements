@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-controller@6.4.7...@pie-element/placement-ordering-controller@6.5.0) (2022-10-31)
+
+
+### Bug Fixes
+
+* add choices validation in controller method, remove from autoring PD-2152 ([8c49a7f](https://github.com/pie-framework/pie-elements/commit/8c49a7f6500bf541e03d86276292189aeadb465a))
+* **placement-ordering:** add sanity check for alternateResponses to prevent console.error if it's undefined PD-2135 ([5290755](https://github.com/pie-framework/pie-elements/commit/5290755b2b4a339f81835a6c8dfd0dacee540630))
+
+
+### Features
+
+* **placement-ordering:** added validation PD-1743 ([a2f2611](https://github.com/pie-framework/pie-elements/commit/a2f2611da08ab41f2944b9dd5adaca1fc4821d8a))
+
+
+
+
+
 ## [6.4.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-controller@6.4.6...@pie-element/placement-ordering-controller@6.4.7) (2022-05-16)
 
 **Note:** Version bump only for package @pie-element/placement-ordering-controller

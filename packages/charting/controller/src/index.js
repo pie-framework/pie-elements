@@ -278,7 +278,7 @@ export const validate = (model = {}, config = {}) => {
   if (categories.length < 1 || categories.length > 20) {
     correctAnswerErrors.categoriesError = 'The correct answer should include between 1 and 20 categories.';
   } else if (isEqual(data.map(category => pick(category, 'value', 'label')), correctData.map(category => pick(category, 'value', 'label')))) {
-    correctAnswerErrors.indenticalError = 'Correct answer should not be identical to the chart’s initial state';
+    correctAnswerErrors.identicalError = 'Correct answer should not be identical to the chart’s initial state';
   }
 
   if (!isEmpty(categoryErrors)) {

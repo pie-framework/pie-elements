@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.4.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@4.4.1...@pie-element/graphing@4.4.2) (2022-11-11)
+
+
+### Bug Fixes
+
+* **graphing:** add sanity checks for withRubric ([607322c](https://github.com/pie-framework/pie-elements/commit/607322cd29b8218c00644040221e9534a817d06e))
+
+
+
+
+
+## [4.4.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@4.4.0...@pie-element/graphing@4.4.1) (2022-10-31)
+
+**Note:** Version bump only for package @pie-element/graphing
+
+
+
+
+
 # [4.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@4.3.3...@pie-element/graphing@4.4.0) (2022-10-17)
 
 

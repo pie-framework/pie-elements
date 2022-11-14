@@ -237,7 +237,7 @@ export class Design extends React.Component {
                   scoringType:
                     scoringType.settings &&
                     radio(scoringType.label, ['auto', 'rubric']),
-                  rubricEnabled: withRubric.settings && toggle(withRubric.label)
+                  rubricEnabled: withRubric?.settings && toggle(withRubric?.label)
                 },
               }}
             />

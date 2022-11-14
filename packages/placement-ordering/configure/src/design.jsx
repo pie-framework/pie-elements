@@ -112,7 +112,7 @@ export class Design extends React.Component {
       scoringType = {},
       maxImageWidth = {},
       maxImageHeight = {},
-      withRubric
+      withRubric = {}
     } = configuration || {};
     const {
       teacherInstructionsEnabled,
@@ -124,7 +124,7 @@ export class Design extends React.Component {
       errors,
       rubricEnabled
     } = model || {};
-    const { orderError } = errors || {};
+    const { orderError, choicesErrors } = errors || {};
     const validationMessage = generateValidationMessage();
 
     const toolbarOpts = {};
@@ -193,7 +193,7 @@ export class Design extends React.Component {
                 scoringType:
                   scoringType.settings &&
                   radio(scoringType.label, ['auto', 'rubric']),
-                rubricEnabled: withRubric.settings && toggle(withRubric.label)
+                rubricEnabled: withRubric?.settings && toggle(withRubric?.label)
               }
             }}
           />
@@ -221,9 +221,9 @@ export class Design extends React.Component {
         )}
 
         {promptEnabled && (
-          <FormSection label="Ordering">
+          <FormSection>
             <InputContainer
-              label={prompt && prompt.label && prompt.label.toUpperCase()}
+              label={prompt && prompt.label}
               className={classes.promptHolder}
             >
               <EditableHtml
@@ -280,7 +280,7 @@ export class Design extends React.Component {
                 label={
                   choiceLabel &&
                   choiceLabel.label &&
-                  `${singularLabel} label`.toUpperCase()
+                  `${singularLabel} label`
                 }
                 className={classes.promptHolder}
               >
@@ -303,7 +303,7 @@ export class Design extends React.Component {
                 label={
                   targetLabel &&
                   targetLabel.label &&
-                  targetLabel.label.toUpperCase()
+                  targetLabel.label
                 }
                 className={classes.promptHolder}
               >
@@ -324,7 +324,7 @@ export class Design extends React.Component {
 
           {choices.settings && (
             <InputContainer
-              label={choices && choices.label && pluralLabel.toUpperCase()}
+              label={choices && choices.label && pluralLabel}
               className={classes.promptHolder}
             >
               <ChoiceEditor
@@ -341,6 +341,7 @@ export class Design extends React.Component {
                 spellCheck={spellCheckEnabled}
                 maxImageWidth={maxChoicesImageWidth}
                 maxImageHeight={maxChoicesImageHeight}
+                errors={choicesErrors}
               />
             </InputContainer>
           )}

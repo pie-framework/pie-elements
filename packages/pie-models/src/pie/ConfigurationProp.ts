@@ -10,6 +10,23 @@ export interface ConfigureProp {
     label?: string;
 }
 
+export interface ConfigureWithForceProp {
+    /**
+     * Indicates if the item has to be displayed in the Settings Panel
+     */
+    settings?: boolean;
+
+    /**
+     * Indicates the label for the item that has to be displayed in the Settings Panel
+     */
+    label?: string;
+
+    /**
+     * Indicates the value for the toggle; if true, this property will not be visible in Settings Panel
+     */
+    forceEnabled?: boolean;
+}
+
 export interface ConfigurePropWithEnabled {
     /**
      * Indicates if the item has to be displayed in the Settings Panel

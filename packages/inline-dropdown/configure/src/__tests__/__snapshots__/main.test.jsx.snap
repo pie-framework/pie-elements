@@ -263,6 +263,7 @@ There should be at most 10 choices defined per response area."
         open={false}
       />
       <EditableHtml
+        disableImageAlignmentButtons={true}
         disabled={false}
         highlightShape={false}
         languageCharactersProps={
@@ -700,6 +701,7 @@ There should be at most 10 choices defined per response area."
         open={false}
       />
       <EditableHtml
+        disableImageAlignmentButtons={true}
         disabled={false}
         highlightShape={false}
         languageCharactersProps={

@@ -162,7 +162,7 @@ export class Main extends React.Component {
       maxResponseAreas,
       maxImageWidth = {},
       maxImageHeight = {},
-      withRubric,
+      withRubric = {},
     } = configuration || {};
     const {
       rationaleEnabled,
@@ -224,7 +224,7 @@ export class Main extends React.Component {
                     spellCheckEnabled:
                     spellCheck.settings && toggle(spellCheck.label),
                   promptEnabled: prompt.settings && toggle(prompt.label),
-                  rubricEnabled: withRubric.settings && toggle(withRubric.label)
+                  rubricEnabled: withRubric?.settings && toggle(withRubric?.label)
                 }
               }}
             />
@@ -301,6 +301,7 @@ export class Main extends React.Component {
               markup={model.slateMarkup}
               onChange={this.onMarkupChanged}
               imageSupport={imageSupport}
+              disableImageAlignmentButtons={true}
               nonEmpty={false}
               disableUnderline
               toolbarOpts={toolbarOpts}

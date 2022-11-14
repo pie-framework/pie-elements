@@ -223,6 +223,7 @@ export class CorrectResponse extends React.Component {
   render() {
     const { classes, model, charts, error, correctAnswerErrors } = this.props;
     const { categories } = this.state;
+    const { domain = {}, range = {} } = model || {};
 
     return (
       <div>
@@ -231,7 +232,7 @@ export class CorrectResponse extends React.Component {
           <div className={classes.column} key="graph">
             {correctAnswerErrors && (
               <Typography component="div" type="body1" className={classes.noCorrectResponse}>
-              <span>{correctAnswerErrors.indenticalError || correctAnswerErrors.categoriesError}</span>
+              <span>{correctAnswerErrors.identicalError || correctAnswerErrors.categoriesError}</span>
             </Typography>
             )}
             <Typography component="div" type="body1">
@@ -242,8 +243,8 @@ export class CorrectResponse extends React.Component {
               <Chart
                 chartType={model.chartType}
                 size={model.graph}
-                domain={model.domain}
-                range={model.range}
+                domain={domain}
+                range={range}
                 charts={charts}
                 data={categories}
                 title={model.title}

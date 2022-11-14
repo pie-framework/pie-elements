@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.2.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@5.2.1...@pie-element/hotspot-configure@5.2.2) (2022-11-11)
+
+
+### Bug Fixes
+
+* **hotspot:** add sanity checks for withRubric ([b4d1fb8](https://github.com/pie-framework/pie-elements/commit/b4d1fb8089b87ff64759cea4add7ab870e702e0e))
+
+
+
+
+
+## [5.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@5.2.0...@pie-element/hotspot-configure@5.2.1) (2022-10-31)
+
+**Note:** Version bump only for package @pie-element/hotspot-configure
+
+
+
+
+
 # [5.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@5.1.9...@pie-element/hotspot-configure@5.2.0) (2022-10-17)
 
 

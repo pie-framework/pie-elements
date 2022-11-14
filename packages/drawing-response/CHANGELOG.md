@@ -3,6 +3,51 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response@4.3.0...@pie-element/drawing-response@4.3.1) (2022-11-11)
+
+
+### Bug Fixes
+
+* **drawing-response:** add sanity checks for withRubric ([d22ea78](https://github.com/pie-framework/pie-elements/commit/d22ea78fc5b0a9dd73d3614fbd2a39b28183a991))
+
+
+
+
+
+# [4.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response@4.2.2...@pie-element/drawing-response@4.3.0) (2022-11-01)
+
+
+### Features
+
+* add a different property in the config, forceEnabled, to force a value ([300c664](https://github.com/pie-framework/pie-elements/commit/300c664618f46177137deef3bced2d096cdb8126))
+
+
+
+
+
+## [4.2.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response@4.2.1...@pie-element/drawing-response@4.2.2) (2022-11-01)
+
+
+### Bug Fixes
+
+* trigger updating model depending on configuration.withRubric ([6b42963](https://github.com/pie-framework/pie-elements/commit/6b429639dade1f72e77e972530ab784c5417384c))
+* trigger updating model depending on configuration.withRubric (added additional check) ([02ae9c0](https://github.com/pie-framework/pie-elements/commit/02ae9c0664aa140d6624643b6efbdef33cea2acb))
+
+
+
+
+
+## [4.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response@4.2.0...@pie-element/drawing-response@4.2.1) (2022-10-31)
+
+
+### Bug Fixes
+
+* **drawing-response:** add missing spaces to lightblue and lightyellow colors-PD-2046 ([f20de3f](https://github.com/pie-framework/pie-elements/commit/f20de3fee768818acb38531e8d0b7c063a0e6994))
+
+
+
+
+
 # [4.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response@4.1.9...@pie-element/drawing-response@4.2.0) (2022-10-17)
 
 
