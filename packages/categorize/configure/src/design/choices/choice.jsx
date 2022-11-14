@@ -65,9 +65,7 @@ export class Choice extends React.Component {
     onChange(choice);
   };
 
-  isCheckboxShown = allowMultiplePlacements => {
-    return allowMultiplePlacements === multiplePlacements.perChoice;
-  };
+  isCheckboxShown = allowMultiplePlacements => allowMultiplePlacements === multiplePlacements.perChoice;
 
   render() {
     const {
