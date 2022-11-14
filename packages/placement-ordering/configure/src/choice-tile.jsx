@@ -12,6 +12,7 @@ import RemoveCircle from '@material-ui/icons/RemoveCircle';
 import debug from 'debug';
 import { withStyles } from '@material-ui/core/styles';
 import { InfoDialog } from './choice-editor';
+import { color } from '@pie-lib/render-ui';
 
 const log = debug('@pie-element:placement-ordering:configure:choice-tile');
 
@@ -60,7 +61,8 @@ export class ChoiceTile extends React.Component {
     const {
       choice: {
         label,
-        editable
+        editable,
+        index
       },
       isDragging,
       connectDragSource,
@@ -98,7 +100,8 @@ export class ChoiceTile extends React.Component {
             </span>
         </CardActions>
         <div style={{width: '100%'}}>
-        <EditableHtml
+          {!editable && index === 0 ? <div className={classes.correctOrder}>Correct Order</div> : null}
+          <EditableHtml
           disabled={!editable}
           className={classNames(classes.prompt, !editable && classes.targetPrompt)}
           placeholder="Enter a choice"
@@ -177,6 +180,12 @@ const Styled = withStyles(theme => ({
   errorText: {
     fontSize: '12px',
     color: 'red'
+  },
+  correctOrder: {
+    position: 'absolute',
+    top: 0,
+    fontSize: '12px',
+    color: color.disabled()
   }
 }))(ChoiceTile);
 
