@@ -4,6 +4,7 @@ import { InputContainer } from '@pie-lib/render-ui';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import { withStyles } from '@material-ui/core/styles';
+import classnames from 'classnames';
 
 // TODO: Change Palette so will render inputs and colors dynamically
 class Palette extends React.Component {
@@ -45,7 +46,10 @@ class Palette extends React.Component {
               <MenuItem
                 key={value}
                 value={value}
-                className={classes.item}
+                className={classnames(classes.item, {
+                  [classes.blackColorItem]:
+                   value === 'black'
+                })}
                 style={{ backgroundColor: value }}
               >
                 {label}
@@ -94,6 +98,9 @@ const styles = theme => ({
     marginLeft: theme.spacing.unit * 2,
     marginRight: theme.spacing.unit * 2,
     marginTop: theme.spacing.unit * 2
+  },
+  blackColorItem: {
+    color:theme.palette.background.paper,
   },
   select: {
     fontSize: 'inherit',

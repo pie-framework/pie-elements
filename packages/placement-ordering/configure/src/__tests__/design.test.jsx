@@ -293,10 +293,11 @@ describe('Placement Ordering', () => {
         w.instance().onChoiceEditorChange(choices, correctResponse);
 
         expect(onModelChanged).toBeCalledWith({
-          ...model,
-          choices,
-          correctResponse
-        });
+            ...model,
+            choices,
+            correctResponse,
+          },
+          false);
       });
     });
 
