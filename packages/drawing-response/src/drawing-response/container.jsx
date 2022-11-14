@@ -47,8 +47,8 @@ export class Container extends Component {
       fillColor: 'white',
       fillColorList: [
         { value: 'transparent', label: 'no fill' },
-        { value: 'lightblue', label: 'lightblue' },
-        { value: 'lightyellow', label: 'lightyellow' },
+        { value: 'lightblue', label: 'light blue' },
+        { value: 'lightyellow', label: 'light yellow' },
         ...ROGVAIV
       ],
       outlineColor: 'black',

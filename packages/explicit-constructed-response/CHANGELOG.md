@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@4.3.0...@pie-element/explicit-constructed-response@4.3.1) (2022-11-11)
+
+
+### Bug Fixes
+
+* **explicit-constructed-response:** add sanity checks for withRubric ([8be2af0](https://github.com/pie-framework/pie-elements/commit/8be2af0bbe35d0e8ad3f7270cd3c390f9bb1c558))
+
+
+
+
+
+# [4.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@4.2.1...@pie-element/explicit-constructed-response@4.3.0) (2022-11-01)
+
+
+### Features
+
+* add a different property in the config, forceEnabled, to force a value ([300c664](https://github.com/pie-framework/pie-elements/commit/300c664618f46177137deef3bced2d096cdb8126))
+
+
+
+
+
+## [4.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@4.2.0...@pie-element/explicit-constructed-response@4.2.1) (2022-10-31)
+
+**Note:** Version bump only for package @pie-element/explicit-constructed-response
+
+
+
+
+
 # [4.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@4.1.9...@pie-element/explicit-constructed-response@4.2.0) (2022-10-17)
 
 

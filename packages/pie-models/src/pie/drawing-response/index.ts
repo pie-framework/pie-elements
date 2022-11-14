@@ -2,7 +2,7 @@ import { PieModel } from '../../PieModel';
 import {
   ConfigureProp,
   ConfigurePropWithEnabled,
-  ConfigureMaxImageDimensionsProp,
+  ConfigureMaxImageDimensionsProp, ConfigureWithForceProp,
 } from '../ConfigurationProp';
 import { PromptConfig } from '../../PromptConfig';
 import { Dimension } from '../../Dimension';
@@ -100,5 +100,5 @@ export interface DrawingResponseConfigure extends PromptConfig {
   /**
    * Rubric configuration
    */
-  withRubric?: ConfigureProp;
+  withRubric?: ConfigureWithForceProp;
 }

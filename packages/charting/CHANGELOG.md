@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@5.2.0...@pie-element/charting@5.2.1) (2022-11-11)
+
+
+### Bug Fixes
+
+* **charting:** add sanity checks for withRubric ([a4e7fdc](https://github.com/pie-framework/pie-elements/commit/a4e7fdc85a89f8e018f7797fbe242a03be44eaa7))
+* **drag-in-the-blank:** add sanity checks for withRubric ([709cdea](https://github.com/pie-framework/pie-elements/commit/709cdeaf53b19e44aab3be4250b01e8c50dcc645))
+
+
+
+
+
+# [5.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@5.1.1...@pie-element/charting@5.2.0) (2022-11-01)
+
+
+### Features
+
+* add a different property in the config, forceEnabled, to force a value ([300c664](https://github.com/pie-framework/pie-elements/commit/300c664618f46177137deef3bced2d096cdb8126))
+
+
+
+
+
+## [5.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@5.1.0...@pie-element/charting@5.1.1) (2022-10-31)
+
+
+### Bug Fixes
+
+* **charting:** add sanity checks for range and domain ([653e1e0](https://github.com/pie-framework/pie-elements/commit/653e1e0dea5f6a2453d17dfd2589e24509717775))
+
+
+
+
+
 # [5.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@5.0.10...@pie-element/charting@5.1.0) (2022-10-17)
 
 

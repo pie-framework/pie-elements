@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.2.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@5.2.1...@pie-element/match@5.2.2) (2022-11-11)
+
+
+### Bug Fixes
+
+* **match:** add sanity checks for withRubric ([0b4226d](https://github.com/pie-framework/pie-elements/commit/0b4226d1fdf898c5aafd567b8fd01ed3fbe7d2e7))
+
+
+
+
+
+## [5.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@5.2.0...@pie-element/match@5.2.1) (2022-10-31)
+
+**Note:** Version bump only for package @pie-element/match
+
+
+
+
+
 # [5.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@5.1.10...@pie-element/match@5.2.0) (2022-10-17)
 
 

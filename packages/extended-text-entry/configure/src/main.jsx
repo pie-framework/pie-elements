@@ -56,18 +56,6 @@ export class Main extends React.Component {
     onModelChanged(update);
   };
 
-  componentDidMount() {
-    const { model, onModelChanged, configuration } = this.props || {};
-    const { withRubric } = configuration || {};
-
-    if (withRubric.enabled) {
-      onModelChanged({
-        ...model,
-        rubricEnabled: true,
-      });
-    }
-  }
-
   render() {
     const {
       model,
@@ -93,14 +81,13 @@ export class Main extends React.Component {
       playerSpellCheck = {},
       maxImageWidth = {},
       maxImageHeight = {},
-      withRubric,
+      withRubric = {},
     } = configuration || {};
     const {
       teacherInstructionsEnabled,
       promptEnabled,
       feedbackEnabled,
       spellCheckEnabled,
-      rubricEnabled
     } = model || {};
     const toolbarOpts = {};
 
@@ -175,7 +162,7 @@ export class Main extends React.Component {
                 studentInstructionsEnabled:
                   studentInstructions.settings &&
                   toggle(studentInstructions.label),
-                rubricEnabled: withRubric.settings && toggle(withRubric.label)
+                rubricEnabled: !withRubric?.forceEnabled && withRubric?.settings && toggle(withRubric?.label)
               },
             }}
           />

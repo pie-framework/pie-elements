@@ -425,7 +425,7 @@ export class Main extends React.Component {
       maxResponseAreas,
       maxImageWidth = {},
       maxImageHeight = {},
-      withRubric,
+      withRubric = {},
     } = configuration || {};
     const {
       rationaleEnabled,
@@ -442,12 +442,12 @@ export class Main extends React.Component {
     const defaultImageMaxWidth = maxImageWidth && maxImageWidth.prompt;
     const defaultImageMaxHeight = maxImageHeight && maxImageHeight.prompt;
 
-    const renderChoiceRationale = () => (Object.keys(choices) || []).map(key =>
+    const renderChoiceRationale = () => (Object.keys(choices) || []).map((key, index) =>
       <div key={key} className={classes.rationaleChoices}>
         <ExpansionPanel>
           <ExpansionPanelSummary expandIcon={<ExpandMoreIcon/>}>
             <Typography className={classes.text}>
-              {`Rationale for response area #${parseInt(key) + 1}`}
+              {`Rationale for response area #${index + 1}`}
             </Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails className={classes.panelDetails}>
@@ -529,7 +529,7 @@ export class Main extends React.Component {
                   promptEnabled: prompt.settings && toggle(prompt.label),
                   spellCheckEnabled:
                   spellCheck.settings && toggle(spellCheck.label),
-                  rubricEnabled: withRubric.settings && toggle(withRubric.label)
+                  rubricEnabled: withRubric?.settings && toggle(withRubric?.label)
                 }
               }}
             />
@@ -659,6 +659,7 @@ export class Main extends React.Component {
               markup={model.slateMarkup || ''}
               onChange={this.onChange}
               imageSupport={imageSupport}
+              disableImageAlignmentButtons={true}
               onBlur={this.onBlur}
               disabled={false}
               highlightShape={false}

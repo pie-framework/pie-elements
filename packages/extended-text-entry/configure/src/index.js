@@ -12,19 +12,37 @@ import Main from './main';
 import defaults from './defaults';
 
 export default class ExtendedTextEntry extends HTMLElement {
-  static createDefaultModel = (model = {}) => ({
-    ...defaults.model,
-    ...model
-  });
+  static createDefaultModel = (model = {}, config) => {
+    const defaultModel = {
+      ...defaults.model,
+      ...model,
+    };
+
+    if (config?.withRubric?.forceEnabled && !defaultModel.rubricEnabled) {
+      defaultModel.rubricEnabled = true;
+    }
+
+    return defaultModel;
+  };
 
   constructor() {
     super();
-    this._model = ExtendedTextEntry.createDefaultModel();
     this._configuration = defaults.configuration;
+    this._model = ExtendedTextEntry.createDefaultModel({}, this._configuration);
+    this.onModelChanged = this.onModelChanged.bind(this);
+  }
+
+  verifyRubric = async (c) => {
+    const { withRubric = {} } = c || {};
+
+    if (withRubric?.forceEnabled && !this._model.rubricEnabled) {
+      this._model.rubricEnabled = true;
+      this.dispatchEvent(new ModelUpdatedEvent(this._model));
+    }
   }
 
   set model(m) {
-    this._model = ExtendedTextEntry.createDefaultModel(m);
+    this._model = ExtendedTextEntry.createDefaultModel(m, this._configuration);
     this.render();
   }
 
@@ -33,6 +51,8 @@ export default class ExtendedTextEntry extends HTMLElement {
       ...defaults.configuration,
       ...c
     };
+
+    this.verifyRubric(this._configuration);
 
     this.render();
   }
@@ -50,6 +70,12 @@ export default class ExtendedTextEntry extends HTMLElement {
     };
 
     if (this._model) {
+      const { withRubric = {} } = c || {};
+
+      if (withRubric?.forceEnabled) {
+        this._model.rubricEnabled = true;
+      }
+
       this.onModelChanged(this._model);
     }
 
@@ -78,6 +104,8 @@ export default class ExtendedTextEntry extends HTMLElement {
   }
 
   render() {
+    console.log('this._model.rubricEnabled', this._model.rubricEnabled);
+
     if (this._model) {
       const element = React.createElement(Main, {
         model: this._model,

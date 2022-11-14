@@ -39,7 +39,8 @@ export class ChoiceTile extends React.Component {
     onDelete: PropTypes.func.isRequired,
     disableImages: PropTypes.bool,
     toolbarOpts: PropTypes.object,
-    choicesLabel: PropTypes.string
+    choicesLabel: PropTypes.string,
+    error: PropTypes.string,
   };
 
   state = {
@@ -49,37 +50,10 @@ export class ChoiceTile extends React.Component {
   };
 
   onLabelChange = label => {
-    const { choice, onChoiceChange, choices, choicesLabel } = this.props;
-    const currentValue = choice.label;
-    const sameValue = choices.filter(choice => {
-      const wasChanged = currentValue !== label && `<div>${currentValue}</div>` !== label;
-      const sameValueEntered = choice.label === label || `<div>${choice.label}</div>` === label;
+    const { choice, onChoiceChange } = this.props;
 
-      return wasChanged && sameValueEntered;
-    });
-
-    const empty = label === '<div></div>';
-
-    if (sameValue.length || empty) {
-      this.setState({
-        dialog: {
-          open: true,
-          message: `Each of the ${choicesLabel} must be non-empty and unique.`,
-          onOk: () => {
-            this.setState(
-              {
-                dialog: {
-                  open: false
-                }
-              }
-            );
-          }
-        }
-      });
-    } else {
-      choice.label = label;
-      onChoiceChange(choice);
-    }
+    choice.label = label;
+    onChoiceChange(choice);
   };
 
   render() {
@@ -98,7 +72,8 @@ export class ChoiceTile extends React.Component {
       spellCheck,
       toolbarOpts,
       maxImageWidth,
-      maxImageHeight
+      maxImageHeight,
+      error
     } = this.props;
     const { dialog } = this.state;
 
@@ -122,6 +97,7 @@ export class ChoiceTile extends React.Component {
               <DragHandle className={classes.actions} />
             </span>
         </CardActions>
+        <div style={{width: '100%'}}>
         <EditableHtml
           disabled={!editable}
           className={classNames(classes.prompt, !editable && classes.targetPrompt)}
@@ -137,7 +113,10 @@ export class ChoiceTile extends React.Component {
           maxImageWidth={maxImageWidth}
           maxImageHeight={maxImageHeight}
           languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+          error={editable && error}
         />
+        {editable && error && <div className={classes.errorText}>{error}</div>}
+        </div>
         {editable && (
           <div className={classes.controls}>
             <IconButton color='default' onClick={onDelete}>
@@ -194,6 +173,10 @@ const Styled = withStyles(theme => ({
   },
   actions: {
     color: '#B1B1B1'
+  },
+  errorText: {
+    fontSize: '12px',
+    color: 'red'
   }
 }))(ChoiceTile);
 

@@ -120,6 +120,7 @@ export class ChartingConfig extends React.Component {
   render() {
     const { classes, model, charts, labelsPlaceholders, titlePlaceholder, showPixelGuides } = this.props;
     const { dialog } = this.state;
+    const { domain = {}, range = {} } = model || {};
 
     return (
       <div>
@@ -138,8 +139,8 @@ export class ChartingConfig extends React.Component {
               showPixelGuides={showPixelGuides}
               chartType={model.chartType}
               size={model.graph}
-              domain={model.domain}
-              range={model.range}
+              domain={domain}
+              range={range}
               charts={charts}
               // index is a property used for setting the correct answer data; it's needed in order to remove categories from other data sets from the same index it was removed from the initial data
               data={model.data.map((category, index) => ({

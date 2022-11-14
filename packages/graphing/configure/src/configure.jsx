@@ -124,7 +124,7 @@ export class Configure extends React.Component {
       teacherInstructions = {},
       maxImageWidth = {},
       maxImageHeight = {},
-      withRubric,
+      withRubric = {},
     } = configuration || {};
     const {
       labelsEnabled,
@@ -184,7 +184,7 @@ export class Configure extends React.Component {
                 scoringType:
                   scoringType.settings &&
                   radio(scoringType.label, ['dichotomous', 'partial scoring']),
-                rubricEnabled: withRubric.settings && toggle(withRubric.label)
+                rubricEnabled: withRubric?.settings && toggle(withRubric?.label)
               }
             }}
           />

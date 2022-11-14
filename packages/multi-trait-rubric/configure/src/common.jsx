@@ -329,6 +329,7 @@ export const ExpandedInput = withStyles({
       spellCheck={spellCheck}
       uploadSoundSupport={uploadSoundSupport}
       languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+      autoWidthToolbar
     />
   </div>
 ));
