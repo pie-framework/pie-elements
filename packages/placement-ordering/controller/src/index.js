@@ -122,7 +122,7 @@ export function model(question, session, env) {
       base.teacherInstructions = null;
     }
 
-    if (env.mode === 'evaluate' && normalizedQuestion.feedbackEnabled) {
+    if (env.mode === 'evaluate') {
       const value = (session && session.value) || [];
       const allCorrectResponses = getAllCorrectResponses(normalizedQuestion);
 
@@ -167,10 +167,11 @@ export function model(question, session, env) {
         base.correctResponse = flattenCorrect(normalizedQuestion);
       }
 
-      getFeedbackForCorrectness(
-        base.correctness,
-        normalizedQuestion.feedback
-      ).then(feedback => {
+      const fb = normalizedQuestion.feedbackEnabled
+        ? getFeedbackForCorrectness(base.correctness, normalizedQuestion.feedback)
+        : Promise.resolve(undefined);
+
+      fb.then((feedback) => {
         base.feedback = feedback;
         resolve(base);
       });
