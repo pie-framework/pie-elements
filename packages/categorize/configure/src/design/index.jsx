@@ -21,6 +21,7 @@ import Choices from './choices';
 import { Divider } from './buttons';
 import { buildAlternateResponses, buildCategories } from './builder';
 import Header from './header';
+import { multiplePlacements } from '../utils';
 
 const { dropdown, Panel, toggle, radio } = settings;
 const { Provider: IdProvider } = uid;
@@ -137,10 +138,10 @@ export class Design extends React.Component {
   };
 
   checkAllowMultiplePlacements = (allowMultiplePlacements, c) => {
-    if (allowMultiplePlacements === 'Yes') {
+    if (allowMultiplePlacements === multiplePlacements.enabled) {
       return 0;
     }
-    if (allowMultiplePlacements === 'No') {
+    if (allowMultiplePlacements === multiplePlacements.disabled) {
       return 1;
     }
     return c.categoryCount || 0;
@@ -237,9 +238,9 @@ export class Design extends React.Component {
                   allowMultiplePlacementsEnabled:
                       allowMultiplePlacements.settings &&
                       dropdown(allowMultiplePlacements.label, [
-                        'Yes',
-                        'No',
-                        'Set Per Choice',
+                        multiplePlacements.enabled,
+                        multiplePlacements.disabled,
+                        multiplePlacements.perChoice,
                       ], ),
                   promptEnabled: prompt.settings && toggle(prompt.label),
                   feedbackEnabled: feedback.settings && toggle(feedback.label),

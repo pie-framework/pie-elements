@@ -1,3 +1,5 @@
+import { multiplePlacements } from './utils';
+
 export default {
   model: {
     choices: [],
@@ -5,7 +7,7 @@ export default {
     choicesLabel: '',
     lockChoiceOrder: true,
     removeTilesAfterPlacing: false,
-    allowMultiplePlacementsEnabled: 'Yes',
+    allowMultiplePlacementsEnabled: multiplePlacements.enabled,
     categoriesPerRow: 2,
     categories: [],
     alternates: [],

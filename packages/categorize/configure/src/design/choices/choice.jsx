@@ -11,6 +11,7 @@ import DragHandle from '@material-ui/icons/DragHandle';
 import { DragSource } from 'react-dnd';
 import debug from 'debug';
 import { uid } from '@pie-lib/drag';
+import { multiplePlacements } from '../../utils';
 
 const log = debug('@pie-element:categorize:configure:choice');
 
@@ -65,7 +66,7 @@ export class Choice extends React.Component {
   };
 
   isCheckboxShown = allowMultiplePlacements => {
-    return !(allowMultiplePlacements === 'Yes' || allowMultiplePlacements === 'No');
+    return allowMultiplePlacements === multiplePlacements.perChoice;
   };
 
   render() {
