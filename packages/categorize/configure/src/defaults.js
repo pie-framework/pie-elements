@@ -40,6 +40,10 @@ export default {
       settings: true,
       label: 'Allow Multiple Placements'
     },
+    categoriesPerRow: {
+      settings: true,
+      label: 'Categories per row'
+    },
     partialScoring: {
       settings: false,
       label: 'Allow Partial Scoring',

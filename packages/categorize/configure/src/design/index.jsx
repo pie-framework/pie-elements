@@ -23,7 +23,7 @@ import { buildAlternateResponses, buildCategories } from './builder';
 import Header from './header';
 import { multiplePlacements } from '../utils';
 
-const { dropdown, Panel, toggle, radio } = settings;
+const { dropdown, Panel, toggle, radio, numberField } = settings;
 const { Provider: IdProvider } = uid;
 
 export class Design extends React.Component {
@@ -163,6 +163,7 @@ export class Design extends React.Component {
       allowMultiplePlacements = {},
       partialScoring = {},
       lockChoiceOrder = {},
+      categoriesPerRow = {},
       teacherInstructions = {},
       studentInstructions = {},
       rationale = {},
@@ -235,6 +236,12 @@ export class Design extends React.Component {
                     partialScoring.settings && toggle(partialScoring.label),
                   lockChoiceOrder:
                     lockChoiceOrder.settings && toggle(lockChoiceOrder.label),
+                  categoriesPerRow: categoriesPerRow.settings && numberField(categoriesPerRow.label,
+                    {
+                          label: categoriesPerRow.label,
+                          min: 1,
+                          max: 4,
+                      }),
                   allowMultiplePlacementsEnabled:
                       allowMultiplePlacements.settings &&
                       dropdown(allowMultiplePlacements.label, [
