@@ -64,11 +64,8 @@ export class Choice extends React.Component {
     onChange(choice);
   };
 
-  isCheckboxShown = (allowMultiplePlacements) => {
-    if(allowMultiplePlacements === 'Yes' || allowMultiplePlacements === 'No'){
-      return false;
-    }
-    return true;
+  isCheckboxShown = allowMultiplePlacements => {
+    return !(allowMultiplePlacements === 'Yes' || allowMultiplePlacements === 'No');
   };
 
   render() {
@@ -90,6 +87,7 @@ export class Choice extends React.Component {
     } = this.props;
 
     const draggable = canDrag(this.props);
+
     const showRemoveAfterPlacing = this.isCheckboxShown(allowMultiplePlacements);
 
     return (
@@ -126,12 +124,12 @@ export class Choice extends React.Component {
 
         <CardActions className={classes.actions}>
           <DeleteButton label={'delete'} onClick={onDelete} />
-          { showRemoveAfterPlacing && <Checkbox
-              mini
-              label={'Remove after placing'}
-              checked={choice.categoryCount === 1}
-              onChange={this.changeCategoryCount}
-          />
+          {showRemoveAfterPlacing &&
+              <Checkbox
+                mini
+                label={'Remove after placing'}
+                checked={choice.categoryCount === 1}
+                onChange={this.changeCategoryCount} />
           }
         </CardActions>
       </Card>

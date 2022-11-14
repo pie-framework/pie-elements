@@ -137,16 +137,16 @@ export class Design extends React.Component {
   };
 
   checkAllowMultiplePlacements = (allowMultiplePlacements, c) => {
-    if( allowMultiplePlacements === 'Yes' ){
+    if (allowMultiplePlacements === 'Yes') {
       return 0;
     }
-    if( allowMultiplePlacements === 'No' ){
+    if (allowMultiplePlacements === 'No') {
       return 1;
     }
-    else{
-      return c.categoryCount;
+    else {
+      return c.categoryCount || 0;
     }
-  }
+  };
 
   render() {
     const {

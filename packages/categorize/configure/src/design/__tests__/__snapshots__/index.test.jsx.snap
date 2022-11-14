@@ -36,7 +36,7 @@ exports[`Design snapshot renders 1`] = `
             ],
             "choices": Array [
               Object {
-                "categoryCount": undefined,
+                "categoryCount": 0,
                 "content": "content",
                 "correctResponseCount": 1,
                 "id": "1",
@@ -84,7 +84,7 @@ exports[`Design snapshot renders 1`] = `
             ],
             "choices": Array [
               Object {
-                "categoryCount": undefined,
+                "categoryCount": 0,
                 "content": "content",
                 "correctResponseCount": 1,
                 "id": "1",
@@ -117,7 +117,7 @@ exports[`Design snapshot renders 1`] = `
         choices={
           Array [
             Object {
-              "categoryCount": undefined,
+              "categoryCount": 0,
               "content": "content",
               "correctResponseCount": 1,
               "id": "1",
@@ -134,7 +134,7 @@ exports[`Design snapshot renders 1`] = `
             ],
             "choices": Array [
               Object {
-                "categoryCount": undefined,
+                "categoryCount": 0,
                 "content": "content",
                 "correctResponseCount": 1,
                 "id": "1",
