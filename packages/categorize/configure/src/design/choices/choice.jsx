@@ -11,6 +11,7 @@ import DragHandle from '@material-ui/icons/DragHandle';
 import { DragSource } from 'react-dnd';
 import debug from 'debug';
 import { uid } from '@pie-lib/drag';
+import { multiplePlacements } from '../../utils';
 
 const log = debug('@pie-element:categorize:configure:choice');
 
@@ -25,6 +26,7 @@ const canDrag = props => {
 
 export class Choice extends React.Component {
   static propTypes = {
+    allowMultiplePlacements: PropTypes.string,
     classes: PropTypes.object.isRequired,
     className: PropTypes.string,
     choice: PropTypes.object.isRequired,
@@ -63,8 +65,13 @@ export class Choice extends React.Component {
     onChange(choice);
   };
 
+  isCheckboxShown = allowMultiplePlacements => {
+    return allowMultiplePlacements === multiplePlacements.perChoice;
+  };
+
   render() {
     const {
+      allowMultiplePlacements,
       classes,
       className,
       choice,
@@ -81,6 +88,8 @@ export class Choice extends React.Component {
     } = this.props;
 
     const draggable = canDrag(this.props);
+
+    const showRemoveAfterPlacing = this.isCheckboxShown(allowMultiplePlacements);
 
     return (
       <Card className={classNames(classes.choice, className)}>
@@ -116,12 +125,13 @@ export class Choice extends React.Component {
 
         <CardActions className={classes.actions}>
           <DeleteButton label={'delete'} onClick={onDelete} />
-          <Checkbox
-            mini
-            label={'Remove after placing'}
-            checked={choice.categoryCount === 1}
-            onChange={this.changeCategoryCount}
-          />
+          {showRemoveAfterPlacing &&
+              <Checkbox
+                mini
+                label={'Remove after placing'}
+                checked={choice.categoryCount === 1}
+                onChange={this.changeCategoryCount} />
+          }
         </CardActions>
       </Card>
     );

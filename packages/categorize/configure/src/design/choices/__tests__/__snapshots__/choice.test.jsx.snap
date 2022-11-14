@@ -10,12 +10,6 @@ exports[`choice snapshot renders 1`] = `
       label="delete"
       onClick={[MockFunction]}
     />
-    <Component
-      checked={false}
-      label="Remove after placing"
-      mini={true}
-      onChange={[Function]}
-    />
   </WithStyles(CardActions)>
 </WithStyles(Card)>
 `;

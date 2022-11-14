@@ -21,8 +21,9 @@ import Choices from './choices';
 import { Divider } from './buttons';
 import { buildAlternateResponses, buildCategories } from './builder';
 import Header from './header';
+import { multiplePlacements } from '../utils';
 
-const { Panel, toggle, radio } = settings;
+const { dropdown, Panel, toggle, radio } = settings;
 const { Provider: IdProvider } = uid;
 
 export class Design extends React.Component {
@@ -136,6 +137,17 @@ export class Design extends React.Component {
     return countInAnswer(choice.id, model.correctResponse);
   };
 
+  checkAllowMultiplePlacements = (allowMultiplePlacements, c) => {
+    if (allowMultiplePlacements === multiplePlacements.enabled) {
+      return 0;
+    }
+    if (allowMultiplePlacements === multiplePlacements.disabled) {
+      return 1;
+    }
+    return c.categoryCount || 0;
+
+  };
+
   render() {
     const {
       classes,
@@ -148,6 +160,7 @@ export class Design extends React.Component {
       onConfigurationChanged,
     } = this.props;
     const {
+      allowMultiplePlacements = {},
       partialScoring = {},
       lockChoiceOrder = {},
       teacherInstructions = {},
@@ -162,6 +175,7 @@ export class Design extends React.Component {
       withRubric = {}
     } = configuration || {};
     const {
+      allowMultiplePlacementsEnabled,
       teacherInstructionsEnabled,
       promptEnabled,
       rationaleEnabled,
@@ -199,6 +213,7 @@ export class Design extends React.Component {
 
     const choices = model.choices.map((c) => {
       c.correctResponseCount = this.countChoiceInCorrectResponse(c);
+      c.categoryCount = this.checkAllowMultiplePlacements(allowMultiplePlacementsEnabled, c);
       return c;
     });
 
@@ -220,6 +235,13 @@ export class Design extends React.Component {
                     partialScoring.settings && toggle(partialScoring.label),
                   lockChoiceOrder:
                     lockChoiceOrder.settings && toggle(lockChoiceOrder.label),
+                  allowMultiplePlacementsEnabled:
+                      allowMultiplePlacements.settings &&
+                      dropdown(allowMultiplePlacements.label, [
+                        multiplePlacements.enabled,
+                        multiplePlacements.disabled,
+                        multiplePlacements.perChoice,
+                      ], ),
                   promptEnabled: prompt.settings && toggle(prompt.label),
                   feedbackEnabled: feedback.settings && toggle(feedback.label),
                 },

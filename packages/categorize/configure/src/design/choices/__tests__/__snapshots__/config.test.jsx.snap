@@ -5,12 +5,6 @@ exports[`config snapshot renders 1`] = `
   className=""
 >
   <div>
-    <Component
-      label="Remove all tiles after placing"
-      onChange={[Function]}
-    />
-  </div>
-  <div>
     <TextField
       InputLabelProps={
         Object {
