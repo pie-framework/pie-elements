@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.5.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-controller@6.5.0...@pie-element/placement-ordering-controller@6.5.1) (2022-11-15)
+
+
+### Bug Fixes
+
+* **placement-ordering:** fix feedback behavior PD-2156 ([561c36f](https://github.com/pie-framework/pie-elements/commit/561c36fdd2467fcc38907cdbbb91d990ef5c8ee3))
+
+
+
+
+
 # [6.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-controller@6.4.7...@pie-element/placement-ordering-controller@6.5.0) (2022-10-31)
 
 

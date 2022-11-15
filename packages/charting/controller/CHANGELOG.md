@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-controller@2.2.24...@pie-element/charting-controller@2.3.0) (2022-11-15)
+
+
+### Bug Fixes
+
+* **charting:** fix typo ([136ba52](https://github.com/pie-framework/pie-elements/commit/136ba521354dc58b73f9038767005d50da2dab94))
+* **charting:** keep chart interactive in IBX preview mode PD-1365 ([f92515a](https://github.com/pie-framework/pie-elements/commit/f92515a7071c72cfcc07a830095cd70cc4740e58))
+
+
+### Features
+
+* **charting:** move validation function in controller ([e603e16](https://github.com/pie-framework/pie-elements/commit/e603e164cc206eec99488e48a52fc05989f919ea))
+
+
+
+
+
 ## [2.2.24](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-controller@2.2.23...@pie-element/charting-controller@2.2.24) (2022-06-13)
 
 **Note:** Version bump only for package @pie-element/charting-controller

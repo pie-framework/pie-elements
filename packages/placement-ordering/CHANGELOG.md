@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@8.3.1...@pie-element/placement-ordering@8.4.0) (2022-11-15)
+
+
+### Bug Fixes
+
+* **placement-ordering:** fix performance issue and update react-dnd version PD-2129 ([7a3d091](https://github.com/pie-framework/pie-elements/commit/7a3d0915d92932ac3f9514d263536cc5142c972e))
+* **placement-ordering:** move the delete choice button PD-2170 ([bd526c8](https://github.com/pie-framework/pie-elements/commit/bd526c8935c539ecf1d65d9aabc367f52a6b6b79))
+* tests ([d6b6c66](https://github.com/pie-framework/pie-elements/commit/d6b6c6635afa0aae74de6509238d8394cf86717c))
+* **placement-ordering:** fix feedback behavior PD-2156 ([561c36f](https://github.com/pie-framework/pie-elements/commit/561c36fdd2467fcc38907cdbbb91d990ef5c8ee3))
+* **placement-ordering:** shuffle choices in player, not only in authoring PD-2155 ([a1e7bea](https://github.com/pie-framework/pie-elements/commit/a1e7bea7efaf57a8abb68bd4dfa17ad86b5eaca9))
+
+
+### Features
+
+* **placement-ordering:** add a new label and change choices one PD-2162 ([8db41c9](https://github.com/pie-framework/pie-elements/commit/8db41c984791d12d4680a8ada35449006d69a18f))
+
+
+
+
+
 ## [8.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@8.3.0...@pie-element/placement-ordering@8.3.1) (2022-11-11)
 
 

@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@5.2.1...@pie-element/charting@5.3.0) (2022-11-15)
+
+
+### Bug Fixes
+
+* **charting:** fix typo ([136ba52](https://github.com/pie-framework/pie-elements/commit/136ba521354dc58b73f9038767005d50da2dab94))
+
+
+### Features
+
+* **charting:** add error messages for not valid correct response ([89de5ad](https://github.com/pie-framework/pie-elements/commit/89de5ad3b78ad2070db61b7808536b5d01c9cee0))
+* **charting:** add sanity checks ([fa86a09](https://github.com/pie-framework/pie-elements/commit/fa86a09b9ade0aae654b2b94e652b3146e5fdbf2))
+* **charting:** move validation function in controller ([e603e16](https://github.com/pie-framework/pie-elements/commit/e603e164cc206eec99488e48a52fc05989f919ea))
+* **charting:** validation for category labels ([d9a697e](https://github.com/pie-framework/pie-elements/commit/d9a697e15ab9c2059799c4695cc11b9d31b574f6))
+* **charting:** validation- work in progress ([1ac5501](https://github.com/pie-framework/pie-elements/commit/1ac5501b1842331861d93c0e51fa07fb8d0b8f42))
+
+
+
+
+
 ## [5.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@5.2.0...@pie-element/charting@5.2.1) (2022-11-11)
 
 

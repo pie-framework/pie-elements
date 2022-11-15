@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@6.2.2...@pie-element/categorize-configure@6.3.0) (2022-11-15)
+
+
+### Bug Fixes
+
+* **categorize:** move Lock Choice Order into settings - PD-1984 ([912b072](https://github.com/pie-framework/pie-elements/commit/912b072ea7c9555bba5ad2c18167326a7d82922e))
+
+
+### Features
+
+* **categorize:** add constant for multiplePlacements choices-PD-1974 ([05462c9](https://github.com/pie-framework/pie-elements/commit/05462c9a4ae50c93d2ae980bc8fca8a58e986436))
+* **categorize:** delete unnecessarry spaces and avoid choiceCount undefined:PD-1974 ([4fca67f](https://github.com/pie-framework/pie-elements/commit/4fca67f878c06e694a9553c76f5516b84116044b))
+* **categorize:** simplify if condition - PD-1974 ([2f795cd](https://github.com/pie-framework/pie-elements/commit/2f795cd5c792d94b2d680e0a997dff11f0d8144a))
+* **categorize:** solve conflicts: PD-1984 ([1d746f6](https://github.com/pie-framework/pie-elements/commit/1d746f622129656c676517408ae4fb75b918e0b2))
+* **categorize:** update same line return method-PD-1984 ([1bbe4b3](https://github.com/pie-framework/pie-elements/commit/1bbe4b36143e6fd77a005e334a3b79fb4ba94519))
+* **categorize:** updatel model from controller to be consistent with the one in configure-PD-1985 ([d7f6e3f](https://github.com/pie-framework/pie-elements/commit/d7f6e3f47c28f9e0d41738a70ecff49c9b72a6af))
+
+
+
+
+
 ## [6.2.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@6.2.1...@pie-element/categorize-configure@6.2.2) (2022-11-11)
 
 
