@@ -49,36 +49,6 @@ describe('config', () => {
   });
 
   describe('logic', () => {
-    describe('toggleRemoveAllTiles', () => {
-      let w;
-
-      it('adds categoryCount as 1 to choices if it was undefined', () => {
-        w = wrapper();
-        w.instance().toggleRemoveAllTiles();
-        expect(onModelChanged).toBeCalledWith({ choices: [
-          { id: '0', content: 'Choice 0', categoryCount: 1 }]});
-      });
-
-      it('sets categoryCount to 1 in every choice if it was 0', () => {
-        w = wrapper({
-          choices: [{ id: '0', content: 'Choice 0', categoryCount: 0 }]
-        });
-        w.instance().toggleRemoveAllTiles();
-        expect(onModelChanged).toBeCalledWith({ choices: [
-            { id: '0', content: 'Choice 0', categoryCount: 1 }]});
-      });
-
-      it('sets categoryCount to 0 in every choice if it was 1', () => {
-        w = wrapper({
-          choices: [{ id: '0', content: 'Choice 0', categoryCount: 1 }]
-        });
-        w.setProps({ allChoicesHaveCount: () => true });
-        w.instance().toggleRemoveAllTiles();
-        expect(onModelChanged).toBeCalledWith({ choices: [
-            { id: '0', content: 'Choice 0', categoryCount: 0 }
-          ]});
-      });
-    });
 
     it('changeLabel', () => {
       let w = wrapper();
@@ -87,16 +57,6 @@ describe('config', () => {
 
       expect(onModelChanged).toBeCalledWith({
         choicesLabel: 'foo'
-      });
-    });
-
-    it('toggleShuffle', () => {
-      let w = wrapper();
-
-      w.instance().toggleShuffle();
-
-      expect(onModelChanged).toBeCalledWith({
-        lockChoiceOrder: false
       });
     });
 

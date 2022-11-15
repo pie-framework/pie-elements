@@ -73,13 +73,13 @@ export class Design extends React.Component {
     );
     this.onFeedbackChange = this.changeHandler('feedback');
 
-    this.onChoiceEditorChange = (choices, correctResponse) => {
+    this.onChoiceEditorChange = (choices, correctResponse, resetSession) => {
       const { model, onModelChanged } = this.props;
       const update = cloneDeep(model);
 
       update.choices = choices;
       update.correctResponse = correctResponse;
-      onModelChanged(update);
+      onModelChanged(update, resetSession || false);
     };
   }
 
@@ -324,7 +324,7 @@ export class Design extends React.Component {
 
           {choices.settings && (
             <InputContainer
-              label={choices && choices.label && pluralLabel}
+              label={choices && choices.label && `Student ${pluralLabel}`}
               className={classes.promptHolder}
             >
               <ChoiceEditor

@@ -37,25 +37,6 @@ At least one token should be assigned to at least one category."
     onAdd={[Function]}
   />
   <div
-    className="row"
-  >
-    <TextField
-      inputProps={
-        Object {
-          "max": 4,
-          "min": 1,
-        }
-      }
-      label="Categories per row"
-      onChange={[Function]}
-      required={false}
-      select={false}
-      type="number"
-      value={2}
-      variant="standard"
-    />
-  </div>
-  <div
     className="categoriesHolder"
     style={
       Object {

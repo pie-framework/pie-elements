@@ -1,5 +1,7 @@
 import debug from 'debug';
+import isEqual from 'lodash/isEqual';
 import isEmpty from 'lodash/isEmpty';
+import pick from 'lodash/pick';
 
 import { partialScoring } from '@pie-lib/controller-utils';
 
@@ -248,4 +250,44 @@ export const createCorrectResponseSession = (question, env) => {
       return resolve(null);
     }
   });
+};
+
+export const validate = (model = {}, config = {}) => {
+  const { correctAnswer, data } = model || {};
+  const { data: correctData } = correctAnswer || {};
+  const categories = correctData || [];
+
+  const errors = {};
+  const correctAnswerErrors = {};
+  const categoryErrors = {};
+
+  categories.forEach((category, index) => {
+    const { label } = category;
+
+    if (label === '' || label === '<div></div>') {
+      categoryErrors[index] = 'Content should not be empty.';
+    } else {
+      const identicalAnswer = categories.slice(index + 1).some(c => c.label === label);
+
+      if (identicalAnswer) {
+        categoryErrors[index + 1] = 'Content should be unique.';
+      }
+    }
+  });
+
+  if (categories.length < 1 || categories.length > 20) {
+    correctAnswerErrors.categoriesError = 'The correct answer should include between 1 and 20 categories.';
+  } else if (isEqual(data.map(category => pick(category, 'value', 'label')), correctData.map(category => pick(category, 'value', 'label')))) {
+    correctAnswerErrors.identicalError = 'Correct answer should not be identical to the chart’s initial state';
+  }
+
+  if (!isEmpty(categoryErrors)) {
+    errors.categoryErrors = categoryErrors;
+  }
+
+  if (!isEmpty(correctAnswerErrors)) {
+    errors.correctAnswerErrors = correctAnswerErrors;
+  }
+
+  return errors;
 };

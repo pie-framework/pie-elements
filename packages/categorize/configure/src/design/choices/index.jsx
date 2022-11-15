@@ -82,7 +82,7 @@ export class Choices extends React.Component {
       defaultImageMaxWidth,
       defaultImageMaxHeight
     } = this.props;
-    const { errors } = model;
+    const { errors, allowMultiplePlacementsEnabled } = model;
     const { choicesError, choicesErrors } = errors || {};
     const {
       maxChoices,
@@ -116,6 +116,7 @@ export class Choices extends React.Component {
             <Choice
               choice={h}
               correctResponseCount={h.correctResponseCount}
+              allowMultiplePlacements={allowMultiplePlacementsEnabled}
               key={index}
               imageSupport={imageSupport}
               onChange={this.changeChoice}
