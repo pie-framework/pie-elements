@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-controller@6.0.5...@pie-element/ebsr-controller@6.1.0) (2022-11-15)
+
+
+### Bug Fixes
+
+* Partial credit scoring not working for EBSR items when using env PD-2164 ([5d537bc](https://github.com/pie-framework/pie-elements/commit/5d537bc2a1a1dc1f578769539c846d9bc4cb5911))
+
+
+### Features
+
+* **ebsr:** implement item validation PD-1799 ([66e9ff1](https://github.com/pie-framework/pie-elements/commit/66e9ff1d0178e5ba6f4b07115f1efbf0c752e05f))
+
+
+
+
+
 ## [6.0.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-controller@6.0.4...@pie-element/ebsr-controller@6.0.5) (2022-05-30)
 
 **Note:** Version bump only for package @pie-element/ebsr-controller
