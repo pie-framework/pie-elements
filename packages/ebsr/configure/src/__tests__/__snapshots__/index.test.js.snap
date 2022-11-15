@@ -36,7 +36,6 @@ Object {
   },
   "partLabelType": "Letters",
   "partLabels": true,
-  "partialScoring": false,
 }
 `;
 
@@ -76,6 +75,5 @@ Object {
   },
   "partLabelType": "Letters",
   "partLabels": true,
-  "partialScoring": false,
 }
 `;
