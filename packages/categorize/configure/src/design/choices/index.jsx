@@ -106,9 +106,7 @@ export class Choices extends React.Component {
         {choicesError && <div className={classes.errorText}>{choicesError}</div>}
         <Config
           config={model}
-          categoryCountIsOne={categoryCountIsOne}
           onModelChanged={onModelChanged}
-          allChoicesHaveCount={this.allChoicesHaveCount}
           spellCheck={spellCheck}
         />
         <div className={classes.choiceHolder} style={choiceHolderStyle}>

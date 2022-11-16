@@ -245,12 +245,7 @@ export class Design extends React.Component {
                       }),
                   choicesPosition:
                       choicesPosition.settings &&
-                      dropdown(choicesPosition.label, [
-                        'below',
-                        'above',
-                        'left',
-                        'right',
-                      ], ),
+                      radio(choicesPosition.label, ['below', 'above','left','right']),
                   allowMultiplePlacementsEnabled:
                       allowMultiplePlacements.settings &&
                       dropdown(allowMultiplePlacements.label, [
