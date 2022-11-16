@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.3.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response@4.3.2...@pie-element/drawing-response@4.3.3) (2022-11-15)
+
+
+### Bug Fixes
+
+* **drawing-response:** code review observations-PD-2047 ([0535548](https://github.com/pie-framework/pie-elements/commit/053554892f6fa9c280d77007905a13dc431f8dcc))
+* **drawing-response:** for black, text color is changed to white-PD-2047 ([f4270aa](https://github.com/pie-framework/pie-elements/commit/f4270aa931eb68f243153f0d550dd258c5dca636))
+
+
+
+
+
+## [4.3.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response@4.3.1...@pie-element/drawing-response@4.3.2) (2022-11-11)
+
+
+### Bug Fixes
+
+* add sanity checks ([1cfd187](https://github.com/pie-framework/pie-elements/commit/1cfd187d2c2bab2d589aa2d7b7563b1c69e3295e))
+
+
+
+
+
 ## [4.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response@4.3.0...@pie-element/drawing-response@4.3.1) (2022-11-11)
 
 

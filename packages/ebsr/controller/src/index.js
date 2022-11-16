@@ -1,5 +1,5 @@
 import defaults from './defaults';
-import { lockChoices, getShuffledChoices } from '@pie-lib/controller-utils';
+import { lockChoices, getShuffledChoices, partialScoring } from '@pie-lib/controller-utils';
 import { isResponseCorrect } from './utils';
 import get from 'lodash/get';
 import isEmpty from 'lodash/isEmpty';
@@ -199,7 +199,7 @@ export const createDefaultModel = (model = {}) =>
 
 const isCorrect = c => c.correct === true;
 
-const getScore = (config, sessionPart, key) => {
+const getScore = (config, sessionPart, key, partialScoringEnabled) => {
   const { choices = [] } = (config && config[key]) || {};
   const maxScore = choices.length;
   const { value: sessionPartValue } = sessionPart || {};
@@ -216,14 +216,14 @@ const getScore = (config, sessionPart, key) => {
   }, choices.length);
 
   // determine score for a part
-  if (!config.partialScoring && correctChoices < maxScore) {
+  if (!partialScoringEnabled && correctChoices < maxScore) {
     return 0;
   }
 
   return parseFloat(maxScore ? (correctChoices / maxScore).toFixed(2) : 0);
 };
 
-export function outcome(config, session) {
+export function outcome(config, session, env) {
   return new Promise(resolve => {
     const { value } = session || {};
 
@@ -234,10 +234,12 @@ export function outcome(config, session) {
     if (value) {
       const { partA, partB } = value || {};
 
-      const scoreA = getScore(config, partA, 'partA');
-      const scoreB = getScore(config, partB, 'partB');
+      const partialScoringEnabled = partialScoring.enabled(config, env);
 
-      if (!config.partialScoring) {
+      const scoreA = getScore(config, partA, 'partA', partialScoringEnabled);
+      const scoreB = getScore(config, partB, 'partB', partialScoringEnabled);
+
+      if (!partialScoringEnabled) {
         // The EBSR item is worth 1 point
         // That point is awarded if and only if both parts are fully correct, otherwise no points are awarded
         resolve({ score: (scoreA === 1 && scoreB === 1) ? 1 : 0, scoreA, scoreB, max: 1 });

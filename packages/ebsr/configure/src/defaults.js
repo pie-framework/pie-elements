@@ -88,7 +88,7 @@ export default {
   model: {
     partLabels: true,
     partLabelType: 'Letters',
-    partialScoring: false,
+    // partialScoring: false,
     partA: partModel({ prompt: 'Prompt A' }),
     partB: partModel({ prompt: 'Prompt B' })
   },

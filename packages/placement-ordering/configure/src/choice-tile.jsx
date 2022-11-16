@@ -12,6 +12,7 @@ import RemoveCircle from '@material-ui/icons/RemoveCircle';
 import debug from 'debug';
 import { withStyles } from '@material-ui/core/styles';
 import { InfoDialog } from './choice-editor';
+import { color } from '@pie-lib/render-ui';
 
 const log = debug('@pie-element:placement-ordering:configure:choice-tile');
 
@@ -60,7 +61,8 @@ export class ChoiceTile extends React.Component {
     const {
       choice: {
         label,
-        editable
+        editable,
+        index
       },
       isDragging,
       connectDragSource,
@@ -93,41 +95,41 @@ export class ChoiceTile extends React.Component {
     const markup = (
       <div className={classes.choiceTile} style={{ opacity: opacity, width: '100%' }}>
         <CardActions>
-            <span className={classNames(classes.dragHandle )}>
-              <DragHandle className={classes.actions} />
+            <span className={classNames(classes.dragHandle)}>
+              <DragHandle className={classes.actions}/>
             </span>
         </CardActions>
-        <div style={{width: '100%'}}>
-        <EditableHtml
-          disabled={!editable}
-          className={classNames(classes.prompt, !editable && classes.targetPrompt)}
-          placeholder="Enter a choice"
-          markup={label}
-          imageSupport={imageSupport || undefined}
-          onChange={this.onLabelChange}
-          pluginProps={choicePlugins}
-          toolbarOpts={toolbarOpts}
-          activePlugins={filteredDefaultPlugins}
-          spellCheck={spellCheck}
-          allowValidation
-          maxImageWidth={maxImageWidth}
-          maxImageHeight={maxImageHeight}
-          languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
-          error={editable && error}
-        />
-        {editable && error && <div className={classes.errorText}>{error}</div>}
+        <div style={{ width: '100%', display: 'flex' }}>
+          {!editable && index === 0 ? <div className={classes.correctOrder}>Correct Order</div> : null}
+          <EditableHtml
+            disabled={!editable}
+            className={classNames(classes.prompt, !editable && classes.targetPrompt)}
+            placeholder="Enter a choice"
+            markup={label}
+            imageSupport={imageSupport || undefined}
+            onChange={this.onLabelChange}
+            pluginProps={choicePlugins}
+            toolbarOpts={toolbarOpts}
+            activePlugins={filteredDefaultPlugins}
+            spellCheck={spellCheck}
+            maxImageWidth={maxImageWidth}
+            maxImageHeight={maxImageHeight}
+            languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+            error={editable && error}
+          />
+          {editable && error && <div className={classes.errorText}>{error}</div>}
+          {editable && (
+            <div className={classes.controls}>
+              <IconButton color='default' onClick={onDelete}>
+                <RemoveCircle
+                  classes={{
+                    root: classes.removeCircle
+                  }}
+                />
+              </IconButton>
+            </div>
+          )}
         </div>
-        {editable && (
-          <div className={classes.controls}>
-            <IconButton color='default' onClick={onDelete}>
-              <RemoveCircle
-                classes={{
-                  root: classes.removeCircle
-                }}
-              />
-            </IconButton>
-          </div>
-        )}
         <InfoDialog
           title={dialog.message}
           open={dialog.open}
@@ -177,6 +179,12 @@ const Styled = withStyles(theme => ({
   errorText: {
     fontSize: '12px',
     color: 'red'
+  },
+  correctOrder: {
+    position: 'absolute',
+    top: 0,
+    fontSize: '12px',
+    color: color.disabled()
   }
 }))(ChoiceTile);
 

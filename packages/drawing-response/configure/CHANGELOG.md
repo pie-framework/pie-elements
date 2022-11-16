@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.3.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response-configure@4.3.2...@pie-element/drawing-response-configure@4.3.3) (2022-11-15)
+
+**Note:** Version bump only for package @pie-element/drawing-response-configure
+
+
+
+
+
+## [4.3.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response-configure@4.3.1...@pie-element/drawing-response-configure@4.3.2) (2022-11-11)
+
+
+### Bug Fixes
+
+* add sanity checks ([1cfd187](https://github.com/pie-framework/pie-elements/commit/1cfd187d2c2bab2d589aa2d7b7563b1c69e3295e))
+
+
+
+
+
 ## [4.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response-configure@4.3.0...@pie-element/drawing-response-configure@4.3.1) (2022-11-11)
 
 

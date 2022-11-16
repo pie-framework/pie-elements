@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-controller@5.3.0...@pie-element/categorize-controller@5.4.0) (2022-11-15)
+
+
+### Features
+
+* **categorize:** updatel model from controller to be consistent with the one in configure-PD-1985 ([d7f6e3f](https://github.com/pie-framework/pie-elements/commit/d7f6e3f47c28f9e0d41738a70ecff49c9b72a6af))
+
+
+
+
+
 # [5.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-controller@5.2.8...@pie-element/categorize-controller@5.3.0) (2022-08-31)
 
 
