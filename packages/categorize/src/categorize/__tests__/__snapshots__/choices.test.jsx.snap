@@ -6,6 +6,7 @@ exports[`choices snapshots disabled 1`] = `
     choiceBoard={true}
     disabled={true}
     onDropChoice={[MockFunction]}
+    onRemoveChoice={[MockFunction]}
     style={
       Object {
         "background": "none",
@@ -20,6 +21,7 @@ exports[`choices snapshots empty 1`] = `
   <DropTarget(DroppablePlaceholder)
     choiceBoard={true}
     onDropChoice={[MockFunction]}
+    onRemoveChoice={[MockFunction]}
     style={
       Object {
         "background": "none",
@@ -45,6 +47,7 @@ exports[`choices snapshots empty 2`] = `
   <DropTarget(DroppablePlaceholder)
     choiceBoard={true}
     onDropChoice={[MockFunction]}
+    onRemoveChoice={[MockFunction]}
     style={
       Object {
         "background": "none",
@@ -63,6 +66,7 @@ exports[`choices snapshots renders 1`] = `
   <DropTarget(DroppablePlaceholder)
     choiceBoard={true}
     onDropChoice={[MockFunction]}
+    onRemoveChoice={[MockFunction]}
     style={
       Object {
         "background": "none",
