@@ -38,11 +38,9 @@ export class Choices extends React.Component {
       model,
       disabled,
       onDropChoice,
-      onRemoveChoice,
       choicePosition,
     } = this.props;
 
-    console.log(this.props, " props in choices")
     let style = {
       textAlign: 'center',
     };
@@ -62,7 +60,6 @@ export class Choices extends React.Component {
         {model.choicesLabel && model.choicesLabel !== '' && (
           <div className={classes.labelHolder} dangerouslySetInnerHTML={{__html: model.choicesLabel}}></div>
         )}
-        <div className={classes.choices} style={style}>
           {choices.map((c, index) => {
             return c.empty ? (
               <Blank key={index} />
@@ -76,7 +73,6 @@ export class Choices extends React.Component {
               />
             );
           })}
-        </div>
         </PlaceHolder>
       </div>
     );
@@ -94,7 +90,6 @@ const styles = (theme) => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-  // flexWrap: 'wrap'
   },
   labelHolder: {
     margin: '0 auto',
