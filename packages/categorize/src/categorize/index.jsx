@@ -84,20 +84,17 @@ export class Categorize extends React.Component {
       log('[dropChoice] category: ', undefined, 'choice: ', undefined);
     }
 
-    let answers;
+    const answers = draggedChoice ? moveChoiceToCategory(
+      draggedChoice.id,
+      draggedChoice.categoryId,
+      categoryId,
+      draggedChoice.choiceIndex,
+      session.answers
+    ) : this.removeChoice(categoryId)
+
     if (draggedChoice) {
-      answers = moveChoiceToCategory(
-        draggedChoice.id,
-        draggedChoice.categoryId,
-        categoryId,
-        draggedChoice.choiceIndex,
-        session.answers
-      );
-     
       onAnswersChange(answers);
-    } else {
-      answers= this.removeChoice(categoryId)
-    }
+    } 
   };
 
   UNSAFE_componentWillReceiveProps() {
