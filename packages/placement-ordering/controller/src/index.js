@@ -167,6 +167,11 @@ export function model(question, session, env) {
         base.correctResponse = flattenCorrect(normalizedQuestion);
       }
 
+      // requirement made in PD-2182
+      if (!normalizedQuestion.feedback) {
+        normalizedQuestion.feedbackEnabled = false;
+      }
+
       const fb = normalizedQuestion.feedbackEnabled
         ? getFeedbackForCorrectness(base.correctness, normalizedQuestion.feedback)
         : Promise.resolve(undefined);

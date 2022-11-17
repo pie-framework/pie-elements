@@ -83,6 +83,18 @@ export class Design extends React.Component {
     };
   }
 
+  componentDidMount() {
+    const { model, onModelChanged } = this.props || {};
+    const { feedback } = model || {};
+    const update = cloneDeep(model);
+
+    // requirement made in PD-2182
+    if (!feedback) {
+      update.feedbackEnabled = false;
+      onModelChanged(update);
+    }
+  }
+
   render() {
     const {
       model,
