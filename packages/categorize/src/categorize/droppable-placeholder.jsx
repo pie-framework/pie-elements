@@ -50,7 +50,10 @@ export const spec = {
   drop: (props, monitor) => {
     log('[drop] props: ', props);
     const item = monitor.getItem();
-    props.onDropChoice(item);
+    if (item) {
+      props.onDropChoice(item);
+    }
+   
   },
   canDrop: (props /*, monitor*/) => {
     return !props.disabled;

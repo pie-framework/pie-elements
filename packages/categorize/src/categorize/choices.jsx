@@ -38,6 +38,7 @@ export class Choices extends React.Component {
       model,
       disabled,
       onDropChoice,
+      onRemoveChoice,
       choicePosition,
     } = this.props;
 
@@ -53,6 +54,7 @@ export class Choices extends React.Component {
       <div className={classes.wrapper}>
          <PlaceHolder
           onDropChoice={onDropChoice}
+          onRemoveChoice={onRemoveChoice}
           disabled={disabled}
           style={{background: 'none', }}
           choiceBoard={true}

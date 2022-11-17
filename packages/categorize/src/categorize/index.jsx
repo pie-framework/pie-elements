@@ -7,15 +7,21 @@ import { withStyles } from '@material-ui/core/styles';
 import {
   buildState,
   removeChoiceFromCategory,
-  moveChoiceToCategory
+  moveChoiceToCategory,
 } from '@pie-lib/categorize';
 import { withDragContext, uid } from '@pie-lib/drag';
-import {color, Feedback, Collapsible, hasText, PreviewPrompt} from '@pie-lib/render-ui';
+import {
+  color,
+  Feedback,
+  Collapsible,
+  hasText,
+  PreviewPrompt,
+} from '@pie-lib/render-ui';
 import debug from 'debug';
 
 const log = debug('@pie-ui:categorize');
 
-const removeHTMLTags = html => {
+const removeHTMLTags = (html) => {
   const tmp = document.createElement('DIV');
 
   tmp.innerHTML = html;
@@ -33,47 +39,27 @@ export class Categorize extends React.Component {
       answers: PropTypes.arrayOf(
         PropTypes.shape({
           choice: PropTypes.string,
-          category: PropTypes.string
+          category: PropTypes.string,
         })
-      )
+      ),
     }),
     onAnswersChange: PropTypes.func.isRequired,
-    onShowCorrectToggle: PropTypes.func.isRequired
+    onShowCorrectToggle: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
-    disabled: false
+    disabled: false,
   };
 
   constructor(props) {
     super(props);
 
     this.state = {
-      showCorrect: false
+      showCorrect: false,
     };
   }
 
-  dropChoice = (categoryId, draggedChoice) => {
-    const { session, onAnswersChange } = this.props;
-    log(
-      '[dropChoice] category: ',
-      draggedChoice.categoryId,
-      'choice: ',
-      draggedChoice
-    );
-
-    const answers = moveChoiceToCategory(
-      draggedChoice.id,
-      draggedChoice.categoryId,
-      categoryId,
-      draggedChoice.choiceIndex,
-      session.answers
-    );
-
-    onAnswersChange(answers);
-  };
-
-  removeChoice = c => {
+  removeChoice = (c) => {
     log('[removeChoice]: ', c);
     const { onAnswersChange, session } = this.props;
     const answers = removeChoiceFromCategory(
@@ -83,6 +69,35 @@ export class Categorize extends React.Component {
       session.answers
     );
     onAnswersChange(answers);
+  };
+
+  dropChoice = (categoryId, draggedChoice) => {
+    const { session, onAnswersChange } = this.props;
+    if (draggedChoice) {
+      log(
+        '[dropChoice] category: ',
+        draggedChoice.categoryId,
+        'choice: ',
+        draggedChoice
+      );
+    } else {
+      log('[dropChoice] category: ', undefined, 'choice: ', undefined);
+    }
+
+    let answers;
+    if (draggedChoice) {
+      answers = moveChoiceToCategory(
+        draggedChoice.id,
+        draggedChoice.categoryId,
+        categoryId,
+        draggedChoice.choiceIndex,
+        session.answers
+      );
+     
+      onAnswersChange(answers);
+    } else {
+      answers= this.removeChoice(categoryId)
+    }
   };
 
   UNSAFE_componentWillReceiveProps() {
@@ -124,7 +139,7 @@ export class Categorize extends React.Component {
     const choicePosition = choicesPosition || 'above';
 
     const style = {
-      flexDirection: this.getPositionDirection(choicePosition)
+      flexDirection: this.getPositionDirection(choicePosition),
     };
 
     const { categories, choices, correct } = buildState(
@@ -137,58 +152,58 @@ export class Categorize extends React.Component {
     log('[render] disabled: ', model.disabled);
 
     const { rowLabels, categoriesPerRow } = model;
-    const nbOfRows = categories && Math.ceil(categories.length / categoriesPerRow) || 0;
-    const displayNote = (showCorrect || mode === 'view' && role === 'instructor') && showNote && note;
+    const nbOfRows =
+      (categories && Math.ceil(categories.length / categoriesPerRow)) || 0;
+    const displayNote =
+      (showCorrect || (mode === 'view' && role === 'instructor')) &&
+      showNote &&
+      note;
 
     return (
       <div className={classes.mainContainer}>
-        {
-          model.teacherInstructions && hasText(model.teacherInstructions) && (
-            <React.Fragment>
-              <Collapsible
-                labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}
-                className={classes.collapsible}
-              >
-                <PreviewPrompt prompt={model.teacherInstructions} />
-              </Collapsible>
-              <br />
-            </React.Fragment>
-          )
-        }
+        {model.teacherInstructions && hasText(model.teacherInstructions) && (
+          <React.Fragment>
+            <Collapsible
+              labels={{
+                hidden: 'Show Teacher Instructions',
+                visible: 'Hide Teacher Instructions',
+              }}
+              className={classes.collapsible}
+            >
+              <PreviewPrompt prompt={model.teacherInstructions} />
+            </Collapsible>
+            <br />
+          </React.Fragment>
+        )}
         <CorrectAnswerToggle
           show={showCorrect || correct === false}
           toggled={showCorrect}
           onToggle={this.toggleShowCorrect}
         />
-        {
-          model.prompt && removeHTMLTags(model.prompt) &&
-          <div
-            className={classes.prompt}
-           >
+        {model.prompt && removeHTMLTags(model.prompt) && (
+          <div className={classes.prompt}>
             <PreviewPrompt prompt={model.prompt} />
           </div>
-        }
+        )}
         <div className={classes.categorize} style={style}>
           <div style={{ display: 'flex', flex: 1 }}>
-            {
-              rowLabels && nbOfRows && (
-                <div style={{ display: 'grid', marginRight: '20px' }}>
-                  {rowLabels.slice(0, nbOfRows).map((label, index) => (
-                    <div
-                      key={index}
-                      style={{
-                        alignItems: 'center',
-                        display: 'flex',
-                        justifyContent: 'center'
-                      }}
-                      dangerouslySetInnerHTML={{
-                        __html: label
-                      }}
-                    />
-                  ))}
-                </div>
-              )
-            }
+            {rowLabels && nbOfRows && (
+              <div style={{ display: 'grid', marginRight: '20px' }}>
+                {rowLabels.slice(0, nbOfRows).map((label, index) => (
+                  <div
+                    key={index}
+                    style={{
+                      alignItems: 'center',
+                      display: 'flex',
+                      justifyContent: 'center',
+                    }}
+                    dangerouslySetInnerHTML={{
+                      __html: label,
+                    }}
+                  />
+                ))}
+              </div>
+            )}
             <Categories
               model={model}
               disabled={model.disabled}
@@ -203,35 +218,28 @@ export class Categorize extends React.Component {
             choices={choices}
             choicePosition={choicePosition}
             onDropChoice={this.dropChoice}
-              onRemoveChoice={this.removeChoice}
+            onRemoveChoice={this.removeChoice}
           />
         </div>
         {displayNote && (
           <div
             className={classes.note}
-            dangerouslySetInnerHTML={{ __html: `<strong>Note:</strong> ${note}` }}
+            dangerouslySetInnerHTML={{
+              __html: `<strong>Note:</strong> ${note}`,
+            }}
           />
         )}
-        {
-          model.rationale && hasText(model.rationale) && (
-            <Collapsible
-              labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }}
-              className={classes.collapsible}
-            >
-              <PreviewPrompt prompt={model.rationale} />
-            </Collapsible>
-          )
-        }
-        {
-          model.correctness &&
-          model.feedback &&
-          !showCorrect && (
-            <Feedback
-              correctness={model.correctness}
-              feedback={model.feedback}
-            />
-          )
-        }
+        {model.rationale && hasText(model.rationale) && (
+          <Collapsible
+            labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }}
+            className={classes.collapsible}
+          >
+            <PreviewPrompt prompt={model.rationale} />
+          </Collapsible>
+        )}
+        {model.correctness && model.feedback && !showCorrect && (
+          <Feedback correctness={model.correctness} feedback={model.feedback} />
+        )}
       </div>
     );
   }
@@ -246,7 +254,7 @@ class CategorizeProvider extends React.Component {
   render() {
     return (
       <uid.Provider value={this.uid}>
-        <Categorize { ...this.props } />
+        <Categorize {...this.props} />
       </uid.Provider>
     );
   }
@@ -256,23 +264,23 @@ const styles = (theme) => ({
   mainContainer: {
     padding: theme.spacing.unit,
     color: color.text(),
-    backgroundColor: color.background()
+    backgroundColor: color.background(),
   },
   prompt: {
     marginBottom: '35px',
-    verticalAlign: 'middle'
+    verticalAlign: 'middle',
   },
   note: {
-    padding: '5px 0'
+    padding: '5px 0',
   },
   categorize: {
     marginBottom: theme.spacing.unit,
     display: 'flex',
-    flexDirection: 'column'
+    flexDirection: 'column',
   },
   collapsible: {
-    paddingBottom: theme.spacing.unit * 2
-  }
+    paddingBottom: theme.spacing.unit * 2,
+  },
 });
 
 export default withDragContext(withStyles(styles)(CategorizeProvider));
