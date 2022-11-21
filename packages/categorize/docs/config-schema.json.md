@@ -82,6 +82,18 @@ Minimum number of choices
 
 Maximum number of choices
 
+# `choicesPosition` (object)
+
+Properties of the `choicesPosition` object:
+
+## `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+## `label` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
+
 # `maxCategories` (number)
 
 Maximum number of categories
