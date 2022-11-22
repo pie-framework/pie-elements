@@ -13,7 +13,7 @@ export class Header extends React.Component {
     onAdd: PropTypes.func.isRequired,
     label: PropTypes.string.isRequired,
     info: PropTypes.any,
-    buttonDisabled: PropTypes.bool
+    buttonDisabled: PropTypes.bool,
   };
 
   static defaultProps = {};
@@ -22,24 +22,24 @@ export class Header extends React.Component {
     return (
       <div className={classNames(classes.header, className)}>
         <div className={classes.titleContainer}>
-        <Typography variant="title" className={classes.title}>
-          {label}
-        </Typography>
-        {info}
+          <Typography variant="title" className={classes.title}>
+            {label}
+          </Typography>
+          {info}
         </div>
-        <AddButton onClick={onAdd} label={buttonLabel} disabled={buttonDisabled}/>
+        <AddButton onClick={onAdd} label={buttonLabel} disabled={buttonDisabled} />
       </div>
     );
   }
 }
-const styles = theme => ({
+const styles = (theme) => ({
   header: {
     display: 'flex',
     justifyContent: 'space-between',
-    marginBottom: 2 * theme.spacing.unit
+    marginBottom: 2 * theme.spacing.unit,
   },
   titleContainer: {
     display: 'flex',
-  }
+  },
 });
 export default withStyles(styles)(Header);

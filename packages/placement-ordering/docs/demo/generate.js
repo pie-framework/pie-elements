@@ -9,7 +9,7 @@ exports.model = (id, element) => ({
     },
     {
       id: 'c2',
-      label: 'Lemon'
+      label: 'Lemon',
     },
     {
       id: 'c3',
@@ -21,23 +21,21 @@ exports.model = (id, element) => ({
     },
   ],
   correctResponse: ['c1', 'c2', 'c3', 'c4'],
-  alternateResponses: [
-    { response: ['c4', 'c3', 'c2', 'c1'] },
-  ],
+  alternateResponses: [{ response: ['c4', 'c3', 'c2', 'c1'] }],
   enableImages: false,
   feedback: {
     correct: {
       type: 'custom',
-      custom: 'foo'
+      custom: 'foo',
     },
     incorrect: {
       type: 'custom',
-      custom: 'no'
+      custom: 'no',
     },
     partial: {
       type: 'custom',
-      custom: 'nearly'
-    }
+      custom: 'nearly',
+    },
   },
   feedbackEnabled: true,
   prompt: 'Arrange the fruits alphabetically',
@@ -50,5 +48,5 @@ exports.model = (id, element) => ({
   scoringType: 'auto',
   targetLabel: 'Answers',
   toolbarEditorPosition: 'bottom',
-  rubricEnabled: false
+  rubricEnabled: false,
 });

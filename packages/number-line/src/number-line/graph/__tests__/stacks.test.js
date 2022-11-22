@@ -1,6 +1,6 @@
 import Stacks, { Stack } from '../stacks';
 
-const typeLabel = el => {
+const typeLabel = (el) => {
   switch (el.type) {
     case 'point':
       return `[${el.position}]`;
@@ -40,15 +40,11 @@ describe('stacks', () => {
       });
 
       it('returns 0 for ray:2', () => {
-        expect(
-          stacks.add({ type: 'ray', direction: 'positive', position: 2 })
-        ).toEqual(0);
+        expect(stacks.add({ type: 'ray', direction: 'positive', position: 2 })).toEqual(0);
       });
 
       it('returns 0 for ray:0', () => {
-        expect(
-          stacks.add({ type: 'ray', direction: 'negative', position: 0 })
-        ).toEqual(0);
+        expect(stacks.add({ type: 'ray', direction: 'negative', position: 0 })).toEqual(0);
       });
     });
 
@@ -57,9 +53,7 @@ describe('stacks', () => {
         stacks = new Stacks({ min: -5, max: 5 });
       });
       it('one', () => {
-        expect(
-          stacks.add({ type: 'ray', direction: 'positive', position: '3.5' })
-        ).toEqual(0);
+        expect(stacks.add({ type: 'ray', direction: 'positive', position: '3.5' })).toEqual(0);
         expect(stacks.add({ type: 'point', position: '2' })).toEqual(0);
       });
     });
@@ -71,12 +65,10 @@ describe('stacks', () => {
 
       const candidate = typeLabel(el);
       const stack = initialStack.map(typeLabel).join('-');
-      it(`${negative}add ${candidate} to |${domain.min}|--${stack}--|${
-        domain.max
-      }|`, () => {
+      it(`${negative}add ${candidate} to |${domain.min}|--${stack}--|${domain.max}|`, () => {
         const stack = new Stack(domain);
 
-        initialStack.forEach(o => stack.add(o));
+        initialStack.forEach((o) => stack.add(o));
 
         const result = stack.add(el);
         expect(result).toEqual(expected);
@@ -93,19 +85,8 @@ describe('stacks', () => {
       assertAddElement(domain, initialStack, el, expected);
     };
 
-    const assertAddRay = (
-      domain,
-      initialStack,
-      direction,
-      position,
-      expected
-    ) => {
-      direction =
-        direction.length === 1
-          ? direction === 'p'
-            ? 'positive'
-            : 'negative'
-          : direction;
+    const assertAddRay = (domain, initialStack, direction, position, expected) => {
+      direction = direction.length === 1 ? (direction === 'p' ? 'positive' : 'negative') : direction;
       const el = { type: `ray`, direction: direction, position: position };
       assertAddElement(domain, initialStack, el, expected);
     };
@@ -114,9 +95,7 @@ describe('stacks', () => {
       let stack, zero, one, oneB, two, three;
 
       describe('point on point', () => {
-        const addPoint = assertAddPoint.bind(null, { min: 0, max: 2 }, [
-          { type: 'point', position: 1 }
-        ]);
+        const addPoint = assertAddPoint.bind(null, { min: 0, max: 2 }, [{ type: 'point', position: 1 }]);
         addPoint(-1, false);
         addPoint(0, true);
         addPoint(1, false);
@@ -126,7 +105,7 @@ describe('stacks', () => {
 
       describe('point on line', () => {
         const addPoint = assertAddPoint.bind(null, { min: 0, max: 3 }, [
-          { type: 'line', position: { left: 0, right: 2 } }
+          { type: 'line', position: { left: 0, right: 2 } },
         ]);
         addPoint(0, false);
         addPoint(1, false);
@@ -136,7 +115,7 @@ describe('stacks', () => {
 
       describe('point on ray', () => {
         const addPoint = assertAddPoint.bind(null, { min: 0, max: 3 }, [
-          { type: 'ray', direction: 'positive', position: 2 }
+          { type: 'ray', direction: 'positive', position: 2 },
         ]);
         addPoint(0, true);
         addPoint(1, true);
@@ -145,9 +124,7 @@ describe('stacks', () => {
       });
 
       describe('line on point', () => {
-        const addLine = assertAddLine.bind(null, { min: 0, max: 3 }, [
-          { type: 'point', position: 1 }
-        ]);
+        const addLine = assertAddLine.bind(null, { min: 0, max: 3 }, [{ type: 'point', position: 1 }]);
         addLine(1, 3, false);
         addLine(0, 1, false);
         addLine(2, 3, true);
@@ -156,7 +133,7 @@ describe('stacks', () => {
 
       describe('line on line', () => {
         const addLine = assertAddLine.bind(null, { min: 0, max: 5 }, [
-          { type: 'line', position: { left: 2, right: 3 } }
+          { type: 'line', position: { left: 2, right: 3 } },
         ]);
         addLine(0, 1, true);
         addLine(0, 2, false);
@@ -168,7 +145,7 @@ describe('stacks', () => {
 
       describe('line on ray', () => {
         const addLine = assertAddLine.bind(null, { min: 0, max: 5 }, [
-          { type: 'ray', direction: 'positive', position: 3 }
+          { type: 'ray', direction: 'positive', position: 3 },
         ]);
 
         addLine(0, 1, true);
@@ -181,9 +158,7 @@ describe('stacks', () => {
       });
 
       describe('ray on point', () => {
-        const addRay = assertAddRay.bind(null, { min: 0, max: 5 }, [
-          { type: 'point', position: 1 }
-        ]);
+        const addRay = assertAddRay.bind(null, { min: 0, max: 5 }, [{ type: 'point', position: 1 }]);
         addRay('p', 0, false);
         addRay('p', 1, false);
         addRay('p', 2, true);
@@ -194,9 +169,7 @@ describe('stacks', () => {
       });
 
       describe('ray on line', () => {
-        const addRay = assertAddRay.bind(null, { min: 0, max: 5 }, [
-          { type: 'line', position: { left: 1, right: 3 } }
-        ]);
+        const addRay = assertAddRay.bind(null, { min: 0, max: 5 }, [{ type: 'line', position: { left: 1, right: 3 } }]);
         addRay('p', 0, false);
         addRay('p', 1, false);
         addRay('p', 2, false);
@@ -214,7 +187,7 @@ describe('stacks', () => {
 
       describe('ray on ray', () => {
         const addRay = assertAddRay.bind(null, { min: 0, max: 5 }, [
-          { type: 'ray', direction: 'positive', position: 4 }
+          { type: 'ray', direction: 'positive', position: 4 },
         ]);
 
         addRay('p', 0, false);

@@ -2,7 +2,7 @@ export default {
   choices: [
     {
       value: 'sweden',
-      label: 'Sweden'
+      label: 'Sweden',
     },
     {
       value: 'iceland',
@@ -11,6 +11,6 @@ export default {
     {
       value: 'finland',
       label: 'Finland',
-    }
-  ]
+    },
+  ],
 };

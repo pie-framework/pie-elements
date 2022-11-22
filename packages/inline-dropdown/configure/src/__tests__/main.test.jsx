@@ -8,18 +8,18 @@ import { createSlateMarkup, processMarkup } from '../markupUtils';
 
 jest.mock('@pie-lib/config-ui', () => ({
   choiceUtils: {
-    firstAvailableIndex: jest.fn()
+    firstAvailableIndex: jest.fn(),
   },
   settings: {
-    Panel: props => <div {...props} />,
+    Panel: (props) => <div {...props} />,
     toggle: jest.fn(),
     radio: jest.fn(),
-    dropdown: jest.fn()
+    dropdown: jest.fn(),
   },
   layout: {
-    ConfigLayout: props => <div>{props.children}</div>
+    ConfigLayout: (props) => <div>{props.children}</div>,
   },
-  InputContainer: props => <div>{props.children}</div>
+  InputContainer: (props) => <div>{props.children}</div>,
 }));
 
 const model = {
@@ -27,70 +27,70 @@ const model = {
   shuffle: true,
   markup: '<div><p>The {{0}} jumped {{1}} the {{2}}</p></div>',
   choices: {
-    '0': [
+    0: [
       {
         label: 'cow ',
         value: '0',
         correct: true,
-        rationale: 'rationale for cow'
+        rationale: 'rationale for cow',
       },
       {
         label: 'dog ',
         value: '1',
-        correct: false
+        correct: false,
       },
       {
         label: 'cat ',
         value: '2',
-        correct: false
-      }
+        correct: false,
+      },
     ],
-    '1': [
+    1: [
       {
         label: 'over ',
         value: '0',
         correct: true,
-        rationale: 'rationale for over'
+        rationale: 'rationale for over',
       },
       {
         label: 'under ',
         value: '1',
-        correct: false
+        correct: false,
       },
       {
         label: 'across ',
         value: '2',
-        correct: false
-      }
+        correct: false,
+      },
     ],
-    '2': [
+    2: [
       {
         label: 'moon ',
         value: '0',
         correct: true,
-        rationale: 'rationale for moon'
+        rationale: 'rationale for moon',
       },
       {
         label: 'sun',
         value: '2',
-        correct: false
+        correct: false,
       },
       {
         label: 'house ',
         value: '3',
-        correct: false
-      }
-    ]
+        correct: false,
+      },
+    ],
   },
   alternateResponse: {
-    '2': ['2']
-  }
+    2: ['2'],
+  },
 };
 
 const prepareModel = (model = {}) => {
   const currModal = {
     ...sensibleDefaults.model,
-    ...model
+    ...model,
   };
   const slateMarkup = model.slateMarkup || createSlateMarkup(currModal.markup, currModal.choices);
   const markup = processMarkup(slateMarkup);
@@ -98,7 +98,7 @@ const prepareModel = (model = {}) => {
   return {
     ...currModal,
     slateMarkup,
-    markup
+    markup,
     /*...processedMarkup,*/
   };
 };
@@ -107,7 +107,7 @@ describe('Main', () => {
   let onModelChanged;
   let onConfigurationChanged;
 
-  const wrapper = extras => {
+  const wrapper = (extras) => {
     onModelChanged = jest.fn();
     onConfigurationChanged = jest.fn();
 
@@ -117,9 +117,9 @@ describe('Main', () => {
       classes: {},
       model: prepareModel({
         ...model,
-        ...extras
+        ...extras,
       }),
-      configuration: sensibleDefaults.configuration
+      configuration: sensibleDefaults.configuration,
     };
     const props = { ...defaults };
 
@@ -132,11 +132,13 @@ describe('Main', () => {
     });
 
     it('renders without teacher instructions, prompt and rationale', () => {
-      expect(wrapper({
-        promptEnabled: false,
-        teacherInstructionsEnabled: false,
-        rationaleEnabled: false
-      })).toMatchSnapshot();
+      expect(
+        wrapper({
+          promptEnabled: false,
+          teacherInstructionsEnabled: false,
+          rationaleEnabled: false,
+        }),
+      ).toMatchSnapshot();
     });
   });
 
@@ -153,7 +155,7 @@ describe('Main', () => {
 
         expect(onModelChanged).toBeCalledWith({
           ...prepareModel(model),
-          promptEnabled: false
+          promptEnabled: false,
         });
       });
     });
@@ -164,7 +166,7 @@ describe('Main', () => {
 
         expect(onModelChanged).toBeCalledWith({
           ...prepareModel(model),
-          prompt: 'This is the new prompt'
+          prompt: 'This is the new prompt',
         });
       });
     });
@@ -175,7 +177,7 @@ describe('Main', () => {
 
         expect(onModelChanged).toBeCalledWith({
           ...prepareModel(model),
-          rationale: 'New Rationale'
+          rationale: 'New Rationale',
         });
       });
     });
@@ -186,20 +188,21 @@ describe('Main', () => {
 
         expect(onModelChanged).toBeCalledWith({
           ...prepareModel(model),
-          teacherInstructions: 'New Teacher Instructions'
+          teacherInstructions: 'New Teacher Instructions',
         });
       });
     });
 
     describe('onMarkupChanged', () => {
       it('changes slate markup value', () => {
-        const slateMarkup = '<p>The <span data-type=\\"explicit_constructed_response\\" data-index=\\"0\\" data-value=\\"cow\\"></span> jumped</p>';
+        const slateMarkup =
+          '<p>The <span data-type=\\"explicit_constructed_response\\" data-index=\\"0\\" data-value=\\"cow\\"></span> jumped</p>';
 
         w.instance().onMarkupChanged(slateMarkup);
 
         expect(onModelChanged).toBeCalledWith({
           ...prepareModel(model),
-          slateMarkup
+          slateMarkup,
         });
       });
     });
@@ -208,7 +211,7 @@ describe('Main', () => {
       it('Removing choices (keeping only 1 choice): slateMarkup and choices are updated', () => {
         const newChoices = {
           ...model.choices,
-          '0': model.choices['0'].slice(0, 1)
+          0: model.choices['0'].slice(0, 1),
         };
         const newMarkup = `<div><p>The <span data-type="inline_dropdown" data-index="0" data-value="cow "></span> jumped <span data-type="inline_dropdown" data-index="1" data-value="over "></span> the <span data-type="inline_dropdown" data-index="2" data-value="moon "></span>.</p></div>`;
 
@@ -222,23 +225,23 @@ describe('Main', () => {
       it('No correct choice selected: slateMarkup and choices are updated', () => {
         const newChoices = {
           ...model.choices,
-          '0': [
+          0: [
             {
               label: 'cow ',
               value: '0',
-              correct: false
+              correct: false,
             },
             {
               label: 'dog ',
               value: '1',
-              correct: false
+              correct: false,
             },
             {
               label: 'cat ',
               value: '2',
-              correct: false
-            }
-          ]
+              correct: false,
+            },
+          ],
         };
         const newMarkup = `<div><p>The <span data-type="inline_dropdown" data-index="0" data-value="cow "></span> jumped <span data-type="inline_dropdown" data-index="1" data-value="over "></span> the <span data-type="inline_dropdown" data-index="2" data-value="moon "></span>.</p></div>`;
 
@@ -249,17 +252,17 @@ describe('Main', () => {
         expect(onModelChanged).not.toBeCalled();
       });
 
-
       it('New choice: slateMarkup and choices are updated', () => {
         const newChoices = {
           ...model.choices,
-          '0': [
+          0: [
             ...model.choices['0'],
             {
               label: 'pet ',
               value: '3',
-              correct: false
-            }]
+              correct: false,
+            },
+          ],
         };
         const newMarkup = `<div><p>The <span data-type="inline_dropdown" data-index="0" data-value="cow "></span> jumped <span data-type="inline_dropdown" data-index="1" data-value="over "></span> the <span data-type="inline_dropdown" data-index="2" data-value="moon "></span>.</p></div>`;
 
@@ -269,7 +272,7 @@ describe('Main', () => {
         expect(onModelChanged).toBeCalledWith({
           ...prepareModel(model),
           slateMarkup: newMarkup,
-          choices: newChoices
+          choices: newChoices,
         });
       });
 
@@ -277,23 +280,23 @@ describe('Main', () => {
         const oldModel = w.instance().props.model;
         const newChoices = {
           ...model.choices,
-          '3': [
+          3: [
             {
               label: 'A ',
               value: '0',
-              correct: true
+              correct: true,
             },
             {
               label: 'B',
               value: '1',
-              correct: false
+              correct: false,
             },
             {
               label: 'C ',
               value: '2',
-              correct: false
-            }
-          ]
+              correct: false,
+            },
+          ],
         };
         const newMarkup = `<div><p>The <span data-type="inline_dropdown" data-index="0" data-value="cow "></span> jumped <span data-type="inline_dropdown" data-index="1" data-value="over "></span> the <span data-type="inline_dropdown" data-index="2" data-value="moon "></span>, <span data-type="inline_dropdown" data-index="3" data-value="A"></span>.</p></div>`;
 
@@ -303,7 +306,7 @@ describe('Main', () => {
         expect(onModelChanged).toBeCalledWith({
           ...oldModel,
           slateMarkup: newMarkup,
-          choices: newChoices
+          choices: newChoices,
         });
       });
 
@@ -311,7 +314,7 @@ describe('Main', () => {
         const oldModel = w.instance().props.model;
         const newChoices = {
           ...model.choices,
-          '0': model.choices['0'].slice(0, 2)
+          0: model.choices['0'].slice(0, 2),
         };
         const newMarkup = `<div><p>The <span data-type="inline_dropdown" data-index="0" data-value="cow "></span> jumped <span data-type="inline_dropdown" data-index="1" data-value="over "></span> the <span data-type="inline_dropdown" data-index="2" data-value="moon "></span>.</p></div>`;
 
@@ -321,78 +324,78 @@ describe('Main', () => {
         expect(onModelChanged).toBeCalledWith({
           ...oldModel,
           slateMarkup: newMarkup,
-          choices: newChoices
+          choices: newChoices,
         });
       });
     });
 
     describe('onChoiceRationaleChanged', () => {
       it('changes the choice level rationale value', () => {
-        w.instance().onChoiceRationaleChanged(0,  {
+        w.instance().onChoiceRationaleChanged(0, {
           label: 'cow ',
           value: '0',
           correct: true,
-          rationale: 'new rationale for cow'
+          rationale: 'new rationale for cow',
         });
 
         expect(onModelChanged).toBeCalledWith({
           ...prepareModel(model),
           choices: {
-            '0': [
+            0: [
               {
                 label: 'cow ',
                 value: '0',
                 correct: true,
-                rationale: 'new rationale for cow'
+                rationale: 'new rationale for cow',
               },
               {
                 label: 'dog ',
                 value: '1',
-                correct: false
+                correct: false,
               },
               {
                 label: 'cat ',
                 value: '2',
-                correct: false
-              }
+                correct: false,
+              },
             ],
-            '1': [
+            1: [
               {
                 label: 'over ',
                 value: '0',
                 correct: true,
-                rationale: 'rationale for over'
+                rationale: 'rationale for over',
               },
               {
                 label: 'under ',
                 value: '1',
-                correct: false
+                correct: false,
               },
               {
                 label: 'across ',
                 value: '2',
-                correct: false
-              }
+                correct: false,
+              },
             ],
-            '2': [
+            2: [
               {
                 label: 'moon ',
                 value: '0',
                 correct: true,
-                rationale: 'rationale for moon'
+                rationale: 'rationale for moon',
               },
               {
                 label: 'sun',
                 value: '2',
-                correct: false
+                correct: false,
               },
               {
                 label: 'house ',
                 value: '3',
-                correct: false
-              }
-            ]
-          }
+                correct: false,
+              },
+            ],
+          },
         });
       });
     });
@@ -425,11 +428,8 @@ describe('Main', () => {
           ...currentModel,
           choices: {
             ...currentModel.choices,
-            '0': [
-              ...currentModel.choices['0'],
-              { label: 'bird', value: '3', correct: false }
-            ]
-          }
+            0: [...currentModel.choices['0'], { label: 'bird', value: '3', correct: false }],
+          },
         });
 
         w.instance().onAddChoice('2', 'star');
@@ -437,15 +437,9 @@ describe('Main', () => {
           ...currentModel,
           choices: {
             ...currentModel.choices,
-            '0': [
-              ...currentModel.choices['0'],
-              { label: 'bird', value: '3', correct: false }
-            ],
-            '2': [
-              ...currentModel.choices['2'],
-              { label: 'star', value: '4', correct: false }
-            ]
-          }
+            0: [...currentModel.choices['0'], { label: 'bird', value: '3', correct: false }],
+            2: [...currentModel.choices['2'], { label: 'star', value: '4', correct: false }],
+          },
         });
       });
     });
@@ -454,12 +448,12 @@ describe('Main', () => {
       beforeEach(() => {
         w.instance().setState({
           respAreaChoices: {
-            '0': [
+            0: [
               { label: 'cow ', value: '0', correct: true },
               { label: 'dog ', value: '1', correct: false },
-              { label: 'cat ', value: '2', correct: false }
-            ]
-          }
+              { label: 'cat ', value: '2', correct: false },
+            ],
+          },
         });
       });
 
@@ -469,12 +463,12 @@ describe('Main', () => {
         expect(onModelChanged).toBeCalledWith(
           expect.objectContaining({
             choices: {
-              '0': [
+              0: [
                 { label: 'dog ', value: '1', correct: false },
-                { label: 'cat ', value: '2', correct: false }
-              ]
-            }
-          })
+                { label: 'cat ', value: '2', correct: false },
+              ],
+            },
+          }),
         );
 
         w.instance().onRemoveChoice(0, '0');
@@ -482,11 +476,9 @@ describe('Main', () => {
         expect(onModelChanged).toBeCalledWith(
           expect.objectContaining({
             choices: {
-              '0': [
-                { label: 'cat ', value: '2', correct: false }
-              ]
-            }
-          })
+              0: [{ label: 'cat ', value: '2', correct: false }],
+            },
+          }),
         );
 
         w.instance().onRemoveChoice(0, '0');
@@ -494,9 +486,9 @@ describe('Main', () => {
         expect(onModelChanged).toBeCalledWith(
           expect.objectContaining({
             choices: {
-              '0': []
-            }
-          })
+              0: [],
+            },
+          }),
         );
       });
     });
@@ -505,12 +497,12 @@ describe('Main', () => {
       beforeEach(() => {
         w.instance().setState({
           respAreaChoices: {
-            '0': [
+            0: [
               { label: 'cow ', value: '0', correct: true },
               { label: 'dog ', value: '1', correct: false },
-              { label: 'cat ', value: '2', correct: false }
-            ]
-          }
+              { label: 'cat ', value: '2', correct: false },
+            ],
+          },
         });
       });
 
@@ -520,13 +512,13 @@ describe('Main', () => {
         expect(onModelChanged).toBeCalledWith(
           expect.objectContaining({
             choices: {
-              '0': [
+              0: [
                 { label: 'cow ', value: '0', correct: false },
                 { label: 'dog ', value: '1', correct: true },
-                { label: 'cat ', value: '2', correct: false }
-              ]
-            }
-          })
+                { label: 'cat ', value: '2', correct: false },
+              ],
+            },
+          }),
         );
 
         w.instance().onSelectChoice(0, 0);
@@ -534,15 +526,15 @@ describe('Main', () => {
         expect(onModelChanged).toBeCalledWith(
           expect.objectContaining({
             choices: {
-              '0': [
+              0: [
                 { label: 'cow ', value: '0', correct: true },
                 { label: 'dog ', value: '1', correct: false },
-                { label: 'cat ', value: '2', correct: false }
-              ]
-            }
-          })
+                { label: 'cat ', value: '2', correct: false },
+              ],
+            },
+          }),
         );
-      })
+      });
     });
   });
 });

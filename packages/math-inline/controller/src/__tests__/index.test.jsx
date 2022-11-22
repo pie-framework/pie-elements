@@ -2,7 +2,7 @@ import { latexEqual } from '@pie-framework/math-validation';
 import { model, outcome, createCorrectResponseSession } from '../index';
 
 jest.mock('@pie-framework/math-validation', () => ({
-  latexEqual: jest.fn().mockReturnValue(true)
+  latexEqual: jest.fn().mockReturnValue(true),
 }));
 
 const defaultModel = {
@@ -23,8 +23,7 @@ const defaultModel = {
       validation: 'literal',
     },
   ],
-  note:
-    'The answer shown above is the primary correct answer specified by the author for this item, but other answers may also be recognized as correct.',
+  note: 'The answer shown above is the primary correct answer specified by the author for this item, but other answers may also be recognized as correct.',
   customKeys: ['\\left(\\right)', '\\frac{}{}', 'x\\frac{}{}'],
   id: 1,
 };
@@ -394,9 +393,7 @@ describe('outcome', () => {
   });
 
   const returnOutcome = (session) => {
-    it(`returns score: 0 and empty: true if session is ${JSON.stringify(
-      session
-    )}`, async () => {
+    it(`returns score: 0 and empty: true if session is ${JSON.stringify(session)}`, async () => {
       let outcomeResult = await outcome(question, session, env);
 
       expect(outcomeResult).toEqual({ score: 0, empty: true });
@@ -551,15 +548,13 @@ describe('createCorrectResponseSession', () => {
       {
         ...question,
         expression: '{{response}}',
-        responses: [
-          { answer: '\\frac{3}{4}', validation: 'symbolic', id: '1' },
-        ],
+        responses: [{ answer: '\\frac{3}{4}', validation: 'symbolic', id: '1' }],
         responseType: 'Simple',
       },
       {
         mode: 'view',
         role: 'instructor',
-      }
+      },
     );
 
     expect(sess).toMatchObject({
@@ -604,15 +599,7 @@ describe('createCorrectResponseSession', () => {
         ],
         id: '1',
         element: 'math-inline',
-        customKeys: [
-          '<',
-          '\\le',
-          '\\ge',
-          '>',
-          '\\frac{}{}',
-          'x^{}',
-          '\\left(\\right)',
-        ],
+        customKeys: ['<', '\\le', '\\ge', '>', '\\frac{}{}', 'x^{}', '\\left(\\right)'],
       };
       const session = {
         id: '1',
@@ -819,8 +806,7 @@ describe('PD-205', () => {
     equationEditor: 3,
     teacherInstructions: '',
     responseType: 'Advanced Multi',
-    expression:
-      '{{response}}\\ =\\ {{response}}\\ \\text{cubic}\\ \\text{inches}',
+    expression: '{{response}}\\ =\\ {{response}}\\ \\text{cubic}\\ \\text{inches}',
     rationale:
       '<p>The volume of the box can be solved by any equivalent variation of the equation: 10 &#215; 7 &#215; 5 = 350 (cubic&#160;inches)&#160;or 70 &#215; 5 = 350&#160;(cubic&#160;inches). This answer is the result of accurately applying either the formula <span class="variable">l</span> &#215; <span class="variable">w</span> &#215; <span class="variable">h</span> = <span class="variable">V</span> or <span class="variable">b</span> &#215; <span class="variable">h</span> = <span class="variable">V</span> to find the volume of the&#160;rectangular prism described.</p>',
     prompt:

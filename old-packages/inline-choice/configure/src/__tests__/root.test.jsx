@@ -7,33 +7,33 @@ const choices = [
   {
     correct: true,
     value: '1',
-    label: 'Sweden'
+    label: 'Sweden',
   },
   {
     value: '2',
     label: 'Iceland',
     feedback: {
-      type: 'default'
-    }
+      type: 'default',
+    },
   },
   {
     value: '4',
-    label: 'Norway'
+    label: 'Norway',
   },
   {
     value: '5',
     label: 'Finland',
     feedback: {
       type: 'custom',
-      value: 'Nokia was founded in Finland.'
-    }
-  }
+      value: 'Nokia was founded in Finland.',
+    },
+  },
 ];
 
 const defaultModel = {
   defaultLang: 'en-US',
   choiceLabel: 'Select option ...',
-  choices
+  choices,
 };
 
 describe('Root', () => {
@@ -43,7 +43,7 @@ describe('Root', () => {
   beforeEach(() => {
     const props = {
       model: defaultModel,
-      onModelChanged
+      onModelChanged,
     };
     wrapper = () => shallow(<Root {...props} />);
   });
@@ -82,13 +82,12 @@ describe('Root', () => {
           correct: false,
           value: '6',
           label: '',
-          feedback: { type: 'default' }
-        }
+          feedback: { type: 'default' },
+        },
       ];
 
       expect(onModelChanged).toHaveBeenCalledWith(expect.objectContaining({ choices: newChoices }));
       expect(wInstance.state.model.choices).toEqual(newChoices);
-
     });
 
     it('onChoiceChange calls onModelChanged with existing index', () => {
@@ -103,16 +102,17 @@ describe('Root', () => {
           correct: false,
           value: '6',
           label: '',
-          feedback: { type: 'default' }
-        }
+          feedback: { type: 'default' },
+        },
       ];
 
-      expect(onModelChanged).toHaveBeenCalledWith(expect.objectContaining({
-        choices: newChoices
-      }));
+      expect(onModelChanged).toHaveBeenCalledWith(
+        expect.objectContaining({
+          choices: newChoices,
+        }),
+      );
 
       expect(wInstance.state.model.choices).toEqual(newChoices);
-
     });
 
     it('onChoiceChange calls onModelChanged with non-existent index', () => {
@@ -127,13 +127,15 @@ describe('Root', () => {
           correct: false,
           value: '6',
           label: '',
-          feedback: { type: 'default' }
-        }
+          feedback: { type: 'default' },
+        },
       ];
 
-      expect(onModelChanged).toHaveBeenCalledWith(expect.objectContaining({
-        choices: newChoices
-      }));
+      expect(onModelChanged).toHaveBeenCalledWith(
+        expect.objectContaining({
+          choices: newChoices,
+        }),
+      );
       expect(wInstance.state.model.choices).toEqual(newChoices);
     });
 
@@ -148,8 +150,8 @@ describe('Root', () => {
           correct: false,
           value: '6',
           label: '',
-          feedback: { type: 'default' }
-        }
+          feedback: { type: 'default' },
+        },
       ];
 
       expect(wInstance.state.model.choices).toEqual(newChoices);
@@ -166,8 +168,8 @@ describe('Root', () => {
           correct: false,
           value: '6',
           label: '',
-          feedback: { type: 'default' }
-        }
+          feedback: { type: 'default' },
+        },
       ];
 
       expect(wInstance.state.model.choices).toEqual(newChoices);
@@ -176,9 +178,11 @@ describe('Root', () => {
     it('onPromptChange', () => {
       wInstance.onPromptChange('New Prompt');
 
-      expect(onModelChanged).toHaveBeenCalledWith(expect.objectContaining({
-        prompt: 'New Prompt'
-      }));
+      expect(onModelChanged).toHaveBeenCalledWith(
+        expect.objectContaining({
+          prompt: 'New Prompt',
+        }),
+      );
     });
   });
 });

@@ -12,16 +12,16 @@ describe('SimpleQuestionBlock', () => {
         feedback: {
           correct: {
             default: 'Correct',
-            type: 'none'
+            type: 'none',
           },
           incorrect: {
             default: 'Incorrect',
-            type: 'none'
+            type: 'none',
           },
           partial: {
             default: 'Nearly',
-            type: 'none'
-          }
+            type: 'none',
+          },
         },
         equationEditor: 'miscellaneous',
         expression: 'n = {\\embed{answerBlock}[answerBlock1]}',
@@ -33,23 +33,23 @@ describe('SimpleQuestionBlock', () => {
             answer: 'n=-11',
             id: 'answerBlock1',
             alternates: {},
-            validation: 'literal'
-          }
+            validation: 'literal',
+          },
         ],
         response: {
           answer: 'n=-11',
           id: 'answerBlock1',
           alternates: {},
-          validation: 'literal'
-        }
-      }
+          validation: 'literal',
+        },
+      },
     },
     correctness: {},
     showCorrect: false,
     session: {
       response: 'sessionResponse',
     },
-    onSimpleResponseChange: jest.fn()
+    onSimpleResponseChange: jest.fn(),
   };
 
   let wrapper;

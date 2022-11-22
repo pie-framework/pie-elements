@@ -2,7 +2,7 @@ const { model } = require('./generate');
 
 module.exports = {
   elements: {
-    'math-inline': '../..'
+    'math-inline': '../..',
   },
-  models: [model('1', 'math-inline')]
+  models: [model('1', 'math-inline')],
 };

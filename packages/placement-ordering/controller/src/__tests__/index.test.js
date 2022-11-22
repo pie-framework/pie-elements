@@ -11,7 +11,7 @@ describe('index', () => {
         correctResponse: [],
         feedbackEnabled: true,
       },
-      o
+      o,
     );
     return o;
   };
@@ -37,22 +37,16 @@ describe('index', () => {
 
     it(
       'returns prompt',
-      assertModel(base(), {}, {}, (m) => expect(m.prompt).toEqual('hi'))
+      assertModel(base(), {}, {}, (m) => expect(m.prompt).toEqual('hi')),
     );
 
-    it(
-      'returns empty config for mode=gather',
-      assertModel(base(), {}, { mode: 'gather' }, {})
-    );
+    it('returns empty config for mode=gather', assertModel(base(), {}, { mode: 'gather' }, {}));
 
-    it(
-      'returns empty config for mode=view',
-      assertModel(base(), {}, { mode: 'view' }, { disabled: true })
-    );
+    it('returns empty config for mode=view', assertModel(base(), {}, { mode: 'view' }, { disabled: true }));
 
     it(
       'returns config.disabled=true for mode=evaluate',
-      assertModel(base(), {}, { mode: 'evaluate' }, { disabled: true })
+      assertModel(base(), {}, { mode: 'evaluate' }, { disabled: true }),
     );
 
     it(
@@ -64,8 +58,8 @@ describe('index', () => {
         }),
         { value: ['a', 'b'] },
         { mode: 'evaluate' },
-        { feedback: 'foo' }
-      )
+        { feedback: 'foo' },
+      ),
     );
 
     describe('choices and outcomes', () => {
@@ -96,8 +90,8 @@ describe('index', () => {
               { id: 'b', label: 'b' },
               { label: 'c', id: 'c' },
             ],
-          }
-        )
+          },
+        ),
       );
 
       // Main Correct Response
@@ -109,7 +103,7 @@ describe('index', () => {
             { id: 'b', outcome: 'correct' },
             { id: 'c', outcome: 'correct' },
           ],
-        })
+        }),
       );
 
       // Alternate Correct Response
@@ -121,7 +115,7 @@ describe('index', () => {
             { id: 'b', outcome: 'correct' },
             { id: 'a', outcome: 'correct' },
           ],
-        })
+        }),
       );
 
       // Main Correct Response
@@ -129,7 +123,7 @@ describe('index', () => {
         'returns outcomes - 1 correct',
         assertModel(model, { value: ['a'] }, env, {
           outcomes: [{ id: 'a', outcome: 'correct' }],
-        })
+        }),
       );
 
       // Alternate Correct Response
@@ -137,13 +131,10 @@ describe('index', () => {
         'returns outcomes for alternate - 1 correct',
         assertModel(model, { value: ['c'] }, env, {
           outcomes: [{ id: 'c', outcome: 'correct' }],
-        })
+        }),
       );
 
-      it(
-        'does not return config.correctResponse - 1 correct',
-        assertModel(model, session, env, { disabled: true })
-      );
+      it('does not return config.correctResponse - 1 correct', assertModel(model, session, env, { disabled: true }));
 
       it(
         'returns outcomes - 2 incorrect',
@@ -152,27 +143,21 @@ describe('index', () => {
             { id: 'b', outcome: 'incorrect' },
             { id: 'a', outcome: 'incorrect' },
           ],
-        })
+        }),
       );
 
       it(
         'returns config.correctResponse - 2 - incorrect',
         assertModel(model, { value: ['b', 'a'] }, env, {
           correctResponse: ['a', 'b', 'c'],
-        })
+        }),
       );
     });
 
     describe('session not set', () => {
       const assertModelCorrectness = (session) => {
-        it(`returns correctness: incorrect of session is ${JSON.stringify(
-          session
-        )}`, async () => {
-          const m = await controller.model(
-            base({ correctResponse: ['a', 'b'] }),
-            session,
-            { mode: 'evaluate' }
-          );
+        it(`returns correctness: incorrect of session is ${JSON.stringify(session)}`, async () => {
+          const m = await controller.model(base({ correctResponse: ['a', 'b'] }), session, { mode: 'evaluate' });
           expect(m.correctness).toEqual('incorrect');
         });
       };
@@ -239,13 +224,13 @@ describe('index', () => {
     describe('session', () => {
       const choices = [
         { id: '1', label: 'a' },
-        { id: '2', label: 'b' }
+        { id: '2', label: 'b' },
       ];
       const env = { mode: 'gather' };
 
       it('sets session value if no placementArea', async () => {
         const question = base({
-          choices
+          choices,
         });
         const session = {};
 
@@ -257,7 +242,7 @@ describe('index', () => {
       it('does not set session value if placementArea = true', async () => {
         const question = base({
           choices,
-          placementArea: true
+          placementArea: true,
         });
         const session = {};
 
@@ -270,26 +255,20 @@ describe('index', () => {
 
   describe('outcome', () => {
     const assertOutcome = (question, value, expectedScore, env) => {
-      it(`${expectedScore} when answer: ${value} and question: ${JSON.stringify(
-        question
-      )}, env: ${JSON.stringify(env)}`, async () => {
+      it(`${expectedScore} when answer: ${value} and question: ${JSON.stringify(question)}, env: ${JSON.stringify(
+        env,
+      )}`, async () => {
         const result = await controller.outcome(question, { value }, env);
         expect(result.score).toEqual(expectedScore);
       });
     };
     const assertOutcomeError = (question, session, env) => {
       it(`throws error for ${JSON.stringify(question)}`, () =>
-        expect(controller.outcome(question, session, env)).rejects.toThrow(
-          controller.questionError()
-        ));
+        expect(controller.outcome(question, session, env)).rejects.toThrow(controller.questionError()));
     };
     const assertOutcomeSessionNotset = (session) => {
-      it(`return score: 0 and empty: true if session is ${JSON.stringify(
-        session
-      )}`, () =>
-        expect(
-          controller.outcome({}, session, { mode: 'evaluate' })
-        ).resolves.toEqual({ score: 0, empty: true }));
+      it(`return score: 0 and empty: true if session is ${JSON.stringify(session)}`, () =>
+        expect(controller.outcome({}, session, { mode: 'evaluate' })).resolves.toEqual({ score: 0, empty: true }));
     };
 
     assertOutcomeError(null, { value: [] }, {});
@@ -308,7 +287,7 @@ describe('index', () => {
         alternateResponses: [{ response: ['c'] }],
       },
       ['a'],
-      1
+      1,
     );
     assertOutcome(
       {
@@ -317,7 +296,7 @@ describe('index', () => {
         alternateResponses: [{ response: ['c'] }],
       },
       ['b'],
-      0
+      0,
     );
     assertOutcome(
       {
@@ -325,20 +304,16 @@ describe('index', () => {
         alternateResponses: [{ response: ['b', 'c', 'a'] }],
       },
       ['c', 'a', 'b'],
-      0.33
+      0.33,
     );
-    assertOutcome(
-      { correctResponse: ['a', 'b'], alternateResponses: [['c', 'b']] },
-      ['c', 'a', 'b'],
-      0
-    );
+    assertOutcome({ correctResponse: ['a', 'b'], alternateResponses: [['c', 'b']] }, ['c', 'a', 'b'], 0);
     assertOutcome(
       {
         correctResponse: ['a', 'b', 'c'],
         alternateResponses: [{ response: ['a', 'c', 'b'] }],
       },
       ['a', 'b'],
-      0.33
+      0.33,
     );
     assertOutcome(
       {
@@ -347,7 +322,7 @@ describe('index', () => {
         alternateResponses: [{ response: ['a', 'b'] }],
       },
       ['c', 'a', 'b'],
-      0.33
+      0.33,
     );
     assertOutcome(
       {
@@ -356,7 +331,7 @@ describe('index', () => {
         alternateResponses: [{ response: ['a', 'c', 'b'] }],
       },
       ['a', 'b'],
-      0
+      0,
     );
     assertOutcome(
       {
@@ -366,7 +341,7 @@ describe('index', () => {
       },
       ['c', 'a', 'b'],
       0,
-      { partialScoring: true }
+      { partialScoring: true },
     );
 
     // Alternate Correct Response
@@ -377,7 +352,7 @@ describe('index', () => {
         alternateResponses: [{ response: ['c'] }],
       },
       ['c'],
-      1
+      1,
     );
     assertOutcome(
       {
@@ -386,7 +361,7 @@ describe('index', () => {
         alternateResponses: [{ response: ['c'] }],
       },
       ['b'],
-      0
+      0,
     );
     assertOutcome(
       {
@@ -394,20 +369,16 @@ describe('index', () => {
         alternateResponses: [{ response: ['c', 'b', 'a'] }],
       },
       ['c', 'a', 'b'],
-      0.67
+      0.67,
     );
-    assertOutcome(
-      { correctResponse: ['a', 'b'], alternateResponses: [{ response: ['c', 'b'] }] },
-      ['c', 'a', 'b'],
-      0
-    );
+    assertOutcome({ correctResponse: ['a', 'b'], alternateResponses: [{ response: ['c', 'b'] }] }, ['c', 'a', 'b'], 0);
     assertOutcome(
       {
         correctResponse: ['a', 'b', 'c'],
         alternateResponses: [{ response: ['c', 'b', 'a'] }],
       },
       ['c', 'b'],
-      0.33
+      0.33,
     );
     assertOutcome(
       {
@@ -416,7 +387,7 @@ describe('index', () => {
         alternateResponses: [{ response: ['a', 'c', 'b'] }],
       },
       ['c', 'a', 'b'],
-      0.67
+      0.67,
     );
     assertOutcome(
       {
@@ -425,7 +396,7 @@ describe('index', () => {
         alternateResponses: [{ response: ['a', 'c', 'b'] }],
       },
       ['a', 'b'],
-      0
+      0,
     );
     assertOutcome(
       {
@@ -435,7 +406,7 @@ describe('index', () => {
       },
       ['c', 'a', 'b'],
       0,
-      { partialScoring: true }
+      { partialScoring: true },
     );
   });
 });

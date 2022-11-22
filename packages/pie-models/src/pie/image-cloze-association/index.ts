@@ -1,10 +1,7 @@
 import { PieModel } from '../../PieModel';
 import { PromptConfig } from '../../PromptConfig';
 import { CommonConfigSettings } from '../../CommonConfigSettings';
-import {
-  ConfigureProp,
-  ConfigureMaxImageDimensionsProp,
-} from '../ConfigurationProp';
+import { ConfigureProp, ConfigureMaxImageDimensionsProp } from '../ConfigurationProp';
 
 interface ResponseContainer {
   /** The x coordinate of the response container */
@@ -113,9 +110,7 @@ export interface ImageClozeAssociationPie extends PieModel {
  * Config Object for @pie-elements/image-cloze-association
  * @additionalProperties false
  */
-export interface ImageClozeAssociationConfigure
-  extends PromptConfig,
-    CommonConfigSettings {
+export interface ImageClozeAssociationConfigure extends PromptConfig, CommonConfigSettings {
   /**
    * Teacher Instructions configuration
    */

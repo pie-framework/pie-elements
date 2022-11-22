@@ -3,7 +3,7 @@ import {
   DeleteImageEvent,
   InsertImageEvent,
   InsertSoundEvent,
-  DeleteSoundEvent
+  DeleteSoundEvent,
 } from '@pie-framework/pie-configure-events';
 
 import React from 'react';
@@ -13,7 +13,7 @@ import debug from 'debug';
 import defaults from 'lodash/defaults';
 
 import sensibleDefaults from './defaults';
-import { processMarkup, createSlateMarkup } from './markupUtils'
+import { processMarkup, createSlateMarkup } from './markupUtils';
 
 const log = debug('multiple-choice:configure');
 
@@ -21,7 +21,7 @@ export default class InlineDropdown extends HTMLElement {
   static prepareModel = (model = {}) => {
     const currModal = {
       ...sensibleDefaults.model,
-      ...model
+      ...model,
     };
     const slateMarkup = model.slateMarkup || createSlateMarkup(currModal.markup, currModal.choices);
     const markup = processMarkup(slateMarkup);
@@ -29,7 +29,7 @@ export default class InlineDropdown extends HTMLElement {
     return {
       ...currModal,
       slateMarkup,
-      markup
+      markup,
       /*...processedMarkup,*/
     };
   };
@@ -101,12 +101,12 @@ export default class InlineDropdown extends HTMLElement {
       disableSidePanel: this._disableSidePanel,
       imageSupport: {
         add: this.insertImage.bind(this),
-        delete: this.onDeleteImage.bind(this)
+        delete: this.onDeleteImage.bind(this),
       },
       uploadSoundSupport: {
         add: this.insertSound.bind(this),
-        delete: this.onDeleteSound.bind(this)
-      }
+        delete: this.onDeleteSound.bind(this),
+      },
     });
     ReactDOM.render(element, this);
   }

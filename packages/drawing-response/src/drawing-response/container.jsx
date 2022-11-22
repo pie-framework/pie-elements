@@ -11,16 +11,10 @@ import Icon from './icon';
 
 const { tools: TOOLS } = constants;
 
-const ROGVAIV = [
-  'red',
-  'orange',
-  'yellow',
-  'violet',
-  'blue',
-  'green',
-  'white',
-  'black'
-].map(c => ({ value: c, label: c }));
+const ROGVAIV = ['red', 'orange', 'yellow', 'violet', 'blue', 'green', 'white', 'black'].map((c) => ({
+  value: c,
+  label: c,
+}));
 
 export class Container extends Component {
   static propTypes = {
@@ -30,7 +24,7 @@ export class Container extends Component {
     onSessionChange: PropTypes.func.isRequired,
     imageDimensions: PropTypes.object.isRequired,
     imageUrl: PropTypes.string.isRequired,
-    backgroundImageEnabled: PropTypes.bool.isRequired
+    backgroundImageEnabled: PropTypes.bool.isRequired,
   };
 
   constructor(props) {
@@ -41,7 +35,7 @@ export class Container extends Component {
       scale: 1,
       drawableDimensions: {
         height: 0,
-        width: 0
+        width: 0,
       },
       toolActive: TOOLS[0],
       fillColor: 'white',
@@ -49,13 +43,13 @@ export class Container extends Component {
         { value: 'transparent', label: 'no fill' },
         { value: 'lightblue', label: 'light blue' },
         { value: 'lightyellow', label: 'light yellow' },
-        ...ROGVAIV
+        ...ROGVAIV,
       ],
       outlineColor: 'black',
       outlineColorList: ROGVAIV,
       paintColor: 'red',
       paintColorList: ROGVAIV,
-      TextEntry
+      TextEntry,
     };
   }
 
@@ -67,8 +61,8 @@ export class Container extends Component {
           this.setState({
             drawableDimensions: {
               height,
-              width
-            }
+              width,
+            },
           });
         }
       } catch (e) {
@@ -85,19 +79,16 @@ export class Container extends Component {
 
     this.observer = new MutationObserver((mutations) => {
       mutations.forEach(() => {
-        const target = document.getElementById('question-container')?.style?.cssText
-        const zoom = target?.substring(
-          target.indexOf('--pie-zoom') + 11,
-          target.lastIndexOf('%')
-        );
+        const target = document.getElementById('question-container')?.style?.cssText;
+        const zoom = target?.substring(target.indexOf('--pie-zoom') + 11, target.lastIndexOf('%'));
         const zoomParsed = zoom?.replace(/\s/g, '');
 
-      if (zoomParsed) {
+        if (zoomParsed) {
           const newScale = parseFloat(zoomParsed) / 100;
           if (newScale !== this.state.scale) {
             this.setState({
               scale: parseFloat(zoomParsed) / 100,
-            })
+            });
           }
         } else if (!zoomParsed && this.state.scale !== 1) {
           this.setState({
@@ -109,7 +100,7 @@ export class Container extends Component {
 
     const target = document.getElementById('question-container');
     if (target) {
-      this.observer.observe(target, { attributes : true, attributeFilter : ['style'] })
+      this.observer.observe(target, { attributes: true, attributeFilter: ['style'] });
     }
   }
 
@@ -126,20 +117,19 @@ export class Container extends Component {
 
     if (type !== 'Text') {
       this.setState({
-        toolActive: tool
+        toolActive: tool,
       });
     } else {
       TextEntry.addNewTextEntry();
       // Force update
       this.setState({
-        updatedAt: new Date()
+        updatedAt: new Date(),
       });
     }
   }
 
-  checkIfToolIsDisabled = type => {
+  checkIfToolIsDisabled = (type) => {
     if (this.props.disabled) return true;
-
 
     const { toolActive } = this.state;
     // Text will never be disabled since on each "Text Entry" click a new text is added
@@ -152,20 +142,13 @@ export class Container extends Component {
   handleColorChange(type, color) {
     const cType = `${type}Color`;
     this.setState({
-      [cType]: color
+      [cType]: color,
     });
   }
 
   render() {
-    const {
-      classes,
-      disabled,
-      imageUrl,
-      imageDimensions,
-      onSessionChange,
-      session,
-      backgroundImageEnabled
-    } = this.props;
+    const { classes, disabled, imageUrl, imageDimensions, onSessionChange, session, backgroundImageEnabled } =
+      this.props;
     const {
       drawableDimensions,
       toolActive,
@@ -175,14 +158,14 @@ export class Container extends Component {
       outlineColorList,
       paintColor,
       paintColorList,
-      TextEntry
+      TextEntry,
     } = this.state;
 
     const heightToUse = drawableDimensions.height * this.state.scale;
 
     return (
       <div className={classes.base}>
-        {!disabled &&
+        {!disabled && (
           <DrawablePalette
             fillColor={fillColor}
             fillList={fillColorList}
@@ -190,17 +173,15 @@ export class Container extends Component {
             outlineList={outlineColorList}
             paintColor={paintColor}
             paintList={paintColorList}
-            onFillColorChange={color => this.handleColorChange('fill', color)}
-            onOutlineColorChange={color =>
-              this.handleColorChange('outline', color)
-            }
-            onPaintColorChange={color => this.handleColorChange('paint', color)}
+            onFillColorChange={(color) => this.handleColorChange('fill', color)}
+            onOutlineColorChange={(color) => this.handleColorChange('outline', color)}
+            onPaintColorChange={(color) => this.handleColorChange('paint', color)}
           />
-        }
+        )}
 
         <div className={classes.box}>
           <div className={classes.toolbar}>
-            {TOOLS.map(tool => {
+            {TOOLS.map((tool) => {
               const { type, label, icon } = tool;
 
               return (
@@ -216,7 +197,7 @@ export class Container extends Component {
           </div>
 
           <div
-            ref={drawable => {
+            ref={(drawable) => {
               this.drawable = drawable;
             }}
             className={classes.drawableHeight}
@@ -244,19 +225,19 @@ export class Container extends Component {
   }
 }
 
-const styles = theme => ({
+const styles = (theme) => ({
   base: {
-    marginTop: theme.spacing.unit * 2
+    marginTop: theme.spacing.unit * 2,
   },
   box: {
     border: '1px solid #E0E1E6',
     borderRadius: '5px',
     marginTop: theme.spacing.unit * 2,
-    backgroundColor: '#ECEDF1'
+    backgroundColor: '#ECEDF1',
   },
   drawableHeight: {
     minHeight: 350,
-    backgroundColor: '#fff'
+    backgroundColor: '#fff',
   },
   toolbar: {
     borderBottom: '1px solid #E0E1E6',
@@ -266,9 +247,9 @@ const styles = theme => ({
     boxSizing: 'border-box',
     maxWidth: 'calc(100% - 163px)', // 163px is the width set on undoControls
     '& button': {
-      marginBottom: '8px'
-    }
-  }
+      marginBottom: '8px',
+    },
+  },
 });
 
 export default withStyles(styles)(Container);

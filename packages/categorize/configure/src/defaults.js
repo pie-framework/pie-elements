@@ -24,13 +24,13 @@ export default {
   configuration: {
     spellCheck: {
       label: 'Spellcheck',
-      settings:false,
-      enabled:true
+      settings: false,
+      enabled: true,
     },
     feedback: {
       settings: true,
       label: 'Feedback',
-      enabled: true
+      enabled: true,
     },
     lockChoiceOrder: {
       settings: true,
@@ -38,11 +38,11 @@ export default {
     },
     allowMultiplePlacements: {
       settings: true,
-      label: 'Allow Multiple Placements'
+      label: 'Allow Multiple Placements',
     },
     categoriesPerRow: {
       settings: true,
-      label: 'Categories per row'
+      label: 'Categories per row',
     },
     partialScoring: {
       settings: false,
@@ -50,11 +50,11 @@ export default {
     },
     prompt: {
       settings: true,
-      label: 'Prompt'
+      label: 'Prompt',
     },
     rationale: {
       settings: true,
-      label: 'Rationale'
+      label: 'Rationale',
     },
     scoringType: {
       settings: false,
@@ -62,15 +62,15 @@ export default {
     },
     studentInstructions: {
       settings: false,
-      label: 'Student Instructions'
+      label: 'Student Instructions',
     },
     teacherInstructions: {
       settings: true,
-      label: 'Teacher Instructions'
+      label: 'Teacher Instructions',
     },
-    toolbarEditorPosition:{
+    toolbarEditorPosition: {
       settings: false,
-      label: 'Toolbar Editor Position'
+      label: 'Toolbar Editor Position',
     },
     maxImageWidth: {
       teacherInstructions: 300,
@@ -78,7 +78,7 @@ export default {
       rationale: 300,
       rowLabel: 200,
       categoryLabel: 260,
-      choices: 240
+      choices: 240,
     },
     maxImageHeight: {
       teacherInstructions: 300,
@@ -86,11 +86,11 @@ export default {
       rationale: 300,
       rowLabel: 100,
       categoryLabel: 100,
-      choices: 150
+      choices: 150,
     },
     withRubric: {
       settings: false,
-      label: 'Add Rubric'
-    }
-  }
+      label: 'Add Rubric',
+    },
+  },
 };

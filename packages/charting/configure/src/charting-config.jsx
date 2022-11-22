@@ -29,15 +29,10 @@ const restoreCorrectAnswer = (correctAnswer, data) => {
   (data || []).forEach((category, currentIndex) => {
     const { editable, interactive } = category;
 
-    const label =
-      editable && correctAnswer[currentIndex]?.label
-        ? correctAnswer[currentIndex].label
-        : category.label;
+    const label = editable && correctAnswer[currentIndex]?.label ? correctAnswer[currentIndex].label : category.label;
 
     const value =
-      interactive && correctAnswer[currentIndex]?.value
-        ? correctAnswer[currentIndex].value
-        : category.value;
+      interactive && correctAnswer[currentIndex]?.value ? correctAnswer[currentIndex].value : category.value;
 
     correctResponseDefinition[currentIndex] = {
       label: label,
@@ -72,17 +67,14 @@ export class ChartingConfig extends React.Component {
       {
         dialog: { open },
       },
-      callback
+      callback,
     );
 
   changeData = (data) => this.props.onChange({ ...this.props.model, data });
 
   changeAddRemoveEnabled = (value) => {
-    const { model } = this.props
-    const correctAnswer = restoreCorrectAnswer(
-      model.correctAnswer.data,
-     model.data
-    );
+    const { model } = this.props;
+    const correctAnswer = restoreCorrectAnswer(model.correctAnswer.data, model.data);
 
     if (!value) {
       this.setState({
@@ -97,7 +89,7 @@ export class ChartingConfig extends React.Component {
                 ...this.props.model,
                 addCategoryEnabled: value,
                 correctAnswer: { data: correctAnswer },
-              })
+              }),
             ),
           onClose: () => this.handleAlertDialog(false),
         },
@@ -107,15 +99,16 @@ export class ChartingConfig extends React.Component {
     }
   };
 
-  changeTitle = title => this.props.onChange({ ...this.props.model, title });
+  changeTitle = (title) => this.props.onChange({ ...this.props.model, title });
 
-  changeLabel = (type, label) => this.props.onChange({
-     ...this.props.model,
-     [type]: {
-      ...this.props.model[type],
-      label
-     },
-    })
+  changeLabel = (type, label) =>
+    this.props.onChange({
+      ...this.props.model,
+      [type]: {
+        ...this.props.model[type],
+        label,
+      },
+    });
 
   render() {
     const { classes, model, charts, labelsPlaceholders, titlePlaceholder, showPixelGuides } = this.props;
@@ -128,10 +121,7 @@ export class ChartingConfig extends React.Component {
         <div className={classes.container}>
           <div className={classes.column} key="graph">
             <Typography component="div" type="body1">
-              <span>
-                Use the tools below to set up the chart as it will initially
-                appear to students.
-              </span>
+              <span>Use the tools below to set up the chart as it will initially appear to students.</span>
             </Typography>
 
             <Chart

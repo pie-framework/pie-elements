@@ -7,7 +7,7 @@ const d = {
   teacherInstructions: true,
   studentInstructions: false,
   choices: {
-    0: [choice('A', '0'), choice('B', '1'), ],
+    0: [choice('A', '0'), choice('B', '1')],
   },
   markup:
     '<p>\n  <strong>Esta cuadrícula de coordenadas representa el diseño del salón de matemáticas de Valerie. Cada unidad en la cuadricula representa 1 pie cuadrado.&nbsp;</strong>\n</p>\n<p>\n  <strong>* El escritorio de Valeria se encuentra en (-3,-4)</strong>\n</p>\n<p>\n  <strong>* El escritorio de la maestra se encuentra en (5,-4)</strong>\n</p>\n<p>\n  <strong>* El cuarto de materiales se encuentra&nbsp; en (-3,-7)</strong>\n</p>\n<p>\n  <strong><img src="https://storage.googleapis.com/pie-staging-221718-assets/image/180d28b2-0376-428e-b415-de96e158b7e7" alt=""></strong>\n</p>\n<p>\n  &nbsp;\n</p>\n<p>\n  <strong>Anota la distancia, en pies, desde el escritorio de Valerie al cuarto de materiales.</strong>\n</p>\n<p>\n  {{0}} <strong>pies</strong>\n</p>',
@@ -15,7 +15,7 @@ const d = {
   rubric: '',
   element: 'explicit-constructed-response-element',
   autoScoring: 'partial',
-  rationale: ''
+  rationale: '',
 };
 
 describe('edge cases', () => {

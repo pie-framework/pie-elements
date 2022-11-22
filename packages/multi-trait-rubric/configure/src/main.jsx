@@ -19,7 +19,7 @@ const styles = {
   design: {
     fontFamily: 'Cerebri Sans',
     fontSize: '14px',
-  }
+  },
 };
 
 export class Main extends React.Component {
@@ -29,7 +29,7 @@ export class Main extends React.Component {
     showDeleteTraitDialog: false,
     showExcludeZeroDialog: false,
     showInfoDialog: false,
-    infoDialogText: ''
+    infoDialogText: '',
   };
 
   onScaleAdded = () => {
@@ -44,7 +44,7 @@ export class Main extends React.Component {
     if (scales.length === maxNoOfScales) {
       this.set({
         infoDialogText: `There can't be more than ${maxNoOfScales} scales.`,
-        showInfoDialog: true
+        showInfoDialog: true,
       });
 
       return false;
@@ -55,11 +55,11 @@ export class Main extends React.Component {
       maxPoints: 1,
       scorePointsLabels: ['', ''],
       traitLabel: '',
-      traits: []
+      traits: [],
     });
 
     onModelChanged({ ...model, scales });
-  }
+  };
 
   onScaleChanged = (scaleIndex, params) => {
     const { model, onModelChanged } = this.props;
@@ -67,34 +67,30 @@ export class Main extends React.Component {
 
     if (scaleIndex < 0 || scaleIndex >= scales.length || isEmpty(params)) return false;
 
-    Object.keys(params).forEach(key => {
+    Object.keys(params).forEach((key) => {
       scales[scaleIndex][key] = params[key];
     });
 
     onModelChanged({ ...model, scales });
   };
 
-   onScaleRemoved = (scaleIndex) => {
+  onScaleRemoved = (scaleIndex) => {
     const { model, onModelChanged, configuration } = this.props;
     let { scales } = model || {};
     const { minNoOfScales } = configuration || {};
-
 
     if (scaleIndex < 0 || scaleIndex >= scales.length) return false;
 
     if (scales.length === minNoOfScales) {
       this.set({
         infoDialogText: `There can't be less than ${minNoOfScales} scales.`,
-        showInfoDialog: true
+        showInfoDialog: true,
       });
 
       return false;
     }
 
-    scales = [
-      ...scales.slice(0, scaleIndex),
-      ...scales.slice(scaleIndex + 1)
-    ];
+    scales = [...scales.slice(0, scaleIndex), ...scales.slice(scaleIndex + 1)];
 
     onModelChanged({ ...model, scales });
   };
@@ -122,7 +118,7 @@ export class Main extends React.Component {
     pointLabels = !pointLabels;
 
     onModelChanged({ ...model, pointLabels });
-  }
+  };
 
   changeShowDescription = () => {
     const { model, onModelChanged } = this.props || {};
@@ -131,7 +127,7 @@ export class Main extends React.Component {
     description = !description;
 
     onModelChanged({ ...model, description });
-  }
+  };
 
   changeShowStandards = () => {
     const { model, onModelChanged } = this.props || {};
@@ -140,7 +136,7 @@ export class Main extends React.Component {
     standards = !standards;
 
     onModelChanged({ ...model, standards });
-  }
+  };
 
   // Exclude Zero
   showToggleExcludeZeroModal = () => this.set({ showExcludeZeroDialog: true });
@@ -167,7 +163,7 @@ export class Main extends React.Component {
           scorePointsLabels = scorePointsLabels.slice(1);
           traits = traits.map(({ scorePointsDescriptors, ...trait }) => ({
             ...trait,
-            scorePointsDescriptors: scorePointsDescriptors.slice(1)
+            scorePointsDescriptors: scorePointsDescriptors.slice(1),
           }));
 
           break;
@@ -177,7 +173,7 @@ export class Main extends React.Component {
           scorePointsLabels = ['', ...scorePointsLabels];
           traits = traits.map(({ scorePointsDescriptors, ...trait }) => ({
             ...trait,
-            scorePointsDescriptors: ['', ...scorePointsDescriptors]
+            scorePointsDescriptors: ['', ...scorePointsDescriptors],
           }));
 
           break;
@@ -187,7 +183,7 @@ export class Main extends React.Component {
           scorePointsLabels = scorePointsLabels.slice(0, -1);
           traits = traits.map(({ scorePointsDescriptors, ...trait }) => ({
             ...trait,
-            scorePointsDescriptors: scorePointsDescriptors.slice(0, -1)
+            scorePointsDescriptors: scorePointsDescriptors.slice(0, -1),
           }));
 
           break;
@@ -197,7 +193,7 @@ export class Main extends React.Component {
           scorePointsLabels = [...scorePointsLabels, ''];
           traits = traits.map(({ scorePointsDescriptors, ...trait }) => ({
             ...trait,
-            scorePointsDescriptors: [...scorePointsDescriptors, '']
+            scorePointsDescriptors: [...scorePointsDescriptors, ''],
           }));
 
           break;
@@ -209,7 +205,7 @@ export class Main extends React.Component {
       acc.push({
         ...scale,
         scorePointsLabels,
-        traits
+        traits,
       });
 
       return acc;
@@ -218,7 +214,7 @@ export class Main extends React.Component {
     onModelChanged({ ...model, scales: newScales, excludeZero });
 
     this.hideToggleExcludeZeroModal();
-  }
+  };
 
   onModelChanged = (updatedModel, updatedProperty) => {
     const { onModelChanged } = this.props || {};
@@ -228,7 +224,7 @@ export class Main extends React.Component {
     } else {
       onModelChanged(updatedModel);
     }
-  }
+  };
 
   render() {
     const { model, classes, configuration, onConfigurationChanged, uploadSoundSupport } = this.props || {};
@@ -247,9 +243,18 @@ export class Main extends React.Component {
       showMaxPoint,
       addScale,
       maxNoOfTraits,
-      minNoOfTraits
+      minNoOfTraits,
     } = configuration || {};
-    const { scales, excludeZero, description, pointLabels, standards, spellCheckEnabled, maxPointsEnabled, addScaleEnabled } = model || {};
+    const {
+      scales,
+      excludeZero,
+      description,
+      pointLabels,
+      standards,
+      spellCheckEnabled,
+      maxPointsEnabled,
+      addScaleEnabled,
+    } = model || {};
     const { showExcludeZeroDialog, showInfoDialog, infoDialogText } = this.state || {};
     const adjustedWidth = parseInt(width) > parseInt(MIN_WIDTH) ? width : MIN_WIDTH;
 
@@ -284,36 +289,39 @@ export class Main extends React.Component {
 
     return (
       <div className={classes.design}>
-        {settingsPanelDisabled ? (Content) : <layout.ConfigLayout
-          settings={
-            <Panel
-              model={model}
-              onChangeModel={this.onModelChanged}
-              configuration={configuration}
-              onChangeConfiguration={onConfigurationChanged}
-              groups={{
-                Settings: {
-                  standards: showStandards.settings && toggle(showStandards.label),
-                  'showLevelTagInput.enabled': showLevelTagInput.settings && toggle(showLevelTagInput.label, true),
-                  visibleToStudent: showVisibleToStudent.settings && toggle(showVisibleToStudent.label),
-                  excludeZero: showExcludeZero.settings && toggle(showExcludeZero.label),
-                  halfScoring: showHalfScoring.settings && toggle(showHalfScoring.label),
-                  'dragAndDrop.enabled': dragAndDrop.settings && toggle(dragAndDrop.label, true)
-                },
-                Properties: {
-                  description: showDescription.settings && toggle(showDescription.label),
-                  pointLabels: showScorePointLabels.settings && toggle(showScorePointLabels.label),
-                  spellCheckEnabled:
-                  spellCheck.settings && toggle(spellCheck.label),
-                  maxPointsEnabled: showMaxPoint.settings && toggle(showMaxPoint.label),
-                  addScaleEnabled: addScale.settings && toggle(addScale.label),
-                }
-              }}
-            />
-          }
-        >
-          {Content}
-        </layout.ConfigLayout>}
+        {settingsPanelDisabled ? (
+          Content
+        ) : (
+          <layout.ConfigLayout
+            settings={
+              <Panel
+                model={model}
+                onChangeModel={this.onModelChanged}
+                configuration={configuration}
+                onChangeConfiguration={onConfigurationChanged}
+                groups={{
+                  Settings: {
+                    standards: showStandards.settings && toggle(showStandards.label),
+                    'showLevelTagInput.enabled': showLevelTagInput.settings && toggle(showLevelTagInput.label, true),
+                    visibleToStudent: showVisibleToStudent.settings && toggle(showVisibleToStudent.label),
+                    excludeZero: showExcludeZero.settings && toggle(showExcludeZero.label),
+                    halfScoring: showHalfScoring.settings && toggle(showHalfScoring.label),
+                    'dragAndDrop.enabled': dragAndDrop.settings && toggle(dragAndDrop.label, true),
+                  },
+                  Properties: {
+                    description: showDescription.settings && toggle(showDescription.label),
+                    pointLabels: showScorePointLabels.settings && toggle(showScorePointLabels.label),
+                    spellCheckEnabled: spellCheck.settings && toggle(spellCheck.label),
+                    maxPointsEnabled: showMaxPoint.settings && toggle(showMaxPoint.label),
+                    addScaleEnabled: addScale.settings && toggle(addScale.label),
+                  },
+                }}
+              />
+            }
+          >
+            {Content}
+          </layout.ConfigLayout>
+        )}
 
         <ExcludeZeroDialog
           open={showExcludeZeroDialog && !excludeZero}
@@ -326,11 +334,7 @@ export class Main extends React.Component {
           changeExcludeZero={this.changeExcludeZero}
           cancel={this.hideToggleExcludeZeroModal}
         />
-        <InfoDialog
-          open={showInfoDialog}
-          text={infoDialogText}
-          onClose={() => this.set({ showInfoDialog: false })}
-        />
+        <InfoDialog open={showInfoDialog} text={infoDialogText} onClose={() => this.set({ showInfoDialog: false })} />
       </div>
     );
   }
@@ -343,6 +347,6 @@ Main.propTypes = {
   configuration: PropTypes.object,
   onModelChanged: PropTypes.func,
   onConfigurationChanged: PropTypes.func,
-}
+};
 
 export default withDragContext(withStyles(styles)(Main));

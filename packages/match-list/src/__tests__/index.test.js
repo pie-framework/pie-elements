@@ -1,13 +1,11 @@
 import { isComplete } from '../index';
-const session = value => ({
-  value
+const session = (value) => ({
+  value,
 });
 
 describe('isComplete', () => {
   const assertIsComplete = (session, model, expected) => {
-    it(`${JSON.stringify(session.value)}, ${JSON.stringify(
-      model.config.prompts
-    )} = ${expected}`, () => {
+    it(`${JSON.stringify(session.value)}, ${JSON.stringify(model.config.prompts)} = ${expected}`, () => {
       const result = isComplete(session, model);
       expect(result).toEqual(expected);
     });
@@ -19,25 +17,25 @@ describe('isComplete', () => {
         {
           id: 3,
           title: 'Prompt 3',
-          relatedAnswer: 3
+          relatedAnswer: 3,
         },
         {
           id: 1,
           title: 'Prompt 1',
-          relatedAnswer: 1
+          relatedAnswer: 1,
         },
         {
           id: 4,
           title: 'Prompt 4',
-          relatedAnswer: 4
+          relatedAnswer: 4,
         },
         {
           id: 2,
           title: 'Prompt 2',
-          relatedAnswer: 2
-        }
-      ]
-    }
+          relatedAnswer: 2,
+        },
+      ],
+    },
   };
 
   assertIsComplete(
@@ -45,40 +43,40 @@ describe('isComplete', () => {
       1: 1,
       2: 2,
       3: 3,
-      4: 4
+      4: 4,
     }),
     testModel,
-    true
+    true,
   );
   assertIsComplete(
     session({
       1: 1,
       2: 2,
       3: 3,
-      4: undefined
+      4: undefined,
     }),
     testModel,
-    false
+    false,
   );
 
   assertIsComplete(
     session({
       1: 1,
       2: 2,
-      3: 3
+      3: 3,
     }),
     testModel,
-    false
+    false,
   );
   assertIsComplete(
     session({
       1: 3,
       2: 1,
       3: 4,
-      4: 2
+      4: 2,
     }),
     testModel,
-    true
+    true,
   );
 
   assertIsComplete(
@@ -87,10 +85,10 @@ describe('isComplete', () => {
       2: 1,
       3: 4,
       4: 2,
-      5: 5
+      5: 5,
     }),
     testModel,
-    true
+    true,
   );
 
   assertIsComplete(
@@ -99,10 +97,10 @@ describe('isComplete', () => {
       1: 1,
       2: 3,
       3: 3,
-      4: 0
+      4: 0,
     }),
     testModel,
-    true
+    true,
   );
 
   assertIsComplete(
@@ -111,9 +109,9 @@ describe('isComplete', () => {
       1: undefined,
       2: 3,
       3: 3,
-      4: 0
+      4: 0,
     }),
     testModel,
-    false
+    false,
   );
 });

@@ -5,12 +5,15 @@ const tSymbols = 'imes|riangle|an|heta|herefore';
 // do not remove \n from \nthroot, \nparallel, \ncong, \napprox, \neq, \ne or \nsim
 const nSymbols = 'throot|parallel|cong|approx|eq|e|sim';
 // match all \t and \n that are not part of math symbols that starts with \t or \n
-const matchTabAndNewLine = new RegExp(`(\\t(?!${tSymbols}))|(\\n(?!${nSymbols}))|(\\\\t(?!${tSymbols}))|(\\\\n(?!${nSymbols}))`, 'g');
+const matchTabAndNewLine = new RegExp(
+  `(\\t(?!${tSymbols}))|(\\n(?!${nSymbols}))|(\\\\t(?!${tSymbols}))|(\\\\n(?!${nSymbols}))`,
+  'g',
+);
 
-export const removeUnwantedCharacters = markup =>
+export const removeUnwantedCharacters = (markup) =>
   markup.replace(matchTabAndNewLine, '').replace(/\\"/g, '"').replace(/\\\//g, '/');
 
-export const createElementFromHTML = htmlString => {
+export const createElementFromHTML = (htmlString) => {
   const div = document.createElement('div');
 
   div.innerHTML = htmlString.trim();
@@ -18,11 +21,11 @@ export const createElementFromHTML = htmlString => {
   return div;
 };
 
-export const processMarkup = markup => {
+export const processMarkup = (markup) => {
   const newMarkup = removeUnwantedCharacters(markup);
   const slateMarkup = createElementFromHTML(newMarkup);
 
-  slateMarkup.querySelectorAll('[data-type="inline_dropdown"]').forEach(s => {
+  slateMarkup.querySelectorAll('[data-type="inline_dropdown"]').forEach((s) => {
     s.replaceWith(`{{${s.dataset.index}}}`);
   });
 
@@ -33,18 +36,20 @@ const REGEX = /\{\{(\d+)\}\}/g;
 
 export const createSlateMarkup = (markup, choices) => {
   const newMarkup = removeUnwantedCharacters(markup);
-  const createSelect = index => {
-    let correctChoice = choices[index] && choices[index].find(c => c.correct);
+  const createSelect = (index) => {
+    let correctChoice = choices[index] && choices[index].find((c) => c.correct);
 
     if (!correctChoice || !correctChoice.value) {
       correctChoice = {
         id: '',
         value: '',
-        label: ''
+        label: '',
       };
     }
 
-    return `<span data-type="inline_dropdown" data-index="${index}" data-value="${escape(correctChoice.label)}"></span>`;
+    return `<span data-type="inline_dropdown" data-index="${index}" data-value="${escape(
+      correctChoice.label,
+    )}"></span>`;
   };
 
   return newMarkup.replace(REGEX, (match, g) => {

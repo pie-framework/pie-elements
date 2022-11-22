@@ -1,17 +1,17 @@
 import defaults from './defaults';
 
-const prepareChoice = choice => {
+const prepareChoice = (choice) => {
   return {
     label: choice.label,
-    value: choice.value
+    value: choice.value,
   };
 };
 
 export function createDefaultModel(model = {}) {
-  return new Promise(resolve => resolve({ ...defaults, ...model }));
+  return new Promise((resolve) => resolve({ ...defaults, ...model }));
 }
 
-export const normalize = question => ({ ...defaults, ...question });
+export const normalize = (question) => ({ ...defaults, ...question });
 
 /**
  *
@@ -28,7 +28,7 @@ export async function model(question, session, env) {
     ...normalizedQuestion,
     choices,
     disabled: env.mode !== 'gather',
-    mode: env.mode
+    mode: env.mode,
   };
 
   const { role, mode } = env || {};
@@ -45,7 +45,7 @@ export async function model(question, session, env) {
 }
 
 export function outcome() {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     resolve({ score: 0, empty: false });
   });
 }

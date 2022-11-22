@@ -1,5 +1,4 @@
-export const modelToFeedbackConfig = model => {
-
+export const modelToFeedbackConfig = (model) => {
   const feedback = model.feedback || {};
 
   return {
@@ -9,7 +8,7 @@ export const modelToFeedbackConfig = model => {
     incorrectFeedbackType: feedback.incorrectFeedbackType || 'none',
     partialFeedback: feedback.partialFeedbackValue,
     partialFeedbackType: feedback.partialFeedbackType || 'none',
-  }
+  };
 };
 
 export const feedbackConfigToModel = (config, model) => {

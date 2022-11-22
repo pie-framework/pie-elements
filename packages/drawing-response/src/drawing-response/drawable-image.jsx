@@ -22,18 +22,18 @@ const styles = () => ({
   image: {
     alignItems: 'center',
     display: 'flex',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   imageContainer: {
     position: 'relative',
-    width: 'fit-content'
-  }
+    width: 'fit-content',
+  },
 });
 
 DrawableImage.propTypes = {
   classes: PropTypes.object.isRequired,
   dimensions: PropTypes.object.isRequired,
-  url:PropTypes.string.isRequired
+  url: PropTypes.string.isRequired,
 };
 
 export default withStyles(styles)(DrawableImage);

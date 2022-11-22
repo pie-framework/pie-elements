@@ -30,15 +30,15 @@ export class Row extends React.Component {
     onMoveRow: PropTypes.func.isRequired,
     imageSupport: PropTypes.shape({
       add: PropTypes.func.isRequired,
-      delete: PropTypes.func.isRequired
+      delete: PropTypes.func.isRequired,
     }),
     uploadSoundSupport: PropTypes.shape({
       add: PropTypes.func.isRequired,
-      delete: PropTypes.func.isRequired
+      delete: PropTypes.func.isRequired,
     }),
     enableImages: PropTypes.bool,
     toolbarOpts: PropTypes.object,
-    error: PropTypes.string
+    error: PropTypes.string,
   };
 
   static defaultProps = {};
@@ -46,22 +46,22 @@ export class Row extends React.Component {
   state = {
     dialog: {
       open: false,
-      message: ''
-    }
+      message: '',
+    },
   };
 
   componentDidMount() {
     document.addEventListener('mouseup', this.onMouseUpOnHandle);
   }
 
-  onRowTitleChange = rowIndex => value => {
+  onRowTitleChange = (rowIndex) => (value) => {
     const { model, onChange } = this.props;
     const newModel = { ...model };
 
-    const rows = newModel.rows || []
-    const currentRow =  rows[rowIndex] && rows[rowIndex].title;
+    const rows = newModel.rows || [];
+    const currentRow = rows[rowIndex] && rows[rowIndex].title;
 
-    const sameValue = rows.filter(row => {
+    const sameValue = rows.filter((row) => {
       const wasChanged = currentRow !== value && `<div>${currentRow}</div>` !== value;
       const sameValueEntered = row.title === value || `<div>${row.title}</div>` === value;
 
@@ -76,15 +76,13 @@ export class Row extends React.Component {
           open: true,
           message: 'The question row headings must be non-blank and unique.',
           onOk: () => {
-            this.setState(
-              {
-                dialog: {
-                  open: false,
-                }
-              }
-            );
-          }
-        }
+            this.setState({
+              dialog: {
+                open: false,
+              },
+            });
+          },
+        },
       });
     } else {
       newModel.rows[rowIndex].title = value;
@@ -93,7 +91,7 @@ export class Row extends React.Component {
     }
   };
 
-  onRowValueChange = (rowIndex, rowValueIndex) => event => {
+  onRowValueChange = (rowIndex, rowValueIndex) => (event) => {
     const { model, onChange } = this.props;
     const newModel = { ...model };
 
@@ -111,21 +109,19 @@ export class Row extends React.Component {
   onDeleteRow = (idx) => () => {
     const { model, onDeleteRow } = this.props;
 
-    if(model.rows && model.rows.length === 1) {
+    if (model.rows && model.rows.length === 1) {
       this.setState({
         dialog: {
           open: true,
           message: 'There has to be at least one question row.',
           onOk: () => {
-            this.setState(
-              {
-                dialog: {
-                  open: false,
-                }
-              }
-            );
-          }
-        }
+            this.setState({
+              dialog: {
+                open: false,
+              },
+            });
+          },
+        },
       });
     } else {
       onDeleteRow(idx);
@@ -156,30 +152,29 @@ export class Row extends React.Component {
       error,
       maxImageWidth,
       maxImageHeight,
-      uploadSoundSupport
+      uploadSoundSupport,
     } = this.props;
     const { dialog } = this.state;
     const opacity = isDragging ? 0 : 1;
 
     const rowPlugins = {
       image: {
-        disabled: !enableImages
+        disabled: !enableImages,
       },
       audio: { disabled: true },
-      video: { disabled: true }
+      video: { disabled: true },
     };
-    const filteredDefaultPlugins = (DEFAULT_PLUGINS || [])
-      .filter(p => p !== 'bulleted-list' && p !== 'numbered-list');
+    const filteredDefaultPlugins = (DEFAULT_PLUGINS || []).filter(
+      (p) => p !== 'bulleted-list' && p !== 'numbered-list',
+    );
 
     const content = (
-      <div style={{
-        opacity: opacity
-      }}>
-        <span
-          itemID={'handle'}
-          className={classes.dragHandle}
-          onMouseDown={this.onMouseDownOnHandle}
-        >
+      <div
+        style={{
+          opacity: opacity,
+        }}
+      >
+        <span itemID={'handle'} className={classes.dragHandle} onMouseDown={this.onMouseDownOnHandle}>
           <DragHandle color={'primary'} />
         </span>
         <div className={classes.rowContainer}>
@@ -206,16 +201,9 @@ export class Row extends React.Component {
           {row.values.map((rowValue, rowIdx) => (
             <div key={rowIdx} className={classes.rowItem}>
               {model.choiceMode === 'radio' ? (
-                <Radio
-                  onChange={this.onRowValueChange(idx, rowIdx)}
-                  checked={rowValue === true}
-                />
+                <Radio onChange={this.onRowValueChange(idx, rowIdx)} checked={rowValue === true} />
               ) : (
-                <Checkbox
-                  onChange={this.onRowValueChange(idx, rowIdx)}
-                  checked={rowValue === true}
-                  label={''}
-                />
+                <Checkbox onChange={this.onRowValueChange(idx, rowIdx)} checked={rowValue === true} label={''} />
               )}
             </div>
           ))}
@@ -227,51 +215,47 @@ export class Row extends React.Component {
         </div>
         {error && <div className={classes.errorText}>{error}</div>}
         <hr className={classes.separator} />
-        <InfoDialog
-          title={dialog.message}
-          open={dialog.open}
-          onOk={dialog.onOk}
-        />
+        <InfoDialog title={dialog.message} open={dialog.open} onOk={dialog.onOk} />
       </div>
     );
 
     return connectDragSource(connectDropTarget(content));
   }
 }
-const styles = theme => ({
+const styles = (theme) => ({
   actions: {
     padding: 0,
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
   },
   choice: {
     padding: theme.spacing.unit,
-    overflow: 'visible'
+    overflow: 'visible',
   },
   dragHandle: {
-    cursor: 'move'
+    cursor: 'move',
   },
   dragDisabled: {
-    cursor: 'inherit'
+    cursor: 'inherit',
   },
 
   container: {
     marginTop: theme.spacing.unit * 2,
     display: 'flex',
-    flexDirection: 'column'
+    flexDirection: 'column',
   },
   rowContainer: {
     marginTop: theme.spacing.unit * 2,
     display: 'flex',
     alignItems: 'center',
-    flex: 1
+    flex: 1,
   },
   rowItem: {
     flex: 1,
     display: 'flex',
     justifyContent: 'center',
     '&> div': {
-      width: '100%'
-    }
+      width: '100%',
+    },
   },
   deleteIcon: {
     flex: 0.5,
@@ -280,20 +264,20 @@ const styles = theme => ({
   questionText: {
     flex: 2,
     display: 'flex',
-    justifyContent: 'flex-start'
+    justifyContent: 'flex-start',
   },
   separator: {
     marginTop: theme.spacing.unit * 2,
     border: 0,
     borderTop: '2px solid lightgray',
-    width: '100%'
+    width: '100%',
   },
   errorText: {
     fontSize: '12px',
     color: 'red',
     paddingTop: '10px',
-    textAlign: 'center'
-  }
+    textAlign: 'center',
+  },
 });
 
 const StyledRow = withStyles(styles)(Row);
@@ -307,14 +291,14 @@ export const choiceSource = {
   beginDrag(props) {
     return {
       id: props.row.id,
-      index: props.idx
+      index: props.idx,
     };
-  }
+  },
 };
 
 const StyledSource = DragSource(NAME, choiceSource, (connect, monitor) => ({
   connectDragSource: connect.dragSource(),
-  isDragging: monitor.isDragging()
+  isDragging: monitor.isDragging(),
 }))(StyledRow);
 
 export const choiceTarget = {
@@ -325,11 +309,11 @@ export const choiceTarget = {
     const item = monitor.getItem();
     log('[drop] item: ', item, 'didDrop?', monitor.didDrop());
     props.onMoveRow(item.index, props.idx);
-  }
+  },
 };
 
-const StyledSourceAndTarget = DropTarget(NAME, choiceTarget, connect => ({
-  connectDropTarget: connect.dropTarget()
+const StyledSourceAndTarget = DropTarget(NAME, choiceTarget, (connect) => ({
+  connectDropTarget: connect.dropTarget(),
 }))(StyledSource);
 
 export default StyledSourceAndTarget;

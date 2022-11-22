@@ -6,7 +6,7 @@ import defaults from './defaults';
 
 const log = debug('@pie-element:function-entry:controller');
 
-const process = v => mathjs.simplify(v ? v.trim() : '');
+const process = (v) => mathjs.simplify(v ? v.trim() : '');
 
 const isResponseCorrect = (correctResponse, value) => {
   const processedValue = process(value);
@@ -17,7 +17,7 @@ const isResponseCorrect = (correctResponse, value) => {
 };
 
 export function createDefaultModel(model = {}) {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     resolve({
       ...defaults,
       ...model,
@@ -26,7 +26,7 @@ export function createDefaultModel(model = {}) {
 }
 
 export function model(question, session, env) {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     const { showFormattingHelp, equation, feedback } = question;
 
     const getCorrectness = () => {
@@ -35,24 +35,19 @@ export function model(question, session, env) {
           return 'empty';
         }
 
-        return isResponseCorrect(equation, session.value)
-          ? 'correct'
-          : 'incorrect';
+        return isResponseCorrect(equation, session.value) ? 'correct' : 'incorrect';
       }
     };
 
     const correctness = getCorrectness();
-    const fb =
-      env.mode === 'evaluate'
-        ? getFeedbackForCorrectness(correctness, feedback)
-        : Promise.resolve(undefined);
+    const fb = env.mode === 'evaluate' ? getFeedbackForCorrectness(correctness, feedback) : Promise.resolve(undefined);
 
-    fb.then(feedback => {
+    fb.then((feedback) => {
       const out = {
         showFormattingHelp,
         correctness,
         feedback,
-        disabled: env.mode !== 'gather'
+        disabled: env.mode !== 'gather',
       };
 
       log('out: ', out);
@@ -63,13 +58,13 @@ export function model(question, session, env) {
 }
 
 export const createCorrectResponseSession = (question, env) => {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     if (env.mode !== 'evaluate' && env.role === 'instructor') {
       const { equation } = question;
 
       resolve({
         id: '1',
-        value: equation
+        value: equation,
       });
     } else {
       resolve(null);
@@ -90,7 +85,7 @@ export const createCorrectResponseSession = (question, env) => {
  *   `model.partialScoring`.
  */
 export function outcome(model, session, env) {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     if (env.mode === 'evaluate') {
       if (!session || !session.value) {
         resolve({ score: 0, empty: true });
@@ -100,4 +95,3 @@ export function outcome(model, session, env) {
     }
   });
 }
-

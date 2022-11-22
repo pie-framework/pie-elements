@@ -11,22 +11,20 @@ import {
   copyFileSync,
   ensureDirSync,
   copy,
-  copySync
+  copySync,
 } from 'fs-extra';
 import { pascalCase } from 'change-case';
-const jsonSchemaTomarkdown =require('json-schema-to-markdown');
+const jsonSchemaTomarkdown = require('json-schema-to-markdown');
 const deref = require('json-schema-deref-sync');
 
 const optionDefinitions: Array<commandLineArgs.OptionDefinition> = [
   { name: 'make', alias: 'm', type: Boolean },
   { name: 'copy', alias: 'c', type: Boolean },
   { name: 'package', alias: 'p', type: String },
-  { name: 'copy-dir', alias: 'd', type: String }
+  { name: 'copy-dir', alias: 'd', type: String },
 ];
 
-const options: commandLineArgs.CommandLineOptions = commandLineArgs(
-  optionDefinitions
-);
+const options: commandLineArgs.CommandLineOptions = commandLineArgs(optionDefinitions);
 
 const pieDefinitionsDir = 'src/pie';
 const outDir = join('dist', 'schemas');
@@ -35,22 +33,16 @@ const configSchemaFilename = 'config-schema.json';
 
 const tjsSettings: TJS.PartialArgs = {
   required: true,
-  titles: true
+  titles: true,
 };
 
 const dereferenceSchema = (schema: TJS.Definition): Promise<Object> => {
   return deref(schema);
 };
 
-const getDirectories = (p: any) =>
-  readdirSync(p).filter(f => lstatSync(join(p, f)).isDirectory());
+const getDirectories = (p: any) => readdirSync(p).filter((f) => lstatSync(join(p, f)).isDirectory());
 
-const writeDocs = async (
-  tjsSchema: TJS.Definition,
-  outDir: string,
-  schemaFile: string,
-  docTitle: string
-) => {
+const writeDocs = async (tjsSchema: TJS.Definition, outDir: string, schemaFile: string, docTitle: string) => {
   let schema = await dereferenceSchema(tjsSchema);
   writeFile(join(outDir, schemaFile), JSON.stringify(schema, null, 2));
   // make markdown
@@ -73,26 +65,14 @@ const processTypescriptFile = async (packageName: string, filePath: string) => {
   if (generator) {
     // write config model
     try {
-      const configSchema = generator.getSchemaForSymbol(
-        typePrefix + 'Configure'
-      );
-      await writeDocs(
-        configSchema,
-        packageOutDir,
-        configSchemaFilename,
-        packageName + '-configure'
-      );
+      const configSchema = generator.getSchemaForSymbol(typePrefix + 'Configure');
+      await writeDocs(configSchema, packageOutDir, configSchemaFilename, packageName + '-configure');
     } catch (error) {
       console.log(`no config available for ${packageName}`);
     }
     try {
       const pieSchema = generator.getSchemaForSymbol(typePrefix + 'Pie');
-      await writeDocs(
-        pieSchema,
-        packageOutDir,
-        pieSchemaFilename,
-        packageName + '-pie'
-      );
+      await writeDocs(pieSchema, packageOutDir, pieSchemaFilename, packageName + '-pie');
     } catch (error) {
       console.log(`no pie model available for ${packageName}`);
     }
@@ -104,7 +84,7 @@ const processTypescriptFile = async (packageName: string, filePath: string) => {
 if (options.make || options.copy) {
   let dirs = getDirectories(pieDefinitionsDir);
   if (options['package']) {
-    dirs = dirs.filter(dir => {
+    dirs = dirs.filter((dir) => {
       return options['package'] === dir;
     });
   }
@@ -112,7 +92,7 @@ if (options.make || options.copy) {
   if (options.make) {
     removeSync('dist');
     mkdirpSync(outDir);
-    dirs.forEach(dir => {
+    dirs.forEach((dir) => {
       const modelFile = resolve(pieDefinitionsDir, dir, 'index.ts');
       if (existsSync(modelFile)) {
         processTypescriptFile(dir, modelFile);
@@ -129,7 +109,7 @@ if (options.make || options.copy) {
       ensureDirSync(baseDocsDestinationDir);
     }
     console.log(`copying schemas from ${outDir} to ${baseDocsDestinationDir}`);
-    dirs.forEach(dir => {
+    dirs.forEach((dir) => {
       const pieDocsDir = resolve(baseDocsDestinationDir, dir, 'docs');
       // create dir if passed dir option
       options['copy-dir'] && ensureDirSync(pieDocsDir);

@@ -12,7 +12,7 @@ export class ChoicePreview extends React.Component {
     classes: PropTypes.object.isRequired,
     className: PropTypes.string,
     choice: PropTypes.object.isRequired,
-    onDelete: PropTypes.func.isRequired
+    onDelete: PropTypes.func.isRequired,
   };
   static defaultProps = {};
 
@@ -25,32 +25,26 @@ export class ChoicePreview extends React.Component {
     const { classes, className, choice } = this.props;
     return (
       <div className={classNames(classes.choicePreview, className)}>
-        {
-          choice ? <Choice>
+        {choice ? (
+          <Choice>
             <HtmlAndMath html={choice?.content} />
-            <IconButton
-              color="secondary"
-              aria-label="delete"
-              className={classes.delete}
-              onClick={this.delete}
-            >
+            <IconButton color="secondary" aria-label="delete" className={classes.delete} onClick={this.delete}>
               <Delete />
             </IconButton>
           </Choice>
-            : null
-        }
+        ) : null}
       </div>
     );
   }
 }
 const styles = () => ({
   choicePreview: {
-    position: 'relative'
+    position: 'relative',
   },
   delete: {
     position: 'absolute',
     right: 0,
-    top: 0
-  }
+    top: 0,
+  },
 });
 export default withStyles(styles)(ChoicePreview);

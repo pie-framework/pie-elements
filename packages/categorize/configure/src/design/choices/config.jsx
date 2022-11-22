@@ -15,23 +15,23 @@ const positionOptions = [
   {
     label: 'Above',
     value: 'above',
-    secondaryText: 'Choices will be shown above categories'
+    secondaryText: 'Choices will be shown above categories',
   },
   {
     label: 'Below',
     value: 'below',
-    secondaryText: 'Choices will be shown below categories'
+    secondaryText: 'Choices will be shown below categories',
   },
   {
     label: 'Left',
     value: 'left',
-    secondaryText: 'Choices will be shown to the left of the categories'
+    secondaryText: 'Choices will be shown to the left of the categories',
   },
   {
     label: 'Right',
     value: 'right',
-    secondaryText: 'Choices will be shown to the right of the categories'
-  }
+    secondaryText: 'Choices will be shown to the right of the categories',
+  },
 ];
 
 export class Config extends React.Component {
@@ -41,26 +41,26 @@ export class Config extends React.Component {
     config: PropTypes.object,
     categoryCountIsOne: PropTypes.bool,
     allChoicesHaveCount: PropTypes.func,
-    onModelChanged: PropTypes.func
+    onModelChanged: PropTypes.func,
   };
 
   static defaultProps = {};
 
   state = {
-    anchorEl: null
+    anchorEl: null,
   };
 
   changeLabel = ({ target }) => {
     this.props.onModelChanged({ choicesLabel: target.value });
   };
 
-  changePosition = position => {
+  changePosition = (position) => {
     this.props.onModelChanged({ choicesPosition: position.value });
 
     this.setState({ anchorEl: null });
   };
 
-  handleClickPosition = event => {
+  handleClickPosition = (event) => {
     this.setState({ anchorEl: event.currentTarget });
   };
 
@@ -74,11 +74,10 @@ export class Config extends React.Component {
 
   render() {
     const { anchorEl } = this.state;
-    const { classes, className, categoryCountIsOne, config, spellCheck} = this.props;
+    const { classes, className, categoryCountIsOne, config, spellCheck } = this.props;
 
     const positionOption =
-      positionOptions.find(option => option.value === config.choicesPosition) ||
-      positionOption[1];
+      positionOptions.find((option) => option.value === config.choicesPosition) || positionOption[1];
 
     return (
       <div className={classNames(classes.config, className)}>
@@ -86,7 +85,7 @@ export class Config extends React.Component {
           <TextField
             className={classes.label}
             InputLabelProps={{
-              shrink: true
+              shrink: true,
             }}
             label="Label"
             value={config.choicesLabel}
@@ -94,24 +93,12 @@ export class Config extends React.Component {
             spellCheck={spellCheck}
           />
           <List component="nav">
-            <ListItem
-              button
-              aria-haspopup="true"
-              onClick={this.handleClickPosition}
-            >
-              <ListItemText
-                primary="Choices Position"
-                secondary={positionOption.secondaryText}
-              />
+            <ListItem button aria-haspopup="true" onClick={this.handleClickPosition}>
+              <ListItemText primary="Choices Position" secondary={positionOption.secondaryText} />
             </ListItem>
           </List>
-          <Menu
-            id="lock-menu"
-            anchorEl={anchorEl}
-            open={Boolean(anchorEl)}
-            onClose={this.handleClose}
-          >
-            {positionOptions.map(option => (
+          <Menu id="lock-menu" anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={this.handleClose}>
+            {positionOptions.map((option) => (
               <MenuItem
                 key={option.value}
                 selected={option.value === config.choicesPosition}
@@ -126,7 +113,7 @@ export class Config extends React.Component {
     );
   }
 }
-const styles = theme => ({
+const styles = (theme) => ({
   configuration: {
     display: 'grid',
     alignItems: 'center',
@@ -134,12 +121,12 @@ const styles = theme => ({
     gridRowGap: `${theme.spacing.unit}px`,
     gridTemplateColumns: 'repeat(2, 1fr)',
     justifyContent: 'space-between',
-    marginBottom: theme.spacing.unit
+    marginBottom: theme.spacing.unit,
   },
   choiceConfig: {
     width: '100%',
     maxWidth: 360,
-    backgroundColor: theme.palette.background.paper
+    backgroundColor: theme.palette.background.paper,
   },
   row: {
     display: 'grid',
@@ -148,11 +135,11 @@ const styles = theme => ({
     gridTemplateColumns: 'repeat(2, 1fr)',
     justifyContent: 'space-between',
     marginTop: theme.spacing.unit,
-    marginBottom: theme.spacing.unit
+    marginBottom: theme.spacing.unit,
   },
   shuffleCheckbox: {
     gridColumnStart: 2,
-    gridColumnEnd: 2
-  }
+    gridColumnEnd: 2,
+  },
 });
 export default withStyles(styles)(Config);

@@ -23,19 +23,22 @@ describe('Main', () => {
           element: 'drag-in-the-blank',
           markup: '{{0}} + {{1}} = 15',
           disabled: false,
-          choices: [{ value: '<div>9</div>', id: '1' }, { value: '<div>6</div>', id: '0' }],
+          choices: [
+            { value: '<div>9</div>', id: '1' },
+            { value: '<div>6</div>', id: '0' },
+          ],
           choicesPosition: 'below',
           correctResponse: { 0: '0', 1: '1' },
           duplicates: true,
           alternateResponses: [['1'], ['0']],
           feedback: {},
-          ...extra
+          ...extra,
         },
         value: { 0: '1', 1: '0' },
-        onChange
+        onChange,
       };
 
-      return shallow(<Main {...props}/>);
+      return shallow(<Main {...props} />);
     };
   });
 

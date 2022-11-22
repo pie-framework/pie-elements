@@ -75,9 +75,7 @@ describe('ebsr', () => {
         const session = { id: key, value };
         el.dispatchSessionChanged(session, key);
 
-        expect(el.dispatchEvent).toBeCalledWith(
-          new SessionChangedEvent('ebsr-element', false)
-        );
+        expect(el.dispatchEvent).toBeCalledWith(new SessionChangedEvent('ebsr-element', false));
         expect(el._session.value[key]).toEqual(session);
       });
     };
@@ -114,8 +112,5 @@ describe('isSessionComplete', () => {
   };
 
   assertComplete({}, false);
-  assertComplete(
-    { value: { partA: { value: [1] }, partB: { value: [2] } } },
-    true
-  );
+  assertComplete({ value: { partA: { value: [1] }, partB: { value: [2] } } }, true);
 });

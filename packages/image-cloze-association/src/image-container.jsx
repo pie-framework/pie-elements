@@ -12,31 +12,23 @@ class ImageContainer extends Component {
       classes,
       draggingElement,
       duplicateResponses,
-      image: {
-        height,
-        src,
-        width
-      },
+      image: { height, src, width },
       onAnswerSelect,
       onDragAnswerBegin,
       onDragAnswerEnd,
       responseContainers,
-      showDashedBorder
+      showDashedBorder,
     } = this.props;
 
     return (
       <div className={classes.base}>
-        <img
-          src={src}
-          height={height}
-          width={width}
-        />
+        <img src={src} height={height} width={width} />
         {responseContainers.map((r, i) => {
           const rHeight = (r.height.replace('%', '') / 100) * height;
           const rWidth = (r.width.replace('%', '') / 100) * width;
           const rLeft = (r.x / 100) * width;
           const rTop = (r.y / 100) * height;
-          const answersParsed = answers.filter(a => a.containerIndex === r.index);
+          const answersParsed = answers.filter((a) => a.containerIndex === r.index);
 
           return (
             <ImageDropTarget
@@ -46,7 +38,7 @@ class ImageContainer extends Component {
                 height: rHeight,
                 width: rWidth,
                 left: rLeft,
-                top: rTop
+                top: rTop,
               }}
               duplicateResponses={duplicateResponses}
               key={r.id + i}
@@ -59,7 +51,7 @@ class ImageContainer extends Component {
           );
         })}
       </div>
-    )
+    );
   }
 }
 
@@ -74,18 +66,18 @@ ImageContainer.propTypes = {
   onDragAnswerBegin: PropTypes.func.isRequired,
   onDragAnswerEnd: PropTypes.func.isRequired,
   responseContainers: PropTypes.array.isRequired,
-  showDashedBorder: PropTypes.bool
+  showDashedBorder: PropTypes.bool,
 };
 
 ImageContainer.defaultProps = {
   classes: {},
-  duplicateResponses: false
+  duplicateResponses: false,
 };
 
-const styles = theme => ({
+const styles = (theme) => ({
   base: {
     margin: theme.spacing.unit * 2,
-    position: 'relative'
-  }
+    position: 'relative',
+  },
 });
 export default withStyles(styles)(ImageContainer);

@@ -13,22 +13,17 @@ describe('Trait', () => {
       description: 'Trait 1 Description',
       scorePointsDescriptors: ['Descriptor 0', 'Descriptor 1'],
       standards: ['a', 'b'],
-      ...traitOptions
+      ...traitOptions,
     };
 
     options = {
       scorePointsValues: [0, 1],
       showStandards: true,
       showDescription: true,
-      ...showOptions
+      ...showOptions,
     };
 
-    return mount(<Trait
-      trait={trait}
-      traitIndex={1}
-      scaleIndex={1}
-      {...options}
-    />);
+    return mount(<Trait trait={trait} traitIndex={1} scaleIndex={1} {...options} />);
   };
 
   beforeEach(() => {

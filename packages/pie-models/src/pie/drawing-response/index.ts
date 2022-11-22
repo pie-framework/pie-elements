@@ -2,7 +2,8 @@ import { PieModel } from '../../PieModel';
 import {
   ConfigureProp,
   ConfigurePropWithEnabled,
-  ConfigureMaxImageDimensionsProp, ConfigureWithForceProp,
+  ConfigureMaxImageDimensionsProp,
+  ConfigureWithForceProp,
 } from '../ConfigurationProp';
 import { PromptConfig } from '../../PromptConfig';
 import { Dimension } from '../../Dimension';

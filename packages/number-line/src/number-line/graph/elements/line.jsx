@@ -19,40 +19,40 @@ const style = {
       strokeWidth: '5px',
       transition: `opacity ${duration} linear, 
       stroke-width ${duration} linear,
-      stroke ${duration} linear`
+      stroke ${duration} linear`,
     },
     '&.react-draggable-dragging': {
       opacity: 0.6,
       '& .line-handle': {
         opacity: 1.0,
-        strokeWidth: '12px'
-      }
-    }
+        strokeWidth: '12px',
+      },
+    },
   },
   disabled: {
     cursor: 'not-allowed',
-    opacity: 0.8
+    opacity: 0.8,
   },
   selected: {
     '& .line-handle': {
-      stroke: color.primaryDark()
+      stroke: color.primaryDark(),
     },
     '& circle': {
-      stroke: color.primaryDark()
-    }
+      stroke: color.primaryDark(),
+    },
   },
   correct: {
     '& .line-handle': {
       cursor: 'inherit',
-      stroke: color.correct()
-    }
+      stroke: color.correct(),
+    },
   },
   incorrect: {
     '& .line-handle': {
       cursor: 'inherit',
-      stroke: color.incorrect()
-    }
-  }
+      stroke: color.incorrect(),
+    },
+  },
 };
 
 export class Line extends React.Component {
@@ -60,11 +60,11 @@ export class Line extends React.Component {
     ...basePropTypes(),
     empty: PropTypes.shape({
       left: PropTypes.bool.isRequired,
-      right: PropTypes.bool.isRequired
+      right: PropTypes.bool.isRequired,
     }).isRequired,
     position: PropTypes.shape({
       left: PropTypes.number.isRequired,
-      right: PropTypes.number.isRequired
+      right: PropTypes.number.isRequired,
     }).isRequired,
     y: PropTypes.number,
     selected: PropTypes.bool,
@@ -73,26 +73,26 @@ export class Line extends React.Component {
     onMoveLine: PropTypes.func.isRequired,
     onToggleSelect: PropTypes.func.isRequired,
     onDragStart: PropTypes.func,
-    onDragStop: PropTypes.func
+    onDragStop: PropTypes.func,
   };
 
   static defaultProps = {
     selected: false,
     y: 0,
     disabled: false,
-    correct: undefined
+    correct: undefined,
   };
 
   static contextTypes = {
     xScale: PropTypes.func.isRequired,
-    snapValue: PropTypes.func.isRequired
+    snapValue: PropTypes.func.isRequired,
   };
 
   constructor(props) {
     super(props);
     this.state = {
       left: null,
-      right: null
+      right: null,
     };
   }
 
@@ -120,17 +120,7 @@ export class Line extends React.Component {
   }
 
   render() {
-    const {
-      interval,
-      empty,
-      position,
-      domain,
-      y,
-      selected,
-      disabled,
-      correct,
-      classes
-    } = this.props;
+    const { interval, empty, position, domain, y, selected, disabled, correct, classes } = this.props;
 
     const { xScale } = this.context;
 
@@ -141,14 +131,12 @@ export class Line extends React.Component {
     const onDragRight = onDrag.bind(this, 'right');
 
     const left = isNumber(this.state.left) ? this.state.left : position.left;
-    const right = isNumber(this.state.right)
-      ? this.state.right
-      : position.right;
+    const right = isNumber(this.state.right) ? this.state.right : position.right;
 
     const is = xScale(interval) - xScale(0);
 
-    const onMouseDown = e => e.nativeEvent.preventDefault();
-    const onLineDragStart = e => this.setState({ startX: e.clientX });
+    const onMouseDown = (e) => e.nativeEvent.preventDefault();
+    const onLineDragStart = (e) => this.setState({ startX: e.clientX });
 
     const onLineClick = () => {
       const { startX, endX } = this.state;
@@ -172,7 +160,7 @@ export class Line extends React.Component {
       const invertedX = xScale.invert(dd.lastX + xScale(0));
       const newPosition = {
         left: position.left + invertedX,
-        right: position.right + invertedX
+        right: position.right + invertedX,
       };
 
       if (!isEqual(newPosition, this.props.position)) {
@@ -181,22 +169,22 @@ export class Line extends React.Component {
     };
 
     const scaledLineBounds = {
-      left: (domain.min - position.left) / interval * is,
-      right: (domain.max - position.right) / interval * is
+      left: ((domain.min - position.left) / interval) * is,
+      right: ((domain.max - position.right) / interval) * is,
     };
 
     var lineClass = classNames(classes.line, {
       [classes.disabled]: disabled,
       [classes.selected]: selected,
       [classes.correct]: correct === true,
-      [classes.incorrect]: correct === false
+      [classes.incorrect]: correct === false,
     });
 
     const common = {
       interval,
       selected,
       disabled,
-      correct
+      correct,
     };
 
     return (
@@ -223,7 +211,7 @@ export class Line extends React.Component {
             />
             <line
               className={classNames('line-handle', classes.handle, {
-                [classes.selected]: selected
+                [classes.selected]: selected,
               })}
               x1={xScale(left)}
               x2={xScale(right)}
@@ -234,7 +222,7 @@ export class Line extends React.Component {
               empty={empty.left}
               bounds={{
                 left: domain.min - position.left,
-                right: domain.max - position.left
+                right: domain.max - position.left,
               }}
               position={position.left}
               onDrag={onDragLeft}
@@ -245,7 +233,7 @@ export class Line extends React.Component {
               empty={empty.right}
               bounds={{
                 left: domain.min - position.right,
-                right: domain.max - position.right
+                right: domain.max - position.right,
               }}
               position={position.right}
               onDrag={onDragRight}

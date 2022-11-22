@@ -5,8 +5,8 @@ export default {
       {
         type: 'point',
         pointType: 'empty',
-        domainPosition: -1
-      }
+        domainPosition: -1,
+      },
     ],
     maxNumberOfPoints: 20,
     tickLabelOverrides: [],
@@ -21,21 +21,21 @@ export default {
       RFN: true,
       RFP: true,
       REN: true,
-      REP: true
-    }
+      REP: true,
+    },
   },
   feedback: {
     correct: {
       default: 'Correct',
-      type: 'none'
+      type: 'none',
     },
     incorrect: {
       default: 'Incorrect',
-      type: 'none'
+      type: 'none',
     },
     partial: {
       default: 'Nearly',
-      type: 'none'
-    }
-  }
+      type: 'none',
+    },
+  },
 };

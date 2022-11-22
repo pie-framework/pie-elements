@@ -2,7 +2,7 @@ export default {
   model: {
     dimensions: {
       height: 100,
-      width: 500
+      width: 500,
     },
     prompt: 'This is the question prompt',
     mathInput: false,
@@ -14,24 +14,24 @@ export default {
     promptEnabled: true,
     teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true,
-    spellCheckEnabled:true,
-    playerSpellCheckEnabled:true,
-    toolbarEditorPosition: 'bottom'
+    spellCheckEnabled: true,
+    playerSpellCheckEnabled: true,
+    toolbarEditorPosition: 'bottom',
   },
   configuration: {
     dimensions: {
       settings: true,
-      label: 'Text-Entry Display Size'
+      label: 'Text-Entry Display Size',
     },
     spellCheck: {
       label: 'Spellcheck',
-      settings:false,
-      enabled:true
+      settings: false,
+      enabled: true,
     },
     playerSpellCheck: {
       label: 'Student Spellcheck',
-      settings:true,
-      enabled:true
+      settings: true,
+      enabled: true,
     },
     equationEditor: {
       settings: false,
@@ -40,7 +40,7 @@ export default {
     },
     feedback: {
       settings: true,
-      label: 'Feedback'
+      label: 'Feedback',
     },
     mathInput: {
       settings: true,
@@ -64,27 +64,27 @@ export default {
     },
     studentInstructions: {
       settings: false,
-      label: 'Student Instructions'
+      label: 'Student Instructions',
     },
     prompt: {
       settings: true,
-      label: 'Prompt'
+      label: 'Prompt',
     },
     teacherInstructions: {
       settings: true,
-      label: 'Teacher Instructions'
+      label: 'Teacher Instructions',
     },
     maxImageWidth: {
       teacherInstructions: 300,
-      prompt: 300
+      prompt: 300,
     },
     maxImageHeight: {
       teacherInstructions: 300,
-      prompt: 300
+      prompt: 300,
     },
     withRubric: {
       settings: false,
-      label: 'Add Rubric'
-    }
-  }
+      label: 'Add Rubric',
+    },
+  },
 };

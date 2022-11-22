@@ -21,19 +21,19 @@ describe('line', () => {
         line: 'line',
         selected: 'selected',
         correct: 'correct',
-        incorrect: 'incorrect'
+        incorrect: 'incorrect',
       },
       domain: {
         min: 0,
-        max: 10
+        max: 10,
       },
       empty: {
         left: true,
-        right: false
+        right: false,
       },
       position: {
         left: 2,
-        right: 3
+        right: 3,
       },
       y: 0,
       selected: false,
@@ -43,7 +43,7 @@ describe('line', () => {
       onMoveLine,
       onToggleSelect,
       onDragStart,
-      onDragStop
+      onDragStop,
     };
 
     props = _.merge(defaults, props);
@@ -53,17 +53,10 @@ describe('line', () => {
   };
 
   describe('className', () => {
-    const f = opts => () =>
-      mkWrapper(opts)
-        .find('g')
-        .first();
+    const f = (opts) => () => mkWrapper(opts).find('g').first();
     assertProp(f({ selected: true }), 'className', 'line selected incorrect');
     assertProp(f({ selected: false }), 'className', 'line incorrect');
-    assertProp(
-      f({ selected: true, correct: true }),
-      'className',
-      'line selected correct'
-    );
+    assertProp(f({ selected: true, correct: true }), 'className', 'line selected correct');
   });
 
   let w;
@@ -74,32 +67,26 @@ describe('line', () => {
 
     describe('left', () => {
       beforeEach(() => {
-        w
-          .find(Point)
-          .first()
-          .prop('onMove')(1);
+        w.find(Point).first().prop('onMove')(1);
       });
 
       it('calls onMoveLine callback', () => {
         expect(w.instance().props.onMoveLine).toBeCalledWith({
           left: 1,
-          right: 3
+          right: 3,
         });
       });
     });
 
     describe('right', () => {
       beforeEach(() => {
-        w
-          .find(Point)
-          .get(1)
-          .props.onMove(4);
+        w.find(Point).get(1).props.onMove(4);
       });
 
       it('calls onMoveLine callback', () => {
         expect(w.instance().props.onMoveLine).toBeCalledWith({
           left: 2,
-          right: 4
+          right: 4,
         });
       });
     });
@@ -112,7 +99,7 @@ describe('line', () => {
       it('calls onMoveLine callback', () => {
         expect(w.instance().props.onMoveLine).toBeCalledWith({
           left: 4,
-          right: 5
+          right: 5,
         });
       });
     });
@@ -121,10 +108,7 @@ describe('line', () => {
   describe('onToggleSelect', () => {
     beforeEach(() => {
       w = mkWrapper();
-      w
-        .find('rect')
-        .props()
-        .onClick();
+      w.find('rect').props().onClick();
     });
 
     it('calls onToggleSelect callback', () => {

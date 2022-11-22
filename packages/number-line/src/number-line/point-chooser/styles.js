@@ -9,12 +9,11 @@ const noselect = () => ({
   '-khtml-user-select': 'none' /* Konqueror HTML */,
   '-moz-user-select': 'none' /* Firefox */,
   '-ms-user-select': 'none' /* Internet Explorer/Edge */,
-  'user-select':
-    'none' /* Non-prefixed version, currently
-                                  supported by Chrome and Opera */
+  'user-select': 'none' /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */,
 });
 
-const styleElement = index => ({
+const styleElement = (index) => ({
   display: 'inline-block',
   width: iconWidth,
   height: iconHeight,
@@ -23,12 +22,12 @@ const styleElement = index => ({
   cursor: 'pointer',
   background: `url(${img}) -${index * iconWidth}px 0px`,
   '&.active, &.active:hover': {
-    backgroundPosition: `-${index * iconWidth}px -${2 * iconHeight}px`
+    backgroundPosition: `-${index * iconWidth}px -${2 * iconHeight}px`,
   },
   '&:hover': {
     textDecoration: 'none',
-    backgroundPosition: `-${index * iconWidth}px -${iconHeight}px`
-  }
+    backgroundPosition: `-${index * iconWidth}px -${iconHeight}px`,
+  },
 });
 
 export default {
@@ -37,31 +36,31 @@ export default {
     display: 'flex',
     justifyContent: 'space-between',
     borderRadius: '4px',
-    padding: '1px'
+    padding: '1px',
   },
   deleteIconHolder: {
     position: 'relative',
     top: '3px',
-    width: '30px'
+    width: '30px',
   },
   deleteIcon: {
     fill: 'black',
     cursor: 'pointer',
     transition: 'opacity 100ms linear',
     '&:hover': {
-      opacity: '0.5'
-    }
+      opacity: '0.5',
+    },
   },
   elementSelector: Object.assign(
     {
       width: '55%',
-      padding: '1px'
+      padding: '1px',
     },
-    noselect()
+    noselect(),
   ),
   controls: {
     display: 'flex',
-    paddingTop: '7px'
+    paddingTop: '7px',
   },
   pf: styleElement(0),
   lff: styleElement(1),
@@ -71,5 +70,5 @@ export default {
   rfn: styleElement(5),
   rfp: styleElement(6),
   ren: styleElement(7),
-  rep: styleElement(8)
+  rep: styleElement(8),
 };

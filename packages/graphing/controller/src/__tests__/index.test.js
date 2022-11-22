@@ -65,14 +65,9 @@ describe('getAnswerCorrected', () => {
         },
       ],
     ],
-  ])(
-    'sessionAnswers = %j, marks = %j => correctedMarks = %j',
-    (sessionAnswers, marks, correctedMarks) => {
-      expect(getAnswerCorrected({ sessionAnswers, marks })).toEqual(
-        correctedMarks
-      );
-    }
-  );
+  ])('sessionAnswers = %j, marks = %j => correctedMarks = %j', (sessionAnswers, marks, correctedMarks) => {
+    expect(getAnswerCorrected({ sessionAnswers, marks })).toEqual(correctedMarks);
+  });
 });
 
 describe('model', () => {
@@ -111,12 +106,7 @@ describe('model', () => {
       },
       {},
     ],
-    [
-      { mode: 'view', role: 'instructor' },
-      { promptEnabled: true },
-      { disabled: true, showToggle: false },
-      {},
-    ],
+    [{ mode: 'view', role: 'instructor' }, { promptEnabled: true }, { disabled: true, showToggle: false }, {}],
     [
       { mode: 'view', role: 'instructor' },
       {
@@ -163,9 +153,7 @@ describe('model', () => {
         rationale: null,
         teacherInstructions: null,
         showToggle: false,
-        answersCorrected: [
-          { type: 'point', x: 1, y: 1, correctness: 'correct' },
-        ],
+        answersCorrected: [{ type: 'point', x: 1, y: 1, correctness: 'correct' }],
         correctResponse: [{ type: 'point', x: 1, y: 1 }],
       },
       { answer: [{ type: 'point', x: 1, y: 1 }] },
@@ -178,9 +166,7 @@ describe('model', () => {
         rationale: null,
         teacherInstructions: null,
         showToggle: true,
-        answersCorrected: [
-          { type: 'point', x: 0, y: 1, correctness: 'incorrect' },
-        ],
+        answersCorrected: [{ type: 'point', x: 0, y: 1, correctness: 'incorrect' }],
         correctResponse: [{ type: 'point', x: 1, y: 1 }],
       },
       { answer: [{ type: 'point', x: 0, y: 1 }] },
@@ -191,44 +177,35 @@ describe('model', () => {
       {
         disabled: true,
         rationale: null,
-         teacherInstructions: null,
+        teacherInstructions: null,
         showToggle: false,
         answersCorrected: [],
-        correctResponse: []
+        correctResponse: [],
       },
-      undefined
+      undefined,
     ],
-  ])(
-    'model env = %j',
-    async (env, extraQuestionProps, expectedResult, session) => {
-      const question = {
-        ...defaults,
-        prompt: 'This is prompt',
-        rationale: 'Rationale',
-        teacherInstructions: 'Teacher Instructions',
-        defaultTool: 'circle',
-        ...extraQuestionProps,
-      };
-      const {
-        prompt,
-        promptEnabled,
-        graph,
-        answers,
-        ...questionProps
-      } = question;
+  ])('model env = %j', async (env, extraQuestionProps, expectedResult, session) => {
+    const question = {
+      ...defaults,
+      prompt: 'This is prompt',
+      rationale: 'Rationale',
+      teacherInstructions: 'Teacher Instructions',
+      defaultTool: 'circle',
+      ...extraQuestionProps,
+    };
+    const { prompt, promptEnabled, graph, answers, ...questionProps } = question;
 
-      const result = await model(question, session || {}, env);
-      const expected = {
-        ...questionProps,
-        answers,
-        prompt,
-        size: question.graph,
-        ...expectedResult,
-      };
+    const result = await model(question, session || {}, env);
+    const expected = {
+      ...questionProps,
+      answers,
+      prompt,
+      size: question.graph,
+      ...expectedResult,
+    };
 
-      expect(result).toEqual(expected);
-    }
-  );
+    expect(result).toEqual(expected);
+  });
 });
 
 describe('getBestAnswer', () => {
@@ -263,21 +240,18 @@ describe('getBestAnswer', () => {
       [{ scoringType: 'dichotomous' }, undefined, 0],
       [{ scoringType: 'dichotomous' }, true, 0],
       [{ scoringType: 'partial scoring' }, false, 0],
-    ])(
-      '%j & env.partialScoring = %j => score = %d',
-      (extraQuestionProps, partialScoring, expectedScore) => {
-        const result = getBestAnswer(
-          { answers, ...extraQuestionProps },
-          { answer },
-          {
-            mode: 'evaluate',
-            partialScoring,
-          }
-        );
+    ])('%j & env.partialScoring = %j => score = %d', (extraQuestionProps, partialScoring, expectedScore) => {
+      const result = getBestAnswer(
+        { answers, ...extraQuestionProps },
+        { answer },
+        {
+          mode: 'evaluate',
+          partialScoring,
+        },
+      );
 
-        expect(result.bestScore).toEqual(expectedScore);
-      }
-    );
+      expect(result.bestScore).toEqual(expectedScore);
+    });
   });
 
   describe('returns proper results', () => {
@@ -337,15 +311,12 @@ describe('getBestAnswer', () => {
       ['partial scoring', answer2, correctMarks2, 1],
       ['dichotomous', answer3, correctMarks3, 0],
       ['partial scoring', answer3, correctMarks3, 0.67],
-    ])(
-      'scoringType = %s, answer = %j, correctMarks = %j => score = %d',
-      (scoringType, answer, correctMarks, score) => {
-        const result = getBestAnswer({ ...question, scoringType }, { answer });
+    ])('scoringType = %s, answer = %j, correctMarks = %j => score = %d', (scoringType, answer, correctMarks, score) => {
+      const result = getBestAnswer({ ...question, scoringType }, { answer });
 
-        expect(result.bestScore).toEqual(score);
-        expect(result.answersCorrected).toEqual(correctMarks);
-      }
-    );
+      expect(result.bestScore).toEqual(score);
+      expect(result.answersCorrected).toEqual(correctMarks);
+    });
   });
 
   describe('returns proper results if params are incorrectly defined', () => {
@@ -365,19 +336,16 @@ describe('getBestAnswer', () => {
       ${undefined}
       ${null}
       ${{}}
-    `(
-      'returns score: 0, answersCorrected: [] if question = $question',
-      ({ question }) => {
-        const result = getBestAnswer(question, {});
+    `('returns score: 0, answersCorrected: [] if question = $question', ({ question }) => {
+      const result = getBestAnswer(question, {});
 
-        expect(result).toEqual({
-          answersCorrected: [],
-          bestScore: 0,
-          bestScoreAnswerKey: null,
-          foundOneSolution: false,
-        });
-      }
-    );
+      expect(result).toEqual({
+        answersCorrected: [],
+        bestScore: 0,
+        bestScoreAnswerKey: null,
+        foundOneSolution: false,
+      });
+    });
 
     it.each`
       answers
@@ -385,19 +353,16 @@ describe('getBestAnswer', () => {
       ${undefined}
       ${null}
       ${{}}
-    `(
-      'returns score: 0, answersCorrected: [] if answers = $answers',
-      ({ answers }) => {
-        const result = getBestAnswer({ ...question, answers }, {});
+    `('returns score: 0, answersCorrected: [] if answers = $answers', ({ answers }) => {
+      const result = getBestAnswer({ ...question, answers }, {});
 
-        expect(result).toEqual({
-          answersCorrected: [],
-          bestScore: 0,
-          bestScoreAnswerKey: null,
-          foundOneSolution: false,
-        });
-      }
-    );
+      expect(result).toEqual({
+        answersCorrected: [],
+        bestScore: 0,
+        bestScoreAnswerKey: null,
+        foundOneSolution: false,
+      });
+    });
   });
 });
 
@@ -458,7 +423,7 @@ describe('outcome', () => {
       const result = await outcome(mod, session, env);
 
       expect(result.score).toEqual(expected);
-    }
+    },
   );
 
   it.each`
@@ -466,14 +431,11 @@ describe('outcome', () => {
     ${undefined}
     ${null}
     ${{}}
-  `(
-    'returns score: 0 and empty: true if session is $session',
-    async ({ session }) => {
-      const o = await outcome({}, session, { mode: 'evaluate' });
+  `('returns score: 0 and empty: true if session is $session', async ({ session }) => {
+    const o = await outcome({}, session, { mode: 'evaluate' });
 
-      expect(o).toEqual({ score: 0, empty: true });
-    }
-  );
+    expect(o).toEqual({ score: 0, empty: true });
+  });
 
   it('Lines are correctly scored (ch3729)', async () => {
     const m = {
@@ -534,9 +496,7 @@ describe('outcome', () => {
       graph: { width: 500, height: 500 },
       answers: {
         correctAnswer: {
-          marks: [
-            { edge: { x: 0.5, y: 5 }, root: { y: 3, x: 0 }, type: 'sine' },
-          ],
+          marks: [{ edge: { x: 0.5, y: 5 }, root: { y: 3, x: 0 }, type: 'sine' }],
         },
       },
       toolbarTools: ['sine'],
@@ -616,9 +576,7 @@ describe('outcome', () => {
       ],
     };
 
-    expect(
-      (await outcome(await model(m, session2, env), session2, env)).score
-    ).toEqual(0.67);
+    expect((await outcome(await model(m, session2, env), session2, env)).score).toEqual(0.67);
 
     const session3 = {
       answer: [
@@ -628,34 +586,19 @@ describe('outcome', () => {
       ],
     };
 
-    expect(
-      (await outcome(await model(m, session3, env), session3, env)).score
-    ).toEqual(1);
+    expect((await outcome(await model(m, session3, env), session3, env)).score).toEqual(1);
 
     const session4 = {
-     answer: [],
+      answer: [],
     };
 
-    expect(
-      (await outcome(await model(m, session4, env), session4, env)).score
-    ).toEqual(0);
+    expect((await outcome(await model(m, session4, env), session4, env)).score).toEqual(0);
   });
 });
 
 describe('createCorrectResponseSession', () => {
   const question = {
-    toolbarTools: [
-      'point',
-      'circle',
-      'polygon',
-      'segment',
-      'ray',
-      'vector',
-      'line',
-      'sine',
-      'parabola',
-      'label',
-    ],
+    toolbarTools: ['point', 'circle', 'polygon', 'segment', 'ray', 'vector', 'line', 'sine', 'parabola', 'label'],
     answers: {
       alternate1: {
         pname: 'Alternate 1',

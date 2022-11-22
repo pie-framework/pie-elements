@@ -34,7 +34,7 @@ InfoDialog.propTypes = {
 
 function findFreeChoiceSlot(choices) {
   let slot = 1;
-  const ids = choices.map(c => c.id);
+  const ids = choices.map((c) => c.id);
   while (ids.includes(`c${slot}`)) {
     slot++;
   }
@@ -60,16 +60,12 @@ function updateResponseOrChoices(response, choices, from, to) {
 
         return acc;
       },
-      { movedItem: null, remainingItems: [] }
+      { movedItem: null, remainingItems: [] },
     );
 
     return {
-      response: [
-        ...remainingItems.slice(0, placeAtIndex),
-        movedItem,
-        ...remainingItems.slice(placeAtIndex)
-      ],
-      choices
+      response: [...remainingItems.slice(0, placeAtIndex), movedItem, ...remainingItems.slice(placeAtIndex)],
+      choices,
     };
   }
 
@@ -90,16 +86,12 @@ function updateResponseOrChoices(response, choices, from, to) {
 
         return acc;
       },
-      { movedItem: null, remainingItems: [], toIndex: null }
+      { movedItem: null, remainingItems: [], toIndex: null },
     );
 
     return {
       response,
-      choices: [
-        ...remainingItems.slice(0, toIndex),
-        movedItem,
-        ...remainingItems.slice(toIndex)
-      ]
+      choices: [...remainingItems.slice(0, toIndex), movedItem, ...remainingItems.slice(toIndex)],
     };
   }
 
@@ -110,7 +102,7 @@ function buildTiles(choices, response, instanceId) {
   const targets = response.map((r, index) => {
     const respId = r && r.id;
 
-    const choice = choices.find(c => respId !== undefined && respId !== null && c.id === respId);
+    const choice = choices.find((c) => respId !== undefined && respId !== null && c.id === respId);
 
     return {
       type: 'target',
@@ -118,17 +110,17 @@ function buildTiles(choices, response, instanceId) {
       ...choice,
       draggable: true,
       index,
-      editable: false
+      editable: false,
     };
   });
 
-  const processedChoices = choices.map(m => {
+  const processedChoices = choices.map((m) => {
     return Object.assign({}, m, {
       type: 'choice',
       droppable: false,
       draggable: true,
       instanceId,
-      editable: true
+      editable: true,
     });
   });
 
@@ -143,7 +135,7 @@ class ChoiceEditor extends React.Component {
     onChange: PropTypes.func.isRequired,
     imageSupport: PropTypes.shape({
       add: PropTypes.func.isRequired,
-      delete: PropTypes.func.isRequired
+      delete: PropTypes.func.isRequired,
     }),
     disableImages: PropTypes.bool,
     toolbarOpts: PropTypes.object,
@@ -151,13 +143,13 @@ class ChoiceEditor extends React.Component {
     singularChoiceLabel: PropTypes.string,
     pluralChoiceLabel: PropTypes.string,
     choicesLabel: PropTypes.string,
-    errors: PropTypes.object
+    errors: PropTypes.object,
   };
 
   state = {
     dialog: {
-      open: false
-    }
+      open: false,
+    },
   };
 
   constructor(props) {
@@ -165,15 +157,15 @@ class ChoiceEditor extends React.Component {
 
     this.instanceId = uniqueId();
 
-    this.onChoiceChange = choice => {
+    this.onChoiceChange = (choice) => {
       const { choices, onChange, correctResponse, toolbarOpts } = this.props;
-      const index = choices.findIndex(c => c.id === choice.id);
+      const index = choices.findIndex((c) => c.id === choice.id);
 
       choices.splice(index, 1, { ...choices[index], label: choice.label });
       onChange(choices, correctResponse);
     };
 
-    this.onDelete = choice => {
+    this.onDelete = (choice) => {
       const { choices, onChange, correctResponse, choicesLabel } = this.props;
 
       if (choices && choices.length === 3) {
@@ -182,21 +174,17 @@ class ChoiceEditor extends React.Component {
             open: true,
             message: `There have to be at least 3 ${choicesLabel}.`,
             onOk: () => {
-              this.setState(
-                {
-                  dialog: {
-                    open: false,
-                  }
-                }
-              );
-            }
-          }
+              this.setState({
+                dialog: {
+                  open: false,
+                },
+              });
+            },
+          },
         });
       } else {
-        const updatedChoices = choices.filter(c => c.id !== choice.id);
-        const updatedCorrectResponse = correctResponse.filter(
-          v => v.id !== choice.id
-        );
+        const updatedChoices = choices.filter((c) => c.id !== choice.id);
+        const updatedCorrectResponse = correctResponse.filter((v) => v.id !== choice.id);
         onChange(updatedChoices, updatedCorrectResponse);
       }
     };
@@ -210,15 +198,13 @@ class ChoiceEditor extends React.Component {
             open: true,
             message: `There can be maximum 10 ${choicesLabel}.`,
             onOk: () => {
-              this.setState(
-                {
-                  dialog: {
-                    open: false,
-                  }
-                }
-              );
-            }
-          }
+              this.setState({
+                dialog: {
+                  open: false,
+                },
+              });
+            },
+          },
         });
       } else {
         const freeId = findFreeChoiceSlot(choices);
@@ -231,13 +217,11 @@ class ChoiceEditor extends React.Component {
            * Note: weights are not configurable in the existing component
            * so we'll want do disable this in the controller and ignore it for now.
            */
-          weight: 0
+          weight: 0,
         };
 
         const updatedChoices = choices.concat([newChoice]);
-        const updatedCorrectResponse = correctResponse.concat([
-          newCorrectResponse
-        ]);
+        const updatedCorrectResponse = correctResponse.concat([newCorrectResponse]);
 
         onChange(updatedChoices, updatedCorrectResponse);
       }
@@ -248,7 +232,12 @@ class ChoiceEditor extends React.Component {
       let shuffled = shuffle(choices);
 
       // if placementArea is disabled, make sure we don't shuffle choices in the correct order
-      const shuffledCorrect = !placementArea && isEqual(shuffled.map(item => item.id), correctResponse.map(item => item.id));
+      const shuffledCorrect =
+        !placementArea &&
+        isEqual(
+          shuffled.map((item) => item.id),
+          correctResponse.map((item) => item.id),
+        );
 
       if (shuffledCorrect) {
         const shuffledTwice = shuffle(shuffled);
@@ -261,9 +250,7 @@ class ChoiceEditor extends React.Component {
 
     this.onDropChoice = (ordering, target, source) => {
       const { onChange } = this.props;
-      const from = ordering.tiles.find(
-        t => t.id === source.id && t.type === source.type
-      );
+      const from = ordering.tiles.find((t) => t.id === source.id && t.type === source.type);
       const to = target;
       log('[onDropChoice] ', from, to);
       const { response, choices } = updateResponseOrChoices(ordering.response, ordering.choices, from, to);
@@ -286,7 +273,7 @@ class ChoiceEditor extends React.Component {
       spellCheck,
       maxImageWidth,
       maxImageHeight,
-      errors
+      errors,
     } = this.props;
     const { dialog } = this.state;
 
@@ -298,13 +285,12 @@ class ChoiceEditor extends React.Component {
 
     const style = {
       gridTemplateColumns: 'repeat(2, 1fr)',
-      gridTemplateRows: `repeat(${choices.length}, 1fr)`
+      gridTemplateRows: `repeat(${choices.length}, 1fr)`,
     };
 
     return (
       <div className={classes.choiceEditor}>
         <div className={classes.vtiler} style={style}>
-
           {ordering.tiles.map((c, index) => (
             <ChoiceTile
               choice={c}
@@ -333,7 +319,7 @@ class ChoiceEditor extends React.Component {
             color="default"
             classes={{
               root: classes.addButtonRoot,
-              label: classes.addButtonLabel
+              label: classes.addButtonLabel,
             }}
           >
             {`SHUFFLE ${pluralChoiceLabel}`.toUpperCase()}
@@ -345,52 +331,48 @@ class ChoiceEditor extends React.Component {
             color="default"
             classes={{
               root: classes.addButtonRoot,
-              label: classes.addButtonLabel
+              label: classes.addButtonLabel,
             }}
           >
             {`ADD ${singularChoiceLabel}`.toUpperCase()}
           </Button>
         </div>
-        <InfoDialog
-          title={dialog.message}
-          open={dialog.open}
-          onOk={dialog.onOk}
-        />
+        <InfoDialog title={dialog.message} open={dialog.open} onOk={dialog.onOk} />
       </div>
     );
   }
 }
 
-const styles = theme => ({
+const styles = (theme) => ({
   allToggle: {},
   choiceEditor: {
-    marginTop: '10px'
+    marginTop: '10px',
   },
   controls: {
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
   },
   root: {
     width: '30px',
     height: '30px',
-    fill: theme.palette.primary[500]
+    fill: theme.palette.primary[500],
   },
   addButtonRoot: {
     marginTop: '24px',
-    paddingHorizontal: '12px'
+    paddingHorizontal: '12px',
   },
   addButtonLabel: {
     transition: 'opacity 200ms linear',
     '&:hover': {
-      opacity: 0.3
-    }
+      opacity: 0.3,
+    },
   },
   vtiler: {
     gridAutoFlow: 'column',
     display: 'grid',
-    gridGap: '10px'
-  }
+    gridGap: '10px',
+  },
 });
 
 export default withStyles(styles)(ChoiceEditor);

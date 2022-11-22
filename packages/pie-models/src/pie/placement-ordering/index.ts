@@ -149,9 +149,7 @@ interface ConfigureMaxImageDimensionsProp {
  * Config Object for @pie-elements/placement-ordering
  * @additionalProperties false
  */
-export interface PlacementOrderingConfigure
-  extends PromptConfig,
-    CommonConfigSettings {
+export interface PlacementOrderingConfigure extends PromptConfig, CommonConfigSettings {
   /**
    * Choice Label configuration
    */

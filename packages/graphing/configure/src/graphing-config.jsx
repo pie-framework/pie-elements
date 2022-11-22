@@ -5,38 +5,38 @@ import { MenuItem, Select, Typography, OutlinedInput } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import { applyConstraints, getGridValues, getLabelValues } from './utils';
 
-const styles = theme => ({
+const styles = (theme) => ({
   container: {
     display: 'flex',
     flexWrap: 'wrap',
-    marginBottom: theme.spacing.unit * 7
+    marginBottom: theme.spacing.unit * 7,
   },
   gridConfigWrapper: {
     display: 'flex',
     flexDirection: 'column',
     marginRight: theme.spacing.unit * 4,
-    marginBottom: theme.spacing.unit * 3
+    marginBottom: theme.spacing.unit * 3,
   },
   graphConfig: {
     display: 'flex',
-    flexDirection: 'column'
+    flexDirection: 'column',
   },
   subtitleText: {
     marginTop: theme.spacing.unit * 1.5,
-    marginBottom: theme.spacing.unit
+    marginBottom: theme.spacing.unit,
   },
   gridConfig: {
     display: 'flex',
     alignItems: 'center',
     width: '100%',
-    marginBottom: '16px'
+    marginBottom: '16px',
   },
   gridConfigLabel: {
-    padding: '0 8px'
+    padding: '0 8px',
   },
   gridConfigSelect: {
-    flex: '1'
-  }
+    flex: '1',
+  },
 });
 
 export class GraphingConfig extends React.Component {
@@ -55,35 +55,35 @@ export class GraphingConfig extends React.Component {
 
     const gridValues = {
       domain: getGridValues(domain, graph.width, true),
-      range: getGridValues(range, graph.height, true)
+      range: getGridValues(range, graph.height, true),
     };
     const labelValues = {
       domain: getLabelValues(domain.step),
-      range: getLabelValues(range.step)
+      range: getLabelValues(range.step),
     };
 
     this.state = { gridValues, labelValues, selectedGrid: 0, showPixelGuides: false };
-  };
+  }
 
-  changeBackgroundMarks = backgroundMarks => {
+  changeBackgroundMarks = (backgroundMarks) => {
     const model = { ...this.props.model, backgroundMarks };
 
     this.props.onChange(model);
   };
 
-  changeLabels = labels => {
+  changeLabels = (labels) => {
     const { model, onChange } = this.props;
 
     onChange({ ...model, labels });
   };
 
-  changeTitle = title => {
+  changeTitle = (title) => {
     const { model, onChange } = this.props;
 
     onChange({ ...model, title });
   };
 
-  onConfigChange = config => {
+  onConfigChange = (config) => {
     const { model, onChange } = this.props;
     const { gridValues: oldGridValues, labelValues: oldLabelValues } = this.state;
     const updatedModel = { ...model, ...config };
@@ -117,7 +117,7 @@ export class GraphingConfig extends React.Component {
   };
 
   onChangeView = (event, expanded) => {
-    const { graphDimensions: { enabled } = {}} = this.props;
+    const { graphDimensions: { enabled } = {} } = this.props;
 
     if (enabled) {
       this.setState({ showPixelGuides: expanded });
@@ -144,19 +144,10 @@ export class GraphingConfig extends React.Component {
       model,
       showLabels,
       showTitle,
-      titlePlaceholder
+      titlePlaceholder,
     } = this.props;
-    const {
-      arrows,
-      backgroundMarks,
-      coordinatesOnHover,
-      domain,
-      includeAxes,
-      labels,
-      range,
-      standardGrid,
-      title
-    } = model || {};
+    const { arrows, backgroundMarks, coordinatesOnHover, domain, includeAxes, labels, range, standardGrid, title } =
+      model || {};
     const graph = (model || {}).graph || {};
     const { enabled: dimensionsEnabled, min, max, step } = graphDimensions || {};
     const { gridValues, labelValues, selectedGrid, showPixelGuides } = this.state;
@@ -164,7 +155,7 @@ export class GraphingConfig extends React.Component {
     const sizeConstraints = {
       min: Math.max(150, min),
       max: Math.min(800, max),
-      step: step >= 1 ? Math.min(200, step) : 20
+      step: step >= 1 ? Math.min(200, step) : 20,
     };
 
     const displayedFields = {
@@ -175,11 +166,12 @@ export class GraphingConfig extends React.Component {
       min: authoring.min,
       max: authoring.max,
       standardGridEnabled: authoring.standardGridEnabled,
-      step: authoring.step
+      step: authoring.step,
     };
 
-    const displayGridSetup = authoring.enabled &&
-      Object.values(displayedFields).some(field => typeof field === 'object' ? field.enabled : field);
+    const displayGridSetup =
+      authoring.enabled &&
+      Object.values(displayedFields).some((field) => (typeof field === 'object' ? field.enabled : field));
 
     return (
       <div className={classes.container}>
@@ -196,9 +188,11 @@ export class GraphingConfig extends React.Component {
                 onChange={this.changeGridConfiguration}
                 value={selectedGrid}
               >
-                {(gridConfigurations || []).map((config, index) =>
-                  <MenuItem key={index} value={index}>{config.label}</MenuItem>
-                )}
+                {(gridConfigurations || []).map((config, index) => (
+                  <MenuItem key={index} value={index}>
+                    {config.label}
+                  </MenuItem>
+                ))}
               </Select>
             </div>
           ) : null}
@@ -256,6 +250,6 @@ export class GraphingConfig extends React.Component {
       </div>
     );
   }
-};
+}
 
 export default withStyles(styles)(GraphingConfig);

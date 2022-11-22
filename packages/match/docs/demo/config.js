@@ -2,7 +2,7 @@ const { model } = require('./generate');
 
 module.exports = {
   elements: {
-    'match-element': '../..'
+    'match-element': '../..',
   },
-  models: [model('1', 'match-element')]
+  models: [model('1', 'match-element')],
 };

@@ -12,7 +12,7 @@ export class AlternateResponses extends React.Component {
     model: PropTypes.object.isRequired,
     onChange: PropTypes.func.isRequired,
     onLengthChange: PropTypes.func.isRequired,
-    maxLengthPerChoiceEnabled: PropTypes.bool.isRequired
+    maxLengthPerChoiceEnabled: PropTypes.bool.isRequired,
   };
 
   state = { maxLengthPerChoice: cloneDeep(this.props.model.maxLengthPerChoice) };
@@ -25,53 +25,62 @@ export class AlternateResponses extends React.Component {
     this.updateChoicesIfNeeded(this.props);
   }
 
-  updateChoicesIfNeeded = props => {
-    if (!this.state.choices
-      || !isEqual(this.state.choices, props.model.choices)
-      || !isEqual(props.model.choices, this.props.model.choices)
-      || (this.state.values && Object.keys(this.state.values).length !== Object.keys(this.props.model.choices).length)
-      || props.maxLengthPerChoiceEnabled !== this.props.maxLengthPerChoiceEnabled
+  updateChoicesIfNeeded = (props) => {
+    if (
+      !this.state.choices ||
+      !isEqual(this.state.choices, props.model.choices) ||
+      !isEqual(props.model.choices, this.props.model.choices) ||
+      (this.state.values && Object.keys(this.state.values).length !== Object.keys(this.props.model.choices).length) ||
+      props.maxLengthPerChoiceEnabled !== this.props.maxLengthPerChoiceEnabled
     ) {
       const { choices, maxLengthPerChoice } = props.model;
 
-      const selectedValues = reduce(choices, (obj, c, key) => {
-        // if maxLengthPerChoiceEnabled is true, we display all the choices
-        if (c && (props.maxLengthPerChoiceEnabled || c.length > 1)) {
-          obj[key] = c[0];
-        }
+      const selectedValues = reduce(
+        choices,
+        (obj, c, key) => {
+          // if maxLengthPerChoiceEnabled is true, we display all the choices
+          if (c && (props.maxLengthPerChoiceEnabled || c.length > 1)) {
+            obj[key] = c[0];
+          }
 
-        return obj;
-      }, {});
+          return obj;
+        },
+        {},
+      );
 
       this.setState({
         choices: props.model.choices,
         values: selectedValues,
-        maxLengthPerChoice: cloneDeep(maxLengthPerChoice)
+        maxLengthPerChoice: cloneDeep(maxLengthPerChoice),
       });
     }
   };
 
-  getRemainingChoices = valueKey => {
+  getRemainingChoices = (valueKey) => {
     const { choices } = this.state;
 
-    return reduce(choices, (arr, c, key) => {
-      if (c && c.length === 1 && !valueKey) {
-        arr.push({
-          label: c[0].label,
-          value: key
-        });
-      }
+    return reduce(
+      choices,
+      (arr, c, key) => {
+        if (c && c.length === 1 && !valueKey) {
+          arr.push({
+            label: c[0].label,
+            value: key,
+          });
+        }
 
-      return arr;
-    }, []);
+        return arr;
+      },
+      [],
+    );
   };
 
   onChoiceChanged = (choice, key) => {
     const { onChange } = this.props;
     const { choices } = this.state;
-    const sectionChoices = (choices[key] || []);
+    const sectionChoices = choices[key] || [];
 
-    const isNew = !sectionChoices.find(c => c.value === choice.value);
+    const isNew = !sectionChoices.find((c) => c.value === choice.value);
 
     const newChoices = sectionChoices.reduce((arr, c) => {
       const newVal = c.value === choice.value ? choice : c;
@@ -87,14 +96,14 @@ export class AlternateResponses extends React.Component {
 
     onChange({
       ...choices,
-      [key]: newChoices
+      [key]: newChoices,
     });
   };
 
   onChoiceRemoved = (value, section) => {
     const { onChange } = this.props;
     const { choices } = this.state;
-    const sectionChoices = (choices[section] || []);
+    const sectionChoices = choices[section] || [];
 
     const newChoices = sectionChoices.reduce((arr, c) => {
       if (c.value === value) {
@@ -108,7 +117,7 @@ export class AlternateResponses extends React.Component {
 
     onChange({
       ...choices,
-      [section]: newChoices
+      [section]: newChoices,
     });
   };
 
@@ -120,7 +129,7 @@ export class AlternateResponses extends React.Component {
       if (!choice) {
         onChange({
           ...choices,
-          [key]: [choices[key][0]]
+          [key]: [choices[key][0]],
         });
       }
     } else {
@@ -131,14 +140,14 @@ export class AlternateResponses extends React.Component {
             ...choices[key],
             {
               label: '',
-              value: '1'
-            }
-          ]
+              value: '1',
+            },
+          ],
         },
         values: {
           ...values,
-          [key]: choices[key][0]
-        }
+          [key]: choices[key][0],
+        },
       });
     }
   };
@@ -149,11 +158,15 @@ export class AlternateResponses extends React.Component {
 
     maxLengthPerChoice[key] = value;
     onLengthChange(maxLengthPerChoice);
-  }
+  };
 
   render() {
     const { choices } = this.state;
-    const { model: { maxLengthPerChoice, maxLengthPerChoiceEnabled }, spellCheck, choicesErrors } = this.props
+    const {
+      model: { maxLengthPerChoice, maxLengthPerChoiceEnabled },
+      spellCheck,
+      choicesErrors,
+    } = this.props;
 
     return (
       <div>
@@ -167,31 +180,29 @@ export class AlternateResponses extends React.Component {
                 key={key}
                 value={selected && selected.value}
                 errors={choicesErrors && choicesErrors[key]}
-                onSelect={choice => this.onSectionSelect(choice, key)}
-                choiceChanged={choice => this.onChoiceChanged(choice, key)}
-                choiceRemoved={value => this.onChoiceRemoved(value, key)}
-                lengthChanged={value => this.onLengthChanged(value, key)}
+                onSelect={(choice) => this.onSectionSelect(choice, key)}
+                choiceChanged={(choice) => this.onChoiceChanged(choice, key)}
+                choiceRemoved={(value) => this.onChoiceRemoved(value, key)}
+                lengthChanged={(value) => this.onLengthChanged(value, key)}
                 selectChoices={[selected]}
                 choices={c}
                 maxLength={maxLengthPerChoice[key]}
                 showMaxLength={maxLengthPerChoiceEnabled}
-                spellCheck = {spellCheck}
+                spellCheck={spellCheck}
               />
             );
           }
         })}
-        {
-          choices &&
-          Object.keys(this.state.values).length !== Object.keys(choices).length &&
+        {choices && Object.keys(this.state.values).length !== Object.keys(choices).length && (
           <AlternateSection
             value=""
-            onSelect={choice => this.onSectionSelect(choice, choice.value)}
-            choiceChanged={choice => this.onChoiceChanged(choice)}
-            choiceRemoved={value => this.onChoiceRemoved(value)}
+            onSelect={(choice) => this.onSectionSelect(choice, choice.value)}
+            choiceChanged={(choice) => this.onChoiceChanged(choice)}
+            choiceRemoved={(value) => this.onChoiceRemoved(value)}
             selectChoices={this.getRemainingChoices()}
-            spellCheck = {spellCheck}
+            spellCheck={spellCheck}
           />
-        }
+        )}
       </div>
     );
   }

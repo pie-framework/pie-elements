@@ -1,10 +1,4 @@
-import {
-  FeedbackConfig,
-  FormSection,
-  InputContainer,
-  settings,
-  layout
-} from '@pie-lib/config-ui';
+import { FeedbackConfig, FormSection, InputContainer, settings, layout } from '@pie-lib/config-ui';
 import EditableHtml from '@pie-lib/editable-html';
 import { withStyles } from '@material-ui/core/styles';
 import { withDragContext } from '@pie-lib/drag';
@@ -24,21 +18,23 @@ import { generateValidationMessage } from './utils';
 const log = debug('@pie-element:placement-ordering:design');
 const { Panel, toggle, radio } = settings;
 
-const getSingularAndPlural = label => {
-  return !pluralize.isPlural(label) ? {
-    singularLabel: label,
-    pluralLabel: pluralize(label)
-  } : {
-    singularLabel: pluralize.singular(label),
-    pluralLabel: label
-  };
+const getSingularAndPlural = (label) => {
+  return !pluralize.isPlural(label)
+    ? {
+        singularLabel: label,
+        pluralLabel: pluralize(label),
+      }
+    : {
+        singularLabel: pluralize.singular(label),
+        pluralLabel: label,
+      };
 };
 
 export class Design extends React.Component {
   constructor(props) {
     super(props);
 
-    this.applyUpdate = modelFn => {
+    this.applyUpdate = (modelFn) => {
       const { model, onModelChanged } = this.props;
       const update = modelFn(cloneDeep(model));
 
@@ -46,12 +42,12 @@ export class Design extends React.Component {
     };
 
     this.changeHandler = (modelPath, valuePath) => {
-      return value => {
+      return (value) => {
         log('[changeHandler] value: ', value);
 
         const v = valuePath ? get(value, valuePath) : value;
 
-        this.applyUpdate(model => {
+        this.applyUpdate((model) => {
           set(model, modelPath, v);
           return model;
         });
@@ -59,18 +55,10 @@ export class Design extends React.Component {
     };
 
     this.onPromptChange = this.changeHandler('prompt');
-    this.onTeacherInstructionsChange = this.changeHandler(
-      'teacherInstructions'
-    );
+    this.onTeacherInstructionsChange = this.changeHandler('teacherInstructions');
     this.onRationaleChange = this.changeHandler('rationale');
-    this.onChoiceAreaLabelChange = this.changeHandler(
-      'choiceLabel',
-      'target.value'
-    );
-    this.onAnswerAreaLabelChange = this.changeHandler(
-      'targetLabel',
-      'target.value'
-    );
+    this.onChoiceAreaLabelChange = this.changeHandler('choiceLabel', 'target.value');
+    this.onAnswerAreaLabelChange = this.changeHandler('targetLabel', 'target.value');
     this.onFeedbackChange = this.changeHandler('feedback');
 
     this.onChoiceEditorChange = (choices, correctResponse, resetSession) => {
@@ -84,15 +72,8 @@ export class Design extends React.Component {
   }
 
   render() {
-    const {
-      model,
-      classes,
-      imageSupport,
-      uploadSoundSupport,
-      onModelChanged,
-      configuration,
-      onConfigurationChanged
-    } = this.props;
+    const { model, classes, imageSupport, uploadSoundSupport, onModelChanged, configuration, onConfigurationChanged } =
+      this.props;
     const {
       choiceLabel = {},
       choices = {},
@@ -112,7 +93,7 @@ export class Design extends React.Component {
       scoringType = {},
       maxImageWidth = {},
       maxImageHeight = {},
-      withRubric = {}
+      withRubric = {},
     } = configuration || {};
     const {
       teacherInstructionsEnabled,
@@ -122,21 +103,22 @@ export class Design extends React.Component {
       choiceLabelEnabled,
       spellCheckEnabled,
       errors,
-      rubricEnabled
+      rubricEnabled,
     } = model || {};
     const { orderError, choicesErrors } = errors || {};
     const validationMessage = generateValidationMessage();
 
     const toolbarOpts = {};
-    const {
-      singularLabel = '',
-      pluralLabel = ''
-    } = choices && choices.label && getSingularAndPlural(choices.label) || {};
+    const { singularLabel = '', pluralLabel = '' } =
+      (choices && choices.label && getSingularAndPlural(choices.label)) || {};
 
     const defaultImageMaxWidth = maxImageWidth && maxImageWidth.prompt;
     const defaultImageMaxHeight = maxImageHeight && maxImageHeight.prompt;
-    const maxChoicesImageWidth = maxImageWidth && model.placementArea ? maxImageWidth.choicesWithPlacementArea : maxImageWidth.choicesWithoutPlacementArea || defaultImageMaxWidth;
-    const maxChoicesImageHeight = maxImageHeight && maxImageHeight.choices || defaultImageMaxHeight;
+    const maxChoicesImageWidth =
+      maxImageWidth && model.placementArea
+        ? maxImageWidth.choicesWithPlacementArea
+        : maxImageWidth.choicesWithoutPlacementArea || defaultImageMaxWidth;
+    const maxChoicesImageHeight = (maxImageHeight && maxImageHeight.choices) || defaultImageMaxHeight;
 
     switch (model.toolbarEditorPosition) {
       case 'top':
@@ -152,58 +134,34 @@ export class Design extends React.Component {
           <Panel
             model={model}
             configuration={configuration}
-            onChangeModel={model => onModelChanged(model)}
-            onChangeConfiguration={configuration =>
-              onConfigurationChanged(configuration, true)
-            }
+            onChangeModel={(model) => onModelChanged(model)}
+            onChangeConfiguration={(configuration) => onConfigurationChanged(configuration, true)}
             groups={{
               Settings: {
-                choiceLabelEnabled:
-                  choiceLabel.settings && toggle(choiceLabel.label),
-                placementArea:
-                  placementArea.settings && toggle(placementArea.label),
-                numberedGuides:
-                  numberedGuides.settings &&
-                  model.placementArea &&
-                  toggle(numberedGuides.label),
-                enableImages:
-                  enableImages.settings && toggle(enableImages.label),
-                orientation:
-                  orientation.settings &&
-                  radio(orientation.label, ['vertical', 'horizontal']),
-                removeTilesAfterPlacing:
-                  removeTilesAfterPlacing.settings &&
-                  toggle(removeTilesAfterPlacing.label),
-                partialScoring:
-                  partialScoring.settings && toggle(partialScoring.label),
-                feedbackEnabled:
-                  feedback.settings && toggle(feedback.label)
+                choiceLabelEnabled: choiceLabel.settings && toggle(choiceLabel.label),
+                placementArea: placementArea.settings && toggle(placementArea.label),
+                numberedGuides: numberedGuides.settings && model.placementArea && toggle(numberedGuides.label),
+                enableImages: enableImages.settings && toggle(enableImages.label),
+                orientation: orientation.settings && radio(orientation.label, ['vertical', 'horizontal']),
+                removeTilesAfterPlacing: removeTilesAfterPlacing.settings && toggle(removeTilesAfterPlacing.label),
+                partialScoring: partialScoring.settings && toggle(partialScoring.label),
+                feedbackEnabled: feedback.settings && toggle(feedback.label),
               },
               Properties: {
-                teacherInstructionsEnabled:
-                  teacherInstructions.settings &&
-                  toggle(teacherInstructions.label),
-                studentInstructionsEnabled:
-                  studentInstructions.settings &&
-                  toggle(studentInstructions.label),
+                teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
+                studentInstructionsEnabled: studentInstructions.settings && toggle(studentInstructions.label),
                 rationaleEnabled: rationale.settings && toggle(rationale.label),
                 promptEnabled: prompt.settings && toggle(prompt.label),
-                spellCheckEnabled:
-                spellCheck.settings && toggle(spellCheck.label),
-                scoringType:
-                  scoringType.settings &&
-                  radio(scoringType.label, ['auto', 'rubric']),
-                rubricEnabled: withRubric?.settings && toggle(withRubric?.label)
-              }
+                spellCheckEnabled: spellCheck.settings && toggle(spellCheck.label),
+                scoringType: scoringType.settings && radio(scoringType.label, ['auto', 'rubric']),
+                rubricEnabled: withRubric?.settings && toggle(withRubric?.label),
+              },
             }}
           />
         }
       >
         {teacherInstructionsEnabled && (
-          <InputContainer
-            label={teacherInstructions.label}
-            className={classes.promptHolder}
-          >
+          <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
             <EditableHtml
               className={classes.prompt}
               markup={model.teacherInstructions || ''}
@@ -212,8 +170,8 @@ export class Design extends React.Component {
               nonEmpty={false}
               toolbarOpts={toolbarOpts}
               spellCheck={spellCheckEnabled}
-              maxImageWidth={maxImageWidth && maxImageWidth.teacherInstructions || defaultImageMaxWidth}
-              maxImageHeight={maxImageHeight && maxImageHeight.teacherInstructions || defaultImageMaxHeight}
+              maxImageWidth={(maxImageWidth && maxImageWidth.teacherInstructions) || defaultImageMaxWidth}
+              maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
               uploadSoundSupport={uploadSoundSupport}
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
             />
@@ -222,10 +180,7 @@ export class Design extends React.Component {
 
         {promptEnabled && (
           <FormSection>
-            <InputContainer
-              label={prompt && prompt.label}
-              className={classes.promptHolder}
-            >
+            <InputContainer label={prompt && prompt.label} className={classes.promptHolder}>
               <EditableHtml
                 className={classes.prompt}
                 markup={model.prompt}
@@ -240,10 +195,7 @@ export class Design extends React.Component {
               />
             </InputContainer>
             {rationaleEnabled && (
-              <InputContainer
-                label={rationale.label}
-                className={classes.promptHolder}
-              >
+              <InputContainer label={rationale.label} className={classes.promptHolder}>
                 <EditableHtml
                   className={classes.prompt}
                   markup={model.rationale || ''}
@@ -251,8 +203,8 @@ export class Design extends React.Component {
                   imageSupport={imageSupport}
                   toolbarOpts={toolbarOpts}
                   spellCheck={spellCheckEnabled}
-                  maxImageWidth={maxImageWidth && maxImageWidth.rationale || defaultImageMaxWidth}
-                  maxImageHeight={maxImageHeight && maxImageHeight.rationale || defaultImageMaxHeight}
+                  maxImageWidth={(maxImageWidth && maxImageWidth.rationale) || defaultImageMaxWidth}
+                  maxImageHeight={(maxImageHeight && maxImageHeight.rationale) || defaultImageMaxHeight}
                   uploadSoundSupport={uploadSoundSupport}
                   languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
                 />
@@ -261,27 +213,23 @@ export class Design extends React.Component {
           </FormSection>
         )}
 
-        <FormSection label={`Define ${pluralLabel}`} labelExtraStyle={{display: 'inline-flex'}}>
+        <FormSection label={`Define ${pluralLabel}`} labelExtraStyle={{ display: 'inline-flex' }}>
           <div className={classes.inlineFlexContainer}>
-          <Tooltip
-            classes={{tooltip: classes.tooltip}}
-            disableFocusListener
-            disableTouchListener
-            placement={'right'}
-            title={validationMessage}
-          >
-            <Info fontSize={'small'} color={'primary'} style={{marginLeft: '5px'}}/>
-          </Tooltip>
+            <Tooltip
+              classes={{ tooltip: classes.tooltip }}
+              disableFocusListener
+              disableTouchListener
+              placement={'right'}
+              title={validationMessage}
+            >
+              <Info fontSize={'small'} color={'primary'} style={{ marginLeft: '5px' }} />
+            </Tooltip>
           </div>
           {orderError && <div className={classes.errorText}>{orderError}</div>}
           <div className={classes.row}>
             {choiceLabelEnabled && (
               <InputContainer
-                label={
-                  choiceLabel &&
-                  choiceLabel.label &&
-                  `${singularLabel} label`
-                }
+                label={choiceLabel && choiceLabel.label && `${singularLabel} label`}
                 className={classes.promptHolder}
               >
                 <EditableHtml
@@ -300,11 +248,7 @@ export class Design extends React.Component {
 
             {targetLabel.settings && model.placementArea && (
               <InputContainer
-                label={
-                  targetLabel &&
-                  targetLabel.label &&
-                  targetLabel.label
-                }
+                label={targetLabel && targetLabel.label && targetLabel.label}
                 className={classes.promptHolder}
               >
                 <EditableHtml
@@ -313,7 +257,7 @@ export class Design extends React.Component {
                   onChange={this.onAnswerAreaLabelChange}
                   toolbarOpts={toolbarOpts}
                   spellCheck={spellCheckEnabled}
-                  maxImageWidth={maxImageWidth && maxImageWidth.choicesWithPlacementArea || defaultImageMaxWidth}
+                  maxImageWidth={(maxImageWidth && maxImageWidth.choicesWithPlacementArea) || defaultImageMaxWidth}
                   maxImageHeight={maxChoicesImageHeight}
                   uploadSoundSupport={uploadSoundSupport}
                   languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
@@ -362,7 +306,7 @@ export class Design extends React.Component {
 
 Design.defaultProps = {
   onModelChanged: () => {},
-  onConfigurationChanged: () => {}
+  onConfigurationChanged: () => {},
 };
 
 Design.propTypes = {
@@ -371,39 +315,39 @@ Design.propTypes = {
   onModelChanged: PropTypes.func,
   onConfigurationChanged: PropTypes.func,
   classes: PropTypes.object.isRequired,
-  imageSupport: PropTypes.object
+  imageSupport: PropTypes.object,
 };
 
 export default withDragContext(
-  withStyles(theme => ({
+  withStyles((theme) => ({
     promptHolder: {
       width: '100%',
       paddingTop: '12px',
-      marginTop: '24px'
+      marginTop: '24px',
     },
     prompt: {
       paddingTop: theme.spacing.unit * 2,
-      paddingBottom: theme.spacing.unit
+      paddingBottom: theme.spacing.unit,
     },
     row: {
       display: 'grid',
       gridAutoFlow: 'column',
       gridAutoColumns: '1fr',
-      gridGap: '8px'
+      gridGap: '8px',
     },
     tooltip: {
       fontSize: '12px',
       whiteSpace: 'pre',
-      maxWidth: '500px'
+      maxWidth: '500px',
     },
     errorText: {
       fontSize: '12px',
       color: 'red',
-      padding: '5px 0'
+      padding: '5px 0',
     },
     inlineFlexContainer: {
       display: 'inline-flex',
-      position: 'absolute'
-    }
-  }))(Design)
+      position: 'absolute',
+    },
+  }))(Design),
 );

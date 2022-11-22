@@ -9,23 +9,23 @@ const iconStyles = {
   icon: {
     '& polygon': {
       transition: 'fill 200ms',
-      fill: 'grey'
+      fill: 'grey',
     },
     transition: 'fill 200ms',
     '&:hover': {
       '& polygon': {
-        fill: 'black'
-      }
+        fill: 'black',
+      },
     },
     cursor: 'pointer',
     verticalAlign: 'middle',
-    fill: 'grey'
+    fill: 'grey',
   },
   active: {
     '& polygon': {
-      fill: 'black'
-    }
-  }
+      fill: 'black',
+    },
+  },
 };
 
 const RawToggle = ({ active, onToggle, classes }) => (
@@ -37,7 +37,7 @@ const RawToggle = ({ active, onToggle, classes }) => (
 RawToggle.propTypes = {
   active: PropTypes.bool,
   onToggle: PropTypes.func,
-  classes: PropTypes.object
+  classes: PropTypes.object,
 };
 const Toggle = withStyles(iconStyles)(RawToggle);
 export default Toggle;

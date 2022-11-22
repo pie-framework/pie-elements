@@ -5,15 +5,15 @@ import { ChoicePreview } from '../choice-preview';
 describe('ChoicePreview', () => {
   let w;
   let onDelete = jest.fn();
-  const wrapper = extras => {
+  const wrapper = (extras) => {
     const defaults = {
       classes: {},
       className: 'className',
       choice: {
         content: 'content',
-        id: '1'
+        id: '1',
       },
-      onDelete
+      onDelete,
     };
     const props = { ...defaults, ...extras };
     return shallow(<ChoicePreview {...props} />);

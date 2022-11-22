@@ -1,16 +1,9 @@
-import {
-  flattenCorrect,
-  score,
-  pairwiseCombinationScore,
-  illegalArgumentError
-} from '../scoring';
+import { flattenCorrect, score, pairwiseCombinationScore, illegalArgumentError } from '../scoring';
 import _ from 'lodash';
 
 describe('pairwiseCombinationScore', () => {
   const assertScore = (correctResponse, opts) => (answer, expectedScore) => {
-    it(`${expectedScore} for ${
-      typeof answer === 'string' ? answer : JSON.stringify(answer)
-    }`, () => {
+    it(`${expectedScore} for ${typeof answer === 'string' ? answer : JSON.stringify(answer)}`, () => {
       const c = correctResponse.split('');
       const a = typeof answer === 'string' ? answer.split('') : answer;
       const result = pairwiseCombinationScore(c, a, opts);
@@ -41,9 +34,7 @@ describe('pairwiseCombinationScore', () => {
 
   describe('correct response: AAB', () => {
     it('throws an error because of duplicate in answer', () => {
-      expect(() => pairwiseCombinationScore(['A', 'A'], ['A', 'A'])).toThrow(
-        illegalArgumentError(['A', 'A'])
-      );
+      expect(() => pairwiseCombinationScore(['A', 'A'], ['A', 'A'])).toThrow(illegalArgumentError(['A', 'A']));
     });
   });
 
@@ -98,7 +89,7 @@ describe('pairwiseCombinationScore', () => {
   describe('custom override - allowDuplicates: true, orderMustBeComplete: false', () => {
     describe('correct response: AAB - dups, order incomplete', () => {
       const assertAAB = assertScore('AAB', {
-        allowDuplicates: true
+        allowDuplicates: true,
       });
       assertAAB('', 0);
       assertAAB('A', 0);
@@ -118,12 +109,12 @@ const alternateResponses = [{ response: ['c4', 'c3', 'c2', 'c1'] }];
 describe('score', () => {
   let baseQuestion = {
     correctResponse: correctResponse,
-    alternateResponses: alternateResponses
+    alternateResponses: alternateResponses,
   };
 
   describe('partial scoring', () => {
     let question = _.merge(_.cloneDeep(baseQuestion), {
-      partialScoring: true
+      partialScoring: true,
     });
 
     const assertScore = (value, expectedScore) => {
@@ -160,12 +151,11 @@ describe('score', () => {
     assertScore(['c4', 'c3', 'c2'], 0.5);
     assertScore(['c4', 'c3', 'c2', 'c1'], 1);
   });
-
 });
 describe('flattenCorrect', () => {
   describe('correctResponse is an array of identifiers', () => {
     let question = {
-      correctResponse: correctResponse.map(v => ({ id: v }))
+      correctResponse: correctResponse.map((v) => ({ id: v })),
     };
 
     it('returns correctResponse field value', () => {

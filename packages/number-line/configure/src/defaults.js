@@ -4,11 +4,11 @@ export const model = {
     domain: { min: -5, max: 5 },
     ticks: {
       minor: 1,
-      major: 2
+      major: 2,
     },
     arrows: {
       left: true,
-      right: true
+      right: true,
     },
     maxNumberOfPoints: 20,
     width: 500,
@@ -24,34 +24,34 @@ export const model = {
       RFN: true,
       RFP: true,
       REN: true,
-      REP: true
+      REP: true,
     },
-    initialElements: []
+    initialElements: [],
   },
   feedback: {
     correct: {
       default: 'Correct',
-      type: 'none'
+      type: 'none',
     },
     incorrect: {
       default: 'Incorrect',
-      type: 'none'
+      type: 'none',
     },
     partial: {
       default: 'Nearly',
-      type: 'none'
-    }
+      type: 'none',
+    },
   },
 };
 
 export const configuration = {
   prompt: {
     settings: true,
-    label: 'Prompt'
+    label: 'Prompt',
   },
   spellCheck: {
     label: 'Spellcheck',
-    settings:false,
-    enabled:true
-  }
+    settings: false,
+    enabled: true,
+  },
 };
