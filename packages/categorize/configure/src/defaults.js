@@ -91,6 +91,7 @@ export default {
     withRubric: {
       settings: false,
       label: 'Add Rubric'
-    }
+    },
+   lowerMaximumValueCategoriesPerRow: 1,
   }
 };
