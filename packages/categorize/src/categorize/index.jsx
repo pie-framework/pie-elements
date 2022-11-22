@@ -116,7 +116,7 @@ export class Categorize extends React.Component {
     return flexDirection;
   };
 
-  existAlternateResponse = (correctResponse) => correctResponse?.some(correctRes => correctRes.alternateResponses?.length >0);
+  existAlternateResponse = (correctResponse) => correctResponse?.some(correctRes => correctRes.alternateResponses?.length > 0);
 
   render() {
     const { classes, model, session } = this.props;
