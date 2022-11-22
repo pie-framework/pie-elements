@@ -25,6 +25,7 @@ import { multiplePlacements } from '../utils';
 
 const { dropdown, Panel, toggle, radio, numberField } = settings;
 const { Provider: IdProvider } = uid;
+import isEmpty from 'lodash/isEmpty';
 
 export class Design extends React.Component {
   static propTypes = {
@@ -148,6 +149,71 @@ export class Design extends React.Component {
 
   };
 
+  validate = (model = {}, config = {}) => {
+    const { categories, choices, correctResponse } = model;
+    const { minChoices = 1, maxChoices, maxCategories } = config;
+    const reversedChoices = [ ...choices || []].reverse();
+    const errors = {};
+    const choicesErrors = {};
+    console.log('Andreea categories', categories);
+    reversedChoices.forEach((choice, index) => {
+      const { id, content } = choice;
+
+      if (content === '' || content === '<div></div>') {
+        choicesErrors[id] = 'Content should not be empty.';
+      } else {
+        const identicalAnswer = reversedChoices.slice(index + 1).some(c => c.content === content);
+
+        if (identicalAnswer) {
+          choicesErrors[id] = 'Content should be unique.';
+        }
+      }
+    });
+
+    const nbOfCategories = (categories || []).length;
+    const nbOfChoices = (choices || []).length
+
+    if (nbOfCategories > maxCategories) {
+      errors.categoriesError = `No more than ${maxCategories} categories should be defined.`;
+    } else if (nbOfCategories < 1) {
+      errors.categoriesError = 'There should be at least 1 category defined.';
+    }
+
+    if (nbOfChoices < minChoices) {
+      errors.choicesError = `There should be at least ${minChoices} choices defined.`;
+    } else if (nbOfChoices > maxChoices) {
+      errors.choicesError = `No more than ${maxChoices} choices should be defined.`;
+    }
+
+    if (nbOfChoices && nbOfCategories) {
+      let hasAssociations = false;
+
+      (correctResponse || []).forEach(response => {
+        const { choices = [], alternateResponses = [] } = response;
+
+        if (choices.length) {
+          hasAssociations = true;
+        } else {
+          alternateResponses.forEach(alternate => {
+            if ((alternate || []).length) {
+              hasAssociations = true;
+            }
+          });
+        }
+      });
+
+      if (!hasAssociations) {
+        errors.associationError = 'At least one token should be assigned to at least one category.';
+      }
+    }
+
+    if (!isEmpty(choicesErrors)) {
+      errors.choicesErrors = choicesErrors;
+    }
+
+    return errors;
+  };
+
   render() {
     const {
       classes,
@@ -187,6 +253,9 @@ export class Design extends React.Component {
     } = model || {};
 
     const toolbarOpts = {};
+
+    const errors1 = this.validate(model, configuration);
+    console.log('Andreea model errors', errors1);
 
     switch (model.toolbarEditorPosition) {
       case 'top':
