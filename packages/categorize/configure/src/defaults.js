@@ -92,6 +92,6 @@ export default {
       settings: false,
       label: 'Add Rubric'
     },
-   lowerMaximumValueCategoriesPerRow: 1,
+    minCategoriesPerRow: 1,
   }
 };

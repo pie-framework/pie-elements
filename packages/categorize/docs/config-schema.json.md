@@ -86,6 +86,10 @@ Maximum number of choices
 
 Maximum number of categories
 
+# `minCategoriesPerRow` (number)
+
+Lower maximum value for categories per row
+
 # `maxImageWidth` (object)
 
 Properties of the `maxImageWidth` object:

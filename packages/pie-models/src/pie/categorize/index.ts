@@ -202,6 +202,11 @@ export interface CategorizeConfigure
   maxCategories?: number;
 
   /**
+   *  Lower maximum value for categories per row
+   */
+  minCategoriesPerRow?: number;
+
+  /**
    * Maximum image width for input fields
    */
   maxImageWidth?: ConfigureMaxImageDimensionsProp;

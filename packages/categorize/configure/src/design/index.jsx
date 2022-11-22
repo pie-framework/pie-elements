@@ -174,7 +174,7 @@ export class Design extends React.Component {
       maxImageWidth = {},
       maxImageHeight = {},
       withRubric = {},
-      lowerMaximumValueCategoriesPerRow = 1,
+      minCategoriesPerRow = 1,
     } = configuration || {};
     const {
       allowMultiplePlacementsEnabled,
@@ -240,7 +240,7 @@ export class Design extends React.Component {
                   categoriesPerRow: categoriesPerRow.settings && numberField(categoriesPerRow.label,
                     {
                           label: categoriesPerRow.label,
-                          min: lowerMaximumValueCategoriesPerRow,
+                          min: minCategoriesPerRow,
                           max: 6,
                       }),
                   allowMultiplePlacementsEnabled:
