@@ -84,8 +84,8 @@ const styles = (theme) => ({
   errorText: {
     fontSize: '12px',
     color: 'red',
-    padding: '5px 0'
-  }
+    padding: '5px 0',
+  },
 });
 
 class Response extends React.Component {
@@ -194,9 +194,7 @@ class Response extends React.Component {
     this.setState((state) => ({
       showKeypad: {
         ...state.showKeypad,
-        openCount: !state.showKeypad[alternateId]
-          ? state.showKeypad.openCount
-          : state.showKeypad.openCount - 1,
+        openCount: !state.showKeypad[alternateId] ? state.showKeypad.openCount : state.showKeypad.openCount - 1,
       },
     }));
   };
@@ -215,9 +213,7 @@ class Response extends React.Component {
     this.setState((state) => ({
       showKeypad: {
         ...state.showKeypad,
-        openCount: !state.showKeypad.main
-          ? state.showKeypad.openCount + 1
-          : state.showKeypad.openCount,
+        openCount: !state.showKeypad.main ? state.showKeypad.openCount + 1 : state.showKeypad.openCount,
         main: true,
       },
     }));
@@ -227,9 +223,7 @@ class Response extends React.Component {
     this.setState((state) => ({
       showKeypad: {
         ...state.showKeypad,
-        openCount: !state.showKeypad[alternateId]
-          ? state.showKeypad.openCount + 1
-          : state.showKeypad.openCount,
+        openCount: !state.showKeypad[alternateId] ? state.showKeypad.openCount + 1 : state.showKeypad.openCount,
         [alternateId]: true,
       },
     }));
@@ -246,25 +240,10 @@ class Response extends React.Component {
   };
 
   render() {
-    const {
-      classes,
-      mode,
-      defaultResponse,
-      index,
-      response,
-      cAllowTrailingZeros,
-      cIgnoreOrder,
-      error
-    } = this.props;
+    const { classes, mode, defaultResponse, index, response, cAllowTrailingZeros, cIgnoreOrder, error } = this.props;
 
     const { showKeypad } = this.state;
-    const {
-      validation,
-      answer,
-      alternates,
-      ignoreOrder,
-      allowTrailingZeros,
-    } = response;
+    const { validation, answer, alternates, ignoreOrder, allowTrailingZeros } = response;
     const hasAlternates = Object.keys(alternates || {}).length > 0;
     const classNames = {
       editor: classes.responseEditor,
@@ -279,22 +258,10 @@ class Response extends React.Component {
         <CardContent className={classes.cardContent}>
           <div className={classes.titleBar}>
             <Typography className={classes.title} component="h2">
-              Response{' '}
-              {INDIVIDUAL_RESPONSE_CORRECTNESS_SUPPORTED
-                ? defaultResponse
-                  ? ''
-                  : index + 1
-                : ''}
+              Response {INDIVIDUAL_RESPONSE_CORRECTNESS_SUPPORTED ? (defaultResponse ? '' : index + 1) : ''}
             </Typography>
-            <InputContainer
-              label="Validation"
-              className={classes.selectContainer}
-            >
-              <Select
-                className={classes.select}
-                onChange={this.onChange('validation')}
-                value={validation || 'literal'}
-              >
+            <InputContainer label="Validation" className={classes.selectContainer}>
+              <Select className={classes.select} onChange={this.onChange('validation')} value={validation || 'literal'}>
                 <MenuItem value="literal">Literal Validation</MenuItem>
                 <MenuItem value="symbolic">Symbolic Validation</MenuItem>
               </Select>
@@ -308,9 +275,7 @@ class Response extends React.Component {
                   control={
                     <Checkbox
                       checked={allowTrailingZeros}
-                      onChange={this.onLiteralOptionsChange(
-                        'allowTrailingZeros'
-                      )}
+                      onChange={this.onLiteralOptionsChange('allowTrailingZeros')}
                     />
                   }
                 />
@@ -319,12 +284,7 @@ class Response extends React.Component {
               {cIgnoreOrder.enabled && (
                 <FormControlLabel
                   label={cIgnoreOrder.label}
-                  control={
-                    <Checkbox
-                      checked={ignoreOrder}
-                      onChange={this.onLiteralOptionsChange('ignoreOrder')}
-                    />
-                  }
+                  control={<Checkbox checked={ignoreOrder} onChange={this.onLiteralOptionsChange('ignoreOrder')} />}
                 />
               )}
             </div>
@@ -374,16 +334,12 @@ class Response extends React.Component {
                 {error && error[alternateId] ? <div className={classes.errorText}>{error[alternateId]}</div> : null}
               </div>
             ))}
-            <div className={classes.configPanel}>
-              <Button
-                className={classes.alternateButton}
-                type="primary"
-                onClick={this.onAddAlternate}
-              >
-                ADD ALTERNATE
-              </Button>
-              <div className={classes.checkboxContainer}></div>
-            </div>
+          <div className={classes.configPanel}>
+            <Button className={classes.alternateButton} type="primary" onClick={this.onAddAlternate}>
+              ADD ALTERNATE
+            </Button>
+            <div className={classes.checkboxContainer}></div>
+          </div>
         </CardContent>
       </Card>
     );

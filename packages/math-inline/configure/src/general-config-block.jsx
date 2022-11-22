@@ -115,7 +115,7 @@ const styles = (theme) => ({
   errorText: {
     fontSize: '12px',
     color: 'red',
-    padding: '5px 0'
+    padding: '5px 0',
   },
 });
 
@@ -129,10 +129,9 @@ function prepareForStatic(expression) {
   if (expression) {
     let answerBlocks = 1; // assume one at least
 
-    return expression.replace(
-      REGEX,
-      () => `\\embed{answerBlock}[r${answerBlocks++}]`
-    ).replace(NEWLINE_LATEX, '\\embed{newLine}[]');
+    return expression
+      .replace(REGEX, () => `\\embed{answerBlock}[r${answerBlocks++}]`)
+      .replace(NEWLINE_LATEX, '\\embed{newLine}[]');
   }
 }
 
@@ -155,7 +154,7 @@ class GeneralConfigBlock extends React.Component {
     onChange: PropTypes.func.isRequired,
     promptEnabled: PropTypes.bool,
     rationaleEnabled: PropTypes.bool,
-    toolbarOpts: PropTypes.object
+    toolbarOpts: PropTypes.object,
   };
 
   constructor(props) {
@@ -227,14 +226,8 @@ class GeneralConfigBlock extends React.Component {
           //      </div>
           //   </div>`;
 
-          const genericAnswerBlock = `<div class="${cx(
-            classes.blockContainer,
-            classes.blockContainerGeneric
-          )}">
-                <div class="${cx(
-            classes.blockResponse,
-            classes.blockResponseGeneric
-          )}" id="${data}Index">Response</div>
+          const genericAnswerBlock = `<div class="${cx(classes.blockContainer, classes.blockContainerGeneric)}">
+                <div class="${cx(classes.blockResponse, classes.blockResponseGeneric)}" id="${data}Index">Response</div>
               </div>`;
 
           return {
@@ -294,7 +287,7 @@ class GeneralConfigBlock extends React.Component {
               }
             });
           }
-        }
+        },
       );
     }
   };
@@ -354,7 +347,7 @@ class GeneralConfigBlock extends React.Component {
       responseType,
       rationale,
       spellCheckEnabled,
-      errors = {}
+      errors = {},
     } = model;
     const {
       rationale: cRationale = {},
@@ -363,7 +356,7 @@ class GeneralConfigBlock extends React.Component {
       allowTrailingZeros: cAllowTrailingZeros = {},
       maxResponseAreas,
       maxImageWidth = {},
-      maxImageHeight = {}
+      maxImageHeight = {},
     } = configuration || {};
     const validationMessage = generateValidationMessage(configuration, model);
     const { responsesErrors, responseAreasError } = errors;
@@ -376,16 +369,10 @@ class GeneralConfigBlock extends React.Component {
       mathToolbar: classes.mathToolbar,
     };
 
-    const responsesToUse =
-      responseType === ResponseTypes.advanced
-        ? responses
-        : responses.slice(0, 1);
+    const responsesToUse = responseType === ResponseTypes.advanced ? responses : responses.slice(0, 1);
 
     return (
-      <div
-        ref={(r) => (this.root = r || this.root)}
-        className={classes.container}
-      >
+      <div ref={(r) => (this.root = r || this.root)} className={classes.container}>
         {promptEnabled && (
           <InputContainer label={cPrompt.label} className={classes.promptHolder}>
             <EditableHtml
@@ -405,25 +392,22 @@ class GeneralConfigBlock extends React.Component {
           </InputContainer>
         )}
         {rationaleEnabled && (
-          <InputContainer
-            label={cRationale.label}
-            className={classes.promptHolder}
-          >
+          <InputContainer label={cRationale.label} className={classes.promptHolder}>
             <EditableHtml
               className={classes.prompt}
               markup={rationale || ''}
               pluginProps={{
                 math: {
-                  controlledKeypadMode: false
-                }
+                  controlledKeypadMode: false,
+                },
               }}
               onChange={this.onChange('rationale')}
               imageSupport={imageSupport}
               nonEmpty={false}
               toolbarOpts={toolbarOpts}
               spellCheck={spellCheckEnabled}
-              maxImageWidth={maxImageWidth && maxImageWidth.rationale || defaultImageMaxWidth}
-              maxImageHeight={maxImageHeight && maxImageHeight.rationale || defaultImageMaxHeight}
+              maxImageWidth={(maxImageWidth && maxImageWidth.rationale) || defaultImageMaxWidth}
+              maxImageHeight={(maxImageHeight && maxImageHeight.rationale) || defaultImageMaxHeight}
               uploadSoundSupport={uploadSoundSupport}
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
             />
@@ -432,18 +416,18 @@ class GeneralConfigBlock extends React.Component {
         <div className={classes.flexContainer} style={{ justifyContent: 'flex-start' }}>
           <h3>Define Response</h3>
           <Tooltip
-            classes={{tooltip: classes.tooltip}}
+            classes={{ tooltip: classes.tooltip }}
             disableFocusListener
             disableTouchListener
             placement={'right'}
             title={validationMessage}
-            >
-          <Info fontSize={'small'} color={'primary'} style={{ marginLeft: '5px' }}/>
-        </Tooltip>
+          >
+            <Info fontSize={'small'} color={'primary'} style={{ marginLeft: '5px' }} />
+          </Tooltip>
         </div>
         {responseAreasError && <div className={classes.errorText}>{responseAreasError}</div>}
 
-        {responseType === ResponseTypes.advanced && ([
+        {responseType === ResponseTypes.advanced && [
           <InputContainer
             key="templateEditorType"
             label="Response Template Equation Editor"
@@ -469,9 +453,7 @@ class GeneralConfigBlock extends React.Component {
             </Select>
           </InputContainer>,
           <div className={classes.inputContainer} key="templateHolder">
-            <InputLabel className={classes.templateTitle}>
-              RESPONSE TEMPLATE
-            </InputLabel>
+            <InputLabel className={classes.templateTitle}>RESPONSE TEMPLATE</InputLabel>
             <MathToolbar
               classNames={classNames}
               allowAnswerBlock
@@ -485,19 +467,12 @@ class GeneralConfigBlock extends React.Component {
               maxResponseAreas={maxResponseAreas}
               error={responseAreasError}
             />
-          </div>
-        ])}
+          </div>,
+        ]}
         <h4>Define Correct Response</h4>
         <div className={classes.flexContainer}>
-          <InputContainer
-            label="Equation Editor"
-            className={classes.selectContainer}
-          >
-            <Select
-              className={classes.select}
-              onChange={this.onChange('equationEditor')}
-              value={equationEditor}
-            >
+          <InputContainer label="Equation Editor" className={classes.selectContainer}>
+            <Select className={classes.select} onChange={this.onChange('equationEditor')} value={equationEditor}>
               <MenuItem value="non-negative-integers">Numeric - Non-Negative Integers</MenuItem>
               <MenuItem value="integers">Numeric - Integers</MenuItem>
               <MenuItem value="decimals">Numeric - Decimals</MenuItem>

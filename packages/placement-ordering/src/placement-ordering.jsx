@@ -1,6 +1,6 @@
 import { HorizontalTiler, VerticalTiler } from './tiler';
 import { buildState, reducer } from './ordering';
-import {color, Feedback, Collapsible, hasText, PreviewPrompt} from '@pie-lib/render-ui';
+import { color, Feedback, Collapsible, hasText, PreviewPrompt } from '@pie-lib/render-ui';
 import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -10,25 +10,19 @@ import debug from 'debug';
 import uniqueId from 'lodash/uniqueId';
 import { withStyles } from '@material-ui/core/styles';
 import ReactDOM from 'react-dom';
-import {renderMath} from '@pie-lib/math-rendering';
+import { renderMath } from '@pie-lib/math-rendering';
 
 const log = debug('pie-elements:placement-ordering');
 
-const OrderingTiler = props => {
-  const {
-    tiler: Comp,
-    ordering,
-    onDropChoice,
-    onRemoveChoice,
-    ...compProps
-  } = props;
+const OrderingTiler = (props) => {
+  const { tiler: Comp, ordering, onDropChoice, onRemoveChoice, ...compProps } = props;
 
   return (
     <Comp
       {...compProps}
       tiles={ordering.tiles}
       onDropChoice={(t, s) => onDropChoice(t, s, ordering)}
-      onRemoveChoice={t => onRemoveChoice(t, ordering)}
+      onRemoveChoice={(t) => onRemoveChoice(t, ordering)}
     />
   );
 };
@@ -37,29 +31,26 @@ OrderingTiler.propTypes = {
   tiler: PropTypes.func,
   ordering: PropTypes.any,
   onDropChoice: PropTypes.func,
-  onRemoveChoice: PropTypes.func
+  onRemoveChoice: PropTypes.func,
 };
 
 export class PlacementOrdering extends React.Component {
   static propTypes = {
     onSessionChange: PropTypes.func.isRequired,
     model: PropTypes.object.isRequired,
-    session: PropTypes.oneOfType([
-      PropTypes.array.isRequired,
-      PropTypes.object.isRequired
-    ]),
-    classes: PropTypes.object.isRequired
+    session: PropTypes.oneOfType([PropTypes.array.isRequired, PropTypes.object.isRequired]),
+    classes: PropTypes.object.isRequired,
   };
 
   constructor(props) {
     super(props);
     this.state = {
-      showingCorrect: false
+      showingCorrect: false,
     };
 
     this.instanceId = uniqueId();
 
-    this.toggleCorrect = showingCorrect => {
+    this.toggleCorrect = (showingCorrect) => {
       this.setState({ showingCorrect });
     };
   }
@@ -82,11 +73,8 @@ export class PlacementOrdering extends React.Component {
       newState.showingCorrect = false;
     }
 
-    const includeTargetsChanged =
-      nextProps.model.config.includeTargets !==
-      this.props.model.config.includeTargets;
-    const choicesNumberChanged =
-      nextProps.model.choices.length !== this.props.model.choices.length;
+    const includeTargetsChanged = nextProps.model.config.includeTargets !== this.props.model.config.includeTargets;
+    const choicesNumberChanged = nextProps.model.choices.length !== this.props.model.choices.length;
 
     if (includeTargetsChanged || choicesNumberChanged) {
       this.initSessionIfNeeded(nextProps, true);
@@ -101,14 +89,11 @@ export class PlacementOrdering extends React.Component {
 
     const compactSessionValues = (session && compact(session.value)) || [];
 
-    if (
-      !newConfig.includeTargets &&
-      compactSessionValues.length !== model.choices.length
-    ) {
+    if (!newConfig.includeTargets && compactSessionValues.length !== model.choices.length) {
       log('[initSessionIfNeeded] initing session...', newConfig.includeTargets);
       const update = cloneDeep(session);
 
-      update.value = model.choices.map(m => m.id);
+      update.value = model.choices.map((m) => m.id);
       onSessionChange(update);
     } else if (newConfig.includeTargets) {
       const update = cloneDeep(session);
@@ -123,14 +108,12 @@ export class PlacementOrdering extends React.Component {
 
   onDropChoice = (target, source, ordering) => {
     const { onSessionChange, session } = this.props;
-    const from = ordering.tiles.find(
-      t => t.id === source.id && t.type === source.type
-    );
+    const from = ordering.tiles.find((t) => t.id === source.id && t.type === source.type);
     const to = target;
     log('[onDropChoice] ', from, to);
     const update = reducer({ type: 'move', from, to }, ordering);
     const sessionUpdate = Object.assign({}, session, {
-      value: update.response
+      value: update.response,
     });
 
     onSessionChange(sessionUpdate);
@@ -141,7 +124,7 @@ export class PlacementOrdering extends React.Component {
     log('[onRemoveChoice]', target);
     const update = reducer({ type: 'remove', target }, ordering);
     const sessionUpdate = Object.assign({}, session, {
-      value: update.response
+      value: update.response,
     });
     onSessionChange(sessionUpdate);
   };
@@ -151,24 +134,24 @@ export class PlacementOrdering extends React.Component {
     const { showingCorrect } = this.state;
     const config = model.config || {
       orientation: 'vertical',
-      includeTargets: true
+      includeTargets: true,
     };
     const { includeTargets } = config;
 
     return showingCorrect
       ? buildState(
-        model.choices,
-        model.correctResponse,
-        model.correctResponse.map(id => ({ id, outcome: 'correct' })),
-        {
-          includeTargets,
-          allowSameChoiceInTargets: model.config.allowSameChoiceInTargets
-        }
-      )
+          model.choices,
+          model.correctResponse,
+          model.correctResponse.map((id) => ({ id, outcome: 'correct' })),
+          {
+            includeTargets,
+            allowSameChoiceInTargets: model.config.allowSameChoiceInTargets,
+          },
+        )
       : buildState(model.choices, session.value, model.outcomes, {
-        includeTargets,
-        allowSameChoiceInTargets: model.config.allowSameChoiceInTargets
-      });
+          includeTargets,
+          allowSameChoiceInTargets: model.config.allowSameChoiceInTargets,
+        });
   };
 
   render() {
@@ -184,13 +167,13 @@ export class PlacementOrdering extends React.Component {
       showNote,
       env,
       disabled,
-      teacherInstructions
+      teacherInstructions,
     } = model;
     const showToggle = correctResponse && correctResponse.length > 0;
     const { showingCorrect } = this.state;
     const config = configs || {
       orientation: 'vertical',
-      includeTargets: true
+      includeTargets: true,
     };
     const { orientation, includeTargets } = config;
     const vertical = orientation === 'vertical';
@@ -198,7 +181,7 @@ export class PlacementOrdering extends React.Component {
     const { mode, role } = env || {};
 
     const Tiler = vertical ? VerticalTiler : HorizontalTiler;
-    const displayNote = (showingCorrect || mode === 'view' && role === 'instructor') && showNote && note;
+    const displayNote = (showingCorrect || (mode === 'view' && role === 'instructor')) && showNote && note;
 
     return (
       <div className={classes.placementOrdering}>
@@ -210,14 +193,10 @@ export class PlacementOrdering extends React.Component {
             >
               <PreviewPrompt prompt={teacherInstructions} />
             </Collapsible>
-            <br/>
+            <br />
           </React.Fragment>
         )}
-        <CorrectAnswerToggle
-          show={showToggle}
-          toggled={showingCorrect}
-          onToggle={this.toggleCorrect}
-        />
+        <CorrectAnswerToggle show={showToggle} toggled={showingCorrect} onToggle={this.toggleCorrect} />
         <div className={classes.prompt}>
           <PreviewPrompt prompt={prompt} />
         </div>
@@ -235,30 +214,22 @@ export class PlacementOrdering extends React.Component {
           onDropChoice={this.onDropChoice}
           onRemoveChoice={this.onRemoveChoice}
         />
-        <br/>
+        <br />
         {displayNote && (
-          <div
-            className={classes.note}
-            dangerouslySetInnerHTML={{ __html: `<strong>Note:</strong> ${note}` }}
-          />
+          <div className={classes.note} dangerouslySetInnerHTML={{ __html: `<strong>Note:</strong> ${note}` }} />
         )}
         {rationale && hasText(rationale) && (
-          <Collapsible
-            labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }}
-            className={classes.collapsible}
-          >
+          <Collapsible labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }} className={classes.collapsible}>
             <PreviewPrompt prompt={rationale} />
           </Collapsible>
         )}
-        {!showingCorrect && (
-          <Feedback correctness={correctness} feedback={feedback}/>
-        )}
+        {!showingCorrect && <Feedback correctness={correctness} feedback={feedback} />}
       </div>
     );
   }
 }
 
-const styles = theme => ({
+const styles = (theme) => ({
   placementOrdering: {
     color: color.text(),
     backgroundColor: color.background(),
@@ -266,20 +237,20 @@ const styles = theme => ({
     flexDirection: 'column',
     alignItems: 'center',
     boxSizing: 'border-box',
-    paddingBottom: theme.spacing.unit
+    paddingBottom: theme.spacing.unit,
   },
   prompt: {
     padding: '5px',
-    paddingBottom: '15px'
+    paddingBottom: '15px',
   },
   note: {
-    padding: '5px'
+    padding: '5px',
   },
   collapsible: {
     paddingTop: theme.spacing.unit * 2,
     paddingBottom: theme.spacing.unit * 2,
-    alignSelf: 'flex-start'
-  }
+    alignSelf: 'flex-start',
+  },
 });
 
 export default withStyles(styles)(PlacementOrdering);

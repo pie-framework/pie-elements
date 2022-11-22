@@ -11,11 +11,11 @@ export class RawAddButton extends React.Component {
     className: PropTypes.string,
     label: PropTypes.string,
     onClick: PropTypes.func,
-    disabled: PropTypes.bool
+    disabled: PropTypes.bool,
   };
 
   static defaultProps = {
-    label: 'Add'
+    label: 'Add',
   };
 
   render() {
@@ -34,10 +34,10 @@ export class RawAddButton extends React.Component {
     );
   }
 }
-const styles = theme => ({
+const styles = (theme) => ({
   addButton: {
-    height: theme.spacing.unit * 4
-  }
+    height: theme.spacing.unit * 4,
+  },
 });
 
 const AddButton = withStyles(styles)(RawAddButton);
@@ -45,25 +45,19 @@ const AddButton = withStyles(styles)(RawAddButton);
 const DeleteButton = withStyles(() => ({
   deleteButton: {
     margin: 0,
-    padding: 0
-  }
+    padding: 0,
+  },
 }))(({ classes, label, onClick, disabled }) => (
-  <Button
-    className={classes.deleteButton}
-    onClick={onClick}
-    size="small"
-    color="primary"
-    disabled={disabled}
-  >
+  <Button className={classes.deleteButton} onClick={onClick} size="small" color="primary" disabled={disabled}>
     {label}
   </Button>
 ));
 
-const Divider = withStyles(theme => ({
+const Divider = withStyles((theme) => ({
   divider: {
     marginTop: 2 * theme.spacing.unit,
-    marginBottom: 2 * theme.spacing.unit
-  }
+    marginBottom: 2 * theme.spacing.unit,
+  },
 }))(({ classes }) => <MuiDivider className={classes.divider} />);
 
 export { AddButton, DeleteButton, Divider };

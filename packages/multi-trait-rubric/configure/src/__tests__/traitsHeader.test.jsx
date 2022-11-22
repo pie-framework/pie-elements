@@ -5,13 +5,11 @@ import { TraitsHeaderTile } from '../traitsHeader';
 describe('Trait Header', () => {
   let w;
 
-  const wrapper = extras => {
+  const wrapper = (extras) => {
     const defaults = {
       classes: {},
-      onTraitLabelChange: () => {
-      },
-      onScaleChange: () => {
-      },
+      onTraitLabelChange: () => {},
+      onScaleChange: () => {},
       scorePointsValues: [0, 1, 2],
       scorePointsLabels: ['A', 'B', 'C'],
       traitLabel: 'Category',
@@ -23,7 +21,7 @@ describe('Trait Header', () => {
       showDescription: true,
       showDeleteScaleModal: true,
       showScorePointLabels: true,
-      ...extras
+      ...extras,
     };
     return shallow(<TraitsHeaderTile {...defaults} />);
   };
@@ -76,7 +74,7 @@ describe('Trait Header', () => {
     });
 
     describe('scroll position', () => {
-      it ('does not change scroll position when current position prop does not change', () => {
+      it('does not change scroll position when current position prop does not change', () => {
         const wrap = wrapper({ currentPosition: 200 });
 
         expect(wrap.instance().props.currentPosition).toEqual(200);
@@ -87,7 +85,7 @@ describe('Trait Header', () => {
         expect(scrollToPositionSpy).not.toBeCalled();
       });
 
-      it ('changes scroll position when current position prop changes', () => {
+      it('changes scroll position when current position prop changes', () => {
         const wrap = wrapper({ currentPosition: 200 });
 
         expect(wrap.instance().props.currentPosition).toEqual(200);
@@ -118,10 +116,7 @@ describe('Trait Header', () => {
         w.instance().onScorePointLabelChange({ scorePointLabel: 'New Label', value: 0 });
 
         expect(onScaleChange).toBeCalledWith({
-          scorePointsLabels: [
-            'New Label',
-            ...scorePointsLabels.slice(1)
-          ]
+          scorePointsLabels: ['New Label', ...scorePointsLabels.slice(1)],
         });
       });
     });

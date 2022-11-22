@@ -10,11 +10,7 @@
     },
     "mode": {
       "description": "The selected mode for tokenizing the text.\nThis is only used in the config UI to present the mode by which text has been tokenized for selection.\nIf importing an item, only set this property it the text tokens are strictly parsed by of these methods.",
-      "enum": [
-        "paragraph",
-        "sentence",
-        "word"
-      ],
+      "enum": ["paragraph", "sentence", "word"],
       "type": "string",
       "title": "mode"
     },
@@ -36,10 +32,7 @@
               "properties": {
                 "type": {
                   "description": "Indicates the feedback type",
-                  "enum": [
-                    "default",
-                    "none"
-                  ],
+                  "enum": ["default", "none"],
                   "type": "string",
                   "title": "type"
                 },
@@ -49,9 +42,7 @@
                   "title": "default"
                 }
               },
-              "required": [
-                "type"
-              ]
+              "required": ["type"]
             },
             {
               "title": "CustomFeedbackType",
@@ -60,9 +51,7 @@
                 "type": {
                   "description": "Indicates the feedback type",
                   "type": "string",
-                  "enum": [
-                    "custom"
-                  ],
+                  "enum": ["custom"],
                   "title": "type"
                 },
                 "custom": {
@@ -71,10 +60,7 @@
                   "title": "custom"
                 }
               },
-              "required": [
-                "custom",
-                "type"
-              ]
+              "required": ["custom", "type"]
             }
           ],
           "title": "correct"
@@ -88,10 +74,7 @@
               "properties": {
                 "type": {
                   "description": "Indicates the feedback type",
-                  "enum": [
-                    "default",
-                    "none"
-                  ],
+                  "enum": ["default", "none"],
                   "type": "string",
                   "title": "type"
                 },
@@ -101,9 +84,7 @@
                   "title": "default"
                 }
               },
-              "required": [
-                "type"
-              ]
+              "required": ["type"]
             },
             {
               "title": "CustomFeedbackType",
@@ -112,9 +93,7 @@
                 "type": {
                   "description": "Indicates the feedback type",
                   "type": "string",
-                  "enum": [
-                    "custom"
-                  ],
+                  "enum": ["custom"],
                   "title": "type"
                 },
                 "custom": {
@@ -123,10 +102,7 @@
                   "title": "custom"
                 }
               },
-              "required": [
-                "custom",
-                "type"
-              ]
+              "required": ["custom", "type"]
             }
           ],
           "title": "incorrect"
@@ -140,10 +116,7 @@
               "properties": {
                 "type": {
                   "description": "Indicates the feedback type",
-                  "enum": [
-                    "default",
-                    "none"
-                  ],
+                  "enum": ["default", "none"],
                   "type": "string",
                   "title": "type"
                 },
@@ -153,9 +126,7 @@
                   "title": "default"
                 }
               },
-              "required": [
-                "type"
-              ]
+              "required": ["type"]
             },
             {
               "title": "CustomFeedbackType",
@@ -164,9 +135,7 @@
                 "type": {
                   "description": "Indicates the feedback type",
                   "type": "string",
-                  "enum": [
-                    "custom"
-                  ],
+                  "enum": ["custom"],
                   "title": "type"
                 },
                 "custom": {
@@ -175,19 +144,13 @@
                   "title": "custom"
                 }
               },
-              "required": [
-                "custom",
-                "type"
-              ]
+              "required": ["custom", "type"]
             }
           ],
           "title": "partial"
         }
       },
-      "required": [
-        "correct",
-        "incorrect"
-      ]
+      "required": ["correct", "incorrect"]
     },
     "tokens": {
       "description": "The selectable text tokens in the main text content",
@@ -217,10 +180,7 @@
             "title": "correct"
           }
         },
-        "required": [
-          "end",
-          "start"
-        ]
+        "required": ["end", "start"]
       },
       "title": "tokens"
     },
@@ -252,10 +212,7 @@
     },
     "scoringType": {
       "description": "Indicates scoring type",
-      "enum": [
-        "auto",
-        "rubric"
-      ],
+      "enum": ["auto", "rubric"],
       "type": "string",
       "title": "scoringType"
     },
@@ -297,10 +254,7 @@
     "toolbarEditorPosition": {
       "description": "Indicates the editor's toolbar position which can be 'bottom' or 'top'",
       "default": ": 'bottom'",
-      "enum": [
-        "bottom",
-        "top"
-      ],
+      "enum": ["bottom", "top"],
       "type": "string",
       "title": "toolbarEditorPosition"
     },
@@ -384,10 +338,7 @@
               "properties": {
                 "type": {
                   "description": "Indicates the feedback type",
-                  "enum": [
-                    "default",
-                    "none"
-                  ],
+                  "enum": ["default", "none"],
                   "type": "string",
                   "title": "type"
                 },
@@ -397,9 +348,7 @@
                   "title": "default"
                 }
               },
-              "required": [
-                "type"
-              ]
+              "required": ["type"]
             },
             {
               "title": "CustomFeedbackType",
@@ -408,9 +357,7 @@
                 "type": {
                   "description": "Indicates the feedback type",
                   "type": "string",
-                  "enum": [
-                    "custom"
-                  ],
+                  "enum": ["custom"],
                   "title": "type"
                 },
                 "custom": {
@@ -419,10 +366,7 @@
                   "title": "custom"
                 }
               },
-              "required": [
-                "custom",
-                "type"
-              ]
+              "required": ["custom", "type"]
             }
           ],
           "title": "correct"
@@ -436,10 +380,7 @@
               "properties": {
                 "type": {
                   "description": "Indicates the feedback type",
-                  "enum": [
-                    "default",
-                    "none"
-                  ],
+                  "enum": ["default", "none"],
                   "type": "string",
                   "title": "type"
                 },
@@ -449,9 +390,7 @@
                   "title": "default"
                 }
               },
-              "required": [
-                "type"
-              ]
+              "required": ["type"]
             },
             {
               "title": "CustomFeedbackType",
@@ -460,9 +399,7 @@
                 "type": {
                   "description": "Indicates the feedback type",
                   "type": "string",
-                  "enum": [
-                    "custom"
-                  ],
+                  "enum": ["custom"],
                   "title": "type"
                 },
                 "custom": {
@@ -471,10 +408,7 @@
                   "title": "custom"
                 }
               },
-              "required": [
-                "custom",
-                "type"
-              ]
+              "required": ["custom", "type"]
             }
           ],
           "title": "incorrect"
@@ -488,10 +422,7 @@
               "properties": {
                 "type": {
                   "description": "Indicates the feedback type",
-                  "enum": [
-                    "default",
-                    "none"
-                  ],
+                  "enum": ["default", "none"],
                   "type": "string",
                   "title": "type"
                 },
@@ -501,9 +432,7 @@
                   "title": "default"
                 }
               },
-              "required": [
-                "type"
-              ]
+              "required": ["type"]
             },
             {
               "title": "CustomFeedbackType",
@@ -512,9 +441,7 @@
                 "type": {
                   "description": "Indicates the feedback type",
                   "type": "string",
-                  "enum": [
-                    "custom"
-                  ],
+                  "enum": ["custom"],
                   "title": "type"
                 },
                 "custom": {
@@ -523,19 +450,13 @@
                   "title": "custom"
                 }
               },
-              "required": [
-                "custom",
-                "type"
-              ]
+              "required": ["custom", "type"]
             }
           ],
           "title": "partial"
         }
       },
-      "required": [
-        "correct",
-        "incorrect"
-      ]
+      "required": ["correct", "incorrect"]
     },
     "DefaultFeedbackType": {
       "title": "DefaultFeedbackType",
@@ -543,10 +464,7 @@
       "properties": {
         "type": {
           "description": "Indicates the feedback type",
-          "enum": [
-            "default",
-            "none"
-          ],
+          "enum": ["default", "none"],
           "type": "string",
           "title": "type"
         },
@@ -556,9 +474,7 @@
           "title": "default"
         }
       },
-      "required": [
-        "type"
-      ]
+      "required": ["type"]
     },
     "CustomFeedbackType": {
       "title": "CustomFeedbackType",
@@ -567,9 +483,7 @@
         "type": {
           "description": "Indicates the feedback type",
           "type": "string",
-          "enum": [
-            "custom"
-          ],
+          "enum": ["custom"],
           "title": "type"
         },
         "custom": {
@@ -578,10 +492,7 @@
           "title": "custom"
         }
       },
-      "required": [
-        "custom",
-        "type"
-      ]
+      "required": ["custom", "type"]
     },
     "TextToken": {
       "title": "TextToken",
@@ -608,10 +519,7 @@
           "title": "correct"
         }
       },
-      "required": [
-        "end",
-        "start"
-      ]
+      "required": ["end", "start"]
     }
   },
   "$schema": "http://json-schema.org/draft-07/schema#"

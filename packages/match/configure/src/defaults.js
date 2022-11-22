@@ -17,85 +17,85 @@ export default {
       {
         id: 1,
         title: 'Question Text 1',
-        values: [false, false]
-      }
+        values: [false, false],
+      },
     ],
     scoringType: 'auto',
     feedbackEnabled: true,
     promptEnabled: true,
     rationaleEnabled: true,
     teacherInstructionsEnabled: true,
-    studentInstructionsEnabled: true
+    studentInstructionsEnabled: true,
   },
   configuration: {
     enableImages: {
       settings: true,
-      label: 'Enable Images'
+      label: 'Enable Images',
     },
     feedback: {
       settings: true,
       label: 'Feedback',
-      enabled: true
+      enabled: true,
     },
     headers: {
-      settings: true
+      settings: true,
     },
     layout: {
       settings: true,
-      label: 'Layout'
+      label: 'Layout',
     },
     lockChoiceOrder: {
       settings: false,
-      label: 'Lock Choice Order'
+      label: 'Lock Choice Order',
     },
     partialScoring: {
       settings: false,
-      label: 'Allow Partial Scoring'
+      label: 'Allow Partial Scoring',
     },
     choiceMode: {
       settings: true,
-      label: 'Response Type'
+      label: 'Response Type',
     },
     prompt: {
       settings: true,
-      label: 'Prompt'
+      label: 'Prompt',
     },
     rationale: {
       settings: true,
-      label: 'Rationale'
+      label: 'Rationale',
     },
     spellCheck: {
       label: 'Spellcheck',
-      settings:false,
-      enabled:true
+      settings: false,
+      enabled: true,
     },
     scoringType: {
       settings: false,
-      label: 'Scoring Type'
+      label: 'Scoring Type',
     },
     studentInstructions: {
       settings: false,
-      label: 'Student Instructions'
+      label: 'Student Instructions',
     },
     teacherInstructions: {
       settings: true,
-      label: 'Teacher Instructions'
+      label: 'Teacher Instructions',
     },
     maxImageWidth: {
       teacherInstructions: 300,
       prompt: 300,
       rationale: 300,
-      rowTitles: 300
+      rowTitles: 300,
     },
     maxImageHeight: {
       teacherInstructions: 300,
       prompt: 300,
       rationale: 300,
-      rowTitles: 150
+      rowTitles: 150,
     },
     withRubric: {
       settings: false,
-      label: 'Add Rubric'
-    }
-  }
+      label: 'Add Rubric',
+    },
+  },
 };

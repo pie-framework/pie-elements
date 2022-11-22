@@ -7,453 +7,241 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 **Note:** Version bump only for package @pie-element/passage
 
-
-
-
-
 ## [1.7.15](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.7.14...@pie-element/passage@1.7.15) (2022-09-14)
 
 **Note:** Version bump only for package @pie-element/passage
-
-
-
-
 
 ## [1.7.14](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.7.13...@pie-element/passage@1.7.14) (2022-08-31)
 
 **Note:** Version bump only for package @pie-element/passage
 
-
-
-
-
 ## [1.7.13](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.7.12...@pie-element/passage@1.7.13) (2022-08-16)
 
 **Note:** Version bump only for package @pie-element/passage
-
-
-
-
 
 ## [1.7.12](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.7.11...@pie-element/passage@1.7.12) (2022-08-08)
 
 **Note:** Version bump only for package @pie-element/passage
 
-
-
-
-
 ## [1.7.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.7.10...@pie-element/passage@1.7.11) (2022-07-19)
 
 **Note:** Version bump only for package @pie-element/passage
-
-
-
-
 
 ## [1.7.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.7.9...@pie-element/passage@1.7.10) (2022-06-13)
 
 **Note:** Version bump only for package @pie-element/passage
 
-
-
-
-
 ## [1.7.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.7.8...@pie-element/passage@1.7.9) (2022-05-30)
 
 **Note:** Version bump only for package @pie-element/passage
-
-
-
-
 
 ## [1.7.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.7.7...@pie-element/passage@1.7.8) (2022-05-03)
 
 **Note:** Version bump only for package @pie-element/passage
 
-
-
-
-
 ## [1.7.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.7.6...@pie-element/passage@1.7.7) (2022-03-22)
 
 **Note:** Version bump only for package @pie-element/passage
-
-
-
-
 
 ## [1.7.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.7.4...@pie-element/passage@1.7.5) (2021-12-13)
 
 **Note:** Version bump only for package @pie-element/passage
 
-
-
-
-
 ## [1.7.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.7.1...@pie-element/passage@1.7.2) (2021-11-29)
 
 **Note:** Version bump only for package @pie-element/passage
-
-
-
-
 
 ## [1.7.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.6.6...@pie-element/passage@1.7.1) (2021-11-11)
 
 **Note:** Version bump only for package @pie-element/passage
 
-
-
-
-
 # [1.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.6.3...@pie-element/passage@1.7.0) (2021-11-11)
-
 
 ### Bug Fixes
 
-* Updated pie-lib versions ([1c23830](https://github.com/pie-framework/pie-elements/commit/1c23830fc75d1de5f7bb3bb16de3c665ae5fa350))
-
+- Updated pie-lib versions ([1c23830](https://github.com/pie-framework/pie-elements/commit/1c23830fc75d1de5f7bb3bb16de3c665ae5fa350))
 
 ### Features
 
-* **passage:** implement print PD-1282 ([7fa16d3](https://github.com/pie-framework/pie-elements/commit/7fa16d35568419109c8394a091a88d5d3b418564))
-
-
-
-
-
+- **passage:** implement print PD-1282 ([7fa16d3](https://github.com/pie-framework/pie-elements/commit/7fa16d35568419109c8394a091a88d5d3b418564))
 
 ## [1.6.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.6.5...@pie-element/passage@1.6.6) (2021-11-01)
 
 **Note:** Version bump only for package @pie-element/passage
 
-
-
-
-
 ## [1.6.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.6.4...@pie-element/passage@1.6.5) (2021-09-01)
 
 **Note:** Version bump only for package @pie-element/passage
-
-
-
-
 
 ## [1.6.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.6.3...@pie-element/passage@1.6.4) (2021-08-05)
 
 **Note:** Version bump only for package @pie-element/passage
 
-
-
-
-
 ## [1.6.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.6.1...@pie-element/passage@1.6.3) (2021-08-05)
-
 
 ### Bug Fixes
 
-* force bump ([5ea7295](https://github.com/pie-framework/pie-elements/commit/5ea7295e4755fbc492a76e7ec69e5fc35b196919))
-
-
-
-
+- force bump ([5ea7295](https://github.com/pie-framework/pie-elements/commit/5ea7295e4755fbc492a76e7ec69e5fc35b196919))
 
 ## [1.6.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.6.0...@pie-element/passage@1.6.1) (2021-06-29)
 
 **Note:** Version bump only for package @pie-element/passage
 
-
-
-
-
 # [1.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.5.7...@pie-element/passage@1.6.0) (2021-04-07)
-
 
 ### Bug Fixes
 
-* **passage:** preserve non-breaking spaces in content in order to make indentation visible PD-611 ([0034d6a](https://github.com/pie-framework/pie-elements/commit/0034d6a1cdd8aff14b66efa1f3010e7864e96180))
-* **passage:** replace newline with br, add pre-line PD-611 ([006c564](https://github.com/pie-framework/pie-elements/commit/006c564de029e7d65da58df15237134fea79b053))
-
+- **passage:** preserve non-breaking spaces in content in order to make indentation visible PD-611 ([0034d6a](https://github.com/pie-framework/pie-elements/commit/0034d6a1cdd8aff14b66efa1f3010e7864e96180))
+- **passage:** replace newline with br, add pre-line PD-611 ([006c564](https://github.com/pie-framework/pie-elements/commit/006c564de029e7d65da58df15237134fea79b053))
 
 ### Features
 
-* merge pie-ui into pie-elements PD-977 ([01ebfd7](https://github.com/pie-framework/pie-elements/commit/01ebfd7ce98b041dd0573575efd8b6da03f22162))
-
-
-
-
+- merge pie-ui into pie-elements PD-977 ([01ebfd7](https://github.com/pie-framework/pie-elements/commit/01ebfd7ce98b041dd0573575efd8b6da03f22162))
 
 ## [1.5.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.5.4...@pie-element/passage@1.5.7) (2021-03-03)
 
 **Note:** Version bump only for package @pie-element/passage
 
-
-
-
-
 ## [1.5.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.5.3...@pie-element/passage@1.5.4) (2021-03-03)
 
 **Note:** Version bump only for package @pie-element/passage
-
-
-
-
 
 ## [1.5.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.5.2...@pie-element/passage@1.5.3) (2021-02-02)
 
 **Note:** Version bump only for package @pie-element/passage
 
-
-
-
-
 ## [1.5.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.5.1...@pie-element/passage@1.5.2) (2020-08-13)
 
 **Note:** Version bump only for package @pie-element/passage
-
-
-
-
 
 ## [1.5.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.4.4...@pie-element/passage@1.5.1) (2020-08-07)
 
 **Note:** Version bump only for package @pie-element/passage
 
-
-
-
-
 ## [1.4.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.5.0-next.0...@pie-element/passage@1.4.4) (2020-05-25)
-
 
 ### Bug Fixes
 
-* version issue ([3935c9c](https://github.com/pie-framework/pie-elements/commit/3935c9c))
-
-
-
-
+- version issue ([3935c9c](https://github.com/pie-framework/pie-elements/commit/3935c9c))
 
 # [1.5.0-next.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.4.3...@pie-element/passage@1.5.0-next.0) (2020-05-25)
 
-
 ### Features
 
-* add postpublish handler ([9b41dea](https://github.com/pie-framework/pie-elements/commit/9b41dea))
-
-
-
-
+- add postpublish handler ([9b41dea](https://github.com/pie-framework/pie-elements/commit/9b41dea))
 
 ## [1.4.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.4.2...@pie-element/passage@1.4.3) (2020-04-28)
 
-
 ### Bug Fixes
 
-* ui+libs update ([6127de2](https://github.com/pie-framework/pie-elements/commit/6127de2))
-* update ui/lib versions ([0226b0b](https://github.com/pie-framework/pie-elements/commit/0226b0b))
-
-
-
-
+- ui+libs update ([6127de2](https://github.com/pie-framework/pie-elements/commit/6127de2))
+- update ui/lib versions ([0226b0b](https://github.com/pie-framework/pie-elements/commit/0226b0b))
 
 ## [1.4.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.4.1...@pie-element/passage@1.4.2) (2020-04-14)
 
 **Note:** Version bump only for package @pie-element/passage
 
-
-
-
-
 ## [1.4.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.2.13...@pie-element/passage@1.4.1) (2020-04-10)
-
 
 ### Bug Fixes
 
-* bump all packages to avoid tag conflict ([d9ec9a8](https://github.com/pie-framework/pie-elements/commit/d9ec9a8))
-* bump ui versions ([5b9d99f](https://github.com/pie-framework/pie-elements/commit/5b9d99f))
-* bump version to avoid tag conflict ([4d55f6d](https://github.com/pie-framework/pie-elements/commit/4d55f6d))
-* ch6126: updated version ([4d11b59](https://github.com/pie-framework/pie-elements/commit/4d11b59))
-
-
-
-
+- bump all packages to avoid tag conflict ([d9ec9a8](https://github.com/pie-framework/pie-elements/commit/d9ec9a8))
+- bump ui versions ([5b9d99f](https://github.com/pie-framework/pie-elements/commit/5b9d99f))
+- bump version to avoid tag conflict ([4d55f6d](https://github.com/pie-framework/pie-elements/commit/4d55f6d))
+- ch6126: updated version ([4d11b59](https://github.com/pie-framework/pie-elements/commit/4d11b59))
 
 ## [1.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.2.13...@pie-element/passage@1.3.1) (2020-04-10)
 
-
 ### Bug Fixes
 
-* bump ui versions ([5b9d99f](https://github.com/pie-framework/pie-elements/commit/5b9d99f))
-* bump version to avoid tag conflict ([4d55f6d](https://github.com/pie-framework/pie-elements/commit/4d55f6d))
-* ch6126: updated version ([4d11b59](https://github.com/pie-framework/pie-elements/commit/4d11b59))
-
-
-
-
+- bump ui versions ([5b9d99f](https://github.com/pie-framework/pie-elements/commit/5b9d99f))
+- bump version to avoid tag conflict ([4d55f6d](https://github.com/pie-framework/pie-elements/commit/4d55f6d))
+- ch6126: updated version ([4d11b59](https://github.com/pie-framework/pie-elements/commit/4d11b59))
 
 ## [1.2.13](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.2.12...@pie-element/passage@1.2.13) (2020-02-03)
 
-
 ### Bug Fixes
 
-* update passage@^1.3.0 ([c6baa50](https://github.com/pie-framework/pie-elements/commit/c6baa50))
-
-
-
-
+- update passage@^1.3.0 ([c6baa50](https://github.com/pie-framework/pie-elements/commit/c6baa50))
 
 ## [1.2.12](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.2.11...@pie-element/passage@1.2.12) (2019-07-12)
 
 **Note:** Version bump only for package @pie-element/passage
 
-
-
-
-
 ## [1.2.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.2.10...@pie-element/passage@1.2.11) (2019-07-12)
-
 
 ### Bug Fixes
 
-* **rendering:** implemented rendering for math elements [ch1915], [ch1935] ([2f35842](https://github.com/pie-framework/pie-elements/commit/2f35842))
-
-
-
-
+- **rendering:** implemented rendering for math elements [ch1915], [ch1935] ([2f35842](https://github.com/pie-framework/pie-elements/commit/2f35842))
 
 ## [1.2.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.2.9...@pie-element/passage@1.2.10) (2019-06-17)
 
 **Note:** Version bump only for package @pie-element/passage
 
-
-
-
-
 ## [1.2.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.2.8...@pie-element/passage@1.2.9) (2019-06-12)
 
 **Note:** Version bump only for package @pie-element/passage
-
-
-
-
 
 ## [1.2.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.2.7...@pie-element/passage@1.2.8) (2019-06-07)
 
 **Note:** Version bump only for package @pie-element/passage
 
-
-
-
-
 ## [1.2.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.2.6...@pie-element/passage@1.2.7) (2019-06-06)
 
 **Note:** Version bump only for package @pie-element/passage
-
-
-
-
 
 ## [1.2.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.2.5...@pie-element/passage@1.2.6) (2019-06-05)
 
 **Note:** Version bump only for package @pie-element/passage
 
-
-
-
-
 ## [1.2.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.2.4...@pie-element/passage@1.2.5) (2019-05-23)
 
 **Note:** Version bump only for package @pie-element/passage
-
-
-
-
 
 ## [1.2.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.2.3...@pie-element/passage@1.2.4) (2019-05-21)
 
 **Note:** Version bump only for package @pie-element/passage
 
-
-
-
-
 ## [1.2.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.2.2...@pie-element/passage@1.2.3) (2019-05-16)
 
 **Note:** Version bump only for package @pie-element/passage
-
-
-
-
 
 ## [1.2.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.2.1...@pie-element/passage@1.2.2) (2019-05-14)
 
 **Note:** Version bump only for package @pie-element/passage
 
-
-
-
-
 ## [1.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.2.0...@pie-element/passage@1.2.1) (2019-05-14)
 
 **Note:** Version bump only for package @pie-element/passage
 
-
-
-
-
 # [1.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.1.4...@pie-element/passage@1.2.0) (2019-05-13)
-
 
 ### Bug Fixes
 
-* doc name ([40ee7d5](https://github.com/pie-framework/pie-elements/commit/40ee7d5))
-
+- doc name ([40ee7d5](https://github.com/pie-framework/pie-elements/commit/40ee7d5))
 
 ### Features
 
-* support paired passages ([#216](https://github.com/pie-framework/pie-elements/issues/216)) ([c036a92](https://github.com/pie-framework/pie-elements/commit/c036a92))
-
-
-
-
+- support paired passages ([#216](https://github.com/pie-framework/pie-elements/issues/216)) ([c036a92](https://github.com/pie-framework/pie-elements/commit/c036a92))
 
 ## [1.1.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.1.3...@pie-element/passage@1.1.4) (2019-05-08)
 
 **Note:** Version bump only for package @pie-element/passage
 
-
-
-
-
 ## [1.1.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.1.2...@pie-element/passage@1.1.3) (2019-05-02)
 
 **Note:** Version bump only for package @pie-element/passage
-
-
-
-
 
 ## [1.1.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.1.1...@pie-element/passage@1.1.2) (2019-05-02)
 
 **Note:** Version bump only for package @pie-element/passage
 
-
-
-
-
 ## [1.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.1.0...@pie-element/passage@1.1.1) (2019-05-01)
 
 **Note:** Version bump only for package @pie-element/passage
 
-
-
-
-
 # 1.1.0 (2019-04-26)
-
 
 ### Features
 
-* minimal passage rendering pie (no authoring) ([#185](https://github.com/pie-framework/pie-elements/issues/185)) ([87e5c4a](https://github.com/pie-framework/pie-elements/commit/87e5c4a))
+- minimal passage rendering pie (no authoring) ([#185](https://github.com/pie-framework/pie-elements/issues/185)) ([87e5c4a](https://github.com/pie-framework/pie-elements/commit/87e5c4a))

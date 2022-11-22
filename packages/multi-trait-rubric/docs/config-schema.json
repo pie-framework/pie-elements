@@ -185,9 +185,7 @@
       "title": "width"
     }
   },
-  "required": [
-    "width"
-  ],
+  "required": ["width"],
   "definitions": {
     "DialogContent": {
       "title": "DialogContent",

@@ -156,8 +156,8 @@ Indicates the editor's toolbar position which can be 'bottom' or 'top'
 
 This element must be one of the following enum values:
 
-* `bottom`
-* `top`
+- `bottom`
+- `top`
 
 Default: `": 'bottom'"`
 

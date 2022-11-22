@@ -14,12 +14,12 @@ Indicates default value for a new category's label
 
 This element must be one of the following enum values:
 
-* `bar`
-* `dorPlot`
-* `histogram`
-* `lineCross`
-* `lineDot`
-* `linePlot`
+- `bar`
+- `dorPlot`
+- `histogram`
+- `lineCross`
+- `lineDot`
+- `linePlot`
 
 # `correctAnswer` (object, required)
 
@@ -35,7 +35,7 @@ Indicates marks for the answer
 
 Additional restrictions:
 
-* Minimum items: `1`
+- Minimum items: `1`
 
 # `data` (array, required)
 
@@ -43,7 +43,7 @@ Indicates default categories for the answer
 
 Additional restrictions:
 
-* Minimum items: `1`
+- Minimum items: `1`
 
 # `domain` (object, required)
 
@@ -123,8 +123,8 @@ Indicates scoring type
 
 This element must be one of the following enum values:
 
-* `all or nothing`
-* `partial scoring`
+- `all or nothing`
+- `partial scoring`
 
 # `studentInstructions` (string)
 
@@ -276,7 +276,7 @@ Indicates marks for the answer
 
 Additional restrictions:
 
-* Minimum items: `1`
+- Minimum items: `1`
 
 ## `Category` (object)
 
@@ -312,15 +312,15 @@ Properties of the `correctness` object:
 
 This element must be one of the following enum values:
 
-* `correct`
-* `incorrect`
+- `correct`
+- `incorrect`
 
 #### `label` (string, enum, required)
 
 This element must be one of the following enum values:
 
-* `correct`
-* `incorrect`
+- `correct`
+- `incorrect`
 
 ## `ChartSettings` (object)
 

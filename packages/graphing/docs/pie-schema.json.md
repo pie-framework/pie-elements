@@ -22,7 +22,7 @@ Indicates marks for the answer
 
 Additional restrictions:
 
-* Minimum items: `1`
+- Minimum items: `1`
 
 ## `alternate1` (object, required)
 
@@ -38,7 +38,7 @@ Indicates marks for the answer
 
 Additional restrictions:
 
-* Minimum items: `1`
+- Minimum items: `1`
 
 # `arrows` (object)
 
@@ -66,7 +66,7 @@ Indicates marks that have to be displayed in background
 
 Additional restrictions:
 
-* Minimum items: `1`
+- Minimum items: `1`
 
 # `coordinatesOnHover` (boolean)
 
@@ -78,15 +78,15 @@ Indicates the default selected tool for the graph
 
 This element must be one of the following enum values:
 
-* `circle`
-* `line`
-* `parabola`
-* `point`
-* `polygon`
-* `ray`
-* `segment`
-* `sine`
-* `vector`
+- `circle`
+- `line`
+- `parabola`
+- `point`
+- `polygon`
+- `ray`
+- `segment`
+- `sine`
+- `vector`
 
 # `domain` (object, required)
 
@@ -202,8 +202,8 @@ Indicates scoring type
 
 This element must be one of the following enum values:
 
-* `dichotomous`
-* `partial scoring`
+- `dichotomous`
+- `partial scoring`
 
 # `studentInstructions` (string)
 
@@ -231,7 +231,7 @@ Indicates the tools that have to be displayed in toolbar
 
 Additional restrictions:
 
-* Minimum items: `1`
+- Minimum items: `1`
 
 # `rationaleEnabled` (boolean, required)
 
@@ -755,7 +755,7 @@ Indicates marks for the answer
 
 Additional restrictions:
 
-* Minimum items: `1`
+- Minimum items: `1`
 
 ## `Mark` (object)
 
@@ -767,15 +767,15 @@ Indicates type of mark
 
 This element must be one of the following enum values:
 
-* `circle`
-* `line`
-* `parabola`
-* `point`
-* `polygon`
-* `ray`
-* `segment`
-* `sine`
-* `vector`
+- `circle`
+- `line`
+- `parabola`
+- `point`
+- `polygon`
+- `ray`
+- `segment`
+- `sine`
+- `vector`
 
 ### `showLabel` (boolean)
 
@@ -855,7 +855,7 @@ Indicates all mark's points if type is polygon
 
 Additional restrictions:
 
-* Minimum items: `1`
+- Minimum items: `1`
 
 ### `root` (object)
 

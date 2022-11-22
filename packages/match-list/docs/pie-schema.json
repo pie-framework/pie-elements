@@ -18,10 +18,7 @@
         "properties": {
           "id": {
             "description": "Identifier for a question prompt",
-            "type": [
-              "string",
-              "number"
-            ],
+            "type": ["string", "number"],
             "title": "id"
           },
           "title": {
@@ -31,18 +28,11 @@
           },
           "relatedAnswer": {
             "description": "Id for the correct answer for this question prompt",
-            "type": [
-              "string",
-              "number"
-            ],
+            "type": ["string", "number"],
             "title": "relatedAnswer"
           }
         },
-        "required": [
-          "id",
-          "relatedAnswer",
-          "title"
-        ]
+        "required": ["id", "relatedAnswer", "title"]
       },
       "title": "prompts"
     },
@@ -56,10 +46,7 @@
         "properties": {
           "id": {
             "description": "Identifier for an answer row",
-            "type": [
-              "string",
-              "number"
-            ],
+            "type": ["string", "number"],
             "title": "id"
           },
           "title": {
@@ -68,10 +55,7 @@
             "title": "title"
           }
         },
-        "required": [
-          "id",
-          "title"
-        ]
+        "required": ["id", "title"]
       },
       "title": "answers"
     },
@@ -96,12 +80,7 @@
       "title": "element"
     }
   },
-  "required": [
-    "answers",
-    "element",
-    "id",
-    "prompts"
-  ],
+  "required": ["answers", "element", "id", "prompts"],
   "definitions": {
     "Prompt": {
       "description": "Multiple question prompts",
@@ -110,10 +89,7 @@
       "properties": {
         "id": {
           "description": "Identifier for a question prompt",
-          "type": [
-            "string",
-            "number"
-          ],
+          "type": ["string", "number"],
           "title": "id"
         },
         "title": {
@@ -123,18 +99,11 @@
         },
         "relatedAnswer": {
           "description": "Id for the correct answer for this question prompt",
-          "type": [
-            "string",
-            "number"
-          ],
+          "type": ["string", "number"],
           "title": "relatedAnswer"
         }
       },
-      "required": [
-        "id",
-        "relatedAnswer",
-        "title"
-      ]
+      "required": ["id", "relatedAnswer", "title"]
     },
     "Answer": {
       "description": "Multiple answers",
@@ -143,10 +112,7 @@
       "properties": {
         "id": {
           "description": "Identifier for an answer row",
-          "type": [
-            "string",
-            "number"
-          ],
+          "type": ["string", "number"],
           "title": "id"
         },
         "title": {
@@ -155,10 +121,7 @@
           "title": "title"
         }
       },
-      "required": [
-        "id",
-        "title"
-      ]
+      "required": ["id", "title"]
     }
   },
   "$schema": "http://json-schema.org/draft-07/schema#"

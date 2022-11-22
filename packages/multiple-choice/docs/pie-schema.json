@@ -5,20 +5,14 @@
   "properties": {
     "choiceMode": {
       "description": "Indicates the choices are single or multiple selection",
-      "enum": [
-        "checkbox",
-        "radio"
-      ],
+      "enum": ["checkbox", "radio"],
       "type": "string",
       "title": "choiceMode"
     },
     "choicePrefix": {
       "description": "What key should be displayed before choices. If undefined no  key will be displayed.",
       "default": ": 'letters'",
-      "enum": [
-        "letters",
-        "numbers"
-      ],
+      "enum": ["letters", "numbers"],
       "type": "string",
       "title": "choicePrefix"
     },
@@ -51,11 +45,7 @@
             "properties": {
               "type": {
                 "default": "default",
-                "enum": [
-                  "custom",
-                  "default",
-                  "none"
-                ],
+                "enum": ["custom", "default", "none"],
                 "type": "string",
                 "title": "type"
               },
@@ -70,9 +60,7 @@
                 "title": "custom"
               }
             },
-            "required": [
-              "type"
-            ]
+            "required": ["type"]
           },
           "rationale": {
             "description": "Rationale for the Choice",
@@ -80,10 +68,7 @@
             "title": "rationale"
           }
         },
-        "required": [
-          "label",
-          "value"
-        ]
+        "required": ["label", "value"]
       },
       "title": "choices"
     },
@@ -100,11 +85,7 @@
     "choicesLayout": {
       "description": "Indicates the layout of choices for player",
       "default": ": 'vertical'",
-      "enum": [
-        "grid",
-        "horizontal",
-        "vertical"
-      ],
+      "enum": ["grid", "horizontal", "vertical"],
       "type": "string",
       "title": "choicesLayout"
     },
@@ -117,10 +98,7 @@
     "toolbarEditorPosition": {
       "description": "Indicates the editor's toolbar position which can be 'bottom' or 'top'",
       "default": ": 'bottom'",
-      "enum": [
-        "bottom",
-        "top"
-      ],
+      "enum": ["bottom", "top"],
       "type": "string",
       "title": "toolbarEditorPosition"
     },
@@ -136,10 +114,7 @@
     },
     "scoringType": {
       "description": "Indicates scoring type",
-      "enum": [
-        "auto",
-        "rubric"
-      ],
+      "enum": ["auto", "rubric"],
       "type": "string",
       "title": "scoringType"
     },
@@ -301,11 +276,7 @@
           "properties": {
             "type": {
               "default": "default",
-              "enum": [
-                "custom",
-                "default",
-                "none"
-              ],
+              "enum": ["custom", "default", "none"],
               "type": "string",
               "title": "type"
             },
@@ -320,9 +291,7 @@
               "title": "custom"
             }
           },
-          "required": [
-            "type"
-          ]
+          "required": ["type"]
         },
         "rationale": {
           "description": "Rationale for the Choice",
@@ -330,10 +299,7 @@
           "title": "rationale"
         }
       },
-      "required": [
-        "label",
-        "value"
-      ]
+      "required": ["label", "value"]
     },
     "Feedback": {
       "description": "The type of feedback to use:\n   `default` = a standard feedback message\n   `custom` = a customized feedback message",
@@ -342,11 +308,7 @@
       "properties": {
         "type": {
           "default": "default",
-          "enum": [
-            "custom",
-            "default",
-            "none"
-          ],
+          "enum": ["custom", "default", "none"],
           "type": "string",
           "title": "type"
         },
@@ -361,9 +323,7 @@
           "title": "custom"
         }
       },
-      "required": [
-        "type"
-      ]
+      "required": ["type"]
     }
   },
   "$schema": "http://json-schema.org/draft-07/schema#"

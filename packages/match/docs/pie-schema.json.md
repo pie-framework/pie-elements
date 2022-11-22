@@ -46,8 +46,8 @@ Indicates if the control for responses should be single (radio) or multiple (che
 
 This element must be one of the following enum values:
 
-* `checkbox`
-* `radio`
+- `checkbox`
+- `radio`
 
 # `prompt` (string, required)
 
@@ -89,8 +89,8 @@ Indicates scoring type
 
 This element must be one of the following enum values:
 
-* `auto`
-* `rubric`
+- `auto`
+- `rubric`
 
 # `studentInstructions` (string)
 
@@ -126,8 +126,8 @@ Indicates the editor's toolbar position which can be 'bottom' or 'top'
 
 This element must be one of the following enum values:
 
-* `bottom`
-* `top`
+- `bottom`
+- `top`
 
 Default: `": 'bottom'"`
 
@@ -207,8 +207,8 @@ Indicates the feedback type
 
 This element must be one of the following enum values:
 
-* `default`
-* `none`
+- `default`
+- `none`
 
 ### `default` (string)
 
@@ -224,7 +224,7 @@ Indicates the feedback type
 
 This element must be one of the following enum values:
 
-* `custom`
+- `custom`
 
 ### `custom` (string, required)
 

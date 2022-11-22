@@ -6,7 +6,7 @@ import {
   InsertImageEvent,
   ModelUpdatedEvent,
   InsertSoundEvent,
-  DeleteSoundEvent
+  DeleteSoundEvent,
 } from '@pie-framework/pie-configure-events';
 
 import Main from './main';
@@ -27,8 +27,8 @@ const generateFormattedChoices = (choices, choiceCount = 0) => {
         label: '',
         feedback: {
           type: 'none',
-          value: ''
-        }
+          value: '',
+        },
       });
     }
 
@@ -45,8 +45,11 @@ const prepareCustomizationObject = (config, model) => {
     configuration,
     model: {
       ...model,
-      choices: generateFormattedChoices((model && model.choices) || [], configuration && configuration.answerChoiceCount)
-    }
+      choices: generateFormattedChoices(
+        (model && model.choices) || [],
+        configuration && configuration.answerChoiceCount,
+      ),
+    },
   };
 };
 
@@ -55,14 +58,15 @@ export default class MultipleChoice extends HTMLElement {
     const normalizedModel = utils.normalizeChoices({
       ...sensibleDefaults.model,
       ...model,
-      choices: generateFormattedChoices((model && model.choices) || [])
+      choices: generateFormattedChoices((model && model.choices) || []),
     });
 
     // This is used for offering support for old models which have the property "verticalMode"
-    normalizedModel.choicesLayout = model.choicesLayout || (model.verticalMode === false && 'horizontal') || sensibleDefaults.model.choicesLayout;
+    normalizedModel.choicesLayout =
+      model.choicesLayout || (model.verticalMode === false && 'horizontal') || sensibleDefaults.model.choicesLayout;
 
     return normalizedModel;
-  }
+  };
 
   constructor() {
     super();
@@ -141,11 +145,11 @@ export default class MultipleChoice extends HTMLElement {
       disableSidePanel: this._disableSidePanel,
       imageSupport: {
         add: this.insertImage.bind(this),
-        delete: this.onDeleteImage.bind(this)
+        delete: this.onDeleteImage.bind(this),
       },
       uploadSoundSupport: {
         add: this.insertSound.bind(this),
-        delete: this.onDeleteSound.bind(this)
+        delete: this.onDeleteSound.bind(this),
       },
     });
     ReactDOM.render(element, this);

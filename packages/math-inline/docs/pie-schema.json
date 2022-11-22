@@ -5,10 +5,7 @@
   "properties": {
     "responseType": {
       "description": "Indicates the mode of the question",
-      "enum": [
-        "Advanced Multi",
-        "Simple"
-      ],
+      "enum": ["Advanced Multi", "Simple"],
       "type": "string",
       "title": "responseType"
     },
@@ -30,16 +27,7 @@
     "equationEditor": {
       "description": "Indicates what type of editor should be displayed for all the possible responses\n1 for Grade 1 - 2\n3 for Grade 3 - 5\n6 for Grade 6 - 7\n8 for Grade 8 - HS",
       "default": "- miscellaneous",
-      "enum": [
-        1,
-        3,
-        6,
-        8,
-        "advanced-algebra",
-        "geometry",
-        "miscellaneous",
-        "statistics"
-      ],
+      "enum": [1, 3, 6, 8, "advanced-algebra", "geometry", "miscellaneous", "statistics"],
       "title": "equationEditor"
     },
     "feedback": {
@@ -55,10 +43,7 @@
               "properties": {
                 "type": {
                   "description": "Indicates the feedback type",
-                  "enum": [
-                    "default",
-                    "none"
-                  ],
+                  "enum": ["default", "none"],
                   "type": "string",
                   "title": "type"
                 },
@@ -68,9 +53,7 @@
                   "title": "default"
                 }
               },
-              "required": [
-                "type"
-              ]
+              "required": ["type"]
             },
             {
               "title": "CustomFeedbackType",
@@ -79,9 +62,7 @@
                 "type": {
                   "description": "Indicates the feedback type",
                   "type": "string",
-                  "enum": [
-                    "custom"
-                  ],
+                  "enum": ["custom"],
                   "title": "type"
                 },
                 "custom": {
@@ -90,10 +71,7 @@
                   "title": "custom"
                 }
               },
-              "required": [
-                "custom",
-                "type"
-              ]
+              "required": ["custom", "type"]
             }
           ],
           "title": "correct"
@@ -107,10 +85,7 @@
               "properties": {
                 "type": {
                   "description": "Indicates the feedback type",
-                  "enum": [
-                    "default",
-                    "none"
-                  ],
+                  "enum": ["default", "none"],
                   "type": "string",
                   "title": "type"
                 },
@@ -120,9 +95,7 @@
                   "title": "default"
                 }
               },
-              "required": [
-                "type"
-              ]
+              "required": ["type"]
             },
             {
               "title": "CustomFeedbackType",
@@ -131,9 +104,7 @@
                 "type": {
                   "description": "Indicates the feedback type",
                   "type": "string",
-                  "enum": [
-                    "custom"
-                  ],
+                  "enum": ["custom"],
                   "title": "type"
                 },
                 "custom": {
@@ -142,10 +113,7 @@
                   "title": "custom"
                 }
               },
-              "required": [
-                "custom",
-                "type"
-              ]
+              "required": ["custom", "type"]
             }
           ],
           "title": "incorrect"
@@ -159,10 +127,7 @@
               "properties": {
                 "type": {
                   "description": "Indicates the feedback type",
-                  "enum": [
-                    "default",
-                    "none"
-                  ],
+                  "enum": ["default", "none"],
                   "type": "string",
                   "title": "type"
                 },
@@ -172,9 +137,7 @@
                   "title": "default"
                 }
               },
-              "required": [
-                "type"
-              ]
+              "required": ["type"]
             },
             {
               "title": "CustomFeedbackType",
@@ -183,9 +146,7 @@
                 "type": {
                   "description": "Indicates the feedback type",
                   "type": "string",
-                  "enum": [
-                    "custom"
-                  ],
+                  "enum": ["custom"],
                   "title": "type"
                 },
                 "custom": {
@@ -194,19 +155,13 @@
                   "title": "custom"
                 }
               },
-              "required": [
-                "custom",
-                "type"
-              ]
+              "required": ["custom", "type"]
             }
           ],
           "title": "partial"
         }
       },
-      "required": [
-        "correct",
-        "incorrect"
-      ]
+      "required": ["correct", "incorrect"]
     },
     "responses": {
       "description": "Array of all correct responses; if responseType is Simple, only first element in array is used",
@@ -217,19 +172,13 @@
         "properties": {
           "id": {
             "description": "The id of the response",
-            "type": [
-              "string",
-              "number"
-            ],
+            "type": ["string", "number"],
             "title": "id"
           },
           "validation": {
             "description": "Indicates what type of validation should be applied on the response",
             "default": "is literal",
-            "enum": [
-              "literal",
-              "symbolic"
-            ],
+            "enum": ["literal", "symbolic"],
             "type": "string",
             "title": "validation"
           },
@@ -270,23 +219,13 @@
                     "title": "answer"
                   }
                 },
-                "required": [
-                  "answer",
-                  "id"
-                ]
+                "required": ["answer", "id"]
               }
             },
             "title": "alternates"
           }
         },
-        "required": [
-          "allowTrailingZeros",
-          "alternates",
-          "answer",
-          "id",
-          "ignoreOrder",
-          "validation"
-        ]
+        "required": ["allowTrailingZeros", "alternates", "answer", "id", "ignoreOrder", "validation"]
       },
       "title": "responses"
     },
@@ -296,19 +235,13 @@
       "properties": {
         "id": {
           "description": "The id of the response",
-          "type": [
-            "string",
-            "number"
-          ],
+          "type": ["string", "number"],
           "title": "id"
         },
         "validation": {
           "description": "Indicates what type of validation should be applied on the response",
           "default": "is literal",
-          "enum": [
-            "literal",
-            "symbolic"
-          ],
+          "enum": ["literal", "symbolic"],
           "type": "string",
           "title": "validation"
         },
@@ -349,23 +282,13 @@
                   "title": "answer"
                 }
               },
-              "required": [
-                "answer",
-                "id"
-              ]
+              "required": ["answer", "id"]
             }
           },
           "title": "alternates"
         }
       },
-      "required": [
-        "allowTrailingZeros",
-        "alternates",
-        "answer",
-        "id",
-        "ignoreOrder",
-        "validation"
-      ]
+      "required": ["allowTrailingZeros", "alternates", "answer", "id", "ignoreOrder", "validation"]
     },
     "partialScoring": {
       "description": "Indicates if partial scoring is allowed.\nThis property is not used yet.",
@@ -391,10 +314,7 @@
     },
     "scoringType": {
       "description": "Indicates scoring type",
-      "enum": [
-        "auto",
-        "rubric"
-      ],
+      "enum": ["auto", "rubric"],
       "type": "string",
       "title": "scoringType"
     },
@@ -449,10 +369,7 @@
     "toolbarEditorPosition": {
       "description": "Indicates the editor's toolbar position which can be 'bottom' or 'top'",
       "default": ": 'bottom'",
-      "enum": [
-        "bottom",
-        "top"
-      ],
+      "enum": ["bottom", "top"],
       "type": "string",
       "title": "toolbarEditorPosition"
     },
@@ -558,10 +475,7 @@
               "properties": {
                 "type": {
                   "description": "Indicates the feedback type",
-                  "enum": [
-                    "default",
-                    "none"
-                  ],
+                  "enum": ["default", "none"],
                   "type": "string",
                   "title": "type"
                 },
@@ -571,9 +485,7 @@
                   "title": "default"
                 }
               },
-              "required": [
-                "type"
-              ]
+              "required": ["type"]
             },
             {
               "title": "CustomFeedbackType",
@@ -582,9 +494,7 @@
                 "type": {
                   "description": "Indicates the feedback type",
                   "type": "string",
-                  "enum": [
-                    "custom"
-                  ],
+                  "enum": ["custom"],
                   "title": "type"
                 },
                 "custom": {
@@ -593,10 +503,7 @@
                   "title": "custom"
                 }
               },
-              "required": [
-                "custom",
-                "type"
-              ]
+              "required": ["custom", "type"]
             }
           ],
           "title": "correct"
@@ -610,10 +517,7 @@
               "properties": {
                 "type": {
                   "description": "Indicates the feedback type",
-                  "enum": [
-                    "default",
-                    "none"
-                  ],
+                  "enum": ["default", "none"],
                   "type": "string",
                   "title": "type"
                 },
@@ -623,9 +527,7 @@
                   "title": "default"
                 }
               },
-              "required": [
-                "type"
-              ]
+              "required": ["type"]
             },
             {
               "title": "CustomFeedbackType",
@@ -634,9 +536,7 @@
                 "type": {
                   "description": "Indicates the feedback type",
                   "type": "string",
-                  "enum": [
-                    "custom"
-                  ],
+                  "enum": ["custom"],
                   "title": "type"
                 },
                 "custom": {
@@ -645,10 +545,7 @@
                   "title": "custom"
                 }
               },
-              "required": [
-                "custom",
-                "type"
-              ]
+              "required": ["custom", "type"]
             }
           ],
           "title": "incorrect"
@@ -662,10 +559,7 @@
               "properties": {
                 "type": {
                   "description": "Indicates the feedback type",
-                  "enum": [
-                    "default",
-                    "none"
-                  ],
+                  "enum": ["default", "none"],
                   "type": "string",
                   "title": "type"
                 },
@@ -675,9 +569,7 @@
                   "title": "default"
                 }
               },
-              "required": [
-                "type"
-              ]
+              "required": ["type"]
             },
             {
               "title": "CustomFeedbackType",
@@ -686,9 +578,7 @@
                 "type": {
                   "description": "Indicates the feedback type",
                   "type": "string",
-                  "enum": [
-                    "custom"
-                  ],
+                  "enum": ["custom"],
                   "title": "type"
                 },
                 "custom": {
@@ -697,19 +587,13 @@
                   "title": "custom"
                 }
               },
-              "required": [
-                "custom",
-                "type"
-              ]
+              "required": ["custom", "type"]
             }
           ],
           "title": "partial"
         }
       },
-      "required": [
-        "correct",
-        "incorrect"
-      ]
+      "required": ["correct", "incorrect"]
     },
     "DefaultFeedbackType": {
       "title": "DefaultFeedbackType",
@@ -717,10 +601,7 @@
       "properties": {
         "type": {
           "description": "Indicates the feedback type",
-          "enum": [
-            "default",
-            "none"
-          ],
+          "enum": ["default", "none"],
           "type": "string",
           "title": "type"
         },
@@ -730,9 +611,7 @@
           "title": "default"
         }
       },
-      "required": [
-        "type"
-      ]
+      "required": ["type"]
     },
     "CustomFeedbackType": {
       "title": "CustomFeedbackType",
@@ -741,9 +620,7 @@
         "type": {
           "description": "Indicates the feedback type",
           "type": "string",
-          "enum": [
-            "custom"
-          ],
+          "enum": ["custom"],
           "title": "type"
         },
         "custom": {
@@ -752,10 +629,7 @@
           "title": "custom"
         }
       },
-      "required": [
-        "custom",
-        "type"
-      ]
+      "required": ["custom", "type"]
     },
     "MathInlineResponse": {
       "title": "MathInlineResponse",
@@ -763,19 +637,13 @@
       "properties": {
         "id": {
           "description": "The id of the response",
-          "type": [
-            "string",
-            "number"
-          ],
+          "type": ["string", "number"],
           "title": "id"
         },
         "validation": {
           "description": "Indicates what type of validation should be applied on the response",
           "default": "is literal",
-          "enum": [
-            "literal",
-            "symbolic"
-          ],
+          "enum": ["literal", "symbolic"],
           "type": "string",
           "title": "validation"
         },
@@ -816,23 +684,13 @@
                   "title": "answer"
                 }
               },
-              "required": [
-                "answer",
-                "id"
-              ]
+              "required": ["answer", "id"]
             }
           },
           "title": "alternates"
         }
       },
-      "required": [
-        "allowTrailingZeros",
-        "alternates",
-        "answer",
-        "id",
-        "ignoreOrder",
-        "validation"
-      ]
+      "required": ["allowTrailingZeros", "alternates", "answer", "id", "ignoreOrder", "validation"]
     },
     "Alternate": {
       "title": "Alternate",
@@ -849,10 +707,7 @@
           "title": "answer"
         }
       },
-      "required": [
-        "answer",
-        "id"
-      ]
+      "required": ["answer", "id"]
     }
   },
   "$schema": "http://json-schema.org/draft-07/schema#"

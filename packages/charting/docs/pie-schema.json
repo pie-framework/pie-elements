@@ -14,14 +14,7 @@
       "title": "categoryDefaultLabel"
     },
     "chartType": {
-      "enum": [
-        "bar",
-        "dorPlot",
-        "histogram",
-        "lineCross",
-        "lineDot",
-        "linePlot"
-      ],
+      "enum": ["bar", "dorPlot", "histogram", "lineCross", "lineDot", "linePlot"],
       "type": "string",
       "title": "chartType"
     },
@@ -72,37 +65,21 @@
                   "type": "object",
                   "properties": {
                     "value": {
-                      "enum": [
-                        "correct",
-                        "incorrect"
-                      ],
+                      "enum": ["correct", "incorrect"],
                       "type": "string",
                       "title": "value"
                     },
                     "label": {
-                      "enum": [
-                        "correct",
-                        "incorrect"
-                      ],
+                      "enum": ["correct", "incorrect"],
                       "type": "string",
                       "title": "label"
                     }
                   },
-                  "required": [
-                    "label",
-                    "value"
-                  ],
+                  "required": ["label", "value"],
                   "title": "correctness"
                 }
               },
-              "required": [
-                "correctness",
-                "deletable",
-                "editable",
-                "interactive",
-                "label",
-                "value"
-              ]
+              "required": ["correctness", "deletable", "editable", "interactive", "label", "value"]
             }
           ],
           "minItems": 1,
@@ -142,47 +119,28 @@
                     "type": "object",
                     "properties": {
                       "value": {
-                        "enum": [
-                          "correct",
-                          "incorrect"
-                        ],
+                        "enum": ["correct", "incorrect"],
                         "type": "string",
                         "title": "value"
                       },
                       "label": {
-                        "enum": [
-                          "correct",
-                          "incorrect"
-                        ],
+                        "enum": ["correct", "incorrect"],
                         "type": "string",
                         "title": "label"
                       }
                     },
-                    "required": [
-                      "label",
-                      "value"
-                    ],
+                    "required": ["label", "value"],
                     "title": "correctness"
                   }
                 },
-                "required": [
-                  "correctness",
-                  "deletable",
-                  "editable",
-                  "interactive",
-                  "label",
-                  "value"
-                ]
+                "required": ["correctness", "deletable", "editable", "interactive", "label", "value"]
               }
             ]
           },
           "title": "data"
         }
       },
-      "required": [
-        "data",
-        "name"
-      ]
+      "required": ["data", "name"]
     },
     "data": {
       "description": "Indicates default categories for the answer",
@@ -222,37 +180,21 @@
               "type": "object",
               "properties": {
                 "value": {
-                  "enum": [
-                    "correct",
-                    "incorrect"
-                  ],
+                  "enum": ["correct", "incorrect"],
                   "type": "string",
                   "title": "value"
                 },
                 "label": {
-                  "enum": [
-                    "correct",
-                    "incorrect"
-                  ],
+                  "enum": ["correct", "incorrect"],
                   "type": "string",
                   "title": "label"
                 }
               },
-              "required": [
-                "label",
-                "value"
-              ],
+              "required": ["label", "value"],
               "title": "correctness"
             }
           },
-          "required": [
-            "correctness",
-            "deletable",
-            "editable",
-            "interactive",
-            "label",
-            "value"
-          ]
+          "required": ["correctness", "deletable", "editable", "interactive", "label", "value"]
         }
       ],
       "minItems": 1,
@@ -292,37 +234,21 @@
                 "type": "object",
                 "properties": {
                   "value": {
-                    "enum": [
-                      "correct",
-                      "incorrect"
-                    ],
+                    "enum": ["correct", "incorrect"],
                     "type": "string",
                     "title": "value"
                   },
                   "label": {
-                    "enum": [
-                      "correct",
-                      "incorrect"
-                    ],
+                    "enum": ["correct", "incorrect"],
                     "type": "string",
                     "title": "label"
                   }
                 },
-                "required": [
-                  "label",
-                  "value"
-                ],
+                "required": ["label", "value"],
                 "title": "correctness"
               }
             },
-            "required": [
-              "correctness",
-              "deletable",
-              "editable",
-              "interactive",
-              "label",
-              "value"
-            ]
+            "required": ["correctness", "deletable", "editable", "interactive", "label", "value"]
           }
         ]
       },
@@ -358,13 +284,7 @@
           "title": "axisLabel"
         }
       },
-      "required": [
-        "axisLabel",
-        "labelStep",
-        "max",
-        "min",
-        "step"
-      ]
+      "required": ["axisLabel", "labelStep", "max", "min", "step"]
     },
     "graph": {
       "title": "Chart",
@@ -381,10 +301,7 @@
           "title": "height"
         }
       },
-      "required": [
-        "height",
-        "width"
-      ]
+      "required": ["height", "width"]
     },
     "prompt": {
       "description": "Indicates prompt value",
@@ -426,13 +343,7 @@
           "title": "axisLabel"
         }
       },
-      "required": [
-        "axisLabel",
-        "labelStep",
-        "max",
-        "min",
-        "step"
-      ]
+      "required": ["axisLabel", "labelStep", "max", "min", "step"]
     },
     "rationale": {
       "description": "Indicates rationale for the answer",
@@ -441,10 +352,7 @@
     },
     "scoringType": {
       "description": "Indicates scoring type",
-      "enum": [
-        "all or nothing",
-        "partial scoring"
-      ],
+      "enum": ["all or nothing", "partial scoring"],
       "type": "string",
       "title": "scoringType"
     },
@@ -478,10 +386,7 @@
           "title": "labels"
         }
       },
-      "required": [
-        "labels",
-        "title"
-      ]
+      "required": ["labels", "title"]
     },
     "rationaleEnabled": {
       "description": "Indicates if Rationale are enabled",
@@ -683,37 +588,21 @@
                   "type": "object",
                   "properties": {
                     "value": {
-                      "enum": [
-                        "correct",
-                        "incorrect"
-                      ],
+                      "enum": ["correct", "incorrect"],
                       "type": "string",
                       "title": "value"
                     },
                     "label": {
-                      "enum": [
-                        "correct",
-                        "incorrect"
-                      ],
+                      "enum": ["correct", "incorrect"],
                       "type": "string",
                       "title": "label"
                     }
                   },
-                  "required": [
-                    "label",
-                    "value"
-                  ],
+                  "required": ["label", "value"],
                   "title": "correctness"
                 }
               },
-              "required": [
-                "correctness",
-                "deletable",
-                "editable",
-                "interactive",
-                "label",
-                "value"
-              ]
+              "required": ["correctness", "deletable", "editable", "interactive", "label", "value"]
             }
           ],
           "minItems": 1,
@@ -753,47 +642,28 @@
                     "type": "object",
                     "properties": {
                       "value": {
-                        "enum": [
-                          "correct",
-                          "incorrect"
-                        ],
+                        "enum": ["correct", "incorrect"],
                         "type": "string",
                         "title": "value"
                       },
                       "label": {
-                        "enum": [
-                          "correct",
-                          "incorrect"
-                        ],
+                        "enum": ["correct", "incorrect"],
                         "type": "string",
                         "title": "label"
                       }
                     },
-                    "required": [
-                      "label",
-                      "value"
-                    ],
+                    "required": ["label", "value"],
                     "title": "correctness"
                   }
                 },
-                "required": [
-                  "correctness",
-                  "deletable",
-                  "editable",
-                  "interactive",
-                  "label",
-                  "value"
-                ]
+                "required": ["correctness", "deletable", "editable", "interactive", "label", "value"]
               }
             ]
           },
           "title": "data"
         }
       },
-      "required": [
-        "data",
-        "name"
-      ]
+      "required": ["data", "name"]
     },
     "Category": {
       "title": "Category",
@@ -829,37 +699,21 @@
           "type": "object",
           "properties": {
             "value": {
-              "enum": [
-                "correct",
-                "incorrect"
-              ],
+              "enum": ["correct", "incorrect"],
               "type": "string",
               "title": "value"
             },
             "label": {
-              "enum": [
-                "correct",
-                "incorrect"
-              ],
+              "enum": ["correct", "incorrect"],
               "type": "string",
               "title": "label"
             }
           },
-          "required": [
-            "label",
-            "value"
-          ],
+          "required": ["label", "value"],
           "title": "correctness"
         }
       },
-      "required": [
-        "correctness",
-        "deletable",
-        "editable",
-        "interactive",
-        "label",
-        "value"
-      ]
+      "required": ["correctness", "deletable", "editable", "interactive", "label", "value"]
     },
     "ChartSettings": {
       "title": "ChartSettings",
@@ -891,13 +745,7 @@
           "title": "axisLabel"
         }
       },
-      "required": [
-        "axisLabel",
-        "labelStep",
-        "max",
-        "min",
-        "step"
-      ]
+      "required": ["axisLabel", "labelStep", "max", "min", "step"]
     },
     "Chart": {
       "title": "Chart",
@@ -914,10 +762,7 @@
           "title": "height"
         }
       },
-      "required": [
-        "height",
-        "width"
-      ]
+      "required": ["height", "width"]
     },
     "Placeholder": {
       "title": "Placeholder",
@@ -934,10 +779,7 @@
           "title": "labels"
         }
       },
-      "required": [
-        "labels",
-        "title"
-      ]
+      "required": ["labels", "title"]
     }
   },
   "$schema": "http://json-schema.org/draft-07/schema#"

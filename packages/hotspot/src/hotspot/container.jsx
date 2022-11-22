@@ -9,11 +9,11 @@ import Polygon from './polygon';
 
 export class Container extends React.Component {
   isSelected(shape) {
-    const selectedShape = this.props.session.answers.filter(answer => answer.id === shape.id)[0];
+    const selectedShape = this.props.session.answers.filter((answer) => answer.id === shape.id)[0];
     return !!selectedShape;
   }
 
-  correctness = (isCorrect, isChecked) => isCorrect ? isChecked : !isChecked;
+  correctness = (isCorrect, isChecked) => (isCorrect ? isChecked : !isChecked);
 
   getEvaluateText = (isCorrect, selected) => {
     if (selected && isCorrect) {
@@ -44,17 +44,14 @@ export class Container extends React.Component {
       shapes: { rectangles, polygons },
       scale: SCALE,
       strokeWidth,
-      showCorrect
+      showCorrect,
     } = this.props;
 
     const width = withProp * SCALE;
     const height = heightProp * SCALE;
 
     return (
-      <div
-        className={classes.base}
-        style={{ padding: strokeWidth / 2 }}
-      >
+      <div className={classes.base} style={{ padding: strokeWidth / 2 }}>
         {imageUrl ? (
           <div className={classes.imageContainer}>
             <img
@@ -102,7 +99,7 @@ export class Container extends React.Component {
                   markAsCorrect={markAsCorrect}
                   showCorrectEnabled={showCorrect}
                 />
-              )
+              );
             })}
             {polygons.map((polygon) => {
               const selected = this.isSelected(polygon);
@@ -128,7 +125,7 @@ export class Container extends React.Component {
                   markAsCorrect={markAsCorrect}
                   showCorrectEnabled={showCorrect}
                 />
-              )
+              );
             })}
           </Layer>
         </Stage>
@@ -137,10 +134,10 @@ export class Container extends React.Component {
   }
 }
 
-const styles = theme => ({
+const styles = (theme) => ({
   base: {
     marginTop: theme.spacing.unit * 3,
-    position: 'relative'
+    position: 'relative',
   },
   image: {
     alignItems: 'center',
@@ -149,12 +146,12 @@ const styles = theme => ({
   },
   imageContainer: {
     position: 'relative',
-    width: 'fit-content'
+    width: 'fit-content',
   },
   stage: {
     left: 0,
     top: 0,
-    position: 'absolute'
+    position: 'absolute',
   },
   resize: {
     borderBottom: `1px solid ${color.disabled()}`,
@@ -165,27 +162,27 @@ const styles = theme => ({
     position: 'absolute',
     right: '-10px',
     width: '10px',
-  }
+  },
 });
 
 Container.propTypes = {
   classes: PropTypes.object.isRequired,
   dimensions: PropTypes.object.isRequired,
   disabled: PropTypes.bool.isRequired,
-  hotspotColor:PropTypes.string.isRequired,
-  imageUrl:PropTypes.string.isRequired,
-  isEvaluateMode:PropTypes.bool.isRequired,
-  onSelectChoice:PropTypes.func.isRequired,
-  outlineColor:PropTypes.string.isRequired,
-  session:PropTypes.object.isRequired,
-  shapes:PropTypes.object.isRequired,
+  hotspotColor: PropTypes.string.isRequired,
+  imageUrl: PropTypes.string.isRequired,
+  isEvaluateMode: PropTypes.bool.isRequired,
+  onSelectChoice: PropTypes.func.isRequired,
+  outlineColor: PropTypes.string.isRequired,
+  session: PropTypes.object.isRequired,
+  shapes: PropTypes.object.isRequired,
   strokeWidth: PropTypes.number,
   scale: PropTypes.number,
-  showCorrect: PropTypes.bool
+  showCorrect: PropTypes.bool,
 };
 
 Container.defaultProps = {
-  scale: 1
+  scale: 1,
 };
 
 export default withStyles(styles)(Container);

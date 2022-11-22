@@ -20,49 +20,49 @@ export class Choices extends React.Component {
     onModelChanged: PropTypes.func.isRequired,
     imageSupport: PropTypes.shape({
       add: PropTypes.func.isRequired,
-      delete: PropTypes.func.isRequired
+      delete: PropTypes.func.isRequired,
     }),
     uploadSoundSupport: PropTypes.shape({
       add: PropTypes.func.isRequired,
-      delete: PropTypes.func.isRequired
+      delete: PropTypes.func.isRequired,
     }),
-    toolbarOpts: PropTypes.object
+    toolbarOpts: PropTypes.object,
   };
 
   static defaultProps = {};
 
-  changeChoice = choice => {
+  changeChoice = (choice) => {
     const { choices, onModelChanged } = this.props;
-    const index = choices.findIndex(h => h.id === choice.id);
+    const index = choices.findIndex((h) => h.id === choice.id);
     if (index !== -1) {
       choices.splice(index, 1, choice);
       onModelChanged({ choices });
     }
   };
 
-  allChoicesHaveCount = count => {
+  allChoicesHaveCount = (count) => {
     const { choices } = this.props;
-    return every(choices, c => c.categoryCount === count);
+    return every(choices, (c) => c.categoryCount === count);
   };
 
   addChoice = () => {
     const { onModelChanged, model } = this.props;
 
-    const id = utils.firstAvailableIndex(model.choices.map(a => a.id), 0);
+    const id = utils.firstAvailableIndex(
+      model.choices.map((a) => a.id),
+      0,
+    );
     const data = { id, content: 'Choice ' + id };
 
     onModelChanged({ choices: model.choices.concat([data]) });
   };
 
-  deleteChoice = choice => {
+  deleteChoice = (choice) => {
     const { model, onModelChanged } = this.props;
-    const index = model.choices.findIndex(a => a.id === choice.id);
+    const index = model.choices.findIndex((a) => a.id === choice.id);
     if (index !== -1) {
       model.choices.splice(index, 1);
-      model.correctResponse = removeAllChoices(
-        choice.id,
-        model.correctResponse
-      );
+      model.correctResponse = removeAllChoices(choice.id, model.correctResponse);
       onModelChanged(model);
     }
   };
@@ -80,19 +80,15 @@ export class Choices extends React.Component {
       toolbarOpts,
       configuration,
       defaultImageMaxWidth,
-      defaultImageMaxHeight
+      defaultImageMaxHeight,
     } = this.props;
     const { errors, allowMultiplePlacementsEnabled } = model;
     const { choicesError, choicesErrors } = errors || {};
-    const {
-      maxChoices,
-      maxImageWidth = {},
-      maxImageHeight = {},
-    } = configuration || {};
+    const { maxChoices, maxImageWidth = {}, maxImageHeight = {} } = configuration || {};
 
     const categoryCountIsOne = this.allChoicesHaveCount(1);
     const choiceHolderStyle = {
-      gridTemplateColumns: `repeat(${model.categoriesPerRow}, 1fr)`
+      gridTemplateColumns: `repeat(${model.categoriesPerRow}, 1fr)`,
     };
 
     return (
@@ -124,8 +120,8 @@ export class Choices extends React.Component {
               toolbarOpts={toolbarOpts}
               spellCheck={spellCheck}
               error={choicesErrors && choicesErrors[h.id]}
-              maxImageWidth={maxImageWidth && maxImageWidth.choice || defaultImageMaxWidth}
-              maxImageHeight={maxImageHeight && maxImageHeight.choice || defaultImageMaxHeight}
+              maxImageWidth={(maxImageWidth && maxImageWidth.choice) || defaultImageMaxWidth}
+              maxImageHeight={(maxImageHeight && maxImageHeight.choice) || defaultImageMaxHeight}
               uploadSoundSupport={uploadSoundSupport}
             />
           ))}
@@ -135,23 +131,23 @@ export class Choices extends React.Component {
     );
   }
 }
-const styles = theme => ({
+const styles = (theme) => ({
   choiceHolder: {
     paddingTop: theme.spacing.unit,
     paddingBottom: theme.spacing.unit,
     display: 'grid',
     gridRowGap: `${theme.spacing.unit}px`,
-    gridColumnGap: `${theme.spacing.unit}px`
+    gridColumnGap: `${theme.spacing.unit}px`,
   },
   choices: {
     paddingTop: theme.spacing.unit * 2,
-    paddingBottom: theme.spacing.unit * 2
+    paddingBottom: theme.spacing.unit * 2,
   },
   label: {},
   errorText: {
     fontSize: '12px',
     color: 'red',
-    padding: '5px 0'
+    padding: '5px 0',
   },
 });
 export default withStyles(styles)(Choices);

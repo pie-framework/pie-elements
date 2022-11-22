@@ -8,9 +8,9 @@ Indicates the likert scale
 
 This element must be one of the following enum values:
 
-* `likert3`
-* `likert5`
-* `likert7`
+- `likert3`
+- `likert5`
+- `likert7`
 
 # `likertType` (string, enum)
 
@@ -18,12 +18,12 @@ Indicates the likert type
 
 This element must be one of the following enum values:
 
-* `agreement`
-* `frequency`
-* `importance`
-* `like`
-* `likelihood`
-* `yesNo`
+- `agreement`
+- `frequency`
+- `importance`
+- `like`
+- `likelihood`
+- `yesNo`
 
 # `likertOrientation` (string, enum)
 
@@ -31,8 +31,8 @@ Indicates the likert type
 
 This element must be one of the following enum values:
 
-* `horizontal`
-* `vertical`
+- `horizontal`
+- `vertical`
 
 # `choices` (array, required)
 

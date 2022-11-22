@@ -8,8 +8,8 @@ Type of the ruler
 
 This element must be one of the following enum values:
 
-* `imperial`
-* `metric`
+- `imperial`
+- `metric`
 
 # `label` (string, enum, required)
 
@@ -19,13 +19,13 @@ for measure: metric it can be ''mm' | 'cm' | 'm' | 'km' |
 
 This element must be one of the following enum values:
 
-* `cm`
-* `ft`
-* `in`
-* `km`
-* `m`
-* `mm`
-* `yd`
+- `cm`
+- `ft`
+- `in`
+- `km`
+- `m`
+- `mm`
+- `yd`
 
 # `imperialTicks` (number, enum)
 
@@ -33,9 +33,9 @@ Number of ticks to display if metric is imperial
 
 This element must be one of the following enum values:
 
-* `16`
-* `4`
-* `8`
+- `16`
+- `4`
+- `8`
 
 Default: `"is 8"`
 

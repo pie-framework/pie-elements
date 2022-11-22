@@ -19,16 +19,16 @@ export class AnswerArea extends React.Component {
     onPlaceAnswer: PropTypes.func.isRequired,
     instanceId: PropTypes.string.isRequired,
     model: PropTypes.object.isRequired,
-    prompt: PropTypes.string
+    prompt: PropTypes.string,
   };
 
-  getAnswerFromSession = promptId => {
+  getAnswerFromSession = (promptId) => {
     const { model, session, showCorrect } = this.props;
     const { config } = model;
     const answerId = showCorrect
-      ? config.prompts.find(p => p.id === promptId).relatedAnswer
+      ? config.prompts.find((p) => p.id === promptId).relatedAnswer
       : session.value && session.value[promptId];
-    const answer = config.answers.find(answer => answer.id === answerId);
+    const answer = config.answers.find((answer) => answer.id === answerId);
 
     return answer || {};
   };
@@ -37,7 +37,8 @@ export class AnswerArea extends React.Component {
     const { model, session, showCorrect } = this.props;
     const { config } = model;
     const sessionValue =
-      session.value || config.prompts.reduce((obj, prompt) => {
+      session.value ||
+      config.prompts.reduce((obj, prompt) => {
         obj[prompt.id] = undefined;
         return obj;
       }, {});
@@ -62,58 +63,50 @@ export class AnswerArea extends React.Component {
       return obj;
     }, {});
 
-    return reduce(sessionValue, (obj, val, key) => {
-      obj[key] = correctPromptMap[key] === sessionValue[key];
+    return reduce(
+      sessionValue,
+      (obj, val, key) => {
+        obj[key] = correctPromptMap[key] === sessionValue[key];
 
-      return obj;
-    }, {});
+        return obj;
+      },
+      {},
+    );
   };
 
   buildRows = () => {
     const { model } = this.props;
     const { config } = model;
-    const prompts = (config.prompts || []);
+    const prompts = config.prompts || [];
 
-    return prompts.map(prompt => {
+    return prompts.map((prompt) => {
       const sessionAnswer = this.getAnswerFromSession(prompt.id);
 
       return {
         ...prompt,
-        sessionAnswer
+        sessionAnswer,
       };
     });
   };
 
   render() {
-    const {
-      classes,
-      disabled,
-      onPlaceAnswer,
-      instanceId,
-      onRemoveAnswer
-    } = this.props;
+    const { classes, disabled, onPlaceAnswer, instanceId, onRemoveAnswer } = this.props;
     const rows = this.buildRows();
     const correctnessMap = this.getCorrectOrIncorrectMap();
 
     return (
       <div className={classes.itemList}>
         {rows.map(({ sessionAnswer, title, id }, index) => {
-
           return (
             <div
               className={classes.row}
               style={{
-                display: 'flex'
+                display: 'flex',
               }}
               key={index}
             >
-              <div
-                className={classes.promptEntry}
-                dangerouslySetInnerHTML={{ __html: title }}
-              />
-              <div
-                className={classes.arrowEntry}
-              >
+              <div className={classes.promptEntry} dangerouslySetInnerHTML={{ __html: title }} />
+              <div className={classes.arrowEntry}>
                 <Arrow direction="left" />
                 <Arrow />
               </div>
@@ -142,20 +135,20 @@ export class AnswerArea extends React.Component {
 
 const styles = () => ({
   answer: {
-    flex: 1
+    flex: 1,
   },
   arrowEntry: {
     alignItems: 'normal',
     display: 'flex',
     height: 40,
-    margin: '10px 20px'
+    margin: '10px 20px',
   },
   itemList: {
     alignItems: 'flex-start',
     display: 'flex',
     flex: 1,
     flexDirection: 'column',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
   },
   promptEntry: {
     border: '1px solid #c2c2c2',
@@ -167,14 +160,14 @@ const styles = () => ({
     padding: 10,
     textAlign: 'center',
     width: '100%',
-    wordBreak: 'break-word'
+    wordBreak: 'break-word',
   },
   row: {
     alignItems: 'center',
     display: 'flex',
     justifyContent: 'space-between',
-    width: '100%'
-  }
+    width: '100%',
+  },
 });
 
 export default withStyles(styles)(AnswerArea);

@@ -7,7 +7,7 @@ import {
   DeleteImageEvent,
   InsertImageEvent,
   InsertSoundEvent,
-  DeleteSoundEvent
+  DeleteSoundEvent,
 } from '@pie-framework/pie-configure-events';
 import debug from 'debug';
 
@@ -17,18 +17,17 @@ const log = debug('pie-elements:math-inline:configure');
 
 export default class MathInlineConfigure extends HTMLElement {
   static createDefaultModel = (model = {}) => {
-
     // making sure that defaults are set
     if (!isEmpty(model.responses)) {
-      model.responses = model.responses.map(correctResponse => ({
+      model.responses = model.responses.map((correctResponse) => ({
         ...correctResponse,
         validation: correctResponse.validation || defaults.model.validationDefault,
         allowTrailingZeros: correctResponse.allowTrailingZeros || defaults.model.allowTrailingZerosDefault,
-        ignoreOrder: correctResponse.ignoreOrder || defaults.model.ignoreOrderDefault || false
-      }))
+        ignoreOrder: correctResponse.ignoreOrder || defaults.model.ignoreOrderDefault || false,
+      }));
     }
 
-    return { ...defaults.model, ...model }
+    return { ...defaults.model, ...model };
   };
 
   constructor() {
@@ -94,12 +93,12 @@ export default class MathInlineConfigure extends HTMLElement {
         configuration: this._configuration,
         imageSupport: {
           add: this.insertImage.bind(this),
-          delete: this.onDeleteImage.bind(this)
+          delete: this.onDeleteImage.bind(this),
         },
         uploadSoundSupport: {
           add: this.insertSound.bind(this),
-          delete: this.onDeleteSound.bind(this)
-        }
+          delete: this.onDeleteSound.bind(this),
+        },
       });
 
       ReactDOM.render(el, this);

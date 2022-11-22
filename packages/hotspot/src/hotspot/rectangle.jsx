@@ -32,9 +32,11 @@ class RectComponent extends React.Component {
     document.body.style.cursor = 'default';
   };
 
-  getEvaluateOutlineColor = (isCorrect, markAsCorrect, outlineColor) => markAsCorrect ? 'green' : (isCorrect ? outlineColor : 'red')
+  getEvaluateOutlineColor = (isCorrect, markAsCorrect, outlineColor) =>
+    markAsCorrect ? 'green' : isCorrect ? outlineColor : 'red';
 
-  getOutlineWidth = (showCorrectEnabled, selected, markAsCorrect, strokeWidth) => markAsCorrect || (!markAsCorrect && !showCorrectEnabled && selected) ? strokeWidth : 0;
+  getOutlineWidth = (showCorrectEnabled, selected, markAsCorrect, strokeWidth) =>
+    markAsCorrect || (!markAsCorrect && !showCorrectEnabled && selected) ? strokeWidth : 0;
 
   render() {
     const {
@@ -52,7 +54,7 @@ class RectComponent extends React.Component {
       strokeWidth,
       scale,
       markAsCorrect,
-      showCorrectEnabled
+      showCorrectEnabled,
     } = this.props;
 
     const outlineColorParsed = isEvaluateMode
@@ -61,8 +63,8 @@ class RectComponent extends React.Component {
 
     const outlineWidth = this.getOutlineWidth(showCorrectEnabled, selected, markAsCorrect, strokeWidth);
 
-    const iconX = (x + (width / 2)) - 10;
-    const iconY = (y + (height / 2)) - 10;
+    const iconX = x + width / 2 - 10;
+    const iconY = y + height / 2 - 10;
 
     // "Show Correct Answer" Enabled:
     //   - Correctly Selected: white checkmark in green circle
@@ -113,14 +115,7 @@ class RectComponent extends React.Component {
           x={x}
           y={y}
         />
-        {(isEvaluateMode && iconSrc) ? (
-          <Image
-            src={iconSrc}
-            x={iconX}
-            y={iconY}
-            tooltip={evaluateText}
-          />
-        ): null}
+        {isEvaluateMode && iconSrc ? <Image src={iconSrc} x={iconX} y={iconY} tooltip={evaluateText} /> : null}
       </Group>
     );
   }
@@ -130,7 +125,7 @@ const styles = () => ({
   base: {
     cursor: 'pointer',
     opacity: 0.5,
-    position: 'relative'
+    position: 'relative',
   },
 });
 
@@ -152,14 +147,14 @@ RectComponent.propTypes = {
   strokeWidth: PropTypes.number,
   scale: PropTypes.number,
   markAsCorrect: PropTypes.bool.isRequired,
-  showCorrectEnabled: PropTypes.bool.isRequired
+  showCorrectEnabled: PropTypes.bool.isRequired,
 };
 
 RectComponent.defaultProps = {
   isCorrect: false,
   evaluateText: null,
   strokeWidth: 5,
-  scale: 1
+  scale: 1,
 };
 
 export default withStyles(styles)(RectComponent);

@@ -14,9 +14,9 @@ If importing an item, only set this property it the text tokens are strictly par
 
 This element must be one of the following enum values:
 
-* `paragraph`
-* `sentence`
-* `word`
+- `paragraph`
+- `sentence`
+- `word`
 
 # `partialScoring` (boolean)
 
@@ -90,8 +90,8 @@ Indicates scoring type
 
 This element must be one of the following enum values:
 
-* `auto`
-* `rubric`
+- `auto`
+- `rubric`
 
 # `studentInstructions` (string)
 
@@ -127,8 +127,8 @@ Indicates the editor's toolbar position which can be 'bottom' or 'top'
 
 This element must be one of the following enum values:
 
-* `bottom`
-* `top`
+- `bottom`
+- `top`
 
 Default: `": 'bottom'"`
 
@@ -204,8 +204,8 @@ Indicates the feedback type
 
 This element must be one of the following enum values:
 
-* `default`
-* `none`
+- `default`
+- `none`
 
 ### `default` (string)
 
@@ -221,7 +221,7 @@ Indicates the feedback type
 
 This element must be one of the following enum values:
 
-* `custom`
+- `custom`
 
 ### `custom` (string, required)
 

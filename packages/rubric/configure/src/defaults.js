@@ -5,7 +5,7 @@ export default {
     maxPoints: 4,
     excludeZero: false,
     excludeZeroEnabled: true,
-    maxPointsEnabled: true
+    maxPointsEnabled: true,
   },
   configuration: {
     showExcludeZero: {
@@ -14,8 +14,8 @@ export default {
     },
     showMaxPoint: {
       settings: true,
-      label: 'Show max points dropdown'
+      label: 'Show max points dropdown',
     },
-    settingsPanelDisabled: false
-  }
+    settingsPanelDisabled: false,
+  },
 };

@@ -80,15 +80,15 @@ Indicates the initial type of response
 
 This element must be one of the following enum values:
 
-* `LEE`
-* `LEF`
-* `LFE`
-* `LFF`
-* `PF`
-* `REN`
-* `REP`
-* `RFN`
-* `RFP`
+- `LEE`
+- `LEF`
+- `LFE`
+- `LFF`
+- `PF`
+- `REN`
+- `REP`
+- `RFN`
+- `RFP`
 
 ## `availableTypes` (object, required)
 
@@ -154,8 +154,8 @@ Indicates the editor's toolbar position which can be 'bottom' or 'top'
 
 This element must be one of the following enum values:
 
-* `bottom`
-* `top`
+- `bottom`
+- `top`
 
 Default: `": 'bottom'"`
 
@@ -211,8 +211,8 @@ Indicates the feedback type
 
 This element must be one of the following enum values:
 
-* `default`
-* `none`
+- `default`
+- `none`
 
 ### `default` (string)
 
@@ -228,7 +228,7 @@ Indicates the feedback type
 
 This element must be one of the following enum values:
 
-* `custom`
+- `custom`
 
 ### `custom` (string, required)
 
@@ -244,8 +244,8 @@ Indicates point type
 
 This element must be one of the following enum values:
 
-* `empty`
-* `full`
+- `empty`
+- `full`
 
 ### `type` (string, enum, required)
 
@@ -253,9 +253,9 @@ Indicates the response type
 
 This element must be one of the following enum values:
 
-* `line`
-* `point`
-* `ray`
+- `line`
+- `point`
+- `ray`
 
 ### `domainPosition` (number, required)
 
@@ -271,8 +271,8 @@ Indicates left point (left limit for the line) type
 
 This element must be one of the following enum values:
 
-* `empty`
-* `full`
+- `empty`
+- `full`
 
 ### `rightPoint` (string, enum, required)
 
@@ -280,8 +280,8 @@ Indicates right point (left limit for the line) type
 
 This element must be one of the following enum values:
 
-* `empty`
-* `full`
+- `empty`
+- `full`
 
 ### `size` (number, required)
 
@@ -293,9 +293,9 @@ Indicates the response type
 
 This element must be one of the following enum values:
 
-* `line`
-* `point`
-* `ray`
+- `line`
+- `point`
+- `ray`
 
 ### `domainPosition` (number, required)
 
@@ -311,8 +311,8 @@ Indicates point type
 
 This element must be one of the following enum values:
 
-* `empty`
-* `full`
+- `empty`
+- `full`
 
 ### `direction` (string, enum, required)
 
@@ -320,8 +320,8 @@ Indicates ray direction
 
 This element must be one of the following enum values:
 
-* `negative`
-* `positive`
+- `negative`
+- `positive`
 
 ### `type` (string, enum, required)
 
@@ -329,9 +329,9 @@ Indicates the response type
 
 This element must be one of the following enum values:
 
-* `line`
-* `point`
-* `ray`
+- `line`
+- `point`
+- `ray`
 
 ### `domainPosition` (number, required)
 
@@ -391,15 +391,15 @@ Indicates the initial type of response
 
 This element must be one of the following enum values:
 
-* `LEE`
-* `LEF`
-* `LFE`
-* `LFF`
-* `PF`
-* `REN`
-* `REP`
-* `RFN`
-* `RFP`
+- `LEE`
+- `LEF`
+- `LFE`
+- `LFF`
+- `PF`
+- `REN`
+- `REP`
+- `RFN`
+- `RFP`
 
 ### `availableTypes` (object, required)
 

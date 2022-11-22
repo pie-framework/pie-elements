@@ -193,12 +193,7 @@
       "title": "element"
     }
   },
-  "required": [
-    "element",
-    "id",
-    "rubricEnabled",
-    "spellCheckEnabled"
-  ],
+  "required": ["element", "id", "rubricEnabled", "spellCheckEnabled"],
   "definitions": {
     "ConfigureProp": {
       "title": "ConfigureProp",

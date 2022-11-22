@@ -5,10 +5,7 @@
   "properties": {
     "rubricType": {
       "title": "RubricType",
-      "enum": [
-        "multiTraitRubric",
-        "simpleRubric"
-      ],
+      "enum": ["multiTraitRubric", "simpleRubric"],
       "type": "string"
     },
     "rubrics": {
@@ -72,10 +69,7 @@
               "title": "element"
             }
           },
-          "required": [
-            "element",
-            "id"
-          ]
+          "required": ["element", "id"]
         },
         "multiTraitRubric": {
           "description": "Model for the MultiTraitRubric Interaction",
@@ -177,22 +171,12 @@
                           "title": "scorePointsDescriptors"
                         }
                       },
-                      "required": [
-                        "description",
-                        "name",
-                        "scorePointsDescriptors",
-                        "standards"
-                      ]
+                      "required": ["description", "name", "scorePointsDescriptors", "standards"]
                     },
                     "title": "traits"
                   }
                 },
-                "required": [
-                  "maxPoints",
-                  "scorePointsLabels",
-                  "traitLabel",
-                  "traits"
-                ]
+                "required": ["maxPoints", "scorePointsLabels", "traitLabel", "traits"]
               },
               "title": "scales"
             },
@@ -207,18 +191,10 @@
               "title": "element"
             }
           },
-          "required": [
-            "element",
-            "id",
-            "scales",
-            "spellCheckEnabled"
-          ]
+          "required": ["element", "id", "scales", "spellCheckEnabled"]
         }
       },
-      "required": [
-        "multiTraitRubric",
-        "simpleRubric"
-      ]
+      "required": ["multiTraitRubric", "simpleRubric"]
     },
     "id": {
       "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
@@ -231,12 +207,7 @@
       "title": "element"
     }
   },
-  "required": [
-    "element",
-    "id",
-    "rubricType",
-    "rubrics"
-  ],
+  "required": ["element", "id", "rubricType", "rubrics"],
   "definitions": {
     "MultiTraitRubricConfigure": {
       "description": "Config Object for @pie-elements/multi-trait-rubric",
@@ -426,9 +397,7 @@
           "title": "width"
         }
       },
-      "required": [
-        "width"
-      ]
+      "required": ["width"]
     },
     "DialogContent": {
       "title": "DialogContent",
@@ -464,10 +433,7 @@
     },
     "RubricType": {
       "title": "RubricType",
-      "enum": [
-        "multiTraitRubric",
-        "simpleRubric"
-      ],
+      "enum": ["multiTraitRubric", "simpleRubric"],
       "type": "string"
     },
     "RubricModels": {
@@ -531,10 +497,7 @@
               "title": "element"
             }
           },
-          "required": [
-            "element",
-            "id"
-          ]
+          "required": ["element", "id"]
         },
         "multiTraitRubric": {
           "description": "Model for the MultiTraitRubric Interaction",
@@ -636,22 +599,12 @@
                           "title": "scorePointsDescriptors"
                         }
                       },
-                      "required": [
-                        "description",
-                        "name",
-                        "scorePointsDescriptors",
-                        "standards"
-                      ]
+                      "required": ["description", "name", "scorePointsDescriptors", "standards"]
                     },
                     "title": "traits"
                   }
                 },
-                "required": [
-                  "maxPoints",
-                  "scorePointsLabels",
-                  "traitLabel",
-                  "traits"
-                ]
+                "required": ["maxPoints", "scorePointsLabels", "traitLabel", "traits"]
               },
               "title": "scales"
             },
@@ -666,18 +619,10 @@
               "title": "element"
             }
           },
-          "required": [
-            "element",
-            "id",
-            "scales",
-            "spellCheckEnabled"
-          ]
+          "required": ["element", "id", "scales", "spellCheckEnabled"]
         }
       },
-      "required": [
-        "multiTraitRubric",
-        "simpleRubric"
-      ]
+      "required": ["multiTraitRubric", "simpleRubric"]
     },
     "RubricPie": {
       "description": "Model for the RubricPie Interaction",
@@ -736,10 +681,7 @@
           "title": "element"
         }
       },
-      "required": [
-        "element",
-        "id"
-      ]
+      "required": ["element", "id"]
     },
     "MultiTraitRubricPie": {
       "description": "Model for the MultiTraitRubric Interaction",
@@ -841,22 +783,12 @@
                       "title": "scorePointsDescriptors"
                     }
                   },
-                  "required": [
-                    "description",
-                    "name",
-                    "scorePointsDescriptors",
-                    "standards"
-                  ]
+                  "required": ["description", "name", "scorePointsDescriptors", "standards"]
                 },
                 "title": "traits"
               }
             },
-            "required": [
-              "maxPoints",
-              "scorePointsLabels",
-              "traitLabel",
-              "traits"
-            ]
+            "required": ["maxPoints", "scorePointsLabels", "traitLabel", "traits"]
           },
           "title": "scales"
         },
@@ -871,12 +803,7 @@
           "title": "element"
         }
       },
-      "required": [
-        "element",
-        "id",
-        "scales",
-        "spellCheckEnabled"
-      ]
+      "required": ["element", "id", "scales", "spellCheckEnabled"]
     },
     "Scale": {
       "title": "Scale",
@@ -934,22 +861,12 @@
                 "title": "scorePointsDescriptors"
               }
             },
-            "required": [
-              "description",
-              "name",
-              "scorePointsDescriptors",
-              "standards"
-            ]
+            "required": ["description", "name", "scorePointsDescriptors", "standards"]
           },
           "title": "traits"
         }
       },
-      "required": [
-        "maxPoints",
-        "scorePointsLabels",
-        "traitLabel",
-        "traits"
-      ]
+      "required": ["maxPoints", "scorePointsLabels", "traitLabel", "traits"]
     },
     "Trait": {
       "title": "Trait",
@@ -982,12 +899,7 @@
           "title": "scorePointsDescriptors"
         }
       },
-      "required": [
-        "description",
-        "name",
-        "scorePointsDescriptors",
-        "standards"
-      ]
+      "required": ["description", "name", "scorePointsDescriptors", "standards"]
     }
   },
   "$schema": "http://json-schema.org/draft-07/schema#"

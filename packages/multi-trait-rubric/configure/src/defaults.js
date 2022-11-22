@@ -8,7 +8,7 @@ export default {
     scales: [],
     excludeZero: false,
     maxPointsEnabled: true,
-    addScaleEnabled: true
+    addScaleEnabled: true,
   },
   configuration: {
     excludeZeroDialogBoxContent: {
@@ -27,7 +27,7 @@ export default {
             remove 0 column with its Label and Description
           </li>
         </ul>
-      </div>`
+      </div>`,
     },
     includeZeroDialogBoxContent: {
       title: 'Include 0 (Zero) in Score Point Values.',
@@ -45,26 +45,26 @@ export default {
             add 0 column with empty Label and Descriptions
           </li>
         </ul>
-      </div>`
+      </div>`,
     },
     deleteTraitDialogBoxContent: {
       title: 'Delete Trait',
-      text: 'Are you sure you want to delete this trait?'
+      text: 'Are you sure you want to delete this trait?',
     },
     deleteScaleDialogBoxContent: {
       title: 'Delete Scale',
-      text: 'Are you sure you want to delete this scale?'
+      text: 'Are you sure you want to delete this scale?',
     },
     maxPointsDialogBoxContent: {
       title: 'Decreasing Max Points.',
       text: ` You are about to decrease max score point value.
         <br/>
-        All the Labels and Descriptions for scores above Max Point will be deleted.`
+        All the Labels and Descriptions for scores above Max Point will be deleted.`,
     },
     spellCheck: {
       label: 'Spellcheck',
-      settings:false,
-      enabled:true
+      settings: false,
+      enabled: true,
     },
     showExcludeZero: {
       settings: true,
@@ -95,7 +95,7 @@ export default {
     showLevelTagInput: {
       settings: false,
       label: 'Show Level Tag Input',
-      enabled: false
+      enabled: false,
     },
     dragAndDrop: {
       settings: true,
@@ -104,15 +104,15 @@ export default {
     },
     showMaxPoint: {
       settings: true,
-      label: 'Show Max Points Dropdown'
+      label: 'Show Max Points Dropdown',
     },
     addScale: {
       settings: true,
-      label: 'Add Scale Available'
+      label: 'Add Scale Available',
     },
     minNoOfTraits: 2,
     maxNoOfTraits: 10,
     minNoOfScales: 2,
     maxNoOfScales: 10,
-  }
+  },
 };

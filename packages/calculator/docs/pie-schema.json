@@ -5,10 +5,7 @@
   "properties": {
     "mode": {
       "title": "CalculatorMode",
-      "enum": [
-        "basic",
-        "scientific"
-      ],
+      "enum": ["basic", "scientific"],
       "type": "string"
     },
     "id": {
@@ -22,18 +19,11 @@
       "title": "element"
     }
   },
-  "required": [
-    "element",
-    "id",
-    "mode"
-  ],
+  "required": ["element", "id", "mode"],
   "definitions": {
     "CalculatorMode": {
       "title": "CalculatorMode",
-      "enum": [
-        "basic",
-        "scientific"
-      ],
+      "enum": ["basic", "scientific"],
       "type": "string"
     }
   },

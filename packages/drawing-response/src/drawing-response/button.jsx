@@ -22,12 +22,9 @@ RawButton.propTypes = {
   classes: PropTypes.object.isRequired,
   className: PropTypes.string,
   disabled: PropTypes.bool,
-  label: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.object,
-  ]),
+  label: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   onClick: PropTypes.func,
-  title: PropTypes.string
+  title: PropTypes.string,
 };
 
 RawButton.defaultProps = {
@@ -35,7 +32,7 @@ RawButton.defaultProps = {
   disabled: false,
   label: 'Add',
   onClick: () => {},
-  title: ''
+  title: '',
 };
 
 const styles = () => ({
@@ -49,8 +46,8 @@ const styles = () => ({
       '& svg': {
         width: '1.3em !important',
         height: '1.3em !important',
-      }
-    }
+      },
+    },
   },
 });
 

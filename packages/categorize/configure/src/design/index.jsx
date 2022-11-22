@@ -2,16 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
-import {
-  FeedbackConfig,
-  InputContainer,
-  layout,
-  settings,
-} from '@pie-lib/config-ui';
-import {
-  countInAnswer,
-  ensureNoExtraChoicesInAnswer,
-} from '@pie-lib/categorize';
+import { FeedbackConfig, InputContainer, layout, settings } from '@pie-lib/config-ui';
+import { countInAnswer, ensureNoExtraChoicesInAnswer } from '@pie-lib/categorize';
 import EditableHtml from '@pie-lib/editable-html';
 import { uid, withDragContext } from '@pie-lib/drag';
 
@@ -61,7 +53,7 @@ export class Design extends React.Component {
     //Ensure that there are no extra choices in correctResponse, if the user has decided that only one choice may be used.
     updatedModel.correctResponse = ensureNoExtraChoicesInAnswer(
       updatedModel.correctResponse || [],
-      updatedModel.choices
+      updatedModel.choices,
     );
 
     //clean categories
@@ -124,9 +116,7 @@ export class Design extends React.Component {
     this.updateModel({
       correctResponse: (correctResponse || []).map((cr) => ({
         ...cr,
-        alternateResponses: (cr.alternateResponses || []).filter(
-          (alt, altIndex) => altIndex !== index
-        ),
+        alternateResponses: (cr.alternateResponses || []).filter((alt, altIndex) => altIndex !== index),
       })),
     });
   };
@@ -145,7 +135,6 @@ export class Design extends React.Component {
       return 1;
     }
     return c.categoryCount || 0;
-
   };
 
   render() {
@@ -173,7 +162,7 @@ export class Design extends React.Component {
       spellCheck = {},
       maxImageWidth = {},
       maxImageHeight = {},
-      withRubric = {}
+      withRubric = {},
     } = configuration || {};
     const {
       allowMultiplePlacementsEnabled,
@@ -183,7 +172,7 @@ export class Design extends React.Component {
       feedbackEnabled,
       spellCheckEnabled,
       errors,
-      rubricEnabled
+      rubricEnabled,
     } = model || {};
 
     const toolbarOpts = {};
@@ -200,16 +189,12 @@ export class Design extends React.Component {
     const config = model.config || {};
     config.choices = config.choices || { label: '', columns: 2 };
 
-    const categories = buildCategories(
-      model.categories || [],
-      model.choices || [],
-      model.correctResponse || []
-    );
+    const categories = buildCategories(model.categories || [], model.choices || [], model.correctResponse || []);
 
     const alternateResponses = buildAlternateResponses(
       model.categories || [],
       model.choices || [],
-      model.correctResponse || []
+      model.correctResponse || [],
     );
 
     const choices = model.choices.map((c) => {
@@ -232,41 +217,32 @@ export class Design extends React.Component {
               onChangeConfiguration={onConfigurationChanged}
               groups={{
                 Settings: {
-                  partialScoring:
-                    partialScoring.settings && toggle(partialScoring.label),
-                  lockChoiceOrder:
-                    lockChoiceOrder.settings && toggle(lockChoiceOrder.label),
-                  categoriesPerRow: categoriesPerRow.settings && numberField(categoriesPerRow.label,
-                    {
-                          label: categoriesPerRow.label,
-                          min: 1,
-                          max: 4,
-                      }),
+                  partialScoring: partialScoring.settings && toggle(partialScoring.label),
+                  lockChoiceOrder: lockChoiceOrder.settings && toggle(lockChoiceOrder.label),
+                  categoriesPerRow:
+                    categoriesPerRow.settings &&
+                    numberField(categoriesPerRow.label, {
+                      label: categoriesPerRow.label,
+                      min: 1,
+                      max: 4,
+                    }),
                   allowMultiplePlacementsEnabled:
-                      allowMultiplePlacements.settings &&
-                      dropdown(allowMultiplePlacements.label, [
-                        multiplePlacements.enabled,
-                        multiplePlacements.disabled,
-                        multiplePlacements.perChoice,
-                      ], ),
+                    allowMultiplePlacements.settings &&
+                    dropdown(allowMultiplePlacements.label, [
+                      multiplePlacements.enabled,
+                      multiplePlacements.disabled,
+                      multiplePlacements.perChoice,
+                    ]),
                   promptEnabled: prompt.settings && toggle(prompt.label),
                   feedbackEnabled: feedback.settings && toggle(feedback.label),
                 },
                 Properties: {
-                  teacherInstructionsEnabled:
-                    teacherInstructions.settings &&
-                    toggle(teacherInstructions.label),
-                  studentInstructionsEnabled:
-                    studentInstructions.settings &&
-                    toggle(studentInstructions.label),
-                  rationaleEnabled:
-                    rationale.settings && toggle(rationale.label),
-                  spellCheckEnabled:
-                    spellCheck.settings && toggle(spellCheck.label),
-                  scoringType:
-                    scoringType.settings &&
-                    radio(scoringType.label, ['auto', 'rubric']),
-                  rubricEnabled: withRubric?.settings && toggle(withRubric?.label)
+                  teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
+                  studentInstructionsEnabled: studentInstructions.settings && toggle(studentInstructions.label),
+                  rationaleEnabled: rationale.settings && toggle(rationale.label),
+                  spellCheckEnabled: spellCheck.settings && toggle(spellCheck.label),
+                  scoringType: scoringType.settings && radio(scoringType.label, ['auto', 'rubric']),
+                  rubricEnabled: withRubric?.settings && toggle(withRubric?.label),
                 },
               }}
             />
@@ -274,10 +250,7 @@ export class Design extends React.Component {
         >
           <div className={classNames(classes.design, className)}>
             {promptEnabled && (
-              <InputContainer
-                label={prompt.label}
-                className={classes.promptHolder}
-              >
+              <InputContainer label={prompt.label} className={classes.promptHolder}>
                 <EditableHtml
                   className={classes.prompt}
                   markup={model.prompt || ''}
@@ -296,10 +269,7 @@ export class Design extends React.Component {
             )}
 
             {teacherInstructionsEnabled && (
-              <InputContainer
-                label={teacherInstructions.label}
-                className={classes.inputHolder}
-              >
+              <InputContainer label={teacherInstructions.label} className={classes.inputHolder}>
                 <EditableHtml
                   className={classes.input}
                   markup={model.teacherInstructions || ''}
@@ -308,8 +278,8 @@ export class Design extends React.Component {
                   nonEmpty={false}
                   toolbarOpts={toolbarOpts}
                   spellCheck={spellCheckEnabled}
-                  maxImageWidth={maxImageWidth && maxImageWidth.teacherInstructions || defaultImageMaxWidth}
-                  maxImageHeight={maxImageHeight && maxImageHeight.teacherInstructions || defaultImageMaxHeight}
+                  maxImageWidth={(maxImageWidth && maxImageWidth.teacherInstructions) || defaultImageMaxWidth}
+                  maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
                   uploadSoundSupport={uploadSoundSupport}
                   languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
                 />
@@ -317,10 +287,7 @@ export class Design extends React.Component {
             )}
 
             {rationaleEnabled && (
-              <InputContainer
-                label={rationale.label}
-                className={classes.inputHolder}
-              >
+              <InputContainer label={rationale.label} className={classes.inputHolder}>
                 <EditableHtml
                   className={classes.input}
                   markup={model.rationale || ''}
@@ -329,8 +296,8 @@ export class Design extends React.Component {
                   nonEmpty={false}
                   toolbarOpts={toolbarOpts}
                   spellCheck={spellCheckEnabled}
-                  maxImageWidth={maxImageWidth && maxImageWidth.rationale || defaultImageMaxWidth}
-                  maxImageHeight={maxImageHeight && maxImageHeight.rationale || defaultImageMaxHeight}
+                  maxImageWidth={(maxImageWidth && maxImageWidth.rationale) || defaultImageMaxWidth}
+                  maxImageHeight={(maxImageHeight && maxImageHeight.rationale) || defaultImageMaxHeight}
                   uploadSoundSupport={uploadSoundSupport}
                   languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
                 />
@@ -394,11 +361,7 @@ export class Design extends React.Component {
             />
 
             {feedbackEnabled && (
-              <FeedbackConfig
-                feedback={model.feedback}
-                onChange={this.changeFeedback}
-                toolbarOpts={toolbarOpts}
-              />
+              <FeedbackConfig feedback={model.feedback} onChange={this.changeFeedback} toolbarOpts={toolbarOpts} />
             )}
           </div>
         </layout.ConfigLayout>

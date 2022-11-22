@@ -10,20 +10,10 @@ import { color } from '@pie-lib/render-ui';
 
 import TraitsHeader from './traitsHeader';
 import TraitTile from './trait';
-import {
-  Arrow,
-  BlockWidth,
-  DragHandleSpace,
-  MultiTraitButton,
-  PrimaryBlockWidth
-} from './common';
-import {
-  DecreaseMaxPoints,
-  DeleteScale,
-  DeleteTrait, InfoDialog,
-} from './modals';
+import { Arrow, BlockWidth, DragHandleSpace, MultiTraitButton, PrimaryBlockWidth } from './common';
+import { DecreaseMaxPoints, DeleteScale, DeleteTrait, InfoDialog } from './modals';
 
-const AdjustedBlockWidth = BlockWidth + (2 * 8); // 8 is padding
+const AdjustedBlockWidth = BlockWidth + 2 * 8; // 8 is padding
 
 const styles = {
   scaleWrapper: {
@@ -32,17 +22,17 @@ const styles = {
     margin: '12px 0',
     wordBreak: 'break-word',
     padding: `16px 0 16px ${DragHandleSpace}px`,
-    position: 'relative'
+    position: 'relative',
   },
   maxPoints: {
     width: '300px',
-    margin: '16px 0 32px'
+    margin: '16px 0 32px',
   },
   trait: {
     background: color.secondaryBackground(),
     margin: '16px 0',
-    padding: '16px'
-  }
+    padding: '16px',
+  },
 };
 
 export class Scale extends React.Component {
@@ -54,7 +44,7 @@ export class Scale extends React.Component {
     showRight: null,
     showLeft: null,
     showInfoDialog: false,
-    infoDialogText: ''
+    infoDialogText: '',
   };
 
   set = (newState) => this.setState(newState);
@@ -66,13 +56,15 @@ export class Scale extends React.Component {
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
-    if (nextProps.excludeZero !== this.props.excludeZero ||
+    if (
+      nextProps.excludeZero !== this.props.excludeZero ||
       nextProps.showStandards !== this.props.showStandards ||
-      nextProps.showDescription !== this.props.showDescription) {
+      nextProps.showDescription !== this.props.showDescription
+    ) {
       this.setState({
         currentPosition: 0,
         showLeft: false,
-        showRight: this.secondaryBlockRef && this.secondaryBlockRef.scrollWidth - this.secondaryBlockRef.offsetWidth
+        showRight: this.secondaryBlockRef && this.secondaryBlockRef.scrollWidth - this.secondaryBlockRef.offsetWidth,
       });
     }
   }
@@ -87,7 +79,7 @@ export class Scale extends React.Component {
     this.setState({
       currentPosition: 0,
       showLeft: false,
-      showRight: this.secondaryBlockRef && this.secondaryBlockRef.scrollWidth - this.secondaryBlockRef.offsetWidth
+      showRight: this.secondaryBlockRef && this.secondaryBlockRef.scrollWidth - this.secondaryBlockRef.offsetWidth,
     });
 
     if (numberValue < maxPoints) {
@@ -103,12 +95,11 @@ export class Scale extends React.Component {
             traits[index].scorePointsDescriptors.push('');
           }
         });
-
       }
 
-      onScaleChanged(scaleIndex, { maxPoints: numberValue, scorePointsLabels, traits })
+      onScaleChanged(scaleIndex, { maxPoints: numberValue, scorePointsLabels, traits });
     }
-  }
+  };
 
   showDecreaseMaxPointsModal = ({ newMaxPoints }) => this.set({ showDecreaseMaxPointsDialog: true, newMaxPoints });
 
@@ -123,7 +114,7 @@ export class Scale extends React.Component {
     }
 
     this.hideDecreaseMaxPointsModal();
-  }
+  };
 
   // Delete Scale
   showDeleteScaleModal = () => this.set({ showDeleteScaleDialog: true });
@@ -136,7 +127,7 @@ export class Scale extends React.Component {
     this.hideDeleteScaleModal();
 
     onScaleRemoved(scaleIndex);
-  }
+  };
 
   // Delete Trait
   showDeleteTraitModal = (traitToDeleteIndex) => this.set({ showDeleteTraitDialog: true, traitToDeleteIndex });
@@ -153,21 +144,18 @@ export class Scale extends React.Component {
     if (traits.length === minNoOfTraits) {
       this.set({
         infoDialogText: `There can't be less than ${minNoOfTraits} scales.`,
-        showInfoDialog: true
+        showInfoDialog: true,
       });
 
       return false;
     }
 
-    traits = [
-      ...traits.slice(0, traitToDeleteIndex),
-      ...traits.slice(traitToDeleteIndex + 1)
-    ];
+    traits = [...traits.slice(0, traitToDeleteIndex), ...traits.slice(traitToDeleteIndex + 1)];
 
     onScaleChanged(scaleIndex, { traits });
 
     this.hideDeleteTraitModal();
-  }
+  };
 
   onTraitAdded = () => {
     const { scale, scaleIndex, onScaleChanged, maxNoOfTraits } = this.props || {};
@@ -176,7 +164,7 @@ export class Scale extends React.Component {
     if (traits.length === maxNoOfTraits) {
       this.set({
         infoDialogText: `There can't be more than ${maxNoOfTraits} scales.`,
-        showInfoDialog: true
+        showInfoDialog: true,
       });
 
       return false;
@@ -186,14 +174,11 @@ export class Scale extends React.Component {
       name: '',
       description: '',
       standards: [],
-      scorePointsDescriptors: Array.from(
-        { length: scorePointsLabels.length },
-        () => ''
-      ),
+      scorePointsDescriptors: Array.from({ length: scorePointsLabels.length }, () => ''),
     });
 
     onScaleChanged(scaleIndex, { traits });
-  }
+  };
 
   onTraitChanged = (traitIndex, trait) => {
     const { scale, scaleIndex, onScaleChanged } = this.props || {};
@@ -204,7 +189,7 @@ export class Scale extends React.Component {
 
       onScaleChanged(scaleIndex, { traits });
     }
-  }
+  };
 
   onTraitDropped = (source, newIndex) => {
     const { scale, scaleIndex, onScaleChanged, maxNoOfTraits, minNoOfTraits } = this.props || {};
@@ -214,25 +199,22 @@ export class Scale extends React.Component {
 
     const remainingTraits = traits.filter((item, index) => index !== oldIndex);
 
-    const newTraits = [
-      ...remainingTraits.slice(0, newIndex),
-      cup,
-      ...remainingTraits.slice(newIndex),
-    ];
+    const newTraits = [...remainingTraits.slice(0, newIndex), cup, ...remainingTraits.slice(newIndex)];
 
     onScaleChanged(scaleIndex, { traits: newTraits });
-  }
+  };
 
   decreasePosition = () => {
     const { currentPosition } = this.state;
-    const decreasedPosition = currentPosition - (currentPosition === AdjustedBlockWidth / 2 ? AdjustedBlockWidth / 2 : AdjustedBlockWidth);
+    const decreasedPosition =
+      currentPosition - (currentPosition === AdjustedBlockWidth / 2 ? AdjustedBlockWidth / 2 : AdjustedBlockWidth);
 
     this.setState({
       currentPosition: decreasedPosition,
       showRight: decreasedPosition < this.secondaryBlockRef.scrollWidth - this.secondaryBlockRef.offsetWidth,
-      showLeft: decreasedPosition > 0
+      showLeft: decreasedPosition > 0,
     });
-  }
+  };
 
   increasePosition = () => {
     const { currentPosition } = this.state;
@@ -241,9 +223,9 @@ export class Scale extends React.Component {
     this.setState({
       currentPosition: increasedPosition,
       showRight: increasedPosition < this.secondaryBlockRef.scrollWidth - this.secondaryBlockRef.offsetWidth,
-      showLeft: increasedPosition > 0
+      showLeft: increasedPosition > 0,
     });
-  }
+  };
 
   render() {
     const {
@@ -260,15 +242,10 @@ export class Scale extends React.Component {
       spellCheck,
       width,
       uploadSoundSupport,
-      maxPointsEnabled
+      maxPointsEnabled,
     } = this.props || {};
 
-    const {
-      maxPoints,
-      scorePointsLabels,
-      traitLabel,
-      traits
-    } = scale || {};
+    const { maxPoints, scorePointsLabels, traitLabel, traits } = scale || {};
 
     const {
       showDecreaseMaxPointsDialog,
@@ -278,11 +255,11 @@ export class Scale extends React.Component {
       showRight,
       showLeft,
       showInfoDialog,
-      infoDialogText
+      infoDialogText,
     } = this.state;
 
     const scorePointsValues = [];
-    const secondaryBlockWidth = (parseInt(width) - DragHandleSpace - PrimaryBlockWidth) || 320; // 320 is minWidth
+    const secondaryBlockWidth = parseInt(width) - DragHandleSpace - PrimaryBlockWidth || 320; // 320 is minWidth
 
     // determining the score points values
     for (let pointValue = maxPoints; pointValue >= excludeZero ? 1 : 0; pointValue -= 1) {
@@ -293,12 +270,12 @@ export class Scale extends React.Component {
       <div
         key={`scale-${scaleIndex}`}
         className={classes.scaleWrapper}
-        ref={ref => {
+        ref={(ref) => {
           this.scaleWrapper = ref;
         }}
       >
         <TraitsHeader
-          setSecondaryBlockRef={ref => {
+          setSecondaryBlockRef={(ref) => {
             if (ref) {
               this.secondaryBlockRef = ref;
             }
@@ -308,7 +285,7 @@ export class Scale extends React.Component {
           scorePointsValues={scorePointsValues}
           scorePointsLabels={scorePointsLabels}
           onScaleChange={(params) => onScaleChanged(scaleIndex, params)}
-          onTraitLabelChange={label => onScaleChanged(scaleIndex, { traitLabel: label })}
+          onTraitLabelChange={(label) => onScaleChanged(scaleIndex, { traitLabel: label })}
           showStandards={showStandards}
           showDescription={showDescription}
           showLevelTagInput={showLevelTagInput}
@@ -332,7 +309,7 @@ export class Scale extends React.Component {
             scorePointsValues={scorePointsValues}
             scorePointsLabels={scorePointsLabels}
             onTraitRemoved={() => this.showDeleteTraitModal(index)}
-            onTraitChanged={trait => this.onTraitChanged(index, trait)}
+            onTraitChanged={(trait) => this.onTraitChanged(index, trait)}
             onTraitDropped={this.onTraitDropped}
             showStandards={showStandards}
             showDescription={showDescription}
@@ -351,7 +328,7 @@ export class Scale extends React.Component {
           left={`${PrimaryBlockWidth + DragHandleSpace}px`}
           showLevelTagInput={showLevelTagInput}
         >
-          <ArrowBackIosIcon/>
+          <ArrowBackIosIcon />
         </Arrow>
         <Arrow
           width={`${AdjustedBlockWidth / 2}px`}
@@ -359,11 +336,11 @@ export class Scale extends React.Component {
           onClick={this.increasePosition}
           showLevelTagInput={showLevelTagInput}
         >
-          <ArrowForwardIosIcon/>
+          <ArrowForwardIosIcon />
         </Arrow>
 
         <MultiTraitButton onClick={this.onTraitAdded}>
-          <div dangerouslySetInnerHTML={{ __html: `Add ${traitLabel || ' Trait'}` }}/>
+          <div dangerouslySetInnerHTML={{ __html: `Add ${traitLabel || ' Trait'}` }} />
         </MultiTraitButton>
 
         <DecreaseMaxPoints
@@ -384,11 +361,7 @@ export class Scale extends React.Component {
           deleteTrait={this.onTraitRemoved}
           cancel={this.hideDeleteTraitModal}
         />
-        <InfoDialog
-          open={showInfoDialog}
-          text={infoDialogText}
-          onClose={() => this.set({ showInfoDialog: false })}
-        />
+        <InfoDialog open={showInfoDialog} text={infoDialogText} onClose={() => this.set({ showInfoDialog: false })} />
       </div>
     );
   }
@@ -400,12 +373,14 @@ Scale.propTypes = {
     maxPoints: PropTypes.number,
     scorePointsLabels: PropTypes.arrayOf(PropTypes.string),
     traitLabel: PropTypes.string,
-    traits: PropTypes.arrayOf(PropTypes.shape({
-      name: PropTypes.string,
-      standards: PropTypes.arrayOf(PropTypes.string),
-      scorePointsDescriptors: PropTypes.arrayOf(PropTypes.string),
-      description: PropTypes.string,
-    }))
+    traits: PropTypes.arrayOf(
+      PropTypes.shape({
+        name: PropTypes.string,
+        standards: PropTypes.arrayOf(PropTypes.string),
+        scorePointsDescriptors: PropTypes.arrayOf(PropTypes.string),
+        description: PropTypes.string,
+      }),
+    ),
   }),
   width: PropTypes.string,
   excludeZero: PropTypes.bool,
@@ -418,6 +393,6 @@ Scale.propTypes = {
   uploadSoundSupport: PropTypes.object,
   showScorePointLabels: PropTypes.bool,
   enableDragAndDrop: PropTypes.bool,
-}
+};
 
 export default withDragContext(withStyles(styles)(Scale));

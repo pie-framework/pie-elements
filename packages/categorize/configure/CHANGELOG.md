@@ -5,1411 +5,811 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 # [6.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@6.2.2...@pie-element/categorize-configure@6.3.0) (2022-11-15)
 
-
 ### Bug Fixes
 
-* **categorize:** move Lock Choice Order into settings - PD-1984 ([912b072](https://github.com/pie-framework/pie-elements/commit/912b072ea7c9555bba5ad2c18167326a7d82922e))
-
+- **categorize:** move Lock Choice Order into settings - PD-1984 ([912b072](https://github.com/pie-framework/pie-elements/commit/912b072ea7c9555bba5ad2c18167326a7d82922e))
 
 ### Features
 
-* **categorize:** add constant for multiplePlacements choices-PD-1974 ([05462c9](https://github.com/pie-framework/pie-elements/commit/05462c9a4ae50c93d2ae980bc8fca8a58e986436))
-* **categorize:** delete unnecessarry spaces and avoid choiceCount undefined:PD-1974 ([4fca67f](https://github.com/pie-framework/pie-elements/commit/4fca67f878c06e694a9553c76f5516b84116044b))
-* **categorize:** simplify if condition - PD-1974 ([2f795cd](https://github.com/pie-framework/pie-elements/commit/2f795cd5c792d94b2d680e0a997dff11f0d8144a))
-* **categorize:** solve conflicts: PD-1984 ([1d746f6](https://github.com/pie-framework/pie-elements/commit/1d746f622129656c676517408ae4fb75b918e0b2))
-* **categorize:** update same line return method-PD-1984 ([1bbe4b3](https://github.com/pie-framework/pie-elements/commit/1bbe4b36143e6fd77a005e334a3b79fb4ba94519))
-* **categorize:** updatel model from controller to be consistent with the one in configure-PD-1985 ([d7f6e3f](https://github.com/pie-framework/pie-elements/commit/d7f6e3f47c28f9e0d41738a70ecff49c9b72a6af))
-
-
-
-
+- **categorize:** add constant for multiplePlacements choices-PD-1974 ([05462c9](https://github.com/pie-framework/pie-elements/commit/05462c9a4ae50c93d2ae980bc8fca8a58e986436))
+- **categorize:** delete unnecessarry spaces and avoid choiceCount undefined:PD-1974 ([4fca67f](https://github.com/pie-framework/pie-elements/commit/4fca67f878c06e694a9553c76f5516b84116044b))
+- **categorize:** simplify if condition - PD-1974 ([2f795cd](https://github.com/pie-framework/pie-elements/commit/2f795cd5c792d94b2d680e0a997dff11f0d8144a))
+- **categorize:** solve conflicts: PD-1984 ([1d746f6](https://github.com/pie-framework/pie-elements/commit/1d746f622129656c676517408ae4fb75b918e0b2))
+- **categorize:** update same line return method-PD-1984 ([1bbe4b3](https://github.com/pie-framework/pie-elements/commit/1bbe4b36143e6fd77a005e334a3b79fb4ba94519))
+- **categorize:** updatel model from controller to be consistent with the one in configure-PD-1985 ([d7f6e3f](https://github.com/pie-framework/pie-elements/commit/d7f6e3f47c28f9e0d41738a70ecff49c9b72a6af))
 
 ## [6.2.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@6.2.1...@pie-element/categorize-configure@6.2.2) (2022-11-11)
 
-
 ### Bug Fixes
 
-* add sanity checks ([1cfd187](https://github.com/pie-framework/pie-elements/commit/1cfd187d2c2bab2d589aa2d7b7563b1c69e3295e))
-
-
-
-
+- add sanity checks ([1cfd187](https://github.com/pie-framework/pie-elements/commit/1cfd187d2c2bab2d589aa2d7b7563b1c69e3295e))
 
 ## [6.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@6.2.0...@pie-element/categorize-configure@6.2.1) (2022-10-31)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
 
-
-
-
-
 # [6.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@6.1.9...@pie-element/categorize-configure@6.2.0) (2022-10-17)
-
 
 ### Features
 
-* enable spanish and special characters in author PD-2120 ([85fd3dd](https://github.com/pie-framework/pie-elements/commit/85fd3dd0fc10da1a2dfd5a842809c625790f8ba9))
-* set withRubric to false in item default configurations. Set rubricEnabled to true if it's enabled for drawing-response and extended-text-entry ([a209057](https://github.com/pie-framework/pie-elements/commit/a209057f5a3fa5438efc8595453c89c11959a8f5))
-* update libs ([7e174fb](https://github.com/pie-framework/pie-elements/commit/7e174fba75e7ea668900ad5c103751cefe33e2af))
-* **categorize:** add pie-api config PD-23 ([79a3424](https://github.com/pie-framework/pie-elements/commit/79a3424efbb4e32097028da0bada6c493ad4d0e5))
-* **categorize:** add settings to enable rubric. Add withRubric prop to configuration and rubricEnabled prop to model PD-2019 ([fc719ea](https://github.com/pie-framework/pie-elements/commit/fc719ea36f0a3fd74829e4e550222d1d1a9b0df8))
-* **categorize:** add uploadSoundSupport property PD-23-updated ([74eb10b](https://github.com/pie-framework/pie-elements/commit/74eb10b6187cdd5c068820e5079e88230246b0d4))
-* **categorize:** fix tests with default val for `withRubric` PD-2093 ([0113d16](https://github.com/pie-framework/pie-elements/commit/0113d1676a65c8ace6ccb1fbfc1a8540e11e3da1))
-
-
-
-
+- enable spanish and special characters in author PD-2120 ([85fd3dd](https://github.com/pie-framework/pie-elements/commit/85fd3dd0fc10da1a2dfd5a842809c625790f8ba9))
+- set withRubric to false in item default configurations. Set rubricEnabled to true if it's enabled for drawing-response and extended-text-entry ([a209057](https://github.com/pie-framework/pie-elements/commit/a209057f5a3fa5438efc8595453c89c11959a8f5))
+- update libs ([7e174fb](https://github.com/pie-framework/pie-elements/commit/7e174fba75e7ea668900ad5c103751cefe33e2af))
+- **categorize:** add pie-api config PD-23 ([79a3424](https://github.com/pie-framework/pie-elements/commit/79a3424efbb4e32097028da0bada6c493ad4d0e5))
+- **categorize:** add settings to enable rubric. Add withRubric prop to configuration and rubricEnabled prop to model PD-2019 ([fc719ea](https://github.com/pie-framework/pie-elements/commit/fc719ea36f0a3fd74829e4e550222d1d1a9b0df8))
+- **categorize:** add uploadSoundSupport property PD-23-updated ([74eb10b](https://github.com/pie-framework/pie-elements/commit/74eb10b6187cdd5c068820e5079e88230246b0d4))
+- **categorize:** fix tests with default val for `withRubric` PD-2093 ([0113d16](https://github.com/pie-framework/pie-elements/commit/0113d1676a65c8ace6ccb1fbfc1a8540e11e3da1))
 
 ## [6.1.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@6.1.8...@pie-element/categorize-configure@6.1.9) (2022-09-29)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
 
-
-
-
-
 ## [6.1.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@6.1.7...@pie-element/categorize-configure@6.1.8) (2022-09-14)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
 
-
-
-
-
 ## [6.1.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@6.1.6...@pie-element/categorize-configure@6.1.7) (2022-08-31)
-
 
 ### Bug Fixes
 
-* **categorize:** filter choices to prevent crash of wrongly imported items PD-1982 ([05c5ead](https://github.com/pie-framework/pie-elements/commit/05c5eadd4275a6f29ec1cbde6ea699a8379b68d5))
-
-
-
-
+- **categorize:** filter choices to prevent crash of wrongly imported items PD-1982 ([05c5ead](https://github.com/pie-framework/pie-elements/commit/05c5eadd4275a6f29ec1cbde6ea699a8379b68d5))
 
 ## [6.1.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@6.1.5...@pie-element/categorize-configure@6.1.6) (2022-08-16)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
 
-
-
-
-
 ## [6.1.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@6.1.4...@pie-element/categorize-configure@6.1.5) (2022-08-08)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
-
-
-
-
 
 ## [6.1.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@6.1.3...@pie-element/categorize-configure@6.1.4) (2022-08-02)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
 
-
-
-
-
 ## [6.1.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@6.1.2...@pie-element/categorize-configure@6.1.3) (2022-07-22)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
-
-
-
-
 
 ## [6.1.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@6.1.1...@pie-element/categorize-configure@6.1.2) (2022-07-20)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
 
-
-
-
-
 ## [6.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@6.1.0...@pie-element/categorize-configure@6.1.1) (2022-07-19)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
 
-
-
-
-
 # [6.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@6.0.0...@pie-element/categorize-configure@6.1.0) (2022-06-28)
-
 
 ### Features
 
-* **categorize:**  add maxImageWidth and maxImageHeight props PD-1801 ([c438cea](https://github.com/pie-framework/pie-elements/commit/c438cea310e6e5cdfbd8c057fc9aadb36d53bb76))
-* **categorize:** implement generate validation message method, add info tooltip PD-1740 ([b315f4e](https://github.com/pie-framework/pie-elements/commit/b315f4ea0bc1461da0a8469bd9df383bc98e78ca))
-* **categorize:** implement ui/ux for validation PD-1740 ([0a05866](https://github.com/pie-framework/pie-elements/commit/0a05866af89b0123b8979ef3b4916af4b2a0cdf9))
-
-
-
-
+- **categorize:** add maxImageWidth and maxImageHeight props PD-1801 ([c438cea](https://github.com/pie-framework/pie-elements/commit/c438cea310e6e5cdfbd8c057fc9aadb36d53bb76))
+- **categorize:** implement generate validation message method, add info tooltip PD-1740 ([b315f4e](https://github.com/pie-framework/pie-elements/commit/b315f4ea0bc1461da0a8469bd9df383bc98e78ca))
+- **categorize:** implement ui/ux for validation PD-1740 ([0a05866](https://github.com/pie-framework/pie-elements/commit/0a05866af89b0123b8979ef3b4916af4b2a0cdf9))
 
 # [6.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@5.4.25...@pie-element/categorize-configure@6.0.0) (2022-06-28)
 
-
 ### chore
 
-* Merge master with develop. ([cdca48a](https://github.com/pie-framework/pie-elements/commit/cdca48abaa1d4179e4a961e13d171e14b7ed2444))
-
+- Merge master with develop. ([cdca48a](https://github.com/pie-framework/pie-elements/commit/cdca48abaa1d4179e4a961e13d171e14b7ed2444))
 
 ### BREAKING CHANGES
 
-* Image percent buttons were removed from toolbar.
-New properties maxImageWidth and maxImageHeight were added.
-
-
-
-
+- Image percent buttons were removed from toolbar.
+  New properties maxImageWidth and maxImageHeight were added.
 
 ## [5.4.25](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@5.4.24...@pie-element/categorize-configure@5.4.25) (2022-06-13)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
 
-
-
-
-
 ## [5.4.24](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@5.4.23...@pie-element/categorize-configure@5.4.24) (2022-05-30)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
-
-
-
-
 
 ## [5.4.23](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@5.4.22...@pie-element/categorize-configure@5.4.23) (2022-05-16)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
 
-
-
-
-
 ## [5.4.22](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@5.4.21...@pie-element/categorize-configure@5.4.22) (2022-05-09)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
-
-
-
-
 
 ## [5.4.21](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@5.4.20...@pie-element/categorize-configure@5.4.21) (2022-05-03)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
 
-
-
-
-
 ## [5.4.20](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@5.4.19...@pie-element/categorize-configure@5.4.20) (2022-04-12)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
-
-
-
-
 
 ## [5.4.19](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@5.4.18...@pie-element/categorize-configure@5.4.19) (2022-03-28)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
 
-
-
-
-
 ## [5.4.18](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@5.4.17...@pie-element/categorize-configure@5.4.18) (2022-03-22)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
-
-
-
-
 
 ## [5.4.17](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@5.4.16...@pie-element/categorize-configure@5.4.17) (2022-03-08)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
 
-
-
-
-
 ## [5.4.16](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@5.4.15...@pie-element/categorize-configure@5.4.16) (2022-03-08)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
-
-
-
-
 
 ## [5.4.15](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@5.4.14...@pie-element/categorize-configure@5.4.15) (2022-02-21)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
 
-
-
-
-
 ## [5.4.14](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@5.4.13...@pie-element/categorize-configure@5.4.14) (2022-02-04)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
-
-
-
-
 
 ## [5.4.13](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@5.4.12...@pie-element/categorize-configure@5.4.13) (2022-01-24)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
 
-
-
-
-
 ## [5.4.12](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@5.4.11...@pie-element/categorize-configure@5.4.12) (2022-01-10)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
-
-
-
-
 
 ## [5.4.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@5.4.10...@pie-element/categorize-configure@5.4.11) (2021-12-23)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
 
-
-
-
-
 ## [5.4.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@5.4.8...@pie-element/categorize-configure@5.4.9) (2021-12-13)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
-
-
-
-
 
 ## [5.4.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@5.4.5...@pie-element/categorize-configure@5.4.6) (2021-11-29)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
 
-
-
-
-
 ## [5.4.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@5.4.4...@pie-element/categorize-configure@5.4.5) (2021-10-04)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
 
-
-
-
-
 ## [5.4.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@5.4.3...@pie-element/categorize-configure@5.4.4) (2021-09-20)
-
 
 ### Bug Fixes
 
-* pie-lib updates ([e521c2f](https://github.com/pie-framework/pie-elements/commit/e521c2f1a44aa7f3e14f82a1cee05ceb484ed0a6))
-* Updated pie-lib versions ([2fe4c5d](https://github.com/pie-framework/pie-elements/commit/2fe4c5d0be2d40f5fdb34815855695a7f1087f56))
-* Updated pie-lib versions ([1c23830](https://github.com/pie-framework/pie-elements/commit/1c23830fc75d1de5f7bb3bb16de3c665ae5fa350))
-
-
-
-
+- pie-lib updates ([e521c2f](https://github.com/pie-framework/pie-elements/commit/e521c2f1a44aa7f3e14f82a1cee05ceb484ed0a6))
+- Updated pie-lib versions ([2fe4c5d](https://github.com/pie-framework/pie-elements/commit/2fe4c5d0be2d40f5fdb34815855695a7f1087f56))
+- Updated pie-lib versions ([1c23830](https://github.com/pie-framework/pie-elements/commit/1c23830fc75d1de5f7bb3bb16de3c665ae5fa350))
 
 ## [5.4.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@5.4.2...@pie-element/categorize-configure@5.4.3) (2021-08-05)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
 
-
-
-
-
 ## [5.4.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@5.4.0...@pie-element/categorize-configure@5.4.2) (2021-08-05)
-
 
 ### Bug Fixes
 
-* force bump ([5ea7295](https://github.com/pie-framework/pie-elements/commit/5ea7295e4755fbc492a76e7ec69e5fc35b196919))
-
-
-
-
+- force bump ([5ea7295](https://github.com/pie-framework/pie-elements/commit/5ea7295e4755fbc492a76e7ec69e5fc35b196919))
 
 # [5.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@5.3.0...@pie-element/categorize-configure@5.4.0) (2021-06-29)
 
-
 ### Bug Fixes
 
-* **categorize:** Fixed Row labels appearance and the display of categories - PD-197 ([#594](https://github.com/pie-framework/pie-elements/issues/594)) ([825724e](https://github.com/pie-framework/pie-elements/commit/825724e57a3c95b29c4f9ecfafea0618ed38b250))
-
+- **categorize:** Fixed Row labels appearance and the display of categories - PD-197 ([#594](https://github.com/pie-framework/pie-elements/issues/594)) ([825724e](https://github.com/pie-framework/pie-elements/commit/825724e57a3c95b29c4f9ecfafea0618ed38b250))
 
 ### Features
 
-* **categorize:** Changed draggable tokens to be sized according to their content PD-401 ([#609](https://github.com/pie-framework/pie-elements/issues/609)) ([e5ae5d5](https://github.com/pie-framework/pie-elements/commit/e5ae5d5db3188a8bd732048ee4b70761810815e5))
-* remove audio and video buttons from various fields of various items PD-1180 ([#601](https://github.com/pie-framework/pie-elements/issues/601)) ([8766b25](https://github.com/pie-framework/pie-elements/commit/8766b25690f5dde6c3e896860d63e205bf3c831b))
-
-
-
-
+- **categorize:** Changed draggable tokens to be sized according to their content PD-401 ([#609](https://github.com/pie-framework/pie-elements/issues/609)) ([e5ae5d5](https://github.com/pie-framework/pie-elements/commit/e5ae5d5db3188a8bd732048ee4b70761810815e5))
+- remove audio and video buttons from various fields of various items PD-1180 ([#601](https://github.com/pie-framework/pie-elements/issues/601)) ([8766b25](https://github.com/pie-framework/pie-elements/commit/8766b25690f5dde6c3e896860d63e205bf3c831b))
 
 # [5.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@5.2.23...@pie-element/categorize-configure@5.3.0) (2021-04-07)
 
-
 ### Features
 
-* merge pie-ui into pie-elements PD-977 ([01ebfd7](https://github.com/pie-framework/pie-elements/commit/01ebfd7ce98b041dd0573575efd8b6da03f22162))
-
-
-
-
+- merge pie-ui into pie-elements PD-977 ([01ebfd7](https://github.com/pie-framework/pie-elements/commit/01ebfd7ce98b041dd0573575efd8b6da03f22162))
 
 ## [5.2.23](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@5.2.20...@pie-element/categorize-configure@5.2.23) (2021-03-03)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
 
-
-
-
-
 ## [5.2.20](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@5.2.19...@pie-element/categorize-configure@5.2.20) (2021-03-03)
-
 
 ### Bug Fixes
 
-* **categorize:** fix height for droppable-placeholder ([ff6b2c9](https://github.com/pie-framework/pie-elements/commit/ff6b2c92fb5d6444188069b5c1a463596c8fdbb2))
-
-
-
-
+- **categorize:** fix height for droppable-placeholder ([ff6b2c9](https://github.com/pie-framework/pie-elements/commit/ff6b2c92fb5d6444188069b5c1a463596c8fdbb2))
 
 ## [5.2.19](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@5.2.18...@pie-element/categorize-configure@5.2.19) (2021-02-04)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
 
-
-
-
-
 ## [5.2.18](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@5.2.17...@pie-element/categorize-configure@5.2.18) (2021-02-02)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
-
-
-
-
 
 ## [5.2.17](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@5.2.16...@pie-element/categorize-configure@5.2.17) (2020-11-07)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
 
-
-
-
-
 ## [5.2.16](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@5.2.15...@pie-element/categorize-configure@5.2.16) (2020-10-29)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
-
-
-
-
 
 ## [5.2.15](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@5.2.14...@pie-element/categorize-configure@5.2.15) (2020-10-29)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
 
-
-
-
-
 ## [5.2.14](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@5.2.13...@pie-element/categorize-configure@5.2.14) (2020-10-16)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
-
-
-
-
 
 ## [5.2.13](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@5.2.12...@pie-element/categorize-configure@5.2.13) (2020-10-02)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
 
-
-
-
-
 ## [5.2.12](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@5.2.11...@pie-element/categorize-configure@5.2.12) (2020-09-23)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
-
-
-
-
 
 ## [5.2.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@5.2.10...@pie-element/categorize-configure@5.2.11) (2020-09-23)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
 
-
-
-
-
 ## [5.2.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@5.2.9...@pie-element/categorize-configure@5.2.10) (2020-09-07)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
-
-
-
-
 
 ## [5.2.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@5.2.8...@pie-element/categorize-configure@5.2.9) (2020-08-25)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
 
-
-
-
-
 ## [5.2.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@5.2.7...@pie-element/categorize-configure@5.2.8) (2020-08-13)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
-
-
-
-
 
 ## [5.2.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@5.2.6...@pie-element/categorize-configure@5.2.7) (2020-08-07)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
 
-
-
-
-
 ## [5.2.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@5.2.5...@pie-element/categorize-configure@5.2.6) (2020-05-25)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
 
-
-
-
-
 ## [5.2.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@5.2.4...@pie-element/categorize-configure@5.2.5) (2020-05-25)
-
 
 ### Bug Fixes
 
-* bump deps ([c6080d6](https://github.com/pie-framework/pie-elements/commit/c6080d6))
-
-
-
-
+- bump deps ([c6080d6](https://github.com/pie-framework/pie-elements/commit/c6080d6))
 
 ## [5.2.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@5.2.3...@pie-element/categorize-configure@5.2.4) (2020-04-28)
 
-
 ### Bug Fixes
 
-* bump ui/lib versions ([45f0da6](https://github.com/pie-framework/pie-elements/commit/45f0da6))
-* ui+libs update ([6127de2](https://github.com/pie-framework/pie-elements/commit/6127de2))
-* update ui/lib versions ([0226b0b](https://github.com/pie-framework/pie-elements/commit/0226b0b))
-
-
-
-
+- bump ui/lib versions ([45f0da6](https://github.com/pie-framework/pie-elements/commit/45f0da6))
+- ui+libs update ([6127de2](https://github.com/pie-framework/pie-elements/commit/6127de2))
+- update ui/lib versions ([0226b0b](https://github.com/pie-framework/pie-elements/commit/0226b0b))
 
 ## [5.2.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@5.2.2...@pie-element/categorize-configure@5.2.3) (2020-04-14)
 
-
 ### Bug Fixes
 
-* bump ui/lib versions ([3edb232](https://github.com/pie-framework/pie-elements/commit/3edb232))
-
-
-
-
+- bump ui/lib versions ([3edb232](https://github.com/pie-framework/pie-elements/commit/3edb232))
 
 ## [5.2.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@5.2.1...@pie-element/categorize-configure@5.2.2) (2020-04-14)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
 
-
-
-
-
 ## [5.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@5.1.2...@pie-element/categorize-configure@5.2.1) (2020-04-10)
-
 
 ### Bug Fixes
 
-* bump all packages to avoid tag conflict ([d9ec9a8](https://github.com/pie-framework/pie-elements/commit/d9ec9a8))
-* bump lib and ui versions ([a882cbf](https://github.com/pie-framework/pie-elements/commit/a882cbf))
-* bump ui versions ([5b9d99f](https://github.com/pie-framework/pie-elements/commit/5b9d99f))
-
-
-
-
+- bump all packages to avoid tag conflict ([d9ec9a8](https://github.com/pie-framework/pie-elements/commit/d9ec9a8))
+- bump lib and ui versions ([a882cbf](https://github.com/pie-framework/pie-elements/commit/a882cbf))
+- bump ui versions ([5b9d99f](https://github.com/pie-framework/pie-elements/commit/5b9d99f))
 
 ## [5.1.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@5.1.2...@pie-element/categorize-configure@5.1.2) (2020-04-10)
 
-
 ### Bug Fixes
 
-* bump lib and ui versions ([a882cbf](https://github.com/pie-framework/pie-elements/commit/a882cbf))
-* bump ui versions ([5b9d99f](https://github.com/pie-framework/pie-elements/commit/5b9d99f))
-
-
-
-
+- bump lib and ui versions ([a882cbf](https://github.com/pie-framework/pie-elements/commit/a882cbf))
+- bump ui versions ([5b9d99f](https://github.com/pie-framework/pie-elements/commit/5b9d99f))
 
 ## [5.1.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@5.1.1...@pie-element/categorize-configure@5.1.2) (2020-02-18)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
 
-
-
-
-
 ## [5.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@5.1.0...@pie-element/categorize-configure@5.1.1) (2019-12-18)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
 
-
-
-
-
 # [5.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@5.0.2...@pie-element/categorize-configure@5.1.0) (2019-12-18)
-
 
 ### Bug Fixes
 
-* bump render-ui@^4.5.3 ([996da64](https://github.com/pie-framework/pie-elements/commit/996da64))
-
+- bump render-ui@^4.5.3 ([996da64](https://github.com/pie-framework/pie-elements/commit/996da64))
 
 ### Features
 
-* use HtmlAndMath from render-ui ([8c516c3](https://github.com/pie-framework/pie-elements/commit/8c516c3))
-
-
-
-
+- use HtmlAndMath from render-ui ([8c516c3](https://github.com/pie-framework/pie-elements/commit/8c516c3))
 
 ## [5.0.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@5.0.1...@pie-element/categorize-configure@5.0.2) (2019-12-03)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
 
-
-
-
-
 ## [5.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@5.0.0...@pie-element/categorize-configure@5.0.1) (2019-11-06)
-
 
 ### Bug Fixes
 
-* Hide Partial Scoring option from Settings Panel setting to false by default. ([1d0f617](https://github.com/pie-framework/pie-elements/commit/1d0f617))
-
-
-
-
+- Hide Partial Scoring option from Settings Panel setting to false by default. ([1d0f617](https://github.com/pie-framework/pie-elements/commit/1d0f617))
 
 # [5.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@4.1.3...@pie-element/categorize-configure@5.0.0) (2019-10-08)
 
-
-* Andreea/ch3969/for all items default values should be true (#355) ([9916c38](https://github.com/pie-framework/pie-elements/commit/9916c38)), closes [#355](https://github.com/pie-framework/pie-elements/issues/355)
-
+- Andreea/ch3969/for all items default values should be true (#355) ([9916c38](https://github.com/pie-framework/pie-elements/commit/9916c38)), closes [#355](https://github.com/pie-framework/pie-elements/issues/355)
 
 ### BREAKING CHANGES
 
-* allowFeedback was replaced with feedbackEnabled.
+- allowFeedback was replaced with feedbackEnabled.
 
-* fix(charting): Set feedbackEnabled, rationaleEnabled, teacherInstructions, studentInstructions value on true by default.
+- fix(charting): Set feedbackEnabled, rationaleEnabled, teacherInstructions, studentInstructions value on true by default.
 
-* fix(drag-in-the-blank): Set rationaleEnabled, teacherInstructions, studentInstructions value on true by default.
+- fix(drag-in-the-blank): Set rationaleEnabled, teacherInstructions, studentInstructions value on true by default.
 
-* fix(drawing-response): Set rationaleEnabled, teacherInstructions, studentInstructions value on true by default.
+- fix(drawing-response): Set rationaleEnabled, teacherInstructions, studentInstructions value on true by default.
 
-* fix(ebsr): Set feedbackEnabled, rationaleEnabled, teacherInstructions, studentInstructions value on true by default.
+- fix(ebsr): Set feedbackEnabled, rationaleEnabled, teacherInstructions, studentInstructions value on true by default.
 
-* fix(explicit-constructed-response): Set rationaleEnabled, teacherInstructions, studentInstructions value on true by default.
+- fix(explicit-constructed-response): Set rationaleEnabled, teacherInstructions, studentInstructions value on true by default.
 
-* fix(extended-text-entry): Set feedbackEnabled, rationaleEnabled, teacherInstructions, studentInstructions value on true by default.
+- fix(extended-text-entry): Set feedbackEnabled, rationaleEnabled, teacherInstructions, studentInstructions value on true by default.
 
-* fix(graph-lines): Set rationaleEnabled, teacherInstructions, studentInstructions value on true by default.
+- fix(graph-lines): Set rationaleEnabled, teacherInstructions, studentInstructions value on true by default.
 
-* fix(graphing): Set rationaleEnabled, teacherInstructions, studentInstructions value on true by default.
+- fix(graphing): Set rationaleEnabled, teacherInstructions, studentInstructions value on true by default.
 
-* fix(hotspot): Set rationaleEnabled, teacherInstructions, studentInstructions value on true by default.
+- fix(hotspot): Set rationaleEnabled, teacherInstructions, studentInstructions value on true by default.
 
-* fix(image-cloze-association): Set rationaleEnabled, teacherInstructions, studentInstructions value on true by default.
+- fix(image-cloze-association): Set rationaleEnabled, teacherInstructions, studentInstructions value on true by default.
 
-* fix(inline-dropdown): Set rationaleEnabled, teacherInstructions, studentInstructions value on true by default.
+- fix(inline-dropdown): Set rationaleEnabled, teacherInstructions, studentInstructions value on true by default.
 
-* fix(match): replaced usage of allowFeedback with feedbackEnabled.  Set feedbackEnabled, rationaleEnabled, teacherInstructions, studentInstructions value on true by default.
-* allowFeedback was replaced with feedbackEnabled. `configuration.feedback.enabled` was moved to `model.feedbackEnabled`.
+- fix(match): replaced usage of allowFeedback with feedbackEnabled. Set feedbackEnabled, rationaleEnabled, teacherInstructions, studentInstructions value on true by default.
+- allowFeedback was replaced with feedbackEnabled. `configuration.feedback.enabled` was moved to `model.feedbackEnabled`.
 
-* fix(math-inline): Set feedbackEnabled, rationaleEnabled, teacherInstructions, studentInstructions value on true by default.
+- fix(math-inline): Set feedbackEnabled, rationaleEnabled, teacherInstructions, studentInstructions value on true by default.
 
-* fix(multiple-choice): Set feedbackEnabled, rationaleEnabled, teacherInstructions, studentInstructions value on true by default.
+- fix(multiple-choice): Set feedbackEnabled, rationaleEnabled, teacherInstructions, studentInstructions value on true by default.
 
-* fix(placement-ordering): replaced usage of allowFeedback with feedbackEnabled.  Set feedbackEnabled, rationaleEnabled, teacherInstructions, studentInstructions value on true by default.
-* allowFeedback was replaced with feedbackEnabled. `configuration.feedback.enabled` was moved to `model.feedbackEnabled`.
+- fix(placement-ordering): replaced usage of allowFeedback with feedbackEnabled. Set feedbackEnabled, rationaleEnabled, teacherInstructions, studentInstructions value on true by default.
+- allowFeedback was replaced with feedbackEnabled. `configuration.feedback.enabled` was moved to `model.feedbackEnabled`.
 
-* fix(select-text): Set feedbackEnabled, rationaleEnabled, teacherInstructions, studentInstructions value on true by default.
+- fix(select-text): Set feedbackEnabled, rationaleEnabled, teacherInstructions, studentInstructions value on true by default.
 
-* fix(text-entry): Set rationaleEnabled, teacherInstructions, studentInstructions value on true by default.
+- fix(text-entry): Set rationaleEnabled, teacherInstructions, studentInstructions value on true by default.
 
-* fix: Updated pie-models.
+- fix: Updated pie-models.
 
-* fix(categorize): Added normalize function on controller (to be able to add default values to the model).
+- fix(categorize): Added normalize function on controller (to be able to add default values to the model).
 
-* fix(charting): Added normalize function on controller (to be able to add default values to the model).
+- fix(charting): Added normalize function on controller (to be able to add default values to the model).
 
-* fix(drag-in-the-blank): Added normalize function on controller (to be able to add default values to the model).
+- fix(drag-in-the-blank): Added normalize function on controller (to be able to add default values to the model).
 
-* fix(drawing-response): Added normalize function on controller (to be able to add default values to the model).
+- fix(drawing-response): Added normalize function on controller (to be able to add default values to the model).
 
-* fix(ebsr): Added normalize function on controller (to be able to add default values to the model).
+- fix(ebsr): Added normalize function on controller (to be able to add default values to the model).
 
-* fix(explicit-constructed-response): Added normalize function on controller (to be able to add default values to the model).
+- fix(explicit-constructed-response): Added normalize function on controller (to be able to add default values to the model).
 
-* fix(extended-text-entry): Added normalize function on controller (to be able to add default values to the model).
+- fix(extended-text-entry): Added normalize function on controller (to be able to add default values to the model).
 
-* Remove unnecessary change.
+- Remove unnecessary change.
 
-* fix(graph-lines): Added normalize function on controller (to be able to add default values to the model).
+- fix(graph-lines): Added normalize function on controller (to be able to add default values to the model).
 
-* fix(graphing): Added normalize function on controller (to be able to add default values to the model).
+- fix(graphing): Added normalize function on controller (to be able to add default values to the model).
 
-* fix(hotspot): Added normalize function on controller (to be able to add default values to the model).
+- fix(hotspot): Added normalize function on controller (to be able to add default values to the model).
 
-* fix(image-cloze-association): Added normalize function on controller (to be able to add default values to the model).
+- fix(image-cloze-association): Added normalize function on controller (to be able to add default values to the model).
 
-* fix(inline-dropdown): Added normalize function on controller (to be able to add default values to the model).
+- fix(inline-dropdown): Added normalize function on controller (to be able to add default values to the model).
 
-* fix(match): Added normalize function on controller (to be able to add default values to the model).
+- fix(match): Added normalize function on controller (to be able to add default values to the model).
 
-* fix(math-inline): Added normalize function on controller (to be able to add default values to the model).
+- fix(math-inline): Added normalize function on controller (to be able to add default values to the model).
 
-* fix(multiple-choice): Added normalize function on controller (to be able to add default values to the model).
+- fix(multiple-choice): Added normalize function on controller (to be able to add default values to the model).
 
-* fix(placement-ordering): Added normalize function on controller (to be able to add default values to the model).
+- fix(placement-ordering): Added normalize function on controller (to be able to add default values to the model).
 
-* fix(select-text): Added normalize function on controller (to be able to add default values to the model).
+- fix(select-text): Added normalize function on controller (to be able to add default values to the model).
 
-* fix(text-entry): Added normalize function on controller (to be able to add default values to the model).
-
-
-
-
+- fix(text-entry): Added normalize function on controller (to be able to add default values to the model).
 
 ## [4.1.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@4.1.2...@pie-element/categorize-configure@4.1.3) (2019-10-04)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
 
-
-
-
-
 ## [4.1.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@4.1.1...@pie-element/categorize-configure@4.1.2) (2019-10-03)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
-
-
-
-
 
 ## [4.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@4.1.0...@pie-element/categorize-configure@4.1.1) (2019-10-03)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
 
-
-
-
-
 # [4.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@4.0.1...@pie-element/categorize-configure@4.1.0) (2019-09-27)
-
 
 ### Features
 
-* **categorize:** model based prompt ([a3c911d](https://github.com/pie-framework/pie-elements/commit/a3c911d))
-
-
-
-
+- **categorize:** model based prompt ([a3c911d](https://github.com/pie-framework/pie-elements/commit/a3c911d))
 
 ## [4.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@4.0.0...@pie-element/categorize-configure@4.0.1) (2019-09-19)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
 
-
-
-
-
 # [4.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@3.6.1...@pie-element/categorize-configure@4.0.0) (2019-09-17)
-
 
 ### Features
 
-* Moved rationale, teacherInstructions and student instructions enabled flag in model because it's needed in controller. ([fa22bef](https://github.com/pie-framework/pie-elements/commit/fa22bef))
-
+- Moved rationale, teacherInstructions and student instructions enabled flag in model because it's needed in controller. ([fa22bef](https://github.com/pie-framework/pie-elements/commit/fa22bef))
 
 ### BREAKING CHANGES
 
-* `enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions.
-
-
-
-
+- `enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions.
 
 ## [3.6.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@3.6.0...@pie-element/categorize-configure@3.6.1) (2019-09-04)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
 
-
-
-
-
 # [3.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@3.5.11...@pie-element/categorize-configure@3.6.0) (2019-08-27)
-
 
 ### Features
 
-* Session null/empty check ([33569a4](https://github.com/pie-framework/pie-elements/commit/33569a4))
-
-
-
-
+- Session null/empty check ([33569a4](https://github.com/pie-framework/pie-elements/commit/33569a4))
 
 ## [3.5.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@3.5.10...@pie-element/categorize-configure@3.5.11) (2019-08-26)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
 
-
-
-
-
 ## [3.5.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@3.5.9...@pie-element/categorize-configure@3.5.10) (2019-08-21)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
 
-
-
-
-
 ## [3.5.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@3.5.8...@pie-element/categorize-configure@3.5.9) (2019-08-21)
-
 
 ### Bug Fixes
 
-* **math-rendering:** updated all dependent packages for math rendering and for editable-html [ch3365], [ch1530] ([33e3287](https://github.com/pie-framework/pie-elements/commit/33e3287))
-
-
-
-
+- **math-rendering:** updated all dependent packages for math rendering and for editable-html [ch3365], [ch1530] ([33e3287](https://github.com/pie-framework/pie-elements/commit/33e3287))
 
 ## [3.5.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@3.5.7...@pie-element/categorize-configure@3.5.8) (2019-08-18)
 
-
 ### Bug Fixes
 
-* **math-rendering:** updated all dependent packages [ch3365] ([7cbf25a](https://github.com/pie-framework/pie-elements/commit/7cbf25a))
-
-
-
-
+- **math-rendering:** updated all dependent packages [ch3365] ([7cbf25a](https://github.com/pie-framework/pie-elements/commit/7cbf25a))
 
 ## [3.5.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@3.5.6...@pie-element/categorize-configure@3.5.7) (2019-08-15)
 
-
 ### Bug Fixes
 
-* **elements:** version bumped the editable-html packages [ch1738] ([949222a](https://github.com/pie-framework/pie-elements/commit/949222a))
-
-
-
-
+- **elements:** version bumped the editable-html packages [ch1738] ([949222a](https://github.com/pie-framework/pie-elements/commit/949222a))
 
 ## [3.5.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@3.5.5...@pie-element/categorize-configure@3.5.6) (2019-08-02)
 
-
 ### Bug Fixes
 
-* **elements:** fixed some feedback config issues and the prompt issue on categorize [ch2192], [ch1770] ([eb22724](https://github.com/pie-framework/pie-elements/commit/eb22724))
-
-
-
-
+- **elements:** fixed some feedback config issues and the prompt issue on categorize [ch2192], [ch1770] ([eb22724](https://github.com/pie-framework/pie-elements/commit/eb22724))
 
 ## [3.5.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@3.5.4...@pie-element/categorize-configure@3.5.5) (2019-07-25)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
 
-
-
-
-
 ## [3.5.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@3.5.3...@pie-element/categorize-configure@3.5.4) (2019-07-25)
-
 
 ### Bug Fixes
 
-* **categories:** implemented alternate responses for authoring in the categorize element [ch1255] ([4d2ca06](https://github.com/pie-framework/pie-elements/commit/4d2ca06))
-
-
-
-
+- **categories:** implemented alternate responses for authoring in the categorize element [ch1255] ([4d2ca06](https://github.com/pie-framework/pie-elements/commit/4d2ca06))
 
 ## [3.5.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@3.5.2...@pie-element/categorize-configure@3.5.3) (2019-07-12)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
 
-
-
-
-
 ## [3.5.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@3.5.1...@pie-element/categorize-configure@3.5.2) (2019-07-12)
-
 
 ### Bug Fixes
 
-* **rendering:** implemented rendering for math elements [ch1915], [ch1935] ([2f35842](https://github.com/pie-framework/pie-elements/commit/2f35842))
-
-
-
-
+- **rendering:** implemented rendering for math elements [ch1915], [ch1935] ([2f35842](https://github.com/pie-framework/pie-elements/commit/2f35842))
 
 ## [3.5.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@3.5.0...@pie-element/categorize-configure@3.5.1) (2019-07-12)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
 
-
-
-
-
 # [3.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@3.4.9...@pie-element/categorize-configure@3.5.0) (2019-07-11)
-
 
 ### Features
 
-* **template-elements:** updated the dependent packages that use editable-html and fixed [ch2564], [ch2565], [ch2538], [ch2489], [ch2557], [ch2593], [ch2490], [ch2527] ([a87febe](https://github.com/pie-framework/pie-elements/commit/a87febe))
-
-
-
-
+- **template-elements:** updated the dependent packages that use editable-html and fixed [ch2564], [ch2565], [ch2538], [ch2489], [ch2557], [ch2593], [ch2490], [ch2527] ([a87febe](https://github.com/pie-framework/pie-elements/commit/a87febe))
 
 ## [3.4.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@3.4.8...@pie-element/categorize-configure@3.4.9) (2019-07-09)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
 
-
-
-
-
 ## [3.4.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@3.4.7...@pie-element/categorize-configure@3.4.8) (2019-07-09)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
-
-
-
-
 
 ## [3.4.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@3.4.6...@pie-element/categorize-configure@3.4.7) (2019-07-07)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
 
-
-
-
-
 ## [3.4.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@3.4.5...@pie-element/categorize-configure@3.4.6) (2019-07-07)
-
 
 ### Bug Fixes
 
-* **editable-html:** fixed lots of stuff regarding the editable-html ([12c1129](https://github.com/pie-framework/pie-elements/commit/12c1129))
-
-
-
-
+- **editable-html:** fixed lots of stuff regarding the editable-html ([12c1129](https://github.com/pie-framework/pie-elements/commit/12c1129))
 
 ## [3.4.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@3.4.4...@pie-element/categorize-configure@3.4.5) (2019-07-05)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
 
-
-
-
-
 ## [3.4.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@3.4.3...@pie-element/categorize-configure@3.4.4) (2019-07-04)
-
 
 ### Bug Fixes
 
-* **template-els:** fixed some ditb issues ([9133840](https://github.com/pie-framework/pie-elements/commit/9133840))
-
-
-
-
+- **template-els:** fixed some ditb issues ([9133840](https://github.com/pie-framework/pie-elements/commit/9133840))
 
 ## [3.4.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@3.4.2...@pie-element/categorize-configure@3.4.3) (2019-07-03)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
 
-
-
-
-
 ## [3.4.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@3.4.1...@pie-element/categorize-configure@3.4.2) (2019-07-03)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
-
-
-
-
 
 ## [3.4.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@3.4.0...@pie-element/categorize-configure@3.4.1) (2019-07-02)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
 
-
-
-
-
 # [3.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@3.3.1...@pie-element/categorize-configure@3.4.0) (2019-07-02)
-
 
 ### Features
 
-* **mask-markup-elements:** refactored the elements and version bumped the necessary files ([f8f77c0](https://github.com/pie-framework/pie-elements/commit/f8f77c0))
-
-
-
-
+- **mask-markup-elements:** refactored the elements and version bumped the necessary files ([f8f77c0](https://github.com/pie-framework/pie-elements/commit/f8f77c0))
 
 ## [3.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@3.3.0...@pie-element/categorize-configure@3.3.1) (2019-06-26)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
 
-
-
-
-
 # [3.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@3.2.1...@pie-element/categorize-configure@3.3.0) (2019-06-26)
-
 
 ### Features
 
-* **settings-panel:** updated the settings panel design and changes needed for [ch2242] ([d830e57](https://github.com/pie-framework/pie-elements/commit/d830e57))
-
-
-
-
+- **settings-panel:** updated the settings panel design and changes needed for [ch2242] ([d830e57](https://github.com/pie-framework/pie-elements/commit/d830e57))
 
 ## [3.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@3.2.0...@pie-element/categorize-configure@3.2.1) (2019-06-23)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
 
-
-
-
-
 # [3.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@3.1.2...@pie-element/categorize-configure@3.2.0) (2019-06-21)
-
 
 ### Features
 
-* **general:** updated all the packages that have the config-ui as a dependency ([44061de](https://github.com/pie-framework/pie-elements/commit/44061de))
-
-
-
-
+- **general:** updated all the packages that have the config-ui as a dependency ([44061de](https://github.com/pie-framework/pie-elements/commit/44061de))
 
 ## [3.1.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@3.1.1...@pie-element/categorize-configure@3.1.2) (2019-06-20)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
 
-
-
-
-
 ## [3.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@3.1.0...@pie-element/categorize-configure@3.1.1) (2019-06-19)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
 
-
-
-
-
 # [3.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@3.0.7...@pie-element/categorize-configure@3.1.0) (2019-06-19)
-
 
 ### Features
 
-* **extras:** added row labels support and alternate responses ([280028f](https://github.com/pie-framework/pie-elements/commit/280028f))
-
-
-
-
+- **extras:** added row labels support and alternate responses ([280028f](https://github.com/pie-framework/pie-elements/commit/280028f))
 
 ## [3.0.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@3.0.6...@pie-element/categorize-configure@3.0.7) (2019-06-17)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
 
-
-
-
-
 ## [3.0.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@3.0.5...@pie-element/categorize-configure@3.0.6) (2019-06-12)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
-
-
-
-
 
 ## [3.0.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@3.0.4...@pie-element/categorize-configure@3.0.5) (2019-06-07)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
 
-
-
-
-
 ## [3.0.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@3.0.3...@pie-element/categorize-configure@3.0.4) (2019-06-06)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
-
-
-
-
 
 ## [3.0.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@3.0.2...@pie-element/categorize-configure@3.0.3) (2019-06-05)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
 
-
-
-
-
 ## [3.0.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@3.0.1...@pie-element/categorize-configure@3.0.2) (2019-05-23)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
-
-
-
-
 
 ## [3.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@3.0.0...@pie-element/categorize-configure@3.0.1) (2019-05-21)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
 
-
-
-
-
 # [3.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@2.0.1...@pie-element/categorize-configure@3.0.0) (2019-05-16)
-
 
 ### Features
 
-* **categorize:** Integrated settings panel. Added support for rationale. Removed scoring panel. ([6e5a1bf](https://github.com/pie-framework/pie-elements/commit/6e5a1bf))
-
+- **categorize:** Integrated settings panel. Added support for rationale. Removed scoring panel. ([6e5a1bf](https://github.com/pie-framework/pie-elements/commit/6e5a1bf))
 
 ### BREAKING CHANGES
 
-* **categorize:** `scoring` with `partial` and `weighting` is not supported anymore.
-
-
-
-
+- **categorize:** `scoring` with `partial` and `weighting` is not supported anymore.
 
 ## [2.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@2.0.0...@pie-element/categorize-configure@2.0.1) (2019-05-10)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
 
-
-
-
-
 # [2.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@1.6.12...@pie-element/categorize-configure@2.0.0) (2019-05-10)
-
 
 ### Features
 
-* Transformed defaults into an object that has model and configuration property. ([ceb074c](https://github.com/pie-framework/pie-elements/commit/ceb074c))
-* **categorize:** Updated with new version of [@pie-lib-config-ui](https://github.com/pie-lib-config-ui). Removed `model.config` and instead added new props directly on model: `choicesPerRow`, `categoriesPerRow`, `choicesPosition`, `choicesLabel`, `lockChoiceOrder`, `removeTilesAfterPlacing`. ([5922f85](https://github.com/pie-framework/pie-elements/commit/5922f85))
-
+- Transformed defaults into an object that has model and configuration property. ([ceb074c](https://github.com/pie-framework/pie-elements/commit/ceb074c))
+- **categorize:** Updated with new version of [@pie-lib-config-ui](https://github.com/pie-lib-config-ui). Removed `model.config` and instead added new props directly on model: `choicesPerRow`, `categoriesPerRow`, `choicesPosition`, `choicesLabel`, `lockChoiceOrder`, `removeTilesAfterPlacing`. ([5922f85](https://github.com/pie-framework/pie-elements/commit/5922f85))
 
 ### BREAKING CHANGES
 
-* **categorize:** `model.config` is removed, use `choicesPerRow`, `categoriesPerRow`, `choicesPosition`, `choicesLabel`, `lockChoiceOrder`, `removeTilesAfterPlacing` on model instead.
-
-
-
-
+- **categorize:** `model.config` is removed, use `choicesPerRow`, `categoriesPerRow`, `choicesPosition`, `choicesLabel`, `lockChoiceOrder`, `removeTilesAfterPlacing` on model instead.
 
 ## [1.6.12](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@1.6.11...@pie-element/categorize-configure@1.6.12) (2019-05-08)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
 
-
-
-
-
 ## [1.6.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@1.6.10...@pie-element/categorize-configure@1.6.11) (2019-05-02)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
-
-
-
-
 
 ## [1.6.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@1.6.9...@pie-element/categorize-configure@1.6.10) (2019-05-02)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
 
-
-
-
-
 ## [1.6.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@1.6.8...@pie-element/categorize-configure@1.6.9) (2019-05-01)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
 
-
-
-
-
 ## [1.6.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@1.6.7...@pie-element/categorize-configure@1.6.8) (2019-04-26)
-
 
 ### Bug Fixes
 
-* Updated with new version of @pie-lib/config-ui. ([c967433](https://github.com/pie-framework/pie-elements/commit/c967433))
-
-
-
-
+- Updated with new version of @pie-lib/config-ui. ([c967433](https://github.com/pie-framework/pie-elements/commit/c967433))
 
 ## [1.6.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@1.6.6...@pie-element/categorize-configure@1.6.7) (2019-04-25)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
 
-
-
-
-
 ## [1.6.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@1.6.5...@pie-element/categorize-configure@1.6.6) (2019-04-23)
-
 
 ### Bug Fixes
 
-* **calculator:** Updated @pie-lib/config-ui version. ([#177](https://github.com/pie-framework/pie-elements/issues/177)) ([6a56ff0](https://github.com/pie-framework/pie-elements/commit/6a56ff0))
-
-
-
-
+- **calculator:** Updated @pie-lib/config-ui version. ([#177](https://github.com/pie-framework/pie-elements/issues/177)) ([6a56ff0](https://github.com/pie-framework/pie-elements/commit/6a56ff0))
 
 ## [1.6.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@1.6.4...@pie-element/categorize-configure@1.6.5) (2019-04-08)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
 
-
-
-
-
 ## [1.6.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@1.6.3...@pie-element/categorize-configure@1.6.4) (2019-04-04)
-
 
 ### Bug Fixes
 
-* bump editable-html ([763cf1d](https://github.com/pie-framework/pie-elements/commit/763cf1d))
-
-
-
-
+- bump editable-html ([763cf1d](https://github.com/pie-framework/pie-elements/commit/763cf1d))
 
 ## [1.6.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@1.6.2...@pie-element/categorize-configure@1.6.3) (2019-03-18)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
 
-
-
-
-
 ## [1.6.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@1.6.1...@pie-element/categorize-configure@1.6.2) (2019-03-18)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
-
-
-
-
 
 ## [1.6.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@1.6.0...@pie-element/categorize-configure@1.6.1) (2019-03-18)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
 
-
-
-
-
 # [1.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@1.5.0...@pie-element/categorize-configure@1.6.0) (2019-03-18)
-
 
 ### Features
 
-* **general:** initialize default model (2) ([#138](https://github.com/pie-framework/pie-elements/issues/138)) ([fc72eca](https://github.com/pie-framework/pie-elements/commit/fc72eca))
-
-
-
-
+- **general:** initialize default model (2) ([#138](https://github.com/pie-framework/pie-elements/issues/138)) ([fc72eca](https://github.com/pie-framework/pie-elements/commit/fc72eca))
 
 # [1.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@1.4.0...@pie-element/categorize-configure@1.5.0) (2019-03-13)
 
-
 ### Bug Fixes
 
-* Fixed console warning. ([3455bf2](https://github.com/pie-framework/pie-elements/commit/3455bf2))
-* Fixed snapshots. ([8adf681](https://github.com/pie-framework/pie-elements/commit/8adf681))
-
+- Fixed console warning. ([3455bf2](https://github.com/pie-framework/pie-elements/commit/3455bf2))
+- Fixed snapshots. ([8adf681](https://github.com/pie-framework/pie-elements/commit/8adf681))
 
 ### Features
 
-* **general:** initialize default model ([#129](https://github.com/pie-framework/pie-elements/issues/129)) ([b62d058](https://github.com/pie-framework/pie-elements/commit/b62d058))
-* all elements on `develop` target [@next](https://github.com/next) releases ([d3766e6](https://github.com/pie-framework/pie-elements/commit/d3766e6))
-
-
-
-
+- **general:** initialize default model ([#129](https://github.com/pie-framework/pie-elements/issues/129)) ([b62d058](https://github.com/pie-framework/pie-elements/commit/b62d058))
+- all elements on `develop` target [@next](https://github.com/next) releases ([d3766e6](https://github.com/pie-framework/pie-elements/commit/d3766e6))
 
 # [1.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@1.3.5...@pie-element/categorize-configure@1.4.0) (2019-02-20)
 
-
 ### Features
 
-* **general:** updated the pie-lib/editable-html versions for all elements ([f642cb5](https://github.com/pie-framework/pie-elements/commit/f642cb5))
-
-
-
-
+- **general:** updated the pie-lib/editable-html versions for all elements ([f642cb5](https://github.com/pie-framework/pie-elements/commit/f642cb5))
 
 ## [1.3.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@1.3.4...@pie-element/categorize-configure@1.3.5) (2019-02-13)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
 
-
-
-
-
 ## [1.3.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@1.3.3...@pie-element/categorize-configure@1.3.4) (2019-02-13)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
 
-
-
-
-
 ## [1.3.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@1.3.2...@pie-element/categorize-configure@1.3.3) (2019-01-08)
-
 
 ### Bug Fixes
 
-* **general:** bumped the config-ui version for all packages ([159521d](https://github.com/pie-framework/pie-elements/commit/159521d))
-
-
-
-
+- **general:** bumped the config-ui version for all packages ([159521d](https://github.com/pie-framework/pie-elements/commit/159521d))
 
 ## [1.3.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@1.3.1...@pie-element/categorize-configure@1.3.2) (2018-11-12)
 
-
 ### Bug Fixes
 
-* **categorize-add-feedback:** added possibility of setting feedback for the evaluation and fixed some dependencies ([6a3a8ef](https://github.com/pie-framework/pie-elements/commit/6a3a8ef))
-* **categorize-add-feedback:** added tests for the new logic ([3c2ca0d](https://github.com/pie-framework/pie-elements/commit/3c2ca0d))
-
-
-
-
+- **categorize-add-feedback:** added possibility of setting feedback for the evaluation and fixed some dependencies ([6a3a8ef](https://github.com/pie-framework/pie-elements/commit/6a3a8ef))
+- **categorize-add-feedback:** added tests for the new logic ([3c2ca0d](https://github.com/pie-framework/pie-elements/commit/3c2ca0d))
 
 ## [1.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@1.3.0...@pie-element/categorize-configure@1.3.1) (2018-11-12)
 
-
 ### Bug Fixes
 
-* conflict ([b854c6b](https://github.com/pie-framework/pie-elements/commit/b854c6b))
-* fix tests ([79ee8a5](https://github.com/pie-framework/pie-elements/commit/79ee8a5))
-
-
-
-
+- conflict ([b854c6b](https://github.com/pie-framework/pie-elements/commit/b854c6b))
+- fix tests ([79ee8a5](https://github.com/pie-framework/pie-elements/commit/79ee8a5))
 
 <a name="1.3.0"></a>
+
 # [1.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@1.2.0...@pie-element/categorize-configure@1.3.0) (2018-11-05)
 
-
 ### Features
 
-* **categorize-image-support:** added image support for all categorize elements ([d9dd0b5](https://github.com/pie-framework/pie-elements/commit/d9dd0b5))
-
-
-
-
+- **categorize-image-support:** added image support for all categorize elements ([d9dd0b5](https://github.com/pie-framework/pie-elements/commit/d9dd0b5))
 
 <a name="1.2.0"></a>
+
 # [1.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@1.1.1...@pie-element/categorize-configure@1.2.0) (2018-10-16)
 
-
 ### Features
 
-* **categorize:** added image support for categorize choices ([4e89189](https://github.com/pie-framework/pie-elements/commit/4e89189))
-* **issue-84:** changed label title and added position left and right for the choices ([e2e13fb](https://github.com/pie-framework/pie-elements/commit/e2e13fb))
-
-
-
-
+- **categorize:** added image support for categorize choices ([4e89189](https://github.com/pie-framework/pie-elements/commit/4e89189))
+- **issue-84:** changed label title and added position left and right for the choices ([e2e13fb](https://github.com/pie-framework/pie-elements/commit/e2e13fb))
 
 <a name="1.1.1"></a>
+
 ## [1.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@1.1.0...@pie-element/categorize-configure@1.1.1) (2018-09-20)
 
-
 ### Bug Fixes
 
-* build fixes ([3c3a7f2](https://github.com/pie-framework/pie-elements/commit/3c3a7f2))
-
-
-
-
+- build fixes ([3c3a7f2](https://github.com/pie-framework/pie-elements/commit/3c3a7f2))
 
 <a name="1.1.0"></a>
-# 1.1.0 (2018-09-20)
 
+# 1.1.0 (2018-09-20)
 
 ### Bug Fixes
 
-* **categorize:** drag and drop related fixes and version bump ([5004aa9](https://github.com/pie-framework/pie-elements/commit/5004aa9))
-* **categorize:** fix changing label positions ([f624dbe](https://github.com/pie-framework/pie-elements/commit/f624dbe))
-* **categorize:** fix min and max for choice/categories per row fields ([9bfead6](https://github.com/pie-framework/pie-elements/commit/9bfead6))
-* **categorize:** test updates and fixes ([2f90cae](https://github.com/pie-framework/pie-elements/commit/2f90cae))
-* bump config-ui@^7.6.6 ([266235a](https://github.com/pie-framework/pie-elements/commit/266235a))
-* fall back to default position if not present ([1d91237](https://github.com/pie-framework/pie-elements/commit/1d91237))
-* render math in choice preview ([cbc5b0a](https://github.com/pie-framework/pie-elements/commit/cbc5b0a))
-* use [@pie-lib](https://github.com/pie-lib)/math-rendering@^0.5.0 ([f4d6a76](https://github.com/pie-framework/pie-elements/commit/f4d6a76))
-
+- **categorize:** drag and drop related fixes and version bump ([5004aa9](https://github.com/pie-framework/pie-elements/commit/5004aa9))
+- **categorize:** fix changing label positions ([f624dbe](https://github.com/pie-framework/pie-elements/commit/f624dbe))
+- **categorize:** fix min and max for choice/categories per row fields ([9bfead6](https://github.com/pie-framework/pie-elements/commit/9bfead6))
+- **categorize:** test updates and fixes ([2f90cae](https://github.com/pie-framework/pie-elements/commit/2f90cae))
+- bump config-ui@^7.6.6 ([266235a](https://github.com/pie-framework/pie-elements/commit/266235a))
+- fall back to default position if not present ([1d91237](https://github.com/pie-framework/pie-elements/commit/1d91237))
+- render math in choice preview ([cbc5b0a](https://github.com/pie-framework/pie-elements/commit/cbc5b0a))
+- use [@pie-lib](https://github.com/pie-lib)/math-rendering@^0.5.0 ([f4d6a76](https://github.com/pie-framework/pie-elements/commit/f4d6a76))
 
 ### Features
 
-* **categorize:** drag dependency update and version bump ([485b661](https://github.com/pie-framework/pie-elements/commit/485b661))
-* **categorize:** re-work the layout of elements, fix inputs, fix grid system and various other small updates ([6f17f87](https://github.com/pie-framework/pie-elements/commit/6f17f87))
-* **categorize:** toolbar fix for math interaction in choices and categories ([d14796b](https://github.com/pie-framework/pie-elements/commit/d14796b))
-* don't throw error if score config is empty ([d456b84](https://github.com/pie-framework/pie-elements/commit/d456b84))
-* new categorize element ([08906de](https://github.com/pie-framework/pie-elements/commit/08906de))
-* upgrade material-ui -> [@material-ui](https://github.com/material-ui)/core@1.0.0-rc.1 ([5e1de5b](https://github.com/pie-framework/pie-elements/commit/5e1de5b))
-* use latest categorize and math-rendering that has mathjax ([8c17a6f](https://github.com/pie-framework/pie-elements/commit/8c17a6f))
+- **categorize:** drag dependency update and version bump ([485b661](https://github.com/pie-framework/pie-elements/commit/485b661))
+- **categorize:** re-work the layout of elements, fix inputs, fix grid system and various other small updates ([6f17f87](https://github.com/pie-framework/pie-elements/commit/6f17f87))
+- **categorize:** toolbar fix for math interaction in choices and categories ([d14796b](https://github.com/pie-framework/pie-elements/commit/d14796b))
+- don't throw error if score config is empty ([d456b84](https://github.com/pie-framework/pie-elements/commit/d456b84))
+- new categorize element ([08906de](https://github.com/pie-framework/pie-elements/commit/08906de))
+- upgrade material-ui -> [@material-ui](https://github.com/material-ui)/core@1.0.0-rc.1 ([5e1de5b](https://github.com/pie-framework/pie-elements/commit/5e1de5b))
+- use latest categorize and math-rendering that has mathjax ([8c17a6f](https://github.com/pie-framework/pie-elements/commit/8c17a6f))

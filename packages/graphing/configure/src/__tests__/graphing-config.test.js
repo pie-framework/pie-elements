@@ -13,35 +13,33 @@ describe('GraphingConfig', () => {
       classes: {},
       model: defaultValues.model,
       onChange: jest.fn(),
-      tools: []
+      tools: [],
     };
 
-    wrapper = newProps => {
+    wrapper = (newProps) => {
       const configureProps = { ...props, newProps };
 
-      return shallow(<GraphingConfig { ...configureProps } />);
+      return shallow(<GraphingConfig {...configureProps} />);
     };
   });
 
   describe('renders', () => {
     it('snapshot', () => {
       expect(wrapper()).toMatchSnapshot();
-    })
+    });
   });
 
   describe('logic', () => {
     it('changeBackgroundMarks calls onChange', () => {
       const component = wrapper();
-      const bM = [{ x: 1, y: 1, type: 'point'}];
+      const bM = [{ x: 1, y: 1, type: 'point' }];
 
       component.instance().changeBackgroundMarks(bM);
 
       expect(component.instance().props.onChange).toBeCalledWith({
         ...defaultValues.model,
-        backgroundMarks: bM
+        backgroundMarks: bM,
       });
     });
   });
 });
-
-

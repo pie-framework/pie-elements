@@ -1,8 +1,6 @@
 # @pie-element/likert
 
-
 A [pie][pie]likert component.
-
 
 ## Usage
 
@@ -28,6 +26,7 @@ To use this pie, you need to configure it within an Assessment Item. This means 
 ```
 
 ### Pie Demo
+
 There is a demo in `docs/demo` that you can run to see an example of it's usage.
 
 To preview it in that context you'll need the [pie][pie] tool.
@@ -45,6 +44,7 @@ npm test # run client and controller tests
 npm run client-test # run client tests
 npm run controller-test # run controller tests
 ```
+
 ## Release
 
 ```shell
@@ -52,4 +52,5 @@ gulp release
 git checkout master
 npm publish
 ```
+
 [pie]: http://npmjs.org/package/pie

@@ -20,17 +20,17 @@ describe('Main', () => {
         choices: {
           0: [choice('cow', '0'), choice('cattle', '1'), choice('calf', '2')],
           1: [choice('over', '0'), choice('past', '1'), choice('beyond', '2')],
-          2: [choice('moon', '0')]
+          2: [choice('moon', '0')],
         },
         markup: '<p>The {{0}} jumped {{1}} the {{2}}</p>',
         mode: 'gather',
         feedback: { 0: 'correct', 1: 'correct', 2: 'correct' },
         value: { 0: '1', 1: '0', 2: '0' },
         onChange,
-        ...extra
+        ...extra,
       };
 
-      return shallow(<Main {...props}/>);
+      return shallow(<Main {...props} />);
     };
   });
 
@@ -74,10 +74,12 @@ describe('Main', () => {
         choices: {
           0: [choice('b', '0')],
           1: [choice('a', '0')],
-          2: [choice('c', '0')]
+          2: [choice('c', '0')],
         },
-        maxLengthPerChoice: [1, 1, 1]
-      }).instance().onChange({ 0: 'a', 1: 'b', 2: 'c' });
+        maxLengthPerChoice: [1, 1, 1],
+      })
+        .instance()
+        .onChange({ 0: 'a', 1: 'b', 2: 'c' });
 
       expect(onChange).toHaveBeenCalledWith({ 0: 'a', 1: 'b', 2: 'c' });
     });

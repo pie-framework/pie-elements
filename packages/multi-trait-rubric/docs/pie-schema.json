@@ -97,22 +97,12 @@
                   "title": "scorePointsDescriptors"
                 }
               },
-              "required": [
-                "description",
-                "name",
-                "scorePointsDescriptors",
-                "standards"
-              ]
+              "required": ["description", "name", "scorePointsDescriptors", "standards"]
             },
             "title": "traits"
           }
         },
-        "required": [
-          "maxPoints",
-          "scorePointsLabels",
-          "traitLabel",
-          "traits"
-        ]
+        "required": ["maxPoints", "scorePointsLabels", "traitLabel", "traits"]
       },
       "title": "scales"
     },
@@ -127,12 +117,7 @@
       "title": "element"
     }
   },
-  "required": [
-    "element",
-    "id",
-    "scales",
-    "spellCheckEnabled"
-  ],
+  "required": ["element", "id", "scales", "spellCheckEnabled"],
   "definitions": {
     "DialogContent": {
       "title": "DialogContent",
@@ -222,22 +207,12 @@
                 "title": "scorePointsDescriptors"
               }
             },
-            "required": [
-              "description",
-              "name",
-              "scorePointsDescriptors",
-              "standards"
-            ]
+            "required": ["description", "name", "scorePointsDescriptors", "standards"]
           },
           "title": "traits"
         }
       },
-      "required": [
-        "maxPoints",
-        "scorePointsLabels",
-        "traitLabel",
-        "traits"
-      ]
+      "required": ["maxPoints", "scorePointsLabels", "traitLabel", "traits"]
     },
     "Trait": {
       "title": "Trait",
@@ -270,12 +245,7 @@
           "title": "scorePointsDescriptors"
         }
       },
-      "required": [
-        "description",
-        "name",
-        "scorePointsDescriptors",
-        "standards"
-      ]
+      "required": ["description", "name", "scorePointsDescriptors", "standards"]
     }
   },
   "$schema": "http://json-schema.org/draft-07/schema#"

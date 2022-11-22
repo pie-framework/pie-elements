@@ -616,10 +616,7 @@
       "title": "promptLabel"
     }
   },
-  "required": [
-    "partA",
-    "partB"
-  ],
+  "required": ["partA", "partB"],
   "definitions": {
     "PartConfiguration": {
       "title": "PartConfiguration",

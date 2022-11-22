@@ -19,7 +19,7 @@ import {
   SimpleInput,
   ScaleSettings,
   HeaderHeight,
-  HeaderHeightLarge
+  HeaderHeightLarge,
 } from './common';
 import { labelPlugins } from './utils';
 
@@ -32,16 +32,16 @@ const styles = {
     padding: '10px 0',
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'space-around'
+    justifyContent: 'space-around',
   },
   greyHeader: {
     background: color.secondaryBackground(),
     borderRadius: '4px',
-    position: 'relative'
+    position: 'relative',
   },
   primaryBlockGreyHeader: {
-    paddingTop: '12px'
-  }
+    paddingTop: '12px',
+  },
 };
 
 export class TraitsHeaderTile extends React.Component {
@@ -69,7 +69,7 @@ export class TraitsHeaderTile extends React.Component {
 
   handleClose = () => this.setState({ anchorEl: null });
 
-  scrollToPosition = position => this.secondaryBlock.scrollTo({ left: position });
+  scrollToPosition = (position) => this.secondaryBlock.scrollTo({ left: position });
 
   openMenu = () => {
     this.props.showDeleteScaleModal();
@@ -95,7 +95,7 @@ export class TraitsHeaderTile extends React.Component {
       setSecondaryBlockRef,
       spellCheck,
       uploadSoundSupport,
-      maxPointsEnabled
+      maxPointsEnabled,
     } = this.props;
     const { anchorEl } = this.state;
 
@@ -108,42 +108,23 @@ export class TraitsHeaderTile extends React.Component {
               onChange={onTraitLabelChange}
               pluginProps={labelPlugins}
               spellCheck={spellCheck}
-              label='Level Label'
+              label="Level Label"
               uploadSoundSupport={uploadSoundSupport}
             />
           )}
 
           <ScaleSettings>
-            <div>
-              Scale {scaleIndex + 1}
-            </div>
+            <div>Scale {scaleIndex + 1}</div>
 
-            {maxPointsEnabled && <MaxPointsPicker
-              maxPoints={maxPoints}
-              onChange={updateMaxPointsFieldValue}
-            />}
+            {maxPointsEnabled && <MaxPointsPicker maxPoints={maxPoints} onChange={updateMaxPointsFieldValue} />}
 
             <div>
-              <IconButton
-                aria-label="more"
-                aria-controls="long-menu"
-                aria-haspopup="true"
-                onClick={this.handleClick}
-              >
-                <MoreVertIcon/>
+              <IconButton aria-label="more" aria-controls="long-menu" aria-haspopup="true" onClick={this.handleClick}>
+                <MoreVertIcon />
               </IconButton>
-              <Menu
-                id="long-menu"
-                anchorEl={anchorEl}
-                keepMounted
-                open={!!anchorEl}
-                onClose={this.handleClose}
-              >
+              <Menu id="long-menu" anchorEl={anchorEl} keepMounted open={!!anchorEl} onClose={this.handleClose}>
                 {['Remove Scale'].map((option) => (
-                  <MenuItem
-                    key={option}
-                    onClick={this.openMenu}
-                  >
+                  <MenuItem key={option} onClick={this.openMenu}>
                     {option}
                   </MenuItem>
                 ))}
@@ -153,7 +134,7 @@ export class TraitsHeaderTile extends React.Component {
         </PrimaryBlock>
 
         <SecondaryBlock
-          setRef={ref => {
+          setRef={(ref) => {
             if (ref) {
               this.secondaryBlock = ref;
               setSecondaryBlockRef(ref);
@@ -161,20 +142,15 @@ export class TraitsHeaderTile extends React.Component {
           }}
           width={`${secondaryBlockWidth}px`}
         >
-
           {showStandards && (
             <Block>
-              <div className={classes.label}>
-                Standard(s)
-              </div>
+              <div className={classes.label}>Standard(s)</div>
             </Block>
           )}
 
           {showDescription && (
             <Block>
-              <div className={classes.label}>
-                Description
-              </div>
+              <div className={classes.label}>Description</div>
             </Block>
           )}
 
@@ -197,13 +173,13 @@ export class TraitsHeaderTile extends React.Component {
                   scoreDescriptor={scoreDescriptor}
                   pluginProps={labelPlugins}
                   showScorePointLabels={showScorePointLabels}
-                  onChange={scorePointLabel => this.onScorePointLabelChange({ scorePointLabel, value })}
+                  onChange={(scorePointLabel) => this.onScorePointLabelChange({ scorePointLabel, value })}
                   alignToRight={remainingSpace < 296} // 296 is the space required for the toolbar
                   spellCheck={spellCheck}
                   uploadSoundSupport={uploadSoundSupport}
                 />
               </Block>
-            )
+            );
           })}
         </SecondaryBlock>
       </Row>
@@ -229,7 +205,7 @@ TraitsHeaderTile.propTypes = {
   showDeleteScaleModal: PropTypes.func,
   showScorePointLabels: PropTypes.bool,
   setSecondaryBlockRef: PropTypes.func,
-  uploadSoundSupport: PropTypes.object
+  uploadSoundSupport: PropTypes.object,
 };
 
 export default withStyles(styles)(TraitsHeaderTile);

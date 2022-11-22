@@ -8,17 +8,17 @@ Indicates the choices are single or multiple selection
 
 This element must be one of the following enum values:
 
-* `checkbox`
-* `radio`
+- `checkbox`
+- `radio`
 
 # `choicePrefix` (string, enum)
 
-What key should be displayed before choices. If undefined no  key will be displayed.
+What key should be displayed before choices. If undefined no key will be displayed.
 
 This element must be one of the following enum values:
 
-* `letters`
-* `numbers`
+- `letters`
+- `numbers`
 
 Default: `": 'letters'"`
 
@@ -45,8 +45,8 @@ the text label that will be presented to the user for this choice
 ## `feedback` (object)
 
 The type of feedback to use:
-   `default` = a standard feedback message
-   `custom` = a customized feedback message
+`default` = a standard feedback message
+`custom` = a customized feedback message
 
 Properties of the `feedback` object:
 
@@ -54,9 +54,9 @@ Properties of the `feedback` object:
 
 This element must be one of the following enum values:
 
-* `custom`
-* `default`
-* `none`
+- `custom`
+- `default`
+- `none`
 
 Default: `"default"`
 
@@ -86,9 +86,9 @@ Indicates the layout of choices for player
 
 This element must be one of the following enum values:
 
-* `grid`
-* `horizontal`
-* `vertical`
+- `grid`
+- `horizontal`
+- `vertical`
 
 Default: `": 'vertical'"`
 
@@ -104,8 +104,8 @@ Indicates the editor's toolbar position which can be 'bottom' or 'top'
 
 This element must be one of the following enum values:
 
-* `bottom`
-* `top`
+- `bottom`
+- `top`
 
 Default: `": 'bottom'"`
 
@@ -123,8 +123,8 @@ Indicates scoring type
 
 This element must be one of the following enum values:
 
-* `auto`
-* `rubric`
+- `auto`
+- `rubric`
 
 # `studentInstructions` (string)
 
@@ -244,8 +244,8 @@ the text label that will be presented to the user for this choice
 ### `feedback` (object)
 
 The type of feedback to use:
-   `default` = a standard feedback message
-   `custom` = a customized feedback message
+`default` = a standard feedback message
+`custom` = a customized feedback message
 
 Properties of the `feedback` object:
 
@@ -253,9 +253,9 @@ Properties of the `feedback` object:
 
 This element must be one of the following enum values:
 
-* `custom`
-* `default`
-* `none`
+- `custom`
+- `default`
+- `none`
 
 Default: `"default"`
 
@@ -274,8 +274,8 @@ Rationale for the Choice
 ## `Feedback` (object)
 
 The type of feedback to use:
-   `default` = a standard feedback message
-   `custom` = a customized feedback message
+`default` = a standard feedback message
+`custom` = a customized feedback message
 
 Properties of the `Feedback` object:
 
@@ -283,9 +283,9 @@ Properties of the `Feedback` object:
 
 This element must be one of the following enum values:
 
-* `custom`
-* `default`
-* `none`
+- `custom`
+- `default`
+- `none`
 
 Default: `"default"`
 

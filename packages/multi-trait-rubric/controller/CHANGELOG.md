@@ -7,60 +7,33 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 **Note:** Version bump only for package @pie-element/multi-trait-rubric-controller
 
-
-
-
-
 ## [1.2.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-controller@1.2.6...@pie-element/multi-trait-rubric-controller@1.2.7) (2021-11-11)
 
 **Note:** Version bump only for package @pie-element/multi-trait-rubric-controller
 
-
-
-
-
 ## [1.2.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-controller@1.2.4...@pie-element/multi-trait-rubric-controller@1.2.6) (2021-08-05)
-
 
 ### Bug Fixes
 
-* force bump ([5ea7295](https://github.com/pie-framework/pie-elements/commit/5ea7295e4755fbc492a76e7ec69e5fc35b196919))
-
-
-
-
+- force bump ([5ea7295](https://github.com/pie-framework/pie-elements/commit/5ea7295e4755fbc492a76e7ec69e5fc35b196919))
 
 ## [1.2.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-controller@1.2.3...@pie-element/multi-trait-rubric-controller@1.2.4) (2021-06-29)
 
 **Note:** Version bump only for package @pie-element/multi-trait-rubric-controller
 
-
-
-
-
 ## [1.2.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-controller@1.2.0...@pie-element/multi-trait-rubric-controller@1.2.3) (2021-03-03)
 
 **Note:** Version bump only for package @pie-element/multi-trait-rubric-controller
 
-
-
-
-
 # [1.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-controller@1.1.0...@pie-element/multi-trait-rubric-controller@1.2.0) (2021-03-03)
-
 
 ### Features
 
-* Updated design. Moved exclude zero at item level. Added ability to toggle from Settings Panel: level tag input, description, standards, visibility to student, half scoring, score labels, drag and drop. Added Actionable List. BREAKING CHANGE: moved exclude zero at item level (from scale level) ([c8bb906](https://github.com/pie-framework/pie-elements/commit/c8bb9064712aae057b74dceba5928a19054b27eb))
-
-
-
-
+- Updated design. Moved exclude zero at item level. Added ability to toggle from Settings Panel: level tag input, description, standards, visibility to student, half scoring, score labels, drag and drop. Added Actionable List. BREAKING CHANGE: moved exclude zero at item level (from scale level) ([c8bb906](https://github.com/pie-framework/pie-elements/commit/c8bb9064712aae057b74dceba5928a19054b27eb))
 
 # 1.1.0 (2021-02-02)
 
-
 ### Features
 
-* Added showStandards configuration setting. Added halfScoring and visibleToStudent. ([db993ca](https://github.com/pie-framework/pie-elements/commit/db993ca))
-* multi-trait-rubric (No authoring yet) ([dc01b01](https://github.com/pie-framework/pie-elements/commit/dc01b01))
+- Added showStandards configuration setting. Added halfScoring and visibleToStudent. ([db993ca](https://github.com/pie-framework/pie-elements/commit/db993ca))
+- multi-trait-rubric (No authoring yet) ([dc01b01](https://github.com/pie-framework/pie-elements/commit/dc01b01))

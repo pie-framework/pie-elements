@@ -6,16 +6,16 @@ export const assertProp = (getEl, name, expected) => {
   });
 };
 
-const xScale = jest.fn(function(n) {
+const xScale = jest.fn(function (n) {
   return n;
 });
-xScale.invert = jest.fn(function(n) {
+xScale.invert = jest.fn(function (n) {
   return n;
 });
 
 export const stubContext = {
   xScale: xScale,
-  snapValue: jest.fn(function(n) {
+  snapValue: jest.fn(function (n) {
     return n;
-  })
+  }),
 };

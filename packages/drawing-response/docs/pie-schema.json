@@ -36,10 +36,7 @@
             "title": "width"
           }
         },
-        "required": [
-          "height",
-          "width"
-        ]
+        "required": ["height", "width"]
       },
       "title": "imageDimensions"
     },
@@ -76,10 +73,7 @@
     "toolbarEditorPosition": {
       "description": "Indicates the editor's toolbar position which can be 'bottom' or 'top'",
       "default": ": 'bottom'",
-      "enum": [
-        "bottom",
-        "top"
-      ],
+      "enum": ["bottom", "top"],
       "type": "string",
       "title": "toolbarEditorPosition"
     },
@@ -204,10 +198,7 @@
           "title": "width"
         }
       },
-      "required": [
-        "height",
-        "width"
-      ]
+      "required": ["height", "width"]
     }
   },
   "$schema": "http://json-schema.org/draft-07/schema#"

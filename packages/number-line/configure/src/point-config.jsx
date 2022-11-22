@@ -7,20 +7,20 @@ const { Point } = pointChooser;
 
 const styles = {
   displayToggles: {
-    paddingTop: '20px'
-  }
+    paddingTop: '20px',
+  },
 };
 
 class PointConfig extends React.Component {
   static propTypes = {
     onSelectionChange: PropTypes.func,
     selection: PropTypes.object,
-    classes: PropTypes.object
+    classes: PropTypes.object,
   };
   constructor(props) {
     super(props);
     this.state = {
-      selection: props.selection
+      selection: props.selection,
     };
   }
 
@@ -53,7 +53,7 @@ class PointConfig extends React.Component {
   render() {
     const { classes } = this.props;
 
-    const icons = PointConfig.types.map(point => {
+    const icons = PointConfig.types.map((point) => {
       return (
         <Point
           iconKey={point.toLowerCase()}
@@ -68,18 +68,10 @@ class PointConfig extends React.Component {
       <div>
         <div>{icons}</div>
         <div className={classes.displayToggles}>
-          <Button
-            variant="outlined"
-            size="small"
-            onClick={this.toggleAll.bind(this, true)}
-          >
+          <Button variant="outlined" size="small" onClick={this.toggleAll.bind(this, true)}>
             Display All
           </Button>
-          <Button
-            variant="outlined"
-            size="small"
-            onClick={this.toggleAll.bind(this, false)}
-          >
+          <Button variant="outlined" size="small" onClick={this.toggleAll.bind(this, false)}>
             None
           </Button>
         </div>
@@ -88,16 +80,6 @@ class PointConfig extends React.Component {
   }
 }
 
-PointConfig.types = [
-  'PF',
-  'LFF',
-  'LEF',
-  'LFE',
-  'LEE',
-  'RFN',
-  'RFP',
-  'REN',
-  'REP'
-];
+PointConfig.types = ['PF', 'LFF', 'LEF', 'LFE', 'LEE', 'RFN', 'RFP', 'REN', 'REP'];
 
 export default withStyles(styles, { name: 'PointConfig' })(PointConfig);

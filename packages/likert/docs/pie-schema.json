@@ -5,33 +5,19 @@
   "properties": {
     "likertScale": {
       "description": "Indicates the likert scale",
-      "enum": [
-        "likert3",
-        "likert5",
-        "likert7"
-      ],
+      "enum": ["likert3", "likert5", "likert7"],
       "type": "string",
       "title": "likertScale"
     },
     "likertType": {
       "description": "Indicates the likert type",
-      "enum": [
-        "agreement",
-        "frequency",
-        "importance",
-        "like",
-        "likelihood",
-        "yesNo"
-      ],
+      "enum": ["agreement", "frequency", "importance", "like", "likelihood", "yesNo"],
       "type": "string",
       "title": "likertType"
     },
     "likertOrientation": {
       "description": "Indicates the likert type",
-      "enum": [
-        "horizontal",
-        "vertical"
-      ],
+      "enum": ["horizontal", "vertical"],
       "type": "string",
       "title": "likertOrientation"
     },
@@ -53,10 +39,7 @@
             "title": "label"
           }
         },
-        "required": [
-          "label",
-          "value"
-        ]
+        "required": ["label", "value"]
       },
       "title": "choices"
     },
@@ -81,13 +64,7 @@
       "title": "element"
     }
   },
-  "required": [
-    "choices",
-    "element",
-    "id",
-    "spellCheckEnabled",
-    "teacherInstructionsEnabled"
-  ],
+  "required": ["choices", "element", "id", "spellCheckEnabled", "teacherInstructionsEnabled"],
   "definitions": {
     "ConfigureProp": {
       "title": "ConfigureProp",
@@ -120,10 +97,7 @@
           "title": "label"
         }
       },
-      "required": [
-        "label",
-        "value"
-      ]
+      "required": ["label", "value"]
     }
   },
   "$schema": "http://json-schema.org/draft-07/schema#"

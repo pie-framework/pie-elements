@@ -35,10 +35,7 @@
                 "title": "rationale"
               }
             },
-            "required": [
-              "label",
-              "value"
-            ]
+            "required": ["label", "value"]
           }
         }
       },
@@ -90,10 +87,7 @@
     },
     "scoringType": {
       "description": "Indicates scoring type",
-      "enum": [
-        "auto",
-        "rubric"
-      ],
+      "enum": ["auto", "rubric"],
       "type": "string",
       "title": "scoringType"
     },
@@ -140,10 +134,7 @@
     "toolbarEditorPosition": {
       "description": "Indicates the editor's toolbar position which can be 'bottom' or 'top'",
       "default": ": 'bottom'",
-      "enum": [
-        "bottom",
-        "top"
-      ],
+      "enum": ["bottom", "top"],
       "type": "string",
       "title": "toolbarEditorPosition"
     },
@@ -244,10 +235,7 @@
           "title": "rationale"
         }
       },
-      "required": [
-        "label",
-        "value"
-      ]
+      "required": ["label", "value"]
     }
   },
   "$schema": "http://json-schema.org/draft-07/schema#"

@@ -6,8 +6,8 @@ The schema defines the following properties:
 
 This element must be one of the following enum values:
 
-* `basic`
-* `scientific`
+- `basic`
+- `scientific`
 
 # `id` (string, required)
 

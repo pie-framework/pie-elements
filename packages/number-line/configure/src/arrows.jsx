@@ -8,12 +8,11 @@ export class Arrows extends React.Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
     className: PropTypes.string,
-    arrows: PropTypes.shape({ left: PropTypes.bool, right: PropTypes.bool })
-      .isRequired,
-    onChange: PropTypes.func
+    arrows: PropTypes.shape({ left: PropTypes.bool, right: PropTypes.bool }).isRequired,
+    onChange: PropTypes.func,
   };
   static defaultProps = {
-    arrows: { left: true, right: true }
+    arrows: { left: true, right: true },
   };
 
   constructor(props) {
@@ -31,12 +30,7 @@ export class Arrows extends React.Component {
     const { classes, className, arrows } = this.props;
     return (
       <div className={cn(classes.arrows, className)}>
-        <InputCheckbox
-          className={classes.checkbox}
-          label={'Left'}
-          checked={arrows.left}
-          onChange={this.changeLeft}
-        />
+        <InputCheckbox className={classes.checkbox} label={'Left'} checked={arrows.left} onChange={this.changeLeft} />
         &nbsp;
         <InputCheckbox
           className={classes.checkbox}
@@ -48,9 +42,9 @@ export class Arrows extends React.Component {
     );
   }
 }
-const styles = theme => ({
+const styles = (theme) => ({
   arrows: {
-    paddingTop: theme.spacing.unit * 2
-  }
+    paddingTop: theme.spacing.unit * 2,
+  },
 });
 export default withStyles(styles)(Arrows);

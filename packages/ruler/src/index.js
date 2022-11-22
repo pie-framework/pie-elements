@@ -17,13 +17,7 @@ export default class Ruler extends HTMLElement {
 
   set model(m) {
     this._model = m;
-    this.dispatchEvent(
-      new ModelSetEvent(
-        this.tagName.toLowerCase(),
-        this._session,
-        !!this._model
-      )
-    );
+    this.dispatchEvent(new ModelSetEvent(this.tagName.toLowerCase(), this._session, !!this._model));
 
     this.render();
   }
@@ -31,7 +25,7 @@ export default class Ruler extends HTMLElement {
   render() {
     if (this._model) {
       let elem = React.createElement(Root, {
-        model: this._model
+        model: this._model,
       });
 
       ReactDOM.render(elem, this);

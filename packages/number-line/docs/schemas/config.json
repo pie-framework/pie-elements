@@ -4,17 +4,11 @@
   "definitions": {
     "feedbackType": {
       "type": "string",
-      "enum": [
-        "default",
-        "custom"
-      ]
+      "enum": ["default", "custom"]
     },
     "pointType": {
       "type": "string",
-      "enum": [
-        "full",
-        "empty"
-      ],
+      "enum": ["full", "empty"],
       "description": "Describes whether the point is filled-in or empty."
     },
     "domainPosition": {
@@ -26,9 +20,7 @@
       "properties": {
         "type": {
           "type": "string",
-          "enum": [
-            "point"
-          ]
+          "enum": ["point"]
         },
         "pointType": {
           "$ref": "#/definitions/pointType"
@@ -37,20 +29,14 @@
           "$ref": "#/definitions/domainPosition"
         }
       },
-      "required": [
-        "type",
-        "domainPosition",
-        "pointType"
-      ]
+      "required": ["type", "domainPosition", "pointType"]
     },
     "ray": {
       "type": "object",
       "properties": {
         "type": "string",
         "type": {
-          "enum": [
-            "ray"
-          ]
+          "enum": ["ray"]
         },
         "pointType": {
           "$ref": "#/definitions/pointType"
@@ -60,18 +46,10 @@
         },
         "direction": {
           "type": "string",
-          "enum": [
-            "positive",
-            "negative"
-          ]
+          "enum": ["positive", "negative"]
         }
       },
-      "required": [
-        "type",
-        "pointType",
-        "direction",
-        "domainPosition"
-      ]
+      "required": ["type", "pointType", "direction", "domainPosition"]
     },
     "line": {
       "type": "object",
@@ -89,12 +67,7 @@
           "type": "number"
         }
       },
-      "required": [
-        "leftPoint",
-        "rightPoint",
-        "size",
-        "domainPosition"
-      ]
+      "required": ["leftPoint", "rightPoint", "size", "domainPosition"]
     }
   },
   "properties": {
@@ -158,10 +131,7 @@
             "type": "number"
           }
         },
-        "required": [
-          "numberOfCorrect",
-          "scorePercentage"
-        ]
+        "required": ["numberOfCorrect", "scorePercentage"]
       }
     },
     "model": {
@@ -192,17 +162,7 @@
             "initialType": {
               "type": "string",
               "description": "The initial type of point, line, or ray to be set by the component.",
-              "enum": [
-                "PF",
-                "LEE",
-                "LEF",
-                "LFE",
-                "LFF",
-                "REP",
-                "REN",
-                "RFP",
-                "RFN"
-              ]
+              "enum": ["PF", "LEE", "LEF", "LFE", "LFF", "REP", "REN", "RFP", "RFN"]
             },
             "snapPerTick": {
               "type": "number",
@@ -244,13 +204,8 @@
           }
         }
       },
-      "required": [
-        "config"
-      ]
+      "required": ["config"]
     }
   },
-  "required": [
-    "correctResponse",
-    "model"
-  ]
+  "required": ["correctResponse", "model"]
 }

@@ -12,38 +12,36 @@ export class ChoicesList extends React.Component {
     session: PropTypes.object.isRequired,
     instanceId: PropTypes.string.isRequired,
     model: PropTypes.object.isRequired,
-    disabled: PropTypes.bool.isRequired
+    disabled: PropTypes.bool.isRequired,
   };
 
   render() {
-    const {
-      model,
-      classes,
-      disabled,
-      session,
-      instanceId
-    } = this.props;
+    const { model, classes, disabled, session, instanceId } = this.props;
     const { config } = model;
     const { duplicates } = config;
 
     return (
       <div className={classes.answersContainer}>
-        {
-          config.answers
-            .filter(answer => (duplicates || isEmpty(session) || !session.value || isUndefined(find(session.value, val => val === answer.id))))
-            .map((answer) => (
-              <DragAnswer
-                key={answer.id}
-                instanceId={instanceId}
-                className={classes.choice}
-                draggable={true}
-                disabled={disabled}
-                session={session}
-                type={'choice'}
-                {...answer}
-              />
-            ))
-        }
+        {config.answers
+          .filter(
+            (answer) =>
+              duplicates ||
+              isEmpty(session) ||
+              !session.value ||
+              isUndefined(find(session.value, (val) => val === answer.id)),
+          )
+          .map((answer) => (
+            <DragAnswer
+              key={answer.id}
+              instanceId={instanceId}
+              className={classes.choice}
+              draggable={true}
+              disabled={disabled}
+              session={session}
+              type={'choice'}
+              {...answer}
+            />
+          ))}
       </div>
     );
   }
@@ -56,13 +54,13 @@ const styles = () => ({
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-between',
-    marginTop: 50
+    marginTop: 50,
   },
   choice: {
     minHeight: '40px',
     minWidth: '200px',
-    height: 'initial'
-  }
+    height: 'initial',
+  },
 });
 
 export default withStyles(styles)(ChoicesList);

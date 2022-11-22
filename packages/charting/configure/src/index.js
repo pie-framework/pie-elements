@@ -5,7 +5,7 @@ import {
   DeleteImageEvent,
   InsertImageEvent,
   InsertSoundEvent,
-  DeleteSoundEvent
+  DeleteSoundEvent,
 } from '@pie-framework/pie-configure-events';
 import debug from 'debug';
 import Configure from './configure';
@@ -70,12 +70,12 @@ export default class GraphLinesConfigure extends HTMLElement {
         configuration: this._configuration,
         imageSupport: {
           add: this.insertImage.bind(this),
-          delete: this.onDeleteImage.bind(this)
+          delete: this.onDeleteImage.bind(this),
         },
         uploadSoundSupport: {
           add: this.insertSound.bind(this),
-          delete: this.onDeleteSound.bind(this)
-        }
+          delete: this.onDeleteSound.bind(this),
+        },
       });
 
       ReactDOM.render(el, this, () => {

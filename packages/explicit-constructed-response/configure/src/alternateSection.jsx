@@ -23,21 +23,21 @@ const styles = () => ({
     padding: '20px 0 0 0',
     '& > *': {
       marginBottom: '20px',
-      width: '100%'
-    }
+      width: '100%',
+    },
   },
   choice: {
     flex: '1',
-    marginRight: '20px'
+    marginRight: '20px',
   },
   deleteBtn: {
-    fill: 'gray'
+    fill: 'gray',
   },
   selectContainer: {
     alignItems: 'flex-end',
     display: 'flex',
     justifyContent: 'space-between',
-    width: '100%'
+    width: '100%',
   },
   rightContainer: {
     alignItems: 'center',
@@ -45,17 +45,17 @@ const styles = () => ({
   },
   lengthField: {
     width: '230px',
-    marginRight: '20px'
+    marginRight: '20px',
   },
   errorText: {
     fontSize: '12px',
     color: 'red',
-    paddingTop: '5px'
+    paddingTop: '5px',
   },
   inputError: {
     border: '2px solid red',
-    borderRadius: '6px'
-  }
+    borderRadius: '6px',
+  },
 });
 
 export class Choice extends React.Component {
@@ -64,11 +64,11 @@ export class Choice extends React.Component {
     markup: PropTypes.string,
     onChange: PropTypes.func.isRequired,
     onDelete: PropTypes.func.isRequired,
-    value: PropTypes.string
+    value: PropTypes.string,
   };
 
   state = {
-    value: this.props.markup
+    value: this.props.markup,
   };
 
   updateText = debounce(this.props.onChange, 300);
@@ -96,7 +96,7 @@ export class Choice extends React.Component {
           style={{
             alignItems: 'center',
             display: 'flex',
-            justifyContent: 'space-between'
+            justifyContent: 'space-between',
           }}
         >
           <OutlinedInput
@@ -107,12 +107,8 @@ export class Choice extends React.Component {
             disableUnderline
             spellCheck={spellCheck}
           />
-          <IconButton
-            aria-label="delete"
-            className={classes.deleteBtn}
-            onClick={onDelete}
-          >
-            <Delete/>
+          <IconButton aria-label="delete" className={classes.deleteBtn} onClick={onDelete}>
+            <Delete />
           </IconButton>
         </div>
         {error && <div className={classes.errorText}>{error}</div>}
@@ -132,7 +128,7 @@ export class AlternateSection extends React.Component {
     choiceRemoved: PropTypes.func.isRequired,
     value: PropTypes.string,
     maxLength: PropTypes.number,
-    showMaxLength: PropTypes.bool
+    showMaxLength: PropTypes.bool,
   };
 
   state = {};
@@ -145,38 +141,39 @@ export class AlternateSection extends React.Component {
     this.updateChoicesIfNeeded(this.props);
   }
 
-  updateChoicesIfNeeded = props => {
-    if (!this.state.choices
-      || !isEqual(props.choices, this.state.choices)
-      || !isEqual(props.choices, this.props.choices)
+  updateChoicesIfNeeded = (props) => {
+    if (
+      !this.state.choices ||
+      !isEqual(props.choices, this.state.choices) ||
+      !isEqual(props.choices, this.props.choices)
     ) {
       this.setState({
-        choices: props.choices
+        choices: props.choices,
       });
     }
   };
 
-  handleSelect = e => {
+  handleSelect = (e) => {
     const { onSelect, selectChoices } = this.props;
     const { value } = e.target;
 
-    onSelect(selectChoices.find(c => c.value === value));
+    onSelect(selectChoices.find((c) => c.value === value));
   };
 
   onAddChoice = () => {
     const { choices } = this.state;
 
     if (choices.length && choices[choices.length - 1].label !== '') {
-      const value = max(choices.map(c => parseInt(c.value)).filter(id => !isNaN(id))) || 0;
+      const value = max(choices.map((c) => parseInt(c.value)).filter((id) => !isNaN(id))) || 0;
 
       this.setState({
         choices: [
           ...choices,
           {
             value: `${value + 1}`,
-            label: ''
-          }
-        ]
+            label: '',
+          },
+        ],
       });
     }
   };
@@ -184,14 +181,14 @@ export class AlternateSection extends React.Component {
   onChoiceChanged = (choice, value, index) => {
     const { choiceChanged, lengthChanged, maxLength, choices } = this.props;
 
-    const labelLengthsArr = choices.map(choice => (choice.label || '').length);
+    const labelLengthsArr = choices.map((choice) => (choice.label || '').length);
     labelLengthsArr[index] = value.length;
 
     const newLength = Math.max(...labelLengthsArr);
 
     choiceChanged({
       ...choice,
-      label: value
+      label: value,
     });
 
     if (newLength > maxLength || newLength + 10 <= maxLength) {
@@ -199,7 +196,7 @@ export class AlternateSection extends React.Component {
     }
   };
 
-  onRemoveChoice = choice => {
+  onRemoveChoice = (choice) => {
     const { choiceRemoved } = this.props;
 
     choiceRemoved(choice.value);
@@ -212,12 +209,12 @@ export class AlternateSection extends React.Component {
       return 1;
     }
 
-    const labelLengthsArr = choices.map(choice => (choice.label || '').length);
+    const labelLengthsArr = choices.map((choice) => (choice.label || '').length);
 
     return Math.max(...labelLengthsArr);
   };
 
-  changeLength = event => {
+  changeLength = (event) => {
     const { lengthChanged } = this.props;
     const numberValue = parseInt(event.target.value, 10);
     const minLength = this.getChoicesMaxLength();
@@ -228,23 +225,13 @@ export class AlternateSection extends React.Component {
   };
 
   render() {
-    const {
-      classes,
-      selectChoices,
-      maxLength,
-      showMaxLength,
-      value,
-      spellCheck,
-      errors
-    } = this.props;
+    const { classes, selectChoices, maxLength, showMaxLength, value, spellCheck, errors } = this.props;
     const { choices } = this.state;
     const minLength = this.getChoicesMaxLength();
 
     return (
       <div className={classes.design}>
-        <div
-          className={classes.selectContainer}
-        >
+        <div className={classes.selectContainer}>
           <Select
             className={classes.select}
             displayEmpty
@@ -253,14 +240,15 @@ export class AlternateSection extends React.Component {
             readOnly={showMaxLength}
           >
             <MenuItem value="">
-              <em>
-                {value ? 'Remove selection' : 'Select a response'}
-              </em>
+              <em>{value ? 'Remove selection' : 'Select a response'}</em>
             </MenuItem>
-            {selectChoices.map((c, index) => <MenuItem key={index} value={c.value}>{c.label}</MenuItem>)}
+            {selectChoices.map((c, index) => (
+              <MenuItem key={index} value={c.value}>
+                {c.label}
+              </MenuItem>
+            ))}
           </Select>
-          {
-            choices && choices.length > 0 &&
+          {choices && choices.length > 0 && (
             <div className={classes.rightContainer}>
               {maxLength && showMaxLength && (
                 <TextField
@@ -269,41 +257,35 @@ export class AlternateSection extends React.Component {
                   type="number"
                   inputProps={{
                     min: minLength,
-                    max: minLength + 10
+                    max: minLength + 10,
                   }}
                   value={maxLength}
                   onChange={this.changeLength}
                 />
               )}
-              <Button
-                className={classes.addButton}
-                variant="contained"
-                color="primary"
-                onClick={this.onAddChoice}
-              >
+              <Button className={classes.addButton} variant="contained" color="primary" onClick={this.onAddChoice}>
                 Add
               </Button>
             </div>
-          }
+          )}
         </div>
         {errors && errors[0] && <div className={classes.errorText}>{errors[0]}</div>}
-        <div
-          className={classes.altChoices}
-        >
-          {
-            choices &&
-            choices.map((c, index) => index > 0 && (
-              <Choice
-                key={index}
-                classes={classes}
-                markup={c.label}
-                onChange={val => this.onChoiceChanged(c, val, index)}
-                onDelete={() => this.onRemoveChoice(c)}
-                spellCheck = {spellCheck}
-                error={errors && errors[index]}
-              />
-            ))
-          }
+        <div className={classes.altChoices}>
+          {choices &&
+            choices.map(
+              (c, index) =>
+                index > 0 && (
+                  <Choice
+                    key={index}
+                    classes={classes}
+                    markup={c.label}
+                    onChange={(val) => this.onChoiceChanged(c, val, index)}
+                    onDelete={() => this.onRemoveChoice(c)}
+                    spellCheck={spellCheck}
+                    error={errors && errors[index]}
+                  />
+                ),
+            )}
         </div>
       </div>
     );

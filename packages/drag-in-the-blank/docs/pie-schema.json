@@ -26,21 +26,13 @@
             "title": "correct"
           }
         },
-        "required": [
-          "label",
-          "value"
-        ]
+        "required": ["label", "value"]
       },
       "title": "choices"
     },
     "choicesPosition": {
       "title": "ChoicesPosition",
-      "enum": [
-        "above",
-        "below",
-        "left",
-        "right"
-      ],
+      "enum": ["above", "below", "left", "right"],
       "type": "string"
     },
     "correctResponse": {
@@ -133,10 +125,7 @@
     "toolbarEditorPosition": {
       "description": "Indicates the editor's toolbar position which can be 'bottom' or 'top'",
       "default": ": 'bottom'",
-      "enum": [
-        "bottom",
-        "top"
-      ],
+      "enum": ["bottom", "top"],
       "type": "string",
       "title": "toolbarEditorPosition"
     },
@@ -229,19 +218,11 @@
           "title": "correct"
         }
       },
-      "required": [
-        "label",
-        "value"
-      ]
+      "required": ["label", "value"]
     },
     "ChoicesPosition": {
       "title": "ChoicesPosition",
-      "enum": [
-        "above",
-        "below",
-        "left",
-        "right"
-      ],
+      "enum": ["above", "below", "left", "right"],
       "type": "string"
     }
   },

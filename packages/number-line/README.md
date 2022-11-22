@@ -4,18 +4,18 @@
 
 A [pie](https://www.npmjs.com/package/pie) interaction that renders an interactive number line.
 
-## Demo 
+## Demo
 
 ```shell
 npm install -g pie
 git clone git@github.com:pie-framework/pie-elements.git
 cd packages/number-line
-pie info 
+pie info
 ```
 
-### Test 
+### Test
 
-```shell 
+```shell
 npm test
 ```
 
@@ -23,6 +23,6 @@ npm test
 
 This interaction is a port of a corespring internal component and due to this the data model is the same as that internal component's.
 
-All properties work except for: 
-* model.config.tickOverrides - wont support
+All properties work except for:
 
+- model.config.tickOverrides - wont support

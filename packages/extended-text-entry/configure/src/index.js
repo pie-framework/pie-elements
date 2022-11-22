@@ -3,7 +3,7 @@ import {
   DeleteImageEvent,
   InsertImageEvent,
   InsertSoundEvent,
-  DeleteSoundEvent
+  DeleteSoundEvent,
 } from '@pie-framework/pie-configure-events';
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -39,7 +39,7 @@ export default class ExtendedTextEntry extends HTMLElement {
       this._model.rubricEnabled = true;
       this.dispatchEvent(new ModelUpdatedEvent(this._model));
     }
-  }
+  };
 
   set model(m) {
     this._model = ExtendedTextEntry.createDefaultModel(m, this._configuration);
@@ -49,7 +49,7 @@ export default class ExtendedTextEntry extends HTMLElement {
   set configuration(c) {
     this._configuration = {
       ...defaults.configuration,
-      ...c
+      ...c,
     };
 
     this.verifyRubric(this._configuration);
@@ -66,7 +66,7 @@ export default class ExtendedTextEntry extends HTMLElement {
   onConfigurationChanged(c) {
     this._configuration = {
       ...defaults.configuration,
-      ...c
+      ...c,
     };
 
     if (this._model) {
@@ -81,7 +81,6 @@ export default class ExtendedTextEntry extends HTMLElement {
 
     this.render();
   }
-
 
   /**
    *
@@ -114,12 +113,12 @@ export default class ExtendedTextEntry extends HTMLElement {
         onConfigurationChanged: this.onConfigurationChanged.bind(this),
         imageSupport: {
           add: this.insertImage.bind(this),
-          delete: this.onDeleteImage.bind(this)
+          delete: this.onDeleteImage.bind(this),
         },
         uploadSoundSupport: {
           add: this.insertSound.bind(this),
-          delete: this.onDeleteSound.bind(this)
-        }
+          delete: this.onDeleteSound.bind(this),
+        },
       });
       ReactDOM.render(element, this);
     }

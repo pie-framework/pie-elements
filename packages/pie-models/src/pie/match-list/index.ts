@@ -1,6 +1,6 @@
-import {PromptConfig} from '../../PromptConfig';
-import {CommonConfigSettings} from '../../CommonConfigSettings';
-import {PieModel} from '../../PieModel';
+import { PromptConfig } from '../../PromptConfig';
+import { CommonConfigSettings } from '../../CommonConfigSettings';
+import { PieModel } from '../../PieModel';
 
 /**
  * Multiple question prompts
@@ -25,9 +25,9 @@ export interface Answer {
 }
 
 /**
-* Model for the @pie-elements/match-list Interaction
-* @additionalProperties false
-*/
+ * Model for the @pie-elements/match-list Interaction
+ * @additionalProperties false
+ */
 export interface MatchListPie extends PieModel {
   /**  The question prompt or item stem*/
   prompt?: string;
@@ -51,6 +51,4 @@ export interface MatchListPie extends PieModel {
  * Config Object for @pie-elements/match-list
  * @additionalProperties false
  */
-export interface MatchListConfigure extends PromptConfig, CommonConfigSettings {
-
-}
+export interface MatchListConfigure extends PromptConfig, CommonConfigSettings {}

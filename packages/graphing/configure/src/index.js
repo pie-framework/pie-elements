@@ -6,7 +6,7 @@ import {
   DeleteImageEvent,
   InsertImageEvent,
   InsertSoundEvent,
-  DeleteSoundEvent
+  DeleteSoundEvent,
 } from '@pie-framework/pie-configure-events';
 import debug from 'debug';
 import defaultValues from './defaults';
@@ -15,13 +15,16 @@ import { renderMath } from '@pie-lib/math-rendering';
 const log = debug('pie-elements:graphing:configure');
 
 // this function is implemented in controller as well
-const sortedAnswers = answers => Object.keys(answers || {}).sort().reduce((result, key) => {
-  if (key !== 'correctAnswer') {
-    result[key] = answers[key];
-  }
+const sortedAnswers = (answers) =>
+  Object.keys(answers || {})
+    .sort()
+    .reduce((result, key) => {
+      if (key !== 'correctAnswer') {
+        result[key] = answers[key];
+      }
 
-  return result;
-}, {});
+      return result;
+    }, {});
 
 export default class GraphLinesConfigure extends HTMLElement {
   static createDefaultModel = (model = {}) => {
@@ -33,28 +36,33 @@ export default class GraphLinesConfigure extends HTMLElement {
       graph = {},
       range = {},
       standardGrid,
-      toolbarTools
+      toolbarTools,
     } = normalizedModel;
 
     // added support for models without defaultTool defined; also used in packages/graphing/controller/src/index.js
-    const toolbarToolsNoLabel = (toolbarTools || []).filter(tool => tool !== 'label');
-    const normalizedDefaultTool = defaultTool || toolbarToolsNoLabel.length && toolbarToolsNoLabel[0] || '';
+    const toolbarToolsNoLabel = (toolbarTools || []).filter((tool) => tool !== 'label');
+    const normalizedDefaultTool = defaultTool || (toolbarToolsNoLabel.length && toolbarToolsNoLabel[0]) || '';
 
     return {
       ...normalizedModel,
-      answers: answers && answers.correctAnswer && {
-        correctAnswer: answers.correctAnswer,
-        ...sortedAnswers(answers)
-      } || answers,
+      answers:
+        (answers &&
+          answers.correctAnswer && {
+            correctAnswer: answers.correctAnswer,
+            ...sortedAnswers(answers),
+          }) ||
+        answers,
       defaultTool: normalizedDefaultTool,
-      range: standardGrid && {
-        ...range,
-        min: domain.min,
-        max: domain.max,
-        step: domain.step,
-        labelStep: domain.labelStep
-      } || range,
-      graph: standardGrid && { ...graph, height: graph.width } || graph
+      range:
+        (standardGrid && {
+          ...range,
+          min: domain.min,
+          max: domain.max,
+          step: domain.step,
+          labelStep: domain.labelStep,
+        }) ||
+        range,
+      graph: (standardGrid && { ...graph, height: graph.width }) || graph,
     };
   };
 
@@ -117,8 +125,8 @@ export default class GraphLinesConfigure extends HTMLElement {
         },
         uploadSoundSupport: {
           add: this.insertSound.bind(this),
-          delete: this.onDeleteSound.bind(this)
-        }
+          delete: this.onDeleteSound.bind(this),
+        },
       });
 
       ReactDOM.render(el, this, () => {

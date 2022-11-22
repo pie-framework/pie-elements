@@ -1,10 +1,4 @@
-import {
-  model,
-  outcome,
-  getPartialScore,
-  isResponseCorrect,
-  createCorrectResponseSession,
-} from '../index';
+import { model, outcome, getPartialScore, isResponseCorrect, createCorrectResponseSession } from '../index';
 
 jest.mock('../utils', () => ({
   ...jest.requireActual('../utils.js'),
@@ -46,10 +40,10 @@ describe('controller', () => {
           score: 1,
           value: [
             {
-              images: [rhomb, square]
+              images: [rhomb, square],
             },
             {
-              images: [rhomb, square, trapeze]
+              images: [rhomb, square, trapeze],
             },
           ],
         },
@@ -65,11 +59,7 @@ describe('controller', () => {
   describe('outcome partialScoring test', () => {
     const assertOutcome = (message, extra, sessionValue, env, expected) => {
       it(message, async () => {
-        const result = await outcome(
-          { ...question, ...extra },
-          sessionValue,
-          env
-        );
+        const result = await outcome({ ...question, ...extra }, sessionValue, env);
 
         expect(result).toEqual(expect.objectContaining(expected));
       });
@@ -88,7 +78,7 @@ describe('controller', () => {
         ],
       },
       { mode: 'evaluate' },
-      { score: 0.2 }
+      { score: 0.2 },
     );
 
     assertOutcome(
@@ -104,7 +94,7 @@ describe('controller', () => {
         ],
       },
       { mode: 'evaluate' },
-      { score: 0 }
+      { score: 0 },
     );
 
     assertOutcome(
@@ -120,7 +110,7 @@ describe('controller', () => {
         ],
       },
       { mode: 'evaluate', partialScoring: true },
-      { score: 0 }
+      { score: 0 },
     );
 
     assertOutcome(
@@ -136,15 +126,13 @@ describe('controller', () => {
         ],
       },
       { mode: 'evaluate', partialScoring: false },
-      { score: 0 }
+      { score: 0 },
     );
   });
 
   describe('outcome', () => {
     const returnOutcome = (session) => {
-      it(`returns score of 0 and empty: true if session is ${JSON.stringify(
-        session
-      )}`, async () => {
+      it(`returns score of 0 and empty: true if session is ${JSON.stringify(session)}`, async () => {
         const result = await outcome(question, session);
         expect(result).toEqual({ score: 0, empty: true });
       });
@@ -184,7 +172,7 @@ describe('controller', () => {
                 score: 1,
                 value: [
                   [rhomb, square],
-                  [trapeze, hexagon]
+                  [trapeze, hexagon],
                 ],
               },
             },
@@ -196,7 +184,7 @@ describe('controller', () => {
               { value: trapeze, containerIndex: 1 },
               { value: hexagon, containerIndex: 1 },
             ],
-          }
+          },
         );
         expect(result.score).toEqual(0);
       });
@@ -208,9 +196,7 @@ describe('controller', () => {
             validation: {
               valid_response: {
                 score: 1,
-                value: [
-                  { images: null }
-                ],
+                value: [{ images: null }],
               },
             },
           },
@@ -219,7 +205,7 @@ describe('controller', () => {
               { value: rhomb, containerIndex: 0 },
               { value: hexagon, containerIndex: 1 },
             ],
-          }
+          },
         );
         expect(result.score).toEqual(0);
       });
@@ -231,9 +217,7 @@ describe('controller', () => {
             validation: {
               valid_response: {
                 score: 1,
-                value: [
-                  {}
-                ],
+                value: [{}],
               },
             },
           },
@@ -242,11 +226,10 @@ describe('controller', () => {
               { value: rhomb, containerIndex: 0 },
               { value: hexagon, containerIndex: 1 },
             ],
-          }
+          },
         );
         expect(result.score).toEqual(0);
       });
-
     });
 
     describe('alternate correct answers', () => {
@@ -260,7 +243,7 @@ describe('controller', () => {
                 alt_responses: [
                   {
                     score: 1,
-                    value: [{images: [rhomb]}, {images: [square]}, {images: [trapeze]}, {images: [hexagon]}],
+                    value: [{ images: [rhomb] }, { images: [square] }, { images: [trapeze] }, { images: [hexagon] }],
                   },
                 ],
               },
@@ -272,7 +255,7 @@ describe('controller', () => {
                 { value: trapeze, containerIndex: 2 },
                 { value: hexagon, containerIndex: 3 },
               ],
-            }
+            },
           );
           expect(result.score).toEqual(1);
         });
@@ -286,7 +269,7 @@ describe('controller', () => {
                 alt_responses: [
                   {
                     score: 1,
-                    value: [{images: [rhomb]}, {images: [square]}, {images: [trapeze]}, {images: [hexagon]}],
+                    value: [{ images: [rhomb] }, { images: [square] }, { images: [trapeze] }, { images: [hexagon] }],
                   },
                 ],
               },
@@ -298,7 +281,7 @@ describe('controller', () => {
                 { value: trapeze, containerIndex: 2 },
                 { value: hexagon, containerIndex: 0 },
               ],
-            }
+            },
           );
           expect(result.score).toEqual(0);
         });
@@ -314,11 +297,11 @@ describe('controller', () => {
                 alt_responses: [
                   {
                     score: 1,
-                    value: [{images: [square]}, {images: [rhomb]}, {images: [trapeze]}, {images: [hexagon]}],
+                    value: [{ images: [square] }, { images: [rhomb] }, { images: [trapeze] }, { images: [hexagon] }],
                   },
                   {
                     score: 1,
-                    value: [{images: [rhomb]}, {images: [square]}, {images: [trapeze]}, {images: [hexagon]}],
+                    value: [{ images: [rhomb] }, { images: [square] }, { images: [trapeze] }, { images: [hexagon] }],
                   },
                 ],
               },
@@ -330,7 +313,7 @@ describe('controller', () => {
                 { value: trapeze, containerIndex: 2 },
                 { value: hexagon, containerIndex: 3 },
               ],
-            }
+            },
           );
           expect(result.score).toEqual(1);
         });
@@ -344,11 +327,11 @@ describe('controller', () => {
                 alt_responses: [
                   {
                     score: 1,
-                    value: [{images: [square]}, {images: [rhomb]}, {images: [trapeze]}, {images: [hexagon]}],
+                    value: [{ images: [square] }, { images: [rhomb] }, { images: [trapeze] }, { images: [hexagon] }],
                   },
                   {
                     score: 1,
-                    value: [{images: [rhomb]}, {images: [square]}, {images: [trapeze]}, {images: [hexagon]}],
+                    value: [{ images: [rhomb] }, { images: [square] }, { images: [trapeze] }, { images: [hexagon] }],
                   },
                 ],
               },
@@ -360,7 +343,7 @@ describe('controller', () => {
                 { value: trapeze, containerIndex: 2 },
                 { value: hexagon, containerIndex: 0 },
               ],
-            }
+            },
           );
           expect(result.score).toEqual(0);
         });
@@ -401,19 +384,13 @@ describe('controller', () => {
         expect(result.validation).toEqual({
           validResponse: {
             score: 1,
-            value: [
-              {images: [rhomb, square]},
-              {images: [rhomb, square, trapeze]},
-            ],
+            value: [{ images: [rhomb, square] }, { images: [rhomb, square, trapeze] }],
           },
         });
       });
 
       it('returns responseContainers', () => {
-        expect(result.responseContainers).toEqual([
-          responseContainer1,
-          responseContainer2,
-        ]);
+        expect(result.responseContainers).toEqual([responseContainer1, responseContainer2]);
       });
 
       it('returns duplicateResponses', () => {
@@ -454,18 +431,12 @@ describe('controller', () => {
       });
 
       const returnModel = (sess) => {
-        it(`returns responseCorrect: false if session is ${JSON.stringify(
-          sess
-        )}`, async () => {
-          const result = await model(
-            question,
-            sess,
-            (env = { mode: 'evaluate' })
-          );
+        it(`returns responseCorrect: false if session is ${JSON.stringify(sess)}`, async () => {
+          const result = await model(question, sess, (env = { mode: 'evaluate' }));
           expect(result).toEqual(
             expect.objectContaining({
               responseCorrect: false,
-            })
+            }),
           );
         });
       };
@@ -561,13 +532,11 @@ describe('createCorrectResponseSession', () => {
     expect(sess).toEqual({
       answers: [
         {
-          value:
-            '<img alt="" src="https://app.fluence.net/ia/image/729ca157d04c440ab7ae1c2abfb9c057"/>',
+          value: '<img alt="" src="https://app.fluence.net/ia/image/729ca157d04c440ab7ae1c2abfb9c057"/>',
           containerIndex: 0,
         },
         {
-          value:
-            '<img alt="" src="https://app.fluence.net/ia/image/9e5ed1d6762c4dac87b080e190af113d"/>',
+          value: '<img alt="" src="https://app.fluence.net/ia/image/9e5ed1d6762c4dac87b080e190af113d"/>',
           containerIndex: 1,
         },
       ],
@@ -584,13 +553,11 @@ describe('createCorrectResponseSession', () => {
     expect(sess).toEqual({
       answers: [
         {
-          value:
-            '<img alt="" src="https://app.fluence.net/ia/image/729ca157d04c440ab7ae1c2abfb9c057"/>',
+          value: '<img alt="" src="https://app.fluence.net/ia/image/729ca157d04c440ab7ae1c2abfb9c057"/>',
           containerIndex: 0,
         },
         {
-          value:
-            '<img alt="" src="https://app.fluence.net/ia/image/9e5ed1d6762c4dac87b080e190af113d"/>',
+          value: '<img alt="" src="https://app.fluence.net/ia/image/9e5ed1d6762c4dac87b080e190af113d"/>',
           containerIndex: 1,
         },
       ],

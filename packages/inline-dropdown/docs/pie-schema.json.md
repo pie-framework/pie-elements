@@ -4,8 +4,8 @@ The schema defines the following properties:
 
 # `choices` (object, required)
 
-* Object with all the available choices for each response area.
-* Keys need to be integers from 0 to n - 1 (where n is the number of areas)
+- Object with all the available choices for each response area.
+- Keys need to be integers from 0 to n - 1 (where n is the number of areas)
 
 # `alternateResponses` (object, required)
 
@@ -41,8 +41,8 @@ Indicates scoring type
 
 This element must be one of the following enum values:
 
-* `auto`
-* `rubric`
+- `auto`
+- `rubric`
 
 # `studentInstructions` (string)
 
@@ -82,8 +82,8 @@ Indicates the editor's toolbar position which can be 'bottom' or 'top'
 
 This element must be one of the following enum values:
 
-* `bottom`
-* `top`
+- `bottom`
+- `top`
 
 Default: `": 'bottom'"`
 

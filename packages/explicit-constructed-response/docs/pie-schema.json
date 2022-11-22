@@ -25,10 +25,7 @@
                 "title": "label"
               }
             },
-            "required": [
-              "label",
-              "value"
-            ]
+            "required": ["label", "value"]
           }
         }
       },
@@ -71,10 +68,7 @@
     },
     "autoScoring": {
       "description": "Indicates auto scoring type",
-      "enum": [
-        "allOrNothing",
-        "partial"
-      ],
+      "enum": ["allOrNothing", "partial"],
       "type": "string",
       "title": "autoScoring"
     },
@@ -116,10 +110,7 @@
     "toolbarEditorPosition": {
       "description": "Indicates the editor's toolbar position which can be 'bottom' or 'top'",
       "default": ": 'bottom'",
-      "enum": [
-        "bottom",
-        "top"
-      ],
+      "enum": ["bottom", "top"],
       "type": "string",
       "title": "toolbarEditorPosition"
     },
@@ -216,10 +207,7 @@
           "title": "label"
         }
       },
-      "required": [
-        "label",
-        "value"
-      ]
+      "required": ["label", "value"]
     }
   },
   "$schema": "http://json-schema.org/draft-07/schema#"

@@ -4,7 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { MiniField } from './number-text-field';
 import { tickUtils } from '@pie-element/number-line';
 import * as math from 'mathjs';
-export const Ticks = props => {
+export const Ticks = (props) => {
   const { classes, ticks, onChange, domain } = props;
 
   const changeMinor = (e, minor) => onChange({ ...props.ticks, minor });
@@ -23,12 +23,7 @@ export const Ticks = props => {
         className={classes.nl}
         onChange={changeMinor}
       />
-      <MiniField
-        label="Labels"
-        value={math.number(t.major)}
-        className={classes.nl}
-        onChange={changeMajor}
-      />
+      <MiniField label="Labels" value={math.number(t.major)} className={classes.nl} onChange={changeMajor} />
     </React.Fragment>
   );
 };
@@ -37,9 +32,9 @@ Ticks.propTypes = {
   onChange: PropTypes.func,
   ticks: PropTypes.shape({
     major: PropTypes.number,
-    minor: PropTypes.number
+    minor: PropTypes.number,
   }),
-  domain: PropTypes.shape({ min: PropTypes.number, max: PropTypes.number })
+  domain: PropTypes.shape({ min: PropTypes.number, max: PropTypes.number }),
 };
 
 const styles = () => ({});

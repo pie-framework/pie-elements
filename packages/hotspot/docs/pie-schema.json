@@ -60,12 +60,7 @@
                 "title": "y"
               }
             },
-            "required": [
-              "height",
-              "width",
-              "x",
-              "y"
-            ]
+            "required": ["height", "width", "x", "y"]
           },
           "title": "rectangles"
         },
@@ -104,25 +99,17 @@
                       "title": "y"
                     }
                   },
-                  "required": [
-                    "x",
-                    "y"
-                  ]
+                  "required": ["x", "y"]
                 },
                 "title": "points"
               }
             },
-            "required": [
-              "points"
-            ]
+            "required": ["points"]
           },
           "title": "polygons"
         }
       },
-      "required": [
-        "polygons",
-        "rectangles"
-      ]
+      "required": ["polygons", "rectangles"]
     },
     "multipleCorrect": {
       "description": "Indicates if the item supports multiple correct answers",
@@ -152,10 +139,7 @@
             "title": "width"
           }
         },
-        "required": [
-          "height",
-          "width"
-        ]
+        "required": ["height", "width"]
       },
       "title": "dimensions"
     },
@@ -218,10 +202,7 @@
     "toolbarEditorPosition": {
       "description": "Indicates the editor's toolbar position which can be 'bottom' or 'top'",
       "default": ": 'bottom'",
-      "enum": [
-        "bottom",
-        "top"
-      ],
+      "enum": ["bottom", "top"],
       "type": "string",
       "title": "toolbarEditorPosition"
     },
@@ -335,12 +316,7 @@
                 "title": "y"
               }
             },
-            "required": [
-              "height",
-              "width",
-              "x",
-              "y"
-            ]
+            "required": ["height", "width", "x", "y"]
           },
           "title": "rectangles"
         },
@@ -379,25 +355,17 @@
                       "title": "y"
                     }
                   },
-                  "required": [
-                    "x",
-                    "y"
-                  ]
+                  "required": ["x", "y"]
                 },
                 "title": "points"
               }
             },
-            "required": [
-              "points"
-            ]
+            "required": ["points"]
           },
           "title": "polygons"
         }
       },
-      "required": [
-        "polygons",
-        "rectangles"
-      ]
+      "required": ["polygons", "rectangles"]
     },
     "Rectangle": {
       "title": "Rectangle",
@@ -434,12 +402,7 @@
           "title": "y"
         }
       },
-      "required": [
-        "height",
-        "width",
-        "x",
-        "y"
-      ]
+      "required": ["height", "width", "x", "y"]
     },
     "Polygon": {
       "title": "Polygon",
@@ -473,17 +436,12 @@
                 "title": "y"
               }
             },
-            "required": [
-              "x",
-              "y"
-            ]
+            "required": ["x", "y"]
           },
           "title": "points"
         }
       },
-      "required": [
-        "points"
-      ]
+      "required": ["points"]
     },
     "Point": {
       "title": "Point",
@@ -500,10 +458,7 @@
           "title": "y"
         }
       },
-      "required": [
-        "x",
-        "y"
-      ]
+      "required": ["x", "y"]
     },
     "Dimension": {
       "title": "Dimension",
@@ -520,10 +475,7 @@
           "title": "width"
         }
       },
-      "required": [
-        "height",
-        "width"
-      ]
+      "required": ["height", "width"]
     }
   },
   "$schema": "http://json-schema.org/draft-07/schema#"

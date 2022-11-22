@@ -22,7 +22,7 @@ export class Drawable extends React.Component {
     return {
       ...prevState,
       dimensions: dimensions,
-    }
+    };
   }
 
   constructor(props) {
@@ -36,7 +36,7 @@ export class Drawable extends React.Component {
         height: 0,
         width: 0,
       },
-    }
+    };
   }
 
   /// start of handling HotSpots section
@@ -45,7 +45,7 @@ export class Drawable extends React.Component {
       const { onUpdateShapes, shapes } = this.props;
       // Add a new rectangle at the mouse position with 0 width and height
       const newShapes = shapes.slice();
-      const value = max(newShapes.map(c => parseInt(c.id)).filter(id => !isNaN(id))) || 0;
+      const value = max(newShapes.map((c) => parseInt(c.id)).filter((id) => !isNaN(id))) || 0;
 
       newShapes.push({
         id: `${value + 1}`,
@@ -54,7 +54,7 @@ export class Drawable extends React.Component {
         x: e.evt.layerX,
         y: e.evt.layerY,
         group: 'rectangles',
-        index: shapes.length
+        index: shapes.length,
       });
 
       this.setState({ isDrawing: true, isDrawingShapeId: `${value + 1}` });
@@ -86,7 +86,7 @@ export class Drawable extends React.Component {
       const mouseX = e.evt.layerX;
       const mouseY = e.evt.layerY;
 
-      const currShapeIndex = shapes.findIndex(shape => shape.id === isDrawingShapeId);
+      const currShapeIndex = shapes.findIndex((shape) => shape.id === isDrawingShapeId);
       const currShape = shapes[currShapeIndex];
 
       if (currShape) {
@@ -100,7 +100,7 @@ export class Drawable extends React.Component {
           height: newHeight,
           width: newWidth,
           x: currShape.x,
-          y: currShape.y
+          y: currShape.y,
         };
 
         // On mouse move don't trigger any event. Put the shapes on this state instead.
@@ -111,12 +111,12 @@ export class Drawable extends React.Component {
 
   handleOnDragEnd = (id, updatedProps) => {
     const { shapes, onUpdateShapes } = this.props;
-    const newShapes = shapes.map(shape => {
+    const newShapes = shapes.map((shape) => {
       if (shape.id === id) {
         return {
           ...shape,
-          ...updatedProps
-        }
+          ...updatedProps,
+        };
       }
       return shape;
     });
@@ -131,17 +131,17 @@ export class Drawable extends React.Component {
     let newShapes = [];
 
     if (multipleCorrect) {
-      newShapes = shapes.map(shape => {
+      newShapes = shapes.map((shape) => {
         if (shape.id === id) {
           shape.correct = !shape.correct;
         }
         return shape;
-      })
+      });
     } else {
-      newShapes = shapes.map(shape => {
+      newShapes = shapes.map((shape) => {
         shape.correct = shape.id === id;
         return shape;
-      })
+      });
     }
 
     onUpdateShapes(cloneDeep(newShapes));
@@ -157,17 +157,18 @@ export class Drawable extends React.Component {
     const newWidth = parseFloat(elementStyle.width);
     const aspectWidth = newWidth / IMAGE_MAX_WIDTH;
 
-    const dimensions = newWidth > IMAGE_MAX_WIDTH ? {
-      height: newHeight / aspectWidth,
-      width: IMAGE_MAX_WIDTH
-    } : {
-      height: newHeight,
-      width: newWidth
-    };
+    const dimensions =
+      newWidth > IMAGE_MAX_WIDTH
+        ? {
+            height: newHeight / aspectWidth,
+            width: IMAGE_MAX_WIDTH,
+          }
+        : {
+            height: newHeight,
+            width: newWidth,
+          };
 
-    this.setState(
-      { dimensions },
-      () => onUpdateImageDimension(dimensions));
+    this.setState({ dimensions }, () => onUpdateImageDimension(dimensions));
 
     resizeHandle.addEventListener('mousedown', this.initialiseResize, false);
   };
@@ -182,34 +183,30 @@ export class Drawable extends React.Component {
     let drawable = true;
 
     // Do not allow resizing over the hotspots
-    shapes && shapes.forEach(shape => {
-      const right = shape.x + shape.width + 5;
-      const bottom = shape.y + shape.height + 5;
-      if (x <= right || y <= bottom) {
-        drawable = false
-      }
-    });
+    shapes &&
+      shapes.forEach((shape) => {
+        const right = shape.x + shape.width + 5;
+        const bottom = shape.y + shape.height + 5;
+        if (x <= right || y <= bottom) {
+          drawable = false;
+        }
+      });
     return drawable;
   }
 
   startResizing = (e) => {
     const bounds = e.target.getBoundingClientRect();
     const box = this.image;
-    const {
-      disableDrag,
-      preserveAspectRatioEnabled,
-      dimensions,
-      shapes
-    } = this.props;
+    const { disableDrag, preserveAspectRatioEnabled, dimensions, shapes } = this.props;
 
     // todo previously we had state.dimensions, is it needed?
     const { width, height } = updateImageDimensions(
       dimensions,
       {
         width: e.clientX - bounds.left,
-        height: e.clientY - bounds.top
+        height: e.clientY - bounds.top,
       },
-      preserveAspectRatioEnabled
+      preserveAspectRatioEnabled,
     );
 
     const resizeValid = this.checkIfResizeValid(width, height);
@@ -222,7 +219,7 @@ export class Drawable extends React.Component {
       this.setState({
         resizing: true,
         dimensions: { height: height, width: width },
-        stateShapes: getUpdatedShapes(dimensions, { width, height }, shapes)
+        stateShapes: getUpdatedShapes(dimensions, { width, height }, shapes),
       });
     }
 
@@ -256,12 +253,12 @@ export class Drawable extends React.Component {
       hotspotColor,
       outlineColor,
       shapes,
-      strokeWidth
+      strokeWidth,
     } = this.props;
     const {
       stateShapes,
       isDrawing,
-      dimensions: { height: heightFromState, width: widthFromState }
+      dimensions: { height: heightFromState, width: widthFromState },
     } = this.state;
     const shapesToUse = stateShapes || shapes;
 
@@ -272,15 +269,18 @@ export class Drawable extends React.Component {
             <img
               className={classes.image}
               onLoad={this.handleOnImageLoad}
-              ref={ref => {
+              ref={(ref) => {
                 this.image = ref;
               }}
               src={imageUrl}
-              {...height && width ? { style: { height, width } } : {}}
+              {...(height && width ? { style: { height, width } } : {})}
             />
-            <div ref={ref => {
-              this.resize = ref;
-            }} className={classes.resize}/>
+            <div
+              ref={(ref) => {
+                this.resize = ref;
+              }}
+              className={classes.resize}
+            />
           </div>
         )}
 
@@ -288,9 +288,9 @@ export class Drawable extends React.Component {
           className={classes.stage}
           height={heightFromState || height}
           width={widthFromState || width}
-          onMouseDown={this.handleOnMouseDown }
-          onMouseUp={this.handleOnMouseUp }
-          onMouseMove={this.handleMouseMove }
+          onMouseDown={this.handleOnMouseDown}
+          onMouseUp={this.handleOnMouseUp}
+          onMouseMove={this.handleMouseMove}
         >
           <Layer>
             {shapesToUse.map((shape, index) => {
@@ -324,7 +324,7 @@ export class Drawable extends React.Component {
 
 const styles = () => ({
   base: {
-    position: 'relative'
+    position: 'relative',
   },
   image: {
     alignItems: 'center',
@@ -333,7 +333,7 @@ const styles = () => ({
   },
   imageContainer: {
     position: 'relative',
-    width: 'fit-content'
+    width: 'fit-content',
   },
   resize: {
     borderBottom: '1px solid #727272',
@@ -343,13 +343,13 @@ const styles = () => ({
     height: '10px',
     position: 'absolute',
     right: '-10px',
-    width: '10px'
+    width: '10px',
   },
   stage: {
     left: 0,
     top: 0,
-    position: 'absolute'
-  }
+    position: 'absolute',
+  },
 });
 
 Drawable.propTypes = {
@@ -365,7 +365,7 @@ Drawable.propTypes = {
   outlineColor: PropTypes.string.isRequired,
   shapes: PropTypes.array.isRequired,
   strokeWidth: PropTypes.number,
-  preserveAspectRatioEnabled: PropTypes.bool
+  preserveAspectRatioEnabled: PropTypes.bool,
 };
 
 export default withStyles(styles)(Drawable);

@@ -8,8 +8,8 @@ Indicates the mode of the question
 
 This element must be one of the following enum values:
 
-* `Advanced Multi`
-* `Simple`
+- `Advanced Multi`
+- `Simple`
 
 # `prompt` (string)
 
@@ -33,14 +33,14 @@ Indicates what type of editor should be displayed for all the possible responses
 
 This element must be one of the following enum values:
 
-* `1`
-* `3`
-* `6`
-* `8`
-* `advanced-algebra`
-* `geometry`
-* `miscellaneous`
-* `statistics`
+- `1`
+- `3`
+- `6`
+- `8`
+- `advanced-algebra`
+- `geometry`
+- `miscellaneous`
+- `statistics`
 
 Default: `"- miscellaneous"`
 
@@ -78,8 +78,8 @@ Indicates what type of validation should be applied on the response
 
 This element must be one of the following enum values:
 
-* `literal`
-* `symbolic`
+- `literal`
+- `symbolic`
 
 Default: `"is literal"`
 
@@ -118,8 +118,8 @@ Indicates what type of validation should be applied on the response
 
 This element must be one of the following enum values:
 
-* `literal`
-* `symbolic`
+- `literal`
+- `symbolic`
 
 Default: `"is literal"`
 
@@ -171,8 +171,8 @@ Indicates scoring type
 
 This element must be one of the following enum values:
 
-* `auto`
-* `rubric`
+- `auto`
+- `rubric`
 
 # `studentInstructions` (string)
 
@@ -218,8 +218,8 @@ Indicates the editor's toolbar position which can be 'bottom' or 'top'
 
 This element must be one of the following enum values:
 
-* `bottom`
-* `top`
+- `bottom`
+- `top`
 
 Default: `": 'bottom'"`
 
@@ -312,8 +312,8 @@ Indicates the feedback type
 
 This element must be one of the following enum values:
 
-* `default`
-* `none`
+- `default`
+- `none`
 
 ### `default` (string)
 
@@ -329,7 +329,7 @@ Indicates the feedback type
 
 This element must be one of the following enum values:
 
-* `custom`
+- `custom`
 
 ### `custom` (string, required)
 
@@ -349,8 +349,8 @@ Indicates what type of validation should be applied on the response
 
 This element must be one of the following enum values:
 
-* `literal`
-* `symbolic`
+- `literal`
+- `symbolic`
 
 Default: `"is literal"`
 

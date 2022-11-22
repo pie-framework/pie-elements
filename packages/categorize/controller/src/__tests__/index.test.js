@@ -1,11 +1,4 @@
-import {
-  model,
-  outcome,
-  getCorrectness,
-  createCorrectResponseSession,
-  getTotalScore,
-  getPartialScore,
-} from '../index';
+import { model, outcome, getCorrectness, createCorrectResponseSession, getTotalScore, getPartialScore } from '../index';
 import React from 'react';
 
 jest.mock('@pie-lib/categorize', () => ({
@@ -16,22 +9,14 @@ jest.mock('@pie-lib/categorize', () => ({
   }),
 }));
 jest.mock('@pie-lib/feedback', () => ({
-  getFeedbackForCorrectness: () =>
-    new Promise((resolve) => resolve('This is getFeedbackForCorrectness response.'))
+  getFeedbackForCorrectness: () => new Promise((resolve) => resolve('This is getFeedbackForCorrectness response.')),
 }));
 jest.mock('@pie-lib/controller-utils', () => ({
   ...jest.requireActual('@pie-lib/controller-utils'),
   getShuffledChoices: (choices, session, updateSession, key) => {
-    const currentShuffled = ((session || {}).shuffledValues || []).filter(
-      (v) => v
-    );
+    const currentShuffled = ((session || {}).shuffledValues || []).filter((v) => v);
 
-    if (
-      session &&
-      !currentShuffled.length &&
-      updateSession &&
-      typeof updateSession === 'function'
-    ) {
+    if (session && !currentShuffled.length && updateSession && typeof updateSession === 'function') {
       updateSession();
     }
 
@@ -106,10 +91,15 @@ describe('controller', () => {
     });
 
     it('feedback: returns proper feedback if feedback is not enabled', async () => {
-      const result = await model({
-        ...question,
-        feedbackEnabled: false
-      },{}, { mode: 'evaluate' }, jest.fn());
+      const result = await model(
+        {
+          ...question,
+          feedbackEnabled: false,
+        },
+        {},
+        { mode: 'evaluate' },
+        jest.fn(),
+      );
       expect(result.feedback).toEqual(undefined);
     });
 
@@ -130,12 +120,7 @@ describe('controller', () => {
       });
 
       it('disabled true for evaluate', async () => {
-        const result = await model(
-          question,
-          {},
-          { mode: 'evaluate' },
-          jest.fn()
-        );
+        const result = await model(question, {}, { mode: 'evaluate' }, jest.fn());
         expect(result).toMatchObject({ disabled: true });
       });
     });
@@ -169,7 +154,7 @@ describe('controller', () => {
           },
           session,
           env,
-          updateSession
+          updateSession,
         );
         expect(updateSession).toHaveBeenCalled();
       });
@@ -310,15 +295,11 @@ describe('controller', () => {
 
   describe('getCorrectness', () => {
     it('mode: gather -> resolves undefined', () => {
-      expect(getCorrectness(question, {}, { mode: 'gather' })).resolves.toEqual(
-        undefined
-      );
+      expect(getCorrectness(question, {}, { mode: 'gather' })).resolves.toEqual(undefined);
     });
 
     it('mode: view -> resolves undefined', () => {
-      expect(getCorrectness(question, {}, { mode: 'view' })).resolves.toEqual(
-        undefined
-      );
+      expect(getCorrectness(question, {}, { mode: 'view' })).resolves.toEqual(undefined);
     });
 
     const sessionCorrect = { answers: mC2 };
@@ -331,23 +312,20 @@ describe('controller', () => {
       ${{}}               | ${mC1}     | ${'incorrect'}
       ${sessionCorrect}   | ${mC2}     | ${'correct'}
       ${sessionPartially} | ${mC1}     | ${'partially-correct'}
-    `(
-      'mode: evaluate -> resolves $expected if session is $session',
-      async ({ session, categories, expected }) => {
-        const res = await getCorrectness(
-          {
-            ...question,
-            partialScoring: true,
-            categories,
-            correctResponse: scoringCorrectResponseNoAlternates,
-          },
-          session,
-          { mode: 'evaluate' }
-        );
+    `('mode: evaluate -> resolves $expected if session is $session', async ({ session, categories, expected }) => {
+      const res = await getCorrectness(
+        {
+          ...question,
+          partialScoring: true,
+          categories,
+          correctResponse: scoringCorrectResponseNoAlternates,
+        },
+        session,
+        { mode: 'evaluate' },
+      );
 
-        expect(res).toEqual(expected);
-      }
-    );
+      expect(res).toEqual(expected);
+    });
   });
 
   describe('getTotalScore', () => {
@@ -368,11 +346,11 @@ describe('controller', () => {
             correctResponse: scoringCorrectResponseWithAlternates,
           },
           { answers: fakeCorrect ? mockedCategories : [] },
-          {}
+          {},
         );
 
         expect(totalScore).toEqual(expected);
-      }
+      },
     );
 
     it.each`
@@ -395,11 +373,11 @@ describe('controller', () => {
             correctResponse: scoringCorrectResponseNoAlternates,
           },
           { answers: [] },
-          {}
+          {},
         );
 
         expect(totalScore).toEqual(expected);
-      }
+      },
     );
   });
 
@@ -411,33 +389,23 @@ describe('controller', () => {
       ${mC3}           | ${0.75}
       ${mC4}           | ${0.5}
       ${mC5}           | ${0}
-    `(
-      'Without Alternates, partialScoring = $partialScoring -> $expected',
-      ({ mockedCategories, expected }) => {
-        const totalScore = getPartialScore(
-          scoringCorrectResponseNoAlternates,
-          mockedCategories
-        );
+    `('Without Alternates, partialScoring = $partialScoring -> $expected', ({ mockedCategories, expected }) => {
+      const totalScore = getPartialScore(scoringCorrectResponseNoAlternates, mockedCategories);
 
-        expect(totalScore).toEqual(expected);
-      }
-    );
+      expect(totalScore).toEqual(expected);
+    });
   });
 
   describe('outcome', () => {
     describe('mode: gather', () => {
       it('rejects with an error for gather', () => {
-        expect(outcome(question, {}, { mode: 'gather' })).rejects.toEqual(
-          expect.any(Error)
-        );
+        expect(outcome(question, {}, { mode: 'gather' })).rejects.toEqual(expect.any(Error));
       });
     });
 
     describe('mode: view', () => {
       it('rejects with an error for gather', () => {
-        expect(outcome(question, {}, { mode: 'view' })).rejects.toEqual(
-          expect.any(Error)
-        );
+        expect(outcome(question, {}, { mode: 'view' })).rejects.toEqual(expect.any(Error));
       });
     });
 
@@ -459,10 +427,10 @@ describe('controller', () => {
               categories: mC1,
             },
             { answers: mC1 },
-            { mode: 'evaluate', partialScoring: envPartialScoring }
+            { mode: 'evaluate', partialScoring: envPartialScoring },
           );
           expect(result).toEqual(expected);
-        }
+        },
       );
     });
   });

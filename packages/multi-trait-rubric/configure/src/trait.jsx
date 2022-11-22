@@ -15,7 +15,7 @@ import {
   PrimaryBlock,
   Row,
   SecondaryBlock,
-  UnderlinedInput
+  UnderlinedInput,
 } from './common';
 import { labelPlugins } from './utils';
 
@@ -29,7 +29,7 @@ const log = debug('@pie-element:placement-ordering:configure:trait-tile');
 
 const styles = {
   actions: {
-    color: color.text()
+    color: color.text(),
   },
   controls: {
     display: 'flex',
@@ -43,19 +43,22 @@ const styles = {
     position: 'absolute',
     top: '80px',
     left: `-${DragHandleSpace}px`,
-    cursor: 'move'
+    cursor: 'move',
   },
   removeLabel: {
     display: 'flex',
-    whiteSpace: 'break-spaces'
-  }
+    whiteSpace: 'break-spaces',
+  },
 };
 
 export class TraitTile extends React.Component {
   state = {};
 
   UNSAFE_componentWillReceiveProps(nextProps) {
-    if (nextProps.currentPosition !== this.props.currentPosition || (this.secondaryBlock && this.secondaryBlock.scrollLeft !== nextProps.currentPosition)) {
+    if (
+      nextProps.currentPosition !== this.props.currentPosition ||
+      (this.secondaryBlock && this.secondaryBlock.scrollLeft !== nextProps.currentPosition)
+    ) {
       this.scrollToPosition(nextProps.currentPosition);
     }
   }
@@ -65,7 +68,7 @@ export class TraitTile extends React.Component {
 
     if (isEmpty(params)) return;
 
-    Object.keys(params).forEach(key => {
+    Object.keys(params).forEach((key) => {
       trait[key] = params[key];
     });
 
@@ -73,7 +76,9 @@ export class TraitTile extends React.Component {
   };
 
   onScorePointDescriptorChange = ({ descriptor, value }) => {
-    const { trait: { scorePointsDescriptors } } = this.props;
+    const {
+      trait: { scorePointsDescriptors },
+    } = this.props;
 
     if (value < 0 || value >= scorePointsDescriptors.length) return;
 
@@ -86,7 +91,7 @@ export class TraitTile extends React.Component {
 
   handleClose = () => this.setState({ anchorEl: null });
 
-  scrollToPosition = position => this.secondaryBlock.scrollTo({ left: position });
+  scrollToPosition = (position) => this.secondaryBlock.scrollTo({ left: position });
 
   openMenu = () => {
     this.props.onTraitRemoved();
@@ -99,12 +104,7 @@ export class TraitTile extends React.Component {
       connectDragSource,
       connectDropTarget,
       connectDragPreview,
-      trait: {
-        name,
-        standards,
-        description,
-        scorePointsDescriptors
-      },
+      trait: { name, standards, description, scorePointsDescriptors },
       scorePointsValues,
       showStandards,
       showDescription,
@@ -112,63 +112,49 @@ export class TraitTile extends React.Component {
       currentPosition,
       secondaryBlockWidth,
       spellCheck,
-      uploadSoundSupport
+      uploadSoundSupport,
     } = this.props;
     const { anchorEl } = this.state;
 
     const pluginProps = {
       image: { disabled: true },
-      math: { disabled: true }
+      math: { disabled: true },
     };
 
-    return (
-      connectDragPreview(
-        connectDropTarget(
-          <div>
-            <Row>
-              <PrimaryBlock>
-                {enableDragAndDrop ?
-                  connectDragSource(
+    return connectDragPreview(
+      connectDropTarget(
+        <div>
+          <Row>
+            <PrimaryBlock>
+              {enableDragAndDrop
+                ? connectDragSource(
                     <span className={classes.dragHandle}>
-                    <DragIndicatorIcon className={classes.actions}/>
-                  </span>) : null
-              }
+                      <DragIndicatorIcon className={classes.actions} />
+                    </span>,
+                  )
+                : null}
               <div className={classes.controls}>
-                <IconButton
-                  aria-label="more"
-                  aria-controls="long-menu"
-                  aria-haspopup="true"
-                  onClick={this.handleClick}
-                >
-                  <MoreVertIcon/>
+                <IconButton aria-label="more" aria-controls="long-menu" aria-haspopup="true" onClick={this.handleClick}>
+                  <MoreVertIcon />
                 </IconButton>
-                <Menu
-                  id="long-menu"
-                  anchorEl={anchorEl}
-                  keepMounted
-                  open={!!anchorEl}
-                  onClose={this.handleClose}
-                >
+                <Menu id="long-menu" anchorEl={anchorEl} keepMounted open={!!anchorEl} onClose={this.handleClose}>
                   <MenuItem onClick={this.openMenu}>
-                    <div
-                      className={classes.removeLabel}
-                      dangerouslySetInnerHTML={{__html: `Remove ${name}`}}
-                    />
+                    <div className={classes.removeLabel} dangerouslySetInnerHTML={{ __html: `Remove ${name}` }} />
                   </MenuItem>
                 </Menu>
               </div>
 
               <UnderlinedInput
                 markup={name}
-                onChange={name => this.onTraitChanged({ name })}
+                onChange={(name) => this.onTraitChanged({ name })}
                 pluginProps={labelPlugins}
-                placeholder='Enter Trait'
+                placeholder="Enter Trait"
                 spellCheck={spellCheck}
                 uploadSoundSupport={uploadSoundSupport}
               />
             </PrimaryBlock>
             <SecondaryBlock
-              setRef={ref => {
+              setRef={(ref) => {
                 this.secondaryBlock = ref;
               }}
               width={`${secondaryBlockWidth}px`}
@@ -178,7 +164,7 @@ export class TraitTile extends React.Component {
                   <ExpandedInput
                     placeholder="Standards"
                     markup={standards.join(',')}
-                    onChange={standards => this.onTraitChanged({ standards: standards.split(',') })}
+                    onChange={(standards) => this.onTraitChanged({ standards: standards.split(',') })}
                     pluginProps={pluginProps}
                     spellCheck={spellCheck}
                     uploadSoundSupport={uploadSoundSupport}
@@ -186,18 +172,18 @@ export class TraitTile extends React.Component {
                 </Block>
               )}
 
-                {showDescription && (
-                  <Block>
-                    <ExpandedInput
-                      placeholder="Description"
-                      markup={description}
-                      onChange={description => this.onTraitChanged({ description })}
-                      pluginProps={pluginProps}
-                      spellCheck={spellCheck}
-                      uploadSoundSupport={uploadSoundSupport}
-                    />
-                  </Block>
-                )}
+              {showDescription && (
+                <Block>
+                  <ExpandedInput
+                    placeholder="Description"
+                    markup={description}
+                    onChange={(description) => this.onTraitChanged({ description })}
+                    pluginProps={pluginProps}
+                    spellCheck={spellCheck}
+                    uploadSoundSupport={uploadSoundSupport}
+                  />
+                </Block>
+              )}
 
               {(scorePointsValues || []).map((scorePointsValue, index) => {
                 const adjustedBlockWidth = BlockWidth + 2 * 8; // 8 is padding
@@ -205,30 +191,30 @@ export class TraitTile extends React.Component {
                 const value = scorePointsValues.length - index - 1;
                 let scoreDescriptor;
 
-                  try {
-                    scoreDescriptor = scorePointsDescriptors[value] || '';
-                  } catch (e) {
-                    scoreDescriptor = '';
-                  }
+                try {
+                  scoreDescriptor = scorePointsDescriptors[value] || '';
+                } catch (e) {
+                  scoreDescriptor = '';
+                }
 
-                  return (
-                    <Block key={`key-key-${index}`}>
-                      <ExpandedInput
-                        placeholder='Enter Description Here'
-                        markup={scoreDescriptor}
-                        onChange={descriptor => this.onScorePointDescriptorChange({ descriptor, value })}
-                        pluginProps={pluginProps}
-                        alignToRight={remainingSpace < 296} // 296 is the space required for the toolbar
-                        spellCheck={spellCheck}
-                        uploadSoundSupport={uploadSoundSupport}
-                      />
-                    </Block>
-                  )
-                })}
-              </SecondaryBlock>
-            </Row>
-          </div>
-        ))
+                return (
+                  <Block key={`key-key-${index}`}>
+                    <ExpandedInput
+                      placeholder="Enter Description Here"
+                      markup={scoreDescriptor}
+                      onChange={(descriptor) => this.onScorePointDescriptorChange({ descriptor, value })}
+                      pluginProps={pluginProps}
+                      alignToRight={remainingSpace < 296} // 296 is the space required for the toolbar
+                      spellCheck={spellCheck}
+                      uploadSoundSupport={uploadSoundSupport}
+                    />
+                  </Block>
+                );
+              })}
+            </SecondaryBlock>
+          </Row>
+        </div>,
+      ),
     );
   }
 }
@@ -266,20 +252,16 @@ const traitSource = {
   beginDrag(props) {
     return {
       name: props.trait.name,
-      index: props.index
+      index: props.index,
     };
-  }
+  },
 };
 
-const StyledSource = DragSource(
-  NAME,
-  traitSource,
-  (connect, monitor) => ({
-    connectDragSource: connect.dragSource(),
-    connectDragPreview: connect.dragPreview(),
-    isDragging: monitor.isDragging()
-  })
-)(StyledTrait);
+const StyledSource = DragSource(NAME, traitSource, (connect, monitor) => ({
+  connectDragSource: connect.dragSource(),
+  connectDragPreview: connect.dragPreview(),
+  isDragging: monitor.isDragging(),
+}))(StyledTrait);
 
 const traitTarget = {
   hover() {
@@ -290,16 +272,12 @@ const traitTarget = {
     log('[drop] item: ', item, 'didDrop?', monitor.didDrop());
 
     props.onTraitDropped(item, props.index);
-  }
+  },
 };
 
-const StyledSourceAndTarget = DropTarget(
-  NAME,
-  traitTarget,
-  (connect, monitor) => ({
-    connectDropTarget: connect.dropTarget(),
-    isOver: monitor.isOver()
-  })
-)(StyledSource);
+const StyledSourceAndTarget = DropTarget(NAME, traitTarget, (connect, monitor) => ({
+  connectDropTarget: connect.dropTarget(),
+  isOver: monitor.isOver(),
+}))(StyledSource);
 
 export default StyledSourceAndTarget;

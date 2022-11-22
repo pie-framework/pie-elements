@@ -16,10 +16,7 @@
               "properties": {
                 "type": {
                   "description": "Indicates the feedback type",
-                  "enum": [
-                    "default",
-                    "none"
-                  ],
+                  "enum": ["default", "none"],
                   "type": "string",
                   "title": "type"
                 },
@@ -29,9 +26,7 @@
                   "title": "default"
                 }
               },
-              "required": [
-                "type"
-              ]
+              "required": ["type"]
             },
             {
               "title": "CustomFeedbackType",
@@ -40,9 +35,7 @@
                 "type": {
                   "description": "Indicates the feedback type",
                   "type": "string",
-                  "enum": [
-                    "custom"
-                  ],
+                  "enum": ["custom"],
                   "title": "type"
                 },
                 "custom": {
@@ -51,10 +44,7 @@
                   "title": "custom"
                 }
               },
-              "required": [
-                "custom",
-                "type"
-              ]
+              "required": ["custom", "type"]
             }
           ],
           "title": "correct"
@@ -68,10 +58,7 @@
               "properties": {
                 "type": {
                   "description": "Indicates the feedback type",
-                  "enum": [
-                    "default",
-                    "none"
-                  ],
+                  "enum": ["default", "none"],
                   "type": "string",
                   "title": "type"
                 },
@@ -81,9 +68,7 @@
                   "title": "default"
                 }
               },
-              "required": [
-                "type"
-              ]
+              "required": ["type"]
             },
             {
               "title": "CustomFeedbackType",
@@ -92,9 +77,7 @@
                 "type": {
                   "description": "Indicates the feedback type",
                   "type": "string",
-                  "enum": [
-                    "custom"
-                  ],
+                  "enum": ["custom"],
                   "title": "type"
                 },
                 "custom": {
@@ -103,10 +86,7 @@
                   "title": "custom"
                 }
               },
-              "required": [
-                "custom",
-                "type"
-              ]
+              "required": ["custom", "type"]
             }
           ],
           "title": "incorrect"
@@ -120,10 +100,7 @@
               "properties": {
                 "type": {
                   "description": "Indicates the feedback type",
-                  "enum": [
-                    "default",
-                    "none"
-                  ],
+                  "enum": ["default", "none"],
                   "type": "string",
                   "title": "type"
                 },
@@ -133,9 +110,7 @@
                   "title": "default"
                 }
               },
-              "required": [
-                "type"
-              ]
+              "required": ["type"]
             },
             {
               "title": "CustomFeedbackType",
@@ -144,9 +119,7 @@
                 "type": {
                   "description": "Indicates the feedback type",
                   "type": "string",
-                  "enum": [
-                    "custom"
-                  ],
+                  "enum": ["custom"],
                   "title": "type"
                 },
                 "custom": {
@@ -155,19 +128,13 @@
                   "title": "custom"
                 }
               },
-              "required": [
-                "custom",
-                "type"
-              ]
+              "required": ["custom", "type"]
             }
           ],
           "title": "partial"
         }
       },
-      "required": [
-        "correct",
-        "incorrect"
-      ]
+      "required": ["correct", "incorrect"]
     },
     "correctResponse": {
       "description": "Array that returns responses",
@@ -182,20 +149,13 @@
               "properties": {
                 "pointType": {
                   "description": "Indicates point type",
-                  "enum": [
-                    "empty",
-                    "full"
-                  ],
+                  "enum": ["empty", "full"],
                   "type": "string",
                   "title": "pointType"
                 },
                 "type": {
                   "description": "Indicates the response type",
-                  "enum": [
-                    "line",
-                    "point",
-                    "ray"
-                  ],
+                  "enum": ["line", "point", "ray"],
                   "type": "string",
                   "title": "type"
                 },
@@ -205,11 +165,7 @@
                   "title": "domainPosition"
                 }
               },
-              "required": [
-                "domainPosition",
-                "pointType",
-                "type"
-              ]
+              "required": ["domainPosition", "pointType", "type"]
             },
             {
               "title": "ResponseLine",
@@ -217,19 +173,13 @@
               "properties": {
                 "leftPoint": {
                   "description": "Indicates left point (left limit for the line) type",
-                  "enum": [
-                    "empty",
-                    "full"
-                  ],
+                  "enum": ["empty", "full"],
                   "type": "string",
                   "title": "leftPoint"
                 },
                 "rightPoint": {
                   "description": "Indicates right point (left limit for the line) type",
-                  "enum": [
-                    "empty",
-                    "full"
-                  ],
+                  "enum": ["empty", "full"],
                   "type": "string",
                   "title": "rightPoint"
                 },
@@ -240,11 +190,7 @@
                 },
                 "type": {
                   "description": "Indicates the response type",
-                  "enum": [
-                    "line",
-                    "point",
-                    "ray"
-                  ],
+                  "enum": ["line", "point", "ray"],
                   "type": "string",
                   "title": "type"
                 },
@@ -254,13 +200,7 @@
                   "title": "domainPosition"
                 }
               },
-              "required": [
-                "domainPosition",
-                "leftPoint",
-                "rightPoint",
-                "size",
-                "type"
-              ]
+              "required": ["domainPosition", "leftPoint", "rightPoint", "size", "type"]
             },
             {
               "title": "ResponseRay",
@@ -268,29 +208,19 @@
               "properties": {
                 "pointType": {
                   "description": "Indicates point type",
-                  "enum": [
-                    "empty",
-                    "full"
-                  ],
+                  "enum": ["empty", "full"],
                   "type": "string",
                   "title": "pointType"
                 },
                 "direction": {
                   "description": "Indicates ray direction",
-                  "enum": [
-                    "negative",
-                    "positive"
-                  ],
+                  "enum": ["negative", "positive"],
                   "type": "string",
                   "title": "direction"
                 },
                 "type": {
                   "description": "Indicates the response type",
-                  "enum": [
-                    "line",
-                    "point",
-                    "ray"
-                  ],
+                  "enum": ["line", "point", "ray"],
                   "type": "string",
                   "title": "type"
                 },
@@ -300,12 +230,7 @@
                   "title": "domainPosition"
                 }
               },
-              "required": [
-                "direction",
-                "domainPosition",
-                "pointType",
-                "type"
-              ]
+              "required": ["direction", "domainPosition", "pointType", "type"]
             }
           ]
         }
@@ -334,10 +259,7 @@
               "title": "right"
             }
           },
-          "required": [
-            "left",
-            "right"
-          ]
+          "required": ["left", "right"]
         },
         "width": {
           "description": "Indicates domain representation width",
@@ -357,10 +279,7 @@
               "title": "max"
             }
           },
-          "required": [
-            "max",
-            "min"
-          ]
+          "required": ["max", "min"]
         },
         "maxNumberOfPoints": {
           "description": "Indicates the maximum number of correct response values",
@@ -382,10 +301,7 @@
               "title": "major"
             }
           },
-          "required": [
-            "major",
-            "minor"
-          ]
+          "required": ["major", "minor"]
         },
         "title": {
           "description": "the title under the graph",
@@ -399,17 +315,7 @@
         },
         "initialType": {
           "description": "Indicates the initial type of response",
-          "enum": [
-            "LEE",
-            "LEF",
-            "LFE",
-            "LFF",
-            "PF",
-            "REN",
-            "REP",
-            "RFN",
-            "RFP"
-          ],
+          "enum": ["LEE", "LEF", "LFE", "LFF", "PF", "REN", "REP", "RFN", "RFP"],
           "type": "string",
           "title": "initialType"
         },
@@ -463,17 +369,7 @@
               "title": "REP"
             }
           },
-          "required": [
-            "LEE",
-            "LEF",
-            "LFE",
-            "LFF",
-            "PF",
-            "REN",
-            "REP",
-            "RFN",
-            "RFP"
-          ],
+          "required": ["LEE", "LEF", "LFE", "LFF", "PF", "REN", "REP", "RFN", "RFP"],
           "title": "availableTypes"
         },
         "initialElements": {
@@ -489,20 +385,13 @@
                   "properties": {
                     "pointType": {
                       "description": "Indicates point type",
-                      "enum": [
-                        "empty",
-                        "full"
-                      ],
+                      "enum": ["empty", "full"],
                       "type": "string",
                       "title": "pointType"
                     },
                     "type": {
                       "description": "Indicates the response type",
-                      "enum": [
-                        "line",
-                        "point",
-                        "ray"
-                      ],
+                      "enum": ["line", "point", "ray"],
                       "type": "string",
                       "title": "type"
                     },
@@ -512,11 +401,7 @@
                       "title": "domainPosition"
                     }
                   },
-                  "required": [
-                    "domainPosition",
-                    "pointType",
-                    "type"
-                  ]
+                  "required": ["domainPosition", "pointType", "type"]
                 },
                 {
                   "title": "ResponseLine",
@@ -524,19 +409,13 @@
                   "properties": {
                     "leftPoint": {
                       "description": "Indicates left point (left limit for the line) type",
-                      "enum": [
-                        "empty",
-                        "full"
-                      ],
+                      "enum": ["empty", "full"],
                       "type": "string",
                       "title": "leftPoint"
                     },
                     "rightPoint": {
                       "description": "Indicates right point (left limit for the line) type",
-                      "enum": [
-                        "empty",
-                        "full"
-                      ],
+                      "enum": ["empty", "full"],
                       "type": "string",
                       "title": "rightPoint"
                     },
@@ -547,11 +426,7 @@
                     },
                     "type": {
                       "description": "Indicates the response type",
-                      "enum": [
-                        "line",
-                        "point",
-                        "ray"
-                      ],
+                      "enum": ["line", "point", "ray"],
                       "type": "string",
                       "title": "type"
                     },
@@ -561,13 +436,7 @@
                       "title": "domainPosition"
                     }
                   },
-                  "required": [
-                    "domainPosition",
-                    "leftPoint",
-                    "rightPoint",
-                    "size",
-                    "type"
-                  ]
+                  "required": ["domainPosition", "leftPoint", "rightPoint", "size", "type"]
                 },
                 {
                   "title": "ResponseRay",
@@ -575,29 +444,19 @@
                   "properties": {
                     "pointType": {
                       "description": "Indicates point type",
-                      "enum": [
-                        "empty",
-                        "full"
-                      ],
+                      "enum": ["empty", "full"],
                       "type": "string",
                       "title": "pointType"
                     },
                     "direction": {
                       "description": "Indicates ray direction",
-                      "enum": [
-                        "negative",
-                        "positive"
-                      ],
+                      "enum": ["negative", "positive"],
                       "type": "string",
                       "title": "direction"
                     },
                     "type": {
                       "description": "Indicates the response type",
-                      "enum": [
-                        "line",
-                        "point",
-                        "ray"
-                      ],
+                      "enum": ["line", "point", "ray"],
                       "type": "string",
                       "title": "type"
                     },
@@ -607,12 +466,7 @@
                       "title": "domainPosition"
                     }
                   },
-                  "required": [
-                    "direction",
-                    "domainPosition",
-                    "pointType",
-                    "type"
-                  ]
+                  "required": ["direction", "domainPosition", "pointType", "type"]
                 }
               ]
             }
@@ -651,10 +505,7 @@
     "toolbarEditorPosition": {
       "description": "Indicates the editor's toolbar position which can be 'bottom' or 'top'",
       "default": ": 'bottom'",
-      "enum": [
-        "bottom",
-        "top"
-      ],
+      "enum": ["bottom", "top"],
       "type": "string",
       "title": "toolbarEditorPosition"
     },
@@ -669,14 +520,7 @@
       "title": "element"
     }
   },
-  "required": [
-    "correctResponse",
-    "element",
-    "graph",
-    "id",
-    "partialScoring",
-    "spellCheckEnabled"
-  ],
+  "required": ["correctResponse", "element", "graph", "id", "partialScoring", "spellCheckEnabled"],
   "definitions": {
     "ConfigureProp": {
       "title": "ConfigureProp",
@@ -707,10 +551,7 @@
               "properties": {
                 "type": {
                   "description": "Indicates the feedback type",
-                  "enum": [
-                    "default",
-                    "none"
-                  ],
+                  "enum": ["default", "none"],
                   "type": "string",
                   "title": "type"
                 },
@@ -720,9 +561,7 @@
                   "title": "default"
                 }
               },
-              "required": [
-                "type"
-              ]
+              "required": ["type"]
             },
             {
               "title": "CustomFeedbackType",
@@ -731,9 +570,7 @@
                 "type": {
                   "description": "Indicates the feedback type",
                   "type": "string",
-                  "enum": [
-                    "custom"
-                  ],
+                  "enum": ["custom"],
                   "title": "type"
                 },
                 "custom": {
@@ -742,10 +579,7 @@
                   "title": "custom"
                 }
               },
-              "required": [
-                "custom",
-                "type"
-              ]
+              "required": ["custom", "type"]
             }
           ],
           "title": "correct"
@@ -759,10 +593,7 @@
               "properties": {
                 "type": {
                   "description": "Indicates the feedback type",
-                  "enum": [
-                    "default",
-                    "none"
-                  ],
+                  "enum": ["default", "none"],
                   "type": "string",
                   "title": "type"
                 },
@@ -772,9 +603,7 @@
                   "title": "default"
                 }
               },
-              "required": [
-                "type"
-              ]
+              "required": ["type"]
             },
             {
               "title": "CustomFeedbackType",
@@ -783,9 +612,7 @@
                 "type": {
                   "description": "Indicates the feedback type",
                   "type": "string",
-                  "enum": [
-                    "custom"
-                  ],
+                  "enum": ["custom"],
                   "title": "type"
                 },
                 "custom": {
@@ -794,10 +621,7 @@
                   "title": "custom"
                 }
               },
-              "required": [
-                "custom",
-                "type"
-              ]
+              "required": ["custom", "type"]
             }
           ],
           "title": "incorrect"
@@ -811,10 +635,7 @@
               "properties": {
                 "type": {
                   "description": "Indicates the feedback type",
-                  "enum": [
-                    "default",
-                    "none"
-                  ],
+                  "enum": ["default", "none"],
                   "type": "string",
                   "title": "type"
                 },
@@ -824,9 +645,7 @@
                   "title": "default"
                 }
               },
-              "required": [
-                "type"
-              ]
+              "required": ["type"]
             },
             {
               "title": "CustomFeedbackType",
@@ -835,9 +654,7 @@
                 "type": {
                   "description": "Indicates the feedback type",
                   "type": "string",
-                  "enum": [
-                    "custom"
-                  ],
+                  "enum": ["custom"],
                   "title": "type"
                 },
                 "custom": {
@@ -846,19 +663,13 @@
                   "title": "custom"
                 }
               },
-              "required": [
-                "custom",
-                "type"
-              ]
+              "required": ["custom", "type"]
             }
           ],
           "title": "partial"
         }
       },
-      "required": [
-        "correct",
-        "incorrect"
-      ]
+      "required": ["correct", "incorrect"]
     },
     "DefaultFeedbackType": {
       "title": "DefaultFeedbackType",
@@ -866,10 +677,7 @@
       "properties": {
         "type": {
           "description": "Indicates the feedback type",
-          "enum": [
-            "default",
-            "none"
-          ],
+          "enum": ["default", "none"],
           "type": "string",
           "title": "type"
         },
@@ -879,9 +687,7 @@
           "title": "default"
         }
       },
-      "required": [
-        "type"
-      ]
+      "required": ["type"]
     },
     "CustomFeedbackType": {
       "title": "CustomFeedbackType",
@@ -890,9 +696,7 @@
         "type": {
           "description": "Indicates the feedback type",
           "type": "string",
-          "enum": [
-            "custom"
-          ],
+          "enum": ["custom"],
           "title": "type"
         },
         "custom": {
@@ -901,10 +705,7 @@
           "title": "custom"
         }
       },
-      "required": [
-        "custom",
-        "type"
-      ]
+      "required": ["custom", "type"]
     },
     "ResponsePoint": {
       "title": "ResponsePoint",
@@ -912,20 +713,13 @@
       "properties": {
         "pointType": {
           "description": "Indicates point type",
-          "enum": [
-            "empty",
-            "full"
-          ],
+          "enum": ["empty", "full"],
           "type": "string",
           "title": "pointType"
         },
         "type": {
           "description": "Indicates the response type",
-          "enum": [
-            "line",
-            "point",
-            "ray"
-          ],
+          "enum": ["line", "point", "ray"],
           "type": "string",
           "title": "type"
         },
@@ -935,11 +729,7 @@
           "title": "domainPosition"
         }
       },
-      "required": [
-        "domainPosition",
-        "pointType",
-        "type"
-      ]
+      "required": ["domainPosition", "pointType", "type"]
     },
     "ResponseLine": {
       "title": "ResponseLine",
@@ -947,19 +737,13 @@
       "properties": {
         "leftPoint": {
           "description": "Indicates left point (left limit for the line) type",
-          "enum": [
-            "empty",
-            "full"
-          ],
+          "enum": ["empty", "full"],
           "type": "string",
           "title": "leftPoint"
         },
         "rightPoint": {
           "description": "Indicates right point (left limit for the line) type",
-          "enum": [
-            "empty",
-            "full"
-          ],
+          "enum": ["empty", "full"],
           "type": "string",
           "title": "rightPoint"
         },
@@ -970,11 +754,7 @@
         },
         "type": {
           "description": "Indicates the response type",
-          "enum": [
-            "line",
-            "point",
-            "ray"
-          ],
+          "enum": ["line", "point", "ray"],
           "type": "string",
           "title": "type"
         },
@@ -984,13 +764,7 @@
           "title": "domainPosition"
         }
       },
-      "required": [
-        "domainPosition",
-        "leftPoint",
-        "rightPoint",
-        "size",
-        "type"
-      ]
+      "required": ["domainPosition", "leftPoint", "rightPoint", "size", "type"]
     },
     "ResponseRay": {
       "title": "ResponseRay",
@@ -998,29 +772,19 @@
       "properties": {
         "pointType": {
           "description": "Indicates point type",
-          "enum": [
-            "empty",
-            "full"
-          ],
+          "enum": ["empty", "full"],
           "type": "string",
           "title": "pointType"
         },
         "direction": {
           "description": "Indicates ray direction",
-          "enum": [
-            "negative",
-            "positive"
-          ],
+          "enum": ["negative", "positive"],
           "type": "string",
           "title": "direction"
         },
         "type": {
           "description": "Indicates the response type",
-          "enum": [
-            "line",
-            "point",
-            "ray"
-          ],
+          "enum": ["line", "point", "ray"],
           "type": "string",
           "title": "type"
         },
@@ -1030,12 +794,7 @@
           "title": "domainPosition"
         }
       },
-      "required": [
-        "direction",
-        "domainPosition",
-        "pointType",
-        "type"
-      ]
+      "required": ["direction", "domainPosition", "pointType", "type"]
     },
     "NumberLineDomainConfiguration": {
       "title": "NumberLineDomainConfiguration",
@@ -1054,10 +813,7 @@
               "title": "right"
             }
           },
-          "required": [
-            "left",
-            "right"
-          ]
+          "required": ["left", "right"]
         },
         "width": {
           "description": "Indicates domain representation width",
@@ -1077,10 +833,7 @@
               "title": "max"
             }
           },
-          "required": [
-            "max",
-            "min"
-          ]
+          "required": ["max", "min"]
         },
         "maxNumberOfPoints": {
           "description": "Indicates the maximum number of correct response values",
@@ -1102,10 +855,7 @@
               "title": "major"
             }
           },
-          "required": [
-            "major",
-            "minor"
-          ]
+          "required": ["major", "minor"]
         },
         "title": {
           "description": "the title under the graph",
@@ -1119,17 +869,7 @@
         },
         "initialType": {
           "description": "Indicates the initial type of response",
-          "enum": [
-            "LEE",
-            "LEF",
-            "LFE",
-            "LFF",
-            "PF",
-            "REN",
-            "REP",
-            "RFN",
-            "RFP"
-          ],
+          "enum": ["LEE", "LEF", "LFE", "LFF", "PF", "REN", "REP", "RFN", "RFP"],
           "type": "string",
           "title": "initialType"
         },
@@ -1183,17 +923,7 @@
               "title": "REP"
             }
           },
-          "required": [
-            "LEE",
-            "LEF",
-            "LFE",
-            "LFF",
-            "PF",
-            "REN",
-            "REP",
-            "RFN",
-            "RFP"
-          ],
+          "required": ["LEE", "LEF", "LFE", "LFF", "PF", "REN", "REP", "RFN", "RFP"],
           "title": "availableTypes"
         },
         "initialElements": {
@@ -1209,20 +939,13 @@
                   "properties": {
                     "pointType": {
                       "description": "Indicates point type",
-                      "enum": [
-                        "empty",
-                        "full"
-                      ],
+                      "enum": ["empty", "full"],
                       "type": "string",
                       "title": "pointType"
                     },
                     "type": {
                       "description": "Indicates the response type",
-                      "enum": [
-                        "line",
-                        "point",
-                        "ray"
-                      ],
+                      "enum": ["line", "point", "ray"],
                       "type": "string",
                       "title": "type"
                     },
@@ -1232,11 +955,7 @@
                       "title": "domainPosition"
                     }
                   },
-                  "required": [
-                    "domainPosition",
-                    "pointType",
-                    "type"
-                  ]
+                  "required": ["domainPosition", "pointType", "type"]
                 },
                 {
                   "title": "ResponseLine",
@@ -1244,19 +963,13 @@
                   "properties": {
                     "leftPoint": {
                       "description": "Indicates left point (left limit for the line) type",
-                      "enum": [
-                        "empty",
-                        "full"
-                      ],
+                      "enum": ["empty", "full"],
                       "type": "string",
                       "title": "leftPoint"
                     },
                     "rightPoint": {
                       "description": "Indicates right point (left limit for the line) type",
-                      "enum": [
-                        "empty",
-                        "full"
-                      ],
+                      "enum": ["empty", "full"],
                       "type": "string",
                       "title": "rightPoint"
                     },
@@ -1267,11 +980,7 @@
                     },
                     "type": {
                       "description": "Indicates the response type",
-                      "enum": [
-                        "line",
-                        "point",
-                        "ray"
-                      ],
+                      "enum": ["line", "point", "ray"],
                       "type": "string",
                       "title": "type"
                     },
@@ -1281,13 +990,7 @@
                       "title": "domainPosition"
                     }
                   },
-                  "required": [
-                    "domainPosition",
-                    "leftPoint",
-                    "rightPoint",
-                    "size",
-                    "type"
-                  ]
+                  "required": ["domainPosition", "leftPoint", "rightPoint", "size", "type"]
                 },
                 {
                   "title": "ResponseRay",
@@ -1295,29 +998,19 @@
                   "properties": {
                     "pointType": {
                       "description": "Indicates point type",
-                      "enum": [
-                        "empty",
-                        "full"
-                      ],
+                      "enum": ["empty", "full"],
                       "type": "string",
                       "title": "pointType"
                     },
                     "direction": {
                       "description": "Indicates ray direction",
-                      "enum": [
-                        "negative",
-                        "positive"
-                      ],
+                      "enum": ["negative", "positive"],
                       "type": "string",
                       "title": "direction"
                     },
                     "type": {
                       "description": "Indicates the response type",
-                      "enum": [
-                        "line",
-                        "point",
-                        "ray"
-                      ],
+                      "enum": ["line", "point", "ray"],
                       "type": "string",
                       "title": "type"
                     },
@@ -1327,12 +1020,7 @@
                       "title": "domainPosition"
                     }
                   },
-                  "required": [
-                    "direction",
-                    "domainPosition",
-                    "pointType",
-                    "type"
-                  ]
+                  "required": ["direction", "domainPosition", "pointType", "type"]
                 }
               ]
             }
@@ -1371,10 +1059,7 @@
           "title": "right"
         }
       },
-      "required": [
-        "left",
-        "right"
-      ]
+      "required": ["left", "right"]
     },
     "Domain": {
       "title": "Domain",
@@ -1389,10 +1074,7 @@
           "title": "max"
         }
       },
-      "required": [
-        "max",
-        "min"
-      ]
+      "required": ["max", "min"]
     },
     "Ticks": {
       "title": "Ticks",
@@ -1409,10 +1091,7 @@
           "title": "major"
         }
       },
-      "required": [
-        "major",
-        "minor"
-      ]
+      "required": ["major", "minor"]
     }
   },
   "$schema": "http://json-schema.org/draft-07/schema#"

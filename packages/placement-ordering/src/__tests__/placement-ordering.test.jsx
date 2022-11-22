@@ -6,7 +6,7 @@ import { buildState, reducer } from '../ordering';
 
 jest.mock('../ordering', () => ({
   buildState: jest.fn().mockReturnValue({}),
-  reducer: jest.fn().mockReturnValue({})
+  reducer: jest.fn().mockReturnValue({}),
 }));
 
 describe('PlacementOrdering', () => {
@@ -20,28 +20,28 @@ describe('PlacementOrdering', () => {
     choices = [
       {
         id: 'c1',
-        label: 'C1'
+        label: 'C1',
       },
       {
         id: 'c2',
-        label: 'C2'
+        label: 'C2',
       },
       {
         id: 'c3',
-        label: 'C3'
+        label: 'C3',
       },
       {
         id: 'c4',
-        label: 'C4'
-      }
+        label: 'C4',
+      },
     ];
     correctResponse = ['c1', 'c2', 'c3', 'c4'];
     model = {
       config: {
-        includeTargets: true
+        includeTargets: true,
       },
       choices,
-      ...mod
+      ...mod,
     };
 
     return shallow(
@@ -49,11 +49,11 @@ describe('PlacementOrdering', () => {
         model={model}
         session={session}
         classes={{
-          placementOrdering: 'placementOrdering'
+          placementOrdering: 'placementOrdering',
         }}
         onSessionChange={onSessionChange}
       />,
-      {disableLifecycleMethods: true}
+      { disableLifecycleMethods: true },
     );
   };
 
@@ -78,9 +78,9 @@ describe('PlacementOrdering', () => {
     });
   });
 
-  const ordering = d => ({
+  const ordering = (d) => ({
     opts: {},
-    ...d
+    ...d,
   });
 
   describe('logic', () => {
@@ -96,7 +96,7 @@ describe('PlacementOrdering', () => {
           .onDropChoice(
             { id: 'c4', type: 'choice' },
             { id: 'c1', type: 'choice' },
-            ordering({ tiles: [{ id: 'c1', type: 'choice' }] })
+            ordering({ tiles: [{ id: 'c1', type: 'choice' }] }),
           );
       });
 
@@ -105,9 +105,9 @@ describe('PlacementOrdering', () => {
           {
             type: 'move',
             from: { id: 'c1', type: 'choice' },
-            to: { id: 'c4', type: 'choice' }
+            to: { id: 'c4', type: 'choice' },
           },
-          expect.anything()
+          expect.anything(),
         ));
 
       it('dropping choices updates the order', () => {
@@ -127,15 +127,12 @@ describe('PlacementOrdering', () => {
       });
 
       it('calls reducer', () => {
-        expect(reducer).toHaveBeenCalledWith(
-          { type: 'remove', target },
-          expect.anything()
-        );
+        expect(reducer).toHaveBeenCalledWith({ type: 'remove', target }, expect.anything());
       });
 
       it('calls onSessionChange', () => {
         expect(onSessionChange).toHaveBeenCalledWith({
-          value: ['c1', 'c2', 'c3']
+          value: ['c1', 'c2', 'c3'],
         });
       });
     });
@@ -145,7 +142,7 @@ describe('PlacementOrdering', () => {
 
       beforeEach(() => {
         wrapper = mkWrapper({
-          correctResponse
+          correctResponse,
         });
       });
 
@@ -172,7 +169,7 @@ describe('PlacementOrdering', () => {
         let outcomes;
 
         beforeEach(() => {
-          outcomes = correctResponse.map(id => ({ id, outcome: 'correct' }));
+          outcomes = correctResponse.map((id) => ({ id, outcome: 'correct' }));
 
           wrapper.setState({ showingCorrect: true });
           wrapper.instance().createOrdering();
@@ -190,7 +187,7 @@ describe('PlacementOrdering', () => {
           wrapper.instance().initSessionIfNeeded(wrapper.instance().props);
 
           expect(onSessionChange).toHaveBeenCalledWith({ value: [] });
-        })
+        });
       });
 
       describe('without targets', () => {
@@ -199,10 +196,10 @@ describe('PlacementOrdering', () => {
 
         beforeEach(() => {
           config = {
-            includeTargets: false
+            includeTargets: false,
           };
 
-          value = choices.map(m => m.id);
+          value = choices.map((m) => m.id);
           wrapper = mkWrapper({ config });
 
           wrapper.instance().initSessionIfNeeded(wrapper.instance().props);
@@ -226,8 +223,8 @@ describe('PlacementOrdering', () => {
       beforeEach(() => {
         wrapper = mkWrapper({
           config: {
-            includeTargets: false
-          }
+            includeTargets: false,
+          },
         });
       });
 
@@ -236,9 +233,9 @@ describe('PlacementOrdering', () => {
           model: {
             ...model,
             config: {
-              includeTargets: true
-            }
-          }
+              includeTargets: true,
+            },
+          },
         });
 
         expect(onSessionChange).toHaveBeenCalledWith({});
@@ -248,8 +245,8 @@ describe('PlacementOrdering', () => {
         wrapper.setProps({
           model: {
             ...model,
-            choices: choices.slice(0, 2)
-          }
+            choices: choices.slice(0, 2),
+          },
         });
 
         expect(onSessionChange).toHaveBeenCalledWith({ value: ['c1', 'c2'] });

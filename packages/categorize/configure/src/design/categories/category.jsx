@@ -20,18 +20,18 @@ export class Category extends React.Component {
     onAddChoice: PropTypes.func,
     imageSupport: PropTypes.shape({
       add: PropTypes.func.isRequired,
-      delete: PropTypes.func.isRequired
+      delete: PropTypes.func.isRequired,
     }),
     toolbarOpts: PropTypes.object,
     uploadSoundSupport: PropTypes.shape({
       add: PropTypes.func.isRequired,
-      delete: PropTypes.func.isRequired
-    })
+      delete: PropTypes.func.isRequired,
+    }),
   };
 
   static defaultProps = {};
 
-  changeLabel = l => {
+  changeLabel = (l) => {
     const { category, onChange } = this.props;
     category.label = l;
     onChange(category);
@@ -51,25 +51,23 @@ export class Category extends React.Component {
       toolbarOpts,
       maxImageWidth,
       maxImageHeight,
-      uploadSoundSupport
+      uploadSoundSupport,
     } = this.props;
     return (
       <Card className={classNames(classes.category, className)}>
-        {
-          onChange && (
-            <InputHeader
-              label={category.label}
-              onChange={this.changeLabel}
-              onDelete={onDelete}
-              imageSupport={imageSupport}
-              toolbarOpts={toolbarOpts}
-              spellCheck={spellCheck}
-              maxImageWidth={maxImageWidth}
-              maxImageHeight={maxImageHeight}
-              uploadSoundSupport={uploadSoundSupport}
-            />
-          )
-        }
+        {onChange && (
+          <InputHeader
+            label={category.label}
+            onChange={this.changeLabel}
+            onDelete={onDelete}
+            imageSupport={imageSupport}
+            toolbarOpts={toolbarOpts}
+            spellCheck={spellCheck}
+            maxImageWidth={maxImageWidth}
+            maxImageHeight={maxImageHeight}
+            uploadSoundSupport={uploadSoundSupport}
+          />
+        )}
         <PlaceHolder
           className={classes.placeHolder}
           choices={category.choices}
@@ -77,44 +75,42 @@ export class Category extends React.Component {
           onDropChoice={onAddChoice}
           categoryId={category.id}
         />
-        {
-          onDelete && (
-            <CardActions className={classes.actions}>
-              <DeleteButton label={'delete'} onClick={onDelete} />
-            </CardActions>
-          )
-        }
+        {onDelete && (
+          <CardActions className={classes.actions}>
+            <DeleteButton label={'delete'} onClick={onDelete} />
+          </CardActions>
+        )}
       </Card>
     );
   }
 }
-const styles = theme => ({
+const styles = (theme) => ({
   placeHolder: {
-    minHeight: '100px'
+    minHeight: '100px',
   },
   deleteButton: {
-    margin: 0
+    margin: 0,
   },
   actions: {
     padding: 0,
     paddingBottom: 0,
-    paddingTop: theme.spacing.unit
+    paddingTop: theme.spacing.unit,
   },
   iconButtonRoot: {
     width: 'auto',
-    height: 'auto'
+    height: 'auto',
   },
   header: {
     display: 'flex',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
   },
   category: {
     padding: theme.spacing.unit,
-    overflow: 'visible'
+    overflow: 'visible',
   },
   editor: {
     flex: '1',
-    paddingBottom: theme.spacing.unit * 2
-  }
+    paddingBottom: theme.spacing.unit * 2,
+  },
 });
 export default withStyles(styles)(Category);

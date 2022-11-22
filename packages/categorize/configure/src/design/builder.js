@@ -3,12 +3,12 @@ import cloneDeep from 'lodash/cloneDeep';
 export const buildCategories = (categories, choices, correctResponse) => {
   const clonedCategories = cloneDeep(categories);
 
-  return clonedCategories.map(category => {
-    const cr = correctResponse.find(cr => cr.category === category.id);
+  return clonedCategories.map((category) => {
+    const cr = correctResponse.find((cr) => cr.category === category.id);
 
     if (cr) {
-      category.choices = (cr.choices || []).map(choiceId => {
-        const choice = choices.find(h => h.id === choiceId);
+      category.choices = (cr.choices || []).map((choiceId) => {
+        const choice = choices.find((h) => h.id === choiceId);
         if (choice) {
           return Object.assign({}, { id: choice.id, content: choice.content });
         }
@@ -24,8 +24,8 @@ const getChoices = (cat, choices, index) => {
     return [];
   }
 
-  return (cat.alternateResponses[index] || []).map(alt => {
-    return choices.find(ch => ch.id === alt);
+  return (cat.alternateResponses[index] || []).map((alt) => {
+    return choices.find((ch) => ch.id === alt);
   });
 };
 
@@ -37,7 +37,7 @@ export const buildAlternateResponses = (categories, choices, correctResponse) =>
 
     return mostAlt;
   }, 0);
-  const alternatesArray = (new Array(mostAlternates)).fill(0);
+  const alternatesArray = new Array(mostAlternates).fill(0);
 
   return alternatesArray.map((val, index) => {
     return correctResponse.map((cat, catIndex) => {
@@ -46,7 +46,7 @@ export const buildAlternateResponses = (categories, choices, correctResponse) =>
       return {
         id: currentCategory.id,
         label: currentCategory.label,
-        choices: getChoices(cat, choices, index)
+        choices: getChoices(cat, choices, index),
       };
     });
   });

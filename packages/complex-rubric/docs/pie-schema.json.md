@@ -6,8 +6,8 @@ The schema defines the following properties:
 
 This element must be one of the following enum values:
 
-* `multiTraitRubric`
-* `simpleRubric`
+- `multiTraitRubric`
+- `simpleRubric`
 
 # `rubrics` (object, required)
 

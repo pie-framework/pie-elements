@@ -12,8 +12,8 @@ Indicates the choices are single or multiple selection
 
 This element must be one of the following enum values:
 
-* `checkbox`
-* `radio`
+- `checkbox`
+- `radio`
 
 ## `choices` (array, required)
 
@@ -41,8 +41,8 @@ What key should be displayed before choices.
 
 This element must be one of the following enum values:
 
-* `letters`
-* `numbers`
+- `letters`
+- `numbers`
 
 ## `prompt` (string, required)
 
@@ -96,8 +96,8 @@ Indicates the choices are single or multiple selection
 
 This element must be one of the following enum values:
 
-* `checkbox`
-* `radio`
+- `checkbox`
+- `radio`
 
 ## `choices` (array, required)
 
@@ -125,8 +125,8 @@ What key should be displayed before choices.
 
 This element must be one of the following enum values:
 
-* `letters`
-* `numbers`
+- `letters`
+- `numbers`
 
 ## `prompt` (string, required)
 
@@ -180,8 +180,8 @@ Indicates what type should have part labels if they are enabled
 
 This element must be one of the following enum values:
 
-* `Letters`
-* `Numbers`
+- `Letters`
+- `Numbers`
 
 # `partialScoring` (boolean)
 
@@ -193,8 +193,8 @@ Indicates scoring type
 
 This element must be one of the following enum values:
 
-* `auto`
-* `rubric`
+- `auto`
+- `rubric`
 
 # `id` (string, required)
 
@@ -460,8 +460,8 @@ Indicates the choices are single or multiple selection
 
 This element must be one of the following enum values:
 
-* `checkbox`
-* `radio`
+- `checkbox`
+- `radio`
 
 ### `choices` (array, required)
 
@@ -489,8 +489,8 @@ What key should be displayed before choices.
 
 This element must be one of the following enum values:
 
-* `letters`
-* `numbers`
+- `letters`
+- `numbers`
 
 ### `prompt` (string, required)
 

@@ -40,10 +40,7 @@
       "properties": {
         "type": {
           "description": "Indicates the feedback type",
-          "enum": [
-            "default",
-            "none"
-          ],
+          "enum": ["default", "none"],
           "type": "string",
           "title": "type"
         },
@@ -53,9 +50,7 @@
           "title": "default"
         }
       },
-      "required": [
-        "type"
-      ]
+      "required": ["type"]
     },
     "mathInput": {
       "description": "Whether a control to allow insertion of math forumulas should be displayed",
@@ -131,20 +126,14 @@
       "title": "teacherInstructionsEnabled"
     },
     "toolbarEditorPosition": {
-      "enum": [
-        "bottom",
-        "top"
-      ],
+      "enum": ["bottom", "top"],
       "type": "string",
       "title": "toolbarEditorPosition"
     },
     "playersToolbarPosition": {
       "description": "Indicates the editor's toolbar position for the player, which can be 'bottom' or 'top'",
       "default": ": 'bottom'",
-      "enum": [
-        "bottom",
-        "top"
-      ],
+      "enum": ["bottom", "top"],
       "type": "string",
       "title": "playersToolbarPosition"
     },
@@ -278,10 +267,7 @@
       "properties": {
         "type": {
           "description": "Indicates the feedback type",
-          "enum": [
-            "default",
-            "none"
-          ],
+          "enum": ["default", "none"],
           "type": "string",
           "title": "type"
         },
@@ -291,9 +277,7 @@
           "title": "default"
         }
       },
-      "required": [
-        "type"
-      ]
+      "required": ["type"]
     }
   },
   "$schema": "http://json-schema.org/draft-07/schema#"

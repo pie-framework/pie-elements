@@ -26,9 +26,7 @@
             "title": "label"
           }
         },
-        "required": [
-          "id"
-        ]
+        "required": ["id"]
       },
       "title": "choices"
     },
@@ -50,9 +48,7 @@
             "title": "weight"
           }
         },
-        "required": [
-          "id"
-        ]
+        "required": ["id"]
       },
       "title": "correctResponse"
     },
@@ -72,9 +68,7 @@
             "title": "response"
           }
         },
-        "required": [
-          "response"
-        ]
+        "required": ["response"]
       },
       "title": "alternateResponses"
     },
@@ -96,10 +90,7 @@
               "properties": {
                 "type": {
                   "description": "Indicates the feedback type",
-                  "enum": [
-                    "default",
-                    "none"
-                  ],
+                  "enum": ["default", "none"],
                   "type": "string",
                   "title": "type"
                 },
@@ -109,9 +100,7 @@
                   "title": "default"
                 }
               },
-              "required": [
-                "type"
-              ]
+              "required": ["type"]
             },
             {
               "title": "CustomFeedbackType",
@@ -120,9 +109,7 @@
                 "type": {
                   "description": "Indicates the feedback type",
                   "type": "string",
-                  "enum": [
-                    "custom"
-                  ],
+                  "enum": ["custom"],
                   "title": "type"
                 },
                 "custom": {
@@ -131,10 +118,7 @@
                   "title": "custom"
                 }
               },
-              "required": [
-                "custom",
-                "type"
-              ]
+              "required": ["custom", "type"]
             }
           ],
           "title": "correct"
@@ -148,10 +132,7 @@
               "properties": {
                 "type": {
                   "description": "Indicates the feedback type",
-                  "enum": [
-                    "default",
-                    "none"
-                  ],
+                  "enum": ["default", "none"],
                   "type": "string",
                   "title": "type"
                 },
@@ -161,9 +142,7 @@
                   "title": "default"
                 }
               },
-              "required": [
-                "type"
-              ]
+              "required": ["type"]
             },
             {
               "title": "CustomFeedbackType",
@@ -172,9 +151,7 @@
                 "type": {
                   "description": "Indicates the feedback type",
                   "type": "string",
-                  "enum": [
-                    "custom"
-                  ],
+                  "enum": ["custom"],
                   "title": "type"
                 },
                 "custom": {
@@ -183,10 +160,7 @@
                   "title": "custom"
                 }
               },
-              "required": [
-                "custom",
-                "type"
-              ]
+              "required": ["custom", "type"]
             }
           ],
           "title": "incorrect"
@@ -200,10 +174,7 @@
               "properties": {
                 "type": {
                   "description": "Indicates the feedback type",
-                  "enum": [
-                    "default",
-                    "none"
-                  ],
+                  "enum": ["default", "none"],
                   "type": "string",
                   "title": "type"
                 },
@@ -213,9 +184,7 @@
                   "title": "default"
                 }
               },
-              "required": [
-                "type"
-              ]
+              "required": ["type"]
             },
             {
               "title": "CustomFeedbackType",
@@ -224,9 +193,7 @@
                 "type": {
                   "description": "Indicates the feedback type",
                   "type": "string",
-                  "enum": [
-                    "custom"
-                  ],
+                  "enum": ["custom"],
                   "title": "type"
                 },
                 "custom": {
@@ -235,19 +202,13 @@
                   "title": "custom"
                 }
               },
-              "required": [
-                "custom",
-                "type"
-              ]
+              "required": ["custom", "type"]
             }
           ],
           "title": "partial"
         }
       },
-      "required": [
-        "correct",
-        "incorrect"
-      ]
+      "required": ["correct", "incorrect"]
     },
     "prompt": {
       "description": "The item stem for the question",
@@ -271,10 +232,7 @@
     },
     "orientation": {
       "description": "The layout for displaying the choices",
-      "enum": [
-        "horizontal",
-        "vertical"
-      ],
+      "enum": ["horizontal", "vertical"],
       "type": "string",
       "title": "orientation"
     },
@@ -300,10 +258,7 @@
     },
     "scoringType": {
       "description": "Indicates scoring type",
-      "enum": [
-        "auto",
-        "rubric"
-      ],
+      "enum": ["auto", "rubric"],
       "type": "string",
       "title": "scoringType"
     },
@@ -360,10 +315,7 @@
     "toolbarEditorPosition": {
       "description": "Indicates the editor's toolbar position which can be 'bottom' or 'top'",
       "default": ": 'bottom'",
-      "enum": [
-        "bottom",
-        "top"
-      ],
+      "enum": ["bottom", "top"],
       "type": "string",
       "title": "toolbarEditorPosition"
     },
@@ -463,9 +415,7 @@
           "title": "label"
         }
       },
-      "required": [
-        "id"
-      ]
+      "required": ["id"]
     },
     "CorrectResponse": {
       "title": "CorrectResponse",
@@ -482,9 +432,7 @@
           "title": "weight"
         }
       },
-      "required": [
-        "id"
-      ]
+      "required": ["id"]
     },
     "AlternateResponse": {
       "title": "AlternateResponse",
@@ -499,9 +447,7 @@
           "title": "response"
         }
       },
-      "required": [
-        "response"
-      ]
+      "required": ["response"]
     },
     "ComplexFeedbackType": {
       "title": "ComplexFeedbackType",
@@ -516,10 +462,7 @@
               "properties": {
                 "type": {
                   "description": "Indicates the feedback type",
-                  "enum": [
-                    "default",
-                    "none"
-                  ],
+                  "enum": ["default", "none"],
                   "type": "string",
                   "title": "type"
                 },
@@ -529,9 +472,7 @@
                   "title": "default"
                 }
               },
-              "required": [
-                "type"
-              ]
+              "required": ["type"]
             },
             {
               "title": "CustomFeedbackType",
@@ -540,9 +481,7 @@
                 "type": {
                   "description": "Indicates the feedback type",
                   "type": "string",
-                  "enum": [
-                    "custom"
-                  ],
+                  "enum": ["custom"],
                   "title": "type"
                 },
                 "custom": {
@@ -551,10 +490,7 @@
                   "title": "custom"
                 }
               },
-              "required": [
-                "custom",
-                "type"
-              ]
+              "required": ["custom", "type"]
             }
           ],
           "title": "correct"
@@ -568,10 +504,7 @@
               "properties": {
                 "type": {
                   "description": "Indicates the feedback type",
-                  "enum": [
-                    "default",
-                    "none"
-                  ],
+                  "enum": ["default", "none"],
                   "type": "string",
                   "title": "type"
                 },
@@ -581,9 +514,7 @@
                   "title": "default"
                 }
               },
-              "required": [
-                "type"
-              ]
+              "required": ["type"]
             },
             {
               "title": "CustomFeedbackType",
@@ -592,9 +523,7 @@
                 "type": {
                   "description": "Indicates the feedback type",
                   "type": "string",
-                  "enum": [
-                    "custom"
-                  ],
+                  "enum": ["custom"],
                   "title": "type"
                 },
                 "custom": {
@@ -603,10 +532,7 @@
                   "title": "custom"
                 }
               },
-              "required": [
-                "custom",
-                "type"
-              ]
+              "required": ["custom", "type"]
             }
           ],
           "title": "incorrect"
@@ -620,10 +546,7 @@
               "properties": {
                 "type": {
                   "description": "Indicates the feedback type",
-                  "enum": [
-                    "default",
-                    "none"
-                  ],
+                  "enum": ["default", "none"],
                   "type": "string",
                   "title": "type"
                 },
@@ -633,9 +556,7 @@
                   "title": "default"
                 }
               },
-              "required": [
-                "type"
-              ]
+              "required": ["type"]
             },
             {
               "title": "CustomFeedbackType",
@@ -644,9 +565,7 @@
                 "type": {
                   "description": "Indicates the feedback type",
                   "type": "string",
-                  "enum": [
-                    "custom"
-                  ],
+                  "enum": ["custom"],
                   "title": "type"
                 },
                 "custom": {
@@ -655,19 +574,13 @@
                   "title": "custom"
                 }
               },
-              "required": [
-                "custom",
-                "type"
-              ]
+              "required": ["custom", "type"]
             }
           ],
           "title": "partial"
         }
       },
-      "required": [
-        "correct",
-        "incorrect"
-      ]
+      "required": ["correct", "incorrect"]
     },
     "DefaultFeedbackType": {
       "title": "DefaultFeedbackType",
@@ -675,10 +588,7 @@
       "properties": {
         "type": {
           "description": "Indicates the feedback type",
-          "enum": [
-            "default",
-            "none"
-          ],
+          "enum": ["default", "none"],
           "type": "string",
           "title": "type"
         },
@@ -688,9 +598,7 @@
           "title": "default"
         }
       },
-      "required": [
-        "type"
-      ]
+      "required": ["type"]
     },
     "CustomFeedbackType": {
       "title": "CustomFeedbackType",
@@ -699,9 +607,7 @@
         "type": {
           "description": "Indicates the feedback type",
           "type": "string",
-          "enum": [
-            "custom"
-          ],
+          "enum": ["custom"],
           "title": "type"
         },
         "custom": {
@@ -710,10 +616,7 @@
           "title": "custom"
         }
       },
-      "required": [
-        "custom",
-        "type"
-      ]
+      "required": ["custom", "type"]
     }
   },
   "$schema": "http://json-schema.org/draft-07/schema#"

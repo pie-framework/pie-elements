@@ -26,17 +26,7 @@
                   "properties": {
                     "type": {
                       "description": "Indicates type of mark",
-                      "enum": [
-                        "circle",
-                        "line",
-                        "parabola",
-                        "point",
-                        "polygon",
-                        "ray",
-                        "segment",
-                        "sine",
-                        "vector"
-                      ],
+                      "enum": ["circle", "line", "parabola", "point", "polygon", "ray", "segment", "sine", "vector"],
                       "type": "string",
                       "title": "type"
                     },
@@ -80,10 +70,7 @@
                           "title": "y"
                         }
                       },
-                      "required": [
-                        "x",
-                        "y"
-                      ]
+                      "required": ["x", "y"]
                     },
                     "to": {
                       "title": "Point",
@@ -100,10 +87,7 @@
                           "title": "y"
                         }
                       },
-                      "required": [
-                        "x",
-                        "y"
-                      ]
+                      "required": ["x", "y"]
                     },
                     "center": {
                       "title": "Point",
@@ -120,10 +104,7 @@
                           "title": "y"
                         }
                       },
-                      "required": [
-                        "x",
-                        "y"
-                      ]
+                      "required": ["x", "y"]
                     },
                     "outerPoint": {
                       "title": "Point",
@@ -140,10 +121,7 @@
                           "title": "y"
                         }
                       },
-                      "required": [
-                        "x",
-                        "y"
-                      ]
+                      "required": ["x", "y"]
                     },
                     "closed": {
                       "description": "Indicates if mark is closed if type is polygon, sine",
@@ -169,10 +147,7 @@
                               "title": "y"
                             }
                           },
-                          "required": [
-                            "x",
-                            "y"
-                          ]
+                          "required": ["x", "y"]
                         }
                       ],
                       "minItems": 1,
@@ -193,10 +168,7 @@
                                 "title": "y"
                               }
                             },
-                            "required": [
-                              "x",
-                              "y"
-                            ]
+                            "required": ["x", "y"]
                           }
                         ]
                       },
@@ -217,10 +189,7 @@
                           "title": "y"
                         }
                       },
-                      "required": [
-                        "x",
-                        "y"
-                      ]
+                      "required": ["x", "y"]
                     },
                     "edge": {
                       "title": "Point",
@@ -237,16 +206,10 @@
                           "title": "y"
                         }
                       },
-                      "required": [
-                        "x",
-                        "y"
-                      ]
+                      "required": ["x", "y"]
                     }
                   },
-                  "required": [
-                    "building",
-                    "type"
-                  ]
+                  "required": ["building", "type"]
                 }
               ],
               "minItems": 1,
@@ -258,17 +221,7 @@
                     "properties": {
                       "type": {
                         "description": "Indicates type of mark",
-                        "enum": [
-                          "circle",
-                          "line",
-                          "parabola",
-                          "point",
-                          "polygon",
-                          "ray",
-                          "segment",
-                          "sine",
-                          "vector"
-                        ],
+                        "enum": ["circle", "line", "parabola", "point", "polygon", "ray", "segment", "sine", "vector"],
                         "type": "string",
                         "title": "type"
                       },
@@ -312,10 +265,7 @@
                             "title": "y"
                           }
                         },
-                        "required": [
-                          "x",
-                          "y"
-                        ]
+                        "required": ["x", "y"]
                       },
                       "to": {
                         "title": "Point",
@@ -332,10 +282,7 @@
                             "title": "y"
                           }
                         },
-                        "required": [
-                          "x",
-                          "y"
-                        ]
+                        "required": ["x", "y"]
                       },
                       "center": {
                         "title": "Point",
@@ -352,10 +299,7 @@
                             "title": "y"
                           }
                         },
-                        "required": [
-                          "x",
-                          "y"
-                        ]
+                        "required": ["x", "y"]
                       },
                       "outerPoint": {
                         "title": "Point",
@@ -372,10 +316,7 @@
                             "title": "y"
                           }
                         },
-                        "required": [
-                          "x",
-                          "y"
-                        ]
+                        "required": ["x", "y"]
                       },
                       "closed": {
                         "description": "Indicates if mark is closed if type is polygon, sine",
@@ -401,10 +342,7 @@
                                 "title": "y"
                               }
                             },
-                            "required": [
-                              "x",
-                              "y"
-                            ]
+                            "required": ["x", "y"]
                           }
                         ],
                         "minItems": 1,
@@ -425,10 +363,7 @@
                                   "title": "y"
                                 }
                               },
-                              "required": [
-                                "x",
-                                "y"
-                              ]
+                              "required": ["x", "y"]
                             }
                           ]
                         },
@@ -449,10 +384,7 @@
                             "title": "y"
                           }
                         },
-                        "required": [
-                          "x",
-                          "y"
-                        ]
+                        "required": ["x", "y"]
                       },
                       "edge": {
                         "title": "Point",
@@ -469,26 +401,17 @@
                             "title": "y"
                           }
                         },
-                        "required": [
-                          "x",
-                          "y"
-                        ]
+                        "required": ["x", "y"]
                       }
                     },
-                    "required": [
-                      "building",
-                      "type"
-                    ]
+                    "required": ["building", "type"]
                   }
                 ]
               },
               "title": "marks"
             }
           },
-          "required": [
-            "marks",
-            "name"
-          ]
+          "required": ["marks", "name"]
         },
         "alternate1": {
           "title": "Answer",
@@ -509,17 +432,7 @@
                   "properties": {
                     "type": {
                       "description": "Indicates type of mark",
-                      "enum": [
-                        "circle",
-                        "line",
-                        "parabola",
-                        "point",
-                        "polygon",
-                        "ray",
-                        "segment",
-                        "sine",
-                        "vector"
-                      ],
+                      "enum": ["circle", "line", "parabola", "point", "polygon", "ray", "segment", "sine", "vector"],
                       "type": "string",
                       "title": "type"
                     },
@@ -563,10 +476,7 @@
                           "title": "y"
                         }
                       },
-                      "required": [
-                        "x",
-                        "y"
-                      ]
+                      "required": ["x", "y"]
                     },
                     "to": {
                       "title": "Point",
@@ -583,10 +493,7 @@
                           "title": "y"
                         }
                       },
-                      "required": [
-                        "x",
-                        "y"
-                      ]
+                      "required": ["x", "y"]
                     },
                     "center": {
                       "title": "Point",
@@ -603,10 +510,7 @@
                           "title": "y"
                         }
                       },
-                      "required": [
-                        "x",
-                        "y"
-                      ]
+                      "required": ["x", "y"]
                     },
                     "outerPoint": {
                       "title": "Point",
@@ -623,10 +527,7 @@
                           "title": "y"
                         }
                       },
-                      "required": [
-                        "x",
-                        "y"
-                      ]
+                      "required": ["x", "y"]
                     },
                     "closed": {
                       "description": "Indicates if mark is closed if type is polygon, sine",
@@ -652,10 +553,7 @@
                               "title": "y"
                             }
                           },
-                          "required": [
-                            "x",
-                            "y"
-                          ]
+                          "required": ["x", "y"]
                         }
                       ],
                       "minItems": 1,
@@ -676,10 +574,7 @@
                                 "title": "y"
                               }
                             },
-                            "required": [
-                              "x",
-                              "y"
-                            ]
+                            "required": ["x", "y"]
                           }
                         ]
                       },
@@ -700,10 +595,7 @@
                           "title": "y"
                         }
                       },
-                      "required": [
-                        "x",
-                        "y"
-                      ]
+                      "required": ["x", "y"]
                     },
                     "edge": {
                       "title": "Point",
@@ -720,16 +612,10 @@
                           "title": "y"
                         }
                       },
-                      "required": [
-                        "x",
-                        "y"
-                      ]
+                      "required": ["x", "y"]
                     }
                   },
-                  "required": [
-                    "building",
-                    "type"
-                  ]
+                  "required": ["building", "type"]
                 }
               ],
               "minItems": 1,
@@ -741,17 +627,7 @@
                     "properties": {
                       "type": {
                         "description": "Indicates type of mark",
-                        "enum": [
-                          "circle",
-                          "line",
-                          "parabola",
-                          "point",
-                          "polygon",
-                          "ray",
-                          "segment",
-                          "sine",
-                          "vector"
-                        ],
+                        "enum": ["circle", "line", "parabola", "point", "polygon", "ray", "segment", "sine", "vector"],
                         "type": "string",
                         "title": "type"
                       },
@@ -795,10 +671,7 @@
                             "title": "y"
                           }
                         },
-                        "required": [
-                          "x",
-                          "y"
-                        ]
+                        "required": ["x", "y"]
                       },
                       "to": {
                         "title": "Point",
@@ -815,10 +688,7 @@
                             "title": "y"
                           }
                         },
-                        "required": [
-                          "x",
-                          "y"
-                        ]
+                        "required": ["x", "y"]
                       },
                       "center": {
                         "title": "Point",
@@ -835,10 +705,7 @@
                             "title": "y"
                           }
                         },
-                        "required": [
-                          "x",
-                          "y"
-                        ]
+                        "required": ["x", "y"]
                       },
                       "outerPoint": {
                         "title": "Point",
@@ -855,10 +722,7 @@
                             "title": "y"
                           }
                         },
-                        "required": [
-                          "x",
-                          "y"
-                        ]
+                        "required": ["x", "y"]
                       },
                       "closed": {
                         "description": "Indicates if mark is closed if type is polygon, sine",
@@ -884,10 +748,7 @@
                                 "title": "y"
                               }
                             },
-                            "required": [
-                              "x",
-                              "y"
-                            ]
+                            "required": ["x", "y"]
                           }
                         ],
                         "minItems": 1,
@@ -908,10 +769,7 @@
                                   "title": "y"
                                 }
                               },
-                              "required": [
-                                "x",
-                                "y"
-                              ]
+                              "required": ["x", "y"]
                             }
                           ]
                         },
@@ -932,10 +790,7 @@
                             "title": "y"
                           }
                         },
-                        "required": [
-                          "x",
-                          "y"
-                        ]
+                        "required": ["x", "y"]
                       },
                       "edge": {
                         "title": "Point",
@@ -952,32 +807,20 @@
                             "title": "y"
                           }
                         },
-                        "required": [
-                          "x",
-                          "y"
-                        ]
+                        "required": ["x", "y"]
                       }
                     },
-                    "required": [
-                      "building",
-                      "type"
-                    ]
+                    "required": ["building", "type"]
                   }
                 ]
               },
               "title": "marks"
             }
           },
-          "required": [
-            "marks",
-            "name"
-          ]
+          "required": ["marks", "name"]
         }
       },
-      "required": [
-        "alternate1",
-        "correctAnswer"
-      ],
+      "required": ["alternate1", "correctAnswer"],
       "title": "answers"
     },
     "arrows": {
@@ -1005,12 +848,7 @@
           "title": "down"
         }
       },
-      "required": [
-        "down",
-        "left",
-        "right",
-        "up"
-      ]
+      "required": ["down", "left", "right", "up"]
     },
     "backgroundMarks": {
       "description": "Indicates marks that have to be displayed in background",
@@ -1022,17 +860,7 @@
           "properties": {
             "type": {
               "description": "Indicates type of mark",
-              "enum": [
-                "circle",
-                "line",
-                "parabola",
-                "point",
-                "polygon",
-                "ray",
-                "segment",
-                "sine",
-                "vector"
-              ],
+              "enum": ["circle", "line", "parabola", "point", "polygon", "ray", "segment", "sine", "vector"],
               "type": "string",
               "title": "type"
             },
@@ -1076,10 +904,7 @@
                   "title": "y"
                 }
               },
-              "required": [
-                "x",
-                "y"
-              ]
+              "required": ["x", "y"]
             },
             "to": {
               "title": "Point",
@@ -1096,10 +921,7 @@
                   "title": "y"
                 }
               },
-              "required": [
-                "x",
-                "y"
-              ]
+              "required": ["x", "y"]
             },
             "center": {
               "title": "Point",
@@ -1116,10 +938,7 @@
                   "title": "y"
                 }
               },
-              "required": [
-                "x",
-                "y"
-              ]
+              "required": ["x", "y"]
             },
             "outerPoint": {
               "title": "Point",
@@ -1136,10 +955,7 @@
                   "title": "y"
                 }
               },
-              "required": [
-                "x",
-                "y"
-              ]
+              "required": ["x", "y"]
             },
             "closed": {
               "description": "Indicates if mark is closed if type is polygon, sine",
@@ -1165,10 +981,7 @@
                       "title": "y"
                     }
                   },
-                  "required": [
-                    "x",
-                    "y"
-                  ]
+                  "required": ["x", "y"]
                 }
               ],
               "minItems": 1,
@@ -1189,10 +1002,7 @@
                         "title": "y"
                       }
                     },
-                    "required": [
-                      "x",
-                      "y"
-                    ]
+                    "required": ["x", "y"]
                   }
                 ]
               },
@@ -1213,10 +1023,7 @@
                   "title": "y"
                 }
               },
-              "required": [
-                "x",
-                "y"
-              ]
+              "required": ["x", "y"]
             },
             "edge": {
               "title": "Point",
@@ -1233,16 +1040,10 @@
                   "title": "y"
                 }
               },
-              "required": [
-                "x",
-                "y"
-              ]
+              "required": ["x", "y"]
             }
           },
-          "required": [
-            "building",
-            "type"
-          ]
+          "required": ["building", "type"]
         }
       ],
       "minItems": 1,
@@ -1254,17 +1055,7 @@
             "properties": {
               "type": {
                 "description": "Indicates type of mark",
-                "enum": [
-                  "circle",
-                  "line",
-                  "parabola",
-                  "point",
-                  "polygon",
-                  "ray",
-                  "segment",
-                  "sine",
-                  "vector"
-                ],
+                "enum": ["circle", "line", "parabola", "point", "polygon", "ray", "segment", "sine", "vector"],
                 "type": "string",
                 "title": "type"
               },
@@ -1308,10 +1099,7 @@
                     "title": "y"
                   }
                 },
-                "required": [
-                  "x",
-                  "y"
-                ]
+                "required": ["x", "y"]
               },
               "to": {
                 "title": "Point",
@@ -1328,10 +1116,7 @@
                     "title": "y"
                   }
                 },
-                "required": [
-                  "x",
-                  "y"
-                ]
+                "required": ["x", "y"]
               },
               "center": {
                 "title": "Point",
@@ -1348,10 +1133,7 @@
                     "title": "y"
                   }
                 },
-                "required": [
-                  "x",
-                  "y"
-                ]
+                "required": ["x", "y"]
               },
               "outerPoint": {
                 "title": "Point",
@@ -1368,10 +1150,7 @@
                     "title": "y"
                   }
                 },
-                "required": [
-                  "x",
-                  "y"
-                ]
+                "required": ["x", "y"]
               },
               "closed": {
                 "description": "Indicates if mark is closed if type is polygon, sine",
@@ -1397,10 +1176,7 @@
                         "title": "y"
                       }
                     },
-                    "required": [
-                      "x",
-                      "y"
-                    ]
+                    "required": ["x", "y"]
                   }
                 ],
                 "minItems": 1,
@@ -1421,10 +1197,7 @@
                           "title": "y"
                         }
                       },
-                      "required": [
-                        "x",
-                        "y"
-                      ]
+                      "required": ["x", "y"]
                     }
                   ]
                 },
@@ -1445,10 +1218,7 @@
                     "title": "y"
                   }
                 },
-                "required": [
-                  "x",
-                  "y"
-                ]
+                "required": ["x", "y"]
               },
               "edge": {
                 "title": "Point",
@@ -1465,16 +1235,10 @@
                     "title": "y"
                   }
                 },
-                "required": [
-                  "x",
-                  "y"
-                ]
+                "required": ["x", "y"]
               }
             },
-            "required": [
-              "building",
-              "type"
-            ]
+            "required": ["building", "type"]
           }
         ]
       },
@@ -1487,17 +1251,7 @@
     },
     "defaultTool": {
       "description": "Indicates the default selected tool for the graph",
-      "enum": [
-        "circle",
-        "line",
-        "parabola",
-        "point",
-        "polygon",
-        "ray",
-        "segment",
-        "sine",
-        "vector"
-      ],
+      "enum": ["circle", "line", "parabola", "point", "polygon", "ray", "segment", "sine", "vector"],
       "type": "string",
       "title": "defaultTool"
     },
@@ -1536,14 +1290,7 @@
           "title": "axisLabel"
         }
       },
-      "required": [
-        "axisLabel",
-        "labelStep",
-        "max",
-        "min",
-        "padding",
-        "step"
-      ]
+      "required": ["axisLabel", "labelStep", "max", "min", "padding", "step"]
     },
     "graph": {
       "title": "Graph",
@@ -1560,10 +1307,7 @@
           "title": "height"
         }
       },
-      "required": [
-        "height",
-        "width"
-      ]
+      "required": ["height", "width"]
     },
     "includeAxes": {
       "description": "Indicates if the graph axes and labels are enabled",
@@ -1595,12 +1339,7 @@
           "title": "right"
         }
       },
-      "required": [
-        "bottom",
-        "left",
-        "right",
-        "top"
-      ]
+      "required": ["bottom", "left", "right", "top"]
     },
     "padding": {
       "description": "Indicates if padding is enabled",
@@ -1652,14 +1391,7 @@
           "title": "axisLabel"
         }
       },
-      "required": [
-        "axisLabel",
-        "labelStep",
-        "max",
-        "min",
-        "padding",
-        "step"
-      ]
+      "required": ["axisLabel", "labelStep", "max", "min", "padding", "step"]
     },
     "rationale": {
       "description": "Indicates rationale for the answer",
@@ -1668,10 +1400,7 @@
     },
     "scoringType": {
       "description": "Indicates scoring type",
-      "enum": [
-        "dichotomous",
-        "partial scoring"
-      ],
+      "enum": ["dichotomous", "partial scoring"],
       "type": "string",
       "title": "scoringType"
     },
@@ -1705,18 +1434,7 @@
       "type": "array",
       "items": [
         {
-          "enum": [
-            "circle",
-            "label",
-            "line",
-            "parabola",
-            "point",
-            "polygon",
-            "ray",
-            "segment",
-            "sine",
-            "vector"
-          ],
+          "enum": ["circle", "label", "line", "parabola", "point", "polygon", "ray", "segment", "sine", "vector"],
           "type": "string"
         }
       ],
@@ -1724,18 +1442,7 @@
       "additionalItems": {
         "anyOf": [
           {
-            "enum": [
-              "circle",
-              "label",
-              "line",
-              "parabola",
-              "point",
-              "polygon",
-              "ray",
-              "segment",
-              "sine",
-              "vector"
-            ],
+            "enum": ["circle", "label", "line", "parabola", "point", "polygon", "ray", "segment", "sine", "vector"],
             "type": "string"
           }
         ]
@@ -2083,12 +1790,7 @@
               "title": "down"
             }
           },
-          "required": [
-            "down",
-            "left",
-            "right",
-            "up"
-          ]
+          "required": ["down", "left", "right", "up"]
         },
         "domain": {
           "title": "GraphSettings",
@@ -2125,14 +1827,7 @@
               "title": "axisLabel"
             }
           },
-          "required": [
-            "axisLabel",
-            "labelStep",
-            "max",
-            "min",
-            "padding",
-            "step"
-          ]
+          "required": ["axisLabel", "labelStep", "max", "min", "padding", "step"]
         },
         "graph": {
           "title": "Graph",
@@ -2149,10 +1844,7 @@
               "title": "height"
             }
           },
-          "required": [
-            "height",
-            "width"
-          ]
+          "required": ["height", "width"]
         },
         "includeAxes": {
           "description": "Indicates if the graph axes and labels are enabled",
@@ -2184,12 +1876,7 @@
               "title": "right"
             }
           },
-          "required": [
-            "bottom",
-            "left",
-            "right",
-            "top"
-          ]
+          "required": ["bottom", "left", "right", "top"]
         },
         "padding": {
           "description": "Indicates if padding is enabled",
@@ -2231,14 +1918,7 @@
               "title": "axisLabel"
             }
           },
-          "required": [
-            "axisLabel",
-            "labelStep",
-            "max",
-            "min",
-            "padding",
-            "step"
-          ]
+          "required": ["axisLabel", "labelStep", "max", "min", "padding", "step"]
         },
         "standardGrid": {
           "description": "Indicates if some domain values will be synched to the range values",
@@ -2251,11 +1931,7 @@
           "title": "title"
         }
       },
-      "required": [
-        "domain",
-        "graph",
-        "range"
-      ]
+      "required": ["domain", "graph", "range"]
     },
     "Arrows": {
       "title": "Arrows",
@@ -2282,12 +1958,7 @@
           "title": "down"
         }
       },
-      "required": [
-        "down",
-        "left",
-        "right",
-        "up"
-      ]
+      "required": ["down", "left", "right", "up"]
     },
     "GraphSettings": {
       "title": "GraphSettings",
@@ -2324,14 +1995,7 @@
           "title": "axisLabel"
         }
       },
-      "required": [
-        "axisLabel",
-        "labelStep",
-        "max",
-        "min",
-        "padding",
-        "step"
-      ]
+      "required": ["axisLabel", "labelStep", "max", "min", "padding", "step"]
     },
     "Graph": {
       "title": "Graph",
@@ -2348,10 +2012,7 @@
           "title": "height"
         }
       },
-      "required": [
-        "height",
-        "width"
-      ]
+      "required": ["height", "width"]
     },
     "Labels": {
       "title": "Labels",
@@ -2378,12 +2039,7 @@
           "title": "right"
         }
       },
-      "required": [
-        "bottom",
-        "left",
-        "right",
-        "top"
-      ]
+      "required": ["bottom", "left", "right", "top"]
     },
     "LabelsConfigProp": {
       "title": "LabelsConfigProp",
@@ -2492,17 +2148,7 @@
               "properties": {
                 "type": {
                   "description": "Indicates type of mark",
-                  "enum": [
-                    "circle",
-                    "line",
-                    "parabola",
-                    "point",
-                    "polygon",
-                    "ray",
-                    "segment",
-                    "sine",
-                    "vector"
-                  ],
+                  "enum": ["circle", "line", "parabola", "point", "polygon", "ray", "segment", "sine", "vector"],
                   "type": "string",
                   "title": "type"
                 },
@@ -2546,10 +2192,7 @@
                       "title": "y"
                     }
                   },
-                  "required": [
-                    "x",
-                    "y"
-                  ]
+                  "required": ["x", "y"]
                 },
                 "to": {
                   "title": "Point",
@@ -2566,10 +2209,7 @@
                       "title": "y"
                     }
                   },
-                  "required": [
-                    "x",
-                    "y"
-                  ]
+                  "required": ["x", "y"]
                 },
                 "center": {
                   "title": "Point",
@@ -2586,10 +2226,7 @@
                       "title": "y"
                     }
                   },
-                  "required": [
-                    "x",
-                    "y"
-                  ]
+                  "required": ["x", "y"]
                 },
                 "outerPoint": {
                   "title": "Point",
@@ -2606,10 +2243,7 @@
                       "title": "y"
                     }
                   },
-                  "required": [
-                    "x",
-                    "y"
-                  ]
+                  "required": ["x", "y"]
                 },
                 "closed": {
                   "description": "Indicates if mark is closed if type is polygon, sine",
@@ -2635,10 +2269,7 @@
                           "title": "y"
                         }
                       },
-                      "required": [
-                        "x",
-                        "y"
-                      ]
+                      "required": ["x", "y"]
                     }
                   ],
                   "minItems": 1,
@@ -2659,10 +2290,7 @@
                             "title": "y"
                           }
                         },
-                        "required": [
-                          "x",
-                          "y"
-                        ]
+                        "required": ["x", "y"]
                       }
                     ]
                   },
@@ -2683,10 +2311,7 @@
                       "title": "y"
                     }
                   },
-                  "required": [
-                    "x",
-                    "y"
-                  ]
+                  "required": ["x", "y"]
                 },
                 "edge": {
                   "title": "Point",
@@ -2703,16 +2328,10 @@
                       "title": "y"
                     }
                   },
-                  "required": [
-                    "x",
-                    "y"
-                  ]
+                  "required": ["x", "y"]
                 }
               },
-              "required": [
-                "building",
-                "type"
-              ]
+              "required": ["building", "type"]
             }
           ],
           "minItems": 1,
@@ -2724,17 +2343,7 @@
                 "properties": {
                   "type": {
                     "description": "Indicates type of mark",
-                    "enum": [
-                      "circle",
-                      "line",
-                      "parabola",
-                      "point",
-                      "polygon",
-                      "ray",
-                      "segment",
-                      "sine",
-                      "vector"
-                    ],
+                    "enum": ["circle", "line", "parabola", "point", "polygon", "ray", "segment", "sine", "vector"],
                     "type": "string",
                     "title": "type"
                   },
@@ -2778,10 +2387,7 @@
                         "title": "y"
                       }
                     },
-                    "required": [
-                      "x",
-                      "y"
-                    ]
+                    "required": ["x", "y"]
                   },
                   "to": {
                     "title": "Point",
@@ -2798,10 +2404,7 @@
                         "title": "y"
                       }
                     },
-                    "required": [
-                      "x",
-                      "y"
-                    ]
+                    "required": ["x", "y"]
                   },
                   "center": {
                     "title": "Point",
@@ -2818,10 +2421,7 @@
                         "title": "y"
                       }
                     },
-                    "required": [
-                      "x",
-                      "y"
-                    ]
+                    "required": ["x", "y"]
                   },
                   "outerPoint": {
                     "title": "Point",
@@ -2838,10 +2438,7 @@
                         "title": "y"
                       }
                     },
-                    "required": [
-                      "x",
-                      "y"
-                    ]
+                    "required": ["x", "y"]
                   },
                   "closed": {
                     "description": "Indicates if mark is closed if type is polygon, sine",
@@ -2867,10 +2464,7 @@
                             "title": "y"
                           }
                         },
-                        "required": [
-                          "x",
-                          "y"
-                        ]
+                        "required": ["x", "y"]
                       }
                     ],
                     "minItems": 1,
@@ -2891,10 +2485,7 @@
                               "title": "y"
                             }
                           },
-                          "required": [
-                            "x",
-                            "y"
-                          ]
+                          "required": ["x", "y"]
                         }
                       ]
                     },
@@ -2915,10 +2506,7 @@
                         "title": "y"
                       }
                     },
-                    "required": [
-                      "x",
-                      "y"
-                    ]
+                    "required": ["x", "y"]
                   },
                   "edge": {
                     "title": "Point",
@@ -2935,26 +2523,17 @@
                         "title": "y"
                       }
                     },
-                    "required": [
-                      "x",
-                      "y"
-                    ]
+                    "required": ["x", "y"]
                   }
                 },
-                "required": [
-                  "building",
-                  "type"
-                ]
+                "required": ["building", "type"]
               }
             ]
           },
           "title": "marks"
         }
       },
-      "required": [
-        "marks",
-        "name"
-      ]
+      "required": ["marks", "name"]
     },
     "Mark": {
       "title": "Mark",
@@ -2962,17 +2541,7 @@
       "properties": {
         "type": {
           "description": "Indicates type of mark",
-          "enum": [
-            "circle",
-            "line",
-            "parabola",
-            "point",
-            "polygon",
-            "ray",
-            "segment",
-            "sine",
-            "vector"
-          ],
+          "enum": ["circle", "line", "parabola", "point", "polygon", "ray", "segment", "sine", "vector"],
           "type": "string",
           "title": "type"
         },
@@ -3016,10 +2585,7 @@
               "title": "y"
             }
           },
-          "required": [
-            "x",
-            "y"
-          ]
+          "required": ["x", "y"]
         },
         "to": {
           "title": "Point",
@@ -3036,10 +2602,7 @@
               "title": "y"
             }
           },
-          "required": [
-            "x",
-            "y"
-          ]
+          "required": ["x", "y"]
         },
         "center": {
           "title": "Point",
@@ -3056,10 +2619,7 @@
               "title": "y"
             }
           },
-          "required": [
-            "x",
-            "y"
-          ]
+          "required": ["x", "y"]
         },
         "outerPoint": {
           "title": "Point",
@@ -3076,10 +2636,7 @@
               "title": "y"
             }
           },
-          "required": [
-            "x",
-            "y"
-          ]
+          "required": ["x", "y"]
         },
         "closed": {
           "description": "Indicates if mark is closed if type is polygon, sine",
@@ -3105,10 +2662,7 @@
                   "title": "y"
                 }
               },
-              "required": [
-                "x",
-                "y"
-              ]
+              "required": ["x", "y"]
             }
           ],
           "minItems": 1,
@@ -3129,10 +2683,7 @@
                     "title": "y"
                   }
                 },
-                "required": [
-                  "x",
-                  "y"
-                ]
+                "required": ["x", "y"]
               }
             ]
           },
@@ -3153,10 +2704,7 @@
               "title": "y"
             }
           },
-          "required": [
-            "x",
-            "y"
-          ]
+          "required": ["x", "y"]
         },
         "edge": {
           "title": "Point",
@@ -3173,16 +2721,10 @@
               "title": "y"
             }
           },
-          "required": [
-            "x",
-            "y"
-          ]
+          "required": ["x", "y"]
         }
       },
-      "required": [
-        "building",
-        "type"
-      ]
+      "required": ["building", "type"]
     },
     "Point": {
       "title": "Point",
@@ -3199,10 +2741,7 @@
           "title": "y"
         }
       },
-      "required": [
-        "x",
-        "y"
-      ]
+      "required": ["x", "y"]
     }
   },
   "$schema": "http://json-schema.org/draft-07/schema#"

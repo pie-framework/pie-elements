@@ -54,9 +54,6 @@
       "title": "element"
     }
   },
-  "required": [
-    "element",
-    "id"
-  ],
+  "required": ["element", "id"],
   "$schema": "http://json-schema.org/draft-07/schema#"
 }

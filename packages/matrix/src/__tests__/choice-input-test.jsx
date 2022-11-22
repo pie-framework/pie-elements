@@ -1,10 +1,9 @@
 import React from 'react';
-import {shallow, mount} from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import ChoiceInput from '../ChoiceInput';
 import toJson from 'enzyme-to-json';
 
 describe('ChoiceInput', () => {
-
   const getPropsDefault = (onChange, propsToOverride) => {
     return {
       checked: false,
@@ -16,8 +15,8 @@ describe('ChoiceInput', () => {
         checked: 'checked',
       },
       onChange,
-      ...propsToOverride
-    }
+      ...propsToOverride,
+    };
   };
 
   describe('snapshots', () => {
@@ -34,28 +33,34 @@ describe('ChoiceInput', () => {
 
       const mountInstance = mount(<ChoiceInput {...props} />);
 
-      mountInstance.find('input').at(0).simulate('change', {
-        target: {
-          id: 'name',
-          value: '',
-        },
-      });
+      mountInstance
+        .find('input')
+        .at(0)
+        .simulate('change', {
+          target: {
+            id: 'name',
+            value: '',
+          },
+        });
 
       expect(onChange).toHaveBeenCalledTimes(1);
     });
 
     it('does not calls onChange if disabled', () => {
       const onChange = jest.fn();
-      const props = getPropsDefault(onChange, {disabled: true});
+      const props = getPropsDefault(onChange, { disabled: true });
 
       const mountedComponent = mount(<ChoiceInput {...props} />);
 
-      mountedComponent.find('input').at(0).simulate('change', {
-        target: {
-          id: 'name',
-          value: '',
-        },
-      });
+      mountedComponent
+        .find('input')
+        .at(0)
+        .simulate('change', {
+          target: {
+            id: 'name',
+            value: '',
+          },
+        });
 
       expect(onChange).toHaveBeenCalledTimes(0);
     });

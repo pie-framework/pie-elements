@@ -26,10 +26,10 @@ Indicates if choice is correct
 
 This element must be one of the following enum values:
 
-* `above`
-* `below`
-* `left`
-* `right`
+- `above`
+- `below`
+- `left`
+- `right`
 
 # `correctResponse` (object, required)
 
@@ -99,8 +99,8 @@ Indicates the editor's toolbar position which can be 'bottom' or 'top'
 
 This element must be one of the following enum values:
 
-* `bottom`
-* `top`
+- `bottom`
+- `top`
 
 Default: `": 'bottom'"`
 

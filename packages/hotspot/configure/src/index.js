@@ -6,7 +6,7 @@ import {
   DeleteImageEvent,
   InsertImageEvent,
   InsertSoundEvent,
-  DeleteSoundEvent
+  DeleteSoundEvent,
 } from '@pie-framework/pie-configure-events';
 
 import Root from './root';
@@ -20,7 +20,7 @@ export default class HotspotConfigure extends HTMLElement {
     ...model,
     hotspotList: model.hotspotList || [model.hotspotColor] || sensibleDefaults.model.hotspotList,
     outlineList: model.outlineList || [model.outlineColor] || sensibleDefaults.model.outlineList,
-    shapes: model.shapes || sensibleDefaults.model.shapes || {}
+    shapes: model.shapes || sensibleDefaults.model.shapes || {},
   });
 
   constructor() {
@@ -63,8 +63,8 @@ export default class HotspotConfigure extends HTMLElement {
     if (propertyType === 'multipleCorrect') {
       const { rectangles = [], polygons = [] } = _model.shapes || {};
 
-      _model.shapes.rectangles = rectangles.map(shape => ({ ...shape, correct: false }));
-      _model.shapes.polygons = polygons.map(shape => ({ ...shape, correct: false }));
+      _model.shapes.rectangles = rectangles.map((shape) => ({ ...shape, correct: false }));
+      _model.shapes.polygons = polygons.map((shape) => ({ ...shape, correct: false }));
     }
 
     this.onModelChanged(_model);
@@ -73,53 +73,53 @@ export default class HotspotConfigure extends HTMLElement {
   onColorChanged = (colorType, color) => {
     this.onModelChanged({
       ...this._model,
-      [colorType]: color
+      [colorType]: color,
     });
   };
 
-  onPromptChanged = prompt => {
+  onPromptChanged = (prompt) => {
     this.onModelChanged({
       ...this._model,
-      prompt
+      prompt,
     });
   };
 
-  onRationaleChanged = rationale => {
+  onRationaleChanged = (rationale) => {
     this.onModelChanged({
       ...this._model,
-      rationale
+      rationale,
     });
   };
 
-  onTeacherInstructionsChanged = teacherInstructions => {
+  onTeacherInstructionsChanged = (teacherInstructions) => {
     this.onModelChanged({
       ...this._model,
-      teacherInstructions
+      teacherInstructions,
     });
   };
 
-  onUpdateImageDimension = dimensions => {
+  onUpdateImageDimension = (dimensions) => {
     this.onModelChanged({
       ...this._model,
-      dimensions
+      dimensions,
     });
   };
 
-  onUpdateShapes = shapes => {
+  onUpdateShapes = (shapes) => {
     this.onModelChanged({
       ...this._model,
-      shapes
+      shapes,
     });
   };
 
-  onImageUpload = imageUrl => {
+  onImageUpload = (imageUrl) => {
     this.onModelChanged({
       ...this._model,
-      imageUrl
+      imageUrl,
     });
   };
 
-  insertImage = handler => {
+  insertImage = (handler) => {
     this.dispatchEvent(new InsertImageEvent(handler));
   };
 
@@ -148,11 +148,11 @@ export default class HotspotConfigure extends HTMLElement {
       onUpdateImageDimension: this.onUpdateImageDimension,
       imageSupport: {
         add: this.insertImage,
-        delete: this.onDeleteImage
+        delete: this.onDeleteImage,
       },
       uploadSoundSupport: {
         add: this.insertSound.bind(this),
-        delete: this.onDeleteSound.bind(this)
+        delete: this.onDeleteSound.bind(this),
       },
       onUpdateShapes: this.onUpdateShapes,
       onModelChangedByConfig: this.onModelChangedByConfig,

@@ -1,11 +1,7 @@
 import { PromptConfig } from '../../PromptConfig';
 import { CommonConfigSettings } from '../../CommonConfigSettings';
 import { PieModel } from '../../PieModel';
-import {
-  ConfigureMaxImageDimensionsProp,
-  ConfigureProp,
-  ConfigurePropWithEnabled,
-} from '../ConfigurationProp';
+import { ConfigureMaxImageDimensionsProp, ConfigureProp, ConfigurePropWithEnabled } from '../ConfigurationProp';
 
 interface Chart {
   /** Width for chart representation */
@@ -87,13 +83,7 @@ export interface ChartingPie extends PieModel {
   /** Indicates default value for a new category's label */
   categoryDefaultLabel: string;
 
-  chartType:
-    | 'bar'
-    | 'histogram'
-    | 'lineCross'
-    | 'lineDot'
-    | 'dorPlot'
-    | 'linePlot';
+  chartType: 'bar' | 'histogram' | 'lineCross' | 'lineDot' | 'dorPlot' | 'linePlot';
 
   /** Indicates marks that are set as answers; Note: alternates can be added having this form: alternateIndex */
   correctAnswer: Answer;
@@ -192,7 +182,7 @@ export interface ChartingConfigure extends PromptConfig, CommonConfigSettings {
    */
   spellCheck?: ConfigureProp;
 
-   /**
+  /**
    * Configuration for the title's placeholder
    */
   titlePlaceholder?: ConfigureProp;
@@ -200,7 +190,7 @@ export interface ChartingConfigure extends PromptConfig, CommonConfigSettings {
   /**
    * Labels Placeholder configuration
    */
-   labelsPlaceholders?: LabelsPlaceholderConfigProp;
+  labelsPlaceholders?: LabelsPlaceholderConfigProp;
 
   /**
    * Scoring Type configuration

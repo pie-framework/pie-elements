@@ -9,7 +9,7 @@ export { Main as Component };
 
 export const isComplete = (session, model) => {
   const rows = get(model, 'config.rows');
-  const ids = rows.map(r => r.id);
+  const ids = rows.map((r) => r.id);
   return ids.reduce((acc, id) => {
     if (!acc) {
       return false;
@@ -43,9 +43,7 @@ export default class Match extends HTMLElement {
     this._session.answers = s.answers;
     const complete = isComplete(this._session, this._model);
 
-    this.dispatchEvent(
-      new SessionChangedEvent(this.tagName.toLowerCase(), complete)
-    );
+    this.dispatchEvent(new SessionChangedEvent(this.tagName.toLowerCase(), complete));
 
     this._render();
   }
@@ -62,7 +60,7 @@ export default class Match extends HTMLElement {
     const el = React.createElement(Main, {
       model: this._model,
       session: this._session,
-      onSessionChange: this.sessionChanged.bind(this)
+      onSessionChange: this.sessionChanged.bind(this),
     });
 
     ReactDOM.render(el, this, () => {

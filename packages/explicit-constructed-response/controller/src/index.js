@@ -7,10 +7,10 @@ import { partialScoring } from '@pie-lib/controller-utils';
 
 const log = debug('explicit-constructed-response:controller');
 
-export const prepareChoice = (mode, defaultFeedback) => choice => {
+export const prepareChoice = (mode, defaultFeedback) => (choice) => {
   const out = {
     label: choice.label,
-    value: choice.value
+    value: choice.value,
   };
 
   if (mode === 'evaluate') {
@@ -28,7 +28,7 @@ export const prepareChoice = (mode, defaultFeedback) => choice => {
   return out;
 };
 
-const getFeedback = value => {
+const getFeedback = (value) => {
   if (value) {
     return 'correct';
   }
@@ -37,7 +37,7 @@ const getFeedback = value => {
 };
 
 // also used in configure/src/markupUtils.js
-const getAdjustedLength = length => {
+const getAdjustedLength = (length) => {
   if (length <= 2) {
     return length + 2;
   }
@@ -53,7 +53,7 @@ const getAdjustedLength = length => {
   return length + 5;
 };
 
-export const normalize = question => ({
+export const normalize = (question) => ({
   rationaleEnabled: true,
   promptEnabled: true,
   teacherInstructionsEnabled: true,
@@ -68,11 +68,11 @@ export const normalize = question => ({
  * @param {*} env
  */
 export function model(question, session, env) {
-  return new Promise(async resolve => {
+  return new Promise(async (resolve) => {
     // this was added to treat an exception, when the model has choices without the "value" property
     // like: { label: 'test' }
     if (question.choices) {
-      Object.keys(question.choices).forEach(key => {
+      Object.keys(question.choices).forEach((key) => {
         question.choices[key] = (question.choices[key] || []).map((item, index) => {
           if (!item.value) {
             log('Choice does not contain "value" property, which is required.', item);
@@ -80,14 +80,14 @@ export function model(question, session, env) {
           }
 
           return item;
-        })
+        });
       });
     }
 
     const normalizedQuestion = normalize(question);
     const defaultFeedback = Object.assign(
       { correct: 'Correct', incorrect: 'Incorrect' },
-      normalizedQuestion.defaultFeedback
+      normalizedQuestion.defaultFeedback,
     );
 
     const { value = {} } = session || {};
@@ -101,27 +101,31 @@ export function model(question, session, env) {
 
         return obj;
       },
-      {}
+      {},
     );
     let feedback = {};
 
     if (env.mode === 'evaluate') {
-      feedback = reduce(normalizedQuestion.choices, (obj, respArea, key) => {
-        const chosenValue = value && value[key];
-        const val = !isEmpty(chosenValue) && find(respArea, c => prepareVal(c.label) === prepareVal(chosenValue));
+      feedback = reduce(
+        normalizedQuestion.choices,
+        (obj, respArea, key) => {
+          const chosenValue = value && value[key];
+          const val = !isEmpty(chosenValue) && find(respArea, (c) => prepareVal(c.label) === prepareVal(chosenValue));
 
-        obj[key] = getFeedback(val);
+          obj[key] = getFeedback(val);
 
-        return obj;
-      }, {});
+          return obj;
+        },
+        {},
+      );
     }
 
     let showNote = false;
     // check if a choice has an alternate
-    Object.values(choices).forEach(choice => {
-       if (choice && choice.length > 1) {
-         showNote = true;
-       }
+    Object.values(choices).forEach((choice) => {
+      if (choice && choice.length > 1) {
+        showNote = true;
+      }
     });
 
     const { maxLengthPerChoice = [], maxLengthPerChoiceEnabled } = normalizedQuestion;
@@ -129,14 +133,14 @@ export function model(question, session, env) {
 
     // calculate maxLengthPerChoice array if it is not defined or defined incorrectly
     Object.values(choices).forEach((choice, index) => {
-      const labelLengthsArr = (choice || []).map(choice => (choice.label || '').length);
+      const labelLengthsArr = (choice || []).map((choice) => (choice.label || '').length);
       const length = Math.max(...labelLengthsArr);
 
       if (
-        undefinedLengths
-        || !maxLengthPerChoice[index]
-        || maxLengthPerChoice[index] < length
-        || maxLengthPerChoice[index] > length + 10
+        undefinedLengths ||
+        !maxLengthPerChoice[index] ||
+        maxLengthPerChoice[index] < length ||
+        maxLengthPerChoice[index] > length + 10
       ) {
         maxLengthPerChoice[index] = getAdjustedLength(length);
       }
@@ -156,16 +160,14 @@ export function model(question, session, env) {
       maxLengthPerChoiceEnabled,
       displayType: normalizedQuestion.displayType,
       playerSpellCheckEnabled: normalizedQuestion.playerSpellCheckEnabled,
-      responseCorrect:
-        env.mode === 'evaluate' ? getScore(normalizedQuestion, session) === 1 : undefined
+      responseCorrect: env.mode === 'evaluate' ? getScore(normalizedQuestion, session) === 1 : undefined,
     };
 
-    if (
-      env.role === 'instructor' &&
-      (env.mode === 'view' || env.mode === 'evaluate')
-    ) {
+    if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
       out.rationale = normalizedQuestion.rationaleEnabled ? normalizedQuestion.rationale : null;
-      out.teacherInstructions = normalizedQuestion.teacherInstructionsEnabled ? normalizedQuestion.teacherInstructions : null;
+      out.teacherInstructions = normalizedQuestion.teacherInstructionsEnabled
+        ? normalizedQuestion.teacherInstructions
+        : null;
     } else {
       out.rationale = null;
       out.teacherInstructions = null;
@@ -179,7 +181,7 @@ const getTextFromHTML = (html) => {
   return (html || '').replace(/<\/?[^>]+(>|$)/g, '');
 };
 
-export const prepareVal = html => {
+export const prepareVal = (html) => {
   const value = getTextFromHTML(html);
 
   return value.trim();
@@ -194,15 +196,19 @@ export const getScore = (config, session) => {
 
   const responseAreas = config.markup && config.markup.match(/\{\{(.)\}\}/g);
   const maxScore = responseAreas ? responseAreas.length : 0;
-  const correctCount = reduce(config.choices, (total, respArea, key) => {
-    const chosenValue = value && value[key];
+  const correctCount = reduce(
+    config.choices,
+    (total, respArea, key) => {
+      const chosenValue = value && value[key];
 
-    if (isEmpty(chosenValue) || !find(respArea, c => prepareVal(c.label) === prepareVal(chosenValue))) {
-      return total;
-    }
+      if (isEmpty(chosenValue) || !find(respArea, (c) => prepareVal(c.label) === prepareVal(chosenValue))) {
+        return total;
+      }
 
-    return total + 1;
-  }, 0);
+      return total + 1;
+    },
+    0,
+  );
 
   const str = maxScore ? (correctCount / maxScore).toFixed(2) : 0;
 
@@ -222,7 +228,7 @@ export const getScore = (config, session) => {
  *   `model.partialScoring`.
  */
 export function outcome(model, session, env = {}) {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     const partialScoringEnabled = partialScoring.enabled(model, env);
     const score = getScore(model, session);
 
@@ -231,7 +237,7 @@ export function outcome(model, session, env = {}) {
 }
 
 export const createCorrectResponseSession = (question, env) => {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     if (env.mode !== 'evaluate' && env.role === 'instructor') {
       const { choices } = question;
       const value = {};
@@ -242,7 +248,7 @@ export const createCorrectResponseSession = (question, env) => {
 
       resolve({
         id: '1',
-        value
+        value,
       });
     } else {
       resolve(null);
@@ -256,7 +262,7 @@ export const validate = (model = {}, config = {}) => {
   const allChoicesErrors = {};
 
   Object.entries(choices || {}).forEach(([key, values]) => {
-    const reversedChoices = [...values || []].reverse();
+    const reversedChoices = [...(values || [])].reverse();
     const choicesErrors = {};
 
     reversedChoices.forEach((choice, index) => {
@@ -265,7 +271,7 @@ export const validate = (model = {}, config = {}) => {
       if (label === '' || label === '<div></div>') {
         choicesErrors[value] = 'Content should not be empty.';
       } else {
-        const identicalAnswer = reversedChoices.slice(index + 1).some(c => c.label === label);
+        const identicalAnswer = reversedChoices.slice(index + 1).some((c) => c.label === label);
 
         if (identicalAnswer) {
           choicesErrors[value] = 'Content should be unique.';

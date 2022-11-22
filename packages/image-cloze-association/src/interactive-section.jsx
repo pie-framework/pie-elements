@@ -12,11 +12,14 @@ class InteractiveSection extends React.Component {
 
     switch (responseCorrect) {
       case undefined:
-        styleProp = 'interactiveDefault'; break;
+        styleProp = 'interactiveDefault';
+        break;
       case true:
-        styleProp = 'interactiveCorrect'; break;
+        styleProp = 'interactiveCorrect';
+        break;
       default:
-        styleProp = 'interactiveIncorrect'; break;
+        styleProp = 'interactiveIncorrect';
+        break;
     }
     return classes[styleProp];
   }
@@ -27,16 +30,12 @@ class InteractiveSection extends React.Component {
     const evaluationStyle = {
       display: 'flex',
       margin: '0 auto',
-      marginTop: -14
+      marginTop: -14,
     };
 
     return (
       <div className={classname}>
-        <EvaluationIcon
-          containerStyle={evaluationStyle}
-          filled
-          isCorrect={responseCorrect}
-        />
+        <EvaluationIcon containerStyle={evaluationStyle} filled isCorrect={responseCorrect} />
         {children}
       </div>
     );
@@ -45,31 +44,25 @@ class InteractiveSection extends React.Component {
 
 InteractiveSection.propTypes = {
   classes: PropTypes.object,
-  children: PropTypes.oneOfType([
-    PropTypes.element,
-    PropTypes.array
-  ]).isRequired,
-  responseCorrect: PropTypes.oneOfType([
-    PropTypes.bool,
-    PropTypes.number
-  ])
+  children: PropTypes.oneOfType([PropTypes.element, PropTypes.array]).isRequired,
+  responseCorrect: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
 };
 
 InteractiveSection.defaultProps = {
   classes: {},
-  responseCorrect: undefined
+  responseCorrect: undefined,
 };
 
 const styles = () => ({
   interactiveDefault: {
-    border: `1px solid ${color.disabled()}`
+    border: `1px solid ${color.disabled()}`,
   },
   interactiveCorrect: {
-    border: `2px solid ${color.correct()}`
+    border: `2px solid ${color.correct()}`,
   },
   interactiveIncorrect: {
-    border: `2px solid ${color.incorrect()}`
-  }
+    border: `2px solid ${color.incorrect()}`,
+  },
 });
 
 export default withStyles(styles)(InteractiveSection);

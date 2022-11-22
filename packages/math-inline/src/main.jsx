@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
 import { mq, HorizontalKeypad, updateSpans } from '@pie-lib/math-input';
-import {Feedback, Collapsible, Readable, hasText, PreviewPrompt} from '@pie-lib/render-ui';
+import { Feedback, Collapsible, Readable, hasText, PreviewPrompt } from '@pie-lib/render-ui';
 import { renderMath } from '@pie-lib/math-rendering';
 import { withStyles } from '@material-ui/core/styles';
 import Tooltip from '@material-ui/core/Tooltip';
@@ -32,9 +32,7 @@ function generateAdditionalKeys(keyData = []) {
 }
 
 function getKeyPadWidth(additionalKeys = [], equationEditor) {
-  return (
-    Math.floor(additionalKeys.length / 5) * 30 + (equationEditor === 'miscellaneous' ? 600 : 500)
-  );
+  return Math.floor(additionalKeys.length / 5) * 30 + (equationEditor === 'miscellaneous' ? 600 : 500);
 }
 
 function prepareForStatic(model, state) {
@@ -51,21 +49,23 @@ function prepareForStatic(model, state) {
     let answerBlocks = 1; // assume one at least
     // build out local state model using responses declared in expression
 
-    return (modelExpression || '').replace(REGEX, function () {
-      const answer = state.session.answers[`r${answerBlocks}`];
+    return (modelExpression || '')
+      .replace(REGEX, function () {
+        const answer = state.session.answers[`r${answerBlocks}`];
 
-      if (printMode && !alwaysShowCorrect) {
-        const blankSpace ='\\ \\ '.repeat(30) + '\\newline ';
+        if (printMode && !alwaysShowCorrect) {
+          const blankSpace = '\\ \\ '.repeat(30) + '\\newline ';
 
-        return `\\MathQuillMathField[r${answerBlocks++}]{${blankSpace.repeat(3)}}`;
-      }
+          return `\\MathQuillMathField[r${answerBlocks++}]{${blankSpace.repeat(3)}}`;
+        }
 
-      if (disabled) {
-        return `\\embed{answerBlock}[r${answerBlocks++}]`;
-      }
+        if (disabled) {
+          return `\\embed{answerBlock}[r${answerBlocks++}]`;
+        }
 
-      return `\\MathQuillMathField[r${answerBlocks++}]{${(answer && answer.value) || ''}}`;
-    }).replace(NEWLINE_LATEX, '\\embed{newLine}[]');
+        return `\\MathQuillMathField[r${answerBlocks++}]{${(answer && answer.value) || ''}}`;
+      })
+      .replace(NEWLINE_LATEX, '\\embed{newLine}[]');
   }
 }
 
@@ -185,7 +185,7 @@ export class Main extends React.Component {
     const { config: nextConfig = {} } = nextProps.model || {};
 
     if ((config.env && config.env.mode !== 'evaluate') || (nextConfig.env && nextConfig.env.mode !== 'evaluate')) {
-      this.setState({...this.state.session, showCorrect: false});
+      this.setState({ ...this.state.session, showCorrect: false });
     }
 
     if (nextConfig.alwaysShowCorrect) {
@@ -193,9 +193,7 @@ export class Main extends React.Component {
     }
 
     if (
-      (config &&
-        config.responses &&
-        config.responses.length !== nextConfig.responses.length) ||
+      (config && config.responses && config.responses.length !== nextConfig.responses.length) ||
       (!config && nextConfig && nextConfig.responses) ||
       (config && nextConfig && config.expression !== nextConfig.expression)
     ) {
@@ -207,11 +205,7 @@ export class Main extends React.Component {
       // build out local state model using responses declared in expression
       (nextConfig.expression || '').replace(REGEX, () => {
         newAnswers[`r${answerBlocks}`] = {
-          value:
-            (answers &&
-              answers[`r${answerBlocks}`] &&
-              answers[`r${answerBlocks}`].value) ||
-            '',
+          value: (answers && answers[`r${answerBlocks}`] && answers[`r${answerBlocks}`].value) || '',
         };
         answerBlocks++;
       });
@@ -224,7 +218,7 @@ export class Main extends React.Component {
             answers: newAnswers,
           },
         }),
-        this.handleAnswerBlockDomUpdate
+        this.handleAnswerBlockDomUpdate,
       );
     }
   }
@@ -244,10 +238,7 @@ export class Main extends React.Component {
   onDone = () => {};
 
   onSimpleResponseChange = (response) => {
-    this.setState(
-      (state) => ({ session: { ...state.session, response } }),
-      this.callOnSessionChange
-    );
+    this.setState((state) => ({ session: { ...state.session, response } }), this.callOnSessionChange);
   };
 
   onSubFieldFocus = (id) => {
@@ -283,7 +274,7 @@ export class Main extends React.Component {
       this.input.clear();
     } else if (c.type === 'command') {
       if (Array.isArray(c.value)) {
-        c.value.forEach(vv => {
+        c.value.forEach((vv) => {
           this.input.cmd(vv);
         });
       } else {
@@ -325,7 +316,7 @@ export class Main extends React.Component {
             },
           },
         }),
-        this.callOnSessionChange
+        this.callOnSessionChange,
       );
     }
   };
@@ -350,7 +341,8 @@ export class Main extends React.Component {
       !relatedTarget ||
       !currentTarget ||
       (!IS_SAFARI && !relatedTarget?.offsetParent?.children[0]?.attributes?.['data-keypad']) ||
-      (IS_SAFARI && !relatedTarget?.offsetParent?.children[0]?.children[0]?.attributes?.['data-keypad'])) {
+      (IS_SAFARI && !relatedTarget?.offsetParent?.children[0]?.children[0]?.attributes?.['data-keypad'])
+    ) {
       this.setState({ activeAnswerBlock: '' });
     }
   };
@@ -359,7 +351,7 @@ export class Main extends React.Component {
     // Safari Hack: https://stackoverflow.com/a/42764495/5757635
     setTimeout(() => {
       if (ref && IS_SAFARI) {
-        const div = document.querySelector('[role=\'tooltip\']');
+        const div = document.querySelector("[role='tooltip']");
         if (div) {
           const el = div.firstChild;
           el.setAttribute('tabindex', '-1');
@@ -381,7 +373,7 @@ export class Main extends React.Component {
       feedback,
       animationsDisabled,
       printMode,
-      alwaysShowCorrect
+      alwaysShowCorrect,
     } = model || {};
 
     if (!config) {
@@ -396,29 +388,31 @@ export class Main extends React.Component {
       responseType,
       equationEditor,
       customKeys,
-      env: { mode, role } = {}
+      env: { mode, role } = {},
     } = config || {};
-    const displayNote = (showCorrect || mode === 'view' && role === 'instructor') && showNote && note;
+    const displayNote = (showCorrect || (mode === 'view' && role === 'instructor')) && showNote && note;
     const emptyResponse = isEmpty(responses);
     const showCorrectAnswerToggle = !emptyResponse && correctness && correctness.correctness !== 'correct';
     const tooltipModeEnabled = disabled && correctness;
     const additionalKeys = generateAdditionalKeys(customKeys);
     const correct = correctness && correctness.correct;
     const staticLatex = prepareForStatic(model, this.state) || '';
-    const viewMode =  disabled && !correctness;
+    const viewMode = disabled && !correctness;
     const studentPrintMode = printMode && !alwaysShowCorrect;
 
-    const printView = <div className={classes.printContainer}>
-      <mq.Static
-        ref={(mqStatic) => (this.mqStatic = mqStatic || this.mqStatic)}
-        latex={staticLatex}
-        onSubFieldChange={this.subFieldChanged}
-        getFieldName={this.getFieldName}
-        setInput={this.setInput}
-        onSubFieldFocus={this.onSubFieldFocus}
-        onBlur={this.onBlur}
-      />
-    </div>;
+    const printView = (
+      <div className={classes.printContainer}>
+        <mq.Static
+          ref={(mqStatic) => (this.mqStatic = mqStatic || this.mqStatic)}
+          latex={staticLatex}
+          onSubFieldChange={this.subFieldChanged}
+          getFieldName={this.getFieldName}
+          setInput={this.setInput}
+          onSubFieldFocus={this.onSubFieldFocus}
+          onBlur={this.onBlur}
+        />
+      </div>
+    );
 
     const midContent = (
       <div className={classes.main}>
@@ -427,39 +421,41 @@ export class Main extends React.Component {
             <PreviewPrompt prompt={prompt} />
           </div>
         )}
-        {studentPrintMode ?  printView : <Readable false>
-          <div className={classes.inputAndKeypadContainer}>
-            {responseType === ResponseTypes.simple && (
-              <SimpleQuestionBlock
-                onSimpleResponseChange={this.onSimpleResponseChange}
-                showCorrect={showCorrect}
-                emptyResponse={emptyResponse}
-                model={model}
-                session={session}
-              />
-            )}
-            {responseType === ResponseTypes.advanced && (
-              <div
-                className={cx(classes.expression, {
-                  [classes.incorrect]: !emptyResponse && !correct && !showCorrect,
-                  [classes.correct]: !emptyResponse && (correct || showCorrect),
-                  [classes.showCorrectness]: !emptyResponse && disabled && correctness && !view,
-                  [classes.correctAnswerShown]: showCorrect,
-                  [classes.printCorrect]: printMode && alwaysShowCorrect
-                })}
-              >
-                <Tooltip
-                  ref={ref => this.setTooltipRef(ref)}
-                  interactive
-                  open={!!activeAnswerBlock}
-                  classes={{
-                    tooltip: classes.keypadTooltip,
-                    popper: classes.keypadTooltipPopper,
-                  }}
-                  title={Object.keys(session.answers).map(
-                    (answerId) =>
-                      (answerId === activeAnswerBlock &&
-                        !(showCorrect || disabled) && (
+        {studentPrintMode ? (
+          printView
+        ) : (
+          <Readable false>
+            <div className={classes.inputAndKeypadContainer}>
+              {responseType === ResponseTypes.simple && (
+                <SimpleQuestionBlock
+                  onSimpleResponseChange={this.onSimpleResponseChange}
+                  showCorrect={showCorrect}
+                  emptyResponse={emptyResponse}
+                  model={model}
+                  session={session}
+                />
+              )}
+              {responseType === ResponseTypes.advanced && (
+                <div
+                  className={cx(classes.expression, {
+                    [classes.incorrect]: !emptyResponse && !correct && !showCorrect,
+                    [classes.correct]: !emptyResponse && (correct || showCorrect),
+                    [classes.showCorrectness]: !emptyResponse && disabled && correctness && !view,
+                    [classes.correctAnswerShown]: showCorrect,
+                    [classes.printCorrect]: printMode && alwaysShowCorrect,
+                  })}
+                >
+                  <Tooltip
+                    ref={(ref) => this.setTooltipRef(ref)}
+                    interactive
+                    open={!!activeAnswerBlock}
+                    classes={{
+                      tooltip: classes.keypadTooltip,
+                      popper: classes.keypadTooltipPopper,
+                    }}
+                    title={Object.keys(session.answers).map(
+                      (answerId) =>
+                        (answerId === activeAnswerBlock && !(showCorrect || disabled) && (
                           <div
                             data-keypad={true}
                             key={answerId}
@@ -476,65 +472,59 @@ export class Main extends React.Component {
                             />
                           </div>
                         )) ||
-                      null
-                  )}
-                >
-                  <mq.Static
-                    ref={(mqStatic) => (this.mqStatic = mqStatic || this.mqStatic)}
-                    latex={staticLatex}
-                    onSubFieldChange={this.subFieldChanged}
-                    getFieldName={this.getFieldName}
-                    setInput={this.setInput}
-                    onSubFieldFocus={this.onSubFieldFocus}
-                    onBlur={this.onBlur}
-                  />
-                </Tooltip>
-              </div>
-             )}
-          </div>
-        </Readable>}
-        {
-          viewMode && teacherInstructions && hasText(teacherInstructions) && (
-            <React.Fragment>
-              {!animationsDisabled ? <Collapsible
-                labels={{hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions'}}
-              >
-                <div dangerouslySetInnerHTML={{__html: teacherInstructions}}/>
-              </Collapsible> : <div dangerouslySetInnerHTML={{__html: teacherInstructions}}/>}
-                <br />
-            </React.Fragment>
-          )
-        }
-        {
-          viewMode && rationale && hasText(rationale) && (
-            <React.Fragment>
-              {!animationsDisabled ? <Collapsible
-                labels={{hidden: 'Show Rationale', visible: 'Hide Rationale'}}
-              >
-                <div dangerouslySetInnerHTML={{__html: rationale}}/>
-              </Collapsible> : <div dangerouslySetInnerHTML={{__html: rationale}}/>}
-            </React.Fragment>
-          )
-        }
-        {
-          viewMode && displayNote && (
-            <div
-              className={classes.note}
-              dangerouslySetInnerHTML={{__html: `<strong>Note:</strong> ${note}`}}
-            />
-          )
-        }
+                        null,
+                    )}
+                  >
+                    <mq.Static
+                      ref={(mqStatic) => (this.mqStatic = mqStatic || this.mqStatic)}
+                      latex={staticLatex}
+                      onSubFieldChange={this.subFieldChanged}
+                      getFieldName={this.getFieldName}
+                      setInput={this.setInput}
+                      onSubFieldFocus={this.onSubFieldFocus}
+                      onBlur={this.onBlur}
+                    />
+                  </Tooltip>
+                </div>
+              )}
+            </div>
+          </Readable>
+        )}
+        {viewMode && teacherInstructions && hasText(teacherInstructions) && (
+          <React.Fragment>
+            {!animationsDisabled ? (
+              <Collapsible labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}>
+                <div dangerouslySetInnerHTML={{ __html: teacherInstructions }} />
+              </Collapsible>
+            ) : (
+              <div dangerouslySetInnerHTML={{ __html: teacherInstructions }} />
+            )}
+            <br />
+          </React.Fragment>
+        )}
+        {viewMode && rationale && hasText(rationale) && (
+          <React.Fragment>
+            {!animationsDisabled ? (
+              <Collapsible labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }}>
+                <div dangerouslySetInnerHTML={{ __html: rationale }} />
+              </Collapsible>
+            ) : (
+              <div dangerouslySetInnerHTML={{ __html: rationale }} />
+            )}
+          </React.Fragment>
+        )}
+        {viewMode && displayNote && (
+          <div className={classes.note} dangerouslySetInnerHTML={{ __html: `<strong>Note:</strong> ${note}` }} />
+        )}
       </div>
     );
 
     if (
-      tooltipModeEnabled
-      && (
-        showCorrectAnswerToggle
-        || (teacherInstructions && hasText(teacherInstructions))
-        || (rationale && hasText(rationale))
-        || feedback
-      )
+      tooltipModeEnabled &&
+      (showCorrectAnswerToggle ||
+        (teacherInstructions && hasText(teacherInstructions)) ||
+        (rationale && hasText(rationale)) ||
+        feedback)
     ) {
       return (
         <Tooltip
@@ -555,66 +545,58 @@ export class Main extends React.Component {
                   />
                 )}
               </div>
-              {teacherInstructions && hasText(teacherInstructions) && [
-                <Collapsible
-                  key="collapsible"
-                  labels={{
-                    hidden: 'Show Teacher Instructions',
-                    visible: 'Hide Teacher Instructions',
-                  }}
-                  className={classes.collapsible}
-                >
-                  <PreviewPrompt prompt={teacherInstructions} />
-                </Collapsible>,
-                <br key="br"/>,
-              ]}
-              {rationale && hasText(rationale) && [
-                <Collapsible
-                  key="collapsible"
-                  labels={{
-                    hidden: 'Show Rationale',
-                    visible: 'Hide Rationale',
-                  }}
-                >
-                  <PreviewPrompt prompt={rationale} />
-                </Collapsible>,
-                <br key="br"/>,
-              ]}
-              {displayNote && hasText(note) && [
-                <Collapsible
-                  key="collapsible"
-                  labels={{
-                    hidden: 'Show Note',
-                    visible: 'Hide Note',
-                  }}
-                >
-                  <PreviewPrompt prompt={note} />
-                </Collapsible>,
-                <br key="br"/>,
-              ]}
-              {feedback && (
-                <Feedback
-                  correctness={correctness.correctness}
-                  feedback={feedback}
-                />
-              )}
+              {teacherInstructions &&
+                hasText(teacherInstructions) && [
+                  <Collapsible
+                    key="collapsible"
+                    labels={{
+                      hidden: 'Show Teacher Instructions',
+                      visible: 'Hide Teacher Instructions',
+                    }}
+                    className={classes.collapsible}
+                  >
+                    <PreviewPrompt prompt={teacherInstructions} />
+                  </Collapsible>,
+                  <br key="br" />,
+                ]}
+              {rationale &&
+                hasText(rationale) && [
+                  <Collapsible
+                    key="collapsible"
+                    labels={{
+                      hidden: 'Show Rationale',
+                      visible: 'Hide Rationale',
+                    }}
+                  >
+                    <PreviewPrompt prompt={rationale} />
+                  </Collapsible>,
+                  <br key="br" />,
+                ]}
+              {displayNote &&
+                hasText(note) && [
+                  <Collapsible
+                    key="collapsible"
+                    labels={{
+                      hidden: 'Show Note',
+                      visible: 'Hide Note',
+                    }}
+                  >
+                    <PreviewPrompt prompt={note} />
+                  </Collapsible>,
+                  <br key="br" />,
+                ]}
+              {feedback && <Feedback correctness={correctness.correctness} feedback={feedback} />}
             </div>
           }
         >
-          <div
-            className={classes.mainContainer}
-            ref={(r) => (this.root = r || this.root)}
-          >
+          <div className={classes.mainContainer} ref={(r) => (this.root = r || this.root)}>
             {midContent}
           </div>
         </Tooltip>
       );
     }
     return (
-      <div
-        className={classes.mainContainer}
-        ref={(r) => (this.root = r || this.root)}
-      >
+      <div className={classes.mainContainer} ref={(r) => (this.root = r || this.root)}>
         {midContent}
       </div>
     );
@@ -633,9 +615,9 @@ const styles = (theme) => ({
     fontSize: '16px',
     '& :not(.MathJax) > table tr': {
       '&:nth-child(2n)': {
-        backgroundColor: 'unset !important'
-      }
-    }
+        backgroundColor: 'unset !important',
+      },
+    },
   },
   tooltipPopper: {
     opacity: 1,
@@ -692,7 +674,7 @@ const styles = (theme) => ({
         },
       },
       '& sup': {
-        top: 0
+        top: 0,
       },
     },
   },
@@ -700,44 +682,44 @@ const styles = (theme) => ({
     position: 'relative',
     '& .mq-overarrow-inner': {
       border: 'none !important',
-      padding: '0 !important'
+      padding: '0 !important',
     },
     '& .mq-overarrow-inner-right': {
-      display: 'none !important'
+      display: 'none !important',
     },
     '& .mq-overarrow-inner-left': {
-      display: 'none !important'
+      display: 'none !important',
     },
     '& .mq-overarrow.mq-arrow-both': {
       minWidth: '1.23em',
       '& *': {
-        lineHeight: '1 !important'
+        lineHeight: '1 !important',
       },
       '&:before': {
         top: '-0.4em',
-        left: '-1px'
+        left: '-1px',
       },
       '&:after': {
         top: '-2.4em',
-        right: '-1px'
+        right: '-1px',
       },
       '&.mq-empty:after': {
-        top: '-0.45em'
-      }
+        top: '-0.45em',
+      },
     },
     '& .mq-overarrow.mq-arrow-right': {
       '&:before': {
         top: '-0.4em',
-        right: '-1px'
-      }
+        right: '-1px',
+      },
     },
     '& .mq-longdiv-inner': {
       borderTop: '1px solid !important',
-      paddingTop: '1.5px !important'
+      paddingTop: '1.5px !important',
     },
     '& .mq-parallelogram': {
-      lineHeight: 0.85
-    }
+      lineHeight: 0.85,
+    },
   },
   showCorrectness: {
     border: '2px solid',
@@ -792,8 +774,8 @@ const styles = (theme) => ({
   },
   printContainer: {
     marginBottom: '10px',
-    pointerEvents: 'none'
-  }
+    pointerEvents: 'none',
+  },
 });
 
 export default withStyles(styles)(Main);

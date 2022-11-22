@@ -10,7 +10,7 @@ Default: `4`
 
 Additional restrictions:
 
-* Minimum: `1`
+- Minimum: `1`
 
 # `addChoiceButton` (object)
 

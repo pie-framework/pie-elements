@@ -9,10 +9,7 @@
       "properties": {
         "choiceMode": {
           "description": "Indicates the choices are single or multiple selection",
-          "enum": [
-            "checkbox",
-            "radio"
-          ],
+          "enum": ["checkbox", "radio"],
           "type": "string",
           "title": "choiceMode"
         },
@@ -39,19 +36,13 @@
                 "title": "correct"
               }
             },
-            "required": [
-              "label",
-              "value"
-            ]
+            "required": ["label", "value"]
           },
           "title": "choices"
         },
         "choicePrefix": {
           "description": "What key should be displayed before choices.",
-          "enum": [
-            "letters",
-            "numbers"
-          ],
+          "enum": ["letters", "numbers"],
           "type": "string",
           "title": "choicePrefix"
         },
@@ -125,10 +116,7 @@
       "properties": {
         "choiceMode": {
           "description": "Indicates the choices are single or multiple selection",
-          "enum": [
-            "checkbox",
-            "radio"
-          ],
+          "enum": ["checkbox", "radio"],
           "type": "string",
           "title": "choiceMode"
         },
@@ -155,19 +143,13 @@
                 "title": "correct"
               }
             },
-            "required": [
-              "label",
-              "value"
-            ]
+            "required": ["label", "value"]
           },
           "title": "choices"
         },
         "choicePrefix": {
           "description": "What key should be displayed before choices.",
-          "enum": [
-            "letters",
-            "numbers"
-          ],
+          "enum": ["letters", "numbers"],
           "type": "string",
           "title": "choicePrefix"
         },
@@ -242,10 +224,7 @@
     },
     "partLabelType": {
       "description": "Indicates what type should have part labels if they are enabled",
-      "enum": [
-        "Letters",
-        "Numbers"
-      ],
+      "enum": ["Letters", "Numbers"],
       "type": "string",
       "title": "partLabelType"
     },
@@ -256,10 +235,7 @@
     },
     "scoringType": {
       "description": "Indicates scoring type",
-      "enum": [
-        "auto",
-        "rubric"
-      ],
+      "enum": ["auto", "rubric"],
       "type": "string",
       "title": "scoringType"
     },
@@ -274,14 +250,7 @@
       "title": "element"
     }
   },
-  "required": [
-    "element",
-    "id",
-    "partA",
-    "partB",
-    "partLabelType",
-    "partLabels"
-  ],
+  "required": ["element", "id", "partA", "partB", "partLabelType", "partLabels"],
   "definitions": {
     "PartConfiguration": {
       "title": "PartConfiguration",
@@ -607,10 +576,7 @@
       "properties": {
         "choiceMode": {
           "description": "Indicates the choices are single or multiple selection",
-          "enum": [
-            "checkbox",
-            "radio"
-          ],
+          "enum": ["checkbox", "radio"],
           "type": "string",
           "title": "choiceMode"
         },
@@ -637,19 +603,13 @@
                 "title": "correct"
               }
             },
-            "required": [
-              "label",
-              "value"
-            ]
+            "required": ["label", "value"]
           },
           "title": "choices"
         },
         "choicePrefix": {
           "description": "What key should be displayed before choices.",
-          "enum": [
-            "letters",
-            "numbers"
-          ],
+          "enum": ["letters", "numbers"],
           "type": "string",
           "title": "choicePrefix"
         },
@@ -737,10 +697,7 @@
           "title": "correct"
         }
       },
-      "required": [
-        "label",
-        "value"
-      ]
+      "required": ["label", "value"]
     }
   },
   "$schema": "http://json-schema.org/draft-07/schema#"

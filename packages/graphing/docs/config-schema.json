@@ -271,12 +271,7 @@
                 "title": "down"
               }
             },
-            "required": [
-              "down",
-              "left",
-              "right",
-              "up"
-            ]
+            "required": ["down", "left", "right", "up"]
           },
           "domain": {
             "title": "GraphSettings",
@@ -313,14 +308,7 @@
                 "title": "axisLabel"
               }
             },
-            "required": [
-              "axisLabel",
-              "labelStep",
-              "max",
-              "min",
-              "padding",
-              "step"
-            ]
+            "required": ["axisLabel", "labelStep", "max", "min", "padding", "step"]
           },
           "graph": {
             "title": "Graph",
@@ -337,10 +325,7 @@
                 "title": "height"
               }
             },
-            "required": [
-              "height",
-              "width"
-            ]
+            "required": ["height", "width"]
           },
           "includeAxes": {
             "description": "Indicates if the graph axes and labels are enabled",
@@ -372,12 +357,7 @@
                 "title": "right"
               }
             },
-            "required": [
-              "bottom",
-              "left",
-              "right",
-              "top"
-            ]
+            "required": ["bottom", "left", "right", "top"]
           },
           "padding": {
             "description": "Indicates if padding is enabled",
@@ -419,14 +399,7 @@
                 "title": "axisLabel"
               }
             },
-            "required": [
-              "axisLabel",
-              "labelStep",
-              "max",
-              "min",
-              "padding",
-              "step"
-            ]
+            "required": ["axisLabel", "labelStep", "max", "min", "padding", "step"]
           },
           "standardGrid": {
             "description": "Indicates if some domain values will be synched to the range values",
@@ -439,11 +412,7 @@
             "title": "title"
           }
         },
-        "required": [
-          "domain",
-          "graph",
-          "range"
-        ]
+        "required": ["domain", "graph", "range"]
       },
       "title": "gridConfigurations"
     },
@@ -703,9 +672,7 @@
       "title": "settingsPartialScoring"
     }
   },
-  "required": [
-    "gridConfigurations"
-  ],
+  "required": ["gridConfigurations"],
   "definitions": {
     "AuthoringConfigProp": {
       "title": "AuthoringConfigProp",
@@ -991,12 +958,7 @@
               "title": "down"
             }
           },
-          "required": [
-            "down",
-            "left",
-            "right",
-            "up"
-          ]
+          "required": ["down", "left", "right", "up"]
         },
         "domain": {
           "title": "GraphSettings",
@@ -1033,14 +995,7 @@
               "title": "axisLabel"
             }
           },
-          "required": [
-            "axisLabel",
-            "labelStep",
-            "max",
-            "min",
-            "padding",
-            "step"
-          ]
+          "required": ["axisLabel", "labelStep", "max", "min", "padding", "step"]
         },
         "graph": {
           "title": "Graph",
@@ -1057,10 +1012,7 @@
               "title": "height"
             }
           },
-          "required": [
-            "height",
-            "width"
-          ]
+          "required": ["height", "width"]
         },
         "includeAxes": {
           "description": "Indicates if the graph axes and labels are enabled",
@@ -1092,12 +1044,7 @@
               "title": "right"
             }
           },
-          "required": [
-            "bottom",
-            "left",
-            "right",
-            "top"
-          ]
+          "required": ["bottom", "left", "right", "top"]
         },
         "padding": {
           "description": "Indicates if padding is enabled",
@@ -1139,14 +1086,7 @@
               "title": "axisLabel"
             }
           },
-          "required": [
-            "axisLabel",
-            "labelStep",
-            "max",
-            "min",
-            "padding",
-            "step"
-          ]
+          "required": ["axisLabel", "labelStep", "max", "min", "padding", "step"]
         },
         "standardGrid": {
           "description": "Indicates if some domain values will be synched to the range values",
@@ -1159,11 +1099,7 @@
           "title": "title"
         }
       },
-      "required": [
-        "domain",
-        "graph",
-        "range"
-      ]
+      "required": ["domain", "graph", "range"]
     },
     "Arrows": {
       "title": "Arrows",
@@ -1190,12 +1126,7 @@
           "title": "down"
         }
       },
-      "required": [
-        "down",
-        "left",
-        "right",
-        "up"
-      ]
+      "required": ["down", "left", "right", "up"]
     },
     "GraphSettings": {
       "title": "GraphSettings",
@@ -1232,14 +1163,7 @@
           "title": "axisLabel"
         }
       },
-      "required": [
-        "axisLabel",
-        "labelStep",
-        "max",
-        "min",
-        "padding",
-        "step"
-      ]
+      "required": ["axisLabel", "labelStep", "max", "min", "padding", "step"]
     },
     "Graph": {
       "title": "Graph",
@@ -1256,10 +1180,7 @@
           "title": "height"
         }
       },
-      "required": [
-        "height",
-        "width"
-      ]
+      "required": ["height", "width"]
     },
     "Labels": {
       "title": "Labels",
@@ -1286,12 +1207,7 @@
           "title": "right"
         }
       },
-      "required": [
-        "bottom",
-        "left",
-        "right",
-        "top"
-      ]
+      "required": ["bottom", "left", "right", "top"]
     },
     "LabelsConfigProp": {
       "title": "LabelsConfigProp",

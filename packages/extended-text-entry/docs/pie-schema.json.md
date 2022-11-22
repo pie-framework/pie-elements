@@ -20,14 +20,14 @@ Indicates if equation editor is enabled
 
 This element must be one of the following enum values:
 
-* `Grade 1 - 2`
-* `Grade 3 - 5`
-* `Grade 6 - 7`
-* `Grade 8 - HS`
-* `advanced-algebra`
-* `geometry`
-* `miscellaneous`
-* `statistics`
+- `Grade 1 - 2`
+- `Grade 3 - 5`
+- `Grade 6 - 7`
+- `Grade 8 - HS`
+- `advanced-algebra`
+- `geometry`
+- `miscellaneous`
+- `statistics`
 
 # `feedback` (object)
 
@@ -39,8 +39,8 @@ Indicates the feedback type
 
 This element must be one of the following enum values:
 
-* `default`
-* `none`
+- `default`
+- `none`
 
 ## `default` (string)
 
@@ -112,8 +112,8 @@ Indicates if Teacher Instructions are enabled
 
 This element must be one of the following enum values:
 
-* `bottom`
-* `top`
+- `bottom`
+- `top`
 
 # `playersToolbarPosition` (string, enum)
 
@@ -121,8 +121,8 @@ Indicates the editor's toolbar position for the player, which can be 'bottom' or
 
 This element must be one of the following enum values:
 
-* `bottom`
-* `top`
+- `bottom`
+- `top`
 
 Default: `": 'bottom'"`
 
@@ -227,8 +227,8 @@ Indicates the feedback type
 
 This element must be one of the following enum values:
 
-* `default`
-* `none`
+- `default`
+- `none`
 
 ### `default` (string)
 

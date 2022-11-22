@@ -20,10 +20,7 @@
             "title": "text"
           }
         },
-        "required": [
-          "text",
-          "title"
-        ]
+        "required": ["text", "title"]
       },
       "title": "passages"
     },
@@ -38,11 +35,7 @@
       "title": "element"
     }
   },
-  "required": [
-    "element",
-    "id",
-    "passages"
-  ],
+  "required": ["element", "id", "passages"],
   "definitions": {
     "Passage": {
       "title": "Passage",
@@ -59,10 +52,7 @@
           "title": "text"
         }
       },
-      "required": [
-        "text",
-        "title"
-      ]
+      "required": ["text", "title"]
     }
   },
   "$schema": "http://json-schema.org/draft-07/schema#"
