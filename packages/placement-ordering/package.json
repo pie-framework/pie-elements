@@ -17,7 +17,7 @@
     "lodash": "^4.17.10",
     "prop-types": "^15.6.1",
     "react": "^16.8.1",
-    "react-dnd": "^9.3.2",
+    "react-dnd": "^14.0.5",
     "react-dom": "^16.8.1",
     "react-jss": "^8.4.0",
     "react-transition-group": "^2.3.1"
