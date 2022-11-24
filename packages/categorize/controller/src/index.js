@@ -225,14 +225,16 @@ export const createCorrectResponseSession = (question, env) => {
 
 export const validate = (model = {}, config = {}) => {
   const { categories, choices, correctResponse } = model;
-  const { minChoices = 1, maxChoices, maxCategories } = config;
+  const { minChoices = 1, maxChoices, minCategories=1, maxCategories } = config;
   const reversedChoices = [ ...choices || []].reverse();
   const errors = {};
   const choicesErrors = {};
+  const domParser = new DOMParser();
 
   reversedChoices.forEach((choice, index) => {
     const { id, content } = choice;
-
+     const parsedContent = domParser.parseFromString(content, "text/html").documentElement.textContent;
+     console.log('Andreea parsedContent', parsedContent);
     if (content === '' || content === '<div></div>') {
       choicesErrors[id] = 'Content should not be empty.';
     } else {
@@ -245,12 +247,12 @@ export const validate = (model = {}, config = {}) => {
   });
 
   const nbOfCategories = (categories || []).length;
-  const nbOfChoices = (choices || []).length
+  const nbOfChoices = (choices || []).length;
 
   if (nbOfCategories > maxCategories) {
     errors.categoriesError = `No more than ${maxCategories} categories should be defined.`;
-  } else if (nbOfCategories < 1) {
-    errors.categoriesError = 'There should be at least 1 category defined.';
+  } else if (nbOfCategories < minCategories) {
+    errors.categoriesError = `There should be at least ${minCategories} category defined.`;
   }
 
   if (nbOfChoices < minChoices) {

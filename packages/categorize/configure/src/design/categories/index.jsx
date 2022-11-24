@@ -223,7 +223,7 @@ export class Categories extends React.Component {
           >
             <Info fontSize={'small'} color={'primary'} style={{ marginLeft: '5px' }}/>
           </Tooltip>}
-          buttonDisabled={maxCategories && categories && maxCategories === categories.length}
+          // buttonDisabled={maxCategories && categories && maxCategories === categories.length}
         />
         {associationError && <div className={classes.errorText}>{associationError}</div>}
         {categoriesError && <div className={classes.errorText}>{categoriesError}</div>}

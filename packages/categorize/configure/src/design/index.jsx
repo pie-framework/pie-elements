@@ -151,38 +151,53 @@ export class Design extends React.Component {
 
   validate = (model = {}, config = {}) => {
     const { categories, choices, correctResponse } = model;
-    const { minChoices = 1, maxChoices, maxCategories } = config;
+    const { minChoices = 1, maxChoices=15, minCategories=1, maxCategories=12, maxLengthPerChoice=300, maxLengthPerCategory=150 } = config;
     const reversedChoices = [ ...choices || []].reverse();
     const errors = {};
     const choicesErrors = {};
+    const categoriesErrors = {};
+    const domParser = new DOMParser();
+
     console.log('Andreea categories', categories);
+
+    categories.forEach((category, index) => {
+      const {id, label} = category;
+      const parsedLabel = label.replace(/<(?:.|\n)*?>/gm, '');
+      if (parsedLabel.length > maxLengthPerCategory){
+        categoriesErrors[id] = `Category labels should be no more than ${maxLengthPerCategory} characters long.`;
+      }
+    });
+
     reversedChoices.forEach((choice, index) => {
       const { id, content } = choice;
-
+      const parsedContent = content.replace(/<(?:.|\n)*?>/gm, '');
+      if (parsedContent.length > maxLengthPerChoice){
+        choicesErrors[id] = `Tokens should be no more than ${maxLengthPerChoice} characters long.`;
+      }
       if (content === '' || content === '<div></div>') {
-        choicesErrors[id] = 'Content should not be empty.';
+        choicesErrors[id] = 'Tokens should not be empty.';
       } else {
         const identicalAnswer = reversedChoices.slice(index + 1).some(c => c.content === content);
 
         if (identicalAnswer) {
-          choicesErrors[id] = 'Content should be unique.';
+          choicesErrors[id] = 'Tokens content should be unique.';
         }
       }
     });
 
     const nbOfCategories = (categories || []).length;
-    const nbOfChoices = (choices || []).length
+    const nbOfChoices = (choices || []).length;
 
     if (nbOfCategories > maxCategories) {
-      errors.categoriesError = `No more than ${maxCategories} categories should be defined.`;
-    } else if (nbOfCategories < 1) {
-      errors.categoriesError = 'There should be at least 1 category defined.';
+      errors.maxCategoriesError = `No more than ${maxCategories} categories should be defined.`;
+    } else if (nbOfCategories < minCategories) {
+      errors.maxCategoriesError = `There should be at least ${minCategories} category defined.`;
     }
 
     if (nbOfChoices < minChoices) {
-      errors.choicesError = `There should be at least ${minChoices} choices defined.`;
+      errors.maxChoicesError = `There should be at least ${minChoices} choices defined.`;
     } else if (nbOfChoices > maxChoices) {
-      errors.choicesError = `No more than ${maxChoices} choices should be defined.`;
+      errors.maxChoicesError = `No more than ${maxChoices} choices should be defined.`;
     }
 
     if (nbOfChoices && nbOfCategories) {
@@ -210,6 +225,12 @@ export class Design extends React.Component {
     if (!isEmpty(choicesErrors)) {
       errors.choicesErrors = choicesErrors;
     }
+
+    if (!isEmpty(categoriesErrors)) {
+      errors.categoriesErrors = categoriesErrors;
+    }
+    console.log('Andreea errors');
+    console.log('Andreea correctResponse', correctResponse);
 
     return errors;
   };
@@ -253,9 +274,6 @@ export class Design extends React.Component {
     } = model || {};
 
     const toolbarOpts = {};
-
-    const errors1 = this.validate(model, configuration);
-    console.log('Andreea model errors', errors1);
 
     switch (model.toolbarEditorPosition) {
       case 'top':

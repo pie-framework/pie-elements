@@ -95,6 +95,8 @@ export default {
     maxCategories: 3,
     minCategories: 1,
     minChoices: 1,
-    maxChoices: 15,
+    maxChoices: 3,
+    maxLengthPerChoice: 5,
+    maxLengthPerCategory: 5,
   }
 };
