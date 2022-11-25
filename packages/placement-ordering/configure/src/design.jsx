@@ -73,13 +73,13 @@ export class Design extends React.Component {
     );
     this.onFeedbackChange = this.changeHandler('feedback');
 
-    this.onChoiceEditorChange = (choices, correctResponse, resetSession) => {
+    this.onChoiceEditorChange = (choices, correctResponse) => {
       const { model, onModelChanged } = this.props;
       const update = cloneDeep(model);
 
       update.choices = choices;
       update.correctResponse = correctResponse;
-      onModelChanged(update, resetSession || false);
+      onModelChanged(update);
     };
   }
 
