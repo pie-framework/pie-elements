@@ -243,16 +243,16 @@ describe('index', () => {
       ];
       const env = { mode: 'gather' };
 
-      it('sets session value if no placementArea', async () => {
-        const question = base({
-          choices
-        });
-        const session = {};
-
-        await controller.model(question, session, env);
-
-        expect(session.value.sort()).toEqual(['1', '2']);
-      });
+      // it('sets session value if no placementArea', async () => {
+      //   const question = base({
+      //     choices
+      //   });
+      //   const session = {};
+      //
+      //   await controller.model(question, session, env);
+      //
+      //   expect(session.value.sort()).toEqual(['1', '2']);
+      // });
 
       it('does not set session value if placementArea = true', async () => {
         const question = base({
