@@ -88,7 +88,7 @@ Maximum number of categories
 
 # `minCategoriesPerRow` (number)
 
-Lower maximum value for categories per row
+Minimum value of categories per row
 
 # `maxImageWidth` (object)
 

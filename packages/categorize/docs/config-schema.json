@@ -115,7 +115,7 @@
       "title": "maxCategories"
     },
     "minCategoriesPerRow": {
-      "description": "Lower maximum value for categories per row",
+      "description": "Minimum value of categories per row",
       "type": "number",
       "title": "minCategoriesPerRow"
     },
