@@ -202,7 +202,7 @@ export interface CategorizeConfigure
   maxCategories?: number;
 
   /**
-   *  Lower maximum value for categories per row
+   *  Minimum value of categories per row
    */
   minCategoriesPerRow?: number;
 
