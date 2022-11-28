@@ -149,6 +149,27 @@ export class Design extends React.Component {
 
   };
 
+  isCorrectResponseDuplicated = (choices,alternate) => {
+     const stringChoices =  JSON.stringify(choices.sort());
+     const stringAlternate = alternate.map((alternate) => JSON.stringify(alternate.sort()));
+     const foundIndexDuplicate = stringAlternate.findIndex(alternate => alternate === stringChoices);
+     return foundIndexDuplicate;
+  };
+
+  isAlternateDuplicated = (alternate) => {
+    const elementSet = new Set();
+    const stringAlternate = alternate.map((alternate) => JSON.stringify(alternate.sort()));
+    for (let i = 0; i < stringAlternate.length; i++) {
+      if (elementSet.has(stringAlternate[i])) {
+        return i;
+      }
+      elementSet.add(stringAlternate[i]);
+    }
+
+    return-1;
+  };
+
+
   validate = (model = {}, config = {}) => {
     const { categories, choices, correctResponse } = model;
     const { minChoices = 1, maxChoices=15, minCategories=1, maxCategories=12, maxLengthPerChoice=300, maxLengthPerCategory=150 } = config;
@@ -156,9 +177,7 @@ export class Design extends React.Component {
     const errors = {};
     const choicesErrors = {};
     const categoriesErrors = {};
-    const domParser = new DOMParser();
-
-    console.log('Andreea categories', categories);
+    const duplicateResponsesError = {};
 
     categories.forEach((category, index) => {
       const {id, label} = category;
@@ -217,10 +236,29 @@ export class Design extends React.Component {
         }
       });
 
+      let duplicateAlternateIndex = -1;
+      let duplicateCategory = '';
+      (correctResponse || []).forEach(response => {
+        const { choices = [], alternateResponses = [], category } = response;
+        if(duplicateAlternateIndex === -1){
+          duplicateAlternateIndex = this.isCorrectResponseDuplicated(choices,alternateResponses);
+          if(duplicateAlternateIndex === -1){
+            duplicateAlternateIndex = this.isAlternateDuplicated(alternateResponses);
+          }
+          duplicateCategory = category;
+        }
+      });
+
+      if(duplicateAlternateIndex > -1){
+        // duplicateResponsesError[duplicateCategory + "-" + duplicateAlternateIndex] = 'Each Answer should be distinct';
+        duplicateResponsesError.duplicateAlternate = {index:duplicateAlternateIndex, category:duplicateCategory};
+      }
+
       if (!hasAssociations) {
         errors.associationError = 'At least one token should be assigned to at least one category.';
       }
     }
+
 
     if (!isEmpty(choicesErrors)) {
       errors.choicesErrors = choicesErrors;
@@ -229,8 +267,10 @@ export class Design extends React.Component {
     if (!isEmpty(categoriesErrors)) {
       errors.categoriesErrors = categoriesErrors;
     }
-    console.log('Andreea errors');
-    console.log('Andreea correctResponse', correctResponse);
+
+    if (!isEmpty(duplicateResponsesError)) {
+      errors.duplicateResponsesErrors = duplicateResponsesError;
+    }
 
     return errors;
   };
@@ -269,10 +309,12 @@ export class Design extends React.Component {
       rationaleEnabled,
       feedbackEnabled,
       spellCheckEnabled,
-      errors,
+      //errors,
       rubricEnabled
     } = model || {};
 
+    const errors = this.validate(model,configuration);
+    console.log(errors.duplicateResponsesErrors);
     const toolbarOpts = {};
 
     switch (model.toolbarEditorPosition) {
@@ -461,6 +503,7 @@ export class Design extends React.Component {
                     categories={categoriesList}
                     onModelChanged={this.updateModel}
                     uploadSoundSupport={uploadSoundSupport}
+                    error={errors.duplicateResponsesErrors}
                   />
                 </React.Fragment>
               );

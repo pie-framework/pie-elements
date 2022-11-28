@@ -110,7 +110,8 @@ const styles = theme => ({
   },
   category: {
     padding: theme.spacing.unit,
-    overflow: 'visible'
+    overflow: 'visible',
+    border: '1px solid red',
   },
   editor: {
     flex: '1',

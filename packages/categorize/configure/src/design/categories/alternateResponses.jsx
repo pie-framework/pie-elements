@@ -88,20 +88,24 @@ export class AlternateResponses extends React.Component {
 
   render() {
     const {
+      altIndex,
       model,
       classes,
       className,
       categories,
       imageSupport,
       spellCheck,
-      uploadSoundSupport
+      uploadSoundSupport,
+      errors,
     } = this.props;
     const { categoriesPerRow } = model;
 
     const holderStyle = {
       gridTemplateColumns: `repeat(${categoriesPerRow}, 1fr)`
     };
-
+    const isDuplicated = errors.index === altIndex;
+    const duplicatedCategory = errors.category;
+    console.log('in AlternateResponse component', categories);
     return (
       <div className={classNames(classes.categories, className)}>
         <div className={classes.categoriesHolder} style={holderStyle}>
