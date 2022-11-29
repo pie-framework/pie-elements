@@ -96,16 +96,15 @@ export class AlternateResponses extends React.Component {
       imageSupport,
       spellCheck,
       uploadSoundSupport,
-      errors,
     } = this.props;
-    const { categoriesPerRow } = model;
+    const { categoriesPerRow, errors } = model;
+    const { duplicateAlternate } = errors;
 
     const holderStyle = {
       gridTemplateColumns: `repeat(${categoriesPerRow}, 1fr)`
     };
-    const isDuplicated = errors.index === altIndex;
-    const duplicatedCategory = errors.category;
-    console.log('in AlternateResponse component', categories);
+    const isDuplicated = duplicateAlternate ? duplicateAlternate.index === altIndex : false;
+
     return (
       <div className={classNames(classes.categories, className)}>
         <div className={classes.categoriesHolder} style={holderStyle}>
@@ -113,6 +112,7 @@ export class AlternateResponses extends React.Component {
             <Category
               key={index}
               imageSupport={imageSupport}
+              isDuplicated={isDuplicated && duplicateAlternate.category === category.id}
               category={category}
               spellCheck={spellCheck}
               onAddChoice={this.addChoiceToCategory}

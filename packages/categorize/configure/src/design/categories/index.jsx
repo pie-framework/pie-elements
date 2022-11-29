@@ -196,7 +196,7 @@ export class Categories extends React.Component {
     } = this.props;
 
     const { categoriesPerRow, rowLabels, errors } = model;
-    const { associationError, categoriesError } = errors || {};
+    const { associationError, categoriesError, categoriesErrors } = errors || {};
     const {
       maxCategories,
       maxImageWidth = {},
@@ -223,7 +223,7 @@ export class Categories extends React.Component {
           >
             <Info fontSize={'small'} color={'primary'} style={{ marginLeft: '5px' }}/>
           </Tooltip>}
-          // buttonDisabled={maxCategories && categories && maxCategories === categories.length}
+          buttonDisabled={maxCategories && categories && maxCategories === categories.length}
         />
         {associationError && <div className={classes.errorText}>{associationError}</div>}
         {categoriesError && <div className={classes.errorText}>{categoriesError}</div>}
@@ -253,6 +253,7 @@ export class Categories extends React.Component {
                 <Category
                   imageSupport={imageSupport}
                   category={category}
+                  error={categoriesErrors && categoriesErrors[category.id]}
                   onChange={this.change}
                   onDelete={() => this.delete(category)}
                   onAddChoice={this.addChoiceToCategory}

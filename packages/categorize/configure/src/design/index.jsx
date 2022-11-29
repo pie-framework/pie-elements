@@ -25,7 +25,6 @@ import { multiplePlacements } from '../utils';
 
 const { dropdown, Panel, toggle, radio, numberField } = settings;
 const { Provider: IdProvider } = uid;
-import isEmpty from 'lodash/isEmpty';
 
 export class Design extends React.Component {
   static propTypes = {
@@ -149,132 +148,6 @@ export class Design extends React.Component {
 
   };
 
-  isCorrectResponseDuplicated = (choices,alternate) => {
-     const stringChoices =  JSON.stringify(choices.sort());
-     const stringAlternate = alternate.map((alternate) => JSON.stringify(alternate.sort()));
-     const foundIndexDuplicate = stringAlternate.findIndex(alternate => alternate === stringChoices);
-     return foundIndexDuplicate;
-  };
-
-  isAlternateDuplicated = (alternate) => {
-    const elementSet = new Set();
-    const stringAlternate = alternate.map((alternate) => JSON.stringify(alternate.sort()));
-    for (let i = 0; i < stringAlternate.length; i++) {
-      if (elementSet.has(stringAlternate[i])) {
-        return i;
-      }
-      elementSet.add(stringAlternate[i]);
-    }
-
-    return-1;
-  };
-
-
-  validate = (model = {}, config = {}) => {
-    const { categories, choices, correctResponse } = model;
-    const { minChoices = 1, maxChoices=15, minCategories=1, maxCategories=12, maxLengthPerChoice=300, maxLengthPerCategory=150 } = config;
-    const reversedChoices = [ ...choices || []].reverse();
-    const errors = {};
-    const choicesErrors = {};
-    const categoriesErrors = {};
-    const duplicateResponsesError = {};
-
-    categories.forEach((category, index) => {
-      const {id, label} = category;
-      const parsedLabel = label.replace(/<(?:.|\n)*?>/gm, '');
-      if (parsedLabel.length > maxLengthPerCategory){
-        categoriesErrors[id] = `Category labels should be no more than ${maxLengthPerCategory} characters long.`;
-      }
-    });
-
-    reversedChoices.forEach((choice, index) => {
-      const { id, content } = choice;
-      const parsedContent = content.replace(/<(?:.|\n)*?>/gm, '');
-      if (parsedContent.length > maxLengthPerChoice){
-        choicesErrors[id] = `Tokens should be no more than ${maxLengthPerChoice} characters long.`;
-      }
-      if (content === '' || content === '<div></div>') {
-        choicesErrors[id] = 'Tokens should not be empty.';
-      } else {
-        const identicalAnswer = reversedChoices.slice(index + 1).some(c => c.content === content);
-
-        if (identicalAnswer) {
-          choicesErrors[id] = 'Tokens content should be unique.';
-        }
-      }
-    });
-
-    const nbOfCategories = (categories || []).length;
-    const nbOfChoices = (choices || []).length;
-
-    if (nbOfCategories > maxCategories) {
-      errors.maxCategoriesError = `No more than ${maxCategories} categories should be defined.`;
-    } else if (nbOfCategories < minCategories) {
-      errors.maxCategoriesError = `There should be at least ${minCategories} category defined.`;
-    }
-
-    if (nbOfChoices < minChoices) {
-      errors.maxChoicesError = `There should be at least ${minChoices} choices defined.`;
-    } else if (nbOfChoices > maxChoices) {
-      errors.maxChoicesError = `No more than ${maxChoices} choices should be defined.`;
-    }
-
-    if (nbOfChoices && nbOfCategories) {
-      let hasAssociations = false;
-
-      (correctResponse || []).forEach(response => {
-        const { choices = [], alternateResponses = [] } = response;
-
-        if (choices.length) {
-          hasAssociations = true;
-        } else {
-          alternateResponses.forEach(alternate => {
-            if ((alternate || []).length) {
-              hasAssociations = true;
-            }
-          });
-        }
-      });
-
-      let duplicateAlternateIndex = -1;
-      let duplicateCategory = '';
-      (correctResponse || []).forEach(response => {
-        const { choices = [], alternateResponses = [], category } = response;
-        if(duplicateAlternateIndex === -1){
-          duplicateAlternateIndex = this.isCorrectResponseDuplicated(choices,alternateResponses);
-          if(duplicateAlternateIndex === -1){
-            duplicateAlternateIndex = this.isAlternateDuplicated(alternateResponses);
-          }
-          duplicateCategory = category;
-        }
-      });
-
-      if(duplicateAlternateIndex > -1){
-        // duplicateResponsesError[duplicateCategory + "-" + duplicateAlternateIndex] = 'Each Answer should be distinct';
-        duplicateResponsesError.duplicateAlternate = {index:duplicateAlternateIndex, category:duplicateCategory};
-      }
-
-      if (!hasAssociations) {
-        errors.associationError = 'At least one token should be assigned to at least one category.';
-      }
-    }
-
-
-    if (!isEmpty(choicesErrors)) {
-      errors.choicesErrors = choicesErrors;
-    }
-
-    if (!isEmpty(categoriesErrors)) {
-      errors.categoriesErrors = categoriesErrors;
-    }
-
-    if (!isEmpty(duplicateResponsesError)) {
-      errors.duplicateResponsesErrors = duplicateResponsesError;
-    }
-
-    return errors;
-  };
-
   render() {
     const {
       classes,
@@ -309,12 +182,9 @@ export class Design extends React.Component {
       rationaleEnabled,
       feedbackEnabled,
       spellCheckEnabled,
-      //errors,
       rubricEnabled
     } = model || {};
 
-    const errors = this.validate(model,configuration);
-    console.log(errors.duplicateResponsesErrors);
     const toolbarOpts = {};
 
     switch (model.toolbarEditorPosition) {
@@ -503,7 +373,6 @@ export class Design extends React.Component {
                     categories={categoriesList}
                     onModelChanged={this.updateModel}
                     uploadSoundSupport={uploadSoundSupport}
-                    error={errors.duplicateResponsesErrors}
                   />
                 </React.Fragment>
               );

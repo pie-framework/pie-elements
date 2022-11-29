@@ -1,6 +1,7 @@
 import isEmpty from 'lodash/isEmpty';
 import { buildState, score } from '@pie-lib/categorize';
 import { getFeedbackForCorrectness } from '@pie-lib/feedback';
+import { isAlternateDuplicated, isCorrectResponseDuplicated } from './utils';
 import {
   lockChoices,
   getShuffledChoices,
@@ -225,23 +226,33 @@ export const createCorrectResponseSession = (question, env) => {
 
 export const validate = (model = {}, config = {}) => {
   const { categories, choices, correctResponse } = model;
-  const { minChoices = 1, maxChoices, minCategories=1, maxCategories } = config;
+  const { minChoices = 1, maxChoices=15, minCategories=1, maxCategories=12, maxLengthPerChoice=300, maxLengthPerCategory=150 } = config;
   const reversedChoices = [ ...choices || []].reverse();
   const errors = {};
   const choicesErrors = {};
-  const domParser = new DOMParser();
+  const categoriesErrors = {};
+
+  categories.forEach((category) => {
+    const {id, label} = category;
+    const parsedLabel = label.replace(/<(?:.|\n)*?>/gm, '');
+    if (parsedLabel.length > maxLengthPerCategory){
+      categoriesErrors[id] = `Category labels should be no more than ${maxLengthPerCategory} characters long.`;
+    }
+  });
 
   reversedChoices.forEach((choice, index) => {
     const { id, content } = choice;
-     const parsedContent = domParser.parseFromString(content, "text/html").documentElement.textContent;
-     console.log('Andreea parsedContent', parsedContent);
+    const parsedContent = content.replace(/<(?:.|\n)*?>/gm, '');
+    if (parsedContent.length > maxLengthPerChoice){
+      choicesErrors[id] = `Tokens should be no more than ${maxLengthPerChoice} characters long.`;
+    }
     if (content === '' || content === '<div></div>') {
-      choicesErrors[id] = 'Content should not be empty.';
+      choicesErrors[id] = 'Tokens should not be empty.';
     } else {
       const identicalAnswer = reversedChoices.slice(index + 1).some(c => c.content === content);
 
       if (identicalAnswer) {
-        choicesErrors[id] = 'Content should be unique.';
+        choicesErrors[id] = 'Tokens content should be unique.';
       }
     }
   });
@@ -278,6 +289,23 @@ export const validate = (model = {}, config = {}) => {
       }
     });
 
+    let duplicateAlternateIndex = -1;
+    let duplicateCategory = '';
+    (correctResponse || []).forEach(response => {
+      const { choices = [], alternateResponses = [], category } = response;
+      if(duplicateAlternateIndex === -1){
+        duplicateAlternateIndex = isCorrectResponseDuplicated(choices,alternateResponses);
+        if(duplicateAlternateIndex === -1){
+          duplicateAlternateIndex = isAlternateDuplicated(alternateResponses);
+        }
+        duplicateCategory = category;
+      }
+    });
+
+    if(duplicateAlternateIndex > -1){
+      errors.duplicateAlternate = {index:duplicateAlternateIndex, category:duplicateCategory};
+    }
+
     if (!hasAssociations) {
       errors.associationError = 'At least one token should be assigned to at least one category.';
     }
@@ -287,5 +315,8 @@ export const validate = (model = {}, config = {}) => {
     errors.choicesErrors = choicesErrors;
   }
 
+  if (!isEmpty(categoriesErrors)) {
+    errors.categoriesErrors = categoriesErrors;
+  }
   return errors;
 };

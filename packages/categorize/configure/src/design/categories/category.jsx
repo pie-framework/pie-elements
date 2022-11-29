@@ -42,6 +42,8 @@ export class Category extends React.Component {
       category,
       classes,
       className,
+      error,
+      isDuplicated,
       onChange,
       onDelete,
       onDeleteChoice,
@@ -53,12 +55,16 @@ export class Category extends React.Component {
       maxImageHeight,
       uploadSoundSupport
     } = this.props;
+
     return (
-      <Card className={classNames(classes.category, className)}>
+      <Card className={classNames(classes.category, className, {
+        [classes.duplicateError]: isDuplicated
+      })}>
         {
           onChange && (
             <InputHeader
               label={category.label}
+              error={error}
               onChange={this.changeLabel}
               onDelete={onDelete}
               imageSupport={imageSupport}
@@ -111,6 +117,8 @@ const styles = theme => ({
   category: {
     padding: theme.spacing.unit,
     overflow: 'visible',
+  },
+  duplicateError: {
     border: '1px solid red',
   },
   editor: {
