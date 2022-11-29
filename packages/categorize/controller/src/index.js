@@ -226,7 +226,7 @@ export const createCorrectResponseSession = (question, env) => {
 
 export const validate = (model = {}, config = {}) => {
   const { categories, choices, correctResponse } = model;
-  const { minChoices = 1, maxChoices=15, minCategories=1, maxCategories=12, maxLengthPerChoice=300, maxLengthPerCategory=150 } = config;
+  const { minChoices = 1, maxChoices = 15, minCategories = 1, maxCategories = 12, maxLengthPerChoice = 300, maxLengthPerCategory = 150 } = config;
   const reversedChoices = [ ...choices || []].reverse();
   const errors = {};
   const choicesErrors = {};
@@ -293,16 +293,16 @@ export const validate = (model = {}, config = {}) => {
     let duplicateCategory = '';
     (correctResponse || []).forEach(response => {
       const { choices = [], alternateResponses = [], category } = response;
-      if(duplicateAlternateIndex === -1){
+      if (duplicateAlternateIndex === -1) {
         duplicateAlternateIndex = isCorrectResponseDuplicated(choices,alternateResponses);
-        if(duplicateAlternateIndex === -1){
+        if (duplicateAlternateIndex === -1) {
           duplicateAlternateIndex = isAlternateDuplicated(alternateResponses);
         }
         duplicateCategory = category;
       }
     });
 
-    if(duplicateAlternateIndex > -1){
+    if (duplicateAlternateIndex > -1) {
       errors.duplicateAlternate = {index:duplicateAlternateIndex, category:duplicateCategory};
     }
 

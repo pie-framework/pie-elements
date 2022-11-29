@@ -92,11 +92,5 @@ export default {
       settings: false,
       label: 'Add Rubric'
     },
-    maxCategories: 3,
-    minCategories: 1,
-    minChoices: 1,
-    maxChoices: 3,
-    maxLengthPerChoice: 5,
-    maxLengthPerCategory: 5,
   }
 };

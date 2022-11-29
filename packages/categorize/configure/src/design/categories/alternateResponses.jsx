@@ -95,7 +95,7 @@ export class AlternateResponses extends React.Component {
       categories,
       imageSupport,
       spellCheck,
-      uploadSoundSupport,
+      uploadSoundSupport
     } = this.props;
     const { categoriesPerRow, errors } = model;
     const { duplicateAlternate } = errors;
