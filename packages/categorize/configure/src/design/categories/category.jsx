@@ -62,20 +62,22 @@ export class Category extends React.Component {
       <Card className={classNames(classes.category, className, {
         [classes.duplicateError]: isDuplicated
       })}>
-        {
-          onChange && (
-            <InputHeader
-              label={category.label}
-              error={error}
-              onChange={this.changeLabel}
-              onDelete={onDelete}
-              imageSupport={imageSupport}
-              toolbarOpts={toolbarOpts}
-              spellCheck={spellCheck}
-              maxImageWidth={maxImageWidth}
-              maxImageHeight={maxImageHeight}
-              uploadSoundSupport={uploadSoundSupport}
-            />
+        {onChange && (
+            <span>
+              <InputHeader
+                label={category.label}
+                error={error}
+                onChange={this.changeLabel}
+                onDelete={onDelete}
+                imageSupport={imageSupport}
+                toolbarOpts={toolbarOpts}
+                spellCheck={spellCheck}
+                maxImageWidth={maxImageWidth}
+                maxImageHeight={maxImageHeight}
+                uploadSoundSupport={uploadSoundSupport}
+             />
+              {error && <div className={classes.errorText}>{error}</div>}
+              </span>
           )
         }
         <PlaceHolder
@@ -122,6 +124,11 @@ const styles = theme => ({
   },
   duplicateError: {
     border: '1px solid red',
+  },
+  errorText: {
+    fontSize: '11px',
+    color: 'red',
+    paddingBottom: '5px'
   },
   editor: {
     flex: '1',

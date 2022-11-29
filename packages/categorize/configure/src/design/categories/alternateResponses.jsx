@@ -98,7 +98,7 @@ export class AlternateResponses extends React.Component {
       uploadSoundSupport
     } = this.props;
     const { categoriesPerRow, errors } = model;
-    const { duplicateAlternate } = errors;
+    const { duplicateAlternate } = errors || {};
 
     const holderStyle = {
       gridTemplateColumns: `repeat(${categoriesPerRow}, 1fr)`
