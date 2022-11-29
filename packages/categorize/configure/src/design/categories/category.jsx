@@ -14,6 +14,8 @@ export class Category extends React.Component {
     classes: PropTypes.object.isRequired,
     className: PropTypes.string,
     category: PropTypes.object.isRequired,
+    error: PropTypes.string,
+    isDuplicated: PropTypes.bool,
     onChange: PropTypes.func,
     onDelete: PropTypes.func,
     onDeleteChoice: PropTypes.func,

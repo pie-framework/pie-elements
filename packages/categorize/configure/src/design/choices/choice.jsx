@@ -89,8 +89,6 @@ export class Choice extends React.Component {
 
     const showRemoveAfterPlacing = this.isCheckboxShown(allowMultiplePlacements);
 
-    console.log('in Choice error', error);
-
     return (
       <Card className={classNames(classes.choice, className)}>
         <CardActions className={classes.actions}>
