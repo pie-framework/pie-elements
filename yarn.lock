@@ -2282,14 +2282,14 @@
     redux "^4.0.1"
     redux-undo beta
 
-"@pie-lib/config-ui@^11.0.25":
-  version "11.0.25"
-  resolved "https://registry.yarnpkg.com/@pie-lib/config-ui/-/config-ui-11.0.25.tgz#5e9960c7f4e14977583ad24c2592d02f5f3aa8ce"
-  integrity sha512-R1rP7G183TdbB2pYer9j29ErlAwOkErJBG5S381qrdWDHxlDpFq1r5KTCph+G26y6vvcKBHQZpN+XM+lPCMWEw==
+"@pie-lib/config-ui@^11.0.26":
+  version "11.0.26"
+  resolved "https://registry.yarnpkg.com/@pie-lib/config-ui/-/config-ui-11.0.26.tgz#b6830f5e8e4e2ee2b942dd6000e57a4ffe2e312f"
+  integrity sha512-wywwdrU/a2z3dICIqxNduJzhw+GBLUoiq22y6g1ztMX3dHNcDGKxwDFxbwreXavFGJhzHvi/N5RPF0aoi3Zunw==
   dependencies:
     "@material-ui/core" "^3.8.3"
     "@material-ui/icons" "^3.0.2"
-    "@pie-lib/editable-html" "^9.2.7"
+    "@pie-lib/editable-html" "^9.2.8"
     "@pie-lib/icons" "^2.4.26"
     "@pie-lib/render-ui" "^4.13.7"
     classnames "^2.2.6"
@@ -2330,10 +2330,10 @@
     react-dnd "^11.1.3"
     react-dnd-html5-backend "^11.1.3"
 
-"@pie-lib/drag@^2.0.1":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@pie-lib/drag/-/drag-2.0.1.tgz#12e9a901e724d9e0336fe8db56b35641fc71c158"
-  integrity sha512-TnDNScy6UjLl45p4yLcNQKRt/Mx4a8GpmsQE6L9fTmChRY2mw+nmvV9On4iz0+Ych+inMYedpIm0+sIdtuLT8g==
+"@pie-lib/drag@^2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@pie-lib/drag/-/drag-2.0.2.tgz#da46cd823172c5eb0b63ea4a1bec6f2533d92ac8"
+  integrity sha512-3czyexzzjuOo09ozEss7i9Yf7J5/yo5UH0qIjGH2MQoL2K1SQdsmxdaV9R02oCcFM6HfCLfstfsxjphC90mdew==
   dependencies:
     "@material-ui/core" "^3.8.3"
     classnames "^2.2.6"
@@ -2341,15 +2341,15 @@
     react-dnd "^14.0.5"
     react-dnd-html5-backend "^14.0.2"
 
-"@pie-lib/editable-html@^9.2.7":
-  version "9.2.7"
-  resolved "https://registry.yarnpkg.com/@pie-lib/editable-html/-/editable-html-9.2.7.tgz#ac6eac4dd13bac5b435591bc8d156ed13997ff54"
-  integrity sha512-1/hjAydOFTvjHjekCcoLp9mvIQSN3EE7C7rtrjYibQ//N/mLIYryWySy0DraqJIWaDMN7pS/6+CaQX4AXv0aaw==
+"@pie-lib/editable-html@^9.2.8":
+  version "9.2.8"
+  resolved "https://registry.yarnpkg.com/@pie-lib/editable-html/-/editable-html-9.2.8.tgz#26e7141e395b7fc59b91dff800a74c6d0cc35037"
+  integrity sha512-yus3JpXEUg059vzGVh0zybWRZyC3uEUEvsfEIPEn19Jd1isyZCOJoy8oLRGV49yOPudnM45Dlzd1PMjaZHQQyg==
   dependencies:
     "@material-ui/core" "^3.8.3"
     "@material-ui/icons" "^3.0.2"
     "@material-ui/styles" "^3.0.0-alpha.10"
-    "@pie-lib/drag" "^2.0.1"
+    "@pie-lib/drag" "^2.0.2"
     "@pie-lib/math-rendering" "^2.5.1"
     "@pie-lib/math-toolbar" "^1.11.4"
     "@pie-lib/render-ui" "^4.13.7"
@@ -2389,14 +2389,14 @@
     debug "^4.1.1"
     lodash "^4.17.11"
 
-"@pie-lib/graphing@^2.11.4":
-  version "2.11.4"
-  resolved "https://registry.yarnpkg.com/@pie-lib/graphing/-/graphing-2.11.4.tgz#de5158897ef19d008305d65f5c27418fcfcb55fe"
-  integrity sha512-oehYjiLoqOaIQbagRT/bSHn5QRd1mZhmgXm9g/aipblqulioydg54SZKdzArSNNTi/CKUfhREfsPqAUU/sXg2A==
+"@pie-lib/graphing@^2.11.5":
+  version "2.11.5"
+  resolved "https://registry.yarnpkg.com/@pie-lib/graphing/-/graphing-2.11.5.tgz#5ae7b8dd95b5905f2750c934614873f5ab481ed3"
+  integrity sha512-pERUtPl3fQio2PoCGv6uSzWUKZm+xTak5lRAC2jdohfovhpSwS6C+8P2sN99SenQcut+swuxJp2P9VzreNmalA==
   dependencies:
     "@mapbox/point-geometry" "^0.1.0"
     "@material-ui/core" "^3.8.3"
-    "@pie-lib/drag" "^2.0.1"
+    "@pie-lib/drag" "^2.0.2"
     "@pie-lib/graphing-utils" "^1.1.21"
     "@pie-lib/plot" "^2.5.3"
     "@pie-lib/render-ui" "^4.13.7"
@@ -2435,13 +2435,13 @@
     classnames "^2.2.6"
     prop-types "^15.6.2"
 
-"@pie-lib/mask-markup@^1.12.17":
-  version "1.12.17"
-  resolved "https://registry.yarnpkg.com/@pie-lib/mask-markup/-/mask-markup-1.12.17.tgz#f134024d7e540af8baf7569b86382a262e1c6385"
-  integrity sha512-+C1GVV3lx+aLx9r9hbw3JSj8GvUJMxz2HDALzuZbP3vsNayhxx5ahyjDbup0F0XYpw9HS2kvlLS64z2ehXRlhg==
+"@pie-lib/mask-markup@^1.12.18":
+  version "1.12.18"
+  resolved "https://registry.yarnpkg.com/@pie-lib/mask-markup/-/mask-markup-1.12.18.tgz#99669b49ab1f377c43f49ceaacc1d4a79378d5fb"
+  integrity sha512-u0gX9TuGJ5OyS544CI0/U8rz1UTyB45CN1rikEa6OrUD05HZsffwDh/YtyIgMvBFuaVtXP+ObWi+z7T1zviZKw==
   dependencies:
     "@material-ui/core" "^3.9.3"
-    "@pie-lib/drag" "^2.0.1"
+    "@pie-lib/drag" "^2.0.2"
     "@pie-lib/math-rendering" "^2.5.1"
     "@pie-lib/render-ui" "^4.13.7"
     classnames "^2.2.6"
@@ -2576,14 +2576,14 @@
     prop-types "^15.7.2"
     react-transition-group "^2.5.2"
 
-"@pie-lib/rubric@^0.6.5":
-  version "0.6.5"
-  resolved "https://registry.yarnpkg.com/@pie-lib/rubric/-/rubric-0.6.5.tgz#664da26c4ae14f7285878d138926c23c9afba2dd"
-  integrity sha512-UZtHHXSAp5+bfZsCR/lG7QF0OCrITsIrNq+O3Laozx0z+uQU5AYgMdgfUWUtE/Ctr3b5T3tVwGlIQ9evz4pk/Q==
+"@pie-lib/rubric@^0.6.6":
+  version "0.6.6"
+  resolved "https://registry.yarnpkg.com/@pie-lib/rubric/-/rubric-0.6.6.tgz#851046ab648dafdd3a33300c86346e2b588cc289"
+  integrity sha512-wdm9hJe4P4UK2+5llLW2K5asm+0lfArUcetB1yBzM64aDbpl34Lmekn4b99VC63QGmXnc06UmgyGC58M3XafeA==
   dependencies:
     "@material-ui/core" "^3.9.3"
     "@material-ui/icons" "^3.0.2"
-    "@pie-lib/editable-html" "^9.2.7"
+    "@pie-lib/editable-html" "^9.2.8"
     debug "^4.1.1"
     editable-html "npm:@pie-lib/editable-html@^7.21.0"
     lodash "^4.17.11"
@@ -2592,14 +2592,14 @@
     react-beautiful-dnd "^11.0.2"
     react-dom "^16.9.0"
 
-"@pie-lib/scoring-config@^3.5.189":
-  version "3.5.189"
-  resolved "https://registry.yarnpkg.com/@pie-lib/scoring-config/-/scoring-config-3.5.189.tgz#92e44e3a29c369f25f3e0e4ab36c2653bc182d3f"
-  integrity sha512-Ikh5obbhxHmDSNCdLMEysoSaKY4vAks3QixtEgGYT+CKw/BsO3usv2zHxDb8qwJ1+NfxqWFjelXm8Jm+4phObA==
+"@pie-lib/scoring-config@^3.5.190":
+  version "3.5.190"
+  resolved "https://registry.yarnpkg.com/@pie-lib/scoring-config/-/scoring-config-3.5.190.tgz#225ce3a07a808ad8ceb6aaaa4c6e752b45904866"
+  integrity sha512-aO8XCnSdyxV663Ny+57vqSeYSUzplaIjErpxl71hfTXC/JYFMz4RZ+hyHocBZTTfwVlbTlu+GU+D8gH9wGzpqA==
   dependencies:
     "@material-ui/core" "^3.8.3"
     "@material-ui/icons" "^3.0.2"
-    "@pie-lib/config-ui" "^11.0.25"
+    "@pie-lib/config-ui" "^11.0.26"
     classnames "^2.2.6"
     debug "^4.1.1"
     lodash "^4.17.11"
