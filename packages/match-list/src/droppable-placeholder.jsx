@@ -24,7 +24,6 @@ export class DroppablePlaceholder extends React.Component {
     return connectDropTarget(
       <div style={{ flex: 1 }}>
         <PlaceHolder
-         // isOver={isOver}
           disabled={disabled}
           isOver={isOver}
         >
@@ -39,20 +38,14 @@ export const spec = {
     canDrop: (props /*, monitor*/) => {
        return !props.disabled;
       },
-    hover:() =>{
-        console.log("i hover")
-    },
-  drop: (props, monitor) => {
+  drop: (props) => {
     log('[drop] props: ', props);
-    const item = monitor.getItem();
-    console.log("i drag")
-    props.onDropChoice(item);
   }
 };
 
-const WithTarget = DropTarget(({ uid }) => uid, spec, (connect, monitor) => ({
+const WithTarget = DropTarget('Answer', spec, (connect, monitor) => ({
   connectDropTarget: connect.dropTarget(),
   isOver: monitor.isOver(),
 }))(DroppablePlaceholder);
 
-export default uid.withUid(WithTarget);
+export default WithTarget;
