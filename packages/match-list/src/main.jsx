@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withDragContext, swap } from '@pie-lib/drag';
+import { withDragContext, swap, uid } from '@pie-lib/drag';
 import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
 import {color, Feedback, PreviewPrompt} from '@pie-lib/render-ui';
 import { withStyles } from '@material-ui/core/styles';
@@ -10,18 +10,22 @@ import findKey from 'lodash/findKey';
 import AnswerArea from './answer-area';
 import ChoicesList from './choices-list';
 
+const { Provider: IdProvider } = uid;
+
 export class Main extends React.Component {
   static propTypes = {
     classes: PropTypes.object,
     session: PropTypes.object.isRequired,
     onSessionChange: PropTypes.func,
     model: PropTypes.object.isRequired,
+    uid: PropTypes.string,
     prompt: PropTypes.string
   };
 
   constructor(props) {
     super(props);
 
+    this.uid = props.uid || uid.generateId();
     this.instanceId = uniqueId();
     this.state = {
       showCorrectAnswer: false
@@ -66,6 +70,7 @@ export class Main extends React.Component {
     const { prompt } = config;
 
     return (
+      <IdProvider value={this.uid}>
       <div className={classes.mainContainer}>
         <CorrectAnswerToggle
           show={mode === 'evaluate'}
@@ -83,6 +88,7 @@ export class Main extends React.Component {
           showCorrect={showCorrectAnswer}
         />
         <ChoicesList
+        onDropChoice={id => this.onRemoveAnswer(id)}
           instanceId={this.instanceId}
           model={model}
           session={session}
@@ -99,6 +105,7 @@ export class Main extends React.Component {
           )
         }
       </div>
+      </IdProvider>
     );
   }
 }

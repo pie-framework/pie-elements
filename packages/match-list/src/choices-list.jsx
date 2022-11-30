@@ -5,6 +5,7 @@ import isEmpty from 'lodash/isEmpty';
 import isUndefined from 'lodash/isUndefined';
 import find from 'lodash/find';
 import { DragAnswer } from './answer';
+import PlaceHolder from './droppable-placeholder';
 
 export class ChoicesList extends React.Component {
   static propTypes = {
@@ -21,13 +22,15 @@ export class ChoicesList extends React.Component {
       classes,
       disabled,
       session,
-      instanceId
+      instanceId,
+      onDropChoice,
     } = this.props;
     const { config } = model;
     const { duplicates } = config;
 
     return (
       <div className={classes.answersContainer}>
+        <PlaceHolder disabled={disabled} onDropChoice={onDropChoice}>
         {
           config.answers
             .filter(answer => (duplicates || isEmpty(session) || !session.value || isUndefined(find(session.value, val => val === answer.id))))
@@ -44,6 +47,7 @@ export class ChoicesList extends React.Component {
               />
             ))
         }
+        </PlaceHolder>
       </div>
     );
   }
