@@ -4,11 +4,13 @@ exports[`category snapshot renders with default props 1`] = `
 <WithStyles(Card)
   className="className"
 >
-  <WithStyles(InputHeader)
-    label="Category title"
-    onChange={[Function]}
-    onDelete={[MockFunction]}
-  />
+  <span>
+    <WithStyles(InputHeader)
+      label="Category title"
+      onChange={[Function]}
+      onDelete={[MockFunction]}
+    />
+  </span>
   <DropTarget(WithStyles(DroppablePlaceHolder))
     categoryId="1"
     onDeleteChoice={[MockFunction]}
