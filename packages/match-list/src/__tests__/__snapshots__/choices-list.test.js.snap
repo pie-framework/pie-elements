@@ -2,7 +2,7 @@
 
 exports[`ChoicesList render renders correctly 1`] = `
 <Component
-  choiceBoard={true}
+  choiceBoard="match-list"
 >
   <DragSource(WithStyles(Answer))
     draggable={true}
