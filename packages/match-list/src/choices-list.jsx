@@ -22,7 +22,7 @@ export class ChoicesList extends React.Component {
     const { duplicates } = config;
 
     return (
-      <DroppablePlaceholder disabled={disabled} choiceBoard={'match-list'}>
+      <DroppablePlaceholder disabled={disabled}>
         {config.answers
           .filter(
             (answer) =>

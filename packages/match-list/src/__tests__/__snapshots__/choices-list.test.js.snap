@@ -1,9 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ChoicesList render renders correctly 1`] = `
-<Component
-  choiceBoard="match-list"
->
+<Component>
   <DragSource(WithStyles(Answer))
     draggable={true}
     id={1}
