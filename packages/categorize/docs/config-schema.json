@@ -130,6 +130,11 @@
       "type": "number",
       "title": "maxCategories"
     },
+    "minCategoriesPerRow": {
+      "description": "Minimum value of categories per row",
+      "type": "number",
+      "title": "minCategoriesPerRow"
+    },
     "maxImageWidth": {
       "title": "ConfigureMaxImageDimensionsProp",
       "type": "object",

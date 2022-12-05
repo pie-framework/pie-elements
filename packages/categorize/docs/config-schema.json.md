@@ -98,6 +98,10 @@ Indicates the label for the item that has to be displayed in the Settings Panel
 
 Maximum number of categories
 
+# `minCategoriesPerRow` (number)
+
+Minimum value of categories per row
+
 # `maxImageWidth` (object)
 
 Properties of the `maxImageWidth` object:

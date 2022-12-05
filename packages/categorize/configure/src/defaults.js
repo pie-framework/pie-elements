@@ -95,6 +95,7 @@ export default {
     withRubric: {
       settings: false,
       label: 'Add Rubric'
-    }
+    },
+    minCategoriesPerRow: 1,
   }
 };

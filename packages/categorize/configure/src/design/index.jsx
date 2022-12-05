@@ -174,7 +174,8 @@ export class Design extends React.Component {
       spellCheck = {},
       maxImageWidth = {},
       maxImageHeight = {},
-      withRubric = {}
+      withRubric = {},
+      minCategoriesPerRow = 1,
     } = configuration || {};
     const {
       allowMultiplePlacementsEnabled,
@@ -240,8 +241,8 @@ export class Design extends React.Component {
                   categoriesPerRow: categoriesPerRow.settings && numberField(categoriesPerRow.label,
                     {
                           label: categoriesPerRow.label,
-                          min: 1,
-                          max: 4,
+                          min: minCategoriesPerRow,
+                          max: 6,
                       }),
                   choicesPosition:
                       choicesPosition.settings &&
