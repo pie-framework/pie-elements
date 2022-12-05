@@ -15,7 +15,7 @@ import { multiplePlacements } from '../../utils';
 
 const log = debug('@pie-element:categorize:configure:choice');
 
-const canDrag = props => {
+const canDrag = (props) => {
   const count = props.choice.categoryCount || 0;
   if (count === 0) {
     return true;
@@ -37,19 +37,19 @@ export class Choice extends React.Component {
     correctResponseCount: PropTypes.number.isRequired,
     imageSupport: PropTypes.shape({
       add: PropTypes.func.isRequired,
-      delete: PropTypes.func.isRequired
+      delete: PropTypes.func.isRequired,
     }),
     toolbarOpts: PropTypes.object,
     error: PropTypes.string,
     uploadSoundSupport: PropTypes.shape({
       add: PropTypes.func.isRequired,
-      delete: PropTypes.func.isRequired
-    })
+      delete: PropTypes.func.isRequired,
+    }),
   };
 
   static defaultProps = {};
 
-  changeContent = content => {
+  changeContent = (content) => {
     const { onChange, choice } = this.props;
     choice.content = content;
     onChange(choice);
@@ -65,7 +65,8 @@ export class Choice extends React.Component {
     onChange(choice);
   };
 
-  isCheckboxShown = allowMultiplePlacements => allowMultiplePlacements === multiplePlacements.perChoice;
+  isCheckboxShown = (allowMultiplePlacements) =>
+    allowMultiplePlacements === multiplePlacements.perChoice;
 
   render() {
     const {
@@ -73,6 +74,9 @@ export class Choice extends React.Component {
       classes,
       className,
       choice,
+      deleteFocusedEl,
+      focusedEl,
+      index,
       onDelete,
       connectDragSource,
       connectDragPreview,
@@ -82,12 +86,14 @@ export class Choice extends React.Component {
       error,
       maxImageWidth,
       maxImageHeight,
-      uploadSoundSupport
+      uploadSoundSupport,
     } = this.props;
 
     const draggable = canDrag(this.props);
 
-    const showRemoveAfterPlacing = this.isCheckboxShown(allowMultiplePlacements);
+    const showRemoveAfterPlacing = this.isCheckboxShown(
+      allowMultiplePlacements
+    );
 
     return (
       <Card className={classNames(classes.choice, className)}>
@@ -107,6 +113,9 @@ export class Choice extends React.Component {
           <span>
             <InputHeader
               imageSupport={imageSupport}
+              focusedEl={focusedEl}
+              deleteFocusedEl={deleteFocusedEl}
+              index={index}
               label={choice.content}
               onChange={this.changeContent}
               onDelete={onDelete}
@@ -123,37 +132,38 @@ export class Choice extends React.Component {
 
         <CardActions className={classes.actions}>
           <DeleteButton label={'delete'} onClick={onDelete} />
-          {showRemoveAfterPlacing &&
-              <Checkbox
-                mini
-                label={'Remove after placing'}
-                checked={choice.categoryCount === 1}
-                onChange={this.changeCategoryCount} />
-          }
+          {showRemoveAfterPlacing && (
+            <Checkbox
+              mini
+              label={'Remove after placing'}
+              checked={choice.categoryCount === 1}
+              onChange={this.changeCategoryCount}
+            />
+          )}
         </CardActions>
       </Card>
     );
   }
 }
-const styles = theme => ({
+const styles = (theme) => ({
   actions: {
     padding: 0,
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
   },
   choice: {
     padding: theme.spacing.unit,
-    overflow: 'visible'
+    overflow: 'visible',
   },
   dragHandle: {
-    cursor: 'move'
+    cursor: 'move',
   },
   dragDisabled: {
-    cursor: 'inherit'
+    cursor: 'inherit',
   },
   errorText: {
     fontSize: '11px',
     color: 'red',
-    paddingBottom: '5px'
+    paddingBottom: '5px',
   },
 });
 
@@ -161,9 +171,9 @@ const StyledChoice = withStyles(styles)(Choice);
 
 export const spec = {
   canDrag,
-  beginDrag: props => {
+  beginDrag: (props) => {
     const out = {
-      id: props.choice.id
+      id: props.choice.id,
     };
     log('[beginDrag] out:', out);
     return out;
@@ -176,7 +186,7 @@ export const spec = {
         props.onRemoveChoice(item);
       }
     }
-  }
+  },
 };
 
 const DraggableChoice = DragSource(
@@ -185,7 +195,7 @@ const DraggableChoice = DragSource(
   (connect, monitor) => ({
     connectDragSource: connect.dragSource(),
     connectDragPreview: connect.dragPreview(),
-    isDragging: monitor.isDragging()
+    isDragging: monitor.isDragging(),
   })
 )(StyledChoice);
 

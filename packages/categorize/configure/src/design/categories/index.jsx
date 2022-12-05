@@ -8,20 +8,24 @@ import EditableHtml from '@pie-lib/editable-html';
 import classNames from 'classnames';
 import Info from '@material-ui/icons/Info';
 import Tooltip from '@material-ui/core/Tooltip';
-import { moveChoiceToCategory, removeCategory, removeChoiceFromCategory } from '@pie-lib/categorize';
+import {
+  moveChoiceToCategory,
+  removeCategory,
+  removeChoiceFromCategory,
+} from '@pie-lib/categorize';
 
 import Category from './category';
 import Header from '../header';
 import { generateValidationMessage } from '../../utils';
 
-const styles = theme => ({
+const styles = (theme) => ({
   categories: {
-    marginBottom: theme.spacing.unit
+    marginBottom: theme.spacing.unit,
   },
   categoriesHolder: {
     display: 'grid',
     gridRowGap: `${theme.spacing.unit}px`,
-    gridColumnGap: `${theme.spacing.unit}px`
+    gridColumnGap: `${theme.spacing.unit}px`,
   },
   row: {
     display: 'grid',
@@ -30,13 +34,13 @@ const styles = theme => ({
     alignItems: 'baseline',
     width: '100%',
     marginTop: theme.spacing.unit,
-    marginBottom: 2 * theme.spacing.unit
+    marginBottom: 2 * theme.spacing.unit,
   },
   rowLabel: {
-    gridColumn: '1/3'
+    gridColumn: '1/3',
   },
   rowLabelHolder: {
-    width: '100%'
+    width: '100%',
   },
   tooltip: {
     fontSize: '12px',
@@ -46,47 +50,61 @@ const styles = theme => ({
   errorText: {
     fontSize: '12px',
     color: 'red',
-    padding: '5px 0'
+    padding: '5px 0',
   },
 });
 
-const RowLabel = withStyles(styles)(({ categoriesPerRow, classes, markup, imageSupport, onChange, toolbarOpts, spellCheck, maxImageWidth, maxImageHeight, uploadSoundSupport}) => {
-  return (
-    <div
-      style={{
-        gridColumn: `1/${categoriesPerRow + 1}`,
-        width: '100%'
-      }}
-    >
-      <Typography className={classes.text}>
-        Row Label
-      </Typography>
-      <EditableHtml
-        className={classes.rowLabelHolder}
-        markup={markup}
-        onChange={onChange}
-        imageSupport={imageSupport}
-        nonEmpty={false}
-        toolbarOpts={toolbarOpts}
-        spellCheck={spellCheck}
-        maxImageWidth={maxImageWidth}
-        maxImageHeight={maxImageHeight}
-        uploadSoundSupport={uploadSoundSupport}
-        languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
-      />
-    </div>
-  );
-});
+const RowLabel = withStyles(styles)(
+  ({
+    categoriesPerRow,
+    classes,
+    markup,
+    imageSupport,
+    onChange,
+    toolbarOpts,
+    spellCheck,
+    maxImageWidth,
+    maxImageHeight,
+    uploadSoundSupport,
+  }) => {
+    return (
+      <div
+        style={{
+          gridColumn: `1/${categoriesPerRow + 1}`,
+          width: '100%',
+        }}
+      >
+        <Typography className={classes.text}>Row Label</Typography>
+        <EditableHtml
+          className={classes.rowLabelHolder}
+          markup={markup}
+          onChange={onChange}
+          imageSupport={imageSupport}
+          nonEmpty={false}
+          toolbarOpts={toolbarOpts}
+          spellCheck={spellCheck}
+          maxImageWidth={maxImageWidth}
+          maxImageHeight={maxImageHeight}
+          uploadSoundSupport={uploadSoundSupport}
+          languageCharactersProps={[
+            { language: 'spanish' },
+            { language: 'special' },
+          ]}
+        />
+      </div>
+    );
+  }
+);
 
 export class Categories extends React.Component {
   static propTypes = {
     imageSupport: PropTypes.shape({
       add: PropTypes.func.isRequired,
-      delete: PropTypes.func.isRequired
+      delete: PropTypes.func.isRequired,
     }),
     uploadSoundSupport: PropTypes.shape({
       add: PropTypes.func.isRequired,
-      delete: PropTypes.func.isRequired
+      delete: PropTypes.func.isRequired,
     }),
     classes: PropTypes.object.isRequired,
     className: PropTypes.string,
@@ -94,30 +112,50 @@ export class Categories extends React.Component {
     onModelChanged: PropTypes.func,
     model: PropTypes.object.isRequired,
     configuration: PropTypes.object.isRequired,
-    toolbarOpts: PropTypes.object
+    toolbarOpts: PropTypes.object,
+  };
+
+  state = {
+    focusedEl: null,
   };
 
   add = () => {
-    const { model } = this.props;
+    const { model, categories: oldCategories } = this.props;
     const { categoriesPerRow } = model;
-    const id = utils.firstAvailableIndex(model.categories.map(a => a.id), 0);
+    const id = utils.firstAvailableIndex(
+      model.categories.map((a) => a.id),
+      0
+    );
     const data = { id, label: 'Category ' + id };
-    const addRowLabel = (model.categories.length) % categoriesPerRow === 0;
+    const addRowLabel = model.categories.length % categoriesPerRow === 0;
     const rowLabels = [...model.rowLabels];
 
     if (addRowLabel) {
       rowLabels.push('');
     }
 
-    this.props.onModelChanged({
-      rowLabels,
-      categories: model.categories.concat([data])
+    this.setState(
+      {
+        focusedEl: oldCategories.length,
+      },
+      () => {
+        this.props.onModelChanged({
+          rowLabels,
+          categories: model.categories.concat([data]),
+        });
+      }
+    );
+  };
+
+  deleteFocusedEl = () => {
+    this.setState({
+      focusedEl: null,
     });
   };
 
-  delete = category => {
+  delete = (category) => {
     const { model, onModelChanged } = this.props;
-    const index = model.categories.findIndex(a => a.id === category.id);
+    const index = model.categories.findIndex((a) => a.id === category.id);
 
     if (index !== -1) {
       model.categories.splice(index, 1);
@@ -129,9 +167,9 @@ export class Categories extends React.Component {
     }
   };
 
-  change = c => {
+  change = (c) => {
     const { categories } = this.props;
-    const index = categories.findIndex(a => a.id === c.id);
+    const index = categories.findIndex((a) => a.id === c.id);
 
     if (index !== -1) {
       categories.splice(index, 1, c);
@@ -176,7 +214,7 @@ export class Categories extends React.Component {
     }
 
     this.props.onModelChanged({
-      rowLabels: newRowLabels
+      rowLabels: newRowLabels,
     });
   };
 
@@ -192,7 +230,7 @@ export class Categories extends React.Component {
       spellCheck,
       configuration,
       defaultImageMaxHeight,
-      defaultImageMaxWidth
+      defaultImageMaxWidth,
     } = this.props;
 
     const { categoriesPerRow, rowLabels, errors } = model;
@@ -203,7 +241,7 @@ export class Categories extends React.Component {
       maxImageHeight = {},
     } = configuration || {};
     const holderStyle = {
-      gridTemplateColumns: `repeat(${categoriesPerRow}, 1fr)`
+      gridTemplateColumns: `repeat(${categoriesPerRow}, 1fr)`,
     };
 
     const validationMessage = generateValidationMessage(configuration);
@@ -214,28 +252,38 @@ export class Categories extends React.Component {
           label="Categories"
           buttonLabel="ADD A CATEGORY"
           onAdd={this.add}
-          info={<Tooltip
-            classes={{tooltip: classes.tooltip}}
-            disableFocusListener
-            disableTouchListener
-            placement={'right'}
-            title={validationMessage}
-          >
-            <Info fontSize={'small'} color={'primary'} style={{ marginLeft: '5px' }}/>
-          </Tooltip>}
-          buttonDisabled={maxCategories && categories && maxCategories === categories.length}
+          info={
+            <Tooltip
+              classes={{ tooltip: classes.tooltip }}
+              disableFocusListener
+              disableTouchListener
+              placement={'right'}
+              title={validationMessage}
+            >
+              <Info
+                fontSize={'small'}
+                color={'primary'}
+                style={{ marginLeft: '5px' }}
+              />
+            </Tooltip>
+          }
+          buttonDisabled={
+            maxCategories && categories && maxCategories === categories.length
+          }
         />
-        {associationError && <div className={classes.errorText}>{associationError}</div>}
-        {categoriesError && <div className={classes.errorText}>{categoriesError}</div>}
+        {associationError && (
+          <div className={classes.errorText}>{associationError}</div>
+        )}
+        {categoriesError && (
+          <div className={classes.errorText}>{categoriesError}</div>
+        )}
         <div className={classes.categoriesHolder} style={holderStyle}>
           {categories.map((category, index) => {
             const hasRowLabel = index % categoriesPerRow === 0;
             const rowIndex = index / categoriesPerRow;
 
             return (
-              <React.Fragment
-                key={index}
-              >
+              <React.Fragment key={index}>
                 {hasRowLabel && (
                   <RowLabel
                     categoriesPerRow={categoriesPerRow}
@@ -245,13 +293,22 @@ export class Categories extends React.Component {
                     imageSupport={imageSupport}
                     toolbarOpts={toolbarOpts}
                     spellCheck={spellCheck}
-                    maxImageWidth={maxImageWidth && maxImageWidth.rowLabel || defaultImageMaxWidth}
-                    maxImageHeight={maxImageHeight && maxImageHeight.rowLabel || defaultImageMaxHeight}
+                    maxImageWidth={
+                      (maxImageWidth && maxImageWidth.rowLabel) ||
+                      defaultImageMaxWidth
+                    }
+                    maxImageHeight={
+                      (maxImageHeight && maxImageHeight.rowLabel) ||
+                      defaultImageMaxHeight
+                    }
                     uploadSoundSupport={uploadSoundSupport}
                   />
                 )}
                 <Category
                   imageSupport={imageSupport}
+                  focusedEl={this.state.focusedEl}
+                  deleteFocusedEl={this.deleteFocusedEl}
+                  index={index}
                   category={category}
                   onChange={this.change}
                   onDelete={() => this.delete(category)}
@@ -261,8 +318,14 @@ export class Categories extends React.Component {
                   onDeleteChoice={(choice, choiceIndex) =>
                     this.deleteChoiceFromCategory(category, choice, choiceIndex)
                   }
-                  maxImageWidth={maxImageWidth && maxImageWidth.categoryLabel || defaultImageMaxWidth}
-                  maxImageHeight={maxImageHeight && maxImageHeight.categoryLabel || defaultImageMaxHeight}
+                  maxImageWidth={
+                    (maxImageWidth && maxImageWidth.categoryLabel) ||
+                    defaultImageMaxWidth
+                  }
+                  maxImageHeight={
+                    (maxImageHeight && maxImageHeight.categoryLabel) ||
+                    defaultImageMaxHeight
+                  }
                   uploadSoundSupport={uploadSoundSupport}
                 />
               </React.Fragment>
