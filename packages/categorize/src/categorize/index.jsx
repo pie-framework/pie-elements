@@ -171,7 +171,7 @@ export class Categorize extends React.Component {
         <div className={classes.categorize} style={style}>
           <div style={{ display: 'flex', flex: 1 }}>
             {
-              rowLabels && nbOfRows && (
+              !!(rowLabels && nbOfRows) && (
                 <div style={{ display: 'grid', marginRight: '20px' }}>
                   {rowLabels.slice(0, nbOfRows).map((label, index) => (
                     <div
