@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Choice, { ChoiceType } from './choice';
-import PlaceHolder from './droppable-placeholder';
+import DroppablePlaceholder from './droppable-placeholder';
 export { ChoiceType };
 
 const Blank = () => <div />;
@@ -49,7 +49,7 @@ export class Choices extends React.Component {
 
     return (
       <div className={classes.wrapper}>
-         <PlaceHolder
+         <DroppablePlaceholder
           onDropChoice={onDropChoice}
           onRemoveChoice={onRemoveChoice}
           disabled={disabled}
@@ -72,7 +72,7 @@ export class Choices extends React.Component {
               />
             );
           })}
-        </PlaceHolder>
+        </DroppablePlaceholder>
       </div>
     );
   }
