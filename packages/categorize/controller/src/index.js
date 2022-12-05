@@ -215,7 +215,7 @@ export const validate = (model = {}, config = {}) => {
   const choicesErrors = {};
   const categoriesErrors = {};
 
-  categories.forEach((category) => {
+  (categories || []).forEach((category) => {
     const {id, label} = category;
     const parsedLabel = label.replace(/<(?:.|\n)*?>/gm, '');
     if (parsedLabel.length > maxLengthPerCategory){
@@ -223,7 +223,7 @@ export const validate = (model = {}, config = {}) => {
     }
   });
 
-  reversedChoices.forEach((choice, index) => {
+  (reversedChoices || []).forEach((choice, index) => {
     const { id, content } = choice;
     const parsedContent = content.replace(/<(?:.|\n)*?>/gm, '');
     if (parsedContent.length > maxLengthPerChoice){
