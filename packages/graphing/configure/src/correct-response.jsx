@@ -7,17 +7,18 @@ import { AlertDialog } from '@pie-lib/config-ui';
 import Delete from '@material-ui/icons/Delete';
 import { set, isEqual } from 'lodash';
 import { MenuItem, Select, Typography } from '@material-ui/core';
+import { color } from '@pie-lib/render-ui';
 
-const styles = theme => ({
+const styles = (theme) => ({
   column: {
-    flex: 1
+    flex: 1,
   },
   graphingTools: {
-    color: '#ababab'
+    color: '#ababab',
   },
   availableTools: {
     marginTop: theme.spacing.unit,
-    display: 'flex'
+    display: 'flex',
   },
   availableTool: {
     cursor: 'pointer',
@@ -26,18 +27,18 @@ const styles = theme => ({
     border: '2px solid white',
     textTransform: 'capitalize',
     '&:hover': {
-      color: '#4d4d4d'
-    }
+      color: '#4d4d4d',
+    },
   },
   selectedTool: {
     background: '#d8d8d8',
-    border: '2px solid #ababab'
+    border: '2px solid #ababab',
   },
   container: {
     border: '2px solid #ababab',
     borderRadius: '4px',
     padding: `0 ${theme.spacing.unit * 4}px ${theme.spacing.unit * 2}px`,
-    background: '#fafafa'
+    background: '#fafafa',
   },
   button: {
     margin: `${theme.spacing.unit * 3}px 0`,
@@ -47,61 +48,82 @@ const styles = theme => ({
     width: 'fit-content',
     borderRadius: '4px',
     '&:hover': {
-      background: '#d8d8d8'
-    }
+      background: '#d8d8d8',
+    },
   },
   responseTitle: {
     display: 'flex',
     alignItems: 'center',
-    marginTop: '20px'
+    marginTop: '20px',
   },
   iconButton: {
     marginLeft: '6px',
     color: '#6d6d6d',
     '&:hover': {
       cursor: 'pointer',
-      color: '#000000'
-    }
+      color: '#000000',
+    },
   },
   name: {
-    margin: '5px 0'
+    margin: '5px 0',
   },
   subtitleText: {
     marginTop: theme.spacing.unit * 1.5,
-    marginBottom: theme.spacing.unit
+    marginBottom: theme.spacing.unit,
   },
   toolsHeader: {
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
   },
   defaultTool: {
     display: 'flex',
     alignItems: 'center',
-    width: '300px'
+    width: '300px',
   },
   defaultToolSelect: {
     marginLeft: theme.spacing.unit,
     textTransform: 'uppercase',
-    color: '#4d4d4d'
+    color: '#4d4d4d',
   },
   menuItem: {
     textTransform: 'uppercase',
   },
   noDefaultTool: {
-    padding: theme.spacing.unit / 2
-  }
+    padding: theme.spacing.unit / 2,
+  },
+  error: {
+    color: 'red',
+  },
+  errorMessage: {
+    fontSize: '14px',
+    color: 'red',
+    marginTop: theme.spacing.unit,
+  },
+  graphError: {
+    border: '2px solid red',
+  },
 });
 
-export const Tools = ({ classes, availableTools, defaultTool, toolbarTools, toggleToolBarTool, onDefaultToolChange }) => {
+export const Tools = ({
+  classes,
+  availableTools,
+  defaultTool,
+  hasErrors,
+  toolbarTools,
+  toggleToolBarTool,
+  onDefaultToolChange,
+}) => {
   let allTools = availableTools || [];
   const isLabelAvailable = allTools.includes('label');
-  const toolbarToolsNoLabel = (toolbarTools || []).filter(tool => tool !== 'label');
+  const toolbarToolsNoLabel = (toolbarTools || []).filter(
+    (tool) => tool !== 'label'
+  );
 
   if (isLabelAvailable) {
     // label has to be placed at the end of the list
-    const allToolsNoLabel = allTools.filter(tool => tool !== 'label');
-    allTools = [ ...allToolsNoLabel, 'label'];
+    const allToolsNoLabel = allTools.filter((tool) => tool !== 'label');
+    allTools = [...allToolsNoLabel, 'label'];
   }
 
   return (
@@ -117,22 +139,26 @@ export const Tools = ({ classes, availableTools, defaultTool, toolbarTools, togg
               value={defaultTool}
               disableUnderline
             >
-              {toolbarToolsNoLabel.map((tool, index) =>
-                <MenuItem key={index} className={classes.menuItem} value={tool}>{tool}</MenuItem>)}
+              {toolbarToolsNoLabel.map((tool, index) => (
+                <MenuItem key={index} className={classes.menuItem} value={tool}>
+                  {tool}
+                </MenuItem>
+              ))}
             </Select>
           </div>
         )}
       </div>
       <div className={classes.availableTools}>
-        {allTools.map(tool => {
-          const selected = toolbarTools.find(t => t === tool);
+        {allTools.map((tool) => {
+          const selected = toolbarTools.find((t) => t === tool);
 
           return (
             <div
               key={tool}
               className={classnames(
                 classes.availableTool,
-                selected && classes.selectedTool
+                selected && classes.selectedTool,
+                hasErrors && tool !== 'label' && classes.error
               )}
               onClick={() => toggleToolBarTool(tool)}
             >
@@ -148,7 +174,7 @@ export const Tools = ({ classes, availableTools, defaultTool, toolbarTools, togg
 Tools.propTypes = {
   classes: PropTypes.object.isRequired,
   toolbarTools: PropTypes.arrayOf(PropTypes.string),
-  toggleToolBarTool: PropTypes.func
+  toggleToolBarTool: PropTypes.func,
 };
 
 export class CorrectResponse extends React.Component {
@@ -156,19 +182,22 @@ export class CorrectResponse extends React.Component {
     classes: PropTypes.object.isRequired,
     model: PropTypes.object.isRequired,
     onChange: PropTypes.func.isRequired,
-    toolbarTools: PropTypes.arrayOf(PropTypes.String)
+    toolbarTools: PropTypes.arrayOf(PropTypes.String),
   };
 
   state = {
     dialog: {
-      open: false
-    }
+      open: false,
+    },
   };
 
   handleAlertDialog = (open, callback) =>
-    this.setState({
-      dialog: { open }
-    }, callback);
+    this.setState(
+      {
+        dialog: { open },
+      },
+      callback
+    );
 
   changeMarks = (key, marks) => {
     const { model, onChange } = this.props;
@@ -178,48 +207,55 @@ export class CorrectResponse extends React.Component {
   };
 
   filterMarks = (tool) => {
-    const { model: { answers }} = this.props;
+    const {
+      model: { answers },
+    } = this.props;
 
     return Object.entries(answers || {}).reduce((object, [key, answer]) => {
       object[key] = {
         ...answer,
-        marks: (answer.marks || []).filter(mark => mark.type !== tool)
+        marks: (answer.marks || []).filter((mark) => mark.type !== tool),
       };
 
       return object;
     }, {});
   };
 
-  changeToolbarTools = toolbarTools => {
+  changeToolbarTools = (toolbarTools) => {
     const { model, onChange } = this.props;
     model.toolbarTools = toolbarTools;
 
     onChange(model);
   };
 
-  updateModel = props => {
+  updateModel = (props) => {
     const { model, onChange } = this.props;
 
     onChange({
       ...model,
-      ...props
+      ...props,
     });
   };
 
-  toggleToolBarTool = tool => {
-    const { model: { defaultTool, toolbarTools, answers = {}}} = this.props;
-    const updatedToolbarTools = [ ...toolbarTools ];
+  toggleToolBarTool = (tool) => {
+    const {
+      model: { defaultTool, toolbarTools, answers = {} },
+    } = this.props;
+    const updatedToolbarTools = [...toolbarTools];
     let newDefaultTool = defaultTool;
 
-    const index = toolbarTools.findIndex(t => tool === t);
+    const index = toolbarTools.findIndex((t) => tool === t);
 
     if (index >= 0) {
       const updatedAnswers = this.filterMarks(tool);
       updatedToolbarTools.splice(index, 1);
 
       if (tool === defaultTool) {
-        const toolbarToolsNoLabel = (updatedToolbarTools || []).filter(tool => tool !== 'label');
-        newDefaultTool = toolbarToolsNoLabel.length && toolbarToolsNoLabel[0] || '';
+        const toolbarToolsNoLabel = (updatedToolbarTools || []).filter(
+          (tool) => tool !== 'label'
+        );
+        newDefaultTool =
+          (toolbarToolsNoLabel.length && toolbarToolsNoLabel[0]) || '';
       }
 
       if (!isEqual(answers, updatedAnswers)) {
@@ -228,14 +264,17 @@ export class CorrectResponse extends React.Component {
             open: true,
             title: 'Warning',
             text: `Correct answer includes one or more ${tool} objects and all of them will be deleted.`,
-            onConfirm: () => this.handleAlertDialog(
-              false, this.updateModel({
-                toolbarTools: updatedToolbarTools,
-                answers: updatedAnswers,
-                defaultTool: newDefaultTool
-              })),
-            onClose: () => this.handleAlertDialog(false)
-          }
+            onConfirm: () =>
+              this.handleAlertDialog(
+                false,
+                this.updateModel({
+                  toolbarTools: updatedToolbarTools,
+                  answers: updatedAnswers,
+                  defaultTool: newDefaultTool,
+                })
+              ),
+            onClose: () => this.handleAlertDialog(false),
+          },
         });
 
         return;
@@ -250,26 +289,25 @@ export class CorrectResponse extends React.Component {
 
     this.updateModel({
       toolbarTools: updatedToolbarTools,
-      defaultTool: newDefaultTool
+      defaultTool: newDefaultTool,
     });
   };
 
-  onDefaultToolChange = event => {
+  onDefaultToolChange = (event) => {
     const { value } = event.target;
 
-    this.updateModel( { defaultTool: value });
-  }
+    this.updateModel({ defaultTool: value });
+  };
 
   addAlternateResponse = () => {
     const { model, onChange } = this.props;
     const { answers } = model || {};
     const answersKeys = Object.keys(answers || {});
 
-    set(
-      model,
-      `answers.${`alternate${answersKeys.length}`}`,
-      { name: `Alternate ${answersKeys.length}`, marks: [] }
-    );
+    set(model, `answers.${`alternate${answersKeys.length}`}`, {
+      name: `Alternate ${answersKeys.length}`,
+      marks: [],
+    });
     onChange(model);
   };
 
@@ -290,8 +328,8 @@ export class CorrectResponse extends React.Component {
           title: 'Warning',
           text: `${name} includes one or more shapes and the entire response will be deleted.`,
           onConfirm: () => this.handleAlertDialog(false, deleteAnswer),
-          onClose: () => this.handleAlertDialog(false)
-        }
+          onClose: () => this.handleAlertDialog(false),
+        },
       });
 
       return;
@@ -301,7 +339,7 @@ export class CorrectResponse extends React.Component {
   };
 
   render() {
-    const { availableTools, classes, model } = this.props;
+    const { availableTools, classes, errors, model } = this.props;
     const { dialog } = this.state;
     const {
       answers = {},
@@ -316,8 +354,9 @@ export class CorrectResponse extends React.Component {
       range,
       title,
       titleEnabled,
-      toolbarTools
+      toolbarTools,
     } = model || {};
+    const { correctAnswerErrors = {}, toolbarToolsError } = errors || {};
 
     return (
       <div>
@@ -325,18 +364,30 @@ export class CorrectResponse extends React.Component {
           <span>Define Tool Set and Correct Response</span>
         </Typography>
 
-        <Typography component="div" variant="body1" className={classes.subtitleText}>
-          <span>Use this interface to choose which graphing tools students will be able to use, and to define the correct answer</span>
+        <Typography
+          component="div"
+          variant="body1"
+          className={classes.subtitleText}
+        >
+          <span>
+            Use this interface to choose which graphing tools students will be
+            able to use, and to define the correct answer
+          </span>
         </Typography>
 
         <Tools
           classes={classes}
           availableTools={availableTools}
           defaultTool={defaultTool}
+          hasErrors={!!toolbarToolsError}
           onDefaultToolChange={this.onDefaultToolChange}
           toggleToolBarTool={this.toggleToolBarTool}
           toolbarTools={toolbarTools}
         />
+
+        {toolbarToolsError && (
+          <div className={classes.errorMessage}>{toolbarToolsError}</div>
+        )}
 
         {Object.entries(answers || {}).map(([key, answer]) => {
           const { marks = [], name } = answer || {};
@@ -345,14 +396,16 @@ export class CorrectResponse extends React.Component {
             <div key={`correct-response-graph-${name}`}>
               <div className={classes.responseTitle}>
                 <p className={classes.name}>{name}</p>
-                {key !== 'correctAnswer' &&
+                {key !== 'correctAnswer' && (
                   <Delete
                     className={classes.iconButton}
                     onClick={() => this.deleteAlternateResponse(key, answer)}
-                  />}
+                  />
+                )}
               </div>
 
               <Graph
+                className={correctAnswerErrors[key] && classes.graphError}
                 axesSettings={{ includeArrows: arrows }}
                 backgroundMarks={backgroundMarks}
                 coordinatesOnHover={coordinatesOnHover}
@@ -362,17 +415,25 @@ export class CorrectResponse extends React.Component {
                 draggableTools={key === 'correctAnswer'}
                 labels={labels}
                 marks={marks}
-                onChangeMarks={newMarks => this.changeMarks(key, newMarks)}
+                onChangeMarks={(newMarks) => this.changeMarks(key, newMarks)}
                 range={range}
                 showLabels={labelsEnabled}
                 showTitle={titleEnabled}
-                size={{width: graph.width, height: graph.height}}
+                size={{ width: graph.width, height: graph.height }}
                 title={title}
                 toolbarTools={toolbarTools}
-                onChangeTools={toolbarTools => this.updateModel({ toolbarTools })}
+                onChangeTools={(toolbarTools) =>
+                  this.updateModel({ toolbarTools })
+                }
               />
+
+              {correctAnswerErrors[key] && (
+                <div className={classes.errorMessage}>
+                  {correctAnswerErrors[key]}
+                </div>
+              )}
             </div>
-          )
+          );
         })}
 
         <div className={classes.button} onClick={this.addAlternateResponse}>
@@ -389,6 +450,6 @@ export class CorrectResponse extends React.Component {
       </div>
     );
   }
-};
+}
 
 export default withStyles(styles)(CorrectResponse);
