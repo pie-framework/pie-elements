@@ -18,35 +18,35 @@ export default {
     spellCheck: {
       label: 'Spellcheck',
       settings: false,
-      enabled:true
+      enabled: true,
     },
     choicesPosition: {
       settings: true,
-      label: 'Choices Position'
+      label: 'Choices Position',
     },
     prompt: {
       settings: true,
-      label: 'Prompt'
+      label: 'Prompt',
     },
     duplicates: {
       settings: true,
-      label: 'Duplicates'
+      label: 'Duplicates',
     },
     lockChoiceOrder: {
       settings: true,
-      label: 'Lock Choice Order'
+      label: 'Lock Choice Order',
     },
     partialScoring: {
       settings: false,
-      label: 'Allow Partial Scoring'
+      label: 'Allow Partial Scoring',
     },
     rationale: {
       settings: true,
-      label: 'Rationale'
+      label: 'Rationale',
     },
     teacherInstructions: {
       settings: true,
-      label: 'Teacher Instructions'
+      label: 'Teacher Instructions',
     },
     maxResponseAreas: 10,
     maxImageWidth: {
@@ -61,7 +61,7 @@ export default {
     },
     withRubric: {
       settings: false,
-      label: 'Add Rubric'
-    }
-  }
+      label: 'Add Rubric',
+    },
+  },
 };

@@ -1,8 +1,4 @@
-import {
-  ModelUpdatedEvent,
-  InsertSoundEvent,
-  DeleteSoundEvent
-} from '@pie-framework/pie-configure-events';
+import { ModelUpdatedEvent, InsertSoundEvent, DeleteSoundEvent } from '@pie-framework/pie-configure-events';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -10,8 +6,8 @@ import ReactDOM from 'react-dom';
 import Main from './main';
 import defaults from './defaults';
 
-const modelWithDefaults = m => ({ ...defaults.model, ...m });
-const configurationWithDefaults = c => ({ ...defaults.configuration, ...c });
+const modelWithDefaults = (m) => ({ ...defaults.model, ...m });
+const configurationWithDefaults = (c) => ({ ...defaults.configuration, ...c });
 
 export default class MultiTraitRubricElement extends HTMLElement {
   constructor() {
@@ -25,7 +21,6 @@ export default class MultiTraitRubricElement extends HTMLElement {
     this._render();
   }
 
-
   set configuration(c) {
     this._configuration = configurationWithDefaults(c);
     this._render();
@@ -35,13 +30,13 @@ export default class MultiTraitRubricElement extends HTMLElement {
     this._model = modelWithDefaults(m);
     this._render();
     this.dispatchEvent(new ModelUpdatedEvent(this._model, false));
-  }
+  };
 
   onConfigurationChanged = (c) => {
     this._configuration = configurationWithDefaults(c);
 
     this._render();
-  }
+  };
 
   insertSound(handler) {
     this.dispatchEvent(new InsertSoundEvent(handler));
@@ -60,8 +55,8 @@ export default class MultiTraitRubricElement extends HTMLElement {
         onConfigurationChanged: this.onConfigurationChanged,
         uploadSoundSupport: {
           add: this.insertSound.bind(this),
-          delete: this.onDeleteSound.bind(this)
-        }
+          delete: this.onDeleteSound.bind(this),
+        },
       });
 
       ReactDOM.render(element, this);

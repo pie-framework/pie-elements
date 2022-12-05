@@ -1,11 +1,7 @@
 import { PromptConfig } from '../../PromptConfig';
 import { CommonConfigSettings } from '../../CommonConfigSettings';
 import { PieModel } from '../../PieModel';
-import {
-  ConfigureMaxImageDimensionsProp,
-  ConfigureProp,
-  ConfigurePropWithEnabled,
-} from '../ConfigurationProp';
+import { ConfigureMaxImageDimensionsProp, ConfigureProp, ConfigurePropWithEnabled } from '../ConfigurationProp';
 
 interface Graph {
   /** Width for graph representation */
@@ -45,16 +41,7 @@ interface Point {
 
 interface Mark {
   /** Indicates type of mark */
-  type:
-    | 'point'
-    | 'segment'
-    | 'line'
-    | 'vector'
-    | 'circle'
-    | 'sine'
-    | 'polygon'
-    | 'ray'
-    | 'parabola';
+  type: 'point' | 'segment' | 'line' | 'vector' | 'circle' | 'sine' | 'polygon' | 'ray' | 'parabola';
 
   /** Indicates if label should be visible */
   showLabel?: boolean;
@@ -76,12 +63,6 @@ interface Mark {
 
   /** Indicates where end the mark if type is line, segment, ray, vector */
   to?: Point;
-
-  /** Indicates the center of circle if type is circle */
-  center?: Point;
-
-  /** Indicates a point on circle's exterior if type is circle  */
-  outerPoint?: Point;
 
   /** Indicates if mark is closed if type is polygon, sine */
   closed?: boolean;
@@ -171,16 +152,7 @@ export interface GraphingPie extends PieModel {
   coordinatesOnHover?: boolean;
 
   /** Indicates the default selected tool for the graph */
-  defaultTool:
-    | 'point'
-    | 'segment'
-    | 'line'
-    | 'vector'
-    | 'circle'
-    | 'sine'
-    | 'polygon'
-    | 'ray'
-    | 'parabola';
+  defaultTool: 'point' | 'segment' | 'line' | 'vector' | 'circle' | 'sine' | 'polygon' | 'ray' | 'parabola';
 
   /** Indicates domain settings for the graph */
   domain: GraphSettings;

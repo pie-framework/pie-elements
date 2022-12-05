@@ -2,14 +2,7 @@ const path = require('path');
 const fs = require('fs-extra');
 const _ = require('lodash');
 
-const blacklist = [
-  'pie-models',
-  'math-inline',
-  'protractor',
-  'ruler',
-  'calculator',
-  'select-text',
-];
+const blacklist = ['pie-models', 'math-inline', 'protractor', 'ruler', 'calculator', 'select-text'];
 
 const packagesDir = path.resolve(__dirname, '../packages');
 /** Pslb will only support pie packages that have a configure and controller subpkg */
@@ -26,14 +19,12 @@ const listPackages = () => {
       .filter((f) => !blacklist.includes(f))
       .map((f) => {
         try {
-          const rootPkg = fs.readJsonSync(
-            path.join(packagesDir, f, 'package.json')
-          );
+          const rootPkg = fs.readJsonSync(path.join(packagesDir, f, 'package.json'));
           return rootPkg.name;
         } catch (e) {
           console.warn(`error for: ${f}, ${e.message}`);
         }
-      })
+      }),
   );
 };
 

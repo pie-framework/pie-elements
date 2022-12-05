@@ -4,14 +4,14 @@ import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
 import Category from './category';
 
-const styles = theme => ({
+const styles = (theme) => ({
   categories: {
-    marginBottom: theme.spacing.unit
+    marginBottom: theme.spacing.unit,
   },
   categoriesHolder: {
     display: 'grid',
     gridRowGap: `${theme.spacing.unit}px`,
-    gridColumnGap: `${theme.spacing.unit}px`
+    gridColumnGap: `${theme.spacing.unit}px`,
   },
   row: {
     display: 'grid',
@@ -20,14 +20,14 @@ const styles = theme => ({
     alignItems: 'baseline',
     width: '100%',
     marginTop: theme.spacing.unit,
-    marginBottom: 2 * theme.spacing.unit
+    marginBottom: 2 * theme.spacing.unit,
   },
   rowLabel: {
-    gridColumn: '1/3'
+    gridColumn: '1/3',
   },
   rowLabelHolder: {
-    width: '100%'
-  }
+    width: '100%',
+  },
 });
 
 export class AlternateResponses extends React.Component {
@@ -35,7 +35,7 @@ export class AlternateResponses extends React.Component {
     altIndex: PropTypes.number.isRequired,
     imageSupport: PropTypes.shape({
       add: PropTypes.func.isRequired,
-      delete: PropTypes.func.isRequired
+      delete: PropTypes.func.isRequired,
     }),
     classes: PropTypes.object.isRequired,
     className: PropTypes.string,
@@ -44,14 +44,18 @@ export class AlternateResponses extends React.Component {
     model: PropTypes.object.isRequired,
     uploadSoundSupport: PropTypes.shape({
       add: PropTypes.func.isRequired,
-      delete: PropTypes.func.isRequired
+      delete: PropTypes.func.isRequired,
     }),
   };
 
   addChoiceToCategory = (choice, categoryId) => {
-    const { altIndex, model: { correctResponse }, onModelChanged } = this.props;
+    const {
+      altIndex,
+      model: { correctResponse },
+      onModelChanged,
+    } = this.props;
 
-    correctResponse.forEach(a => {
+    correctResponse.forEach((a) => {
       if (a.category === categoryId) {
         a.alternateResponses = a.alternateResponses || [];
 
@@ -71,12 +75,16 @@ export class AlternateResponses extends React.Component {
   };
 
   deleteChoiceFromCategory = (category, choice) => {
-    const { altIndex, model: { correctResponse }, onModelChanged } = this.props;
+    const {
+      altIndex,
+      model: { correctResponse },
+      onModelChanged,
+    } = this.props;
 
-    correctResponse.forEach(a => {
+    correctResponse.forEach((a) => {
       if (a.category === category.id) {
         if (a.alternateResponses[altIndex]) {
-          a.alternateResponses[altIndex] = a.alternateResponses[altIndex].filter(altId => altId !== choice.id);
+          a.alternateResponses[altIndex] = a.alternateResponses[altIndex].filter((altId) => altId !== choice.id);
         }
       }
 
@@ -87,19 +95,11 @@ export class AlternateResponses extends React.Component {
   };
 
   render() {
-    const {
-      model,
-      classes,
-      className,
-      categories,
-      imageSupport,
-      spellCheck,
-      uploadSoundSupport
-    } = this.props;
+    const { model, classes, className, categories, imageSupport, spellCheck, uploadSoundSupport } = this.props;
     const { categoriesPerRow } = model;
 
     const holderStyle = {
-      gridTemplateColumns: `repeat(${categoriesPerRow}, 1fr)`
+      gridTemplateColumns: `repeat(${categoriesPerRow}, 1fr)`,
     };
 
     return (
@@ -112,9 +112,7 @@ export class AlternateResponses extends React.Component {
               category={category}
               spellCheck={spellCheck}
               onAddChoice={this.addChoiceToCategory}
-              onDeleteChoice={(choice, choiceIndex) =>
-                this.deleteChoiceFromCategory(category, choice, choiceIndex)
-              }
+              onDeleteChoice={(choice, choiceIndex) => this.deleteChoiceFromCategory(category, choice, choiceIndex)}
               uploadSoundSupport={uploadSoundSupport}
             />
           ))}

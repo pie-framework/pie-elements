@@ -20,7 +20,7 @@ const model = {
   possibleResponses: [],
   duplicateResponses: false,
   maxResponsePerZone: 5,
-  showDashedBorder: true
+  showDashedBorder: true,
 };
 
 describe('Root', () => {
@@ -30,9 +30,9 @@ describe('Root', () => {
     opts = _.extend(
       {
         model,
-        updateAnswer: () => {}
+        updateAnswer: () => {},
       },
-      opts
+      opts,
     );
 
     return shallow(<Root {...opts} />);

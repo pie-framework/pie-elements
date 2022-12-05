@@ -23,10 +23,10 @@ describe('builder', () => {
           choices: [
             {
               id: '1',
-              content: 'content'
-            }
-          ]
-        }
+              content: 'content',
+            },
+          ],
+        },
       ]);
     });
   });

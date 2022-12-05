@@ -12,46 +12,46 @@ import Tooltip from '@material-ui/core/Tooltip';
 
 import Choices from './choices';
 import { createSlateMarkup } from './markupUtils';
-import {generateValidationMessage} from '../utils';
+import { generateValidationMessage } from '../utils';
 const { dropdown, toggle, Panel } = settings;
 
-const styles = theme => ({
+const styles = (theme) => ({
   promptHolder: {
     width: '100%',
     paddingBottom: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit * 2
+    marginBottom: theme.spacing.unit * 2,
   },
   prompt: {
     paddingTop: theme.spacing.unit * 2,
-    width: '100%'
+    width: '100%',
   },
   markup: {
     minHeight: '235px',
     paddingTop: theme.spacing.unit * 2,
     width: '100%',
     '& [data-slate-editor="true"]': {
-      minHeight: '235px'
-    }
+      minHeight: '235px',
+    },
   },
   design: {
-    paddingTop: theme.spacing.unit * 3
+    paddingTop: theme.spacing.unit * 3,
   },
   choiceConfiguration: {
     paddingTop: theme.spacing.unit * 2,
-    paddingBottom: theme.spacing.unit * 2
+    paddingBottom: theme.spacing.unit * 2,
   },
   switchElement: {
     justifyContent: 'space-between',
-    margin: 0
+    margin: 0,
   },
   addButton: {
-    float: 'right'
+    float: 'right',
   },
   text: {
     fontFamily: 'Cerebri Sans',
     fontSize: '16px',
     lineHeight: '19px',
-    color: '#495B8F'
+    color: '#495B8F',
   },
   tooltip: {
     fontSize: '12px',
@@ -61,12 +61,12 @@ const styles = theme => ({
   errorText: {
     fontSize: '12px',
     color: 'red',
-    padding: '5px 0'
+    padding: '5px 0',
   },
   flexContainer: {
     display: 'flex',
-    alignItems: 'end'
-  }
+    alignItems: 'end',
+  },
 });
 
 export class Main extends React.Component {
@@ -79,8 +79,8 @@ export class Main extends React.Component {
     classes: PropTypes.object.isRequired,
     imageSupport: PropTypes.shape({
       add: PropTypes.func.isRequired,
-      delete: PropTypes.func.isRequired
-    })
+      delete: PropTypes.func.isRequired,
+    }),
   };
 
   state = {};
@@ -92,63 +92,56 @@ export class Main extends React.Component {
     renderMath(domNode);
   }
 
-  onModelChange = newVal => {
+  onModelChange = (newVal) => {
     this.props.onModelChanged({
       ...this.props.model,
-      ...newVal
+      ...newVal,
     });
   };
 
-  onPromptChanged = prompt => {
+  onPromptChanged = (prompt) => {
     this.props.onModelChanged({
       ...this.props.model,
-      prompt
+      prompt,
     });
   };
 
-  onRationaleChanged = rationale => {
+  onRationaleChanged = (rationale) => {
     this.props.onModelChanged({
       ...this.props.model,
-      rationale
+      rationale,
     });
   };
 
-  onTeacherInstructionsChanged = teacherInstructions => {
+  onTeacherInstructionsChanged = (teacherInstructions) => {
     this.props.onModelChanged({
       ...this.props.model,
-      teacherInstructions
+      teacherInstructions,
     });
   };
 
-  onMarkupChanged = slateMarkup => {
+  onMarkupChanged = (slateMarkup) => {
     this.props.onModelChanged({
       ...this.props.model,
-      slateMarkup
+      slateMarkup,
     });
   };
 
-  onResponsesChanged = choices => {
+  onResponsesChanged = (choices) => {
     const {
-      model: { correctResponse, markup }
+      model: { correctResponse, markup },
     } = this.props;
     const slateMarkup = createSlateMarkup(markup, choices, correctResponse);
 
     this.props.onModelChanged({
       ...this.props.model,
       slateMarkup,
-      choices
+      choices,
     });
   };
 
   render() {
-    const {
-      classes,
-      model,
-      configuration,
-      onConfigurationChanged,
-      imageSupport,
-      uploadSoundSupport
-    } = this.props;
+    const { classes, model, configuration, onConfigurationChanged, imageSupport, uploadSoundSupport } = this.props;
     const {
       duplicates = {},
       prompt = {},
@@ -164,17 +157,11 @@ export class Main extends React.Component {
       maxImageHeight = {},
       withRubric = {},
     } = configuration || {};
-    const {
-      rationaleEnabled,
-      promptEnabled,
-      teacherInstructionsEnabled,
-      spellCheckEnabled,
-      errors,
-      rubricEnabled
-    } = model || {};
+    const { rationaleEnabled, promptEnabled, teacherInstructionsEnabled, spellCheckEnabled, errors, rubricEnabled } =
+      model || {};
     const toolbarOpts = {};
 
-    const { responseAreasError, choicesError }  = errors || {};
+    const { responseAreasError, choicesError } = errors || {};
     const validationMessage = generateValidationMessage(configuration);
 
     const defaultImageMaxWidth = maxImageWidth && maxImageWidth.prompt;
@@ -195,47 +182,30 @@ export class Main extends React.Component {
             <Panel
               model={model}
               configuration={configuration}
-              onChangeModel={model => this.onModelChange(model)}
-              onChangeConfiguration={configuration =>
-                onConfigurationChanged(configuration, true)
-              }
+              onChangeModel={(model) => this.onModelChange(model)}
+              onChangeConfiguration={(configuration) => onConfigurationChanged(configuration, true)}
               groups={{
                 Settings: {
-                  partialScoring:
-                    partialScoring.settings && toggle(partialScoring.label),
+                  partialScoring: partialScoring.settings && toggle(partialScoring.label),
                   duplicates: duplicates.settings && toggle(duplicates.label),
-                  lockChoiceOrder:
-                    lockChoiceOrder.settings && toggle(lockChoiceOrder.label),
+                  lockChoiceOrder: lockChoiceOrder.settings && toggle(lockChoiceOrder.label),
                   choicesPosition:
-                    choicesPosition.settings &&
-                    dropdown(choicesPosition.label, [
-                      'above',
-                      'below',
-                      'left',
-                      'right'
-                    ])
+                    choicesPosition.settings && dropdown(choicesPosition.label, ['above', 'below', 'left', 'right']),
                 },
                 Properties: {
-                  teacherInstructionsEnabled:
-                    teacherInstructions.settings &&
-                    toggle(teacherInstructions.label),
-                  rationaleEnabled:
-                    rationale.settings && toggle(rationale.label),
-                    spellCheckEnabled:
-                    spellCheck.settings && toggle(spellCheck.label),
+                  teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
+                  rationaleEnabled: rationale.settings && toggle(rationale.label),
+                  spellCheckEnabled: spellCheck.settings && toggle(spellCheck.label),
                   promptEnabled: prompt.settings && toggle(prompt.label),
-                  rubricEnabled: withRubric?.settings && toggle(withRubric?.label)
-                }
+                  rubricEnabled: withRubric?.settings && toggle(withRubric?.label),
+                },
               }}
             />
           }
         >
           <div>
             {teacherInstructionsEnabled && (
-              <InputContainer
-                label={teacherInstructions.label}
-                className={classes.promptHolder}
-              >
+              <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
                 <EditableHtml
                   className={classes.prompt}
                   markup={model.teacherInstructions || ''}
@@ -244,18 +214,15 @@ export class Main extends React.Component {
                   nonEmpty={false}
                   toolbarOpts={toolbarOpts}
                   spellCheck={spellCheckEnabled}
-                  maxImageWidth={maxImageWidth && maxImageWidth.teacherInstructions || defaultImageMaxWidth}
-                  maxImageHeight={maxImageHeight && maxImageHeight.teacherInstructions || defaultImageMaxHeight}
+                  maxImageWidth={(maxImageWidth && maxImageWidth.teacherInstructions) || defaultImageMaxWidth}
+                  maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
                   uploadSoundSupport={uploadSoundSupport}
                   languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
                 />
               </InputContainer>
             )}
             {promptEnabled && (
-              <InputContainer
-                label={prompt.label}
-                className={classes.promptHolder}
-              >
+              <InputContainer label={prompt.label} className={classes.promptHolder}>
                 <EditableHtml
                   className={classes.prompt}
                   markup={model.prompt}
@@ -273,17 +240,15 @@ export class Main extends React.Component {
               </InputContainer>
             )}
             <div className={classes.flexContainer}>
-              <Typography className={classes.text}>
-                Define Template, Choices, and Correct Responses
-              </Typography>
+              <Typography className={classes.text}>Define Template, Choices, and Correct Responses</Typography>
               <Tooltip
-                classes={{tooltip: classes.tooltip}}
+                classes={{ tooltip: classes.tooltip }}
                 disableFocusListener
                 disableTouchListener
                 placement={'right'}
                 title={validationMessage}
               >
-                <Info fontSize={'small'} color={'primary'} style={{marginLeft: '5px'}}/>
+                <Info fontSize={'small'} color={'primary'} style={{ marginLeft: '5px' }} />
               </Tooltip>
             </div>
             {responseAreasError && <div className={classes.errorText}>{responseAreasError}</div>}
@@ -293,7 +258,7 @@ export class Main extends React.Component {
               responseAreaProps={{
                 type: 'drag-in-the-blank',
                 options: {
-                  duplicates: model.duplicates
+                  duplicates: model.duplicates,
                 },
                 maxResponseAreas: maxResponseAreas,
               }}
@@ -318,10 +283,7 @@ export class Main extends React.Component {
               uploadSoundSupport={uploadSoundSupport}
             />
             {rationaleEnabled && (
-              <InputContainer
-                label={rationale.label}
-                className={classes.promptHolder}
-              >
+              <InputContainer label={rationale.label} className={classes.promptHolder}>
                 <EditableHtml
                   className={classes.prompt}
                   markup={model.rationale || ''}
@@ -329,8 +291,8 @@ export class Main extends React.Component {
                   imageSupport={imageSupport}
                   toolbarOpts={toolbarOpts}
                   spellCheck={spellCheckEnabled}
-                  maxImageWidth={maxImageWidth && maxImageWidth.rationale || defaultImageMaxWidth}
-                  maxImageHeight={maxImageHeight && maxImageHeight.rationale || defaultImageMaxHeight}
+                  maxImageWidth={(maxImageWidth && maxImageWidth.rationale) || defaultImageMaxWidth}
+                  maxImageHeight={(maxImageHeight && maxImageHeight.rationale) || defaultImageMaxHeight}
                   uploadSoundSupport={uploadSoundSupport}
                   languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
                 />

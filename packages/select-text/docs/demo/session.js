@@ -19,6 +19,6 @@ module.exports = [
       //   "oldStart": 1088,
       //   "oldEnd": 1225
       // }
-    ]
-  }
+    ],
+  },
 ];

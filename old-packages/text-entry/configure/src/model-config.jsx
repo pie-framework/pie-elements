@@ -11,25 +11,25 @@ class RawModelConfig extends React.Component {
   static propTypes = {
     config: PropTypes.object,
     onChange: PropTypes.func.isRequired,
-    classes: PropTypes.object
+    classes: PropTypes.object,
   };
 
-  onChange = key => event => {
+  onChange = (key) => (event) => {
     this.props.config[key] = event.target.checked;
     this.props.onChange(this.props.config);
   };
 
-  onPromptChange = event => {
+  onPromptChange = (event) => {
     this.props.config.prompt = event.target.value;
     this.props.onChange(this.props.config);
   };
 
-  onAlignmentChange = alignment => {
+  onAlignmentChange = (alignment) => {
     this.props.config.answerAlignment = alignment;
     this.props.onChange(this.props.config);
   };
 
-  onAnswerSizeChange = size => {
+  onAnswerSizeChange = (size) => {
     this.props.config.answerBlankSize = size;
     this.props.onChange(this.props.config);
   };
@@ -39,9 +39,9 @@ class RawModelConfig extends React.Component {
 
     const { allowIntegersOnly } = config;
 
-    const sizeOpts = range(2, 14, 2).map(v => ({
+    const sizeOpts = range(2, 14, 2).map((v) => ({
       label: v.toString(),
-      value: v.toString()
+      value: v.toString(),
     }));
 
     return (
@@ -50,7 +50,7 @@ class RawModelConfig extends React.Component {
         <br />
         <TextField
           classes={{
-            root: classes.promptInput
+            root: classes.promptInput,
           }}
           label="Prompt"
           multiline
@@ -67,11 +67,7 @@ class RawModelConfig extends React.Component {
           />
 
           {allowIntegersOnly && (
-            <InputCheckbox
-              label="Decimals"
-              checked={config.allowDecimal}
-              onChange={this.onChange('allowDecimal')}
-            />
+            <InputCheckbox label="Decimals" checked={config.allowDecimal} onChange={this.onChange('allowDecimal')} />
           )}
           {allowIntegersOnly && (
             <InputCheckbox
@@ -100,7 +96,7 @@ class RawModelConfig extends React.Component {
           opts={[
             { label: 'left', value: 'left' },
             { label: 'center', value: 'center' },
-            { label: 'right', value: 'right' }
+            { label: 'right', value: 'right' },
           ]}
           onChange={this.onAlignmentChange}
         />
@@ -113,12 +109,12 @@ const ModelConfig = withStyles(() => ({
   numberOpts: {
     display: 'flex',
     flexWrap: 'wrap',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
   },
   promptInput: {
     width: '100%',
-    marginBottom: '10px'
-  }
+    marginBottom: '10px',
+  },
 }))(RawModelConfig);
 
 export default ModelConfig;

@@ -23,12 +23,12 @@ export default {
     promptEnabled: true,
     teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true,
-    toolbarEditorPosition: 'bottom'
+    toolbarEditorPosition: 'bottom',
   },
   configuration: {
     choiceLabel: {
       settings: true,
-      label: 'Choice label'
+      label: 'Choice label',
     },
     choices: {
       settings: true,
@@ -41,11 +41,11 @@ export default {
     feedback: {
       settings: true,
       label: 'Feedback',
-      enabled: true
+      enabled: true,
     },
     prompt: {
       settings: true,
-      label: 'Item Stem'
+      label: 'Item Stem',
     },
     numberedGuides: {
       settings: true,
@@ -57,7 +57,7 @@ export default {
     },
     partialScoring: {
       settings: false,
-      label: 'Allow Partial Scoring'
+      label: 'Allow Partial Scoring',
     },
     placementArea: {
       settings: true,
@@ -69,7 +69,7 @@ export default {
     },
     removeTilesAfterPlacing: {
       settings: false,
-      label: 'Remove Tiles after placing'
+      label: 'Remove Tiles after placing',
     },
     scoringType: {
       settings: false,
@@ -85,8 +85,8 @@ export default {
     },
     spellCheck: {
       label: 'Spellcheck',
-      settings:false,
-      enabled:true
+      settings: false,
+      enabled: true,
     },
     teacherInstructions: {
       settings: true,
@@ -103,11 +103,11 @@ export default {
       teacherInstructions: 300,
       prompt: 300,
       rationale: 300,
-      choices: 150
+      choices: 150,
     },
     withRubric: {
       settings: false,
-      label: 'Add Rubric'
-    }
-  }
+      label: 'Add Rubric',
+    },
+  },
 };

@@ -14,12 +14,12 @@ describe('NumberLine', () => {
       classes: {},
       model: {
         graph: {
-          domain: [0, 1]
-        }
+          domain: [0, 1],
+        },
       },
       onMoveElement,
       onDeleteElements,
-      onAddElement
+      onAddElement,
     };
 
     props = _.merge(defaults, props);
@@ -42,7 +42,7 @@ describe('NumberLine', () => {
       expect(
         mkWrapper({ model: { graph: { width: 1001 } } })
           .find(Graph)
-          .prop('width')
+          .prop('width'),
       ).toEqual(1001);
     });
   });

@@ -20,6 +20,7 @@ exports[`CorrectResponse renders snapshot 1`] = `
   </WithStyles(Typography)>
   <Tools
     classes={Object {}}
+    hasErrors={false}
     onDefaultToolChange={[Function]}
     toggleToolBarTool={[Function]}
     toolbarTools={
@@ -68,6 +69,7 @@ exports[`CorrectResponse: if answers is null it should still work as expected re
   </WithStyles(Typography)>
   <Tools
     classes={Object {}}
+    hasErrors={false}
     onDefaultToolChange={[Function]}
     toggleToolBarTool={[Function]}
     toolbarTools={Array []}
@@ -103,6 +105,7 @@ exports[`CorrectResponse: if answers is undefined it should still work as expect
   </WithStyles(Typography)>
   <Tools
     classes={Object {}}
+    hasErrors={false}
     onDefaultToolChange={[Function]}
     toggleToolBarTool={[Function]}
     toolbarTools={Array []}

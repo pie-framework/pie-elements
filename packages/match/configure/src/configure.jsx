@@ -1,11 +1,6 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import {
-  FeedbackConfig,
-  settings,
-  layout,
-  InputContainer
-} from '@pie-lib/config-ui';
+import { FeedbackConfig, settings, layout, InputContainer } from '@pie-lib/config-ui';
 import EditableHtml from '@pie-lib/editable-html';
 import { withDragContext } from '@pie-lib/drag';
 import PropTypes from 'prop-types';
@@ -16,24 +11,24 @@ import AnswerConfigBlock from './answer-config-block';
 const log = debug('@pie-element:match:configure');
 const { Panel, toggle, radio } = settings;
 
-const styles = theme => ({
+const styles = (theme) => ({
   title: {
     fontSize: '1.1rem',
     display: 'block',
     marginTop: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit
+    marginBottom: theme.spacing.unit,
   },
   content: {
-    marginTop: theme.spacing.unit * 2
+    marginTop: theme.spacing.unit * 2,
   },
   promptHolder: {
     width: '100%',
-    paddingTop: theme.spacing.unit * 2
+    paddingTop: theme.spacing.unit * 2,
   },
   prompt: {
     paddingTop: theme.spacing.unit * 2,
-    width: '100%'
-  }
+    width: '100%',
+  },
 });
 
 class Configure extends React.Component {
@@ -45,16 +40,16 @@ class Configure extends React.Component {
     configuration: PropTypes.object.isRequired,
     imageSupport: PropTypes.shape({
       add: PropTypes.func.isRequired,
-      delete: PropTypes.func.isRequired
+      delete: PropTypes.func.isRequired,
     }),
     uploadSoundSupport: PropTypes.shape({
       add: PropTypes.func.isRequired,
-      delete: PropTypes.func.isRequired
+      delete: PropTypes.func.isRequired,
     }),
   };
 
   static defaultProps = {
-    classes: {}
+    classes: {},
   };
 
   constructor(props) {
@@ -63,7 +58,7 @@ class Configure extends React.Component {
     this.rowIdCounter = props.model.rows[props.model.rows.length - 1].id + 1;
 
     this.state = {
-      activeTab: 0
+      activeTab: 0,
     };
   }
 
@@ -71,21 +66,21 @@ class Configure extends React.Component {
     this.setState({ activeTab: value });
   };
 
-  onChangeTabIndex = index => {
+  onChangeTabIndex = (index) => {
     this.setState({ activeTab: index });
   };
 
-  onChange = model => {
+  onChange = (model) => {
     this.props.onModelChanged(model);
   };
 
-  onFeedbackChange = feedback => {
+  onFeedbackChange = (feedback) => {
     const { model, onModelChanged } = this.props;
     model.feedback = feedback;
     onModelChanged(model);
   };
 
-  onDeleteRow = rowIndex => {
+  onDeleteRow = (rowIndex) => {
     const { model } = this.props;
 
     const newModel = { ...model };
@@ -102,7 +97,7 @@ class Configure extends React.Component {
     newModel.rows = newModel.rows.concat({
       id: this.rowIdCounter + 1,
       title: `Question Text ${newModel.rows.length + 1}`,
-      values: new Array(model.layout - 1).fill(false)
+      values: new Array(model.layout - 1).fill(false),
     });
 
     this.rowIdCounter += 1;
@@ -110,7 +105,7 @@ class Configure extends React.Component {
     this.onChange(newModel);
   };
 
-  onLayoutChange = newLayout => {
+  onLayoutChange = (newLayout) => {
     const { model } = this.props;
     const oldLayout = model.layout;
     const newModel = { ...model };
@@ -120,7 +115,7 @@ class Configure extends React.Component {
         newModel.headers.push(`Column ${newModel.headers.length + 1}`);
       }
 
-      newModel.rows.forEach(row => {
+      newModel.rows.forEach((row) => {
         for (let i = 0; i < newLayout - oldLayout; i++) {
           row.values.push(false);
         }
@@ -128,7 +123,7 @@ class Configure extends React.Component {
     } else if (newLayout < oldLayout) {
       newModel.headers.splice(newLayout);
 
-      newModel.rows.forEach(row => {
+      newModel.rows.forEach((row) => {
         row.values.splice(newLayout - 1);
       });
     }
@@ -138,16 +133,14 @@ class Configure extends React.Component {
     this.onChange(newModel);
   };
 
-  onResponseTypeChange = newChoiceMode => {
+  onResponseTypeChange = (newChoiceMode) => {
     const { model } = this.props;
     const newModel = { ...model };
 
     // if we're switching to radio and we have more than one true, reset
     if (newChoiceMode === 'radio') {
-      newModel.rows.forEach(row => {
-        const trueCount = row.values.reduce((total, current) =>
-          current === true ? total + 1 : total
-        );
+      newModel.rows.forEach((row) => {
+        const trueCount = row.values.reduce((total, current) => (current === true ? total + 1 : total));
 
         if (trueCount > 1) {
           row.values = new Array(model.layout - 1).fill(false);
@@ -160,42 +153,35 @@ class Configure extends React.Component {
     this.onChange(newModel);
   };
 
-  onPartialScoringChange = partialScoring => {
+  onPartialScoringChange = (partialScoring) => {
     this.props.model.partialScoring = partialScoring;
     this.props.onModelChanged(this.props.model);
   };
 
-  onPromptChanged = prompt => {
+  onPromptChanged = (prompt) => {
     this.props.onModelChanged({
       ...this.props.model,
-      prompt
+      prompt,
     });
   };
 
-  onTeacherInstructionsChanged = teacherInstructions => {
+  onTeacherInstructionsChanged = (teacherInstructions) => {
     this.props.onModelChanged({
       ...this.props.model,
-      teacherInstructions
+      teacherInstructions,
     });
   };
 
-  onRationaleChanged = rationale => {
+  onRationaleChanged = (rationale) => {
     this.props.onModelChanged({
       ...this.props.model,
-      rationale
+      rationale,
     });
   };
 
   render() {
-    const {
-      classes,
-      model,
-      imageSupport,
-      onModelChanged,
-      configuration,
-      onConfigurationChanged,
-      uploadSoundSupport
-    } = this.props;
+    const { classes, model, imageSupport, onModelChanged, configuration, onConfigurationChanged, uploadSoundSupport } =
+      this.props;
     const {
       enableImages = {},
       partialScoring = {},
@@ -209,7 +195,7 @@ class Configure extends React.Component {
       spellCheck = {},
       maxImageWidth = {},
       maxImageHeight = {},
-      withRubric = {}
+      withRubric = {},
     } = configuration || {};
     const {
       teacherInstructionsEnabled,
@@ -217,7 +203,7 @@ class Configure extends React.Component {
       rationaleEnabled,
       spellCheckEnabled,
       feedbackEnabled,
-      rubricEnabled
+      rubricEnabled,
     } = model || {};
 
     const toolbarOpts = {};
@@ -242,45 +228,31 @@ class Configure extends React.Component {
           <Panel
             model={model}
             configuration={configuration}
-            onChangeModel={model => onModelChanged(model)}
-            onChangeConfiguration={config => onConfigurationChanged(config)}
+            onChangeModel={(model) => onModelChanged(model)}
+            onChangeConfiguration={(config) => onConfigurationChanged(config)}
             groups={{
               Settings: {
-                enableImages:
-                  enableImages.settings && toggle(enableImages.label),
-                partialScoring:
-                  partialScoring.settings && toggle(partialScoring.label),
-                lockChoiceOrder:
-                  lockChoiceOrder.settings && toggle(lockChoiceOrder.label),
-                feedbackEnabled:
-                  feedback.settings && toggle(feedback.label)
+                enableImages: enableImages.settings && toggle(enableImages.label),
+                partialScoring: partialScoring.settings && toggle(partialScoring.label),
+                lockChoiceOrder: lockChoiceOrder.settings && toggle(lockChoiceOrder.label),
+                feedbackEnabled: feedback.settings && toggle(feedback.label),
               },
               Properties: {
-                teacherInstructionsEnabled:
-                  teacherInstructions.settings &&
-                  toggle(teacherInstructions.label),
-                studentInstructionsEnabled:
-                  studentInstructions.settings &&
-                  toggle(studentInstructions.label),
+                teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
+                studentInstructionsEnabled: studentInstructions.settings && toggle(studentInstructions.label),
                 promptEnabled: prompt.settings && toggle(prompt.label),
                 rationaleEnabled: rationale.settings && toggle(rationale.label),
-                spellCheckEnabled:
-                spellCheck.settings && toggle(spellCheck.label),
-                scoringType:
-                  scoringType.settings &&
-                  radio(scoringType.label, ['auto', 'rubric']),
-                rubricEnabled: withRubric?.settings && toggle(withRubric?.label)
-              }
+                spellCheckEnabled: spellCheck.settings && toggle(spellCheck.label),
+                scoringType: scoringType.settings && radio(scoringType.label, ['auto', 'rubric']),
+                rubricEnabled: withRubric?.settings && toggle(withRubric?.label),
+              },
             }}
           />
         }
       >
         <div className={classes.content}>
           {teacherInstructionsEnabled && (
-            <InputContainer
-              label={teacherInstructions.label}
-              className={classes.promptHolder}
-            >
+            <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
               <EditableHtml
                 className={classes.prompt}
                 markup={model.teacherInstructions || ''}
@@ -289,8 +261,8 @@ class Configure extends React.Component {
                 nonEmpty={false}
                 toolbarOpts={toolbarOpts}
                 spellCheck={spellCheckEnabled}
-                maxImageWidth={maxImageWidth && maxImageWidth.teacherInstructions || defaultImageMaxWidth}
-                maxImageHeight={maxImageHeight && maxImageHeight.teacherInstructions || defaultImageMaxHeight}
+                maxImageWidth={(maxImageWidth && maxImageWidth.teacherInstructions) || defaultImageMaxWidth}
+                maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
                 uploadSoundSupport={uploadSoundSupport}
                 languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               />
@@ -298,10 +270,7 @@ class Configure extends React.Component {
           )}
 
           {promptEnabled && (
-            <InputContainer
-              label={prompt.label}
-              className={classes.promptHolder}
-            >
+            <InputContainer label={prompt.label} className={classes.promptHolder}>
               <EditableHtml
                 className={classes.prompt}
                 markup={model.prompt}
@@ -320,10 +289,7 @@ class Configure extends React.Component {
           )}
 
           {rationaleEnabled && (
-            <InputContainer
-              label={rationale.label}
-              className={classes.promptHolder}
-            >
+            <InputContainer label={rationale.label} className={classes.promptHolder}>
               <EditableHtml
                 className={classes.prompt}
                 markup={model.rationale || ''}
@@ -331,8 +297,8 @@ class Configure extends React.Component {
                 imageSupport={imageSupport}
                 toolbarOpts={toolbarOpts}
                 spellCheck={spellCheckEnabled}
-                maxImageWidth={maxImageWidth && maxImageWidth.rationale || defaultImageMaxWidth}
-                maxImageHeight={maxImageHeight && maxImageHeight.rationale || defaultImageMaxHeight}
+                maxImageWidth={(maxImageWidth && maxImageWidth.rationale) || defaultImageMaxWidth}
+                maxImageHeight={(maxImageHeight && maxImageHeight.rationale) || defaultImageMaxHeight}
                 uploadSoundSupport={uploadSoundSupport}
                 languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               />
@@ -356,11 +322,7 @@ class Configure extends React.Component {
             uploadSoundSupport={uploadSoundSupport}
           />
           {feedbackEnabled && (
-            <FeedbackConfig
-              feedback={model.feedback}
-              onChange={this.onFeedbackChange}
-              toolbarOpts={toolbarOpts}
-            />
+            <FeedbackConfig feedback={model.feedback} onChange={this.onFeedbackChange} toolbarOpts={toolbarOpts} />
           )}
         </div>
       </layout.ConfigLayout>

@@ -7,7 +7,7 @@ import AddButton from '@material-ui/icons/Add';
 export class AddPointButton extends React.Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
-    onAddClick: PropTypes.func.isRequired
+    onAddClick: PropTypes.func.isRequired,
   };
 
   render() {
@@ -22,11 +22,11 @@ export class AddPointButton extends React.Component {
   }
 }
 
-const styles = theme => ({
+const styles = (theme) => ({
   button: {
     margin: 0,
-    marginBottom: theme.spacing.unit * 2
-  }
+    marginBottom: theme.spacing.unit * 2,
+  },
 });
 
 export default withStyles(styles)(AddPointButton);

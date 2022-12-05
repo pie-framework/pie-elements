@@ -105,46 +105,6 @@
                         "y"
                       ]
                     },
-                    "center": {
-                      "title": "Point",
-                      "type": "object",
-                      "properties": {
-                        "x": {
-                          "description": "Indicates x coordinate",
-                          "type": "number",
-                          "title": "x"
-                        },
-                        "y": {
-                          "description": "Indicates y coordinate",
-                          "type": "number",
-                          "title": "y"
-                        }
-                      },
-                      "required": [
-                        "x",
-                        "y"
-                      ]
-                    },
-                    "outerPoint": {
-                      "title": "Point",
-                      "type": "object",
-                      "properties": {
-                        "x": {
-                          "description": "Indicates x coordinate",
-                          "type": "number",
-                          "title": "x"
-                        },
-                        "y": {
-                          "description": "Indicates y coordinate",
-                          "type": "number",
-                          "title": "y"
-                        }
-                      },
-                      "required": [
-                        "x",
-                        "y"
-                      ]
-                    },
                     "closed": {
                       "description": "Indicates if mark is closed if type is polygon, sine",
                       "type": "boolean",
@@ -318,46 +278,6 @@
                         ]
                       },
                       "to": {
-                        "title": "Point",
-                        "type": "object",
-                        "properties": {
-                          "x": {
-                            "description": "Indicates x coordinate",
-                            "type": "number",
-                            "title": "x"
-                          },
-                          "y": {
-                            "description": "Indicates y coordinate",
-                            "type": "number",
-                            "title": "y"
-                          }
-                        },
-                        "required": [
-                          "x",
-                          "y"
-                        ]
-                      },
-                      "center": {
-                        "title": "Point",
-                        "type": "object",
-                        "properties": {
-                          "x": {
-                            "description": "Indicates x coordinate",
-                            "type": "number",
-                            "title": "x"
-                          },
-                          "y": {
-                            "description": "Indicates y coordinate",
-                            "type": "number",
-                            "title": "y"
-                          }
-                        },
-                        "required": [
-                          "x",
-                          "y"
-                        ]
-                      },
-                      "outerPoint": {
                         "title": "Point",
                         "type": "object",
                         "properties": {
@@ -588,46 +508,6 @@
                         "y"
                       ]
                     },
-                    "center": {
-                      "title": "Point",
-                      "type": "object",
-                      "properties": {
-                        "x": {
-                          "description": "Indicates x coordinate",
-                          "type": "number",
-                          "title": "x"
-                        },
-                        "y": {
-                          "description": "Indicates y coordinate",
-                          "type": "number",
-                          "title": "y"
-                        }
-                      },
-                      "required": [
-                        "x",
-                        "y"
-                      ]
-                    },
-                    "outerPoint": {
-                      "title": "Point",
-                      "type": "object",
-                      "properties": {
-                        "x": {
-                          "description": "Indicates x coordinate",
-                          "type": "number",
-                          "title": "x"
-                        },
-                        "y": {
-                          "description": "Indicates y coordinate",
-                          "type": "number",
-                          "title": "y"
-                        }
-                      },
-                      "required": [
-                        "x",
-                        "y"
-                      ]
-                    },
                     "closed": {
                       "description": "Indicates if mark is closed if type is polygon, sine",
                       "type": "boolean",
@@ -801,46 +681,6 @@
                         ]
                       },
                       "to": {
-                        "title": "Point",
-                        "type": "object",
-                        "properties": {
-                          "x": {
-                            "description": "Indicates x coordinate",
-                            "type": "number",
-                            "title": "x"
-                          },
-                          "y": {
-                            "description": "Indicates y coordinate",
-                            "type": "number",
-                            "title": "y"
-                          }
-                        },
-                        "required": [
-                          "x",
-                          "y"
-                        ]
-                      },
-                      "center": {
-                        "title": "Point",
-                        "type": "object",
-                        "properties": {
-                          "x": {
-                            "description": "Indicates x coordinate",
-                            "type": "number",
-                            "title": "x"
-                          },
-                          "y": {
-                            "description": "Indicates y coordinate",
-                            "type": "number",
-                            "title": "y"
-                          }
-                        },
-                        "required": [
-                          "x",
-                          "y"
-                        ]
-                      },
-                      "outerPoint": {
                         "title": "Point",
                         "type": "object",
                         "properties": {
@@ -1101,46 +941,6 @@
                 "y"
               ]
             },
-            "center": {
-              "title": "Point",
-              "type": "object",
-              "properties": {
-                "x": {
-                  "description": "Indicates x coordinate",
-                  "type": "number",
-                  "title": "x"
-                },
-                "y": {
-                  "description": "Indicates y coordinate",
-                  "type": "number",
-                  "title": "y"
-                }
-              },
-              "required": [
-                "x",
-                "y"
-              ]
-            },
-            "outerPoint": {
-              "title": "Point",
-              "type": "object",
-              "properties": {
-                "x": {
-                  "description": "Indicates x coordinate",
-                  "type": "number",
-                  "title": "x"
-                },
-                "y": {
-                  "description": "Indicates y coordinate",
-                  "type": "number",
-                  "title": "y"
-                }
-              },
-              "required": [
-                "x",
-                "y"
-              ]
-            },
             "closed": {
               "description": "Indicates if mark is closed if type is polygon, sine",
               "type": "boolean",
@@ -1314,46 +1114,6 @@
                 ]
               },
               "to": {
-                "title": "Point",
-                "type": "object",
-                "properties": {
-                  "x": {
-                    "description": "Indicates x coordinate",
-                    "type": "number",
-                    "title": "x"
-                  },
-                  "y": {
-                    "description": "Indicates y coordinate",
-                    "type": "number",
-                    "title": "y"
-                  }
-                },
-                "required": [
-                  "x",
-                  "y"
-                ]
-              },
-              "center": {
-                "title": "Point",
-                "type": "object",
-                "properties": {
-                  "x": {
-                    "description": "Indicates x coordinate",
-                    "type": "number",
-                    "title": "x"
-                  },
-                  "y": {
-                    "description": "Indicates y coordinate",
-                    "type": "number",
-                    "title": "y"
-                  }
-                },
-                "required": [
-                  "x",
-                  "y"
-                ]
-              },
-              "outerPoint": {
                 "title": "Point",
                 "type": "object",
                 "properties": {
@@ -2571,46 +2331,6 @@
                     "y"
                   ]
                 },
-                "center": {
-                  "title": "Point",
-                  "type": "object",
-                  "properties": {
-                    "x": {
-                      "description": "Indicates x coordinate",
-                      "type": "number",
-                      "title": "x"
-                    },
-                    "y": {
-                      "description": "Indicates y coordinate",
-                      "type": "number",
-                      "title": "y"
-                    }
-                  },
-                  "required": [
-                    "x",
-                    "y"
-                  ]
-                },
-                "outerPoint": {
-                  "title": "Point",
-                  "type": "object",
-                  "properties": {
-                    "x": {
-                      "description": "Indicates x coordinate",
-                      "type": "number",
-                      "title": "x"
-                    },
-                    "y": {
-                      "description": "Indicates y coordinate",
-                      "type": "number",
-                      "title": "y"
-                    }
-                  },
-                  "required": [
-                    "x",
-                    "y"
-                  ]
-                },
                 "closed": {
                   "description": "Indicates if mark is closed if type is polygon, sine",
                   "type": "boolean",
@@ -2784,46 +2504,6 @@
                     ]
                   },
                   "to": {
-                    "title": "Point",
-                    "type": "object",
-                    "properties": {
-                      "x": {
-                        "description": "Indicates x coordinate",
-                        "type": "number",
-                        "title": "x"
-                      },
-                      "y": {
-                        "description": "Indicates y coordinate",
-                        "type": "number",
-                        "title": "y"
-                      }
-                    },
-                    "required": [
-                      "x",
-                      "y"
-                    ]
-                  },
-                  "center": {
-                    "title": "Point",
-                    "type": "object",
-                    "properties": {
-                      "x": {
-                        "description": "Indicates x coordinate",
-                        "type": "number",
-                        "title": "x"
-                      },
-                      "y": {
-                        "description": "Indicates y coordinate",
-                        "type": "number",
-                        "title": "y"
-                      }
-                    },
-                    "required": [
-                      "x",
-                      "y"
-                    ]
-                  },
-                  "outerPoint": {
                     "title": "Point",
                     "type": "object",
                     "properties": {
@@ -3022,46 +2702,6 @@
           ]
         },
         "to": {
-          "title": "Point",
-          "type": "object",
-          "properties": {
-            "x": {
-              "description": "Indicates x coordinate",
-              "type": "number",
-              "title": "x"
-            },
-            "y": {
-              "description": "Indicates y coordinate",
-              "type": "number",
-              "title": "y"
-            }
-          },
-          "required": [
-            "x",
-            "y"
-          ]
-        },
-        "center": {
-          "title": "Point",
-          "type": "object",
-          "properties": {
-            "x": {
-              "description": "Indicates x coordinate",
-              "type": "number",
-              "title": "x"
-            },
-            "y": {
-              "description": "Indicates y coordinate",
-              "type": "number",
-              "title": "y"
-            }
-          },
-          "required": [
-            "x",
-            "y"
-          ]
-        },
-        "outerPoint": {
           "title": "Point",
           "type": "object",
           "properties": {

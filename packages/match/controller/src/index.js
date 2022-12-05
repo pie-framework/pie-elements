@@ -52,7 +52,7 @@ const getCheckboxes = (rows, answers) => {
   let correctAnswers = 0;
   let incorrectAnswers = 0;
 
-  rows.forEach(row => {
+  rows.forEach((row) => {
     const answer = answers[row.id];
 
     if (answer) {
@@ -72,7 +72,7 @@ const getCheckboxes = (rows, answers) => {
 const getCorrectRadios = (rows, answers) => {
   let correctAnswers = 0;
 
-  rows.forEach(row => {
+  rows.forEach((row) => {
     if (isEqual(row.values, answers[row.id])) {
       correctAnswers += 1;
     }
@@ -81,17 +81,17 @@ const getCorrectRadios = (rows, answers) => {
   return correctAnswers;
 };
 
-const getTotalCorrect = question => {
+const getTotalCorrect = (question) => {
   const checkboxMode = question.choiceMode === 'checkbox';
   const matchingTable = checkboxMode ? question.layout - 1 : 1;
   return (question.rows.length || 0) * matchingTable;
 };
 
-const getTotalCorrectAnswers = question => {
+const getTotalCorrectAnswers = (question) => {
   let noOfTotalCorrectAnswers = 0;
 
-  question.rows.forEach(row => {
-    row.values.forEach(value => {
+  question.rows.forEach((row) => {
+    row.values.forEach((value) => {
       if (value) {
         noOfTotalCorrectAnswers += 1;
       }
@@ -111,7 +111,7 @@ const getPartialScore = (question, answers) => {
     const total = totalCorrect === 0 ? 1 : totalCorrect;
 
     if (correctAnswers + incorrectAnswers > totalCorrect) {
-      const extraAnswers = (correctAnswers + incorrectAnswers) - totalCorrect;
+      const extraAnswers = correctAnswers + incorrectAnswers - totalCorrect;
       const score = parseFloat(((correctAnswers - extraAnswers) / total).toFixed(2));
 
       return score < 0 ? 0 : score;
@@ -133,12 +133,12 @@ const getOutComeScore = (question, env, answers = {}) => {
   return correctness === 'correct'
     ? 1
     : correctness === 'partial' && isPartialScoring
-      ? getPartialScore(question, answers)
-      : 0;
+    ? getPartialScore(question, answers)
+    : 0;
 };
 
 export const outcome = (question, session, env) => {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     if (env.mode !== 'evaluate') {
       resolve({ score: undefined, completed: undefined });
     } else {
@@ -147,7 +147,7 @@ export const outcome = (question, session, env) => {
       }
 
       const out = {
-        score: getOutComeScore(question, env, session.answers)
+        score: getOutComeScore(question, env, session.answers),
       };
 
       resolve(out);
@@ -156,15 +156,15 @@ export const outcome = (question, session, env) => {
 };
 
 export function createDefaultModel(model = {}) {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     resolve({
       ...defaults,
-      ...model
+      ...model,
     });
   });
 }
 
-export const normalize = question => ({
+export const normalize = (question) => ({
   feedbackEnabled: true,
   promptEnabled: true,
   rationaleEnabled: true,
@@ -181,7 +181,7 @@ export const normalize = question => ({
  * @param {*} updateSession - optional - a function that will set the properties passed into it on the session.
  */
 export function model(question, session, env, updateSession) {
-  return new Promise(async resolve => {
+  return new Promise(async (resolve) => {
     const normalizedQuestion = cloneDeep(normalize(question));
     let correctness, score;
 
@@ -190,28 +190,22 @@ export function model(question, session, env, updateSession) {
       score = '0%';
     } else {
       correctness = getCorrectness(normalizedQuestion, env, session && session.answers);
-      score = `${getOutComeScore(normalizedQuestion, env, session && session.answers) *
-      100}%`;
+      score = `${getOutComeScore(normalizedQuestion, env, session && session.answers) * 100}%`;
     }
 
     const correctResponse = {};
     const correctInfo = {
       score,
-      correctness
+      correctness,
     };
 
     const lockChoiceOrder = lockChoices(normalizedQuestion, session, env);
 
     if (!lockChoiceOrder) {
-      normalizedQuestion.rows = await getShuffledChoices(
-        normalizedQuestion.rows,
-        session,
-        updateSession,
-        'id'
-      );
+      normalizedQuestion.rows = await getShuffledChoices(normalizedQuestion.rows, session, updateSession, 'id');
     }
 
-    normalizedQuestion.rows.forEach(row => {
+    normalizedQuestion.rows.forEach((row) => {
       correctResponse[row.id] = row.values;
 
       if (env.mode !== 'evaluate') {
@@ -224,23 +218,20 @@ export function model(question, session, env, updateSession) {
         ? getFeedbackForCorrectness(correctInfo.correctness, normalizedQuestion.feedback)
         : Promise.resolve(undefined);
 
-    fb.then(feedback => {
+    fb.then((feedback) => {
       const out = {
         allowFeedback: normalizedQuestion.feedbackEnabled,
         prompt: normalizedQuestion.promptEnabled ? normalizedQuestion.prompt : null,
         config: {
           ...normalizedQuestion,
-          shuffled: !normalizedQuestion.lockChoiceOrder
+          shuffled: !normalizedQuestion.lockChoiceOrder,
         },
         feedback,
         disabled: env.mode !== 'gather',
-        view: env.mode === 'view'
+        view: env.mode === 'view',
       };
 
-      if (
-        env.role === 'instructor' &&
-        (env.mode === 'view' || env.mode === 'evaluate')
-      ) {
+      if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
         out.teacherInstructions = normalizedQuestion.teacherInstructionsEnabled
           ? normalizedQuestion.teacherInstructions
           : null;
@@ -266,18 +257,18 @@ export function model(question, session, env, updateSession) {
 }
 
 export const createCorrectResponseSession = (question, env) => {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     if (env.mode !== 'evaluate' && env.role === 'instructor') {
       const { rows } = question;
       const answers = {};
 
-      rows.forEach(r => {
+      rows.forEach((r) => {
         answers[r.id] = r.values;
       });
 
       resolve({
         answers,
-        id: '1'
+        id: '1',
       });
     } else {
       resolve(null);
@@ -289,11 +280,11 @@ export const validate = (model = {}, config = {}) => {
   const { rows, choiceMode } = model;
   const rowsErrors = {};
 
-  (rows || []).forEach(row => {
+  (rows || []).forEach((row) => {
     const { id, values = [] } = row;
     let hasCorrectResponse = false;
 
-    values.forEach(value => {
+    values.forEach((value) => {
       if (value) {
         hasCorrectResponse = true;
       }
@@ -308,9 +299,10 @@ export const validate = (model = {}, config = {}) => {
 
   if (!isEmpty(rowsErrors)) {
     errors.rowsErrors = rowsErrors;
-    errors.correctResponseError = choiceMode === 'radio'
-      ? 'There should be a correct response defined for every row.'
-      : 'There should be at least one correct response defined for every row.';
+    errors.correctResponseError =
+      choiceMode === 'radio'
+        ? 'There should be a correct response defined for every row.'
+        : 'There should be at least one correct response defined for every row.';
   }
 
   return errors;

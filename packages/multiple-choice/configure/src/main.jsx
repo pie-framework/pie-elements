@@ -1,13 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import EditableHtml from '@pie-lib/editable-html';
-import {
-  InputContainer,
-  ChoiceConfiguration,
-  settings,
-  layout,
-  choiceUtils as utils,
-} from '@pie-lib/config-ui';
+import { InputContainer, ChoiceConfiguration, settings, layout, choiceUtils as utils } from '@pie-lib/config-ui';
 import { color } from '@pie-lib/render-ui';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
@@ -80,25 +74,25 @@ const styles = (theme) => ({
   flexContainer: {
     display: 'flex',
     alignItems: 'center',
-    marginBottom: '5px'
+    marginBottom: '5px',
   },
   titleText: {
     fontFamily: 'Cerebri Sans',
     fontSize: '18px',
     lineHeight: '19px',
     color: '#495B8F',
-    marginRight: '5px'
+    marginRight: '5px',
   },
   tooltip: {
     fontSize: '12px',
     whiteSpace: 'pre',
-    maxWidth: '500px'
+    maxWidth: '500px',
   },
   errorText: {
     fontSize: '12px',
     color: 'red',
-    paddingTop: '5px'
-  }
+    paddingTop: '5px',
+  },
 });
 
 const Design = withStyles(styles)((props) => {
@@ -151,13 +145,12 @@ const Design = withStyles(styles)((props) => {
     spellCheckEnabled,
     choices,
     errors,
-    rubricEnabled
+    rubricEnabled,
   } = model || {};
 
   const { choicesErrors, correctResponseError, answerChoicesError } = errors || {};
-  const nrOfColumnsAvailable = choices && choices.length
-    ? Array.from({ length: choices.length }, (_, i) => `${i + 1}`)
-    : [];
+  const nrOfColumnsAvailable =
+    choices && choices.length ? Array.from({ length: choices.length }, (_, i) => `${i + 1}`) : [];
 
   const labelPlugins = {
     audio: { disabled: true },
@@ -187,10 +180,7 @@ const Design = withStyles(styles)((props) => {
   const Content = (
     <div>
       {teacherInstructionsEnabled && (
-        <InputContainer
-          label={teacherInstructions.label}
-          className={classes.promptHolder}
-        >
+        <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
           <EditableHtml
             className={classes.prompt}
             markup={model.teacherInstructions || ''}
@@ -199,8 +189,8 @@ const Design = withStyles(styles)((props) => {
             nonEmpty={false}
             toolbarOpts={toolbarOpts}
             spellCheck={spellCheckEnabled}
-            maxImageWidth={maxImageWidth && maxImageWidth.teacherInstructions || defaultImageMaxWidth}
-            maxImageHeight={maxImageHeight && maxImageHeight.teacherInstructions || defaultImageMaxHeight}
+            maxImageWidth={(maxImageWidth && maxImageWidth.teacherInstructions) || defaultImageMaxWidth}
+            maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
             uploadSoundSupport={uploadSoundSupport}
             languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
           />
@@ -234,16 +224,13 @@ const Design = withStyles(styles)((props) => {
           placement={'right'}
           title={validationMessage}
         >
-          <Info fontSize={'small'} color={'primary'}/>
+          <Info fontSize={'small'} color={'primary'} />
         </Tooltip>
       </div>
       {correctResponseError && <div className={classes.errorText}>{correctResponseError}</div>}
       {answerChoicesError && <div className={classes.errorText}>{answerChoicesError}</div>}
       {choices.map((choice, index) => (
-        <div
-          key={`choice-${index}`}
-          className={classes.choiceConfigurationHolder}
-        >
+        <div key={`choice-${index}`} className={classes.choiceConfigurationHolder}>
           <ChoiceConfiguration
             key={index}
             index={index + 1}
@@ -263,16 +250,12 @@ const Design = withStyles(styles)((props) => {
             spellCheck={spellCheckEnabled}
             error={choicesErrors && choicesErrors[choice.value] ? choicesErrors[choice.value] : null}
             noCorrectAnswerError={correctResponseError}
-            maxImageWidth={maxImageWidth && maxImageWidth.choices || defaultImageMaxWidth}
-            maxImageHeight={maxImageHeight && maxImageHeight.choices || defaultImageMaxHeight}
+            maxImageWidth={(maxImageWidth && maxImageWidth.choices) || defaultImageMaxWidth}
+            maxImageHeight={(maxImageHeight && maxImageHeight.choices) || defaultImageMaxHeight}
             uploadSoundSupport={uploadSoundSupport}
           />
           {rationaleEnabled && (
-            <InputContainer
-              key={`rationale-${index}`}
-              label={rationale.label}
-              className={classes.rationaleHolder}
-            >
+            <InputContainer key={`rationale-${index}`} label={rationale.label} className={classes.rationaleHolder}>
               <EditableHtml
                 className={classes.rationale}
                 markup={choice.rationale || ''}
@@ -286,8 +269,8 @@ const Design = withStyles(styles)((props) => {
                 toolbarOpts={toolbarOpts}
                 pluginProps={labelPlugins}
                 spellCheck={spellCheckEnabled}
-                maxImageWidth={maxImageWidth && maxImageWidth.rationale || defaultImageMaxWidth}
-                maxImageHeight={maxImageHeight && maxImageHeight.rationale || defaultImageMaxHeight}
+                maxImageWidth={(maxImageWidth && maxImageWidth.rationale) || defaultImageMaxWidth}
+                maxImageHeight={(maxImageHeight && maxImageHeight.rationale) || defaultImageMaxHeight}
                 uploadSoundSupport={uploadSoundSupport}
                 languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               />
@@ -311,8 +294,8 @@ const Design = withStyles(styles)((props) => {
                 imageSupport={imageSupport}
                 pluginProps={labelPlugins}
                 spellCheck={spellCheckEnabled}
-                maxImageWidth={maxImageWidth && maxImageWidth.choices || defaultImageMaxWidth}
-                maxImageHeight={maxImageHeight && maxImageHeight.choices || defaultImageMaxHeight}
+                maxImageWidth={(maxImageWidth && maxImageWidth.choices) || defaultImageMaxWidth}
+                maxImageHeight={(maxImageHeight && maxImageHeight.choices) || defaultImageMaxHeight}
                 uploadSoundSupport={uploadSoundSupport}
                 languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               />
@@ -320,7 +303,7 @@ const Design = withStyles(styles)((props) => {
           )}
         </div>
       ))}
-      <br/>
+      <br />
       {addChoiceButton.settings && (
         <Tooltip
           title={
@@ -345,20 +328,13 @@ const Design = withStyles(styles)((props) => {
   );
 
   const settingsInPanel = {
-    choiceMode:
-      choiceMode.settings && radio(choiceMode.label, ['checkbox', 'radio']),
-    'sequentialChoiceLabels.enabled':
-      sequentialChoiceLabels.settings &&
-      toggle(sequentialChoiceLabels.label, true),
-    choicePrefix:
-      choicePrefix.settings &&
-      radio(choicePrefix.label, ['numbers', 'letters']),
+    choiceMode: choiceMode.settings && radio(choiceMode.label, ['checkbox', 'radio']),
+    'sequentialChoiceLabels.enabled': sequentialChoiceLabels.settings && toggle(sequentialChoiceLabels.label, true),
+    choicePrefix: choicePrefix.settings && radio(choicePrefix.label, ['numbers', 'letters']),
     partialScoring: partialScoring.settings && toggle(partialScoring.label),
     lockChoiceOrder: lockChoiceOrder.settings && toggle(lockChoiceOrder.label),
     feedbackEnabled: feedback.settings && toggle(feedback.label),
-    choicesLayout:
-      choicesLayout.settings &&
-      dropdown(choicesLayout.label, ['vertical', 'grid', 'horizontal']),
+    choicesLayout: choicesLayout.settings && dropdown(choicesLayout.label, ['vertical', 'grid', 'horizontal']),
     gridColumns:
       choicesLayout.settings &&
       model.choicesLayout === 'grid' &&
@@ -381,23 +357,14 @@ const Design = withStyles(styles)((props) => {
               groups={{
                 Settings: settingsInPanel,
                 Properties: {
-                  teacherInstructionsEnabled:
-                    teacherInstructions.settings &&
-                    toggle(teacherInstructions.label),
-                  studentInstructionsEnabled:
-                    studentInstructions.settings &&
-                    toggle(studentInstructions.label),
+                  teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
+                  studentInstructionsEnabled: studentInstructions.settings && toggle(studentInstructions.label),
                   promptEnabled: prompt.settings && toggle(prompt.label),
-                  rationaleEnabled:
-                    rationale.settings && toggle(rationale.label),
-                  spellCheckEnabled:
-                    spellCheck.settings && toggle(spellCheck.label),
-                  accessibilityLabelsEnabled:
-                    accessibility.settings && toggle(accessibility.label),
-                  scoringType:
-                    scoringType.settings &&
-                    radio(scoringType.label, ['auto', 'rubric']),
-                  rubricEnabled: withRubric?.settings && toggle(withRubric?.label)
+                  rationaleEnabled: rationale.settings && toggle(rationale.label),
+                  spellCheckEnabled: spellCheck.settings && toggle(spellCheck.label),
+                  accessibilityLabelsEnabled: accessibility.settings && toggle(accessibility.label),
+                  scoringType: scoringType.settings && radio(scoringType.label, ['auto', 'rubric']),
+                  rubricEnabled: withRubric?.settings && toggle(withRubric?.label),
                 },
               }}
             />
@@ -470,8 +437,8 @@ export class Main extends React.Component {
                 open: false,
               },
             });
-          }
-        }
+          },
+        },
       });
     } else {
       model.choices.splice(index, 1);
@@ -495,8 +462,11 @@ export class Main extends React.Component {
 
     model.choices.push({
       label: '',
-      value: utils.firstAvailableIndex(model.choices.map((c) => c.value), 0),
-      feedback: { type: 'none' }
+      value: utils.firstAvailableIndex(
+        model.choices.map((c) => c.value),
+        0,
+      ),
+      feedback: { type: 'none' },
     });
 
     this.props.onModelChanged(model);
@@ -568,12 +538,7 @@ export class Main extends React.Component {
 
     return (
       <>
-        <InfoDialog
-          open={dialog.open}
-          title={dialog.message}
-          onCancel={dialog.onCancel}
-          onOk={dialog.onOk}
-        />
+        <InfoDialog open={dialog.open} title={dialog.message} onCancel={dialog.onCancel} onOk={dialog.onOk} />
         <Design
           {...this.props}
           onChangeModel={this.onModelChanged}

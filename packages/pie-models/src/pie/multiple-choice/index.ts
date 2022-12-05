@@ -147,7 +147,7 @@ export interface MultipleChoiceConfigure extends PromptConfig {
   /**
    * Configuration for the author's spellcheck
    */
-   spellCheck?: ConfigureProp;
+  spellCheck?: ConfigureProp;
 
   /** Indicates the layout of choices for player
    * @default: 'vertical'
@@ -223,5 +223,4 @@ export interface MultipleChoiceConfigure extends PromptConfig {
    * Rubric configuration
    */
   withRubric?: ConfigureProp;
-
 }

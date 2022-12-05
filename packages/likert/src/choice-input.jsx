@@ -1,23 +1,23 @@
 import React from 'react';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import PropTypes from 'prop-types';
-import {withStyles} from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 
-import {color} from '@pie-lib/render-ui';
+import { color } from '@pie-lib/render-ui';
 import Radio from '@material-ui/core/Radio';
-import {LIKERT_ORIENTATION} from './likertEntities';
+import { LIKERT_ORIENTATION } from './likertEntities';
 
 const radioStyles = {
   root: {
-    color: `var(--choice-input-color, ${color.text()})`
+    color: `var(--choice-input-color, ${color.text()})`,
   },
   checked: {
-    color: `var(--choice-input-selected-color, ${color.text()})`
+    color: `var(--choice-input-selected-color, ${color.text()})`,
   },
 };
 
 export const RadioStyled = withStyles(radioStyles)((props) => {
-  const {classes, checked, onChange, disabled} = props;
+  const { classes, checked, onChange, disabled } = props;
 
   return (
     <Radio
@@ -32,25 +32,23 @@ export const RadioStyled = withStyles(radioStyles)((props) => {
   );
 });
 
-
 const choiceInputStyles = () => ({
   labelRoot: {
     color: color.text(),
     textAlign: 'center',
-    cursor: 'pointer'
+    cursor: 'pointer',
   },
   checkboxHolderRoot: {
     display: 'flex',
     alignItems: 'center',
     flex: 1,
     padding: '0 5px',
-    '& label': {}
+    '& label': {},
   },
   formControlLabelRoot: {
-    margin: 0
-  }
+    margin: 0,
+  },
 });
-
 
 export class ChoiceInput extends React.Component {
   static propTypes = {
@@ -75,32 +73,17 @@ export class ChoiceInput extends React.Component {
   };
 
   render() {
-    const {
-      disabled,
-      label,
-      checked,
-      likertOrientation,
-      classes
-    } = this.props;
-    const flexDirection = likertOrientation === LIKERT_ORIENTATION.vertical ? 'row': 'column' ;
+    const { disabled, label, checked, likertOrientation, classes } = this.props;
+    const flexDirection = likertOrientation === LIKERT_ORIENTATION.vertical ? 'row' : 'column';
 
     return (
-      <div className={classes.checkboxHolderRoot} style={{flexDirection}}>
+      <div className={classes.checkboxHolderRoot} style={{ flexDirection }}>
         <FormControlLabel
           disabled={disabled}
           className={classes.formControlLabelRoot}
-          control={
-            <RadioStyled
-              checked={checked}
-              onChange={this.onToggleChoice}
-            />
-          }
+          control={<RadioStyled checked={checked} onChange={this.onToggleChoice} />}
         />
-        <p
-          className={classes.labelRoot}
-          onClick={this.onToggleChoice}
-          dangerouslySetInnerHTML={{__html: label}}
-        />
+        <p className={classes.labelRoot} onClick={this.onToggleChoice} dangerouslySetInnerHTML={{ __html: label }} />
       </div>
     );
   }

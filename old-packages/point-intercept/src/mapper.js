@@ -5,7 +5,7 @@ const rangeModelMap = {
   rangeStepValue: 'step',
   rangeSnapValue: 'snap',
   rangeLabelFrequency: 'labelFrequency',
-  rangeGraphPadding: 'padding'
+  rangeGraphPadding: 'padding',
 };
 
 const domainModelMap = {
@@ -15,7 +15,7 @@ const domainModelMap = {
   domainStepValue: 'step',
   domainSnapValue: 'snap',
   domainLabelFrequency: 'labelFrequency',
-  domainGraphPadding: 'padding'
+  domainGraphPadding: 'padding',
 };
 
 const modelMap = {
@@ -30,7 +30,7 @@ const modelMap = {
   showPointLabels: '',
   showInputs: '',
   showAxisLabels: '',
-  showFeedback: ''
+  showFeedback: '',
 };
 
 /**
@@ -55,7 +55,7 @@ export function toSessionPoints(points = [], oldModel) {
  * @return {string[]}
  */
 export function toSessionAnswers(points) {
-  return points.map(point => `${point.x},${point.y}`);
+  return points.map((point) => `${point.x},${point.y}`);
 }
 
 /**
@@ -74,15 +74,15 @@ export function toComponentModel(m) {
     newModel.correctResponse = toSessionPoints(m.correctResponse, m);
   }
 
-  Object.keys(rangeModelMap).forEach(key => {
+  Object.keys(rangeModelMap).forEach((key) => {
     newModel.range[rangeModelMap[key]] = oldModelCopy.graph[key];
   });
 
-  Object.keys(domainModelMap).forEach(key => {
+  Object.keys(domainModelMap).forEach((key) => {
     newModel.domain[domainModelMap[key]] = oldModelCopy.graph[key];
   });
 
-  Object.keys(oldModelCopy.graph).forEach(key => {
+  Object.keys(oldModelCopy.graph).forEach((key) => {
     newModel[modelMap[key] || key] = m.graph[key];
   });
 

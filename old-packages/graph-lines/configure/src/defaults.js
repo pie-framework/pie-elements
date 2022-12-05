@@ -12,46 +12,46 @@ export default {
     promptEnabled: true,
     rationaleEnabled: true,
     teacherInstructionsEnabled: true,
-    studentInstructionsEnabled: true
+    studentInstructionsEnabled: true,
   },
   configuration: {
     arrows: {
       settings: false,
-      label: 'Include arrows'
+      label: 'Include arrows',
     },
     padding: {
       settings: false,
-      label: 'Padding'
+      label: 'Padding',
     },
     graphTitle: {
       settings: false,
       label: 'Graph Title',
-      enabled: true
+      enabled: true,
     },
     labels: {
       settings: false,
       label: 'Labels',
-      enabled: true
+      enabled: true,
     },
     prompt: {
       settings: true,
-      label: 'Prompt'
+      label: 'Prompt',
     },
     rationale: {
       settings: true,
-      label: 'Rationale'
+      label: 'Rationale',
     },
     scoringType: {
       settings: false,
-      label: 'Scoring Type'
+      label: 'Scoring Type',
     },
     studentInstructions: {
       settings: false,
-      label: 'Student Instructions'
+      label: 'Student Instructions',
     },
     teacherInstructions: {
       settings: false,
-      label: 'Teacher Instructions'
-    }
-  }
+      label: 'Teacher Instructions',
+    },
+  },
 };

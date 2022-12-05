@@ -30,8 +30,8 @@ module.exports = [
         createdAt: '2020-01-21T11:03:51.257Z',
         fontSize: 16,
         textareaVisible: false,
-        transformerVisible: false
-      }
-    ]
-  }
+        transformerVisible: false,
+      },
+    ],
+  },
 ];

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Comp = name => props => <div compName={name}>{name}</div>;
+const Comp = (name) => (props) => <div compName={name}>{name}</div>;
 
 module.exports = {
   NumberTextField: Comp('NumberTextField'),
@@ -13,6 +13,6 @@ module.exports = {
   Checkbox: Comp('Checkbox'),
   FeedbackSelector: Comp('FeedbackSelector'),
   choiceUtils: {
-    firstAvailableIndex: jest.fn(() => '1')
-  }
+    firstAvailableIndex: jest.fn(() => '1'),
+  },
 };

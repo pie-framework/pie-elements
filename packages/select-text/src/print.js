@@ -19,7 +19,8 @@ const preparePrintModel = (model, opts) => {
   const instr = opts.role === 'instructor';
 
   model.prompt = model.promptEnabled !== false ? model.prompt : undefined;
-  model.teacherInstructions = instr && model.teacherInstructionsEnabled !== false ? model.teacherInstructions : undefined;
+  model.teacherInstructions =
+    instr && model.teacherInstructionsEnabled !== false ? model.teacherInstructions : undefined;
   model.rationale = instr && model.rationaleEnabled !== false ? model.rationale : undefined;
   model.showTeacherInstructions = instr;
   model.alwaysShowCorrect = instr;
@@ -50,7 +51,7 @@ export default class SelectTextPrint extends HTMLElement {
             React.createElement(Main, {
               model: printModel,
               session: { selectedTokens: [] },
-              onSelectionChange: () => {}
+              onSelectionChange: () => {},
             });
 
           ReactDOM.render(element, this, () => {
@@ -62,7 +63,7 @@ export default class SelectTextPrint extends HTMLElement {
         }
       },
       50,
-      { leading: false, trailing: true }
+      { leading: false, trailing: true },
     );
   }
   set options(o) {

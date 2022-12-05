@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  FeedbackSelector,
-  InputContainer,
-  settings,
-  layout,
-} from '@pie-lib/config-ui';
+import { FeedbackSelector, InputContainer, settings, layout } from '@pie-lib/config-ui';
 import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
@@ -57,15 +52,8 @@ export class Main extends React.Component {
   };
 
   render() {
-    const {
-      model,
-      classes,
-      onModelChanged,
-      configuration,
-      onConfigurationChanged,
-      imageSupport,
-      uploadSoundSupport
-    } = this.props;
+    const { model, classes, onModelChanged, configuration, onConfigurationChanged, imageSupport, uploadSoundSupport } =
+      this.props;
     const {
       multiple = {},
       feedback = {},
@@ -83,12 +71,7 @@ export class Main extends React.Component {
       maxImageHeight = {},
       withRubric = {},
     } = configuration || {};
-    const {
-      teacherInstructionsEnabled,
-      promptEnabled,
-      feedbackEnabled,
-      spellCheckEnabled,
-    } = model || {};
+    const { teacherInstructionsEnabled, promptEnabled, feedbackEnabled, spellCheckEnabled } = model || {};
     const toolbarOpts = {};
 
     const defaultImageMaxWidth = maxImageWidth && maxImageWidth.prompt;
@@ -146,23 +129,16 @@ export class Main extends React.Component {
                     max: 500,
                   },
                 }),
-                'multiple.enabled':
-                  multiple.settings && toggle(multiple.label, true),
+                'multiple.enabled': multiple.settings && toggle(multiple.label, true),
                 promptEnabled: prompt.settings && toggle(prompt.label),
                 feedbackEnabled: feedback.settings && toggle(feedback.label),
-                spellCheckEnabled:
-                spellCheck.settings && toggle(spellCheck.label),
-                playerSpellCheckEnabled:
-                playerSpellCheck.settings && toggle(playerSpellCheck.label),
+                spellCheckEnabled: spellCheck.settings && toggle(spellCheck.label),
+                playerSpellCheckEnabled: playerSpellCheck.settings && toggle(playerSpellCheck.label),
               },
               Properties: {
-                teacherInstructionsEnabled:
-                  teacherInstructions.settings &&
-                  toggle(teacherInstructions.label),
-                studentInstructionsEnabled:
-                  studentInstructions.settings &&
-                  toggle(studentInstructions.label),
-                rubricEnabled: !withRubric?.forceEnabled && withRubric?.settings && toggle(withRubric?.label)
+                teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
+                studentInstructionsEnabled: studentInstructions.settings && toggle(studentInstructions.label),
+                rubricEnabled: !withRubric?.forceEnabled && withRubric?.settings && toggle(withRubric?.label),
               },
             }}
           />
@@ -170,10 +146,7 @@ export class Main extends React.Component {
       >
         <div>
           {teacherInstructionsEnabled && (
-            <InputContainer
-              label={teacherInstructions.label}
-              className={classes.promptContainer}
-            >
+            <InputContainer label={teacherInstructions.label} className={classes.promptContainer}>
               <EditableHtml
                 className={classes.prompt}
                 markup={model.teacherInstructions || ''}
@@ -182,8 +155,8 @@ export class Main extends React.Component {
                 nonEmpty={false}
                 toolbarOpts={toolbarOpts}
                 spellCheck={spellCheckEnabled}
-                maxImageWidth={maxImageWidth && maxImageWidth.teacherInstructions || defaultImageMaxWidth}
-                maxImageHeight={maxImageHeight && maxImageHeight.teacherInstructions || defaultImageMaxHeight}
+                maxImageWidth={(maxImageWidth && maxImageWidth.teacherInstructions) || defaultImageMaxWidth}
+                maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
                 uploadSoundSupport={uploadSoundSupport}
                 languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               />
@@ -193,10 +166,7 @@ export class Main extends React.Component {
           <br />
 
           {promptEnabled && (
-            <InputContainer
-              label={prompt.label}
-              className={classes.promptContainer}
-            >
+            <InputContainer label={prompt.label} className={classes.promptContainer}>
               <EditableHtml
                 activePlugins={ALL_PLUGINS}
                 className={classes.prompt}

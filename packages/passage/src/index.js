@@ -6,20 +6,14 @@ export default class PiePassage extends HTMLElement {
   constructor() {
     super();
     this._model = {
-      passages: []
+      passages: [],
     };
     this._session = null;
   }
 
   set model(s) {
     this._model = s;
-    this.dispatchEvent(
-      new ModelSetEvent(
-        this.tagName.toLowerCase(),
-        this._session,
-        !!this._model
-      )
-    );
+    this.dispatchEvent(new ModelSetEvent(this.tagName.toLowerCase(), this._session, !!this._model));
 
     this._render();
   }
@@ -38,7 +32,7 @@ export default class PiePassage extends HTMLElement {
         return {
           id: index,
           title: passage.title,
-          text: passage.text
+          text: passage.text,
         };
       });
       let elem = React.createElement(StimulusTabs, { tabs: passagesTabs });

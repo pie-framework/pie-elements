@@ -11,13 +11,13 @@ const container1 = {
   x: 0,
   y: 0,
   height: '0%',
-  width: '0%'
+  width: '0%',
 };
 const container2 = {
   x: 1,
   y: 1,
   height: '1%',
-  width: '1%'
+  width: '1%',
 };
 
 describe('Image Container', () => {
@@ -33,9 +33,9 @@ describe('Image Container', () => {
         onAnswerSelect: () => {},
         onDragAnswerBegin: () => {},
         onDragAnswerEnd: () => {},
-        responseContainers: []
+        responseContainers: [],
       },
-      opts
+      opts,
     );
 
     return shallow(<ImageContainer {...opts} />);
@@ -73,7 +73,7 @@ describe('Image Container', () => {
           src: 'https://picsum.photos/id/102/200/300',
           width: 0,
           scale: false,
-          height: 0
+          height: 0,
         });
         expect(wrapper).toMatchSnapshot();
       });

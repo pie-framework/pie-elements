@@ -8,10 +8,10 @@ describe('Main', () => {
   const defaultProps = {
     model: model('1'),
     session: {
-      value: [1, 4, 3, 2]
+      value: [1, 4, 3, 2],
     },
     classes: {},
-    onSessionChange
+    onSessionChange,
   };
 
   let wrapper;
@@ -27,13 +27,12 @@ describe('Main', () => {
   });
 
   describe('logic', () => {
-
     describe('onRemoveAnswer', () => {
       it('should call onSessionChange with appropriate values', () => {
         wrapper.instance().onRemoveAnswer(0);
         expect(onSessionChange).toHaveBeenCalledWith({
-          value: [undefined, 4, 3, 2]
-        })
+          value: [undefined, 4, 3, 2],
+        });
       });
     });
 
@@ -41,8 +40,8 @@ describe('Main', () => {
       it('should call onSessionChange with appropriate values', () => {
         wrapper.instance().onPlaceAnswer(0, 5);
         expect(onSessionChange).toHaveBeenCalledWith({
-          value: [5, 4, 3, 2]
-        })
+          value: [5, 4, 3, 2],
+        });
       });
     });
 

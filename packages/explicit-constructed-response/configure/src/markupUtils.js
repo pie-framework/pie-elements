@@ -5,9 +5,12 @@ const tSymbols = 'imes|riangle|an|heta|herefore';
 // do not remove \n from \nthroot, \nparallel, \ncong, \napprox, \neq, \ne or \nsim
 const nSymbols = 'throot|parallel|cong|approx|eq|e|sim';
 // match all \t and \n that are not part of math symbols that starts with \t or \n
-const matchTabAndNewLine = new RegExp(`(\\t(?!${tSymbols}))|(\\n(?!${nSymbols}))|(\\\\t(?!${tSymbols}))|(\\\\n(?!${nSymbols}))`, 'g');
+const matchTabAndNewLine = new RegExp(
+  `(\\t(?!${tSymbols}))|(\\n(?!${nSymbols}))|(\\\\t(?!${tSymbols}))|(\\\\n(?!${nSymbols}))`,
+  'g',
+);
 
-export const removeUnwantedCharacters = markup =>
+export const removeUnwantedCharacters = (markup) =>
   markup.replace(matchTabAndNewLine, '').replace(/\\"/g, '"').replace(/\\\//g, '/');
 
 const createElementFromHTML = (htmlString = '') => {
@@ -18,12 +21,12 @@ const createElementFromHTML = (htmlString = '') => {
   return div;
 };
 
-export const processMarkup = markup => {
+export const processMarkup = (markup) => {
   const newMarkup = removeUnwantedCharacters(markup || '');
   const slateMarkup = createElementFromHTML(newMarkup || '');
   let index = 0;
 
-  slateMarkup.querySelectorAll('[data-type="explicit_constructed_response"]').forEach(s => {
+  slateMarkup.querySelectorAll('[data-type="explicit_constructed_response"]').forEach((s) => {
     s.replaceWith(`{{${index++}}}`);
   });
 
@@ -47,7 +50,7 @@ export const createSlateMarkup = (markup, choices) => {
 };
 
 // also used in controller/src/index.js
-export const getAdjustedLength = length => {
+export const getAdjustedLength = (length) => {
   if (length <= 2) {
     return length + 2;
   }

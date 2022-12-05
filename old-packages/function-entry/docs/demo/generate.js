@@ -6,11 +6,11 @@ exports.model = (id, element) => ({
   feedback: {
     correct: {
       type: 'default',
-      default: 'Correct'
+      default: 'Correct',
     },
     incorrect: {
       type: 'default',
-      default: 'Incorrect'
-    }
-  }
+      default: 'Incorrect',
+    },
+  },
 });

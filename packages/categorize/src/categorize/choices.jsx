@@ -11,10 +11,7 @@ export class Choices extends React.Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
     choices: PropTypes.arrayOf(
-      PropTypes.oneOfType([
-        PropTypes.shape(ChoiceType),
-        PropTypes.shape({ empty: PropTypes.bool }),
-      ])
+      PropTypes.oneOfType([PropTypes.shape(ChoiceType), PropTypes.shape({ empty: PropTypes.bool })]),
     ),
     model: PropTypes.shape({
       categoriesPerRow: PropTypes.number,
@@ -60,7 +57,7 @@ export class Choices extends React.Component {
           choiceBoard={true}
           >
         {model.choicesLabel && model.choicesLabel !== '' && (
-          <div className={classes.labelHolder} dangerouslySetInnerHTML={{__html: model.choicesLabel}}></div>
+          <div className={classes.labelHolder} dangerouslySetInnerHTML={{ __html: model.choicesLabel }}></div>
         )}
           {choices.map((c, index) => {
             return c.empty ? (

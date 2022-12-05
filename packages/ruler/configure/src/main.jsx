@@ -7,28 +7,28 @@ const metricLabels = [
   { label: 'Millimeters', value: 'mm' },
   { label: 'Centimeters', value: 'cm' },
   { label: 'Meters', value: 'm' },
-  { label: 'Kilometers', value: 'km' }
+  { label: 'Kilometers', value: 'km' },
 ];
 const imperialLabels = [
   { label: 'Inches', value: 'in' },
   { label: 'Feet', value: 'ft' },
   { label: 'Yards', value: 'yd' },
-  { label: 'Miles', value: 'm' }
+  { label: 'Miles', value: 'm' },
 ];
 const imperialTickOpts = [
   { label: '16', value: '16' },
   { label: '8', value: '8' },
-  { label: '4', value: '4' }
+  { label: '4', value: '4' },
 ];
 
 export class Main extends React.Component {
   static propTypes = {
     model: PropTypes.object.isRequired,
     onChange: PropTypes.func.isRequired,
-    classes: PropTypes.object.isRequired
+    classes: PropTypes.object.isRequired,
   };
 
-  measureChange = t => {
+  measureChange = (t) => {
     const { model, onChange } = this.props;
     model.measure = t;
     model.label = t === 'imperial' ? 'in' : 'cm';
@@ -36,7 +36,7 @@ export class Main extends React.Component {
     onChange(model);
   };
 
-  labelChange = l => {
+  labelChange = (l) => {
     const { model, onChange } = this.props;
     model.label = l;
     onChange(model);
@@ -49,7 +49,7 @@ export class Main extends React.Component {
     onChange(model);
   };
 
-  ticksChange = t => {
+  ticksChange = (t) => {
     const { model, onChange } = this.props;
     model.imperialTicks = parseInt(t, 10);
     onChange(model);
@@ -65,8 +65,7 @@ export class Main extends React.Component {
     const { model, classes } = this.props;
 
     const pixelsPerUnit = model.width / model.units;
-    const labelOpts =
-      model.measure === 'metric' ? metricLabels : imperialLabels;
+    const labelOpts = model.measure === 'metric' ? metricLabels : imperialLabels;
 
     return (
       <div>
@@ -120,33 +119,33 @@ export class Main extends React.Component {
 
 const Styled = withStyles(() => ({
   opt: {
-    display: 'flex'
+    display: 'flex',
   },
   pixelsPerUnit: {
-    width: '100px'
+    width: '100px',
   },
   length: {
-    width: '100px'
+    width: '100px',
   },
   row: {
-    display: 'flex'
-  }
+    display: 'flex',
+  },
 }))(Main);
 
 export default class Stateful extends React.Component {
   static propTypes = {
     onChange: PropTypes.func.isRequired,
-    model: PropTypes.object.isRequired
+    model: PropTypes.object.isRequired,
   };
 
   constructor(props) {
     super(props);
     this.state = {
-      model: props.model
+      model: props.model,
     };
   }
 
-  onChange = model => {
+  onChange = (model) => {
     this.setState({ model }, () => {
       this.props.onChange(this.state.model);
     });

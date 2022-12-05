@@ -2,7 +2,7 @@ const { model } = require('./generate');
 
 module.exports = {
   elements: {
-    'charting-element': '../..'
+    'charting-element': '../..',
   },
-  models: [model('1', 'charting-element')]
+  models: [model('1', 'charting-element')],
 };

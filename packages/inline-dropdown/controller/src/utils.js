@@ -10,15 +10,12 @@ export const getAllCorrectResponses = ({ choices, alternateResponse }) => {
     }
 
     if (respArea) {
-      respArea.forEach(choice => {
+      respArea.forEach((choice) => {
         if (choice.correct) {
           correctAnswers[key].push(choice.value);
 
           if (alternateResponse[key]) {
-            correctAnswers[key] = [
-              ...correctAnswers[key],
-              ...alternateResponse[key]
-            ];
+            correctAnswers[key] = [...correctAnswers[key], ...alternateResponse[key]];
           }
         }
       });

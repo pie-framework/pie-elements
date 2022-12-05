@@ -36,8 +36,7 @@ const E234 = {
   categoriesPerRow: 2,
   rationale:
     '<p>Traditional equipment must be carried on board or shipped from Earth. 3D-printed equipment can be built on demand or rebuilt if it gets lost or broken.</p>',
-  prompt:
-    '<p>Drag <span class="relative-emphasis">two</span> phrases into each of the categories.</p>',
+  prompt: '<p>Drag <span class="relative-emphasis">two</span> phrases into each of the categories.</p>',
   partialScoring: true,
   correctResponse: [
     {
@@ -339,5 +338,5 @@ exports.model = (id, element) => ({
   teacherInstructionsEnabled: true,
   studentInstructionsEnabled: true,
   toolbarEditorPosition: 'bottom',
-  rubricEnabled: false
+  rubricEnabled: false,
 });

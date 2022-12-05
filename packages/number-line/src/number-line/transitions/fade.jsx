@@ -6,29 +6,29 @@ import PropTypes from 'prop-types';
 const duration = 200;
 const fade = {
   appear: {
-    opacity: 0
+    opacity: 0,
   },
   appearActive: {
     opacity: 1,
-    transition: `opacity ${duration}ms ease-in`
+    transition: `opacity ${duration}ms ease-in`,
   },
   enter: {
-    opacity: 0
+    opacity: 0,
   },
   enterActive: {
     opacity: 1,
-    transition: `opacity ${duration}ms ease-in`
+    transition: `opacity ${duration}ms ease-in`,
   },
   exit: {
-    opacity: 1
+    opacity: 1,
   },
   exitActive: {
     opacity: 0,
-    transition: `opacity ${duration}ms ease-in`
-  }
+    transition: `opacity ${duration}ms ease-in`,
+  },
 };
 
-const FadeTransition = props => {
+const FadeTransition = (props) => {
   const { classes } = props;
   return (
     <CSSTransition
@@ -40,7 +40,7 @@ const FadeTransition = props => {
         exit: classes.exit,
         exitActive: classes.exitActive,
         appear: classes.appear,
-        appearActive: classes.appearActive
+        appearActive: classes.appearActive,
       }}
       timeout={duration}
     />
@@ -48,7 +48,7 @@ const FadeTransition = props => {
 };
 
 FadeTransition.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
 };
 
 const Fade = injectSheet(fade)(FadeTransition);

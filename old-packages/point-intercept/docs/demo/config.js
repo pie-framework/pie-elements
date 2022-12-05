@@ -2,7 +2,7 @@ const { model } = require('./generate');
 
 module.exports = {
   elements: {
-    'point-intercept': '../..'
+    'point-intercept': '../..',
   },
-  models: [model('1', 'point-intercept')]
+  models: [model('1', 'point-intercept')],
 };

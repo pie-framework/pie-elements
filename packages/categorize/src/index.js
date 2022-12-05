@@ -1,23 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { renderMath } from '@pie-lib/math-rendering';
-import {
-  SessionChangedEvent,
-  ModelSetEvent
-} from '@pie-framework/pie-player-events';
+import { SessionChangedEvent, ModelSetEvent } from '@pie-framework/pie-player-events';
 import CategorizeComponent from './categorize';
 
 export default class Categorize extends HTMLElement {
   set model(m) {
     this._model = m;
 
-    this.dispatchEvent(
-      new ModelSetEvent(
-        this.tagName.toLowerCase(),
-        this.isComplete(),
-        !!this._model
-      )
-    );
+    this.dispatchEvent(new ModelSetEvent(this.tagName.toLowerCase(), this.isComplete(), !!this._model));
     this.render();
   }
 
@@ -26,9 +17,7 @@ export default class Categorize extends HTMLElement {
       return false;
     }
 
-    return (
-      Array.isArray(this._session.answers) && this._session.answers.length > 0
-    );
+    return Array.isArray(this._session.answers) && this._session.answers.length > 0;
   }
 
   set session(s) {
@@ -47,9 +36,7 @@ export default class Categorize extends HTMLElement {
   changeAnswers(answers) {
     this._session.answers = answers;
 
-    this.dispatchEvent(
-      new SessionChangedEvent(this.tagName.toLowerCase(), this.isComplete())
-    );
+    this.dispatchEvent(new SessionChangedEvent(this.tagName.toLowerCase(), this.isComplete()));
 
     this.render();
   }
