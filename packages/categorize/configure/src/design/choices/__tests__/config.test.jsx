@@ -60,15 +60,5 @@ describe('config', () => {
       });
     });
 
-    it('changePosition', () => {
-      let w = wrapper();
-
-      w.instance().changePosition({ value: 'below' });
-
-      expect(onModelChanged).toBeCalledWith({
-        choicesPosition: 'below'
-      });
-    });
-
   });
 });
