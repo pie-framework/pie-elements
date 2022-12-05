@@ -2,10 +2,14 @@
 
 exports[`choices snapshots disabled 1`] = `
 <div>
-  <div
+  <DropTarget(DroppablePlaceholder)
+    choiceBoard={true}
+    disabled={true}
+    onDropChoice={[MockFunction]}
+    onRemoveChoice={[MockFunction]}
     style={
       Object {
-        "textAlign": "center",
+        "background": "none",
       }
     }
   />
@@ -14,10 +18,13 @@ exports[`choices snapshots disabled 1`] = `
 
 exports[`choices snapshots empty 1`] = `
 <div>
-  <div
+  <DropTarget(DroppablePlaceholder)
+    choiceBoard={true}
+    onDropChoice={[MockFunction]}
+    onRemoveChoice={[MockFunction]}
     style={
       Object {
-        "textAlign": "center",
+        "background": "none",
       }
     }
   >
@@ -31,32 +38,38 @@ exports[`choices snapshots empty 1`] = `
       key="0"
       label="foo"
     />
-  </div>
+  </DropTarget(DroppablePlaceholder)>
 </div>
 `;
 
 exports[`choices snapshots empty 2`] = `
 <div>
-  <div
+  <DropTarget(DroppablePlaceholder)
+    choiceBoard={true}
+    onDropChoice={[MockFunction]}
+    onRemoveChoice={[MockFunction]}
     style={
       Object {
-        "textAlign": "center",
+        "background": "none",
       }
     }
   >
     <Blank
       key="0"
     />
-  </div>
+  </DropTarget(DroppablePlaceholder)>
 </div>
 `;
 
 exports[`choices snapshots renders 1`] = `
 <div>
-  <div
+  <DropTarget(DroppablePlaceholder)
+    choiceBoard={true}
+    onDropChoice={[MockFunction]}
+    onRemoveChoice={[MockFunction]}
     style={
       Object {
-        "textAlign": "center",
+        "background": "none",
       }
     }
   />

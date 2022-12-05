@@ -45,6 +45,8 @@ exports[`categorize renders snapshot 1`] = `
           "correctResponse": Array [],
         }
       }
+      onDropChoice={[Function]}
+      onRemoveChoice={[Function]}
     />
   </div>
 </div>
@@ -97,6 +99,8 @@ exports[`categorize renders snapshot with rationale 1`] = `
           "rationale": "This is rationale",
         }
       }
+      onDropChoice={[Function]}
+      onRemoveChoice={[Function]}
     />
   </div>
   <WithStyles(Collapsible)
@@ -174,6 +178,8 @@ exports[`categorize renders snapshot with teacherInstructions 1`] = `
           "teacherInstructions": "These are teacher instructions",
         }
       }
+      onDropChoice={[Function]}
+      onRemoveChoice={[Function]}
     />
   </div>
 </div>

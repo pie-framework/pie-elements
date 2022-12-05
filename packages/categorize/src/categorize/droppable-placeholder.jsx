@@ -17,11 +17,25 @@ export class DroppablePlaceholder extends React.Component {
     disabled: PropTypes.bool,
   };
   render() {
-    const { children, connectDropTarget, isOver, className, grid, disabled } = this.props;
+    const {
+      children,
+      connectDropTarget,
+      isOver,
+      className,
+      grid,
+      disabled,
+      choiceBoard
+    } = this.props;
 
     return connectDropTarget(
       <div style={{ flex: 1 }}>
-        <PlaceHolder className={className} isOver={isOver} grid={grid} disabled={disabled}>
+        <PlaceHolder
+          className={className}
+          isOver={isOver}
+          grid={grid}
+          disabled={disabled}
+          choiceBoard={choiceBoard}
+        >
           {children}
         </PlaceHolder>
       </div>,

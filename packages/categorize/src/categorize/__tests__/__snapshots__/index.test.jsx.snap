@@ -43,6 +43,8 @@ exports[`categorize snapshots incorrect 1`] = `
           "choices": Array [],
         }
       }
+      onDropChoice={[Function]}
+      onRemoveChoice={[Function]}
     />
   </div>
 </div>
@@ -91,6 +93,8 @@ exports[`categorize snapshots renders 1`] = `
           "choices": Array [],
         }
       }
+      onDropChoice={[Function]}
+      onRemoveChoice={[Function]}
     />
   </div>
 </div>
@@ -169,6 +173,8 @@ exports[`categorize snapshots renders with feedback 1`] = `
           },
         }
       }
+      onDropChoice={[Function]}
+      onRemoveChoice={[Function]}
     />
   </div>
   <WithStyles(Feedback)

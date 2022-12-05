@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Choice, { ChoiceType } from './choice';
+import DroppablePlaceholder from './droppable-placeholder';
 export { ChoiceType };
 
 const Blank = () => <div />;
@@ -28,7 +29,16 @@ export class Choices extends React.Component {
   };
 
   render() {
-    const { classes, choices = [], model, disabled, choicePosition } = this.props;
+    const {
+      classes,
+      choices = [],
+      model,
+      disabled,
+      onDropChoice,
+      onRemoveChoice,
+      choicePosition,
+    } = this.props;
+
     let style = {
       textAlign: 'center',
     };
@@ -39,10 +49,16 @@ export class Choices extends React.Component {
 
     return (
       <div className={classes.wrapper}>
+         <DroppablePlaceholder
+          onDropChoice={onDropChoice}
+          onRemoveChoice={onRemoveChoice}
+          disabled={disabled}
+          style={{background: 'none', }}
+          choiceBoard={true}
+          >
         {model.choicesLabel && model.choicesLabel !== '' && (
           <div className={classes.labelHolder} dangerouslySetInnerHTML={{ __html: model.choicesLabel }}></div>
         )}
-        <div className={classes.choices} style={style}>
           {choices.map((c, index) => {
             return c.empty ? (
               <Blank key={index} />
@@ -56,7 +72,7 @@ export class Choices extends React.Component {
               />
             );
           })}
-        </div>
+        </DroppablePlaceholder>
       </div>
     );
   }
@@ -66,13 +82,13 @@ const styles = (theme) => ({
   wrapper: {
     flex: 1,
     padding: theme.spacing.unit,
+    touchAction: 'none',
   },
   choices: {
     padding: theme.spacing.unit / 2,
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    flexWrap: 'wrap',
   },
   labelHolder: {
     margin: '0 auto',
