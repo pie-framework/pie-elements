@@ -14,6 +14,8 @@ export class Category extends React.Component {
     classes: PropTypes.object.isRequired,
     className: PropTypes.string,
     category: PropTypes.object.isRequired,
+    error: PropTypes.string,
+    isDuplicated: PropTypes.bool,
     onChange: PropTypes.func,
     onDelete: PropTypes.func,
     onDeleteChoice: PropTypes.func,
@@ -42,6 +44,8 @@ export class Category extends React.Component {
       category,
       classes,
       className,
+      error,
+      isDuplicated,
       onChange,
       onDelete,
       onDeleteChoice,
@@ -54,20 +58,27 @@ export class Category extends React.Component {
       uploadSoundSupport,
     } = this.props;
     return (
-      <Card className={classNames(classes.category, className)}>
+      <Card className={classNames(classes.category, className, {
+        [classes.duplicateError]: isDuplicated
+      })}>
         {onChange && (
-          <InputHeader
-            label={category.label}
-            onChange={this.changeLabel}
-            onDelete={onDelete}
-            imageSupport={imageSupport}
-            toolbarOpts={toolbarOpts}
-            spellCheck={spellCheck}
-            maxImageWidth={maxImageWidth}
-            maxImageHeight={maxImageHeight}
-            uploadSoundSupport={uploadSoundSupport}
-          />
-        )}
+            <span>
+              <InputHeader
+                label={category.label}
+                error={error}
+                onChange={this.changeLabel}
+                onDelete={onDelete}
+                imageSupport={imageSupport}
+                toolbarOpts={toolbarOpts}
+                spellCheck={spellCheck}
+                maxImageWidth={maxImageWidth}
+                maxImageHeight={maxImageHeight}
+                uploadSoundSupport={uploadSoundSupport}
+             />
+              {error && <div className={classes.errorText}>{error}</div>}
+              </span>
+          )
+        }
         <PlaceHolder
           className={classes.placeHolder}
           choices={category.choices}
@@ -107,6 +118,14 @@ const styles = (theme) => ({
   category: {
     padding: theme.spacing.unit,
     overflow: 'visible',
+  },
+  duplicateError: {
+    border: '1px solid red',
+  },
+  errorText: {
+    fontSize: '11px',
+    color: 'red',
+    paddingBottom: '5px'
   },
   editor: {
     flex: '1',

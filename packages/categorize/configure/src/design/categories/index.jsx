@@ -196,8 +196,12 @@ export class Categories extends React.Component {
     } = this.props;
 
     const { categoriesPerRow, rowLabels, errors } = model;
-    const { associationError, categoriesError } = errors || {};
-    const { maxCategories, maxImageWidth = {}, maxImageHeight = {} } = configuration || {};
+    const { associationError, categoriesError, categoriesErrors } = errors || {};
+    const {
+      maxCategories,
+      maxImageWidth = {},
+      maxImageHeight = {},
+    } = configuration || {};
     const holderStyle = {
       gridTemplateColumns: `repeat(${categoriesPerRow}, 1fr)`,
     };
@@ -249,6 +253,7 @@ export class Categories extends React.Component {
                 <Category
                   imageSupport={imageSupport}
                   category={category}
+                  error={categoriesErrors && categoriesErrors[category.id]}
                   onChange={this.change}
                   onDelete={() => this.delete(category)}
                   onAddChoice={this.addChoiceToCategory}

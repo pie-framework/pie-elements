@@ -184,7 +184,6 @@ export class Design extends React.Component {
       rationaleEnabled,
       feedbackEnabled,
       spellCheckEnabled,
-      errors,
       rubricEnabled
     } = model || {};
 

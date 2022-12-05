@@ -95,12 +95,23 @@ export class AlternateResponses extends React.Component {
   };
 
   render() {
-    const { model, classes, className, categories, imageSupport, spellCheck, uploadSoundSupport } = this.props;
-    const { categoriesPerRow } = model;
+    const {
+      altIndex,
+      model,
+      classes,
+      className,
+      categories,
+      imageSupport,
+      spellCheck,
+      uploadSoundSupport,
+    } = this.props;
+    const { categoriesPerRow, errors } = model;
+    const { duplicateAlternate } = errors || {};
 
     const holderStyle = {
       gridTemplateColumns: `repeat(${categoriesPerRow}, 1fr)`,
     };
+    const isDuplicated = duplicateAlternate ? duplicateAlternate.index === altIndex : false;
 
     return (
       <div className={classNames(classes.categories, className)}>
@@ -109,6 +120,7 @@ export class AlternateResponses extends React.Component {
             <Category
               key={index}
               imageSupport={imageSupport}
+              isDuplicated={isDuplicated && duplicateAlternate.category === category.id}
               category={category}
               spellCheck={spellCheck}
               onAddChoice={this.addChoiceToCategory}
