@@ -34,12 +34,17 @@ export const compareMarks = (mark1, mark2) => {
   );
 };
 
-export const getAnswerCorrected = ({ sessionAnswers, marks: correctAnswers }) => {
+export const getAnswerCorrected = ({
+  sessionAnswers,
+  marks: correctAnswers,
+}) => {
   sessionAnswers = sessionAnswers || [];
   correctAnswers = correctAnswers || [];
 
   return cloneDeep(sessionAnswers).reduce((correctedAnswer, answer) => {
-    const answerIsCorrect = correctAnswers.find((mark) => compareMarks(answer, mark));
+    const answerIsCorrect = correctAnswers.find((mark) =>
+      compareMarks(answer, mark)
+    );
 
     answer.correctness = answerIsCorrect ? 'correct' : 'incorrect';
 
@@ -98,7 +103,9 @@ export const getBestAnswer = (question, session, env = {}) => {
 
       // returns array of marks, each having 'correctness' property
       const correctedAnswer = getAnswerCorrected({ sessionAnswers, marks });
-      const correctMarks = correctedAnswer.filter((answer) => answer.correctness === 'correct');
+      const correctMarks = correctedAnswer.filter(
+        (answer) => answer.correctness === 'correct'
+      );
 
       const maxScore = marks.length;
       let score = correctMarks.length;
@@ -167,8 +174,13 @@ export function model(question, session, env) {
     }
 
     // added support for models without defaultTool defined; also used in packages/graphing/configure/src/index.js
-    const toolbarToolsNoLabel = (toolbarTools || []).filter((tool) => tool !== 'label');
-    const normalizedDefaultTool = defaultTool || (toolbarToolsNoLabel.length && toolbarToolsNoLabel[0]) || '';
+    const toolbarToolsNoLabel = (toolbarTools || []).filter(
+      (tool) => tool !== 'label'
+    );
+    const normalizedDefaultTool =
+      defaultTool ||
+      (toolbarToolsNoLabel.length && toolbarToolsNoLabel[0]) ||
+      '';
 
     const base = {
       ...questionProps,
@@ -185,19 +197,29 @@ export function model(question, session, env) {
     };
 
     if (role === 'instructor' && (mode === 'view' || mode === 'evaluate')) {
-      const { rationale, rationaleEnabled, teacherInstructions, teacherInstructionsEnabled } = normalizedQuestion || {};
+      const {
+        rationale,
+        rationaleEnabled,
+        teacherInstructions,
+        teacherInstructionsEnabled,
+      } = normalizedQuestion || {};
 
       base.rationale = rationaleEnabled ? rationale : null;
-      base.teacherInstructions = teacherInstructionsEnabled ? teacherInstructions : null;
+      base.teacherInstructions = teacherInstructionsEnabled
+        ? teacherInstructions
+        : null;
     }
 
     if (mode === 'evaluate') {
       if (!isEmpty(answers)) {
-        const { answersCorrected, bestScoreAnswerKey, bestScore } = getBestAnswer(normalizedQuestion, session, env);
+        const { answersCorrected, bestScoreAnswerKey, bestScore } =
+          getBestAnswer(normalizedQuestion, session, env);
 
         // array of marks from session with 'correctness' property set
         base.answersCorrected = answersCorrected;
-        base.correctResponse = bestScoreAnswerKey ? (answers[bestScoreAnswerKey] || {}).marks : [];
+        base.correctResponse = bestScoreAnswerKey
+          ? (answers[bestScoreAnswerKey] || {}).marks
+          : [];
         base.showToggle = base.showToggle && bestScore !== 1;
       } else {
         base.answersCorrected = (session && session.answer) || [];
@@ -246,4 +268,26 @@ export const createCorrectResponseSession = (question, env) => {
       resolve(null);
     }
   });
+};
+
+export const validate = (model = {}, config = {}) => {
+  const { answers, toolbarTools } = model;
+  const errors = {};
+  const correctAnswerErrors = {};
+
+  if (!toolbarTools.length) {
+    errors.toolbarToolsError = 'There should be at least 1 tool defined.';
+  }
+
+  Object.entries(answers || {}).forEach(([key, value]) => {
+    if (!value.marks.length) {
+      correctAnswerErrors[key] = 'At least 1 graph object should be defined.';
+    }
+  });
+
+  if (!isEmpty(correctAnswerErrors)) {
+    errors.correctAnswerErrors = correctAnswerErrors;
+  }
+
+  return errors;
 };

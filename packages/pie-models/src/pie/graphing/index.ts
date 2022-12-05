@@ -64,12 +64,6 @@ interface Mark {
   /** Indicates where end the mark if type is line, segment, ray, vector */
   to?: Point;
 
-  /** Indicates the center of circle if type is circle */
-  center?: Point;
-
-  /** Indicates a point on circle's exterior if type is circle  */
-  outerPoint?: Point;
-
   /** Indicates if mark is closed if type is polygon, sine */
   closed?: boolean;
 

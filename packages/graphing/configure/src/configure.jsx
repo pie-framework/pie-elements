@@ -9,6 +9,7 @@ import EditableHtml from '@pie-lib/editable-html';
 import GraphingConfig from './graphing-config';
 import CorrectResponse from './correct-response';
 import intersection from 'lodash/intersection';
+import isEmpty from 'lodash/isEmpty';
 
 const { Panel, toggle, radio, checkboxes } = settings;
 const log = debug('@pie-element:graphing:configure');
@@ -73,7 +74,10 @@ export class Configure extends React.Component {
       }
     }
 
-    const toolbarTools = intersection(availableTools || [], model.toolbarTools || []);
+    const toolbarTools = intersection(
+      availableTools || [],
+      model.toolbarTools || []
+    );
 
     onModelChanged && onModelChanged({ ...model, arrows, toolbarTools });
   }
@@ -97,8 +101,16 @@ export class Configure extends React.Component {
   };
 
   render() {
-    const { classes, model, configuration, onConfigurationChanged, onModelChanged, imageSupport, uploadSoundSupport } =
-      this.props;
+    const {
+      classes,
+      model,
+      configuration,
+      errors = {},
+      onConfigurationChanged,
+      onModelChanged,
+      imageSupport,
+      uploadSoundSupport,
+    } = this.props;
     const {
       arrows = {},
       authoring = {},
@@ -126,7 +138,6 @@ export class Configure extends React.Component {
       spellCheckEnabled,
       teacherInstructionsEnabled,
       titleEnabled,
-      rubricEnabled,
     } = model || {};
 
     log('[render] model', model);
@@ -161,7 +172,9 @@ export class Configure extends React.Component {
                 titleEnabled: title.settings && toggle(title.label),
                 padding: padding.settings && toggle(padding.label),
                 labelsEnabled: labels.settings && toggle(labels.label),
-                coordinatesOnHover: coordinatesOnHover.settings && toggle(coordinatesOnHover.label),
+                coordinatesOnHover:
+                  coordinatesOnHover.settings &&
+                  toggle(coordinatesOnHover.label),
               },
               Properties: {
                 'authoring.enabled': authoring.settings && toggle(authoring.label, true),
@@ -194,10 +207,19 @@ export class Configure extends React.Component {
                 imageSupport={imageSupport}
                 nonEmpty={false}
                 spellCheck={spellCheckEnabled}
-                maxImageWidth={(maxImageWidth && maxImageWidth.teacherInstructions) || defaultImageMaxWidth}
-                maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
+                maxImageWidth={
+                  (maxImageWidth && maxImageWidth.teacherInstructions) ||
+                  defaultImageMaxWidth
+                }
+                maxImageHeight={
+                  (maxImageHeight && maxImageHeight.teacherInstructions) ||
+                  defaultImageMaxHeight
+                }
                 uploadSoundSupport={uploadSoundSupport}
-                languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+                languageCharactersProps={[
+                  { language: 'spanish' },
+                  { language: 'special' },
+                ]}
               />
             </InputContainer>
           )}
@@ -215,7 +237,10 @@ export class Configure extends React.Component {
                 maxImageWidth={defaultImageMaxWidth}
                 maxImageHeight={defaultImageMaxHeight}
                 uploadSoundSupport={uploadSoundSupport}
-                languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+                languageCharactersProps={[
+                  { language: 'spanish' },
+                  { language: 'special' },
+                ]}
               />
             </InputContainer>
           )}
@@ -228,10 +253,19 @@ export class Configure extends React.Component {
                 onChange={this.onRationaleChange}
                 imageSupport={imageSupport}
                 spellCheck={spellCheckEnabled}
-                maxImageWidth={(maxImageWidth && maxImageWidth.rationale) || defaultImageMaxWidth}
-                maxImageHeight={(maxImageHeight && maxImageHeight.rationale) || defaultImageMaxHeight}
+                maxImageWidth={
+                  (maxImageWidth && maxImageWidth.rationale) ||
+                  defaultImageMaxWidth
+                }
+                maxImageHeight={
+                  (maxImageHeight && maxImageHeight.rationale) ||
+                  defaultImageMaxHeight
+                }
                 uploadSoundSupport={uploadSoundSupport}
-                languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+                languageCharactersProps={[
+                  { language: 'spanish' },
+                  { language: 'special' },
+                ]}
               />
             </InputContainer>
           )}
@@ -249,7 +283,12 @@ export class Configure extends React.Component {
             onChange={this.props.onModelChanged}
           />
 
-          <CorrectResponse availableTools={availableTools} model={model} onChange={this.props.onModelChanged} />
+          <CorrectResponse
+            availableTools={availableTools}
+            errors={errors}
+            model={model}
+            onChange={this.props.onModelChanged}
+          />
         </div>
       </layout.ConfigLayout>
     );

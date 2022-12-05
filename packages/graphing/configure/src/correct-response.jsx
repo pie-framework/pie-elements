@@ -7,6 +7,7 @@ import { AlertDialog } from '@pie-lib/config-ui';
 import Delete from '@material-ui/icons/Delete';
 import { set, isEqual } from 'lodash';
 import { MenuItem, Select, Typography } from '@material-ui/core';
+import { color } from '@pie-lib/render-ui';
 
 const styles = (theme) => ({
   column: {
@@ -91,19 +92,33 @@ const styles = (theme) => ({
   noDefaultTool: {
     padding: theme.spacing.unit / 2,
   },
+  error: {
+    color: 'red',
+  },
+  errorMessage: {
+    fontSize: '14px',
+    color: 'red',
+    marginTop: theme.spacing.unit,
+  },
+  graphError: {
+    border: '2px solid red',
+  },
 });
 
 export const Tools = ({
   classes,
   availableTools,
   defaultTool,
+  hasErrors,
   toolbarTools,
   toggleToolBarTool,
   onDefaultToolChange,
 }) => {
   let allTools = availableTools || [];
   const isLabelAvailable = allTools.includes('label');
-  const toolbarToolsNoLabel = (toolbarTools || []).filter((tool) => tool !== 'label');
+  const toolbarToolsNoLabel = (toolbarTools || []).filter(
+    (tool) => tool !== 'label'
+  );
 
   if (isLabelAvailable) {
     // label has to be placed at the end of the list
@@ -140,7 +155,11 @@ export const Tools = ({
           return (
             <div
               key={tool}
-              className={classnames(classes.availableTool, selected && classes.selectedTool)}
+              className={classnames(
+                classes.availableTool,
+                selected && classes.selectedTool,
+                hasErrors && tool !== 'label' && classes.error
+              )}
               onClick={() => toggleToolBarTool(tool)}
             >
               {tool.toUpperCase()}
@@ -177,7 +196,7 @@ export class CorrectResponse extends React.Component {
       {
         dialog: { open },
       },
-      callback,
+      callback
     );
 
   changeMarks = (key, marks) => {
@@ -232,8 +251,11 @@ export class CorrectResponse extends React.Component {
       updatedToolbarTools.splice(index, 1);
 
       if (tool === defaultTool) {
-        const toolbarToolsNoLabel = (updatedToolbarTools || []).filter((tool) => tool !== 'label');
-        newDefaultTool = (toolbarToolsNoLabel.length && toolbarToolsNoLabel[0]) || '';
+        const toolbarToolsNoLabel = (updatedToolbarTools || []).filter(
+          (tool) => tool !== 'label'
+        );
+        newDefaultTool =
+          (toolbarToolsNoLabel.length && toolbarToolsNoLabel[0]) || '';
       }
 
       if (!isEqual(answers, updatedAnswers)) {
@@ -249,7 +271,7 @@ export class CorrectResponse extends React.Component {
                   toolbarTools: updatedToolbarTools,
                   answers: updatedAnswers,
                   defaultTool: newDefaultTool,
-                }),
+                })
               ),
             onClose: () => this.handleAlertDialog(false),
           },
@@ -282,7 +304,10 @@ export class CorrectResponse extends React.Component {
     const { answers } = model || {};
     const answersKeys = Object.keys(answers || {});
 
-    set(model, `answers.${`alternate${answersKeys.length}`}`, { name: `Alternate ${answersKeys.length}`, marks: [] });
+    set(model, `answers.${`alternate${answersKeys.length}`}`, {
+      name: `Alternate ${answersKeys.length}`,
+      marks: [],
+    });
     onChange(model);
   };
 
@@ -314,7 +339,7 @@ export class CorrectResponse extends React.Component {
   };
 
   render() {
-    const { availableTools, classes, model } = this.props;
+    const { availableTools, classes, errors, model } = this.props;
     const { dialog } = this.state;
     const {
       answers = {},
@@ -331,6 +356,7 @@ export class CorrectResponse extends React.Component {
       titleEnabled,
       toolbarTools,
     } = model || {};
+    const { correctAnswerErrors = {}, toolbarToolsError } = errors || {};
 
     return (
       <div>
@@ -338,10 +364,14 @@ export class CorrectResponse extends React.Component {
           <span>Define Tool Set and Correct Response</span>
         </Typography>
 
-        <Typography component="div" variant="body1" className={classes.subtitleText}>
+        <Typography
+          component="div"
+          variant="body1"
+          className={classes.subtitleText}
+        >
           <span>
-            Use this interface to choose which graphing tools students will be able to use, and to define the correct
-            answer
+            Use this interface to choose which graphing tools students will be
+            able to use, and to define the correct answer
           </span>
         </Typography>
 
@@ -349,10 +379,15 @@ export class CorrectResponse extends React.Component {
           classes={classes}
           availableTools={availableTools}
           defaultTool={defaultTool}
+          hasErrors={!!toolbarToolsError}
           onDefaultToolChange={this.onDefaultToolChange}
           toggleToolBarTool={this.toggleToolBarTool}
           toolbarTools={toolbarTools}
         />
+
+        {toolbarToolsError && (
+          <div className={classes.errorMessage}>{toolbarToolsError}</div>
+        )}
 
         {Object.entries(answers || {}).map(([key, answer]) => {
           const { marks = [], name } = answer || {};
@@ -362,11 +397,15 @@ export class CorrectResponse extends React.Component {
               <div className={classes.responseTitle}>
                 <p className={classes.name}>{name}</p>
                 {key !== 'correctAnswer' && (
-                  <Delete className={classes.iconButton} onClick={() => this.deleteAlternateResponse(key, answer)} />
+                  <Delete
+                    className={classes.iconButton}
+                    onClick={() => this.deleteAlternateResponse(key, answer)}
+                  />
                 )}
               </div>
 
               <Graph
+                className={correctAnswerErrors[key] && classes.graphError}
                 axesSettings={{ includeArrows: arrows }}
                 backgroundMarks={backgroundMarks}
                 coordinatesOnHover={coordinatesOnHover}
@@ -383,8 +422,16 @@ export class CorrectResponse extends React.Component {
                 size={{ width: graph.width, height: graph.height }}
                 title={title}
                 toolbarTools={toolbarTools}
-                onChangeTools={(toolbarTools) => this.updateModel({ toolbarTools })}
+                onChangeTools={(toolbarTools) =>
+                  this.updateModel({ toolbarTools })
+                }
               />
+
+              {correctAnswerErrors[key] && (
+                <div className={classes.errorMessage}>
+                  {correctAnswerErrors[key]}
+                </div>
+              )}
             </div>
           );
         })}
