@@ -8,6 +8,9 @@ export class InputHeader extends React.Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
     className: PropTypes.string,
+    deleteFocusedEl: PropTypes.func,
+    focusedEl: PropTypes.number,
+    index: PropTypes.number,
     label: PropTypes.string,
     onChange: PropTypes.func,
     onDelete: PropTypes.func,
@@ -31,9 +34,8 @@ export class InputHeader extends React.Component {
 
   componentDidMount() {
     const { focusedEl, index } = this.props;
-    console.log('inputRef', this.inputRef);
     if (focusedEl && index && focusedEl === index) {
-      this.inputRef.focus('end');
+      this.inputRef.focus('end', null, true);
     }
   }
 
