@@ -63,7 +63,7 @@ export class Categories extends React.Component {
             });
 
             // if the last row has less categories than max on a row, fill the spaces with divs
-            items = items.concat(Array(categoriesPerRow - cat.length).fill(<div/>));
+            items = items.concat(Array(categoriesPerRow - cat.length).fill(<div/>).map((value,index) => <div key={`fill-space-${index}`} />));
 
             // for each inner array of categories, create a row with category containers
             cat.forEach((c, columnIndex) => {
@@ -78,7 +78,7 @@ export class Categories extends React.Component {
             });
 
             // if the last row has less categories than max on a row, fill the spaces with divs
-            items = items.concat(Array(categoriesPerRow - cat.length).fill(<div/>));
+            items = items.concat(Array(categoriesPerRow - cat.length).fill(<div/>).map((value,index) =><div key={`fill-space-final-${index}`} />));
 
             return items;
           })

@@ -53,7 +53,7 @@ describe('PlacementOrdering', () => {
         }}
         onSessionChange={onSessionChange}
       />,
-      {disableLifecycleMethods: true}
+      { disableLifecycleMethods: true }
     );
   };
 
@@ -184,45 +184,104 @@ describe('PlacementOrdering', () => {
       });
     });
 
-    describe('initSessionIfNeeded', () => {
-      describe('with targets', () => {
-        it('does not reset initial session', () => {
-          wrapper.instance().initSessionIfNeeded(wrapper.instance().props);
-
-          expect(onSessionChange).toHaveBeenCalledWith({ value: [] });
-        })
+    describe('isValidSession', () => {
+      beforeEach(() => {
+        wrapper = mkWrapper();
       });
 
-      describe('without targets', () => {
-        let value;
-        let config;
-
-        beforeEach(() => {
-          config = {
-            includeTargets: false
-          };
-
-          value = choices.map(m => m.id);
-          wrapper = mkWrapper({ config });
-
-          wrapper.instance().initSessionIfNeeded(wrapper.instance().props);
-        });
-
-        it('calls onSessionChange', () => {
-          expect(onSessionChange).toHaveBeenCalledWith({ value });
-        });
-
-        it('does not call onSessionChange if session is set', () => {
-          wrapper = mkWrapper({ config }, { value });
-
-          wrapper.instance().initSessionIfNeeded(wrapper.instance().props);
-
-          expect(onSessionChange).not.toBeCalled();
-        });
+      it('returns true if includeTargets is true and session is empty', () => {
+        expect(wrapper.instance().isValidSession(
+          {
+            model: {
+              ...model,
+              config: {
+                includeTargets: true
+              }
+            },
+            session: { value: [] }
+          })).toEqual(true);
       });
-    });
 
-    describe('UNSAFE_componentWillReceiveProps', () => {
+      it('returns true if includeTargets is true and session is not complete', () => {
+        expect(wrapper.instance().isValidSession(
+          {
+            model: {
+              ...model,
+              config: {
+                includeTargets: true
+              }
+            },
+            session: { value: ['c1', null, 'c3', null] }
+          })).toEqual(true);
+      });
+
+      it('returns true if includeTargets is true and session is not complete', () => {
+        expect(wrapper.instance().isValidSession(
+          {
+            model: {
+              ...model,
+              config: {
+                includeTargets: true
+              }
+            },
+            session: { value: [null, 'c2'] }
+          })).toEqual(true);
+      });
+
+      it('returns true if includeTargets is false, but session is valid', () => {
+        expect(wrapper.instance().isValidSession(
+          {
+            model: {
+              ...model,
+              config: {
+                includeTargets: false
+              }
+            },
+            session: { value: ['c1', 'c3', 'c2', 'c4'] }
+          })).toEqual(true);
+      });
+
+      it('returns false if includeTargets is false and session is empty', () => {
+        expect(wrapper.instance().isValidSession(
+          {
+            model: {
+              ...model,
+              config: {
+                includeTargets: false
+              }
+            },
+            session: { value: [] }
+          })).toEqual(false);
+      });
+
+      it('returns false if includeTargets is false and session is not complete', () => {
+        expect(wrapper.instance().isValidSession(
+          {
+            model: {
+              ...model,
+              config: {
+                includeTargets: false
+              }
+            },
+            session: { value: ['c1', null, 'c3', null] }
+          })).toEqual(false);
+      });
+
+      it('returns false if includeTargets is false and session is not complete', () => {
+        expect(wrapper.instance().isValidSession(
+          {
+            model: {
+              ...model,
+              config: {
+                includeTargets: false
+              }
+            },
+            session: { value: [null, 'c2'] }
+          })).toEqual(false);
+      });
+    })
+
+    describe('componentDidMount', () => {
       beforeEach(() => {
         wrapper = mkWrapper({
           config: {
@@ -231,7 +290,117 @@ describe('PlacementOrdering', () => {
         });
       });
 
-      it('calls initSessionIfNeeded if includeTargets changes', () => {
+      it('does not call initSessionIfNeeded if session is valid (if include targets is true)', () => {
+        wrapper.setProps({
+          model: {
+            ...model,
+            config: {
+              includeTargets: true
+            }
+          },
+          session: {
+            value: []
+          }
+        });
+
+        expect(onSessionChange).not.toBeCalled();
+      });
+
+      it('does not call initSessionIfNeeded if session is valid (if include targets is false)', () => {
+        wrapper.setProps({
+          model: {
+            ...model,
+            config: {
+              includeTargets: false
+            }
+          },
+          session: {
+            value: ['c1', 'c2', 'c4', 'c3']
+          }
+        });
+
+        expect(onSessionChange).not.toBeCalled();
+      });
+
+
+      it('calls initSessionIfNeeded if session is not valid', () => {
+        wrapper.setProps({
+          model: {
+            ...model,
+            config: {
+              includeTargets: false
+            }
+          },
+          session: {
+            value: []
+          }
+        });
+
+        expect(onSessionChange).toHaveBeenCalledWith({ value: model.choices.map(({ id }) => id) });
+      });
+    })
+
+    describe('UNSAFE_componentWillReceiveProps', () => {
+      it('calls onSessionChange if includeTargets changes to false and session will not be valid anymore', () => {
+        wrapper = mkWrapper(
+          {
+            config: {
+              includeTargets: true
+            }
+          },
+          { value: ['c1', null] }
+        );
+
+        wrapper.setProps({
+          model: {
+            ...model,
+            config: {
+              includeTargets: false
+            }
+          }
+        });
+
+        expect(onSessionChange).toHaveBeenCalledWith({
+          value: wrapper.instance().props.model.choices.map(({ id }) => id)
+        });
+      });
+
+      it('does not call onSessionChange if includeTargets changes to false, but session will be valid', () => {
+        wrapper = mkWrapper(
+          {
+            config: {
+              includeTargets: true
+            }
+          },
+          { value: ['c1', 'c2', 'c3', 'c4'] }
+        );
+
+        wrapper.setProps({
+          model: {
+            ...model,
+            config: {
+              includeTargets: false
+            }
+          }
+        });
+
+        expect(onSessionChange).not.toHaveBeenCalledWith()
+      });
+
+      it('calls onSessionChange if targets changed to true, and session is the default session', () => {
+        const initialSession = ['c1', 'c3', 'c4', 'c2'];
+        wrapper = mkWrapper(
+          {
+            config: {
+              includeTargets: false
+            }
+          },
+          { value: initialSession }
+        );
+        wrapper.instance().setState({
+          defaultSessionValue: initialSession
+        });
+
         wrapper.setProps({
           model: {
             ...model,
@@ -244,15 +413,100 @@ describe('PlacementOrdering', () => {
         expect(onSessionChange).toHaveBeenCalledWith({});
       });
 
-      it('calls initSessionIfNeeded if choicesNumberChanged changes', () => {
+      it('does not call onSessionChange if targets changed to true, and session is the not default session', () => {
+        const initialSession = ['c1', 'c3', 'c4', 'c2'];
+
+        wrapper = mkWrapper(
+          {
+            config: {
+              includeTargets: false
+            }
+          },
+          { value: initialSession }
+        );
+
         wrapper.setProps({
           model: {
             ...model,
-            choices: choices.slice(0, 2)
+            config: {
+              includeTargets: true
+            }
+          }
+        });
+
+        expect(onSessionChange).not.toHaveBeenCalled();
+      });
+
+
+      it('calls initSessionIfNeeded if choicesNumberChanged changes', () => {
+        const initialSession = ['c1', 'c3', 'c4', 'c2'];
+
+        wrapper = mkWrapper(
+          {
+            config: {
+              includeTargets: false
+            }
+          },
+          { value: initialSession }
+        );
+
+        wrapper.setProps({
+          model: {
+            ...model,
+            choices: model.choices.slice(0, 2)
           }
         });
 
         expect(onSessionChange).toHaveBeenCalledWith({ value: ['c1', 'c2'] });
+      });
+    });
+
+
+    describe('initSessionIfNeeded', () => {
+      beforeEach(() => {
+        wrapper = mkWrapper({
+          config: {
+            includeTargets: false
+          }
+        });
+      });
+
+      it('removes session value if targets included', () => {
+        const initialProps = wrapper.instance().props;
+
+        wrapper.instance().initSessionIfNeeded({
+          ...initialProps,
+          model: {
+            ...initialProps.model,
+            config: {
+              includeTargets: true
+            }
+          },
+          session: {
+            value: [1, 2, 3, 4]
+          }
+        })
+
+        expect(onSessionChange).toBeCalledWith({});
+      });
+
+      it('updates session value with model choices ids if targets not included', () => {
+        const initialProps = wrapper.instance().props;
+
+        wrapper.instance().initSessionIfNeeded({
+          ...initialProps,
+          model: {
+            ...initialProps.model,
+            config: {
+              includeTargets: false
+            }
+          },
+          session: {
+            value: [1, 2, 3, 4]
+          }
+        })
+
+        expect(onSessionChange).toBeCalledWith({ value: initialProps.model.choices.map(({ id }) => id) });
       });
     });
   });

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ChoicesList render renders correctly 1`] = `
-<div>
+<Component>
   <DragSource(WithStyles(Answer))
     draggable={true}
     id={1}
@@ -50,5 +50,5 @@ exports[`ChoicesList render renders correctly 1`] = `
     title="Answer 6"
     type="choice"
   />
-</div>
+</Component>
 `;

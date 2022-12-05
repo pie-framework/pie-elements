@@ -36,6 +36,10 @@ export default {
       settings: true,
       label: 'Lock Choice Order',
     },
+    choicesPosition: {
+      settings: true,
+      label: 'Choices Position',
+    },
     allowMultiplePlacements: {
       settings: true,
       label: 'Allow Multiple Placements'
@@ -92,5 +96,6 @@ export default {
       settings: false,
       label: 'Add Rubric'
     },
+    minCategoriesPerRow: 1,
   }
 };
