@@ -195,9 +195,19 @@ export interface CategorizeConfigure extends PromptConfig, CommonConfigSettings 
   maxChoices?: number;
 
   /**
+   * Position of the choices
+   */
+  choicesPosition?: ConfigureProp;
+
+  /**
    * Maximum number of categories
    */
   maxCategories?: number;
+
+  /**
+   *  Minimum value of categories per row
+   */
+  minCategoriesPerRow?: number;
 
   /**
    * Maximum image width for input fields

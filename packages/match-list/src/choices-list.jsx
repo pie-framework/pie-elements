@@ -5,6 +5,7 @@ import isEmpty from 'lodash/isEmpty';
 import isUndefined from 'lodash/isUndefined';
 import find from 'lodash/find';
 import { DragAnswer } from './answer';
+import { DroppablePlaceholder } from '@pie-lib/drag';
 
 export class ChoicesList extends React.Component {
   static propTypes = {
@@ -21,14 +22,14 @@ export class ChoicesList extends React.Component {
     const { duplicates } = config;
 
     return (
-      <div className={classes.answersContainer}>
+      <DroppablePlaceholder disabled={disabled}>
         {config.answers
           .filter(
             (answer) =>
               duplicates ||
               isEmpty(session) ||
               !session.value ||
-              isUndefined(find(session.value, (val) => val === answer.id)),
+              isUndefined(find(session.value, (val) => val === answer.id))
           )
           .map((answer) => (
             <DragAnswer
@@ -42,20 +43,12 @@ export class ChoicesList extends React.Component {
               {...answer}
             />
           ))}
-      </div>
+      </DroppablePlaceholder>
     );
   }
 }
 
 const styles = () => ({
-  answersContainer: {
-    alignItems: 'center',
-    display: 'flex',
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'space-between',
-    marginTop: 50,
-  },
   choice: {
     minHeight: '40px',
     minWidth: '200px',

@@ -11,7 +11,8 @@ import isEmpty from 'lodash/isEmpty';
 
 const log = debug('@pie-element:placement-ordering:controller');
 
-export const questionError = () => new Error('Question is missing required array: correctResponse');
+export const questionError = () =>
+  new Error('Question is missing required array: correctResponse');
 
 export function outcome(question, session, env) {
   return new Promise((resolve, reject) => {
@@ -19,14 +20,22 @@ export function outcome(question, session, env) {
       resolve({ score: 0, empty: true });
     }
 
-    if (!question || !question.correctResponse || _.isEmpty(question.correctResponse)) {
+    if (
+      !question ||
+      !question.correctResponse ||
+      _.isEmpty(question.correctResponse)
+    ) {
       reject(questionError());
     } else {
       try {
         const s = score(question, session);
-        const finalScore = partialScoring.enabled(question, env || {}) ? s : s === 1 ? 1 : 0;
+        const finalScore = partialScoring.enabled(question, env || {})
+          ? s
+          : s === 1
+          ? 1
+          : 0;
         resolve({
-          score: finalScore,
+          score: finalScore
         });
       } catch (e) {
         reject(e);
@@ -36,22 +45,22 @@ export function outcome(question, session, env) {
 }
 
 export function createDefaultModel(model = {}) {
-  return new Promise((resolve) => {
+  return new Promise(resolve => {
     resolve({
       ...defaults,
-      ...model,
+      ...model
     });
   });
 }
 
-export const normalize = (question) => ({
+export const normalize = question => ({
   ...defaults,
   rationaleEnabled: true,
   feedbackEnabled: true,
   promptEnabled: true,
   teacherInstructionsEnabled: true,
   studentInstructionsEnabled: true,
-  ...question,
+  ...question
 });
 
 /**
@@ -61,7 +70,7 @@ export const normalize = (question) => ({
  * @param {*} env
  */
 export function model(question, session, env) {
-  return new Promise(async (resolve) => {
+  return new Promise(async resolve => {
     const normalizedQuestion = normalize(question);
     const base = {};
 
@@ -73,17 +82,15 @@ export function model(question, session, env) {
     base.env = env;
     base.outcomes = [];
     base.completeLength = (normalizedQuestion.correctResponse || []).length;
-    base.choices = (normalizedQuestion.choices || []).filter((choice) => choice.label);
+    base.choices = (normalizedQuestion.choices || []).filter(choice => choice.label);
     base.note = normalizedQuestion.note;
     base.showNote = normalizedQuestion.alternateResponses && normalizedQuestion.alternateResponses.length > 0;
 
-    if (env.mode === 'gather' && !normalizedQuestion.placementArea && !session.value) {
-      session.value = base.choices.map((m) => m.id);
-    }
-
     log('[model] removing tileSize for the moment.');
 
-    base.prompt = normalizedQuestion.promptEnabled ? normalizedQuestion.prompt : null;
+    base.prompt = normalizedQuestion.promptEnabled
+      ? normalizedQuestion.prompt
+      : null;
     base.config = {
       orientation: normalizedQuestion.orientation || 'vertical',
       includeTargets: normalizedQuestion.placementArea,
@@ -91,13 +98,18 @@ export function model(question, session, env) {
       targetLabel: normalizedQuestion.targetLabel,
       choiceLabel: normalizedQuestion.choiceLabel,
       showOrdering: normalizedQuestion.numberedGuides,
-      allowSameChoiceInTargets: !normalizedQuestion.removeTilesAfterPlacing,
+      allowSameChoiceInTargets: !normalizedQuestion.removeTilesAfterPlacing
     };
 
     base.disabled = env.mode !== 'gather';
 
-    if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
-      base.rationale = normalizedQuestion.rationaleEnabled ? normalizedQuestion.rationale : null;
+    if (
+      env.role === 'instructor' &&
+      (env.mode === 'view' || env.mode === 'evaluate')
+    ) {
+      base.rationale = normalizedQuestion.rationaleEnabled
+        ? normalizedQuestion.rationale
+        : null;
       base.teacherInstructions = normalizedQuestion.teacherInstructionsEnabled
         ? normalizedQuestion.teacherInstructions
         : null;
@@ -112,24 +124,28 @@ export function model(question, session, env) {
 
       const bestSetOfResponses = allCorrectResponses.reduce(
         (info, cr) => {
-          const currentScore = _.reduce(value, (acc, c, idx) => acc + (cr[idx] === c ? 1 : 0), 0);
+          const currentScore = _.reduce(
+            value,
+            (acc, c, idx) => acc + (cr[idx] === c ? 1 : 0),
+            0
+          );
 
           if (currentScore > info.score) {
             return {
               arr: cr,
-              score: currentScore,
+              score: currentScore
             };
           }
 
           return info;
         },
-        { arr: [], score: 0 },
+        { arr: [], score: 0 }
       );
 
-      base.outcomes = _.map(value, function (c, idx) {
+      base.outcomes = _.map(value, function(c, idx) {
         return {
           id: c,
-          outcome: bestSetOfResponses.arr[idx] === c ? 'correct' : 'incorrect',
+          outcome: bestSetOfResponses.arr[idx] === c ? 'correct' : 'incorrect'
         };
       });
 
@@ -147,6 +163,11 @@ export function model(question, session, env) {
         base.correctResponse = flattenCorrect(normalizedQuestion);
       }
 
+      // requirement made in PD-2182
+      if (!normalizedQuestion.feedback) {
+        normalizedQuestion.feedbackEnabled = false;
+      }
+
       const fb = normalizedQuestion.feedbackEnabled
         ? getFeedbackForCorrectness(base.correctness, normalizedQuestion.feedback)
         : Promise.resolve(undefined);
@@ -162,11 +183,11 @@ export function model(question, session, env) {
 }
 
 export const createCorrectResponseSession = (question, env) => {
-  return new Promise((resolve) => {
+  return new Promise(resolve => {
     if (env.mode !== 'evaluate' && env.role === 'instructor') {
       resolve({
         id: '1',
-        value: flattenCorrect(question),
+        value: flattenCorrect(question)
       });
     } else {
       resolve(null);
@@ -178,7 +199,7 @@ export const validate = (model = {}, config = {}) => {
   const { choices, correctResponse } = model;
   const errors = {};
 
-  const reversedChoices = [...(choices || [])].reverse();
+  const reversedChoices = [...choices || []].reverse();
   const choicesErrors = {};
 
   reversedChoices.forEach((choice, index) => {
@@ -187,7 +208,7 @@ export const validate = (model = {}, config = {}) => {
     if (label === '' || label === '<div></div>') {
       choicesErrors[id] = 'Content should not be empty.';
     } else {
-      const identicalAnswer = reversedChoices.slice(index + 1).some((c) => c.label === label);
+      const identicalAnswer = reversedChoices.slice(index + 1).some(c => c.label === label);
 
       if (identicalAnswer) {
         choicesErrors[id] = 'Content should be unique.';
@@ -195,8 +216,8 @@ export const validate = (model = {}, config = {}) => {
     }
   });
 
-  const choicesIds = (choices || []).map((choice) => choice.id);
-  const correctResponseIds = (correctResponse || []).map((response) => response.id || response);
+  const choicesIds = (choices || []).map(choice => choice.id);
+  const correctResponseIds = (correctResponse || []).map(response => response.id || response);
 
   if (isEqual(choicesIds, correctResponseIds)) {
     errors.orderError = 'The correct ordering should not be identical to the initial ordering.';

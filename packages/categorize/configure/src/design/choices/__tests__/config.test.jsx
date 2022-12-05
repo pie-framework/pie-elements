@@ -3,6 +3,7 @@ import React from 'react';
 
 import { Config } from '../config';
 
+
 describe('config', () => {
   let onModelChanged;
   let allChoicesHaveCount;
@@ -15,7 +16,7 @@ describe('config', () => {
       choices: [
         {
           id: '0',
-          content: 'Choice 0',
+          content: 'Choice 0'
         },
       ],
       choicesPosition: 'below',
@@ -27,7 +28,7 @@ describe('config', () => {
         {
           id: '0',
           label: 'Category 0',
-          choices: [],
+          choices: []
         },
       ],
       rowLabels: [''],
@@ -35,7 +36,7 @@ describe('config', () => {
       partialScoring: true,
     };
   });
-  const wrapper = (extras) => {
+  const wrapper = extras => {
     const props = { classes: {}, onModelChanged, allChoicesHaveCount, config, ...extras };
     return shallow(<Config {...props} />);
   };
@@ -48,24 +49,16 @@ describe('config', () => {
   });
 
   describe('logic', () => {
+
     it('changeLabel', () => {
       let w = wrapper();
 
       w.instance().changeLabel({ target: { value: 'foo' } });
 
       expect(onModelChanged).toBeCalledWith({
-        choicesLabel: 'foo',
+        choicesLabel: 'foo'
       });
     });
 
-    it('changePosition', () => {
-      let w = wrapper();
-
-      w.instance().changePosition({ value: 'below' });
-
-      expect(onModelChanged).toBeCalledWith({
-        choicesPosition: 'below',
-      });
-    });
   });
 });
