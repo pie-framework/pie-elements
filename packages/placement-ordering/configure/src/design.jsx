@@ -73,14 +73,26 @@ export class Design extends React.Component {
     );
     this.onFeedbackChange = this.changeHandler('feedback');
 
-    this.onChoiceEditorChange = (choices, correctResponse, resetSession) => {
+    this.onChoiceEditorChange = (choices, correctResponse) => {
       const { model, onModelChanged } = this.props;
       const update = cloneDeep(model);
 
       update.choices = choices;
       update.correctResponse = correctResponse;
-      onModelChanged(update, resetSession || false);
+      onModelChanged(update);
     };
+  }
+
+  componentDidMount() {
+    const { model, onModelChanged } = this.props || {};
+    const { feedback } = model || {};
+    const update = cloneDeep(model);
+
+    // requirement made in PD-2182
+    if (!feedback) {
+      update.feedbackEnabled = false;
+      onModelChanged(update);
+    }
   }
 
   render() {

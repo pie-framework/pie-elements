@@ -128,6 +128,8 @@ export class Categorize extends React.Component {
     return flexDirection;
   };
 
+  existAlternateResponse = (correctResponse) => correctResponse?.some(correctRes => correctRes.alternateResponses?.length > 0);
+
   render() {
     const { classes, model, session } = this.props;
     const { showCorrect } = this.state;
@@ -147,14 +149,11 @@ export class Categorize extends React.Component {
     );
 
     log('[render] disabled: ', model.disabled);
-
-    const { rowLabels, categoriesPerRow } = model;
-    const nbOfRows =
-      (categories && Math.ceil(categories.length / categoriesPerRow)) || 0;
-    const displayNote =
-      (showCorrect || (mode === 'view' && role === 'instructor')) &&
-      showNote &&
-      note;
+    
+    const { rowLabels, categoriesPerRow, correctResponse } = model;
+    const nbOfRows = categories && Math.ceil(categories.length / categoriesPerRow) || 0;
+    const existAlternate = this.existAlternateResponse(correctResponse) || false;
+    const displayNote = (showCorrect || mode === 'view' && role === 'instructor') && showNote && note && existAlternate;
 
     return (
       <div className={classes.mainContainer}>
@@ -184,23 +183,26 @@ export class Categorize extends React.Component {
         )}
         <div className={classes.categorize} style={style}>
           <div style={{ display: 'flex', flex: 1 }}>
-            {rowLabels && nbOfRows && (
-              <div style={{ display: 'grid', marginRight: '20px' }}>
-                {rowLabels.slice(0, nbOfRows).map((label, index) => (
-                  <div
-                    key={index}
-                    style={{
-                      alignItems: 'center',
-                      display: 'flex',
-                      justifyContent: 'center',
-                    }}
-                    dangerouslySetInnerHTML={{
-                      __html: label,
-                    }}
-                  />
-                ))}
-              </div>
-            )}
+
+            {
+              !!(rowLabels && nbOfRows) && (
+                <div style={{ display: 'grid', marginRight: '20px' }}>
+                  {rowLabels.slice(0, nbOfRows).map((label, index) => (
+                    <div
+                      key={index}
+                      style={{
+                        alignItems: 'center',
+                        display: 'flex',
+                        justifyContent: 'center'
+                      }}
+                      dangerouslySetInnerHTML={{
+                        __html: label
+                      }}
+                    />
+                  ))}
+                </div>
+              )
+            }
             <Categories
               model={model}
               disabled={model.disabled}

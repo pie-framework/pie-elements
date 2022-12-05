@@ -296,8 +296,7 @@ describe('Placement Ordering', () => {
             ...model,
             choices,
             correctResponse,
-          },
-          false);
+          });
       });
     });
 
