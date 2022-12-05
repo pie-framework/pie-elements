@@ -759,6 +759,7 @@ exports[`Configure renders snapshot 1`] = `
     />
     <WithStyles(CorrectResponse)
       availableTools={Array []}
+      errors={Object {}}
       model={
         Object {
           "answers": Object {},
