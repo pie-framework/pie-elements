@@ -1,9 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {
-  SessionChangedEvent,
-  ModelSetEvent
-} from '@pie-framework/pie-player-events';
+import { SessionChangedEvent, ModelSetEvent } from '@pie-framework/pie-player-events';
 import Main from './main';
 import { renderMath } from '@pie-lib/math-rendering';
 import generateModel from './utils';
@@ -18,11 +15,7 @@ export default class SelectText extends HTMLElement {
 
     this.render();
     this.dispatchEvent(
-      new ModelSetEvent(
-        this.tagName.toLowerCase(),
-        this.isSessionComplete(),
-        this._model !== undefined
-      )
+      new ModelSetEvent(this.tagName.toLowerCase(), this.isSessionComplete(), this._model !== undefined),
     );
   }
 
@@ -38,10 +31,14 @@ export default class SelectText extends HTMLElement {
 
       // This case was introduced mostly for createCorrectSession:
       // make sure initial session tokens are parsed and have correct start and end (according to the regenerated model)
-      const selectedTokenExistsInGeneratedTokens = s => tokens.find(({ start: tStart, end: tEnd }) => s.start === tStart && s.end === tEnd);
+      const selectedTokenExistsInGeneratedTokens = (s) =>
+        tokens.find(({ start: tStart, end: tEnd }) => s.start === tStart && s.end === tEnd);
 
       // check if ALL the selectedTokens have the correct start and end
-      const allAreCorrect = selectedTokens.reduce((acc, selectedToken) => acc && selectedTokenExistsInGeneratedTokens(selectedToken), true);
+      const allAreCorrect = selectedTokens.reduce(
+        (acc, selectedToken) => acc && selectedTokenExistsInGeneratedTokens(selectedToken),
+        true,
+      );
 
       if (!allAreCorrect) {
         // otherwise, make sure to parse selectedTokens as well
@@ -53,7 +50,6 @@ export default class SelectText extends HTMLElement {
         }
       }
     }
-
 
     if (!Array.isArray(this._session.selectedTokens)) {
       this._session.selectedTokens = [];
@@ -73,12 +69,7 @@ export default class SelectText extends HTMLElement {
   selectionChanged(selection) {
     this._session.selectedTokens = selection;
 
-    this.dispatchEvent(
-      new SessionChangedEvent(
-        this.tagName.toLowerCase(),
-        this.isSessionComplete()
-      )
-    );
+    this.dispatchEvent(new SessionChangedEvent(this.tagName.toLowerCase(), this.isSessionComplete()));
   }
 
   connectedCallback() {
@@ -90,7 +81,7 @@ export default class SelectText extends HTMLElement {
       const el = React.createElement(Main, {
         model: this._model,
         session: this._session,
-        onSelectionChange: this.selectionChanged.bind(this)
+        onSelectionChange: this.selectionChanged.bind(this),
       });
 
       ReactDOM.render(el, this, () => {

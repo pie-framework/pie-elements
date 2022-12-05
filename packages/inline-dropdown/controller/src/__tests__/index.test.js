@@ -1,9 +1,4 @@
-import {
-  getScore,
-  outcome,
-  createCorrectResponseSession,
-  model,
-} from '../index';
+import { getScore, outcome, createCorrectResponseSession, model } from '../index';
 
 describe('inline-dropdown', () => {
   let result, question, session, env;
@@ -12,7 +7,7 @@ describe('inline-dropdown', () => {
     question = {
       lockChoiceOrder: false,
       choices: {
-        '0': [
+        0: [
           {
             correct: false,
             value: '9719395',
@@ -32,7 +27,7 @@ describe('inline-dropdown', () => {
             correct: true,
             value: '9719398',
             label: '16,000',
-            rationale: 'rationale for choice'
+            rationale: 'rationale for choice',
           },
         ],
       },
@@ -65,18 +60,9 @@ describe('inline-dropdown', () => {
       env = { mode: 'gather' };
       const updateSession = jest.fn().mockResolvedValue();
       await model(question, session, env, updateSession);
-      expect(updateSession).toHaveBeenCalledWith(
-        '1',
-        'inline-dropdown-element',
-        {
-          shuffledValues: expect.arrayContaining([
-            '9719395',
-            '9719396',
-            '9719397',
-            '9719398',
-          ]),
-        }
-      );
+      expect(updateSession).toHaveBeenCalledWith('1', 'inline-dropdown-element', {
+        shuffledValues: expect.arrayContaining(['9719395', '9719396', '9719397', '9719398']),
+      });
     });
   });
 });
@@ -85,64 +71,64 @@ const question = {
   prompt: 'Use the drop-downs to complete the sentence',
   markup: '<div><p>The {{0}} jumped {{1}} the {{2}}</p></div>',
   choices: {
-    '0': [
+    0: [
       {
         label: 'cow ',
         value: '0',
         correct: true,
-        rationale: 'rationale cow'
+        rationale: 'rationale cow',
       },
       {
         label: 'dog ',
         value: '1',
         correct: false,
-        rationale: 'rationale dog'
+        rationale: 'rationale dog',
       },
       {
         label: 'cat ',
         value: '2',
         correct: false,
-        rationale: 'rationale cat'
+        rationale: 'rationale cat',
       },
     ],
-    '1': [
+    1: [
       {
         label: 'over ',
         value: '0',
         correct: true,
-        rationale: 'rationale over'
+        rationale: 'rationale over',
       },
       {
         label: 'under ',
         value: '1',
         correct: false,
-        rationale: 'rationale under'
+        rationale: 'rationale under',
       },
       {
         label: 'across ',
         value: '2',
         correct: false,
-        rationale: 'rationale across'
+        rationale: 'rationale across',
       },
     ],
-    '2': [
+    2: [
       {
         label: 'moon ',
         value: '0',
         correct: true,
-        rationale: 'rationale moon'
+        rationale: 'rationale moon',
       },
       {
         label: 'sun',
         value: '2',
         correct: false,
-        rationale: 'rationale sun'
+        rationale: 'rationale sun',
       },
       {
         label: 'house ',
         value: '3',
         correct: false,
-        rationale: 'rationale house'
+        rationale: 'rationale house',
       },
     ],
   },
@@ -154,35 +140,25 @@ describe('controller', () => {
     const updateSession = jest.fn().mockResolvedValue();
 
     it('output when session is defined', async () => {
-      const m = await model(
-        question,
-        { value: { 0: '0', 1: '0', 2: '0' } },
-        { mode: 'evaluate' },
-        updateSession
-      );
+      const m = await model(question, { value: { 0: '0', 1: '0', 2: '0' } }, { mode: 'evaluate' }, updateSession);
 
       expect(m).toEqual(
         expect.objectContaining({
           feedback: { 0: 'correct', 1: 'correct', 2: 'correct' },
           responseCorrect: true,
-        })
+        }),
       );
     });
 
     const returnModel = (session) => {
       it(`output when session is ${JSON.stringify(session)}`, async () => {
-        const m = await model(
-          question,
-          session,
-          { mode: 'evaluate' },
-          updateSession
-        );
+        const m = await model(question, session, { mode: 'evaluate' }, updateSession);
 
         expect(m).toEqual(
           expect.objectContaining({
             feedback: { 0: 'incorrect', 1: 'incorrect', 2: 'incorrect' },
             responseCorrect: false,
-          })
+          }),
         );
       });
     };
@@ -192,75 +168,73 @@ describe('controller', () => {
     returnModel({});
 
     const choicesWithNullRationale = {
-      '0': [
+      0: [
         {
           label: 'cow ',
           value: '0',
           correct: true,
-          rationale: null
+          rationale: null,
         },
         {
           label: 'dog ',
           value: '1',
           correct: false,
-          rationale: null
+          rationale: null,
         },
         {
           label: 'cat ',
           value: '2',
           correct: false,
-          rationale: null
+          rationale: null,
         },
       ],
-      '1': [
+      1: [
         {
           label: 'over ',
           value: '0',
           correct: true,
-          rationale: null
+          rationale: null,
         },
         {
           label: 'under ',
           value: '1',
           correct: false,
-          rationale: null
+          rationale: null,
         },
         {
           label: 'across ',
           value: '2',
           correct: false,
-          rationale: null
+          rationale: null,
         },
       ],
-      '2': [
+      2: [
         {
           label: 'moon ',
           value: '0',
           correct: true,
-          rationale: null
+          rationale: null,
         },
         {
           label: 'sun',
           value: '2',
           correct: false,
-          rationale: null
+          rationale: null,
         },
         {
           label: 'house ',
           value: '3',
           correct: false,
-          rationale: null
-        }
-      ]
+          rationale: null,
+        },
+      ],
     };
-
 
     const assertGather = (label, extra, session, expected) => {
       it(`'mode: gather, ${label}'`, async () => {
-
         q = {
           ...question,
-          alternateResponse: { '2': ['2'] },
+          alternateResponse: { 2: ['2'] },
           lockChoiceOrder: true,
           teacherInstructions: 'Teacher Instructions',
           rationale: 'Rationale',
@@ -274,7 +248,7 @@ describe('controller', () => {
             ...session,
           },
           { mode: 'gather' },
-          updateSession
+          updateSession,
         );
 
         expect(result).toEqual({
@@ -295,8 +269,8 @@ describe('controller', () => {
       {},
       {
         rationale: null,
-        teacherInstructions: null
-      }
+        teacherInstructions: null,
+      },
     );
 
     assertGather(
@@ -311,15 +285,15 @@ describe('controller', () => {
       {
         prompt: null,
         rationale: null,
-        teacherInstructions: null
-      }
+        teacherInstructions: null,
+      },
     );
 
     const assertView = (label, extra, session, expected) => {
       it(`'mode: view, ${label}'`, async () => {
         q = {
           ...question,
-          alternateResponse: { '2': ['2'] },
+          alternateResponse: { 2: ['2'] },
           lockChoiceOrder: true,
           teacherInstructions: 'Teacher Instructions',
           rationale: 'Rationale',
@@ -329,7 +303,7 @@ describe('controller', () => {
           q,
           { id: '1', element: 'explicit-constructed-response', ...session },
           { mode: 'view', role: 'instructor' },
-          updateSession
+          updateSession,
         );
 
         expect(result).toEqual({
@@ -350,15 +324,15 @@ describe('controller', () => {
         rationaleEnabled: false,
         teacherInstructionsEnabled: false,
         studentInstructionsEnabled: false,
-        choiceRationaleEnabled: false
+        choiceRationaleEnabled: false,
       },
       {},
       {
         prompt: null,
         rationale: null,
         teacherInstructions: null,
-        choices: choicesWithNullRationale
-      }
+        choices: choicesWithNullRationale,
+      },
     );
 
     assertView(
@@ -367,15 +341,15 @@ describe('controller', () => {
       {},
       {
         teacherInstructions: 'Teacher Instructions',
-        rationale: 'Rationale'
-      }
+        rationale: 'Rationale',
+      },
     );
 
     const assertViewStudent = (label, extra, session, expected) => {
       it(`'mode: view, ${label}'`, async () => {
         q = {
           ...question,
-          alternateResponse: { '2': ['2'] },
+          alternateResponse: { 2: ['2'] },
           lockChoiceOrder: true,
           teacherInstructions: 'Teacher Instructions',
           rationale: 'Rationale',
@@ -384,7 +358,7 @@ describe('controller', () => {
         const result = await model(
           q,
           { id: '1', element: 'explicit-constructed-response', ...session },
-          { mode: 'view', role: 'student' }
+          { mode: 'view', role: 'student' },
         );
 
         expect(result).toEqual({
@@ -411,8 +385,8 @@ describe('controller', () => {
       {
         prompt: null,
         rationale: null,
-        teacherInstructions: null
-      }
+        teacherInstructions: null,
+      },
     );
 
     assertViewStudent(
@@ -422,14 +396,14 @@ describe('controller', () => {
       {
         rationale: null,
         teacherInstructions: null,
-      }
+      },
     );
 
     const assertEvaluate = (label, extra, session, expected) => {
       it(`'mode: evaluate, ${label}'`, async () => {
         q = {
           ...question,
-          alternateResponse: { '0': ['2'], '1': ['2'], '2': ['2'] },
+          alternateResponse: { 0: ['2'], 1: ['2'], 2: ['2'] },
           lockChoiceOrder: true,
           teacherInstructions: 'Teacher Instructions',
           rationale: 'Rationale',
@@ -440,7 +414,7 @@ describe('controller', () => {
           q,
           { id: '1', element: 'explicit-constructed-response', ...session },
           { mode: 'evaluate', role: 'instructor' },
-          updateSession
+          updateSession,
         );
 
         expect(result).toEqual({
@@ -467,7 +441,7 @@ describe('controller', () => {
       {
         feedback: { 0: 'correct', 1: 'correct', 2: 'correct' },
         responseCorrect: true,
-      }
+      },
     );
 
     assertEvaluate(
@@ -483,7 +457,7 @@ describe('controller', () => {
       {
         feedback: { 0: 'correct', 1: 'correct', 2: 'incorrect' },
         responseCorrect: false,
-      }
+      },
     );
 
     assertEvaluate(
@@ -499,7 +473,7 @@ describe('controller', () => {
       {
         feedback: { 0: 'correct', 1: 'incorrect', 2: 'correct' },
         responseCorrect: false,
-      }
+      },
     );
 
     assertEvaluate(
@@ -515,7 +489,7 @@ describe('controller', () => {
       {
         feedback: { 0: 'incorrect', 1: 'incorrect', 2: 'incorrect' },
         responseCorrect: false,
-      }
+      },
     );
   });
 
@@ -554,7 +528,7 @@ describe('controller', () => {
             ...extra,
           },
           sessionValue,
-          env
+          env,
         );
 
         expect(result).toEqual(expect.objectContaining(expected));
@@ -566,7 +540,7 @@ describe('controller', () => {
       { partialScoring: true },
       { value: { 0: '0', 1: '0', 2: '1' } },
       { mode: 'evaluate' },
-      { score: 0.67 }
+      { score: 0.67 },
     );
 
     assertOutcome(
@@ -574,7 +548,7 @@ describe('controller', () => {
       { partialScoring: false },
       { value: { 0: '0', 1: '0', 2: '1' } },
       { mode: 'evaluate' },
-      { score: 0 }
+      { score: 0 },
     );
 
     assertOutcome(
@@ -582,7 +556,7 @@ describe('controller', () => {
       { partialScoring: false },
       { value: { 0: '0', 1: '0', 2: '1' } },
       { mode: 'evaluate', partialScoring: true },
-      { score: 0 }
+      { score: 0 },
     );
 
     assertOutcome(
@@ -590,68 +564,34 @@ describe('controller', () => {
       { partialScoring: true },
       { value: { 0: '0', 1: '0', 2: '1' } },
       { mode: 'evaluate', partialScoring: false },
-      { score: 0 }
+      { score: 0 },
     );
   });
 
   describe('outcome', () => {
     const assertOutcome = (partialScoring, sessionValue, expected) => {
-      it(`partial score ${
-        partialScoring ? 'enabled' : 'disabled'
-      }`, async () => {
+      it(`partial score ${partialScoring ? 'enabled' : 'disabled'}`, async () => {
         const result = await outcome(
           {
             ...question,
             partialScoring,
           },
-          sessionValue
+          sessionValue,
         );
 
         expect(result).toEqual(expected);
       });
     };
 
-    assertOutcome(
-      true,
-      { value: { 0: '0', 1: '0', 2: '0' } },
-      { score: 1, empty: false }
-    );
-    assertOutcome(
-      true,
-      { value: { 0: '0', 1: '0', 2: '1' } },
-      { score: 0.67, empty: false }
-    );
-    assertOutcome(
-      true,
-      { value: { 0: '0', 1: '1', 2: '1' } },
-      { score: 0.33, empty: false }
-    );
-    assertOutcome(
-      true,
-      { value: { 0: '1', 1: '1', 2: '1' } },
-      { score: 0, empty: false }
-    );
+    assertOutcome(true, { value: { 0: '0', 1: '0', 2: '0' } }, { score: 1, empty: false });
+    assertOutcome(true, { value: { 0: '0', 1: '0', 2: '1' } }, { score: 0.67, empty: false });
+    assertOutcome(true, { value: { 0: '0', 1: '1', 2: '1' } }, { score: 0.33, empty: false });
+    assertOutcome(true, { value: { 0: '1', 1: '1', 2: '1' } }, { score: 0, empty: false });
 
-    assertOutcome(
-      false,
-      { value: { 0: '0', 1: '0', 2: '0' } },
-      { score: 1, empty: false }
-    );
-    assertOutcome(
-      false,
-      { value: { 0: '0', 1: '0', 2: '1' } },
-      { score: 0, empty: false }
-    );
-    assertOutcome(
-      false,
-      { value: { 0: '0', 1: '1', 2: '1' } },
-      { score: 0, empty: false }
-    );
-    assertOutcome(
-      false,
-      { value: { 0: '1', 1: '1', 2: '1' } },
-      { score: 0, empty: false }
-    );
+    assertOutcome(false, { value: { 0: '0', 1: '0', 2: '0' } }, { score: 1, empty: false });
+    assertOutcome(false, { value: { 0: '0', 1: '0', 2: '1' } }, { score: 0, empty: false });
+    assertOutcome(false, { value: { 0: '0', 1: '1', 2: '1' } }, { score: 0, empty: false });
+    assertOutcome(false, { value: { 0: '1', 1: '1', 2: '1' } }, { score: 0, empty: false });
 
     const returnModel = (session) => {
       it(`empty: true when session is ${JSON.stringify(session)}`, async () => {

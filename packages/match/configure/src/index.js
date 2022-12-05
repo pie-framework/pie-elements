@@ -6,7 +6,7 @@ import {
   DeleteImageEvent,
   InsertImageEvent,
   InsertSoundEvent,
-  DeleteSoundEvent
+  DeleteSoundEvent,
 } from '@pie-framework/pie-configure-events';
 import debug from 'debug';
 import defaultValues from './defaults';
@@ -15,10 +15,9 @@ const log = debug('pie-elements:match:configure');
 
 export default class MatchConfigure extends HTMLElement {
   static createDefaultModel = (model = {}) => ({
-      ...defaultValues.model,
-      ...model
-    }
-  );
+    ...defaultValues.model,
+    ...model,
+  });
 
   constructor() {
     super();
@@ -77,12 +76,12 @@ export default class MatchConfigure extends HTMLElement {
         configuration: this._configuration,
         imageSupport: {
           add: this.insertImage.bind(this),
-          delete: this.onDeleteImage.bind(this)
+          delete: this.onDeleteImage.bind(this),
         },
         uploadSoundSupport: {
           add: this.insertSound.bind(this),
-          delete: this.onDeleteSound.bind(this)
-        }
+          delete: this.onDeleteSound.bind(this),
+        },
       });
       ReactDOM.render(el, this);
     }

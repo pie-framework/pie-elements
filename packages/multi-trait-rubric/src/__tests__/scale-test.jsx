@@ -19,16 +19,12 @@ describe('Scale', () => {
           description: 'Trait 1 Description',
           scorePointsDescriptors: ['Descriptor 0', 'Descriptor 1'],
           standards: [],
-        }
+        },
       ],
-      ...scaleOptions
+      ...scaleOptions,
     };
 
-    return mount(<Scale
-      scale={scale}
-      scaleIndex={1}
-      classes={{}}
-    />);
+    return mount(<Scale scale={scale} scaleIndex={1} classes={{}} />);
   };
 
   beforeEach(() => {

@@ -2,7 +2,7 @@ const { model } = require('./generate');
 
 module.exports = {
   elements: {
-    'protractor-element': '../..'
+    'protractor-element': '../..',
   },
-  models: [model('1', 'protractor-element')]
+  models: [model('1', 'protractor-element')],
 };

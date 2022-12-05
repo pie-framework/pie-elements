@@ -2,11 +2,7 @@ import { PieModel } from '../../PieModel';
 import { PromptConfig } from '../../PromptConfig';
 import { CommonConfigSettings } from '../../CommonConfigSettings';
 import { ComplexFeedbackType } from '../../Feedback';
-import {
-  ConfigureMaxImageDimensionsProp,
-  ConfigureProp,
-  ConfigurePropWithEnabled,
-} from '../ConfigurationProp';
+import { ConfigureMaxImageDimensionsProp, ConfigureProp, ConfigurePropWithEnabled } from '../ConfigurationProp';
 
 interface Alternate {
   /** The id for the alternative response */
@@ -82,15 +78,7 @@ export interface MathInlinePie extends PieModel {
    * 8 for Grade 8 - HS
    * @default - miscellaneous
    */
-  equationEditor?:
-    | 'geometry'
-    | 'advanced-algebra'
-    | 'statistics'
-    | 'miscellaneous'
-    | 1
-    | 3
-    | 6
-    | 8;
+  equationEditor?: 'geometry' | 'advanced-algebra' | 'statistics' | 'miscellaneous' | 1 | 3 | 6 | 8;
 
   /** Feedback configuration for the responses */
   feedback?: ComplexFeedbackType;
@@ -169,9 +157,7 @@ export interface MathInlinePie extends PieModel {
  * Config Object for @pie-elements/math-inline
  * @additionalProperties false
  */
-export interface MathInlineConfigure
-  extends PromptConfig,
-    CommonConfigSettings {
+export interface MathInlineConfigure extends PromptConfig, CommonConfigSettings {
   /**
    * Configuration for prompt
    */

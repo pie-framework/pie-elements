@@ -7,15 +7,15 @@ import defaults from '../defaults';
 jest.mock('@pie-lib/rubric', () => ({
   RUBRIC_TYPES: {
     SIMPLE_RUBRIC: 'simpleRubric',
-    MULTI_TRAIT_RUBRIC: 'multiTraitRubric'
-  }
+    MULTI_TRAIT_RUBRIC: 'multiTraitRubric',
+  },
 }));
 
 const model = (extras) => ({
   id: '1',
   element: 'complex-rubric',
   ...defaults.model,
-  ...extras
+  ...extras,
 });
 
 describe('Main', () => {
@@ -23,7 +23,7 @@ describe('Main', () => {
   let onModelChanged = jest.fn();
   let onConfigurationChanged = jest.fn();
 
-  const wrapper = extras => {
+  const wrapper = (extras) => {
     const defaults = {
       onModelChanged,
       onConfigurationChanged,
@@ -34,44 +34,44 @@ describe('Main', () => {
           showStandards: {
             settings: false,
             label: 'Show Standards',
-            enabled: false
+            enabled: false,
           },
           showExcludeZero: {
             settings: true,
             label: 'Exclude Zero',
-            enabled: false
+            enabled: false,
           },
           showScorePointLabels: {
             settings: true,
             label: 'Show Score Point Labels',
-            enabled: false
+            enabled: false,
           },
           showLevelTagInput: {
             settings: true,
             label: 'Show Level Tag Input',
-            enabled: false
+            enabled: false,
           },
           showDescription: {
             settings: true,
             label: 'Show Description',
-            enabled: false
+            enabled: false,
           },
           showVisibleToStudent: {
             settings: true,
             label: 'Visible to Student',
-            enabled: false
+            enabled: false,
           },
           showHalfScoring: {
             settings: true,
             label: 'Half Scoring',
-            enabled: false
+            enabled: false,
           },
           dragAndDrop: {
             settings: false,
             label: 'Enable Drag and Drop',
             enabled: false,
-          }
-        }
+          },
+        },
       },
     };
     const props = { ...defaults };

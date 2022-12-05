@@ -19,7 +19,7 @@ export class Container extends Component {
     return {
       ...prevState,
       shapes: getAllShapes(nextProps.shapes),
-    }
+    };
   }
 
   constructor(props) {
@@ -28,8 +28,8 @@ export class Container extends Component {
     this.state = {
       dragEnabled: true,
       // always transform shapes map into shapes array at this level
-      shapes: getAllShapes(props.shapes)
-    }
+      shapes: getAllShapes(props.shapes),
+    };
   }
 
   handleFileRead = (file) => {
@@ -38,7 +38,7 @@ export class Container extends Component {
       const reader = new FileReader();
 
       reader.onloadend = () => onImageUpload(reader.result);
-      reader.readAsDataURL(file)
+      reader.readAsDataURL(file);
     }
   };
 
@@ -92,13 +92,13 @@ export class Container extends Component {
     this.disableDropzone();
   };
 
-  onUpdateShapes = newShapes => {
+  onUpdateShapes = (newShapes) => {
     const { onUpdateShapes } = this.props;
 
     this.setState(
       { shapes: newShapes },
       // always transform shapes array back into shapes map when saving changes
-      () => onUpdateShapes(groupShapes(newShapes))
+      () => onUpdateShapes(groupShapes(newShapes)),
     );
   };
 
@@ -107,7 +107,7 @@ export class Container extends Component {
 
     if (shapes && shapes.length) {
       // sort by index value
-      let newShapes = shapes.sort((a, b) => (parseInt(a.index) - parseInt(b.index)));
+      let newShapes = shapes.sort((a, b) => parseInt(a.index) - parseInt(b.index));
 
       newShapes = newShapes ? newShapes.slice(0, newShapes.length - 1) : [];
 
@@ -133,25 +133,24 @@ export class Container extends Component {
       onUpdateImageDimension,
       outlineColor,
       strokeWidth,
-      preserveAspectRatioEnabled
+      preserveAspectRatioEnabled,
     } = this.props;
-    const {
-      dropzoneActive,
-      dragEnabled,
-      showTooltip
-    } = this.state;
+    const { dropzoneActive, dragEnabled, showTooltip } = this.state;
     const { shapes } = this.state;
 
     return (
       <div className={classes.base}>
-        <div className={`${classes.box} ${dropzoneActive ? classes.boxActive : ''}`}
-             {...dragEnabled ? {
-               onDragExit: this.handleOnDragExit,
-               onDragLeave: this.handleOnDragExit,
-               onDragOver: this.handleOnDragOver,
-               onDrop: this.handleOnDrop,
-               onPaste: this.handleOnPaste
-             } : {}}
+        <div
+          className={`${classes.box} ${dropzoneActive ? classes.boxActive : ''}`}
+          {...(dragEnabled
+            ? {
+                onDragExit: this.handleOnDragExit,
+                onDragLeave: this.handleOnDragExit,
+                onDragOver: this.handleOnDragOver,
+                onDrop: this.handleOnDrop,
+                onPaste: this.handleOnPaste,
+              }
+            : {})}
         >
           <div className={classes.toolbar}>
             {imageUrl && (
@@ -166,54 +165,45 @@ export class Container extends Component {
                 }}
               />
             )}
-            <Button
-              disabled={!(shapes && shapes.length)}
-              onClick={this.handleUndo}
-              label="Undo"
-            />
-            <Button
-              disabled={!(shapes && shapes.length)}
-              onClick={this.handleClearAll}
-              label="Clear all"
-            />
+            <Button disabled={!(shapes && shapes.length)} onClick={this.handleUndo} label="Undo" />
+            <Button disabled={!(shapes && shapes.length)} onClick={this.handleClearAll} label="Clear all" />
           </div>
 
           <div
-            ref={ref => {
+            ref={(ref) => {
               this.imageSection = ref;
             }}
-            className={classes.drawableHeight}>
-            {imageUrl
-              ? (
-                <Drawable
-                  dimensions={dimensions}
-                  disableDrag={this.handleDisableDrag}
-                  enableDrag={this.handleEnableDrag}
-                  imageUrl={imageUrl}
-                  hotspotColor={hotspotColor}
-                  multipleCorrect={multipleCorrect}
-                  onUpdateImageDimension={onUpdateImageDimension}
-                  onUpdateShapes={this.onUpdateShapes}
-                  outlineColor={outlineColor}
-                  shapes={shapes}
-                  strokeWidth={strokeWidth}
-                  preserveAspectRatioEnabled={preserveAspectRatioEnabled}
+            className={classes.drawableHeight}
+          >
+            {imageUrl ? (
+              <Drawable
+                dimensions={dimensions}
+                disableDrag={this.handleDisableDrag}
+                enableDrag={this.handleEnableDrag}
+                imageUrl={imageUrl}
+                hotspotColor={hotspotColor}
+                multipleCorrect={multipleCorrect}
+                onUpdateImageDimension={onUpdateImageDimension}
+                onUpdateShapes={this.onUpdateShapes}
+                outlineColor={outlineColor}
+                shapes={shapes}
+                strokeWidth={strokeWidth}
+                preserveAspectRatioEnabled={preserveAspectRatioEnabled}
+              />
+            ) : (
+              <div className={`${classes.drawableHeight} ${classes.centered}`}>
+                <label>Drag and drop or upload image from computer</label>
+                <br />
+                <UploadControl
+                  label="Upload Image"
+                  onInputClick={this.handleInputClick}
+                  onUploadImage={this.handleUploadImage}
+                  setRef={(ref) => {
+                    this.input = ref;
+                  }}
                 />
-              )
-              : (
-                <div className={`${classes.drawableHeight} ${classes.centered}`}>
-                  <label>Drag and drop or upload image from computer</label>
-                  <br/>
-                  <UploadControl
-                    label="Upload Image"
-                    onInputClick={this.handleInputClick}
-                    onUploadImage={this.handleUploadImage}
-                    setRef={(ref) => {
-                      this.input = ref;
-                    }}
-                  />
-                </div>
-              )}
+              </div>
+            )}
           </div>
 
           {imageUrl && (
@@ -221,42 +211,36 @@ export class Container extends Component {
               {showTooltip && (
                 <div className={classes.tooltipContent}>
                   <label>
-                    Click and drag to create a hotspot. Click the hotspot to mark correct. Click
-                    again to unmark.
+                    Click and drag to create a hotspot. Click the hotspot to mark correct. Click again to unmark.
                   </label>
-                  <div className={classes.tooltipArrow}/>
+                  <div className={classes.tooltipArrow} />
                 </div>
               )}
-              <Help
-                className={classes.icon}
-                onMouseOut={this.toggleTooltip}
-                onMouseOver={this.toggleTooltip}
-              />
+              <Help className={classes.icon} onMouseOut={this.toggleTooltip} onMouseOver={this.toggleTooltip} />
             </div>
           )}
         </div>
       </div>
-
     );
   }
 }
 
-const styles = theme => ({
+const styles = (theme) => ({
   base: {
-    marginTop: theme.spacing.unit * 2
+    marginTop: theme.spacing.unit * 2,
   },
   box: {
     border: '1px solid #E0E1E6',
-    borderRadius: '5px'
+    borderRadius: '5px',
   },
   boxActive: {
-    border: '1px solid #0032C2'
+    border: '1px solid #0032C2',
   },
   centered: {
     alignItems: 'center',
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   drawableHeight: {
     minHeight: 350,
@@ -266,15 +250,15 @@ const styles = theme => ({
   icon: {
     '&:hover': {
       color: '#333131',
-      cursor: 'help'
+      cursor: 'help',
     },
-    color: '#C1C1C1'
+    color: '#C1C1C1',
   },
   replaceButton: {
     marginLeft: 0,
   },
   replaceSection: {
-    marginRight: 'auto'
+    marginRight: 'auto',
   },
   toolbar: {
     backgroundColor: '#ECEDF1',
@@ -283,12 +267,12 @@ const styles = theme => ({
     borderTopRightRadius: '5px',
     display: 'flex',
     justifyContent: 'flex-end',
-    padding: '12px 8px'
+    padding: '12px 8px',
   },
   tooltip: {
     position: 'relative',
     textAlign: 'right',
-    padding: '5px 9px'
+    padding: '5px 9px',
   },
   tooltipContent: {
     background: '#333131',
@@ -301,7 +285,7 @@ const styles = theme => ({
     position: 'absolute',
     right: '5px',
     textAlign: 'left',
-    width: '300px'
+    width: '300px',
   },
   tooltipArrow: {
     width: 0,
@@ -312,8 +296,8 @@ const styles = theme => ({
     marginBottom: -10,
     marginTop: '2px',
     position: 'absolute',
-    right: '5px'
-  }
+    right: '5px',
+  },
 });
 
 Container.propTypes = {
@@ -328,14 +312,13 @@ Container.propTypes = {
   outlineColor: PropTypes.string.isRequired,
   shapes: PropTypes.shape({
     rectangles: PropTypes.array,
-    polygons: PropTypes.array
+    polygons: PropTypes.array,
   }).isRequired,
   strokeWidth: PropTypes.number,
-  preserveAspectRatioEnabled: PropTypes.bool
+  preserveAspectRatioEnabled: PropTypes.bool,
 };
 Container.defaultProps = {
-  strokeWidth: 5
+  strokeWidth: 5,
 };
-
 
 export default withStyles(styles)(Container);

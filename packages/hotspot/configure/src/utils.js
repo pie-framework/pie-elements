@@ -9,28 +9,29 @@ const updateImageDimensions = (initialDim, nextDim, keepAspectRatio, resizeType)
       // if we want to change image height => we update the width accordingly
       return {
         width: nextDim.height * imageAspectRatio,
-        height: nextDim.height
-      }
+        height: nextDim.height,
+      };
     }
 
     // if we want to change image width => we update the height accordingly
     return {
       width: nextDim.width,
-      height: nextDim.width / imageAspectRatio
-    }
+      height: nextDim.width / imageAspectRatio,
+    };
   }
 
   // if we don't want to keep aspect ratio, we just update both values
   return {
     width: nextDim.width,
-    height: nextDim.height
-  }
+    height: nextDim.height,
+  };
 };
 
 // referenceInitialValue = the initial value of the Stage
 // referenceNextValue = the next value of the Stage
 // currentValue = the value that has to be re-sized influenced by the changes that were made on the Stage
-const getDelta = (referenceInitialValue, referenceNextValue, currentValue) => (referenceNextValue / referenceInitialValue) * currentValue;
+const getDelta = (referenceInitialValue, referenceNextValue, currentValue) =>
+  (referenceNextValue / referenceInitialValue) * currentValue;
 
 const getUpdatedRectangle = (initialDim, nextDim, shape) => ({
   ...shape,
@@ -42,17 +43,17 @@ const getUpdatedRectangle = (initialDim, nextDim, shape) => ({
 
 const getUpdatedPlygon = (initialDim, nextDim, shape) => ({
   ...shape,
-  points: shape.points.map(point => ({
+  points: shape.points.map((point) => ({
     x: getDelta(initialDim.width, nextDim.width, point.x),
     y: getDelta(initialDim.height, nextDim.height, point.y),
-  }))
+  })),
 });
 
 // initialDim = the initial dimensions: { width, height } of the Stage
 // nextDim = the next dimensions: { width, height } of the Stage
 // shapes = array of shapes that have to be re-sized and re-positioned
 const getUpdatedShapes = (initialDim, nextDim, shapes) => {
-  return shapes.map(shape => {
+  return shapes.map((shape) => {
     if (shape.group === 'rectangles') {
       return getUpdatedRectangle(initialDim, nextDim, shape);
     }
@@ -75,16 +76,19 @@ const getAllShapes = (shapesMap) => {
   const shapesKeys = Object.keys(shapesMap);
 
   return shapesKeys.length
-    ? shapesKeys.reduce((acc, currentShapeKey) =>
-        acc.concat(
-          shapesMap[currentShapeKey]
-            ? shapesMap[currentShapeKey].map((shape, index) => ({
-              ...shape,
-              group: currentShapeKey,
-              index: shape.index || acc.length + index
-            }))
-            : []),
-      shapesArray)
+    ? shapesKeys.reduce(
+        (acc, currentShapeKey) =>
+          acc.concat(
+            shapesMap[currentShapeKey]
+              ? shapesMap[currentShapeKey].map((shape, index) => ({
+                  ...shape,
+                  group: currentShapeKey,
+                  index: shape.index || acc.length + index,
+                }))
+              : [],
+          ),
+        shapesArray,
+      )
     : shapesArray;
 };
 
@@ -97,7 +101,7 @@ const groupShapes = (shapesArray) => {
   shapesArray = shapesArray || [];
   const shapesMap = {
     rectangles: [],
-    polygons: []
+    polygons: [],
   };
 
   if (shapesArray.length) {
@@ -110,15 +114,18 @@ const groupShapes = (shapesArray) => {
   return cloneDeep(shapesMap);
 };
 
-const generateValidationMessage = config => {
+const generateValidationMessage = (config) => {
   const { minShapes, maxShapes, maxSelections } = config;
 
-  const shapesMessage = `\nThere should be at least ${minShapes} ` +
-    (maxShapes ? `and at most ${maxShapes} ` : '') + 'shapes defined.';
+  const shapesMessage =
+    `\nThere should be at least ${minShapes} ` + (maxShapes ? `and at most ${maxShapes} ` : '') + 'shapes defined.';
 
-  const selectionsMessage = `\nThere should be at least 1 ` +
-    (maxSelections ? `and at most ${maxSelections} ` : '') + 'shape' +
-    (maxSelections ? 's' : '') +  ' selected.';
+  const selectionsMessage =
+    `\nThere should be at least 1 ` +
+    (maxSelections ? `and at most ${maxSelections} ` : '') +
+    'shape' +
+    (maxSelections ? 's' : '') +
+    ' selected.';
 
   const message = 'Validation requirements:' + shapesMessage + selectionsMessage;
 
@@ -132,5 +139,5 @@ export {
   getAllShapes,
   groupShapes,
   getUpdatedRectangle,
-  getUpdatedPlygon
+  getUpdatedPlygon,
 };

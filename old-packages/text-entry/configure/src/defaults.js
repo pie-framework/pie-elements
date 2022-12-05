@@ -3,13 +3,13 @@ export default {
     correctResponses: {
       values: ['correct response'],
       ignoreWhitespace: false,
-      ignoreCase: false
+      ignoreCase: false,
     },
     partialResponses: {
       values: ['partial response'],
       ignoreWhitespace: false,
       ignoreCase: false,
-      awardPercentage: '50'
+      awardPercentage: '50',
     },
     answerBlankSize: '10',
     answerAlignment: 'left',
@@ -18,12 +18,12 @@ export default {
     allowThousandsSeparator: false,
     rationaleEnabled: true,
     teacherInstructionsEnabled: true,
-    studentInstructionsEnabled: true
+    studentInstructionsEnabled: true,
   },
   configuration: {
     teacherInstructions: {
       settings: true,
       label: 'Teacher Instructions',
     },
-  }
+  },
 };

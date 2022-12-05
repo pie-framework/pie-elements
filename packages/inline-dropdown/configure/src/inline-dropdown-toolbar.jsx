@@ -15,10 +15,10 @@ class MenuItemComp extends React.Component {
     correct: PropTypes.bool.isRequired,
     onClick: PropTypes.func.isRequired,
     onRemoveChoice: PropTypes.func.isRequired,
-    value: PropTypes.string.isRequired
+    value: PropTypes.string.isRequired,
   };
 
-  onRemoveClick = e => {
+  onRemoveClick = (e) => {
     const { onRemoveChoice } = this.props;
 
     e.preventDefault();
@@ -35,7 +35,7 @@ class MenuItemComp extends React.Component {
         <div
           className={classes.valueHolder}
           dangerouslySetInnerHTML={{
-            __html: value
+            __html: value,
           }}
         />
         <i className={classes.removeIcon} onClick={this.onRemoveClick}>
@@ -55,10 +55,10 @@ const MenuItem = withStyles({
     cursor: 'pointer',
     lineHeight: '30px',
     padding: '10px 25px 10px 10px',
-    position: 'relative'
+    position: 'relative',
   },
   correct: {
-    background: '#C4DCFA'
+    background: '#C4DCFA',
   },
   removeIcon: {
     cursor: 'pointer',
@@ -68,18 +68,18 @@ const MenuItem = withStyles({
     transform: 'translate(0, -50%)',
     top: '50%',
     right: '5px',
-    zIndex: 3
+    zIndex: 3,
   },
   valueHolder: {
-    wordBreak: 'break-all'
-  }
+    wordBreak: 'break-all',
+  },
 })(MenuItemComp);
 
-const findSlateNode = key => {
+const findSlateNode = (key) => {
   return window.document.querySelector('[data-key="' + key + '"]');
 };
 
-const createElementFromHTML = htmlString => {
+const createElementFromHTML = (htmlString) => {
   const div = document.createElement('div');
 
   div.innerHTML = (htmlString || '').trim();
@@ -101,13 +101,13 @@ export class RespAreaToolbar extends React.Component {
     value: PropTypes.shape({
       change: PropTypes.func.isRequired,
       document: PropTypes.shape({
-        getNextText: PropTypes.func.isRequired
-      })
-    })
+        getNextText: PropTypes.func.isRequired,
+      }),
+    }),
   };
 
   state = {
-    respAreaMarkup: ''
+    respAreaMarkup: '',
   };
 
   componentDidMount() {
@@ -128,8 +128,8 @@ export class RespAreaToolbar extends React.Component {
           position: 'absolute',
           top: `${top + domNodeRect.height + 60}px`,
           left: `${left + 25}px`,
-          width: domNodeRect.width
-        }
+          width: domNodeRect.width,
+        },
       });
     }
   }
@@ -141,7 +141,7 @@ export class RespAreaToolbar extends React.Component {
     renderMath(domNode);
   }
 
-  onRespAreaChange = respAreaMarkup => {
+  onRespAreaChange = (respAreaMarkup) => {
     this.setState({ respAreaMarkup });
   };
 
@@ -187,7 +187,7 @@ export class RespAreaToolbar extends React.Component {
     onRemoveChoice(index);
   };
 
-  onKeyDown = event => {
+  onKeyDown = (event) => {
     if (event.key === 'Enter') {
       this.onAddChoice();
       // Cancelling event
@@ -202,7 +202,7 @@ export class RespAreaToolbar extends React.Component {
     }
 
     const { node, choices, onCheck, onToolbarDone, value } = this.props;
-    const correctResponse = (choices || []).find(choice => choice.correct);
+    const correctResponse = (choices || []).find((choice) => choice.correct);
 
     this.onAddChoice();
     if (!choices || (choices && choices.length < 2) || !correctResponse) {
@@ -233,10 +233,12 @@ export class RespAreaToolbar extends React.Component {
     const { classes, choices, spellCheck, uploadSoundSupport } = this.props;
     const { respAreaMarkup, toolbarStyle } = this.state;
 
-    const filteredDefaultPlugins = (DEFAULT_PLUGINS || []).filter(p => p !== 'table' && p !== 'bulleted-list' && p !== 'numbered-list');
+    const filteredDefaultPlugins = (DEFAULT_PLUGINS || []).filter(
+      (p) => p !== 'table' && p !== 'bulleted-list' && p !== 'numbered-list',
+    );
     const labelPlugins = {
       audio: { disabled: true },
-      video: { disabled: true }
+      video: { disabled: true },
     };
 
     if (!toolbarStyle) {
@@ -247,13 +249,13 @@ export class RespAreaToolbar extends React.Component {
       <div
         style={{
           ...toolbarStyle,
-          backgroundColor: '#E0E1E6'
+          backgroundColor: '#E0E1E6',
         }}
         onMouseDown={this.onClickInside}
       >
         <div className={classes.itemBuilder}>
           <EditableHtml
-            ref={ref => {
+            ref={(ref) => {
               if (ref) {
                 this.editorRef = ref;
               }
@@ -265,7 +267,7 @@ export class RespAreaToolbar extends React.Component {
               position: 'top',
               alwaysVisible: false,
               showDone: false,
-              doneOn: 'blur'
+              doneOn: 'blur',
             }}
             markup={respAreaMarkup}
             onKeyDown={this.onKeyDown}
@@ -286,7 +288,7 @@ export class RespAreaToolbar extends React.Component {
               position: 'absolute',
               top: '50%',
               right: '15px',
-              transform: 'translate(0, -50%)'
+              transform: 'translate(0, -50%)',
             }}
             contentEditable={false}
             onMouseDown={() => this.focusInput()}
@@ -317,20 +319,20 @@ const StyledRespAreaToolbar = withStyles({
   respArea: {
     backgroundColor: '#fff',
     '& [data-slate-editor="true"]': {
-      minHeight: 'initial !important'
-    }
+      minHeight: 'initial !important',
+    },
   },
   choicesHolder: {
     display: 'flex',
     flexDirection: 'column',
     '& > div:last-child': {
-      border: 'none'
-    }
+      border: 'none',
+    },
   },
   itemBuilder: {
     padding: '8px',
-    position: 'relative'
-  }
+    position: 'relative',
+  },
 })(RespAreaToolbar);
 
 export default StyledRespAreaToolbar;

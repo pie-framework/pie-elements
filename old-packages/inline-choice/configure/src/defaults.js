@@ -3,7 +3,7 @@ export default {
     {
       correct: true,
       value: 'choice1',
-      label: 'Choice 1'
-    }
-  ]
+      label: 'Choice 1',
+    },
+  ],
 };

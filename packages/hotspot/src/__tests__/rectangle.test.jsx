@@ -26,7 +26,7 @@ describe('Rectangle', () => {
     opts = _.extend(
       {
         classes: {
-          base: 'base'
+          base: 'base',
         },
         height: 200,
         hotspotColor: 'rgba(137, 183, 244, 0.65)',
@@ -39,9 +39,9 @@ describe('Rectangle', () => {
         selected: false,
         width: 300,
         x: 5,
-        y: 5
+        y: 5,
       },
-      opts
+      opts,
     );
 
     return shallow(<Rectangle {...opts} onClick={onClick} />);
@@ -104,26 +104,30 @@ describe('Rectangle', () => {
       strokeWidth: 5,
       outlineColor: 'blue',
       markAsCorrect: false,
-      showCorrectEnabled: false
+      showCorrectEnabled: false,
     };
 
     const getComponents = (model) => {
-      const testWrapper = shallowChild(Rectangle, {
-        ...defaultModel,
-        ...model
-      }, 1);
+      const testWrapper = shallowChild(
+        Rectangle,
+        {
+          ...defaultModel,
+          ...model,
+        },
+        1,
+      );
       const rectangleComponent = testWrapper();
       const rectComponent = rectangleComponent.find(Rect);
       return {
         rectangleComponent,
-        rectComponent
+        rectComponent,
       };
-    }
+    };
 
     describe('when correctly selected', () => {
       const { rectangleComponent, rectComponent } = getComponents({
         selected: true,
-        isCorrect: true
+        isCorrect: true,
       });
 
       it('should have a blue outline', () => {
@@ -141,7 +145,7 @@ describe('Rectangle', () => {
     describe('when correctly not selected', () => {
       const { rectangleComponent, rectComponent } = getComponents({
         selected: false,
-        isCorrect: true
+        isCorrect: true,
       });
 
       it('should have no outline', () => {
@@ -157,7 +161,7 @@ describe('Rectangle', () => {
     describe('when incorrectly selected', () => {
       const { rectangleComponent, rectComponent } = getComponents({
         selected: true,
-        isCorrect: false
+        isCorrect: false,
       });
 
       it('should have a red outline', () => {
@@ -175,7 +179,7 @@ describe('Rectangle', () => {
     describe('when incorrectly not selected', () => {
       const { rectangleComponent, rectComponent } = getComponents({
         selected: false,
-        isCorrect: false
+        isCorrect: false,
       });
 
       it('should have no outline', () => {
@@ -193,7 +197,7 @@ describe('Rectangle', () => {
       it('should have a green outline', () => {
         const { rectComponent } = getComponents({
           showCorrectEnabled: true,
-          markAsCorrect: true
+          markAsCorrect: true,
         });
         expect(rectComponent.prop('stroke')).toEqual('green');
         expect(rectComponent.prop('strokeWidth')).toEqual(defaultModel.strokeWidth);
@@ -202,7 +206,7 @@ describe('Rectangle', () => {
       it('should have a green checkmark icon', () => {
         const { rectangleComponent } = getComponents({
           showCorrectEnabled: true,
-          markAsCorrect: true
+          markAsCorrect: true,
         });
         const imgComponent = rectangleComponent.find(Image);
         expect(imgComponent.prop('src')).toEqual(faCorrect);
@@ -213,7 +217,7 @@ describe('Rectangle', () => {
           showCorrectEnabled: true,
           markAsCorrect: false,
           selected: true,
-          isCorrect: false
+          isCorrect: false,
         });
         expect(rectComponent.prop('strokeWidth')).toEqual(0);
       });
@@ -223,7 +227,7 @@ describe('Rectangle', () => {
           showCorrectEnabled: true,
           markAsCorrect: false,
           selected: true,
-          isCorrect: false
+          isCorrect: false,
         });
         const imgComponent = rectangleComponent.find(Image);
         expect(imgComponent.length).toEqual(0);

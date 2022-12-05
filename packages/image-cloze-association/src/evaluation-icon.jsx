@@ -17,47 +17,38 @@ const EvaluationIcon = ({ classes, containerStyle, isCorrect, filled }) => {
   const showCorrectness = isCorrect !== undefined;
   const correctness = showCorrectness ? getCorrectnessClass(isCorrect, filled) : '';
 
-  return showCorrectness
-    ? (
-      <Icon
-        className={`${classes.icon} ${classes[correctness]}`}
-        style={containerStyle}
-      />
-    ) : null
+  return showCorrectness ? <Icon className={`${classes.icon} ${classes[correctness]}`} style={containerStyle} /> : null;
 };
 
 EvaluationIcon.propTypes = {
   classes: PropTypes.object,
   containerStyle: PropTypes.object,
   filled: PropTypes.bool,
-  isCorrect: PropTypes.oneOfType([
-    PropTypes.bool,
-    PropTypes.number
-  ])
+  isCorrect: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
 };
 
 EvaluationIcon.defaultProps = {
   classes: {},
   containerStyle: {},
   filled: false,
-  isCorrect: undefined
+  isCorrect: undefined,
 };
 
 const styles = () => ({
   correctEmpty: {
-    color: color.correct()
+    color: color.correct(),
   },
   correctFilled: {
     color: color.background(),
-    backgroundColor: color.correct()
+    backgroundColor: color.correct(),
   },
   incorrectEmpty: {
-    color: color.incorrect()
+    color: color.incorrect(),
   },
   incorrectFilled: {
     color: color.background(),
-    backgroundColor: color.incorrect()
-  }
+    backgroundColor: color.incorrect(),
+  },
 });
 
 export default withStyles(styles)(EvaluationIcon);

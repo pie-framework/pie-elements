@@ -188,8 +188,7 @@ The correct answer should include at least one number line object."
     <WithStyles(CardBar)
       header="Correct Response"
     >
-      Select answer type and place it on the number line. Intersecting points, line segments and/or rays will appear above the number line.
-       
+      Select answer type and place it on the number line. Intersecting points, line segments and/or rays will appear above the number line. 
       <i>
         Note: A maximum of 20 points, line segments or rays may be plotted.
       </i>

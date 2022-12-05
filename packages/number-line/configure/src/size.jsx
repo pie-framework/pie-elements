@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { MiniField } from './number-text-field';
 
-const Size = props => {
+const Size = (props) => {
   const { size, onChange } = props;
 
   const changeWidth = (e, width) => onChange({ ...props.size, width });
@@ -14,12 +14,12 @@ const Size = props => {
 Size.propTypes = {
   size: PropTypes.shape({
     width: PropTypes.number,
-    height: PropTypes.number
+    height: PropTypes.number,
   }),
-  onChange: PropTypes.func.isRequired
+  onChange: PropTypes.func.isRequired,
 };
 
 const styles = () => ({
-  class: {}
+  class: {},
 });
 export default withStyles(styles)(Size);

@@ -16,14 +16,14 @@ describe('Main', () => {
           maxPoints: 1,
           scorePointsLabels: ['A', 'B'],
           traitLabel: 'Trait',
-          traits: []
-        }
+          traits: [],
+        },
       ],
       visible: false,
-      ...modelOptions
+      ...modelOptions,
     };
 
-    return mount(<Main model={model}/>);
+    return mount(<Main model={model} />);
   };
 
   beforeEach(() => {

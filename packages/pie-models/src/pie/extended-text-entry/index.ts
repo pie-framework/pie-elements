@@ -5,7 +5,8 @@ import { DefaultFeedbackType } from '../../Feedback';
 import {
   ConfigureProp,
   ConfigurePropWithEnabled,
-  ConfigureMaxImageDimensionsProp, ConfigureWithForceProp,
+  ConfigureMaxImageDimensionsProp,
+  ConfigureWithForceProp,
 } from '../ConfigurationProp';
 
 interface Dimensions {
@@ -122,9 +123,7 @@ export interface ExtendedTextEntryPie extends PieModel {
  * Config Object for @pie-elements/extended-text-entry
  * @additionalProperties false
  */
-export interface ExtendedTextEntryConfigure
-  extends PromptConfig,
-    CommonConfigSettings {
+export interface ExtendedTextEntryConfigure extends PromptConfig, CommonConfigSettings {
   /**
    * Equation Editor configuration
    */

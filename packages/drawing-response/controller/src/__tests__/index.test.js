@@ -10,10 +10,10 @@ describe('controller', () => {
       imageUrl: '',
       imageDimensions: {
         height: 0,
-        width: 0
+        width: 0,
       },
       teacherInstructions: 'Teacher Instructions',
-      backgroundImageEnabled: true
+      backgroundImageEnabled: true,
     };
   });
 
@@ -49,7 +49,7 @@ describe('controller', () => {
       });
 
       it('gather mode promptEnabled: true', async () => {
-        result = await model(question, {}, { mode: 'gather'});
+        result = await model(question, {}, { mode: 'gather' });
 
         expect(result).toEqual({
           disabled: false,
@@ -58,12 +58,12 @@ describe('controller', () => {
           imageDimensions: question.imageDimensions,
           prompt: question.prompt,
           teacherInstructions: null,
-          backgroundImageEnabled: question.backgroundImageEnabled
+          backgroundImageEnabled: question.backgroundImageEnabled,
         });
       });
 
       it('gather mode promptEnabled: false', async () => {
-        result = await model({ ...question, promptEnabled: false }, {}, { mode: 'gather'});
+        result = await model({ ...question, promptEnabled: false }, {}, { mode: 'gather' });
 
         expect(result).toEqual({
           disabled: false,
@@ -72,13 +72,12 @@ describe('controller', () => {
           imageDimensions: question.imageDimensions,
           prompt: null,
           teacherInstructions: null,
-          backgroundImageEnabled: question.backgroundImageEnabled
+          backgroundImageEnabled: question.backgroundImageEnabled,
         });
       });
 
-
       it('view mode, student role', async () => {
-        result = await model(question, {}, { mode: 'view'});
+        result = await model(question, {}, { mode: 'view' });
 
         expect(result).toEqual({
           disabled: true,
@@ -87,12 +86,12 @@ describe('controller', () => {
           imageDimensions: question.imageDimensions,
           prompt: question.prompt,
           teacherInstructions: null,
-          backgroundImageEnabled: question.backgroundImageEnabled
+          backgroundImageEnabled: question.backgroundImageEnabled,
         });
       });
 
       it('view mode, instructor role and teacherInstructions enabled', async () => {
-        result = await model(question, {}, { mode: 'view', role: 'instructor'});
+        result = await model(question, {}, { mode: 'view', role: 'instructor' });
 
         expect(result).toEqual({
           disabled: true,
@@ -101,7 +100,7 @@ describe('controller', () => {
           imageDimensions: question.imageDimensions,
           prompt: question.prompt,
           teacherInstructions: question.teacherInstructions,
-          backgroundImageEnabled: question.backgroundImageEnabled
+          backgroundImageEnabled: question.backgroundImageEnabled,
         });
       });
 
@@ -109,7 +108,8 @@ describe('controller', () => {
         result = await model(
           { ...question, teacherInstructionsEnabled: false },
           {},
-          { mode: 'evaluate', role: 'instructor'});
+          { mode: 'evaluate', role: 'instructor' },
+        );
 
         expect(result).toEqual({
           disabled: true,
@@ -118,12 +118,12 @@ describe('controller', () => {
           imageDimensions: question.imageDimensions,
           prompt: question.prompt,
           teacherInstructions: null,
-          backgroundImageEnabled: question.backgroundImageEnabled
+          backgroundImageEnabled: question.backgroundImageEnabled,
         });
       });
 
       it('evaluate mode, student role', async () => {
-        result = await model(question, {}, { mode: 'evaluate'});
+        result = await model(question, {}, { mode: 'evaluate' });
 
         expect(result).toEqual({
           disabled: true,
@@ -132,12 +132,12 @@ describe('controller', () => {
           imageDimensions: question.imageDimensions,
           prompt: question.prompt,
           teacherInstructions: null,
-          backgroundImageEnabled: question.backgroundImageEnabled
+          backgroundImageEnabled: question.backgroundImageEnabled,
         });
       });
 
       it('evaluate mode, instructor role and teacherInstructions enabled', async () => {
-        result = await model(question, {}, { mode: 'evaluate', role: 'instructor'});
+        result = await model(question, {}, { mode: 'evaluate', role: 'instructor' });
 
         expect(result).toEqual({
           disabled: true,
@@ -146,7 +146,7 @@ describe('controller', () => {
           imageDimensions: question.imageDimensions,
           prompt: question.prompt,
           teacherInstructions: question.teacherInstructions,
-          backgroundImageEnabled: question.backgroundImageEnabled
+          backgroundImageEnabled: question.backgroundImageEnabled,
         });
       });
 
@@ -154,7 +154,8 @@ describe('controller', () => {
         result = await model(
           { ...question, teacherInstructionsEnabled: false },
           {},
-          { mode: 'view', role: 'instructor'});
+          { mode: 'view', role: 'instructor' },
+        );
 
         expect(result).toEqual({
           disabled: true,
@@ -163,7 +164,7 @@ describe('controller', () => {
           imageDimensions: question.imageDimensions,
           prompt: question.prompt,
           teacherInstructions: null,
-          backgroundImageEnabled: question.backgroundImageEnabled
+          backgroundImageEnabled: question.backgroundImageEnabled,
         });
       });
     });

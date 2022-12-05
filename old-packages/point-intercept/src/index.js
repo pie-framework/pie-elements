@@ -38,7 +38,7 @@ export default class PointIntercept extends HTMLElement {
     const props = {
       model: mapper.toComponentModel(this._model),
       session: this._session,
-      onSessionChange: this.sessionChanged.bind(this)
+      onSessionChange: this.sessionChanged.bind(this),
     };
 
     const el = React.createElement(Component, props);

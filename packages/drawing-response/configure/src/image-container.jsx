@@ -13,8 +13,8 @@ export class ImageContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      maxImageWidth: "100%",
-      maxImageHeight: "auto",
+      maxImageWidth: '100%',
+      maxImageHeight: 'auto',
       dragEnabled: true,
       dropzoneActive: false,
     };
@@ -131,7 +131,7 @@ export class ImageContainer extends Component {
     const y = e.clientY - bounds.top;
 
     const imageAspectRatio = dimensions.width / dimensions.height;
-    const fitsContainer = x <= maxImageWidth + 5 && (x / imageAspectRatio) <= maxImageHeight + 5;
+    const fitsContainer = x <= maxImageWidth + 5 && x / imageAspectRatio <= maxImageHeight + 5;
     const hasMinimumWidth = x > 150 && y > 150;
 
     if (fitsContainer && hasMinimumWidth && box) {
@@ -170,19 +170,12 @@ export class ImageContainer extends Component {
 
   render() {
     const { classes, imageUrl, imageDimensions } = this.props;
-    const {
-      dropzoneActive,
-      dragEnabled,
-      maxImageHeight,
-      maxImageWidth
-    } = this.state;
+    const { dropzoneActive, dragEnabled, maxImageHeight, maxImageWidth } = this.state;
 
     return (
       <div className={classes.base}>
         <div
-          className={`${classes.box} ${
-            dropzoneActive ? classes.boxActive : ''
-          }`}
+          className={`${classes.box} ${dropzoneActive ? classes.boxActive : ''}`}
           {...(dragEnabled
             ? {
                 onDragExit: this.handleOnDragExit,
@@ -192,11 +185,7 @@ export class ImageContainer extends Component {
               }
             : {})}
         >
-          <div className={classes.toolbar}>
-            {this.renderUploadControl(
-              imageUrl ? 'Replace Image' : 'Upload Image'
-            )}
-          </div>
+          <div className={classes.toolbar}>{this.renderUploadControl(imageUrl ? 'Replace Image' : 'Upload Image')}</div>
 
           <div
             ref={(ref) => {
@@ -217,7 +206,7 @@ export class ImageContainer extends Component {
                   style={{
                     width: imageDimensions && imageDimensions.width ? imageDimensions.width : undefined,
                     maxWidth: maxImageWidth,
-                    maxHeight: maxImageHeight
+                    maxHeight: maxImageHeight,
                   }}
                   alt=""
                 />

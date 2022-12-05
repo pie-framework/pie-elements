@@ -18,10 +18,10 @@ export class AnswerGrid extends React.Component {
     choiceMode: PropTypes.string.isRequired,
     rows: PropTypes.array.isRequired,
     headers: PropTypes.array.isRequired,
-    answers: PropTypes.object.isRequired
+    answers: PropTypes.object.isRequired,
   };
 
-  onRowValueChange = (rowId, answerIndex) => event => {
+  onRowValueChange = (rowId, answerIndex) => (event) => {
     const { onAnswerChange, choiceMode, answers } = this.props;
     const newAnswers = { ...answers };
 
@@ -46,8 +46,10 @@ export class AnswerGrid extends React.Component {
   answerIsIncorrect = (rowId, rowValue, rowValueIndex) => {
     const { correctAnswers } = this.props;
 
-    return correctAnswers[rowId][rowValueIndex] === true && rowValue === false
-      || correctAnswers[rowId][rowValueIndex] === false && rowValue === true;
+    return (
+      (correctAnswers[rowId][rowValueIndex] === true && rowValue === false) ||
+      (correctAnswers[rowId][rowValueIndex] === false && rowValue === true)
+    );
   };
 
   render() {
@@ -61,73 +63,63 @@ export class AnswerGrid extends React.Component {
           <Typography className={classes.empty} component="div">
             There are currently no questions to show.
           </Typography>
-        </div>);
+        </div>
+      );
     }
 
     return (
       <div className={classes.controlsContainer}>
         <table className={classes.table}>
           <colgroup>
-            {(headers || []).map((header, idx) => (<col key={`col-${idx}`}/>))}
+            {(headers || []).map((header, idx) => (
+              <col key={`col-${idx}`} />
+            ))}
           </colgroup>
 
           <thead>
-          <tr>
-            {(headers || []).map((header, idx) => (
-              <th
-                className={classes.rowHeader}
-                key={`th-${idx}`}
-                data-colno={`${idx}`}
-                scope="row"
-              >
-                <div
-                  className={cx(classes.rowItem, { [classes.questionText]: idx === 0 })}
-                  dangerouslySetInnerHTML={{ __html: header }}
-                />
-              </th>
-            ))}
-          </tr>
+            <tr>
+              {(headers || []).map((header, idx) => (
+                <th className={classes.rowHeader} key={`th-${idx}`} data-colno={`${idx}`} scope="row">
+                  <div
+                    className={cx(classes.rowItem, { [classes.questionText]: idx === 0 })}
+                    dangerouslySetInnerHTML={{ __html: header }}
+                  />
+                </th>
+              ))}
+            </tr>
           </thead>
 
           {(rows || []).map((row, idx) => (
             <tbody key={`row-${idx}`} role="group">
-            <tr className={classes.separator}>
-              <td
-                key={`td-title-${idx}`}
-                data-colno={'0'}
-              >
-                <div
-                  className={cx(classes.rowItem, classes.questionText)}
-                  dangerouslySetInnerHTML={{ __html: row.title }}
-                />
-              </td>
-
-              {(answers[row.id] || []).map((rowItem, answerIndex) => (
-                <td
-                  key={`td-${idx}-${answerIndex}`}
-                  className={classes.column}
-                  data-colno={`${answerIndex + 1}`}
-                >
-                  <div className={classes.rowItem}>
-                    <Tag
-                      className={cx({
-                        [classes.correct]: (
-                          (showCorrect && rowItem === true) ||
-                          (evaluate && this.answerIsCorrect(row.id, rowItem, answerIndex))
-                        ),
-                        [classes.tag]: true,
-                        [classes.checked]: rowItem === true && !evaluate,
-                        [classes.tagDisabled]: disabled,
-                        [classes.incorrect]: evaluate && this.answerIsIncorrect(row.id, rowItem, answerIndex)
-                      })}
-                      disabled={disabled}
-                      onChange={this.onRowValueChange(row.id, answerIndex)}
-                      checked={rowItem === true}
-                    />
-                  </div>
+              <tr className={classes.separator}>
+                <td key={`td-title-${idx}`} data-colno={'0'}>
+                  <div
+                    className={cx(classes.rowItem, classes.questionText)}
+                    dangerouslySetInnerHTML={{ __html: row.title }}
+                  />
                 </td>
-              ))}
-            </tr>
+
+                {(answers[row.id] || []).map((rowItem, answerIndex) => (
+                  <td key={`td-${idx}-${answerIndex}`} className={classes.column} data-colno={`${answerIndex + 1}`}>
+                    <div className={classes.rowItem}>
+                      <Tag
+                        className={cx({
+                          [classes.correct]:
+                            (showCorrect && rowItem === true) ||
+                            (evaluate && this.answerIsCorrect(row.id, rowItem, answerIndex)),
+                          [classes.tag]: true,
+                          [classes.checked]: rowItem === true && !evaluate,
+                          [classes.tagDisabled]: disabled,
+                          [classes.incorrect]: evaluate && this.answerIsIncorrect(row.id, rowItem, answerIndex),
+                        })}
+                        disabled={disabled}
+                        onChange={this.onRowValueChange(row.id, answerIndex)}
+                        checked={rowItem === true}
+                      />
+                    </div>
+                  </td>
+                ))}
+              </tr>
             </tbody>
           ))}
         </table>
@@ -136,50 +128,50 @@ export class AnswerGrid extends React.Component {
   }
 }
 
-const styles = theme => ({
+const styles = (theme) => ({
   controlsContainer: {
     marginLeft: 'auto',
     marginRight: 'auto',
     marginTop: theme.spacing.unit,
-    marginBottom: theme.spacing.unit
+    marginBottom: theme.spacing.unit,
   },
   column: {
     padding: '5px 0',
   },
   correct: {
-    color: `${color.correct()} !important`
+    color: `${color.correct()} !important`,
   },
   incorrect: {
-    color: `${color.incorrect()} !important`
+    color: `${color.incorrect()} !important`,
   },
   empty: {
-    margin: theme.spacing.unit * 2
+    margin: theme.spacing.unit * 2,
   },
   rowContainer: {
     display: 'flex',
     alignItems: 'center',
   },
   rowHeader: {
-    padding: 0
+    padding: 0,
   },
   rowItem: {
     padding: '12px',
-    textAlign: 'center'
+    textAlign: 'center',
   },
   separator: {
     border: 0,
     borderTop: `2.5px solid ${color.primaryLight()}`,
-    width: '100%'
+    width: '100%',
   },
   tag: {
     padding: '6px',
     color: color.text(),
     '&:hover': {
-      color: color.primaryLight()
-    }
+      color: color.primaryLight(),
+    },
   },
   checked: {
-    color: `${color.primary()} !important`
+    color: `${color.primary()} !important`,
   },
   tagDisabled: {
     color: color.disabled(),
@@ -187,18 +179,18 @@ const styles = theme => ({
     pointerEvents: 'initial !important',
     opacity: 0.7,
     '&:hover': {
-      color: color.disabled()
-    }
+      color: color.disabled(),
+    },
   },
   table: {
     color: color.text(),
     backgroundColor: color.background(),
     borderCollapse: 'collapse',
     borderSpacing: 0,
-    marginBottom: 0
+    marginBottom: 0,
   },
   questionText: {
-    textAlign: 'left'
+    textAlign: 'left',
   },
 });
 

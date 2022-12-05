@@ -3,26 +3,24 @@ import _ from 'lodash';
 
 describe('feedback-mapper', () => {
   describe('modelToFeedbackConfig', () => {
-
     it('returns data', () => {
-
       const model = {
         prompt: 'Something',
         correctResponses: {
           feedback: {
-            type: 'default'
-          }
+            type: 'default',
+          },
         },
         partialResponses: {
           feedback: {
             type: 'custom',
-            value: 'foo'
-          }
+            value: 'foo',
+          },
         },
         incorrectFeedback: {
-          type: 'none'
-        }
-      }
+          type: 'none',
+        },
+      };
 
       const result = feedbackMapper.modelToFeedbackConfig(model);
 
@@ -33,20 +31,17 @@ describe('feedback-mapper', () => {
         incorrectFeedback: undefined,
         incorrectFeedbackType: 'none',
         partialFeedback: 'foo',
-        partialFeedbackType: 'custom'
+        partialFeedbackType: 'custom',
       });
     });
   });
 
   describe('feedbackConfigToModel', () => {
-
     it('returns model', () => {
-
-
       const model = {
         correctResponses: {
-          values: ['a']
-        }
+          values: ['a'],
+        },
       };
       const feedback = {
         correctFeedback: undefined,
@@ -54,21 +49,21 @@ describe('feedback-mapper', () => {
         incorrectFeedback: undefined,
         incorrectFeedbackType: 'none',
         partialFeedback: 'foo',
-        partialFeedbackType: 'custom'
-      }
+        partialFeedbackType: 'custom',
+      };
       const result = feedbackMapper.feedbackConfigToModel(feedback, model);
 
       expect(result.correctResponses.values).toEqual(['a']);
 
       expect(result.correctResponses.feedback).toEqual({
-        type: 'default'
+        type: 'default',
       });
       expect(result.partialResponses.feedback).toEqual({
         type: 'custom',
-        value: 'foo'
+        value: 'foo',
       });
       expect(result.incorrectFeedback).toEqual({
-        type: 'none'
+        type: 'none',
       });
     });
   });

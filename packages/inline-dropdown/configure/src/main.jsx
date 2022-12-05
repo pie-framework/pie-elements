@@ -49,77 +49,77 @@ InfoDialog.propTypes = {
   open: PropTypes.bool,
   onCancel: PropTypes.func,
   onOk: PropTypes.func,
-  title: PropTypes.string
+  title: PropTypes.string,
 };
 
-const styles = theme => ({
+const styles = (theme) => ({
   promptHolder: {
     width: '100%',
     paddingBottom: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit * 2
+    marginBottom: theme.spacing.unit * 2,
   },
   prompt: {
     paddingTop: theme.spacing.unit * 2,
-    width: '100%'
+    width: '100%',
   },
   markup: {
     minHeight: '100px',
     paddingTop: theme.spacing.unit * 2,
     width: '100%',
     '& [data-slate-editor="true"]': {
-      minHeight: '100px'
-    }
+      minHeight: '100px',
+    },
   },
   design: {
-    paddingTop: theme.spacing.unit * 3
+    paddingTop: theme.spacing.unit * 3,
   },
   choiceConfiguration: {
     paddingTop: theme.spacing.unit * 2,
-    paddingBottom: theme.spacing.unit * 2
+    paddingBottom: theme.spacing.unit * 2,
   },
   switchElement: {
     justifyContent: 'space-between',
-    margin: 0
+    margin: 0,
   },
   addButton: {
-    float: 'right'
+    float: 'right',
   },
   text: {
     fontFamily: 'Cerebri Sans',
     fontSize: '16px',
     lineHeight: '19px',
     color: '#495B8F',
-    marginRight: '5px'
+    marginRight: '5px',
   },
   rationaleLabel: {
     display: 'flex',
-    whiteSpace: 'break-spaces'
+    whiteSpace: 'break-spaces',
   },
   rationaleChoices: {
-    marginTop: '16px'
+    marginTop: '16px',
   },
   panelDetails: {
-   display: 'block'
+    display: 'block',
   },
   flexContainer: {
     display: 'flex',
     alignItems: 'center',
-    marginBottom: '5px'
+    marginBottom: '5px',
   },
   tooltip: {
     fontSize: '12px',
     whiteSpace: 'pre',
-    maxWidth: '500px'
+    maxWidth: '500px',
   },
   errorText: {
     fontSize: '12px',
     color: 'red',
     paddingTop: '5px',
-    marginTop: '8px'
-  }
+    marginTop: '8px',
+  },
 });
 
-const createElementFromHTML = htmlString => {
+const createElementFromHTML = (htmlString) => {
   const div = document.createElement('div');
 
   div.innerHTML = (htmlString || '').trim();
@@ -127,7 +127,7 @@ const createElementFromHTML = htmlString => {
   return div;
 };
 
-const prepareVal = html => {
+const prepareVal = (html) => {
   const tmp = document.createElement('DIV');
 
   tmp.innerHTML = html;
@@ -147,23 +147,23 @@ export class Main extends React.Component {
     classes: PropTypes.object.isRequired,
     imageSupport: PropTypes.shape({
       add: PropTypes.func.isRequired,
-      delete: PropTypes.func.isRequired
+      delete: PropTypes.func.isRequired,
     }),
     uploadSoundSupport: PropTypes.shape({
       add: PropTypes.func.isRequired,
-      delete: PropTypes.func.isRequired
-    })
+      delete: PropTypes.func.isRequired,
+    }),
   };
 
   state = {
     dialog: {
-      open: false
-    }
+      open: false,
+    },
   };
 
   componentDidMount() {
     const {
-      model: { choices }
+      model: { choices },
     } = this.props;
 
     this.setState({ respAreaChoices: cloneDeep(choices) });
@@ -191,75 +191,74 @@ export class Main extends React.Component {
     renderMath(domNode);
   }
 
-  onModelChange = newVal => {
+  onModelChange = (newVal) => {
     this.props.onModelChanged({
       ...this.props.model,
-      ...newVal
+      ...newVal,
     });
   };
 
-  onPromptChanged = prompt => {
+  onPromptChanged = (prompt) => {
     this.onModelChange({ prompt });
   };
 
-  onRationaleChanged = rationale => {
+  onRationaleChanged = (rationale) => {
     this.onModelChange({ rationale });
   };
 
   onChoiceRationaleChanged = (index, choice) => {
     const { model } = this.props;
-    const indexOfChoice = model.choices && model.choices[index] && model.choices[index]
-      .findIndex(elem => elem.label === choice.label && elem.value === choice.value);
+    const indexOfChoice =
+      model.choices &&
+      model.choices[index] &&
+      model.choices[index].findIndex((elem) => elem.label === choice.label && elem.value === choice.value);
 
     model.choices[index] && model.choices[index].splice(indexOfChoice, 1, choice);
 
     this.onModelChange(model);
   };
 
-  onTeacherInstructionsChanged = teacherInstructions => {
+  onTeacherInstructionsChanged = (teacherInstructions) => {
     this.onModelChange({ teacherInstructions });
   };
 
-  onMarkupChanged = slateMarkup => {
+  onMarkupChanged = (slateMarkup) => {
     this.onModelChange({ slateMarkup });
   };
 
-  onCheck = callback => {
+  onCheck = (callback) => {
     this.setState({
       dialog: {
         open: true,
-        message:
-          'Response areas with under 2 options or with no correct answers will be discarded',
+        message: 'Response areas with under 2 options or with no correct answers will be discarded',
         onOk: () => {
           this.setState(
             {
               dialog: {
-                open: false
-              }
+                open: false,
+              },
             },
-            callback
+            callback,
           );
         },
         onCancel: () =>
           this.setState({
             dialog: {
-              open: false
-            }
-          })
-      }
+              open: false,
+            },
+          }),
+      },
     });
   };
 
-  onChange = markup => {
+  onChange = (markup) => {
     const { respAreaChoices } = this.state;
     const domMarkup = createElementFromHTML(markup);
-    const allRespAreas = domMarkup.querySelectorAll(
-      '[data-type="inline_dropdown"]'
-    );
+    const allRespAreas = domMarkup.querySelectorAll('[data-type="inline_dropdown"]');
 
     const allChoices = {};
 
-    allRespAreas.forEach(el => {
+    allRespAreas.forEach((el) => {
       allChoices[el.dataset.index] = el.dataset.value || '';
     });
 
@@ -272,7 +271,7 @@ export class Main extends React.Component {
 
         return obj;
       },
-      {}
+      {},
     );
 
     const newRespAreaChoices = {};
@@ -281,12 +280,11 @@ export class Main extends React.Component {
     allRespAreas.forEach((el, index) => {
       const newChoices = existingRespAreaChoices[el.dataset.index] || [];
 
-      if (newChoices.length < 2 || !newChoices.find(c => c.correct)) {
+      if (newChoices.length < 2 || !newChoices.find((c) => c.correct)) {
         el.remove();
         shouldWarn = true;
       } else {
-        newRespAreaChoices[index] =
-          existingRespAreaChoices[el.dataset.index] || [];
+        newRespAreaChoices[index] = existingRespAreaChoices[el.dataset.index] || [];
         el.dataset.index = index;
       }
     });
@@ -295,34 +293,33 @@ export class Main extends React.Component {
       this.setState({
         dialog: {
           open: true,
-          message:
-            'Response areas with under 2 options or with no correct answers will be discarded',
+          message: 'Response areas with under 2 options or with no correct answers will be discarded',
           onOk: () => {
             this.setState(
               {
                 dialog: {
-                  open: false
-                }
+                  open: false,
+                },
               },
               () =>
                 this.onModelChange({
                   choices: cloneDeep(newRespAreaChoices),
-                  slateMarkup: domMarkup.innerHTML
-                })
+                  slateMarkup: domMarkup.innerHTML,
+                }),
             );
           },
           onCancel: () =>
             this.setState({
               dialog: {
-                open: false
-              }
-            })
-        }
+                open: false,
+              },
+            }),
+        },
       });
     } else {
       this.onModelChange({
         choices: cloneDeep(newRespAreaChoices),
-        slateMarkup: domMarkup.innerHTML
+        slateMarkup: domMarkup.innerHTML,
       });
     }
   };
@@ -331,7 +328,7 @@ export class Main extends React.Component {
     const { respAreaChoices } = this.state;
     const { maxResponseAreaChoices } = this.props.configuration;
 
-    if (respAreaChoices[index] && respAreaChoices[index].length >= maxResponseAreaChoices)  {
+    if (respAreaChoices[index] && respAreaChoices[index].length >= maxResponseAreaChoices) {
       this.setState({
         dialog: {
           open: true,
@@ -339,11 +336,11 @@ export class Main extends React.Component {
           onOk: () => {
             this.setState({
               dialog: {
-                open: false
-              }
+                open: false,
+              },
             });
-          }
-        }
+          },
+        },
       });
 
       return;
@@ -353,11 +350,7 @@ export class Main extends React.Component {
       respAreaChoices[index] = [];
     }
 
-    if (
-      (respAreaChoices[index] || []).find(
-        r => prepareVal(r.label) === prepareVal(label)
-      )
-    ) {
+    if ((respAreaChoices[index] || []).find((r) => prepareVal(r.label) === prepareVal(label))) {
       this.setState({
         dialog: {
           open: true,
@@ -365,22 +358,25 @@ export class Main extends React.Component {
           onOk: () => {
             this.setState({
               dialog: {
-                open: false
-              }
+                open: false,
+              },
             });
-          }
-        }
+          },
+        },
       });
 
       return;
     }
 
-    const value = (respAreaChoices[index] && max(respAreaChoices[index].map(c => parseInt(c.value)).filter(val => !isNaN(val)))) || 0;
+    const value =
+      (respAreaChoices[index] &&
+        max(respAreaChoices[index].map((c) => parseInt(c.value)).filter((val) => !isNaN(val)))) ||
+      0;
 
     respAreaChoices[index].push({
       label,
       value: `${value + 1}`,
-      correct: false
+      correct: false,
     });
 
     this.onModelChange({ choices: cloneDeep(respAreaChoices) });
@@ -397,23 +393,17 @@ export class Main extends React.Component {
   onSelectChoice = (respIndex, selectedIndex) => {
     const { respAreaChoices } = this.state;
 
-    respAreaChoices[respIndex] = respAreaChoices[respIndex].map(
-      (ch, index) => ({ ...ch, correct: index === selectedIndex })
-    );
+    respAreaChoices[respIndex] = respAreaChoices[respIndex].map((ch, index) => ({
+      ...ch,
+      correct: index === selectedIndex,
+    }));
 
     this.onModelChange({ choices: cloneDeep(respAreaChoices) });
   };
 
   render() {
     const { dialog } = this.state;
-    const {
-      classes,
-      model,
-      configuration,
-      onConfigurationChanged,
-      imageSupport,
-      uploadSoundSupport
-    } = this.props;
+    const { classes, model, configuration, onConfigurationChanged, imageSupport, uploadSoundSupport } = this.props;
     const {
       prompt = {},
       partialScoring = {},
@@ -435,57 +425,55 @@ export class Main extends React.Component {
       choices,
       spellCheckEnabled,
       errors,
-      rubricEnabled
+      rubricEnabled,
     } = model || {};
     const { responseAreasError, responseAreaChoicesError } = errors || {};
 
     const defaultImageMaxWidth = maxImageWidth && maxImageWidth.prompt;
     const defaultImageMaxHeight = maxImageHeight && maxImageHeight.prompt;
 
-    const renderChoiceRationale = () => (Object.keys(choices) || []).map((key, index) =>
-      <div key={key} className={classes.rationaleChoices}>
-        <ExpansionPanel>
-          <ExpansionPanelSummary expandIcon={<ExpandMoreIcon/>}>
-            <Typography className={classes.text}>
-              {`Rationale for response area #${index + 1}`}
-            </Typography>
-          </ExpansionPanelSummary>
-          <ExpansionPanelDetails className={classes.panelDetails}>
-            {(choices[key] || []).map(choice =>
-              <InputContainer
-                key={choice.label}
-                label={
-                  <span
-                    className={classes.rationaleLabel}
-                    dangerouslySetInnerHTML={{
-                      __html:
-                        `${rationale.label} for ${choice.label} (${choice.correct ? 'correct' : 'incorrect'})`
-                    }}
-                  />
-                }
-                className={classes.promptHolder}
-              >
-                <EditableHtml
-                  className={classes.prompt}
-                  markup={choice.rationale || ''}
-                  spellCheck={spellCheckEnabled}
-                  onChange={c =>
-                    this.onChoiceRationaleChanged(key, {
-                      ...choice,
-                      rationale: c
-                    })
+    const renderChoiceRationale = () =>
+      (Object.keys(choices) || []).map((key, index) => (
+        <div key={key} className={classes.rationaleChoices}>
+          <ExpansionPanel>
+            <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+              <Typography className={classes.text}>{`Rationale for response area #${index + 1}`}</Typography>
+            </ExpansionPanelSummary>
+            <ExpansionPanelDetails className={classes.panelDetails}>
+              {(choices[key] || []).map((choice) => (
+                <InputContainer
+                  key={choice.label}
+                  label={
+                    <span
+                      className={classes.rationaleLabel}
+                      dangerouslySetInnerHTML={{
+                        __html: `${rationale.label} for ${choice.label} (${choice.correct ? 'correct' : 'incorrect'})`,
+                      }}
+                    />
                   }
-                  imageSupport={imageSupport}
-                  maxImageWidth={maxImageWidth && maxImageWidth.rationale || defaultImageMaxWidth}
-                  maxImageHeight={maxImageHeight && maxImageHeight.rationale || defaultImageMaxHeight}
-                  uploadSoundSupport={uploadSoundSupport}
-                />
-              </InputContainer>
-            )}
-          </ExpansionPanelDetails>
-        </ExpansionPanel>
-      </div>
-    )
+                  className={classes.promptHolder}
+                >
+                  <EditableHtml
+                    className={classes.prompt}
+                    markup={choice.rationale || ''}
+                    spellCheck={spellCheckEnabled}
+                    onChange={(c) =>
+                      this.onChoiceRationaleChanged(key, {
+                        ...choice,
+                        rationale: c,
+                      })
+                    }
+                    imageSupport={imageSupport}
+                    maxImageWidth={(maxImageWidth && maxImageWidth.rationale) || defaultImageMaxWidth}
+                    maxImageHeight={(maxImageHeight && maxImageHeight.rationale) || defaultImageMaxHeight}
+                    uploadSoundSupport={uploadSoundSupport}
+                  />
+                </InputContainer>
+              ))}
+            </ExpansionPanelDetails>
+          </ExpansionPanel>
+        </div>
+      ));
 
     const toolbarOpts = {};
 
@@ -507,40 +495,28 @@ export class Main extends React.Component {
             <Panel
               model={model}
               configuration={configuration}
-              onChangeModel={model => this.onModelChange(model)}
-              onChangeConfiguration={configuration =>
-                onConfigurationChanged(configuration, true)
-              }
+              onChangeModel={(model) => this.onModelChange(model)}
+              onChangeConfiguration={(configuration) => onConfigurationChanged(configuration, true)}
               groups={{
                 Settings: {
-                  partialScoring:
-                    partialScoring.settings && toggle(partialScoring.label),
-                  lockChoiceOrder:
-                    lockChoiceOrder.settings && toggle(lockChoiceOrder.label)
+                  partialScoring: partialScoring.settings && toggle(partialScoring.label),
+                  lockChoiceOrder: lockChoiceOrder.settings && toggle(lockChoiceOrder.label),
                 },
                 Properties: {
-                  teacherInstructionsEnabled:
-                    teacherInstructions.settings &&
-                    toggle(teacherInstructions.label),
-                  rationaleEnabled:
-                    rationale.settings && toggle(rationale.label),
-                  choiceRationaleEnabled:
-                    choiceRationale.settings && toggle(choiceRationale.label),
+                  teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
+                  rationaleEnabled: rationale.settings && toggle(rationale.label),
+                  choiceRationaleEnabled: choiceRationale.settings && toggle(choiceRationale.label),
                   promptEnabled: prompt.settings && toggle(prompt.label),
-                  spellCheckEnabled:
-                  spellCheck.settings && toggle(spellCheck.label),
-                  rubricEnabled: withRubric?.settings && toggle(withRubric?.label)
-                }
+                  spellCheckEnabled: spellCheck.settings && toggle(spellCheck.label),
+                  rubricEnabled: withRubric?.settings && toggle(withRubric?.label),
+                },
               }}
             />
           }
         >
           <div>
             {teacherInstructionsEnabled && (
-              <InputContainer
-                label={teacherInstructions.label}
-                className={classes.promptHolder}
-              >
+              <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
                 <EditableHtml
                   className={classes.prompt}
                   markup={model.teacherInstructions || ''}
@@ -549,8 +525,8 @@ export class Main extends React.Component {
                   nonEmpty={false}
                   toolbarOpts={toolbarOpts}
                   spellCheck={spellCheckEnabled}
-                  maxImageWidth={maxImageWidth && maxImageWidth.teacherInstructions || defaultImageMaxWidth}
-                  maxImageHeight={maxImageHeight && maxImageHeight.teacherInstructions || defaultImageMaxHeight}
+                  maxImageWidth={(maxImageWidth && maxImageWidth.teacherInstructions) || defaultImageMaxWidth}
+                  maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
                   uploadSoundSupport={uploadSoundSupport}
                   languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
                 />
@@ -558,10 +534,7 @@ export class Main extends React.Component {
             )}
 
             {promptEnabled && (
-              <InputContainer
-                label={prompt.label}
-                className={classes.promptHolder}
-              >
+              <InputContainer label={prompt.label} className={classes.promptHolder}>
                 <EditableHtml
                   className={classes.prompt}
                   markup={model.prompt}
@@ -580,10 +553,7 @@ export class Main extends React.Component {
             )}
 
             {rationaleEnabled && (
-              <InputContainer
-                label={rationale.label}
-                className={classes.promptHolder}
-              >
+              <InputContainer label={rationale.label} className={classes.promptHolder}>
                 <EditableHtml
                   className={classes.prompt}
                   markup={model.rationale || ''}
@@ -591,8 +561,8 @@ export class Main extends React.Component {
                   imageSupport={imageSupport}
                   toolbarOpts={toolbarOpts}
                   spellCheck={spellCheckEnabled}
-                  maxImageWidth={maxImageWidth && maxImageWidth.rationale || defaultImageMaxWidth}
-                  maxImageHeight={maxImageHeight && maxImageHeight.rationale || defaultImageMaxHeight}
+                  maxImageWidth={(maxImageWidth && maxImageWidth.rationale) || defaultImageMaxWidth}
+                  maxImageHeight={(maxImageHeight && maxImageHeight.rationale) || defaultImageMaxHeight}
                   uploadSoundSupport={uploadSoundSupport}
                   languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
                 />
@@ -600,9 +570,7 @@ export class Main extends React.Component {
             )}
 
             <div className={classes.flexContainer}>
-              <Typography className={classes.text}>
-                Define Template, Choices, and Correct Responses
-              </Typography>
+              <Typography className={classes.text}>Define Template, Choices, and Correct Responses</Typography>
               <Tooltip
                 classes={{ tooltip: classes.tooltip }}
                 disableFocusListener
@@ -610,25 +578,20 @@ export class Main extends React.Component {
                 placement={'right'}
                 title={validationMessage}
               >
-                <Info fontSize={'small'} color={'primary'}/>
+                <Info fontSize={'small'} color={'primary'} />
               </Tooltip>
             </div>
             {responseAreasError && <div className={classes.errorText}>{responseAreasError}</div>}
             {responseAreaChoicesError && <div className={classes.errorText}>{responseAreaChoicesError}</div>}
 
-            <InfoDialog
-              open={dialog.open}
-              title={dialog.message}
-              onCancel={dialog.onCancel}
-              onOk={dialog.onOk}
-            />
+            <InfoDialog open={dialog.open} title={dialog.message} onCancel={dialog.onCancel} onOk={dialog.onOk} />
             <EditableHtml
               activePlugins={ALL_PLUGINS}
               toolbarOpts={{ position: 'top' }}
               responseAreaProps={{
                 type: 'inline-dropdown',
                 options: {
-                  duplicates: true
+                  duplicates: true,
                 },
                 maxResponseAreas: maxResponseAreas,
                 respAreaToolbar: (node, value, onToolbarDone) => {
@@ -638,12 +601,8 @@ export class Main extends React.Component {
                     <InlineDropdownToolbar
                       onAddChoice={this.onAddChoice}
                       onCheck={this.onCheck}
-                      onRemoveChoice={index =>
-                        this.onRemoveChoice(node.data.get('index'), index)
-                      }
-                      onSelectChoice={index =>
-                        this.onSelectChoice(node.data.get('index'), index)
-                      }
+                      onRemoveChoice={(index) => this.onRemoveChoice(node.data.get('index'), index)}
+                      onSelectChoice={(index) => this.onSelectChoice(node.data.get('index'), index)}
                       node={node}
                       value={value}
                       onToolbarDone={onToolbarDone}
@@ -652,7 +611,7 @@ export class Main extends React.Component {
                       uploadSoundSupport={uploadSoundSupport}
                     />
                   );
-                }
+                },
               }}
               spellCheck={spellCheckEnabled}
               className={classes.markup}

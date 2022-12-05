@@ -3,7 +3,7 @@ import {
   DeleteImageEvent,
   InsertImageEvent,
   InsertSoundEvent,
-  DeleteSoundEvent
+  DeleteSoundEvent,
 } from '@pie-framework/pie-configure-events';
 
 import React from 'react';
@@ -90,12 +90,12 @@ export default class ImageClozeAssociationConfigure extends HTMLElement {
       onConfigurationChanged: this.onConfigurationChanged.bind(this),
       imageSupport: {
         add: this.insertImage.bind(this),
-        delete: this.onDeleteImage.bind(this)
+        delete: this.onDeleteImage.bind(this),
       },
       uploadSoundSupport: {
         add: this.insertSound.bind(this),
-        delete: this.onDeleteSound.bind(this)
-      }
+        delete: this.onDeleteSound.bind(this),
+      },
     });
     ReactDOM.render(element, this);
   }

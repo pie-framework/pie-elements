@@ -4,8 +4,8 @@ import defaultModel from '../defaults';
 jest.mock('@pie-lib/rubric', () => ({
   RUBRIC_TYPES: {
     SIMPLE_RUBRIC: 'simpleRubric',
-    MULTI_TRAIT_RUBRIC: 'multiTraitRubric'
-  }
+    MULTI_TRAIT_RUBRIC: 'multiTraitRubric',
+  },
 }));
 
 describe('complex rubric model', () => {
@@ -34,9 +34,9 @@ describe('complex rubric model', () => {
         ...state.rubrics,
         multiTraitRubric: {
           ...state.rubrics.multiTraitRubric,
-          visible: false
-        }
-      }
+          visible: false,
+        },
+      },
     });
   });
 
@@ -50,9 +50,9 @@ describe('complex rubric model', () => {
         ...state.rubrics,
         simpleRubric: {
           ...state.rubrics.simpleRubric,
-          visible: false
-        }
-      }
+          visible: false,
+        },
+      },
     });
   });
 });

@@ -22,20 +22,20 @@ RawButton.propTypes = {
   className: PropTypes.string,
   disabled: PropTypes.bool,
   label: PropTypes.string,
-  onClick: PropTypes.func
+  onClick: PropTypes.func,
 };
 
 RawButton.defaultProps = {
   className: '',
   disabled: false,
   label: 'Add',
-  onClick: () => {}
+  onClick: () => {},
 };
 
 const styles = () => ({
   addButton: {
-    marginLeft: 8
-  }
+    marginLeft: 8,
+  },
 });
 
 const ButtonStyled = withStyles(styles)(RawButton);

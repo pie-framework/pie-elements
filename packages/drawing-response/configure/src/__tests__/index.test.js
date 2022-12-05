@@ -4,13 +4,13 @@ import { shallow } from 'enzyme';
 
 jest.mock('@pie-lib/config-ui', () => ({
   choiceUtils: {
-    firstAvailableIndex: jest.fn()
+    firstAvailableIndex: jest.fn(),
   },
   settings: {
-    Panel: props => <div {...props} />,
+    Panel: (props) => <div {...props} />,
     toggle: jest.fn(),
-    radio: jest.fn()
-  }
+    radio: jest.fn(),
+  },
 }));
 
 const model = () => ({
@@ -19,12 +19,12 @@ const model = () => ({
   imageUrl: '',
   imageDimensions: {
     height: 0,
-    width: 0
-  }
+    width: 0,
+  },
 });
 
 jest.mock('react-dom', () => ({
-  render: jest.fn()
+  render: jest.fn(),
 }));
 
 describe('index', () => {

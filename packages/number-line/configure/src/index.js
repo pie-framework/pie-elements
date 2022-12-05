@@ -1,17 +1,13 @@
 import Main from './main';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {
-  ModelUpdatedEvent,
-  InsertSoundEvent,
-  DeleteSoundEvent
-} from '@pie-framework/pie-configure-events';
+import { ModelUpdatedEvent, InsertSoundEvent, DeleteSoundEvent } from '@pie-framework/pie-configure-events';
 import * as defaults from './defaults';
 import * as math from 'mathjs';
 
 // this function is duplicated in controller; at some point, use the same shared function
-const updateTicks = model => {
-  const { graph: { domain, labelStep, ticks = {}} = {}} = model;
+const updateTicks = (model) => {
+  const { graph: { domain, labelStep, ticks = {} } = {} } = model;
   const { minor, major } = ticks;
 
   if (domain) {
@@ -38,7 +34,7 @@ export default class NumberLine extends HTMLElement {
   static createDefaultModel = (model = {}) => {
     const normalizedModel = {
       ...defaults.model,
-      ...model
+      ...model,
     };
 
     return updateTicks(normalizedModel);
@@ -55,7 +51,7 @@ export default class NumberLine extends HTMLElement {
     this._rerender();
   }
 
-  onChange = o => {
+  onChange = (o) => {
     this._model = { ...this._model, ...o };
 
     this.dispatchEvent(new ModelUpdatedEvent(this._model));
@@ -78,8 +74,8 @@ export default class NumberLine extends HTMLElement {
       onChange: this.onChange,
       uploadSoundSupport: {
         add: this.insertSound.bind(this),
-        delete: this.onDeleteSound.bind(this)
-      }
+        delete: this.onDeleteSound.bind(this),
+      },
     });
     ReactDOM.render(element, this);
   }

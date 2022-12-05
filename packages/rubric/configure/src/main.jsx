@@ -9,20 +9,18 @@ const styles = {
   design: {
     fontFamily: 'Cerebri Sans',
     fontSize: '14px',
-  }
+  },
 };
 
 class Main extends React.Component {
   render() {
     const { model, classes, configuration, onConfigurationChanged, onModelChanged } = this.props || {};
-    const {
-      settingsPanelDisabled,
-      showExcludeZero,
-      showMaxPoint
-    } = configuration || {};
+    const { settingsPanelDisabled, showExcludeZero, showMaxPoint } = configuration || {};
     return (
       <div className={classes.design}>
-        {settingsPanelDisabled ? <Authoring value={model} onChange={onModelChanged} /> :
+        {settingsPanelDisabled ? (
+          <Authoring value={model} onChange={onModelChanged} />
+        ) : (
           <layout.ConfigLayout
             settings={
               <Panel
@@ -34,15 +32,16 @@ class Main extends React.Component {
                   Properties: {
                     excludeZeroEnabled: showExcludeZero.settings && toggle(showExcludeZero.label),
                     maxPointsEnabled: showMaxPoint.settings && toggle(showMaxPoint.label),
-                  }
+                  },
                 }}
               />
             }
           >
             <Authoring value={model} onChange={onModelChanged} />
-          </layout.ConfigLayout>}
+          </layout.ConfigLayout>
+        )}
       </div>
-    )
+    );
   }
 }
 

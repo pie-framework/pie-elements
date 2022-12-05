@@ -12,7 +12,7 @@ const rubricDefaultModel = {
   points: ['', '', '', ''],
   sampleAnswers: [null, null, null, null],
   maxPoints: 4,
-  excludeZero: false
+  excludeZero: false,
 };
 
 const multiTraitDefaultConfiguration = {
@@ -33,7 +33,7 @@ const multiTraitDefaultConfiguration = {
             remove 0 column with its Label and Description
           </li>
         </ul>
-      </div>`
+      </div>`,
   },
   includeZeroDialogBoxContent: {
     title: 'Include 0 (Zero) in Score Point Values.',
@@ -51,26 +51,26 @@ const multiTraitDefaultConfiguration = {
             add 0 column with empty Label and Descriptions
           </li>
         </ul>
-      </div>`
+      </div>`,
   },
   deleteTraitDialogBoxContent: {
     title: 'Delete Trait',
-    text: 'Are you sure you want to delete this trait?'
+    text: 'Are you sure you want to delete this trait?',
   },
   deleteScaleDialogBoxContent: {
     title: 'Delete Scale',
-    text: 'Are you sure you want to delete this scale?'
+    text: 'Are you sure you want to delete this scale?',
   },
   maxPointsDialogBoxContent: {
     title: 'Decreasing Max Points.',
     text: ` You are about to decrease max score point value.
         <br/>
-        All the Labels and Descriptions for scores above Max Point will be deleted.`
+        All the Labels and Descriptions for scores above Max Point will be deleted.`,
   },
   spellCheck: {
     label: 'Spellcheck',
     settings: false,
-    enabled: true
+    enabled: true,
   },
   showExcludeZero: {
     settings: true,
@@ -101,13 +101,13 @@ const multiTraitDefaultConfiguration = {
   showLevelTagInput: {
     settings: false,
     label: 'Show Level Tag Input',
-    enabled: false
+    enabled: false,
   },
   dragAndDrop: {
     settings: true,
     label: 'Enable Drag and Drop',
     enabled: false,
-  }
+  },
 };
 
 const rubricDefaultConfiguration = {
@@ -117,19 +117,18 @@ const rubricDefaultConfiguration = {
   },
   showMaxPoint: {
     settings: true,
-    label: 'Show max points dropdown'
+    label: 'Show max points dropdown',
   },
-  settingsPanelDisabled: false
+  settingsPanelDisabled: false,
 };
 
 export default {
   model: {
     rubricType: 'simpleRubric',
-    rubrics: { simpleRubric: rubricDefaultModel, multiTraitRubric: multiTraitDefaultModel }
+    rubrics: { simpleRubric: rubricDefaultModel, multiTraitRubric: multiTraitDefaultModel },
   },
   configuration: {
     multiTraitRubric: multiTraitDefaultConfiguration,
-    simpleRubric : rubricDefaultConfiguration
-  }
+    simpleRubric: rubricDefaultConfiguration,
+  },
 };
-

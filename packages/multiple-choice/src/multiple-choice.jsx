@@ -25,9 +25,7 @@ const styles = {
     display: 'grid',
   },
   getColumns: function (columns) {
-    return columns > 1
-      ? { gridTemplateColumns: `repeat(${columns}, 1fr)` }
-      : undefined;
+    return columns > 1 ? { gridTemplateColumns: `repeat(${columns}, 1fr)` } : undefined;
   },
 };
 
@@ -80,9 +78,7 @@ export class MultipleChoice extends React.Component {
   isSelected(value) {
     const sessionValue = this.props.session && this.props.session.value;
 
-    return (
-      sessionValue && sessionValue.indexOf && sessionValue.indexOf(value) >= 0
-    );
+    return sessionValue && sessionValue.indexOf && sessionValue.indexOf(value) >= 0;
   }
 
   indexToSymbol(index) {
@@ -136,7 +132,7 @@ export class MultipleChoice extends React.Component {
       teacherInstructions,
       classes,
       alwaysShowCorrect,
-      animationsDisabled
+      animationsDisabled,
     } = this.props;
     const { showCorrect } = this.state;
     const isEvaluateMode = mode === 'evaluate';
@@ -146,25 +142,23 @@ export class MultipleChoice extends React.Component {
       <div className={classNames(classes.corespringChoice, 'multiple-choice')}>
         {teacherInstructions && (
           <React.Fragment>
-            {!animationsDisabled ?
+            {!animationsDisabled ? (
               <Collapsible
                 labels={{
                   hidden: 'Show Teacher Instructions',
                   visible: 'Hide Teacher Instructions',
                 }}
               >
-                <PreviewPrompt
-                  tagName="div"
-                  className="prompt"
-                  prompt={teacherInstructions}
-                />
-              </Collapsible> :
+                <PreviewPrompt tagName="div" className="prompt" prompt={teacherInstructions} />
+              </Collapsible>
+            ) : (
               <PreviewPrompt
                 tagName="div"
                 className="prompt"
                 defaultClassName="teacher-instructions"
                 prompt={teacherInstructions}
-              />}
+              />
+            )}
             <br />
           </React.Fragment>
         )}
@@ -181,9 +175,8 @@ export class MultipleChoice extends React.Component {
           className={classNames(
             { [classes.gridLayout]: this.props.choicesLayout === 'grid' },
             {
-              [classes.horizontalLayout]:
-                this.props.choicesLayout === 'horizontal',
-            }
+              [classes.horizontalLayout]: this.props.choicesLayout === 'horizontal',
+            },
           )}
           style={styles.getColumns(this.props.gridColumns)}
         >
@@ -201,14 +194,8 @@ export class MultipleChoice extends React.Component {
               disabled={disabled}
               onChoiceChanged={onChoiceChanged}
               hideTick={choice.hideTick}
-              checked={
-                showCorrect
-                  ? choice.correct || false
-                  : this.isSelected(choice.value)
-              }
-              correctness={
-                isEvaluateMode ? this.getCorrectness(choice) : undefined
-              }
+              checked={showCorrect ? choice.correct || false : this.isSelected(choice.value)}
+              correctness={isEvaluateMode ? this.getCorrectness(choice) : undefined}
               displayKey={this.indexToSymbol(index)}
             />
           ))}

@@ -11,7 +11,8 @@ const preparePrintModel = (model, opts) => {
   const instr = opts.role === 'instructor';
 
   model.prompt = model.promptEnabled !== false ? model.prompt : undefined;
-  model.teacherInstructions = instr && model.teacherInstructionsEnabled !== false ? model.teacherInstructions : undefined;
+  model.teacherInstructions =
+    instr && model.teacherInstructionsEnabled !== false ? model.teacherInstructions : undefined;
   model.rationale = instr && model.rationaleEnabled !== false ? model.rationale : undefined;
 
   model.alwaysShowCorrect = instr;
@@ -38,7 +39,7 @@ export default class ExplicitConstructedResponsePrint extends HTMLElement {
             this._options &&
             React.createElement(Main, {
               ...printModel,
-              onChange: () => {}
+              onChange: () => {},
             });
 
           ReactDOM.render(element, this, () => {
@@ -50,7 +51,7 @@ export default class ExplicitConstructedResponsePrint extends HTMLElement {
         }
       },
       50,
-      { leading: false, trailing: true }
+      { leading: false, trailing: true },
     );
   }
   set options(o) {

@@ -4,8 +4,7 @@ import ReactDOM from 'react-dom';
 import { SessionChangedEvent } from '@pie-framework/pie-player-events';
 import { renderMath } from '@pie-lib/math-rendering';
 
-export const isComplete = (session) =>
-  !!(session && session.value && session.value.length);
+export const isComplete = (session) => !!(session && session.value && session.value.length);
 
 export default class Likert extends HTMLElement {
   constructor() {
@@ -29,9 +28,7 @@ export default class Likert extends HTMLElement {
   sessionChanged(s) {
     this._session.value = s.value;
     const complete = isComplete(this._session, this._model);
-    this.dispatchEvent(
-      new SessionChangedEvent(this.tagName.toLowerCase(), complete)
-    );
+    this.dispatchEvent(new SessionChangedEvent(this.tagName.toLowerCase(), complete));
     this._render();
   }
 

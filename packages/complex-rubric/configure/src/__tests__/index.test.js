@@ -5,16 +5,16 @@ import defaults from '../defaults';
 
 jest.mock('@pie-lib/config-ui', () => ({
   settings: {
-    Panel: props => <div {...props} />,
+    Panel: (props) => <div {...props} />,
     toggle: jest.fn(),
-    radio: jest.fn()
-  }
+    radio: jest.fn(),
+  },
 }));
 
 const model = () => ({ ...defaults.model });
 
 jest.mock('react-dom', () => ({
-  render: jest.fn()
+  render: jest.fn(),
 }));
 
 describe('index', () => {

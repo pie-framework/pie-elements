@@ -10,13 +10,10 @@ describe('controller', () => {
       promptEnabled: true,
       feedbackEnabled: true,
       labelType: 'agreement',
-      rowLabels: [
-        "I'm interested in politics.",
-        "I'm interested in economics."
-      ],
+      rowLabels: ["I'm interested in politics.", "I'm interested in economics."],
       columnLabels: ['Disagree', 'Unsure', 'Agree'],
       matrixValues: {},
-      prompt: 'How interested are you in the following domains?'
+      prompt: 'How interested are you in the following domains?',
     };
   });
 
@@ -42,7 +39,7 @@ describe('controller', () => {
       });
 
       it('returns rowLabels', () => {
-        expect(result.rowLabels).toEqual(['I\'m interested in politics.', 'I\'m interested in economics.']);
+        expect(result.rowLabels).toEqual(["I'm interested in politics.", "I'm interested in economics."]);
       });
 
       it('returns columnLabels', () => {
@@ -66,18 +63,18 @@ describe('controller', () => {
         const result = await model(modelMocked, session, env);
 
         expect(result).toEqual({
-          "columnLabels": ["Disagree", "Unsure", "Agree"],
-          "disabled": true,
-          "element": "matrix",
-          "feedbackEnabled": true,
-          "id": "1",
-          "labelType": "agreement",
-          "matrixValues": {},
-          "mode": "evaluate",
-          "prompt": "How interested are you in the following domains?",
-          "promptEnabled": true,
-          "rowLabels": ["I'm interested in politics.", "I'm interested in economics."],
-          "teacherInstructions": null
+          columnLabels: ['Disagree', 'Unsure', 'Agree'],
+          disabled: true,
+          element: 'matrix',
+          feedbackEnabled: true,
+          id: '1',
+          labelType: 'agreement',
+          matrixValues: {},
+          mode: 'evaluate',
+          prompt: 'How interested are you in the following domains?',
+          promptEnabled: true,
+          rowLabels: ["I'm interested in politics.", "I'm interested in economics."],
+          teacherInstructions: null,
         });
       });
     });
@@ -105,16 +102,13 @@ describe('controller', () => {
         promptEnabled: true,
         feedbackEnabled: true,
         labelType: 'agreement',
-        rowLabels: [
-          "I'm interested in politics.",
-          "I'm interested in economics."
-        ],
+        rowLabels: ["I'm interested in politics.", "I'm interested in economics."],
         columnLabels: ['Disagree', 'Unsure', 'Agree'],
         matrixValues: { '0-0': 1, '0-1': 2, '0-2': 3, '1-0': 4, '1-1': 5, '1-2': 6 },
-        prompt: 'How interested are you in the following domains?'
+        prompt: 'How interested are you in the following domains?',
       };
       const session = {
-        value: { '0-2': 3, '1-2': 6 }
+        value: { '0-2': 3, '1-2': 6 },
       };
       env = { mode: 'evaluate' };
       const outcomeResult = await outcome(modelMocked, session, env);
@@ -125,7 +119,7 @@ describe('controller', () => {
   describe('correct response', () => {
     it('returns correct response if env is correct', async () => {
       const sess = await createCorrectResponseSession(modelMocked, { mode: 'gather', role: 'instructor' });
-      expect(sess).toEqual({ 'id': '1', 'value': {} });
+      expect(sess).toEqual({ id: '1', value: {} });
     });
 
     it('returns null env is student', async () => {
