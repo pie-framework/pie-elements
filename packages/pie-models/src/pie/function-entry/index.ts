@@ -1,6 +1,6 @@
-import {PromptConfig} from '../../PromptConfig';
-import {CommonConfigSettings} from '../../CommonConfigSettings';
-import {PieModel} from '../../PieModel';
+import { PromptConfig } from '../../PromptConfig';
+import { CommonConfigSettings } from '../../CommonConfigSettings';
+import { PieModel } from '../../PieModel';
 import { ComplexFeedbackType } from '../../Feedback';
 
 /**
@@ -8,14 +8,14 @@ import { ComplexFeedbackType } from '../../Feedback';
  * @additionalProperties false
  */
 export interface FunctionEntryPie extends PieModel {
-    /** The expression against which the response will be evaluated */
-    equation?: string;
+  /** The expression against which the response will be evaluated */
+  equation?: string;
 
-    /** Indicates if formatting hints for constructing an answer are displayed */
-    showFormattingHelp?: boolean;
+  /** Indicates if formatting hints for constructing an answer are displayed */
+  showFormattingHelp?: boolean;
 
-    /** Feedback for student responses */
-    feedback?: ComplexFeedbackType;
+  /** Feedback for student responses */
+  feedback?: ComplexFeedbackType;
 }
 
 /**

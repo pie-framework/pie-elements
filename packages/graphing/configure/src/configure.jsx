@@ -177,23 +177,14 @@ export class Configure extends React.Component {
                   toggle(coordinatesOnHover.label),
               },
               Properties: {
-                'authoring.enabled':
-                  authoring.settings && toggle(authoring.label, true),
-                teacherInstructionsEnabled:
-                  teacherInstructions.settings &&
-                  toggle(teacherInstructions.label),
-                studentInstructionsEnabled:
-                  studentInstructions.settings &&
-                  toggle(studentInstructions.label),
+                'authoring.enabled': authoring.settings && toggle(authoring.label, true),
+                teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
+                studentInstructionsEnabled: studentInstructions.settings && toggle(studentInstructions.label),
                 promptEnabled: prompt.settings && toggle(prompt.label),
                 rationaleEnabled: rationale.settings && toggle(rationale.label),
-                spellCheckEnabled:
-                  spellCheck.settings && toggle(spellCheck.label),
-                scoringType:
-                  scoringType.settings &&
-                  radio(scoringType.label, ['dichotomous', 'partial scoring']),
-                rubricEnabled:
-                  withRubric?.settings && toggle(withRubric?.label),
+                spellCheckEnabled: spellCheck.settings && toggle(spellCheck.label),
+                scoringType: scoringType.settings && radio(scoringType.label, ['dichotomous', 'partial scoring']),
+                rubricEnabled: withRubric?.settings && toggle(withRubric?.label),
               },
             }}
           />
@@ -202,17 +193,13 @@ export class Configure extends React.Component {
         <div className={classes.content}>
           <Typography component="div" type="body1">
             <span>
-              This interaction asks a student to draw a line that meets specific
-              criteria. The student will draw the line by clicking on two points
-              on the graph.
+              This interaction asks a student to draw a line that meets specific criteria. The student will draw the
+              line by clicking on two points on the graph.
             </span>
           </Typography>
 
           {teacherInstructionsEnabled && (
-            <InputContainer
-              label={teacherInstructions.label}
-              className={classes.promptHolder}
-            >
+            <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
               <EditableHtml
                 className={classes.prompt}
                 markup={model.teacherInstructions || ''}
@@ -238,10 +225,7 @@ export class Configure extends React.Component {
           )}
 
           {promptEnabled && (
-            <InputContainer
-              label={prompt.label}
-              className={classes.promptHolder}
-            >
+            <InputContainer label={prompt.label} className={classes.promptHolder}>
               <EditableHtml
                 className={classes.prompt}
                 markup={model.prompt}
@@ -262,10 +246,7 @@ export class Configure extends React.Component {
           )}
 
           {rationaleEnabled && (
-            <InputContainer
-              label={rationale.label || 'Rationale'}
-              className={classes.promptHolder}
-            >
+            <InputContainer label={rationale.label || 'Rationale'} className={classes.promptHolder}>
               <EditableHtml
                 className={classes.prompt}
                 markup={model.rationale || ''}

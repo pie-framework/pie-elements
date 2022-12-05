@@ -6,13 +6,13 @@ describe('layout', () => {
   let connectDragSource;
 
   beforeEach(() => {
-    connectDragSource = jest.fn(n => n);
+    connectDragSource = jest.fn((n) => n);
   });
 
-  const wrapper = extras => {
+  const wrapper = (extras) => {
     const defaults = {
       classes: {},
-      content: 'Foo'
+      content: 'Foo',
     };
     const props = { ...defaults, ...extras };
     return shallow(<Layout {...props} />);
@@ -52,7 +52,7 @@ describe('spec', () => {
       expect(spec.beginDrag({ id, categoryId, choiceIndex })).toEqual({
         id,
         categoryId,
-        choiceIndex
+        choiceIndex,
       });
     });
   });
@@ -64,12 +64,12 @@ describe('spec', () => {
 
     beforeEach(() => {
       props = {
-        onRemoveChoice: jest.fn()
+        onRemoveChoice: jest.fn(),
       };
       item = { id: '1', categoryId: '1' };
       monitor = {
         getItem: jest.fn().mockReturnValue(item),
-        didDrop: jest.fn().mockReturnValue(false)
+        didDrop: jest.fn().mockReturnValue(false),
       };
     });
 

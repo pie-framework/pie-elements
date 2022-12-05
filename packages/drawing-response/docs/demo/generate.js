@@ -8,7 +8,7 @@ exports.model = (id, element) => ({
   imageUrl: '',
   imageDimensions: {
     height: 0,
-    width: 0
+    width: 0,
   },
-  rubricEnabled: false
+  rubricEnabled: false,
 });

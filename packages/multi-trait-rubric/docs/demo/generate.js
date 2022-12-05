@@ -33,10 +33,42 @@ exports.model = (id, element) => ({
           description: 'the internal structure of the piece',
           scorePointsDescriptors: [
             'Student’s response is blank, not in English, not legible, or does not respond to the prompt.',
-            'Does not have a beginning, middle and/or end\n' + '\n' + 'Does not have a lead and/or conclusion\n' + '\n' + 'Transitions confusing and/or not present\n' + '\n' + 'Not written in logical order\n' + '\n' + 'No sign of paragraphing / incorrect paragraphing',
-            'Weak beginning, middle and end\n' + '\n' + 'Has evidence of a lead and/or conclusion but missing elements\n' + '\n' + 'Transitions are used sometimes\n' + '\n' + 'Some logical order\n' + '\n' + 'Most paragraphing incorrect',
-            'Has an acceptable beginning, middle and end\n' + '\n' + 'Includes a lead and conclusion\n' + '\n' + 'Transitions are used correctly\n' + '\n' + 'Mostly logical order\n' + '\n' + 'Mostly correct paragraphing',
-            'Has an effective beginning, middle and end\n' + '\n' + 'Powerful introduction / lead and conclusion\n' + '\n' + 'Effective transitions\n' + '\n' + 'Logical order / sequencing\n' + '\n' + 'Uses appropriate paragraphing',
+            'Does not have a beginning, middle and/or end\n' +
+              '\n' +
+              'Does not have a lead and/or conclusion\n' +
+              '\n' +
+              'Transitions confusing and/or not present\n' +
+              '\n' +
+              'Not written in logical order\n' +
+              '\n' +
+              'No sign of paragraphing / incorrect paragraphing',
+            'Weak beginning, middle and end\n' +
+              '\n' +
+              'Has evidence of a lead and/or conclusion but missing elements\n' +
+              '\n' +
+              'Transitions are used sometimes\n' +
+              '\n' +
+              'Some logical order\n' +
+              '\n' +
+              'Most paragraphing incorrect',
+            'Has an acceptable beginning, middle and end\n' +
+              '\n' +
+              'Includes a lead and conclusion\n' +
+              '\n' +
+              'Transitions are used correctly\n' +
+              '\n' +
+              'Mostly logical order\n' +
+              '\n' +
+              'Mostly correct paragraphing',
+            'Has an effective beginning, middle and end\n' +
+              '\n' +
+              'Powerful introduction / lead and conclusion\n' +
+              '\n' +
+              'Effective transitions\n' +
+              '\n' +
+              'Logical order / sequencing\n' +
+              '\n' +
+              'Uses appropriate paragraphing',
           ],
         },
         {
@@ -46,8 +78,14 @@ exports.model = (id, element) => ({
           scorePointsDescriptors: [
             'Student’s response is blank, not in English, not legible, or does not respond to the prompt.',
             'Vocabulary is limited/used incorrectly\n' + '\n' + 'No figurative language; words do not convey meaning',
-            'Generally correct words\n' + '\n' + 'Attempt at figurative language\n' + '\n' + 'and/or words convey general meaning',
-            'Some active verbs and precise nouns\n' + '\n' + 'Effective use of figurative language and/or words that enhance meaning',
+            'Generally correct words\n' +
+              '\n' +
+              'Attempt at figurative language\n' +
+              '\n' +
+              'and/or words convey general meaning',
+            'Some active verbs and precise nouns\n' +
+              '\n' +
+              'Effective use of figurative language and/or words that enhance meaning',
             'Powerful and engaging words\n' + '\n' + 'Artful use of figurative language and/or sensory detail',
           ],
         },
@@ -57,10 +95,26 @@ exports.model = (id, element) => ({
           description: 'the rhythm and flow of the language',
           scorePointsDescriptors: [
             'Student’s response is blank, not in English, not legible, or does not respond to the prompt.',
-            'No sentences are clear\n' + '\n' + 'No variety in sentence structure\n' + '\n' + 'Frequent run-ons and/or fragments are present',
-            'Some sentences are clear\n' + '\n' + 'Sentence variety used rarely\n' + '\n' + 'Some run-ons and/or fragments are present',
-            'Most sentences are clear\n' + '\n' + 'Some sentence variety is used\n' + '\n' + 'Run-ons and/or fragments are rare',
-            'All Sentences are clear\n' + '\n' + 'Variety of sentence structure is used\n' + '\n' + 'Run-ons and/or fragments are not present',
+            'No sentences are clear\n' +
+              '\n' +
+              'No variety in sentence structure\n' +
+              '\n' +
+              'Frequent run-ons and/or fragments are present',
+            'Some sentences are clear\n' +
+              '\n' +
+              'Sentence variety used rarely\n' +
+              '\n' +
+              'Some run-ons and/or fragments are present',
+            'Most sentences are clear\n' +
+              '\n' +
+              'Some sentence variety is used\n' +
+              '\n' +
+              'Run-ons and/or fragments are rare',
+            'All Sentences are clear\n' +
+              '\n' +
+              'Variety of sentence structure is used\n' +
+              '\n' +
+              'Run-ons and/or fragments are not present',
           ],
         },
         {
@@ -78,16 +132,32 @@ exports.model = (id, element) => ({
         {
           name: 'Voice',
           standards: [],
-          description: 'the personal tone and flavor of the author\'s message',
+          description: "the personal tone and flavor of the author's message",
           scorePointsDescriptors: [
             'Student’s response is blank, not in English, not legible, or does not respond to the prompt.',
-            'Not concerned with audience or purpose\n' + '\n' + 'No viewpoint (perspective) used\n' + '\n' + 'Writing is mechanical and lifeless',
-            'Shows beginning awareness of audience/purpose\n' + '\n' + 'Some viewpoint (perspective) used throughout the piece\n' + '\n' + 'Writing is distant, too formal or informal',
-            'Awareness of audience; purpose is clear most of the time\n' + '\n' + 'Uses viewpoint (perspective) throughout most of the paper\n' + '\n' + 'Writing is pleasant, agreeable and satisfying',
-            'Powerful connection with audience; purpose is clearly communicated\n' + '\n' + 'Maintains strong viewpoint (perspective) throughout entire piece\n' + '\n' + 'Writing is expressive, engaging and has lots of energy',
+            'Not concerned with audience or purpose\n' +
+              '\n' +
+              'No viewpoint (perspective) used\n' +
+              '\n' +
+              'Writing is mechanical and lifeless',
+            'Shows beginning awareness of audience/purpose\n' +
+              '\n' +
+              'Some viewpoint (perspective) used throughout the piece\n' +
+              '\n' +
+              'Writing is distant, too formal or informal',
+            'Awareness of audience; purpose is clear most of the time\n' +
+              '\n' +
+              'Uses viewpoint (perspective) throughout most of the paper\n' +
+              '\n' +
+              'Writing is pleasant, agreeable and satisfying',
+            'Powerful connection with audience; purpose is clearly communicated\n' +
+              '\n' +
+              'Maintains strong viewpoint (perspective) throughout entire piece\n' +
+              '\n' +
+              'Writing is expressive, engaging and has lots of energy',
           ],
-        }
-      ]
+        },
+      ],
     },
     {
       maxPoints: 5,
@@ -104,7 +174,7 @@ exports.model = (id, element) => ({
             'Handwriting is generally legible\n' + '\n' + 'Overall appearance is acceptable or better',
           ],
         },
-      ]
-    }
-  ]
+      ],
+    },
+  ],
 });

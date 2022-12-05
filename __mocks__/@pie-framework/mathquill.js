@@ -20,5 +20,5 @@ class MockMathquill {
 }
 
 module.exports = {
-  getInterface: jest.fn().mockReturnValue(new MockMathquill())
+  getInterface: jest.fn().mockReturnValue(new MockMathquill()),
 };

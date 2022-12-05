@@ -10,10 +10,7 @@ export class Choices extends React.Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
     choices: PropTypes.arrayOf(
-      PropTypes.oneOfType([
-        PropTypes.shape(ChoiceType),
-        PropTypes.shape({ empty: PropTypes.bool }),
-      ])
+      PropTypes.oneOfType([PropTypes.shape(ChoiceType), PropTypes.shape({ empty: PropTypes.bool })]),
     ),
     model: PropTypes.shape({
       categoriesPerRow: PropTypes.number,
@@ -31,13 +28,7 @@ export class Choices extends React.Component {
   };
 
   render() {
-    const {
-      classes,
-      choices = [],
-      model,
-      disabled,
-      choicePosition,
-    } = this.props;
+    const { classes, choices = [], model, disabled, choicePosition } = this.props;
     let style = {
       textAlign: 'center',
     };
@@ -49,7 +40,7 @@ export class Choices extends React.Component {
     return (
       <div className={classes.wrapper}>
         {model.choicesLabel && model.choicesLabel !== '' && (
-          <div className={classes.labelHolder} dangerouslySetInnerHTML={{__html: model.choicesLabel}}></div>
+          <div className={classes.labelHolder} dangerouslySetInnerHTML={{ __html: model.choicesLabel }}></div>
         )}
         <div className={classes.choices} style={style}>
           {choices.map((c, index) => {
@@ -81,7 +72,7 @@ const styles = (theme) => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    flexWrap: 'wrap'
+    flexWrap: 'wrap',
   },
   labelHolder: {
     margin: '0 auto',

@@ -29,7 +29,7 @@ var prepareText = function prepareText(text) {
   var txtDom = createElementFromHTML(text);
 
   var div = document.createElement('div');
-  div.innerHTML = '<div separator=\'true\'>'.concat(txtDom.innerHTML, '</div>');
+  div.innerHTML = "<div separator='true'>".concat(txtDom.innerHTML, '</div>');
   txtDom = div;
 
   var allDomElements = Array.from(txtDom.querySelectorAll('*'));
@@ -83,15 +83,14 @@ export default (model) => {
         end: newEnd,
         // needed for getScore when tokens position is recalculated
         oldStart: token.start,
-        oldEnd: token.end
-      }
+        oldEnd: token.end,
+      },
     ];
   }, []);
-
 
   return {
     ...model,
     tokens: newTokens,
-    text: modelText
+    text: modelText,
   };
 };

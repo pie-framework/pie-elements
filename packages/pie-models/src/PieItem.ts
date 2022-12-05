@@ -1,4 +1,4 @@
-import { PieModel } from "./PieModel";
+import { PieModel } from './PieModel';
 
 export interface PieItem {
   /**
@@ -7,10 +7,9 @@ export interface PieItem {
   elements: PieItemElement;
 
   /** Models for each PIE included in the item */
-  models: [PieModel]
+  models: [PieModel];
 }
 
-
-interface PieItemElement { 
-  [elementName: string]: string 
-};
+interface PieItemElement {
+  [elementName: string]: string;
+}

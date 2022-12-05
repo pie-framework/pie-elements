@@ -1,6 +1,6 @@
-export interface PieModel  {
+export interface PieModel {
   /** Identifier to identify the Pie Element in html markup, Must be unique within a pie item config. */
-  id: string,
+  id: string;
   /** The html Element tag name */
   element: string;
 }

@@ -125,7 +125,7 @@ export interface MultiTraitRubricConfigure {
   /**
    * Configuration for the author's spellcheck
    */
-   spellCheck?: ConfigureProp;
+  spellCheck?: ConfigureProp;
 
   /**
    * How large (in px) should multi-trait-rubric be

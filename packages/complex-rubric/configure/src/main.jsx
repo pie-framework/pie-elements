@@ -10,8 +10,8 @@ const styles = {
   rubric: {
     display: 'flex',
     flexDirection: 'column',
-    padding: '16px 0 32px'
-  }
+    padding: '16px 0 32px',
+  },
 };
 
 export class Main extends React.Component {
@@ -20,14 +20,14 @@ export class Main extends React.Component {
     configuration: PropTypes.object,
     model: PropTypes.object,
     onModelChanged: PropTypes.func,
-    onConfigurationChanged: PropTypes.func
+    onConfigurationChanged: PropTypes.func,
   };
 
   onModelChanged = (model) => {
     const { onModelChanged } = this.props;
 
     return onModelChanged(model);
-  }
+  };
 
   onChangeRubricType = (e) => {
     const { model } = this.props;
@@ -40,11 +40,7 @@ export class Main extends React.Component {
   };
 
   render() {
-    const {
-      classes,
-      model,
-      configuration
-    } = this.props;
+    const { classes, model, configuration } = this.props;
     const { rubricType, rubrics = {} } = model;
     const { multiTraitRubric, simpleRubric } = configuration;
     let rubricTag = '';
@@ -52,32 +48,36 @@ export class Main extends React.Component {
     switch (rubricType) {
       case RUBRIC_TYPES.SIMPLE_RUBRIC:
       default:
-        rubricTag = <rubric-configure
-          id="simpleRubric"
-          key="simple-rubric"
-          ref={ref => {
-            if (ref) {
-              this.simpleRubric = ref;
-              this.simpleRubric.model = rubrics.simpleRubric;
-              this.simpleRubric.configuration = simpleRubric;
-            }
-          }}
-        />;
+        rubricTag = (
+          <rubric-configure
+            id="simpleRubric"
+            key="simple-rubric"
+            ref={(ref) => {
+              if (ref) {
+                this.simpleRubric = ref;
+                this.simpleRubric.model = rubrics.simpleRubric;
+                this.simpleRubric.configuration = simpleRubric;
+              }
+            }}
+          />
+        );
         break;
       case RUBRIC_TYPES.MULTI_TRAIT_RUBRIC:
-        rubricTag = <multi-trait-rubric-configure
-          id="multiTraitRubric"
-          key="multi-trait-rubric"
-          ref={ref => {
-            if (ref) {
-              this.multiTraitRubric = ref;
-              this.multiTraitRubric.model = {
-                ...rubrics.multiTraitRubric
-              };
-              this.multiTraitRubric.configuration = multiTraitRubric;
-            }
-          }}
-        />;
+        rubricTag = (
+          <multi-trait-rubric-configure
+            id="multiTraitRubric"
+            key="multi-trait-rubric"
+            ref={(ref) => {
+              if (ref) {
+                this.multiTraitRubric = ref;
+                this.multiTraitRubric.model = {
+                  ...rubrics.multiTraitRubric,
+                };
+                this.multiTraitRubric.configuration = multiTraitRubric;
+              }
+            }}
+          />
+        );
         break;
     }
 
@@ -86,29 +86,27 @@ export class Main extends React.Component {
         <div>
           <div>
             <RadioGroup
-              aria-label='rubric-type'
-              name='rubricType'
+              aria-label="rubric-type"
+              name="rubricType"
               value={rubricType}
               defaultValue={RUBRIC_TYPES.SIMPLE_RUBRIC}
               onChange={this.onChangeRubricType}
             >
               <FormControlLabel
                 value={RUBRIC_TYPES.SIMPLE_RUBRIC}
-                control={<Radio/>}
+                control={<Radio />}
                 checked={rubricType === RUBRIC_TYPES.SIMPLE_RUBRIC}
-                label='Simple Rubric'
+                label="Simple Rubric"
               />
               <FormControlLabel
                 value={RUBRIC_TYPES.MULTI_TRAIT_RUBRIC}
-                control={<Radio/>}
+                control={<Radio />}
                 checked={rubricType === RUBRIC_TYPES.MULTI_TRAIT_RUBRIC}
-                label='Multi Trait Rubric'
+                label="Multi Trait Rubric"
               />
             </RadioGroup>
           </div>
-          <div>
-            {rubricTag}
-          </div>
+          <div>{rubricTag}</div>
         </div>
       </div>
     );

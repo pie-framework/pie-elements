@@ -11,7 +11,7 @@ const defaultModel = {
     partialFeedbackType: 'none',
     partialFeedbackValue: '',
     incorrectFeedbackType: 'none',
-    incorrectFeedbackValue: ''
+    incorrectFeedbackValue: '',
   },
   graph: {
     graphTitle: '',
@@ -41,14 +41,14 @@ const defaultModel = {
     showPointLabels: true,
     showInputs: true,
     showAxisLabels: true,
-    showFeedback: true
-  }
+    showFeedback: true,
+  },
 };
 
 describe('model', () => {
   let result, question, session, env;
 
-  const mkQuestion = model => model || defaultModel;
+  const mkQuestion = (model) => model || defaultModel;
 
   describe('gather', () => {
     beforeEach(async () => {
@@ -115,7 +115,7 @@ describe('model', () => {
     it('returns empty for correctness ', () => {
       expect(result.correctness).toEqual({
         correctness: 'unanswered',
-        score: '0%'
+        score: '0%',
       });
     });
 
@@ -124,7 +124,7 @@ describe('model', () => {
       result = await model(question, session, env);
       expect(result.correctness).toEqual({
         correctness: 'unanswered',
-        score: '0%'
+        score: '0%',
       });
     });
 
@@ -144,12 +144,12 @@ describe('model', () => {
         graph: {
           ...defaultModel.graph,
           allowPartialScoring: false,
-          pointsMustMatchLabels: false
-        }
+          pointsMustMatchLabels: false,
+        },
       });
 
       session = {
-        points: [{ x: 0, y: 0, label: 'A' }]
+        points: [{ x: 0, y: 0, label: 'A' }],
       };
 
       result = await model(question, session, env);
@@ -164,17 +164,17 @@ describe('model', () => {
         graph: {
           ...defaultModel.graph,
           allowPartialScoring: true,
-          pointsMustMatchLabels: false
+          pointsMustMatchLabels: false,
         },
         partialScoring: [
           { numberOfCorrect: 1, scorePercentage: 50 },
           { numberOfCorrect: 2, scorePercentage: 60 },
-          { numberOfCorrect: 3, scorePercentage: 70 }
-        ]
+          { numberOfCorrect: 3, scorePercentage: 70 },
+        ],
       });
 
       session = {
-        points: [{ x: 0, y: 0, label: 'A' }]
+        points: [{ x: 0, y: 0, label: 'A' }],
       };
 
       result = await model(question, session, env);
@@ -183,7 +183,7 @@ describe('model', () => {
       expect(result.correctness.score).toEqual('50%');
 
       session = {
-        points: [{ x: 0, y: 0, label: 'C' }]
+        points: [{ x: 0, y: 0, label: 'C' }],
       };
 
       result = await model(question, session, env);
@@ -192,16 +192,10 @@ describe('model', () => {
       expect(result.correctness.score).toEqual('50%');
 
       session = {
-        points: [{ x: 0, y: 0, label: 'A' }, { x: 1, y: 1, label: 'B' }]
-      };
-
-      result = await model(question, session, env);
-
-      expect(result.correctness.correctness).toEqual('partial');
-      expect(result.correctness.score).toEqual('60%');
-
-      session = {
-        points: [{ x: 0, y: 0, label: 'B' }, { x: 1, y: 1, label: 'A' }]
+        points: [
+          { x: 0, y: 0, label: 'A' },
+          { x: 1, y: 1, label: 'B' },
+        ],
       };
 
       result = await model(question, session, env);
@@ -213,8 +207,20 @@ describe('model', () => {
         points: [
           { x: 0, y: 0, label: 'B' },
           { x: 1, y: 1, label: 'A' },
-          { x: 2, y: 2, label: 'C' }
-        ]
+        ],
+      };
+
+      result = await model(question, session, env);
+
+      expect(result.correctness.correctness).toEqual('partial');
+      expect(result.correctness.score).toEqual('60%');
+
+      session = {
+        points: [
+          { x: 0, y: 0, label: 'B' },
+          { x: 1, y: 1, label: 'A' },
+          { x: 2, y: 2, label: 'C' },
+        ],
       };
 
       result = await model(question, session, env);
@@ -226,8 +232,8 @@ describe('model', () => {
         points: [
           { x: 0, y: 0, label: 'C' },
           { x: 1, y: 1, label: 'A' },
-          { x: 2, y: 5, label: 'B' }
-        ]
+          { x: 2, y: 5, label: 'B' },
+        ],
       };
 
       result = await model(question, session, env);
@@ -242,17 +248,17 @@ describe('model', () => {
         graph: {
           ...defaultModel.graph,
           allowPartialScoring: true,
-          pointsMustMatchLabels: true
+          pointsMustMatchLabels: true,
         },
         partialScoring: [
           { numberOfCorrect: 1, scorePercentage: 50 },
           { numberOfCorrect: 2, scorePercentage: 60 },
-          { numberOfCorrect: 3, scorePercentage: 70 }
-        ]
+          { numberOfCorrect: 3, scorePercentage: 70 },
+        ],
       });
 
       session = {
-        points: [{ x: 0, y: 0, label: 'A' }]
+        points: [{ x: 0, y: 0, label: 'A' }],
       };
 
       result = await model(question, session, env);
@@ -261,7 +267,7 @@ describe('model', () => {
       expect(result.correctness.score).toEqual('50%');
 
       session = {
-        points: [{ x: 0, y: 0, label: 'C' }]
+        points: [{ x: 0, y: 0, label: 'C' }],
       };
 
       result = await model(question, session, env);
@@ -270,7 +276,10 @@ describe('model', () => {
       expect(result.correctness.score).toEqual('0%');
 
       session = {
-        points: [{ x: 0, y: 0, label: 'A' }, { x: 1, y: 1, label: 'B' }]
+        points: [
+          { x: 0, y: 0, label: 'A' },
+          { x: 1, y: 1, label: 'B' },
+        ],
       };
 
       result = await model(question, session, env);
@@ -279,7 +288,10 @@ describe('model', () => {
       expect(result.correctness.score).toEqual('60%');
 
       session = {
-        points: [{ x: 0, y: 0, label: 'B' }, { x: 1, y: 1, label: 'A' }]
+        points: [
+          { x: 0, y: 0, label: 'B' },
+          { x: 1, y: 1, label: 'A' },
+        ],
       };
 
       result = await model(question, session, env);
@@ -291,8 +303,8 @@ describe('model', () => {
         points: [
           { x: 0, y: 0, label: 'B' },
           { x: 1, y: 1, label: 'A' },
-          { x: 2, y: 2, label: 'C' }
-        ]
+          { x: 2, y: 2, label: 'C' },
+        ],
       };
 
       result = await model(question, session, env);
@@ -304,8 +316,8 @@ describe('model', () => {
         points: [
           { x: 0, y: 0, label: 'C' },
           { x: 1, y: 1, label: 'A' },
-          { x: 2, y: 5, label: 'B' }
-        ]
+          { x: 2, y: 5, label: 'B' },
+        ],
       };
 
       result = await model(question, session, env);
@@ -318,8 +330,8 @@ describe('model', () => {
           { x: 0, y: 0, label: 'C' },
           { x: 1, y: 1, label: 'A' },
           { x: 3, y: 3, label: 'D' },
-          { x: 5, y: 3, label: 'B' }
-        ]
+          { x: 5, y: 3, label: 'B' },
+        ],
       };
 
       result = await model(question, session, env);
@@ -334,13 +346,13 @@ describe('model', () => {
         graph: {
           ...defaultModel.graph,
           allowPartialScoring: true,
-          pointsMustMatchLabels: true
+          pointsMustMatchLabels: true,
         },
         partialScoring: [
           { numberOfCorrect: 1, scorePercentage: 50 },
           { numberOfCorrect: 2, scorePercentage: 60 },
-          { numberOfCorrect: 3, scorePercentage: 70 }
-        ]
+          { numberOfCorrect: 3, scorePercentage: 70 },
+        ],
       });
 
       session = {
@@ -348,8 +360,8 @@ describe('model', () => {
           { x: 0, y: 0, label: 'A' },
           { x: 1, y: 1, label: 'B' },
           { x: 2, y: 2, label: 'C' },
-          { x: 3, y: 3, label: 'D' }
-        ]
+          { x: 3, y: 3, label: 'D' },
+        ],
       };
 
       result = await model(question, session, env);
@@ -362,13 +374,13 @@ describe('model', () => {
         graph: {
           ...defaultModel.graph,
           allowPartialScoring: true,
-          pointsMustMatchLabels: false
+          pointsMustMatchLabels: false,
         },
         partialScoring: [
           { numberOfCorrect: 1, scorePercentage: 50 },
           { numberOfCorrect: 2, scorePercentage: 60 },
-          { numberOfCorrect: 3, scorePercentage: 70 }
-        ]
+          { numberOfCorrect: 3, scorePercentage: 70 },
+        ],
       });
 
       session = {
@@ -376,8 +388,8 @@ describe('model', () => {
           { x: 0, y: 0, label: 'B' },
           { x: 1, y: 1, label: 'D' },
           { x: 2, y: 2, label: 'C' },
-          { x: 3, y: 3, label: 'A' }
-        ]
+          { x: 3, y: 3, label: 'A' },
+        ],
       };
 
       result = await model(question, session, env);
@@ -398,8 +410,8 @@ describe('model', () => {
         graph: {
           ...defaultModel.graph,
           allowPartialScoring: false,
-          pointsMustMatchLabels: true
-        }
+          pointsMustMatchLabels: true,
+        },
       });
 
       session = {
@@ -407,8 +419,8 @@ describe('model', () => {
           { x: 0, y: 0, label: 'A' },
           { x: 1, y: 1, label: 'B' },
           { x: 2, y: 2, label: 'C' },
-          { x: 3, y: 3, label: 'D' }
-        ]
+          { x: 3, y: 3, label: 'D' },
+        ],
       };
 
       result = await model(question, session, env);
@@ -421,8 +433,8 @@ describe('model', () => {
         graph: {
           ...defaultModel.graph,
           allowPartialScoring: false,
-          pointsMustMatchLabels: false
-        }
+          pointsMustMatchLabels: false,
+        },
       });
 
       session = {
@@ -430,8 +442,8 @@ describe('model', () => {
           { x: 0, y: 0, label: 'B' },
           { x: 1, y: 1, label: 'D' },
           { x: 2, y: 2, label: 'C' },
-          { x: 3, y: 3, label: 'A' }
-        ]
+          { x: 3, y: 3, label: 'A' },
+        ],
       };
 
       result = await model(question, session, env);
@@ -443,7 +455,7 @@ describe('model', () => {
 });
 
 describe('outcome', () => {
-  const assertOutcome = session => {
+  const assertOutcome = (session) => {
     it(`returns score: 0 and empty: true if session is ${JSON.stringify(session)}`, async () => {
       const o = await outcome(defaultModel, session, { mode: 'evaluate' });
       expect(o).toEqual({ score: '0%', empty: true });
@@ -456,7 +468,7 @@ describe('outcome', () => {
 });
 
 describe('getCorrectness', () => {
-  const assetCorrectness = session => {
+  const assetCorrectness = (session) => {
     it(`returns score: 0 and empty: true if session is ${JSON.stringify(session)}`, () => {
       const c = getCorrectness(defaultModel, session, { mode: 'evaluate' });
       expect(c).toEqual({ score: '0%', correctness: 'unanswered' });

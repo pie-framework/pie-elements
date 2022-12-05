@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { SessionChangedEvent } from '@pie-framework/pie-player-events';
 import { renderMath } from '@pie-lib/math-rendering';
 
-import {  removeInvalidAnswers } from './utils';
+import { removeInvalidAnswers } from './utils';
 import Main from './main';
 
 export { Main as Component };
@@ -31,17 +31,12 @@ export default class Graphing extends HTMLElement {
     this._render();
   }
 
-  isComplete = answer => Array.isArray(answer) && answer.length > 0;
+  isComplete = (answer) => Array.isArray(answer) && answer.length > 0;
 
-  changeAnswers = answer => {
+  changeAnswers = (answer) => {
     this._session.answer = removeInvalidAnswers(answer);
 
-    this.dispatchEvent(
-      new SessionChangedEvent(
-        this.tagName.toLowerCase(),
-        this.isComplete(this._session.answer)
-      )
-    );
+    this.dispatchEvent(new SessionChangedEvent(this.tagName.toLowerCase(), this.isComplete(this._session.answer)));
 
     this._render();
   };
@@ -54,7 +49,7 @@ export default class Graphing extends HTMLElement {
     const el = React.createElement(Main, {
       model: this._model,
       session: this._session,
-      onAnswersChange: this.changeAnswers
+      onAnswersChange: this.changeAnswers,
     });
 
     ReactDOM.render(el, this, () => {

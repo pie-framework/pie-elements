@@ -6,23 +6,21 @@ import StyledGeneralConfigBlock, { GeneralConfigBlock } from '../general-config-
 import PartialScoringConfig from '@pie-lib/scoring-config';
 import { InputContainer, InputCheckbox } from '@pie-lib/config-ui';
 
-import {
-  FeedbackConfig,
-} from '@pie-lib/config-ui';
+import { FeedbackConfig } from '@pie-lib/config-ui';
 import defaultValues from '../defaults';
 
 jest.mock('@pie-lib/config-ui', () => ({
-  InputContainer: props => <div>{props.children}</div>,
-  InputCheckbox: props => <div>{props.children}</div>,
-  FeedbackConfig: props => <div>{props.children}</div>,
+  InputContainer: (props) => <div>{props.children}</div>,
+  InputCheckbox: (props) => <div>{props.children}</div>,
+  FeedbackConfig: (props) => <div>{props.children}</div>,
   layout: {
-    ConfigLayout: props => <div>{props.children}</div>
+    ConfigLayout: (props) => <div>{props.children}</div>,
   },
   settings: {
-    Panel: props => <div onChange={props.onChange} />,
+    Panel: (props) => <div onChange={props.onChange} />,
     toggle: jest.fn(),
-    radio: jest.fn()
-  }
+    radio: jest.fn(),
+  },
 }));
 
 const defaultProps = {
@@ -35,23 +33,25 @@ const defaultProps = {
     feedback: {
       correct: {
         type: 'none',
-        default: 'Correct'
+        default: 'Correct',
       },
       partial: {
         type: 'none',
-        default: 'Nearly'
+        default: 'Nearly',
       },
       incorrect: {
         type: 'none',
-        default: 'Incorrect'
-      }
+        default: 'Incorrect',
+      },
     },
     graph: {
-      lines: [{
-        label: 'Line One',
-        correctLine: '3x+2',
-        initialView: '3x+3'
-      }],
+      lines: [
+        {
+          label: 'Line One',
+          correctLine: '3x+2',
+          initialView: '3x+3',
+        },
+      ],
       graphTitle: '',
       graphWidth: 500,
       graphHeight: 500,
@@ -74,7 +74,7 @@ const defaultProps = {
       showPointLabels: true,
       showInputs: true,
       showAxisLabels: true,
-      showFeedback: true
+      showFeedback: true,
     },
   },
   configuration: defaultValues.configuration,
@@ -84,10 +84,10 @@ describe('Configure', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = props => {
+    wrapper = (props) => {
       const configureProps = { ...defaultProps, ...props };
 
-      return shallow(<Configure { ...configureProps } />);
+      return shallow(<Configure {...configureProps} />);
     };
   });
 
@@ -119,23 +119,25 @@ describe('Configure', () => {
       model: {
         ...defaultProps.model,
         graph: {
-          lines: [{
-            from: { x: 0, y: 0 },
-            to: { x: 1, y: 1 },
-          }, {
-            from: { x: -2, y: -2 },
-            to: { x: 3, y: 4 },
-          }]
-
-        }
-      }
+          lines: [
+            {
+              from: { x: 0, y: 0 },
+              to: { x: 1, y: 1 },
+            },
+            {
+              from: { x: -2, y: -2 },
+              to: { x: 3, y: 4 },
+            },
+          ],
+        },
+      },
     });
 
     component.instance().onMultipleToggle({ target: { checked: false } });
 
     expect(onModelChanged).toBeCalledWith({
       ...defaultProps.model,
-      graph: { lines: [{ 'from': { 'x': 0, 'y': 0 }, 'to': { 'x': 1, 'y': 1 } }] },
+      graph: { lines: [{ from: { x: 0, y: 0 }, to: { x: 1, y: 1 } }] },
     });
   });
 
@@ -145,21 +147,26 @@ describe('Configure', () => {
 
     component.instance().onAddLine();
 
-    expect(onModelChanged).toBeCalledWith(expect.objectContaining({
-      ...defaultProps.model,
-      graph: {
-        ...defaultProps.model.graph,
-        lines: [{
-          correctLine: '3x+2',
-          initialView: '3x+3',
-          label: 'Line One' },
-          {
-            correctLine: '',
-            initialView: '',
-            label: ''
-          }]
-      },
-    }));
+    expect(onModelChanged).toBeCalledWith(
+      expect.objectContaining({
+        ...defaultProps.model,
+        graph: {
+          ...defaultProps.model.graph,
+          lines: [
+            {
+              correctLine: '3x+2',
+              initialView: '3x+3',
+              label: 'Line One',
+            },
+            {
+              correctLine: '',
+              initialView: '',
+              label: '',
+            },
+          ],
+        },
+      }),
+    );
   });
 
   it('updates rationale', () => {
@@ -168,12 +175,13 @@ describe('Configure', () => {
 
     component.instance().onRationaleChange('New Rationale');
 
-    expect(onModelChanged).toBeCalledWith(expect.objectContaining({
-      ...defaultProps.model,
-      rationale: 'New Rationale',
-    }));
+    expect(onModelChanged).toBeCalledWith(
+      expect.objectContaining({
+        ...defaultProps.model,
+        rationale: 'New Rationale',
+      }),
+    );
   });
-
 });
 
 describe('GeneralConfigBlock', () => {
@@ -191,10 +199,10 @@ describe('GeneralConfigBlock', () => {
       multiple: false,
     };
 
-    wrapper = newProps => {
+    wrapper = (newProps) => {
       const configureProps = { ...props, newProps };
 
-      return shallow(<GeneralConfigBlock { ...configureProps } />);
+      return shallow(<GeneralConfigBlock {...configureProps} />);
     };
   });
 

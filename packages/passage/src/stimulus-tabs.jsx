@@ -27,11 +27,11 @@ const styles = (/*theme*/) => ({
     padding: '6px 24px',
     borderBottom: `2px solid ${color.secondary()}`,
     width: 'fit-content',
-    marginBottom: '6px'
+    marginBottom: '6px',
   },
   buttonContainer: {
-    background: 'white'
-  }
+    background: 'white',
+  },
 });
 
 function TabContainer(props) {
@@ -75,7 +75,7 @@ class StimulusTabs extends React.Component {
     });
   };
 
-  parsedText = text => {
+  parsedText = (text) => {
     // fix imported audio content for Safari PD-1391
     const div = document.createElement('div');
     div.innerHTML = text.replace(/(<br\/>\n)/g, '<br/>');
@@ -101,29 +101,26 @@ class StimulusTabs extends React.Component {
     if (tabs && tabs.length > 1) {
       return disabledTabs ? (
         <div className="passages">
-          {tabs.map(tab =>
+          {tabs.map((tab) => (
             <div key={tab.id} className={`passage-${tab.id}`}>
-              <TabContainer multiple >
+              <TabContainer multiple>
                 <div
                   className={classNames(classes.title, 'title')}
                   dangerouslySetInnerHTML={{ __html: this.parsedText(tab.title) }}
                 />
                 <Purpose purpose="passage-text">
-                  <div
-                    className="text"
-                    key={tab.id}
-                    dangerouslySetInnerHTML={{ __html: this.parsedText(tab.text) }}
-                  />
+                  <div className="text" key={tab.id} dangerouslySetInnerHTML={{ __html: this.parsedText(tab.text) }} />
                 </Purpose>
               </TabContainer>
-            </div>)}
+            </div>
+          ))}
         </div>
       ) : (
         <div className={classes.root}>
           <Tabs
             classes={{
               root: classes.stickyTabs,
-              flexContainer: classes.buttonContainer
+              flexContainer: classes.buttonContainer,
             }}
             value={activeTab}
             onChange={this.handleChange}
@@ -134,9 +131,7 @@ class StimulusTabs extends React.Component {
                 key={tab.id}
                 label={
                   <Purpose purpose="passage-title">
-                    <span
-                      dangerouslySetInnerHTML={{ __html: this.parsedText(tab.title) }}
-                    />
+                    <span dangerouslySetInnerHTML={{ __html: this.parsedText(tab.title) }} />
                   </Purpose>
                 }
                 value={tab.id}
@@ -147,21 +142,16 @@ class StimulusTabs extends React.Component {
             activeTab === tab.id ? (
               <TabContainer multiple key={tab.id}>
                 <Purpose purpose="passage-text">
-                  <div
-                    key={tab.id}
-                    dangerouslySetInnerHTML={{ __html: this.parsedText(tab.text) }}
-                  />
+                  <div key={tab.id} dangerouslySetInnerHTML={{ __html: this.parsedText(tab.text) }} />
                 </Purpose>
               </TabContainer>
-
-            ) : null
+            ) : null,
           )}
         </div>
       );
-
     } else if (tabs && tabs[0]) {
       return (
-        <div className="passage" style={{ whiteSpace: 'break-spaces' }} >
+        <div className="passage" style={{ whiteSpace: 'break-spaces' }}>
           <TabContainer>
             <div className="text" dangerouslySetInnerHTML={{ __html: this.parsedText(tabs[0].text) }} />
           </TabContainer>
@@ -178,9 +168,9 @@ StimulusTabs.propTypes = {
       id: PropTypes.number.isRequired,
       title: PropTypes.string.isRequired,
       text: PropTypes.string.isRequired,
-    }).isRequired
+    }).isRequired,
   ).isRequired,
-  disabledTabs: PropTypes.bool
+  disabledTabs: PropTypes.bool,
 };
 
 export default withStyles(styles)(StimulusTabs);

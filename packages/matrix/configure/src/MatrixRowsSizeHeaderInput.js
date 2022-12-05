@@ -2,13 +2,8 @@ import React from 'react';
 import AddIcon from '@material-ui/icons/Add';
 import RemoveIcon from '@material-ui/icons/Remove';
 
-import {
-  ColumnsHeader,
-  ColumnsWrapper,
-  IconWrapper,
-  NumberInputFormGroupWrapper,
-} from './HeaderCommon';
-import {MATRIX_LABEL_TYPE} from './matrixEntities';
+import { ColumnsHeader, ColumnsWrapper, IconWrapper, NumberInputFormGroupWrapper } from './HeaderCommon';
+import { MATRIX_LABEL_TYPE } from './matrixEntities';
 import PropTypes from 'prop-types';
 
 const MatrixColumnsRowInput = ({ model, onChangeModel }) => {
@@ -16,7 +11,7 @@ const MatrixColumnsRowInput = ({ model, onChangeModel }) => {
     onChangeModel({
       ...model,
       rowLabels: [...model.rowLabels, `STATEMENT ${model.rowLabels.length + 1}`],
-      labelType: MATRIX_LABEL_TYPE.custom
+      labelType: MATRIX_LABEL_TYPE.custom,
     });
   };
 
@@ -35,7 +30,7 @@ const MatrixColumnsRowInput = ({ model, onChangeModel }) => {
       ...model,
       rowLabels: rowLabelsNext,
       matrixValues: matrixValuesClone,
-      labelType: MATRIX_LABEL_TYPE.custom
+      labelType: MATRIX_LABEL_TYPE.custom,
     });
   };
 
@@ -44,11 +39,11 @@ const MatrixColumnsRowInput = ({ model, onChangeModel }) => {
       <ColumnsHeader>Matrix Rows</ColumnsHeader>
       <NumberInputFormGroupWrapper>
         <IconWrapper>
-          <RemoveIcon onClick={onDecrementSize}/>
+          <RemoveIcon onClick={onDecrementSize} />
         </IconWrapper>
         <p>{model.rowLabels.length}</p>
         <IconWrapper>
-          <AddIcon onClick={onIncrementSize}/>
+          <AddIcon onClick={onIncrementSize} />
         </IconWrapper>
       </NumberInputFormGroupWrapper>
     </ColumnsWrapper>
@@ -57,7 +52,7 @@ const MatrixColumnsRowInput = ({ model, onChangeModel }) => {
 
 MatrixColumnsRowInput.propTypes = {
   model: PropTypes.object.isRequired,
-  onChangeModel: PropTypes.func.isRequired
+  onChangeModel: PropTypes.func.isRequired,
 };
 
 export default MatrixColumnsRowInput;

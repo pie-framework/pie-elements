@@ -4,8 +4,8 @@ import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 
-import {MATRIX_LABEL_TYPE} from './matrixEntities'
-import {ColumnsWrapper, ColumnsHeader} from './HeaderCommon';
+import { MATRIX_LABEL_TYPE } from './matrixEntities';
+import { ColumnsWrapper, ColumnsHeader } from './HeaderCommon';
 import columnLabelsGenerator from './columnLabelsGenerator';
 import PropTypes from 'prop-types';
 
@@ -18,76 +18,84 @@ const MatrixLabelTypeHeaderInput = ({ model, onChangeModel }) => {
     const labelType = e.target.value;
     const modelNew = { ...model, labelType };
     if (labelType !== MATRIX_LABEL_TYPE.custom) {
-      modelNew.columnLabels = columnLabelsGenerator(labelType, model.columnLabels.length)
+      modelNew.columnLabels = columnLabelsGenerator(labelType, model.columnLabels.length);
     }
     onChangeModel(modelNew);
   };
   const isMatrixTypeSelectionEnabled = [3, 5, 7].includes(model.columnLabels.length);
   return (
     <ColumnsWrapper>
-      <ColumnsHeader>
-        Matrix Type
-      </ColumnsHeader>
+      <ColumnsHeader>Matrix Type</ColumnsHeader>
 
       <Flex>
         <RadioGroup
-          aria-label='matrixLabelType'
-          name='matrixLabelType'
+          aria-label="matrixLabelType"
+          name="matrixLabelType"
           value={model.labelType}
-          onChange={onChangeLabelType}>
+          onChange={onChangeLabelType}
+        >
           <FormControlLabel
             disabled={!isMatrixTypeSelectionEnabled}
             value={MATRIX_LABEL_TYPE.agreement}
-            control={<Radio/>} label='Agreement'/>
+            control={<Radio />}
+            label="Agreement"
+          />
           <FormControlLabel
             disabled={!isMatrixTypeSelectionEnabled}
             value={MATRIX_LABEL_TYPE.frequency}
-            control={<Radio/>}
-            label='Frequency'/>
+            control={<Radio />}
+            label="Frequency"
+          />
           <FormControlLabel
             disabled={!isMatrixTypeSelectionEnabled}
             value={MATRIX_LABEL_TYPE.yesNo}
-            control={<Radio/>}
-            label='Yes/No'/>
+            control={<Radio />}
+            label="Yes/No"
+          />
         </RadioGroup>
 
         <RadioGroup
-          aria-label='matrixLabelType'
-          name='matrixLabelType'
+          aria-label="matrixLabelType"
+          name="matrixLabelType"
           value={model.labelType}
-          onChange={onChangeLabelType}>
+          onChange={onChangeLabelType}
+        >
           <FormControlLabel
             disabled={!isMatrixTypeSelectionEnabled}
             value={MATRIX_LABEL_TYPE.importance}
-            control={<Radio/>}
-            label='Importance'/>
+            control={<Radio />}
+            label="Importance"
+          />
           <FormControlLabel
             disabled={!isMatrixTypeSelectionEnabled}
             value={MATRIX_LABEL_TYPE.likelihood}
-            control={<Radio/>}
-            label='Likelihood'/>
+            control={<Radio />}
+            label="Likelihood"
+          />
           <FormControlLabel
             disabled={!isMatrixTypeSelectionEnabled}
             value={MATRIX_LABEL_TYPE.like}
-            control={<Radio/>}
-            label='Like'/>
+            control={<Radio />}
+            label="Like"
+          />
         </RadioGroup>
 
         <RadioGroup
-          aria-label='matrixLabelType'
-          name='matrixLabelType'
+          aria-label="matrixLabelType"
+          name="matrixLabelType"
           value={model.labelType}
-          onChange={onChangeLabelType}>
-          <FormControlLabel value={MATRIX_LABEL_TYPE.custom} control={<Radio/>} label='Custom'/>
+          onChange={onChangeLabelType}
+        >
+          <FormControlLabel value={MATRIX_LABEL_TYPE.custom} control={<Radio />} label="Custom" />
         </RadioGroup>
       </Flex>
     </ColumnsWrapper>
-  )
+  );
 };
 
 MatrixLabelTypeHeaderInput.propTypes = {
   model: PropTypes.object.isRequired,
-  onChangeModel: PropTypes.func.isRequired
+  onChangeModel: PropTypes.func.isRequired,
 };
 
 export default MatrixLabelTypeHeaderInput;

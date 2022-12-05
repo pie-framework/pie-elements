@@ -2,12 +2,7 @@ import * as dataConverter from './data-converter';
 import * as pointChooser from './number-line/point-chooser';
 import * as tickUtils from './number-line/graph/tick-utils';
 
-import {
-  lineIsSwitched,
-  switchGraphLine,
-  toGraphFormat,
-  toSessionFormat
-} from './data-converter';
+import { lineIsSwitched, switchGraphLine, toGraphFormat, toSessionFormat } from './data-converter';
 
 import Graph from './number-line/graph';
 import NumberLineComponent from './number-line';
@@ -55,9 +50,9 @@ export default class NumberLine extends HTMLElement {
       new CustomEvent(type, {
         bubbles: true,
         detail: {
-          complete: this.isComplete()
-        }
-      })
+          complete: this.isComplete(),
+        },
+      }),
     );
   }
 
@@ -91,8 +86,7 @@ export default class NumberLine extends HTMLElement {
     //set the new position
     el.position = position;
 
-    let update =
-      el.type === 'line' && lineIsSwitched(el) ? switchGraphLine(el) : el;
+    let update = el.type === 'line' && lineIsSwitched(el) ? switchGraphLine(el) : el;
 
     this._session.answer.splice(index, 1, toSessionFormat(update));
 
@@ -102,7 +96,7 @@ export default class NumberLine extends HTMLElement {
 
   deleteElements(indices) {
     this._session.answer = this._session.answer.filter((v, index) => {
-      return !indices.some(d => d === index);
+      return !indices.some((d) => d === index);
     });
     this.dispatchSessionChanged();
     this._render();
@@ -141,8 +135,7 @@ export default class NumberLine extends HTMLElement {
 
         let answer = (this._session.answer || []).map(toGraphFormat);
         let model = cloneDeep(this._model);
-        model.correctResponse =
-          model.correctResponse && model.correctResponse.map(toGraphFormat);
+        model.correctResponse = model.correctResponse && model.correctResponse.map(toGraphFormat);
 
         let props = {
           model,
@@ -151,7 +144,7 @@ export default class NumberLine extends HTMLElement {
           onMoveElement: this.moveElement.bind(this),
           onDeleteElements: this.deleteElements.bind(this),
           onUndoElement: this.undoElement.bind(this),
-          onClearElements: this.clearElements.bind(this)
+          onClearElements: this.clearElements.bind(this),
         };
 
         let el = React.createElement(RootComponent, props);

@@ -137,12 +137,9 @@ export const getBestAnswer = (question, session, env = {}) => {
       bestScore: 0,
       bestScoreAnswerKey: null,
       // initially we just suppose all the answers are incorrect
-      answersCorrected: cloneDeep(sessionAnswers).map((answer) => ({
-        ...answer,
-        correctness: 'incorrect',
-      })),
+      answersCorrected: cloneDeep(sessionAnswers).map((answer) => ({ ...answer, correctness: 'incorrect' })),
       foundOneSolution: false,
-    }
+    },
   );
 };
 
@@ -151,15 +148,8 @@ export const normalize = (question) => ({ ...defaults, ...question });
 export function model(question, session, env) {
   return new Promise((resolve) => {
     const normalizedQuestion = normalize(question);
-    const {
-      defaultTool,
-      prompt,
-      promptEnabled,
-      graph,
-      answers,
-      toolbarTools,
-      ...questionProps
-    } = normalizedQuestion || {};
+    const { defaultTool, prompt, promptEnabled, graph, answers, toolbarTools, ...questionProps } =
+      normalizedQuestion || {};
     let { arrows } = normalizedQuestion;
     const { mode, role } = env || {};
 

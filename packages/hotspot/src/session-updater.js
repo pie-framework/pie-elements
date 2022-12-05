@@ -4,7 +4,7 @@ export function updateSessionValue(session, model, data) {
   session.answers = session.answers || [];
 
   if (!selected) {
-    session.answers = session.answers.filter(answer => answer.id !== id);
+    session.answers = session.answers.filter((answer) => answer.id !== id);
   } else {
     const item = { id };
     if (multipleCorrect) {

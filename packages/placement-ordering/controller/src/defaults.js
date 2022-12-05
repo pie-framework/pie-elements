@@ -17,5 +17,5 @@ export default {
   feedbackEnabled: true,
   promptEnabled: true,
   teacherInstructionsEnabled: true,
-  studentInstructionsEnabled: true
+  studentInstructionsEnabled: true,
 };

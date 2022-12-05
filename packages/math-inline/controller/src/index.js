@@ -7,9 +7,7 @@ import defaults from './defaults';
 
 import * as mv from '@pie-framework/math-validation';
 
-
 const log = debug('@pie-element:math-inline:controller');
-
 
 const getResponseCorrectness = (model, answerItem, isOutcome) => {
   const correctResponses = model.responses;
@@ -23,10 +21,7 @@ const getResponseCorrectness = (model, answerItem, isOutcome) => {
     };
   }
 
-  const isAnswerCorrect = getIsAnswerCorrect(
-    isAdvanced ? correctResponses : correctResponses.slice(0, 1),
-    answerItem
-  );
+  const isAnswerCorrect = getIsAnswerCorrect(isAdvanced ? correctResponses : correctResponses.slice(0, 1), answerItem);
 
   const correctnessObject = {
     correctness: 'incorrect',
@@ -43,15 +38,13 @@ const getResponseCorrectness = (model, answerItem, isOutcome) => {
   return correctnessObject;
 };
 
-
 function getIsAnswerCorrect(correctResponseItem, answerItem) {
   let answerCorrect = false;
 
-  (correctResponseItem || []).forEach(correctResponse => {
-
+  (correctResponseItem || []).forEach((correctResponse) => {
     let opts = {
-      mode: correctResponse.validation || defaults.validationDefault
-    }
+      mode: correctResponse.validation || defaults.validationDefault,
+    };
 
     if (opts.mode == 'literal') {
       opts.literal = {
@@ -61,27 +54,21 @@ function getIsAnswerCorrect(correctResponseItem, answerItem) {
     }
 
     if (!answerCorrect) {
-      const acceptedValues = [correctResponse.answer].concat(
-        Object.keys(correctResponse.alternates || {}).map(
-          alternateId => correctResponse.alternates[alternateId]
-        )
-      ) || [];
+      const acceptedValues =
+        [correctResponse.answer].concat(
+          Object.keys(correctResponse.alternates || {}).map((alternateId) => correctResponse.alternates[alternateId]),
+        ) || [];
 
       try {
         for (let i = 0; i < acceptedValues.length; i++) {
-          answerCorrect = mv.latexEqual(answerItem, acceptedValues[i], opts)
+          answerCorrect = mv.latexEqual(answerItem, acceptedValues[i], opts);
 
           if (answerCorrect) {
             break;
           }
         }
       } catch (e) {
-        log(
-          'Parse failure when evaluating math',
-          e,
-          correctResponse,
-          answerItem
-        );
+        log('Parse failure when evaluating math', e, correctResponse, answerItem);
 
         answerCorrect = false;
       }
@@ -98,7 +85,7 @@ const getCorrectness = (question, env, session, isOutcome) => {
       question.responseType === ResponseTypes.advanced
         ? (session && session.completeAnswer) || ''
         : session && session.response,
-      isOutcome
+      isOutcome,
     );
   }
 };
@@ -131,14 +118,14 @@ export const outcome = (question, session, env) => {
 };
 
 export const normalize = (question) => {
-
   // making sure that defaults are set
   if (!isEmpty(question.responses)) {
-    question.responses = question.responses.map(correctResponse => ({
-      ...correctResponse, validation: correctResponse.validation || question.validationDefault,
+    question.responses = question.responses.map((correctResponse) => ({
+      ...correctResponse,
+      validation: correctResponse.validation || question.validationDefault,
       allowTrailingZeros: correctResponse.allowTrailingZeros || question.allowTrailingZerosDefault,
-      ignoreOrder: correctResponse.ignoreOrder || question.ignoreOrderDefault
-    }))
+      ignoreOrder: correctResponse.ignoreOrder || question.ignoreOrderDefault,
+    }));
   }
 
   return {
@@ -149,8 +136,8 @@ export const normalize = (question) => {
     teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true,
     ...question,
-  }
-}
+  };
+};
 
 export function model(question, session, env) {
   return new Promise((resolve) => {
@@ -183,10 +170,7 @@ export function model(question, session, env) {
       let showNote = false;
 
       ((config && config.responses) || []).forEach((response) => {
-        if (
-          response.validation === 'symbolic' ||
-          Object.keys(response.alternates || {}).length > 0
-        ) {
+        if (response.validation === 'symbolic' || Object.keys(response.alternates || {}).length > 0) {
           showNote = true;
           return;
         }
@@ -200,13 +184,8 @@ export function model(question, session, env) {
         out.config.showNote = false;
       }
 
-      if (
-        env.role === 'instructor' &&
-        (env.mode === 'view' || env.mode === 'evaluate')
-      ) {
-        out.rationale = normalizedQuestion.rationaleEnabled
-          ? normalizedQuestion.rationale
-          : null;
+      if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
+        out.rationale = normalizedQuestion.rationaleEnabled ? normalizedQuestion.rationale : null;
         out.teacherInstructions = normalizedQuestion.teacherInstructionsEnabled
           ? normalizedQuestion.teacherInstructions
           : null;
@@ -218,9 +197,7 @@ export function model(question, session, env) {
       }
 
       out.config.env = env;
-      out.config.prompt = normalizedQuestion.promptEnabled
-        ? normalizedQuestion.prompt
-        : null;
+      out.config.prompt = normalizedQuestion.promptEnabled ? normalizedQuestion.prompt : null;
 
       log('out: ', out);
       resolve(out);
@@ -238,7 +215,7 @@ const simpleSessionResponse = (question) =>
     resolve({
       id,
       response: answer || '',
-      completeAnswer: answer || ''
+      completeAnswer: answer || '',
     });
   });
 
@@ -251,7 +228,7 @@ const advancedSessionResponse = (question) =>
       resolve({
         id,
         answers: {},
-        completeAnswer: ''
+        completeAnswer: '',
       });
 
       return;
@@ -273,7 +250,7 @@ const advancedSessionResponse = (question) =>
         resolve({
           id,
           answers: {},
-          completeAnswer: answer
+          completeAnswer: answer,
         });
 
         console.log(`can not find match: ${o} in ${answer}`);
@@ -292,13 +269,13 @@ const advancedSessionResponse = (question) =>
       resolve({
         id,
         answers,
-        completeAnswer: answer
+        completeAnswer: answer,
       });
     } catch (e) {
       resolve({
         id,
         answers: {},
-        completeAnswer: answer
+        completeAnswer: answer,
       });
 
       console.error(e.toString());
@@ -308,9 +285,7 @@ const advancedSessionResponse = (question) =>
 export const createCorrectResponseSession = (question, env) => {
   if (env.mode === 'evaluate' || env.role !== 'instructor') {
     // eslint-disable-next-line no-console
-    console.error(
-      'can not create correct response session if mode is evaluate or role is not instructor'
-    );
+    console.error('can not create correct response session if mode is evaluate or role is not instructor');
 
     return Promise.resolve(null);
   }
@@ -329,7 +304,7 @@ export const validate = (model = {}, config = {}) => {
 
   (responses || []).forEach((response, index) => {
     const { answer } = response;
-    const reversedAlternates = [ ...Object.entries(response.alternates || {}) ].reverse();
+    const reversedAlternates = [...Object.entries(response.alternates || {})].reverse();
     const alternatesErrors = {};
     const responseError = {};
 
@@ -341,8 +316,8 @@ export const validate = (model = {}, config = {}) => {
       if (value === '') {
         alternatesErrors[key] = 'Content should not be empty.';
       } else {
-        const identicalAnswer = answer === value ||
-          reversedAlternates.slice(index + 1).some(([ , val]) => val === value);
+        const identicalAnswer =
+          answer === value || reversedAlternates.slice(index + 1).some(([, val]) => val === value);
 
         if (identicalAnswer) {
           alternatesErrors[key] = 'Content should be unique.';

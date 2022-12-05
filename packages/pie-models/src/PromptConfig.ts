@@ -2,7 +2,6 @@
  * Shared properties of configure views for interactions that support optional prompts
  */
 export interface PromptConfig {
-
   /**
    * Determines whether prompt field will be displayed or not
    * @default true
@@ -15,5 +14,4 @@ export interface PromptConfig {
    * @TJS-examples ["Question Prompt", "Item Stem"]
    */
   promptLabel?: string;
-
 }

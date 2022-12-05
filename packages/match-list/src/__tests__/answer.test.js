@@ -7,7 +7,7 @@ describe('Answer', () => {
   const defaultProps = {
     model: model('1'),
     session: {},
-    classes: {}
+    classes: {},
   };
 
   let wrapper;

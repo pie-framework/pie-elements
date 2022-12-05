@@ -21,7 +21,7 @@ describe('ChoiceInput', () => {
           label: 'label',
         },
       },
-      opts
+      opts,
     );
 
     return shallow(<ChoiceInput {...opts} onChange={onChange} />);

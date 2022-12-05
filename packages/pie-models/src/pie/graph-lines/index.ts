@@ -1,100 +1,100 @@
-import {PromptConfig} from '../../PromptConfig';
-import {CommonConfigSettings} from '../../CommonConfigSettings';
-import {PieModel} from '../../PieModel';
+import { PromptConfig } from '../../PromptConfig';
+import { CommonConfigSettings } from '../../CommonConfigSettings';
+import { PieModel } from '../../PieModel';
 import { ComplexFeedbackType } from '../../Feedback';
 import { ConfigureProp, ConfigurePropWithEnabled } from '../ConfigurationProp';
 
 interface PartialScoringRule {
-    /** Number of correct answers */
-    numberOfCorrect: number;
+  /** Number of correct answers */
+  numberOfCorrect: number;
 
-    /** Score percentage for partial scoring */
-    scorePercentage: number;
+  /** Score percentage for partial scoring */
+  scorePercentage: number;
 }
 
 interface GraphLine {
-    /** Label for the line */
-    label: string;
+  /** Label for the line */
+  label: string;
 
-    /** Correct line equation */
-    correctLine: string;
+  /** Correct line equation */
+  correctLine: string;
 
-    /** Initial view for the line */
-    initialView: string;
+  /** Initial view for the line */
+  initialView: string;
 }
 
 interface GraphLineModelConfig {
-    /** The lines that should appear on the graph */
-    lines: GraphLine[];
+  /** The lines that should appear on the graph */
+  lines: GraphLine[];
 
-    /** Indicates the title for the graph */
-    graphTitle: string;
+  /** Indicates the title for the graph */
+  graphTitle: string;
 
-    /** Indicated the width for the graph */
-    graphWidth: number;
+  /** Indicated the width for the graph */
+  graphWidth: number;
 
-    /** Indicates the height for the graph */
-    graphHeight: number;
+  /** Indicates the height for the graph */
+  graphHeight: number;
 
-    /** Indicates the domain label for the graph */
-    domainLabel: string;
+  /** Indicates the domain label for the graph */
+  domainLabel: string;
 
-    /** Indicates the left limit (for the x axis) */
-    domainMin: number;
+  /** Indicates the left limit (for the x axis) */
+  domainMin: number;
 
-    /** Indicates the right limit (for the x axis) */
-    domainMax: number;
+  /** Indicates the right limit (for the x axis) */
+  domainMax: number;
 
-    /** Indicates step value (for the x axis) */
-    domainStepValue: number;
+  /** Indicates step value (for the x axis) */
+  domainStepValue: number;
 
-    /** Indicates snap value (for the x axis) */
-    domainSnapValue: number;
+  /** Indicates snap value (for the x axis) */
+  domainSnapValue: number;
 
-    /** Indicates domain label frequency (for the x axis) */
-    domainLabelFrequency: number;
+  /** Indicates domain label frequency (for the x axis) */
+  domainLabelFrequency: number;
 
-    /** Indicates domain graph padding (for the x axis) */
-    domainGraphPadding: number;
+  /** Indicates domain graph padding (for the x axis) */
+  domainGraphPadding: number;
 
-    /** Indicates the range label for the graph */
-    rangeLabel: string;
+  /** Indicates the range label for the graph */
+  rangeLabel: string;
 
-    /** Indicates the bottom limit (for the y axis) */
-    rangeMin: number;
+  /** Indicates the bottom limit (for the y axis) */
+  rangeMin: number;
 
-    /** Indicates the top limit (for the y axis) */
-    rangeMax: number;
+  /** Indicates the top limit (for the y axis) */
+  rangeMax: number;
 
-    /** Indicates step value (for the y axis) */
-    rangeStepValue: number;
+  /** Indicates step value (for the y axis) */
+  rangeStepValue: number;
 
-    /** Indicates snap value (for the y axis) */
-    rangeSnapValue: number;
+  /** Indicates snap value (for the y axis) */
+  rangeSnapValue: number;
 
-    /** Indicates range label frequency (for the y axis) */
-    rangeLabelFrequency: number;
+  /** Indicates range label frequency (for the y axis) */
+  rangeLabelFrequency: number;
 
-    /** Indicates range graph padding (for the y axis) */
-    rangeGraphPadding: number;
+  /** Indicates range graph padding (for the y axis) */
+  rangeGraphPadding: number;
 
-    /** */
-    sigfigs: number;
+  /** */
+  sigfigs: number;
 
-    /** Indicates if coordinates should be displayed */
-    showCoordinates: boolean;
+  /** Indicates if coordinates should be displayed */
+  showCoordinates: boolean;
 
-    /** Indicates if point labels should be displayed */
-    showPointLabels: boolean;
+  /** Indicates if point labels should be displayed */
+  showPointLabels: boolean;
 
-    /** Indicates if inputs should be displayed */
-    showInputs: boolean;
+  /** Indicates if inputs should be displayed */
+  showInputs: boolean;
 
-    /** Indicates if axis labels should be displayed */
-    showAxisLabels: boolean;
+  /** Indicates if axis labels should be displayed */
+  showAxisLabels: boolean;
 
-    /** Indicates if feedback should be displayed */
-    showFeedback: boolean;
+  /** Indicates if feedback should be displayed */
+  showFeedback: boolean;
 }
 
 /**
@@ -108,53 +108,53 @@ interface GraphLineModelConfig {
  * @additionalProperties false
  */
 export interface GraphLinesPie extends PieModel {
-    /** Feedback for student answer */
-    feedback?: ComplexFeedbackType;
+  /** Feedback for student answer */
+  feedback?: ComplexFeedbackType;
 
-    /** Indicates if the graph can have multiple lines */
-    multiple: boolean;
+  /** Indicates if the graph can have multiple lines */
+  multiple: boolean;
 
-    /** Indicates if partial scoring rules is enabled */
-    partialScoring?: boolean;
+  /** Indicates if partial scoring rules is enabled */
+  partialScoring?: boolean;
 
-    /** Indicates the graph line model */
-    graph: GraphLineModelConfig;
+  /** Indicates the graph line model */
+  graph: GraphLineModelConfig;
 
-    /** Indicates if arrows are enabled */
-    arrows?: boolean;
+  /** Indicates if arrows are enabled */
+  arrows?: boolean;
 
-    /** Indicates if padding is enabled */
-    padding?: boolean;
+  /** Indicates if padding is enabled */
+  padding?: boolean;
 
-    /** Indicates if labels are enabled */
-    labels?: boolean;
+  /** Indicates if labels are enabled */
+  labels?: boolean;
 
-    /**  Indicates prompt */
-    prompt?: string;
+  /**  Indicates prompt */
+  prompt?: string;
 
-    /**  Indicates if the prompt is enabled */
-    promptEnabled?: boolean;
+  /**  Indicates if the prompt is enabled */
+  promptEnabled?: boolean;
 
-    /** Indicates rationale for the answer */
-    rationale?: string;
+  /** Indicates rationale for the answer */
+  rationale?: string;
 
-    /** Indicates scoring type */
-    scoringType?: 'auto' | 'rubric';
+  /** Indicates scoring type */
+  scoringType?: 'auto' | 'rubric';
 
-    /** Indicates student instructions */
-    studentInstructions?: string;
+  /** Indicates student instructions */
+  studentInstructions?: string;
 
-    /** Indicates teacher instructions */
-    teacherInstructions?: string;
+  /** Indicates teacher instructions */
+  teacherInstructions?: string;
 
-    /** Indicates if Rationale are enabled */
-    rationaleEnabled: boolean;
+  /** Indicates if Rationale are enabled */
+  rationaleEnabled: boolean;
 
-    /** Indicates if Student Instructions are enabled */
-    studentInstructionsEnabled: boolean;
+  /** Indicates if Student Instructions are enabled */
+  studentInstructionsEnabled: boolean;
 
-    /** Indicates if Teacher Instructions are enabled */
-    teacherInstructionsEnabled: boolean;
+  /** Indicates if Teacher Instructions are enabled */
+  teacherInstructionsEnabled: boolean;
 }
 
 /**
@@ -162,43 +162,43 @@ export interface GraphLinesPie extends PieModel {
  * @additionalProperties false
  */
 export interface GraphLinesConfigure extends PromptConfig, CommonConfigSettings {
-    /**
-     * Arrows configuration
-     */
-    arrows?: ConfigureProp;
+  /**
+   * Arrows configuration
+   */
+  arrows?: ConfigureProp;
 
-    /**
-     * Padding configuration
-     */
-    padding?: ConfigureProp;
+  /**
+   * Padding configuration
+   */
+  padding?: ConfigureProp;
 
-    /**
-     * Graph title configuration
-     */
-    graphTitle?: ConfigurePropWithEnabled;
+  /**
+   * Graph title configuration
+   */
+  graphTitle?: ConfigurePropWithEnabled;
 
-    /**
-     * Labels configuration
-     */
-    labels?: ConfigureProp;
+  /**
+   * Labels configuration
+   */
+  labels?: ConfigureProp;
 
-    /**
-     * Rationale configuration
-     */
-    rationale?: ConfigureProp;
+  /**
+   * Rationale configuration
+   */
+  rationale?: ConfigureProp;
 
-    /**
-     * Scoring Type configuration
-     */
-    scoringType?: ConfigureProp;
+  /**
+   * Scoring Type configuration
+   */
+  scoringType?: ConfigureProp;
 
-    /**
-     * Student Instructions configuration
-     */
-    studentInstructions?: ConfigureProp;
+  /**
+   * Student Instructions configuration
+   */
+  studentInstructions?: ConfigureProp;
 
-    /**
-     * Teacher Instructions configuration
-     */
-    teacherInstructions?: ConfigureProp;
+  /**
+   * Teacher Instructions configuration
+   */
+  teacherInstructions?: ConfigureProp;
 }

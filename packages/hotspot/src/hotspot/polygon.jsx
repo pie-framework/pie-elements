@@ -14,10 +14,10 @@ class PolygonComponent extends React.Component {
   getPolygonCenter = (points) => {
     const x = points.map(({ x }) => x);
     const y = points.map(({ y }) => y);
-    const minX = Math.min.apply (null, x);
-    const maxX = Math.max.apply (null, x);
-    const minY = Math.min.apply (null, y);
-    const maxY = Math.max.apply (null, y);
+    const minX = Math.min.apply(null, x);
+    const maxX = Math.max.apply(null, x);
+    const minY = Math.min.apply(null, y);
+    const maxY = Math.max.apply(null, y);
     return [(minX + maxX) / 2, (minY + maxY) / 2];
   };
 
@@ -51,9 +51,11 @@ class PolygonComponent extends React.Component {
     document.body.style.cursor = 'default';
   };
 
-  getEvaluateOutlineColor = (isCorrect, markAsCorrect, outlineColor) => markAsCorrect ? 'green' : (isCorrect ? outlineColor : 'red')
+  getEvaluateOutlineColor = (isCorrect, markAsCorrect, outlineColor) =>
+    markAsCorrect ? 'green' : isCorrect ? outlineColor : 'red';
 
-  getOutlineWidth = (showCorrectEnabled, selected, markAsCorrect, strokeWidth) => markAsCorrect || (!markAsCorrect && !showCorrectEnabled && selected) ? strokeWidth : 0;
+  getOutlineWidth = (showCorrectEnabled, selected, markAsCorrect, strokeWidth) =>
+    markAsCorrect || (!markAsCorrect && !showCorrectEnabled && selected) ? strokeWidth : 0;
 
   render() {
     const {
@@ -68,7 +70,7 @@ class PolygonComponent extends React.Component {
       strokeWidth,
       scale,
       markAsCorrect,
-      showCorrectEnabled
+      showCorrectEnabled,
     } = this.props;
 
     const outlineColorParsed = isEvaluateMode
@@ -128,14 +130,7 @@ class PolygonComponent extends React.Component {
           onMouseLeave={this.handleMouseLeave}
           onMouseEnter={this.handleMouseEnter}
         />
-        {(isEvaluateMode && iconSrc) ? (
-          <Image
-            src={iconSrc}
-            x={iconX}
-            y={iconY}
-            tooltip={evaluateText}
-          />
-        ): null}
+        {isEvaluateMode && iconSrc ? <Image src={iconSrc} x={iconX} y={iconY} tooltip={evaluateText} /> : null}
       </Group>
     );
   }
@@ -145,7 +140,7 @@ const styles = () => ({
   base: {
     cursor: 'pointer',
     opacity: 0.5,
-    position: 'relative'
+    position: 'relative',
   },
 });
 
@@ -164,13 +159,13 @@ PolygonComponent.propTypes = {
   strokeWidth: PropTypes.number,
   scale: PropTypes.number,
   markAsCorrect: PropTypes.bool.isRequired,
-  showCorrectEnabled: PropTypes.bool.isRequired
+  showCorrectEnabled: PropTypes.bool.isRequired,
 };
 
 PolygonComponent.defaultProps = {
   evaluateText: null,
   strokeWidth: 5,
-  scale: 1
+  scale: 1,
 };
 
 export default withStyles(styles)(PolygonComponent);

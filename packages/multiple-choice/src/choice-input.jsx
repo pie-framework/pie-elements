@@ -29,8 +29,8 @@ const styleSheet = () => ({
   horizontalLayout: {
     [`& .${CLASS_NAME}`]: {
       paddingRight: '8px',
-    }
-  }
+    },
+  },
 });
 
 const formStyleSheet = {
@@ -42,9 +42,7 @@ const formStyleSheet = {
 
 export const StyledFormControlLabel = withStyles(formStyleSheet, {
   name: 'FormControlLabel',
-})((props) => (
-  <FormControlLabel {...props} classes={{ label: props.classes.label }} />
-));
+})((props) => <FormControlLabel {...props} classes={{ label: props.classes.label }} />);
 
 const colorStyle = (varName, fallback) => ({
   [`&.${CLASS_NAME}`]: {
@@ -58,10 +56,7 @@ const inputStyles = {
   'correct-disabled': colorStyle('correct-disabled-color', color.disabled()), //'grey'),
   'incorrect-root': colorStyle('incorrect-color', color.incorrect()),
   'incorrect-checked': colorStyle('incorrect-checked', color.incorrect()), //orange[500]),
-  'incorrect-disabled': colorStyle(
-    'incorrect-disabled-color',
-    color.disabled()
-  ),
+  'incorrect-disabled': colorStyle('incorrect-disabled-color', color.disabled()),
   root: {
     ...colorStyle('color', color.text()),
     '&:hover': { color: `${color.primaryLight()} !important` },
@@ -76,14 +71,7 @@ const inputStyles = {
 };
 
 export const StyledCheckbox = withStyles(inputStyles)((props) => {
-  const {
-    correctness,
-    classes,
-    checked,
-    onChange,
-    disabled,
-    accessibility,
-  } = props;
+  const { correctness, classes, checked, onChange, disabled, accessibility } = props;
   const key = (k) => (correctness ? `${correctness}-${k}` : k);
 
   const resolved = {
@@ -108,14 +96,7 @@ export const StyledCheckbox = withStyles(inputStyles)((props) => {
 });
 
 export const StyledRadio = withStyles(inputStyles)((props) => {
-  const {
-    correctness,
-    classes,
-    checked,
-    onChange,
-    disabled,
-    accessibility,
-  } = props;
+  const { correctness, classes, checked, onChange, disabled, accessibility } = props;
   const key = (k) => (correctness ? `${correctness}-${k}` : k);
 
   const resolved = {
@@ -194,7 +175,7 @@ export class ChoiceInput extends React.Component {
       accessibility,
       hideTick,
       isEvaluateMode,
-      choicesLayout
+      choicesLayout,
     } = this.props;
 
     const Tag = choiceMode === 'checkbox' ? StyledCheckbox : StyledRadio;
@@ -207,7 +188,7 @@ export class ChoiceInput extends React.Component {
     return (
       <div className={classNames(className, 'corespring-' + classSuffix, 'choice-input')}>
         <div className={classes.row}>
-          {(!hideTick && isEvaluateMode) && <FeedbackTick correctness={correctness} />}
+          {!hideTick && isEvaluateMode && <FeedbackTick correctness={correctness} />}
           <div className={classNames(holderClassNames, 'checkbox-holder')}>
             <StyledFormControlLabel
               disabled={disabled}
@@ -221,17 +202,10 @@ export class ChoiceInput extends React.Component {
                 />
               }
             />
-            <PreviewPrompt
-              className="label"
-              onClick={this.onToggleChoice}
-              prompt={label}
-              tagName="span"
-            />
+            <PreviewPrompt className="label" onClick={this.onToggleChoice} prompt={label} tagName="span" />
           </div>
         </div>
-        {rationale && (
-          <PreviewPrompt className="rationale" defaultClassName="rationale" prompt={rationale} />
-        )}
+        {rationale && <PreviewPrompt className="rationale" defaultClassName="rationale" prompt={rationale} />}
         <Feedback feedback={feedback} correctness={correctness} />
       </div>
     );

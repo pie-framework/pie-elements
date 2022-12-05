@@ -9,21 +9,21 @@ const styles = {
   icon: {
     transition: 'fill 200ms',
     '&:hover': {
-      fill: 'black'
+      fill: 'black',
     },
     cursor: 'pointer',
     verticalAlign: 'middle',
-    fill: 'grey'
+    fill: 'grey',
   },
   active: {
-    fill: 'black'
-  }
+    fill: 'black',
+  },
 };
 
 class Main extends React.Component {
   static propTypes = {
     model: PropTypes.object.isRequired,
-    classes: PropTypes.object.isRequired
+    classes: PropTypes.object.isRequired,
   };
   constructor(props) {
     super(props);
@@ -40,16 +40,10 @@ class Main extends React.Component {
     return (
       <div>
         <CalculatorIcon
-          className={
-            show ? classNames(classes.icon, classes.active) : classes.icon
-          }
+          className={show ? classNames(classes.icon, classes.active) : classes.icon}
           onClick={() => this.onToggleShow()}
         />
-        <DraggableCalculator
-          mode={mode}
-          show={show}
-          onClose={this.onClickClose}
-        />
+        <DraggableCalculator mode={mode} show={show} onClose={this.onClickClose} />
       </div>
     );
   }

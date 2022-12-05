@@ -7,21 +7,23 @@ import { partialScoring } from '@pie-lib/controller-utils';
 
 const log = debug('@pie-element:graphing:controller');
 
-const lowerCase = string => (string || '').toLowerCase();
+const lowerCase = (string) => (string || '').toLowerCase();
 
 export const checkLabelsEquality = (givenAnswerLabel, correctAnswerLabel) =>
   lowerCase(givenAnswerLabel) === lowerCase(correctAnswerLabel);
 
-export const setCorrectness = (answers, partialScoring) => answers ? answers.map(answer => ({
-  ...answer,
-  correctness: {
-    value: partialScoring ? 'incorrect' : 'correct',
-    label: partialScoring ? 'incorrect' : 'correct'
-  }
-})) : [];
+export const setCorrectness = (answers, partialScoring) =>
+  answers
+    ? answers.map((answer) => ({
+        ...answer,
+        correctness: {
+          value: partialScoring ? 'incorrect' : 'correct',
+          label: partialScoring ? 'incorrect' : 'correct',
+        },
+      }))
+    : [];
 
-
-export const normalize = question => ({
+export const normalize = (question) => ({
   addCategoryEnabled: true,
   promptEnabled: true,
   rationaleEnabled: true,
@@ -35,7 +37,7 @@ export const getScore = (question, session, env = {}) => {
 
   const isPartialScoring = partialScoring.enabled(
     { partialScoring: scoringType !== undefined ? scoringType === 'partial scoring' : scoringType },
-    env
+    env,
   );
 
   const { data: correctAnswers = [] } = correctAnswer || {};
@@ -131,21 +133,21 @@ export const getScore = (question, session, env = {}) => {
     } else {
       answers = [
         ...answers.slice(0, correctAnswers.length),
-        ...setCorrectness(answers.slice(correctAnswers.length), true)
+        ...setCorrectness(answers.slice(correctAnswers.length), true),
       ];
     }
   }
 
   return {
     score: parseFloat(result.toFixed(2)),
-    answers
+    answers,
   };
 };
 
-export const filterCategories = (categories) => categories ? categories.map(({deletable, ...rest}) => rest) : [];
+export const filterCategories = (categories) => (categories ? categories.map(({ deletable, ...rest }) => rest) : []);
 
 export function model(question, session, env) {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     const normalizedQuestion = normalize(question);
     const {
       addCategoryEnabled,
@@ -163,7 +165,7 @@ export function model(question, session, env) {
       teacherInstructions,
       teacherInstructionsEnabled,
       correctAnswer,
-      scoringType
+      scoringType,
     } = normalizedQuestion;
 
     const correctInfo = { correctness: 'incorrect', score: '0%' };
@@ -182,13 +184,13 @@ export function model(question, session, env) {
       size: graph,
       correctness: correctInfo,
       disabled: env.mode !== 'gather',
-      scoringType
+      scoringType,
     };
 
     const answers = filterCategories(getScore(normalizedQuestion, session, env).answers);
 
     if (env.mode === 'view') {
-      base.correctedAnswer = answers.map(({correctness, ...rest}) => {
+      base.correctedAnswer = answers.map(({ correctness, ...rest }) => {
         return { ...rest, interactive: false };
       });
 
@@ -215,16 +217,16 @@ export function model(question, session, env) {
 }
 
 export function outcome(model, session, env) {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     resolve({
       score: getScore(model, session, env).score,
-      empty: !session || isEmpty(session)
+      empty: !session || isEmpty(session),
     });
   });
 }
 
 export const createCorrectResponseSession = (question, env) => {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     if (env.mode !== 'evaluate' && env.role === 'instructor') {
       const { correctAnswer } = question;
 
@@ -232,19 +234,19 @@ export const createCorrectResponseSession = (question, env) => {
 
       // for IBX preview mode
       if (env.mode === 'gather') {
-        const {data} = question;
+        const { data } = question;
 
-        answers = (correctAnswer && correctAnswer.data || []).map((answer, index) => {
+        answers = ((correctAnswer && correctAnswer.data) || []).map((answer, index) => {
           return {
             ...data[index],
-            ...answer
+            ...answer,
           };
         });
       }
 
       resolve({
         answer: answers,
-        id: '1'
+        id: '1',
       });
     } else {
       return resolve(null);
@@ -267,7 +269,7 @@ export const validate = (model = {}, config = {}) => {
     if (label === '' || label === '<div></div>') {
       categoryErrors[index] = 'Content should not be empty.';
     } else {
-      const identicalAnswer = categories.slice(index + 1).some(c => c.label === label);
+      const identicalAnswer = categories.slice(index + 1).some((c) => c.label === label);
 
       if (identicalAnswer) {
         categoryErrors[index + 1] = 'Content should be unique.';
@@ -277,7 +279,12 @@ export const validate = (model = {}, config = {}) => {
 
   if (categories.length < 1 || categories.length > 20) {
     correctAnswerErrors.categoriesError = 'The correct answer should include between 1 and 20 categories.';
-  } else if (isEqual(data.map(category => pick(category, 'value', 'label')), correctData.map(category => pick(category, 'value', 'label')))) {
+  } else if (
+    isEqual(
+      data.map((category) => pick(category, 'value', 'label')),
+      correctData.map((category) => pick(category, 'value', 'label')),
+    )
+  ) {
     correctAnswerErrors.identicalError = 'Correct answer should not be identical to the chart’s initial state';
   }
 

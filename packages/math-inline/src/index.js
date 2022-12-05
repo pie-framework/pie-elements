@@ -4,10 +4,7 @@ import Main from './main';
 import debug from 'debug';
 import _ from 'lodash';
 
-import {
-  ModelSetEvent,
-  SessionChangedEvent,
-} from '@pie-framework/pie-player-events';
+import { ModelSetEvent, SessionChangedEvent } from '@pie-framework/pie-player-events';
 import defaults from '../configure/lib/defaults';
 
 const log = debug('pie-ui:math-inline');
@@ -44,7 +41,7 @@ export default class MathInline extends HTMLElement {
   }
 
   sessionChanged(s) {
-    Object.keys(s).map(key => {
+    Object.keys(s).map((key) => {
       this._session[key] = s[key];
     });
 

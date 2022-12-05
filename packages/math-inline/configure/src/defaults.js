@@ -27,8 +27,7 @@ export default {
     equationEditor: '8',
     expression: '',
     rationale: 'Rationale goes here.',
-    note:
-      'The answer shown above is the primary correct answer specified by the author for this item, but other answers may also be recognized as correct.',
+    note: 'The answer shown above is the primary correct answer specified by the author for this item, but other answers may also be recognized as correct.',
     prompt: '',
     responses: [],
     customKeys: [],
@@ -62,8 +61,8 @@ export default {
     },
     spellCheck: {
       label: 'Spellcheck',
-      settings:false,
-      enabled:true
+      settings: false,
+      enabled: true,
     },
     scoringType: {
       settings: false,
@@ -89,7 +88,7 @@ export default {
     allowTrailingZeros: {
       settings: false,
       label: 'Allow Trailing Zeros',
-      enabled: true
+      enabled: true,
     },
     maxImageWidth: {
       teacherInstructions: 300,
@@ -103,7 +102,7 @@ export default {
     },
     withRubric: {
       settings: false,
-      label: 'Add Rubric'
-    }
+      label: 'Add Rubric',
+    },
   },
 };

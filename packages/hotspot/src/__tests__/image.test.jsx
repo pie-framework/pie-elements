@@ -17,9 +17,9 @@ describe('Image', () => {
         x: 5,
         y: 5,
         src: '',
-        tooltip: null
+        tooltip: null,
       },
-      opts
+      opts,
     );
 
     return shallow(<Image {...opts} />);

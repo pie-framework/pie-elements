@@ -300,6 +300,7 @@ const styles = () => ({
   stage: {
     left: 0,
     position: 'absolute',
+    touchAction: 'none',
     top: 0
   },
   active: {

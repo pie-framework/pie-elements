@@ -1,12 +1,12 @@
-import {isComplete} from '../index';
+import { isComplete } from '../index';
 
 describe('isComplete', () => {
   it('returns true if value is populated', () => {
-    expect(isComplete({value: {'0-0': 1}})).toEqual(true);
+    expect(isComplete({ value: { '0-0': 1 } })).toEqual(true);
   });
 
   it('returns false if value is empty object', () => {
-    expect(isComplete({value: {}})).toEqual(false);
+    expect(isComplete({ value: {} })).toEqual(false);
   });
 
   it('returns false if session is empty', () => {

@@ -5,7 +5,7 @@ import {
   DeleteImageEvent,
   InsertImageEvent,
   InsertSoundEvent,
-  DeleteSoundEvent
+  DeleteSoundEvent,
 } from '@pie-framework/pie-configure-events';
 
 import Main from './main';
@@ -15,7 +15,7 @@ import defaults from './defaults';
 export default class CategorizeConfigure extends HTMLElement {
   static createDefaultModel = (model = {}) => ({
     ...defaults.model,
-    ...model
+    ...model,
   });
 
   constructor() {
@@ -76,12 +76,12 @@ export default class CategorizeConfigure extends HTMLElement {
       onConfigurationChanged: this.onConfigurationChanged.bind(this),
       imageSupport: {
         add: this.insertImage.bind(this),
-        delete: this.onDeleteImage.bind(this)
+        delete: this.onDeleteImage.bind(this),
       },
       uploadSoundSupport: {
         add: this.insertSound.bind(this),
-        delete: this.onDeleteSound.bind(this)
-      }
+        delete: this.onDeleteSound.bind(this),
+      },
     });
     ReactDOM.render(el, this);
   }
