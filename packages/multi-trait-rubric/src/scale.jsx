@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {withStyles} from '@material-ui/core/styles';
-import {color} from '@pie-lib/render-ui';
+import { withStyles } from '@material-ui/core/styles';
+import { color } from '@pie-lib/render-ui';
 import Trait from './trait';
-
 
 const styles = () => ({
   table: {
@@ -16,14 +15,14 @@ const styles = () => ({
 
     '& ul, ol': {
       marginBlockStart: 0,
-      paddingInlineStart: '16px'
+      paddingInlineStart: '16px',
     },
 
     '& th': {
       padding: '16px',
       textAlign: 'left',
       backgroundColor: color.secondaryBackground(),
-      verticalAlign: 'bottom'
+      verticalAlign: 'bottom',
     },
 
     '& th div': {
@@ -33,29 +32,29 @@ const styles = () => ({
     '& td': {
       width: '200px',
       padding: '16px 8px',
-      verticalAlign: 'top'
-    }
+      verticalAlign: 'top',
+    },
   },
   scorePointHeader: {
     '& td': {
       border: 0,
       padding: 0,
       textAlign: 'center',
-      minWidth: '200px'
-    }
+      minWidth: '200px',
+    },
   },
   pointLabel: {
-    marginBottom: '4px'
+    marginBottom: '4px',
   },
   scorePointValue: {
     fontWeight: 'normal',
-  }
+  },
 });
 
 class Scale extends React.Component {
   render() {
-    const {classes, scale, scaleIndex, showDescription, showPointsLabels, showStandards} = this.props;
-    const {excludeZero, maxPoints, traitLabel, traits, scorePointsLabels} = scale || {};
+    const { classes, scale, scaleIndex, showDescription, showPointsLabels, showStandards } = this.props;
+    const { excludeZero, maxPoints, traitLabel, traits, scorePointsLabels } = scale || {};
 
     let scorePointsValues = [];
     let descriptions;
@@ -67,7 +66,7 @@ class Scale extends React.Component {
         scorePointsValues.push(pointValue);
       }
 
-      const {traitStandards, traitDescriptions} = traits.reduce(
+      const { traitStandards, traitDescriptions } = traits.reduce(
         (tcc, trait) => ({
           traitStandards: [...tcc.traitStandards, ...(trait.standards || [])],
           traitDescriptions: [...tcc.traitDescriptions, ...(trait.description || [])],
@@ -75,7 +74,7 @@ class Scale extends React.Component {
         {
           traitStandards: [],
           traitDescriptions: [],
-        }
+        },
       );
 
       descriptions = showDescription && traitDescriptions.length;
@@ -88,82 +87,77 @@ class Scale extends React.Component {
     }
 
     return (
-      <table
-        key={`scale-${scaleIndex}`}
-        className={classes.table}
-      >
+      <table key={`scale-${scaleIndex}`} className={classes.table}>
         <thead>
-        <tr>
-          <th>
-            <div dangerouslySetInnerHTML={{__html: traitLabel}}/>
-          </th>
+          <tr>
+            <th>
+              <div dangerouslySetInnerHTML={{ __html: traitLabel }} />
+            </th>
 
-          {standards ? <th>
-            <div>Standard(s)</div>
-          </th> : null}
+            {standards ? (
+              <th>
+                <div>Standard(s)</div>
+              </th>
+            ) : null}
 
-          {descriptions ? <th>
-            <div>Description</div>
-          </th> : null}
+            {descriptions ? (
+              <th>
+                <div>Description</div>
+              </th>
+            ) : null}
 
-          {
-            scorePointsValues && scorePointsValues.map((scorePointValue, index) => {
-              let pointLabel = '';
+            {scorePointsValues &&
+              scorePointsValues.map((scorePointValue, index) => {
+                let pointLabel = '';
 
-              // to handle the case when there aren't enough labels
-              try {
-                pointLabel = scorePointsLabels[scorePointsValues.length - index - 1] || '';
-              } catch (e) {
-                pointLabel = '';
-              }
+                // to handle the case when there aren't enough labels
+                try {
+                  pointLabel = scorePointsLabels[scorePointsValues.length - index - 1] || '';
+                } catch (e) {
+                  pointLabel = '';
+                }
 
-              return (
-                <th key={`table-header-${index}`}>
-                  <table className={classes.scorePointHeader}>
-                    <thead>
-                    {pointsLabels
-                      ? (
+                return (
+                  <th key={`table-header-${index}`}>
+                    <table className={classes.scorePointHeader}>
+                      <thead>
+                        {pointsLabels ? (
+                          <tr>
+                            <td>
+                              <div className={classes.pointLabel} dangerouslySetInnerHTML={{ __html: pointLabel }} />
+                            </td>
+                          </tr>
+                        ) : null}
                         <tr>
-                          <td>
-                            <div className={classes.pointLabel} dangerouslySetInnerHTML={{__html: pointLabel}}/>
+                          <td className={classes.scorePointValue}>
+                            {scorePointValue === 1 ? `${scorePointValue} point` : `${scorePointValue} points`}
                           </td>
                         </tr>
-                      )
-                      : null
-                    }
-                    <tr>
-                      <td className={classes.scorePointValue}>
-                        {scorePointValue === 1 ? `${scorePointValue} point` : `${scorePointValue} points`}
-                      </td>
-                    </tr>
-                    </thead>
-                  </table>
-                </th>
-              );
-            })
-          }
-
-        </tr>
+                      </thead>
+                    </table>
+                  </th>
+                );
+              })}
+          </tr>
         </thead>
 
         <tbody>
-        {
-          traits && traits.map((trait, traitIndex) => (
-            <Trait
-              key={`trait_${scaleIndex}_${traitIndex}`}
-              trait={trait}
-              traitIndex={traitIndex}
-              showDescription={!!descriptions}
-              showStandards={!!standards}
-              scaleIndex={scaleIndex}
-              scorePointsValues={scorePointsValues}
-              excludeZero={excludeZero}
-            />
-          ))
-        }
+          {traits &&
+            traits.map((trait, traitIndex) => (
+              <Trait
+                key={`trait_${scaleIndex}_${traitIndex}`}
+                trait={trait}
+                traitIndex={traitIndex}
+                showDescription={!!descriptions}
+                showStandards={!!standards}
+                scaleIndex={scaleIndex}
+                scorePointsValues={scorePointsValues}
+                excludeZero={excludeZero}
+              />
+            ))}
         </tbody>
       </table>
-    )
+    );
   }
 }
 
@@ -175,12 +169,14 @@ Scale.propTypes = {
     maxPoints: PropTypes.number,
     scorePointsLabels: PropTypes.arrayOf(PropTypes.string),
     traitLabel: PropTypes.string,
-    traits: PropTypes.arrayOf(PropTypes.shape({
-      name: PropTypes.string,
-      standards: PropTypes.arrayOf(PropTypes.string),
-      scorePointsDescriptors: PropTypes.arrayOf(PropTypes.string),
-      description: PropTypes.string,
-    }))
+    traits: PropTypes.arrayOf(
+      PropTypes.shape({
+        name: PropTypes.string,
+        standards: PropTypes.arrayOf(PropTypes.string),
+        scorePointsDescriptors: PropTypes.arrayOf(PropTypes.string),
+        description: PropTypes.string,
+      }),
+    ),
   }),
   showPointsLabels: PropTypes.bool,
   showDescription: PropTypes.bool,

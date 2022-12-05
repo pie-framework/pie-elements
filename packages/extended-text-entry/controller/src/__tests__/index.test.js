@@ -6,12 +6,12 @@ const defaults = {
   prompt: 'Prompt',
   dimensions: {
     width: '150',
-    height: '150'
+    height: '150',
   },
-  teacherInstructions: 'Teacher Instructions'
+  teacherInstructions: 'Teacher Instructions',
 };
-const q = extras => ({ ...defaults, ...extras });
-const s = extras => ({ ...extras });
+const q = (extras) => ({ ...defaults, ...extras });
+const s = (extras) => ({ ...extras });
 const e = (mode = 'gather') => ({ mode });
 describe('controller', () => {
   const assert = (label, question, session, env, expected) => {
@@ -37,7 +37,7 @@ describe('controller', () => {
       assert('none for gather', question, session, env, { feedback: undefined });
       assert('none for view', question, session, e('view'), { feedback: undefined });
       assert('some for evaluate', q({ feedbackEnabled: true }), session, e('evaluate'), {
-        feedback: q().feedback.default
+        feedback: q().feedback.default,
       });
     });
     it('gather mode, promptEnabled: true', async () => {
@@ -49,10 +49,10 @@ describe('controller', () => {
         disabled: false,
         feedback: undefined,
         teacherInstructions: null,
-        spellCheckEnabled:true,
+        spellCheckEnabled: true,
         mathInput: defaults.mathInput,
-        playersToolbarPosition: "bottom",
-        equationEditor: 'miscellaneous'
+        playersToolbarPosition: 'bottom',
+        equationEditor: 'miscellaneous',
       });
     });
     it('gather mode, promptEnabled: false', async () => {
@@ -65,9 +65,9 @@ describe('controller', () => {
         feedback: undefined,
         teacherInstructions: null,
         mathInput: defaults.mathInput,
-        spellCheckEnabled:true,
-        playersToolbarPosition: "bottom",
-        equationEditor: 'miscellaneous'
+        spellCheckEnabled: true,
+        playersToolbarPosition: 'bottom',
+        equationEditor: 'miscellaneous',
       });
     });
     it('view mode, student role', async () => {
@@ -79,10 +79,10 @@ describe('controller', () => {
         disabled: true,
         feedback: undefined,
         teacherInstructions: null,
-        spellCheckEnabled:true,
+        spellCheckEnabled: true,
         mathInput: defaults.mathInput,
-        playersToolbarPosition: "bottom",
-        equationEditor: 'miscellaneous'
+        playersToolbarPosition: 'bottom',
+        equationEditor: 'miscellaneous',
       });
     });
     it('view mode, instructor role, teacherInstructions enabled', async () => {
@@ -95,13 +95,16 @@ describe('controller', () => {
         feedback: undefined,
         teacherInstructions: defaults.teacherInstructions,
         mathInput: defaults.mathInput,
-        spellCheckEnabled:true,
-        playersToolbarPosition: "bottom",
-        equationEditor: 'miscellaneous'
+        spellCheckEnabled: true,
+        playersToolbarPosition: 'bottom',
+        equationEditor: 'miscellaneous',
       });
     });
     it('view mode, instructor role, teacherInstructions disabled', async () => {
-      const result = await model(q({ teacherInstructionsEnabled: false }), session, { mode: 'view', role: 'instructor' });
+      const result = await model(q({ teacherInstructionsEnabled: false }), session, {
+        mode: 'view',
+        role: 'instructor',
+      });
       expect(result).toEqual({
         customKeys: [],
         prompt: defaults.prompt,
@@ -110,9 +113,9 @@ describe('controller', () => {
         feedback: undefined,
         teacherInstructions: null,
         mathInput: defaults.mathInput,
-        spellCheckEnabled:true,
-        playersToolbarPosition: "bottom",
-        equationEditor: 'miscellaneous'
+        spellCheckEnabled: true,
+        playersToolbarPosition: 'bottom',
+        equationEditor: 'miscellaneous',
       });
     });
     it('evaluate mode, student role', async () => {
@@ -125,8 +128,8 @@ describe('controller', () => {
         feedback: 'this is default feedback',
         teacherInstructions: null,
         mathInput: defaults.mathInput,
-        spellCheckEnabled:true,
-        playersToolbarPosition: "bottom",
+        spellCheckEnabled: true,
+        playersToolbarPosition: 'bottom',
         equationEditor: 'miscellaneous',
       });
     });
@@ -138,26 +141,29 @@ describe('controller', () => {
         dimensions: defaults.dimensions,
         disabled: true,
         feedback: 'this is default feedback',
-        spellCheckEnabled:true,
+        spellCheckEnabled: true,
         teacherInstructions: defaults.teacherInstructions,
         mathInput: defaults.mathInput,
-        playersToolbarPosition: "bottom",
-        equationEditor: 'miscellaneous'
+        playersToolbarPosition: 'bottom',
+        equationEditor: 'miscellaneous',
       });
     });
     it('evaluate mode, instructor role, teacherInstructions disabled', async () => {
-      const result = await model(q({ teacherInstructionsEnabled: false }), session, { mode: 'evaluate', role: 'instructor' });
+      const result = await model(q({ teacherInstructionsEnabled: false }), session, {
+        mode: 'evaluate',
+        role: 'instructor',
+      });
       expect(result).toEqual({
         customKeys: [],
         prompt: defaults.prompt,
         dimensions: defaults.dimensions,
         disabled: true,
         feedback: 'this is default feedback',
-        spellCheckEnabled:true,
+        spellCheckEnabled: true,
         teacherInstructions: null,
         mathInput: defaults.mathInput,
-        playersToolbarPosition: "bottom",
-        equationEditor: 'miscellaneous'
+        playersToolbarPosition: 'bottom',
+        equationEditor: 'miscellaneous',
       });
     });
   });

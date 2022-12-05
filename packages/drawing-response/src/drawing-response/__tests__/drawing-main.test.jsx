@@ -1,5 +1,5 @@
 import React from 'react';
-import {shallow} from 'enzyme';
+import { shallow } from 'enzyme';
 import cloneDeep from 'lodash/cloneDeep';
 import FreePathDrawable from '../drawable-free-path';
 import LineDrawable from '../drawable-line';
@@ -7,7 +7,7 @@ import RectangleDrawable from '../drawable-rectangle';
 import CircleDrawable from '../drawable-circle';
 import EraserDrawable from '../drawable-eraser';
 import DrawableText from '../drawable-text';
-import {DrawableMain} from '../drawable-main';
+import { DrawableMain } from '../drawable-main';
 
 const drawableClasses = {
   FreePathDrawable,
@@ -15,7 +15,7 @@ const drawableClasses = {
   RectangleDrawable,
   CircleDrawable,
   EraserDrawable,
-  DrawableText
+  DrawableText,
 };
 
 describe('DrawingResponse', () => {
@@ -46,19 +46,19 @@ describe('DrawingResponse', () => {
         onSessionChange,
         imageDimensions: {},
         imageUrl: 'url',
-        drawableDimensions: {height: 350, width: 353},
+        drawableDimensions: { height: 350, width: 353 },
         fillColor: 'white',
         outlineColor: 'black',
         paintColor: 'red',
         session: {},
-        toolActive: {type: 'Select', label: 'Select', icon: 'mdiCursorDefault'},
-        TextEntry
+        toolActive: { type: 'Select', label: 'Select', icon: 'mdiCursorDefault' },
+        TextEntry,
       };
-      const props = {...defaults, ...extras};
+      const props = { ...defaults, ...extras };
       return shallow(<DrawableMain {...props} />, {
-        ...renderOpts
+        ...renderOpts,
       });
-    }
+    };
 
     describe('snapshot', () => {
       it('renders', () => {
@@ -67,7 +67,7 @@ describe('DrawingResponse', () => {
       });
 
       it('renders disabled', () => {
-        const w = wrapperMain({disabled: true});
+        const w = wrapperMain({ disabled: true });
         expect(w).toMatchSnapshot();
       });
     });
@@ -90,7 +90,7 @@ describe('DrawingResponse', () => {
       it('handleUndo', () => {
         const w = wrapperMain();
 
-        w.setState({drawables: [new RectangleDrawable(props), new RectangleDrawable(props)]});
+        w.setState({ drawables: [new RectangleDrawable(props), new RectangleDrawable(props)] });
         w.instance().handleUndo();
 
         expect(w.state('drawables').length).toEqual(1);
@@ -103,12 +103,12 @@ describe('DrawingResponse', () => {
       it('handleClearAll', () => {
         const w = wrapperMain();
 
-        w.setState({drawables: [new RectangleDrawable(props), new RectangleDrawable(props)]});
+        w.setState({ drawables: [new RectangleDrawable(props), new RectangleDrawable(props)] });
         w.instance().handleClearAll();
 
         expect(w.state('drawables')).toEqual([]);
       });
-    })
+    });
   });
 
   describe('CircleDrawable', () => {
@@ -154,8 +154,8 @@ describe('DrawingResponse', () => {
         const event = {
           target: {
             getX: jest.fn().mockReturnValue(300),
-            getY: jest.fn().mockReturnValue(300)
-          }
+            getY: jest.fn().mockReturnValue(300),
+          },
         };
 
         element.handleDragEnd(props, event);
@@ -170,8 +170,8 @@ describe('DrawingResponse', () => {
         const event = {
           target: {
             getX: jest.fn().mockReturnValue(300),
-            getY: jest.fn().mockReturnValue(300)
-          }
+            getY: jest.fn().mockReturnValue(300),
+          },
         };
 
         element.handleDragEnd(props, event);
@@ -220,8 +220,8 @@ describe('DrawingResponse', () => {
         const event = {
           target: {
             getX: jest.fn().mockReturnValue(300),
-            getY: jest.fn().mockReturnValue(300)
-          }
+            getY: jest.fn().mockReturnValue(300),
+          },
         };
 
         element.handleDragEnd(props, event);
@@ -236,8 +236,8 @@ describe('DrawingResponse', () => {
         const event = {
           target: {
             getX: jest.fn().mockReturnValue(300),
-            getY: jest.fn().mockReturnValue(300)
-          }
+            getY: jest.fn().mockReturnValue(300),
+          },
         };
 
         element.handleDragEnd(props, event);
@@ -293,8 +293,8 @@ describe('DrawingResponse', () => {
         const event = {
           target: {
             getX: jest.fn().mockReturnValue(300),
-            getY: jest.fn().mockReturnValue(300)
-          }
+            getY: jest.fn().mockReturnValue(300),
+          },
         };
 
         element.handleDragEnd(props, event);
@@ -309,8 +309,8 @@ describe('DrawingResponse', () => {
         const event = {
           target: {
             getX: jest.fn().mockReturnValue(300),
-            getY: jest.fn().mockReturnValue(300)
-          }
+            getY: jest.fn().mockReturnValue(300),
+          },
         };
 
         element.handleDragEnd(props, event);
@@ -366,8 +366,8 @@ describe('DrawingResponse', () => {
         const event = {
           target: {
             getX: jest.fn().mockReturnValue(300),
-            getY: jest.fn().mockReturnValue(300)
-          }
+            getY: jest.fn().mockReturnValue(300),
+          },
         };
 
         element.handleDragEnd(props, event);
@@ -382,8 +382,8 @@ describe('DrawingResponse', () => {
         const event = {
           target: {
             getX: jest.fn().mockReturnValue(300),
-            getY: jest.fn().mockReturnValue(300)
-          }
+            getY: jest.fn().mockReturnValue(300),
+          },
         };
 
         element.handleDragEnd(props, event);
@@ -437,8 +437,8 @@ describe('DrawingResponse', () => {
         const event = {
           target: {
             getX: jest.fn().mockReturnValue(300),
-            getY: jest.fn().mockReturnValue(300)
-          }
+            getY: jest.fn().mockReturnValue(300),
+          },
         };
 
         element.handleDragEnd(props, event);
@@ -453,8 +453,8 @@ describe('DrawingResponse', () => {
         const event = {
           target: {
             getX: jest.fn().mockReturnValue(300),
-            getY: jest.fn().mockReturnValue(300)
-          }
+            getY: jest.fn().mockReturnValue(300),
+          },
         };
 
         element.handleDragEnd(props, event);
@@ -481,8 +481,8 @@ describe('DrawingResponse', () => {
         transformerVisible: true,
         textareaVisible: false,
         createdAt: new Date(),
-        type: 'text-entry'
-      }
+        type: 'text-entry',
+      },
     ];
     let handleSessionChange = jest.fn();
     let forceUpdate = jest.fn();
@@ -493,7 +493,7 @@ describe('DrawingResponse', () => {
     beforeEach(() => {
       stage = {
         on: jest.fn(),
-        off: jest.fn()
+        off: jest.fn(),
       };
 
       props = {
@@ -508,7 +508,7 @@ describe('DrawingResponse', () => {
         starty: 200,
         x: 300,
         y: 300,
-        scale: 1
+        scale: 1,
       };
       wrapper = mkWrapper('DrawableText', props, 'div');
     });
@@ -529,7 +529,7 @@ describe('DrawingResponse', () => {
 
     describe('snapshot when there is no value', () => {
       beforeEach(() => {
-        props.all.forEach(a => {
+        props.all.forEach((a) => {
           delete a.value;
         });
         wrapper = mkWrapper('DrawableText', props, 'div');
@@ -561,9 +561,9 @@ describe('DrawingResponse', () => {
                 textVisible: true,
                 transformerVisible: true,
                 textareaVisible: false,
-                type: 'text-entry'
-              })
-            ])
+                type: 'text-entry',
+              }),
+            ]),
           );
 
           expect(stage.on).toHaveBeenCalled();
@@ -580,9 +580,9 @@ describe('DrawingResponse', () => {
               expect.objectContaining({
                 textVisible: true,
                 transformerVisible: false,
-                textareaVisible: false
-              })
-            ])
+                textareaVisible: false,
+              }),
+            ]),
           );
         });
       });
@@ -595,8 +595,8 @@ describe('DrawingResponse', () => {
             expect.objectContaining({
               textVisible: false,
               transformerVisible: false,
-              textareaVisible: true
-            })
+              textareaVisible: true,
+            }),
           );
 
           expect(forceUpdate).toHaveBeenCalled();
@@ -607,8 +607,8 @@ describe('DrawingResponse', () => {
             expect.objectContaining({
               textVisible: true,
               transformerVisible: true,
-              textareaVisible: false
-            })
+              textareaVisible: false,
+            }),
           );
 
           expect(forceUpdate).toHaveBeenCalled();
@@ -621,8 +621,8 @@ describe('DrawingResponse', () => {
 
           expect(element.all[0]).toEqual(
             expect.objectContaining({
-              isDefault: false
-            })
+              isDefault: false,
+            }),
           );
         });
       });
@@ -630,10 +630,10 @@ describe('DrawingResponse', () => {
       describe('saveValue', () => {
         it('should make the item with the right id default and call handleSessionChange', () => {
           const textNode = {
-            text: jest.fn()
+            text: jest.fn(),
           };
           const textareaNode = {
-            value: 'Foo bar'
+            value: 'Foo bar',
           };
 
           element.saveValue('gcifqhhimf8k2d6g8hs', textNode, textareaNode);
@@ -648,9 +648,9 @@ describe('DrawingResponse', () => {
           expect(element.all).toEqual(
             expect.not.arrayContaining([
               expect.objectContaining({
-                id: 'gcifqhhimf8k2d6g8hs'
-              })
-            ])
+                id: 'gcifqhhimf8k2d6g8hs',
+              }),
+            ]),
           );
           expect(forceUpdate).toHaveBeenCalled();
           expect(handleSessionChange).toHaveBeenCalled();
@@ -672,9 +672,9 @@ describe('DrawingResponse', () => {
           expect(element.all).toEqual(
             expect.arrayContaining([
               expect.objectContaining({
-                transformerVisible: true
-              })
-            ])
+                transformerVisible: true,
+              }),
+            ]),
           );
 
           expect(forceUpdate).toHaveBeenCalled();
@@ -683,13 +683,13 @@ describe('DrawingResponse', () => {
         it('should call the right functions onDblClick', () => {
           const text = {
             id: 'gcifqhhimf8k2d6g8hs',
-            isDefault: false
+            isDefault: false,
           };
 
           const textNode = (element[`text_${text.id}`] = {
             _lastPos: {
               x: 200,
-              y: 200
+              y: 200,
             },
             align: jest.fn().mockReturnValue('center'),
             fill: jest.fn().mockReturnValue('green'),
@@ -700,13 +700,13 @@ describe('DrawingResponse', () => {
             padding: jest.fn().mockReturnValue(0),
             rotation: jest.fn().mockReturnValue(0),
             text: jest.fn().mockReturnValue('foo bar'),
-            width: jest.fn().mockReturnValue(200)
+            width: jest.fn().mockReturnValue(200),
           });
           const textareaNode = (element[`textarea_${text.id}`] = {
             focus: jest.fn(),
             addEventListener: jest.fn(),
             style: {},
-            scrollHeight: 205
+            scrollHeight: 205,
           });
 
           const initSpy = jest.spyOn(element, 'initializeDefault');
@@ -737,23 +737,19 @@ describe('DrawingResponse', () => {
             transformOrigin: 'left top',
             textAlign: 'center',
             transform: 'translateY(-0px)',
-            width: '200px'
+            width: '200px',
           });
 
           expect(textareaNode.focus).toHaveBeenCalled();
           expect(stage.on).toHaveBeenCalled();
           expect(initSpy).toHaveBeenCalledWith('gcifqhhimf8k2d6g8hs', false);
           expect(forceUpdate).toHaveBeenCalled();
-          expect(textareaNode.addEventListener.mock.calls[0][0]).toEqual(
-            'keydown'
-          );
-          expect(textareaNode.addEventListener.mock.calls[1][0]).toEqual(
-            'blur'
-          );
+          expect(textareaNode.addEventListener.mock.calls[0][0]).toEqual('keydown');
+          expect(textareaNode.addEventListener.mock.calls[1][0]).toEqual('blur');
 
           const event = {
             keyCode: 13,
-            shiftKey: true
+            shiftKey: true,
           };
 
           textareaNode.addEventListener.mock.calls[0][1](event);
@@ -767,11 +763,7 @@ describe('DrawingResponse', () => {
           textareaNode.addEventListener.mock.calls[0][1](event);
 
           expect(toggleSpy).toHaveBeenCalledWith('gcifqhhimf8k2d6g8hs', false);
-          expect(saveValueSpy).toHaveBeenCalledWith(
-            'gcifqhhimf8k2d6g8hs',
-            textNode,
-            textareaNode
-          );
+          expect(saveValueSpy).toHaveBeenCalledWith('gcifqhhimf8k2d6g8hs', textNode, textareaNode);
 
           event.keyCode = 27;
 
@@ -786,11 +778,7 @@ describe('DrawingResponse', () => {
           stage.on.mock.calls[0][1](event);
 
           expect(showTextSpy).toHaveBeenCalled();
-          expect(saveValueSpy).toHaveBeenCalledWith(
-            'gcifqhhimf8k2d6g8hs',
-            textNode,
-            textareaNode
-          );
+          expect(saveValueSpy).toHaveBeenCalledWith('gcifqhhimf8k2d6g8hs', textNode, textareaNode);
         });
       });
 
@@ -799,14 +787,14 @@ describe('DrawingResponse', () => {
           const textNode = (element[`text_gcifqhhimf8k2d6g8hs`] = {
             setAttrs: jest.fn(),
             width: jest.fn().mockReturnValue(100),
-            scaleX: jest.fn().mockReturnValue(1)
+            scaleX: jest.fn().mockReturnValue(1),
           });
 
           element.handleTransform(null, 'text_gcifqhhimf8k2d6g8hs');
 
           expect(textNode.setAttrs).toHaveBeenCalledWith({
             width: 100,
-            scaleX: 1
+            scaleX: 1,
           });
         });
       });
@@ -825,11 +813,11 @@ describe('DrawingResponse', () => {
         it('should set the stage listener only once', () => {
           const separateStage = {
             on: jest.fn(),
-            off: jest.fn()
+            off: jest.fn(),
           };
           const newProps = {
             ...cloneDeep(props),
-            stage: separateStage
+            stage: separateStage,
           };
           const newElement = new drawableClasses['DrawableText'](newProps);
 
@@ -845,5 +833,4 @@ describe('DrawingResponse', () => {
       });
     });
   });
-})
-;
+});

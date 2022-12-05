@@ -48,7 +48,7 @@ class ComplexRubric extends HTMLElement {
         });
         break;
       case RUBRIC_TYPES.MULTI_TRAIT_RUBRIC:
-        customElements.whenDefined(MULTI_TRAIT_RUBRIC_TAG_NAME).then(() =>{
+        customElements.whenDefined(MULTI_TRAIT_RUBRIC_TAG_NAME).then(() => {
           this.setMultiTraitRubricModel(this.multiTraitRubric);
         });
         break;
@@ -65,7 +65,7 @@ class ComplexRubric extends HTMLElement {
 
       simpleRubric.model = {
         ...this._model.rubrics.simpleRubric,
-        mode
+        mode,
       };
     }
   }
@@ -76,7 +76,7 @@ class ComplexRubric extends HTMLElement {
 
       multiTraitRubric.model = {
         ...this._model.rubrics.multiTraitRubric,
-        mode
+        mode,
       };
     }
   }
@@ -96,8 +96,12 @@ class ComplexRubric extends HTMLElement {
   _render() {
     this.innerHTML = `
       <div>
-        <div style="${this._type === RUBRIC_TYPES.SIMPLE_RUBRIC ? `visibility: visible` : `visibility: hidden`}"><${RUBRIC_TAG_NAME} id="simpleRubric"></${RUBRIC_TAG_NAME}></div>
-        <div style="${this._type !== RUBRIC_TYPES.SIMPLE_RUBRIC ? `visibility: visible` : `visibility: hidden`}"> <${MULTI_TRAIT_RUBRIC_TAG_NAME} id="multiTraitRubric"></${MULTI_TRAIT_RUBRIC_TAG_NAME}></div>
+        <div style="${
+          this._type === RUBRIC_TYPES.SIMPLE_RUBRIC ? `visibility: visible` : `visibility: hidden`
+        }"><${RUBRIC_TAG_NAME} id="simpleRubric"></${RUBRIC_TAG_NAME}></div>
+        <div style="${
+          this._type !== RUBRIC_TYPES.SIMPLE_RUBRIC ? `visibility: visible` : `visibility: hidden`
+        }"> <${MULTI_TRAIT_RUBRIC_TAG_NAME} id="multiTraitRubric"></${MULTI_TRAIT_RUBRIC_TAG_NAME}></div>
       </div>
     `;
   }

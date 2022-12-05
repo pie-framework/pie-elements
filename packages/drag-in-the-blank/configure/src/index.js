@@ -3,7 +3,7 @@ import {
   DeleteImageEvent,
   InsertImageEvent,
   InsertSoundEvent,
-  DeleteSoundEvent
+  DeleteSoundEvent,
 } from '@pie-framework/pie-configure-events';
 
 import React from 'react';
@@ -13,7 +13,7 @@ import debug from 'debug';
 import defaults from 'lodash/defaults';
 
 import sensibleDefaults from './defaults';
-import { processMarkup, createSlateMarkup } from './markupUtils'
+import { processMarkup, createSlateMarkup } from './markupUtils';
 
 const log = debug('multiple-choice:configure');
 
@@ -21,17 +21,17 @@ export default class DragInTheBlank extends HTMLElement {
   static prepareModel = (model = {}) => {
     const joinedObj = {
       ...sensibleDefaults.model,
-      ...model
+      ...model,
     };
-    const slateMarkup = model.slateMarkup ||
-      createSlateMarkup(joinedObj.markup, joinedObj.choices, joinedObj.correctResponse);
+    const slateMarkup =
+      model.slateMarkup || createSlateMarkup(joinedObj.markup, joinedObj.choices, joinedObj.correctResponse);
     const processedMarkup = processMarkup(slateMarkup);
 
     return {
       ...joinedObj,
       slateMarkup,
       markup: processedMarkup.markup,
-      correctResponse: processedMarkup.correctResponse
+      correctResponse: processedMarkup.correctResponse,
     };
   };
 
@@ -46,7 +46,7 @@ export default class DragInTheBlank extends HTMLElement {
   set model(s) {
     const formModel = {
       ...s,
-      markup: `<span>${s.markup || sensibleDefaults.model.markup}</span>`
+      markup: `<span>${s.markup || sensibleDefaults.model.markup}</span>`,
     };
 
     this._model = DragInTheBlank.prepareModel(formModel);
@@ -107,12 +107,12 @@ export default class DragInTheBlank extends HTMLElement {
       disableSidePanel: this._disableSidePanel,
       imageSupport: {
         add: this.insertImage.bind(this),
-        delete: this.onDeleteImage.bind(this)
+        delete: this.onDeleteImage.bind(this),
       },
       uploadSoundSupport: {
         add: this.insertSound.bind(this),
-        delete: this.onDeleteSound.bind(this)
-      }
+        delete: this.onDeleteSound.bind(this),
+      },
     });
     ReactDOM.render(element, this);
   }

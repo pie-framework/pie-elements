@@ -1,11 +1,7 @@
 import { withStyles } from '@material-ui/core/styles';
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
-import {
-  InputContainer,
-  NumberTextField,
-  FeedbackConfig,
-} from '@pie-lib/config-ui';
+import { InputContainer, NumberTextField, FeedbackConfig } from '@pie-lib/config-ui';
 import EditableHtml from '@pie-lib/editable-html';
 import debug from 'debug';
 import Responses from './responses';
@@ -16,7 +12,7 @@ const log = debug('@pie-element:text-entry:configure');
 
 const styles = (theme) => ({
   award: {
-    width: '100%'
+    width: '100%',
   },
   inputHolder: {
     width: '100%',
@@ -26,7 +22,7 @@ const styles = (theme) => ({
   },
   input: {
     paddingTop: theme.spacing.unit * 2,
-    width: '100%'
+    width: '100%',
   },
 });
 
@@ -37,10 +33,10 @@ class Configure extends React.Component {
     imageSupport: PropTypes.object,
     onModelChanged: PropTypes.func.isRequired,
     onConfigurationChanged: PropTypes.func.isRequired,
-    classes: PropTypes.object.isRequired
+    classes: PropTypes.object.isRequired,
   };
 
-  updateResponses = name => responses => {
+  updateResponses = (name) => (responses) => {
     const { model } = this.props;
     model[name] = responses;
     log('[updateResponses]', name, 'responses: ', responses);
@@ -51,19 +47,19 @@ class Configure extends React.Component {
 
   onPartialResponsesChanged = this.updateResponses('partialResponses');
 
-  onModelConfigChange = cfg => {
+  onModelConfigChange = (cfg) => {
     const { model, onModelChanged } = this.props;
     const update = { ...model, ...cfg };
     onModelChanged(update);
   };
 
-  onFeedbackChange = feedback => {
+  onFeedbackChange = (feedback) => {
     const { model, onModelChanged } = this.props;
     model.feedback = feedback;
     onModelChanged(model);
   };
 
-  onTeacherInstructionsChange = teacherInstructions => {
+  onTeacherInstructionsChange = (teacherInstructions) => {
     const { model, onModelChanged } = this.props;
     model.teacherInstructions = teacherInstructions;
     onModelChanged(model);
@@ -87,8 +83,7 @@ class Configure extends React.Component {
     return (
       <div>
         <Typography>
-          Students will respond to a prompt (e.g., calculate, identify,
-          compute), and the answer will be evaluated.
+          Students will respond to a prompt (e.g., calculate, identify, compute), and the answer will be evaluated.
         </Typography>
 
         {teacherInstructionsEnabled && (
@@ -127,10 +122,7 @@ class Configure extends React.Component {
           </div>
         </Responses>
         <ModelConfig config={model} onChange={this.onModelConfigChange} />
-        <FeedbackConfig
-          feedback={model.feedback}
-          onChange={this.onFeedbackChange}
-        />
+        <FeedbackConfig feedback={model.feedback} onChange={this.onFeedbackChange} />
       </div>
     );
   }
@@ -144,16 +136,16 @@ class StateWrapper extends React.Component {
     configuration: PropTypes.object,
     imageSupport: PropTypes.object,
     onModelChanged: PropTypes.func.isRequired,
-    onConfigurationChanged: PropTypes.func.isRequired
+    onConfigurationChanged: PropTypes.func.isRequired,
   };
 
   constructor(props) {
     super(props);
     this.state = {
-      model: props.model
+      model: props.model,
     };
 
-    this.onModelChanged = m => {
+    this.onModelChanged = (m) => {
       this.setState({ model: m }, () => {
         this.props.onModelChanged(this.state.model);
       });
@@ -164,13 +156,15 @@ class StateWrapper extends React.Component {
     const { model } = this.state;
     const { configuration, onConfigurationChanged, imageSupport } = this.props;
 
-    return <ConfigureMain
-      model={model}
-      onModelChanged={this.onModelChanged}
-      configuration={configuration}
-      onConfigurationChanged={onConfigurationChanged}
-      imageSupport={imageSupport}
-    />;
+    return (
+      <ConfigureMain
+        model={model}
+        onModelChanged={this.onModelChanged}
+        configuration={configuration}
+        onConfigurationChanged={onConfigurationChanged}
+        imageSupport={imageSupport}
+      />
+    );
   }
 }
 

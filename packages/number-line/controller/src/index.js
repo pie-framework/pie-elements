@@ -11,17 +11,17 @@ import * as math from 'mathjs';
 
 import defaults from './defaults';
 
-const score = number => {
+const score = (number) => {
   return {
     score: {
-      scaled: number
-    }
+      scaled: number,
+    },
   };
 };
 
 const getPartialScore = (corrected, ps) => {
   const { correct } = corrected;
-  const rule = ps.find(r => r.numberOfCorrect === correct.length);
+  const rule = ps.find((r) => r.numberOfCorrect === correct.length);
 
   if (rule) {
     return 1.0 * (rule.scorePercentage / 100);
@@ -30,29 +30,26 @@ const getPartialScore = (corrected, ps) => {
   }
 };
 
-const accumulateAnswer = correctResponse => (total, answer) => {
-  const isCorrectResponse = correctResponse.some(cr => matches(cr)(answer));
+const accumulateAnswer = (correctResponse) => (total, answer) => {
+  const isCorrectResponse = correctResponse.some((cr) => matches(cr)(answer));
   return total + (isCorrectResponse ? 1 : 0);
 };
 
 /**
  */
 export function outcome(model, session, env) {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     if (!session || isEmpty(session)) {
       resolve({ score: 0, empty: true });
     } else {
       const partialScoringEnabled = partialScoring.enabled(model, env);
-      const numCorrect = (session.answer || []).reduce(
-        accumulateAnswer(model.correctResponse),
-        0
-      );
+      const numCorrect = (session.answer || []).reduce(accumulateAnswer(model.correctResponse), 0);
 
       let total = model.correctResponse.length;
       let numIncorrect = 0;
 
-      if((session.answer || []).length > total) {
-         numIncorrect = (session.answer || []).length - total;
+      if ((session.answer || []).length > total) {
+        numIncorrect = (session.answer || []).length - total;
       }
 
       if (total === 0) {
@@ -61,7 +58,7 @@ export function outcome(model, session, env) {
 
       let score = numCorrect < 0 ? 0 : (numCorrect - numIncorrect) / total;
 
-      if(score < 0) {
+      if (score < 0) {
         score = 0;
       }
 
@@ -71,16 +68,13 @@ export function outcome(model, session, env) {
 }
 
 export function getScore(question, session) {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     if (!session || isEmpty(session)) {
-      resolve({ score: { scaled: 0 } })
+      resolve({ score: { scaled: 0 } });
     } else {
       session.answer = session.answer || [];
 
-      const corrected = getCorrected(
-        session.answer,
-        cloneDeep(question.correctResponse)
-      );
+      const corrected = getCorrected(session.answer, cloneDeep(question.correctResponse));
 
       const correctness = getCorrectness(corrected);
 
@@ -90,7 +84,7 @@ export function getScore(question, session) {
         resolve(score(0.0));
       } else if (correctness === 'partial') {
         const { allowPartialScoring, partialScoring } = question;
-        const ps = (partialScoring || []).filter(o => !isEmpty(o));
+        const ps = (partialScoring || []).filter((o) => !isEmpty(o));
         const canDoPartialScoring = allowPartialScoring && ps.length > 0;
         if (canDoPartialScoring) {
           resolve(score(getPartialScore(corrected, ps)));
@@ -114,7 +108,7 @@ export const closeTo = (a, b, precision) => {
   return close;
 };
 
-const matches = a => v => {
+const matches = (a) => (v) => {
   return isEqualWith(a, v, (v, ov) => {
     if (typeof v === 'number' && typeof ov === 'number') {
       return closeTo(v, ov, CLOSE_TO_PRECISION);
@@ -128,7 +122,7 @@ export const getCorrected = (answer, correctResponse) => {
       correct: [],
       incorrect: [],
       notInAnswer: [],
-      noCorrectResponse: true
+      noCorrectResponse: true,
     };
   }
 
@@ -147,18 +141,18 @@ export const getCorrected = (answer, correctResponse) => {
       return {
         correct: correct,
         incorrect: incorrect,
-        notInAnswer: notInAnswer
+        notInAnswer: notInAnswer,
       };
     },
     {
       correct: [],
       incorrect: [],
-      notInAnswer: correctResponse
-    }
+      notInAnswer: correctResponse,
+    },
   );
 };
 
-export const getCorrectness = corrected => {
+export const getCorrectness = (corrected) => {
   const { incorrect, correct, notInAnswer, noCorrectResponse } = corrected;
 
   if (noCorrectResponse) {
@@ -189,7 +183,7 @@ export const getCorrectness = corrected => {
  * https://github.com/pie-framework/pie-elements/issues/21
  */
 export function normalize(question) {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     const feedback = merge(defaults.feedback, question.feedback);
 
     if (isEqual(feedback, question.feedback)) {
@@ -201,23 +195,23 @@ export function normalize(question) {
 }
 
 export function createDefaultModel(model = {}) {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     const out = {
       ...model,
       graph: {
         ...defaults.graph,
         ...model.graph,
       },
-      colorContrast: 'black_on_white'
+      colorContrast: 'black_on_white',
     };
 
-    resolve(omitBy(out, v => !v));
+    resolve(omitBy(out, (v) => !v));
   });
 }
 
 // this function is duplicated in configure; at some point, use the same shared function
-const updateTicks = model => {
-  const { graph: { domain, labelStep, ticks = {}} = {}} = model;
+const updateTicks = (model) => {
+  const { graph: { domain, labelStep, ticks = {} } = {} } = model;
   const { minor, major } = ticks;
 
   if (domain) {
@@ -253,9 +247,7 @@ export function model(question, session, env) {
       const evaluateMode = env.mode === 'evaluate';
 
       const correctResponse = cloneDeep(normalizedQuestion.correctResponse);
-      const corrected =
-        evaluateMode &&
-        getCorrected(session ? session.answer || [] : [], correctResponse);
+      const corrected = evaluateMode && getCorrected(session ? session.answer || [] : [], correctResponse);
       const correctness = evaluateMode && getCorrectness(corrected);
 
       const { exhibitOnly } = graph;
@@ -265,26 +257,22 @@ export function model(question, session, env) {
         ? getFeedbackForCorrectness(correctness, normalizedQuestion.feedback)
         : Promise.resolve(undefined);
 
-      fb.then(feedbackMessage => {
+      fb.then((feedbackMessage) => {
         const out = {
           prompt: normalizedQuestion.prompt,
           graph,
           disabled,
           corrected,
           correctResponse:
-            evaluateMode &&
-            ['unanswered', 'correct'].indexOf(correctness) === -1 &&
-            normalizedQuestion.correctResponse,
+            evaluateMode && ['unanswered', 'correct'].indexOf(correctness) === -1 && normalizedQuestion.correctResponse,
           feedback: feedbackMessage && {
             type: correctness,
-            message: feedbackMessage
+            message: feedbackMessage,
           },
-          colorContrast:
-            (env.accessibility && env.accessibility.colorContrast) ||
-            'black_on_white'
+          colorContrast: (env.accessibility && env.accessibility.colorContrast) || 'black_on_white',
         };
 
-        resolve(omitBy(out, v => !v));
+        resolve(omitBy(out, (v) => !v));
       });
     } else {
       reject(new Error('graph is undefined'));
@@ -293,13 +281,13 @@ export function model(question, session, env) {
 }
 
 export const createCorrectResponseSession = (question, env) => {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     if (env.mode !== 'evaluate' && env.role === 'instructor') {
       const { correctResponse: answer } = question;
 
       resolve({
         answer,
-        id: '1'
+        id: '1',
       });
     } else {
       resolve(null);

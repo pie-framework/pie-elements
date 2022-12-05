@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 
-const CardBar = props => {
+const CardBar = (props) => {
   const { classes, header, children, mini, info } = props;
   return (
     <div className={classes.cardBar}>
@@ -29,25 +29,25 @@ CardBar.propTypes = {
   classes: PropTypes.object,
   mini: PropTypes.bool,
   header: PropTypes.string,
-  children: PropTypes.node
+  children: PropTypes.node,
 };
-const styles = theme => ({
+const styles = (theme) => ({
   cardBar: {
     display: 'flex',
     justifyContent: 'space-between',
     paddingBottom: theme.spacing.unit * 2,
-    paddingTop: theme.spacing.unit * 2
+    paddingTop: theme.spacing.unit * 2,
   },
   button: {
     margin: 0,
-    padding: 0
+    padding: 0,
   },
   tooltip: {
-    fontSize: '12px'
+    fontSize: '12px',
   },
   flexContainer: {
     display: 'flex',
-    alignItems: 'center'
-  }
+    alignItems: 'center',
+  },
 });
 export default withStyles(styles)(CardBar);

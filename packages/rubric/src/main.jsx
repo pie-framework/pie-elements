@@ -50,45 +50,43 @@ class Rubric extends React.Component {
     if (value && value.points) {
       const { points, sampleAnswers } = value;
 
-      const rubricList = <List component="nav">
-        {points.slice(0).reverse().map(
-          (desc, index) => {
-            index = points.length - index - 1;
-            return this.shouldRenderPoint(index, value) && (
-              <React.Fragment key={index}>
-                <ListItem key={`P${index}`}>
-                  <ListItemText
-                    className={classes.rubricCol}
-                    primary={index === 1 ? `${index} PT` : `${index} PTS`}
-                  />
-                  <ListItemText
-                    primary={
-                      <div dangerouslySetInnerHTML={{ __html: desc }} />
-                    }
-                  />
-                </ListItem>
-                {sampleAnswers && sampleAnswers[index] && (
-                  <ListItem key={`S${index}`}>
-                    <ListItemText
-                      className={classes.rubricCol}
-                      style={{marginLeft: '20px'}}
-                      primary={'Sample Answer'}
-                    />
-                    <ListItemText
-                      primary={
-                        <div dangerouslySetInnerHTML={{ __html: sampleAnswers[index] }} />
-                      }
-                    />
-                  </ListItem>
-                )}
-              </React.Fragment>
-            )
-          })}
-      </List>;
+      const rubricList = (
+        <List component="nav">
+          {points
+            .slice(0)
+            .reverse()
+            .map((desc, index) => {
+              index = points.length - index - 1;
+              return (
+                this.shouldRenderPoint(index, value) && (
+                  <React.Fragment key={index}>
+                    <ListItem key={`P${index}`}>
+                      <ListItemText
+                        className={classes.rubricCol}
+                        primary={index === 1 ? `${index} PT` : `${index} PTS`}
+                      />
+                      <ListItemText primary={<div dangerouslySetInnerHTML={{ __html: desc }} />} />
+                    </ListItem>
+                    {sampleAnswers && sampleAnswers[index] && (
+                      <ListItem key={`S${index}`}>
+                        <ListItemText
+                          className={classes.rubricCol}
+                          style={{ marginLeft: '20px' }}
+                          primary={'Sample Answer'}
+                        />
+                        <ListItemText primary={<div dangerouslySetInnerHTML={{ __html: sampleAnswers[index] }} />} />
+                      </ListItem>
+                    )}
+                  </React.Fragment>
+                )
+              );
+            })}
+        </List>
+      );
 
       return (
         <div className={classes.root}>
-          {!animationsDisabled ?
+          {!animationsDisabled ? (
             <React.Fragment>
               <Link href={this.dudUrl} onClick={this.toggleRubric}>
                 {this.state.linkPrefix} Rubric
@@ -97,8 +95,9 @@ class Rubric extends React.Component {
                 {rubricList}
               </Collapse>
             </React.Fragment>
-            : rubricList
-          }
+          ) : (
+            rubricList
+          )}
         </div>
       );
     } else {
@@ -110,7 +109,7 @@ class Rubric extends React.Component {
 const styles = () => ({
   rubricCol: {
     flex: '0 1 auto',
-    minWidth: 'fit-content'
+    minWidth: 'fit-content',
   },
 });
 

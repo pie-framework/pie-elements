@@ -20,7 +20,7 @@ describe('Polygon', () => {
     opts = _.extend(
       {
         classes: {
-          base: 'base'
+          base: 'base',
         },
         height: 200,
         hotspotColor: 'rgba(137, 183, 244, 0.65)',
@@ -31,9 +31,13 @@ describe('Polygon', () => {
         disabled: false,
         outlineColor: 'blue',
         selected: false,
-        points: [{ x: 94, y: 4 }, { x: 89, y: 4 }, { x: 36, y: 40 }]
+        points: [
+          { x: 94, y: 4 },
+          { x: 89, y: 4 },
+          { x: 36, y: 40 },
+        ],
       },
-      opts
+      opts,
     );
 
     return shallow(<Polygon {...opts} onClick={onClick} />);
@@ -64,7 +68,6 @@ describe('Polygon', () => {
       });
     });
 
-
     describe('hotspot color', () => {
       it('renders', () => {
         const wrapper = mkWrapper({ hotspotColor: 'rgba(217, 30, 24, 0.65)' });
@@ -92,29 +95,37 @@ describe('Polygon', () => {
       outlineColor: 'blue',
       strokeWidth: 5,
       selected: false,
-      points: [{ x: 94, y: 4 }, { x: 89, y: 4 }, { x: 36, y: 40 }],
+      points: [
+        { x: 94, y: 4 },
+        { x: 89, y: 4 },
+        { x: 36, y: 40 },
+      ],
       markAsCorrect: false,
       showCorrectEnabled: false,
-      onClick
+      onClick,
     };
 
     const getComponents = (model) => {
-      const testWrapper = shallowChild(Polygon, {
-        ...defaultModel,
-        ...model
-      }, 1);
+      const testWrapper = shallowChild(
+        Polygon,
+        {
+          ...defaultModel,
+          ...model,
+        },
+        1,
+      );
       const polygonComponent = testWrapper();
       const lineComponent = polygonComponent.find(Line);
       return {
         polygonComponent,
-        lineComponent
+        lineComponent,
       };
-    }
+    };
 
     describe('when correctly selected', () => {
       const { polygonComponent, lineComponent } = getComponents({
         selected: true,
-        isCorrect: true
+        isCorrect: true,
       });
 
       it('should have a blue outline', () => {
@@ -132,7 +143,7 @@ describe('Polygon', () => {
     describe('when correctly not selected', () => {
       const { polygonComponent, lineComponent } = getComponents({
         selected: false,
-        isCorrect: true
+        isCorrect: true,
       });
 
       it('should have no outline', () => {
@@ -148,7 +159,7 @@ describe('Polygon', () => {
     describe('when incorrectly selected', () => {
       const { polygonComponent, lineComponent } = getComponents({
         selected: true,
-        isCorrect: false
+        isCorrect: false,
       });
 
       it('should have a red outline', () => {
@@ -166,7 +177,7 @@ describe('Polygon', () => {
     describe('when incorrectly not selected', () => {
       const { polygonComponent, lineComponent } = getComponents({
         selected: false,
-        isCorrect: false
+        isCorrect: false,
       });
 
       it('should have no outline', () => {
@@ -184,7 +195,7 @@ describe('Polygon', () => {
       it('should have a green outline', () => {
         const { lineComponent } = getComponents({
           showCorrectEnabled: true,
-          markAsCorrect: true
+          markAsCorrect: true,
         });
         expect(lineComponent.prop('stroke')).toEqual('green');
         expect(lineComponent.prop('strokeWidth')).toEqual(defaultModel.strokeWidth);
@@ -193,7 +204,7 @@ describe('Polygon', () => {
       it('should have a green checkmark icon', () => {
         const { polygonComponent } = getComponents({
           showCorrectEnabled: true,
-          markAsCorrect: true
+          markAsCorrect: true,
         });
         const imgComponent = polygonComponent.find(Image);
         expect(imgComponent.prop('src')).toEqual(faCorrect);
@@ -204,7 +215,7 @@ describe('Polygon', () => {
           showCorrectEnabled: true,
           markAsCorrect: false,
           selected: true,
-          isCorrect: false
+          isCorrect: false,
         });
         expect(lineComponent.prop('strokeWidth')).toEqual(0);
       });
@@ -214,7 +225,7 @@ describe('Polygon', () => {
           showCorrectEnabled: true,
           markAsCorrect: false,
           selected: true,
-          isCorrect: false
+          isCorrect: false,
         });
         const imgComponent = polygonComponent.find(Image);
         expect(imgComponent.length).toEqual(0);

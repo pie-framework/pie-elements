@@ -13,20 +13,13 @@ export class Main extends React.Component {
     model: PropTypes.object.isRequired,
     onModelChanged: PropTypes.func.isRequired,
     imageSupport: PropTypes.object,
-    uploadSoundSupport: PropTypes.object
+    uploadSoundSupport: PropTypes.object,
   };
 
   static defaultProps = {};
 
   render() {
-    const {
-      classes,
-      className,
-      model,
-      onModelChanged,
-      configuration,
-      onConfigurationChanged
-    } = this.props;
+    const { classes, className, model, onModelChanged, configuration, onConfigurationChanged } = this.props;
 
     return (
       <div className={classNames(classes.main, className)}>
@@ -44,7 +37,7 @@ export class Main extends React.Component {
   }
 }
 const styles = () => ({
-  main: {}
+  main: {},
 });
 
 export default withStyles(styles)(Main);

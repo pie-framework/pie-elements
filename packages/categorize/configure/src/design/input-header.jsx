@@ -13,11 +13,11 @@ export class InputHeader extends React.Component {
     onDelete: PropTypes.func,
     imageSupport: PropTypes.shape({
       add: PropTypes.func.isRequired,
-      delete: PropTypes.func.isRequired
+      delete: PropTypes.func.isRequired,
     }),
     uploadSoundSupport: PropTypes.shape({
       add: PropTypes.func.isRequired,
-      delete: PropTypes.func.isRequired
+      delete: PropTypes.func.isRequired,
     }),
     toolbarOpts: PropTypes.object,
     error: PropTypes.string,
@@ -25,10 +25,22 @@ export class InputHeader extends React.Component {
 
   static defaultProps = {};
   render() {
-    const { onChange, label, classes, className, imageSupport, toolbarOpts, spellCheck, error, maxImageWidth, maxImageHeight, uploadSoundSupport } = this.props;
+    const {
+      onChange,
+      label,
+      classes,
+      className,
+      imageSupport,
+      toolbarOpts,
+      spellCheck,
+      error,
+      maxImageWidth,
+      maxImageHeight,
+      uploadSoundSupport,
+    } = this.props;
     const choicePlugins = {
       audio: { disabled: true },
-      video: { disabled: true }
+      video: { disabled: true },
     };
 
     return (
@@ -53,18 +65,18 @@ export class InputHeader extends React.Component {
     );
   }
 }
-const styles = theme => ({
+const styles = (theme) => ({
   editor: {
     flex: '1',
-    paddingBottom: theme.spacing.unit
+    paddingBottom: theme.spacing.unit,
   },
   iconButtonRoot: {
     width: 'auto',
-    height: 'auto'
+    height: 'auto',
   },
   inputHeader: {
     display: 'flex',
-    justifyContent: 'space-between'
-  }
+    justifyContent: 'space-between',
+  },
 });
 export default withStyles(styles)(InputHeader);

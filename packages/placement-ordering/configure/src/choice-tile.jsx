@@ -32,7 +32,7 @@ export class ChoiceTile extends React.Component {
     index: PropTypes.number,
     imageSupport: PropTypes.shape({
       add: PropTypes.func.isRequired,
-      delete: PropTypes.func.isRequired
+      delete: PropTypes.func.isRequired,
     }),
     choice: PropTypes.object,
     choices: PropTypes.array.isRequired,
@@ -46,11 +46,11 @@ export class ChoiceTile extends React.Component {
 
   state = {
     dialog: {
-      open: false
-    }
+      open: false,
+    },
   };
 
-  onLabelChange = label => {
+  onLabelChange = (label) => {
     const { choice, onChoiceChange } = this.props;
 
     choice.label = label;
@@ -59,11 +59,7 @@ export class ChoiceTile extends React.Component {
 
   render() {
     const {
-      choice: {
-        label,
-        editable,
-        index
-      },
+      choice: { label, editable, index },
       isDragging,
       connectDragSource,
       connectDropTarget,
@@ -75,7 +71,7 @@ export class ChoiceTile extends React.Component {
       toolbarOpts,
       maxImageWidth,
       maxImageHeight,
-      error
+      error,
     } = this.props;
     const { dialog } = this.state;
 
@@ -83,21 +79,22 @@ export class ChoiceTile extends React.Component {
 
     const choicePlugins = {
       image: {
-        disabled: disableImages
+        disabled: disableImages,
       },
       audio: { disabled: true },
-      video: { disabled: true }
+      video: { disabled: true },
     };
-    const filteredDefaultPlugins = (DEFAULT_PLUGINS || [])
-      .filter(p => p !== 'bulleted-list' && p !== 'numbered-list');
+    const filteredDefaultPlugins = (DEFAULT_PLUGINS || []).filter(
+      (p) => p !== 'bulleted-list' && p !== 'numbered-list',
+    );
 
     const opacity = isDragging ? 0 : 1;
     const markup = (
       <div className={classes.choiceTile} style={{ opacity: opacity, width: '100%' }}>
         <CardActions>
-            <span className={classNames(classes.dragHandle)}>
-              <DragHandle className={classes.actions}/>
-            </span>
+          <span className={classNames(classes.dragHandle)}>
+            <DragHandle className={classes.actions} />
+          </span>
         </CardActions>
         <div style={{ width: '100%', display: 'flex' }}>
           {!editable && index === 0 ? <div className={classes.correctOrder}>Correct Order</div> : null}
@@ -120,39 +117,27 @@ export class ChoiceTile extends React.Component {
           {editable && error && <div className={classes.errorText}>{error}</div>}
           {editable && (
             <div className={classes.controls}>
-              <IconButton color='default' onClick={onDelete}>
+              <IconButton color="default" onClick={onDelete}>
                 <RemoveCircle
                   classes={{
-                    root: classes.removeCircle
+                    root: classes.removeCircle,
                   }}
                 />
               </IconButton>
             </div>
           )}
         </div>
-        <InfoDialog
-          title={dialog.message}
-          open={dialog.open}
-          onOk={dialog.onOk}
-        />
+        <InfoDialog title={dialog.message} open={dialog.open} onOk={dialog.onOk} />
       </div>
     );
 
-
-    return connectDragSource(
-      connectDropTarget(
-        <div>
-          {markup}
-        </div>
-      ),
-      dragSourceOpts
-    );
+    return connectDragSource(connectDropTarget(<div>{markup}</div>), dragSourceOpts);
   }
 }
 
-const Styled = withStyles(theme => ({
+const Styled = withStyles((theme) => ({
   removeCircle: {
-    fill: theme.palette.error[500]
+    fill: theme.palette.error[500],
   },
   choiceTile: {
     cursor: 'move',
@@ -160,32 +145,32 @@ const Styled = withStyles(theme => ({
     marginTop: '5px',
     marginBottom: '5px',
     display: 'flex',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   controls: {
     display: 'flex',
-    justifyContent: 'flex-end'
+    justifyContent: 'flex-end',
   },
   prompt: {
     width: '80%',
     border: 'none',
   },
   targetPrompt: {
-    backgroundColor: '#D7D7D7'
+    backgroundColor: '#D7D7D7',
   },
   actions: {
-    color: '#B1B1B1'
+    color: '#B1B1B1',
   },
   errorText: {
     fontSize: '12px',
-    color: 'red'
+    color: 'red',
   },
   correctOrder: {
     position: 'absolute',
     top: 0,
     fontSize: '12px',
-    color: color.disabled()
-  }
+    color: color.disabled(),
+  },
 }))(ChoiceTile);
 
 const NAME = 'choice-config';
@@ -196,14 +181,14 @@ const choiceSource = {
       id: props.choice.id,
       index: props.index,
       type: props.choice.type,
-      instanceId: props.choice.instanceId
+      instanceId: props.choice.instanceId,
     };
-  }
+  },
 };
 
 const StyledSource = DragSource(NAME, choiceSource, (connect, monitor) => ({
   connectDragSource: connect.dragSource(),
-  isDragging: monitor.isDragging()
+  isDragging: monitor.isDragging(),
 }))(Styled);
 
 const choiceTarget = {
@@ -215,12 +200,12 @@ const choiceTarget = {
     log('[drop] item: ', item, 'didDrop?', monitor.didDrop());
 
     props.onDropChoice(item, props.index);
-  }
+  },
 };
 
 const StyledSourceAndTarget = DropTarget(NAME, choiceTarget, (connect, monitor) => ({
   connectDropTarget: connect.dropTarget(),
-  isOver: monitor.isOver()
+  isOver: monitor.isOver(),
 }))(StyledSource);
 
 export default StyledSourceAndTarget;

@@ -2,7 +2,7 @@ const { model } = require('./generate');
 
 module.exports = {
   elements: {
-    'text-entry': '../..'
+    'text-entry': '../..',
   },
-  models: [model('1', 'text-entry')]
+  models: [model('1', 'text-entry')],
 };

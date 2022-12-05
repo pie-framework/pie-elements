@@ -153,9 +153,7 @@ interface ConfigureMaxImageDimensionsProp {
  * Config Object for @pie-elements/categorize
  * @additionalProperties false
  */
-export interface CategorizeConfigure
-  extends PromptConfig,
-    CommonConfigSettings {
+export interface CategorizeConfigure extends PromptConfig, CommonConfigSettings {
   /**
    * Partial Scoring configuration
    */

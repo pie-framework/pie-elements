@@ -2,11 +2,7 @@ import isEmpty from 'lodash/isEmpty';
 import { buildState, score } from '@pie-lib/categorize';
 import { getFeedbackForCorrectness } from '@pie-lib/feedback';
 import { isAlternateDuplicated, isCorrectResponseDuplicated } from './utils';
-import {
-  lockChoices,
-  getShuffledChoices,
-  partialScoring,
-} from '@pie-lib/controller-utils';
+import { lockChoices, getShuffledChoices, partialScoring } from '@pie-lib/controller-utils';
 import defaults from './defaults';
 
 // eslint-disable-next-line no-console
@@ -21,7 +17,7 @@ export const getPartialScore = (correctResponse, builtCategories) => {
       placements: acc.placements + choices.length,
       score: acc.score + choices.filter((ch) => ch.correct).length,
     }),
-    { placements: 0, score: 0 }
+    { placements: 0, score: 0 },
   );
 
   // in the correct response, we make a sum of the max possible score
@@ -29,7 +25,7 @@ export const getPartialScore = (correctResponse, builtCategories) => {
     (acc, { choices }) => ({
       maxScore: acc.maxScore + choices.length,
     }),
-    { maxScore: 0 }
+    { maxScore: 0 },
   );
 
   // if there are any extra placements, we subtract from the obtained score
@@ -39,9 +35,8 @@ export const getPartialScore = (correctResponse, builtCategories) => {
   return totalScore < 0 ? 0 : parseFloat(totalScore.toFixed(2));
 };
 
-const getAlternates = correctResponse => correctResponse
-  .map((c) => c.alternateResponses)
-  .filter((alternate) => alternate);
+const getAlternates = (correctResponse) =>
+  correctResponse.map((c) => c.alternateResponses).filter((alternate) => alternate);
 
 export const getTotalScore = (question, session, env) => {
   if (!session) {
@@ -59,12 +54,7 @@ export const getTotalScore = (question, session, env) => {
 
   // this function is used in pie-ui/categorize as well, in order to get the best scenario
   // so we get the best scenario and calculate the score
-  const { categories: builtCategories, correct } = buildState(
-    categories,
-    choices,
-    answers,
-    correctResponse
-  );
+  const { categories: builtCategories, correct } = buildState(categories, choices, answers, correctResponse);
 
   const alternates = getAlternates(correctResponse);
   const enabled = partialScoring.enabled(question, env);
@@ -146,16 +136,13 @@ export const model = (question, session, env, updateSession) =>
 
     const lockChoiceOrder = lockChoices(normalizedQuestion, session, env);
 
-    const filteredCorrectResponse = correctResponse.map(response => {
-      const filteredChoices = (response.choices || []).filter(choice => choice !== 'null');
-      return { ...response, choices: filteredChoices};
+    const filteredCorrectResponse = correctResponse.map((response) => {
+      const filteredChoices = (response.choices || []).filter((choice) => choice !== 'null');
+      return { ...response, choices: filteredChoices };
     });
 
     if (mode === 'evaluate' && feedbackEnabled) {
-      fb = await getFeedbackForCorrectness(
-        answerCorrectness,
-        feedback
-      );
+      fb = await getFeedbackForCorrectness(answerCorrectness, feedback);
     }
 
     if (!lockChoiceOrder) {
@@ -184,9 +171,7 @@ export const model = (question, session, env, updateSession) =>
 
     if (role === 'instructor' && (mode === 'view' || mode === 'evaluate')) {
       out.rationale = rationaleEnabled ? rationale : null;
-      out.teacherInstructions = teacherInstructionsEnabled
-        ? teacherInstructions
-        : null;
+      out.teacherInstructions = teacherInstructionsEnabled ? teacherInstructions : null;
     } else {
       out.rationale = null;
       out.teacherInstructions = null;
@@ -197,9 +182,7 @@ export const model = (question, session, env, updateSession) =>
 
 export const outcome = (question, session, env) => {
   if (env.mode !== 'evaluate') {
-    return Promise.reject(
-      new Error('Can not call outcome when mode is not evaluate')
-    );
+    return Promise.reject(new Error('Can not call outcome when mode is not evaluate'));
   } else {
     return new Promise((resolve) => {
       resolve({

@@ -8,18 +8,14 @@ export class DeleteControl extends React.Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
     onDeleteClick: PropTypes.func.isRequired,
-    disabled: PropTypes.bool.isRequired
+    disabled: PropTypes.bool.isRequired,
   };
 
   render() {
     const { classes, disabled, onDeleteClick } = this.props;
 
     return (
-      <Button
-        className={classes.button}
-        disabled={disabled}
-        onClick={onDeleteClick}
-      >
+      <Button className={classes.button} disabled={disabled} onClick={onDeleteClick}>
         <Delete />
       </Button>
     );
@@ -28,8 +24,8 @@ export class DeleteControl extends React.Component {
 
 const styles = () => ({
   button: {
-    margin: 0
-  }
+    margin: 0,
+  },
 });
 
 export default withStyles(styles)(DeleteControl);

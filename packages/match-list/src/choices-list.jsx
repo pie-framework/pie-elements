@@ -22,33 +22,69 @@ export class ChoicesList extends React.Component {
     const { duplicates } = config;
 
     return (
-      <DroppablePlaceholder disabled={disabled}>
-        {config.answers
-          .filter(
-            (answer) =>
-              duplicates ||
-              isEmpty(session) ||
-              !session.value ||
-              isUndefined(find(session.value, (val) => val === answer.id))
-          )
-          .map((answer) => (
-            <DragAnswer
-              key={answer.id}
-              instanceId={instanceId}
-              className={classes.choice}
-              draggable={true}
-              disabled={disabled}
-              session={session}
-              type={'choice'}
-              {...answer}
-            />
-          ))}
-      </DroppablePlaceholder>
+      <>
+        {DroppablePlaceholder ? (
+          <DroppablePlaceholder disabled={disabled}>
+            {config.answers
+              .filter(
+                (answer) =>
+                  duplicates ||
+                  isEmpty(session) ||
+                  !session.value ||
+                  isUndefined(find(session.value, (val) => val === answer.id))
+              )
+              .map((answer) => (
+                <DragAnswer
+                  key={answer.id}
+                  instanceId={instanceId}
+                  className={classes.choice}
+                  draggable={true}
+                  disabled={disabled}
+                  session={session}
+                  type={'choice'}
+                  {...answer}
+                />
+              ))}
+          </DroppablePlaceholder>
+        ) : (
+          <div className={classes.answersContainer}>
+            {' '}
+            {config.answers
+              .filter(
+                (answer) =>
+                  duplicates ||
+                  isEmpty(session) ||
+                  !session.value ||
+                  isUndefined(find(session.value, (val) => val === answer.id))
+              )
+              .map((answer) => (
+                <DragAnswer
+                  key={answer.id}
+                  instanceId={instanceId}
+                  className={classes.choice}
+                  draggable={true}
+                  disabled={disabled}
+                  session={session}
+                  type={'choice'}
+                  {...answer}
+                />
+              ))}{' '}
+          </div>
+        )}
+      </>
     );
   }
 }
 
 const styles = () => ({
+  answersContainer: {
+    alignItems: 'center',
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+    marginTop: 50
+  },
   choice: {
     minHeight: '40px',
     minWidth: '200px',

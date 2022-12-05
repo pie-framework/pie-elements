@@ -2,23 +2,23 @@ import El from '../index';
 import React from 'react';
 
 jest.mock('../number-line', () => ({
-  default: () => <div>NumberLine</div>
+  default: () => <div>NumberLine</div>,
 }));
 
 describe('number-line', () => {
   let mod, deps, instance;
 
   let point = {
-    session: n => ({
+    session: (n) => ({
       type: 'point',
       domainPosition: n,
-      pointType: 'full'
+      pointType: 'full',
     }),
-    graph: n => ({
+    graph: (n) => ({
       type: 'point',
       position: n,
-      pointType: 'full'
-    })
+      pointType: 'full',
+    }),
   };
 
   let getStubInstance = () => {
@@ -80,7 +80,7 @@ describe('number-line', () => {
       expect(instance._session.answer[0]).toEqual({
         type: 'point',
         domainPosition: 1,
-        pointType: 'full'
+        pointType: 'full',
       });
     });
   });
@@ -89,13 +89,9 @@ describe('number-line', () => {
     beforeEach(() => {
       instance = getStubInstance();
       instance.session = {
-        answer: [{ type: 'point', domainPosition: 1, pointType: 'full' }]
+        answer: [{ type: 'point', domainPosition: 1, pointType: 'full' }],
       };
-      instance.moveElement(
-        0,
-        { type: 'point', position: 1, pointType: 'full' },
-        2
-      );
+      instance.moveElement(0, { type: 'point', position: 1, pointType: 'full' }, 2);
     });
 
     it('updates the session answer', () => {
@@ -103,7 +99,7 @@ describe('number-line', () => {
       expect(instance._session.answer[0]).toEqual({
         type: 'point',
         domainPosition: 2,
-        pointType: 'full'
+        pointType: 'full',
       });
     });
   });
@@ -112,7 +108,7 @@ describe('number-line', () => {
     beforeEach(() => {
       instance = getStubInstance();
       instance.session = {
-        answer: [point.session(1), point.session(2), point.session(3)]
+        answer: [point.session(1), point.session(2), point.session(3)],
       };
       instance.deleteElements([0, 2]);
     });
@@ -130,7 +126,7 @@ describe('number-line', () => {
     beforeEach(() => {
       instance = getStubInstance();
       instance.session = {
-        answer: [point.session(1), point.session(2), point.session(3)]
+        answer: [point.session(1), point.session(2), point.session(3)],
       };
       instance.undoElement();
     });
@@ -166,7 +162,7 @@ describe('number-line', () => {
     beforeEach(() => {
       instance = getStubInstance();
       instance.session = {
-        answer: [point.session(1), point.session(2), point.session(3)]
+        answer: [point.session(1), point.session(2), point.session(3)],
       };
       instance.clearElements();
     });

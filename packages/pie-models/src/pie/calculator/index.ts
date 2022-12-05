@@ -1,11 +1,10 @@
-import {PieModel} from '../../PieModel';
-
+import { PieModel } from '../../PieModel';
 
 enum CalculatorMode {
   /** Scientific calculator */
   scientific = 'scientific',
   /** Basic calculator */
-  basic = 'basic'
+  basic = 'basic',
 }
 /**
  * Model Object for @pie-elements/calculator
@@ -13,5 +12,5 @@ enum CalculatorMode {
  */
 export interface CalculatorPie extends PieModel {
   /** Which calculator mode to show */
-  mode: CalculatorMode
+  mode: CalculatorMode;
 }

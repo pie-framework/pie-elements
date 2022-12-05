@@ -13,16 +13,16 @@ export default {
   configuration: {
     teacherInstructions: {
       settings: true,
-      label: 'Teacher Instructions'
+      label: 'Teacher Instructions',
     },
     spellCheck: {
       label: 'Spellcheck',
-      settings:false,
-      enabled:true
+      settings: false,
+      enabled: true,
     },
     prompt: {
       settings: true,
-      label: 'Prompt'
-    }
-  }
+      label: 'Prompt',
+    },
+  },
 };

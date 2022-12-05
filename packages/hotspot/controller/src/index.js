@@ -8,7 +8,7 @@ import defaults from './defaults';
 
 const log = debug('pie-elements:hotspot:controller');
 
-export const normalize = question => ({
+export const normalize = (question) => ({
   promptEnabled: true,
   rationaleEnabled: true,
   teacherInstructionsEnabled: true,
@@ -19,19 +19,11 @@ export const normalize = question => ({
 
 export function model(question, session, env) {
   const normalizedQuestion = normalize(question);
-  const {
-    imageUrl,
-    dimensions,
-    hotspotColor,
-    multipleCorrect,
-    outlineColor,
-    partialScoring,
-    prompt,
-    shapes
-  } = normalizedQuestion;
+  const { imageUrl, dimensions, hotspotColor, multipleCorrect, outlineColor, partialScoring, prompt, shapes } =
+    normalizedQuestion;
   const { rectangles, polygons } = shapes || {};
 
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     const out = {
       disabled: env.mode !== 'gather',
       mode: env.mode,
@@ -46,17 +38,16 @@ export function model(question, session, env) {
         // eslint-disable-next-line no-unused-vars
         rectangles: (rectangles || []).map(({ index, ...rectProps }) => ({ ...rectProps })),
         // eslint-disable-next-line no-unused-vars
-        polygons: (polygons || []).map(({ index, ...polyProps }) => ({ ...polyProps }))
+        polygons: (polygons || []).map(({ index, ...polyProps }) => ({ ...polyProps })),
       },
-      responseCorrect:
-        env.mode === 'evaluate'
-          ? isResponseCorrect(normalizedQuestion, session)
-          : undefined
+      responseCorrect: env.mode === 'evaluate' ? isResponseCorrect(normalizedQuestion, session) : undefined,
     };
 
     if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
       out.rationale = normalizedQuestion.rationaleEnabled ? normalizedQuestion.rationale : null;
-      out.teacherInstructions = normalizedQuestion.teacherInstructionsEnabled ? normalizedQuestion.teacherInstructions : null;
+      out.teacherInstructions = normalizedQuestion.teacherInstructionsEnabled
+        ? normalizedQuestion.teacherInstructions
+        : null;
     } else {
       out.rationale = null;
       out.teacherInstructions = null;
@@ -71,7 +62,7 @@ export function model(question, session, env) {
 }
 
 export const createDefaultModel = (model = {}) =>
-  new Promise(resolve => {
+  new Promise((resolve) => {
     resolve({
       ...defaults,
       ...model,
@@ -97,14 +88,14 @@ const getScore = (config, session, env = {}) => {
 
   const choices = [...rectangles, ...polygons];
 
-  const correctChoices = choices.filter(choice => choice.correct);
+  const correctChoices = choices.filter((choice) => choice.correct);
 
-  choices.forEach(shape => {
-    const selected = answers && answers.filter(answer => answer.id === shape.id)[0];
+  choices.forEach((shape) => {
+    const selected = answers && answers.filter((answer) => answer.id === shape.id)[0];
     const correctlySelected = shape.correct && selected;
 
-    if(selected) {
-      selectedChoices +=1;
+    if (selected) {
+      selectedChoices += 1;
     }
 
     if (correctlySelected) {
@@ -121,7 +112,7 @@ const getScore = (config, session, env = {}) => {
 };
 
 export function outcome(config, session, env = {}) {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     log('outcome...');
 
     if (!session || isEmpty(session)) {
@@ -132,7 +123,7 @@ export function outcome(config, session, env = {}) {
       const score = getScore(config, session, env);
       resolve({ score });
     } else {
-      resolve({score: 0, empty: true})
+      resolve({ score: 0, empty: true });
     }
   });
 }
@@ -140,7 +131,7 @@ export function outcome(config, session, env = {}) {
 const returnShapesCorrect = (shapes) => {
   let answers = [];
 
-  shapes.forEach(i => {
+  shapes.forEach((i) => {
     const { correct, id } = i;
     if (correct) {
       answers.push({ id });
@@ -150,7 +141,7 @@ const returnShapesCorrect = (shapes) => {
 };
 
 export const createCorrectResponseSession = (question, env) => {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     if (env.mode !== 'evaluate' && env.role === 'instructor') {
       const { shapes: { rectangles = [], polygons = {} } = {} } = question;
 
@@ -158,11 +149,8 @@ export const createCorrectResponseSession = (question, env) => {
       const polygonsCorrect = returnShapesCorrect(polygons);
 
       resolve({
-        answers: [
-          ...rectangleCorrect,
-          ...polygonsCorrect
-        ],
-        id: '1'
+        answers: [...rectangleCorrect, ...polygonsCorrect],
+        id: '1',
       });
     } else {
       resolve(null);
@@ -177,7 +165,7 @@ export const validate = (model = {}, config = {}) => {
 
   const allShapes = Object.values(shapes || {}).reduce((acc, shape) => [...acc, ...shape], []);
 
-  const nbOfSelections = (allShapes || []).reduce((acc, shape) => shape.correct ? acc + 1 : acc, 0);
+  const nbOfSelections = (allShapes || []).reduce((acc, shape) => (shape.correct ? acc + 1 : acc), 0);
 
   const nbOfShapes = (allShapes || []).length;
 

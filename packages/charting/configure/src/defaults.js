@@ -106,7 +106,7 @@ export default {
     },
     withRubric: {
       settings: false,
-      label: 'Add Rubric'
-    }
+      label: 'Add Rubric',
+    },
   },
 };

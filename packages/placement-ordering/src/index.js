@@ -24,7 +24,7 @@ export default class Ordering extends HTMLElement {
       const element = React.createElement(Main, {
         model: this._model,
         session: this._session,
-        onSessionChange: this.sessionChange
+        onSessionChange: this.sessionChange,
       });
 
       ReactDOM.render(element, this, () => {
@@ -42,11 +42,9 @@ export default class Ordering extends HTMLElement {
         detail: {
           component: this.tagName.toLowerCase(),
           complete:
-            this._session &&
-            this._session.value &&
-            compact(this._session.value).length === this._model.completeLength
-        }
-      })
+            this._session && this._session.value && compact(this._session.value).length === this._model.completeLength,
+        },
+      }),
     );
   }
 
@@ -57,9 +55,9 @@ export default class Ordering extends HTMLElement {
       new CustomEvent('model-set', {
         bubbles: true,
         detail: {
-          complete: false
-        }
-      })
+          complete: false,
+        },
+      }),
     );
   }
 

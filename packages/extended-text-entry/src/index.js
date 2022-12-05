@@ -3,16 +3,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { renderMath } from '@pie-lib/math-rendering';
 
-import {
-  ModelSetEvent,
-  SessionChangedEvent
-} from '@pie-framework/pie-player-events';
+import { ModelSetEvent, SessionChangedEvent } from '@pie-framework/pie-player-events';
 import debug from 'debug';
 
 const log = debug('@pie-ui:extended-text-entry');
 
-const domParser =
-  typeof window !== undefined ? new DOMParser() : { parseFromString: v => v };
+const domParser = typeof window !== undefined ? new DOMParser() : { parseFromString: (v) => v };
 
 export function textContent(value) {
   if (typeof value !== 'string') {
@@ -43,9 +39,7 @@ export default class RootExtendedTextEntry extends HTMLElement {
 
   set model(m) {
     this._model = m;
-    this.dispatchEvent(
-      new ModelSetEvent(this.tagName.toLowerCase(), false, !!this._model)
-    );
+    this.dispatchEvent(new ModelSetEvent(this.tagName.toLowerCase(), false, !!this._model));
 
     this.render();
   }
@@ -62,9 +56,7 @@ export default class RootExtendedTextEntry extends HTMLElement {
   handleChange(value) {
     this._session.value = value;
 
-    this.dispatchEvent(
-      new SessionChangedEvent(this.tagName.toLowerCase(), isComplete(value))
-    );
+    this.dispatchEvent(new SessionChangedEvent(this.tagName.toLowerCase(), isComplete(value)));
   }
 
   connectedCallback() {
@@ -76,7 +68,7 @@ export default class RootExtendedTextEntry extends HTMLElement {
       let elem = React.createElement(Main, {
         model: this._model,
         session: this._session,
-        onChange: this.handleChange.bind(this)
+        onChange: this.handleChange.bind(this),
       });
 
       ReactDOM.render(elem, this, () => {

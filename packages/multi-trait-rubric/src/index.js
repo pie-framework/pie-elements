@@ -30,10 +30,7 @@ export default class MultiTraitRubric extends HTMLElement {
   }
 
   _render() {
-    const el = React.createElement(
-      Main,
-      { model: this._model, session: this._session }
-    );
+    const el = React.createElement(Main, { model: this._model, session: this._session });
 
     ReactDOM.render(el, this);
   }

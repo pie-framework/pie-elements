@@ -7,16 +7,16 @@ exports.model = (id, element) => ({
   choices: [
     {
       label: 'Disagree',
-      value: -1
+      value: -1,
     },
     {
       label: 'Unsure',
-      value: 0
+      value: 0,
     },
     {
       label: 'Agree',
-      value: 1
-    }
+      value: 1,
+    },
   ],
-  prompt: 'How likely are you to report a problem?'
+  prompt: 'How likely are you to report a problem?',
 });

@@ -5,10 +5,10 @@ import { DroppablePlaceHolder, spec } from '../droppable-placeholder';
 
 describe('DroppablePlaceholder', () => {
   let w;
-  let connectDropTarget = jest.fn(o => o);
+  let connectDropTarget = jest.fn((o) => o);
   let onDropChoice = jest.fn();
   let onDeleteChoice = jest.fn();
-  const wrapper = extras => {
+  const wrapper = (extras) => {
     const defaults = {
       classes: {},
       className: 'className',
@@ -16,11 +16,11 @@ describe('DroppablePlaceholder', () => {
       onDropChoice,
       connectDropTarget,
       categoryId: '1',
-      choices: [{ id: '1', content: 'content' }]
+      choices: [{ id: '1', content: 'content' }],
     };
     const props = {
       ...defaults,
-      ...extras
+      ...extras,
     };
     return shallow(<DroppablePlaceHolder {...props} />);
   };
@@ -42,12 +42,12 @@ describe('spec', () => {
     it('calls onDropChoice', () => {
       const props = {
         onDropChoice: jest.fn(),
-        categoryId: '1'
+        categoryId: '1',
       };
 
       const item = { id: '2' };
       const monitor = {
-        getItem: jest.fn().mockReturnValue(item)
+        getItem: jest.fn().mockReturnValue(item),
       };
       spec.drop(props, monitor);
       expect(props.onDropChoice).toBeCalledWith(item, props.categoryId);

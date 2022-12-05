@@ -6,11 +6,11 @@ import { RawAddButton } from '../buttons';
 describe('AddButton', () => {
   let w;
   let onClick = jest.fn();
-  const wrapper = extras => {
+  const wrapper = (extras) => {
     const defaults = {
       classes: { addButton: 'addButton' },
       className: 'className',
-      onClick
+      onClick,
     };
     const props = { ...defaults, ...extras };
     return shallow(<RawAddButton {...props} />);

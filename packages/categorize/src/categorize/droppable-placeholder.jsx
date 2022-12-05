@@ -11,35 +11,20 @@ export class DroppablePlaceholder extends React.Component {
   static propTypes = {
     connectDropTarget: PropTypes.func.isRequired,
     isOver: PropTypes.bool,
-    children: PropTypes.oneOfType([
-      PropTypes.arrayOf(PropTypes.node),
-      PropTypes.node
-    ]).isRequired,
+    children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired,
     className: PropTypes.string,
     grid: PropTypes.object,
-    disabled: PropTypes.bool
+    disabled: PropTypes.bool,
   };
   render() {
-    const {
-      children,
-      connectDropTarget,
-      isOver,
-      className,
-      grid,
-      disabled
-    } = this.props;
+    const { children, connectDropTarget, isOver, className, grid, disabled } = this.props;
 
     return connectDropTarget(
       <div style={{ flex: 1 }}>
-        <PlaceHolder
-          className={className}
-          isOver={isOver}
-          grid={grid}
-          disabled={disabled}
-        >
+        <PlaceHolder className={className} isOver={isOver} grid={grid} disabled={disabled}>
           {children}
         </PlaceHolder>
-      </div>
+      </div>,
     );
   }
 }
@@ -52,12 +37,16 @@ export const spec = {
   },
   canDrop: (props /*, monitor*/) => {
     return !props.disabled;
-  }
+  },
 };
 
-const WithTarget = DropTarget(({ uid }) => uid, spec, (connect, monitor) => ({
-  connectDropTarget: connect.dropTarget(),
-  isOver: monitor.isOver()
-}))(DroppablePlaceholder);
+const WithTarget = DropTarget(
+  ({ uid }) => uid,
+  spec,
+  (connect, monitor) => ({
+    connectDropTarget: connect.dropTarget(),
+    isOver: monitor.isOver(),
+  }),
+)(DroppablePlaceholder);
 
 export default uid.withUid(WithTarget);

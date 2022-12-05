@@ -20,14 +20,14 @@ describe('choice', () => {
 
   const defaultModel = defaultProps.model;
 
-  const wrapper = extras => {
+  const wrapper = (extras) => {
     const props = {
       classes: {},
       model: defaultModel,
       row: {
         id: 1,
         title: 'Question Text 1',
-        values: [false, false]
+        values: [false, false],
       },
       idx: 1,
       isDragging: false,
@@ -36,7 +36,7 @@ describe('choice', () => {
       connectDragSource: connectDragSource,
       connectDropTarget: connectDropTarget,
       onMoveRow: onMoveRow,
-      ...extras
+      ...extras,
     };
 
     return shallow(<Row {...props} />);
@@ -57,8 +57,8 @@ describe('choice', () => {
 
         callback({
           target: {
-            value: 'Foo'
-          }
+            value: 'Foo',
+          },
         });
 
         expect(onChange).toBeCalledWith({
@@ -66,11 +66,11 @@ describe('choice', () => {
             {
               id: 1,
               title: 'Foo',
-              values: [false, false]
+              values: [false, false],
             },
-            ...defaultModel.rows.slice(1)
+            ...defaultModel.rows.slice(1),
           ],
-          ...defaultModel
+          ...defaultModel,
         });
       });
     });
@@ -82,8 +82,8 @@ describe('choice', () => {
 
         callback({
           target: {
-            checked: true
-          }
+            checked: true,
+          },
         });
 
         expect(onChange).toBeCalledWith({
@@ -91,11 +91,11 @@ describe('choice', () => {
             {
               id: 1,
               title: 'Question Text 1',
-              values: [true, false]
+              values: [true, false],
             },
-            ...defaultModel.rows.slice(1)
+            ...defaultModel.rows.slice(1),
           ],
-          ...defaultModel
+          ...defaultModel,
         });
       });
     });
@@ -161,23 +161,28 @@ describe('spec', () => {
   const defaultModel = {
     id: '1',
     element: 'match-element',
-    rows: [{
-      id: 1,
-      title: 'Question Text 1',
-      values: [false, false]
-    }, {
-      id: 2,
-      title: 'Question Text 2',
-      values: [false, false]
-    }, {
-      id: 3,
-      title: 'Question Text 3',
-      values: [false, false]
-    }, {
-      id: 4,
-      title: 'Question Text 4',
-      values: [false, false]
-    }],
+    rows: [
+      {
+        id: 1,
+        title: 'Question Text 1',
+        values: [false, false],
+      },
+      {
+        id: 2,
+        title: 'Question Text 2',
+        values: [false, false],
+      },
+      {
+        id: 3,
+        title: 'Question Text 3',
+        values: [false, false],
+      },
+      {
+        id: 4,
+        title: 'Question Text 4',
+        values: [false, false],
+      },
+    ],
     lockChoiceOrder: false,
     partialScoring: [],
     layout: 3,
@@ -186,27 +191,27 @@ describe('spec', () => {
     feedback: {
       correct: {
         type: 'none',
-        default: 'Correct'
+        default: 'Correct',
       },
       partial: {
         type: 'none',
-        default: 'Nearly'
+        default: 'Nearly',
       },
       incorrect: {
         type: 'none',
-        default: 'Incorrect'
-      }
+        default: 'Incorrect',
+      },
     },
   };
 
-  const wrapper = extras => {
+  const wrapper = (extras) => {
     const props = {
       classes: {},
       model: defaultModel,
       row: {
         id: 1,
         title: 'Question Text 1',
-        values: [false, false]
+        values: [false, false],
       },
       idx: 1,
       isDragging: false,
@@ -215,7 +220,7 @@ describe('spec', () => {
       connectDragSource: connectDragSource,
       connectDropTarget: connectDropTarget,
       onMoveRow: onMoveRow,
-      ...extras
+      ...extras,
     };
 
     return shallow(<Row {...props} />);
@@ -257,18 +262,18 @@ describe('spec', () => {
 
     beforeEach(() => {
       item = {
-        index: 1
+        index: 1,
       };
       monitor = {
         didDrop: jest.fn().mockReturnValue(false),
-        getItem: jest.fn().mockReturnValue(item)
+        getItem: jest.fn().mockReturnValue(item),
       };
     });
 
     it('calls onMoveRow when one row is dropped over another', () => {
       const props = {
         idx: 2,
-        onMoveRow: jest.fn()
+        onMoveRow: jest.fn(),
       };
       choiceTarget.drop(props, monitor);
       expect(props.onMoveRow).toBeCalledWith(1, 2);

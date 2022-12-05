@@ -2,9 +2,7 @@ const { model, mathSample, htmlSample, htmlAscii } = require('./generate');
 
 module.exports = {
   elements: {
-    'select-text': '../..'
+    'select-text': '../..',
   },
-  models: [
-    model('1', 'select-text')
-  ]
+  models: [model('1', 'select-text')],
 };

@@ -9,7 +9,7 @@ export default {
       left: true,
       right: true,
       up: true,
-      down: true
+      down: true,
     },
     backgroundMarks: [],
     domain: {
@@ -17,11 +17,11 @@ export default {
       max: 5,
       step: 1,
       labelStep: 1,
-      axisLabel: 'x'
+      axisLabel: 'x',
     },
     graph: {
       width: 500,
-      height: 500
+      height: 500,
     },
     includeAxes: true,
     labels: {},
@@ -33,7 +33,7 @@ export default {
       max: 5,
       step: 1,
       labelStep: 1,
-      axisLabel: 'y'
+      axisLabel: 'y',
     },
     rationale: '',
     standardGrid: false,
@@ -55,48 +55,49 @@ export default {
       standardGridEnabled: true,
       min: {
         label: 'Min Value',
-        enabled: true
+        enabled: true,
       },
       max: {
         label: 'Max Value',
-        enabled: true
+        enabled: true,
       },
       axisLabel: {
         label: 'Label',
-        enabled: true
+        enabled: true,
       },
       step: {
         label: 'Grid Interval',
-        enabled: true
+        enabled: true,
       },
       labelStep: {
         label: 'Label Interval',
-        enabled: true
-      }
+        enabled: true,
+      },
     },
     arrows: {
       settings: true,
       label: 'Include Arrows',
       left: {
-        label: 'left'
+        label: 'left',
       },
       right: {
-        label: 'right'
+        label: 'right',
       },
       up: {
-        label: 'up'
+        label: 'up',
       },
       down: {
-        label: 'down'
-      }
+        label: 'down',
+      },
     },
-    gridConfigurations: [{
+    gridConfigurations: [
+      {
         label: '4-quadrant coordinate grid, -10 to 10',
         arrows: {
           left: true,
           right: true,
           up: true,
-          down: true
+          down: true,
         },
         domain: {
           min: -10,
@@ -104,7 +105,7 @@ export default {
           step: 1,
           padding: 0,
           labelStep: 1,
-          axisLabel: '<i>x</i>'
+          axisLabel: '<i>x</i>',
         },
         graph: {
           width: 480,
@@ -115,7 +116,7 @@ export default {
           top: '',
           right: '',
           bottom: '',
-          left: ''
+          left: '',
         },
         padding: true,
         range: {
@@ -124,17 +125,18 @@ export default {
           step: 1,
           padding: 0,
           labelStep: 1,
-          axisLabel: '<i>y</i>'
+          axisLabel: '<i>y</i>',
         },
         standardGrid: true,
-        title: ''
-      }, {
+        title: '',
+      },
+      {
         label: '0 to 10 on both axes',
         arrows: {
           left: false,
           right: true,
           up: true,
-          down: false
+          down: false,
         },
         domain: {
           min: 0,
@@ -142,7 +144,7 @@ export default {
           step: 1,
           padding: 0,
           labelStep: 1,
-          axisLabel: '<i>x</i>'
+          axisLabel: '<i>x</i>',
         },
         graph: {
           width: 480,
@@ -153,7 +155,7 @@ export default {
           top: '',
           right: '',
           bottom: '',
-          left: ''
+          left: '',
         },
         padding: true,
         range: {
@@ -162,17 +164,18 @@ export default {
           step: 1,
           padding: 0,
           labelStep: 1,
-          axisLabel: '<i>y</i>'
+          axisLabel: '<i>y</i>',
         },
         standardGrid: true,
-        title: ''
-      }, {
+        title: '',
+      },
+      {
         label: '0 to 20 on both axes',
         arrows: {
           left: false,
           right: true,
           up: true,
-          down: false
+          down: false,
         },
         domain: {
           min: 0,
@@ -180,7 +183,7 @@ export default {
           step: 1,
           padding: 0,
           labelStep: 1,
-          axisLabel: '<i>x</i>'
+          axisLabel: '<i>x</i>',
         },
         graph: {
           width: 480,
@@ -191,7 +194,7 @@ export default {
           top: '',
           right: '',
           bottom: '',
-          left: ''
+          left: '',
         },
         padding: true,
         range: {
@@ -200,17 +203,18 @@ export default {
           step: 1,
           padding: 0,
           labelStep: 1,
-          axisLabel: '<i>y</i>'
+          axisLabel: '<i>y</i>',
         },
         standardGrid: true,
-        title: ''
-      }, {
+        title: '',
+      },
+      {
         label: 'Sample Data Graph',
         arrows: {
           left: false,
           right: true,
           up: true,
-          down: false
+          down: false,
         },
         domain: {
           min: 0,
@@ -218,7 +222,7 @@ export default {
           step: 1,
           padding: 0,
           labelStep: 2,
-          axisLabel: '<i>t</i>'
+          axisLabel: '<i>t</i>',
         },
         graph: {
           width: 480,
@@ -229,7 +233,7 @@ export default {
           top: '',
           right: '',
           bottom: 'Time (seconds)',
-          left: 'Distance (meters)'
+          left: 'Distance (meters)',
         },
         padding: true,
         range: {
@@ -238,17 +242,18 @@ export default {
           step: 5,
           padding: 0,
           labelStep: 10,
-          axisLabel: '<i>d</i>'
+          axisLabel: '<i>d</i>',
         },
         standardGrid: false,
-        title: 'Distance as a function of time'
-      }, {
+        title: 'Distance as a function of time',
+      },
+      {
         label: 'No Visible Axes',
         arrows: {
           left: false,
           right: false,
           up: false,
-          down: false
+          down: false,
         },
         domain: {
           min: 1,
@@ -256,7 +261,7 @@ export default {
           step: 1,
           padding: 0,
           labelStep: 0,
-          axisLabel: ''
+          axisLabel: '',
         },
         graph: {
           width: 480,
@@ -267,7 +272,7 @@ export default {
           top: '',
           right: '',
           bottom: '',
-          left: ''
+          left: '',
         },
         padding: true,
         range: {
@@ -276,22 +281,23 @@ export default {
           step: 1,
           padding: 0,
           labelStep: 0,
-          axisLabel: ''
+          axisLabel: '',
         },
         standardGrid: false,
-        title: ''
-    }],
+        title: '',
+      },
+    ],
     graphDimensions: {
       settings: false,
       label: 'Graph Dimensions',
       enabled: true,
       min: 150,
       max: 800,
-      step: 20
+      step: 20,
     },
     padding: {
       settings: false,
-      label: 'Padding'
+      label: 'Padding',
     },
     labels: {
       settings: true,
@@ -300,43 +306,43 @@ export default {
       top: 'Click here to add a top label',
       right: 'Click here to add a right label',
       bottom: 'Click here to add a bottom label',
-      left: 'Click here to add a left label'
+      left: 'Click here to add a left label',
     },
     prompt: {
       settings: true,
-      label: 'Item Stem'
+      label: 'Item Stem',
     },
     rationale: {
       settings: true,
-      label: 'Rationale'
+      label: 'Rationale',
     },
     scoringType: {
       settings: false,
-      label: 'Scoring Type'
+      label: 'Scoring Type',
     },
     studentInstructions: {
       settings: false,
-      label: 'Student Instructions'
+      label: 'Student Instructions',
     },
     teacherInstructions: {
       settings: true,
-      label: 'Teacher Instructions'
+      label: 'Teacher Instructions',
     },
     title: {
       settings: true,
       label: 'Graph Title',
       enabled: true,
-      placeholder: 'Click here to add a title for this graph'
+      placeholder: 'Click here to add a title for this graph',
     },
     availableTools: allTools,
     spellCheck: {
       label: 'Spellcheck',
-      settings:false,
-      enabled:true
+      settings: false,
+      enabled: true,
     },
     coordinatesOnHover: {
       settings: true,
-      label: 'Coordinates on Hover'
+      label: 'Coordinates on Hover',
     },
     maxImageWidth: {
       teacherInstructions: 300,
@@ -350,7 +356,7 @@ export default {
     },
     withRubric: {
       settings: false,
-      label: 'Add Rubric'
-    }
-  }
+      label: 'Add Rubric',
+    },
+  },
 };

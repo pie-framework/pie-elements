@@ -1,7 +1,7 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 
-const Box = withStyles(theme => ({
+const Box = withStyles((theme) => ({
   box: {
     padding: 0,
   },
@@ -10,7 +10,12 @@ const Box = withStyles(theme => ({
     marginBottom: theme.spacing.unit * 2,
     border: 0,
     'border-top': '1px solid #eeeeee',
-  }
-}))(({ classes, children }) => (<div className={classes.box}>{children}<hr className={classes.separator} /></div>))
+  },
+}))(({ classes, children }) => (
+  <div className={classes.box}>
+    {children}
+    <hr className={classes.separator} />
+  </div>
+));
 
 export default Box;

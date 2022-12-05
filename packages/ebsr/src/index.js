@@ -102,9 +102,7 @@ export default class Ebsr extends HTMLElement {
 
     log('[onSessionChanged] session: ', this._session);
     const complete = isSessionComplete(this._session);
-    this.dispatchEvent(
-      new SessionChangedEvent(this.tagName.toLowerCase(), complete)
-    );
+    this.dispatchEvent(new SessionChangedEvent(this.tagName.toLowerCase(), complete));
   }
 
   get partA() {

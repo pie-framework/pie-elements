@@ -16,70 +16,70 @@ describe('InlineDropdown', () => {
         teacherInstructions: 'Teacher Instructions',
         disabled: false,
         choices: {
-          '0': [
+          0: [
             {
               label: 'cow ',
               value: '0',
               correct: true,
-              rationale: 'rationale cow'
+              rationale: 'rationale cow',
             },
             {
               label: 'dog ',
               value: '1',
-              correct: false
+              correct: false,
             },
             {
               label: 'cat ',
               value: '2',
-              correct: false
-            }
+              correct: false,
+            },
           ],
-          '1': [
+          1: [
             {
               label: 'over ',
               value: '0',
               correct: true,
-              rationale: 'rationale over'
+              rationale: 'rationale over',
             },
             {
               label: 'under ',
               value: '1',
-              correct: false
+              correct: false,
             },
             {
               label: 'across ',
               value: '2',
-              correct: false
-            }
+              correct: false,
+            },
           ],
-          '2': [
+          2: [
             {
               label: 'moon ',
               value: '0',
               correct: true,
-              rationale: 'rationale moon'
+              rationale: 'rationale moon',
             },
             {
               label: 'sun',
               value: '2',
-              correct: false
+              correct: false,
             },
             {
               label: 'house ',
               value: '3',
-              correct: false
-            }
-          ]
+              correct: false,
+            },
+          ],
         },
         markup: '<div><p>The {{0}} jumped {{1}} the {{2}}</p></div>',
         mode: 'gather',
         feedback: { 0: 'correct', 1: 'correct', 2: 'correct' },
         value: { 0: '1', 1: '0', 2: '0' },
         onChange,
-        ...extra
+        ...extra,
       };
 
-      return shallow(<InlineDropdown {...props}/>);
+      return shallow(<InlineDropdown {...props} />);
     };
   });
 

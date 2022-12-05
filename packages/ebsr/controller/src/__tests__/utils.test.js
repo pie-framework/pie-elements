@@ -15,20 +15,20 @@ describe('isResponseCorrect', () => {
             correct: true,
             feedback: {
               type: 'custom',
-              value: 'foo'
-            }
+              value: 'foo',
+            },
           },
           {
             value: 'green',
             label: 'Green',
             feedback: {
-              type: 'default'
-            }
+              type: 'default',
+            },
           },
         ],
         choicePrefix: 'numbers',
         prompt: `prompt partA`,
-      }
+      },
     };
   });
 
@@ -43,9 +43,6 @@ describe('isResponseCorrect', () => {
   returnsIsResponseCorrect({});
 
   it('response is correct if session is defined', () => {
-    expect(isResponseCorrect(
-      question.partA,
-      'partA',
-      { value: { partA: { value: ['yellow'] } } })).toEqual(true);
+    expect(isResponseCorrect(question.partA, 'partA', { value: { partA: { value: ['yellow'] } } })).toEqual(true);
   });
 });

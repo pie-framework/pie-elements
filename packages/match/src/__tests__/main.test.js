@@ -16,23 +16,23 @@ describe('Main', () => {
           {
             id: 1,
             title: 'Question Text 1',
-            values: [false, false]
+            values: [false, false],
           },
           {
             id: 2,
             title: 'Question Text 2',
-            values: [false, false]
+            values: [false, false],
           },
           {
             id: 3,
             title: 'Question Text 3',
-            values: [false, false]
+            values: [false, false],
           },
           {
             id: 4,
             title: 'Question Text 4',
-            values: [false, false]
-          }
+            values: [false, false],
+          },
         ],
         partialScoring: [],
         layout: 3,
@@ -41,21 +41,21 @@ describe('Main', () => {
         feedback: {
           correct: {
             type: 'none',
-            default: 'Correct'
+            default: 'Correct',
           },
           partial: {
             type: 'none',
-            default: 'Nearly'
+            default: 'Nearly',
           },
           incorrect: {
             type: 'none',
-            default: 'Incorrect'
-          }
-        }
-      }
+            default: 'Incorrect',
+          },
+        },
+      },
     },
     onSessionChange: jest.fn(),
-    session: {}
+    session: {},
   };
 
   let wrapper;
@@ -69,7 +69,7 @@ describe('Main', () => {
     let w;
 
     beforeEach(() => {
-      w = props => shallow(<Main {...props} />);
+      w = (props) => shallow(<Main {...props} />);
     });
 
     it('snapshot', () => {
@@ -80,8 +80,8 @@ describe('Main', () => {
       expect(
         w({
           ...defaultProps,
-          rationale: 'This is rationale'
-        })
+          rationale: 'This is rationale',
+        }),
       ).toMatchSnapshot();
     });
 
@@ -89,8 +89,8 @@ describe('Main', () => {
       expect(
         w({
           ...defaultProps,
-          teacherInstructions: 'These are teacher instructions'
-        })
+          teacherInstructions: 'These are teacher instructions',
+        }),
       ).toMatchSnapshot();
     });
 
@@ -107,10 +107,10 @@ describe('Main', () => {
             1: [false, false],
             2: [false, false],
             3: [false, false],
-            4: [false, false]
-          }
+            4: [false, false],
+          },
         },
-        showCorrect: false
+        showCorrect: false,
       });
     });
     it('renders correctly with a pre-filled session', () => {
@@ -126,33 +126,33 @@ describe('Main', () => {
             1: [false, false],
             2: [false, false],
             3: [false, false],
-            4: [false, false]
-          }
+            4: [false, false],
+          },
         },
-        showCorrect: false
+        showCorrect: false,
       });
 
       component = wrapper({
         session: {
           answers: {
-            '1': [false, true],
-            '2': [true, false],
-            '3': [true, false],
-            '4': [false, false]
-          }
-        }
+            1: [false, true],
+            2: [true, false],
+            3: [true, false],
+            4: [false, false],
+          },
+        },
       });
 
       expect(component.state()).toEqual({
         session: {
           answers: {
-            '1': [false, true],
-            '2': [true, false],
-            '3': [true, false],
-            '4': [false, false]
-          }
+            1: [false, true],
+            2: [true, false],
+            3: [true, false],
+            4: [false, false],
+          },
         },
-        showCorrect: false
+        showCorrect: false,
       });
     });
   });
@@ -168,31 +168,31 @@ describe('Main', () => {
             {
               id: 1,
               title: 'Question Text 1',
-              values: [true, false]
+              values: [true, false],
             },
             {
               id: 4,
               title: 'Question Text 2',
-              values: [false, true]
+              values: [false, true],
             },
             {
               id: 12,
               title: 'Question Text 3',
-              values: [false, false]
+              values: [false, false],
             },
             {
               id: 9,
               title: 'Question Text 4',
-              values: [true, true]
-            }
-          ]
-        }
-      })
+              values: [true, true],
+            },
+          ],
+        },
+      }),
     ).toEqual({
       1: [false, false],
       4: [false, false],
       12: [false, false],
-      9: [false, false]
+      9: [false, false],
     });
   });
 });

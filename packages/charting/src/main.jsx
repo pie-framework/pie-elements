@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import {color, Collapsible, hasText, PreviewPrompt} from '@pie-lib/render-ui';
+import { color, Collapsible, hasText, PreviewPrompt } from '@pie-lib/render-ui';
 import { Chart, chartTypes } from '@pie-lib/charting';
 import isEqual from 'lodash/isEqual';
 import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
@@ -39,7 +39,7 @@ export class Main extends React.Component {
       {
         categories: data,
       },
-      () => this.props.onAnswersChange(data)
+      () => this.props.onAnswersChange(data),
     );
 
   toggleCorrect = (showingCorrect) => this.setState({ showingCorrect });
@@ -61,7 +61,7 @@ export class Main extends React.Component {
       correctedAnswer,
       correctAnswer,
     } = model;
-  
+
     const correctData =
       correctAnswer && correctAnswer.data
         ? correctAnswer.data.map((data) => {
@@ -77,11 +77,7 @@ export class Main extends React.Component {
 
     return (
       <div className={classes.mainContainer}>
-        <CorrectAnswerToggle
-          show={showToggle}
-          toggled={showingCorrect}
-          onToggle={this.toggleCorrect}
-        />
+        <CorrectAnswerToggle show={showToggle} toggled={showingCorrect} onToggle={this.toggleCorrect} />
 
         {teacherInstructions && hasText(teacherInstructions) && (
           <React.Fragment>
@@ -148,9 +144,7 @@ export class Main extends React.Component {
 
         <br />
         {rationale && hasText(rationale) && (
-          <Collapsible
-            labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }}
-          >
+          <Collapsible labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }}>
             <PreviewPrompt prompt={rationale} />
           </Collapsible>
         )}
@@ -164,8 +158,8 @@ const styles = (theme) => ({
     padding: theme.spacing.unit,
     color: color.text(),
     backgroundColor: color.background(),
-    overflow: 'hidden'
-  }
+    overflow: 'hidden',
+  },
 });
 
 export default withStyles(styles)(Main);

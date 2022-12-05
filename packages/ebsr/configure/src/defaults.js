@@ -3,42 +3,42 @@ import cloneDeep from 'lodash/cloneDeep';
 const defaultConfig = {
   addChoiceButton: {
     settings: true,
-    label: 'Add a Choice'
+    label: 'Add a Choice',
   },
   choiceMode: {
     settings: true,
-    label: 'Response Type'
+    label: 'Response Type',
   },
   choicePrefix: {
     settings: true,
-    label: 'Choice Labels'
+    label: 'Choice Labels',
   },
   deleteChoice: {
-    settings: true
+    settings: true,
   },
   feedback: {
     settings: true,
-    label: 'Feedback'
+    label: 'Feedback',
   },
   lockChoiceOrder: {
     settings: true,
-    label: 'Lock Choice Order'
+    label: 'Lock Choice Order',
   },
   prompt: {
     settings: true,
-    label: 'Prompt'
+    label: 'Prompt',
   },
   rationale: {
     settings: true,
-    label: 'Rationale'
+    label: 'Rationale',
   },
   studentInstructions: {
     settings: false,
-    label: 'Student Instructions'
+    label: 'Student Instructions',
   },
   teacherInstructions: {
     settings: true,
-    label: 'Teacher Instructions'
+    label: 'Teacher Instructions',
   },
   choicesLayout: {
     settings: false,
@@ -49,24 +49,24 @@ const defaultConfig = {
   },
   spellCheck: {
     label: 'Spellcheck',
-    settings:false,
-    enabled:true
+    settings: false,
+    enabled: true,
   },
   maxImageWidth: {
     teacherInstructions: 300,
     prompt: 300,
     rationale: 636,
-    choices: 636
+    choices: 636,
   },
   maxImageHeight: {
     teacherInstructions: 300,
     prompt: 300,
     rationale: 300,
-    choices: 300
-  }
+    choices: 300,
+  },
 };
 
-const partModel = base => ({
+const partModel = (base) => ({
   choiceMode: 'radio',
   choices: [],
   choicePrefix: 'numbers',
@@ -78,10 +78,10 @@ const partModel = base => ({
   rationale: '',
   teacherInstructionsEnabled: true,
   studentInstructionsEnabled: true,
-  spellCheckEnabled:true,
+  spellCheckEnabled: true,
   choicesLayout: 'vertical',
   gridColumns: '2',
-  ...base
+  ...base,
 });
 
 export default {
@@ -90,7 +90,7 @@ export default {
     partLabelType: 'Letters',
     // partialScoring: false,
     partA: partModel({ prompt: 'Prompt A' }),
-    partB: partModel({ prompt: 'Prompt B' })
+    partB: partModel({ prompt: 'Prompt B' }),
   },
   configuration: {
     partialScoring: {
@@ -98,18 +98,18 @@ export default {
       // this will turn off partial scoring toggle in the settings tab by default for the interaction
       // as we'd like partial scoring to be controlled from the environment entirely
       // if any other consumers would like to enable it for themselves, they can do so from their model directly.
-      settings: false
+      settings: false,
     },
     scoringType: {
       settings: false,
-      label: 'Scoring Type'
+      label: 'Scoring Type',
     },
     partA: cloneDeep(defaultConfig),
     partB: cloneDeep(defaultConfig),
     partLabels: {
       settings: true,
-      label: 'Part Labels'
+      label: 'Part Labels',
     },
-    settingsPanelDisabled: true
-  }
+    settingsPanelDisabled: true,
+  },
 };

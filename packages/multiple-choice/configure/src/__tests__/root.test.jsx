@@ -9,13 +9,13 @@ import MultipleChoice from '../index';
 jest.mock('@pie-lib/config-ui', () => ({
   choiceUtils: {
     firstAvailableIndex: jest.fn(),
-    normalizeChoices: jest.fn((model) => model)
+    normalizeChoices: jest.fn((model) => model),
   },
   settings: {
-    Panel: props => <div {...props} />,
+    Panel: (props) => <div {...props} />,
     toggle: jest.fn(),
-    radio: jest.fn()
-  }
+    radio: jest.fn(),
+  },
 }));
 
 const model = (extras) => ({
@@ -29,25 +29,24 @@ const model = (extras) => ({
       label: 'Sweden',
       feedback: {
         type: 'none',
-        value: ''
-      }
+        value: '',
+      },
     },
     {
       value: 'iceland',
       label: 'Iceland',
       feedback: {
         type: 'none',
-        value: ''
-      }
+        value: '',
+      },
     },
     {
       value: 'norway',
       label: 'Norway',
       feedback: {
         type: 'none',
-        value:
-          ''
-      }
+        value: '',
+      },
     },
     {
       correct: true,
@@ -55,13 +54,13 @@ const model = (extras) => ({
       label: 'Finland',
       feedback: {
         type: 'none',
-        value: ''
-      }
-    }
+        value: '',
+      },
+    },
   ],
   partialScoring: false,
   configure: {},
-  ...extras
+  ...extras,
 });
 
 describe('Main', () => {
@@ -70,12 +69,12 @@ describe('Main', () => {
   let onConfigurationChanged = jest.fn();
   let initialModel = model();
 
-  const wrapper = extras => {
+  const wrapper = (extras) => {
     const defaults = {
       onModelChanged,
       onConfigurationChanged,
       classes: {},
-      model: model()
+      model: model(),
     };
     const props = { ...defaults, ...extras };
 
@@ -104,7 +103,7 @@ describe('Main', () => {
 
         expect(onModelChanged).toBeCalledWith({
           ...initialModel,
-          choices: initialModel.choices.slice(1)
+          choices: initialModel.choices.slice(1),
         });
       });
     });
@@ -113,25 +112,25 @@ describe('Main', () => {
       it('sets choicesLayout: horizontal if verticalMode: false', () => {
         const m = MultipleChoice.createDefaultModel(model({ verticalMode: false, choicesLayout: undefined }));
 
-        expect(m.choicesLayout).toEqual('horizontal')
+        expect(m.choicesLayout).toEqual('horizontal');
       });
 
       it('sets choicesLayout: vertical if verticalMode: true', () => {
         const m = MultipleChoice.createDefaultModel(model({ verticalMode: true, choicesLayout: undefined }));
 
-        expect(m.choicesLayout).toEqual('vertical')
+        expect(m.choicesLayout).toEqual('vertical');
       });
 
       it('sets choicesLayout: grid if verticalMode: true && choicesLayout: grid', () => {
         const m = MultipleChoice.createDefaultModel(model({ verticalMode: true, choicesLayout: 'grid' }));
 
-        expect(m.choicesLayout).toEqual('grid')
+        expect(m.choicesLayout).toEqual('grid');
       });
 
       it('sets choicesLayout: vertical', () => {
         const m = MultipleChoice.createDefaultModel(model());
 
-        expect(m.choicesLayout).toEqual('vertical')
+        expect(m.choicesLayout).toEqual('vertical');
       });
     });
 
@@ -145,12 +144,15 @@ describe('Main', () => {
             ...initialModel.choices,
             {
               label: '',
-              value: utils.firstAvailableIndex(initialModel.choices.map(c => c.value), 0),
+              value: utils.firstAvailableIndex(
+                initialModel.choices.map((c) => c.value),
+                0,
+              ),
               feedback: {
-                type: 'none'
-              }
-            }
-          ]
+                type: 'none',
+              },
+            },
+          ],
         });
       });
     });
@@ -165,8 +167,8 @@ describe('Main', () => {
             label: 'Iceland',
             feedback: {
               type: 'none',
-              value: ''
-            }
+              value: '',
+            },
           };
 
           w.instance().onChoiceChanged(1, choice);
@@ -175,7 +177,7 @@ describe('Main', () => {
 
           expect(onModelChanged).toBeCalledWith({
             ...initialModel,
-            choices: newChoices
+            choices: newChoices,
           });
         });
       });
@@ -188,13 +190,12 @@ describe('Main', () => {
             label: 'Iceland',
             feedback: {
               type: 'none',
-              value: ''
-            }
+              value: '',
+            },
           };
 
           const newModel = { ...initialModel, choiceMode: 'radio', choices: initialModel.choices.slice(0, 2) };
           w = wrapper({ model: newModel });
-
 
           w.instance().onChoiceChanged(1, choice);
 
@@ -207,8 +208,8 @@ describe('Main', () => {
                 label: 'Sweden',
                 feedback: {
                   type: 'none',
-                  value: ''
-                }
+                  value: '',
+                },
               },
               {
                 correct: true,
@@ -216,10 +217,10 @@ describe('Main', () => {
                 label: 'Iceland',
                 feedback: {
                   type: 'none',
-                  value: ''
-                }
+                  value: '',
+                },
               },
-            ]
+            ],
           });
         });
       });
@@ -230,10 +231,9 @@ describe('Main', () => {
         w.instance().onPromptChanged('New Prompt');
 
         expect(onModelChanged).toBeCalledWith({
-            ...initialModel,
-            prompt: 'New Prompt'
-          }
-        );
+          ...initialModel,
+          prompt: 'New Prompt',
+        });
       });
     });
 
@@ -242,20 +242,20 @@ describe('Main', () => {
         w.instance().onTeacherInstructionsChanged('New Teacher Instructions');
 
         expect(onModelChanged).toBeCalledWith({
-            ...initialModel,
-            teacherInstructions: 'New Teacher Instructions'
-          }
-        );
+          ...initialModel,
+          teacherInstructions: 'New Teacher Instructions',
+        });
       });
     });
 
     describe('onModelChanged', () => {
       it('changes choice and makes incorrect all other choices', () => {
-        w.instance().onModelChanged({
+        w.instance().onModelChanged(
+          {
             ...initialModel,
-            choiceMode: 'radio'
+            choiceMode: 'radio',
           },
-          'choiceMode'
+          'choiceMode',
         );
 
         const expectedChoices = model().choices;
@@ -264,12 +264,13 @@ describe('Main', () => {
           eC.correct = index === 0;
         });
 
-        expect(onModelChanged).toBeCalledWith({
+        expect(onModelChanged).toBeCalledWith(
+          {
             ...initialModel,
             choiceMode: 'radio',
-            choices: expectedChoices
+            choices: expectedChoices,
           },
-          true
+          true,
         );
       });
     });

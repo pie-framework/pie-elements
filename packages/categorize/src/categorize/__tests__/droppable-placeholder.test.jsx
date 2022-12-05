@@ -11,13 +11,13 @@ describe('spec', () => {
 
     beforeEach(() => {
       props = {
-        onDropChoice: jest.fn()
+        onDropChoice: jest.fn(),
       };
       item = {
-        id: '1'
+        id: '1',
       };
       monitor = {
-        getItem: jest.fn().mockReturnValue(item)
+        getItem: jest.fn().mockReturnValue(item),
       };
     });
 
@@ -38,15 +38,13 @@ describe('spec', () => {
 });
 
 describe('droppable-placeholder', () => {
-  const wrapper = extras => {
+  const wrapper = (extras) => {
     const defaults = {
       classes: {},
-      connectDropTarget: jest.fn(n => n)
+      connectDropTarget: jest.fn((n) => n),
     };
     const props = { ...defaults, ...extras };
-    return shallow(
-      <DroppablePlaceholder {...props}>content</DroppablePlaceholder>
-    );
+    return shallow(<DroppablePlaceholder {...props}>content</DroppablePlaceholder>);
   };
 
   describe('snapshot', () => {

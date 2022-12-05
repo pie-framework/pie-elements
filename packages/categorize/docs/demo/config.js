@@ -2,7 +2,7 @@ const { model } = require('./generate');
 
 module.exports = {
   elements: {
-    'categorize-element': '../..'
+    'categorize-element': '../..',
   },
-  models: [model('1', 'categorize-element')]
+  models: [model('1', 'categorize-element')],
 };

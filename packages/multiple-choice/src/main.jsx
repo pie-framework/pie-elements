@@ -30,11 +30,7 @@ class Main extends React.Component {
       <PreviewLayout>
         {model.partLabel && <p>{model.partLabel}</p>}
         <div className={classNames(classes.root, classes[model.className])}>
-          <MultipleChoice
-            {...model}
-            session={session}
-            onChoiceChanged={onChoiceChanged}
-          />
+          <MultipleChoice {...model} session={session} onChoiceChanged={onChoiceChanged} />
         </div>
       </PreviewLayout>
     );

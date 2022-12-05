@@ -47,7 +47,7 @@ export default class RubricPrint extends HTMLElement {
         }
       },
       50,
-      { leading: false, trailing: true }
+      { leading: false, trailing: true },
     );
   }
   set options(o) {

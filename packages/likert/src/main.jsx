@@ -24,11 +24,7 @@ class Main extends React.Component {
     return (
       <PreviewLayout>
         <div className={classNames(classes.root, classes[model.className])}>
-          <Likert
-            {...model}
-            session={session}
-            onSessionChange={onSessionChange}
-          />
+          <Likert {...model} session={session} onSessionChange={onSessionChange} />
         </div>
       </PreviewLayout>
     );

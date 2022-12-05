@@ -21,12 +21,7 @@ export const fractionSnapTo = (min, max, interval, value) => {
 };
 
 export const snapTo = (min, max, interval, value) => {
-  const out = fractionSnapTo(
-    math.fraction(min),
-    math.fraction(max),
-    math.fraction(interval),
-    math.fraction(value)
-  );
+  const out = fractionSnapTo(math.fraction(min), math.fraction(max), math.fraction(interval), math.fraction(value));
   return math.number(out);
 };
 
@@ -50,12 +45,7 @@ export const fractionRange = (start, end, interval) => {
   if (direction === 'positive' && math.smallerEq(end, start)) {
     throw new Error('start must be < end when doing increments');
   }
-  const compareFn =
-    direction === 'positive'
-      ? math.smallerEq
-      : math.equal(e, end)
-      ? math.largerEq
-      : math.larger;
+  const compareFn = direction === 'positive' ? math.smallerEq : math.equal(e, end) ? math.largerEq : math.larger;
   const out = [];
 
   let next = start;
@@ -87,9 +77,7 @@ export const zeroBasedRange = (start, end, interval) => {
   };
 
   const m = math.mod(a.start, a.interval);
-  const s = math.larger(m, 0)
-    ? math.add(math.subtract(a.start, m), a.interval)
-    : a.start;
+  const s = math.larger(m, 0) ? math.add(math.subtract(a.start, m), a.interval) : a.start;
 
   const r = fractionRange(s, a.end, a.interval);
   const out = a.multiplier === -1 ? r.map((v) => math.multiply(v, -1)) : r;
@@ -121,13 +109,9 @@ export const simpleRange = (start, end, interval) => {
   end = math.fraction(end);
   interval = math.fraction(interval);
 
-  const positiveRange = math.larger(end, 0)
-    ? zeroBasedRange(fmax(0, start), end, interval)
-    : [];
+  const positiveRange = math.larger(end, 0) ? zeroBasedRange(fmax(0, start), end, interval) : [];
 
-  const negativeRange = math.smaller(start, 0)
-    ? zeroBasedRange(fmin(0, end), start, math.multiply(interval, -1))
-    : [];
+  const negativeRange = math.smaller(start, 0) ? zeroBasedRange(fmin(0, end), start, math.multiply(interval, -1)) : [];
   let together = negativeRange.concat(positiveRange);
 
   const out = uniqWith(together, math.equal);
@@ -185,9 +169,7 @@ export const normalizeTicks = (domain, ticks, opts) => {
   const minor = l
     ? limit(fraction(ticks.minor), math.divide(end, 100), math.divide(end, 3))
     : math.fraction(ticks.minor);
-  const major = l
-    ? limit(fraction(ticks.major), minor, math.multiply(minor, 10))
-    : math.fraction(ticks.major);
+  const major = l ? limit(fraction(ticks.major), minor, math.multiply(minor, 10)) : math.fraction(ticks.major);
 
   const m = isMultiple(major, minor);
 
@@ -231,15 +213,8 @@ export const buildTickData = (domain, ticks, opts) => {
 
 export const snapElements = (domain, ticks, elements) => {
   return elements.map((e) => {
-    const size = Number.isFinite(e.size)
-      ? snapTo(0, e.size, ticks.minor, e.size)
-      : undefined;
-    const domainPosition = snapTo(
-      domain.min,
-      domain.max,
-      ticks.minor,
-      e.domainPosition
-    );
+    const size = Number.isFinite(e.size) ? snapTo(0, e.size, ticks.minor, e.size) : undefined;
+    const domainPosition = snapTo(domain.min, domain.max, ticks.minor, e.domainPosition);
     const out = { ...e, domainPosition };
 
     if (Number.isFinite(size)) {

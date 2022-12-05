@@ -29,7 +29,7 @@ var prepareText = function prepareText(text) {
   var txtDom = createElementFromHTML(text);
 
   var div = document.createElement('div');
-  div.innerHTML = '<div separator=\'true\'>'.concat(txtDom.innerHTML, '</div>');
+  div.innerHTML = "<div separator='true'>".concat(txtDom.innerHTML, '</div>');
   txtDom = div;
 
   var allDomElements = Array.from(txtDom.querySelectorAll('*'));
@@ -41,7 +41,7 @@ var prepareText = function prepareText(text) {
   return parseParagraphs(txtDom);
 };
 
-export const generateModel = model => {
+export const generateModel = (model) => {
   if (!model) return model;
 
   // parsing
@@ -83,27 +83,30 @@ export const generateModel = model => {
         end: newEnd,
         // needed for getScore when tokens position is recalculated
         oldStart: token.start,
-        oldEnd: token.end
-      }
+        oldEnd: token.end,
+      },
     ];
   }, []);
 
   return {
     ...model,
     tokens: newTokens,
-    text: modelText
+    text: modelText,
   };
 };
 
-export const generateValidationMessage = config => {
+export const generateValidationMessage = (config) => {
   const { minTokens, maxTokens, maxSelections } = config;
 
-  const tokensMessage = `\nThere should be at least ${minTokens} ` +
-    (maxTokens ? `and at most ${maxTokens} ` : '') + 'tokens defined.';
+  const tokensMessage =
+    `\nThere should be at least ${minTokens} ` + (maxTokens ? `and at most ${maxTokens} ` : '') + 'tokens defined.';
 
-  const selectionsMessage = `\nThere should be at least 1 ` +
-    (maxSelections ? `and at most ${maxSelections} ` : '') + 'token' +
-    (maxSelections ? 's' : '') +  ' selected.';
+  const selectionsMessage =
+    `\nThere should be at least 1 ` +
+    (maxSelections ? `and at most ${maxSelections} ` : '') +
+    'token' +
+    (maxSelections ? 's' : '') +
+    ' selected.';
 
   const message = 'Validation requirements:' + tokensMessage + selectionsMessage;
 

@@ -8,15 +8,13 @@ import Typography from '@material-ui/core/Typography';
 
 const log = debug('@pie-element:text-entry:configure');
 
-const SubHeader = withStyles(theme => ({
+const SubHeader = withStyles((theme) => ({
   subHeader: {
     paddingTop: theme.spacing.unit,
     paddingBottom: theme.spacing.unit,
-    fontSize: '0.7rem'
-  }
-}))(({ classes, children }) => (
-  <Typography className={classes.subHeader}>{children}</Typography>
-));
+    fontSize: '0.7rem',
+  },
+}))(({ classes, children }) => <Typography className={classes.subHeader}>{children}</Typography>);
 
 class RawResponses extends React.Component {
   static propTypes = {
@@ -24,14 +22,11 @@ class RawResponses extends React.Component {
     responses: PropTypes.object.isRequired,
     label: PropTypes.string,
     subHeader: PropTypes.string,
-    children: PropTypes.oneOfType([
-      PropTypes.arrayOf(PropTypes.node),
-      PropTypes.node
-    ]),
-    classes: PropTypes.object.isRequired
+    children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]),
+    classes: PropTypes.object.isRequired,
   };
 
-  onAnswersChange = answers => {
+  onAnswersChange = (answers) => {
     // const valueFeedback =
     //   feedbackType === 'custom'
     //     ? feedback
@@ -47,12 +42,12 @@ class RawResponses extends React.Component {
     this.props.onChange(this.props.responses);
   };
 
-  onIgnoreCaseChange = event => {
+  onIgnoreCaseChange = (event) => {
     this.props.responses.ignoreCase = event.target.checked;
     this.props.onChange(this.props.responses);
   };
 
-  onIgnoreWhitespaceChange = event => {
+  onIgnoreWhitespaceChange = (event) => {
     this.props.responses.ignoreWhitespace = event.target.checked;
     this.props.onChange(this.props.responses);
   };
@@ -67,11 +62,7 @@ class RawResponses extends React.Component {
         <SubHeader>{subHeader}</SubHeader>
         <TagsInput onChange={this.onAnswersChange} tags={responses.values} />
         <div className={classes.checkboxHolder}>
-          <InputCheckbox
-            label="Ignore Case"
-            checked={responses.ignoreCase}
-            onChange={this.onIgnoreCaseChange}
-          />
+          <InputCheckbox label="Ignore Case" checked={responses.ignoreCase} onChange={this.onIgnoreCaseChange} />
           <InputCheckbox
             label="Ignore Whitespace"
             checked={responses.ignoreWhitespace}
@@ -84,20 +75,20 @@ class RawResponses extends React.Component {
   }
 }
 
-const Responses = withStyles(theme => ({
+const Responses = withStyles((theme) => ({
   checkboxHolder: {
     display: 'flex',
-    paddingTop: theme.spacing.unit
+    paddingTop: theme.spacing.unit,
   },
   responses: {
     paddingTop: theme.spacing.unit,
-    paddingBottom: theme.spacing.unit
+    paddingBottom: theme.spacing.unit,
   },
   subHeader: {
     paddingTop: theme.spacing.unit,
     paddingBottom: theme.spacing.unit,
-    fontSize: '0.7rem'
-  }
+    fontSize: '0.7rem',
+  },
 }))(RawResponses);
 
 export default Responses;

@@ -3,18 +3,18 @@ import React from 'react';
 import { Category } from '../category';
 
 describe('category', () => {
-  const wrapper = extras => {
+  const wrapper = (extras) => {
     const defaults = {
       classes: {
         label: 'label',
         incorrect: 'incorrect',
         placeholder: 'placeholder',
-        category: 'category'
+        category: 'category',
       },
       choices: [],
       id: '1',
       label: 'Category Label',
-      grid: { columns: 1, rows: 1 }
+      grid: { columns: 1, rows: 1 },
     };
 
     const props = { ...defaults, ...extras };

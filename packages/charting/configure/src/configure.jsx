@@ -60,33 +60,29 @@ export class Configure extends React.Component {
     super(props);
     const { range = {}, graph } = props.model || {};
 
-
     const gridValues = {
-      range: getGridValues(range, graph.height, true)
+      range: getGridValues(range, graph.height, true),
     };
 
     const labelValues = {
-      range: getLabelValues(range.step || 1)
+      range: getLabelValues(range.step || 1),
     };
 
     this.state = { gridValues, labelValues };
-  };
+  }
 
   static defaultProps = { classes: {} };
 
-  onRationaleChange = (rationale) =>
-    this.props.onModelChanged({ ...this.props.model, rationale });
+  onRationaleChange = (rationale) => this.props.onModelChanged({ ...this.props.model, rationale });
 
-  onPromptChange = (prompt) =>
-    this.props.onModelChanged({ ...this.props.model, prompt });
+  onPromptChange = (prompt) => this.props.onModelChanged({ ...this.props.model, prompt });
 
   onTeacherInstructionsChange = (teacherInstructions) =>
     this.props.onModelChanged({ ...this.props.model, teacherInstructions });
 
-  onChartTypeChange = (chartType) =>
-    this.props.onModelChanged({ ...this.props.model, chartType });
+  onChartTypeChange = (chartType) => this.props.onModelChanged({ ...this.props.model, chartType });
 
-  onConfigChange = config => {
+  onConfigChange = (config) => {
     const { model } = this.props;
     const { gridValues: oldGridValues, labelValues: oldLabelValues } = this.state;
     const updatedModel = { ...model, ...config };
@@ -104,15 +100,8 @@ export class Configure extends React.Component {
   };
 
   render() {
-    const {
-      classes,
-      model,
-      configuration,
-      onConfigurationChanged,
-      onModelChanged,
-      imageSupport,
-      uploadSoundSupport
-    } = this.props;
+    const { classes, model, configuration, onConfigurationChanged, onModelChanged, imageSupport, uploadSoundSupport } =
+      this.props;
     log('[render] model', model);
     const { graph } = model;
     const {
@@ -129,14 +118,8 @@ export class Configure extends React.Component {
       chartDimensions = {},
       withRubric = {},
     } = configuration || {};
-    const {
-      teacherInstructionsEnabled,
-      promptEnabled,
-      rationaleEnabled,
-      spellCheckEnabled,
-      rubricEnabled,
-      errors
-    } = model || {};
+    const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled, spellCheckEnabled, rubricEnabled, errors } =
+      model || {};
     const { gridValues, labelValues } = this.state;
     const showPixeGuides = chartDimensions.showInConfigPanel || true;
 
@@ -155,23 +138,13 @@ export class Configure extends React.Component {
             onChangeConfiguration={onConfigurationChanged}
             groups={{
               Properties: {
-                teacherInstructionsEnabled:
-                  teacherInstructions.settings &&
-                  toggle(teacherInstructions.label),
-                studentInstructionsEnabled:
-                  studentInstructions.settings &&
-                  toggle(studentInstructions.label),
+                teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
+                studentInstructionsEnabled: studentInstructions.settings && toggle(studentInstructions.label),
                 rationaleEnabled: rationale.settings && toggle(rationale.label),
-                spellCheckEnabled:
-                  spellCheck.settings && toggle(spellCheck.label),
+                spellCheckEnabled: spellCheck.settings && toggle(spellCheck.label),
                 promptEnabled: prompt.settings && toggle(prompt.label),
-                scoringType:
-                  scoringType.settings &&
-                  radio(scoringType.label, [
-                    'all or nothing',
-                    'partial scoring',
-                  ]),
-                rubricEnabled: withRubric?.settings && toggle(withRubric?.label)
+                scoringType: scoringType.settings && radio(scoringType.label, ['all or nothing', 'partial scoring']),
+                rubricEnabled: withRubric?.settings && toggle(withRubric?.label),
               },
             }}
           />
@@ -180,15 +153,14 @@ export class Configure extends React.Component {
         <div className={classes.content}>
           <Typography component="div" type="body1">
             <span>
-              This item type provides various types of interactive charts. Depending upon how an item is configured, students can change the heights of bars (or other similar chart elements) created by the author; relabel bars created by the author; and/or add new bars, label them, and set their heights.
+              This item type provides various types of interactive charts. Depending upon how an item is configured,
+              students can change the heights of bars (or other similar chart elements) created by the author; relabel
+              bars created by the author; and/or add new bars, label them, and set their heights.
             </span>
           </Typography>
 
           {teacherInstructionsEnabled && (
-            <InputContainer
-              label={teacherInstructions.label}
-              className={classes.promptHolder}
-            >
+            <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
               <EditableHtml
                 className={classes.prompt}
                 markup={model.teacherInstructions || ''}
@@ -196,8 +168,8 @@ export class Configure extends React.Component {
                 imageSupport={imageSupport}
                 nonEmpty={false}
                 spellCheck={spellCheckEnabled}
-                maxImageWidth={maxImageWidth && maxImageWidth.teacherInstructions || defaultImageMaxWidth}
-                maxImageHeight={maxImageHeight && maxImageHeight.teacherInstructions || defaultImageMaxHeight}
+                maxImageWidth={(maxImageWidth && maxImageWidth.teacherInstructions) || defaultImageMaxWidth}
+                maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
                 uploadSoundSupport={uploadSoundSupport}
                 languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               />
@@ -205,10 +177,7 @@ export class Configure extends React.Component {
           )}
 
           {promptEnabled && (
-            <InputContainer
-              label={prompt.label}
-              className={classes.promptHolder}
-            >
+            <InputContainer label={prompt.label} className={classes.promptHolder}>
               <EditableHtml
                 className={classes.prompt}
                 markup={model.prompt}
@@ -226,18 +195,15 @@ export class Configure extends React.Component {
           )}
 
           {rationaleEnabled && (
-            <InputContainer
-              label={rationale.label || 'Rationale'}
-              className={classes.promptHolder}
-            >
+            <InputContainer label={rationale.label || 'Rationale'} className={classes.promptHolder}>
               <EditableHtml
                 className={classes.prompt}
                 markup={model.rationale || ''}
                 onChange={this.onRationaleChange}
                 imageSupport={imageSupport}
                 spellCheck={spellCheckEnabled}
-                maxImageWidth={maxImageWidth && maxImageWidth.rationale || defaultImageMaxWidth}
-                maxImageHeight={maxImageHeight && maxImageHeight.rationale || defaultImageMaxHeight}
+                maxImageWidth={(maxImageWidth && maxImageWidth.rationale) || defaultImageMaxWidth}
+                maxImageHeight={(maxImageHeight && maxImageHeight.rationale) || defaultImageMaxHeight}
                 uploadSoundSupport={uploadSoundSupport}
                 languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               />
