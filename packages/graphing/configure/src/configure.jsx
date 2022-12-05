@@ -138,7 +138,6 @@ export class Configure extends React.Component {
       spellCheckEnabled,
       teacherInstructionsEnabled,
       titleEnabled,
-      rubricEnabled,
     } = model || {};
 
     log('[render] model', model);
@@ -293,7 +292,6 @@ export class Configure extends React.Component {
           <GraphingConfig
             authoring={authoring}
             availableTools={availableTools}
-            errors={toolbarToolsError}
             gridConfigurations={gridConfigurations}
             graphDimensions={graphDimensions}
             labelsPlaceholders={labelsPlaceholders}
