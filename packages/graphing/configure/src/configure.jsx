@@ -105,7 +105,6 @@ export class Configure extends React.Component {
       classes,
       model,
       configuration,
-      errors = {},
       onConfigurationChanged,
       onModelChanged,
       imageSupport,
@@ -132,6 +131,7 @@ export class Configure extends React.Component {
       withRubric = {},
     } = configuration || {};
     const {
+      errors = {},
       labelsEnabled,
       promptEnabled,
       rationaleEnabled,
