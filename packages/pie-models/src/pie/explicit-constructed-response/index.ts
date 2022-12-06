@@ -1,10 +1,7 @@
 import { PieModel } from '../../PieModel';
 import { PromptConfig } from '../../PromptConfig';
 import { CommonConfigSettings } from '../../CommonConfigSettings';
-import {
-  ConfigureMaxImageDimensionsProp,
-  ConfigureProp,
-} from '../ConfigurationProp';
+import { ConfigureMaxImageDimensionsProp, ConfigureProp } from '../ConfigurationProp';
 
 export interface Choice {
   /** The value for the choice */
@@ -96,9 +93,7 @@ export interface ExplicitConstructedResponsePie extends PieModel {
  * Config Object for @pie-elements/explicit-constructed-response
  * @additionalProperties false
  */
-export interface ExplicitConstructedResponseConfigure
-  extends PromptConfig,
-    CommonConfigSettings {
+export interface ExplicitConstructedResponseConfigure extends PromptConfig, CommonConfigSettings {
   /**
    * Choices configuration
    */

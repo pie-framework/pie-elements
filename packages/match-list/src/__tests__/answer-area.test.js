@@ -9,7 +9,7 @@ describe('AnswerArea', () => {
   const defaultProps = {
     model: model('1'),
     session: {},
-    classes: {}
+    classes: {},
   };
 
   let wrapper;
@@ -30,7 +30,7 @@ describe('AnswerArea', () => {
         it(title, () => {
           wrapper.setProps({
             ...defaultProps,
-            ...extraProps
+            ...extraProps,
           });
 
           const value = wrapper.instance().getCorrectOrIncorrectMap();
@@ -44,55 +44,54 @@ describe('AnswerArea', () => {
         'returns an empty object for modes different than evaluate',
         {
           model: model('1', {
-            mode: 'gather'
-          })
+            mode: 'gather',
+          }),
         },
-        {}
+        {},
       );
 
       mkTestForFn(
         'returns an empty object for modes different than evaluate',
         {
           model: model('1', {
-            mode: 'gather'
-          })
+            mode: 'gather',
+          }),
         },
-        {}
+        {},
       );
 
       mkTestForFn(
         'returns an object with appropriate values when mode is evaluate',
         {
           model: model('1', {
-            mode: 'evaluate'
-          })
+            mode: 'evaluate',
+          }),
         },
-        { 1: false, 2: false, 3: false, 4: false }
+        { 1: false, 2: false, 3: false, 4: false },
       );
       mkTestForFn(
         'returns an array with appropriate values',
         {
           model: model('1', {
-            mode: 'evaluate'
+            mode: 'evaluate',
           }),
           session: {
-            value: { 1: 1, 3: 3, 4: 4, 2: 2 }
-          }
+            value: { 1: 1, 3: 3, 4: 4, 2: 2 },
+          },
         },
-        { 1: true, 2: true, 3: true, 4: true }
+        { 1: true, 2: true, 3: true, 4: true },
       );
 
       mkTestForFn(
         'returns an object with true as value for each index when showCorrect is true',
         {
           model: model('1', {
-            mode: 'evaluate'
+            mode: 'evaluate',
           }),
-          showCorrect: true
+          showCorrect: true,
         },
-        { 1: true, 2: true, 3: true, 4: true }
+        { 1: true, 2: true, 3: true, 4: true },
       );
-
     });
 
     describe('getAnswerFromSession', () => {
@@ -103,7 +102,7 @@ describe('AnswerArea', () => {
         it(title, () => {
           wrapper.setProps({
             ...defaultProps,
-            ...extraProps
+            ...extraProps,
           });
 
           indexes.forEach((i, key) => {
@@ -118,23 +117,23 @@ describe('AnswerArea', () => {
         'returns an empty object for an empty session',
         {
           model: model('1', {
-            mode: 'gather'
-          })
+            mode: 'gather',
+          }),
         },
         0,
-        {}
+        {},
       );
 
       mkTestForFn(
         'returns an appropriate answer for filled session',
         {
           model: model('1', {
-            mode: 'gather'
+            mode: 'gather',
           }),
-          session: { value: { 1: 2, 2: 1, 3: 4, 4: 3 } }
+          session: { value: { 1: 2, 2: 1, 3: 4, 4: 3 } },
         },
         1,
-        { id: 2, title: "Answer 2" }
+        { id: 2, title: 'Answer 2' },
       );
 
       mkTestForFn(
@@ -142,14 +141,13 @@ describe('AnswerArea', () => {
         {
           model: model('1', {
             mode: 'gather',
-            showCorrect: true
+            showCorrect: true,
           }),
-          session: { value: { 1: 1, 3: 3, 4: 4, 2: 2 } }
+          session: { value: { 1: 1, 3: 3, 4: 4, 2: 2 } },
         },
         [1, 2, 3, 4],
-        [answer(1), answer(2), answer(3), answer(4)]
+        [answer(1), answer(2), answer(3), answer(4)],
       );
-
     });
   });
 });

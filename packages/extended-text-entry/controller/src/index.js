@@ -14,7 +14,7 @@ export async function createDefaultModel(model = {}) {
   };
 }
 
-export const normalize = question => ({
+export const normalize = (question) => ({
   ...defaults,
   feedbackEnabled: true,
   rationaleEnabled: true,
@@ -24,7 +24,6 @@ export const normalize = question => ({
   playerSpellCheckEnabled: true,
   ...question,
 });
-
 
 export async function model(question, session, env) {
   log('[question]', question);
@@ -61,7 +60,7 @@ export async function model(question, session, env) {
       break;
   }
 
-  return fb.then(feedback => ({
+  return fb.then((feedback) => ({
     prompt: normalizedQuestion.promptEnabled ? normalizedQuestion.prompt : null,
     dimensions: normalizedQuestion.dimensions,
     customKeys: normalizedQuestion.customKeys || [],
@@ -73,7 +72,7 @@ export async function model(question, session, env) {
     specialInput: normalizedQuestion.specialInput,
     equationEditor,
     spellCheckEnabled: normalizedQuestion.playerSpellCheckEnabled,
-    playersToolbarPosition: normalizedQuestion.playersToolbarPosition || 'bottom'
+    playersToolbarPosition: normalizedQuestion.playersToolbarPosition || 'bottom',
   }));
 }
 
@@ -81,6 +80,6 @@ export async function outcome(/*question, session, env*/) {
   return {
     score: 0,
     completed: 'n/a',
-    note: 'Requires manual scoring'
+    note: 'Requires manual scoring',
   };
 }

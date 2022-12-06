@@ -1,6 +1,6 @@
 export const ResponseTypes = {
   advanced: 'Advanced Multi',
-  simple: 'Simple'
+  simple: 'Simple',
 };
 
 export const generateValidationMessage = (model = {}, config = {}) => {
@@ -8,12 +8,16 @@ export const generateValidationMessage = (model = {}, config = {}) => {
   const { responseType } = model;
   let responseAreasMessage = '';
 
-  const answersMessage = '\nAll correct answers (the primary and any alternates) should not be empty and should be unique.';
+  const answersMessage =
+    '\nAll correct answers (the primary and any alternates) should not be empty and should be unique.';
 
   if (responseType === 'Advanced Multi') {
-    responseAreasMessage = '\nThere should be at least 1 ' +
+    responseAreasMessage =
+      '\nThere should be at least 1 ' +
       (maxResponseAreas ? `and at most ${maxResponseAreas} ` : '') +
-      'response area' + (maxResponseAreas ? 's' : '') + ' defined.';
+      'response area' +
+      (maxResponseAreas ? 's' : '') +
+      ' defined.';
   }
 
   return 'Validation requirements:' + answersMessage + responseAreasMessage;

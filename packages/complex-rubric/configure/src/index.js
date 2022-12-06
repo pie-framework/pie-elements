@@ -31,23 +31,29 @@ const prepareCustomizationObject = (config, model) => {
 
   return {
     configuration,
-    model
+    model,
   };
 };
 
 export default class ComplexRubricConfigureElement extends HTMLElement {
-  static createDefaultModel = ({ rubrics: { simpleRubric = {}, multiTraitRubric = {} } = { simpleRubric: {}, multiTraitRubric: {}}, ...model } = {}, defaults = {}) => ({
+  static createDefaultModel = (
+    {
+      rubrics: { simpleRubric = {}, multiTraitRubric = {} } = { simpleRubric: {}, multiTraitRubric: {} },
+      ...model
+    } = {},
+    defaults = {},
+  ) => ({
     ...defaults,
     ...model,
     rubrics: {
       simpleRubric: {
         ...(defaults.rubrics || {}).simpleRubric,
-        ...simpleRubric
+        ...simpleRubric,
       },
       multiTraitRubric: {
         ...(defaults.rubrics || {}).multiTraitRubric,
-        ...multiTraitRubric
-      }
+        ...multiTraitRubric,
+      },
     },
   });
 
@@ -96,7 +102,7 @@ export default class ComplexRubricConfigureElement extends HTMLElement {
     this._render();
   }
 
-  onModelUpdated = e => {
+  onModelUpdated = (e) => {
     if (e.target === this) {
       return;
     }

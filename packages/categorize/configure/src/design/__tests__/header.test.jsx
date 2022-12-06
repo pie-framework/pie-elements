@@ -6,14 +6,14 @@ import { Header } from '../header';
 describe('Header', () => {
   let w;
   let onAdd = jest.fn();
-  const wrapper = extras => {
+  const wrapper = (extras) => {
     const defaults = {
       classes: {
-        header: 'header'
+        header: 'header',
       },
       label: 'Header',
       className: 'className',
-      onAdd
+      onAdd,
     };
     const props = { ...defaults, ...extras };
     return shallow(<Header {...props} />);

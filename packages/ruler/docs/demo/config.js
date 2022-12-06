@@ -2,7 +2,7 @@ const { model } = require('./generate');
 
 module.exports = {
   elements: {
-    'ruler-element': '../..'
+    'ruler-element': '../..',
   },
-  models: [model('1', 'ruler-element')]
+  models: [model('1', 'ruler-element')],
 };

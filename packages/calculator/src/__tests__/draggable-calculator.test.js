@@ -6,14 +6,7 @@ describe('DraggableCalculator', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow(
-      <DraggableCalculator
-        mode="basic"
-        show={true}
-        onClose={jest.fn()}
-        classes={{}}
-      />
-    );
+    wrapper = shallow(<DraggableCalculator mode="basic" show={true} onClose={jest.fn()} classes={{}} />);
   });
 
   describe('snapshot', () => {

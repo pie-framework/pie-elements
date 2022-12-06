@@ -11,7 +11,7 @@ const GripIcon = ({ style }) => {
     <span style={style}>
       <MoreVert
         style={{
-          margin: '0 -16px'
+          margin: '0 -16px',
         }}
       />
       <MoreVert />
@@ -23,12 +23,12 @@ GripIcon.propTypes = {
   style: PropTypes.object,
 };
 
-export const BlankContent = withStyles(theme => ({
+export const BlankContent = withStyles((theme) => ({
   choice: {
-    border: `solid 0px ${theme.palette.primary.main}`
+    border: `solid 0px ${theme.palette.primary.main}`,
   },
-  disabled: {}
-}))(props => {
+  disabled: {},
+}))((props) => {
   const { connectDragSource, choice, onClick, onRemoveChoice } = props;
 
   return connectDragSource(
@@ -43,7 +43,7 @@ export const BlankContent = withStyles(theme => ({
         borderRadius: '3px',
         overflow: 'hidden',
         position: 'relative',
-        padding: '8px 35px 8px 35px'
+        padding: '8px 35px 8px 35px',
       }}
       onClick={onClick}
     >
@@ -53,12 +53,12 @@ export const BlankContent = withStyles(theme => ({
           top: '6px',
           left: '15px',
           color: '#9B9B9B',
-          zIndex: 2
+          zIndex: 2,
         }}
       />
       <span
         dangerouslySetInnerHTML={{
-          __html: choice.value
+          __html: choice.value,
         }}
       />
       <Delete
@@ -67,7 +67,7 @@ export const BlankContent = withStyles(theme => ({
           top: '6px',
           right: '0',
           color: '#9B9B9B',
-          zIndex: 2
+          zIndex: 2,
         }}
         onClick={(e) => {
           e.preventDefault();
@@ -76,7 +76,7 @@ export const BlankContent = withStyles(theme => ({
           onRemoveChoice(e);
         }}
       />
-    </div>
+    </div>,
   );
 });
 
@@ -93,12 +93,12 @@ export const tileSource = {
     return {
       id: props.targetId,
       value: props.choice,
-      instanceId: props.instanceId
+      instanceId: props.instanceId,
     };
-  }
+  },
 };
 
 export default DragSource('drag-in-the-blank-choice', tileSource, (connect, monitor) => ({
   connectDragSource: connect.dragSource(),
-  isDragging: monitor.isDragging()
+  isDragging: monitor.isDragging(),
 }))(BlankContent);

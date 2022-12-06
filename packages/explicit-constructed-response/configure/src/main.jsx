@@ -4,10 +4,10 @@ import cloneDeep from 'lodash/cloneDeep';
 import isEmpty from 'lodash/isEmpty';
 import pick from 'lodash/pick';
 import throttle from 'lodash/throttle';
-import EditableHtml, {ALL_PLUGINS} from '@pie-lib/editable-html';
+import EditableHtml, { ALL_PLUGINS } from '@pie-lib/editable-html';
 // import EditableHtmlNew from 'editable-html';
-import {InputContainer, layout, settings} from '@pie-lib/config-ui';
-import {withStyles} from '@material-ui/core/styles';
+import { InputContainer, layout, settings } from '@pie-lib/config-ui';
+import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Info from '@material-ui/icons/Info';
 import Tooltip from '@material-ui/core/Tooltip';
@@ -15,48 +15,48 @@ import Tooltip from '@material-ui/core/Tooltip';
 import ECRToolbar from './ecr-toolbar';
 import AlternateResponses from './alternateResponses';
 import { getAdjustedLength } from './markupUtils';
-import {generateValidationMessage} from './utils';
+import { generateValidationMessage } from './utils';
 
 const { toggle, Panel } = settings;
 
-const styles = theme => ({
+const styles = (theme) => ({
   promptHolder: {
     width: '100%',
     paddingBottom: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit * 2
+    marginBottom: theme.spacing.unit * 2,
   },
   prompt: {
     paddingTop: theme.spacing.unit * 2,
-    width: '100%'
+    width: '100%',
   },
   markup: {
     minHeight: '100px',
     paddingTop: theme.spacing.unit * 2,
     width: '100%',
     '& [data-slate-editor="true"]': {
-      minHeight: '100px'
-    }
+      minHeight: '100px',
+    },
   },
   design: {
-    paddingTop: theme.spacing.unit * 3
+    paddingTop: theme.spacing.unit * 3,
   },
   choiceConfiguration: {
     paddingTop: theme.spacing.unit * 2,
-    paddingBottom: theme.spacing.unit * 2
+    paddingBottom: theme.spacing.unit * 2,
   },
   switchElement: {
     justifyContent: 'space-between',
-    margin: 0
+    margin: 0,
   },
   addButton: {
-    float: 'right'
+    float: 'right',
   },
   text: {
     color: '#495B8F',
     fontFamily: 'Cerebri Sans',
     fontSize: '16px',
     lineHeight: '19px',
-    marginTop: theme.spacing.unit * 4
+    marginTop: theme.spacing.unit * 4,
   },
   tooltip: {
     fontSize: '12px',
@@ -66,15 +66,15 @@ const styles = theme => ({
   errorText: {
     fontSize: '12px',
     color: 'red',
-    padding: '5px 0'
+    padding: '5px 0',
   },
   flexContainer: {
     display: 'flex',
-    alignItems: 'end'
-  }
+    alignItems: 'end',
+  },
 });
 
-const createElementFromHTML = htmlString => {
+const createElementFromHTML = (htmlString) => {
   const div = document.createElement('div');
 
   div.innerHTML = htmlString.trim();
@@ -92,16 +92,16 @@ export class Main extends React.Component {
     classes: PropTypes.object.isRequired,
     imageSupport: PropTypes.shape({
       add: PropTypes.func.isRequired,
-      delete: PropTypes.func.isRequired
-    })
+      delete: PropTypes.func.isRequired,
+    }),
   };
 
   state = {};
 
   componentDidMount() {
     const {
-      model: { slateMarkup, choices, maxLengthPerChoice = []},
-      onModelChanged
+      model: { slateMarkup, choices, maxLengthPerChoice = [] },
+      onModelChanged,
     } = this.props;
     const undefinedLengths = !maxLengthPerChoice.length;
 
@@ -109,14 +109,14 @@ export class Main extends React.Component {
 
     // calculate maxLengthPerChoice array if it is not defined or defined incorrectly
     Object.values(choices).forEach((choice, index) => {
-      const labelLengthsArr = (choice || []).map(choice => (choice.label || '').length);
+      const labelLengthsArr = (choice || []).map((choice) => (choice.label || '').length);
       const length = Math.max(...labelLengthsArr);
 
       if (
-        undefinedLengths
-        || !maxLengthPerChoice[index]
-        || maxLengthPerChoice[index] < length
-        || maxLengthPerChoice[index] > length + 10
+        undefinedLengths ||
+        !maxLengthPerChoice[index] ||
+        maxLengthPerChoice[index] < length ||
+        maxLengthPerChoice[index] > length + 10
       ) {
         maxLengthPerChoice[index] = getAdjustedLength(length);
       }
@@ -124,65 +124,65 @@ export class Main extends React.Component {
 
     onModelChanged({
       ...this.props.model,
-      maxLengthPerChoice
+      maxLengthPerChoice,
     });
   }
 
-  onModelChange = newVal => {
+  onModelChange = (newVal) => {
     this.props.onModelChanged({
       ...this.props.model,
-      ...newVal
+      ...newVal,
     });
   };
 
-  onPromptChanged = prompt => {
+  onPromptChanged = (prompt) => {
     this.props.onModelChanged({
       ...this.props.model,
-      prompt
+      prompt,
     });
   };
 
-  onRationaleChanged = rationale => {
+  onRationaleChanged = (rationale) => {
     this.props.onModelChanged({
       ...this.props.model,
-      rationale
+      rationale,
     });
   };
 
-  onTeacherInstructionsChanged = teacherInstructions => {
+  onTeacherInstructionsChanged = (teacherInstructions) => {
     const { model, onModelChanged } = this.props;
 
     onModelChanged({
       ...model,
-      teacherInstructions
+      teacherInstructions,
     });
   };
 
-  onMarkupChanged = slateMarkup => {
+  onMarkupChanged = (slateMarkup) => {
     this.props.onModelChanged({
       ...this.props.model,
-      slateMarkup
+      slateMarkup,
     });
   };
 
-  onResponsesChanged = choices => {
+  onResponsesChanged = (choices) => {
     this.props.onModelChanged({
       ...this.props.model,
-      choices
+      choices,
     });
   };
 
-  onLengthChanged = maxLengthPerChoice => {
+  onLengthChanged = (maxLengthPerChoice) => {
     const { model, onModelChanged } = this.props;
 
     onModelChanged({
       ...model,
-      maxLengthPerChoice
+      maxLengthPerChoice,
     });
   };
 
   onChangeResponse = (index, newVal) => {
-    const { model, onModelChanged} = this.props;
+    const { model, onModelChanged } = this.props;
     const { choices } = model;
     let { maxLengthPerChoice } = model;
     const newValLength = (newVal || '').length;
@@ -193,15 +193,15 @@ export class Main extends React.Component {
       // add default values for missing choices up to the new index position
       const nbOfMissingChoices = index > maxLengthPerChoice.length ? index - maxLengthPerChoice.length : 0;
 
-      maxLengthPerChoice = [ ...maxLengthPerChoice, ...Array(nbOfMissingChoices).fill(1) ];
+      maxLengthPerChoice = [...maxLengthPerChoice, ...Array(nbOfMissingChoices).fill(1)];
 
       maxLengthPerChoice.splice(index, 0, getAdjustedLength(newValLength));
     } else {
       choices[index][0].label = newVal || '';
 
       if (
-        maxLengthPerChoice
-        && (maxLengthPerChoice[index] < newValLength || maxLengthPerChoice[index] > newValLength + 10)
+        maxLengthPerChoice &&
+        (maxLengthPerChoice[index] < newValLength || maxLengthPerChoice[index] > newValLength + 10)
       ) {
         maxLengthPerChoice[index] = getAdjustedLength(newValLength);
       }
@@ -210,19 +210,17 @@ export class Main extends React.Component {
     onModelChanged({
       ...model,
       choices,
-      maxLengthPerChoice
+      maxLengthPerChoice,
     });
   };
 
-  onChange = markup => {
+  onChange = (markup) => {
     const {
       model: { choices, maxLengthPerChoice },
-      onModelChanged
+      onModelChanged,
     } = this.props;
     const domMarkup = createElementFromHTML(markup);
-    const allRespAreas = domMarkup.querySelectorAll(
-      '[data-type="explicit_constructed_response"]'
-    );
+    const allRespAreas = domMarkup.querySelectorAll('[data-type="explicit_constructed_response"]');
 
     const allChoices = {};
     const updatedMaxLengthPerChoice = [];
@@ -233,7 +231,7 @@ export class Main extends React.Component {
       if (newChoices) {
         newChoices[0] = {
           label: el.dataset.value || '',
-          value: '0'
+          value: '0',
         };
 
         updatedMaxLengthPerChoice[index] = maxLengthPerChoice[el.dataset.index];
@@ -243,69 +241,74 @@ export class Main extends React.Component {
       el.dataset.index = index;
     });
 
-    const callback = () => onModelChanged({
-      ...this.props.model,
-      choices: allChoices,
-      slateMarkup: domMarkup.innerHTML,
-      maxLengthPerChoice: updatedMaxLengthPerChoice
-    });
+    const callback = () =>
+      onModelChanged({
+        ...this.props.model,
+        choices: allChoices,
+        slateMarkup: domMarkup.innerHTML,
+        maxLengthPerChoice: updatedMaxLengthPerChoice,
+      });
 
-    this.setState({
-      cachedChoices: undefined
-    }, callback);
+    this.setState(
+      {
+        cachedChoices: undefined,
+      },
+      callback,
+    );
   };
 
-  onHandleAreaChange = throttle((nodes) => {
-    const {
-      model: { choices },
-      onModelChanged
-    } = this.props;
-    const { cachedChoices } = this.state;
+  onHandleAreaChange = throttle(
+    (nodes) => {
+      const {
+        model: { choices },
+        onModelChanged,
+      } = this.props;
+      const { cachedChoices } = this.state;
 
-    if (!nodes) {
-      return;
-    }
-
-    const newChoices = choices ? cloneDeep(choices) : {};
-    const newCachedChoices = cachedChoices ? cloneDeep(cachedChoices) : {};
-
-    nodes.forEach((node) => {
-      const keyForNode = node.data.get('index');
-
-      if (!newChoices[keyForNode] && newCachedChoices[keyForNode]) {
-        Object.assign(newChoices, pick(newCachedChoices, keyForNode));
-
-        if (newCachedChoices.hasOwnProperty(keyForNode)) {
-          delete newCachedChoices[keyForNode];
-        }
-      } else {
-        Object.assign(newCachedChoices, pick(newChoices, keyForNode));
-
-        if (newChoices.hasOwnProperty(keyForNode)) {
-          delete newChoices[keyForNode];
-        }
+      if (!nodes) {
+        return;
       }
-    });
 
-    const callback = () => onModelChanged({
-      ...this.props.model,
-      choices: newChoices
-    });
+      const newChoices = choices ? cloneDeep(choices) : {};
+      const newCachedChoices = cachedChoices ? cloneDeep(cachedChoices) : {};
 
-    this.setState({
-      cachedChoices: newCachedChoices
-    }, callback);
-  }, 500, { trailing: false, leading: true });
+      nodes.forEach((node) => {
+        const keyForNode = node.data.get('index');
+
+        if (!newChoices[keyForNode] && newCachedChoices[keyForNode]) {
+          Object.assign(newChoices, pick(newCachedChoices, keyForNode));
+
+          if (newCachedChoices.hasOwnProperty(keyForNode)) {
+            delete newCachedChoices[keyForNode];
+          }
+        } else {
+          Object.assign(newCachedChoices, pick(newChoices, keyForNode));
+
+          if (newChoices.hasOwnProperty(keyForNode)) {
+            delete newChoices[keyForNode];
+          }
+        }
+      });
+
+      const callback = () =>
+        onModelChanged({
+          ...this.props.model,
+          choices: newChoices,
+        });
+
+      this.setState(
+        {
+          cachedChoices: newCachedChoices,
+        },
+        callback,
+      );
+    },
+    500,
+    { trailing: false, leading: true },
+  );
 
   render() {
-    const {
-      classes,
-      model,
-      configuration,
-      onConfigurationChanged,
-      imageSupport,
-      uploadSoundSupport
-    } = this.props;
+    const { classes, model, configuration, onConfigurationChanged, imageSupport, uploadSoundSupport } = this.props;
     const {
       prompt = {},
       partialScoring = {},
@@ -326,7 +329,7 @@ export class Main extends React.Component {
       maxLengthPerChoiceEnabled,
       spellCheckEnabled,
       errors,
-      rubricEnabled
+      rubricEnabled,
     } = model || {};
     const toolbarOpts = {};
 
@@ -351,40 +354,28 @@ export class Main extends React.Component {
             <Panel
               model={model}
               configuration={configuration}
-              onChangeModel={model => this.onModelChange(model)}
-              onChangeConfiguration={configuration =>
-                onConfigurationChanged(configuration, true)
-              }
+              onChangeModel={(model) => this.onModelChange(model)}
+              onChangeConfiguration={(configuration) => onConfigurationChanged(configuration, true)}
               groups={{
                 Settings: {
-                  partialScoring:
-                    partialScoring.settings && toggle(partialScoring.label),
-                  maxLengthPerChoiceEnabled:
-                    maxLengthPerChoice.settings && toggle(maxLengthPerChoice.label),
+                  partialScoring: partialScoring.settings && toggle(partialScoring.label),
+                  maxLengthPerChoiceEnabled: maxLengthPerChoice.settings && toggle(maxLengthPerChoice.label),
                 },
                 Properties: {
-                  teacherInstructionsEnabled:
-                    teacherInstructions.settings &&
-                    toggle(teacherInstructions.label),
-                  rationaleEnabled:
-                    rationale.settings && toggle(rationale.label),
+                  teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
+                  rationaleEnabled: rationale.settings && toggle(rationale.label),
                   promptEnabled: prompt.settings && toggle(prompt.label),
-                  spellCheckEnabled:
-                  spellCheck.settings && toggle(spellCheck.label),
-                  playerSpellCheckEnabled:
-                  playerSpellCheck.settings && toggle(playerSpellCheck.label),
-                  rubricEnabled: withRubric?.settings && toggle(withRubric?.label)
-                }
+                  spellCheckEnabled: spellCheck.settings && toggle(spellCheck.label),
+                  playerSpellCheckEnabled: playerSpellCheck.settings && toggle(playerSpellCheck.label),
+                  rubricEnabled: withRubric?.settings && toggle(withRubric?.label),
+                },
               }}
             />
           }
         >
           <div>
             {teacherInstructionsEnabled && (
-              <InputContainer
-                label={teacherInstructions.label}
-                className={classes.promptHolder}
-              >
+              <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
                 <EditableHtml
                   className={classes.prompt}
                   markup={model.teacherInstructions || ''}
@@ -393,18 +384,15 @@ export class Main extends React.Component {
                   nonEmpty={false}
                   toolbarOpts={toolbarOpts}
                   spellCheck={spellCheckEnabled}
-                  maxImageWidth={maxImageWidth && maxImageWidth.teacherInstructions || defaultImageMaxWidth}
-                  maxImageHeight={maxImageHeight && maxImageHeight.teacherInstructions || defaultImageMaxHeight}
+                  maxImageWidth={(maxImageWidth && maxImageWidth.teacherInstructions) || defaultImageMaxWidth}
+                  maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
                   uploadSoundSupport={uploadSoundSupport}
                   languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
                 />
               </InputContainer>
             )}
             {promptEnabled && (
-              <InputContainer
-                label={prompt.label}
-                className={classes.promptHolder}
-              >
+              <InputContainer label={prompt.label} className={classes.promptHolder}>
                 <EditableHtml
                   className={classes.prompt}
                   markup={model.prompt}
@@ -432,17 +420,15 @@ export class Main extends React.Component {
               </InputContainer>
             )}
             <div className={classes.flexContainer}>
-              <Typography className={classes.text}>
-                Define Template, Choices, and Correct Responses
-              </Typography>
+              <Typography className={classes.text}>Define Template, Choices, and Correct Responses</Typography>
               <Tooltip
-                classes={{tooltip: classes.tooltip}}
+                classes={{ tooltip: classes.tooltip }}
                 disableFocusListener
                 disableTouchListener
                 placement={'right'}
                 title={validationMessage}
               >
-                <Info fontSize={'small'} color={'primary'} style={{ marginLeft: '5px' }}/>
+                <Info fontSize={'small'} color={'primary'} style={{ marginLeft: '5px' }} />
               </Tooltip>
             </div>
             {responseAreasError && <div className={classes.errorText}>{responseAreasError}</div>}
@@ -454,20 +440,16 @@ export class Main extends React.Component {
               responseAreaProps={{
                 type: 'explicit-constructed-response',
                 options: {
-                  duplicates: true
+                  duplicates: true,
                 },
                 maxResponseAreas: maxResponseAreas,
                 respAreaToolbar: (node, value, onToolbarDone) => {
                   const { model } = this.props;
-                  const correctChoice = (model.choices[
-                    node.data.get('index')
-                  ] || [])[0];
+                  const correctChoice = (model.choices[node.data.get('index')] || [])[0];
 
                   return () => (
                     <ECRToolbar
-                      onChangeResponse={newVal =>
-                        this.onChangeResponse(node.data.get('index'), newVal)
-                      }
+                      onChangeResponse={(newVal) => this.onChangeResponse(node.data.get('index'), newVal)}
                       node={node}
                       value={value}
                       onToolbarDone={onToolbarDone}
@@ -476,7 +458,7 @@ export class Main extends React.Component {
                   );
                 },
                 error: () => choicesErrors,
-                onHandleAreaChange: this.onHandleAreaChange
+                onHandleAreaChange: this.onHandleAreaChange,
               }}
               className={classes.markup}
               markup={model.slateMarkup}
@@ -504,10 +486,7 @@ export class Main extends React.Component {
               choicesErrors={choicesErrors}
             />
             {rationaleEnabled && (
-              <InputContainer
-                label={rationale.label}
-                className={classes.promptHolder}
-              >
+              <InputContainer label={rationale.label} className={classes.promptHolder}>
                 <EditableHtml
                   className={classes.prompt}
                   markup={model.rationale || ''}
@@ -515,8 +494,8 @@ export class Main extends React.Component {
                   imageSupport={imageSupport}
                   toolbarOpts={toolbarOpts}
                   spellCheck={spellCheckEnabled}
-                  maxImageWidth={maxImageWidth && maxImageWidth.rationale || defaultImageMaxWidth}
-                  maxImageHeight={maxImageHeight && maxImageHeight.rationale || defaultImageMaxHeight}
+                  maxImageWidth={(maxImageWidth && maxImageWidth.rationale) || defaultImageMaxWidth}
+                  maxImageHeight={(maxImageHeight && maxImageHeight.rationale) || defaultImageMaxHeight}
                   uploadSoundSupport={uploadSoundSupport}
                   languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
                 />

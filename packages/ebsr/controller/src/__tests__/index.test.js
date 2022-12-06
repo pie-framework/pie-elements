@@ -5,7 +5,7 @@ const PART_A = 'partA';
 const PART_B = 'partB';
 
 jest.mock('../utils', () => ({
-  isResponseCorrect: jest.fn()
+  isResponseCorrect: jest.fn(),
 }));
 
 describe('controller', () => {
@@ -23,22 +23,22 @@ describe('controller', () => {
             correct: true,
             feedback: {
               type: 'custom',
-              value: 'foo'
-            }
+              value: 'foo',
+            },
           },
           {
             value: 'green',
             label: 'Green',
             feedback: {
-              type: 'default'
-            }
-          }
+              type: 'default',
+            },
+          },
         ],
         choicePrefix: 'numbers',
         prompt: `prompt ${PART_A}`,
         promptEnabled: true,
         lockChoiceOrder: true,
-        partialScoring: false
+        partialScoring: false,
       },
       partB: {
         choiceMode: 'checkbox',
@@ -50,32 +50,32 @@ describe('controller', () => {
             correct: true,
             feedback: {
               type: 'custom',
-              value: 'foo'
-            }
+              value: 'foo',
+            },
           },
           {
             value: 'purple',
             label: 'Purple',
             feedback: {
-              type: 'default'
-            }
+              type: 'default',
+            },
           },
           {
             value: 'c',
-            correct: true
-          }
+            correct: true,
+          },
         ],
         choicePrefix: 'numbers',
         prompt: `prompt ${PART_B}`,
         promptEnabled: true,
         lockChoiceOrder: true,
-        partialScoring: false
-      }
+        partialScoring: false,
+      },
     };
   });
 
   describe('outcome partialScoring test', () => {
-    const mkQuestion = extra => ({
+    const mkQuestion = (extra) => ({
       partA: {
         choiceMode: 'radio',
         feedbackEnabled: true,
@@ -86,8 +86,8 @@ describe('controller', () => {
             correct: true,
             feedback: {
               type: 'custom',
-              value: 'foo'
-            }
+              value: 'foo',
+            },
           },
           {
             value: 'blue',
@@ -95,21 +95,21 @@ describe('controller', () => {
             correct: true,
             feedback: {
               type: 'custom',
-              value: 'foo'
-            }
+              value: 'foo',
+            },
           },
           {
             value: 'green',
             label: 'Green',
             feedback: {
-              type: 'default'
-            }
-          }
+              type: 'default',
+            },
+          },
         ],
         choicePrefix: 'numbers',
         prompt: `prompt ${PART_A}`,
         promptEnabled: true,
-        lockChoiceOrder: true
+        lockChoiceOrder: true,
       },
       partB: {
         choiceMode: 'radio',
@@ -121,8 +121,8 @@ describe('controller', () => {
             correct: true,
             feedback: {
               type: 'custom',
-              value: 'foo'
-            }
+              value: 'foo',
+            },
           },
           {
             value: 'red',
@@ -130,42 +130,30 @@ describe('controller', () => {
             correct: true,
             feedback: {
               type: 'custom',
-              value: 'foo'
-            }
+              value: 'foo',
+            },
           },
           {
             value: 'purple',
             label: 'Purple',
             feedback: {
-              type: 'default'
-            }
-          }
+              type: 'default',
+            },
+          },
         ],
         choicePrefix: 'numbers',
         prompt: `prompt ${PART_B}`,
         promptEnabled: true,
-        lockChoiceOrder: true
+        lockChoiceOrder: true,
       },
       partialScoring: false,
-      ...extra
+      ...extra,
     });
 
-    const assertOutcome = (
-      message,
-      extra,
-      value1,
-      value2,
-      env,
-      expected,
-      expectedMax
-    ) => {
+    const assertOutcome = (message, extra, value1, value2, env, expected, expectedMax) => {
       it(message, async () => {
         const question = mkQuestion(extra);
-        const result = await outcome(
-          question,
-          { value: { partA: { value: value1 }, partB: { value: value2 } } },
-          env
-        );
+        const result = await outcome(question, { value: { partA: { value: value1 }, partB: { value: value2 } } }, env);
         expect(result.score).toEqual(expected);
         expect(result.max).toEqual(expectedMax);
       });
@@ -174,100 +162,111 @@ describe('controller', () => {
     assertOutcome(
       'element.partialScoring = true, partA correct, partB correct',
       { partialScoring: true },
-      ['yellow', 'blue'], ['orange', 'red'],
+      ['yellow', 'blue'],
+      ['orange', 'red'],
       { mode: 'evaluate' },
       2,
-      2
+      2,
     );
 
     assertOutcome(
       'element.partialScoring = true, partA correct, partB partially correct',
       { partialScoring: true },
-      ['yellow', 'blue'], ['orange'],
+      ['yellow', 'blue'],
+      ['orange'],
       { mode: 'evaluate' },
       1,
-      2
+      2,
     );
 
     assertOutcome(
       'element.partialScoring = true, partA correct, partB incorrect',
       { partialScoring: true },
-      ['yellow', 'blue'], [],
+      ['yellow', 'blue'],
+      [],
       { mode: 'evaluate' },
       1,
-      2
+      2,
     );
 
     assertOutcome(
       'element.partialScoring = true, partA incorrect, partB correct',
       { partialScoring: true },
-      [], ['orange', 'red'],
+      [],
+      ['orange', 'red'],
       { mode: 'evaluate' },
       0,
-      2
+      2,
     );
 
     assertOutcome(
       'element.partialScoring = true, partA partially correct, partB partially correct',
       { partialScoring: true },
-      ['yellow'], ['orange'],
+      ['yellow'],
+      ['orange'],
       { mode: 'evaluate' },
       0,
-      2
+      2,
     );
 
     assertOutcome(
       'element.partialScoring = true, partA incorrect, partB partially correct',
       { partialScoring: true },
-      ['yellow'], ['orange'],
+      ['yellow'],
+      ['orange'],
       { mode: 'evaluate' },
       0,
-      2
+      2,
     );
 
     assertOutcome(
       'element.partialScoring = true, partA incorrect, partB incorrect',
       { partialScoring: true },
-      ['yellow'], ['orange'],
+      ['yellow'],
+      ['orange'],
       { mode: 'evaluate' },
       0,
-      2
+      2,
     );
 
     assertOutcome(
       'element.partialScoring = false, partA correct, partB correct',
       { partialScoring: false },
-      ['yellow', 'blue'], ['orange', 'red'],
+      ['yellow', 'blue'],
+      ['orange', 'red'],
       { mode: 'evaluate' },
       1,
-      1
+      1,
     );
 
     assertOutcome(
       'element.partialScoring = false, partA incorrect, partB correct',
       { partialScoring: false },
-      ['yellow'], ['orange', 'red'],
+      ['yellow'],
+      ['orange', 'red'],
       { mode: 'evaluate' },
       0,
-      1
+      1,
     );
 
     assertOutcome(
       'element.partialScoring = false, partA correct, partB incorrect',
       { partialScoring: false },
-      ['yellow', 'blue'], ['orange'],
+      ['yellow', 'blue'],
+      ['orange'],
       { mode: 'evaluate' },
       0,
-      1
+      1,
     );
 
     assertOutcome(
       'element.partialScoring = false, partA incorrect, partB incorrect',
       { partialScoring: false },
-      [], [],
+      [],
+      [],
       { mode: 'evaluate' },
       0,
-      1
+      1,
     );
   });
 
@@ -277,7 +276,7 @@ describe('controller', () => {
         it(`${message} => ${score}`, async () => {
           const result = await outcome(
             { ...question, partialScoring: false },
-            { value: { partA: { value: values1 }, partB: { value: values2 } } }
+            { value: { partA: { value: values1 }, partB: { value: values2 } } },
           );
           expect(result.score).toEqual(score);
           expect(result.max).toEqual(1);
@@ -286,18 +285,8 @@ describe('controller', () => {
 
       returnsScoreOf('both correct', ['yellow'], ['orange', 'c'], 1); // both correct
       returnsScoreOf('both incorrect', ['green'], ['purple'], 0); // both wrong
-      returnsScoreOf(
-        'partA incorrect, partB correct',
-        ['green'],
-        ['orange', 'c'],
-        0
-      ); // first wrong, second correct
-      returnsScoreOf(
-        'partA correct, partB incorrect',
-        ['yellow'],
-        ['purple'],
-        0
-      ); // first correct, second wrong
+      returnsScoreOf('partA incorrect, partB correct', ['green'], ['orange', 'c'], 0); // first wrong, second correct
+      returnsScoreOf('partA correct, partB incorrect', ['yellow'], ['purple'], 0); // first correct, second wrong
     });
 
     describe('partial scoring', () => {
@@ -305,7 +294,7 @@ describe('controller', () => {
         it(`${message} => ${score}`, async () => {
           const result = await outcome(
             { ...question, partialScoring: true },
-            { value: { partA: { value: values1 }, partB: { value: values2 } } }
+            { value: { partA: { value: values1 }, partB: { value: values2 } } },
           );
           expect(result.score).toBeCloseTo(score);
           expect(result.max).toEqual(2);
@@ -315,30 +304,13 @@ describe('controller', () => {
       returnsScoreOf('both correct', ['yellow'], ['orange', 'c'], 2);
       returnsScoreOf('both incorrect', [], [], 0);
       returnsScoreOf('partA correct, partB incorrect', ['yellow'], [], 1);
-      returnsScoreOf(
-        'partA correct, partB partially correct',
-        ['yellow'],
-        ['c'],
-        1
-      );
-      returnsScoreOf(
-        'partA incorrect, partB correct',
-        ['green'],
-        ['orange', 'c'],
-        0
-      );
-      returnsScoreOf(
-        'partA partially correct, partB correct',
-        ['green', 'yellow'],
-        ['orange', 'c'],
-        0
-      );
+      returnsScoreOf('partA correct, partB partially correct', ['yellow'], ['c'], 1);
+      returnsScoreOf('partA incorrect, partB correct', ['green'], ['orange', 'c'], 0);
+      returnsScoreOf('partA partially correct, partB correct', ['green', 'yellow'], ['orange', 'c'], 0);
     });
 
-    const returnsScoreWhen = session => {
-      it(`returns empty: true if session is ${JSON.stringify(
-        session
-      )}`, async () => {
+    const returnsScoreWhen = (session) => {
+      it(`returns empty: true if session is ${JSON.stringify(session)}`, async () => {
         const result = await outcome(question, session);
         expect(result).toEqual({ score: 0, scoreA: 0, scoreB: 0, empty: true });
       });
@@ -350,7 +322,7 @@ describe('controller', () => {
   });
 
   describe('model', () => {
-    const capitalize = value => value.charAt(0).toUpperCase() + value.slice(1);
+    const capitalize = (value) => value.charAt(0).toUpperCase() + value.slice(1);
 
     describe('mode: gather', () => {
       beforeEach(async () => {
@@ -367,19 +339,19 @@ describe('controller', () => {
         expect(result.mode).toEqual('gather');
       });
 
-      const returnsPrompt = part => {
+      const returnsPrompt = (part) => {
         it(`returns ${part} prompt`, () => {
           expect(result[part].prompt).toEqual(`prompt ${part}`);
         });
       };
 
-      const returnsChoiceMode = part => {
+      const returnsChoiceMode = (part) => {
         it(`returns ${part} choiceMode`, () => {
           expect(result[part].choiceMode).toEqual('checkbox');
         });
       };
 
-      const returnsKeyMode = part => {
+      const returnsKeyMode = (part) => {
         it(`returns ${part} choicePrefix`, () => {
           expect(result[part].choicePrefix).toEqual('numbers');
         });
@@ -391,7 +363,7 @@ describe('controller', () => {
         });
       };
 
-      const doesNotReturnCorrect = part => {
+      const doesNotReturnCorrect = (part) => {
         it(`does not return ${part} responseCorrect`, () => {
           expect(result[part].responseCorrect).toBe(undefined);
         });
@@ -402,8 +374,8 @@ describe('controller', () => {
           expect(result[part].choices).toEqual(
             expect.arrayContaining([
               { value: value1, label: capitalize(value1), rationale: null },
-              { value: value2, label: capitalize(value2), rationale: null }
-            ])
+              { value: value2, label: capitalize(value2), rationale: null },
+            ]),
           );
         });
       };
@@ -437,33 +409,33 @@ describe('controller', () => {
             ...question,
             partA: {
               ...question.partA,
-              lockChoiceOrder: false
+              lockChoiceOrder: false,
             },
             partB: {
               ...question.partB,
-              lockChoiceOrder: false
-            }
+              lockChoiceOrder: false,
+            },
           },
           session,
           env,
-          updateSession
+          updateSession,
         );
         expect(updateSession).toHaveBeenCalledWith('1', 'ebsr-element', {
           shuffledValues: {
             partA: expect.arrayContaining(['yellow', 'green']),
-            partB: expect.arrayContaining(['orange', 'purple'])
-          }
+            partB: expect.arrayContaining(['orange', 'purple']),
+          },
         });
       });
     });
 
     describe('model - without valid updateSession', () => {
-      const assertModel = updateSession => {
+      const assertModel = (updateSession) => {
         it(`does not throw error if updateSession is ${updateSession}`, async () => {
           session = {
             id: '1',
             element: 'ebsr-element',
-            shuffledValues: { partA: [], partB: [] }
+            shuffledValues: { partA: [], partB: [] },
           };
           env = { mode: 'gather' };
 
@@ -472,15 +444,15 @@ describe('controller', () => {
               ...question,
               partA: {
                 ...question.partA,
-                lockChoiceOrder: false
+                lockChoiceOrder: false,
               },
               partB: {
                 ...question.partB,
-                lockChoiceOrder: false
-              }
+                lockChoiceOrder: false,
+              },
             },
             session,
-            env
+            env,
           );
         });
       };
@@ -520,16 +492,16 @@ describe('controller', () => {
                 label: capitalize(value1),
                 correct: true,
                 feedback: 'foo',
-                rationale: null
+                rationale: null,
               },
               {
                 value: value2,
                 label: capitalize(value2),
                 correct: false,
                 feedback: 'Incorrect',
-                rationale: null
-              }
-            ])
+                rationale: null,
+              },
+            ]),
           );
         });
       };
@@ -542,15 +514,15 @@ describe('controller', () => {
               ...question,
               partA: {
                 ...question.partA,
-                feedbackEnabled: false
+                feedbackEnabled: false,
               },
               partB: {
                 ...question.partB,
-                feedbackEnabled: false
-              }
+                feedbackEnabled: false,
+              },
             },
             session,
-            env
+            env,
           );
 
           expect(result[part].choices).toEqual(
@@ -560,21 +532,21 @@ describe('controller', () => {
                 label: capitalize(value1),
                 correct: true,
                 feedback: 'foo',
-                rationale: null
+                rationale: null,
               },
               {
                 value: value2,
                 label: capitalize(value2),
                 correct: false,
                 feedback: 'Incorrect',
-                rationale: null
-              }
-            ])
+                rationale: null,
+              },
+            ]),
           );
         });
       };
 
-      const returnsIsResponseCorrect = part => {
+      const returnsIsResponseCorrect = (part) => {
         it(`returns ${part} is response correct`, () => {
           expect(result[part].responseCorrect).toEqual(false);
         });
@@ -596,21 +568,21 @@ describe('controller', () => {
       it('returns correct response if env is correct', async () => {
         const sess = await createCorrectResponseSession(question, {
           mode: 'gather',
-          role: 'instructor'
+          role: 'instructor',
         });
         expect(sess).toEqual({
           id: '1',
           value: {
             partA: { id: 'partA', value: ['yellow'] },
-            partB: { id: 'partB', value: ['orange', 'c'] }
-          }
+            partB: { id: 'partB', value: ['orange', 'c'] },
+          },
         });
       });
 
       it('returns null env is student', async () => {
         const noResult = await createCorrectResponseSession(question, {
           mode: 'gather',
-          role: 'student'
+          role: 'student',
         });
         expect(noResult).toBeNull();
       });

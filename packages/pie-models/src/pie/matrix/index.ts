@@ -20,13 +20,7 @@ export interface MatrixPie extends PieModel {
   /** Indicates the matrix values*/
   matrixValue?: Object[];
   /** Indicates the matrix label type */
-  labelType?:
-    | 'agreement'
-    | 'frequency'
-    | 'yesNo'
-    | 'importance'
-    | 'likelihood'
-    | 'like';
+  labelType?: 'agreement' | 'frequency' | 'yesNo' | 'importance' | 'likelihood' | 'like';
   /** Indicates if Teacher Instructions are enabled */
   teacherInstructionsEnabled: boolean;
   /** Indicates if spellcheck is enabled for the author. Default value is true */
@@ -46,5 +40,5 @@ export interface MatrixConfigure extends PromptConfig {
   /**
    * Configuration for the author's spellcheck
    */
-   spellCheck?: ConfigureProp;
+  spellCheck?: ConfigureProp;
 }

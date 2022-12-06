@@ -10,7 +10,7 @@ import sensibleDefaults from './defaults';
 const MODEL_UPDATED = ModelUpdatedEvent.TYPE;
 const MC_TAG_NAME = 'ebsr-multiple-choice-configure';
 
-class EbsrMCConfigure extends MultipleChoiceConfigure { }
+class EbsrMCConfigure extends MultipleChoiceConfigure {}
 
 const defineMultipleChoice = () => {
   if (!customElements.get(MC_TAG_NAME)) {
@@ -26,7 +26,7 @@ const prepareCustomizationObject = (config, model) => {
 
   return {
     configuration,
-    model
+    model,
   };
 };
 
@@ -39,12 +39,14 @@ export default class EbsrConfigure extends HTMLElement {
     partA: {
       ...defaults.partA,
       ...partA,
-      choicesLayout: partA.choicesLayout || (partA.verticalMode === false && 'horizontal') || defaults.partA.choicesLayout
+      choicesLayout:
+        partA.choicesLayout || (partA.verticalMode === false && 'horizontal') || defaults.partA.choicesLayout,
     },
     partB: {
       ...defaults.partB,
       ...partB,
-      choicesLayout: partB.choicesLayout || (partB.verticalMode === false && 'horizontal') || defaults.partB.choicesLayout
+      choicesLayout:
+        partB.choicesLayout || (partB.verticalMode === false && 'horizontal') || defaults.partB.choicesLayout,
     },
   });
 
@@ -74,7 +76,6 @@ export default class EbsrConfigure extends HTMLElement {
 
     this.dispatchModelUpdated(reset);
     this._render();
-
   };
 
   set configuration(c) {
@@ -94,8 +95,7 @@ export default class EbsrConfigure extends HTMLElement {
     this._render();
   }
 
-  onModelUpdated = e => {
-
+  onModelUpdated = (e) => {
     if (e.target === this) {
       return;
     }

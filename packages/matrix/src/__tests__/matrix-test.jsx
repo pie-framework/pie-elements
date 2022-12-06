@@ -1,9 +1,9 @@
 import React from 'react';
-import {shallow} from 'enzyme';
+import { shallow } from 'enzyme';
 import Matrix from '../Matrix';
 
 describe('Matrix', () => {
-  const getShallowMatrix = ((onSessionChange, propsToOverride = {}) => {
+  const getShallowMatrix = (onSessionChange, propsToOverride = {}) => {
     const props = {
       prompt: 'magic prompt',
       teacherInstructions: 'instructions',
@@ -13,10 +13,10 @@ describe('Matrix', () => {
       columnLabels: [],
       disabled: false,
       onSessionChange,
-      ...propsToOverride
+      ...propsToOverride,
     };
-    return shallow(<Matrix {...props}/>);
-  });
+    return shallow(<Matrix {...props} />);
+  };
 
   describe('snapshot', () => {
     it('renders', () => {

@@ -20,7 +20,8 @@ const preparePrintModel = (model, opts) => {
   const instr = opts.role === 'instructor';
 
   model.prompt = model.promptEnabled !== false ? model.prompt : undefined;
-  model.teacherInstructions = instr && model.teacherInstructionsEnabled !== false ? model.teacherInstructions : undefined;
+  model.teacherInstructions =
+    instr && model.teacherInstructionsEnabled !== false ? model.teacherInstructions : undefined;
   model.showTeacherInstructions = instr;
   model.alwaysShowCorrect = instr;
   model.mode = instr ? 'evaluate' : model.mode;
@@ -71,7 +72,7 @@ export default class MultipleChoicePrint extends HTMLElement {
         }
       },
       50,
-      { leading: false, trailing: true }
+      { leading: false, trailing: true },
     );
   }
   set options(o) {

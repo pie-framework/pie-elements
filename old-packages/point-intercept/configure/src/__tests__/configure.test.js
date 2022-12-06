@@ -28,7 +28,7 @@ const defaultProps = {
       partialFeedbackType: 'none',
       partialFeedbackValue: '',
       incorrectFeedbackType: 'none',
-      incorrectFeedbackValue: ''
+      incorrectFeedbackValue: '',
     },
     graph: {
       graphTitle: '',
@@ -58,11 +58,10 @@ const defaultProps = {
       showPointLabels: true,
       showInputs: true,
       showAxisLabels: true,
-      showFeedback: true
-    }
-  }
+      showFeedback: true,
+    },
+  },
 };
-
 
 describe('Configure', () => {
   describe('design', () => {
@@ -86,10 +85,10 @@ describe('Configure', () => {
     let wrapper;
 
     beforeEach(() => {
-      wrapper = props => {
+      wrapper = (props) => {
         const configureProps = { ...defaultProps, ...props };
 
-        return shallow(<Configure { ...configureProps } />)
+        return shallow(<Configure {...configureProps} />);
       };
     });
 
@@ -99,14 +98,12 @@ describe('Configure', () => {
 
       component.setProps({
         ...defaultProps,
-        model: { ...defaultProps.model, correctResponse: ['0,0'] }
+        model: { ...defaultProps.model, correctResponse: ['0,0'] },
       });
 
       component.instance().resetToDefaults();
 
-      expect(onModelChanged).toBeCalledWith(
-        expect.objectContaining(defaultProps.model)
-      );
+      expect(onModelChanged).toBeCalledWith(expect.objectContaining(defaultProps.model));
     });
   });
 });
@@ -119,7 +116,7 @@ describe('GeneralConfigBlock', () => {
     props = {
       config: defaultProps.model.graph,
       onToggleWithLabels: jest.fn(),
-      onModelConfigChange: jest.fn()
+      onModelConfigChange: jest.fn(),
     };
 
     wrapper = shallowChild(GeneralConfigBlock, props, 1);
@@ -145,7 +142,7 @@ describe('PointConfig', () => {
       onMaxPointsChange: jest.fn(),
       deletePoint: jest.fn(),
       onPointValueChange: jest.fn(),
-      onPointLabelChange: jest.fn()
+      onPointLabelChange: jest.fn(),
     };
 
     wrapper = shallowChild(PointConfig, props, 1);

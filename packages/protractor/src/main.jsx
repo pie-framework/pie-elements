@@ -8,13 +8,13 @@ const styles = {
   protractor: {
     position: 'absolute',
     left: '200px',
-    zIndex: '101'
-  }
+    zIndex: '101',
+  },
 };
 
 class Main extends React.Component {
   static propTypes = {
-    classes: PropTypes.object.isRequired
+    classes: PropTypes.object.isRequired,
   };
 
   constructor(props) {
@@ -30,12 +30,7 @@ class Main extends React.Component {
     return (
       <div>
         <Toggle active={show} onToggle={this.onToggle} />
-        {show && (
-          <Protractor
-            className={classes.protractor}
-            startPosition={{ left: 100, top: 100 }}
-          />
-        )}
+        {show && <Protractor className={classes.protractor} startPosition={{ left: 100, top: 100 }} />}
       </div>
     );
   }

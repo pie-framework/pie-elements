@@ -13,41 +13,41 @@ export default {
     teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true,
     toolbarEditorPosition: 'bottom',
-    displayType: 'block'
+    displayType: 'block',
   },
   configuration: {
     prompt: {
       settings: true,
-      label: 'Prompt'
+      label: 'Prompt',
     },
     spellCheck: {
       label: 'Spellcheck',
-      settings:false,
-      enabled:true
+      settings: false,
+      enabled: true,
     },
     lockChoiceOrder: {
       settings: true,
-      label: 'Lock Choice Order'
+      label: 'Lock Choice Order',
     },
     partialScoring: {
       settings: false,
-      label: 'Allow Partial Scoring'
+      label: 'Allow Partial Scoring',
     },
     rationale: {
       settings: true,
-      label: 'Rationale'
+      label: 'Rationale',
     },
     teacherInstructions: {
       settings: true,
-      label: 'Teacher Instructions'
+      label: 'Teacher Instructions',
     },
     choiceRationale: {
       settings: true,
-      label: 'Choice Rationale'
+      label: 'Choice Rationale',
     },
-    toolbarEditorPosition:{
+    toolbarEditorPosition: {
       settings: false,
-      label: 'Toolbar Editor Position'
+      label: 'Toolbar Editor Position',
     },
     maxResponseAreas: 10,
     maxResponseAreaChoices: 10,
@@ -63,7 +63,7 @@ export default {
     },
     withRubric: {
       settings: false,
-      label: 'Add Rubric'
-    }
-  }
+      label: 'Add Rubric',
+    },
+  },
 };

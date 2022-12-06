@@ -4,28 +4,23 @@ import EditableHtml from '@pie-lib/editable-html';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import {
-  InputContainer,
-  settings,
-  layout,
-  NumberTextField,
-} from '@pie-lib/config-ui';
-import {withStyles} from '@material-ui/core/styles';
+import { InputContainer, settings, layout, NumberTextField } from '@pie-lib/config-ui';
+import { withStyles } from '@material-ui/core/styles';
 import merge from 'lodash/merge';
-import {LIKERT_TYPE, LIKERT_SCALE, LIKERT_ORIENTATION} from './likertEntities'
+import { LIKERT_TYPE, LIKERT_SCALE, LIKERT_ORIENTATION } from './likertEntities';
 import generateChoices from './choiceGenerator';
 
 const { Panel, toggle, radio } = settings;
 
-const styles = theme => ({
+const styles = (theme) => ({
   promptHolder: {
     width: '100%',
     paddingBottom: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit * 2
+    marginBottom: theme.spacing.unit * 2,
   },
   prompt: {
     paddingTop: theme.spacing.unit * 2,
-    width: '100%'
+    width: '100%',
   },
   radioButtonsWrapper: {
     display: 'flex',
@@ -33,56 +28,55 @@ const styles = theme => ({
   },
   radioButtonsColumnHeader: {
     color: '#c3c3c3',
-    fontSize: '12px'
+    fontSize: '12px',
   },
   likertLabelHolder: {
     display: 'flex',
     width: '100%',
-    alignItems: 'flex-start'
+    alignItems: 'flex-start',
   },
   likertOptionsHolder: {
     display: 'flex',
     width: '100%',
     padding: '20px 0',
-    justifyContent: 'space-around'
+    justifyContent: 'space-around',
   },
   likertLabelInput: {
     width: 'calc(100% - 200px)',
-    marginRight: 0
+    marginRight: 0,
   },
   errorMessage: {
     color: '#b5000e',
-    fontSize: '10px'
+    fontSize: '10px',
   },
   width100: {
-    width: '100%'
+    width: '100%',
   },
   flexRow: {
     display: 'flex',
-    flexDirection: 'row'
+    flexDirection: 'row',
   },
   likertValueHolder: {
     paddingLeft: '20px',
-    width: '150px'
+    width: '150px',
   },
   likertLabelEditableHtml: {
-    paddingTop: theme.spacing.unit * 2
+    paddingTop: theme.spacing.unit * 2,
   },
   design: {
-    paddingTop: theme.spacing.unit * 3
+    paddingTop: theme.spacing.unit * 3,
   },
   choiceConfigurationHolder: {
     marginTop: theme.spacing.unit * 2,
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'start'
+    alignItems: 'start',
   },
   inputFormGroupIndex: {
     width: '30px',
-    paddingTop: '30px'
-  }
+    paddingTop: '30px',
+  },
 });
-
 
 const LikertOrientation = withStyles(styles)((props) => {
   const { classes, model, onChangeModel } = props;
@@ -95,20 +89,18 @@ const LikertOrientation = withStyles(styles)((props) => {
   };
   return (
     <div className={classes.radioButtonsWrapper}>
-      <p className={classes.radioButtonsColumnHeader}>
-        Likert Orientation
-      </p>
+      <p className={classes.radioButtonsColumnHeader}>Likert Orientation</p>
       <RadioGroup
-        aria-label='likertOrientation'
-        name='likertOrientation'
+        aria-label="likertOrientation"
+        name="likertOrientation"
         value={model.likertOrientation}
         onChange={onChangeLikertOrientation}
       >
-        <FormControlLabel value={LIKERT_ORIENTATION.horizontal} control={<Radio/>} label='Horizontal'/>
-        <FormControlLabel value={LIKERT_ORIENTATION.vertical} control={<Radio/>} label='Vertical'/>
+        <FormControlLabel value={LIKERT_ORIENTATION.horizontal} control={<Radio />} label="Horizontal" />
+        <FormControlLabel value={LIKERT_ORIENTATION.vertical} control={<Radio />} label="Vertical" />
       </RadioGroup>
     </div>
-  )
+  );
 });
 
 const LikertScale = withStyles(styles)((props) => {
@@ -118,26 +110,19 @@ const LikertScale = withStyles(styles)((props) => {
     onChangeModel({
       ...model,
       likertScale,
-      choices: generateChoices(likertScale, model.likertType)
+      choices: generateChoices(likertScale, model.likertType),
     });
   };
   return (
     <div className={classes.radioButtonsWrapper}>
-      <p className={classes.radioButtonsColumnHeader}>
-        Likert Scale
-      </p>
-      <RadioGroup
-        aria-label='likertScale'
-        name='likertScale'
-        value={model.likertScale}
-        onChange={onChangeLikertScale}
-      >
-        <FormControlLabel value={LIKERT_SCALE.likert3} control={<Radio/>} label='Likert 3'/>
-        <FormControlLabel value={LIKERT_SCALE.likert5} control={<Radio/>} label='Likert 5'/>
-        <FormControlLabel value={LIKERT_SCALE.likert7} control={<Radio/>} label='Likert 7'/>
+      <p className={classes.radioButtonsColumnHeader}>Likert Scale</p>
+      <RadioGroup aria-label="likertScale" name="likertScale" value={model.likertScale} onChange={onChangeLikertScale}>
+        <FormControlLabel value={LIKERT_SCALE.likert3} control={<Radio />} label="Likert 3" />
+        <FormControlLabel value={LIKERT_SCALE.likert5} control={<Radio />} label="Likert 5" />
+        <FormControlLabel value={LIKERT_SCALE.likert7} control={<Radio />} label="Likert 7" />
       </RadioGroup>
     </div>
-  )
+  );
 });
 
 const LikertType = withStyles(styles)((props) => {
@@ -147,53 +132,54 @@ const LikertType = withStyles(styles)((props) => {
     onChangeModel({
       ...model,
       likertType,
-      choices: generateChoices(model.likertScale, likertType)
+      choices: generateChoices(model.likertScale, likertType),
     });
   };
   return (
     <div className={classes.radioButtonsWrapper}>
-      <p className={classes.radioButtonsColumnHeader}>
-        Label Type
-      </p>
+      <p className={classes.radioButtonsColumnHeader}>Label Type</p>
 
       <div className={classes.flexRow}>
         <RadioGroup
-          aria-label='likertLabelType'
-          name='likertLabelType'
+          aria-label="likertLabelType"
+          name="likertLabelType"
           value={model.likertType}
-          onChange={onChangeLikertType}>
-          <FormControlLabel value={LIKERT_TYPE.agreement} control={<Radio/>} label='Agreement'/>
-          <FormControlLabel value={LIKERT_TYPE.frequency} control={<Radio/>} label='Frequency'/>
-          <FormControlLabel value={LIKERT_TYPE.yesNo} control={<Radio/>} label='Yes/No'/>
+          onChange={onChangeLikertType}
+        >
+          <FormControlLabel value={LIKERT_TYPE.agreement} control={<Radio />} label="Agreement" />
+          <FormControlLabel value={LIKERT_TYPE.frequency} control={<Radio />} label="Frequency" />
+          <FormControlLabel value={LIKERT_TYPE.yesNo} control={<Radio />} label="Yes/No" />
         </RadioGroup>
 
         <RadioGroup
-          aria-label='likertLabelType'
-          name='likertLabelType'
+          aria-label="likertLabelType"
+          name="likertLabelType"
           value={model.likertType}
-          onChange={onChangeLikertType}>
-          <FormControlLabel value={LIKERT_TYPE.importance} control={<Radio/>} label='Importance'/>
-          <FormControlLabel value={LIKERT_TYPE.likelihood} control={<Radio/>} label='Likelihood'/>
-          <FormControlLabel value={LIKERT_TYPE.like} control={<Radio/>} label='Like'/>
+          onChange={onChangeLikertType}
+        >
+          <FormControlLabel value={LIKERT_TYPE.importance} control={<Radio />} label="Importance" />
+          <FormControlLabel value={LIKERT_TYPE.likelihood} control={<Radio />} label="Likelihood" />
+          <FormControlLabel value={LIKERT_TYPE.like} control={<Radio />} label="Like" />
         </RadioGroup>
       </div>
     </div>
-  )
+  );
 });
 
-const buildValuesMap = model => model.choices.reduce((acc, choice) => {
-  const accClone = { ...acc };
-  const choiceValue = parseInt(choice.value);
-  if (!accClone[choiceValue]) {
-    accClone[choiceValue] = 0;
-  }
-  return {
-    ...accClone,
-    [choiceValue]: accClone[choiceValue] + 1
-  }
-}, {});
+const buildValuesMap = (model) =>
+  model.choices.reduce((acc, choice) => {
+    const accClone = { ...acc };
+    const choiceValue = parseInt(choice.value);
+    if (!accClone[choiceValue]) {
+      accClone[choiceValue] = 0;
+    }
+    return {
+      ...accClone,
+      [choiceValue]: accClone[choiceValue] + 1,
+    };
+  }, {});
 
-const Design = withStyles(styles)(props => {
+const Design = withStyles(styles)((props) => {
   const {
     classes,
     model,
@@ -204,18 +190,10 @@ const Design = withStyles(styles)(props => {
     onChangeModel,
     onConfigurationChanged,
     uploadSoundSupport,
-    onTeacherInstructionsChanged
+    onTeacherInstructionsChanged,
   } = props;
-  const {
-    prompt = {},
-    teacherInstructions = {},
-    scoringType = {},
-    spellCheck = {},
-  } = configuration || {};
-  const {
-    teacherInstructionsEnabled,
-    spellCheckEnabled,
-  } = model || {};
+  const { prompt = {}, teacherInstructions = {}, scoringType = {}, spellCheck = {} } = configuration || {};
+  const { teacherInstructionsEnabled, spellCheckEnabled } = model || {};
 
   const valuesMap = buildValuesMap(model);
 
@@ -231,26 +209,22 @@ const Design = withStyles(styles)(props => {
             groups={{
               Properties: {
                 teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
-                spellCheckEnabled:
-                spellCheck.settings && toggle(spellCheck.label),
-                scoringType: scoringType.settings && radio(scoringType.label, ['auto', 'rubric'])
-              }
+                spellCheckEnabled: spellCheck.settings && toggle(spellCheck.label),
+                scoringType: scoringType.settings && radio(scoringType.label, ['auto', 'rubric']),
+              },
             }}
           />
         }
       >
         <div>
           <div className={classes.likertOptionsHolder}>
-            <LikertScale model={model} onChangeModel={onChangeModel}/>
-            <LikertType model={model} onChangeModel={onChangeModel}/>
-            <LikertOrientation model={model} onChangeModel={onChangeModel}/>
+            <LikertScale model={model} onChangeModel={onChangeModel} />
+            <LikertType model={model} onChangeModel={onChangeModel} />
+            <LikertOrientation model={model} onChangeModel={onChangeModel} />
           </div>
 
           {teacherInstructionsEnabled && (
-            <InputContainer
-              label={teacherInstructions.label}
-              className={classes.promptHolder}
-            >
+            <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
               <EditableHtml
                 className={classes.prompt}
                 markup={model.teacherInstructions || ''}
@@ -276,12 +250,8 @@ const Design = withStyles(styles)(props => {
             />
           </InputContainer>
 
-
           {model.choices.map((choice, index) => (
-            <div
-              key={`choice-${index}`}
-              className={classes.choiceConfigurationHolder}
-            >
+            <div key={`choice-${index}`} className={classes.choiceConfigurationHolder}>
               <div className={classes.likertLabelHolder}>
                 <span className={classes.inputFormGroupIndex}>{index + 1}.</span>
                 <InputContainer
@@ -292,10 +262,10 @@ const Design = withStyles(styles)(props => {
                   <EditableHtml
                     className={classes.likertLabelEditableHtml}
                     markup={choice.label || ''}
-                    onChange={c =>
+                    onChange={(c) =>
                       onChoiceChanged(index, {
                         ...choice,
-                        label: c
+                        label: c,
                       })
                     }
                     imageSupport={imageSupport}
@@ -315,7 +285,7 @@ const Design = withStyles(styles)(props => {
                       onChoiceChanged(index, {
                         ...choice,
                         value: t,
-                      })
+                      });
                     }}
                     imageSupport={imageSupport}
                   />
@@ -326,7 +296,7 @@ const Design = withStyles(styles)(props => {
               </div>
             </div>
           ))}
-          <br/>
+          <br />
         </div>
       </layout.ConfigLayout>
     </div>
@@ -342,14 +312,14 @@ export class Main extends React.Component {
     classes: PropTypes.object.isRequired,
     imageSupport: PropTypes.shape({
       add: PropTypes.func.isRequired,
-      delete: PropTypes.func.isRequired
-    })
+      delete: PropTypes.func.isRequired,
+    }),
   };
 
   onChoiceChanged = (index, choice) => {
     const { model } = this.props;
 
-    model.choices = model.choices.map(choice => {
+    model.choices = model.choices.map((choice) => {
       return merge({}, choice);
     });
 
@@ -357,17 +327,17 @@ export class Main extends React.Component {
     this.props.onModelChanged(model);
   };
 
-  onPromptChanged = prompt => {
+  onPromptChanged = (prompt) => {
     this.props.onModelChanged({
       ...this.props.model,
-      prompt
+      prompt,
     });
   };
 
-  onTeacherInstructionsChanged = teacherInstructions => {
+  onTeacherInstructionsChanged = (teacherInstructions) => {
     this.props.onModelChanged({
       ...this.props.model,
-      teacherInstructions
+      teacherInstructions,
     });
   };
 

@@ -68,8 +68,7 @@ export class Choice extends React.Component {
     onChange(choice);
   };
 
-  isCheckboxShown = (allowMultiplePlacements) =>
-    allowMultiplePlacements === multiplePlacements.perChoice;
+  isCheckboxShown = (allowMultiplePlacements) => allowMultiplePlacements === multiplePlacements.perChoice;
 
   render() {
     const {
@@ -94,22 +93,15 @@ export class Choice extends React.Component {
 
     const draggable = canDrag(this.props);
 
-    const showRemoveAfterPlacing = this.isCheckboxShown(
-      allowMultiplePlacements
-    );
+    const showRemoveAfterPlacing = this.isCheckboxShown(allowMultiplePlacements);
 
     return (
       <Card className={classNames(classes.choice, className)}>
         <CardActions className={classes.actions}>
           {connectDragSource(
-            <span
-              className={classNames(
-                classes.dragHandle,
-                draggable === false && classes.dragDisabled
-              )}
-            >
+            <span className={classNames(classes.dragHandle, draggable === false && classes.dragDisabled)}>
               <DragHandle color={draggable ? 'primary' : 'disabled'} />
-            </span>
+            </span>,
           )}
         </CardActions>
         {connectDragPreview(
@@ -130,7 +122,7 @@ export class Choice extends React.Component {
               uploadSoundSupport={uploadSoundSupport}
             />
             {error && <div className={classes.errorText}>{error}</div>}
-          </span>
+          </span>,
         )}
 
         <CardActions className={classes.actions}>
@@ -199,7 +191,7 @@ const DraggableChoice = DragSource(
     connectDragSource: connect.dragSource(),
     connectDragPreview: connect.dragPreview(),
     isDragging: monitor.isDragging(),
-  })
+  }),
 )(StyledChoice);
 
 export default uid.withUid(DraggableChoice);

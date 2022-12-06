@@ -107,7 +107,7 @@ describe('Math-Inline Main', () => {
     it('prepares latex correctly and answer blocks and turns them into inputs', () => {
       expect(wrapper.dive().find(mq.Static).length).toEqual(1);
       expect(wrapper.dive().find(mq.Static).props().latex).toEqual(
-        '\\text{A family sized box contains} \\MathQuillMathField[r1]{} \\text{less than} \\MathQuillMathField[r2]{} \\text{times the number  }  \\frac{3}{6}=\\frac{ \\MathQuillMathField[r3]{} }{4} + \\frac{ \\MathQuillMathField[r4]{} }{4}'
+        '\\text{A family sized box contains} \\MathQuillMathField[r1]{} \\text{less than} \\MathQuillMathField[r2]{} \\text{times the number  }  \\frac{3}{6}=\\frac{ \\MathQuillMathField[r3]{} }{4} + \\frac{ \\MathQuillMathField[r4]{} }{4}',
       );
     });
 

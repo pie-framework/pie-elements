@@ -7,33 +7,33 @@ const choices = [
   {
     correct: true,
     value: '1',
-    label: 'Sweden'
+    label: 'Sweden',
   },
   {
     value: '2',
     label: 'Iceland',
     feedback: {
-      type: 'default'
-    }
+      type: 'default',
+    },
   },
   {
     value: '4',
-    label: 'Norway'
+    label: 'Norway',
   },
   {
     value: '5',
     label: 'Finland',
     feedback: {
       type: 'custom',
-      value: 'Nokia was founded in Finland.'
-    }
-  }
+      value: 'Nokia was founded in Finland.',
+    },
+  },
 ];
 
 const defaultModel = {
   defaultLang: 'en-US',
   choiceLabel: 'Select option ...',
-  choices
+  choices,
 };
 
 describe('RawMain', () => {
@@ -50,7 +50,7 @@ describe('RawMain', () => {
       onPromptChange,
       onChoiceChange,
       onRemoveChoice,
-      onAddChoice
+      onAddChoice,
     };
 
     wrapper = () => shallow(<RawMain {...props} />);
@@ -64,9 +64,9 @@ describe('RawMain', () => {
 
   describe('logoc', () => {
     it('', () => {
-      wrapper().instance().onChoiceChange(0, { value: '0', label: 'New Choice'});
+      wrapper().instance().onChoiceChange(0, { value: '0', label: 'New Choice' });
 
-      expect(onChoiceChange).toHaveBeenCalledWith(0, { value: '0', label: 'New Choice'});
+      expect(onChoiceChange).toHaveBeenCalledWith(0, { value: '0', label: 'New Choice' });
     });
   });
 });

@@ -5,7 +5,7 @@ export default {
       {
         value: 'a',
         label: 'label a',
-      }
+      },
     ],
     prompt: 'prompt a',
     disabled: false,

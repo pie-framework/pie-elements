@@ -17,6 +17,8 @@ export class Category extends React.Component {
     deleteFocusedEl: PropTypes.func,
     focusedEl: PropTypes.number,
     index: PropTypes.number,
+    error: PropTypes.string,
+    isDuplicated: PropTypes.bool,
     onChange: PropTypes.func,
     onDelete: PropTypes.func,
     onDeleteChoice: PropTypes.func,
@@ -48,6 +50,8 @@ export class Category extends React.Component {
       deleteFocusedEl,
       focusedEl,
       index,
+      error,
+      isDuplicated,
       onChange,
       onDelete,
       onDeleteChoice,
@@ -60,23 +64,30 @@ export class Category extends React.Component {
       uploadSoundSupport,
     } = this.props;
     return (
-      <Card className={classNames(classes.category, className)}>
+      <Card className={classNames(classes.category, className, {
+        [classes.duplicateError]: isDuplicated
+      })}>
         {onChange && (
-          <InputHeader
-            focusedEl={focusedEl}
-            deleteFocusedEl={deleteFocusedEl}
-            index={index}
-            label={category.label}
-            onChange={this.changeLabel}
-            onDelete={onDelete}
-            imageSupport={imageSupport}
-            toolbarOpts={toolbarOpts}
-            spellCheck={spellCheck}
-            maxImageWidth={maxImageWidth}
-            maxImageHeight={maxImageHeight}
-            uploadSoundSupport={uploadSoundSupport}
-          />
-        )}
+            <span>
+              <InputHeader
+                label={category.label}
+                focusedEl={focusedEl}
+                deleteFocusedEl={deleteFocusedEl}
+                index={index}
+                error={error}
+                onChange={this.changeLabel}
+                onDelete={onDelete}
+                imageSupport={imageSupport}
+                toolbarOpts={toolbarOpts}
+                spellCheck={spellCheck}
+                maxImageWidth={maxImageWidth}
+                maxImageHeight={maxImageHeight}
+                uploadSoundSupport={uploadSoundSupport}
+             />
+              {error && <div className={classes.errorText}>{error}</div>}
+              </span>
+          )
+        }
         <PlaceHolder
           className={classes.placeHolder}
           choices={category.choices}
@@ -116,6 +127,14 @@ const styles = (theme) => ({
   category: {
     padding: theme.spacing.unit,
     overflow: 'visible',
+  },
+  duplicateError: {
+    border: '1px solid red',
+  },
+  errorText: {
+    fontSize: '11px',
+    color: 'red',
+    paddingBottom: '5px'
   },
   editor: {
     flex: '1',

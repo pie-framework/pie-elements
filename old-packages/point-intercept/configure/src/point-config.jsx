@@ -7,7 +7,7 @@ import DeleteControl from './delete';
 import AddControl from './add-point';
 import Box from './box';
 
-const styles = theme => ({
+const styles = (theme) => ({
   pointsColumnContainer: {
     display: 'flex',
     flexDirection: 'column',
@@ -48,7 +48,7 @@ class PointConfig extends React.Component {
     onMaxPointsChange: PropTypes.func.isRequired,
     deletePoint: PropTypes.func.isRequired,
     onPointValueChange: PropTypes.func.isRequired,
-    onPointLabelChange: PropTypes.func.isRequired
+    onPointLabelChange: PropTypes.func.isRequired,
   };
 
   render() {
@@ -61,7 +61,7 @@ class PointConfig extends React.Component {
       onMaxPointsChange,
       deletePoint,
       onPointValueChange,
-      onPointLabelChange
+      onPointLabelChange,
     } = this.props;
 
     return (
@@ -77,7 +77,7 @@ class PointConfig extends React.Component {
                 <Input
                   inputProps={{
                     min: config.domainMin,
-                    max: config.domainMax
+                    max: config.domainMax,
                   }}
                   className={classes.pointInput}
                   type="number"
@@ -89,7 +89,7 @@ class PointConfig extends React.Component {
                 <Input
                   inputProps={{
                     min: config.rangeMin,
-                    max: config.rangeMax
+                    max: config.rangeMax,
                   }}
                   className={classes.pointInput}
                   type="number"
@@ -98,26 +98,26 @@ class PointConfig extends React.Component {
                   placeholder="Enter Value"
                 />
                 <b>)</b>
-                {withLabels && <Input
-                  className={classes.pointInput}
-                  type="text"
-                  onChange={onPointLabelChange(index)}
-                  value={config.pointLabels[index]}
-                  placeholder="Enter Value"
-                />}
-                <DeleteControl onDeleteClick={deletePoint(index)} disabled={false}/>
+                {withLabels && (
+                  <Input
+                    className={classes.pointInput}
+                    type="text"
+                    onChange={onPointLabelChange(index)}
+                    value={config.pointLabels[index]}
+                    placeholder="Enter Value"
+                  />
+                )}
+                <DeleteControl onDeleteClick={deletePoint(index)} disabled={false} />
               </div>
             );
           })}
-          <AddControl onAddClick={addPoint}/>
+          <AddControl onAddClick={addPoint} />
           <div className={classes.maxInputContainer}>
-            <Typography type="body1">
-              Maximum number of points a student is allowed to plot (optional):
-            </Typography>
+            <Typography type="body1">Maximum number of points a student is allowed to plot (optional):</Typography>
             <Input
               inputProps={{
                 min: 0,
-                max: 20
+                max: 20,
               }}
               className={classes.maxInput}
               type="number"

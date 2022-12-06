@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ChoiceInput from './choice-input';
 import { withStyles } from '@material-ui/core/styles';
-import {Collapsible, PreviewPrompt} from '@pie-lib/render-ui';
+import { Collapsible, PreviewPrompt } from '@pie-lib/render-ui';
 import { LIKERT_ORIENTATION } from './likertEntities';
 
 const styles = {
@@ -51,8 +51,7 @@ export class Likert extends React.Component {
       likertOrientation,
     } = this.props;
 
-    const flexDirection =
-      likertOrientation === LIKERT_ORIENTATION.vertical ? 'column' : 'row';
+    const flexDirection = likertOrientation === LIKERT_ORIENTATION.vertical ? 'column' : 'row';
 
     return (
       <div className={classes.corespringChoice}>

@@ -8,11 +8,7 @@ import EditableHtml from '@pie-lib/editable-html';
 import classNames from 'classnames';
 import Info from '@material-ui/icons/Info';
 import Tooltip from '@material-ui/core/Tooltip';
-import {
-  moveChoiceToCategory,
-  removeCategory,
-  removeChoiceFromCategory,
-} from '@pie-lib/categorize';
+import { moveChoiceToCategory, removeCategory, removeChoiceFromCategory } from '@pie-lib/categorize';
 
 import Category from './category';
 import Header from '../header';
@@ -86,14 +82,11 @@ const RowLabel = withStyles(styles)(
           maxImageWidth={maxImageWidth}
           maxImageHeight={maxImageHeight}
           uploadSoundSupport={uploadSoundSupport}
-          languageCharactersProps={[
-            { language: 'spanish' },
-            { language: 'special' },
-          ]}
+          languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
         />
       </div>
     );
-  }
+  },
 );
 
 export class Categories extends React.Component {
@@ -124,7 +117,7 @@ export class Categories extends React.Component {
     const { categoriesPerRow } = model;
     const id = utils.firstAvailableIndex(
       model.categories.map((a) => a.id),
-      0
+      0,
     );
     const data = { id, label: 'Category ' + id };
     const addRowLabel = model.categories.length % categoriesPerRow === 0;
@@ -159,10 +152,7 @@ export class Categories extends React.Component {
 
     if (index !== -1) {
       model.categories.splice(index, 1);
-      model.correctResponse = removeCategory(
-        category.id,
-        model.correctResponse
-      );
+      model.correctResponse = removeCategory(category.id, model.correctResponse);
       onModelChanged(model);
     }
   };
@@ -179,25 +169,14 @@ export class Categories extends React.Component {
 
   addChoiceToCategory = (choice, categoryId) => {
     const { model, onModelChanged } = this.props;
-    const correctResponse = moveChoiceToCategory(
-      choice.id,
-      undefined,
-      categoryId,
-      0,
-      model.correctResponse
-    );
+    const correctResponse = moveChoiceToCategory(choice.id, undefined, categoryId, 0, model.correctResponse);
 
     onModelChanged({ correctResponse });
   };
 
   deleteChoiceFromCategory = (category, choice, choiceIndex) => {
     const { model, onModelChanged } = this.props;
-    const correctResponse = removeChoiceFromCategory(
-      choice.id,
-      category.id,
-      choiceIndex,
-      model.correctResponse
-    );
+    const correctResponse = removeChoiceFromCategory(choice.id, category.id, choiceIndex, model.correctResponse);
 
     onModelChanged({ correctResponse });
   };
@@ -234,7 +213,7 @@ export class Categories extends React.Component {
     } = this.props;
 
     const { categoriesPerRow, rowLabels, errors } = model;
-    const { associationError, categoriesError } = errors || {};
+    const { associationError, categoriesError, categoriesErrors } = errors || {};
     const {
       maxCategories,
       maxImageWidth = {},
@@ -260,23 +239,13 @@ export class Categories extends React.Component {
               placement={'right'}
               title={validationMessage}
             >
-              <Info
-                fontSize={'small'}
-                color={'primary'}
-                style={{ marginLeft: '5px' }}
-              />
+              <Info fontSize={'small'} color={'primary'} style={{ marginLeft: '5px' }} />
             </Tooltip>
           }
-          buttonDisabled={
-            maxCategories && categories && maxCategories === categories.length
-          }
+          buttonDisabled={maxCategories && categories && maxCategories === categories.length}
         />
-        {associationError && (
-          <div className={classes.errorText}>{associationError}</div>
-        )}
-        {categoriesError && (
-          <div className={classes.errorText}>{categoriesError}</div>
-        )}
+        {associationError && <div className={classes.errorText}>{associationError}</div>}
+        {categoriesError && <div className={classes.errorText}>{categoriesError}</div>}
         <div className={classes.categoriesHolder} style={holderStyle}>
           {categories.map((category, index) => {
             const hasRowLabel = index % categoriesPerRow === 0;
@@ -293,14 +262,8 @@ export class Categories extends React.Component {
                     imageSupport={imageSupport}
                     toolbarOpts={toolbarOpts}
                     spellCheck={spellCheck}
-                    maxImageWidth={
-                      (maxImageWidth && maxImageWidth.rowLabel) ||
-                      defaultImageMaxWidth
-                    }
-                    maxImageHeight={
-                      (maxImageHeight && maxImageHeight.rowLabel) ||
-                      defaultImageMaxHeight
-                    }
+                    maxImageWidth={(maxImageWidth && maxImageWidth.rowLabel) || defaultImageMaxWidth}
+                    maxImageHeight={(maxImageHeight && maxImageHeight.rowLabel) || defaultImageMaxHeight}
                     uploadSoundSupport={uploadSoundSupport}
                   />
                 )}
@@ -310,22 +273,15 @@ export class Categories extends React.Component {
                   deleteFocusedEl={this.deleteFocusedEl}
                   index={index}
                   category={category}
+                  error={categoriesErrors && categoriesErrors[category.id]}
                   onChange={this.change}
                   onDelete={() => this.delete(category)}
                   onAddChoice={this.addChoiceToCategory}
                   toolbarOpts={toolbarOpts}
                   spellCheck={spellCheck}
-                  onDeleteChoice={(choice, choiceIndex) =>
-                    this.deleteChoiceFromCategory(category, choice, choiceIndex)
-                  }
-                  maxImageWidth={
-                    (maxImageWidth && maxImageWidth.categoryLabel) ||
-                    defaultImageMaxWidth
-                  }
-                  maxImageHeight={
-                    (maxImageHeight && maxImageHeight.categoryLabel) ||
-                    defaultImageMaxHeight
-                  }
+                  onDeleteChoice={(choice, choiceIndex) => this.deleteChoiceFromCategory(category, choice, choiceIndex)}
+                  maxImageWidth={(maxImageWidth && maxImageWidth.categoryLabel) || defaultImageMaxWidth}
+                  maxImageHeight={(maxImageHeight && maxImageHeight.categoryLabel) || defaultImageMaxHeight}
                   uploadSoundSupport={uploadSoundSupport}
                 />
               </React.Fragment>

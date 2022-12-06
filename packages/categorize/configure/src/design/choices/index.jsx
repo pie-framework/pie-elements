@@ -31,6 +31,7 @@ export class Choices extends React.Component {
 
   static defaultProps = {};
 
+  changeChoice = (choice) => {
   state = {
     focusedEl: null,
   };
@@ -54,7 +55,7 @@ export class Choices extends React.Component {
 
     const id = utils.firstAvailableIndex(
       model.choices.map((a) => a.id),
-      0
+      0,
     );
     const data = { id, content: 'Choice ' + id };
 
@@ -79,10 +80,7 @@ export class Choices extends React.Component {
     const index = model.choices.findIndex((a) => a.id === choice.id);
     if (index !== -1) {
       model.choices.splice(index, 1);
-      model.correctResponse = removeAllChoices(
-        choice.id,
-        model.correctResponse
-      );
+      model.correctResponse = removeAllChoices(choice.id, model.correctResponse);
       onModelChanged(model);
     }
   };
@@ -105,11 +103,7 @@ export class Choices extends React.Component {
     } = this.props;
     const { errors, allowMultiplePlacementsEnabled } = model;
     const { choicesError, choicesErrors } = errors || {};
-    const {
-      maxChoices,
-      maxImageWidth = {},
-      maxImageHeight = {},
-    } = configuration || {};
+    const { maxChoices, maxImageWidth = {}, maxImageHeight = {} } = configuration || {};
 
     const categoryCountIsOne = this.allChoicesHaveCount(1);
     const choiceHolderStyle = {
@@ -122,18 +116,12 @@ export class Choices extends React.Component {
           label="Choices"
           buttonLabel="ADD A CHOICE"
           onAdd={this.addChoice}
-          buttonDisabled={
-            maxChoices && choices && maxChoices === choices.length
-          }
+          buttonDisabled={maxChoices && choices && maxChoices === choices.length}
         />
-        {choicesError && (
-          <div className={classes.errorText}>{choicesError}</div>
-        )}
+        {choicesError && <div className={classes.errorText}>{choicesError}</div>}
         <Config
           config={model}
-          categoryCountIsOne={categoryCountIsOne}
           onModelChanged={onModelChanged}
-          allChoicesHaveCount={this.allChoicesHaveCount}
           spellCheck={spellCheck}
         />
         <div className={classes.choiceHolder} style={choiceHolderStyle}>

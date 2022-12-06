@@ -5,7 +5,7 @@ import isEmpty from 'lodash/isEmpty';
 import isEqual from 'lodash/isEqual';
 import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
 import { ConstructedResponse } from '@pie-lib/mask-markup';
-import {color, Collapsible, hasText, PreviewPrompt} from '@pie-lib/render-ui';
+import { color, Collapsible, hasText, PreviewPrompt } from '@pie-lib/render-ui';
 import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
 
@@ -27,21 +27,22 @@ export class Main extends React.Component {
     alwaysShowCorrect: PropTypes.bool,
     animationsDisabled: PropTypes.bool,
     maxLengthPerChoice: PropTypes.array,
-    playerSpellCheckEnabled: PropTypes.bool
+    playerSpellCheckEnabled: PropTypes.bool,
   };
 
   static defaultProps = {
-    value: {}
+    value: {},
   };
 
   state = {
     showCorrectAnswer: this.props.alwaysShowCorrect || false,
-    value: this.props.value
+    value: this.props.value,
   };
 
   // if for all responses max length is 1, call onChange for each keystroke
-  getChangeSession = maxLengthPerChoice =>
-    maxLengthPerChoice && maxLengthPerChoice.every((val, i, arr) => val === arr[0] && val === 1) ? this.props.onChange
+  getChangeSession = (maxLengthPerChoice) =>
+    maxLengthPerChoice && maxLengthPerChoice.every((val, i, arr) => val === arr[0] && val === 1)
+      ? this.props.onChange
       : debounce(this.props.onChange, 1500, { maxWait: 1500 });
 
   UNSAFE_componentWillReceiveProps(nextProps) {
@@ -66,7 +67,7 @@ export class Main extends React.Component {
 
   changeSession = this.getChangeSession(this.props.maxLengthPerChoice);
 
-  onChange = value => {
+  onChange = (value) => {
     this.setState({ value });
 
     this.changeSession(value);
@@ -88,38 +89,44 @@ export class Main extends React.Component {
       maxLengthPerChoice,
       maxLengthPerChoiceEnabled,
       displayType,
-      playerSpellCheckEnabled
+      playerSpellCheckEnabled,
     } = this.props;
 
     const { role } = env || {};
-    const displayNote = (showCorrectAnswer || mode === 'view' && role === 'instructor') && showNote && note;
-    const mainClasses = classNames([classes.mainContainer, {
-      [classes.noBorderColor]: alwaysShowCorrect
-    }]);
+    const displayNote = (showCorrectAnswer || (mode === 'view' && role === 'instructor')) && showNote && note;
+    const mainClasses = classNames([
+      classes.mainContainer,
+      {
+        [classes.noBorderColor]: alwaysShowCorrect,
+      },
+    ]);
 
-    const teacherInstructionsDiv = <PreviewPrompt defaultClassName="teacher-instructions" prompt={teacherInstructions} />;
+    const teacherInstructionsDiv = (
+      <PreviewPrompt defaultClassName="teacher-instructions" prompt={teacherInstructions} />
+    );
 
     const rationaleDiv = <PreviewPrompt prompt={rationale} />;
 
     return (
       <div className={mainClasses} style={{ display: `${displayType}` }}>
-        {
-          teacherInstructions && hasText(teacherInstructions) && (
-            <div className={classes.collapsible}>
-              {!animationsDisabled ? <Collapsible
-                  labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}
-                >
-                  {teacherInstructionsDiv}
-                </Collapsible>
-                : teacherInstructionsDiv}
-            </div>
-          )
-        }
-        {!alwaysShowCorrect && <CorrectAnswerToggle
-          show={mode === 'evaluate'}
-          toggled={showCorrectAnswer}
-          onToggle={this.toggleShowCorrect}
-        />}
+        {teacherInstructions && hasText(teacherInstructions) && (
+          <div className={classes.collapsible}>
+            {!animationsDisabled ? (
+              <Collapsible labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}>
+                {teacherInstructionsDiv}
+              </Collapsible>
+            ) : (
+              teacherInstructionsDiv
+            )}
+          </div>
+        )}
+        {!alwaysShowCorrect && (
+          <CorrectAnswerToggle
+            show={mode === 'evaluate'}
+            toggled={showCorrectAnswer}
+            onToggle={this.toggleShowCorrect}
+          />
+        )}
         {prompt && <PreviewPrompt prompt={prompt} />}
         <ConstructedResponse
           {...this.props}
@@ -138,12 +145,11 @@ export class Main extends React.Component {
         )}
         {rationale && hasText(rationale) && (
           <div className={classes.collapsible}>
-            {!animationsDisabled ? <Collapsible
-                labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }}
-              >
-                {rationaleDiv}
-              </Collapsible>
-              : rationaleDiv}
+            {!animationsDisabled ? (
+              <Collapsible labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }}>{rationaleDiv}</Collapsible>
+            ) : (
+              rationaleDiv
+            )}
           </div>
         )}
       </div>
@@ -151,29 +157,29 @@ export class Main extends React.Component {
   }
 }
 
-const styles = theme => ({
+const styles = (theme) => ({
   mainContainer: {
     padding: theme.spacing.unit,
     color: color.text(),
-    backgroundColor: color.background()
+    backgroundColor: color.background(),
   },
   inlineDisplay: {
-    display: 'inline-block'
+    display: 'inline-block',
   },
   blockDisplay: {
-    display: 'block'
+    display: 'block',
   },
   note: {
-    padding: '5px 0'
+    padding: '5px 0',
   },
   collapsible: {
-    margin: `${theme.spacing.unit * 2}px 0`
+    margin: `${theme.spacing.unit * 2}px 0`,
   },
   noBorderColor: {
     '& *': {
-      borderColor: `${color.text()} !important`
-    }
-  }
+      borderColor: `${color.text()} !important`,
+    },
+  },
 });
 
 export default withStyles(styles)(Main);

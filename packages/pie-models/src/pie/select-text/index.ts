@@ -2,10 +2,7 @@ import { PromptConfig } from '../../PromptConfig';
 import { PieModel } from '../../PieModel';
 import { CommonConfigSettings } from '../../CommonConfigSettings';
 import { ComplexFeedbackType } from '../../Feedback';
-import {
-  ConfigureMaxImageDimensionsProp,
-  ConfigureProp,
-} from '../ConfigurationProp';
+import { ConfigureMaxImageDimensionsProp, ConfigureProp } from '../ConfigurationProp';
 
 interface TextToken {
   /** The token text */
@@ -103,9 +100,7 @@ export interface SelectTextPie extends PieModel {
  * @TJS-title this is the title
  * @additionalProperties false
  */
-export interface SelectTextConfigure
-  extends PromptConfig,
-    CommonConfigSettings {
+export interface SelectTextConfigure extends PromptConfig, CommonConfigSettings {
   /**
    * Selection Count configuration
    */

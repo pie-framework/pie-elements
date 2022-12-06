@@ -7,7 +7,7 @@ import { shallowChild } from '@pie-lib/test-utils';
 describe('AddPoint', () => {
   const defaultProps = {
     onAddClick: () => {},
-    disabled: false
+    disabled: false,
   };
   let wrapper;
 

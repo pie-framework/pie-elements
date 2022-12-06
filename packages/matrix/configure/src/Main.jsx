@@ -1,12 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import EditableHtml from '@pie-lib/editable-html';
-import {
-  InputContainer,
-  settings,
-  layout
-} from '@pie-lib/config-ui';
-import {withStyles} from '@material-ui/core/styles';
+import { InputContainer, settings, layout } from '@pie-lib/config-ui';
+import { withStyles } from '@material-ui/core/styles';
 import MatrixColumnsSizeHeaderInput from './MatrixColumnsSizeHeaderInput';
 import MatrixRowsSizeHeaderInput from './MatrixRowsSizeHeaderInput';
 import MatrixLabelTypeHeaderInput from './MatrixLabelTypeHeaderInput';
@@ -14,29 +10,28 @@ import MatrixValues from './MatrixValues';
 
 const { Panel, toggle, radio } = settings;
 
-const styles = theme => ({
+const styles = (theme) => ({
   promptHolder: {
     width: '100%',
     paddingBottom: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit * 2
+    marginBottom: theme.spacing.unit * 2,
   },
   prompt: {
     paddingTop: theme.spacing.unit * 2,
-    width: '100%'
+    width: '100%',
   },
   matrixHeaderOptionsHolder: {
     display: 'flex',
     width: '100%',
     padding: '20px 0',
-    justifyContent: 'space-around'
+    justifyContent: 'space-around',
   },
   design: {
-    paddingTop: theme.spacing.unit * 3
-  }
+    paddingTop: theme.spacing.unit * 3,
+  },
 });
 
-
-const Design = withStyles(styles)(props => {
+const Design = withStyles(styles)((props) => {
   const {
     classes,
     model,
@@ -46,17 +41,10 @@ const Design = withStyles(styles)(props => {
     uploadSoundSupport,
     onChangeModel,
     onConfigurationChanged,
-    onTeacherInstructionsChanged
+    onTeacherInstructionsChanged,
   } = props;
-  const {
-    prompt = {},
-    teacherInstructions = {},
-    scoringType = {},
-    spellCheck = {},
-  } = configuration || {};
-  const {
-    teacherInstructionsEnabled, spellCheckEnabled
-  } = model || {};
+  const { prompt = {}, teacherInstructions = {}, scoringType = {}, spellCheck = {} } = configuration || {};
+  const { teacherInstructionsEnabled, spellCheckEnabled } = model || {};
 
   return (
     <div className={classes.design}>
@@ -70,26 +58,22 @@ const Design = withStyles(styles)(props => {
             groups={{
               Properties: {
                 teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
-                spellCheckEnabled:
-                spellCheck.settings && toggle(spellCheck.label),
-                scoringType: scoringType.settings && radio(scoringType.label, ['auto', 'rubric'])
-              }
+                spellCheckEnabled: spellCheck.settings && toggle(spellCheck.label),
+                scoringType: scoringType.settings && radio(scoringType.label, ['auto', 'rubric']),
+              },
             }}
           />
         }
       >
         <div>
           <div className={classes.matrixHeaderOptionsHolder}>
-            <MatrixRowsSizeHeaderInput model={model} onChangeModel={onChangeModel}/>
-            <MatrixColumnsSizeHeaderInput model={model} onChangeModel={onChangeModel}/>
-            <MatrixLabelTypeHeaderInput model={model} onChangeModel={onChangeModel}/>
+            <MatrixRowsSizeHeaderInput model={model} onChangeModel={onChangeModel} />
+            <MatrixColumnsSizeHeaderInput model={model} onChangeModel={onChangeModel} />
+            <MatrixLabelTypeHeaderInput model={model} onChangeModel={onChangeModel} />
           </div>
 
           {teacherInstructionsEnabled && (
-            <InputContainer
-              label={teacherInstructions.label}
-              className={classes.promptHolder}
-            >
+            <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
               <EditableHtml
                 className={classes.prompt}
                 markup={model.teacherInstructions || ''}
@@ -115,7 +99,7 @@ const Design = withStyles(styles)(props => {
             />
           </InputContainer>
 
-          <MatrixValues model={model} onChangeModel={onChangeModel}/>
+          <MatrixValues model={model} onChangeModel={onChangeModel} />
         </div>
       </layout.ConfigLayout>
     </div>
@@ -131,28 +115,28 @@ export class Main extends React.Component {
     classes: PropTypes.object.isRequired,
     imageSupport: PropTypes.shape({
       add: PropTypes.func.isRequired,
-      delete: PropTypes.func.isRequired
-    })
+      delete: PropTypes.func.isRequired,
+    }),
   };
 
-  onPromptChanged = prompt => {
+  onPromptChanged = (prompt) => {
     this.props.onModelChanged({
       ...this.props.model,
-      prompt
+      prompt,
     });
   };
 
-  onChangeModel = data => {
+  onChangeModel = (data) => {
     this.props.onModelChanged({
       ...this.props.model,
-      ...data
+      ...data,
     });
   };
 
-  onTeacherInstructionsChanged = teacherInstructions => {
+  onTeacherInstructionsChanged = (teacherInstructions) => {
     this.props.onModelChanged({
       ...this.props.model,
-      teacherInstructions
+      teacherInstructions,
     });
   };
 

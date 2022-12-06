@@ -3,7 +3,7 @@ import isEmpty from 'lodash/isEmpty';
 import { getAllCorrectResponses, choiceIsEmpty } from './utils';
 import { lockChoices, getShuffledChoices, partialScoring } from '@pie-lib/controller-utils';
 
-export const normalize = question => ({
+export const normalize = (question) => ({
   rationaleEnabled: true,
   promptEnabled: true,
   teacherInstructionsEnabled: true,
@@ -19,7 +19,7 @@ export const normalize = question => ({
  * @param {*} updateSession - optional - a function that will set the properties passed into it on the session.
  */
 export function model(question, session, env, updateSession) {
-  return new Promise(async resolve => {
+  return new Promise(async (resolve) => {
     const normalizedQuestion = normalize(question);
     let feedback = {};
 
@@ -31,17 +31,21 @@ export function model(question, session, env, updateSession) {
       const { value } = session || {};
 
       for (let i = 0; i < numberOfPossibleResponses; i++) {
-        const result = reduce(allCorrectResponses, (obj, choices, key) => {
-          const answer = (value && value[key]) || '';
+        const result = reduce(
+          allCorrectResponses,
+          (obj, choices, key) => {
+            const answer = (value && value[key]) || '';
 
-          obj.feedback[key] = choices[i] === answer;
+            obj.feedback[key] = choices[i] === answer;
 
-          if (obj.feedback[key]) {
-            obj.correctResponses += 1;
-          }
+            if (obj.feedback[key]) {
+              obj.correctResponses += 1;
+            }
 
-          return obj;
-        }, { correctResponses: 0, feedback: {} });
+            return obj;
+          },
+          { correctResponses: 0, feedback: {} },
+        );
 
         if (correctResponses === undefined || result.correctResponses > correctResponses) {
           correctResponses = result.correctResponses;
@@ -54,7 +58,7 @@ export function model(question, session, env, updateSession) {
       }
     }
 
-    let choices = normalizedQuestion.choices && normalizedQuestion.choices.filter(choice => !choiceIsEmpty(choice));
+    let choices = normalizedQuestion.choices && normalizedQuestion.choices.filter((choice) => !choiceIsEmpty(choice));
 
     const lockChoiceOrder = lockChoices(normalizedQuestion, session, env);
 
@@ -69,18 +73,14 @@ export function model(question, session, env, updateSession) {
       feedback,
       mode: env.mode,
       disabled: env.mode !== 'gather',
-      responseCorrect:
-        env.mode === 'evaluate'
-          ? getScore(normalizedQuestion, session) === 1
-          : undefined,
+      responseCorrect: env.mode === 'evaluate' ? getScore(normalizedQuestion, session) === 1 : undefined,
     };
 
-    if (
-      env.role === 'instructor' &&
-      (env.mode === 'view' || env.mode === 'evaluate')
-    ) {
+    if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
       out.rationale = normalizedQuestion.rationaleEnabled ? normalizedQuestion.rationale : null;
-      out.teacherInstructions = normalizedQuestion.teacherInstructionsEnabled ? normalizedQuestion.teacherInstructions : null;
+      out.teacherInstructions = normalizedQuestion.teacherInstructionsEnabled
+        ? normalizedQuestion.teacherInstructions
+        : null;
     } else {
       out.rationale = null;
       out.teacherInstructions = null;
@@ -99,15 +99,19 @@ export const getScore = (config, session) => {
   const { value } = session || {};
 
   for (let i = 0; i < numberOfPossibleResponses; i++) {
-    const result = reduce(allCorrectResponses, (total, choices, key) => {
-      const answer = (value && value[key]) || '';
+    const result = reduce(
+      allCorrectResponses,
+      (total, choices, key) => {
+        const answer = (value && value[key]) || '';
 
-      if (choices[i] === answer) {
-        return total;
-      }
+        if (choices[i] === answer) {
+          return total;
+        }
 
-      return total - 1;
-    }, maxScore);
+        return total - 1;
+      },
+      maxScore,
+    );
 
     if (result > correctCount) {
       correctCount = result;
@@ -136,23 +140,23 @@ export const getScore = (config, session) => {
  *   `model.partialScoring`.
  */
 export function outcome(model, session, env = {}) {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     const partialScoringEnabled = partialScoring.enabled(model, env);
     const score = getScore(model, session);
 
     resolve({
       score: partialScoringEnabled ? score : score === 1 ? 1 : 0,
-      empty: !session || isEmpty(session)
+      empty: !session || isEmpty(session),
     });
   });
 }
 
 export const createCorrectResponseSession = (question, env) => {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     if (env.mode !== 'evaluate' && env.role === 'instructor') {
       resolve({
         value: question.correctResponse,
-        id: '1'
+        id: '1',
       });
     } else {
       resolve(null);

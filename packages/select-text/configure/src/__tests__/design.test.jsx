@@ -38,7 +38,7 @@ describe('design', () => {
         onModelChanged={onChange}
         onPromptChanged={onPromptChanged}
         onRationaleChanged={onRationaleChanged}
-      />
+      />,
     );
   });
 
@@ -52,8 +52,7 @@ describe('design', () => {
         shallow(
           <Design
             model={{
-              text:
-                '<p>&#8220;Lucy?&#63; Are you using your time wisely to plan your project?&#33;&#33;&#33;&#8221; Mr. Wilson asked.</p><p>Lucy looked a little confused at first. &#195; Then she grinned and proudly stated, &#8220;Why, yes I am! I plan to make a bird feeder for that tree out our window!&#8221;</p>',
+              text: '<p>&#8220;Lucy?&#63; Are you using your time wisely to plan your project?&#33;&#33;&#33;&#8221; Mr. Wilson asked.</p><p>Lucy looked a little confused at first. &#195; Then she grinned and proudly stated, &#8220;Why, yes I am! I plan to make a bird feeder for that tree out our window!&#8221;</p>',
               tokens: [],
             }}
             configuration={defaultValues.configuration}
@@ -62,8 +61,8 @@ describe('design', () => {
             onModelChanged={onChange}
             onPromptChanged={onPromptChanged}
             onRationaleChanged={onRationaleChanged}
-          />
-        )
+          />,
+        ),
       ).toMatchSnapshot();
     });
 
@@ -81,7 +80,7 @@ describe('design', () => {
           onModelChanged={onChange}
           onPromptChanged={onPromptChanged}
           onRationaleChanged={onRationaleChanged}
-        />
+        />,
       );
 
       expect(wrapper).toMatchSnapshot();
@@ -101,7 +100,7 @@ describe('design', () => {
           onModelChanged={onChange}
           onPromptChanged={onPromptChanged}
           onRationaleChanged={onRationaleChanged}
-        />
+        />,
       );
 
       expect(wrapper).toMatchSnapshot();
@@ -130,26 +129,18 @@ describe('design', () => {
     });
 
     describe('changeTokens', () => {
-      assert(
-        'changeTokens',
-        [[{ start: 0, end: 1, text: 'f' }], 'words'],
-        (m) => ({
-          ...m,
-          maxSelections: 0,
-          tokens: [{ start: 0, end: 1, text: 'f' }],
-          mode: 'words',
-        })
-      );
-      assert(
-        'changeTokens',
-        [[{ start: 0, end: 8, text: 'Foo bar.', correct: true }], 'sentences'],
-        (m) => ({
-          ...m,
-          maxSelections: 1,
-          tokens: [{ start: 0, end: 8, text: 'Foo bar.', correct: true }],
-          mode: 'sentences',
-        })
-      );
+      assert('changeTokens', [[{ start: 0, end: 1, text: 'f' }], 'words'], (m) => ({
+        ...m,
+        maxSelections: 0,
+        tokens: [{ start: 0, end: 1, text: 'f' }],
+        mode: 'words',
+      }));
+      assert('changeTokens', [[{ start: 0, end: 8, text: 'Foo bar.', correct: true }], 'sentences'], (m) => ({
+        ...m,
+        maxSelections: 1,
+        tokens: [{ start: 0, end: 8, text: 'Foo bar.', correct: true }],
+        mode: 'sentences',
+      }));
     });
 
     describe('changeMaxSelections', () => {
@@ -181,14 +172,10 @@ describe('design', () => {
     });
 
     describe('changeTeacherInstructions', () => {
-      assert(
-        'onTeacherInstructionsChanged',
-        ['New Teacher Instructions'],
-        (m) => ({
-          ...m,
-          teacherInstructions: 'New Teacher Instructions',
-        })
-      );
+      assert('onTeacherInstructionsChanged', ['New Teacher Instructions'], (m) => ({
+        ...m,
+        teacherInstructions: 'New Teacher Instructions',
+      }));
     });
 
     describe('changeRationale', () => {

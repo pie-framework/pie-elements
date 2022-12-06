@@ -14,14 +14,14 @@ describe('DrawingResponse', () => {
           disabled: false,
           imageDimensions: {
             height: 0,
-            width: 0
+            width: 0,
           },
           imageUrl: '',
           mode: 'gather',
-          prompt: 'This is the question prompt'
-        }
+          prompt: 'This is the question prompt',
+        },
       },
-      opts
+      opts,
     );
 
     return shallow(<DrawingResponse {...opts} />);

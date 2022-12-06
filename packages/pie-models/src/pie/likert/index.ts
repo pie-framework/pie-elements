@@ -17,13 +17,7 @@ export interface LikertPie extends PieModel {
   /** Indicates the likert scale */
   likertScale?: 'likert3' | 'likert5' | 'likert7';
   /** Indicates the likert type */
-  likertType?:
-    | 'agreement'
-    | 'frequency'
-    | 'yesNo'
-    | 'importance'
-    | 'likelihood'
-    | 'like';
+  likertType?: 'agreement' | 'frequency' | 'yesNo' | 'importance' | 'likelihood' | 'like';
   /** Indicates the likert type */
   likertOrientation?: 'horizontal' | 'vertical';
   /** The choice options for the question */
@@ -47,5 +41,5 @@ export interface LikertConfigure extends PromptConfig {
   /**
    * Configuration for the author's spellcheck
    */
-   spellCheck?: ConfigureProp;
+  spellCheck?: ConfigureProp;
 }

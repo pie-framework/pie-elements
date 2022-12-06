@@ -4,7 +4,7 @@ import { isResponseCorrect, parseHTML } from './utils';
 import defaults from './defaults';
 import { lockChoices, partialScoring, getShuffledChoices } from '@pie-lib/controller-utils';
 
-const prepareChoice = (model, env, defaultFeedback) => choice => {
+const prepareChoice = (model, env, defaultFeedback) => (choice) => {
   const { role, mode } = env || {};
   const out = {
     label: choice.label,
@@ -39,10 +39,10 @@ const prepareChoice = (model, env, defaultFeedback) => choice => {
 };
 
 export function createDefaultModel(model = {}) {
-  return new Promise(resolve => resolve({ ...defaults, ...model }));
+  return new Promise((resolve) => resolve({ ...defaults, ...model }));
 }
 
-export const normalize = question => {
+export const normalize = (question) => {
   const { verticalMode, choicesLayout, ...questionProps } = question || {};
 
   return {
@@ -50,7 +50,7 @@ export const normalize = question => {
     ...questionProps,
     // This is used for offering support for old models which have the property verticalMode
     // Same thing is set in authoring : packages/multiple-choice/configure/src/index.jsx - createDefaultModel
-    choicesLayout: choicesLayout || (verticalMode === false && 'horizontal') || defaults.choicesLayout
+    choicesLayout: choicesLayout || (verticalMode === false && 'horizontal') || defaults.choicesLayout,
   };
 };
 
@@ -66,22 +66,15 @@ export async function model(question, session, env, updateSession) {
 
   const defaultFeedback = Object.assign(
     { correct: 'Correct', incorrect: 'Incorrect' },
-    normalizedQuestion.defaultFeedback
+    normalizedQuestion.defaultFeedback,
   );
 
-  let choices = normalizedQuestion.choices.map(
-    prepareChoice(normalizedQuestion, env, defaultFeedback)
-  );
+  let choices = normalizedQuestion.choices.map(prepareChoice(normalizedQuestion, env, defaultFeedback));
 
   const lockChoiceOrder = lockChoices(normalizedQuestion, session, env);
 
   if (!lockChoiceOrder) {
-    choices = await getShuffledChoices(
-      choices,
-      session,
-      updateSession,
-      'value'
-    );
+    choices = await getShuffledChoices(choices, session, updateSession, 'value');
   }
 
   const out = {
@@ -93,8 +86,7 @@ export async function model(question, session, env, updateSession) {
     choiceMode: normalizedQuestion.choiceMode,
     keyMode: normalizedQuestion.choicePrefix,
     choices,
-    responseCorrect:
-      env.mode === 'evaluate' ? isResponseCorrect(normalizedQuestion, session) : undefined
+    responseCorrect: env.mode === 'evaluate' ? isResponseCorrect(normalizedQuestion, session) : undefined,
   };
 
   const { role, mode } = env || {};
@@ -110,17 +102,18 @@ export async function model(question, session, env, updateSession) {
   return out;
 }
 
-
 export const getScore = (config, session) => {
   if (!session || isEmpty(session)) {
     return 0;
   }
 
   const selectedChoices = session.value || [];
-  const correctChoices = (config.choices || []).filter(ch => ch.correct);
+  const correctChoices = (config.choices || []).filter((ch) => ch.correct);
 
-  let score = selectedChoices.reduce((acc, selectedChoice) =>
-    acc + (correctChoices.find(ch => ch.value === selectedChoice) ? 1 : 0), 0);
+  let score = selectedChoices.reduce(
+    (acc, selectedChoice) => acc + (correctChoices.find((ch) => ch.value === selectedChoice) ? 1 : 0),
+    0,
+  );
 
   if (correctChoices.length < selectedChoices.length) {
     score -= selectedChoices.length - correctChoices.length;
@@ -145,12 +138,11 @@ export const getScore = (config, session) => {
  * @param {Object} env
  */
 export function outcome(model, session, env) {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     if (!session || isEmpty(session)) {
       resolve({ score: 0, empty: true });
     } else {
-      const partialScoringEnabled =
-        partialScoring.enabled(model, env) && model.choiceMode !== 'radio';
+      const partialScoringEnabled = partialScoring.enabled(model, env) && model.choiceMode !== 'radio';
       const score = getScore(model, session);
 
       resolve({ score: partialScoringEnabled ? score : score === 1 ? 1 : 0, empty: false });
@@ -159,13 +151,13 @@ export function outcome(model, session, env) {
 }
 
 export const createCorrectResponseSession = (question, env) => {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     if (env.mode !== 'evaluate' && env.role === 'instructor') {
       const { choices } = question || { choices: [] };
 
       resolve({
         id: '1',
-        value: choices.filter(c => c.correct).map(c => c.value)
+        value: choices.filter((c) => c.correct).map((c) => c.value),
       });
     } else {
       resolve(null);
@@ -176,7 +168,7 @@ export const createCorrectResponseSession = (question, env) => {
 export const validate = (model = {}, config = {}) => {
   const { choices } = model;
   const { minAnswerChoices = 2, maxAnswerChoices } = config;
-  const reversedChoices = [...choices || []].reverse();
+  const reversedChoices = [...(choices || [])].reverse();
   const choicesErrors = {};
   let hasCorrectResponse = false;
 
@@ -190,7 +182,7 @@ export const validate = (model = {}, config = {}) => {
     if (label === '' || label === '<div></div>') {
       choicesErrors[value] = 'Content should not be empty.';
     } else {
-      const identicalAnswer = reversedChoices.slice(index + 1).some(c => c.label === label);
+      const identicalAnswer = reversedChoices.slice(index + 1).some((c) => c.label === label);
 
       if (identicalAnswer) {
         choicesErrors[value] = 'Content should be unique.';

@@ -5,22 +5,22 @@ import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import debug from 'debug';
 import debounce from 'lodash/debounce';
-import {color, Feedback, Collapsible, PreviewPrompt} from '@pie-lib/render-ui';
+import { color, Feedback, Collapsible, PreviewPrompt } from '@pie-lib/render-ui';
 import { renderMath } from '@pie-lib/math-rendering';
 
 const log = debug('@pie-ui:extended-text-entry');
 
-const style = theme => ({
+const style = (theme) => ({
   main: {
     backgroundColor: color.background(),
-    color: color.text()
+    color: color.text(),
   },
   prompt: {
     width: '100%',
     color: color.text(),
     marginBottom: theme.spacing.unit * 2,
-    fontSize: 'inherit'
-  }
+    fontSize: 'inherit',
+  },
 });
 
 export class Main extends React.Component {
@@ -29,8 +29,8 @@ export class Main extends React.Component {
     model: PropTypes.object,
     classes: PropTypes.object.isRequired,
     session: PropTypes.shape({
-      value: PropTypes.string
-    }).isRequired
+      value: PropTypes.string,
+    }).isRequired,
   };
 
   changeSession = debounce(this.props.onChange, 1500);
@@ -47,7 +47,7 @@ export class Main extends React.Component {
       specialInput,
       animationsDisabled,
       playersToolbarPosition,
-      spellCheckEnabled
+      spellCheckEnabled,
     } = model;
     const { value } = session;
     const { width, height } = dimensions || {};
@@ -56,7 +56,9 @@ export class Main extends React.Component {
 
     log('[render] disabled? ', disabled);
 
-    const teacherInstructionsDiv = <PreviewPrompt defaultClassName="teacher-instructions" prompt={teacherInstructions} />;
+    const teacherInstructionsDiv = (
+      <PreviewPrompt defaultClassName="teacher-instructions" prompt={teacherInstructions} />
+    );
 
     switch (playersToolbarPosition) {
       case 'top':
@@ -80,30 +82,27 @@ export class Main extends React.Component {
     return (
       <div
         className={classes.main}
-        ref={ref => {
+        ref={(ref) => {
           this.containerRef = ref;
         }}
       >
-        {
-          teacherInstructions && (
-            <div>
-              {!animationsDisabled ? (
-                <Collapsible
-                  labels={{hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions'}}
-                  className={classes.collapsible}
-                >
-                  {teacherInstructionsDiv}
-                </Collapsible>
-              ) : teacherInstructionsDiv }
-              <br/>
-            </div>
-          )
-        }
+        {teacherInstructions && (
+          <div>
+            {!animationsDisabled ? (
+              <Collapsible
+                labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}
+                className={classes.collapsible}
+              >
+                {teacherInstructionsDiv}
+              </Collapsible>
+            ) : (
+              teacherInstructionsDiv
+            )}
+            <br />
+          </div>
+        )}
         {model.prompt && (
-          <Typography
-            component={'span'}
-            className={classes.prompt}
-          >
+          <Typography component={'span'} className={classes.prompt}>
             <PreviewPrompt defaultClassName="prompt" prompt={model.prompt} />
           </Typography>
         )}
@@ -123,21 +122,21 @@ export class Main extends React.Component {
               disabled: !mathInput,
               customKeys: this.props.model.customKeys,
               keypadMode: this.props.model.equationEditor,
-              controlledKeypadMode: false
+              controlledKeypadMode: false,
             },
             video: {
-              disabled: true
+              disabled: true,
             },
-             audio: {
-              disabled: true
-            }
+            audio: {
+              disabled: true,
+            },
           }}
           languageCharactersProps={languageCharactersProps}
         />
         {feedback && (
           <div>
             <br />
-            <Feedback correctness="correct" feedback={feedback}/>
+            <Feedback correctness="correct" feedback={feedback} />
           </div>
         )}
       </div>

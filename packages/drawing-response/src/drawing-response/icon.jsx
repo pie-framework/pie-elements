@@ -9,7 +9,7 @@ import {
   mdiCircle,
   mdiFormatColorText,
   mdiFormatColorFill,
-  mdiEraser
+  mdiEraser,
 } from '@mdi/js';
 
 const IconWrapper = ({ path }) => {
@@ -17,37 +17,36 @@ const IconWrapper = ({ path }) => {
 
   switch (path) {
     case 'mdiPencil':
-      iconPath = mdiPencil; break;
+      iconPath = mdiPencil;
+      break;
     case 'mdiMinus':
-      iconPath = mdiMinus; break;
+      iconPath = mdiMinus;
+      break;
     case 'mdiCircle':
-      iconPath = mdiCircle; break;
+      iconPath = mdiCircle;
+      break;
     case 'mdiRectangle':
-      iconPath = mdiRectangle; break;
+      iconPath = mdiRectangle;
+      break;
     case 'mdiFormatColorText':
-      iconPath = mdiFormatColorText; break;
+      iconPath = mdiFormatColorText;
+      break;
     case 'mdiFormatColorFill':
-      iconPath = mdiFormatColorFill; break;
+      iconPath = mdiFormatColorFill;
+      break;
     case 'mdiEraser':
-      iconPath = mdiEraser; break;
+      iconPath = mdiEraser;
+      break;
     default:
-      iconPath = mdiCursorDefault; break;
+      iconPath = mdiCursorDefault;
+      break;
   }
 
-  return (
-    <Icon
-      path={iconPath}
-      size={0.8}
-      rotate={180}
-      horizontal
-      vertical
-      color="#2B3963"
-    />
-  )
+  return <Icon path={iconPath} size={0.8} rotate={180} horizontal vertical color="#2B3963" />;
 };
 
 IconWrapper.propTypes = {
-  path: PropTypes.string.isRequired
+  path: PropTypes.string.isRequired,
 };
 
 export default IconWrapper;

@@ -6,32 +6,26 @@ import cn from 'classnames';
 
 export class NumberTextField extends React.Component {
   static propTypes = {
-    classes: PropTypes.object.isRequired
+    classes: PropTypes.object.isRequired,
   };
 
   render() {
     const { classes } = this.props;
     const props = { ...this.props, classes: undefined };
-    return (
-      <NTF
-        {...props}
-        className={cn(classes.textField, props.className)}
-        variant="outlined"
-      />
-    );
+    return <NTF {...props} className={cn(classes.textField, props.className)} variant="outlined" />;
   }
 }
 
-const styles = theme => ({
+const styles = (theme) => ({
   textField: {
-    marginLeft: theme.spacing.unit
-  }
+    marginLeft: theme.spacing.unit,
+  },
 });
 
 const miniStyles = () => ({
   textField: {
-    maxWidth: '100px'
-  }
+    maxWidth: '100px',
+  },
 });
 export const MiniField = withStyles(miniStyles)(NumberTextField);
 

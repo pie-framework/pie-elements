@@ -37,8 +37,7 @@ interface ResponseRay extends ResponseDefault {
 }
 
 /** Array that returns responses */
-interface ResponseArray
-  extends Array<ResponsePoint | ResponseLine | ResponseRay> {}
+interface ResponseArray extends Array<ResponsePoint | ResponseLine | ResponseRay> {}
 
 interface PartialScoringRule {
   /** Number of correct answers */
@@ -89,16 +88,7 @@ interface NumberLineDomainConfiguration {
   exhibitOnly: boolean;
 
   /** Indicates the initial type of response */
-  initialType:
-    | 'PF'
-    | 'LFF'
-    | 'LEF'
-    | 'LFE'
-    | 'LEE'
-    | 'RFN'
-    | 'RFP'
-    | 'REN'
-    | 'REP';
+  initialType: 'PF' | 'LFF' | 'LEF' | 'LFE' | 'LEE' | 'RFN' | 'RFP' | 'REN' | 'REP';
 
   /** Indicates the available types of responses */
   availableTypes: {
@@ -171,9 +161,7 @@ export interface NumberLinePie extends PieModel {
  * Config Object for @pie-elements/number-line
  * @additionalProperties false
  */
-export interface NumberLineConfigure
-  extends PromptConfig,
-    CommonConfigSettings {
+export interface NumberLineConfigure extends PromptConfig, CommonConfigSettings {
   /**
    * Configuration for the prompt
    */
@@ -182,5 +170,5 @@ export interface NumberLineConfigure
   /**
    * Configuration for the author's spellcheck
    */
-   spellCheck?: ConfigureProp;
+  spellCheck?: ConfigureProp;
 }

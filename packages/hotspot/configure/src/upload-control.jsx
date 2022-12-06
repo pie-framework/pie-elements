@@ -4,36 +4,25 @@ import { withStyles } from '@material-ui/core/styles/index';
 
 import Button from './button';
 
-const UploadControl = ({
-  classNameButton,
-  classNameSection,
-  classes,
-  label,
-  onInputClick,
-  onUploadImage,
-  setRef
-}) => (
+const UploadControl = ({ classNameButton, classNameSection, classes, label, onInputClick, onUploadImage, setRef }) => (
   <div className={classNameSection}>
-    <Button
-      className={classNameButton}
-      label={label}
-      onClick={onInputClick}
-    />
+    <Button className={classNameButton} label={label} onClick={onInputClick} />
     <input
       accept="image/*"
       className={classes.input}
       onChange={onUploadImage}
-      ref={ref => { setRef(ref); }}
+      ref={(ref) => {
+        setRef(ref);
+      }}
       type="file"
     />
   </div>
 );
 
-
 const styles = () => ({
   input: {
-    display: 'none'
-  }
+    display: 'none',
+  },
 });
 
 UploadControl.propTypes = {
@@ -43,12 +32,12 @@ UploadControl.propTypes = {
   label: PropTypes.string.isRequired,
   onInputClick: PropTypes.func.isRequired,
   onUploadImage: PropTypes.func.isRequired,
-  setRef: PropTypes.func.isRequired
+  setRef: PropTypes.func.isRequired,
 };
 
 UploadControl.defaultProps = {
   classNameButton: '',
-  classNameSection: ''
+  classNameSection: '',
 };
 
 export default withStyles(styles)(UploadControl);

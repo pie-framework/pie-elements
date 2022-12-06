@@ -2,8 +2,8 @@ const tokens = () => [
   {
     text: '',
     start: 0,
-    end: 0
-  }
+    end: 0,
+  },
 ];
 
 export default {
@@ -21,69 +21,69 @@ export default {
     promptEnabled: true,
     teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true,
-    toolbarEditorPosition: 'bottom'
+    toolbarEditorPosition: 'bottom',
   },
   configuration: {
     selectionCount: {
       settings: true,
-      label: 'Selection count'
+      label: 'Selection count',
     },
     correctAnswer: {
       settings: true,
-      label: 'Correct Answers'
+      label: 'Correct Answers',
     },
     selections: {
       settings: true,
-      label: 'Selections Available'
+      label: 'Selections Available',
     },
     highlightChoices: {
       settings: true,
-      label: 'Highlight choices'
+      label: 'Highlight choices',
     },
     rationale: {
       settings: true,
-      label: 'Rationale'
+      label: 'Rationale',
     },
     scoringType: {
       settings: false,
-      label: 'Scoring Type'
+      label: 'Scoring Type',
     },
     studentInstructions: {
       settings: false,
-      label: 'Student Instructions'
+      label: 'Student Instructions',
     },
     teacherInstructions: {
       settings: true,
-      label: 'Teacher Instructions'
+      label: 'Teacher Instructions',
     },
     prompt: {
       label: 'Prompt',
-      settings: true
+      settings: true,
     },
     text: {
       settings: true,
-      label: 'Content'
+      label: 'Content',
     },
     tokens: {
       settings: true,
-      label: 'Tokens'
+      label: 'Tokens',
     },
     feedback: {
       settings: true,
-      label: 'Feedback'
+      label: 'Feedback',
     },
     spellCheck: {
       label: 'Spellcheck',
-      settings:false,
-      enabled:true
+      settings: false,
+      enabled: true,
     },
     partialScoring: {
       settings: false,
-      label: 'Allow Partial Scoring'
+      label: 'Allow Partial Scoring',
     },
     mode: {
       settings: true,
-      label: 'Mode'
+      label: 'Mode',
     },
     minTokens: 2,
     maxImageWidth: {
@@ -98,7 +98,7 @@ export default {
     },
     withRubric: {
       settings: false,
-      label: 'Add Rubric'
-    }
-  }
+      label: 'Add Rubric',
+    },
+  },
 };

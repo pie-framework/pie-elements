@@ -6,15 +6,15 @@ import defaults from '../defaults';
 
 jest.mock('@pie-lib/config-ui', () => ({
   layout: {
-    ConfigLayout: props => <div>{props.children}</div>
+    ConfigLayout: (props) => <div>{props.children}</div>,
   },
   settings: {
-    Panel: props => <div onChange={props.onChange} />,
+    Panel: (props) => <div onChange={props.onChange} />,
     toggle: jest.fn(),
     radio: jest.fn(),
     numberFields: jest.fn(),
-    dropdown: jest.fn()
-  }
+    dropdown: jest.fn(),
+  },
 }));
 
 describe('Render Main Component', () => {
@@ -32,7 +32,7 @@ describe('Render Main Component', () => {
         onModelChanged={onChange}
         handleBoxResize={() => {}}
         imageSupport={{}}
-      />
+      />,
     );
 
     instance = wrapper.instance();
@@ -50,7 +50,9 @@ describe('Render Main Component', () => {
 
     it('changeFeedback calls onModelChanged', () => {
       instance.changeFeedback({ type: 'custom', default: 'Default Feedback' });
-      expect(onChange).toBeCalledWith(expect.objectContaining({ feedback: { type: 'custom', default: 'Default Feedback' } }));
+      expect(onChange).toBeCalledWith(
+        expect.objectContaining({ feedback: { type: 'custom', default: 'Default Feedback' } }),
+      );
     });
 
     it('changeTeacherInstructions calls onModelChanged', () => {

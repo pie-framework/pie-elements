@@ -1,11 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import debug from 'debug';
-import {
-  ModelUpdatedEvent,
-  InsertSoundEvent,
-  DeleteSoundEvent
-} from '@pie-framework/pie-configure-events';
+import { ModelUpdatedEvent, InsertSoundEvent, DeleteSoundEvent } from '@pie-framework/pie-configure-events';
 
 import Main from './Main';
 import defaults from 'lodash/defaults';
@@ -19,14 +15,14 @@ const prepareCustomizationObject = (config, model) => {
 
   return {
     configuration,
-    model
+    model,
   };
 };
 
 export default class Matrix extends HTMLElement {
   static createDefaultModel = (model = {}) => ({
     ...sensibleDefaults.model,
-    ...model
+    ...model,
   });
 
   constructor() {
@@ -95,8 +91,8 @@ export default class Matrix extends HTMLElement {
       disableSidePanel: this._disableSidePanel,
       uploadSoundSupport: {
         add: this.insertSound.bind(this),
-        delete: this.onDeleteSound.bind(this)
-      }
+        delete: this.onDeleteSound.bind(this),
+      },
     });
     ReactDOM.render(element, this);
   }

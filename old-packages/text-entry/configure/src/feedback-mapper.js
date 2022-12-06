@@ -1,4 +1,4 @@
-export const modelToFeedbackConfig = model => {
+export const modelToFeedbackConfig = (model) => {
   const correctFeedback = model.correctResponses.feedback || {};
   const incorrectFeedback = model.incorrectFeedback || {};
   const partialFeedback = model.partialResponses.feedback || {};
@@ -9,7 +9,7 @@ export const modelToFeedbackConfig = model => {
     incorrectFeedback: incorrectFeedback.value,
     incorrectFeedbackType: incorrectFeedback.type || 'default',
     partialFeedback: partialFeedback.value,
-    partialFeedbackType: partialFeedback.type || 'default'
+    partialFeedbackType: partialFeedback.type || 'default',
   };
 };
 
@@ -18,18 +18,18 @@ export const feedbackConfigToModel = (config, model) => {
 
   model.correctResponses.feedback = {
     type: config.correctFeedbackType,
-    value: config.correctFeedback
+    value: config.correctFeedback,
   };
 
   model.partialResponses = model.partialResponses || {};
   model.partialResponses.feedback = {
     type: config.partialFeedbackType,
-    value: config.partialFeedback
+    value: config.partialFeedback,
   };
 
   model.incorrectFeedback = {
     type: config.incorrectFeedbackType,
-    value: config.incorrectFeedback
+    value: config.incorrectFeedback,
   };
   return model;
 };

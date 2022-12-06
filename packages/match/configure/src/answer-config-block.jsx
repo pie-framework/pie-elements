@@ -13,17 +13,17 @@ import { InfoDialog } from './common';
 
 const log = debug('pie-elements:match:configure');
 
-const styles = theme => ({
+const styles = (theme) => ({
   container: {
     marginTop: theme.spacing.unit * 2,
     display: 'flex',
-    flexDirection: 'column'
+    flexDirection: 'column',
   },
   rowContainer: {
     marginTop: theme.spacing.unit * 2,
     display: 'flex',
     alignItems: 'center',
-    flex: 1
+    flex: 1,
   },
   rowItem: {
     flex: 1,
@@ -32,12 +32,12 @@ const styles = theme => ({
     '&> div': {
       width: '150px',
       padding: '12px',
-      textAlign: 'center'
+      textAlign: 'center',
     },
   },
   deleteIcon: {
     flex: 0.5,
-    minWidth: '88px'
+    minWidth: '88px',
   },
   questionText: {
     flex: 2,
@@ -48,29 +48,29 @@ const styles = theme => ({
       padding: 0,
       maxWidth: 'unset',
       textAlign: 'left',
-      minWidth: '350px'
-    }
+      minWidth: '350px',
+    },
   },
   rowTable: {
     display: 'flex',
-    flexDirection: 'column'
+    flexDirection: 'column',
   },
   separator: {
     marginTop: theme.spacing.unit * 2,
     border: 0,
     borderTop: '2px solid lightgray',
-    width: '100%'
+    width: '100%',
   },
   headerInput: {
     '&> div': {
-      fontWeight: 'bold'
-    }
+      fontWeight: 'bold',
+    },
   },
   errorText: {
     fontSize: '12px',
     color: 'red',
-    paddingTop: '5px'
-  }
+    paddingTop: '5px',
+  },
 });
 
 class AnswerConfigBlock extends React.Component {
@@ -83,19 +83,19 @@ class AnswerConfigBlock extends React.Component {
     onAddRow: PropTypes.func.isRequired,
     imageSupport: PropTypes.shape({
       add: PropTypes.func.isRequired,
-      delete: PropTypes.func.isRequired
+      delete: PropTypes.func.isRequired,
     }),
     uploadSoundSupport: PropTypes.shape({
       add: PropTypes.func.isRequired,
-      delete: PropTypes.func.isRequired
+      delete: PropTypes.func.isRequired,
     }),
-    toolbarOpts: PropTypes.object
+    toolbarOpts: PropTypes.object,
   };
 
   state = {
     dialog: {
-      open: false
-    }
+      open: false,
+    },
   };
 
   moveRow = (from, to) => {
@@ -115,14 +115,10 @@ class AnswerConfigBlock extends React.Component {
 
         return acc;
       },
-      { movedRow: null, remainingRows: [] }
+      { movedRow: null, remainingRows: [] },
     );
 
-    const update = [
-      ...remainingRows.slice(0, to),
-        movedRow,
-      ...remainingRows.slice(to)
-    ];
+    const update = [...remainingRows.slice(0, to), movedRow, ...remainingRows.slice(to)];
 
     log('update: ', update);
 
@@ -131,25 +127,27 @@ class AnswerConfigBlock extends React.Component {
     onChange(newModel);
   };
 
-  onChange = (name, isBoolean) => ({ target }) => {
-    const { model, onChange } = this.props;
-    let value;
+  onChange =
+    (name, isBoolean) =>
+    ({ target }) => {
+      const { model, onChange } = this.props;
+      let value;
 
-    if (isBoolean) {
-      value = target.checked;
-    } else {
-      value = target.value;
-    }
+      if (isBoolean) {
+        value = target.checked;
+      } else {
+        value = target.value;
+      }
 
-    lodash.set(model, name, value);
-    onChange(model, name);
-  };
+      lodash.set(model, name, value);
+      onChange(model, name);
+    };
 
-  onHeaderChange = headerIndex => value => {
+  onHeaderChange = (headerIndex) => (value) => {
     const { model, onChange } = this.props;
     const newModel = { ...model };
 
-    if(headerIndex === 0) {
+    if (headerIndex === 0) {
       newModel.headers[headerIndex] = value;
       onChange(newModel);
 
@@ -160,7 +158,7 @@ class AnswerConfigBlock extends React.Component {
 
     const currentHeader = headers[headerIndex];
 
-    const sameValue = headers.filter(header => {
+    const sameValue = headers.filter((header) => {
       const wasChanged = currentHeader !== value && `<div>${currentHeader}</div>` !== value;
       const sameValueEntered = header === value || `<div>${header}</div>` === value;
 
@@ -174,15 +172,13 @@ class AnswerConfigBlock extends React.Component {
         dialog: {
           open: true,
           onOk: () => {
-            this.setState(
-              {
-                dialog: {
-                  open: false
-                }
-              }
-            );
-          }
-        }
+            this.setState({
+              dialog: {
+                open: false,
+              },
+            });
+          },
+        },
       });
     } else {
       newModel.headers[headerIndex] = value;
@@ -192,26 +188,19 @@ class AnswerConfigBlock extends React.Component {
   };
 
   render() {
-    const {
-      classes,
-      model,
-      onAddRow,
-      imageSupport,
-      configuration,
-      toolbarOpts,
-      spellCheck,
-      uploadSoundSupport
-    } = this.props;
+    const { classes, model, onAddRow, imageSupport, configuration, toolbarOpts, spellCheck, uploadSoundSupport } =
+      this.props;
     const { headers = {}, maxImageWidth = {}, maxImageHeight = {} } = configuration || {};
     const { dialog } = this.state;
     const { errors } = model || {};
     const { correctResponseError, rowsErrors } = errors || {};
 
-    const filteredDefaultPlugins = (DEFAULT_PLUGINS || [])
-      .filter(p => p !== 'table' && p !== 'bulleted-list' && p !== 'numbered-list');
+    const filteredDefaultPlugins = (DEFAULT_PLUGINS || []).filter(
+      (p) => p !== 'table' && p !== 'bulleted-list' && p !== 'numbered-list',
+    );
     const labelPlugins = {
       audio: { disabled: true },
-      video: { disabled: true }
+      video: { disabled: true },
     };
 
     const defaultImageMaxWidth = maxImageWidth && maxImageWidth.prompt;
@@ -220,18 +209,17 @@ class AnswerConfigBlock extends React.Component {
     return (
       <div className={classes.container}>
         <Typography type="body1" component="div">
-          Click on the labels to edit or remove. Set the correct answers by
-          clicking each correct answer per row.
+          Click on the labels to edit or remove. Set the correct answers by clicking each correct answer per row.
         </Typography>
         {correctResponseError && <div className={classes.errorText}>{correctResponseError}</div>}
         <div className={classes.rowTable}>
           <div className={classes.rowContainer}>
             {headers.settings &&
-            (model.headers || []).map((header, idx) => (
+              (model.headers || []).map((header, idx) => (
                 <div
                   key={idx}
                   className={cx(classes.rowItem, {
-                    [classes.questionText]: idx === 0
+                    [classes.questionText]: idx === 0,
                   })}
                 >
                   <EditableHTML
@@ -270,18 +258,14 @@ class AnswerConfigBlock extends React.Component {
               toolbarOpts={toolbarOpts}
               spellCheck={spellCheck}
               error={rowsErrors && rowsErrors[row.id]}
-              maxImageWidth={maxImageWidth && maxImageWidth.rowTitles || defaultImageMaxWidth}
-              maxImageHeight={maxImageHeight && maxImageHeight.rowTitles || defaultImageMaxHeight}
+              maxImageWidth={(maxImageWidth && maxImageWidth.rowTitles) || defaultImageMaxWidth}
+              maxImageHeight={(maxImageHeight && maxImageHeight.rowTitles) || defaultImageMaxHeight}
               uploadSoundSupport={uploadSoundSupport}
             />
           ))}
           <AddRow onAddClick={onAddRow} />
         </div>
-          <InfoDialog
-            title={'The column headings must be non-blank and unique.'}
-            open={dialog.open}
-            onOk={dialog.onOk}
-          />
+        <InfoDialog title={'The column headings must be non-blank and unique.'} open={dialog.open} onOk={dialog.onOk} />
       </div>
     );
   }

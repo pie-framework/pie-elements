@@ -162,11 +162,7 @@ describe('equalLine', () => {
     [{ from: pn10_n10, to: p0_0 }, { from: pn1_n1, to: p22_22 }, true],
 
     // A(-10, -10), B(0, 0), C(-1, -1), D(22, 23)
-    [
-      { from: pn10_n10, to: p0_0 },
-      { from: pn1_n1, to: { x: 22, y: 23 } },
-      false,
-    ],
+    [{ from: pn10_n10, to: p0_0 }, { from: pn1_n1, to: { x: 22, y: 23 } }, false],
 
     [{ from: p0_0, to: p1_0 }, { from: p10_10, to: p1_0 }, false],
   ])('%j, %j => %s', (l1, l2, expected) => {
@@ -195,13 +191,11 @@ describe('equalRay', () => {
 
 describe('equalPolygon', () => {
   const assert = (pointsA, pointsB, expected) => {
-    it(`[${JSON.stringify(pointsA)}], [${JSON.stringify(pointsB)}] ${
-      expected ? 'are' : 'are not'
-      } equal`, () => {
-        const result = equalPolygon({ points: pointsA }, { points: pointsB });
+    it(`[${JSON.stringify(pointsA)}], [${JSON.stringify(pointsB)}] ${expected ? 'are' : 'are not'} equal`, () => {
+      const result = equalPolygon({ points: pointsA }, { points: pointsB });
 
-        expect(result).toEqual(expected);
-      });
+      expect(result).toEqual(expected);
+    });
   };
 
   const A = { x: 0, y: 0 };
@@ -279,7 +273,7 @@ describe('equalPolygon', () => {
       { x: 3, y: 0 },
       { x: 2, y: 2 },
     ],
-    false
+    false,
   );
 });
 
@@ -299,129 +293,81 @@ describe('equalCircle', () => {
 
 describe('equalSine', () => {
   const assert = (sine1, sine2, expected) => {
-    it(`[(${sine1.root.x},${sine1.root.y}), (${sine1.edge.x},${
-      sine1.edge.y
-      })], [(${sine2.root.x},${sine2.root.y}), (${sine2.edge.x},${
-      sine2.edge.y
-      })] ${expected ? 'are' : 'are not'} equal`, () => {
-        const result = equalSine(sine1, sine2);
+    it(`[(${sine1.root.x},${sine1.root.y}), (${sine1.edge.x},${sine1.edge.y})], [(${sine2.root.x},${sine2.root.y}), (${
+      sine2.edge.x
+    },${sine2.edge.y})] ${expected ? 'are' : 'are not'} equal`, () => {
+      const result = equalSine(sine1, sine2);
 
-        expect(result).toEqual(expected);
-      });
+      expect(result).toEqual(expected);
+    });
   };
 
-  assert(
-    { root: { x: 0, y: 0 }, edge: { x: 1, y: 1 } },
-    { root: { x: 2, y: 0 }, edge: { x: 1, y: 1 } },
-    true
-  );
-  assert(
-    { root: { x: 0, y: 0 }, edge: { x: 1, y: 1 } },
-    { root: { x: 1, y: 0 }, edge: { x: 1, y: 1 } },
-    false
-  );
-  assert(
-    { root: { x: 0, y: 0 }, edge: { x: 1, y: 1 } },
-    { root: { x: 20, y: 0 }, edge: { x: 21, y: 1 } },
-    true
-  );
-  assert(
-    { root: { x: 0, y: 0 }, edge: { x: 1, y: 1 } },
-    { root: { x: 21, y: 0 }, edge: { x: 21, y: 1 } },
-    false
-  );
-  assert(
-    { root: { x: 0, y: 0 }, edge: { x: 0, y: 0 } },
-    { root: { x: 21, y: 0 }, edge: { x: 21, y: 1 } },
-    false
-  );
-  assert(
-    { root: { x: 0, y: 1 }, edge: { x: 1, y: 1 } },
-    { root: { x: 24, y: 1 }, edge: { x: 25, y: 1 } },
-    true
-  );
+  assert({ root: { x: 0, y: 0 }, edge: { x: 1, y: 1 } }, { root: { x: 2, y: 0 }, edge: { x: 1, y: 1 } }, true);
+  assert({ root: { x: 0, y: 0 }, edge: { x: 1, y: 1 } }, { root: { x: 1, y: 0 }, edge: { x: 1, y: 1 } }, false);
+  assert({ root: { x: 0, y: 0 }, edge: { x: 1, y: 1 } }, { root: { x: 20, y: 0 }, edge: { x: 21, y: 1 } }, true);
+  assert({ root: { x: 0, y: 0 }, edge: { x: 1, y: 1 } }, { root: { x: 21, y: 0 }, edge: { x: 21, y: 1 } }, false);
+  assert({ root: { x: 0, y: 0 }, edge: { x: 0, y: 0 } }, { root: { x: 21, y: 0 }, edge: { x: 21, y: 1 } }, false);
+  assert({ root: { x: 0, y: 1 }, edge: { x: 1, y: 1 } }, { root: { x: 24, y: 1 }, edge: { x: 25, y: 1 } }, true);
 
   assert(
     { root: { x: 0.6, y: 0 }, edge: { x: 0.9, y: 1.2 } },
     { root: { x: -0.6, y: 0 }, edge: { x: -0.9, y: -1.2 } },
-    true
+    true,
   );
   assert(
     { root: { x: 0.6, y: 0 }, edge: { x: 0.9, y: 1.2 } },
     { root: { x: -2.4, y: 0 }, edge: { x: -2.7, y: 1.2 } },
-    true
+    true,
   );
   assert(
     { root: { x: 0.6, y: 0 }, edge: { x: 0.9, y: 1.2 } },
     { root: { x: -2.4, y: 0 }, edge: { x: -2.1, y: -1.2 } },
-    true
+    true,
   );
   assert(
     { root: { x: 0.6, y: 0 }, edge: { x: 0.9, y: 1.2 } },
     { root: { x: 0, y: 0 }, edge: { x: -0.3, y: 1.2 } },
-    true
+    true,
   );
   assert(
     { root: { x: 0.6, y: 0 }, edge: { x: 0.9, y: 1.2 } },
     { root: { x: 3, y: 0 }, edge: { x: 3.3, y: 1.2 } },
-    true
+    true,
   );
   assert(
     { root: { x: 0.6, y: 0 }, edge: { x: 0.9, y: 1.2 } },
     { root: { x: 3, y: 0 }, edge: { x: 2.7, y: -1.2 } },
-    true
+    true,
   );
   assert(
     { root: { x: 0.6, y: 0 }, edge: { x: 0.9, y: 1.2 } },
     { root: { x: 0.9, y: 1.2 }, edge: { x: 0.6, y: 0 } },
-    false
+    false,
   );
   assert(
     { root: { x: 0.6, y: 0 }, edge: { x: 0.9, y: 1.2 } },
     { root: { x: 0.6, y: 0 }, edge: { x: 0.6, y: 0 } },
-    false
+    false,
   );
 
-  assert(
-    { root: { x: 0, y: 0 }, edge: { x: 1, y: 2 } },
-    { root: { x: 2, y: 0 }, edge: { x: 3, y: -2 } },
-    true
-  );
-  assert(
-    { root: { x: 0, y: 0 }, edge: { x: 1, y: 2 } },
-    { root: { x: -10, y: 0 }, edge: { x: -11, y: 2 } },
-    true
-  );
-  assert(
-    { root: { x: 0, y: 0 }, edge: { x: 1, y: 2 } },
-    { root: { x: -10, y: 0 }, edge: { x: -9, y: 2 } },
-    false
-  );
-  assert(
-    { root: { x: 0, y: 0 }, edge: { x: 1, y: 2 } },
-    { root: { x: -10, y: 0 }, edge: { x: -9, y: -2 } },
-    true
-  );
+  assert({ root: { x: 0, y: 0 }, edge: { x: 1, y: 2 } }, { root: { x: 2, y: 0 }, edge: { x: 3, y: -2 } }, true);
+  assert({ root: { x: 0, y: 0 }, edge: { x: 1, y: 2 } }, { root: { x: -10, y: 0 }, edge: { x: -11, y: 2 } }, true);
+  assert({ root: { x: 0, y: 0 }, edge: { x: 1, y: 2 } }, { root: { x: -10, y: 0 }, edge: { x: -9, y: 2 } }, false);
+  assert({ root: { x: 0, y: 0 }, edge: { x: 1, y: 2 } }, { root: { x: -10, y: 0 }, edge: { x: -9, y: -2 } }, true);
 });
 
 describe('equalParabola', () => {
   const assert = (p1, p2, expected) => {
-    it(`[(${p1.root.x},${p1.root.y}), (${p1.edge.x},${p1.edge.y})], [(${
-      p2.root.x
-      },${p2.root.y}), (${p2.edge.x},${p2.edge.y})] ${
-      expected ? 'are' : 'are not'
-      } equal`, () => {
-        const result = equalParabola(p1, p2);
+    it(`[(${p1.root.x},${p1.root.y}), (${p1.edge.x},${p1.edge.y})], [(${p2.root.x},${p2.root.y}), (${p2.edge.x},${
+      p2.edge.y
+    })] ${expected ? 'are' : 'are not'} equal`, () => {
+      const result = equalParabola(p1, p2);
 
-        expect(result).toEqual(expected);
-      });
+      expect(result).toEqual(expected);
+    });
   };
 
-  assert(
-    { root: { x: 0, y: 0 }, edge: { x: 1, y: 1 } },
-    { root: { x: 2, y: 0 }, edge: { x: 1, y: 1 } },
-    false
-  );
+  assert({ root: { x: 0, y: 0 }, edge: { x: 1, y: 1 } }, { root: { x: 2, y: 0 }, edge: { x: 1, y: 1 } }, false);
 
   // a * x^2 + b * x + c
 
@@ -429,117 +375,89 @@ describe('equalParabola', () => {
   assert(
     { root: { x: -0.25, y: 1.5 }, edge: { x: 0.25, y: 3.5 } },
     { root: { x: -0.25, y: 1.5 }, edge: { x: -0.75, y: 3.5 } },
-    true
+    true,
   );
   assert(
     { root: { x: -0.25, y: 1.5 }, edge: { x: 0.25, y: 3.5 } },
     { root: { x: -0.25, y: 1.5 }, edge: { x: -1, y: 6 } },
-    true
+    true,
   );
   assert(
     { root: { x: -0.25, y: 1.5 }, edge: { x: 0.25, y: 3.5 } },
     { root: { x: -0.25, y: 1.5 }, edge: { x: 1, y: 14 } },
-    true
+    true,
   );
   assert(
     { root: { x: -0.25, y: 1.5 }, edge: { x: 0.25, y: 3.5 } },
     { root: { x: -0.25, y: 1.5 }, edge: { x: 1.25, y: -19.5 } },
-    false
+    false,
   );
 
   // a = -8, b = -4, c = -2
   assert(
     { root: { x: -0.25, y: -1.5 }, edge: { x: 0.25, y: -3.5 } },
     { root: { x: -0.25, y: -1.5 }, edge: { x: -0.75, y: -3.5 } },
-    true
+    true,
   );
   assert(
     { root: { x: -0.25, y: -1.5 }, edge: { x: 0.25, y: -3.5 } },
     { root: { x: -0.25, y: -1.5 }, edge: { x: -1, y: -6 } },
-    true
+    true,
   );
   assert(
     { root: { x: -0.25, y: -1.5 }, edge: { x: 0.25, y: -3.5 } },
     { root: { x: -0.25, y: -1.5 }, edge: { x: 1, y: -14 } },
-    true
+    true,
   );
   assert(
     { root: { x: -0.25, y: -1.5 }, edge: { x: 0.25, y: -3.5 } },
     { root: { x: -0.25, y: -1.5 }, edge: { x: 1.25, y: 19.5 } },
-    false
+    false,
   );
 
   // a = 10, b = 0, c = -2
   assert(
     { root: { x: 0, y: -2 }, edge: { x: 0.5, y: 0.5 } },
     { root: { x: 0, y: -2 }, edge: { x: -0.5, y: 0.5 } },
-    true
+    true,
   );
-  assert(
-    { root: { x: 0, y: -2 }, edge: { x: 0.5, y: 0.5 } },
-    { root: { x: 0, y: -2 }, edge: { x: -1, y: 8 } },
-    true
-  );
-  assert(
-    { root: { x: 0, y: -2 }, edge: { x: 0.5, y: 0.5 } },
-    { root: { x: 0, y: -2 }, edge: { x: 1, y: 8 } },
-    true
-  );
-  assert(
-    { root: { x: 0, y: -2 }, edge: { x: 0.5, y: 0.5 } },
-    { root: { x: 0, y: -2 }, edge: { x: 3, y: 89 } },
-    false
-  );
+  assert({ root: { x: 0, y: -2 }, edge: { x: 0.5, y: 0.5 } }, { root: { x: 0, y: -2 }, edge: { x: -1, y: 8 } }, true);
+  assert({ root: { x: 0, y: -2 }, edge: { x: 0.5, y: 0.5 } }, { root: { x: 0, y: -2 }, edge: { x: 1, y: 8 } }, true);
+  assert({ root: { x: 0, y: -2 }, edge: { x: 0.5, y: 0.5 } }, { root: { x: 0, y: -2 }, edge: { x: 3, y: 89 } }, false);
 
   // a = 10, b = -10, c = 0
   assert(
     { root: { x: 0.5, y: -2.5 }, edge: { x: 0, y: 0 } },
     { root: { x: 0.5, y: -2.5 }, edge: { x: 1, y: 0 } },
-    true
+    true,
   );
   assert(
     { root: { x: 0.5, y: -2.5 }, edge: { x: 0, y: 0 } },
     { root: { x: 0.5, y: -2.5 }, edge: { x: -1, y: 20 } },
-    true
+    true,
   );
   assert(
     { root: { x: 0.5, y: -2.5 }, edge: { x: 0, y: 0 } },
     { root: { x: 0.5, y: -2.5 }, edge: { x: 1.25, y: 3.125 } },
-    true
+    true,
   );
   assert(
     { root: { x: 0.5, y: -2.5 }, edge: { x: 0, y: 0 } },
     { root: { x: 0.5, y: -2.5 }, edge: { x: 3, y: 0 } },
-    false
+    false,
   );
 
   // a = -4, b = 4, c = 0
-  assert(
-    { root: { x: 0.5, y: 1 }, edge: { x: 0, y: 0 } },
-    { root: { x: 0.5, y: 1 }, edge: { x: 1, y: 0 } },
-    true
-  );
-  assert(
-    { root: { x: 0.5, y: 1 }, edge: { x: 0, y: 0 } },
-    { root: { x: 0.5, y: 1 }, edge: { x: -0.5, y: -3 } },
-    true
-  );
-  assert(
-    { root: { x: 0.5, y: 1 }, edge: { x: 0, y: 0 } },
-    { root: { x: 0.5, y: 1 }, edge: { x: 1.5, y: -3 } },
-    true
-  );
-  assert(
-    { root: { x: 0.5, y: 1 }, edge: { x: 0, y: 0 } },
-    { root: { x: 0.5, y: 1 }, edge: { x: 3, y: 0 } },
-    false
-  );
+  assert({ root: { x: 0.5, y: 1 }, edge: { x: 0, y: 0 } }, { root: { x: 0.5, y: 1 }, edge: { x: 1, y: 0 } }, true);
+  assert({ root: { x: 0.5, y: 1 }, edge: { x: 0, y: 0 } }, { root: { x: 0.5, y: 1 }, edge: { x: -0.5, y: -3 } }, true);
+  assert({ root: { x: 0.5, y: 1 }, edge: { x: 0, y: 0 } }, { root: { x: 0.5, y: 1 }, edge: { x: 1.5, y: -3 } }, true);
+  assert({ root: { x: 0.5, y: 1 }, edge: { x: 0, y: 0 } }, { root: { x: 0.5, y: 1 }, edge: { x: 3, y: 0 } }, false);
 
   // a = -6, b = 4.5, c = 13.9
   assert(
     { root: { x: -3 / 8, y: 27 / 32 }, edge: { x: -0.75, y: 0 } },
     { root: { x: -3 / 8, y: 27 / 32 }, edge: { x: 0, y: 0 } },
-    true
+    true,
   );
 
   // a = -1, b = -9, c = 3
@@ -552,7 +470,7 @@ describe('equalParabola', () => {
       root: { x: -4.5, y: 93 / 4 },
       edge: { x: Math.sqrt(93) / 2 - 4.5, y: 0 },
     },
-    true
+    true,
   );
 
   assert(
@@ -561,7 +479,7 @@ describe('equalParabola', () => {
       edge: { x: -4.5 - Math.sqrt(93) / 2, y: 0 },
     },
     { root: { x: -4.5, y: 93 / 4 }, edge: { x: -67.9, y: -3996.31 } },
-    true
+    true,
   );
 
   assert(
@@ -570,7 +488,7 @@ describe('equalParabola', () => {
       edge: { x: -4.5 - Math.sqrt(93) / 2, y: 0 },
     },
     { root: { x: -4.5, y: 93 / 4 }, edge: { x: -67.9, y: -3996.3000009 } },
-    false
+    false,
   );
 });
 
@@ -689,14 +607,9 @@ describe('removeDuplicateSegments', () => {
     [undefined, []],
     [null, []],
     [[], []],
-  ])(
-    'segments: %j, segments without duplicates: %j',
-    (segments, segmentsWithoutDuplicates) => {
-      expect(removeDuplicateSegments(segments)).toEqual(
-        segmentsWithoutDuplicates
-      );
-    }
-  );
+  ])('segments: %j, segments without duplicates: %j', (segments, segmentsWithoutDuplicates) => {
+    expect(removeDuplicateSegments(segments)).toEqual(segmentsWithoutDuplicates);
+  });
 });
 
 describe('removeInvalidSegments', () => {
@@ -748,93 +661,96 @@ describe('removeInvalidSegments', () => {
     [undefined, []],
     [null, []],
     [[], []],
-  ])(
-    'segments: %j, only valid segments: %j',
-    (segments, segmentsWithoutDuplicates) => {
-      expect(removeInvalidSegments(segments)).toEqual(
-        segmentsWithoutDuplicates
-      );
-    }
-  );
+  ])('segments: %j, only valid segments: %j', (segments, segmentsWithoutDuplicates) => {
+    expect(removeInvalidSegments(segments)).toEqual(segmentsWithoutDuplicates);
+  });
 });
 
 // test.each([])('', () => {});
 
 describe('sortedAnswers', () => {
-
-
   it('sortedAnswers should return empty object for undefined answers array', () => {
     const answers = undefined;
     const result = {};
     expect(sortedAnswers(answers)).toEqual(result);
-  })
+  });
 });
 
 it('sortedAnswers should return empty object for an empty answers array', () => {
   const answers = {};
   const result = {};
   expect(sortedAnswers(answers)).toEqual(result);
-})
+});
 
 it('sortedAnswers should return an array of answers sorted alphabetically', () => {
   const answers = {
     correctAnswer: {
       name: 'Correct Answer',
-      marks: [{
-        type: 'point',
-        x: 0,
-        y: 0
-      }]
+      marks: [
+        {
+          type: 'point',
+          x: 0,
+          y: 0,
+        },
+      ],
     },
     aCorrectAnswer: {
       name: 'Correct Answer',
-      marks: [{
-        type: 'point',
-        x: 0,
-        y: 0
-      }]
+      marks: [
+        {
+          type: 'point',
+          x: 0,
+          y: 0,
+        },
+      ],
     },
     alternate1: {
       name: 'Alternate 1',
-      marks: [{
-        type: 'segment',
-        from: { x: 0, y: 0 },
-        to: { x: 1, y: 1 },
-      },
-      {
-        type: 'point',
-        x: 3,
-        y: 3,
-        label: 'Point',
-        showLabel: true
-      }]
-    }
+      marks: [
+        {
+          type: 'segment',
+          from: { x: 0, y: 0 },
+          to: { x: 1, y: 1 },
+        },
+        {
+          type: 'point',
+          x: 3,
+          y: 3,
+          label: 'Point',
+          showLabel: true,
+        },
+      ],
+    },
   };
 
   const result = {
     aCorrectAnswer: {
       name: 'Correct Answer',
-      marks: [{
-        type: 'point',
-        x: 0,
-        y: 0
-      }]
+      marks: [
+        {
+          type: 'point',
+          x: 0,
+          y: 0,
+        },
+      ],
     },
     alternate1: {
       name: 'Alternate 1',
-      marks: [{
-        type: 'segment',
-        from: { x: 0, y: 0 },
-        to: { x: 1, y: 1 },
-      },
-      {
-        type: 'point',
-        x: 3,
-        y: 3,
-        label: 'Point',
-        showLabel: true
-      }]
-    }
+      marks: [
+        {
+          type: 'segment',
+          from: { x: 0, y: 0 },
+          to: { x: 1, y: 1 },
+        },
+        {
+          type: 'point',
+          x: 3,
+          y: 3,
+          label: 'Point',
+          showLabel: true,
+        },
+      ],
+    },
   };
 
   expect(sortedAnswers(answers)).toEqual(result);

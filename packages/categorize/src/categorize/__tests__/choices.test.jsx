@@ -3,7 +3,7 @@ import React from 'react';
 import { Choices } from '../choices';
 
 describe('choices', () => {
-  const wrapper = extras => {
+  const wrapper = (extras) => {
     const defaults = {
       classes: {},
       choices: [],
@@ -28,9 +28,7 @@ describe('choices', () => {
     });
 
     it('empty', () => {
-      expect(
-        wrapper({ choices: [{ id: '1', label: 'foo' }] })
-      ).toMatchSnapshot();
+      expect(wrapper({ choices: [{ id: '1', label: 'foo' }] })).toMatchSnapshot();
     });
 
     it('empty', () => {

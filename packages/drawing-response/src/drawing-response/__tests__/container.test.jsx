@@ -22,12 +22,12 @@ describe('Container', () => {
       onSessionChange,
       imageDimensions: {},
       imageUrl: 'url',
-      session: {}
+      session: {},
     };
     const props = { ...defaults, ...extras };
     return shallow(<Container {...props} />, {
       disableLifecycleMethods: false,
-      ...renderOpts
+      ...renderOpts,
     });
   };
 
