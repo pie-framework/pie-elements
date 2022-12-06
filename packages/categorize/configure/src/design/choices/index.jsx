@@ -31,6 +31,7 @@ export class Choices extends React.Component {
 
   static defaultProps = {};
 
+  changeChoice = (choice) => {
   state = {
     focusedEl: null,
   };
