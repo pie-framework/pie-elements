@@ -99,6 +99,9 @@ exports[`choices snapshot renders 1`] = `
           "id": "0",
         }
       }
+      deleteFocusedEl={[Function]}
+      focusedEl={null}
+      index={0}
       key="0"
       onChange={[Function]}
       onDelete={[Function]}
