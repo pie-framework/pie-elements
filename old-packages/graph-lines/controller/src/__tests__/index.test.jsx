@@ -11,24 +11,26 @@ const defaultModel = {
   feedback: {
     correct: {
       type: 'none',
-      default: 'Correct'
+      default: 'Correct',
     },
     partial: {
       type: 'none',
-      default: 'Nearly'
+      default: 'Nearly',
     },
     incorrect: {
       type: 'none',
-      default: 'Incorrect'
-    }
+      default: 'Incorrect',
+    },
   },
   configure: defaultValues.configure,
   graph: {
-    lines: [{
-      label: 'Line One',
-      correctLine: '3x+2',
-      initialView: '3x+3'
-    }],
+    lines: [
+      {
+        label: 'Line One',
+        correctLine: '3x+2',
+        initialView: '3x+3',
+      },
+    ],
     graphTitle: '',
     graphWidth: 500,
     graphHeight: 500,
@@ -51,11 +53,11 @@ const defaultModel = {
     showPointLabels: true,
     showInputs: true,
     showAxisLabels: true,
-    showFeedback: true
-  }
+    showFeedback: true,
+  },
 };
 
-const mkQuestion = model => model || defaultModel;
+const mkQuestion = (model) => model || defaultModel;
 
 describe('model', () => {
   let result, question, session, env;
@@ -63,7 +65,7 @@ describe('model', () => {
   describe('gather', () => {
     beforeEach(async () => {
       question = mkQuestion();
-      session = { lines: [ { from: { x: 0, y: 0 }, to: { x: 1, y: 1} } ] };
+      session = { lines: [{ from: { x: 0, y: 0 }, to: { x: 1, y: 1 } }] };
       env = { mode: 'gather' };
       result = await model(question, session, env);
     });
@@ -88,7 +90,7 @@ describe('model', () => {
   describe('view', () => {
     beforeEach(async () => {
       question = mkQuestion();
-      session = { lines: [ { from: { x: 0, y: 0 }, to: { x: 1, y: 1} } ] };
+      session = { lines: [{ from: { x: 0, y: 0 }, to: { x: 1, y: 1 } }] };
       env = { mode: 'view' };
       result = await model(question, session, env);
     });
@@ -125,7 +127,7 @@ describe('model', () => {
     it('returns empty for correctness ', () => {
       expect(result.correctness).toEqual({
         correctness: 'unanswered',
-        score: '0%'
+        score: '0%',
       });
     });
 
@@ -134,7 +136,7 @@ describe('model', () => {
       result = await model(question, session, env);
       expect(result.correctness).toEqual({
         correctness: 'unanswered',
-        score: '0%'
+        score: '0%',
       });
     });
 
@@ -154,10 +156,10 @@ describe('model', () => {
         configure: {
           ...defaultModel.configure,
           allowPartialScoring: false,
-        }
+        },
       });
 
-      session = { lines: [{ from: { x: 0, y: 0 }, to: { x: 1, y: 1} }] };
+      session = { lines: [{ from: { x: 0, y: 0 }, to: { x: 1, y: 1 } }] };
 
       result = await model(question, session, env);
 
@@ -167,37 +169,41 @@ describe('model', () => {
 
     it('returns partially-correct for correctness', async () => {
       question = mkQuestion({
-          ...defaultModel,
-          configure: {
-            ...defaultModel.configure,
-            allowPartialScoring: true,
-          },
-          graph: {
-            lines: [{
+        ...defaultModel,
+        configure: {
+          ...defaultModel.configure,
+          allowPartialScoring: true,
+        },
+        graph: {
+          lines: [
+            {
               label: 'Line One',
               correctLine: '3x+1',
-              initialView: '3x+3'
-            }, {
+              initialView: '3x+3',
+            },
+            {
               label: 'Line Two',
               correctLine: '3x+2',
-              initialView: '3x+3'
-            }, {
+              initialView: '3x+3',
+            },
+            {
               label: 'Line Three',
               correctLine: '3x+3',
-              initialView: '3x+4'
-            }, {
+              initialView: '3x+4',
+            },
+            {
               label: 'Line Four',
               correctLine: '3x+4',
-              initialView: '3x+5'
-            }]
-          },
-          partialScoring: [
-            { numberOfCorrect: 1, scorePercentage: 50 },
-            { numberOfCorrect: 2, scorePercentage: 60 },
-            { numberOfCorrect: 3, scorePercentage: 70 }
-          ]
-        }
-      );
+              initialView: '3x+5',
+            },
+          ],
+        },
+        partialScoring: [
+          { numberOfCorrect: 1, scorePercentage: 50 },
+          { numberOfCorrect: 2, scorePercentage: 60 },
+          { numberOfCorrect: 3, scorePercentage: 70 },
+        ],
+      });
 
       session = { lines: [{ from: { x: -1, y: -2 }, to: { x: 1, y: 4 } }] };
 
@@ -213,53 +219,63 @@ describe('model', () => {
       expect(result.correctness.correctness).toEqual('partial');
       expect(result.correctness.score).toEqual('50%');
 
-      session = { lines: [
-        { from: { x: -1, y: -2 }, to: { x: 1, y: 4 } },
-        { from: { x: -2, y: -4 }, to: { x: 0, y: 2 } }
-      ] };
-
-      result = await model(question, session, env);
-
-      expect(result.correctness.correctness).toEqual('partial');
-      expect(result.correctness.score).toEqual('60%');
-
-      session = { lines: [
+      session = {
+        lines: [
+          { from: { x: -1, y: -2 }, to: { x: 1, y: 4 } },
           { from: { x: -2, y: -4 }, to: { x: 0, y: 2 } },
-          { from: { x: -1, y: -2 }, to: { x: 1, y: 4 } }
-        ] };
+        ],
+      };
 
       result = await model(question, session, env);
 
       expect(result.correctness.correctness).toEqual('partial');
       expect(result.correctness.score).toEqual('60%');
 
-      session = { lines: [
+      session = {
+        lines: [
           { from: { x: -2, y: -4 }, to: { x: 0, y: 2 } },
           { from: { x: -1, y: -2 }, to: { x: 1, y: 4 } },
-          { from: { x: -3, y: -6 }, to: { x: 0, y: 3 } }
-        ] };
+        ],
+      };
+
+      result = await model(question, session, env);
+
+      expect(result.correctness.correctness).toEqual('partial');
+      expect(result.correctness.score).toEqual('60%');
+
+      session = {
+        lines: [
+          { from: { x: -2, y: -4 }, to: { x: 0, y: 2 } },
+          { from: { x: -1, y: -2 }, to: { x: 1, y: 4 } },
+          { from: { x: -3, y: -6 }, to: { x: 0, y: 3 } },
+        ],
+      };
 
       result = await model(question, session, env);
 
       expect(result.correctness.correctness).toEqual('partial');
       expect(result.correctness.score).toEqual('70%');
 
-      session = { lines: [
+      session = {
+        lines: [
           { from: { x: -3, y: -6 }, to: { x: 0, y: 3 } },
           { from: { x: -1, y: -2 }, to: { x: 1, y: 4 } },
-          { from: { x: -2, y: -4 }, to: { x: 0, y: 1 } }
-        ] };
+          { from: { x: -2, y: -4 }, to: { x: 0, y: 1 } },
+        ],
+      };
 
       result = await model(question, session, env);
 
       expect(result.correctness.correctness).toEqual('partial');
       expect(result.correctness.score).toEqual('60%');
 
-      session = { lines: [
+      session = {
+        lines: [
           { from: { x: -3, y: -6 }, to: { x: 0, y: 1 } },
           { from: { x: -1, y: -2 }, to: { x: 1, y: 4 } },
-          { from: { x: -2, y: -4 }, to: { x: 0, y: 1 } }
-        ] };
+          { from: { x: -2, y: -4 }, to: { x: 0, y: 1 } },
+        ],
+      };
 
       result = await model(question, session, env);
 
@@ -276,61 +292,72 @@ describe('model', () => {
         },
         graph: {
           ...defaultModel.graph,
-          lines: [{
-            label: 'Line One',
-            correctLine: '3x+1',
-            initialView: '3x+3'
-          }, {
-            label: 'Line Two',
-            correctLine: '3x+2',
-            initialView: '3x+3'
-          }, {
-            label: 'Line Three',
-            correctLine: '3x+3',
-            initialView: '3x+4'
-          }, {
-            label: 'Line Four',
-            correctLine: '3x+4',
-            initialView: '3x+5'
-          }]
+          lines: [
+            {
+              label: 'Line One',
+              correctLine: '3x+1',
+              initialView: '3x+3',
+            },
+            {
+              label: 'Line Two',
+              correctLine: '3x+2',
+              initialView: '3x+3',
+            },
+            {
+              label: 'Line Three',
+              correctLine: '3x+3',
+              initialView: '3x+4',
+            },
+            {
+              label: 'Line Four',
+              correctLine: '3x+4',
+              initialView: '3x+5',
+            },
+          ],
         },
         partialScoring: [
           { numberOfCorrect: 1, scorePercentage: 50 },
           { numberOfCorrect: 2, scorePercentage: 60 },
-          { numberOfCorrect: 3, scorePercentage: 70 }
-        ]
+          { numberOfCorrect: 3, scorePercentage: 70 },
+        ],
       });
 
-      session = { lines: [
+      session = {
+        lines: [
           { from: { x: -2, y: -4 }, to: { x: 0, y: 2 } },
           { from: { x: -1, y: -2 }, to: { x: 1, y: 4 } },
           { from: { x: -3, y: -6 }, to: { x: 0, y: 3 } },
-          { from: { x: -2, y: -3 }, to: { x: -1, y: 0 } }
-        ] };
+          { from: { x: -2, y: -3 }, to: { x: -1, y: 0 } },
+        ],
+      };
 
       result = await model(question, session, env);
 
       expect(result.correctness.correctness).toEqual('correct');
       expect(result.correctness.score).toEqual('100%');
 
-      session = { lines: [
+      session = {
+        lines: [
           { from: { x: -2, y: -4 }, to: { x: 0, y: 2 } },
           { from: { x: -3, y: -6 }, to: { x: 0, y: 3 } },
           { from: { x: -2, y: -3 }, to: { x: -1, y: 0 } },
-          { from: { x: -1, y: -2 }, to: { x: 1, y: 4 } }
-        ] };
+          { from: { x: -1, y: -2 }, to: { x: 1, y: 4 } },
+        ],
+      };
 
       result = await model(question, session, env);
 
       expect(result.correctness.correctness).toEqual('correct');
       expect(result.correctness.score).toEqual('100%');
 
-      session = { lines: [
+      session = {
+        lines: [
           { from: { x: -3, y: -6 }, to: { x: 0, y: 3 } },
           { from: { x: -1, y: -2 }, to: { x: 1, y: 4 } },
           { from: { x: -2, y: -3 }, to: { x: -1, y: 0 } },
-          { from: { x: -2, y: -4 }, to: { x: 0, y: 2 } }
-        ] };
+          { from: { x: -2, y: -4 }, to: { x: 0, y: 2 } },
+        ],
+      };
 
       result = await model(question, session, env);
 
@@ -353,64 +380,72 @@ describe('model', () => {
         },
         graph: {
           ...defaultModel.graph,
-          lines: [{
-            label: 'Line One',
-            correctLine: '3x+1',
-            initialView: '3x+3'
-          }, {
-            label: 'Line Two',
-            correctLine: '3x+2',
-            initialView: '3x+3'
-          }, {
-            label: 'Line Three',
-            correctLine: '3x+3',
-            initialView: '3x+4'
-          }, {
-            label: 'Line Four',
-            correctLine: '3x+4',
-            initialView: '3x+5'
-          }]
+          lines: [
+            {
+              label: 'Line One',
+              correctLine: '3x+1',
+              initialView: '3x+3',
+            },
+            {
+              label: 'Line Two',
+              correctLine: '3x+2',
+              initialView: '3x+3',
+            },
+            {
+              label: 'Line Three',
+              correctLine: '3x+3',
+              initialView: '3x+4',
+            },
+            {
+              label: 'Line Four',
+              correctLine: '3x+4',
+              initialView: '3x+5',
+            },
+          ],
         },
         partialScoring: [
           { numberOfCorrect: 1, scorePercentage: 50 },
           { numberOfCorrect: 2, scorePercentage: 60 },
-          { numberOfCorrect: 3, scorePercentage: 70 }
-        ]
+          { numberOfCorrect: 3, scorePercentage: 70 },
+        ],
       });
 
-      session = { lines: [
+      session = {
+        lines: [
           { from: { x: -2, y: -4 }, to: { x: 0, y: 2 } },
           { from: { x: -1, y: -2 }, to: { x: 1, y: 4 } },
           { from: { x: -3, y: -6 }, to: { x: 0, y: 3 } },
-          { from: { x: -2, y: -3 }, to: { x: -1, y: 0 } }
-        ] };
+          { from: { x: -2, y: -3 }, to: { x: -1, y: 0 } },
+        ],
+      };
 
       result = await model(question, session, env);
 
       expect(result.correctness.correctness).toEqual('correct');
       expect(result.correctness.score).toEqual('100%');
 
-      session = { lines: [
+      session = {
+        lines: [
           { from: { x: -1, y: -2 }, to: { x: 1, y: 4 } },
           { from: { x: -2, y: -3 }, to: { x: -1, y: 0 } },
           { from: { x: -2, y: -4 }, to: { x: 0, y: 2 } },
-          { from: { x: -3, y: -6 }, to: { x: 0, y: 3 } }
-        ] };
+          { from: { x: -3, y: -6 }, to: { x: 0, y: 3 } },
+        ],
+      };
 
       result = await model(question, session, env);
 
       expect(result.correctness.correctness).toEqual('correct');
       expect(result.correctness.score).toEqual('100%');
-
     });
   });
 });
 
 describe('outcome', () => {
-  const assertOutcome = session => {
+  const assertOutcome = (session) => {
     it(`returns score: 0 and empty: true if session is ${JSON.stringify(session)}`, async () => {
       const model = mkQuestion();
-      const o = await outcome(model, session, { mode: 'evaluate '});
+      const o = await outcome(model, session, { mode: 'evaluate ' });
 
       expect(o).toEqual({ score: 0, empty: true });
     });
@@ -422,12 +457,11 @@ describe('outcome', () => {
 });
 
 describe('getCorrectness', () => {
-  const assertCorrectness = session => {
+  const assertCorrectness = (session) => {
     it(`returns score: 0 and correctness: unanswered if session is ${JSON.stringify(session)}`, () => {
       const model = mkQuestion();
 
-      expect(getCorrectness(model, session, { mode: 'evaluate'}))
-        .toEqual({ score: '0%', correctness: 'unanswered' });
+      expect(getCorrectness(model, session, { mode: 'evaluate' })).toEqual({ score: '0%', correctness: 'unanswered' });
     });
   };
 

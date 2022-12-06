@@ -7,16 +7,16 @@ exports.model = (id, element) => ({
   feedback: {
     correct: {
       type: 'none',
-      default: 'Correct'
+      default: 'Correct',
     },
     incorrect: {
       type: 'none',
-      default: 'Incorrect'
+      default: 'Incorrect',
     },
     partial: {
       type: 'none',
-      default: 'Nearly'
-    }
+      default: 'Nearly',
+    },
   },
   graph: {
     graphTitle: '',
@@ -46,6 +46,6 @@ exports.model = (id, element) => ({
     showPointLabels: true,
     showInputs: true,
     showAxisLabels: true,
-    showFeedback: true
-  }
+    showFeedback: true,
+  },
 });

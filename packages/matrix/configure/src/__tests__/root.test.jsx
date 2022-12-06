@@ -63,20 +63,12 @@ describe('Main', () => {
       it('adds a row label', () => {
         w.instance().onChangeModel({
           ...initialModel,
-          rowLabels: [
-            "I'm interested in politics.",
-            "I'm interested in economics.",
-            'c',
-          ],
+          rowLabels: ["I'm interested in politics.", "I'm interested in economics.", 'c'],
         });
 
         expect(onModelChanged).toBeCalledWith({
           ...initialModel,
-          rowLabels: [
-            "I'm interested in politics.",
-            "I'm interested in economics.",
-            'c',
-          ],
+          rowLabels: ["I'm interested in politics.", "I'm interested in economics.", 'c'],
         });
       });
     });

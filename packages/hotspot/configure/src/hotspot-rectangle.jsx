@@ -26,22 +26,12 @@ class RectComponent extends React.Component {
 
     onDragEnd(id, {
       x: e.target.x(),
-      y: e.target.y()
-    })
+      y: e.target.y(),
+    });
   };
 
   render() {
-    const {
-      classes,
-      correct,
-      height,
-      hotspotColor,
-      outlineColor,
-      width,
-      x,
-      y,
-      strokeWidth = 5
-    } = this.props;
+    const { classes, correct, height, hotspotColor, outlineColor, width, x, y, strokeWidth = 5 } = this.props;
 
     return (
       <Group>
@@ -69,7 +59,7 @@ class RectComponent extends React.Component {
 const styles = () => ({
   base: {
     cursor: 'pointer',
-    opacity: 0.5
+    opacity: 0.5,
   },
 });
 
@@ -86,7 +76,7 @@ RectComponent.propTypes = {
   width: PropTypes.number.isRequired,
   x: PropTypes.number.isRequired,
   y: PropTypes.number.isRequired,
-  strokeWidth: PropTypes.number
+  strokeWidth: PropTypes.number,
 };
 
 RectComponent.defaultProps = {

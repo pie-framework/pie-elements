@@ -10,13 +10,7 @@ export default class DrawingResponse extends HTMLElement {
   set model(m) {
     this._model = m;
 
-    this.dispatchEvent(
-      new ModelSetEvent(
-        this.tagName.toLowerCase(),
-        this.isComplete(),
-        !!this._model
-      )
-    );
+    this.dispatchEvent(new ModelSetEvent(this.tagName.toLowerCase(), this.isComplete(), !!this._model));
     this._render();
   }
 
@@ -28,9 +22,7 @@ export default class DrawingResponse extends HTMLElement {
     this._session.drawables = update.drawables;
     this._session.texts = update.texts;
 
-    this.dispatchEvent(
-      new SessionChangedEvent(this.tagName.toLowerCase(), this.isComplete())
-    );
+    this.dispatchEvent(new SessionChangedEvent(this.tagName.toLowerCase(), this.isComplete()));
 
     this._render();
   };
@@ -53,7 +45,7 @@ export default class DrawingResponse extends HTMLElement {
       const el = React.createElement(DrawingResponseComponent, {
         model: this._model,
         session: this._session,
-        onSessionChange: this.sessionChanged
+        onSessionChange: this.sessionChanged,
       });
 
       ReactDOM.render(el, this, () => {

@@ -3,18 +3,18 @@ import NumberFormat from 'react-number-format';
 import PropTypes from 'prop-types';
 import Input from '@material-ui/core/Input';
 
-const NumberFormatCustom = props => {
+const NumberFormatCustom = (props) => {
   const { inputRef, onChange, ...other } = props;
 
   return (
     <NumberFormat
       {...other}
       ref={inputRef}
-      onValueChange={values => {
+      onValueChange={(values) => {
         onChange({
           target: {
-            value: values.value
-          }
+            value: values.value,
+          },
         });
       }}
       thousandSeparator
@@ -25,7 +25,7 @@ const NumberFormatCustom = props => {
 
 NumberFormatCustom.propTypes = {
   inputRef: PropTypes.func.isRequired,
-  onChange: PropTypes.func.isRequired
+  onChange: PropTypes.func.isRequired,
 };
 
 export default class NumberInput extends React.Component {
@@ -33,10 +33,10 @@ export default class NumberInput extends React.Component {
     value: PropTypes.string,
     className: PropTypes.string,
     placeholder: PropTypes.string,
-    onChange: PropTypes.func.isRequired
+    onChange: PropTypes.func.isRequired,
   };
 
-  onChange = e => {
+  onChange = (e) => {
     const v = parseInt(e.target.value, 10);
     const percent = Math.min(100, Math.max(0, v));
     this.props.onChange(percent);
@@ -52,7 +52,7 @@ export default class NumberInput extends React.Component {
         onChange={this.onChange}
         inputComponent={NumberFormatCustom}
         inputProps={{
-          'aria-label': 'Description'
+          'aria-label': 'Description',
         }}
       />
     );

@@ -21,7 +21,7 @@ describe('ray', () => {
         ray: 'ray',
         selected: 'selected',
         correct: 'correct',
-        incorrect: 'incorrect'
+        incorrect: 'incorrect',
       },
       domain: { min: 0, max: 1 },
       selected: false,
@@ -32,7 +32,7 @@ describe('ray', () => {
       onMove: onMove,
       interval: 10,
       width: 100,
-      onToggleSelect: onToggleSelect
+      onToggleSelect: onToggleSelect,
     };
 
     props = _.merge(defaults, props);
@@ -73,25 +73,13 @@ describe('ray', () => {
   });
 
   describe('className', () => {
-    assertProp(
-      () => mkWrapper({ selected: true }).find('g'),
-      'className',
-      'ray selected incorrect'
-    );
-    assertProp(
-      () => mkWrapper({ selected: true, correct: true }).find('g'),
-      'className',
-      'ray selected correct'
-    );
+    assertProp(() => mkWrapper({ selected: true }).find('g'), 'className', 'ray selected incorrect');
+    assertProp(() => mkWrapper({ selected: true, correct: true }).find('g'), 'className', 'ray selected correct');
   });
 
   describe('Arrow.arrowDirection', () => {
     assertProp(() => mkWrapper().find(Arrow), 'direction', 'right');
-    assertProp(
-      () => mkWrapper({ direction: 'negative' }).find(Arrow),
-      'direction',
-      'left'
-    );
+    assertProp(() => mkWrapper({ direction: 'negative' }).find(Arrow), 'direction', 'left');
   });
 
   describe('drag', () => {

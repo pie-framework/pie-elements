@@ -16,7 +16,7 @@ describe('setCorrectness', () => {
         { value: 1, label: 'B' },
         { value: 2, label: 'C' },
       ],
-      true
+      true,
     );
 
     expect(corectnessAnswers).toEqual([
@@ -84,13 +84,11 @@ describe('filterCategories', () => {
   it('returns categories filtered with correct values', () => {
     expect(filterCategories(null)).toEqual([]);
     expect(
-      filterCategories(
-        [
-          { value: 0, label: 'A', interactive: true, editable: true},
-          { value: 1, label: 'B', interactive: true, editable: true},
-          { value: 2, label: 'C', interactive: true, editable: true},
-        ]
-      )
+      filterCategories([
+        { value: 0, label: 'A', interactive: true, editable: true },
+        { value: 1, label: 'B', interactive: true, editable: true },
+        { value: 2, label: 'C', interactive: true, editable: true },
+      ]),
     ).toEqual([
       {
         value: 0,
@@ -112,13 +110,11 @@ describe('filterCategories', () => {
       },
     ]);
     expect(
-      filterCategories(
-        [
-          { value: 0, label: 'A', interactive: true, editable: false },
-          { value: 1, label: 'B', interactive: true, editable: false },
-          { value: 2, label: 'C', interactive: true, editable: false },
-        ]
-      )
+      filterCategories([
+        { value: 0, label: 'A', interactive: true, editable: false },
+        { value: 1, label: 'B', interactive: true, editable: false },
+        { value: 2, label: 'C', interactive: true, editable: false },
+      ]),
     ).toEqual([
       {
         value: 0,
@@ -146,9 +142,9 @@ describe('getScore partialScoring test', () => {
   const mkQuestion = (extras) => ({
     correctAnswer: {
       data: [
-        { label: 'A', value: 0, editable:true },
-        { label: 'B', value: 1, editable:true },
-        { label: 'C', value: 2, editable:true },
+        { label: 'A', value: 0, editable: true },
+        { label: 'B', value: 1, editable: true },
+        { label: 'C', value: 2, editable: true },
       ],
     },
     data: [],
@@ -177,19 +173,17 @@ describe('getScore partialScoring test', () => {
     async ({ mode, partialScoring, scoringType, expected }) => {
       const env = { mode, partialScoring };
       const session = {
-        answer: filterCategories(
-          [
-            { label: 'A', value: 0 },
-            { label: 'C', value: 2 },
-          ]
-        ),
+        answer: filterCategories([
+          { label: 'A', value: 0 },
+          { label: 'C', value: 2 },
+        ]),
       };
 
       const mod = await model(mkQuestion({ scoringType }), session, env);
       const result = await outcome(mod, session, env);
 
       expect(result.score).toEqual(expected);
-    }
+    },
   );
 });
 
@@ -216,211 +210,187 @@ describe('getScore all or nothing', () => {
   assertGetScore(
     'response is correct',
     {
-      answer: filterCategories(
-        [
-          { label: 'A', value: 0 },
-          { label: 'B', value: 1 },
-          { label: 'C', value: 2 },
-        ]
-      ),
+      answer: filterCategories([
+        { label: 'A', value: 0 },
+        { label: 'B', value: 1 },
+        { label: 'C', value: 2 },
+      ]),
     },
     {
       score: 1,
-      answers: filterCategories(
-        [
-          {
-            label: 'A',
-            value: 0,
-            correctness: { value: 'correct', label: 'correct' },
-          },
-          {
-            label: 'B',
-            value: 1,
-            correctness: { value: 'correct', label: 'correct' },
-          },
-          {
-            label: 'C',
-            value: 2,
-            correctness: { value: 'correct', label: 'correct' },
-          },
-        ]
-      ),
-    }
+      answers: filterCategories([
+        {
+          label: 'A',
+          value: 0,
+          correctness: { value: 'correct', label: 'correct' },
+        },
+        {
+          label: 'B',
+          value: 1,
+          correctness: { value: 'correct', label: 'correct' },
+        },
+        {
+          label: 'C',
+          value: 2,
+          correctness: { value: 'correct', label: 'correct' },
+        },
+      ]),
+    },
   );
 
   assertGetScore(
     'response is incorrect: incorrect value',
     {
-      answer: filterCategories(
-        [
-          { label: 'A', value: 0 },
-          { label: 'B', value: 2 },
-          { label: 'C', value: 2 },
-        ]
-      ),
+      answer: filterCategories([
+        { label: 'A', value: 0 },
+        { label: 'B', value: 2 },
+        { label: 'C', value: 2 },
+      ]),
     },
     {
       score: 0,
-      answers: filterCategories(
-        [
-          {
-            label: 'A',
-            value: 0,
-            correctness: { value: 'correct', label: 'correct' },
-          },
-          {
-            label: 'B',
-            value: 2,
-            correctness: { value: 'incorrect', label: 'correct' },
-          },
-          {
-            label: 'C',
-            value: 2,
-            correctness: { value: 'correct', label: 'correct' },
-          },
-        ]
-      ),
-    }
+      answers: filterCategories([
+        {
+          label: 'A',
+          value: 0,
+          correctness: { value: 'correct', label: 'correct' },
+        },
+        {
+          label: 'B',
+          value: 2,
+          correctness: { value: 'incorrect', label: 'correct' },
+        },
+        {
+          label: 'C',
+          value: 2,
+          correctness: { value: 'correct', label: 'correct' },
+        },
+      ]),
+    },
   );
 
   assertGetScore(
     'response is incorrect: incorrect label',
     {
-      answer: filterCategories(
-        [
-          { label: 'A', value: 0 },
-          { label: 'D', value: 1 },
-          { label: 'C', value: 2 },
-        ]
-      ),
+      answer: filterCategories([
+        { label: 'A', value: 0 },
+        { label: 'D', value: 1 },
+        { label: 'C', value: 2 },
+      ]),
     },
     {
       score: 0,
-      answers: filterCategories(
-        [
-          {
-            label: 'A',
-            value: 0,
-            correctness: { value: 'correct', label: 'correct' },
-          },
-          {
-            label: 'D',
-            value: 1,
-            correctness: { value: 'correct', label: 'incorrect' },
-          },
-          {
-            label: 'C',
-            value: 2,
-            correctness: { value: 'correct', label: 'correct' },
-          },
-        ]
-      ),
-    }
+      answers: filterCategories([
+        {
+          label: 'A',
+          value: 0,
+          correctness: { value: 'correct', label: 'correct' },
+        },
+        {
+          label: 'D',
+          value: 1,
+          correctness: { value: 'correct', label: 'incorrect' },
+        },
+        {
+          label: 'C',
+          value: 2,
+          correctness: { value: 'correct', label: 'correct' },
+        },
+      ]),
+    },
   );
 
   assertGetScore(
     'response is incorrect: incorrect value & label',
     {
-      answer: filterCategories(
-        [
-          { label: 'A', value: 0 },
-          { label: 'D', value: 2 },
-          { label: 'C', value: 2 },
-        ]
-      ),
+      answer: filterCategories([
+        { label: 'A', value: 0 },
+        { label: 'D', value: 2 },
+        { label: 'C', value: 2 },
+      ]),
     },
     {
       score: 0,
-      answers: filterCategories(
-        [
-          {
-            label: 'A',
-            value: 0,
-            correctness: { value: 'correct', label: 'correct' },
-          },
-          {
-            label: 'D',
-            value: 2,
-            correctness: { value: 'incorrect', label: 'incorrect' },
-          },
-          {
-            label: 'C',
-            value: 2,
-            correctness: { value: 'correct', label: 'correct' },
-          },
-        ]
-      ),
-    }
+      answers: filterCategories([
+        {
+          label: 'A',
+          value: 0,
+          correctness: { value: 'correct', label: 'correct' },
+        },
+        {
+          label: 'D',
+          value: 2,
+          correctness: { value: 'incorrect', label: 'incorrect' },
+        },
+        {
+          label: 'C',
+          value: 2,
+          correctness: { value: 'correct', label: 'correct' },
+        },
+      ]),
+    },
   );
 
   assertGetScore(
     'response is incorrect: more categories in given answer',
     {
-      answer: filterCategories(
-        [
-          { label: 'A', value: 0 },
-          { label: 'B', value: 1 },
-          { label: 'C', value: 2 },
-          { label: 'D', value: 3 },
-        ]
-      ),
+      answer: filterCategories([
+        { label: 'A', value: 0 },
+        { label: 'B', value: 1 },
+        { label: 'C', value: 2 },
+        { label: 'D', value: 3 },
+      ]),
     },
     {
       score: 0,
-      answers: filterCategories(
-        [
-          {
-            label: 'A',
-            value: 0,
-            correctness: { value: 'correct', label: 'correct' },
-          },
-          {
-            label: 'B',
-            value: 1,
-            correctness: { value: 'correct', label: 'correct' },
-          },
-          {
-            label: 'C',
-            value: 2,
-            correctness: { value: 'correct', label: 'correct' },
-          },
-          {
-            label: 'D',
-            value: 3,
-            correctness: { value: 'incorrect', label: 'incorrect' },
-          },
-        ]
-      ),
-    }
+      answers: filterCategories([
+        {
+          label: 'A',
+          value: 0,
+          correctness: { value: 'correct', label: 'correct' },
+        },
+        {
+          label: 'B',
+          value: 1,
+          correctness: { value: 'correct', label: 'correct' },
+        },
+        {
+          label: 'C',
+          value: 2,
+          correctness: { value: 'correct', label: 'correct' },
+        },
+        {
+          label: 'D',
+          value: 3,
+          correctness: { value: 'incorrect', label: 'incorrect' },
+        },
+      ]),
+    },
   );
 
   assertGetScore(
     'response is incorrect: less categories in given answer',
     {
-      answer: filterCategories(
-        [
-          { label: 'A', value: 0 },
-          { label: 'B', value: 1 },
-        ]
-      ),
+      answer: filterCategories([
+        { label: 'A', value: 0 },
+        { label: 'B', value: 1 },
+      ]),
     },
     {
       score: 0,
-      answers: filterCategories(
-        [
-          {
-            label: 'A',
-            value: 0,
-            correctness: { value: 'correct', label: 'correct' },
-          },
-          {
-            label: 'B',
-            value: 1,
-            correctness: { value: 'correct', label: 'correct' },
-          },
-        ]
-      ),
-    }
+      answers: filterCategories([
+        {
+          label: 'A',
+          value: 0,
+          correctness: { value: 'correct', label: 'correct' },
+        },
+        {
+          label: 'B',
+          value: 1,
+          correctness: { value: 'correct', label: 'correct' },
+        },
+      ]),
+    },
   );
 
   assertGetScore('session is undefined', undefined, { score: 0, answers: [] });
@@ -440,20 +410,16 @@ describe('getScore partial scoring - editable - interactive', () => {
         { label: 'C', value: 2, editable: true },
       ],
     },
-    data: filterCategories(
-      [
-        { label: 'A', value: 0, interactive: true, editable: true },
-        { label: 'B', value: 1, interactive: true, editable: true },
-      ]
-    ),
+    data: filterCategories([
+      { label: 'A', value: 0, interactive: true, editable: true },
+      { label: 'B', value: 1, interactive: true, editable: true },
+    ]),
     scoringType,
   };
 
   const assertGetScore = (message, questionExtra, session, expected) => {
     it(message, () => {
-      expect(getScore({ ...question, ...questionExtra }, session)).toEqual(
-        expected
-      );
+      expect(getScore({ ...question, ...questionExtra }, session)).toEqual(expected);
     });
   };
 
@@ -463,158 +429,142 @@ describe('getScore partial scoring - editable - interactive', () => {
     {},
     {
       score: 0.67,
-      answers: filterCategories(
-        [
-          {
-            label: 'A',
-            value: 0,
-            interactive: true,
-            editable: true,
-            correctness: { value: 'correct', label: 'correct' },
-          },
-          {
-            label: 'B',
-            value: 1,
-            interactive: true,
-            editable: true,
-            correctness: { value: 'correct', label: 'correct' },
-          },
-        ]
-      ),
-    }
+      answers: filterCategories([
+        {
+          label: 'A',
+          value: 0,
+          interactive: true,
+          editable: true,
+          correctness: { value: 'correct', label: 'correct' },
+        },
+        {
+          label: 'B',
+          value: 1,
+          interactive: true,
+          editable: true,
+          correctness: { value: 'correct', label: 'correct' },
+        },
+      ]),
+    },
   );
 
   assertGetScore(
     '5/6 correct answers',
     {},
     {
-      answer: filterCategories(
-        [
-          { label: 'A', value: 0, interactive: true, editable: true },
-          { label: 'B', value: 1, interactive: true, editable: true },
-          { label: 'C', value: 1, interactive: true, editable: true},
-        ]
-      ),
+      answer: filterCategories([
+        { label: 'A', value: 0, interactive: true, editable: true },
+        { label: 'B', value: 1, interactive: true, editable: true },
+        { label: 'C', value: 1, interactive: true, editable: true },
+      ]),
     },
     {
       score: 0.83,
-      answers: filterCategories(
-        [
-          {
-            label: 'A',
-            value: 0,
-            interactive: true,
-            editable: true,
-            correctness: { value: 'correct', label: 'correct' },
-          },
-          {
-            label: 'B',
-            value: 1,
-            interactive: true,
-            editable: true,
-            correctness: { value: 'correct', label: 'correct' },
-          },
-          {
-            label: 'C',
-            value: 1,
-            interactive: true,
-            editable: true,
-            correctness: { value: 'incorrect', label: 'correct' },
-          },
-        ]
-      ),
-    }
+      answers: filterCategories([
+        {
+          label: 'A',
+          value: 0,
+          interactive: true,
+          editable: true,
+          correctness: { value: 'correct', label: 'correct' },
+        },
+        {
+          label: 'B',
+          value: 1,
+          interactive: true,
+          editable: true,
+          correctness: { value: 'correct', label: 'correct' },
+        },
+        {
+          label: 'C',
+          value: 1,
+          interactive: true,
+          editable: true,
+          correctness: { value: 'incorrect', label: 'correct' },
+        },
+      ]),
+    },
   );
 
   assertGetScore(
     'Default answer edited with incorrect answer, 4/6 correct answers',
     {},
     {
-      answer: filterCategories(
-        [
-          { label: 'A', value: 0, interactive: true, editable: true },
-          { label: 'D', value: 1, interactive: true, editable: true },
-          { label: 'C', value: 1, interactive: true, editable: true },
-        ]
-      ),
+      answer: filterCategories([
+        { label: 'A', value: 0, interactive: true, editable: true },
+        { label: 'D', value: 1, interactive: true, editable: true },
+        { label: 'C', value: 1, interactive: true, editable: true },
+      ]),
     },
     {
       score: 0.67,
-      answers: filterCategories(
-        [
-          {
-            label: 'A',
-            value: 0,
-            interactive: true,
-            editable: true,
-            correctness: { value: 'correct', label: 'correct' },
-          },
-          {
-            label: 'D',
-            value: 1,
-            interactive: true,
-            editable: true,
-            correctness: { value: 'correct', label: 'incorrect' },
-          },
-          {
-            label: 'C',
-            value: 1,
-            interactive: true,
-            editable: true,
-            correctness: { value: 'incorrect', label: 'correct' },
-          },
-        ]
-      ),
-    }
+      answers: filterCategories([
+        {
+          label: 'A',
+          value: 0,
+          interactive: true,
+          editable: true,
+          correctness: { value: 'correct', label: 'correct' },
+        },
+        {
+          label: 'D',
+          value: 1,
+          interactive: true,
+          editable: true,
+          correctness: { value: 'correct', label: 'incorrect' },
+        },
+        {
+          label: 'C',
+          value: 1,
+          interactive: true,
+          editable: true,
+          correctness: { value: 'incorrect', label: 'correct' },
+        },
+      ]),
+    },
   );
 
   assertGetScore(
     'Default answer was incorrect and edited, 4/6 correct answers',
     {
-      data: filterCategories(
-        [
-          { label: 'A-wrong', value: 0, interactive: true, editable: true },
-          { label: 'B', value: 1, interactive: true, editable: true },
-        ]
-      ),
+      data: filterCategories([
+        { label: 'A-wrong', value: 0, interactive: true, editable: true },
+        { label: 'B', value: 1, interactive: true, editable: true },
+      ]),
     },
     {
-      answer: filterCategories(
-        [
-          { label: 'A', value: 0, interactive: true, editable: true },
-          { label: 'B', value: 1, interactive: true, editable: true },
-          { label: 'C', value: 2, interactive: true, editable: true},
-        ]
-      ),
+      answer: filterCategories([
+        { label: 'A', value: 0, interactive: true, editable: true },
+        { label: 'B', value: 1, interactive: true, editable: true },
+        { label: 'C', value: 2, interactive: true, editable: true },
+      ]),
     },
     {
       score: 1,
-      answers: filterCategories(
-        [
-          {
-            label: 'A',
-            value: 0,
-            interactive: true,
-            editable: true,
-            correctness: { value: 'correct', label: 'correct' },
-          },
-          {
-            label: 'B',
-            value: 1,
-            interactive: true,
-            editable: true,
-            correctness: { value: 'correct', label: 'correct' },
-          },
-          {
-            label: 'C',
-            value: 2,
-            interactive: true,
-            editable: true,
-            correctness: { value: 'correct', label: 'correct' },
-          },
-        ]
-      ),
-    }
+      answers: filterCategories([
+        {
+          label: 'A',
+          value: 0,
+          interactive: true,
+          editable: true,
+          correctness: { value: 'correct', label: 'correct' },
+        },
+        {
+          label: 'B',
+          value: 1,
+          interactive: true,
+          editable: true,
+          correctness: { value: 'correct', label: 'correct' },
+        },
+        {
+          label: 'C',
+          value: 2,
+          interactive: true,
+          editable: true,
+          correctness: { value: 'correct', label: 'correct' },
+        },
+      ]),
+    },
   );
 });
 
@@ -628,20 +578,16 @@ describe('getScore partial scoring - NOT editable - interactive', () => {
         { label: 'C', value: 2 },
       ],
     },
-    data: filterCategories(
-      [
-        { label: 'A', value: 0, interactive: true },
-        { label: 'B', value: 1, interactive: true },
-      ]
-    ),
+    data: filterCategories([
+      { label: 'A', value: 0, interactive: true },
+      { label: 'B', value: 1, interactive: true },
+    ]),
     scoringType,
   };
 
   const assertGetScore = (message, questionExtra, session, expected) => {
     it(message, () => {
-      expect(getScore({ ...question, ...questionExtra }, session)).toEqual(
-        expected
-      );
+      expect(getScore({ ...question, ...questionExtra }, session)).toEqual(expected);
     });
   };
 
@@ -651,147 +597,131 @@ describe('getScore partial scoring - NOT editable - interactive', () => {
     {},
     {
       score: 0.5,
-      answers: filterCategories(
-        [
-          {
-            label: 'A',
-            value: 0,
-            interactive: true,
-            correctness: { value: 'correct', label: 'correct' },
-          },
-          {
-            label: 'B',
-            value: 1,
-            interactive: true,
-            correctness: { value: 'correct', label: 'correct' },
-          },
-        ]
-      ),
-    }
+      answers: filterCategories([
+        {
+          label: 'A',
+          value: 0,
+          interactive: true,
+          correctness: { value: 'correct', label: 'correct' },
+        },
+        {
+          label: 'B',
+          value: 1,
+          interactive: true,
+          correctness: { value: 'correct', label: 'correct' },
+        },
+      ]),
+    },
   );
 
   assertGetScore(
     '2/4 correct answers (3 values + 1 label)',
     {},
     {
-      answer: filterCategories(
-        [
-          { label: 'A', value: 0, interactive: true },
-          { label: 'B', value: 1, interactive: true },
-          { label: 'C', value: 1, interactive: true },
-        ]
-      ),
+      answer: filterCategories([
+        { label: 'A', value: 0, interactive: true },
+        { label: 'B', value: 1, interactive: true },
+        { label: 'C', value: 1, interactive: true },
+      ]),
     },
     {
       score: 0.75,
-      answers: filterCategories(
-        [
-          {
-            label: 'A',
-            value: 0,
-            interactive: true,
-            correctness: { value: 'correct', label: 'correct' },
-          },
-          {
-            label: 'B',
-            value: 1,
-            interactive: true,
-            correctness: { value: 'correct', label: 'correct' },
-          },
-          {
-            label: 'C',
-            value: 1,
-            interactive: true,
-            correctness: { value: 'incorrect', label: 'correct' },
-          },
-        ]
-      ),
-    }
+      answers: filterCategories([
+        {
+          label: 'A',
+          value: 0,
+          interactive: true,
+          correctness: { value: 'correct', label: 'correct' },
+        },
+        {
+          label: 'B',
+          value: 1,
+          interactive: true,
+          correctness: { value: 'correct', label: 'correct' },
+        },
+        {
+          label: 'C',
+          value: 1,
+          interactive: true,
+          correctness: { value: 'incorrect', label: 'correct' },
+        },
+      ]),
+    },
   );
 
   assertGetScore(
     'Default answer plus extra incorrect answer, 2/4 correct answers (3 values + 1 label)',
     {},
     {
-      answer: filterCategories(
-        [
-          { label: 'A', value: 0, interactive: true },
-          { label: 'B', value: 1, interactive: true },
-          { label: 'D', value: 1, interactive: true },
-        ]
-      ),
+      answer: filterCategories([
+        { label: 'A', value: 0, interactive: true },
+        { label: 'B', value: 1, interactive: true },
+        { label: 'D', value: 1, interactive: true },
+      ]),
     },
     {
       score: 0.5,
-      answers: filterCategories(
-        [
-          {
-            label: 'A',
-            value: 0,
-            interactive: true,
-            correctness: { value: 'correct', label: 'correct' },
-          },
-          {
-            label: 'B',
-            value: 1,
-            interactive: true,
-            correctness: { value: 'correct', label: 'correct' },
-          },
-          {
-            label: 'D',
-            value: 1,
-            interactive: true,
-            correctness: { value: 'incorrect', label: 'incorrect' },
-          },
-        ]
-      ),
-    }
+      answers: filterCategories([
+        {
+          label: 'A',
+          value: 0,
+          interactive: true,
+          correctness: { value: 'correct', label: 'correct' },
+        },
+        {
+          label: 'B',
+          value: 1,
+          interactive: true,
+          correctness: { value: 'correct', label: 'correct' },
+        },
+        {
+          label: 'D',
+          value: 1,
+          interactive: true,
+          correctness: { value: 'incorrect', label: 'incorrect' },
+        },
+      ]),
+    },
   );
 
   assertGetScore(
     'Default answer was incorrect, 4/4 correct answers (3 values + 1 label)',
     {
-      data: filterCategories(
-        [
-          { label: 'A-wrong', value: 0, interactive: true },
-          { label: 'B', value: 1, interactive: true },
-        ]
-      ),
+      data: filterCategories([
+        { label: 'A-wrong', value: 0, interactive: true },
+        { label: 'B', value: 1, interactive: true },
+      ]),
     },
     {
-      answer: filterCategories(
-        [
-          { label: 'A-wrong', value: 0, interactive: true },
-          { label: 'B', value: 1, interactive: true },
-          { label: 'C', value: 2, interactive: true },
-        ]
-      ),
+      answer: filterCategories([
+        { label: 'A-wrong', value: 0, interactive: true },
+        { label: 'B', value: 1, interactive: true },
+        { label: 'C', value: 2, interactive: true },
+      ]),
     },
     {
       score: 1,
-      answers: filterCategories(
-        [
-          {
-            label: 'A-wrong',
-            value: 0,
-            interactive: true,
-            correctness: { value: 'correct', label: 'correct' },
-          },
-          {
-            label: 'B',
-            value: 1,
-            interactive: true,
-            correctness: { value: 'correct', label: 'correct' },
-          },
-          {
-            label: 'C',
-            value: 2,
-            interactive: true,
-            correctness: { value: 'correct', label: 'correct' },
-          },
-        ]
-      ),
-    }
+      answers: filterCategories([
+        {
+          label: 'A-wrong',
+          value: 0,
+          interactive: true,
+          correctness: { value: 'correct', label: 'correct' },
+        },
+        {
+          label: 'B',
+          value: 1,
+          interactive: true,
+          correctness: { value: 'correct', label: 'correct' },
+        },
+        {
+          label: 'C',
+          value: 2,
+          interactive: true,
+          correctness: { value: 'correct', label: 'correct' },
+        },
+      ]),
+    },
   );
 });
 
@@ -805,20 +735,16 @@ describe('getScore partial scoring - editable - randomly interactive', () => {
         { label: 'C', value: 2 },
       ],
     },
-    data: filterCategories(
-      [
-        { label: 'A', value: 0, interactive: false, editable: true },
-        { label: 'B', value: 1, interactive: true, editable: true },
-      ]
-    ),
-    scoringType
+    data: filterCategories([
+      { label: 'A', value: 0, interactive: false, editable: true },
+      { label: 'B', value: 1, interactive: true, editable: true },
+    ]),
+    scoringType,
   };
 
   const assertGetScore = (message, questionExtra, session, expected) => {
     it(message, () => {
-      expect(getScore({ ...question, ...questionExtra }, session)).toEqual(
-        expected
-      );
+      expect(getScore({ ...question, ...questionExtra }, session)).toEqual(expected);
     });
   };
 
@@ -828,158 +754,142 @@ describe('getScore partial scoring - editable - randomly interactive', () => {
     {},
     {
       score: 0.5,
-      answers: filterCategories(
-        [
-          {
-            label: 'A',
-            value: 0,
-            interactive: false,
-            editable: true,
-            correctness: { value: 'correct', label: 'correct' },
-          },
-          {
-            label: 'B',
-            value: 1,
-            interactive: true,
-            editable: true,
-            correctness: { value: 'correct', label: 'correct' },
-          },
-        ]
-      ),
-    }
+      answers: filterCategories([
+        {
+          label: 'A',
+          value: 0,
+          interactive: false,
+          editable: true,
+          correctness: { value: 'correct', label: 'correct' },
+        },
+        {
+          label: 'B',
+          value: 1,
+          interactive: true,
+          editable: true,
+          correctness: { value: 'correct', label: 'correct' },
+        },
+      ]),
+    },
   );
 
   assertGetScore(
     ' correct answers 3/4 (2 values + 2 labels)',
     {},
     {
-      answer: filterCategories(
-        [
-          { label: 'A', value: 0, interactive: false, editable: true },
-          { label: 'B', value: 1, interactive: true, editable: true },
-          { label: 'C', value: 1, interactive: true, editable: true },
-        ],
-      ),
+      answer: filterCategories([
+        { label: 'A', value: 0, interactive: false, editable: true },
+        { label: 'B', value: 1, interactive: true, editable: true },
+        { label: 'C', value: 1, interactive: true, editable: true },
+      ]),
     },
     {
       score: 0.75,
-      answers: filterCategories(
-        [
-          {
-            label: 'A',
-            value: 0,
-            interactive: false,
-            editable: true,
-            correctness: { value: 'correct', label: 'correct' },
-          },
-          {
-            label: 'B',
-            value: 1,
-            interactive: true,
-            editable: true,
-            correctness: { value: 'correct', label: 'correct' },
-          },
-          {
-            label: 'C',
-            value: 1,
-            interactive: true,
-            editable: true,
-            correctness: { value: 'incorrect', label: 'correct' },
-          },
-        ]
-      ),
-    }
+      answers: filterCategories([
+        {
+          label: 'A',
+          value: 0,
+          interactive: false,
+          editable: true,
+          correctness: { value: 'correct', label: 'correct' },
+        },
+        {
+          label: 'B',
+          value: 1,
+          interactive: true,
+          editable: true,
+          correctness: { value: 'correct', label: 'correct' },
+        },
+        {
+          label: 'C',
+          value: 1,
+          interactive: true,
+          editable: true,
+          correctness: { value: 'incorrect', label: 'correct' },
+        },
+      ]),
+    },
   );
 
   assertGetScore(
     'Default answer edited with incorrect answer, 2/4 correct answers (2 labels + 2 values)',
     {},
     {
-      answer: filterCategories(
-        [
-          { label: 'A', value: 0, interactive: false, editable: true },
-          { label: 'D', value: 1, interactive: true, editable: true },
-          { label: 'C', value: 1, interactive: true, editable: true },
-        ]
-      ),
+      answer: filterCategories([
+        { label: 'A', value: 0, interactive: false, editable: true },
+        { label: 'D', value: 1, interactive: true, editable: true },
+        { label: 'C', value: 1, interactive: true, editable: true },
+      ]),
     },
     {
       score: 0.5,
-      answers: filterCategories(
-        [
-          {
-            label: 'A',
-            value: 0,
-            interactive: false,
-            editable: true,
-            correctness: { value: 'correct', label: 'correct' },
-          },
-          {
-            label: 'D',
-            value: 1,
-            interactive: true,
-            editable: true,
-            correctness: { value: 'correct', label: 'incorrect' },
-          },
-          {
-            label: 'C',
-            value: 1,
-            interactive: true,
-            editable: true,
-            correctness: { value: 'incorrect', label: 'correct' },
-          },
-        ]
-      ),
-    }
+      answers: filterCategories([
+        {
+          label: 'A',
+          value: 0,
+          interactive: false,
+          editable: true,
+          correctness: { value: 'correct', label: 'correct' },
+        },
+        {
+          label: 'D',
+          value: 1,
+          interactive: true,
+          editable: true,
+          correctness: { value: 'correct', label: 'incorrect' },
+        },
+        {
+          label: 'C',
+          value: 1,
+          interactive: true,
+          editable: true,
+          correctness: { value: 'incorrect', label: 'correct' },
+        },
+      ]),
+    },
   );
 
   assertGetScore(
     'Default answer was incorrect and edited, 4/4 correct answers (2 labels + 2 values)',
     {
-      data: filterCategories(
-        [
-          { label: 'A-wrong', value: 0, interactive: false, editable: true },
-          { label: 'B', value: 1, interactive: true, editable: true },
-        ]
-      ),
+      data: filterCategories([
+        { label: 'A-wrong', value: 0, interactive: false, editable: true },
+        { label: 'B', value: 1, interactive: true, editable: true },
+      ]),
     },
     {
-      answer: filterCategories(
-        [
-          { label: 'A-wrong', value: 0, interactive: false, editable: true },
-          { label: 'B', value: 1, interactive: true, editable: true },
-          { label: 'C', value: 2, interactive: true, editable: true },
-        ]
-      ),
+      answer: filterCategories([
+        { label: 'A-wrong', value: 0, interactive: false, editable: true },
+        { label: 'B', value: 1, interactive: true, editable: true },
+        { label: 'C', value: 2, interactive: true, editable: true },
+      ]),
     },
     {
       score: 1,
-      answers: filterCategories(
-        [
-          {
-            label: 'A-wrong',
-            value: 0,
-            interactive: false,
-            editable: true,
-            correctness: { value: 'correct', label: 'correct' },
-          },
-          {
-            label: 'B',
-            value: 1,
-            interactive: true,
-            editable: true,
-            correctness: { value: 'correct', label: 'correct' },
-          },
-          {
-            label: 'C',
-            value: 2,
-            interactive: true,
-            editable: true,
-            correctness: { value: 'correct', label: 'correct' },
-          },
-        ]
-      ),
-    }
+      answers: filterCategories([
+        {
+          label: 'A-wrong',
+          value: 0,
+          interactive: false,
+          editable: true,
+          correctness: { value: 'correct', label: 'correct' },
+        },
+        {
+          label: 'B',
+          value: 1,
+          interactive: true,
+          editable: true,
+          correctness: { value: 'correct', label: 'correct' },
+        },
+        {
+          label: 'C',
+          value: 2,
+          interactive: true,
+          editable: true,
+          correctness: { value: 'correct', label: 'correct' },
+        },
+      ]),
+    },
   );
 });
 
@@ -993,20 +903,16 @@ describe('getScore partial scoring - NOT editable - randomly interactive', () =>
         { label: 'C', value: 2 },
       ],
     },
-    data: filterCategories(
-      [
-        { label: 'A', value: 0, interactive: false, editable: false },
-        { label: 'B', value: 1, interactive: true, editable: false },
-      ]
-    ),
+    data: filterCategories([
+      { label: 'A', value: 0, interactive: false, editable: false },
+      { label: 'B', value: 1, interactive: true, editable: false },
+    ]),
     scoringType,
   };
 
   const assertGetScore = (message, questionExtra, session, expected) => {
     it(message, () => {
-      expect(getScore({ ...question, ...questionExtra }, session)).toEqual(
-        expected
-      );
+      expect(getScore({ ...question, ...questionExtra }, session)).toEqual(expected);
     });
   };
 
@@ -1016,158 +922,142 @@ describe('getScore partial scoring - NOT editable - randomly interactive', () =>
     {},
     {
       score: 0.33,
-      answers: filterCategories(
-        [
-          {
-            label: 'A',
-            value: 0,
-            interactive: false,
-            editable: false,
-            correctness: { value: 'correct', label: 'correct' },
-          },
-          {
-            label: 'B',
-            value: 1,
-            interactive: true,
-            editable: false,
-            correctness: { value: 'correct', label: 'correct' },
-          },
-        ]
-      ),
-    }
+      answers: filterCategories([
+        {
+          label: 'A',
+          value: 0,
+          interactive: false,
+          editable: false,
+          correctness: { value: 'correct', label: 'correct' },
+        },
+        {
+          label: 'B',
+          value: 1,
+          interactive: true,
+          editable: false,
+          correctness: { value: 'correct', label: 'correct' },
+        },
+      ]),
+    },
   );
 
   assertGetScore(
     ' correct answers 2/3 (2 values + 1 label)',
     {},
     {
-      answer: filterCategories(
-        [
-          { label: 'A', value: 0, interactive: false, editable: false },
-          { label: 'B', value: 1, interactive: true, editable: false },
-          { label: 'C', value: 1, interactive: true, editable: false },
-        ]
-      ),
+      answer: filterCategories([
+        { label: 'A', value: 0, interactive: false, editable: false },
+        { label: 'B', value: 1, interactive: true, editable: false },
+        { label: 'C', value: 1, interactive: true, editable: false },
+      ]),
     },
     {
       score: 0.67,
-      answers: filterCategories(
-        [
-          {
-            label: 'A',
-            value: 0,
-            interactive: false,
-            editable: false,
-            correctness: { value: 'correct', label: 'correct' },
-          },
-          {
-            label: 'B',
-            value: 1,
-            interactive: true,
-            editable: false,
-            correctness: { value: 'correct', label: 'correct' },
-          },
-          {
-            label: 'C',
-            value: 1,
-            interactive: true,
-            editable: false,
-            correctness: { value: 'incorrect', label: 'correct' },
-          },
-        ]
-      ),
-    }
+      answers: filterCategories([
+        {
+          label: 'A',
+          value: 0,
+          interactive: false,
+          editable: false,
+          correctness: { value: 'correct', label: 'correct' },
+        },
+        {
+          label: 'B',
+          value: 1,
+          interactive: true,
+          editable: false,
+          correctness: { value: 'correct', label: 'correct' },
+        },
+        {
+          label: 'C',
+          value: 1,
+          interactive: true,
+          editable: false,
+          correctness: { value: 'incorrect', label: 'correct' },
+        },
+      ]),
+    },
   );
 
   assertGetScore(
     'Default answer edited with incorrect answer, 2/3 correct answers (2 values + 1 label)',
     {},
     {
-      answer: filterCategories(
-        [
-          { label: 'A', value: 0, interactive: false, editable: false },
-          { label: 'D', value: 1, interactive: true, editable: false },
-          { label: 'C', value: 1, interactive: true, editable: false },
-        ]
-      ),
+      answer: filterCategories([
+        { label: 'A', value: 0, interactive: false, editable: false },
+        { label: 'D', value: 1, interactive: true, editable: false },
+        { label: 'C', value: 1, interactive: true, editable: false },
+      ]),
     },
     {
       score: 0.67,
-      answers: filterCategories(
-        [
-          {
-            label: 'A',
-            value: 0,
-            interactive: false,
-            editable: false,
-            correctness: { value: 'correct', label: 'correct' },
-          },
-          {
-            label: 'D',
-            value: 1,
-            interactive: true,
-            editable: false,
-            correctness: { value: 'correct', label: 'correct' },
-          },
-          {
-            label: 'C',
-            value: 1,
-            interactive: true,
-            editable: false,
-            correctness: { value: 'incorrect', label: 'correct' },
-          },
-        ]
-      ),
-    }
+      answers: filterCategories([
+        {
+          label: 'A',
+          value: 0,
+          interactive: false,
+          editable: false,
+          correctness: { value: 'correct', label: 'correct' },
+        },
+        {
+          label: 'D',
+          value: 1,
+          interactive: true,
+          editable: false,
+          correctness: { value: 'correct', label: 'correct' },
+        },
+        {
+          label: 'C',
+          value: 1,
+          interactive: true,
+          editable: false,
+          correctness: { value: 'incorrect', label: 'correct' },
+        },
+      ]),
+    },
   );
 
   assertGetScore(
     'Default answer was incorrect and edited, 3/3 correct answers (1 label + 2 values)',
     {
-      data: filterCategories(
-        [
-          { label: 'A-wrong', value: 0, interactive: false, editable: false },
-          { label: 'B', value: 1, interactive: true, editable: false },
-        ]
-      ),
+      data: filterCategories([
+        { label: 'A-wrong', value: 0, interactive: false, editable: false },
+        { label: 'B', value: 1, interactive: true, editable: false },
+      ]),
     },
     {
-      answer: filterCategories(
-        [
-          { label: 'A-wrong', value: 0, interactive: false, editable: false },
-          { label: 'B', value: 1, interactive: true, editable: false },
-          { label: 'C', value: 2, interactive: true, editable: false },
-        ]
-      ),
+      answer: filterCategories([
+        { label: 'A-wrong', value: 0, interactive: false, editable: false },
+        { label: 'B', value: 1, interactive: true, editable: false },
+        { label: 'C', value: 2, interactive: true, editable: false },
+      ]),
     },
     {
       score: 1,
-      answers: filterCategories(
-        [
-          {
-            label: 'A-wrong',
-            value: 0,
-            interactive: false,
-            editable: false,
-            correctness: { value: 'correct', label: 'correct' },
-          },
-          {
-            label: 'B',
-            value: 1,
-            interactive: true,
-            editable: false,
-            correctness: { value: 'correct', label: 'correct' },
-          },
-          {
-            label: 'C',
-            value: 2,
-            interactive: true,
-            editable: false,
-            correctness: { value: 'correct', label: 'correct' },
-          },
-        ]
-      ),
-    }
+      answers: filterCategories([
+        {
+          label: 'A-wrong',
+          value: 0,
+          interactive: false,
+          editable: false,
+          correctness: { value: 'correct', label: 'correct' },
+        },
+        {
+          label: 'B',
+          value: 1,
+          interactive: true,
+          editable: false,
+          correctness: { value: 'correct', label: 'correct' },
+        },
+        {
+          label: 'C',
+          value: 2,
+          interactive: true,
+          editable: false,
+          correctness: { value: 'correct', label: 'correct' },
+        },
+      ]),
+    },
   );
 });
 
@@ -1181,19 +1071,19 @@ describe('createCorrectResponseSession', () => {
           label: 'A',
           value: 1,
           interactive: false,
-          editable: true
+          editable: true,
         },
         {
           label: 'B',
           value: 1,
           interactive: true,
-          editable: true
+          editable: true,
         },
         {
           label: 'C',
           value: 1,
           interactive: true,
-          editable: true
+          editable: true,
         },
       ],
     },
@@ -1202,19 +1092,19 @@ describe('createCorrectResponseSession', () => {
         label: 'A',
         value: 1,
         interactive: false,
-        editable: true
+        editable: true,
       },
       {
         label: 'B',
         value: 1,
         interactive: true,
-        editable: true
+        editable: true,
       },
       {
         label: 'D',
         value: 1,
         interactive: true,
-        editable: true
+        editable: true,
       },
     ],
     domain: {
@@ -1248,19 +1138,19 @@ describe('createCorrectResponseSession', () => {
           label: 'A',
           value: 1,
           interactive: false,
-          editable: true
+          editable: true,
         },
         {
           label: 'B',
           value: 1,
           interactive: true,
-          editable: true
+          editable: true,
         },
         {
           label: 'C',
           value: 1,
           interactive: true,
-          editable: true
+          editable: true,
         },
       ],
       id: '1',
@@ -1279,19 +1169,19 @@ describe('createCorrectResponseSession', () => {
           label: 'A',
           value: 1,
           interactive: false,
-          editable: true
+          editable: true,
         },
         {
           label: 'B',
           value: 1,
           interactive: true,
-          editable: true
+          editable: true,
         },
         {
           label: 'C',
           value: 1,
           interactive: true,
-          editable: true
+          editable: true,
         },
       ],
       id: '1',
@@ -1333,7 +1223,7 @@ describe('outcome', () => {
       {
         value: 4,
         label: 'Five',
-        interactive: true
+        interactive: true,
       },
       {
         interactive: true,
@@ -1458,12 +1348,12 @@ describe('outcome', () => {
           scoringType,
         },
         session,
-        env
+        env,
       );
 
       const result = await outcome(mod, session, env);
 
       expect(result.score).toEqual(expected);
-    }
+    },
   );
 });

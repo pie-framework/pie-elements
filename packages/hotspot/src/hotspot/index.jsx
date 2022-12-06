@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
 import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
-import {Collapsible, hasText, PreviewPrompt} from '@pie-lib/render-ui';
+import { Collapsible, hasText, PreviewPrompt } from '@pie-lib/render-ui';
 import { withStyles } from '@material-ui/core/styles';
 
 import Container from './container';
@@ -13,18 +13,15 @@ class HotspotComponent extends React.Component {
     this.state = {
       showCorrect: false,
       observer: null,
-      scale: 1
+      scale: 1,
     };
   }
 
   componentDidMount() {
     this.observer = new MutationObserver((mutations) => {
       mutations.forEach(() => {
-        const target = document.getElementById('question-container')?.style?.cssText
-        const zoom = target?.substring(
-          target.indexOf('--pie-zoom') + 11,
-          target.lastIndexOf('%')
-        );
+        const target = document.getElementById('question-container')?.style?.cssText;
+        const zoom = target?.substring(target.indexOf('--pie-zoom') + 11, target.lastIndexOf('%'));
 
         const zoomParsed = zoom?.replace(/\s/g, '');
         if (zoomParsed) {
@@ -32,7 +29,7 @@ class HotspotComponent extends React.Component {
           if (newScale !== this.state.scale) {
             this.setState({
               scale: parseFloat(zoomParsed) / 100,
-            })
+            });
           }
         } else if (!zoomParsed && this.state.scale !== 1) {
           this.setState({
@@ -44,7 +41,7 @@ class HotspotComponent extends React.Component {
 
     const target = document.getElementById('question-container');
     if (target) {
-      this.observer.observe(target, { attributes : true, attributeFilter : ['style'] })
+      this.observer.observe(target, { attributes: true, attributeFilter: ['style'] });
     }
   }
 
@@ -73,10 +70,10 @@ class HotspotComponent extends React.Component {
         rationale,
         teacherInstructions,
         strokeWidth,
-        responseCorrect
+        responseCorrect,
       },
       onSelectChoice,
-      classes
+      classes,
     } = this.props;
     const { showCorrect } = this.state;
     const isEvaluateMode = mode === 'evaluate';
@@ -92,25 +89,17 @@ class HotspotComponent extends React.Component {
           />
         )}
         {showCorrectAnswerToggle && <br />}
-        {
-          teacherInstructions && hasText(teacherInstructions) && (
-            <Collapsible
-              labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}
-              className={classes.collapsible}
-            >
-              <PreviewPrompt
-                className="prompt"
-                prompt={teacherInstructions}
-              />
-            </Collapsible>
-          )
-        }
+        {teacherInstructions && hasText(teacherInstructions) && (
+          <Collapsible
+            labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}
+            className={classes.collapsible}
+          >
+            <PreviewPrompt className="prompt" prompt={teacherInstructions} />
+          </Collapsible>
+        )}
 
         <Typography className={classes.prompt}>
-          <PreviewPrompt
-            className="prompt"
-            prompt={prompt}
-          />
+          <PreviewPrompt className="prompt" prompt={prompt} />
         </Typography>
 
         {imageUrl ? (
@@ -131,20 +120,11 @@ class HotspotComponent extends React.Component {
           />
         ) : null}
 
-        {
-          rationale && hasText(rationale) && (
-            <Collapsible
-              labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }}
-              className={classes.collapsible}
-            >
-              <PreviewPrompt
-                className="prompt"
-                prompt={rationale}
-              />
-            </Collapsible>
-          )
-        }
-
+        {rationale && hasText(rationale) && (
+          <Collapsible labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }} className={classes.collapsible}>
+            <PreviewPrompt className="prompt" prompt={rationale} />
+          </Collapsible>
+        )}
       </div>
     );
   }
@@ -154,21 +134,21 @@ HotspotComponent.propTypes = {
   classes: PropTypes.object,
   model: PropTypes.object.isRequired,
   onSelectChoice: PropTypes.func.isRequired,
-  session: PropTypes.object.isRequired
+  session: PropTypes.object.isRequired,
 };
 
 HotspotComponent.defaultProps = {
-  classes: {}
+  classes: {},
 };
 
-const styles = theme => ({
+const styles = (theme) => ({
   collapsible: {
     paddingTop: theme.spacing.unit * 2,
     paddingBottom: theme.spacing.unit * 2,
   },
   prompt: {
-    fontSize: 'inherit'
-  }
+    fontSize: 'inherit',
+  },
 });
 
 export default withStyles(styles)(HotspotComponent);

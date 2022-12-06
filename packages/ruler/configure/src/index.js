@@ -12,15 +12,15 @@ const defaultModel = () => ({
       length: 12,
       ticks: 8,
       pixelsPerUnit: 40,
-      label: 'in'
-    }
-  }
+      label: 'in',
+    },
+  },
 });
 
 export default class RulerConfigure extends HTMLElement {
   static createDefaultModel = (model = {}) => ({
     ...defaults,
-    ...model
+    ...model,
   });
 
   constructor() {
@@ -52,7 +52,7 @@ export default class RulerConfigure extends HTMLElement {
     if (this._model) {
       const el = React.createElement(Main, {
         model: this._model,
-        onChange: this.onChange.bind(this)
+        onChange: this.onChange.bind(this),
       });
       ReactDOM.render(el, this);
     }

@@ -6,8 +6,8 @@ import debug from 'debug';
 import Main from './main';
 import defaults from './defaults';
 
-const modelWithDefaults = m => ({ ...defaults.model, ...m });
-const configurationWithDefaults = c => ({ ...defaults.configuration, ...c });
+const modelWithDefaults = (m) => ({ ...defaults.model, ...m });
+const configurationWithDefaults = (c) => ({ ...defaults.configuration, ...c });
 
 export default class RubricElement extends HTMLElement {
   constructor() {
@@ -43,7 +43,7 @@ export default class RubricElement extends HTMLElement {
     }
 
     this._render();
-  }
+  };
 
   connectedCallback() {
     this._render();

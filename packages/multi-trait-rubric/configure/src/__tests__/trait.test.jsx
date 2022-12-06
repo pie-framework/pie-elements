@@ -16,12 +16,12 @@ const trait = () => ({
 describe('Trait', () => {
   let w;
 
-  const wrapper = extras => {
+  const wrapper = (extras) => {
     const defaults = {
       classes: {},
-      connectDragSource: props => <div>{props}</div>,
-      connectDropTarget: props => <div>{props}</div>,
-      connectDragPreview: props => <div>{props}</div>,
+      connectDragSource: (props) => <div>{props}</div>,
+      connectDropTarget: (props) => <div>{props}</div>,
+      connectDragPreview: (props) => <div>{props}</div>,
       trait: trait(),
       index: 0,
       scorePointsValues: [0, 1, 2],
@@ -32,7 +32,7 @@ describe('Trait', () => {
       currentPosition: 0,
       showStandards: true,
       showDescription: true,
-      ...extras
+      ...extras,
     };
     return shallow(<TraitTile {...defaults} />);
   };
@@ -81,7 +81,7 @@ describe('Trait', () => {
     });
 
     describe('scroll position', () => {
-      it ('does not change scroll position when current position prop does not change', () => {
+      it('does not change scroll position when current position prop does not change', () => {
         const wrap = wrapper({ currentPosition: 200 });
 
         expect(wrap.instance().props.currentPosition).toEqual(200);
@@ -92,7 +92,7 @@ describe('Trait', () => {
         expect(scrollToPositionSpy).not.toBeCalled();
       });
 
-      it ('changes scroll position when current position prop changes', () => {
+      it('changes scroll position when current position prop changes', () => {
         const wrap = wrapper({ currentPosition: 200 });
 
         expect(wrap.instance().props.currentPosition).toEqual(200);
@@ -134,7 +134,7 @@ describe('Trait', () => {
 
         expect(onTraitChanged).toBeCalledWith({
           ...trait,
-          name: 'New Name'
+          name: 'New Name',
         });
       });
 
@@ -145,7 +145,7 @@ describe('Trait', () => {
 
         expect(onTraitChanged).toBeCalledWith({
           ...trait,
-          standards: ['a', 'b', 'c']
+          standards: ['a', 'b', 'c'],
         });
       });
 
@@ -156,7 +156,7 @@ describe('Trait', () => {
 
         expect(onTraitChanged).toBeCalledWith({
           ...trait,
-          description: 'New Description'
+          description: 'New Description',
         });
       });
     });
@@ -181,10 +181,7 @@ describe('Trait', () => {
 
         expect(onTraitChanged).toBeCalledWith({
           ...trait,
-          scorePointsDescriptors: [
-            'New Descriptor',
-            ...trait.scorePointsDescriptors.slice(1)
-          ]
+          scorePointsDescriptors: ['New Descriptor', ...trait.scorePointsDescriptors.slice(1)],
         });
       });
     });

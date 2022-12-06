@@ -6,8 +6,8 @@ import { withStyles } from '@material-ui/core/styles/index';
 class PolComponent extends React.Component {
   static getDerivedStateFromProps(nextProps) {
     const { points } = nextProps;
-    const xList = points.map(p => (p.x));
-    const yList = points.map(p => (p.y));
+    const xList = points.map((p) => p.x);
+    const yList = points.map((p) => p.y);
 
     const xOffset = Math.min(...xList);
     const yOffset = Math.max(...yList);
@@ -16,14 +16,16 @@ class PolComponent extends React.Component {
       return {
         x: xOffset,
         y: yOffset,
-        points: points.reduce((acc, point) => { return acc.concat([point.x - xOffset, point.y - yOffset]) }, [])
+        points: points.reduce((acc, point) => {
+          return acc.concat([point.x - xOffset, point.y - yOffset]);
+        }, []),
       };
     }
 
     return {
       x: 0,
       y: 0,
-      points: []
+      points: [],
     };
   }
 
@@ -31,8 +33,8 @@ class PolComponent extends React.Component {
 
   handleClick = (e) => {
     const { points } = this.props;
-    const xList = points.map(p => (p.x));
-    const yList = points.map(p => (p.y));
+    const xList = points.map((p) => p.x);
+    const yList = points.map((p) => p.y);
 
     const width = Math.max(...xList) - Math.min(...xList);
     const height = Math.max(...yList) - Math.min(...yList);
@@ -63,7 +65,7 @@ class PolComponent extends React.Component {
       if (index % 2 === 0 && index + 1 < points.length) {
         acc.push({
           x: currentPointCoordinate + e.target.x(),
-          y: points[index + 1]  + e.target.y()
+          y: points[index + 1] + e.target.y(),
         });
 
         return acc;
@@ -73,18 +75,12 @@ class PolComponent extends React.Component {
     }, []);
 
     onDragEnd(id, {
-      points: newPoints
-    })
+      points: newPoints,
+    });
   };
 
   render() {
-    const {
-      classes,
-      correct,
-      hotspotColor,
-      outlineColor,
-      strokeWidth = 5
-    } = this.props;
+    const { classes, correct, hotspotColor, outlineColor, strokeWidth = 5 } = this.props;
     const { points, x, y } = this.state;
 
     return (
@@ -113,7 +109,7 @@ class PolComponent extends React.Component {
 const styles = () => ({
   base: {
     cursor: 'pointer',
-    opacity: 0.5
+    opacity: 0.5,
   },
 });
 
@@ -126,11 +122,13 @@ PolComponent.propTypes = {
   onClick: PropTypes.func.isRequired,
   onDragEnd: PropTypes.func.isRequired,
   outlineColor: PropTypes.string.isRequired,
-  points: PropTypes.arrayOf(PropTypes.shape({
-    x: PropTypes.number,
-    y: PropTypes.number
-  })).isRequired,
-  strokeWidth: PropTypes.number
+  points: PropTypes.arrayOf(
+    PropTypes.shape({
+      x: PropTypes.number,
+      y: PropTypes.number,
+    }),
+  ).isRequired,
+  strokeWidth: PropTypes.number,
 };
 
 PolComponent.defaultProps = {

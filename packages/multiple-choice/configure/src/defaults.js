@@ -23,8 +23,8 @@ export default {
   configuration: {
     spellCheck: {
       label: 'Spellcheck',
-      settings:false,
-      enabled:true
+      settings: false,
+      enabled: true,
     },
     choicesLayout: {
       settings: false,
@@ -71,7 +71,7 @@ export default {
     },
     accessibility: {
       settings: false,
-      label: 'Accessibility Label'
+      label: 'Accessibility Label',
     },
     scoringType: {
       settings: false,
@@ -95,17 +95,17 @@ export default {
       teacherInstructions: 300,
       prompt: 300,
       rationale: 636,
-      choices: 636
+      choices: 636,
     },
     maxImageHeight: {
       teacherInstructions: 300,
       prompt: 300,
       rationale: 300,
-      choices: 300
+      choices: 300,
     },
     withRubric: {
       settings: false,
-      label: 'Add Rubric'
-    }
+      label: 'Add Rubric',
+    },
   },
 };

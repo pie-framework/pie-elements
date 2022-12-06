@@ -10,24 +10,24 @@ exports.model = (id, element) => ({
   feedback: {
     correct: {
       type: 'none',
-      default: 'Correct'
+      default: 'Correct',
     },
     partial: {
       type: 'none',
-      default: 'Nearly'
+      default: 'Nearly',
     },
     incorrect: {
       type: 'none',
-      default: 'Incorrect'
-    }
+      default: 'Incorrect',
+    },
   },
   graph: {
     lines: [
       {
         label: 'Line One',
         correctLine: '3x+2',
-        initialView: '3x+3'
-      }
+        initialView: '3x+3',
+      },
     ],
     graphTitle: '',
     graphWidth: 500,
@@ -51,6 +51,6 @@ exports.model = (id, element) => ({
     showPointLabels: true,
     showInputs: true,
     showAxisLabels: true,
-    showFeedback: true
+    showFeedback: true,
   },
 });

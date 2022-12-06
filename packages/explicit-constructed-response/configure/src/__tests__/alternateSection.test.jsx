@@ -3,7 +3,11 @@ import React from 'react';
 
 import { AlternateSection, Choice } from '../alternateSection';
 
-const choices = [{ label: 'cow', value: '0' }, { label: 'cattle', value: '1' }, { label: 'calf', value: '2' }];
+const choices = [
+  { label: 'cow', value: '0' },
+  { label: 'cattle', value: '1' },
+  { label: 'calf', value: '2' },
+];
 
 describe('Choice', () => {
   let onChange = jest.fn();
@@ -57,7 +61,7 @@ describe('AlternateSection', () => {
       choiceRemoved,
       lengthChanged,
       selectChoices: [{ label: 'moon', value: '2' }],
-      choices
+      choices,
     };
     const props = { ...defaults };
 
@@ -88,47 +92,53 @@ describe('AlternateSection', () => {
         const newChoices = [
           { label: 'cow', value: '0' },
           { label: 'cattle', value: '1' },
-          { label: 'little calf', value: '2' }
+          { label: 'little calf', value: '2' },
         ];
 
         w.instance().updateChoicesIfNeeded({ choices: newChoices });
 
-        expect(w.instance().state).toEqual(expect.objectContaining({
-          choices: newChoices,
-        }));
+        expect(w.instance().state).toEqual(
+          expect.objectContaining({
+            choices: newChoices,
+          }),
+        );
       });
 
       it('sets state, updates adding new choice', () => {
         const newChoices = [
           { label: 'cow', value: '0' },
           { label: 'cattle', value: '1' },
-          { label: 'little calf', value: '2' }
+          { label: 'little calf', value: '2' },
         ];
 
         w.instance().updateChoicesIfNeeded({ choices: newChoices });
 
-        expect(w.instance().state).toEqual(expect.objectContaining({
-          choices: newChoices,
-        }));
+        expect(w.instance().state).toEqual(
+          expect.objectContaining({
+            choices: newChoices,
+          }),
+        );
       });
 
       it('sets state, updates removing choice', () => {
         const newChoices = [
           { label: 'cow', value: '0' },
-          { label: 'cattle', value: '1' }
+          { label: 'cattle', value: '1' },
         ];
 
         w.instance().updateChoicesIfNeeded({ choices: newChoices });
 
-        expect(w.instance().state).toEqual(expect.objectContaining({
-          choices: newChoices,
-        }));
+        expect(w.instance().state).toEqual(
+          expect.objectContaining({
+            choices: newChoices,
+          }),
+        );
       });
     });
 
     describe('handleSelect', () => {
       it('calls onSelect', () => {
-        w.instance().handleSelect({ target: { value: '2' }});
+        w.instance().handleSelect({ target: { value: '2' } });
 
         expect(onSelect).toBeCalledWith({ label: 'moon', value: '2' });
       });
@@ -140,10 +150,7 @@ describe('AlternateSection', () => {
 
         w.instance().onAddChoice();
 
-        expect(w.instance().state.choices).toEqual([
-          ...state.choices,
-          { value: '3', label: '' }
-        ]);
+        expect(w.instance().state.choices).toEqual([...state.choices, { value: '3', label: '' }]);
       });
 
       it('does not add choice if previously added choice is empty', () => {

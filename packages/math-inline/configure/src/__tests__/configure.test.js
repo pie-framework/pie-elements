@@ -13,29 +13,29 @@ import { FeedbackConfig, layout, settings } from '@pie-lib/config-ui';
 import defaultValues from '../defaults';
 
 jest.mock('@pie-lib/config-ui', () => ({
-  InputContainer: props => <div>{props.children}</div>,
-  InputCheckbox: props => <div>{props.children}</div>,
-  FeedbackConfig: props => <div>{props.children}</div>,
+  InputContainer: (props) => <div>{props.children}</div>,
+  InputCheckbox: (props) => <div>{props.children}</div>,
+  FeedbackConfig: (props) => <div>{props.children}</div>,
   layout: {
-    ConfigLayout: props => <div>{props.children}</div>
+    ConfigLayout: (props) => <div>{props.children}</div>,
   },
   settings: {
-    Panel: props => <div onChange={props.onChange} />,
+    Panel: (props) => <div onChange={props.onChange} />,
     toggle: jest.fn(),
-    radio: jest.fn()
-  }
+    radio: jest.fn(),
+  },
 }));
 
 jest.mock('@pie-lib/math-toolbar', () => ({
-  MathToolbar: () => <div />
+  MathToolbar: () => <div />,
 }));
 
 jest.mock('@pie-framework/mathquill', () => ({
   StaticMath: jest.fn().mockReturnValue({
-    latex: jest.fn()
+    latex: jest.fn(),
   }),
   registerEmbed: jest.fn(),
-  getInterface: jest.fn().mockReturnThis()
+  getInterface: jest.fn().mockReturnThis(),
 }));
 const Mathquill = require('@pie-framework/mathquill');
 
@@ -49,16 +49,16 @@ const defaultProps = {
     feedback: {
       correct: {
         default: 'Correct',
-        type: 'none'
+        type: 'none',
       },
       incorrect: {
         default: 'Incorrect',
-        type: 'none'
+        type: 'none',
       },
       partial: {
         default: 'Nearly',
-        type: 'none'
-      }
+        type: 'none',
+      },
     },
     equationEditor: '3',
     expression: '{{response}} = {{response}} \\text{eggs}',
@@ -67,29 +67,29 @@ const defaultProps = {
     response: {
       answer: '72\\div12=6\\text{eggs}',
       alternates: {
-        '1': '6=72\\div12\\text{eggs}',
-        '2': '\\frac{72}{12}=6\\text{eggs}',
-        '3': '6=\\frac{72}{12}\\text{eggs}'
+        1: '6=72\\div12\\text{eggs}',
+        2: '\\frac{72}{12}=6\\text{eggs}',
+        3: '6=\\frac{72}{12}\\text{eggs}',
       },
-      validation: 'literal'
+      validation: 'literal',
     },
     responses: [
       {
         id: '1',
         answer: '72\\div12=6\\text{eggs}',
         alternates: {
-          '1': '6=72\\div12\\text{eggs}',
-          '2': '\\frac{72}{12}=6\\text{eggs}',
-          '3': '6=\\frac{72}{12}\\text{eggs}'
+          1: '6=72\\div12\\text{eggs}',
+          2: '\\frac{72}{12}=6\\text{eggs}',
+          3: '6=\\frac{72}{12}\\text{eggs}',
         },
-        validation: 'literal'
-      }
+        validation: 'literal',
+      },
     ],
     note: 'The answer shown above is the primary correct answer specified by the author for this item, but other answers may also be recognized as correct.',
     customKeys: ['\\left(\\right)', '\\frac{}{}', 'x\\frac{}{}'],
-    configure: defaultValues.configure
+    configure: defaultValues.configure,
   },
-  configuration: defaultValues.configuration
+  configuration: defaultValues.configuration,
 };
 
 describe('Configure', () => {
@@ -116,17 +116,15 @@ describe('Configure', () => {
 
   it('changeTeacherInstructions calls onModelChange', () => {
     const onModelChanged = jest.fn();
-    const component = shallow(<ConfigureNotStyled
-      onModelChanged={onModelChanged}
-      classes={{}}
-      {...defaultValues }
-    />);
+    const component = shallow(<ConfigureNotStyled onModelChanged={onModelChanged} classes={{}} {...defaultValues} />);
 
     component.instance().changeTeacherInstructions('Teacher Instructions');
 
-    expect(onModelChanged).toBeCalledWith(expect.objectContaining({
-      teacherInstructions: 'Teacher Instructions'
-    }));
+    expect(onModelChanged).toBeCalledWith(
+      expect.objectContaining({
+        teacherInstructions: 'Teacher Instructions',
+      }),
+    );
   });
 });
 
@@ -175,7 +173,7 @@ describe('GeneralConfigBlock', () => {
     const onChange = jest.fn();
     const component = wrapper({
       ...props,
-      onChange
+      onChange,
     });
 
     component.instance().onResponseChange({ answer: 'something', id: 'r1' }, 0);
@@ -185,9 +183,9 @@ describe('GeneralConfigBlock', () => {
       responses: [
         {
           id: 'r1',
-          answer: 'something'
-        }
-      ]
+          answer: 'something',
+        },
+      ],
     });
   });
 
@@ -199,20 +197,20 @@ describe('GeneralConfigBlock', () => {
       responseIdCounter: 2,
       responseAreas: {
         r1: {
-          value: ''
+          value: '',
         },
         r2: {
-          value: ''
-        }
-      }
+          value: '',
+        },
+      },
     });
 
     component = wrapper({
       ...props,
       model: {
         ...props.model,
-        expression: props.model.expression + ' {{response}} '
-      }
+        expression: props.model.expression + ' {{response}} ',
+      },
     });
 
     expect(component.state()).toEqual({
@@ -220,15 +218,15 @@ describe('GeneralConfigBlock', () => {
       responseIdCounter: 3,
       responseAreas: {
         r1: {
-          value: ''
+          value: '',
         },
         r2: {
-          value: ''
+          value: '',
         },
         r3: {
-          value: ''
-        }
-      }
+          value: '',
+        },
+      },
     });
   });
 });

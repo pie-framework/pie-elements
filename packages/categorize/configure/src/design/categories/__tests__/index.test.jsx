@@ -10,7 +10,7 @@ describe('Categories', () => {
     choices: [
       {
         id: '0',
-        content: 'Choice 0'
+        content: 'Choice 0',
       },
     ],
     choicesPosition: 'below',
@@ -22,7 +22,7 @@ describe('Categories', () => {
       {
         id: '0',
         label: 'Category 0',
-        choices: []
+        choices: [],
       },
     ],
     rowLabels: [''],
@@ -30,17 +30,17 @@ describe('Categories', () => {
     partialScoring: true,
   };
 
-  const wrapper = extras => {
+  const wrapper = (extras) => {
     const defaults = {
       classes: {
         categories: 'categories',
         categoriesHolder: 'categoriesHolder',
-        row: 'row'
+        row: 'row',
       },
       categories: [{ id: '1', label: 'foo', choices: [] }],
       className: 'className',
       model,
-      onModelChanged
+      onModelChanged,
     };
 
     const props = { ...defaults, ...extras };
@@ -55,14 +55,13 @@ describe('Categories', () => {
   });
 
   describe('logic', () => {
-
     describe('add', () => {
       w = wrapper();
       w.instance().add();
 
       expect(onModelChanged).toBeCalledWith({
         categories: expect.arrayContaining([{ id: '1', label: 'Category 1' }]),
-        rowLabels: ['']
+        rowLabels: [''],
       });
     });
 
@@ -87,20 +86,17 @@ describe('Categories', () => {
       w.instance().addChoiceToCategory({ id: '1', content: 'foo' }, '0');
 
       expect(onModelChanged).toBeCalledWith({
-        correctResponse: [{ category: '0', choices: ['1'] }]
+        correctResponse: [{ category: '0', choices: ['1'] }],
       });
     });
 
     describe('deleteChoiceFromCategory', () => {
       w = wrapper();
-      w.instance().deleteChoiceFromCategory({ id: '0'}, { id: '1' }, 0);
+      w.instance().deleteChoiceFromCategory({ id: '0' }, { id: '1' }, 0);
 
       expect(onModelChanged).toBeCalledWith({
-        correctResponse: [{ category: '0', choices: [] }]
+        correctResponse: [{ category: '0', choices: [] }],
       });
     });
-
-
-
   });
 });

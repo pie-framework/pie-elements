@@ -8,14 +8,14 @@ const styles = {
   ruler: {
     position: 'absolute',
     left: '200px',
-    zIndex: '101'
-  }
+    zIndex: '101',
+  },
 };
 
 export class Root extends React.Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
-    model: PropTypes.object.isRequired
+    model: PropTypes.object.isRequired,
   };
 
   constructor(props) {

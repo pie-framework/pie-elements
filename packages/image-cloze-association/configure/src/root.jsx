@@ -15,21 +15,14 @@ export class Root extends React.Component {
   };
 
   render() {
-    const {
-      classes,
-      model,
-      configuration,
-      onModelChanged,
-      onConfigurationChanged,
-      imageSupport,
-      uploadSoundSupport
-    } = this.props;
+    const { classes, model, configuration, onModelChanged, onConfigurationChanged, imageSupport, uploadSoundSupport } =
+      this.props;
     const {
       teacherInstructions = {},
       spellCheck = {},
       maxImageWidth = {},
       maxImageHeight = {},
-      withRubric = {}
+      withRubric = {},
     } = configuration || {};
     const { spellCheckEnabled, rubricEnabled } = model || {};
 
@@ -43,12 +36,9 @@ export class Root extends React.Component {
             onChangeConfiguration={(config) => onConfigurationChanged(config)}
             groups={{
               Properties: {
-                teacherInstructionsEnabled:
-                  teacherInstructions.settings &&
-                  toggle(teacherInstructions.label),
-                spellCheckEnabled:
-                  spellCheck.settings && toggle(spellCheck.label),
-                rubricEnabled: withRubric?.settings && toggle(withRubric?.label)
+                teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
+                spellCheckEnabled: spellCheck.settings && toggle(spellCheck.label),
+                rubricEnabled: withRubric?.settings && toggle(withRubric?.label),
               },
             }}
           />
@@ -56,10 +46,7 @@ export class Root extends React.Component {
       >
         <div className={classes.content}>
           {model && model.teacherInstructionsEnabled && (
-            <InputContainer
-              label={teacherInstructions.label}
-              className={classes.promptHolder}
-            >
+            <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
               <EditableHtml
                 className={classes.prompt}
                 markup={model.teacherInstructions || ''}

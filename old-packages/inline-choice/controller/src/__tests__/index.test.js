@@ -8,18 +8,18 @@ let question = {
       correct: true,
       feedback: {
         type: 'custom',
-        value: 'hooray'
-      }
+        value: 'hooray',
+      },
     },
     {
       value: 'b',
       label: 'b',
       correct: false,
       feedback: {
-        type: 'default'
-      }
-    }
-  ]
+        type: 'default',
+      },
+    },
+  ],
 };
 
 describe('getResult', () => {
@@ -48,27 +48,30 @@ describe('getResult', () => {
   });
 
   it('returns feedback: Correct if response is correct', () => {
-    const result = getResult({
-      choices: [
-        {
-          value: 'a',
-          label: 'a',
-          correct: false,
-          feedback: {
-            type: 'custom',
-            value: 'hooray'
-          }
-        },
-        {
-          value: 'b',
-          label: 'b',
-          correct: true,
-          feedback: {
-            type: 'default'
-          }
-        }
-      ]
-    }, { value: 'b' });
+    const result = getResult(
+      {
+        choices: [
+          {
+            value: 'a',
+            label: 'a',
+            correct: false,
+            feedback: {
+              type: 'custom',
+              value: 'hooray',
+            },
+          },
+          {
+            value: 'b',
+            label: 'b',
+            correct: true,
+            feedback: {
+              type: 'default',
+            },
+          },
+        ],
+      },
+      { value: 'b' },
+    );
 
     expect(result).toEqual({ correct: true, feedback: 'Correct' });
   });
@@ -86,38 +89,40 @@ describe('getResult', () => {
   });
 
   it('returns custom feedback if feedback type is custom and response is incorrect', () => {
-    const result = getResult({
-      choices: [
-        {
-          value: 'a',
-          label: 'a',
-          correct: false,
-          feedback: {
-            type: 'custom',
-            value: 'hooray'
-          }
-        },
-        {
-          value: 'b',
-          label: 'b',
-          correct: true,
-          feedback: {
-            type: 'default'
-          }
-        }
-      ]
-    }, { value: 'a' });
+    const result = getResult(
+      {
+        choices: [
+          {
+            value: 'a',
+            label: 'a',
+            correct: false,
+            feedback: {
+              type: 'custom',
+              value: 'hooray',
+            },
+          },
+          {
+            value: 'b',
+            label: 'b',
+            correct: true,
+            feedback: {
+              type: 'default',
+            },
+          },
+        ],
+      },
+      { value: 'a' },
+    );
 
     expect(result).toEqual({ correct: false, feedback: 'hooray' });
   });
 });
 
-
 describe('model', () => {
   let result;
 
   let session = {
-    value: 'a'
+    value: 'a',
   };
 
   let env;
@@ -127,9 +132,7 @@ describe('model', () => {
   });
 
   it('returns choices', () => {
-    expect(result.choices).toMatchObject(
-      question.choices.map(c => ({ label: c.label, value: c.value }))
-    );
+    expect(result.choices).toMatchObject(question.choices.map((c) => ({ label: c.label, value: c.value })));
   });
 
   it('returns disabled:false', () => {
@@ -149,7 +152,7 @@ describe('model', () => {
     it('returns result', () => {
       expect(result.result).toMatchObject({
         correct: true,
-        feedback: 'hooray'
+        feedback: 'hooray',
       });
     });
 
@@ -157,9 +160,11 @@ describe('model', () => {
       it(`returns result not correct if session is ${JSON.stringify(session)}`, async () => {
         const m = await model(question, session, { mode: 'evaluate' });
 
-        expect(m.result).toEqual(expect.objectContaining({
-          correct: false
-        }));
+        expect(m.result).toEqual(
+          expect.objectContaining({
+            correct: false,
+          }),
+        );
       });
     };
 
@@ -172,7 +177,7 @@ describe('model', () => {
     beforeEach(async () => {
       env = { mode: 'evaluate' };
       session = {
-        value: undefined
+        value: undefined,
       };
       result = await model(question, session, env);
     });
@@ -181,7 +186,7 @@ describe('model', () => {
       expect(result.result).toMatchObject({
         correct: false,
         nothingSubmitted: true,
-        feedback: undefined
+        feedback: undefined,
       });
     });
   });
@@ -190,7 +195,7 @@ describe('model', () => {
     beforeEach(async () => {
       env = { mode: 'evaluate' };
       session = {
-        value: 'b'
+        value: 'b',
       };
       result = await model(question, session, env);
     });
@@ -198,7 +203,7 @@ describe('model', () => {
     it('returns result', () => {
       expect(result.result).toMatchObject({
         correct: false,
-        feedback: 'Incorrect'
+        feedback: 'Incorrect',
       });
     });
   });
@@ -213,18 +218,18 @@ describe('outcome', () => {
         correct: true,
         feedback: {
           type: 'custom',
-          value: 'hooray'
-        }
+          value: 'hooray',
+        },
       },
       {
         value: 'b',
         label: 'b',
         correct: false,
         feedback: {
-          type: 'default'
-        }
-      }
-    ]
+          type: 'default',
+        },
+      },
+    ],
   };
 
   const returnOutcome = (session) => {
@@ -245,52 +250,52 @@ describe('createCorrectResponseSession', () => {
     choices: [
       {
         value: 'sweden',
-        label: 'Sweden'
+        label: 'Sweden',
       },
       {
         value: 'iceland',
         label: 'Iceland',
         feedback: {
-          type: 'default'
-        }
+          type: 'default',
+        },
       },
       {
         correct: true,
         value: 'norway',
-        label: 'Norway'
+        label: 'Norway',
       },
       {
         value: 'finland',
         label: 'Finland',
         feedback: {
           type: 'custom',
-          value: 'Nokia was founded in Finland.'
-        }
-      }
-    ]
+          value: 'Nokia was founded in Finland.',
+        },
+      },
+    ],
   };
 
   it('returns correct response if role is instructor and mode is gather', async () => {
     const sess = await createCorrectResponseSession(question, {
       mode: 'gather',
-      role: 'instructor'
+      role: 'instructor',
     });
 
     expect(sess).toEqual({
       value: 'norway',
-      id: '1'
+      id: '1',
     });
   });
 
   it('returns correct response if role is instructor and mode is view', async () => {
     const sess = await createCorrectResponseSession(question, {
       mode: 'view',
-      role: 'instructor'
+      role: 'instructor',
     });
 
     expect(sess).toEqual({
       value: 'norway',
-      id: '1'
+      id: '1',
     });
   });
 
@@ -306,6 +311,3 @@ describe('createCorrectResponseSession', () => {
     expect(noResult).toBeNull();
   });
 });
-
-
-

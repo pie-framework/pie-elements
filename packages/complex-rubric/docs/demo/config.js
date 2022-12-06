@@ -2,7 +2,7 @@ const { model } = require('./generate');
 
 module.exports = {
   elements: {
-    'complex-rubric': '../..'
+    'complex-rubric': '../..',
   },
-  models: [model('1', 'complex-rubric')]
+  models: [model('1', 'complex-rubric')],
 };

@@ -14,23 +14,23 @@ import PointConfig from './point-config';
 
 const log = debug('@pie-element:text-entry:configure');
 
-const styles = theme => ({
+const styles = (theme) => ({
   title: {
     fontSize: '1.1rem',
     display: 'block',
     marginTop: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit
+    marginBottom: theme.spacing.unit,
   },
   tab: {
-    marginTop: theme.spacing.unit * 2
-  }
+    marginTop: theme.spacing.unit * 2,
+  },
 });
 
 export class Configure extends React.Component {
   static propTypes = {
     onModelChanged: PropTypes.func,
     classes: PropTypes.object,
-    model: PropTypes.object.isRequired
+    model: PropTypes.object.isRequired,
   };
 
   constructor(props) {
@@ -38,7 +38,7 @@ export class Configure extends React.Component {
     this.defaults = JSON.parse(JSON.stringify(props.model));
     this.state = {
       activeTab: 0,
-      withLabels: true
+      withLabels: true,
     };
   }
 
@@ -50,11 +50,11 @@ export class Configure extends React.Component {
     this.setState({ activeTab: value });
   };
 
-  onChangeTabIndex = index => {
+  onChangeTabIndex = (index) => {
     this.setState({ activeTab: index });
   };
 
-  onModelConfigChange = name => event => {
+  onModelConfigChange = (name) => (event) => {
     this.props.model.graph[name] = event.target.checked;
     this.props.onModelChanged(this.props.model);
   };
@@ -64,7 +64,7 @@ export class Configure extends React.Component {
     const points = this.props.model.correctResponse;
     const newPoints = [];
 
-    points.forEach(point => {
+    points.forEach((point) => {
       let [pointX, pointY] = point.split(',');
       pointX = parseInt(pointX, 10);
       pointY = parseInt(pointY, 10);
@@ -109,13 +109,13 @@ export class Configure extends React.Component {
     this.props.onModelChanged(this.props.model);
   };
 
-  onPointLabelChange = index => event => {
+  onPointLabelChange = (index) => (event) => {
     const graph = this.props.model.graph;
     graph.pointLabels[index] = event.target.value;
     this.props.onModelChanged(this.props.model);
   };
 
-  onPointValueChange = (pointIndex, pointCoordinateIndex) => event => {
+  onPointValueChange = (pointIndex, pointCoordinateIndex) => (event) => {
     const points = this.props.model.correctResponse;
     const [pointX, pointY] = points[pointIndex].split(',');
     const newValue = parseInt(event.target.value, 10);
@@ -137,13 +137,13 @@ export class Configure extends React.Component {
     this.props.onModelChanged(this.props.model);
   };
 
-  deletePoint = pointIndex => () => {
+  deletePoint = (pointIndex) => () => {
     const points = this.props.model.correctResponse;
     points.splice(pointIndex, 1);
     this.props.onModelChanged(this.props.model);
   };
 
-  onMaxPointsChange = event => {
+  onMaxPointsChange = (event) => {
     const graph = this.props.model.graph;
     const newValue = parseInt(event.target.value, 10);
 
@@ -154,22 +154,22 @@ export class Configure extends React.Component {
     }
   };
 
-  onFeedbackChange = feedback => {
+  onFeedbackChange = (feedback) => {
     const { model, onModelChanged } = this.props;
     model.feedback = feedback;
     onModelChanged(model);
   };
 
-  onToggleWithLabels = setTrue => () => {
+  onToggleWithLabels = (setTrue) => () => {
     this.setState({
-      withLabels: setTrue
+      withLabels: setTrue,
     });
   };
 
   onPartialScoringChange = () => {
-    this.props.model.partialScoring = this.props.model.partialScoring.map(partialScore => ({
+    this.props.model.partialScoring = this.props.model.partialScoring.map((partialScore) => ({
       numberOfCorrect: partialScore.numberOfCorrect || '',
-      scorePercentage: partialScore.scorePercentage || ''
+      scorePercentage: partialScore.scorePercentage || '',
     }));
 
     this.props.onModelChanged(this.props.model);
@@ -193,16 +193,11 @@ export class Configure extends React.Component {
           <Tab label="Design" />
           <Tab disabled={!graph.allowPartialScoring} label="Scoring" />
         </Tabs>
-        <SwipeableViews
-          axis="x"
-          index={this.state.activeTab}
-          onChangeIndex={this.onChangeTabIndex}
-        >
+        <SwipeableViews axis="x" index={this.state.activeTab} onChangeIndex={this.onChangeTabIndex}>
           <div className={classes.tab}>
             <Typography component="div" type="body1">
               <span>
-                In Plot Points, students identify coordinates or plot points on
-                a graph by clicking on the graph.
+                In Plot Points, students identify coordinates or plot points on a graph by clicking on the graph.
               </span>
               <h2>Points</h2>
             </Typography>
@@ -222,15 +217,8 @@ export class Configure extends React.Component {
               onPointValueChange={this.onPointValueChange}
               onPointLabelChange={this.onPointLabelChange}
             />
-            <ChartConfig
-              config={graph}
-              onChange={this.onChange}
-              resetToDefaults={this.resetToDefaults}
-            />
-            <FeedbackConfig
-              feedback={model.feedback}
-              onChange={this.onFeedbackChange}
-            />
+            <ChartConfig config={graph} onChange={this.onChange} resetToDefaults={this.resetToDefaults} />
+            <FeedbackConfig feedback={model.feedback} onChange={this.onFeedbackChange} />
           </div>
           <div className={classes.tab}>
             <PartialScoringConfig

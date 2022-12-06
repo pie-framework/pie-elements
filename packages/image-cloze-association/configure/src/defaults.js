@@ -7,22 +7,22 @@ export default {
   configuration: {
     spellCheck: {
       label: 'Spellcheck',
-      settings:false,
-      enabled:true
+      settings: false,
+      enabled: true,
     },
     teacherInstructions: {
       settings: true,
-      label: 'Teacher Instructions'
+      label: 'Teacher Instructions',
     },
     maxImageWidth: {
-      teacherInstructions: 300
+      teacherInstructions: 300,
     },
     maxImageHeight: {
-      teacherInstructions: 300
+      teacherInstructions: 300,
     },
     withRubric: {
       settings: false,
-      label: 'Add Rubric'
-    }
-  }
+      label: 'Add Rubric',
+    },
+  },
 };

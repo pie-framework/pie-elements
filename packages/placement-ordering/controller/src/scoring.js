@@ -4,10 +4,8 @@ import debug from 'debug';
 
 const log = debug('pie-elements:placement-ordering:controller');
 
-export const illegalArgumentError = answer =>
-  new Error(
-    `Cant score answer: ${answer} it has duplicates and allowDuplicates is false`
-  );
+export const illegalArgumentError = (answer) =>
+  new Error(`Cant score answer: ${answer} it has duplicates and allowDuplicates is false`);
 export const pairwiseCombinationScore = (correct, answer, opts) => {
   opts = { allowDuplicates: false, orderMustBeComplete: false, ...opts };
 
@@ -15,10 +13,7 @@ export const pairwiseCombinationScore = (correct, answer, opts) => {
     throw illegalArgumentError(answer);
   }
 
-  if (
-    opts.allowDuplicates === false &&
-    answer.length !== _.uniq(answer).length
-  ) {
+  if (opts.allowDuplicates === false && answer.length !== _.uniq(answer).length) {
     return 0;
   }
 
@@ -64,26 +59,23 @@ export const pairwiseCombinationScore = (correct, answer, opts) => {
  * Flattens the correctResponse into an array of ordered identifiers representing the
  * correct response.
  */
-export const flattenCorrect = question =>
-  question.correctResponse
-    ? question.correctResponse.map(r => (r && r.id ? r.id : r))
-    : [];
+export const flattenCorrect = (question) =>
+  question.correctResponse ? question.correctResponse.map((r) => (r && r.id ? r.id : r)) : [];
 
 /**
  * Returns all correct responses for this question
  * @param question - array
  */
-export const getAllCorrectResponses = question => {
-  const alternates = (question.alternateResponses || []).map(alternate => {
+export const getAllCorrectResponses = (question) => {
+  const alternates = (question.alternateResponses || []).map((alternate) => {
     if (Array.isArray(alternate)) {
-
       return alternate;
     }
 
     return alternate.response;
   });
 
-  return [ flattenCorrect(question), ...alternates ];
+  return [flattenCorrect(question), ...alternates];
 };
 
 /**
@@ -101,8 +93,7 @@ export const score = (question, session) => {
   }
 
   const allCorrectResponse = getAllCorrectResponses(question);
-  const allowDuplicates =
-    (question.configure && question.configure.removeTilesAfterPlacing) !== false;
+  const allowDuplicates = (question.configure && question.configure.removeTilesAfterPlacing) !== false;
 
   /**
    * We require this to be the case - locking
@@ -113,7 +104,7 @@ export const score = (question, session) => {
 
   allCorrectResponse.forEach((cr) => {
     const currentScore = pairwiseCombinationScore(cr, value, {
-      allowDuplicates
+      allowDuplicates,
     });
 
     if (currentScore >= bestScore) {

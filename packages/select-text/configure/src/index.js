@@ -6,16 +6,16 @@ import {
   DeleteImageEvent,
   InsertImageEvent,
   InsertSoundEvent,
-  DeleteSoundEvent
+  DeleteSoundEvent,
 } from '@pie-framework/pie-configure-events';
 import defaultValues from './defaultConfiguration';
-import { generateModel }  from './utils';
+import { generateModel } from './utils';
 
 export default class SelectTextConfigure extends HTMLElement {
   static createDefaultModel = (model = {}) => {
     const newModel = {
       ...defaultValues.model,
-      ...model
+      ...model,
     };
 
     return generateModel(newModel);
@@ -86,12 +86,12 @@ export default class SelectTextConfigure extends HTMLElement {
         onConfigurationChanged: this.onConfigurationChanged.bind(this),
         imageSupport: {
           add: this.insertImage.bind(this),
-          delete: this.onDeleteImage.bind(this)
+          delete: this.onDeleteImage.bind(this),
         },
         uploadSoundSupport: {
           add: this.insertSound.bind(this),
-          delete: this.onDeleteSound.bind(this)
-        }
+          delete: this.onDeleteSound.bind(this),
+        },
       });
 
       ReactDOM.render(el, this);

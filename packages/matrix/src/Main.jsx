@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {PreviewLayout} from '@pie-lib/render-ui';
+import { PreviewLayout } from '@pie-lib/render-ui';
 import Matrix from './Matrix';
 
 class Main extends React.Component {
   static propTypes = {
     model: PropTypes.object,
     session: PropTypes.object,
-    onSessionChange: PropTypes.func
+    onSessionChange: PropTypes.func,
   };
 
   static defaultProps = {
@@ -16,14 +16,10 @@ class Main extends React.Component {
   };
 
   render() {
-    const {model, onSessionChange, session} = this.props;
+    const { model, onSessionChange, session } = this.props;
     return (
       <PreviewLayout>
-        <Matrix
-          {...model}
-          session={session}
-          onSessionChange={onSessionChange}
-        />
+        <Matrix {...model} session={session} onSessionChange={onSessionChange} />
       </PreviewLayout>
     );
   }

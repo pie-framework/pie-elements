@@ -49,15 +49,8 @@ export class Root extends React.Component {
   };
 
   render() {
-    const {
-      classes,
-      configuration,
-      model,
-      imageSupport,
-      uploadSoundSupport,
-      onConfigurationChanged,
-      onModelChanged,
-    } = this.props;
+    const { classes, configuration, model, imageSupport, uploadSoundSupport, onConfigurationChanged, onModelChanged } =
+      this.props;
     const {
       backgroundImage = {},
       prompt = {},
@@ -67,12 +60,7 @@ export class Root extends React.Component {
       maxImageHeight = {},
       withRubric = {},
     } = configuration || {};
-    const {
-      teacherInstructionsEnabled,
-      promptEnabled,
-      spellCheckEnabled,
-      backgroundImageEnabled,
-    } = model || {};
+    const { teacherInstructionsEnabled, promptEnabled, spellCheckEnabled, backgroundImageEnabled } = model || {};
     const toolbarOpts = {};
 
     const defaultImageMaxWidth = maxImageWidth && maxImageWidth.prompt;
@@ -99,15 +87,12 @@ export class Root extends React.Component {
               groups={{
                 Settings: {
                   backgroundImageEnabled: backgroundImage.settings && toggle(backgroundImage.label),
-                  promptEnabled: prompt.settings && toggle(prompt.label)
+                  promptEnabled: prompt.settings && toggle(prompt.label),
                 },
                 Properties: {
-                  teacherInstructionsEnabled:
-                    teacherInstructions.settings &&
-                    toggle(teacherInstructions.label),
-                  spellCheckEnabled:
-                    spellCheck.settings && toggle(spellCheck.label),
-                  rubricEnabled: !withRubric?.forceEnabled && withRubric?.settings && toggle(withRubric?.label)
+                  teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
+                  spellCheckEnabled: spellCheck.settings && toggle(spellCheck.label),
+                  rubricEnabled: !withRubric?.forceEnabled && withRubric?.settings && toggle(withRubric?.label),
                 },
               }}
             />
@@ -115,10 +100,7 @@ export class Root extends React.Component {
         >
           <div className={classes.regular}>
             {teacherInstructionsEnabled && (
-              <InputContainer
-                label={teacherInstructions.label}
-                className={classes.prompt}
-              >
+              <InputContainer label={teacherInstructions.label} className={classes.prompt}>
                 <EditableHtml
                   markup={model.teacherInstructions || ''}
                   onChange={this.onTeacherInstructionsChanged}
@@ -126,8 +108,8 @@ export class Root extends React.Component {
                   nonEmpty={false}
                   toolbarOpts={toolbarOpts}
                   spellCheck={spellCheckEnabled}
-                  maxImageWidth={maxImageWidth && maxImageWidth.teacherInstructions || defaultImageMaxWidth}
-                  maxImageHeight={maxImageHeight && maxImageHeight.teacherInstructions || defaultImageMaxHeight}
+                  maxImageWidth={(maxImageWidth && maxImageWidth.teacherInstructions) || defaultImageMaxWidth}
+                  maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
                   uploadSoundSupport={uploadSoundSupport}
                   languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
                 />

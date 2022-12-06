@@ -22,24 +22,24 @@ describe('ECRToolbar', () => {
 
             return 'moon';
           },
-          toJSON: jest.fn()
-        }
+          toJSON: jest.fn(),
+        },
       },
       value: {
         change: jest.fn().mockReturnValue({
           setNodeByKey: jest.fn().mockReturnValue({
             moveFocusTo: jest.fn().mockReturnValue({
-              moveAnchorTo: jest.fn()
-            })
-          })
+              moveAnchorTo: jest.fn(),
+            }),
+          }),
         }),
         document: {
           getNextText: jest.fn().mockReturnValue({
-            key: 1
-          })
-        }
+            key: 1,
+          }),
+        },
       },
-      correctChoice: { value: '0', label: 'moon' }
+      correctChoice: { value: '0', label: 'moon' },
     };
     const props = { ...defaults };
 
@@ -65,7 +65,7 @@ describe('ECRToolbar', () => {
     it('onChange', () => {
       const w = wrapper();
 
-      w.instance().onChange({ target: { value: 'test' }});
+      w.instance().onChange({ target: { value: 'test' } });
 
       expect(w.instance().state).toEqual({ markup: 'test' });
     });

@@ -3,24 +3,24 @@ import React from 'react';
 import { Main } from '../main';
 
 jest.mock('@pie-lib/text-select', () => ({
-  prepareText: jest.fn()
+  prepareText: jest.fn(),
 }));
 
 describe('main', () => {
-  const getWrapper = props => {
+  const getWrapper = (props) => {
     return shallow(
       <Main
         onSelectionChange={jest.fn()}
         model={{
           text: 'foo',
-          tokens: [{ start: 0, end: 1, text: 'f' }]
+          tokens: [{ start: 0, end: 1, text: 'f' }],
         }}
         session={{
-          selectedTokens: [{ start: 0, end: 1, text: 'f' }]
+          selectedTokens: [{ start: 0, end: 1, text: 'f' }],
         }}
         classes={{}}
-        { ...props }
-      />
+        {...props}
+      />,
     );
   };
 
@@ -31,7 +31,7 @@ describe('main', () => {
     });
 
     it('renders rationale', () => {
-      const w = getWrapper({ rationale: 'This is rationale '});
+      const w = getWrapper({ rationale: 'This is rationale ' });
       expect(w).toMatchSnapshot();
     });
 
@@ -52,7 +52,7 @@ describe('main', () => {
     it('shows correct answer', () => {
       const correctTokens = [{ start: 0, end: 1, text: 'f', correct: true, oldStart: 0, oldEnd: 1 }];
       w.setProps({
-        model: { text: 'foo', tokens: correctTokens }
+        model: { text: 'foo', tokens: correctTokens },
       });
       const result = w.instance().correctAnswer();
       expect(result).toEqual(correctTokens);

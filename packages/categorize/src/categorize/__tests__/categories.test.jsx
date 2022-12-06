@@ -3,7 +3,7 @@ import React from 'react';
 import { Categories } from '../categories';
 
 describe('categories', () => {
-  const wrapper = extras => {
+  const wrapper = (extras) => {
     const defaults = {
       classes: {},
       categories: [{ choices: [], id: '1', label: 'category label' }],

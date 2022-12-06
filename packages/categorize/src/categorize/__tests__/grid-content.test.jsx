@@ -3,10 +3,10 @@ import React from 'react';
 import { GridContent } from '../grid-content';
 
 describe('grid-content', () => {
-  const wrapper = extras => {
+  const wrapper = (extras) => {
     const defaults = {
       classes: {},
-      columns: 2
+      columns: 2,
     };
 
     const props = { ...defaults, ...extras };

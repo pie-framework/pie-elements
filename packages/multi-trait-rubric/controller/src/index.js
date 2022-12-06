@@ -1,10 +1,10 @@
 import defaults from './defaults';
 
 export function createDefaultModel(model = {}) {
-  return new Promise(resolve => resolve({ ...defaults, ...model }));
+  return new Promise((resolve) => resolve({ ...defaults, ...model }));
 }
 
-export const normalize = question => ({ ...defaults, ...question });
+export const normalize = (question) => ({ ...defaults, ...question });
 
 /**
  *
@@ -23,14 +23,13 @@ export async function model(question, session, env) {
 
   // todo update pie-ui instead of parsing this here:
   const { scales, excludeZero } = normalizedQuestion || {};
-  const parsedScales = (scales || []).map(scale => ({ ...scale, excludeZero }));
+  const parsedScales = (scales || []).map((scale) => ({ ...scale, excludeZero }));
 
   return {
     ...normalizedQuestion,
-    scales: parsedScales
+    scales: parsedScales,
   };
 }
-
 
 export const getScore = () => 0;
 
@@ -40,11 +39,11 @@ export const getScore = () => 0;
  * @param {Object} env
  */
 export function outcome(model, session, env) {
-  return new Promise(resolve => resolve({ score: 0, empty: true }));
+  return new Promise((resolve) => resolve({ score: 0, empty: true }));
 }
 
 export const createCorrectResponseSession = (question, env) => {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     if (env.mode !== 'evaluate' && env.role === 'instructor') {
       resolve({ id: '1' });
     } else {

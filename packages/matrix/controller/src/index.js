@@ -1,7 +1,7 @@
 import defaults from './defaults';
 import isEmpty from 'lodash/isEmpty';
 
-export const createDefaultModel = (model = {}) => new Promise(resolve => resolve({ ...defaults, ...model }));
+export const createDefaultModel = (model = {}) => new Promise((resolve) => resolve({ ...defaults, ...model }));
 
 /**
  *
@@ -15,7 +15,7 @@ export async function model(question, session, env) {
   const out = {
     ...normalizedQuestion,
     disabled: env.mode !== 'gather',
-    mode: env.mode
+    mode: env.mode,
   };
 
   const { role, mode } = env || {};
@@ -32,12 +32,12 @@ export async function model(question, session, env) {
 }
 
 export function outcome(model, session) {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     if (!session || isEmpty(session)) {
       return resolve({ score: 0, empty: true });
     }
 
-    const score = Object.keys(session.value).reduce((acc, key)=> {
+    const score = Object.keys(session.value).reduce((acc, key) => {
       const matrixValue = model.matrixValues[key];
       return acc + (matrixValue || 0);
     }, 0);
@@ -47,13 +47,13 @@ export function outcome(model, session) {
 }
 
 export const createCorrectResponseSession = (question, env) => {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     if (env.mode !== 'evaluate' && env.role === 'instructor') {
       const { matrixValues } = question || [];
 
       resolve({
         id: '1',
-        value: matrixValues
+        value: matrixValues,
       });
     } else {
       resolve(null);

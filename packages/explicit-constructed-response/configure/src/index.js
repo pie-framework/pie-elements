@@ -8,13 +8,13 @@ import {
   DeleteImageEvent,
   InsertImageEvent,
   InsertSoundEvent,
-  DeleteSoundEvent
+  DeleteSoundEvent,
 } from '@pie-framework/pie-configure-events';
 
 import Main from './main';
 
 import sensibleDefaults from './defaults';
-import { processMarkup, createSlateMarkup } from './markupUtils'
+import { processMarkup, createSlateMarkup } from './markupUtils';
 
 const log = debug('explicit-constructed-response:configure');
 
@@ -30,7 +30,7 @@ export default class ExplicitConstructedResponse extends HTMLElement {
     // this was added to treat an exception, when the model has choices without the "value" property
     // like: { label: 'test' }
     if (joinedObj.choices) {
-      Object.keys(joinedObj.choices).forEach(key => {
+      Object.keys(joinedObj.choices).forEach((key) => {
         if (isArray(joinedObj.choices[key])) {
           joinedObj.choices[key] = (joinedObj.choices[key] || []).map((item, index) => {
             if (!item.value) {
@@ -39,7 +39,7 @@ export default class ExplicitConstructedResponse extends HTMLElement {
             }
 
             return item;
-          })
+          });
         }
       });
     }
@@ -47,7 +47,7 @@ export default class ExplicitConstructedResponse extends HTMLElement {
     return {
       ...joinedObj,
       slateMarkup,
-      markup: processedMarkup
+      markup: processedMarkup,
     };
   };
 
@@ -118,12 +118,12 @@ export default class ExplicitConstructedResponse extends HTMLElement {
       disableSidePanel: this._disableSidePanel,
       imageSupport: {
         add: this.insertImage.bind(this),
-        delete: this.onDeleteImage.bind(this)
+        delete: this.onDeleteImage.bind(this),
       },
       uploadSoundSupport: {
         add: this.insertSound.bind(this),
-        delete: this.onDeleteSound.bind(this)
-      }
+        delete: this.onDeleteSound.bind(this),
+      },
     });
     ReactDOM.render(element, this);
   }

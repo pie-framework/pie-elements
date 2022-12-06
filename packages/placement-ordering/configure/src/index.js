@@ -3,7 +3,7 @@ import {
   DeleteImageEvent,
   InsertImageEvent,
   InsertSoundEvent,
-  DeleteSoundEvent
+  DeleteSoundEvent,
 } from '@pie-framework/pie-configure-events';
 
 import Main from './design';
@@ -18,29 +18,30 @@ const prepareCustomizationObject = (config, model) => {
   return { configuration, model };
 };
 
-export const addWeightToCorrectResponse = correctResponse => correctResponse && correctResponse.map(correct => {
-  // if weight is set
-  if (correct.weight !== undefined) {
-    return ({ id: correct.id, weight: correct.weight });
-  } else {
-    return ({ id: correct, weight: 0 });
-  }
-
-
-});
+export const addWeightToCorrectResponse = (correctResponse) =>
+  correctResponse &&
+  correctResponse.map((correct) => {
+    // if weight is set
+    if (correct.weight !== undefined) {
+      return { id: correct.id, weight: correct.weight };
+    } else {
+      return { id: correct, weight: 0 };
+    }
+  });
 /**
  * assuming that the correct response will be set via ui, not via config,
  * correctResponse (if not set) will be initialized with choices default order
  */
 export default class PlacementOrdering extends HTMLElement {
   static createDefaultModel = (model = {}) => {
-    const mapChoicesToReturnCorrectResponse = choices => choices && choices.map(ch => ({ id: ch.id, weight: 0 }));
+    const mapChoicesToReturnCorrectResponse = (choices) => choices && choices.map((ch) => ({ id: ch.id, weight: 0 }));
 
-    let correctResponse = addWeightToCorrectResponse(model.correctResponse) || mapChoicesToReturnCorrectResponse(model.choices);
+    let correctResponse =
+      addWeightToCorrectResponse(model.correctResponse) || mapChoicesToReturnCorrectResponse(model.choices);
 
     const defaultModel = {
       ...defaultValues.model,
-      ...model
+      ...model,
     };
 
     if (correctResponse) {
@@ -69,7 +70,7 @@ export default class PlacementOrdering extends HTMLElement {
       this._rerender();
     };
 
-    this.insertImage = handler => {
+    this.insertImage = (handler) => {
       this.dispatchEvent(new InsertImageEvent(handler));
     };
 
@@ -111,12 +112,12 @@ export default class PlacementOrdering extends HTMLElement {
       onConfigurationChanged: this.onConfigurationChanged,
       imageSupport: {
         add: this.insertImage,
-        delete: this.deleteImage
+        delete: this.deleteImage,
       },
       uploadSoundSupport: {
         add: this.insertSound.bind(this),
-        delete: this.onDeleteSound.bind(this)
-      }
+        delete: this.onDeleteSound.bind(this),
+      },
     });
     ReactDOM.render(element, this);
   }

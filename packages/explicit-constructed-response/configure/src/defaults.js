@@ -7,89 +7,89 @@ export default {
     markup: '<p>The {{0}} jumped {{1}} the {{2}}</p>',
     toolbarEditorPosition: 'bottom',
     displayType: 'block',
-    spellCheckEnabled:true,
-    playerSpellCheckEnabled:true,
+    spellCheckEnabled: true,
+    playerSpellCheckEnabled: true,
     choices: {
       0: [
         {
           label: 'cow',
-          value: '0'
+          value: '0',
         },
         {
           label: 'cattle',
-          value: '1'
+          value: '1',
         },
         {
           label: 'calf',
           value: '2',
-          correct: false
-        }
+          correct: false,
+        },
       ],
       1: [
         {
           label: 'over',
-          value: '0'
+          value: '0',
         },
         {
           label: 'past',
-          value: '1'
+          value: '1',
         },
         {
           label: 'beyond',
-          value: '2'
-        }
+          value: '2',
+        },
       ],
       2: [
         {
           label: 'moon',
-          value: '0'
+          value: '0',
         },
         {
           label: 'satellite',
-          value: '2'
+          value: '2',
         },
         {
           label: 'house ',
-          value: '3'
-        }
-      ]
+          value: '3',
+        },
+      ],
     },
     maxLengthPerChoiceEnabled: true,
     rationaleEnabled: true,
     promptEnabled: true,
     teacherInstructionsEnabled: true,
-    studentInstructionsEnabled: true
+    studentInstructionsEnabled: true,
   },
   configuration: {
     prompt: {
       settings: true,
-      label: 'Prompt'
+      label: 'Prompt',
     },
     partialScoring: {
       settings: false,
-      label: 'Allow Partial Scoring'
+      label: 'Allow Partial Scoring',
     },
     rationale: {
       settings: true,
-      label: 'Rationale'
+      label: 'Rationale',
     },
     spellCheck: {
       label: 'Spellcheck',
-      settings:false,
-      enabled:true
+      settings: false,
+      enabled: true,
     },
     playerSpellCheck: {
       label: 'Student Spellcheck',
-      settings:true,
-      enabled:true
+      settings: true,
+      enabled: true,
     },
     teacherInstructions: {
       settings: true,
-      label: 'Teacher Instructions'
+      label: 'Teacher Instructions',
     },
     maxLengthPerChoice: {
       settings: true,
-      label: 'Maximum Length Per Choice'
+      label: 'Maximum Length Per Choice',
     },
     maxResponseAreas: 10,
     maxImageWidth: {
@@ -104,7 +104,7 @@ export default {
     },
     withRubric: {
       settings: false,
-      label: 'Add Rubric'
-    }
-  }
+      label: 'Add Rubric',
+    },
+  },
 };
