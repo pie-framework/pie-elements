@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.5.22](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list-controller@1.5.21...@pie-element/match-list-controller@1.5.22) (2022-12-07)
+
+
+### Bug Fixes
+
+* update libs ([441f403](https://github.com/pie-framework/pie-elements/commit/441f403870b7bec0d61fab58b8d93dbe0ead4c32))
+
+
+
+
+
 ## [1.5.18](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list-controller@1.5.16...@pie-element/match-list-controller@1.5.18) (2021-11-11)
 
 **Note:** Version bump only for package @pie-element/match-list-controller

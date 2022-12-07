@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@5.6.9...@pie-element/math-inline-controller@5.7.0) (2022-12-07)
+
+
+### Bug Fixes
+
+* update libs ([441f403](https://github.com/pie-framework/pie-elements/commit/441f403870b7bec0d61fab58b8d93dbe0ead4c32))
+
+
+### Features
+
+* **math-inline:** added configurable validation PD-1704 ([9275fb0](https://github.com/pie-framework/pie-elements/commit/9275fb0a13df7872706b17d61945854d9c6b93a2))
+* **math-inline:** implement ui/ux for validation PD-1705 ([74b9682](https://github.com/pie-framework/pie-elements/commit/74b968278cbe07fffd6979889bae91d137d334c3))
+
+
+
+
+
 ## [5.6.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@5.6.8...@pie-element/math-inline-controller@5.6.9) (2022-05-16)
 
 **Note:** Version bump only for package @pie-element/math-inline-controller

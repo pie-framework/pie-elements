@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-controller@4.0.1...@pie-element/drag-in-the-blank-controller@4.0.2) (2022-12-07)
+
+
+### Bug Fixes
+
+* update libs ([441f403](https://github.com/pie-framework/pie-elements/commit/441f403870b7bec0d61fab58b8d93dbe0ead4c32))
+* **drag-in-the-blank:** changed the validation error message PD-2054 ([e025c65](https://github.com/pie-framework/pie-elements/commit/e025c65cdf5b5d5234d0126622ff369cfe62de15))
+
+
+
+
+
 ## [4.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-controller@4.0.0...@pie-element/drag-in-the-blank-controller@4.0.1) (2022-09-29)
 
 **Note:** Version bump only for package @pie-element/drag-in-the-blank-controller

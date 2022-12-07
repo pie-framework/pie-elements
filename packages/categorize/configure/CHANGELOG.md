@@ -3,6 +3,39 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@6.3.0...@pie-element/categorize-configure@6.4.0) (2022-12-07)
+
+
+### Bug Fixes
+
+* update libs ([441f403](https://github.com/pie-framework/pie-elements/commit/441f403870b7bec0d61fab58b8d93dbe0ead4c32))
+* update libs for PD-2030 PD-2031 ([3174022](https://github.com/pie-framework/pie-elements/commit/3174022d45603ed217bbe8804a142b07084636a5))
+* updated lib PD-1715 ([42e788d](https://github.com/pie-framework/pie-elements/commit/42e788db0c792838994e55001952da7701251a8e))
+* updated libs ([c20de3a](https://github.com/pie-framework/pie-elements/commit/c20de3a6ba4499a090c809e18e52588d2a585fa0))
+* updated libs ([0eed79a](https://github.com/pie-framework/pie-elements/commit/0eed79a32c3b777c16c8cabf201513fc1d2726a0))
+* updated libs ([343c9ec](https://github.com/pie-framework/pie-elements/commit/343c9ec3dccba7f781e90ae2bd195cac6f78f467))
+
+
+### Features
+
+* **categorize:** add Choice Possition to Settings Panel-PD-1980 ([4e40d37](https://github.com/pie-framework/pie-elements/commit/4e40d37c8f6f47a00ffdfbfcd9fc389dcce3d0f5))
+* **categorize:** add sanity check for alternate and msg for category label-PD-1981 ([0ecbef7](https://github.com/pie-framework/pie-elements/commit/0ecbef7e92647afba746311d8dc3cb7de9992ea1))
+* **categorize:** add spaces between operators-PD-1981 ([62b368f](https://github.com/pie-framework/pie-elements/commit/62b368f12f13e5e2223d6a5178c58b8f644ab6fd))
+* **categorize:** add validate in configure for further testing-PD-1981 ([1b71edb](https://github.com/pie-framework/pie-elements/commit/1b71edb363ad1e906d3b90a0cbaad7ab4e151dd5))
+* **categorize:** categories per accept values up to 6-PD-1983 ([5344780](https://github.com/pie-framework/pie-elements/commit/53447807bcd79b9af37bf1a1177417a8bbff85ef))
+* **categorize:** Create validation function for Categorize-PD-1981 ([17e9023](https://github.com/pie-framework/pie-elements/commit/17e9023f38be8841ca83967b61e8a7f688a52075))
+* **categorize:** duplicated alternate validation controller and ui-PD-1981 ([8435bd2](https://github.com/pie-framework/pie-elements/commit/8435bd24b309f7af9f8663f720a20b4ed3229d7d))
+* **categorize:** Move Choices Position into Settings-PD-1980 ([84c89fa](https://github.com/pie-framework/pie-elements/commit/84c89fa1cc3c6f2d333ac21b9e9c1678e71cbadd))
+* **categorize:** solve conflicts-PD-1981 ([ac4afa2](https://github.com/pie-framework/pie-elements/commit/ac4afa2bb8174ddd9ba2d3b1be50c8684c8f6999))
+* **categorize:** ui validations added-PD-1981 ([a5f7c4f](https://github.com/pie-framework/pie-elements/commit/a5f7c4f0c0a3937793f679deae82ed5d797f4b72))
+* **categorize:** update documentation with the niew config fields-PD-1983 ([c81c36b](https://github.com/pie-framework/pie-elements/commit/c81c36b8eb5067413d7993647ba6c5b1bcdb9f12))
+* **categorize:** update propTypes for categorize-PD-1981 ([6e983b8](https://github.com/pie-framework/pie-elements/commit/6e983b86cc5e74b30194f5555269f54220041c57))
+* **categorize:** update snapshots-PD-1981 ([256df44](https://github.com/pie-framework/pie-elements/commit/256df44f52ba128aa4045d76a1b8c3b6a1745812))
+
+
+
+
+
 # [6.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@6.2.2...@pie-element/categorize-configure@6.3.0) (2022-11-15)
 
 

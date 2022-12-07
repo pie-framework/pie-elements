@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@12.3.0...@pie-element/pie-models@12.4.0) (2022-12-07)
+
+
+### Features
+
+* **categorize:** change documentation for the added field in config-PD-1983 ([fa5d39e](https://github.com/pie-framework/pie-elements/commit/fa5d39ef97a93cf532316972c25ca70634de0eff))
+* **categorize:** update documentation with the new field in settings - PD-1980 ([8631c3f](https://github.com/pie-framework/pie-elements/commit/8631c3f4da3c8553fcd44aa23f467ab8e0c9eea5))
+* **categorize:** update documentation with the niew config fields-PD-1983 ([c81c36b](https://github.com/pie-framework/pie-elements/commit/c81c36b8eb5067413d7993647ba6c5b1bcdb9f12))
+
+
+
+
+
 # [12.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@12.2.0...@pie-element/pie-models@12.3.0) (2022-11-01)
 
 

@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@5.3.0...@pie-element/charting@5.3.1) (2022-12-07)
+
+
+### Bug Fixes
+
+* update libs ([441f403](https://github.com/pie-framework/pie-elements/commit/441f403870b7bec0d61fab58b8d93dbe0ead4c32))
+* update libs for PD-2030 PD-2031 ([3174022](https://github.com/pie-framework/pie-elements/commit/3174022d45603ed217bbe8804a142b07084636a5))
+* updated lib PD-1715 ([42e788d](https://github.com/pie-framework/pie-elements/commit/42e788db0c792838994e55001952da7701251a8e))
+* updated libs ([c20de3a](https://github.com/pie-framework/pie-elements/commit/c20de3a6ba4499a090c809e18e52588d2a585fa0))
+* updated libs ([0eed79a](https://github.com/pie-framework/pie-elements/commit/0eed79a32c3b777c16c8cabf201513fc1d2726a0))
+* updated libs ([343c9ec](https://github.com/pie-framework/pie-elements/commit/343c9ec3dccba7f781e90ae2bd195cac6f78f467))
+
+
+
+
+
 # [5.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@5.2.1...@pie-element/charting@5.3.0) (2022-11-15)
 
 

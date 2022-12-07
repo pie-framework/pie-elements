@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-controller@4.1.22...@pie-element/extended-text-entry-controller@4.2.0) (2022-12-07)
+
+
+### Bug Fixes
+
+* update libs ([441f403](https://github.com/pie-framework/pie-elements/commit/441f403870b7bec0d61fab58b8d93dbe0ead4c32))
+
+
+### Features
+
+* **input:** added configurability for inserting spanish and special characters [PD-1461], [PD-1462] ([11f381e](https://github.com/pie-framework/pie-elements/commit/11f381ea44a3ae2b2c5c189dc53932d689c8e044))
+
+
+
+
+
 ## [4.1.22](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-controller@4.1.21...@pie-element/extended-text-entry-controller@4.1.22) (2022-06-13)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry-controller

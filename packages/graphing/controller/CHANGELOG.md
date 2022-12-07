@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-controller@4.1.0...@pie-element/graphing-controller@4.2.0) (2022-12-07)
+
+
+### Bug Fixes
+
+* **graphing:** validation PD-1746 ([ef7f03a](https://github.com/pie-framework/pie-elements/commit/ef7f03ae4ce492adbd5144b21b96e7a0ea733658))
+* update libs ([441f403](https://github.com/pie-framework/pie-elements/commit/441f403870b7bec0d61fab58b8d93dbe0ead4c32))
+
+
+### Features
+
+* **graphing:** implemented graph validation PD-1746 ([77624af](https://github.com/pie-framework/pie-elements/commit/77624af4fe42732a16123890d4cf0ff1bb6c712d))
+
+
+
+
+
 # [4.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-controller@4.0.0...@pie-element/graphing-controller@4.1.0) (2022-08-02)
 
 
