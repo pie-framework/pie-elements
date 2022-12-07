@@ -18,7 +18,7 @@ module.exports = {
     'protractor-el': '@pie-element/protractor@2.0.1',
     'ruler-el': '@pie-element/ruler@3.0.1',
     'select-text': '@pie-element/select-text@3.0.1',
-    'text-entry': '@pie-element/text-entry@3.0.1'
+    'text-entry': '@pie-element/text-entry@3.0.1',
   },
   models: [
     model('calculator', '1', 'calculator-el'),
@@ -33,6 +33,6 @@ module.exports = {
     model('protractor', '10', 'protractor-el'),
     model('ruler', '11', 'ruler-el'),
     model('select-text', '12'),
-    model('text-entry', '13')
-  ]
+    model('text-entry', '13'),
+  ],
 };

@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  settings,
-  layout,
-  InputContainer,
-  NumberTextField
-} from '@pie-lib/config-ui';
+import { settings, layout, InputContainer, NumberTextField } from '@pie-lib/config-ui';
 import PropTypes from 'prop-types';
 import EditableHtml from '@pie-lib/editable-html';
 import { withStyles } from '@material-ui/core/styles';
@@ -14,13 +9,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 import HotspotPalette from './hotspot-palette';
 import HotspotContainer from './hotspot-container';
 import classNames from 'classnames';
-import {
-  updateImageDimensions,
-  generateValidationMessage,
-  getUpdatedShapes,
-  getAllShapes,
-  groupShapes
-} from './utils';
+import { updateImageDimensions, generateValidationMessage, getUpdatedShapes, getAllShapes, groupShapes } from './utils';
 
 const { Panel, toggle } = settings;
 
@@ -47,7 +36,7 @@ export class Root extends React.Component {
       dimensions,
       nextImageDimensions,
       preserveAspectRatio.enabled,
-      resizeType
+      resizeType,
     );
     // transform shapes map into shapes array
     const shapesArray = getAllShapes(shapes);
@@ -73,7 +62,7 @@ export class Root extends React.Component {
       onRationaleChanged,
       onUpdateImageDimension,
       onTeacherInstructionsChanged,
-      onUpdateShapes
+      onUpdateShapes,
     } = this.props;
     const {
       multipleCorrect = {},
@@ -85,16 +74,10 @@ export class Root extends React.Component {
       preserveAspectRatio = {},
       maxImageWidth = {},
       maxImageHeight = {},
-      withRubric = {}
+      withRubric = {},
     } = configuration || {};
-    const {
-      teacherInstructionsEnabled,
-      promptEnabled,
-      rationaleEnabled,
-      spellCheckEnabled,
-      errors,
-      rubricEnabled
-    } = model || {};
+    const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled, spellCheckEnabled, errors, rubricEnabled } =
+      model || {};
     const { shapesError, selectionsError } = errors || {};
     const toolbarOpts = {};
 
@@ -122,22 +105,17 @@ export class Root extends React.Component {
               configuration={configuration}
               onChangeConfiguration={onConfigurationChanged}
               groups={{
-                'Settings': {
-                  multipleCorrect:
-                    multipleCorrect.settings && toggle(multipleCorrect.label),
-                  partialScoring:
-                    partialScoring.settings && toggle(partialScoring.label),
-                  promptEnabled:
-                    prompt.settings && toggle(prompt.label),
+                Settings: {
+                  multipleCorrect: multipleCorrect.settings && toggle(multipleCorrect.label),
+                  partialScoring: partialScoring.settings && toggle(partialScoring.label),
+                  promptEnabled: prompt.settings && toggle(prompt.label),
                 },
                 Properties: {
-                  teacherInstructionsEnabled:
-                    teacherInstructions.settings && toggle(teacherInstructions.label),
+                  teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
                   rationaleEnabled: rationale.settings && toggle(rationale.label),
-                  spellCheckEnabled:
-                    spellCheck.settings && toggle(spellCheck.label),
-                  rubricEnabled: withRubric?.settings && toggle(withRubric?.label)
-                }
+                  spellCheckEnabled: spellCheck.settings && toggle(spellCheck.label),
+                  rubricEnabled: withRubric?.settings && toggle(withRubric?.label),
+                },
               }}
             />
           }
@@ -152,8 +130,8 @@ export class Root extends React.Component {
                   nonEmpty={false}
                   toolbarOpts={toolbarOpts}
                   spellCheck={spellCheckEnabled}
-                  maxImageWidth={maxImageWidth && maxImageWidth.teacherInstructions || defaultImageMaxWidth}
-                  maxImageHeight={maxImageHeight && maxImageHeight.teacherInstructions || defaultImageMaxHeight}
+                  maxImageWidth={(maxImageWidth && maxImageWidth.teacherInstructions) || defaultImageMaxWidth}
+                  maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
                   uploadSoundSupport={uploadSoundSupport}
                   languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
                 />
@@ -177,18 +155,15 @@ export class Root extends React.Component {
             )}
 
             {rationaleEnabled && (
-              <InputContainer
-                label={rationale.label}
-                className={classes.prompt}
-              >
+              <InputContainer label={rationale.label} className={classes.prompt}>
                 <EditableHtml
                   markup={model.rationale || ''}
                   onChange={onRationaleChanged}
                   imageSupport={imageSupport}
                   toolbarOpts={toolbarOpts}
                   spellCheck={spellCheckEnabled}
-                  maxImageWidth={maxImageWidth && maxImageWidth.rationale || defaultImageMaxWidth}
-                  maxImageHeight={maxImageHeight && maxImageHeight.rationale || defaultImageMaxHeight}
+                  maxImageWidth={(maxImageWidth && maxImageWidth.rationale) || defaultImageMaxWidth}
+                  maxImageHeight={(maxImageHeight && maxImageHeight.rationale) || defaultImageMaxHeight}
                   uploadSoundSupport={uploadSoundSupport}
                   languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
                 />
@@ -206,7 +181,7 @@ export class Root extends React.Component {
                 placement={'left'}
                 title={validationMessage}
               >
-                <Info fontSize={'small'} color={'primary'} style={{ float: 'right' }}/>
+                <Info fontSize={'small'} color={'primary'} style={{ float: 'right' }} />
               </Tooltip>
             </div>
             {shapesError && <div className={classes.errorText}>{shapesError}</div>}
@@ -217,12 +192,8 @@ export class Root extends React.Component {
               hotspotList={model.hotspotList}
               outlineColor={model.outlineColor}
               outlineList={model.outlineList}
-              onHotspotColorChange={color =>
-                this.handleColorChange('hotspot', color)
-              }
-              onOutlineColorChange={color =>
-                this.handleColorChange('outline', color)
-              }
+              onHotspotColorChange={(color) => this.handleColorChange('hotspot', color)}
+              onOutlineColorChange={(color) => this.handleColorChange('outline', color)}
             />
 
             <HotspotContainer
@@ -274,41 +245,41 @@ export class Root extends React.Component {
   }
 }
 
-const styles = theme => ({
+const styles = (theme) => ({
   base: {
-    marginTop: theme.spacing.unit * 3
+    marginTop: theme.spacing.unit * 3,
   },
   container: {
     display: 'flex',
-    marginTop: theme.spacing.unit
+    marginTop: theme.spacing.unit,
   },
   dimensions: {
-    display: 'flex'
+    display: 'flex',
   },
   field: {
     flex: 1,
-    width: '90%'
+    width: '90%',
   },
   label: {
-    marginTop: theme.spacing.unit * 4
+    marginTop: theme.spacing.unit * 4,
   },
   prompt: {
     paddingTop: theme.spacing.unit * 2,
-    width: '100%'
+    width: '100%',
   },
   subheading: {
-    marginRight: '5px'
+    marginRight: '5px',
   },
   regular: {
-    marginBottom: theme.spacing.unit * 3
+    marginBottom: theme.spacing.unit * 3,
   },
   switchElement: {
     justifyContent: 'space-between',
-    margin: 0
+    margin: 0,
   },
   flexContainer: {
     display: 'flex',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   tooltip: {
     fontSize: '12px',
@@ -318,8 +289,8 @@ const styles = theme => ({
   errorText: {
     fontSize: '12px',
     color: 'red',
-    padding: '5px 0'
-  }
+    padding: '5px 0',
+  },
 });
 
 Root.propTypes = {
@@ -328,11 +299,11 @@ Root.propTypes = {
   model: PropTypes.object.isRequired,
   imageSupport: PropTypes.shape({
     add: PropTypes.func,
-    delete: PropTypes.func
+    delete: PropTypes.func,
   }),
   uploadSoundSupport: PropTypes.shape({
     add: PropTypes.func,
-    delete: PropTypes.func
+    delete: PropTypes.func,
   }),
   onImageUpload: PropTypes.func.isRequired,
   onColorChanged: PropTypes.func.isRequired,

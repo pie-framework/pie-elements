@@ -35,7 +35,7 @@ export default class Calculator extends HTMLElement {
     if (this._model) {
       const element = React.createElement(Main, {
         model: this._model,
-        onChange: this.onModelChanged
+        onChange: this.onModelChanged,
       });
       ReactDOM.render(element, this);
     }

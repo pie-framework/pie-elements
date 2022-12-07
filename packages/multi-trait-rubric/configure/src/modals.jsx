@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import {withStyles} from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 
 import Dialog from '@material-ui/core/Dialog';
 import DialogTitle from '@material-ui/core/DialogTitle';
@@ -14,20 +14,20 @@ import { color } from '@pie-lib/render-ui';
 import defaults from './defaults';
 
 const {
-  configuration : {
+  configuration: {
     excludeZeroDialogBoxContent,
     includeZeroDialogBoxContent,
     deleteScaleDialogBoxContent,
     deleteTraitDialogBoxContent,
-    maxPointsDialogBoxContent
-  }
+    maxPointsDialogBoxContent,
+  },
 } = defaults;
 
 export const excludeZeroTypes = {
   remove0: 'remove0',
   add0: 'add0',
   shiftLeft: 'shiftLeft',
-  shiftRight: 'shiftRight'
+  shiftRight: 'shiftRight',
 };
 
 const styles = () => ({
@@ -41,8 +41,8 @@ const styles = () => ({
       fontSize: '20px',
       lineHeight: '23px',
       fontFamily: 'Cerebri Sans',
-      color: color.text()
-    }
+      color: color.text(),
+    },
   },
   text: {
     paddingLeft: '0',
@@ -50,8 +50,8 @@ const styles = () => ({
     '& p': {
       fontSize: '16px',
       fontFamily: 'Cerebri Sans',
-      color: color.text()
-    }
+      color: color.text(),
+    },
   },
   button: {
     padding: '11px 16px',
@@ -61,39 +61,36 @@ const styles = () => ({
     lineHeight: '14px',
     textTransform: 'none',
     background: color.primary(),
-    color: 'white'
+    color: 'white',
   },
   cancelButton: {
     background: color.secondaryBackground(),
-    color: color.text()
+    color: color.text(),
   },
 });
 
-const RawExcludeZeroDialog = ({open, changeExcludeZero, cancel, classes}) => (
-  <Dialog open={open} classes={{paper: classes.root}}>
-    <DialogTitle classes={{root: classes.title}}>
-      {excludeZeroDialogBoxContent.title}
-    </DialogTitle>
+const RawExcludeZeroDialog = ({ open, changeExcludeZero, cancel, classes }) => (
+  <Dialog open={open} classes={{ paper: classes.root }}>
+    <DialogTitle classes={{ root: classes.title }}>{excludeZeroDialogBoxContent.title}</DialogTitle>
 
-    <DialogContent classes={{root: classes.text}}>
+    <DialogContent classes={{ root: classes.text }}>
       <DialogContentText>
-        <div dangerouslySetInnerHTML={{__html: excludeZeroDialogBoxContent.text}} />
+        <div dangerouslySetInnerHTML={{ __html: excludeZeroDialogBoxContent.text }} />
       </DialogContentText>
     </DialogContent>
 
     <DialogActions>
-      <Button classes={{root: `${classes.button} ${classes.cancelButton}`}} onClick={cancel}>
+      <Button classes={{ root: `${classes.button} ${classes.cancelButton}` }} onClick={cancel}>
         Cancel
       </Button>
 
-      <Button classes={{root: classes.button}} onClick={() => changeExcludeZero(excludeZeroTypes.shiftLeft)}>
+      <Button classes={{ root: classes.button }} onClick={() => changeExcludeZero(excludeZeroTypes.shiftLeft)}>
         Shift to Left
       </Button>
 
-      <Button classes={{root: classes.button}} onClick={() => changeExcludeZero(excludeZeroTypes.remove0)}>
+      <Button classes={{ root: classes.button }} onClick={() => changeExcludeZero(excludeZeroTypes.remove0)}>
         Remove 0 column
       </Button>
-
     </DialogActions>
   </Dialog>
 );
@@ -107,31 +104,28 @@ RawExcludeZeroDialog.propTypes = {
 
 const ExcludeZeroDialog = withStyles(styles)(RawExcludeZeroDialog);
 
-const RawIncludeZeroDialog = ({open, changeExcludeZero, cancel, classes}) => (
-  <Dialog open={open} classes={{paper: classes.root}}>
-    <DialogTitle classes={{root: classes.title}}>
-      {includeZeroDialogBoxContent.title}
-    </DialogTitle>
+const RawIncludeZeroDialog = ({ open, changeExcludeZero, cancel, classes }) => (
+  <Dialog open={open} classes={{ paper: classes.root }}>
+    <DialogTitle classes={{ root: classes.title }}>{includeZeroDialogBoxContent.title}</DialogTitle>
 
-    <DialogContent classes={{root: classes.text}}>
+    <DialogContent classes={{ root: classes.text }}>
       <DialogContentText>
-        <div dangerouslySetInnerHTML={{__html: includeZeroDialogBoxContent.text}} />
+        <div dangerouslySetInnerHTML={{ __html: includeZeroDialogBoxContent.text }} />
       </DialogContentText>
     </DialogContent>
 
     <DialogActions>
-      <Button classes={{root: `${classes.button} ${classes.cancelButton}`}} onClick={cancel}>
+      <Button classes={{ root: `${classes.button} ${classes.cancelButton}` }} onClick={cancel}>
         Cancel
       </Button>
 
-      <Button classes={{root: classes.button}} onClick={() => changeExcludeZero(excludeZeroTypes.shiftRight)}>
+      <Button classes={{ root: classes.button }} onClick={() => changeExcludeZero(excludeZeroTypes.shiftRight)}>
         Shift to Right
       </Button>
 
-      <Button classes={{root: classes.button}} onClick={() => changeExcludeZero(excludeZeroTypes.add0)}>
+      <Button classes={{ root: classes.button }} onClick={() => changeExcludeZero(excludeZeroTypes.add0)}>
         Add 0 column
       </Button>
-
     </DialogActions>
   </Dialog>
 );
@@ -145,24 +139,22 @@ RawIncludeZeroDialog.propTypes = {
 
 const IncludeZeroDialog = withStyles(styles)(RawIncludeZeroDialog);
 
-const RawDecreaseMaxPoints = ({open, deleteScorePoints, cancel, classes}) => (
-  <Dialog open={open} classes={{paper: classes.root}}>
-    <DialogTitle classes={{root: classes.title}}>
-      {maxPointsDialogBoxContent.title}
-    </DialogTitle>
+const RawDecreaseMaxPoints = ({ open, deleteScorePoints, cancel, classes }) => (
+  <Dialog open={open} classes={{ paper: classes.root }}>
+    <DialogTitle classes={{ root: classes.title }}>{maxPointsDialogBoxContent.title}</DialogTitle>
 
-    <DialogContent classes={{root: classes.text}}>
+    <DialogContent classes={{ root: classes.text }}>
       <DialogContentText>
-        <div dangerouslySetInnerHTML={{__html: maxPointsDialogBoxContent.text}} />
+        <div dangerouslySetInnerHTML={{ __html: maxPointsDialogBoxContent.text }} />
       </DialogContentText>
     </DialogContent>
 
     <DialogActions>
-      <Button classes={{root: `${classes.button} ${classes.cancelButton}`}} onClick={cancel}>
+      <Button classes={{ root: `${classes.button} ${classes.cancelButton}` }} onClick={cancel}>
         Cancel
       </Button>
 
-      <Button classes={{root: classes.button}} onClick={deleteScorePoints}>
+      <Button classes={{ root: classes.button }} onClick={deleteScorePoints}>
         Confirm
       </Button>
     </DialogActions>
@@ -178,27 +170,26 @@ RawDecreaseMaxPoints.propTypes = {
 
 const DecreaseMaxPoints = withStyles(styles)(RawDecreaseMaxPoints);
 
-const RawDeleteScale = ({open, scaleIndex, deleteScale, cancel, classes}) => (
-  <Dialog open={open} classes={{paper: classes.root}}>
-    <DialogTitle classes={{root: classes.title}}>
+const RawDeleteScale = ({ open, scaleIndex, deleteScale, cancel, classes }) => (
+  <Dialog open={open} classes={{ paper: classes.root }}>
+    <DialogTitle classes={{ root: classes.title }}>
       {`${deleteScaleDialogBoxContent.title} #${scaleIndex + 1}`}
     </DialogTitle>
 
-    <DialogContent classes={{root: classes.text}}>
+    <DialogContent classes={{ root: classes.text }}>
       <DialogContentText>
-        <div dangerouslySetInnerHTML={{__html: deleteScaleDialogBoxContent.text}} />
+        <div dangerouslySetInnerHTML={{ __html: deleteScaleDialogBoxContent.text }} />
       </DialogContentText>
     </DialogContent>
 
     <DialogActions>
-      <Button classes={{root: `${classes.button} ${classes.cancelButton}`}} onClick={cancel}>
+      <Button classes={{ root: `${classes.button} ${classes.cancelButton}` }} onClick={cancel}>
         Cancel
       </Button>
 
-      <Button classes={{root: classes.button}} onClick={deleteScale}>
+      <Button classes={{ root: classes.button }} onClick={deleteScale}>
         Delete
       </Button>
-
     </DialogActions>
   </Dialog>
 );
@@ -213,27 +204,24 @@ RawDeleteScale.propTypes = {
 
 const DeleteScale = withStyles(styles)(RawDeleteScale);
 
-const RawDeleteTrait = ({open, deleteTrait, cancel, classes}) => (
-  <Dialog open={open} classes={{paper: classes.root}}>
-    <DialogTitle classes={{root: classes.title}}>
-      {deleteTraitDialogBoxContent.title}
-    </DialogTitle>
+const RawDeleteTrait = ({ open, deleteTrait, cancel, classes }) => (
+  <Dialog open={open} classes={{ paper: classes.root }}>
+    <DialogTitle classes={{ root: classes.title }}>{deleteTraitDialogBoxContent.title}</DialogTitle>
 
-    <DialogContent classes={{root: classes.text}}>
+    <DialogContent classes={{ root: classes.text }}>
       <DialogContentText>
-        <div dangerouslySetInnerHTML={{__html: deleteTraitDialogBoxContent.text}} />
+        <div dangerouslySetInnerHTML={{ __html: deleteTraitDialogBoxContent.text }} />
       </DialogContentText>
     </DialogContent>
 
     <DialogActions>
-      <Button classes={{root: `${classes.button} ${classes.cancelButton}`}} onClick={cancel}>
+      <Button classes={{ root: `${classes.button} ${classes.cancelButton}` }} onClick={cancel}>
         Cancel
       </Button>
 
-      <Button classes={{root: classes.button}} onClick={deleteTrait}>
+      <Button classes={{ root: classes.button }} onClick={deleteTrait}>
         Delete
       </Button>
-
     </DialogActions>
   </Dialog>
 );
@@ -249,15 +237,12 @@ const DeleteTrait = withStyles(styles)(RawDeleteTrait);
 
 const RawInfoDialog = ({ classes, open, text, onClose }) => (
   <Dialog open={open} classes={{ paper: classes.root }}>
-    <DialogTitle classes={{root: classes.title}}>
-      {text}
-    </DialogTitle>
+    <DialogTitle classes={{ root: classes.title }}>{text}</DialogTitle>
 
     <DialogActions>
       <Button classes={{ root: classes.button }} onClick={onClose}>
         OK
       </Button>
-
     </DialogActions>
   </Dialog>
 );
@@ -271,4 +256,4 @@ RawInfoDialog.propTypes = {
 
 const InfoDialog = withStyles(styles)(RawInfoDialog);
 
-export { ExcludeZeroDialog, IncludeZeroDialog, DecreaseMaxPoints, DeleteScale, DeleteTrait, InfoDialog }
+export { ExcludeZeroDialog, IncludeZeroDialog, DecreaseMaxPoints, DeleteScale, DeleteTrait, InfoDialog };

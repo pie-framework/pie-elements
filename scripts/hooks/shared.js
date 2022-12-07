@@ -1,12 +1,6 @@
 const { execSync } = require('child_process');
 
-const {
-  readdirSync,
-  readJsonSync,
-  writeJsonSync,
-  readFileSync,
-  pathExistsSync
-} = require('fs-extra');
+const { readdirSync, readJsonSync, writeJsonSync, readFileSync, pathExistsSync } = require('fs-extra');
 const _ = require('lodash');
 const debug = require('debug');
 const chalk = require('chalk');
@@ -22,12 +16,9 @@ exports.getLockFile = () => {
   return lockfile.parse(f);
 };
 
-exports.getCurrentBranch = () =>
-  execSync('git rev-parse --abbrev-ref HEAD')
-    .toString()
-    .trim();
+exports.getCurrentBranch = () => execSync('git rev-parse --abbrev-ref HEAD').toString().trim();
 
-const pkgInfo = dir => {
+const pkgInfo = (dir) => {
   if (pathExistsSync(dir)) {
     const path = join(dir, 'package.json');
     const pkg = readJsonSync(path);
@@ -39,13 +30,13 @@ exports.getPackageFiles = () => {
   const root = resolve(__dirname, '..', '..', 'packages');
   const dirs = readdirSync(root);
   return _(
-    dirs.map(d => {
+    dirs.map((d) => {
       const out = [];
       out.push(pkgInfo(join(root, d)));
       out.push(pkgInfo(join(root, d, 'controller')));
       out.push(pkgInfo(join(root, d, 'configure')));
       return out;
-    })
+    }),
   )
     .flatten()
     .compact()
@@ -55,9 +46,7 @@ exports.getPackageFiles = () => {
 const getSatisfyingVersions = async (name, range) => {
   const p = await pacote.packument(`${name}@latest`);
 
-  const satisfying = Object.keys(p.versions).filter(v =>
-    semver.satisfies(v, range)
-  );
+  const satisfying = Object.keys(p.versions).filter((v) => semver.satisfies(v, range));
   log(name, range, 'satisfying:', satisfying);
   return satisfying;
 };
@@ -83,7 +72,7 @@ exports.checkDependencies = async (lock, i) => {
   const keys = Object.keys(pkg.dependencies || {});
 
   const results = await Promise.all(
-    keys.map(async k => {
+    keys.map(async (k) => {
       if (!k.startsWith('@pie-ui')) {
         return;
       }
@@ -99,16 +88,14 @@ exports.checkDependencies = async (lock, i) => {
           return {
             name: k,
             resolvedVersion,
-            warning: `Cant find latest for ${k}`
+            warning: `Cant find latest for ${k}`,
           };
         }
       }
-    })
+    }),
   );
 
-  const groups = _.groupBy(_.compact(results), r =>
-    r.version ? 'fixable' : 'notFixable'
-  );
+  const groups = _.groupBy(_.compact(results), (r) => (r.version ? 'fixable' : 'notFixable'));
 
   groups.fixable = groups.fixable
     ? groups.fixable.reduce((acc, d) => {

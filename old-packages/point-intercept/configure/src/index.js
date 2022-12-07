@@ -27,7 +27,7 @@ export default class PointInterceptConfigure extends HTMLElement {
     if (this._model) {
       const el = React.createElement(Configure, {
         onModelChanged: this.onModelChanged.bind(this),
-        model: this._model
+        model: this._model,
       });
       ReactDOM.render(el, this);
     }

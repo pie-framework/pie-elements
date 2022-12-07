@@ -6,57 +6,57 @@ import PropTypes from 'prop-types';
 import Input from '@material-ui/core/Input';
 import Typography from '@material-ui/core/Typography';
 
-const styles = theme => ({
+const styles = (theme) => ({
   title: {
     fontSize: '1.1rem',
     display: 'block',
     marginTop: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit
+    marginBottom: theme.spacing.unit,
   },
   equationRowContainer: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit * 2
+    marginBottom: theme.spacing.unit * 2,
   },
   equationLabel: {
-    marginRight: theme.spacing.unit
+    marginRight: theme.spacing.unit,
   },
   hintsControlRow: {
     display: 'flex',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   hintsCheckbox: {
-    display: 'inline-block'
+    display: 'inline-block',
   },
   hints: {
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center'
-  }
+    alignItems: 'center',
+  },
 });
 
 class Configure extends React.Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
     model: PropTypes.object,
-    onModelChanged: PropTypes.func.isRequired
+    onModelChanged: PropTypes.func.isRequired,
   };
 
-  changeEquation = event => {
+  changeEquation = (event) => {
     const { model, onModelChanged } = this.props;
     model.equation = event.target.value;
     onModelChanged(model);
   };
 
-  toggleFormattingHelp = event => {
+  toggleFormattingHelp = (event) => {
     const { onModelChanged, model } = this.props;
     model.showFormattingHelp = event.target.checked;
     onModelChanged(model);
   };
 
-  changeFeedback = feedback => {
+  changeFeedback = (feedback) => {
     const { onModelChanged, model } = this.props;
     model.feedback = feedback;
     onModelChanged(model);
@@ -68,18 +68,15 @@ class Configure extends React.Component {
     return (
       <div>
         <Typography component="div" type="body1">
-          <p>
-            In Evaluate an Expression, a student submits a linear or polynomial
-            expression to be evaluated.
-          </p>
+          <p>In Evaluate an Expression, a student submits a linear or polynomial expression to be evaluated.</p>
           <p className={classes.title}>Expression</p>
           <p>
-            Enter the expression against which the the student&#39;s response
-            will be evaluated. <br />
+            Enter the expression against which the the student&#39;s response will be evaluated. <br />
             Note that{' '}
             <b>
               <i> y </i>
-            </b>is the dependent variable and{' '}
+            </b>
+            is the dependent variable and{' '}
             <b>
               <i> f(x) </i>
             </b>{' '}
@@ -113,13 +110,10 @@ class Configure extends React.Component {
         </div>
         <Typography type="body1">
           <span>
-            When the student submits an answer the answer will be evaluated
-            against the expression by generating test points. The test points
-            are created by replacing the <i>x</i> value within the function with
-            random whole numbers within the domain. The <i>y</i> value is then
-            determined by evaluating the equation using the javascript eval
-            function. This is done many times (~50) in order to be sure of the
-            correctness.
+            When the student submits an answer the answer will be evaluated against the expression by generating test
+            points. The test points are created by replacing the <i>x</i> value within the function with random whole
+            numbers within the domain. The <i>y</i> value is then determined by evaluating the equation using the
+            javascript eval function. This is done many times (~50) in order to be sure of the correctness.
           </span>
         </Typography>
         <div className={classes.hintsControlRow}>
@@ -129,16 +123,10 @@ class Configure extends React.Component {
             onChange={this.toggleFormattingHelp}
             label=""
           />
-          <Typography component="span">
-            Show the student the formatting hints for constructing an answer
-          </Typography>
+          <Typography component="span">Show the student the formatting hints for constructing an answer</Typography>
         </div>
         {model.showFormattingHelp && <Hints className={classes.hints} />}
-        <FeedbackConfig
-          allowPartial={false}
-          feedback={model.feedback}
-          onChange={this.changeFeedback}
-        />
+        <FeedbackConfig allowPartial={false} feedback={model.feedback} onChange={this.changeFeedback} />
       </div>
     );
   }
@@ -149,17 +137,17 @@ const ConfigureMain = withStyles(styles)(Configure);
 class StateWrapper extends React.Component {
   static propTypes = {
     model: PropTypes.any,
-    onModelChanged: PropTypes.func
+    onModelChanged: PropTypes.func,
   };
 
   constructor(props) {
     super(props);
 
     this.state = {
-      model: props.model
+      model: props.model,
     };
 
-    this.onModelChanged = model => {
+    this.onModelChanged = (model) => {
       this.setState({ model }, () => {
         this.props.onModelChanged(this.state.model);
       });

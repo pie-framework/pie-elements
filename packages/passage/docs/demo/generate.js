@@ -4,7 +4,7 @@ exports.model = (id, element) => ({
   passages: [
     {
       title: 'Hope Is the Thing with Feathers',
-      text: '<p><font style="visibility:hidden">00000</font>Hope is the thing with feathers<br /><font style="visibility:hidden">00000</font>That perches in the soul,<br /><font style="visibility:hidden">00000</font>And sings the tune without the words,<br /><font style="visibility:hidden">00000</font>And never stops at all,</p><p>5<font style="visibility:hidden">0000</font>And sweetest in the gale is heard;<br /><font style="visibility:hidden">00000</font>And sore must be the storm<br /><font style="visibility:hidden">00000</font>That could abash the little bird<br /><font style="visibility:hidden">00000</font>That kept so many warm.</p><p><font style="visibility:hidden">00000</font>I&#8217;ve heard it in the chillest land,<br />10<font style="visibility:hidden">000</font>And on the strangest sea;<br /><font style="visibility:hidden">00000</font>Yet, never, in extremity,<br /><font style="visibility:hidden">00000</font>It asked a crumb of me.</p><p><span class="no-number">&#34;Hope is the Thing With Feathers&#34; by Emily Dickinson, from <em>The Complete Poems of Emily Dickinson</em>. In the public domain.</span></p>'
+      text: '<p><font style="visibility:hidden">00000</font>Hope is the thing with feathers<br /><font style="visibility:hidden">00000</font>That perches in the soul,<br /><font style="visibility:hidden">00000</font>And sings the tune without the words,<br /><font style="visibility:hidden">00000</font>And never stops at all,</p><p>5<font style="visibility:hidden">0000</font>And sweetest in the gale is heard;<br /><font style="visibility:hidden">00000</font>And sore must be the storm<br /><font style="visibility:hidden">00000</font>That could abash the little bird<br /><font style="visibility:hidden">00000</font>That kept so many warm.</p><p><font style="visibility:hidden">00000</font>I&#8217;ve heard it in the chillest land,<br />10<font style="visibility:hidden">000</font>And on the strangest sea;<br /><font style="visibility:hidden">00000</font>Yet, never, in extremity,<br /><font style="visibility:hidden">00000</font>It asked a crumb of me.</p><p><span class="no-number">&#34;Hope is the Thing With Feathers&#34; by Emily Dickinson, from <em>The Complete Poems of Emily Dickinson</em>. In the public domain.</span></p>',
     },
     {
       title: 'Ineskeen Road, July Evening',
@@ -23,7 +23,7 @@ exports.model = (id, element) => ({
       Of being king and government and nation.<br/>
       A road, a mile of kingdom. I am king<br/>
       Of banks and stones and every blooming thing.<br/>
-      `
-    }
-  ]
+      `,
+    },
+  ],
 });

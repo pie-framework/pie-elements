@@ -13,15 +13,15 @@ describe('Main', () => {
     change: jest.fn().mockReturnValue({
       setNodeByKey: jest.fn().mockReturnValue({
         moveFocusTo: jest.fn().mockReturnValue({
-          moveAnchorTo: jest.fn()
-        })
-      })
+          moveAnchorTo: jest.fn(),
+        }),
+      }),
     }),
     document: {
       getNextText: jest.fn().mockReturnValue({
-        key: '1'
-      })
-    }
+        key: '1',
+      }),
+    },
   };
 
   const wrapper = () => {
@@ -39,8 +39,8 @@ describe('Main', () => {
             }
 
             return 'cow';
-          }
-        }
+          },
+        },
       },
       value,
       onToolbarDone,
@@ -48,19 +48,19 @@ describe('Main', () => {
         {
           label: 'cow ',
           value: '0',
-          correct: true
+          correct: true,
         },
         {
           label: 'dog ',
           value: '1',
-          correct: false
+          correct: false,
         },
         {
           label: 'cat ',
           value: '2',
-          correct: false
-        }
-      ]
+          correct: false,
+        },
+      ],
     };
     const props = { ...defaults };
 
@@ -102,7 +102,7 @@ describe('Main', () => {
       });
     });
 
-    describe('onSelectChoice',  () => {
+    describe('onSelectChoice', () => {
       it('calls onToolbarDone and onSelectChoice', () => {
         w.instance().onSelectChoice('cat', '2');
 

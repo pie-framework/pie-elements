@@ -8,36 +8,36 @@ exports.model = (id, element) => ({
     data: [
       {
         label: 'A',
-        value: 1
+        value: 1,
       },
       {
         label: 'B',
-        value: 1
+        value: 1,
       },
       {
         label: 'C',
-        value: 1
+        value: 1,
       },
-    ]
+    ],
   },
   data: [
     {
       label: 'A',
       value: 1,
       interactive: false,
-      editable: false
+      editable: false,
     },
     {
       label: 'B',
       value: 1,
       interactive: true,
-      editable: false
+      editable: false,
     },
     {
       label: 'D',
       value: 2,
       interactive: true,
-      editable: false
+      editable: false,
     },
   ],
   domain: {
@@ -45,7 +45,7 @@ exports.model = (id, element) => ({
   },
   graph: {
     width: 480,
-    height: 480
+    height: 480,
   },
   prompt: 'Here goes item stem!',
   promptEnabled: true,
@@ -57,5 +57,5 @@ exports.model = (id, element) => ({
     labelStep: 1,
   },
   title: 'This is a chart!',
-  rubricEnabled: false
+  rubricEnabled: false,
 });

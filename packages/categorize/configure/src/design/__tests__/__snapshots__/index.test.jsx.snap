@@ -20,6 +20,7 @@ exports[`Design snapshot renders 1`] = `
             "Settings": Object {
               "allowMultiplePlacementsEnabled": undefined,
               "categoriesPerRow": undefined,
+              "choicesPosition": undefined,
               "feedbackEnabled": undefined,
               "lockChoiceOrder": undefined,
               "partialScoring": undefined,

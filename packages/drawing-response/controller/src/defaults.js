@@ -3,6 +3,6 @@ export default {
   imageUrl: '',
   imageDimensions: {
     height: 0,
-    width: 0
-  }
+    width: 0,
+  },
 };

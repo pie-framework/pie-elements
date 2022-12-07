@@ -3,7 +3,7 @@ import {
   DeleteImageEvent,
   InsertImageEvent,
   InsertSoundEvent,
-  DeleteSoundEvent
+  DeleteSoundEvent,
 } from '@pie-framework/pie-configure-events';
 
 import React from 'react';
@@ -43,7 +43,7 @@ export default class DrawableResponseConfigure extends HTMLElement {
       this._model.rubricEnabled = true;
       this.dispatchEvent(new ModelUpdatedEvent(this._model));
     }
-  }
+  };
 
   set model(s) {
     this._model = DrawableResponseConfigure.createDefaultModel(s, this._configuration);
@@ -105,12 +105,12 @@ export default class DrawableResponseConfigure extends HTMLElement {
       onConfigurationChanged: this.onConfigurationChanged,
       imageSupport: {
         add: this.insertImage,
-        delete: this.onDeleteImage
+        delete: this.onDeleteImage,
       },
       uploadSoundSupport: {
         add: this.insertSound.bind(this),
-        delete: this.onDeleteSound.bind(this)
-      }
+        delete: this.onDeleteSound.bind(this),
+      },
     });
     ReactDOM.render(element, this);
   }

@@ -19,21 +19,32 @@ const initializeGraphMap = () => ({
   polygon: [],
   circle: [],
   sine: [],
-  parabola: []
+  parabola: [],
 });
 
 export const compareMarks = (mark1, mark2) => {
   // marks can be compared with equalMarks[type] function only if they have the same type;
   // if type is different, they are clearly not equal
-  return !!(mark1 && mark2 && mark1.type === mark2.type && equalMarks[mark1.type] && equalMarks[mark1.type](mark1, mark2));
+  return !!(
+    mark1 &&
+    mark2 &&
+    mark1.type === mark2.type &&
+    equalMarks[mark1.type] &&
+    equalMarks[mark1.type](mark1, mark2)
+  );
 };
 
-export const getAnswerCorrected = ({ sessionAnswers, marks: correctAnswers }) => {
+export const getAnswerCorrected = ({
+  sessionAnswers,
+  marks: correctAnswers,
+}) => {
   sessionAnswers = sessionAnswers || [];
   correctAnswers = correctAnswers || [];
 
   return cloneDeep(sessionAnswers).reduce((correctedAnswer, answer) => {
-    const answerIsCorrect = correctAnswers.find(mark => compareMarks(answer, mark));
+    const answerIsCorrect = correctAnswers.find((mark) =>
+      compareMarks(answer, mark)
+    );
 
     answer.correctness = answerIsCorrect ? 'correct' : 'incorrect';
 
@@ -68,7 +79,7 @@ export const getBestAnswer = (question, session, env = {}) => {
   } else {
     questionPossibleAnswers = {
       correctAnswer: questionPossibleAnswers.correctAnswer,
-      ...sortedAnswers(questionPossibleAnswers)
+      ...sortedAnswers(questionPossibleAnswers),
     };
   }
 
@@ -79,68 +90,66 @@ export const getBestAnswer = (question, session, env = {}) => {
   // array of possible answers entries
   const possibleAnswers = Object.entries(questionPossibleAnswers);
 
-  return possibleAnswers.reduce((acc, entry) => {
-    // iterating each possible answer (main + alternates)
-    const possibleAnswerKey = entry[0];
-    const possibleAnswer = entry[1] || {};
-    let { marks } = possibleAnswer;
+  return possibleAnswers.reduce(
+    (acc, entry) => {
+      // iterating each possible answer (main + alternates)
+      const possibleAnswerKey = entry[0];
+      const possibleAnswer = entry[1] || {};
+      let { marks } = possibleAnswer;
 
-    if (!marks || !marks.length) {
-      return acc;
-    }
-
-    // returns array of marks, each having 'correctness' property
-    const correctedAnswer = getAnswerCorrected({ sessionAnswers, marks });
-    const correctMarks = correctedAnswer.filter(answer => answer.correctness === 'correct');
-
-    const maxScore = marks.length;
-    let score = correctMarks.length;
-
-    // if extra placements
-    if (correctedAnswer.length > maxScore) {
-      score -= correctedAnswer.length - maxScore;
-    }
-
-    if (score < 0) {
-      score = 0;
-    }
-
-    if (score / maxScore > acc.bestScore || !acc.foundOneSolution) {
-      if (partialScoringEnabled) {
-        acc.bestScore = parseFloat((score / maxScore).toFixed(2));
-      } else {
-        acc.bestScore = Math.floor(score / maxScore);
+      if (!marks || !marks.length) {
+        return acc;
       }
 
-      acc.bestScoreAnswerKey = possibleAnswerKey;
-      acc.answersCorrected = correctedAnswer;
-      acc.foundOneSolution = true;
-    }
+      // returns array of marks, each having 'correctness' property
+      const correctedAnswer = getAnswerCorrected({ sessionAnswers, marks });
+      const correctMarks = correctedAnswer.filter(
+        (answer) => answer.correctness === 'correct'
+      );
 
-    return acc;
-  }, {
-    bestScore: 0,
-    bestScoreAnswerKey: null,
-    // initially we just suppose all the answers are incorrect
-    answersCorrected: cloneDeep(sessionAnswers).map(answer => ({ ...answer, correctness: 'incorrect' })),
-    foundOneSolution: false
-  });
+      const maxScore = marks.length;
+      let score = correctMarks.length;
+
+      // if extra placements
+      if (correctedAnswer.length > maxScore) {
+        score -= correctedAnswer.length - maxScore;
+      }
+
+      if (score < 0) {
+        score = 0;
+      }
+
+      if (score / maxScore > acc.bestScore || !acc.foundOneSolution) {
+        if (partialScoringEnabled) {
+          acc.bestScore = parseFloat((score / maxScore).toFixed(2));
+        } else {
+          acc.bestScore = Math.floor(score / maxScore);
+        }
+
+        acc.bestScoreAnswerKey = possibleAnswerKey;
+        acc.answersCorrected = correctedAnswer;
+        acc.foundOneSolution = true;
+      }
+
+      return acc;
+    },
+    {
+      bestScore: 0,
+      bestScoreAnswerKey: null,
+      // initially we just suppose all the answers are incorrect
+      answersCorrected: cloneDeep(sessionAnswers).map((answer) => ({ ...answer, correctness: 'incorrect' })),
+      foundOneSolution: false,
+    },
+  );
 };
 
-export const normalize = question => ({ ...defaults, ...question });
+export const normalize = (question) => ({ ...defaults, ...question });
 
 export function model(question, session, env) {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     const normalizedQuestion = normalize(question);
-    const {
-      defaultTool,
-      prompt,
-      promptEnabled,
-      graph,
-      answers,
-      toolbarTools,
-      ...questionProps
-    } = normalizedQuestion || {};
+    const { defaultTool, prompt, promptEnabled, graph, answers, toolbarTools, ...questionProps } =
+      normalizedQuestion || {};
     let { arrows } = normalizedQuestion;
     const { mode, role } = env || {};
 
@@ -152,21 +161,26 @@ export function model(question, session, env) {
           left: true,
           right: true,
           up: true,
-          down: true
+          down: true,
         };
       } else {
         arrows = {
           left: false,
           right: false,
           up: false,
-          down: false
+          down: false,
         };
       }
     }
 
     // added support for models without defaultTool defined; also used in packages/graphing/configure/src/index.js
-    const toolbarToolsNoLabel = (toolbarTools || []).filter(tool => tool !== 'label');
-    const normalizedDefaultTool = defaultTool || (toolbarToolsNoLabel.length && toolbarToolsNoLabel[0]) || '';
+    const toolbarToolsNoLabel = (toolbarTools || []).filter(
+      (tool) => tool !== 'label'
+    );
+    const normalizedDefaultTool =
+      defaultTool ||
+      (toolbarToolsNoLabel.length && toolbarToolsNoLabel[0]) ||
+      '';
 
     const base = {
       ...questionProps,
@@ -179,26 +193,36 @@ export function model(question, session, env) {
       size: graph,
       showToggle: env.mode === 'evaluate' && !isEmpty(answers),
       teacherInstructions: null,
-      toolbarTools
+      toolbarTools,
     };
 
     if (role === 'instructor' && (mode === 'view' || mode === 'evaluate')) {
-      const { rationale, rationaleEnabled, teacherInstructions, teacherInstructionsEnabled } = normalizedQuestion || {};
+      const {
+        rationale,
+        rationaleEnabled,
+        teacherInstructions,
+        teacherInstructionsEnabled,
+      } = normalizedQuestion || {};
 
       base.rationale = rationaleEnabled ? rationale : null;
-      base.teacherInstructions = teacherInstructionsEnabled ? teacherInstructions : null;
+      base.teacherInstructions = teacherInstructionsEnabled
+        ? teacherInstructions
+        : null;
     }
 
     if (mode === 'evaluate') {
       if (!isEmpty(answers)) {
-        const { answersCorrected, bestScoreAnswerKey, bestScore } = getBestAnswer(normalizedQuestion, session, env);
+        const { answersCorrected, bestScoreAnswerKey, bestScore } =
+          getBestAnswer(normalizedQuestion, session, env);
 
         // array of marks from session with 'correctness' property set
         base.answersCorrected = answersCorrected;
-        base.correctResponse = bestScoreAnswerKey ? (answers[bestScoreAnswerKey] || {}).marks : [];
+        base.correctResponse = bestScoreAnswerKey
+          ? (answers[bestScoreAnswerKey] || {}).marks
+          : [];
         base.showToggle = base.showToggle && bestScore !== 1;
       } else {
-        base.answersCorrected = session && session.answer || [];
+        base.answersCorrected = (session && session.answer) || [];
         base.correctResponse = [];
       }
     }
@@ -209,7 +233,7 @@ export function model(question, session, env) {
 }
 
 export function outcome(question, session, env = {}) {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     if (!session || isEmpty(session)) {
       resolve({ score: 0, empty: true });
     }
@@ -225,7 +249,7 @@ export function outcome(question, session, env = {}) {
 }
 
 export const createCorrectResponseSession = (question, env) => {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     if (env.mode !== 'evaluate' && env.role === 'instructor') {
       const { answers } = question || {};
       let marks = [];
@@ -238,10 +262,35 @@ export const createCorrectResponseSession = (question, env) => {
 
       resolve({
         answer: marks,
-        id: '1'
+        id: '1',
       });
     } else {
       resolve(null);
     }
   });
+};
+
+export const validate = (model = {}, config = {}) => {
+  const { answers, toolbarTools } = model;
+  const errors = {};
+  const correctAnswerErrors = {};
+  const toolbarToolsNoLabel = (toolbarTools || []).filter(
+    (tool) => tool !== 'label'
+  );
+
+  if (!toolbarToolsNoLabel.length) {
+    errors.toolbarToolsError = 'There should be at least 1 tool defined.';
+  }
+
+  Object.entries(answers || {}).forEach(([key, value]) => {
+    if (!value.marks.length) {
+      correctAnswerErrors[key] = 'At least 1 graph object should be defined.';
+    }
+  });
+
+  if (!isEmpty(correctAnswerErrors)) {
+    errors.correctAnswerErrors = correctAnswerErrors;
+  }
+
+  return errors;
 };

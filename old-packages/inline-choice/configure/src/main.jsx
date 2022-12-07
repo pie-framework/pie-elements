@@ -8,11 +8,11 @@ import PropTypes from 'prop-types';
 
 const log = debug('@pie-element:inline-choice-configure');
 
-const Choice = withStyles(theme => ({
+const Choice = withStyles((theme) => ({
   choice: {
     paddingTop: theme.spacing.unit,
-    paddingBottom: theme.spacing.unit * 2
-  }
+    paddingBottom: theme.spacing.unit * 2,
+  },
 }))(({ choice, onChange, onDelete, classes }) => (
   <ChoiceConfiguration
     className={classes.choice}
@@ -21,7 +21,7 @@ const Choice = withStyles(theme => ({
     data={choice}
     defaultFeedback={{
       correct: 'Correct',
-      incorrect: 'Incorrect'
+      incorrect: 'Incorrect',
     }}
     onChange={onChange}
     onDelete={onDelete}
@@ -35,14 +35,14 @@ export class RawMain extends React.Component {
     onRemoveChoice: PropTypes.func.isRequired,
     onAddChoice: PropTypes.func.isRequired,
     onPromptChange: PropTypes.func.isRequired,
-    classes: PropTypes.object.isRequired
+    classes: PropTypes.object.isRequired,
   };
 
   constructor(props) {
     super(props);
 
     this.state = {
-      activeLang: props.model.defaultLang
+      activeLang: props.model.defaultLang,
     };
   }
 
@@ -60,7 +60,7 @@ export class RawMain extends React.Component {
         {model.choices.map((choice, index) => (
           <Choice
             choice={choice}
-            onChange={choice => this.onChoiceChange(index, choice)}
+            onChange={(choice) => this.onChoiceChange(index, choice)}
             onDelete={() => onRemoveChoice(index)}
             key={index}
           />
@@ -72,8 +72,8 @@ export class RawMain extends React.Component {
     );
   }
 }
-export default withStyles(theme => ({
+export default withStyles((theme) => ({
   prompt: {
-    paddingBottom: theme.spacing.unit * 4
-  }
+    paddingBottom: theme.spacing.unit * 4,
+  },
 }))(RawMain);

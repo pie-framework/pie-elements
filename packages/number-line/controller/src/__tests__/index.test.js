@@ -181,63 +181,39 @@ describe('controller', () => {
       'score is 0.5 for 2/2 answers correct and 1 extra incorrect answer',
       mkQuestion({ partialScoring: true }),
       {
-        answer: [
-          ...mkQuestion().correctResponse,
-          { type: 'point', pointType: 'full', position: -3.3 },
-        ],
+        answer: [...mkQuestion().correctResponse, { type: 'point', pointType: 'full', position: -3.3 }],
       },
       {},
-      { score: 0.5 }
+      { score: 0.5 },
     );
 
     assertOutcome(
       'score is 0.5 for 1/2 answers correct and 1 extra incorrect answer',
       mkQuestion({ partialScoring: true }),
       {
-        answer: [
-          mkQuestion().correctResponse[0],
-          { type: 'point', pointType: 'full', position: -3.3 },
-        ],
+        answer: [mkQuestion().correctResponse[0], { type: 'point', pointType: 'full', position: -3.3 }],
       },
       {},
-      { score: 0.5 }
+      { score: 0.5 },
     );
 
     assertOutcome('correct', mkQuestion(), correctSession, {}, { score: 1 });
-    assertOutcome(
-      'incorrect',
-      mkQuestion(),
-      incorrectSession,
-      {},
-      { score: 0 }
-    );
-    assertOutcome(
-      'partial on by default',
-      mkQuestion(),
-      partiallyCorrect,
-      {},
-      { score: 0.5 }
-    );
-    assertOutcome(
-      'partial disabled in env',
-      mkQuestion(),
-      partiallyCorrect,
-      { partialScoring: false },
-      { score: 0 }
-    );
+    assertOutcome('incorrect', mkQuestion(), incorrectSession, {}, { score: 0 });
+    assertOutcome('partial on by default', mkQuestion(), partiallyCorrect, {}, { score: 0.5 });
+    assertOutcome('partial disabled in env', mkQuestion(), partiallyCorrect, { partialScoring: false }, { score: 0 });
     assertOutcome(
       'partial disabled in model',
       mkQuestion({ partialScoring: false }),
       partiallyCorrect,
       {},
-      { score: 0.0 }
+      { score: 0.0 },
     );
     assertOutcome(
       'partial enabled in model',
       mkQuestion({ partialScoring: true }),
       partiallyCorrect,
       {},
-      { score: 0.5 }
+      { score: 0.5 },
     );
 
     assertOutcome(
@@ -245,7 +221,7 @@ describe('controller', () => {
       mkQuestion({ partialScoring: true }),
       undefined,
       { mode: 'evaluate' },
-      { score: 0, empty: true }
+      { score: 0, empty: true },
     );
 
     assertOutcome(
@@ -253,7 +229,7 @@ describe('controller', () => {
       mkQuestion({ partialScoring: false }),
       null,
       { mode: 'evaluate' },
-      { score: 0, empty: true }
+      { score: 0, empty: true },
     );
 
     assertOutcome(
@@ -261,7 +237,7 @@ describe('controller', () => {
       mkQuestion({ partialScoring: true }),
       {},
       { mode: 'evaluate' },
-      { score: 0, empty: true }
+      { score: 0, empty: true },
     );
   });
 
@@ -272,18 +248,18 @@ describe('controller', () => {
       const normalizedQuestion = await normalize(question);
 
       expect(normalizedQuestion.feedback).toMatchObject({
-          correct: {
-            default: 'Correct',
-            type: 'none'
-          },
-          incorrect: {
-            default: 'Incorrect',
-            type: 'none'
-          },
-          partial: {
-            default: 'Nearly',
-            type: 'none'
-          }
+        correct: {
+          default: 'Correct',
+          type: 'none',
+        },
+        incorrect: {
+          default: 'Incorrect',
+          type: 'none',
+        },
+        partial: {
+          default: 'Nearly',
+          type: 'none',
+        },
       });
     });
   });
@@ -319,19 +295,13 @@ describe('controller', () => {
         graph: {},
         disabled: true,
         colorContrast: 'black_on_white',
-      }
+      },
     );
 
     describe('disabled', () => {
-      assertModel(
-        'disabled is missing in gather mode',
-        {},
-        {},
-        { mode: 'gather' },
-        (r) => {
-          expect(r.disabled).toBe(undefined);
-        }
-      );
+      assertModel('disabled is missing in gather mode', {}, {}, { mode: 'gather' }, (r) => {
+        expect(r.disabled).toBe(undefined);
+      });
 
       assertModel(
         'disabled is true if exhibitOnly is true',
@@ -344,7 +314,7 @@ describe('controller', () => {
         { mode: 'gather' },
         (r) => {
           expect(r.disabled).toBe(true);
-        }
+        },
       );
     });
 
@@ -358,7 +328,7 @@ describe('controller', () => {
           graph: {
             domain: { min: -1, max: 1 },
           },
-        }
+        },
       );
     });
 
@@ -374,7 +344,7 @@ describe('controller', () => {
             incorrect: [],
             notInAnswer: [],
           },
-        }
+        },
       );
 
       assertModel(
@@ -387,26 +357,18 @@ describe('controller', () => {
             correct: [],
             incorrect: [0],
           },
-        }
+        },
       );
     });
 
     describe('correctResponse', () => {
-      assertModel(
-        'correctResponse is empty if correct',
-        {},
-        correctSession,
-        mode('evaluate'),
-        (o) => expect(o.correctResponse).toBe(undefined)
+      assertModel('correctResponse is empty if correct', {}, correctSession, mode('evaluate'), (o) =>
+        expect(o.correctResponse).toBe(undefined),
       );
 
-      assertModel(
-        'correctResponse is not empty if correct',
-        {},
-        incorrectSession,
-        mode('evaluate'),
-        { correctResponse: mkQuestion().correctResponse }
-      );
+      assertModel('correctResponse is not empty if correct', {}, incorrectSession, mode('evaluate'), {
+        correctResponse: mkQuestion().correctResponse,
+      });
     });
 
     describe('feedback', () => {
@@ -432,7 +394,7 @@ describe('controller', () => {
           { accessibility: { colorContrast: c } },
           {
             colorContrast: c,
-          }
+          },
         );
       };
       assertDefault('black_on_white');
@@ -442,9 +404,7 @@ describe('controller', () => {
 
     describe('session not set', () => {
       const assertModel = (sess) => {
-        it(`returns feedback unknown if session is ${JSON.stringify(
-          sess
-        )}`, async () => {
+        it(`returns feedback unknown if session is ${JSON.stringify(sess)}`, async () => {
           const m = await controller.model(mkQuestion(), sess, {
             mode: 'evaluate',
           });
@@ -473,19 +433,16 @@ describe('controller', () => {
     });
 
     it('returns null env is student', async () => {
-      const noResult = await controller.createCorrectResponseSession(
-        mkQuestion(),
-        { mode: 'gather', role: 'student' }
-      );
+      const noResult = await controller.createCorrectResponseSession(mkQuestion(), { mode: 'gather', role: 'student' });
       expect(noResult).toBeNull();
     });
   });
 
   describe('getCorrectness', () => {
     const item = {
-      'type': 'point',
-      'pointType': 'full',
-      'domainPosition': 0.5
+      type: 'point',
+      pointType: 'full',
+      domainPosition: 0.5,
     };
 
     test.each([
@@ -493,13 +450,12 @@ describe('controller', () => {
       [{ incorrect: [], correct: [] }, 'unanswered'],
       [{ incorrect: [], notInAnswer: [], correct: [item] }, 'correct'],
       [{ incorrect: [item], notInAnswer: [], correct: [] }, 'incorrect'],
-      [{ incorrect: [], notInAnswer: [item], correct: [item] }, 'partial']
+      [{ incorrect: [], notInAnswer: [item], correct: [item] }, 'partial'],
     ])('%j -> %s', (corrected, expected) => {
-        const correctness = controller.getCorrectness(corrected);
+      const correctness = controller.getCorrectness(corrected);
 
-        expect(correctness).toEqual(expected);
-      }
-    );
+      expect(correctness).toEqual(expected);
+    });
   });
 
   describe('getCorrected', () => {
@@ -510,22 +466,21 @@ describe('controller', () => {
     };
     const noCorrectResponse = {
       ...defaultCorrected,
-      noCorrectResponse: true
+      noCorrectResponse: true,
     };
     const answer = {
-      'type': 'point',
-      'pointType': 'full',
-      'domainPosition': 0.5
+      type: 'point',
+      pointType: 'full',
+      domainPosition: 0.5,
     };
 
     test.each([
       [[answer], [], noCorrectResponse],
       [[], [], defaultCorrected],
     ])('%j, %j -> %s', (answer, correctResponse, expected) => {
-        const correctness = controller.getCorrected(answer, correctResponse);
+      const correctness = controller.getCorrected(answer, correctResponse);
 
-        expect(correctness).toEqual(expected);
-      }
-    );
+      expect(correctness).toEqual(expected);
+    });
   });
 });

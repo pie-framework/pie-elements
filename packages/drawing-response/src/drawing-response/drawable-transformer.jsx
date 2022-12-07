@@ -35,7 +35,9 @@ class TransformerComponent extends React.Component {
   render() {
     return (
       <Transformer
-        ref={node => { this.transformer = node; }}
+        ref={(node) => {
+          this.transformer = node;
+        }}
         enabledAnchors={['middle-left', 'middle-right']}
         {...this.props}
       />

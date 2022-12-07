@@ -5,38 +5,38 @@ const modelCopy = {
     rectangles: [
       {
         id: '1',
-        correct: true
+        correct: true,
       },
       {
-        id: '2'
+        id: '2',
       },
       {
-        id: '3'
-      }
+        id: '3',
+      },
     ],
     polygons: [
       {
         id: '4',
-        correct: true
+        correct: true,
       },
       {
-        id: '5'
-      }
-    ]
+        id: '5',
+      },
+    ],
   },
   configure: {},
-  multipleCorrect: true
+  multipleCorrect: true,
 };
 
 const sessionCopy = {
   answers: [
     {
-      id: '1'
+      id: '1',
     },
     {
-      id: '2'
-    }
-  ]
+      id: '2',
+    },
+  ],
 };
 
 describe('session-updater', () => {
@@ -51,28 +51,19 @@ describe('session-updater', () => {
     };
 
     describe('deselect', () => {
-      it('deselects shape', assert(
-        sessionCopy,
-        modelCopy,
-        { id: '1', selected: false },
-        [{ id: '2' }]
-      ));
+      it('deselects shape', assert(sessionCopy, modelCopy, { id: '1', selected: false }, [{ id: '2' }]));
     });
 
     describe('select hotspot', () => {
-      it('selects shape in multiple choice mode', assert(
-        sessionCopy,
-        modelCopy,
-        { id: '1', selected: true },
-        [{ id: '2' }, { id: '1' }]
-      ));
+      it(
+        'selects shape in multiple choice mode',
+        assert(sessionCopy, modelCopy, { id: '1', selected: true }, [{ id: '2' }, { id: '1' }]),
+      );
 
-      it('selects shape in single choice mode', assert(
-        sessionCopy,
-        { ...modelCopy, multipleCorrect: false },
-        { id: '1', selected: true },
-        [{ id: '1' }]
-      ));
+      it(
+        'selects shape in single choice mode',
+        assert(sessionCopy, { ...modelCopy, multipleCorrect: false }, { id: '1', selected: true }, [{ id: '1' }]),
+      );
     });
   });
 });

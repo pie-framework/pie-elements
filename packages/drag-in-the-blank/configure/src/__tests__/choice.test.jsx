@@ -15,21 +15,21 @@ describe('Choice', () => {
     connectDragPreview = jest.fn();
   });
 
-  const wrapper = extras => {
+  const wrapper = (extras) => {
     const props = {
       classes: {},
       key: '0',
       duplicates: true,
       choice: {
         value: '<div>6</div>',
-        id: '0'
+        id: '0',
       },
       targetId: '0',
       onClick,
       onRemoveChoice,
       connectDragSource,
       connectDragPreview,
-      ...extras
+      ...extras,
     };
 
     return shallow(<Choice {...props} />);
@@ -50,7 +50,7 @@ describe('spec', () => {
     });
 
     it('returns false if category has any value and is disabled', () => {
-      const jsdomAlert = window.alert;  // remember the jsdom alert
+      const jsdomAlert = window.alert; // remember the jsdom alert
       window.alert = () => {};
 
       const result = tileSource.canDrag({ choice: { value: '<div>6</div>', id: '0' }, disabled: true });
@@ -60,7 +60,7 @@ describe('spec', () => {
     });
 
     it('returns false if category value is empty', () => {
-      const jsdomAlert = window.alert;  // remember the jsdom alert
+      const jsdomAlert = window.alert; // remember the jsdom alert
       window.alert = () => {};
 
       const result = tileSource.canDrag({ choice: { value: '', id: '0' } });
@@ -72,7 +72,11 @@ describe('spec', () => {
 
   describe('beginDrag', () => {
     it('returns the proper object', () => {
-      const result = tileSource.beginDrag({ choice: { value: '<div>0</div>', id: '0' }, instanceId: '1', targetId: '0' });
+      const result = tileSource.beginDrag({
+        choice: { value: '<div>0</div>', id: '0' },
+        instanceId: '1',
+        targetId: '0',
+      });
       expect(result).toEqual({ id: '0', instanceId: '1', value: { value: '<div>0</div>', id: '0' } });
     });
   });

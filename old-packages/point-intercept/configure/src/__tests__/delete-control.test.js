@@ -7,7 +7,7 @@ import DeleteControl from '../delete';
 describe('DeleteControl', () => {
   const defaultProps = {
     onDeleteClick: () => {},
-    disabled: false
+    disabled: false,
   };
   let wrapper;
 

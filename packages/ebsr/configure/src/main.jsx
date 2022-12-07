@@ -5,15 +5,15 @@ import { withStyles } from '@material-ui/core/styles';
 
 const { Panel, toggle, radio, dropdown } = settings;
 
-const styles = theme => ({
+const styles = (theme) => ({
   design: {
-    paddingTop: theme.spacing.unit * 3
+    paddingTop: theme.spacing.unit * 3,
   },
   part: {
     display: 'flex',
     flexDirection: 'column',
-    padding: '16px 0 32px'
-  }
+    padding: '16px 0 32px',
+  },
 });
 
 export class Main extends React.Component {
@@ -22,13 +22,13 @@ export class Main extends React.Component {
     configuration: PropTypes.object,
     model: PropTypes.object,
     onModelChanged: PropTypes.func,
-    onConfigurationChanged: PropTypes.func
+    onConfigurationChanged: PropTypes.func,
   };
 
   removeExtraChoices = (choices) => {
     let correctFound = false;
 
-     return (choices || []).map(choice => {
+    return (choices || []).map((choice) => {
       if (correctFound) {
         choice.correct = false;
         return choice;
@@ -40,7 +40,7 @@ export class Main extends React.Component {
 
       return choice;
     });
-  }
+  };
 
   onModelChanged = (model, key) => {
     const { onModelChanged } = this.props;
@@ -58,15 +58,10 @@ export class Main extends React.Component {
     }
 
     return onModelChanged(model);
-  }
+  };
 
   render() {
-    const {
-      classes,
-      model,
-      configuration,
-      onConfigurationChanged
-    } = this.props;
+    const { classes, model, configuration, onConfigurationChanged } = this.props;
     const { partLabelType, partA: modelPartA, partB: modelPartB } = model;
     const { partA, partB, partialScoring, scoringType, ...generalConfiguration } = configuration;
     const {
@@ -80,7 +75,7 @@ export class Main extends React.Component {
       choicesLayout: choicesLayoutA = {},
       gridColumns: gridColumnsA = {},
       rationale: rationaleA = {},
-      spellCheck: spellCheckA = {}
+      spellCheck: spellCheckA = {},
     } = partA || {};
     const {
       feedback: feedbackB = {},
@@ -93,17 +88,21 @@ export class Main extends React.Component {
       choicesLayout: choicesLayoutB = {},
       gridColumns: gridColumnsB = {},
       rationale: rationaleB = {},
-      spellCheck: spellCheckB = {}
+      spellCheck: spellCheckB = {},
     } = partB || {};
     const type = partLabelType || 'Numbers';
     const typeIsNumber = type === 'Numbers';
     const firstPart = `Part ${typeIsNumber ? '1' : 'A'}`;
     const secondPart = `Part ${typeIsNumber ? '2' : 'B'}`;
     const nrOfColumnsAvailable = {
-      partA: modelPartA.choices && modelPartA.choices.length ?
-        Array.from({length: modelPartA.choices.length}, (_, i) => (`${i + 1}`)) : [],
-      partB: modelPartB.choices && modelPartB.choices.length ?
-        Array.from({length: modelPartB.choices.length}, (_, i) => (`${i + 1}`)) : [],
+      partA:
+        modelPartA.choices && modelPartA.choices.length
+          ? Array.from({ length: modelPartA.choices.length }, (_, i) => `${i + 1}`)
+          : [],
+      partB:
+        modelPartB.choices && modelPartB.choices.length
+          ? Array.from({ length: modelPartB.choices.length }, (_, i) => `${i + 1}`)
+          : [],
     };
 
     return (
@@ -117,82 +116,55 @@ export class Main extends React.Component {
               onChangeConfiguration={onConfigurationChanged}
               groups={{
                 'Settings for both': {
-                  partLabels:
-                    generalConfiguration.partLabels.settings &&
-                    toggle(generalConfiguration.partLabels.label),
-                  partLabelType:
-                    model.partLabels && dropdown('', ['Numbers', 'Letters']),
-                  partialScoring:
-                    partialScoring.settings && toggle(partialScoring.label),
-                  scoringType:
-                    scoringType.settings && radio(scoringType.label, ['auto', 'rubric'])
+                  partLabels: generalConfiguration.partLabels.settings && toggle(generalConfiguration.partLabels.label),
+                  partLabelType: model.partLabels && dropdown('', ['Numbers', 'Letters']),
+                  partialScoring: partialScoring.settings && toggle(partialScoring.label),
+                  scoringType: scoringType.settings && radio(scoringType.label, ['auto', 'rubric']),
                 },
                 [`Settings ${firstPart}`]: {
-                  'partA.choiceMode':
-                    choiceModeA.settings &&
-                    radio(choiceModeA.label, ['checkbox', 'radio']),
-                  'partA.choicePrefix':
-                    choicePrefixA.settings &&
-                    radio(choicePrefixA.label, ['numbers', 'letters']),
-                  'partA.lockChoiceOrder':
-                    lockChoiceOrderA.settings && toggle(lockChoiceOrderA.label),
+                  'partA.choiceMode': choiceModeA.settings && radio(choiceModeA.label, ['checkbox', 'radio']),
+                  'partA.choicePrefix': choicePrefixA.settings && radio(choicePrefixA.label, ['numbers', 'letters']),
+                  'partA.lockChoiceOrder': lockChoiceOrderA.settings && toggle(lockChoiceOrderA.label),
                   'partA.choicesLayout':
-                    choicesLayoutA.settings &&
-                    dropdown(choicesLayoutA.label, ['vertical', 'grid', 'horizontal']),
+                    choicesLayoutA.settings && dropdown(choicesLayoutA.label, ['vertical', 'grid', 'horizontal']),
                   'partA.gridColumns':
-                    choicesLayoutA.settings && modelPartA.choicesLayout === 'grid' &&
+                    choicesLayoutA.settings &&
+                    modelPartA.choicesLayout === 'grid' &&
                     nrOfColumnsAvailable.partA.length > 0 &&
-                    dropdown(gridColumnsA.label, nrOfColumnsAvailable.partA)
+                    dropdown(gridColumnsA.label, nrOfColumnsAvailable.partA),
                 },
                 [`Properties ${firstPart}`]: {
-                  'partA.feedbackEnabled': feedbackA.settings &&
-                    toggle(feedbackA.label),
-                  'partA.promptEnabled':
-                    promptA.settings && toggle(promptA.label),
+                  'partA.feedbackEnabled': feedbackA.settings && toggle(feedbackA.label),
+                  'partA.promptEnabled': promptA.settings && toggle(promptA.label),
                   'partA.teacherInstructionsEnabled':
-                    teacherInstructionsA.settings &&
-                    toggle(teacherInstructionsA.label),
+                    teacherInstructionsA.settings && toggle(teacherInstructionsA.label),
                   'partA.studentInstructionsEnabled':
-                    studentInstructionsA.settings &&
-                    toggle(studentInstructionsA.label),
-                  'partA.rationaleEnabled':
-                    rationaleA.settings && toggle(rationaleA.label),
-                    'partA.spellCheckEnabled':
-                    spellCheckA.settings && toggle(spellCheckA.label),
+                    studentInstructionsA.settings && toggle(studentInstructionsA.label),
+                  'partA.rationaleEnabled': rationaleA.settings && toggle(rationaleA.label),
+                  'partA.spellCheckEnabled': spellCheckA.settings && toggle(spellCheckA.label),
                 },
                 [`Settings ${secondPart}`]: {
-                  'partB.choiceMode':
-                    choiceModeB.settings &&
-                    radio(choiceModeB.label, ['checkbox', 'radio']),
-                  'partB.choicePrefix':
-                    choicePrefixB.settings &&
-                    radio(choicePrefixB.label, ['numbers', 'letters']),
-                  'partB.lockChoiceOrder':
-                    lockChoiceOrderB.settings && toggle(lockChoiceOrderB.label),
+                  'partB.choiceMode': choiceModeB.settings && radio(choiceModeB.label, ['checkbox', 'radio']),
+                  'partB.choicePrefix': choicePrefixB.settings && radio(choicePrefixB.label, ['numbers', 'letters']),
+                  'partB.lockChoiceOrder': lockChoiceOrderB.settings && toggle(lockChoiceOrderB.label),
                   'partB.choicesLayout':
-                    choicesLayoutB.settings &&
-                    dropdown(choicesLayoutB.label, ['vertical', 'grid', 'horizontal']),
+                    choicesLayoutB.settings && dropdown(choicesLayoutB.label, ['vertical', 'grid', 'horizontal']),
                   'partB.gridColumns':
-                    choicesLayoutB.settings && modelPartB.choicesLayout === 'grid' &&
+                    choicesLayoutB.settings &&
+                    modelPartB.choicesLayout === 'grid' &&
                     nrOfColumnsAvailable.partB.length > 0 &&
-                    dropdown(gridColumnsB.label, nrOfColumnsAvailable.partB)
+                    dropdown(gridColumnsB.label, nrOfColumnsAvailable.partB),
                 },
                 [`Properties ${secondPart}`]: {
-                  'partB.feedbackEnabled':
-                    feedbackB.settings && toggle(feedbackB.label),
-                  'partB.promptEnabled':
-                    promptB.settings && toggle(promptB.label),
+                  'partB.feedbackEnabled': feedbackB.settings && toggle(feedbackB.label),
+                  'partB.promptEnabled': promptB.settings && toggle(promptB.label),
                   'partB.teacherInstructionsEnabled':
-                    teacherInstructionsB.settings &&
-                    toggle(teacherInstructionsB.label),
+                    teacherInstructionsB.settings && toggle(teacherInstructionsB.label),
                   'partB.studentInstructionsEnabled':
-                    studentInstructionsB.settings &&
-                    toggle(studentInstructionsB.label),
-                  'partB.rationaleEnabled':
-                    rationaleB.settings && toggle(rationaleB.label),
-                    'partB.spellCheckEnabled':
-                    spellCheckB.settings && toggle(spellCheckB.label),
-                }
+                    studentInstructionsB.settings && toggle(studentInstructionsB.label),
+                  'partB.rationaleEnabled': rationaleB.settings && toggle(rationaleB.label),
+                  'partB.spellCheckEnabled': spellCheckB.settings && toggle(spellCheckB.label),
+                },
               }}
             />
           }
@@ -203,17 +175,17 @@ export class Main extends React.Component {
               <ebsr-multiple-choice-configure
                 id="A"
                 key="partA"
-                ref={ref => {
+                ref={(ref) => {
                   if (ref) {
                     // do not use destructuring to get model from props
                     this.partA = ref;
                     this.partA._model = {
                       ...this.props.model.partA,
-                      errors: this.props.model.errors && this.props.model.errors.partA || {}
+                      errors: (this.props.model.errors && this.props.model.errors.partA) || {},
                     };
                     this.partA.configuration = {
                       ...partA,
-                      ...generalConfiguration
+                      ...generalConfiguration,
                     };
                   }
                 }}
@@ -225,17 +197,17 @@ export class Main extends React.Component {
               <ebsr-multiple-choice-configure
                 id="B"
                 key="partB"
-                ref={ref => {
+                ref={(ref) => {
                   if (ref) {
                     // do not use destructuring to get model from props
                     this.partB = ref;
-                    this.partB._model ={
+                    this.partB._model = {
                       ...this.props.model.partB,
-                      errors: this.props.model.errors && this.props.model.errors.partB || {}
+                      errors: (this.props.model.errors && this.props.model.errors.partB) || {},
                     };
                     this.partB.configuration = {
                       ...partB,
-                      ...generalConfiguration
+                      ...generalConfiguration,
                     };
                   }
                 }}

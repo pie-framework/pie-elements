@@ -8,7 +8,7 @@ import { updateSessionValue } from './session-updater';
 
 const log = debug('pie-ui:multiple-choice');
 
-export const isComplete = session => !!(session && session.value && session.value.length);
+export const isComplete = (session) => !!(session && session.value && session.value.length);
 
 export default class MultipleChoice extends HTMLElement {
   constructor() {
@@ -22,7 +22,7 @@ export default class MultipleChoice extends HTMLElement {
           var element = React.createElement(Main, {
             model: this._model,
             session: this._session,
-            onChoiceChanged: this._onChange.bind(this)
+            onChoiceChanged: this._onChange.bind(this),
           });
 
           ReactDOM.render(element, this, () => {
@@ -34,7 +34,7 @@ export default class MultipleChoice extends HTMLElement {
         }
       },
       50,
-      { leading: false, trailing: true }
+      { leading: false, trailing: true },
     );
 
     this._dispatchResponseChanged = debounce(() => {
@@ -43,8 +43,8 @@ export default class MultipleChoice extends HTMLElement {
         composed: true,
         detail: {
           complete: isComplete(this._session),
-          component: this.tagName.toLowerCase()
-        }
+          component: this.tagName.toLowerCase(),
+        },
       });
 
       this.dispatchEvent(event);
@@ -59,13 +59,13 @@ export default class MultipleChoice extends HTMLElement {
             detail: {
               complete: isComplete(this._session),
               component: this.tagName.toLowerCase(),
-              hasModel: this._model !== undefined
-            }
-          })
+              hasModel: this._model !== undefined,
+            },
+          }),
         );
       },
       50,
-      { leading: false, trailing: true }
+      { leading: false, trailing: true },
     );
   }
 

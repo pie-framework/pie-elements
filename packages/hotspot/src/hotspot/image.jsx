@@ -7,7 +7,7 @@ class ImageComponent extends React.Component {
     super(props);
     this.state = {
       image: null,
-      showTooltip: false
+      showTooltip: false,
     };
   }
 
@@ -35,7 +35,7 @@ class ImageComponent extends React.Component {
 
   handleLoad = () => {
     this.setState({
-      image: this.image
+      image: this.image,
     });
   };
 
@@ -57,11 +57,7 @@ class ImageComponent extends React.Component {
 
         {showTooltip && tooltip && (
           <Label x={x - 30} y={y + 25}>
-            <Tag
-              fill="white"
-              cornerRadius={5}
-              opacity={0.9}
-            />
+            <Tag fill="white" cornerRadius={5} opacity={0.9} />
             <Text text={tooltip} padding={5} />
           </Label>
         )}
@@ -74,7 +70,7 @@ ImageComponent.propTypes = {
   src: PropTypes.string.isRequired,
   x: PropTypes.number.isRequired,
   y: PropTypes.number.isRequired,
-  tooltip: PropTypes.string
+  tooltip: PropTypes.string,
 };
 
 export default ImageComponent;

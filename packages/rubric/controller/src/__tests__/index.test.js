@@ -1,12 +1,11 @@
 import { model } from '../index';
 
 describe('rubric model', () => {
-
   let state = {
     points: ['nothing right', 'a teeny bit right', 'mostly right', 'bingo'],
     sampleAnswers: [null, 'just right', 'not left', null],
     maxPoints: 4,
-    excludeZero: false
+    excludeZero: false,
   };
 
   let session = {};
@@ -29,7 +28,4 @@ describe('rubric model', () => {
     result = await model(state, session, env);
     expect(result).toEqual(state);
   });
-
-
-
 });

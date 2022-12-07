@@ -2,27 +2,24 @@
 import { shallow } from 'enzyme';
 import React from 'react';
 import { Main } from '../main';
-import {
-  model as defaultModel,
-  configuration as defaultConfig
-} from '../defaults';
+import { model as defaultModel, configuration as defaultConfig } from '../defaults';
 
 jest.mock('@pie-lib/config-ui', () => ({
   FormSection: () => <div />,
   FeedbackConfig: () => <div />,
-  InputCheckbox: () => <div />
+  InputCheckbox: () => <div />,
 }));
 
 describe('main', () => {
   let w;
   let onChange = jest.fn();
-  const wrapper = extras => {
+  const wrapper = (extras) => {
     const defaults = {
       classes: {},
       className: 'className',
       onChange,
       model: { correctResponse: [], graph: { ...defaultModel } },
-      configuration: { ...defaultConfig }
+      configuration: { ...defaultConfig },
     };
     const props = { ...defaults, ...extras };
     return shallow(<Main {...props} />);
@@ -36,7 +33,7 @@ describe('main', () => {
   describe('logic', () => {
     const fn = (fnName, args, expected) => {
       describe(fnName, () => {
-        it(`(${args.map(a => JSON.stringify(a)).join(',')})`, () => {
+        it(`(${args.map((a) => JSON.stringify(a)).join(',')})`, () => {
           const w = wrapper();
           const i = w.instance();
           i[fnName].apply(w.instance(), args);
@@ -46,19 +43,19 @@ describe('main', () => {
     };
 
     fn('graphChange', [{ foo: true }], {
-      graph: expect.objectContaining({ foo: true })
+      graph: expect.objectContaining({ foo: true }),
     });
 
     fn('changeSize', [{ width: 0, height: 0 }], {
-      graph: expect.objectContaining({ width: 0, height: 0 })
+      graph: expect.objectContaining({ width: 0, height: 0 }),
     });
 
     fn('changeMaxNoOfPoints', [{}, 10], {
-      graph: expect.objectContaining({ maxNumberOfPoints: 10, height: 300 })
+      graph: expect.objectContaining({ maxNumberOfPoints: 10, height: 300 }),
     });
 
     fn('changeGraphTitle', ['title'], {
-      graph: expect.objectContaining({ title: 'title' })
+      graph: expect.objectContaining({ title: 'title' }),
     });
 
     fn(
@@ -66,8 +63,8 @@ describe('main', () => {
       [{ minor: 1, major: 3 }],
       expect.objectContaining({
         correctResponse: [],
-        graph: expect.objectContaining({ ticks: { minor: 1, major: 3 } })
-      })
+        graph: expect.objectContaining({ ticks: { minor: 1, major: 3 } }),
+      }),
     );
 
     fn(
@@ -75,9 +72,9 @@ describe('main', () => {
       [{ left: false, right: false }],
       expect.objectContaining({
         graph: expect.objectContaining({
-          arrows: { left: false, right: false }
-        })
-      })
+          arrows: { left: false, right: false },
+        }),
+      }),
     );
 
     describe('moveCorrectResponse', () => {});
@@ -94,7 +91,7 @@ describe('main', () => {
         const i = w.instance();
         i.props.model.correctResponse = ['Point1', 'Point2'];
         i.clearCorrectResponse();
-        expect(onChange).toHaveBeenCalledWith({correctResponse: []});
+        expect(onChange).toHaveBeenCalledWith({ correctResponse: [] });
       });
     });
 
@@ -104,8 +101,8 @@ describe('main', () => {
         const i = w.instance();
         i.props.model.initialElements = ['Point1', 'Point2'];
         i.clearInitialView();
-        const graph = { ...defaultModel.graph, initialElements: []}
-        expect(onChange).toHaveBeenCalledWith({graph});
+        const graph = { ...defaultModel.graph, initialElements: [] };
+        expect(onChange).toHaveBeenCalledWith({ graph });
       });
     });
 
@@ -115,7 +112,7 @@ describe('main', () => {
         const i = w.instance();
         i.props.model.correctResponse = ['Point1', 'Point2'];
         i.undoCorrectResponse();
-        expect(onChange).toHaveBeenCalledWith({correctResponse: ['Point1']});
+        expect(onChange).toHaveBeenCalledWith({ correctResponse: ['Point1'] });
       });
     });
 
@@ -125,8 +122,8 @@ describe('main', () => {
         const i = w.instance();
         i.props.model.initialElements = ['Point1'];
         i.undoInitialView();
-        const graph = { ...defaultModel.graph, initialElements: []};
-        expect(onChange).toHaveBeenCalledWith({graph});
+        const graph = { ...defaultModel.graph, initialElements: [] };
+        expect(onChange).toHaveBeenCalledWith({ graph });
       });
     });
   });

@@ -8,10 +8,11 @@ import { choiceUtils as utils } from '@pie-lib/config-ui';
 import defaults from './defaults';
 
 export default class InlineChoice extends HTMLElement {
-  static createDefaultModel = (model = {}) => utils.normalizeChoices({
-    ...defaults,
-    ...model,
-  });
+  static createDefaultModel = (model = {}) =>
+    utils.normalizeChoices({
+      ...defaults,
+      ...model,
+    });
 
   constructor() {
     super();
@@ -36,7 +37,7 @@ export default class InlineChoice extends HTMLElement {
   _render() {
     let element = React.createElement(Root, {
       model: this._model,
-      onModelChanged: this.onModelChanged
+      onModelChanged: this.onModelChanged,
     });
     ReactDOM.render(element, this);
   }

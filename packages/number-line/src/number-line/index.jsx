@@ -7,7 +7,7 @@ import Toggle from '@pie-lib/correct-answer-toggle';
 import { buildElementModel } from './graph/elements/builder';
 import classNames from 'classnames';
 import cloneDeep from 'lodash/cloneDeep';
-import {color, PreviewPrompt} from '@pie-lib/render-ui';
+import { color, PreviewPrompt } from '@pie-lib/render-ui';
 import injectSheet from 'react-jss';
 import isArray from 'lodash/isArray';
 import isNumber from 'lodash/isNumber';
@@ -63,9 +63,7 @@ export class NumberLine extends React.Component {
     super(props, context);
 
     let initialType = props.model.graph ? props.model.graph.initialType : null;
-    initialType = initialType
-      ? initialType.toLowerCase()
-      : PointChooser.DEFAULT_TYPE;
+    initialType = initialType ? initialType.toLowerCase() : PointChooser.DEFAULT_TYPE;
 
     this.state = {
       selectedElements: [],
@@ -99,12 +97,7 @@ export class NumberLine extends React.Component {
 
     const { ticks, domain } = this.props.model.graph;
 
-    let elementData = buildElementModel(
-      x,
-      this.state.elementType,
-      domain,
-      ticks.minor
-    );
+    let elementData = buildElementModel(x, this.state.elementType, domain, ticks.minor);
 
     if (elementData) {
       const { answers } = this.state;
@@ -129,11 +122,7 @@ export class NumberLine extends React.Component {
       },
     } = this.props;
 
-    return (
-      isNumber(maxNumberOfPoints) &&
-      maxNumberOfPoints > 0 &&
-      (answer || []).length >= maxNumberOfPoints
-    );
+    return isNumber(maxNumberOfPoints) && maxNumberOfPoints > 0 && (answer || []).length >= maxNumberOfPoints;
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
@@ -178,13 +167,7 @@ export class NumberLine extends React.Component {
 
   render() {
     let { model, classes, onDeleteElements, onMoveElement } = this.props;
-    let {
-      showCorrectAnswer,
-      answers,
-      selectedElements,
-      showMaxPointsWarning,
-      elementType,
-    } = this.state;
+    let { showCorrectAnswer, answers, selectedElements, showMaxPointsWarning, elementType } = this.state;
     let {
       corrected = { correct: [], incorrect: [] },
       disabled,
@@ -196,18 +179,8 @@ export class NumberLine extends React.Component {
       colorContrast,
     } = model;
     let addElement = this.addElement.bind(this);
-    let elementsSelected =
-      !disabled && selectedElements && selectedElements.length > 0;
-    const {
-      ticks,
-      domain,
-      arrows,
-      maxNumberOfPoints,
-      height,
-      availableTypes,
-      title,
-      fraction
-    } = graph;
+    let elementsSelected = !disabled && selectedElements && selectedElements.length > 0;
+    const { ticks, domain, arrows, maxNumberOfPoints, height, availableTypes, title, fraction } = graph;
     const width = this.getSize('width', 400, 1600, 600);
     const graphProps = {
       disabled,
@@ -216,7 +189,7 @@ export class NumberLine extends React.Component {
       width,
       height: height || 100,
       arrows,
-      fraction
+      fraction,
     };
 
     let getAnswerElements = () => {
@@ -239,14 +212,9 @@ export class NumberLine extends React.Component {
       });
     };
 
-    let elements = showCorrectAnswer
-      ? getCorrectAnswerElements()
-      : getAnswerElements();
+    let elements = showCorrectAnswer ? getCorrectAnswerElements() : getAnswerElements();
 
-    let maxPointsMessage = () =>
-      `You can only add ${maxNumberOfPoints} element${
-        maxNumberOfPoints == 1 ? '' : 's'
-      }`;
+    let maxPointsMessage = () => `You can only add ${maxNumberOfPoints} element${maxNumberOfPoints == 1 ? '' : 's'}`;
 
     let deleteElements = () => {
       onDeleteElements(selectedElements);
@@ -272,11 +240,7 @@ export class NumberLine extends React.Component {
 
     let adjustedWidth = graphProps.width - 20;
 
-    const names = classNames(
-      classes.numberLine,
-      classes.mainContainer,
-      classes[colorContrast]
-    );
+    const names = classNames(classes.numberLine, classes.mainContainer, classes[colorContrast]);
 
     return (
       <div className={names} style={{ width }}>
@@ -288,11 +252,7 @@ export class NumberLine extends React.Component {
         <div>
           <div style={{ width: adjustedWidth }}>
             <Toggle
-              show={
-                isArray(correctResponse) &&
-                correctResponse.length &&
-                !emptyAnswer
-              }
+              show={isArray(correctResponse) && correctResponse.length && !emptyAnswer}
               toggled={showCorrectAnswer}
               onToggle={onShowCorrectAnswer}
               initialValue={false}
@@ -318,22 +278,9 @@ export class NumberLine extends React.Component {
             onDeselectElements={this.deselectElements.bind(this)}
             debug={false}
           />
-          {title && (
-            <div
-              className={classes.graphTitle}
-              dangerouslySetInnerHTML={{ __html: title }}
-            />
-          )}
-          {showMaxPointsWarning && (
-            <Feedback
-              type="info"
-              width={adjustedWidth}
-              message={maxPointsMessage()}
-            />
-          )}
-          {feedback && !showCorrectAnswer && (
-            <Feedback {...feedback} width={adjustedWidth} />
-          )}
+          {title && <div className={classes.graphTitle} dangerouslySetInnerHTML={{ __html: title }} />}
+          {showMaxPointsWarning && <Feedback type="info" width={adjustedWidth} message={maxPointsMessage()} />}
+          {feedback && !showCorrectAnswer && <Feedback {...feedback} width={adjustedWidth} />}
         </div>
       </div>
     );

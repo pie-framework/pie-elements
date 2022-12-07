@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
-import {Collapsible, PreviewPrompt} from '@pie-lib/render-ui';
+import { Collapsible, PreviewPrompt } from '@pie-lib/render-ui';
 import { withStyles } from '@material-ui/core/styles';
 
 import Container from './container';
@@ -11,7 +11,7 @@ class DrawingResponseComponent extends React.Component {
     super(props);
     this.state = {
       showCorrect: false,
-      hasError: false
+      hasError: false,
     };
   }
 
@@ -21,18 +21,10 @@ class DrawingResponseComponent extends React.Component {
 
   render() {
     const {
-      model: {
-        disabled,
-        imageDimensions,
-        imageUrl,
-        prompt,
-        mode,
-        teacherInstructions,
-        backgroundImageEnabled = true
-      },
+      model: { disabled, imageDimensions, imageUrl, prompt, mode, teacherInstructions, backgroundImageEnabled = true },
       session,
       onSessionChange,
-      classes
+      classes,
     } = this.props;
     const { hasError, errorMessage } = this.state;
     const isEvaluateMode = mode === 'evaluate';
@@ -46,7 +38,7 @@ class DrawingResponseComponent extends React.Component {
             <Collapsible
               labels={{
                 hidden: 'Show Teacher Instructions',
-                visible: 'Hide Teacher Instructions'
+                visible: 'Hide Teacher Instructions',
               }}
             >
               <PreviewPrompt prompt={teacherInstructions} />
@@ -77,13 +69,13 @@ DrawingResponseComponent.propTypes = {
   classes: PropTypes.object,
   model: PropTypes.object.isRequired,
   onSessionChange: PropTypes.func.isRequired,
-  session: PropTypes.object.isRequired
+  session: PropTypes.object.isRequired,
 };
 
 const styles = () => ({
   prompt: {
-    fontSize: 'inherit'
-  }
+    fontSize: 'inherit',
+  },
 });
 
 export default withStyles(styles)(DrawingResponseComponent);

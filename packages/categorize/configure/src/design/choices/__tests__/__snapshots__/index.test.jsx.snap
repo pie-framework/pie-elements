@@ -10,8 +10,6 @@ exports[`choices snapshot renders 1`] = `
     onAdd={[Function]}
   />
   <WithStyles(Config)
-    allChoicesHaveCount={[Function]}
-    categoryCountIsOne={false}
     config={
       Object {
         "categories": Array [

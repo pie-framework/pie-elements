@@ -4,12 +4,12 @@ import { shallow } from 'enzyme';
 import { MultipleChoice, Choice } from '../multiple-choice';
 import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
 
-
 describe('Choice', () => {
-  let wrapper, onChoiceChanged = jest.fn();
+  let wrapper,
+    onChoiceChanged = jest.fn();
 
   beforeEach(() => {
-    wrapper = extras => {
+    wrapper = (extras) => {
       const props = {
         classes: {},
         choice: {},
@@ -25,9 +25,9 @@ describe('Choice', () => {
         displayKey: '0',
         choicesLayout: 'grid',
         gridColumns: 2,
-        ...extras
+        ...extras,
       };
-      return shallow(<Choice {...props}/>);
+      return shallow(<Choice {...props} />);
     };
   });
 
@@ -68,16 +68,16 @@ describe('CorespringChoice', () => {
   let mkWrapper = (opts, clone = true) => {
     opts = clone
       ? (opts = _.merge(
-        {
-          classes: {},
-          choices: [],
-          disabled: false,
-          keyMode: 'letters',
-          onChoiceChanged: jest.fn(),
-          mode: 'gather'
-        },
-        opts
-      ))
+          {
+            classes: {},
+            choices: [],
+            disabled: false,
+            keyMode: 'letters',
+            onChoiceChanged: jest.fn(),
+            mode: 'gather',
+          },
+          opts,
+        ))
       : opts;
 
     return shallow(<MultipleChoice {...opts} />);
@@ -89,8 +89,8 @@ describe('CorespringChoice', () => {
         choices: [
           { value: 'a', label: 'label a', correct: true, feedback: 'great' },
           { value: 'b', label: 'label b' },
-          { value: 'c', label: 'label c', correct: true, feedback: 'great' }
-        ]
+          { value: 'c', label: 'label c', correct: true, feedback: 'great' },
+        ],
       });
 
       expect(wrapper).toMatchSnapshot();
@@ -104,11 +104,11 @@ describe('CorespringChoice', () => {
           choices: [
             { value: 'a', label: 'label a', correct: true, feedback: 'great' },
             { value: 'b', label: 'label b' },
-            { value: 'c', label: 'label c', correct: true, feedback: 'great' }
+            { value: 'c', label: 'label c', correct: true, feedback: 'great' },
           ],
           session: {
-            value: ['a']
-          }
+            value: ['a'],
+          },
         });
 
         expect(w).toMatchSnapshot();
@@ -120,14 +120,14 @@ describe('CorespringChoice', () => {
         { value: 'a', label: 'label a', correct: true, feedback: 'great' },
         { value: 'b', label: 'label b' },
         { value: 'c', label: 'label c', feedback: 'great' },
-        { value: 'd', label: 'label d', correct: true, feedback: 'great' }
+        { value: 'd', label: 'label d', correct: true, feedback: 'great' },
       ];
       let w = mkWrapper({
         mode: 'evaluate',
         choices: itemChoices,
         session: {
-          value: ['a', 'c']
-        }
+          value: ['a', 'c'],
+        },
       });
 
       describe('showCorrectToggle disabled (state.showCorrect is false)', () => {
@@ -175,27 +175,21 @@ describe('CorespringChoice', () => {
       });
 
       it('toggle show is set to false', () => {
-        expect(
-          mkWrapper()
-            .find(CorrectAnswerToggle)
-            .prop('show')
-        ).toEqual(false);
+        expect(mkWrapper().find(CorrectAnswerToggle).prop('show')).toEqual(false);
       });
 
       it('shows toggle if mode is evaluate, feedback is enabled and responseCorrect is false', () => {
         expect(
           mkWrapper({ mode: 'evaluate', responseCorrect: false, feedbackEnabled: true })
             .find(CorrectAnswerToggle)
-            .prop('show')
+            .prop('show'),
         ).toEqual(true);
       });
 
       it('hides toggle if mode is evaluate and responseCorrect is false', () => {
-        expect(
-          mkWrapper({ mode: 'evaluate', responseCorrect: true })
-            .find(CorrectAnswerToggle)
-            .prop('show')
-        ).toEqual(false);
+        expect(mkWrapper({ mode: 'evaluate', responseCorrect: true }).find(CorrectAnswerToggle).prop('show')).toEqual(
+          false,
+        );
       });
 
       it('not toggled if showCorrect is false', () => {

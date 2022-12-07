@@ -41,20 +41,17 @@ describe('controller', () => {
   });
 
   describe('outcome partialScoring test', () => {
-
-    describe('hanging controller', ()=> {
-
+    describe('hanging controller', () => {
       it('doesnt hang if answers is missing', async () => {
-        const response = await outcome({}, {id: "1"}, {});
-        expect(response).toEqual({score: 0, empty: true});
+        const response = await outcome({}, { id: '1' }, {});
+        expect(response).toEqual({ score: 0, empty: true });
       });
 
       it('doesnt hang if the rest is missing', async () => {
-        const response = await outcome({}, {id: "1", answers: {}}, {});
-        expect(response).toEqual({score: 0 });
+        const response = await outcome({}, { id: '1', answers: {} }, {});
+        expect(response).toEqual({ score: 0 });
       });
-
-    })
+    });
 
     beforeEach(() => {
       const rectangles = question.shapes.rectangles.concat({
@@ -72,11 +69,7 @@ describe('controller', () => {
 
     const assertOutcome = (message, extra, sessionValue, env, expected) => {
       it(message, async () => {
-        const result = await outcome(
-          { ...question, ...extra },
-          sessionValue,
-          env
-        );
+        const result = await outcome({ ...question, ...extra }, sessionValue, env);
         expect(result).toEqual(expect.objectContaining(expected));
       });
     };
@@ -86,7 +79,7 @@ describe('controller', () => {
       { partialScoring: true },
       { answers: [{ id: '2' }] },
       { mode: 'evaluate' },
-      { score: 0 }
+      { score: 0 },
     );
 
     assertOutcome(
@@ -94,7 +87,7 @@ describe('controller', () => {
       { partialScoring: false },
       { answers: [{ id: '2' }] },
       { mode: 'evaluate' },
-      { score: 0 }
+      { score: 0 },
     );
 
     assertOutcome(
@@ -102,7 +95,7 @@ describe('controller', () => {
       { partialScoring: false },
       { answers: [{ id: '2' }] },
       { mode: 'evaluate', partialScoring: true },
-      { score: 0 }
+      { score: 0 },
     );
 
     assertOutcome(
@@ -110,7 +103,7 @@ describe('controller', () => {
       { partialScoring: true },
       { answers: [{ id: '2' }] },
       { mode: 'evaluate', partialScoring: false },
-      { score: 0 }
+      { score: 0 },
     );
   });
 
@@ -136,13 +129,16 @@ describe('controller', () => {
 
     describe('partial scoring', () => {
       beforeEach(() => {
-        const rectangles = question.shapes.rectangles.concat({
-          id: '5',
-          correct: true,
-        }, {
-          id: '6',
-          correct: true,
-        });
+        const rectangles = question.shapes.rectangles.concat(
+          {
+            id: '5',
+            correct: true,
+          },
+          {
+            id: '6',
+            correct: true,
+          },
+        );
         question = {
           ...question,
           partialScoring: true,
@@ -172,13 +168,12 @@ describe('controller', () => {
       });
 
       it('returns a score of 0.5 for 2/4 correct answers and 0 incorrect answers', async () => {
-        const result = await outcome(question, { answers: [{ id: '5' }, { id: '4'}] });
+        const result = await outcome(question, { answers: [{ id: '5' }, { id: '4' }] });
         expect(result.score).toEqual(0.5);
       });
 
-
       it('returns a score of 0.75 for 3/4 correct answers and 0 incorrect answers', async () => {
-        const result = await outcome(question, { answers: [{ id: '1' }, { id: '5' }, { id: '4'}] });
+        const result = await outcome(question, { answers: [{ id: '1' }, { id: '5' }, { id: '4' }] });
         expect(result.score).toEqual(0.75);
       });
 
@@ -247,9 +242,7 @@ describe('controller', () => {
     });
 
     const returnOutcome = (session) => {
-      it(`returns empty: true when session is ${JSON.stringify(
-        session
-      )}`, async () => {
+      it(`returns empty: true when session is ${JSON.stringify(session)}`, async () => {
         const result = await outcome(question, session);
         expect(result).toEqual({ score: 0, empty: true });
       });
@@ -298,15 +291,9 @@ describe('controller', () => {
 
       it('returns shapes', () => {
         expect(result.shapes.rectangles).toEqual(
-          expect.arrayContaining([
-            { id: '1', correct: true },
-            { id: '2' },
-            { id: '3' },
-          ])
+          expect.arrayContaining([{ id: '1', correct: true }, { id: '2' }, { id: '3' }]),
         );
-        expect(result.shapes.polygons).toEqual(
-          expect.arrayContaining([{ id: '4', correct: true }])
-        );
+        expect(result.shapes.polygons).toEqual(expect.arrayContaining([{ id: '4', correct: true }]));
       });
 
       it('does not return responseCorrect', () => {
@@ -336,15 +323,9 @@ describe('controller', () => {
 
       it('returns choices w/ correct', () => {
         expect(result.shapes.rectangles).toEqual(
-          expect.arrayContaining([
-            { id: '1', correct: true },
-            { id: '2' },
-            { id: '3' },
-          ])
+          expect.arrayContaining([{ id: '1', correct: true }, { id: '2' }, { id: '3' }]),
         );
-        expect(result.shapes.polygons).toEqual(
-          expect.arrayContaining([{ id: '4', correct: true }])
-        );
+        expect(result.shapes.polygons).toEqual(expect.arrayContaining([{ id: '4', correct: true }]));
       });
 
       it('returns is response correct', () => {
@@ -355,9 +336,7 @@ describe('controller', () => {
 
   describe('isResponseCorrect', () => {
     const returnIsResponseCorect = (session) => {
-      it(`response is not correct if session is ${JSON.stringify(
-        session
-      )}`, () => {
+      it(`response is not correct if session is ${JSON.stringify(session)}`, () => {
         expect(isResponseCorrect(question, session)).toEqual(false);
       });
     };

@@ -9,30 +9,31 @@ import EditableHtml from '@pie-lib/editable-html';
 import GraphingConfig from './graphing-config';
 import CorrectResponse from './correct-response';
 import intersection from 'lodash/intersection';
+import isEmpty from 'lodash/isEmpty';
 
 const { Panel, toggle, radio, checkboxes } = settings;
 const log = debug('@pie-element:graphing:configure');
 
-const styles = theme => ({
+const styles = (theme) => ({
   title: {
     fontSize: '1.1rem',
     display: 'block',
     marginTop: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit
+    marginBottom: theme.spacing.unit,
   },
   content: {
-    marginTop: theme.spacing.unit * 2
+    marginTop: theme.spacing.unit * 2,
   },
   promptHolder: {
     width: '100%',
     paddingBottom: theme.spacing.unit * 2,
     marginBottom: theme.spacing.unit * 2,
-    marginTop: theme.spacing.unit * 2
+    marginTop: theme.spacing.unit * 2,
   },
   prompt: {
     paddingTop: theme.spacing.unit * 2,
-    width: '100%'
-  }
+    width: '100%',
+  },
 });
 
 export class Configure extends React.Component {
@@ -43,7 +44,7 @@ export class Configure extends React.Component {
     imageSupport: PropTypes.object,
     uploadSoundSupport: PropTypes.object,
     model: PropTypes.object.isRequired,
-    configuration: PropTypes.object.isRequired
+    configuration: PropTypes.object.isRequired,
   };
 
   static defaultProps = { classes: {} };
@@ -61,36 +62,39 @@ export class Configure extends React.Component {
           left: true,
           right: true,
           up: true,
-          down: true
+          down: true,
         };
       } else {
         arrows = {
           left: false,
           right: false,
           up: false,
-          down: false
+          down: false,
         };
       }
     }
 
-    const toolbarTools = intersection(availableTools || [], model.toolbarTools || []);
+    const toolbarTools = intersection(
+      availableTools || [],
+      model.toolbarTools || []
+    );
 
     onModelChanged && onModelChanged({ ...model, arrows, toolbarTools });
-  };
+  }
 
-  onRationaleChange = rationale => {
+  onRationaleChange = (rationale) => {
     const { onModelChanged, model } = this.props;
 
     onModelChanged({ ...model, rationale });
   };
 
-  onPromptChange = prompt => {
+  onPromptChange = (prompt) => {
     const { onModelChanged, model } = this.props;
 
     onModelChanged({ ...model, prompt });
   };
 
-  onTeacherInstructionsChange = teacherInstructions => {
+  onTeacherInstructionsChange = (teacherInstructions) => {
     const { onModelChanged, model } = this.props;
 
     onModelChanged({ ...model, teacherInstructions });
@@ -104,7 +108,7 @@ export class Configure extends React.Component {
       onConfigurationChanged,
       onModelChanged,
       imageSupport,
-      uploadSoundSupport
+      uploadSoundSupport,
     } = this.props;
     const {
       arrows = {},
@@ -127,13 +131,13 @@ export class Configure extends React.Component {
       withRubric = {},
     } = configuration || {};
     const {
+      errors = {},
       labelsEnabled,
       promptEnabled,
       rationaleEnabled,
       spellCheckEnabled,
       teacherInstructionsEnabled,
       titleEnabled,
-      rubricEnabled
     } = model || {};
 
     log('[render] model', model);
@@ -157,35 +161,31 @@ export class Configure extends React.Component {
             onChangeConfiguration={onConfigurationChanged}
             groups={{
               'Item Type': {
-                arrows: arrows.settings && checkboxes(arrows.label, {
-                  left: arrows.left,
-                  right: arrows.right,
-                  up: arrows.up,
-                  down: arrows.down
-                }),
+                arrows:
+                  arrows.settings &&
+                  checkboxes(arrows.label, {
+                    left: arrows.left,
+                    right: arrows.right,
+                    up: arrows.up,
+                    down: arrows.down,
+                  }),
                 titleEnabled: title.settings && toggle(title.label),
                 padding: padding.settings && toggle(padding.label),
                 labelsEnabled: labels.settings && toggle(labels.label),
-                coordinatesOnHover: coordinatesOnHover.settings && toggle(coordinatesOnHover.label),
+                coordinatesOnHover:
+                  coordinatesOnHover.settings &&
+                  toggle(coordinatesOnHover.label),
               },
               Properties: {
-                'authoring.enabled':
-                  authoring.settings && toggle(authoring.label, true),
-                teacherInstructionsEnabled:
-                  teacherInstructions.settings &&
-                  toggle(teacherInstructions.label),
-                studentInstructionsEnabled:
-                  studentInstructions.settings &&
-                  toggle(studentInstructions.label),
+                'authoring.enabled': authoring.settings && toggle(authoring.label, true),
+                teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
+                studentInstructionsEnabled: studentInstructions.settings && toggle(studentInstructions.label),
                 promptEnabled: prompt.settings && toggle(prompt.label),
                 rationaleEnabled: rationale.settings && toggle(rationale.label),
-                spellCheckEnabled:
-                    spellCheck.settings && toggle(spellCheck.label),
-                scoringType:
-                  scoringType.settings &&
-                  radio(scoringType.label, ['dichotomous', 'partial scoring']),
-                rubricEnabled: withRubric?.settings && toggle(withRubric?.label)
-              }
+                spellCheckEnabled: spellCheck.settings && toggle(spellCheck.label),
+                scoringType: scoringType.settings && radio(scoringType.label, ['dichotomous', 'partial scoring']),
+                rubricEnabled: withRubric?.settings && toggle(withRubric?.label),
+              },
             }}
           />
         }
@@ -193,17 +193,13 @@ export class Configure extends React.Component {
         <div className={classes.content}>
           <Typography component="div" type="body1">
             <span>
-              This interaction asks a student to draw a line that meets specific
-              criteria. The student will draw the line by clicking on two points
-              on the graph.
+              This interaction asks a student to draw a line that meets specific criteria. The student will draw the
+              line by clicking on two points on the graph.
             </span>
           </Typography>
 
           {teacherInstructionsEnabled && (
-            <InputContainer
-              label={teacherInstructions.label}
-              className={classes.promptHolder}
-            >
+            <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
               <EditableHtml
                 className={classes.prompt}
                 markup={model.teacherInstructions || ''}
@@ -211,19 +207,25 @@ export class Configure extends React.Component {
                 imageSupport={imageSupport}
                 nonEmpty={false}
                 spellCheck={spellCheckEnabled}
-                maxImageWidth={maxImageWidth && maxImageWidth.teacherInstructions || defaultImageMaxWidth}
-                maxImageHeight={maxImageHeight && maxImageHeight.teacherInstructions || defaultImageMaxHeight}
+                maxImageWidth={
+                  (maxImageWidth && maxImageWidth.teacherInstructions) ||
+                  defaultImageMaxWidth
+                }
+                maxImageHeight={
+                  (maxImageHeight && maxImageHeight.teacherInstructions) ||
+                  defaultImageMaxHeight
+                }
                 uploadSoundSupport={uploadSoundSupport}
-                languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+                languageCharactersProps={[
+                  { language: 'spanish' },
+                  { language: 'special' },
+                ]}
               />
             </InputContainer>
           )}
 
           {promptEnabled && (
-            <InputContainer
-              label={prompt.label}
-              className={classes.promptHolder}
-            >
+            <InputContainer label={prompt.label} className={classes.promptHolder}>
               <EditableHtml
                 className={classes.prompt}
                 markup={model.prompt}
@@ -235,26 +237,35 @@ export class Configure extends React.Component {
                 maxImageWidth={defaultImageMaxWidth}
                 maxImageHeight={defaultImageMaxHeight}
                 uploadSoundSupport={uploadSoundSupport}
-                languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+                languageCharactersProps={[
+                  { language: 'spanish' },
+                  { language: 'special' },
+                ]}
               />
             </InputContainer>
           )}
 
           {rationaleEnabled && (
-            <InputContainer
-              label={rationale.label || 'Rationale'}
-              className={classes.promptHolder}
-            >
+            <InputContainer label={rationale.label || 'Rationale'} className={classes.promptHolder}>
               <EditableHtml
                 className={classes.prompt}
                 markup={model.rationale || ''}
                 onChange={this.onRationaleChange}
                 imageSupport={imageSupport}
                 spellCheck={spellCheckEnabled}
-                maxImageWidth={maxImageWidth && maxImageWidth.rationale || defaultImageMaxWidth}
-                maxImageHeight={maxImageHeight && maxImageHeight.rationale || defaultImageMaxHeight}
+                maxImageWidth={
+                  (maxImageWidth && maxImageWidth.rationale) ||
+                  defaultImageMaxWidth
+                }
+                maxImageHeight={
+                  (maxImageHeight && maxImageHeight.rationale) ||
+                  defaultImageMaxHeight
+                }
                 uploadSoundSupport={uploadSoundSupport}
-                languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+                languageCharactersProps={[
+                  { language: 'spanish' },
+                  { language: 'special' },
+                ]}
               />
             </InputContainer>
           )}
@@ -274,6 +285,7 @@ export class Configure extends React.Component {
 
           <CorrectResponse
             availableTools={availableTools}
+            errors={errors}
             model={model}
             onChange={this.props.onModelChanged}
           />

@@ -3,7 +3,7 @@ import defaults from './defaults';
 
 const log = debug('pie-elements:drawing-response:controller');
 
-export const normalize = question => ({
+export const normalize = (question) => ({
   promptEnabled: true,
   teacherInstructionsEnabled: true,
   studentInstructionsEnabled: true,
@@ -13,26 +13,22 @@ export const normalize = question => ({
 
 export function model(question, session, env) {
   const normalizedQuestion = normalize(question);
-  const {
-    imageUrl,
-    imageDimensions,
-    prompt,
-    promptEnabled,
-    backgroundImageEnabled
-  } = normalizedQuestion;
+  const { imageUrl, imageDimensions, prompt, promptEnabled, backgroundImageEnabled } = normalizedQuestion;
 
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     const out = {
       disabled: env.mode !== 'gather',
       mode: env.mode,
       imageDimensions,
       imageUrl,
       prompt: promptEnabled ? prompt : null,
-      backgroundImageEnabled
+      backgroundImageEnabled,
     };
 
     if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
-      out.teacherInstructions = normalizedQuestion.teacherInstructionsEnabled ? normalizedQuestion.teacherInstructions : null;
+      out.teacherInstructions = normalizedQuestion.teacherInstructionsEnabled
+        ? normalizedQuestion.teacherInstructions
+        : null;
     } else {
       out.teacherInstructions = null;
     }
@@ -42,20 +38,20 @@ export function model(question, session, env) {
 }
 
 export const createDefaultModel = (model = {}) =>
-  new Promise(resolve => {
+  new Promise((resolve) => {
     resolve({
       ...defaults,
       ...model,
-    })
+    });
   });
 
 export function outcome(/*config, session*/) {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     log('outcome...');
     resolve({
       score: 0,
       completed: 'n/a',
-      note: 'Requires manual scoring'
+      note: 'Requires manual scoring',
     });
   });
 }

@@ -9,13 +9,7 @@ const log = debug('@pie-element:select-text:controller');
 const buildTokens = (tokens, evaluateMode) => {
   tokens = tokens || [];
 
-  return tokens.map((t) =>
-    Object.assign(
-      {},
-      t,
-      evaluateMode ? { correct: !!t.correct } : { correct: undefined }
-    )
-  );
+  return tokens.map((t) => Object.assign({}, t, evaluateMode ? { correct: !!t.correct } : { correct: undefined }));
 };
 
 export const getCorrectness = (tokens, selected) => {
@@ -45,19 +39,18 @@ export const getCorrectness = (tokens, selected) => {
 const getCorrectSelected = (tokens, selected) => {
   return (selected || []).filter((s) => {
     const index = tokens.findIndex((c) => {
-      return c.correct &&
-        (
-          (c.start === s.start && c.end === s.end) ||
+      return (
+        c.correct &&
+        ((c.start === s.start && c.end === s.end) ||
           // this case is used for the cases when the token's start & end were recalculated
-          (c.start === s.oldStart && c.end === s.oldEnd)
-        );
+          (c.start === s.oldStart && c.end === s.oldEnd))
+      );
     });
     return index !== -1;
   });
 };
 
-const getCorrectCount = (tokens, selected) =>
-  getCorrectSelected(tokens, selected).length;
+const getCorrectCount = (tokens, selected) => getCorrectSelected(tokens, selected).length;
 
 export const getPartialScore = (question, session, totalCorrect) => {
   if (!session || isEmpty(session)) {
@@ -71,9 +64,7 @@ export const getPartialScore = (question, session, totalCorrect) => {
   const count = correctCount - incorrectCount;
   const positiveCount = count < 0 ? 0 : count;
 
-  return totalCorrect.length
-    ? parseFloat((positiveCount / totalCorrect.length).toFixed(2))
-    : 0;
+  return totalCorrect.length ? parseFloat((positiveCount / totalCorrect.length).toFixed(2)) : 0;
 };
 
 export const outcome = (question, session, env) =>
@@ -127,15 +118,10 @@ export const model = (question, session, env) => {
   return new Promise((resolve) => {
     log('[model]', 'normalizedQuestion: ', normalizedQuestion);
     log('[model]', 'session: ', session);
-    const tokens = buildTokens(
-      normalizedQuestion.tokens,
-      env.mode === 'evaluate'
-    );
+    const tokens = buildTokens(normalizedQuestion.tokens, env.mode === 'evaluate');
     log('tokens:', tokens);
     const correctness =
-      env.mode === 'evaluate'
-        ? getCorrectness(normalizedQuestion.tokens, session.selectedTokens)
-        : undefined;
+      env.mode === 'evaluate' ? getCorrectness(normalizedQuestion.tokens, session.selectedTokens) : undefined;
 
     const fb =
       env.mode === 'evaluate' && normalizedQuestion.feedbackEnabled
@@ -146,25 +132,17 @@ export const model = (question, session, env) => {
       const out = {
         tokens,
         highlightChoices: normalizedQuestion.highlightChoices,
-        prompt: normalizedQuestion.promptEnabled
-          ? normalizedQuestion.prompt
-          : null,
+        prompt: normalizedQuestion.promptEnabled ? normalizedQuestion.prompt : null,
         text: normalizedQuestion.text,
         disabled: env.mode !== 'gather',
         maxSelections: normalizedQuestion.maxSelections,
         correctness,
         feedback,
-        incorrect:
-          env.mode === 'evaluate' ? correctness !== 'correct' : undefined,
+        incorrect: env.mode === 'evaluate' ? correctness !== 'correct' : undefined,
       };
 
-      if (
-        env.role === 'instructor' &&
-        (env.mode === 'view' || env.mode === 'evaluate')
-      ) {
-        out.rationale = normalizedQuestion.rationaleEnabled
-          ? normalizedQuestion.rationale
-          : null;
+      if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
+        out.rationale = normalizedQuestion.rationaleEnabled ? normalizedQuestion.rationale : null;
         out.teacherInstructions = normalizedQuestion.teacherInstructionsEnabled
           ? normalizedQuestion.teacherInstructions
           : null;
@@ -200,7 +178,7 @@ export const validate = (model = {}, config = {}) => {
   const errors = {};
   const nbOfTokens = (tokens || []).length;
 
-  const nbOfSelections = (tokens || []).reduce((acc, token) => token.correct ? acc + 1 : acc, 0);
+  const nbOfSelections = (tokens || []).reduce((acc, token) => (token.correct ? acc + 1 : acc), 0);
 
   if (nbOfTokens < minTokens) {
     errors.tokensError = `There should be at least ${minTokens} tokens defined.`;

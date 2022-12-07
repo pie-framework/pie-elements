@@ -6,7 +6,7 @@ import debug from 'debug';
 
 const log = debug('pie-element:passage:print');
 
-const preparePrintPassage = model =>
+const preparePrintPassage = (model) =>
   model.passages.map((passage, index) => {
     return {
       id: index,
@@ -36,7 +36,7 @@ export default class PassagePrint extends HTMLElement {
         }
       },
       50,
-      { leading: false, trailing: true }
+      { leading: false, trailing: true },
     );
   }
 

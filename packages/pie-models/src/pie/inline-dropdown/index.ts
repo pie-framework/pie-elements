@@ -1,10 +1,7 @@
 import { PieModel } from '../../PieModel';
 import { PromptConfig } from '../../PromptConfig';
 import { CommonConfigSettings } from '../../CommonConfigSettings';
-import {
-  ConfigureMaxImageDimensionsProp,
-  ConfigureProp,
-} from '../ConfigurationProp';
+import { ConfigureMaxImageDimensionsProp, ConfigureProp } from '../ConfigurationProp';
 
 export interface Choice {
   /** The value for the choice */
@@ -106,9 +103,7 @@ export interface InlineDropdownPie extends PieModel {
  * Config Object for @pie-elements/inline-dropdown
  * @additionalProperties false
  */
-export interface InlineDropdownConfigure
-  extends PromptConfig,
-    CommonConfigSettings {
+export interface InlineDropdownConfigure extends PromptConfig, CommonConfigSettings {
   /**
    * Choices configuration
    */

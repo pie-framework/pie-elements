@@ -12,21 +12,23 @@ const model = () => ({
       x: 1,
       y: 1,
       correct: true,
-      group: 'rectangles'
-    }, {
+      group: 'rectangles',
+    },
+    {
       id: '1',
       height: 140,
       width: 130,
       x: 140,
       y: 1,
-      group: 'rectangles'
-    }, {
+      group: 'rectangles',
+    },
+    {
       id: '2',
       height: 140,
       width: 130,
       x: 280,
       y: 1,
-      group: 'rectangles'
+      group: 'rectangles',
     },
     {
       id: '3',
@@ -34,32 +36,37 @@ const model = () => ({
         { x: 1, y: 148 },
         { x: 1, y: 288 },
         { y: 288, x: 129 },
-        { y: 148, x: 129 }],
+        { y: 148, x: 129 },
+      ],
       correct: true,
-      group: 'polygons'
-    }, {
+      group: 'polygons',
+    },
+    {
       id: '4',
       points: [
         { y: 151, x: 141 },
         { y: 289, x: 141 },
         { y: 289, x: 269 },
-        { x: 269, y: 151 }],
+        { x: 269, y: 151 },
+      ],
       correct: false,
-      group: 'polygons'
-    }, {
+      group: 'polygons',
+    },
+    {
       id: '5',
       points: [
         { x: 279, y: 150 },
         { x: 279, y: 289 },
         { x: 407, y: 289 },
-        { x: 407, y: 150 }
+        { x: 407, y: 150 },
       ],
       correct: false,
-      group: 'polygons'
-    }
+      group: 'polygons',
+    },
   ],
   dimensions: {
-    height: 291, width: 410
+    height: 291,
+    width: 410,
   },
   hotspotColor: 'rgba(137, 183, 244, 0.65)',
   outlineColor: 'blue',
@@ -72,11 +79,9 @@ describe('HotspotDrawable', () => {
     handleEnableDrag = jest.fn(),
     onUpdateImageDimension = jest.fn(),
     onUpdateShapes = jest.fn(),
-    initialModel = model()
-  ;
-
+    initialModel = model();
   beforeEach(() => {
-    w = extras => {
+    w = (extras) => {
       const props = {
         classes: {},
         dimensions: initialModel.dimensions,
@@ -90,11 +95,11 @@ describe('HotspotDrawable', () => {
         outlineColor: initialModel.outlineColor,
         shapes: initialModel.shapes,
         strokeWidth: 5,
-        ...extras
+        ...extras,
       };
 
       return shallow(<Drawable {...props} />);
-    }
+    };
   });
 
   describe('render', () => {
@@ -126,8 +131,8 @@ describe('HotspotDrawable', () => {
         currentTarget: 'Stage',
         evt: {
           layerX: 20,
-          layerY: 30
-        }
+          layerY: 30,
+        },
       };
 
       wrapper.instance().handleOnMouseDown(event);
@@ -141,8 +146,8 @@ describe('HotspotDrawable', () => {
         currentTarget: 'Stage',
         evt: {
           layerX: 20,
-          layerY: 30
-        }
+          layerY: 30,
+        },
       };
 
       wrapper.instance().handleOnMouseDown(event);
@@ -156,8 +161,8 @@ describe('HotspotDrawable', () => {
           x: 20,
           y: 30,
           group: 'rectangles',
-          index: 6
-        }
+          index: 6,
+        },
       ]);
     });
 
@@ -168,8 +173,8 @@ describe('HotspotDrawable', () => {
       wrapper.instance().handleOnMouseUp({
         evt: {
           layerX: 20,
-          layerY: 30
-        }
+          layerY: 30,
+        },
       });
 
       expect(onUpdateShapes).toHaveBeenCalledWith([...initialModel.shapes.slice(0, 2)]);
@@ -180,12 +185,11 @@ describe('HotspotDrawable', () => {
       wrapper.instance().handleOnMouseUp({
         evt: {
           layerX: 20,
-          layerY: 30
-        }
+          layerY: 30,
+        },
       });
 
       expect(onUpdateShapes).not.toBeCalledWith(false);
-
 
       wrapper.instance().handleOnMouseUp({});
 
@@ -193,35 +197,31 @@ describe('HotspotDrawable', () => {
     });
 
     it('handleOnSetAsCorrect correct', () => {
-      wrapper.instance().handleOnSetAsCorrect(
-        {
-          id: '1'
-        }
-      );
+      wrapper.instance().handleOnSetAsCorrect({
+        id: '1',
+      });
 
       expect(onUpdateShapes).toHaveBeenCalledWith([
         initialModel.shapes[0],
         {
           ...initialModel.shapes[1],
-          correct: true
+          correct: true,
         },
-        ...initialModel.shapes.slice(2)
+        ...initialModel.shapes.slice(2),
       ]);
     });
 
     it('handleOnSetAsCorrect incorrect', () => {
-      wrapper.instance().handleOnSetAsCorrect(
-        {
-          id: '0'
-        }
-      );
+      wrapper.instance().handleOnSetAsCorrect({
+        id: '0',
+      });
 
       expect(onUpdateShapes).toHaveBeenCalledWith([
         {
           ...initialModel.shapes[0],
-          correct: false
+          correct: false,
         },
-        ...initialModel.shapes.slice(1)
+        ...initialModel.shapes.slice(1),
       ]);
     });
 
@@ -232,9 +232,9 @@ describe('HotspotDrawable', () => {
         {
           ...initialModel.shapes[0],
           x: 1,
-          y: 1
+          y: 1,
         },
-        ...initialModel.shapes.slice(1)
+        ...initialModel.shapes.slice(1),
       ]);
     });
 
@@ -243,6 +243,5 @@ describe('HotspotDrawable', () => {
 
       expect(onUpdateShapes).toHaveBeenCalledWith(initialModel.shapes);
     });
-
   });
 });

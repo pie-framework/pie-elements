@@ -21,12 +21,12 @@ export default {
     graphTitle: {
       settings: false,
       label: 'Graph Title',
-      enabled: true
+      enabled: true,
     },
     labels: {
       settings: false,
       label: 'Labels',
-      enabled: true
+      enabled: true,
     },
     rationale: {
       settings: false,

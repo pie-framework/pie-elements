@@ -3,7 +3,7 @@ import { Main } from '../main';
 import { shallow } from 'enzyme/build';
 
 jest.mock('lodash/uniq', () => {
-  return () => ([]);
+  return () => [];
 });
 
 describe('Main', () => {
@@ -14,14 +14,14 @@ describe('Main', () => {
     },
     onSessionChange: jest.fn(),
     onAnswersChange: jest.fn(),
-    session: {}
+    session: {},
   };
 
   describe('render', () => {
     let w;
 
     beforeEach(() => {
-      w = props => shallow(<Main { ...props } />);
+      w = (props) => shallow(<Main {...props} />);
     });
 
     it('snapshot', () => {

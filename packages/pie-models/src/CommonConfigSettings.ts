@@ -3,8 +3,8 @@
  */
 export interface CommonConfigSettings {
   /**
-     * Indicates whether the settings panel wil allow the author to modify settings for partial scoring
-     * @default true
-     */
-    settingsPartialScoring?:  boolean;
+   * Indicates whether the settings panel wil allow the author to modify settings for partial scoring
+   * @default true
+   */
+  settingsPartialScoring?: boolean;
 }

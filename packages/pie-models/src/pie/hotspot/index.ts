@@ -2,10 +2,7 @@ import { Shape } from '../../Shape';
 import { Dimension } from '../../Dimension';
 import { PieModel } from '../../PieModel';
 import { PromptConfig } from '../../PromptConfig';
-import {
-  ConfigureMaxImageDimensionsProp,
-  ConfigureProp,
-} from '../ConfigurationProp';
+import { ConfigureMaxImageDimensionsProp, ConfigureProp } from '../ConfigurationProp';
 
 /**
  * Model for the @pie-elements/hotspot Interaction

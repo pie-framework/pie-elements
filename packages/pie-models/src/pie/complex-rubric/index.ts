@@ -4,7 +4,7 @@ import { MultiTraitRubricConfigure, MultiTraitRubricPie } from '../multi-trait-r
 
 enum RubricType {
   SimpleRubric = 'simpleRubric',
-  MultiTraitRubric = 'multiTraitRubric'
+  MultiTraitRubric = 'multiTraitRubric',
 }
 
 interface RubricModels {

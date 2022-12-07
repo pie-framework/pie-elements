@@ -821,30 +821,6 @@ Indicates x coordinate
 
 Indicates y coordinate
 
-### `center` (object)
-
-Properties of the `center` object:
-
-#### `x` (number, required)
-
-Indicates x coordinate
-
-#### `y` (number, required)
-
-Indicates y coordinate
-
-### `outerPoint` (object)
-
-Properties of the `outerPoint` object:
-
-#### `x` (number, required)
-
-Indicates x coordinate
-
-#### `y` (number, required)
-
-Indicates y coordinate
-
 ### `closed` (boolean)
 
 Indicates if mark is closed if type is polygon, sine
