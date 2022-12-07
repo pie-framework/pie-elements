@@ -274,8 +274,11 @@ export const validate = (model = {}, config = {}) => {
   const { answers, toolbarTools } = model;
   const errors = {};
   const correctAnswerErrors = {};
+  const toolbarToolsNoLabel = (toolbarTools || []).filter(
+    (tool) => tool !== 'label'
+  );
 
-  if (!toolbarTools.length) {
+  if (!toolbarToolsNoLabel.length) {
     errors.toolbarToolsError = 'There should be at least 1 tool defined.';
   }
 
