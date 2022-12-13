@@ -59,15 +59,7 @@ export class Design extends React.Component {
     });
   }, 200);
 
-  changeText = (event) => {
-    const value = event.target.value;
-    const preparedText = value;
-
-    this.setState({
-      text: value,
-    });
-    this.updateText(preparedText);
-  };
+  changeText = (event) => this.updateText(event.target.value);
 
   changeTokens = (tokens, mode) => {
     this.apply((u) => {
@@ -267,7 +259,7 @@ export class Design extends React.Component {
               label={text.label}
               className={classes.input}
               multiline
-              value={textValue}
+              defaultValue={textValue}
               onChange={this.changeText}
               spellCheck={spellCheckEnabled}
             />
@@ -301,11 +293,11 @@ export class Design extends React.Component {
           {selectionsError && <div className={classes.errorText}>{selectionsError}</div>}
 
           {mode.settings && (
-            <Chip label={`${mode.label}: ${model.mode ? model.mode : 'None'}`} className={classes.chip} />
+            <Chip label={`${mode.label}: ${model.mode ? model.mode : 'None'}`} className={classes.chip}/>
           )}
 
           {selections.settings && (
-            <Chip label={`${selections.label}: ${tokensModel.length}`} className={classes.chip} />
+            <Chip label={`${selections.label}: ${tokensModel.length}`} className={classes.chip}/>
           )}
 
           {correctAnswer.settings && (
@@ -327,7 +319,7 @@ export class Design extends React.Component {
           )}
 
           {feedbackEnabled && (
-            <FeedbackConfig feedback={model.feedback} onChange={this.changeFeedback} toolbarOpts={toolbarOpts} />
+            <FeedbackConfig feedback={model.feedback} onChange={this.changeFeedback} toolbarOpts={toolbarOpts}/>
           )}
         </div>
       </layout.ConfigLayout>
