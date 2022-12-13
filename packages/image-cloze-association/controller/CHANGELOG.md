@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.2.23](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association-controller@3.2.22...@pie-element/image-cloze-association-controller@3.2.23) (2022-12-07)
+
+
+### Bug Fixes
+
+* update libs ([441f403](https://github.com/pie-framework/pie-elements/commit/441f403870b7bec0d61fab58b8d93dbe0ead4c32))
+
+
+
+
+
 ## [3.2.19](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association-controller@3.2.17...@pie-element/image-cloze-association-controller@3.2.19) (2021-11-11)
 
 **Note:** Version bump only for package @pie-element/image-cloze-association-controller

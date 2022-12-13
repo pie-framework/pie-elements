@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-controller@3.4.9...@pie-element/explicit-constructed-response-controller@3.5.0) (2022-12-07)
+
+
+### Bug Fixes
+
+* update libs ([441f403](https://github.com/pie-framework/pie-elements/commit/441f403870b7bec0d61fab58b8d93dbe0ead4c32))
+
+
+### Features
+
+* **explicit-constructed-response:** added configurable validation PD-1706 ([327af4a](https://github.com/pie-framework/pie-elements/commit/327af4abe87af52389232c56afdd6e0dfd6c77f7))
+
+
+
+
+
 ## [3.4.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-controller@3.4.8...@pie-element/explicit-constructed-response-controller@3.4.9) (2022-05-16)
 
 **Note:** Version bump only for package @pie-element/explicit-constructed-response-controller

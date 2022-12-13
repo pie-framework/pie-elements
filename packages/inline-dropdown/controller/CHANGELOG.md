@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-controller@4.1.0...@pie-element/inline-dropdown-controller@4.1.1) (2022-12-07)
+
+
+### Bug Fixes
+
+* update libs ([441f403](https://github.com/pie-framework/pie-elements/commit/441f403870b7bec0d61fab58b8d93dbe0ead4c32))
+
+
+
+
+
 # [4.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-controller@4.0.0...@pie-element/inline-dropdown-controller@4.1.0) (2022-08-02)
 
 

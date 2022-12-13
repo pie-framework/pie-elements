@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-configure@6.3.0...@pie-element/placement-ordering-configure@6.3.1) (2022-12-07)
+
+
+### Bug Fixes
+
+* revert Patricia's latest changes related to PD-2155, revert Carla's changes related to PD-1559, and updated the approach of setting a default session value PD-2155 ([890f3a3](https://github.com/pie-framework/pie-elements/commit/890f3a3fb9077d7f2e53062ad9d4cd43c7d30365))
+* update libs ([441f403](https://github.com/pie-framework/pie-elements/commit/441f403870b7bec0d61fab58b8d93dbe0ead4c32))
+* update libs for PD-2030 PD-2031 ([3174022](https://github.com/pie-framework/pie-elements/commit/3174022d45603ed217bbe8804a142b07084636a5))
+* updated lib PD-1715 ([42e788d](https://github.com/pie-framework/pie-elements/commit/42e788db0c792838994e55001952da7701251a8e))
+* updated libs ([c20de3a](https://github.com/pie-framework/pie-elements/commit/c20de3a6ba4499a090c809e18e52588d2a585fa0))
+* updated libs ([0eed79a](https://github.com/pie-framework/pie-elements/commit/0eed79a32c3b777c16c8cabf201513fc1d2726a0))
+* updated libs ([343c9ec](https://github.com/pie-framework/pie-elements/commit/343c9ec3dccba7f781e90ae2bd195cac6f78f467))
+* **placement-ordering:** disable feedbackEnabled if feedback object is not present in model PD-2182 ([98aa82a](https://github.com/pie-framework/pie-elements/commit/98aa82a7f153471217e53c3ff8e942d9a9b31975))
+
+
+
+
+
 # [6.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-configure@6.2.3...@pie-element/placement-ordering-configure@6.3.0) (2022-11-15)
 
 

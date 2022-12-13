@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-controller@5.4.0...@pie-element/categorize-controller@5.5.0) (2022-12-07)
+
+
+### Bug Fixes
+
+* update libs ([441f403](https://github.com/pie-framework/pie-elements/commit/441f403870b7bec0d61fab58b8d93dbe0ead4c32))
+
+
+### Features
+
+* **categorize:** add sanity checks-PD-1981 ([e788f56](https://github.com/pie-framework/pie-elements/commit/e788f5635d97cfae834bc0446b8ca57b6fcd55f1))
+* **categorize:** add spaces between operators-PD-1981 ([62b368f](https://github.com/pie-framework/pie-elements/commit/62b368f12f13e5e2223d6a5178c58b8f644ab6fd))
+* **categorize:** Create validation function for Categorize-PD-1981 ([17e9023](https://github.com/pie-framework/pie-elements/commit/17e9023f38be8841ca83967b61e8a7f688a52075))
+* **categorize:** solve conflicts-PD-1981 ([ac4afa2](https://github.com/pie-framework/pie-elements/commit/ac4afa2bb8174ddd9ba2d3b1be50c8684c8f6999))
+* **categorize:** ui validations added-PD-1981 ([a5f7c4f](https://github.com/pie-framework/pie-elements/commit/a5f7c4f0c0a3937793f679deae82ed5d797f4b72))
+
+
+
+
+
 # [5.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-controller@5.3.0...@pie-element/categorize-controller@5.4.0) (2022-11-15)
 
 

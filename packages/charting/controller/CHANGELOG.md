@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-controller@2.3.0...@pie-element/charting-controller@2.3.1) (2022-12-07)
+
+
+### Bug Fixes
+
+* update libs ([441f403](https://github.com/pie-framework/pie-elements/commit/441f403870b7bec0d61fab58b8d93dbe0ead4c32))
+
+
+
+
+
 # [2.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-controller@2.2.24...@pie-element/charting-controller@2.3.0) (2022-11-15)
 
 

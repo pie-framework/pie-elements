@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.17](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.7.16...@pie-element/passage@1.7.17) (2022-12-07)
+
+
+### Bug Fixes
+
+* update libs ([441f403](https://github.com/pie-framework/pie-elements/commit/441f403870b7bec0d61fab58b8d93dbe0ead4c32))
+
+
+
+
+
 ## [1.7.16](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.7.15...@pie-element/passage@1.7.16) (2022-09-29)
 
 **Note:** Version bump only for package @pie-element/passage

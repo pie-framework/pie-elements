@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-controller@6.1.0...@pie-element/ebsr-controller@6.1.1) (2022-12-07)
+
+
+### Bug Fixes
+
+* trigger build (these versions were released in Nov 15 but code was not updated for some reason) ([3ddbbbd](https://github.com/pie-framework/pie-elements/commit/3ddbbbdb08f41642bb734af9559dcd9f1536439b))
+* update libs ([441f403](https://github.com/pie-framework/pie-elements/commit/441f403870b7bec0d61fab58b8d93dbe0ead4c32))
+
+
+
+
+
 ## [6.0.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-controller@6.0.4...@pie-element/ebsr-controller@6.0.5) (2022-05-30)
 
 **Note:** Version bump only for package @pie-element/ebsr-controller

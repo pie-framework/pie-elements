@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric-controller@1.2.2...@pie-element/complex-rubric-controller@1.2.3) (2022-12-07)
+
+
+### Bug Fixes
+
+* update libs ([441f403](https://github.com/pie-framework/pie-elements/commit/441f403870b7bec0d61fab58b8d93dbe0ead4c32))
+* update libs for PD-2030 PD-2031 ([3174022](https://github.com/pie-framework/pie-elements/commit/3174022d45603ed217bbe8804a142b07084636a5))
+* updated lib PD-1715 ([42e788d](https://github.com/pie-framework/pie-elements/commit/42e788db0c792838994e55001952da7701251a8e))
+* updated libs ([343c9ec](https://github.com/pie-framework/pie-elements/commit/343c9ec3dccba7f781e90ae2bd195cac6f78f467))
+
+
+
+
+
 ## [1.2.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric-controller@1.2.1...@pie-element/complex-rubric-controller@1.2.2) (2022-11-15)
 
 **Note:** Version bump only for package @pie-element/complex-rubric-controller

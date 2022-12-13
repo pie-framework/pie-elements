@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.12.30](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@1.12.29...@pie-element/match-list@1.12.30) (2022-12-07)
+
+
+### Bug Fixes
+
+* updated libs ([343c9ec](https://github.com/pie-framework/pie-elements/commit/343c9ec3dccba7f781e90ae2bd195cac6f78f467))
+* **match-list:** fix dropTarget type ([e382ae5](https://github.com/pie-framework/pie-elements/commit/e382ae525f4dcefa3e8aa339d21c213bc2c905bc))
+* **match-list:** work in progress, remove Lag associated with removing a token from a blank on iPad ([5b8f6c1](https://github.com/pie-framework/pie-elements/commit/5b8f6c1477fe20152990bad071e6076d5b8763b9))
+* update libs ([441f403](https://github.com/pie-framework/pie-elements/commit/441f403870b7bec0d61fab58b8d93dbe0ead4c32))
+* updated lib PD-1715 ([42e788d](https://github.com/pie-framework/pie-elements/commit/42e788db0c792838994e55001952da7701251a8e))
+
+
+
+
+
 ## [1.12.29](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@1.12.28...@pie-element/match-list@1.12.29) (2022-09-29)
 
 **Note:** Version bump only for package @pie-element/match-list

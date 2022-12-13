@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.5.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-controller@6.5.1...@pie-element/placement-ordering-controller@6.5.2) (2022-12-07)
+
+
+### Bug Fixes
+
+* revert Patricia's latest changes related to PD-2155, revert Carla's changes related to PD-1559, and updated the approach of setting a default session value PD-2155 ([890f3a3](https://github.com/pie-framework/pie-elements/commit/890f3a3fb9077d7f2e53062ad9d4cd43c7d30365))
+* update libs ([441f403](https://github.com/pie-framework/pie-elements/commit/441f403870b7bec0d61fab58b8d93dbe0ead4c32))
+* **placement-ordering:** disable feedbackEnabled if feedback object is not present in model PD-2182 ([98aa82a](https://github.com/pie-framework/pie-elements/commit/98aa82a7f153471217e53c3ff8e942d9a9b31975))
+
+
+
+
+
 ## [6.5.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-controller@6.5.0...@pie-element/placement-ordering-controller@6.5.1) (2022-11-15)
 
 

@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.2.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response-controller@3.2.8...@pie-element/drawing-response-controller@3.2.9) (2022-12-07)
+
+
+### Bug Fixes
+
+* PD-1642 toggle backgroundImageEnabled property instead of just config property, keep image link in model ([6661854](https://github.com/pie-framework/pie-elements/commit/6661854ab93f801d19b8cc8014f89ea8e5d83848))
+* tests ([b196414](https://github.com/pie-framework/pie-elements/commit/b196414b2d019dfdbd8ea6bfc996b47c2f152cb0))
+
+
+
+
+
 ## [3.2.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response-controller@3.2.7...@pie-element/drawing-response-controller@3.2.8) (2022-03-22)
 
 **Note:** Version bump only for package @pie-element/drawing-response-controller
