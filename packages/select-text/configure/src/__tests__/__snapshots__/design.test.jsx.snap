@@ -113,12 +113,12 @@ exports[`design snapshot renders all items except feedback 1`] = `
 >
   <div>
     <TextField
+      defaultValue=""
       label="Content"
       multiline={true}
       onChange={[Function]}
       required={false}
       select={false}
-      value=""
       variant="standard"
     />
     <Component
@@ -450,12 +450,12 @@ exports[`design snapshot renders all items with defaultProps 1`] = `
 >
   <div>
     <TextField
+      defaultValue=""
       label="Content"
       multiline={true}
       onChange={[Function]}
       required={false}
       select={false}
-      value=""
       variant="standard"
     />
     <Component
@@ -624,12 +624,12 @@ exports[`design snapshot tokenizer renders with html entities 1`] = `
 >
   <div>
     <TextField
+      defaultValue="<p>&#8220;Lucy?&#63; Are you using your time wisely to plan your project?&#33;&#33;&#33;&#8221; Mr. Wilson asked.</p><p>Lucy looked a little confused at first. &#195; Then she grinned and proudly stated, &#8220;Why, yes I am! I plan to make a bird feeder for that tree out our window!&#8221;</p>"
       label="Content"
       multiline={true}
       onChange={[Function]}
       required={false}
       select={false}
-      value="<p>&#8220;Lucy?&#63; Are you using your time wisely to plan your project?&#33;&#33;&#33;&#8221; Mr. Wilson asked.</p><p>Lucy looked a little confused at first. &#195; Then she grinned and proudly stated, &#8220;Why, yes I am! I plan to make a bird feeder for that tree out our window!&#8221;</p>"
       variant="standard"
     />
     <Component
