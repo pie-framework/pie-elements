@@ -133,7 +133,7 @@ export class Main extends React.Component {
                 promptEnabled: prompt.settings && toggle(prompt.label),
                 feedbackEnabled: feedback.settings && toggle(feedback.label),
                 spellCheckEnabled: spellCheck.settings && toggle(spellCheck.label),
-                playerSpellCheckEnabled: playerSpellCheck.settings && toggle(playerSpellCheck.label),
+                playerSpellCheckDisabled: playerSpellCheck.settings && toggle(playerSpellCheck.label),
               },
               Properties: {
                 teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),

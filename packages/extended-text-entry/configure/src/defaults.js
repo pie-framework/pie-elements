@@ -15,7 +15,7 @@ export default {
     teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true,
     spellCheckEnabled: true,
-    playerSpellCheckEnabled: true,
+    playerSpellCheckDisabled: true,
     toolbarEditorPosition: 'bottom',
   },
   configuration: {
