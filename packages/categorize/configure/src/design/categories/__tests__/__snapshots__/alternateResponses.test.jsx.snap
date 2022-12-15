@@ -13,6 +13,7 @@ exports[`AlternateResponses snapshot renders 1`] = `
     }
   >
     <WithStyles(Category)
+      alternateResponseIndex={0}
       category={
         Object {
           "choices": Array [],
@@ -24,6 +25,7 @@ exports[`AlternateResponses snapshot renders 1`] = `
       key="0"
       onAddChoice={[Function]}
       onDeleteChoice={[Function]}
+      onMoveChoice={[Function]}
     />
   </div>
 </div>

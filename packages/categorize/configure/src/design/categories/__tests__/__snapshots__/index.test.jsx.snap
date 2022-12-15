@@ -62,6 +62,7 @@ At least one token should be assigned to at least one category."
       onChange={[Function]}
       onDelete={[Function]}
       onDeleteChoice={[Function]}
+      onMoveChoice={[Function]}
     />
   </div>
 </div>
