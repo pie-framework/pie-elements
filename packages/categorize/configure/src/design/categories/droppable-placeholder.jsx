@@ -20,26 +20,31 @@ const Helper = withStyles(() => ({
   },
 }))(({ classes }) => <div className={classes.helper}>Drag your correct answers here</div>);
 
-const Previews = ({ choices, onDeleteChoice }) => (
+const Previews = ({ alternateResponseIndex, category, choices, onDeleteChoice }) => (
   <React.Fragment>
     {choices.map(
-      (c, index) => c && <ChoicePreview choice={c} key={index} onDelete={(choice) => onDeleteChoice(choice, index)} />,
+      (c, index) => c && <ChoicePreview alternateResponseIndex={alternateResponseIndex} category={category} choice={c} key={index} choiceIndex={index} onDelete={(choice) => onDeleteChoice(choice, index)} />,
     )}
   </React.Fragment>
 );
 
 Previews.propTypes = {
+  alternateResponseIndex: PropTypes.number,
+  category: PropTypes.object,
   choices: PropTypes.array,
   onDeleteChoice: PropTypes.func,
 };
 
 export class DroppablePlaceHolder extends React.Component {
   static propTypes = {
+    alternateResponseIndex: PropTypes.number,
+    category: PropTypes.object,
     classes: PropTypes.object.isRequired,
     className: PropTypes.string,
     connectDropTarget: PropTypes.func.isRequired,
     choices: PropTypes.array,
     onDropChoice: PropTypes.func.isRequired,
+    onMoveChoice: PropTypes.func,
     isOver: PropTypes.bool,
     onDeleteChoice: PropTypes.func,
     categoryId: PropTypes.string.isRequired,
@@ -47,12 +52,12 @@ export class DroppablePlaceHolder extends React.Component {
 
   static defaultProps = {};
   render() {
-    const { isOver, choices, classes, className, connectDropTarget, onDeleteChoice } = this.props;
+    const { alternateResponseIndex, isOver, category, choices, classes, className, connectDropTarget, onDeleteChoice } = this.props;
 
     return connectDropTarget(
       <div className={classNames(classes.droppablePlaceholder, className)}>
         <PlaceHolder isOver={isOver} className={classes.placeHolder}>
-          {(choices || []).length === 0 ? <Helper /> : <Previews choices={choices} onDeleteChoice={onDeleteChoice} />}
+          {(choices || []).length === 0 ? <Helper /> : <Previews alternateResponseIndex={alternateResponseIndex} category={category} choices={choices} onDeleteChoice={onDeleteChoice} />}
         </PlaceHolder>
       </div>,
     );
@@ -75,7 +80,14 @@ export const spec = {
   drop: (props, monitor) => {
     log('[drop] props: ', props);
     const item = monitor.getItem();
-    props.onDropChoice(item, props.categoryId);
+
+    if (item.from && item.alternateResponseIndex === props.alternateResponseIndex){
+      props.onMoveChoice(item.choiceId, item.from, props.categoryId, item.choiceIndex, item.alternateResponseIndex);
+    }
+    else{
+      props.onDropChoice(item, props.categoryId);
+    }
+
   },
   canDrop: (props /*, monitor*/) => {
     return !props.disabled;

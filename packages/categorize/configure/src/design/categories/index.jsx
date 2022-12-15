@@ -8,7 +8,12 @@ import EditableHtml from '@pie-lib/editable-html';
 import classNames from 'classnames';
 import Info from '@material-ui/icons/Info';
 import Tooltip from '@material-ui/core/Tooltip';
-import { moveChoiceToCategory, removeCategory, removeChoiceFromCategory } from '@pie-lib/categorize';
+import {
+  moveChoiceToAlternate,
+  moveChoiceToCategory,
+  removeCategory,
+  removeChoiceFromCategory
+} from '@pie-lib/categorize';
 
 import Category from './category';
 import Header from '../header';
@@ -164,6 +169,20 @@ export class Categories extends React.Component {
     onModelChanged({ correctResponse });
   };
 
+  moveChoice = (choiceId, from, to, choiceIndex) => {
+    const { model, onModelChanged } = this.props;
+    const { choices } = model || [];
+    let correctResponse = model.correctResponse;
+    const choice = choices.find(choice => choice.id === choiceId);
+    if(choice.categoryCount !== 0 && to !== from){;
+       correctResponse = moveChoiceToCategory(choice.id, from, to, choiceIndex, correctResponse);
+    }
+    else if(choice.categoryCount == 0 && to !== from){
+       correctResponse = moveChoiceToCategory(choice.id, undefined, to, 0, model.correctResponse);
+    }
+    onModelChanged({ correctResponse });
+  };
+
   changeRowLabel = (val, index) => {
     const { model } = this.props;
     const { rowLabels } = model;
@@ -257,6 +276,7 @@ export class Categories extends React.Component {
                   onChange={this.change}
                   onDelete={() => this.delete(category)}
                   onAddChoice={this.addChoiceToCategory}
+                  onMoveChoice={(choiceId, from, to, choiceIndex) => this.moveChoice(choiceId, from, to, choiceIndex)}
                   toolbarOpts={toolbarOpts}
                   spellCheck={spellCheck}
                   onDeleteChoice={(choice, choiceIndex) => this.deleteChoiceFromCategory(category, choice, choiceIndex)}

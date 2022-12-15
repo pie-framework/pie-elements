@@ -22,11 +22,11 @@ export class ChoicePreview extends React.Component {
   };
 
   render() {
-    const { classes, className, choice } = this.props;
+    const { alternateResponseIndex, category, classes, className, choice, choiceIndex } = this.props;
     return (
       <div className={classNames(classes.choicePreview, className)}>
         {choice ? (
-          <Choice>
+          <Choice alternateResponseIndex={alternateResponseIndex} category={category} choice={choice} choiceIndex={choiceIndex} onRemoveChoice={() => this.delete()}>
             <HtmlAndMath html={choice?.content} />
             <IconButton color="secondary" aria-label="delete" className={classes.delete} onClick={this.delete}>
               <Delete />
