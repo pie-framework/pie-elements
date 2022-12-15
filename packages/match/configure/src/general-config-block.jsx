@@ -16,10 +16,10 @@ const styles = (theme) => ({
     display: 'flex',
   },
   input: {
-    flex: 1
+    flex: 1,
   },
   numberTextField: {
-   flexDirection: 'unset'
+    flexDirection: 'unset',
   },
   inputContainer: {
     width: '65%',
@@ -109,10 +109,7 @@ class GeneralConfigBlock extends React.Component {
           <div className={classes.input}>
             {choiceMode.settings && (
               <InputContainer label={choiceMode.label} className={classes.inputContainer}>
-                <Select
-                  onChange={this.onChangeResponseType('choiceMode')}
-                  value={model.choiceMode}
-                >
+                <Select onChange={this.onChangeResponseType('choiceMode')} value={model.choiceMode}>
                   <MenuItem value="radio">Radio - One Answer</MenuItem>
                   <MenuItem value="checkbox">Checkbox - Multiple Answers</MenuItem>
                 </Select>
