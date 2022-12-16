@@ -97,5 +97,11 @@ export default {
       settings: false,
       label: 'Add Rubric',
     },
+    minQuestions: 2,
+    maxQuestions: 5,
+    maxLengthQuestionsContent: 100,
+    maxAnswers: 8,
+    maxLengthAnswers: 100,
+    maxLengthFirstColumnContent: 100
   },
 };

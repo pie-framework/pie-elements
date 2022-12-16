@@ -133,8 +133,8 @@ const getOutComeScore = (question, env, answers = {}) => {
   return correctness === 'correct'
     ? 1
     : correctness === 'partial' && isPartialScoring
-    ? getPartialScore(question, answers)
-    : 0;
+      ? getPartialScore(question, answers)
+      : 0;
 };
 
 export const outcome = (question, session, env) => {
@@ -276,13 +276,43 @@ export const createCorrectResponseSession = (question, env) => {
   });
 };
 
+const dp = new DOMParser();
+const markupToText = (s) => {
+  const root = dp.parseFromString(s, 'text/html');
+  return root.body.textContent;
+};
+
+
 export const validate = (model = {}, config = {}) => {
   const { rows, choiceMode } = model;
+  const {
+    minQuestions,
+    maxQuestions,
+    maxLengthQuestionsHeading,
+    maxAnswers,
+    maxLengthAnswers,
+    maxLengthFirstColumnHeading
+  } = config;
   const rowsErrors = {};
+  const errors = {};
+
+  if (rows.length < minQuestions) {
+    errors.noOfRowsError = `There should be at least ${minQuestions} question rows.`;
+  } else if (rows.length > maxQuestions) {
+    errors.noOfRowsError = `No more than ${maxQuestions} question rows should be defined.`;
+  }
 
   (rows || []).forEach((row) => {
-    const { id, values = [] } = row;
+    const { id, values = [], title } = row;
     let hasCorrectResponse = false;
+
+    rowsErrors[id] = '';
+
+    if (maxLengthQuestionsHeading && markupToText(title).length > maxLengthQuestionsHeading) {
+      rowsErrors[id] += `Questions rows content length should not be more than ${maxLengthQuestionsHeading} characters. `;
+    } else if (title === '' || title === '<div></div>') {
+      rowsErrors[id] += 'Content should not be empty. ';
+    }
 
     values.forEach((value) => {
       if (value) {
@@ -291,11 +321,9 @@ export const validate = (model = {}, config = {}) => {
     });
 
     if (!hasCorrectResponse) {
-      rowsErrors[id] = 'No correct response defined.';
+      rowsErrors[id] += 'No correct response defined.';
     }
   });
-
-  const errors = {};
 
   if (!isEmpty(rowsErrors)) {
     errors.rowsErrors = rowsErrors;

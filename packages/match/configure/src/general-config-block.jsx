@@ -9,6 +9,7 @@ import Info from '@material-ui/icons/Info';
 import Tooltip from '@material-ui/core/Tooltip';
 
 import { generateValidationMessage } from '../utils';
+import isEmpty from 'lodash/isEmpty';
 
 const styles = (theme) => ({
   container: {
@@ -72,6 +73,8 @@ class GeneralConfigBlock extends React.Component {
     const { layout = {}, choiceMode = {} } = configuration || {};
 
     const validationMessage = generateValidationMessage(model);
+
+    const errors = this.validate(model, configuration);
 
     return (
       <>
