@@ -39,7 +39,7 @@ exports[`Render Main Component Match Snapshot 1`] = `
           },
           "playerSpellCheck": Object {
             "enabled": true,
-            "label": "Student Spellcheck",
+            "label": "Disable Student Spellcheck",
             "settings": true,
           },
           "prompt": Object {
