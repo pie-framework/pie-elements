@@ -230,7 +230,6 @@ class AnswerConfigBlock extends React.Component {
                     activePlugins={filteredDefaultPlugins}
                     pluginProps={labelPlugins}
                     autoWidthToolbar
-                    allowValidation
                     spellCheck={spellCheck}
                     uploadSoundSupport={uploadSoundSupport}
                     languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
