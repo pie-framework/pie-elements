@@ -1,6 +1,6 @@
 export const generateValidationMessage = (config) => {
   let { maxResponseAreas, minChoices, maxChoices } = config;
-  minChoices = minChoices || 3;
+  minChoices = minChoices || 2;
 
   const responseAreasMessage =
     '\nThe tokens should ' +

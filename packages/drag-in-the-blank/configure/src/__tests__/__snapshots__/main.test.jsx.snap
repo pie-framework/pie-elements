@@ -30,6 +30,7 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
               "teacherInstructions": 300,
             },
             "maxResponseAreas": 10,
+            "minChoices": 2,
             "partialScoring": Object {
               "label": "Allow Partial Scoring",
               "settings": false,
@@ -188,7 +189,7 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
           title="Validation requirements:
 The tokens should not be empty and should be unique.
 There should be at least 1 and at most 10 response areas defined.
-There should be at least 3 tokens defined."
+There should be at least 2 tokens defined."
         >
           <pure(InfoIcon)
             color="primary"
@@ -340,6 +341,7 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
               "teacherInstructions": 300,
             },
             "maxResponseAreas": 10,
+            "minChoices": 2,
             "partialScoring": Object {
               "label": "Allow Partial Scoring",
               "settings": false,
@@ -445,7 +447,7 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
           title="Validation requirements:
 The tokens should not be empty and should be unique.
 There should be at least 1 and at most 10 response areas defined.
-There should be at least 3 tokens defined."
+There should be at least 2 tokens defined."
         >
           <pure(InfoIcon)
             color="primary"
