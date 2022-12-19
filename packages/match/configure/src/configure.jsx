@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 import debug from 'debug';
 import GeneralConfigBlock from './general-config-block';
 import AnswerConfigBlock from './answer-config-block';
+import isEmpty from 'lodash/isEmpty';
 
 const log = debug('@pie-element:match:configure');
 const { Panel, toggle, radio } = settings;
@@ -30,6 +31,12 @@ const styles = (theme) => ({
     width: '100%',
   },
 });
+
+const dp = new DOMParser();
+const markupToText = (s) => {
+  const root = dp.parseFromString(s, 'text/html');
+  return root.body.textContent;
+};
 
 class Configure extends React.Component {
   static propTypes = {
@@ -179,6 +186,70 @@ class Configure extends React.Component {
     });
   };
 
+
+  validate = (model = {}, config = {}) => {
+    const { rows, choiceMode, headers } = model;
+    const {
+      minQuestions,
+      maxQuestions,
+      maxLengthQuestionsHeading,
+      maxAnswers,
+      maxLengthAnswers,
+      maxLengthFirstColumnHeading
+    } = config;
+    const rowsErrors = {};
+    const errors = {};
+
+    if (rows.length < minQuestions) {
+      errors.noOfRowsError = `There should be at least ${minQuestions} question rows.`;
+    } else if (rows.length > maxQuestions) {
+      errors.noOfRowsError = `No more than ${maxQuestions} question rows should be defined.`;
+    }
+
+    (rows || []).forEach((row, index) => {
+      const { id, values = [], title } = row;
+      let hasCorrectResponse = false;
+
+      rowsErrors[id] = '';
+
+      if (maxLengthQuestionsHeading && markupToText(title).length > maxLengthQuestionsHeading) {
+        rowsErrors[id] += `Questions rows content length should not be more than ${maxLengthQuestionsHeading} characters. `;
+      } else if (title === '' || title === '<div></div>') {
+        rowsErrors[id] += 'Content should not be empty. ';
+      } else {
+        const identicalAnswer = rows.slice(index + 1).some((r) => {
+          console.log('r', r, title);
+          return r.title === title;
+        });
+
+        if (identicalAnswer) {
+          rowsErrors[id] = 'Content should be unique. ';
+        }
+      }
+
+      values.forEach((value) => {
+        if (value) {
+          hasCorrectResponse = true;
+        }
+      });
+
+      if (!hasCorrectResponse) {
+        rowsErrors[id] += 'No correct response defined.';
+      }
+    });
+
+    if (!isEmpty(rowsErrors)) {
+      errors.rowsErrors = rowsErrors;
+      errors.correctResponseError =
+        choiceMode === 'radio'
+          ? 'There should be a correct response defined for every row.'
+          : 'There should be at least one correct response defined for every row.';
+    }
+
+    return errors;
+  };
+
+
   render() {
     const { classes, model, imageSupport, onModelChanged, configuration, onConfigurationChanged, uploadSoundSupport } =
       this.props;
@@ -205,6 +276,10 @@ class Configure extends React.Component {
       feedbackEnabled,
       rubricEnabled,
     } = model || {};
+
+    const errors = this.validate(model, configuration);
+
+    console.log('errors', errors);
 
     const toolbarOpts = {};
 

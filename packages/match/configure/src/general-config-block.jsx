@@ -74,8 +74,6 @@ class GeneralConfigBlock extends React.Component {
 
     const validationMessage = generateValidationMessage(model);
 
-    const errors = this.validate(model, configuration);
-
     return (
       <>
         <div className={classes.flexContainer}>

@@ -58,37 +58,8 @@ export class Row extends React.Component {
     const { model, onChange } = this.props;
     const newModel = { ...model };
 
-    const rows = newModel.rows || [];
-    const currentRow = rows[rowIndex] && rows[rowIndex].title;
-
-    const sameValue = rows.filter((row) => {
-      const wasChanged = currentRow !== value && `<div>${currentRow}</div>` !== value;
-      const sameValueEntered = row.title === value || `<div>${row.title}</div>` === value;
-
-      return wasChanged && sameValueEntered;
-    });
-
-    const empty = value === '<div></div>';
-
-    if (sameValue.length || empty) {
-      this.setState({
-        dialog: {
-          open: true,
-          message: 'The question row headings must be non-blank and unique.',
-          onOk: () => {
-            this.setState({
-              dialog: {
-                open: false,
-              },
-            });
-          },
-        },
-      });
-    } else {
-      newModel.rows[rowIndex].title = value;
-
-      onChange(newModel);
-    }
+    newModel.rows[rowIndex].title = value;
+    onChange(newModel);
   };
 
   onRowValueChange = (rowIndex, rowValueIndex) => (event) => {

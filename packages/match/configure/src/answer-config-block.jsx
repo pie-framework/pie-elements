@@ -154,37 +154,8 @@ class AnswerConfigBlock extends React.Component {
       return;
     }
 
-    const headers = newModel.headers || [];
-
-    const currentHeader = headers[headerIndex];
-
-    const sameValue = headers.filter((header) => {
-      const wasChanged = currentHeader !== value && `<div>${currentHeader}</div>` !== value;
-      const sameValueEntered = header === value || `<div>${header}</div>` === value;
-
-      return wasChanged && sameValueEntered;
-    });
-
-    const empty = value === '<div></div>';
-
-    if (sameValue.length || empty) {
-      this.setState({
-        dialog: {
-          open: true,
-          onOk: () => {
-            this.setState({
-              dialog: {
-                open: false,
-              },
-            });
-          },
-        },
-      });
-    } else {
-      newModel.headers[headerIndex] = value;
-
-      onChange(newModel);
-    }
+    newModel.headers[headerIndex] = value;
+    onChange(newModel);
   };
 
   render() {
