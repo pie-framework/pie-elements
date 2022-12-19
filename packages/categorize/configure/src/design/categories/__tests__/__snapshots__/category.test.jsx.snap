@@ -12,6 +12,12 @@ exports[`category snapshot renders with default props 1`] = `
     />
   </span>
   <DropTarget(WithStyles(DroppablePlaceHolder))
+    category={
+      Object {
+        "id": "1",
+        "label": "Category title",
+      }
+    }
     categoryId="1"
     onDeleteChoice={[MockFunction]}
     onDropChoice={[MockFunction]}
@@ -30,6 +36,12 @@ exports[`category snapshot renders without some components if no handlers are pr
   className="className"
 >
   <DropTarget(WithStyles(DroppablePlaceHolder))
+    category={
+      Object {
+        "id": "1",
+        "label": "Category title",
+      }
+    }
     categoryId="1"
     onDeleteChoice={[MockFunction]}
     onDropChoice={[MockFunction]}

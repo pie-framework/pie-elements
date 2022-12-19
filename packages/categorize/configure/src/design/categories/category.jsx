@@ -11,6 +11,7 @@ import PlaceHolder from './droppable-placeholder';
 
 export class Category extends React.Component {
   static propTypes = {
+    alternateResponseIndex: PropTypes.number,
     classes: PropTypes.object.isRequired,
     className: PropTypes.string,
     category: PropTypes.object.isRequired,
@@ -23,6 +24,7 @@ export class Category extends React.Component {
     onDelete: PropTypes.func,
     onDeleteChoice: PropTypes.func,
     onAddChoice: PropTypes.func,
+    onMoveChoice: PropTypes.func,
     imageSupport: PropTypes.shape({
       add: PropTypes.func.isRequired,
       delete: PropTypes.func.isRequired,
@@ -44,6 +46,7 @@ export class Category extends React.Component {
 
   render() {
     const {
+      alternateResponseIndex,
       category,
       classes,
       className,
@@ -56,6 +59,7 @@ export class Category extends React.Component {
       onDelete,
       onDeleteChoice,
       onAddChoice,
+      onMoveChoice,
       imageSupport,
       spellCheck,
       toolbarOpts,
@@ -90,9 +94,12 @@ export class Category extends React.Component {
         }
         <PlaceHolder
           className={classes.placeHolder}
+          alternateResponseIndex={alternateResponseIndex}
+          category={category}
           choices={category.choices}
           onDeleteChoice={onDeleteChoice}
           onDropChoice={onAddChoice}
+          onMoveChoice={onMoveChoice}
           categoryId={category.id}
         />
         {onDelete && (
