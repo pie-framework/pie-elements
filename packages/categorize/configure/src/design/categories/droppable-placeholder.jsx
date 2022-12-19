@@ -23,7 +23,17 @@ const Helper = withStyles(() => ({
 const Previews = ({ alternateResponseIndex, category, choices, onDeleteChoice }) => (
   <React.Fragment>
     {choices.map(
-      (c, index) => c && <ChoicePreview alternateResponseIndex={alternateResponseIndex} category={category} choice={c} key={index} choiceIndex={index} onDelete={(choice) => onDeleteChoice(choice, index)} />,
+      (c, index) =>
+        c && (
+          <ChoicePreview
+            alternateResponseIndex={alternateResponseIndex}
+            category={category}
+            choice={c}
+            key={index}
+            choiceIndex={index}
+            onDelete={(choice) => onDeleteChoice(choice, index)}
+          />
+        ),
     )}
   </React.Fragment>
 );
@@ -52,12 +62,22 @@ export class DroppablePlaceHolder extends React.Component {
 
   static defaultProps = {};
   render() {
-    const { alternateResponseIndex, isOver, category, choices, classes, className, connectDropTarget, onDeleteChoice } = this.props;
+    const { alternateResponseIndex, isOver, category, choices, classes, className, connectDropTarget, onDeleteChoice } =
+      this.props;
 
     return connectDropTarget(
       <div className={classNames(classes.droppablePlaceholder, className)}>
         <PlaceHolder isOver={isOver} className={classes.placeHolder}>
-          {(choices || []).length === 0 ? <Helper /> : <Previews alternateResponseIndex={alternateResponseIndex} category={category} choices={choices} onDeleteChoice={onDeleteChoice} />}
+          {(choices || []).length === 0 ? (
+            <Helper />
+          ) : (
+            <Previews
+              alternateResponseIndex={alternateResponseIndex}
+              category={category}
+              choices={choices}
+              onDeleteChoice={onDeleteChoice}
+            />
+          )}
         </PlaceHolder>
       </div>,
     );
@@ -81,13 +101,11 @@ export const spec = {
     log('[drop] props: ', props);
     const item = monitor.getItem();
 
-    if (item.from && item.alternateResponseIndex === props.alternateResponseIndex){
+    if (item.from && item.alternateResponseIndex === props.alternateResponseIndex) {
       props.onMoveChoice(item.choiceId, item.from, props.categoryId, item.choiceIndex, item.alternateResponseIndex);
-    }
-    else{
+    } else {
       props.onDropChoice(item, props.categoryId);
     }
-
   },
   canDrop: (props /*, monitor*/) => {
     return !props.disabled;
