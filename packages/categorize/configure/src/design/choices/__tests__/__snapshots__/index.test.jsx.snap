@@ -26,7 +26,6 @@ exports[`choices snapshot renders 1`] = `
         "correctResponse": Array [],
         "lockChoiceOrder": true,
         "partialScoring": true,
-        "removeTilesAfterPlacing": false,
         "rowLabels": Array [
           "",
         ],
@@ -65,7 +64,6 @@ exports[`choices snapshot renders 1`] = `
               "correctResponse": Array [],
               "lockChoiceOrder": true,
               "partialScoring": true,
-              "removeTilesAfterPlacing": false,
               "rowLabels": Array [
                 "",
               ],

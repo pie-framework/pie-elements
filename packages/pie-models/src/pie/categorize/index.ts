@@ -80,12 +80,6 @@ export interface CategorizePie extends PieModel {
   /**  Indicates if the prompt is enabled */
   promptEnabled?: boolean;
 
-  /**
-   * Indicates if the choice, after it is dragged into a category, should be removed from the choices
-   * area or should remain in place.
-   */
-  removeTilesAfterPlacing?: boolean;
-
   /** The categories in which choices may be placed */
   categories: Category[];
 

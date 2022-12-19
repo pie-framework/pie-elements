@@ -5,7 +5,6 @@ export default {
   choicesPosition: 'below',
   choicesLabel: '',
   lockChoiceOrder: true,
-  removeTilesAfterPlacing: false,
   allowMultiplePlacementsEnabled: multiplePlacements.enabled,
   categoriesPerRow: 2,
   categories: [],
