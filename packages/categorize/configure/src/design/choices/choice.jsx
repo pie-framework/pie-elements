@@ -30,6 +30,9 @@ export class Choice extends React.Component {
     classes: PropTypes.object.isRequired,
     className: PropTypes.string,
     choice: PropTypes.object.isRequired,
+    deleteFocusedEl: PropTypes.func,
+    focusedEl: PropTypes.number,
+    index: PropTypes.number,
     onChange: PropTypes.func.isRequired,
     onDelete: PropTypes.func.isRequired,
     connectDragSource: PropTypes.func.isRequired,
@@ -73,6 +76,9 @@ export class Choice extends React.Component {
       classes,
       className,
       choice,
+      deleteFocusedEl,
+      focusedEl,
+      index,
       onDelete,
       connectDragSource,
       connectDragPreview,
@@ -102,6 +108,9 @@ export class Choice extends React.Component {
           <span>
             <InputHeader
               imageSupport={imageSupport}
+              focusedEl={focusedEl}
+              deleteFocusedEl={deleteFocusedEl}
+              index={index}
               label={choice.content}
               onChange={this.changeContent}
               onDelete={onDelete}

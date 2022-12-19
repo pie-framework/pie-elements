@@ -31,6 +31,10 @@ export class Choices extends React.Component {
 
   static defaultProps = {};
 
+  state = {
+    focusedEl: null,
+  };
+
   changeChoice = (choice) => {
     const { choices, onModelChanged } = this.props;
     const index = choices.findIndex((h) => h.id === choice.id);
@@ -46,7 +50,7 @@ export class Choices extends React.Component {
   };
 
   addChoice = () => {
-    const { onModelChanged, model } = this.props;
+    const { onModelChanged, model, choices: oldChoices } = this.props;
 
     const id = utils.firstAvailableIndex(
       model.choices.map((a) => a.id),
@@ -54,7 +58,20 @@ export class Choices extends React.Component {
     );
     const data = { id, content: 'Choice ' + id };
 
-    onModelChanged({ choices: model.choices.concat([data]) });
+    this.setState(
+      {
+        focusedEl: oldChoices.length,
+      },
+      () => {
+        onModelChanged({ choices: model.choices.concat([data]) });
+      }
+    );
+  };
+
+  deleteFocusedEl = () => {
+    this.setState({
+      focusedEl: null,
+    });
   };
 
   deleteChoice = (choice) => {
@@ -68,6 +85,7 @@ export class Choices extends React.Component {
   };
 
   render() {
+    const { focusedEl } = this.state;
     const {
       classes,
       className,
@@ -106,23 +124,34 @@ export class Choices extends React.Component {
           spellCheck={spellCheck}
         />
         <div className={classes.choiceHolder} style={choiceHolderStyle}>
-          {choices.map((h, index) => (
-            <Choice
-              choice={h}
-              correctResponseCount={h.correctResponseCount}
-              allowMultiplePlacements={allowMultiplePlacementsEnabled}
-              key={index}
-              imageSupport={imageSupport}
-              onChange={this.changeChoice}
-              onDelete={() => this.deleteChoice(h)}
-              toolbarOpts={toolbarOpts}
-              spellCheck={spellCheck}
-              error={choicesErrors && choicesErrors[h.id]}
-              maxImageWidth={(maxImageWidth && maxImageWidth.choice) || defaultImageMaxWidth}
-              maxImageHeight={(maxImageHeight && maxImageHeight.choice) || defaultImageMaxHeight}
-              uploadSoundSupport={uploadSoundSupport}
-            />
-          ))}
+          {choices.map((h, index) => {
+            return (
+              <Choice
+                choice={h}
+                focusedEl={focusedEl}
+                deleteFocusedEl={this.deleteFocusedEl}
+                correctResponseCount={h.correctResponseCount}
+                allowMultiplePlacements={allowMultiplePlacementsEnabled}
+                index={index}
+                key={index}
+                imageSupport={imageSupport}
+                onChange={this.changeChoice}
+                onDelete={() => this.deleteChoice(h)}
+                toolbarOpts={toolbarOpts}
+                spellCheck={spellCheck}
+                error={choicesErrors && choicesErrors[h.id]}
+                maxImageWidth={
+                  (maxImageWidth && maxImageWidth.choice) ||
+                  defaultImageMaxWidth
+                }
+                maxImageHeight={
+                  (maxImageHeight && maxImageHeight.choice) ||
+                  defaultImageMaxHeight
+                }
+                uploadSoundSupport={uploadSoundSupport}
+              />
+            );
+          })}
         </div>
         <Divider />
       </div>

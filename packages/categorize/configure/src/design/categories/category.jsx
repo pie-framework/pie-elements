@@ -14,6 +14,9 @@ export class Category extends React.Component {
     classes: PropTypes.object.isRequired,
     className: PropTypes.string,
     category: PropTypes.object.isRequired,
+    deleteFocusedEl: PropTypes.func,
+    focusedEl: PropTypes.number,
+    index: PropTypes.number,
     error: PropTypes.string,
     isDuplicated: PropTypes.bool,
     onChange: PropTypes.func,
@@ -44,6 +47,9 @@ export class Category extends React.Component {
       category,
       classes,
       className,
+      deleteFocusedEl,
+      focusedEl,
+      index,
       error,
       isDuplicated,
       onChange,
@@ -65,6 +71,9 @@ export class Category extends React.Component {
             <span>
               <InputHeader
                 label={category.label}
+                focusedEl={focusedEl}
+                deleteFocusedEl={deleteFocusedEl}
+                index={index}
                 error={error}
                 onChange={this.changeLabel}
                 onDelete={onDelete}

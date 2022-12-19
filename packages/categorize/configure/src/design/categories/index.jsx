@@ -108,8 +108,12 @@ export class Categories extends React.Component {
     toolbarOpts: PropTypes.object,
   };
 
+  state = {
+    focusedEl: null,
+  };
+
   add = () => {
-    const { model } = this.props;
+    const { model, categories: oldCategories } = this.props;
     const { categoriesPerRow } = model;
     const id = utils.firstAvailableIndex(
       model.categories.map((a) => a.id),
@@ -123,9 +127,22 @@ export class Categories extends React.Component {
       rowLabels.push('');
     }
 
-    this.props.onModelChanged({
-      rowLabels,
-      categories: model.categories.concat([data]),
+    this.setState(
+      {
+        focusedEl: oldCategories.length,
+      },
+      () => {
+        this.props.onModelChanged({
+          rowLabels,
+          categories: model.categories.concat([data]),
+        });
+      }
+    );
+  };
+
+  deleteFocusedEl = () => {
+    this.setState({
+      focusedEl: null,
     });
   };
 
@@ -252,6 +269,9 @@ export class Categories extends React.Component {
                 )}
                 <Category
                   imageSupport={imageSupport}
+                  focusedEl={this.state.focusedEl}
+                  deleteFocusedEl={this.deleteFocusedEl}
+                  index={index}
                   category={category}
                   error={categoriesErrors && categoriesErrors[category.id]}
                   onChange={this.change}
