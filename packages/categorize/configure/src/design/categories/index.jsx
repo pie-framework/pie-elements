@@ -171,13 +171,15 @@ export class Categories extends React.Component {
 
   moveChoice = (choiceId, from, to, choiceIndex) => {
     const { model, onModelChanged } = this.props;
-    const { choices = [] } = model || {};
-    let correctResponse = model.correctResponse;
-    const choice = choices.find((choice) => choice.id === choiceId);
-    if (choice.categoryCount !== 0 && to !== from) {
+    let { choices, correctResponse = [] } = model || {};
+    const choice = (choices || []).find((choice) => choice.id === choiceId);
+    if (to === from || !choice) {
+      return;
+    }
+    if (choice.categoryCount !== 0) {
       correctResponse = moveChoiceToCategory(choice.id, from, to, choiceIndex, correctResponse);
-    } else if (choice.categoryCount === 0 && to !== from) {
-      correctResponse = moveChoiceToCategory(choice.id, undefined, to, 0, model.correctResponse);
+    } else if (choice.categoryCount === 0) {
+      correctResponse = moveChoiceToCategory(choice.id, undefined, to, 0, correctResponse);
     }
     onModelChanged({ correctResponse });
   };

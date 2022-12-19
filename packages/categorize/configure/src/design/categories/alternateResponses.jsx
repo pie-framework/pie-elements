@@ -77,16 +77,16 @@ export class AlternateResponses extends React.Component {
 
   moveChoice = (choiceId, from, to, choiceIndex, alternateIndex) => {
     const { model, onModelChanged } = this.props;
-    const { choices = [] } = model || {};
-    const choice = choices.find((choice) => choice.id === choiceId);
-    const correctResponse = moveChoiceToAlternate(
+    let { choices, correctResponse = [] } = model || {};
+    const choice = (choices || []).find((choice) => choice.id === choiceId);
+    correctResponse = moveChoiceToAlternate(
       choiceId,
       from,
       to,
       choiceIndex,
-      model.correctResponse,
+      correctResponse,
       alternateIndex,
-      choice.categoryCount,
+      choice?.categoryCount,
     );
 
     onModelChanged({ correctResponse });
