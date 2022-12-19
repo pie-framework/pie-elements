@@ -1,9 +1,11 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import { GraphContainer, GridSetup } from '@pie-lib/graphing';
+import { AlertDialog } from '@pie-lib/config-ui';
 import { MenuItem, Select, Typography, OutlinedInput } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
-import { applyConstraints, getGridValues, getLabelValues } from './utils';
+import { applyConstraints, filterPlotableMarks, getGridValues, getLabelValues } from './utils';
+import { isEqual } from 'lodash';
 
 const styles = (theme) => ({
   container: {
@@ -62,7 +64,15 @@ export class GraphingConfig extends React.Component {
       range: getLabelValues(range.step),
     };
 
-    this.state = { gridValues, labelValues, selectedGrid: 0, showPixelGuides: false };
+    this.state = {
+      gridValues,
+      labelValues,
+      selectedGrid: 0,
+      showPixelGuides: false,
+      dialog: { isOpened: false },
+      domain: { ...domain },
+      range: { ...range },
+    };
   }
 
   changeBackgroundMarks = (backgroundMarks) => {
@@ -85,9 +95,9 @@ export class GraphingConfig extends React.Component {
 
   onConfigChange = (config) => {
     const { model, onChange } = this.props;
-    const { gridValues: oldGridValues, labelValues: oldLabelValues } = this.state;
+    const { gridValues: oldGridValues, labelValues: oldLabelValues, domain: oldDomain, range: oldRange } = this.state;
     const updatedModel = { ...model, ...config };
-    const { domain, includeAxes, graph, range, standardGrid } = updatedModel;
+    const { answers, domain, includeAxes, graph, range, standardGrid } = updatedModel;
     const gridValues = { domain: [], range: [] };
     const labelValues = { domain: [], range: [] };
 
@@ -112,7 +122,27 @@ export class GraphingConfig extends React.Component {
       }
     }
 
-    this.setState({ gridValues, labelValues });
+    const plotableAnswers = filterPlotableMarks(domain, range, answers);
+
+    if (!isEqual(answers, plotableAnswers)) {
+      this.setState({
+        dialog: {
+          isOpened: true,
+          onClose: () =>
+            this.setState({ dialog: { isOpened: false } }, onChange({ ...model, domain: oldDomain, range: oldRange })),
+          onConfirm: () => {
+            this.setState(
+              { gridValues, labelValues, dialog: { isOpened: false }, domain: { ...domain }, range: { ...range } },
+              onChange({ ...updatedModel, answers: plotableAnswers }),
+            );
+          },
+        },
+      });
+
+      return;
+    }
+
+    this.setState({ gridValues, labelValues, domain: { ...domain }, range: { ...range } });
     onChange(updatedModel);
   };
 
@@ -150,7 +180,7 @@ export class GraphingConfig extends React.Component {
       model || {};
     const graph = (model || {}).graph || {};
     const { enabled: dimensionsEnabled, min, max, step } = graphDimensions || {};
-    const { gridValues, labelValues, selectedGrid, showPixelGuides } = this.state;
+    const { dialog = {}, gridValues, labelValues, selectedGrid, showPixelGuides } = this.state;
 
     const sizeConstraints = {
       min: Math.max(150, min),
@@ -247,6 +277,14 @@ export class GraphingConfig extends React.Component {
             toolbarTools={availableTools}
           />
         </div>
+
+        <AlertDialog
+          open={dialog.isOpened}
+          title="Warning"
+          text="This change would make it impossible for students to plot one or more graph objects in the current correct answers. If you proceed, all such graph objects will be removed from the correct answers."
+          onClose={dialog.onClose}
+          onConfirm={dialog.onConfirm}
+        />
       </div>
     );
   }
