@@ -77,9 +77,18 @@ export class AlternateResponses extends React.Component {
 
   moveChoice = (choiceId, from, to, choiceIndex, alternateIndex) => {
     const { model, onModelChanged } = this.props;
-    const { choices } = model || [];
-    const choice = choices.find(choice => choice.id === choiceId);
-    const correctResponse = moveChoiceToAlternate(choiceId, from, to, choiceIndex, model.correctResponse, alternateIndex, choice.categoryCount );
+    const { choices = [] } = model || {};
+    const choice = choices.find((choice) => choice.id === choiceId);
+    const correctResponse = moveChoiceToAlternate(
+      choiceId,
+      from,
+      to,
+      choiceIndex,
+      model.correctResponse,
+      alternateIndex,
+      choice.categoryCount,
+    );
+
     onModelChanged({ correctResponse });
   };
 
@@ -104,16 +113,8 @@ export class AlternateResponses extends React.Component {
   };
 
   render() {
-    const {
-      altIndex,
-      model,
-      classes,
-      className,
-      categories,
-      imageSupport,
-      spellCheck,
-      uploadSoundSupport,
-    } = this.props;
+    const { altIndex, model, classes, className, categories, imageSupport, spellCheck, uploadSoundSupport } =
+      this.props;
     const { categoriesPerRow, errors } = model;
     const { duplicateAlternate } = errors || {};
 
@@ -135,7 +136,9 @@ export class AlternateResponses extends React.Component {
               spellCheck={spellCheck}
               onAddChoice={this.addChoiceToCategory}
               onDeleteChoice={(choice, choiceIndex) => this.deleteChoiceFromCategory(category, choice, choiceIndex)}
-              onMoveChoice={(choiceId, from, to, choiceIndex, alternateIndex) => this.moveChoice(choiceId, from, to, choiceIndex, alternateIndex)}
+              onMoveChoice={(choiceId, from, to, choiceIndex, alternateIndex) =>
+                this.moveChoice(choiceId, from, to, choiceIndex, alternateIndex)
+              }
               uploadSoundSupport={uploadSoundSupport}
             />
           ))}

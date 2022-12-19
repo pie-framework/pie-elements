@@ -12,7 +12,7 @@ import {
   moveChoiceToAlternate,
   moveChoiceToCategory,
   removeCategory,
-  removeChoiceFromCategory
+  removeChoiceFromCategory,
 } from '@pie-lib/categorize';
 
 import Category from './category';
@@ -171,14 +171,13 @@ export class Categories extends React.Component {
 
   moveChoice = (choiceId, from, to, choiceIndex) => {
     const { model, onModelChanged } = this.props;
-    const { choices } = model || [];
+    const { choices = [] } = model || {};
     let correctResponse = model.correctResponse;
-    const choice = choices.find(choice => choice.id === choiceId);
-    if(choice.categoryCount !== 0 && to !== from){;
-       correctResponse = moveChoiceToCategory(choice.id, from, to, choiceIndex, correctResponse);
-    }
-    else if(choice.categoryCount == 0 && to !== from){
-       correctResponse = moveChoiceToCategory(choice.id, undefined, to, 0, model.correctResponse);
+    const choice = choices.find((choice) => choice.id === choiceId);
+    if (choice.categoryCount !== 0 && to !== from) {
+      correctResponse = moveChoiceToCategory(choice.id, from, to, choiceIndex, correctResponse);
+    } else if (choice.categoryCount === 0 && to !== from) {
+      correctResponse = moveChoiceToCategory(choice.id, undefined, to, 0, model.correctResponse);
     }
     onModelChanged({ correctResponse });
   };
@@ -216,11 +215,7 @@ export class Categories extends React.Component {
 
     const { categoriesPerRow, rowLabels, errors } = model;
     const { associationError, categoriesError, categoriesErrors } = errors || {};
-    const {
-      maxCategories,
-      maxImageWidth = {},
-      maxImageHeight = {},
-    } = configuration || {};
+    const { maxCategories, maxImageWidth = {}, maxImageHeight = {} } = configuration || {};
     const holderStyle = {
       gridTemplateColumns: `repeat(${categoriesPerRow}, 1fr)`,
     };
