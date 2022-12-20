@@ -395,6 +395,7 @@ class Configure extends React.Component {
             toolbarOpts={toolbarOpts}
             spellCheck={spellCheckEnabled}
             uploadSoundSupport={uploadSoundSupport}
+            errors={errors}
           />
           {feedbackEnabled && (
             <FeedbackConfig feedback={model.feedback} onChange={this.onFeedbackChange} toolbarOpts={toolbarOpts} />

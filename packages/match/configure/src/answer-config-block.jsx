@@ -159,11 +159,11 @@ class AnswerConfigBlock extends React.Component {
   };
 
   render() {
-    const { classes, model, onAddRow, imageSupport, configuration, toolbarOpts, spellCheck, uploadSoundSupport } =
+    const { classes, model, onAddRow, imageSupport, configuration, toolbarOpts, spellCheck, uploadSoundSupport, errors } =
       this.props;
     const { headers = {}, maxImageWidth = {}, maxImageHeight = {} } = configuration || {};
     const { dialog } = this.state;
-    const { errors } = model || {};
+    // const { errors } = model || {};
     const { correctResponseError, rowsErrors } = errors || {};
 
     const filteredDefaultPlugins = (DEFAULT_PLUGINS || []).filter(

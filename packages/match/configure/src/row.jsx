@@ -167,6 +167,7 @@ export class Row extends React.Component {
               maxImageHeight={maxImageHeight}
               uploadSoundSupport={uploadSoundSupport}
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+              error={error && error !== 'No correct response defined.'}
             />
           </div>
           {row.values.map((rowValue, rowIdx) => (
