@@ -115,10 +115,10 @@
       "type": "boolean",
       "title": "spellCheckEnabled"
     },
-    "playerSpellCheckEnabled": {
-      "description": "Indicates if spellcheck is enabled for the player. Default value is true",
+    "playerSpellCheckDisabled": {
+      "description": "Indicates if spellcheck is disabled for the player. Default value is true",
       "type": "boolean",
-      "title": "playerSpellCheckEnabled"
+      "title": "playerSpellCheckDisabled"
     },
     "studentInstructionsEnabled": {
       "description": "Indicates if Student Instructions are enabled",
@@ -169,7 +169,7 @@
     "element",
     "feedbackEnabled",
     "id",
-    "playerSpellCheckEnabled",
+    "playerSpellCheckDisabled",
     "rationaleEnabled",
     "rubricEnabled",
     "spellCheckEnabled",

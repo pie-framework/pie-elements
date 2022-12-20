@@ -95,8 +95,8 @@ export interface ExtendedTextEntryPie extends PieModel {
   /** Indicates if spellcheck is enabled for the author. Default value is true */
   spellCheckEnabled: boolean;
 
-  /** Indicates if spellcheck is enabled for the player. Default value is true */
-  playerSpellCheckEnabled: boolean;
+  /** Indicates if spellcheck is disabled for the player. Default value is true */
+  playerSpellCheckDisabled: boolean;
 
   /** Indicates if Student Instructions are enabled */
   studentInstructionsEnabled: boolean;

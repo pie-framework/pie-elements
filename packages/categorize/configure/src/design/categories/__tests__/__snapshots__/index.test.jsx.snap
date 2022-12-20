@@ -58,10 +58,14 @@ At least one token should be assigned to at least one category."
           "label": "foo",
         }
       }
+      deleteFocusedEl={[Function]}
+      focusedEl={null}
+      index={0}
       onAddChoice={[Function]}
       onChange={[Function]}
       onDelete={[Function]}
       onDeleteChoice={[Function]}
+      onMoveChoice={[Function]}
     />
   </div>
 </div>

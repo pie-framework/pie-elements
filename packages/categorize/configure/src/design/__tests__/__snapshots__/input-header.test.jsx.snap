@@ -19,6 +19,7 @@ exports[`InputHeader snapshot renders 1`] = `
       ]
     }
     onChange={[MockFunction]}
+    onDone={[Function]}
     pluginProps={
       Object {
         "audio": Object {

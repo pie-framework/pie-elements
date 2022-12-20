@@ -15,7 +15,7 @@ export default {
     teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true,
     spellCheckEnabled: true,
-    playerSpellCheckEnabled: true,
+    playerSpellCheckDisabled: true,
     toolbarEditorPosition: 'bottom',
   },
   configuration: {
@@ -29,7 +29,7 @@ export default {
       enabled: true,
     },
     playerSpellCheck: {
-      label: 'Student Spellcheck',
+      label: 'Disable Student Spellcheck',
       settings: true,
       enabled: true,
     },

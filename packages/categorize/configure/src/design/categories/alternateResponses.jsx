@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
 import Category from './category';
+import { moveChoiceToAlternate } from '@pie-lib/categorize';
 
 const styles = (theme) => ({
   categories: {
@@ -74,6 +75,23 @@ export class AlternateResponses extends React.Component {
     onModelChanged({ correctResponse });
   };
 
+  moveChoice = (choiceId, from, to, choiceIndex, alternateIndex) => {
+    const { model, onModelChanged } = this.props;
+    let { choices, correctResponse = [] } = model || {};
+    const choice = (choices || []).find((choice) => choice.id === choiceId);
+    correctResponse = moveChoiceToAlternate(
+      choiceId,
+      from,
+      to,
+      choiceIndex,
+      correctResponse,
+      alternateIndex,
+      choice?.categoryCount,
+    );
+
+    onModelChanged({ correctResponse });
+  };
+
   deleteChoiceFromCategory = (category, choice) => {
     const {
       altIndex,
@@ -95,16 +113,8 @@ export class AlternateResponses extends React.Component {
   };
 
   render() {
-    const {
-      altIndex,
-      model,
-      classes,
-      className,
-      categories,
-      imageSupport,
-      spellCheck,
-      uploadSoundSupport,
-    } = this.props;
+    const { altIndex, model, classes, className, categories, imageSupport, spellCheck, uploadSoundSupport } =
+      this.props;
     const { categoriesPerRow, errors } = model;
     const { duplicateAlternate } = errors || {};
 
@@ -119,12 +129,16 @@ export class AlternateResponses extends React.Component {
           {categories.map((category, index) => (
             <Category
               key={index}
+              alternateResponseIndex={altIndex}
               imageSupport={imageSupport}
               isDuplicated={isDuplicated && duplicateAlternate.category === category.id}
               category={category}
               spellCheck={spellCheck}
               onAddChoice={this.addChoiceToCategory}
               onDeleteChoice={(choice, choiceIndex) => this.deleteChoiceFromCategory(category, choice, choiceIndex)}
+              onMoveChoice={(choiceId, from, to, choiceIndex, alternateIndex) =>
+                this.moveChoice(choiceId, from, to, choiceIndex, alternateIndex)
+              }
               uploadSoundSupport={uploadSoundSupport}
             />
           ))}

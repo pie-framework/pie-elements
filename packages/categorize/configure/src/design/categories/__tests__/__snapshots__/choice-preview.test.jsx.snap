@@ -4,7 +4,15 @@ exports[`ChoicePreview snapshot renders 1`] = `
 <div
   className="className"
 >
-  <Component>
+  <Component
+    choice={
+      Object {
+        "content": "content",
+        "id": "1",
+      }
+    }
+    onRemoveChoice={[Function]}
+  >
     <HtmlAndMath
       html="content"
       tag="div"

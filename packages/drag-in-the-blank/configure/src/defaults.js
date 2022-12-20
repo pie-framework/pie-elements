@@ -48,6 +48,7 @@ export default {
       settings: true,
       label: 'Teacher Instructions',
     },
+    minChoices: 2,
     maxResponseAreas: 10,
     maxImageWidth: {
       teacherInstructions: 300,
