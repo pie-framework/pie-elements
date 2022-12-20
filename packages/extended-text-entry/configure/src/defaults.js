@@ -29,7 +29,7 @@ export default {
       enabled: true,
     },
     playerSpellCheck: {
-      label: 'Student Spellcheck',
+      label: 'Disable Student Spellcheck',
       settings: true,
       enabled: true,
     },
