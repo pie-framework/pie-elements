@@ -1,13 +1,13 @@
 {
   "name": "@pie-element/multiple-choice",
   "repository": "pie-framework/pie-elements",
-  "version": "7.3.3",
+  "version": "7.4.0",
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
     "@material-ui/core": "^3.9.2",
-    "@pie-lib/config-ui": "^11.1.2",
+    "@pie-lib/config-ui": "^11.1.3",
     "@pie-lib/correct-answer-toggle": "^2.3.47",
     "@pie-lib/math-rendering": "^2.5.1",
     "@pie-lib/render-ui": "^4.13.7",

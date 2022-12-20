@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@12.4.0...@pie-element/pie-models@12.5.0) (2022-12-20)
+
+
+### Bug Fixes
+
+* **categorize:** update docu-PD-2169 ([03b7d1b](https://github.com/pie-framework/pie-elements/commit/03b7d1b588afcaa0d90b9538c4dabfae37a9fb05))
+
+
+### Features
+
+* **pie-models:** update schemas for extended-text-entry in order to include the updated spellchek property ([d07ebe6](https://github.com/pie-framework/pie-elements/commit/d07ebe60b130df0e5e59189602af6af6f60c85d1))
+
+
+
+
+
 # [12.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@12.3.0...@pie-element/pie-models@12.4.0) (2022-12-07)
 
 

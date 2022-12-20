@@ -21,7 +21,7 @@ export const normalize = (question) => ({
   promptEnabled: true,
   teacherInstructionsEnabled: true,
   studentInstructionsEnabled: true,
-  playerSpellCheckEnabled: true,
+  playerSpellCheckDisabled: true,
   ...question,
 });
 
@@ -71,7 +71,7 @@ export async function model(question, session, env) {
     spanishInput: normalizedQuestion.spanishInput,
     specialInput: normalizedQuestion.specialInput,
     equationEditor,
-    spellCheckEnabled: normalizedQuestion.playerSpellCheckEnabled,
+    spellCheckEnabled: !normalizedQuestion.playerSpellCheckDisabled,
     playersToolbarPosition: normalizedQuestion.playersToolbarPosition || 'bottom',
   }));
 }

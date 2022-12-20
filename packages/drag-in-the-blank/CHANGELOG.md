@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@4.3.3...@pie-element/drag-in-the-blank@4.4.0) (2022-12-20)
+
+
+### Bug Fixes
+
+* updated pie-libs ([6549302](https://github.com/pie-framework/pie-elements/commit/65493026fbf356c5ab752ae6a14d961d4b256368))
+* **drag-in-the-blank:** added config deafults for minChoices PD-2413 ([026657b](https://github.com/pie-framework/pie-elements/commit/026657be1bdea260288d93c1a89245a58d0ce9c2))
+
+
+### Features
+
+* **pie-models:** update schemas for extended-text-entry in order to include the updated spellchek property ([bf4b656](https://github.com/pie-framework/pie-elements/commit/bf4b656241887acf8e2aa1264e747c0c338ed727))
+
+
+
+
+
 ## [4.3.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@4.3.2...@pie-element/drag-in-the-blank@4.3.3) (2022-12-07)
 
 

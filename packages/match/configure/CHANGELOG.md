@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-configure@5.2.4...@pie-element/match-configure@5.3.0) (2022-12-20)
+
+
+### Bug Fixes
+
+* updated pie-libs ([6549302](https://github.com/pie-framework/pie-elements/commit/65493026fbf356c5ab752ae6a14d961d4b256368))
+* **match:** remove unnessesary prop that causes performance issues PD-2412 ([d27bc44](https://github.com/pie-framework/pie-elements/commit/d27bc44bbf7f6b55eefc525d6ab1afb1425f7b2d))
+
+
+### Features
+
+* **match:** reduce the width of the input widgets for selecting the number of columns & the response type ([c176761](https://github.com/pie-framework/pie-elements/commit/c17676155ae0e9f4c98b1374401a9900e589e2ed))
+
+
+
+
+
 ## [5.2.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-configure@5.2.3...@pie-element/match-configure@5.2.4) (2022-12-07)
 
 
