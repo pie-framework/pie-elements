@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.13.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@1.12.30...@pie-element/match-list@1.13.0) (2022-12-20)
+
+
+### Bug Fixes
+
+* updated pie-libs ([6549302](https://github.com/pie-framework/pie-elements/commit/65493026fbf356c5ab752ae6a14d961d4b256368))
+
+
+### Features
+
+* **pie-models:** update schemas for extended-text-entry in order to include the updated spellchek property ([bf4b656](https://github.com/pie-framework/pie-elements/commit/bf4b656241887acf8e2aa1264e747c0c338ed727))
+
+
+
+
+
 ## [1.12.30](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@1.12.29...@pie-element/match-list@1.12.30) (2022-12-07)
 
 

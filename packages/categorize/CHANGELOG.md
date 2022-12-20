@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@7.4.0...@pie-element/categorize@7.5.0) (2022-12-20)
+
+
+### Bug Fixes
+
+* updated pie-libs ([6549302](https://github.com/pie-framework/pie-elements/commit/65493026fbf356c5ab752ae6a14d961d4b256368))
+* **categorize:**  drag an answer choice elsewhere after it has been placed in a category-PD-1995 ([ade8720](https://github.com/pie-framework/pie-elements/commit/ade87201855c30f733e0ec3ed3c3336054409023))
+
+
+### Features
+
+* **categorize:** add pretty printer-PD-1995 ([712200b](https://github.com/pie-framework/pie-elements/commit/712200bf642f990da8443d6266f4a0b8e08d4f71))
+* **categorize:** add sanitt checks for choices-PD-1995 ([d4cd099](https://github.com/pie-framework/pie-elements/commit/d4cd099a3f0743015d42b6504580bfa4c17081b9))
+* **categorize:** add sanity checks-PD-1995 ([33d88e7](https://github.com/pie-framework/pie-elements/commit/33d88e7688443098baf940ac1233e3fba68c2b81))
+* **categorize:** define all propTypes-PD-1971 ([202030d](https://github.com/pie-framework/pie-elements/commit/202030dca780ee28871140cef0437c8a0a2632c2))
+* **categorize:** name field for the new category should have focus after add new cat-PD-1971 ([9456f42](https://github.com/pie-framework/pie-elements/commit/9456f427d6775d99f24a1661f4eb5332e2ebe507))
+* **categorize:** select text on focus-PD-1971 ([8be1949](https://github.com/pie-framework/pie-elements/commit/8be1949b8ebc60b2aefc21842a264900f0ddc4c1))
+* **categorize:** solve conflicts-PD-1971 ([e56e7c0](https://github.com/pie-framework/pie-elements/commit/e56e7c01ad4806a822537416e8741784de12517c))
+* **categorize:** update snapshot-PD-1971 ([c825e35](https://github.com/pie-framework/pie-elements/commit/c825e359a2561a3a6a39506d1838ef0e93ddd087))
+* **pie-models:** update schemas for extended-text-entry in order to include the updated spellchek property ([bf4b656](https://github.com/pie-framework/pie-elements/commit/bf4b656241887acf8e2aa1264e747c0c338ed727))
+
+
+
+
+
 # [7.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@7.3.0...@pie-element/categorize@7.4.0) (2022-12-07)
 
 
