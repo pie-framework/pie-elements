@@ -30,7 +30,7 @@ export const BlankContent = withStyles((theme) => ({
     overflow: 'hidden',
     position: 'relative',
     padding: '8px 35px 8px 35px',
-    cursor: 'pointer',
+    cursor: 'grab',
   },
   deleteIcon: {
     position: 'absolute',
