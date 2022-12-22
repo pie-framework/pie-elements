@@ -198,6 +198,7 @@ class Configure extends React.Component {
       maxLengthFirstColumnHeading
     } = config;
     const rowsErrors = {};
+    const columnsErrors = {};
     const errors = {};
 
     if (rows.length < minQuestions) {
@@ -238,12 +239,41 @@ class Configure extends React.Component {
       }
     });
 
+    if (maxAnswers && headers.length - 1 > maxAnswers) {
+      errors.columnsLengthError = `There should be maximum ${maxAnswers} answers.`;
+    }
+
+    if (maxLengthFirstColumnHeading && headers[0].length > maxLengthFirstColumnHeading) {
+      columnsErrors[0] = `The first column heading should have the maximum length of ${maxLengthFirstColumnHeading} characters.`;
+    }
+
+    (headers || []).slice(1).forEach((heading, index) => {
+      if (heading === '' || heading === '<div></div>') {
+        columnsErrors[index + 1] = 'Content should not be empty.';
+      } else if (maxLengthAnswers && heading.length > maxLengthAnswers) {
+        columnsErrors[index + 1] = `Content length should be maximum ${maxLengthAnswers} characters.`;
+      } else {
+        const identicalAnswer = headers.slice(index + 2).some((h) => {
+          return h === heading;
+        });
+
+        if (identicalAnswer) {
+          columnsErrors[index + 2] = 'Content should be unique.';
+        }
+      }
+    });
+
+
     if (!isEmpty(rowsErrors)) {
       errors.rowsErrors = rowsErrors;
       errors.correctResponseError =
         choiceMode === 'radio'
           ? 'There should be a correct response defined for every row.'
           : 'There should be at least one correct response defined for every row.';
+    }
+
+    if (!isEmpty(columnsErrors)) {
+      errors.columnsErrors = columnsErrors;
     }
 
     return errors;

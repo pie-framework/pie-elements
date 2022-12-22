@@ -164,8 +164,9 @@ class AnswerConfigBlock extends React.Component {
     const { headers = {}, maxImageWidth = {}, maxImageHeight = {} } = configuration || {};
     const { dialog } = this.state;
     // const { errors } = model || {};
-    const { correctResponseError, rowsErrors } = errors || {};
+    const { correctResponseError, rowsErrors, columnsErrors } = errors || {};
 
+    console.log('columnsErrors', columnsErrors);
     const filteredDefaultPlugins = (DEFAULT_PLUGINS || []).filter(
       (p) => p !== 'table' && p !== 'bulleted-list' && p !== 'numbered-list',
     );
@@ -201,10 +202,10 @@ class AnswerConfigBlock extends React.Component {
                     activePlugins={filteredDefaultPlugins}
                     pluginProps={labelPlugins}
                     autoWidthToolbar
-                    allowValidation
                     spellCheck={spellCheck}
                     uploadSoundSupport={uploadSoundSupport}
                     languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+                    error={columnsErrors && columnsErrors[idx]}
                   />
                 </div>
               ))}

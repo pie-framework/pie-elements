@@ -160,7 +160,6 @@ export class Row extends React.Component {
               className={classes.editor}
               pluginProps={rowPlugins}
               toolbarOpts={toolbarOpts}
-              allowValidation
               activePlugins={filteredDefaultPlugins}
               spellCheck={spellCheck}
               maxImageWidth={maxImageWidth}
