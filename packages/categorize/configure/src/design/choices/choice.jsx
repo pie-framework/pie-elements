@@ -8,10 +8,11 @@ import InputHeader from '../input-header';
 import { Checkbox } from '@pie-lib/config-ui';
 import { DeleteButton } from '../buttons';
 import DragHandle from '@material-ui/icons/DragHandle';
-import { DragSource } from 'react-dnd';
+import { DragSource, DropTarget } from 'react-dnd';
 import debug from 'debug';
 import { uid } from '@pie-lib/drag';
 import { multiplePlacements } from '../../utils';
+import flow from 'lodash/flow';
 
 const log = debug('@pie-element:categorize:configure:choice');
 
@@ -80,6 +81,7 @@ export class Choice extends React.Component {
       focusedEl,
       index,
       onDelete,
+      connectDropTarget,
       connectDragSource,
       connectDragPreview,
       imageSupport,
@@ -91,17 +93,17 @@ export class Choice extends React.Component {
       uploadSoundSupport,
     } = this.props;
 
-    const draggable = canDrag(this.props);
-
     const showRemoveAfterPlacing = this.isCheckboxShown(allowMultiplePlacements);
 
     return (
       <Card className={classNames(classes.choice, className)}>
         <CardActions className={classes.actions}>
           {connectDragSource(
-            <span className={classNames(classes.dragHandle, draggable === false && classes.dragDisabled)}>
-              <DragHandle color={draggable ? 'primary' : 'disabled'} />
-            </span>,
+            connectDropTarget(
+              <span className={classNames(classes.dragHandle)}>
+                <DragHandle color={'primary'} />
+              </span>,
+            ),
           )}
         </CardActions>
         {connectDragPreview(
@@ -165,10 +167,10 @@ const styles = (theme) => ({
 const StyledChoice = withStyles(styles)(Choice);
 
 export const spec = {
-  canDrag,
   beginDrag: (props) => {
     const out = {
       id: props.choice.id,
+      index: props.index,
     };
     log('[beginDrag] out:', out);
     return out;
@@ -184,14 +186,38 @@ export const spec = {
   },
 };
 
-const DraggableChoice = DragSource(
-  ({ uid }) => uid,
-  spec,
-  (connect, monitor) => ({
-    connectDragSource: connect.dragSource(),
-    connectDragPreview: connect.dragPreview(),
-    isDragging: monitor.isDragging(),
-  }),
-)(StyledChoice);
+export const specTarget = {
+  drop: (props, monitor) => {
+    log('[drop] props: ', props);
+    const item = monitor.getItem();
+    props.rearrangeChoices(item.index, props.index);
+  },
+  canDrop: (props, monitor) => {
+    const item = monitor.getItem();
+    if (props.choice.id !== item.id) {
+    }
+    return props.choice.id !== item.id;
+  },
+};
 
-export default uid.withUid(DraggableChoice);
+export default uid.withUid(
+  flow(
+    DragSource(
+      ({ uid }) => uid,
+      spec,
+      (connect, monitor) => ({
+        connectDragSource: connect.dragSource(),
+        connectDragPreview: connect.dragPreview(),
+        isDragging: monitor.isDragging(),
+      }),
+    ),
+    DropTarget(
+      ({ uid }) => uid,
+      specTarget,
+      (connect, monitor) => ({
+        connectDropTarget: connect.dropTarget(),
+        isOver: monitor.isOver(),
+      }),
+    ),
+  )(StyledChoice),
+);
