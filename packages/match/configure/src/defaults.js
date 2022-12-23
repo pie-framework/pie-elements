@@ -97,5 +97,6 @@ export default {
       settings: false,
       label: 'Add Rubric',
     },
+    maxWidth: '800px'
   },
 };
