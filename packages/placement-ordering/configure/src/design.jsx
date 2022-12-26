@@ -340,6 +340,7 @@ export default withDragContext(
     prompt: {
       paddingTop: theme.spacing.unit * 2,
       paddingBottom: theme.spacing.unit,
+      width: 'var(--pie-prompt-holder-max-width, 100%)'
     },
     row: {
       display: 'grid',

@@ -26,7 +26,7 @@ const styles = (theme) => ({
   },
   prompt: {
     paddingTop: theme.spacing.unit * 2,
-    width: '100%',
+    width: 'var(--pie-prompt-holder-max-width, 100%)',
   },
 });
 

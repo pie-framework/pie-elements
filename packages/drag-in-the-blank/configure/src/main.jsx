@@ -13,6 +13,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 import Choices from './choices';
 import { createSlateMarkup } from './markupUtils';
 import { generateValidationMessage } from '../utils';
+
 const { dropdown, toggle, Panel } = settings;
 
 const styles = (theme) => ({
@@ -23,7 +24,7 @@ const styles = (theme) => ({
   },
   prompt: {
     paddingTop: theme.spacing.unit * 2,
-    width: '100%',
+    width: 'var(--pie-prompt-holder-max-width, 100%)',
   },
   markup: {
     minHeight: '235px',
@@ -158,7 +159,7 @@ export class Main extends React.Component {
       withRubric = {},
     } = configuration || {};
     const { rationaleEnabled, promptEnabled, teacherInstructionsEnabled, spellCheckEnabled, errors, rubricEnabled } =
-      model || {};
+    model || {};
     const toolbarOpts = {};
 
     const { responseAreasError, choicesError } = errors || {};
@@ -248,7 +249,7 @@ export class Main extends React.Component {
                 placement={'right'}
                 title={validationMessage}
               >
-                <Info fontSize={'small'} color={'primary'} style={{ marginLeft: '5px' }} />
+                <Info fontSize={'small'} color={'primary'} style={{ marginLeft: '5px' }}/>
               </Tooltip>
             </div>
             {responseAreasError && <div className={classes.errorText}>{responseAreasError}</div>}

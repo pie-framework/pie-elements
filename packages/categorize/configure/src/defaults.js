@@ -96,5 +96,6 @@ export default {
       label: 'Add Rubric'
     },
     minCategoriesPerRow: 1,
+    maxWidth: '800px'
   }
 };
