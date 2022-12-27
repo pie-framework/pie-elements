@@ -1,17 +1,17 @@
-import { InputCheckbox, FeedbackConfig, FormSection } from '@pie-lib/config-ui';
+import React from 'react';
+import { InputCheckbox, FeedbackConfig, FormSection, layout } from '@pie-lib/config-ui';
+import EditableHtml from '@pie-lib/editable-html';
+import { NumberLineComponent, dataConverter, tickUtils } from '@pie-element/number-line';
 import NumberTextField from './number-text-field';
 import CardBar from './card-bar';
-import { NumberLineComponent, dataConverter, tickUtils } from '@pie-element/number-line';
 import Size from './size';
 import PropTypes from 'prop-types';
-import Button from '@material-ui/core/Button';
 import Domain from './domain';
 import Arrows from './arrows';
 import PointConfig from './point-config';
-import React from 'react';
 import cloneDeep from 'lodash/cloneDeep';
 import { withStyles } from '@material-ui/core/styles';
-import EditableHtml from '@pie-lib/editable-html';
+import Button from '@material-ui/core/Button';
 import Info from '@material-ui/icons/Info';
 import Tooltip from '@material-ui/core/Tooltip';
 
@@ -50,7 +50,7 @@ const styles = (theme) => ({
     margin: '20px 0',
   },
   pointTypeChooser: {
-    margin: '20px 0',
+    margin: `${theme.spacing.unit * 2.5} 0`,
   },
   promptHolder: {
     width: '100%',
@@ -66,7 +66,7 @@ const styles = (theme) => ({
     padding: 0,
   },
   tooltip: {
-    fontSize: '12px',
+    fontSize: theme.typography.fontSize - 2,
     whiteSpace: 'pre',
     maxWidth: '500px',
   },
@@ -74,9 +74,9 @@ const styles = (theme) => ({
     display: 'inline-flex',
   },
   errorText: {
-    fontSize: '12px',
+    fontSize: theme.typography.fontSize - 2,
     color: 'red',
-    padding: '5px 0',
+    paddingTop: theme.spacing.unit,
   },
 });
 
@@ -86,11 +86,13 @@ export const toPointType = (response) => {
       if (response.direction) {
         return `${response.pointType[0]}${response.direction[0]}`;
       }
+
       return response.pointType[0];
-    } else {
-      return `${response.leftPoint[0]}${response.rightPoint[0]}`;
     }
+
+    return `${response.leftPoint[0]}${response.rightPoint[0]}`;
   }
+
   return `${response.type[0]}${rest(response)}`.toUpperCase();
 };
 
@@ -115,9 +117,10 @@ export class Main extends React.Component {
     this.graphChange({ height });
   }
 
-  graphChange = (o) => {
-    const { onChange } = this.props;
-    const graph = { ...this.props.model.graph, ...o };
+  graphChange = (obj) => {
+    const { model, onChange } = this.props;
+    const graph = { ...model.graph, ...obj };
+
     onChange({ graph });
   };
 
@@ -129,14 +132,14 @@ export class Main extends React.Component {
     Object.entries(availableTypes || {}).forEach(([type, value]) => {
       if (type !== 'PF' && value) {
         onlyPFAvailable = false;
+
         return;
       }
     });
 
-    const height =
-      maxNumberOfPoints && (maxNumberOfPoints === 1 || onlyPFAvailable) ? 100 : 50 + (maxNumberOfPoints || 20) * 25;
-
-    return height;
+    return maxNumberOfPoints && (maxNumberOfPoints === 1 || onlyPFAvailable)
+      ? 100
+      : 50 + (maxNumberOfPoints || 20) * 25;
   };
 
   changeMaxNoOfPoints = (e, maxNumberOfPoints) => {
@@ -156,8 +159,8 @@ export class Main extends React.Component {
     const { model, onChange } = this.props;
     const correctResponse = tickUtils.snapElements(model.graph.domain, ticks, model.correctResponse);
     const initialElements = tickUtils.snapElements(model.graph.domain, ticks, model.graph.initialElements);
+    const graph = { ...model.graph, ticks, initialElements };
 
-    const graph = { ...this.props.model.graph, ticks, initialElements };
     onChange({ graph, correctResponse });
   };
 
@@ -175,25 +178,30 @@ export class Main extends React.Component {
 
   exhibitChanged = (event, value) => {
     const graph = { ...this.props.model.graph, exhibitOnly: value };
+
     this.props.onChange({ graph });
   };
 
   moveCorrectResponse = (index, el, position) => {
-    const { onChange, model } = this.props;
     el.position = position;
+
+    const { onChange, model } = this.props;
     const update = toSessionFormat(el.type === 'line' && lineIsSwitched(el) ? switchGraphLine(el) : el);
     const correctResponse = [...model.correctResponse];
     correctResponse[index] = update;
+
     onChange({ correctResponse });
   };
 
   moveInitialView = (index, el, position) => {
-    const { model, onChange } = this.props;
     el.position = position;
+
+    const { model, onChange } = this.props;
     const update = toSessionFormat(el.type === 'line' && lineIsSwitched(el) ? switchGraphLine(el) : el);
-    const initialElements = [...this.props.model.graph.initialElements];
+    const initialElements = [...model.graph.initialElements];
     initialElements[index] = update;
     const graph = { ...model.graph, initialElements };
+
     onChange({ graph });
   };
 
@@ -216,18 +224,16 @@ export class Main extends React.Component {
 
   deleteCorrectResponse = (indices) => {
     const { model, onChange } = this.props;
-    const correctResponse = model.correctResponse.filter((v, index) => {
-      return !indices.some((d) => d === index);
-    });
+    const correctResponse = model.correctResponse.filter((v, index) => !indices.some((d) => d === index));
+
     onChange({ correctResponse });
   };
 
   deleteInitialView = (indices) => {
     const { model, onChange } = this.props;
-    const initialElements = model.graph.initialElements.filter((v, index) => {
-      return !indices.some((d) => d === index);
-    });
+    const initialElements = model.graph.initialElements.filter((v, index) => !indices.some((d) => d === index));
     const graph = { ...model.graph, initialElements };
+
     onChange({ graph });
   };
 
@@ -235,6 +241,7 @@ export class Main extends React.Component {
     const { model, onChange } = this.props;
     const correctResponse = [...model.correctResponse];
     correctResponse.push(toSessionFormat(data));
+
     onChange({ correctResponse });
   };
 
@@ -243,19 +250,20 @@ export class Main extends React.Component {
     const graph = { ...model.graph };
     graph.initialElements = graph.initialElements || [];
     graph.initialElements.push(toSessionFormat(data));
+
     onChange({ graph });
   };
 
   clearCorrectResponse = () => {
     const { onChange } = this.props;
-    const correctResponse = [];
-    onChange({ correctResponse });
+
+    onChange({ correctResponse: [] });
   };
 
   clearInitialView = () => {
     const { model, onChange } = this.props;
-    const initialElements = [];
-    const graph = { ...model.graph, initialElements };
+    const graph = { ...model.graph, initialElements: [] };
+
     onChange({ graph });
   };
 
@@ -263,6 +271,7 @@ export class Main extends React.Component {
     const { model, onChange } = this.props;
     const correctResponse = [...model.correctResponse];
     correctResponse.pop();
+
     onChange({ correctResponse });
   };
 
@@ -271,35 +280,27 @@ export class Main extends React.Component {
     const graph = { ...model.graph };
     graph.initialElements = graph.initialElements || [];
     graph.initialElements.pop();
+
     onChange({ graph });
   };
 
-  onAddElement = this.addInitialView;
-
   render() {
     const { classes, model, onChange, configuration, uploadSoundSupport } = this.props;
+    const { prompt = {} } = configuration || {};
+    const { errors, graph, spellCheckEnabled, toolbarEditorPosition } = model || {};
 
-    const { graph, spellCheckEnabled, errors } = model || {};
-    const { prompt = {}, spellCheck = {} } = configuration || {};
     const { widthError, domainError, maxError, pointsError, correctResponseError } = errors || {};
     const validationMessage = generateValidationMessage();
 
     const correctResponse = cloneDeep(model.correctResponse || []).map(toGraphFormat);
-
     const initialView = cloneDeep(graph.initialElements || []).map(toGraphFormat);
-    const toolbarOpts = {};
 
-    switch (model.toolbarEditorPosition) {
-      case 'top':
-        toolbarOpts.position = 'top';
-        break;
-      default:
-        toolbarOpts.position = 'bottom';
-        break;
-    }
+    const toolbarOpts = {
+      position: toolbarEditorPosition === 'top' ? 'top' : 'bottom',
+    };
 
     return (
-      <div className={classes.root}>
+      <layout.ConfigLayout hideSettings={true} settings={null}>
         {prompt.settings && (
           <FormSection label={prompt.label}>
             <EditableHtml
@@ -315,6 +316,7 @@ export class Main extends React.Component {
             />
           </FormSection>
         )}
+
         <CardBar
           header="Attributes"
           info={
@@ -325,17 +327,13 @@ export class Main extends React.Component {
               placement={'right'}
               title={validationMessage}
             >
-              <Info fontSize={'small'} color={'primary'} style={{ marginLeft: '5px' }} />
+              <Info fontSize={'small'} color={'primary'} style={{ marginLeft: '8px' }} />
             </Tooltip>
           }
         >
           Set up the number line by entering the domain and number of tick marks to display. Labels on the number line
           can be edited or removed by clicking on the label.
         </CardBar>
-
-        {widthError && <div className={classes.errorText}>{widthError}</div>}
-        {domainError && <div className={classes.errorText}>{domainError}</div>}
-        {maxError && <div className={classes.errorText}>{maxError}</div>}
 
         <div className={classes.row}>
           <FormSection label={'Size'}>
@@ -346,14 +344,21 @@ export class Main extends React.Component {
             <Domain domain={graph.domain} onChange={(domain) => this.graphChange({ domain })} />
           </FormSection>
         </div>
+
+        {widthError && <div className={classes.errorText}>{widthError}</div>}
+        {maxError && <div className={classes.errorText}>{maxError}</div>}
+        {domainError && <div className={classes.errorText}>{domainError}</div>}
+
         <div className={classes.row}>
           <FormSection label={'Ticks'}>
             <Ticks ticks={graph.ticks} onChange={this.changeTicks} domain={graph.domain} />
           </FormSection>
+
           <FormSection label={'Arrows'}>
             <Arrows arrows={graph.arrows} onChange={this.changeArrows} />
           </FormSection>
         </div>
+
         <FormSection label={'Title'}>
           <EditableHtml
             markup={graph.title || ''}
@@ -364,6 +369,7 @@ export class Main extends React.Component {
             languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
           />
         </FormSection>
+
         <FormSection label={'Limits'}>
           <NumberTextField
             className={classes.maxNumberOfPoints}
@@ -373,10 +379,13 @@ export class Main extends React.Component {
             value={graph.maxNumberOfPoints}
             onChange={this.changeMaxNoOfPoints}
           />
+          {pointsError && <div className={classes.errorText}>{pointsError}</div>}
         </FormSection>
+
         <Button variant="outlined" mini color="primary" onClick={this.setDefaults}>
           Reset to default values
         </Button>
+
         <br />
         <br />
 
@@ -386,10 +395,6 @@ export class Main extends React.Component {
               Select answer type and place it on the number line. Intersecting points, line segments and/or rays will
               appear above the number line. <i>Note: A maximum of 20 points, line segments or rays may be plotted.</i>
             </CardBar>
-
-            {pointsError && <div className={classes.errorText}>{pointsError}</div>}
-            {correctResponseError && <div className={classes.errorText}>{correctResponseError}</div>}
-
             <NumberLineComponent
               onMoveElement={this.moveCorrectResponse}
               onDeleteElements={this.deleteCorrectResponse}
@@ -400,14 +405,18 @@ export class Main extends React.Component {
               //strip feedback for this model
               model={trimModel(model)}
             />
+            {correctResponseError && <div className={classes.errorText}>{correctResponseError}</div>}
+
             <CardBar header="Available Types" mini>
               Click on the input options to be displayed to the students. All inputs will display by default.
             </CardBar>
+
             <div className={classes.pointTypeChooser}>
               <PointConfig onSelectionChange={this.availableTypesChange} selection={graph.availableTypes} />
             </div>
           </div>
         )}
+
         <CardBar header="Initial view/Make Exhibit">
           Use this number line to set a starting point, line segment or ray. This is optional. <br />
           This number line may also be used to make an exhibit number line, which can not be manipulated by a student.
@@ -415,12 +424,13 @@ export class Main extends React.Component {
         <NumberLineComponent
           onMoveElement={this.moveInitialView}
           onDeleteElements={this.deleteInitialView}
-          onAddElement={this.onAddElement}
+          onAddElement={this.addInitialView}
           onClearElements={this.clearInitialView}
           onUndoElement={this.undoInitialView}
           answer={initialView}
           model={trimModel(model)}
         />
+
         <InputCheckbox
           label="Make exhibit"
           className={classes.checkbox}
@@ -439,7 +449,7 @@ export class Main extends React.Component {
             />
           </React.Fragment>
         )}
-      </div>
+      </layout.ConfigLayout>
     );
   }
 }
