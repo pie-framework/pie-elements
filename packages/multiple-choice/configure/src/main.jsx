@@ -1,17 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import EditableHtml from '@pie-lib/editable-html';
-import { InputContainer, ChoiceConfiguration, settings, layout, choiceUtils as utils } from '@pie-lib/config-ui';
+import {
+  AlertDialog,
+  InputContainer,
+  ChoiceConfiguration,
+  settings,
+  layout,
+  choiceUtils as utils,
+} from '@pie-lib/config-ui';
 import { color } from '@pie-lib/render-ui';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import merge from 'lodash/merge';
 import Tooltip from '@material-ui/core/Tooltip';
-import Dialog from '@material-ui/core/Dialog';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import DialogActions from '@material-ui/core/DialogActions';
 import Typography from '@material-ui/core/Typography';
 import Info from '@material-ui/icons/Info';
+import merge from 'lodash/merge';
 import { generateValidationMessage } from './utils';
 
 const { Panel, toggle, radio, dropdown } = settings;
@@ -146,7 +150,7 @@ const Design = withStyles(styles)((props) => {
     toolbarEditorPosition,
   } = model || {};
 
-  const { choicesErrors, correctResponseError, answerChoicesError = 'answer choices' } = errors || {};
+  const { choicesErrors, correctResponseError, answerChoicesError } = errors || {};
   const nrOfColumnsAvailable = choices?.length ? Array.from({ length: choices.length }, (_, i) => `${i + 1}`) : [];
 
   const labelPlugins = {
@@ -350,31 +354,6 @@ const Design = withStyles(styles)((props) => {
   );
 });
 
-const InfoDialog = ({ open, onCancel, onOk, title }) => (
-  <Dialog open={open}>
-    <DialogTitle>{title}</DialogTitle>
-    <DialogActions>
-      {onOk && (
-        <Button onClick={onOk} color="primary">
-          OK
-        </Button>
-      )}
-      {onCancel && (
-        <Button onClick={onCancel} color="primary">
-          Cancel
-        </Button>
-      )}
-    </DialogActions>
-  </Dialog>
-);
-
-InfoDialog.propTypes = {
-  open: PropTypes.bool,
-  onCancel: PropTypes.func,
-  onOk: PropTypes.func,
-  title: PropTypes.string,
-};
-
 export class Main extends React.Component {
   static propTypes = {
     model: PropTypes.object.isRequired,
@@ -389,38 +368,24 @@ export class Main extends React.Component {
     }),
   };
 
-  state = {
-    dialog: {
-      open: false,
-    },
-  };
+  state = { showWarning: false };
 
   onRemoveChoice = (index) => {
-    const { model, configuration } = this.props;
+    const { model, configuration, onModelChanged } = this.props;
     const { minAnswerChoices } = configuration || {};
 
     if (minAnswerChoices && model.choices.length === minAnswerChoices) {
-      this.setState({
-        dialog: {
-          open: true,
-          message: `There can't be less than ${minAnswerChoices} choices.`,
-          onOk: () => {
-            this.setState({
-              dialog: {
-                open: false,
-              },
-            });
-          },
-        },
-      });
-    } else {
-      model.choices.splice(index, 1);
-      this.props.onModelChanged(model);
+      this.setState({ showWarning: true });
+
+      return;
     }
+
+    model.choices.splice(index, 1);
+    onModelChanged(model);
   };
 
   onAddChoice = () => {
-    const { model, configuration } = this.props;
+    const { model, configuration, onModelChanged } = this.props;
     let { maxAnswerChoices } = configuration || {};
     const { limitChoicesNumber } = model || {};
 
@@ -442,20 +407,18 @@ export class Main extends React.Component {
       feedback: { type: 'none' },
     });
 
-    this.props.onModelChanged(model);
+    onModelChanged(model);
   };
 
   onChoiceChanged = (index, choice) => {
-    const { model } = this.props;
+    const { model, onModelChanged } = this.props;
 
     if (choice.correct && model.choiceMode === 'radio') {
-      model.choices = model.choices.map((c) => {
-        return merge({}, c, { correct: false });
-      });
+      model.choices = model.choices.map((c) => merge({}, c, { correct: false }));
     }
 
     model.choices.splice(index, 1, choice);
-    this.props.onModelChanged(model);
+    onModelChanged(model);
   };
 
   onPromptChanged = (prompt) => {
@@ -508,11 +471,17 @@ export class Main extends React.Component {
   };
 
   render() {
-    const { dialog } = this.state;
+    const { configuration: { minAnswerChoices } = {} } = this.props;
+    const { showWarning } = this.state;
 
     return (
-      <>
-        <InfoDialog open={dialog.open} title={dialog.message} onCancel={dialog.onCancel} onOk={dialog.onOk} />
+      <React.Fragment>
+        <AlertDialog
+          open={showWarning}
+          title="Warning"
+          text={`There can't be less than ${minAnswerChoices || 0} choices.`}
+          onConfirm={() => this.setState({ showWarning: false })}
+        />
         <Design
           {...this.props}
           onChangeModel={this.onModelChanged}
@@ -522,7 +491,7 @@ export class Main extends React.Component {
           onPromptChanged={this.onPromptChanged}
           onTeacherInstructionsChanged={this.onTeacherInstructionsChanged}
         />
-      </>
+      </React.Fragment>
     );
   }
 }
