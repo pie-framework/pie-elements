@@ -109,9 +109,6 @@ export interface PlacementOrderingPie extends PieModel {
   /** Indicates if Choice Label is enabled */
   choiceLabelEnabled?: boolean;
 
-  /** Indicates if the settings panel is not available */
-  settingsPanelDisabled?: boolean;
-
   /** Indicates if spellcheck is enabled for the author. Default value is true */
   spellCheckEnabled: boolean;
 
@@ -217,6 +214,9 @@ export interface PlacementOrderingConfigure extends PromptConfig, CommonConfigSe
    * Remove tiles after placing configuration
    */
   removeTilesAfterPlacing?: ConfigureProp;
+
+  /** Indicates if the settings panel is not available */
+  settingsPanelDisabled?: boolean;
 
   /**
    * Scoring Type configuration

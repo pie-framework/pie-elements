@@ -347,11 +347,6 @@
       "type": "boolean",
       "title": "choiceLabelEnabled"
     },
-    "settingsPanelDisabled": {
-      "description": "Indicates if the settings panel is not available",
-      "type": "boolean",
-      "title": "settingsPanelDisabled"
-    },
     "spellCheckEnabled": {
       "description": "Indicates if spellcheck is enabled for the author. Default value is true",
       "type": "boolean",
