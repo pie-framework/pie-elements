@@ -49,12 +49,14 @@ export class AlternateResponses extends React.Component {
     }),
   };
 
-  addChoiceToCategory = (choice, categoryId) => {
+  addChoiceToCategory = (addedChoice, categoryId) => {
     const {
       altIndex,
-      model: { correctResponse },
+      model: { correctResponse, choices },
       onModelChanged,
     } = this.props;
+
+    const choice = choices.find((c) => c.id === addedChoice.id);
 
     correctResponse.forEach((a) => {
       if (a.category === categoryId) {
@@ -64,9 +66,28 @@ export class AlternateResponses extends React.Component {
           a.alternateResponses[altIndex] = [];
         }
 
-        a.alternateResponses[altIndex].push(choice.id);
+        a.alternateResponses[altIndex].push(addedChoice.id);
+        if (choice.categoryCount !== 0) {
+          a.alternateResponses[altIndex] = a.alternateResponses[altIndex].reduce((acc, currentValue) => {
+            if (currentValue === choice.id) {
+              const foundIndex = acc.findIndex((c) => c === choice.id);
+              if (foundIndex === -1) {
+                acc.push(currentValue);
+              }
+            } else {
+              acc.push(currentValue);
+            }
+
+            return acc;
+          }, []);
+        }
 
         return a;
+      } else {
+        if (a.alternateResponses[altIndex] && choice.categoryCount !== 0) {
+          a.alternateResponses[altIndex] = a.alternateResponses[altIndex].filter((c) => c !== addedChoice.id);
+          return a;
+        }
       }
 
       return a;

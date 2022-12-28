@@ -108,7 +108,7 @@ export class Choices extends React.Component {
       defaultImageMaxWidth,
       defaultImageMaxHeight,
     } = this.props;
-    const { errors, allowMultiplePlacementsEnabled } = model;
+    const { errors, allowMultiplePlacementsEnabled, lockChoiceOrder } = model;
     const { choicesError, choicesErrors } = errors || {};
     const { maxChoices, maxImageWidth = {}, maxImageHeight = {} } = configuration || {};
 
@@ -136,6 +136,7 @@ export class Choices extends React.Component {
                 deleteFocusedEl={this.deleteFocusedEl}
                 correctResponseCount={h.correctResponseCount}
                 allowMultiplePlacements={allowMultiplePlacementsEnabled}
+                lockChoiceOrder={lockChoiceOrder}
                 index={index}
                 key={index}
                 imageSupport={imageSupport}

@@ -17,6 +17,9 @@ import flow from 'lodash/flow';
 const log = debug('@pie-element:categorize:configure:choice');
 
 const canDrag = (props) => {
+  if (props.lockChoiceOrder) {
+    return true;
+  }
   const count = props.choice.categoryCount || 0;
   if (count === 0) {
     return true;
@@ -34,6 +37,7 @@ export class Choice extends React.Component {
     deleteFocusedEl: PropTypes.func,
     focusedEl: PropTypes.number,
     index: PropTypes.number,
+    lockChoiceOrder: PropTypes.bool,
     onChange: PropTypes.func.isRequired,
     onDelete: PropTypes.func.isRequired,
     connectDragSource: PropTypes.func.isRequired,
@@ -94,14 +98,15 @@ export class Choice extends React.Component {
     } = this.props;
 
     const showRemoveAfterPlacing = this.isCheckboxShown(allowMultiplePlacements);
+    const draggable = canDrag(this.props);
 
     return (
       <Card className={classNames(classes.choice, className)}>
         <CardActions className={classes.actions}>
           {connectDragSource(
             connectDropTarget(
-              <span className={classNames(classes.dragHandle)}>
-                <DragHandle color={'primary'} />
+              <span className={classNames(classes.dragHandle, draggable === false && classes.dragDisabled)}>
+                <DragHandle color={draggable ? 'primary' : 'disabled'} />
               </span>,
             ),
           )}
@@ -167,6 +172,7 @@ const styles = (theme) => ({
 const StyledChoice = withStyles(styles)(Choice);
 
 export const spec = {
+  canDrag,
   beginDrag: (props) => {
     const out = {
       id: props.choice.id,

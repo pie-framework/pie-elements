@@ -13,6 +13,7 @@ import {
   moveChoiceToCategory,
   removeCategory,
   removeChoiceFromCategory,
+  verifyAllowMultiplePlacements,
 } from '@pie-lib/categorize';
 
 import Category from './category';
@@ -141,7 +142,7 @@ export class Categories extends React.Component {
           rowLabels,
           categories: model.categories.concat([data]),
         });
-      }
+      },
     );
   };
 
@@ -172,10 +173,15 @@ export class Categories extends React.Component {
     }
   };
 
-  addChoiceToCategory = (choice, categoryId) => {
+  addChoiceToCategory = (addedChoice, categoryId) => {
     const { model, onModelChanged } = this.props;
-    const correctResponse = moveChoiceToCategory(choice.id, undefined, categoryId, 0, model.correctResponse);
-
+    let { choices = [], correctResponse = [] } = model || {};
+    const choice = (choices || []).find((choice) => choice.id === addedChoice.id);
+    correctResponse = moveChoiceToCategory(addedChoice.id, undefined, categoryId, 0, model.correctResponse);
+    // if multiplePlacements not allowed, ensure the consistency in the other categories
+    if (choice.categoryCount !== 0) {
+      correctResponse = verifyAllowMultiplePlacements(addedChoice, categoryId, correctResponse);
+    }
     onModelChanged({ correctResponse });
   };
 
@@ -195,6 +201,7 @@ export class Categories extends React.Component {
     }
     if (choice.categoryCount !== 0) {
       correctResponse = moveChoiceToCategory(choice.id, from, to, choiceIndex, correctResponse);
+      correctResponse = verifyAllowMultiplePlacements(choice, to, correctResponse);
     } else if (choice.categoryCount === 0) {
       correctResponse = moveChoiceToCategory(choice.id, undefined, to, 0, correctResponse);
     }
