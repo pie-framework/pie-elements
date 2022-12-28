@@ -2,6 +2,7 @@
 
 exports[`Placement Ordering snapshot renders all default items 1`] = `
 <ConfigLayout
+  hideSettings={false}
   settings={
     <Panel
       configuration={
@@ -68,6 +69,7 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
             "label": "Scoring Type",
             "settings": false,
           },
+          "settingsPanelDisabled": false,
           "spellCheck": Object {
             "enabled": true,
             "label": "Spellcheck",
@@ -313,6 +315,7 @@ The correct ordering should not be identical to the initial ordering."
 
 exports[`Placement Ordering snapshot renders custom items 1`] = `
 <ConfigLayout
+  hideSettings={false}
   settings={
     <Panel
       configuration={
@@ -379,6 +382,7 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
             "label": "Scoring Type",
             "settings": false,
           },
+          "settingsPanelDisabled": false,
           "spellCheck": Object {
             "enabled": true,
             "label": "Spellcheck",
