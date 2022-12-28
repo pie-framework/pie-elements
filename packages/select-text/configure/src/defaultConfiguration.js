@@ -72,6 +72,7 @@ export default {
       settings: true,
       label: 'Feedback',
     },
+    settingsPanelDisabled: false,
     spellCheck: {
       label: 'Spellcheck',
       settings: false,

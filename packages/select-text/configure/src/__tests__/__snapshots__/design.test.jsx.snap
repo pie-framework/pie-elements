@@ -2,6 +2,7 @@
 
 exports[`design snapshot renders all items except feedback 1`] = `
 <ConfigLayout
+  hideSettings={false}
   settings={
     <Panel
       configuration={
@@ -57,6 +58,7 @@ exports[`design snapshot renders all items except feedback 1`] = `
             "label": "Selections Available",
             "settings": true,
           },
+          "settingsPanelDisabled": false,
           "spellCheck": Object {
             "enabled": true,
             "label": "Spellcheck",
@@ -142,7 +144,7 @@ There should be at least 1 token selected."
           fontSize="small"
           style={
             Object {
-              "left": "40px",
+              "left": "48px",
               "position": "absolute",
               "top": "-3px",
             }
@@ -175,6 +177,7 @@ There should be at least 1 token selected."
 
 exports[`design snapshot renders all items except the content input 1`] = `
 <ConfigLayout
+  hideSettings={false}
   settings={
     <Panel
       configuration={
@@ -230,6 +233,7 @@ exports[`design snapshot renders all items except the content input 1`] = `
             "label": "Selections Available",
             "settings": true,
           },
+          "settingsPanelDisabled": false,
           "spellCheck": Object {
             "enabled": true,
             "label": "Spellcheck",
@@ -306,7 +310,7 @@ There should be at least 1 token selected."
           fontSize="small"
           style={
             Object {
-              "left": "40px",
+              "left": "48px",
               "position": "absolute",
               "top": "-3px",
             }
@@ -339,6 +343,7 @@ There should be at least 1 token selected."
 
 exports[`design snapshot renders all items with defaultProps 1`] = `
 <ConfigLayout
+  hideSettings={false}
   settings={
     <Panel
       configuration={
@@ -394,6 +399,7 @@ exports[`design snapshot renders all items with defaultProps 1`] = `
             "label": "Selections Available",
             "settings": true,
           },
+          "settingsPanelDisabled": false,
           "spellCheck": Object {
             "enabled": true,
             "label": "Spellcheck",
@@ -479,7 +485,7 @@ There should be at least 1 token selected."
           fontSize="small"
           style={
             Object {
-              "left": "40px",
+              "left": "48px",
               "position": "absolute",
               "top": "-3px",
             }
@@ -512,6 +518,7 @@ There should be at least 1 token selected."
 
 exports[`design snapshot tokenizer renders with html entities 1`] = `
 <ConfigLayout
+  hideSettings={false}
   settings={
     <Panel
       configuration={
@@ -567,6 +574,7 @@ exports[`design snapshot tokenizer renders with html entities 1`] = `
             "label": "Selections Available",
             "settings": true,
           },
+          "settingsPanelDisabled": false,
           "spellCheck": Object {
             "enabled": true,
             "label": "Spellcheck",
@@ -653,7 +661,7 @@ There should be at least 1 token selected."
           fontSize="small"
           style={
             Object {
-              "left": "40px",
+              "left": "48px",
               "position": "absolute",
               "top": "-3px",
             }
