@@ -5,41 +5,41 @@ import { layout, settings } from '@pie-lib/config-ui';
 
 const { Panel, toggle } = settings;
 
-const styles = {
+const styles = (theme) => ({
   design: {
     fontFamily: 'Cerebri Sans',
-    fontSize: '14px',
+    fontSize: theme.typography.fontSize,
   },
-};
+});
 
 class Main extends React.Component {
   render() {
     const { model, classes, configuration, onConfigurationChanged, onModelChanged } = this.props || {};
-    const { settingsPanelDisabled, showExcludeZero, showMaxPoint } = configuration || {};
+    const { settingsPanelDisabled, showExcludeZero = {}, showMaxPoint = {} } = configuration || {};
+
+    const panelProperties = {
+      excludeZeroEnabled: showExcludeZero.settings && toggle(showExcludeZero.label),
+      maxPointsEnabled: showMaxPoint.settings && toggle(showMaxPoint.label),
+    };
+
     return (
       <div className={classes.design}>
-        {settingsPanelDisabled ? (
+        <layout.ConfigLayout
+          hideSettings={settingsPanelDisabled}
+          settings={
+            <Panel
+              model={model}
+              onChangeModel={onModelChanged}
+              configuration={configuration}
+              onChangeConfiguration={onConfigurationChanged}
+              groups={{
+                Properties: panelProperties,
+              }}
+            />
+          }
+        >
           <Authoring value={model} onChange={onModelChanged} />
-        ) : (
-          <layout.ConfigLayout
-            settings={
-              <Panel
-                model={model}
-                onChangeModel={onModelChanged}
-                configuration={configuration}
-                onChangeConfiguration={onConfigurationChanged}
-                groups={{
-                  Properties: {
-                    excludeZeroEnabled: showExcludeZero.settings && toggle(showExcludeZero.label),
-                    maxPointsEnabled: showMaxPoint.settings && toggle(showMaxPoint.label),
-                  },
-                }}
-              />
-            }
-          >
-            <Authoring value={model} onChange={onModelChanged} />
-          </layout.ConfigLayout>
-        )}
+        </layout.ConfigLayout>
       </div>
     );
   }
