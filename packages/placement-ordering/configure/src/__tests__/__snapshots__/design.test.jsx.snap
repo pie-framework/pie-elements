@@ -248,7 +248,7 @@ The correct ordering should not be identical to the initial ordering."
           fontSize="small"
           style={
             Object {
-              "marginLeft": "5px",
+              "marginLeft": "8px",
             }
           }
         />
@@ -281,27 +281,24 @@ The correct ordering should not be identical to the initial ordering."
         />
       </InputContainer>
     </div>
-    <InputContainer
-      label="Student Choices"
-    >
-      <WithStyles(ChoiceEditor)
-        choices={Array []}
-        choicesLabel="Choices"
-        correctResponse={Array []}
-        disableImages={true}
-        maxImageHeight={150}
-        maxImageWidth={300}
-        onChange={[Function]}
-        placementArea={false}
-        pluralChoiceLabel="Choices"
-        singularChoiceLabel="Choice"
-        toolbarOpts={
-          Object {
-            "position": "bottom",
-          }
+    <WithStyles(ChoiceEditor)
+      choices={Array []}
+      choicesLabel="Choices"
+      correctResponse={Array []}
+      disableImages={true}
+      errors={Object {}}
+      maxImageHeight={150}
+      maxImageWidth={300}
+      onChange={[Function]}
+      placementArea={false}
+      pluralChoiceLabel="Choices"
+      singularChoiceLabel="Choice"
+      toolbarOpts={
+        Object {
+          "position": "bottom",
         }
-      />
-    </InputContainer>
+      }
+    />
   </FormSection>
   <FeedbackConfig
     onChange={[Function]}
@@ -562,7 +559,7 @@ The correct ordering should not be identical to the initial ordering."
           fontSize="small"
           style={
             Object {
-              "marginLeft": "5px",
+              "marginLeft": "8px",
             }
           }
         />
@@ -595,27 +592,24 @@ The correct ordering should not be identical to the initial ordering."
         />
       </InputContainer>
     </div>
-    <InputContainer
-      label="Student Choices"
-    >
-      <WithStyles(ChoiceEditor)
-        choices={Array []}
-        choicesLabel="Choices"
-        correctResponse={Array []}
-        disableImages={true}
-        maxImageHeight={150}
-        maxImageWidth={300}
-        onChange={[Function]}
-        placementArea={false}
-        pluralChoiceLabel="Choices"
-        singularChoiceLabel="Choice"
-        toolbarOpts={
-          Object {
-            "position": "bottom",
-          }
+    <WithStyles(ChoiceEditor)
+      choices={Array []}
+      choicesLabel="Choices"
+      correctResponse={Array []}
+      disableImages={true}
+      errors={Object {}}
+      maxImageHeight={150}
+      maxImageWidth={300}
+      onChange={[Function]}
+      placementArea={false}
+      pluralChoiceLabel="Choices"
+      singularChoiceLabel="Choice"
+      toolbarOpts={
+        Object {
+          "position": "bottom",
         }
-      />
-    </InputContainer>
+      }
+    />
   </FormSection>
   <FeedbackConfig
     onChange={[Function]}
