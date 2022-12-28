@@ -256,7 +256,7 @@ class ChoiceEditor extends React.Component {
     return (
       <div className={classes.choiceEditor}>
         <div className={classes.vtiler} style={{ gridTemplateColumns: 'repeat(2, 1fr)' }}>
-          <InputContainer label={`Student ${choicesLabel}`} className={classes.columnLabel} />
+          <InputContainer label={`Student ${choicesLabel || 'Choices'}`} className={classes.columnLabel} />
           <InputContainer label="Correct Order" className={classes.columnLabel} />
         </div>
 
