@@ -73,7 +73,6 @@ export default {
       settings: false,
       label: 'Accessibility Label',
     },
-    settingsPanelDisabled: false,
     scoringType: {
       settings: false,
       label: 'Scoring Type',
