@@ -155,6 +155,10 @@ Indicates if Teacher Instructions are enabled
 
 Indicates if Choice Label is enabled
 
+# `settingsPanelDisabled` (boolean)
+
+Indicates if the settings panel is not available
+
 # `spellCheckEnabled` (boolean, required)
 
 Indicates if spellcheck is enabled for the author. Default value is true

@@ -109,6 +109,9 @@ export interface PlacementOrderingPie extends PieModel {
   /** Indicates if Choice Label is enabled */
   choiceLabelEnabled?: boolean;
 
+  /** Indicates if the settings panel is not available */
+  settingsPanelDisabled?: boolean;
+
   /** Indicates if spellcheck is enabled for the author. Default value is true */
   spellCheckEnabled: boolean;
 

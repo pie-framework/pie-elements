@@ -11,7 +11,6 @@ import React from 'react';
 import RemoveCircle from '@material-ui/icons/RemoveCircle';
 import debug from 'debug';
 import { withStyles } from '@material-ui/core/styles';
-import { InfoDialog } from './choice-editor';
 import { color } from '@pie-lib/render-ui';
 
 const log = debug('@pie-element:placement-ordering:configure:choice-tile');
@@ -44,12 +43,6 @@ export class ChoiceTile extends React.Component {
     error: PropTypes.string,
   };
 
-  state = {
-    dialog: {
-      open: false,
-    },
-  };
-
   onLabelChange = (label) => {
     const { choice, onChoiceChange } = this.props;
 
@@ -59,7 +52,7 @@ export class ChoiceTile extends React.Component {
 
   render() {
     const {
-      choice: { label, editable, index },
+      choice: { label, editable },
       isDragging,
       connectDragSource,
       connectDropTarget,
@@ -73,14 +66,11 @@ export class ChoiceTile extends React.Component {
       maxImageHeight,
       error,
     } = this.props;
-    const { dialog } = this.state;
 
     const dragSourceOpts = {}; //dropEffect: moveOnDrag ? 'move' : 'copy'};
 
     const choicePlugins = {
-      image: {
-        disabled: disableImages,
-      },
+      image: { disabled: disableImages },
       audio: { disabled: true },
       video: { disabled: true },
     };
@@ -91,13 +81,13 @@ export class ChoiceTile extends React.Component {
     const opacity = isDragging ? 0 : 1;
     const markup = (
       <div className={classes.choiceTile} style={{ opacity: opacity, width: '100%' }}>
-        <CardActions>
-          <span className={classNames(classes.dragHandle)}>
-            <DragHandle className={classes.actions} />
-          </span>
-        </CardActions>
         <div style={{ width: '100%', display: 'flex' }}>
-          {!editable && index === 0 ? <div className={classes.correctOrder}>Correct Order</div> : null}
+          <CardActions>
+            <span className={classNames(classes.dragHandle)}>
+              <DragHandle className={classes.actions} />
+            </span>
+          </CardActions>
+
           <EditableHtml
             disabled={!editable}
             className={classNames(classes.prompt, !editable && classes.targetPrompt)}
@@ -114,20 +104,17 @@ export class ChoiceTile extends React.Component {
             languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
             error={editable && error}
           />
-          {editable && error && <div className={classes.errorText}>{error}</div>}
+
           {editable && (
             <div className={classes.controls}>
               <IconButton color="default" onClick={onDelete}>
-                <RemoveCircle
-                  classes={{
-                    root: classes.removeCircle,
-                  }}
-                />
+                <RemoveCircle classes={{ root: classes.removeCircle }} />
               </IconButton>
             </div>
           )}
         </div>
-        <InfoDialog title={dialog.message} open={dialog.open} onOk={dialog.onOk} />
+
+        {editable && error && <div className={classes.errorText}>{error}</div>}
       </div>
     );
 
@@ -142,10 +129,9 @@ const Styled = withStyles((theme) => ({
   choiceTile: {
     cursor: 'move',
     backgroundColor: 'white',
-    marginTop: '5px',
-    marginBottom: '5px',
+    margin: `${theme.spacing.unit} 0`,
     display: 'flex',
-    alignItems: 'center',
+    flexDirection: 'column',
   },
   controls: {
     display: 'flex',
@@ -154,6 +140,7 @@ const Styled = withStyles((theme) => ({
   prompt: {
     width: '80%',
     border: 'none',
+    borderRadius: '4px',
   },
   targetPrompt: {
     backgroundColor: '#D7D7D7',
@@ -162,13 +149,15 @@ const Styled = withStyles((theme) => ({
     color: '#B1B1B1',
   },
   errorText: {
-    fontSize: '12px',
+    fontSize: theme.typography.fontSize - 2,
     color: 'red',
+    marginLeft: theme.spacing.unit * 5,
+    marginTop: theme.spacing.unit,
   },
   correctOrder: {
     position: 'absolute',
     top: 0,
-    fontSize: '12px',
+    fontSize: theme.typography.fontSize - 2,
     color: color.disabled(),
   },
 }))(ChoiceTile);
