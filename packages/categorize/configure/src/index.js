@@ -83,6 +83,7 @@ export default class CategorizeConfigure extends HTMLElement {
         delete: this.onDeleteSound.bind(this),
       },
     });
+
     ReactDOM.render(el, this);
   }
 }
