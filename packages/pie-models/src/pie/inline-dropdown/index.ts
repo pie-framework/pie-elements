@@ -140,6 +140,11 @@ export interface InlineDropdownConfigure extends PromptConfig, CommonConfigSetti
   choiceRationale?: ConfigureProp;
 
   /**
+   * Indicates if the settings panel is not available
+   */
+  settingsPanelDisabled?: boolean;
+
+  /**
    * Scoring Type configuration
    */
   scoringType?: ConfigureProp;
