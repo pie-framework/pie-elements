@@ -65,39 +65,52 @@ export class Root extends React.Component {
       onUpdateShapes,
     } = this.props;
     const {
-      multipleCorrect = {},
-      partialScoring = {},
-      prompt = {},
-      teacherInstructions = {},
-      rationale = {},
-      spellCheck = {},
-      preserveAspectRatio = {},
       maxImageWidth = {},
       maxImageHeight = {},
+      multipleCorrect = {},
+      partialScoring = {},
+      preserveAspectRatio = {},
+      prompt = {},
+      rationale = {},
+      settingsPanelDisabled,
+      spellCheck = {},
+      teacherInstructions = {},
       withRubric = {},
     } = configuration || {};
-    const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled, spellCheckEnabled, errors, rubricEnabled } =
-      model || {};
+    const {
+      errors,
+      promptEnabled,
+      rationaleEnabled,
+      spellCheckEnabled,
+      teacherInstructionsEnabled,
+      toolbarEditorPosition,
+    } = model || {};
     const { shapesError, selectionsError } = errors || {};
-    const toolbarOpts = {};
-
     const validationMessage = generateValidationMessage(configuration);
 
     const defaultImageMaxWidth = maxImageWidth && maxImageWidth.prompt;
     const defaultImageMaxHeight = maxImageHeight && maxImageHeight.prompt;
 
-    switch (model.toolbarEditorPosition) {
-      case 'top':
-        toolbarOpts.position = 'top';
-        break;
-      default:
-        toolbarOpts.position = 'bottom';
-        break;
-    }
+    const toolbarOpts = {
+      position: toolbarEditorPosition === 'top' ? 'top' : 'bottom',
+    };
+
+    const panelSettings = {
+      multipleCorrect: multipleCorrect.settings && toggle(multipleCorrect.label),
+      partialScoring: partialScoring.settings && toggle(partialScoring.label),
+      promptEnabled: prompt.settings && toggle(prompt.label),
+    };
+    const panelProperties = {
+      teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
+      rationaleEnabled: rationale.settings && toggle(rationale.label),
+      spellCheckEnabled: spellCheck.settings && toggle(spellCheck.label),
+      rubricEnabled: withRubric?.settings && toggle(withRubric?.label),
+    };
 
     return (
       <div className={classes.base}>
         <layout.ConfigLayout
+          hideSettings={settingsPanelDisabled}
           settings={
             <Panel
               model={model}
@@ -105,17 +118,8 @@ export class Root extends React.Component {
               configuration={configuration}
               onChangeConfiguration={onConfigurationChanged}
               groups={{
-                Settings: {
-                  multipleCorrect: multipleCorrect.settings && toggle(multipleCorrect.label),
-                  partialScoring: partialScoring.settings && toggle(partialScoring.label),
-                  promptEnabled: prompt.settings && toggle(prompt.label),
-                },
-                Properties: {
-                  teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
-                  rationaleEnabled: rationale.settings && toggle(rationale.label),
-                  spellCheckEnabled: spellCheck.settings && toggle(spellCheck.label),
-                  rubricEnabled: withRubric?.settings && toggle(withRubric?.label),
-                },
+                Settings: panelSettings,
+                Properties: panelProperties,
               }}
             />
           }
@@ -137,6 +141,7 @@ export class Root extends React.Component {
                 />
               </InputContainer>
             )}
+
             {promptEnabled && (
               <InputContainer label={prompt.label} className={classes.prompt}>
                 <EditableHtml
@@ -184,8 +189,6 @@ export class Root extends React.Component {
                 <Info fontSize={'small'} color={'primary'} style={{ float: 'right' }} />
               </Tooltip>
             </div>
-            {shapesError && <div className={classes.errorText}>{shapesError}</div>}
-            {selectionsError && <div className={classes.errorText}>{selectionsError}</div>}
 
             <HotspotPalette
               hotspotColor={model.hotspotColor}
@@ -200,6 +203,7 @@ export class Root extends React.Component {
               dimensions={model.dimensions}
               imageUrl={model.imageUrl}
               multipleCorrect={model.multipleCorrect}
+              hasErrors={!!shapesError || !!selectionsError}
               hotspotColor={model.hotspotColor}
               outlineColor={model.outlineColor}
               onUpdateImageDimension={onUpdateImageDimension}
@@ -209,6 +213,8 @@ export class Root extends React.Component {
               strokeWidth={model.strokeWidth}
               preserveAspectRatioEnabled={preserveAspectRatio.enabled}
             />
+            {shapesError && <div className={classes.errorText}>{shapesError}</div>}
+            {selectionsError && <div className={classes.errorText}>{selectionsError}</div>}
 
             {model.imageUrl && (
               <div>
@@ -226,6 +232,7 @@ export class Root extends React.Component {
                     showErrorWhenOutsideRange
                     className={classes.field}
                   />
+
                   <NumberTextField
                     key="hotspot-manual-height"
                     label="Height"
@@ -268,7 +275,7 @@ const styles = (theme) => ({
     width: '100%',
   },
   subheading: {
-    marginRight: '5px',
+    marginRight: theme.spacing.unit,
   },
   regular: {
     marginBottom: theme.spacing.unit * 3,
@@ -289,7 +296,7 @@ const styles = (theme) => ({
   errorText: {
     fontSize: '12px',
     color: 'red',
-    padding: '5px 0',
+    paddingTop: theme.spacing.unit,
   },
 });
 

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles/index';
 import Help from '@material-ui/icons/Help';
 
@@ -10,6 +11,7 @@ import { getAllShapes, groupShapes } from './utils';
 
 const isImage = (file) => {
   const imageType = /image.*/;
+
   return file.type.match(imageType);
 };
 
@@ -49,6 +51,7 @@ export class Container extends Component {
   };
 
   enableDropzone = () => this.setState({ dropzoneActive: true });
+
   disableDropzone = () => this.setState({ dropzoneActive: false });
 
   handleOnPaste = (e) => {
@@ -73,6 +76,7 @@ export class Container extends Component {
     } else if (isImage(files[0])) {
       this.handleFileRead(files[0]);
     }
+
     this.disableDropzone();
   };
 
@@ -118,7 +122,9 @@ export class Container extends Component {
   handleClearAll = () => this.onUpdateShapes([]);
 
   handleEnableDrag = () => this.setState({ dragEnabled: true });
+
   handleDisableDrag = () => this.setState({ dragEnabled: false });
+
   handleInputClick = () => this.input.click();
 
   toggleTooltip = () => this.setState({ showTooltip: !this.state.showTooltip });
@@ -127,6 +133,7 @@ export class Container extends Component {
     const {
       classes,
       dimensions,
+      hasErrors,
       hotspotColor,
       imageUrl,
       multipleCorrect,
@@ -141,7 +148,10 @@ export class Container extends Component {
     return (
       <div className={classes.base}>
         <div
-          className={`${classes.box} ${dropzoneActive ? classes.boxActive : ''}`}
+          className={classNames(classes.box, {
+            [classes.boxError]: hasErrors && !dropzoneActive,
+            [classes.boxActive]: dropzoneActive,
+          })}
           {...(dragEnabled
             ? {
                 onDragExit: this.handleOnDragExit,
@@ -165,6 +175,7 @@ export class Container extends Component {
                 }}
               />
             )}
+
             <Button disabled={!(shapes && shapes.length)} onClick={this.handleUndo} label="Undo" />
             <Button disabled={!(shapes && shapes.length)} onClick={this.handleClearAll} label="Clear all" />
           </div>
@@ -191,7 +202,7 @@ export class Container extends Component {
                 preserveAspectRatioEnabled={preserveAspectRatioEnabled}
               />
             ) : (
-              <div className={`${classes.drawableHeight} ${classes.centered}`}>
+              <div className={classNames(classes.drawableHeight, classes.centered)}>
                 <label>Drag and drop or upload image from computer</label>
                 <br />
                 <UploadControl
@@ -216,6 +227,7 @@ export class Container extends Component {
                   <div className={classes.tooltipArrow} />
                 </div>
               )}
+
               <Help className={classes.icon} onMouseOut={this.toggleTooltip} onMouseOver={this.toggleTooltip} />
             </div>
           )}
@@ -236,6 +248,9 @@ const styles = (theme) => ({
   boxActive: {
     border: '1px solid #0032C2',
   },
+  boxError: {
+    border: '1px solid red',
+  },
   centered: {
     alignItems: 'center',
     display: 'flex',
@@ -244,8 +259,8 @@ const styles = (theme) => ({
   },
   drawableHeight: {
     minHeight: 350,
-    paddingBottom: '40px',
-    paddingRight: '40px',
+    paddingBottom: theme.spacing.unit * 5,
+    paddingRight: theme.spacing.unit * 5,
   },
   icon: {
     '&:hover': {
@@ -267,21 +282,21 @@ const styles = (theme) => ({
     borderTopRightRadius: '5px',
     display: 'flex',
     justifyContent: 'flex-end',
-    padding: '12px 8px',
+    padding: theme.spacing.unit,
   },
   tooltip: {
     position: 'relative',
     textAlign: 'right',
-    padding: '5px 9px',
+    padding: theme.spacing.unit,
   },
   tooltipContent: {
     background: '#333131',
     borderRadius: '4px',
     color: '#FFFFFF',
-    fontSize: '14px',
+    fontSize: theme.typography.fontSize,
     lineHeight: '18px',
-    marginTop: '-70px',
-    padding: '7px 16px',
+    marginTop: '-60px',
+    padding: theme.spacing.unit,
     position: 'absolute',
     right: '5px',
     textAlign: 'left',
@@ -294,7 +309,7 @@ const styles = (theme) => ({
     borderRight: '10px solid transparent',
     borderTop: '10px solid #333131',
     marginBottom: -10,
-    marginTop: '2px',
+    marginTop: '4px',
     position: 'absolute',
     right: '5px',
   },
@@ -317,6 +332,7 @@ Container.propTypes = {
   strokeWidth: PropTypes.number,
   preserveAspectRatioEnabled: PropTypes.bool,
 };
+
 Container.defaultProps = {
   strokeWidth: 5,
 };
