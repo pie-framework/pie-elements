@@ -9,7 +9,6 @@ import EditableHtml from '@pie-lib/editable-html';
 import GraphingConfig from './graphing-config';
 import CorrectResponse from './correct-response';
 import intersection from 'lodash/intersection';
-import isEmpty from 'lodash/isEmpty';
 
 const { Panel, toggle, radio, checkboxes } = settings;
 const log = debug('@pie-element:graphing:configure');
