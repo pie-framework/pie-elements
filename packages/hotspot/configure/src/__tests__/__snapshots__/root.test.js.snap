@@ -3,6 +3,7 @@
 exports[`Root render renders 1`] = `
 <div>
   <ConfigLayout
+    hideSettings={false}
     settings={
       <Panel
         configuration={
@@ -39,6 +40,7 @@ exports[`Root render renders 1`] = `
               "label": "Rationale",
               "settings": true,
             },
+            "settingsPanelDisabled": false,
             "spellCheck": Object {
               "enabled": true,
               "label": "Spellcheck",
@@ -251,6 +253,7 @@ There should be at least 1 shape selected."
             "width": 400,
           }
         }
+        hasErrors={false}
         hotspotColor="rgba(137, 183, 244, 0.65)"
         imageUrl="https://cdn.fluence.net/image/0240eb1455ce4c4bb6180232347b6aef_W"
         multipleCorrect={true}
