@@ -129,7 +129,7 @@ const Styled = withStyles((theme) => ({
   choiceTile: {
     cursor: 'move',
     backgroundColor: 'white',
-    margin: `${theme.spacing.unit} 0`,
+    margin: `${theme.spacing.unit}px 0`,
     display: 'flex',
     flexDirection: 'column',
   },
