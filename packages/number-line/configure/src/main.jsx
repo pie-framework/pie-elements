@@ -50,7 +50,7 @@ const styles = (theme) => ({
     margin: '20px 0',
   },
   pointTypeChooser: {
-    margin: `${theme.spacing.unit * 2.5} 0`,
+    margin: `${theme.spacing.unit * 2.5}px 0`,
   },
   promptHolder: {
     width: '100%',
