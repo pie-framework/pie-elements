@@ -74,10 +74,7 @@ export class Configure extends React.Component {
       }
     }
 
-    const toolbarTools = intersection(
-      availableTools || [],
-      model.toolbarTools || []
-    );
+    const toolbarTools = intersection(availableTools || [], model.toolbarTools || []);
 
     onModelChanged && onModelChanged({ ...model, arrows, toolbarTools });
   }
@@ -101,15 +98,8 @@ export class Configure extends React.Component {
   };
 
   render() {
-    const {
-      classes,
-      model,
-      configuration,
-      onConfigurationChanged,
-      onModelChanged,
-      imageSupport,
-      uploadSoundSupport,
-    } = this.props;
+    const { classes, model, configuration, onConfigurationChanged, onModelChanged, imageSupport, uploadSoundSupport } =
+      this.props;
     const {
       arrows = {},
       authoring = {},
@@ -120,12 +110,13 @@ export class Configure extends React.Component {
       labels = {},
       padding = {},
       prompt = {},
-      title = {},
       rationale = {},
       scoringType = {},
+      settingsPanelDisabled,
       spellCheck = {},
       studentInstructions = {},
       teacherInstructions = {},
+      title = {},
       maxImageWidth = {},
       maxImageHeight = {},
       withRubric = {},
@@ -151,8 +142,34 @@ export class Configure extends React.Component {
       left: labels.left,
     };
 
+    const panelItemType = {
+      arrows:
+        arrows.settings &&
+        checkboxes(arrows.label, {
+          left: arrows.left,
+          right: arrows.right,
+          up: arrows.up,
+          down: arrows.down,
+        }),
+      titleEnabled: title.settings && toggle(title.label),
+      padding: padding.settings && toggle(padding.label),
+      labelsEnabled: labels.settings && toggle(labels.label),
+      coordinatesOnHover: coordinatesOnHover.settings && toggle(coordinatesOnHover.label),
+    };
+    const panelProperties = {
+      'authoring.enabled': authoring.settings && toggle(authoring.label, true),
+      teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
+      studentInstructionsEnabled: studentInstructions.settings && toggle(studentInstructions.label),
+      promptEnabled: prompt.settings && toggle(prompt.label),
+      rationaleEnabled: rationale.settings && toggle(rationale.label),
+      spellCheckEnabled: spellCheck.settings && toggle(spellCheck.label),
+      scoringType: scoringType.settings && radio(scoringType.label, ['dichotomous', 'partial scoring']),
+      rubricEnabled: withRubric?.settings && toggle(withRubric?.label),
+    };
+
     return (
       <layout.ConfigLayout
+        hideSettings={settingsPanelDisabled}
         settings={
           <Panel
             model={model}
@@ -160,32 +177,8 @@ export class Configure extends React.Component {
             onChangeModel={onModelChanged}
             onChangeConfiguration={onConfigurationChanged}
             groups={{
-              'Item Type': {
-                arrows:
-                  arrows.settings &&
-                  checkboxes(arrows.label, {
-                    left: arrows.left,
-                    right: arrows.right,
-                    up: arrows.up,
-                    down: arrows.down,
-                  }),
-                titleEnabled: title.settings && toggle(title.label),
-                padding: padding.settings && toggle(padding.label),
-                labelsEnabled: labels.settings && toggle(labels.label),
-                coordinatesOnHover:
-                  coordinatesOnHover.settings &&
-                  toggle(coordinatesOnHover.label),
-              },
-              Properties: {
-                'authoring.enabled': authoring.settings && toggle(authoring.label, true),
-                teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
-                studentInstructionsEnabled: studentInstructions.settings && toggle(studentInstructions.label),
-                promptEnabled: prompt.settings && toggle(prompt.label),
-                rationaleEnabled: rationale.settings && toggle(rationale.label),
-                spellCheckEnabled: spellCheck.settings && toggle(spellCheck.label),
-                scoringType: scoringType.settings && radio(scoringType.label, ['dichotomous', 'partial scoring']),
-                rubricEnabled: withRubric?.settings && toggle(withRubric?.label),
-              },
+              'Item Type': panelItemType,
+              Properties: panelProperties,
             }}
           />
         }
@@ -207,19 +200,10 @@ export class Configure extends React.Component {
                 imageSupport={imageSupport}
                 nonEmpty={false}
                 spellCheck={spellCheckEnabled}
-                maxImageWidth={
-                  (maxImageWidth && maxImageWidth.teacherInstructions) ||
-                  defaultImageMaxWidth
-                }
-                maxImageHeight={
-                  (maxImageHeight && maxImageHeight.teacherInstructions) ||
-                  defaultImageMaxHeight
-                }
+                maxImageWidth={(maxImageWidth && maxImageWidth.teacherInstructions) || defaultImageMaxWidth}
+                maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
                 uploadSoundSupport={uploadSoundSupport}
-                languageCharactersProps={[
-                  { language: 'spanish' },
-                  { language: 'special' },
-                ]}
+                languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               />
             </InputContainer>
           )}
@@ -237,10 +221,7 @@ export class Configure extends React.Component {
                 maxImageWidth={defaultImageMaxWidth}
                 maxImageHeight={defaultImageMaxHeight}
                 uploadSoundSupport={uploadSoundSupport}
-                languageCharactersProps={[
-                  { language: 'spanish' },
-                  { language: 'special' },
-                ]}
+                languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               />
             </InputContainer>
           )}
@@ -253,19 +234,10 @@ export class Configure extends React.Component {
                 onChange={this.onRationaleChange}
                 imageSupport={imageSupport}
                 spellCheck={spellCheckEnabled}
-                maxImageWidth={
-                  (maxImageWidth && maxImageWidth.rationale) ||
-                  defaultImageMaxWidth
-                }
-                maxImageHeight={
-                  (maxImageHeight && maxImageHeight.rationale) ||
-                  defaultImageMaxHeight
-                }
+                maxImageWidth={(maxImageWidth && maxImageWidth.rationale) || defaultImageMaxWidth}
+                maxImageHeight={(maxImageHeight && maxImageHeight.rationale) || defaultImageMaxHeight}
                 uploadSoundSupport={uploadSoundSupport}
-                languageCharactersProps={[
-                  { language: 'spanish' },
-                  { language: 'special' },
-                ]}
+                languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               />
             </InputContainer>
           )}

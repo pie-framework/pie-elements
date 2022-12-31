@@ -47,6 +47,7 @@ export default {
     studentInstructionsEnabled: true,
   },
   configuration: {
+    availableTools: allTools,
     authoring: {
       settings: false,
       label: 'Customize Grid Setup',
@@ -334,7 +335,7 @@ export default {
       enabled: true,
       placeholder: 'Click here to add a title for this graph',
     },
-    availableTools: allTools,
+    settingsPanelDisabled: false,
     spellCheck: {
       label: 'Spellcheck',
       settings: false,
