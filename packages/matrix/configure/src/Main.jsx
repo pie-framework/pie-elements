@@ -23,7 +23,7 @@ const styles = (theme) => ({
   matrixHeaderOptionsHolder: {
     display: 'flex',
     width: '100%',
-    padding: '20px 0',
+    padding: `${theme.spacing.unit * 2.5}px 0`,
     justifyContent: 'space-around',
   },
   design: {
@@ -43,12 +43,25 @@ const Design = withStyles(styles)((props) => {
     onConfigurationChanged,
     onTeacherInstructionsChanged,
   } = props;
-  const { prompt = {}, teacherInstructions = {}, scoringType = {}, spellCheck = {} } = configuration || {};
+  const {
+    prompt = {},
+    scoringType = {},
+    settingsPanelDisabled,
+    spellCheck = {},
+    teacherInstructions = {},
+  } = configuration || {};
   const { teacherInstructionsEnabled, spellCheckEnabled } = model || {};
+
+  const panelProperties = {
+    teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
+    spellCheckEnabled: spellCheck.settings && toggle(spellCheck.label),
+    scoringType: scoringType.settings && radio(scoringType.label, ['auto', 'rubric']),
+  };
 
   return (
     <div className={classes.design}>
       <layout.ConfigLayout
+        hideSettings={settingsPanelDisabled}
         settings={
           <Panel
             model={model}
@@ -56,11 +69,7 @@ const Design = withStyles(styles)((props) => {
             configuration={configuration}
             onChangeConfiguration={onConfigurationChanged}
             groups={{
-              Properties: {
-                teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
-                spellCheckEnabled: spellCheck.settings && toggle(spellCheck.label),
-                scoringType: scoringType.settings && radio(scoringType.label, ['auto', 'rubric']),
-              },
+              Properties: panelProperties,
             }}
           />
         }
@@ -120,24 +129,15 @@ export class Main extends React.Component {
   };
 
   onPromptChanged = (prompt) => {
-    this.props.onModelChanged({
-      ...this.props.model,
-      prompt,
-    });
+    this.props.onModelChanged({ ...this.props.model, prompt });
   };
 
   onChangeModel = (data) => {
-    this.props.onModelChanged({
-      ...this.props.model,
-      ...data,
-    });
+    this.props.onModelChanged({ ...this.props.model, ...data });
   };
 
   onTeacherInstructionsChanged = (teacherInstructions) => {
-    this.props.onModelChanged({
-      ...this.props.model,
-      teacherInstructions,
-    });
+    this.props.onModelChanged({ ...this.props.model, teacherInstructions });
   };
 
   render() {
