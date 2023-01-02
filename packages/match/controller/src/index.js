@@ -282,7 +282,6 @@ const markupToText = (s) => {
   return root.body.textContent;
 };
 
-
 export const validate = (model = {}, config = {}) => {
   const { rows, choiceMode, headers } = model;
   const {

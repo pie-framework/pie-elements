@@ -31,12 +31,6 @@ const styles = (theme) => ({
   },
 });
 
-const dp = new DOMParser();
-const markupToText = (s) => {
-  const root = dp.parseFromString(s, 'text/html');
-  return root.body.textContent;
-};
-
 class Configure extends React.Component {
   static propTypes = {
     onModelChanged: PropTypes.func,

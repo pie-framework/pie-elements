@@ -9,7 +9,6 @@ import Row from './row';
 import debug from 'debug';
 import lodash from 'lodash';
 import EditableHTML, { DEFAULT_PLUGINS } from '@pie-lib/editable-html';
-import { InfoDialog } from './common';
 
 const log = debug('pie-elements:match:configure');
 
@@ -94,12 +93,6 @@ class AnswerConfigBlock extends React.Component {
     toolbarOpts: PropTypes.object,
   };
 
-  state = {
-    dialog: {
-      open: false,
-    },
-  };
-
   moveRow = (from, to) => {
     const { model, onChange } = this.props;
     const newModel = { ...model };
@@ -173,7 +166,6 @@ class AnswerConfigBlock extends React.Component {
     } =
       this.props;
     const { headers = {}, maxImageWidth = {}, maxImageHeight = {} } = configuration || {};
-    const { dialog } = this.state;
     const { errors } = model || {};
     const { correctResponseError, rowsErrors, columnsErrors, noOfRowsError, columnsLengthError } = errors || {};
 
@@ -250,7 +242,6 @@ class AnswerConfigBlock extends React.Component {
           ))}
           <AddRow onAddClick={onAddRow}/>
         </div>
-        <InfoDialog title={'The column headings must be non-blank and unique.'} open={dialog.open} onOk={dialog.onOk}/>
       </div>
     );
   }
