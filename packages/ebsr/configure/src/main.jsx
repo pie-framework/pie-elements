@@ -90,6 +90,7 @@ export class Main extends React.Component {
       rationale: rationaleB = {},
       spellCheck: spellCheckB = {},
     } = partB || {};
+
     const type = partLabelType || 'Numbers';
     const typeIsNumber = type === 'Numbers';
     const firstPart = `Part ${typeIsNumber ? '1' : 'A'}`;
