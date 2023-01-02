@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
 import { settings, layout, InputContainer } from '@pie-lib/config-ui';
 import EditableHtml from '@pie-lib/editable-html';
+import { withStyles } from '@material-ui/core/styles';
 
 const { Panel, toggle } = settings;
 
