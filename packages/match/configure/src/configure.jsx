@@ -7,7 +7,6 @@ import PropTypes from 'prop-types';
 import debug from 'debug';
 import GeneralConfigBlock from './general-config-block';
 import AnswerConfigBlock from './answer-config-block';
-import isEmpty from 'lodash/isEmpty';
 
 const log = debug('@pie-element:match:configure');
 const { Panel, toggle, radio } = settings;
@@ -186,100 +185,6 @@ class Configure extends React.Component {
     });
   };
 
-
-  validate = (model = {}, config = {}) => {
-    const { rows, choiceMode, headers } = model;
-    const {
-      minQuestions,
-      maxQuestions,
-      maxLengthQuestionsHeading,
-      maxAnswers,
-      maxLengthAnswers,
-      maxLengthFirstColumnHeading
-    } = config;
-    const rowsErrors = {};
-    const columnsErrors = {};
-    const errors = {};
-
-    if (rows.length < minQuestions) {
-      errors.noOfRowsError = `There should be at least ${minQuestions} question rows.`;
-    } else if (rows.length > maxQuestions) {
-      errors.noOfRowsError = `No more than ${maxQuestions} question rows should be defined.`;
-    }
-
-    (rows || []).forEach((row, index) => {
-      const { id, values = [], title } = row;
-      let hasCorrectResponse = false;
-
-      rowsErrors[id] = '';
-
-      if (maxLengthQuestionsHeading && markupToText(title).length > maxLengthQuestionsHeading) {
-        rowsErrors[id] += `Questions rows content length should not be more than ${maxLengthQuestionsHeading} characters. `;
-      } else if (title === '' || title === '<div></div>') {
-        rowsErrors[id] += 'Content should not be empty. ';
-      } else {
-        const identicalAnswer = rows.slice(index + 1).some((r) => {
-          console.log('r', r, title);
-          return r.title === title;
-        });
-
-        if (identicalAnswer) {
-          rowsErrors[id] = 'Content should be unique. ';
-        }
-      }
-
-      values.forEach((value) => {
-        if (value) {
-          hasCorrectResponse = true;
-        }
-      });
-
-      if (!hasCorrectResponse) {
-        rowsErrors[id] += 'No correct response defined.';
-      }
-    });
-
-    if (maxAnswers && headers.length - 1 > maxAnswers) {
-      errors.columnsLengthError = `There should be maximum ${maxAnswers} answers.`;
-    }
-
-    if (maxLengthFirstColumnHeading && headers[0].length > maxLengthFirstColumnHeading) {
-      columnsErrors[0] = `The first column heading should have the maximum length of ${maxLengthFirstColumnHeading} characters.`;
-    }
-
-    (headers || []).slice(1).forEach((heading, index) => {
-      if (heading === '' || heading === '<div></div>') {
-        columnsErrors[index + 1] = 'Content should not be empty.';
-      } else if (maxLengthAnswers && heading.length > maxLengthAnswers) {
-        columnsErrors[index + 1] = `Content length should be maximum ${maxLengthAnswers} characters.`;
-      } else {
-        const identicalAnswer = headers.slice(index + 2).some((h) => {
-          return h === heading;
-        });
-
-        if (identicalAnswer) {
-          columnsErrors[index + 2] = 'Content should be unique.';
-        }
-      }
-    });
-
-
-    if (!isEmpty(rowsErrors)) {
-      errors.rowsErrors = rowsErrors;
-      errors.correctResponseError =
-        choiceMode === 'radio'
-          ? 'There should be a correct response defined for every row.'
-          : 'There should be at least one correct response defined for every row.';
-    }
-
-    if (!isEmpty(columnsErrors)) {
-      errors.columnsErrors = columnsErrors;
-    }
-
-    return errors;
-  };
-
-
   render() {
     const { classes, model, imageSupport, onModelChanged, configuration, onConfigurationChanged, uploadSoundSupport } =
       this.props;
@@ -306,10 +211,6 @@ class Configure extends React.Component {
       feedbackEnabled,
       rubricEnabled,
     } = model || {};
-
-    const errors = this.validate(model, configuration);
-
-    console.log('errors', errors);
 
     const toolbarOpts = {};
 
@@ -425,7 +326,6 @@ class Configure extends React.Component {
             toolbarOpts={toolbarOpts}
             spellCheck={spellCheckEnabled}
             uploadSoundSupport={uploadSoundSupport}
-            errors={errors}
           />
           {feedbackEnabled && (
             <FeedbackConfig feedback={model.feedback} onChange={this.onFeedbackChange} toolbarOpts={toolbarOpts} />

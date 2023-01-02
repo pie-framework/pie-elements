@@ -170,15 +170,13 @@ class AnswerConfigBlock extends React.Component {
       toolbarOpts,
       spellCheck,
       uploadSoundSupport,
-      errors
     } =
       this.props;
     const { headers = {}, maxImageWidth = {}, maxImageHeight = {} } = configuration || {};
     const { dialog } = this.state;
-    // const { errors } = model || {};
+    const { errors } = model || {};
     const { correctResponseError, rowsErrors, columnsErrors, noOfRowsError, columnsLengthError } = errors || {};
 
-    console.log('columnsErrors', columnsErrors);
     const filteredDefaultPlugins = (DEFAULT_PLUGINS || []).filter(
       (p) => p !== 'table' && p !== 'bulleted-list' && p !== 'numbered-list',
     );
@@ -221,10 +219,9 @@ class AnswerConfigBlock extends React.Component {
                   languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
                   error={columnsErrors && columnsErrors[idx]}
                 />
+                {columnsErrors && columnsErrors[idx] && <div className={classes.errorText}>{columnsErrors[idx]}</div>}
               </div>
             ))}
-            {columnsErrors && columnsErrors.length && <div className={classes.errorText}>{`Each column heading should not be empty.  `}</div>}
-
             <div className={classes.deleteIcon}>
               <Button disabled>
                 <div/>
