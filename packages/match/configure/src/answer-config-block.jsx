@@ -9,7 +9,7 @@ import Row from './row';
 import debug from 'debug';
 import lodash from 'lodash';
 import EditableHTML, { DEFAULT_PLUGINS } from '@pie-lib/editable-html';
-import { InfoDialog } from './common';
+import { AlertDialog } from '@pie-lib/config-ui';
 
 const log = debug('pie-elements:match:configure');
 
@@ -31,7 +31,7 @@ const styles = (theme) => ({
     justifyContent: 'center',
     '&> div': {
       width: '150px',
-      padding: '12px',
+      padding: theme.spacing.unit * 1.5,
       textAlign: 'center',
     },
   },
@@ -67,9 +67,9 @@ const styles = (theme) => ({
     },
   },
   errorText: {
-    fontSize: '12px',
+    fontSize: theme.typography.fontSize - 2,
     color: 'red',
-    paddingTop: '5px',
+    marginBottom: theme.spacing.unit,
   },
 });
 
@@ -92,11 +92,7 @@ class AnswerConfigBlock extends React.Component {
     toolbarOpts: PropTypes.object,
   };
 
-  state = {
-    dialog: {
-      open: false,
-    },
-  };
+  state = { showWarning: false };
 
   moveRow = (from, to) => {
     const { model, onChange } = this.props;
@@ -168,18 +164,7 @@ class AnswerConfigBlock extends React.Component {
     const empty = value === '<div></div>';
 
     if (sameValue.length || empty) {
-      this.setState({
-        dialog: {
-          open: true,
-          onOk: () => {
-            this.setState({
-              dialog: {
-                open: false,
-              },
-            });
-          },
-        },
-      });
+      this.setState({ showWarning: true });
     } else {
       newModel.headers[headerIndex] = value;
 
@@ -191,7 +176,7 @@ class AnswerConfigBlock extends React.Component {
     const { classes, model, onAddRow, imageSupport, configuration, toolbarOpts, spellCheck, uploadSoundSupport } =
       this.props;
     const { headers = {}, maxImageWidth = {}, maxImageHeight = {} } = configuration || {};
-    const { dialog } = this.state;
+    const { showWarning } = this.state;
     const { errors } = model || {};
     const { correctResponseError, rowsErrors } = errors || {};
 
@@ -211,7 +196,7 @@ class AnswerConfigBlock extends React.Component {
         <Typography type="body1" component="div">
           Click on the labels to edit or remove. Set the correct answers by clicking each correct answer per row.
         </Typography>
-        {correctResponseError && <div className={classes.errorText}>{correctResponseError}</div>}
+
         <div className={classes.rowTable}>
           <div className={classes.rowContainer}>
             {headers.settings &&
@@ -236,6 +221,7 @@ class AnswerConfigBlock extends React.Component {
                   />
                 </div>
               ))}
+
             <div className={classes.deleteIcon}>
               <Button disabled>
                 <div />
@@ -243,6 +229,7 @@ class AnswerConfigBlock extends React.Component {
             </div>
           </div>
           <hr className={classes.separator} />
+
           {model.rows.map((row, idx) => (
             <Row
               key={idx}
@@ -256,15 +243,23 @@ class AnswerConfigBlock extends React.Component {
               enableImages={model.enableImages}
               toolbarOpts={toolbarOpts}
               spellCheck={spellCheck}
-              error={rowsErrors && rowsErrors[row.id]}
+              error={rowsErrors?.[row.id]}
               maxImageWidth={(maxImageWidth && maxImageWidth.rowTitles) || defaultImageMaxWidth}
               maxImageHeight={(maxImageHeight && maxImageHeight.rowTitles) || defaultImageMaxHeight}
               uploadSoundSupport={uploadSoundSupport}
             />
           ))}
+
+          {correctResponseError && <div className={classes.errorText}>{correctResponseError}</div>}
           <AddRow onAddClick={onAddRow} />
         </div>
-        <InfoDialog title={'The column headings must be non-blank and unique.'} open={dialog.open} onOk={dialog.onOk} />
+
+        <AlertDialog
+          open={showWarning}
+          title="Warning"
+          text="The column headings must be non-blank and unique."
+          onConfirm={() => this.setState({ showWarning: false })}
+        />
       </div>
     );
   }

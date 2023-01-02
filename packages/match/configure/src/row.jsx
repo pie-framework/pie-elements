@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
-import { Checkbox } from '@pie-lib/config-ui';
+import { AlertDialog, Checkbox } from '@pie-lib/config-ui';
 import DragHandle from '@material-ui/icons/DragHandle';
 import Radio from '@material-ui/core/Radio';
 import Button from '@material-ui/core/Button';
@@ -10,7 +10,6 @@ import Delete from '@material-ui/icons/Delete';
 import { DragSource, DropTarget } from 'react-dnd';
 import debug from 'debug';
 import EditableHtml, { DEFAULT_PLUGINS } from '@pie-lib/editable-html';
-import { InfoDialog } from './common';
 
 const log = debug('@pie-element:categorize:configure:choice');
 
@@ -46,7 +45,7 @@ export class Row extends React.Component {
   state = {
     dialog: {
       open: false,
-      message: '',
+      text: '',
     },
   };
 
@@ -74,14 +73,7 @@ export class Row extends React.Component {
       this.setState({
         dialog: {
           open: true,
-          message: 'The question row headings must be non-blank and unique.',
-          onOk: () => {
-            this.setState({
-              dialog: {
-                open: false,
-              },
-            });
-          },
+          text: 'The question row headings must be non-blank and unique.',
         },
       });
     } else {
@@ -113,14 +105,7 @@ export class Row extends React.Component {
       this.setState({
         dialog: {
           open: true,
-          message: 'There has to be at least one question row.',
-          onOk: () => {
-            this.setState({
-              dialog: {
-                open: false,
-              },
-            });
-          },
+          text: 'There has to be at least one question row.',
         },
       });
     } else {
@@ -169,14 +154,11 @@ export class Row extends React.Component {
     );
 
     const content = (
-      <div
-        style={{
-          opacity: opacity,
-        }}
-      >
+      <div style={{ opacity: opacity }}>
         <span itemID={'handle'} className={classes.dragHandle} onMouseDown={this.onMouseDownOnHandle}>
           <DragHandle color={'primary'} />
         </span>
+
         <div className={classes.rowContainer}>
           <div className={classNames(classes.rowItem, classes.questionText)}>
             <EditableHtml
@@ -197,6 +179,7 @@ export class Row extends React.Component {
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
             />
           </div>
+
           {row.values.map((rowValue, rowIdx) => (
             <div key={rowIdx} className={classes.rowItem}>
               {model.choiceMode === 'radio' ? (
@@ -206,15 +189,23 @@ export class Row extends React.Component {
               )}
             </div>
           ))}
+
           <div className={classes.deleteIcon}>
             <Button onClick={this.onDeleteRow(idx)}>
               <Delete className={classes.deleteIcon} />
             </Button>
           </div>
         </div>
+
         {error && <div className={classes.errorText}>{error}</div>}
         <hr className={classes.separator} />
-        <InfoDialog title={dialog.message} open={dialog.open} onOk={dialog.onOk} />
+
+        <AlertDialog
+          open={dialog.open}
+          title="Warning"
+          text={dialog.text}
+          onConfirm={() => this.setState({ dialog: { open: false } })}
+        />
       </div>
     );
 
@@ -272,10 +263,9 @@ const styles = (theme) => ({
     width: '100%',
   },
   errorText: {
-    fontSize: '12px',
+    fontSize: theme.typography.fontSize - 2,
     color: 'red',
-    paddingTop: '10px',
-    textAlign: 'center',
+    paddingTop: theme.spacing.unit,
   },
 });
 
@@ -306,7 +296,9 @@ export const choiceTarget = {
   },
   drop(props, monitor) {
     const item = monitor.getItem();
+
     log('[drop] item: ', item, 'didDrop?', monitor.didDrop());
+
     props.onMoveRow(item.index, props.idx);
   },
 };
