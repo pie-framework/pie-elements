@@ -78,11 +78,6 @@
       "type": "boolean",
       "title": "promptEnabled"
     },
-    "removeTilesAfterPlacing": {
-      "description": "Indicates if the choice, after it is dragged into a category, should be removed from the choices\narea or should remain in place.",
-      "type": "boolean",
-      "title": "removeTilesAfterPlacing"
-    },
     "categories": {
       "description": "The categories in which choices may be placed",
       "type": "array",

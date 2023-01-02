@@ -19,8 +19,11 @@ const styles = (theme) => ({
   input: {
     flex: 1,
   },
+  numberTextField: {
+    flexDirection: 'unset',
+  },
   inputContainer: {
-    width: '90%',
+    width: '65%',
   },
   flexContainer: {
     display: 'flex',
@@ -99,6 +102,7 @@ class GeneralConfigBlock extends React.Component {
                   value={model.layout}
                   onChange={(e, v) => this.onChangeColumns('layout', v)}
                   suffix={'Columns'}
+                  className={classes.numberTextField}
                 />
               </InputContainer>
             )}
@@ -106,11 +110,7 @@ class GeneralConfigBlock extends React.Component {
           <div className={classes.input}>
             {choiceMode.settings && (
               <InputContainer label={choiceMode.label} className={classes.inputContainer}>
-                <Select
-                  className={classes.select}
-                  onChange={this.onChangeResponseType('choiceMode')}
-                  value={model.choiceMode}
-                >
+                <Select onChange={this.onChangeResponseType('choiceMode')} value={model.choiceMode}>
                   <MenuItem value="radio">Radio - One Answer</MenuItem>
                   <MenuItem value="checkbox">Checkbox - Multiple Answers</MenuItem>
                 </Select>

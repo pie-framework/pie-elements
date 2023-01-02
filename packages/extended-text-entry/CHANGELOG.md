@@ -3,6 +3,47 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@8.0.0...@pie-element/extended-text-entry@8.0.1) (2022-12-21)
+
+
+### Bug Fixes
+
+* updated pie-libs ([8cb5b90](https://github.com/pie-framework/pie-elements/commit/8cb5b90d501ccbdf5ffd764e6555faa48b8f54d6))
+
+
+
+
+
+# [8.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@7.3.4...@pie-element/extended-text-entry@8.0.0) (2022-12-20)
+
+
+### Bug Fixes
+
+* **extended-text-entry:** update default label for player's spellcheck property in settings panel ([597996d](https://github.com/pie-framework/pie-elements/commit/597996da5e8042c7d9bf1257a8fb1ff0077996c8))
+* updated pie-libs ([6549302](https://github.com/pie-framework/pie-elements/commit/65493026fbf356c5ab752ae6a14d961d4b256368))
+
+
+### Features
+
+* **extended-text-entry:** fix tests for spellcheck property ([b11734f](https://github.com/pie-framework/pie-elements/commit/b11734fac9fc9df28de00222d4a53e29b7887f6a))
+* **extended-text-entry:** flip the meaning of the spellCheck property in player ([f07fe0c](https://github.com/pie-framework/pie-elements/commit/f07fe0c27c36fa9343bff401543a5d711a2603ae))
+* **pie-models:** update schemas for extended-text-entry in order to include the updated spellchek property ([bf4b656](https://github.com/pie-framework/pie-elements/commit/bf4b656241887acf8e2aa1264e747c0c338ed727))
+
+
+### Performance Improvements
+
+* **extended-text-entry:** replace playerSpellCheckEnable with playerSpellCheckDisabled and change the meaning of spellcheckEnabled for player ([bc20d02](https://github.com/pie-framework/pie-elements/commit/bc20d021fe64f24e743e2f56d8c235ecb60c9eeb))
+
+
+### BREAKING CHANGES
+
+* **extended-text-entry:** The playerSpellCheckEnable property is replaced by playerSpellCheckDisabled propery.
+The default bahaviour is to disable the spellcheck for the player.
+
+
+
+
+
 ## [7.3.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@7.3.3...@pie-element/extended-text-entry@7.3.4) (2022-12-07)
 
 

@@ -3,6 +3,44 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.4.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@7.4.0...@pie-element/select-text@7.4.1) (2022-12-21)
+
+
+### Bug Fixes
+
+* updated pie-libs ([8cb5b90](https://github.com/pie-framework/pie-elements/commit/8cb5b90d501ccbdf5ffd764e6555faa48b8f54d6))
+
+
+
+
+
+# [7.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@7.3.4...@pie-element/select-text@7.4.0) (2022-12-20)
+
+
+### Bug Fixes
+
+* updated pie-libs ([6549302](https://github.com/pie-framework/pie-elements/commit/65493026fbf356c5ab752ae6a14d961d4b256368))
+
+
+### Features
+
+* **pie-models:** update schemas for extended-text-entry in order to include the updated spellchek property ([bf4b656](https://github.com/pie-framework/pie-elements/commit/bf4b656241887acf8e2aa1264e747c0c338ed727))
+
+
+
+
+
+## [7.3.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@7.3.3...@pie-element/select-text@7.3.4) (2022-12-13)
+
+
+### Bug Fixes
+
+* Attempt to fix PD-2185 ([8834b0b](https://github.com/pie-framework/pie-elements/commit/8834b0b9bb0b3c8a14e59825243f820b6db9c535))
+
+
+
+
+
 ## [7.3.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@7.3.2...@pie-element/select-text@7.3.3) (2022-12-07)
 
 

@@ -22,7 +22,6 @@ describe('config', () => {
       choicesPosition: 'below',
       choicesLabel: '',
       lockChoiceOrder: true,
-      removeTilesAfterPlacing: false,
       categoriesPerRow: 2,
       categories: [
         {

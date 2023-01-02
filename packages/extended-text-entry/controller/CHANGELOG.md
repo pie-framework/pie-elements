@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-controller@4.2.0...@pie-element/extended-text-entry-controller@4.3.0) (2022-12-20)
+
+
+### Features
+
+* **extended-text-entry:** fix tests for spellcheck property ([b11734f](https://github.com/pie-framework/pie-elements/commit/b11734fac9fc9df28de00222d4a53e29b7887f6a))
+* **extended-text-entry:** flip the meaning of the spellCheck property in player ([f07fe0c](https://github.com/pie-framework/pie-elements/commit/f07fe0c27c36fa9343bff401543a5d711a2603ae))
+
+
+
+
+
 # [4.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-controller@4.1.22...@pie-element/extended-text-entry-controller@4.2.0) (2022-12-07)
 
 

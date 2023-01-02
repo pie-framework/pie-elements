@@ -71,3 +71,59 @@ export const applyConstraints = (axis, size, oldGridValues, oldLabelValues) => {
 
   return { gridValues, labelValues };
 };
+
+// also used in pie-lib/graphing/utils as 'getTickValues'
+const getPlotablePoints = (prop) => {
+  const tickValues = [];
+  let tickVal = 0;
+
+  while (tickVal >= prop.min && tickValues.indexOf(tickVal) < 0) {
+    tickValues.push(tickVal);
+    tickVal = Math.round((tickVal - prop.step) * 10000) / 10000;
+  }
+
+  tickVal = Math.round(prop.step * 10000) / 10000;
+
+  while (tickVal <= prop.max && tickValues.indexOf(tickVal) < 0) {
+    tickValues.push(tickVal);
+    tickVal = Math.round((tickVal + prop.step) * 10000) / 10000;
+  }
+
+  // return only ticks that are inside the min-max interval
+  if (tickValues) {
+    return tickValues.filter((tV) => tV >= prop.min && tV <= prop.max);
+  }
+
+  return [];
+};
+
+export const filterPlotableMarks = (domain, range, answers) => {
+  const domainValues = getPlotablePoints(domain);
+  const rangeValues = getPlotablePoints(range);
+
+  const isPointPlotable = (x, y) => domainValues.includes(x) && rangeValues.includes(y);
+
+  return Object.entries(answers || {}).reduce((newAnswers, [key, answer]) => {
+    newAnswers[key] = {
+      ...answer,
+      marks: (answer.marks || []).filter((mark) => {
+        if (mark.type === 'point') {
+          return isPointPlotable(mark.x, mark.y);
+        }
+
+        if (mark.type === 'polygon') {
+          return !mark.points.find((point) => !isPointPlotable(point.x, point.y));
+        }
+
+        const from = mark.from || mark.root;
+        const to = mark.to || mark.edge;
+
+        return mark.building
+          ? isPointPlotable(from.x, from.y)
+          : isPointPlotable(from.x, from.y) && isPointPlotable(to.x, to.y);
+      }),
+    };
+
+    return newAnswers;
+  }, {});
+};

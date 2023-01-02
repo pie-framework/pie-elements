@@ -96,9 +96,9 @@ Indicates if Rationale are enabled
 
 Indicates if spellcheck is enabled for the author. Default value is true
 
-# `playerSpellCheckEnabled` (boolean, required)
+# `playerSpellCheckDisabled` (boolean, required)
 
-Indicates if spellcheck is enabled for the player. Default value is true
+Indicates if spellcheck is disabled for the player. Default value is true
 
 # `studentInstructionsEnabled` (boolean, required)
 

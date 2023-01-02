@@ -8,7 +8,12 @@ import EditableHtml from '@pie-lib/editable-html';
 import classNames from 'classnames';
 import Info from '@material-ui/icons/Info';
 import Tooltip from '@material-ui/core/Tooltip';
-import { moveChoiceToCategory, removeCategory, removeChoiceFromCategory } from '@pie-lib/categorize';
+import {
+  moveChoiceToAlternate,
+  moveChoiceToCategory,
+  removeCategory,
+  removeChoiceFromCategory,
+} from '@pie-lib/categorize';
 
 import Category from './category';
 import Header from '../header';
@@ -108,8 +113,12 @@ export class Categories extends React.Component {
     toolbarOpts: PropTypes.object,
   };
 
+  state = {
+    focusedEl: null,
+  };
+
   add = () => {
-    const { model } = this.props;
+    const { model, categories: oldCategories } = this.props;
     const { categoriesPerRow } = model;
     const id = utils.firstAvailableIndex(
       model.categories.map((a) => a.id),
@@ -123,9 +132,22 @@ export class Categories extends React.Component {
       rowLabels.push('');
     }
 
-    this.props.onModelChanged({
-      rowLabels,
-      categories: model.categories.concat([data]),
+    this.setState(
+      {
+        focusedEl: oldCategories.length,
+      },
+      () => {
+        this.props.onModelChanged({
+          rowLabels,
+          categories: model.categories.concat([data]),
+        });
+      }
+    );
+  };
+
+  deleteFocusedEl = () => {
+    this.setState({
+      focusedEl: null,
     });
   };
 
@@ -164,6 +186,21 @@ export class Categories extends React.Component {
     onModelChanged({ correctResponse });
   };
 
+  moveChoice = (choiceId, from, to, choiceIndex) => {
+    const { model, onModelChanged } = this.props;
+    let { choices, correctResponse = [] } = model || {};
+    const choice = (choices || []).find((choice) => choice.id === choiceId);
+    if (to === from || !choice) {
+      return;
+    }
+    if (choice.categoryCount !== 0) {
+      correctResponse = moveChoiceToCategory(choice.id, from, to, choiceIndex, correctResponse);
+    } else if (choice.categoryCount === 0) {
+      correctResponse = moveChoiceToCategory(choice.id, undefined, to, 0, correctResponse);
+    }
+    onModelChanged({ correctResponse });
+  };
+
   changeRowLabel = (val, index) => {
     const { model } = this.props;
     const { rowLabels } = model;
@@ -197,11 +234,7 @@ export class Categories extends React.Component {
 
     const { categoriesPerRow, rowLabels, errors } = model;
     const { associationError, categoriesError, categoriesErrors } = errors || {};
-    const {
-      maxCategories,
-      maxImageWidth = {},
-      maxImageHeight = {},
-    } = configuration || {};
+    const { maxCategories, maxImageWidth = {}, maxImageHeight = {} } = configuration || {};
     const holderStyle = {
       gridTemplateColumns: `repeat(${categoriesPerRow}, 1fr)`,
     };
@@ -252,11 +285,15 @@ export class Categories extends React.Component {
                 )}
                 <Category
                   imageSupport={imageSupport}
+                  focusedEl={this.state.focusedEl}
+                  deleteFocusedEl={this.deleteFocusedEl}
+                  index={index}
                   category={category}
                   error={categoriesErrors && categoriesErrors[category.id]}
                   onChange={this.change}
                   onDelete={() => this.delete(category)}
                   onAddChoice={this.addChoiceToCategory}
+                  onMoveChoice={(choiceId, from, to, choiceIndex) => this.moveChoice(choiceId, from, to, choiceIndex)}
                   toolbarOpts={toolbarOpts}
                   spellCheck={spellCheck}
                   onDeleteChoice={(choice, choiceIndex) => this.deleteChoiceFromCategory(category, choice, choiceIndex)}

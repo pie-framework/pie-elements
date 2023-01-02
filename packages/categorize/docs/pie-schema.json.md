@@ -53,11 +53,6 @@ The question prompt or item stem
 
 Indicates if the prompt is enabled
 
-# `removeTilesAfterPlacing` (boolean)
-
-Indicates if the choice, after it is dragged into a category, should be removed from the choices
-area or should remain in place.
-
 # `categories` (array, required)
 
 The categories in which choices may be placed

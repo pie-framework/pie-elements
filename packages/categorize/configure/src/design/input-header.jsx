@@ -8,6 +8,9 @@ export class InputHeader extends React.Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
     className: PropTypes.string,
+    deleteFocusedEl: PropTypes.func,
+    focusedEl: PropTypes.number,
+    index: PropTypes.number,
     label: PropTypes.string,
     onChange: PropTypes.func,
     onDelete: PropTypes.func,
@@ -24,12 +27,25 @@ export class InputHeader extends React.Component {
   };
 
   static defaultProps = {};
+
+  constructor(props) {
+    super(props);
+  }
+
+  componentDidMount() {
+    const { focusedEl, index } = this.props;
+    if (focusedEl && index && focusedEl === index) {
+      this.inputRef.focus('end', null, true);
+    }
+  }
+
   render() {
     const {
       onChange,
       label,
       classes,
       className,
+      deleteFocusedEl,
       imageSupport,
       toolbarOpts,
       spellCheck,
@@ -47,6 +63,7 @@ export class InputHeader extends React.Component {
       <div className={classNames(classes.inputHeader, className)}>
         <EditableHtml
           imageSupport={imageSupport}
+          ref={(ref) => (this.inputRef = ref)}
           autoWidthToolbar
           label={'label'}
           markup={label}
@@ -59,7 +76,13 @@ export class InputHeader extends React.Component {
           maxImageWidth={maxImageWidth}
           maxImageHeight={maxImageHeight}
           uploadSoundSupport={uploadSoundSupport}
-          languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+          languageCharactersProps={[
+            { language: 'spanish' },
+            { language: 'special' },
+          ]}
+          onDone={() => {
+            deleteFocusedEl && deleteFocusedEl();
+          }}
         />
       </div>
     );

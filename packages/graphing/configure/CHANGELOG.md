@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.6.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@4.6.0...@pie-element/graphing-configure@4.6.1) (2022-12-21)
+
+
+### Bug Fixes
+
+* updated pie-libs ([8cb5b90](https://github.com/pie-framework/pie-elements/commit/8cb5b90d501ccbdf5ffd764e6555faa48b8f54d6))
+
+
+
+
+
+# [4.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@4.5.0...@pie-element/graphing-configure@4.6.0) (2022-12-20)
+
+
+### Bug Fixes
+
+* updated pie-libs ([6549302](https://github.com/pie-framework/pie-elements/commit/65493026fbf356c5ab752ae6a14d961d4b256368))
+
+
+### Features
+
+* **graphing:** added support for ungraphable object PD-1687 ([841e018](https://github.com/pie-framework/pie-elements/commit/841e0181d9c2a9034df024ad662904c869b5a312))
+
+
+
+
+
 # [4.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@4.4.3...@pie-element/graphing-configure@4.5.0) (2022-12-07)
 
 

@@ -4,7 +4,7 @@
     "access": "public"
   },
   "repository": "pie-framework/pie-elements",
-  "version": "5.3.1",
+  "version": "5.4.1",
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -13,7 +13,7 @@
   "dependencies": {
     "@material-ui/core": "^3.9.2",
     "@pie-framework/pie-player-events": "^0.1.0",
-    "@pie-lib/charting": "^5.4.2",
+    "@pie-lib/charting": "^5.5.0",
     "@pie-lib/correct-answer-toggle": "^2.3.47",
     "@pie-lib/math-rendering": "^2.5.1",
     "@pie-lib/render-ui": "^4.13.7",

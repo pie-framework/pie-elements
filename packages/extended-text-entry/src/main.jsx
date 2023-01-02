@@ -6,7 +6,6 @@ import { withStyles } from '@material-ui/core/styles';
 import debug from 'debug';
 import debounce from 'lodash/debounce';
 import { color, Feedback, Collapsible, PreviewPrompt } from '@pie-lib/render-ui';
-import { renderMath } from '@pie-lib/math-rendering';
 
 const log = debug('@pie-ui:extended-text-entry');
 
