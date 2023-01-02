@@ -62,46 +62,59 @@ export class Configure extends React.Component {
     const { classes, model, imageSupport, onModelChanged, configuration, onConfigurationChanged, uploadSoundSupport } =
       this.props;
     const {
-      feedback = {},
-      responseType = {},
-      teacherInstructions = {},
-      studentInstructions = {},
-      rationale = {},
-      prompt = {},
-      scoringType = {},
-      ignoreOrder = {},
       allowTrailingZeros = {},
-      spellCheck = {},
+      feedback = {},
+      ignoreOrder = {},
       maxImageWidth = {},
       maxImageHeight = {},
+      prompt = {},
+      rationale = {},
+      responseType = {},
+      scoringType = {},
+      settingsPanelDisabled,
+      spellCheck = {},
+      studentInstructions = {},
+      teacherInstructions = {},
       withRubric = {},
     } = configuration || {};
-    log('[render] model', model);
     const {
-      rationaleEnabled,
-      promptEnabled,
-      teacherInstructionsEnabled,
       feedbackEnabled,
+      promptEnabled,
+      rationaleEnabled,
       spellCheckEnabled,
-      rubricEnabled,
+      teacherInstructionsEnabled,
+      toolbarEditorPosition,
     } = model || {};
-    const toolbarOpts = {};
 
-    switch (model.toolbarEditorPosition) {
-      case 'top':
-        toolbarOpts.position = 'top';
-        break;
-      default:
-        toolbarOpts.position = 'bottom';
-        break;
-    }
+    log('[render] model', model);
+
+    const toolbarOpts = {
+      position: toolbarEditorPosition === 'top' ? 'top' : 'bottom',
+    };
 
     const defaultImageMaxWidth = maxImageWidth && maxImageWidth.prompt;
     const defaultImageMaxHeight = maxImageHeight && maxImageHeight.prompt;
 
+    const panelSettings = {
+      responseType: responseType.settings && radio(responseType.label, [ResponseTypes.simple, ResponseTypes.advanced]),
+      feedbackEnabled: feedback.settings && toggle(feedback.label),
+      promptEnabled: prompt.settings && toggle(prompt.label),
+    };
+    const panelProperties = {
+      teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
+      studentInstructionsEnabled: studentInstructions.settings && toggle(studentInstructions.label),
+      rationaleEnabled: rationale.settings && toggle(rationale.label),
+      spellCheckEnabled: spellCheck.settings && toggle(spellCheck.label),
+      scoringType: scoringType.settings && radio(scoringType.label, ['auto', 'rubric']),
+      'ignoreOrder.enabled': ignoreOrder.settings && toggle(ignoreOrder.label),
+      'allowTrailingZeros.enabled': allowTrailingZeros.settings && toggle(allowTrailingZeros.label),
+      rubricEnabled: withRubric?.settings && toggle(withRubric?.label),
+    };
+
     return (
       <div>
         <layout.ConfigLayout
+          hideSettings={settingsPanelDisabled}
           settings={
             <Panel
               model={model}
@@ -109,22 +122,8 @@ export class Configure extends React.Component {
               onChangeModel={(model) => onModelChanged(model)}
               onChangeConfiguration={(config) => onConfigurationChanged(config)}
               groups={{
-                Settings: {
-                  responseType:
-                    responseType.settings && radio(responseType.label, [ResponseTypes.simple, ResponseTypes.advanced]),
-                  feedbackEnabled: feedback.settings && toggle(feedback.label),
-                  promptEnabled: prompt.settings && toggle(prompt.label),
-                },
-                Properties: {
-                  teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
-                  studentInstructionsEnabled: studentInstructions.settings && toggle(studentInstructions.label),
-                  rationaleEnabled: rationale.settings && toggle(rationale.label),
-                  spellCheckEnabled: spellCheck.settings && toggle(spellCheck.label),
-                  scoringType: scoringType.settings && radio(scoringType.label, ['auto', 'rubric']),
-                  'ignoreOrder.enabled': ignoreOrder.settings && toggle(ignoreOrder.label),
-                  'allowTrailingZeros.enabled': allowTrailingZeros.settings && toggle(allowTrailingZeros.label),
-                  rubricEnabled: withRubric?.settings && toggle(withRubric?.label),
-                },
+                Settings: panelSettings,
+                Properties: panelProperties,
               }}
             />
           }
@@ -160,6 +159,7 @@ export class Configure extends React.Component {
                 toolbarOpts={toolbarOpts}
                 spellCheck={spellCheckEnabled}
               />
+
               {feedbackEnabled && (
                 <FeedbackConfig feedback={model.feedback} onChange={this.onFeedbackChange} toolbarOpts={toolbarOpts} />
               )}
