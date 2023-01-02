@@ -9,7 +9,6 @@ import Info from '@material-ui/icons/Info';
 import Tooltip from '@material-ui/core/Tooltip';
 
 import { generateValidationMessage } from '../utils';
-import isEmpty from 'lodash/isEmpty';
 
 const styles = (theme) => ({
   container: {
