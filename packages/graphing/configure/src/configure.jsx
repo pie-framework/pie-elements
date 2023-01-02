@@ -57,19 +57,9 @@ export class Configure extends React.Component {
     // Same thing is set in the controller: packages/graphing/controller/src/index.js - model
     if (typeof arrows === 'boolean') {
       if (arrows) {
-        arrows = {
-          left: true,
-          right: true,
-          up: true,
-          down: true,
-        };
+        arrows = { left: true, right: true, up: true, down: true };
       } else {
-        arrows = {
-          left: false,
-          right: false,
-          up: false,
-          down: false,
-        };
+        arrows = { left: false, right: false, up: false, down: false };
       }
     }
 
