@@ -314,7 +314,6 @@ export const validate = (model = {}, config = {}) => {
       rowsErrors[id] += 'Content should not be empty. ';
     } else {
       const identicalAnswer = rows.slice(index + 1).some((r) => {
-        console.log('r', r, title);
         return r.title === title;
       });
 
