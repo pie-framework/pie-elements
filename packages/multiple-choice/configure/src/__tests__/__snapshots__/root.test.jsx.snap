@@ -2,8 +2,11 @@
 
 exports[`Main snapshot renders with choicePrefix="letters" as default 1`] = `
 <Fragment>
-  <InfoDialog
+  <Component
+    onConfirm={[Function]}
     open={false}
+    text="There can't be less than 0 choices."
+    title="Warning"
   />
   <WithStyles(Component)
     classes={Object {}}
@@ -76,8 +79,11 @@ exports[`Main snapshot renders with choicePrefix="letters" as default 1`] = `
 
 exports[`Main snapshot renders with choicePrefix="numbers" 1`] = `
 <Fragment>
-  <InfoDialog
+  <Component
+    onConfirm={[Function]}
     open={false}
+    text="There can't be less than 0 choices."
+    title="Warning"
   />
   <WithStyles(Component)
     classes={Object {}}
