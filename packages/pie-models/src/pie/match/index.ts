@@ -198,4 +198,9 @@ export interface MatchConfigure extends PromptConfig, CommonConfigSettings {
    * Rubric configuration
    */
   withRubric?: ConfigureProp;
+
+  /**
+   * How large (in px) should match be
+   */
+  width: string;
 }
