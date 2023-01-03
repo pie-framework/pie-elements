@@ -119,6 +119,7 @@ export default class PlacementOrdering extends HTMLElement {
         delete: this.onDeleteSound.bind(this),
       },
     });
+
     ReactDOM.render(element, this);
   }
 }
