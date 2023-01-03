@@ -72,6 +72,7 @@ export default {
       settings: false,
       label: 'Scoring Type',
     },
+    settingsPanelDisabled: false,
     studentInstructions: {
       settings: false,
       label: 'Student Instructions',

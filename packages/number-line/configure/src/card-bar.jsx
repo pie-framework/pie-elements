@@ -8,12 +8,14 @@ import Typography from '@material-ui/core/Typography';
 
 const CardBar = (props) => {
   const { classes, header, children, mini, info } = props;
+
   return (
     <div className={classes.cardBar}>
       <div className={classes.flexContainer}>
         <Typography variant={mini ? 'subheading' : 'h5'}>{header}</Typography>
         {info}
       </div>
+
       {children && (
         <Tooltip title={children} classes={{ tooltip: classes.tooltip }}>
           <IconButton aria-label="Delete" className={classes.button}>
@@ -31,6 +33,7 @@ CardBar.propTypes = {
   header: PropTypes.string,
   children: PropTypes.node,
 };
+
 const styles = (theme) => ({
   cardBar: {
     display: 'flex',
@@ -43,11 +46,12 @@ const styles = (theme) => ({
     padding: 0,
   },
   tooltip: {
-    fontSize: '12px',
+    fontSize: theme.typography.fontSize - 2,
   },
   flexContainer: {
     display: 'flex',
     alignItems: 'center',
   },
 });
+
 export default withStyles(styles)(CardBar);

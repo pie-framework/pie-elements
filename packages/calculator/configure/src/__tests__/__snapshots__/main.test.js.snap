@@ -1,7 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Render a calculator element Creates snapshot using enzyme 1`] = `
-<div>
+<ConfigLayout
+  hideSettings={true}
+  settings={null}
+>
   <Component
     header="Choose a Calculator"
     onChange={[Function]}
@@ -25,9 +28,8 @@ exports[`Render a calculator element Creates snapshot using enzyme 1`] = `
     onClose={[Function]}
   />
   <br />
-  <br />
   <WithStyles(Typography)>
     Please note that the calculators are tools for students and do not record answers.
   </WithStyles(Typography)>
-</div>
+</ConfigLayout>
 `;

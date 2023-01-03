@@ -152,6 +152,7 @@ export default class MultipleChoice extends HTMLElement {
         delete: this.onDeleteSound.bind(this),
       },
     });
+
     ReactDOM.render(element, this);
   }
 }

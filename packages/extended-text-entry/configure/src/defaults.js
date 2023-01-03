@@ -47,6 +47,7 @@ export default {
       label: 'Student response can include math notation',
       enabled: false,
     },
+    settingsPanelDisabled: false,
     spanishInput: {
       settings: true,
       label: 'Students can insert Spanish',

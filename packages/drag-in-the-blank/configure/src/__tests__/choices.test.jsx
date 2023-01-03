@@ -181,9 +181,9 @@ describe('Choices', () => {
       });
     });
 
-    describe('handleChoiceRemove', () => {
+    describe('onChoiceRemove', () => {
       it('removes a choice', () => {
-        wrapper().instance().handleChoiceRemove('1');
+        wrapper().instance().onChoiceRemove('1');
 
         expect(onChange).toBeCalledWith([
           { value: '<div>6</div>', id: '0' },

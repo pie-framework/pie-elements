@@ -1,16 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { RUBRIC_TYPES } from '@pie-lib/rubric';
+import { layout } from '@pie-lib/config-ui';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import { withStyles } from '@material-ui/core/styles';
 import { FormControlLabel } from '@material-ui/core';
-import { RUBRIC_TYPES } from '@pie-lib/rubric';
 
 const styles = {
   rubric: {
     display: 'flex',
     flexDirection: 'column',
-    padding: '16px 0 32px',
   },
 };
 
@@ -33,10 +33,7 @@ export class Main extends React.Component {
     const { model } = this.props;
 
     const rubricType = e.target.value;
-    this.onModelChanged({
-      ...model,
-      rubricType,
-    });
+    this.onModelChanged({ ...model, rubricType });
   };
 
   render() {
@@ -62,6 +59,7 @@ export class Main extends React.Component {
           />
         );
         break;
+
       case RUBRIC_TYPES.MULTI_TRAIT_RUBRIC:
         rubricTag = (
           <multi-trait-rubric-configure
@@ -70,9 +68,7 @@ export class Main extends React.Component {
             ref={(ref) => {
               if (ref) {
                 this.multiTraitRubric = ref;
-                this.multiTraitRubric.model = {
-                  ...rubrics.multiTraitRubric,
-                };
+                this.multiTraitRubric.model = { ...rubrics.multiTraitRubric };
                 this.multiTraitRubric.configuration = multiTraitRubric;
               }
             }}
@@ -82,8 +78,8 @@ export class Main extends React.Component {
     }
 
     return (
-      <div className={classes.design}>
-        <div>
+      <layout.ConfigLayout hideSettings={true} settings={null}>
+        <div className={classes.rubric}>
           <div>
             <RadioGroup
               aria-label="rubric-type"
@@ -98,6 +94,7 @@ export class Main extends React.Component {
                 checked={rubricType === RUBRIC_TYPES.SIMPLE_RUBRIC}
                 label="Simple Rubric"
               />
+
               <FormControlLabel
                 value={RUBRIC_TYPES.MULTI_TRAIT_RUBRIC}
                 control={<Radio />}
@@ -106,9 +103,10 @@ export class Main extends React.Component {
               />
             </RadioGroup>
           </div>
+
           <div>{rubricTag}</div>
         </div>
-      </div>
+      </layout.ConfigLayout>
     );
   }
 }

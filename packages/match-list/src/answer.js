@@ -189,6 +189,7 @@ const answerSource = {
       id: props.id,
       type: props.type,
       instanceId: props.instanceId,
+      promptId: props.promptId,
     };
   },
   endDrag(props, monitor) {

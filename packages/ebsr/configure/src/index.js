@@ -130,6 +130,7 @@ export default class EbsrConfigure extends HTMLElement {
       onModelChanged: this.onModelChanged,
       onConfigurationChanged: this.onConfigurationChanged,
     });
+
     ReactDOM.render(element, this);
   }
 }

@@ -25,10 +25,13 @@ const styles = (theme) => ({
   column: {
     flex: 1,
   },
-  noCorrectResponse: {
-    fontSize: '12px',
+  chartError: {
+    border: '2px solid red',
+  },
+  errorText: {
+    fontSize: theme.typography.fontSize - 2,
     color: 'red',
-    paddingBottom: '20px',
+    paddingTop: theme.spacing.unit,
   },
 });
 
@@ -46,15 +49,12 @@ const updateCorrectResponseData = (correctAnswer, data) => {
   }
 
   const correctAnswerData = [...correctAnswer];
-
   let correctResponseDefinition = [];
 
   data.forEach((category, currentIndex) => {
     const editable = category.editable;
     const interactive = category.interactive;
-
     const label = editable && correctAnswer[currentIndex]?.label ? correctAnswer[currentIndex].label : category.label;
-
     const value =
       (interactive && correctAnswer[currentIndex]?.value) || (interactive && correctAnswer[currentIndex]?.value == 0)
         ? correctAnswer[currentIndex].value
@@ -89,7 +89,6 @@ const insertCategory = (correctAnswer, data) => {
 
 const removeCategory = (correctAnswer, data, positionToRemove) => {
   correctAnswer.splice(positionToRemove, 1);
-
   const correctAnswerData = [...correctAnswer];
 
   return addCategoryProps(correctAnswerData, data);
@@ -125,9 +124,7 @@ export class CorrectResponse extends React.Component {
 
   UNSAFE_componentWillReceiveProps(nextProps) {
     const { model: { data: nextData = [], correctAnswer: { data: nextCorrectAnswerData = [] } } = {} } = nextProps;
-
     const { model: { data = [] } = {} } = this.props;
-
     const { categories } = this.state;
     let nextCategories = [];
 
@@ -196,22 +193,21 @@ export class CorrectResponse extends React.Component {
     const { classes, model, charts, error, correctAnswerErrors } = this.props;
     const { categories } = this.state;
     const { domain = {}, range = {} } = model || {};
+    const { identicalError, categoriesError } = correctAnswerErrors || {};
 
     return (
       <div>
         Define Correct Response
         <div className={classes.container}>
           <div className={classes.column} key="graph">
-            {correctAnswerErrors && (
-              <Typography component="div" type="body1" className={classes.noCorrectResponse}>
-                <span>{correctAnswerErrors.identicalError || correctAnswerErrors.categoriesError}</span>
-              </Typography>
-            )}
             <Typography component="div" type="body1">
               <span>Use the tools below to define the correct answer.</span>
             </Typography>
 
-            <div key={`correct-response-graph-${model.correctAnswer.name}`}>
+            <div
+              key={`correct-response-graph-${model.correctAnswer.name}`}
+              className={identicalError || categoriesError ? classes.chartError : {}}
+            >
               <Chart
                 chartType={model.chartType}
                 size={model.graph}
@@ -226,6 +222,12 @@ export class CorrectResponse extends React.Component {
                 error={error}
               />
             </div>
+
+            {(identicalError || categoriesError) && (
+              <Typography component="div" type="body1" className={classes.errorText}>
+                <span>{identicalError || categoriesError}</span>
+              </Typography>
+            )}
           </div>
         </div>
       </div>

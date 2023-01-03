@@ -71,6 +71,7 @@ export default {
       settings: false,
       label: 'Remove Tiles after placing',
     },
+    settingsPanelDisabled: false,
     scoringType: {
       settings: false,
       label: 'Scoring Type',

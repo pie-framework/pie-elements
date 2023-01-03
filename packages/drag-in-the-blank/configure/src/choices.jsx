@@ -8,30 +8,9 @@ import Button from '@material-ui/core/Button';
 import Choice from './choice';
 import { choiceIsEmpty } from './markupUtils';
 import { withStyles } from '@material-ui/core/styles';
-import Dialog from '@material-ui/core/Dialog';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import DialogActions from '@material-ui/core/DialogActions';
+import { AlertDialog } from '@pie-lib/config-ui';
 
 window.renMath = renderMath;
-
-const InfoDialog = ({ open, title, onOk }) => (
-  <Dialog open={open}>
-    <DialogTitle>{title || ''}</DialogTitle>
-    <DialogActions>
-      {onOk && (
-        <Button onClick={onOk} color="primary">
-          OK
-        </Button>
-      )}
-    </DialogActions>
-  </Dialog>
-);
-
-InfoDialog.propTypes = {
-  open: PropTypes.bool,
-  onOk: PropTypes.func,
-  title: PropTypes.string,
-};
 
 const styles = (theme) => ({
   design: {
@@ -42,16 +21,23 @@ const styles = (theme) => ({
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'space-evenly',
-    padding: '20px 0 0 0',
+    margin: `${theme.spacing.unit}px 0`,
+
     '& > *': {
-      marginBottom: '20px',
+      margin: theme.spacing.unit,
     },
+  },
+  errorText: {
+    fontSize: theme.typography.fontSize - 2,
+    color: 'red',
+    paddingBottom: theme.spacing.unit * 2,
   },
 });
 
 export class Choices extends React.Component {
   static propTypes = {
     duplicates: PropTypes.bool,
+    error: PropTypes.string,
     model: PropTypes.object.isRequired,
     onChange: PropTypes.func.isRequired,
     classes: PropTypes.object.isRequired,
@@ -60,11 +46,7 @@ export class Choices extends React.Component {
     uploadSoundSupport: PropTypes.object,
   };
 
-  state = {
-    dialog: {
-      open: false,
-    },
-  };
+  state = { showWarning: false };
 
   componentDidMount() {
     this.rerenderMath();
@@ -99,26 +81,12 @@ export class Choices extends React.Component {
         onChange(newChoices);
       }
 
-      this.setState({
-        dialog: {
-          open: true,
-          message: 'Identical answer choices are not allowed and the changes will be discarded',
-          onOk: () => this.setState({ dialog: { open: false } }),
-        },
-      });
+      this.setState({ showWarning: true });
 
       return;
     }
 
-    const newChoices = choices
-      ? choices.map((c) => {
-          if (c.id === key) {
-            return { ...c, value: val };
-          }
-
-          return c;
-        })
-      : [];
+    const newChoices = choices?.map((choice) => (choice.id === key ? { ...choice, value: val } : choice)) || [];
 
     if (choiceIsEmpty({ value: val })) {
       // if the edited content is empty, its usage has to be searched in the correct response definitions
@@ -184,12 +152,12 @@ export class Choices extends React.Component {
     );
   };
 
-  handleChoiceRemove = (id) => {
+  onChoiceRemove = (id) => {
     const {
       onChange,
       model: { choices },
     } = this.props;
-    const newChoices = choices.filter((c) => c.id !== id);
+    const newChoices = (choices || []).filter((choice) => choice.id !== id);
 
     onChange(newChoices);
   };
@@ -213,20 +181,20 @@ export class Choices extends React.Component {
   };
 
   render() {
-    const { focusedEl, dialog } = this.state;
+    const { focusedEl, showWarning } = this.state;
     const {
       classes,
       duplicates,
-      toolbarOpts,
+      error,
       maxChoices,
       model: { choices },
+      toolbarOpts,
       uploadSoundSupport,
     } = this.props;
     const visibleChoices = this.getVisibleChoices() || [];
 
     return (
       <div className={classes.design}>
-        <InfoDialog open={dialog.open} title={dialog.message} onOk={dialog.onOk} />
         <Button
           className={classes.addButton}
           variant="contained"
@@ -236,55 +204,61 @@ export class Choices extends React.Component {
         >
           Add Choice
         </Button>
-        <div className={classes.altChoices}>
-          {visibleChoices.map((c, index) => {
-            if (focusedEl === c.id) {
-              return (
-                <div
-                  key={index}
-                  style={{
-                    minWidth: '100%',
-                    zIndex: '100',
-                  }}
-                >
-                  <EditableHtml
-                    ref={(ref) => (this.focusedNodeRef = ref)}
-                    className={classes.prompt}
-                    markup={c.value}
-                    pluginProps={{
-                      video: {
-                        disabled: true,
-                      },
-                      audio: {
-                        disabled: true,
-                      },
-                    }}
-                    onChange={(val) => this.onChoiceChanged(c.value, val, c.id)}
-                    onDone={() => {
-                      this.setState({
-                        focusedEl: undefined,
-                      });
-                    }}
-                    disableUnderline
-                    toolbarOpts={toolbarOpts}
-                    uploadSoundSupport={uploadSoundSupport}
-                  />
-                </div>
-              );
-            }
 
-            return (
+        <div className={classes.altChoices}>
+          {visibleChoices.map((choice, index) =>
+            focusedEl === choice.id ? (
+              <div
+                key={index}
+                style={{
+                  minWidth: '100%',
+                  zIndex: '100',
+                }}
+              >
+                <EditableHtml
+                  ref={(ref) => (this.focusedNodeRef = ref)}
+                  className={classes.prompt}
+                  markup={choice.value}
+                  pluginProps={{
+                    video: {
+                      disabled: true,
+                    },
+                    audio: {
+                      disabled: true,
+                    },
+                  }}
+                  onChange={(val) => this.onChoiceChanged(choice.value, val, choice.id)}
+                  onDone={() => {
+                    this.setState({
+                      focusedEl: undefined,
+                    });
+                  }}
+                  disableUnderline
+                  toolbarOpts={toolbarOpts}
+                  uploadSoundSupport={uploadSoundSupport}
+                />
+              </div>
+            ) : (
               <Choice
                 key={index}
                 duplicates={duplicates}
                 targetId="0"
-                choice={c}
-                onClick={() => this.onChoiceFocus(c.id)}
-                onRemoveChoice={() => this.handleChoiceRemove(c.id)}
+                choice={choice}
+                error={error}
+                onClick={() => this.onChoiceFocus(choice.id)}
+                onRemoveChoice={() => this.onChoiceRemove(choice.id)}
               />
-            );
-          })}
+            ),
+          )}
         </div>
+        {error && <div className={classes.errorText}>{error}</div>}
+
+        <AlertDialog
+          open={showWarning}
+          title="Warning"
+          text="Identical answer choices are not allowed and the changes will be discarded."
+          onConfirm={() => this.setState({ showWarning: false })}
+        />
       </div>
     );
   }

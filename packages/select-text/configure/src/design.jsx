@@ -80,6 +80,7 @@ export class Design extends React.Component {
   apply = (fn) => {
     const { onModelChanged, model } = this.props;
     const update = cloneDeep(model);
+
     fn(update);
     onModelChanged(update);
   };
@@ -92,6 +93,7 @@ export class Design extends React.Component {
     const { onModelChanged, model } = this.props;
     const update = cloneDeep(model);
     update.partialScoring = partialScoring;
+
     onModelChanged(update);
   };
 
@@ -114,68 +116,78 @@ export class Design extends React.Component {
   onRationaleChanged = (rationale) => {
     const { onModelChanged, model } = this.props;
 
-    onModelChanged({
-      ...model,
-      rationale,
-    });
+    onModelChanged({ ...model, rationale });
   };
 
   render() {
     const { text: textValue } = this.state;
-    const { model, classes, imageSupport, uploadSoundSupport, onModelChanged, configuration, onConfigurationChanged } =
+    const { classes, configuration, imageSupport, model, onConfigurationChanged, onModelChanged, uploadSoundSupport } =
       this.props;
     const {
-      prompt = {},
-      text = {},
-      tokens = {},
-      mode = {},
-      feedback = {},
-      partialScoring = {},
-      selections = {},
-      selectionCount = {},
       correctAnswer = {},
-      teacherInstructions = {},
-      studentInstructions = {},
+      feedback = {},
+      highlightChoices = {},
+      mode = {},
+      partialScoring = {},
+      prompt = {},
       rationale = {},
+      selectionCount = {},
+      selections = {},
+      settingsPanelDisabled,
       scoringType = {},
       spellCheck = {},
-      highlightChoices = {},
+      studentInstructions = {},
+      teacherInstructions = {},
+      text = {},
+      tokens = {},
       maxImageWidth = {},
       maxImageHeight = {},
       withRubric = {},
     } = configuration || {};
     const {
-      teacherInstructionsEnabled,
+      errors,
+      feedbackEnabled,
       promptEnabled,
       rationaleEnabled,
       spellCheckEnabled,
-      feedbackEnabled,
-      errors,
-      rubricEnabled,
+      teacherInstructionsEnabled,
+      toolbarEditorPosition,
     } = model || {};
-    const toolbarOpts = {};
-    const { tokensError, selectionsError } = errors || {};
 
+    const { tokensError, selectionsError } = errors || {};
     const validationMessage = generateValidationMessage(configuration);
 
     const defaultImageMaxWidth = maxImageWidth && maxImageWidth.prompt;
     const defaultImageMaxHeight = maxImageHeight && maxImageHeight.prompt;
 
-    switch (model.toolbarEditorPosition) {
-      case 'top':
-        toolbarOpts.position = 'top';
-        break;
-      default:
-        toolbarOpts.position = 'bottom';
-        break;
-    }
     let { tokens: tokensModel } = model;
     tokensModel = tokensModel || [];
 
+    const toolbarOpts = {
+      position: toolbarEditorPosition === 'top' ? 'top' : 'bottom',
+    };
+
     log('[render] maxSelections:', model.maxSelections);
+
+    const panelSettings = {
+      partialScoring: partialScoring.settings && toggle(partialScoring.label),
+      highlightChoices: highlightChoices.settings && toggle(highlightChoices.label),
+      feedbackEnabled: feedback.settings && toggle(feedback.label),
+    };
+
+    const panelProperties = {
+      teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
+      studentInstructionsEnabled: studentInstructions.settings && toggle(studentInstructions.label),
+      promptEnabled: prompt.settings && toggle(prompt.label),
+      rationaleEnabled: rationale.settings && toggle(rationale.label),
+      spellCheckEnabled: spellCheck.settings && toggle(spellCheck.label),
+      scoringType: scoringType.settings && radio(scoringType.label, ['auto', 'rubric']),
+      rubricEnabled: withRubric?.settings && toggle(withRubric?.label),
+    };
 
     return (
       <layout.ConfigLayout
+        hideSettings={settingsPanelDisabled}
         settings={
           <Panel
             model={model}
@@ -183,20 +195,8 @@ export class Design extends React.Component {
             onChangeModel={(model) => onModelChanged(model)}
             onChangeConfiguration={onConfigurationChanged}
             groups={{
-              Settings: {
-                partialScoring: partialScoring.settings && toggle(partialScoring.label),
-                highlightChoices: highlightChoices.settings && toggle(highlightChoices.label),
-                feedbackEnabled: feedback.settings && toggle(feedback.label),
-              },
-              Properties: {
-                teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
-                studentInstructionsEnabled: studentInstructions.settings && toggle(studentInstructions.label),
-                promptEnabled: prompt.settings && toggle(prompt.label),
-                rationaleEnabled: rationale.settings && toggle(rationale.label),
-                spellCheckEnabled: spellCheck.settings && toggle(spellCheck.label),
-                scoringType: scoringType.settings && radio(scoringType.label, ['auto', 'rubric']),
-                rubricEnabled: withRubric?.settings && toggle(withRubric?.label),
-              },
+              Settings: panelSettings,
+              Properties: panelProperties,
             }}
           />
         }
@@ -277,9 +277,10 @@ export class Design extends React.Component {
                 <Info
                   fontSize={'small'}
                   color={'primary'}
-                  style={{ position: 'absolute', left: '40px', top: '-3px' }}
+                  style={{ position: 'absolute', left: '48px', top: '-3px' }}
                 />
               </Tooltip>
+
               <Tokenizer
                 className={classes.tokenizer}
                 text={model.text}
@@ -293,11 +294,11 @@ export class Design extends React.Component {
           {selectionsError && <div className={classes.errorText}>{selectionsError}</div>}
 
           {mode.settings && (
-            <Chip label={`${mode.label}: ${model.mode ? model.mode : 'None'}`} className={classes.chip}/>
+            <Chip label={`${mode.label}: ${model.mode ? model.mode : 'None'}`} className={classes.chip} />
           )}
 
           {selections.settings && (
-            <Chip label={`${selections.label}: ${tokensModel.length}`} className={classes.chip}/>
+            <Chip label={`${selections.label}: ${tokensModel.length}`} className={classes.chip} />
           )}
 
           {correctAnswer.settings && (
@@ -319,7 +320,7 @@ export class Design extends React.Component {
           )}
 
           {feedbackEnabled && (
-            <FeedbackConfig feedback={model.feedback} onChange={this.changeFeedback} toolbarOpts={toolbarOpts}/>
+            <FeedbackConfig feedback={model.feedback} onChange={this.changeFeedback} toolbarOpts={toolbarOpts} />
           )}
         </div>
       </layout.ConfigLayout>
@@ -374,13 +375,13 @@ export default withStyles((theme) => ({
     width: '180px',
   },
   tooltip: {
-    fontSize: '12px',
+    fontSize: theme.typography.fontSize - 2,
     whiteSpace: 'pre',
     maxWidth: '500px',
   },
   errorText: {
-    fontSize: '12px',
+    fontSize: theme.typography.fontSize - 2,
     color: 'red',
-    padding: '5px 0',
+    paddingBottom: theme.spacing.unit,
   },
 }))(Design);

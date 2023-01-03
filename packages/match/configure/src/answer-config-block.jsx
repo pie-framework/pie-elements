@@ -31,7 +31,7 @@ const styles = (theme) => ({
     flexDirection: 'column',
     '&> div': {
       width: '150px',
-      padding: '12px',
+      padding: theme.spacing.unit * 1.5,
       textAlign: 'center',
     },
   },
@@ -67,7 +67,7 @@ const styles = (theme) => ({
     },
   },
   errorText: {
-    fontSize: '12px',
+    fontSize: theme.typography.fontSize - 2,
     color: 'red',
     padding: '0 !important',
     width: 'fit-content !important'
@@ -188,6 +188,7 @@ class AnswerConfigBlock extends React.Component {
         {correctResponseError && <div className={classes.errorText}>{correctResponseError}</div>}
         {noOfRowsError && <div className={classes.errorText}>{noOfRowsError}</div>}
         {columnsLengthError && <div className={classes.errorText}>{columnsLengthError}</div>}
+
         <div className={classes.rowTable}>
           <div className={classes.rowContainer}>
             {headers.settings &&
@@ -220,7 +221,8 @@ class AnswerConfigBlock extends React.Component {
               </Button>
             </div>
           </div>
-          <hr className={classes.separator}/>
+          <hr className={classes.separator} />
+
           {model.rows.map((row, idx) => (
             <Row
               key={idx}
@@ -234,7 +236,7 @@ class AnswerConfigBlock extends React.Component {
               enableImages={model.enableImages}
               toolbarOpts={toolbarOpts}
               spellCheck={spellCheck}
-              error={rowsErrors && rowsErrors[row.id]}
+              error={rowsErrors?.[row.id]}
               maxImageWidth={(maxImageWidth && maxImageWidth.rowTitles) || defaultImageMaxWidth}
               maxImageHeight={(maxImageHeight && maxImageHeight.rowTitles) || defaultImageMaxHeight}
               uploadSoundSupport={uploadSoundSupport}

@@ -2,30 +2,6 @@ Config Object for @pie-elements/image-cloze-association
 
 The schema defines the following properties:
 
-# `teacherInstructions` (object)
-
-Properties of the `teacherInstructions` object:
-
-## `settings` (boolean)
-
-Indicates if the item has to be displayed in the Settings Panel
-
-## `label` (string)
-
-Indicates the label for the item that has to be displayed in the Settings Panel
-
-# `spellCheck` (object)
-
-Properties of the `spellCheck` object:
-
-## `settings` (boolean)
-
-Indicates if the item has to be displayed in the Settings Panel
-
-## `label` (string)
-
-Indicates the label for the item that has to be displayed in the Settings Panel
-
 # `maxImageWidth` (object)
 
 Properties of the `maxImageWidth` object:
@@ -57,6 +33,34 @@ Indicates the max dimension for images in prompt - this is also the default dime
 ## `rationale` (number)
 
 Indicates the max dimension for images in rationale
+
+# `settingsPanelDisabled` (boolean)
+
+Indicates if the settings panel is not available
+
+# `spellCheck` (object)
+
+Properties of the `spellCheck` object:
+
+## `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+## `label` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
+
+# `teacherInstructions` (object)
+
+Properties of the `teacherInstructions` object:
+
+## `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+## `label` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
 
 # `withRubric` (object)
 
@@ -94,18 +98,6 @@ Default: `true`
 
 The schema defines the following additional types:
 
-## `ConfigureProp` (object)
-
-Properties of the `ConfigureProp` object:
-
-### `settings` (boolean)
-
-Indicates if the item has to be displayed in the Settings Panel
-
-### `label` (string)
-
-Indicates the label for the item that has to be displayed in the Settings Panel
-
 ## `ConfigureMaxImageDimensionsProp` (object)
 
 Properties of the `ConfigureMaxImageDimensionsProp` object:
@@ -121,3 +113,15 @@ Indicates the max dimension for images in prompt - this is also the default dime
 ### `rationale` (number)
 
 Indicates the max dimension for images in rationale
+
+## `ConfigureProp` (object)
+
+Properties of the `ConfigureProp` object:
+
+### `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+### `label` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel

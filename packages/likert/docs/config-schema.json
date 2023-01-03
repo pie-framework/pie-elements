@@ -3,7 +3,12 @@
   "additionalProperties": false,
   "type": "object",
   "properties": {
-    "teacherInstructions": {
+    "settingsPanelDisabled": {
+      "description": "Indicates if the settings panel is not available",
+      "type": "boolean",
+      "title": "settingsPanelDisabled"
+    },
+    "spellCheck": {
       "title": "ConfigureProp",
       "type": "object",
       "properties": {
@@ -19,7 +24,7 @@
         }
       }
     },
-    "spellCheck": {
+    "teacherInstructions": {
       "title": "ConfigureProp",
       "type": "object",
       "properties": {

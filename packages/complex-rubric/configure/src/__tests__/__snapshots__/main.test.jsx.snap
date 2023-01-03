@@ -1,7 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Main snapshot renders 1`] = `
-<div>
+<ConfigLayout
+  hideSettings={true}
+  settings={null}
+>
   <div>
     <div>
       <RadioGroup
@@ -32,11 +35,14 @@ exports[`Main snapshot renders 1`] = `
       />
     </div>
   </div>
-</div>
+</ConfigLayout>
 `;
 
 exports[`Main snapshot renders multi trait rubric 1`] = `
-<div>
+<ConfigLayout
+  hideSettings={true}
+  settings={null}
+>
   <div>
     <div>
       <RadioGroup
@@ -67,11 +73,14 @@ exports[`Main snapshot renders multi trait rubric 1`] = `
       />
     </div>
   </div>
-</div>
+</ConfigLayout>
 `;
 
 exports[`Main snapshot renders simple rubric 1`] = `
-<div>
+<ConfigLayout
+  hideSettings={true}
+  settings={null}
+>
   <div>
     <div>
       <RadioGroup
@@ -102,5 +111,5 @@ exports[`Main snapshot renders simple rubric 1`] = `
       />
     </div>
   </div>
-</div>
+</ConfigLayout>
 `;
