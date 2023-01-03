@@ -1042,22 +1042,22 @@ Overall appearance is acceptable or better",
         width="730px"
       />
     </div>
+    <WithStyles(RawExcludeZeroDialog)
+      cancel={[Function]}
+      changeExcludeZero={[Function]}
+      open={false}
+    />
+    <WithStyles(RawIncludeZeroDialog)
+      cancel={[Function]}
+      changeExcludeZero={[Function]}
+      open={false}
+    />
+    <WithStyles(RawInfoDialog)
+      onClose={[Function]}
+      open={false}
+      text=""
+    />
   </ConfigLayout>
-  <WithStyles(RawExcludeZeroDialog)
-    cancel={[Function]}
-    changeExcludeZero={[Function]}
-    open={false}
-  />
-  <WithStyles(RawIncludeZeroDialog)
-    cancel={[Function]}
-    changeExcludeZero={[Function]}
-    open={false}
-  />
-  <WithStyles(RawInfoDialog)
-    onClose={[Function]}
-    open={false}
-    text=""
-  />
 </div>
 `;
 
@@ -1161,21 +1161,21 @@ exports[`Main snapshot renders without scales 1`] = `
         }
       }
     />
+    <WithStyles(RawExcludeZeroDialog)
+      cancel={[Function]}
+      changeExcludeZero={[Function]}
+      open={false}
+    />
+    <WithStyles(RawIncludeZeroDialog)
+      cancel={[Function]}
+      changeExcludeZero={[Function]}
+      open={false}
+    />
+    <WithStyles(RawInfoDialog)
+      onClose={[Function]}
+      open={false}
+      text=""
+    />
   </ConfigLayout>
-  <WithStyles(RawExcludeZeroDialog)
-    cancel={[Function]}
-    changeExcludeZero={[Function]}
-    open={false}
-  />
-  <WithStyles(RawIncludeZeroDialog)
-    cancel={[Function]}
-    changeExcludeZero={[Function]}
-    open={false}
-  />
-  <WithStyles(RawInfoDialog)
-    onClose={[Function]}
-    open={false}
-    text=""
-  />
 </div>
 `;

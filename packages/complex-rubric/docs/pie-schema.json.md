@@ -223,6 +223,10 @@ Dialog box title
 
 Dialog box text
 
+### `settingsPanelDisabled` (boolean)
+
+Indicates if the settings panel is not available
+
 ### `showExcludeZero` (object)
 
 Properties of the `showExcludeZero` object:
