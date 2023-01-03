@@ -12,18 +12,19 @@ export default {
     prompt: 'How interested are you in the following domains?',
   },
   configuration: {
-    teacherInstructions: {
+    prompt: {
       settings: true,
-      label: 'Teacher Instructions',
+      label: 'Prompt',
     },
+    settingsPanelDisabled: false,
     spellCheck: {
       label: 'Spellcheck',
       settings: false,
       enabled: true,
     },
-    prompt: {
+    teacherInstructions: {
       settings: true,
-      label: 'Prompt',
+      label: 'Teacher Instructions',
     },
   },
 };

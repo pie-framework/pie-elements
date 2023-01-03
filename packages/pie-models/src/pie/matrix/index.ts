@@ -33,12 +33,17 @@ export interface MatrixPie extends PieModel {
  */
 export interface MatrixConfigure extends PromptConfig {
   /**
-   * Teacher Instructions configuration
+   * Indicates if the settings panel is not available
    */
-  teacherInstructions?: ConfigureProp;
+  settingsPanelDisabled?: boolean;
 
   /**
    * Configuration for the author's spellcheck
    */
   spellCheck?: ConfigureProp;
+
+  /**
+   * Teacher Instructions configuration
+   */
+  teacherInstructions?: ConfigureProp;
 }
