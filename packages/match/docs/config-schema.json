@@ -284,6 +284,35 @@
         }
       }
     },
+    "minQuestions": {
+      "description": "Indicates the minimum number of question rows",
+      "type": "number",
+      "title": "minQuestions"
+    },
+    "maxQuestions": {
+      "description": "Indicates the maximum number of question rows",
+      "type": "number",
+      "title": "maxQuestions"
+    },
+    "maxLengthQuestionsHeading": {
+      "description": "Indicates the maximum length of question rows headings",
+      "type": "number",
+      "title": "maxLengthQuestionsHeading"
+    },
+    "maxAnswers": {
+      "description": "Indicates the maximum number of answer columns",
+      "type": "number",
+      "title": "maxAnswers"
+    },
+    "maxLengthAnswers": {
+      "description": "Indicates the maximum length of answer columns headings",
+      "type": "number",
+      "title": "maxLengthAnswers"
+    },
+    "maxLengthFirstColumnHeading": {
+      "description": "Indicates the maximum length of first column headings",
+      "type": "number",
+      "title": "maxLengthFirstColumnHeading"
     "width": {
       "description": "How large (in px) should match be",
       "type": "string",
