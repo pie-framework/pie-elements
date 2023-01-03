@@ -2,9 +2,6 @@
 
 exports[`Choices snapshot renders with duplicates 1`] = `
 <div>
-  <InfoDialog
-    open={false}
-  />
   <WithStyles(Button)
     color="primary"
     onClick={[Function]}
@@ -53,14 +50,17 @@ exports[`Choices snapshot renders with duplicates 1`] = `
       targetId="0"
     />
   </div>
+  <Component
+    onConfirm={[Function]}
+    open={false}
+    text="Identical answer choices are not allowed and the changes will be discarded."
+    title="Warning"
+  />
 </div>
 `;
 
 exports[`Choices snapshot renders without duplicates 1`] = `
 <div>
-  <InfoDialog
-    open={false}
-  />
   <WithStyles(Button)
     color="primary"
     onClick={[Function]}
@@ -83,5 +83,11 @@ exports[`Choices snapshot renders without duplicates 1`] = `
       targetId="0"
     />
   </div>
+  <Component
+    onConfirm={[Function]}
+    open={false}
+    text="Identical answer choices are not allowed and the changes will be discarded."
+    title="Warning"
+  />
 </div>
 `;
