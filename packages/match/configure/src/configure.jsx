@@ -77,12 +77,12 @@ class Configure extends React.Component {
   onFeedbackChange = (feedback) => {
     const { model, onModelChanged } = this.props;
     model.feedback = feedback;
+
     onModelChanged(model);
   };
 
   onDeleteRow = (rowIndex) => {
     const { model } = this.props;
-
     const newModel = { ...model };
 
     newModel.rows.splice(rowIndex, 1);
@@ -155,28 +155,20 @@ class Configure extends React.Component {
 
   onPartialScoringChange = (partialScoring) => {
     this.props.model.partialScoring = partialScoring;
+
     this.props.onModelChanged(this.props.model);
   };
 
   onPromptChanged = (prompt) => {
-    this.props.onModelChanged({
-      ...this.props.model,
-      prompt,
-    });
+    this.props.onModelChanged({ ...this.props.model, prompt });
   };
 
   onTeacherInstructionsChanged = (teacherInstructions) => {
-    this.props.onModelChanged({
-      ...this.props.model,
-      teacherInstructions,
-    });
+    this.props.onModelChanged({ ...this.props.model, teacherInstructions });
   };
 
   onRationaleChanged = (rationale) => {
-    this.props.onModelChanged({
-      ...this.props.model,
-      rationale,
-    });
+    this.props.onModelChanged({ ...this.props.model, rationale });
   };
 
   render() {
@@ -184,46 +176,57 @@ class Configure extends React.Component {
       this.props;
     const {
       enableImages = {},
-      partialScoring = {},
-      teacherInstructions = {},
-      studentInstructions = {},
-      rationale = {},
-      lockChoiceOrder = {},
-      scoringType = {},
-      prompt = {},
       feedback = {},
-      spellCheck = {},
+      lockChoiceOrder = {},
       maxImageWidth = {},
       maxImageHeight = {},
+      partialScoring = {},
+      prompt = {},
+      rationale = {},
+      settingsPanelDisabled,
+      scoringType = {},
+      spellCheck = {},
+      studentInstructions = {},
+      teacherInstructions = {},
       withRubric = {},
     } = configuration || {};
     const {
-      teacherInstructionsEnabled,
+      feedbackEnabled,
       promptEnabled,
       rationaleEnabled,
       spellCheckEnabled,
-      feedbackEnabled,
-      rubricEnabled,
+      teacherInstructionsEnabled,
+      toolbarEditorPosition,
     } = model || {};
 
-    const toolbarOpts = {};
-
-    switch (model.toolbarEditorPosition) {
-      case 'top':
-        toolbarOpts.position = 'top';
-        break;
-      default:
-        toolbarOpts.position = 'bottom';
-        break;
-    }
+    const toolbarOpts = {
+      position: toolbarEditorPosition === 'top' ? 'top' : 'bottom',
+    };
 
     const defaultImageMaxWidth = maxImageWidth && maxImageWidth.prompt;
     const defaultImageMaxHeight = maxImageHeight && maxImageHeight.prompt;
+
+    const panelSettings = {
+      enableImages: enableImages.settings && toggle(enableImages.label),
+      partialScoring: partialScoring.settings && toggle(partialScoring.label),
+      lockChoiceOrder: lockChoiceOrder.settings && toggle(lockChoiceOrder.label),
+      feedbackEnabled: feedback.settings && toggle(feedback.label),
+    };
+    const panelProperties = {
+      teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
+      studentInstructionsEnabled: studentInstructions.settings && toggle(studentInstructions.label),
+      promptEnabled: prompt.settings && toggle(prompt.label),
+      rationaleEnabled: rationale.settings && toggle(rationale.label),
+      spellCheckEnabled: spellCheck.settings && toggle(spellCheck.label),
+      scoringType: scoringType.settings && radio(scoringType.label, ['auto', 'rubric']),
+      rubricEnabled: withRubric?.settings && toggle(withRubric?.label),
+    };
 
     log('[render] model', model);
 
     return (
       <layout.ConfigLayout
+        hideSettings={settingsPanelDisabled}
         settings={
           <Panel
             model={model}
@@ -231,21 +234,8 @@ class Configure extends React.Component {
             onChangeModel={(model) => onModelChanged(model)}
             onChangeConfiguration={(config) => onConfigurationChanged(config)}
             groups={{
-              Settings: {
-                enableImages: enableImages.settings && toggle(enableImages.label),
-                partialScoring: partialScoring.settings && toggle(partialScoring.label),
-                lockChoiceOrder: lockChoiceOrder.settings && toggle(lockChoiceOrder.label),
-                feedbackEnabled: feedback.settings && toggle(feedback.label),
-              },
-              Properties: {
-                teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
-                studentInstructionsEnabled: studentInstructions.settings && toggle(studentInstructions.label),
-                promptEnabled: prompt.settings && toggle(prompt.label),
-                rationaleEnabled: rationale.settings && toggle(rationale.label),
-                spellCheckEnabled: spellCheck.settings && toggle(spellCheck.label),
-                scoringType: scoringType.settings && radio(scoringType.label, ['auto', 'rubric']),
-                rubricEnabled: withRubric?.settings && toggle(withRubric?.label),
-              },
+              Settings: panelSettings,
+              Properties: panelProperties,
             }}
           />
         }
@@ -304,12 +294,14 @@ class Configure extends React.Component {
               />
             </InputContainer>
           )}
+
           <GeneralConfigBlock
             model={model}
             configuration={configuration}
             onResponseTypeChange={this.onResponseTypeChange}
             onLayoutChange={this.onLayoutChange}
           />
+
           <AnswerConfigBlock
             model={model}
             configuration={configuration}
@@ -321,6 +313,7 @@ class Configure extends React.Component {
             spellCheck={spellCheckEnabled}
             uploadSoundSupport={uploadSoundSupport}
           />
+
           {feedbackEnabled && (
             <FeedbackConfig feedback={model.feedback} onChange={this.onFeedbackChange} toolbarOpts={toolbarOpts} />
           )}

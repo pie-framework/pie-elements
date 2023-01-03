@@ -18,8 +18,8 @@ import { generateValidationMessage } from './utils';
 const log = debug('@pie-element:placement-ordering:design');
 const { Panel, toggle, radio } = settings;
 
-const getSingularAndPlural = (label) => {
-  return !pluralize.isPlural(label)
+const getSingularAndPlural = (label) =>
+  !pluralize.isPlural(label)
     ? {
         singularLabel: label,
         pluralLabel: pluralize(label),
@@ -28,7 +28,6 @@ const getSingularAndPlural = (label) => {
         singularLabel: pluralize.singular(label),
         pluralLabel: label,
       };
-};
 
 export class Design extends React.Component {
   constructor(props) {
@@ -49,16 +48,22 @@ export class Design extends React.Component {
 
         this.applyUpdate((model) => {
           set(model, modelPath, v);
+
           return model;
         });
       };
     };
 
     this.onPromptChange = this.changeHandler('prompt');
+
     this.onTeacherInstructionsChange = this.changeHandler('teacherInstructions');
+
     this.onRationaleChange = this.changeHandler('rationale');
+
     this.onChoiceAreaLabelChange = this.changeHandler('choiceLabel', 'target.value');
+
     this.onAnswerAreaLabelChange = this.changeHandler('targetLabel', 'target.value');
+
     this.onFeedbackChange = this.changeHandler('feedback');
 
     this.onChoiceEditorChange = (choices, correctResponse) => {
@@ -89,40 +94,38 @@ export class Design extends React.Component {
     const {
       choiceLabel = {},
       choices = {},
+      enableImages = {},
       feedback = {},
-      targetLabel = {},
       prompt = {},
       placementArea = {},
-      numberedGuides = {},
-      enableImages = {},
-      orientation = {},
-      removeTilesAfterPlacing = {},
-      partialScoring = {},
-      teacherInstructions = {},
-      studentInstructions = {},
-      rationale = {},
-      spellCheck = {},
-      scoringType = {},
       maxImageWidth = {},
       maxImageHeight = {},
+      numberedGuides = {},
+      orientation = {},
+      partialScoring = {},
+      rationale = {},
+      removeTilesAfterPlacing = {},
+      settingsPanelDisabled,
+      studentInstructions = {},
+      spellCheck = {},
+      scoringType = {},
+      targetLabel = {},
+      teacherInstructions = {},
       withRubric = {},
     } = configuration || {};
     const {
-      teacherInstructionsEnabled,
+      choiceLabelEnabled,
+      errors,
+      feedbackEnabled,
       promptEnabled,
       rationaleEnabled,
-      feedbackEnabled,
-      choiceLabelEnabled,
       spellCheckEnabled,
-      errors,
-      rubricEnabled,
+      teacherInstructionsEnabled,
+      toolbarEditorPosition,
     } = model || {};
-    const { orderError, choicesErrors } = errors || {};
     const validationMessage = generateValidationMessage();
 
-    const toolbarOpts = {};
-    const { singularLabel = '', pluralLabel = '' } =
-      (choices && choices.label && getSingularAndPlural(choices.label)) || {};
+    const { singularLabel = '', pluralLabel = '' } = (choices?.label && getSingularAndPlural(choices.label)) || {};
 
     const defaultImageMaxWidth = maxImageWidth && maxImageWidth.prompt;
     const defaultImageMaxHeight = maxImageHeight && maxImageHeight.prompt;
@@ -132,16 +135,34 @@ export class Design extends React.Component {
         : maxImageWidth.choicesWithoutPlacementArea || defaultImageMaxWidth;
     const maxChoicesImageHeight = (maxImageHeight && maxImageHeight.choices) || defaultImageMaxHeight;
 
-    switch (model.toolbarEditorPosition) {
-      case 'top':
-        toolbarOpts.position = 'top';
-        break;
-      default:
-        toolbarOpts.position = 'bottom';
-        break;
-    }
+    const toolbarOpts = {
+      position: toolbarEditorPosition === 'top' ? 'top' : 'bottom',
+    };
+
+    const panelSettings = {
+      choiceLabelEnabled: choiceLabel.settings && toggle(choiceLabel.label),
+      placementArea: placementArea.settings && toggle(placementArea.label),
+      numberedGuides: numberedGuides.settings && model.placementArea && toggle(numberedGuides.label),
+      enableImages: enableImages.settings && toggle(enableImages.label),
+      orientation: orientation.settings && radio(orientation.label, ['vertical', 'horizontal']),
+      removeTilesAfterPlacing: removeTilesAfterPlacing.settings && toggle(removeTilesAfterPlacing.label),
+      partialScoring: partialScoring.settings && toggle(partialScoring.label),
+      feedbackEnabled: feedback.settings && toggle(feedback.label),
+    };
+
+    const panelProperties = {
+      teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
+      studentInstructionsEnabled: studentInstructions.settings && toggle(studentInstructions.label),
+      rationaleEnabled: rationale.settings && toggle(rationale.label),
+      promptEnabled: prompt.settings && toggle(prompt.label),
+      spellCheckEnabled: spellCheck.settings && toggle(spellCheck.label),
+      scoringType: scoringType.settings && radio(scoringType.label, ['auto', 'rubric']),
+      rubricEnabled: withRubric?.settings && toggle(withRubric?.label),
+    };
+
     return (
       <layout.ConfigLayout
+        hideSettings={settingsPanelDisabled}
         settings={
           <Panel
             model={model}
@@ -149,25 +170,8 @@ export class Design extends React.Component {
             onChangeModel={(model) => onModelChanged(model)}
             onChangeConfiguration={(configuration) => onConfigurationChanged(configuration, true)}
             groups={{
-              Settings: {
-                choiceLabelEnabled: choiceLabel.settings && toggle(choiceLabel.label),
-                placementArea: placementArea.settings && toggle(placementArea.label),
-                numberedGuides: numberedGuides.settings && model.placementArea && toggle(numberedGuides.label),
-                enableImages: enableImages.settings && toggle(enableImages.label),
-                orientation: orientation.settings && radio(orientation.label, ['vertical', 'horizontal']),
-                removeTilesAfterPlacing: removeTilesAfterPlacing.settings && toggle(removeTilesAfterPlacing.label),
-                partialScoring: partialScoring.settings && toggle(partialScoring.label),
-                feedbackEnabled: feedback.settings && toggle(feedback.label),
-              },
-              Properties: {
-                teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
-                studentInstructionsEnabled: studentInstructions.settings && toggle(studentInstructions.label),
-                rationaleEnabled: rationale.settings && toggle(rationale.label),
-                promptEnabled: prompt.settings && toggle(prompt.label),
-                spellCheckEnabled: spellCheck.settings && toggle(spellCheck.label),
-                scoringType: scoringType.settings && radio(scoringType.label, ['auto', 'rubric']),
-                rubricEnabled: withRubric?.settings && toggle(withRubric?.label),
-              },
+              Settings: panelSettings,
+              Properties: panelProperties,
             }}
           />
         }
@@ -206,6 +210,7 @@ export class Design extends React.Component {
                 languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               />
             </InputContainer>
+
             {rationaleEnabled && (
               <InputContainer label={rationale.label} className={classes.promptHolder}>
                 <EditableHtml
@@ -234,10 +239,10 @@ export class Design extends React.Component {
               placement={'right'}
               title={validationMessage}
             >
-              <Info fontSize={'small'} color={'primary'} style={{ marginLeft: '5px' }} />
+              <Info fontSize={'small'} color={'primary'} style={{ marginLeft: '8px' }} />
             </Tooltip>
           </div>
-          {orderError && <div className={classes.errorText}>{orderError}</div>}
+
           <div className={classes.row}>
             {choiceLabelEnabled && (
               <InputContainer
@@ -279,27 +284,22 @@ export class Design extends React.Component {
           </div>
 
           {choices.settings && (
-            <InputContainer
-              label={choices && choices.label && `Student ${pluralLabel}`}
-              className={classes.promptHolder}
-            >
-              <ChoiceEditor
-                correctResponse={model.correctResponse}
-                choices={model.choices}
-                onChange={this.onChoiceEditorChange}
-                imageSupport={imageSupport}
-                disableImages={!model.enableImages}
-                toolbarOpts={toolbarOpts}
-                choicesLabel={choices.label}
-                placementArea={model.placementArea}
-                singularChoiceLabel={singularLabel}
-                pluralChoiceLabel={pluralLabel}
-                spellCheck={spellCheckEnabled}
-                maxImageWidth={maxChoicesImageWidth}
-                maxImageHeight={maxChoicesImageHeight}
-                errors={choicesErrors}
-              />
-            </InputContainer>
+            <ChoiceEditor
+              correctResponse={model.correctResponse}
+              choices={model.choices}
+              onChange={this.onChoiceEditorChange}
+              imageSupport={imageSupport}
+              disableImages={!model.enableImages}
+              toolbarOpts={toolbarOpts}
+              choicesLabel={choices.label}
+              placementArea={model.placementArea}
+              singularChoiceLabel={singularLabel}
+              pluralChoiceLabel={pluralLabel}
+              spellCheck={spellCheckEnabled}
+              maxImageWidth={maxChoicesImageWidth}
+              maxImageHeight={maxChoicesImageHeight}
+              errors={errors || {}}
+            />
           )}
         </FormSection>
 
@@ -334,8 +334,8 @@ export default withDragContext(
   withStyles((theme) => ({
     promptHolder: {
       width: '100%',
-      paddingTop: '12px',
-      marginTop: '24px',
+      paddingTop: theme.spacing.unit * 1.5,
+      marginTop: theme.spacing.unit * 3,
     },
     prompt: {
       paddingTop: theme.spacing.unit * 2,
@@ -348,14 +348,9 @@ export default withDragContext(
       gridGap: '8px',
     },
     tooltip: {
-      fontSize: '12px',
+      fontSize: theme.typography.fontSize - 2,
       whiteSpace: 'pre',
       maxWidth: '500px',
-    },
-    errorText: {
-      fontSize: '12px',
-      color: 'red',
-      padding: '5px 0',
     },
     inlineFlexContainer: {
       display: 'inline-flex',

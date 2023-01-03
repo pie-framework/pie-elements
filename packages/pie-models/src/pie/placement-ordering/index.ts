@@ -215,6 +215,9 @@ export interface PlacementOrderingConfigure extends PromptConfig, CommonConfigSe
    */
   removeTilesAfterPlacing?: ConfigureProp;
 
+  /** Indicates if the settings panel is not available */
+  settingsPanelDisabled?: boolean;
+
   /**
    * Scoring Type configuration
    */

@@ -59,14 +59,8 @@ export class Configure extends React.Component {
   constructor(props) {
     super(props);
     const { range = {}, graph } = props.model || {};
-
-    const gridValues = {
-      range: getGridValues(range, graph.height, true),
-    };
-
-    const labelValues = {
-      range: getLabelValues(range.step || 1),
-    };
+    const gridValues = { range: getGridValues(range, graph.height, true) };
+    const labelValues = { range: getLabelValues(range.step || 1) };
 
     this.state = { gridValues, labelValues };
   }
@@ -83,7 +77,7 @@ export class Configure extends React.Component {
   onChartTypeChange = (chartType) => this.props.onModelChanged({ ...this.props.model, chartType });
 
   onConfigChange = (config) => {
-    const { model } = this.props;
+    const { model, onModelChanged } = this.props;
     const { gridValues: oldGridValues, labelValues: oldLabelValues } = this.state;
     const updatedModel = { ...model, ...config };
     const { graph, range } = updatedModel;
@@ -96,40 +90,52 @@ export class Configure extends React.Component {
     labelValues.range = rangeConstraints.labelValues;
 
     this.setState({ gridValues, labelValues });
-    this.props.onModelChanged(updatedModel);
+    onModelChanged(updatedModel);
   };
 
   render() {
-    const { classes, model, configuration, onConfigurationChanged, onModelChanged, imageSupport, uploadSoundSupport } =
+    const { classes, configuration, imageSupport, model, onConfigurationChanged, onModelChanged, uploadSoundSupport } =
       this.props;
+
     log('[render] model', model);
+
     const { graph } = model;
     const {
-      rationale = {},
-      scoringType = {},
-      studentInstructions = {},
-      teacherInstructions = {},
-      prompt = {},
-      spellCheck = {},
+      chartDimensions = {},
+      labelsPlaceholders = {},
       maxImageWidth = {},
       maxImageHeight = {},
-      labelsPlaceholders = {},
+      prompt = {},
+      rationale = {},
+      scoringType = {},
+      settingsPanelDisabled,
+      spellCheck = {},
+      studentInstructions = {},
+      teacherInstructions = {},
       titlePlaceholder = {},
-      chartDimensions = {},
       withRubric = {},
     } = configuration || {};
-    const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled, spellCheckEnabled, rubricEnabled, errors } =
-      model || {};
+    const { errors, promptEnabled, rationaleEnabled, spellCheckEnabled, teacherInstructionsEnabled } = model || {};
+    const { categoryErrors, correctAnswerErrors } = errors || {};
     const { gridValues, labelValues } = this.state;
     const showPixeGuides = chartDimensions.showInConfigPanel || true;
 
     const defaultImageMaxWidth = maxImageWidth && maxImageWidth.prompt;
     const defaultImageMaxHeight = maxImageHeight && maxImageHeight.prompt;
 
-    const { categoryErrors, correctAnswerErrors } = errors || {};
+    const panelProperties = {
+      teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
+      studentInstructionsEnabled: studentInstructions.settings && toggle(studentInstructions.label),
+      rationaleEnabled: rationale.settings && toggle(rationale.label),
+      spellCheckEnabled: spellCheck.settings && toggle(spellCheck.label),
+      promptEnabled: prompt.settings && toggle(prompt.label),
+      scoringType: scoringType.settings && radio(scoringType.label, ['all or nothing', 'partial scoring']),
+      rubricEnabled: withRubric?.settings && toggle(withRubric?.label),
+    };
 
     return (
       <layout.ConfigLayout
+        hideSettings={settingsPanelDisabled}
         settings={
           <Panel
             model={model}
@@ -137,15 +143,7 @@ export class Configure extends React.Component {
             onChangeModel={onModelChanged}
             onChangeConfiguration={onConfigurationChanged}
             groups={{
-              Properties: {
-                teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
-                studentInstructionsEnabled: studentInstructions.settings && toggle(studentInstructions.label),
-                rationaleEnabled: rationale.settings && toggle(rationale.label),
-                spellCheckEnabled: spellCheck.settings && toggle(spellCheck.label),
-                promptEnabled: prompt.settings && toggle(prompt.label),
-                scoringType: scoringType.settings && radio(scoringType.label, ['all or nothing', 'partial scoring']),
-                rubricEnabled: withRubric?.settings && toggle(withRubric?.label),
-              },
+              Properties: panelProperties,
             }}
           />
         }

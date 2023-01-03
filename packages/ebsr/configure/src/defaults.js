@@ -32,6 +32,7 @@ const defaultConfig = {
     settings: true,
     label: 'Rationale',
   },
+  settingsPanelDisabled: true,
   studentInstructions: {
     settings: false,
     label: 'Student Instructions',
@@ -110,6 +111,6 @@ export default {
       settings: true,
       label: 'Part Labels',
     },
-    settingsPanelDisabled: true,
+    settingsPanelDisabled: false,
   },
 };

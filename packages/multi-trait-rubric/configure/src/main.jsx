@@ -168,6 +168,7 @@ export class Main extends React.Component {
 
           break;
         }
+
         case excludeZeroTypes.add0: {
           // adds empty column at start
           scorePointsLabels = ['', ...scorePointsLabels];
@@ -178,6 +179,7 @@ export class Main extends React.Component {
 
           break;
         }
+
         case excludeZeroTypes.shiftLeft: {
           // removes last column
           scorePointsLabels = scorePointsLabels.slice(0, -1);
@@ -188,6 +190,7 @@ export class Main extends React.Component {
 
           break;
         }
+
         case excludeZeroTypes.shiftRight: {
           // adds empty column at end
           scorePointsLabels = [...scorePointsLabels, ''];
@@ -198,15 +201,12 @@ export class Main extends React.Component {
 
           break;
         }
+
         default:
           break;
       }
 
-      acc.push({
-        ...scale,
-        scorePointsLabels,
-        traits,
-      });
+      acc.push({ ...scale, scorePointsLabels, traits });
 
       return acc;
     }, []);
@@ -229,21 +229,21 @@ export class Main extends React.Component {
   render() {
     const { model, classes, configuration, onConfigurationChanged, uploadSoundSupport } = this.props || {};
     const {
-      showStandards,
+      addScale,
+      dragAndDrop,
+      showDescription,
       showExcludeZero,
       showLevelTagInput,
-      showDescription,
-      showVisibleToStudent,
+      showStandards,
       showHalfScoring,
-      showScorePointLabels,
-      dragAndDrop,
-      spellCheck = {},
-      width,
-      settingsPanelDisabled,
       showMaxPoint,
-      addScale,
+      showScorePointLabels,
+      showVisibleToStudent,
+      spellCheck = {},
+      settingsPanelDisabled,
       maxNoOfTraits,
       minNoOfTraits,
+      width,
     } = configuration || {};
     const {
       scales,
@@ -258,83 +258,79 @@ export class Main extends React.Component {
     const { showExcludeZeroDialog, showInfoDialog, infoDialogText } = this.state || {};
     const adjustedWidth = parseInt(width) > parseInt(MIN_WIDTH) ? width : MIN_WIDTH;
 
-    const Content = (
-      <div style={{ width: adjustedWidth }}>
-        {(scales || []).map((scale, scaleIndex) => (
-          <Scale
-            key={`scale-${scaleIndex}`}
-            scale={scale}
-            scaleIndex={scaleIndex}
-            onScaleRemoved={this.onScaleRemoved}
-            onScaleChanged={this.onScaleChanged}
-            showStandards={standards}
-            showScorePointLabels={pointLabels}
-            showDescription={description}
-            showLevelTagInput={showLevelTagInput.enabled}
-            excludeZero={excludeZero}
-            enableDragAndDrop={dragAndDrop.enabled}
-            spellCheck={spellCheckEnabled}
-            width={adjustedWidth}
-            uploadSoundSupport={uploadSoundSupport}
-            maxPointsEnabled={maxPointsEnabled}
-            maxNoOfTraits={maxNoOfTraits}
-            minNoOfTraits={minNoOfTraits}
-            {...this.props}
-            classes={{}}
-          />
-        ))}
-        {addScaleEnabled && <MultiTraitButton onClick={this.onScaleAdded}>Add Scale</MultiTraitButton>}
-      </div>
-    );
+    const panelSettings = {
+      standards: showStandards.settings && toggle(showStandards.label),
+      'showLevelTagInput.enabled': showLevelTagInput.settings && toggle(showLevelTagInput.label, true),
+      visibleToStudent: showVisibleToStudent.settings && toggle(showVisibleToStudent.label),
+      excludeZero: showExcludeZero.settings && toggle(showExcludeZero.label),
+      halfScoring: showHalfScoring.settings && toggle(showHalfScoring.label),
+      'dragAndDrop.enabled': dragAndDrop.settings && toggle(dragAndDrop.label, true),
+    };
+    const panelProperties = {
+      description: showDescription.settings && toggle(showDescription.label),
+      pointLabels: showScorePointLabels.settings && toggle(showScorePointLabels.label),
+      spellCheckEnabled: spellCheck.settings && toggle(spellCheck.label),
+      maxPointsEnabled: showMaxPoint.settings && toggle(showMaxPoint.label),
+      addScaleEnabled: addScale.settings && toggle(addScale.label),
+    };
 
     return (
       <div className={classes.design}>
-        {settingsPanelDisabled ? (
-          Content
-        ) : (
-          <layout.ConfigLayout
-            settings={
-              <Panel
-                model={model}
-                onChangeModel={this.onModelChanged}
-                configuration={configuration}
-                onChangeConfiguration={onConfigurationChanged}
-                groups={{
-                  Settings: {
-                    standards: showStandards.settings && toggle(showStandards.label),
-                    'showLevelTagInput.enabled': showLevelTagInput.settings && toggle(showLevelTagInput.label, true),
-                    visibleToStudent: showVisibleToStudent.settings && toggle(showVisibleToStudent.label),
-                    excludeZero: showExcludeZero.settings && toggle(showExcludeZero.label),
-                    halfScoring: showHalfScoring.settings && toggle(showHalfScoring.label),
-                    'dragAndDrop.enabled': dragAndDrop.settings && toggle(dragAndDrop.label, true),
-                  },
-                  Properties: {
-                    description: showDescription.settings && toggle(showDescription.label),
-                    pointLabels: showScorePointLabels.settings && toggle(showScorePointLabels.label),
-                    spellCheckEnabled: spellCheck.settings && toggle(spellCheck.label),
-                    maxPointsEnabled: showMaxPoint.settings && toggle(showMaxPoint.label),
-                    addScaleEnabled: addScale.settings && toggle(addScale.label),
-                  },
-                }}
+        <layout.ConfigLayout
+          hideSettings={settingsPanelDisabled}
+          settings={
+            <Panel
+              model={model}
+              onChangeModel={this.onModelChanged}
+              configuration={configuration}
+              onChangeConfiguration={onConfigurationChanged}
+              groups={{
+                Settings: panelSettings,
+                Properties: panelProperties,
+              }}
+            />
+          }
+        >
+          <div style={{ width: adjustedWidth }}>
+            {(scales || []).map((scale, scaleIndex) => (
+              <Scale
+                key={`scale-${scaleIndex}`}
+                scale={scale}
+                scaleIndex={scaleIndex}
+                onScaleRemoved={this.onScaleRemoved}
+                onScaleChanged={this.onScaleChanged}
+                showStandards={standards}
+                showScorePointLabels={pointLabels}
+                showDescription={description}
+                showLevelTagInput={showLevelTagInput.enabled}
+                excludeZero={excludeZero}
+                enableDragAndDrop={dragAndDrop.enabled}
+                spellCheck={spellCheckEnabled}
+                width={adjustedWidth}
+                uploadSoundSupport={uploadSoundSupport}
+                maxPointsEnabled={maxPointsEnabled}
+                maxNoOfTraits={maxNoOfTraits}
+                minNoOfTraits={minNoOfTraits}
+                {...this.props}
+                classes={{}}
               />
-            }
-          >
-            {Content}
-          </layout.ConfigLayout>
-        )}
+            ))}
+            {addScaleEnabled && <MultiTraitButton onClick={this.onScaleAdded}>Add Scale</MultiTraitButton>}
+          </div>
 
-        <ExcludeZeroDialog
-          open={showExcludeZeroDialog && !excludeZero}
-          changeExcludeZero={this.changeExcludeZero}
-          cancel={this.hideToggleExcludeZeroModal}
-        />
+          <ExcludeZeroDialog
+            open={showExcludeZeroDialog && !excludeZero}
+            changeExcludeZero={this.changeExcludeZero}
+            cancel={this.hideToggleExcludeZeroModal}
+          />
 
-        <IncludeZeroDialog
-          open={showExcludeZeroDialog && excludeZero}
-          changeExcludeZero={this.changeExcludeZero}
-          cancel={this.hideToggleExcludeZeroModal}
-        />
-        <InfoDialog open={showInfoDialog} text={infoDialogText} onClose={() => this.set({ showInfoDialog: false })} />
+          <IncludeZeroDialog
+            open={showExcludeZeroDialog && excludeZero}
+            changeExcludeZero={this.changeExcludeZero}
+            cancel={this.hideToggleExcludeZeroModal}
+          />
+          <InfoDialog open={showInfoDialog} text={infoDialogText} onClose={() => this.set({ showInfoDialog: false })} />
+        </layout.ConfigLayout>
       </div>
     );
   }

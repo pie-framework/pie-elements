@@ -302,7 +302,6 @@ exports.model = (id, element) => ({
   choicesPosition: 'below',
   choicesLabel: '',
   lockChoiceOrder: true,
-  removeTilesAfterPlacing: false,
   categoriesPerRow: 2,
   categories: [
     {
