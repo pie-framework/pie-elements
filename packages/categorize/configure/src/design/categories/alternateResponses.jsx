@@ -67,7 +67,7 @@ export class AlternateResponses extends React.Component {
         }
 
         a.alternateResponses[altIndex].push(addedChoice.id);
-        if (choice.categoryCount !== 0) {
+        if (choice.categoryCount && choice.categoryCount !== 0) {
           a.alternateResponses[altIndex] = a.alternateResponses[altIndex].reduce((acc, currentValue) => {
             if (currentValue === choice.id) {
               const foundIndex = acc.findIndex((c) => c === choice.id);

@@ -53,13 +53,13 @@ export class Design extends React.Component {
     //Ensure that there are no extra choices in correctResponse, if the user has decided that only one choice may be used.
     updatedModel.correctResponse = ensureNoExtraChoicesInAnswer(
       updatedModel.correctResponse || [],
-      updatedModel.choices,
+      updatedModel.choices
     );
 
     //Ensure that there are no extra choices in alternate responses, if the user has decided that only one choice may be used.
-    updatedModel.correctResponse = ensureNoExtraChoicesInAlternate(
+     updatedModel.correctResponse = ensureNoExtraChoicesInAlternate(
         updatedModel.correctResponse || [],
-        updatedModel.choices,
+        updatedModel.choices
     );
 
     //clean categories

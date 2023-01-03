@@ -200,8 +200,6 @@ export const specTarget = {
   },
   canDrop: (props, monitor) => {
     const item = monitor.getItem();
-    if (props.choice.id !== item.id) {
-    }
     return props.choice.id !== item.id;
   },
 };
