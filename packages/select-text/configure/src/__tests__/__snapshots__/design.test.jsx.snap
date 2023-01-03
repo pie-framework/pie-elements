@@ -142,7 +142,7 @@ There should be at least 1 token selected."
           fontSize="small"
           style={
             Object {
-              "left": "40px",
+              "left": "48px",
               "position": "absolute",
               "top": "-3px",
             }
@@ -306,7 +306,7 @@ There should be at least 1 token selected."
           fontSize="small"
           style={
             Object {
-              "left": "40px",
+              "left": "48px",
               "position": "absolute",
               "top": "-3px",
             }
@@ -479,7 +479,7 @@ There should be at least 1 token selected."
           fontSize="small"
           style={
             Object {
-              "left": "40px",
+              "left": "48px",
               "position": "absolute",
               "top": "-3px",
             }
@@ -653,7 +653,7 @@ There should be at least 1 token selected."
           fontSize="small"
           style={
             Object {
-              "left": "40px",
+              "left": "48px",
               "position": "absolute",
               "top": "-3px",
             }
