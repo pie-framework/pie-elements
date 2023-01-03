@@ -112,16 +112,6 @@ export interface ImageClozeAssociationPie extends PieModel {
  */
 export interface ImageClozeAssociationConfigure extends PromptConfig, CommonConfigSettings {
   /**
-   * Teacher Instructions configuration
-   */
-  teacherInstructions?: ConfigureProp;
-
-  /**
-   * Configuration for the author's spellcheck
-   */
-  spellCheck?: ConfigureProp;
-
-  /**
    * Maximum image width for input fields
    */
   maxImageWidth?: ConfigureMaxImageDimensionsProp;
@@ -130,6 +120,21 @@ export interface ImageClozeAssociationConfigure extends PromptConfig, CommonConf
    * Maximum image height for input fields
    */
   maxImageHeight?: ConfigureMaxImageDimensionsProp;
+
+  /**
+   * Indicates if the settings panel is not available
+   */
+  settingsPanelDisabled?: boolean;
+
+  /**
+   * Configuration for the author's spellcheck
+   */
+  spellCheck?: ConfigureProp;
+
+  /**
+   * Teacher Instructions configuration
+   */
+  teacherInstructions?: ConfigureProp;
 
   /**
    * Rubric configuration
