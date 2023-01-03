@@ -59,6 +59,7 @@ export default {
       settings: true,
       label: 'Rationale',
     },
+    settingsPanelDisabled: false,
     spellCheck: {
       label: 'Spellcheck',
       settings: false,
