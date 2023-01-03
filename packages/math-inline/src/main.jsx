@@ -101,10 +101,7 @@ export class Main extends React.Component {
     }
 
     this.state = {
-      session: {
-        ...props.session,
-        answers,
-      },
+      session: { ...props.session, answers },
       activeAnswerBlock: '',
       showCorrect: this.props.model.config.alwaysShowCorrect || false,
     };
@@ -329,6 +326,7 @@ export class Main extends React.Component {
 
       return keys.find((k) => {
         const tf = fields[k];
+
         return tf && tf.id == changeField.id;
       });
     }
@@ -352,6 +350,7 @@ export class Main extends React.Component {
     setTimeout(() => {
       if (ref && IS_SAFARI) {
         const div = document.querySelector("[role='tooltip']");
+
         if (div) {
           const el = div.firstChild;
           el.setAttribute('tabindex', '-1');
@@ -421,6 +420,7 @@ export class Main extends React.Component {
             <PreviewPrompt prompt={prompt} />
           </div>
         )}
+
         {studentPrintMode ? (
           printView
         ) : (
@@ -435,6 +435,7 @@ export class Main extends React.Component {
                   session={session}
                 />
               )}
+
               {responseType === ResponseTypes.advanced && (
                 <div
                   className={cx(classes.expression, {
@@ -490,6 +491,7 @@ export class Main extends React.Component {
             </div>
           </Readable>
         )}
+
         {viewMode && teacherInstructions && hasText(teacherInstructions) && (
           <React.Fragment>
             {!animationsDisabled ? (
@@ -502,6 +504,7 @@ export class Main extends React.Component {
             <br />
           </React.Fragment>
         )}
+
         {viewMode && rationale && hasText(rationale) && (
           <React.Fragment>
             {!animationsDisabled ? (
@@ -513,6 +516,7 @@ export class Main extends React.Component {
             )}
           </React.Fragment>
         )}
+
         {viewMode && displayNote && (
           <div className={classes.note} dangerouslySetInnerHTML={{ __html: `<strong>Note:</strong> ${note}` }} />
         )}
@@ -545,6 +549,7 @@ export class Main extends React.Component {
                   />
                 )}
               </div>
+
               {teacherInstructions &&
                 hasText(teacherInstructions) && [
                   <Collapsible
@@ -559,6 +564,7 @@ export class Main extends React.Component {
                   </Collapsible>,
                   <br key="br" />,
                 ]}
+
               {rationale &&
                 hasText(rationale) && [
                   <Collapsible
@@ -572,6 +578,7 @@ export class Main extends React.Component {
                   </Collapsible>,
                   <br key="br" />,
                 ]}
+
               {displayNote &&
                 hasText(note) && [
                   <Collapsible
@@ -585,6 +592,7 @@ export class Main extends React.Component {
                   </Collapsible>,
                   <br key="br" />,
                 ]}
+
               {feedback && <Feedback correctness={correctness.correctness} feedback={feedback} />}
             </div>
           }
@@ -595,6 +603,7 @@ export class Main extends React.Component {
         </Tooltip>
       );
     }
+
     return (
       <div className={classes.mainContainer} ref={(r) => (this.root = r || this.root)}>
         {midContent}
