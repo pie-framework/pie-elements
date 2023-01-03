@@ -44,6 +44,7 @@ export default {
       settings: true,
       label: 'Rationale',
     },
+    settingsPanelDisabled: false,
     teacherInstructions: {
       settings: true,
       label: 'Teacher Instructions',
