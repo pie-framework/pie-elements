@@ -61,6 +61,7 @@ exports[`ChartingConfig renders snapshot 1`] = `
 
 exports[`Configure renders snapshot 1`] = `
 <ConfigLayout
+  hideSettings={false}
   settings={
     <Panel
       configuration={
@@ -108,6 +109,7 @@ exports[`Configure renders snapshot 1`] = `
             "label": "Scoring Type",
             "settings": false,
           },
+          "settingsPanelDisabled": false,
           "spellCheck": Object {
             "enabled": true,
             "label": "Spellcheck",
@@ -510,6 +512,7 @@ exports[`CorrectResponse renders snapshot 1`] = `
         </span>
       </WithStyles(Typography)>
       <div
+        className={Object {}}
         key="correct-response-graph-undefined"
       >
         <Chart

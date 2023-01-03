@@ -124,6 +124,11 @@
         }
       }
     },
+    "settingsPanelDisabled": {
+      "description": "Indicates if the settings panel is not available",
+      "type": "boolean",
+      "title": "settingsPanelDisabled"
+    },
     "studentInstructions": {
       "title": "ConfigureProp",
       "type": "object",
