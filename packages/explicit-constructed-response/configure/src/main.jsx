@@ -54,19 +54,19 @@ const styles = (theme) => ({
   text: {
     color: '#495B8F',
     fontFamily: 'Cerebri Sans',
-    fontSize: '16px',
+    fontSize: theme.typography.fontSize + 2,
     lineHeight: '19px',
     marginTop: theme.spacing.unit * 4,
   },
   tooltip: {
-    fontSize: '12px',
+    fontSize: theme.typography.fontSize - 2,
     whiteSpace: 'pre',
     maxWidth: '500px',
   },
   errorText: {
-    fontSize: '12px',
+    fontSize: theme.typography.fontSize - 2,
     color: 'red',
-    padding: '5px 0',
+    paddingTop: theme.spacing.unit,
   },
   flexContainer: {
     display: 'flex',
@@ -76,7 +76,6 @@ const styles = (theme) => ({
 
 const createElementFromHTML = (htmlString) => {
   const div = document.createElement('div');
-
   div.innerHTML = htmlString.trim();
 
   return div;
@@ -122,63 +121,39 @@ export class Main extends React.Component {
       }
     });
 
-    onModelChanged({
-      ...this.props.model,
-      maxLengthPerChoice,
-    });
+    onModelChanged({ ...this.props.model, maxLengthPerChoice });
   }
 
   onModelChange = (newVal) => {
-    this.props.onModelChanged({
-      ...this.props.model,
-      ...newVal,
-    });
+    this.props.onModelChanged({ ...this.props.model, ...newVal });
   };
 
   onPromptChanged = (prompt) => {
-    this.props.onModelChanged({
-      ...this.props.model,
-      prompt,
-    });
+    this.props.onModelChanged({ ...this.props.model, prompt });
   };
 
   onRationaleChanged = (rationale) => {
-    this.props.onModelChanged({
-      ...this.props.model,
-      rationale,
-    });
+    this.props.onModelChanged({ ...this.props.model, rationale });
   };
 
   onTeacherInstructionsChanged = (teacherInstructions) => {
     const { model, onModelChanged } = this.props;
 
-    onModelChanged({
-      ...model,
-      teacherInstructions,
-    });
+    onModelChanged({ ...model, teacherInstructions });
   };
 
   onMarkupChanged = (slateMarkup) => {
-    this.props.onModelChanged({
-      ...this.props.model,
-      slateMarkup,
-    });
+    this.props.onModelChanged({ ...this.props.model, slateMarkup });
   };
 
   onResponsesChanged = (choices) => {
-    this.props.onModelChanged({
-      ...this.props.model,
-      choices,
-    });
+    this.props.onModelChanged({ ...this.props.model, choices });
   };
 
   onLengthChanged = (maxLengthPerChoice) => {
     const { model, onModelChanged } = this.props;
 
-    onModelChanged({
-      ...model,
-      maxLengthPerChoice,
-    });
+    onModelChanged({ ...model, maxLengthPerChoice });
   };
 
   onChangeResponse = (index, newVal) => {
@@ -207,11 +182,7 @@ export class Main extends React.Component {
       }
     }
 
-    onModelChanged({
-      ...model,
-      choices,
-      maxLengthPerChoice,
-    });
+    onModelChanged({ ...model, choices, maxLengthPerChoice });
   };
 
   onChange = (markup) => {
@@ -249,12 +220,7 @@ export class Main extends React.Component {
         maxLengthPerChoice: updatedMaxLengthPerChoice,
       });
 
-    this.setState(
-      {
-        cachedChoices: undefined,
-      },
-      callback,
-    );
+    this.setState({ cachedChoices: undefined }, callback);
   };
 
   onHandleAreaChange = throttle(
@@ -290,18 +256,9 @@ export class Main extends React.Component {
         }
       });
 
-      const callback = () =>
-        onModelChanged({
-          ...this.props.model,
-          choices: newChoices,
-        });
+      const callback = () => onModelChanged({ ...this.props.model, choices: newChoices });
 
-      this.setState(
-        {
-          cachedChoices: newCachedChoices,
-        },
-        callback,
-      );
+      this.setState({ cachedChoices: newCachedChoices }, callback);
     },
     500,
     { trailing: false, leading: true },
@@ -310,46 +267,56 @@ export class Main extends React.Component {
   render() {
     const { classes, model, configuration, onConfigurationChanged, imageSupport, uploadSoundSupport } = this.props;
     const {
-      prompt = {},
-      partialScoring = {},
-      rationale = {},
-      teacherInstructions = {},
-      maxLengthPerChoice = {},
-      spellCheck = {},
-      playerSpellCheck = {},
-      maxResponseAreas,
       maxImageWidth = {},
       maxImageHeight = {},
+      maxLengthPerChoice = {},
+      maxResponseAreas,
+      partialScoring = {},
+      playerSpellCheck = {},
+      prompt = {},
+      rationale = {},
+      settingsPanelDisabled,
+      spellCheck = {},
+      teacherInstructions = {},
       withRubric = {},
     } = configuration || {};
     const {
-      teacherInstructionsEnabled,
+      errors,
+      maxLengthPerChoiceEnabled,
       promptEnabled,
       rationaleEnabled,
-      maxLengthPerChoiceEnabled,
       spellCheckEnabled,
-      errors,
-      rubricEnabled,
+      teacherInstructionsEnabled,
+      toolbarEditorPosition,
     } = model || {};
-    const toolbarOpts = {};
 
-    const { responseAreasError, choicesErrors = {} } = errors || {};
+    const { choicesErrors = {}, responseAreasError } = errors || {};
     const validationMessage = generateValidationMessage(configuration);
 
     const defaultImageMaxWidth = maxImageWidth && maxImageWidth.prompt;
     const defaultImageMaxHeight = maxImageHeight && maxImageHeight.prompt;
 
-    switch (model.toolbarEditorPosition) {
-      case 'top':
-        toolbarOpts.position = 'top';
-        break;
-      default:
-        toolbarOpts.position = 'bottom';
-        break;
-    }
+    const toolbarOpts = {
+      position: toolbarEditorPosition === 'top' ? 'top' : 'bottom',
+    };
+
+    const panelSettings = {
+      partialScoring: partialScoring.settings && toggle(partialScoring.label),
+      maxLengthPerChoiceEnabled: maxLengthPerChoice.settings && toggle(maxLengthPerChoice.label),
+    };
+    const panelProperties = {
+      teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
+      rationaleEnabled: rationale.settings && toggle(rationale.label),
+      promptEnabled: prompt.settings && toggle(prompt.label),
+      spellCheckEnabled: spellCheck.settings && toggle(spellCheck.label),
+      playerSpellCheckEnabled: playerSpellCheck.settings && toggle(playerSpellCheck.label),
+      rubricEnabled: withRubric?.settings && toggle(withRubric?.label),
+    };
+
     return (
       <div className={classes.design}>
         <layout.ConfigLayout
+          hideSettings={settingsPanelDisabled}
           settings={
             <Panel
               model={model}
@@ -357,18 +324,8 @@ export class Main extends React.Component {
               onChangeModel={(model) => this.onModelChange(model)}
               onChangeConfiguration={(configuration) => onConfigurationChanged(configuration, true)}
               groups={{
-                Settings: {
-                  partialScoring: partialScoring.settings && toggle(partialScoring.label),
-                  maxLengthPerChoiceEnabled: maxLengthPerChoice.settings && toggle(maxLengthPerChoice.label),
-                },
-                Properties: {
-                  teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
-                  rationaleEnabled: rationale.settings && toggle(rationale.label),
-                  promptEnabled: prompt.settings && toggle(prompt.label),
-                  spellCheckEnabled: spellCheck.settings && toggle(spellCheck.label),
-                  playerSpellCheckEnabled: playerSpellCheck.settings && toggle(playerSpellCheck.label),
-                  rubricEnabled: withRubric?.settings && toggle(withRubric?.label),
-                },
+                Settings: panelSettings,
+                Properties: panelProperties,
               }}
             />
           }
@@ -391,6 +348,7 @@ export class Main extends React.Component {
                 />
               </InputContainer>
             )}
+
             {promptEnabled && (
               <InputContainer label={prompt.label} className={classes.promptHolder}>
                 <EditableHtml
@@ -407,18 +365,9 @@ export class Main extends React.Component {
                   uploadSoundSupport={uploadSoundSupport}
                   languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
                 />
-                {/*<EditableHtmlNew*/}
-                {/*  className={classes.prompt}*/}
-                {/*  markup={model.prompt}*/}
-                {/*  onChange={this.onPromptChanged}*/}
-                {/*  imageSupport={imageSupport}*/}
-                {/*  nonEmpty={false}*/}
-                {/*  disableUnderline*/}
-                {/*  toolbarOpts={toolbarOpts}*/}
-                {/*  spellCheck={spellCheckEnabled}*/}
-                {/*/>*/}
               </InputContainer>
             )}
+
             <div className={classes.flexContainer}>
               <Typography className={classes.text}>Define Template, Choices, and Correct Responses</Typography>
               <Tooltip
@@ -428,10 +377,9 @@ export class Main extends React.Component {
                 placement={'right'}
                 title={validationMessage}
               >
-                <Info fontSize={'small'} color={'primary'} style={{ marginLeft: '5px' }} />
+                <Info fontSize={'small'} color={'primary'} style={{ marginLeft: '8px' }} />
               </Tooltip>
             </div>
-            {responseAreasError && <div className={classes.errorText}>{responseAreasError}</div>}
 
             <EditableHtml
               activePlugins={ALL_PLUGINS}
@@ -472,6 +420,8 @@ export class Main extends React.Component {
               uploadSoundSupport={uploadSoundSupport}
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
             />
+            {responseAreasError && <div className={classes.errorText}>{responseAreasError}</div>}
+
             {!isEmpty(model.choices) && (
               <Typography className={classes.text}>
                 {`Define Alternates ${maxLengthPerChoiceEnabled ? 'and Character Limits' : ''}`}
@@ -485,6 +435,7 @@ export class Main extends React.Component {
               spellCheck={spellCheckEnabled}
               choicesErrors={choicesErrors}
             />
+
             {rationaleEnabled && (
               <InputContainer label={rationale.label} className={classes.promptHolder}>
                 <EditableHtml
