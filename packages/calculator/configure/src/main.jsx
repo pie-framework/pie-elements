@@ -1,8 +1,8 @@
 import React from 'react';
-import { TwoChoice } from '@pie-lib/config-ui';
 import PropTypes from 'prop-types';
-import Typography from '@material-ui/core/Typography';
+import { layout, TwoChoice } from '@pie-lib/config-ui';
 import { CalculatorLayout } from '@pie-element/calculator';
+import Typography from '@material-ui/core/Typography';
 
 const MainTypes = {
   model: PropTypes.object.isRequired,
@@ -13,15 +13,17 @@ export class Main extends React.Component {
   static propTypes = MainTypes;
 
   onModeChange = (mode) => {
-    const { model } = this.props;
+    const { model, onChange } = this.props;
     const update = { ...model, mode };
-    this.props.onChange(update);
+
+    onChange(update);
   };
 
   render() {
     const { model } = this.props;
+
     return (
-      <div>
+      <layout.ConfigLayout hideSettings={true} settings={null}>
         <TwoChoice
           header="Choose a Calculator"
           value={model.mode}
@@ -30,11 +32,12 @@ export class Main extends React.Component {
           two={{ label: 'Scientific', value: 'scientific' }}
         />
         <br />
+
         <CalculatorLayout mode={model.mode} onClose={() => ({})} />
         <br />
-        <br />
+
         <Typography>Please note that the calculators are tools for students and do not record answers.</Typography>
-      </div>
+      </layout.ConfigLayout>
     );
   }
 }
@@ -44,9 +47,7 @@ export default class Stateful extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      model: props.model,
-    };
+    this.state = { model: props.model };
   }
 
   UNSAFE_componentWillReceiveProps(props) {
