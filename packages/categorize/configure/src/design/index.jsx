@@ -131,9 +131,11 @@ export class Design extends React.Component {
     if (allowMultiplePlacements === multiplePlacements.enabled) {
       return 0;
     }
+
     if (allowMultiplePlacements === multiplePlacements.disabled) {
       return 1;
     }
+
     return c.categoryCount || 0;
   };
 
@@ -141,51 +143,45 @@ export class Design extends React.Component {
     const {
       classes,
       className,
-      model,
-      imageSupport,
-      uploadSoundSupport,
       configuration,
+      imageSupport,
+      model,
+      uploadSoundSupport,
       onChange,
       onConfigurationChanged,
     } = this.props;
     const {
       allowMultiplePlacements = {},
-      partialScoring = {},
-      lockChoiceOrder = {},
       categoriesPerRow = {},
       choicesPosition = {},
-      teacherInstructions = {},
-      studentInstructions = {},
+      feedback = {},
+      lockChoiceOrder = {},
+      maxImageHeight = {},
+      maxImageWidth = {},
+      minCategoriesPerRow = 1,
+      partialScoring = {},
+      prompt = {},
       rationale = {},
       scoringType = {},
-      feedback = {},
-      prompt = {},
+      settingsPanelDisabled,
       spellCheck = {},
-      maxImageWidth = {},
-      maxImageHeight = {},
+      studentInstructions = {},
+      teacherInstructions = {},
       withRubric = {},
-      minCategoriesPerRow = 1,
     } = configuration || {};
     const {
       allowMultiplePlacementsEnabled,
-      teacherInstructionsEnabled,
+      feedbackEnabled,
       promptEnabled,
       rationaleEnabled,
-      feedbackEnabled,
       spellCheckEnabled,
-      rubricEnabled,
+      teacherInstructionsEnabled,
+      toolbarEditorPosition,
     } = model || {};
 
-    const toolbarOpts = {};
-
-    switch (model.toolbarEditorPosition) {
-      case 'top':
-        toolbarOpts.position = 'top';
-        break;
-      default:
-        toolbarOpts.position = 'bottom';
-        break;
-    }
+    const toolbarOpts = {
+      position: toolbarEditorPosition === 'top' ? 'top' : 'bottom',
+    };
 
     const config = model.config || {};
     config.choices = config.choices || { label: '', columns: 2 };
@@ -201,15 +197,48 @@ export class Design extends React.Component {
     const choices = model.choices.map((c) => {
       c.correctResponseCount = this.countChoiceInCorrectResponse(c);
       c.categoryCount = this.checkAllowMultiplePlacements(allowMultiplePlacementsEnabled, c);
+
       return c;
     });
 
     const defaultImageMaxWidth = maxImageWidth && maxImageWidth.prompt;
     const defaultImageMaxHeight = maxImageHeight && maxImageHeight.prompt;
 
+    const panelSettings = {
+      partialScoring: partialScoring.settings && toggle(partialScoring.label),
+      lockChoiceOrder: lockChoiceOrder.settings && toggle(lockChoiceOrder.label),
+      categoriesPerRow:
+        categoriesPerRow.settings &&
+        numberField(categoriesPerRow.label, {
+          label: categoriesPerRow.label,
+          min: minCategoriesPerRow,
+          max: 6,
+        }),
+      choicesPosition: choicesPosition.settings && radio(choicesPosition.label, ['below', 'above', 'left', 'right']),
+      allowMultiplePlacementsEnabled:
+        allowMultiplePlacements.settings &&
+        dropdown(allowMultiplePlacements.label, [
+          multiplePlacements.enabled,
+          multiplePlacements.disabled,
+          multiplePlacements.perChoice,
+        ]),
+      promptEnabled: prompt.settings && toggle(prompt.label),
+      feedbackEnabled: feedback.settings && toggle(feedback.label),
+    };
+
+    const panelProperties = {
+      teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
+      studentInstructionsEnabled: studentInstructions.settings && toggle(studentInstructions.label),
+      rationaleEnabled: rationale.settings && toggle(rationale.label),
+      spellCheckEnabled: spellCheck.settings && toggle(spellCheck.label),
+      scoringType: scoringType.settings && radio(scoringType.label, ['auto', 'rubric']),
+      rubricEnabled: withRubric?.settings && toggle(withRubric?.label),
+    };
+
     return (
       <IdProvider value={this.uid}>
         <layout.ConfigLayout
+          hideSettings={settingsPanelDisabled}
           settings={
             <Panel
               model={model}
@@ -217,36 +246,8 @@ export class Design extends React.Component {
               configuration={configuration}
               onChangeConfiguration={onConfigurationChanged}
               groups={{
-                Settings: {
-                  partialScoring: partialScoring.settings && toggle(partialScoring.label),
-                  lockChoiceOrder: lockChoiceOrder.settings && toggle(lockChoiceOrder.label),
-                  categoriesPerRow:
-                    categoriesPerRow.settings &&
-                    numberField(categoriesPerRow.label, {
-                      label: categoriesPerRow.label,
-                      min: minCategoriesPerRow,
-                      max: 6,
-                    }),
-                  choicesPosition:
-                    choicesPosition.settings && radio(choicesPosition.label, ['below', 'above', 'left', 'right']),
-                  allowMultiplePlacementsEnabled:
-                    allowMultiplePlacements.settings &&
-                    dropdown(allowMultiplePlacements.label, [
-                      multiplePlacements.enabled,
-                      multiplePlacements.disabled,
-                      multiplePlacements.perChoice,
-                    ]),
-                  promptEnabled: prompt.settings && toggle(prompt.label),
-                  feedbackEnabled: feedback.settings && toggle(feedback.label),
-                },
-                Properties: {
-                  teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
-                  studentInstructionsEnabled: studentInstructions.settings && toggle(studentInstructions.label),
-                  rationaleEnabled: rationale.settings && toggle(rationale.label),
-                  spellCheckEnabled: spellCheck.settings && toggle(spellCheck.label),
-                  scoringType: scoringType.settings && radio(scoringType.label, ['auto', 'rubric']),
-                  rubricEnabled: withRubric?.settings && toggle(withRubric?.label),
-                },
+                Settings: panelSettings,
+                Properties: panelProperties,
               }}
             />
           }
@@ -406,7 +407,7 @@ const styles = (theme) => ({
     marginBottom: theme.spacing.unit * 2,
   },
   title: {
-    marginBottom: '30px',
+    marginBottom: theme.spacing.unit * 4,
   },
 });
 
