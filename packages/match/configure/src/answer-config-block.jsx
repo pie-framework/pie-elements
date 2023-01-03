@@ -197,7 +197,7 @@ class AnswerConfigBlock extends React.Component {
           Click on the labels to edit or remove. Set the correct answers by clicking each correct answer per row.
         </Typography>
 
-        <div className={classes.rowTable}>
+        <div className={classes.rowTable} style={configuration.width ? { width: configuration.width, overflow: 'scroll' } : {}}>
           <div className={classes.rowContainer}>
             {headers.settings &&
               (model.headers || []).map((header, idx) => (
