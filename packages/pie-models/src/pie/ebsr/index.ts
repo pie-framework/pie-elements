@@ -137,6 +137,11 @@ interface PartConfiguration {
   prompt?: ConfigureProp;
 
   /**
+   * Indicates if the settings panel is not available
+   */
+  settingsPanelDisabled?: boolean;
+
+  /**
    * Configuration for the author's spellcheck
    */
   spellCheck?: ConfigureProp;
@@ -211,6 +216,11 @@ export interface EbsrConfigure extends PromptConfig {
    * Indicates whether the settings panel wil allow the author to modify settings for partial scoring
    */
   partialScoring?: ConfigureProp;
+
+  /**
+   * Indicates if the settings panel is not available
+   */
+  settingsPanelDisabled?: boolean;
 
   /**
    * Indicates whether the Scoring type option should be displayed

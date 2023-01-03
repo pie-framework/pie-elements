@@ -1,33 +1,38 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
 import { settings, layout, InputContainer } from '@pie-lib/config-ui';
 import EditableHtml from '@pie-lib/editable-html';
+import { withStyles } from '@material-ui/core/styles';
 
 const { Panel, toggle } = settings;
 
 export class Root extends React.Component {
   onTeacherInstructionsChanged = (teacherInstructions) => {
-    this.props.onModelChanged({
-      ...this.props.model,
-      teacherInstructions,
-    });
+    this.props.onModelChanged({ ...this.props.model, teacherInstructions });
   };
 
   render() {
     const { classes, model, configuration, onModelChanged, onConfigurationChanged, imageSupport, uploadSoundSupport } =
       this.props;
     const {
-      teacherInstructions = {},
-      spellCheck = {},
       maxImageWidth = {},
       maxImageHeight = {},
+      settingsPanelDisabled,
+      spellCheck = {},
+      teacherInstructions = {},
       withRubric = {},
     } = configuration || {};
-    const { spellCheckEnabled, rubricEnabled } = model || {};
+    const { spellCheckEnabled } = model || {};
+
+    const panelProperties = {
+      teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
+      spellCheckEnabled: spellCheck.settings && toggle(spellCheck.label),
+      rubricEnabled: withRubric?.settings && toggle(withRubric?.label),
+    };
 
     return (
       <layout.ConfigLayout
+        hideSettings={settingsPanelDisabled}
         settings={
           <Panel
             model={model}
@@ -35,11 +40,7 @@ export class Root extends React.Component {
             onChangeModel={(model) => onModelChanged(model)}
             onChangeConfiguration={(config) => onConfigurationChanged(config)}
             groups={{
-              Properties: {
-                teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
-                spellCheckEnabled: spellCheck.settings && toggle(spellCheck.label),
-                rubricEnabled: withRubric?.settings && toggle(withRubric?.label),
-              },
+              Properties: panelProperties,
             }}
           />
         }
@@ -61,7 +62,8 @@ export class Root extends React.Component {
               />
             </InputContainer>
           )}
-          Image cloze association
+
+          <div>Image cloze association</div>
         </div>
       </layout.ConfigLayout>
     );

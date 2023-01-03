@@ -2,9 +2,13 @@ Config Object for @pie-elements/likert
 
 The schema defines the following properties:
 
-# `teacherInstructions` (object)
+# `settingsPanelDisabled` (boolean)
 
-Properties of the `teacherInstructions` object:
+Indicates if the settings panel is not available
+
+# `spellCheck` (object)
+
+Properties of the `spellCheck` object:
 
 ## `settings` (boolean)
 
@@ -14,9 +18,9 @@ Indicates if the item has to be displayed in the Settings Panel
 
 Indicates the label for the item that has to be displayed in the Settings Panel
 
-# `spellCheck` (object)
+# `teacherInstructions` (object)
 
-Properties of the `spellCheck` object:
+Properties of the `teacherInstructions` object:
 
 ## `settings` (boolean)
 

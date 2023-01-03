@@ -1,6 +1,7 @@
 import { PieModel } from '../../PieModel';
 import { PromptConfig } from '../../PromptConfig';
 import { CommonConfigSettings } from '../../CommonConfigSettings';
+import { ConfigureProp } from '../ConfigurationProp';
 
 /**
  * Model for the RubricPie Interaction
@@ -20,4 +21,19 @@ export interface RubricPie extends PieModel {
   excludeZeros?: boolean;
 }
 
-export interface RubricConfigure extends PromptConfig, CommonConfigSettings {}
+export interface RubricConfigure extends PromptConfig, CommonConfigSettings {
+  /**
+   * Indicates if the settings panel is not available
+   */
+  settingsPanelDisabled?: boolean;
+
+  /**
+   * Ability to exclude zero configuration
+   */
+  showExcludeZero?: ConfigureProp;
+
+  /**
+   * Show max points dropdown configuration
+   */
+  showMaxPoint?: ConfigureProp;
+}

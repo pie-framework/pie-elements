@@ -1,7 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`main snapshot renders 1`] = `
-<div>
+<ConfigLayout
+  hideSettings={true}
+  settings={null}
+>
   <FormSection
     label="Prompt"
   >
@@ -50,7 +53,7 @@ The correct answer should include at least one number line object."
           fontSize="small"
           style={
             Object {
-              "marginLeft": "5px",
+              "marginLeft": "8px",
             }
           }
         />
@@ -354,5 +357,5 @@ The correct answer should include at least one number line object."
       }
     }
   />
-</div>
+</ConfigLayout>
 `;

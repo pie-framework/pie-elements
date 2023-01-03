@@ -9,11 +9,7 @@ import PropTypes from 'prop-types';
 const GripIcon = ({ style }) => {
   return (
     <span style={style}>
-      <MoreVert
-        style={{
-          margin: '0 -16px',
-        }}
-      />
+      <MoreVert style={{ margin: '0 -16px' }} />
       <MoreVert />
     </span>
   );
@@ -25,28 +21,34 @@ GripIcon.propTypes = {
 
 export const BlankContent = withStyles((theme) => ({
   choice: {
-    border: `solid 0px ${theme.palette.primary.main}`,
+    display: 'inline-flex',
+    minWidth: '178px',
+    minHeight: '36px',
+    background: '#FFF',
+    boxSizing: 'border-box',
+    borderRadius: '3px',
+    overflow: 'hidden',
+    position: 'relative',
+    padding: '8px 35px 8px 35px',
+    cursor: 'grab',
   },
-  disabled: {},
+  deleteIcon: {
+    position: 'absolute',
+    top: '6px',
+    right: '0',
+    color: '#9B9B9B',
+    zIndex: 2,
+
+    '& :hover': {
+      cursor: 'pointer',
+      color: '#000000',
+    },
+  },
 }))((props) => {
-  const { connectDragSource, choice, onClick, onRemoveChoice } = props;
+  const { classes, connectDragSource, choice, onClick, onRemoveChoice, error } = props;
 
   return connectDragSource(
-    <div
-      style={{
-        display: 'inline-flex',
-        minWidth: '178px',
-        minHeight: '36px',
-        background: '#FFF',
-        border: '1px solid #C0C3CF',
-        boxSizing: 'border-box',
-        borderRadius: '3px',
-        overflow: 'hidden',
-        position: 'relative',
-        padding: '8px 35px 8px 35px',
-      }}
-      onClick={onClick}
-    >
+    <div className={classes.choice} style={{ border: `1px solid ${error ? 'red' : '#C0C3CF'}` }} onClick={onClick}>
       <GripIcon
         style={{
           position: 'absolute',
@@ -56,19 +58,11 @@ export const BlankContent = withStyles((theme) => ({
           zIndex: 2,
         }}
       />
-      <span
-        dangerouslySetInnerHTML={{
-          __html: choice.value,
-        }}
-      />
+
+      <span dangerouslySetInnerHTML={{ __html: choice.value }} />
+
       <Delete
-        style={{
-          position: 'absolute',
-          top: '6px',
-          right: '0',
-          color: '#9B9B9B',
-          zIndex: 2,
-        }}
+        className={classes.deleteIcon}
         onClick={(e) => {
           e.preventDefault();
           e.stopPropagation();

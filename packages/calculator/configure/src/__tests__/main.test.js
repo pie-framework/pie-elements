@@ -2,6 +2,12 @@ import React from 'react';
 import { Main } from '../main';
 import { shallow } from 'enzyme';
 
+jest.mock('@pie-lib/config-ui', () => ({
+  layout: {
+    ConfigLayout: (props) => <div>{props.children}</div>,
+  },
+}));
+
 describe('Render a calculator element', () => {
   let wrapper, onChange;
 

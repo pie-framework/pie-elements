@@ -80,7 +80,7 @@ export class Main extends React.Component {
           disabled={mode !== 'gather'}
           showCorrect={showCorrectAnswer}
         />
-        <ChoicesList instanceId={this.instanceId} model={model} session={session} disabled={mode !== 'gather'} />
+        <ChoicesList instanceId={this.instanceId} model={model} session={session} disabled={mode !== 'gather'} onRemoveAnswer={(id) => this.onRemoveAnswer(id)}/>
         {model.correctness && model.feedback && !showCorrectAnswer && (
           <Feedback correctness={model.correctness.correctness} feedback={model.feedback} />
         )}

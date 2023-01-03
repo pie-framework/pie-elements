@@ -135,6 +135,11 @@ export interface ExtendedTextEntryConfigure extends PromptConfig, CommonConfigSe
   mathInput?: ConfigureProp;
 
   /**
+   * Indicates if the settings panel is not available
+   */
+  settingsPanelDisabled?: boolean;
+
+  /**
    * Spanish Input configuration
    */
   spanishInput?: ConfigureProp;

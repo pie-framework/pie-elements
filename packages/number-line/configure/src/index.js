@@ -77,6 +77,7 @@ export default class NumberLine extends HTMLElement {
         delete: this.onDeleteSound.bind(this),
       },
     });
+
     ReactDOM.render(element, this);
   }
 }

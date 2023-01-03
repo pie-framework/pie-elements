@@ -28,7 +28,7 @@ const styles = (theme) => ({
   },
   radioButtonsColumnHeader: {
     color: '#c3c3c3',
-    fontSize: '12px',
+    fontSize: theme.typography.fontSize - 2,
   },
   likertLabelHolder: {
     display: 'flex',
@@ -38,7 +38,7 @@ const styles = (theme) => ({
   likertOptionsHolder: {
     display: 'flex',
     width: '100%',
-    padding: '20px 0',
+    padding: `${theme.spacing.unit * 2.5}px 0`,
     justifyContent: 'space-around',
   },
   likertLabelInput: {
@@ -47,7 +47,7 @@ const styles = (theme) => ({
   },
   errorMessage: {
     color: '#b5000e',
-    fontSize: '10px',
+    fontSize: theme.typography.fontSize - 2,
   },
   width100: {
     width: '100%',
@@ -57,7 +57,7 @@ const styles = (theme) => ({
     flexDirection: 'row',
   },
   likertValueHolder: {
-    paddingLeft: '20px',
+    paddingLeft: theme.spacing.unit * 2.5,
     width: '150px',
   },
   likertLabelEditableHtml: {
@@ -74,19 +74,19 @@ const styles = (theme) => ({
   },
   inputFormGroupIndex: {
     width: '30px',
-    paddingTop: '30px',
+    paddingTop: theme.spacing.unit * 4,
   },
 });
 
 const LikertOrientation = withStyles(styles)((props) => {
   const { classes, model, onChangeModel } = props;
+
   const onChangeLikertOrientation = (e) => {
     const likertOrientation = e.target.value;
-    onChangeModel({
-      ...model,
-      likertOrientation,
-    });
+
+    onChangeModel({ ...model, likertOrientation });
   };
+
   return (
     <div className={classes.radioButtonsWrapper}>
       <p className={classes.radioButtonsColumnHeader}>Likert Orientation</p>
@@ -107,12 +107,14 @@ const LikertScale = withStyles(styles)((props) => {
   const { classes, model, onChangeModel } = props;
   const onChangeLikertScale = (e) => {
     const likertScale = e.target.value;
+
     onChangeModel({
       ...model,
       likertScale,
       choices: generateChoices(likertScale, model.likertType),
     });
   };
+
   return (
     <div className={classes.radioButtonsWrapper}>
       <p className={classes.radioButtonsColumnHeader}>Likert Scale</p>
@@ -129,12 +131,14 @@ const LikertType = withStyles(styles)((props) => {
   const { classes, model, onChangeModel } = props;
   const onChangeLikertType = (e) => {
     const likertType = e.target.value;
+
     onChangeModel({
       ...model,
       likertType,
       choices: generateChoices(model.likertScale, likertType),
     });
   };
+
   return (
     <div className={classes.radioButtonsWrapper}>
       <p className={classes.radioButtonsColumnHeader}>Label Type</p>
@@ -170,36 +174,47 @@ const buildValuesMap = (model) =>
   model.choices.reduce((acc, choice) => {
     const accClone = { ...acc };
     const choiceValue = parseInt(choice.value);
+
     if (!accClone[choiceValue]) {
       accClone[choiceValue] = 0;
     }
-    return {
-      ...accClone,
-      [choiceValue]: accClone[choiceValue] + 1,
-    };
+
+    return { ...accClone, [choiceValue]: accClone[choiceValue] + 1 };
   }, {});
 
 const Design = withStyles(styles)((props) => {
   const {
     classes,
-    model,
     configuration,
-    onPromptChanged,
-    onChoiceChanged,
     imageSupport,
+    model,
     onChangeModel,
+    onChoiceChanged,
     onConfigurationChanged,
-    uploadSoundSupport,
+    onPromptChanged,
     onTeacherInstructionsChanged,
+    uploadSoundSupport,
   } = props;
-  const { prompt = {}, teacherInstructions = {}, scoringType = {}, spellCheck = {} } = configuration || {};
-  const { teacherInstructionsEnabled, spellCheckEnabled } = model || {};
+  const {
+    prompt = {},
+    scoringType = {},
+    settingsPanelDisabled,
+    spellCheck = {},
+    teacherInstructions = {},
+  } = configuration || {};
+  const { spellCheckEnabled, teacherInstructionsEnabled } = model || {};
 
   const valuesMap = buildValuesMap(model);
+  const panelProperties = {
+    teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
+    spellCheckEnabled: spellCheck.settings && toggle(spellCheck.label),
+    scoringType: scoringType.settings && radio(scoringType.label, ['auto', 'rubric']),
+  };
 
   return (
     <div className={classes.design}>
       <layout.ConfigLayout
+        hideSettings={settingsPanelDisabled}
         settings={
           <Panel
             model={model}
@@ -207,11 +222,7 @@ const Design = withStyles(styles)((props) => {
             configuration={configuration}
             onChangeConfiguration={onConfigurationChanged}
             groups={{
-              Properties: {
-                teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
-                spellCheckEnabled: spellCheck.settings && toggle(spellCheck.label),
-                scoringType: scoringType.settings && radio(scoringType.label, ['auto', 'rubric']),
-              },
+              Properties: panelProperties,
             }}
           />
         }
@@ -262,12 +273,7 @@ const Design = withStyles(styles)((props) => {
                   <EditableHtml
                     className={classes.likertLabelEditableHtml}
                     markup={choice.label || ''}
-                    onChange={(c) =>
-                      onChoiceChanged(index, {
-                        ...choice,
-                        label: c,
-                      })
-                    }
+                    onChange={(c) => onChoiceChanged(index, { ...choice, label: c })}
                     imageSupport={imageSupport}
                     spellCheck={spellCheckEnabled}
                     uploadSoundSupport={uploadSoundSupport}
@@ -282,10 +288,7 @@ const Design = withStyles(styles)((props) => {
                     max={100}
                     min={-100}
                     onChange={(e, t) => {
-                      onChoiceChanged(index, {
-                        ...choice,
-                        value: t,
-                      });
+                      onChoiceChanged(index, { ...choice, value: t });
                     }}
                     imageSupport={imageSupport}
                   />
@@ -296,7 +299,6 @@ const Design = withStyles(styles)((props) => {
               </div>
             </div>
           ))}
-          <br />
         </div>
       </layout.ConfigLayout>
     </div>
@@ -317,28 +319,20 @@ export class Main extends React.Component {
   };
 
   onChoiceChanged = (index, choice) => {
-    const { model } = this.props;
+    const { model, onModelChanged } = this.props;
 
-    model.choices = model.choices.map((choice) => {
-      return merge({}, choice);
-    });
-
+    model.choices = model.choices.map((choice) => merge({}, choice));
     model.choices.splice(index, 1, choice);
-    this.props.onModelChanged(model);
+
+    onModelChanged(model);
   };
 
   onPromptChanged = (prompt) => {
-    this.props.onModelChanged({
-      ...this.props.model,
-      prompt,
-    });
+    this.props.onModelChanged({ ...this.props.model, prompt });
   };
 
   onTeacherInstructionsChanged = (teacherInstructions) => {
-    this.props.onModelChanged({
-      ...this.props.model,
-      teacherInstructions,
-    });
+    this.props.onModelChanged({ ...this.props.model, teacherInstructions });
   };
 
   render() {

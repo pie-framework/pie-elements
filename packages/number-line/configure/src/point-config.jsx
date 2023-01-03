@@ -8,6 +8,9 @@ const { Point } = pointChooser;
 const styles = {
   displayToggles: {
     paddingTop: '20px',
+    '& > :first-child': {
+      marginRight: '8px',
+    },
   },
 };
 

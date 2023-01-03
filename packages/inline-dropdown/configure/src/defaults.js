@@ -20,6 +20,7 @@ export default {
       settings: true,
       label: 'Prompt',
     },
+    settingsPanelDisabled: false,
     spellCheck: {
       label: 'Spellcheck',
       settings: false,

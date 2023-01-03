@@ -3,6 +3,7 @@
 exports[`Main snapshot renders with teacher instructions, prompt and rationale even if not set 1`] = `
 <div>
   <ConfigLayout
+    hideSettings={false}
     settings={
       <Panel
         configuration={
@@ -39,6 +40,7 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
               "label": "Rationale",
               "settings": true,
             },
+            "settingsPanelDisabled": false,
             "spellCheck": Object {
               "enabled": true,
               "label": "Spellcheck",
@@ -214,7 +216,7 @@ There should be at least 1 and at most 10 response areas defined."
             fontSize="small"
             style={
               Object {
-                "marginLeft": "5px",
+                "marginLeft": "8px",
               }
             }
           />
@@ -359,6 +361,7 @@ There should be at least 1 and at most 10 response areas defined."
 exports[`Main snapshot renders without teacher instructions, prompt and rationale 1`] = `
 <div>
   <ConfigLayout
+    hideSettings={false}
     settings={
       <Panel
         configuration={
@@ -395,6 +398,7 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
               "label": "Rationale",
               "settings": true,
             },
+            "settingsPanelDisabled": false,
             "spellCheck": Object {
               "enabled": true,
               "label": "Spellcheck",
@@ -515,7 +519,7 @@ There should be at least 1 and at most 10 response areas defined."
             fontSize="small"
             style={
               Object {
-                "marginLeft": "5px",
+                "marginLeft": "8px",
               }
             }
           />

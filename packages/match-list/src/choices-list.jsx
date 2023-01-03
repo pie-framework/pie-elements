@@ -17,14 +17,14 @@ export class ChoicesList extends React.Component {
   };
 
   render() {
-    const { model, classes, disabled, session, instanceId } = this.props;
+    const { model, classes, disabled, session, instanceId, onRemoveAnswer } = this.props;
     const { config } = model;
     const { duplicates } = config;
 
     return (
       <>
         {DroppablePlaceholder ? (
-          <DroppablePlaceholder disabled={disabled}>
+          <DroppablePlaceholder disabled={disabled} onRemoveAnswer={onRemoveAnswer}>
             {config.answers
               .filter(
                 (answer) =>

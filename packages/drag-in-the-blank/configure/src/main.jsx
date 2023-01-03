@@ -49,19 +49,19 @@ const styles = (theme) => ({
   },
   text: {
     fontFamily: 'Cerebri Sans',
-    fontSize: '16px',
+    fontSize: theme.typography.fontSize + 2,
     lineHeight: '19px',
     color: '#495B8F',
   },
   tooltip: {
-    fontSize: '12px',
+    fontSize: theme.typography.fontSize - 2,
     whiteSpace: 'pre',
     maxWidth: '500px',
   },
   errorText: {
-    fontSize: '12px',
+    fontSize: theme.typography.fontSize - 2,
     color: 'red',
-    padding: '5px 0',
+    paddingTop: theme.spacing.unit,
   },
   flexContainer: {
     display: 'flex',
@@ -158,24 +158,24 @@ export class Main extends React.Component {
       maxImageHeight = {},
       withRubric = {},
     } = configuration || {};
-    const { rationaleEnabled, promptEnabled, teacherInstructionsEnabled, spellCheckEnabled, errors, rubricEnabled } =
-      model || {};
-    const toolbarOpts = {};
+    const {
+      rationaleEnabled,
+      promptEnabled,
+      teacherInstructionsEnabled,
+      spellCheckEnabled,
+      toolbarEditorPosition,
+      errors,
+    } = model || {};
 
-    const { responseAreasError, choicesError } = errors || {};
+    const { responseAreasError, choicesError, correctResponseError } = errors || {};
     const validationMessage = generateValidationMessage(configuration);
 
     const defaultImageMaxWidth = maxImageWidth && maxImageWidth.prompt;
     const defaultImageMaxHeight = maxImageHeight && maxImageHeight.prompt;
 
-    switch (model.toolbarEditorPosition) {
-      case 'top':
-        toolbarOpts.position = 'top';
-        break;
-      default:
-        toolbarOpts.position = 'bottom';
-        break;
-    }
+    const toolbarOpts = {
+      position: toolbarEditorPosition === 'top' ? 'top' : 'bottom',
+    };
 
     const panelSettings = {
       partialScoring: partialScoring.settings && toggle(partialScoring.label),
@@ -227,6 +227,7 @@ export class Main extends React.Component {
                 />
               </InputContainer>
             )}
+
             {promptEnabled && (
               <InputContainer label={prompt.label} className={classes.promptHolder}>
                 <EditableHtml
@@ -245,6 +246,7 @@ export class Main extends React.Component {
                 />
               </InputContainer>
             )}
+
             <div className={classes.flexContainer}>
               <Typography className={classes.text}>Define Template, Choices, and Correct Responses</Typography>
               <Tooltip
@@ -257,8 +259,7 @@ export class Main extends React.Component {
                 <Info fontSize={'small'} color={'primary'} style={{ marginLeft: '5px' }} />
               </Tooltip>
             </div>
-            {responseAreasError && <div className={classes.errorText}>{responseAreasError}</div>}
-            {choicesError && <div className={classes.errorText}>{choicesError}</div>}
+
             <EditableHtml
               activePlugins={ALL_PLUGINS}
               responseAreaProps={{
@@ -275,19 +276,25 @@ export class Main extends React.Component {
               disableImageAlignmentButtons={true}
               nonEmpty={false}
               disableUnderline
+              error={responseAreasError || correctResponseError}
               toolbarOpts={toolbarOpts}
               spellCheck={spellCheckEnabled}
               uploadSoundSupport={uploadSoundSupport}
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
             />
+            {responseAreasError && <div className={classes.errorText}>{responseAreasError}</div>}
+            {correctResponseError && <div className={classes.errorText}>{correctResponseError}</div>}
+
             <Choices
               model={model}
               duplicates={model.duplicates}
+              error={choicesError}
               onChange={this.onResponsesChanged}
               toolbarOpts={toolbarOpts}
               maxChoices={maxChoices}
               uploadSoundSupport={uploadSoundSupport}
             />
+
             {rationaleEnabled && (
               <InputContainer label={rationale.label} className={classes.promptHolder}>
                 <EditableHtml

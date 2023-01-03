@@ -430,6 +430,11 @@ export interface GraphingConfigure extends PromptConfig, CommonConfigSettings {
   prompt?: ConfigureProp;
 
   /**
+   * Indicates if the settings panel is not available
+   */
+  settingsPanelDisabled?: boolean;
+
+  /**
    * Configuration for the author's spellcheck
    */
   spellCheck?: ConfigureProp;

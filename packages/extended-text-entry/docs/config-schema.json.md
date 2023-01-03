@@ -26,6 +26,10 @@ Indicates if the item has to be displayed in the Settings Panel
 
 Indicates the label for the item that has to be displayed in the Settings Panel
 
+# `settingsPanelDisabled` (boolean)
+
+Indicates if the settings panel is not available
+
 # `spanishInput` (object)
 
 Properties of the `spanishInput` object:
