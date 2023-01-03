@@ -97,7 +97,6 @@ export default class DrawableResponseConfigure extends HTMLElement {
   _render() {
     log('_render');
 
-    console.log('this._model.rubricEnabled', this._model.rubricEnabled);
     let element = React.createElement(Root, {
       model: this._model,
       configuration: this._configuration,
