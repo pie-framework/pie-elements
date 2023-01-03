@@ -25,68 +25,100 @@ export class Main extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      setDimensions: true,
-    };
+    this.state = { setDimensions: true };
   }
 
   onPromptChange = (markup) => {
     const { onModelChanged, model } = this.props;
 
-    onModelChanged({
-      ...model,
-      prompt: markup,
-    });
+    onModelChanged({ ...model, prompt: markup });
   };
 
   changeFeedback = (feedback) => {
     const { model, onModelChanged } = this.props;
     const update = { ...model, feedback };
+
     onModelChanged(update);
   };
 
   changeTeacherInstructions = (teacherInstructions) => {
     const { model, onModelChanged } = this.props;
     const update = { ...model, teacherInstructions };
+
     onModelChanged(update);
   };
 
   render() {
-    const { model, classes, onModelChanged, configuration, onConfigurationChanged, imageSupport, uploadSoundSupport } =
+    const { model, classes, configuration, imageSupport, onConfigurationChanged, onModelChanged, uploadSoundSupport } =
       this.props;
     const {
-      multiple = {},
-      feedback = {},
-      teacherInstructions = {},
-      prompt = {},
-      studentInstructions = {},
-      mathInput = {},
-      spanishInput = {},
-      specialInput = {},
       dimensions = {},
       equationEditor = {},
-      spellCheck = {},
+      feedback = {},
       playerSpellCheck = {},
+      prompt = {},
+      settingsPanelDisabled,
+      spanishInput = {},
+      specialInput = {},
+      spellCheck = {},
+      studentInstructions = {},
+      teacherInstructions = {},
+      mathInput = {},
       maxImageWidth = {},
       maxImageHeight = {},
+      multiple = {},
       withRubric = {},
     } = configuration || {};
-    const { teacherInstructionsEnabled, promptEnabled, feedbackEnabled, spellCheckEnabled } = model || {};
-    const toolbarOpts = {};
+    const { feedbackEnabled, promptEnabled, spellCheckEnabled, teacherInstructionsEnabled, toolbarEditorPosition } =
+      model || {};
 
     const defaultImageMaxWidth = maxImageWidth && maxImageWidth.prompt;
     const defaultImageMaxHeight = maxImageHeight && maxImageHeight.prompt;
 
-    switch (model.toolbarEditorPosition) {
-      case 'top':
-        toolbarOpts.position = 'top';
-        break;
-      default:
-        toolbarOpts.position = 'bottom';
-        break;
-    }
+    const toolbarOpts = {
+      position: toolbarEditorPosition === 'top' ? 'top' : 'bottom',
+    };
+
+    const panelSettings = {
+      mathInput: mathInput.settings && toggle(mathInput.label),
+      equationEditor:
+        equationEditor.enabled &&
+        model.mathInput &&
+        dropdown(equationEditor.label, [
+          'non-negative-integers',
+          'integers',
+          'decimals',
+          'fractions',
+          'Grade 1 - 2',
+          'Grade 3 - 5',
+          'Grade 6 - 7',
+          'Grade 8 - HS',
+          'geometry',
+          'advanced-algebra',
+          'statistics',
+          'item-authoring',
+        ]),
+      spanishInput: spanishInput.settings && toggle(spanishInput.label),
+      specialInput: specialInput.settings && toggle(specialInput.label),
+      dimensions: numberFields(dimensions.label, {
+        width: { label: 'Width (px)', suffix: 'px', min: 100, max: 500 },
+        height: { label: 'Height (px)', suffix: 'px', min: 100, max: 500 },
+      }),
+      'multiple.enabled': multiple.settings && toggle(multiple.label, true),
+      promptEnabled: prompt.settings && toggle(prompt.label),
+      feedbackEnabled: feedback.settings && toggle(feedback.label),
+      spellCheckEnabled: spellCheck.settings && toggle(spellCheck.label),
+      playerSpellCheckDisabled: playerSpellCheck.settings && toggle(playerSpellCheck.label),
+    };
+    const panelProperties = {
+      teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
+      studentInstructionsEnabled: studentInstructions.settings && toggle(studentInstructions.label),
+      rubricEnabled: !withRubric?.forceEnabled && withRubric?.settings && toggle(withRubric?.label),
+    };
+
     return (
       <layout.ConfigLayout
+        hideSettings={settingsPanelDisabled}
         settings={
           <Panel
             model={model}
@@ -94,52 +126,8 @@ export class Main extends React.Component {
             onChangeModel={(model) => onModelChanged(model)}
             onChangeConfiguration={(config) => onConfigurationChanged(config)}
             groups={{
-              Settings: {
-                mathInput: mathInput.settings && toggle(mathInput.label),
-                equationEditor:
-                  equationEditor.enabled &&
-                  model.mathInput &&
-                  dropdown(equationEditor.label, [
-                    'non-negative-integers',
-                    'integers',
-                    'decimals',
-                    'fractions',
-                    'Grade 1 - 2',
-                    'Grade 3 - 5',
-                    'Grade 6 - 7',
-                    'Grade 8 - HS',
-                    'geometry',
-                    'advanced-algebra',
-                    'statistics',
-                    'item-authoring',
-                  ]),
-                spanishInput: spanishInput.settings && toggle(spanishInput.label),
-                specialInput: specialInput.settings && toggle(specialInput.label),
-                dimensions: numberFields(dimensions.label, {
-                  width: {
-                    label: 'Width (px)',
-                    suffix: 'px',
-                    min: 100,
-                    max: 500,
-                  },
-                  height: {
-                    label: 'Height (px)',
-                    suffix: 'px',
-                    min: 100,
-                    max: 500,
-                  },
-                }),
-                'multiple.enabled': multiple.settings && toggle(multiple.label, true),
-                promptEnabled: prompt.settings && toggle(prompt.label),
-                feedbackEnabled: feedback.settings && toggle(feedback.label),
-                spellCheckEnabled: spellCheck.settings && toggle(spellCheck.label),
-                playerSpellCheckDisabled: playerSpellCheck.settings && toggle(playerSpellCheck.label), 
-              },
-              Properties: {
-                teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
-                studentInstructionsEnabled: studentInstructions.settings && toggle(studentInstructions.label),
-                rubricEnabled: !withRubric?.forceEnabled && withRubric?.settings && toggle(withRubric?.label),
-              },
+              Settings: panelSettings,
+              Properties: panelProperties,
             }}
           />
         }
@@ -162,8 +150,6 @@ export class Main extends React.Component {
               />
             </InputContainer>
           )}
-
-          <br />
 
           {promptEnabled && (
             <InputContainer label={prompt.label} className={classes.promptContainer}>
