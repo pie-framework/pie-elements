@@ -8,6 +8,9 @@ jest.mock('@pie-lib/config-ui', () => ({
   FormSection: () => <div />,
   FeedbackConfig: () => <div />,
   InputCheckbox: () => <div />,
+  layout: {
+    ConfigLayout: (props) => <div>{props.children}</div>,
+  },
 }));
 
 describe('main', () => {
