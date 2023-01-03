@@ -22,7 +22,15 @@ jest.mock('@pie-lib/config-ui', () => ({
     toggle: jest.fn(),
     radio: jest.fn(),
   },
-}));
+}))
+
+jest.mock('@pie-lib/categorize', () => ({
+  ensureNoExtraChoicesInAlternate: jest.fn(),
+  countInAnswer: jest.fn().mockReturnValue(1),
+  ensureNoExtraChoicesInAnswer: jest.fn()
+}))
+
+
 
 describe('Design', () => {
   let w;
