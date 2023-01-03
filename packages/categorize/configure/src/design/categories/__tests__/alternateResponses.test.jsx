@@ -41,6 +41,7 @@ describe('AlternateResponses', () => {
       className: 'className',
       model: {
         ...model,
+        choices:[{id:'1', categoryCount:0}, {id:'2', categoryCount: 0}],
         correctResponse: [{ category: '0', choices: ['1'] }],
       },
       onModelChanged,

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
 import { FeedbackConfig, InputContainer, layout, settings } from '@pie-lib/config-ui';
-import { countInAnswer, ensureNoExtraChoicesInAnswer } from '@pie-lib/categorize';
+import { countInAnswer, ensureNoExtraChoicesInAnswer, ensureNoExtraChoicesInAlternate } from '@pie-lib/categorize';
 import EditableHtml from '@pie-lib/editable-html';
 import { uid, withDragContext } from '@pie-lib/drag';
 
@@ -53,7 +53,13 @@ export class Design extends React.Component {
     //Ensure that there are no extra choices in correctResponse, if the user has decided that only one choice may be used.
     updatedModel.correctResponse = ensureNoExtraChoicesInAnswer(
       updatedModel.correctResponse || [],
-      updatedModel.choices,
+      updatedModel.choices
+    );
+
+    //Ensure that there are no extra choices in alternate responses, if the user has decided that only one choice may be used.
+     updatedModel.correctResponse = ensureNoExtraChoicesInAlternate(
+        updatedModel.correctResponse || [],
+        updatedModel.choices
     );
 
     //clean categories

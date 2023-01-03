@@ -7,12 +7,14 @@ describe('choice', () => {
   let onDelete;
   let connectDragSource;
   let connectDragPreview;
+  let connectDropTarget;
 
   beforeEach(() => {
     onChange = jest.fn();
     onDelete = jest.fn();
     connectDragSource = jest.fn();
     connectDragPreview = jest.fn();
+    connectDropTarget = jest.fn();
   });
 
   const wrapper = (extras) => {
@@ -28,6 +30,7 @@ describe('choice', () => {
       onDelete,
       connectDragSource,
       connectDragPreview,
+      connectDropTarget,
       ...extras,
     };
 

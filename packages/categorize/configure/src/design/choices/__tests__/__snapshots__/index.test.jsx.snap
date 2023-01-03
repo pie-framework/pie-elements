@@ -90,7 +90,7 @@ exports[`choices snapshot renders 1`] = `
       }
     }
   >
-    <DragSource(WithStyles(Choice))
+    <DropTarget(DragSource(WithStyles(Choice)))
       choice={
         Object {
           "content": "Choice 0",
@@ -101,8 +101,10 @@ exports[`choices snapshot renders 1`] = `
       focusedEl={null}
       index={0}
       key="0"
+      lockChoiceOrder={true}
       onChange={[Function]}
       onDelete={[Function]}
+      rearrangeChoices={[Function]}
     />
   </div>
   <WithStyles(Component) />
