@@ -132,9 +132,9 @@ export class Row extends React.Component {
     );
 
     const content = (
-      <div style={{ opacity: opacity }}>
+      <div style={{ opacity: opacity, width: 'fit-content' }}>
         <span itemID={'handle'} className={classes.dragHandle} onMouseDown={this.onMouseDownOnHandle}>
-          <DragHandle color={'primary'} />
+          <DragHandle color={'primary'}/>
         </span>
 
         <div className={classes.rowContainer}>
@@ -162,22 +162,22 @@ export class Row extends React.Component {
           {row.values.map((rowValue, rowIdx) => (
             <div key={rowIdx} className={classes.rowItem}>
               {model.choiceMode === 'radio' ? (
-                <Radio onChange={this.onRowValueChange(idx, rowIdx)} checked={rowValue === true} />
+                <Radio onChange={this.onRowValueChange(idx, rowIdx)} checked={rowValue === true}/>
               ) : (
-                <Checkbox onChange={this.onRowValueChange(idx, rowIdx)} checked={rowValue === true} label={''} />
+                <Checkbox onChange={this.onRowValueChange(idx, rowIdx)} checked={rowValue === true} label={''}/>
               )}
             </div>
           ))}
 
           <div className={classes.deleteIcon}>
             <Button onClick={this.onDeleteRow(idx)}>
-              <Delete className={classes.deleteIcon} />
+              <Delete className={classes.deleteIcon}/>
             </Button>
           </div>
         </div>
 
         {error && <div className={classes.errorText}>{error}</div>}
-        <hr className={classes.separator} />
+        <hr className={classes.separator}/>
 
         <AlertDialog
           open={dialog.open}
@@ -191,6 +191,7 @@ export class Row extends React.Component {
     return connectDragSource(connectDropTarget(content));
   }
 }
+
 const styles = (theme) => ({
   actions: {
     padding: 0,
@@ -222,9 +223,8 @@ const styles = (theme) => ({
     flex: 1,
     display: 'flex',
     justifyContent: 'center',
-    '&> div': {
-      width: '100%',
-    },
+    minWidth: '150px',
+    padding: theme.spacing.unit * 1.5,
   },
   deleteIcon: {
     flex: 0.5,
@@ -234,6 +234,13 @@ const styles = (theme) => ({
     flex: 2,
     display: 'flex',
     justifyContent: 'flex-start',
+    padding: 0,
+    maxWidth: 'unset',
+    textAlign: 'left',
+    minWidth: '350px',
+    '&> div': {
+      width: '100%',
+    }
   },
   separator: {
     marginTop: theme.spacing.unit * 2,

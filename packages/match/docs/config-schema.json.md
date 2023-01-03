@@ -237,6 +237,9 @@ Indicates the maximum length of answer columns headings
 # `maxLengthFirstColumnHeading` (number)
 
 Indicates the maximum length of first column headings
+# `width` (string, required)
+
+How large (in px) should match be
 
 # `showPrompt` (boolean)
 

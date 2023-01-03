@@ -3,6 +3,7 @@
 exports[`Root snapshot renders 1`] = `
 <div>
   <ConfigLayout
+    hideSettings={false}
     settings={
       <Panel
         configuration={
@@ -23,6 +24,7 @@ exports[`Root snapshot renders 1`] = `
               "label": "Prompt",
               "settings": true,
             },
+            "settingsPanelDisabled": false,
             "spellCheck": Object {
               "enabled": true,
               "label": "Spellcheck",

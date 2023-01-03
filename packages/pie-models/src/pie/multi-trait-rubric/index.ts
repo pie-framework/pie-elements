@@ -98,6 +98,11 @@ export interface MultiTraitRubricConfigure {
   maxPointsDialogBoxContent?: DialogContent;
 
   /**
+   * Indicates if the settings panel is not available
+   */
+  settingsPanelDisabled?: boolean;
+
+  /**
    * Configuration for Excluding Zero Column
    */
   showExcludeZero?: ConfigureProp;

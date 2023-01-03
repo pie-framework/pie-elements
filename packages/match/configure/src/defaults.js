@@ -104,5 +104,6 @@ export default {
     maxAnswers: 5,
     maxLengthAnswers: 20,
     maxLengthFirstColumnHeading: 20
+    // width: '900px'
   },
 };

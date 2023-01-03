@@ -200,6 +200,7 @@ export interface MatchConfigure extends PromptConfig, CommonConfigSettings {
   withRubric?: ConfigureProp;
 
   /**
+
    * Indicates the minimum number of question rows
    */
   minQuestions?: number;
@@ -228,4 +229,8 @@ export interface MatchConfigure extends PromptConfig, CommonConfigSettings {
    * Indicates the maximum length of first column headings
    */
   maxLengthFirstColumnHeading?: number;
+
+   * How large (in px) should match be
+   */
+  width: string;
 }

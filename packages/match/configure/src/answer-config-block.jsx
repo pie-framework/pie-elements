@@ -189,7 +189,7 @@ class AnswerConfigBlock extends React.Component {
         {noOfRowsError && <div className={classes.errorText}>{noOfRowsError}</div>}
         {columnsLengthError && <div className={classes.errorText}>{columnsLengthError}</div>}
 
-        <div className={classes.rowTable}>
+        <div className={classes.rowTable} style={configuration.width ? { width: configuration.width, overflow: 'scroll' } : {}}>
           <div className={classes.rowContainer}>
             {headers.settings &&
             (model.headers || []).map((header, idx) => (

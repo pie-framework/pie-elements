@@ -29,7 +29,6 @@ const styles = (theme) => ({
     minHeight: '235px',
     paddingTop: theme.spacing.unit * 2,
     width: '100%',
-
     '& [data-slate-editor="true"]': {
       minHeight: '235px',
     },
@@ -152,6 +151,7 @@ export class Main extends React.Component {
       teacherInstructions = {},
       choicesPosition = {},
       spellCheck = {},
+      settingsPanelDisabled,
       maxChoices,
       maxResponseAreas,
       maxImageWidth = {},
@@ -177,9 +177,25 @@ export class Main extends React.Component {
       position: toolbarEditorPosition === 'top' ? 'top' : 'bottom',
     };
 
+    const panelSettings = {
+      partialScoring: partialScoring.settings && toggle(partialScoring.label),
+      duplicates: duplicates.settings && toggle(duplicates.label),
+      lockChoiceOrder: lockChoiceOrder.settings && toggle(lockChoiceOrder.label),
+      choicesPosition: choicesPosition.settings && dropdown(choicesPosition.label, ['above', 'below', 'left', 'right']),
+    };
+
+    const panelProperties = {
+      teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
+      rationaleEnabled: rationale.settings && toggle(rationale.label),
+      spellCheckEnabled: spellCheck.settings && toggle(spellCheck.label),
+      promptEnabled: prompt.settings && toggle(prompt.label),
+      rubricEnabled: withRubric?.settings && toggle(withRubric?.label),
+    };
+
     return (
       <div className={classes.design}>
         <layout.ConfigLayout
+          hideSettings={settingsPanelDisabled}
           settings={
             <Panel
               model={model}
@@ -187,20 +203,8 @@ export class Main extends React.Component {
               onChangeModel={(model) => this.onModelChange(model)}
               onChangeConfiguration={(configuration) => onConfigurationChanged(configuration, true)}
               groups={{
-                Settings: {
-                  partialScoring: partialScoring.settings && toggle(partialScoring.label),
-                  duplicates: duplicates.settings && toggle(duplicates.label),
-                  lockChoiceOrder: lockChoiceOrder.settings && toggle(lockChoiceOrder.label),
-                  choicesPosition:
-                    choicesPosition.settings && dropdown(choicesPosition.label, ['above', 'below', 'left', 'right']),
-                },
-                Properties: {
-                  teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
-                  rationaleEnabled: rationale.settings && toggle(rationale.label),
-                  spellCheckEnabled: spellCheck.settings && toggle(spellCheck.label),
-                  promptEnabled: prompt.settings && toggle(prompt.label),
-                  rubricEnabled: withRubric?.settings && toggle(withRubric?.label),
-                },
+                Settings: panelSettings,
+                Properties: panelProperties,
               }}
             />
           }

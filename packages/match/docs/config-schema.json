@@ -313,6 +313,10 @@
       "description": "Indicates the maximum length of first column headings",
       "type": "number",
       "title": "maxLengthFirstColumnHeading"
+    "width": {
+      "description": "How large (in px) should match be",
+      "type": "string",
+      "title": "width"
     },
     "showPrompt": {
       "description": "Determines whether prompt field will be displayed or not",
@@ -333,6 +337,9 @@
       "title": "settingsPartialScoring"
     }
   },
+  "required": [
+    "width"
+  ],
   "definitions": {
     "ConfigureProp": {
       "title": "ConfigureProp",
