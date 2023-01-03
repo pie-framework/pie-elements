@@ -137,6 +137,7 @@ export default class ComplexRubricConfigureElement extends HTMLElement {
       onModelChanged: this.onModelChanged,
       onConfigurationChanged: this.onConfigurationChanged,
     });
+
     ReactDOM.render(element, this);
   }
 }

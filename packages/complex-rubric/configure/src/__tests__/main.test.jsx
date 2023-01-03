@@ -4,6 +4,12 @@ import { Main } from '../main';
 
 import defaults from '../defaults';
 
+jest.mock('@pie-lib/config-ui', () => ({
+  layout: {
+    ConfigLayout: (props) => <div>{props.children}</div>,
+  },
+}));
+
 jest.mock('@pie-lib/rubric', () => ({
   RUBRIC_TYPES: {
     SIMPLE_RUBRIC: 'simpleRubric',
