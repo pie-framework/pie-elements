@@ -100,10 +100,9 @@ export default {
     },
     minQuestions: 2,
     maxQuestions: 5,
-    maxLengthQuestionsHeading: 20,
+    maxLengthQuestionsHeading: 100,
     maxAnswers: 5,
-    maxLengthAnswers: 20,
-    maxLengthFirstColumnHeading: 20
-    // width: '900px'
+    maxLengthAnswers: 100,
+    maxLengthFirstColumnHeading: 100
   },
 };
