@@ -103,7 +103,8 @@ export const spec = {
 
     if (item.from && item.alternateResponseIndex === props.alternateResponseIndex) {
       props.onMoveChoice(item.choiceId, item.from, props.categoryId, item.choiceIndex, item.alternateResponseIndex);
-    } else {
+    } else if (!item.from){
+      // avoid dropping choice when user tries to move it to an alternate with other index
       props.onDropChoice(item, props.categoryId);
     }
   },
