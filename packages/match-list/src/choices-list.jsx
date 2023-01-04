@@ -5,7 +5,7 @@ import isEmpty from 'lodash/isEmpty';
 import isUndefined from 'lodash/isUndefined';
 import find from 'lodash/find';
 import { DragAnswer } from './answer';
-import { DroppablePlaceholder } from '@pie-lib/drag';
+import { MatchDroppablePlaceholder } from '@pie-lib/drag';
 
 export class ChoicesList extends React.Component {
   static propTypes = {
@@ -23,8 +23,8 @@ export class ChoicesList extends React.Component {
 
     return (
       <>
-        {DroppablePlaceholder ? (
-          <DroppablePlaceholder disabled={disabled} onRemoveAnswer={onRemoveAnswer}>
+        {MatchDroppablePlaceholder ? (
+          <MatchDroppablePlaceholder disabled={disabled} onRemoveAnswer={onRemoveAnswer}>
             {config.answers
               .filter(
                 (answer) =>
@@ -45,7 +45,7 @@ export class ChoicesList extends React.Component {
                   {...answer}
                 />
               ))}
-          </DroppablePlaceholder>
+          </MatchDroppablePlaceholder>
         ) : (
           <div className={classes.answersContainer}>
             {' '}
