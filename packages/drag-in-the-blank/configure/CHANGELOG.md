@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-configure@4.2.6...@pie-element/drag-in-the-blank-configure@4.3.0) (2023-01-05)
+
+
+### Bug Fixes
+
+* **drag-in-the-blank:** add validation for empty response areas + UI improvements PD-2160 ([1c24e8f](https://github.com/pie-framework/pie-elements/commit/1c24e8f3f5890f6c325035c9b20d20b4dbc7f5a6))
+
+
+### Features
+
+* update pie-libs ([b174476](https://github.com/pie-framework/pie-elements/commit/b174476729119a0689f1f8adfc8c235246676cab))
+* update pie-libs ([f72c3c8](https://github.com/pie-framework/pie-elements/commit/f72c3c8d8bc9bbf061bb81502317157a63c22972))
+* update pie-libs ([8490729](https://github.com/pie-framework/pie-elements/commit/8490729a2389d36fd3968f0806119fde96577842))
+* **drag-in-the-blank:** added configuration prop to hide the settings panel PD-1999 ([630cc87](https://github.com/pie-framework/pie-elements/commit/630cc87640183a21e456876b6389d2694a0e5553))
+
+
+
+
+
 ## [4.2.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-configure@4.2.5...@pie-element/drag-in-the-blank-configure@4.2.6) (2022-12-21)
 
 

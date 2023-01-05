@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@5.3.1...@pie-element/match@5.4.0) (2023-01-05)
+
+
+### Bug Fixes
+
+* **match:** increase default value of maxLengthQuestionsHeading, maxLengthAnswers, maxLengthFirstColumnHeading ([f663d9d](https://github.com/pie-framework/pie-elements/commit/f663d9daba7998e26d5d8c1849c219d284e2d4bf))
+
+
+### Features
+
+* added width property in match configuration ([6436fc6](https://github.com/pie-framework/pie-elements/commit/6436fc63b404dc4d25ac55aadcc5b84985421800))
+* update pie-libs ([b174476](https://github.com/pie-framework/pie-elements/commit/b174476729119a0689f1f8adfc8c235246676cab))
+* update pie-libs ([f72c3c8](https://github.com/pie-framework/pie-elements/commit/f72c3c8d8bc9bbf061bb81502317157a63c22972))
+* update pie-libs ([8490729](https://github.com/pie-framework/pie-elements/commit/8490729a2389d36fd3968f0806119fde96577842))
+* **match:** add validation PD-2417 ([157c19b](https://github.com/pie-framework/pie-elements/commit/157c19b4ceee5decfd47c50e23a7004d27136ca0))
+* **match:** added configuration prop to hide the settings panel PD-1999 + refactoring ([b7087c6](https://github.com/pie-framework/pie-elements/commit/b7087c652df0172ee0f3a1d4041e4c1b144bafa0))
+* **match:** clean up ([40809d9](https://github.com/pie-framework/pie-elements/commit/40809d9a29baeba7f50f4f5510a0e18537224930))
+* **match:** update docs PD-2417 ([e3b4e8b](https://github.com/pie-framework/pie-elements/commit/e3b4e8bec388b8b181b55b5c181bdf4fd3c260ae))
+* PD-2417 wip ([01dc129](https://github.com/pie-framework/pie-elements/commit/01dc129e1cda7e1a4bc27a3b874c56c20ff92618))
+* **match:** added some configurable validation PD-2417. Started to update validation method ([dc459a1](https://github.com/pie-framework/pie-elements/commit/dc459a140a54772e6d9ec5dfaa1c620215cdf4c2))
+* **match:** wip add validation PD-2417 ([f8a4b88](https://github.com/pie-framework/pie-elements/commit/f8a4b886ee42125ff2cef4abc0e29c8132010a98))
+* **match:** wip PD-2417 ([6d392f7](https://github.com/pie-framework/pie-elements/commit/6d392f76efbbefa2ef71b439dd5123d6a8c31974))
+
+
+
+
+
 ## [5.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@5.3.0...@pie-element/match@5.3.1) (2022-12-21)
 
 

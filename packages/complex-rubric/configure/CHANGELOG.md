@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric-configure@1.2.7...@pie-element/complex-rubric-configure@1.3.0) (2023-01-05)
+
+
+### Features
+
+* update pie-libs ([b174476](https://github.com/pie-framework/pie-elements/commit/b174476729119a0689f1f8adfc8c235246676cab))
+* update pie-libs ([f72c3c8](https://github.com/pie-framework/pie-elements/commit/f72c3c8d8bc9bbf061bb81502317157a63c22972))
+* update pie-libs ([8490729](https://github.com/pie-framework/pie-elements/commit/8490729a2389d36fd3968f0806119fde96577842))
+* **complex-rubric:** added ConfigLayout wrapper for authoring side ([1fd3b82](https://github.com/pie-framework/pie-elements/commit/1fd3b82340a57deba146048a7ebd591ea736420e))
+
+
+
+
+
 ## [1.2.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric-configure@1.2.6...@pie-element/complex-rubric-configure@1.2.7) (2022-12-21)
 
 

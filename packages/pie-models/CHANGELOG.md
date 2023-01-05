@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@12.5.0...@pie-element/pie-models@12.6.0) (2023-01-05)
+
+
+### Features
+
+* added width property in match configuration ([6436fc6](https://github.com/pie-framework/pie-elements/commit/6436fc63b404dc4d25ac55aadcc5b84985421800))
+* **categorize:** added configuration prop to hide the settings panel PD-1999 ([405c321](https://github.com/pie-framework/pie-elements/commit/405c3215f6953d9326d1eee25444a2bf00167d95))
+* **charting:** added configuration prop to hide the settings panel PD-1999 ([a877144](https://github.com/pie-framework/pie-elements/commit/a8771441a7b62eaa061ccaee1ac8940fdcbb87be))
+* **drag-in-the-blank:** added configuration prop to hide the settings panel PD-1999 ([630cc87](https://github.com/pie-framework/pie-elements/commit/630cc87640183a21e456876b6389d2694a0e5553))
+* **drawing-response:** added configuration prop to hide the settings panel PD-1999 ([57ddf9e](https://github.com/pie-framework/pie-elements/commit/57ddf9e56540f77ab3286495d660821bc70deb59))
+* **ebsr:** added configuration prop to hide the settings panel PD-1999 ([30fd6c7](https://github.com/pie-framework/pie-elements/commit/30fd6c7bd6bbca6badd2d0ddc99b78a10fab7155))
+* **explicit-constructed-response:** added configuration prop to hide the settings panel PD-1999 ([8aec356](https://github.com/pie-framework/pie-elements/commit/8aec3566ad4e3b7c190bfabb5d1e65dc5e735a8f))
+* **extended-text-entry:** added configuration prop to hide the settings panel PD-1999 ([ca137ff](https://github.com/pie-framework/pie-elements/commit/ca137fffaac68d645f36b1bc41eeec3a0dcac3ba))
+* **graphing:** added configuration prop to hide the settings panel PD-1999 ([eb98b1c](https://github.com/pie-framework/pie-elements/commit/eb98b1c63db463d0d4a62dbfea2041e7b30825eb))
+* **hotspot:** added configuration prop to hide the settings panel PD-1999 ([55f4f86](https://github.com/pie-framework/pie-elements/commit/55f4f868be0321e944d3b4c9d9ed6c96adfa2886))
+* **image-cloze-association:** added configuration prop to hide the settings panel PD-1999 ([5d0739b](https://github.com/pie-framework/pie-elements/commit/5d0739b021caaedd757f6caccdbef7ea74451ded))
+* **inline-dropdown:** added configuration prop to hide the settings panel PD-1999 + replaced the warning message component ([3ea0366](https://github.com/pie-framework/pie-elements/commit/3ea0366e2149f59aaa592f2c35a776bf145e7a32))
+* **likert:** added configuration prop to hide the settings panel PD-1999 ([8ec7491](https://github.com/pie-framework/pie-elements/commit/8ec7491ea55a12bb1deb7bc250b2bc8b2e7ddf7e))
+* **match:** added configuration prop to hide the settings panel PD-1999 + refactoring ([b7087c6](https://github.com/pie-framework/pie-elements/commit/b7087c652df0172ee0f3a1d4041e4c1b144bafa0))
+* **match:** update docs PD-2417 ([e3b4e8b](https://github.com/pie-framework/pie-elements/commit/e3b4e8bec388b8b181b55b5c181bdf4fd3c260ae))
+* **math-inline:** added configuration prop to hide the settings panel PD-1999 ([bd9d932](https://github.com/pie-framework/pie-elements/commit/bd9d932ad24db60e53ebb2b988977afcaf7ef668))
+* **matrix:** added configuration prop to hide the settings panel PD-1999 ([5fded0a](https://github.com/pie-framework/pie-elements/commit/5fded0a3d989e5608bfbd98eaf722265662f510e))
+* **multi-trait-rubric:**  added configuration prop to hide the settings panel PD-1999 ([88e2ad2](https://github.com/pie-framework/pie-elements/commit/88e2ad2bf73ae5f8a95c3ca2930f9d8642281c13))
+* **multiple-choice:** added configuration prop to hide the settings pannel PD-1999 + refactoring ([f0f3f6e](https://github.com/pie-framework/pie-elements/commit/f0f3f6e95f9bd96196dec2ba5e861b5bf170e146))
+* **placement-ordering:** added configuration prop to hide the settings pannel PD-1999 + refactoring ([e293169](https://github.com/pie-framework/pie-elements/commit/e29316962aa5461ee864bd35e4e265a81ced6e35))
+* **rubric:** added configuration prop to hide the settings panel PD-1999 and updated documentation ([a01748b](https://github.com/pie-framework/pie-elements/commit/a01748bbddd34848dd07ec6be7d8a2b55c47214d))
+* **select-text:** added configuration prop to hide the settings panel PD-1999 + refactoring ([11dfb8e](https://github.com/pie-framework/pie-elements/commit/11dfb8e485b6614122ed92ec2b3ab1da031a222f))
+
+
+
+
+
 # [12.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@12.4.0...@pie-element/pie-models@12.5.0) (2022-12-20)
 
 

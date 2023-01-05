@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@7.5.1...@pie-element/categorize@7.6.0) (2023-01-05)
+
+
+### Bug Fixes
+
+* **categorize:** avoid dropping choice when user tries to move it to an alternate with other index-1967 ([8081621](https://github.com/pie-framework/pie-elements/commit/808162197c5cbf257bf503f2b7d4ea28111d073b))
+* **categorize:** delete removeTilesAfterPlacing from generate method-PD-2169 ([2de0c55](https://github.com/pie-framework/pie-elements/commit/2de0c5567fa65f54609062e680369106b512d0ed))
+* **categorize:** transform to else if Pd-1967 ([b124162](https://github.com/pie-framework/pie-elements/commit/b124162ccfcccd0600ca0fcee1431796cc5a7b53))
+
+
+### Features
+
+* update pie-libs ([b174476](https://github.com/pie-framework/pie-elements/commit/b174476729119a0689f1f8adfc8c235246676cab))
+* update pie-libs ([f72c3c8](https://github.com/pie-framework/pie-elements/commit/f72c3c8d8bc9bbf061bb81502317157a63c22972))
+* update pie-libs ([8490729](https://github.com/pie-framework/pie-elements/commit/8490729a2389d36fd3968f0806119fde96577842))
+* **categorize:** added configuration prop to hide the settings panel PD-1999 ([405c321](https://github.com/pie-framework/pie-elements/commit/405c3215f6953d9326d1eee25444a2bf00167d95))
+* **categorize:** ensure no extra choices in alternate when categoryCount 1-PD-1967 ([7363bb7](https://github.com/pie-framework/pie-elements/commit/7363bb76767418239fa7b250331dbc4a3d4ae9ac))
+* **categorize:** Ensure that there are no extra choices in alternate, add cond for canDrag-PD-1967 ([dc568f9](https://github.com/pie-framework/pie-elements/commit/dc568f9822569c75394358879318468595f14033))
+* **categorize:** rearrange the choices via drag and drop-PD-1967 ([c1480a1](https://github.com/pie-framework/pie-elements/commit/c1480a168d6bb50c78e603f3c6ba04bb3ed1c6be))
+
+
+
+
+
 ## [7.5.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@7.5.0...@pie-element/categorize@7.5.1) (2022-12-21)
 
 

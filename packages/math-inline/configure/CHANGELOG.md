@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@6.2.6...@pie-element/math-inline-configure@6.3.0) (2023-01-05)
+
+
+### Features
+
+* update pie-libs ([b174476](https://github.com/pie-framework/pie-elements/commit/b174476729119a0689f1f8adfc8c235246676cab))
+* update pie-libs ([f72c3c8](https://github.com/pie-framework/pie-elements/commit/f72c3c8d8bc9bbf061bb81502317157a63c22972))
+* update pie-libs ([8490729](https://github.com/pie-framework/pie-elements/commit/8490729a2389d36fd3968f0806119fde96577842))
+* **math-inline:** added configuration prop to hide the settings panel PD-1999 ([bd9d932](https://github.com/pie-framework/pie-elements/commit/bd9d932ad24db60e53ebb2b988977afcaf7ef668))
+
+
+
+
+
 ## [6.2.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@6.2.5...@pie-element/math-inline-configure@6.2.6) (2022-12-21)
 
 

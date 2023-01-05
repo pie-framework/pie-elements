@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/likert-configure@0.2.5...@pie-element/likert-configure@0.3.0) (2023-01-05)
+
+
+### Features
+
+* update pie-libs ([b174476](https://github.com/pie-framework/pie-elements/commit/b174476729119a0689f1f8adfc8c235246676cab))
+* update pie-libs ([f72c3c8](https://github.com/pie-framework/pie-elements/commit/f72c3c8d8bc9bbf061bb81502317157a63c22972))
+* update pie-libs ([8490729](https://github.com/pie-framework/pie-elements/commit/8490729a2389d36fd3968f0806119fde96577842))
+* **likert:** added configuration prop to hide the settings panel PD-1999 ([8ec7491](https://github.com/pie-framework/pie-elements/commit/8ec7491ea55a12bb1deb7bc250b2bc8b2e7ddf7e))
+
+
+
+
+
 ## [0.2.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/likert-configure@0.2.4...@pie-element/likert-configure@0.2.5) (2022-12-21)
 
 
