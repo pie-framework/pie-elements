@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.4.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@8.4.0...@pie-element/ebsr@8.4.2) (2023-01-05)
+
+
+### Bug Fixes
+
+* force release ebsr ([3e739fd](https://github.com/pie-framework/pie-elements/commit/3e739fd913531365c0d09fe1337f93f209a9c8dc))
+
+
+
+
+
 # [8.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@8.3.1...@pie-element/ebsr@8.4.0) (2023-01-05)
 
 
