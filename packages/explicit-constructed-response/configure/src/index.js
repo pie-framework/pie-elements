@@ -110,6 +110,7 @@ export default class ExplicitConstructedResponse extends HTMLElement {
 
   _render() {
     log('_render');
+
     let element = React.createElement(Main, {
       model: this._model,
       configuration: this._configuration,
@@ -125,6 +126,7 @@ export default class ExplicitConstructedResponse extends HTMLElement {
         delete: this.onDeleteSound.bind(this),
       },
     });
+
     ReactDOM.render(element, this);
   }
 }

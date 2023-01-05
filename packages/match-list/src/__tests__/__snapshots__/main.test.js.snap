@@ -147,6 +147,7 @@ exports[`Main render renders correctly 1`] = `
         "id": "1",
       }
     }
+    onRemoveAnswer={[Function]}
     session={
       Object {
         "value": Array [

@@ -98,6 +98,10 @@ Indicates if the item has to be displayed in the Settings Panel
 
 Indicates the label for the item that has to be displayed in the Settings Panel
 
+# `settingsPanelDisabled` (boolean)
+
+Indicates if the settings panel is not available
+
 # `spellCheck` (object)
 
 Properties of the `spellCheck` object:
@@ -209,6 +213,33 @@ Indicates if the item has to be displayed in the Settings Panel
 ## `label` (string)
 
 Indicates the label for the item that has to be displayed in the Settings Panel
+
+# `minQuestions` (number)
+
+Indicates the minimum number of question rows
+
+# `maxQuestions` (number)
+
+Indicates the maximum number of question rows
+
+# `maxLengthQuestionsHeading` (number)
+
+Indicates the maximum length of question rows headings
+
+# `maxAnswers` (number)
+
+Indicates the maximum number of answer columns
+
+# `maxLengthAnswers` (number)
+
+Indicates the maximum length of answer columns headings
+
+# `maxLengthFirstColumnHeading` (number)
+
+Indicates the maximum length of first column headings
+# `width` (string, required)
+
+How large (in px) should match be
 
 # `showPrompt` (boolean)
 

@@ -165,12 +165,17 @@ export const createCorrectResponseSession = (question, env) => {
 };
 
 export const validate = (model = {}, config = {}) => {
-  const { choices, markup } = model;
+  const { choices, correctResponse, markup } = model;
   const { minChoices = 2, maxChoices, maxResponseAreas } = config;
   const errors = {};
 
   const nbOfResponseAreas = ((markup || '').match(/\{\{(\d+)\}\}/g) || []).length;
   const nbOfChoices = (choices || []).length;
+  const emptyResponseAreas = Object.values(correctResponse)?.filter((response) => !response);
+
+  if (emptyResponseAreas.length) {
+    errors.correctResponseError = 'There should be a choice defined for each response area.';
+  }
 
   if (nbOfResponseAreas > maxResponseAreas) {
     errors.responseAreasError = `No more than ${maxResponseAreas} response areas should be defined.`;

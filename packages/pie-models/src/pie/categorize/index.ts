@@ -169,6 +169,11 @@ export interface CategorizeConfigure extends PromptConfig, CommonConfigSettings 
   scoringType?: ConfigureProp;
 
   /**
+   * Indicates if the settings panel is not available
+   */
+  settingsPanelDisabled?: boolean;
+
+  /**
    * Student Instructions configuration
    */
   studentInstructions?: ConfigureProp;

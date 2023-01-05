@@ -180,6 +180,11 @@ export interface MultipleChoiceConfigure extends PromptConfig {
   scoringType?: ConfigureProp;
 
   /**
+   * Indicates if the settings panel is not available
+   */
+  settingsPanelDisabled?: boolean;
+
+  /**
    * Student Instructions configuration
    */
   studentInstructions?: ConfigureProp;

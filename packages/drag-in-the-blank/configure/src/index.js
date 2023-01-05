@@ -43,10 +43,10 @@ export default class DragInTheBlank extends HTMLElement {
     this.onConfigurationChanged = this.onConfigurationChanged.bind(this);
   }
 
-  set model(s) {
+  set model(m) {
     const formModel = {
-      ...s,
-      markup: `<span>${s.markup || sensibleDefaults.model.markup}</span>`,
+      ...m,
+      markup: `<span>${m.markup || sensibleDefaults.model.markup}</span>`,
     };
 
     this._model = DragInTheBlank.prepareModel(formModel);
@@ -99,6 +99,7 @@ export default class DragInTheBlank extends HTMLElement {
 
   _render() {
     log('_render');
+
     let element = React.createElement(Main, {
       model: this._model,
       configuration: this._configuration,
@@ -114,6 +115,7 @@ export default class DragInTheBlank extends HTMLElement {
         delete: this.onDeleteSound.bind(this),
       },
     });
+
     ReactDOM.render(element, this);
   }
 }

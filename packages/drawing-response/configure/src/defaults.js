@@ -27,6 +27,7 @@ export default {
       settings: true,
       label: 'Prompt',
     },
+    settingsPanelDisabled: false,
     teacherInstructions: {
       settings: true,
       label: 'Teacher Instructions',

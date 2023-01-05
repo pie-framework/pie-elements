@@ -27,17 +27,17 @@ const styles = (theme) => ({
   flexContainer: {
     display: 'flex',
     alignItems: 'center',
-    marginTop: '10px',
+    marginTop: theme.spacing.unit,
   },
   titleText: {
     fontFamily: 'Cerebri Sans',
-    fontSize: '18px',
+    fontSize: theme.typography.fontSize + 2,
     lineHeight: '19px',
     color: '#495B8F',
-    marginRight: '5px',
+    marginRight: theme.spacing.unit,
   },
   tooltip: {
-    fontSize: '12px',
+    fontSize: theme.typography.fontSize - 2,
     whiteSpace: 'pre',
     maxWidth: '500px',
   },
@@ -90,6 +90,7 @@ class GeneralConfigBlock extends React.Component {
             <Info fontSize={'small'} color={'primary'} />
           </Tooltip>
         </div>
+
         <div className={classes.container}>
           <div className={classes.input}>
             {layout.settings && (
@@ -106,6 +107,7 @@ class GeneralConfigBlock extends React.Component {
               </InputContainer>
             )}
           </div>
+
           <div className={classes.input}>
             {choiceMode.settings && (
               <InputContainer label={choiceMode.label} className={classes.inputContainer}>

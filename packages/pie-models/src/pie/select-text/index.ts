@@ -152,6 +152,11 @@ export interface SelectTextConfigure extends PromptConfig, CommonConfigSettings 
   rationale?: ConfigureProp;
 
   /**
+   * Indicates if the settings panel is not available
+   */
+  settingsPanelDisabled?: boolean;
+
+  /**
    * Configuration for the spellcheck
    */
   spellCheck?: ConfigureProp;

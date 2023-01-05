@@ -9,6 +9,7 @@ import every from 'lodash/every';
 import Config from './config';
 import { choiceUtils as utils } from '@pie-lib/config-ui';
 import { removeAllChoices } from '@pie-lib/categorize';
+import { rearrangeChoices } from '@pie-lib/categorize';
 
 export class Choices extends React.Component {
   static propTypes = {
@@ -64,7 +65,7 @@ export class Choices extends React.Component {
       },
       () => {
         onModelChanged({ choices: model.choices.concat([data]) });
-      }
+      },
     );
   };
 
@@ -84,6 +85,13 @@ export class Choices extends React.Component {
     }
   };
 
+  rearrangeChoices = (indexFrom, indexTo) => {
+    const { model, onModelChanged } = this.props || {};
+    let { choices } = model || [];
+    choices = rearrangeChoices(choices, indexFrom, indexTo);
+    onModelChanged({ choices });
+  };
+
   render() {
     const { focusedEl } = this.state;
     const {
@@ -100,7 +108,7 @@ export class Choices extends React.Component {
       defaultImageMaxWidth,
       defaultImageMaxHeight,
     } = this.props;
-    const { errors, allowMultiplePlacementsEnabled } = model;
+    const { errors, allowMultiplePlacementsEnabled, lockChoiceOrder } = model;
     const { choicesError, choicesErrors } = errors || {};
     const { maxChoices, maxImageWidth = {}, maxImageHeight = {} } = configuration || {};
 
@@ -118,11 +126,7 @@ export class Choices extends React.Component {
           buttonDisabled={maxChoices && choices && maxChoices === choices.length}
         />
         {choicesError && <div className={classes.errorText}>{choicesError}</div>}
-        <Config
-          config={model}
-          onModelChanged={onModelChanged}
-          spellCheck={spellCheck}
-        />
+        <Config config={model} onModelChanged={onModelChanged} spellCheck={spellCheck} />
         <div className={classes.choiceHolder} style={choiceHolderStyle}>
           {choices.map((h, index) => {
             return (
@@ -132,22 +136,18 @@ export class Choices extends React.Component {
                 deleteFocusedEl={this.deleteFocusedEl}
                 correctResponseCount={h.correctResponseCount}
                 allowMultiplePlacements={allowMultiplePlacementsEnabled}
+                lockChoiceOrder={lockChoiceOrder}
                 index={index}
                 key={index}
                 imageSupport={imageSupport}
                 onChange={this.changeChoice}
                 onDelete={() => this.deleteChoice(h)}
+                rearrangeChoices={(indexFrom, indexTo) => this.rearrangeChoices(indexFrom, indexTo)}
                 toolbarOpts={toolbarOpts}
                 spellCheck={spellCheck}
                 error={choicesErrors && choicesErrors[h.id]}
-                maxImageWidth={
-                  (maxImageWidth && maxImageWidth.choice) ||
-                  defaultImageMaxWidth
-                }
-                maxImageHeight={
-                  (maxImageHeight && maxImageHeight.choice) ||
-                  defaultImageMaxHeight
-                }
+                maxImageWidth={(maxImageWidth && maxImageWidth.choice) || defaultImageMaxWidth}
+                maxImageHeight={(maxImageHeight && maxImageHeight.choice) || defaultImageMaxHeight}
                 uploadSoundSupport={uploadSoundSupport}
               />
             );

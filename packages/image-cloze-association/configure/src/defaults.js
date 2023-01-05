@@ -5,6 +5,13 @@ export default {
     studentInstructionsEnabled: true,
   },
   configuration: {
+    maxImageWidth: {
+      teacherInstructions: 300,
+    },
+    maxImageHeight: {
+      teacherInstructions: 300,
+    },
+    settingsPanelDisabled: false,
     spellCheck: {
       label: 'Spellcheck',
       settings: false,
@@ -13,12 +20,6 @@ export default {
     teacherInstructions: {
       settings: true,
       label: 'Teacher Instructions',
-    },
-    maxImageWidth: {
-      teacherInstructions: 300,
-    },
-    maxImageHeight: {
-      teacherInstructions: 300,
     },
     withRubric: {
       settings: false,

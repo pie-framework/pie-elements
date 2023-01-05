@@ -87,6 +87,11 @@
             }
           }
         },
+        "settingsPanelDisabled": {
+          "description": "Indicates if the settings panel is not available",
+          "type": "boolean",
+          "title": "settingsPanelDisabled"
+        },
         "showExcludeZero": {
           "title": "ConfigureProp",
           "type": "object",
@@ -283,6 +288,11 @@
               "title": "text"
             }
           }
+        },
+        "settingsPanelDisabled": {
+          "description": "Indicates if the settings panel is not available",
+          "type": "boolean",
+          "title": "settingsPanelDisabled"
         },
         "showExcludeZero": {
           "title": "ConfigureProp",

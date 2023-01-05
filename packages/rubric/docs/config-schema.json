@@ -1,6 +1,43 @@
 {
   "type": "object",
   "properties": {
+    "settingsPanelDisabled": {
+      "description": "Indicates if the settings panel is not available",
+      "type": "boolean",
+      "title": "settingsPanelDisabled"
+    },
+    "showExcludeZero": {
+      "title": "ConfigureProp",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "Indicates if the item has to be displayed in the Settings Panel",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+          "type": "string",
+          "title": "label"
+        }
+      }
+    },
+    "showMaxPoint": {
+      "title": "ConfigureProp",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "Indicates if the item has to be displayed in the Settings Panel",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+          "type": "string",
+          "title": "label"
+        }
+      }
+    },
     "showPrompt": {
       "description": "Determines whether prompt field will be displayed or not",
       "default": true,
@@ -18,6 +55,24 @@
       "default": true,
       "type": "boolean",
       "title": "settingsPartialScoring"
+    }
+  },
+  "definitions": {
+    "ConfigureProp": {
+      "title": "ConfigureProp",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "Indicates if the item has to be displayed in the Settings Panel",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+          "type": "string",
+          "title": "label"
+        }
+      }
     }
   },
   "$schema": "http://json-schema.org/draft-07/schema#"

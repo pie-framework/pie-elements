@@ -11,9 +11,9 @@
   "dependencies": {
     "@material-ui/core": "^3.9.2",
     "@pie-framework/pie-player-events": "^0.1.0",
-    "@pie-lib/categorize": "^0.6.26",
+    "@pie-lib/categorize": "^0.7.0",
     "@pie-lib/correct-answer-toggle": "^2.3.47",
-    "@pie-lib/drag": "^2.0.4",
+    "@pie-lib/drag": "^2.0.6",
     "@pie-lib/math-rendering": "^2.5.1",
     "@pie-lib/render-ui": "^4.13.7",
     "classnames": "^2.2.5",

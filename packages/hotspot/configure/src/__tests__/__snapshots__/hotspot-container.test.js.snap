@@ -3,7 +3,7 @@
 exports[`HotspotContainer render renders 1`] = `
 <div>
   <div
-    className="undefined "
+    className=""
     onDragExit={[Function]}
     onDragLeave={[Function]}
     onDragOver={[Function]}

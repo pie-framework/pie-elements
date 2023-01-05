@@ -9,7 +9,6 @@ import Row from './row';
 import debug from 'debug';
 import lodash from 'lodash';
 import EditableHTML, { DEFAULT_PLUGINS } from '@pie-lib/editable-html';
-import { InfoDialog } from './common';
 
 const log = debug('pie-elements:match:configure');
 
@@ -29,9 +28,10 @@ const styles = (theme) => ({
     flex: 1,
     display: 'flex',
     justifyContent: 'center',
+    flexDirection: 'column',
     '&> div': {
       width: '150px',
-      padding: '12px',
+      padding: theme.spacing.unit * 1.5,
       textAlign: 'center',
     },
   },
@@ -67,9 +67,10 @@ const styles = (theme) => ({
     },
   },
   errorText: {
-    fontSize: '12px',
+    fontSize: theme.typography.fontSize - 2,
     color: 'red',
-    paddingTop: '5px',
+    padding: '0 !important',
+    width: 'fit-content !important'
   },
 });
 
@@ -90,12 +91,6 @@ class AnswerConfigBlock extends React.Component {
       delete: PropTypes.func.isRequired,
     }),
     toolbarOpts: PropTypes.object,
-  };
-
-  state = {
-    dialog: {
-      open: false,
-    },
   };
 
   moveRow = (from, to) => {
@@ -129,19 +124,19 @@ class AnswerConfigBlock extends React.Component {
 
   onChange =
     (name, isBoolean) =>
-    ({ target }) => {
-      const { model, onChange } = this.props;
-      let value;
+      ({ target }) => {
+        const { model, onChange } = this.props;
+        let value;
 
-      if (isBoolean) {
-        value = target.checked;
-      } else {
-        value = target.value;
-      }
+        if (isBoolean) {
+          value = target.checked;
+        } else {
+          value = target.value;
+        }
 
-      lodash.set(model, name, value);
-      onChange(model, name);
-    };
+        lodash.set(model, name, value);
+        onChange(model, name);
+      };
 
   onHeaderChange = (headerIndex) => (value) => {
     const { model, onChange } = this.props;
@@ -154,46 +149,25 @@ class AnswerConfigBlock extends React.Component {
       return;
     }
 
-    const headers = newModel.headers || [];
-
-    const currentHeader = headers[headerIndex];
-
-    const sameValue = headers.filter((header) => {
-      const wasChanged = currentHeader !== value && `<div>${currentHeader}</div>` !== value;
-      const sameValueEntered = header === value || `<div>${header}</div>` === value;
-
-      return wasChanged && sameValueEntered;
-    });
-
-    const empty = value === '<div></div>';
-
-    if (sameValue.length || empty) {
-      this.setState({
-        dialog: {
-          open: true,
-          onOk: () => {
-            this.setState({
-              dialog: {
-                open: false,
-              },
-            });
-          },
-        },
-      });
-    } else {
-      newModel.headers[headerIndex] = value;
-
-      onChange(newModel);
-    }
+    newModel.headers[headerIndex] = value;
+    onChange(newModel);
   };
 
   render() {
-    const { classes, model, onAddRow, imageSupport, configuration, toolbarOpts, spellCheck, uploadSoundSupport } =
+    const {
+      classes,
+      model,
+      onAddRow,
+      imageSupport,
+      configuration,
+      toolbarOpts,
+      spellCheck,
+      uploadSoundSupport,
+    } =
       this.props;
     const { headers = {}, maxImageWidth = {}, maxImageHeight = {} } = configuration || {};
-    const { dialog } = this.state;
     const { errors } = model || {};
-    const { correctResponseError, rowsErrors } = errors || {};
+    const { correctResponseError, rowsErrors, columnsErrors, noOfRowsError, columnsLengthError } = errors || {};
 
     const filteredDefaultPlugins = (DEFAULT_PLUGINS || []).filter(
       (p) => p !== 'table' && p !== 'bulleted-list' && p !== 'numbered-list',
@@ -212,37 +186,43 @@ class AnswerConfigBlock extends React.Component {
           Click on the labels to edit or remove. Set the correct answers by clicking each correct answer per row.
         </Typography>
         {correctResponseError && <div className={classes.errorText}>{correctResponseError}</div>}
-        <div className={classes.rowTable}>
+        {noOfRowsError && <div className={classes.errorText}>{noOfRowsError}</div>}
+        {columnsLengthError && <div className={classes.errorText}>{columnsLengthError}</div>}
+
+        <div className={classes.rowTable} style={configuration.width ? { width: configuration.width, overflow: 'scroll' } : {}}>
           <div className={classes.rowContainer}>
             {headers.settings &&
-              (model.headers || []).map((header, idx) => (
-                <div
-                  key={idx}
-                  className={cx(classes.rowItem, {
-                    [classes.questionText]: idx === 0,
-                  })}
-                >
-                  <EditableHTML
-                    onChange={this.onHeaderChange(idx)}
-                    markup={header}
-                    className={classes.headerInput}
-                    label={'column label'}
-                    activePlugins={filteredDefaultPlugins}
-                    pluginProps={labelPlugins}
-                    autoWidthToolbar
-                    spellCheck={spellCheck}
-                    uploadSoundSupport={uploadSoundSupport}
-                    languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
-                  />
-                </div>
-              ))}
+            (model.headers || []).map((header, idx) => (
+              <div
+                key={idx}
+                className={cx(classes.rowItem, {
+                  [classes.questionText]: idx === 0,
+                })}
+              >
+                <EditableHTML
+                  onChange={this.onHeaderChange(idx)}
+                  markup={header}
+                  className={classes.headerInput}
+                  label={'column label'}
+                  activePlugins={filteredDefaultPlugins}
+                  pluginProps={labelPlugins}
+                  autoWidthToolbar
+                  spellCheck={spellCheck}
+                  uploadSoundSupport={uploadSoundSupport}
+                  languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+                  error={columnsErrors && columnsErrors[idx]}
+                />
+                {columnsErrors && columnsErrors[idx] && <div className={classes.errorText}>{columnsErrors[idx]}</div>}
+              </div>
+            ))}
             <div className={classes.deleteIcon}>
               <Button disabled>
-                <div />
+                <div/>
               </Button>
             </div>
           </div>
           <hr className={classes.separator} />
+
           {model.rows.map((row, idx) => (
             <Row
               key={idx}
@@ -256,15 +236,14 @@ class AnswerConfigBlock extends React.Component {
               enableImages={model.enableImages}
               toolbarOpts={toolbarOpts}
               spellCheck={spellCheck}
-              error={rowsErrors && rowsErrors[row.id]}
+              error={rowsErrors?.[row.id]}
               maxImageWidth={(maxImageWidth && maxImageWidth.rowTitles) || defaultImageMaxWidth}
               maxImageHeight={(maxImageHeight && maxImageHeight.rowTitles) || defaultImageMaxHeight}
               uploadSoundSupport={uploadSoundSupport}
             />
           ))}
-          <AddRow onAddClick={onAddRow} />
+          <AddRow onAddClick={onAddRow}/>
         </div>
-        <InfoDialog title={'The column headings must be non-blank and unique.'} open={dialog.open} onOk={dialog.onOk} />
       </div>
     );
   }

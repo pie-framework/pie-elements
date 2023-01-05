@@ -64,6 +64,7 @@ export default {
       settings: true,
       label: 'Rationale',
     },
+    settingsPanelDisabled: false,
     spellCheck: {
       label: 'Spellcheck',
       settings: false,
@@ -97,5 +98,11 @@ export default {
       settings: false,
       label: 'Add Rubric',
     },
+    minQuestions: 2,
+    maxQuestions: 5,
+    maxLengthQuestionsHeading: 100,
+    maxAnswers: 5,
+    maxLengthAnswers: 100,
+    maxLengthFirstColumnHeading: 100
   },
 };

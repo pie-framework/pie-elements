@@ -82,6 +82,7 @@ export default class ImageClozeAssociationConfigure extends HTMLElement {
 
   _render() {
     log('_render');
+
     let element = React.createElement(Root, {
       disableSidePanel: this._disableSidePanel,
       model: this._model,
@@ -97,6 +98,7 @@ export default class ImageClozeAssociationConfigure extends HTMLElement {
         delete: this.onDeleteSound.bind(this),
       },
     });
+
     ReactDOM.render(element, this);
   }
 }

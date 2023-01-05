@@ -15,69 +15,70 @@ export class Root extends React.Component {
     const { model, onModelChanged } = this.props;
     const update = cloneDeep(model);
 
-    onModelChanged({
-      ...update,
-      prompt,
-    });
+    onModelChanged({ ...update, prompt });
   };
 
   onTeacherInstructionsChanged = (teacherInstructions) => {
     const { model, onModelChanged } = this.props;
 
-    onModelChanged({
-      ...model,
-      teacherInstructions,
-    });
+    onModelChanged({ ...model, teacherInstructions });
   };
 
   onUpdateImageDimension = (dimensions) => {
     const { model, onModelChanged } = this.props;
 
-    onModelChanged({
-      ...model,
-      imageDimensions: dimensions,
-    });
+    onModelChanged({ ...model, imageDimensions: dimensions });
   };
 
   onImageUpload = (imageUrl) => {
     const { model, onModelChanged } = this.props;
 
-    onModelChanged({
-      ...model,
-      imageUrl,
-    });
+    onModelChanged({ ...model, imageUrl });
   };
 
   render() {
-    const { classes, configuration, model, imageSupport, uploadSoundSupport, onConfigurationChanged, onModelChanged } =
+    const { classes, configuration, imageSupport, model, onConfigurationChanged, onModelChanged, uploadSoundSupport } =
       this.props;
     const {
       backgroundImage = {},
-      prompt = {},
-      teacherInstructions = {},
-      spellCheck = {},
       maxImageWidth = {},
       maxImageHeight = {},
+      prompt = {},
+      settingsPanelDisabled,
+      spellCheck = {},
+      teacherInstructions = {},
       withRubric = {},
     } = configuration || {};
-    const { teacherInstructionsEnabled, promptEnabled, spellCheckEnabled, backgroundImageEnabled } = model || {};
-    const toolbarOpts = {};
+    const {
+      backgroundImageEnabled,
+      promptEnabled,
+      spellCheckEnabled,
+      teacherInstructionsEnabled,
+      toolbarEditorPosition,
+    } = model || {};
 
     const defaultImageMaxWidth = maxImageWidth && maxImageWidth.prompt;
     const defaultImageMaxHeight = maxImageHeight && maxImageHeight.prompt;
 
-    switch (model.toolbarEditorPosition) {
-      case 'top':
-        toolbarOpts.position = 'top';
-        break;
-      default:
-        toolbarOpts.position = 'bottom';
-        break;
-    }
+    const toolbarOpts = {
+      position: toolbarEditorPosition === 'top' ? 'top' : 'bottom',
+    };
+
+    const panelSettings = {
+      backgroundImageEnabled: backgroundImage.settings && toggle(backgroundImage.label),
+      promptEnabled: prompt.settings && toggle(prompt.label),
+    };
+
+    const panelProperties = {
+      teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
+      spellCheckEnabled: spellCheck.settings && toggle(spellCheck.label),
+      rubricEnabled: !withRubric?.forceEnabled && withRubric?.settings && toggle(withRubric?.label),
+    };
 
     return (
       <div className={classes.base}>
         <layout.ConfigLayout
+          hideSettings={settingsPanelDisabled}
           settings={
             <Panel
               model={model}
@@ -85,15 +86,8 @@ export class Root extends React.Component {
               configuration={configuration}
               onChangeConfiguration={onConfigurationChanged}
               groups={{
-                Settings: {
-                  backgroundImageEnabled: backgroundImage.settings && toggle(backgroundImage.label),
-                  promptEnabled: prompt.settings && toggle(prompt.label),
-                },
-                Properties: {
-                  teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
-                  spellCheckEnabled: spellCheck.settings && toggle(spellCheck.label),
-                  rubricEnabled: !withRubric?.forceEnabled && withRubric?.settings && toggle(withRubric?.label),
-                },
+                Settings: panelSettings,
+                Properties: panelProperties,
               }}
             />
           }

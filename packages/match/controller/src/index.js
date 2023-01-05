@@ -133,8 +133,8 @@ const getOutComeScore = (question, env, answers = {}) => {
   return correctness === 'correct'
     ? 1
     : correctness === 'partial' && isPartialScoring
-    ? getPartialScore(question, answers)
-    : 0;
+      ? getPartialScore(question, answers)
+      : 0;
 };
 
 export const outcome = (question, session, env) => {
@@ -276,13 +276,51 @@ export const createCorrectResponseSession = (question, env) => {
   });
 };
 
-export const validate = (model = {}, config = {}) => {
-  const { rows, choiceMode } = model;
-  const rowsErrors = {};
+const dp = new DOMParser();
+const markupToText = (s) => {
+  const root = dp.parseFromString(s, 'text/html');
+  return root.body.textContent;
+};
 
-  (rows || []).forEach((row) => {
-    const { id, values = [] } = row;
+export const validate = (model = {}, config = {}) => {
+  const { rows, choiceMode, headers } = model;
+  const {
+    minQuestions,
+    maxQuestions,
+    maxLengthQuestionsHeading,
+    maxAnswers,
+    maxLengthAnswers,
+    maxLengthFirstColumnHeading
+  } = config;
+  const rowsErrors = {};
+  const columnsErrors = {};
+  const errors = {};
+
+  if (rows.length < minQuestions) {
+    errors.noOfRowsError = `There should be at least ${minQuestions} question rows.`;
+  } else if (rows.length > maxQuestions) {
+    errors.noOfRowsError = `No more than ${maxQuestions} question rows should be defined.`;
+  }
+
+  (rows || []).forEach((row, index) => {
+    const { id, values = [], title } = row;
     let hasCorrectResponse = false;
+
+    rowsErrors[id] = '';
+
+    if (maxLengthQuestionsHeading && markupToText(title).length > maxLengthQuestionsHeading) {
+      rowsErrors[id] += `Questions rows content length should not be more than ${maxLengthQuestionsHeading} characters. `;
+    } else if (title === '' || title === '<div></div>') {
+      rowsErrors[id] += 'Content should not be empty. ';
+    } else {
+      const identicalAnswer = rows.slice(index + 1).some((r) => {
+        return r.title === title;
+      });
+
+      if (identicalAnswer) {
+        rowsErrors[id] = 'Content should be unique. ';
+      }
+    }
 
     values.forEach((value) => {
       if (value) {
@@ -291,11 +329,34 @@ export const validate = (model = {}, config = {}) => {
     });
 
     if (!hasCorrectResponse) {
-      rowsErrors[id] = 'No correct response defined.';
+      rowsErrors[id] += 'No correct response defined.';
     }
   });
 
-  const errors = {};
+  if (maxAnswers && headers.length - 1 > maxAnswers) {
+    errors.columnsLengthError = `There should be maximum ${maxAnswers} answers.`;
+  }
+
+  if (maxLengthFirstColumnHeading && headers[0].length > maxLengthFirstColumnHeading) {
+    columnsErrors[0] = `The first column heading should have the maximum length of ${maxLengthFirstColumnHeading} characters.`;
+  }
+
+  (headers || []).slice(1).forEach((heading, index) => {
+    if (heading === '' || heading === '<div></div>') {
+      columnsErrors[index + 1] = 'Content should not be empty.';
+    } else if (maxLengthAnswers && heading.length > maxLengthAnswers) {
+      columnsErrors[index + 1] = `Content length should be maximum ${maxLengthAnswers} characters.`;
+    } else {
+      const identicalAnswer = headers.slice(index + 2).some((h) => {
+        return h === heading;
+      });
+
+      if (identicalAnswer) {
+        columnsErrors[index + 2] = 'Content should be unique.';
+      }
+    }
+  });
+
 
   if (!isEmpty(rowsErrors)) {
     errors.rowsErrors = rowsErrors;
@@ -303,6 +364,10 @@ export const validate = (model = {}, config = {}) => {
       choiceMode === 'radio'
         ? 'There should be a correct response defined for every row.'
         : 'There should be at least one correct response defined for every row.';
+  }
+
+  if (!isEmpty(columnsErrors)) {
+    errors.columnsErrors = columnsErrors;
   }
 
   return errors;

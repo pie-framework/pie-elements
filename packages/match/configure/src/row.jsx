@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
-import { Checkbox } from '@pie-lib/config-ui';
+import { AlertDialog, Checkbox } from '@pie-lib/config-ui';
 import DragHandle from '@material-ui/icons/DragHandle';
 import Radio from '@material-ui/core/Radio';
 import Button from '@material-ui/core/Button';
@@ -10,7 +10,6 @@ import Delete from '@material-ui/icons/Delete';
 import { DragSource, DropTarget } from 'react-dnd';
 import debug from 'debug';
 import EditableHtml, { DEFAULT_PLUGINS } from '@pie-lib/editable-html';
-import { InfoDialog } from './common';
 
 const log = debug('@pie-element:categorize:configure:choice');
 
@@ -46,7 +45,7 @@ export class Row extends React.Component {
   state = {
     dialog: {
       open: false,
-      message: '',
+      text: '',
     },
   };
 
@@ -58,37 +57,8 @@ export class Row extends React.Component {
     const { model, onChange } = this.props;
     const newModel = { ...model };
 
-    const rows = newModel.rows || [];
-    const currentRow = rows[rowIndex] && rows[rowIndex].title;
-
-    const sameValue = rows.filter((row) => {
-      const wasChanged = currentRow !== value && `<div>${currentRow}</div>` !== value;
-      const sameValueEntered = row.title === value || `<div>${row.title}</div>` === value;
-
-      return wasChanged && sameValueEntered;
-    });
-
-    const empty = value === '<div></div>';
-
-    if (sameValue.length || empty) {
-      this.setState({
-        dialog: {
-          open: true,
-          message: 'The question row headings must be non-blank and unique.',
-          onOk: () => {
-            this.setState({
-              dialog: {
-                open: false,
-              },
-            });
-          },
-        },
-      });
-    } else {
-      newModel.rows[rowIndex].title = value;
-
-      onChange(newModel);
-    }
+    newModel.rows[rowIndex].title = value;
+    onChange(newModel);
   };
 
   onRowValueChange = (rowIndex, rowValueIndex) => (event) => {
@@ -113,14 +83,7 @@ export class Row extends React.Component {
       this.setState({
         dialog: {
           open: true,
-          message: 'There has to be at least one question row.',
-          onOk: () => {
-            this.setState({
-              dialog: {
-                open: false,
-              },
-            });
-          },
+          text: 'There has to be at least one question row.',
         },
       });
     } else {
@@ -169,14 +132,11 @@ export class Row extends React.Component {
     );
 
     const content = (
-      <div
-        style={{
-          opacity: opacity,
-        }}
-      >
+      <div style={{ opacity: opacity, width: 'fit-content' }}>
         <span itemID={'handle'} className={classes.dragHandle} onMouseDown={this.onMouseDownOnHandle}>
-          <DragHandle color={'primary'} />
+          <DragHandle color={'primary'}/>
         </span>
+
         <div className={classes.rowContainer}>
           <div className={classNames(classes.rowItem, classes.questionText)}>
             <EditableHtml
@@ -195,32 +155,43 @@ export class Row extends React.Component {
               maxImageHeight={maxImageHeight}
               uploadSoundSupport={uploadSoundSupport}
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+              error={error && error !== 'No correct response defined.'}
             />
           </div>
+
           {row.values.map((rowValue, rowIdx) => (
             <div key={rowIdx} className={classes.rowItem}>
               {model.choiceMode === 'radio' ? (
-                <Radio onChange={this.onRowValueChange(idx, rowIdx)} checked={rowValue === true} />
+                <Radio onChange={this.onRowValueChange(idx, rowIdx)} checked={rowValue === true}/>
               ) : (
-                <Checkbox onChange={this.onRowValueChange(idx, rowIdx)} checked={rowValue === true} label={''} />
+                <Checkbox onChange={this.onRowValueChange(idx, rowIdx)} checked={rowValue === true} label={''}/>
               )}
             </div>
           ))}
+
           <div className={classes.deleteIcon}>
             <Button onClick={this.onDeleteRow(idx)}>
-              <Delete className={classes.deleteIcon} />
+              <Delete className={classes.deleteIcon}/>
             </Button>
           </div>
         </div>
+
         {error && <div className={classes.errorText}>{error}</div>}
-        <hr className={classes.separator} />
-        <InfoDialog title={dialog.message} open={dialog.open} onOk={dialog.onOk} />
+        <hr className={classes.separator}/>
+
+        <AlertDialog
+          open={dialog.open}
+          title="Warning"
+          text={dialog.text}
+          onConfirm={() => this.setState({ dialog: { open: false } })}
+        />
       </div>
     );
 
     return connectDragSource(connectDropTarget(content));
   }
 }
+
 const styles = (theme) => ({
   actions: {
     padding: 0,
@@ -252,9 +223,8 @@ const styles = (theme) => ({
     flex: 1,
     display: 'flex',
     justifyContent: 'center',
-    '&> div': {
-      width: '100%',
-    },
+    minWidth: '150px',
+    padding: theme.spacing.unit * 1.5,
   },
   deleteIcon: {
     flex: 0.5,
@@ -264,6 +234,13 @@ const styles = (theme) => ({
     flex: 2,
     display: 'flex',
     justifyContent: 'flex-start',
+    padding: 0,
+    maxWidth: 'unset',
+    textAlign: 'left',
+    minWidth: '350px',
+    '&> div': {
+      width: '100%',
+    }
   },
   separator: {
     marginTop: theme.spacing.unit * 2,
@@ -272,10 +249,9 @@ const styles = (theme) => ({
     width: '100%',
   },
   errorText: {
-    fontSize: '12px',
+    fontSize: theme.typography.fontSize - 2,
     color: 'red',
-    paddingTop: '10px',
-    textAlign: 'center',
+    paddingTop: theme.spacing.unit,
   },
 });
 
@@ -306,7 +282,9 @@ export const choiceTarget = {
   },
   drop(props, monitor) {
     const item = monitor.getItem();
+
     log('[drop] item: ', item, 'didDrop?', monitor.didDrop());
+
     props.onMoveRow(item.index, props.idx);
   },
 };

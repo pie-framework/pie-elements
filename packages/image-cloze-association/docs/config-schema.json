@@ -3,38 +3,6 @@
   "additionalProperties": false,
   "type": "object",
   "properties": {
-    "teacherInstructions": {
-      "title": "ConfigureProp",
-      "type": "object",
-      "properties": {
-        "settings": {
-          "description": "Indicates if the item has to be displayed in the Settings Panel",
-          "type": "boolean",
-          "title": "settings"
-        },
-        "label": {
-          "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
-          "type": "string",
-          "title": "label"
-        }
-      }
-    },
-    "spellCheck": {
-      "title": "ConfigureProp",
-      "type": "object",
-      "properties": {
-        "settings": {
-          "description": "Indicates if the item has to be displayed in the Settings Panel",
-          "type": "boolean",
-          "title": "settings"
-        },
-        "label": {
-          "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
-          "type": "string",
-          "title": "label"
-        }
-      }
-    },
     "maxImageWidth": {
       "title": "ConfigureMaxImageDimensionsProp",
       "type": "object",
@@ -77,6 +45,43 @@
         }
       }
     },
+    "settingsPanelDisabled": {
+      "description": "Indicates if the settings panel is not available",
+      "type": "boolean",
+      "title": "settingsPanelDisabled"
+    },
+    "spellCheck": {
+      "title": "ConfigureProp",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "Indicates if the item has to be displayed in the Settings Panel",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+          "type": "string",
+          "title": "label"
+        }
+      }
+    },
+    "teacherInstructions": {
+      "title": "ConfigureProp",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "Indicates if the item has to be displayed in the Settings Panel",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+          "type": "string",
+          "title": "label"
+        }
+      }
+    },
     "withRubric": {
       "title": "ConfigureProp",
       "type": "object",
@@ -113,22 +118,6 @@
     }
   },
   "definitions": {
-    "ConfigureProp": {
-      "title": "ConfigureProp",
-      "type": "object",
-      "properties": {
-        "settings": {
-          "description": "Indicates if the item has to be displayed in the Settings Panel",
-          "type": "boolean",
-          "title": "settings"
-        },
-        "label": {
-          "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
-          "type": "string",
-          "title": "label"
-        }
-      }
-    },
     "ConfigureMaxImageDimensionsProp": {
       "title": "ConfigureMaxImageDimensionsProp",
       "type": "object",
@@ -147,6 +136,22 @@
           "description": "Indicates the max dimension for images in rationale",
           "type": "number",
           "title": "rationale"
+        }
+      }
+    },
+    "ConfigureProp": {
+      "title": "ConfigureProp",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "Indicates if the item has to be displayed in the Settings Panel",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+          "type": "string",
+          "title": "label"
         }
       }
     }

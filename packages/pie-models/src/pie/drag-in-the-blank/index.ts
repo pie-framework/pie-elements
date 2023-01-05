@@ -121,6 +121,11 @@ export interface DragInTheBlankConfigure extends PromptConfig, CommonConfigSetti
   prompt?: ConfigureProp;
 
   /**
+   * Indicates if the settings panel is not available
+   */
+  settingsPanelDisabled?: boolean;
+
+  /**
    * Configuration for the author's spellcheck
    */
   spellCheck?: ConfigureProp;

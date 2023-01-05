@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import EditableHtml, { ALL_PLUGINS } from '@pie-lib/editable-html';
-import { InputContainer, layout, settings } from '@pie-lib/config-ui';
+import { AlertDialog, InputContainer, layout, settings } from '@pie-lib/config-ui';
 import { renderMath } from '@pie-lib/math-rendering';
 import cloneDeep from 'lodash/cloneDeep';
 import isEqual from 'lodash/isEqual';
@@ -11,10 +11,6 @@ import isEmpty from 'lodash/isEmpty';
 import reduce from 'lodash/reduce';
 import max from 'lodash/max';
 import { withStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
-import Dialog from '@material-ui/core/Dialog';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import DialogActions from '@material-ui/core/DialogActions';
 import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
@@ -26,31 +22,6 @@ import InlineDropdownToolbar from './inline-dropdown-toolbar';
 import { generateValidationMessage } from './utils';
 
 const { toggle, Panel } = settings;
-
-const InfoDialog = ({ open, onCancel, onOk, title }) => (
-  <Dialog open={open}>
-    <DialogTitle>{title}</DialogTitle>
-    <DialogActions>
-      {onOk && (
-        <Button onClick={onOk} color="primary">
-          OK
-        </Button>
-      )}
-      {onCancel && (
-        <Button onClick={onCancel} color="primary">
-          Cancel
-        </Button>
-      )}
-    </DialogActions>
-  </Dialog>
-);
-
-InfoDialog.propTypes = {
-  open: PropTypes.bool,
-  onCancel: PropTypes.func,
-  onOk: PropTypes.func,
-  title: PropTypes.string,
-};
 
 const styles = (theme) => ({
   promptHolder: {
@@ -86,17 +57,17 @@ const styles = (theme) => ({
   },
   text: {
     fontFamily: 'Cerebri Sans',
-    fontSize: '16px',
+    fontSize: theme.typography.fontSize + 2,
     lineHeight: '19px',
     color: '#495B8F',
-    marginRight: '5px',
+    marginRight: theme.spacing.unit,
   },
   rationaleLabel: {
     display: 'flex',
     whiteSpace: 'break-spaces',
   },
   rationaleChoices: {
-    marginTop: '16px',
+    marginTop: theme.spacing.unit * 2,
   },
   panelDetails: {
     display: 'block',
@@ -104,18 +75,17 @@ const styles = (theme) => ({
   flexContainer: {
     display: 'flex',
     alignItems: 'center',
-    marginBottom: '5px',
+    marginBottom: theme.spacing.unit,
   },
   tooltip: {
-    fontSize: '12px',
+    fontSize: theme.typography.fontSize - 2,
     whiteSpace: 'pre',
     maxWidth: '500px',
   },
   errorText: {
-    fontSize: '12px',
+    fontSize: theme.typography.fontSize - 2,
     color: 'red',
-    paddingTop: '5px',
-    marginTop: '8px',
+    paddingTop: theme.spacing.unit,
   },
 });
 
@@ -156,9 +126,7 @@ export class Main extends React.Component {
   };
 
   state = {
-    dialog: {
-      open: false,
-    },
+    warning: { open: false },
   };
 
   componentDidMount() {
@@ -192,10 +160,7 @@ export class Main extends React.Component {
   }
 
   onModelChange = (newVal) => {
-    this.props.onModelChanged({
-      ...this.props.model,
-      ...newVal,
-    });
+    this.props.onModelChanged({ ...this.props.model, ...newVal });
   };
 
   onPromptChanged = (prompt) => {
@@ -228,25 +193,15 @@ export class Main extends React.Component {
 
   onCheck = (callback) => {
     this.setState({
-      dialog: {
+      warning: {
         open: true,
-        message: 'Response areas with under 2 options or with no correct answers will be discarded',
-        onOk: () => {
-          this.setState(
-            {
-              dialog: {
-                open: false,
-              },
-            },
-            callback,
-          );
+        text: 'Response areas with under 2 options or with no correct answers will be discarded.',
+        onClose: () => {
+          this.setState({ warning: { open: false } });
         },
-        onCancel: () =>
-          this.setState({
-            dialog: {
-              open: false,
-            },
-          }),
+        onConfirm: () => {
+          this.setState({ warning: { open: false } }, callback);
+        },
       },
     });
   };
@@ -255,7 +210,6 @@ export class Main extends React.Component {
     const { respAreaChoices } = this.state;
     const domMarkup = createElementFromHTML(markup);
     const allRespAreas = domMarkup.querySelectorAll('[data-type="inline_dropdown"]');
-
     const allChoices = {};
 
     allRespAreas.forEach((el) => {
@@ -291,29 +245,20 @@ export class Main extends React.Component {
 
     if (shouldWarn) {
       this.setState({
-        dialog: {
+        warning: {
           open: true,
-          message: 'Response areas with under 2 options or with no correct answers will be discarded',
-          onOk: () => {
-            this.setState(
-              {
-                dialog: {
-                  open: false,
-                },
-              },
-              () =>
-                this.onModelChange({
-                  choices: cloneDeep(newRespAreaChoices),
-                  slateMarkup: domMarkup.innerHTML,
-                }),
+          text: 'Response areas with under 2 options or with no correct answers will be discarded.',
+          onClose: () => {
+            this.setState({ warning: { open: false } });
+          },
+          onConfirm: () => {
+            this.setState({ warning: { open: false } }, () =>
+              this.onModelChange({
+                choices: cloneDeep(newRespAreaChoices),
+                slateMarkup: domMarkup.innerHTML,
+              }),
             );
           },
-          onCancel: () =>
-            this.setState({
-              dialog: {
-                open: false,
-              },
-            }),
         },
       });
     } else {
@@ -330,15 +275,12 @@ export class Main extends React.Component {
 
     if (respAreaChoices[index] && respAreaChoices[index].length >= maxResponseAreaChoices) {
       this.setState({
-        dialog: {
+        warning: {
           open: true,
-          message: `There are only ${maxResponseAreaChoices} answers allowed per choice.`,
-          onOk: () => {
-            this.setState({
-              dialog: {
-                open: false,
-              },
-            });
+          text: `There are only ${maxResponseAreaChoices} answers allowed per choice.`,
+          onClose: undefined,
+          onConfirm: () => {
+            this.setState({ warning: { open: false } });
           },
         },
       });
@@ -352,15 +294,12 @@ export class Main extends React.Component {
 
     if ((respAreaChoices[index] || []).find((r) => prepareVal(r.label) === prepareVal(label))) {
       this.setState({
-        dialog: {
+        warning: {
           open: true,
-          message: 'Duplicate answers are not allowed.',
-          onOk: () => {
-            this.setState({
-              dialog: {
-                open: false,
-              },
-            });
+          text: 'Duplicate answers are not allowed.',
+          onClose: undefined,
+          onConfirm: () => {
+            this.setState({ warning: { open: false } });
           },
         },
       });
@@ -393,8 +332,8 @@ export class Main extends React.Component {
   onSelectChoice = (respIndex, selectedIndex) => {
     const { respAreaChoices } = this.state;
 
-    respAreaChoices[respIndex] = respAreaChoices[respIndex].map((ch, index) => ({
-      ...ch,
+    respAreaChoices[respIndex] = respAreaChoices[respIndex].map((choice, index) => ({
+      ...choice,
       correct: index === selectedIndex,
     }));
 
@@ -402,30 +341,31 @@ export class Main extends React.Component {
   };
 
   render() {
-    const { dialog } = this.state;
+    const { warning } = this.state;
     const { classes, model, configuration, onConfigurationChanged, imageSupport, uploadSoundSupport } = this.props;
     const {
-      prompt = {},
-      partialScoring = {},
-      lockChoiceOrder = {},
-      rationale = {},
       choiceRationale = {},
-      teacherInstructions = {},
-      spellCheck = {},
+      lockChoiceOrder = {},
       maxResponseAreas,
       maxImageWidth = {},
       maxImageHeight = {},
+      partialScoring = {},
+      prompt = {},
+      rationale = {},
+      settingsPanelDisabled,
+      spellCheck = {},
+      teacherInstructions = {},
       withRubric = {},
     } = configuration || {};
     const {
-      rationaleEnabled,
       choiceRationaleEnabled,
-      promptEnabled,
-      teacherInstructionsEnabled,
       choices,
-      spellCheckEnabled,
       errors,
-      rubricEnabled,
+      promptEnabled,
+      rationaleEnabled,
+      spellCheckEnabled,
+      teacherInstructionsEnabled,
+      toolbarEditorPosition,
     } = model || {};
     const { responseAreasError, responseAreaChoicesError } = errors || {};
 
@@ -439,6 +379,7 @@ export class Main extends React.Component {
             <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
               <Typography className={classes.text}>{`Rationale for response area #${index + 1}`}</Typography>
             </ExpansionPanelSummary>
+
             <ExpansionPanelDetails className={classes.panelDetails}>
               {(choices[key] || []).map((choice) => (
                 <InputContainer
@@ -457,12 +398,7 @@ export class Main extends React.Component {
                     className={classes.prompt}
                     markup={choice.rationale || ''}
                     spellCheck={spellCheckEnabled}
-                    onChange={(c) =>
-                      this.onChoiceRationaleChanged(key, {
-                        ...choice,
-                        rationale: c,
-                      })
-                    }
+                    onChange={(c) => this.onChoiceRationaleChanged(key, { ...choice, rationale: c })}
                     imageSupport={imageSupport}
                     maxImageWidth={(maxImageWidth && maxImageWidth.rationale) || defaultImageMaxWidth}
                     maxImageHeight={(maxImageHeight && maxImageHeight.rationale) || defaultImageMaxHeight}
@@ -475,22 +411,29 @@ export class Main extends React.Component {
         </div>
       ));
 
-    const toolbarOpts = {};
-
-    switch (model.toolbarEditorPosition) {
-      case 'top':
-        toolbarOpts.position = 'top';
-        break;
-      default:
-        toolbarOpts.position = 'bottom';
-        break;
-    }
+    const toolbarOpts = {
+      position: toolbarEditorPosition === 'top' ? 'top' : 'bottom',
+    };
 
     const validationMessage = generateValidationMessage(configuration);
+
+    const panelSettings = {
+      partialScoring: partialScoring.settings && toggle(partialScoring.label),
+      lockChoiceOrder: lockChoiceOrder.settings && toggle(lockChoiceOrder.label),
+    };
+    const panelProperties = {
+      teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
+      rationaleEnabled: rationale.settings && toggle(rationale.label),
+      choiceRationaleEnabled: choiceRationale.settings && toggle(choiceRationale.label),
+      promptEnabled: prompt.settings && toggle(prompt.label),
+      spellCheckEnabled: spellCheck.settings && toggle(spellCheck.label),
+      rubricEnabled: withRubric?.settings && toggle(withRubric?.label),
+    };
 
     return (
       <div className={classes.design}>
         <layout.ConfigLayout
+          hideSettings={settingsPanelDisabled}
           settings={
             <Panel
               model={model}
@@ -498,18 +441,8 @@ export class Main extends React.Component {
               onChangeModel={(model) => this.onModelChange(model)}
               onChangeConfiguration={(configuration) => onConfigurationChanged(configuration, true)}
               groups={{
-                Settings: {
-                  partialScoring: partialScoring.settings && toggle(partialScoring.label),
-                  lockChoiceOrder: lockChoiceOrder.settings && toggle(lockChoiceOrder.label),
-                },
-                Properties: {
-                  teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
-                  rationaleEnabled: rationale.settings && toggle(rationale.label),
-                  choiceRationaleEnabled: choiceRationale.settings && toggle(choiceRationale.label),
-                  promptEnabled: prompt.settings && toggle(prompt.label),
-                  spellCheckEnabled: spellCheck.settings && toggle(spellCheck.label),
-                  rubricEnabled: withRubric?.settings && toggle(withRubric?.label),
-                },
+                Settings: panelSettings,
+                Properties: panelProperties,
               }}
             />
           }
@@ -581,10 +514,7 @@ export class Main extends React.Component {
                 <Info fontSize={'small'} color={'primary'} />
               </Tooltip>
             </div>
-            {responseAreasError && <div className={classes.errorText}>{responseAreasError}</div>}
-            {responseAreaChoicesError && <div className={classes.errorText}>{responseAreaChoicesError}</div>}
 
-            <InfoDialog open={dialog.open} title={dialog.message} onCancel={dialog.onCancel} onOk={dialog.onOk} />
             <EditableHtml
               activePlugins={ALL_PLUGINS}
               toolbarOpts={{ position: 'top' }}
@@ -626,8 +556,19 @@ export class Main extends React.Component {
               uploadSoundSupport={uploadSoundSupport}
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
             />
+            {responseAreasError && <div className={classes.errorText}>{responseAreasError}</div>}
+            {responseAreaChoicesError && <div className={classes.errorText}>{responseAreaChoicesError}</div>}
+
             <br />
             {choiceRationaleEnabled && renderChoiceRationale()}
+
+            <AlertDialog
+              open={warning.open}
+              title="Warning"
+              text={warning.text}
+              onClose={warning.onClose}
+              onConfirm={warning.onConfirm}
+            />
           </div>
         </layout.ConfigLayout>
       </div>

@@ -11,6 +11,12 @@ describe('Categories', () => {
       {
         id: '0',
         content: 'Choice 0',
+        categoryCount: 0,
+      },
+      {
+        id: '1',
+        content: 'Choice 0',
+        categoryCount: 0,
       },
     ],
     choicesPosition: 'below',
@@ -23,6 +29,7 @@ describe('Categories', () => {
         label: 'Category 0',
         choices: [],
       },
+
     ],
     rowLabels: [''],
     correctResponse: [],
