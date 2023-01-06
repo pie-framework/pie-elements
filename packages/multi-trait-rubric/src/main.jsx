@@ -26,7 +26,7 @@ class Main extends React.Component {
     const { halfScoring, scales, visible, pointLabels, description, standards } = model || {};
 
     if (!scales || !visible) {
-      return <div/>;
+      return null;
     }
 
     const rubricItem = (
