@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-configure@6.3.3...@pie-element/placement-ordering-configure@6.4.0) (2023-01-05)
+
+
+### Features
+
+* update pie-libs ([b174476](https://github.com/pie-framework/pie-elements/commit/b174476729119a0689f1f8adfc8c235246676cab))
+* update pie-libs ([f72c3c8](https://github.com/pie-framework/pie-elements/commit/f72c3c8d8bc9bbf061bb81502317157a63c22972))
+* update pie-libs ([8490729](https://github.com/pie-framework/pie-elements/commit/8490729a2389d36fd3968f0806119fde96577842))
+* **placement-ordering:** added configuration prop to hide the settings pannel PD-1999 + refactoring ([e293169](https://github.com/pie-framework/pie-elements/commit/e29316962aa5461ee864bd35e4e265a81ced6e35))
+
+
+
+
+
 ## [6.3.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-configure@6.3.2...@pie-element/placement-ordering-configure@6.3.3) (2022-12-21)
 
 

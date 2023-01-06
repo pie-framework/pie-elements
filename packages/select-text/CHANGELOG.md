@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@7.4.1...@pie-element/select-text@7.5.0) (2023-01-05)
+
+
+### Features
+
+* update pie-libs ([b174476](https://github.com/pie-framework/pie-elements/commit/b174476729119a0689f1f8adfc8c235246676cab))
+* update pie-libs ([f72c3c8](https://github.com/pie-framework/pie-elements/commit/f72c3c8d8bc9bbf061bb81502317157a63c22972))
+* update pie-libs ([8490729](https://github.com/pie-framework/pie-elements/commit/8490729a2389d36fd3968f0806119fde96577842))
+* **select-text:** added configuration prop to hide the settings panel PD-1999 + refactoring ([11dfb8e](https://github.com/pie-framework/pie-elements/commit/11dfb8e485b6614122ed92ec2b3ab1da031a222f))
+
+
+
+
+
 ## [7.4.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@7.4.0...@pie-element/select-text@7.4.1) (2022-12-21)
 
 

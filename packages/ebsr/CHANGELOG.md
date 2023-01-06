@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.4.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@8.4.0...@pie-element/ebsr@8.4.2) (2023-01-05)
+
+
+### Bug Fixes
+
+* force release ebsr ([3e739fd](https://github.com/pie-framework/pie-elements/commit/3e739fd913531365c0d09fe1337f93f209a9c8dc))
+
+
+
+
+
+# [8.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@8.3.1...@pie-element/ebsr@8.4.0) (2023-01-05)
+
+
+### Features
+
+* update pie-libs ([b174476](https://github.com/pie-framework/pie-elements/commit/b174476729119a0689f1f8adfc8c235246676cab))
+* update pie-libs ([f72c3c8](https://github.com/pie-framework/pie-elements/commit/f72c3c8d8bc9bbf061bb81502317157a63c22972))
+* update pie-libs ([8490729](https://github.com/pie-framework/pie-elements/commit/8490729a2389d36fd3968f0806119fde96577842))
+* **ebsr:** added configuration prop to hide the settings panel PD-1999 ([30fd6c7](https://github.com/pie-framework/pie-elements/commit/30fd6c7bd6bbca6badd2d0ddc99b78a10fab7155))
+
+
+
+
+
 ## [8.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@8.3.0...@pie-element/ebsr@8.3.1) (2022-12-21)
 
 

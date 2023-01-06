@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-controller@4.0.2...@pie-element/drag-in-the-blank-controller@4.0.3) (2023-01-05)
+
+
+### Bug Fixes
+
+* **drag-in-the-blank:** add validation for empty response areas + UI improvements PD-2160 ([1c24e8f](https://github.com/pie-framework/pie-elements/commit/1c24e8f3f5890f6c325035c9b20d20b4dbc7f5a6))
+
+
+
+
+
 ## [4.0.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-controller@4.0.1...@pie-element/drag-in-the-blank-controller@4.0.2) (2022-12-07)
 
 

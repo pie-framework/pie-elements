@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-controller@4.5.1...@pie-element/match-controller@4.6.0) (2023-01-05)
+
+
+### Features
+
+* **match:** add validation PD-2417 ([157c19b](https://github.com/pie-framework/pie-elements/commit/157c19b4ceee5decfd47c50e23a7004d27136ca0))
+* **match:** added some configurable validation PD-2417. Started to update validation method ([dc459a1](https://github.com/pie-framework/pie-elements/commit/dc459a140a54772e6d9ec5dfaa1c620215cdf4c2))
+* **match:** clean up ([40809d9](https://github.com/pie-framework/pie-elements/commit/40809d9a29baeba7f50f4f5510a0e18537224930))
+
+
+
+
+
 ## [4.5.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-controller@4.5.0...@pie-element/match-controller@4.5.1) (2022-12-07)
 
 

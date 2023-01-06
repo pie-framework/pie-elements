@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-controller@5.5.1...@pie-element/categorize-controller@5.6.0) (2023-01-05)
+
+
+### Features
+
+* update pie-libs ([8490729](https://github.com/pie-framework/pie-elements/commit/8490729a2389d36fd3968f0806119fde96577842))
+
+
+
+
+
 ## [5.5.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-controller@5.5.0...@pie-element/categorize-controller@5.5.1) (2022-12-20)
 
 
