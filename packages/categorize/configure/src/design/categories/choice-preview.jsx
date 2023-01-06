@@ -4,7 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
 import { Choice } from '@pie-lib/drag';
 import IconButton from '@material-ui/core/IconButton';
-import Delete from '@material-ui/icons/Delete';
+import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
 import { HtmlAndMath } from '@pie-lib/render-ui';
 
 export class ChoicePreview extends React.Component {
@@ -29,7 +29,7 @@ export class ChoicePreview extends React.Component {
           <Choice alternateResponseIndex={alternateResponseIndex} category={category} choice={choice} choiceIndex={choiceIndex} onRemoveChoice={() => this.delete()}>
             <HtmlAndMath html={choice?.content} />
             <IconButton color="secondary" aria-label="delete" className={classes.delete} onClick={this.delete}>
-              <Delete />
+              <RemoveCircleOutlineIcon />
             </IconButton>
           </Choice>
         ) : null}
