@@ -2,17 +2,34 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Scale from './scale';
+import Link from '@material-ui/core/Link';
+import Collapse from '@material-ui/core/Collapse';
 
 class Main extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      rubricOpen: false,
+      linkPrefix: 'Show',
+    };
+    this.toggleRubric = this.toggleRubric.bind(this);
+  }
+
+  toggleRubric() {
+    this.setState({ rubricOpen: !this.state.rubricOpen });
+    this.setState({ linkPrefix: this.state.rubricOpen ? 'Show' : 'Hide' });
+  }
+
   render() {
-    const { model } = this.props;
+    const { model, animationsDisabled } = this.props;
     const { halfScoring, scales, visible, pointLabels, description, standards } = model || {};
 
     if (!scales || !visible) {
-      return <div />;
+      return <div/>;
     }
 
-    return (
+    const rubricItem = (
       <div style={{ fontFamily: 'Cerebri Sans' }}>
         {halfScoring ? <p>* Half-point or in-between scores are permitted under this rubric.</p> : null}
         {scales.map((scale, scaleIndex) => (
@@ -25,6 +42,23 @@ class Main extends React.Component {
             showStandards={standards}
           />
         ))}
+      </div>
+    );
+
+    return (
+      <div>
+        {!animationsDisabled ? (
+          <React.Fragment>
+            <Link href={this.dudUrl} onClick={this.toggleRubric}>
+              {this.state.linkPrefix} Rubric
+            </Link>
+            <Collapse in={this.state.rubricOpen} timeout="auto">
+              {rubricItem}
+            </Collapse>
+          </React.Fragment>
+        ) : (
+          rubricItem
+        )}
       </div>
     );
   }
@@ -54,6 +88,7 @@ Main.propTypes = {
     description: PropTypes.bool,
     standards: PropTypes.bool,
   }),
+  animationsDisabled: PropTypes.bool,
 };
 
 export default Main;
