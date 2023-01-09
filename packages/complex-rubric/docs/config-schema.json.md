@@ -30,18 +30,6 @@ Dialog box title
 
 Dialog box text
 
-## `deleteTraitDialogBoxContent` (object)
-
-Properties of the `deleteTraitDialogBoxContent` object:
-
-### `title` (string)
-
-Dialog box title
-
-### `text` (string)
-
-Dialog box text
-
 ## `deleteScaleDialogBoxContent` (object)
 
 Properties of the `deleteScaleDialogBoxContent` object:
@@ -173,18 +161,6 @@ Dialog box text
 ### `includeZeroDialogBoxContent` (object)
 
 Properties of the `includeZeroDialogBoxContent` object:
-
-#### `title` (string)
-
-Dialog box title
-
-#### `text` (string)
-
-Dialog box text
-
-### `deleteTraitDialogBoxContent` (object)
-
-Properties of the `deleteTraitDialogBoxContent` object:
 
 #### `title` (string)
 

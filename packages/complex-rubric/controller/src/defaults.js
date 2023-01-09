@@ -53,10 +53,6 @@ const multiTraitDefaultConfiguration = {
         </ul>
       </div>`,
   },
-  deleteTraitDialogBoxContent: {
-    title: 'Delete Trait',
-    text: 'Are you sure you want to delete this trait?',
-  },
   deleteScaleDialogBoxContent: {
     title: 'Delete Scale',
     text: 'Are you sure you want to delete this scale?',

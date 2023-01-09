@@ -313,6 +313,7 @@
       "description": "Indicates the maximum length of first column headings",
       "type": "number",
       "title": "maxLengthFirstColumnHeading"
+    },
     "width": {
       "description": "How large (in px) should match be",
       "type": "string",

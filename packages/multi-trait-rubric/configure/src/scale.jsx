@@ -137,13 +137,13 @@ export class Scale extends React.Component {
   onTraitRemoved = () => {
     const { traitToDeleteIndex } = this.state;
     const { scale, scaleIndex, onScaleChanged, minNoOfTraits } = this.props || {};
-    let { traits } = scale || {};
+    let { traits, traitLabel } = scale || {};
 
     if (traitToDeleteIndex < 0 || traitToDeleteIndex >= traits.length) return;
 
     if (traits.length === minNoOfTraits) {
       this.set({
-        infoDialogText: `There can't be less than ${minNoOfTraits} scales.`,
+        infoDialogText: `There can't be less than ${minNoOfTraits} ${(traitLabel || 'trait').toLowerCase()}s.`,
         showInfoDialog: true,
       });
 
@@ -360,6 +360,7 @@ export class Scale extends React.Component {
           open={!!showDeleteTraitDialog}
           deleteTrait={this.onTraitRemoved}
           cancel={this.hideDeleteTraitModal}
+          traitLabel={traitLabel.toLowerCase()}
         />
         <InfoDialog open={showInfoDialog} text={infoDialogText} onClose={() => this.set({ showInfoDialog: false })} />
       </div>
