@@ -6,6 +6,7 @@ import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import { withStyles } from '@material-ui/core/styles';
 import { FormControlLabel } from '@material-ui/core';
+import { MATRIX_LABEL_TYPE } from '@pie-element/matrix-configure/src/matrixEntities';
 
 const styles = {
   rubric: {
@@ -84,21 +85,18 @@ export class Main extends React.Component {
             <RadioGroup
               aria-label="rubric-type"
               name="rubricType"
-              value={rubricType}
-              defaultValue={RUBRIC_TYPES.SIMPLE_RUBRIC}
+              value={model.rubricType}
               onChange={this.onChangeRubricType}
             >
               <FormControlLabel
                 value={RUBRIC_TYPES.SIMPLE_RUBRIC}
-                control={<Radio />}
-                checked={rubricType === RUBRIC_TYPES.SIMPLE_RUBRIC}
+                control={<Radio checked={rubricType === RUBRIC_TYPES.SIMPLE_RUBRIC} />}
                 label="Simple Rubric"
               />
 
               <FormControlLabel
                 value={RUBRIC_TYPES.MULTI_TRAIT_RUBRIC}
-                control={<Radio />}
-                checked={rubricType === RUBRIC_TYPES.MULTI_TRAIT_RUBRIC}
+                control={<Radio checked={rubricType === RUBRIC_TYPES.MULTI_TRAIT_RUBRIC} />}
                 label="Multi Trait Rubric"
               />
             </RadioGroup>
