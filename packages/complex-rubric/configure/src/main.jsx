@@ -6,7 +6,6 @@ import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import { withStyles } from '@material-ui/core/styles';
 import { FormControlLabel } from '@material-ui/core';
-import { MATRIX_LABEL_TYPE } from '@pie-element/matrix-configure/src/matrixEntities';
 
 const styles = {
   rubric: {
