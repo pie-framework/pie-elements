@@ -276,10 +276,8 @@ export const createCorrectResponseSession = (question, env) => {
   });
 };
 
-const dp = new DOMParser();
 const markupToText = (s) => {
-  const root = dp.parseFromString(s, 'text/html');
-  return root.body.textContent;
+  return s.replace(/(<([^>]+)>)/ig, '');
 };
 
 export const validate = (model = {}, config = {}) => {
