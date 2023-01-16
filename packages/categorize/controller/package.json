@@ -2,7 +2,7 @@
   "name": "@pie-element/categorize-controller",
   "private": true,
   "dependencies": {
-    "@pie-lib/categorize": "^0.7.0",
+    "@pie-lib/categorize": "^0.8.0",
     "@pie-lib/controller-utils": "^0.2.27",
     "@pie-lib/feedback": "^0.4.28",
     "lodash": "^4.17.15"
