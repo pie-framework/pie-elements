@@ -9,7 +9,7 @@
   "dependencies": {
     "@material-ui/core": "^3.9.2",
     "@pie-lib/correct-answer-toggle": "^2.3.47",
-    "@pie-lib/drag": "^2.0.6",
+    "@pie-lib/drag": "^2.1.0",
     "@pie-lib/math-rendering": "^2.5.1",
     "@pie-lib/render-ui": "^4.13.7",
     "debug": "^4.1.1",
