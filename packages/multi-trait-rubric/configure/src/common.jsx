@@ -179,7 +179,7 @@ export const ScorePoint = withStyles({
   },
 );
 
-const maxScoreOptions = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const maxScoreOptions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 const inputStyles = {
   root: {
     background: 'white',
