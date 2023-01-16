@@ -21,18 +21,14 @@ exports[`ChartingConfig renders snapshot 1`] = `
         chartType="lineCross"
         data={Array []}
         defineChart={true}
-        domain={
-          Object {
-            "label": "Fruits",
-          }
-        }
+        domain={Object {}}
         onChangeLabels={[Function]}
         onChangeTitle={[Function]}
         onDataChange={[Function]}
         range={
           Object {
-            "label": "Amount",
-            "max": 5.5,
+            "label": "",
+            "max": 1,
             "min": 0,
           }
         }
@@ -42,7 +38,7 @@ exports[`ChartingConfig renders snapshot 1`] = `
             "width": 480,
           }
         }
-        title="This is a chart!"
+        title=""
       />
       <div>
         <WithStyles(Checkbox)
@@ -157,26 +153,24 @@ exports[`Configure renders snapshot 1`] = `
           "chartType": "lineCross",
           "correctAnswer": Object {},
           "data": Array [],
-          "domain": Object {
-            "label": "Fruits",
-          },
+          "domain": Object {},
           "graph": Object {
             "height": 480,
             "width": 480,
           },
-          "prompt": "Here goes item stem!",
+          "prompt": "",
           "promptEnabled": true,
           "range": Object {
-            "label": "Amount",
-            "max": 5.5,
+            "label": "",
+            "max": 1,
             "min": 0,
           },
-          "rationale": "Rationale goes here!",
+          "rationale": "",
           "rationaleEnabled": true,
           "scoringType": "all or nothing",
           "studentInstructionsEnabled": true,
           "teacherInstructionsEnabled": true,
-          "title": "This is a chart!",
+          "title": "",
         }
       }
     />
@@ -227,7 +221,7 @@ exports[`Configure renders snapshot 1`] = `
             },
           ]
         }
-        markup="Here goes item stem!"
+        markup=""
         maxImageHeight={300}
         maxImageWidth={300}
         nonEmpty={false}
@@ -248,7 +242,7 @@ exports[`Configure renders snapshot 1`] = `
             },
           ]
         }
-        markup="Rationale goes here!"
+        markup=""
         maxImageHeight={300}
         maxImageWidth={300}
         onChange={[Function]}
@@ -303,10 +297,9 @@ exports[`Configure renders snapshot 1`] = `
       gridValues={
         Object {
           "range": Array [
+            0.05,
+            0.1,
             0.2,
-            0.25,
-            0.5,
-            1,
           ],
         }
       }
@@ -329,26 +322,24 @@ exports[`Configure renders snapshot 1`] = `
           "chartType": "lineCross",
           "correctAnswer": Object {},
           "data": Array [],
-          "domain": Object {
-            "label": "Fruits",
-          },
+          "domain": Object {},
           "graph": Object {
             "height": 480,
             "width": 480,
           },
-          "prompt": "Here goes item stem!",
+          "prompt": "",
           "promptEnabled": true,
           "range": Object {
-            "label": "Amount",
-            "max": 5.5,
+            "label": "",
+            "max": 1,
             "min": 0,
           },
-          "rationale": "Rationale goes here!",
+          "rationale": "",
           "rationaleEnabled": true,
           "scoringType": "all or nothing",
           "studentInstructionsEnabled": true,
           "teacherInstructionsEnabled": true,
-          "title": "This is a chart!",
+          "title": "",
         }
       }
       onChange={[Function]}
@@ -397,26 +388,24 @@ exports[`Configure renders snapshot 1`] = `
           "chartType": "lineCross",
           "correctAnswer": Object {},
           "data": Array [],
-          "domain": Object {
-            "label": "Fruits",
-          },
+          "domain": Object {},
           "graph": Object {
             "height": 480,
             "width": 480,
           },
-          "prompt": "Here goes item stem!",
+          "prompt": "",
           "promptEnabled": true,
           "range": Object {
-            "label": "Amount",
-            "max": 5.5,
+            "label": "",
+            "max": 1,
             "min": 0,
           },
-          "rationale": "Rationale goes here!",
+          "rationale": "",
           "rationaleEnabled": true,
           "scoringType": "all or nothing",
           "studentInstructionsEnabled": true,
           "teacherInstructionsEnabled": true,
-          "title": "This is a chart!",
+          "title": "",
         }
       }
       showPixelGuides={true}
@@ -469,26 +458,24 @@ exports[`Configure renders snapshot 1`] = `
           "chartType": "lineCross",
           "correctAnswer": Object {},
           "data": Array [],
-          "domain": Object {
-            "label": "Fruits",
-          },
+          "domain": Object {},
           "graph": Object {
             "height": 480,
             "width": 480,
           },
-          "prompt": "Here goes item stem!",
+          "prompt": "",
           "promptEnabled": true,
           "range": Object {
-            "label": "Amount",
-            "max": 5.5,
+            "label": "",
+            "max": 1,
             "min": 0,
           },
-          "rationale": "Rationale goes here!",
+          "rationale": "",
           "rationaleEnabled": true,
           "scoringType": "all or nothing",
           "studentInstructionsEnabled": true,
           "teacherInstructionsEnabled": true,
-          "title": "This is a chart!",
+          "title": "",
         }
       }
     />
@@ -520,16 +507,12 @@ exports[`CorrectResponse renders snapshot 1`] = `
           categoryDefaultLabel="Category"
           chartType="lineCross"
           data={Array []}
-          domain={
-            Object {
-              "label": "Fruits",
-            }
-          }
+          domain={Object {}}
           onDataChange={[Function]}
           range={
             Object {
-              "label": "Amount",
-              "max": 5.5,
+              "label": "",
+              "max": 1,
               "min": 0,
             }
           }
@@ -539,7 +522,7 @@ exports[`CorrectResponse renders snapshot 1`] = `
               "width": 480,
             }
           }
-          title="This is a chart!"
+          title=""
         />
       </div>
     </div>

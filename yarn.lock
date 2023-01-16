@@ -2254,10 +2254,10 @@
     debug "^4.1.1"
     lodash "^4.17.11"
 
-"@pie-lib/charting@^5.6.0":
-  version "5.6.0"
-  resolved "https://registry.yarnpkg.com/@pie-lib/charting/-/charting-5.6.0.tgz#4de51f7927ce50c8086e1993d1fa87e7d916a05f"
-  integrity sha512-5dCCooycSxUGEGiQPFPufpTLtTd77vT/yJ4Eso1omM8/+YKeQG7QJslLJK5fNUletSrJ+GrxSpr6SUzUcgTppA==
+"@pie-lib/charting@^5.6.1":
+  version "5.6.1"
+  resolved "https://registry.yarnpkg.com/@pie-lib/charting/-/charting-5.6.1.tgz#79450f241a5af84cd08c1714403edf28cf76d282"
+  integrity sha512-hRuU1WkDTAViRH5I+Xv7+xRQ4aRExT+QbuWTi7r1NQn3UDDc4RWOLZ4mpNxeYqEt3N9hfOAqlGbzBxzu7Na+rA==
   dependencies:
     "@mapbox/point-geometry" "^0.1.0"
     "@material-ui/core" "^3.8.3"
