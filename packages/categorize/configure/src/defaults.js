@@ -7,6 +7,7 @@ export default {
     choicesLabel: '',
     lockChoiceOrder: true,
     allowMultiplePlacementsEnabled: multiplePlacements.enabled,
+    allowAlternateEnabled: false,
     categoriesPerRow: 2,
     categories: [],
     alternates: [],
@@ -42,6 +43,10 @@ export default {
     allowMultiplePlacements: {
       settings: true,
       label: 'Allow Multiple Placements',
+    },
+    allowAlternate: {
+      settings: true,
+      label: 'Allow Alternate Correct Answers',
     },
     categoriesPerRow: {
       settings: true,
