@@ -83,11 +83,6 @@ export interface MultiTraitRubricConfigure {
   includeZeroDialogBoxContent?: DialogContent;
 
   /**
-   * Configuration for Deleting Trait Dialog Box
-   */
-  deleteTraitDialogBoxContent?: DialogContent;
-
-  /**
    * Configuration for Deleting Scale Dialog Box
    */
   deleteScaleDialogBoxContent?: DialogContent;

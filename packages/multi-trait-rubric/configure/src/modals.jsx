@@ -18,7 +18,6 @@ const {
     excludeZeroDialogBoxContent,
     includeZeroDialogBoxContent,
     deleteScaleDialogBoxContent,
-    deleteTraitDialogBoxContent,
     maxPointsDialogBoxContent,
   },
 } = defaults;
@@ -204,13 +203,13 @@ RawDeleteScale.propTypes = {
 
 const DeleteScale = withStyles(styles)(RawDeleteScale);
 
-const RawDeleteTrait = ({ open, deleteTrait, cancel, classes }) => (
+const RawDeleteTrait = ({ open, deleteTrait, cancel, classes, traitLabel }) => (
   <Dialog open={open} classes={{ paper: classes.root }}>
-    <DialogTitle classes={{ root: classes.title }}>{deleteTraitDialogBoxContent.title}</DialogTitle>
+    <DialogTitle classes={{ root: classes.title }}>Delete {traitLabel}</DialogTitle>
 
     <DialogContent classes={{ root: classes.text }}>
       <DialogContentText>
-        <div dangerouslySetInnerHTML={{ __html: deleteTraitDialogBoxContent.text }} />
+        <div dangerouslySetInnerHTML={{ __html: `Are you sure you want to delete this ${traitLabel}?` }} />
       </DialogContentText>
     </DialogContent>
 

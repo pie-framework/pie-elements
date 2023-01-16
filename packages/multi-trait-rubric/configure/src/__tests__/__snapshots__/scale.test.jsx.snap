@@ -101,6 +101,7 @@ Overall appearance is acceptable or better",
     cancel={[Function]}
     deleteTrait={[Function]}
     open={false}
+    traitLabel="category"
   />
   <WithStyles(RawInfoDialog)
     onClose={[Function]}
@@ -211,6 +212,7 @@ Overall appearance is acceptable or better",
     cancel={[Function]}
     deleteTrait={[Function]}
     open={false}
+    traitLabel="category"
   />
   <WithStyles(RawInfoDialog)
     onClose={[Function]}
@@ -323,6 +325,7 @@ Overall appearance is acceptable or better",
     cancel={[Function]}
     deleteTrait={[Function]}
     open={false}
+    traitLabel="category"
   />
   <WithStyles(RawInfoDialog)
     onClose={[Function]}
@@ -433,6 +436,7 @@ Overall appearance is acceptable or better",
     cancel={[Function]}
     deleteTrait={[Function]}
     open={false}
+    traitLabel="category"
   />
   <WithStyles(RawInfoDialog)
     onClose={[Function]}
@@ -543,6 +547,7 @@ Overall appearance is acceptable or better",
     cancel={[Function]}
     deleteTrait={[Function]}
     open={false}
+    traitLabel="category"
   />
   <WithStyles(RawInfoDialog)
     onClose={[Function]}

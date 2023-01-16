@@ -230,6 +230,7 @@ export interface MatchConfigure extends PromptConfig, CommonConfigSettings {
    */
   maxLengthFirstColumnHeading?: number;
 
+  /**
    * How large (in px) should match be
    */
   width: string;
