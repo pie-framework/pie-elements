@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-configure@5.3.0...@pie-element/charting-configure@5.4.0) (2023-01-17)
+
+
+### Bug Fixes
+
+* update pie-libs and update defaults ([f53fba9](https://github.com/pie-framework/pie-elements/commit/f53fba9cbed649e3b37895baa39855769781547f))
+
+
+### Features
+
+* update pie-libs ([6423903](https://github.com/pie-framework/pie-elements/commit/6423903898b041f56db2111de2e4aac4ee9f1fd3))
+
+
+
+
+
 # [5.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-configure@5.2.3...@pie-element/charting-configure@5.3.0) (2023-01-05)
 
 

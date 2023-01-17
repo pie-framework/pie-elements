@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.6.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-controller@4.6.0...@pie-element/match-controller@4.6.1) (2023-01-17)
+
+
+### Bug Fixes
+
+* **match:** remove domparser from controller PD-2496 ([290d63b](https://github.com/pie-framework/pie-elements/commit/290d63b81a5eb1be9c512b8a443dc9663a7356ff))
+
+
+
+
+
 # [4.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-controller@4.5.1...@pie-element/match-controller@4.6.0) (2023-01-05)
 
 
