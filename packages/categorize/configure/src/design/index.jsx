@@ -158,7 +158,6 @@ export class Design extends React.Component {
       imageSupport,
       model,
       uploadSoundSupport,
-      onChange,
       onConfigurationChanged,
     } = this.props;
     const {
