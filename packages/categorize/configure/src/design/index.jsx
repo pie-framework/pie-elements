@@ -181,7 +181,6 @@ export class Design extends React.Component {
       withRubric = {},
     } = configuration || {};
     const {
-      allowMultiplePlacementsEnabled,
       allowAlternateEnabled,
       feedbackEnabled,
       promptEnabled,
