@@ -38,7 +38,7 @@ export default class CategorizeConfigure extends HTMLElement {
     this._model = m;
 
     this.render();
-    this.dispatchEvent(new ModelUpdatedEvent(this._model, true));
+    this.dispatchEvent(new ModelUpdatedEvent(this._model, false));
   }
 
   onConfigurationChanged(c) {
