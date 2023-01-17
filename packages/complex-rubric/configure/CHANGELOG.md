@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric-configure@1.3.0...@pie-element/complex-rubric-configure@1.4.0) (2023-01-17)
+
+
+### Bug Fixes
+
+* tests ([af46516](https://github.com/pie-framework/pie-elements/commit/af4651698e0fb88353ccb89661c2e1cad6e31b19))
+* **complex-rubric:** fix rubric type radio buttons PD-2492 ([19fdae2](https://github.com/pie-framework/pie-elements/commit/19fdae26ad76cd2d713e343a3b663181d7fccea3))
+* **multi-trait-rubric:** fix validation bugs, update documentation. Fixed match docs typo PD-2427 ([26d598e](https://github.com/pie-framework/pie-elements/commit/26d598e7a32d50ed176d566605bb6b4ebdc07a2c))
+
+
+### Features
+
+* update pie-libs ([6423903](https://github.com/pie-framework/pie-elements/commit/6423903898b041f56db2111de2e4aac4ee9f1fd3))
+
+
+
+
+
 # [1.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric-configure@1.2.7...@pie-element/complex-rubric-configure@1.3.0) (2023-01-05)
 
 

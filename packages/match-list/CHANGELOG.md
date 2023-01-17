@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.15.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@1.14.0...@pie-element/match-list@1.15.0) (2023-01-17)
+
+
+### Bug Fixes
+
+* **match-list:** fix choices arrangement in the drag placeholder ([09e8c1e](https://github.com/pie-framework/pie-elements/commit/09e8c1e8350d62f2455b2c44bff8270457d57aed))
+
+
+### Features
+
+* update pie-libs ([6423903](https://github.com/pie-framework/pie-elements/commit/6423903898b041f56db2111de2e4aac4ee9f1fd3))
+
+
+
+
+
 # [1.14.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@1.13.0...@pie-element/match-list@1.14.0) (2023-01-05)
 
 

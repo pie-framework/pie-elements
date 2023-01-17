@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@4.5.0...@pie-element/image-cloze-association@4.6.0) (2023-01-17)
+
+
+### Features
+
+* update pie-libs ([6423903](https://github.com/pie-framework/pie-elements/commit/6423903898b041f56db2111de2e4aac4ee9f1fd3))
+
+
+
+
+
 # [4.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@4.4.1...@pie-element/image-cloze-association@4.5.0) (2023-01-05)
 
 

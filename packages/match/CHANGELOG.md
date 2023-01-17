@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@5.4.0...@pie-element/match@5.5.0) (2023-01-17)
+
+
+### Bug Fixes
+
+* **match:** remove domparser from controller PD-2496 ([290d63b](https://github.com/pie-framework/pie-elements/commit/290d63b81a5eb1be9c512b8a443dc9663a7356ff))
+* **multi-trait-rubric:** fix validation bugs, update documentation. Fixed match docs typo PD-2427 ([26d598e](https://github.com/pie-framework/pie-elements/commit/26d598e7a32d50ed176d566605bb6b4ebdc07a2c))
+
+
+### Features
+
+* update pie-libs ([6423903](https://github.com/pie-framework/pie-elements/commit/6423903898b041f56db2111de2e4aac4ee9f1fd3))
+
+
+
+
+
 # [5.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@5.3.1...@pie-element/match@5.4.0) (2023-01-05)
 
 

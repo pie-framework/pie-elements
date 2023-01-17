@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@7.6.0...@pie-element/categorize@7.7.0) (2023-01-17)
+
+
+### Bug Fixes
+
+* build ([7051f69](https://github.com/pie-framework/pie-elements/commit/7051f6957042a30597066a1bf435e8674c9d3721))
+* rerun build ([1ce6922](https://github.com/pie-framework/pie-elements/commit/1ce6922ebed67d95430cd84d2104e9d3be744ee8))
+* **categorize:** correct answer is not recognised-PD-1975 ([5ab33fb](https://github.com/pie-framework/pie-elements/commit/5ab33fb76d4490a7f76b48fe1815204db76e2de3))
+
+
+### Features
+
+* build ([dfbd59c](https://github.com/pie-framework/pie-elements/commit/dfbd59c15921e1599b9009fd644ed26db86b82f6))
+* update pie-libs ([6423903](https://github.com/pie-framework/pie-elements/commit/6423903898b041f56db2111de2e4aac4ee9f1fd3))
+* **categorize:** Add an Allow Alternate Correct Answers setting-PD-1973 ([b84c1f8](https://github.com/pie-framework/pie-elements/commit/b84c1f815dfbd954a9fd2b815bcdcff40e0994e5))
+* **categorize:** Replace the trashcan icons for choices in response-PD-1994 ([f0d7625](https://github.com/pie-framework/pie-elements/commit/f0d762586a932fd2f471ffe568d92c1b838d9ac5))
+
+
+
+
+
 # [7.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@7.5.1...@pie-element/categorize@7.6.0) (2023-01-05)
 
 

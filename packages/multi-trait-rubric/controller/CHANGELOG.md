@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.13](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-controller@1.2.12...@pie-element/multi-trait-rubric-controller@1.2.13) (2023-01-17)
+
+
+### Bug Fixes
+
+* **multi-trait-rubric:** fix validation bugs, update documentation. Fixed match docs typo PD-2427 ([26d598e](https://github.com/pie-framework/pie-elements/commit/26d598e7a32d50ed176d566605bb6b4ebdc07a2c))
+
+
+
+
+
 ## [1.2.12](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-controller@1.2.11...@pie-element/multi-trait-rubric-controller@1.2.12) (2022-12-07)
 
 

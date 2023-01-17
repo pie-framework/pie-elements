@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-configure@2.2.0...@pie-element/multi-trait-rubric-configure@2.3.0) (2023-01-17)
+
+
+### Bug Fixes
+
+* **multi-trait-rubric:** set max points dropdown to 1 PD-2487 ([5111342](https://github.com/pie-framework/pie-elements/commit/51113426bf7b0bcfe79baf833b5d37812418e8de))
+* tests ([93540dc](https://github.com/pie-framework/pie-elements/commit/93540dc3d78398998037b66f02ec17184e29fca8))
+* **multi-trait-rubric:** fix validation bugs, update documentation. Fixed match docs typo PD-2427 ([26d598e](https://github.com/pie-framework/pie-elements/commit/26d598e7a32d50ed176d566605bb6b4ebdc07a2c))
+
+
+### Features
+
+* update pie-libs ([6423903](https://github.com/pie-framework/pie-elements/commit/6423903898b041f56db2111de2e4aac4ee9f1fd3))
+
+
+
+
+
 # [2.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-configure@2.1.5...@pie-element/multi-trait-rubric-configure@2.2.0) (2023-01-05)
 
 
