@@ -84,21 +84,18 @@ export class Main extends React.Component {
             <RadioGroup
               aria-label="rubric-type"
               name="rubricType"
-              value={rubricType}
-              defaultValue={RUBRIC_TYPES.SIMPLE_RUBRIC}
+              value={model.rubricType}
               onChange={this.onChangeRubricType}
             >
               <FormControlLabel
                 value={RUBRIC_TYPES.SIMPLE_RUBRIC}
-                control={<Radio />}
-                checked={rubricType === RUBRIC_TYPES.SIMPLE_RUBRIC}
+                control={<Radio checked={rubricType === RUBRIC_TYPES.SIMPLE_RUBRIC} />}
                 label="Simple Rubric"
               />
 
               <FormControlLabel
                 value={RUBRIC_TYPES.MULTI_TRAIT_RUBRIC}
-                control={<Radio />}
-                checked={rubricType === RUBRIC_TYPES.MULTI_TRAIT_RUBRIC}
+                control={<Radio checked={rubricType === RUBRIC_TYPES.MULTI_TRAIT_RUBRIC} />}
                 label="Multi Trait Rubric"
               />
             </RadioGroup>

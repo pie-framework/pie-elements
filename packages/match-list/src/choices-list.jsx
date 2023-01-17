@@ -89,6 +89,7 @@ const styles = () => ({
     minHeight: '40px',
     minWidth: '200px',
     height: 'initial',
+    margin: '4px',
   },
 });
 

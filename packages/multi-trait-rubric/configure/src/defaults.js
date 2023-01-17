@@ -47,10 +47,6 @@ export default {
         </ul>
       </div>`,
     },
-    deleteTraitDialogBoxContent: {
-      title: 'Delete Trait',
-      text: 'Are you sure you want to delete this trait?',
-    },
     deleteScaleDialogBoxContent: {
       title: 'Delete Scale',
       text: 'Are you sure you want to delete this scale?',
@@ -111,7 +107,7 @@ export default {
       settings: true,
       label: 'Add Scale Available',
     },
-    minNoOfTraits: 2,
+    minNoOfTraits: 1,
     maxNoOfTraits: 10,
     minNoOfScales: 2,
     maxNoOfScales: 10,

@@ -39,22 +39,6 @@
             }
           }
         },
-        "deleteTraitDialogBoxContent": {
-          "title": "DialogContent",
-          "type": "object",
-          "properties": {
-            "title": {
-              "description": "Dialog box title",
-              "type": "string",
-              "title": "title"
-            },
-            "text": {
-              "description": "Dialog box text",
-              "type": "string",
-              "title": "text"
-            }
-          }
-        },
         "deleteScaleDialogBoxContent": {
           "title": "DialogContent",
           "type": "object",
@@ -226,22 +210,6 @@
           }
         },
         "includeZeroDialogBoxContent": {
-          "title": "DialogContent",
-          "type": "object",
-          "properties": {
-            "title": {
-              "description": "Dialog box title",
-              "type": "string",
-              "title": "title"
-            },
-            "text": {
-              "description": "Dialog box text",
-              "type": "string",
-              "title": "text"
-            }
-          }
-        },
-        "deleteTraitDialogBoxContent": {
           "title": "DialogContent",
           "type": "object",
           "properties": {

@@ -50,16 +50,21 @@ export class Design extends React.Component {
       ...props,
     };
 
+    updatedModel.choices = updatedModel.choices.map((c) => ({
+      ...c,
+      categoryCount: this.checkAllowMultiplePlacements(updatedModel.allowMultiplePlacementsEnabled, c),
+    }));
+
     //Ensure that there are no extra choices in correctResponse, if the user has decided that only one choice may be used.
     updatedModel.correctResponse = ensureNoExtraChoicesInAnswer(
       updatedModel.correctResponse || [],
-      updatedModel.choices
+      updatedModel.choices,
     );
 
     //Ensure that there are no extra choices in alternate responses, if the user has decided that only one choice may be used.
-     updatedModel.correctResponse = ensureNoExtraChoicesInAlternate(
-        updatedModel.correctResponse || [],
-        updatedModel.choices
+    updatedModel.correctResponse = ensureNoExtraChoicesInAlternate(
+      updatedModel.correctResponse || [],
+      updatedModel.choices,
     );
 
     //clean categories
@@ -153,11 +158,11 @@ export class Design extends React.Component {
       imageSupport,
       model,
       uploadSoundSupport,
-      onChange,
       onConfigurationChanged,
     } = this.props;
     const {
       allowMultiplePlacements = {},
+      allowAlternate = {},
       categoriesPerRow = {},
       choicesPosition = {},
       feedback = {},
@@ -176,7 +181,7 @@ export class Design extends React.Component {
       withRubric = {},
     } = configuration || {};
     const {
-      allowMultiplePlacementsEnabled,
+      allowAlternateEnabled,
       feedbackEnabled,
       promptEnabled,
       rationaleEnabled,
@@ -202,7 +207,6 @@ export class Design extends React.Component {
 
     const choices = model.choices.map((c) => {
       c.correctResponseCount = this.countChoiceInCorrectResponse(c);
-      c.categoryCount = this.checkAllowMultiplePlacements(allowMultiplePlacementsEnabled, c);
 
       return c;
     });
@@ -230,6 +234,7 @@ export class Design extends React.Component {
         ]),
       promptEnabled: prompt.settings && toggle(prompt.label),
       feedbackEnabled: feedback.settings && toggle(feedback.label),
+      allowAlternateEnabled: allowAlternate.settings && toggle(allowAlternate.label),
     };
 
     const panelProperties = {
@@ -248,7 +253,7 @@ export class Design extends React.Component {
           settings={
             <Panel
               model={model}
-              onChangeModel={onChange}
+              onChangeModel={this.updateModel}
               configuration={configuration}
               onChangeConfiguration={onConfigurationChanged}
               groups={{
@@ -326,36 +331,35 @@ export class Design extends React.Component {
               defaultImageMaxWidth={defaultImageMaxWidth}
               defaultImageMaxHeight={defaultImageMaxHeight}
             />
-
-            <Header
-              className={classes.alternatesHeader}
-              label="Alternate Responses"
-              buttonLabel="ADD AN ALTERNATE RESPONSE"
-              onAdd={this.onAddAlternateResponse}
-            />
-
-            {alternateResponses.map((categoriesList, index) => {
-              return (
-                <React.Fragment key={index}>
-                  <Header
-                    className={classes.alternatesHeader}
-                    label="Alternate Response"
-                    buttonLabel="REMOVE ALTERNATE RESPONSE"
-                    onAdd={() => this.onRemoveAlternateResponse(index)}
-                  />
-
-                  <AlternateResponses
-                    altIndex={index}
-                    imageSupport={imageSupport}
-                    model={model}
-                    categories={categoriesList}
-                    onModelChanged={this.updateModel}
-                    uploadSoundSupport={uploadSoundSupport}
-                  />
-                </React.Fragment>
-              );
-            })}
-
+            {allowAlternateEnabled && (
+              <Header
+                className={classes.alternatesHeader}
+                label="Alternate Responses"
+                buttonLabel="ADD AN ALTERNATE RESPONSE"
+                onAdd={this.onAddAlternateResponse}
+              />
+            )}
+            {allowAlternateEnabled &&
+              alternateResponses.map((categoriesList, index) => {
+                return (
+                  <React.Fragment key={index}>
+                    <Header
+                      className={classes.alternatesHeader}
+                      label="Alternate Response"
+                      buttonLabel="REMOVE ALTERNATE RESPONSE"
+                      onAdd={() => this.onRemoveAlternateResponse(index)}
+                    />
+                    <AlternateResponses
+                      altIndex={index}
+                      imageSupport={imageSupport}
+                      model={model}
+                      categories={categoriesList}
+                      onModelChanged={this.updateModel}
+                      uploadSoundSupport={uploadSoundSupport}
+                    />
+                  </React.Fragment>
+                );
+              })}
             <Divider />
             <Choices
               imageSupport={imageSupport}
