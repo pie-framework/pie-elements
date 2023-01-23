@@ -12,6 +12,13 @@ exports[`AlternateResponses snapshot renders 1`] = `
       }
     }
   >
+    <WithStyles(Component)
+      categoriesPerRow={2}
+      disabled={true}
+      markup=""
+      onChange={[Function]}
+      rowIndex={0}
+    />
     <WithStyles(Category)
       alternateResponseIndex={0}
       category={
