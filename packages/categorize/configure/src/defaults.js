@@ -7,7 +7,7 @@ export default {
     choicesLabel: '',
     lockChoiceOrder: true,
     allowMultiplePlacementsEnabled: multiplePlacements.enabled,
-    allowAlternateEnabled: true,
+    allowAlternateEnabled: false,
     categoriesPerRow: 2,
     categories: [],
     alternates: [],
