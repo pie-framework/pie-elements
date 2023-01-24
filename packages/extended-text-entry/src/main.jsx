@@ -13,18 +13,12 @@ const style = (theme) => ({
   main: {
     backgroundColor: color.background(),
     color: color.text(),
-   // transform: 'scale(1.5)',
-  
-   WebkitTextSizeAdjust: 'none',
-   zoom: '320%',
-  
   },
   prompt: {
     width: '100%',
     color: color.text(),
     marginBottom: theme.spacing.unit * 2,
     fontSize: 'inherit',
-   
   },
 });
 
