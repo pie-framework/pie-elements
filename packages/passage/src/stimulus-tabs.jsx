@@ -39,8 +39,6 @@ function TabContainer(props) {
 
   return (
     <Typography
-      aria-label="Passage"
-      role="region"
       component="div"
       style={{
         padding,
