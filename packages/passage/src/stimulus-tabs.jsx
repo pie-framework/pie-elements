@@ -39,7 +39,7 @@ function TabContainer(props) {
 
   return (
     <Typography
-      component="div"
+      component="div" 
       style={{
         padding,
         fontSize: '0.875em',
