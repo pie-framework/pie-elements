@@ -30,7 +30,7 @@ class Main extends React.Component {
       <PreviewLayout
         ariaLabel={(model.choiceMode == 'radio' ? 'Multiple Choice Question' : 'Multiple Correct Answer Question')}
         role="region"
-      >
+      > 
         {model.partLabel && <p>{model.partLabel}</p>}
         <div className={classNames(classes.root, classes[model.className])}>
           <MultipleChoice {...model} session={session} onChoiceChanged={onChoiceChanged} />
