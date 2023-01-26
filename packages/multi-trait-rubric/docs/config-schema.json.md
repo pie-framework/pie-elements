@@ -130,6 +130,22 @@ Indicates the label for the item that has to be displayed in the Settings Panel
 
 How large (in px) should multi-trait-rubric be
 
+# `minNoOfTraits` (number)
+
+Minimum number of traits
+
+# `maxNoOfTraits` (number)
+
+Maximum number of traits
+
+# `minNoOfScales` (number)
+
+Minimum number of traits
+
+# `maxNoOfScales` (number)
+
+Maximum number of scales
+
 ---
 
 # Sub Schemas
