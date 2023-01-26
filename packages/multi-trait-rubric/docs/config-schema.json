@@ -184,7 +184,7 @@
       "title": "maxNoOfTraits"
     },
     "minNoOfScales": {
-      "description": "Minimum number of traits",
+      "description": "Minimum number of scales",
       "type": "number",
       "title": "minNoOfScales"
     },

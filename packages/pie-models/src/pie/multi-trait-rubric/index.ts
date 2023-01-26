@@ -160,7 +160,7 @@ export interface MultiTraitRubricConfigure {
   maxNoOfTraits?: number;
 
   /**
-   * Minimum number of traits
+   * Minimum number of scales
    */
   minNoOfScales?: number;
 

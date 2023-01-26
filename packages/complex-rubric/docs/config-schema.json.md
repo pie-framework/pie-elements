@@ -144,7 +144,7 @@ Maximum number of traits
 
 ## `minNoOfScales` (number)
 
-Minimum number of traits
+Minimum number of scales
 
 ## `maxNoOfScales` (number)
 
@@ -300,7 +300,7 @@ Maximum number of traits
 
 ### `minNoOfScales` (number)
 
-Minimum number of traits
+Minimum number of scales
 
 ### `maxNoOfScales` (number)
 
