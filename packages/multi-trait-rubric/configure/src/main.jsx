@@ -37,10 +37,13 @@ export class Main extends React.Component {
     const { model, onModelChanged, configuration } = this.props;
     let { scales } = model || {};
     const { maxNoOfScales } = configuration || {};
+    let { defaultTraitLabel } = configuration || '';
 
     if (!scales.length) {
       scales = [];
     }
+
+    defaultTraitLabel = defaultTraitLabel || (scales[0] ? scales[0].traitLabel : 'Trait');
 
     if (scales.length === maxNoOfScales) {
       this.set({
@@ -55,7 +58,7 @@ export class Main extends React.Component {
       excludeZero: false,
       maxPoints: 1,
       scorePointsLabels: ['', ''],
-      traitLabel: '',
+      traitLabel: defaultTraitLabel,
       traits: [],
     });
 
@@ -245,6 +248,7 @@ export class Main extends React.Component {
       maxNoOfTraits,
       minNoOfTraits,
       width,
+      defaultTraitLabel
     } = configuration || {};
     const {
       scales,
@@ -312,6 +316,7 @@ export class Main extends React.Component {
                 maxPointsEnabled={maxPointsEnabled}
                 maxNoOfTraits={maxNoOfTraits}
                 minNoOfTraits={minNoOfTraits}
+                defaultTraitLabel={defaultTraitLabel}
                 {...this.props}
                 classes={{}}
               />

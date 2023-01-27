@@ -146,6 +146,10 @@ Minimum number of scales
 
 Maximum number of scales
 
+# `defaultTraitLabel` (string)
+
+The default trait label for new created scales
+
 ---
 
 # Sub Schemas
