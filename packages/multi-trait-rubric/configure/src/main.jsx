@@ -43,7 +43,7 @@ export class Main extends React.Component {
       scales = [];
     }
 
-    defaultTraitLabel = defaultTraitLabel || (scales[0] ? scales[0].traitLabel : 'Trait');
+    defaultTraitLabel = defaultTraitLabel || (scales[0] ? scales[0].traitLabel : '');
 
     if (scales.length === maxNoOfScales) {
       this.set({
