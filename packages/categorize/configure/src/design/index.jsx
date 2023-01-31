@@ -365,9 +365,13 @@ export class Design extends React.Component {
                             altIndex={index}
                             imageSupport={imageSupport}
                             model={model}
+                            configuration={configuration}
                             categories={categoriesList}
                             onModelChanged={this.updateModel}
                             uploadSoundSupport={uploadSoundSupport}
+                            toolbarOpts={toolbarOpts}
+                            defaultImageMaxWidth={defaultImageMaxWidth}
+                            defaultImageMaxHeight={defaultImageMaxHeight}
                         />
                       </React.Fragment>
                   );
