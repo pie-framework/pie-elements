@@ -357,6 +357,7 @@ export class Design extends React.Component {
                       <React.Fragment key={index}>
                         <Header
                             className={classes.alternatesHeader}
+                            variant={'subtitle1'}
                             label="Alternate Response"
                             buttonLabel="REMOVE ALTERNATE RESPONSE"
                             onAdd={() => this.onRemoveAlternateResponse(index)}
