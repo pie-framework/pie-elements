@@ -4,6 +4,7 @@ import { camelizeKeys } from 'humps';
 import { partialScoring } from '@pie-lib/controller-utils';
 
 import { getAllUniqueCorrectness } from './utils';
+import { cloneDeep } from 'lodash';
 
 const log = debug('pie-elements:image-cloze-association:controller');
 
@@ -60,14 +61,24 @@ export const isResponseCorrect = (responses, session) => {
   return isCorrect;
 };
 
+// This applies for correct responses that have empty values
+const keepNonEmptyResponses = (responses) => {
+  const filtered = responses.filter(response => response.images.length);
+  return cloneDeep(filtered);
+};
+
 // This applies for items that don't support partial scoring.
 const isDefaultOrAltResponseCorrect = (question, session) => {
   const {
+    altResponses,
+  } = question;
+  let {
     validation: {
       validResponse: { value },
-      altResponses,
-    },
+    }
   } = question;
+
+  value = keepNonEmptyResponses(value);
 
   let isCorrect = isResponseCorrect(value, session);
 
@@ -107,6 +118,7 @@ export const getPartialScore = (question, session) => {
   if (!session || isEmpty(session)) {
     return 0;
   }
+  validResponse.value = keepNonEmptyResponses(validResponse.value);
 
   validResponse.value.forEach((value) => (possibleResponses += (value.images || []).length));
 
