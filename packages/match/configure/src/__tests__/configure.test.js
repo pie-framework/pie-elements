@@ -395,11 +395,14 @@ describe('AnswerConfigBlock', () => {
   });
 
   describe('render', () => {
-    it('renders correctly', () => {
-      component = wrapper();
-
-      expect(component.find(Button).length).toEqual(1);
+    it('snapshot', () => {
+      expect(wrapper()).toMatchSnapshot();
     });
+    // it('renders correctly', () => {
+    //   component = wrapper();
+    //
+    //   expect(component.find(Button).length).toEqual(1);
+    // });
   });
 
   describe('moveRow', () => {
