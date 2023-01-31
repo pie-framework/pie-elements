@@ -85,6 +85,7 @@ export class Categories extends React.Component {
 const styles = (theme) => ({
   categories: {
     flex: 1,
+    padding: '8px'
   },
   label: {
     color: color.text(),

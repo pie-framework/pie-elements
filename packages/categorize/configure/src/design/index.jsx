@@ -331,40 +331,6 @@ export class Design extends React.Component {
               defaultImageMaxWidth={defaultImageMaxWidth}
               defaultImageMaxHeight={defaultImageMaxHeight}
             />
-            {allowAlternateEnabled && (
-              <Header
-                className={classes.alternatesHeader}
-                label="Alternate Responses"
-                buttonLabel="ADD AN ALTERNATE RESPONSE"
-                onAdd={this.onAddAlternateResponse}
-              />
-            )}
-            {allowAlternateEnabled &&
-              alternateResponses.map((categoriesList, index) => {
-                return (
-                  <React.Fragment key={index}>
-                    <Header
-                      className={classes.alternatesHeader}
-                      label="Alternate Response"
-                      buttonLabel="REMOVE ALTERNATE RESPONSE"
-                      onAdd={() => this.onRemoveAlternateResponse(index)}
-                    />
-                    <AlternateResponses
-                      altIndex={index}
-                      imageSupport={imageSupport}
-                      model={model}
-                      configuration={configuration}
-                      categories={categoriesList}
-                      onModelChanged={this.updateModel}
-                      uploadSoundSupport={uploadSoundSupport}
-                      toolbarOpts={toolbarOpts}
-                      defaultImageMaxWidth={defaultImageMaxWidth}
-                      defaultImageMaxHeight={defaultImageMaxHeight}
-                    />
-                  </React.Fragment>
-                );
-              })}
-            <Divider />
             <Choices
               imageSupport={imageSupport}
               uploadSoundSupport={uploadSoundSupport}
@@ -377,7 +343,38 @@ export class Design extends React.Component {
               defaultImageMaxWidth={defaultImageMaxWidth}
               defaultImageMaxHeight={defaultImageMaxHeight}
             />
-
+            {allowAlternateEnabled && (
+                <Header
+                    className={classes.alternatesHeader}
+                    label="Alternate Responses"
+                    buttonLabel="ADD AN ALTERNATE RESPONSE"
+                    onAdd={this.onAddAlternateResponse}
+                />
+            )}
+            {allowAlternateEnabled &&
+                alternateResponses.map((categoriesList, index) => {
+                  return (
+                      <React.Fragment key={index}>
+                        <Header
+                            className={classes.alternatesHeader}
+                            label="Alternate Response"
+                            buttonLabel="REMOVE ALTERNATE RESPONSE"
+                            onAdd={() => this.onRemoveAlternateResponse(index)}
+                        />
+                        <AlternateResponses
+                            altIndex={index}
+                            imageSupport={imageSupport}
+                            model={model}
+                            categories={categoriesList}
+                            onModelChanged={this.updateModel}
+                            uploadSoundSupport={uploadSoundSupport}
+                        />
+                      </React.Fragment>
+                  );
+                })}
+            {allowAlternateEnabled &&
+                <Divider/>
+            }
             {feedbackEnabled && (
               <FeedbackConfig feedback={model.feedback} onChange={this.changeFeedback} toolbarOpts={toolbarOpts} />
             )}

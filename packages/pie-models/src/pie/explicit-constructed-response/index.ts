@@ -164,7 +164,7 @@ export interface ExplicitConstructedResponseConfigure extends PromptConfig, Comm
   maxImageHeight?: ConfigureMaxImageDimensionsProp;
 
   /**
-   * Rubric configuration
+   * Rubric configuration - only relevant in environments that use pie-player-components
    */
   withRubric?: ConfigureProp;
 }

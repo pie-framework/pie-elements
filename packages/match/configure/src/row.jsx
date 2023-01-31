@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import { AlertDialog, Checkbox } from '@pie-lib/config-ui';
 import DragHandle from '@material-ui/icons/DragHandle';
 import Radio from '@material-ui/core/Radio';
-import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
 import Delete from '@material-ui/icons/Delete';
 import { DragSource, DropTarget } from 'react-dnd';
 import debug from 'debug';
@@ -134,7 +134,7 @@ export class Row extends React.Component {
     const content = (
       <div style={{ opacity: opacity, width: 'fit-content' }}>
         <span itemID={'handle'} className={classes.dragHandle} onMouseDown={this.onMouseDownOnHandle}>
-          <DragHandle color={'primary'}/>
+          <DragHandle color={'primary'} />
         </span>
 
         <div className={classes.rowContainer}>
@@ -162,22 +162,22 @@ export class Row extends React.Component {
           {row.values.map((rowValue, rowIdx) => (
             <div key={rowIdx} className={classes.rowItem}>
               {model.choiceMode === 'radio' ? (
-                <Radio onChange={this.onRowValueChange(idx, rowIdx)} checked={rowValue === true}/>
+                <Radio onChange={this.onRowValueChange(idx, rowIdx)} checked={rowValue === true} />
               ) : (
-                <Checkbox onChange={this.onRowValueChange(idx, rowIdx)} checked={rowValue === true} label={''}/>
+                <Checkbox onChange={this.onRowValueChange(idx, rowIdx)} checked={rowValue === true} label={''} />
               )}
             </div>
           ))}
 
           <div className={classes.deleteIcon}>
-            <Button onClick={this.onDeleteRow(idx)}>
-              <Delete className={classes.deleteIcon}/>
-            </Button>
+            <IconButton onClick={this.onDeleteRow(idx)} aria-label="Delete">
+              <Delete />
+            </IconButton>
           </div>
         </div>
 
         {error && <div className={classes.errorText}>{error}</div>}
-        <hr className={classes.separator}/>
+        <hr className={classes.separator} />
 
         <AlertDialog
           open={dialog.open}
@@ -224,11 +224,14 @@ const styles = (theme) => ({
     display: 'flex',
     justifyContent: 'center',
     minWidth: '150px',
-    padding: theme.spacing.unit * 1.5,
+    padding: `0 ${theme.spacing.unit}px`,
   },
   deleteIcon: {
     flex: 0.5,
-    minWidth: '88px',
+    display: 'flex',
+    justifyContent: 'center',
+    minWidth: '48px',
+    padding: `0 ${theme.spacing.unit}px`,
   },
   questionText: {
     flex: 2,
@@ -238,9 +241,10 @@ const styles = (theme) => ({
     maxWidth: 'unset',
     textAlign: 'left',
     minWidth: '350px',
+    marginRight: theme.spacing.unit,
     '&> div': {
       width: '100%',
-    }
+    },
   },
   separator: {
     marginTop: theme.spacing.unit * 2,

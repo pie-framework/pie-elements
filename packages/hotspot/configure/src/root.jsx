@@ -295,7 +295,7 @@ const styles = (theme) => ({
   },
   errorText: {
     fontSize: '12px',
-    color: 'red',
+    color: theme.palette.error.main,
     paddingTop: theme.spacing.unit,
   },
 });
