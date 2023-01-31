@@ -1,7 +1,6 @@
 import * as React from 'react';
 import cx from 'classnames';
 import PropTypes from 'prop-types';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import AddRow from './add-row';
@@ -19,10 +18,14 @@ const styles = (theme) => ({
     flexDirection: 'column',
   },
   rowContainer: {
-    marginTop: theme.spacing.unit * 2,
     display: 'flex',
     alignItems: 'center',
     flex: 1,
+    width: 'fit-content',
+    borderBottom: '2px solid lightgray',
+    paddingBottom: theme.spacing.unit * 2,
+    marginTop: theme.spacing.unit * 2,
+    marginBottom: theme.spacing.unit,
   },
   rowItem: {
     flex: 1,
@@ -31,18 +34,20 @@ const styles = (theme) => ({
     flexDirection: 'column',
     '&> div': {
       width: '150px',
-      padding: theme.spacing.unit * 1.5,
+      padding: `0 ${theme.spacing.unit}px`,
       textAlign: 'center',
     },
   },
   deleteIcon: {
     flex: 0.5,
-    minWidth: '88px',
+    minWidth: '48px',
+    padding: `0 ${theme.spacing.unit}px`,
   },
   questionText: {
     flex: 2,
     display: 'flex',
     justifyContent: 'flex-start',
+    marginRight: theme.spacing.unit,
     '&> div': {
       width: '100%',
       padding: 0,
@@ -55,12 +60,6 @@ const styles = (theme) => ({
     display: 'flex',
     flexDirection: 'column',
   },
-  separator: {
-    marginTop: theme.spacing.unit * 2,
-    border: 0,
-    borderTop: '2px solid lightgray',
-    width: '100%',
-  },
   headerInput: {
     '&> div': {
       fontWeight: 'bold',
@@ -69,8 +68,8 @@ const styles = (theme) => ({
   errorText: {
     fontSize: theme.typography.fontSize - 2,
     color: 'red',
-    padding: '0 !important',
-    width: 'fit-content !important'
+    paddingTop: `${theme.spacing.unit}px !important`,
+    width: 'fit-content !important',
   },
 });
 
@@ -124,19 +123,19 @@ class AnswerConfigBlock extends React.Component {
 
   onChange =
     (name, isBoolean) =>
-      ({ target }) => {
-        const { model, onChange } = this.props;
-        let value;
+    ({ target }) => {
+      const { model, onChange } = this.props;
+      let value;
 
-        if (isBoolean) {
-          value = target.checked;
-        } else {
-          value = target.value;
-        }
+      if (isBoolean) {
+        value = target.checked;
+      } else {
+        value = target.value;
+      }
 
-        lodash.set(model, name, value);
-        onChange(model, name);
-      };
+      lodash.set(model, name, value);
+      onChange(model, name);
+    };
 
   onHeaderChange = (headerIndex) => (value) => {
     const { model, onChange } = this.props;
@@ -154,16 +153,7 @@ class AnswerConfigBlock extends React.Component {
   };
 
   render() {
-    const {
-      classes,
-      model,
-      onAddRow,
-      imageSupport,
-      configuration,
-      toolbarOpts,
-      spellCheck,
-      uploadSoundSupport,
-    } =
+    const { classes, model, onAddRow, imageSupport, configuration, toolbarOpts, spellCheck, uploadSoundSupport } =
       this.props;
     const { headers = {}, maxImageWidth = {}, maxImageHeight = {} } = configuration || {};
     const { errors } = model || {};
@@ -189,39 +179,37 @@ class AnswerConfigBlock extends React.Component {
         {noOfRowsError && <div className={classes.errorText}>{noOfRowsError}</div>}
         {columnsLengthError && <div className={classes.errorText}>{columnsLengthError}</div>}
 
-        <div className={classes.rowTable} style={configuration.width ? { width: configuration.width, overflow: 'scroll' } : {}}>
+        <div
+          className={classes.rowTable}
+          style={configuration.width ? { width: configuration.width, overflow: 'scroll' } : {}}
+        >
           <div className={classes.rowContainer}>
             {headers.settings &&
-            (model.headers || []).map((header, idx) => (
-              <div
-                key={idx}
-                className={cx(classes.rowItem, {
-                  [classes.questionText]: idx === 0,
-                })}
-              >
-                <EditableHTML
-                  onChange={this.onHeaderChange(idx)}
-                  markup={header}
-                  className={classes.headerInput}
-                  label={'column label'}
-                  activePlugins={filteredDefaultPlugins}
-                  pluginProps={labelPlugins}
-                  autoWidthToolbar
-                  spellCheck={spellCheck}
-                  uploadSoundSupport={uploadSoundSupport}
-                  languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
-                  error={columnsErrors && columnsErrors[idx]}
-                />
-                {columnsErrors && columnsErrors[idx] && <div className={classes.errorText}>{columnsErrors[idx]}</div>}
-              </div>
-            ))}
-            <div className={classes.deleteIcon}>
-              <Button disabled>
-                <div/>
-              </Button>
-            </div>
+              (model.headers || []).map((header, idx) => (
+                <div
+                  key={idx}
+                  className={cx(classes.rowItem, {
+                    [classes.questionText]: idx === 0,
+                  })}
+                >
+                  <EditableHTML
+                    onChange={this.onHeaderChange(idx)}
+                    markup={header}
+                    className={classes.headerInput}
+                    label={'column label'}
+                    activePlugins={filteredDefaultPlugins}
+                    pluginProps={labelPlugins}
+                    autoWidthToolbar
+                    spellCheck={spellCheck}
+                    uploadSoundSupport={uploadSoundSupport}
+                    languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+                    error={columnsErrors && columnsErrors[idx]}
+                  />
+                  {columnsErrors && columnsErrors[idx] && <div className={classes.errorText}>{columnsErrors[idx]}</div>}
+                </div>
+              ))}
+            <div className={classes.deleteIcon} />
           </div>
-          <hr className={classes.separator} />
 
           {model.rows.map((row, idx) => (
             <Row
@@ -242,7 +230,8 @@ class AnswerConfigBlock extends React.Component {
               uploadSoundSupport={uploadSoundSupport}
             />
           ))}
-          <AddRow onAddClick={onAddRow}/>
+
+          <AddRow onAddClick={onAddRow} />
         </div>
       </div>
     );

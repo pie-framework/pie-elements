@@ -38,9 +38,14 @@ export class Main extends React.Component {
 
   render() {
     const { classes, model, configuration } = this.props;
-    const { rubricType, rubrics = {} } = model;
+    const { rubrics = {} } = model;
+    let { rubricType }  = model;
     const { multiTraitRubric, simpleRubric } = configuration;
     let rubricTag = '';
+
+    if (!rubricType) {
+      rubricType = RUBRIC_TYPES.SIMPLE_RUBRIC;
+    }
 
     switch (rubricType) {
       case RUBRIC_TYPES.SIMPLE_RUBRIC:

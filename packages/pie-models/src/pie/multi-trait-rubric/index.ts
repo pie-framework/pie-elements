@@ -148,4 +148,24 @@ export interface MultiTraitRubricConfigure {
   //  * Configuration for allowing drag & drop per traits
   //  */
   // dragAndDrop?: ConfigurePropWithEnabled;
+
+  /**
+   * Minimum number of traits
+   */
+  minNoOfTraits?: number;
+
+  /**
+   * Maximum number of traits
+   */
+  maxNoOfTraits?: number;
+
+  /**
+   * Minimum number of scales
+   */
+  minNoOfScales?: number;
+
+  /**
+   * Maximum number of scales
+   */
+  maxNoOfScales?: number;
 }

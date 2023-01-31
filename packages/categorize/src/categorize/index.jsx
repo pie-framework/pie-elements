@@ -186,7 +186,7 @@ export class Categorize extends React.Component {
 
             {
               !!(rowLabels && nbOfRows) && (
-                <div style={{ display: 'grid', marginRight: '20px' }}>
+                <div style={{ display: 'grid'}}>
                   {rowLabels.slice(0, nbOfRows).map((label, index) => (
                     <div
                       key={index}

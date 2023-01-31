@@ -19,6 +19,7 @@ import {
 import Category from './category';
 import Header from '../header';
 import { generateValidationMessage } from '../../utils';
+import { RowLabel } from './RowLabel';
 
 const styles = (theme) => ({
   categories: {
@@ -55,45 +56,6 @@ const styles = (theme) => ({
     padding: '5px 0',
   },
 });
-
-const RowLabel = withStyles(styles)(
-  ({
-    categoriesPerRow,
-    classes,
-    markup,
-    imageSupport,
-    onChange,
-    toolbarOpts,
-    spellCheck,
-    maxImageWidth,
-    maxImageHeight,
-    uploadSoundSupport,
-  }) => {
-    return (
-      <div
-        style={{
-          gridColumn: `1/${categoriesPerRow + 1}`,
-          width: '100%',
-        }}
-      >
-        <Typography className={classes.text}>Row Label</Typography>
-        <EditableHtml
-          className={classes.rowLabelHolder}
-          markup={markup}
-          onChange={onChange}
-          imageSupport={imageSupport}
-          nonEmpty={false}
-          toolbarOpts={toolbarOpts}
-          spellCheck={spellCheck}
-          maxImageWidth={maxImageWidth}
-          maxImageHeight={maxImageHeight}
-          uploadSoundSupport={uploadSoundSupport}
-          languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
-        />
-      </div>
-    );
-  },
-);
 
 export class Categories extends React.Component {
   static propTypes = {
@@ -279,6 +241,7 @@ export class Categories extends React.Component {
                 {hasRowLabel && (
                   <RowLabel
                     categoriesPerRow={categoriesPerRow}
+                    disabled={false}
                     rowIndex={rowIndex}
                     markup={rowLabels[rowIndex] || ''}
                     onChange={(val) => this.changeRowLabel(val, rowIndex)}

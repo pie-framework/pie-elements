@@ -27,6 +27,12 @@ const styles = {
   getColumns: function (columns) {
     return columns > 1 ? { gridTemplateColumns: `repeat(${columns}, 1fr)` } : undefined;
   },
+  fieldset: {
+    border: '0px',
+    padding: '0.01em 0 0 0',
+    margin: '0px',
+    minWidth: '0px'
+  },
 };
 
 export class MultipleChoice extends React.Component {
@@ -170,36 +176,38 @@ export class MultipleChoice extends React.Component {
           />
         )}
         {showCorrectAnswerToggle && <br />}
-        <PreviewPrompt className="prompt" defaultClassName="prompt" prompt={prompt} />
-        <div
-          className={classNames(
-            { [classes.gridLayout]: this.props.choicesLayout === 'grid' },
-            {
-              [classes.horizontalLayout]: this.props.choicesLayout === 'horizontal',
-            },
-          )}
-          style={styles.getColumns(this.props.gridColumns)}
-        >
-          {choices.map((choice, index) => (
-            <StyledChoice
-              choicesLayout={this.props.choicesLayout}
-              gridColumns={this.props.gridColumns}
-              key={`choice-${index}`}
-              choice={choice}
-              index={index}
-              choicesLength={choices.length}
-              showCorrect={showCorrect}
-              isEvaluateMode={isEvaluateMode}
-              choiceMode={choiceMode}
-              disabled={disabled}
-              onChoiceChanged={onChoiceChanged}
-              hideTick={choice.hideTick}
-              checked={showCorrect ? choice.correct || false : this.isSelected(choice.value)}
-              correctness={isEvaluateMode ? this.getCorrectness(choice) : undefined}
-              displayKey={this.indexToSymbol(index)}
-            />
-          ))}
-        </div>
+        <fieldset className={classes.fieldset}>
+          <PreviewPrompt className="prompt" defaultClassName="prompt" prompt={prompt} tagName={"legend"} />
+          <div
+            className={classNames(
+              { [classes.gridLayout]: this.props.choicesLayout === 'grid' },
+              {
+                [classes.horizontalLayout]: this.props.choicesLayout === 'horizontal',
+              },
+            )}
+            style={styles.getColumns(this.props.gridColumns)}
+          >
+            {choices.map((choice, index) => (
+              <StyledChoice
+                choicesLayout={this.props.choicesLayout}
+                gridColumns={this.props.gridColumns}
+                key={`choice-${index}`}
+                choice={choice}
+                index={index}
+                choicesLength={choices.length}
+                showCorrect={showCorrect}
+                isEvaluateMode={isEvaluateMode}
+                choiceMode={choiceMode}
+                disabled={disabled}
+                onChoiceChanged={onChoiceChanged}
+                hideTick={choice.hideTick}
+                checked={showCorrect ? choice.correct || false : this.isSelected(choice.value)}
+                correctness={isEvaluateMode ? this.getCorrectness(choice) : undefined}
+                displayKey={this.indexToSymbol(index)}
+              />
+            ))}
+          </div>
+        </fieldset>
       </div>
     );
   }

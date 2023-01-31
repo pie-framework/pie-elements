@@ -462,5 +462,3 @@ exports[`AnswerConfigBlock render snapshot 1`] = `
   </div>
 </div>
 `;
-
-exports[`choice snapshot renders 1`] = `""`;
