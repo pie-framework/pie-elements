@@ -176,6 +176,26 @@
           "description": "How large (in px) should multi-trait-rubric be",
           "type": "string",
           "title": "width"
+        },
+        "minNoOfTraits": {
+          "description": "Minimum number of traits",
+          "type": "number",
+          "title": "minNoOfTraits"
+        },
+        "maxNoOfTraits": {
+          "description": "Maximum number of traits",
+          "type": "number",
+          "title": "maxNoOfTraits"
+        },
+        "minNoOfScales": {
+          "description": "Minimum number of scales",
+          "type": "number",
+          "title": "minNoOfScales"
+        },
+        "maxNoOfScales": {
+          "description": "Maximum number of scales",
+          "type": "number",
+          "title": "maxNoOfScales"
         }
       },
       "required": [
@@ -362,6 +382,26 @@
           "description": "How large (in px) should multi-trait-rubric be",
           "type": "string",
           "title": "width"
+        },
+        "minNoOfTraits": {
+          "description": "Minimum number of traits",
+          "type": "number",
+          "title": "minNoOfTraits"
+        },
+        "maxNoOfTraits": {
+          "description": "Maximum number of traits",
+          "type": "number",
+          "title": "maxNoOfTraits"
+        },
+        "minNoOfScales": {
+          "description": "Minimum number of scales",
+          "type": "number",
+          "title": "minNoOfScales"
+        },
+        "maxNoOfScales": {
+          "description": "Maximum number of scales",
+          "type": "number",
+          "title": "maxNoOfScales"
         }
       },
       "required": [
