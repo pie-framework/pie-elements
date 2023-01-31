@@ -11,8 +11,8 @@ export default {
     height: 0,
     width: 0,
   },
-  hotspotColor: 'rgba(137, 183, 244, 0.65)',
-  hotspotList: ['rgba(137, 183, 244, 0.65)'],
+  hotspotColor: 'rgba(137, 183, 244, 0.25)',
+  hotspotList: ['rgba(137, 183, 244, 0.25)'],
   outlineColor: 'blue',
   outlineList: ['blue'],
 };
