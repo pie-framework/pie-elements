@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import cloneDeep from 'lodash/cloneDeep';
 import isEmpty from 'lodash/isEmpty';
 
 import { withStyles } from '@material-ui/core/styles';
@@ -63,7 +64,7 @@ export class Main extends React.Component {
 
   onScaleChanged = (scaleIndex, params) => {
     const { model, onModelChanged } = this.props;
-    const { scales } = model || {};
+    const scales = cloneDeep((model || {}).scales);
 
     if (scaleIndex < 0 || scaleIndex >= scales.length || isEmpty(params)) return false;
 

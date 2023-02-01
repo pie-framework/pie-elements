@@ -190,7 +190,7 @@ export interface ExtendedTextEntryConfigure extends PromptConfig, CommonConfigSe
   maxImageHeight?: ConfigureMaxImageDimensionsProp;
 
   /**
-   * Rubric configuration
+   * Rubric configuration - only relevant in environments that use pie-player-components
    */
   withRubric?: ConfigureWithForceProp;
 }

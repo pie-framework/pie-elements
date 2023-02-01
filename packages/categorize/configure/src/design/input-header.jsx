@@ -9,6 +9,7 @@ export class InputHeader extends React.Component {
     classes: PropTypes.object.isRequired,
     className: PropTypes.string,
     deleteFocusedEl: PropTypes.func,
+    disabled: PropTypes.bool,
     focusedEl: PropTypes.number,
     index: PropTypes.number,
     label: PropTypes.string,
@@ -46,6 +47,7 @@ export class InputHeader extends React.Component {
       classes,
       className,
       deleteFocusedEl,
+      disabled,
       imageSupport,
       toolbarOpts,
       spellCheck,
@@ -63,6 +65,7 @@ export class InputHeader extends React.Component {
       <div className={classNames(classes.inputHeader, className)}>
         <EditableHtml
           imageSupport={imageSupport}
+          disabled={disabled}
           ref={(ref) => (this.inputRef = ref)}
           autoWidthToolbar
           label={'label'}

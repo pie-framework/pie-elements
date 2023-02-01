@@ -14,15 +14,16 @@ export class Header extends React.Component {
     label: PropTypes.string.isRequired,
     info: PropTypes.any,
     buttonDisabled: PropTypes.bool,
+    variant: PropTypes.string,
   };
 
   static defaultProps = {};
   render() {
-    const { classes, className, onAdd, label, buttonLabel, info, buttonDisabled } = this.props;
+    const { classes, className, onAdd, label, buttonLabel, info, buttonDisabled, variant } = this.props;
     return (
       <div className={classNames(classes.header, className)}>
         <div className={classes.titleContainer}>
-          <Typography variant="title" className={classes.title}>
+          <Typography variant={variant || "title"} className={classes.title}>
             {label}
           </Typography>
           {info}

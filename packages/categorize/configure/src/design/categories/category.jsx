@@ -71,13 +71,13 @@ export class Category extends React.Component {
       <Card className={classNames(classes.category, className, {
         [classes.duplicateError]: isDuplicated
       })}>
-        {onChange && (
             <span>
               <InputHeader
                 label={category.label}
                 focusedEl={focusedEl}
                 deleteFocusedEl={deleteFocusedEl}
                 index={index}
+                disabled={!!alternateResponseIndex || alternateResponseIndex===0}
                 error={error}
                 onChange={this.changeLabel}
                 onDelete={onDelete}
@@ -90,8 +90,6 @@ export class Category extends React.Component {
              />
               {error && <div className={classes.errorText}>{error}</div>}
               </span>
-          )
-        }
         <PlaceHolder
           className={classes.placeHolder}
           alternateResponseIndex={alternateResponseIndex}

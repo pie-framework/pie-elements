@@ -137,7 +137,7 @@ export interface ImageClozeAssociationConfigure extends PromptConfig, CommonConf
   teacherInstructions?: ConfigureProp;
 
   /**
-   * Rubric configuration
+   * Rubric configuration - only relevant in environments that use pie-player-components
    */
   withRubric?: ConfigureProp;
 }
