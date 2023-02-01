@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@7.7.1...@pie-element/categorize@7.8.0) (2023-02-01)
+
+
+### Bug Fixes
+
+* **categorize:** alternateResponse heading size smaller-PD-1988 ([29958c5](https://github.com/pie-framework/pie-elements/commit/29958c55e850ac7543acf1024baf6272f5594f9b))
+* **categorize:** fix style after adding the placeholder for choices ([89d94e3](https://github.com/pie-framework/pie-elements/commit/89d94e3d22aa12d0490ccc515149f9401f9a0d12))
+* **categorize:** set allowAlternate back on false ([1079a0f](https://github.com/pie-framework/pie-elements/commit/1079a0f2a745262072195c8d0cd2db69ae01dcf1))
+* **categorize:** set back allowAlternateEnabled on false ([66d1829](https://github.com/pie-framework/pie-elements/commit/66d1829dec4f09ed380b25e222f0356ec4adb1c5))
+* **categorizr:** Categories should be labeled for alternate response-PD-1987 ([c6b92e6](https://github.com/pie-framework/pie-elements/commit/c6b92e60af5f0001a5de6899bfde36771c56c055))
+
+
+### Features
+
+* update pie-libs ([0af590d](https://github.com/pie-framework/pie-elements/commit/0af590d624f4b2c0af58039e935531cef52e2a86))
+* **categorize:** add props to alternate ([2604ec7](https://github.com/pie-framework/pie-elements/commit/2604ec798b4001b8b6e83547ec1e11553b2ad940))
+
+
+
+
+
 ## [7.7.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@7.7.0...@pie-element/categorize@7.7.1) (2023-01-17)
 
 **Note:** Version bump only for package @pie-element/categorize

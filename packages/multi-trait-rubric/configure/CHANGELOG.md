@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-configure@2.3.0...@pie-element/multi-trait-rubric-configure@2.4.0) (2023-02-01)
+
+
+### Bug Fixes
+
+* **multi-trait-rubric:** fix scrolling PD-2467 ([d5d597a](https://github.com/pie-framework/pie-elements/commit/d5d597ae569cd77a7cf1f097de87b3d55b73bdc4))
+
+
+### Features
+
+* update pie-libs ([0af590d](https://github.com/pie-framework/pie-elements/commit/0af590d624f4b2c0af58039e935531cef52e2a86))
+
+
+
+
+
 # [2.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-configure@2.2.0...@pie-element/multi-trait-rubric-configure@2.3.0) (2023-01-17)
 
 

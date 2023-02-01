@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.9.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.8.0...@pie-element/passage@1.9.0) (2023-02-01)
+
+
+### Features
+
+* update pie-libs ([0af590d](https://github.com/pie-framework/pie-elements/commit/0af590d624f4b2c0af58039e935531cef52e2a86))
+* **passage:** add ARIA attributes ([87b1cce](https://github.com/pie-framework/pie-elements/commit/87b1cce0c8a50e382072f28cfa2288e42a45d9b0))
+
+
+
+
+
 # [1.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.7.17...@pie-element/passage@1.8.0) (2022-12-20)
 
 

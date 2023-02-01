@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric-configure@1.4.0...@pie-element/complex-rubric-configure@1.5.0) (2023-02-01)
+
+
+### Bug Fixes
+
+* **complex-rubric:** default rubricType to simple if it's undefined or null PD-2427 ([9760d46](https://github.com/pie-framework/pie-elements/commit/9760d469d599c8a4edf02ee253e3e0d65c520b67))
+
+
+### Features
+
+* update pie-libs ([0af590d](https://github.com/pie-framework/pie-elements/commit/0af590d624f4b2c0af58039e935531cef52e2a86))
+
+
+
+
+
 # [1.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric-configure@1.3.0...@pie-element/complex-rubric-configure@1.4.0) (2023-01-17)
 
 

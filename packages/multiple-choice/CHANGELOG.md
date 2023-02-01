@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@7.6.0...@pie-element/multiple-choice@7.7.0) (2023-02-01)
+
+
+### Features
+
+* update pie-libs ([0af590d](https://github.com/pie-framework/pie-elements/commit/0af590d624f4b2c0af58039e935531cef52e2a86))
+* **multiple-choice:** add ARIA attributes ([e257a64](https://github.com/pie-framework/pie-elements/commit/e257a64a7c3c12496a01947a83a7412e89be2014))
+* **multiple-choice:** add fieldset and legend tag to radio type choices ([169d4c3](https://github.com/pie-framework/pie-elements/commit/169d4c32b36fe6fee586cc1fbaef596d60e33562))
+
+
+
+
+
 # [7.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@7.5.0...@pie-element/multiple-choice@7.6.0) (2023-01-17)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-controller@4.0.3...@pie-element/drag-in-the-blank-controller@4.1.0) (2023-02-01)
+
+
+### Features
+
+* update pie-libs ([0af590d](https://github.com/pie-framework/pie-elements/commit/0af590d624f4b2c0af58039e935531cef52e2a86))
+
+
+
+
+
 ## [4.0.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-controller@4.0.2...@pie-element/drag-in-the-blank-controller@4.0.3) (2023-01-05)
 
 
