@@ -43,6 +43,7 @@ export class Main extends React.Component {
       scales = [];
     }
 
+    // if no default trait label is defined, take the trait label of the first scale
     defaultTraitLabel = defaultTraitLabel || (scales[0] ? scales[0].traitLabel : '');
 
     if (scales.length === maxNoOfScales) {
@@ -247,8 +248,7 @@ export class Main extends React.Component {
       settingsPanelDisabled,
       maxNoOfTraits,
       minNoOfTraits,
-      width,
-      defaultTraitLabel
+      width
     } = configuration || {};
     const {
       scales,
@@ -316,7 +316,6 @@ export class Main extends React.Component {
                 maxPointsEnabled={maxPointsEnabled}
                 maxNoOfTraits={maxNoOfTraits}
                 minNoOfTraits={minNoOfTraits}
-                defaultTraitLabel={defaultTraitLabel}
                 {...this.props}
                 classes={{}}
               />
