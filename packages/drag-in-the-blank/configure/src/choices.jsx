@@ -46,6 +46,7 @@ export class Choices extends React.Component {
     uploadSoundSupport: PropTypes.object,
   };
 
+  editorInstance = null;
   state = { showWarning: false };
 
   componentDidMount() {
@@ -54,10 +55,6 @@ export class Choices extends React.Component {
 
   componentDidUpdate() {
     this.rerenderMath();
-
-    if (this.focusedNodeRef) {
-      this.focusedNodeRef.focus('end');
-    }
   }
 
   rerenderMath = () => {
@@ -216,7 +213,7 @@ export class Choices extends React.Component {
                 }}
               >
                 <EditableHtml
-                  ref={(ref) => (this.focusedNodeRef = ref)}
+                  onEditor={editor => (this.editorInstance = editor)}
                   className={classes.prompt}
                   markup={choice.value}
                   pluginProps={{
