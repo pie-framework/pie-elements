@@ -32,6 +32,15 @@ class Main extends React.Component {
     parentNode.setAttribute('role', 'region');
   }
 
+  componentDidUpdate(prevProps) {
+    const { model } = this.props;
+    if (prevProps.model.choiceMode !== model.choiceMode) {
+      const ariaLabel = model.choiceMode == 'radio' ? 'Multiple Choice Question' : 'Multiple Correct Answer Question';
+      const parentNode = this.childRef.current.parentNode;
+      parentNode.setAttribute('aria-label', ariaLabel);
+    }
+  }
+
   render() {
     const { model, onChoiceChanged, session, classes } = this.props;
 
