@@ -23,21 +23,21 @@ class Main extends React.Component {
     this.childRef = React.createRef();
   }
 
-  componentDidMount() {
+  setAriaLabel = () => {
     const { model } = this.props;
-    const ariaLabel = model.choiceMode == 'radio' ? 'Multiple Choice Question' : 'Multiple Correct Answer Question';
-
-    const parentNode = this.childRef.current?.parentNode?.parentNode;
+    const ariaLabel = model.choiceMode === 'radio' ? 'Multiple Choice Question' : 'Multiple Correct Answer Question';
+    const parentNode = this.childRef.current.parentNode;
     parentNode.setAttribute('aria-label', ariaLabel);
     parentNode.setAttribute('role', 'region');
+  };
+
+  componentDidMount() {
+    this.setAriaLabel();
   }
 
   componentDidUpdate(prevProps) {
-    const { model } = this.props;
-    if (prevProps.model.choiceMode !== model.choiceMode) {
-      const ariaLabel = model.choiceMode == 'radio' ? 'Multiple Choice Question' : 'Multiple Correct Answer Question';
-      const parentNode = this.childRef.current.parentNode;
-      parentNode.setAttribute('aria-label', ariaLabel);
+    if (prevProps.model.choiceMode !== this.props.model.choiceMode) {
+      this.setAriaLabel();
     }
   }
 
