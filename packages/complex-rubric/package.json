@@ -11,6 +11,7 @@
     "@pie-element/rubric": "^2.4.0",
     "@pie-framework/pie-player-events": "^0.1.0",
     "@pie-lib/rubric": "1.0.0-beta.1",
+    "is-plain-object": "^5.0.0",
     "classnames": "^2.2.5",
     "debug": "^4.1.1",
     "lodash": "^4.17.11",

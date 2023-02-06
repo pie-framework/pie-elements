@@ -2398,22 +2398,6 @@
     prop-types "^15.6.2"
     react-measure "^2.2.2"
 
-"@pie-lib/config-ui@^11.3.12":
-  version "11.3.12"
-  resolved "https://registry.yarnpkg.com/@pie-lib/config-ui/-/config-ui-11.3.12.tgz#ce9949e8de4efc882f29d9cdffe358b2c27a5680"
-  integrity sha512-asOhkujIqRhLYb7K4xea9lixbOvrIFfhpFTyffjuh5lnT7SMzn5KzURam1aduGFBtVa4g0EzyE5BK8LyyuFIwg==
-  dependencies:
-    "@material-ui/core" "^3.8.3"
-    "@material-ui/icons" "^3.0.2"
-    "@pie-lib/editable-html" "^9.5.12"
-    "@pie-lib/icons" "^2.4.42"
-    "@pie-lib/render-ui" "^4.14.12"
-    classnames "^2.2.6"
-    debug "^4.1.1"
-    lodash "^4.17.11"
-    prop-types "^15.6.2"
-    react-measure "^2.2.2"
-
 "@pie-lib/controller-utils@^0.2.42":
   version "0.2.42"
   resolved "https://registry.yarnpkg.com/@pie-lib/controller-utils/-/controller-utils-0.2.42.tgz#1850df7f452e84cd03f8c825879f841491f0aaee"
@@ -2494,40 +2478,6 @@
     slate-react "^0.83.0"
     slate-schema-violations "^0.1.39"
     slate-soft-break "^0.9.0"
-    to-style "^1.3.3"
-
-"@pie-lib/editable-html@^9.5.12":
-  version "9.5.12"
-  resolved "https://registry.yarnpkg.com/@pie-lib/editable-html/-/editable-html-9.5.12.tgz#c941af920a321391ec110f0fbec4c79233923002"
-  integrity sha512-4/e8kkk1N7gq0S0h+wCySVKQ9Fpn3esTtLStoFaGUQBLWVYAKc7LFNR7mskPQX6zo7f56iZk2n/PMqaULFofzg==
-  dependencies:
-    "@material-ui/core" "^3.8.3"
-    "@material-ui/icons" "^3.0.2"
-    "@material-ui/styles" "^3.0.0-alpha.10"
-    "@pie-lib/drag" "^2.1.12"
-    "@pie-lib/math-rendering" "^2.5.12"
-    "@pie-lib/math-toolbar" "^1.11.22"
-    "@pie-lib/render-ui" "^4.14.12"
-    change-case "^3.0.2"
-    classnames "^2.2.6"
-    debug "^4.1.1"
-    immutable "^4.0.0-rc.12"
-    keycode "^2.2.0"
-    lodash "^4.17.11"
-    prop-types "^15.6.2"
-    react-attr-converter "^0.3.1"
-    react-jss "^8.6.1"
-    react-portal "^4.2.0"
-    slate "^0.36.2"
-    slate-dev-environment "^0.2.0"
-    slate-edit-list "^0.11.3"
-    slate-edit-table "^0.17.0"
-    slate-html-serializer "^0.6.12"
-    slate-plain-serializer "^0.5.26"
-    slate-prop-types "^0.4.38"
-    slate-react "^0.14.3"
-    slate-schema-violations "^0.1.39"
-    slate-soft-break "^0.8.1"
     to-style "^1.3.3"
 
 "@pie-lib/feedback@^0.4.42":
@@ -2668,19 +2618,6 @@
     keycode "^2.2.0"
     lodash "^4.17.11"
 
-"@pie-lib/math-toolbar@^1.11.22":
-  version "1.11.22"
-  resolved "https://registry.yarnpkg.com/@pie-lib/math-toolbar/-/math-toolbar-1.11.22.tgz#80e2b5dc0cabd09e0e1ef1b442dbe6e372f6049c"
-  integrity sha512-2/vR8sO0OJxzVvhhchNZFZJTUdudstdHjTqEkXBPQ2zkVFjBxhenIQmcyqXt+jE4k+JVExNMq62aB9TmR052wg==
-  dependencies:
-    "@material-ui/core" "^3.8.3"
-    "@material-ui/icons" "^3.0.2"
-    "@pie-lib/math-input" "^6.10.12"
-    classnames "^2.2.6"
-    debug "^4.1.1"
-    keycode "^2.2.0"
-    lodash "^4.17.11"
-
 "@pie-lib/math-toolbar@^1.9.3":
   version "1.9.3"
   resolved "https://registry.yarnpkg.com/@pie-lib/math-toolbar/-/math-toolbar-1.9.3.tgz#be2caf4e5a58f009008154912d29f91092958394"
@@ -2762,14 +2699,14 @@
     react-beautiful-dnd "^11.0.2"
     react-dom "^16.9.0"
 
-"@pie-lib/scoring-config@^3.6.12":
-  version "3.6.12"
-  resolved "https://registry.yarnpkg.com/@pie-lib/scoring-config/-/scoring-config-3.6.12.tgz#eb42f86d054bee4e4b8b6885ebbc2ce1c9064c8e"
-  integrity sha512-EnkDz3+fx0ZnZ6jmopUXPXu4BGcOQLFUVctmHIGLvEObbWtx7oQ06rXeZGTVjtlKeXuySc+d7YEW4T0dMWaqNA==
+"@pie-lib/scoring-config@4.0.0-beta.1":
+  version "4.0.0-beta.1"
+  resolved "https://registry.yarnpkg.com/@pie-lib/scoring-config/-/scoring-config-4.0.0-beta.1.tgz#59dadb18509b152839014da72d5047769d690da7"
+  integrity sha512-91csIqrBx5fWCCTX6CAnKkIGTlyREpPfI0RkX7RBZiJgpoIqVAgOyE5e8iEcrEvctj6rtmvewrGQKczuEMBU7g==
   dependencies:
     "@material-ui/core" "^3.8.3"
     "@material-ui/icons" "^3.0.2"
-    "@pie-lib/config-ui" "^11.3.12"
+    "@pie-lib/config-ui" "12.0.0-beta.2"
     classnames "^2.2.6"
     debug "^4.1.1"
     lodash "^4.17.11"

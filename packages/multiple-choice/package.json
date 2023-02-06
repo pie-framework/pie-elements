@@ -11,6 +11,7 @@
     "@pie-lib/correct-answer-toggle": "^2.3.62",
     "@pie-lib/math-rendering": "^2.5.12",
     "@pie-lib/render-ui": "^4.14.12",
+    "is-plain-object": "^5.0.0",
     "classnames": "^2.2.5",
     "debug": "^4.1.1",
     "enzyme-to-json": "^3.3.3",
