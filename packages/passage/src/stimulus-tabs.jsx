@@ -62,6 +62,17 @@ class StimulusTabs extends React.Component {
     activeTab: 0,
   };
 
+  constructor() {
+    super();
+    this.ref = React.createRef();
+  }
+
+  componentDidMount() {
+    const parentNode = this.ref.current.parentNode;
+    parentNode.setAttribute('aria-label', 'Passage');
+    parentNode.setAttribute('role', 'region');
+  } 
+
   handleChange = (event, activeTab) => {
     this.setState(() => ({ activeTab }));
     setTimeout(() => {
@@ -100,7 +111,7 @@ class StimulusTabs extends React.Component {
 
     if (tabs && tabs.length > 1) {
       return disabledTabs ? (
-        <div className="passages" aria-label='Passage' role='region'>
+        <div className="passages" ref={this.ref}>
           {tabs.map((tab) => (
             <div key={tab.id} className={`passage-${tab.id}`}>
               <TabContainer multiple>
@@ -116,7 +127,7 @@ class StimulusTabs extends React.Component {
           ))}
         </div>
       ) : (
-        <div className={classes.root} aria-label='Passage' role='region'>
+        <div className={classes.root} ref={this.ref}>
           <Tabs
             classes={{
               root: classes.stickyTabs,
@@ -151,7 +162,7 @@ class StimulusTabs extends React.Component {
       );
     } else if (tabs && tabs[0]) {
       return (
-        <div className="passage" style={{ whiteSpace: 'break-spaces' }} aria-label='Passage' role='region'>
+        <div className="passage" style={{ whiteSpace: 'break-spaces' }} ref={this.ref}>
           <TabContainer>
             <div className="text" dangerouslySetInnerHTML={{ __html: this.parsedText(tabs[0].text) }} />
           </TabContainer>
