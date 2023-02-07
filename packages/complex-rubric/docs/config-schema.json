@@ -47,6 +47,11 @@
             }
           }
         },
+        "width": {
+          "description": "How large can the rubric be",
+          "type": "string",
+          "title": "width"
+        },
         "showPrompt": {
           "description": "Determines whether prompt field will be displayed or not",
           "default": true,
@@ -314,6 +319,11 @@
               "title": "label"
             }
           }
+        },
+        "width": {
+          "description": "How large can the rubric be",
+          "type": "string",
+          "title": "width"
         },
         "showPrompt": {
           "description": "Determines whether prompt field will be displayed or not",
