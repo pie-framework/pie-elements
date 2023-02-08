@@ -5,11 +5,22 @@ import classNames from 'classnames';
 import ChoiceInput from './choice-input';
 
 export class Choice extends React.Component {
+  constructor(props) {
+    super(props);
+   
+    this.state = {
+
+      checked:!this.props.checked
+    };
+  }
+
   onChange = (choice) => {
     const { disabled, onChoiceChanged } = this.props;
 
     if (!disabled) {
+
       onChoiceChanged(choice);
+      this.setState({ checked: true });
     }
   };
 
@@ -22,7 +33,7 @@ export class Choice extends React.Component {
       isEvaluateMode,
       choiceMode,
       disabled,
-      checked,
+    //  checked,
       correctness,
       displayKey,
       classes,
@@ -30,7 +41,7 @@ export class Choice extends React.Component {
       gridColumns,
     } = this.props;
     const choiceClass = 'choice' + (index === choicesLength - 1 ? ' last' : '');
-
+const {checked} =this.state
     const feedback = !isEvaluateMode || showCorrect ? '' : choice.feedback;
 
     const choiceProps = {

@@ -15,6 +15,7 @@ export function updateSessionValue(session, choiceMode, data) {
   if (choiceMode === 'radio') {
     if (data.selected) {
       session.value = [data.value];
+      console.log(session, "session")
     } else {
       session.value = [];
     }

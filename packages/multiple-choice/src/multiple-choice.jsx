@@ -60,6 +60,7 @@ export class MultipleChoice extends React.Component {
 
     this.state = {
       showCorrect: this.props.alwaysShowCorrect || false,
+      checked: false
     };
 
     this.onToggle = this.onToggle.bind(this);
@@ -79,6 +80,13 @@ export class MultipleChoice extends React.Component {
     if (nextProps.alwaysShowCorrect) {
       this.setState({ showCorrect: true });
     }
+
+    if (nextProps.session.value ) {
+      const sessionValue = nextProps.session && nextProps.session.value;
+      if (sessionValue.indexOf && sessionValue.indexOf(nextProps.choices[2].value) >= 0){
+      console.log(nextProps.session, "nextProps.session.value")
+      this.setState({ checked: true });
+    }}
   }
 
   isSelected(value) {
@@ -144,6 +152,8 @@ export class MultipleChoice extends React.Component {
     const isEvaluateMode = mode === 'evaluate';
     const showCorrectAnswerToggle = isEvaluateMode && !responseCorrect;
 
+    console.log(this.state.checked, "this.state.checked")
+
     return (
       <div className={classNames(classes.corespringChoice, 'multiple-choice')}>
         {teacherInstructions && (
@@ -201,7 +211,7 @@ export class MultipleChoice extends React.Component {
                 disabled={disabled}
                 onChoiceChanged={onChoiceChanged}
                 hideTick={choice.hideTick}
-                checked={showCorrect ? choice.correct || false : this.isSelected(choice.value)}
+                checked={showCorrect ? choice.correct || false :this.isSelected(choice.value)}
                 correctness={isEvaluateMode ? this.getCorrectness(choice) : undefined}
                 displayKey={this.indexToSymbol(index)}
               />
