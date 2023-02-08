@@ -16,7 +16,7 @@ export async function createDefaultModel(model = {}) {
 
 export const normalize = (question) => ({
   ...defaults,
-  feedbackEnabled: true,
+  feedbackEnabled: false,
   rationaleEnabled: true,
   promptEnabled: true,
   teacherInstructionsEnabled: true,

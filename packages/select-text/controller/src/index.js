@@ -102,7 +102,7 @@ export const normalizeSession = (s) => ({
 });
 
 export const normalize = (question) => ({
-  feedbackEnabled: true,
+  feedbackEnabled: false,
   rationaleEnabled: true,
   promptEnabled: true,
   teacherInstructionsEnabled: true,

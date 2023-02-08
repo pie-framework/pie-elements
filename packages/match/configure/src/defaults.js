@@ -21,7 +21,7 @@ export default {
       },
     ],
     scoringType: 'auto',
-    feedbackEnabled: true,
+    feedbackEnabled: false,
     promptEnabled: true,
     rationaleEnabled: true,
     teacherInstructionsEnabled: true,
