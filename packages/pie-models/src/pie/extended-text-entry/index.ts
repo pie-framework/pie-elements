@@ -6,7 +6,6 @@ import {
   ConfigureProp,
   ConfigurePropWithEnabled,
   ConfigureMaxImageDimensionsProp,
-  ConfigureWithForceProp,
 } from '../ConfigurationProp';
 
 interface Dimensions {
@@ -192,5 +191,5 @@ export interface ExtendedTextEntryConfigure extends PromptConfig, CommonConfigSe
   /**
    * Rubric configuration - only relevant in environments that use pie-player-components
    */
-  withRubric?: ConfigureWithForceProp;
+  withRubric?: ConfigureProp;
 }

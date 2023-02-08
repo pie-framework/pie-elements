@@ -3,7 +3,6 @@ import {
   ConfigureProp,
   ConfigurePropWithEnabled,
   ConfigureMaxImageDimensionsProp,
-  ConfigureWithForceProp,
 } from '../ConfigurationProp';
 import { PromptConfig } from '../../PromptConfig';
 import { Dimension } from '../../Dimension';
@@ -106,5 +105,5 @@ export interface DrawingResponseConfigure extends PromptConfig {
   /**
    * Rubric configuration - only relevant in environments that use pie-player-components
    */
-  withRubric?: ConfigureWithForceProp;
+  withRubric?: ConfigureProp;
 }
