@@ -31,7 +31,7 @@ const styles = {
     border: '0px',
     padding: '0.01em 0 0 0',
     margin: '0px',
-    minWidth: '0px'
+    minWidth: '0px',
   },
 };
 
@@ -58,13 +58,21 @@ export class MultipleChoice extends React.Component {
   constructor(props) {
     super(props);
 
+    const sessionValue = this.props.session ? this.props.session.value : [];
+
     this.state = {
       showCorrect: this.props.alwaysShowCorrect || false,
-      checked: false
+      checked: this.props.showCorrect
+        ? this.props.choices.map((choice) => choice.correct)
+        : this.props.choices.map((choice) => this.isSelected(choice.value)),
+      session: this.props.session,
     };
 
     this.onToggle = this.onToggle.bind(this);
+    this.isSelected = this.isSelected.bind(this);
   }
+
+  componentDidUpdate(prevProps) {}
 
   onToggle() {
     if (this.props.mode === 'evaluate') {
@@ -81,16 +89,20 @@ export class MultipleChoice extends React.Component {
       this.setState({ showCorrect: true });
     }
 
-    if (nextProps.session.value ) {
-      const sessionValue = nextProps.session && nextProps.session.value;
-      if (sessionValue.indexOf && sessionValue.indexOf(nextProps.choices[2].value) >= 0){
-      console.log(nextProps.session, "nextProps.session.value")
-      this.setState({ checked: true });
-    }}
+    const sessionValue = nextProps.session && nextProps.session.value;
+    if (sessionValue) {
+      this.setState({
+        //  checked: this.props.showCorrect ? this.props.choices.map(choice => choice.correct) : this.props.choices.map(choice => this.isSelected(choice.value)),
+        session: nextProps.session,
+      });
+    }
   }
 
   isSelected(value) {
-    const sessionValue = this.props.session && this.props.session.value;
+    const sessionValue = this.state.session && this.state.session.value;
+    if (!sessionValue) {
+      return false;
+    }
 
     return sessionValue && sessionValue.indexOf && sessionValue.indexOf(value) >= 0;
   }
@@ -152,7 +164,8 @@ export class MultipleChoice extends React.Component {
     const isEvaluateMode = mode === 'evaluate';
     const showCorrectAnswerToggle = isEvaluateMode && !responseCorrect;
 
-    console.log(this.state.checked, "this.state.checked")
+    console.log(this.state.checked, 'this.state.checked');
+    this.state.checked.map((check, index) => console.log(check, index));
 
     return (
       <div className={classNames(classes.corespringChoice, 'multiple-choice')}>
@@ -187,7 +200,7 @@ export class MultipleChoice extends React.Component {
         )}
         {showCorrectAnswerToggle && <br />}
         <fieldset className={classes.fieldset}>
-          <PreviewPrompt className="prompt" defaultClassName="prompt" prompt={prompt} tagName={"legend"} />
+          <PreviewPrompt className="prompt" defaultClassName="prompt" prompt={prompt} tagName={'legend'} />
           <div
             className={classNames(
               { [classes.gridLayout]: this.props.choicesLayout === 'grid' },
@@ -211,7 +224,8 @@ export class MultipleChoice extends React.Component {
                 disabled={disabled}
                 onChoiceChanged={onChoiceChanged}
                 hideTick={choice.hideTick}
-                checked={showCorrect ? choice.correct || false :this.isSelected(choice.value)}
+                // checked={showCorrect ? choice.correct || false :this.isSelected(choice.value)}
+                checked={this.state.checked[index]}
                 correctness={isEvaluateMode ? this.getCorrectness(choice) : undefined}
                 displayKey={this.indexToSymbol(index)}
               />

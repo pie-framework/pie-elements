@@ -99,7 +99,6 @@ export const StyledRadio = withStyles(inputStyles)((props, state) => {
   const { correctness, classes,checked, onChange, disabled, accessibility, value } = props;
   const key = (k) => (correctness ? `${correctness}-${k}` : k);
 
-console.log("value", value)
   const resolved = {
     root: classes[key('root')],
     checked: classes[key('checked')],
@@ -107,8 +106,6 @@ console.log("value", value)
   };
 
   const miniProps = { checked, onChange, disabled };
-  console.log(miniProps, "miniprops")
-  console.log(checked, "checked")
 
   return (
     <Radio
@@ -174,8 +171,6 @@ export class ChoiceInput extends React.Component {
       selected: !this.props.checked,
       checked: true,
     });
-
-    console.log(this.props, "props in togle")
    
   }
 
@@ -201,13 +196,10 @@ export class ChoiceInput extends React.Component {
    const { selected } = this.state;
     const Tag = choiceMode === 'checkbox' ? StyledCheckbox : StyledRadio;
     const classSuffix = choiceMode === 'checkbox' ? 'checkbox' : 'radio-button';
-console.log(this.props.session, " this.props.session")
+
     const holderClassNames = classNames(classes.checkboxHolder, {
       [classes.horizontalLayout]: choicesLayout === 'horizontal',
     });
-
-    console.log(value, "value")
-    console.log(checked, "checked")
 
     return (
       <div className={classNames(className, 'corespring-' + classSuffix, 'choice-input')}>
@@ -223,7 +215,7 @@ console.log(this.props.session, " this.props.session")
               control={
                 <Tag
                   accessibility={accessibility}
-                  checked={selected && checked}
+                  checked={checked}
                   correctness={correctness}
                   value={value}
                   onChange={this.onToggleChoice}
