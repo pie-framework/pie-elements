@@ -94,8 +94,6 @@ export default class ExtendedTextEntry extends HTMLElement {
   }
 
   render() {
-    console.log('this._model.rubricEnabled', this._model.rubricEnabled);
-
     if (this._model) {
       const element = React.createElement(Main, {
         model: this._model,
