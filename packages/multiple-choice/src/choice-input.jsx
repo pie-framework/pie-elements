@@ -95,8 +95,8 @@ export const StyledCheckbox = withStyles(inputStyles)((props) => {
   );
 });
 
-export const StyledRadio = withStyles(inputStyles)((props, state) => {
-  const { correctness, classes,checked, onChange, disabled, accessibility, value } = props;
+export const StyledRadio = withStyles(inputStyles)((props) => {
+  const { correctness, classes, checked, onChange, disabled, accessibility, value } = props;
   const key = (k) => (correctness ? `${correctness}-${k}` : k);
 
   const resolved = {
@@ -105,18 +105,15 @@ export const StyledRadio = withStyles(inputStyles)((props, state) => {
     disabled: classes[key('disabled')],
   };
 
-  const miniProps = { checked, onChange, disabled };
+  const miniProps = { checked, onChange, disabled, value };
 
   return (
     <Radio
       aria-label={accessibility || value}
       aria-checked={checked}
-       value={value}
-     // {...miniProps}
+      value={value}
+      {...miniProps}
       className={CLASS_NAME}
-  //    disabled={disabled}
-      onChange={onChange}
-      checked={checked}
       classes={{
         root: resolved.root,
         checked: resolved.checked,
@@ -156,22 +153,19 @@ export class ChoiceInput extends React.Component {
   constructor(props) {
     super(props);
     this.onToggleChoice = this.onToggleChoice.bind(this);
+
     this.state = {
-      selectedValue: null,
-      selected:false
+      selectedValue: props.checked ? props.value : ""
     };
   }
 
-
   onToggleChoice(event) {
-   this.setState({ selectedValue: event.target.value });
-   this.setState({ selected: true });
+    this.setState({ selectedValue: event.target.value });
     this.props.onChange({
       value: this.props.value,
       selected: !this.props.checked,
-      checked: true,
+      checked: true
     });
-   
   }
 
   render() {
@@ -191,15 +185,17 @@ export class ChoiceInput extends React.Component {
       choicesLayout,
       onChange,
       value,
-      checked
+      checked,
     } = this.props;
-   const { selected } = this.state;
     const Tag = choiceMode === 'checkbox' ? StyledCheckbox : StyledRadio;
     const classSuffix = choiceMode === 'checkbox' ? 'checkbox' : 'radio-button';
 
     const holderClassNames = classNames(classes.checkboxHolder, {
       [classes.horizontalLayout]: choicesLayout === 'horizontal',
     });
+
+
+    console.log(this.state.selectedValue, "this.state.selectedValue")
 
     return (
       <div className={classNames(className, 'corespring-' + classSuffix, 'choice-input')}>
@@ -208,21 +204,18 @@ export class ChoiceInput extends React.Component {
           <div className={classNames(holderClassNames, 'checkbox-holder')}>
             <StyledFormControlLabel
               label={displayKey ? displayKey + `. ${label}` : ` ${label}`}
-              onChange={this.onToggleChoice}
-              checked={true}
-
               value={value}
               control={
                 <Tag
                   accessibility={accessibility}
-                  checked={checked}
+                 // checked={this.state.selectedValue === value}
+                 checked={checked}
                   correctness={correctness}
                   value={value}
-                  onChange={this.onToggleChoice}
+                  onChange={onChange}
                 />
               }
             />
-          
           </div>
         </div>
         {rationale && <PreviewPrompt className="rationale" defaultClassName="rationale" prompt={rationale} />}
