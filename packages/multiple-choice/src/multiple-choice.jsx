@@ -31,7 +31,7 @@ const styles = {
     border: '0px',
     padding: '0.01em 0 0 0',
     margin: '0px',
-    minWidth: '0px'
+    minWidth: '0px',
   },
 };
 
@@ -60,32 +60,44 @@ export class MultipleChoice extends React.Component {
 
     this.state = {
       selectedValue: null,
+      selectedValues: [],
       showCorrect: this.props.alwaysShowCorrect || false,
-      checked: this.props.showCorrect ? this.props.choices.map(choice => choice.correct) : this.props.choices.map(choice => this.isSelected(choice.value)),
     };
-  
+
     this.onToggle = this.onToggle.bind(this);
     this.isSelected = this.isSelected.bind(this);
-
   }
 
   isSelected(value) {
     const sessionValue = this.props.session && this.props.session.value;
-  if (!sessionValue) {
-    return false;
-  }
+    if (!sessionValue) {
+      return false;
+    }
 
-  return sessionValue.indexOf(value) >= 0 && sessionValue[0] === value
+    return sessionValue.indexOf(value) >= 0 && sessionValue[0] === value;
   }
 
   handleChange = (event) => {
-    this.setState({ selectedValue: event.target.value });
+    const target = event.target;
+
+    this.setState({ selectedValue: target.value });
   };
 
-  componentDidUpdate(prevProps) {
-    console.log(prevProps.session, "prev sesion",  this.props.session, "this props session")
+  handleChangeCheckboxes = (event) => {
+    const { value, checked } = event.target;
 
-  }
+    this.setState((prevState) => {
+      let selectedValues = [...prevState.selectedValues];
+
+      if (checked) {
+        selectedValues.push(value);
+      } else {
+        selectedValues = selectedValues.filter((currentValue) => currentValue !== value);
+      }
+
+      return { selectedValues };
+    });
+  };
 
   onToggle() {
     if (this.props.mode === 'evaluate') {
@@ -101,13 +113,6 @@ export class MultipleChoice extends React.Component {
     if (nextProps.alwaysShowCorrect) {
       this.setState({ showCorrect: true });
     }
-
-    const sessionValue = nextProps.session && nextProps.session.value;
-    if (sessionValue) {
-      this.setState({
-        checked: this.props.showCorrect ? this.props.choices.map(choice => choice.correct) : this.props.choices.map(choice => this.isSelected(choice.value)),
-      });
-    }       
   }
 
   indexToSymbol(index) {
@@ -163,12 +168,9 @@ export class MultipleChoice extends React.Component {
       alwaysShowCorrect,
       animationsDisabled,
     } = this.props;
-    const { showCorrect, selectedValue } = this.state;
+    const { showCorrect, selectedValue, selectedValues } = this.state;
     const isEvaluateMode = mode === 'evaluate';
     const showCorrectAnswerToggle = isEvaluateMode && !responseCorrect;
-
-    console.log(this.state.checked, "this.state.checked")
-    this.state.checked.map((check, index) => console.log(check, index))
 
     return (
       <div className={classNames(classes.corespringChoice, 'multiple-choice')}>
@@ -203,7 +205,7 @@ export class MultipleChoice extends React.Component {
         )}
         {showCorrectAnswerToggle && <br />}
         <fieldset className={classes.fieldset}>
-          <PreviewPrompt className="prompt" defaultClassName="prompt" prompt={prompt} tagName={"legend"} />
+          <PreviewPrompt className="prompt" defaultClassName="prompt" prompt={prompt} tagName={'legend'} />
           <div
             className={classNames(
               { [classes.gridLayout]: this.props.choicesLayout === 'grid' },
@@ -225,12 +227,14 @@ export class MultipleChoice extends React.Component {
                 isEvaluateMode={isEvaluateMode}
                 choiceMode={choiceMode}
                 disabled={disabled}
-              //  onChoiceChanged={onChoiceChanged}
-              onChoiceChanged={this.handleChange}
+                updateSession={onChoiceChanged}
+                onChoiceChanged={this.props.choiceMode === 'radio' ? this.handleChange : this.handleChangeCheckboxes}
                 hideTick={choice.hideTick}
-               // checked={showCorrect ? choice.correct || false :this.isSelected(choice.value)}
-              // checked={this.state.checked[index]}
-              checked={selectedValue === choice.value}
+                checked={
+                  this.props.choiceMode === 'radio'
+                    ? selectedValue === choice.value
+                    : selectedValues.includes(choice.value)
+                }
                 correctness={isEvaluateMode ? this.getCorrectness(choice) : undefined}
                 displayKey={this.indexToSymbol(index)}
               />

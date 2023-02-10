@@ -71,7 +71,7 @@ const inputStyles = {
 };
 
 export const StyledCheckbox = withStyles(inputStyles)((props) => {
-  const { correctness, classes, checked, onChange, disabled, accessibility } = props;
+  const { correctness, classes, checked, onChange, disabled, accessibility, value } = props;
   const key = (k) => (correctness ? `${correctness}-${k}` : k);
 
   const resolved = {
@@ -84,6 +84,7 @@ export const StyledCheckbox = withStyles(inputStyles)((props) => {
   return (
     <Checkbox
       aria-label={accessibility}
+      value={value}
       {...miniProps}
       className={CLASS_NAME}
       classes={{
@@ -155,16 +156,17 @@ export class ChoiceInput extends React.Component {
     this.onToggleChoice = this.onToggleChoice.bind(this);
 
     this.state = {
-      selectedValue: props.checked ? props.value : ""
+      selectedValue: props.checked ? props.value : '',
     };
   }
 
   onToggleChoice(event) {
-    this.setState({ selectedValue: event.target.value });
-    this.props.onChange({
+    // this.setState({ selectedValue: event.target.value });
+    this.props.onChange(event);
+    this.props.updateSession({
       value: this.props.value,
       selected: !this.props.checked,
-      checked: true
+      checked: true,
     });
   }
 
@@ -183,6 +185,7 @@ export class ChoiceInput extends React.Component {
       hideTick,
       isEvaluateMode,
       choicesLayout,
+      updateSession,
       onChange,
       value,
       checked,
@@ -193,9 +196,6 @@ export class ChoiceInput extends React.Component {
     const holderClassNames = classNames(classes.checkboxHolder, {
       [classes.horizontalLayout]: choicesLayout === 'horizontal',
     });
-
-
-    console.log(this.state.selectedValue, "this.state.selectedValue")
 
     return (
       <div className={classNames(className, 'corespring-' + classSuffix, 'choice-input')}>
@@ -208,11 +208,11 @@ export class ChoiceInput extends React.Component {
               control={
                 <Tag
                   accessibility={accessibility}
-                 // checked={this.state.selectedValue === value}
-                 checked={checked}
+                  // checked={this.state.selectedValue === value}
+                  checked={checked}
                   correctness={correctness}
                   value={value}
-                  onChange={onChange}
+                  onChange={this.onToggleChoice}
                 />
               }
             />
