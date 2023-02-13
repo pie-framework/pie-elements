@@ -23,6 +23,8 @@ export default class PiePassage extends HTMLElement {
   }
 
   connectedCallback() {
+    this.setAttribute('aria-label', 'Passage');
+    this.setAttribute('role', 'region');
     this._render();
   }
 
