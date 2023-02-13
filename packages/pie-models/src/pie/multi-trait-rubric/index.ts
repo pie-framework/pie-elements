@@ -168,4 +168,10 @@ export interface MultiTraitRubricConfigure {
    * Maximum number of scales
    */
   maxNoOfScales?: number;
+
+  /**
+   * The default trait label for new created scales.
+   * If it's not defined, it will default to the label of the first trait.
+   */
+  defaultTraitLabel?: string;
 }

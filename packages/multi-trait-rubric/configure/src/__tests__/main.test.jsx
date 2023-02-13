@@ -626,7 +626,7 @@ describe('Main', () => {
               excludeZero: false,
               maxPoints: 1,
               scorePointsLabels: ['', ''],
-              traitLabel: '',
+              traitLabel: 'Trait',
               traits: [],
             },
           ],
