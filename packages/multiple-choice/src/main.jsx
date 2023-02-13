@@ -20,25 +20,6 @@ class Main extends React.Component {
   };
   constructor(props) {
     super(props);
-    this.childRef = React.createRef();
-  }
-
-  setAriaLabel = () => {
-    const { model } = this.props;
-    const ariaLabel = model.choiceMode === 'radio' ? 'Multiple Choice Question' : 'Multiple Correct Answer Question';
-    const parentNode = this.childRef.current.parentNode;
-    parentNode.setAttribute('aria-label', ariaLabel);
-    parentNode.setAttribute('role', 'region');
-  };
-
-  componentDidMount() {
-    this.setAriaLabel();
-  }
-
-  componentDidUpdate(prevProps) {
-    if (prevProps.model.choiceMode !== this.props.model.choiceMode) {
-      this.setAriaLabel();
-    }
   }
 
   render() {
@@ -48,7 +29,7 @@ class Main extends React.Component {
     return (
       <PreviewLayout>
         {model.partLabel && <p>{model.partLabel}</p>}
-        <div ref={this.childRef} className={classNames(classes.root, classes[model.className])}>
+        <div className={classNames(classes.root, classes[model.className])}>
           <MultipleChoice {...model} session={session} onChoiceChanged={onChoiceChanged} />
         </div>
       </PreviewLayout>
