@@ -51,7 +51,7 @@ export const isResponseCorrect = (responses, session) => {
 
   if (session.answers && totalValidResponses === session.answers.length) {
     session.answers.forEach((answer) => {
-      if (!(responses[answer.containerIndex].images || []).includes(answer.value)) {
+      if (!(responses[answer.containerIndex] &&responses[answer.containerIndex].images || []).includes(answer.value)) {
         isCorrect = false;
       }
     });
@@ -80,6 +80,7 @@ const isDefaultOrAltResponseCorrect = (question, session) => {
 
   value = keepNonEmptyResponses(value);
 
+  console.log('value',value);
   let isCorrect = isResponseCorrect(value, session);
 
   // Look for correct answers in alternate responses.
@@ -110,7 +111,6 @@ export const getPartialScore = (question, session) => {
   const {
     validation: { validResponse },
     maxResponsePerZone,
-    responseContainers,
   } = question;
   let correctAnswers = 0;
   let possibleResponses = 0;
@@ -146,7 +146,8 @@ export const getPartialScore = (question, session) => {
   // negative values will implicitly make the score equal to zero
   correctAnswers = correctAnswers < 0 ? 0 : correctAnswers;
 
-  const denominator = maxResponsePerZone > 1 ? possibleResponses : responseContainers.length;
+  // use length of validResponse since some containers can be left empty
+  const denominator = maxResponsePerZone > 1 ? possibleResponses : (validResponse.value || []).length;
   const str = (correctAnswers / denominator).toFixed(2);
 
   return parseFloat(str);
