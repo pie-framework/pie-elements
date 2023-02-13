@@ -26,10 +26,7 @@ export default class MultipleChoice extends HTMLElement {
           });
 
           //TODO: aria-label is set in the _rerender because we need to change it when the model.choiceMode is updated. Consider revisiting the placement of the aria-label setting in the _rerender
-          this._model.choiceMode === 'radio'
-            ? this.setAttribute('aria-label', 'Multiple Choice Question')
-            : this.setAttribute('aria-label', 'Multiple Correct Answer Question');
-
+          this.setAttribute('aria-label',  this._model.choiceMode === 'radio' ? 'Multiple Choice Question' : 'Multiple Correct Answer Question')
           this.setAttribute('role', 'region'); 
 
           ReactDOM.render(element, this, () => {
