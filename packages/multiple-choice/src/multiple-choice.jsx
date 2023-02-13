@@ -65,16 +65,12 @@ export class MultipleChoice extends React.Component {
     };
 
     this.onToggle = this.onToggle.bind(this);
-    this.isSelected = this.isSelected.bind(this);
   }
 
   isSelected(value) {
     const sessionValue = this.props.session && this.props.session.value;
-    if (!sessionValue) {
-      return false;
-    }
 
-    return sessionValue.indexOf(value) >= 0 && sessionValue[0] === value;
+    return sessionValue && sessionValue.indexOf && sessionValue.indexOf(value) >= 0;
   }
 
   handleChange = (event) => {
@@ -230,7 +226,7 @@ export class MultipleChoice extends React.Component {
                 updateSession={onChoiceChanged}
                 onChoiceChanged={this.props.choiceMode === 'radio' ? this.handleChange : this.handleChangeCheckboxes}
                 hideTick={choice.hideTick}
-                checked={
+                checked={showCorrect ? choice.correct || false :
                   this.props.choiceMode === 'radio'
                     ? selectedValue === choice.value
                     : selectedValues.includes(choice.value)

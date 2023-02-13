@@ -80,11 +80,12 @@ export const StyledCheckbox = withStyles(inputStyles)((props) => {
     disabled: classes[key('disabled')],
   };
 
-  const miniProps = { checked, onChange, disabled };
+  const miniProps = { checked, onChange, disabled, value };
+
   return (
     <Checkbox
-      aria-label={accessibility}
-      value={value}
+      aria-label={accessibility || value}
+      aria-checked={checked}
       {...miniProps}
       className={CLASS_NAME}
       classes={{
@@ -112,7 +113,6 @@ export const StyledRadio = withStyles(inputStyles)((props) => {
     <Radio
       aria-label={accessibility || value}
       aria-checked={checked}
-      value={value}
       {...miniProps}
       className={CLASS_NAME}
       classes={{
@@ -154,19 +154,13 @@ export class ChoiceInput extends React.Component {
   constructor(props) {
     super(props);
     this.onToggleChoice = this.onToggleChoice.bind(this);
-
-    this.state = {
-      selectedValue: props.checked ? props.value : '',
-    };
   }
 
   onToggleChoice(event) {
-    // this.setState({ selectedValue: event.target.value });
     this.props.onChange(event);
     this.props.updateSession({
       value: this.props.value,
       selected: !this.props.checked,
-      checked: true,
     });
   }
 
@@ -185,8 +179,6 @@ export class ChoiceInput extends React.Component {
       hideTick,
       isEvaluateMode,
       choicesLayout,
-      updateSession,
-      onChange,
       value,
       checked,
     } = this.props;
@@ -208,7 +200,7 @@ export class ChoiceInput extends React.Component {
               control={
                 <Tag
                   accessibility={accessibility}
-                  // checked={this.state.selectedValue === value}
+                  disabled={disabled}
                   checked={checked}
                   correctness={correctness}
                   value={value}

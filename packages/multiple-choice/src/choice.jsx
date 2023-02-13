@@ -9,9 +9,7 @@ export class Choice extends React.Component {
     const { disabled, onChoiceChanged } = this.props;
 
     if (!disabled) {
-
       onChoiceChanged(choice);
-     
     }
   };
 
@@ -29,8 +27,8 @@ export class Choice extends React.Component {
       displayKey,
       classes,
       choicesLayout,
-      updateSession,
       gridColumns,
+      updateSession,
     } = this.props;
     const choiceClass = 'choice' + (index === choicesLength - 1 ? ' last' : '');
 
@@ -45,8 +43,8 @@ export class Choice extends React.Component {
       correctness,
       displayKey,
       choicesLayout,
-      updateSession,
       gridColumns,
+      updateSession,
       onChange: this.onChange,
       isEvaluateMode,
     };
