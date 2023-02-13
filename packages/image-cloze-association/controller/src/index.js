@@ -63,7 +63,7 @@ export const isResponseCorrect = (responses, session) => {
 
 // This applies for correct responses that have empty values
 const keepNonEmptyResponses = (responses) => {
-  const filtered = responses.filter(response => response.images.length);
+  const filtered = responses.filter(response => response.images && response.images.length);
   return cloneDeep(filtered);
 };
 
@@ -80,7 +80,6 @@ const isDefaultOrAltResponseCorrect = (question, session) => {
 
   value = keepNonEmptyResponses(value);
 
-  console.log('value',value);
   let isCorrect = isResponseCorrect(value, session);
 
   // Look for correct answers in alternate responses.
