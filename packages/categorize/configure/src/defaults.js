@@ -14,7 +14,7 @@ export default {
     correctResponse: [],
     rowLabels: [''],
     partialScoring: true,
-    feedbackEnabled: true,
+    feedbackEnabled: false,
     rationaleEnabled: true,
     promptEnabled: true,
     teacherInstructionsEnabled: true,

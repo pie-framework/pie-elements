@@ -105,7 +105,7 @@ exports[`Render Main Component Match Snapshot 1`] = `
             "width": 500,
           },
           "equationEditor": "Grade 8 - HS",
-          "feedbackEnabled": true,
+          "feedbackEnabled": false,
           "mathInput": false,
           "playerSpellCheckDisabled": true,
           "prompt": "This is the question prompt",
@@ -181,26 +181,6 @@ exports[`Render Main Component Match Snapshot 1`] = `
         }
       />
     </Component>
-    <WithStyles(Typography)
-      variant="subheading"
-    >
-      Feedback
-    </WithStyles(Typography)>
-    <Component
-      feedback={
-        Object {
-          "default": "Your answer has been submitted",
-          "type": "default",
-        }
-      }
-      label="When submitted, show"
-      onChange={[Function]}
-      toolbarOpts={
-        Object {
-          "position": "bottom",
-        }
-      }
-    />
   </div>
 </ConfigLayout>
 `;

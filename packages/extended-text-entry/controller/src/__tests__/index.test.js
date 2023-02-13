@@ -119,7 +119,7 @@ describe('controller', () => {
       });
     });
     it('evaluate mode, student role', async () => {
-      const result = await model(question, session, { mode: 'evaluate' });
+      const result = await model({...question, feedbackEnabled: true}, session, { mode: 'evaluate' });
       expect(result).toEqual({
         customKeys: [],
         prompt: defaults.prompt,
@@ -134,7 +134,7 @@ describe('controller', () => {
       });
     });
     it('evaluate mode, instructor role, teacherInstructions enabled', async () => {
-      const result = await model(question, session, { mode: 'evaluate', role: 'instructor' });
+      const result = await model({...question, feedbackEnabled: true}, session, { mode: 'evaluate', role: 'instructor' });
       expect(result).toEqual({
         customKeys: [],
         prompt: defaults.prompt,
@@ -149,7 +149,7 @@ describe('controller', () => {
       });
     });
     it('evaluate mode, instructor role, teacherInstructions disabled', async () => {
-      const result = await model(q({ teacherInstructionsEnabled: false }), session, {
+      const result = await model(q({ teacherInstructionsEnabled: false, feedbackEnabled: true }), session, {
         mode: 'evaluate',
         role: 'instructor',
       });

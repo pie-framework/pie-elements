@@ -9,7 +9,7 @@ export default {
     spanishInput: false,
     specialInput: false,
     equationEditor: 'Grade 8 - HS',
-    feedbackEnabled: true,
+    feedbackEnabled: false,
     rationaleEnabled: true,
     promptEnabled: true,
     teacherInstructionsEnabled: true,
