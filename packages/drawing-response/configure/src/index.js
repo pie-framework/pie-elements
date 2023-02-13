@@ -35,6 +35,7 @@ export default class DrawableResponseConfigure extends HTMLElement {
 
     if (withRubric.enabled && !this._model.rubricEnabled) {
       this._model.rubricEnabled = true;
+
       this.dispatchEvent(new ModelUpdatedEvent(this._model));
     }
   }
