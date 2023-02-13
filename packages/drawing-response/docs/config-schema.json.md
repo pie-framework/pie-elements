@@ -115,10 +115,6 @@ Indicates if the item has to be displayed in the Settings Panel
 
 Indicates the label for the item that has to be displayed in the Settings Panel
 
-## `forceEnabled` (boolean)
-
-Indicates the value for the toggle; if true, this property will not be visible in Settings Panel
-
 # `showPrompt` (boolean)
 
 Determines whether prompt field will be displayed or not
@@ -181,19 +177,3 @@ Indicates the max dimension for images in prompt - this is also the default dime
 ### `rationale` (number)
 
 Indicates the max dimension for images in rationale
-
-## `ConfigureWithForceProp` (object)
-
-Properties of the `ConfigureWithForceProp` object:
-
-### `settings` (boolean)
-
-Indicates if the item has to be displayed in the Settings Panel
-
-### `label` (string)
-
-Indicates the label for the item that has to be displayed in the Settings Panel
-
-### `forceEnabled` (boolean)
-
-Indicates the value for the toggle; if true, this property will not be visible in Settings Panel
