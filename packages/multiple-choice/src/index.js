@@ -29,7 +29,7 @@ export default class MultipleChoice extends HTMLElement {
           this.setAttribute(
             'aria-label',
             this._model.choiceMode === 'radio' ? 'Multiple Choice Question' : 'Multiple Correct Answer Question',
-          );
+          ); 
           this.setAttribute('role', 'region');
 
           ReactDOM.render(element, this, () => {
