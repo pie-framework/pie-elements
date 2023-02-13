@@ -30,7 +30,7 @@ export default class MultipleChoice extends HTMLElement {
             ? this.setAttribute('aria-label', 'Multiple Choice Question')
             : this.setAttribute('aria-label', 'Multiple Correct Answer Question');
 
-          this.setAttribute('role', 'region');
+          this.setAttribute('role', 'region'); 
 
           ReactDOM.render(element, this, () => {
             log('render complete - render math');
