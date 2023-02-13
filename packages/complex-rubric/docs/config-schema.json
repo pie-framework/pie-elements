@@ -1,6 +1,77 @@
 {
   "type": "object",
   "properties": {
+    "width": {
+      "description": "How large should complex-rubric be",
+      "type": "string",
+      "title": "width"
+    },
+    "simpleRubric": {
+      "title": "RubricConfigure",
+      "type": "object",
+      "properties": {
+        "settingsPanelDisabled": {
+          "description": "Indicates if the settings panel is not available",
+          "type": "boolean",
+          "title": "settingsPanelDisabled"
+        },
+        "showExcludeZero": {
+          "title": "ConfigureProp",
+          "type": "object",
+          "properties": {
+            "settings": {
+              "description": "Indicates if the item has to be displayed in the Settings Panel",
+              "type": "boolean",
+              "title": "settings"
+            },
+            "label": {
+              "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+              "type": "string",
+              "title": "label"
+            }
+          }
+        },
+        "showMaxPoint": {
+          "title": "ConfigureProp",
+          "type": "object",
+          "properties": {
+            "settings": {
+              "description": "Indicates if the item has to be displayed in the Settings Panel",
+              "type": "boolean",
+              "title": "settings"
+            },
+            "label": {
+              "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+              "type": "string",
+              "title": "label"
+            }
+          }
+        },
+        "width": {
+          "description": "How large can the rubric be",
+          "type": "string",
+          "title": "width"
+        },
+        "showPrompt": {
+          "description": "Determines whether prompt field will be displayed or not",
+          "default": true,
+          "type": "boolean",
+          "title": "showPrompt"
+        },
+        "promptLabel": {
+          "description": "The label for the item stem/prompt field",
+          "default": "Item Stemm",
+          "type": "string",
+          "title": "promptLabel"
+        },
+        "settingsPartialScoring": {
+          "description": "Indicates whether the settings panel wil allow the author to modify settings for partial scoring",
+          "default": true,
+          "type": "boolean",
+          "title": "settingsPartialScoring"
+        }
+      }
+    },
     "multiTraitRubric": {
       "description": "Config Object for @pie-elements/multi-trait-rubric",
       "additionalProperties": false,
@@ -209,9 +280,92 @@
     }
   },
   "required": [
-    "multiTraitRubric"
+    "multiTraitRubric",
+    "simpleRubric"
   ],
   "definitions": {
+    "RubricConfigure": {
+      "title": "RubricConfigure",
+      "type": "object",
+      "properties": {
+        "settingsPanelDisabled": {
+          "description": "Indicates if the settings panel is not available",
+          "type": "boolean",
+          "title": "settingsPanelDisabled"
+        },
+        "showExcludeZero": {
+          "title": "ConfigureProp",
+          "type": "object",
+          "properties": {
+            "settings": {
+              "description": "Indicates if the item has to be displayed in the Settings Panel",
+              "type": "boolean",
+              "title": "settings"
+            },
+            "label": {
+              "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+              "type": "string",
+              "title": "label"
+            }
+          }
+        },
+        "showMaxPoint": {
+          "title": "ConfigureProp",
+          "type": "object",
+          "properties": {
+            "settings": {
+              "description": "Indicates if the item has to be displayed in the Settings Panel",
+              "type": "boolean",
+              "title": "settings"
+            },
+            "label": {
+              "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+              "type": "string",
+              "title": "label"
+            }
+          }
+        },
+        "width": {
+          "description": "How large can the rubric be",
+          "type": "string",
+          "title": "width"
+        },
+        "showPrompt": {
+          "description": "Determines whether prompt field will be displayed or not",
+          "default": true,
+          "type": "boolean",
+          "title": "showPrompt"
+        },
+        "promptLabel": {
+          "description": "The label for the item stem/prompt field",
+          "default": "Item Stemm",
+          "type": "string",
+          "title": "promptLabel"
+        },
+        "settingsPartialScoring": {
+          "description": "Indicates whether the settings panel wil allow the author to modify settings for partial scoring",
+          "default": true,
+          "type": "boolean",
+          "title": "settingsPartialScoring"
+        }
+      }
+    },
+    "ConfigureProp": {
+      "title": "ConfigureProp",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "Indicates if the item has to be displayed in the Settings Panel",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+          "type": "string",
+          "title": "label"
+        }
+      }
+    },
     "MultiTraitRubricConfigure": {
       "description": "Config Object for @pie-elements/multi-trait-rubric",
       "additionalProperties": false,
@@ -431,22 +585,6 @@
           "description": "Dialog box text",
           "type": "string",
           "title": "text"
-        }
-      }
-    },
-    "ConfigureProp": {
-      "title": "ConfigureProp",
-      "type": "object",
-      "properties": {
-        "settings": {
-          "description": "Indicates if the item has to be displayed in the Settings Panel",
-          "type": "boolean",
-          "title": "settings"
-        },
-        "label": {
-          "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
-          "type": "string",
-          "title": "label"
         }
       }
     }
