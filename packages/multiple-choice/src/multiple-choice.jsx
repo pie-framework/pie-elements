@@ -68,7 +68,7 @@ export class MultipleChoice extends React.Component {
   }
 
   isSelected(value) {
-    const sessionValue = this.props.session && this.props.session.value;
+    const sessionValue = this.props.session && this.props.session.value; 
 
     return sessionValue && sessionValue.indexOf && sessionValue.indexOf(value) >= 0;
   }
