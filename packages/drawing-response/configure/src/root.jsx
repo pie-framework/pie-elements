@@ -72,7 +72,7 @@ export class Root extends React.Component {
     const panelProperties = {
       teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
       spellCheckEnabled: spellCheck.settings && toggle(spellCheck.label),
-      rubricEnabled: !withRubric?.forceEnabled && withRubric?.settings && toggle(withRubric?.label),
+      rubricEnabled: withRubric?.settings && toggle(withRubric?.label),
     };
 
     return (

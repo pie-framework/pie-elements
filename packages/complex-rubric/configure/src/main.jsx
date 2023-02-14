@@ -39,8 +39,8 @@ export class Main extends React.Component {
   render() {
     const { classes, model, configuration } = this.props;
     const { rubrics = {} } = model;
-    let { rubricType }  = model;
-    const { multiTraitRubric, simpleRubric } = configuration;
+    let { rubricType } = model;
+    const { multiTraitRubric, simpleRubric, width } = configuration;
     let rubricTag = '';
 
     if (!rubricType) {
@@ -58,7 +58,7 @@ export class Main extends React.Component {
               if (ref) {
                 this.simpleRubric = ref;
                 this.simpleRubric.model = rubrics.simpleRubric;
-                this.simpleRubric.configuration = simpleRubric;
+                this.simpleRubric.configuration = { ...simpleRubric, width };
               }
             }}
           />
@@ -73,8 +73,8 @@ export class Main extends React.Component {
             ref={(ref) => {
               if (ref) {
                 this.multiTraitRubric = ref;
-                this.multiTraitRubric.model = { ...rubrics.multiTraitRubric };
-                this.multiTraitRubric.configuration = multiTraitRubric;
+                this.multiTraitRubric.model = rubrics.multiTraitRubric;
+                this.multiTraitRubric.configuration = { ...multiTraitRubric, width };
               }
             }}
           />
@@ -94,13 +94,13 @@ export class Main extends React.Component {
             >
               <FormControlLabel
                 value={RUBRIC_TYPES.SIMPLE_RUBRIC}
-                control={<Radio checked={rubricType === RUBRIC_TYPES.SIMPLE_RUBRIC} />}
+                control={<Radio checked={rubricType === RUBRIC_TYPES.SIMPLE_RUBRIC}/>}
                 label="Simple Rubric"
               />
 
               <FormControlLabel
                 value={RUBRIC_TYPES.MULTI_TRAIT_RUBRIC}
-                control={<Radio checked={rubricType === RUBRIC_TYPES.MULTI_TRAIT_RUBRIC} />}
+                control={<Radio checked={rubricType === RUBRIC_TYPES.MULTI_TRAIT_RUBRIC}/>}
                 label="Multi Trait Rubric"
               />
             </RadioGroup>
