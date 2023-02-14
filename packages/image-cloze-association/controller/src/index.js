@@ -70,7 +70,7 @@ const keepNonEmptyResponses = (responses) => {
 // This applies for items that don't support partial scoring.
 const isDefaultOrAltResponseCorrect = (question, session) => {
   const {
-    altResponses,
+    validation: { altResponses }
   } = question;
   let {
     validation: {
