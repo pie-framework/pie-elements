@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@12.7.0...@pie-element/pie-models@12.8.0) (2023-02-14)
+
+
+### Features
+
+* remove force enabled logic from withRubric property PD-2624 ([9e557b9](https://github.com/pie-framework/pie-elements/commit/9e557b90285e3fe1ec3d70d2b3865fc4968cd690))
+* **complex-rurbic:** add width property to configuration and send to multi-trait-rubric and rubric ([940c270](https://github.com/pie-framework/pie-elements/commit/940c2702dadc6756d3e218e622687d17a66dc735))
+* **rubric:** add width property to configuration ([75bdb82](https://github.com/pie-framework/pie-elements/commit/75bdb82ddd3ffe41ce50aa98928914f321127eed))
+
+
+
+
+
+# [12.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@12.6.1...@pie-element/pie-models@12.7.0) (2023-02-01)
+
+
+### Bug Fixes
+
+* typo ([9328e51](https://github.com/pie-framework/pie-elements/commit/9328e512840c54a3da4b06d4edc79b871d3233c4))
+
+
+### Features
+
+* **multi-trait-rubric:** update documentation PD-2589 ([ca1d2c2](https://github.com/pie-framework/pie-elements/commit/ca1d2c23b0d3c33ac21088ffee8e0d51a0d0264b))
+* update documentation for withRubric configure prop PD-2519 ([8525c15](https://github.com/pie-framework/pie-elements/commit/8525c159e88407aaa35318755ee713675b5e1c00))
+
+
+
+
+
 ## [12.6.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@12.6.0...@pie-element/pie-models@12.6.1) (2023-01-17)
 
 

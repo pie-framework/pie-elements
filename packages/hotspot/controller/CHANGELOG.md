@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-controller@3.5.1...@pie-element/hotspot-controller@3.6.0) (2023-02-01)
+
+
+### Features
+
+* update pie-libs ([0af590d](https://github.com/pie-framework/pie-elements/commit/0af590d624f4b2c0af58039e935531cef52e2a86))
+* **hotspot:** changed hotspot color opacity, added gray hotspot color option PD-411 ([c36428e](https://github.com/pie-framework/pie-elements/commit/c36428ef94fb4916d2bf76fe5850c704a30b6c85))
+
+
+
+
+
 ## [3.5.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-controller@3.5.0...@pie-element/hotspot-controller@3.5.1) (2022-12-07)
 
 

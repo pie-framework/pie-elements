@@ -3,6 +3,34 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@5.5.0...@pie-element/hotspot-configure@5.6.0) (2023-02-14)
+
+
+### Features
+
+* update pie-libs ([e2c0b89](https://github.com/pie-framework/pie-elements/commit/e2c0b894caa20ed5d5681302a84b2bfd20dbd9f6))
+
+
+
+
+
+# [5.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@5.4.0...@pie-element/hotspot-configure@5.5.0) (2023-02-01)
+
+
+### Bug Fixes
+
+* **match:** align heading with columns and adjust spaces for better fit PD-2512 ([7364516](https://github.com/pie-framework/pie-elements/commit/7364516bda87b68a5550f28036e80dd8e12b84d2))
+
+
+### Features
+
+* update pie-libs ([0af590d](https://github.com/pie-framework/pie-elements/commit/0af590d624f4b2c0af58039e935531cef52e2a86))
+* **hotspot:** changed hotspot color opacity, added gray hotspot color option PD-411 ([c36428e](https://github.com/pie-framework/pie-elements/commit/c36428ef94fb4916d2bf76fe5850c704a30b6c85))
+
+
+
+
+
 # [5.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@5.3.0...@pie-element/hotspot-configure@5.4.0) (2023-01-17)
 
 
