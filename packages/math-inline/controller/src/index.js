@@ -130,7 +130,7 @@ export const normalize = (question) => {
 
   return {
     ...defaults,
-    feedbackEnabled: true,
+    feedbackEnabled: false,
     promptEnabled: true,
     rationaleEnabled: true,
     teacherInstructionsEnabled: true,
