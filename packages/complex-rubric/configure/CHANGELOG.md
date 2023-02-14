@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric-configure@1.5.0...@pie-element/complex-rubric-configure@1.6.0) (2023-02-14)
+
+
+### Features
+
+* update pie-libs ([e2c0b89](https://github.com/pie-framework/pie-elements/commit/e2c0b894caa20ed5d5681302a84b2bfd20dbd9f6))
+* **complex-rurbic:** add width property to configuration and send to multi-trait-rubric and rubric ([7433a90](https://github.com/pie-framework/pie-elements/commit/7433a90426cf90b1fbfd6005f1911629bfa86a88))
+* **rubric:** add width property to configuration ([75bdb82](https://github.com/pie-framework/pie-elements/commit/75bdb82ddd3ffe41ce50aa98928914f321127eed))
+
+
+
+
+
 # [1.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric-configure@1.4.0...@pie-element/complex-rubric-configure@1.5.0) (2023-02-01)
 
 

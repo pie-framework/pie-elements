@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response-configure@4.6.0...@pie-element/drawing-response-configure@5.0.0) (2023-02-14)
+
+
+### Features
+
+* PD-2624 ([fc5ce28](https://github.com/pie-framework/pie-elements/commit/fc5ce282c52308665aeec8bcec5d6338cc83f513))
+* remove force enabled logic from withRubric property PD-2624 ([9e557b9](https://github.com/pie-framework/pie-elements/commit/9e557b90285e3fe1ec3d70d2b3865fc4968cd690))
+* update pie-libs ([e2c0b89](https://github.com/pie-framework/pie-elements/commit/e2c0b894caa20ed5d5681302a84b2bfd20dbd9f6))
+
+
+### BREAKING CHANGES
+
+* create new versions to avoid issues
+
+
+
+
+
 # [4.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response-configure@4.5.0...@pie-element/drawing-response-configure@4.6.0) (2023-02-01)
 
 

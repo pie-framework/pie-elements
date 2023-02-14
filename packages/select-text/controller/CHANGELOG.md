@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-controller@4.5.0...@pie-element/select-text-controller@4.6.0) (2023-02-14)
+
+
+### Features
+
+* **pie-elements:** feedback turned off if model does not specify feedback settings ([6ced7e8](https://github.com/pie-framework/pie-elements/commit/6ced7e8daa4d3df86b44b724b884e7cf72c717ba))
+
+
+
+
+
 # [4.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-controller@4.4.0...@pie-element/select-text-controller@4.5.0) (2023-02-01)
 
 

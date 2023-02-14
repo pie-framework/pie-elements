@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/calculator-configure@2.4.0...@pie-element/calculator-configure@2.5.0) (2023-02-14)
+
+
+### Features
+
+* update pie-libs ([e2c0b89](https://github.com/pie-framework/pie-elements/commit/e2c0b894caa20ed5d5681302a84b2bfd20dbd9f6))
+
+
+
+
+
 # [2.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/calculator-configure@2.3.0...@pie-element/calculator-configure@2.4.0) (2023-02-01)
 
 

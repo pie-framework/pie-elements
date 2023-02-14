@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.8.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@5.8.0...@pie-element/math-inline-controller@5.8.1) (2023-02-14)
+
+
+### Bug Fixes
+
+* **math-inline:** set feedback false if it is not defined - PD-2509 ([7c19513](https://github.com/pie-framework/pie-elements/commit/7c19513f94d510f769092a4f7dddf42fd3551a8d))
+
+
+
+
+
 # [5.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@5.7.0...@pie-element/math-inline-controller@5.8.0) (2023-02-01)
 
 

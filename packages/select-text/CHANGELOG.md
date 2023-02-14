@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@7.7.0...@pie-element/select-text@7.8.0) (2023-02-14)
+
+
+### Features
+
+* update pie-libs ([e2c0b89](https://github.com/pie-framework/pie-elements/commit/e2c0b894caa20ed5d5681302a84b2bfd20dbd9f6))
+* **pie-elements:** feedback turned off if model does not specify feedback settings ([6ced7e8](https://github.com/pie-framework/pie-elements/commit/6ced7e8daa4d3df86b44b724b884e7cf72c717ba))
+
+
+
+
+
 # [7.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@7.6.0...@pie-element/select-text@7.7.0) (2023-02-01)
 
 

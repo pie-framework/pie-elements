@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.9.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@7.8.0...@pie-element/categorize@7.9.0) (2023-02-14)
+
+
+### Bug Fixes
+
+* **categorize:** avoid long text overflow container-PD-2498 ([4b66c8f](https://github.com/pie-framework/pie-elements/commit/4b66c8f9d2387e0558f054de093704ee369badde))
+* **categorize:** delete console.logs ([271d517](https://github.com/pie-framework/pie-elements/commit/271d5173689cb4aa7381c6dabd86fbd3c1bb974d))
+
+
+### Features
+
+* update pie-libs ([e2c0b89](https://github.com/pie-framework/pie-elements/commit/e2c0b894caa20ed5d5681302a84b2bfd20dbd9f6))
+* **categorize, ebsr:** feedback turned off if model does not specify feedback settings ([01a011a](https://github.com/pie-framework/pie-elements/commit/01a011a8cced8b14d8b79a56d751f951f61f2cf5))
+* **elements:** updates snapshots and tests conform to new devault value-PD-2509 ([654aa5c](https://github.com/pie-framework/pie-elements/commit/654aa5c200acf5af557e4ae2a5801f26e001c699))
+
+
+
+
+
 # [7.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@7.7.1...@pie-element/categorize@7.8.0) (2023-02-01)
 
 

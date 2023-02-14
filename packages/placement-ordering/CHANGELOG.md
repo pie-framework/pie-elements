@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.9.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@8.8.0...@pie-element/placement-ordering@8.9.0) (2023-02-14)
+
+
+### Features
+
+* update pie-libs ([e2c0b89](https://github.com/pie-framework/pie-elements/commit/e2c0b894caa20ed5d5681302a84b2bfd20dbd9f6))
+* **elements:** updates snapshots and tests conform to new devault value-PD-2509 ([654aa5c](https://github.com/pie-framework/pie-elements/commit/654aa5c200acf5af557e4ae2a5801f26e001c699))
+* **pie-elements:** feedback turned off if model does not specify feedback settings ([6ced7e8](https://github.com/pie-framework/pie-elements/commit/6ced7e8daa4d3df86b44b724b884e7cf72c717ba))
+
+
+
+
+
 # [8.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@8.7.0...@pie-element/placement-ordering@8.8.0) (2023-02-01)
 
 

@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric@2.6.0...@pie-element/multi-trait-rubric@2.7.0) (2023-02-14)
+
+
+### Bug Fixes
+
+* **multi-trait-rubric:** show arrow at first maxPoints change PD-2467 ([7891150](https://github.com/pie-framework/pie-elements/commit/78911507c2746b9da0f4fb1254f0e1a6954417ea))
+* add comment, remove unnecesary prop ([560ebf2](https://github.com/pie-framework/pie-elements/commit/560ebf27168a79f7c45cee52d280fb16e4cbb2a9))
+* tests ([61048dd](https://github.com/pie-framework/pie-elements/commit/61048ddc1ea34701e18d7ca6393fb3576c86ef4d))
+
+
+### Features
+
+* update pie-libs ([e2c0b89](https://github.com/pie-framework/pie-elements/commit/e2c0b894caa20ed5d5681302a84b2bfd20dbd9f6))
+
+
+
+
+
 # [2.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric@2.5.0...@pie-element/multi-trait-rubric@2.6.0) (2023-02-01)
 
 

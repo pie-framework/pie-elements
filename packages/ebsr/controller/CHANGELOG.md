@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-controller@6.2.0...@pie-element/ebsr-controller@6.3.0) (2023-02-14)
+
+
+### Features
+
+* **categorize, ebsr:** feedback turned off if model does not specify feedback settings ([01a011a](https://github.com/pie-framework/pie-elements/commit/01a011a8cced8b14d8b79a56d751f951f61f2cf5))
+
+
+
+
+
 # [6.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-controller@6.1.1...@pie-element/ebsr-controller@6.2.0) (2023-02-01)
 
 

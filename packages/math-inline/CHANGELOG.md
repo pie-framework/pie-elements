@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@6.6.0...@pie-element/math-inline@6.7.0) (2023-02-14)
+
+
+### Bug Fixes
+
+* **math-inline:** set feedback false if it is not defined - PD-2509 ([7c19513](https://github.com/pie-framework/pie-elements/commit/7c19513f94d510f769092a4f7dddf42fd3551a8d))
+
+
+### Features
+
+* update pie-libs ([e2c0b89](https://github.com/pie-framework/pie-elements/commit/e2c0b894caa20ed5d5681302a84b2bfd20dbd9f6))
+
+
+
+
+
 # [6.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@6.5.0...@pie-element/math-inline@6.6.0) (2023-02-01)
 
 

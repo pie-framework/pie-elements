@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@7.7.0...@pie-element/multiple-choice@7.8.0) (2023-02-14)
+
+
+### Bug Fixes
+
+* **multiple-choice:** add aria-label and role attributes on parent element ([aaeec5c](https://github.com/pie-framework/pie-elements/commit/aaeec5cc6f1ead5eedf6fd2d8326d378aa5b3968))
+* **multiple-choice:** refactor without using findDOMNode. It doesn’t work with function components and is deprecated in StrictMode. See https://reactjs.org/docs/react-dom.html#finddomnode ([db87b9b](https://github.com/pie-framework/pie-elements/commit/db87b9bbbf982c49dace5a80d74149af7058cfe5))
+* **multiple-choice:** update aria-label when coiceMode is changed ([c81bf50](https://github.com/pie-framework/pie-elements/commit/c81bf5067818165cc572d6490309815c52825228))
+
+
+### Features
+
+* **multiple-choice:** add aria-label and role attributes on parent element PD-2476 ([21fd4b2](https://github.com/pie-framework/pie-elements/commit/21fd4b25e5a8053e9ed2523ec88c7f9c97385ab9))
+* update pie-libs ([e2c0b89](https://github.com/pie-framework/pie-elements/commit/e2c0b894caa20ed5d5681302a84b2bfd20dbd9f6))
+* **elements:** updates snapshots and tests conform to new devault value-PD-2509 ([654aa5c](https://github.com/pie-framework/pie-elements/commit/654aa5c200acf5af557e4ae2a5801f26e001c699))
+* **pie-elements:** feedback turned off if model does not specify feedback settings ([6ced7e8](https://github.com/pie-framework/pie-elements/commit/6ced7e8daa4d3df86b44b724b884e7cf72c717ba))
+
+
+
+
+
 # [7.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@7.6.0...@pie-element/multiple-choice@7.7.0) (2023-02-01)
 
 

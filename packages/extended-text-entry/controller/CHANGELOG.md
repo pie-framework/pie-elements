@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-controller@4.4.0...@pie-element/extended-text-entry-controller@4.5.0) (2023-02-14)
+
+
+### Features
+
+* **elements:** updates snapshots and tests conform to new devault value-PD-2509 ([654aa5c](https://github.com/pie-framework/pie-elements/commit/654aa5c200acf5af557e4ae2a5801f26e001c699))
+* **pie-elements:** feedback turned off if model does not specify feedback settings ([6ced7e8](https://github.com/pie-framework/pie-elements/commit/6ced7e8daa4d3df86b44b724b884e7cf72c717ba))
+
+
+
+
+
 # [4.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-controller@4.3.0...@pie-element/extended-text-entry-controller@4.4.0) (2023-02-01)
 
 
