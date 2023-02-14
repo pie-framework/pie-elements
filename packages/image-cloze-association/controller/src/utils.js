@@ -5,7 +5,7 @@ const getAllCorrectness = (answers, responses) =>
   }));
 
 const getValidAnswer = (answer, response) =>
-  (responses[answer.containerIndex] && responses[answer.containerIndex].images || []).filter((res) => res === answer.value);
+  (response[answer.containerIndex] && response[answer.containerIndex].images || []).filter((res) => res === answer.value);
 
 export const getAllUniqueCorrectness = (answers, validResponses) => {
   let allCorrectness = getAllCorrectness(answers, validResponses);

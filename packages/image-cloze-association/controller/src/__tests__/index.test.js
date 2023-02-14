@@ -162,6 +162,58 @@ describe('controller', () => {
       expect(result.score).toEqual(1);
     });
 
+    it('returns correct score for valid response with empty response containers and partialScoring: false', async () => {
+      const result = await outcome({
+        ...question,
+        validation: {
+          valid_response: {
+            score: 1,
+            value: [
+              {
+                images: [rhomb, square],
+              },
+              {
+                images: [],
+              },
+            ],
+          },
+        }
+      }, {
+        answers: [
+          { value: rhomb, containerIndex: 0 },
+          { value: square, containerIndex: 0 },
+        ],
+      });
+
+      expect(result.score).toEqual(1);
+    });
+
+    it('returns correct score for valid response with empty response containers and partialScoring: true', async () => {
+      const result = await outcome({
+        ...question,
+        partialScoring: true,
+        validation: {
+          valid_response: {
+            score: 1,
+            value: [
+              {
+                images: [rhomb, square],
+              },
+              {
+                images: [],
+              },
+            ],
+          },
+        }
+      }, {
+        answers: [
+          { value: rhomb, containerIndex: 0 },
+        ],
+      });
+
+      expect(result.score).toEqual(0.5);
+    });
+
     describe('returns score 0 for wrong validation format', () => {
       it('returns 0 for old value format', async () => {
         const result = await outcome(

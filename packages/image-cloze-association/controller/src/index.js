@@ -51,7 +51,7 @@ export const isResponseCorrect = (responses, session) => {
 
   if (session.answers && totalValidResponses === session.answers.length) {
     session.answers.forEach((answer) => {
-      if (!(responses[answer.containerIndex] &&responses[answer.containerIndex].images || []).includes(answer.value)) {
+      if (!(responses[answer.containerIndex] && responses[answer.containerIndex].images || []).includes(answer.value)) {
         isCorrect = false;
       }
     });
