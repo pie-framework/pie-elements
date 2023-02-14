@@ -73,7 +73,7 @@ const partModel = (base) => ({
   choicePrefix: 'numbers',
   prompt: 'Prompt',
   rationaleEnabled: true,
-  feedbackEnabled: true,
+  feedbackEnabled: false,
   promptEnabled: true,
   teacherInstructions: '',
   rationale: '',

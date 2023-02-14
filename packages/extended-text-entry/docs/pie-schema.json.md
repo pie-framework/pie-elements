@@ -189,22 +189,6 @@ Indicates the max dimension for images in prompt - this is also the default dime
 
 Indicates the max dimension for images in rationale
 
-## `ConfigureWithForceProp` (object)
-
-Properties of the `ConfigureWithForceProp` object:
-
-### `settings` (boolean)
-
-Indicates if the item has to be displayed in the Settings Panel
-
-### `label` (string)
-
-Indicates the label for the item that has to be displayed in the Settings Panel
-
-### `forceEnabled` (boolean)
-
-Indicates the value for the toggle; if true, this property will not be visible in Settings Panel
-
 ## `Dimensions` (object)
 
 Properties of the `Dimensions` object:

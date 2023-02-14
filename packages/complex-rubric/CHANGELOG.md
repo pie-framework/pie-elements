@@ -3,6 +3,37 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@1.6.0...@pie-element/complex-rubric@1.7.0) (2023-02-14)
+
+
+### Features
+
+* update pie-libs ([e2c0b89](https://github.com/pie-framework/pie-elements/commit/e2c0b894caa20ed5d5681302a84b2bfd20dbd9f6))
+* **complex-rurbic:** add width property to configuration and send to multi-trait-rubric and rubric ([7433a90](https://github.com/pie-framework/pie-elements/commit/7433a90426cf90b1fbfd6005f1911629bfa86a88))
+* **rubric:** add width property to configuration ([75bdb82](https://github.com/pie-framework/pie-elements/commit/75bdb82ddd3ffe41ce50aa98928914f321127eed))
+
+
+
+
+
+# [1.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@1.5.0...@pie-element/complex-rubric@1.6.0) (2023-02-01)
+
+
+### Bug Fixes
+
+* typo ([9328e51](https://github.com/pie-framework/pie-elements/commit/9328e512840c54a3da4b06d4edc79b871d3233c4))
+* **complex-rubric:** default rubricType to simple if it's undefined or null PD-2427 ([9760d46](https://github.com/pie-framework/pie-elements/commit/9760d469d599c8a4edf02ee253e3e0d65c520b67))
+
+
+### Features
+
+* update pie-libs ([0af590d](https://github.com/pie-framework/pie-elements/commit/0af590d624f4b2c0af58039e935531cef52e2a86))
+* **multi-trait-rubric:** update documentation - generated files PD-2589 ([c773dc8](https://github.com/pie-framework/pie-elements/commit/c773dc800572f389c47133fb691a5e2e3e447223))
+
+
+
+
+
 # [1.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@1.4.0...@pie-element/complex-rubric@1.5.0) (2023-01-17)
 
 

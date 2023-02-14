@@ -124,6 +124,7 @@ export default {
     rubrics: { simpleRubric: rubricDefaultModel, multiTraitRubric: multiTraitDefaultModel },
   },
   configuration: {
+    // width: '770px',
     multiTraitRubric: multiTraitDefaultConfiguration,
     simpleRubric: rubricDefaultConfiguration,
   },

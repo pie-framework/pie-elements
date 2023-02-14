@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-controller@1.2.13...@pie-element/multi-trait-rubric-controller@1.3.0) (2023-02-01)
+
+
+### Features
+
+* update pie-libs ([0af590d](https://github.com/pie-framework/pie-elements/commit/0af590d624f4b2c0af58039e935531cef52e2a86))
+
+
+
+
+
 ## [1.2.13](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-controller@1.2.12...@pie-element/multi-trait-rubric-controller@1.2.13) (2023-01-17)
 
 
