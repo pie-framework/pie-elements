@@ -6,8 +6,9 @@ import { withStyles } from '@material-ui/core/styles';
 import AddRow from './add-row';
 import Row from './row';
 import debug from 'debug';
-import lodash from 'lodash';
+import lodash, { cloneDeep } from 'lodash';
 import EditableHTML, { DEFAULT_PLUGINS } from '@pie-lib/editable-html';
+import isEmpty from 'lodash/isEmpty';
 
 const log = debug('pie-elements:match:configure');
 
@@ -64,6 +65,9 @@ const styles = (theme) => ({
     '&> div': {
       fontWeight: 'bold',
     },
+  },
+  marginBottom: {
+    marginBottom: theme.typography.fontSize - 2 + theme.spacing.unit
   },
   errorText: {
     fontSize: theme.typography.fontSize - 2,
@@ -195,7 +199,7 @@ class AnswerConfigBlock extends React.Component {
                   <EditableHTML
                     onChange={this.onHeaderChange(idx)}
                     markup={header}
-                    className={classes.headerInput}
+                    className={columnsErrors && !columnsErrors[idx] ? classes.marginBottom : classes.headerInput}
                     label={'column label'}
                     activePlugins={filteredDefaultPlugins}
                     pluginProps={labelPlugins}
