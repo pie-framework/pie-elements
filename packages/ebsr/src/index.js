@@ -114,7 +114,7 @@ export default class Ebsr extends HTMLElement {
   }
 
   connectedCallback() {
-    this.setAttribute('aria-label', 'Two-Part Question');  
+    this.setAttribute('aria-label', 'Two-Part Question');
     this.setAttribute('role', 'region');
     this._render();
     this.addEventListener(SESSION_CHANGED, this.onSessionUpdated);
