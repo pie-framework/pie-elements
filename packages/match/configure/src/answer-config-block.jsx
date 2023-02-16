@@ -6,9 +6,8 @@ import { withStyles } from '@material-ui/core/styles';
 import AddRow from './add-row';
 import Row from './row';
 import debug from 'debug';
-import lodash, { cloneDeep } from 'lodash';
+import lodash from 'lodash';
 import EditableHTML, { DEFAULT_PLUGINS } from '@pie-lib/editable-html';
-import isEmpty from 'lodash/isEmpty';
 
 const log = debug('pie-elements:match:configure');
 

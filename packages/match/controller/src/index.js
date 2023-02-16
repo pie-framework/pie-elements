@@ -363,10 +363,9 @@ export const validate = (model = {}, config = {}) => {
 
   if (!isEmpty(rowsErrors)) {
     errors.rowsErrors = rowsErrors;
-
     let noCorrectAnswer = false;
+
     Object.entries(rowsErrors).forEach(([key, rowError]) => {
-      console.log('rowError', rowError);
       if ((rowError || '').includes('No correct response defined.')) {
         noCorrectAnswer = true;
       }
