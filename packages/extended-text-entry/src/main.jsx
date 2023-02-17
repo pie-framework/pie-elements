@@ -6,6 +6,7 @@ import { withStyles } from '@material-ui/core/styles';
 import debug from 'debug';
 import debounce from 'lodash/debounce';
 import { color, Feedback, Collapsible, PreviewPrompt } from '@pie-lib/render-ui';
+import classnames from 'classnames';
 
 const log = debug('@pie-ui:extended-text-entry');
 
@@ -19,6 +20,13 @@ const style = (theme) => ({
     color: color.text(),
     marginBottom: theme.spacing.unit * 2,
     fontSize: 'inherit',
+  },
+  teacherInstructions: {
+    marginBottom: theme.spacing.unit * 2,
+  },
+  editor: {
+    marginBottom: theme.spacing.unit * 2,
+    borderRadius: '4px',
   },
 });
 
@@ -51,22 +59,13 @@ export class Main extends React.Component {
     const { value } = session;
     const { width, height } = dimensions || {};
     const maxHeight = '40vh';
-    const toolbarOpts = {};
+    const toolbarOpts = { position: playersToolbarPosition === 'top' ? 'top' : 'bottom' };
 
     log('[render] disabled? ', disabled);
 
     const teacherInstructionsDiv = (
       <PreviewPrompt defaultClassName="teacher-instructions" prompt={teacherInstructions} />
     );
-
-    switch (playersToolbarPosition) {
-      case 'top':
-        toolbarOpts.position = 'top';
-        break;
-      default:
-        toolbarOpts.position = 'bottom';
-        break;
-    }
 
     const languageCharactersProps = [];
 
@@ -86,7 +85,7 @@ export class Main extends React.Component {
         }}
       >
         {teacherInstructions && (
-          <div>
+          <div className={classes.teacherInstructions}>
             {!animationsDisabled ? (
               <Collapsible
                 labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}
@@ -97,16 +96,17 @@ export class Main extends React.Component {
             ) : (
               teacherInstructionsDiv
             )}
-            <br />
           </div>
         )}
+
         {model.prompt && (
           <Typography component={'span'} className={classes.prompt}>
             <PreviewPrompt defaultClassName="prompt" prompt={model.prompt} />
           </Typography>
         )}
+
         <EditableHTML
-          className="response-area-editor"
+          className={classnames(classes.editor, 'response-area-editor')}
           onChange={this.changeSession}
           markup={value || ''}
           width={width && width.toString()}
@@ -132,12 +132,8 @@ export class Main extends React.Component {
           }}
           languageCharactersProps={languageCharactersProps}
         />
-        {feedback && (
-          <div>
-            <br />
-            <Feedback correctness="correct" feedback={feedback} />
-          </div>
-        )}
+
+        {feedback && <Feedback correctness="correct" feedback={feedback} />}
       </div>
     );
   }

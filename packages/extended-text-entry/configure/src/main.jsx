@@ -132,59 +132,57 @@ export class Main extends React.Component {
           />
         }
       >
-        <div>
-          {teacherInstructionsEnabled && (
-            <InputContainer label={teacherInstructions.label} className={classes.promptContainer}>
-              <EditableHtml
-                className={classes.prompt}
-                markup={model.teacherInstructions || ''}
-                onChange={this.changeTeacherInstructions}
-                imageSupport={imageSupport}
-                nonEmpty={false}
-                toolbarOpts={toolbarOpts}
-                spellCheck={spellCheckEnabled}
-                maxImageWidth={(maxImageWidth && maxImageWidth.teacherInstructions) || defaultImageMaxWidth}
-                maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
-                uploadSoundSupport={uploadSoundSupport}
-                languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
-              />
-            </InputContainer>
-          )}
+        {teacherInstructionsEnabled && (
+          <InputContainer label={teacherInstructions.label} className={classes.promptContainer}>
+            <EditableHtml
+              className={classes.prompt}
+              markup={model.teacherInstructions || ''}
+              onChange={this.changeTeacherInstructions}
+              imageSupport={imageSupport}
+              nonEmpty={false}
+              toolbarOpts={toolbarOpts}
+              spellCheck={spellCheckEnabled}
+              maxImageWidth={(maxImageWidth && maxImageWidth.teacherInstructions) || defaultImageMaxWidth}
+              maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
+              uploadSoundSupport={uploadSoundSupport}
+              languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+            />
+          </InputContainer>
+        )}
 
-          {promptEnabled && (
-            <InputContainer label={prompt.label} className={classes.promptContainer}>
-              <EditableHtml
-                activePlugins={ALL_PLUGINS}
-                className={classes.prompt}
-                markup={model.prompt || ''}
-                onChange={this.onPromptChange}
-                imageSupport={imageSupport}
-                nonEmpty={false}
-                toolbarOpts={toolbarOpts}
-                spellCheck={spellCheckEnabled}
-                maxImageWidth={defaultImageMaxWidth}
-                maxImageHeight={defaultImageMaxHeight}
-                uploadSoundSupport={uploadSoundSupport}
-                languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
-              />
-            </InputContainer>
-          )}
+        {promptEnabled && (
+          <InputContainer label={prompt.label} className={classes.promptContainer}>
+            <EditableHtml
+              activePlugins={ALL_PLUGINS}
+              className={classes.prompt}
+              markup={model.prompt || ''}
+              onChange={this.onPromptChange}
+              imageSupport={imageSupport}
+              nonEmpty={false}
+              toolbarOpts={toolbarOpts}
+              spellCheck={spellCheckEnabled}
+              maxImageWidth={defaultImageMaxWidth}
+              maxImageHeight={defaultImageMaxHeight}
+              uploadSoundSupport={uploadSoundSupport}
+              languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+            />
+          </InputContainer>
+        )}
 
-          {feedbackEnabled && (
-            <React.Fragment>
-              <Typography className={classes.header} variant="subheading">
-                Feedback
-              </Typography>
+        {feedbackEnabled && (
+          <React.Fragment>
+            <Typography className={classes.header} variant="subheading">
+              Feedback
+            </Typography>
 
-              <FeedbackSelector
-                label="When submitted, show"
-                feedback={model.feedback || defaultFeedback}
-                onChange={this.changeFeedback}
-                toolbarOpts={toolbarOpts}
-              />
-            </React.Fragment>
-          )}
-        </div>
+            <FeedbackSelector
+              label="When submitted, show"
+              feedback={model.feedback || defaultFeedback}
+              onChange={this.changeFeedback}
+              toolbarOpts={toolbarOpts}
+            />
+          </React.Fragment>
+        )}
       </layout.ConfigLayout>
     );
   }
@@ -197,12 +195,5 @@ export default withStyles((theme) => ({
     paddingTop: theme.spacing.unit * 2,
     marginBottom: theme.spacing.unit * 2,
     width: '100%',
-  },
-  promptInput: {
-    width: '100%',
-    marginBottom: theme.spacing.unit,
-  },
-  field: {
-    width: '200px',
   },
 }))(Main);
