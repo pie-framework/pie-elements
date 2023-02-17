@@ -148,7 +148,8 @@ Maximum number of scales
 
 # `defaultTraitLabel` (string)
 
-The default trait label for new created scales
+The default trait label for new created scales.
+If it's not defined, it will default to the label of the first trait.
 
 ---
 
