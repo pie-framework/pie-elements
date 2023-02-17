@@ -94,16 +94,12 @@ class ComplexRubric extends HTMLElement {
   }
 
   _render() {
-    this.innerHTML = `
-      <div>
-        <div style="${
-          this._type === RUBRIC_TYPES.SIMPLE_RUBRIC ? `visibility: visible` : `visibility: hidden`
-        }"><${RUBRIC_TAG_NAME} id="simpleRubric"></${RUBRIC_TAG_NAME}></div>
-        <div style="${
-          this._type !== RUBRIC_TYPES.SIMPLE_RUBRIC ? `visibility: visible` : `visibility: hidden`
-        }"> <${MULTI_TRAIT_RUBRIC_TAG_NAME} id="multiTraitRubric"></${MULTI_TRAIT_RUBRIC_TAG_NAME}></div>
-      </div>
-    `;
+    const rubricTag =
+      this._type === RUBRIC_TYPES.SIMPLE_RUBRIC
+        ? `<${RUBRIC_TAG_NAME} id="simpleRubric" />`
+        : `<${MULTI_TRAIT_RUBRIC_TAG_NAME} id="multiTraitRubric" />`;
+
+    this.innerHTML = rubricTag;
   }
 }
 
