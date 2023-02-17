@@ -23,15 +23,6 @@ export default class ExtendedTextEntry extends HTMLElement {
     this._configuration = defaults.configuration;
   }
 
-  verifyRubric = async (c) => {
-    const { withRubric } = c || {};
-
-    if (withRubric.enabled && !this._model.rubricEnabled) {
-      this._model.rubricEnabled = true;
-      this.dispatchEvent(new ModelUpdatedEvent(this._model));
-    }
-  }
-
   set model(m) {
     this._model = ExtendedTextEntry.createDefaultModel(m);
     this.render();
@@ -42,8 +33,6 @@ export default class ExtendedTextEntry extends HTMLElement {
       ...defaults.configuration,
       ...c,
     };
-
-    this.verifyRubric(this._configuration);
 
     this.render();
   }
@@ -61,12 +50,6 @@ export default class ExtendedTextEntry extends HTMLElement {
     };
 
     if (this._model) {
-      const { withRubric = {} } = c || {};
-
-      if (withRubric.enabled && !this._model.rubricEnabled) {
-        this._model.rubricEnabled = true;
-      }
-
       this.onModelChanged(this._model);
     }
 
