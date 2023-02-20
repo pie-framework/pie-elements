@@ -70,7 +70,7 @@ exports.model = (id, element) => ({
       },
     ],
   },
-  alternateResponse: {},
+  alternateResponse: {}, 
   choiceRationaleEnabled: false,
   rubricEnabled: false,
 });
