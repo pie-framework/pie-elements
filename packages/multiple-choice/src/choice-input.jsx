@@ -11,7 +11,7 @@ import classNames from 'classnames';
 
 const CLASS_NAME = 'multiple-choice-component';
 
-const styleSheet = () => ({
+const styleSheet = (theme) => ({
   row: {
     display: 'flex',
     alignItems: 'center',
@@ -28,7 +28,7 @@ const styleSheet = () => ({
   },
   horizontalLayout: {
     [`& .${CLASS_NAME}`]: {
-      paddingRight: '8px',
+      paddingRight: theme.spacing.unit,
     },
   },
 });

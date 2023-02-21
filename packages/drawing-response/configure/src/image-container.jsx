@@ -233,7 +233,7 @@ export class ImageContainer extends Component {
 
 const styles = (theme) => ({
   base: {
-    marginTop: theme.spacing.unit * 2,
+    marginTop: theme.spacing.unit,
   },
   box: {
     border: '1px solid #E0E1E6',

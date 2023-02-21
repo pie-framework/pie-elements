@@ -2,9 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
-import classNames from 'classnames';
 import { PreviewLayout } from '@pie-lib/render-ui';
 import MultipleChoice from './multiple-choice';
+
+const styles = (theme) => ({
+  partLabel: {
+    paddingBottom: theme.spacing.unit * 2,
+  },
+});
 
 class Main extends React.Component {
   static propTypes = {
@@ -28,19 +33,17 @@ class Main extends React.Component {
     // model.partLabel is a property used for ebsr
     return (
       <PreviewLayout
-        ariaLabel={(model.choiceMode == 'radio' ? 'Multiple Choice Question' : 'Multiple Correct Answer Question')}
+        ariaLabel={model.choiceMode == 'radio' ? 'Multiple Choice Question' : 'Multiple Correct Answer Question'}
         role="region"
-      > 
-        {model.partLabel && <p>{model.partLabel}</p>}
-        <div className={classNames(classes.root, classes[model.className])}>
-          <MultipleChoice {...model} session={session} onChoiceChanged={onChoiceChanged} />
-        </div>
+      >
+        {model.partLabel && <div className={classes.partLabel}>{model.partLabel}</div>}
+        <MultipleChoice {...model} session={session} onChoiceChanged={onChoiceChanged} />
       </PreviewLayout>
     );
   }
 }
 
-const Styled = withStyles({}, { name: 'Main' })(Main);
+const Styled = withStyles(styles, { name: 'Main' })(Main);
 
 const theme = createMuiTheme({
   typography: {
