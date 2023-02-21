@@ -1,5 +1,6 @@
 import debug from 'debug';
 import isEmpty from 'lodash/isEmpty';
+import shuffle from 'lodash/shuffle';
 import { camelizeKeys } from 'humps';
 import { partialScoring } from '@pie-lib/controller-utils';
 
@@ -25,6 +26,10 @@ export function model(question, session, env) {
       ...questionCamelized,
       responseCorrect: env.mode === 'evaluate' ? getScore(questionCamelized, session) === 1 : undefined,
     };
+
+    if (questionNormalized.shuffle) {
+      out.possibleResponses = shuffle(questionNormalized.possible_responses);
+    }
 
     if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
       out.teacherInstructions = questionCamelized.teacherInstructionsEnabled

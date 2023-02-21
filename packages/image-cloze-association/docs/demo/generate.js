@@ -49,6 +49,11 @@ exports.model = (id, element) => ({
   possible_responses: [
     '<img alt="" src="https://app.fluence.net/ia/image/9e5ed1d6762c4dac87b080e190af113d"/>',
     '<img alt="" src="https://app.fluence.net/ia/image/729ca157d04c440ab7ae1c2abfb9c057"/>',
+    "1",
+    "2",
+    "3",
+    "4",
+    "5"
   ],
   validation: {
     scoring_type: 'exactMatch', // this is not used
@@ -66,6 +71,6 @@ exports.model = (id, element) => ({
   },
   showDashedBorder: false,
   partialScoring: false,
-  shuffle: true, // this is not used
+  shuffle: true,
   rubricEnabled: false,
 });

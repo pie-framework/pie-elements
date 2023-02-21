@@ -104,6 +104,9 @@ export interface ImageClozeAssociationPie extends PieModel {
 
   /** Indicates if Rubric is enabled */
   rubricEnabled: boolean;
+
+  /** Indicates if the possible responses have to be shuffled in the player */
+  shuffle?: boolean;
 }
 
 /**
