@@ -66,6 +66,6 @@ exports.model = (id, element) => ({
   },
   showDashedBorder: false,
   partialScoring: false,
-  shuffle: true, // this is not used
+  shuffle: true,
   rubricEnabled: false,
 });
