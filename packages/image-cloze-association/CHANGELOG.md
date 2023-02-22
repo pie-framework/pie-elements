@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.9.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@4.8.0...@pie-element/image-cloze-association@4.9.0) (2023-02-22)
+
+
+### Features
+
+* add test ([3d00c9b](https://github.com/pie-framework/pie-elements/commit/3d00c9b5188dd47ca022bbfb863490a554210ff1))
+* **image-cloze-association:** add logic for suffle property. Update documentation PD-2650 ([f4b1e90](https://github.com/pie-framework/pie-elements/commit/f4b1e90f4f97a5cb808c8f9a66d7188c469f5e81))
+
+
+
+
+
 # [4.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@4.7.0...@pie-element/image-cloze-association@4.8.0) (2023-02-14)
 
 
