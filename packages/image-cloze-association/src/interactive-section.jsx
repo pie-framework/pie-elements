@@ -53,14 +53,17 @@ InteractiveSection.defaultProps = {
   responseCorrect: undefined,
 };
 
-const styles = () => ({
+const styles = (theme) => ({
   interactiveDefault: {
+    marginTop: theme.spacing.unit * 2,
     border: `1px solid ${color.disabled()}`,
   },
   interactiveCorrect: {
+    marginTop: theme.spacing.unit * 2,
     border: `2px solid ${color.correct()}`,
   },
   interactiveIncorrect: {
+    marginTop: theme.spacing.unit * 2,
     border: `2px solid ${color.incorrect()}`,
   },
 });

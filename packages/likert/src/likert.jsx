@@ -4,23 +4,27 @@ import ChoiceInput from './choice-input';
 import { withStyles } from '@material-ui/core/styles';
 import { Collapsible, PreviewPrompt } from '@pie-lib/render-ui';
 import { LIKERT_ORIENTATION } from './likertEntities';
+import classNames from 'classnames';
 
-const styles = {
-  corespringChoice: {
+const styles = (theme) => ({
+  main: {
     '& *': {
       fontFamily: 'Roboto, Arial, Helvetica, sans-serif',
       '-webkit-font-smoothing': 'antialiased',
     },
   },
+  teacherInstructions: {
+    marginBottom: theme.spacing.unit * 2,
+  },
   prompt: {
     verticalAlign: 'middle',
     color: 'var(--pie-primary-text, var(--pie-text, #000000))',
-    paddingBottom: '20px',
+    paddingBottom: theme.spacing.unit * 2,
   },
   choicesWrapper: {
     display: 'flex',
   },
-};
+});
 
 export class Likert extends React.Component {
   static propTypes = {
@@ -48,25 +52,24 @@ export class Likert extends React.Component {
       onSessionChange,
       teacherInstructions,
       classes,
+      className,
       likertOrientation,
     } = this.props;
 
     const flexDirection = likertOrientation === LIKERT_ORIENTATION.vertical ? 'column' : 'row';
 
     return (
-      <div className={classes.corespringChoice}>
+      <div className={classNames(classes.main, className)}>
         {teacherInstructions && (
-          <React.Fragment>
-            <Collapsible
-              labels={{
-                hidden: 'Show Teacher Instructions',
-                visible: 'Hide Teacher Instructions',
-              }}
-            >
-              <PreviewPrompt prompt={teacherInstructions} />
-            </Collapsible>
-            <br />
-          </React.Fragment>
+          <Collapsible
+            className={classes.teacherInstructions}
+            labels={{
+              hidden: 'Show Teacher Instructions',
+              visible: 'Hide Teacher Instructions',
+            }}
+          >
+            <PreviewPrompt prompt={teacherInstructions} />
+          </Collapsible>
         )}
 
         {prompt && (
