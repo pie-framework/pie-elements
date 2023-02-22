@@ -182,6 +182,11 @@
       "type": "boolean",
       "title": "rubricEnabled"
     },
+    "shuffle": {
+      "description": "Indicates if the possible responses have to be shuffled in the player",
+      "type": "boolean",
+      "title": "shuffle"
+    },
     "id": {
       "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
       "type": "string",

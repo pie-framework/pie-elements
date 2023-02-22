@@ -53,6 +53,7 @@ describe('controller', () => {
       duplicate_responses: true,
       max_response_per_zone: 5,
       partialScoring: false,
+      shuffle: true
     };
   });
 
@@ -403,6 +404,10 @@ describe('controller', () => {
 
       it('does not return responseCorrect', () => {
         expect(result.responseCorrect).toBe(undefined);
+      });
+
+      it('returns possibleResponses in shuffled order', () => {
+        expect(result.possibleResponses).toEqual(expect.arrayContaining(question.possible_responses));
       });
     });
 
