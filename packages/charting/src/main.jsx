@@ -77,8 +77,6 @@ export class Main extends React.Component {
 
     return (
       <div className={classes.mainContainer}>
-        <CorrectAnswerToggle show={showToggle} toggled={showingCorrect} onToggle={this.toggleCorrect} />
-
         {teacherInstructions && hasText(teacherInstructions) && (
           <React.Fragment>
             <Collapsible
@@ -99,6 +97,8 @@ export class Main extends React.Component {
             <br />
           </React.Fragment>
         )}
+
+        <CorrectAnswerToggle className={classes.showToggle} show={showToggle} toggled={showingCorrect} onToggle={this.toggleCorrect} />
 
         {showingCorrect && showToggle ? (
           <Chart
@@ -159,6 +159,9 @@ const styles = (theme) => ({
     color: color.text(),
     backgroundColor: color.background(),
     overflow: 'hidden',
+  },
+  showToggle: {
+    marginBottom: 2 * theme.spacing.unit,
   },
 });
 
