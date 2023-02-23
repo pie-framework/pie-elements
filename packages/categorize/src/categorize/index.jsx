@@ -4,19 +4,9 @@ import Choices from './choices';
 import Categories from './categories';
 import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
 import { withStyles } from '@material-ui/core/styles';
-import {
-  buildState,
-  removeChoiceFromCategory,
-  moveChoiceToCategory,
-} from '@pie-lib/categorize';
+import { buildState, removeChoiceFromCategory, moveChoiceToCategory } from '@pie-lib/categorize';
 import { withDragContext, uid } from '@pie-lib/drag';
-import {
-  color,
-  Feedback,
-  Collapsible,
-  hasText,
-  PreviewPrompt,
-} from '@pie-lib/render-ui';
+import { color, Feedback, Collapsible, hasText, PreviewPrompt } from '@pie-lib/render-ui';
 import debug from 'debug';
 
 const log = debug('@pie-ui:categorize');
@@ -40,7 +30,7 @@ export class Categorize extends React.Component {
         PropTypes.shape({
           choice: PropTypes.string,
           category: PropTypes.string,
-        })
+        }),
       ),
     }),
     onAnswersChange: PropTypes.func.isRequired,
@@ -62,39 +52,31 @@ export class Categorize extends React.Component {
   removeChoice = (c) => {
     log('[removeChoice]: ', c);
     const { onAnswersChange, session } = this.props;
-    const answers = removeChoiceFromCategory(
-      c.id,
-      c.categoryId,
-      c.choiceIndex,
-      session.answers
-    );
+    const answers = removeChoiceFromCategory(c.id, c.categoryId, c.choiceIndex, session.answers);
     onAnswersChange(answers);
   };
 
   dropChoice = (categoryId, draggedChoice) => {
     const { session, onAnswersChange } = this.props;
     if (draggedChoice) {
-      log(
-        '[dropChoice] category: ',
-        draggedChoice.categoryId,
-        'choice: ',
-        draggedChoice
-      );
+      log('[dropChoice] category: ', draggedChoice.categoryId, 'choice: ', draggedChoice);
     } else {
       log('[dropChoice] category: ', undefined, 'choice: ', undefined);
     }
 
-    const answers = draggedChoice ? moveChoiceToCategory(
-      draggedChoice.id,
-      draggedChoice.categoryId,
-      categoryId,
-      draggedChoice.choiceIndex,
-      session.answers
-    ) : this.removeChoice(categoryId)
+    const answers = draggedChoice
+      ? moveChoiceToCategory(
+          draggedChoice.id,
+          draggedChoice.categoryId,
+          categoryId,
+          draggedChoice.choiceIndex,
+          session.answers,
+        )
+      : this.removeChoice(categoryId);
 
     if (draggedChoice) {
       onAnswersChange(answers);
-    } 
+    }
   };
 
   UNSAFE_componentWillReceiveProps() {
@@ -128,7 +110,8 @@ export class Categorize extends React.Component {
     return flexDirection;
   };
 
-  existAlternateResponse = (correctResponse) => correctResponse?.some(correctRes => correctRes.alternateResponses?.length > 0);
+  existAlternateResponse = (correctResponse) =>
+    correctResponse?.some((correctRes) => correctRes.alternateResponses?.length > 0);
 
   render() {
     const { classes, model, session } = this.props;
@@ -145,15 +128,16 @@ export class Categorize extends React.Component {
       model.categories,
       model.choices,
       showCorrect ? model.correctResponse : session.answers,
-      model.correctResponse
+      model.correctResponse,
     );
 
     log('[render] disabled: ', model.disabled);
-    
+
     const { rowLabels, categoriesPerRow, correctResponse } = model;
-    const nbOfRows = categories && Math.ceil(categories.length / categoriesPerRow) || 0;
+    const nbOfRows = (categories && Math.ceil(categories.length / categoriesPerRow)) || 0;
     const existAlternate = this.existAlternateResponse(correctResponse) || false;
-    const displayNote = (showCorrect || mode === 'view' && role === 'instructor') && showNote && note && existAlternate;
+    const displayNote =
+      (showCorrect || (mode === 'view' && role === 'instructor')) && showNote && note && existAlternate;
 
     return (
       <div className={classes.mainContainer}>
@@ -171,38 +155,36 @@ export class Categorize extends React.Component {
             <br />
           </React.Fragment>
         )}
-        <CorrectAnswerToggle
-          show={showCorrect || correct === false}
-          toggled={showCorrect}
-          onToggle={this.toggleShowCorrect}
-        />
         {model.prompt && removeHTMLTags(model.prompt) && (
           <div className={classes.prompt}>
             <PreviewPrompt prompt={model.prompt} />
           </div>
         )}
+        <CorrectAnswerToggle
+          className={classes.toggle}
+          show={showCorrect || correct === false}
+          toggled={showCorrect}
+          onToggle={this.toggleShowCorrect}
+        />
         <div className={classes.categorize} style={style}>
           <div style={{ display: 'flex', flex: 1 }}>
-
-            {
-              !!(rowLabels && nbOfRows) && (
-                <div style={{ display: 'grid'}}>
-                  {rowLabels.slice(0, nbOfRows).map((label, index) => (
-                    <div
-                      key={index}
-                      style={{
-                        alignItems: 'center',
-                        display: 'flex',
-                        justifyContent: 'center'
-                      }}
-                      dangerouslySetInnerHTML={{
-                        __html: label
-                      }}
-                    />
-                  ))}
-                </div>
-              )
-            }
+            {!!(rowLabels && nbOfRows) && (
+              <div style={{ display: 'grid' }}>
+                {rowLabels.slice(0, nbOfRows).map((label, index) => (
+                  <div
+                    key={index}
+                    style={{
+                      alignItems: 'center',
+                      display: 'flex',
+                      justifyContent: 'center',
+                    }}
+                    dangerouslySetInnerHTML={{
+                      __html: label,
+                    }}
+                  />
+                ))}
+              </div>
+            )}
             <Categories
               model={model}
               disabled={model.disabled}
@@ -229,10 +211,7 @@ export class Categorize extends React.Component {
           />
         )}
         {model.rationale && hasText(model.rationale) && (
-          <Collapsible
-            labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }}
-            className={classes.collapsible}
-          >
+          <Collapsible labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }} className={classes.collapsible}>
             <PreviewPrompt prompt={model.rationale} />
           </Collapsible>
         )}
@@ -279,6 +258,9 @@ const styles = (theme) => ({
   },
   collapsible: {
     paddingBottom: theme.spacing.unit * 2,
+  },
+  toggle: {
+    paddingBottom: theme.spacing.unit * 3,
   },
 });
 
