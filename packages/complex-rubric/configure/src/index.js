@@ -12,8 +12,11 @@ const MODEL_UPDATED = ModelUpdatedEvent.TYPE;
 const RUBRIC_TAG_NAME = 'rubric-configure';
 const MULTI_TRAIT_RUBRIC_TAG_NAME = 'multi-trait-rubric-configure';
 
-class ComplexSimpleRubricConfigure extends RubricConfigure {}
-class ComplexMTRConfigure extends MultiTraitRubricConfigure {}
+class ComplexSimpleRubricConfigure extends RubricConfigure {
+}
+
+class ComplexMTRConfigure extends MultiTraitRubricConfigure {
+}
 
 const defineComplexRubric = () => {
   if (!customElements.get(RUBRIC_TAG_NAME)) {
@@ -59,16 +62,20 @@ export default class ComplexRubricConfigureElement extends HTMLElement {
 
   constructor() {
     super();
-    debug.log('constructor called');
-    this._model = ComplexRubricConfigureElement.createDefaultModel();
+    this.canUpdateModel = false;
 
+    debug.log('constructor called');
+
+    this._model = ComplexRubricConfigureElement.createDefaultModel();
     this._configuration = sensibleDefaults.configuration;
+
     this.onConfigurationChanged = this.onConfigurationChanged.bind(this);
   }
 
   set model(m) {
     this._model = ComplexRubricConfigureElement.createDefaultModel(m, this._model);
 
+    this.canUpdateModel = true;
     this._render();
   }
 
@@ -136,6 +143,7 @@ export default class ComplexRubricConfigureElement extends HTMLElement {
       configuration: this._configuration,
       onModelChanged: this.onModelChanged,
       onConfigurationChanged: this.onConfigurationChanged,
+      canUpdateModel: this.canUpdateModel
     });
 
     ReactDOM.render(element, this);
