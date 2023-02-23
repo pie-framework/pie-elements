@@ -120,14 +120,16 @@ export class Main extends React.Component {
             )}
           </div>
         )}
+        {prompt && <PreviewPrompt prompt={prompt} />}
+        {!alwaysShowCorrect && <br />}
         {!alwaysShowCorrect && (
           <CorrectAnswerToggle
+            className={classes.toggle}
             show={mode === 'evaluate'}
             toggled={showCorrectAnswer}
             onToggle={this.toggleShowCorrect}
           />
         )}
-        {prompt && <PreviewPrompt prompt={prompt} />}
         <ConstructedResponse
           {...this.props}
           onChange={this.onChange}
@@ -179,6 +181,9 @@ const styles = (theme) => ({
     '& *': {
       borderColor: `${color.text()} !important`,
     },
+  },
+  toggle: {
+    paddingBottom: theme.spacing.unit * 3,
   },
 });
 
