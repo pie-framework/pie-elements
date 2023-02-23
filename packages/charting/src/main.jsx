@@ -161,7 +161,7 @@ const styles = (theme) => ({
     overflow: 'hidden',
   },
   showToggle: {
-    marginBottom: 2 * theme.spacing.unit,
+    marginBottom: theme.spacing.unit * 3,
   },
 });
 
