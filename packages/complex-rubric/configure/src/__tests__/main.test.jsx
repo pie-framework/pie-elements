@@ -79,6 +79,7 @@ describe('Main', () => {
           },
         },
       },
+      canUpdateModel: true
     };
     const props = { ...defaults };
 
