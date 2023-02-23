@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.7.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric@2.7.0...@pie-element/multi-trait-rubric@2.7.1) (2023-02-22)
+
+
+### Bug Fixes
+
+* change withRubric type for extended-text-entry and drawing-response. docs update from different pr for multi-trait-rubric ([7bf77ad](https://github.com/pie-framework/pie-elements/commit/7bf77ada1a09bc56a053341bce9a0eaf02955672))
+
+
+
+
+
 # [2.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric@2.6.0...@pie-element/multi-trait-rubric@2.7.0) (2023-02-14)
 
 
