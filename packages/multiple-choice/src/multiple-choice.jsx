@@ -31,7 +31,7 @@ const styles = {
     border: '0px',
     padding: '0.01em 0 0 0',
     margin: '0px',
-    minWidth: '0px'
+    minWidth: '0px',
   },
 };
 
@@ -168,16 +168,16 @@ export class MultipleChoice extends React.Component {
             <br />
           </React.Fragment>
         )}
-        {!alwaysShowCorrect && (
-          <CorrectAnswerToggle
-            show={showCorrectAnswerToggle}
-            toggled={showCorrect}
-            onToggle={this.onToggle.bind(this)}
-          />
-        )}
-        {showCorrectAnswerToggle && <br />}
         <fieldset className={classes.fieldset}>
-          <PreviewPrompt className="prompt" defaultClassName="prompt" prompt={prompt} tagName={"legend"} />
+          <PreviewPrompt className="prompt" defaultClassName="prompt" prompt={prompt} tagName={'legend'} />
+          {showCorrectAnswerToggle && <br />}
+          {!alwaysShowCorrect && (
+            <CorrectAnswerToggle
+              show={showCorrectAnswerToggle}
+              toggled={showCorrect}
+              onToggle={this.onToggle.bind(this)}
+            />
+          )}
           <div
             className={classNames(
               { [classes.gridLayout]: this.props.choicesLayout === 'grid' },
