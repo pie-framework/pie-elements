@@ -70,7 +70,12 @@ export class Main extends React.Component {
     return (
       <div className={classes.mainContainer}>
         <PreviewPrompt className="prompt" prompt={prompt} />
-        <CorrectAnswerToggle className={classes.toggle} show={mode === 'evaluate'} toggled={showCorrectAnswer} onToggle={this.toggleShowCorrect} />
+        <CorrectAnswerToggle
+          className={classes.toggle}
+          show={mode === 'evaluate'}
+          toggled={showCorrectAnswer}
+          onToggle={this.toggleShowCorrect}
+        />
         <AnswerArea
           instanceId={this.instanceId}
           model={model}
@@ -80,7 +85,13 @@ export class Main extends React.Component {
           disabled={mode !== 'gather'}
           showCorrect={showCorrectAnswer}
         />
-        <ChoicesList instanceId={this.instanceId} model={model} session={session} disabled={mode !== 'gather'} onRemoveAnswer={(id) => this.onRemoveAnswer(id)}/>
+        <ChoicesList
+          instanceId={this.instanceId}
+          model={model}
+          session={session}
+          disabled={mode !== 'gather'}
+          onRemoveAnswer={(id) => this.onRemoveAnswer(id)}
+        />
         {model.correctness && model.feedback && !showCorrectAnswer && (
           <Feedback correctness={model.correctness.correctness} feedback={model.feedback} />
         )}
