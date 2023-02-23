@@ -51,18 +51,18 @@ export class Main extends React.Component {
             <br />
           </React.Fragment>
         )}
-        <CorrectAnswerToggle
-          show={showCorrectAnswerToggle}
-          toggled={showCorrectAnswer}
-          onToggle={this.toggleShowCorrect}
-        />
-        {showCorrectAnswerToggle && <br />}
         {prompt && (
           <React.Fragment>
             <PreviewPrompt prompt={prompt} />
             <br />
           </React.Fragment>
         )}
+         <CorrectAnswerToggle
+          show={showCorrectAnswerToggle}
+          toggled={showCorrectAnswer}
+          onToggle={this.toggleShowCorrect}
+        />
+        {showCorrectAnswerToggle && <br />}
         <DraggableDragInTheBlank {...modelWithValue} onChange={onChange} showCorrectAnswer={showCorrectAnswer} />
         {model.rationale && hasText(model.rationale) && (
           <React.Fragment>
