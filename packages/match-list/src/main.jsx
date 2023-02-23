@@ -69,8 +69,8 @@ export class Main extends React.Component {
 
     return (
       <div className={classes.mainContainer}>
-        <CorrectAnswerToggle show={mode === 'evaluate'} toggled={showCorrectAnswer} onToggle={this.toggleShowCorrect} />
         <PreviewPrompt className="prompt" prompt={prompt} />
+        <CorrectAnswerToggle className={classes.toggle} show={mode === 'evaluate'} toggled={showCorrectAnswer} onToggle={this.toggleShowCorrect} />
         <AnswerArea
           instanceId={this.instanceId}
           model={model}
