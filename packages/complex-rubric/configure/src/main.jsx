@@ -47,45 +47,42 @@ export class Main extends React.Component {
       rubricType = RUBRIC_TYPES.SIMPLE_RUBRIC;
     }
 
-    switch (rubricType) {
-      case RUBRIC_TYPES.SIMPLE_RUBRIC:
-      default:
-        rubricTag = (
-          <rubric-configure
-            id="simpleRubric"
-            key="simple-rubric"
-            ref={(ref) => {
-              if (ref) {
-                this.simpleRubric = ref;
-
-                if (canUpdateModel) {
+    if (canUpdateModel) {
+      switch (rubricType) {
+        case RUBRIC_TYPES.SIMPLE_RUBRIC:
+        default:
+          rubricTag = (
+            <rubric-configure
+              id="simpleRubric"
+              key="simple-rubric"
+              ref={(ref) => {
+                if (ref) {
+                  this.simpleRubric = ref;
                   this.simpleRubric.model = rubrics.simpleRubric;
                   this.simpleRubric.configuration = { ...simpleRubric, width };
                 }
-              }
-            }}
-          />
-        );
-        break;
+              }}
+            />
+          );
+          break;
 
-      case RUBRIC_TYPES.MULTI_TRAIT_RUBRIC:
-        rubricTag = (
-          <multi-trait-rubric-configure
-            id="multiTraitRubric"
-            key="multi-trait-rubric"
-            ref={(ref) => {
-              if (ref) {
-                this.multiTraitRubric = ref;
+        case RUBRIC_TYPES.MULTI_TRAIT_RUBRIC:
+          rubricTag = (
+            <multi-trait-rubric-configure
+              id="multiTraitRubric"
+              key="multi-trait-rubric"
+              ref={(ref) => {
+                if (ref) {
+                  this.multiTraitRubric = ref;
 
-                if (canUpdateModel) {
                   this.multiTraitRubric.model = rubrics.multiTraitRubric;
                   this.multiTraitRubric.configuration = { ...multiTraitRubric, width };
                 }
-              }
-            }}
-          />
-        );
-        break;
+              }}
+            />
+          );
+          break;
+      }
     }
 
     return (
