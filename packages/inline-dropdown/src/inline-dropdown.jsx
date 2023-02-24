@@ -78,6 +78,13 @@ export class InlineDropdown extends React.Component {
           </React.Fragment>
         )}
 
+        {prompt && (
+          <React.Fragment>
+            <PreviewPrompt prompt={prompt} />
+            <br />
+          </React.Fragment>
+        )}
+        
         <CorrectAnswerToggle
           show={showCorrectAnswerToggle}
           toggled={showCorrectAnswer}
@@ -85,12 +92,6 @@ export class InlineDropdown extends React.Component {
         />
         {showCorrectAnswerToggle && <br />}
 
-        {prompt && (
-          <React.Fragment>
-            <PreviewPrompt prompt={prompt} />
-            <br />
-          </React.Fragment>
-        )}
         <DropDown {...this.props} showCorrectAnswer={showCorrectAnswer} />
         {rationale && hasText(rationale) && (
           <Collapsible labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }}>
