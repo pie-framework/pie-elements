@@ -4,14 +4,14 @@ exports[`PlacementOrdering render shows toggle 1`] = `
 <div
   className="placementOrdering"
 >
+  <div>
+    <WithStyles(PreviewPrompt) />
+  </div>
   <WithStyles(CorrectAnswerToggle)
     onToggle={[Function]}
     show={true}
     toggled={false}
   />
-  <div>
-    <WithStyles(PreviewPrompt) />
-  </div>
   <OrderingTiler
     includeTargets={true}
     instanceId="3"
@@ -29,13 +29,13 @@ exports[`PlacementOrdering render snapshot 1`] = `
 <div
   className="placementOrdering"
 >
+  <div>
+    <WithStyles(PreviewPrompt) />
+  </div>
   <WithStyles(CorrectAnswerToggle)
     onToggle={[Function]}
     toggled={false}
   />
-  <div>
-    <WithStyles(PreviewPrompt) />
-  </div>
   <OrderingTiler
     includeTargets={true}
     instanceId="1"
@@ -53,13 +53,13 @@ exports[`PlacementOrdering render snapshot with rationale 1`] = `
 <div
   className="placementOrdering"
 >
+  <div>
+    <WithStyles(PreviewPrompt) />
+  </div>
   <WithStyles(CorrectAnswerToggle)
     onToggle={[Function]}
     toggled={false}
   />
-  <div>
-    <WithStyles(PreviewPrompt) />
-  </div>
   <OrderingTiler
     includeTargets={true}
     instanceId="5"
