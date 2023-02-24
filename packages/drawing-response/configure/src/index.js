@@ -16,27 +16,39 @@ import sensibleDefaults from './defaults';
 const log = debug('hotspot:configure');
 
 export default class DrawableResponseConfigure extends HTMLElement {
-  static createDefaultModel = (model = {}) => {
-    return {
+  static createDefaultModel = (model = {}, config) => {
+    const defaultModel = {
       ...sensibleDefaults.model,
       ...model,
     };
+
+    if (config?.withRubric?.forceEnabled && !defaultModel.rubricEnabled) {
+      defaultModel.rubricEnabled = true;
+    }
+
+    return defaultModel;
   };
 
   constructor() {
     super();
     this._configuration = sensibleDefaults.configuration;
-    this._model = DrawableResponseConfigure.createDefaultModel({});
+    this._model = DrawableResponseConfigure.createDefaultModel({}, this._configuration);
     this.onModelChanged = this.onModelChanged.bind(this);
   }
 
   set model(s) {
-    this._model = DrawableResponseConfigure.createDefaultModel(s);
+    this._model = DrawableResponseConfigure.createDefaultModel(s, this._configuration);
     this._render();
   }
 
   set configuration(c) {
     this._configuration = c;
+
+    const { withRubric = {} } = c || {};
+
+    if (withRubric?.forceEnabled && !this._model.rubricEnabled) {
+      this._model.rubricEnabled = true;
+    }
 
     this._render();
   }
