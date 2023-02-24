@@ -98,7 +98,7 @@ class HotspotComponent extends React.Component {
           </Collapsible>
         )}
 
-        <Typography className={classes.prompt}>
+        <Typography component="div" className={classes.prompt}>
           <PreviewPrompt className="prompt" prompt={prompt} />
         </Typography>
 
