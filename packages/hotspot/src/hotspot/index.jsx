@@ -81,14 +81,6 @@ class HotspotComponent extends React.Component {
 
     return (
       <div>
-        {showCorrectAnswerToggle && (
-          <CorrectAnswerToggle
-            show={showCorrectAnswerToggle}
-            toggled={showCorrect}
-            onToggle={this.onToggle.bind(this)}
-          />
-        )}
-        {showCorrectAnswerToggle && <br />}
         {teacherInstructions && hasText(teacherInstructions) && (
           <Collapsible
             labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}
@@ -101,6 +93,15 @@ class HotspotComponent extends React.Component {
         <Typography className={classes.prompt}>
           <PreviewPrompt className="prompt" prompt={prompt} />
         </Typography>
+
+        {showCorrectAnswerToggle && <br />}
+        {showCorrectAnswerToggle && (
+          <CorrectAnswerToggle
+            show={showCorrectAnswerToggle}
+            toggled={showCorrect}
+            onToggle={this.onToggle.bind(this)}
+          />
+        )}
 
         {imageUrl ? (
           <Container
