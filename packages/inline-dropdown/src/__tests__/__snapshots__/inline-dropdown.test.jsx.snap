@@ -21,14 +21,14 @@ exports[`InlineDropdown render should render in evaluate mode 1`] = `
     />
   </WithStyles(Collapsible)>
   <br />
+  <WithStyles(PreviewPrompt)
+    prompt="Prompt"
+  />
+  <br />
   <WithStyles(CorrectAnswerToggle)
     onToggle={[Function]}
     show={true}
     toggled={false}
-  />
-  <br />
-  <WithStyles(PreviewPrompt)
-    prompt="Prompt"
   />
   <br />
   <WithMask
@@ -222,15 +222,15 @@ exports[`InlineDropdown render should render in gather mode 1`] = `
     />
   </WithStyles(Collapsible)>
   <br />
+  <WithStyles(PreviewPrompt)
+    prompt="Prompt"
+  />
+  <br />
   <WithStyles(CorrectAnswerToggle)
     onToggle={[Function]}
     show={false}
     toggled={false}
   />
-  <WithStyles(PreviewPrompt)
-    prompt="Prompt"
-  />
-  <br />
   <WithMask
     choices={
       Object {
@@ -422,15 +422,15 @@ exports[`InlineDropdown render should render in view mode 1`] = `
     />
   </WithStyles(Collapsible)>
   <br />
+  <WithStyles(PreviewPrompt)
+    prompt="Prompt"
+  />
+  <br />
   <WithStyles(CorrectAnswerToggle)
     onToggle={[Function]}
     show={false}
     toggled={false}
   />
-  <WithStyles(PreviewPrompt)
-    prompt="Prompt"
-  />
-  <br />
   <WithMask
     choices={
       Object {
@@ -818,15 +818,15 @@ exports[`InlineDropdown render should render without rationale 1`] = `
     />
   </WithStyles(Collapsible)>
   <br />
+  <WithStyles(PreviewPrompt)
+    prompt="Prompt"
+  />
+  <br />
   <WithStyles(CorrectAnswerToggle)
     onToggle={[Function]}
     show={false}
     toggled={false}
   />
-  <WithStyles(PreviewPrompt)
-    prompt="Prompt"
-  />
-  <br />
   <WithMask
     choices={
       Object {
@@ -993,15 +993,15 @@ exports[`InlineDropdown render should render without teacher instructions 1`] = 
     }
   }
 >
+  <WithStyles(PreviewPrompt)
+    prompt="Prompt"
+  />
+  <br />
   <WithStyles(CorrectAnswerToggle)
     onToggle={[Function]}
     show={false}
     toggled={false}
   />
-  <WithStyles(PreviewPrompt)
-    prompt="Prompt"
-  />
-  <br />
   <WithMask
     choices={
       Object {
