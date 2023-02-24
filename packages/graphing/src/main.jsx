@@ -50,7 +50,23 @@ export class Main extends React.Component {
 
     return (
       <div className={classes.mainContainer}>
-        <CorrectAnswerToggle show={showToggle} toggled={showingCorrect} onToggle={this.toggleCorrect} />
+        {teacherInstructions && hasText(teacherInstructions) && (
+          <React.Fragment>
+            <Collapsible labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}>
+              <PreviewPrompt prompt={teacherInstructions} />
+            </Collapsible>
+            <br />
+          </React.Fragment>
+        )}
+
+        {prompt && (
+          <React.Fragment>
+            <PreviewPrompt className="prompt" prompt={prompt} />
+            <br />
+          </React.Fragment>
+        )}
+
+        <CorrectAnswerToggle show={showToggle} toggled={showingCorrect} onToggle={this.toggleCorrect} className={classes.toggle} />
 
         {showingCorrect && showToggle && (
           <GraphContainer
@@ -67,22 +83,6 @@ export class Main extends React.Component {
             title={title}
             toolbarTools={toolbarTools}
           />
-        )}
-
-        {teacherInstructions && hasText(teacherInstructions) && (
-          <React.Fragment>
-            <Collapsible labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}>
-              <PreviewPrompt prompt={teacherInstructions} />
-            </Collapsible>
-            <br />
-          </React.Fragment>
-        )}
-
-        {prompt && (
-          <React.Fragment>
-            <PreviewPrompt className="prompt" prompt={prompt} />
-            <br />
-          </React.Fragment>
         )}
 
         <GraphContainer
@@ -122,6 +122,9 @@ const styles = (theme) => ({
     padding: theme.spacing.unit,
     color: color.text(),
     backgroundColor: color.background(),
+  },
+  toggle: {
+    paddingBottom: theme.spacing.unit * 3,
   },
 });
 
