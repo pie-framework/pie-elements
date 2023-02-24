@@ -10,7 +10,7 @@ import GraphingConfig from './graphing-config';
 import CorrectResponse from './correct-response';
 import intersection from 'lodash/intersection';
 
-const { Panel, toggle, radio, checkboxes } = settings;
+const { Panel, toggle, radio, checkboxes, textField } = settings;
 const log = debug('@pie-element:graphing:configure');
 
 const styles = (theme) => ({
@@ -96,6 +96,7 @@ export class Configure extends React.Component {
       coordinatesOnHover = {},
       gridConfigurations = [],
       graphDimensions = {},
+      instruction= {},
       labels = {},
       padding = {},
       prompt = {},
@@ -154,6 +155,7 @@ export class Configure extends React.Component {
       spellCheckEnabled: spellCheck.settings && toggle(spellCheck.label),
       scoringType: scoringType.settings && radio(scoringType.label, ['dichotomous', 'partial scoring']),
       rubricEnabled: withRubric?.settings && toggle(withRubric?.label),
+      instruction: instruction.settings && textField(instruction.label),
     };
 
     return (
@@ -173,13 +175,6 @@ export class Configure extends React.Component {
         }
       >
         <div className={classes.content}>
-          <Typography component="div" type="body1">
-            <span>
-              This interaction asks a student to draw a line that meets specific criteria. The student will draw the
-              line by clicking on two points on the graph.
-            </span>
-          </Typography>
-
           {teacherInstructionsEnabled && (
             <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
               <EditableHtml
