@@ -3,7 +3,12 @@ const allTools = ['circle', 'line', 'label', 'parabola', 'point', 'polygon', 'ra
 
 /* model defaults */
 export default {
-  answers: {},
+  answers: {
+    correctAnswer: {
+      name: 'Correct Answer',
+      marks: []
+    }
+  },
   arrows: {
     left: true,
     right: true,
