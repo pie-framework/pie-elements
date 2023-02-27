@@ -262,7 +262,7 @@ exports[`Configure renders snapshot 1`] = `
           ],
           "instruction": Object {
             "label": "Graphing questions involve plotting points, lines, or other objects on a graph. To create one, first configure the grid, then select the plotting tools students will be offered, and use them to define the correct answer.",
-            "settings": true,
+            "settings": false,
           },
           "labels": Object {
             "bottom": "Click here to add a bottom label",
@@ -336,7 +336,7 @@ exports[`Configure renders snapshot 1`] = `
           },
           "Properties": Object {
             "authoring.enabled": false,
-            "instruction": undefined,
+            "instruction": false,
             "promptEnabled": undefined,
             "rationaleEnabled": undefined,
             "rubricEnabled": false,
@@ -396,6 +396,14 @@ exports[`Configure renders snapshot 1`] = `
   }
 >
   <div>
+    <WithStyles(Typography)
+      component="div"
+      type="body1"
+    >
+      <span>
+        Graphing questions involve plotting points, lines, or other objects on a graph. To create one, first configure the grid, then select the plotting tools students will be offered, and use them to define the correct answer.
+      </span>
+    </WithStyles(Typography)>
     <InputContainer
       label="Teacher Instructions"
     >
