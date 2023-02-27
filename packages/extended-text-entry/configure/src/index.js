@@ -12,19 +12,37 @@ import Main from './main';
 import defaults from './defaults';
 
 export default class ExtendedTextEntry extends HTMLElement {
-  static createDefaultModel = (model = {}) => ({
-    ...defaults.model,
-    ...model
-  });
+  static createDefaultModel = (model = {}, config) => {
+    const defaultModel = {
+      ...defaults.model,
+      ...model,
+    };
+
+    // if configuration.withRubric.forceEnabled is true, then we update the model (rubricEnabled)
+    // without triggering the Model Updated event (for more details, check documentation)
+    if (config?.withRubric?.forceEnabled && !defaultModel.rubricEnabled) {
+      defaultModel.rubricEnabled = true;
+    }
+
+    return defaultModel;
+  };
+
 
   constructor() {
     super();
-    this._model = ExtendedTextEntry.createDefaultModel();
     this._configuration = defaults.configuration;
+
+    // if configuration.withRubric.forceEnabled is true, then we
+    // update the configuration (we do not want to display the toggle in the Settings Panel)
+    if (this._configuration.withRubric?.forceEnabled) {
+      this._configuration.withRubric.settings = false;
+    }
+
+    this._model = ExtendedTextEntry.createDefaultModel({}, this._configuration);
   }
 
   set model(m) {
-    this._model = ExtendedTextEntry.createDefaultModel(m);
+    this._model = ExtendedTextEntry.createDefaultModel(m, this._configuration);
     this.render();
   }
 
@@ -33,6 +51,19 @@ export default class ExtendedTextEntry extends HTMLElement {
       ...defaults.configuration,
       ...c,
     };
+
+    const { withRubric = {} } = c || {};
+
+    // if configuration.withRubric.forceEnabled is true, then we update the model (rubricEnabled)
+    // without triggering the Model Updated event (for more details, check documentation)
+    // and also update the configuration (we do not want to display the toggle in the Settings Panel)
+    if (withRubric?.forceEnabled) {
+      this._configuration.withRubric.settings = false;
+
+      if (!this._model.rubricEnabled) {
+        this._model.rubricEnabled = true;
+      }
+    }
 
     this.render();
   }
