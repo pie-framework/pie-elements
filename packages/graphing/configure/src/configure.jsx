@@ -175,6 +175,11 @@ export class Configure extends React.Component {
         }
       >
         <div className={classes.content}>
+          <Typography component="div" type="body1">
+            <span>
+             {instruction?.label || ''}
+            </span>
+          </Typography>
           {teacherInstructionsEnabled && (
             <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
               <EditableHtml
