@@ -22,7 +22,10 @@ export interface ConfigureWithForceProp {
   label?: string;
 
   /**
-   * Indicates the value for the toggle; if true, this property will not be visible in Settings Panel
+   * Indicates the value for the toggle;
+   * if true:
+   * - this property will not be visible in Settings Panel (settings will become automatically false)
+   * - the model property afferent to it will become automatically false
    */
   forceEnabled?: boolean;
 }

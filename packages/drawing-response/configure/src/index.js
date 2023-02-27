@@ -22,6 +22,8 @@ export default class DrawableResponseConfigure extends HTMLElement {
       ...model,
     };
 
+    // if configuration.withRubric.forceEnabled is true, then we update the model
+    // without triggering the Model Updated event (for more details, check documentation)
     if (config?.withRubric?.forceEnabled && !defaultModel.rubricEnabled) {
       defaultModel.rubricEnabled = true;
     }
@@ -32,6 +34,13 @@ export default class DrawableResponseConfigure extends HTMLElement {
   constructor() {
     super();
     this._configuration = sensibleDefaults.configuration;
+
+    // if configuration.withRubric.forceEnabled is true, then we
+    // update the configuration (we do not want to display the toggle in the Settings Panel)
+    if (this._configuration.withRubric?.forceEnabled) {
+      this._configuration.withRubric.settings = false;
+    }
+
     this._model = DrawableResponseConfigure.createDefaultModel({}, this._configuration);
     this.onModelChanged = this.onModelChanged.bind(this);
   }
@@ -46,9 +55,17 @@ export default class DrawableResponseConfigure extends HTMLElement {
 
     const { withRubric = {} } = c || {};
 
-    if (withRubric?.forceEnabled && !this._model.rubricEnabled) {
-      this._model.rubricEnabled = true;
+    // if configuration.withRubric.forceEnabled is true, then we update the model
+    // without triggering the Model Updated event (for more details, check documentation)
+    // and also update the configuration (we do not want to display the toggle in the Settings Panel)
+    if (withRubric?.forceEnabled) {
+      this._configuration.withRubric.settings = false;
+
+      if (!this._model.rubricEnabled) {
+        this._model.rubricEnabled = true;
+      }
     }
+
 
     this._render();
   }
