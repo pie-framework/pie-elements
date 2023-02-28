@@ -1,5 +1,5 @@
 import React from 'react';
-import { InputCheckbox, FeedbackConfig, FormSection, layout } from '@pie-lib/config-ui';
+import { InputCheckbox, FeedbackConfig, FormSection, InputContainer, layout } from '@pie-lib/config-ui';
 import EditableHtml from '@pie-lib/editable-html';
 import { NumberLineComponent, dataConverter, tickUtils } from '@pie-element/number-line';
 import NumberTextField from './number-text-field';
@@ -35,6 +35,7 @@ const styles = (theme) => ({
   },
   checkbox: {
     marginTop: theme.spacing.unit * 2,
+    marginBottom: theme.spacing.unit * 2,
   },
   row: {
     display: 'flex',
@@ -43,27 +44,16 @@ const styles = (theme) => ({
       paddingRight: theme.spacing.unit * 2,
     },
   },
-  hide: {
-    opacity: 0.5,
-  },
-  resetDefaults: {
-    margin: '20px 0',
-  },
   pointTypeChooser: {
     margin: `${theme.spacing.unit * 2.5}px 0`,
   },
-  promptHolder: {
-    width: '100%',
-    paddingBottom: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit * 2,
-  },
-  prompt: {
+  promptContainer: {
     paddingTop: theme.spacing.unit * 2,
+    marginBottom: theme.spacing.unit * 2,
     width: '100%',
   },
-  section: {
-    margin: 0,
-    padding: 0,
+  title: {
+    marginBottom: theme.spacing.unit * 4,
   },
   tooltip: {
     fontSize: theme.typography.fontSize - 2,
@@ -73,9 +63,12 @@ const styles = (theme) => ({
   inlineFlexContainer: {
     display: 'inline-flex',
   },
+  resetButton: {
+    marginBottom: theme.spacing.unit * 2.5,
+  },
   errorText: {
     fontSize: theme.typography.fontSize - 2,
-    color: 'red',
+    color: theme.palette.error.main,
     paddingTop: theme.spacing.unit,
   },
 });
@@ -302,7 +295,7 @@ export class Main extends React.Component {
     return (
       <layout.ConfigLayout hideSettings={true} settings={null}>
         {prompt.settings && (
-          <FormSection label={prompt.label}>
+          <InputContainer label={prompt.label} className={classes.promptContainer}>
             <EditableHtml
               className={classes.prompt}
               markup={model.prompt}
@@ -314,7 +307,7 @@ export class Main extends React.Component {
               uploadSoundSupport={uploadSoundSupport}
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
             />
-          </FormSection>
+          </InputContainer>
         )}
 
         <CardBar
@@ -359,7 +352,7 @@ export class Main extends React.Component {
           </FormSection>
         </div>
 
-        <FormSection label={'Title'}>
+        <FormSection label={'Title'} className={classes.title}>
           <EditableHtml
             markup={graph.title || ''}
             onChange={this.changeGraphTitle}
@@ -382,15 +375,20 @@ export class Main extends React.Component {
           {pointsError && <div className={classes.errorText}>{pointsError}</div>}
         </FormSection>
 
-        <Button variant="outlined" mini color="primary" onClick={this.setDefaults}>
+        <Button className={classes.resetButton} variant="outlined" mini color="primary" onClick={this.setDefaults}>
           Reset to default values
         </Button>
 
-        <br />
-        <br />
-
         {!graph.exhibitOnly && (
-          <div>
+          <React.Fragment>
+            <CardBar header="Available Types" mini>
+              Click on the input options to be displayed to the students. All inputs will display by default.
+            </CardBar>
+
+            <div className={classes.pointTypeChooser}>
+              <PointConfig onSelectionChange={this.availableTypesChange} selection={graph.availableTypes} />
+            </div>
+
             <CardBar header="Correct Response">
               Select answer type and place it on the number line. Intersecting points, line segments and/or rays will
               appear above the number line. <i>Note: A maximum of 20 points, line segments or rays may be plotted.</i>
@@ -406,15 +404,7 @@ export class Main extends React.Component {
               model={trimModel(model)}
             />
             {correctResponseError && <div className={classes.errorText}>{correctResponseError}</div>}
-
-            <CardBar header="Available Types" mini>
-              Click on the input options to be displayed to the students. All inputs will display by default.
-            </CardBar>
-
-            <div className={classes.pointTypeChooser}>
-              <PointConfig onSelectionChange={this.availableTypesChange} selection={graph.availableTypes} />
-            </div>
-          </div>
+          </React.Fragment>
         )}
 
         <CardBar header="Initial view/Make Exhibit">
@@ -440,14 +430,11 @@ export class Main extends React.Component {
         />
 
         {!graph.exhibitOnly && (
-          <React.Fragment>
-            <br />
-            <FeedbackConfig
-              feedback={model.feedback}
-              onChange={(feedback) => onChange({ feedback })}
-              toolbarOpts={toolbarOpts}
-            />
-          </React.Fragment>
+          <FeedbackConfig
+            feedback={model.feedback}
+            onChange={(feedback) => onChange({ feedback })}
+            toolbarOpts={toolbarOpts}
+          />
         )}
       </layout.ConfigLayout>
     );

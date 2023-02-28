@@ -19,13 +19,14 @@ let registered = false;
 
 const styles = (theme) => ({
   container: {
-    marginTop: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit * 2,
     display: 'flex',
     flexDirection: 'column',
   },
   templateTitle: {
     fontSize: '0.85rem',
+  },
+  title: {
+    fontSize: '1.1rem',
   },
   addResponseButton: {
     border: '1px solid lightgrey',
@@ -43,17 +44,15 @@ const styles = (theme) => ({
     marginTop: theme.spacing.unit * 2,
     marginBottom: theme.spacing.unit * 2,
   },
-  inputContainer: {
-    marginBottom: theme.spacing.unit * 4,
+  responseTemplate: {
     display: 'flex',
     flexDirection: 'column',
-    width: '90%',
   },
   responseEditor: {
     display: 'flex',
     justifyContent: 'center',
     width: '100%',
-    minWidth: '500px',
+    // minWidth: '500px',
     maxWidth: 'inherit',
     height: 'auto',
     minHeight: '130px',
@@ -62,13 +61,8 @@ const styles = (theme) => ({
   },
   promptHolder: {
     width: '100%',
-    paddingBottom: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit * 2,
-  },
-  prompt: {
     paddingTop: theme.spacing.unit * 2,
-    width: '100%',
-    maxWidth: '600px',
+    marginBottom: theme.spacing.unit * 2,
   },
   blockContainer: {
     margin: theme.spacing.unit,
@@ -109,13 +103,16 @@ const styles = (theme) => ({
     },
   },
   tooltip: {
-    fontSize: '12px',
+    fontSize: theme.typography.fontSize - 2,
     whiteSpace: 'pre-wrap',
   },
   errorText: {
-    fontSize: '12px',
-    color: 'red',
-    padding: '5px 0',
+    fontSize: theme.typography.fontSize - 2,
+    color: theme.palette.error.main,
+    paddingTop: theme.spacing.unit,
+  },
+  advancedResponse: {
+    marginBottom: theme.spacing.unit * 2.5,
   },
 });
 
@@ -371,6 +368,18 @@ class GeneralConfigBlock extends React.Component {
 
     const responsesToUse = responseType === ResponseTypes.advanced ? responses : responses.slice(0, 1);
 
+    const validationTooltip = (
+      <Tooltip
+        classes={{ tooltip: classes.tooltip }}
+        disableFocusListener
+        disableTouchListener
+        placement={'right'}
+        title={validationMessage}
+      >
+        <Info fontSize={'small'} color={'primary'} style={{ marginLeft: '5px' }} />
+      </Tooltip>
+    );
+
     return (
       <div ref={(r) => (this.root = r || this.root)} className={classes.container}>
         {promptEnabled && (
@@ -391,6 +400,96 @@ class GeneralConfigBlock extends React.Component {
             />
           </InputContainer>
         )}
+
+        {responseType === ResponseTypes.advanced && (
+          <div className={classes.advancedResponse}>
+            <div className={classes.flexContainer} style={{ justifyContent: 'flex-start' }}>
+              <div className={classes.title}>Define Response</div>
+              {validationTooltip}
+            </div>
+
+            <InputContainer
+              key="templateEditorType"
+              label="Response Template Equation Editor"
+              className={classes.selectContainer}
+            >
+              <Select
+                className={classes.select}
+                onChange={this.onChange('promptEquationEditor')}
+                value={promptEquationEditor}
+              >
+                <MenuItem value="non-negative-integers">Numeric - Non-Negative Integers</MenuItem>
+                <MenuItem value="integers">Numeric - Integers</MenuItem>
+                <MenuItem value="decimals">Numeric - Decimals</MenuItem>
+                <MenuItem value="fractions">Numeric - Fractions</MenuItem>
+                <MenuItem value={1}>Grade 1 - 2</MenuItem>
+                <MenuItem value={3}>Grade 3 - 5</MenuItem>
+                <MenuItem value={6}>Grade 6 - 7</MenuItem>
+                <MenuItem value={8}>Grade 8 - HS</MenuItem>
+                <MenuItem value={'geometry'}>Geometry</MenuItem>
+                <MenuItem value={'advanced-algebra'}>Advanced Algebra</MenuItem>
+                <MenuItem value={'statistics'}>Statistics</MenuItem>
+                <MenuItem value={'item-authoring'}>Item Authoring</MenuItem>
+              </Select>
+            </InputContainer>
+
+            <div className={classes.responseTemplate} key="templateHolder">
+              <InputLabel className={classes.templateTitle}>RESPONSE TEMPLATE</InputLabel>
+              <MathToolbar
+                classNames={classNames}
+                allowAnswerBlock
+                keypadMode={promptEquationEditor}
+                controlledKeypad
+                showKeypad={showKeypad}
+                latex={prepareForStatic(expression) || ''}
+                onChange={this.onChange('expression')}
+                onFocus={this.onFocus}
+                onDone={this.onDone}
+                maxResponseAreas={maxResponseAreas}
+                error={responseAreasError}
+              />
+            </div>
+
+            {responseAreasError && <div className={classes.errorText}>{responseAreasError}</div>}
+          </div>
+        )}
+
+        <div className={classes.flexContainer} style={{ justifyContent: 'flex-start' }}>
+          <div className={classes.title}>Define Correct Response</div>
+          {responseType === ResponseTypes.simple ? validationTooltip : null}
+        </div>
+
+        <InputContainer label="Equation Editor" className={classes.selectContainer}>
+          <Select className={classes.select} onChange={this.onChange('equationEditor')} value={equationEditor}>
+            <MenuItem value="non-negative-integers">Numeric - Non-Negative Integers</MenuItem>
+            <MenuItem value="integers">Numeric - Integers</MenuItem>
+            <MenuItem value="decimals">Numeric - Decimals</MenuItem>
+            <MenuItem value="fractions">Numeric - Fractions</MenuItem>
+            <MenuItem value={1}>Grade 1 - 2</MenuItem>
+            <MenuItem value={3}>Grade 3 - 5</MenuItem>
+            <MenuItem value={6}>Grade 6 - 7</MenuItem>
+            <MenuItem value={8}>Grade 8 - HS</MenuItem>
+            <MenuItem value={'geometry'}>Geometry</MenuItem>
+            <MenuItem value={'advanced-algebra'}>Advanced Algebra</MenuItem>
+            <MenuItem value={'statistics'}>Statistics</MenuItem>
+            <MenuItem value={'item-authoring'}>Item Authoring</MenuItem>
+          </Select>
+        </InputContainer>
+
+        {responsesToUse.map((response, idx) => (
+          <Response
+            key={response.id}
+            mode={equationEditor}
+            response={response}
+            defaultResponse={responseType === ResponseTypes.simple}
+            onResponseChange={this.onResponseChange}
+            index={idx}
+            cIgnoreOrder={cIgnoreOrder}
+            cAllowTrailingZeros={cAllowTrailingZeros}
+            error={responsesErrors && responsesErrors[idx]}
+          />
+        ))}
+
         {rationaleEnabled && (
           <InputContainer label={cRationale.label} className={classes.promptHolder}>
             <EditableHtml
@@ -413,94 +512,6 @@ class GeneralConfigBlock extends React.Component {
             />
           </InputContainer>
         )}
-        <div className={classes.flexContainer} style={{ justifyContent: 'flex-start' }}>
-          <h3>Define Response</h3>
-          <Tooltip
-            classes={{ tooltip: classes.tooltip }}
-            disableFocusListener
-            disableTouchListener
-            placement={'right'}
-            title={validationMessage}
-          >
-            <Info fontSize={'small'} color={'primary'} style={{ marginLeft: '5px' }} />
-          </Tooltip>
-        </div>
-        {responseAreasError && <div className={classes.errorText}>{responseAreasError}</div>}
-
-        {responseType === ResponseTypes.advanced && [
-          <InputContainer
-            key="templateEditorType"
-            label="Response Template Equation Editor"
-            className={classes.selectContainer}
-          >
-            <Select
-              className={classes.select}
-              onChange={this.onChange('promptEquationEditor')}
-              value={promptEquationEditor}
-            >
-              <MenuItem value="non-negative-integers">Numeric - Non-Negative Integers</MenuItem>
-              <MenuItem value="integers">Numeric - Integers</MenuItem>
-              <MenuItem value="decimals">Numeric - Decimals</MenuItem>
-              <MenuItem value="fractions">Numeric - Fractions</MenuItem>
-              <MenuItem value={1}>Grade 1 - 2</MenuItem>
-              <MenuItem value={3}>Grade 3 - 5</MenuItem>
-              <MenuItem value={6}>Grade 6 - 7</MenuItem>
-              <MenuItem value={8}>Grade 8 - HS</MenuItem>
-              <MenuItem value={'geometry'}>Geometry</MenuItem>
-              <MenuItem value={'advanced-algebra'}>Advanced Algebra</MenuItem>
-              <MenuItem value={'statistics'}>Statistics</MenuItem>
-              <MenuItem value={'item-authoring'}>Item Authoring</MenuItem>
-            </Select>
-          </InputContainer>,
-          <div className={classes.inputContainer} key="templateHolder">
-            <InputLabel className={classes.templateTitle}>RESPONSE TEMPLATE</InputLabel>
-            <MathToolbar
-              classNames={classNames}
-              allowAnswerBlock
-              keypadMode={promptEquationEditor}
-              controlledKeypad
-              showKeypad={showKeypad}
-              latex={prepareForStatic(expression) || ''}
-              onChange={this.onChange('expression')}
-              onFocus={this.onFocus}
-              onDone={this.onDone}
-              maxResponseAreas={maxResponseAreas}
-              error={responseAreasError}
-            />
-          </div>,
-        ]}
-        <h4>Define Correct Response</h4>
-        <div className={classes.flexContainer}>
-          <InputContainer label="Equation Editor" className={classes.selectContainer}>
-            <Select className={classes.select} onChange={this.onChange('equationEditor')} value={equationEditor}>
-              <MenuItem value="non-negative-integers">Numeric - Non-Negative Integers</MenuItem>
-              <MenuItem value="integers">Numeric - Integers</MenuItem>
-              <MenuItem value="decimals">Numeric - Decimals</MenuItem>
-              <MenuItem value="fractions">Numeric - Fractions</MenuItem>
-              <MenuItem value={1}>Grade 1 - 2</MenuItem>
-              <MenuItem value={3}>Grade 3 - 5</MenuItem>
-              <MenuItem value={6}>Grade 6 - 7</MenuItem>
-              <MenuItem value={8}>Grade 8 - HS</MenuItem>
-              <MenuItem value={'geometry'}>Geometry</MenuItem>
-              <MenuItem value={'advanced-algebra'}>Advanced Algebra</MenuItem>
-              <MenuItem value={'statistics'}>Statistics</MenuItem>
-              <MenuItem value={'item-authoring'}>Item Authoring</MenuItem>
-            </Select>
-          </InputContainer>
-        </div>
-        {responsesToUse.map((response, idx) => (
-          <Response
-            key={response.id}
-            mode={equationEditor}
-            response={response}
-            defaultResponse={responseType === ResponseTypes.simple}
-            onResponseChange={this.onResponseChange}
-            index={idx}
-            cIgnoreOrder={cIgnoreOrder}
-            cAllowTrailingZeros={cAllowTrailingZeros}
-            error={responsesErrors && responsesErrors[idx]}
-          />
-        ))}
       </div>
     );
   }

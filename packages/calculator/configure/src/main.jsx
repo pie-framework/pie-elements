@@ -36,7 +36,9 @@ export class Main extends React.Component {
         <CalculatorLayout mode={model.mode} onClose={() => ({})} />
         <br />
 
-        <Typography>Please note that the calculators are tools for students and do not record answers.</Typography>
+        <Typography style={{ paddingTop: '4px' }}>
+          Please note that the calculators are tools for students and do not record answers.
+        </Typography>
       </layout.ConfigLayout>
     );
   }

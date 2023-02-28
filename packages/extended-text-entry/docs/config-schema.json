@@ -230,7 +230,7 @@
           "title": "label"
         },
         "forceEnabled": {
-          "description": "Indicates the value for the toggle; if true, this property will not be visible in Settings Panel",
+          "description": "Indicates the value for the toggle;\nif true:\n- this property will not be visible in Settings Panel (settings will become automatically false)\n- the model property afferent to it will become automatically false",
           "type": "boolean",
           "title": "forceEnabled"
         }
@@ -329,7 +329,7 @@
           "title": "label"
         },
         "forceEnabled": {
-          "description": "Indicates the value for the toggle; if true, this property will not be visible in Settings Panel",
+          "description": "Indicates the value for the toggle;\nif true:\n- this property will not be visible in Settings Panel (settings will become automatically false)\n- the model property afferent to it will become automatically false",
           "type": "boolean",
           "title": "forceEnabled"
         }

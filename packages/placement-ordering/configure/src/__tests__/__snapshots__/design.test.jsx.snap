@@ -170,58 +170,31 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
       }
     />
   </InputContainer>
-  <FormSection>
-    <InputContainer
-      label="Item Stem"
-    >
-      <EditableHtml
-        languageCharactersProps={
-          Array [
-            Object {
-              "language": "spanish",
-            },
-            Object {
-              "language": "special",
-            },
-          ]
-        }
-        markup="Item Stem goes here"
-        maxImageHeight={300}
-        maxImageWidth={300}
-        onChange={[Function]}
-        toolbarOpts={
+  <InputContainer
+    label="Item Stem"
+  >
+    <EditableHtml
+      languageCharactersProps={
+        Array [
           Object {
-            "position": "bottom",
-          }
-        }
-      />
-    </InputContainer>
-    <InputContainer
-      label="Rationale"
-    >
-      <EditableHtml
-        languageCharactersProps={
-          Array [
-            Object {
-              "language": "spanish",
-            },
-            Object {
-              "language": "special",
-            },
-          ]
-        }
-        markup=""
-        maxImageHeight={300}
-        maxImageWidth={300}
-        onChange={[Function]}
-        toolbarOpts={
+            "language": "spanish",
+          },
           Object {
-            "position": "bottom",
-          }
+            "language": "special",
+          },
+        ]
+      }
+      markup="Item Stem goes here"
+      maxImageHeight={300}
+      maxImageWidth={300}
+      onChange={[Function]}
+      toolbarOpts={
+        Object {
+          "position": "bottom",
         }
-      />
-    </InputContainer>
-  </FormSection>
+      }
+    />
+  </InputContainer>
   <FormSection
     label="Define Choices"
     labelExtraStyle={
@@ -302,6 +275,31 @@ The correct ordering should not be identical to the initial ordering."
       }
     />
   </FormSection>
+  <InputContainer
+    label="Rationale"
+  >
+    <EditableHtml
+      languageCharactersProps={
+        Array [
+          Object {
+            "language": "spanish",
+          },
+          Object {
+            "language": "special",
+          },
+        ]
+      }
+      markup=""
+      maxImageHeight={300}
+      maxImageWidth={300}
+      onChange={[Function]}
+      toolbarOpts={
+        Object {
+          "position": "bottom",
+        }
+      }
+    />
+  </InputContainer>
 </ConfigLayout>
 `;
 
@@ -475,58 +473,31 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
       }
     />
   </InputContainer>
-  <FormSection>
-    <InputContainer
-      label="Item Stem"
-    >
-      <EditableHtml
-        languageCharactersProps={
-          Array [
-            Object {
-              "language": "spanish",
-            },
-            Object {
-              "language": "special",
-            },
-          ]
-        }
-        markup="Item Stem goes here"
-        maxImageHeight={300}
-        maxImageWidth={300}
-        onChange={[Function]}
-        toolbarOpts={
+  <InputContainer
+    label="Item Stem"
+  >
+    <EditableHtml
+      languageCharactersProps={
+        Array [
           Object {
-            "position": "bottom",
-          }
-        }
-      />
-    </InputContainer>
-    <InputContainer
-      label="Rationale"
-    >
-      <EditableHtml
-        languageCharactersProps={
-          Array [
-            Object {
-              "language": "spanish",
-            },
-            Object {
-              "language": "special",
-            },
-          ]
-        }
-        markup=""
-        maxImageHeight={300}
-        maxImageWidth={300}
-        onChange={[Function]}
-        toolbarOpts={
+            "language": "spanish",
+          },
           Object {
-            "position": "bottom",
-          }
+            "language": "special",
+          },
+        ]
+      }
+      markup="Item Stem goes here"
+      maxImageHeight={300}
+      maxImageWidth={300}
+      onChange={[Function]}
+      toolbarOpts={
+        Object {
+          "position": "bottom",
         }
-      />
-    </InputContainer>
-  </FormSection>
+      }
+    />
+  </InputContainer>
   <FormSection
     label="Define Choices"
     labelExtraStyle={
@@ -607,5 +578,30 @@ The correct ordering should not be identical to the initial ordering."
       }
     />
   </FormSection>
+  <InputContainer
+    label="Rationale"
+  >
+    <EditableHtml
+      languageCharactersProps={
+        Array [
+          Object {
+            "language": "spanish",
+          },
+          Object {
+            "language": "special",
+          },
+        ]
+      }
+      markup=""
+      maxImageHeight={300}
+      maxImageWidth={300}
+      onChange={[Function]}
+      toolbarOpts={
+        Object {
+          "position": "bottom",
+        }
+      }
+    />
+  </InputContainer>
 </ConfigLayout>
 `;

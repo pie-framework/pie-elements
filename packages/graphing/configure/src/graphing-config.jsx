@@ -11,13 +11,13 @@ const styles = (theme) => ({
   container: {
     display: 'flex',
     flexWrap: 'wrap',
-    marginBottom: theme.spacing.unit * 7,
+    marginBottom: theme.spacing.unit * 2.5,
   },
   gridConfigWrapper: {
     display: 'flex',
     flexDirection: 'column',
-    marginRight: theme.spacing.unit * 4,
-    marginBottom: theme.spacing.unit * 3,
+    marginRight: theme.spacing.unit * 3,
+    marginBottom: theme.spacing.unit * 2.5,
   },
   graphConfig: {
     display: 'flex',
@@ -31,10 +31,10 @@ const styles = (theme) => ({
     display: 'flex',
     alignItems: 'center',
     width: '100%',
-    marginBottom: '16px',
+    marginBottom: theme.spacing.unit * 2.5,
   },
   gridConfigLabel: {
-    padding: '0 8px',
+    padding: `0 ${theme.spacing.unit}px`,
   },
   gridConfigSelect: {
     flex: '1',
@@ -209,8 +209,9 @@ export class GraphingConfig extends React.Component {
           {gridConfigurations && gridConfigurations.length ? (
             <div className={classes.gridConfig}>
               <Typography component="div" variant="subheading" className={classes.gridConfigLabel}>
-                <span>Grid Configuration</span>
+                Grid Configuration
               </Typography>
+
               <Select
                 input={<OutlinedInput />}
                 className={classes.gridConfigSelect}
@@ -226,6 +227,7 @@ export class GraphingConfig extends React.Component {
               </Select>
             </div>
           ) : null}
+
           {displayGridSetup && (
             <GridSetup
               displayedFields={displayedFields}
@@ -246,11 +248,11 @@ export class GraphingConfig extends React.Component {
 
         <div className={classes.graphConfig} key="graph">
           <Typography component="div" variant="subheading">
-            <span>Define Graph Attributes</span>
+            Define Graph Attributes
           </Typography>
 
           <Typography component="div" variant="body1" className={classes.subtitleText}>
-            <span>Use this interface to add/edit a title and/or labels, and to set background shapes</span>
+            Use this interface to add/edit a title and/or labels, and to set background shapes
           </Typography>
 
           <GraphContainer

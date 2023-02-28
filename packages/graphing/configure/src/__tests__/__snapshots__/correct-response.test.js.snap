@@ -6,17 +6,13 @@ exports[`CorrectResponse renders snapshot 1`] = `
     component="div"
     variant="subheading"
   >
-    <span>
-      Define Tool Set and Correct Response
-    </span>
+    Define Tool Set and Correct Response
   </WithStyles(Typography)>
   <WithStyles(Typography)
     component="div"
     variant="body1"
   >
-    <span>
-      Use this interface to choose which graphing tools students will be able to use, and to define the correct answer
-    </span>
+    Use this interface to choose which graphing tools students will be able to use, and to define the correct answer
   </WithStyles(Typography)>
   <Tools
     classes={Object {}}
@@ -38,77 +34,73 @@ exports[`CorrectResponse renders snapshot 1`] = `
       ]
     }
   />
-  <div
-    key="correct-response-graph-Correct Answer"
-  >
+  <div>
     <div>
-      <p>
-        Correct Answer
-      </p>
+      Correct Answer
     </div>
-    <Root
-      axesSettings={
-        Object {
-          "includeArrows": Object {
-            "down": true,
-            "left": true,
-            "right": true,
-            "up": true,
-          },
-        }
-      }
-      backgroundMarks={Array []}
-      coordinatesOnHover={false}
-      disabledLabels={true}
-      disabledTitle={true}
-      domain={
-        Object {
-          "axisLabel": "x",
-          "labelStep": 1,
-          "max": 5,
-          "min": -5,
-          "step": 1,
-        }
-      }
-      draggableTools={true}
-      labels={Object {}}
-      marks={Array []}
-      onChangeMarks={[Function]}
-      onChangeTools={[Function]}
-      range={
-        Object {
-          "axisLabel": "y",
-          "labelStep": 1,
-          "max": 5,
-          "min": -5,
-          "step": 1,
-        }
-      }
-      showLabels={true}
-      showTitle={true}
-      size={
-        Object {
-          "height": 500,
-          "width": 500,
-        }
-      }
-      title=""
-      toolbarTools={
-        Array [
-          "circle",
-          "line",
-          "label",
-          "parabola",
-          "point",
-          "polygon",
-          "ray",
-          "segment",
-          "sine",
-          "vector",
-        ]
-      }
-    />
   </div>
+  <Root
+    axesSettings={
+      Object {
+        "includeArrows": Object {
+          "down": true,
+          "left": true,
+          "right": true,
+          "up": true,
+        },
+      }
+    }
+    backgroundMarks={Array []}
+    coordinatesOnHover={false}
+    disabledLabels={true}
+    disabledTitle={true}
+    domain={
+      Object {
+        "axisLabel": "x",
+        "labelStep": 1,
+        "max": 5,
+        "min": -5,
+        "step": 1,
+      }
+    }
+    draggableTools={true}
+    labels={Object {}}
+    marks={Array []}
+    onChangeMarks={[Function]}
+    onChangeTools={[Function]}
+    range={
+      Object {
+        "axisLabel": "y",
+        "labelStep": 1,
+        "max": 5,
+        "min": -5,
+        "step": 1,
+      }
+    }
+    showLabels={true}
+    showTitle={true}
+    size={
+      Object {
+        "height": 500,
+        "width": 500,
+      }
+    }
+    title=""
+    toolbarTools={
+      Array [
+        "circle",
+        "line",
+        "label",
+        "parabola",
+        "point",
+        "polygon",
+        "ray",
+        "segment",
+        "sine",
+        "vector",
+      ]
+    }
+  />
   <div
     onClick={[Function]}
   >
@@ -126,17 +118,13 @@ exports[`CorrectResponse: if answers is null it should still work as expected re
     component="div"
     variant="subheading"
   >
-    <span>
-      Define Tool Set and Correct Response
-    </span>
+    Define Tool Set and Correct Response
   </WithStyles(Typography)>
   <WithStyles(Typography)
     component="div"
     variant="body1"
   >
-    <span>
-      Use this interface to choose which graphing tools students will be able to use, and to define the correct answer
-    </span>
+    Use this interface to choose which graphing tools students will be able to use, and to define the correct answer
   </WithStyles(Typography)>
   <Tools
     classes={Object {}}
@@ -162,17 +150,13 @@ exports[`CorrectResponse: if answers is undefined it should still work as expect
     component="div"
     variant="subheading"
   >
-    <span>
-      Define Tool Set and Correct Response
-    </span>
+    Define Tool Set and Correct Response
   </WithStyles(Typography)>
   <WithStyles(Typography)
     component="div"
     variant="body1"
   >
-    <span>
-      Use this interface to choose which graphing tools students will be able to use, and to define the correct answer
-    </span>
+    Use this interface to choose which graphing tools students will be able to use, and to define the correct answer
   </WithStyles(Typography)>
   <Tools
     classes={Object {}}

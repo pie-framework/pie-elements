@@ -77,31 +77,25 @@ export class Main extends React.Component {
 
     return (
       <div className={classes.mainContainer}>
-        <CorrectAnswerToggle show={showToggle} toggled={showingCorrect} onToggle={this.toggleCorrect} />
-
         {teacherInstructions && hasText(teacherInstructions) && (
-          <React.Fragment>
-            <Collapsible
-              labels={{
-                hidden: 'Show Teacher Instructions',
-                visible: 'Hide Teacher Instructions',
-              }}
-            >
-              <PreviewPrompt prompt={teacherInstructions} />
-            </Collapsible>
-            <br />
-          </React.Fragment>
+          <Collapsible
+            className={classes.collapsible}
+            labels={{
+              hidden: 'Show Teacher Instructions',
+              visible: 'Hide Teacher Instructions',
+            }}
+          >
+            <PreviewPrompt prompt={teacherInstructions} />
+          </Collapsible>
         )}
 
-        {prompt && (
-          <React.Fragment>
-            <PreviewPrompt className="prompt" prompt={prompt} />
-            <br />
-          </React.Fragment>
-        )}
+        {prompt && <PreviewPrompt className="prompt" prompt={prompt} />}
+
+        <CorrectAnswerToggle show={showToggle} toggled={showingCorrect} onToggle={this.toggleCorrect} />
 
         {showingCorrect && showToggle ? (
           <Chart
+            className={classes.chart}
             chartType={chartType}
             size={size}
             domain={domain}
@@ -122,6 +116,7 @@ export class Main extends React.Component {
           />
         ) : (
           <Chart
+            className={classes.chart}
             chartType={chartType}
             size={size}
             domain={domain}
@@ -142,7 +137,6 @@ export class Main extends React.Component {
           />
         )}
 
-        <br />
         {rationale && hasText(rationale) && (
           <Collapsible labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }}>
             <PreviewPrompt prompt={rationale} />
@@ -155,10 +149,16 @@ export class Main extends React.Component {
 
 const styles = (theme) => ({
   mainContainer: {
-    padding: theme.spacing.unit,
     color: color.text(),
     backgroundColor: color.background(),
     overflow: 'hidden',
+  },
+  chart: {
+    marginTop: theme.spacing.unit * 2,
+    marginBottom: theme.spacing.unit * 2,
+  },
+  collapsible: {
+    marginBottom: theme.spacing.unit * 2,
   },
 });
 

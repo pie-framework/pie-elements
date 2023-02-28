@@ -58,99 +58,95 @@ exports[`Design snapshot renders 1`] = `
       />
     }
   >
-    <div
-      className="design className"
-    >
-      <WithStyles(Categories)
-        categories={
-          Array [
-            Object {
-              "choices": Array [
-                Object {
-                  "content": "content",
-                  "id": "1",
-                },
-              ],
-              "id": "1",
-              "label": "Category Title",
-            },
-          ]
-        }
-        model={
+    <WithStyles(Categories)
+      categories={
+        Array [
           Object {
-            "categories": Array [
-              Object {
-                "id": "1",
-                "label": "Category Title",
-              },
-            ],
             "choices": Array [
               Object {
                 "content": "content",
-                "correctResponseCount": 1,
                 "id": "1",
               },
             ],
-            "correctResponse": Array [
-              Object {
-                "category": "1",
-                "choices": Array [
-                  "1",
-                ],
-              },
-            ],
-          }
-        }
-        onModelChanged={[Function]}
-        toolbarOpts={
-          Object {
-            "position": "bottom",
-          }
-        }
-      />
-      <WithStyles(Choices)
-        choices={
-          Array [
+            "id": "1",
+            "label": "Category Title",
+          },
+        ]
+      }
+      model={
+        Object {
+          "categories": Array [
+            Object {
+              "id": "1",
+              "label": "Category Title",
+            },
+          ],
+          "choices": Array [
             Object {
               "content": "content",
               "correctResponseCount": 1,
               "id": "1",
             },
-          ]
+          ],
+          "correctResponse": Array [
+            Object {
+              "category": "1",
+              "choices": Array [
+                "1",
+              ],
+            },
+          ],
         }
-        model={
+      }
+      onModelChanged={[Function]}
+      toolbarOpts={
+        Object {
+          "position": "bottom",
+        }
+      }
+    />
+    <WithStyles(Choices)
+      choices={
+        Array [
           Object {
-            "categories": Array [
-              Object {
-                "id": "1",
-                "label": "Category Title",
-              },
-            ],
-            "choices": Array [
-              Object {
-                "content": "content",
-                "correctResponseCount": 1,
-                "id": "1",
-              },
-            ],
-            "correctResponse": Array [
-              Object {
-                "category": "1",
-                "choices": Array [
-                  "1",
-                ],
-              },
-            ],
-          }
+            "content": "content",
+            "correctResponseCount": 1,
+            "id": "1",
+          },
+        ]
+      }
+      model={
+        Object {
+          "categories": Array [
+            Object {
+              "id": "1",
+              "label": "Category Title",
+            },
+          ],
+          "choices": Array [
+            Object {
+              "content": "content",
+              "correctResponseCount": 1,
+              "id": "1",
+            },
+          ],
+          "correctResponse": Array [
+            Object {
+              "category": "1",
+              "choices": Array [
+                "1",
+              ],
+            },
+          ],
         }
-        onModelChanged={[Function]}
-        toolbarOpts={
-          Object {
-            "position": "bottom",
-          }
+      }
+      onModelChanged={[Function]}
+      toolbarOpts={
+        Object {
+          "position": "bottom",
         }
-      />
-    </div>
+      }
+    />
   </ConfigLayout>
 </mockConstructor>
 `;

@@ -8,13 +8,15 @@ import StyledChoice from './choice';
 
 // MultipleChoice
 
-const styles = {
-  corespringChoice: {
+const styles = (theme) => ({
+  main: {
     backgroundColor: color.background(),
-    padding: '5px',
     '& *': {
       '-webkit-font-smoothing': 'antialiased',
     },
+  },
+  teacherInstructions: {
+    marginBottom: theme.spacing.unit * 2,
   },
   horizontalLayout: {
     display: 'flex',
@@ -24,16 +26,13 @@ const styles = {
   gridLayout: {
     display: 'grid',
   },
-  getColumns: function (columns) {
-    return columns > 1 ? { gridTemplateColumns: `repeat(${columns}, 1fr)` } : undefined;
-  },
   fieldset: {
     border: '0px',
     padding: '0.01em 0 0 0',
     margin: '0px',
-    minWidth: '0px'
+    minWidth: '0px',
   },
-};
+});
 
 export class MultipleChoice extends React.Component {
   static propTypes = {
@@ -59,11 +58,42 @@ export class MultipleChoice extends React.Component {
     super(props);
 
     this.state = {
+      selectedValue: null,
+      selectedValues: [],
       showCorrect: this.props.alwaysShowCorrect || false,
     };
 
     this.onToggle = this.onToggle.bind(this);
   }
+
+  isSelected(value) {
+    const sessionValue = this.props.session && this.props.session.value;
+
+    return sessionValue && sessionValue.indexOf && sessionValue.indexOf(value) >= 0;
+  }
+
+  // handleChange and handleChangeCheckboxes functions were added for accessibility. Please see comments and videos from PD-2441. They should only be removed if a better solution is found.
+  handleChange = (event) => {
+    const target = event.target;
+
+    this.setState({ selectedValue: target.value });
+  };
+
+  handleChangeCheckboxes = (event) => {
+    const { value, checked } = event.target;
+
+    this.setState((prevState) => {
+      let selectedValues = [...prevState.selectedValues];
+
+      if (checked) {
+        selectedValues.push(value);
+      } else {
+        selectedValues = selectedValues.filter((currentValue) => currentValue !== value);
+      }
+
+      return { selectedValues };
+    });
+  };
 
   onToggle() {
     if (this.props.mode === 'evaluate') {
@@ -79,12 +109,6 @@ export class MultipleChoice extends React.Component {
     if (nextProps.alwaysShowCorrect) {
       this.setState({ showCorrect: true });
     }
-  }
-
-  isSelected(value) {
-    const sessionValue = this.props.session && this.props.session.value;
-
-    return sessionValue && sessionValue.indexOf && sessionValue.indexOf(value) >= 0;
   }
 
   indexToSymbol(index) {
@@ -130,8 +154,10 @@ export class MultipleChoice extends React.Component {
     const {
       mode,
       disabled,
+      className,
       choices = [],
       choiceMode,
+      gridColumns,
       prompt,
       onChoiceChanged,
       responseCorrect,
@@ -140,14 +166,24 @@ export class MultipleChoice extends React.Component {
       alwaysShowCorrect,
       animationsDisabled,
     } = this.props;
-    const { showCorrect } = this.state;
+    const { showCorrect, selectedValue, selectedValues } = this.state;
     const isEvaluateMode = mode === 'evaluate';
     const showCorrectAnswerToggle = isEvaluateMode && !responseCorrect;
+    const columnsStyle = gridColumns > 1 ? { gridTemplateColumns: `repeat(${gridColumns}, 1fr)` } : undefined;
+
+    const teacherInsttructionsDiv = (
+      <PreviewPrompt
+        tagName="div"
+        className="prompt"
+        defaultClassName="teacher-instructions"
+        prompt={teacherInstructions}
+      />
+    );
 
     return (
-      <div className={classNames(classes.corespringChoice, 'multiple-choice')}>
+      <div className={classNames(classes.main, className, 'multiple-choice')}>
         {teacherInstructions && (
-          <React.Fragment>
+          <div className={classes.teacherInstructions}>
             {!animationsDisabled ? (
               <Collapsible
                 labels={{
@@ -155,42 +191,36 @@ export class MultipleChoice extends React.Component {
                   visible: 'Hide Teacher Instructions',
                 }}
               >
-                <PreviewPrompt tagName="div" className="prompt" prompt={teacherInstructions} />
+                {teacherInsttructionsDiv}
               </Collapsible>
             ) : (
-              <PreviewPrompt
-                tagName="div"
-                className="prompt"
-                defaultClassName="teacher-instructions"
-                prompt={teacherInstructions}
-              />
+              teacherInsttructionsDiv
             )}
-            <br />
-          </React.Fragment>
+          </div>
         )}
-        {!alwaysShowCorrect && (
-          <CorrectAnswerToggle
-            show={showCorrectAnswerToggle}
-            toggled={showCorrect}
-            onToggle={this.onToggle.bind(this)}
-          />
-        )}
-        {showCorrectAnswerToggle && <br />}
+
         <fieldset className={classes.fieldset}>
-          <PreviewPrompt className="prompt" defaultClassName="prompt" prompt={prompt} tagName={"legend"} />
+          <PreviewPrompt className="prompt" defaultClassName="prompt" prompt={prompt} tagName={'legend'} />
+
+          {!alwaysShowCorrect && (
+            <CorrectAnswerToggle
+              show={showCorrectAnswerToggle}
+              toggled={showCorrect}
+              onToggle={this.onToggle.bind(this)}
+            />
+          )}
+
           <div
-            className={classNames(
-              { [classes.gridLayout]: this.props.choicesLayout === 'grid' },
-              {
-                [classes.horizontalLayout]: this.props.choicesLayout === 'horizontal',
-              },
-            )}
-            style={styles.getColumns(this.props.gridColumns)}
+            className={classNames({
+              [classes.gridLayout]: this.props.choicesLayout === 'grid',
+              [classes.horizontalLayout]: this.props.choicesLayout === 'horizontal',
+            })}
+            style={columnsStyle}
           >
             {choices.map((choice, index) => (
               <StyledChoice
                 choicesLayout={this.props.choicesLayout}
-                gridColumns={this.props.gridColumns}
+                gridColumns={gridColumns}
                 key={`choice-${index}`}
                 choice={choice}
                 index={index}
@@ -199,9 +229,16 @@ export class MultipleChoice extends React.Component {
                 isEvaluateMode={isEvaluateMode}
                 choiceMode={choiceMode}
                 disabled={disabled}
-                onChoiceChanged={onChoiceChanged}
+                updateSession={onChoiceChanged}
+                onChoiceChanged={this.props.choiceMode === 'radio' ? this.handleChange : this.handleChangeCheckboxes}
                 hideTick={choice.hideTick}
-                checked={showCorrect ? choice.correct || false : this.isSelected(choice.value)}
+                checked={
+                  showCorrect
+                    ? choice.correct || false
+                    : this.props.choiceMode === 'radio'
+                    ? selectedValue === choice.value
+                    : selectedValues.includes(choice.value)
+                }
                 correctness={isEvaluateMode ? this.getCorrectness(choice) : undefined}
                 displayKey={this.indexToSymbol(index)}
               />
