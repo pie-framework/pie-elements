@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.10.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@4.10.1...@pie-element/inline-dropdown@4.10.2) (2023-02-28)
+
+
+### Bug Fixes
+
+* update pie-libs ([7bb37a7](https://github.com/pie-framework/pie-elements/commit/7bb37a7da11017eff7191968fad4517182f1c363))
+
+
+
+
+
 ## [4.10.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@4.10.0...@pie-element/inline-dropdown@4.10.1) (2023-02-28)
 
 

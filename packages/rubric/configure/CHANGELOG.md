@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.5.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric-configure@2.5.2...@pie-element/rubric-configure@2.5.3) (2023-02-28)
+
+
+### Bug Fixes
+
+* update pie-libs ([7bb37a7](https://github.com/pie-framework/pie-elements/commit/7bb37a7da11017eff7191968fad4517182f1c363))
+
+
+
+
+
 ## [2.5.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric-configure@2.5.1...@pie-element/rubric-configure@2.5.2) (2023-02-28)
 
 
