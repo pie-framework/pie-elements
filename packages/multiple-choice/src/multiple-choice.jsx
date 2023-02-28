@@ -67,11 +67,12 @@ export class MultipleChoice extends React.Component {
   }
 
   isSelected(value) {
-    const sessionValue = this.props.session && this.props.session.value; 
+    const sessionValue = this.props.session && this.props.session.value;
 
     return sessionValue && sessionValue.indexOf && sessionValue.indexOf(value) >= 0;
   }
 
+  // handleChange and handleChangeCheckboxes functions were added for accessibility. Please see comments and videos from PD-2441. They should only be removed if a better solution is found.
   handleChange = (event) => {
     const target = event.target;
 
@@ -231,8 +232,10 @@ export class MultipleChoice extends React.Component {
                 updateSession={onChoiceChanged}
                 onChoiceChanged={this.props.choiceMode === 'radio' ? this.handleChange : this.handleChangeCheckboxes}
                 hideTick={choice.hideTick}
-                checked={showCorrect ? choice.correct || false :
-                  this.props.choiceMode === 'radio'
+                checked={
+                  showCorrect
+                    ? choice.correct || false
+                    : this.props.choiceMode === 'radio'
                     ? selectedValue === choice.value
                     : selectedValues.includes(choice.value)
                 }
