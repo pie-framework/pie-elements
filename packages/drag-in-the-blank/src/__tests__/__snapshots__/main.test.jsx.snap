@@ -4,7 +4,9 @@ exports[`Main render should render in evaluate mode 1`] = `
 <Main
   classes={
     Object {
+      "collapsible": "Main-collapsible-2",
       "mainContainer": "Main-mainContainer-1",
+      "rationale": "Main-rationale-3",
     }
   }
   model={
@@ -62,7 +64,9 @@ exports[`Main render should render in gather mode 1`] = `
 <Main
   classes={
     Object {
+      "collapsible": "Main-collapsible-2",
       "mainContainer": "Main-mainContainer-1",
+      "rationale": "Main-rationale-3",
     }
   }
   model={
@@ -120,7 +124,9 @@ exports[`Main render should render in view mode 1`] = `
 <Main
   classes={
     Object {
+      "collapsible": "Main-collapsible-2",
       "mainContainer": "Main-mainContainer-1",
+      "rationale": "Main-rationale-3",
     }
   }
   model={
@@ -178,7 +184,9 @@ exports[`Main render should render without prompt 1`] = `
 <Main
   classes={
     Object {
+      "collapsible": "Main-collapsible-2",
       "mainContainer": "Main-mainContainer-1",
+      "rationale": "Main-rationale-3",
     }
   }
   model={
@@ -236,7 +244,9 @@ exports[`Main render should render without rationale 1`] = `
 <Main
   classes={
     Object {
+      "collapsible": "Main-collapsible-2",
       "mainContainer": "Main-mainContainer-1",
+      "rationale": "Main-rationale-3",
     }
   }
   model={
@@ -294,7 +304,9 @@ exports[`Main render should render without teacher instructions 1`] = `
 <Main
   classes={
     Object {
+      "collapsible": "Main-collapsible-2",
       "mainContainer": "Main-mainContainer-1",
+      "rationale": "Main-rationale-3",
     }
   }
   model={

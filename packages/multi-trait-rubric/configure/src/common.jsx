@@ -2,7 +2,7 @@ import React from 'react';
 import classnames from 'classnames';
 
 import { withStyles } from '@material-ui/core/styles';
-import EditableHtml, { DEFAULT_PLUGINS } from '@pie-lib/editable-html';
+import EditableHtml from '@pie-lib/editable-html';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
@@ -48,7 +48,7 @@ export const PrimaryBlock = withStyles({
     width: `${PrimaryBlockWidth}px`,
     minWidth: `${PrimaryBlockWidth}px`,
     position: 'relative',
-    padding: Padding,
+    padding: '0 10px',
     boxSizing: 'border-box',
   },
 })(({ classes, children, className }) => <div className={classnames(classes.primaryBlock, className)}>{children}</div>);
@@ -57,8 +57,6 @@ export const Block = withStyles({
   block: {
     width: `${BlockWidth}px`,
     minWidth: `${BlockWidth}px`,
-    padding: Padding,
-
     '& ul, ol': {
       marginBlockStart: 0,
       paddingInlineStart: '16px',
@@ -72,7 +70,7 @@ export const SecondaryBlock = withStyles({
     overflowX: 'hidden',
     alignItems: 'flex-end',
     // this is needed to show the editor toolbar!!!
-    paddingBottom: '22px',
+    paddingBottom: '30px',
   },
 })(({ classes, children, setRef, width }) => (
   <div className={classes.secondaryBlock} style={{ width: width }} ref={setRef}>
@@ -83,7 +81,6 @@ export const SecondaryBlock = withStyles({
 export const Row = withStyles({
   row: {
     display: 'flex',
-    margin: '4px 0',
   },
 })(({ classes, children, className, height }) => (
   <div
@@ -254,7 +251,6 @@ export const SimpleInput = withStyles({
 export const UnderlinedInput = withStyles({
   underlinedInputWrapper: {
     width: '100%',
-    height: '100%',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',

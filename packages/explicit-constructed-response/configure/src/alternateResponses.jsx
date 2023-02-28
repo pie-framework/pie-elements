@@ -193,6 +193,7 @@ export class AlternateResponses extends React.Component {
             );
           }
         })}
+
         {choices && Object.keys(this.state.values).length !== Object.keys(choices).length && (
           <AlternateSection
             value=""

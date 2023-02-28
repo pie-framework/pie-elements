@@ -9,8 +9,7 @@ import Typography from '@material-ui/core/Typography';
 
 const styles = (theme) => ({
   container: {
-    marginTop: theme.spacing.unit * 3,
-    marginBottom: theme.spacing.unit * 3,
+    marginBottom: theme.spacing.unit * 2.5,
     display: 'flex',
     flex: 1,
   },
@@ -26,12 +25,15 @@ const styles = (theme) => ({
     flex: 1,
   },
   chartError: {
-    border: '2px solid red',
+    border: `2px solid ${theme.palette.error.main}`,
   },
   errorText: {
     fontSize: theme.typography.fontSize - 2,
-    color: 'red',
+    color: theme.palette.error.main,
     paddingTop: theme.spacing.unit,
+  },
+  title: {
+    marginBottom: theme.spacing.unit,
   },
 });
 
@@ -51,7 +53,7 @@ const updateCorrectResponseData = (correctAnswer, data) => {
   const correctAnswerData = [...correctAnswer];
   let correctResponseDefinition = [];
 
-  data.forEach((category, currentIndex) => {
+  (data || []).forEach((category, currentIndex) => {
     const editable = category.editable;
     const interactive = category.interactive;
     const label = editable && correctAnswer[currentIndex]?.label ? correctAnswer[currentIndex].label : category.label;
@@ -69,9 +71,9 @@ const updateCorrectResponseData = (correctAnswer, data) => {
   });
 
   if (correctResponseDefinition.length < correctAnswer.length) {
-    const missingCategories = correctAnswerData.slice(correctResponseDefinition.length, correctAnswer.length);
+    const missingCategories = (correctAnswerData || []).slice(correctResponseDefinition.length, correctAnswer.length);
 
-    return addCategoryProps(correctResponseDefinition.concat(missingCategories), data);
+    return addCategoryProps((correctResponseDefinition || []).concat(missingCategories), data);
   }
 
   return correctResponseDefinition;
@@ -81,14 +83,14 @@ const insertCategory = (correctAnswer, data) => {
   const positionToInsert = data.length - 1;
   const { editable, interactive, deletable, ...categoryToInsert } = data[data.length - 1];
 
-  correctAnswer.splice(positionToInsert, 0, categoryToInsert);
+  (correctAnswer || []).splice(positionToInsert, 0, categoryToInsert);
   const correctAnswerData = [...correctAnswer];
 
   return addCategoryProps(correctAnswerData, data);
 };
 
 const removeCategory = (correctAnswer, data, positionToRemove) => {
-  correctAnswer.splice(positionToRemove, 1);
+  (correctAnswer || []).splice(positionToRemove, 1);
   const correctAnswerData = [...correctAnswer];
 
   return addCategoryProps(correctAnswerData, data);
@@ -144,7 +146,7 @@ export class CorrectResponse extends React.Component {
         }
       }
 
-      this.props.model.correctAnswer.data.splice(removedIndex, 1);
+      (this.props.model.correctAnswer.data || []).splice(removedIndex, 1);
       nextCategories = removeCategory(categories, nextData, removedIndex);
     }
 
@@ -197,7 +199,7 @@ export class CorrectResponse extends React.Component {
 
     return (
       <div>
-        Define Correct Response
+        <div className={classes.title}>Define Correct Response</div>
         <div className={classes.container}>
           <div className={classes.column} key="graph">
             <Typography component="div" type="body1">

@@ -17,6 +17,7 @@ jest.mock('@pie-lib/config-ui', () => ({
     radio: jest.fn(),
     numberFields: jest.fn(),
     checkboxes: jest.fn(),
+    textField: jest.fn(),
   },
 }));
 

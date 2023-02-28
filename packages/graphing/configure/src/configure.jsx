@@ -10,7 +10,7 @@ import GraphingConfig from './graphing-config';
 import CorrectResponse from './correct-response';
 import intersection from 'lodash/intersection';
 
-const { Panel, toggle, radio, checkboxes } = settings;
+const { Panel, toggle, radio, checkboxes, textField } = settings;
 const log = debug('@pie-element:graphing:configure');
 
 const styles = (theme) => ({
@@ -20,18 +20,13 @@ const styles = (theme) => ({
     marginTop: theme.spacing.unit * 2,
     marginBottom: theme.spacing.unit,
   },
-  content: {
-    marginTop: theme.spacing.unit * 2,
-  },
   promptHolder: {
     width: '100%',
-    paddingBottom: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit * 2,
-    marginTop: theme.spacing.unit * 2,
-  },
-  prompt: {
     paddingTop: theme.spacing.unit * 2,
-    width: '100%',
+    marginBottom: theme.spacing.unit * 2,
+  },
+  description: {
+    marginBottom: theme.spacing.unit * 2.5,
   },
 });
 
@@ -96,6 +91,7 @@ export class Configure extends React.Component {
       coordinatesOnHover = {},
       gridConfigurations = [],
       graphDimensions = {},
+      instruction= {},
       labels = {},
       padding = {},
       prompt = {},
@@ -154,6 +150,7 @@ export class Configure extends React.Component {
       spellCheckEnabled: spellCheck.settings && toggle(spellCheck.label),
       scoringType: scoringType.settings && radio(scoringType.label, ['dichotomous', 'partial scoring']),
       rubricEnabled: withRubric?.settings && toggle(withRubric?.label),
+      instruction: instruction.settings && textField(instruction.label),
     };
 
     return (
@@ -172,85 +169,80 @@ export class Configure extends React.Component {
           />
         }
       >
-        <div className={classes.content}>
-          <Typography component="div" type="body1">
-            <span>
-              This interaction asks a student to draw a line that meets specific criteria. The student will draw the
-              line by clicking on two points on the graph.
-            </span>
-          </Typography>
+        <Typography component="div" type="body1" className={classes.description}>
+              {instruction?.label || ''}
+        </Typography>
 
-          {teacherInstructionsEnabled && (
-            <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
-              <EditableHtml
-                className={classes.prompt}
-                markup={model.teacherInstructions || ''}
-                onChange={this.onTeacherInstructionsChange}
-                imageSupport={imageSupport}
-                nonEmpty={false}
-                spellCheck={spellCheckEnabled}
-                maxImageWidth={(maxImageWidth && maxImageWidth.teacherInstructions) || defaultImageMaxWidth}
-                maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
-                uploadSoundSupport={uploadSoundSupport}
-                languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
-              />
-            </InputContainer>
-          )}
+        {teacherInstructionsEnabled && (
+          <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
+            <EditableHtml
+              className={classes.prompt}
+              markup={model.teacherInstructions || ''}
+              onChange={this.onTeacherInstructionsChange}
+              imageSupport={imageSupport}
+              nonEmpty={false}
+              spellCheck={spellCheckEnabled}
+              maxImageWidth={(maxImageWidth && maxImageWidth.teacherInstructions) || defaultImageMaxWidth}
+              maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
+              uploadSoundSupport={uploadSoundSupport}
+              languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+            />
+          </InputContainer>
+        )}
 
-          {promptEnabled && (
-            <InputContainer label={prompt.label} className={classes.promptHolder}>
-              <EditableHtml
-                className={classes.prompt}
-                markup={model.prompt}
-                onChange={this.onPromptChange}
-                imageSupport={imageSupport}
-                nonEmpty={false}
-                spellCheck={spellCheckEnabled}
-                disableUnderline
-                maxImageWidth={defaultImageMaxWidth}
-                maxImageHeight={defaultImageMaxHeight}
-                uploadSoundSupport={uploadSoundSupport}
-                languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
-              />
-            </InputContainer>
-          )}
+        {promptEnabled && (
+          <InputContainer label={prompt.label} className={classes.promptHolder}>
+            <EditableHtml
+              className={classes.prompt}
+              markup={model.prompt}
+              onChange={this.onPromptChange}
+              imageSupport={imageSupport}
+              nonEmpty={false}
+              spellCheck={spellCheckEnabled}
+              disableUnderline
+              maxImageWidth={defaultImageMaxWidth}
+              maxImageHeight={defaultImageMaxHeight}
+              uploadSoundSupport={uploadSoundSupport}
+              languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+            />
+          </InputContainer>
+        )}
 
-          {rationaleEnabled && (
-            <InputContainer label={rationale.label || 'Rationale'} className={classes.promptHolder}>
-              <EditableHtml
-                className={classes.prompt}
-                markup={model.rationale || ''}
-                onChange={this.onRationaleChange}
-                imageSupport={imageSupport}
-                spellCheck={spellCheckEnabled}
-                maxImageWidth={(maxImageWidth && maxImageWidth.rationale) || defaultImageMaxWidth}
-                maxImageHeight={(maxImageHeight && maxImageHeight.rationale) || defaultImageMaxHeight}
-                uploadSoundSupport={uploadSoundSupport}
-                languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
-              />
-            </InputContainer>
-          )}
+        <GraphingConfig
+          authoring={authoring}
+          availableTools={availableTools}
+          gridConfigurations={gridConfigurations}
+          graphDimensions={graphDimensions}
+          labelsPlaceholders={labelsPlaceholders}
+          model={model}
+          showLabels={labelsEnabled}
+          showTitle={titleEnabled}
+          titlePlaceholder={title.placeholder}
+          onChange={this.props.onModelChanged}
+        />
 
-          <GraphingConfig
-            authoring={authoring}
-            availableTools={availableTools}
-            gridConfigurations={gridConfigurations}
-            graphDimensions={graphDimensions}
-            labelsPlaceholders={labelsPlaceholders}
-            model={model}
-            showLabels={labelsEnabled}
-            showTitle={titleEnabled}
-            titlePlaceholder={title.placeholder}
-            onChange={this.props.onModelChanged}
-          />
+        <CorrectResponse
+          availableTools={availableTools}
+          errors={errors}
+          model={model}
+          onChange={this.props.onModelChanged}
+        />
 
-          <CorrectResponse
-            availableTools={availableTools}
-            errors={errors}
-            model={model}
-            onChange={this.props.onModelChanged}
-          />
-        </div>
+        {rationaleEnabled && (
+          <InputContainer label={rationale.label || 'Rationale'} className={classes.promptHolder}>
+            <EditableHtml
+              className={classes.prompt}
+              markup={model.rationale || ''}
+              onChange={this.onRationaleChange}
+              imageSupport={imageSupport}
+              spellCheck={spellCheckEnabled}
+              maxImageWidth={(maxImageWidth && maxImageWidth.rationale) || defaultImageMaxWidth}
+              maxImageHeight={(maxImageHeight && maxImageHeight.rationale) || defaultImageMaxHeight}
+              uploadSoundSupport={uploadSoundSupport}
+              languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+            />
+          </InputContainer>
+        )}
       </layout.ConfigLayout>
     );
   }

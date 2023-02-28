@@ -52,7 +52,7 @@ export class ChoiceTile extends React.Component {
 
   render() {
     const {
-      choice: { label, editable },
+      choice: { label, editable, type },
       isDragging,
       connectDragSource,
       connectDropTarget,
@@ -91,7 +91,7 @@ export class ChoiceTile extends React.Component {
           <EditableHtml
             disabled={!editable}
             className={classNames(classes.prompt, !editable && classes.targetPrompt)}
-            placeholder="Enter a choice"
+            placeholder={type !== 'target' && !label.includes('data-latex') ? 'Enter a choice' : ''}
             markup={label}
             imageSupport={imageSupport || undefined}
             onChange={this.onLabelChange}

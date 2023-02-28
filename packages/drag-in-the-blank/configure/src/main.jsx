@@ -18,34 +18,21 @@ const { dropdown, toggle, Panel } = settings;
 const styles = (theme) => ({
   promptHolder: {
     width: '100%',
-    paddingBottom: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit * 2,
-  },
-  prompt: {
     paddingTop: theme.spacing.unit * 2,
-    width: '100%',
+    marginBottom: theme.spacing.unit * 2,
   },
   markup: {
     minHeight: '235px',
-    paddingTop: theme.spacing.unit * 2,
+    paddingTop: theme.spacing.unit,
+    paddingBottom: theme.spacing.unit * 2,
     width: '100%',
     '& [data-slate-editor="true"]': {
       minHeight: '235px',
     },
   },
-  design: {
-    paddingTop: theme.spacing.unit * 3,
-  },
   choiceConfiguration: {
     paddingTop: theme.spacing.unit * 2,
     paddingBottom: theme.spacing.unit * 2,
-  },
-  switchElement: {
-    justifyContent: 'space-between',
-    margin: 0,
-  },
-  addButton: {
-    float: 'right',
   },
   text: {
     fontFamily: 'Cerebri Sans',
@@ -60,7 +47,7 @@ const styles = (theme) => ({
   },
   errorText: {
     fontSize: theme.typography.fontSize - 2,
-    color: 'red',
+    color: theme.palette.error.main,
     paddingTop: theme.spacing.unit,
   },
   flexContainer: {
@@ -193,127 +180,123 @@ export class Main extends React.Component {
     };
 
     return (
-      <div className={classes.design}>
-        <layout.ConfigLayout
-          hideSettings={settingsPanelDisabled}
-          settings={
-            <Panel
-              model={model}
-              configuration={configuration}
-              onChangeModel={(model) => this.onModelChange(model)}
-              onChangeConfiguration={(configuration) => onConfigurationChanged(configuration, true)}
-              groups={{
-                Settings: panelSettings,
-                Properties: panelProperties,
-              }}
-            />
-          }
-        >
-          <div>
-            {teacherInstructionsEnabled && (
-              <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
-                <EditableHtml
-                  className={classes.prompt}
-                  markup={model.teacherInstructions || ''}
-                  onChange={this.onTeacherInstructionsChanged}
-                  imageSupport={imageSupport}
-                  nonEmpty={false}
-                  toolbarOpts={toolbarOpts}
-                  spellCheck={spellCheckEnabled}
-                  maxImageWidth={(maxImageWidth && maxImageWidth.teacherInstructions) || defaultImageMaxWidth}
-                  maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
-                  uploadSoundSupport={uploadSoundSupport}
-                  languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
-                />
-              </InputContainer>
-            )}
-
-            {promptEnabled && (
-              <InputContainer label={prompt.label} className={classes.promptHolder}>
-                <EditableHtml
-                  className={classes.prompt}
-                  markup={model.prompt}
-                  onChange={this.onPromptChanged}
-                  imageSupport={imageSupport}
-                  nonEmpty={false}
-                  disableUnderline
-                  toolbarOpts={toolbarOpts}
-                  spellCheck={spellCheckEnabled}
-                  maxImageWidth={defaultImageMaxWidth}
-                  maxImageHeight={defaultImageMaxHeight}
-                  uploadSoundSupport={uploadSoundSupport}
-                  languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
-                />
-              </InputContainer>
-            )}
-
-            <div className={classes.flexContainer}>
-              <Typography className={classes.text}>Define Template, Choices, and Correct Responses</Typography>
-              <Tooltip
-                classes={{ tooltip: classes.tooltip }}
-                disableFocusListener
-                disableTouchListener
-                placement={'right'}
-                title={validationMessage}
-              >
-                <Info fontSize={'small'} color={'primary'} style={{ marginLeft: '5px' }} />
-              </Tooltip>
-            </div>
-
+      <layout.ConfigLayout
+        hideSettings={settingsPanelDisabled}
+        settings={
+          <Panel
+            model={model}
+            configuration={configuration}
+            onChangeModel={(model) => this.onModelChange(model)}
+            onChangeConfiguration={(configuration) => onConfigurationChanged(configuration, true)}
+            groups={{
+              Settings: panelSettings,
+              Properties: panelProperties,
+            }}
+          />
+        }
+      >
+        {teacherInstructionsEnabled && (
+          <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
             <EditableHtml
-              activePlugins={ALL_PLUGINS}
-              responseAreaProps={{
-                type: 'drag-in-the-blank',
-                options: {
-                  duplicates: model.duplicates,
-                },
-                maxResponseAreas: maxResponseAreas,
-              }}
-              className={classes.markup}
-              markup={model.slateMarkup}
-              onChange={this.onMarkupChanged}
+              className={classes.prompt}
+              markup={model.teacherInstructions || ''}
+              onChange={this.onTeacherInstructionsChanged}
               imageSupport={imageSupport}
-              disableImageAlignmentButtons={true}
               nonEmpty={false}
-              disableUnderline
-              error={responseAreasError || correctResponseError}
               toolbarOpts={toolbarOpts}
               spellCheck={spellCheckEnabled}
+              maxImageWidth={(maxImageWidth && maxImageWidth.teacherInstructions) || defaultImageMaxWidth}
+              maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
               uploadSoundSupport={uploadSoundSupport}
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
             />
-            {responseAreasError && <div className={classes.errorText}>{responseAreasError}</div>}
-            {correctResponseError && <div className={classes.errorText}>{correctResponseError}</div>}
+          </InputContainer>
+        )}
 
-            <Choices
-              model={model}
-              duplicates={model.duplicates}
-              error={choicesError}
-              onChange={this.onResponsesChanged}
+        {promptEnabled && (
+          <InputContainer label={prompt.label} className={classes.promptHolder}>
+            <EditableHtml
+              className={classes.prompt}
+              markup={model.prompt}
+              onChange={this.onPromptChanged}
+              imageSupport={imageSupport}
+              nonEmpty={false}
+              disableUnderline
               toolbarOpts={toolbarOpts}
-              maxChoices={maxChoices}
+              spellCheck={spellCheckEnabled}
+              maxImageWidth={defaultImageMaxWidth}
+              maxImageHeight={defaultImageMaxHeight}
               uploadSoundSupport={uploadSoundSupport}
+              languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
             />
+          </InputContainer>
+        )}
 
-            {rationaleEnabled && (
-              <InputContainer label={rationale.label} className={classes.promptHolder}>
-                <EditableHtml
-                  className={classes.prompt}
-                  markup={model.rationale || ''}
-                  onChange={this.onRationaleChanged}
-                  imageSupport={imageSupport}
-                  toolbarOpts={toolbarOpts}
-                  spellCheck={spellCheckEnabled}
-                  maxImageWidth={(maxImageWidth && maxImageWidth.rationale) || defaultImageMaxWidth}
-                  maxImageHeight={(maxImageHeight && maxImageHeight.rationale) || defaultImageMaxHeight}
-                  uploadSoundSupport={uploadSoundSupport}
-                  languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
-                />
-              </InputContainer>
-            )}
-          </div>
-        </layout.ConfigLayout>
-      </div>
+        <div className={classes.flexContainer}>
+          <Typography className={classes.text}>Define Template, Choices, and Correct Responses</Typography>
+          <Tooltip
+            classes={{ tooltip: classes.tooltip }}
+            disableFocusListener
+            disableTouchListener
+            placement={'right'}
+            title={validationMessage}
+          >
+            <Info fontSize={'small'} color={'primary'} style={{ marginLeft: '5px' }} />
+          </Tooltip>
+        </div>
+
+        <EditableHtml
+          activePlugins={ALL_PLUGINS}
+          responseAreaProps={{
+            type: 'drag-in-the-blank',
+            options: {
+              duplicates: model.duplicates,
+            },
+            maxResponseAreas: maxResponseAreas,
+          }}
+          className={classes.markup}
+          markup={model.slateMarkup}
+          onChange={this.onMarkupChanged}
+          imageSupport={imageSupport}
+          disableImageAlignmentButtons={true}
+          nonEmpty={false}
+          disableUnderline
+          error={responseAreasError || correctResponseError}
+          toolbarOpts={toolbarOpts}
+          spellCheck={spellCheckEnabled}
+          uploadSoundSupport={uploadSoundSupport}
+          languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+        />
+        {responseAreasError && <div className={classes.errorText}>{responseAreasError}</div>}
+        {correctResponseError && <div className={classes.errorText}>{correctResponseError}</div>}
+
+        <Choices
+          model={model}
+          duplicates={model.duplicates}
+          error={choicesError}
+          onChange={this.onResponsesChanged}
+          toolbarOpts={toolbarOpts}
+          maxChoices={maxChoices}
+          uploadSoundSupport={uploadSoundSupport}
+        />
+
+        {rationaleEnabled && (
+          <InputContainer label={rationale.label} className={classes.promptHolder}>
+            <EditableHtml
+              className={classes.prompt}
+              markup={model.rationale || ''}
+              onChange={this.onRationaleChanged}
+              imageSupport={imageSupport}
+              toolbarOpts={toolbarOpts}
+              spellCheck={spellCheckEnabled}
+              maxImageWidth={(maxImageWidth && maxImageWidth.rationale) || defaultImageMaxWidth}
+              maxImageHeight={(maxImageHeight && maxImageHeight.rationale) || defaultImageMaxHeight}
+              uploadSoundSupport={uploadSoundSupport}
+              languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+            />
+          </InputContainer>
+        )}
+      </layout.ConfigLayout>
     );
   }
 }
