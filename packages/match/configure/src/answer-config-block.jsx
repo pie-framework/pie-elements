@@ -13,7 +13,7 @@ const log = debug('pie-elements:match:configure');
 
 const styles = (theme) => ({
   container: {
-    marginTop: theme.spacing.unit * 2,
+    marginBottom: theme.spacing.unit * 2.5,
     display: 'flex',
     flexDirection: 'column',
   },

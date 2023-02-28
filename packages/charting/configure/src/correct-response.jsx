@@ -9,8 +9,7 @@ import Typography from '@material-ui/core/Typography';
 
 const styles = (theme) => ({
   container: {
-    marginTop: theme.spacing.unit * 3,
-    marginBottom: theme.spacing.unit * 3,
+    marginBottom: theme.spacing.unit * 2.5,
     display: 'flex',
     flex: 1,
   },
@@ -26,12 +25,15 @@ const styles = (theme) => ({
     flex: 1,
   },
   chartError: {
-    border: '2px solid red',
+    border: `2px solid ${theme.palette.error.main}`,
   },
   errorText: {
     fontSize: theme.typography.fontSize - 2,
-    color: 'red',
+    color: theme.palette.error.main,
     paddingTop: theme.spacing.unit,
+  },
+  title: {
+    marginBottom: theme.spacing.unit,
   },
 });
 
@@ -197,7 +199,7 @@ export class CorrectResponse extends React.Component {
 
     return (
       <div>
-        Define Correct Response
+        <div className={classes.title}>Define Correct Response</div>
         <div className={classes.container}>
           <div className={classes.column} key="graph">
             <Typography component="div" type="body1">

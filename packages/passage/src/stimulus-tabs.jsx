@@ -39,7 +39,7 @@ function TabContainer(props) {
 
   return (
     <Typography
-      component="div" 
+      component="div"
       style={{
         padding,
         fontSize: '0.875em',
@@ -138,6 +138,7 @@ class StimulusTabs extends React.Component {
               />
             ))}
           </Tabs>
+
           {tabs.map((tab) =>
             activeTab === tab.id ? (
               <TabContainer multiple key={tab.id}>

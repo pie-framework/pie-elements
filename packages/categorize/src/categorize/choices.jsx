@@ -29,15 +29,7 @@ export class Choices extends React.Component {
   };
 
   render() {
-    const {
-      classes,
-      choices = [],
-      model,
-      disabled,
-      onDropChoice,
-      onRemoveChoice,
-      choicePosition,
-    } = this.props;
+    const { classes, choices = [], model, disabled, onDropChoice, onRemoveChoice, choicePosition } = this.props;
 
     let style = {
       textAlign: 'center',
@@ -49,16 +41,16 @@ export class Choices extends React.Component {
 
     return (
       <div className={classes.wrapper}>
-         <DroppablePlaceholder
+        <DroppablePlaceholder
           onDropChoice={onDropChoice}
           onRemoveChoice={onRemoveChoice}
           disabled={disabled}
-          style={{background: 'none', }}
+          style={{ background: 'none' }}
           choiceBoard={true}
-          >
-        {model.choicesLabel && model.choicesLabel !== '' && (
-          <div className={classes.labelHolder} dangerouslySetInnerHTML={{ __html: model.choicesLabel }}></div>
-        )}
+        >
+          {model.choicesLabel && model.choicesLabel !== '' && (
+            <div className={classes.labelHolder} dangerouslySetInnerHTML={{ __html: model.choicesLabel }}></div>
+          )}
           {choices.map((c, index) => {
             return c.empty ? (
               <Blank key={index} />

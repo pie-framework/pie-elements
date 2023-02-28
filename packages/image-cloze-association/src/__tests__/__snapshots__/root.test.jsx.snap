@@ -1,50 +1,39 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Root snapshots model renders 1`] = `
-<div>
-  <WithStyles(PreviewPrompt)
-    className="prompt"
-  />
-  <WithStyles(Typography)>
-    <span
-      dangerouslySetInnerHTML={
+<ImageClozeAssociationComponent
+  classes={
+    Object {
+      "teacherInstructions": "ImageClozeAssociationComponent-teacherInstructions-1",
+    }
+  }
+  model={
+    Object {
+      "answers": Array [
         Object {
-          "__html": undefined,
-        }
-      }
-    />
-  </WithStyles(Typography)>
-  <WithStyles(CorrectAnswerToggle)
-    onToggle={[Function]}
-    show={false}
-    toggled={false}
-  />
-  <br />
-  <WithStyles(InteractiveSection)>
-    <WithStyles(ImageContainer)
-      answers={Array []}
-      canDrag={true}
-      draggingElement={
+          "containerIndex": 0,
+          "id": 1,
+          "value": "1",
+        },
         Object {
-          "id": "",
-          "value": "",
-        }
-      }
-      duplicateResponses={false}
-      image={Object {}}
-      onAnswerSelect={[Function]}
-      onDragAnswerBegin={[Function]}
-      onDragAnswerEnd={[Function]}
-      responseContainers={Array []}
-      showDashedBorder={true}
-    />
-    <[object Object]
-      canDrag={true}
-      data={Array []}
-      onAnswerRemove={[Function]}
-      onDragBegin={[Function]}
-      onDragEnd={[Function]}
-    />
-  </WithStyles(InteractiveSection)>
-</div>
+          "containerIndex": 1,
+          "id": 2,
+          "value": "2",
+        },
+      ],
+      "canDrag": true,
+      "draggingElement": Object {},
+      "duplicateResponses": false,
+      "image": Object {},
+      "maxResponsePerZone": 5,
+      "onAnswerSelect": [Function],
+      "onDragAnswerBegin": [Function],
+      "onDragAnswerEnd": [Function],
+      "possibleResponses": Array [],
+      "responseContainers": Array [],
+      "showDashedBorder": true,
+    }
+  }
+  updateAnswer={[Function]}
+/>
 `;

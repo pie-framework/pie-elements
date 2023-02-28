@@ -9,10 +9,12 @@ import Typography from '@material-ui/core/Typography';
 
 const styles = (theme) => ({
   container: {
-    marginTop: theme.spacing.unit * 3,
-    marginBottom: theme.spacing.unit * 3,
+    marginBottom: theme.spacing.unit * 2.5,
     display: 'flex',
     flex: 1,
+  },
+  title: {
+    marginBottom: theme.spacing.unit,
   },
   column: {
     flex: 1,
@@ -117,7 +119,7 @@ export class ChartingConfig extends React.Component {
 
     return (
       <div>
-        Define Initial Chart Attributes
+        <div className={classes.title}>Define Initial Chart Attributes</div>
         <div className={classes.container}>
           <div className={classes.column} key="graph">
             <Typography component="div" type="body1">

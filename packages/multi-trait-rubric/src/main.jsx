@@ -6,7 +6,6 @@ import Link from '@material-ui/core/Link';
 import Collapse from '@material-ui/core/Collapse';
 
 class Main extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -31,7 +30,10 @@ class Main extends React.Component {
 
     const rubricItem = (
       <div style={{ fontFamily: 'Cerebri Sans' }}>
-        {halfScoring ? <p>* Half-point or in-between scores are permitted under this rubric.</p> : null}
+        {halfScoring ? (
+          <div style={{ marginBottom: '16px' }}>* Half-point or in-between scores are permitted under this rubric.</div>
+        ) : null}
+
         {scales.map((scale, scaleIndex) => (
           <Scale
             key={`scale_${scaleIndex}`}
@@ -45,21 +47,19 @@ class Main extends React.Component {
       </div>
     );
 
+    if (animationsDisabled) {
+      return rubricItem;
+    }
+
     return (
-      <div>
-        {!animationsDisabled ? (
-          <React.Fragment>
-            <Link href={this.dudUrl} onClick={this.toggleRubric}>
-              {this.state.linkPrefix} Rubric
-            </Link>
-            <Collapse in={this.state.rubricOpen} timeout="auto">
-              {rubricItem}
-            </Collapse>
-          </React.Fragment>
-        ) : (
-          rubricItem
-        )}
-      </div>
+      <React.Fragment>
+        <Link href={this.dudUrl} onClick={this.toggleRubric}>
+          {this.state.linkPrefix} Rubric
+        </Link>
+        <Collapse style={{ marginTop: '16px' }} in={this.state.rubricOpen} timeout="auto">
+          {rubricItem}
+        </Collapse>
+      </React.Fragment>
     );
   }
 }
