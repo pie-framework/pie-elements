@@ -1,636 +1,632 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Main snapshot renders with teacher instructions, prompt and rationale even if not set 1`] = `
-<div>
-  <ConfigLayout
-    hideSettings={false}
-    settings={
-      <Panel
-        configuration={
-          Object {
-            "maxImageHeight": Object {
-              "prompt": 300,
-              "rationale": 300,
-              "teacherInstructions": 300,
-            },
-            "maxImageWidth": Object {
-              "prompt": 300,
-              "rationale": 300,
-              "teacherInstructions": 300,
-            },
-            "maxLengthPerChoice": Object {
-              "label": "Maximum Length Per Choice",
-              "settings": true,
-            },
-            "maxResponseAreas": 10,
-            "partialScoring": Object {
-              "label": "Allow Partial Scoring",
-              "settings": false,
-            },
-            "playerSpellCheck": Object {
-              "enabled": true,
-              "label": "Student Spellcheck",
-              "settings": true,
-            },
-            "prompt": Object {
-              "label": "Prompt",
-              "settings": true,
-            },
-            "rationale": Object {
-              "label": "Rationale",
-              "settings": true,
-            },
-            "settingsPanelDisabled": false,
-            "spellCheck": Object {
-              "enabled": true,
-              "label": "Spellcheck",
-              "settings": false,
-            },
-            "teacherInstructions": Object {
-              "label": "Teacher Instructions",
-              "settings": true,
-            },
-            "withRubric": Object {
-              "label": "Add Rubric",
-              "settings": false,
-            },
-          }
+<ConfigLayout
+  hideSettings={false}
+  settings={
+    <Panel
+      configuration={
+        Object {
+          "maxImageHeight": Object {
+            "prompt": 300,
+            "rationale": 300,
+            "teacherInstructions": 300,
+          },
+          "maxImageWidth": Object {
+            "prompt": 300,
+            "rationale": 300,
+            "teacherInstructions": 300,
+          },
+          "maxLengthPerChoice": Object {
+            "label": "Maximum Length Per Choice",
+            "settings": true,
+          },
+          "maxResponseAreas": 10,
+          "partialScoring": Object {
+            "label": "Allow Partial Scoring",
+            "settings": false,
+          },
+          "playerSpellCheck": Object {
+            "enabled": true,
+            "label": "Student Spellcheck",
+            "settings": true,
+          },
+          "prompt": Object {
+            "label": "Prompt",
+            "settings": true,
+          },
+          "rationale": Object {
+            "label": "Rationale",
+            "settings": true,
+          },
+          "settingsPanelDisabled": false,
+          "spellCheck": Object {
+            "enabled": true,
+            "label": "Spellcheck",
+            "settings": false,
+          },
+          "teacherInstructions": Object {
+            "label": "Teacher Instructions",
+            "settings": true,
+          },
+          "withRubric": Object {
+            "label": "Add Rubric",
+            "settings": false,
+          },
         }
-        groups={
-          Object {
-            "Properties": Object {
-              "playerSpellCheckEnabled": undefined,
-              "promptEnabled": undefined,
-              "rationaleEnabled": undefined,
-              "rubricEnabled": false,
-              "spellCheckEnabled": false,
-              "teacherInstructionsEnabled": undefined,
-            },
-            "Settings": Object {
-              "maxLengthPerChoiceEnabled": undefined,
-              "partialScoring": false,
-            },
-          }
+      }
+      groups={
+        Object {
+          "Properties": Object {
+            "playerSpellCheckEnabled": undefined,
+            "promptEnabled": undefined,
+            "rationaleEnabled": undefined,
+            "rubricEnabled": false,
+            "spellCheckEnabled": false,
+            "teacherInstructionsEnabled": undefined,
+          },
+          "Settings": Object {
+            "maxLengthPerChoiceEnabled": undefined,
+            "partialScoring": false,
+          },
         }
-        model={
-          Object {
-            "choices": Object {
-              "0": Array [
-                Object {
-                  "label": "cow",
-                  "value": "0",
-                },
-                Object {
-                  "label": "cattle",
-                  "value": "1",
-                },
-                Object {
-                  "label": "calf",
-                  "value": "2",
-                },
-              ],
-              "1": Array [
-                Object {
-                  "label": "over",
-                  "value": "0",
-                },
-                Object {
-                  "label": "past",
-                  "value": "1",
-                },
-                Object {
-                  "label": "beyond",
-                  "value": "2",
-                },
-              ],
-              "2": Array [
-                Object {
-                  "label": "moon",
-                  "value": "0",
-                },
-              ],
-            },
-            "disabled": false,
-            "displayType": "block",
-            "markup": "<p>The {{0}} jumped {{1}} the {{2}}</p>",
-            "maxLengthPerChoice": Array [
-              6,
-              6,
-              4,
+      }
+      model={
+        Object {
+          "choices": Object {
+            "0": Array [
+              Object {
+                "label": "cow",
+                "value": "0",
+              },
+              Object {
+                "label": "cattle",
+                "value": "1",
+              },
+              Object {
+                "label": "calf",
+                "value": "2",
+              },
             ],
-            "maxLengthPerChoiceEnabled": true,
-            "mode": "gather",
-            "playerSpellCheckEnabled": true,
-            "prompt": "Complete the sentence",
-            "promptEnabled": true,
-            "rationaleEnabled": true,
-            "shuffle": true,
-            "slateMarkup": "<p>The <span data-type=\\"explicit_constructed_response\\" data-index=\\"0\\" data-value=\\"cow\\"></span> jumped <span data-type=\\"explicit_constructed_response\\" data-index=\\"1\\" data-value=\\"over\\"></span> the <span data-type=\\"explicit_constructed_response\\" data-index=\\"2\\" data-value=\\"moon\\"></span></p>",
-            "spellCheckEnabled": true,
-            "studentInstructionsEnabled": true,
-            "teacherInstructionsEnabled": true,
-            "toolbarEditorPosition": "bottom",
-          }
+            "1": Array [
+              Object {
+                "label": "over",
+                "value": "0",
+              },
+              Object {
+                "label": "past",
+                "value": "1",
+              },
+              Object {
+                "label": "beyond",
+                "value": "2",
+              },
+            ],
+            "2": Array [
+              Object {
+                "label": "moon",
+                "value": "0",
+              },
+            ],
+          },
+          "disabled": false,
+          "displayType": "block",
+          "markup": "<p>The {{0}} jumped {{1}} the {{2}}</p>",
+          "maxLengthPerChoice": Array [
+            6,
+            6,
+            4,
+          ],
+          "maxLengthPerChoiceEnabled": true,
+          "mode": "gather",
+          "playerSpellCheckEnabled": true,
+          "prompt": "Complete the sentence",
+          "promptEnabled": true,
+          "rationaleEnabled": true,
+          "shuffle": true,
+          "slateMarkup": "<p>The <span data-type=\\"explicit_constructed_response\\" data-index=\\"0\\" data-value=\\"cow\\"></span> jumped <span data-type=\\"explicit_constructed_response\\" data-index=\\"1\\" data-value=\\"over\\"></span> the <span data-type=\\"explicit_constructed_response\\" data-index=\\"2\\" data-value=\\"moon\\"></span></p>",
+          "spellCheckEnabled": true,
+          "studentInstructionsEnabled": true,
+          "teacherInstructionsEnabled": true,
+          "toolbarEditorPosition": "bottom",
         }
-        onChangeConfiguration={[Function]}
-        onChangeModel={[Function]}
-      />
-    }
+      }
+      onChangeConfiguration={[Function]}
+      onChangeModel={[Function]}
+    />
+  }
+>
+  <InputContainer
+    label="Teacher Instructions"
   >
-    <div>
-      <InputContainer
-        label="Teacher Instructions"
-      >
-        <EditableHtml
-          languageCharactersProps={
-            Array [
-              Object {
-                "language": "spanish",
-              },
-              Object {
-                "language": "special",
-              },
-            ]
-          }
-          markup=""
-          maxImageHeight={300}
-          maxImageWidth={300}
-          nonEmpty={false}
-          onChange={[Function]}
-          spellCheck={true}
-          toolbarOpts={
-            Object {
-              "position": "bottom",
-            }
-          }
-        />
-      </InputContainer>
-      <InputContainer
-        label="Prompt"
-      >
-        <EditableHtml
-          disableUnderline={true}
-          languageCharactersProps={
-            Array [
-              Object {
-                "language": "spanish",
-              },
-              Object {
-                "language": "special",
-              },
-            ]
-          }
-          markup="Complete the sentence"
-          maxImageHeight={300}
-          maxImageWidth={300}
-          nonEmpty={false}
-          onChange={[Function]}
-          spellCheck={true}
-          toolbarOpts={
-            Object {
-              "position": "bottom",
-            }
-          }
-        />
-      </InputContainer>
-      <div>
-        <WithStyles(Typography)>
-          Define Template, Choices, and Correct Responses
-        </WithStyles(Typography)>
-        <WithStyles(Tooltip)
-          classes={
-            Object {
-              "tooltip": undefined,
-            }
-          }
-          disableFocusListener={true}
-          disableTouchListener={true}
-          placement="right"
-          title="Validation requirements:
+    <EditableHtml
+      languageCharactersProps={
+        Array [
+          Object {
+            "language": "spanish",
+          },
+          Object {
+            "language": "special",
+          },
+        ]
+      }
+      markup=""
+      maxImageHeight={300}
+      maxImageWidth={300}
+      nonEmpty={false}
+      onChange={[Function]}
+      spellCheck={true}
+      toolbarOpts={
+        Object {
+          "position": "bottom",
+        }
+      }
+    />
+  </InputContainer>
+  <InputContainer
+    label="Prompt"
+  >
+    <EditableHtml
+      disableUnderline={true}
+      languageCharactersProps={
+        Array [
+          Object {
+            "language": "spanish",
+          },
+          Object {
+            "language": "special",
+          },
+        ]
+      }
+      markup="Complete the sentence"
+      maxImageHeight={300}
+      maxImageWidth={300}
+      nonEmpty={false}
+      onChange={[Function]}
+      spellCheck={true}
+      toolbarOpts={
+        Object {
+          "position": "bottom",
+        }
+      }
+    />
+  </InputContainer>
+  <div>
+    <WithStyles(Typography)>
+      Define Template, Choices, and Correct Responses
+    </WithStyles(Typography)>
+    <WithStyles(Tooltip)
+      classes={
+        Object {
+          "tooltip": undefined,
+        }
+      }
+      disableFocusListener={true}
+      disableTouchListener={true}
+      placement="right"
+      title="Validation requirements:
 Correct answers should not be blank.
 Each answer defined for a response area should be unique.
 There should be at least 1 and at most 10 response areas defined."
-        >
-          <pure(InfoIcon)
-            color="primary"
-            fontSize="small"
-            style={
-              Object {
-                "marginLeft": "8px",
-              }
-            }
-          />
-        </WithStyles(Tooltip)>
-      </div>
-      <EditableHtml
-        disableImageAlignmentButtons={true}
-        disabled={false}
-        highlightShape={false}
-        languageCharactersProps={
-          Array [
-            Object {
-              "language": "spanish",
-            },
-            Object {
-              "language": "special",
-            },
-          ]
-        }
-        markup="<p>The <span data-type=\\"explicit_constructed_response\\" data-index=\\"0\\" data-value=\\"cow\\"></span> jumped <span data-type=\\"explicit_constructed_response\\" data-index=\\"1\\" data-value=\\"over\\"></span> the <span data-type=\\"explicit_constructed_response\\" data-index=\\"2\\" data-value=\\"moon\\"></span></p>"
-        onChange={[Function]}
-        responseAreaProps={
+    >
+      <pure(InfoIcon)
+        color="primary"
+        fontSize="small"
+        style={
           Object {
-            "error": [Function],
-            "maxResponseAreas": 10,
-            "onHandleAreaChange": [Function],
-            "options": Object {
-              "duplicates": true,
-            },
-            "respAreaToolbar": [Function],
-            "type": "explicit-constructed-response",
-          }
-        }
-        spellCheck={true}
-        toolbarOpts={
-          Object {
-            "position": "top",
+            "marginLeft": "8px",
           }
         }
       />
-      <WithStyles(Typography)>
-        Define Alternates and Character Limits
-      </WithStyles(Typography)>
-      <AlternateResponses
-        choicesErrors={Object {}}
-        maxLengthPerChoiceEnabled={true}
-        model={
-          Object {
-            "choices": Object {
-              "0": Array [
-                Object {
-                  "label": "cow",
-                  "value": "0",
-                },
-                Object {
-                  "label": "cattle",
-                  "value": "1",
-                },
-                Object {
-                  "label": "calf",
-                  "value": "2",
-                },
-              ],
-              "1": Array [
-                Object {
-                  "label": "over",
-                  "value": "0",
-                },
-                Object {
-                  "label": "past",
-                  "value": "1",
-                },
-                Object {
-                  "label": "beyond",
-                  "value": "2",
-                },
-              ],
-              "2": Array [
-                Object {
-                  "label": "moon",
-                  "value": "0",
-                },
-              ],
-            },
-            "disabled": false,
-            "displayType": "block",
-            "markup": "<p>The {{0}} jumped {{1}} the {{2}}</p>",
-            "maxLengthPerChoice": Array [
-              6,
-              6,
-              4,
-            ],
-            "maxLengthPerChoiceEnabled": true,
-            "mode": "gather",
-            "playerSpellCheckEnabled": true,
-            "prompt": "Complete the sentence",
-            "promptEnabled": true,
-            "rationaleEnabled": true,
-            "shuffle": true,
-            "slateMarkup": "<p>The <span data-type=\\"explicit_constructed_response\\" data-index=\\"0\\" data-value=\\"cow\\"></span> jumped <span data-type=\\"explicit_constructed_response\\" data-index=\\"1\\" data-value=\\"over\\"></span> the <span data-type=\\"explicit_constructed_response\\" data-index=\\"2\\" data-value=\\"moon\\"></span></p>",
-            "spellCheckEnabled": true,
-            "studentInstructionsEnabled": true,
-            "teacherInstructionsEnabled": true,
-            "toolbarEditorPosition": "bottom",
-          }
-        }
-        onChange={[Function]}
-        onLengthChange={[Function]}
-        spellCheck={true}
-      />
-      <InputContainer
-        label="Rationale"
-      >
-        <EditableHtml
-          languageCharactersProps={
-            Array [
-              Object {
-                "language": "spanish",
-              },
-              Object {
-                "language": "special",
-              },
-            ]
-          }
-          markup=""
-          maxImageHeight={300}
-          maxImageWidth={300}
-          onChange={[Function]}
-          spellCheck={true}
-          toolbarOpts={
+    </WithStyles(Tooltip)>
+  </div>
+  <EditableHtml
+    disableImageAlignmentButtons={true}
+    disabled={false}
+    highlightShape={false}
+    languageCharactersProps={
+      Array [
+        Object {
+          "language": "spanish",
+        },
+        Object {
+          "language": "special",
+        },
+      ]
+    }
+    markup="<p>The <span data-type=\\"explicit_constructed_response\\" data-index=\\"0\\" data-value=\\"cow\\"></span> jumped <span data-type=\\"explicit_constructed_response\\" data-index=\\"1\\" data-value=\\"over\\"></span> the <span data-type=\\"explicit_constructed_response\\" data-index=\\"2\\" data-value=\\"moon\\"></span></p>"
+    onChange={[Function]}
+    responseAreaProps={
+      Object {
+        "error": [Function],
+        "maxResponseAreas": 10,
+        "onHandleAreaChange": [Function],
+        "options": Object {
+          "duplicates": true,
+        },
+        "respAreaToolbar": [Function],
+        "type": "explicit-constructed-response",
+      }
+    }
+    spellCheck={true}
+    toolbarOpts={
+      Object {
+        "position": "top",
+      }
+    }
+  />
+  <WithStyles(Typography)
+    className=""
+  >
+    Define Alternates and Character Limits
+  </WithStyles(Typography)>
+  <AlternateResponses
+    choicesErrors={Object {}}
+    maxLengthPerChoiceEnabled={true}
+    model={
+      Object {
+        "choices": Object {
+          "0": Array [
             Object {
-              "position": "bottom",
-            }
-          }
-        />
-      </InputContainer>
-    </div>
-  </ConfigLayout>
-</div>
+              "label": "cow",
+              "value": "0",
+            },
+            Object {
+              "label": "cattle",
+              "value": "1",
+            },
+            Object {
+              "label": "calf",
+              "value": "2",
+            },
+          ],
+          "1": Array [
+            Object {
+              "label": "over",
+              "value": "0",
+            },
+            Object {
+              "label": "past",
+              "value": "1",
+            },
+            Object {
+              "label": "beyond",
+              "value": "2",
+            },
+          ],
+          "2": Array [
+            Object {
+              "label": "moon",
+              "value": "0",
+            },
+          ],
+        },
+        "disabled": false,
+        "displayType": "block",
+        "markup": "<p>The {{0}} jumped {{1}} the {{2}}</p>",
+        "maxLengthPerChoice": Array [
+          6,
+          6,
+          4,
+        ],
+        "maxLengthPerChoiceEnabled": true,
+        "mode": "gather",
+        "playerSpellCheckEnabled": true,
+        "prompt": "Complete the sentence",
+        "promptEnabled": true,
+        "rationaleEnabled": true,
+        "shuffle": true,
+        "slateMarkup": "<p>The <span data-type=\\"explicit_constructed_response\\" data-index=\\"0\\" data-value=\\"cow\\"></span> jumped <span data-type=\\"explicit_constructed_response\\" data-index=\\"1\\" data-value=\\"over\\"></span> the <span data-type=\\"explicit_constructed_response\\" data-index=\\"2\\" data-value=\\"moon\\"></span></p>",
+        "spellCheckEnabled": true,
+        "studentInstructionsEnabled": true,
+        "teacherInstructionsEnabled": true,
+        "toolbarEditorPosition": "bottom",
+      }
+    }
+    onChange={[Function]}
+    onLengthChange={[Function]}
+    spellCheck={true}
+  />
+  <InputContainer
+    label="Rationale"
+  >
+    <EditableHtml
+      languageCharactersProps={
+        Array [
+          Object {
+            "language": "spanish",
+          },
+          Object {
+            "language": "special",
+          },
+        ]
+      }
+      markup=""
+      maxImageHeight={300}
+      maxImageWidth={300}
+      onChange={[Function]}
+      spellCheck={true}
+      toolbarOpts={
+        Object {
+          "position": "bottom",
+        }
+      }
+    />
+  </InputContainer>
+</ConfigLayout>
 `;
 
 exports[`Main snapshot renders without teacher instructions, prompt and rationale 1`] = `
-<div>
-  <ConfigLayout
-    hideSettings={false}
-    settings={
-      <Panel
-        configuration={
-          Object {
-            "maxImageHeight": Object {
-              "prompt": 300,
-              "rationale": 300,
-              "teacherInstructions": 300,
-            },
-            "maxImageWidth": Object {
-              "prompt": 300,
-              "rationale": 300,
-              "teacherInstructions": 300,
-            },
-            "maxLengthPerChoice": Object {
-              "label": "Maximum Length Per Choice",
-              "settings": true,
-            },
-            "maxResponseAreas": 10,
-            "partialScoring": Object {
-              "label": "Allow Partial Scoring",
-              "settings": false,
-            },
-            "playerSpellCheck": Object {
-              "enabled": true,
-              "label": "Student Spellcheck",
-              "settings": true,
-            },
-            "prompt": Object {
-              "label": "Prompt",
-              "settings": true,
-            },
-            "rationale": Object {
-              "label": "Rationale",
-              "settings": true,
-            },
-            "settingsPanelDisabled": false,
-            "spellCheck": Object {
-              "enabled": true,
-              "label": "Spellcheck",
-              "settings": false,
-            },
-            "teacherInstructions": Object {
-              "label": "Teacher Instructions",
-              "settings": true,
-            },
-            "withRubric": Object {
-              "label": "Add Rubric",
-              "settings": false,
-            },
-          }
+<ConfigLayout
+  hideSettings={false}
+  settings={
+    <Panel
+      configuration={
+        Object {
+          "maxImageHeight": Object {
+            "prompt": 300,
+            "rationale": 300,
+            "teacherInstructions": 300,
+          },
+          "maxImageWidth": Object {
+            "prompt": 300,
+            "rationale": 300,
+            "teacherInstructions": 300,
+          },
+          "maxLengthPerChoice": Object {
+            "label": "Maximum Length Per Choice",
+            "settings": true,
+          },
+          "maxResponseAreas": 10,
+          "partialScoring": Object {
+            "label": "Allow Partial Scoring",
+            "settings": false,
+          },
+          "playerSpellCheck": Object {
+            "enabled": true,
+            "label": "Student Spellcheck",
+            "settings": true,
+          },
+          "prompt": Object {
+            "label": "Prompt",
+            "settings": true,
+          },
+          "rationale": Object {
+            "label": "Rationale",
+            "settings": true,
+          },
+          "settingsPanelDisabled": false,
+          "spellCheck": Object {
+            "enabled": true,
+            "label": "Spellcheck",
+            "settings": false,
+          },
+          "teacherInstructions": Object {
+            "label": "Teacher Instructions",
+            "settings": true,
+          },
+          "withRubric": Object {
+            "label": "Add Rubric",
+            "settings": false,
+          },
         }
-        groups={
-          Object {
-            "Properties": Object {
-              "playerSpellCheckEnabled": undefined,
-              "promptEnabled": undefined,
-              "rationaleEnabled": undefined,
-              "rubricEnabled": false,
-              "spellCheckEnabled": false,
-              "teacherInstructionsEnabled": undefined,
-            },
-            "Settings": Object {
-              "maxLengthPerChoiceEnabled": undefined,
-              "partialScoring": false,
-            },
-          }
+      }
+      groups={
+        Object {
+          "Properties": Object {
+            "playerSpellCheckEnabled": undefined,
+            "promptEnabled": undefined,
+            "rationaleEnabled": undefined,
+            "rubricEnabled": false,
+            "spellCheckEnabled": false,
+            "teacherInstructionsEnabled": undefined,
+          },
+          "Settings": Object {
+            "maxLengthPerChoiceEnabled": undefined,
+            "partialScoring": false,
+          },
         }
-        model={
-          Object {
-            "choices": Object {
-              "0": Array [
-                Object {
-                  "label": "cow",
-                  "value": "0",
-                },
-                Object {
-                  "label": "cattle",
-                  "value": "1",
-                },
-                Object {
-                  "label": "calf",
-                  "value": "2",
-                },
-              ],
-              "1": Array [
-                Object {
-                  "label": "over",
-                  "value": "0",
-                },
-                Object {
-                  "label": "past",
-                  "value": "1",
-                },
-                Object {
-                  "label": "beyond",
-                  "value": "2",
-                },
-              ],
-              "2": Array [
-                Object {
-                  "label": "moon",
-                  "value": "0",
-                },
-              ],
-            },
-            "disabled": false,
-            "displayType": "block",
-            "markup": "<p>The {{0}} jumped {{1}} the {{2}}</p>",
-            "maxLengthPerChoice": Array [
-              6,
-              6,
-              4,
+      }
+      model={
+        Object {
+          "choices": Object {
+            "0": Array [
+              Object {
+                "label": "cow",
+                "value": "0",
+              },
+              Object {
+                "label": "cattle",
+                "value": "1",
+              },
+              Object {
+                "label": "calf",
+                "value": "2",
+              },
             ],
-            "maxLengthPerChoiceEnabled": true,
-            "mode": "gather",
-            "playerSpellCheckEnabled": true,
-            "prompt": "Complete the sentence",
-            "promptEnabled": false,
-            "rationaleEnabled": false,
-            "shuffle": true,
-            "slateMarkup": "<p>The <span data-type=\\"explicit_constructed_response\\" data-index=\\"0\\" data-value=\\"cow\\"></span> jumped <span data-type=\\"explicit_constructed_response\\" data-index=\\"1\\" data-value=\\"over\\"></span> the <span data-type=\\"explicit_constructed_response\\" data-index=\\"2\\" data-value=\\"moon\\"></span></p>",
-            "spellCheckEnabled": true,
-            "studentInstructionsEnabled": true,
-            "teacherInstructionsEnabled": false,
-            "toolbarEditorPosition": "bottom",
-          }
+            "1": Array [
+              Object {
+                "label": "over",
+                "value": "0",
+              },
+              Object {
+                "label": "past",
+                "value": "1",
+              },
+              Object {
+                "label": "beyond",
+                "value": "2",
+              },
+            ],
+            "2": Array [
+              Object {
+                "label": "moon",
+                "value": "0",
+              },
+            ],
+          },
+          "disabled": false,
+          "displayType": "block",
+          "markup": "<p>The {{0}} jumped {{1}} the {{2}}</p>",
+          "maxLengthPerChoice": Array [
+            6,
+            6,
+            4,
+          ],
+          "maxLengthPerChoiceEnabled": true,
+          "mode": "gather",
+          "playerSpellCheckEnabled": true,
+          "prompt": "Complete the sentence",
+          "promptEnabled": false,
+          "rationaleEnabled": false,
+          "shuffle": true,
+          "slateMarkup": "<p>The <span data-type=\\"explicit_constructed_response\\" data-index=\\"0\\" data-value=\\"cow\\"></span> jumped <span data-type=\\"explicit_constructed_response\\" data-index=\\"1\\" data-value=\\"over\\"></span> the <span data-type=\\"explicit_constructed_response\\" data-index=\\"2\\" data-value=\\"moon\\"></span></p>",
+          "spellCheckEnabled": true,
+          "studentInstructionsEnabled": true,
+          "teacherInstructionsEnabled": false,
+          "toolbarEditorPosition": "bottom",
         }
-        onChangeConfiguration={[Function]}
-        onChangeModel={[Function]}
-      />
-    }
-  >
-    <div>
-      <div>
-        <WithStyles(Typography)>
-          Define Template, Choices, and Correct Responses
-        </WithStyles(Typography)>
-        <WithStyles(Tooltip)
-          classes={
-            Object {
-              "tooltip": undefined,
-            }
-          }
-          disableFocusListener={true}
-          disableTouchListener={true}
-          placement="right"
-          title="Validation requirements:
+      }
+      onChangeConfiguration={[Function]}
+      onChangeModel={[Function]}
+    />
+  }
+>
+  <div>
+    <WithStyles(Typography)>
+      Define Template, Choices, and Correct Responses
+    </WithStyles(Typography)>
+    <WithStyles(Tooltip)
+      classes={
+        Object {
+          "tooltip": undefined,
+        }
+      }
+      disableFocusListener={true}
+      disableTouchListener={true}
+      placement="right"
+      title="Validation requirements:
 Correct answers should not be blank.
 Each answer defined for a response area should be unique.
 There should be at least 1 and at most 10 response areas defined."
-        >
-          <pure(InfoIcon)
-            color="primary"
-            fontSize="small"
-            style={
-              Object {
-                "marginLeft": "8px",
-              }
-            }
-          />
-        </WithStyles(Tooltip)>
-      </div>
-      <EditableHtml
-        disableImageAlignmentButtons={true}
-        disabled={false}
-        highlightShape={false}
-        languageCharactersProps={
-          Array [
-            Object {
-              "language": "spanish",
-            },
-            Object {
-              "language": "special",
-            },
-          ]
-        }
-        markup="<p>The <span data-type=\\"explicit_constructed_response\\" data-index=\\"0\\" data-value=\\"cow\\"></span> jumped <span data-type=\\"explicit_constructed_response\\" data-index=\\"1\\" data-value=\\"over\\"></span> the <span data-type=\\"explicit_constructed_response\\" data-index=\\"2\\" data-value=\\"moon\\"></span></p>"
-        onChange={[Function]}
-        responseAreaProps={
+    >
+      <pure(InfoIcon)
+        color="primary"
+        fontSize="small"
+        style={
           Object {
-            "error": [Function],
-            "maxResponseAreas": 10,
-            "onHandleAreaChange": [Function],
-            "options": Object {
-              "duplicates": true,
-            },
-            "respAreaToolbar": [Function],
-            "type": "explicit-constructed-response",
-          }
-        }
-        spellCheck={true}
-        toolbarOpts={
-          Object {
-            "position": "top",
+            "marginLeft": "8px",
           }
         }
       />
-      <WithStyles(Typography)>
-        Define Alternates and Character Limits
-      </WithStyles(Typography)>
-      <AlternateResponses
-        choicesErrors={Object {}}
-        maxLengthPerChoiceEnabled={true}
-        model={
-          Object {
-            "choices": Object {
-              "0": Array [
-                Object {
-                  "label": "cow",
-                  "value": "0",
-                },
-                Object {
-                  "label": "cattle",
-                  "value": "1",
-                },
-                Object {
-                  "label": "calf",
-                  "value": "2",
-                },
-              ],
-              "1": Array [
-                Object {
-                  "label": "over",
-                  "value": "0",
-                },
-                Object {
-                  "label": "past",
-                  "value": "1",
-                },
-                Object {
-                  "label": "beyond",
-                  "value": "2",
-                },
-              ],
-              "2": Array [
-                Object {
-                  "label": "moon",
-                  "value": "0",
-                },
-              ],
+    </WithStyles(Tooltip)>
+  </div>
+  <EditableHtml
+    disableImageAlignmentButtons={true}
+    disabled={false}
+    highlightShape={false}
+    languageCharactersProps={
+      Array [
+        Object {
+          "language": "spanish",
+        },
+        Object {
+          "language": "special",
+        },
+      ]
+    }
+    markup="<p>The <span data-type=\\"explicit_constructed_response\\" data-index=\\"0\\" data-value=\\"cow\\"></span> jumped <span data-type=\\"explicit_constructed_response\\" data-index=\\"1\\" data-value=\\"over\\"></span> the <span data-type=\\"explicit_constructed_response\\" data-index=\\"2\\" data-value=\\"moon\\"></span></p>"
+    onChange={[Function]}
+    responseAreaProps={
+      Object {
+        "error": [Function],
+        "maxResponseAreas": 10,
+        "onHandleAreaChange": [Function],
+        "options": Object {
+          "duplicates": true,
+        },
+        "respAreaToolbar": [Function],
+        "type": "explicit-constructed-response",
+      }
+    }
+    spellCheck={true}
+    toolbarOpts={
+      Object {
+        "position": "top",
+      }
+    }
+  />
+  <WithStyles(Typography)
+    className=""
+  >
+    Define Alternates and Character Limits
+  </WithStyles(Typography)>
+  <AlternateResponses
+    choicesErrors={Object {}}
+    maxLengthPerChoiceEnabled={true}
+    model={
+      Object {
+        "choices": Object {
+          "0": Array [
+            Object {
+              "label": "cow",
+              "value": "0",
             },
-            "disabled": false,
-            "displayType": "block",
-            "markup": "<p>The {{0}} jumped {{1}} the {{2}}</p>",
-            "maxLengthPerChoice": Array [
-              6,
-              6,
-              4,
-            ],
-            "maxLengthPerChoiceEnabled": true,
-            "mode": "gather",
-            "playerSpellCheckEnabled": true,
-            "prompt": "Complete the sentence",
-            "promptEnabled": false,
-            "rationaleEnabled": false,
-            "shuffle": true,
-            "slateMarkup": "<p>The <span data-type=\\"explicit_constructed_response\\" data-index=\\"0\\" data-value=\\"cow\\"></span> jumped <span data-type=\\"explicit_constructed_response\\" data-index=\\"1\\" data-value=\\"over\\"></span> the <span data-type=\\"explicit_constructed_response\\" data-index=\\"2\\" data-value=\\"moon\\"></span></p>",
-            "spellCheckEnabled": true,
-            "studentInstructionsEnabled": true,
-            "teacherInstructionsEnabled": false,
-            "toolbarEditorPosition": "bottom",
-          }
-        }
-        onChange={[Function]}
-        onLengthChange={[Function]}
-        spellCheck={true}
-      />
-    </div>
-  </ConfigLayout>
-</div>
+            Object {
+              "label": "cattle",
+              "value": "1",
+            },
+            Object {
+              "label": "calf",
+              "value": "2",
+            },
+          ],
+          "1": Array [
+            Object {
+              "label": "over",
+              "value": "0",
+            },
+            Object {
+              "label": "past",
+              "value": "1",
+            },
+            Object {
+              "label": "beyond",
+              "value": "2",
+            },
+          ],
+          "2": Array [
+            Object {
+              "label": "moon",
+              "value": "0",
+            },
+          ],
+        },
+        "disabled": false,
+        "displayType": "block",
+        "markup": "<p>The {{0}} jumped {{1}} the {{2}}</p>",
+        "maxLengthPerChoice": Array [
+          6,
+          6,
+          4,
+        ],
+        "maxLengthPerChoiceEnabled": true,
+        "mode": "gather",
+        "playerSpellCheckEnabled": true,
+        "prompt": "Complete the sentence",
+        "promptEnabled": false,
+        "rationaleEnabled": false,
+        "shuffle": true,
+        "slateMarkup": "<p>The <span data-type=\\"explicit_constructed_response\\" data-index=\\"0\\" data-value=\\"cow\\"></span> jumped <span data-type=\\"explicit_constructed_response\\" data-index=\\"1\\" data-value=\\"over\\"></span> the <span data-type=\\"explicit_constructed_response\\" data-index=\\"2\\" data-value=\\"moon\\"></span></p>",
+        "spellCheckEnabled": true,
+        "studentInstructionsEnabled": true,
+        "teacherInstructionsEnabled": false,
+        "toolbarEditorPosition": "bottom",
+      }
+    }
+    onChange={[Function]}
+    onLengthChange={[Function]}
+    spellCheck={true}
+  />
+</ConfigLayout>
 `;

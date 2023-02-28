@@ -132,7 +132,6 @@ exports[`categorize renders snapshot with teacherInstructions 1`] = `
       prompt="These are teacher instructions"
     />
   </WithStyles(Collapsible)>
-  <br />
   <WithStyles(CorrectAnswerToggle)
     onToggle={[Function]}
     show={false}

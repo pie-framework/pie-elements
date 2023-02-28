@@ -168,6 +168,27 @@
         }
       }
     },
+    "ConfigureWithForceProp": {
+      "title": "ConfigureWithForceProp",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "Indicates if the item has to be displayed in the Settings Panel",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+          "type": "string",
+          "title": "label"
+        },
+        "forceEnabled": {
+          "description": "Indicates the value for the toggle;\nif true:\n- this property will not be visible in Settings Panel (settings will become automatically false)\n- the model property afferent to it will become automatically false",
+          "type": "boolean",
+          "title": "forceEnabled"
+        }
+      }
+    },
     "Dimension": {
       "title": "Dimension",
       "type": "object",

@@ -41,7 +41,7 @@ const styles = (theme) => ({
     background: '#fafafa',
   },
   button: {
-    margin: `${theme.spacing.unit * 3}px 0`,
+    margin: `${theme.spacing.unit * 2.5}px 0`,
     cursor: 'pointer',
     background: '#eee',
     padding: theme.spacing.unit * 1.5,
@@ -116,9 +116,7 @@ export const Tools = ({
 }) => {
   let allTools = availableTools || [];
   const isLabelAvailable = allTools.includes('label');
-  const toolbarToolsNoLabel = (toolbarTools || []).filter(
-    (tool) => tool !== 'label'
-  );
+  const toolbarToolsNoLabel = (toolbarTools || []).filter((tool) => tool !== 'label');
 
   if (isLabelAvailable) {
     // label has to be placed at the end of the list
@@ -158,7 +156,7 @@ export const Tools = ({
               className={classnames(
                 classes.availableTool,
                 selected && classes.selectedTool,
-                hasErrors && tool !== 'label' && classes.error
+                hasErrors && tool !== 'label' && classes.error,
               )}
               onClick={() => toggleToolBarTool(tool)}
             >
@@ -196,7 +194,7 @@ export class CorrectResponse extends React.Component {
       {
         dialog: { open },
       },
-      callback
+      callback,
     );
 
   changeMarks = (key, marks) => {
@@ -251,11 +249,8 @@ export class CorrectResponse extends React.Component {
       updatedToolbarTools.splice(index, 1);
 
       if (tool === defaultTool) {
-        const toolbarToolsNoLabel = (updatedToolbarTools || []).filter(
-          (tool) => tool !== 'label'
-        );
-        newDefaultTool =
-          (toolbarToolsNoLabel.length && toolbarToolsNoLabel[0]) || '';
+        const toolbarToolsNoLabel = (updatedToolbarTools || []).filter((tool) => tool !== 'label');
+        newDefaultTool = (toolbarToolsNoLabel.length && toolbarToolsNoLabel[0]) || '';
       }
 
       if (!isEqual(answers, updatedAnswers)) {
@@ -271,7 +266,7 @@ export class CorrectResponse extends React.Component {
                   toolbarTools: updatedToolbarTools,
                   answers: updatedAnswers,
                   defaultTool: newDefaultTool,
-                })
+                }),
               ),
             onClose: () => this.handleAlertDialog(false),
           },
@@ -361,18 +356,12 @@ export class CorrectResponse extends React.Component {
     return (
       <div>
         <Typography component="div" variant="subheading">
-          <span>Define Tool Set and Correct Response</span>
+          Define Tool Set and Correct Response
         </Typography>
 
-        <Typography
-          component="div"
-          variant="body1"
-          className={classes.subtitleText}
-        >
-          <span>
-            Use this interface to choose which graphing tools students will be
-            able to use, and to define the correct answer
-          </span>
+        <Typography component="div" variant="body1" className={classes.subtitleText}>
+          Use this interface to choose which graphing tools students will be able to use, and to define the correct
+          answer
         </Typography>
 
         <Tools
@@ -385,22 +374,17 @@ export class CorrectResponse extends React.Component {
           toolbarTools={toolbarTools}
         />
 
-        {toolbarToolsError && (
-          <div className={classes.errorMessage}>{toolbarToolsError}</div>
-        )}
+        {toolbarToolsError && <div className={classes.errorMessage}>{toolbarToolsError}</div>}
 
         {Object.entries(answers || {}).map(([key, answer]) => {
           const { marks = [], name } = answer || {};
 
           return (
-            <div key={`correct-response-graph-${name}`}>
+            <React.Fragment key={`correct-response-graph-${name}`}>
               <div className={classes.responseTitle}>
-                <p className={classes.name}>{name}</p>
+                <div className={classes.name}>{name}</div>
                 {key !== 'correctAnswer' && (
-                  <Delete
-                    className={classes.iconButton}
-                    onClick={() => this.deleteAlternateResponse(key, answer)}
-                  />
+                  <Delete className={classes.iconButton} onClick={() => this.deleteAlternateResponse(key, answer)} />
                 )}
               </div>
 
@@ -422,17 +406,11 @@ export class CorrectResponse extends React.Component {
                 size={{ width: graph.width, height: graph.height }}
                 title={title}
                 toolbarTools={toolbarTools}
-                onChangeTools={(toolbarTools) =>
-                  this.updateModel({ toolbarTools })
-                }
+                onChangeTools={(toolbarTools) => this.updateModel({ toolbarTools })}
               />
 
-              {correctAnswerErrors[key] && (
-                <div className={classes.errorMessage}>
-                  {correctAnswerErrors[key]}
-                </div>
-              )}
-            </div>
+              {correctAnswerErrors[key] && <div className={classes.errorMessage}>{correctAnswerErrors[key]}</div>}
+            </React.Fragment>
           );
         })}
 

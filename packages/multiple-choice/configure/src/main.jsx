@@ -25,41 +25,35 @@ const MAX_CHOICES = 9;
 const styles = (theme) => ({
   promptHolder: {
     width: '100%',
-    paddingBottom: theme.spacing.unit * 2,
+    paddingTop: theme.spacing.unit * 2,
     marginBottom: theme.spacing.unit * 2,
   },
-  prompt: {
-    paddingTop: theme.spacing.unit * 2,
-    width: '100%',
-  },
   rationaleHolder: {
-    width: '70%',
+    flex: 1,
+    marginTop: theme.spacing.unit * 1.5,
+    paddingTop: theme.spacing.unit * 2,
+    marginLeft: theme.spacing.unit * 3.5,
   },
   accessibilityHolder: {
-    width: '70%',
-  },
-  rationale: {
+    flex: 1,
+    marginTop: theme.spacing.unit * 1.5,
     paddingTop: theme.spacing.unit * 2,
-  },
-  accessibility: {
-    paddingTop: theme.spacing.unit * 2,
+    marginLeft: theme.spacing.unit * 3.5,
   },
   choiceConfigurationHolder: {
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center',
+    marginBottom: theme.spacing.unit,
   },
   choiceConfiguration: {
     width: '100%',
-    paddingTop: theme.spacing.unit * 2,
-    paddingBottom: theme.spacing.unit * 2,
   },
   switchElement: {
     justifyContent: 'space-between',
     margin: 0,
   },
   addButton: {
-    marginTop: theme.spacing.unit * 3,
+    marginTop: theme.spacing.unit,
     float: 'right',
   },
   disableButton: {
@@ -76,7 +70,6 @@ const styles = (theme) => ({
   flexContainer: {
     display: 'flex',
     alignItems: 'center',
-    marginBottom: theme.spacing.unit,
   },
   titleText: {
     fontFamily: 'Cerebri Sans',
@@ -92,7 +85,7 @@ const styles = (theme) => ({
   },
   errorText: {
     fontSize: theme.typography.fontSize - 2,
-    color: 'red',
+    color: theme.palette.error.main,
     paddingTop: theme.spacing.unit,
   },
 });
@@ -215,141 +208,139 @@ const Design = withStyles(styles)((props) => {
         />
       }
     >
-      <div>
-        {teacherInstructionsEnabled && (
-          <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
-            <EditableHtml
-              className={classes.prompt}
-              markup={model.teacherInstructions || ''}
-              onChange={onTeacherInstructionsChanged}
-              imageSupport={imageSupport}
-              nonEmpty={false}
-              toolbarOpts={toolbarOpts}
-              spellCheck={spellCheckEnabled}
-              maxImageWidth={(maxImageWidth && maxImageWidth.teacherInstructions) || defaultImageMaxWidth}
-              maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
-              uploadSoundSupport={uploadSoundSupport}
-              languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
-            />
-          </InputContainer>
-        )}
+      {teacherInstructionsEnabled && (
+        <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
+          <EditableHtml
+            className={classes.prompt}
+            markup={model.teacherInstructions || ''}
+            onChange={onTeacherInstructionsChanged}
+            imageSupport={imageSupport}
+            nonEmpty={false}
+            toolbarOpts={toolbarOpts}
+            spellCheck={spellCheckEnabled}
+            maxImageWidth={(maxImageWidth && maxImageWidth.teacherInstructions) || defaultImageMaxWidth}
+            maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
+            uploadSoundSupport={uploadSoundSupport}
+            languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+          />
+        </InputContainer>
+      )}
 
-        {promptEnabled && (
-          <InputContainer label={prompt.label} className={classes.promptHolder}>
-            <EditableHtml
-              className={classes.prompt}
-              markup={model.prompt}
-              onChange={onPromptChanged}
-              imageSupport={imageSupport}
-              nonEmpty={false}
-              disableUnderline
-              toolbarOpts={toolbarOpts}
-              spellCheck={spellCheckEnabled}
-              maxImageWidth={maxImageWidth && maxImageWidth.prompt}
-              maxImageHeight={maxImageHeight && maxImageHeight.prompt}
-              uploadSoundSupport={uploadSoundSupport}
-              languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
-            />
-          </InputContainer>
-        )}
+      {promptEnabled && (
+        <InputContainer label={prompt.label} className={classes.promptHolder}>
+          <EditableHtml
+            className={classes.prompt}
+            markup={model.prompt}
+            onChange={onPromptChanged}
+            imageSupport={imageSupport}
+            nonEmpty={false}
+            disableUnderline
+            toolbarOpts={toolbarOpts}
+            spellCheck={spellCheckEnabled}
+            maxImageWidth={maxImageWidth && maxImageWidth.prompt}
+            maxImageHeight={maxImageHeight && maxImageHeight.prompt}
+            uploadSoundSupport={uploadSoundSupport}
+            languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+          />
+        </InputContainer>
+      )}
 
-        <div className={classes.flexContainer}>
-          <Typography className={classes.titleText}>Choices</Typography>
-          <Tooltip
-            classes={{ tooltip: classes.tooltip }}
-            disableFocusListener
-            disableTouchListener
-            placement={'right'}
-            title={validationMessage}
-          >
-            <Info fontSize={'small'} color={'primary'} />
-          </Tooltip>
-        </div>
-
-        {choices.map((choice, index) => (
-          <div key={`choice-${index}`} className={classes.choiceConfigurationHolder}>
-            <ChoiceConfiguration
-              key={index}
-              index={index + 1}
-              useLetterOrdering={model.choicePrefix === 'letters'}
-              className={classes.choiceConfiguration}
-              mode={model.choiceMode}
-              data={choice}
-              defaultFeedback={{}}
-              imageSupport={imageSupport}
-              disableImageAlignmentButtons={true}
-              onDelete={() => onRemoveChoice(index)}
-              onChange={(c) => onChoiceChanged(index, c)}
-              allowFeedBack={feedbackEnabled}
-              allowDelete={deleteChoice.settings}
-              noLabels
-              toolbarOpts={toolbarOpts}
-              spellCheck={spellCheckEnabled}
-              error={choicesErrors?.[choice.value] || null}
-              noCorrectAnswerError={correctResponseError}
-              maxImageWidth={(maxImageWidth && maxImageWidth.choices) || defaultImageMaxWidth}
-              maxImageHeight={(maxImageHeight && maxImageHeight.choices) || defaultImageMaxHeight}
-              uploadSoundSupport={uploadSoundSupport}
-            />
-
-            {rationaleEnabled && (
-              <InputContainer key={`rationale-${index}`} label={rationale.label} className={classes.rationaleHolder}>
-                <EditableHtml
-                  className={classes.rationale}
-                  markup={choice.rationale || ''}
-                  onChange={(c) => onChoiceChanged(index, { ...choice, rationale: c })}
-                  imageSupport={imageSupport}
-                  toolbarOpts={toolbarOpts}
-                  pluginProps={labelPlugins}
-                  spellCheck={spellCheckEnabled}
-                  maxImageWidth={(maxImageWidth && maxImageWidth.rationale) || defaultImageMaxWidth}
-                  maxImageHeight={(maxImageHeight && maxImageHeight.rationale) || defaultImageMaxHeight}
-                  uploadSoundSupport={uploadSoundSupport}
-                  languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
-                />
-              </InputContainer>
-            )}
-
-            {accessibilityLabelsEnabled && (
-              <InputContainer
-                key={`accessibility-${index}`}
-                label={accessibility.label}
-                className={classes.accessibilityHolder}
-              >
-                <EditableHtml
-                  className={classes.accessibility}
-                  markup={choice.accessibility || ''}
-                  onChange={(c) => onChoiceChanged(index, { ...choice, accessibility: c })}
-                  imageSupport={imageSupport}
-                  pluginProps={labelPlugins}
-                  spellCheck={spellCheckEnabled}
-                  maxImageWidth={(maxImageWidth && maxImageWidth.choices) || defaultImageMaxWidth}
-                  maxImageHeight={(maxImageHeight && maxImageHeight.choices) || defaultImageMaxHeight}
-                  uploadSoundSupport={uploadSoundSupport}
-                  languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
-                />
-              </InputContainer>
-            )}
-          </div>
-        ))}
-
-        {correctResponseError && <div className={classes.errorText}>{correctResponseError}</div>}
-        {answerChoicesError && <div className={classes.errorText}>{answerChoicesError}</div>}
-
-        {addChoiceButton.settings && (
-          <Tooltip title={addChoiceButtonTooltip} classes={{ tooltip: classes.tooltip }}>
-            <Button
-              classes={{ root: maxAnswerChoices && choices?.length >= maxAnswerChoices && classes.disableButton }}
-              className={classes.addButton}
-              variant="contained"
-              color="primary"
-              onClick={onAddChoice}
-            >
-              {addChoiceButton.label}
-            </Button>
-          </Tooltip>
-        )}
+      <div className={classes.flexContainer}>
+        <Typography className={classes.titleText}>Choices</Typography>
+        <Tooltip
+          classes={{ tooltip: classes.tooltip }}
+          disableFocusListener
+          disableTouchListener
+          placement={'right'}
+          title={validationMessage}
+        >
+          <Info fontSize={'small'} color={'primary'} />
+        </Tooltip>
       </div>
+
+      {choices.map((choice, index) => (
+        <div key={`choice-${index}`} className={classes.choiceConfigurationHolder}>
+          <ChoiceConfiguration
+            key={index}
+            index={index + 1}
+            useLetterOrdering={model.choicePrefix === 'letters'}
+            className={classes.choiceConfiguration}
+            mode={model.choiceMode}
+            data={choice}
+            defaultFeedback={{}}
+            imageSupport={imageSupport}
+            disableImageAlignmentButtons={true}
+            onDelete={() => onRemoveChoice(index)}
+            onChange={(c) => onChoiceChanged(index, c)}
+            allowFeedBack={feedbackEnabled}
+            allowDelete={deleteChoice.settings}
+            noLabels
+            toolbarOpts={toolbarOpts}
+            spellCheck={spellCheckEnabled}
+            error={choicesErrors?.[choice.value] || null}
+            noCorrectAnswerError={correctResponseError}
+            maxImageWidth={(maxImageWidth && maxImageWidth.choices) || defaultImageMaxWidth}
+            maxImageHeight={(maxImageHeight && maxImageHeight.choices) || defaultImageMaxHeight}
+            uploadSoundSupport={uploadSoundSupport}
+          />
+
+          {rationaleEnabled && (
+            <InputContainer key={`rationale-${index}`} label={rationale.label} className={classes.rationaleHolder}>
+              <EditableHtml
+                className={classes.rationale}
+                markup={choice.rationale || ''}
+                onChange={(c) => onChoiceChanged(index, { ...choice, rationale: c })}
+                imageSupport={imageSupport}
+                toolbarOpts={toolbarOpts}
+                pluginProps={labelPlugins}
+                spellCheck={spellCheckEnabled}
+                maxImageWidth={(maxImageWidth && maxImageWidth.rationale) || defaultImageMaxWidth}
+                maxImageHeight={(maxImageHeight && maxImageHeight.rationale) || defaultImageMaxHeight}
+                uploadSoundSupport={uploadSoundSupport}
+                languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+              />
+            </InputContainer>
+          )}
+
+          {accessibilityLabelsEnabled && (
+            <InputContainer
+              key={`accessibility-${index}`}
+              label={accessibility.label}
+              className={classes.accessibilityHolder}
+            >
+              <EditableHtml
+                className={classes.accessibility}
+                markup={choice.accessibility || ''}
+                onChange={(c) => onChoiceChanged(index, { ...choice, accessibility: c })}
+                imageSupport={imageSupport}
+                pluginProps={labelPlugins}
+                spellCheck={spellCheckEnabled}
+                maxImageWidth={(maxImageWidth && maxImageWidth.choices) || defaultImageMaxWidth}
+                maxImageHeight={(maxImageHeight && maxImageHeight.choices) || defaultImageMaxHeight}
+                uploadSoundSupport={uploadSoundSupport}
+                languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+              />
+            </InputContainer>
+          )}
+        </div>
+      ))}
+
+      {correctResponseError && <div className={classes.errorText}>{correctResponseError}</div>}
+      {answerChoicesError && <div className={classes.errorText}>{answerChoicesError}</div>}
+
+      {addChoiceButton.settings && (
+        <Tooltip title={addChoiceButtonTooltip} classes={{ tooltip: classes.tooltip }}>
+          <Button
+            classes={{ root: maxAnswerChoices && choices?.length >= maxAnswerChoices && classes.disableButton }}
+            className={classes.addButton}
+            variant="contained"
+            color="primary"
+            onClick={onAddChoice}
+          >
+            {addChoiceButton.label}
+          </Button>
+        </Tooltip>
+      )}
     </layout.ConfigLayout>
   );
 });

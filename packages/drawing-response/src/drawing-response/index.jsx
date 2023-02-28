@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Typography from '@material-ui/core/Typography';
 import { Collapsible, PreviewPrompt } from '@pie-lib/render-ui';
 import { withStyles } from '@material-ui/core/styles';
 
@@ -34,22 +33,18 @@ class DrawingResponseComponent extends React.Component {
     ) : (
       <div>
         {teacherInstructions && (
-          <React.Fragment>
-            <Collapsible
-              labels={{
-                hidden: 'Show Teacher Instructions',
-                visible: 'Hide Teacher Instructions',
-              }}
-            >
-              <PreviewPrompt prompt={teacherInstructions} />
-            </Collapsible>
-            <br />
-          </React.Fragment>
+          <Collapsible
+            className={classes.collapsible}
+            labels={{
+              hidden: 'Show Teacher Instructions',
+              visible: 'Hide Teacher Instructions',
+            }}
+          >
+            <PreviewPrompt prompt={teacherInstructions} />
+          </Collapsible>
         )}
 
-        <Typography className={classes.prompt}>
-          <PreviewPrompt tagName="span" prompt={prompt} />
-        </Typography>
+        {prompt && <PreviewPrompt tagName="span" prompt={prompt} />}
 
         <Container
           session={session}
@@ -72,9 +67,9 @@ DrawingResponseComponent.propTypes = {
   session: PropTypes.object.isRequired,
 };
 
-const styles = () => ({
-  prompt: {
-    fontSize: 'inherit',
+const styles = (theme) => ({
+  collapsible: {
+    marginBottom: theme.spacing.unit * 2,
   },
 });
 

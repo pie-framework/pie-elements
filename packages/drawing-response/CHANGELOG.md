@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response@5.0.0...@pie-element/drawing-response@6.0.0) (2023-02-22)
+
+
+### Bug Fixes
+
+* **drawing-response, extended-text-entry:** imports ([795a39b](https://github.com/pie-framework/pie-elements/commit/795a39b2fa89301393c4075da2d6c64eb9220065))
+* **drawing-response, extended-text-entry:** remove verifyRubric method. remove enabled logic ([bcd498d](https://github.com/pie-framework/pie-elements/commit/bcd498df3712a24643199103df7a72316c667a00))
+* change withRubric type for extended-text-entry and drawing-response. docs update from different pr for multi-trait-rubric ([7bf77ad](https://github.com/pie-framework/pie-elements/commit/7bf77ada1a09bc56a053341bce9a0eaf02955672))
+
+
+### BREAKING CHANGES
+
+* **drawing-response, extended-text-entry:** create new versions to avoid issues
+
+
+
+
+
 # [5.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response@4.7.0...@pie-element/drawing-response@5.0.0) (2023-02-14)
 
 
@@ -140,7 +158,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* add a different property in the config, forceEnabled, to force a value ([300c664](https://github.com/pie-framework/pie-elements/commit/300c664618f46177137deef3bced2d096cdb8126))
+* add a different property in the config,  to force a value ([300c664](https://github.com/pie-framework/pie-elements/commit/300c664618f46177137deef3bced2d096cdb8126))
 
 
 

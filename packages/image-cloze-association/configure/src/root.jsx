@@ -45,42 +45,34 @@ export class Root extends React.Component {
           />
         }
       >
-        <div className={classes.content}>
-          {model && model.teacherInstructionsEnabled && (
-            <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
-              <EditableHtml
-                className={classes.prompt}
-                markup={model.teacherInstructions || ''}
-                onChange={this.onTeacherInstructionsChanged}
-                imageSupport={imageSupport}
-                nonEmpty={false}
-                spellCheck={spellCheckEnabled}
-                maxImageWidth={maxImageWidth && maxImageWidth.teacherInstructions}
-                maxImageHeight={maxImageHeight && maxImageHeight.teacherInstructions}
-                uploadSoundSupport={uploadSoundSupport}
-                languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
-              />
-            </InputContainer>
-          )}
+        {model && model.teacherInstructionsEnabled && (
+          <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
+            <EditableHtml
+              className={classes.prompt}
+              markup={model.teacherInstructions || ''}
+              onChange={this.onTeacherInstructionsChanged}
+              imageSupport={imageSupport}
+              nonEmpty={false}
+              spellCheck={spellCheckEnabled}
+              maxImageWidth={maxImageWidth && maxImageWidth.teacherInstructions}
+              maxImageHeight={maxImageHeight && maxImageHeight.teacherInstructions}
+              uploadSoundSupport={uploadSoundSupport}
+              languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+            />
+          </InputContainer>
+        )}
 
-          <div>Image cloze association</div>
-        </div>
+        <div>Image cloze association</div>
       </layout.ConfigLayout>
     );
   }
 }
 
 const styles = (theme) => ({
-  base: {
-    marginTop: theme.spacing.unit * 3,
-  },
   promptHolder: {
     width: '100%',
     paddingTop: theme.spacing.unit * 2,
-  },
-  prompt: {
-    paddingTop: theme.spacing.unit * 2,
-    width: '100%',
+    marginBottom: theme.spacing.unit * 2,
   },
 });
 

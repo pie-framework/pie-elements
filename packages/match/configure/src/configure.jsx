@@ -12,22 +12,10 @@ const log = debug('@pie-element:match:configure');
 const { Panel, toggle, radio } = settings;
 
 const styles = (theme) => ({
-  title: {
-    fontSize: '1.1rem',
-    display: 'block',
-    marginTop: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit,
-  },
-  content: {
-    marginTop: theme.spacing.unit * 2,
-  },
   promptHolder: {
     width: '100%',
     paddingTop: theme.spacing.unit * 2,
-  },
-  prompt: {
-    paddingTop: theme.spacing.unit * 2,
-    width: '100%',
+    marginBottom: theme.spacing.unit * 2,
   },
 });
 
@@ -240,84 +228,82 @@ class Configure extends React.Component {
           />
         }
       >
-        <div className={classes.content}>
-          {teacherInstructionsEnabled && (
-            <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
-              <EditableHtml
-                className={classes.prompt}
-                markup={model.teacherInstructions || ''}
-                onChange={this.onTeacherInstructionsChanged}
-                imageSupport={imageSupport}
-                nonEmpty={false}
-                toolbarOpts={toolbarOpts}
-                spellCheck={spellCheckEnabled}
-                maxImageWidth={(maxImageWidth && maxImageWidth.teacherInstructions) || defaultImageMaxWidth}
-                maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
-                uploadSoundSupport={uploadSoundSupport}
-                languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
-              />
-            </InputContainer>
-          )}
+        {teacherInstructionsEnabled && (
+          <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
+            <EditableHtml
+              className={classes.prompt}
+              markup={model.teacherInstructions || ''}
+              onChange={this.onTeacherInstructionsChanged}
+              imageSupport={imageSupport}
+              nonEmpty={false}
+              toolbarOpts={toolbarOpts}
+              spellCheck={spellCheckEnabled}
+              maxImageWidth={(maxImageWidth && maxImageWidth.teacherInstructions) || defaultImageMaxWidth}
+              maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
+              uploadSoundSupport={uploadSoundSupport}
+              languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+            />
+          </InputContainer>
+        )}
 
-          {promptEnabled && (
-            <InputContainer label={prompt.label} className={classes.promptHolder}>
-              <EditableHtml
-                className={classes.prompt}
-                markup={model.prompt}
-                onChange={this.onPromptChanged}
-                imageSupport={imageSupport}
-                nonEmpty={false}
-                disableUnderline
-                toolbarOpts={toolbarOpts}
-                spellCheck={spellCheckEnabled}
-                maxImageWidth={maxImageWidth && maxImageWidth.prompt}
-                maxImageHeight={maxImageHeight && maxImageHeight.prompt}
-                uploadSoundSupport={uploadSoundSupport}
-                languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
-              />
-            </InputContainer>
-          )}
+        {promptEnabled && (
+          <InputContainer label={prompt.label} className={classes.promptHolder}>
+            <EditableHtml
+              className={classes.prompt}
+              markup={model.prompt}
+              onChange={this.onPromptChanged}
+              imageSupport={imageSupport}
+              nonEmpty={false}
+              disableUnderline
+              toolbarOpts={toolbarOpts}
+              spellCheck={spellCheckEnabled}
+              maxImageWidth={maxImageWidth && maxImageWidth.prompt}
+              maxImageHeight={maxImageHeight && maxImageHeight.prompt}
+              uploadSoundSupport={uploadSoundSupport}
+              languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+            />
+          </InputContainer>
+        )}
 
-          {rationaleEnabled && (
-            <InputContainer label={rationale.label} className={classes.promptHolder}>
-              <EditableHtml
-                className={classes.prompt}
-                markup={model.rationale || ''}
-                onChange={this.onRationaleChanged}
-                imageSupport={imageSupport}
-                toolbarOpts={toolbarOpts}
-                spellCheck={spellCheckEnabled}
-                maxImageWidth={(maxImageWidth && maxImageWidth.rationale) || defaultImageMaxWidth}
-                maxImageHeight={(maxImageHeight && maxImageHeight.rationale) || defaultImageMaxHeight}
-                uploadSoundSupport={uploadSoundSupport}
-                languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
-              />
-            </InputContainer>
-          )}
+        <GeneralConfigBlock
+          model={model}
+          configuration={configuration}
+          onResponseTypeChange={this.onResponseTypeChange}
+          onLayoutChange={this.onLayoutChange}
+        />
 
-          <GeneralConfigBlock
-            model={model}
-            configuration={configuration}
-            onResponseTypeChange={this.onResponseTypeChange}
-            onLayoutChange={this.onLayoutChange}
-          />
+        <AnswerConfigBlock
+          model={model}
+          configuration={configuration}
+          imageSupport={imageSupport}
+          onChange={this.onChange}
+          onAddRow={this.onAddRow}
+          onDeleteRow={this.onDeleteRow}
+          toolbarOpts={toolbarOpts}
+          spellCheck={spellCheckEnabled}
+          uploadSoundSupport={uploadSoundSupport}
+        />
 
-          <AnswerConfigBlock
-            model={model}
-            configuration={configuration}
-            imageSupport={imageSupport}
-            onChange={this.onChange}
-            onAddRow={this.onAddRow}
-            onDeleteRow={this.onDeleteRow}
-            toolbarOpts={toolbarOpts}
-            spellCheck={spellCheckEnabled}
-            uploadSoundSupport={uploadSoundSupport}
-          />
+        {rationaleEnabled && (
+          <InputContainer label={rationale.label} className={classes.promptHolder}>
+            <EditableHtml
+              className={classes.prompt}
+              markup={model.rationale || ''}
+              onChange={this.onRationaleChanged}
+              imageSupport={imageSupport}
+              toolbarOpts={toolbarOpts}
+              spellCheck={spellCheckEnabled}
+              maxImageWidth={(maxImageWidth && maxImageWidth.rationale) || defaultImageMaxWidth}
+              maxImageHeight={(maxImageHeight && maxImageHeight.rationale) || defaultImageMaxHeight}
+              uploadSoundSupport={uploadSoundSupport}
+              languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+            />
+          </InputContainer>
+        )}
 
-          {feedbackEnabled && (
-            <FeedbackConfig feedback={model.feedback} onChange={this.onFeedbackChange} toolbarOpts={toolbarOpts} />
-          )}
-        </div>
+        {feedbackEnabled && (
+          <FeedbackConfig feedback={model.feedback} onChange={this.onFeedbackChange} toolbarOpts={toolbarOpts} />
+        )}
       </layout.ConfigLayout>
     );
   }

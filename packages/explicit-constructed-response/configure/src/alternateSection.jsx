@@ -15,20 +15,23 @@ import classnames from 'classnames';
 
 import { getAdjustedLength } from './markupUtils';
 
-const styles = () => ({
+const styles = (theme) => ({
+  design: {
+    marginBottom: theme.spacing.unit / 2,
+  },
   altChoices: {
     alignItems: 'flex-start',
     flexDirection: 'column',
     display: 'flex',
-    padding: '20px 0 0 0',
+    paddingTop: theme.spacing.unit * 2.5,
     '& > *': {
-      marginBottom: '20px',
+      marginBottom: theme.spacing.unit * 2.5,
       width: '100%',
     },
   },
   choice: {
     flex: '1',
-    marginRight: '20px',
+    marginRight: theme.spacing.unit * 2.5,
   },
   deleteBtn: {
     fill: 'gray',
@@ -45,15 +48,15 @@ const styles = () => ({
   },
   lengthField: {
     width: '230px',
-    marginRight: '20px',
+    marginRight: theme.spacing.unit * 2.5,
   },
   errorText: {
-    fontSize: '12px',
-    color: 'red',
-    paddingTop: '5px',
+    fontSize: theme.typography.fontSize - 2,
+    color: theme.palette.error.main,
+    paddingTop: theme.spacing.unit / 2,
   },
   inputError: {
-    border: '2px solid red',
+    border: `2px solid ${theme.palette.error.main}`,
     borderRadius: '6px',
   },
 });
@@ -248,6 +251,7 @@ export class AlternateSection extends React.Component {
               </MenuItem>
             ))}
           </Select>
+
           {choices && choices.length > 0 && (
             <div className={classes.rightContainer}>
               {maxLength && showMaxLength && (
@@ -270,6 +274,7 @@ export class AlternateSection extends React.Component {
           )}
         </div>
         {errors && errors[0] && <div className={classes.errorText}>{errors[0]}</div>}
+
         <div className={classes.altChoices}>
           {choices &&
             choices.map(

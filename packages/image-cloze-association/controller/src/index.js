@@ -1,9 +1,11 @@
 import debug from 'debug';
 import isEmpty from 'lodash/isEmpty';
+import shuffle from 'lodash/shuffle';
 import { camelizeKeys } from 'humps';
 import { partialScoring } from '@pie-lib/controller-utils';
 
 import { getAllUniqueCorrectness } from './utils';
+import { cloneDeep } from 'lodash';
 
 const log = debug('pie-elements:image-cloze-association:controller');
 
@@ -25,6 +27,10 @@ export function model(question, session, env) {
       ...questionCamelized,
       responseCorrect: env.mode === 'evaluate' ? getScore(questionCamelized, session) === 1 : undefined,
     };
+
+    if (questionNormalized.shuffle) {
+      out.possibleResponses = shuffle(questionNormalized.possible_responses);
+    }
 
     if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
       out.teacherInstructions = questionCamelized.teacherInstructionsEnabled
@@ -50,7 +56,7 @@ export const isResponseCorrect = (responses, session) => {
 
   if (session.answers && totalValidResponses === session.answers.length) {
     session.answers.forEach((answer) => {
-      if (!(responses[answer.containerIndex].images || []).includes(answer.value)) {
+      if (!(responses[answer.containerIndex] && responses[answer.containerIndex].images || []).includes(answer.value)) {
         isCorrect = false;
       }
     });
@@ -60,14 +66,24 @@ export const isResponseCorrect = (responses, session) => {
   return isCorrect;
 };
 
+// This applies for correct responses that have empty values
+const keepNonEmptyResponses = (responses) => {
+  const filtered = responses.filter(response => response.images && response.images.length);
+  return cloneDeep(filtered);
+};
+
 // This applies for items that don't support partial scoring.
 const isDefaultOrAltResponseCorrect = (question, session) => {
   const {
+    validation: { altResponses }
+  } = question;
+  let {
     validation: {
       validResponse: { value },
-      altResponses,
-    },
+    }
   } = question;
+
+  value = keepNonEmptyResponses(value);
 
   let isCorrect = isResponseCorrect(value, session);
 
@@ -99,7 +115,6 @@ export const getPartialScore = (question, session) => {
   const {
     validation: { validResponse },
     maxResponsePerZone,
-    responseContainers,
   } = question;
   let correctAnswers = 0;
   let possibleResponses = 0;
@@ -107,6 +122,7 @@ export const getPartialScore = (question, session) => {
   if (!session || isEmpty(session)) {
     return 0;
   }
+  validResponse.value = keepNonEmptyResponses(validResponse.value);
 
   validResponse.value.forEach((value) => (possibleResponses += (value.images || []).length));
 
@@ -134,7 +150,8 @@ export const getPartialScore = (question, session) => {
   // negative values will implicitly make the score equal to zero
   correctAnswers = correctAnswers < 0 ? 0 : correctAnswers;
 
-  const denominator = maxResponsePerZone > 1 ? possibleResponses : responseContainers.length;
+  // use length of validResponse since some containers can be left empty
+  const denominator = maxResponsePerZone > 1 ? possibleResponses : (validResponse.value || []).length;
   const str = (correctAnswers / denominator).toFixed(2);
 
   return parseFloat(str);
