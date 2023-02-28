@@ -208,20 +208,20 @@ export class PlacementOrdering extends React.Component {
     return (
       <div className={classes.placementOrdering}>
         {teacherInstructions && hasText(teacherInstructions) && (
-          <React.Fragment>
-            <Collapsible
-              labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}
-              className={classes.collapsible}
-            >
-              <PreviewPrompt prompt={teacherInstructions} />
-            </Collapsible>
-            <br />
-          </React.Fragment>
+          <Collapsible
+            labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}
+            className={classes.collapsible}
+          >
+            <PreviewPrompt prompt={teacherInstructions} />
+          </Collapsible>
         )}
+
         <div className={classes.prompt}>
           <PreviewPrompt prompt={prompt} />
         </div>
+
         <CorrectAnswerToggle
+          className={classes.toggle}
           show={showToggle}
           toggled={showingCorrect}
           onToggle={this.toggleCorrect}
@@ -242,15 +242,17 @@ export class PlacementOrdering extends React.Component {
           onDropChoice={this.onDropChoice}
           onRemoveChoice={this.onRemoveChoice}
         />
-        <br />
+
         {displayNote && (
           <div className={classes.note} dangerouslySetInnerHTML={{ __html: `<strong>Note:</strong> ${note}` }} />
         )}
+
         {rationale && hasText(rationale) && (
           <Collapsible labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }} className={classes.collapsible}>
             <PreviewPrompt prompt={rationale} />
           </Collapsible>
         )}
+
         {!showingCorrect && <Feedback correctness={correctness} feedback={feedback} />}
       </div>
     );
@@ -265,22 +267,19 @@ const styles = (theme) => ({
     flexDirection: 'column',
     alignItems: 'center',
     boxSizing: 'border-box',
-    paddingBottom: theme.spacing.unit,
   },
   prompt: {
-    padding: '5px',
-    paddingBottom: '15px',
-  },
-  note: {
-    padding: '5px',
-  },
-  collapsible: {
-    paddingTop: theme.spacing.unit * 2,
-    paddingBottom: theme.spacing.unit * 2,
-    alignSelf: 'flex-start',
+    paddingBottom: theme.spacing.unit,
   },
   toggle: {
-    paddingBottom: theme.spacing.unit * 3,
+    paddingBottom: theme.spacing.unit,
+  },
+  note: {
+    paddingBottom: theme.spacing.unit * 2,
+  },
+  collapsible: {
+    marginBottom: theme.spacing.unit * 2,
+    alignSelf: 'flex-start',
   },
 });
 

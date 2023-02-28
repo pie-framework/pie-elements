@@ -76,90 +76,76 @@ export class Root extends React.Component {
     };
 
     return (
-      <div className={classes.base}>
-        <layout.ConfigLayout
-          hideSettings={settingsPanelDisabled}
-          settings={
-            <Panel
-              model={model}
-              onChangeModel={onModelChanged}
-              configuration={configuration}
-              onChangeConfiguration={onConfigurationChanged}
-              groups={{
-                Settings: panelSettings,
-                Properties: panelProperties,
-              }}
+      <layout.ConfigLayout
+        hideSettings={settingsPanelDisabled}
+        settings={
+          <Panel
+            model={model}
+            onChangeModel={onModelChanged}
+            configuration={configuration}
+            onChangeConfiguration={onConfigurationChanged}
+            groups={{
+              Settings: panelSettings,
+              Properties: panelProperties,
+            }}
+          />
+        }
+      >
+        {teacherInstructionsEnabled && (
+          <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
+            <EditableHtml
+              markup={model.teacherInstructions || ''}
+              onChange={this.onTeacherInstructionsChanged}
+              imageSupport={imageSupport}
+              nonEmpty={false}
+              toolbarOpts={toolbarOpts}
+              spellCheck={spellCheckEnabled}
+              maxImageWidth={(maxImageWidth && maxImageWidth.teacherInstructions) || defaultImageMaxWidth}
+              maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
+              uploadSoundSupport={uploadSoundSupport}
+              languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
             />
-          }
-        >
-          <div className={classes.regular}>
-            {teacherInstructionsEnabled && (
-              <InputContainer label={teacherInstructions.label} className={classes.prompt}>
-                <EditableHtml
-                  markup={model.teacherInstructions || ''}
-                  onChange={this.onTeacherInstructionsChanged}
-                  imageSupport={imageSupport}
-                  nonEmpty={false}
-                  toolbarOpts={toolbarOpts}
-                  spellCheck={spellCheckEnabled}
-                  maxImageWidth={(maxImageWidth && maxImageWidth.teacherInstructions) || defaultImageMaxWidth}
-                  maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
-                  uploadSoundSupport={uploadSoundSupport}
-                  languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
-                />
-              </InputContainer>
-            )}
+          </InputContainer>
+        )}
 
-            {promptEnabled && (
-              <InputContainer label="Item Stem" className={classes.prompt}>
-                <EditableHtml
-                  markup={model.prompt}
-                  onChange={this.onPromptChanged}
-                  toolbarOpts={toolbarOpts}
-                  spellCheck={spellCheckEnabled}
-                  imageSupport={imageSupport}
-                  maxImageWidth={defaultImageMaxWidth}
-                  maxImageHeight={defaultImageMaxHeight}
-                  uploadSoundSupport={uploadSoundSupport}
-                  languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
-                />
-              </InputContainer>
-            )}
+        {promptEnabled && (
+          <InputContainer label="Item Stem" className={classes.promptHolder}>
+            <EditableHtml
+              markup={model.prompt}
+              onChange={this.onPromptChanged}
+              toolbarOpts={toolbarOpts}
+              spellCheck={spellCheckEnabled}
+              imageSupport={imageSupport}
+              maxImageWidth={defaultImageMaxWidth}
+              maxImageHeight={defaultImageMaxHeight}
+              uploadSoundSupport={uploadSoundSupport}
+              languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+            />
+          </InputContainer>
+        )}
 
-            {backgroundImageEnabled && (
-              <div>
-                <Typography className={classes.label} variant="subheading">
-                  Define Background Image
-                </Typography>
+        {backgroundImageEnabled && (
+          <React.Fragment>
+            <Typography variant="subheading">Define Background Image</Typography>
 
-                <ImageContainer
-                  imageUrl={model.imageUrl}
-                  onUpdateImageDimension={this.onUpdateImageDimension}
-                  onImageUpload={this.onImageUpload}
-                  imageDimensions={model.imageDimensions}
-                />
-              </div>
-            )}
-          </div>
-        </layout.ConfigLayout>
-      </div>
+            <ImageContainer
+              imageUrl={model.imageUrl}
+              onUpdateImageDimension={this.onUpdateImageDimension}
+              onImageUpload={this.onImageUpload}
+              imageDimensions={model.imageDimensions}
+            />
+          </React.Fragment>
+        )}
+      </layout.ConfigLayout>
     );
   }
 }
 
 const styles = (theme) => ({
-  base: {
-    marginTop: theme.spacing.unit * 3,
-  },
-  label: {
-    marginTop: theme.spacing.unit * 4,
-  },
-  prompt: {
+  promptHolder: {
     paddingTop: theme.spacing.unit * 2,
+    marginBottom: theme.spacing.unit * 2,
     width: '100%',
-  },
-  regular: {
-    marginBottom: theme.spacing.unit * 3,
   },
 });
 

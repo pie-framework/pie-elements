@@ -57,25 +57,25 @@ export class Main extends React.Component {
 
     return (
       <div className={classes.mainContainer}>
-        {model.teacherInstructions && hasText(model.teacherInstructions) && (
-          <React.Fragment>
-            {!model.animationsDisabled ? (
-              <Collapsible
-                labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}
-                className={classes.collapsible}
-              >
-                <PreviewPrompt prompt={model.teacherInstructions} />
-              </Collapsible>
-            ) : (
+        {model.teacherInstructions &&
+          hasText(model.teacherInstructions) &&
+          (!model.animationsDisabled ? (
+            <Collapsible
+              labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}
+              className={classes.collapsible}
+            >
               <PreviewPrompt prompt={model.teacherInstructions} />
-            )}
+            </Collapsible>
+          ) : (
+            <div className={classes.prompt}>
+              <PreviewPrompt prompt={model.teacherInstructions} />
+            </div>
+          ))}
 
-            <br />
-          </React.Fragment>
-        )}
         <div className={classes.prompt}>
           <PreviewPrompt prompt={model.prompt} />
         </div>
+
         {!model.alwaysShowCorrect && (
           <CorrectAnswerToggle
             show={model.disabled && model.incorrect}
@@ -83,6 +83,7 @@ export class Main extends React.Component {
             onToggle={this.toggleShowCorrect}
           />
         )}
+
         <TextSelect
           className={classes.textSelect}
           disabled={model.disabled}
@@ -107,21 +108,22 @@ export class Main extends React.Component {
           maxNoOfSelections={model.maxSelections}
           animationsDisabled={model.animationsDisabled}
         />
-        {model.rationale && hasText(model.rationale) && (
-          <React.Fragment>
-            {!model.animationsDisabled ? (
-              <Collapsible
-                labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }}
-                className={classes.collapsible}
-                className={classes.collapsible}
-              >
-                <PreviewPrompt prompt={model.rationale} />
-              </Collapsible>
-            ) : (
+
+        {model.rationale &&
+          hasText(model.rationale) &&
+          (!model.animationsDisabled ? (
+            <Collapsible
+              labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }}
+              className={classes.collapsible}
+            >
               <PreviewPrompt prompt={model.rationale} />
-            )}
-          </React.Fragment>
-        )}
+            </Collapsible>
+          ) : (
+            <div className={classes.prompt}>
+              <PreviewPrompt prompt={model.rationale} />
+            </div>
+          ))}
+
         {model.correctness && model.feedback && !showCorrectAnswer && (
           <Feedback correctness={model.correctness} feedback={model.feedback} />
         )}
@@ -132,15 +134,12 @@ export class Main extends React.Component {
 
 const StyledMain = withStyles((theme) => ({
   mainContainer: {
-    paddingLeft: theme.spacing.unit,
-    paddingRight: theme.spacing.unit,
-    paddingBottom: theme.spacing.unit,
     color: color.text(),
     backgroundColor: color.background(),
   },
   textSelect: {
     marginBottom: theme.spacing.unit,
-    marginTop: theme.spacing.unit,
+    marginTop: theme.spacing.unit * 2,
     whiteSpace: 'normal',
   },
   prompt: {
@@ -148,8 +147,7 @@ const StyledMain = withStyles((theme) => ({
     marginBottom: theme.spacing.unit,
   },
   collapsible: {
-    paddingTop: theme.spacing.unit * 2,
-    paddingBottom: theme.spacing.unit * 3,
+    marginBottom: theme.spacing.unit * 2,
   },
 }))(Main);
 

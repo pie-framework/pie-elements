@@ -117,7 +117,10 @@ Indicates the label for the item that has to be displayed in the Settings Panel
 
 ## `forceEnabled` (boolean)
 
-Indicates the value for the toggle; if true, this property will not be visible in Settings Panel
+Indicates the value for the toggle;
+if true:
+- this property will not be visible in Settings Panel (settings will become automatically false)
+- the model property afferent to it will become automatically false
 
 # `showPrompt` (boolean)
 
@@ -196,4 +199,7 @@ Indicates the label for the item that has to be displayed in the Settings Panel
 
 ### `forceEnabled` (boolean)
 
-Indicates the value for the toggle; if true, this property will not be visible in Settings Panel
+Indicates the value for the toggle;
+if true:
+- this property will not be visible in Settings Panel (settings will become automatically false)
+- the model property afferent to it will become automatically false

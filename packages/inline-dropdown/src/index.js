@@ -62,6 +62,9 @@ export default class RootInlineDropdown extends HTMLElement {
   };
 
   connectedCallback() {
+    this.setAttribute('aria-label', 'Inline Dropdown Question'); 
+    this.setAttribute('role', 'region');
+
     this._render();
   }
 }

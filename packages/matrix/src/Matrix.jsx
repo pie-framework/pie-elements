@@ -14,7 +14,11 @@ const MatrixGridWrapper = styled.div`
   grid-template-columns: ${(props) => props.gridTemplateColumns};
   grid-column-gap: 30px;
   grid-row-gap: 20px;
-  margin-top: 40px;
+  margin-top: 20px;
+`;
+
+const TeacherInstructions = styled(Collapsible)`
+  margin-bottom: 16px;
 `;
 
 const MatrixGridItem = styled.div`
@@ -32,6 +36,7 @@ const Matrix = (props) => {
   for (let rowIndex = 0; rowIndex < rowLabels.length + 1; rowIndex++) {
     for (let columnIndex = 0; columnIndex < columnLabels.length + 1; columnIndex++) {
       let gridMatrixItem;
+
       if (rowIndex === 0 && columnIndex === 0) {
         gridMatrixItem = null;
       } else if (rowIndex === 0) {
@@ -41,6 +46,7 @@ const Matrix = (props) => {
       } else {
         const matrixKey = `${rowIndex - 1}-${columnIndex - 1}`;
         const matrixValue = matrixValues[matrixKey];
+
         gridMatrixItem = (
           <ChoiceInput
             matrixKey={matrixKey}
@@ -51,6 +57,7 @@ const Matrix = (props) => {
           />
         );
       }
+
       gridMatrixItems.push(gridMatrixItem);
     }
   }
@@ -59,19 +66,19 @@ const Matrix = (props) => {
   return (
     <MatrixWrapper>
       {teacherInstructions && (
-        <React.Fragment>
-          <Collapsible
-            labels={{
-              hidden: 'Show Teacher Instructions',
-              visible: 'Hide Teacher Instructions',
-            }}
-          >
-            <PreviewPrompt prompt={teacherInstructions} />
-          </Collapsible>
-          <br />
-        </React.Fragment>
+        <TeacherInstructions
+          className={teacherInstructions}
+          labels={{
+            hidden: 'Show Teacher Instructions',
+            visible: 'Hide Teacher Instructions',
+          }}
+        >
+          <PreviewPrompt prompt={teacherInstructions} />
+        </TeacherInstructions>
       )}
+
       <PreviewPrompt className="prompt" prompt={prompt} />
+
       <MatrixGridWrapper gridTemplateColumns={gridTemplateColumns}>
         {gridMatrixItems.map((gridMatrixItem, gridMatrixIndex) => {
           return <MatrixGridItem key={`${gridMatrixIndex}`}>{gridMatrixItem}</MatrixGridItem>;

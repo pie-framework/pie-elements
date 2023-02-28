@@ -27,7 +27,6 @@ const styles = (theme) => ({
   flexContainer: {
     display: 'flex',
     alignItems: 'center',
-    marginTop: theme.spacing.unit,
   },
   titleText: {
     fontFamily: 'Cerebri Sans',

@@ -111,49 +111,52 @@ exports[`design snapshot renders all items except feedback 1`] = `
     />
   }
 >
-  <div>
+  <Component
+    label="Content"
+  >
     <TextField
       defaultValue=""
-      label="Content"
       multiline={true}
       onChange={[Function]}
       required={false}
       select={false}
       variant="standard"
     />
-    <Component
-      label="Tokens"
-    >
-      <WithStyles(Tooltip)
-        classes={
-          Object {
-            "tooltip": undefined,
-          }
+  </Component>
+  <Component
+    label="Tokens"
+  >
+    <WithStyles(Tooltip)
+      classes={
+        Object {
+          "tooltip": undefined,
         }
-        disableFocusListener={true}
-        disableTouchListener={true}
-        placement="right"
-        title="Validation requirements:
+      }
+      disableFocusListener={true}
+      disableTouchListener={true}
+      placement="right"
+      title="Validation requirements:
 There should be at least 2 tokens defined.
 There should be at least 1 token selected."
-      >
-        <pure(InfoIcon)
-          color="primary"
-          fontSize="small"
-          style={
-            Object {
-              "left": "48px",
-              "position": "absolute",
-              "top": "-3px",
-            }
+    >
+      <pure(InfoIcon)
+        color="primary"
+        fontSize="small"
+        style={
+          Object {
+            "left": "48px",
+            "position": "absolute",
+            "top": "-3px",
           }
-        />
-      </WithStyles(Tooltip)>
-      <WithStyles(Tokenizer)
-        onChange={[Function]}
-        tokens={Array []}
+        }
       />
-    </Component>
+    </WithStyles(Tooltip)>
+    <WithStyles(Tokenizer)
+      onChange={[Function]}
+      tokens={Array []}
+    />
+  </Component>
+  <div>
     <WithStyles(Chip)
       label="Mode: None"
     />
@@ -284,40 +287,40 @@ exports[`design snapshot renders all items except the content input 1`] = `
     />
   }
 >
-  <div>
-    <Component
-      label="Tokens"
-    >
-      <WithStyles(Tooltip)
-        classes={
-          Object {
-            "tooltip": undefined,
-          }
+  <Component
+    label="Tokens"
+  >
+    <WithStyles(Tooltip)
+      classes={
+        Object {
+          "tooltip": undefined,
         }
-        disableFocusListener={true}
-        disableTouchListener={true}
-        placement="right"
-        title="Validation requirements:
+      }
+      disableFocusListener={true}
+      disableTouchListener={true}
+      placement="right"
+      title="Validation requirements:
 There should be at least 2 tokens defined.
 There should be at least 1 token selected."
-      >
-        <pure(InfoIcon)
-          color="primary"
-          fontSize="small"
-          style={
-            Object {
-              "left": "48px",
-              "position": "absolute",
-              "top": "-3px",
-            }
+    >
+      <pure(InfoIcon)
+        color="primary"
+        fontSize="small"
+        style={
+          Object {
+            "left": "48px",
+            "position": "absolute",
+            "top": "-3px",
           }
-        />
-      </WithStyles(Tooltip)>
-      <WithStyles(Tokenizer)
-        onChange={[Function]}
-        tokens={Array []}
+        }
       />
-    </Component>
+    </WithStyles(Tooltip)>
+    <WithStyles(Tokenizer)
+      onChange={[Function]}
+      tokens={Array []}
+    />
+  </Component>
+  <div>
     <WithStyles(Chip)
       label="Mode: None"
     />
@@ -448,49 +451,52 @@ exports[`design snapshot renders all items with defaultProps 1`] = `
     />
   }
 >
-  <div>
+  <Component
+    label="Content"
+  >
     <TextField
       defaultValue=""
-      label="Content"
       multiline={true}
       onChange={[Function]}
       required={false}
       select={false}
       variant="standard"
     />
-    <Component
-      label="Tokens"
-    >
-      <WithStyles(Tooltip)
-        classes={
-          Object {
-            "tooltip": undefined,
-          }
+  </Component>
+  <Component
+    label="Tokens"
+  >
+    <WithStyles(Tooltip)
+      classes={
+        Object {
+          "tooltip": undefined,
         }
-        disableFocusListener={true}
-        disableTouchListener={true}
-        placement="right"
-        title="Validation requirements:
+      }
+      disableFocusListener={true}
+      disableTouchListener={true}
+      placement="right"
+      title="Validation requirements:
 There should be at least 2 tokens defined.
 There should be at least 1 token selected."
-      >
-        <pure(InfoIcon)
-          color="primary"
-          fontSize="small"
-          style={
-            Object {
-              "left": "48px",
-              "position": "absolute",
-              "top": "-3px",
-            }
+    >
+      <pure(InfoIcon)
+        color="primary"
+        fontSize="small"
+        style={
+          Object {
+            "left": "48px",
+            "position": "absolute",
+            "top": "-3px",
           }
-        />
-      </WithStyles(Tooltip)>
-      <WithStyles(Tokenizer)
-        onChange={[Function]}
-        tokens={Array []}
+        }
       />
-    </Component>
+    </WithStyles(Tooltip)>
+    <WithStyles(Tokenizer)
+      onChange={[Function]}
+      tokens={Array []}
+    />
+  </Component>
+  <div>
     <WithStyles(Chip)
       label="Mode: None"
     />
@@ -622,50 +628,53 @@ exports[`design snapshot tokenizer renders with html entities 1`] = `
     />
   }
 >
-  <div>
+  <Component
+    label="Content"
+  >
     <TextField
       defaultValue="<p>&#8220;Lucy?&#63; Are you using your time wisely to plan your project?&#33;&#33;&#33;&#8221; Mr. Wilson asked.</p><p>Lucy looked a little confused at first. &#195; Then she grinned and proudly stated, &#8220;Why, yes I am! I plan to make a bird feeder for that tree out our window!&#8221;</p>"
-      label="Content"
       multiline={true}
       onChange={[Function]}
       required={false}
       select={false}
       variant="standard"
     />
-    <Component
-      label="Tokens"
-    >
-      <WithStyles(Tooltip)
-        classes={
-          Object {
-            "tooltip": undefined,
-          }
+  </Component>
+  <Component
+    label="Tokens"
+  >
+    <WithStyles(Tooltip)
+      classes={
+        Object {
+          "tooltip": undefined,
         }
-        disableFocusListener={true}
-        disableTouchListener={true}
-        placement="right"
-        title="Validation requirements:
+      }
+      disableFocusListener={true}
+      disableTouchListener={true}
+      placement="right"
+      title="Validation requirements:
 There should be at least 2 tokens defined.
 There should be at least 1 token selected."
-      >
-        <pure(InfoIcon)
-          color="primary"
-          fontSize="small"
-          style={
-            Object {
-              "left": "48px",
-              "position": "absolute",
-              "top": "-3px",
-            }
+    >
+      <pure(InfoIcon)
+        color="primary"
+        fontSize="small"
+        style={
+          Object {
+            "left": "48px",
+            "position": "absolute",
+            "top": "-3px",
           }
-        />
-      </WithStyles(Tooltip)>
-      <WithStyles(Tokenizer)
-        onChange={[Function]}
-        text="<p>&#8220;Lucy?&#63; Are you using your time wisely to plan your project?&#33;&#33;&#33;&#8221; Mr. Wilson asked.</p><p>Lucy looked a little confused at first. &#195; Then she grinned and proudly stated, &#8220;Why, yes I am! I plan to make a bird feeder for that tree out our window!&#8221;</p>"
-        tokens={Array []}
+        }
       />
-    </Component>
+    </WithStyles(Tooltip)>
+    <WithStyles(Tokenizer)
+      onChange={[Function]}
+      text="<p>&#8220;Lucy?&#63; Are you using your time wisely to plan your project?&#33;&#33;&#33;&#8221; Mr. Wilson asked.</p><p>Lucy looked a little confused at first. &#195; Then she grinned and proudly stated, &#8220;Why, yes I am! I plan to make a bird feeder for that tree out our window!&#8221;</p>"
+      tokens={Array []}
+    />
+  </Component>
+  <div>
     <WithStyles(Chip)
       label="Mode: None"
     />
