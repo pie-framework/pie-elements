@@ -101,6 +101,15 @@ class HotspotComponent extends React.Component {
           />
         )}
 
+        {showCorrectAnswerToggle && <br />}
+        {showCorrectAnswerToggle && (
+          <CorrectAnswerToggle
+            show={showCorrectAnswerToggle}
+            toggled={showCorrect}
+            onToggle={this.onToggle.bind(this)}
+          />
+        )}
+
         {imageUrl ? (
           <Container
             isEvaluateMode={isEvaluateMode}
