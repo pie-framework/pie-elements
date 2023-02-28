@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.9.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@7.8.0...@pie-element/select-text@7.9.0) (2023-02-28)
+
+
+### Bug Fixes
+
+* update pie-libs ([110161a](https://github.com/pie-framework/pie-elements/commit/110161ad113e76b5fdb6fc06e233889befbc366a))
+
+
+### Features
+
+* add back forceEnabled functionality with documentation ([10a5502](https://github.com/pie-framework/pie-elements/commit/10a55021ca455b27dc5e5a38436648a1fd2f9d36))
+
+
+
+
+
 # [7.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@7.7.0...@pie-element/select-text@7.8.0) (2023-02-14)
 
 

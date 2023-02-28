@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.10.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@5.9.0...@pie-element/hotspot@5.10.0) (2023-02-28)
+
+
+### Bug Fixes
+
+* eliminate duplicated code and re-add tests ([f804e66](https://github.com/pie-framework/pie-elements/commit/f804e66272a50b6afff71fc524eed5d44cd7a219))
+* update pie-libs ([110161a](https://github.com/pie-framework/pie-elements/commit/110161ad113e76b5fdb6fc06e233889befbc366a))
+
+
+### Features
+
+* add back forceEnabled functionality with documentation ([10a5502](https://github.com/pie-framework/pie-elements/commit/10a55021ca455b27dc5e5a38436648a1fd2f9d36))
+* **hotspot:** move the -Show correct answer- toggle after the prompt ([f2bb02f](https://github.com/pie-framework/pie-elements/commit/f2bb02fdfa13529f4e14c0fa5c98d178f1998191))
+
+
+
+
+
 # [5.9.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@5.8.0...@pie-element/hotspot@5.9.0) (2023-02-14)
 
 

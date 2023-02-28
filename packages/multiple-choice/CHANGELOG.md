@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.9.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@7.8.0...@pie-element/multiple-choice@7.9.0) (2023-02-28)
+
+
+### Bug Fixes
+
+* update pie-libs ([110161a](https://github.com/pie-framework/pie-elements/commit/110161ad113e76b5fdb6fc06e233889befbc366a))
+
+
+### Features
+
+* add back forceEnabled functionality with documentation ([10a5502](https://github.com/pie-framework/pie-elements/commit/10a55021ca455b27dc5e5a38436648a1fd2f9d36))
+* **multiple-choice:** find a way to update state for checked radio button, WIP ([af8236b](https://github.com/pie-framework/pie-elements/commit/af8236b47dfb8cdf25587cd7c97c982d843a3bf0))
+* **multiple-choice:** refactor and cleanup ([ba99eb8](https://github.com/pie-framework/pie-elements/commit/ba99eb804e391da2c0dfa9dc21518f399c93102d))
+* **multiple-choice:** set correct checked state for radio buttons and checkboxes ([93e0922](https://github.com/pie-framework/pie-elements/commit/93e09225708246ebe3887e5ec83ad3ec438ffc3a))
+* **multiple-choice:** wip ([9306a70](https://github.com/pie-framework/pie-elements/commit/9306a7013ef2be34f810b678e687a851ffe4c3b2))
+
+
+
+
+
 # [7.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@7.7.0...@pie-element/multiple-choice@7.8.0) (2023-02-14)
 
 

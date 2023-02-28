@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@9.0.0...@pie-element/extended-text-entry@9.1.0) (2023-02-28)
+
+
+### Bug Fixes
+
+* update pie-libs ([110161a](https://github.com/pie-framework/pie-elements/commit/110161ad113e76b5fdb6fc06e233889befbc366a))
+
+
+### Features
+
+* add back forceEnabled functionality with documentation ([10a5502](https://github.com/pie-framework/pie-elements/commit/10a55021ca455b27dc5e5a38436648a1fd2f9d36))
+* Use a common structre for elements, styling and cleanup WIP ([3aa9002](https://github.com/pie-framework/pie-elements/commit/3aa9002e350e7f4b19f79fc18efb8ddff6586899))
+* **extended-text-entry:** add aria attributes to extended-text-entry) ([10b396c](https://github.com/pie-framework/pie-elements/commit/10b396cfb51866ed860a58ab5924246909621c9d))
+
+
+
+
+
 # [9.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@8.4.0...@pie-element/extended-text-entry@9.0.0) (2023-02-22)
 
 

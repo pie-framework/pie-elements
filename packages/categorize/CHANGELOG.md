@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.10.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@7.9.0...@pie-element/categorize@7.10.0) (2023-02-28)
+
+
+### Bug Fixes
+
+* update pie-libs ([110161a](https://github.com/pie-framework/pie-elements/commit/110161ad113e76b5fdb6fc06e233889befbc366a))
+* **categorize:** eliminate phantom choices in session-PD-2601 ([1ab3abd](https://github.com/pie-framework/pie-elements/commit/1ab3abd7d5b32398f125919fb3e3b0f62454364a))
+
+
+### Features
+
+* Use a common structre for elements, styling and cleanup WIP ([3aa9002](https://github.com/pie-framework/pie-elements/commit/3aa9002e350e7f4b19f79fc18efb8ddff6586899))
+
+
+
+
+
 # [7.9.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@7.8.0...@pie-element/categorize@7.9.0) (2023-02-14)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@8.7.0...@pie-element/ebsr@8.8.0) (2023-02-28)
+
+
+### Features
+
+* **ebsr:** add aria attributes to EBSR element ([3185be0](https://github.com/pie-framework/pie-elements/commit/3185be069edf08ac0fb46a48190364fe48f7d55d))
+
+
+
+
+
 # [8.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@8.6.0...@pie-element/ebsr@8.7.0) (2023-02-14)
 
 

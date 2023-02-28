@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@1.7.1...@pie-element/complex-rubric@1.7.2) (2023-02-28)
+
+
+### Bug Fixes
+
+* complex-rubric renders more quickly then other items in item config with default values, because it uses 2 other item types that set the model before it should be set ([ea16d44](https://github.com/pie-framework/pie-elements/commit/ea16d449977ccb41db7180e3ac7aa5812b380cde))
+* complex-rubric renders more quickly then other items in item config with default values, because it uses 2 other item types that set the model before it should be set ([e863ca1](https://github.com/pie-framework/pie-elements/commit/e863ca18090744306bfa0b02fb87bfeb63b07838))
+* update pie-libs ([110161a](https://github.com/pie-framework/pie-elements/commit/110161ad113e76b5fdb6fc06e233889befbc366a))
+
+
+
+
+
 ## [1.7.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@1.7.0...@pie-element/complex-rubric@1.7.1) (2023-02-22)
 
 

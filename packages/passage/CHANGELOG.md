@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.9.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.9.1...@pie-element/passage@1.9.2) (2023-02-28)
+
+
+### Bug Fixes
+
+* update pie-libs ([110161a](https://github.com/pie-framework/pie-elements/commit/110161ad113e76b5fdb6fc06e233889befbc366a))
+
+
+
+
+
 ## [1.9.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.9.0...@pie-element/passage@1.9.1) (2023-02-14)
 
 

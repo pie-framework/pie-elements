@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.10.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@6.9.0...@pie-element/categorize-configure@6.10.0) (2023-02-28)
+
+
+### Bug Fixes
+
+* update pie-libs ([110161a](https://github.com/pie-framework/pie-elements/commit/110161ad113e76b5fdb6fc06e233889befbc366a))
+
+
+### Features
+
+* Use a common structre for elements, styling and cleanup WIP ([3aa9002](https://github.com/pie-framework/pie-elements/commit/3aa9002e350e7f4b19f79fc18efb8ddff6586899))
+
+
+
+
+
 # [6.9.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@6.8.0...@pie-element/categorize-configure@6.9.0) (2023-02-14)
 
 

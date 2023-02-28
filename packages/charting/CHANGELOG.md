@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.9.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@5.8.0...@pie-element/charting@5.9.0) (2023-02-28)
+
+
+### Bug Fixes
+
+* update pie-libs ([110161a](https://github.com/pie-framework/pie-elements/commit/110161ad113e76b5fdb6fc06e233889befbc366a))
+* **charting:** add sanity checks ([f892704](https://github.com/pie-framework/pie-elements/commit/f892704e2a5d0323efa43d788e20dad2bd2d4e07))
+
+
+### Features
+
+* add back forceEnabled functionality with documentation ([10a5502](https://github.com/pie-framework/pie-elements/commit/10a55021ca455b27dc5e5a38436648a1fd2f9d36))
+
+
+
+
+
 # [5.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@5.7.0...@pie-element/charting@5.8.0) (2023-02-14)
 
 

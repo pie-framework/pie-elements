@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.8.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-controller@4.8.0...@pie-element/match-controller@4.8.1) (2023-02-28)
+
+
+### Bug Fixes
+
+* imports, remove console log ([d9a26c6](https://github.com/pie-framework/pie-elements/commit/d9a26c6906b6969b7ddd25ec610d7d209c4f2b62))
+* **match:** fix validation bugs PD-2655 ([d41b79d](https://github.com/pie-framework/pie-elements/commit/d41b79dcf92714e0546619035aec9c529cfd01bb))
+
+
+
+
+
 # [4.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-controller@4.7.0...@pie-element/match-controller@4.8.0) (2023-02-14)
 
 
