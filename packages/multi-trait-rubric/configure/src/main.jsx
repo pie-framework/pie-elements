@@ -276,63 +276,62 @@ export class Main extends React.Component {
     };
 
     return (
-      <div className={classes.design}>
-        <layout.ConfigLayout
-          hideSettings={settingsPanelDisabled}
-          settings={
-            <Panel
-              model={model}
-              onChangeModel={this.onModelChanged}
-              configuration={configuration}
-              onChangeConfiguration={onConfigurationChanged}
-              groups={{
-                Settings: panelSettings,
-                Properties: panelProperties,
-              }}
+      <layout.ConfigLayout
+        hideSettings={settingsPanelDisabled}
+        settings={
+          <Panel
+            model={model}
+            onChangeModel={this.onModelChanged}
+            configuration={configuration}
+            onChangeConfiguration={onConfigurationChanged}
+            groups={{
+              Settings: panelSettings,
+              Properties: panelProperties,
+            }}
+          />
+        }
+      >
+        <div style={{ width: adjustedWidth }}>
+          {(scales || []).map((scale, scaleIndex) => (
+            <Scale
+              key={`scale-${scaleIndex}`}
+              scale={scale}
+              scaleIndex={scaleIndex}
+              onScaleRemoved={this.onScaleRemoved}
+              onScaleChanged={this.onScaleChanged}
+              showStandards={standards}
+              showScorePointLabels={pointLabels}
+              showDescription={description}
+              showLevelTagInput={showLevelTagInput.enabled}
+              excludeZero={excludeZero}
+              enableDragAndDrop={dragAndDrop.enabled}
+              spellCheck={spellCheckEnabled}
+              width={adjustedWidth}
+              uploadSoundSupport={uploadSoundSupport}
+              maxPointsEnabled={maxPointsEnabled}
+              maxNoOfTraits={maxNoOfTraits}
+              minNoOfTraits={minNoOfTraits}
+              {...this.props}
+              classes={{}}
             />
-          }
-        >
-          <div style={{ width: adjustedWidth }}>
-            {(scales || []).map((scale, scaleIndex) => (
-              <Scale
-                key={`scale-${scaleIndex}`}
-                scale={scale}
-                scaleIndex={scaleIndex}
-                onScaleRemoved={this.onScaleRemoved}
-                onScaleChanged={this.onScaleChanged}
-                showStandards={standards}
-                showScorePointLabels={pointLabels}
-                showDescription={description}
-                showLevelTagInput={showLevelTagInput.enabled}
-                excludeZero={excludeZero}
-                enableDragAndDrop={dragAndDrop.enabled}
-                spellCheck={spellCheckEnabled}
-                width={adjustedWidth}
-                uploadSoundSupport={uploadSoundSupport}
-                maxPointsEnabled={maxPointsEnabled}
-                maxNoOfTraits={maxNoOfTraits}
-                minNoOfTraits={minNoOfTraits}
-                {...this.props}
-                classes={{}}
-              />
-            ))}
-            {addScaleEnabled && <MultiTraitButton onClick={this.onScaleAdded}>Add Scale</MultiTraitButton>}
-          </div>
+          ))}
+          {addScaleEnabled && <MultiTraitButton onClick={this.onScaleAdded}>Add Scale</MultiTraitButton>}
+        </div>
 
-          <ExcludeZeroDialog
-            open={showExcludeZeroDialog && !excludeZero}
-            changeExcludeZero={this.changeExcludeZero}
-            cancel={this.hideToggleExcludeZeroModal}
-          />
+        <ExcludeZeroDialog
+          open={showExcludeZeroDialog && !excludeZero}
+          changeExcludeZero={this.changeExcludeZero}
+          cancel={this.hideToggleExcludeZeroModal}
+        />
 
-          <IncludeZeroDialog
-            open={showExcludeZeroDialog && excludeZero}
-            changeExcludeZero={this.changeExcludeZero}
-            cancel={this.hideToggleExcludeZeroModal}
-          />
-          <InfoDialog open={showInfoDialog} text={infoDialogText} onClose={() => this.set({ showInfoDialog: false })} />
-        </layout.ConfigLayout>
-      </div>
+        <IncludeZeroDialog
+          open={showExcludeZeroDialog && excludeZero}
+          changeExcludeZero={this.changeExcludeZero}
+          cancel={this.hideToggleExcludeZeroModal}
+        />
+
+        <InfoDialog open={showInfoDialog} text={infoDialogText} onClose={() => this.set({ showInfoDialog: false })} />
+      </layout.ConfigLayout>
     );
   }
 }

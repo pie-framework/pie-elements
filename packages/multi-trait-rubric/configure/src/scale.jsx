@@ -15,25 +15,26 @@ import { DecreaseMaxPoints, DeleteScale, DeleteTrait, InfoDialog } from './modal
 
 const AdjustedBlockWidth = BlockWidth + 2 * 8; // 8 is padding
 
-const styles = {
+const styles = (theme) => ({
   scaleWrapper: {
     display: 'flex',
     flexDirection: 'column',
-    margin: '12px 0',
     wordBreak: 'break-word',
-    padding: `16px 0 16px ${DragHandleSpace}px`,
     position: 'relative',
+    marginBottom: theme.spacing.unit * 2.5,
   },
   maxPoints: {
     width: '300px',
-    margin: '16px 0 32px',
+    marginTop: theme.spacing.unit * 2,
+    marginBottom: theme.spacing.unit * 4,
   },
   trait: {
     background: color.secondaryBackground(),
-    margin: '16px 0',
-    padding: '16px',
+    marginTop: theme.spacing.unit * 2,
+    marginBottom: theme.spacing.unit * 2,
+    padding: theme.spacing.unit * 2,
   },
-};
+});
 
 export class Scale extends React.Component {
   state = {

@@ -39,7 +39,7 @@ function TabContainer(props) {
 
   return (
     <Typography
-      component="div" 
+      component="div"
       style={{
         padding,
         fontSize: '0.875em',
@@ -100,7 +100,7 @@ class StimulusTabs extends React.Component {
 
     if (tabs && tabs.length > 1) {
       return disabledTabs ? (
-        <div className="passages" aria-label='Passage' role='region'>
+        <div className="passages" aria-label="Passage" role="region">
           {tabs.map((tab) => (
             <div key={tab.id} className={`passage-${tab.id}`}>
               <TabContainer multiple>
@@ -116,7 +116,7 @@ class StimulusTabs extends React.Component {
           ))}
         </div>
       ) : (
-        <div className={classes.root} aria-label='Passage' role='region'>
+        <div className={classes.root} aria-label="Passage" role="region">
           <Tabs
             classes={{
               root: classes.stickyTabs,
@@ -138,6 +138,7 @@ class StimulusTabs extends React.Component {
               />
             ))}
           </Tabs>
+
           {tabs.map((tab) =>
             activeTab === tab.id ? (
               <TabContainer multiple key={tab.id}>
@@ -151,7 +152,7 @@ class StimulusTabs extends React.Component {
       );
     } else if (tabs && tabs[0]) {
       return (
-        <div className="passage" style={{ whiteSpace: 'break-spaces' }} aria-label='Passage' role='region'>
+        <div className="passage" style={{ whiteSpace: 'break-spaces' }} aria-label="Passage" role="region">
           <TabContainer>
             <div className="text" dangerouslySetInnerHTML={{ __html: this.parsedText(tabs[0].text) }} />
           </TabContainer>

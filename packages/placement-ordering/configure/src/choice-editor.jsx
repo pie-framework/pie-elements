@@ -319,9 +319,7 @@ class ChoiceEditor extends React.Component {
 
 const styles = (theme) => ({
   allToggle: {},
-  choiceEditor: {
-    marginTop: theme.spacing.unit,
-  },
+  choiceEditor: {},
   controls: {
     display: 'flex',
     alignItems: 'center',
@@ -333,7 +331,7 @@ const styles = (theme) => ({
     fill: theme.palette.primary[500],
   },
   addButtonRoot: {
-    marginTop: theme.spacing.unit * 3,
+    marginTop: theme.spacing.unit * 2.5,
     paddingHorizontal: theme.spacing.unit * 1.5,
   },
   addButtonLabel: {
@@ -349,12 +347,11 @@ const styles = (theme) => ({
   },
   columnLabel: {
     width: '100%',
-    paddingTop: theme.spacing.unit * 3,
-    marginTop: theme.spacing.unit * 2,
+    paddingTop: theme.spacing.unit * 2,
   },
   errorText: {
     fontSize: theme.typography.fontSize - 2,
-    color: 'red',
+    color: theme.palette.error.main,
     paddingTop: theme.spacing.unit,
   },
 });
