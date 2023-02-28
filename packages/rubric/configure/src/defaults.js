@@ -17,5 +17,6 @@ export default {
       label: 'Show max points dropdown',
     },
     settingsPanelDisabled: false,
+    // width: '500px'
   },
 };

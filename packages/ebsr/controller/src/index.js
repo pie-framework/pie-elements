@@ -56,7 +56,7 @@ export const normalize = ({ partA = {}, partB = {}, ...question }) => ({
   partA: {
     ...defaults.partA,
     rationaleEnabled: true,
-    feedbackEnabled: true,
+    feedbackEnabled: false,
     promptEnabled: true,
     teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true,
@@ -68,7 +68,7 @@ export const normalize = ({ partA = {}, partB = {}, ...question }) => ({
     ...defaults.partB,
     rationaleEnabled: true,
     promptEnabled: true,
-    feedbackEnabled: true,
+    feedbackEnabled: false,
     teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true,
     gridColumns: '2',

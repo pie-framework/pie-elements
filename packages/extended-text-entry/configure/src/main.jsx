@@ -113,7 +113,7 @@ export class Main extends React.Component {
     const panelProperties = {
       teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
       studentInstructionsEnabled: studentInstructions.settings && toggle(studentInstructions.label),
-      rubricEnabled: !withRubric?.forceEnabled && withRubric?.settings && toggle(withRubric?.label),
+      rubricEnabled: withRubric?.settings && toggle(withRubric?.label),
     };
 
     return (

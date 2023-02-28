@@ -32,10 +32,7 @@ class Main extends React.Component {
 
     // model.partLabel is a property used for ebsr
     return (
-      <PreviewLayout
-        ariaLabel={model.choiceMode == 'radio' ? 'Multiple Choice Question' : 'Multiple Correct Answer Question'}
-        role="region"
-      >
+      <PreviewLayout>
         {model.partLabel && <div className={classes.partLabel}>{model.partLabel}</div>}
         <MultipleChoice {...model} session={session} onChoiceChanged={onChoiceChanged} />
       </PreviewLayout>

@@ -123,7 +123,7 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
           "choices": Array [],
           "correctResponse": Array [],
           "enableImages": false,
-          "feedbackEnabled": true,
+          "feedbackEnabled": false,
           "numberedGuides": false,
           "orientation": "vertical",
           "partialScoring": true,
@@ -302,14 +302,6 @@ The correct ordering should not be identical to the initial ordering."
       }
     />
   </FormSection>
-  <FeedbackConfig
-    onChange={[Function]}
-    toolbarOpts={
-      Object {
-        "position": "bottom",
-      }
-    }
-  />
 </ConfigLayout>
 `;
 
@@ -436,7 +428,7 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
           "choices": Array [],
           "correctResponse": Array [],
           "enableImages": false,
-          "feedbackEnabled": true,
+          "feedbackEnabled": false,
           "numberedGuides": false,
           "orientation": "vertical",
           "partialScoring": true,
@@ -615,13 +607,5 @@ The correct ordering should not be identical to the initial ordering."
       }
     />
   </FormSection>
-  <FeedbackConfig
-    onChange={[Function]}
-    toolbarOpts={
-      Object {
-        "position": "bottom",
-      }
-    }
-  />
 </ConfigLayout>
 `;

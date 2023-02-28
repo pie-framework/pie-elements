@@ -3,6 +3,44 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.9.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@6.8.0...@pie-element/categorize-configure@6.9.0) (2023-02-14)
+
+
+### Bug Fixes
+
+* **categorize:** avoid long text overflow container-PD-2498 ([4b66c8f](https://github.com/pie-framework/pie-elements/commit/4b66c8f9d2387e0558f054de093704ee369badde))
+* **categorize:** delete console.logs ([271d517](https://github.com/pie-framework/pie-elements/commit/271d5173689cb4aa7381c6dabd86fbd3c1bb974d))
+
+
+### Features
+
+* update pie-libs ([e2c0b89](https://github.com/pie-framework/pie-elements/commit/e2c0b894caa20ed5d5681302a84b2bfd20dbd9f6))
+* **categorize, ebsr:** feedback turned off if model does not specify feedback settings ([01a011a](https://github.com/pie-framework/pie-elements/commit/01a011a8cced8b14d8b79a56d751f951f61f2cf5))
+
+
+
+
+
+# [6.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@6.7.1...@pie-element/categorize-configure@6.8.0) (2023-02-01)
+
+
+### Bug Fixes
+
+* **categorize:** alternateResponse heading size smaller-PD-1988 ([29958c5](https://github.com/pie-framework/pie-elements/commit/29958c55e850ac7543acf1024baf6272f5594f9b))
+* **categorize:** set allowAlternate back on false ([1079a0f](https://github.com/pie-framework/pie-elements/commit/1079a0f2a745262072195c8d0cd2db69ae01dcf1))
+* **categorize:** set back allowAlternateEnabled on false ([66d1829](https://github.com/pie-framework/pie-elements/commit/66d1829dec4f09ed380b25e222f0356ec4adb1c5))
+* **categorizr:** Categories should be labeled for alternate response-PD-1987 ([c6b92e6](https://github.com/pie-framework/pie-elements/commit/c6b92e60af5f0001a5de6899bfde36771c56c055))
+
+
+### Features
+
+* update pie-libs ([0af590d](https://github.com/pie-framework/pie-elements/commit/0af590d624f4b2c0af58039e935531cef52e2a86))
+* **categorize:** add props to alternate ([2604ec7](https://github.com/pie-framework/pie-elements/commit/2604ec798b4001b8b6e83547ec1e11553b2ad940))
+
+
+
+
+
 ## [6.7.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@6.7.0...@pie-element/categorize-configure@6.7.1) (2023-01-17)
 
 **Note:** Version bump only for package @pie-element/categorize-configure

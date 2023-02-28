@@ -3,6 +3,48 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-configure@7.4.0...@pie-element/extended-text-entry-configure@8.0.0) (2023-02-22)
+
+
+### Bug Fixes
+
+* **drawing-response, extended-text-entry:** imports ([795a39b](https://github.com/pie-framework/pie-elements/commit/795a39b2fa89301393c4075da2d6c64eb9220065))
+* **drawing-response, extended-text-entry:** remove verifyRubric method. remove enabled logic ([bcd498d](https://github.com/pie-framework/pie-elements/commit/bcd498df3712a24643199103df7a72316c667a00))
+
+
+### BREAKING CHANGES
+
+* **drawing-response, extended-text-entry:** create new versions to avoid issues
+
+
+
+
+
+# [7.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-configure@7.3.0...@pie-element/extended-text-entry-configure@7.4.0) (2023-02-14)
+
+
+### Features
+
+* update pie-libs ([e2c0b89](https://github.com/pie-framework/pie-elements/commit/e2c0b894caa20ed5d5681302a84b2bfd20dbd9f6))
+* **elements:** updates snapshots and tests conform to new devault value-PD-2509 ([654aa5c](https://github.com/pie-framework/pie-elements/commit/654aa5c200acf5af557e4ae2a5801f26e001c699))
+* **pie-elements:** feedback turned off if model does not specify feedback settings ([6ced7e8](https://github.com/pie-framework/pie-elements/commit/6ced7e8daa4d3df86b44b724b884e7cf72c717ba))
+* remove force enabled logic from withRubric property PD-2624 ([9e557b9](https://github.com/pie-framework/pie-elements/commit/9e557b90285e3fe1ec3d70d2b3865fc4968cd690))
+
+
+
+
+
+# [7.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-configure@7.2.0...@pie-element/extended-text-entry-configure@7.3.0) (2023-02-01)
+
+
+### Features
+
+* update pie-libs ([0af590d](https://github.com/pie-framework/pie-elements/commit/0af590d624f4b2c0af58039e935531cef52e2a86))
+
+
+
+
+
 # [7.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-configure@7.1.0...@pie-element/extended-text-entry-configure@7.2.0) (2023-01-17)
 
 

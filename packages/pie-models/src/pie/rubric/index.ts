@@ -36,4 +36,9 @@ export interface RubricConfigure extends PromptConfig, CommonConfigSettings {
    * Show max points dropdown configuration
    */
   showMaxPoint?: ConfigureProp;
+
+  /**
+   * How large can the rubric be
+   */
+  width?: string;
 }

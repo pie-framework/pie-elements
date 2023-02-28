@@ -35,7 +35,7 @@ export class Main extends React.Component {
     const { classes, model, configuration } = this.props;
     const { rubrics = {} } = model;
     let { rubricType } = model;
-    const { multiTraitRubric, simpleRubric } = configuration;
+    const { multiTraitRubric, simpleRubric, width } = configuration;
     let rubricTag = '';
 
     if (!rubricType) {
@@ -53,7 +53,7 @@ export class Main extends React.Component {
               if (ref) {
                 this.simpleRubric = ref;
                 this.simpleRubric.model = rubrics.simpleRubric;
-                this.simpleRubric.configuration = simpleRubric;
+                this.simpleRubric.configuration = { ...simpleRubric, width };
               }
             }}
           />
@@ -68,8 +68,8 @@ export class Main extends React.Component {
             ref={(ref) => {
               if (ref) {
                 this.multiTraitRubric = ref;
-                this.multiTraitRubric.model = { ...rubrics.multiTraitRubric };
-                this.multiTraitRubric.configuration = multiTraitRubric;
+                this.multiTraitRubric.model = rubrics.multiTraitRubric;
+                this.multiTraitRubric.configuration = { ...multiTraitRubric, width };
               }
             }}
           />

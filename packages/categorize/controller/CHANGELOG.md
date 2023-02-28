@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.9.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-controller@5.8.0...@pie-element/categorize-controller@5.9.0) (2023-02-14)
+
+
+### Features
+
+* **categorize, ebsr:** feedback turned off if model does not specify feedback settings ([01a011a](https://github.com/pie-framework/pie-elements/commit/01a011a8cced8b14d8b79a56d751f951f61f2cf5))
+* **elements:** updates snapshots and tests conform to new devault value-PD-2509 ([654aa5c](https://github.com/pie-framework/pie-elements/commit/654aa5c200acf5af557e4ae2a5801f26e001c699))
+
+
+
+
+
+# [5.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-controller@5.7.0...@pie-element/categorize-controller@5.8.0) (2023-02-01)
+
+
+### Features
+
+* update pie-libs ([0af590d](https://github.com/pie-framework/pie-elements/commit/0af590d624f4b2c0af58039e935531cef52e2a86))
+
+
+
+
+
 # [5.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-controller@5.6.0...@pie-element/categorize-controller@5.7.0) (2023-01-17)
 
 

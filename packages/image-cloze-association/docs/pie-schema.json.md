@@ -145,6 +145,10 @@ Indicates if the response containers should have a dashed border
 
 Indicates if Rubric is enabled
 
+# `shuffle` (boolean)
+
+Indicates if the possible responses have to be shuffled in the player
+
 # `id` (string, required)
 
 Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.

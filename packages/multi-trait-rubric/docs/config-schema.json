@@ -192,6 +192,11 @@
       "description": "Maximum number of scales",
       "type": "number",
       "title": "maxNoOfScales"
+    },
+    "defaultTraitLabel": {
+      "description": "The default trait label for new created scales.\nIf it's not defined, it will default to the label of the first trait.",
+      "type": "string",
+      "title": "defaultTraitLabel"
     }
   },
   "required": [

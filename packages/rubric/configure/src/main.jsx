@@ -15,7 +15,7 @@ const styles = (theme) => ({
 class Main extends React.Component {
   render() {
     const { model, classes, configuration, onConfigurationChanged, onModelChanged } = this.props || {};
-    const { settingsPanelDisabled, showExcludeZero = {}, showMaxPoint = {} } = configuration || {};
+    const { settingsPanelDisabled, showExcludeZero = {}, showMaxPoint = {}, width } = configuration || {};
 
     const panelProperties = {
       excludeZeroEnabled: showExcludeZero.settings && toggle(showExcludeZero.label),
@@ -37,7 +37,9 @@ class Main extends React.Component {
           />
         }
       >
-        <Authoring value={model} onChange={onModelChanged} />
+        <div style={{ maxWidth: width }}>
+          <Authoring value={model} onChange={onModelChanged} />
+        </div>
       </layout.ConfigLayout>
     );
   }

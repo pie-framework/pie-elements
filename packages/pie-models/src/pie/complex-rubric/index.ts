@@ -1,5 +1,5 @@
 import { PieModel } from '../../PieModel';
-import { RubricPie } from '../rubric';
+import { RubricConfigure, RubricPie } from '../rubric';
 import { MultiTraitRubricConfigure, MultiTraitRubricPie } from '../multi-trait-rubric';
 
 enum RubricType {
@@ -29,6 +29,14 @@ export interface ComplexRubricPie extends PieModel {
 }
 
 export interface ComplexRubricConfigure {
+  /**
+   * How large should complex-rubric be
+   */
+  width?: string;
+
+  /** Contains the simple rubric configuration. */
+  [RubricType.SimpleRubric]: RubricConfigure;
+
   /** Contains the multi trait rubric configuration. */
   [RubricType.MultiTraitRubric]: MultiTraitRubricConfigure;
 }

@@ -19,7 +19,7 @@ export default {
     scoringType: 'auto',
     targetLabel: '',
     rationaleEnabled: true,
-    feedbackEnabled: true,
+    feedbackEnabled: false,
     promptEnabled: true,
     teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true,

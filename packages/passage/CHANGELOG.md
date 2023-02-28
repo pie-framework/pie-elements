@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.9.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.9.0...@pie-element/passage@1.9.1) (2023-02-14)
+
+
+### Bug Fixes
+
+* **passage:** add aria-label and role attributes on parent element ([c9879a2](https://github.com/pie-framework/pie-elements/commit/c9879a28ad144ceb528d5cd66faad2ed1099fe53))
+* **passage:** add aria-label and role attributes on pie passage element  PD-2476 ([c8734d7](https://github.com/pie-framework/pie-elements/commit/c8734d710db99f222ba36d4cd345a86670dedfb2))
+
+
+
+
+
+# [1.9.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.8.0...@pie-element/passage@1.9.0) (2023-02-01)
+
+
+### Features
+
+* update pie-libs ([0af590d](https://github.com/pie-framework/pie-elements/commit/0af590d624f4b2c0af58039e935531cef52e2a86))
+* **passage:** add ARIA attributes ([87b1cce](https://github.com/pie-framework/pie-elements/commit/87b1cce0c8a50e382072f28cfa2288e42a45d9b0))
+
+
+
+
+
 # [1.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.7.17...@pie-element/passage@1.8.0) (2022-12-20)
 
 

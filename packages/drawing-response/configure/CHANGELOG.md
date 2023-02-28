@@ -3,6 +3,52 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response-configure@5.0.0...@pie-element/drawing-response-configure@6.0.0) (2023-02-22)
+
+
+### Bug Fixes
+
+* **drawing-response, extended-text-entry:** imports ([795a39b](https://github.com/pie-framework/pie-elements/commit/795a39b2fa89301393c4075da2d6c64eb9220065))
+* **drawing-response, extended-text-entry:** remove verifyRubric method. remove enabled logic ([bcd498d](https://github.com/pie-framework/pie-elements/commit/bcd498df3712a24643199103df7a72316c667a00))
+
+
+### BREAKING CHANGES
+
+* **drawing-response, extended-text-entry:** create new versions to avoid issues
+
+
+
+
+
+# [5.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response-configure@4.6.0...@pie-element/drawing-response-configure@5.0.0) (2023-02-14)
+
+
+### Features
+
+* PD-2624 ([fc5ce28](https://github.com/pie-framework/pie-elements/commit/fc5ce282c52308665aeec8bcec5d6338cc83f513))
+* remove force enabled logic from withRubric property PD-2624 ([9e557b9](https://github.com/pie-framework/pie-elements/commit/9e557b90285e3fe1ec3d70d2b3865fc4968cd690))
+* update pie-libs ([e2c0b89](https://github.com/pie-framework/pie-elements/commit/e2c0b894caa20ed5d5681302a84b2bfd20dbd9f6))
+
+
+### BREAKING CHANGES
+
+* create new versions to avoid issues
+
+
+
+
+
+# [4.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response-configure@4.5.0...@pie-element/drawing-response-configure@4.6.0) (2023-02-01)
+
+
+### Features
+
+* update pie-libs ([0af590d](https://github.com/pie-framework/pie-elements/commit/0af590d624f4b2c0af58039e935531cef52e2a86))
+
+
+
+
+
 # [4.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response-configure@4.4.0...@pie-element/drawing-response-configure@4.5.0) (2023-01-17)
 
 

@@ -86,7 +86,7 @@ describe('controller', () => {
     });
 
     it('feedback: returns proper feedback in evaluate mode', async () => {
-      const result = await model(question, {}, { mode: 'evaluate' }, jest.fn());
+      const result = await model({...question, feedbackEnabled:true}, {}, { mode: 'evaluate' }, jest.fn());
       expect(result.feedback).toEqual('This is getFeedbackForCorrectness response.');
     });
 

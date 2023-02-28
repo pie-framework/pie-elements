@@ -16,7 +16,7 @@ export default {
     text: '',
     tokens: tokens(),
     scoringType: 'auto',
-    feedbackEnabled: true,
+    feedbackEnabled: false,
     rationaleEnabled: true,
     promptEnabled: true,
     teacherInstructionsEnabled: true,
