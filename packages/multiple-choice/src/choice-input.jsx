@@ -195,7 +195,7 @@ export class ChoiceInput extends React.Component {
           {!hideTick && isEvaluateMode && <FeedbackTick correctness={correctness} />}
           <div className={classNames(holderClassNames, 'checkbox-holder')}>
             <StyledFormControlLabel
-              label={displayKey ? displayKey + `. ${label}` : ` ${label}`}
+              label={displayKey ? displayKey + '. ' : ''}
               value={value}
               control={
                 <Tag
@@ -208,6 +208,7 @@ export class ChoiceInput extends React.Component {
                 />
               }
             />
+            <PreviewPrompt className="label" onClick={this.onToggleChoice} prompt={label} tagName="span" />
           </div>
         </div>
         {rationale && <PreviewPrompt className="rationale" defaultClassName="rationale" prompt={rationale} />}
