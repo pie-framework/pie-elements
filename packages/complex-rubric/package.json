@@ -10,7 +10,7 @@
     "@pie-element/multi-trait-rubric": "^2.8.0",
     "@pie-element/rubric": "^2.6.1",
     "@pie-framework/pie-player-events": "^0.1.0",
-    "@pie-lib/rubric": "^0.7.12",
+    "@pie-lib/rubric": "^0.7.15",
     "classnames": "^2.2.5",
     "debug": "^4.1.1",
     "lodash": "^4.17.11",
