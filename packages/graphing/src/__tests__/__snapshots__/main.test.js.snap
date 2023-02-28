@@ -18,6 +18,5 @@ exports[`Main render snapshot 1`] = `
     marks={Array []}
     onChangeMarks={[MockFunction]}
   />
-  <br />
 </div>
 `;

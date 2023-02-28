@@ -201,98 +201,77 @@ export class Design extends React.Component {
           />
         }
       >
-        <div className={classes.container}>
-          {teacherInstructionsEnabled && (
-            <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
-              <EditableHtml
-                className={classes.prompt}
-                markup={model.teacherInstructions || ''}
-                onChange={this.onTeacherInstructionsChanged}
-                imageSupport={imageSupport}
-                nonEmpty={false}
-                toolbarOpts={toolbarOpts}
-                spellCheck={spellCheckEnabled}
-                maxImageWidth={(maxImageWidth && maxImageWidth.teacherInstructions) || defaultImageMaxWidth}
-                maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
-                uploadSoundSupport={uploadSoundSupport}
-                languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
-              />
-            </InputContainer>
-          )}
+        {teacherInstructionsEnabled && (
+          <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
+            <EditableHtml
+              className={classes.prompt}
+              markup={model.teacherInstructions || ''}
+              onChange={this.onTeacherInstructionsChanged}
+              imageSupport={imageSupport}
+              nonEmpty={false}
+              toolbarOpts={toolbarOpts}
+              spellCheck={spellCheckEnabled}
+              maxImageWidth={(maxImageWidth && maxImageWidth.teacherInstructions) || defaultImageMaxWidth}
+              maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
+              uploadSoundSupport={uploadSoundSupport}
+              languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+            />
+          </InputContainer>
+        )}
 
-          {promptEnabled && (
-            <InputContainer label={prompt.label || ''} className={classes.promptHolder}>
-              <EditableHtml
-                className={classes.prompt}
-                markup={model.prompt}
-                onChange={this.onPromptChanged}
-                imageSupport={imageSupport}
-                toolbarOpts={toolbarOpts}
-                spellCheck={spellCheckEnabled}
-                maxImageWidth={defaultImageMaxWidth}
-                maxImageHeight={defaultImageMaxHeight}
-                uploadSoundSupport={uploadSoundSupport}
-                languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
-              />
-            </InputContainer>
-          )}
+        {promptEnabled && (
+          <InputContainer label={prompt.label || ''} className={classes.promptHolder}>
+            <EditableHtml
+              className={classes.prompt}
+              markup={model.prompt}
+              onChange={this.onPromptChanged}
+              imageSupport={imageSupport}
+              toolbarOpts={toolbarOpts}
+              spellCheck={spellCheckEnabled}
+              maxImageWidth={defaultImageMaxWidth}
+              maxImageHeight={defaultImageMaxHeight}
+              uploadSoundSupport={uploadSoundSupport}
+              languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+            />
+          </InputContainer>
+        )}
 
-          {rationaleEnabled && (
-            <InputContainer label={rationale.label || ''} className={classes.promptHolder}>
-              <EditableHtml
-                className={classes.prompt}
-                markup={model.rationale || ''}
-                onChange={this.onRationaleChanged}
-                imageSupport={imageSupport}
-                toolbarOpts={toolbarOpts}
-                spellCheck={spellCheckEnabled}
-                maxImageWidth={(maxImageWidth && maxImageWidth.rationale) || defaultImageMaxWidth}
-                maxImageHeight={(maxImageHeight && maxImageHeight.rationale) || defaultImageMaxHeight}
-                uploadSoundSupport={uploadSoundSupport}
-                languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
-              />
-            </InputContainer>
-          )}
-
-          {text.settings && (
+        {text.settings && (
+          <InputContainer label={text.label || ''} className={classes.promptHolder}>
             <TextField
-              label={text.label}
               className={classes.input}
               multiline
               defaultValue={textValue}
               onChange={this.changeText}
               spellCheck={spellCheckEnabled}
             />
-          )}
+          </InputContainer>
+        )}
 
-          {tokens.settings && (
-            <InputContainer label={tokens.label || ''} className={classes.tokenizerContainer}>
-              <Tooltip
-                classes={{ tooltip: classes.tooltip }}
-                disableFocusListener
-                disableTouchListener
-                placement={'right'}
-                title={validationMessage}
-              >
-                <Info
-                  fontSize={'small'}
-                  color={'primary'}
-                  style={{ position: 'absolute', left: '48px', top: '-3px' }}
-                />
-              </Tooltip>
+        {tokens.settings && (
+          <InputContainer label={tokens.label || ''} className={classes.tokenizerContainer}>
+            <Tooltip
+              classes={{ tooltip: classes.tooltip }}
+              disableFocusListener
+              disableTouchListener
+              placement={'right'}
+              title={validationMessage}
+            >
+              <Info fontSize={'small'} color={'primary'} style={{ position: 'absolute', left: '48px', top: '-3px' }} />
+            </Tooltip>
 
-              <Tokenizer
-                className={classes.tokenizer}
-                text={model.text}
-                tokens={tokensModel}
-                onChange={this.changeTokens}
-              />
-            </InputContainer>
-          )}
+            <Tokenizer
+              className={classes.tokenizer}
+              text={model.text}
+              tokens={tokensModel}
+              onChange={this.changeTokens}
+            />
+          </InputContainer>
+        )}
+        {tokensError && <div className={classes.errorText}>{tokensError}</div>}
+        {selectionsError && <div className={classes.errorText}>{selectionsError}</div>}
 
-          {tokensError && <div className={classes.errorText}>{tokensError}</div>}
-          {selectionsError && <div className={classes.errorText}>{selectionsError}</div>}
-
+        <div className={classes.tokensDetails}>
           {mode.settings && (
             <Chip label={`${mode.label}: ${model.mode ? model.mode : 'None'}`} className={classes.chip} />
           )}
@@ -318,20 +297,34 @@ export class Design extends React.Component {
               className={classes.numberField}
             />
           )}
-
-          {feedbackEnabled && (
-            <FeedbackConfig feedback={model.feedback} onChange={this.changeFeedback} toolbarOpts={toolbarOpts} />
-          )}
         </div>
+
+        {rationaleEnabled && (
+          <InputContainer label={rationale.label || ''} className={classes.promptHolder}>
+            <EditableHtml
+              className={classes.prompt}
+              markup={model.rationale || ''}
+              onChange={this.onRationaleChanged}
+              imageSupport={imageSupport}
+              toolbarOpts={toolbarOpts}
+              spellCheck={spellCheckEnabled}
+              maxImageWidth={(maxImageWidth && maxImageWidth.rationale) || defaultImageMaxWidth}
+              maxImageHeight={(maxImageHeight && maxImageHeight.rationale) || defaultImageMaxHeight}
+              uploadSoundSupport={uploadSoundSupport}
+              languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+            />
+          </InputContainer>
+        )}
+
+        {feedbackEnabled && (
+          <FeedbackConfig feedback={model.feedback} onChange={this.changeFeedback} toolbarOpts={toolbarOpts} />
+        )}
       </layout.ConfigLayout>
     );
   }
 }
 
 export default withStyles((theme) => ({
-  container: {
-    paddingTop: theme.spacing.unit,
-  },
   tokenizerContainer: {
     paddingRight: 0,
     marginRight: 0,
@@ -351,7 +344,6 @@ export default withStyles((theme) => ({
   },
   input: {
     width: '100%',
-    paddingBottom: theme.spacing.unit * 3,
   },
   tokenizer: {
     marginTop: theme.spacing.unit * 2,
@@ -364,15 +356,17 @@ export default withStyles((theme) => ({
   },
   promptHolder: {
     width: '100%',
-    paddingBottom: theme.spacing.unit * 2,
+    paddingTop: theme.spacing.unit * 2,
     marginBottom: theme.spacing.unit * 2,
   },
-  prompt: {
-    paddingTop: theme.spacing.unit * 2,
-    width: '100%',
+  tokensDetails: {
+    display: 'flex',
+    alignItems: 'center',
+    marginBottom: theme.spacing.unit * 2.5,
   },
   numberField: {
     width: '180px',
+    margin: '0 auto',
   },
   tooltip: {
     fontSize: theme.typography.fontSize - 2,
@@ -381,7 +375,7 @@ export default withStyles((theme) => ({
   },
   errorText: {
     fontSize: theme.typography.fontSize - 2,
-    color: 'red',
+    color: theme.palette.error.main,
     paddingBottom: theme.spacing.unit,
   },
 }))(Design);

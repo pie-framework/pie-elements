@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import classNames from 'classnames';
 import { FeedbackConfig, InputContainer, layout, settings } from '@pie-lib/config-ui';
 import { countInAnswer, ensureNoExtraChoicesInAnswer, ensureNoExtraChoicesInAlternate } from '@pie-lib/categorize';
 import EditableHtml from '@pie-lib/editable-html';
@@ -10,7 +9,6 @@ import { uid, withDragContext } from '@pie-lib/drag';
 import Categories from './categories';
 import AlternateResponses from './categories/alternateResponses';
 import Choices from './choices';
-import { Divider } from './buttons';
 import { buildAlternateResponses, buildCategories } from './builder';
 import Header from './header';
 import { multiplePlacements } from '../utils';
@@ -151,15 +149,7 @@ export class Design extends React.Component {
   };
 
   render() {
-    const {
-      classes,
-      className,
-      configuration,
-      imageSupport,
-      model,
-      uploadSoundSupport,
-      onConfigurationChanged,
-    } = this.props;
+    const { classes, configuration, imageSupport, model, uploadSoundSupport, onConfigurationChanged } = this.props;
     const {
       allowMultiplePlacements = {},
       allowAlternate = {},
@@ -263,127 +253,125 @@ export class Design extends React.Component {
             />
           }
         >
-          <div className={classNames(classes.design, className)}>
-            {promptEnabled && (
-              <InputContainer label={prompt.label} className={classes.promptHolder}>
-                <EditableHtml
-                  className={classes.prompt}
-                  markup={model.prompt || ''}
-                  onChange={this.onPromptChanged}
-                  imageSupport={imageSupport}
-                  nonEmpty={false}
-                  disableUnderline
-                  toolbarOpts={toolbarOpts}
-                  spellCheck={spellCheckEnabled}
-                  maxImageWidth={maxImageWidth && maxImageWidth.prompt}
-                  maxImageHeight={maxImageHeight && maxImageHeight.prompt}
-                  uploadSoundSupport={uploadSoundSupport}
-                  languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
-                />
-              </InputContainer>
-            )}
+          {teacherInstructionsEnabled && (
+            <InputContainer label={teacherInstructions.label} className={classes.inputContainer}>
+              <EditableHtml
+                className={classes.input}
+                markup={model.teacherInstructions || ''}
+                onChange={this.changeTeacherInstructions}
+                imageSupport={imageSupport}
+                nonEmpty={false}
+                toolbarOpts={toolbarOpts}
+                spellCheck={spellCheckEnabled}
+                maxImageWidth={(maxImageWidth && maxImageWidth.teacherInstructions) || defaultImageMaxWidth}
+                maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
+                uploadSoundSupport={uploadSoundSupport}
+                languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+              />
+            </InputContainer>
+          )}
 
-            {teacherInstructionsEnabled && (
-              <InputContainer label={teacherInstructions.label} className={classes.inputHolder}>
-                <EditableHtml
-                  className={classes.input}
-                  markup={model.teacherInstructions || ''}
-                  onChange={this.changeTeacherInstructions}
-                  imageSupport={imageSupport}
-                  nonEmpty={false}
-                  toolbarOpts={toolbarOpts}
-                  spellCheck={spellCheckEnabled}
-                  maxImageWidth={(maxImageWidth && maxImageWidth.teacherInstructions) || defaultImageMaxWidth}
-                  maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
-                  uploadSoundSupport={uploadSoundSupport}
-                  languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
-                />
-              </InputContainer>
-            )}
+          {promptEnabled && (
+            <InputContainer label={prompt.label} className={classes.inputContainer}>
+              <EditableHtml
+                className={classes.input}
+                markup={model.prompt || ''}
+                onChange={this.onPromptChanged}
+                imageSupport={imageSupport}
+                nonEmpty={false}
+                disableUnderline
+                toolbarOpts={toolbarOpts}
+                spellCheck={spellCheckEnabled}
+                maxImageWidth={maxImageWidth && maxImageWidth.prompt}
+                maxImageHeight={maxImageHeight && maxImageHeight.prompt}
+                uploadSoundSupport={uploadSoundSupport}
+                languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+              />
+            </InputContainer>
+          )}
 
-            {rationaleEnabled && (
-              <InputContainer label={rationale.label} className={classes.inputHolder}>
-                <EditableHtml
-                  className={classes.input}
-                  markup={model.rationale || ''}
-                  onChange={this.changeRationale}
-                  imageSupport={imageSupport}
-                  nonEmpty={false}
-                  toolbarOpts={toolbarOpts}
-                  spellCheck={spellCheckEnabled}
-                  maxImageWidth={(maxImageWidth && maxImageWidth.rationale) || defaultImageMaxWidth}
-                  maxImageHeight={(maxImageHeight && maxImageHeight.rationale) || defaultImageMaxHeight}
-                  uploadSoundSupport={uploadSoundSupport}
-                  languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
-                />
-              </InputContainer>
-            )}
+          <Categories
+            imageSupport={imageSupport}
+            uploadSoundSupport={uploadSoundSupport}
+            model={model}
+            categories={categories || []}
+            onModelChanged={this.updateModel}
+            toolbarOpts={toolbarOpts}
+            spellCheck={spellCheckEnabled}
+            configuration={configuration}
+            defaultImageMaxWidth={defaultImageMaxWidth}
+            defaultImageMaxHeight={defaultImageMaxHeight}
+          />
 
-            <Categories
-              imageSupport={imageSupport}
-              uploadSoundSupport={uploadSoundSupport}
-              model={model}
-              categories={categories || []}
-              onModelChanged={this.updateModel}
-              toolbarOpts={toolbarOpts}
-              spellCheck={spellCheckEnabled}
-              configuration={configuration}
-              defaultImageMaxWidth={defaultImageMaxWidth}
-              defaultImageMaxHeight={defaultImageMaxHeight}
+          <Choices
+            imageSupport={imageSupport}
+            uploadSoundSupport={uploadSoundSupport}
+            choices={choices}
+            model={model}
+            onModelChanged={this.updateModel}
+            toolbarOpts={toolbarOpts}
+            spellCheck={spellCheckEnabled}
+            configuration={configuration}
+            defaultImageMaxWidth={defaultImageMaxWidth}
+            defaultImageMaxHeight={defaultImageMaxHeight}
+          />
+
+          {allowAlternateEnabled && (
+            <Header
+              className={classes.alternatesHeader}
+              label="Alternate Responses"
+              buttonLabel="ADD AN ALTERNATE RESPONSE"
+              onAdd={this.onAddAlternateResponse}
             />
-            <Choices
-              imageSupport={imageSupport}
-              uploadSoundSupport={uploadSoundSupport}
-              choices={choices}
-              model={model}
-              onModelChanged={this.updateModel}
-              toolbarOpts={toolbarOpts}
-              spellCheck={spellCheckEnabled}
-              configuration={configuration}
-              defaultImageMaxWidth={defaultImageMaxWidth}
-              defaultImageMaxHeight={defaultImageMaxHeight}
-            />
-            {allowAlternateEnabled && (
-                <Header
+          )}
+          {allowAlternateEnabled &&
+            alternateResponses.map((categoriesList, index) => {
+              return (
+                <React.Fragment key={index}>
+                  <Header
                     className={classes.alternatesHeader}
-                    label="Alternate Responses"
-                    buttonLabel="ADD AN ALTERNATE RESPONSE"
-                    onAdd={this.onAddAlternateResponse}
-                />
-            )}
-            {allowAlternateEnabled &&
-                alternateResponses.map((categoriesList, index) => {
-                  return (
-                      <React.Fragment key={index}>
-                        <Header
-                            className={classes.alternatesHeader}
-                            variant={'subtitle1'}
-                            label="Alternate Response"
-                            buttonLabel="REMOVE ALTERNATE RESPONSE"
-                            onAdd={() => this.onRemoveAlternateResponse(index)}
-                        />
-                        <AlternateResponses
-                            altIndex={index}
-                            imageSupport={imageSupport}
-                            model={model}
-                            configuration={configuration}
-                            categories={categoriesList}
-                            onModelChanged={this.updateModel}
-                            uploadSoundSupport={uploadSoundSupport}
-                            toolbarOpts={toolbarOpts}
-                            defaultImageMaxWidth={defaultImageMaxWidth}
-                            defaultImageMaxHeight={defaultImageMaxHeight}
-                        />
-                      </React.Fragment>
-                  );
-                })}
-            {allowAlternateEnabled &&
-                <Divider/>
-            }
-            {feedbackEnabled && (
-              <FeedbackConfig feedback={model.feedback} onChange={this.changeFeedback} toolbarOpts={toolbarOpts} />
-            )}
-          </div>
+                    variant={'subtitle1'}
+                    label="Alternate Response"
+                    buttonLabel="REMOVE ALTERNATE RESPONSE"
+                    onAdd={() => this.onRemoveAlternateResponse(index)}
+                  />
+                  <AlternateResponses
+                    altIndex={index}
+                    imageSupport={imageSupport}
+                    model={model}
+                    configuration={configuration}
+                    categories={categoriesList}
+                    onModelChanged={this.updateModel}
+                    uploadSoundSupport={uploadSoundSupport}
+                    toolbarOpts={toolbarOpts}
+                    defaultImageMaxWidth={defaultImageMaxWidth}
+                    defaultImageMaxHeight={defaultImageMaxHeight}
+                  />
+                </React.Fragment>
+              );
+            })}
+
+          {rationaleEnabled && (
+            <InputContainer label={rationale.label} className={classes.inputContainer}>
+              <EditableHtml
+                className={classes.input}
+                markup={model.rationale || ''}
+                onChange={this.changeRationale}
+                imageSupport={imageSupport}
+                nonEmpty={false}
+                toolbarOpts={toolbarOpts}
+                spellCheck={spellCheckEnabled}
+                maxImageWidth={(maxImageWidth && maxImageWidth.rationale) || defaultImageMaxWidth}
+                maxImageHeight={(maxImageHeight && maxImageHeight.rationale) || defaultImageMaxHeight}
+                uploadSoundSupport={uploadSoundSupport}
+                languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+              />
+            </InputContainer>
+          )}
+
+          {feedbackEnabled && (
+            <FeedbackConfig feedback={model.feedback} onChange={this.changeFeedback} toolbarOpts={toolbarOpts} />
+          )}
         </layout.ConfigLayout>
       </IdProvider>
     );
@@ -392,34 +380,15 @@ export class Design extends React.Component {
 
 const styles = (theme) => ({
   alternatesHeader: {
-    paddingTop: theme.spacing.unit * 2,
-    paddingBottom: theme.spacing.unit * 2,
+    marginBottom: theme.spacing.unit * 2,
   },
   text: {
     paddingTop: theme.spacing.unit * 2,
     paddingBottom: theme.spacing.unit * 2,
   },
-  design: {
-    paddingTop: theme.spacing.unit,
-    paddingBottom: theme.spacing.unit,
-  },
-  inputHolder: {
+  inputContainer: {
     width: '100%',
-    paddingBottom: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit * 2,
-  },
-  input: {
     paddingTop: theme.spacing.unit * 2,
-    width: '100%',
-    maxWidth: '600px',
-  },
-  prompt: {
-    paddingTop: theme.spacing.unit * 2,
-    width: '100%',
-  },
-  promptHolder: {
-    width: '100%',
-    paddingBottom: theme.spacing.unit * 2,
     marginBottom: theme.spacing.unit * 2,
   },
   title: {

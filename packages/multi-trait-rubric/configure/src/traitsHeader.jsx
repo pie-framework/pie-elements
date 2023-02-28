@@ -38,6 +38,7 @@ const styles = {
     background: color.secondaryBackground(),
     borderRadius: '4px',
     position: 'relative',
+    marginBottom: '16px',
   },
   primaryBlockGreyHeader: {
     paddingTop: '12px',

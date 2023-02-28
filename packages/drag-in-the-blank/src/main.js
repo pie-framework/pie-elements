@@ -1,11 +1,9 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
 import { DragInTheBlank } from '@pie-lib/mask-markup';
 import { withDragContext } from '@pie-lib/drag';
 import { color, Collapsible, hasText, PreviewPrompt } from '@pie-lib/render-ui';
-import { renderMath } from '@pie-lib/math-rendering';
 import { withStyles } from '@material-ui/core/styles';
 
 const DraggableDragInTheBlank = withDragContext(DragInTheBlank);
@@ -35,43 +33,34 @@ export class Main extends React.Component {
     const { showCorrectAnswer } = this.state;
     const { model, onChange, value, classes } = this.props;
     const { prompt, mode } = model;
-    const modelWithValue = {
-      ...model,
-      value,
-    };
+    const modelWithValue = { ...model, value };
     const showCorrectAnswerToggle = mode === 'evaluate';
 
     return (
       <div className={classes.mainContainer}>
         {model.teacherInstructions && hasText(model.teacherInstructions) && (
-          <React.Fragment>
-            <Collapsible labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}>
-              <PreviewPrompt prompt={model.teacherInstructions} />
-            </Collapsible>
-            <br />
-          </React.Fragment>
+          <Collapsible
+            className={classes.collapsible}
+            labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}
+          >
+            <PreviewPrompt prompt={model.teacherInstructions} />
+          </Collapsible>
         )}
+
+        {prompt && <PreviewPrompt prompt={prompt} />}
+
         <CorrectAnswerToggle
           show={showCorrectAnswerToggle}
           toggled={showCorrectAnswer}
           onToggle={this.toggleShowCorrect}
         />
-        {showCorrectAnswerToggle && <br />}
-        {prompt && (
-          <React.Fragment>
-            <PreviewPrompt prompt={prompt} />
-            <br />
-          </React.Fragment>
-        )}
+
         <DraggableDragInTheBlank {...modelWithValue} onChange={onChange} showCorrectAnswer={showCorrectAnswer} />
+
         {model.rationale && hasText(model.rationale) && (
-          <React.Fragment>
-            <br />
-            <Collapsible labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }}>
-              <PreviewPrompt prompt={model.rationale} />
-            </Collapsible>
-            <br />
-          </React.Fragment>
+          <Collapsible className={classes.rationale} labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }}>
+            <PreviewPrompt prompt={model.rationale} />
+          </Collapsible>
         )}
       </div>
     );
@@ -80,12 +69,17 @@ export class Main extends React.Component {
 
 const styles = (theme) => ({
   mainContainer: {
-    padding: theme.spacing.unit,
     color: color.text(),
     backgroundColor: color.background(),
     '& tr > td': {
       color: color.text(),
     },
+  },
+  collapsible: {
+    marginBottom: theme.spacing.unit * 2,
+  },
+  rationale: {
+    marginTop: theme.spacing.unit * 2,
   },
 });
 

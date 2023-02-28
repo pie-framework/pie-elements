@@ -7,16 +7,7 @@ import { DragSource, DropTarget } from 'react-dnd';
 import { withStyles } from '@material-ui/core/styles';
 import { color } from '@pie-lib/render-ui';
 
-import {
-  Block,
-  BlockWidth,
-  DragHandleSpace,
-  ExpandedInput,
-  PrimaryBlock,
-  Row,
-  SecondaryBlock,
-  UnderlinedInput,
-} from './common';
+import { Block, BlockWidth, ExpandedInput, PrimaryBlock, Row, SecondaryBlock, UnderlinedInput } from './common';
 import { labelPlugins } from './utils';
 
 import IconButton from '@material-ui/core/IconButton';
@@ -27,29 +18,31 @@ import DragIndicatorIcon from '@material-ui/icons/DragIndicator';
 
 const log = debug('@pie-element:placement-ordering:configure:trait-tile');
 
-const styles = {
+const styles = (theme) => ({
   actions: {
     color: color.text(),
   },
+  primaryBlock: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    marginBottom: theme.spacing.unit * 5,
+  },
   controls: {
     display: 'flex',
-    justifyContent: 'flex-end',
-    position: 'absolute',
-    top: '28px',
-    right: '8px',
+    alignItems: 'center',
+    width: '100%',
     cursor: 'pointer',
   },
-  dragHandle: {
-    position: 'absolute',
-    top: '80px',
-    left: `-${DragHandleSpace}px`,
-    cursor: 'move',
+  options: {
+    marginLeft: 'auto',
   },
+  dragHandle: {},
   removeLabel: {
     display: 'flex',
     whiteSpace: 'break-spaces',
   },
-};
+});
 
 export class TraitTile extends React.Component {
   state = {};
@@ -125,18 +118,26 @@ export class TraitTile extends React.Component {
       connectDropTarget(
         <div>
           <Row>
-            <PrimaryBlock>
-              {enableDragAndDrop
-                ? connectDragSource(
-                    <span className={classes.dragHandle}>
-                      <DragIndicatorIcon className={classes.actions} />
-                    </span>,
-                  )
-                : null}
+            <PrimaryBlock className={classes.primaryBlock}>
               <div className={classes.controls}>
-                <IconButton aria-label="more" aria-controls="long-menu" aria-haspopup="true" onClick={this.handleClick}>
+                {enableDragAndDrop
+                  ? connectDragSource(
+                      <span className={classes.dragHandle}>
+                        <DragIndicatorIcon className={classes.actions} />
+                      </span>,
+                    )
+                  : null}
+
+                <IconButton
+                  className={classes.options}
+                  aria-label="more"
+                  aria-controls="long-menu"
+                  aria-haspopup="true"
+                  onClick={this.handleClick}
+                >
                   <MoreVertIcon />
                 </IconButton>
+
                 <Menu id="long-menu" anchorEl={anchorEl} keepMounted open={!!anchorEl} onClose={this.handleClose}>
                   <MenuItem onClick={this.openMenu}>
                     <div className={classes.removeLabel} dangerouslySetInnerHTML={{ __html: `Remove ${name}` }} />
@@ -153,6 +154,7 @@ export class TraitTile extends React.Component {
                 uploadSoundSupport={uploadSoundSupport}
               />
             </PrimaryBlock>
+
             <SecondaryBlock
               setRef={(ref) => {
                 this.secondaryBlock = ref;

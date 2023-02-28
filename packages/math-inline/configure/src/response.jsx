@@ -19,7 +19,7 @@ const INDIVIDUAL_RESPONSE_CORRECTNESS_SUPPORTED = false;
 
 const styles = (theme) => ({
   responseContainer: {
-    marginTop: theme.spacing.unit * 2,
+    marginBottom: theme.spacing.unit * 2.5,
     width: '100%',
     border: '1px solid darkgray',
     display: 'flex',
@@ -27,7 +27,7 @@ const styles = (theme) => ({
     justifyContent: 'space-between',
   },
   cardContent: {
-    paddingBottom: `${theme.spacing.unit}px !important`,
+    paddingBottom: `${theme.spacing.unit * 2}px !important`,
   },
   title: {
     fontWeight: 700,
@@ -38,7 +38,7 @@ const styles = (theme) => ({
     flex: 2,
   },
   inputContainer: {
-    marginTop: theme.spacing.unit,
+    marginBottom: theme.spacing.unit * 2,
   },
   titleBar: {
     display: 'flex',
@@ -58,11 +58,6 @@ const styles = (theme) => ({
   mathToolbar: {
     width: '100%',
   },
-  configPanel: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
   alternateButton: {
     border: '1px solid lightgrey',
   },
@@ -72,19 +67,10 @@ const styles = (theme) => ({
     color: 'gray',
     fontSize: '0.8rem',
   },
-  checkboxContainer: {
-    marginTop: theme.spacing.unit * 2,
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-  configLabel: {
-    marginRight: 'auto',
-  },
   errorText: {
-    fontSize: '12px',
-    color: 'red',
-    padding: '5px 0',
+    fontSize: theme.typography.fontSize - 2,
+    color: theme.palette.error.main,
+    paddingTop: theme.spacing.unit,
   },
 });
 
@@ -257,9 +243,10 @@ class Response extends React.Component {
       <Card className={classes.responseContainer} style={styles}>
         <CardContent className={classes.cardContent}>
           <div className={classes.titleBar}>
-            <Typography className={classes.title} component="h2">
+            <Typography className={classes.title} component="div">
               Response {INDIVIDUAL_RESPONSE_CORRECTNESS_SUPPORTED ? (defaultResponse ? '' : index + 1) : ''}
             </Typography>
+
             <InputContainer label="Validation" className={classes.selectContainer}>
               <Select className={classes.select} onChange={this.onChange('validation')} value={validation || 'literal'}>
                 <MenuItem value="literal">Literal Validation</MenuItem>
@@ -267,6 +254,7 @@ class Response extends React.Component {
               </Select>
             </InputContainer>
           </div>
+
           {validation === 'literal' && (
             <div className={classes.flexContainer}>
               {cAllowTrailingZeros.enabled && (
@@ -289,6 +277,7 @@ class Response extends React.Component {
               )}
             </div>
           )}
+
           <div className={classes.inputContainer}>
             <InputLabel>Correct Answer</InputLabel>
             <MathToolbar
@@ -304,6 +293,7 @@ class Response extends React.Component {
             />
             {error && error.answer ? <div className={classes.errorText}>{error.answer}</div> : null}
           </div>
+
           {hasAlternates &&
             Object.keys(alternates).map((alternateId, altIdx) => (
               <div className={classes.inputContainer} key={alternateId}>
@@ -320,6 +310,7 @@ class Response extends React.Component {
                     Remove
                   </Button>
                 </div>
+
                 <MathToolbar
                   classNames={classNames}
                   controlledKeypad
@@ -334,12 +325,10 @@ class Response extends React.Component {
                 {error && error[alternateId] ? <div className={classes.errorText}>{error[alternateId]}</div> : null}
               </div>
             ))}
-          <div className={classes.configPanel}>
-            <Button className={classes.alternateButton} type="primary" onClick={this.onAddAlternate}>
-              ADD ALTERNATE
-            </Button>
-            <div className={classes.checkboxContainer}></div>
-          </div>
+
+          <Button className={classes.alternateButton} type="primary" onClick={this.onAddAlternate}>
+            ADD ALTERNATE
+          </Button>
         </CardContent>
       </Card>
     );

@@ -50,6 +50,9 @@ export default class MathInline extends HTMLElement {
   }
 
   connectedCallback() {
+    this.setAttribute('aria-label', 'Math Response Question'); 
+    this.setAttribute('role', 'region');
+
     this._render();
   }
 

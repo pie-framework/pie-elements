@@ -69,8 +69,10 @@ export class Main extends React.Component {
 
     return (
       <div className={classes.mainContainer}>
-        <CorrectAnswerToggle show={mode === 'evaluate'} toggled={showCorrectAnswer} onToggle={this.toggleShowCorrect} />
         <PreviewPrompt className="prompt" prompt={prompt} />
+
+        <CorrectAnswerToggle show={mode === 'evaluate'} toggled={showCorrectAnswer} onToggle={this.toggleShowCorrect} />
+
         <AnswerArea
           instanceId={this.instanceId}
           model={model}
@@ -80,7 +82,15 @@ export class Main extends React.Component {
           disabled={mode !== 'gather'}
           showCorrect={showCorrectAnswer}
         />
-        <ChoicesList instanceId={this.instanceId} model={model} session={session} disabled={mode !== 'gather'} onRemoveAnswer={(id) => this.onRemoveAnswer(id)}/>
+
+        <ChoicesList
+          instanceId={this.instanceId}
+          model={model}
+          session={session}
+          disabled={mode !== 'gather'}
+          onRemoveAnswer={(id) => this.onRemoveAnswer(id)}
+        />
+
         {model.correctness && model.feedback && !showCorrectAnswer && (
           <Feedback correctness={model.correctness.correctness} feedback={model.feedback} />
         )}
@@ -96,16 +106,9 @@ const styles = (theme) => ({
     justifyContent: 'center',
     color: color.text(),
     backgroundColor: color.background(),
-    padding: (theme.spacing.unit * 3) / 2,
   },
   promptList: {
     alignItems: 'flex-start',
-  },
-  main: {
-    width: '100%',
-  },
-  toggle: {
-    paddingBottom: theme.spacing.unit * 3,
   },
 });
 

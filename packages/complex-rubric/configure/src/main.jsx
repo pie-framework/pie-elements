@@ -7,12 +7,7 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import { withStyles } from '@material-ui/core/styles';
 import { FormControlLabel } from '@material-ui/core';
 
-const styles = {
-  rubric: {
-    display: 'flex',
-    flexDirection: 'column',
-  },
-};
+const styles = {};
 
 export class Main extends React.Component {
   static propTypes = {
@@ -87,30 +82,26 @@ export class Main extends React.Component {
 
     return (
       <layout.ConfigLayout hideSettings={true} settings={null}>
-        <div className={classes.rubric}>
-          <div>
-            <RadioGroup
-              aria-label="rubric-type"
-              name="rubricType"
-              value={model.rubricType}
-              onChange={this.onChangeRubricType}
-            >
-              <FormControlLabel
-                value={RUBRIC_TYPES.SIMPLE_RUBRIC}
-                control={<Radio checked={rubricType === RUBRIC_TYPES.SIMPLE_RUBRIC}/>}
-                label="Simple Rubric"
-              />
+        <RadioGroup
+          aria-label="rubric-type"
+          name="rubricType"
+          value={model.rubricType}
+          onChange={this.onChangeRubricType}
+        >
+          <FormControlLabel
+            value={RUBRIC_TYPES.SIMPLE_RUBRIC}
+            control={<Radio checked={rubricType === RUBRIC_TYPES.SIMPLE_RUBRIC} />}
+            label="Simple Rubric"
+          />
 
-              <FormControlLabel
-                value={RUBRIC_TYPES.MULTI_TRAIT_RUBRIC}
-                control={<Radio checked={rubricType === RUBRIC_TYPES.MULTI_TRAIT_RUBRIC}/>}
-                label="Multi Trait Rubric"
-              />
-            </RadioGroup>
-          </div>
+          <FormControlLabel
+            value={RUBRIC_TYPES.MULTI_TRAIT_RUBRIC}
+            control={<Radio checked={rubricType === RUBRIC_TYPES.MULTI_TRAIT_RUBRIC} />}
+            label="Multi Trait Rubric"
+          />
+        </RadioGroup>
 
-          <div>{rubricTag}</div>
-        </div>
+        {rubricTag}
       </layout.ConfigLayout>
     );
   }

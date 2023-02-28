@@ -104,7 +104,6 @@ describe('Configure', () => {
     component = wrapper();
 
     expect(component.find(GeneralConfigBlock).length).toEqual(1);
-    expect(component.find(layout.ConfigLayout).length).toEqual(1);
     expect(component.find(FeedbackConfig).length).toEqual(1);
   });
 

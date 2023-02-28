@@ -63,6 +63,7 @@ export class InlineDropdown extends React.Component {
 
           acc.push(currentValue);
         }
+
         return acc;
       }, []),
     );
@@ -70,61 +71,50 @@ export class InlineDropdown extends React.Component {
     return (
       <div className={classes.mainContainer} style={{ display: `${displayType}` }}>
         {teacherInstructions && hasText(teacherInstructions) && (
-          <React.Fragment>
-            <Collapsible labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}>
-              <PreviewPrompt prompt={teacherInstructions} />
-            </Collapsible>
-            <br />
-          </React.Fragment>
+          <Collapsible
+            className={classes.collapsible}
+            labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}
+          >
+            <PreviewPrompt prompt={teacherInstructions} />
+          </Collapsible>
         )}
 
-        {prompt && (
-          <React.Fragment>
-            <PreviewPrompt prompt={prompt} />
-            <br />
-          </React.Fragment>
-        )}
-        
+        {prompt && <PreviewPrompt prompt={prompt} />}
+
         <CorrectAnswerToggle
           show={showCorrectAnswerToggle}
           toggled={showCorrectAnswer}
           onToggle={this.toggleShowCorrect}
         />
-        {showCorrectAnswerToggle && <br />}
 
         <DropDown {...this.props} showCorrectAnswer={showCorrectAnswer} />
+
+        {choiceRationalesHaveText && (
+          <Collapsible
+            className={classes.collapsible}
+            labels={{ hidden: 'Show Rationale for choices', visible: 'Hide Rationale for choices' }}
+          >
+            {choiceRationales.map((choices, index) => (
+              <div key={index} className={classes.choiceRationaleWrapper}>
+                {choices?.length > 0 &&
+                  choices.map((choice) => (
+                    <div className={classes.choiceRationale} key={choice.label}>
+                      <div
+                        className={classNames(classes.choiceRationaleLabel, choice.correct ? 'correct' : 'incorrect')}
+                        dangerouslySetInnerHTML={{ __html: `${choice.label}: ` }}
+                      />
+                      <PreviewPrompt prompt={choice.rationale} />
+                    </div>
+                  ))}
+              </div>
+            ))}
+          </Collapsible>
+        )}
+
         {rationale && hasText(rationale) && (
           <Collapsible labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }}>
             <PreviewPrompt prompt={rationale} />
           </Collapsible>
-        )}
-        {choiceRationalesHaveText && (
-          <React.Fragment>
-            <br />
-            <Collapsible labels={{ hidden: 'Show Rationale for choices', visible: 'Hide Rationale for choices' }}>
-              <div>
-                {choiceRationales.map((choices, index) => (
-                  <div key={index}>
-                    {choices &&
-                      choices.length > 0 &&
-                      choices.map((choice) => (
-                        <div className={classes.choiceRationale} key={choice.label}>
-                          <div
-                            className={classNames(
-                              classes.choiceRationaleLabel,
-                              choice.correct ? 'correct' : 'incorrect',
-                            )}
-                            dangerouslySetInnerHTML={{ __html: `${choice.label}: ` }}
-                          />
-                          <PreviewPrompt prompt={choice.rationale} />
-                        </div>
-                      ))}
-                    {choices && choices.length > 0 && <br />}
-                  </div>
-                ))}
-              </div>
-            </Collapsible>
-          </React.Fragment>
         )}
       </div>
     );
@@ -135,7 +125,14 @@ const styles = (theme) => ({
   mainContainer: {
     color: color.text(),
     backgroundColor: color.background(),
-    padding: theme.spacing.unit,
+  },
+  collapsible: {
+    marginBottom: theme.spacing.unit * 2,
+  },
+  choiceRationaleWrapper: {
+    '&:not(:last-child)': {
+      marginBottom: theme.spacing.unit * 2,
+    },
   },
   choiceRationale: {
     display: 'flex',

@@ -15,7 +15,7 @@ export class AddRowButton extends React.Component {
 
     return (
       <Button className={classes.button} disabled={false} onClick={onAddClick}>
-        <AddButton />
+        <AddButton className={classes.icon} />
         Add Another Row
       </Button>
     );
@@ -27,7 +27,9 @@ const styles = (theme) => ({
     display: 'flex',
     alignSelf: 'flex-start',
     margin: 0,
-    marginBottom: theme.spacing.unit * 2,
+  },
+  icon: {
+    marginRight: theme.spacing.unit / 2,
   },
 });
 
