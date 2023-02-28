@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.9.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@4.9.0...@pie-element/explicit-constructed-response@4.9.1) (2023-02-28)
+
+
+### Bug Fixes
+
+* update pie-libs ([6a10f3f](https://github.com/pie-framework/pie-elements/commit/6a10f3f45306cc9d9e077e45a90245d047235521))
+
+
+
+
+
 # [4.9.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@4.8.0...@pie-element/explicit-constructed-response@4.9.0) (2023-02-28)
 
 

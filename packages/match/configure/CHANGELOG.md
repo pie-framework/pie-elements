@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.7.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-configure@5.7.1...@pie-element/match-configure@5.7.2) (2023-02-28)
+
+
+### Bug Fixes
+
+* update pie-libs ([6a10f3f](https://github.com/pie-framework/pie-elements/commit/6a10f3f45306cc9d9e077e45a90245d047235521))
+
+
+
+
+
 ## [5.7.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-configure@5.7.0...@pie-element/match-configure@5.7.1) (2023-02-28)
 
 
