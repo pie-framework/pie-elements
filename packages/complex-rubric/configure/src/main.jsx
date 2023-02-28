@@ -32,7 +32,7 @@ export class Main extends React.Component {
   };
 
   render() {
-    const { classes, model, configuration } = this.props;
+    const { classes, model, configuration, canUpdateModel } = this.props;
     const { rubrics = {} } = model;
     let { rubricType } = model;
     const { multiTraitRubric, simpleRubric, width } = configuration;
@@ -42,39 +42,42 @@ export class Main extends React.Component {
       rubricType = RUBRIC_TYPES.SIMPLE_RUBRIC;
     }
 
-    switch (rubricType) {
-      case RUBRIC_TYPES.SIMPLE_RUBRIC:
-      default:
-        rubricTag = (
-          <rubric-configure
-            id="simpleRubric"
-            key="simple-rubric"
-            ref={(ref) => {
-              if (ref) {
-                this.simpleRubric = ref;
-                this.simpleRubric.model = rubrics.simpleRubric;
-                this.simpleRubric.configuration = { ...simpleRubric, width };
-              }
-            }}
-          />
-        );
-        break;
+    if (canUpdateModel) {
+      switch (rubricType) {
+        case RUBRIC_TYPES.SIMPLE_RUBRIC:
+        default:
+          rubricTag = (
+            <rubric-configure
+              id="simpleRubric"
+              key="simple-rubric"
+              ref={(ref) => {
+                if (ref) {
+                  this.simpleRubric = ref;
+                  this.simpleRubric.model = rubrics.simpleRubric;
+                  this.simpleRubric.configuration = { ...simpleRubric, width };
+                }
+              }}
+            />
+          );
+          break;
 
-      case RUBRIC_TYPES.MULTI_TRAIT_RUBRIC:
-        rubricTag = (
-          <multi-trait-rubric-configure
-            id="multiTraitRubric"
-            key="multi-trait-rubric"
-            ref={(ref) => {
-              if (ref) {
-                this.multiTraitRubric = ref;
-                this.multiTraitRubric.model = rubrics.multiTraitRubric;
-                this.multiTraitRubric.configuration = { ...multiTraitRubric, width };
-              }
-            }}
-          />
-        );
-        break;
+        case RUBRIC_TYPES.MULTI_TRAIT_RUBRIC:
+          rubricTag = (
+            <multi-trait-rubric-configure
+              id="multiTraitRubric"
+              key="multi-trait-rubric"
+              ref={(ref) => {
+                if (ref) {
+                  this.multiTraitRubric = ref;
+
+                  this.multiTraitRubric.model = rubrics.multiTraitRubric;
+                  this.multiTraitRubric.configuration = { ...multiTraitRubric, width };
+                }
+              }}
+            />
+          );
+          break;
+      }
     }
 
     return (
