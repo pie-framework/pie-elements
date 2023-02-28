@@ -2282,10 +2282,10 @@
     redux "^4.0.1"
     redux-undo beta
 
-"@pie-lib/config-ui@^11.5.2":
-  version "11.5.2"
-  resolved "https://registry.yarnpkg.com/@pie-lib/config-ui/-/config-ui-11.5.2.tgz#7d493dc869899ab9ffa0f29ec11cde00e0c80124"
-  integrity sha512-74gqXENZ9wmYWu3dTNVnqZZIASlfnTD7Dj8zvfcelsM4fc6Mv0DSWw++XJqkgTJB0Amwig8qML6gctBJJ82yDw==
+"@pie-lib/config-ui@^11.5.3":
+  version "11.5.3"
+  resolved "https://registry.yarnpkg.com/@pie-lib/config-ui/-/config-ui-11.5.3.tgz#0832e0c691267c58875c97f38f4bc741340d5b5a"
+  integrity sha512-yGYcRA08sZhjVjM/W7PgLi9DCOWzNaAzSrNE8xYzKEGX8feAtMG0I5qhEXE6xCAziKzEHQdHfSi4hME0w7GKmw==
   dependencies:
     "@material-ui/core" "^3.8.3"
     "@material-ui/icons" "^3.0.2"
@@ -2593,14 +2593,14 @@
     react-beautiful-dnd "^11.0.2"
     react-dom "^16.9.0"
 
-"@pie-lib/scoring-config@^3.6.16":
-  version "3.6.16"
-  resolved "https://registry.yarnpkg.com/@pie-lib/scoring-config/-/scoring-config-3.6.16.tgz#e15bfd505e4fbb54deeda940d50c2db6fd246f6c"
-  integrity sha512-5NW00Ti1tUC57h7ke0Cof+1N4giwC1l8jmvtBuQWn8CpSWwF4AXVlxhLocdjLt3HPXdmNnB35ZyJLIzxsUCd4A==
+"@pie-lib/scoring-config@^3.6.17":
+  version "3.6.17"
+  resolved "https://registry.yarnpkg.com/@pie-lib/scoring-config/-/scoring-config-3.6.17.tgz#3dc65433527bbec6017675cec8897020dca3097e"
+  integrity sha512-poy+YvdGqdefa/Q5+1ubgVpQmiD4b4lnvWhVQQ51wmI+FUYGjmL4VocFCEX08b76lJ7rCxnONSMGrgAcGYpQ1Q==
   dependencies:
     "@material-ui/core" "^3.8.3"
     "@material-ui/icons" "^3.0.2"
-    "@pie-lib/config-ui" "^11.5.2"
+    "@pie-lib/config-ui" "^11.5.3"
     classnames "^2.2.6"
     debug "^4.1.1"
     lodash "^4.17.11"
