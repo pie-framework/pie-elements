@@ -208,7 +208,7 @@ export class CorrectResponse extends React.Component {
 
             <div
               key={`correct-response-graph-${model.correctAnswer.name}`}
-              className={identicalError || categoriesError ? classes.chartError : {}}
+              className={identicalError || categoriesError ? classes.chartError : ''}
             >
               <Chart
                 chartType={model.chartType}
