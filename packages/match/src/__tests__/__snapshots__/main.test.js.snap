@@ -4,11 +4,10 @@ exports[`Main render snapshot 1`] = `
 <Main
   classes={
     Object {
-      "collapsible": "Main-collapsible-5",
+      "collapsible": "Main-collapsible-4",
       "main": "Main-main-2",
       "mainContainer": "Main-mainContainer-1",
-      "prompt": "Main-prompt-4",
-      "toggle": "Main-toggle-3",
+      "prompt": "Main-prompt-3",
     }
   }
   model={
@@ -84,11 +83,10 @@ exports[`Main render snapshot with rationale 1`] = `
 <Main
   classes={
     Object {
-      "collapsible": "Main-collapsible-5",
+      "collapsible": "Main-collapsible-4",
       "main": "Main-main-2",
       "mainContainer": "Main-mainContainer-1",
-      "prompt": "Main-prompt-4",
-      "toggle": "Main-toggle-3",
+      "prompt": "Main-prompt-3",
     }
   }
   model={
@@ -165,11 +163,10 @@ exports[`Main render snapshot with teacher Instructions 1`] = `
 <Main
   classes={
     Object {
-      "collapsible": "Main-collapsible-5",
+      "collapsible": "Main-collapsible-4",
       "main": "Main-main-2",
       "mainContainer": "Main-mainContainer-1",
-      "prompt": "Main-prompt-4",
-      "toggle": "Main-toggle-3",
+      "prompt": "Main-prompt-3",
     }
   }
   model={

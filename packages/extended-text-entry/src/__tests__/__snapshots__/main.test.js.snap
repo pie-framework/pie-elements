@@ -50,7 +50,6 @@ exports[`Render Main Component should match snapshot with teacher instructions 1
         prompt="Teacher Instructions"
       />
     </WithStyles(Collapsible)>
-    <br />
   </div>
   <EditableHtml
     className="response-area-editor"

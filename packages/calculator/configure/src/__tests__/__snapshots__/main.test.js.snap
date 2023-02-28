@@ -28,7 +28,13 @@ exports[`Render a calculator element Creates snapshot using enzyme 1`] = `
     onClose={[Function]}
   />
   <br />
-  <WithStyles(Typography)>
+  <WithStyles(Typography)
+    style={
+      Object {
+        "paddingTop": "4px",
+      }
+    }
+  >
     Please note that the calculators are tools for students and do not record answers.
   </WithStyles(Typography)>
 </ConfigLayout>
