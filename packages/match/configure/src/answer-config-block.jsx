@@ -65,6 +65,9 @@ const styles = (theme) => ({
       fontWeight: 'bold',
     },
   },
+  marginBottom: {
+    marginBottom: theme.typography.fontSize - 2 + theme.spacing.unit
+  },
   errorText: {
     fontSize: theme.typography.fontSize - 2,
     color: 'red',
@@ -195,7 +198,7 @@ class AnswerConfigBlock extends React.Component {
                   <EditableHTML
                     onChange={this.onHeaderChange(idx)}
                     markup={header}
-                    className={classes.headerInput}
+                    className={columnsErrors && !columnsErrors[idx] ? classes.marginBottom : classes.headerInput}
                     label={'column label'}
                     activePlugins={filteredDefaultPlugins}
                     pluginProps={labelPlugins}
