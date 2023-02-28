@@ -260,6 +260,10 @@ exports[`Configure renders snapshot 1`] = `
               "title": "",
             },
           ],
+          "instruction": Object {
+            "label": "Graphing questions involve plotting points, lines, or other objects on a graph. To create one, first configure the grid, then select the plotting tools students will be offered, and use them to define the correct answer.",
+            "settings": false,
+          },
           "labels": Object {
             "bottom": "Click here to add a bottom label",
             "enabled": true,
@@ -332,6 +336,7 @@ exports[`Configure renders snapshot 1`] = `
           },
           "Properties": Object {
             "authoring.enabled": false,
+            "instruction": false,
             "promptEnabled": undefined,
             "rationaleEnabled": undefined,
             "rubricEnabled": false,
@@ -399,7 +404,7 @@ exports[`Configure renders snapshot 1`] = `
     component="div"
     type="body1"
   >
-    This interaction asks a student to draw a line that meets specific criteria. The student will draw the line by clicking on two points on the graph.
+    Graphing questions involve plotting points, lines, or other objects on a graph. To create one, first configure the grid, then select the plotting tools students will be offered, and use them to define the correct answer.
   </WithStyles(Typography)>
   <InputContainer
     label="Teacher Instructions"

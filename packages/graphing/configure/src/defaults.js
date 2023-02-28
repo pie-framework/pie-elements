@@ -340,6 +340,10 @@ export default {
       enabled: true,
       placeholder: 'Click here to add a title for this graph',
     },
+    instruction: {
+      settings: false,
+      label: 'Graphing questions involve plotting points, lines, or other objects on a graph. To create one, first configure the grid, then select the plotting tools students will be offered, and use them to define the correct answer.',
+    },
     settingsPanelDisabled: false,
     spellCheck: {
       label: 'Spellcheck',
