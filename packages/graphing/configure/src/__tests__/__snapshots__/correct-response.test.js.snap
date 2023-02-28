@@ -6,17 +6,13 @@ exports[`CorrectResponse renders snapshot 1`] = `
     component="div"
     variant="subheading"
   >
-    <span>
-      Define Tool Set and Correct Response
-    </span>
+    Define Tool Set and Correct Response
   </WithStyles(Typography)>
   <WithStyles(Typography)
     component="div"
     variant="body1"
   >
-    <span>
-      Use this interface to choose which graphing tools students will be able to use, and to define the correct answer
-    </span>
+    Use this interface to choose which graphing tools students will be able to use, and to define the correct answer
   </WithStyles(Typography)>
   <Tools
     classes={Object {}}
@@ -55,17 +51,13 @@ exports[`CorrectResponse: if answers is null it should still work as expected re
     component="div"
     variant="subheading"
   >
-    <span>
-      Define Tool Set and Correct Response
-    </span>
+    Define Tool Set and Correct Response
   </WithStyles(Typography)>
   <WithStyles(Typography)
     component="div"
     variant="body1"
   >
-    <span>
-      Use this interface to choose which graphing tools students will be able to use, and to define the correct answer
-    </span>
+    Use this interface to choose which graphing tools students will be able to use, and to define the correct answer
   </WithStyles(Typography)>
   <Tools
     classes={Object {}}
@@ -91,17 +83,13 @@ exports[`CorrectResponse: if answers is undefined it should still work as expect
     component="div"
     variant="subheading"
   >
-    <span>
-      Define Tool Set and Correct Response
-    </span>
+    Define Tool Set and Correct Response
   </WithStyles(Typography)>
   <WithStyles(Typography)
     component="div"
     variant="body1"
   >
-    <span>
-      Use this interface to choose which graphing tools students will be able to use, and to define the correct answer
-    </span>
+    Use this interface to choose which graphing tools students will be able to use, and to define the correct answer
   </WithStyles(Typography)>
   <Tools
     classes={Object {}}

@@ -5,7 +5,7 @@ exports[`main snapshot renders 1`] = `
   hideSettings={true}
   settings={null}
 >
-  <FormSection
+  <Component
     label="Prompt"
   >
     <EditableHtml
@@ -28,7 +28,7 @@ exports[`main snapshot renders 1`] = `
         }
       }
     />
-  </FormSection>
+  </Component>
   <WithStyles(CardBar)
     header="Attributes"
     info={
@@ -185,93 +185,89 @@ The correct answer should include at least one number line object."
   >
     Reset to default values
   </WithStyles(Button)>
-  <br />
-  <br />
+  <WithStyles(CardBar)
+    header="Available Types"
+    mini={true}
+  >
+    Click on the input options to be displayed to the students. All inputs will display by default.
+  </WithStyles(CardBar)>
   <div>
-    <WithStyles(CardBar)
-      header="Correct Response"
-    >
-      Select answer type and place it on the number line. Intersecting points, line segments and/or rays will appear above the number line. 
-      <i>
-        Note: A maximum of 20 points, line segments or rays may be plotted.
-      </i>
-    </WithStyles(CardBar)>
-    <Jss(NumberLine)
-      answer={Array []}
-      model={
-        Object {
-          "correctResponse": undefined,
-          "feedback": undefined,
-          "graph": Object {
-            "correctResponse": Array [],
-            "feedback": Object {
-              "correct": Object {
-                "default": "Correct",
-                "type": "none",
-              },
-              "incorrect": Object {
-                "default": "Incorrect",
-                "type": "none",
-              },
-              "partial": Object {
-                "default": "Nearly",
-                "type": "none",
-              },
-            },
-            "graph": Object {
-              "arrows": Object {
-                "left": true,
-                "right": true,
-              },
-              "availableTypes": Object {
-                "LEE": true,
-                "LEF": true,
-                "LFE": true,
-                "LFF": true,
-                "PF": true,
-                "REN": true,
-                "REP": true,
-                "RFN": true,
-                "RFP": true,
-              },
-              "domain": Object {
-                "max": 5,
-                "min": -5,
-              },
-              "exhibitOnly": false,
-              "initialElements": Array [],
-              "initialType": "PF",
-              "maxNumberOfPoints": 20,
-              "ticks": Object {
-                "major": 2,
-                "minor": 1,
-              },
-              "toolbarEditorPosition": "bottom",
-              "width": 500,
-            },
-            "title": undefined,
-          },
-          "prompt": undefined,
-        }
-      }
-      onAddElement={[Function]}
-      onClearElements={[Function]}
-      onDeleteElements={[Function]}
-      onMoveElement={[Function]}
-      onUndoElement={[Function]}
+    <WithStyles(PointConfig)
+      onSelectionChange={[Function]}
     />
-    <WithStyles(CardBar)
-      header="Available Types"
-      mini={true}
-    >
-      Click on the input options to be displayed to the students. All inputs will display by default.
-    </WithStyles(CardBar)>
-    <div>
-      <WithStyles(PointConfig)
-        onSelectionChange={[Function]}
-      />
-    </div>
   </div>
+  <WithStyles(CardBar)
+    header="Correct Response"
+  >
+    Select answer type and place it on the number line. Intersecting points, line segments and/or rays will appear above the number line. 
+    <i>
+      Note: A maximum of 20 points, line segments or rays may be plotted.
+    </i>
+  </WithStyles(CardBar)>
+  <Jss(NumberLine)
+    answer={Array []}
+    model={
+      Object {
+        "correctResponse": undefined,
+        "feedback": undefined,
+        "graph": Object {
+          "correctResponse": Array [],
+          "feedback": Object {
+            "correct": Object {
+              "default": "Correct",
+              "type": "none",
+            },
+            "incorrect": Object {
+              "default": "Incorrect",
+              "type": "none",
+            },
+            "partial": Object {
+              "default": "Nearly",
+              "type": "none",
+            },
+          },
+          "graph": Object {
+            "arrows": Object {
+              "left": true,
+              "right": true,
+            },
+            "availableTypes": Object {
+              "LEE": true,
+              "LEF": true,
+              "LFE": true,
+              "LFF": true,
+              "PF": true,
+              "REN": true,
+              "REP": true,
+              "RFN": true,
+              "RFP": true,
+            },
+            "domain": Object {
+              "max": 5,
+              "min": -5,
+            },
+            "exhibitOnly": false,
+            "initialElements": Array [],
+            "initialType": "PF",
+            "maxNumberOfPoints": 20,
+            "ticks": Object {
+              "major": 2,
+              "minor": 1,
+            },
+            "toolbarEditorPosition": "bottom",
+            "width": 500,
+          },
+          "title": undefined,
+        },
+        "prompt": undefined,
+      }
+    }
+    onAddElement={[Function]}
+    onClearElements={[Function]}
+    onDeleteElements={[Function]}
+    onMoveElement={[Function]}
+    onUndoElement={[Function]}
+  />
   <WithStyles(CardBar)
     header="Initial view/Make Exhibit"
   >
@@ -348,7 +344,6 @@ The correct answer should include at least one number line object."
     onChange={[Function]}
     value="exhibitOnly"
   />
-  <br />
   <FeedbackConfig
     onChange={[Function]}
     toolbarOpts={

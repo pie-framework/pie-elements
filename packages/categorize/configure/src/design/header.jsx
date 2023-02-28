@@ -18,16 +18,18 @@ export class Header extends React.Component {
   };
 
   static defaultProps = {};
+
   render() {
     const { classes, className, onAdd, label, buttonLabel, info, buttonDisabled, variant } = this.props;
     return (
       <div className={classNames(classes.header, className)}>
         <div className={classes.titleContainer}>
-          <Typography variant={variant || "title"} className={classes.title}>
+          <Typography variant={variant || 'title'} className={classes.title}>
             {label}
           </Typography>
           {info}
         </div>
+
         <AddButton onClick={onAdd} label={buttonLabel} disabled={buttonDisabled} />
       </div>
     );
@@ -37,10 +39,11 @@ const styles = (theme) => ({
   header: {
     display: 'flex',
     justifyContent: 'space-between',
-    marginBottom: 2 * theme.spacing.unit,
+    marginBottom: theme.spacing.unit,
   },
   titleContainer: {
     display: 'flex',
+    alignItems: 'center',
   },
 });
 export default withStyles(styles)(Header);

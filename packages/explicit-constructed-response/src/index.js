@@ -69,6 +69,9 @@ export default class InlineDropdown extends HTMLElement {
   };
 
   connectedCallback() {
+    this.setAttribute('aria-label', 'Fill in the Blank Question'); 
+    this.setAttribute('role', 'region');
+
     this._render();
   }
 }

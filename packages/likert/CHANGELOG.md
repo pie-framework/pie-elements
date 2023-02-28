@@ -106,7 +106,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* add a different property in the config, forceEnabled, to force a value ([300c664](https://github.com/pie-framework/pie-elements/commit/300c664618f46177137deef3bced2d096cdb8126))
+* add a different property in the config,  to force a value ([300c664](https://github.com/pie-framework/pie-elements/commit/300c664618f46177137deef3bced2d096cdb8126))
 
 
 

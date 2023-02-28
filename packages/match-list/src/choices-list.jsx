@@ -21,75 +21,59 @@ export class ChoicesList extends React.Component {
     const { config } = model;
     const { duplicates } = config;
 
+    const filteredAnswers = config.answers
+      .filter(
+        (answer) =>
+          duplicates ||
+          isEmpty(session) ||
+          !session.value ||
+          isUndefined(find(session.value, (val) => val === answer.id)),
+      )
+      .map((answer) => (
+        <DragAnswer
+          key={answer.id}
+          instanceId={instanceId}
+          className={classes.choice}
+          draggable={true}
+          disabled={disabled}
+          session={session}
+          type="choice"
+          {...answer}
+        />
+      ));
+
     return (
-      <>
+      <div className={classes.choicesContainer}>
         {MatchDroppablePlaceholder ? (
           <MatchDroppablePlaceholder disabled={disabled} onRemoveAnswer={onRemoveAnswer}>
-            {config.answers
-              .filter(
-                (answer) =>
-                  duplicates ||
-                  isEmpty(session) ||
-                  !session.value ||
-                  isUndefined(find(session.value, (val) => val === answer.id))
-              )
-              .map((answer) => (
-                <DragAnswer
-                  key={answer.id}
-                  instanceId={instanceId}
-                  className={classes.choice}
-                  draggable={true}
-                  disabled={disabled}
-                  session={session}
-                  type={'choice'}
-                  {...answer}
-                />
-              ))}
+            {filteredAnswers}
           </MatchDroppablePlaceholder>
         ) : (
-          <div className={classes.answersContainer}>
-            {' '}
-            {config.answers
-              .filter(
-                (answer) =>
-                  duplicates ||
-                  isEmpty(session) ||
-                  !session.value ||
-                  isUndefined(find(session.value, (val) => val === answer.id))
-              )
-              .map((answer) => (
-                <DragAnswer
-                  key={answer.id}
-                  instanceId={instanceId}
-                  className={classes.choice}
-                  draggable={true}
-                  disabled={disabled}
-                  session={session}
-                  type={'choice'}
-                  {...answer}
-                />
-              ))}{' '}
-          </div>
+          <div className={classes.answersContainer}>{filteredAnswers}</div>
         )}
-      </>
+      </div>
     );
   }
 }
 
-const styles = () => ({
+const styles = (theme) => ({
+  choicesContainer: {
+    marginBottom: theme.spacing.unit * 2,
+  },
   answersContainer: {
     alignItems: 'center',
     display: 'flex',
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-between',
-    marginTop: 50
+    marginTop: theme.spacing.unit,
+    marginBottom: theme.spacing.unit,
   },
   choice: {
     minHeight: '40px',
     minWidth: '200px',
     height: 'initial',
-    margin: '4px',
+    margin: theme.spacing.unit / 2,
   },
 });
 

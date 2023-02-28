@@ -415,6 +415,20 @@ export class Main extends React.Component {
 
     const midContent = (
       <div className={classes.main}>
+        {viewMode &&
+          teacherInstructions &&
+          hasText(teacherInstructions) &&
+          (!animationsDisabled ? (
+            <Collapsible
+              className={classes.collapsible}
+              labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}
+            >
+              <div dangerouslySetInnerHTML={{ __html: teacherInstructions }} />
+            </Collapsible>
+          ) : (
+            <div dangerouslySetInnerHTML={{ __html: teacherInstructions }} />
+          ))}
+
         {prompt && (
           <div className={classes.content}>
             <PreviewPrompt prompt={prompt} />
@@ -492,34 +506,20 @@ export class Main extends React.Component {
           </Readable>
         )}
 
-        {viewMode && teacherInstructions && hasText(teacherInstructions) && (
-          <React.Fragment>
-            {!animationsDisabled ? (
-              <Collapsible labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}>
-                <div dangerouslySetInnerHTML={{ __html: teacherInstructions }} />
-              </Collapsible>
-            ) : (
-              <div dangerouslySetInnerHTML={{ __html: teacherInstructions }} />
-            )}
-            <br />
-          </React.Fragment>
-        )}
-
-        {viewMode && rationale && hasText(rationale) && (
-          <React.Fragment>
-            {!animationsDisabled ? (
-              <Collapsible labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }}>
-                <div dangerouslySetInnerHTML={{ __html: rationale }} />
-              </Collapsible>
-            ) : (
-              <div dangerouslySetInnerHTML={{ __html: rationale }} />
-            )}
-          </React.Fragment>
-        )}
-
         {viewMode && displayNote && (
           <div className={classes.note} dangerouslySetInnerHTML={{ __html: `<strong>Note:</strong> ${note}` }} />
         )}
+
+        {viewMode &&
+          rationale &&
+          hasText(rationale) &&
+          (!animationsDisabled ? (
+            <Collapsible labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }}>
+              <div dangerouslySetInnerHTML={{ __html: rationale }} />
+            </Collapsible>
+          ) : (
+            <div dangerouslySetInnerHTML={{ __html: rationale }} />
+          ))}
       </div>
     );
 
@@ -550,48 +550,45 @@ export class Main extends React.Component {
                 )}
               </div>
 
-              {teacherInstructions &&
-                hasText(teacherInstructions) && [
-                  <Collapsible
-                    key="collapsible"
-                    labels={{
-                      hidden: 'Show Teacher Instructions',
-                      visible: 'Hide Teacher Instructions',
-                    }}
-                    className={classes.collapsible}
-                  >
-                    <PreviewPrompt prompt={teacherInstructions} />
-                  </Collapsible>,
-                  <br key="br" />,
-                ]}
+              {teacherInstructions && hasText(teacherInstructions) && (
+                <Collapsible
+                  className={classes.collapsible}
+                  key="collapsible-teacher-instructions"
+                  labels={{
+                    hidden: 'Show Teacher Instructions',
+                    visible: 'Hide Teacher Instructions',
+                  }}
+                  className={classes.collapsible}
+                >
+                  <PreviewPrompt prompt={teacherInstructions} />
+                </Collapsible>
+              )}
 
-              {rationale &&
-                hasText(rationale) && [
-                  <Collapsible
-                    key="collapsible"
-                    labels={{
-                      hidden: 'Show Rationale',
-                      visible: 'Hide Rationale',
-                    }}
-                  >
-                    <PreviewPrompt prompt={rationale} />
-                  </Collapsible>,
-                  <br key="br" />,
-                ]}
+              {displayNote && hasText(note) && (
+                <Collapsible
+                  className={classes.collapsible}
+                  key="collapsible-note"
+                  labels={{
+                    hidden: 'Show Note',
+                    visible: 'Hide Note',
+                  }}
+                >
+                  <PreviewPrompt prompt={note} />
+                </Collapsible>
+              )}
 
-              {displayNote &&
-                hasText(note) && [
-                  <Collapsible
-                    key="collapsible"
-                    labels={{
-                      hidden: 'Show Note',
-                      visible: 'Hide Note',
-                    }}
-                  >
-                    <PreviewPrompt prompt={note} />
-                  </Collapsible>,
-                  <br key="br" />,
-                ]}
+              {rationale && hasText(rationale) && (
+                <Collapsible
+                  className={classes.collapsible}
+                  key="collapsible-rationale"
+                  labels={{
+                    hidden: 'Show Rationale',
+                    visible: 'Hide Rationale',
+                  }}
+                >
+                  <PreviewPrompt prompt={rationale} />
+                </Collapsible>
+              )}
 
               {feedback && <Feedback correctness={correctness.correctness} feedback={feedback} />}
             </div>
@@ -646,7 +643,6 @@ const styles = (theme) => ({
   main: {
     width: '100%',
     position: 'relative',
-    padding: theme.spacing.unit / 2,
     backgroundColor: color.background(),
     color: color.text(),
   },
@@ -656,14 +652,11 @@ const styles = (theme) => ({
     marginTop: theme.spacing.unit * 2,
     marginBottom: theme.spacing.unit,
   },
-  content: {
-    marginTop: theme.spacing.unit * 2,
-  },
   note: {
-    paddingTop: '15px',
+    paddingBottom: theme.spacing.unit * 2,
   },
   collapsible: {
-    marginTop: theme.spacing.unit * 2,
+    marginBottom: theme.spacing.unit * 2,
   },
   responseContainer: {
     zIndex: 10,
@@ -688,6 +681,8 @@ const styles = (theme) => ({
     },
   },
   inputAndKeypadContainer: {
+    marginTop: theme.spacing.unit * 2,
+    marginBottom: theme.spacing.unit * 2,
     position: 'relative',
     '& .mq-overarrow-inner': {
       border: 'none !important',
@@ -764,6 +759,7 @@ const styles = (theme) => ({
   },
   toggle: {
     color: color.text(),
+    marginBottom: theme.spacing.unit * 2,
   },
   blockMath: {
     color: color.text(),

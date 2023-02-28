@@ -11,22 +11,10 @@ const log = debug('@pie-element:math-inline:configure');
 const { Panel, toggle, radio } = settings;
 
 const styles = (theme) => ({
-  title: {
-    fontSize: '1.1rem',
-    display: 'block',
-    marginTop: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit,
-  },
-  content: {
-    marginTop: theme.spacing.unit * 2,
-  },
   promptHolder: {
     width: '100%',
     paddingTop: theme.spacing.unit * 2,
-  },
-  prompt: {
-    paddingTop: theme.spacing.unit * 2,
-    width: '100%',
+    marginBottom: theme.spacing.unit * 2,
   },
 });
 
@@ -112,61 +100,55 @@ export class Configure extends React.Component {
     };
 
     return (
-      <div>
-        <layout.ConfigLayout
-          hideSettings={settingsPanelDisabled}
-          settings={
-            <Panel
-              model={model}
-              configuration={configuration}
-              onChangeModel={(model) => onModelChanged(model)}
-              onChangeConfiguration={(config) => onConfigurationChanged(config)}
-              groups={{
-                Settings: panelSettings,
-                Properties: panelProperties,
-              }}
+      <layout.ConfigLayout
+        hideSettings={settingsPanelDisabled}
+        settings={
+          <Panel
+            model={model}
+            configuration={configuration}
+            onChangeModel={(model) => onModelChanged(model)}
+            onChangeConfiguration={(config) => onConfigurationChanged(config)}
+            groups={{
+              Settings: panelSettings,
+              Properties: panelProperties,
+            }}
+          />
+        }
+      >
+        {teacherInstructionsEnabled && (
+          <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
+            <EditableHtml
+              className={classes.prompt}
+              markup={model.teacherInstructions || ''}
+              onChange={this.changeTeacherInstructions}
+              imageSupport={imageSupport}
+              nonEmpty={false}
+              toolbarOpts={toolbarOpts}
+              spellCheck={spellCheckEnabled}
+              maxImageWidth={(maxImageWidth && maxImageWidth.teacherInstructions) || defaultImageMaxWidth}
+              maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
+              uploadSoundSupport={uploadSoundSupport}
+              languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
             />
-          }
-        >
-          <div>
-            <div className={classes.content}>
-              {teacherInstructionsEnabled && (
-                <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
-                  <EditableHtml
-                    className={classes.prompt}
-                    markup={model.teacherInstructions || ''}
-                    onChange={this.changeTeacherInstructions}
-                    imageSupport={imageSupport}
-                    nonEmpty={false}
-                    toolbarOpts={toolbarOpts}
-                    spellCheck={spellCheckEnabled}
-                    maxImageWidth={(maxImageWidth && maxImageWidth.teacherInstructions) || defaultImageMaxWidth}
-                    maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
-                    uploadSoundSupport={uploadSoundSupport}
-                    languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
-                  />
-                </InputContainer>
-              )}
+          </InputContainer>
+        )}
 
-              <GeneralConfigBlock
-                imageSupport={imageSupport}
-                uploadSoundSupport={uploadSoundSupport}
-                model={model}
-                configuration={configuration}
-                onChange={this.onChange}
-                rationaleEnabled={rationaleEnabled}
-                promptEnabled={promptEnabled}
-                toolbarOpts={toolbarOpts}
-                spellCheck={spellCheckEnabled}
-              />
+        <GeneralConfigBlock
+          imageSupport={imageSupport}
+          uploadSoundSupport={uploadSoundSupport}
+          model={model}
+          configuration={configuration}
+          onChange={this.onChange}
+          rationaleEnabled={rationaleEnabled}
+          promptEnabled={promptEnabled}
+          toolbarOpts={toolbarOpts}
+          spellCheck={spellCheckEnabled}
+        />
 
-              {feedbackEnabled && (
-                <FeedbackConfig feedback={model.feedback} onChange={this.onFeedbackChange} toolbarOpts={toolbarOpts} />
-              )}
-            </div>
-          </div>
-        </layout.ConfigLayout>
-      </div>
+        {feedbackEnabled && (
+          <FeedbackConfig feedback={model.feedback} onChange={this.onFeedbackChange} toolbarOpts={toolbarOpts} />
+        )}
+      </layout.ConfigLayout>
     );
   }
 }

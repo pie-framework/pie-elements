@@ -1,15 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
-import Typography from '@material-ui/core/Typography';
 import { choiceUtils as utils } from '@pie-lib/config-ui';
-import EditableHtml from '@pie-lib/editable-html';
 import classNames from 'classnames';
 import Info from '@material-ui/icons/Info';
 import Tooltip from '@material-ui/core/Tooltip';
 import {
-  moveChoiceToAlternate,
   moveChoiceToCategory,
   removeCategory,
   removeChoiceFromCategory,
@@ -23,7 +19,7 @@ import { RowLabel } from './RowLabel';
 
 const styles = (theme) => ({
   categories: {
-    marginBottom: theme.spacing.unit,
+    marginBottom: theme.spacing.unit * 3,
   },
   categoriesHolder: {
     display: 'grid',
@@ -46,14 +42,14 @@ const styles = (theme) => ({
     width: '100%',
   },
   tooltip: {
-    fontSize: '12px',
+    fontSize: theme.typography.fontSize - 2,
     whiteSpace: 'pre',
     maxWidth: '500px',
   },
   errorText: {
-    fontSize: '12px',
-    color: 'red',
-    padding: '5px 0',
+    fontSize: theme.typography.fontSize - 2,
+    color: theme.palette.error.main,
+    paddingTop: theme.spacing.unit / 2,
   },
 });
 
@@ -229,8 +225,7 @@ export class Categories extends React.Component {
           }
           buttonDisabled={maxCategories && categories && maxCategories === categories.length}
         />
-        {associationError && <div className={classes.errorText}>{associationError}</div>}
-        {categoriesError && <div className={classes.errorText}>{categoriesError}</div>}
+
         <div className={classes.categoriesHolder} style={holderStyle}>
           {categories.map((category, index) => {
             const hasRowLabel = index % categoriesPerRow === 0;
@@ -253,6 +248,7 @@ export class Categories extends React.Component {
                     uploadSoundSupport={uploadSoundSupport}
                   />
                 )}
+
                 <Category
                   imageSupport={imageSupport}
                   focusedEl={this.state.focusedEl}
@@ -275,6 +271,9 @@ export class Categories extends React.Component {
             );
           })}
         </div>
+
+        {associationError && <div className={classes.errorText}>{associationError}</div>}
+        {categoriesError && <div className={classes.errorText}>{categoriesError}</div>}
       </div>
     );
   }

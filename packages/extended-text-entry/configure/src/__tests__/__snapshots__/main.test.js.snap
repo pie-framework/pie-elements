@@ -124,63 +124,61 @@ exports[`Render Main Component Match Snapshot 1`] = `
     />
   }
 >
-  <div>
-    <Component
-      label="Teacher Instructions"
-    >
-      <EditableHtml
-        imageSupport={Object {}}
-        languageCharactersProps={
-          Array [
-            Object {
-              "language": "spanish",
-            },
-            Object {
-              "language": "special",
-            },
-          ]
-        }
-        markup=""
-        maxImageHeight={300}
-        maxImageWidth={300}
-        nonEmpty={false}
-        onChange={[Function]}
-        spellCheck={true}
-        toolbarOpts={
+  <Component
+    label="Teacher Instructions"
+  >
+    <EditableHtml
+      imageSupport={Object {}}
+      languageCharactersProps={
+        Array [
           Object {
-            "position": "bottom",
-          }
-        }
-      />
-    </Component>
-    <Component
-      label="Prompt"
-    >
-      <EditableHtml
-        imageSupport={Object {}}
-        languageCharactersProps={
-          Array [
-            Object {
-              "language": "spanish",
-            },
-            Object {
-              "language": "special",
-            },
-          ]
-        }
-        markup="This is the question prompt"
-        maxImageHeight={300}
-        maxImageWidth={300}
-        nonEmpty={false}
-        onChange={[Function]}
-        spellCheck={true}
-        toolbarOpts={
+            "language": "spanish",
+          },
           Object {
-            "position": "bottom",
-          }
+            "language": "special",
+          },
+        ]
+      }
+      markup=""
+      maxImageHeight={300}
+      maxImageWidth={300}
+      nonEmpty={false}
+      onChange={[Function]}
+      spellCheck={true}
+      toolbarOpts={
+        Object {
+          "position": "bottom",
         }
-      />
-    </Component>
-  </div>
+      }
+    />
+  </Component>
+  <Component
+    label="Prompt"
+  >
+    <EditableHtml
+      imageSupport={Object {}}
+      languageCharactersProps={
+        Array [
+          Object {
+            "language": "spanish",
+          },
+          Object {
+            "language": "special",
+          },
+        ]
+      }
+      markup="This is the question prompt"
+      maxImageHeight={300}
+      maxImageWidth={300}
+      nonEmpty={false}
+      onChange={[Function]}
+      spellCheck={true}
+      toolbarOpts={
+        Object {
+          "position": "bottom",
+        }
+      }
+    />
+  </Component>
 </ConfigLayout>
 `;

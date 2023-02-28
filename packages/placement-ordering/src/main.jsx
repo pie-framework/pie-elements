@@ -13,8 +13,11 @@ class Main extends React.Component {
 
   render() {
     const { model, session, onSessionChange } = this.props;
+
     return <PlacementOrdering model={model} session={session} onSessionChange={onSessionChange} />;
   }
 }
+
 const out = withDragContext(Main);
+
 export default out;

@@ -395,424 +395,420 @@ exports[`Configure renders snapshot 1`] = `
     />
   }
 >
-  <div>
-    <WithStyles(Typography)
-      component="div"
-      type="body1"
-    >
-      <span>
-        Graphing questions involve plotting points, lines, or other objects on a graph. To create one, first configure the grid, then select the plotting tools students will be offered, and use them to define the correct answer.
-      </span>
-    </WithStyles(Typography)>
-    <InputContainer
-      label="Teacher Instructions"
-    >
-      <EditableHtml
-        languageCharactersProps={
-          Array [
-            Object {
-              "language": "spanish",
-            },
-            Object {
-              "language": "special",
-            },
-          ]
-        }
-        markup=""
-        maxImageHeight={300}
-        maxImageWidth={300}
-        nonEmpty={false}
-        onChange={[Function]}
-      />
-    </InputContainer>
-    <InputContainer
-      label="Item Stem"
-    >
-      <EditableHtml
-        disableUnderline={true}
-        languageCharactersProps={
-          Array [
-            Object {
-              "language": "spanish",
-            },
-            Object {
-              "language": "special",
-            },
-          ]
-        }
-        markup=""
-        maxImageHeight={300}
-        maxImageWidth={300}
-        nonEmpty={false}
-        onChange={[Function]}
-      />
-    </InputContainer>
-    <InputContainer
-      label="Rationale"
-    >
-      <EditableHtml
-        languageCharactersProps={
-          Array [
-            Object {
-              "language": "spanish",
-            },
-            Object {
-              "language": "special",
-            },
-          ]
-        }
-        markup=""
-        maxImageHeight={300}
-        maxImageWidth={300}
-        onChange={[Function]}
-      />
-    </InputContainer>
-    <WithStyles(GraphingConfig)
-      authoring={
-        Object {
-          "axisLabel": Object {
-            "enabled": true,
-            "label": "Label",
-          },
-          "enabled": true,
-          "includeAxesEnabled": true,
-          "label": "Customize Grid Setup",
-          "labelStep": Object {
-            "enabled": true,
-            "label": "Label Interval",
-          },
-          "max": Object {
-            "enabled": true,
-            "label": "Max Value",
-          },
-          "min": Object {
-            "enabled": true,
-            "label": "Min Value",
-          },
-          "settings": false,
-          "standardGridEnabled": true,
-          "step": Object {
-            "enabled": true,
-            "label": "Grid Interval",
-          },
-        }
-      }
-      availableTools={Array []}
-      graphDimensions={
-        Object {
-          "enabled": true,
-          "label": "Graph Dimensions",
-          "max": 800,
-          "min": 150,
-          "settings": false,
-          "step": 20,
-        }
-      }
-      gridConfigurations={
+  <WithStyles(Typography)
+    component="div"
+    type="body1"
+  >
+    This interaction asks a student to draw a line that meets specific criteria. The student will draw the line by clicking on two points on the graph.
+  </WithStyles(Typography)>
+  <InputContainer
+    label="Teacher Instructions"
+  >
+    <EditableHtml
+      languageCharactersProps={
         Array [
           Object {
-            "arrows": Object {
-              "down": true,
-              "left": true,
-              "right": true,
-              "up": true,
-            },
-            "domain": Object {
-              "axisLabel": "<i>x</i>",
-              "labelStep": 1,
-              "max": 10,
-              "min": -10,
-              "padding": 0,
-              "step": 1,
-            },
-            "graph": Object {
-              "height": 480,
-              "width": 480,
-            },
-            "includeAxes": true,
-            "label": "4-quadrant coordinate grid, -10 to 10",
-            "labels": Object {
-              "bottom": "",
-              "left": "",
-              "right": "",
-              "top": "",
-            },
-            "padding": true,
-            "range": Object {
-              "axisLabel": "<i>y</i>",
-              "labelStep": 1,
-              "max": 10,
-              "min": -10,
-              "padding": 0,
-              "step": 1,
-            },
-            "standardGrid": true,
-            "title": "",
+            "language": "spanish",
           },
           Object {
-            "arrows": Object {
-              "down": false,
-              "left": false,
-              "right": true,
-              "up": true,
-            },
-            "domain": Object {
-              "axisLabel": "<i>x</i>",
-              "labelStep": 1,
-              "max": 10,
-              "min": 0,
-              "padding": 0,
-              "step": 1,
-            },
-            "graph": Object {
-              "height": 480,
-              "width": 480,
-            },
-            "includeAxes": true,
-            "label": "0 to 10 on both axes",
-            "labels": Object {
-              "bottom": "",
-              "left": "",
-              "right": "",
-              "top": "",
-            },
-            "padding": true,
-            "range": Object {
-              "axisLabel": "<i>y</i>",
-              "labelStep": 1,
-              "max": 10,
-              "min": 0,
-              "padding": 0,
-              "step": 1,
-            },
-            "standardGrid": true,
-            "title": "",
-          },
-          Object {
-            "arrows": Object {
-              "down": false,
-              "left": false,
-              "right": true,
-              "up": true,
-            },
-            "domain": Object {
-              "axisLabel": "<i>x</i>",
-              "labelStep": 1,
-              "max": 20,
-              "min": 0,
-              "padding": 0,
-              "step": 1,
-            },
-            "graph": Object {
-              "height": 480,
-              "width": 480,
-            },
-            "includeAxes": true,
-            "label": "0 to 20 on both axes",
-            "labels": Object {
-              "bottom": "",
-              "left": "",
-              "right": "",
-              "top": "",
-            },
-            "padding": true,
-            "range": Object {
-              "axisLabel": "<i>y</i>",
-              "labelStep": 1,
-              "max": 20,
-              "min": 0,
-              "padding": 0,
-              "step": 1,
-            },
-            "standardGrid": true,
-            "title": "",
-          },
-          Object {
-            "arrows": Object {
-              "down": false,
-              "left": false,
-              "right": true,
-              "up": true,
-            },
-            "domain": Object {
-              "axisLabel": "<i>t</i>",
-              "labelStep": 2,
-              "max": 30,
-              "min": 0,
-              "padding": 0,
-              "step": 1,
-            },
-            "graph": Object {
-              "height": 480,
-              "width": 480,
-            },
-            "includeAxes": true,
-            "label": "Sample Data Graph",
-            "labels": Object {
-              "bottom": "Time (seconds)",
-              "left": "Distance (meters)",
-              "right": "",
-              "top": "",
-            },
-            "padding": true,
-            "range": Object {
-              "axisLabel": "<i>d</i>",
-              "labelStep": 10,
-              "max": 80,
-              "min": 0,
-              "padding": 0,
-              "step": 5,
-            },
-            "standardGrid": false,
-            "title": "Distance as a function of time",
-          },
-          Object {
-            "arrows": Object {
-              "down": false,
-              "left": false,
-              "right": false,
-              "up": false,
-            },
-            "domain": Object {
-              "axisLabel": "",
-              "labelStep": 0,
-              "max": 21,
-              "min": 1,
-              "padding": 0,
-              "step": 1,
-            },
-            "graph": Object {
-              "height": 480,
-              "width": 480,
-            },
-            "includeAxes": false,
-            "label": "No Visible Axes",
-            "labels": Object {
-              "bottom": "",
-              "left": "",
-              "right": "",
-              "top": "",
-            },
-            "padding": true,
-            "range": Object {
-              "axisLabel": "",
-              "labelStep": 0,
-              "max": 21,
-              "min": 1,
-              "padding": 0,
-              "step": 1,
-            },
-            "standardGrid": false,
-            "title": "",
+            "language": "special",
           },
         ]
       }
-      labelsPlaceholders={
-        Object {
-          "bottom": "Click here to add a bottom label",
-          "left": "Click here to add a left label",
-          "right": "Click here to add a right label",
-          "top": "Click here to add a top label",
-        }
+      markup=""
+      maxImageHeight={300}
+      maxImageWidth={300}
+      nonEmpty={false}
+      onChange={[Function]}
+    />
+  </InputContainer>
+  <InputContainer
+    label="Item Stem"
+  >
+    <EditableHtml
+      disableUnderline={true}
+      languageCharactersProps={
+        Array [
+          Object {
+            "language": "spanish",
+          },
+          Object {
+            "language": "special",
+          },
+        ]
       }
-      model={
+      markup=""
+      maxImageHeight={300}
+      maxImageWidth={300}
+      nonEmpty={false}
+      onChange={[Function]}
+    />
+  </InputContainer>
+  <WithStyles(GraphingConfig)
+    authoring={
+      Object {
+        "axisLabel": Object {
+          "enabled": true,
+          "label": "Label",
+        },
+        "enabled": true,
+        "includeAxesEnabled": true,
+        "label": "Customize Grid Setup",
+        "labelStep": Object {
+          "enabled": true,
+          "label": "Label Interval",
+        },
+        "max": Object {
+          "enabled": true,
+          "label": "Max Value",
+        },
+        "min": Object {
+          "enabled": true,
+          "label": "Min Value",
+        },
+        "settings": false,
+        "standardGridEnabled": true,
+        "step": Object {
+          "enabled": true,
+          "label": "Grid Interval",
+        },
+      }
+    }
+    availableTools={Array []}
+    graphDimensions={
+      Object {
+        "enabled": true,
+        "label": "Graph Dimensions",
+        "max": 800,
+        "min": 150,
+        "settings": false,
+        "step": 20,
+      }
+    }
+    gridConfigurations={
+      Array [
         Object {
-          "answers": Object {},
           "arrows": Object {
             "down": true,
             "left": true,
             "right": true,
             "up": true,
           },
-          "backgroundMarks": Array [],
-          "coordinatesOnHover": false,
           "domain": Object {
-            "axisLabel": "x",
+            "axisLabel": "<i>x</i>",
             "labelStep": 1,
-            "max": 5,
-            "min": -5,
+            "max": 10,
+            "min": -10,
+            "padding": 0,
             "step": 1,
           },
           "graph": Object {
-            "height": 500,
-            "width": 500,
+            "height": 480,
+            "width": 480,
           },
           "includeAxes": true,
-          "labels": Object {},
-          "labelsEnabled": true,
+          "label": "4-quadrant coordinate grid, -10 to 10",
+          "labels": Object {
+            "bottom": "",
+            "left": "",
+            "right": "",
+            "top": "",
+          },
           "padding": true,
-          "prompt": "",
-          "promptEnabled": true,
           "range": Object {
-            "axisLabel": "y",
+            "axisLabel": "<i>y</i>",
             "labelStep": 1,
-            "max": 5,
-            "min": -5,
+            "max": 10,
+            "min": -10,
+            "padding": 0,
             "step": 1,
           },
-          "rationale": "",
-          "rationaleEnabled": true,
-          "standardGrid": false,
-          "studentInstructionsEnabled": true,
-          "teacherInstructionsEnabled": true,
+          "standardGrid": true,
           "title": "",
-          "titleEnabled": true,
-          "toolbarTools": Array [],
-        }
-      }
-      showLabels={true}
-      showTitle={true}
-      titlePlaceholder="Click here to add a title for this graph"
-    />
-    <WithStyles(CorrectResponse)
-      availableTools={Array []}
-      errors={Object {}}
-      model={
+        },
         Object {
-          "answers": Object {},
           "arrows": Object {
-            "down": true,
-            "left": true,
+            "down": false,
+            "left": false,
             "right": true,
             "up": true,
           },
-          "backgroundMarks": Array [],
-          "coordinatesOnHover": false,
           "domain": Object {
-            "axisLabel": "x",
+            "axisLabel": "<i>x</i>",
             "labelStep": 1,
-            "max": 5,
-            "min": -5,
+            "max": 10,
+            "min": 0,
+            "padding": 0,
             "step": 1,
           },
           "graph": Object {
-            "height": 500,
-            "width": 500,
+            "height": 480,
+            "width": 480,
           },
           "includeAxes": true,
-          "labels": Object {},
-          "labelsEnabled": true,
+          "label": "0 to 10 on both axes",
+          "labels": Object {
+            "bottom": "",
+            "left": "",
+            "right": "",
+            "top": "",
+          },
           "padding": true,
-          "prompt": "",
-          "promptEnabled": true,
           "range": Object {
-            "axisLabel": "y",
+            "axisLabel": "<i>y</i>",
             "labelStep": 1,
-            "max": 5,
-            "min": -5,
+            "max": 10,
+            "min": 0,
+            "padding": 0,
             "step": 1,
           },
-          "rationale": "",
-          "rationaleEnabled": true,
-          "standardGrid": false,
-          "studentInstructionsEnabled": true,
-          "teacherInstructionsEnabled": true,
+          "standardGrid": true,
           "title": "",
-          "titleEnabled": true,
-          "toolbarTools": Array [],
-        }
+        },
+        Object {
+          "arrows": Object {
+            "down": false,
+            "left": false,
+            "right": true,
+            "up": true,
+          },
+          "domain": Object {
+            "axisLabel": "<i>x</i>",
+            "labelStep": 1,
+            "max": 20,
+            "min": 0,
+            "padding": 0,
+            "step": 1,
+          },
+          "graph": Object {
+            "height": 480,
+            "width": 480,
+          },
+          "includeAxes": true,
+          "label": "0 to 20 on both axes",
+          "labels": Object {
+            "bottom": "",
+            "left": "",
+            "right": "",
+            "top": "",
+          },
+          "padding": true,
+          "range": Object {
+            "axisLabel": "<i>y</i>",
+            "labelStep": 1,
+            "max": 20,
+            "min": 0,
+            "padding": 0,
+            "step": 1,
+          },
+          "standardGrid": true,
+          "title": "",
+        },
+        Object {
+          "arrows": Object {
+            "down": false,
+            "left": false,
+            "right": true,
+            "up": true,
+          },
+          "domain": Object {
+            "axisLabel": "<i>t</i>",
+            "labelStep": 2,
+            "max": 30,
+            "min": 0,
+            "padding": 0,
+            "step": 1,
+          },
+          "graph": Object {
+            "height": 480,
+            "width": 480,
+          },
+          "includeAxes": true,
+          "label": "Sample Data Graph",
+          "labels": Object {
+            "bottom": "Time (seconds)",
+            "left": "Distance (meters)",
+            "right": "",
+            "top": "",
+          },
+          "padding": true,
+          "range": Object {
+            "axisLabel": "<i>d</i>",
+            "labelStep": 10,
+            "max": 80,
+            "min": 0,
+            "padding": 0,
+            "step": 5,
+          },
+          "standardGrid": false,
+          "title": "Distance as a function of time",
+        },
+        Object {
+          "arrows": Object {
+            "down": false,
+            "left": false,
+            "right": false,
+            "up": false,
+          },
+          "domain": Object {
+            "axisLabel": "",
+            "labelStep": 0,
+            "max": 21,
+            "min": 1,
+            "padding": 0,
+            "step": 1,
+          },
+          "graph": Object {
+            "height": 480,
+            "width": 480,
+          },
+          "includeAxes": false,
+          "label": "No Visible Axes",
+          "labels": Object {
+            "bottom": "",
+            "left": "",
+            "right": "",
+            "top": "",
+          },
+          "padding": true,
+          "range": Object {
+            "axisLabel": "",
+            "labelStep": 0,
+            "max": 21,
+            "min": 1,
+            "padding": 0,
+            "step": 1,
+          },
+          "standardGrid": false,
+          "title": "",
+        },
+      ]
+    }
+    labelsPlaceholders={
+      Object {
+        "bottom": "Click here to add a bottom label",
+        "left": "Click here to add a left label",
+        "right": "Click here to add a right label",
+        "top": "Click here to add a top label",
       }
+    }
+    model={
+      Object {
+        "answers": Object {},
+        "arrows": Object {
+          "down": true,
+          "left": true,
+          "right": true,
+          "up": true,
+        },
+        "backgroundMarks": Array [],
+        "coordinatesOnHover": false,
+        "domain": Object {
+          "axisLabel": "x",
+          "labelStep": 1,
+          "max": 5,
+          "min": -5,
+          "step": 1,
+        },
+        "graph": Object {
+          "height": 500,
+          "width": 500,
+        },
+        "includeAxes": true,
+        "labels": Object {},
+        "labelsEnabled": true,
+        "padding": true,
+        "prompt": "",
+        "promptEnabled": true,
+        "range": Object {
+          "axisLabel": "y",
+          "labelStep": 1,
+          "max": 5,
+          "min": -5,
+          "step": 1,
+        },
+        "rationale": "",
+        "rationaleEnabled": true,
+        "standardGrid": false,
+        "studentInstructionsEnabled": true,
+        "teacherInstructionsEnabled": true,
+        "title": "",
+        "titleEnabled": true,
+        "toolbarTools": Array [],
+      }
+    }
+    showLabels={true}
+    showTitle={true}
+    titlePlaceholder="Click here to add a title for this graph"
+  />
+  <WithStyles(CorrectResponse)
+    availableTools={Array []}
+    errors={Object {}}
+    model={
+      Object {
+        "answers": Object {},
+        "arrows": Object {
+          "down": true,
+          "left": true,
+          "right": true,
+          "up": true,
+        },
+        "backgroundMarks": Array [],
+        "coordinatesOnHover": false,
+        "domain": Object {
+          "axisLabel": "x",
+          "labelStep": 1,
+          "max": 5,
+          "min": -5,
+          "step": 1,
+        },
+        "graph": Object {
+          "height": 500,
+          "width": 500,
+        },
+        "includeAxes": true,
+        "labels": Object {},
+        "labelsEnabled": true,
+        "padding": true,
+        "prompt": "",
+        "promptEnabled": true,
+        "range": Object {
+          "axisLabel": "y",
+          "labelStep": 1,
+          "max": 5,
+          "min": -5,
+          "step": 1,
+        },
+        "rationale": "",
+        "rationaleEnabled": true,
+        "standardGrid": false,
+        "studentInstructionsEnabled": true,
+        "teacherInstructionsEnabled": true,
+        "title": "",
+        "titleEnabled": true,
+        "toolbarTools": Array [],
+      }
+    }
+  />
+  <InputContainer
+    label="Rationale"
+  >
+    <EditableHtml
+      languageCharactersProps={
+        Array [
+          Object {
+            "language": "spanish",
+          },
+          Object {
+            "language": "special",
+          },
+        ]
+      }
+      markup=""
+      maxImageHeight={300}
+      maxImageWidth={300}
+      onChange={[Function]}
     />
-  </div>
+  </InputContainer>
 </ConfigLayout>
 `;

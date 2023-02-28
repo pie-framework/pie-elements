@@ -4,20 +4,18 @@ exports[`config snapshot renders 1`] = `
 <div
   className=""
 >
-  <div>
-    <TextField
-      InputLabelProps={
-        Object {
-          "shrink": true,
-        }
+  <TextField
+    InputLabelProps={
+      Object {
+        "shrink": true,
       }
-      label="Label"
-      onChange={[Function]}
-      required={false}
-      select={false}
-      value=""
-      variant="standard"
-    />
-  </div>
+    }
+    label="Label"
+    onChange={[Function]}
+    required={false}
+    select={false}
+    value=""
+    variant="outlined"
+  />
 </div>
 `;

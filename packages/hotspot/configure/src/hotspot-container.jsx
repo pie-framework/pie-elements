@@ -239,7 +239,8 @@ export class Container extends Component {
 
 const styles = (theme) => ({
   base: {
-    marginTop: theme.spacing.unit * 2,
+    marginTop: theme.spacing.unit * 1.5,
+    marginBottom: theme.spacing.unit * 2.5,
   },
   box: {
     border: '1px solid #E0E1E6',

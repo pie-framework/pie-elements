@@ -27,9 +27,11 @@ class Main extends React.Component {
   render() {
     const { show } = this.state;
     const { classes } = this.props;
+
     return (
       <div>
         <Toggle active={show} onToggle={this.onToggle} />
+
         {show && <Protractor className={classes.protractor} startPosition={{ left: 100, top: 100 }} />}
       </div>
     );
