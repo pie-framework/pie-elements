@@ -21,18 +21,13 @@ const styles = (theme) => ({
     marginTop: theme.spacing.unit * 2,
     marginBottom: theme.spacing.unit,
   },
-  content: {
-    marginTop: theme.spacing.unit * 2,
-  },
   promptHolder: {
     width: '100%',
-    paddingBottom: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit * 2,
-    marginTop: theme.spacing.unit * 2,
-  },
-  prompt: {
     paddingTop: theme.spacing.unit * 2,
-    width: '100%',
+    marginBottom: theme.spacing.unit * 2,
+  },
+  description: {
+    marginBottom: theme.spacing.unit * 2.5,
   },
 });
 
@@ -148,93 +143,89 @@ export class Configure extends React.Component {
           />
         }
       >
-        <div className={classes.content}>
-          <Typography component="div" type="body1">
-            <span>
-              This item type provides various types of interactive charts. Depending upon how an item is configured,
-              students can change the heights of bars (or other similar chart elements) created by the author; relabel
-              bars created by the author; and/or add new bars, label them, and set their heights.
-            </span>
-          </Typography>
+        <Typography component="div" type="body1" className={classes.description}>
+          This item type provides various types of interactive charts. Depending upon how an item is configured,
+          students can change the heights of bars (or other similar chart elements) created by the author; relabel bars
+          created by the author; and/or add new bars, label them, and set their heights.
+        </Typography>
 
-          {teacherInstructionsEnabled && (
-            <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
-              <EditableHtml
-                className={classes.prompt}
-                markup={model.teacherInstructions || ''}
-                onChange={this.onTeacherInstructionsChange}
-                imageSupport={imageSupport}
-                nonEmpty={false}
-                spellCheck={spellCheckEnabled}
-                maxImageWidth={(maxImageWidth && maxImageWidth.teacherInstructions) || defaultImageMaxWidth}
-                maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
-                uploadSoundSupport={uploadSoundSupport}
-                languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
-              />
-            </InputContainer>
-          )}
+        {teacherInstructionsEnabled && (
+          <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
+            <EditableHtml
+              className={classes.prompt}
+              markup={model.teacherInstructions || ''}
+              onChange={this.onTeacherInstructionsChange}
+              imageSupport={imageSupport}
+              nonEmpty={false}
+              spellCheck={spellCheckEnabled}
+              maxImageWidth={(maxImageWidth && maxImageWidth.teacherInstructions) || defaultImageMaxWidth}
+              maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
+              uploadSoundSupport={uploadSoundSupport}
+              languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+            />
+          </InputContainer>
+        )}
 
-          {promptEnabled && (
-            <InputContainer label={prompt.label} className={classes.promptHolder}>
-              <EditableHtml
-                className={classes.prompt}
-                markup={model.prompt}
-                onChange={this.onPromptChange}
-                imageSupport={imageSupport}
-                nonEmpty={false}
-                spellCheck={spellCheckEnabled}
-                disableUnderline
-                maxImageWidth={defaultImageMaxWidth}
-                maxImageHeight={defaultImageMaxHeight}
-                uploadSoundSupport={uploadSoundSupport}
-                languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
-              />
-            </InputContainer>
-          )}
+        {promptEnabled && (
+          <InputContainer label={prompt.label} className={classes.promptHolder}>
+            <EditableHtml
+              className={classes.prompt}
+              markup={model.prompt}
+              onChange={this.onPromptChange}
+              imageSupport={imageSupport}
+              nonEmpty={false}
+              spellCheck={spellCheckEnabled}
+              disableUnderline
+              maxImageWidth={defaultImageMaxWidth}
+              maxImageHeight={defaultImageMaxHeight}
+              uploadSoundSupport={uploadSoundSupport}
+              languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+            />
+          </InputContainer>
+        )}
 
-          {rationaleEnabled && (
-            <InputContainer label={rationale.label || 'Rationale'} className={classes.promptHolder}>
-              <EditableHtml
-                className={classes.prompt}
-                markup={model.rationale || ''}
-                onChange={this.onRationaleChange}
-                imageSupport={imageSupport}
-                spellCheck={spellCheckEnabled}
-                maxImageWidth={(maxImageWidth && maxImageWidth.rationale) || defaultImageMaxWidth}
-                maxImageHeight={(maxImageHeight && maxImageHeight.rationale) || defaultImageMaxHeight}
-                uploadSoundSupport={uploadSoundSupport}
-                languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
-              />
-            </InputContainer>
-          )}
+        <ConfigureChartPanel
+          model={model}
+          onChange={this.onConfigChange}
+          gridValues={gridValues}
+          labelValues={labelValues}
+          chartDimensions={chartDimensions}
+          charts={charts}
+        />
 
-          <ConfigureChartPanel
-            model={model}
-            onChange={this.onConfigChange}
-            gridValues={gridValues}
-            labelValues={labelValues}
-            chartDimensions={chartDimensions}
-            charts={charts}
-          />
+        <ChartingConfig
+          model={model}
+          onChange={onModelChanged}
+          charts={charts}
+          labelsPlaceholders={labelsPlaceholders}
+          titlePlaceholder={titlePlaceholder}
+          showPixelGuides={showPixeGuides}
+        />
 
-          <ChartingConfig
-            model={model}
-            onChange={onModelChanged}
-            charts={charts}
-            labelsPlaceholders={labelsPlaceholders}
-            titlePlaceholder={titlePlaceholder}
-            showPixelGuides={showPixeGuides}
-          />
+        <CorrectResponse
+          config={graph}
+          model={model}
+          onChange={onModelChanged}
+          charts={charts}
+          error={categoryErrors}
+          correctAnswerErrors={correctAnswerErrors}
+        />
 
-          <CorrectResponse
-            config={graph}
-            model={model}
-            onChange={onModelChanged}
-            charts={charts}
-            error={categoryErrors}
-            correctAnswerErrors={correctAnswerErrors}
-          />
-        </div>
+        {rationaleEnabled && (
+          <InputContainer label={rationale.label || 'Rationale'} className={classes.promptHolder}>
+            <EditableHtml
+              className={classes.prompt}
+              markup={model.rationale || ''}
+              onChange={this.onRationaleChange}
+              imageSupport={imageSupport}
+              spellCheck={spellCheckEnabled}
+              maxImageWidth={(maxImageWidth && maxImageWidth.rationale) || defaultImageMaxWidth}
+              maxImageHeight={(maxImageHeight && maxImageHeight.rationale) || defaultImageMaxHeight}
+              uploadSoundSupport={uploadSoundSupport}
+              languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+            />
+          </InputContainer>
+        )}
       </layout.ConfigLayout>
     );
   }

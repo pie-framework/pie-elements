@@ -13,21 +13,14 @@ const { Panel, toggle, radio } = settings;
 const styles = (theme) => ({
   promptHolder: {
     width: '100%',
-    paddingBottom: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit * 2,
-  },
-  prompt: {
     paddingTop: theme.spacing.unit * 2,
-    width: '100%',
+    marginBottom: theme.spacing.unit * 2,
   },
   matrixHeaderOptionsHolder: {
     display: 'flex',
     width: '100%',
-    padding: `${theme.spacing.unit * 2.5}px 0`,
+    paddingBottom: theme.spacing.unit * 2.5,
     justifyContent: 'space-around',
-  },
-  design: {
-    paddingTop: theme.spacing.unit * 3,
   },
 });
 
@@ -59,59 +52,55 @@ const Design = withStyles(styles)((props) => {
   };
 
   return (
-    <div className={classes.design}>
-      <layout.ConfigLayout
-        hideSettings={settingsPanelDisabled}
-        settings={
-          <Panel
-            model={model}
-            onChangeModel={onChangeModel}
-            configuration={configuration}
-            onChangeConfiguration={onConfigurationChanged}
-            groups={{
-              Properties: panelProperties,
-            }}
+    <layout.ConfigLayout
+      hideSettings={settingsPanelDisabled}
+      settings={
+        <Panel
+          model={model}
+          onChangeModel={onChangeModel}
+          configuration={configuration}
+          onChangeConfiguration={onConfigurationChanged}
+          groups={{
+            Properties: panelProperties,
+          }}
+        />
+      }
+    >
+      {teacherInstructionsEnabled && (
+        <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
+          <EditableHtml
+            className={classes.prompt}
+            markup={model.teacherInstructions || ''}
+            onChange={onTeacherInstructionsChanged}
+            imageSupport={imageSupport}
+            nonEmpty={false}
+            spellCheck={spellCheckEnabled}
+            uploadSoundSupport={uploadSoundSupport}
           />
-        }
-      >
-        <div>
-          <div className={classes.matrixHeaderOptionsHolder}>
-            <MatrixRowsSizeHeaderInput model={model} onChangeModel={onChangeModel} />
-            <MatrixColumnsSizeHeaderInput model={model} onChangeModel={onChangeModel} />
-            <MatrixLabelTypeHeaderInput model={model} onChangeModel={onChangeModel} />
-          </div>
+        </InputContainer>
+      )}
 
-          {teacherInstructionsEnabled && (
-            <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
-              <EditableHtml
-                className={classes.prompt}
-                markup={model.teacherInstructions || ''}
-                onChange={onTeacherInstructionsChanged}
-                imageSupport={imageSupport}
-                nonEmpty={false}
-                spellCheck={spellCheckEnabled}
-                uploadSoundSupport={uploadSoundSupport}
-              />
-            </InputContainer>
-          )}
+      <InputContainer label={prompt.label} className={classes.promptHolder}>
+        <EditableHtml
+          className={classes.prompt}
+          markup={model.prompt}
+          onChange={onPromptChanged}
+          imageSupport={imageSupport}
+          nonEmpty={!prompt.settings}
+          spellCheck={spellCheckEnabled}
+          uploadSoundSupport={uploadSoundSupport}
+          disableUnderline
+        />
+      </InputContainer>
 
-          <InputContainer label={prompt.label} className={classes.promptHolder}>
-            <EditableHtml
-              className={classes.prompt}
-              markup={model.prompt}
-              onChange={onPromptChanged}
-              imageSupport={imageSupport}
-              nonEmpty={!prompt.settings}
-              spellCheck={spellCheckEnabled}
-              uploadSoundSupport={uploadSoundSupport}
-              disableUnderline
-            />
-          </InputContainer>
+      <div className={classes.matrixHeaderOptionsHolder}>
+        <MatrixRowsSizeHeaderInput model={model} onChangeModel={onChangeModel} />
+        <MatrixColumnsSizeHeaderInput model={model} onChangeModel={onChangeModel} />
+        <MatrixLabelTypeHeaderInput model={model} onChangeModel={onChangeModel} />
+      </div>
 
-          <MatrixValues model={model} onChangeModel={onChangeModel} />
-        </div>
-      </layout.ConfigLayout>
-    </div>
+      <MatrixValues model={model} onChangeModel={onChangeModel} />
+    </layout.ConfigLayout>
   );
 });
 

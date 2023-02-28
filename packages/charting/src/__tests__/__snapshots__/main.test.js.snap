@@ -44,6 +44,5 @@ exports[`Main render snapshot 1`] = `
     }
     onDataChange={[Function]}
   />
-  <br />
 </div>
 `;

@@ -16,6 +16,12 @@ import _ from 'lodash';
 
 const generateId = () => Math.random().toString(36).substring(2) + new Date().getTime().toString(36);
 
+const styles = (theme) => ({
+  teacherInstructions: {
+    marginBottom: theme.spacing.unit * 2,
+  },
+});
+
 class ImageClozeAssociationComponent extends React.Component {
   constructor(props) {
     super(props);
@@ -176,6 +182,7 @@ class ImageClozeAssociationComponent extends React.Component {
 
   render() {
     const {
+      classes,
       model: {
         disabled,
         duplicateResponses,
@@ -228,10 +235,9 @@ class ImageClozeAssociationComponent extends React.Component {
 
     return (
       <div>
-        <PreviewPrompt className="prompt" prompt={prompt} />
-
         {teacherInstructions && (
           <Collapsible
+            className={classes.teacherInstructions}
             labels={{
               hidden: 'Show Teacher Instructions',
               visible: 'Hide Teacher Instructions',
@@ -241,12 +247,13 @@ class ImageClozeAssociationComponent extends React.Component {
           </Collapsible>
         )}
 
+        <PreviewPrompt className="prompt" prompt={prompt} />
+
         <Typography>
           <span dangerouslySetInnerHTML={{ __html: stimulus }} />
         </Typography>
 
         <CorrectAnswerToggle show={showToggle} toggled={showCorrect} onToggle={this.toggleCorrect} />
-        <br />
 
         {showCorrect && showToggle ? (
           <InteractiveSection responseCorrect={true}>
@@ -341,4 +348,6 @@ ImageClozeAssociationComponent.defaultProps = {
   classes: {},
 };
 
-export default withDragContext(ImageClozeAssociationComponent);
+const StyledComponent = withStyles(styles)(ImageClozeAssociationComponent);
+
+export default withDragContext(StyledComponent);

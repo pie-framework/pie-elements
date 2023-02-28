@@ -5,41 +5,35 @@ exports[`Main snapshot renders 1`] = `
   hideSettings={true}
   settings={null}
 >
-  <div>
-    <div>
-      <RadioGroup
-        aria-label="rubric-type"
-        name="rubricType"
-        onChange={[Function]}
-        value="simpleRubric"
-      >
-        <WithStyles(WithFormControlContext(FormControlLabel))
-          control={
-            <WithStyles(Radio)
-              checked={true}
-            />
-          }
-          label="Simple Rubric"
-          value="simpleRubric"
+  <RadioGroup
+    aria-label="rubric-type"
+    name="rubricType"
+    onChange={[Function]}
+    value="simpleRubric"
+  >
+    <WithStyles(WithFormControlContext(FormControlLabel))
+      control={
+        <WithStyles(Radio)
+          checked={true}
         />
-        <WithStyles(WithFormControlContext(FormControlLabel))
-          control={
-            <WithStyles(Radio)
-              checked={false}
-            />
-          }
-          label="Multi Trait Rubric"
-          value="multiTraitRubric"
+      }
+      label="Simple Rubric"
+      value="simpleRubric"
+    />
+    <WithStyles(WithFormControlContext(FormControlLabel))
+      control={
+        <WithStyles(Radio)
+          checked={false}
         />
-      </RadioGroup>
-    </div>
-    <div>
-      <rubric-configure
-        id="simpleRubric"
-        key="simple-rubric"
-      />
-    </div>
-  </div>
+      }
+      label="Multi Trait Rubric"
+      value="multiTraitRubric"
+    />
+  </RadioGroup>
+  <rubric-configure
+    id="simpleRubric"
+    key="simple-rubric"
+  />
 </ConfigLayout>
 `;
 
@@ -48,41 +42,35 @@ exports[`Main snapshot renders multi trait rubric 1`] = `
   hideSettings={true}
   settings={null}
 >
-  <div>
-    <div>
-      <RadioGroup
-        aria-label="rubric-type"
-        name="rubricType"
-        onChange={[Function]}
-        value="multiTraitRubric"
-      >
-        <WithStyles(WithFormControlContext(FormControlLabel))
-          control={
-            <WithStyles(Radio)
-              checked={false}
-            />
-          }
-          label="Simple Rubric"
-          value="simpleRubric"
+  <RadioGroup
+    aria-label="rubric-type"
+    name="rubricType"
+    onChange={[Function]}
+    value="multiTraitRubric"
+  >
+    <WithStyles(WithFormControlContext(FormControlLabel))
+      control={
+        <WithStyles(Radio)
+          checked={false}
         />
-        <WithStyles(WithFormControlContext(FormControlLabel))
-          control={
-            <WithStyles(Radio)
-              checked={true}
-            />
-          }
-          label="Multi Trait Rubric"
-          value="multiTraitRubric"
+      }
+      label="Simple Rubric"
+      value="simpleRubric"
+    />
+    <WithStyles(WithFormControlContext(FormControlLabel))
+      control={
+        <WithStyles(Radio)
+          checked={true}
         />
-      </RadioGroup>
-    </div>
-    <div>
-      <multi-trait-rubric-configure
-        id="multiTraitRubric"
-        key="multi-trait-rubric"
-      />
-    </div>
-  </div>
+      }
+      label="Multi Trait Rubric"
+      value="multiTraitRubric"
+    />
+  </RadioGroup>
+  <multi-trait-rubric-configure
+    id="multiTraitRubric"
+    key="multi-trait-rubric"
+  />
 </ConfigLayout>
 `;
 
@@ -91,40 +79,34 @@ exports[`Main snapshot renders simple rubric 1`] = `
   hideSettings={true}
   settings={null}
 >
-  <div>
-    <div>
-      <RadioGroup
-        aria-label="rubric-type"
-        name="rubricType"
-        onChange={[Function]}
-        value="simpleRubric"
-      >
-        <WithStyles(WithFormControlContext(FormControlLabel))
-          control={
-            <WithStyles(Radio)
-              checked={true}
-            />
-          }
-          label="Simple Rubric"
-          value="simpleRubric"
+  <RadioGroup
+    aria-label="rubric-type"
+    name="rubricType"
+    onChange={[Function]}
+    value="simpleRubric"
+  >
+    <WithStyles(WithFormControlContext(FormControlLabel))
+      control={
+        <WithStyles(Radio)
+          checked={true}
         />
-        <WithStyles(WithFormControlContext(FormControlLabel))
-          control={
-            <WithStyles(Radio)
-              checked={false}
-            />
-          }
-          label="Multi Trait Rubric"
-          value="multiTraitRubric"
+      }
+      label="Simple Rubric"
+      value="simpleRubric"
+    />
+    <WithStyles(WithFormControlContext(FormControlLabel))
+      control={
+        <WithStyles(Radio)
+          checked={false}
         />
-      </RadioGroup>
-    </div>
-    <div>
-      <rubric-configure
-        id="simpleRubric"
-        key="simple-rubric"
-      />
-    </div>
-  </div>
+      }
+      label="Multi Trait Rubric"
+      value="multiTraitRubric"
+    />
+  </RadioGroup>
+  <rubric-configure
+    id="simpleRubric"
+    key="simple-rubric"
+  />
 </ConfigLayout>
 `;

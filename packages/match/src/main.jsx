@@ -129,26 +129,26 @@ export class Main extends React.Component {
           </div>
         )}
 
-        <div className={classes.main}>
-          <CorrectAnswerToggle show={showCorrectAnswerToggle} toggled={showCorrect} onToggle={this.toggleShowCorrect} />
-          {showCorrectAnswerToggle && <br />}
-          <AnswerGrid
-            showCorrect={showCorrect}
-            correctAnswers={model.correctResponse}
-            disabled={model.disabled}
-            view={model.view}
-            onAnswerChange={this.onAnswerChange}
-            choiceMode={model.config.choiceMode}
-            answers={showCorrect ? model.correctResponse : session.answers}
-            headers={model.config.headers}
-            rows={model.config.rows}
-          />
-        </div>
+        <CorrectAnswerToggle show={showCorrectAnswerToggle} toggled={showCorrect} onToggle={this.toggleShowCorrect} />
+
+        <AnswerGrid
+          showCorrect={showCorrect}
+          correctAnswers={model.correctResponse}
+          disabled={model.disabled}
+          view={model.view}
+          onAnswerChange={this.onAnswerChange}
+          choiceMode={model.config.choiceMode}
+          answers={showCorrect ? model.correctResponse : session.answers}
+          headers={model.config.headers}
+          rows={model.config.rows}
+        />
+
         {model.rationale && hasText(model.rationale) && (
           <Collapsible labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }} className={classes.collapsible}>
             <PreviewPrompt prompt={model.rationale} />
           </Collapsible>
         )}
+
         {model.feedback && <Feedback correctness={model.correctness.correctness} feedback={model.feedback} />}
       </div>
     );
@@ -159,23 +159,15 @@ const styles = (theme) => ({
   mainContainer: {
     color: color.text(),
     backgroundColor: color.background(),
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
   },
   main: {
     width: '100%',
   },
-  toggle: {
-    paddingBottom: theme.spacing.unit * 3,
-  },
   prompt: {
     verticalAlign: 'middle',
-    marginBottom: theme.spacing.unit * 2,
   },
   collapsible: {
-    paddingTop: theme.spacing.unit * 2,
-    paddingBottom: theme.spacing.unit * 2,
+    marginBottom: theme.spacing.unit * 2,
   },
 });
 

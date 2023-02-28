@@ -25,6 +25,7 @@ class Main extends React.Component {
     model: PropTypes.object.isRequired,
     classes: PropTypes.object.isRequired,
   };
+
   constructor(props) {
     super(props);
     this.state = { show: false };
@@ -37,6 +38,7 @@ class Main extends React.Component {
     const { show } = this.state;
     const { mode } = this.props.model;
     const { classes } = this.props;
+
     return (
       <div>
         <CalculatorIcon

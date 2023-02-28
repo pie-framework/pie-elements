@@ -10,17 +10,13 @@ exports[`GraphingConfig renders snapshot 1`] = `
       component="div"
       variant="subheading"
     >
-      <span>
-        Define Graph Attributes
-      </span>
+      Define Graph Attributes
     </WithStyles(Typography)>
     <WithStyles(Typography)
       component="div"
       variant="body1"
     >
-      <span>
-        Use this interface to add/edit a title and/or labels, and to set background shapes
-      </span>
+      Use this interface to add/edit a title and/or labels, and to set background shapes
     </WithStyles(Typography)>
     <Root
       axesSettings={

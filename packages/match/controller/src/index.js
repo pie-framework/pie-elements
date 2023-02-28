@@ -339,29 +339,44 @@ export const validate = (model = {}, config = {}) => {
     columnsErrors[0] = `The first column heading should have the maximum length of ${maxLengthFirstColumnHeading} characters.`;
   }
 
-  (headers || []).slice(1).forEach((heading, index) => {
+  //remove first column since it does not require validation
+  const validateHeaders = (cloneDeep(headers) || []).map(heading => markupToText(heading));
+  validateHeaders.shift();
+
+  (validateHeaders || []).forEach((heading, index) => {
     if (heading === '' || heading === '<div></div>') {
       columnsErrors[index + 1] = 'Content should not be empty.';
     } else if (maxLengthAnswers && heading.length > maxLengthAnswers) {
       columnsErrors[index + 1] = `Content length should be maximum ${maxLengthAnswers} characters.`;
     } else {
-      const identicalAnswer = headers.slice(index + 2).some((h) => {
-        return h === heading;
+      const identicalAnswer = validateHeaders.some((h, index) => {
+        if (h === heading) {
+          return validateHeaders.indexOf(h) !== index;
+        }
       });
 
       if (identicalAnswer) {
-        columnsErrors[index + 2] = 'Content should be unique.';
+        columnsErrors[index + 1] = 'Content should be unique.';
       }
     }
   });
 
-
   if (!isEmpty(rowsErrors)) {
     errors.rowsErrors = rowsErrors;
-    errors.correctResponseError =
-      choiceMode === 'radio'
-        ? 'There should be a correct response defined for every row.'
-        : 'There should be at least one correct response defined for every row.';
+    let noCorrectAnswer = false;
+
+    Object.entries(rowsErrors).forEach(([key, rowError]) => {
+      if ((rowError || '').includes('No correct response defined.')) {
+        noCorrectAnswer = true;
+      }
+    });
+
+    if (noCorrectAnswer) {
+      errors.correctResponseError =
+        choiceMode === 'radio'
+          ? 'There should be a correct response defined for every row.'
+          : 'There should be at least one correct response defined for every row.';
+    }
   }
 
   if (!isEmpty(columnsErrors)) {

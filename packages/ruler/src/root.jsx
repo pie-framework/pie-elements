@@ -28,9 +28,11 @@ export class Root extends React.Component {
   render() {
     const { show } = this.state;
     const { classes, model } = this.props;
+
     return (
       <div>
         <Toggle active={show} onToggle={this.onToggle} />
+
         {show && (
           <Ruler
             className={classes.ruler}

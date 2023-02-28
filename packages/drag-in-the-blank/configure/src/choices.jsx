@@ -14,14 +14,19 @@ window.renMath = renderMath;
 
 const styles = (theme) => ({
   design: {
-    marginTop: theme.spacing.unit * 2,
+    display: 'flex',
+    flexDirection: 'column',
+    marginBottom: theme.spacing.unit * 1.5,
+  },
+  addButton: {
+    marginLeft: 'auto',
   },
   altChoices: {
     alignItems: 'flex-start',
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'space-evenly',
-    margin: `${theme.spacing.unit}px 0`,
+    marginTop: theme.spacing.unit,
 
     '& > *': {
       margin: theme.spacing.unit,
@@ -29,7 +34,7 @@ const styles = (theme) => ({
   },
   errorText: {
     fontSize: theme.typography.fontSize - 2,
-    color: 'red',
+    color: theme.palette.error.main,
     paddingBottom: theme.spacing.unit * 2,
   },
 });

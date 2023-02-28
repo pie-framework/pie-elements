@@ -4,11 +4,6 @@ exports[`AnswerArea render renders correctly 1`] = `
 <div>
   <div
     key="0"
-    style={
-      Object {
-        "display": "flex",
-      }
-    }
   >
     <div
       dangerouslySetInnerHTML={
@@ -35,11 +30,6 @@ exports[`AnswerArea render renders correctly 1`] = `
   </div>
   <div
     key="1"
-    style={
-      Object {
-        "display": "flex",
-      }
-    }
   >
     <div
       dangerouslySetInnerHTML={
@@ -66,11 +56,6 @@ exports[`AnswerArea render renders correctly 1`] = `
   </div>
   <div
     key="2"
-    style={
-      Object {
-        "display": "flex",
-      }
-    }
   >
     <div
       dangerouslySetInnerHTML={
@@ -97,11 +82,6 @@ exports[`AnswerArea render renders correctly 1`] = `
   </div>
   <div
     key="3"
-    style={
-      Object {
-        "display": "flex",
-      }
-    }
   >
     <div
       dangerouslySetInnerHTML={

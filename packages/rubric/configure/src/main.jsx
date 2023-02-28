@@ -23,26 +23,24 @@ class Main extends React.Component {
     };
 
     return (
-      <div className={classes.design}>
-        <layout.ConfigLayout
-          hideSettings={settingsPanelDisabled}
-          settings={
-            <Panel
-              model={model}
-              onChangeModel={onModelChanged}
-              configuration={configuration}
-              onChangeConfiguration={onConfigurationChanged}
-              groups={{
-                Properties: panelProperties,
-              }}
-            />
-          }
-        >
-          <div style={{ maxWidth: width }}>
-            <Authoring value={model} onChange={onModelChanged} />
-          </div>
-        </layout.ConfigLayout>
-      </div>
+      <layout.ConfigLayout
+        hideSettings={settingsPanelDisabled}
+        settings={
+          <Panel
+            model={model}
+            onChangeModel={onModelChanged}
+            configuration={configuration}
+            onChangeConfiguration={onConfigurationChanged}
+            groups={{
+              Properties: panelProperties,
+            }}
+          />
+        }
+      >
+        <div style={{ maxWidth: width }}>
+          <Authoring value={model} onChange={onModelChanged} />
+        </div>
+      </layout.ConfigLayout>
     );
   }
 }

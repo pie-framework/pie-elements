@@ -13,7 +13,7 @@ const log = debug('pie-elements:match:configure');
 
 const styles = (theme) => ({
   container: {
-    marginTop: theme.spacing.unit * 2,
+    marginBottom: theme.spacing.unit * 2.5,
     display: 'flex',
     flexDirection: 'column',
   },
@@ -64,6 +64,9 @@ const styles = (theme) => ({
     '&> div': {
       fontWeight: 'bold',
     },
+  },
+  marginBottom: {
+    marginBottom: theme.typography.fontSize - 2 + theme.spacing.unit
   },
   errorText: {
     fontSize: theme.typography.fontSize - 2,
@@ -195,7 +198,7 @@ class AnswerConfigBlock extends React.Component {
                   <EditableHTML
                     onChange={this.onHeaderChange(idx)}
                     markup={header}
-                    className={classes.headerInput}
+                    className={columnsErrors && !columnsErrors[idx] ? classes.marginBottom : classes.headerInput}
                     label={'column label'}
                     activePlugins={filteredDefaultPlugins}
                     pluginProps={labelPlugins}
