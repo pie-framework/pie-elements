@@ -107,6 +107,5 @@ exports[`choices snapshot renders 1`] = `
       rearrangeChoices={[Function]}
     />
   </div>
-  <WithStyles(Component) />
 </div>
 `;

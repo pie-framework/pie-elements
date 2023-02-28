@@ -26,8 +26,10 @@ const styles = {
     userSelect: 'none',
   },
   numberLine: {
-    padding: '10px',
     boxSizing: 'unset',
+  },
+  toggle: {
+    marginBottom: '16px',
   },
   black_on_rose: {
     backgroundColor: 'mistyrose',
@@ -249,39 +251,41 @@ export class NumberLine extends React.Component {
             <PreviewPrompt prompt={prompt} />
           </div>
         )}
-        <div>
-          <div style={{ width: adjustedWidth }}>
-            <Toggle
-              show={isArray(correctResponse) && correctResponse.length && !emptyAnswer}
-              toggled={showCorrectAnswer}
-              onToggle={onShowCorrectAnswer}
-              initialValue={false}
-            />
-          </div>
-          {!disabled && (
-            <PointChooser
-              elementType={elementType}
-              showDeleteButton={elementsSelected}
-              onDeleteClick={deleteElements}
-              onElementType={this.elementTypeSelected.bind(this)}
-              onClearElements={this.clearAll.bind(this)}
-              onUndoElement={this.undo.bind(this)}
-              icons={getIcons()}
-            />
-          )}
-          <Graph
-            {...graphProps}
-            elements={elements}
-            onAddElement={addElement}
-            onMoveElement={onMoveElement}
-            onToggleElement={this.toggleElement.bind(this)}
-            onDeselectElements={this.deselectElements.bind(this)}
-            debug={false}
+
+        <div style={{ width: adjustedWidth }} className={classes.toggle}>
+          <Toggle
+            show={isArray(correctResponse) && correctResponse.length && !emptyAnswer}
+            toggled={showCorrectAnswer}
+            onToggle={onShowCorrectAnswer}
+            initialValue={false}
           />
-          {title && <div className={classes.graphTitle} dangerouslySetInnerHTML={{ __html: title }} />}
-          {showMaxPointsWarning && <Feedback type="info" width={adjustedWidth} message={maxPointsMessage()} />}
-          {feedback && !showCorrectAnswer && <Feedback {...feedback} width={adjustedWidth} />}
         </div>
+
+        {!disabled && (
+          <PointChooser
+            elementType={elementType}
+            showDeleteButton={elementsSelected}
+            onDeleteClick={deleteElements}
+            onElementType={this.elementTypeSelected.bind(this)}
+            onClearElements={this.clearAll.bind(this)}
+            onUndoElement={this.undo.bind(this)}
+            icons={getIcons()}
+          />
+        )}
+
+        <Graph
+          {...graphProps}
+          elements={elements}
+          onAddElement={addElement}
+          onMoveElement={onMoveElement}
+          onToggleElement={this.toggleElement.bind(this)}
+          onDeselectElements={this.deselectElements.bind(this)}
+          debug={false}
+        />
+        {title && <div className={classes.graphTitle} dangerouslySetInnerHTML={{ __html: title }} />}
+
+        {showMaxPointsWarning && <Feedback type="info" width={adjustedWidth} message={maxPointsMessage()} />}
+        {feedback && !showCorrectAnswer && <Feedback {...feedback} width={adjustedWidth} />}
       </div>
     );
   }

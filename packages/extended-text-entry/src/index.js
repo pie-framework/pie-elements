@@ -60,6 +60,9 @@ export default class RootExtendedTextEntry extends HTMLElement {
   }
 
   connectedCallback() {
+    this.setAttribute('aria-label', 'Written Response Question'); 
+    this.setAttribute('role', 'region');
+
     this.render();
   }
 

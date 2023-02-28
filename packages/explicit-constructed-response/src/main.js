@@ -120,6 +120,9 @@ export class Main extends React.Component {
             )}
           </div>
         )}
+
+        {prompt && <PreviewPrompt prompt={prompt} />}
+
         {!alwaysShowCorrect && (
           <CorrectAnswerToggle
             show={mode === 'evaluate'}
@@ -127,7 +130,7 @@ export class Main extends React.Component {
             onToggle={this.toggleShowCorrect}
           />
         )}
-        {prompt && <PreviewPrompt prompt={prompt} />}
+
         <ConstructedResponse
           {...this.props}
           onChange={this.onChange}
@@ -137,12 +140,14 @@ export class Main extends React.Component {
           adjustedLimit={maxLengthPerChoiceEnabled}
           spellCheck={playerSpellCheckEnabled}
         />
+
         {displayNote && (
           <div
             className={classNames(classes.note, 'note')}
             dangerouslySetInnerHTML={{ __html: `<strong>Note:</strong> ${note}` }}
           />
         )}
+
         {rationale && hasText(rationale) && (
           <div className={classes.collapsible}>
             {!animationsDisabled ? (
@@ -159,7 +164,6 @@ export class Main extends React.Component {
 
 const styles = (theme) => ({
   mainContainer: {
-    padding: theme.spacing.unit,
     color: color.text(),
     backgroundColor: color.background(),
   },
@@ -170,10 +174,10 @@ const styles = (theme) => ({
     display: 'block',
   },
   note: {
-    padding: '5px 0',
+    marginBottom: theme.spacing.unit * 2,
   },
   collapsible: {
-    margin: `${theme.spacing.unit * 2}px 0`,
+    marginBottom: theme.spacing.unit * 2,
   },
   noBorderColor: {
     '& *': {

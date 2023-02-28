@@ -195,42 +195,27 @@ export class Design extends React.Component {
         )}
 
         {promptEnabled && (
-          <FormSection>
-            <InputContainer label={prompt && prompt.label} className={classes.promptHolder}>
-              <EditableHtml
-                className={classes.prompt}
-                markup={model.prompt}
-                onChange={this.onPromptChange}
-                imageSupport={imageSupport}
-                toolbarOpts={toolbarOpts}
-                spellCheck={spellCheckEnabled}
-                maxImageWidth={maxImageWidth && maxImageWidth.prompt}
-                maxImageHeight={maxImageHeight && maxImageHeight.prompt}
-                uploadSoundSupport={uploadSoundSupport}
-                languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
-              />
-            </InputContainer>
-
-            {rationaleEnabled && (
-              <InputContainer label={rationale.label} className={classes.promptHolder}>
-                <EditableHtml
-                  className={classes.prompt}
-                  markup={model.rationale || ''}
-                  onChange={this.onRationaleChange}
-                  imageSupport={imageSupport}
-                  toolbarOpts={toolbarOpts}
-                  spellCheck={spellCheckEnabled}
-                  maxImageWidth={(maxImageWidth && maxImageWidth.rationale) || defaultImageMaxWidth}
-                  maxImageHeight={(maxImageHeight && maxImageHeight.rationale) || defaultImageMaxHeight}
-                  uploadSoundSupport={uploadSoundSupport}
-                  languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
-                />
-              </InputContainer>
-            )}
-          </FormSection>
+          <InputContainer label={prompt && prompt.label} className={classes.promptHolder}>
+            <EditableHtml
+              className={classes.prompt}
+              markup={model.prompt}
+              onChange={this.onPromptChange}
+              imageSupport={imageSupport}
+              toolbarOpts={toolbarOpts}
+              spellCheck={spellCheckEnabled}
+              maxImageWidth={maxImageWidth && maxImageWidth.prompt}
+              maxImageHeight={maxImageHeight && maxImageHeight.prompt}
+              uploadSoundSupport={uploadSoundSupport}
+              languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+            />
+          </InputContainer>
         )}
 
-        <FormSection label={`Define ${pluralLabel}`} labelExtraStyle={{ display: 'inline-flex' }}>
+        <FormSection
+          className={classes.choicesWrapper}
+          label={`Define ${pluralLabel}`}
+          labelExtraStyle={{ display: 'inline-flex' }}
+        >
           <div className={classes.inlineFlexContainer}>
             <Tooltip
               classes={{ tooltip: classes.tooltip }}
@@ -303,6 +288,23 @@ export class Design extends React.Component {
           )}
         </FormSection>
 
+        {rationaleEnabled && (
+          <InputContainer label={rationale.label} className={classes.promptHolder}>
+            <EditableHtml
+              className={classes.prompt}
+              markup={model.rationale || ''}
+              onChange={this.onRationaleChange}
+              imageSupport={imageSupport}
+              toolbarOpts={toolbarOpts}
+              spellCheck={spellCheckEnabled}
+              maxImageWidth={(maxImageWidth && maxImageWidth.rationale) || defaultImageMaxWidth}
+              maxImageHeight={(maxImageHeight && maxImageHeight.rationale) || defaultImageMaxHeight}
+              uploadSoundSupport={uploadSoundSupport}
+              languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+            />
+          </InputContainer>
+        )}
+
         {feedbackEnabled && (
           <FeedbackConfig
             feedback={model.feedback}
@@ -334,18 +336,18 @@ export default withDragContext(
   withStyles((theme) => ({
     promptHolder: {
       width: '100%',
-      paddingTop: theme.spacing.unit * 1.5,
-      marginTop: theme.spacing.unit * 3,
-    },
-    prompt: {
       paddingTop: theme.spacing.unit * 2,
-      paddingBottom: theme.spacing.unit,
+      marginBottom: theme.spacing.unit * 2,
     },
     row: {
       display: 'grid',
       gridAutoFlow: 'column',
       gridAutoColumns: '1fr',
       gridGap: '8px',
+    },
+    choicesWrapper: {
+      marginTop: 0,
+      marginBottom: theme.spacing.unit * 2.5,
     },
     tooltip: {
       fontSize: theme.typography.fontSize - 2,

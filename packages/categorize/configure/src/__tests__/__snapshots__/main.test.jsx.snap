@@ -1,19 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Main snapshot renders 1`] = `
-<div
-  className="className"
->
-  <WithStyles(Design)
-    model={
-      Object {
-        "categories": Array [],
-        "choices": Array [],
-        "correctResponse": Array [],
-      }
+<WithStyles(Design)
+  model={
+    Object {
+      "categories": Array [],
+      "choices": Array [],
+      "correctResponse": Array [],
     }
-    onChange={[MockFunction]}
-    title="Design"
-  />
-</div>
+  }
+  onChange={[MockFunction]}
+  title="Design"
+/>
 `;

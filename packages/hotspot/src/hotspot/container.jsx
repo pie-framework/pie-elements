@@ -136,7 +136,8 @@ export class Container extends React.Component {
 
 const styles = (theme) => ({
   base: {
-    marginTop: theme.spacing.unit * 3,
+    marginTop: theme.spacing.unit * 2,
+    marginBottom: theme.spacing.unit * 2,
     position: 'relative',
   },
   image: {
