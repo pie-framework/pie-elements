@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.11.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@4.11.0...@pie-element/graphing-configure@4.11.1) (2023-02-28)
+
+
+### Bug Fixes
+
+* update pie-libs ([6a10f3f](https://github.com/pie-framework/pie-elements/commit/6a10f3f45306cc9d9e077e45a90245d047235521))
+
+
+
+
+
+# [4.11.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@4.10.0...@pie-element/graphing-configure@4.11.0) (2023-02-28)
+
+
+### Bug Fixes
+
+* update pie-libs ([110161a](https://github.com/pie-framework/pie-elements/commit/110161ad113e76b5fdb6fc06e233889befbc366a))
+* **graphing:** instruction shown in design panel-PD-2611 ([15bb601](https://github.com/pie-framework/pie-elements/commit/15bb60118619363052c12e954a8ea13b7d23c4f8))
+* **graphing:** update defaults so correct answer graph is rendered in pie-website and on creation PD-2614 ([5ef4c0b](https://github.com/pie-framework/pie-elements/commit/5ef4c0b6a9253fd6b67030b84dc399c9c05639bb))
+
+
+### Features
+
+* **categorize:** solve conflicts-PD-2611 ([276a4dc](https://github.com/pie-framework/pie-elements/commit/276a4dcdad3a03784cd469a290d37406b62e0278))
+* **graphing:** move instruction to settings panel-PD-2611 ([0a82b9e](https://github.com/pie-framework/pie-elements/commit/0a82b9e2052a7e61b091ace87021eb35011b8584))
+* **graphing:** update snapshot-PD-2611 ([8e90a3c](https://github.com/pie-framework/pie-elements/commit/8e90a3cb7ba75049fab260b24207ee5010025ca9))
+* **graphing:** update snapshots-PD-2611 ([3e9d780](https://github.com/pie-framework/pie-elements/commit/3e9d780709b93c53e58339c5f06e776d157eb02a))
+
+
+
+
+
 # [4.10.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@4.9.0...@pie-element/graphing-configure@4.10.0) (2023-02-14)
 
 

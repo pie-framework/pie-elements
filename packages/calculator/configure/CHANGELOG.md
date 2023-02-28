@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.6.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/calculator-configure@2.6.0...@pie-element/calculator-configure@2.6.1) (2023-02-28)
+
+
+### Bug Fixes
+
+* update pie-libs ([6a10f3f](https://github.com/pie-framework/pie-elements/commit/6a10f3f45306cc9d9e077e45a90245d047235521))
+
+
+
+
+
+# [2.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/calculator-configure@2.5.0...@pie-element/calculator-configure@2.6.0) (2023-02-28)
+
+
+### Features
+
+* Use a common structre for elements, styling and cleanup WIP ([3aa9002](https://github.com/pie-framework/pie-elements/commit/3aa9002e350e7f4b19f79fc18efb8ddff6586899))
+
+
+
+
+
 # [2.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/calculator-configure@2.4.0...@pie-element/calculator-configure@2.5.0) (2023-02-14)
 
 

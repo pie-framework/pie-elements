@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-controller@4.3.0...@pie-element/graphing-controller@4.3.1) (2023-02-28)
+
+
+### Bug Fixes
+
+* **graphing:** update defaults so correct answer graph is rendered in pie-website and on creation PD-2614 ([5ef4c0b](https://github.com/pie-framework/pie-elements/commit/5ef4c0b6a9253fd6b67030b84dc399c9c05639bb))
+
+
+
+
+
 # [4.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-controller@4.2.0...@pie-element/graphing-controller@4.3.0) (2023-02-01)
 
 

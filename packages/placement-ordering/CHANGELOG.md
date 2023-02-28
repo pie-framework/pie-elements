@@ -3,6 +3,35 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.10.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@8.10.0...@pie-element/placement-ordering@8.10.1) (2023-02-28)
+
+
+### Bug Fixes
+
+* update pie-libs ([6a10f3f](https://github.com/pie-framework/pie-elements/commit/6a10f3f45306cc9d9e077e45a90245d047235521))
+
+
+
+
+
+# [8.10.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@8.9.0...@pie-element/placement-ordering@8.10.0) (2023-02-28)
+
+
+### Bug Fixes
+
+* update pie-libs ([110161a](https://github.com/pie-framework/pie-elements/commit/110161ad113e76b5fdb6fc06e233889befbc366a))
+* **placement-ordering:** remove placeholder text after inserting math PD-2648 ([abbd2bc](https://github.com/pie-framework/pie-elements/commit/abbd2bccdfc0da651af27b6792a5861bf7ff426d))
+* **placement-ordering:** set placeholder only for choices ([a8a09b6](https://github.com/pie-framework/pie-elements/commit/a8a09b604f40769d7bab0ba9419824374db053b0))
+
+
+### Features
+
+* add back forceEnabled functionality with documentation ([10a5502](https://github.com/pie-framework/pie-elements/commit/10a55021ca455b27dc5e5a38436648a1fd2f9d36))
+
+
+
+
+
 # [8.9.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@8.8.0...@pie-element/placement-ordering@8.9.0) (2023-02-14)
 
 

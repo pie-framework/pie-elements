@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.10.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@4.10.0...@pie-element/image-cloze-association@4.10.1) (2023-02-28)
+
+
+### Bug Fixes
+
+* update pie-libs ([6a10f3f](https://github.com/pie-framework/pie-elements/commit/6a10f3f45306cc9d9e077e45a90245d047235521))
+
+
+
+
+
+# [4.10.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@4.9.0...@pie-element/image-cloze-association@4.10.0) (2023-02-28)
+
+
+### Bug Fixes
+
+* tests ([c2dad15](https://github.com/pie-framework/pie-elements/commit/c2dad150cf4e15a0b2cf63e1b4916ef0d45efb4f))
+* update pie-libs ([110161a](https://github.com/pie-framework/pie-elements/commit/110161ad113e76b5fdb6fc06e233889befbc366a))
+* **image-cloze-association:** filter empty responses PD-2593 ([52ea6b3](https://github.com/pie-framework/pie-elements/commit/52ea6b3cf43cf91052eabbe7620db9c67a895001))
+* **image-cloze-association:** fix scoring issues for empty container in response PD-2593 ([844d19b](https://github.com/pie-framework/pie-elements/commit/844d19b65923d0331d42ed91ba032f91f038440b))
+
+
+### Features
+
+* add back forceEnabled functionality with documentation ([10a5502](https://github.com/pie-framework/pie-elements/commit/10a55021ca455b27dc5e5a38436648a1fd2f9d36))
+
+
+
+
+
 # [4.9.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@4.8.0...@pie-element/image-cloze-association@4.9.0) (2023-02-22)
 
 

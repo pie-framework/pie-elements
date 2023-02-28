@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response-configure@6.1.0...@pie-element/drawing-response-configure@6.1.1) (2023-02-28)
+
+
+### Bug Fixes
+
+* update pie-libs ([6a10f3f](https://github.com/pie-framework/pie-elements/commit/6a10f3f45306cc9d9e077e45a90245d047235521))
+
+
+
+
+
+# [6.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response-configure@6.0.0...@pie-element/drawing-response-configure@6.1.0) (2023-02-28)
+
+
+### Features
+
+* add back forceEnabled functionality (at moment, just for testing purpose) ([f551483](https://github.com/pie-framework/pie-elements/commit/f5514830d53ecf98cc5ce0c9a3afc779195bd82d))
+* add back forceEnabled functionality with documentation ([10a5502](https://github.com/pie-framework/pie-elements/commit/10a55021ca455b27dc5e5a38436648a1fd2f9d36))
+
+
+
+
+
 # [6.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response-configure@5.0.0...@pie-element/drawing-response-configure@6.0.0) (2023-02-22)
 
 

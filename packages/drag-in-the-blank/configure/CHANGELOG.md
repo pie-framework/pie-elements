@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.6.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-configure@4.6.1...@pie-element/drag-in-the-blank-configure@4.6.2) (2023-02-28)
+
+
+### Bug Fixes
+
+* update pie-libs ([6a10f3f](https://github.com/pie-framework/pie-elements/commit/6a10f3f45306cc9d9e077e45a90245d047235521))
+
+
+
+
+
+## [4.6.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-configure@4.6.0...@pie-element/drag-in-the-blank-configure@4.6.1) (2023-02-28)
+
+
+### Bug Fixes
+
+* update pie-libs ([110161a](https://github.com/pie-framework/pie-elements/commit/110161ad113e76b5fdb6fc06e233889befbc366a))
+
+
+
+
+
 # [4.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-configure@4.5.0...@pie-element/drag-in-the-blank-configure@4.6.0) (2023-02-14)
 
 

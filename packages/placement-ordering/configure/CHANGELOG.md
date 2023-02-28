@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.7.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-configure@6.7.1...@pie-element/placement-ordering-configure@6.7.2) (2023-02-28)
+
+
+### Bug Fixes
+
+* update pie-libs ([6a10f3f](https://github.com/pie-framework/pie-elements/commit/6a10f3f45306cc9d9e077e45a90245d047235521))
+
+
+
+
+
+## [6.7.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-configure@6.7.0...@pie-element/placement-ordering-configure@6.7.1) (2023-02-28)
+
+
+### Bug Fixes
+
+* **placement-ordering:** remove placeholder text after inserting math PD-2648 ([abbd2bc](https://github.com/pie-framework/pie-elements/commit/abbd2bccdfc0da651af27b6792a5861bf7ff426d))
+* **placement-ordering:** set placeholder only for choices ([a8a09b6](https://github.com/pie-framework/pie-elements/commit/a8a09b604f40769d7bab0ba9419824374db053b0))
+
+
+
+
+
 # [6.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-configure@6.6.0...@pie-element/placement-ordering-configure@6.7.0) (2023-02-14)
 
 

@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.8.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@6.8.0...@pie-element/math-inline@6.8.1) (2023-02-28)
+
+
+### Bug Fixes
+
+* update pie-libs ([6a10f3f](https://github.com/pie-framework/pie-elements/commit/6a10f3f45306cc9d9e077e45a90245d047235521))
+
+
+
+
+
+# [6.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@6.7.0...@pie-element/math-inline@6.8.0) (2023-02-28)
+
+
+### Bug Fixes
+
+* update pie-libs ([110161a](https://github.com/pie-framework/pie-elements/commit/110161ad113e76b5fdb6fc06e233889befbc366a))
+
+
+### Features
+
+* **math-inline:** add aria attributes to math-inline element ([d3ea6fe](https://github.com/pie-framework/pie-elements/commit/d3ea6fe69d130a66406cd4e2c97325b11f563768))
+
+
+
+
+
 # [6.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@6.6.0...@pie-element/math-inline@6.7.0) (2023-02-14)
 
 

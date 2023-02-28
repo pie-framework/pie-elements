@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.10.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@12.9.0...@pie-element/pie-models@12.10.0) (2023-02-28)
+
+
+### Features
+
+* add back forceEnabled functionality with documentation ([10a5502](https://github.com/pie-framework/pie-elements/commit/10a55021ca455b27dc5e5a38436648a1fd2f9d36))
+
+
+
+
+
 # [12.9.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@12.8.0...@pie-element/pie-models@12.9.0) (2023-02-22)
 
 

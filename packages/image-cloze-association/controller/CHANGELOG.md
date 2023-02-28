@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.4.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association-controller@3.4.0...@pie-element/image-cloze-association-controller@3.4.1) (2023-02-28)
+
+
+### Bug Fixes
+
+* tests ([c2dad15](https://github.com/pie-framework/pie-elements/commit/c2dad150cf4e15a0b2cf63e1b4916ef0d45efb4f))
+* **image-cloze-association:** filter empty responses PD-2593 ([52ea6b3](https://github.com/pie-framework/pie-elements/commit/52ea6b3cf43cf91052eabbe7620db9c67a895001))
+* **image-cloze-association:** fix scoring issues for empty container in response PD-2593 ([844d19b](https://github.com/pie-framework/pie-elements/commit/844d19b65923d0331d42ed91ba032f91f038440b))
+
+
+
+
+
 # [3.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association-controller@3.3.0...@pie-element/image-cloze-association-controller@3.4.0) (2023-02-22)
 
 
