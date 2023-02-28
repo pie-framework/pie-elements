@@ -34,6 +34,73 @@ exports[`CorrectResponse renders snapshot 1`] = `
       ]
     }
   />
+  <div>
+    <div>
+      Correct Answer
+    </div>
+  </div>
+  <Root
+    axesSettings={
+      Object {
+        "includeArrows": Object {
+          "down": true,
+          "left": true,
+          "right": true,
+          "up": true,
+        },
+      }
+    }
+    backgroundMarks={Array []}
+    coordinatesOnHover={false}
+    disabledLabels={true}
+    disabledTitle={true}
+    domain={
+      Object {
+        "axisLabel": "x",
+        "labelStep": 1,
+        "max": 5,
+        "min": -5,
+        "step": 1,
+      }
+    }
+    draggableTools={true}
+    labels={Object {}}
+    marks={Array []}
+    onChangeMarks={[Function]}
+    onChangeTools={[Function]}
+    range={
+      Object {
+        "axisLabel": "y",
+        "labelStep": 1,
+        "max": 5,
+        "min": -5,
+        "step": 1,
+      }
+    }
+    showLabels={true}
+    showTitle={true}
+    size={
+      Object {
+        "height": 500,
+        "width": 500,
+      }
+    }
+    title=""
+    toolbarTools={
+      Array [
+        "circle",
+        "line",
+        "label",
+        "parabola",
+        "point",
+        "polygon",
+        "ray",
+        "segment",
+        "sine",
+        "vector",
+      ]
+    }
+  />
   <div
     onClick={[Function]}
   >

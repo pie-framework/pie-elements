@@ -4,7 +4,12 @@ const { allTools = [] } = tools;
 
 export default {
   model: {
-    answers: {},
+    answers: {
+      correctAnswer: {
+        name: 'Correct Answer',
+        marks: []
+      }
+    },
     arrows: {
       left: true,
       right: true,

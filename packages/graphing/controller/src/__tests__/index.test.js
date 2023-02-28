@@ -187,6 +187,7 @@ describe('model', () => {
   ])('model env = %j', async (env, extraQuestionProps, expectedResult, session) => {
     const question = {
       ...defaults,
+      answers: {},
       prompt: 'This is prompt',
       rationale: 'Rationale',
       teacherInstructions: 'Teacher Instructions',

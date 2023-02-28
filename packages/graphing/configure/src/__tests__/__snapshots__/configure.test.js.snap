@@ -344,7 +344,12 @@ exports[`Configure renders snapshot 1`] = `
       }
       model={
         Object {
-          "answers": Object {},
+          "answers": Object {
+            "correctAnswer": Object {
+              "marks": Array [],
+              "name": "Correct Answer",
+            },
+          },
           "arrows": Object {
             "down": true,
             "left": true,
@@ -689,7 +694,12 @@ exports[`Configure renders snapshot 1`] = `
     }
     model={
       Object {
-        "answers": Object {},
+        "answers": Object {
+          "correctAnswer": Object {
+            "marks": Array [],
+            "name": "Correct Answer",
+          },
+        },
         "arrows": Object {
           "down": true,
           "left": true,
@@ -741,7 +751,12 @@ exports[`Configure renders snapshot 1`] = `
     errors={Object {}}
     model={
       Object {
-        "answers": Object {},
+        "answers": Object {
+          "correctAnswer": Object {
+            "marks": Array [],
+            "name": "Correct Answer",
+          },
+        },
         "arrows": Object {
           "down": true,
           "left": true,
