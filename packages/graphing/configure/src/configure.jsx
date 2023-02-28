@@ -170,8 +170,7 @@ export class Configure extends React.Component {
         }
       >
         <Typography component="div" type="body1" className={classes.description}>
-          This interaction asks a student to draw a line that meets specific criteria. The student will draw the line by
-          clicking on two points on the graph.
+              {instruction?.label || ''}
         </Typography>
 
         {teacherInstructionsEnabled && (
