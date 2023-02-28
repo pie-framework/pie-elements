@@ -58,11 +58,42 @@ export class MultipleChoice extends React.Component {
     super(props);
 
     this.state = {
+      selectedValue: null,
+      selectedValues: [],
       showCorrect: this.props.alwaysShowCorrect || false,
     };
 
     this.onToggle = this.onToggle.bind(this);
   }
+
+  isSelected(value) {
+    const sessionValue = this.props.session && this.props.session.value;
+
+    return sessionValue && sessionValue.indexOf && sessionValue.indexOf(value) >= 0;
+  }
+
+  // handleChange and handleChangeCheckboxes functions were added for accessibility. Please see comments and videos from PD-2441. They should only be removed if a better solution is found.
+  handleChange = (event) => {
+    const target = event.target;
+
+    this.setState({ selectedValue: target.value });
+  };
+
+  handleChangeCheckboxes = (event) => {
+    const { value, checked } = event.target;
+
+    this.setState((prevState) => {
+      let selectedValues = [...prevState.selectedValues];
+
+      if (checked) {
+        selectedValues.push(value);
+      } else {
+        selectedValues = selectedValues.filter((currentValue) => currentValue !== value);
+      }
+
+      return { selectedValues };
+    });
+  };
 
   onToggle() {
     if (this.props.mode === 'evaluate') {
@@ -78,12 +109,6 @@ export class MultipleChoice extends React.Component {
     if (nextProps.alwaysShowCorrect) {
       this.setState({ showCorrect: true });
     }
-  }
-
-  isSelected(value) {
-    const sessionValue = this.props.session && this.props.session.value;
-
-    return sessionValue && sessionValue.indexOf && sessionValue.indexOf(value) >= 0;
   }
 
   indexToSymbol(index) {
@@ -141,7 +166,7 @@ export class MultipleChoice extends React.Component {
       alwaysShowCorrect,
       animationsDisabled,
     } = this.props;
-    const { showCorrect } = this.state;
+    const { showCorrect, selectedValue, selectedValues } = this.state;
     const isEvaluateMode = mode === 'evaluate';
     const showCorrectAnswerToggle = isEvaluateMode && !responseCorrect;
     const columnsStyle = gridColumns > 1 ? { gridTemplateColumns: `repeat(${gridColumns}, 1fr)` } : undefined;
@@ -204,9 +229,16 @@ export class MultipleChoice extends React.Component {
                 isEvaluateMode={isEvaluateMode}
                 choiceMode={choiceMode}
                 disabled={disabled}
-                onChoiceChanged={onChoiceChanged}
+                updateSession={onChoiceChanged}
+                onChoiceChanged={this.props.choiceMode === 'radio' ? this.handleChange : this.handleChangeCheckboxes}
                 hideTick={choice.hideTick}
-                checked={showCorrect ? choice.correct || false : this.isSelected(choice.value)}
+                checked={
+                  showCorrect
+                    ? choice.correct || false
+                    : this.props.choiceMode === 'radio'
+                    ? selectedValue === choice.value
+                    : selectedValues.includes(choice.value)
+                }
                 correctness={isEvaluateMode ? this.getCorrectness(choice) : undefined}
                 displayKey={this.indexToSymbol(index)}
               />

@@ -28,6 +28,7 @@ export class Choice extends React.Component {
       classes,
       choicesLayout,
       gridColumns,
+      updateSession,
     } = this.props;
     const choiceClass = 'choice' + (index === choicesLength - 1 ? ' last' : '');
 
@@ -43,6 +44,7 @@ export class Choice extends React.Component {
       displayKey,
       choicesLayout,
       gridColumns,
+      updateSession,
       onChange: this.onChange,
       isEvaluateMode,
     };
