@@ -65,6 +65,7 @@ describe('ebsr', () => {
 
   describe('model', () => {
     it('should have set the model', () => {
+      console.log("AM i RUNNING???????")
       expect(el._model).toEqual(defaultModel);
     });
   });

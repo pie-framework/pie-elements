@@ -45,7 +45,7 @@ export default class Ebsr extends HTMLElement {
     if (id) {
       const key = `part${id.toUpperCase()}`;
 
-      if (e.update) {
+      if (e.update&& !isEqual(e.update, this._session[key])) {
         this._model[key] = e.update;
       }
       //TODO: accessing a private property here. The session event should contain the update in future to prevent this.
@@ -114,8 +114,11 @@ export default class Ebsr extends HTMLElement {
   }
 
   connectedCallback() {
-    // this.setAttribute('aria-label', 'Two-Part Question');
-    // this.setAttribute('role', 'region');
+    if (this.getAttribute('aria-label') === 'Two-Part Question' && this.getAttribute('role') === 'region') {
+      return;
+    }
+    this.setAttribute('aria-label', 'Two-Part Question');
+    this.setAttribute('role', 'region');
     this._render();
     this.addEventListener(SESSION_CHANGED, this.onSessionUpdated);
   }
