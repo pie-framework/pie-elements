@@ -124,7 +124,7 @@ export default class Ebsr extends HTMLElement {
 
   _render() {
     this.ariaLabel = 'Two-Part Question';
-    this.role = 'region';
+    this.role = 'region'; 
     this.innerHTML = `
         <${MC_TAG_NAME} id="a"></${MC_TAG_NAME}>
         <${MC_TAG_NAME} id="b"></${MC_TAG_NAME}>
