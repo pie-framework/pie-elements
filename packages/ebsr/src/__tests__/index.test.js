@@ -35,8 +35,6 @@ const defaultModel = {
 
 const defaultSession = { id: 1 };
 
-const setAttributeMock = jest.fn();
-
 describe('ebsr', () => {
   let Def;
   let el;
@@ -63,15 +61,10 @@ describe('ebsr', () => {
     el.tagName = 'ebsr-element';
     el.model = defaultModel;
     el.session = defaultSession;
-    el.setAttribute = setAttributeMock;
   });
-
-//   expect(setAttributeMock).toHaveBeenCalledWith('aria-label', 'Two-Part Question');
-// expect(setAttributeMock).toHaveBeenCalledWith('role', 'region');
 
   describe('model', () => {
     it('should have set the model', () => {
-      console.log("AM i RUNNING???????")
       expect(el._model).toEqual(defaultModel);
     });
   });
