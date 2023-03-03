@@ -30,6 +30,8 @@ export default class Ebsr extends HTMLElement {
     super();
     this._model = {};
     this._session = {};
+    //   this.setAttribute('aria-label', 'Two-Part Question');
+    //  this.setAttribute('role', 'region');
   }
 
   onSessionUpdated = (e) => {
@@ -45,7 +47,7 @@ export default class Ebsr extends HTMLElement {
     if (id) {
       const key = `part${id.toUpperCase()}`;
 
-      if (e.update&& !isEqual(e.update, this._session[key])) {
+      if (e.update && !isEqual(e.update, this._session[key])) {
         this._model[key] = e.update;
       }
       //TODO: accessing a private property here. The session event should contain the update in future to prevent this.
@@ -114,11 +116,6 @@ export default class Ebsr extends HTMLElement {
   }
 
   connectedCallback() {
-    if (this.getAttribute('aria-label') === 'Two-Part Question' && this.getAttribute('role') === 'region') {
-      return;
-    }
-    this.setAttribute('aria-label', 'Two-Part Question');
-    this.setAttribute('role', 'region');
     this._render();
     this.addEventListener(SESSION_CHANGED, this.onSessionUpdated);
   }
@@ -128,11 +125,13 @@ export default class Ebsr extends HTMLElement {
   }
 
   _render() {
+    this.ariaLabel = 'Two-Part Question';
+    this.role = 'region';
     this.innerHTML = `
-      <div>
+      
         <${MC_TAG_NAME} id="a"></${MC_TAG_NAME}>
         <${MC_TAG_NAME} id="b"></${MC_TAG_NAME}>
-      </div>
+      
     `;
   }
 }
