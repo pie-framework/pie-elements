@@ -114,8 +114,6 @@ export default class Ebsr extends HTMLElement {
   }
 
   connectedCallback() {
-    // this.setAttribute('aria-label', 'Two-Part Question');
-    // this.setAttribute('role', 'region');
     this._render();
     this.addEventListener(SESSION_CHANGED, this.onSessionUpdated);
   }
@@ -125,11 +123,11 @@ export default class Ebsr extends HTMLElement {
   }
 
   _render() {
+    this.ariaLabel = 'Two-Part Question';
+    this.role = 'region'; 
     this.innerHTML = `
-      <div>
         <${MC_TAG_NAME} id="a"></${MC_TAG_NAME}>
         <${MC_TAG_NAME} id="b"></${MC_TAG_NAME}>
-      </div>
     `;
   }
 }
