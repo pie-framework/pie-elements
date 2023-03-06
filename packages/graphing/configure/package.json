@@ -11,7 +11,7 @@
     "@pie-framework/pie-configure-events": "^1.3.0",
     "@pie-lib/config-ui": "^11.5.3",
     "@pie-lib/editable-html": "^9.5.15",
-    "@pie-lib/graphing": "^2.12.15",
+    "@pie-lib/graphing": "^2.12.16",
     "@pie-lib/math-rendering": "^2.5.12",
     "classnames": "^2.2.5",
     "debug": "^4.1.1",
