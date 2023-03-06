@@ -327,13 +327,6 @@ exports[`Configure renders snapshot 1`] = `
       }
       groups={
         Object {
-          "Item Type": Object {
-            "arrows": undefined,
-            "coordinatesOnHover": undefined,
-            "labelsEnabled": undefined,
-            "padding": false,
-            "titleEnabled": undefined,
-          },
           "Properties": Object {
             "authoring.enabled": false,
             "instruction": false,
@@ -344,6 +337,13 @@ exports[`Configure renders snapshot 1`] = `
             "spellCheckEnabled": false,
             "studentInstructionsEnabled": false,
             "teacherInstructionsEnabled": undefined,
+          },
+          "Settings": Object {
+            "arrows": undefined,
+            "coordinatesOnHover": undefined,
+            "labelsEnabled": undefined,
+            "padding": false,
+            "titleEnabled": undefined,
           },
         }
       }

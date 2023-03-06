@@ -163,7 +163,7 @@ export class Configure extends React.Component {
             onChangeModel={onModelChanged}
             onChangeConfiguration={onConfigurationChanged}
             groups={{
-              'Item Type': panelItemType,
+              Settings: panelItemType,
               Properties: panelProperties,
             }}
           />
