@@ -94,8 +94,7 @@ export class GraphingConfig extends React.Component {
 
   onConfigChange = (config, newSelectedGrid) => {
     const { model, onChange } = this.props;
-    const { defaultGridConfiguration } = model || 0;
-    const oldSelectedGrid = defaultGridConfiguration;
+    const {defaultGridConfiguration: oldSelectedGrid = 0} = model;
     const {
       gridValues: oldGridValues,
       labelValues: oldLabelValues,
