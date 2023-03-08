@@ -17,6 +17,7 @@ export default {
       down: true,
     },
     backgroundMarks: [],
+    defaultGridConfiguration: 0,
     domain: {
       min: -5,
       max: 5,
