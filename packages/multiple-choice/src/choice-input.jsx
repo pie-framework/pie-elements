@@ -192,7 +192,7 @@ export class ChoiceInput extends React.Component {
       [classes.horizontalLayout]: choicesLayout === 'horizontal',
     });
 
-    const choicelabel= <PreviewPrompt className="label" onClick={this.onToggleChoice} prompt={displayKey ? displayKey + `. ${label}`: label} tagName="span" />
+    const choicelabel= <PreviewPrompt className="label" onClick={this.onToggleChoice} prompt={displayKey ? `${displayKey}.&nbsp ${label}`: label} tagName="span" />
     const id = generateId();
 
     return (
