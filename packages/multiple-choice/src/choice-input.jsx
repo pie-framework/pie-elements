@@ -10,6 +10,7 @@ import Radio from '@material-ui/core/Radio';
 import classNames from 'classnames';
 
 const CLASS_NAME = 'multiple-choice-component';
+const generateId = () => (Math.random() * 1000001).toFixed(0);
 
 const styleSheet = (theme) => ({
   row: {
@@ -71,7 +72,7 @@ const inputStyles = {
 };
 
 export const StyledCheckbox = withStyles(inputStyles)((props) => {
-  const { correctness, classes, checked, onChange, disabled, accessibility, value } = props;
+  const { correctness, classes, checked, onChange, disabled, accessibility, value, id } = props;
   const key = (k) => (correctness ? `${correctness}-${k}` : k);
 
   const resolved = {
@@ -84,6 +85,7 @@ export const StyledCheckbox = withStyles(inputStyles)((props) => {
 
   return (
     <Checkbox
+      id={id}
       aria-label={accessibility}
       aria-checked={checked}
       {...miniProps}
@@ -98,7 +100,7 @@ export const StyledCheckbox = withStyles(inputStyles)((props) => {
 });
 
 export const StyledRadio = withStyles(inputStyles)((props) => {
-  const { correctness, classes, checked, onChange, disabled, accessibility, value } = props;
+  const { correctness, classes, checked, onChange, disabled, accessibility, value, id } = props;
   const key = (k) => (correctness ? `${correctness}-${k}` : k);
 
   const resolved = {
@@ -111,6 +113,7 @@ export const StyledRadio = withStyles(inputStyles)((props) => {
 
   return (
     <Radio
+      id={id}
       aria-label={accessibility}
       aria-checked={checked}
       {...miniProps}
@@ -190,6 +193,7 @@ export class ChoiceInput extends React.Component {
     });
 
     const choicelabel= <PreviewPrompt className="label" onClick={this.onToggleChoice} prompt={displayKey ? displayKey + `. ${label}`: label} tagName="span" />
+    const id = generateId();
 
     return (
       <div className={classNames(className, 'corespring-' + classSuffix, 'choice-input')}>
@@ -205,10 +209,12 @@ export class ChoiceInput extends React.Component {
                   disabled={disabled}
                   checked={checked}
                   correctness={correctness}
+                  id={id}
                   value={value}
                   onChange={this.onToggleChoice}
                 />
               }
+              htmlFor={id}
             />
           </div>
         </div>
