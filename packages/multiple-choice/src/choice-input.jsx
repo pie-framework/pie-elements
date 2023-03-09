@@ -84,7 +84,7 @@ export const StyledCheckbox = withStyles(inputStyles)((props) => {
 
   return (
     <Checkbox
-      aria-label={accessibility || value}
+      aria-label={accessibility}
       aria-checked={checked}
       {...miniProps}
       className={CLASS_NAME}
@@ -111,7 +111,7 @@ export const StyledRadio = withStyles(inputStyles)((props) => {
 
   return (
     <Radio
-      aria-label={accessibility || value}
+      aria-label={accessibility}
       aria-checked={checked}
       {...miniProps}
       className={CLASS_NAME}
@@ -189,13 +189,15 @@ export class ChoiceInput extends React.Component {
       [classes.horizontalLayout]: choicesLayout === 'horizontal',
     });
 
+    const choicelabel= <PreviewPrompt className="label" onClick={this.onToggleChoice} prompt={displayKey ? displayKey + `. ${label}`: label} tagName="span" />
+
     return (
       <div className={classNames(className, 'corespring-' + classSuffix, 'choice-input')}>
         <div className={classes.row}>
           {!hideTick && isEvaluateMode && <FeedbackTick correctness={correctness} />}
           <div className={classNames(holderClassNames, 'checkbox-holder')}>
             <StyledFormControlLabel
-              label={displayKey ? displayKey + '. ' : ''}
+              label={choicelabel}
               value={value}
               control={
                 <Tag
@@ -208,7 +210,6 @@ export class ChoiceInput extends React.Component {
                 />
               }
             />
-            <PreviewPrompt className="label" onClick={this.onToggleChoice} prompt={label} tagName="span" />
           </div>
         </div>
         {rationale && <PreviewPrompt className="rationale" defaultClassName="rationale" prompt={rationale} />}
