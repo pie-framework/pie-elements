@@ -102,7 +102,7 @@ export class Container extends Component {
     this.setState(
       { shapes: newShapes },
       // always transform shapes array back into shapes map when saving changes
-      () => onUpdateShapes(groupShapes(newShapes)),
+      () => onUpdateShapes(groupShapes(newShapes))
     );
   };
 
@@ -126,6 +126,20 @@ export class Container extends Component {
   handleDisableDrag = () => this.setState({ dragEnabled: false });
 
   handleInputClick = () => this.input.click();
+
+  handleInputClickNew = () => {
+    this.props.insertImage(
+      {
+        cancel: () => {
+        },
+        done: (a, url) => this.props.onImageUpload(url),
+        fileChosen: () => {
+        },
+        progress: () => {
+        }
+      }
+    );
+  };
 
   toggleTooltip = () => this.setState({ showTooltip: !this.state.showTooltip });
 
@@ -154,12 +168,12 @@ export class Container extends Component {
           })}
           {...(dragEnabled
             ? {
-                onDragExit: this.handleOnDragExit,
-                onDragLeave: this.handleOnDragExit,
-                onDragOver: this.handleOnDragOver,
-                onDrop: this.handleOnDrop,
-                onPaste: this.handleOnPaste,
-              }
+              onDragExit: this.handleOnDragExit,
+              onDragLeave: this.handleOnDragExit,
+              onDragOver: this.handleOnDragOver,
+              onDrop: this.handleOnDrop,
+              onPaste: this.handleOnPaste,
+            }
             : {})}
         >
           <div className={classes.toolbar}>
@@ -168,16 +182,17 @@ export class Container extends Component {
                 classNameButton={classes.replaceButton}
                 classNameSection={classes.replaceSection}
                 label="Replace Image"
-                onInputClick={this.handleInputClick}
-                onUploadImage={this.handleUploadImage}
+                // onInputClick={this.handleInputClick}
+                // onUploadImage={this.handleUploadImage}
+                onInputClick={this.handleInputClickNew}
                 setRef={(ref) => {
                   this.input = ref;
                 }}
               />
             )}
 
-            <Button disabled={!(shapes && shapes.length)} onClick={this.handleUndo} label="Undo" />
-            <Button disabled={!(shapes && shapes.length)} onClick={this.handleClearAll} label="Clear all" />
+            <Button disabled={!(shapes && shapes.length)} onClick={this.handleUndo} label="Undo"/>
+            <Button disabled={!(shapes && shapes.length)} onClick={this.handleClearAll} label="Clear all"/>
           </div>
 
           <div
@@ -204,11 +219,12 @@ export class Container extends Component {
             ) : (
               <div className={classNames(classes.drawableHeight, classes.centered)}>
                 <label>Drag and drop or upload image from computer</label>
-                <br />
+                <br/>
                 <UploadControl
                   label="Upload Image"
-                  onInputClick={this.handleInputClick}
-                  onUploadImage={this.handleUploadImage}
+                  // onInputClick={this.handleInputClick}
+                  // onUploadImage={this.handleUploadImage}
+                  onInputClick={this.handleInputClickNew}
                   setRef={(ref) => {
                     this.input = ref;
                   }}
@@ -224,11 +240,11 @@ export class Container extends Component {
                   <label>
                     Click and drag to create a hotspot. Click the hotspot to mark correct. Click again to unmark.
                   </label>
-                  <div className={classes.tooltipArrow} />
+                  <div className={classes.tooltipArrow}/>
                 </div>
               )}
 
-              <Help className={classes.icon} onMouseOut={this.toggleTooltip} onMouseOver={this.toggleTooltip} />
+              <Help className={classes.icon} onMouseOut={this.toggleTooltip} onMouseOver={this.toggleTooltip}/>
             </div>
           )}
         </div>
@@ -324,6 +340,7 @@ Container.propTypes = {
   multipleCorrect: PropTypes.bool.isRequired,
   onImageUpload: PropTypes.func.isRequired,
   onUpdateImageDimension: PropTypes.func.isRequired,
+  insertImage: PropTypes.func,
   onUpdateShapes: PropTypes.func.isRequired,
   outlineColor: PropTypes.string.isRequired,
   shapes: PropTypes.shape({
