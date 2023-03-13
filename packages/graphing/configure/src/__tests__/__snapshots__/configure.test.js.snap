@@ -363,6 +363,7 @@ exports[`Configure renders snapshot 1`] = `
           },
           "backgroundMarks": Array [],
           "coordinatesOnHover": false,
+          "defaultGridConfiguration": 0,
           "domain": Object {
             "axisLabel": "x",
             "labelStep": 1,
@@ -713,6 +714,7 @@ exports[`Configure renders snapshot 1`] = `
         },
         "backgroundMarks": Array [],
         "coordinatesOnHover": false,
+        "defaultGridConfiguration": 0,
         "domain": Object {
           "axisLabel": "x",
           "labelStep": 1,
@@ -770,6 +772,7 @@ exports[`Configure renders snapshot 1`] = `
         },
         "backgroundMarks": Array [],
         "coordinatesOnHover": false,
+        "defaultGridConfiguration": 0,
         "domain": Object {
           "axisLabel": "x",
           "labelStep": 1,

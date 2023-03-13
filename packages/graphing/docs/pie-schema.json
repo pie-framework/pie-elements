@@ -1240,6 +1240,11 @@
       },
       "title": "backgroundMarks"
     },
+    "defaultGridConfiguration": {
+      "description": "An object that represents a number of any kind. All JavaScript numbers are 64-bit floating-point numbers.",
+      "title": "Number",
+      "type": "object"
+    },
     "coordinatesOnHover": {
       "description": "Indicates if coordinates of a point are displayed on hover",
       "type": "boolean",
@@ -1546,6 +1551,7 @@
   "required": [
     "answers",
     "backgroundMarks",
+    "defaultGridConfiguration",
     "defaultTool",
     "domain",
     "element",
@@ -2843,6 +2849,11 @@
         "x",
         "y"
       ]
+    },
+    "Number": {
+      "description": "An object that represents a number of any kind. All JavaScript numbers are 64-bit floating-point numbers.",
+      "title": "Number",
+      "type": "object"
     }
   },
   "$schema": "http://json-schema.org/draft-07/schema#"

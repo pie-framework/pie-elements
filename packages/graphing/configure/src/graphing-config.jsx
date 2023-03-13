@@ -67,7 +67,6 @@ export class GraphingConfig extends React.Component {
     this.state = {
       gridValues,
       labelValues,
-      selectedGrid: 0,
       showPixelGuides: false,
       dialog: { isOpened: false },
       domain: { ...domain },
@@ -95,12 +94,12 @@ export class GraphingConfig extends React.Component {
 
   onConfigChange = (config, newSelectedGrid) => {
     const { model, onChange } = this.props;
+    const { defaultGridConfiguration: oldSelectedGrid = 0 } = model;
     const {
       gridValues: oldGridValues,
       labelValues: oldLabelValues,
       domain: oldDomain,
       range: oldRange,
-      selectedGrid: oldSelectedGrid,
     } = this.state;
     const updatedModel = { ...model, ...config };
     const { answers, domain, includeAxes, graph, range, standardGrid } = updatedModel;
@@ -145,9 +144,8 @@ export class GraphingConfig extends React.Component {
                 dialog: { isOpened: false },
                 domain: { ...domain },
                 range: { ...range },
-                selectedGrid,
               },
-              onChange({ ...updatedModel, answers: plotableAnswers }),
+                onChange({ ...updatedModel, answers: plotableAnswers, defaultGridConfiguration: selectedGrid }),
             );
           },
         },
@@ -156,8 +154,8 @@ export class GraphingConfig extends React.Component {
       return;
     }
 
-    this.setState({ gridValues, labelValues, domain: { ...domain }, range: { ...range }, selectedGrid });
-    onChange(updatedModel);
+    this.setState({ gridValues, labelValues, domain: { ...domain }, range: { ...range } });
+    onChange({...updatedModel, defaultGridConfiguration: selectedGrid});
   };
 
   onChangeView = (event, expanded) => {
@@ -188,11 +186,11 @@ export class GraphingConfig extends React.Component {
       showTitle,
       titlePlaceholder,
     } = this.props;
-    const { arrows, backgroundMarks, coordinatesOnHover, domain, includeAxes, labels, range, standardGrid, title } =
+    const { arrows, backgroundMarks, coordinatesOnHover, defaultGridConfiguration, domain, includeAxes, labels, range, standardGrid, title } =
       model || {};
     const graph = (model || {}).graph || {};
     const { enabled: dimensionsEnabled, min, max, step } = graphDimensions || {};
-    const { dialog = {}, gridValues, labelValues, selectedGrid, showPixelGuides } = this.state;
+    const { dialog = {}, gridValues, labelValues, showPixelGuides } = this.state;
 
     const sizeConstraints = {
       min: Math.max(150, min),
@@ -229,7 +227,7 @@ export class GraphingConfig extends React.Component {
                 className={classes.gridConfigSelect}
                 displayEmpty
                 onChange={this.changeGridConfiguration}
-                value={selectedGrid}
+                value={defaultGridConfiguration}
               >
                 {(gridConfigurations || []).map((config, index) => (
                   <MenuItem key={index} value={index}>
