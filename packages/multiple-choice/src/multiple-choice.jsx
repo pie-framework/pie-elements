@@ -150,6 +150,20 @@ export class MultipleChoice extends React.Component {
     }
   };
 
+  getChecked(choice) {
+    if (this.state.showCorrect) {
+      return choice.correct || false;
+    }
+
+    if (this.isSelected(choice.value)) {
+      return true;
+    }
+
+    return this.props.choiceMode === 'radio'
+      ? this.state.selectedValue === choice.value
+      : this.state.selectedValues.includes(choice.value);
+  }
+
   render() {
     const {
       mode,
@@ -166,7 +180,7 @@ export class MultipleChoice extends React.Component {
       alwaysShowCorrect,
       animationsDisabled,
     } = this.props;
-    const { showCorrect, selectedValue, selectedValues } = this.state;
+    const { showCorrect } = this.state;
     const isEvaluateMode = mode === 'evaluate';
     const showCorrectAnswerToggle = isEvaluateMode && !responseCorrect;
     const columnsStyle = gridColumns > 1 ? { gridTemplateColumns: `repeat(${gridColumns}, 1fr)` } : undefined;
@@ -232,13 +246,7 @@ export class MultipleChoice extends React.Component {
                 updateSession={onChoiceChanged}
                 onChoiceChanged={this.props.choiceMode === 'radio' ? this.handleChange : this.handleChangeCheckboxes}
                 hideTick={choice.hideTick}
-                checked={
-                  showCorrect
-                    ? choice.correct || false
-                    : this.props.choiceMode === 'radio'
-                    ? selectedValue === choice.value
-                    : selectedValues.includes(choice.value)
-                }
+                checked={this.getChecked(choice)}
                 correctness={isEvaluateMode ? this.getCorrectness(choice) : undefined}
                 displayKey={this.indexToSymbol(index)}
               />
