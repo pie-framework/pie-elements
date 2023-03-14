@@ -46,10 +46,10 @@ class MenuItemComp extends React.Component {
   }
 }
 
-const MenuItem = withStyles({
+const MenuItem = withStyles((theme) => ({
   wrapper: {
-    background: '#fff',
-    borderBottom: '1px solid black',
+    background: theme.palette.common.white,
+    borderBottom: `1px solid ${theme.palette.common.black}`,
     boxSizing: 'border-box',
     display: 'block',
     cursor: 'pointer',
@@ -73,7 +73,7 @@ const MenuItem = withStyles({
   valueHolder: {
     wordBreak: 'break-all',
   },
-})(MenuItemComp);
+}))(MenuItemComp);
 
 const findSlateNode = (key) => {
   return window.document.querySelector('[data-key="' + key + '"]');
@@ -315,9 +315,9 @@ export class RespAreaToolbar extends React.Component {
   }
 }
 
-const StyledRespAreaToolbar = withStyles({
+const StyledRespAreaToolbar = withStyles((theme) => ({
   respArea: {
-    backgroundColor: '#fff',
+    backgroundColor: theme.palette.common.white,
     '& [data-slate-editor="true"]': {
       minHeight: 'initial !important',
     },
@@ -330,9 +330,9 @@ const StyledRespAreaToolbar = withStyles({
     },
   },
   itemBuilder: {
-    padding: '8px',
+    padding: theme.spacing.unit,
     position: 'relative',
   },
-})(RespAreaToolbar);
+}))(RespAreaToolbar);
 
 export default StyledRespAreaToolbar;

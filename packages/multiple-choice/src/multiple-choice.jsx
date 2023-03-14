@@ -10,10 +10,14 @@ import StyledChoice from './choice';
 
 const styles = (theme) => ({
   main: {
+    color: color.text(),
     backgroundColor: color.background(),
     '& *': {
       '-webkit-font-smoothing': 'antialiased',
     },
+  },
+  partLabel: {
+    paddingBottom: theme.spacing.unit * 2,
   },
   teacherInstructions: {
     marginBottom: theme.spacing.unit * 2,
@@ -158,6 +162,7 @@ export class MultipleChoice extends React.Component {
       choices = [],
       choiceMode,
       gridColumns,
+      partLabel,
       prompt,
       onChoiceChanged,
       responseCorrect,
@@ -171,7 +176,7 @@ export class MultipleChoice extends React.Component {
     const showCorrectAnswerToggle = isEvaluateMode && !responseCorrect;
     const columnsStyle = gridColumns > 1 ? { gridTemplateColumns: `repeat(${gridColumns}, 1fr)` } : undefined;
 
-    const teacherInsttructionsDiv = (
+    const teacherInstructionsDiv = (
       <PreviewPrompt
         tagName="div"
         className="prompt"
@@ -182,6 +187,8 @@ export class MultipleChoice extends React.Component {
 
     return (
       <div className={classNames(classes.main, className, 'multiple-choice')}>
+        {partLabel && <div className={classes.partLabel}>{partLabel}</div>}
+
         {teacherInstructions && (
           <div className={classes.teacherInstructions}>
             {!animationsDisabled ? (
@@ -191,10 +198,10 @@ export class MultipleChoice extends React.Component {
                   visible: 'Hide Teacher Instructions',
                 }}
               >
-                {teacherInsttructionsDiv}
+                {teacherInstructionsDiv}
               </Collapsible>
             ) : (
-              teacherInsttructionsDiv
+              teacherInstructionsDiv
             )}
           </div>
         )}

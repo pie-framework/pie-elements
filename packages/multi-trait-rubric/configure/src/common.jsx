@@ -21,14 +21,14 @@ const InputHeight = '120px';
 const greyBorder = `solid 1px ${grey[400]}`;
 const Padding = '8px 4px';
 
-export const MultiTraitButton = withStyles({
+export const MultiTraitButton = withStyles((theme) => ({
   button: {
-    fontSize: '16px',
+    fontSize: theme.typography.fontSize + 2,
     textAlign: 'right',
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'flex-start',
-    padding: '11px 16px',
+    padding: `${theme.spacing.unit * 1.5}px ${theme.spacing.unit * 2}px`,
     width: '114px',
     background: color.secondaryBackground(),
     borderRadius: '4px',
@@ -36,7 +36,7 @@ export const MultiTraitButton = withStyles({
     color: color.text(),
     cursor: 'pointer',
   },
-})(({ classes, children, onClick }) => (
+}))(({ classes, children, onClick }) => (
   <div className={classes.button} onClick={onClick}>
     <strong>+</strong>
     <div>{children}</div>
@@ -53,16 +53,16 @@ export const PrimaryBlock = withStyles({
   },
 })(({ classes, children, className }) => <div className={classnames(classes.primaryBlock, className)}>{children}</div>);
 
-export const Block = withStyles({
+export const Block = withStyles((theme) => ({
   block: {
     width: `${BlockWidth}px`,
     minWidth: `${BlockWidth}px`,
     '& ul, ol': {
       marginBlockStart: 0,
-      paddingInlineStart: '16px',
+      paddingInlineStart: theme.spacing.unit * 2,
     },
   },
-})(({ classes, children }) => <div className={classes.block}>{children}</div>);
+}))(({ classes, children }) => <div className={classes.block}>{children}</div>);
 
 export const SecondaryBlock = withStyles({
   secondaryBlock: {
@@ -177,11 +177,11 @@ export const ScorePoint = withStyles({
 );
 
 const maxScoreOptions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-const inputStyles = {
+const inputStyles = (theme) => ({
   root: {
-    background: 'white',
+    background: theme.palette.common.white,
     'label + &': {
-      marginTop: '20px',
+      marginTop: theme.spacing.unit * 2.5,
       marginBottom: 0,
       width: '80px',
     },
@@ -190,15 +190,15 @@ const inputStyles = {
     borderRadius: '4px',
     position: 'relative',
     border: greyBorder,
-    fontSize: '14px',
+    fontSize: theme.typography.fontSize,
     fontFamily: 'Cerebri Sans',
-    padding: '8px 12px',
+    padding: `${theme.spacing.unit}px ${theme.spacing.unit * 1.5}px`,
 
     '&:focus': {
       borderRadius: '4px',
     },
   },
-};
+});
 
 const BootstrapInput = withStyles(inputStyles)(InputBase);
 
@@ -215,21 +215,21 @@ export const MaxPointsPicker = withStyles({})(({ maxPoints, onChange }) => (
   </FormControl>
 ));
 
-export const SimpleInput = withStyles({
+export const SimpleInput = withStyles((theme) => ({
   simpleInput: {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    margin: '12px 0',
+    margin: `${theme.spacing.unit * 1.5}px 0`,
   },
   editableLevel: {
-    background: 'white',
+    background: theme.palette.common.white,
     width: '60%',
   },
   slateEditor: {
     fontFamily: 'Cerebri',
   },
-})(({ classes, markup, onChange, pluginProps, label, spellCheck, uploadSoundSupport }) => (
+}))(({ classes, markup, onChange, pluginProps, label, spellCheck, uploadSoundSupport }) => (
   <div className={classes.simpleInput}>
     {label && <div>{label}</div>}
 
@@ -248,7 +248,7 @@ export const SimpleInput = withStyles({
   </div>
 ));
 
-export const UnderlinedInput = withStyles({
+export const UnderlinedInput = withStyles((theme) => ({
   underlinedInputWrapper: {
     width: '100%',
     display: 'flex',
@@ -256,7 +256,7 @@ export const UnderlinedInput = withStyles({
     alignItems: 'center',
   },
   editableLevel: {
-    background: 'white',
+    background: theme.palette.common.white,
     width: '100%',
 
     '& div': {
@@ -273,7 +273,7 @@ export const UnderlinedInput = withStyles({
   slateEditor: {
     fontFamily: 'Cerebri',
   },
-})(({ classes, markup, onChange, pluginProps, label, placeholder, spellCheck, uploadSoundSupport }) => (
+}))(({ classes, markup, onChange, pluginProps, label, placeholder, spellCheck, uploadSoundSupport }) => (
   <div className={classes.underlinedInputWrapper}>
     {label && <div>{label}</div>}
 
@@ -329,7 +329,7 @@ export const ScaleSettings = withStyles({
   },
 })(({ classes, children }) => <div className={classes.scaleSettings}>{children}</div>);
 
-export const Arrow = withStyles({
+export const Arrow = withStyles((theme) => ({
   arrow: {
     position: 'absolute',
     zIndex: 10,
@@ -337,7 +337,7 @@ export const Arrow = withStyles({
     right: 0,
     alignItems: 'flex-start',
     justifyContent: 'center',
-    background: `linear-gradient(to left, white, ${color.background()})`,
+    background: `linear-gradient(to left, ${theme.palette.common.white}, ${color.background()})`,
     boxSizing: 'border-box',
     padding: '4px 0',
   },
@@ -348,7 +348,7 @@ export const Arrow = withStyles({
     right: 0,
     alignItems: 'flex-start',
     justifyContent: 'center',
-    background: `linear-gradient(to left, white, ${color.background()})`,
+    background: `linear-gradient(to left, ${theme.palette.common.white}, ${color.background()})`,
     boxSizing: 'border-box',
 
     '& svg': {
@@ -356,7 +356,7 @@ export const Arrow = withStyles({
       bottom: '-24px',
     },
   },
-})(({ classes, children, className, show, width, onClick, left, showLevelTagInput }) => (
+}))(({ classes, children, className, show, width, onClick, left, showLevelTagInput }) => (
   <div
     className={classnames(classes.arrow, className)}
     style={{

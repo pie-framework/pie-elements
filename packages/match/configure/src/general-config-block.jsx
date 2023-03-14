@@ -29,10 +29,7 @@ const styles = (theme) => ({
     alignItems: 'center',
   },
   titleText: {
-    fontFamily: 'Cerebri Sans',
     fontSize: theme.typography.fontSize + 2,
-    lineHeight: '19px',
-    color: '#495B8F',
     marginRight: theme.spacing.unit,
   },
   tooltip: {

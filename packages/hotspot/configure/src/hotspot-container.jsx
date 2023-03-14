@@ -250,7 +250,7 @@ const styles = (theme) => ({
     border: '1px solid #0032C2',
   },
   boxError: {
-    border: '1px solid red',
+    border: `1px solid ${theme.palette.error.main}`,
   },
   centered: {
     alignItems: 'center',
@@ -293,7 +293,7 @@ const styles = (theme) => ({
   tooltipContent: {
     background: '#333131',
     borderRadius: '4px',
-    color: '#FFFFFF',
+    color: theme.palette.common.white,
     fontSize: theme.typography.fontSize,
     lineHeight: '18px',
     marginTop: '-60px',

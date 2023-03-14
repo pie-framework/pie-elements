@@ -3,9 +3,11 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import ChoiceInput from './ChoiceInput';
-import { Collapsible, PreviewPrompt } from '@pie-lib/render-ui';
+import { color, Collapsible, PreviewPrompt } from '@pie-lib/render-ui';
 
 const MatrixWrapper = styled.div`
+  color: ${color.text()};
+  background-color: ${color.background()};
   font-family: Roboto, Arial, Helvetica, sans-serif;
 `;
 

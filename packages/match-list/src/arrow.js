@@ -39,14 +39,14 @@ export class Arrow extends React.Component {
   }
 }
 
-const styledArrow = withStyles({
+const styledArrow = withStyles((theme) => ({
   arrow: {
     display: 'inline-block',
     position: 'relative',
     width: '100%',
   },
   line: {
-    backgroundColor: '#979797',
+    backgroundColor: theme.palette.grey[500],
     bottom: 19,
     content: '""',
     display: 'block',
@@ -58,6 +58,6 @@ const styledArrow = withStyles({
   right: {
     bottom: 20,
   },
-})(Arrow);
+}))(Arrow);
 
 export default styledArrow;

@@ -5,6 +5,7 @@ import List from '@material-ui/core/List';
 import ListItemText from '@material-ui/core/ListItemText';
 import Link from '@material-ui/core/Link';
 import Collapse from '@material-ui/core/Collapse';
+import { color } from '@pie-lib/render-ui';
 import PropTypes from 'prop-types';
 
 export const RubricType = PropTypes.shape({
@@ -63,18 +64,27 @@ class Rubric extends React.Component {
                     <ListItem key={`P${index}`}>
                       <ListItemText
                         className={classes.rubricCol}
-                        primary={index === 1 ? `${index} PT` : `${index} PTS`}
+                        primary={<div className={classes.text}>{index === 1 ? `${index} PT` : `${index} PTS`}</div>}
                       />
-                      <ListItemText primary={<div dangerouslySetInnerHTML={{ __html: desc }} />} />
+
+                      <ListItemText
+                        primary={<div className={classes.text} dangerouslySetInnerHTML={{ __html: desc }} />}
+                      />
                     </ListItem>
+
                     {sampleAnswers && sampleAnswers[index] && (
                       <ListItem key={`S${index}`}>
                         <ListItemText
                           className={classes.rubricCol}
                           style={{ marginLeft: '20px' }}
-                          primary={'Sample Answer'}
+                          primary={<div className={classes.text}>Sample Answer</div>}
                         />
-                        <ListItemText primary={<div dangerouslySetInnerHTML={{ __html: sampleAnswers[index] }} />} />
+
+                        <ListItemText
+                          primary={
+                            <div className={classes.text} dangerouslySetInnerHTML={{ __html: sampleAnswers[index] }} />
+                          }
+                        />
                       </ListItem>
                     )}
                   </React.Fragment>
@@ -107,9 +117,16 @@ class Rubric extends React.Component {
 }
 
 const styles = () => ({
+  root: {
+    color: color.text(),
+    backgroundColor: color.background(),
+  },
   rubricCol: {
     flex: '0 1 auto',
     minWidth: 'fit-content',
+  },
+  text: {
+    color: color.text(),
   },
 });
 

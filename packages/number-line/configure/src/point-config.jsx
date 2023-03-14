@@ -5,14 +5,14 @@ import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 const { Point } = pointChooser;
 
-const styles = {
+const styles = (theme) => ({
   displayToggles: {
-    paddingTop: '20px',
+    paddingTop: theme.spacing.unit * 2.5,
     '& > :first-child': {
-      marginRight: '8px',
+      marginRight: theme.spacing.unit,
     },
   },
-};
+});
 
 class PointConfig extends React.Component {
   static propTypes = {

@@ -11,12 +11,12 @@ import { color } from '@pie-lib/render-ui';
 
 const log = debug('pie-elements:match-title:answer');
 
-const Holder = withStyles(() => ({
+const Holder = withStyles((theme) => ({
   number: {
     width: '100%',
     fontSize: '18px',
     textAlign: 'center',
-    color: 'rgba(0,0,0,0.6)',
+    color: `rgba(${theme.palette.common.black}, 0.6)`,
   },
   placeholder: {
     display: 'flex',
@@ -37,14 +37,14 @@ Holder.propTypes = {
   disabled: PropTypes.bool,
 };
 
-const AnswerContent = withStyles({
+const AnswerContent = withStyles((theme) => ({
   over: {
     opacity: 0.2,
   },
   answerContent: {
     color: color.text(),
     backgroundColor: color.background(),
-    border: '1px solid #c2c2c2', // TODO hardcoded color
+    border: `1px solid ${theme.palette.grey[400]}`,
     cursor: 'pointer',
     width: '100%',
     padding: '10px',
@@ -67,7 +67,7 @@ const AnswerContent = withStyles({
   correct: {
     border: `1px solid ${color.correct()}`,
   },
-})((props) => {
+}))((props) => {
   const { classes, isDragging, isOver, title, disabled, empty, outcome, guideIndex, type } = props;
 
   if (empty) {
