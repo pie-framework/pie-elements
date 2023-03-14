@@ -91,7 +91,7 @@ const model = () => ({
   partialScoring: false,
 });
 
-xdescribe('Root', () => {
+describe('Root', () => {
   let initialModel = model();
 
   describe('render', () => {
@@ -355,9 +355,3 @@ xdescribe('Root', () => {
     });
   });
 });
-
-describe('replacer', () => {
-  it('replacer', () => {
-    expect(!!1).toEqual(true);
-  })
-})

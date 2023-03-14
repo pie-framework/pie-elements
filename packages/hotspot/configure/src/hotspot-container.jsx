@@ -44,12 +44,6 @@ export class Container extends Component {
     }
   };
 
-  handleUploadImage = (e) => {
-    e.preventDefault();
-
-    this.handleFileRead(e.target.files[0]);
-  };
-
   enableDropzone = () => this.setState({ dropzoneActive: true });
 
   disableDropzone = () => this.setState({ dropzoneActive: false });
@@ -125,20 +119,22 @@ export class Container extends Component {
 
   handleDisableDrag = () => this.setState({ dragEnabled: false });
 
-  handleInputClick = () => this.input.click();
+  handleInputClick = () => {
+    const { insertImage } = this.props;
 
-  handleInputClickNew = () => {
-    this.props.insertImage(
-      {
-        cancel: () => {
-        },
-        done: (a, url) => this.props.onImageUpload(url),
-        fileChosen: () => {
-        },
-        progress: () => {
+    if (insertImage) {
+      insertImage(
+        {
+          cancel: () => {
+          },
+          done: (a, url) => this.props.onImageUpload(url),
+          fileChosen: () => {
+          },
+          progress: () => {
+          }
         }
-      }
-    );
+      );
+    }
   };
 
   toggleTooltip = () => this.setState({ showTooltip: !this.state.showTooltip });
@@ -182,9 +178,7 @@ export class Container extends Component {
                 classNameButton={classes.replaceButton}
                 classNameSection={classes.replaceSection}
                 label="Replace Image"
-                // onInputClick={this.handleInputClick}
-                // onUploadImage={this.handleUploadImage}
-                onInputClick={this.handleInputClickNew}
+                onInputClick={this.handleInputClick}
                 setRef={(ref) => {
                   this.input = ref;
                 }}
@@ -222,9 +216,7 @@ export class Container extends Component {
                 <br/>
                 <UploadControl
                   label="Upload Image"
-                  // onInputClick={this.handleInputClick}
-                  // onUploadImage={this.handleUploadImage}
-                  onInputClick={this.handleInputClickNew}
+                  onInputClick={this.handleInputClick}
                   setRef={(ref) => {
                     this.input = ref;
                   }}
@@ -349,6 +341,7 @@ Container.propTypes = {
   }).isRequired,
   strokeWidth: PropTypes.number,
   preserveAspectRatioEnabled: PropTypes.bool,
+  hasErrors: PropTypes.bool,
 };
 
 Container.defaultProps = {
