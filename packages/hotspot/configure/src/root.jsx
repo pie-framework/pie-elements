@@ -167,7 +167,7 @@ export class Root extends React.Component {
             placement={'left'}
             title={validationMessage}
           >
-            <Info fontSize={'small'} color={'primary'} style={{ float: 'right' }} />
+            <Info fontSize={'small'} color={'primary'} style={{ float: 'right' }}/>
           </Tooltip>
         </div>
 
@@ -193,6 +193,7 @@ export class Root extends React.Component {
           shapes={model.shapes}
           strokeWidth={model.strokeWidth}
           preserveAspectRatioEnabled={preserveAspectRatio.enabled}
+          insertImage={imageSupport && imageSupport.add}
         />
         {shapesError && <div className={classes.errorText}>{shapesError}</div>}
         {selectionsError && <div className={classes.errorText}>{selectionsError}</div>}
