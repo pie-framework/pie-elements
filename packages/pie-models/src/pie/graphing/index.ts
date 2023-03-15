@@ -199,6 +199,9 @@ export interface GraphingPie extends PieModel {
   /** Indicates if the graph labels are displayed */
   labelsEnabled?: boolean;
 
+  /** Indicates if the graph dimensions are displayed */
+  dimensionsEnabled?: boolean;
+
   /** Indicates if the graph title is displayed */
   titleEnabled?: boolean;
 

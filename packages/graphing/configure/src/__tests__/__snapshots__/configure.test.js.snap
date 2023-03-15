@@ -341,6 +341,7 @@ exports[`Configure renders snapshot 1`] = `
           "Settings": Object {
             "arrows": undefined,
             "coordinatesOnHover": undefined,
+            "dimensionsEnabled": false,
             "labelsEnabled": undefined,
             "padding": false,
             "titleEnabled": undefined,
@@ -364,6 +365,7 @@ exports[`Configure renders snapshot 1`] = `
           "backgroundMarks": Array [],
           "coordinatesOnHover": false,
           "defaultGridConfiguration": 0,
+          "dimensionsEnabled": true,
           "domain": Object {
             "axisLabel": "x",
             "labelStep": 1,
@@ -481,6 +483,7 @@ exports[`Configure renders snapshot 1`] = `
       }
     }
     availableTools={Array []}
+    dimensionsEnabled={true}
     graphDimensions={
       Object {
         "enabled": true,
@@ -715,6 +718,7 @@ exports[`Configure renders snapshot 1`] = `
         "backgroundMarks": Array [],
         "coordinatesOnHover": false,
         "defaultGridConfiguration": 0,
+        "dimensionsEnabled": true,
         "domain": Object {
           "axisLabel": "x",
           "labelStep": 1,
@@ -773,6 +777,7 @@ exports[`Configure renders snapshot 1`] = `
         "backgroundMarks": Array [],
         "coordinatesOnHover": false,
         "defaultGridConfiguration": 0,
+        "dimensionsEnabled": true,
         "domain": Object {
           "axisLabel": "x",
           "labelStep": 1,

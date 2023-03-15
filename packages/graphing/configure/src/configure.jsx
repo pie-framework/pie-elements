@@ -109,6 +109,7 @@ export class Configure extends React.Component {
     const {
       errors = {},
       labelsEnabled,
+      dimensionsEnabled,
       promptEnabled,
       rationaleEnabled,
       spellCheckEnabled,
@@ -139,6 +140,7 @@ export class Configure extends React.Component {
       titleEnabled: title.settings && toggle(title.label),
       padding: padding.settings && toggle(padding.label),
       labelsEnabled: labels.settings && toggle(labels.label),
+      dimensionsEnabled: graphDimensions.settings && toggle(graphDimensions.label),
       coordinatesOnHover: coordinatesOnHover.settings && toggle(coordinatesOnHover.label),
     };
     const panelProperties = {
@@ -216,6 +218,7 @@ export class Configure extends React.Component {
           labelsPlaceholders={labelsPlaceholders}
           model={model}
           showLabels={labelsEnabled}
+          dimensionsEnabled={dimensionsEnabled}
           showTitle={titleEnabled}
           titlePlaceholder={title.placeholder}
           onChange={this.props.onModelChanged}

@@ -32,6 +32,7 @@ export default {
     includeAxes: true,
     labels: {},
     labelsEnabled: true,
+    dimensionsEnabled: true,
     padding: true,
     prompt: '',
     range: {

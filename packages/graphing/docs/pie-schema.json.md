@@ -225,6 +225,10 @@ Indicates graph title
 
 Indicates if the graph labels are displayed
 
+# `dimensionsEnabled` (boolean)
+
+Indicates if the graph dimensions are displayed
+
 # `titleEnabled` (boolean)
 
 Indicates if the graph title is displayed

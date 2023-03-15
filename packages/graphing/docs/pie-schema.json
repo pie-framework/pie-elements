@@ -1460,6 +1460,11 @@
       "type": "boolean",
       "title": "labelsEnabled"
     },
+    "dimensionsEnabled": {
+      "description": "Indicates if the graph dimensions are displayed",
+      "type": "boolean",
+      "title": "dimensionsEnabled"
+    },
     "titleEnabled": {
       "description": "Indicates if the graph title is displayed",
       "type": "boolean",
