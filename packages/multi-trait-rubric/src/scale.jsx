@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { color } from '@pie-lib/render-ui';
 import Trait from './trait';
-import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
-import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 
 const styles = () => ({
   wrapper: {
@@ -22,6 +22,7 @@ const styles = () => ({
     color: color.text(),
     fontSize: '14px',
     lineHeight: '16px',
+    overflow: 'unset',
 
     '& ul, ol': {
       marginBlockStart: 0,
@@ -91,18 +92,15 @@ ArrowContainer.propTypes = {
 class Scale extends React.Component {
   state = {};
 
+  // constructor() {
+  //   super();
+  //   document.querySelector('body > catalog-container > catalog-entry > catalog-demo > div:nth-child(2)').style.width = '800px';
+  // }
+
   componentDidMount() {
     if (this.tableWrapper) {
       if (this.tableWrapper.offsetWidth < this.tableWrapper.scrollWidth) {
         this.setState({ showRight: true });
-      }
-      this.tableWrapper.onscroll = () => {
-        this.setState({
-          // 5 is a margin of error
-          showRight: this.tableWrapper.scrollLeft + this.tableWrapper.offsetWidth < this.tableWrapper.scrollWidth - 5
-            && this.tableWrapper.scrollLeft < this.tableWrapper.scrollWidth,
-          showLeft: this.tableWrapper.scrollLeft < this.tableWrapper.scrollWidth && this.tableWrapper.scrollLeft > 0,
-        });
       }
     }
   }
@@ -181,8 +179,19 @@ class Scale extends React.Component {
           ref={ref => {
             this.tableWrapper = ref;
           }}
+          onScroll={() => {
+            this.setState({
+              // 5 is a margin of error
+              showRight: this.tableWrapper.scrollLeft + this.tableWrapper.offsetWidth < this.tableWrapper.scrollWidth - 5
+                && this.tableWrapper.scrollLeft < this.tableWrapper.scrollWidth,
+              showLeft: this.tableWrapper.scrollLeft < this.tableWrapper.scrollWidth && this.tableWrapper.scrollLeft > 0,
+            });
+          }}
         >
-          <table key={`scale-${scaleIndex}`} className={classes.table}>
+          <table
+            key={`scale-${scaleIndex}`}
+            className={classes.table}
+          >
             <thead>
             <tr>
               <th>
