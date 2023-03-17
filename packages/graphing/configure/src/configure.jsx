@@ -59,7 +59,7 @@ export class Configure extends React.Component {
     }
 
     const toolbarTools = intersection(availableTools || [], model.toolbarTools || []);
-    const titleEnabled = showTitle ?? title.enabled;
+    const titleEnabled = showTitle === undefined ? title.enabled : showTitle;
 
     onModelChanged && onModelChanged({ ...model, arrows, toolbarTools, titleEnabled });
   }
