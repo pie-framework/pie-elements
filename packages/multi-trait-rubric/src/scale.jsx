@@ -73,6 +73,7 @@ const ArrowContainer = ({ show, onClick, extraStyles, children }) => (
       position: 'absolute',
       alignItems: 'center',
       justifyContent: 'center',
+      cursor: 'pointer',
       ...extraStyles
     }}
     onClick={onClick}
@@ -91,11 +92,6 @@ ArrowContainer.propTypes = {
 
 class Scale extends React.Component {
   state = {};
-
-  // constructor() {
-  //   super();
-  //   document.querySelector('body > catalog-container > catalog-entry > catalog-demo > div:nth-child(2)').style.width = '800px';
-  // }
 
   componentDidMount() {
     if (this.tableWrapper) {
