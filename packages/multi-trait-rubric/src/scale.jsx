@@ -3,8 +3,18 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { color } from '@pie-lib/render-ui';
 import Trait from './trait';
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 
 const styles = () => ({
+  wrapper: {
+    display: 'flex',
+    position: 'relative'
+  },
+  tableWrapper: {
+    width: '100%',
+    overflow: 'scroll'
+  },
   table: {
     borderSpacing: 0,
     marginBottom: '16px',
@@ -12,6 +22,7 @@ const styles = () => ({
     color: color.text(),
     fontSize: '14px',
     lineHeight: '16px',
+    overflow: 'unset',
 
     '& ul, ol': {
       marginBlockStart: 0,
@@ -51,8 +62,66 @@ const styles = () => ({
   },
 });
 
+const ArrowContainer = ({ show, onClick, extraStyles, children }) => (
+  <div
+    style={{
+      height: 'calc(100% - 1px)',
+      top: '1px',
+      display: show ? 'flex' : 'none',
+      width: '50px',
+      margin: 'auto',
+      position: 'absolute',
+      alignItems: 'center',
+      justifyContent: 'center',
+      cursor: 'pointer',
+      ...extraStyles
+    }}
+    onClick={onClick}
+  >
+    {children}
+  </div>
+);
+
+ArrowContainer.propTypes = {
+  show: PropTypes.bool,
+  onClick: PropTypes.func,
+  extraStyles: PropTypes.object,
+  children: PropTypes.object,
+};
+
+
 class Scale extends React.Component {
+  state = {};
+
+  componentDidMount() {
+    if (this.tableWrapper) {
+      if (this.tableWrapper.offsetWidth < this.tableWrapper.scrollWidth) {
+        this.setState({ showRight: true });
+      }
+    }
+  }
+
+  scrollLeft = () => {
+    this.tableWrapper.scrollLeft -= this.tableWrapper.offsetWidth / 2;
+
+    this.setState({
+      showRight: this.tableWrapper.scrollLeft < this.tableWrapper.scrollWidth,
+      showLeft: this.tableWrapper.scrollLeft < this.tableWrapper.scrollWidth && this.tableWrapper.scrollLeft > 0,
+    });
+  }
+
+  scrollRight = () => {
+    const initialScrollLeft = this.tableWrapper.scrollLeft;
+    this.tableWrapper.scrollLeft += this.tableWrapper.offsetWidth / 2;
+
+    this.setState({
+      showRight: initialScrollLeft !== this.tableWrapper.scrollLeft && this.tableWrapper.scrollLeft < this.tableWrapper.scrollWidth,
+      showLeft: this.tableWrapper.scrollLeft < this.tableWrapper.scrollWidth && this.tableWrapper.scrollLeft > 0,
+    });
+  }
+
   render() {
+    const { showRight, showLeft } = this.state;
     const { classes, scale, scaleIndex, showDescription, showPointsLabels, showStandards } = this.props;
     const { excludeZero, maxPoints, traitLabel, traits, scorePointsLabels } = scale || {};
 
@@ -60,6 +129,7 @@ class Scale extends React.Component {
     let descriptions;
     let pointsLabels;
     let standards;
+
     try {
       // determining the score points values
       for (let pointValue = maxPoints; pointValue >= excludeZero ? 1 : 0; pointValue -= 1) {
@@ -87,44 +157,74 @@ class Scale extends React.Component {
     }
 
     return (
-      <table key={`scale-${scaleIndex}`} className={classes.table}>
-        <thead>
-          <tr>
-            <th>
-              <div dangerouslySetInnerHTML={{ __html: traitLabel }} />
-            </th>
+      <div className={classes.wrapper}>
 
-            {standards ? (
+        <ArrowContainer
+          show={showLeft}
+          onClick={this.scrollLeft}
+          extraStyles={{
+            left: 0,
+            background: `linear-gradient(to right, white, ${color.background()})`,
+          }}
+        >
+          <ArrowBackIosIcon/>
+        </ArrowContainer>
+
+        <div
+          className={classes.tableWrapper}
+          ref={ref => {
+            this.tableWrapper = ref;
+          }}
+          onScroll={() => {
+            this.setState({
+              // 5 is a margin of error
+              showRight: this.tableWrapper.scrollLeft + this.tableWrapper.offsetWidth < this.tableWrapper.scrollWidth - 5
+                && this.tableWrapper.scrollLeft < this.tableWrapper.scrollWidth,
+              showLeft: this.tableWrapper.scrollLeft < this.tableWrapper.scrollWidth && this.tableWrapper.scrollLeft > 0,
+            });
+          }}
+        >
+          <table
+            key={`scale-${scaleIndex}`}
+            className={classes.table}
+          >
+            <thead>
+            <tr>
               <th>
-                <div>Standard(s)</div>
+                <div dangerouslySetInnerHTML={{ __html: traitLabel }}/>
               </th>
-            ) : null}
 
-            {descriptions ? (
-              <th>
-                <div>Description</div>
-              </th>
-            ) : null}
+              {standards ? (
+                <th>
+                  <div>Standard(s)</div>
+                </th>
+              ) : null}
 
-            {scorePointsValues &&
-              scorePointsValues.map((scorePointValue, index) => {
-                let pointLabel = '';
+              {descriptions ? (
+                <th>
+                  <div>Description</div>
+                </th>
+              ) : null}
 
-                // to handle the case when there aren't enough labels
-                try {
-                  pointLabel = scorePointsLabels[scorePointsValues.length - index - 1] || '';
-                } catch (e) {
-                  pointLabel = '';
-                }
+              {scorePointsValues &&
+                scorePointsValues.map((scorePointValue, index) => {
+                  let pointLabel = '';
 
-                return (
-                  <th key={`table-header-${index}`}>
-                    <table className={classes.scorePointHeader}>
-                      <thead>
+                  // to handle the case when there aren't enough labels
+                  try {
+                    pointLabel = scorePointsLabels[scorePointsValues.length - index - 1] || '';
+                  } catch (e) {
+                    pointLabel = '';
+                  }
+
+                  return (
+                    <th key={`table-header-${index}`}>
+                      <table className={classes.scorePointHeader}>
+                        <thead>
                         {pointsLabels ? (
                           <tr>
                             <td>
-                              <div className={classes.pointLabel} dangerouslySetInnerHTML={{ __html: pointLabel }} />
+                              <div className={classes.pointLabel} dangerouslySetInnerHTML={{ __html: pointLabel }}/>
                             </td>
                           </tr>
                         ) : null}
@@ -133,30 +233,43 @@ class Scale extends React.Component {
                             {scorePointValue === 1 ? `${scorePointValue} point` : `${scorePointValue} points`}
                           </td>
                         </tr>
-                      </thead>
-                    </table>
-                  </th>
-                );
-              })}
-          </tr>
-        </thead>
+                        </thead>
+                      </table>
+                    </th>
+                  );
+                })}
+            </tr>
+            </thead>
 
-        <tbody>
-          {traits &&
-            traits.map((trait, traitIndex) => (
-              <Trait
-                key={`trait_${scaleIndex}_${traitIndex}`}
-                trait={trait}
-                traitIndex={traitIndex}
-                showDescription={!!descriptions}
-                showStandards={!!standards}
-                scaleIndex={scaleIndex}
-                scorePointsValues={scorePointsValues}
-                excludeZero={excludeZero}
-              />
-            ))}
-        </tbody>
-      </table>
+            <tbody>
+            {traits &&
+              traits.map((trait, traitIndex) => (
+                <Trait
+                  key={`trait_${scaleIndex}_${traitIndex}`}
+                  trait={trait}
+                  traitIndex={traitIndex}
+                  showDescription={!!descriptions}
+                  showStandards={!!standards}
+                  scaleIndex={scaleIndex}
+                  scorePointsValues={scorePointsValues}
+                  excludeZero={excludeZero}
+                />
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <ArrowContainer
+          show={showRight}
+          onClick={this.scrollRight}
+          extraStyles={{
+            right: 0,
+            background: `linear-gradient(to left, white, ${color.background()})`,
+          }}
+        >
+          <ArrowForwardIosIcon/>
+        </ArrowContainer>
+      </div>
     );
   }
 }
