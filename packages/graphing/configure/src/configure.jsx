@@ -45,8 +45,8 @@ export class Configure extends React.Component {
 
   componentDidMount() {
     const { configuration, onModelChanged, model } = this.props;
-    const { availableTools } = configuration || {};
-    let { arrows } = model || {};
+    const { availableTools, title } = configuration || {};
+    let { arrows, titleEnabled: showTitle } = model || {};
 
     // This is used for offering support for old models which have the property arrows: boolean
     // Same thing is set in the controller: packages/graphing/controller/src/index.js - model
@@ -59,8 +59,9 @@ export class Configure extends React.Component {
     }
 
     const toolbarTools = intersection(availableTools || [], model.toolbarTools || []);
+    const titleEnabled = showTitle === undefined ? title.enabled : showTitle;
 
-    onModelChanged && onModelChanged({ ...model, arrows, toolbarTools });
+    onModelChanged && onModelChanged({ ...model, arrows, toolbarTools, titleEnabled });
   }
 
   onRationaleChange = (rationale) => {
@@ -91,7 +92,7 @@ export class Configure extends React.Component {
       coordinatesOnHover = {},
       gridConfigurations = [],
       graphDimensions = {},
-      instruction= {},
+      instruction = {},
       labels = {},
       padding = {},
       prompt = {},
@@ -170,7 +171,7 @@ export class Configure extends React.Component {
         }
       >
         <Typography component="div" type="body1" className={classes.description}>
-              {instruction?.label || ''}
+          {instruction?.label || ''}
         </Typography>
 
         {teacherInstructionsEnabled && (

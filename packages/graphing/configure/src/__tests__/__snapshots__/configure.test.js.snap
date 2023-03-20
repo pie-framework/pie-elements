@@ -394,7 +394,6 @@ exports[`Configure renders snapshot 1`] = `
           "studentInstructionsEnabled": true,
           "teacherInstructionsEnabled": true,
           "title": "",
-          "titleEnabled": true,
           "toolbarTools": Array [],
         }
       }
@@ -745,12 +744,10 @@ exports[`Configure renders snapshot 1`] = `
         "studentInstructionsEnabled": true,
         "teacherInstructionsEnabled": true,
         "title": "",
-        "titleEnabled": true,
         "toolbarTools": Array [],
       }
     }
     showLabels={true}
-    showTitle={true}
     titlePlaceholder="Click here to add a title for this graph"
   />
   <WithStyles(CorrectResponse)
@@ -803,7 +800,6 @@ exports[`Configure renders snapshot 1`] = `
         "studentInstructionsEnabled": true,
         "teacherInstructionsEnabled": true,
         "title": "",
-        "titleEnabled": true,
         "toolbarTools": Array [],
       }
     }
