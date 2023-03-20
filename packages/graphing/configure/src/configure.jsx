@@ -45,8 +45,8 @@ export class Configure extends React.Component {
 
   componentDidMount() {
     const { configuration, onModelChanged, model } = this.props;
-    const { availableTools, title } = configuration || {};
-    let { arrows, titleEnabled: showTitle } = model || {};
+    const { availableTools, title, graphDimensions } = configuration || {};
+    let { arrows, titleEnabled: showTitle, dimensionsEnabled: showDimensions } = model || {};
 
     // This is used for offering support for old models which have the property arrows: boolean
     // Same thing is set in the controller: packages/graphing/controller/src/index.js - model
@@ -59,9 +59,10 @@ export class Configure extends React.Component {
     }
 
     const toolbarTools = intersection(availableTools || [], model.toolbarTools || []);
-    const titleEnabled = showTitle === undefined ? title.enabled : showTitle;
+    const titleEnabled = showTitle === undefined || showTitle === null ? title.enabled : showTitle;
+    const dimensionsEnabled = showDimensions === undefined || showDimensions === null ? graphDimensions.enabled : showDimensions;
 
-    onModelChanged && onModelChanged({ ...model, arrows, toolbarTools, titleEnabled });
+    onModelChanged && onModelChanged({ ...model, arrows, toolbarTools, titleEnabled, dimensionsEnabled });
   }
 
   onRationaleChange = (rationale) => {
@@ -110,6 +111,7 @@ export class Configure extends React.Component {
     const {
       errors = {},
       labelsEnabled,
+      dimensionsEnabled,
       promptEnabled,
       rationaleEnabled,
       spellCheckEnabled,
@@ -140,6 +142,7 @@ export class Configure extends React.Component {
       titleEnabled: title.settings && toggle(title.label),
       padding: padding.settings && toggle(padding.label),
       labelsEnabled: labels.settings && toggle(labels.label),
+      dimensionsEnabled: graphDimensions.settings && toggle(graphDimensions.label),
       coordinatesOnHover: coordinatesOnHover.settings && toggle(coordinatesOnHover.label),
     };
     const panelProperties = {
@@ -217,6 +220,7 @@ export class Configure extends React.Component {
           labelsPlaceholders={labelsPlaceholders}
           model={model}
           showLabels={labelsEnabled}
+          dimensionsEnabled={dimensionsEnabled}
           showTitle={titleEnabled}
           titlePlaceholder={title.placeholder}
           onChange={this.props.onModelChanged}

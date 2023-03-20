@@ -341,6 +341,7 @@ exports[`Configure renders snapshot 1`] = `
           "Settings": Object {
             "arrows": undefined,
             "coordinatesOnHover": undefined,
+            "dimensionsEnabled": false,
             "labelsEnabled": undefined,
             "padding": false,
             "titleEnabled": undefined,
