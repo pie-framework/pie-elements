@@ -68,6 +68,10 @@ Additional restrictions:
 
 * Minimum items: `1`
 
+# `defaultGridConfiguration` (object, required)
+
+An object that represents a number of any kind. All JavaScript numbers are 64-bit floating-point numbers.
+
 # `coordinatesOnHover` (boolean)
 
 Indicates if coordinates of a point are displayed on hover
@@ -220,6 +224,10 @@ Indicates graph title
 # `labelsEnabled` (boolean)
 
 Indicates if the graph labels are displayed
+
+# `dimensionsEnabled` (boolean)
+
+Indicates if the graph dimensions are displayed
 
 # `titleEnabled` (boolean)
 
@@ -868,3 +876,7 @@ Indicates x coordinate
 ### `y` (number, required)
 
 Indicates y coordinate
+
+## `Number` (object)
+
+An object that represents a number of any kind. All JavaScript numbers are 64-bit floating-point numbers.

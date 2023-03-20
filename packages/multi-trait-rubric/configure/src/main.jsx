@@ -16,12 +16,12 @@ import { ExcludeZeroDialog, excludeZeroTypes, IncludeZeroDialog, InfoDialog } fr
 const { Panel, toggle } = settings;
 const MIN_WIDTH = '730px';
 
-const styles = {
+const styles = (theme) => ({
   design: {
     fontFamily: 'Cerebri Sans',
-    fontSize: '14px',
+    fontSize: theme.typography.fontSize,
   },
-};
+});
 
 export class Main extends React.Component {
   state = {
@@ -248,7 +248,7 @@ export class Main extends React.Component {
       settingsPanelDisabled,
       maxNoOfTraits,
       minNoOfTraits,
-      width
+      width,
     } = configuration || {};
     const {
       scales,

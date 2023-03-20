@@ -361,7 +361,14 @@ export const validate = (model = {}, config = {}) => {
     }
   });
 
-  if (!isEmpty(rowsErrors)) {
+  let hasRowErrors = false;
+  Object.entries(rowsErrors).forEach(([key, rowError]) => {
+    if (rowError.length) {
+      hasRowErrors = true;
+    }
+  });
+
+  if (hasRowErrors) {
     errors.rowsErrors = rowsErrors;
     let noCorrectAnswer = false;
 

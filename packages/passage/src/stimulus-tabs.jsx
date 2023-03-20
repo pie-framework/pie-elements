@@ -7,7 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import { color, Purpose } from '@pie-lib/render-ui';
 import classNames from 'classnames';
 
-const styles = (/*theme*/) => ({
+const styles = (theme) => ({
   root: {
     flexGrow: 1,
     backgroundColor: color.background(),
@@ -18,19 +18,19 @@ const styles = (/*theme*/) => ({
   },
   stickyTabs: {
     background: color.background(),
-    paddingBottom: '20px',
+    paddingBottom: theme.spacing.unit * 2.5,
     position: 'sticky',
     top: 0,
   },
   title: {
     textTransform: 'uppercase',
-    padding: '6px 24px',
+    padding: `${theme.spacing.unit}px ${theme.spacing.unit * 3}px`,
     borderBottom: `2px solid ${color.secondary()}`,
     width: 'fit-content',
-    marginBottom: '6px',
+    marginBottom: theme.spacing.unit,
   },
   buttonContainer: {
-    background: 'white',
+    background: theme.palette.common.white,
   },
 });
 

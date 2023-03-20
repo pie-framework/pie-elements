@@ -2,12 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ChoiceInput from './choice-input';
 import { withStyles } from '@material-ui/core/styles';
-import { Collapsible, PreviewPrompt } from '@pie-lib/render-ui';
+import { color, Collapsible, PreviewPrompt } from '@pie-lib/render-ui';
 import { LIKERT_ORIENTATION } from './likertEntities';
 import classNames from 'classnames';
 
 const styles = (theme) => ({
   main: {
+    color: color.text(),
+    backgroundColor: color.background(),
     '& *': {
       fontFamily: 'Roboto, Arial, Helvetica, sans-serif',
       '-webkit-font-smoothing': 'antialiased',

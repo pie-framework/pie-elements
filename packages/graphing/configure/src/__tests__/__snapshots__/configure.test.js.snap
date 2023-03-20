@@ -327,13 +327,6 @@ exports[`Configure renders snapshot 1`] = `
       }
       groups={
         Object {
-          "Item Type": Object {
-            "arrows": undefined,
-            "coordinatesOnHover": undefined,
-            "labelsEnabled": undefined,
-            "padding": false,
-            "titleEnabled": undefined,
-          },
           "Properties": Object {
             "authoring.enabled": false,
             "instruction": false,
@@ -344,6 +337,14 @@ exports[`Configure renders snapshot 1`] = `
             "spellCheckEnabled": false,
             "studentInstructionsEnabled": false,
             "teacherInstructionsEnabled": undefined,
+          },
+          "Settings": Object {
+            "arrows": undefined,
+            "coordinatesOnHover": undefined,
+            "dimensionsEnabled": false,
+            "labelsEnabled": undefined,
+            "padding": false,
+            "titleEnabled": undefined,
           },
         }
       }
@@ -363,6 +364,7 @@ exports[`Configure renders snapshot 1`] = `
           },
           "backgroundMarks": Array [],
           "coordinatesOnHover": false,
+          "defaultGridConfiguration": 0,
           "domain": Object {
             "axisLabel": "x",
             "labelStep": 1,
@@ -393,7 +395,6 @@ exports[`Configure renders snapshot 1`] = `
           "studentInstructionsEnabled": true,
           "teacherInstructionsEnabled": true,
           "title": "",
-          "titleEnabled": true,
           "toolbarTools": Array [],
         }
       }
@@ -713,6 +714,7 @@ exports[`Configure renders snapshot 1`] = `
         },
         "backgroundMarks": Array [],
         "coordinatesOnHover": false,
+        "defaultGridConfiguration": 0,
         "domain": Object {
           "axisLabel": "x",
           "labelStep": 1,
@@ -743,12 +745,10 @@ exports[`Configure renders snapshot 1`] = `
         "studentInstructionsEnabled": true,
         "teacherInstructionsEnabled": true,
         "title": "",
-        "titleEnabled": true,
         "toolbarTools": Array [],
       }
     }
     showLabels={true}
-    showTitle={true}
     titlePlaceholder="Click here to add a title for this graph"
   />
   <WithStyles(CorrectResponse)
@@ -770,6 +770,7 @@ exports[`Configure renders snapshot 1`] = `
         },
         "backgroundMarks": Array [],
         "coordinatesOnHover": false,
+        "defaultGridConfiguration": 0,
         "domain": Object {
           "axisLabel": "x",
           "labelStep": 1,
@@ -800,7 +801,6 @@ exports[`Configure renders snapshot 1`] = `
         "studentInstructionsEnabled": true,
         "teacherInstructionsEnabled": true,
         "title": "",
-        "titleEnabled": true,
         "toolbarTools": Array [],
       }
     }

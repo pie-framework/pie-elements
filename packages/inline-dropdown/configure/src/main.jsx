@@ -42,10 +42,7 @@ const styles = (theme) => ({
     paddingBottom: theme.spacing.unit * 2,
   },
   text: {
-    fontFamily: 'Cerebri Sans',
     fontSize: theme.typography.fontSize + 2,
-    lineHeight: '19px',
-    color: '#495B8F',
     marginRight: theme.spacing.unit,
   },
   rationaleLabel: {

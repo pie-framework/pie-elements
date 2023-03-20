@@ -7,14 +7,13 @@ import { AlertDialog } from '@pie-lib/config-ui';
 import Delete from '@material-ui/icons/Delete';
 import { set, isEqual } from 'lodash';
 import { MenuItem, Select, Typography } from '@material-ui/core';
-import { color } from '@pie-lib/render-ui';
 
 const styles = (theme) => ({
   column: {
     flex: 1,
   },
   graphingTools: {
-    color: '#ababab',
+    color: theme.palette.grey['A200'],
   },
   availableTools: {
     marginTop: theme.spacing.unit,
@@ -24,48 +23,48 @@ const styles = (theme) => ({
     cursor: 'pointer',
     margin: theme.spacing.unit,
     padding: theme.spacing.unit,
-    border: '2px solid white',
+    border: `2px solid ${theme.palette.common.white}`,
     textTransform: 'capitalize',
     '&:hover': {
-      color: '#4d4d4d',
+      color: theme.palette.grey[800],
     },
   },
   selectedTool: {
-    background: '#d8d8d8',
-    border: '2px solid #ababab',
+    background: theme.palette.grey['A100'],
+    border: `2px solid ${theme.palette.grey['A200']}`,
   },
   container: {
-    border: '2px solid #ababab',
+    border: `2px solid ${theme.palette.grey['A200']}`,
     borderRadius: '4px',
     padding: `0 ${theme.spacing.unit * 4}px ${theme.spacing.unit * 2}px`,
-    background: '#fafafa',
+    background: theme.palette.grey[50],
   },
   button: {
     margin: `${theme.spacing.unit * 2.5}px 0`,
     cursor: 'pointer',
-    background: '#eee',
+    background: theme.palette.grey[200],
     padding: theme.spacing.unit * 1.5,
     width: 'fit-content',
     borderRadius: '4px',
     '&:hover': {
-      background: '#d8d8d8',
+      background: theme.palette.grey['A100'],
     },
   },
   responseTitle: {
     display: 'flex',
     alignItems: 'center',
-    marginTop: '20px',
+    marginTop: theme.spacing.unit * 2.5,
   },
   iconButton: {
     marginLeft: '6px',
-    color: '#6d6d6d',
+    color: theme.palette.grey[600],
     '&:hover': {
       cursor: 'pointer',
-      color: '#000000',
+      color: theme.palette.common.black,
     },
   },
   name: {
-    margin: '5px 0',
+    marginBottom: theme.spacing.unit / 2,
   },
   subtitleText: {
     marginTop: theme.spacing.unit * 1.5,
@@ -84,7 +83,7 @@ const styles = (theme) => ({
   defaultToolSelect: {
     marginLeft: theme.spacing.unit,
     textTransform: 'uppercase',
-    color: '#4d4d4d',
+    color: theme.palette.grey[800],
   },
   menuItem: {
     textTransform: 'uppercase',
@@ -93,15 +92,15 @@ const styles = (theme) => ({
     padding: theme.spacing.unit / 2,
   },
   error: {
-    color: 'red',
+    color: theme.palette.error.main,
   },
   errorMessage: {
-    fontSize: '14px',
-    color: 'red',
+    fontSize: theme.typography.fontSize - 2,
+    color: theme.palette.error.main,
     marginTop: theme.spacing.unit,
   },
   graphError: {
-    border: '2px solid red',
+    border: `2px solid ${theme.palette.error.main}`,
   },
 });
 

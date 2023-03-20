@@ -499,7 +499,7 @@ exports[`CorrectResponse renders snapshot 1`] = `
         </span>
       </WithStyles(Typography)>
       <div
-        className={Object {}}
+        className=""
         key="correct-response-graph-undefined"
       >
         <Chart

@@ -46,10 +46,7 @@ const styles = (theme) => ({
     float: 'right',
   },
   text: {
-    color: '#495B8F',
-    fontFamily: 'Cerebri Sans',
     fontSize: theme.typography.fontSize + 2,
-    lineHeight: '19px',
   },
   tooltip: {
     fontSize: theme.typography.fontSize - 2,
@@ -58,7 +55,7 @@ const styles = (theme) => ({
   },
   errorText: {
     fontSize: theme.typography.fontSize - 2,
-    color: 'red',
+    color: theme.palette.error.main,
     paddingTop: theme.spacing.unit,
   },
   flexContainer: {

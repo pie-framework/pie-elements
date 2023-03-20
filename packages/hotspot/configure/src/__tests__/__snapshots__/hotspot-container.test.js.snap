@@ -14,7 +14,6 @@ exports[`HotspotContainer render renders 1`] = `
       <WithStyles(UploadControl)
         label="Replace Image"
         onInputClick={[Function]}
-        onUploadImage={[Function]}
         setRef={[Function]}
       />
       <WithStyles(RawButton)

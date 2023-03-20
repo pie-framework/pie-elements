@@ -1,8 +1,7 @@
 export default {
   model: {
-    prompt: 'This is the question prompt',
+    prompt: '',
     toolbarEditorPosition: 'bottom',
-    promptEnabled: true,
     imageUrl: '',
     shapes: {
       rectangles: [],
@@ -18,6 +17,7 @@ export default {
     hotspotList: ['rgba(137, 183, 244, 0.25)'],
     outlineColor: 'blue',
     outlineList: ['blue'],
+    promptEnabled: true,
     rationaleEnabled: true,
     teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true,

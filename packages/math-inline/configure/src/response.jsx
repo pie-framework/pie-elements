@@ -21,7 +21,7 @@ const styles = (theme) => ({
   responseContainer: {
     marginBottom: theme.spacing.unit * 2.5,
     width: '100%',
-    border: '1px solid darkgray',
+    border: `1px solid ${theme.palette.grey[700]}`,
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
@@ -59,11 +59,11 @@ const styles = (theme) => ({
     width: '100%',
   },
   alternateButton: {
-    border: '1px solid lightgrey',
+    border: `1px solid ${theme.palette.grey['A100']}`,
   },
   removeAlternateButton: {
     marginLeft: theme.spacing.unit * 2,
-    border: '1px solid lightgrey',
+    border: `1px solid ${theme.palette.grey['A100']}`,
     color: 'gray',
     fontSize: '0.8rem',
   },

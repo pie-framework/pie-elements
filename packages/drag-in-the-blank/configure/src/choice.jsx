@@ -24,7 +24,7 @@ export const BlankContent = withStyles((theme) => ({
     display: 'inline-flex',
     minWidth: '178px',
     minHeight: '36px',
-    background: '#FFF',
+    background: theme.palette.common.white,
     boxSizing: 'border-box',
     borderRadius: '3px',
     overflow: 'hidden',
@@ -36,25 +36,25 @@ export const BlankContent = withStyles((theme) => ({
     position: 'absolute',
     top: '6px',
     right: '0',
-    color: '#9B9B9B',
+    color: theme.palette.grey[500],
     zIndex: 2,
 
     '& :hover': {
       cursor: 'pointer',
-      color: '#000000',
+      color: theme.palette.common.black,
     },
   },
 }))((props) => {
   const { classes, connectDragSource, choice, onClick, onRemoveChoice, error } = props;
 
   return connectDragSource(
-    <div className={classes.choice} style={{ border: `1px solid ${error ? 'red' : '#C0C3CF'}` }} onClick={onClick}>
+    <div className={classes.choice} style={{ border: `1px solid ${error ? '#f44336' : '#C0C3CF'}` }} onClick={onClick}>
       <GripIcon
         style={{
           position: 'absolute',
           top: '6px',
           left: '15px',
-          color: '#9B9B9B',
+          color: '#9e9e9e',
           zIndex: 2,
         }}
       />

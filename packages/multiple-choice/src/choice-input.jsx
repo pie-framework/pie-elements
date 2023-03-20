@@ -71,7 +71,7 @@ const inputStyles = {
 };
 
 export const StyledCheckbox = withStyles(inputStyles)((props) => {
-  const { correctness, classes, checked, onChange, disabled, accessibility, value } = props;
+  const { correctness, classes, checked, onChange, disabled, accessibility, value, id } = props;
   const key = (k) => (correctness ? `${correctness}-${k}` : k);
 
   const resolved = {
@@ -84,7 +84,8 @@ export const StyledCheckbox = withStyles(inputStyles)((props) => {
 
   return (
     <Checkbox
-      aria-label={accessibility || value}
+      id={id}
+      aria-label={accessibility}
       aria-checked={checked}
       {...miniProps}
       className={CLASS_NAME}
@@ -98,7 +99,7 @@ export const StyledCheckbox = withStyles(inputStyles)((props) => {
 });
 
 export const StyledRadio = withStyles(inputStyles)((props) => {
-  const { correctness, classes, checked, onChange, disabled, accessibility, value } = props;
+  const { correctness, classes, checked, onChange, disabled, accessibility, value, id } = props;
   const key = (k) => (correctness ? `${correctness}-${k}` : k);
 
   const resolved = {
@@ -111,7 +112,8 @@ export const StyledRadio = withStyles(inputStyles)((props) => {
 
   return (
     <Radio
-      aria-label={accessibility || value}
+      id={id}
+      aria-label={accessibility}
       aria-checked={checked}
       {...miniProps}
       className={CLASS_NAME}
@@ -189,14 +191,19 @@ export class ChoiceInput extends React.Component {
       [classes.horizontalLayout]: choicesLayout === 'horizontal',
     });
 
+    const choicelabel = (
+      <PreviewPrompt className="label" prompt={displayKey ? `${displayKey}.&nbsp ${label}` : label} tagName="span" />
+    );
+
     return (
       <div className={classNames(className, 'corespring-' + classSuffix, 'choice-input')}>
         <div className={classes.row}>
           {!hideTick && isEvaluateMode && <FeedbackTick correctness={correctness} />}
           <div className={classNames(holderClassNames, 'checkbox-holder')}>
             <StyledFormControlLabel
-              label={displayKey ? displayKey + '. ' : ''}
+              label={choicelabel}
               value={value}
+              for={label}
               control={
                 <Tag
                   accessibility={accessibility}
@@ -204,11 +211,11 @@ export class ChoiceInput extends React.Component {
                   checked={checked}
                   correctness={correctness}
                   value={value}
+                  id={label}
                   onChange={this.onToggleChoice}
                 />
               }
             />
-            <PreviewPrompt className="label" onClick={this.onToggleChoice} prompt={label} tagName="span" />
           </div>
         </div>
         {rationale && <PreviewPrompt className="rationale" defaultClassName="rationale" prompt={rationale} />}

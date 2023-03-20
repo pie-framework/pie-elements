@@ -68,28 +68,30 @@ export class Category extends React.Component {
       uploadSoundSupport,
     } = this.props;
     return (
-      <Card className={classNames(classes.category, className, {
-        [classes.duplicateError]: isDuplicated
-      })}>
-            <span>
-              <InputHeader
-                label={category.label}
-                focusedEl={focusedEl}
-                deleteFocusedEl={deleteFocusedEl}
-                index={index}
-                disabled={!!alternateResponseIndex || alternateResponseIndex===0}
-                error={error}
-                onChange={this.changeLabel}
-                onDelete={onDelete}
-                imageSupport={imageSupport}
-                toolbarOpts={toolbarOpts}
-                spellCheck={spellCheck}
-                maxImageWidth={maxImageWidth}
-                maxImageHeight={maxImageHeight}
-                uploadSoundSupport={uploadSoundSupport}
-             />
-              {error && <div className={classes.errorText}>{error}</div>}
-              </span>
+      <Card
+        className={classNames(classes.category, className, {
+          [classes.duplicateError]: isDuplicated,
+        })}
+      >
+        <span>
+          <InputHeader
+            label={category.label}
+            focusedEl={focusedEl}
+            deleteFocusedEl={deleteFocusedEl}
+            index={index}
+            disabled={!!alternateResponseIndex || alternateResponseIndex === 0}
+            error={error}
+            onChange={this.changeLabel}
+            onDelete={onDelete}
+            imageSupport={imageSupport}
+            toolbarOpts={toolbarOpts}
+            spellCheck={spellCheck}
+            maxImageWidth={maxImageWidth}
+            maxImageHeight={maxImageHeight}
+            uploadSoundSupport={uploadSoundSupport}
+          />
+          {error && <div className={classes.errorText}>{error}</div>}
+        </span>
         <PlaceHolder
           className={classes.placeHolder}
           alternateResponseIndex={alternateResponseIndex}
@@ -137,9 +139,9 @@ const styles = (theme) => ({
     border: '1px solid red',
   },
   errorText: {
-    fontSize: '11px',
-    color: 'red',
-    paddingBottom: '5px'
+    fontSize: theme.typography.fontSize - 2,
+    color: theme.palette.error.main,
+    paddingBottom: theme.spacing.unit,
   },
   editor: {
     flex: '1',

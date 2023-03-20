@@ -5,28 +5,28 @@ import Icon from './icon';
 import IconButton from '@material-ui/core/IconButton';
 import classNames from 'classnames';
 
-const iconStyles = {
+const iconStyles = (theme) => ({
   icon: {
     '& polygon': {
       transition: 'fill 200ms',
-      fill: 'grey',
+      fill: theme.palette.grey[600],
     },
     transition: 'fill 200ms',
     '&:hover': {
       '& polygon': {
-        fill: 'black',
+        fill: theme.palette.common.black,
       },
     },
     cursor: 'pointer',
     verticalAlign: 'middle',
-    fill: 'grey',
+    fill: theme.palette.grey[600],
   },
   active: {
     '& polygon': {
-      fill: 'black',
+      fill: theme.palette.common.black,
     },
   },
-};
+});
 
 const RawToggle = ({ active, onToggle, classes }) => (
   <IconButton onClick={onToggle}>

@@ -148,6 +148,9 @@ export interface GraphingPie extends PieModel {
   /** Indicates marks that have to be displayed in background */
   backgroundMarks: [Mark];
 
+  /** Indicates the default grid configuration */
+  defaultGridConfiguration: Number,
+
   /** Indicates if coordinates of a point are displayed on hover */
   coordinatesOnHover?: boolean;
 
@@ -195,6 +198,9 @@ export interface GraphingPie extends PieModel {
 
   /** Indicates if the graph labels are displayed */
   labelsEnabled?: boolean;
+
+  /** Indicates if the graph dimensions are displayed */
+  dimensionsEnabled?: boolean;
 
   /** Indicates if the graph title is displayed */
   titleEnabled?: boolean;

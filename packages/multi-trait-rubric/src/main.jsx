@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Scale from './scale';
 import Link from '@material-ui/core/Link';
 import Collapse from '@material-ui/core/Collapse';
+import { color } from '@pie-lib/render-ui';
 
 class Main extends React.Component {
   constructor(props) {
@@ -29,7 +30,7 @@ class Main extends React.Component {
     }
 
     const rubricItem = (
-      <div style={{ fontFamily: 'Cerebri Sans' }}>
+      <div style={{ fontFamily: 'Cerebri Sans', color: color.text(), backgroundColor: color.background() }}>
         {halfScoring ? (
           <div style={{ marginBottom: '16px' }}>* Half-point or in-between scores are permitted under this rubric.</div>
         ) : null}
@@ -52,14 +53,14 @@ class Main extends React.Component {
     }
 
     return (
-      <React.Fragment>
-        <Link href={this.dudUrl} onClick={this.toggleRubric}>
+      <div style={{ color: color.text(), backgroundColor: color.background() }}>
+        <Link style={{ backgroundColor: color.background() }} href={this.dudUrl} onClick={this.toggleRubric}>
           {this.state.linkPrefix} Rubric
         </Link>
         <Collapse style={{ marginTop: '16px' }} in={this.state.rubricOpen} timeout="auto">
           {rubricItem}
         </Collapse>
-      </React.Fragment>
+      </div>
     );
   }
 }

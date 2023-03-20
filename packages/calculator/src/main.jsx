@@ -5,20 +5,20 @@ import CalculatorIcon from './calculator-icon';
 import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
 
-const styles = {
+const styles = (theme) => ({
   icon: {
     transition: 'fill 200ms',
-    '&:hover': {
-      fill: 'black',
-    },
     cursor: 'pointer',
     verticalAlign: 'middle',
-    fill: 'grey',
+    fill: theme.palette.grey[600],
+    '&:hover': {
+      fill: theme.palette.common.black,
+    },
   },
   active: {
-    fill: 'black',
+    fill: theme.palette.common.black,
   },
-};
+});
 
 class Main extends React.Component {
   static propTypes = {
@@ -42,7 +42,7 @@ class Main extends React.Component {
     return (
       <div>
         <CalculatorIcon
-          className={show ? classNames(classes.icon, classes.active) : classes.icon}
+          className={classNames(classes.icon, { [classes.active]: show })}
           onClick={() => this.onToggleShow()}
         />
         <DraggableCalculator mode={mode} show={show} onClose={this.onClickClose} />
