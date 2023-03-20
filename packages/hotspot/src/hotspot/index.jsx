@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
-import { Collapsible, hasText, PreviewPrompt } from '@pie-lib/render-ui';
+import { color, Collapsible, hasText, PreviewPrompt } from '@pie-lib/render-ui';
 import { withStyles } from '@material-ui/core/styles';
 
 import Container from './container';
@@ -81,7 +81,7 @@ class HotspotComponent extends React.Component {
     const showCorrectAnswerToggle = isEvaluateMode && !responseCorrect;
 
     return (
-      <div>
+      <div className={classes.main}>
         {teacherInstructions && hasText(teacherInstructions) && (
           <Collapsible
             labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}
@@ -141,6 +141,10 @@ HotspotComponent.defaultProps = {
 };
 
 const styles = (theme) => ({
+  main: {
+    color: color.text(),
+    backgroundColor: color.background(),
+  },
   collapsible: {
     marginBottom: theme.spacing.unit * 2,
   },

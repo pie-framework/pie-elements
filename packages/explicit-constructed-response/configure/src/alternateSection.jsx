@@ -34,7 +34,7 @@ const styles = (theme) => ({
     marginRight: theme.spacing.unit * 2.5,
   },
   deleteBtn: {
-    fill: 'gray',
+    fill: theme.palette.grey[600],
   },
   selectContainer: {
     alignItems: 'flex-end',

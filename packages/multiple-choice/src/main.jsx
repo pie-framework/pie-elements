@@ -5,11 +5,7 @@ import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
 import { PreviewLayout } from '@pie-lib/render-ui';
 import MultipleChoice from './multiple-choice';
 
-const styles = (theme) => ({
-  partLabel: {
-    paddingBottom: theme.spacing.unit * 2,
-  },
-});
+const styles = () => ({});
 
 class Main extends React.Component {
   static propTypes = {
@@ -33,7 +29,6 @@ class Main extends React.Component {
     // model.partLabel is a property used for ebsr
     return (
       <PreviewLayout>
-        {model.partLabel && <div className={classes.partLabel}>{model.partLabel}</div>}
         <MultipleChoice {...model} session={session} onChoiceChanged={onChoiceChanged} />
       </PreviewLayout>
     );

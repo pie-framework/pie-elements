@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Collapsible, PreviewPrompt } from '@pie-lib/render-ui';
+import { color, Collapsible, PreviewPrompt } from '@pie-lib/render-ui';
 import { withStyles } from '@material-ui/core/styles';
 
 import Container from './container';
@@ -29,9 +29,9 @@ class DrawingResponseComponent extends React.Component {
     const isEvaluateMode = mode === 'evaluate';
 
     return hasError ? (
-      <div>An error occured: {errorMessage}</div>
+      <div className={classes.main}>An error occured: {errorMessage}</div>
     ) : (
-      <div>
+      <div className={classes.main}>
         {teacherInstructions && (
           <Collapsible
             className={classes.collapsible}
@@ -68,6 +68,10 @@ DrawingResponseComponent.propTypes = {
 };
 
 const styles = (theme) => ({
+  main: {
+    color: color.text(),
+    backgroundColor: color.background(),
+  },
   collapsible: {
     marginBottom: theme.spacing.unit * 2,
   },

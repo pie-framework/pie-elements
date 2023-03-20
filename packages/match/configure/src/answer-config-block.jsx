@@ -22,7 +22,7 @@ const styles = (theme) => ({
     alignItems: 'center',
     flex: 1,
     width: 'fit-content',
-    borderBottom: '2px solid lightgray',
+    borderBottom: `2px solid ${theme.palette.grey['A100']}`,
     paddingBottom: theme.spacing.unit * 2,
     marginTop: theme.spacing.unit * 2,
     marginBottom: theme.spacing.unit,
@@ -66,11 +66,11 @@ const styles = (theme) => ({
     },
   },
   marginBottom: {
-    marginBottom: theme.typography.fontSize - 2 + theme.spacing.unit
+    marginBottom: theme.typography.fontSize - 2 + theme.spacing.unit,
   },
   errorText: {
     fontSize: theme.typography.fontSize - 2,
-    color: 'red',
+    color: theme.palette.error.main,
     paddingTop: `${theme.spacing.unit}px !important`,
     width: 'fit-content !important',
   },

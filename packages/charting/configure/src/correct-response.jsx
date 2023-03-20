@@ -16,7 +16,7 @@ const styles = (theme) => ({
   button: {
     marginTop: theme.spacing.unit * 3,
     cursor: 'pointer',
-    background: '#eee',
+    background: theme.palette.grey[200],
     padding: theme.spacing.unit * 2,
     width: 'fit-content',
     borderRadius: '4px',

@@ -6,7 +6,7 @@ import Trait from './trait';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 
-const styles = () => ({
+const styles = (theme) => ({
   wrapper: {
     display: 'flex',
     position: 'relative'
@@ -17,20 +17,20 @@ const styles = () => ({
   },
   table: {
     borderSpacing: 0,
-    marginBottom: '16px',
+    marginBottom: theme.spacing.unit * 2,
     borderRadius: '4px',
     color: color.text(),
-    fontSize: '14px',
+    fontSize: theme.typography.fontSize,
     lineHeight: '16px',
     overflow: 'unset',
 
     '& ul, ol': {
       marginBlockStart: 0,
-      paddingInlineStart: '16px',
+      paddingInlineStart: theme.spacing.unit * 2,
     },
 
     '& th': {
-      padding: '16px',
+      padding: theme.spacing.unit * 2,
       textAlign: 'left',
       backgroundColor: color.secondaryBackground(),
       verticalAlign: 'bottom',
@@ -42,7 +42,7 @@ const styles = () => ({
 
     '& td': {
       width: '200px',
-      padding: '16px 8px',
+      padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit}px`,
       verticalAlign: 'top',
     },
   },

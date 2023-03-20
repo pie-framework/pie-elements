@@ -4,7 +4,9 @@ exports[`Root snapshots model renders 1`] = `
 <ImageClozeAssociationComponent
   classes={
     Object {
-      "teacherInstructions": "ImageClozeAssociationComponent-teacherInstructions-1",
+      "main": "ImageClozeAssociationComponent-main-1",
+      "stimulus": "ImageClozeAssociationComponent-stimulus-2",
+      "teacherInstructions": "ImageClozeAssociationComponent-teacherInstructions-3",
     }
   }
   model={

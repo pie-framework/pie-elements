@@ -128,7 +128,7 @@ const Styled = withStyles((theme) => ({
   },
   choiceTile: {
     cursor: 'move',
-    backgroundColor: 'white',
+    backgroundColor: theme.palette.common.white,
     margin: `${theme.spacing.unit}px 0`,
     display: 'flex',
     flexDirection: 'column',
@@ -143,14 +143,14 @@ const Styled = withStyles((theme) => ({
     borderRadius: '4px',
   },
   targetPrompt: {
-    backgroundColor: '#D7D7D7',
+    backgroundColor: theme.palette.error['A100'],
   },
   actions: {
-    color: '#B1B1B1',
+    color: theme.palette.error[400],
   },
   errorText: {
     fontSize: theme.typography.fontSize - 2,
-    color: 'red',
+    color: theme.palette.error.main,
     marginLeft: theme.spacing.unit * 5,
     marginTop: theme.spacing.unit,
   },

@@ -29,7 +29,7 @@ const styles = (theme) => ({
     fontSize: '1.1rem',
   },
   addResponseButton: {
-    border: '1px solid lightgrey',
+    border: `1px solid ${theme.palette.grey['A100']}`,
     float: 'right',
     width: '150px',
   },
@@ -76,7 +76,7 @@ const styles = (theme) => ({
     fontFamily: 'Roboto, Helvetica, Arial, sans-serif !important',
     flex: 2,
     color: 'grey',
-    background: 'lightgrey',
+    background: theme.palette.grey['A100'],
     fontSize: '0.8rem',
     padding: theme.spacing.unit / 2,
     display: 'flex',
@@ -88,7 +88,7 @@ const styles = (theme) => ({
     borderRight: 0,
   },
   blockMath: {
-    color: '#bdbdbd',
+    color: theme.palette.grey[400],
     padding: theme.spacing.unit / 2,
     display: 'flex',
     alignItems: 'center',

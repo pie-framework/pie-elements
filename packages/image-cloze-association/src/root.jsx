@@ -4,7 +4,7 @@ import Typography from '@material-ui/core/Typography';
 import { withDragContext } from '@pie-lib/drag';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { ShowRationale } from '@pie-lib/icons';
-import { Collapsible, PreviewPrompt } from '@pie-lib/render-ui';
+import { color, Collapsible, PreviewPrompt } from '@pie-lib/render-ui';
 import { withStyles } from '@material-ui/core/styles';
 import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
 
@@ -17,6 +17,13 @@ import _ from 'lodash';
 const generateId = () => Math.random().toString(36).substring(2) + new Date().getTime().toString(36);
 
 const styles = (theme) => ({
+  main: {
+    color: color.text(),
+    backgroundColor: color.background(),
+  },
+  stimulus: {
+    fontSize: theme.typography.fontSize,
+  },
   teacherInstructions: {
     marginBottom: theme.spacing.unit * 2,
   },
@@ -234,7 +241,7 @@ class ImageClozeAssociationComponent extends React.Component {
     }
 
     return (
-      <div>
+      <div className={classes.main}>
         {teacherInstructions && (
           <Collapsible
             className={classes.teacherInstructions}
@@ -249,9 +256,7 @@ class ImageClozeAssociationComponent extends React.Component {
 
         <PreviewPrompt className="prompt" prompt={prompt} />
 
-        <Typography>
-          <span dangerouslySetInnerHTML={{ __html: stimulus }} />
-        </Typography>
+        <PreviewPrompt defaultClassName={classes.stimulus} prompt={stimulus} />
 
         <CorrectAnswerToggle show={showToggle} toggled={showCorrect} onToggle={this.toggleCorrect} />
 
@@ -301,11 +306,11 @@ class ImageClozeAssociationComponent extends React.Component {
   }
 }
 
-const WarningInfo = withStyles({
+const WarningInfo = withStyles((theme) => ({
   warning: {
-    margin: '0 16px',
+    margin: `0 ${theme.spacing.unit * 2}px`,
     backgroundColor: '#dddddd',
-    padding: '10px',
+    padding: theme.spacing.unit,
     display: 'flex',
     alignItems: 'center',
     width: 'fit-content',
@@ -318,10 +323,10 @@ const WarningInfo = withStyles({
     },
   },
   message: {
-    paddingLeft: '5px',
+    paddingLeft: theme.spacing.unit / 2,
     userSelect: 'none',
   },
-})(({ classes, message }) => (
+}))(({ classes, message }) => (
   <TransitionGroup>
     <CSSTransition classNames={'fb'} key="fb" timeout={300}>
       <div key="panel" className={classes.warning}>

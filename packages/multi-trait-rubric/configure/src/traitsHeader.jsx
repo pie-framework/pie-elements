@@ -23,12 +23,12 @@ import {
 } from './common';
 import { labelPlugins } from './utils';
 
-const styles = {
+const styles = (theme) => ({
   label: {
     textAlign: 'center',
     width: '140px',
     border: 'none',
-    margin: '8px',
+    margin: theme.spacing.unit,
     padding: '10px 0',
     display: 'flex',
     alignItems: 'center',
@@ -38,12 +38,12 @@ const styles = {
     background: color.secondaryBackground(),
     borderRadius: '4px',
     position: 'relative',
-    marginBottom: '16px',
+    marginBottom: theme.spacing.unit * 2,
   },
   primaryBlockGreyHeader: {
-    paddingTop: '12px',
+    paddingTop: theme.spacing.unit * 1.5,
   },
-};
+});
 
 export class TraitsHeaderTile extends React.Component {
   state = {

@@ -611,6 +611,8 @@ export class Main extends React.Component {
 
 const styles = (theme) => ({
   mainContainer: {
+    color: color.text(),
+    backgroundColor: color.background(),
     display: 'inline-block',
   },
   tooltip: {
@@ -749,7 +751,7 @@ const styles = (theme) => ({
   blockResponse: {
     flex: 2,
     color: 'grey',
-    background: 'lightgrey',
+    background: theme.palette.grey['A100'],
     fontSize: '0.8rem !important',
     padding: `${theme.spacing.unit / 2}px !important`,
     display: 'flex',
@@ -778,7 +780,7 @@ const styles = (theme) => ({
     },
   },
   printContainer: {
-    marginBottom: '10px',
+    marginBottom: theme.spacing.unit,
     pointerEvents: 'none',
   },
 });
