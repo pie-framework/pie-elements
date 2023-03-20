@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.12.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@4.11.2...@pie-element/graphing@4.12.0) (2023-03-20)
+
+
+### Bug Fixes
+
+* update pie-libs ([340825a](https://github.com/pie-framework/pie-elements/commit/340825aab8c88569378eb5af6c5b9c9b99aeb285))
+* **graphing:** allow title enabled using enabled property - PD-2616 ([c18214e](https://github.com/pie-framework/pie-elements/commit/c18214ea275b71e3f00ced650a9d3a405bb0f7e3))
+* **graphing:** dimensions enabled is not honoroud - PD-2617 ([2f14f96](https://github.com/pie-framework/pie-elements/commit/2f14f96de962d3a628645d6ddbe553366e654774))
+* **graphing:** discrepancy between configuration and behavior PD-2657 ([eb26d0e](https://github.com/pie-framework/pie-elements/commit/eb26d0ea56199ae32304f4457cb71780a381e45f))
+* **graphing:** rename settings panel section PD-2671 ([d693c89](https://github.com/pie-framework/pie-elements/commit/d693c89cb51774f9df177cf30f2632cccaa7fdb0))
+* **graphing:** replace nullish operator with undefined equality -PD-2616 ([9ce1f6d](https://github.com/pie-framework/pie-elements/commit/9ce1f6dd5117f5c6487be91b25eb1c4098223f7c))
+* **graphing:** run pretty printer-PD-2669 ([8c7f80b](https://github.com/pie-framework/pie-elements/commit/8c7f80b0f0edb5ce7084427186f3fd7593b594d7))
+* **grapnig:** graphDimensions:settings setting does not behave as expected ([def133e](https://github.com/pie-framework/pie-elements/commit/def133ed3f8ecd33884f0dae87bad8936d1ba2e9))
+* update pie-libs ([1fe3d37](https://github.com/pie-framework/pie-elements/commit/1fe3d37d2b001f7944e4da7c895a83ccecefefcb))
+* update pie-libs ([d782946](https://github.com/pie-framework/pie-elements/commit/d782946ca6c25d3e249059d04e4db5458e471335))
+
+
+### Features
+
+* added color theming support PD-310 ([64976e0](https://github.com/pie-framework/pie-elements/commit/64976e08151b346f0760aedee2cd0e4ce6ff7f8b))
+
+
+
+
+
 ## [4.11.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@4.11.1...@pie-element/graphing@4.11.2) (2023-02-28)
 
 

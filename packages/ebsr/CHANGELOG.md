@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.8.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@8.8.2...@pie-element/ebsr@8.8.3) (2023-03-20)
+
+
+### Bug Fixes
+
+* update pie-libs ([340825a](https://github.com/pie-framework/pie-elements/commit/340825aab8c88569378eb5af6c5b9c9b99aeb285))
+* update pie-libs ([1fe3d37](https://github.com/pie-framework/pie-elements/commit/1fe3d37d2b001f7944e4da7c895a83ccecefefcb))
+* **ebsr:** change the way for defining accessibillity atributes in order to fix the memory leak ([a98e194](https://github.com/pie-framework/pie-elements/commit/a98e194f8b89ec8775dbc03e006cfa5b28aa523c))
+* **ebsr:** investigate why tests are causing a loop in connectedCallback ([486d56e](https://github.com/pie-framework/pie-elements/commit/486d56e3d2e543a16b7ae50260ce645e5fa419fc))
+
+
+
+
+
 ## [8.8.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@8.8.1...@pie-element/ebsr@8.8.2) (2023-02-28)
 
 

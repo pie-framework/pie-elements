@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.11.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@5.10.2...@pie-element/hotspot@5.11.0) (2023-03-20)
+
+
+### Bug Fixes
+
+* Ongoing issues with large images in Hotspot - use same functions as editable-html to upload images in controller environments PD-1936 ([47ae562](https://github.com/pie-framework/pie-elements/commit/47ae562eedda7fcd701b4b1fdd057257b76582e0))
+* update pie-libs ([340825a](https://github.com/pie-framework/pie-elements/commit/340825aab8c88569378eb5af6c5b9c9b99aeb285))
+* update pie-libs ([1fe3d37](https://github.com/pie-framework/pie-elements/commit/1fe3d37d2b001f7944e4da7c895a83ccecefefcb))
+* use defaults in both configure and controller PD-2705 ([6330aa8](https://github.com/pie-framework/pie-elements/commit/6330aa841ba3d8e8b5368bd03157568ac81c2317))
+
+
+### Features
+
+* added color theming support PD-310 ([64976e0](https://github.com/pie-framework/pie-elements/commit/64976e08151b346f0760aedee2cd0e4ce6ff7f8b))
+
+
+
+
+
 ## [5.10.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@5.10.1...@pie-element/hotspot@5.10.2) (2023-02-28)
 
 
