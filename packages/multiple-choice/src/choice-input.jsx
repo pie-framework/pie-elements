@@ -10,7 +10,6 @@ import Radio from '@material-ui/core/Radio';
 import classNames from 'classnames';
 
 const CLASS_NAME = 'multiple-choice-component';
-const generateId = () => (Math.random() * 1000001).toFixed(0);
 
 const styleSheet = (theme) => ({
   row: {
@@ -192,8 +191,9 @@ export class ChoiceInput extends React.Component {
       [classes.horizontalLayout]: choicesLayout === 'horizontal',
     });
 
-    const choicelabel= <PreviewPrompt className="label" onClick={this.onToggleChoice} prompt={displayKey ? `${displayKey}.&nbsp ${label}`: label} tagName="span" />
-    const id = generateId();
+    const choicelabel = (
+      <PreviewPrompt className="label" prompt={displayKey ? `${displayKey}.&nbsp ${label}` : label} tagName="span" />
+    );
 
     return (
       <div className={classNames(className, 'corespring-' + classSuffix, 'choice-input')}>
@@ -203,18 +203,18 @@ export class ChoiceInput extends React.Component {
             <StyledFormControlLabel
               label={choicelabel}
               value={value}
+              for={label}
               control={
                 <Tag
                   accessibility={accessibility}
                   disabled={disabled}
                   checked={checked}
                   correctness={correctness}
-                  id={id}
                   value={value}
+                  id={label}
                   onChange={this.onToggleChoice}
                 />
               }
-              htmlFor={id}
             />
           </div>
         </div>
