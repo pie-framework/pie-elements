@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.10.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@7.9.2...@pie-element/multiple-choice@7.10.0) (2023-03-20)
+
+
+### Bug Fixes
+
+* **multiple-choice:** check button when clicking on label text ([4f719b3](https://github.com/pie-framework/pie-elements/commit/4f719b378ddfb44b9df665b9369cc1eff3e2d318))
+* update pie-libs ([340825a](https://github.com/pie-framework/pie-elements/commit/340825aab8c88569378eb5af6c5b9c9b99aeb285))
+* **multiple-choice:** add for attribute to choice label ([7ee352c](https://github.com/pie-framework/pie-elements/commit/7ee352c77aae4d40aad8879265372710d94ba529))
+* **multiple-choice:** remove aria-label from choices, move choice label in FormControlLabel ([e80b268](https://github.com/pie-framework/pie-elements/commit/e80b268dc5ee6657825cf346216923329dd82316))
+* **multiple-choice:** update checked value correctly if session exists ([18935a2](https://github.com/pie-framework/pie-elements/commit/18935a2585efeac1b35b3f023b5ee29be412f349))
+* update pie-libs ([1fe3d37](https://github.com/pie-framework/pie-elements/commit/1fe3d37d2b001f7944e4da7c895a83ccecefefcb))
+* **multiple-choice:** add space between displayKey and label ([efaae2d](https://github.com/pie-framework/pie-elements/commit/efaae2d8ffe383ce878373d7763ec8a5f67556aa))
+
+
+### Features
+
+* added color theming support PD-310 ([64976e0](https://github.com/pie-framework/pie-elements/commit/64976e08151b346f0760aedee2cd0e4ce6ff7f8b))
+
+
+
+
+
 ## [7.9.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@7.9.1...@pie-element/multiple-choice@7.9.2) (2023-02-28)
 
 

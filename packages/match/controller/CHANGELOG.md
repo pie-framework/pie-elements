@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.8.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-controller@4.8.1...@pie-element/match-controller@4.8.2) (2023-03-20)
+
+
+### Bug Fixes
+
+* **match:** fix row errors validation check PD-2703 ([ac75f4f](https://github.com/pie-framework/pie-elements/commit/ac75f4f9ee12f6787dee91586fc597cbce9d4a89))
+
+
+
+
+
 ## [4.8.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-controller@4.8.0...@pie-element/match-controller@4.8.1) (2023-02-28)
 
 

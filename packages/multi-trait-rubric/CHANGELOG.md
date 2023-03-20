@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.9.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric@2.8.2...@pie-element/multi-trait-rubric@2.9.0) (2023-03-20)
+
+
+### Bug Fixes
+
+* in pie-website, table is scrollable and breaks functionality PD-2713 ([3c37f85](https://github.com/pie-framework/pie-elements/commit/3c37f85e795900db3166895dac6203e52f26c52c))
+* Multi-trait rubrics truncated when more column added (add arrows and scrollable container) PD-2713 ([5f8b4b3](https://github.com/pie-framework/pie-elements/commit/5f8b4b3e2850f15ee2060fd1f78a4b0cb77752f2))
+* update pie-libs ([340825a](https://github.com/pie-framework/pie-elements/commit/340825aab8c88569378eb5af6c5b9c9b99aeb285))
+* update pie-libs ([1fe3d37](https://github.com/pie-framework/pie-elements/commit/1fe3d37d2b001f7944e4da7c895a83ccecefefcb))
+
+
+### Features
+
+* added color theming support PD-310 ([64976e0](https://github.com/pie-framework/pie-elements/commit/64976e08151b346f0760aedee2cd0e4ce6ff7f8b))
+
+
+
+
+
 ## [2.8.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric@2.8.1...@pie-element/multi-trait-rubric@2.8.2) (2023-02-28)
 
 

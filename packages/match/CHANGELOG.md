@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@5.7.3...@pie-element/match@5.8.0) (2023-03-20)
+
+
+### Bug Fixes
+
+* update pie-libs ([340825a](https://github.com/pie-framework/pie-elements/commit/340825aab8c88569378eb5af6c5b9c9b99aeb285))
+* update pie-libs ([1fe3d37](https://github.com/pie-framework/pie-elements/commit/1fe3d37d2b001f7944e4da7c895a83ccecefefcb))
+* **match:** fix row errors validation check PD-2703 ([ac75f4f](https://github.com/pie-framework/pie-elements/commit/ac75f4f9ee12f6787dee91586fc597cbce9d4a89))
+
+
+### Features
+
+* added color theming support PD-310 ([64976e0](https://github.com/pie-framework/pie-elements/commit/64976e08151b346f0760aedee2cd0e4ce6ff7f8b))
+
+
+
+
+
 ## [5.7.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@5.7.2...@pie-element/match@5.7.3) (2023-02-28)
 
 
