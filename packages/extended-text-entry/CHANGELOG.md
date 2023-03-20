@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.1.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@9.1.3...@pie-element/extended-text-entry@9.1.5) (2023-03-20)
+
+
+### Bug Fixes
+
+* version bump ([b3f6919](https://github.com/pie-framework/pie-elements/commit/b3f6919c3ad2078953ed5162327cf356090c9aec))
+
+
+
+
+
 ## [9.1.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@9.1.2...@pie-element/extended-text-entry@9.1.3) (2023-03-20)
 
 

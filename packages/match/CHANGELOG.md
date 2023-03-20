@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.8.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@5.8.0...@pie-element/match@5.8.2) (2023-03-20)
+
+
+### Bug Fixes
+
+* version bump ([b3f6919](https://github.com/pie-framework/pie-elements/commit/b3f6919c3ad2078953ed5162327cf356090c9aec))
+
+
+
+
+
 # [5.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@5.7.3...@pie-element/match@5.8.0) (2023-03-20)
 
 
