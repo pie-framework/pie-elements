@@ -1,71 +1,75 @@
-exports.model = (id, element) => ({
+exports.model = (id, element) => ( {
   id,
   element,
-  prompt: 'This is the question prompt',
-  image: {
-    src: 'https://app.fluence.net/ia/image/6412223997a34018b15f8512bee6c04c',
-    width: 465,
-    scale: false, // this is not used
-    height: 313,
+  "image": {
+    "src": "https://app.fluence.net/ia/image/596e8c31e25948a1bd7db25d5b65ea75",
+    "width": 332,
+    "height": 235
   },
-  response_container: {
-    // this is not used
-    wordwrap: true,
-    width: '130px',
-    height: '55px',
+  "response_container": {
+    "width": "70px",
+    "height": "70px"
   },
-  metadata: {}, // this is not used
-  is_math: true, // this is not used
-  response_id: '8a808081592940240159464a277609e7', // this is not used
-  response_containers: [
+  "partialScoring": true,
+  "response_containers": [
     {
-      pointer: undefined, // this is not used
-      wordwrap: true, // this is not used
-      x: 64.3,
-      width: '35.70%',
-      y: 1.6,
-      height: '23.64%',
-      aria_label: '', // this is not used
+      "x": 53.92,
+      "width": "21.08%",
+      "y": 35.32,
+      "height": "29.79%",
+      "aria_label": ""
     },
     {
-      pointer: 'undefined', // this is not used
-      wordwrap: true, // this is not used
-      x: 64.09,
-      width: '35.92%',
-      y: 39.62,
-      height: '23.32%',
-      aria_label: '', // this is not used
+      "x": 76.51,
+      "width": "21.08%",
+      "y": 34.89,
+      "height": "29.79%",
+      "aria_label": ""
     },
+    {
+      "x": 53.92,
+      "width": "21.08%",
+      "y": 67.23,
+      "height": "29.79%",
+      "aria_label": ""
+    },
+    {
+      "x": 76.51,
+      "width": "21.08%",
+      "y": 67.23,
+      "height": "29.79%",
+      "aria_label": ""
+    }
   ],
-  stimulus:
-    '<p>A car manufacturer proposes the development of a car tire disposal area near an important wetland habitat. In this area, tires will be broken into pieces and buried. The manufacturer needs to design this area to address the environmental concerns from the list in the passage. After breaking the tires into pieces, the manufacturer decides to recycle some of the pieces and dispose of the rest in this newly developed area. Drag and drop the data labels into the graph to show how this decision will likely affect the number of tire pieces collected from a sample area of the wetland after many years.</p>',
-  // this is not used
-  metadatadistractor_rationale:
-    '<p>A correct response is shown below.&#160;This response best shows how this decision will likely affect the number tire pieces collected.<img alt="image 03de38019abe41b1bc95d1199658327f" id="03de38019abe41b1bc95d1199658327f" src="https://localhost:8443/ia/image/03de38019abe41b1bc95d1199658327f" /></p>',
-  ui_style: {
-    // this is not used
-    fontsize: 'small',
-  },
-  possible_responses: [
-    '<img alt="" src="https://app.fluence.net/ia/image/9e5ed1d6762c4dac87b080e190af113d"/>',
-    '<img alt="" src="https://app.fluence.net/ia/image/729ca157d04c440ab7ae1c2abfb9c057"/>',
-  ],
-  validation: {
-    scoring_type: 'exactMatch', // this is not used
-    valid_response: {
-      score: 1,
-      value: [
+  "duplicate_responses": true,
+  "showDashedBorder": true,
+  "prompt": "<p>The Safer Dams group&#160;wants to know how their change will affect plants along the shoreline and people who get their power from the dam.</p><p>Drag and drop the &#8220;X&#8221; into the boxes below to tell&#160;if there will be more or&#160;less power for people and&#160;more or&#160;less flooding of the shoreline.</p>",
+  "rationale": "<p>A complete response is shown below:</p><p><img alt=\"image 1ed7987c41e248cdb18f2ee526ae600b\" id=\"1ed7987c41e248cdb18f2ee526ae600b\" src=\"https://storage.googleapis.com/pie-prod-221718-assets/image/c4ac700a-0e46-4d07-b7d6-43efc36c956f\"></p>",
+  "validation": {
+    "scoring_type": "exactMatch",
+    "valid_response": {
+      "score": 1,
+      "value": [
         {
-          images: ['<img alt="" src="https://app.fluence.net/ia/image/729ca157d04c440ab7ae1c2abfb9c057"/>'],
+          "images": []
         },
         {
-          images: ['<img alt="" src="https://app.fluence.net/ia/image/9e5ed1d6762c4dac87b080e190af113d"/>'],
+          "images": [
+            "<img src=\"https://storage.googleapis.com/pie-prod-221718-assets/image/1731678e-9b0c-4ab7-8065-d2269f7b6c11\">"
+          ]
         },
-      ],
-    },
+        {
+          "images": []
+        },
+        {
+          "images": [
+            "<img src=\"https://storage.googleapis.com/pie-prod-221718-assets/image/1731678e-9b0c-4ab7-8065-d2269f7b6c11\">"
+          ]
+        }
+      ]
+    }
   },
-  showDashedBorder: false,
-  partialScoring: false,
-  shuffle: true,
-  rubricEnabled: false,
+  "possible_responses": [
+    "<img src=\"https://storage.googleapis.com/pie-prod-221718-assets/image/1731678e-9b0c-4ab7-8065-d2269f7b6c11\">"
+  ],
 });

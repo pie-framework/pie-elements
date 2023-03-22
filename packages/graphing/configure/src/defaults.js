@@ -303,7 +303,7 @@ export default {
       step: 20,
     },
     padding: {
-      settings: false,
+      settings: true,
       label: 'Padding',
     },
     labels: {
