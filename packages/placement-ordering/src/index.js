@@ -1,14 +1,14 @@
-import Main from './main';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import compact from 'lodash/compact';
-import debug from 'debug';
-import { renderMath } from '@pie-lib/math-rendering';
-import { swap } from './ordering';
-import { withDragContext } from '@pie-lib/drag';
-import { SessionChangedEvent } from '@pie-framework/pie-player-events';
 import isEqual from 'lodash/isEqual';
 import cloneDeep from 'lodash/cloneDeep';
+import debug from 'debug';
+import { renderMath } from '@pie-lib/math-rendering';
+import { withDragContext } from '@pie-lib/drag';
+import { SessionChangedEvent } from '@pie-framework/pie-player-events';
+import Main from './main';
+import { swap } from './ordering';
 
 const log = debug('pie-elements:placement-ordering');
 
