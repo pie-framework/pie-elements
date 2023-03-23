@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.7.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric@2.7.0...@pie-element/rubric@2.7.2) (2023-03-20)
+
+
+### Bug Fixes
+
+* version bump ([b3f6919](https://github.com/pie-framework/pie-elements/commit/b3f6919c3ad2078953ed5162327cf356090c9aec))
+
+
+
+
+
 # [2.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric@2.6.3...@pie-element/rubric@2.7.0) (2023-03-20)
 
 
