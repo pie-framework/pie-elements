@@ -115,6 +115,7 @@ export const getPartialScore = (question, session) => {
     maxResponsePerZone,
   } = question;
   let correctAnswers = 0;
+  let incorrectAnswers = 0;
   let possibleResponses = 0;
 
   if (!session || isEmpty(session)) {
@@ -126,6 +127,9 @@ export const getPartialScore = (question, session) => {
   if (session.answers && session.answers.length) {
     const all = getAllUniqueCorrectness(session.answers, validResponse.value);
     correctAnswers = all.filter((item) => item.isCorrect).length;
+    incorrectAnswers = all.filter((item) => !item.isCorrect).length;
+
+    console.log({ incorrectAnswers });
 
     // deduction rules: https://docs.google.com/document/d/1Oprm8Qs5fg_Dwoj2pNpsfu4D63QgCZgvcqTgeaVel7I/edit
     session.answers.forEach((answer) => {
@@ -141,6 +145,11 @@ export const getPartialScore = (question, session) => {
         }
       }
     });
+
+    console.log('maxResponsePerZone', maxResponsePerZone);
+    if (!maxResponsePerZone || maxResponsePerZone <= 1) {
+      correctAnswers -= incorrectAnswers;
+    }
   } else {
     correctAnswers = 0;
   }
