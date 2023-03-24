@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.10.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@12.10.0...@pie-element/pie-models@12.10.1) (2023-03-20)
+
+
+### Bug Fixes
+
+* **grapnig:** graphDimensions:settings setting does not behave as expected ([def133e](https://github.com/pie-framework/pie-elements/commit/def133ed3f8ecd33884f0dae87bad8936d1ba2e9))
+
+
+
+
+
 # [12.10.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@12.9.0...@pie-element/pie-models@12.10.0) (2023-02-28)
 
 

@@ -1,6 +1,6 @@
 {
   "name": "@pie-element/extended-text-entry",
-  "version": "9.1.2",
+  "version": "9.1.5",
   "description": "",
   "repository": "pie-framework/pie-elements",
   "publishConfig": {
@@ -12,9 +12,9 @@
     "@material-ui/core": "^3.9.2",
     "@material-ui/icons": "^3.0.2",
     "@pie-framework/pie-player-events": "^0.1.0",
-    "@pie-lib/editable-html": "^9.5.16",
-    "@pie-lib/math-rendering": "^2.5.12",
-    "@pie-lib/render-ui": "^4.14.16",
+    "@pie-lib/editable-html": "^9.5.17",
+    "@pie-lib/math-rendering": "^2.5.13",
+    "@pie-lib/render-ui": "^4.14.17",
     "classnames": "^2.2.5",
     "debug": "^4.1.1",
     "lodash.throttle": "^4.1.1",

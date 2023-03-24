@@ -97,17 +97,17 @@ export class ECRToolbar extends React.Component {
   }
 }
 
-const StyledECRToolbar = withStyles({
+const StyledECRToolbar = withStyles((theme) => ({
   respArea: {
-    backgroundColor: '#fff',
+    backgroundColor: theme.palette.common.white,
   },
   input: {
-    backgroundColor: '#fff',
+    backgroundColor: theme.palette.common.white,
     padding: '10px 20px 10px 10px',
   },
   errorInput: {
-    border: '2px solid red',
+    border: `2px solid ${theme.palette.error.main}`,
   },
-})(ECRToolbar);
+}))(ECRToolbar);
 
 export default StyledECRToolbar;

@@ -6,12 +6,11 @@ import Close from '@material-ui/icons/Close';
 import IconButton from '@material-ui/core/IconButton';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import grey from '@material-ui/core/colors/grey';
 import classNames from 'classnames';
 
 const styles = (theme) => {
   const {
-    palette: { secondary, primary },
+    palette: { secondary, primary, grey, common },
   } = theme;
 
   const border = `solid 1px var(--pie-ui, ${grey[900]})`;
@@ -28,7 +27,7 @@ const styles = (theme) => {
     closeIcon: {
       width: '24px',
       height: '24px',
-      color: 'white',
+      color: common.white,
     },
     title: {
       color: secondary.contrastText,
@@ -56,8 +55,9 @@ class BaseLayout extends React.Component {
 
   render() {
     const { classes, onClose, mode, className } = this.props;
+
     return (
-      <div className={classNames(classes.baseLayout, mode === 'scientific' && classes.scientific, className)}>
+      <div className={classNames(classes.baseLayout, { [classes.scientific]: mode === 'scientific' }, className)}>
         <div className={`handle ${classes.titleBar}`}>
           <Typography variant="subheading" className={classes.title}>
             Calculator
@@ -94,6 +94,7 @@ export class DraggableCalculator extends React.Component {
 
   handleDrag = (e, ui) => {
     const { x, y } = this.state.deltaPosition;
+
     this.setState({
       deltaPosition: {
         x: x + ui.deltaX,
@@ -105,6 +106,7 @@ export class DraggableCalculator extends React.Component {
   render() {
     const { mode, show, onClose, classes } = this.props;
     const { x, y } = this.state.deltaPosition;
+
     return show ? (
       <Draggable onDrag={this.handleDrag} defaultPosition={{ x, y }} handle=".handle">
         {/* draggable needs to have a div as the first child so it can find the classname. */}

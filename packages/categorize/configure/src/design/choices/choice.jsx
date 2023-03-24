@@ -163,9 +163,9 @@ const styles = (theme) => ({
     cursor: 'inherit',
   },
   errorText: {
-    fontSize: '11px',
-    color: 'red',
-    paddingBottom: '5px',
+    fontSize: theme.typography.fontSize - 2,
+    color: theme.palette.error.main,
+    paddingBottom: theme.spacing.unit,
   },
 });
 

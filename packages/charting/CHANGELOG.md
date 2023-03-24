@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.10.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@5.10.0...@pie-element/charting@5.10.2) (2023-03-20)
+
+
+### Bug Fixes
+
+* version bump ([b3f6919](https://github.com/pie-framework/pie-elements/commit/b3f6919c3ad2078953ed5162327cf356090c9aec))
+
+
+
+
+
+# [5.10.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@5.9.2...@pie-element/charting@5.10.0) (2023-03-20)
+
+
+### Bug Fixes
+
+* update pie-libs ([340825a](https://github.com/pie-framework/pie-elements/commit/340825aab8c88569378eb5af6c5b9c9b99aeb285))
+* update pie-libs ([1fe3d37](https://github.com/pie-framework/pie-elements/commit/1fe3d37d2b001f7944e4da7c895a83ccecefefcb))
+* update pie-libs ([d782946](https://github.com/pie-framework/pie-elements/commit/d782946ca6c25d3e249059d04e4db5458e471335))
+* **charting:** fix class error object.object ([c4575bf](https://github.com/pie-framework/pie-elements/commit/c4575bfaeff69549ebe0d0284f975f88281b3d30))
+
+
+### Features
+
+* added color theming support PD-310 ([64976e0](https://github.com/pie-framework/pie-elements/commit/64976e08151b346f0760aedee2cd0e4ce6ff7f8b))
+
+
+
+
+
 ## [5.9.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@5.9.1...@pie-element/charting@5.9.2) (2023-02-28)
 
 

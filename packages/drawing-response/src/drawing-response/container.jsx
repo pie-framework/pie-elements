@@ -247,7 +247,7 @@ const styles = (theme) => ({
     boxSizing: 'border-box',
     maxWidth: 'calc(100% - 163px)', // 163px is the width set on undoControls
     '& button': {
-      marginBottom: '8px',
+      marginBottom: theme.spacing.unit,
     },
   },
 });

@@ -23,7 +23,7 @@ const styles = (theme) => ({
     flexDirection: 'column',
   },
   radioButtonsColumnHeader: {
-    color: '#c3c3c3',
+    color: theme.palette.grey[400],
     fontSize: theme.typography.fontSize - 2,
   },
   likertLabelHolder: {
@@ -43,7 +43,7 @@ const styles = (theme) => ({
     marginRight: 0,
   },
   errorMessage: {
-    color: '#b5000e',
+    color: theme.palette.error.main,
     fontSize: theme.typography.fontSize - 2,
   },
   width100: {

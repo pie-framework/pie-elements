@@ -155,7 +155,7 @@ const styles = (theme) => ({
     padding: 0,
   },
   rowItem: {
-    padding: '12px',
+    padding: theme.spacing.unit * 1.5,
     textAlign: 'center',
   },
   separator: {

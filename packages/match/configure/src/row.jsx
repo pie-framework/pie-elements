@@ -249,12 +249,12 @@ const styles = (theme) => ({
   separator: {
     marginTop: theme.spacing.unit * 2,
     border: 0,
-    borderTop: '2px solid lightgray',
+    borderTop: `2px solid ${theme.palette.grey['A100']}`,
     width: '100%',
   },
   errorText: {
     fontSize: theme.typography.fontSize - 2,
-    color: 'red',
+    color: theme.palette.error.main,
     paddingTop: theme.spacing.unit,
   },
 });

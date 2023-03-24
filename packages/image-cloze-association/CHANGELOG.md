@@ -3,6 +3,34 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.11.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@4.11.0...@pie-element/image-cloze-association@4.11.2) (2023-03-20)
+
+
+### Bug Fixes
+
+* version bump ([b3f6919](https://github.com/pie-framework/pie-elements/commit/b3f6919c3ad2078953ed5162327cf356090c9aec))
+
+
+
+
+
+# [4.11.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@4.10.2...@pie-element/image-cloze-association@4.11.0) (2023-03-20)
+
+
+### Bug Fixes
+
+* update pie-libs ([340825a](https://github.com/pie-framework/pie-elements/commit/340825aab8c88569378eb5af6c5b9c9b99aeb285))
+* update pie-libs ([1fe3d37](https://github.com/pie-framework/pie-elements/commit/1fe3d37d2b001f7944e4da7c895a83ccecefefcb))
+
+
+### Features
+
+* added color theming support PD-310 ([64976e0](https://github.com/pie-framework/pie-elements/commit/64976e08151b346f0760aedee2cd0e4ce6ff7f8b))
+
+
+
+
+
 ## [4.10.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@4.10.1...@pie-element/image-cloze-association@4.10.2) (2023-02-28)
 
 

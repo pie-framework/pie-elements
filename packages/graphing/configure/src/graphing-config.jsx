@@ -45,6 +45,7 @@ export class GraphingConfig extends React.Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
     authoring: PropTypes.object,
+    dimensionsEnabled: PropTypes.bool,
     graphDimensions: PropTypes.object,
     gridConfigurations: PropTypes.array,
     model: PropTypes.object.isRequired,
@@ -183,13 +184,14 @@ export class GraphingConfig extends React.Component {
       labelsPlaceholders,
       model,
       showLabels,
+      dimensionsEnabled,
       showTitle,
       titlePlaceholder,
     } = this.props;
     const { arrows, backgroundMarks, coordinatesOnHover, defaultGridConfiguration, domain, includeAxes, labels, range, standardGrid, title } =
       model || {};
     const graph = (model || {}).graph || {};
-    const { enabled: dimensionsEnabled, min, max, step } = graphDimensions || {};
+    const { min, max, step } = graphDimensions || {};
     const { dialog = {}, gridValues, labelValues, showPixelGuides } = this.state;
 
     const sizeConstraints = {
@@ -242,7 +244,6 @@ export class GraphingConfig extends React.Component {
             <GridSetup
               displayedFields={displayedFields}
               domain={domain}
-              dimensionsEnabled={dimensionsEnabled}
               gridValues={gridValues}
               includeAxes={includeAxes}
               labelValues={labelValues}

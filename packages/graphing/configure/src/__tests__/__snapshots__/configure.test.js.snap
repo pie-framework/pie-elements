@@ -341,6 +341,7 @@ exports[`Configure renders snapshot 1`] = `
           "Settings": Object {
             "arrows": undefined,
             "coordinatesOnHover": undefined,
+            "dimensionsEnabled": false,
             "labelsEnabled": undefined,
             "padding": false,
             "titleEnabled": undefined,
@@ -394,7 +395,6 @@ exports[`Configure renders snapshot 1`] = `
           "studentInstructionsEnabled": true,
           "teacherInstructionsEnabled": true,
           "title": "",
-          "titleEnabled": true,
           "toolbarTools": Array [],
         }
       }
@@ -745,12 +745,10 @@ exports[`Configure renders snapshot 1`] = `
         "studentInstructionsEnabled": true,
         "teacherInstructionsEnabled": true,
         "title": "",
-        "titleEnabled": true,
         "toolbarTools": Array [],
       }
     }
     showLabels={true}
-    showTitle={true}
     titlePlaceholder="Click here to add a title for this graph"
   />
   <WithStyles(CorrectResponse)
@@ -803,7 +801,6 @@ exports[`Configure renders snapshot 1`] = `
         "studentInstructionsEnabled": true,
         "teacherInstructionsEnabled": true,
         "title": "",
-        "titleEnabled": true,
         "toolbarTools": Array [],
       }
     }

@@ -149,7 +149,7 @@ const styles = (theme) => ({
     marginBottom: theme.spacing.unit * 2,
   },
   promptEntry: {
-    border: '1px solid #c2c2c2',
+    border: `1px solid ${theme.palette.grey[400]}`,
     boxSizing: 'border-box',
     flex: 1,
     margin: '10px 0',
