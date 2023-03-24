@@ -129,8 +129,6 @@ export const getPartialScore = (question, session) => {
     correctAnswers = all.filter((item) => item.isCorrect).length;
     incorrectAnswers = all.filter((item) => !item.isCorrect).length;
 
-    console.log({ incorrectAnswers });
-
     // deduction rules: https://docs.google.com/document/d/1Oprm8Qs5fg_Dwoj2pNpsfu4D63QgCZgvcqTgeaVel7I/edit
     session.answers.forEach((answer) => {
       if (maxResponsePerZone > 1) {
@@ -146,7 +144,6 @@ export const getPartialScore = (question, session) => {
       }
     });
 
-    console.log('maxResponsePerZone', maxResponsePerZone);
     if (!maxResponsePerZone || maxResponsePerZone <= 1) {
       correctAnswers -= incorrectAnswers;
     }
