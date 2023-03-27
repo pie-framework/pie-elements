@@ -42,6 +42,7 @@ export const getUnansweredAnswers = (answers, validation) => {
 
   return (value || []).reduce((unanswered, response, index) => {
     const isAnswered = !!answers.find((answer) => answer.containerIndex === index);
+    response.images = response.images || [];
 
     if (!isAnswered) {
       return [
