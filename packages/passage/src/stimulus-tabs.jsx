@@ -75,6 +75,37 @@ class StimulusTabs extends React.Component {
     });
   };
 
+  handleKeyDown = (event, currentTabId) => {
+    const { key } = event;
+    const { tabs } = this.props;
+  
+    let newTabIndex = -1;
+  
+    if (['ArrowRight', 'ArrowDown', 'ArrowLeft', 'ArrowUp'].includes(key)) {
+      event.preventDefault();
+      const currentIndex = tabs.findIndex((tab) => tab.id === currentTabId);
+  
+      if (key === 'ArrowRight' || key === 'ArrowDown') {
+        newTabIndex = (currentIndex + 1) % tabs.length;
+      } else if (key === 'ArrowLeft' || key === 'ArrowUp') {
+        newTabIndex = (currentIndex - 1 + tabs.length) % tabs.length;
+      }
+    } else if (key === 'Home') {
+      event.preventDefault();
+      newTabIndex = 0;
+    } else if (key === 'End') {
+      event.preventDefault();
+      newTabIndex = tabs.length - 1;
+    } else if (key === 'Enter' || key === ' ') {
+      event.preventDefault();
+      newTabIndex = tabs.findIndex((tab) => tab.id === currentTabId);
+    }
+  
+    if (newTabIndex !== -1) {
+      this.handleChange(event, tabs[newTabIndex].id);
+    }
+  };
+  
   parsedText = (text) => {
     // fix imported audio content for Safari PD-1391
     const div = document.createElement('div');
@@ -135,6 +166,10 @@ class StimulusTabs extends React.Component {
                   </Purpose>
                 }
                 value={tab.id}
+                tabIndex={activeTab === tab.id ? 0 : -1}
+                aria-selected={activeTab === tab.id}
+                onFocus={() => this.handleChange(null, tab.id)}
+                onKeyDown={(event) => this.handleKeyDown(event, tab.id)}
               />
             ))}
           </Tabs>
