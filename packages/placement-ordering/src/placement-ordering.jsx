@@ -12,8 +12,6 @@ import { renderMath } from '@pie-lib/math-rendering';
 import isEqual from 'lodash/isEqual';
 import difference from 'lodash/difference';
 
-import { AlertDialog } from '@pie-lib/config-ui';
-
 const log = debug('pie-elements:placement-ordering');
 
 const OrderingTiler = (props) => {
@@ -49,11 +47,10 @@ export class PlacementOrdering extends React.Component {
 
     this.instanceId = uniqueId();
 
-    const { showWarning, value, needsReset } = this.validateSession(props);
+    const { value, needsReset } = this.validateSession(props);
 
     this.state = {
       showingCorrect: false,
-      showWarning
     };
 
     if (needsReset) {
@@ -78,7 +75,6 @@ export class PlacementOrdering extends React.Component {
     const { mode } = env || {};
     const { includeTargets } = config || {};
     let { value } = session || {};
-    let { showWarning } = this.state || {};
     let needsReset;
 
     if (mode !== 'gather') {
@@ -99,7 +95,6 @@ export class PlacementOrdering extends React.Component {
 
         if (missingChoiceIds.length || extraChoiceIds.length) {
           value = choicesIds;
-          showWarning = true;
         }
       }
 
@@ -111,17 +106,15 @@ export class PlacementOrdering extends React.Component {
 
         // if choices were added, add value in session
         if (value.length < choicesIds.length) {
-          showWarning = true;
           value = value.concat(new Array(choicesIds.length - value.length));
         } else {
           // if choices were removed, make sure to remove from session as well
-          showWarning = false;
           value = value.filter(cId => choicesIds.includes(cId));
         }
       }
     }
 
-    return { showWarning, value, needsReset };
+    return { value, needsReset };
   };
 
   UNSAFE_componentWillReceiveProps(nextProps) {
@@ -134,7 +127,7 @@ export class PlacementOrdering extends React.Component {
     }
 
     const validatedSession = this.validateSession(nextProps);
-    let { showWarning, value, needsReset } = validatedSession;
+    let { value, needsReset } = validatedSession;
 
     const newSession = {
       ...nextProps.session,
@@ -143,16 +136,12 @@ export class PlacementOrdering extends React.Component {
     const includeTargetsChanged = this.props.model?.config?.includeTargets !== includeTargets;
 
     if (includeTargets && includeTargetsChanged) {
-      showWarning = true;
       needsReset = true;
 
       delete newSession.value;
     }
 
-    this.setState({
-      ...newState,
-      showWarning
-    }, () => {
+    this.setState(newState, () => {
       if (needsReset) {
         this.props.onSessionChange(newSession);
       }
@@ -208,7 +197,6 @@ export class PlacementOrdering extends React.Component {
   };
 
   render() {
-    const { showWarning } = this.state;
     const { classes, model } = this.props;
     const {
       correctResponse,
@@ -239,13 +227,6 @@ export class PlacementOrdering extends React.Component {
 
     return (
       <div className={classes.placementOrdering}>
-        <AlertDialog
-          open={showWarning}
-          title="Warning"
-          text={'The session is not valid anymore and it was reset.'}
-          onConfirm={() => this.setState({ showWarning: false })}
-        />
-
         {teacherInstructions && hasText(teacherInstructions) && (
           <Collapsible
             labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}

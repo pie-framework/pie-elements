@@ -4,11 +4,6 @@ exports[`PlacementOrdering render shows toggle 1`] = `
 <div
   className="placementOrdering"
 >
-  <Component
-    onConfirm={[Function]}
-    text="The session is not valid anymore and it was reset."
-    title="Warning"
-  />
   <div>
     <WithStyles(PreviewPrompt) />
   </div>
@@ -33,11 +28,6 @@ exports[`PlacementOrdering render snapshot 1`] = `
 <div
   className="placementOrdering"
 >
-  <Component
-    onConfirm={[Function]}
-    text="The session is not valid anymore and it was reset."
-    title="Warning"
-  />
   <div>
     <WithStyles(PreviewPrompt) />
   </div>
@@ -61,11 +51,6 @@ exports[`PlacementOrdering render snapshot with rationale 1`] = `
 <div
   className="placementOrdering"
 >
-  <Component
-    onConfirm={[Function]}
-    text="The session is not valid anymore and it was reset."
-    title="Warning"
-  />
   <div>
     <WithStyles(PreviewPrompt) />
   </div>
