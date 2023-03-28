@@ -71,10 +71,12 @@ export const getBestAnswer = (question, session, env = {}) => {
   let { answer } = session || {};
 
   // filter the incomplete objects
-  Object.entries(questionPossibleAnswers).forEach(
-      ([key, value]) =>
-          (questionPossibleAnswers[key] = { ...value, marks: value.marks.filter((mark) => !mark.building) }),
-  );
+  if(questionPossibleAnswers){
+    Object.entries(questionPossibleAnswers).forEach(
+        ([key, value]) =>
+            (questionPossibleAnswers[key] = { ...value, marks: value?.marks.filter((mark) => !mark.building) }),
+    );
+  }
 
   // initialize answer if no values
   answer = answer || [];
