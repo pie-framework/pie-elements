@@ -53,7 +53,11 @@ export class PlacementOrdering extends React.Component {
       showingCorrect: false,
     };
 
-    if (needsReset) {
+    const { model } = props || {};
+    const { env } = model || {};
+    const { mode } = env || {};
+
+    if (needsReset && mode === 'gather') {
       this.props.onSessionChange({
         ...props.session,
         value
@@ -71,15 +75,10 @@ export class PlacementOrdering extends React.Component {
   }
 
   validateSession = ({ model, session }) => {
-    const { config, choices, env } = model || {};
-    const { mode } = env || {};
+    const { config, choices } = model || {};
     const { includeTargets } = config || {};
     let { value } = session || {};
     let needsReset;
-
-    if (mode !== 'gather') {
-      return { value };
-    }
 
     const choicesIds = choices.map(c => c.id);
 
@@ -146,7 +145,11 @@ export class PlacementOrdering extends React.Component {
     }
 
     this.setState(newState, () => {
-      if (needsReset) {
+      const { model } = nextProps || {};
+      const { env } = model || {};
+      const { mode } = env || {};
+
+      if (needsReset && mode === 'gather') {
         this.props.onSessionChange(newSession);
       }
     });
