@@ -36,8 +36,12 @@ export function model(question, session, env) {
       out.teacherInstructions = questionCamelized.teacherInstructionsEnabled
         ? questionCamelized.teacherInstructions
         : null;
+      out.rationale = questionCamelized.rationale
+        ? questionCamelized.rationale
+        : null;
     } else {
       out.teacherInstructions = null;
+      out.rationale = null;
     }
 
     resolve(out);
