@@ -114,6 +114,10 @@ export class PlacementOrdering extends React.Component {
       }
     }
 
+    if (needsReset) {
+      console.warn('This session is not valid anymore. It will be reset.')
+    }
+
     return { value, needsReset };
   };
 
