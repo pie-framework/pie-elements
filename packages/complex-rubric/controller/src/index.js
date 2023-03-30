@@ -1,5 +1,10 @@
 import defaults from './defaults';
-import { RUBRIC_TYPES } from '@pie-lib/rubric';
+
+// todo the import from pie-lib/rubric might break webpack
+const RUBRIC_TYPES = {
+  SIMPLE_RUBRIC: 'simpleRubric',
+  MULTI_TRAIT_RUBRIC: 'multiTraitRubric',
+};
 
 export function createDefaultModel(model = {}) {
   return new Promise((resolve) => resolve({ ...defaults.model, ...model }));
