@@ -8,7 +8,6 @@ export function createDefaultModel(model = {}) {
 export const normalize = (question) => ({ ...defaults.model, ...question });
 
 /**
- *
  * @param {*} question
  * @param {*} session
  * @param {*} env
@@ -21,15 +20,15 @@ export async function model(question, session, env) {
       resolve(
         env && env.role && env.role === 'instructor'
           ? {
-              ...normalizedQuestion,
-              rubrics: {
-                ...normalizedQuestion.rubrics,
-                multiTraitRubric: {
-                  ...normalizedQuestion.rubrics.multiTraitRubric,
-                  visible: false,
-                },
+            ...normalizedQuestion,
+            rubrics: {
+              ...normalizedQuestion.rubrics,
+              multiTraitRubric: {
+                ...normalizedQuestion.rubrics.multiTraitRubric,
+                visible: false,
               },
-            }
+            },
+          }
           : {},
       );
     });
