@@ -1,8 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import compact from 'lodash/compact';
-import isEqual from 'lodash/isEqual';
-import cloneDeep from 'lodash/cloneDeep';
 import debug from 'debug';
 import { renderMath } from '@pie-lib/math-rendering';
 import { withDragContext } from '@pie-lib/drag';
@@ -26,66 +24,15 @@ export const isValidSession = ({ model, session }) => {
 };
 
 export default class Ordering extends HTMLElement {
-  constructor() {
-    super();
-    this.sessionChange = this.sessionChange.bind(this);
-  }
+  isComplete = (value) => value && compact(value).length === this._model.completeLength;
 
-  sessionChange(session) {
+  sessionChange = (session) => {
     this._session.value = session.value;
     this.render();
-    this.dispatchEvent(
-      new CustomEvent('session-changed', {
-        bubbles: true,
-        detail: {
-          component: this.tagName.toLowerCase(),
-          complete:
-            this._session && this._session.value && this.isComplete(),
-        },
-      }),
-    );
+    this.dispatchEvent(new SessionChangedEvent(this.tagName.toLowerCase(), this._session && this.isComplete(this._session.value)))
   }
-
-  isComplete = () => compact(this._session.value).length === this._model.completeLength;
-
-  dispatchSessionChanged = () => {
-    this.dispatchEvent(new SessionChangedEvent(this.tagName.toLowerCase(), this.isComplete()));
-  }
-
-  verifyIfSessionUpdatesAreNeeded = (newModel) => {
-    const { config, choices } = this._model || {};
-    const { config: newConfig, choices: newChoices } = newModel || {};
-    const session = cloneDeep(this._session);
-
-    // continue ONLY if there is a previous model with config and if there's already a session
-    if (!config || !this._session) {
-      return;
-    }
-
-    const includeTargetsChanged = config?.includeTargets !== newConfig?.includeTargets;
-    const choicesChanged = !isEqual(newChoices, choices);
-
-
-    if (includeTargetsChanged && newConfig?.includeTargets) {
-      //  if targets or choices changed, then we can reset the session
-      delete session['value'];
-    }
-
-    const isValidSess = isValidSession({ model: newModel, session });
-
-    // if the session is not valid anymore, it has to be reset
-    if (!newConfig?.includeTargets && (choicesChanged || !isValidSess)) {
-      session.value = newModel.choices.map((m) => m.id);
-    }
-
-    if (!isEqual(session, this._session)) {
-      this.sessionChange(session);
-    }
-  };
 
   set model(newModel) {
-    this.verifyIfSessionUpdatesAreNeeded(newModel);
-
     this._model = newModel;
 
     this.render();

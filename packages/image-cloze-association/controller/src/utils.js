@@ -1,8 +1,7 @@
-const getAllCorrectness = (answers, responses) =>
-  answers.map((answer) => ({
+const getAllCorrectness = (answers, responses) => answers.map((answer) => ({
     ...answer,
     isCorrect: (responses[answer.containerIndex] && responses[answer.containerIndex].images || []).includes(answer.value),
-  }));
+}));
 
 const getValidAnswer = (answer, response) =>
   (response[answer.containerIndex] && response[answer.containerIndex].images || []).filter((res) => res === answer.value);
