@@ -127,6 +127,7 @@ export class Main extends React.Component {
   render() {
     const { classes, model, configuration, onConfigurationChanged, imageSupport, uploadSoundSupport } = this.props;
     const {
+      contentDimensions = {},
       duplicates = {},
       prompt = {},
       partialScoring = {},
@@ -178,6 +179,7 @@ export class Main extends React.Component {
 
     return (
       <layout.ConfigLayout
+        dimensions={contentDimensions}
         hideSettings={settingsPanelDisabled}
         settings={
           <Panel

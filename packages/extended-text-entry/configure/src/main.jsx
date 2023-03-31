@@ -52,6 +52,7 @@ export class Main extends React.Component {
     const { model, classes, configuration, imageSupport, onConfigurationChanged, onModelChanged, uploadSoundSupport } =
       this.props;
     const {
+      contentDimensions = {},
       dimensions = {},
       equationEditor = {},
       feedback = {},
@@ -118,6 +119,7 @@ export class Main extends React.Component {
 
     return (
       <layout.ConfigLayout
+        dimensions={contentDimensions}
         hideSettings={settingsPanelDisabled}
         settings={
           <Panel

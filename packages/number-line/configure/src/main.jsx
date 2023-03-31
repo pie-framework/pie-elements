@@ -279,7 +279,7 @@ export class Main extends React.Component {
 
   render() {
     const { classes, model, onChange, configuration, uploadSoundSupport } = this.props;
-    const { prompt = {} } = configuration || {};
+    const { contentDimensions = {}, prompt = {} } = configuration || {};
     const { errors, graph, spellCheckEnabled, toolbarEditorPosition } = model || {};
 
     const { widthError, domainError, maxError, pointsError, correctResponseError } = errors || {};
@@ -293,7 +293,7 @@ export class Main extends React.Component {
     };
 
     return (
-      <layout.ConfigLayout hideSettings={true} settings={null}>
+      <layout.ConfigLayout dimensions={contentDimensions} hideSettings={true} settings={null}>
         {prompt.settings && (
           <InputContainer label={prompt.label} className={classes.promptContainer}>
             <EditableHtml
