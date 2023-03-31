@@ -36,10 +36,14 @@ const styles = (theme) => ({
 
 function TabContainer(props) {
   const padding = props.multiple ? '0 24px 24px 24px' : '24px';
+  const { ariaLabelledby, id } = props;
 
   return (
     <Typography
       component="div"
+      role="tabpanel"
+      aria-labelledby= {ariaLabelledby}
+      id={id}
       style={{
         padding,
         fontSize: '0.875em',
@@ -131,10 +135,15 @@ class StimulusTabs extends React.Component {
 
     if (tabs && tabs.length > 1) {
       return disabledTabs ? (
-        <div className="passages">
+        <div className="passages" role="tabpanel">
           {tabs.map((tab) => (
-            <div key={tab.id} className={`passage-${tab.id}`}>
-              <TabContainer multiple>
+            <div key={tab.id}
+            className={`passage-${tab.id}`}
+            id={`tabpanel-${tab.id}`}
+            aria-labelledby={`tab-${tab.id}`}
+            aria-controls={`button-${tab.id}`}
+            tabIndex="0">
+              <TabContainer multiple id={`tabpanel-${tab.id}`} role="tabpanel" ariaLabelledby={`button-${tab.id}`}>
                 <div
                   className={classNames(classes.title, 'title')}
                   dangerouslySetInnerHTML={{ __html: this.parsedText(tab.title) }}
@@ -160,6 +169,7 @@ class StimulusTabs extends React.Component {
               <Tab
                 className={classes.tab}
                 key={tab.id}
+                id={`button-${tab.id}`}
                 label={
                   <Purpose purpose="passage-title">
                     <span dangerouslySetInnerHTML={{ __html: this.parsedText(tab.title) }} />
@@ -167,6 +177,7 @@ class StimulusTabs extends React.Component {
                 }
                 value={tab.id}
                 tabIndex={activeTab === tab.id ? 0 : -1}
+                aria-controls={`tabpanel-${tab.id}`}
                 aria-selected={activeTab === tab.id}
                 onFocus={() => this.handleChange(null, tab.id)}
                 onKeyDown={(event) => this.handleKeyDown(event, tab.id)}
@@ -176,7 +187,7 @@ class StimulusTabs extends React.Component {
 
           {tabs.map((tab) =>
             activeTab === tab.id ? (
-              <TabContainer multiple key={tab.id}>
+              <TabContainer multiple key={tab.id} id={`tabpanel-${tab.id}`} role="tabpanel" ariaLabelledby={`button-${tab.id}`}>
                 <Purpose purpose="passage-text">
                   <div key={tab.id} dangerouslySetInnerHTML={{ __html: this.parsedText(tab.text) }} />
                 </Purpose>
