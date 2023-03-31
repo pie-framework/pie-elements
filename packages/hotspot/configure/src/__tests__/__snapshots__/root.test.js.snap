@@ -2,6 +2,7 @@
 
 exports[`Root render renders 1`] = `
 <ConfigLayout
+  dimensions={Object {}}
   hideSettings={false}
   settings={
     <Panel

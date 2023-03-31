@@ -2,6 +2,7 @@
 
 exports[`Configure renders snapshot 1`] = `
 <ConfigLayout
+  dimensions={Object {}}
   hideSettings={false}
   settings={
     <Panel
