@@ -7,6 +7,7 @@ import {
 } from '../ConfigurationProp';
 import { PromptConfig } from '../../PromptConfig';
 import { Dimension } from '../../Dimension';
+import { CommonConfigSettings } from '../../CommonConfigSettings';
 
 /** NOTE: teacherInstructions, studentInstructions and rationale
  * functionalities are not defined yet - the value for those can belong to
@@ -62,7 +63,7 @@ export interface DrawingResponsePie extends PieModel {
  * Config Object for @pie-elements/drawing-response
  * @additionalProperties false
  */
-export interface DrawingResponseConfigure extends PromptConfig {
+export interface DrawingResponseConfigure extends PromptConfig, CommonConfigSettings {
   /**
    * Configuration for multiple correct
    */

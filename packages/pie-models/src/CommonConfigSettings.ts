@@ -8,28 +8,28 @@ export interface CommonConfigSettings {
    */
   contentDimensions?: {
     /**
-     * Indicates the max height of the authoring container (in pixels)
+     * Indicates the max height of the authoring container
      * @default undefined
      */
-    maxHeight?: Number;
+    maxHeight?: number | string;
 
     /**
-     * Indicates the max width of the authoring container (in pixels)
+     * Indicates the max width of the authoring container
      * @default undefined
      */
-    maxWidth?: Number;
+    maxWidth?: number | string;
 
     /**
-     * Indicates the min height of the authoring container (in pixels)
+     * Indicates the min height of the authoring container
      * @default undefined
      */
-    minHeight?: Number;
+    minHeight?: number | string;
 
     /**
-     * Indicates the min width of the authoring container (in pixels)
+     * Indicates the min width of the authoring container
      * @default undefined
      */
-    minWidth?: Number;
+    minWidth?: number | string;
   };
 
   /**
