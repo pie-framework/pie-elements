@@ -135,13 +135,13 @@ class StimulusTabs extends React.Component {
 
     if (tabs && tabs.length > 1) {
       return disabledTabs ? (
-        <div className="passages" role="tabpanel">
+        <div className="passages">
           {tabs.map((tab) => (
             <div key={tab.id}
             className={`passage-${tab.id}`}
             id={`tabpanel-${tab.id}`}
             aria-labelledby={`tab-${tab.id}`}
-            aria-controls={`button-${tab.id}`}
+            aria-controls={`tabpanel-${tab.id}`}
             tabIndex="0">
               <TabContainer multiple id={`tabpanel-${tab.id}`} role="tabpanel" ariaLabelledby={`button-${tab.id}`}>
                 <div
