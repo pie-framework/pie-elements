@@ -1,5 +1,10 @@
 import defaults from './defaults';
-import { RUBRIC_TYPES } from '@pie-lib/rubric';
+
+// todo the import from pie-lib/rubric might break webpack
+const RUBRIC_TYPES = {
+  SIMPLE_RUBRIC: 'simpleRubric',
+  MULTI_TRAIT_RUBRIC: 'multiTraitRubric',
+};
 
 export function createDefaultModel(model = {}) {
   return new Promise((resolve) => resolve({ ...defaults.model, ...model }));
@@ -8,7 +13,6 @@ export function createDefaultModel(model = {}) {
 export const normalize = (question) => ({ ...defaults.model, ...question });
 
 /**
- *
  * @param {*} question
  * @param {*} session
  * @param {*} env
@@ -21,15 +25,15 @@ export async function model(question, session, env) {
       resolve(
         env && env.role && env.role === 'instructor'
           ? {
-              ...normalizedQuestion,
-              rubrics: {
-                ...normalizedQuestion.rubrics,
-                multiTraitRubric: {
-                  ...normalizedQuestion.rubrics.multiTraitRubric,
-                  visible: false,
-                },
+            ...normalizedQuestion,
+            rubrics: {
+              ...normalizedQuestion.rubrics,
+              multiTraitRubric: {
+                ...normalizedQuestion.rubrics.multiTraitRubric,
+                visible: false,
               },
-            }
+            },
+          }
           : {},
       );
     });

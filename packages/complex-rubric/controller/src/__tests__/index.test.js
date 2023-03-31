@@ -1,13 +1,6 @@
 import { model } from '../index';
 import defaultModel from '../defaults';
 
-jest.mock('@pie-lib/rubric', () => ({
-  RUBRIC_TYPES: {
-    SIMPLE_RUBRIC: 'simpleRubric',
-    MULTI_TRAIT_RUBRIC: 'multiTraitRubric',
-  },
-}));
-
 describe('complex rubric model', () => {
   let state = { ...defaultModel.model };
   let session = {};
