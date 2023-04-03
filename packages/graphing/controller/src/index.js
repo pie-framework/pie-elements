@@ -202,7 +202,7 @@ export function model(question, session, env) {
       if (!isEmpty(answers) && answers.correctAnswer &&
         answers.correctAnswer.marks && !isEmpty(answers.correctAnswer.marks)) {
         const { answersCorrected, bestScoreAnswerKey, bestScore } =
-
+          getBestAnswer(normalizedQuestion, session, env);
           // array of marks from session with 'correctness' property set
         base.answersCorrected = answersCorrected;
         base.correctResponse = bestScoreAnswerKey ? (answers[bestScoreAnswerKey] || {}).marks : [];
