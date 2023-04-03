@@ -69,7 +69,7 @@ export async function model(question, session, env, updateSession) {
     normalizedQuestion.defaultFeedback,
   );
 
-  let choices = normalizedQuestion.choices.map(prepareChoice(normalizedQuestion, env, defaultFeedback));
+  let choices = (normalizedQuestion.choices || []).map(prepareChoice(normalizedQuestion, env, defaultFeedback));
 
   const lockChoiceOrder = lockChoices(normalizedQuestion, session, env);
 

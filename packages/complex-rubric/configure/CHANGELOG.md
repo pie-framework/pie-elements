@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.6.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric-configure@1.6.7...@pie-element/complex-rubric-configure@1.6.8) (2023-03-30)
+
+**Note:** Version bump only for package @pie-element/complex-rubric-configure
+
+
+
+
+
 ## [1.6.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric-configure@1.6.6...@pie-element/complex-rubric-configure@1.6.7) (2023-03-30)
 
 **Note:** Version bump only for package @pie-element/complex-rubric-configure
