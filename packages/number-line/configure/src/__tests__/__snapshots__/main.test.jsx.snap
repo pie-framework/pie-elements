@@ -2,6 +2,7 @@
 
 exports[`main snapshot renders 1`] = `
 <ConfigLayout
+  dimensions={Object {}}
   hideSettings={true}
   settings={null}
 >

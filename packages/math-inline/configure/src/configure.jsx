@@ -51,6 +51,7 @@ export class Configure extends React.Component {
       this.props;
     const {
       allowTrailingZeros = {},
+      contentDimensions = {},
       feedback = {},
       ignoreOrder = {},
       maxImageWidth = {},
@@ -101,6 +102,7 @@ export class Configure extends React.Component {
 
     return (
       <layout.ConfigLayout
+        dimensions={contentDimensions}
         hideSettings={settingsPanelDisabled}
         settings={
           <Panel

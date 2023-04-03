@@ -63,7 +63,15 @@ export class Main extends React.Component {
   render() {
     const { classes, model, configuration, onConfigurationChanged } = this.props;
     const { partLabelType, partA: modelPartA, partB: modelPartB } = model;
-    const { partA, partB, partialScoring, settingsPanelDisabled, scoringType, ...generalConfiguration } = configuration;
+    const {
+      contentDimensions = {},
+      partA = {},
+      partB = {},
+      partialScoring = {},
+      settingsPanelDisabled,
+      scoringType = {},
+      ...generalConfiguration
+    } = configuration;
     const {
       feedback: feedbackA = {},
       choiceMode: choiceModeA = {},
@@ -157,6 +165,7 @@ export class Main extends React.Component {
 
     return (
       <layout.ConfigLayout
+        dimensions={contentDimensions}
         hideSettings={settingsPanelDisabled}
         settings={
           <Panel

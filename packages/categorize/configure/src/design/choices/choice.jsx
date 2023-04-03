@@ -153,6 +153,7 @@ const styles = (theme) => ({
     justifyContent: 'space-between',
   },
   choice: {
+    minWidth: '196px',
     padding: theme.spacing.unit,
     overflow: 'visible',
   },

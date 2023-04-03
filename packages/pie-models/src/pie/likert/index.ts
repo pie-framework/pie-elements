@@ -2,6 +2,7 @@ import { PieModel } from '../../PieModel';
 import { PromptConfig } from '../../PromptConfig';
 import { ConfigureProp } from '../ConfigurationProp';
 import { LikertChoice } from '../../LikertChoice';
+import { CommonConfigSettings } from '../../CommonConfigSettings';
 
 /**
  * NOTE: teacherInstruction functionality is not defined yet - the value for
@@ -32,7 +33,7 @@ export interface LikertPie extends PieModel {
  * Config Object for @pie-elements/likert
  * @additionalProperties false
  */
-export interface LikertConfigure extends PromptConfig {
+export interface LikertConfigure extends PromptConfig, CommonConfigSettings {
   /**
    * Indicates if the settings panel is not available
    */

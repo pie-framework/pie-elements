@@ -5,6 +5,7 @@ exports[`Design snapshot renders 1`] = `
   value="1"
 >
   <ConfigLayout
+    dimensions={Object {}}
     settings={
       <Panel
         groups={

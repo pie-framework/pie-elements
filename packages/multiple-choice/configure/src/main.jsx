@@ -104,8 +104,8 @@ const Design = withStyles(styles)((props) => {
   } = props;
 
   const {
-    prompt = {},
     addChoiceButton = {},
+    contentDimensions = {},
     feedback = {},
     deleteChoice = {},
     choiceMode = {},
@@ -124,6 +124,7 @@ const Design = withStyles(styles)((props) => {
     gridColumns,
     maxImageWidth = {},
     maxImageHeight = {},
+    prompt = {},
     withRubric = {},
   } = configuration || {};
   let { maxAnswerChoices } = configuration || {};
@@ -191,6 +192,7 @@ const Design = withStyles(styles)((props) => {
 
   return (
     <layout.ConfigLayout
+      dimensions={contentDimensions}
       hideSettings={settingsPanelDisabled}
       settings={
         <Panel

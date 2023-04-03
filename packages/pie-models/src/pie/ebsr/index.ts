@@ -1,6 +1,7 @@
 import { PieModel } from '../../PieModel';
 import { ConfigureProp } from '../ConfigurationProp';
 import { PromptConfig } from '../../PromptConfig';
+import { CommonConfigSettings } from '../../CommonConfigSettings';
 
 export interface Choice {
   /** The value for the choice */
@@ -196,7 +197,7 @@ interface PartConfiguration {
  * Config Object for @pie-elements/ebsr
  * @additionalProperties false
  */
-export interface EbsrConfigure extends PromptConfig {
+export interface EbsrConfigure extends PromptConfig, CommonConfigSettings {
   /**
    * Indicates configuration for part A
    */

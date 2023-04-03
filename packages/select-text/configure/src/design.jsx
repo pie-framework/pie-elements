@@ -125,6 +125,7 @@ export class Design extends React.Component {
       this.props;
     const {
       correctAnswer = {},
+      contentDimensions = {},
       feedback = {},
       highlightChoices = {},
       mode = {},
@@ -187,6 +188,7 @@ export class Design extends React.Component {
 
     return (
       <layout.ConfigLayout
+        dimensions={contentDimensions}
         hideSettings={settingsPanelDisabled}
         settings={
           <Panel
@@ -340,6 +342,7 @@ export default withStyles((theme) => ({
     marginBottom: theme.spacing.unit,
   },
   chip: {
+    marginTop: theme.spacing.unit / 2,
     marginRight: theme.spacing.unit * 2,
   },
   input: {
@@ -362,11 +365,12 @@ export default withStyles((theme) => ({
   tokensDetails: {
     display: 'flex',
     alignItems: 'center',
+    flexWrap: 'wrap',
     marginBottom: theme.spacing.unit * 2.5,
   },
   numberField: {
     width: '180px',
-    margin: '0 auto',
+    margin: `${theme.spacing.unit / 2}px auto 0`,
   },
   tooltip: {
     fontSize: theme.typography.fontSize - 2,
