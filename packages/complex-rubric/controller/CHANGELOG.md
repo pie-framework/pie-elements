@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.5.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric-controller@1.5.2...@pie-element/complex-rubric-controller@1.5.3) (2023-03-30)
+
+
+### Bug Fixes
+
+* revert adding pie-lib/rubric and remove its usage from controller ([2e58a35](https://github.com/pie-framework/pie-elements/commit/2e58a35e3490f4c002c82206eec3b74b215f3e57))
+
+
+
+
+
 ## [1.5.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric-controller@1.5.1...@pie-element/complex-rubric-controller@1.5.2) (2023-03-20)
 
 
