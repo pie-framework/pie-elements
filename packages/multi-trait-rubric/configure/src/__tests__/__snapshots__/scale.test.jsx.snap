@@ -61,7 +61,7 @@ Overall appearance is acceptable or better",
     }
   />
   <WithStyles(Component)
-    left="232px"
+    left="200px"
     onClick={[Function]}
     show={null}
     width="108px"
@@ -172,7 +172,7 @@ Overall appearance is acceptable or better",
     }
   />
   <WithStyles(Component)
-    left="232px"
+    left="200px"
     onClick={[Function]}
     show={null}
     width="108px"
@@ -285,7 +285,7 @@ Overall appearance is acceptable or better",
     }
   />
   <WithStyles(Component)
-    left="232px"
+    left="200px"
     onClick={[Function]}
     show={null}
     width="108px"
@@ -396,7 +396,7 @@ Overall appearance is acceptable or better",
     }
   />
   <WithStyles(Component)
-    left="232px"
+    left="200px"
     onClick={[Function]}
     show={null}
     width="108px"
@@ -507,7 +507,7 @@ Overall appearance is acceptable or better",
     }
   />
   <WithStyles(Component)
-    left="232px"
+    left="200px"
     onClick={[Function]}
     show={null}
     width="108px"

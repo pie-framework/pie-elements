@@ -332,7 +332,7 @@ export class Scale extends React.Component {
           width={`${AdjustedBlockWidth / 2}px`}
           show={showLeft}
           onClick={this.decreasePosition}
-          left={`${PrimaryBlockWidth + DragHandleSpace}px`}
+          left={`${PrimaryBlockWidth}px`}
           showLevelTagInput={showLevelTagInput}
         >
           <ArrowBackIosIcon />
