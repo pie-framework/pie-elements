@@ -102,11 +102,5 @@ export default {
       label: 'Add Rubric',
     },
     minCategoriesPerRow: 1,
-    contentDimensions: {
-      maxWidth: 500,
-      maxHeight: 800,
-      minHeight: 300,
-      minWidth: 400,
-    },
   },
 };
