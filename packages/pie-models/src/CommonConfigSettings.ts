@@ -4,6 +4,8 @@
 export interface CommonConfigSettings {
   /**
    * Indicates the dimensions configuration for the authoring container
+   * Note: Some items have a default minimum width because of their content, but if
+   * the minWidth is lower than this, the overflow behavior will take care of that
    * @default: {}
    */
   contentDimensions?: {
