@@ -96,6 +96,7 @@ export class Configure extends React.Component {
 
     const { graph } = model;
     const {
+      contentDimensions = {},
       chartDimensions = {},
       labelsPlaceholders = {},
       maxImageWidth = {},
@@ -130,6 +131,7 @@ export class Configure extends React.Component {
 
     return (
       <layout.ConfigLayout
+        dimensions={contentDimensions}
         hideSettings={settingsPanelDisabled}
         settings={
           <Panel

@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.9.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric@2.9.3...@pie-element/multi-trait-rubric@2.9.4) (2023-03-30)
+
+
+### Bug Fixes
+
+* revert adding pie-lib/rubric and remove its usage from controller ([2e58a35](https://github.com/pie-framework/pie-elements/commit/2e58a35e3490f4c002c82206eec3b74b215f3e57))
+
+
+
+
+
+## [2.9.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric@2.9.2...@pie-element/multi-trait-rubric@2.9.3) (2023-03-30)
+
+
+### Bug Fixes
+
+* add dependencies ([4156132](https://github.com/pie-framework/pie-elements/commit/415613209380f7bc613b1ae7908586bbe43e32bf))
+
+
+
+
+
 ## [2.9.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric@2.9.0...@pie-element/multi-trait-rubric@2.9.2) (2023-03-20)
 
 

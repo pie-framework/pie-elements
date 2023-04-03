@@ -60,7 +60,8 @@ export class Configure extends React.Component {
 
     const toolbarTools = intersection(availableTools || [], model.toolbarTools || []);
     const titleEnabled = showTitle === undefined || showTitle === null ? title.enabled : showTitle;
-    const dimensionsEnabled = showDimensions === undefined || showDimensions === null ? graphDimensions.enabled : showDimensions;
+    const dimensionsEnabled =
+      showDimensions === undefined || showDimensions === null ? graphDimensions.enabled : showDimensions;
 
     onModelChanged && onModelChanged({ ...model, arrows, toolbarTools, titleEnabled, dimensionsEnabled });
   }
@@ -91,6 +92,7 @@ export class Configure extends React.Component {
       authoring = {},
       availableTools = [],
       coordinatesOnHover = {},
+      contentDimensions = {},
       gridConfigurations = [],
       graphDimensions = {},
       instruction = {},
@@ -159,6 +161,7 @@ export class Configure extends React.Component {
 
     return (
       <layout.ConfigLayout
+        dimensions={contentDimensions}
         hideSettings={settingsPanelDisabled}
         settings={
           <Panel

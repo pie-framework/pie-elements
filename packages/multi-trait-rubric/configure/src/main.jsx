@@ -14,7 +14,7 @@ import { MultiTraitButton } from './common';
 import { ExcludeZeroDialog, excludeZeroTypes, IncludeZeroDialog, InfoDialog } from './modals';
 
 const { Panel, toggle } = settings;
-const MIN_WIDTH = '730px';
+const MIN_WIDTH = '650px';
 
 const styles = (theme) => ({
   design: {
@@ -236,6 +236,7 @@ export class Main extends React.Component {
     const {
       addScale,
       dragAndDrop,
+      contentDimensions = {},
       showDescription,
       showExcludeZero,
       showLevelTagInput,
@@ -281,6 +282,7 @@ export class Main extends React.Component {
 
     return (
       <layout.ConfigLayout
+        dimensions={contentDimensions}
         hideSettings={settingsPanelDisabled}
         settings={
           <Panel

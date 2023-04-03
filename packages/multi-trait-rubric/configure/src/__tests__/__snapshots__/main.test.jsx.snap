@@ -2,6 +2,7 @@
 
 exports[`Main snapshot renders 1`] = `
 <ConfigLayout
+  dimensions={Object {}}
   settings={
     <Panel
       configuration={
@@ -290,7 +291,7 @@ Overall appearance is acceptable or better",
   <div
     style={
       Object {
-        "width": "730px",
+        "width": "650px",
       }
     }
   >
@@ -737,7 +738,7 @@ Writing is expressive, engaging and has lots of energy",
       showLevelTagInput={false}
       showScorePointLabels={true}
       showStandards={false}
-      width="730px"
+      width="650px"
     />
     <WithStyles(Scale)
       classes={Object {}}
@@ -1038,7 +1039,7 @@ Overall appearance is acceptable or better",
       showLevelTagInput={false}
       showScorePointLabels={true}
       showStandards={false}
-      width="730px"
+      width="650px"
     />
   </div>
   <WithStyles(RawExcludeZeroDialog)
@@ -1061,6 +1062,7 @@ Overall appearance is acceptable or better",
 
 exports[`Main snapshot renders without scales 1`] = `
 <ConfigLayout
+  dimensions={Object {}}
   settings={
     <Panel
       configuration={
@@ -1154,7 +1156,7 @@ exports[`Main snapshot renders without scales 1`] = `
   <div
     style={
       Object {
-        "width": "730px",
+        "width": "650px",
       }
     }
   />

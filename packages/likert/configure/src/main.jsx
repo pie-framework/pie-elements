@@ -184,6 +184,7 @@ const Design = withStyles(styles)((props) => {
     uploadSoundSupport,
   } = props;
   const {
+    contentDimensions = {},
     prompt = {},
     scoringType = {},
     settingsPanelDisabled,
@@ -201,6 +202,7 @@ const Design = withStyles(styles)((props) => {
 
   return (
     <layout.ConfigLayout
+      dimensions={contentDimensions}
       hideSettings={settingsPanelDisabled}
       settings={
         <Panel

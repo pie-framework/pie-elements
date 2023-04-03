@@ -2,6 +2,7 @@
 
 exports[`design snapshot renders all items except feedback 1`] = `
 <ConfigLayout
+  dimensions={Object {}}
   settings={
     <Panel
       configuration={
@@ -178,6 +179,7 @@ There should be at least 1 token selected."
 
 exports[`design snapshot renders all items except the content input 1`] = `
 <ConfigLayout
+  dimensions={Object {}}
   settings={
     <Panel
       configuration={
@@ -342,6 +344,7 @@ There should be at least 1 token selected."
 
 exports[`design snapshot renders all items with defaultProps 1`] = `
 <ConfigLayout
+  dimensions={Object {}}
   settings={
     <Panel
       configuration={
@@ -518,6 +521,7 @@ There should be at least 1 token selected."
 
 exports[`design snapshot tokenizer renders with html entities 1`] = `
 <ConfigLayout
+  dimensions={Object {}}
   settings={
     <Panel
       configuration={

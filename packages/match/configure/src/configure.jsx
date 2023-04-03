@@ -163,6 +163,7 @@ class Configure extends React.Component {
     const { classes, model, imageSupport, onModelChanged, configuration, onConfigurationChanged, uploadSoundSupport } =
       this.props;
     const {
+      contentDimensions = {},
       enableImages = {},
       feedback = {},
       lockChoiceOrder = {},
@@ -214,6 +215,7 @@ class Configure extends React.Component {
 
     return (
       <layout.ConfigLayout
+        dimensions={contentDimensions}
         hideSettings={settingsPanelDisabled}
         settings={
           <Panel

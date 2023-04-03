@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@1.7.8...@pie-element/complex-rubric@1.7.9) (2023-03-30)
+
+
+### Bug Fixes
+
+* revert adding pie-lib/rubric and remove its usage from controller ([2e58a35](https://github.com/pie-framework/pie-elements/commit/2e58a35e3490f4c002c82206eec3b74b215f3e57))
+
+
+
+
+
+## [1.7.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@1.7.7...@pie-element/complex-rubric@1.7.8) (2023-03-30)
+
+**Note:** Version bump only for package @pie-element/complex-rubric
+
+
+
+
+
 ## [1.7.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@1.7.5...@pie-element/complex-rubric@1.7.7) (2023-03-20)
 
 

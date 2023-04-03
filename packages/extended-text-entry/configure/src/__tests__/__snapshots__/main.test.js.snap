@@ -2,6 +2,7 @@
 
 exports[`Render Main Component Match Snapshot 1`] = `
 <ConfigLayout
+  dimensions={Object {}}
   hideSettings={false}
   settings={
     <Panel

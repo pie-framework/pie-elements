@@ -18,6 +18,7 @@ const styles = (theme) => ({
   },
   matrixHeaderOptionsHolder: {
     display: 'flex',
+    flexWrap: 'wrap',
     width: '100%',
     paddingBottom: theme.spacing.unit * 2.5,
     justifyContent: 'space-around',
@@ -37,6 +38,7 @@ const Design = withStyles(styles)((props) => {
     onTeacherInstructionsChanged,
   } = props;
   const {
+    contentDimensions = {},
     prompt = {},
     scoringType = {},
     settingsPanelDisabled,
@@ -53,6 +55,7 @@ const Design = withStyles(styles)((props) => {
 
   return (
     <layout.ConfigLayout
+      dimensions={contentDimensions}
       hideSettings={settingsPanelDisabled}
       settings={
         <Panel

@@ -64,6 +64,7 @@ export class Root extends React.Component {
       onUpdateShapes,
     } = this.props;
     const {
+      contentDimensions = {},
       maxImageWidth = {},
       maxImageHeight = {},
       multipleCorrect = {},
@@ -108,6 +109,7 @@ export class Root extends React.Component {
 
     return (
       <layout.ConfigLayout
+        dimensions={contentDimensions}
         hideSettings={settingsPanelDisabled}
         settings={
           <Panel
@@ -167,7 +169,7 @@ export class Root extends React.Component {
             placement={'left'}
             title={validationMessage}
           >
-            <Info fontSize={'small'} color={'primary'} style={{ float: 'right' }}/>
+            <Info fontSize={'small'} color={'primary'} style={{ float: 'right' }} />
           </Tooltip>
         </div>
 

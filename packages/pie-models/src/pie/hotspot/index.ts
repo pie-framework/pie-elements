@@ -3,6 +3,7 @@ import { Dimension } from '../../Dimension';
 import { PieModel } from '../../PieModel';
 import { PromptConfig } from '../../PromptConfig';
 import { ConfigureMaxImageDimensionsProp, ConfigureProp } from '../ConfigurationProp';
+import { CommonConfigSettings } from '../../CommonConfigSettings';
 
 /**
  * Model for the @pie-elements/hotspot Interaction
@@ -74,7 +75,7 @@ export interface HotspotPie extends PieModel {
  * Config Object for @pie-elements/hotspot
  * @additionalProperties false
  */
-export interface HotspotConfigure extends PromptConfig {
+export interface HotspotConfigure extends PromptConfig, CommonConfigSettings {
   /**
    * Configuration for multiple correct
    */

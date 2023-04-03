@@ -15,7 +15,13 @@ const styles = (theme) => ({
 class Main extends React.Component {
   render() {
     const { model, classes, configuration, onConfigurationChanged, onModelChanged } = this.props || {};
-    const { settingsPanelDisabled, showExcludeZero = {}, showMaxPoint = {}, width } = configuration || {};
+    const {
+      contentDimensions = {},
+      settingsPanelDisabled,
+      showExcludeZero = {},
+      showMaxPoint = {},
+      width,
+    } = configuration || {};
 
     const panelProperties = {
       excludeZeroEnabled: showExcludeZero.settings && toggle(showExcludeZero.label),
@@ -24,6 +30,7 @@ class Main extends React.Component {
 
     return (
       <layout.ConfigLayout
+        dimensions={contentDimensions}
         hideSettings={settingsPanelDisabled}
         settings={
           <Panel

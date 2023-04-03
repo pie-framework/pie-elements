@@ -94,6 +94,7 @@ export class Design extends React.Component {
     const {
       choiceLabel = {},
       choices = {},
+      contentDimensions = {},
       enableImages = {},
       feedback = {},
       prompt = {},
@@ -162,6 +163,7 @@ export class Design extends React.Component {
 
     return (
       <layout.ConfigLayout
+        dimensions={contentDimensions}
         hideSettings={settingsPanelDisabled}
         settings={
           <Panel

@@ -1,6 +1,7 @@
 import { PieModel } from '../../PieModel';
 import { PromptConfig } from '../../PromptConfig';
 import { ConfigureProp } from '../ConfigurationProp';
+import { CommonConfigSettings } from '../../CommonConfigSettings';
 
 /**
  * NOTE: teacherInstruction functionality is not defined yet - the value for
@@ -31,7 +32,7 @@ export interface MatrixPie extends PieModel {
  * Config Object for @pie-elements/matrix
  * @additionalProperties false
  */
-export interface MatrixConfigure extends PromptConfig {
+export interface MatrixConfigure extends PromptConfig, CommonConfigSettings {
   /**
    * Indicates if the settings panel is not available
    */
