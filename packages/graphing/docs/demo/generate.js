@@ -77,56 +77,80 @@
 //   toolbarTools: ['line']
 // };
 
-const E491880 = {
-  'backgroundMarks': [
-    {
-      'closed': true,
-      'type': 'polygon',
-      'points': [
-        {
-          'x': 3,
-          'y': 11
-        },
-        {
-          'x': 3,
-          'y': 5
-        },
-        {
-          'x': 12,
-          'y': 5
-        },
-        {
-          'x': 12,
-          'y': 11
-        }
-      ]
-    }
-  ],
-  'domain': {
-    'min': 1.4,
-    'max': 13.4,
-    'labelStep': 1,
-    'step': 1
-  },
-  'range': {
-    'min': 1.4,
-    'max': 13.4,
-    'labelStep': 1,
-    'step': 1
-  },
-  'toolbarTools': [
-    'segment',
-    'polygon'
-  ],
-  'prompt': '<p>Divide and shade the shape below to show&#160;<math> <mrow> <mfrac> <mn>1</mn> <mn>3</mn> </mfrac> </mrow> </math>.</p>\n\n<p><em>Use the segment tool to divide the shape. Click on any two points to make a line segment. You can drag the ends of the segment if you need to move it. Once you have finished dividing the shape, you can start to shade the section(s). Choose the polygon tool. Click on a&#160;corner of the section&#160;you want to shade and continue to click on each corner&#160;of that section. The section will become shaded when you click on the corner where you started. Shade any section(s) you need to so that your picture represents</em><math> <mrow> <mfrac> <mn>1</mn> <mn>3</mn> </mfrac> </mrow> </math>.</p>\n',
-  'graph': {
-    'width': 500,
-    'height': 500
-  },
-};
-
 exports.model = (id, element) => ({
   id,
   element,
-  ...E491880
+  answers: {
+    correctAnswer: {
+      name: 'Correct Answer',
+      marks: [
+        {
+          type: 'point',
+          x: 0,
+          y: 0,
+        },
+      ],
+    },
+    alternate1: {
+      name: 'Alternate 1',
+      marks: [
+        {
+          type: 'segment',
+          from: { x: 0, y: 0 },
+          to: { x: 1, y: 1 },
+        },
+        {
+          type: 'point',
+          x: 3,
+          y: 3,
+          label: 'Point',
+          showLabel: true,
+        },
+      ],
+    },
+  },
+  arrows: {
+    left: true,
+    right: true,
+    up: true,
+    down: true,
+  },
+  backgroundMarks: [
+    {
+      type: 'point',
+      x: 2,
+      y: 2,
+      label: 'Point',
+      showLabel: true,
+    },
+  ],
+  domain: {
+    min: -10,
+    max: 10,
+    padding: 0,
+    step: 1,
+    labelStep: 1,
+    axisLabel: 'x',
+  },
+  defaultTool: 'point',
+  graph: {
+    width: 480,
+    height: 480,
+  },
+  coordinatesOnHover: false,
+  labels: { top: 'top', left: 'left', bottom: 'bottom', right: 'right' },
+  padding: true,
+  prompt: 'Here goes item stem !!!!!!',
+  promptEnabled: true,
+  range: {
+    min: -5,
+    max: 5,
+    padding: 0,
+    step: 1,
+    labelStep: 1,
+    axisLabel: 'y',
+  },
+  rationale: 'Rationale goes here',
+  title: 'Graph title',
+  rubricEnabled: false,
 });
