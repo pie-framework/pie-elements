@@ -132,6 +132,7 @@ const styles = (theme) => ({
     justifyContent: 'space-between',
   },
   category: {
+    minWidth: '196px',
     padding: theme.spacing.unit,
     overflow: 'visible',
   },

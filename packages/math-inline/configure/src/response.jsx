@@ -21,6 +21,7 @@ const styles = (theme) => ({
   responseContainer: {
     marginBottom: theme.spacing.unit * 2.5,
     width: '100%',
+    minWidth: '548px',
     border: `1px solid ${theme.palette.grey[700]}`,
     display: 'flex',
     flexDirection: 'column',

@@ -2,6 +2,7 @@
 
 exports[`Main snapshot renders with teacher instructions, prompt and rationale even if not set 1`] = `
 <ConfigLayout
+  dimensions={Object {}}
   hideSettings={false}
   settings={
     <Panel
@@ -311,6 +312,7 @@ There should be at least 2 tokens defined."
 
 exports[`Main snapshot renders without teacher instructions, prompt and rationale 1`] = `
 <ConfigLayout
+  dimensions={Object {}}
   hideSettings={false}
   settings={
     <Panel

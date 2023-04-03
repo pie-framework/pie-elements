@@ -36,10 +36,14 @@ const styles = (theme) => ({
 
 function TabContainer(props) {
   const padding = props.multiple ? '0 24px 24px 24px' : '24px';
+  const { ariaLabelledby, id } = props;
 
   return (
     <Typography
       component="div"
+      role="tabpanel"
+      aria-labelledby= {ariaLabelledby}
+      id={id}
       style={{
         padding,
         fontSize: '0.875em',
@@ -75,6 +79,43 @@ class StimulusTabs extends React.Component {
     });
   };
 
+  handleKeyDown = (event, currentTabId) => {
+    const { key } = event;
+    const { tabs } = this.props;
+  
+    let newTabIndex = -1;
+    const currentIndex = tabs.findIndex((tab) => tab.id === currentTabId);
+  
+    switch (key) {
+      case 'ArrowRight':
+      case 'ArrowDown':
+        newTabIndex = (currentIndex + 1) % tabs.length;
+        break;
+      case 'ArrowLeft':
+      case 'ArrowUp':
+        newTabIndex = (currentIndex - 1 + tabs.length) % tabs.length;
+        break;
+      case 'Home':
+        newTabIndex = 0;
+        break;
+      case 'End':
+        newTabIndex = tabs.length - 1;
+        break;
+      case 'Enter':
+      case ' ':
+        newTabIndex = currentIndex;
+        break;
+      default:
+        break;
+    }
+  
+    if (newTabIndex !== -1) {
+      event.preventDefault();
+      this.handleChange(event, tabs[newTabIndex].id);
+    }
+  };
+  
+  
   parsedText = (text) => {
     // fix imported audio content for Safari PD-1391
     const div = document.createElement('div');
@@ -102,8 +143,13 @@ class StimulusTabs extends React.Component {
       return disabledTabs ? (
         <div className="passages">
           {tabs.map((tab) => (
-            <div key={tab.id} className={`passage-${tab.id}`}>
-              <TabContainer multiple>
+            <div key={tab.id}
+            className={`passage-${tab.id}`}
+            id={`tabpanel-${tab.id}`}
+            aria-labelledby={`tab-${tab.id}`}
+            aria-controls={`tabpanel-${tab.id}`}
+            tabIndex="0">
+              <TabContainer multiple id={`tabpanel-${tab.id}`} role="tabpanel" ariaLabelledby={`button-${tab.id}`}>
                 <div
                   className={classNames(classes.title, 'title')}
                   dangerouslySetInnerHTML={{ __html: this.parsedText(tab.title) }}
@@ -129,19 +175,25 @@ class StimulusTabs extends React.Component {
               <Tab
                 className={classes.tab}
                 key={tab.id}
+                id={`button-${tab.id}`}
                 label={
                   <Purpose purpose="passage-title">
                     <span dangerouslySetInnerHTML={{ __html: this.parsedText(tab.title) }} />
                   </Purpose>
                 }
                 value={tab.id}
+                tabIndex={activeTab === tab.id ? 0 : -1}
+                aria-controls={`tabpanel-${tab.id}`}
+                aria-selected={activeTab === tab.id}
+                onFocus={() => this.handleChange(null, tab.id)}
+                onKeyDown={(event) => this.handleKeyDown(event, tab.id)}
               />
             ))}
           </Tabs>
 
           {tabs.map((tab) =>
             activeTab === tab.id ? (
-              <TabContainer multiple key={tab.id}>
+              <TabContainer multiple key={tab.id} id={`tabpanel-${tab.id}`} role="tabpanel" ariaLabelledby={`button-${tab.id}`}>
                 <Purpose purpose="passage-text">
                   <div key={tab.id} dangerouslySetInnerHTML={{ __html: this.parsedText(tab.text) }} />
                 </Purpose>

@@ -18,6 +18,7 @@ const styles = (theme) => ({
   availableTools: {
     marginTop: theme.spacing.unit,
     display: 'flex',
+    flexWrap: 'wrap',
   },
   availableTool: {
     cursor: 'pointer',

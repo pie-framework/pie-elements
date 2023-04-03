@@ -35,7 +35,7 @@ export class Main extends React.Component {
     const { classes, model, configuration, canUpdateModel } = this.props;
     const { rubrics = {} } = model;
     let { rubricType } = model;
-    const { multiTraitRubric, simpleRubric, width } = configuration;
+    const { contentDimensions = {}, multiTraitRubric, simpleRubric, width } = configuration;
     let rubricTag = '';
 
     if (!rubricType) {
@@ -81,7 +81,7 @@ export class Main extends React.Component {
     }
 
     return (
-      <layout.ConfigLayout hideSettings={true} settings={null}>
+      <layout.ConfigLayout dimensions={contentDimensions} hideSettings={true} settings={null}>
         <RadioGroup
           aria-label="rubric-type"
           name="rubricType"
