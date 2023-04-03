@@ -42,6 +42,7 @@ export class Choice extends React.Component {
       feedback,
       correctness,
       displayKey,
+      index,
       choicesLayout,
       gridColumns,
       updateSession,

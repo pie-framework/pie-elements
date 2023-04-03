@@ -183,7 +183,9 @@ export class ChoiceInput extends React.Component {
       choicesLayout,
       value,
       checked,
+      index
     } = this.props;
+
     const Tag = choiceMode === 'checkbox' ? StyledCheckbox : StyledRadio;
     const classSuffix = choiceMode === 'checkbox' ? 'checkbox' : 'radio-button';
 
@@ -203,7 +205,7 @@ export class ChoiceInput extends React.Component {
             <StyledFormControlLabel
               label={choicelabel}
               value={value}
-              for={label}
+              htmlFor={`choice-${index}`}
               control={
                 <Tag
                   accessibility={accessibility}
@@ -211,7 +213,7 @@ export class ChoiceInput extends React.Component {
                   checked={checked}
                   correctness={correctness}
                   value={value}
-                  id={label}
+                  id={`choice-${index}`}
                   onChange={this.onToggleChoice}
                 />
               }
