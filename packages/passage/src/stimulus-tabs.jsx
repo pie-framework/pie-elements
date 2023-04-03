@@ -80,31 +80,37 @@ class StimulusTabs extends React.Component {
     const { tabs } = this.props;
   
     let newTabIndex = -1;
+    const currentIndex = tabs.findIndex((tab) => tab.id === currentTabId);
   
-    if (['ArrowRight', 'ArrowDown', 'ArrowLeft', 'ArrowUp'].includes(key)) {
-      event.preventDefault();
-      const currentIndex = tabs.findIndex((tab) => tab.id === currentTabId);
-  
-      if (key === 'ArrowRight' || key === 'ArrowDown') {
+    switch (key) {
+      case 'ArrowRight':
+      case 'ArrowDown':
         newTabIndex = (currentIndex + 1) % tabs.length;
-      } else if (key === 'ArrowLeft' || key === 'ArrowUp') {
+        break;
+      case 'ArrowLeft':
+      case 'ArrowUp':
         newTabIndex = (currentIndex - 1 + tabs.length) % tabs.length;
-      }
-    } else if (key === 'Home') {
-      event.preventDefault();
-      newTabIndex = 0;
-    } else if (key === 'End') {
-      event.preventDefault();
-      newTabIndex = tabs.length - 1;
-    } else if (key === 'Enter' || key === ' ') {
-      event.preventDefault();
-      newTabIndex = tabs.findIndex((tab) => tab.id === currentTabId);
+        break;
+      case 'Home':
+        newTabIndex = 0;
+        break;
+      case 'End':
+        newTabIndex = tabs.length - 1;
+        break;
+      case 'Enter':
+      case ' ':
+        newTabIndex = currentIndex;
+        break;
+      default:
+        break;
     }
   
     if (newTabIndex !== -1) {
+      event.preventDefault();
       this.handleChange(event, tabs[newTabIndex].id);
     }
   };
+  
   
   parsedText = (text) => {
     // fix imported audio content for Safari PD-1391
