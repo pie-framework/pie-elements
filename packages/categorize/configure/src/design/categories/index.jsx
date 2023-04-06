@@ -55,6 +55,8 @@ const styles = (theme) => ({
 
 export class Categories extends React.Component {
   static propTypes = {
+    defaultImageMaxHeight: PropTypes.number,
+    defaultImageMaxWidth: PropTypes.number,
     imageSupport: PropTypes.shape({
       add: PropTypes.func.isRequired,
       delete: PropTypes.func.isRequired,
@@ -70,6 +72,7 @@ export class Categories extends React.Component {
     model: PropTypes.object.isRequired,
     configuration: PropTypes.object.isRequired,
     toolbarOpts: PropTypes.object,
+    spellCheck: PropTypes.bool,
   };
 
   state = {

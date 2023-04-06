@@ -9,9 +9,12 @@ import { HtmlAndMath } from '@pie-lib/render-ui';
 
 export class ChoicePreview extends React.Component {
   static propTypes = {
+    alternateResponseIndex: PropTypes.number,
+    category: PropTypes.object,
     classes: PropTypes.object.isRequired,
     className: PropTypes.string,
     choice: PropTypes.object.isRequired,
+    choiceIndex: PropTypes.number,
     onDelete: PropTypes.func.isRequired,
   };
   static defaultProps = {};
