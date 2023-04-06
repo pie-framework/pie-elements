@@ -295,7 +295,7 @@ export const createCorrectResponseSession = (question, env) => {
   });
 };
 
-export const validate = (model = {}, config = {}) => {
+export const validate = (model = {}) => {
   // TODO: add configurable validation props after authoring is updated
   const { graph, correctResponse } = model || {};
   const { width, domain, maxNumberOfPoints } = graph || {};

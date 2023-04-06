@@ -13,6 +13,8 @@ export class InputHeader extends React.Component {
     focusedEl: PropTypes.number,
     index: PropTypes.number,
     label: PropTypes.string,
+    maxImageWidth: PropTypes.object,
+    maxImageHeight: PropTypes.object,
     onChange: PropTypes.func,
     onDelete: PropTypes.func,
     imageSupport: PropTypes.shape({
@@ -25,6 +27,7 @@ export class InputHeader extends React.Component {
     }),
     toolbarOpts: PropTypes.object,
     error: PropTypes.string,
+    spellCheck: PropTypes.bool,
   };
 
   static defaultProps = {};

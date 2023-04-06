@@ -119,12 +119,15 @@ class ChoiceEditor extends React.Component {
       delete: PropTypes.func.isRequired,
     }),
     disableImages: PropTypes.bool,
+    maxImageHeight: PropTypes.object,
+    maxImageWidth: PropTypes.object,
     toolbarOpts: PropTypes.object,
     placementArea: PropTypes.bool,
     singularChoiceLabel: PropTypes.string,
     pluralChoiceLabel: PropTypes.string,
     choicesLabel: PropTypes.string,
     errors: PropTypes.object,
+    spellCheck: PropTypes.bool,
   };
 
   state = { warning: { open: false } };

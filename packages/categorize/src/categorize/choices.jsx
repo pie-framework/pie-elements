@@ -19,6 +19,8 @@ export class Choices extends React.Component {
     }),
     disabled: PropTypes.bool,
     choicePosition: PropTypes.string,
+    onDropChoice: PropTypes.func,
+    onRemoveChoice: PropTypes.func,
   };
 
   static defaultProps = {

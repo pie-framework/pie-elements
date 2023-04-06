@@ -173,11 +173,17 @@ Tools.propTypes = {
   classes: PropTypes.object.isRequired,
   toolbarTools: PropTypes.arrayOf(PropTypes.string),
   toggleToolBarTool: PropTypes.func,
+  availableTools: PropTypes.array,
+  defaultTool: PropTypes.string,
+  hasErrors: PropTypes.number,
+  onDefaultToolChange: PropTypes.func
 };
 
 export class CorrectResponse extends React.Component {
   static propTypes = {
+    availableTools: PropTypes.array,
     classes: PropTypes.object.isRequired,
+    errors: PropTypes.object,
     model: PropTypes.object.isRequired,
     onChange: PropTypes.func.isRequired,
     toolbarTools: PropTypes.arrayOf(PropTypes.String),

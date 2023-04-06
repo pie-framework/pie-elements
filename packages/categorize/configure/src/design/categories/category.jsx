@@ -22,6 +22,8 @@ export class Category extends React.Component {
     index: PropTypes.number,
     error: PropTypes.string,
     isDuplicated: PropTypes.bool,
+    maxImageWidth: PropTypes.object,
+    maxImageHeight: PropTypes.object,
     onChange: PropTypes.func,
     onDelete: PropTypes.func,
     onDeleteChoice: PropTypes.func,

@@ -9,6 +9,7 @@ const log = debug('@pie-ui:categorize:droppable-placeholder');
 
 export class DroppablePlaceholder extends React.Component {
   static propTypes = {
+    choiceBoard: PropTypes.bool,
     connectDropTarget: PropTypes.func.isRequired,
     isOver: PropTypes.bool,
     children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired,

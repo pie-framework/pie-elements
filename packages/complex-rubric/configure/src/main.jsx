@@ -12,6 +12,7 @@ const styles = {};
 export class Main extends React.Component {
   static propTypes = {
     classes: PropTypes.object,
+    canUpdateModel: PropTypes.bool,
     configuration: PropTypes.object,
     model: PropTypes.object,
     onModelChanged: PropTypes.func,
@@ -32,7 +33,7 @@ export class Main extends React.Component {
   };
 
   render() {
-    const { classes, model, configuration, canUpdateModel } = this.props;
+    const { model, configuration, canUpdateModel } = this.props;
     const { rubrics = {} } = model;
     let { rubricType } = model;
     const { contentDimensions = {}, multiTraitRubric, simpleRubric, width } = configuration;

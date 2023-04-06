@@ -1,14 +1,3 @@
-const prompt = (id, relatedAnswer) => ({
-  id,
-  title: `Prompt ${id}`,
-  relatedAnswer,
-});
-
-const answer = (id) => ({
-  id,
-  title: `Answer ${id}`,
-});
-
 const twoZeroOne = (id, element) => ({
   id,
   element,

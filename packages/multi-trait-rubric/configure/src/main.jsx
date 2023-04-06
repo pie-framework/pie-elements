@@ -232,7 +232,7 @@ export class Main extends React.Component {
   };
 
   render() {
-    const { model, classes, configuration, onConfigurationChanged, uploadSoundSupport } = this.props || {};
+    const { model, configuration, onConfigurationChanged, uploadSoundSupport } = this.props || {};
     const {
       addScale,
       dragAndDrop,

@@ -1,4 +1,3 @@
-import React from 'react';
 import cloneDeep from 'lodash/cloneDeep';
 import MultipleChoice from '@pie-element/multiple-choice';
 import debug from 'debug';

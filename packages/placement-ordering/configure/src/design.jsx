@@ -30,6 +30,13 @@ const getSingularAndPlural = (label) =>
       };
 
 export class Design extends React.Component {
+
+  static propTypes = {
+    uploadSoundSupport: PropTypes.object,
+  };
+
+  static defaultProps = {};
+
   constructor(props) {
     super(props);
 

@@ -10,6 +10,13 @@ const isImage = (file) => {
 };
 
 export class ImageContainer extends Component {
+
+  static propTypes = {
+    imageDimensions: PropTypes.object,
+  };
+
+  static defaultProps = {};
+
   constructor(props) {
     super(props);
     this.state = {

@@ -41,6 +41,8 @@ export class Choice extends React.Component {
     focusedEl: PropTypes.number,
     index: PropTypes.number,
     lockChoiceOrder: PropTypes.bool,
+    maxImageHeight: PropTypes.object,
+    maxImageWidth: PropTypes.object,
     onChange: PropTypes.func.isRequired,
     onDelete: PropTypes.func.isRequired,
     connectDragSource: PropTypes.func.isRequired,

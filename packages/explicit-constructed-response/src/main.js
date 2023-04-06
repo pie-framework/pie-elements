@@ -18,6 +18,7 @@ export class Main extends React.Component {
     env: PropTypes.object,
     rationale: PropTypes.string,
     disabled: PropTypes.bool,
+    displayType: PropTypes.string,
     markup: PropTypes.string,
     mode: PropTypes.string,
     teacherInstructions: PropTypes.string,
@@ -27,6 +28,7 @@ export class Main extends React.Component {
     alwaysShowCorrect: PropTypes.bool,
     animationsDisabled: PropTypes.bool,
     maxLengthPerChoice: PropTypes.array,
+    maxLengthPerChoiceEnabled: PropTypes.bool,
     playerSpellCheckEnabled: PropTypes.bool,
   };
 
