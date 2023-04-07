@@ -57,6 +57,8 @@ function TabContainer(props) {
 }
 
 TabContainer.propTypes = {
+  ariaLabelledby: PropTypes.string,
+  id: PropTypes.any,
   children: PropTypes.node.isRequired,
   multiple: PropTypes.bool,
 };
@@ -82,10 +84,10 @@ class StimulusTabs extends React.Component {
   handleKeyDown = (event, currentTabId) => {
     const { key } = event;
     const { tabs } = this.props;
-  
+
     let newTabIndex = -1;
     const currentIndex = tabs.findIndex((tab) => tab.id === currentTabId);
-  
+
     switch (key) {
       case 'ArrowRight':
       case 'ArrowDown':
@@ -108,14 +110,14 @@ class StimulusTabs extends React.Component {
       default:
         break;
     }
-  
+
     if (newTabIndex !== -1) {
       event.preventDefault();
       this.handleChange(event, tabs[newTabIndex].id);
     }
   };
-  
-  
+
+
   parsedText = (text) => {
     // fix imported audio content for Safari PD-1391
     const div = document.createElement('div');

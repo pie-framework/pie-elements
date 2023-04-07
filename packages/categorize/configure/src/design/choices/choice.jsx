@@ -34,10 +34,15 @@ export class Choice extends React.Component {
     classes: PropTypes.object.isRequired,
     className: PropTypes.string,
     choice: PropTypes.object.isRequired,
+    connectDropTarget: PropTypes.func,
     deleteFocusedEl: PropTypes.func,
+    defaultImageMaxHeight: PropTypes.number,
+    defaultImageMaxWidth: PropTypes.number,
     focusedEl: PropTypes.number,
     index: PropTypes.number,
     lockChoiceOrder: PropTypes.bool,
+    maxImageHeight: PropTypes.object,
+    maxImageWidth: PropTypes.object,
     onChange: PropTypes.func.isRequired,
     onDelete: PropTypes.func.isRequired,
     connectDragSource: PropTypes.func.isRequired,
@@ -53,6 +58,7 @@ export class Choice extends React.Component {
       add: PropTypes.func.isRequired,
       delete: PropTypes.func.isRequired,
     }),
+    spellCheck: PropTypes.bool,
   };
 
   static defaultProps = {};

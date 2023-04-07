@@ -53,6 +53,9 @@ export class ChartingConfig extends React.Component {
     model: PropTypes.object.isRequired,
     onChange: PropTypes.func.isRequired,
     charts: PropTypes.array,
+    labelsPlaceholders: PropTypes.object,
+    titlePlaceholder: PropTypes.object,
+    showPixelGuides: PropTypes.bool,
   };
 
   constructor(props) {
@@ -83,7 +86,7 @@ export class ChartingConfig extends React.Component {
         dialog: {
           open: true,
           title: 'Warning',
-          text: `This change will remove any correct answer categories that are not part of the initial item configuration.`,
+          text: 'This change will remove any correct answer categories that are not part of the initial item configuration.',
           onConfirm: () =>
             this.handleAlertDialog(
               false,

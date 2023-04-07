@@ -362,7 +362,7 @@ export const validate = (model = {}, config = {}) => {
   });
 
   let hasRowErrors = false;
-  Object.entries(rowsErrors).forEach(([key, rowError]) => {
+  Object.entries(rowsErrors).forEach(([, rowError]) => {
     if (rowError.length) {
       hasRowErrors = true;
     }
@@ -372,7 +372,7 @@ export const validate = (model = {}, config = {}) => {
     errors.rowsErrors = rowsErrors;
     let noCorrectAnswer = false;
 
-    Object.entries(rowsErrors).forEach(([key, rowError]) => {
+    Object.entries(rowsErrors).forEach(([, rowError]) => {
       if ((rowError || '').includes('No correct response defined.')) {
         noCorrectAnswer = true;
       }

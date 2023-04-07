@@ -45,6 +45,12 @@ const styles = (theme) => ({
 });
 
 export class TraitTile extends React.Component {
+
+  static propTypes = {
+    spellCheck: PropTypes.bool,
+    uploadSoundSupport: PropTypes.object,
+  };
+
   state = {};
 
   UNSAFE_componentWillReceiveProps(nextProps) {

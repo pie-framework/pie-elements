@@ -22,6 +22,8 @@ export class Row extends React.Component {
     row: PropTypes.object.isRequired,
     idx: PropTypes.number.isRequired,
     isDragging: PropTypes.bool.isRequired,
+    maxImageWidth: PropTypes.object,
+    maxImageHeight: PropTypes.object,
     onDeleteRow: PropTypes.func.isRequired,
     onChange: PropTypes.func.isRequired,
     connectDragSource: PropTypes.func.isRequired,
@@ -38,6 +40,7 @@ export class Row extends React.Component {
     enableImages: PropTypes.bool,
     toolbarOpts: PropTypes.object,
     error: PropTypes.string,
+    spellCheck: PropTypes.bool,
   };
 
   static defaultProps = {};

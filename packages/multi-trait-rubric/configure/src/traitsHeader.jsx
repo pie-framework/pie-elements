@@ -46,6 +46,12 @@ const styles = (theme) => ({
 });
 
 export class TraitsHeaderTile extends React.Component {
+
+  static propTypes = {
+    maxPointsEnabled: PropTypes.bool,
+   spellCheck: PropTypes.bool,
+  };
+
   state = {
     anchorEl: null,
   };

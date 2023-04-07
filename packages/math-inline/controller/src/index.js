@@ -225,7 +225,7 @@ const removeTrailingEscape = (str) => {
 };
 
 const advancedSessionResponse = (question) =>
-  new Promise((resolve, reject) => {
+  new Promise((resolve) => {
     const { responses, id } = question;
     const { answer } = responses && responses.length ? responses[0] : {};
 

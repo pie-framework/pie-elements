@@ -199,7 +199,7 @@ export class Scale extends React.Component {
   };
 
   onTraitDropped = (source, newIndex) => {
-    const { scale, scaleIndex, onScaleChanged, maxNoOfTraits, minNoOfTraits } = this.props || {};
+    const { scale, scaleIndex, onScaleChanged } = this.props || {};
     const { traits } = scale || {};
     const { index: oldIndex } = source;
     const cup = traits[oldIndex];

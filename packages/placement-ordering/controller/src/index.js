@@ -195,7 +195,7 @@ export const createCorrectResponseSession = (question, env) => {
   });
 };
 
-export const validate = (model = {}, config = {}) => {
+export const validate = (model = {}) => {
   const { choices, correctResponse } = model;
   const errors = {};
 

@@ -75,7 +75,7 @@ export const getScore = () => 0;
  * @param {*} session
  * @param {Object} env
  */
-export function outcome(model, session, env) {
+export function outcome() {
   return new Promise((resolve) => resolve({ score: 0, empty: true }));
 }
 

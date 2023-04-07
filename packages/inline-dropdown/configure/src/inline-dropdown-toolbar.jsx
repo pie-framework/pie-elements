@@ -95,6 +95,7 @@ export class RespAreaToolbar extends React.Component {
     onDone: PropTypes.func,
     choices: PropTypes.array,
     onAddChoice: PropTypes.func.isRequired,
+    onCheck: PropTypes.func,
     onRemoveChoice: PropTypes.func.isRequired,
     onSelectChoice: PropTypes.func.isRequired,
     onToolbarDone: PropTypes.func.isRequired,
@@ -104,6 +105,7 @@ export class RespAreaToolbar extends React.Component {
         getNextText: PropTypes.func.isRequired,
       }),
     }),
+    spellCheck: PropTypes.bool,
   };
 
   state = {

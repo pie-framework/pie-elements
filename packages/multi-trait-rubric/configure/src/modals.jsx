@@ -230,6 +230,7 @@ RawDeleteTrait.propTypes = {
   open: PropTypes.bool,
   deleteTrait: PropTypes.func,
   cancel: PropTypes.func,
+  traitLabel: PropTypes.string,
 };
 
 const DeleteTrait = withStyles(styles)(RawDeleteTrait);
@@ -251,6 +252,7 @@ RawInfoDialog.propTypes = {
   open: PropTypes.bool,
   text: PropTypes.string,
   cancel: PropTypes.func,
+  onClose: PropTypes.func,
 };
 
 const InfoDialog = withStyles(styles)(RawInfoDialog);

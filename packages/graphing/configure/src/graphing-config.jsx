@@ -44,13 +44,18 @@ const styles = (theme) => ({
 
 export class GraphingConfig extends React.Component {
   static propTypes = {
+    availableTools: PropTypes.array,
     classes: PropTypes.object.isRequired,
     authoring: PropTypes.object,
     dimensionsEnabled: PropTypes.bool,
     graphDimensions: PropTypes.object,
     gridConfigurations: PropTypes.array,
+    labelsPlaceholders: PropTypes.object,
     model: PropTypes.object.isRequired,
     onChange: PropTypes.func.isRequired,
+    showLabels: PropTypes.bool,
+    showTitle: PropTypes.bool,
+    titlePlaceholder: PropTypes.string
   };
 
   constructor(props) {

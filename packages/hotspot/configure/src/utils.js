@@ -121,7 +121,7 @@ const generateValidationMessage = (config) => {
     `\nThere should be at least ${minShapes} ` + (maxShapes ? `and at most ${maxShapes} ` : '') + 'shapes defined.';
 
   const selectionsMessage =
-    `\nThere should be at least 1 ` +
+    '\nThere should be at least 1 ' +
     (maxSelections ? `and at most ${maxSelections} ` : '') +
     'shape' +
     (maxSelections ? 's' : '') +

@@ -28,6 +28,7 @@ export class Design extends React.Component {
       add: PropTypes.func.isRequired,
       delete: PropTypes.func.isRequired,
     }),
+    uploadSoundSupport: PropTypes.object,
   };
 
   static defaultProps = {};

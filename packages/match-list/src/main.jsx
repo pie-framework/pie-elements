@@ -99,7 +99,7 @@ export class Main extends React.Component {
   }
 }
 
-const styles = (theme) => ({
+const styles = () => ({
   mainContainer: {
     display: 'flex',
     flexDirection: 'column',

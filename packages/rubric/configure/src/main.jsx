@@ -14,7 +14,7 @@ const styles = (theme) => ({
 
 class Main extends React.Component {
   render() {
-    const { model, classes, configuration, onConfigurationChanged, onModelChanged } = this.props || {};
+    const { model, configuration, onConfigurationChanged, onModelChanged } = this.props || {};
     const {
       contentDimensions = {},
       settingsPanelDisabled,

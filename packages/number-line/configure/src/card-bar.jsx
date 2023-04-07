@@ -32,6 +32,7 @@ CardBar.propTypes = {
   mini: PropTypes.bool,
   header: PropTypes.string,
   children: PropTypes.node,
+  info: PropTypes.any,
 };
 
 const styles = (theme) => ({

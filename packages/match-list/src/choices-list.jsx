@@ -14,6 +14,7 @@ export class ChoicesList extends React.Component {
     instanceId: PropTypes.string.isRequired,
     model: PropTypes.object.isRequired,
     disabled: PropTypes.bool.isRequired,
+    onRemoveAnswer: PropTypes.func,
   };
 
   render() {

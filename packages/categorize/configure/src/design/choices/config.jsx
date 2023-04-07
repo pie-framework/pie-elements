@@ -10,6 +10,7 @@ export class Config extends React.Component {
     className: PropTypes.string,
     config: PropTypes.object,
     onModelChanged: PropTypes.func,
+    spellCheck: PropTypes.bool,
   };
 
   static defaultProps = {};

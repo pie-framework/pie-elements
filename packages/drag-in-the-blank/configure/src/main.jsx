@@ -65,6 +65,7 @@ export class Main extends React.Component {
       add: PropTypes.func.isRequired,
       delete: PropTypes.func.isRequired,
     }),
+    uploadSoundSupport: PropTypes.object,
   };
 
   state = {};

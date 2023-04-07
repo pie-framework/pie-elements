@@ -64,10 +64,12 @@ const styles = (theme) => ({
 export class Choice extends React.Component {
   static propTypes = {
     classes: PropTypes.object,
+    error: PropTypes.string,
     markup: PropTypes.string,
     onChange: PropTypes.func.isRequired,
     onDelete: PropTypes.func.isRequired,
     value: PropTypes.string,
+    spellCheck: PropTypes.bool,
   };
 
   state = {
@@ -125,6 +127,7 @@ export class AlternateSection extends React.Component {
     choices: PropTypes.array,
     selectChoices: PropTypes.array.isRequired,
     classes: PropTypes.object.isRequired,
+    errors: PropTypes.object,
     onSelect: PropTypes.func.isRequired,
     choiceChanged: PropTypes.func.isRequired,
     lengthChanged: PropTypes.func,
@@ -132,6 +135,7 @@ export class AlternateSection extends React.Component {
     value: PropTypes.string,
     maxLength: PropTypes.number,
     showMaxLength: PropTypes.bool,
+    spellCheck: PropTypes.bool,
   };
 
   state = {};

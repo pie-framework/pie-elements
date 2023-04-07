@@ -134,6 +134,7 @@ export class ChoiceInput extends React.Component {
     correctness: PropTypes.string,
     disabled: PropTypes.bool.isRequired,
     feedback: PropTypes.string,
+    index: PropTypes.number,
     label: PropTypes.string.isRequired,
     rationale: PropTypes.string,
     accessibility: PropTypes.string,
@@ -144,6 +145,7 @@ export class ChoiceInput extends React.Component {
     hideTick: PropTypes.bool,
     isEvaluateMode: PropTypes.bool,
     choicesLayout: PropTypes.oneOf(['vertical', 'grid', 'horizontal']),
+    updateSession: PropTypes.func,
   };
 
   static defaultProps = {

@@ -9,10 +9,12 @@ import AlternateSection from './alternateSection';
 
 export class AlternateResponses extends React.Component {
   static propTypes = {
+    choicesErrors: PropTypes.object,
     model: PropTypes.object.isRequired,
     onChange: PropTypes.func.isRequired,
     onLengthChange: PropTypes.func.isRequired,
     maxLengthPerChoiceEnabled: PropTypes.bool.isRequired,
+    spellCheck: PropTypes.bool,
   };
 
   state = { maxLengthPerChoice: cloneDeep(this.props.model.maxLengthPerChoice) };
