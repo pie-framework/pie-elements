@@ -136,7 +136,7 @@ describe('model', () => {
     ],
     [
       { mode: 'evaluate', role: 'instructor' },
-      { answers: { a1: { marks: [{ type: 'point', x: 1, y: 1 }] } } },
+      { answers: { correctAnswer: { marks: [{ type: 'point', x: 1, y: 1 }] } } },
       {
         disabled: true,
         showToggle: true,
@@ -147,7 +147,7 @@ describe('model', () => {
     ],
     [
       { mode: 'evaluate' },
-      { answers: { a1: { marks: [{ type: 'point', x: 1, y: 1 }] } } },
+      { answers: { correctAnswer: { marks: [{ type: 'point', x: 1, y: 1 }] } } },
       {
         disabled: true,
         rationale: null,
@@ -160,7 +160,7 @@ describe('model', () => {
     ],
     [
       { mode: 'evaluate' },
-      { answers: { a1: { marks: [{ type: 'point', x: 1, y: 1 }] } } },
+      { answers: { correctAnswer: { marks: [{ type: 'point', x: 1, y: 1 }] } } },
       {
         disabled: true,
         rationale: null,
@@ -211,7 +211,7 @@ describe('model', () => {
 
 describe('getBestAnswer', () => {
   const answers = {
-    a1: {
+    correctAnswer: {
       marks: [
         { x: 1, y: 1, type: 'point' },
         { x: 2, y: 2, type: 'point' },
@@ -394,7 +394,7 @@ describe('outcome', () => {
     async ({ mode, partialScoring, scoringType, expected }) => {
       const env = { mode, partialScoring };
       const answers = {
-        a1: {
+        correctAnswer: {
           marks: [
             { x: 1, y: 1, type: 'point' },
             { x: 2, y: 2, type: 'point' },
