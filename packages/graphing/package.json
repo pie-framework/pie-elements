@@ -13,10 +13,10 @@
   "dependencies": {
     "@material-ui/core": "^3.9.2",
     "@pie-framework/pie-player-events": "^0.1.0",
-    "@pie-lib/correct-answer-toggle": "2.3.69",
-    "@pie-lib/graphing": "^2.12.20",
+    "@pie-lib/correct-answer-toggle": "2.3.70",
+    "@pie-lib/graphing": "^2.12.21",
     "@pie-lib/math-rendering": "^2.5.13",
-    "@pie-lib/render-ui": "^4.14.19",
+    "@pie-lib/render-ui": "^4.14.20",
     "classnames": "^2.2.5",
     "debug": "^4.1.1",
     "react": "^16.8.1",
