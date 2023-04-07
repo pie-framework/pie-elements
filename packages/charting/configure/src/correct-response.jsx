@@ -81,7 +81,8 @@ const updateCorrectResponseData = (correctAnswer, data) => {
 
 const insertCategory = (correctAnswer, data) => {
   const positionToInsert = data.length - 1;
-  const {...categoryToInsert } = data[data.length - 1];
+  // eslint-disable-next-line no-unused-vars
+  const { editable, interactive, deletable, ...categoryToInsert } = data[data.length - 1];
 
   (correctAnswer || []).splice(positionToInsert, 0, categoryToInsert);
   const correctAnswerData = [...correctAnswer];
@@ -121,7 +122,8 @@ export class CorrectResponse extends React.Component {
       ...model,
       correctAnswer: {
         ...correctAnswer,
-        data: data.map(({ ...keepAttrs }) => keepAttrs),
+        // eslint-disable-next-line no-unused-vars
+        data: data.map(({ interactive, editable, index, ...keepAttrs }) => keepAttrs),
       },
     });
   };
