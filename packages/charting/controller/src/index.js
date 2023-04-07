@@ -144,7 +144,8 @@ export const getScore = (question, session, env = {}) => {
   };
 };
 
-export const filterCategories = (categories) => (categories ? categories.map(({ ...rest }) => rest) : []);
+// eslint-disable-next-line no-unused-vars
+export const filterCategories = (categories) => (categories ? categories.map(({ deletable, ...rest }) => rest) : []);
 
 export function model(question, session, env) {
   return new Promise((resolve) => {
@@ -190,7 +191,8 @@ export function model(question, session, env) {
     const answers = filterCategories(getScore(normalizedQuestion, session, env).answers);
 
     if (env.mode === 'view') {
-      base.correctedAnswer = answers.map(({ ...rest }) => {
+      // eslint-disable-next-line no-unused-vars
+      base.correctedAnswer = answers.map(({ correctness, ...rest }) => {
         return { ...rest, interactive: false };
       });
 
