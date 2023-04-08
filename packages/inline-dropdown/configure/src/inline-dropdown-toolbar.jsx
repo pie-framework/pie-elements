@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { ReactEditor } from 'slate-react';
 import PropTypes from 'prop-types';
 import EditableHtml from '@pie-lib/editable-html';
 import { renderMath } from '@pie-lib/math-rendering';
@@ -75,10 +76,6 @@ const MenuItem = withStyles({
   },
 })(MenuItemComp);
 
-const findSlateNode = (key) => {
-  return window.document.querySelector('[data-key="' + key + '"]');
-};
-
 const createElementFromHTML = (htmlString) => {
   const div = document.createElement('div');
 
@@ -98,12 +95,8 @@ export class RespAreaToolbar extends React.Component {
     onRemoveChoice: PropTypes.func.isRequired,
     onSelectChoice: PropTypes.func.isRequired,
     onToolbarDone: PropTypes.func.isRequired,
-    value: PropTypes.shape({
-      change: PropTypes.func.isRequired,
-      document: PropTypes.shape({
-        getNextText: PropTypes.func.isRequired,
-      }),
-    }),
+    editor: PropTypes.object.isRequired,
+    nodePath: PropTypes.array.isRequired,
   };
 
   state = {
@@ -111,9 +104,8 @@ export class RespAreaToolbar extends React.Component {
   };
 
   componentDidMount() {
-    const { node } = this.props;
-
-    const domNode = findSlateNode(node.key);
+    const { node, editor } = this.props;
+    const domNode = ReactEditor.toDOMNode(editor, node);
 
     if (domNode) {
       //eslint-disable-next-line
@@ -156,32 +148,43 @@ export class RespAreaToolbar extends React.Component {
     const onlyText = createElementFromHTML(val).textContent.trim();
 
     if (!isEmpty(onlyText)) {
-      onAddChoice(node.data.get('index'), val);
+      onAddChoice(node.data.index, val);
     }
   };
 
   onSelectChoice = (newValue, index) => {
-    const { node, value, onToolbarDone, onSelectChoice } = this.props;
-    const update = { ...node.data.toJSON(), value: newValue };
-    const change = value.change().setNodeByKey(node.key, { data: update });
+    const { node, nodePath, editor, onToolbarDone, onSelectChoice } = this.props;
+    const update = { ...node.data, value: newValue };
 
-    const nextText = value.document.getNextText(node.key);
+    editor.apply({
+      type: 'set_node',
+      path: nodePath,
+      properties: {
+        data: node.data
+      },
+      newProperties: { data: update }
+    });
 
-    change.moveFocusTo(nextText.key, 0).moveAnchorTo(nextText.key, 0);
-
-    onToolbarDone(change, false);
-
+    onToolbarDone(false);
     onSelectChoice(index);
   };
 
   onRemoveChoice = (val, index) => {
-    const { node, value, onToolbarDone, onRemoveChoice } = this.props;
+    const { node, nodePath, editor, onToolbarDone, onRemoveChoice } = this.props;
 
-    if (isEqual(val, node.data.get('value'))) {
-      const update = { ...node.data.toJSON(), value: null };
-      const change = value.change().setNodeByKey(node.key, { data: update });
+    if (isEqual(val, node.data.value)) {
+      const update = { ...node.data, value: null };
 
-      onToolbarDone(change, false);
+      editor.apply({
+        type: 'set_node',
+        path: nodePath,
+        properties: {
+          data: node.data
+        },
+        newProperties: { data: update }
+      });
+
+      onToolbarDone(false);
     }
 
     onRemoveChoice(index);
@@ -201,16 +204,19 @@ export class RespAreaToolbar extends React.Component {
       return;
     }
 
-    const { node, choices, onCheck, onToolbarDone, value } = this.props;
+    const { nodePath, choices, onCheck, onToolbarDone, editor } = this.props;
     const correctResponse = (choices || []).find((choice) => choice.correct);
 
     this.onAddChoice();
+
     if (!choices || (choices && choices.length < 2) || !correctResponse) {
       onCheck(() => {
-        const change = value.change();
+        editor.apply({
+          type: 'remove_node',
+          path: nodePath
+        });
 
-        change.removeNodeByKey(node.get('key'));
-        onToolbarDone(change, false);
+        onToolbarDone(false);
       });
     }
   };

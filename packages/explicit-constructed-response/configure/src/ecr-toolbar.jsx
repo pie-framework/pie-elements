@@ -13,15 +13,11 @@ export class ECRToolbar extends React.Component {
     correctChoice: PropTypes.object,
     classes: PropTypes.object,
     node: PropTypes.object,
+    nodePath: PropTypes.array,
     onDone: PropTypes.func,
     onChangeResponse: PropTypes.func.isRequired,
     onToolbarDone: PropTypes.func.isRequired,
-    value: PropTypes.shape({
-      change: PropTypes.func.isRequired,
-      document: PropTypes.shape({
-        getNextText: PropTypes.func.isRequired,
-      }),
-    }),
+    editor: PropTypes.object
   };
 
   state = {
@@ -56,22 +52,26 @@ export class ECRToolbar extends React.Component {
 
   onDone = () => {
     const { markup: newValue } = this.state;
-    const { node, value, onToolbarDone, onChangeResponse } = this.props;
-    const update = { ...node.data.toJSON(), value: newValue };
-    const change = value.change().setNodeByKey(node.key, { data: update });
+    const { node, nodePath, editor, onToolbarDone, onChangeResponse } = this.props;
+    const update = { ...node.data, value: newValue };
 
-    const nextText = value.document.getNextText(node.key);
+    editor.apply({
+      type: 'set_node',
+      path: nodePath,
+      properties: {
+        data: node.data
+      },
+      newProperties: { data: update }
+    });
 
-    change.moveFocusTo(nextText.key, 0).moveAnchorTo(nextText.key, 0);
-
-    onToolbarDone(change, true);
+    onToolbarDone(true);
     onChangeResponse(newValue);
   };
 
   onChange = (e) => this.setState({ markup: e.target.value });
 
   render() {
-    const { classes, error } = this.props;
+    const { classes, node } = this.props;
     const { markup, toolbarStyle } = this.state;
 
     return (
@@ -90,7 +90,7 @@ export class ECRToolbar extends React.Component {
           }}
           onChange={this.onChange}
           onBlur={this.onDone}
-          value={markup || ''}
+          value={markup || node?.data?.value || ''}
         />
       </div>
     );

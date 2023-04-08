@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "@pie-lib/controller-utils": "^0.2.42",
-    "@pie-lib/rubric": "1.0.0-beta.1",
+    "@pie-lib/rubric": "1.0.0-beta.2",
     "lodash": "^4.17.15"
   },
   "author": "",

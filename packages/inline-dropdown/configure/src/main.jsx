@@ -518,25 +518,29 @@ export class Main extends React.Component {
             <EditableHtml
               activePlugins={ALL_PLUGINS}
               toolbarOpts={{ position: 'top' }}
+              ref={(ref) => {
+                window.editorRef = ref;
+              }}
               responseAreaProps={{
                 type: 'inline-dropdown',
                 options: {
                   duplicates: true,
                 },
                 maxResponseAreas: maxResponseAreas,
-                respAreaToolbar: (node, value, onToolbarDone) => {
+                respAreaToolbar: (node, nodePath, editor, onToolbarDone) => {
                   const { respAreaChoices } = this.state;
 
                   return () => (
                     <InlineDropdownToolbar
                       onAddChoice={this.onAddChoice}
                       onCheck={this.onCheck}
-                      onRemoveChoice={(index) => this.onRemoveChoice(node.data.get('index'), index)}
-                      onSelectChoice={(index) => this.onSelectChoice(node.data.get('index'), index)}
+                      onRemoveChoice={(index) => this.onRemoveChoice(node.data.index, index)}
+                      onSelectChoice={(index) => this.onSelectChoice(node.data.index, index)}
+                      editor={editor}
                       node={node}
-                      value={value}
+                      nodePath={nodePath}
                       onToolbarDone={onToolbarDone}
-                      choices={respAreaChoices[node.data.get('index')]}
+                      choices={respAreaChoices[node.data.index]}
                       spellCheck={spellCheckEnabled}
                       uploadSoundSupport={uploadSoundSupport}
                     />

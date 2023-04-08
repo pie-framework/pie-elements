@@ -239,7 +239,7 @@ export class Main extends React.Component {
       const newCachedChoices = cachedChoices ? cloneDeep(cachedChoices) : {};
 
       nodes.forEach((node) => {
-        const keyForNode = node.data.get('index');
+        const keyForNode = node.data.index;
 
         if (!newChoices[keyForNode] && newCachedChoices[keyForNode]) {
           Object.assign(newChoices, pick(newCachedChoices, keyForNode));
@@ -391,15 +391,16 @@ export class Main extends React.Component {
                   duplicates: true,
                 },
                 maxResponseAreas: maxResponseAreas,
-                respAreaToolbar: (node, value, onToolbarDone) => {
+                respAreaToolbar: (node, nodePath, editor, onToolbarDone) => {
                   const { model } = this.props;
-                  const correctChoice = (model.choices[node.data.get('index')] || [])[0];
+                  const correctChoice = (model.choices[node.data.index] || [])[0];
 
                   return () => (
                     <ECRToolbar
-                      onChangeResponse={(newVal) => this.onChangeResponse(node.data.get('index'), newVal)}
+                      onChangeResponse={(newVal) => this.onChangeResponse(node.data.index, newVal)}
                       node={node}
-                      value={value}
+                      nodePath={nodePath}
+                      editor={editor}
                       onToolbarDone={onToolbarDone}
                       correctChoice={correctChoice}
                     />
