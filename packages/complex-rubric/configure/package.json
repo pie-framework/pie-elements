@@ -14,6 +14,7 @@
     "@pie-lib/config-ui": "^11.6.1",
     "@pie-lib/editable-html": "^9.5.20",
     "@pie-lib/render-ui": "^4.14.20",
+    "@pie-lib/rubric": "^0.7.20",
     "@pie-lib/scoring-config": "^3.6.22",
     "debug": "^4.1.1",
     "lodash": "^4.17.15",
