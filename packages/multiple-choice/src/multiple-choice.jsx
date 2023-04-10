@@ -40,10 +40,12 @@ const styles = (theme) => ({
 
 export class MultipleChoice extends React.Component {
   static propTypes = {
+    className: PropTypes.string,
     mode: PropTypes.oneOf(['gather', 'view', 'evaluate']),
     choiceMode: PropTypes.oneOf(['radio', 'checkbox']),
     keyMode: PropTypes.oneOf(['numbers', 'letters', 'none']),
     choices: PropTypes.array,
+    partLabel: PropTypes.string,
     prompt: PropTypes.string,
     teacherInstructions: PropTypes.string,
     session: PropTypes.object,

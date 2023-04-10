@@ -1,5 +1,6 @@
 import { Choice } from '../../Choice';
 import { PieModel } from '../../PieModel';
+import { CommonConfigSettings } from '../../CommonConfigSettings';
 import { PromptConfig } from '../../PromptConfig';
 import { ConfigureProp, ConfigurePropWithEnabled } from '../ConfigurationProp';
 
@@ -102,7 +103,7 @@ interface ConfigureMaxImageDimensionsProp {
  * Config Object for @pie-elements/multiple-choice
  * @additionalProperties false
  */
-export interface MultipleChoiceConfigure extends PromptConfig {
+export interface MultipleChoiceConfigure extends PromptConfig, CommonConfigSettings {
   /**
    * The number of empty choices to show in config view if no choice model is provided
    * @minimum 1

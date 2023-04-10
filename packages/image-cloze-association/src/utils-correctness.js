@@ -40,8 +40,9 @@ const getUniqueCorrectAnswers = (answers, validResponses) => {
 export const getUnansweredAnswers = (answers, validation) => {
   const { validResponse: { value } = {} } = validation;
 
-  const unansweredAnswers = (value || []).reduce((unanswered, response, index) => {
+  return (value || []).reduce((unanswered, response, index) => {
     const isAnswered = !!answers.find((answer) => answer.containerIndex === index);
+    response.images = response.images || [];
 
     if (!isAnswered) {
       return [
@@ -50,7 +51,7 @@ export const getUnansweredAnswers = (answers, validation) => {
           id: `unanswered-${index}`,
           value: response.images[0] || '',
           containerIndex: index,
-          isCorrect: false,
+          isCorrect: !response.images.length ? undefined : false,
           hidden: true,
         },
       ];
@@ -58,8 +59,6 @@ export const getUnansweredAnswers = (answers, validation) => {
 
     return unanswered;
   }, []);
-
-  return unansweredAnswers;
 };
 
 export const getAnswersCorrectness = (answers, validation) => {

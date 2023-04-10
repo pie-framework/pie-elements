@@ -21,6 +21,8 @@ export class ChoiceTile extends React.Component {
     connectDropTarget: PropTypes.func.isRequired,
     isDragging: PropTypes.bool.isRequired,
     id: PropTypes.any,
+    maxImageHeight: PropTypes.object,
+    maxImageWidth: PropTypes.object,
     label: PropTypes.string,
     isOver: PropTypes.bool,
     classes: PropTypes.object.isRequired,
@@ -41,6 +43,7 @@ export class ChoiceTile extends React.Component {
     toolbarOpts: PropTypes.object,
     choicesLabel: PropTypes.string,
     error: PropTypes.string,
+    spellCheck: PropTypes.bool,
   };
 
   onLabelChange = (label) => {

@@ -5,6 +5,10 @@ import classNames from 'classnames';
 import ChoiceInput from './choice-input';
 
 export class Choice extends React.Component {
+  static propTypes = {
+   updateSession: PropTypes.func,
+  };
+
   onChange = (choice) => {
     const { disabled, onChoiceChanged } = this.props;
 
@@ -42,6 +46,7 @@ export class Choice extends React.Component {
       feedback,
       correctness,
       displayKey,
+      index,
       choicesLayout,
       gridColumns,
       updateSession,

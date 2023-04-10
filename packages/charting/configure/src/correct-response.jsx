@@ -81,6 +81,7 @@ const updateCorrectResponseData = (correctAnswer, data) => {
 
 const insertCategory = (correctAnswer, data) => {
   const positionToInsert = data.length - 1;
+  // eslint-disable-next-line no-unused-vars
   const { editable, interactive, deletable, ...categoryToInsert } = data[data.length - 1];
 
   (correctAnswer || []).splice(positionToInsert, 0, categoryToInsert);
@@ -99,9 +100,11 @@ const removeCategory = (correctAnswer, data, positionToRemove) => {
 export class CorrectResponse extends React.Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
+    correctAnswerErrors: PropTypes.object,
     model: PropTypes.object.isRequired,
     onChange: PropTypes.func.isRequired,
     charts: PropTypes.array,
+    error: PropTypes.string,
   };
 
   constructor(props) {
@@ -119,6 +122,7 @@ export class CorrectResponse extends React.Component {
       ...model,
       correctAnswer: {
         ...correctAnswer,
+        // eslint-disable-next-line no-unused-vars
         data: data.map(({ interactive, editable, index, ...keepAttrs }) => keepAttrs),
       },
     });
@@ -163,7 +167,6 @@ export class CorrectResponse extends React.Component {
         const dataExists = currentIndex < nextData.length;
         let label;
         let value;
-        let deletable;
 
         if (dataExists) {
           label = nextData[currentIndex].editable ? answer.label : nextData[currentIndex].label;
@@ -171,7 +174,6 @@ export class CorrectResponse extends React.Component {
         } else {
           label = answer.label;
           value = answer.value;
-          deletable = true;
         }
 
         nextCorrectAnswerData[currentIndex] = {

@@ -339,7 +339,6 @@ export const Arrow = withStyles((theme) => ({
     justifyContent: 'center',
     background: `linear-gradient(to left, ${theme.palette.common.white}, ${color.background()})`,
     boxSizing: 'border-box',
-    padding: '4px 0',
   },
   innerGrey: {
     position: 'absolute',

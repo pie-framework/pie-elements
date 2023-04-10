@@ -41,6 +41,7 @@ export class Root extends React.Component {
       this.props;
     const {
       backgroundImage = {},
+      contentDimensions = {},
       maxImageWidth = {},
       maxImageHeight = {},
       prompt = {},
@@ -77,6 +78,7 @@ export class Root extends React.Component {
 
     return (
       <layout.ConfigLayout
+        dimensions={contentDimensions}
         hideSettings={settingsPanelDisabled}
         settings={
           <Panel

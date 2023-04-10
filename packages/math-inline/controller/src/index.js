@@ -219,8 +219,13 @@ const simpleSessionResponse = (question) =>
     });
   });
 
+// use this for items like E672793
+const removeTrailingEscape = (str) => {
+  return str.endsWith('\\') ? str.slice(0, -1) : str;
+};
+
 const advancedSessionResponse = (question) =>
-  new Promise((resolve, reject) => {
+  new Promise((resolve) => {
     const { responses, id } = question;
     const { answer } = responses && responses.length ? responses[0] : {};
 
@@ -263,7 +268,7 @@ const advancedSessionResponse = (question) =>
       const answers = {};
 
       for (var i = 0; i < count; i++) {
-        answers[`r${i + 1}`] = { value: m[i].trim() };
+        answers[`r${i + 1}`] = { value: removeTrailingEscape(m[i].trim()) };
       }
 
       resolve({

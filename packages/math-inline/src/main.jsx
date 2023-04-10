@@ -349,7 +349,7 @@ export class Main extends React.Component {
     // Safari Hack: https://stackoverflow.com/a/42764495/5757635
     setTimeout(() => {
       if (ref && IS_SAFARI) {
-        const div = document.querySelector("[role='tooltip']");
+        const div = document.querySelector('[role=\'tooltip\']');
 
         if (div) {
           const el = div.firstChild;
@@ -558,7 +558,6 @@ export class Main extends React.Component {
                     hidden: 'Show Teacher Instructions',
                     visible: 'Hide Teacher Instructions',
                   }}
-                  className={classes.collapsible}
                 >
                   <PreviewPrompt prompt={teacherInstructions} />
                 </Collapsible>

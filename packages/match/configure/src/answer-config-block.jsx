@@ -93,6 +93,7 @@ class AnswerConfigBlock extends React.Component {
       delete: PropTypes.func.isRequired,
     }),
     toolbarOpts: PropTypes.object,
+    spellCheck: PropTypes.bool,
   };
 
   moveRow = (from, to) => {

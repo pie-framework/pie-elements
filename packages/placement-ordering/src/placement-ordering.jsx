@@ -4,14 +4,13 @@ import { color, Feedback, Collapsible, hasText, PreviewPrompt } from '@pie-lib/r
 import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
 import PropTypes from 'prop-types';
 import React from 'react';
-import cloneDeep from 'lodash/cloneDeep';
-import compact from 'lodash/compact';
 import debug from 'debug';
 import uniqueId from 'lodash/uniqueId';
 import { withStyles } from '@material-ui/core/styles';
 import ReactDOM from 'react-dom';
 import { renderMath } from '@pie-lib/math-rendering';
 import isEqual from 'lodash/isEqual';
+import difference from 'lodash/difference';
 
 const log = debug('pie-elements:placement-ordering');
 
@@ -45,40 +44,28 @@ export class PlacementOrdering extends React.Component {
 
   constructor(props) {
     super(props);
+
+    this.instanceId = uniqueId();
+
+    const { value, needsReset } = this.validateSession(props);
+
     this.state = {
       showingCorrect: false,
     };
 
-    this.instanceId = uniqueId();
+    const { model } = props || {};
+    const { env } = model || {};
+    const { mode } = env || {};
 
-    this.toggleCorrect = (showingCorrect) => {
-      this.setState({ showingCorrect });
-    };
-  }
-
-  isValidSession = ({ model, session }) => {
-    const { config } = model;
-
-    const compactSessionValues = (session && compact(session.value)) || [];
-    const completeSession = compactSessionValues.length === model.choices.length;
-
-    // if it includes targets, it doesn't have to contain all the choices selected (eg: only 2 targets were filled)
-    // but if it does not include targets, it's a must to have all choices selected
-    return config.includeTargets || completeSession;
-  };
-
-  componentDidMount() {
-    const { model, session } = this.props;
-
-    if (!this.isValidSession({ model, session })) {
-      this.setState(
-        {
-          defaultSessionValue: cloneDeep(session?.value),
-        },
-        () => this.initSessionIfNeeded(this.props),
-      );
+    if (needsReset && mode === 'gather') {
+      this.props.onSessionChange({
+        ...props.session,
+        value
+      });
     }
   }
+
+  toggleCorrect = showingCorrect => this.setState({ showingCorrect });
 
   componentDidUpdate() {
     //eslint-disable-next-line
@@ -87,45 +74,85 @@ export class PlacementOrdering extends React.Component {
     renderMath(domNode);
   }
 
+  validateSession = ({ model, session }) => {
+    const { config, choices } = model || {};
+    const { includeTargets } = config || {};
+    let { value } = session || {};
+    let needsReset;
+
+    const choicesIds = choices.map(c => c.id);
+
+    if (!includeTargets) {
+      if (!value || !value.length) {
+        // if there's no value on session in No Targets Mode, we need to set an initial session
+        value = choicesIds;
+      } else {
+        // in No Targets Mode, all choice ids need to be used
+        const missingChoiceIds = difference(choicesIds, value);
+        // this is the case that handles extra choice ids in session
+        const extraChoiceIds = difference(value, choicesIds);
+
+        if (missingChoiceIds.length || extraChoiceIds.length) {
+          value = choicesIds;
+        }
+      }
+
+      needsReset = !isEqual(session.value, value);
+    } else {
+      // in Targets Area selected, it's important to check the length of session
+      if (value && choicesIds.length !== value.length) {
+        needsReset = true;
+
+        // if choices were added, add value in session
+        if (value.length < choicesIds.length) {
+          value = value.concat(new Array(choicesIds.length - value.length));
+        } else {
+          // if choices were removed, make sure to remove from session as well
+          value = value.filter(cId => choicesIds.includes(cId));
+        }
+      }
+    }
+
+    if (needsReset) {
+      console.warn('This session is not valid anymore. It will be reset.')
+    }
+
+    return { value, needsReset };
+  };
+
   UNSAFE_componentWillReceiveProps(nextProps) {
     const newState = {};
-    const { correctResponse, config, choices } = nextProps?.model;
-    const { config: oldConfig, choices: oldChoices } = this.props?.model || {};
+    const { correctResponse, config } = nextProps?.model;
+    const { includeTargets } = config || {};
 
     if (!correctResponse) {
       newState.showingCorrect = false;
     }
 
-    const includeTargetsChanged = config.includeTargets !== oldConfig.includeTargets;
-    const choicesChanged = !isEqual(oldChoices, choices);
-    const isDefaultSession = isEqual(this.state.defaultSessionValue, this.props.session?.value);
-    const isValidSession = this.isValidSession({ model: nextProps.model, session: nextProps.session });
+    const validatedSession = this.validateSession(nextProps);
+    let { value, needsReset } = validatedSession;
 
-    // if the session is not valid anymore, it has to be reset
-    // OR
-    // if the session is the default one (set if the initial session was not valid or empty)
-    //  and targets or choices changed, then we can reset the session
-    //  but if the session is not the default one (it was set by the student), then we do not reset it
-    if (!isValidSession || (isDefaultSession && (includeTargetsChanged || choicesChanged))) {
-      this.initSessionIfNeeded(nextProps);
+    const newSession = {
+      ...nextProps.session,
+      value
+    };
+    const includeTargetsChanged = this.props.model?.config?.includeTargets !== includeTargets;
+
+    if (includeTargets && includeTargetsChanged) {
+      needsReset = true;
+
+      delete newSession.value;
     }
 
-    this.setState(newState);
-  }
+    this.setState(newState, () => {
+      const { model } = nextProps || {};
+      const { env } = model || {};
+      const { mode } = env || {};
 
-  initSessionIfNeeded(props) {
-    const { model, session, onSessionChange } = props;
-    const { config: newConfig } = model;
-
-    const update = cloneDeep(session);
-
-    update.value = model.choices.map((m) => m.id);
-
-    if (newConfig.includeTargets) {
-      delete update.value;
-    }
-
-    this.setState({ defaultSessionValue: cloneDeep(update?.value) }, () => onSessionChange(update));
+      if (needsReset && mode === 'gather') {
+        this.props.onSessionChange(newSession);
+      }
+    });
   }
 
   onDropChoice = (target, source, ordering) => {
@@ -162,18 +189,18 @@ export class PlacementOrdering extends React.Component {
 
     return showingCorrect
       ? buildState(
-          model.choices,
-          model.correctResponse,
-          model.correctResponse.map((id) => ({ id, outcome: 'correct' })),
-          {
-            includeTargets,
-            allowSameChoiceInTargets: model.config.allowSameChoiceInTargets,
-          },
-        )
-      : buildState(model.choices, session.value, model.outcomes, {
+        model.choices,
+        model.correctResponse,
+        model.correctResponse.map((id) => ({ id, outcome: 'correct' })),
+        {
           includeTargets,
           allowSameChoiceInTargets: model.config.allowSameChoiceInTargets,
-        });
+        },
+      )
+      : buildState(model.choices, session.value, model.outcomes, {
+        includeTargets,
+        allowSameChoiceInTargets: model.config.allowSameChoiceInTargets,
+      });
   };
 
   render() {
@@ -212,12 +239,12 @@ export class PlacementOrdering extends React.Component {
             labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}
             className={classes.collapsible}
           >
-            <PreviewPrompt prompt={teacherInstructions} />
+            <PreviewPrompt prompt={teacherInstructions}/>
           </Collapsible>
         )}
 
         <div className={classes.prompt}>
-          <PreviewPrompt prompt={prompt} />
+          <PreviewPrompt prompt={prompt}/>
         </div>
 
         <CorrectAnswerToggle
@@ -243,16 +270,16 @@ export class PlacementOrdering extends React.Component {
         />
 
         {displayNote && (
-          <div className={classes.note} dangerouslySetInnerHTML={{ __html: `<strong>Note:</strong> ${note}` }} />
+          <div className={classes.note} dangerouslySetInnerHTML={{ __html: `<strong>Note:</strong> ${note}` }}/>
         )}
 
         {rationale && hasText(rationale) && (
           <Collapsible labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }} className={classes.collapsible}>
-            <PreviewPrompt prompt={rationale} />
+            <PreviewPrompt prompt={rationale}/>
           </Collapsible>
         )}
 
-        {!showingCorrect && <Feedback correctness={correctness} feedback={feedback} />}
+        {!showingCorrect && <Feedback correctness={correctness} feedback={feedback}/>}
       </div>
     );
   }

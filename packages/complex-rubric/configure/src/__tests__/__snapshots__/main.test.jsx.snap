@@ -2,6 +2,7 @@
 
 exports[`Main snapshot renders 1`] = `
 <ConfigLayout
+  dimensions={Object {}}
   hideSettings={true}
   settings={null}
 >
@@ -39,6 +40,7 @@ exports[`Main snapshot renders 1`] = `
 
 exports[`Main snapshot renders multi trait rubric 1`] = `
 <ConfigLayout
+  dimensions={Object {}}
   hideSettings={true}
   settings={null}
 >
@@ -76,6 +78,7 @@ exports[`Main snapshot renders multi trait rubric 1`] = `
 
 exports[`Main snapshot renders simple rubric 1`] = `
 <ConfigLayout
+  dimensions={Object {}}
   hideSettings={true}
   settings={null}
 >

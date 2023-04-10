@@ -36,8 +36,12 @@ export function model(question, session, env) {
       out.teacherInstructions = questionCamelized.teacherInstructionsEnabled
         ? questionCamelized.teacherInstructions
         : null;
+      out.rationale = questionCamelized.rationale
+        ? questionCamelized.rationale
+        : null;
     } else {
       out.teacherInstructions = null;
+      out.rationale = null;
     }
 
     resolve(out);
@@ -83,8 +87,6 @@ const isDefaultOrAltResponseCorrect = (question, session) => {
     }
   } = question;
 
-  value = keepNonEmptyResponses(value);
-
   let isCorrect = isResponseCorrect(value, session);
 
   // Look for correct answers in alternate responses.
@@ -117,18 +119,19 @@ export const getPartialScore = (question, session) => {
     maxResponsePerZone,
   } = question;
   let correctAnswers = 0;
+  let incorrectAnswers = 0;
   let possibleResponses = 0;
 
   if (!session || isEmpty(session)) {
     return 0;
   }
-  validResponse.value = keepNonEmptyResponses(validResponse.value);
 
   validResponse.value.forEach((value) => (possibleResponses += (value.images || []).length));
 
   if (session.answers && session.answers.length) {
     const all = getAllUniqueCorrectness(session.answers, validResponse.value);
     correctAnswers = all.filter((item) => item.isCorrect).length;
+    incorrectAnswers = all.filter((item) => !item.isCorrect).length;
 
     // deduction rules: https://docs.google.com/document/d/1Oprm8Qs5fg_Dwoj2pNpsfu4D63QgCZgvcqTgeaVel7I/edit
     session.answers.forEach((answer) => {
@@ -144,6 +147,10 @@ export const getPartialScore = (question, session) => {
         }
       }
     });
+
+    if (!maxResponsePerZone || maxResponsePerZone <= 1) {
+      correctAnswers -= incorrectAnswers;
+    }
   } else {
     correctAnswers = 0;
   }
@@ -151,7 +158,8 @@ export const getPartialScore = (question, session) => {
   correctAnswers = correctAnswers < 0 ? 0 : correctAnswers;
 
   // use length of validResponse since some containers can be left empty
-  const denominator = maxResponsePerZone > 1 ? possibleResponses : (validResponse.value || []).length;
+  const nonEmptyResponses = keepNonEmptyResponses(validResponse.value);
+  const denominator = maxResponsePerZone > 1 ? possibleResponses : (nonEmptyResponses || []).length;
   const str = (correctAnswers / denominator).toFixed(2);
 
   return parseFloat(str);

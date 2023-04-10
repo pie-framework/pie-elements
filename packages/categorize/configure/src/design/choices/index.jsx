@@ -17,6 +17,8 @@ export class Choices extends React.Component {
     classes: PropTypes.object.isRequired,
     className: PropTypes.string,
     choices: PropTypes.array.isRequired,
+    defaultImageMaxWidth: PropTypes.number,
+    defaultImageMaxHeight: PropTypes.number,
     onModelChanged: PropTypes.func.isRequired,
     imageSupport: PropTypes.shape({
       add: PropTypes.func.isRequired,
@@ -27,6 +29,7 @@ export class Choices extends React.Component {
       delete: PropTypes.func.isRequired,
     }),
     toolbarOpts: PropTypes.object,
+    spellCheck: PropTypes.bool,
   };
 
   static defaultProps = {};
@@ -111,7 +114,6 @@ export class Choices extends React.Component {
     const { choicesError, choicesErrors } = errors || {};
     const { maxChoices, maxImageWidth = {}, maxImageHeight = {} } = configuration || {};
 
-    const categoryCountIsOne = this.allChoicesHaveCount(1);
     const choiceHolderStyle = {
       gridTemplateColumns: `repeat(${model.categoriesPerRow}, 1fr)`,
     };

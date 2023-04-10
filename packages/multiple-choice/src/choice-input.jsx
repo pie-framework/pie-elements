@@ -134,6 +134,7 @@ export class ChoiceInput extends React.Component {
     correctness: PropTypes.string,
     disabled: PropTypes.bool.isRequired,
     feedback: PropTypes.string,
+    index: PropTypes.number,
     label: PropTypes.string.isRequired,
     rationale: PropTypes.string,
     accessibility: PropTypes.string,
@@ -144,6 +145,7 @@ export class ChoiceInput extends React.Component {
     hideTick: PropTypes.bool,
     isEvaluateMode: PropTypes.bool,
     choicesLayout: PropTypes.oneOf(['vertical', 'grid', 'horizontal']),
+    updateSession: PropTypes.func,
   };
 
   static defaultProps = {
@@ -183,7 +185,9 @@ export class ChoiceInput extends React.Component {
       choicesLayout,
       value,
       checked,
+      index
     } = this.props;
+
     const Tag = choiceMode === 'checkbox' ? StyledCheckbox : StyledRadio;
     const classSuffix = choiceMode === 'checkbox' ? 'checkbox' : 'radio-button';
 
@@ -203,7 +207,7 @@ export class ChoiceInput extends React.Component {
             <StyledFormControlLabel
               label={choicelabel}
               value={value}
-              for={label}
+              htmlFor={`choice-${index}`}
               control={
                 <Tag
                   accessibility={accessibility}
@@ -211,7 +215,7 @@ export class ChoiceInput extends React.Component {
                   checked={checked}
                   correctness={correctness}
                   value={value}
-                  id={label}
+                  id={`choice-${index}`}
                   onChange={this.onToggleChoice}
                 />
               }

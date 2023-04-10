@@ -43,6 +43,8 @@ export class AlternateResponses extends React.Component {
     classes: PropTypes.object.isRequired,
     className: PropTypes.string,
     categories: PropTypes.array,
+    defaultImageMaxHeight: PropTypes.number,
+    defaultImageMaxWidth: PropTypes.number,
     onModelChanged: PropTypes.func,
     model: PropTypes.object.isRequired,
     uploadSoundSupport: PropTypes.shape({
@@ -50,6 +52,7 @@ export class AlternateResponses extends React.Component {
       delete: PropTypes.func.isRequired,
     }),
     toolbarOpts: PropTypes.object,
+    spellCheck: PropTypes.bool,
   };
 
   addChoiceToCategory = (addedChoice, categoryId) => {

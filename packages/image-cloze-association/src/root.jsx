@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Typography from '@material-ui/core/Typography';
 import { withDragContext } from '@pie-lib/drag';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { ShowRationale } from '@pie-lib/icons';
-import { color, Collapsible, PreviewPrompt } from '@pie-lib/render-ui';
+import { color, Collapsible, PreviewPrompt, hasText } from '@pie-lib/render-ui';
 import { withStyles } from '@material-ui/core/styles';
 import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
 
@@ -27,6 +26,9 @@ const styles = (theme) => ({
   teacherInstructions: {
     marginBottom: theme.spacing.unit * 2,
   },
+  rationale: {
+    marginTop: theme.spacing.unit * 2,
+  }
 });
 
 class ImageClozeAssociationComponent extends React.Component {
@@ -201,6 +203,7 @@ class ImageClozeAssociationComponent extends React.Component {
         prompt,
         showDashedBorder,
         mode,
+        rationale
       },
     } = this.props;
     const {
@@ -242,7 +245,7 @@ class ImageClozeAssociationComponent extends React.Component {
 
     return (
       <div className={classes.main}>
-        {teacherInstructions && (
+        {teacherInstructions && hasText(teacherInstructions) && (
           <Collapsible
             className={classes.teacherInstructions}
             labels={{
@@ -300,6 +303,18 @@ class ImageClozeAssociationComponent extends React.Component {
               onDragEnd={this.handleOnDragEnd}
             />
           </InteractiveSection>
+        )}
+
+        {rationale && hasText(rationale) && (
+          <Collapsible
+            className={classes.rationale}
+            labels={{
+              hidden: 'Show Rationale',
+              visible: 'Hide Rationale',
+            }}
+          >
+            <PreviewPrompt prompt={rationale} />
+          </Collapsible>
         )}
       </div>
     );

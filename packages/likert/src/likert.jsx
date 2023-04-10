@@ -30,6 +30,7 @@ const styles = (theme) => ({
 
 export class Likert extends React.Component {
   static propTypes = {
+    className: PropTypes.string,
     choices: PropTypes.array,
     prompt: PropTypes.string,
     teacherInstructions: PropTypes.string,

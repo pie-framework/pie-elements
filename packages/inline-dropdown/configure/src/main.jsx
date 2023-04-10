@@ -330,6 +330,7 @@ export class Main extends React.Component {
     const { classes, model, configuration, onConfigurationChanged, imageSupport, uploadSoundSupport } = this.props;
     const {
       choiceRationale = {},
+      contentDimensions = {},
       lockChoiceOrder = {},
       maxResponseAreas,
       maxImageWidth = {},
@@ -417,6 +418,7 @@ export class Main extends React.Component {
 
     return (
       <layout.ConfigLayout
+        dimensions={contentDimensions}
         hideSettings={settingsPanelDisabled}
         settings={
           <Panel

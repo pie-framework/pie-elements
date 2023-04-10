@@ -155,6 +155,7 @@ export class Design extends React.Component {
       allowAlternate = {},
       categoriesPerRow = {},
       choicesPosition = {},
+      contentDimensions = {},
       feedback = {},
       lockChoiceOrder = {},
       maxImageHeight = {},
@@ -239,6 +240,7 @@ export class Design extends React.Component {
     return (
       <IdProvider value={this.uid}>
         <layout.ConfigLayout
+          dimensions={contentDimensions}
           hideSettings={settingsPanelDisabled}
           settings={
             <Panel

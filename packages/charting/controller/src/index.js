@@ -144,6 +144,7 @@ export const getScore = (question, session, env = {}) => {
   };
 };
 
+// eslint-disable-next-line no-unused-vars
 export const filterCategories = (categories) => (categories ? categories.map(({ deletable, ...rest }) => rest) : []);
 
 export function model(question, session, env) {
@@ -190,6 +191,7 @@ export function model(question, session, env) {
     const answers = filterCategories(getScore(normalizedQuestion, session, env).answers);
 
     if (env.mode === 'view') {
+      // eslint-disable-next-line no-unused-vars
       base.correctedAnswer = answers.map(({ correctness, ...rest }) => {
         return { ...rest, interactive: false };
       });
@@ -254,7 +256,7 @@ export const createCorrectResponseSession = (question, env) => {
   });
 };
 
-export const validate = (model = {}, config = {}) => {
+export const validate = (model = {}) => {
   const { correctAnswer, data } = model || {};
   const { data: correctData } = correctAnswer || {};
   const categories = correctData || [];

@@ -30,6 +30,13 @@ const getSingularAndPlural = (label) =>
       };
 
 export class Design extends React.Component {
+
+  static propTypes = {
+    uploadSoundSupport: PropTypes.object,
+  };
+
+  static defaultProps = {};
+
   constructor(props) {
     super(props);
 
@@ -94,6 +101,7 @@ export class Design extends React.Component {
     const {
       choiceLabel = {},
       choices = {},
+      contentDimensions = {},
       enableImages = {},
       feedback = {},
       prompt = {},
@@ -162,6 +170,7 @@ export class Design extends React.Component {
 
     return (
       <layout.ConfigLayout
+        dimensions={contentDimensions}
         hideSettings={settingsPanelDisabled}
         settings={
           <Panel

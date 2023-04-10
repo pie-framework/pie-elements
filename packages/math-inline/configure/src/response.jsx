@@ -12,7 +12,6 @@ import Checkbox from '@material-ui/core/Checkbox';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import { withStyles } from '@material-ui/core/styles';
-import cx from 'classnames';
 
 // TODO once we support individual response correctness, we need to remove this constant
 const INDIVIDUAL_RESPONSE_CORRECTNESS_SUPPORTED = false;
@@ -21,6 +20,7 @@ const styles = (theme) => ({
   responseContainer: {
     marginBottom: theme.spacing.unit * 2.5,
     width: '100%',
+    minWidth: '548px',
     border: `1px solid ${theme.palette.grey[700]}`,
     display: 'flex',
     flexDirection: 'column',
@@ -78,6 +78,7 @@ class Response extends React.Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
     defaultResponse: PropTypes.bool,
+    error: PropTypes.object,
     mode: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     index: PropTypes.number,
     onResponseChange: PropTypes.func.isRequired,
@@ -124,7 +125,7 @@ class Response extends React.Component {
     onResponseChange(newResponse, index);
   };
 
-  onLiteralOptionsChange = (name) => (evt) => {
+  onLiteralOptionsChange = (name) => () => {
     const { response, onResponseChange, index } = this.props;
     const newResponse = { ...response };
 

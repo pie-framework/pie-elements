@@ -44,6 +44,7 @@ export class NumberLineGraph extends React.Component {
       max: PropTypes.number.isRequired,
     }).isRequired,
     ticks: PropTypes.shape({ minor: PropTypes.number, major: PropTypes.number }).isRequired,
+    fraction: PropTypes.bool,
     width: PropTypes.number.isRequired,
     height: PropTypes.number.isRequired,
     onToggleElement: PropTypes.func.isRequired,

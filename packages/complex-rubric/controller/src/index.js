@@ -13,7 +13,6 @@ export function createDefaultModel(model = {}) {
 export const normalize = (question) => ({ ...defaults.model, ...question });
 
 /**
- *
  * @param {*} question
  * @param {*} session
  * @param {*} env
@@ -26,15 +25,15 @@ export async function model(question, session, env) {
       resolve(
         env && env.role && env.role === 'instructor'
           ? {
-              ...normalizedQuestion,
-              rubrics: {
-                ...normalizedQuestion.rubrics,
-                multiTraitRubric: {
-                  ...normalizedQuestion.rubrics.multiTraitRubric,
-                  visible: false,
-                },
+            ...normalizedQuestion,
+            rubrics: {
+              ...normalizedQuestion.rubrics,
+              multiTraitRubric: {
+                ...normalizedQuestion.rubrics.multiTraitRubric,
+                visible: false,
               },
-            }
+            },
+          }
           : {},
       );
     });
@@ -76,7 +75,7 @@ export const getScore = () => 0;
  * @param {*} session
  * @param {Object} env
  */
-export function outcome(model, session, env) {
+export function outcome() {
   return new Promise((resolve) => resolve({ score: 0, empty: true }));
 }
 

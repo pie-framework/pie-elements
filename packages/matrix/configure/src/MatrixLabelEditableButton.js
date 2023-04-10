@@ -217,6 +217,7 @@ MatrixLabelEditableButton.propTypes = {
   resourceIndex: PropTypes.number.isRequired,
   onLabelUpdate: PropTypes.func.isRequired,
   onAction: PropTypes.func.isRequired,
+  spellCheck: PropTypes.bool,
 };
 
 export default MatrixLabelEditableButton;

@@ -199,7 +199,7 @@ export class Scale extends React.Component {
   };
 
   onTraitDropped = (source, newIndex) => {
-    const { scale, scaleIndex, onScaleChanged, maxNoOfTraits, minNoOfTraits } = this.props || {};
+    const { scale, scaleIndex, onScaleChanged } = this.props || {};
     const { traits } = scale || {};
     const { index: oldIndex } = source;
     const cup = traits[oldIndex];
@@ -332,7 +332,7 @@ export class Scale extends React.Component {
           width={`${AdjustedBlockWidth / 2}px`}
           show={showLeft}
           onClick={this.decreasePosition}
-          left={`${PrimaryBlockWidth + DragHandleSpace}px`}
+          left={`${PrimaryBlockWidth}px`}
           showLevelTagInput={showLevelTagInput}
         >
           <ArrowBackIosIcon />

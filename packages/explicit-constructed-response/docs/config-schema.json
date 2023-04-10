@@ -259,6 +259,50 @@
       "type": "string",
       "title": "promptLabel"
     },
+    "contentDimensions": {
+      "description": "Indicates the dimensions configuration for the authoring container\nNote: Some items have a default minimum width because of their content, but if\nthe minWidth is lower than this, the overflow behavior will take care of that",
+      "default": ": {}",
+      "type": "object",
+      "properties": {
+        "maxHeight": {
+          "description": "Indicates the max height of the authoring container",
+          "default": "undefined",
+          "type": [
+            "string",
+            "number"
+          ],
+          "title": "maxHeight"
+        },
+        "maxWidth": {
+          "description": "Indicates the max width of the authoring container",
+          "default": "undefined",
+          "type": [
+            "string",
+            "number"
+          ],
+          "title": "maxWidth"
+        },
+        "minHeight": {
+          "description": "Indicates the min height of the authoring container",
+          "default": "undefined",
+          "type": [
+            "string",
+            "number"
+          ],
+          "title": "minHeight"
+        },
+        "minWidth": {
+          "description": "Indicates the min width of the authoring container",
+          "default": "undefined",
+          "type": [
+            "string",
+            "number"
+          ],
+          "title": "minWidth"
+        }
+      },
+      "title": "contentDimensions"
+    },
     "settingsPartialScoring": {
       "description": "Indicates whether the settings panel wil allow the author to modify settings for partial scoring",
       "default": true,

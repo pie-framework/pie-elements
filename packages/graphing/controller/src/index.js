@@ -34,17 +34,12 @@ export const compareMarks = (mark1, mark2) => {
   );
 };
 
-export const getAnswerCorrected = ({
-  sessionAnswers,
-  marks: correctAnswers,
-}) => {
+export const getAnswerCorrected = ({ sessionAnswers, marks: correctAnswers }) => {
   sessionAnswers = sessionAnswers || [];
   correctAnswers = correctAnswers || [];
 
   return cloneDeep(sessionAnswers).reduce((correctedAnswer, answer) => {
-    const answerIsCorrect = correctAnswers.find((mark) =>
-      compareMarks(answer, mark)
-    );
+    const answerIsCorrect = correctAnswers.find((mark) => compareMarks(answer, mark));
 
     answer.correctness = answerIsCorrect ? 'correct' : 'incorrect';
 
@@ -69,6 +64,12 @@ export const getBestAnswer = (question, session, env = {}) => {
   // questionPossibleAnswers contains all possible answers (correct response and alternates);
   let { answers: questionPossibleAnswers = {}, scoringType } = question || {};
   let { answer } = session || {};
+
+  // filter the incomplete objects
+  Object.entries(questionPossibleAnswers || {}).forEach(
+    ([key, value]) =>
+      (questionPossibleAnswers[key] = { ...value, marks: value?.marks.filter((mark) => !mark.building) }),
+  );
 
   // initialize answer if no values
   answer = answer || [];
@@ -103,9 +104,7 @@ export const getBestAnswer = (question, session, env = {}) => {
 
       // returns array of marks, each having 'correctness' property
       const correctedAnswer = getAnswerCorrected({ sessionAnswers, marks });
-      const correctMarks = correctedAnswer.filter(
-        (answer) => answer.correctness === 'correct'
-      );
+      const correctMarks = correctedAnswer.filter((answer) => answer.correctness === 'correct');
 
       const maxScore = marks.length;
       let score = correctMarks.length;
@@ -174,13 +173,8 @@ export function model(question, session, env) {
     }
 
     // added support for models without defaultTool defined; also used in packages/graphing/configure/src/index.js
-    const toolbarToolsNoLabel = (toolbarTools || []).filter(
-      (tool) => tool !== 'label'
-    );
-    const normalizedDefaultTool =
-      defaultTool ||
-      (toolbarToolsNoLabel.length && toolbarToolsNoLabel[0]) ||
-      '';
+    const toolbarToolsNoLabel = (toolbarTools || []).filter((tool) => tool !== 'label');
+    const normalizedDefaultTool = defaultTool || (toolbarToolsNoLabel.length && toolbarToolsNoLabel[0]) || '';
 
     const base = {
       ...questionProps,
@@ -191,35 +185,27 @@ export function model(question, session, env) {
       prompt: promptEnabled ? prompt : null,
       rationale: null,
       size: graph,
-      showToggle: env.mode === 'evaluate' && !isEmpty(answers),
+      showToggle: env.mode === 'evaluate' && !isEmpty(answers) && answers.correctAnswer &&
+        answers.correctAnswer.marks && !isEmpty(answers.correctAnswer.marks),
       teacherInstructions: null,
       toolbarTools,
     };
 
     if (role === 'instructor' && (mode === 'view' || mode === 'evaluate')) {
-      const {
-        rationale,
-        rationaleEnabled,
-        teacherInstructions,
-        teacherInstructionsEnabled,
-      } = normalizedQuestion || {};
+      const { rationale, rationaleEnabled, teacherInstructions, teacherInstructionsEnabled } = normalizedQuestion || {};
 
       base.rationale = rationaleEnabled ? rationale : null;
-      base.teacherInstructions = teacherInstructionsEnabled
-        ? teacherInstructions
-        : null;
+      base.teacherInstructions = teacherInstructionsEnabled ? teacherInstructions : null;
     }
 
     if (mode === 'evaluate') {
-      if (!isEmpty(answers)) {
+      if (!isEmpty(answers) && answers.correctAnswer &&
+        answers.correctAnswer.marks && !isEmpty(answers.correctAnswer.marks)) {
         const { answersCorrected, bestScoreAnswerKey, bestScore } =
           getBestAnswer(normalizedQuestion, session, env);
-
-        // array of marks from session with 'correctness' property set
+          // array of marks from session with 'correctness' property set
         base.answersCorrected = answersCorrected;
-        base.correctResponse = bestScoreAnswerKey
-          ? (answers[bestScoreAnswerKey] || {}).marks
-          : [];
+        base.correctResponse = bestScoreAnswerKey ? (answers[bestScoreAnswerKey] || {}).marks : [];
         base.showToggle = base.showToggle && bestScore !== 1;
       } else {
         base.answersCorrected = (session && session.answer) || [];
@@ -238,7 +224,8 @@ export function outcome(question, session, env = {}) {
       resolve({ score: 0, empty: true });
     }
 
-    if (env.mode !== 'evaluate' || isEmpty(question.answers)) {
+    if (env.mode !== 'evaluate' || isEmpty(question.answers) ||
+      (question.answers && question.answers.correctAnswer && isEmpty(question.answers.correctAnswer.marks))) {
       resolve({ score: 0 });
     }
 
@@ -270,13 +257,11 @@ export const createCorrectResponseSession = (question, env) => {
   });
 };
 
-export const validate = (model = {}, config = {}) => {
+export const validate = (model = {}) => {
   const { answers, toolbarTools } = model;
   const errors = {};
   const correctAnswerErrors = {};
-  const toolbarToolsNoLabel = (toolbarTools || []).filter(
-    (tool) => tool !== 'label'
-  );
+  const toolbarToolsNoLabel = (toolbarTools || []).filter((tool) => tool !== 'label');
 
   if (!toolbarToolsNoLabel.length) {
     errors.toolbarToolsError = 'There should be at least 1 tool defined.';

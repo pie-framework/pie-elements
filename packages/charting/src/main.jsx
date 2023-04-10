@@ -151,7 +151,8 @@ const styles = (theme) => ({
   mainContainer: {
     color: color.text(),
     backgroundColor: color.background(),
-    overflow: 'hidden',
+    overflowX: 'scroll',
+    overflowY: 'hidden',
   },
   chart: {
     marginTop: theme.spacing.unit * 2,

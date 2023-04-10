@@ -1,4 +1,4 @@
-const { model, mathSample, htmlSample, htmlAscii } = require('./generate');
+const { model } = require('./generate');
 
 module.exports = {
   elements: {

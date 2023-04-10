@@ -1,4 +1,4 @@
-const E234 = {
+/* const E234 = {
   choicesPosition: 'below',
   lockChoiceOrder: false,
   choices: [
@@ -48,7 +48,7 @@ const E234 = {
       category: '1',
     },
   ],
-};
+}; */
 
 // const E236 = {
 //   choices: [
