@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.8.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-controller@4.8.2...@pie-element/match-controller@4.8.3) (2023-04-10)
+
+
+### Bug Fixes
+
+* **all elements:** fix eslint problems-PD-2732 ([eaeabfb](https://github.com/pie-framework/pie-elements/commit/eaeabfbbe3a868a1f9828ef831a7ea864dee75a9))
+
+
+
+
+
 ## [4.8.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-controller@4.8.1...@pie-element/match-controller@4.8.2) (2023-03-20)
 
 

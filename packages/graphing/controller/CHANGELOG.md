@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-controller@4.3.1...@pie-element/graphing-controller@4.4.0) (2023-04-10)
+
+
+### Bug Fixes
+
+* **all elements:** fix eslint problems-PD-2732 ([eaeabfb](https://github.com/pie-framework/pie-elements/commit/eaeabfbbe3a868a1f9828ef831a7ea864dee75a9))
+* confict ([1067916](https://github.com/pie-framework/pie-elements/commit/10679162ae379be5552287c33ff957de1e87b8d3))
+* tests ([4a3bd54](https://github.com/pie-framework/pie-elements/commit/4a3bd5456dd364e58f3b7fac21404f0765885e7b))
+* **graphing:** add sanity checks-PD-2696 ([4c87ce0](https://github.com/pie-framework/pie-elements/commit/4c87ce056a503f49aa887eb094678f5325f63b54))
+* **graphing:** avoid partial objects in correct answer-PD-2696 ([354e52f](https://github.com/pie-framework/pie-elements/commit/354e52f0a3fa9d2f20a032ad1831785d6b280584))
+* **graphing:** review comments- PD-2696 ([a77d468](https://github.com/pie-framework/pie-elements/commit/a77d46873555d3a4d93b3087683ce7da80a16ee1))
+
+
+### Features
+
+* **graphing:** if no correct answer is defined, evaluate mode should mirror view mode PD-2723 ([83c93f5](https://github.com/pie-framework/pie-elements/commit/83c93f54cbd2218d16b03a1588662bfca65e8d62))
+
+
+
+
+
 ## [4.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-controller@4.3.0...@pie-element/graphing-controller@4.3.1) (2023-02-28)
 
 

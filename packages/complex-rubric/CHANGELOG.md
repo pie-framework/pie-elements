@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@1.7.9...@pie-element/complex-rubric@1.8.0) (2023-04-10)
+
+
+### Bug Fixes
+
+* update pie-libs ([b7d3e7f](https://github.com/pie-framework/pie-elements/commit/b7d3e7f7160aafd5dcfed2960bc6c2f03dba2180))
+* **all elements:** fix eslint problems-PD-2732 ([eaeabfb](https://github.com/pie-framework/pie-elements/commit/eaeabfbbe3a868a1f9828ef831a7ea864dee75a9))
+* add tests back ([286b458](https://github.com/pie-framework/pie-elements/commit/286b458727b8680df397c5e932cc0fa23d702ef4))
+* remove tests to see if they cause build break ([a0b0046](https://github.com/pie-framework/pie-elements/commit/a0b00464cd0859dbd3803c4629a88e8eb78bbae7))
+* remove usage of pie-lib/rubric to test webpack build ([50fa5dc](https://github.com/pie-framework/pie-elements/commit/50fa5dcae7ffcedfd5d6560ffc8519839d167658))
+* update pie-libs ([6738269](https://github.com/pie-framework/pie-elements/commit/6738269d878f24ec4429f210d18bbf591123a55f))
+* update pie-libs ([9f05be1](https://github.com/pie-framework/pie-elements/commit/9f05be1ae6bf0a9651739b6bef7eca32ecabb4ce))
+
+
+### Features
+
+* added the ability to set min/max width and height for the content PD-2425 ([befba3a](https://github.com/pie-framework/pie-elements/commit/befba3a8fa23e8dd21a3e3f63f306bd6dfc35bdd))
+
+
+
+
+
 ## [1.7.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@1.7.8...@pie-element/complex-rubric@1.7.9) (2023-03-30)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.7.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-controller@3.7.0...@pie-element/multiple-choice-controller@3.7.1) (2023-04-10)
+
+
+### Bug Fixes
+
+* **multiple-choice:** add sanity checks ([147346f](https://github.com/pie-framework/pie-elements/commit/147346fe3cb8974a4eb3b59944e1382fabf4abed))
+
+
+
+
+
 # [3.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-controller@3.6.1...@pie-element/multiple-choice-controller@3.7.0) (2023-02-01)
 
 

@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.8.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@5.8.1...@pie-element/math-inline-controller@5.8.2) (2023-04-10)
+
+
+### Bug Fixes
+
+* **all elements:** fix eslint problems-PD-2732 ([eaeabfb](https://github.com/pie-framework/pie-elements/commit/eaeabfbbe3a868a1f9828ef831a7ea864dee75a9))
+* **math-inline:** remove trailling escape from correct createCorrectResponseSession return answer value PD-2727 ([af9fd9d](https://github.com/pie-framework/pie-elements/commit/af9fd9ddaa6e5283820e0970c464f8ad94a37499))
+
+
+
+
+
 ## [5.8.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@5.8.0...@pie-element/math-inline-controller@5.8.1) (2023-02-14)
 
 

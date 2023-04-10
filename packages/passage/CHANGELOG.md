@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.11.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.10.2...@pie-element/passage@1.11.0) (2023-04-10)
+
+
+### Bug Fixes
+
+* update pie-libs ([b7d3e7f](https://github.com/pie-framework/pie-elements/commit/b7d3e7f7160aafd5dcfed2960bc6c2f03dba2180))
+* **all elements:** fix eslint problems-PD-2732 ([eaeabfb](https://github.com/pie-framework/pie-elements/commit/eaeabfbbe3a868a1f9828ef831a7ea864dee75a9))
+* update pie-libs ([6738269](https://github.com/pie-framework/pie-elements/commit/6738269d878f24ec4429f210d18bbf591123a55f))
+* update pie-libs ([9f05be1](https://github.com/pie-framework/pie-elements/commit/9f05be1ae6bf0a9651739b6bef7eca32ecabb4ce))
+
+
+### Features
+
+* **passage:** add ARIA attributes to paired passage tabs ([1a0a4e1](https://github.com/pie-framework/pie-elements/commit/1a0a4e1cac6402acbd46b3b8397e2190350a5672))
+* **passage:** make paired passage tabs accessible to keyboard users ([d33e817](https://github.com/pie-framework/pie-elements/commit/d33e81794b8083e64b7b4e9bb45942b6eb913932))
+* **passage:** refactor handleKeyDown function ([99fa0fd](https://github.com/pie-framework/pie-elements/commit/99fa0fdefe23a40435e29c58ddc5b0bb3883bdd9))
+
+
+
+
+
 ## [1.10.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.10.0...@pie-element/passage@1.10.2) (2023-03-20)
 
 

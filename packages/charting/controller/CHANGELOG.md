@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.4.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-controller@2.4.0...@pie-element/charting-controller@2.4.1) (2023-04-10)
+
+
+### Bug Fixes
+
+* **all elements:** fix eslint problems-PD-2732 ([eaeabfb](https://github.com/pie-framework/pie-elements/commit/eaeabfbbe3a868a1f9828ef831a7ea864dee75a9))
+* **eslint:** object destructuring -PD-2732 ([dbc46dc](https://github.com/pie-framework/pie-elements/commit/dbc46dc87cbc2240965ad183e9f34d6f4a920666))
+
+
+
+
+
 # [2.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-controller@2.3.1...@pie-element/charting-controller@2.4.0) (2023-02-01)
 
 
