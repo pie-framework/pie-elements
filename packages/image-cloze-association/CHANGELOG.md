@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.12.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@4.11.2...@pie-element/image-cloze-association@4.12.0) (2023-04-10)
+
+
+### Bug Fixes
+
+* update pie-libs ([b7d3e7f](https://github.com/pie-framework/pie-elements/commit/b7d3e7f7160aafd5dcfed2960bc6c2f03dba2180))
+* update pie-libs ([6738269](https://github.com/pie-framework/pie-elements/commit/6738269d878f24ec4429f210d18bbf591123a55f))
+* **image-cloze-association:** add sanity check PD-2716 ([94b4362](https://github.com/pie-framework/pie-elements/commit/94b436250e3b86f1b3acef66c098c4d13cc69d4f))
+* **image-cloze-association:** display rationale PD-2708 ([87d76ae](https://github.com/pie-framework/pie-elements/commit/87d76ae1ea84d83604d50c3469d37a418c49db61))
+* update pie-libs ([9f05be1](https://github.com/pie-framework/pie-elements/commit/9f05be1ae6bf0a9651739b6bef7eca32ecabb4ce))
+* **image-cloze-association:** wip fix logic for empty containers PD-2716 ([26a8d68](https://github.com/pie-framework/pie-elements/commit/26a8d68fbe8abe1e942f5598503758a528e98743))
+
+
+### Features
+
+* added the ability to set min/max width and height for the content PD-2425 ([befba3a](https://github.com/pie-framework/pie-elements/commit/befba3a8fa23e8dd21a3e3f63f306bd6dfc35bdd))
+
+
+
+
+
 ## [4.11.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@4.11.0...@pie-element/image-cloze-association@4.11.2) (2023-03-20)
 
 

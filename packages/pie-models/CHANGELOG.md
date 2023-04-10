@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.11.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@12.10.1...@pie-element/pie-models@12.11.0) (2023-04-10)
+
+
+### Features
+
+* added the ability to set min/max width and height for the content PD-2425 ([befba3a](https://github.com/pie-framework/pie-elements/commit/befba3a8fa23e8dd21a3e3f63f306bd6dfc35bdd))
+
+
+
+
+
 ## [12.10.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@12.10.0...@pie-element/pie-models@12.10.1) (2023-03-20)
 
 

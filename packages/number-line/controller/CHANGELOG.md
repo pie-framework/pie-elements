@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.5.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-controller@4.5.0...@pie-element/number-line-controller@4.5.1) (2023-04-10)
+
+
+### Bug Fixes
+
+* **all elements:** fix eslint problems-PD-2732 ([eaeabfb](https://github.com/pie-framework/pie-elements/commit/eaeabfbbe3a868a1f9828ef831a7ea864dee75a9))
+
+
+
+
+
 # [4.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-controller@4.4.1...@pie-element/number-line-controller@4.5.0) (2023-02-01)
 
 

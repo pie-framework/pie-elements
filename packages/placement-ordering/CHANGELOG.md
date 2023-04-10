@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.12.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@8.11.2...@pie-element/placement-ordering@8.12.0) (2023-04-10)
+
+
+### Bug Fixes
+
+* update pie-libs ([b7d3e7f](https://github.com/pie-framework/pie-elements/commit/b7d3e7f7160aafd5dcfed2960bc6c2f03dba2180))
+* **all elements:** fix eslint problems-PD-2732 ([eaeabfb](https://github.com/pie-framework/pie-elements/commit/eaeabfbbe3a868a1f9828ef831a7ea864dee75a9))
+* add library in package.json ([c6d79ec](https://github.com/pie-framework/pie-elements/commit/c6d79eca17e4e76740301149187ee1fd1bb4415a))
+* In placement-ordering authoring with placement area enabled, preview shows tokens in the "answers column" PD-2558 ([43069b0](https://github.com/pie-framework/pie-elements/commit/43069b0fd2e29f6e38a0e7b5d7c8f26bd7da962f))
+* only reset in gather mode PD-2558 ([95be2d4](https://github.com/pie-framework/pie-elements/commit/95be2d4079cab640354d8d0f6f7169033491093c))
+* remove Alert box (because it shows up in authoring mode as well) PD-2558 ([3a0b004](https://github.com/pie-framework/pie-elements/commit/3a0b0040dad3e41396593b71437a0429001fa3b9))
+* trigger build ([dedab7f](https://github.com/pie-framework/pie-elements/commit/dedab7f9f40bacc4bcadcfb09927155a6edab408))
+* update pie-libs ([6738269](https://github.com/pie-framework/pie-elements/commit/6738269d878f24ec4429f210d18bbf591123a55f))
+* update pie-libs ([9f05be1](https://github.com/pie-framework/pie-elements/commit/9f05be1ae6bf0a9651739b6bef7eca32ecabb4ce))
+* validate session when there's any update on model and alert user PD-2558 ([cc1a7d9](https://github.com/pie-framework/pie-elements/commit/cc1a7d974042131d371c305852cced0104957a25))
+
+
+### Features
+
+* added the ability to set min/max width and height for the content PD-2425 ([befba3a](https://github.com/pie-framework/pie-elements/commit/befba3a8fa23e8dd21a3e3f63f306bd6dfc35bdd))
+
+
+
+
+
 ## [8.11.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@8.11.0...@pie-element/placement-ordering@8.11.2) (2023-03-20)
 
 

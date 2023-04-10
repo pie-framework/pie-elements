@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.4.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association-controller@3.4.1...@pie-element/image-cloze-association-controller@3.4.2) (2023-04-10)
+
+
+### Bug Fixes
+
+* **image-cloze-association:** display rationale PD-2708 ([87d76ae](https://github.com/pie-framework/pie-elements/commit/87d76ae1ea84d83604d50c3469d37a418c49db61))
+* **image-cloze-association:** wip fix logic for empty containers PD-2716 ([26a8d68](https://github.com/pie-framework/pie-elements/commit/26a8d68fbe8abe1e942f5598503758a528e98743))
+
+
+
+
+
 ## [3.4.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association-controller@3.4.0...@pie-element/image-cloze-association-controller@3.4.1) (2023-02-28)
 
 
