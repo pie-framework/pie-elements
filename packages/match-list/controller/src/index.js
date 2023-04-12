@@ -141,6 +141,7 @@ export function model(question, session, env, updateSession) {
         updateSession(session.id, session.element, {
           shuffledValues,
         }).catch((e) => {
+          // eslint-disable-next-line no-console
           console.error('update session failed', e);
         });
       }

@@ -91,14 +91,14 @@ export class Tick extends React.Component {
     ) : !displayFraction ? (
       x.n * x.s
     ) : (
-      <>
+      <React.Fragment>
         <tspan x="0" dy="0.71em">
           {x.n * x.s}
         </tspan>
         <tspan x="0" dy="1.11em">
           {x.d}
         </tspan>
-      </>
+      </React.Fragment>
     );
 
     return (
