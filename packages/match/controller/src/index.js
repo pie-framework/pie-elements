@@ -277,7 +277,7 @@ export const createCorrectResponseSession = (question, env) => {
 };
 
 const markupToText = (s) => {
-  return s.replace(/(<([^>]+)>)/ig, '');
+  return (s || '').replace(/(<([^>]+)>)/ig, '');
 };
 
 export const validate = (model = {}, config = {}) => {
@@ -312,7 +312,7 @@ export const validate = (model = {}, config = {}) => {
       rowsErrors[id] += 'Content should not be empty. ';
     } else {
       const identicalAnswer = rows.slice(index + 1).some((r) => {
-        return r.title === title;
+        return this.markupToText(r.title) === this.markupToText(title);
       });
 
       if (identicalAnswer) {
