@@ -312,8 +312,8 @@ export class Scale extends React.Component {
           <TraitTile
             key={index}
             index={index}
-            label={traitLabel || 'Trait'}
             trait={trait}
+            traitLabel={traitLabel || 'Trait'}
             scorePointsValues={scorePointsValues}
             scorePointsLabels={scorePointsLabels}
             onTraitRemoved={() => this.showDeleteTraitModal(index)}

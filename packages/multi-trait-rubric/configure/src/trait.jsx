@@ -102,8 +102,8 @@ export class TraitTile extends React.Component {
       connectDragSource,
       connectDropTarget,
       connectDragPreview,
-      label,
       trait: { name, standards, description, scorePointsDescriptors },
+      traitLabel,
       scorePointsValues,
       showStandards,
       showDescription,
@@ -148,7 +148,7 @@ export class TraitTile extends React.Component {
                   <MenuItem onClick={this.openMenu}>
                     <div
                       className={classes.removeLabel}
-                      dangerouslySetInnerHTML={{ __html: `Remove ${name || label}` }}
+                      dangerouslySetInnerHTML={{ __html: `Remove ${name || traitLabel}` }}
                     />
                   </MenuItem>
                 </Menu>
@@ -158,7 +158,7 @@ export class TraitTile extends React.Component {
                 markup={name}
                 onChange={(name) => this.onTraitChanged({ name })}
                 pluginProps={labelPlugins}
-                placeholder={`Enter ${label}`}
+                placeholder={`Enter ${traitLabel}`}
                 spellCheck={spellCheck}
                 uploadSoundSupport={uploadSoundSupport}
               />
@@ -247,6 +247,7 @@ TraitTile.propTypes = {
     scorePointsDescriptors: PropTypes.arrayOf(PropTypes.string),
     description: PropTypes.string,
   }),
+  traitLabel: PropTypes.string,
   scorePointsValues: PropTypes.arrayOf(PropTypes.number),
   showStandards: PropTypes.bool,
   showDescription: PropTypes.bool,

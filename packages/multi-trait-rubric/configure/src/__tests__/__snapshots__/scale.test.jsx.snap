@@ -30,7 +30,6 @@ exports[`Scale snapshot renders 1`] = `
     currentPosition={0}
     index={0}
     key="0"
-    label="Category"
     onTraitChanged={[Function]}
     onTraitDropped={[Function]}
     onTraitRemoved={[Function]}
@@ -60,6 +59,7 @@ Overall appearance is acceptable or better",
         "standards": Array [],
       }
     }
+    traitLabel="Category"
   />
   <WithStyles(Component)
     left="200px"
@@ -142,7 +142,6 @@ exports[`Scale snapshot renders with drag and drop enabled 1`] = `
     currentPosition={0}
     index={0}
     key="0"
-    label="Category"
     onTraitChanged={[Function]}
     onTraitDropped={[Function]}
     onTraitRemoved={[Function]}
@@ -172,6 +171,7 @@ Overall appearance is acceptable or better",
         "standards": Array [],
       }
     }
+    traitLabel="Category"
   />
   <WithStyles(Component)
     left="200px"
@@ -255,7 +255,6 @@ exports[`Scale snapshot renders without descriptions 1`] = `
     currentPosition={0}
     index={0}
     key="0"
-    label="Category"
     onTraitChanged={[Function]}
     onTraitDropped={[Function]}
     onTraitRemoved={[Function]}
@@ -286,6 +285,7 @@ Overall appearance is acceptable or better",
         "standards": Array [],
       }
     }
+    traitLabel="Category"
   />
   <WithStyles(Component)
     left="200px"
@@ -368,7 +368,6 @@ exports[`Scale snapshot renders without standards 1`] = `
     currentPosition={0}
     index={0}
     key="0"
-    label="Category"
     onTraitChanged={[Function]}
     onTraitDropped={[Function]}
     onTraitRemoved={[Function]}
@@ -398,6 +397,7 @@ Overall appearance is acceptable or better",
         "standards": Array [],
       }
     }
+    traitLabel="Category"
   />
   <WithStyles(Component)
     left="200px"
@@ -480,7 +480,6 @@ exports[`Scale snapshot renders without traits 1`] = `
     currentPosition={0}
     index={0}
     key="0"
-    label="Category"
     onTraitChanged={[Function]}
     onTraitDropped={[Function]}
     onTraitRemoved={[Function]}
@@ -510,6 +509,7 @@ Overall appearance is acceptable or better",
         "standards": Array [],
       }
     }
+    traitLabel="Category"
   />
   <WithStyles(Component)
     left="200px"
