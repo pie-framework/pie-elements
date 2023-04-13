@@ -45,7 +45,6 @@ const styles = (theme) => ({
 });
 
 export class TraitTile extends React.Component {
-
   static propTypes = {
     spellCheck: PropTypes.bool,
     uploadSoundSupport: PropTypes.object,
@@ -103,6 +102,7 @@ export class TraitTile extends React.Component {
       connectDragSource,
       connectDropTarget,
       connectDragPreview,
+      label,
       trait: { name, standards, description, scorePointsDescriptors },
       scorePointsValues,
       showStandards,
@@ -146,7 +146,10 @@ export class TraitTile extends React.Component {
 
                 <Menu id="long-menu" anchorEl={anchorEl} keepMounted open={!!anchorEl} onClose={this.handleClose}>
                   <MenuItem onClick={this.openMenu}>
-                    <div className={classes.removeLabel} dangerouslySetInnerHTML={{ __html: `Remove ${name}` }} />
+                    <div
+                      className={classes.removeLabel}
+                      dangerouslySetInnerHTML={{ __html: `Remove ${name || label}` }}
+                    />
                   </MenuItem>
                 </Menu>
               </div>
@@ -155,7 +158,7 @@ export class TraitTile extends React.Component {
                 markup={name}
                 onChange={(name) => this.onTraitChanged({ name })}
                 pluginProps={labelPlugins}
-                placeholder="Enter Trait"
+                placeholder={`Enter ${label}`}
                 spellCheck={spellCheck}
                 uploadSoundSupport={uploadSoundSupport}
               />

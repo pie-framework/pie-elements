@@ -312,6 +312,7 @@ export class Scale extends React.Component {
           <TraitTile
             key={index}
             index={index}
+            label={traitLabel || 'Trait'}
             trait={trait}
             scorePointsValues={scorePointsValues}
             scorePointsLabels={scorePointsLabels}
