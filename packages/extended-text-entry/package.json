@@ -1,6 +1,6 @@
 {
   "name": "@pie-element/extended-text-entry",
-  "version": "9.2.0",
+  "version": "9.2.1",
   "description": "",
   "repository": "pie-framework/pie-elements",
   "publishConfig": {
@@ -12,7 +12,7 @@
     "@material-ui/core": "^3.9.2",
     "@material-ui/icons": "^3.0.2",
     "@pie-framework/pie-player-events": "^0.1.0",
-    "@pie-lib/editable-html": "^9.5.20",
+    "@pie-lib/editable-html": "^9.5.22",
     "@pie-lib/math-rendering": "^2.5.13",
     "@pie-lib/render-ui": "^4.14.20",
     "classnames": "^2.2.5",

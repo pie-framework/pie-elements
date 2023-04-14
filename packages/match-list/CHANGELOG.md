@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.17.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@1.17.3...@pie-element/match-list@1.17.4) (2023-04-14)
+
+
+### Bug Fixes
+
+* update pie-libs ([830e9fc](https://github.com/pie-framework/pie-elements/commit/830e9fcf07f057e632b44d7a64ddb436353d49f6))
+
+
+
+
+
 ## [1.17.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@1.17.2...@pie-element/match-list@1.17.3) (2023-04-10)
 
 
