@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-configure@8.2.0...@pie-element/extended-text-entry-configure@8.2.1) (2023-04-14)
+
+
+### Bug Fixes
+
+* update pie-libs ([830e9fc](https://github.com/pie-framework/pie-elements/commit/830e9fcf07f057e632b44d7a64ddb436353d49f6))
+
+
+
+
+
 # [8.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-configure@8.1.3...@pie-element/extended-text-entry-configure@8.2.0) (2023-04-10)
 
 

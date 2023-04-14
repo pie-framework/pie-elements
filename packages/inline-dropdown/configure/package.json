@@ -1,6 +1,6 @@
 {
   "name": "@pie-element/inline-dropdown-configure",
-  "version": "4.9.0",
+  "version": "4.9.1",
   "private": true,
   "main": "lib/index.js",
   "module": "src/index.js",

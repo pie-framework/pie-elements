@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.8.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/calculator@3.8.3...@pie-element/calculator@3.8.4) (2023-04-14)
+
+
+### Bug Fixes
+
+* update pie-libs ([830e9fc](https://github.com/pie-framework/pie-elements/commit/830e9fcf07f057e632b44d7a64ddb436353d49f6))
+
+
+
+
+
 ## [3.8.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/calculator@3.8.2...@pie-element/calculator@3.8.3) (2023-04-10)
 
 
