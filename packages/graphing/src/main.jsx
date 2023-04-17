@@ -63,44 +63,48 @@ export class Main extends React.Component {
 
         <CorrectAnswerToggle show={showToggle} toggled={showingCorrect} onToggle={this.toggleCorrect} />
 
-        {showingCorrect && showToggle && (
+        {showingCorrect && showToggle ? (
           <GraphContainer
             className={classes.graph}
             axesSettings={{ includeArrows: arrows }}
             backgroundMarks={backgroundMarks}
             coordinatesOnHover={coordinatesOnHover}
             disabled={true}
+            disabledLabels={true}
+            disabledTitle={true}
             domain={domain}
             labels={labels}
             marks={correctResponse.map((i) => ({ ...i, correctness: 'correct' }))}
             onChangeMarks={onAnswersChange}
             range={range}
+            showLabels={labelsEnabled}
+            showTitle={titleEnabled}
+            size={size}
+            title={title}
+            toolbarTools={toolbarTools}
+          />
+        ) : (
+          <GraphContainer
+            className={classes.graph}
+            axesSettings={{ includeArrows: arrows }}
+            backgroundMarks={backgroundMarks}
+            coordinatesOnHover={coordinatesOnHover}
+            defaultTool={defaultTool}
+            disabled={disabled}
+            disabledLabels={true}
+            disabledTitle={true}
+            domain={domain}
+            labels={labels}
+            marks={marks}
+            onChangeMarks={onAnswersChange}
+            range={range}
+            showLabels={labelsEnabled}
+            showTitle={titleEnabled}
             size={size}
             title={title}
             toolbarTools={toolbarTools}
           />
         )}
-
-        <GraphContainer
-          className={classes.graph}
-          axesSettings={{ includeArrows: arrows }}
-          backgroundMarks={backgroundMarks}
-          coordinatesOnHover={coordinatesOnHover}
-          defaultTool={defaultTool}
-          disabled={disabled}
-          disabledLabels={true}
-          disabledTitle={true}
-          domain={domain}
-          labels={labels}
-          marks={marks}
-          onChangeMarks={onAnswersChange}
-          range={range}
-          showLabels={labelsEnabled}
-          showTitle={titleEnabled}
-          size={size}
-          title={title}
-          toolbarTools={toolbarTools}
-        />
 
         {rationale && hasText(rationale) && (
           <Collapsible labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }}>
