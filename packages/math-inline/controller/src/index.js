@@ -257,6 +257,7 @@ const advancedSessionResponse = (question) =>
           completeAnswer: answer,
         });
 
+        // eslint-disable-next-line no-console
         console.log(`can not find match: ${o} in ${answer}`);
 
         return;
@@ -281,7 +282,7 @@ const advancedSessionResponse = (question) =>
         answers: {},
         completeAnswer: answer,
       });
-
+      // eslint-disable-next-line no-console
       console.error(e.toString());
     }
   });

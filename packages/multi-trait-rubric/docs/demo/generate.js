@@ -132,7 +132,7 @@ exports.model = (id, element) => ({
         {
           name: 'Voice',
           standards: [],
-          description: "the personal tone and flavor of the author's message",
+          description: 'the personal tone and flavor of the author\'s message',
           scorePointsDescriptors: [
             'Student’s response is blank, not in English, not legible, or does not respond to the prompt.',
             'Not concerned with audience or purpose\n' +
