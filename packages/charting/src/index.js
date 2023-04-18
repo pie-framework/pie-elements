@@ -12,6 +12,7 @@ export default class Graphing extends HTMLElement {
   }
 
   set model(m) {
+    console.log(m, "m")
     this._model = m;
     this._render();
   }
@@ -44,6 +45,7 @@ export default class Graphing extends HTMLElement {
       return;
     }
 
+    console.log(this._model, "this model")
     const el = React.createElement(Main, {
       model: this._model,
       categories: this._session.answer,
