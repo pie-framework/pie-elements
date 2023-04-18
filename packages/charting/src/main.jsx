@@ -20,9 +20,19 @@ export class Main extends React.Component {
     super(props);
 
     this.state = {
-      categories: props.categories || props.model.data,
+      categories: props.model.data,
       showingCorrect: false,
     };
+  }
+  static getDerivedStateFromProps(nextProps, prevState) {
+    const { model: { data: nextData = [] } = {} } = nextProps;
+    const { categories } = prevState;
+
+    if (!isEqual(nextData, categories)) {
+      return { categories: nextData };
+    }
+
+    return null;
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
@@ -45,6 +55,7 @@ export class Main extends React.Component {
   toggleCorrect = (showingCorrect) => this.setState({ showingCorrect });
 
   render() {
+    console.log(this.props.model.data, "props model .data")
     const { categories, showingCorrect } = this.state;
     const { model, classes } = this.props;
     const {
@@ -61,6 +72,8 @@ export class Main extends React.Component {
       correctedAnswer,
       correctAnswer,
     } = model;
+
+    console.log(categories, "categories in player")
 
     const correctData =
       correctAnswer && correctAnswer.data

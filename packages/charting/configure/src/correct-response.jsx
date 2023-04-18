@@ -110,9 +110,9 @@ export class CorrectResponse extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      categories: updateCorrectResponseData(props.model.correctAnswer.data, props.model.data),
+      categories: [],
     };
-  }
+}
 
   changeData = (data) => {
     const { model, onChange } = this.props;
@@ -128,12 +128,14 @@ export class CorrectResponse extends React.Component {
     });
   };
 
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    const { model: { data: nextData = [], correctAnswer: { data: nextCorrectAnswerData = [] } } = {} } = nextProps;
-    const { model: { data = [] } = {} } = this.props;
-    const { categories } = this.state;
-    let nextCategories = [];
+  getUpdatedCategories(nextProps, prevProps = this.props, prevState = this.state) {
+    const {
+      model: { data: nextData = [], correctAnswer: { data: nextCorrectAnswerData = [] } } = {},
+    } = nextProps;
+    const { model: { data = [] } = {} } = prevProps;
+    const categories = prevState ? prevState.categories : [];
 
+    let nextCategories = [];
     if (nextData.length > data.length) {
       nextCategories = insertCategory(nextCorrectAnswerData, nextData);
     }
@@ -185,20 +187,35 @@ export class CorrectResponse extends React.Component {
 
     if (
       !isEqual(nextCategories, data) ||
-      !isEqual(nextCorrectAnswerData, categories) ||
+      !isEqual(nextCorrectAnswerData, prevProps.model.correctAnswer.data) ||
       !isEqual(nextCategories, categories) ||
       (isEmpty(nextCategories) && isEmpty(data))
     ) {
-      this.setState({ categories: nextCategories });
+      return nextCategories;
     }
+    return null;
   }
+  componentDidMount() {
+    const initialCategories = this.getUpdatedCategories(this.props, this.props, null);
+    this.setState({
+      categories: initialCategories || updateCorrectResponseData(this.props.model.correctAnswer.data, this.props.model.data),
+    });
+  }
+
+componentDidUpdate(prevProps, prevState) {
+  const nextCategories = this.getUpdatedCategories(this.props, prevProps, prevState);
+  if (nextCategories && !isEqual(nextCategories, prevState.categories)) {
+    this.setState({ categories: nextCategories });
+  }
+}
 
   render() {
     const { classes, model, charts, error, correctAnswerErrors } = this.props;
     const { categories } = this.state;
     const { domain = {}, range = {} } = model || {};
     const { identicalError, categoriesError } = correctAnswerErrors || {};
-
+console.log(this.state, "this state")
+    console.log(categories, "categories")
     return (
       <div>
         <div className={classes.title}>Define Correct Response</div>
