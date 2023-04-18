@@ -312,7 +312,7 @@ export const validate = (model = {}, config = {}) => {
       rowsErrors[id] += 'Content should not be empty. ';
     } else {
       const identicalAnswer = rows.slice(index + 1).some((r) => {
-        return this.markupToText(r.title) === this.markupToText(title);
+        return markupToText(r.title) === markupToText(title);
       });
 
       if (identicalAnswer) {
