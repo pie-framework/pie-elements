@@ -112,7 +112,7 @@ export class CorrectResponse extends React.Component {
     this.state = {
       categories: [],
     };
-}
+  }
 
   changeData = (data) => {
     const { model, onChange } = this.props;
@@ -129,10 +129,9 @@ export class CorrectResponse extends React.Component {
   };
 
   getUpdatedCategories(nextProps, prevProps = this.props, prevState = this.state) {
-    const {
-      model: { data: nextData = [], correctAnswer: { data: nextCorrectAnswerData = [] } } = {},
-    } = nextProps;
-    const { model: { data = [] } = {} } = prevProps;
+    const nextData = nextProps.model.data || [];
+    const data = prevProps.model.data || [];
+    const nextCorrectAnswerData = nextProps.model.correctAnswer.data || [];
     const categories = prevState ? prevState.categories : [];
 
     let nextCategories = [];
@@ -195,19 +194,21 @@ export class CorrectResponse extends React.Component {
     }
     return null;
   }
+
   componentDidMount() {
     const initialCategories = this.getUpdatedCategories(this.props, this.props, null);
     this.setState({
-      categories: initialCategories || updateCorrectResponseData(this.props.model.correctAnswer.data, this.props.model.data),
+      categories:
+        initialCategories || updateCorrectResponseData(this.props.model.correctAnswer.data, this.props.model.data),
     });
   }
 
-componentDidUpdate(prevProps, prevState) {
-  const nextCategories = this.getUpdatedCategories(this.props, prevProps, prevState);
-  if (nextCategories && !isEqual(nextCategories, prevState.categories)) {
-    this.setState({ categories: nextCategories });
+  componentDidUpdate(prevProps, prevState) {
+    const nextCategories = this.getUpdatedCategories(this.props, prevProps, prevState);
+    if (nextCategories && !isEqual(nextCategories, prevState.categories)) {
+      this.setState({ categories: nextCategories });
+    }
   }
-}
 
   render() {
     const { classes, model, charts, error, correctAnswerErrors } = this.props;

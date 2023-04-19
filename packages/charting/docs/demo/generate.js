@@ -12,7 +12,7 @@ exports.model = (id, element) => ({
       },
       {
         label: 'B',
-        value: 2,
+        value: 1,
       },
       {
         label: 'C',
@@ -29,7 +29,7 @@ exports.model = (id, element) => ({
     },
     {
       label: 'B',
-      value: 2,
+      value: 1,
       interactive: true,
       editable: false,
     },
@@ -52,7 +52,7 @@ exports.model = (id, element) => ({
   rationale: 'Rationale goes here!',
   range: {
     label: 'Amount',
-    max: 1,
+    max: 3,
     min: 0,
     labelStep: 1,
   },

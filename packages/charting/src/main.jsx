@@ -24,6 +24,7 @@ export class Main extends React.Component {
       showingCorrect: false,
     };
   }
+  
   static getDerivedStateFromProps(nextProps, prevState) {
     const { model: { data: nextData = [] } = {} } = nextProps;
     const { categories } = prevState;
