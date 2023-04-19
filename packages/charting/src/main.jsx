@@ -35,15 +35,6 @@ export class Main extends React.Component {
     return null;
   }
 
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    const { model: { data: nextData = [] } = {} } = nextProps;
-    const { model: { data = [] } = {} } = this.props;
-
-    if (!isEqual(nextData, data)) {
-      this.setState({ categories: nextData });
-    }
-  }
-
   changeData = (data) =>
     this.setState(
       {
