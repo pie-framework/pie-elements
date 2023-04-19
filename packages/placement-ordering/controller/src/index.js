@@ -76,6 +76,7 @@ export function model(question, session, env) {
 
     if (question.alternateResponses && _.every(question.alternateResponses, _.isArray)) {
       log('Deprecated structure of alternateResponses is in use');
+      // eslint-disable-next-line no-console
       console.error('Deprecated structure of alternateResponses is in use');
     }
 

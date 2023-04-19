@@ -37,7 +37,7 @@ exports[`Trait snapshot renders 1`] = `
           <WithStyles(Component)
             markup="Presentation"
             onChange={[Function]}
-            placeholder="Enter Trait"
+            placeholder="Enter Category"
             pluginProps={
               Object {
                 "audio": Object {
@@ -202,7 +202,7 @@ exports[`Trait snapshot renders with drag and drop 1`] = `
           <WithStyles(Component)
             markup="Presentation"
             onChange={[Function]}
-            placeholder="Enter Trait"
+            placeholder="Enter Category"
             pluginProps={
               Object {
                 "audio": Object {
@@ -367,7 +367,7 @@ exports[`Trait snapshot renders without description 1`] = `
           <WithStyles(Component)
             markup="Presentation"
             onChange={[Function]}
-            placeholder="Enter Trait"
+            placeholder="Enter Category"
             pluginProps={
               Object {
                 "audio": Object {
@@ -532,7 +532,7 @@ exports[`Trait snapshot renders without score points values 1`] = `
           <WithStyles(Component)
             markup="Presentation"
             onChange={[Function]}
-            placeholder="Enter Trait"
+            placeholder="Enter Category"
             pluginProps={
               Object {
                 "audio": Object {
@@ -633,7 +633,7 @@ exports[`Trait snapshot renders without standards 1`] = `
           <WithStyles(Component)
             markup="Presentation"
             onChange={[Function]}
-            placeholder="Enter Trait"
+            placeholder="Enter Category"
             pluginProps={
               Object {
                 "audio": Object {

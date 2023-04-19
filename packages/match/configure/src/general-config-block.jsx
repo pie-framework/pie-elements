@@ -73,7 +73,7 @@ class GeneralConfigBlock extends React.Component {
     const validationMessage = generateValidationMessage(model);
 
     return (
-      <>
+      <React.Fragment>
         <div className={classes.flexContainer}>
           <Typography className={classes.titleText}>Define questions</Typography>
           <Tooltip
@@ -115,7 +115,7 @@ class GeneralConfigBlock extends React.Component {
             )}
           </div>
         </div>
-      </>
+      </React.Fragment>
     );
   }
 }

@@ -96,7 +96,7 @@ export class Choice extends React.Component {
     const { classes, onDelete, spellCheck, error } = this.props;
 
     return (
-      <>
+      <React.Fragment>
         <div
           style={{
             alignItems: 'center',
@@ -117,7 +117,7 @@ export class Choice extends React.Component {
           </IconButton>
         </div>
         {error && <div className={classes.errorText}>{error}</div>}
-      </>
+      </React.Fragment>
     );
   }
 }

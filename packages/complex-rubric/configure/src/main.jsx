@@ -72,7 +72,7 @@ export class Main extends React.Component {
                   this.multiTraitRubric = ref;
 
                   this.multiTraitRubric.model = rubrics.multiTraitRubric;
-                  this.multiTraitRubric.configuration = { ...multiTraitRubric, width };
+                  this.multiTraitRubric.configuration = { ...multiTraitRubric, width: width || multiTraitRubric.width };
                 }
               }}
             />
