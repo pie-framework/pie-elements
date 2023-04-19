@@ -214,8 +214,7 @@ componentDidUpdate(prevProps, prevState) {
     const { categories } = this.state;
     const { domain = {}, range = {} } = model || {};
     const { identicalError, categoriesError } = correctAnswerErrors || {};
-console.log(this.state, "this state")
-    console.log(categories, "categories")
+
     return (
       <div>
         <div className={classes.title}>Define Correct Response</div>

@@ -46,7 +46,6 @@ export class Main extends React.Component {
   toggleCorrect = (showingCorrect) => this.setState({ showingCorrect });
 
   render() {
-    console.log(this.props.model.data, "props model .data")
     const { categories, showingCorrect } = this.state;
     const { model, classes } = this.props;
     const {
@@ -63,8 +62,6 @@ export class Main extends React.Component {
       correctedAnswer,
       correctAnswer,
     } = model;
-
-    console.log(categories, "categories in player")
 
     const correctData =
       correctAnswer && correctAnswer.data
