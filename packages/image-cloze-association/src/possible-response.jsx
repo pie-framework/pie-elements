@@ -90,11 +90,11 @@ const styles = () => ({
   },
   span: {
     backgroundColor: color.background(),
-    pointerEvents: 'none'
+    pointerEvents: 'none',
   },
   hiddenSpan: {
     visibility: 'hidden',
-  }
+  },
 });
 
 const Styled = withStyles(styles)(PossibleResponse);
