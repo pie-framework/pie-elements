@@ -30,8 +30,6 @@ export class PossibleResponse extends React.Component {
     return styleProp ? classes[styleProp] : '';
   };
 
-
-
   render() {
     const { classes, connectDragSource, containerStyle, data } = this.props;
     const additionalClass = this.getClassname();
