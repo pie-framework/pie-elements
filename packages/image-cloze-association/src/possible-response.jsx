@@ -30,6 +30,8 @@ export class PossibleResponse extends React.Component {
     return styleProp ? classes[styleProp] : '';
   };
 
+
+
   render() {
     const { classes, connectDragSource, containerStyle, data } = this.props;
     const additionalClass = this.getClassname();
@@ -90,10 +92,11 @@ const styles = () => ({
   },
   span: {
     backgroundColor: color.background(),
+    pointerEvents: 'none'
   },
   hiddenSpan: {
     visibility: 'hidden',
-  },
+  }
 });
 
 const Styled = withStyles(styles)(PossibleResponse);
