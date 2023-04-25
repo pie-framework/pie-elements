@@ -25,6 +25,7 @@
   "author": "pie framework developers",
   "license": "ISC",
   "exports": {
-    ".": "./src/index.js"
+    ".": "./src/index.js",
+    "./print": "./src/print.js"
   }
 }
