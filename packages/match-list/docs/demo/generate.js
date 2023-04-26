@@ -3,23 +3,23 @@ const twoZeroOne = (id, element) => ({
   element,
   answers: [
     {
-      title: 'All right angles',
+      title:  "<img alt=\"\" src=\"https://app.fluence.net/ia/image/9e5ed1d6762c4dac87b080e190af113d\"/>",
       id: 0,
     },
     {
       id: 1,
-      title: 'All acute angles',
+      title:  "<img alt=\"\" src=\"https://app.fluence.net/ia/image/9e5ed1d6762c4dac87b080e190af113d\"/>",
     },
     {
       id: 2,
-      title: 'Two obtuse angles',
+      title:  "<img alt=\"\" src=\"https://app.fluence.net/ia/image/9e5ed1d6762c4dac87b080e190af113d\"/>",
     },
     {
       id: 3,
-      title: 'One pair of perpendicular lines',
+      title:  "<img alt=\"\" src=\"https://app.fluence.net/ia/image/9e5ed1d6762c4dac87b080e190af113d\"/>",
     },
     {
-      title: 'One pair of parallel lines',
+      title: "<img alt=\"\" src=\"https://app.fluence.net/ia/image/9e5ed1d6762c4dac87b080e190af113d\"/>",
       id: 4,
     },
   ],
