@@ -196,7 +196,9 @@ export class ChoiceInput extends React.Component {
     });
 
     const choicelabel = (
-      <PreviewPrompt className="label" prompt={displayKey ? `${displayKey}.&nbsp ${label}` : label} tagName="span" />
+      <>
+      {displayKey ? <div className={classes.row}>{displayKey}.{`\u00A0`}<PreviewPrompt className="label" prompt={label} tagName="span" /></div> :  <PreviewPrompt className="label" prompt={label} tagName="span" />}
+      </>
     );
 
     return (
