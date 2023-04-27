@@ -22,8 +22,10 @@ class Main extends React.Component {
   }
 
   render() {
-    const { model, animationsDisabled } = this.props;
+    const { model } = this.props;
+    let { animationsDisabled } = this.props;
     const { halfScoring, scales, visible, pointLabels, description, standards } = model || {};
+    animationsDisabled = animationsDisabled || model.animationsDisabled;
 
     if (!scales || !visible) {
       return null;

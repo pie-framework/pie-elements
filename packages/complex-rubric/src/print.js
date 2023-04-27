@@ -90,6 +90,8 @@ class ComplexRubricPrint extends HTMLElement {
       multiTraitRubric.model = {
         ...preparePrintModel(this._model.rubrics.multiTraitRubric, this._options),
         mode: 'evaluate',
+        visible: true,
+        animationsDisabled: true
       };
     }
   }
