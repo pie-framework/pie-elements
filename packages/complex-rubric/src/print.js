@@ -86,12 +86,15 @@ class ComplexRubricPrint extends HTMLElement {
 
   setMultiTraitRubricModel(multiTraitRubric) {
     if (this._model && this._model.rubrics && this._model.rubrics.multiTraitRubric) {
+      const { scales, excludeZero } = this._model.rubrics.multiTraitRubric || {};
+      const parsedScales = (scales || []).map((scale) => ({ ...scale, excludeZero }));
 
       multiTraitRubric.model = {
         ...preparePrintModel(this._model.rubrics.multiTraitRubric, this._options),
         mode: 'evaluate',
         visible: true,
-        animationsDisabled: true
+        animationsDisabled: true,
+        scales: parsedScales,
       };
     }
   }
