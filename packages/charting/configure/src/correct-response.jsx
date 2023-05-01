@@ -46,7 +46,7 @@ const addCategoryProps = (correctAnswer, data) =>
   }));
 
 const updateCorrectResponseData = (correctAnswer, data) => {
-  if (!correctAnswer) {
+  if (isEmpty(correctAnswer)) {
     return data;
   }
 
@@ -116,7 +116,7 @@ export class CorrectResponse extends React.Component {
 
   changeData = (data) => {
     const { model, onChange } = this.props;
-    const { correctAnswer } = model || {};
+    const { correctAnswer } = model;
 
     onChange({
       ...model,
@@ -192,6 +192,8 @@ export class CorrectResponse extends React.Component {
     ) {
       return nextCategories;
     }
+
+
     return null;
   }
 
@@ -215,6 +217,7 @@ export class CorrectResponse extends React.Component {
     const { categories } = this.state;
     const { domain = {}, range = {} } = model || {};
     const { identicalError, categoriesError } = correctAnswerErrors || {};
+    const correctResponseCategories = categories.length > 0 ? categories : [...model.data];
 
     return (
       <div>
@@ -235,7 +238,7 @@ export class CorrectResponse extends React.Component {
                 domain={domain}
                 range={range}
                 charts={charts}
-                data={categories}
+                data={correctResponseCategories}
                 title={model.title}
                 onDataChange={(data) => this.changeData(data)}
                 addCategoryEnabled={model.addCategoryEnabled}
