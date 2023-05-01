@@ -196,8 +196,17 @@ export class ChoiceInput extends React.Component {
     });
 
     const choicelabel = (
-      <PreviewPrompt className="label" prompt={displayKey ? `${displayKey}.&nbsp ${label}` : label} tagName="span" />
-    );
+      <>
+        {displayKey ? (
+          <span className={classes.row}>
+            {displayKey}.{'\u00A0'}
+            <PreviewPrompt className='label' prompt={label} tagName='span' />
+          </span>
+        ) : (
+          <PreviewPrompt className='label' prompt={label} tagName='span' />
+        )}
+      </>
+    );    
 
     return (
       <div className={classNames(className, 'corespring-' + classSuffix, 'choice-input')}>
@@ -222,7 +231,7 @@ export class ChoiceInput extends React.Component {
             />
           </div>
         </div>
-        {rationale && <PreviewPrompt className="rationale" defaultClassName="rationale" prompt={rationale} />}
+        {rationale && <PreviewPrompt className='rationale' defaultClassName='rationale' prompt={rationale} />}
         <Feedback feedback={feedback} correctness={correctness} />
       </div>
     );
