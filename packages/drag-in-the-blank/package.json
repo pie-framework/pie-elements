@@ -13,10 +13,10 @@
   "dependencies": {
     "@material-ui/core": "^3.9.2",
     "@pie-framework/pie-player-events": "^0.1.0",
-    "@pie-lib/correct-answer-toggle": "^2.3.71",
-    "@pie-lib/mask-markup": "^1.13.23",
+    "@pie-lib/correct-answer-toggle": "^2.3.73",
+    "@pie-lib/mask-markup": "^1.13.25",
     "@pie-lib/math-rendering": "^2.5.14",
-    "@pie-lib/render-ui": "^4.14.21",
+    "@pie-lib/render-ui": "^4.14.23",
     "classnames": "^2.2.5",
     "lodash": "^4.17.10",
     "prop-types": "^15.6.1",
