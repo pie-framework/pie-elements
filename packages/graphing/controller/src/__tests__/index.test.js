@@ -602,7 +602,7 @@ describe('createCorrectResponseSession', () => {
     toolbarTools: ['point', 'circle', 'polygon', 'segment', 'ray', 'vector', 'line', 'sine', 'parabola', 'label'],
     answers: {
       alternate1: {
-        pname: 'Alternate 1',
+        name: 'Alternate 1',
         marks: [
           {
             type: 'segment',
@@ -644,16 +644,9 @@ describe('createCorrectResponseSession', () => {
     expect(sess).toEqual({
       answer: [
         {
-          type: 'segment',
-          from: { x: 0, y: 0 },
-          to: { x: 1, y: 1 },
-        },
-        {
           type: 'point',
-          x: 3,
-          y: 3,
-          label: 'Point',
-          showLabel: true,
+          x: 0,
+          y: 0,
         },
       ],
       id: '1',
@@ -669,16 +662,9 @@ describe('createCorrectResponseSession', () => {
     expect(sess).toEqual({
       answer: [
         {
-          type: 'segment',
-          from: { x: 0, y: 0 },
-          to: { x: 1, y: 1 },
-        },
-        {
           type: 'point',
-          x: 3,
-          y: 3,
-          label: 'Point',
-          showLabel: true,
+          x: 0,
+          y: 0,
         },
       ],
       id: '1',
