@@ -20,18 +20,20 @@ export class Main extends React.Component {
     super(props);
 
     this.state = {
-      categories: props.categories || props.model.data,
+      categories: props.model.data,
       showingCorrect: false,
     };
   }
-
-  UNSAFE_componentWillReceiveProps(nextProps) {
+  
+  static getDerivedStateFromProps(nextProps, prevState) {
     const { model: { data: nextData = [] } = {} } = nextProps;
-    const { model: { data = [] } = {} } = this.props;
+    const { categories } = prevState;
 
-    if (!isEqual(nextData, data)) {
-      this.setState({ categories: nextData });
+    if (!isEqual(nextData, categories)) {
+      return { categories: nextData };
     }
+
+    return null;
   }
 
   changeData = (data) =>

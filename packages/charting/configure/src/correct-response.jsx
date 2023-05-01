@@ -110,7 +110,7 @@ export class CorrectResponse extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      categories: updateCorrectResponseData(props.model.correctAnswer.data, props.model.data),
+      categories: [],
     };
   }
 
@@ -128,12 +128,13 @@ export class CorrectResponse extends React.Component {
     });
   };
 
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    const { model: { data: nextData = [], correctAnswer: { data: nextCorrectAnswerData = [] } } = {} } = nextProps;
-    const { model: { data = [] } = {} } = this.props;
-    const { categories } = this.state;
-    let nextCategories = [];
+  getUpdatedCategories(nextProps, prevProps = this.props, prevState = this.state) {
+    const nextData = nextProps.model.data || [];
+    const data = prevProps.model.data || [];
+    const nextCorrectAnswerData = nextProps.model.correctAnswer.data || [];
+    const categories = prevState ? prevState.categories : [];
 
+    let nextCategories = [];
     if (nextData.length > data.length) {
       nextCategories = insertCategory(nextCorrectAnswerData, nextData);
     }
@@ -185,10 +186,26 @@ export class CorrectResponse extends React.Component {
 
     if (
       !isEqual(nextCategories, data) ||
-      !isEqual(nextCorrectAnswerData, categories) ||
+      !isEqual(nextCorrectAnswerData, prevProps.model.correctAnswer.data) ||
       !isEqual(nextCategories, categories) ||
       (isEmpty(nextCategories) && isEmpty(data))
     ) {
+      return nextCategories;
+    }
+    return null;
+  }
+
+  componentDidMount() {
+    const initialCategories = this.getUpdatedCategories(this.props, this.props, null);
+    this.setState({
+      categories:
+        initialCategories || updateCorrectResponseData(this.props.model.correctAnswer.data, this.props.model.data),
+    });
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const nextCategories = this.getUpdatedCategories(this.props, prevProps, prevState);
+    if (nextCategories && !isEqual(nextCategories, prevState.categories)) {
       this.setState({ categories: nextCategories });
     }
   }
