@@ -193,7 +193,6 @@ export class CorrectResponse extends React.Component {
       return nextCategories;
     }
 
-
     return null;
   }
 
