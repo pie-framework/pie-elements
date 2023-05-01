@@ -4,7 +4,22 @@ exports.model = (id, element) => ({
   addCategoryEnabled: true,
   categoryDefaultLabel: 'Category',
   chartType: 'bar',
-
+  correctAnswer: {
+    data: [
+      {
+        label: 'A',
+        value: 1,
+      },
+      {
+        label: 'B',
+        value: 1,
+      },
+      {
+        label: 'C',
+        value: 1,
+      },
+    ],
+  },
   data: [
     {
       label: 'A',
