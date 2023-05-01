@@ -44,6 +44,10 @@ const TileContent = withStyles((theme) => ({
     border: `1px solid ${theme.palette.grey[400]}`,
     backgroundColor: color.background(),
     transition: 'opacity 200ms linear',
+    // Added for touch devices, for image content.
+    // This will prevent the context menu from appearing and not allowing other interactions with the image.
+    // If interactions with the image in the token will be requested we should handle only the context Menu.
+    pointerEvents: 'none',
     '&:hover': {
       backgroundColor: color.secondary(),
     },
