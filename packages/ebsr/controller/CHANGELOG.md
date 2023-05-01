@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-controller@6.3.0...@pie-element/ebsr-controller@6.3.1) (2023-04-25)
+
+
+### Bug Fixes
+
+* update pie-libs PD-2762 ([7ac4313](https://github.com/pie-framework/pie-elements/commit/7ac431346b822fe3bbb0d13375f044f6ce1f426b))
+
+
+
+
+
 # [6.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-controller@6.2.0...@pie-element/ebsr-controller@6.3.0) (2023-02-14)
 
 

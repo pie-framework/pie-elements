@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.9.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-controller@5.9.2...@pie-element/categorize-controller@5.9.3) (2023-04-25)
+
+
+### Bug Fixes
+
+* update pie-libs PD-2762 ([7ac4313](https://github.com/pie-framework/pie-elements/commit/7ac431346b822fe3bbb0d13375f044f6ce1f426b))
+
+
+
+
+
 ## [5.9.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-controller@5.9.1...@pie-element/categorize-controller@5.9.2) (2023-02-28)
 
 

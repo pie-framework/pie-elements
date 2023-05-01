@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.13.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@4.13.2...@pie-element/graphing@4.13.3) (2023-04-25)
+
+
+### Bug Fixes
+
+* update pie-libs to fix graphing issue ([33ff053](https://github.com/pie-framework/pie-elements/commit/33ff0534af46af923e3a6dee96e8e5c98ef4f71f))
+
+
+
+
+
+## [4.13.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@4.13.1...@pie-element/graphing@4.13.2) (2023-04-25)
+
+
+### Bug Fixes
+
+* update pie-libs PD-2762 ([7ac4313](https://github.com/pie-framework/pie-elements/commit/7ac431346b822fe3bbb0d13375f044f6ce1f426b))
+
+
+
+
+
 ## [4.13.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@4.13.0...@pie-element/graphing@4.13.1) (2023-04-14)
 
 

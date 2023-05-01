@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.6.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/calculator-configure@2.6.5...@pie-element/calculator-configure@2.6.6) (2023-04-25)
+
+
+### Bug Fixes
+
+* update pie-libs PD-2762 ([7ac4313](https://github.com/pie-framework/pie-elements/commit/7ac431346b822fe3bbb0d13375f044f6ce1f426b))
+
+
+
+
+
 ## [2.6.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/calculator-configure@2.6.4...@pie-element/calculator-configure@2.6.5) (2023-04-14)
 
 
