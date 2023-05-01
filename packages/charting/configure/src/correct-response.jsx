@@ -46,7 +46,7 @@ const addCategoryProps = (correctAnswer, data) =>
   }));
 
 const updateCorrectResponseData = (correctAnswer, data) => {
-  if (isEmpty(correctAnswer)) {
+  if (!correctAnswer) {
     return data;
   }
 
@@ -116,7 +116,7 @@ export class CorrectResponse extends React.Component {
 
   changeData = (data) => {
     const { model, onChange } = this.props;
-    const { correctAnswer } = model;
+    const { correctAnswer } = model || {};
 
     onChange({
       ...model,
