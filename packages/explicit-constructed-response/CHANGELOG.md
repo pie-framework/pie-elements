@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.11.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@4.11.2...@pie-element/explicit-constructed-response@4.11.3) (2023-05-02)
+
+
+### Bug Fixes
+
+* update pie-libs PD-2755, PD-2625, PD-2119 ([698446b](https://github.com/pie-framework/pie-elements/commit/698446b29a553a022c91825118370faae824b723))
+* **explicit-constructed-response:** use defaults in normalize-PD-2043 ([f84b26c](https://github.com/pie-framework/pie-elements/commit/f84b26ca79f1ebdab3f3af1264cb24b1c0be31c7))
+* update pie-libs (fix eslint problems PD-2732) ([3fa630e](https://github.com/pie-framework/pie-elements/commit/3fa630eb96b116cb685ab58fbf216fb572d1c333))
+* update pie-libs PD-2755, PD-2625, PD-491, PD-2753, PD-2758, PD-2720, PD-2770 ([2cf9ffa](https://github.com/pie-framework/pie-elements/commit/2cf9ffa4fbef6f2ebc0924f305debc9fc6560a75))
+* **pie-elements:** avoid logs pbs and add fragments as containers ([b4bd2b7](https://github.com/pie-framework/pie-elements/commit/b4bd2b7f994d7affdac443bd486047e5a629b763))
+
+
+
+
+
 ## [4.11.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@4.11.1...@pie-element/explicit-constructed-response@4.11.2) (2023-04-25)
 
 

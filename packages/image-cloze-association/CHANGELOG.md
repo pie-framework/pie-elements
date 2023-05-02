@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.12.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@4.12.2...@pie-element/image-cloze-association@4.12.3) (2023-05-02)
+
+
+### Bug Fixes
+
+* update pie-libs PD-2755, PD-2625, PD-2119 ([698446b](https://github.com/pie-framework/pie-elements/commit/698446b29a553a022c91825118370faae824b723))
+* update pie-libs PD-2755, PD-2625, PD-491, PD-2753, PD-2758, PD-2720, PD-2770 ([2cf9ffa](https://github.com/pie-framework/pie-elements/commit/2cf9ffa4fbef6f2ebc0924f305debc9fc6560a75))
+* **image-cloze-association:** prevent image interaction in choice - this is creating difficulties for drag choices on touch devices PD-2767 ([7340f2d](https://github.com/pie-framework/pie-elements/commit/7340f2d7e1d0f1bab988e199b060dc55fa6a087d))
+* **image-cloze-association:** preventing the context menu from appearing when long-pressing the image or the choice  on a touch device ([cd37376](https://github.com/pie-framework/pie-elements/commit/cd37376f3dfc78415d924036148847839aadb8d4))
+* update pie-libs (fix eslint problems PD-2732) ([3fa630e](https://github.com/pie-framework/pie-elements/commit/3fa630eb96b116cb685ab58fbf216fb572d1c333))
+
+
+
+
+
 ## [4.12.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@4.12.1...@pie-element/image-cloze-association@4.12.2) (2023-04-25)
 
 

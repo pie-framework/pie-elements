@@ -1,15 +1,15 @@
 {
   "name": "@pie-element/complex-rubric-configure",
   "private": true,
-  "version": "1.7.3",
+  "version": "1.7.4",
   "description": "Complex Rubric authoring view",
   "main": "lib/index.js",
   "module": "src/index.js",
   "author": "Pie Framework Authors",
   "dependencies": {
     "@material-ui/core": "^3.9.2",
-    "@pie-element/multi-trait-rubric": "^2.10.2",
-    "@pie-element/rubric": "^2.8.2",
+    "@pie-element/multi-trait-rubric": "^2.10.3",
+    "@pie-element/rubric": "^2.8.3",
     "@pie-framework/pie-configure-events": "^1.3.0",
     "@pie-lib/config-ui": "^11.6.7",
     "@pie-lib/editable-html": "^9.5.26",

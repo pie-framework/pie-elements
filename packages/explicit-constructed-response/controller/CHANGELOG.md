@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.6.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-controller@3.6.1...@pie-element/explicit-constructed-response-controller@3.6.2) (2023-05-02)
+
+
+### Bug Fixes
+
+* **explicit-constructed-response:** use defaults in normalize-PD-2043 ([f84b26c](https://github.com/pie-framework/pie-elements/commit/f84b26ca79f1ebdab3f3af1264cb24b1c0be31c7))
+
+
+
+
+
 ## [3.6.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-controller@3.6.0...@pie-element/explicit-constructed-response-controller@3.6.1) (2023-04-25)
 
 

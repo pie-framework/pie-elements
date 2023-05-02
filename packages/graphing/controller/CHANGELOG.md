@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.4.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-controller@4.4.1...@pie-element/graphing-controller@4.4.2) (2023-05-02)
+
+
+### Bug Fixes
+
+* **graphing:** display the primary correct answer as the default correct answer PD-1756 ([2f95e9e](https://github.com/pie-framework/pie-elements/commit/2f95e9e6e3a3102f761d42c0607aac5e968d2e2a))
+* update pie-libs (fix eslint problems PD-2732) ([3fa630e](https://github.com/pie-framework/pie-elements/commit/3fa630eb96b116cb685ab58fbf216fb572d1c333))
+
+
+
+
+
 ## [4.4.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-controller@4.4.0...@pie-element/graphing-controller@4.4.1) (2023-04-25)
 
 

@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.11.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@5.11.2...@pie-element/charting@5.11.3) (2023-05-02)
+
+
+### Bug Fixes
+
+* update pie-libs PD-2755, PD-2625, PD-2119 ([698446b](https://github.com/pie-framework/pie-elements/commit/698446b29a553a022c91825118370faae824b723))
+* **charting:** fix code introduced by PR pull/1389 for PD-2755, PD-2625, PD-2626 ([8eb0165](https://github.com/pie-framework/pie-elements/commit/8eb016503d174524de146a97fa600789a4007e95))
+* update pie-libs (fix eslint problems PD-2732) ([3fa630e](https://github.com/pie-framework/pie-elements/commit/3fa630eb96b116cb685ab58fbf216fb572d1c333))
+* update pie-libs PD-2755, PD-2625, PD-491, PD-2753, PD-2758, PD-2720, PD-2770 ([2cf9ffa](https://github.com/pie-framework/pie-elements/commit/2cf9ffa4fbef6f2ebc0924f305debc9fc6560a75))
+* **charting:** update chart data in player ([b7143d1](https://github.com/pie-framework/pie-elements/commit/b7143d12620b16e8f4fd1bc0c1790fecb0db9155))
+* **charting:** update correct response setup ([bfac45b](https://github.com/pie-framework/pie-elements/commit/bfac45bc6ee7e8328ea924acc4595e21eb8d4d93))
+
+
+
+
+
 ## [5.11.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@5.11.1...@pie-element/charting@5.11.2) (2023-04-25)
 
 
