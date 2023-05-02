@@ -4,6 +4,7 @@ import find from 'lodash/find';
 import isEmpty from 'lodash/isEmpty';
 import debug from 'debug';
 import { partialScoring } from '@pie-lib/controller-utils';
+import defaults from './defaults';
 
 const log = debug('explicit-constructed-response:controller');
 
@@ -54,6 +55,7 @@ const getAdjustedLength = (length) => {
 };
 
 export const normalize = (question) => ({
+  ...defaults,
   rationaleEnabled: true,
   promptEnabled: true,
   teacherInstructionsEnabled: true,
