@@ -185,8 +185,12 @@ export function model(question, session, env) {
       prompt: promptEnabled ? prompt : null,
       rationale: null,
       size: graph,
-      showToggle: env.mode === 'evaluate' && !isEmpty(answers) && answers.correctAnswer &&
-        answers.correctAnswer.marks && !isEmpty(answers.correctAnswer.marks),
+      showToggle:
+        env.mode === 'evaluate' &&
+        !isEmpty(answers) &&
+        answers.correctAnswer &&
+        answers.correctAnswer.marks &&
+        !isEmpty(answers.correctAnswer.marks),
       teacherInstructions: null,
       toolbarTools,
     };
@@ -199,11 +203,14 @@ export function model(question, session, env) {
     }
 
     if (mode === 'evaluate') {
-      if (!isEmpty(answers) && answers.correctAnswer &&
-        answers.correctAnswer.marks && !isEmpty(answers.correctAnswer.marks)) {
-        const { answersCorrected, bestScoreAnswerKey, bestScore } =
-          getBestAnswer(normalizedQuestion, session, env);
-          // array of marks from session with 'correctness' property set
+      if (
+        !isEmpty(answers) &&
+        answers.correctAnswer &&
+        answers.correctAnswer.marks &&
+        !isEmpty(answers.correctAnswer.marks)
+      ) {
+        const { answersCorrected, bestScoreAnswerKey, bestScore } = getBestAnswer(normalizedQuestion, session, env);
+        // array of marks from session with 'correctness' property set
         base.answersCorrected = answersCorrected;
         base.correctResponse = bestScoreAnswerKey ? (answers[bestScoreAnswerKey] || {}).marks : [];
         base.showToggle = base.showToggle && bestScore !== 1;
@@ -224,8 +231,11 @@ export function outcome(question, session, env = {}) {
       resolve({ score: 0, empty: true });
     }
 
-    if (env.mode !== 'evaluate' || isEmpty(question.answers) ||
-      (question.answers && question.answers.correctAnswer && isEmpty(question.answers.correctAnswer.marks))) {
+    if (
+      env.mode !== 'evaluate' ||
+      isEmpty(question.answers) ||
+      (question.answers && question.answers.correctAnswer && isEmpty(question.answers.correctAnswer.marks))
+    ) {
       resolve({ score: 0 });
     }
 
@@ -242,9 +252,8 @@ export const createCorrectResponseSession = (question, env) => {
       let marks = [];
 
       if (answers && Object.values(answers)) {
-        const firstCorrectAnswer = Object.values(answers)[0] || {};
-
-        marks = firstCorrectAnswer.marks || [];
+        const correctAnswer = answers.correctAnswer || Object.values(answers)[0] || {};
+        marks = correctAnswer.marks || [];
       }
 
       resolve({

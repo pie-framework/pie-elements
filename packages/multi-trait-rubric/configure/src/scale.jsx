@@ -57,7 +57,7 @@ export class Scale extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.scale.maxPoints !== this.props.scale.maxPoints) {
+    if (prevProps.scale.maxPoints !== this.props.scale.maxPoints || prevProps.showDescription !== this.props.showDescription) {
       this.setState({ showRight: this.secondaryBlockRef.scrollWidth - this.secondaryBlockRef.offsetWidth });
     }
   }
@@ -313,6 +313,7 @@ export class Scale extends React.Component {
             key={index}
             index={index}
             trait={trait}
+            traitLabel={traitLabel || 'Trait'}
             scorePointsValues={scorePointsValues}
             scorePointsLabels={scorePointsLabels}
             onTraitRemoved={() => this.showDeleteTraitModal(index)}

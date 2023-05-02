@@ -59,6 +59,7 @@ Overall appearance is acceptable or better",
         "standards": Array [],
       }
     }
+    traitLabel="Category"
   />
   <WithStyles(Component)
     left="200px"
@@ -170,6 +171,7 @@ Overall appearance is acceptable or better",
         "standards": Array [],
       }
     }
+    traitLabel="Category"
   />
   <WithStyles(Component)
     left="200px"
@@ -283,6 +285,7 @@ Overall appearance is acceptable or better",
         "standards": Array [],
       }
     }
+    traitLabel="Category"
   />
   <WithStyles(Component)
     left="200px"
@@ -394,6 +397,7 @@ Overall appearance is acceptable or better",
         "standards": Array [],
       }
     }
+    traitLabel="Category"
   />
   <WithStyles(Component)
     left="200px"
@@ -505,6 +509,7 @@ Overall appearance is acceptable or better",
         "standards": Array [],
       }
     }
+    traitLabel="Category"
   />
   <WithStyles(Component)
     left="200px"

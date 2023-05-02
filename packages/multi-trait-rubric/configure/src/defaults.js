@@ -109,7 +109,7 @@ export default {
     },
     minNoOfTraits: 1,
     maxNoOfTraits: 10,
-    minNoOfScales: 2,
+    minNoOfScales: 1,
     maxNoOfScales: 10,
     defaultTraitLabel: 'Trait'
   },

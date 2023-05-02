@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { color, Collapsible, hasText, PreviewPrompt } from '@pie-lib/render-ui';
 import { Chart, chartTypes } from '@pie-lib/charting';
+import isArray from 'lodash/isArray';
 import isEqual from 'lodash/isEqual';
 import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
 
@@ -25,13 +26,16 @@ export class Main extends React.Component {
     };
   }
 
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    const { model: { data: nextData = [] } = {} } = nextProps;
-    const { model: { data = [] } = {} } = this.props;
+  static getDerivedStateFromProps(nextProps, prevState) {
+    const { categories: newCategories, model: { data: defaultCategories = [] } = {} } = nextProps;
+    const { categories } = prevState;
+    const nextCategories = isArray(newCategories) ? newCategories : defaultCategories;
 
-    if (!isEqual(nextData, data)) {
-      this.setState({ categories: nextData });
+    if (!isEqual(nextCategories, categories)) {
+      return { categories: nextCategories };
     }
+
+    return null;
   }
 
   changeData = (data) =>
