@@ -1,6 +1,6 @@
 {
   "name": "@pie-element/number-line",
-  "version": "6.6.0",
+  "version": "6.6.1-beta.0",
   "repository": "pie-framework/pie-elements",
   "description": "",
   "publishConfig": {
@@ -13,10 +13,10 @@
     "@pie-lib/icons": "^2.4.42",
     "@pie-lib/math-rendering": "^2.5.12",
     "@pie-lib/render-ui": "^4.14.12",
-    "is-plain-object": "^5.0.0",
     "classnames": "^2.2.5",
     "d3-scale": "^3.2.1",
     "d3-selection": "^1.4.1",
+    "is-plain-object": "^5.0.0",
     "lodash": "^4.17.10",
     "mathjs": "^7.5.1",
     "prop-types": "^15.6.1",

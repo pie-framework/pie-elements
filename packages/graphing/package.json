@@ -4,7 +4,7 @@
     "access": "public"
   },
   "repository": "pie-framework/pie-elements",
-  "version": "4.8.0",
+  "version": "4.8.1-beta.0",
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -17,9 +17,9 @@
     "@pie-lib/graphing": "^2.12.12",
     "@pie-lib/math-rendering": "^2.5.12",
     "@pie-lib/render-ui": "^4.14.12",
-    "is-plain-object": "^5.0.0",
     "classnames": "^2.2.5",
     "debug": "^4.1.1",
+    "is-plain-object": "^5.0.0",
     "react": "^16.8.1",
     "react-dom": "^16.8.1"
   },
