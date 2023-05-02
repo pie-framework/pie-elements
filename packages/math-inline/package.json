@@ -17,7 +17,7 @@
     "@pie-framework/pie-player-events": "^0.1.0",
     "@pie-lib/correct-answer-toggle": "^2.3.73",
     "@pie-lib/math-input": "^6.11.1",
-    "@pie-lib/math-toolbar": "^1.11.26",
+    "@pie-lib/math-toolbar": "^1.11.27",
     "@pie-lib/render-ui": "^4.14.23",
     "classnames": "^2.2.5",
     "debug": "^4.1.1",
