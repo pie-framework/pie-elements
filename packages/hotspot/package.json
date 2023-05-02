@@ -17,7 +17,7 @@
     "prop-types": "^15.6.1",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
-    "react-konva": "^16.9.0-0"
+    "react-konva": "^18.2.7"
   },
   "author": "pie framework developers",
   "license": "ISC",
