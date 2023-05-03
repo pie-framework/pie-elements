@@ -166,7 +166,7 @@ export function model(question, session, env) {
       };
 
       const out = base;
-      let showNote = false;
+      let showNote = !!(config?.responses?.length > 1);
 
       ((config && config.responses) || []).forEach((response) => {
         if (response.validation === 'symbolic' || Object.keys(response.alternates || {}).length > 0) {
