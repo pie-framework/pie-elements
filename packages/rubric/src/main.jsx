@@ -12,6 +12,7 @@ export const RubricType = PropTypes.shape({
   excludeZero: PropTypes.bool,
   points: PropTypes.arrayOf(PropTypes.string),
   sampleAnswers: PropTypes.arrayOf(PropTypes.string),
+  animationsDisabled: PropTypes.bool,
 });
 
 class Rubric extends React.Component {

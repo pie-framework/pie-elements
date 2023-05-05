@@ -75,12 +75,7 @@ class ComplexRubricPrint extends HTMLElement {
 
   setRubricModel(simpleRubric) {
     if (this._model && this._model.rubrics && this._model.rubrics.simpleRubric) {
-
-      simpleRubric.model = {
-        ...preparePrintModel(this._model.rubrics.simpleRubric, this._options),
-        mode: 'evaluate',
-        animationsDisabled: true
-      };
+      simpleRubric.model = preparePrintModel(this._model.rubrics.simpleRubric, this._options);
     }
   }
 
@@ -91,9 +86,7 @@ class ComplexRubricPrint extends HTMLElement {
 
       multiTraitRubric.model = {
         ...preparePrintModel(this._model.rubrics.multiTraitRubric, this._options),
-        mode: 'evaluate',
         visible: true,
-        animationsDisabled: true,
         arrowsDisabled: true,
         scales: parsedScales,
       };

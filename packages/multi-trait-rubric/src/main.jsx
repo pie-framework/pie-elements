@@ -91,6 +91,7 @@ Main.propTypes = {
     pointLabels: PropTypes.bool,
     description: PropTypes.bool,
     standards: PropTypes.bool,
+    animationsDisabled: PropTypes.bool,
   }),
   animationsDisabled: PropTypes.bool,
 };

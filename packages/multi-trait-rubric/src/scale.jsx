@@ -156,7 +156,6 @@ class Scale extends React.Component {
       standards = false;
     }
 
-    console.log('arrowsDisabled',arrowsDisabled);
     return (
       <div className={classes.wrapper}>
         <ArrowContainer
