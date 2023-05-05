@@ -38,13 +38,29 @@ export const getAnswerCorrected = ({ sessionAnswers, marks: correctAnswers }) =>
   sessionAnswers = sessionAnswers || [];
   correctAnswers = correctAnswers || [];
 
-  return cloneDeep(sessionAnswers).reduce((correctedAnswer, answer) => {
+  const rez = cloneDeep(sessionAnswers).reduce((correctedAnswer, answer) => {
     const answerIsCorrect = correctAnswers.find((mark) => compareMarks(answer, mark));
 
     answer.correctness = answerIsCorrect ? 'correct' : 'incorrect';
 
     return [...correctedAnswer, answer];
   }, []);
+
+  let missingAnswers =[];
+  // mark missing correct answers as incorrect
+  if (rez.length < sessionAnswers.length) {
+      missingAnswers = cloneDeep(correctAnswers).reduce((correctedAnswer, answer) => {
+      const answerIndex = sessionAnswers.find((mark) => compareMarks(answer, mark));
+      // means that corrected answer is missing from session, so we mark it as missing/incorrect object
+      if (!answerIndex) {
+        answer.correctness = 'incorrect';
+        return [...correctedAnswer, answer];
+      }
+      return [...correctedAnswer];
+    }, []);
+  }
+
+  return [...rez, ...missingAnswers];
 };
 
 const getPartialScoring = ({ scoringType, env }) => {
