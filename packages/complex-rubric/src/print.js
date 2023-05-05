@@ -94,6 +94,7 @@ class ComplexRubricPrint extends HTMLElement {
         mode: 'evaluate',
         visible: true,
         animationsDisabled: true,
+        arrowsDisabled: true,
         scales: parsedScales,
       };
     }

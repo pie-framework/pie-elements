@@ -24,7 +24,7 @@ class Main extends React.Component {
   render() {
     const { model } = this.props;
     let { animationsDisabled } = this.props;
-    const { halfScoring, scales, visible, pointLabels, description, standards } = model || {};
+    const { halfScoring, scales, visible, pointLabels, description, standards, arrowsDisabled } = model || {};
     animationsDisabled = animationsDisabled || model.animationsDisabled;
 
     if (!scales || !visible) {
@@ -45,6 +45,7 @@ class Main extends React.Component {
             showPointsLabels={pointLabels}
             showDescription={description}
             showStandards={standards}
+            arrowsDisabled={arrowsDisabled}
           />
         ))}
       </div>
