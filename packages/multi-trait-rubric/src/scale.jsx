@@ -122,7 +122,7 @@ class Scale extends React.Component {
 
   render() {
     const { showRight, showLeft } = this.state;
-    const { classes, scale, scaleIndex, showDescription, showPointsLabels, showStandards } = this.props;
+    const { classes, scale, scaleIndex, showDescription, showPointsLabels, showStandards, arrowsDisabled } = this.props;
     const { excludeZero, maxPoints, traitLabel, traits, scorePointsLabels } = scale || {};
 
     let scorePointsValues = [];
@@ -158,9 +158,8 @@ class Scale extends React.Component {
 
     return (
       <div className={classes.wrapper}>
-
         <ArrowContainer
-          show={showLeft}
+          show={showLeft && !arrowsDisabled}
           onClick={this.scrollLeft}
           extraStyles={{
             left: 0,
@@ -184,6 +183,7 @@ class Scale extends React.Component {
             });
           }}
         >
+          {arrowsDisabled && (showRight || showLeft) ? <div>The item is too large to fit in print mode.</div> : null}
           <table
             key={`scale-${scaleIndex}`}
             className={classes.table}
@@ -260,7 +260,7 @@ class Scale extends React.Component {
         </div>
 
         <ArrowContainer
-          show={showRight}
+          show={showRight && !arrowsDisabled}
           onClick={this.scrollRight}
           extraStyles={{
             right: 0,
@@ -294,6 +294,7 @@ Scale.propTypes = {
   showPointsLabels: PropTypes.bool,
   showDescription: PropTypes.bool,
   showStandards: PropTypes.bool,
+  arrowsDisabled: PropTypes.bool,
 };
 
 export default withStyles(styles)(Scale);

@@ -22,8 +22,10 @@ class Main extends React.Component {
   }
 
   render() {
-    const { model, animationsDisabled } = this.props;
-    const { halfScoring, scales, visible, pointLabels, description, standards } = model || {};
+    const { model } = this.props;
+    let { animationsDisabled } = this.props;
+    const { halfScoring, scales, visible, pointLabels, description, standards, arrowsDisabled } = model || {};
+    animationsDisabled = animationsDisabled || model.animationsDisabled;
 
     if (!scales || !visible) {
       return null;
@@ -43,6 +45,7 @@ class Main extends React.Component {
             showPointsLabels={pointLabels}
             showDescription={description}
             showStandards={standards}
+            arrowsDisabled={arrowsDisabled}
           />
         ))}
       </div>
@@ -88,6 +91,7 @@ Main.propTypes = {
     pointLabels: PropTypes.bool,
     description: PropTypes.bool,
     standards: PropTypes.bool,
+    animationsDisabled: PropTypes.bool,
   }),
   animationsDisabled: PropTypes.bool,
 };
