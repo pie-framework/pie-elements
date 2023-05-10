@@ -13,7 +13,7 @@ const styles = (theme) => ({
   },
   tableWrapper: {
     width: '100%',
-    overflow: 'scroll'
+    overflow: 'auto'
   },
   table: {
     borderSpacing: 0,
