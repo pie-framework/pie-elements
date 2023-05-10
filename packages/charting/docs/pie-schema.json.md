@@ -6,10 +6,6 @@ The schema defines the following properties:
 
 Indicates if user can add more categories
 
-# `categoryDefaultLabel` (string, required)
-
-Indicates default value for a new category's label
-
 # `chartType` (string, enum, required)
 
 This element must be one of the following enum values:
@@ -246,6 +242,26 @@ Indicates the label for the item that has to be displayed in the Settings Panel
 Indicates the value of the item if it affects config-ui
 (eg.: if item is a switch and displaying an input on the config-ui depends on the switch value: on/off)
 
+## `AuthorNewCategoryDefaults` (object)
+
+Properties of the `AuthorNewCategoryDefaults` object:
+
+### `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+### `label` (string)
+
+Indicates the label for the new category
+
+### `interactive` (boolean)
+
+Indicates if new category is interactive
+
+### `editable` (boolean)
+
+Indicates if new category is editable
+
 ## `ConfigureMaxImageDimensionsProp` (object)
 
 Properties of the `ConfigureMaxImageDimensionsProp` object:
@@ -292,7 +308,7 @@ Indicates category value
 
 ### `interactive` (boolean, required)
 
-Indicates if category label & value are interactive
+Indicates if category value is interactive
 
 ### `editable` (boolean, required)
 

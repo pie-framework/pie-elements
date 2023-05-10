@@ -239,7 +239,7 @@ export class CorrectResponse extends React.Component {
                 title={model.title}
                 onDataChange={(data) => this.changeData(data)}
                 addCategoryEnabled={model.addCategoryEnabled}
-                categoryDefaultLabel={studentNewCategoryDefaultLabel.label}
+                categoryDefaultLabel={studentNewCategoryDefaultLabel?.label}
                 error={error}
               />
             </div>

@@ -8,11 +8,6 @@
       "type": "boolean",
       "title": "addCategoryEnabled"
     },
-    "categoryDefaultLabel": {
-      "description": "Indicates default value for a new category's label",
-      "type": "string",
-      "title": "categoryDefaultLabel"
-    },
     "chartType": {
       "enum": [
         "bar",
@@ -53,7 +48,7 @@
                   "title": "value"
                 },
                 "interactive": {
-                  "description": "Indicates if category label & value are interactive",
+                  "description": "Indicates if category value is interactive",
                   "type": "boolean",
                   "title": "interactive"
                 },
@@ -123,7 +118,7 @@
                     "title": "value"
                   },
                   "interactive": {
-                    "description": "Indicates if category label & value are interactive",
+                    "description": "Indicates if category value is interactive",
                     "type": "boolean",
                     "title": "interactive"
                   },
@@ -203,7 +198,7 @@
               "title": "value"
             },
             "interactive": {
-              "description": "Indicates if category label & value are interactive",
+              "description": "Indicates if category value is interactive",
               "type": "boolean",
               "title": "interactive"
             },
@@ -273,7 +268,7 @@
                 "title": "value"
               },
               "interactive": {
-                "description": "Indicates if category label & value are interactive",
+                "description": "Indicates if category value is interactive",
                 "type": "boolean",
                 "title": "interactive"
               },
@@ -521,7 +516,6 @@
   },
   "required": [
     "addCategoryEnabled",
-    "categoryDefaultLabel",
     "chartType",
     "correctAnswer",
     "data",
@@ -615,6 +609,32 @@
         }
       }
     },
+    "AuthorNewCategoryDefaults": {
+      "title": "AuthorNewCategoryDefaults",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "Indicates if the item has to be displayed in the Settings Panel",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the new category",
+          "type": "string",
+          "title": "label"
+        },
+        "interactive": {
+          "description": "Indicates if new category is interactive",
+          "type": "boolean",
+          "title": "interactive"
+        },
+        "editable": {
+          "description": "Indicates if new category is editable",
+          "type": "boolean",
+          "title": "editable"
+        }
+      }
+    },
     "ConfigureMaxImageDimensionsProp": {
       "title": "ConfigureMaxImageDimensionsProp",
       "type": "object",
@@ -664,7 +684,7 @@
                   "title": "value"
                 },
                 "interactive": {
-                  "description": "Indicates if category label & value are interactive",
+                  "description": "Indicates if category value is interactive",
                   "type": "boolean",
                   "title": "interactive"
                 },
@@ -734,7 +754,7 @@
                     "title": "value"
                   },
                   "interactive": {
-                    "description": "Indicates if category label & value are interactive",
+                    "description": "Indicates if category value is interactive",
                     "type": "boolean",
                     "title": "interactive"
                   },
@@ -810,7 +830,7 @@
           "title": "value"
         },
         "interactive": {
-          "description": "Indicates if category label & value are interactive",
+          "description": "Indicates if category value is interactive",
           "type": "boolean",
           "title": "interactive"
         },
