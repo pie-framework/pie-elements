@@ -46,19 +46,16 @@ export const getAnswerCorrected = ({ sessionAnswers, marks: correctAnswers }) =>
     return [...correctedAnswer, answer];
   }, []);
 
-  let missingAnswers =[];
+  let missingAnswers = [];
   // mark missing correct answers as incorrect
-  if (rez.length < sessionAnswers.length) {
-      missingAnswers = cloneDeep(correctAnswers).reduce((correctedAnswer, answer) => {
-      const answerIndex = sessionAnswers.find((mark) => compareMarks(answer, mark));
-      // means that corrected answer is missing from session, so we mark it as missing/incorrect object
-      if (!answerIndex) {
-        answer.correctness = 'incorrect';
-        return [...correctedAnswer, answer];
-      }
-      return [...correctedAnswer];
-    }, []);
-  }
+  missingAnswers = cloneDeep(correctAnswers).reduce((correctedAnswer, answer) => {
+    const answerIndex = sessionAnswers.find((mark) => compareMarks(answer, mark));
+    // means that corrected answer is missing from session, so we mark it as missing/incorrect object
+    if (!answerIndex) {
+      return [...correctedAnswer, { ...answer, correctness: 'missing' }];
+    }
+    return correctedAnswer;
+  }, []);
 
   return [...rez, ...missingAnswers];
 };
@@ -121,13 +118,14 @@ export const getBestAnswer = (question, session, env = {}) => {
       // returns array of marks, each having 'correctness' property
       const correctedAnswer = getAnswerCorrected({ sessionAnswers, marks });
       const correctMarks = correctedAnswer.filter((answer) => answer.correctness === 'correct');
+      const scoredCorrectedAnswer = correctedAnswer.filter((answer) => answer.correctness !== 'missing');
 
       const maxScore = marks.length;
       let score = correctMarks.length;
 
       // if extra placements
-      if (correctedAnswer.length > maxScore) {
-        score -= correctedAnswer.length - maxScore;
+      if (scoredCorrectedAnswer.length > maxScore) {
+        score -= scoredCorrectedAnswer.length - maxScore;
       }
 
       if (score < 0) {
