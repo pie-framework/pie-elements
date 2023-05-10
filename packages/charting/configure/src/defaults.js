@@ -58,6 +58,16 @@ export default {
         step: 20,
       },
     },
+    authorNewCategoryDefaults: {
+      settings: false,
+      label: 'Category',
+      interactive: true,
+      editable: false,
+    },
+    studentNewCategoryDefaultLabel: {
+      settings: false,
+      label: 'Category',
+    },
     prompt: {
       settings: true,
       label: 'Item Stem',
