@@ -14,7 +14,6 @@
 export default {
   model: {
     addCategoryEnabled: true,
-    categoryDefaultLabel: 'Category',
     chartType: 'lineCross',
     correctAnswer: {},
     data: [],

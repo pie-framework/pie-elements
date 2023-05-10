@@ -80,9 +80,6 @@ export interface ChartingPie extends PieModel {
   /** Indicates if user can add more categories */
   addCategoryEnabled: boolean;
 
-  /** Indicates default value for a new category's label */
-  categoryDefaultLabel: string;
-
   chartType: 'bar' | 'histogram' | 'lineCross' | 'lineDot' | 'dorPlot' | 'linePlot';
 
   /** Indicates marks that are set as answers; Note: alternates can be added having this form: alternateIndex */

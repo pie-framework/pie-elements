@@ -152,7 +152,6 @@ export function model(question, session, env) {
     const normalizedQuestion = normalize(question);
     const {
       addCategoryEnabled,
-      categoryDefaultLabel,
       chartType,
       data,
       domain,
@@ -174,7 +173,6 @@ export function model(question, session, env) {
 
     const base = {
       addCategoryEnabled,
-      categoryDefaultLabel,
       chartType,
       data: filterCategories(data),
       domain,
