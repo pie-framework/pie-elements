@@ -56,6 +56,7 @@ export class ChartingConfig extends React.Component {
     labelsPlaceholders: PropTypes.object,
     titlePlaceholder: PropTypes.object,
     showPixelGuides: PropTypes.bool,
+    authorNewCategoryDefaults: PropTypes.bool,
   };
 
   constructor(props) {
