@@ -35,7 +35,7 @@ interface Category {
   /** Indicates category value */
   value: number;
 
-  /** Indicates if category label & value are interactive */
+  /** Indicates if category value is interactive */
   interactive: boolean;
 
   /** Indicates if category label is editable */
@@ -159,6 +159,24 @@ interface LabelsPlaceholderConfigProp extends ConfigurePropWithEnabled {
   left?: string;
 }
 
+interface AuthorNewCategoryDefaults {
+  /**
+   * Indicates if the item has to be displayed in the Settings Panel
+   */
+  settings?: boolean;
+
+  /**
+   * Indicates the label for the new category
+   */
+  label?: string;
+
+  /** Indicates if new category is interactive */
+  interactive?: boolean;
+
+  /** Indicates if new category is editable */
+  editable?: boolean;
+}
+
 /**
  * Config Object for @pie-elements/charting
  * @additionalProperties false
@@ -213,6 +231,16 @@ export interface ChartingConfigure extends PromptConfig, CommonConfigSettings {
    * Chart title configuration
    */
   title?: ConfigurePropWithEnabled;
+
+  /**
+   * Coonfiguration for new category in define chart
+   */
+  authorNewCategoryDefaults: AuthorNewCategoryDefaults;
+
+  /**
+   * Label for new category in correct response and player's chart
+   */
+  studentNewCategoryDefaultLabel: ConfigureProp;
 
   /**
    * Maximum image width for input fields
