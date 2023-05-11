@@ -60,7 +60,6 @@ export class Container extends Component {
       }
     }
   };
-
   enableDropzone = () => this.setState({ dropzoneActive: true });
 
   disableDropzone = () => this.setState({ dropzoneActive: false });
