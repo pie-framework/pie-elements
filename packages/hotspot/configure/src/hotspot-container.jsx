@@ -40,7 +40,7 @@ export class Container extends Component {
       },
       progress: () => {
       }
-    }
+    };
   }
 
   handleFileRead = (file) => {
@@ -54,7 +54,7 @@ export class Container extends Component {
       if (insertImage) {
         insertImage({
           ...this.fakeImageHandler,
-          chosenFile: file,
+          getChosenFile: () => file,
           isPasted: true
         });
       }
