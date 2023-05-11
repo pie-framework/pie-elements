@@ -46,14 +46,15 @@ export const getAnswerCorrected = ({ sessionAnswers, marks: correctAnswers }) =>
     return [...correctedAnswer, answer];
   }, []);
 
-  let missingAnswers = [];
-  // mark missing correct answers as incorrect
-  missingAnswers = cloneDeep(correctAnswers).reduce((correctedAnswer, answer) => {
+  // add missing objects from correct answer
+  const missingAnswers = cloneDeep(correctAnswers).reduce((correctedAnswer, answer) => {
     const answerIndex = sessionAnswers.find((mark) => compareMarks(answer, mark));
-    // means that corrected answer is missing from session, so we mark it as missing/incorrect object
+
     if (!answerIndex) {
+      // means that corrected answer is missing from session, so we mark it as missing object
       return [...correctedAnswer, { ...answer, correctness: 'missing' }];
     }
+
     return correctedAnswer;
   }, []);
 
