@@ -32,15 +32,32 @@ export class Container extends Component {
       // always transform shapes map into shapes array at this level
       shapes: getAllShapes(props.shapes),
     };
+    this.fakeImageHandler = {
+      cancel: () => {
+      },
+      done: (a, url) => this.props.onImageUpload(url),
+      fileChosen: () => {
+      },
+      progress: () => {
+      }
+    }
   }
 
   handleFileRead = (file) => {
     if (file instanceof Blob) {
-      const { onImageUpload } = this.props;
+      const { onImageUpload, insertImage } = this.props;
       const reader = new FileReader();
 
       reader.onloadend = () => onImageUpload(reader.result);
       reader.readAsDataURL(file);
+
+      if (insertImage) {
+        insertImage({
+          ...this.fakeImageHandler,
+          chosenFile: file,
+          isPasted: true
+        });
+      }
     }
   };
 
@@ -123,17 +140,7 @@ export class Container extends Component {
     const { insertImage } = this.props;
 
     if (insertImage) {
-      insertImage(
-        {
-          cancel: () => {
-          },
-          done: (a, url) => this.props.onImageUpload(url),
-          fileChosen: () => {
-          },
-          progress: () => {
-          }
-        }
-      );
+      insertImage(this.fakeImageHandler);
     }
   };
 

@@ -2282,14 +2282,14 @@
     redux "^4.0.1"
     redux-undo beta
 
-"@pie-lib/config-ui@^11.6.7":
-  version "11.6.7"
-  resolved "https://registry.yarnpkg.com/@pie-lib/config-ui/-/config-ui-11.6.7.tgz#5a968afdfcdc71b9547f72607b06a69c435f05e8"
-  integrity sha512-2pT+xaoEWBlfc2y4+bt6uTFQmJOYDA4XA/MdBn1BQFUcuTuzc0DPeGcjNVcY+mOaR3eARB04wUiO04ONcjew2g==
+"@pie-lib/config-ui@^11.6.8":
+  version "11.6.8"
+  resolved "https://registry.yarnpkg.com/@pie-lib/config-ui/-/config-ui-11.6.8.tgz#8510c78b4b0316010c217ee075eaef180351e429"
+  integrity sha512-dB695dNDRDQJHS0vPQxHsbywIyXpTcS1fo1oTzQ9T6nOR7LWd8tx4RE9pLwc7vTvci1ljUchSuTxlSeuCVgUmQ==
   dependencies:
     "@material-ui/core" "^3.8.3"
     "@material-ui/icons" "^3.0.2"
-    "@pie-lib/editable-html" "^9.5.26"
+    "@pie-lib/editable-html" "^9.6.0"
     "@pie-lib/icons" "^2.4.42"
     "@pie-lib/render-ui" "^4.14.23"
     classnames "^2.2.6"
@@ -2342,10 +2342,10 @@
     react-dnd-html5-backend "^14.0.2"
     react-dnd-touch-backend "^14.1.0"
 
-"@pie-lib/editable-html@^9.5.26":
-  version "9.5.26"
-  resolved "https://registry.yarnpkg.com/@pie-lib/editable-html/-/editable-html-9.5.26.tgz#138cec18bd2541911714c2fb904e2ed42cb86230"
-  integrity sha512-gA/ihAmLKqoELuHl5OYL6hwA32vxC5Byge90muGbGCs2Ksa/ekXvuJLw6SMItq/wlLjrlMBLD9DqeaFeG42lfg==
+"@pie-lib/editable-html@^9.6.0":
+  version "9.6.0"
+  resolved "https://registry.yarnpkg.com/@pie-lib/editable-html/-/editable-html-9.6.0.tgz#cd46405ccc144157249993da6a7218ece5c0667d"
+  integrity sha512-Pqyp8byfrw4urcs1hYx9fXbY5UurIghWym948VGI8ps6T865iIxY7y3y2vUoznAgSzjmZ7S0Cq5D6pg/VJypfA==
   dependencies:
     "@material-ui/core" "^3.8.3"
     "@material-ui/icons" "^3.0.2"
@@ -2577,14 +2577,14 @@
     prop-types "^15.7.2"
     react-transition-group "^2.5.2"
 
-"@pie-lib/rubric@^0.7.26":
-  version "0.7.26"
-  resolved "https://registry.yarnpkg.com/@pie-lib/rubric/-/rubric-0.7.26.tgz#b2511067c59827e87377e4fac827ab6cc59d4a48"
-  integrity sha512-+CLVPEXD5pI0ibT9kwWAGVSHyJ4DWKJhDXLvbZEH/NPtbN+1M5NBXdDXSZsBDrZvWJXIR70nhW/oXWQHgjSFYA==
+"@pie-lib/rubric@^0.7.27":
+  version "0.7.27"
+  resolved "https://registry.yarnpkg.com/@pie-lib/rubric/-/rubric-0.7.27.tgz#e669b732c6f01de525a938f474e67461f08302b1"
+  integrity sha512-g4RHegeYPA4SPTd+mBncxB01LtW2xP3m8ma1zCz4LJL+4RUZYqSQvhFiY6VSrRN3u/Y/OppNShnBpWzS6mZg0g==
   dependencies:
     "@material-ui/core" "^3.9.3"
     "@material-ui/icons" "^3.0.2"
-    "@pie-lib/editable-html" "^9.5.26"
+    "@pie-lib/editable-html" "^9.6.0"
     debug "^4.1.1"
     editable-html "npm:@pie-lib/editable-html@^7.21.0"
     lodash "^4.17.11"
@@ -2593,14 +2593,14 @@
     react-beautiful-dnd "^11.0.2"
     react-dom "^16.9.0"
 
-"@pie-lib/scoring-config@^3.6.28":
-  version "3.6.28"
-  resolved "https://registry.yarnpkg.com/@pie-lib/scoring-config/-/scoring-config-3.6.28.tgz#e7a4b3af0bc9bb0b2ee93fd850b385d6ab9272d5"
-  integrity sha512-fS4jxO29ytxNy0qD/kBLIZiGjRl4aEyHa14b5PbUG6tR7Y/WmyuzvF40WtoqqEPQkjE6KYzY4G/Jx9M0YwuGmg==
+"@pie-lib/scoring-config@^3.6.29":
+  version "3.6.29"
+  resolved "https://registry.yarnpkg.com/@pie-lib/scoring-config/-/scoring-config-3.6.29.tgz#644cb8b7aa39f254e1e057120b008d7122b0aa2e"
+  integrity sha512-EBjJL8Hd/b95Uaf9aFWHGcX63yweUTWL40KpYDekQP9ZJGef0rRmtSYA5bqOS135YgFXOW+BUpK2iILHvg3G5Q==
   dependencies:
     "@material-ui/core" "^3.8.3"
     "@material-ui/icons" "^3.0.2"
-    "@pie-lib/config-ui" "^11.6.7"
+    "@pie-lib/config-ui" "^11.6.8"
     classnames "^2.2.6"
     debug "^4.1.1"
     lodash "^4.17.11"
