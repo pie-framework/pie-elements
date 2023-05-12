@@ -110,14 +110,21 @@ export class Configure extends React.Component {
       teacherInstructions = {},
       titlePlaceholder = {},
       withRubric = {},
+      chartingOptions = {},
     } = configuration || {};
-    const { errors, promptEnabled, rationaleEnabled, spellCheckEnabled, teacherInstructionsEnabled } = model || {};
+    const { errors, promptEnabled, rationaleEnabled, spellCheckEnabled, teacherInstructionsEnabled} = model || {};
     const { categoryErrors, correctAnswerErrors } = errors || {};
     const { gridValues, labelValues } = this.state;
     const showPixeGuides = chartDimensions.showInConfigPanel || true;
 
     const defaultImageMaxWidth = maxImageWidth && maxImageWidth.prompt;
     const defaultImageMaxHeight = maxImageHeight && maxImageHeight.prompt;
+
+    const panelItemType = {
+      changeInteractiveEnabled: chartingOptions.changeInteractive.settings && toggle(chartingOptions.changeInteractive.settingsLabel),
+      changeEditableEnabled: chartingOptions.changeEditable.settings && toggle(chartingOptions.changeEditable.settingsLabel),
+      changeAddCategoryEnabled: chartingOptions.addCategory.settings && toggle(chartingOptions.addCategory.settingsLabel),
+    };
 
     const panelProperties = {
       teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
@@ -140,6 +147,7 @@ export class Configure extends React.Component {
             onChangeModel={onModelChanged}
             onChangeConfiguration={onConfigurationChanged}
             groups={{
+              Settings: panelItemType,
               Properties: panelProperties,
             }}
           />

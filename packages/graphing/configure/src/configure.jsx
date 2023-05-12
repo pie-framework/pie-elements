@@ -147,6 +147,7 @@ export class Configure extends React.Component {
       dimensionsEnabled: graphDimensions.settings && toggle(graphDimensions.label),
       coordinatesOnHover: coordinatesOnHover.settings && toggle(coordinatesOnHover.label),
     };
+    
     const panelProperties = {
       'authoring.enabled': authoring.settings && toggle(authoring.label, true),
       teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
