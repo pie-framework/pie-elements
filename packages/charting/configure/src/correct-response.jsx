@@ -153,9 +153,10 @@ export class CorrectResponse extends React.Component {
 
       (this.props.model.correctAnswer.data || []).splice(removedIndex, 1);
       nextCategories = removeCategory(categories, nextData, removedIndex);
+      return nextCategories;
     }
 
-    if (!isEqual(nextCorrectAnswerData, this.props.model.correctAnswer.data)) {
+    if (nextCorrectAnswerData.length > 0 && !isEqual(nextCorrectAnswerData, this.props.model.correctAnswer.data)) {
       nextCategories = nextCorrectAnswerData.map((correct, index) => ({
         ...correct,
         editable: index < data.length ? data[index].editable : true,
@@ -192,11 +193,13 @@ export class CorrectResponse extends React.Component {
     ) {
       return nextCategories;
     }
+
     return null;
   }
 
   componentDidMount() {
     const initialCategories = this.getUpdatedCategories(this.props, this.props, null);
+
     this.setState({
       categories:
         initialCategories || updateCorrectResponseData(this.props.model.correctAnswer.data, this.props.model.data),
@@ -205,7 +208,14 @@ export class CorrectResponse extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     const nextCategories = this.getUpdatedCategories(this.props, prevProps, prevState);
-    if (nextCategories && !isEqual(nextCategories, prevState.categories)) {
+
+    // this check is needed when all the categories are removed from Chart1
+    if (nextCategories?.length === 0 && this.state.categories?.length === 0 && prevProps.model.data.length > 0) {
+      this.setState({ categories: nextCategories });
+    }
+
+    if (nextCategories && !isEqual(nextCategories, this.state.categories)) {
+      this.changeData(nextCategories);
       this.setState({ categories: nextCategories });
     }
   }
