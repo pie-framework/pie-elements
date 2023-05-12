@@ -36,7 +36,10 @@ describe('getAnswerCorrected', () => {
     [
       [{ type: 'point', x: 0, y: 1 }],
       [{ type: 'point', x: 1, y: 1 }],
-      [{ type: 'point', x: 0, y: 1, correctness: 'incorrect' }],
+      [
+        { type: 'point', x: 0, y: 1, correctness: 'incorrect' },
+        { correctness: 'missing', type: 'point', x: 1, y: 1 },
+      ],
     ],
     [
       [
@@ -63,6 +66,7 @@ describe('getAnswerCorrected', () => {
           y: 1,
           correctness: 'incorrect',
         },
+        { correctness: 'missing', type: 'point', x: 1, y: 1 },
       ],
     ],
   ])('sessionAnswers = %j, marks = %j => correctedMarks = %j', (sessionAnswers, marks, correctedMarks) => {
@@ -140,7 +144,7 @@ describe('model', () => {
       {
         disabled: true,
         showToggle: true,
-        answersCorrected: [],
+        answersCorrected: [{ correctness: 'missing', type: 'point', x: 1, y: 1 }],
         correctResponse: [{ type: 'point', x: 1, y: 1 }],
       },
       {},
@@ -166,7 +170,10 @@ describe('model', () => {
         rationale: null,
         teacherInstructions: null,
         showToggle: true,
-        answersCorrected: [{ type: 'point', x: 0, y: 1, correctness: 'incorrect' }],
+        answersCorrected: [
+          { type: 'point', x: 0, y: 1, correctness: 'incorrect' },
+          { correctness: 'missing', type: 'point', x: 1, y: 1 },
+        ],
         correctResponse: [{ type: 'point', x: 1, y: 1 }],
       },
       { answer: [{ type: 'point', x: 0, y: 1 }] },
@@ -303,6 +310,20 @@ describe('getBestAnswer', () => {
         type: 'segment',
         correctness: 'correct',
       },
+      { correctness: 'missing', type: 'point', x: 2, y: 2 },
+      { correctness: 'missing', type: 'point', x: 3, y: 3 },
+    ];
+
+    const correctMarksPartial = [
+      { x: 1, y: 1, type: 'point', correctness: 'correct' },
+      { x: 4, y: 4, type: 'point', correctness: 'incorrect' },
+      {
+        from: { x: 1, y: 1 },
+        to: { x: 2, y: 2 },
+        type: 'segment',
+        correctness: 'correct',
+      },
+      { correctness: 'missing', type: 'point', x: 2, y: 2 },
     ];
 
     test.each([
@@ -311,7 +332,7 @@ describe('getBestAnswer', () => {
       ['dichotomous', answer2, correctMarks2, 1],
       ['partial scoring', answer2, correctMarks2, 1],
       ['dichotomous', answer3, correctMarks3, 0],
-      ['partial scoring', answer3, correctMarks3, 0.67],
+      ['partial scoring', answer3, correctMarksPartial, 0.67],
     ])('scoringType = %s, answer = %j, correctMarks = %j => score = %d', (scoringType, answer, correctMarks, score) => {
       const result = getBestAnswer({ ...question, scoringType }, { answer });
 
