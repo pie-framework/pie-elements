@@ -56,6 +56,7 @@ export class ChartingConfig extends React.Component {
     labelsPlaceholders: PropTypes.object,
     titlePlaceholder: PropTypes.object,
     showPixelGuides: PropTypes.bool,
+    authorNewCategoryDefaults: PropTypes.object,
   };
 
   constructor(props) {
@@ -116,7 +117,7 @@ export class ChartingConfig extends React.Component {
     });
 
   render() {
-    const { classes, model, charts, labelsPlaceholders, titlePlaceholder, showPixelGuides } = this.props;
+    const { classes, model, charts, labelsPlaceholders, titlePlaceholder, showPixelGuides, authorNewCategoryDefaults } = this.props;
     const { dialog } = this.state;
     const { domain = {}, range = {} } = model || {};
 
@@ -147,7 +148,8 @@ export class ChartingConfig extends React.Component {
               onChangeTitle={this.changeTitle}
               onChangeLabels={this.changeLabel}
               addCategoryEnabled={true}
-              categoryDefaultLabel={model.categoryDefaultLabel}
+              categoryDefaultLabel={authorNewCategoryDefaults?.label}
+              categoryDefaults={authorNewCategoryDefaults}
               labelsPlaceholders={labelsPlaceholders}
               titlePlaceholder={titlePlaceholder?.label}
             />

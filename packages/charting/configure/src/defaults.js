@@ -14,7 +14,6 @@
 export default {
   model: {
     addCategoryEnabled: true,
-    categoryDefaultLabel: 'Category',
     chartType: 'lineCross',
     correctAnswer: {},
     data: [],
@@ -57,6 +56,16 @@ export default {
         max: 700,
         step: 20,
       },
+    },
+    authorNewCategoryDefaults: {
+      settings: false,
+      label: 'Category',
+      interactive: true,
+      editable: false,
+    },
+    studentNewCategoryDefaultLabel: {
+      settings: false,
+      label: 'Category',
     },
     prompt: {
       settings: true,

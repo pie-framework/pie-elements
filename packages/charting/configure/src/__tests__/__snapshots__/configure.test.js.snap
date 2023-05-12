@@ -19,7 +19,6 @@ exports[`ChartingConfig renders snapshot 1`] = `
       </WithStyles(Typography)>
       <Chart
         addCategoryEnabled={true}
-        categoryDefaultLabel="Category"
         chartType="lineCross"
         data={Array []}
         defineChart={true}
@@ -65,6 +64,12 @@ exports[`Configure renders snapshot 1`] = `
     <Panel
       configuration={
         Object {
+          "authorNewCategoryDefaults": Object {
+            "editable": false,
+            "interactive": true,
+            "label": "Category",
+            "settings": false,
+          },
           "chartDimensions": Object {
             "height": Object {
               "max": 700,
@@ -118,6 +123,10 @@ exports[`Configure renders snapshot 1`] = `
             "label": "Student Instructions",
             "settings": false,
           },
+          "studentNewCategoryDefaultLabel": Object {
+            "label": "Category",
+            "settings": false,
+          },
           "teacherInstructions": Object {
             "label": "Teacher Instructions",
             "settings": true,
@@ -152,7 +161,6 @@ exports[`Configure renders snapshot 1`] = `
       model={
         Object {
           "addCategoryEnabled": true,
-          "categoryDefaultLabel": "Category",
           "chartType": "lineCross",
           "correctAnswer": Object {},
           "data": Array [],
@@ -298,7 +306,6 @@ exports[`Configure renders snapshot 1`] = `
     model={
       Object {
         "addCategoryEnabled": true,
-        "categoryDefaultLabel": "Category",
         "chartType": "lineCross",
         "correctAnswer": Object {},
         "data": Array [],
@@ -323,8 +330,22 @@ exports[`Configure renders snapshot 1`] = `
       }
     }
     onChange={[Function]}
+    studentNewCategoryDefaultLabel={
+      Object {
+        "label": "Category",
+        "settings": false,
+      }
+    }
   />
   <WithStyles(ChartingConfig)
+    authorNewCategoryDefaults={
+      Object {
+        "editable": false,
+        "interactive": true,
+        "label": "Category",
+        "settings": false,
+      }
+    }
     charts={
       Array [
         Object {
@@ -364,7 +385,6 @@ exports[`Configure renders snapshot 1`] = `
     model={
       Object {
         "addCategoryEnabled": true,
-        "categoryDefaultLabel": "Category",
         "chartType": "lineCross",
         "correctAnswer": Object {},
         "data": Array [],
@@ -434,7 +454,6 @@ exports[`Configure renders snapshot 1`] = `
     model={
       Object {
         "addCategoryEnabled": true,
-        "categoryDefaultLabel": "Category",
         "chartType": "lineCross",
         "correctAnswer": Object {},
         "data": Array [],
@@ -456,6 +475,12 @@ exports[`Configure renders snapshot 1`] = `
         "studentInstructionsEnabled": true,
         "teacherInstructionsEnabled": true,
         "title": "",
+      }
+    }
+    studentNewCategoryDefaultLabel={
+      Object {
+        "label": "Category",
+        "settings": false,
       }
     }
   />
@@ -505,7 +530,6 @@ exports[`CorrectResponse renders snapshot 1`] = `
       >
         <Chart
           addCategoryEnabled={true}
-          categoryDefaultLabel="Category"
           chartType="lineCross"
           data={Array []}
           domain={Object {}}

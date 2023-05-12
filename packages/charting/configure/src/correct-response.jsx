@@ -101,6 +101,7 @@ export class CorrectResponse extends React.Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
     correctAnswerErrors: PropTypes.object,
+    studentNewCategoryDefaultLabel: PropTypes.object,
     model: PropTypes.object.isRequired,
     onChange: PropTypes.func.isRequired,
     charts: PropTypes.array,
@@ -221,7 +222,7 @@ export class CorrectResponse extends React.Component {
   }
 
   render() {
-    const { classes, model, charts, error, correctAnswerErrors } = this.props;
+    const { classes, model, charts, error, studentNewCategoryDefaultLabel, correctAnswerErrors } = this.props;
     const { categories } = this.state;
     const { domain = {}, range = {} } = model || {};
     const { identicalError, categoriesError } = correctAnswerErrors || {};
@@ -249,7 +250,7 @@ export class CorrectResponse extends React.Component {
                 title={model.title}
                 onDataChange={(data) => this.changeData(data)}
                 addCategoryEnabled={model.addCategoryEnabled}
-                categoryDefaultLabel={model.categoryDefaultLabel}
+                categoryDefaultLabel={studentNewCategoryDefaultLabel?.label}
                 error={error}
               />
             </div>
