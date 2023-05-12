@@ -119,6 +119,8 @@ export const getBestAnswer = (question, session, env = {}) => {
       // returns array of marks, each having 'correctness' property
       const correctedAnswer = getAnswerCorrected({ sessionAnswers, marks });
       const correctMarks = correctedAnswer.filter((answer) => answer.correctness === 'correct');
+      // filter out missing objects because they do not affect the calculation of the score
+      // only correct and incorrect are needed
       const scoredCorrectedAnswer = correctedAnswer.filter((answer) => answer.correctness !== 'missing');
 
       const maxScore = marks.length;
