@@ -117,7 +117,7 @@ export class ChartingConfig extends React.Component {
     });
 
   render() {
-    const { classes, model, charts, labelsPlaceholders, titlePlaceholder, showPixelGuides, authorNewCategoryDefaults } = this.props;
+    const { classes, model, charts, labelsPlaceholders, titlePlaceholder, showPixelGuides, authorNewCategoryDefaults, chartingOptions } = this.props;
     const { dialog } = this.state;
     const { domain = {}, range = {} } = model || {};
 
@@ -132,6 +132,7 @@ export class ChartingConfig extends React.Component {
 
             <Chart
               defineChart={true}
+              chartingOptions={chartingOptions}
               showPixelGuides={showPixelGuides}
               chartType={model.chartType}
               size={model.graph}
@@ -163,7 +164,7 @@ export class ChartingConfig extends React.Component {
                     this.changeAddRemoveEnabled(e.target.checked);
                   }}
                 />
-                Student can add categories
+                {chartingOptions?.addCategory?.authoringLabel}
               </div>
             )}
             <AlertDialog

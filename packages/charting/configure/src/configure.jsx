@@ -123,9 +123,9 @@ export class Configure extends React.Component {
     const defaultImageMaxHeight = maxImageHeight && maxImageHeight.prompt;
 
     const panelItemType = {
-      changeInteractiveEnabled: chartingOptions.changeInteractive.settings && toggle(chartingOptions.changeInteractive.settingsLabel),
-      changeEditableEnabled: chartingOptions.changeEditable.settings && toggle(chartingOptions.changeEditable.settingsLabel),
-      changeAddCategoryEnabled: chartingOptions.addCategory.settings && toggle(chartingOptions.addCategory.settingsLabel),
+      changeInteractiveEnabled: chartingOptions.changeInteractive?.settings && toggle(chartingOptions.changeInteractive.settingsLabel),
+      changeEditableEnabled: chartingOptions.changeEditable?.settings && toggle(chartingOptions.changeEditable.settingsLabel),
+      changeAddCategoryEnabled: chartingOptions.addCategory?.settings && toggle(chartingOptions.addCategory.settingsLabel),
     };
 
     const panelProperties = {
@@ -214,6 +214,7 @@ export class Configure extends React.Component {
           titlePlaceholder={titlePlaceholder}
           showPixelGuides={showPixeGuides}
           authorNewCategoryDefaults={authorNewCategoryDefaults}
+          chartingOptions={chartingOptions}
         />
 
         <CorrectResponse
