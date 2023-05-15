@@ -98,6 +98,8 @@ export class Configure extends React.Component {
     const {
       contentDimensions = {},
       chartDimensions = {},
+      authorNewCategoryDefaults = {},
+      studentNewCategoryDefaultLabel = {},
       labelsPlaceholders = {},
       maxImageWidth = {},
       maxImageHeight = {},
@@ -201,6 +203,7 @@ export class Configure extends React.Component {
           labelValues={labelValues}
           chartDimensions={chartDimensions}
           charts={charts}
+          studentNewCategoryDefaultLabel={studentNewCategoryDefaultLabel}
         />
 
         <ChartingConfig
@@ -210,6 +213,7 @@ export class Configure extends React.Component {
           labelsPlaceholders={labelsPlaceholders}
           titlePlaceholder={titlePlaceholder}
           showPixelGuides={showPixeGuides}
+          authorNewCategoryDefaults={authorNewCategoryDefaults}
         />
 
         <CorrectResponse
@@ -219,6 +223,7 @@ export class Configure extends React.Component {
           charts={charts}
           error={categoryErrors}
           correctAnswerErrors={correctAnswerErrors}
+          studentNewCategoryDefaultLabel={studentNewCategoryDefaultLabel}
         />
 
         {rationaleEnabled && (

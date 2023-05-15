@@ -2,7 +2,6 @@ exports.model = (id, element) => ({
   id,
   element,
   addCategoryEnabled: true,
-  categoryDefaultLabel: 'Category',
   chartType: 'bar',
   correctAnswer: {
     data: [

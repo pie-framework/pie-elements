@@ -140,6 +140,38 @@ Indicates the label for the item that has to be displayed in the Settings Panel
 Indicates the value of the item if it affects config-ui
 (eg.: if item is a switch and displaying an input on the config-ui depends on the switch value: on/off)
 
+# `authorNewCategoryDefaults` (object, required)
+
+Properties of the `authorNewCategoryDefaults` object:
+
+## `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+## `label` (string)
+
+Indicates the label for the new category
+
+## `interactive` (boolean)
+
+Indicates if new category is interactive
+
+## `editable` (boolean)
+
+Indicates if new category is editable
+
+# `studentNewCategoryDefaultLabel` (object, required)
+
+Properties of the `studentNewCategoryDefaultLabel` object:
+
+## `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+## `label` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
+
 # `maxImageWidth` (object)
 
 Properties of the `maxImageWidth` object:
@@ -303,6 +335,26 @@ Indicates the label for the item that has to be displayed in the Settings Panel
 
 Indicates the value of the item if it affects config-ui
 (eg.: if item is a switch and displaying an input on the config-ui depends on the switch value: on/off)
+
+## `AuthorNewCategoryDefaults` (object)
+
+Properties of the `AuthorNewCategoryDefaults` object:
+
+### `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+### `label` (string)
+
+Indicates the label for the new category
+
+### `interactive` (boolean)
+
+Indicates if new category is interactive
+
+### `editable` (boolean)
+
+Indicates if new category is editable
 
 ## `ConfigureMaxImageDimensionsProp` (object)
 
