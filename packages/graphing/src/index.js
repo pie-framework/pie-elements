@@ -33,8 +33,14 @@ export default class Graphing extends HTMLElement {
 
   isComplete = (answer) => Array.isArray(answer) && answer.length > 0;
 
-  changeAnswers = (answer) => {
-    this._session.answer = removeInvalidAnswers(answer);
+  changeAnswers = (answer, isUndoOperation) => {
+    // avoid removeInvalidObjects when undo or redo operations are executed
+    // in order to preserve the logic of undo and redo
+    if (!isUndoOperation) {
+      this._session.answer = removeInvalidAnswers(answer);
+    } else {
+      this._session.answer = answer;
+    }
 
     this.dispatchEvent(new SessionChangedEvent(this.tagName.toLowerCase(), this.isComplete(this._session.answer)));
 

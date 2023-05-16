@@ -4,7 +4,7 @@ import cloneDeep from 'lodash/cloneDeep';
 import uniqWith from 'lodash/uniqWith';
 import isEmpty from 'lodash/isEmpty';
 import defaults from './defaults';
-import { equalMarks, sortedAnswers } from './utils';
+import { equalMarks, sortedAnswers, removeInvalidAnswers } from './utils';
 
 import { partialScoring } from '@pie-lib/controller-utils';
 
@@ -164,6 +164,10 @@ export const normalize = (question) => ({ ...defaults, ...question });
 export function model(question, session, env) {
   return new Promise((resolve) => {
     const normalizedQuestion = normalize(question);
+    // ensure removing of invalid answers
+    // need this if undo redo was last operation
+    session.answer = removeInvalidAnswers(session.answer);
+    // console.log('normalizedQuestion', normalizedQuestion);
     const { defaultTool, prompt, promptEnabled, graph, answers, toolbarTools, ...questionProps } =
       normalizedQuestion || {};
     let { arrows } = normalizedQuestion;
