@@ -121,17 +121,17 @@ export default {
     },
     chartingOptions: {
       changeInteractive: {
-        settings: true,
+        settings: false,
         authoringLabel: 'Student can set value',
         settingsLabel: 'Allow non-interactive categories',
       },
       changeEditable: {
-        settings: true,
+        settings: false,
         authoringLabel: 'Student can edit name',
         settingsLabel: 'Allow editable category names',
       },
       addCategory: {
-        settings: true,
+        settings: false,
         authoringLabel: 'Student can add categories',
         settingsLabel: 'Allow changes to whether students can add categories',
       },
