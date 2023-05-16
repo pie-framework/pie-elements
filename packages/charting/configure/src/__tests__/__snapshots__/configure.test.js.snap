@@ -89,17 +89,17 @@ exports[`Configure renders snapshot 1`] = `
           "chartingOptions": Object {
             "addCategory": Object {
               "authoringLabel": "Student can add categories",
-              "settings": true,
+              "settings": false,
               "settingsLabel": "Allow changes to whether students can add categories",
             },
             "changeEditable": Object {
               "authoringLabel": "Student can edit name",
-              "settings": true,
+              "settings": false,
               "settingsLabel": "Allow editable category names",
             },
             "changeInteractive": Object {
               "authoringLabel": "Student can set value",
-              "settings": true,
+              "settings": false,
               "settingsLabel": "Allow non-interactive categories",
             },
           },
@@ -175,9 +175,9 @@ exports[`Configure renders snapshot 1`] = `
             "teacherInstructionsEnabled": undefined,
           },
           "Settings": Object {
-            "changeAddCategoryEnabled": undefined,
-            "changeEditableEnabled": undefined,
-            "changeInteractiveEnabled": undefined,
+            "changeAddCategoryEnabled": false,
+            "changeEditableEnabled": false,
+            "changeInteractiveEnabled": false,
           },
         }
       }
@@ -379,17 +379,17 @@ exports[`Configure renders snapshot 1`] = `
       Object {
         "addCategory": Object {
           "authoringLabel": "Student can add categories",
-          "settings": true,
+          "settings": false,
           "settingsLabel": "Allow changes to whether students can add categories",
         },
         "changeEditable": Object {
           "authoringLabel": "Student can edit name",
-          "settings": true,
+          "settings": false,
           "settingsLabel": "Allow editable category names",
         },
         "changeInteractive": Object {
           "authoringLabel": "Student can set value",
-          "settings": true,
+          "settings": false,
           "settingsLabel": "Allow non-interactive categories",
         },
       }
