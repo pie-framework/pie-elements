@@ -216,6 +216,58 @@ Indicates if the item has to be displayed in the Settings Panel
 
 Indicates the label for the item that has to be displayed in the Settings Panel
 
+# `chartingOptions` (object)
+
+Properties of the `chartingOptions` object:
+
+## `changeInteractive` (object)
+
+Properties of the `changeInteractive` object:
+
+### `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+### `authoringLabel` (string)
+
+Indicates the label for the option
+
+### `settingsLabel` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
+
+## `changeEditable` (object)
+
+Properties of the `changeEditable` object:
+
+### `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+### `authoringLabel` (string)
+
+Indicates the label for the option
+
+### `settingsLabel` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
+
+## `addCategory` (object)
+
+Properties of the `addCategory` object:
+
+### `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+### `authoringLabel` (string)
+
+Indicates the label for the option
+
+### `settingsLabel` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
+
 # `showPrompt` (boolean)
 
 Determines whether prompt field will be displayed or not
@@ -371,3 +423,71 @@ Indicates the max dimension for images in prompt - this is also the default dime
 ### `rationale` (number)
 
 Indicates the max dimension for images in rationale
+
+## `ChartingOptions` (object)
+
+Properties of the `ChartingOptions` object:
+
+### `changeInteractive` (object)
+
+Properties of the `changeInteractive` object:
+
+#### `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+#### `authoringLabel` (string)
+
+Indicates the label for the option
+
+#### `settingsLabel` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
+
+### `changeEditable` (object)
+
+Properties of the `changeEditable` object:
+
+#### `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+#### `authoringLabel` (string)
+
+Indicates the label for the option
+
+#### `settingsLabel` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
+
+### `addCategory` (object)
+
+Properties of the `addCategory` object:
+
+#### `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+#### `authoringLabel` (string)
+
+Indicates the label for the option
+
+#### `settingsLabel` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
+
+## `ChartingOption` (object)
+
+Properties of the `ChartingOption` object:
+
+### `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+### `authoringLabel` (string)
+
+Indicates the label for the option
+
+### `settingsLabel` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel

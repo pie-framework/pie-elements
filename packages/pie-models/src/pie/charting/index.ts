@@ -135,6 +135,15 @@ export interface ChartingPie extends PieModel {
 
   /** Indicates if Rubric is enabled */
   rubricEnabled: boolean;
+
+  /** Indicates if teacher can enable/disable data[]:interactive */
+  changeInteractiveEnabled: boolean;
+
+  /** Indicates if teacher can enable/disable data[]:editable */
+  changeEditableEnabled: boolean;
+
+  /** Indicates if teacher can enable/disable addCategoryEnabled */
+  changeAddCategoryEnabled: boolean;
 }
 
 interface LabelsPlaceholderConfigProp extends ConfigurePropWithEnabled {
@@ -175,6 +184,36 @@ interface AuthorNewCategoryDefaults {
 
   /** Indicates if new category is editable */
   editable?: boolean;
+}
+
+interface ChartingOption {
+  /**
+   * Indicates if the item has to be displayed in the Settings Panel
+   */
+  settings?: boolean;
+
+  /**
+   * Indicates the label for the option
+   */
+  authoringLabel?: string;
+
+  /**
+   * Indicates the label for the item that has to be displayed in the Settings Panel
+   */
+  settingsLabel?: string;
+}
+
+interface ChartingOptions {
+  /** Indicates if teacher can enable/disable data[]:interactive */
+  changeInteractive?: ChartingOption;
+
+  /**
+   *  Indicates if teacher can enable/disable data[]:editable
+   */
+  changeEditable?: ChartingOption;
+
+  /** Indicates if teacher can enable/disable addCategoryEnabled */
+  addCategory?: ChartingOption;
 }
 
 /**
@@ -256,4 +295,9 @@ export interface ChartingConfigure extends PromptConfig, CommonConfigSettings {
    * Rubric configuration - only relevant in environments that use pie-player-components
    */
   withRubric?: ConfigureProp;
+
+  /**
+   * Authoring view settings for Charting
+   */
+  chartingOptions?: ChartingOptions;
 }
