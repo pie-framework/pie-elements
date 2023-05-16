@@ -133,7 +133,7 @@ export default {
       addCategory: {
         settings: true,
         authoringLabel: 'Student can add categories',
-        settingsLabel: 'Allow student-created categories',
+        settingsLabel: 'Allow changes to whether students can add categories',
       },
     },
   },

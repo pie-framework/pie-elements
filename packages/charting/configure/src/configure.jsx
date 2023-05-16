@@ -49,6 +49,7 @@ export class Configure extends React.Component {
     uploadSoundSupport: PropTypes.object,
     model: PropTypes.object.isRequired,
     configuration: PropTypes.object.isRequired,
+    chartingOptions: PropTypes.object,
   };
 
   constructor(props) {
