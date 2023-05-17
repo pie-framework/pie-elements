@@ -5,8 +5,11 @@ import { RUBRIC_TYPES } from '@pie-lib/rubric';
 const RUBRIC_TAG_NAME = 'complex-rubric-simple';
 const MULTI_TRAIT_RUBRIC_TAG_NAME = 'complex-rubric-multi-trait';
 
-class ComplexRubricSimple extends Rubric {}
-class ComplexRubricMultiTrait extends MultiTraitRubric {}
+class ComplexRubricSimple extends Rubric {
+}
+
+class ComplexRubricMultiTrait extends MultiTraitRubric {
+}
 
 const defineRubrics = () => {
   if (!customElements.get(RUBRIC_TAG_NAME)) {
@@ -100,6 +103,22 @@ class ComplexRubric extends HTMLElement {
         : `<${MULTI_TRAIT_RUBRIC_TAG_NAME} id="multiTraitRubric" />`;
 
     this.innerHTML = rubricTag;
+
+    // when item is re-rendered (due to connectedCallback), if the custom element is already defined,
+    // we need to set the model and session, otherwise the setters are not reached again
+    switch (this._type) {
+      case RUBRIC_TYPES.SIMPLE_RUBRIC:
+      default:
+        if (customElements.get(RUBRIC_TAG_NAME)) {
+          this.setRubricModel(this.simpleRubric);
+        }
+        break;
+      case RUBRIC_TYPES.MULTI_TRAIT_RUBRIC:
+        if (customElements.get(MULTI_TRAIT_RUBRIC_TAG_NAME)) {
+          this.setMultiTraitRubricModel(this.multiTraitRubric);
+        }
+        break;
+    }
   }
 }
 
