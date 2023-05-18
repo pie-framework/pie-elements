@@ -282,6 +282,75 @@
         }
       }
     },
+    "chartingOptions": {
+      "title": "ChartingOptions",
+      "type": "object",
+      "properties": {
+        "changeInteractive": {
+          "title": "ChartingOption",
+          "type": "object",
+          "properties": {
+            "settings": {
+              "description": "Indicates if the item has to be displayed in the Settings Panel",
+              "type": "boolean",
+              "title": "settings"
+            },
+            "authoringLabel": {
+              "description": "Indicates the label for the option",
+              "type": "string",
+              "title": "authoringLabel"
+            },
+            "settingsLabel": {
+              "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+              "type": "string",
+              "title": "settingsLabel"
+            }
+          }
+        },
+        "changeEditable": {
+          "title": "ChartingOption",
+          "type": "object",
+          "properties": {
+            "settings": {
+              "description": "Indicates if the item has to be displayed in the Settings Panel",
+              "type": "boolean",
+              "title": "settings"
+            },
+            "authoringLabel": {
+              "description": "Indicates the label for the option",
+              "type": "string",
+              "title": "authoringLabel"
+            },
+            "settingsLabel": {
+              "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+              "type": "string",
+              "title": "settingsLabel"
+            }
+          }
+        },
+        "addCategory": {
+          "title": "ChartingOption",
+          "type": "object",
+          "properties": {
+            "settings": {
+              "description": "Indicates if the item has to be displayed in the Settings Panel",
+              "type": "boolean",
+              "title": "settings"
+            },
+            "authoringLabel": {
+              "description": "Indicates the label for the option",
+              "type": "string",
+              "title": "authoringLabel"
+            },
+            "settingsLabel": {
+              "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+              "type": "string",
+              "title": "settingsLabel"
+            }
+          }
+        }
+      }
+    },
     "showPrompt": {
       "description": "Determines whether prompt field will be displayed or not",
       "default": true,
@@ -472,6 +541,96 @@
           "description": "Indicates the max dimension for images in rationale",
           "type": "number",
           "title": "rationale"
+        }
+      }
+    },
+    "ChartingOptions": {
+      "title": "ChartingOptions",
+      "type": "object",
+      "properties": {
+        "changeInteractive": {
+          "title": "ChartingOption",
+          "type": "object",
+          "properties": {
+            "settings": {
+              "description": "Indicates if the item has to be displayed in the Settings Panel",
+              "type": "boolean",
+              "title": "settings"
+            },
+            "authoringLabel": {
+              "description": "Indicates the label for the option",
+              "type": "string",
+              "title": "authoringLabel"
+            },
+            "settingsLabel": {
+              "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+              "type": "string",
+              "title": "settingsLabel"
+            }
+          }
+        },
+        "changeEditable": {
+          "title": "ChartingOption",
+          "type": "object",
+          "properties": {
+            "settings": {
+              "description": "Indicates if the item has to be displayed in the Settings Panel",
+              "type": "boolean",
+              "title": "settings"
+            },
+            "authoringLabel": {
+              "description": "Indicates the label for the option",
+              "type": "string",
+              "title": "authoringLabel"
+            },
+            "settingsLabel": {
+              "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+              "type": "string",
+              "title": "settingsLabel"
+            }
+          }
+        },
+        "addCategory": {
+          "title": "ChartingOption",
+          "type": "object",
+          "properties": {
+            "settings": {
+              "description": "Indicates if the item has to be displayed in the Settings Panel",
+              "type": "boolean",
+              "title": "settings"
+            },
+            "authoringLabel": {
+              "description": "Indicates the label for the option",
+              "type": "string",
+              "title": "authoringLabel"
+            },
+            "settingsLabel": {
+              "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+              "type": "string",
+              "title": "settingsLabel"
+            }
+          }
+        }
+      }
+    },
+    "ChartingOption": {
+      "title": "ChartingOption",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "Indicates if the item has to be displayed in the Settings Panel",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "authoringLabel": {
+          "description": "Indicates the label for the option",
+          "type": "string",
+          "title": "authoringLabel"
+        },
+        "settingsLabel": {
+          "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+          "type": "string",
+          "title": "settingsLabel"
         }
       }
     }

@@ -35,6 +35,9 @@ export default {
     rationaleEnabled: true,
     teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true,
+    changeInteractiveEnabled: true,
+    changeEditableEnabled: true,
+    changeAddCategoryEnabled: true,
   },
   configuration: {
     spellCheck: {
@@ -115,6 +118,23 @@ export default {
     withRubric: {
       settings: false,
       label: 'Add Rubric',
+    },
+    chartingOptions: {
+      changeInteractive: {
+        settings: false,
+        authoringLabel: 'Student can set value',
+        settingsLabel: 'Allow non-interactive categories',
+      },
+      changeEditable: {
+        settings: false,
+        authoringLabel: 'Student can edit name',
+        settingsLabel: 'Allow editable category names',
+      },
+      addCategory: {
+        settings: false,
+        authoringLabel: 'Student can add categories',
+        settingsLabel: 'Allow changes to whether students can add categories',
+      },
     },
   },
 };

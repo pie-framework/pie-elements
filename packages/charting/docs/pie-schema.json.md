@@ -166,6 +166,18 @@ Indicates if Teacher Instructions are enabled
 
 Indicates if Rubric is enabled
 
+# `changeInteractiveEnabled` (boolean, required)
+
+Indicates if teacher can enable/disable data[]:interactive
+
+# `changeEditableEnabled` (boolean, required)
+
+Indicates if teacher can enable/disable data[]:editable
+
+# `changeAddCategoryEnabled` (boolean, required)
+
+Indicates if teacher can enable/disable addCategoryEnabled
+
 # `id` (string, required)
 
 Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.
@@ -277,6 +289,74 @@ Indicates the max dimension for images in prompt - this is also the default dime
 ### `rationale` (number)
 
 Indicates the max dimension for images in rationale
+
+## `ChartingOptions` (object)
+
+Properties of the `ChartingOptions` object:
+
+### `changeInteractive` (object)
+
+Properties of the `changeInteractive` object:
+
+#### `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+#### `authoringLabel` (string)
+
+Indicates the label for the option
+
+#### `settingsLabel` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
+
+### `changeEditable` (object)
+
+Properties of the `changeEditable` object:
+
+#### `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+#### `authoringLabel` (string)
+
+Indicates the label for the option
+
+#### `settingsLabel` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
+
+### `addCategory` (object)
+
+Properties of the `addCategory` object:
+
+#### `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+#### `authoringLabel` (string)
+
+Indicates the label for the option
+
+#### `settingsLabel` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
+
+## `ChartingOption` (object)
+
+Properties of the `ChartingOption` object:
+
+### `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+### `authoringLabel` (string)
+
+Indicates the label for the option
+
+### `settingsLabel` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
 
 ## `Answer` (object)
 

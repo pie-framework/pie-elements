@@ -19,6 +19,8 @@ exports[`ChartingConfig renders snapshot 1`] = `
       </WithStyles(Typography)>
       <Chart
         addCategoryEnabled={true}
+        changeEditableEnabled={true}
+        changeInteractiveEnabled={true}
         chartType="lineCross"
         data={Array []}
         defineChart={true}
@@ -46,7 +48,6 @@ exports[`ChartingConfig renders snapshot 1`] = `
           checked={true}
           onChange={[Function]}
         />
-        Student can add categories
       </div>
       <Component
         open={false}
@@ -83,6 +84,23 @@ exports[`Configure renders snapshot 1`] = `
               "max": 700,
               "min": 50,
               "step": 20,
+            },
+          },
+          "chartingOptions": Object {
+            "addCategory": Object {
+              "authoringLabel": "Student can add categories",
+              "settings": false,
+              "settingsLabel": "Allow changes to whether students can add categories",
+            },
+            "changeEditable": Object {
+              "authoringLabel": "Student can edit name",
+              "settings": false,
+              "settingsLabel": "Allow editable category names",
+            },
+            "changeInteractive": Object {
+              "authoringLabel": "Student can set value",
+              "settings": false,
+              "settingsLabel": "Allow non-interactive categories",
             },
           },
           "labelsPlaceholders": Object {
@@ -156,11 +174,19 @@ exports[`Configure renders snapshot 1`] = `
             "studentInstructionsEnabled": false,
             "teacherInstructionsEnabled": undefined,
           },
+          "Settings": Object {
+            "changeAddCategoryEnabled": false,
+            "changeEditableEnabled": false,
+            "changeInteractiveEnabled": false,
+          },
         }
       }
       model={
         Object {
           "addCategoryEnabled": true,
+          "changeAddCategoryEnabled": true,
+          "changeEditableEnabled": true,
+          "changeInteractiveEnabled": true,
           "chartType": "lineCross",
           "correctAnswer": Object {},
           "data": Array [],
@@ -306,6 +332,9 @@ exports[`Configure renders snapshot 1`] = `
     model={
       Object {
         "addCategoryEnabled": true,
+        "changeAddCategoryEnabled": true,
+        "changeEditableEnabled": true,
+        "changeInteractiveEnabled": true,
         "chartType": "lineCross",
         "correctAnswer": Object {},
         "data": Array [],
@@ -344,6 +373,25 @@ exports[`Configure renders snapshot 1`] = `
         "interactive": true,
         "label": "Category",
         "settings": false,
+      }
+    }
+    chartingOptions={
+      Object {
+        "addCategory": Object {
+          "authoringLabel": "Student can add categories",
+          "settings": false,
+          "settingsLabel": "Allow changes to whether students can add categories",
+        },
+        "changeEditable": Object {
+          "authoringLabel": "Student can edit name",
+          "settings": false,
+          "settingsLabel": "Allow editable category names",
+        },
+        "changeInteractive": Object {
+          "authoringLabel": "Student can set value",
+          "settings": false,
+          "settingsLabel": "Allow non-interactive categories",
+        },
       }
     }
     charts={
@@ -385,6 +433,9 @@ exports[`Configure renders snapshot 1`] = `
     model={
       Object {
         "addCategoryEnabled": true,
+        "changeAddCategoryEnabled": true,
+        "changeEditableEnabled": true,
+        "changeInteractiveEnabled": true,
         "chartType": "lineCross",
         "correctAnswer": Object {},
         "data": Array [],
@@ -454,6 +505,9 @@ exports[`Configure renders snapshot 1`] = `
     model={
       Object {
         "addCategoryEnabled": true,
+        "changeAddCategoryEnabled": true,
+        "changeEditableEnabled": true,
+        "changeInteractiveEnabled": true,
         "chartType": "lineCross",
         "correctAnswer": Object {},
         "data": Array [],

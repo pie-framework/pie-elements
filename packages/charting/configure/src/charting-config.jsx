@@ -57,6 +57,7 @@ export class ChartingConfig extends React.Component {
     titlePlaceholder: PropTypes.object,
     showPixelGuides: PropTypes.bool,
     authorNewCategoryDefaults: PropTypes.object,
+    chartingOptions: PropTypes.object,
   };
 
   constructor(props) {
@@ -117,7 +118,7 @@ export class ChartingConfig extends React.Component {
     });
 
   render() {
-    const { classes, model, charts, labelsPlaceholders, titlePlaceholder, showPixelGuides, authorNewCategoryDefaults } = this.props;
+    const { classes, model, charts, labelsPlaceholders, titlePlaceholder, showPixelGuides, authorNewCategoryDefaults, chartingOptions } = this.props;
     const { dialog } = this.state;
     const { domain = {}, range = {} } = model || {};
 
@@ -132,6 +133,7 @@ export class ChartingConfig extends React.Component {
 
             <Chart
               defineChart={true}
+              chartingOptions={chartingOptions}
               showPixelGuides={showPixelGuides}
               chartType={model.chartType}
               size={model.graph}
@@ -148,21 +150,24 @@ export class ChartingConfig extends React.Component {
               onChangeTitle={this.changeTitle}
               onChangeLabels={this.changeLabel}
               addCategoryEnabled={true}
+              changeInteractiveEnabled={model.changeInteractiveEnabled}
+              changeEditableEnabled={model.changeEditableEnabled}
               categoryDefaultLabel={authorNewCategoryDefaults?.label}
               categoryDefaults={authorNewCategoryDefaults}
               labelsPlaceholders={labelsPlaceholders}
               titlePlaceholder={titlePlaceholder?.label}
             />
-            <div>
-              <Checkbox
-                checked={model.addCategoryEnabled}
-                onChange={(e) => {
-                  this.changeAddRemoveEnabled(e.target.checked);
-                }}
-              />
-              Student can add categories
-            </div>
-
+            {model.changeAddCategoryEnabled && (
+              <div>
+                <Checkbox
+                  checked={model.addCategoryEnabled}
+                  onChange={(e) => {
+                    this.changeAddRemoveEnabled(e.target.checked);
+                  }}
+                />
+                {chartingOptions?.addCategory?.authoringLabel}
+              </div>
+            )}
             <AlertDialog
               open={dialog.open}
               title={dialog.title}

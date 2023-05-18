@@ -503,6 +503,21 @@
       "type": "boolean",
       "title": "rubricEnabled"
     },
+    "changeInteractiveEnabled": {
+      "description": "Indicates if teacher can enable/disable data[]:interactive",
+      "type": "boolean",
+      "title": "changeInteractiveEnabled"
+    },
+    "changeEditableEnabled": {
+      "description": "Indicates if teacher can enable/disable data[]:editable",
+      "type": "boolean",
+      "title": "changeEditableEnabled"
+    },
+    "changeAddCategoryEnabled": {
+      "description": "Indicates if teacher can enable/disable addCategoryEnabled",
+      "type": "boolean",
+      "title": "changeAddCategoryEnabled"
+    },
     "id": {
       "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
       "type": "string",
@@ -516,6 +531,9 @@
   },
   "required": [
     "addCategoryEnabled",
+    "changeAddCategoryEnabled",
+    "changeEditableEnabled",
+    "changeInteractiveEnabled",
     "chartType",
     "correctAnswer",
     "data",
@@ -653,6 +671,96 @@
           "description": "Indicates the max dimension for images in rationale",
           "type": "number",
           "title": "rationale"
+        }
+      }
+    },
+    "ChartingOptions": {
+      "title": "ChartingOptions",
+      "type": "object",
+      "properties": {
+        "changeInteractive": {
+          "title": "ChartingOption",
+          "type": "object",
+          "properties": {
+            "settings": {
+              "description": "Indicates if the item has to be displayed in the Settings Panel",
+              "type": "boolean",
+              "title": "settings"
+            },
+            "authoringLabel": {
+              "description": "Indicates the label for the option",
+              "type": "string",
+              "title": "authoringLabel"
+            },
+            "settingsLabel": {
+              "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+              "type": "string",
+              "title": "settingsLabel"
+            }
+          }
+        },
+        "changeEditable": {
+          "title": "ChartingOption",
+          "type": "object",
+          "properties": {
+            "settings": {
+              "description": "Indicates if the item has to be displayed in the Settings Panel",
+              "type": "boolean",
+              "title": "settings"
+            },
+            "authoringLabel": {
+              "description": "Indicates the label for the option",
+              "type": "string",
+              "title": "authoringLabel"
+            },
+            "settingsLabel": {
+              "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+              "type": "string",
+              "title": "settingsLabel"
+            }
+          }
+        },
+        "addCategory": {
+          "title": "ChartingOption",
+          "type": "object",
+          "properties": {
+            "settings": {
+              "description": "Indicates if the item has to be displayed in the Settings Panel",
+              "type": "boolean",
+              "title": "settings"
+            },
+            "authoringLabel": {
+              "description": "Indicates the label for the option",
+              "type": "string",
+              "title": "authoringLabel"
+            },
+            "settingsLabel": {
+              "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+              "type": "string",
+              "title": "settingsLabel"
+            }
+          }
+        }
+      }
+    },
+    "ChartingOption": {
+      "title": "ChartingOption",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "Indicates if the item has to be displayed in the Settings Panel",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "authoringLabel": {
+          "description": "Indicates the label for the option",
+          "type": "string",
+          "title": "authoringLabel"
+        },
+        "settingsLabel": {
+          "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+          "type": "string",
+          "title": "settingsLabel"
         }
       }
     },
