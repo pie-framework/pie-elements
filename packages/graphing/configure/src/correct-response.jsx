@@ -176,7 +176,7 @@ Tools.propTypes = {
   availableTools: PropTypes.array,
   defaultTool: PropTypes.string,
   hasErrors: PropTypes.number,
-  onDefaultToolChange: PropTypes.func
+  onDefaultToolChange: PropTypes.func,
 };
 
 export class CorrectResponse extends React.Component {
