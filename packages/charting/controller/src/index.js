@@ -166,7 +166,7 @@ export function model(question, session, env) {
       teacherInstructionsEnabled,
       correctAnswer,
       scoringType,
-      studentCategoryDefaultLabel,
+      studentNewCategoryDefaultLabel,
     } = normalizedQuestion;
 
     const correctInfo = { correctness: 'incorrect', score: '0%' };
@@ -185,7 +185,7 @@ export function model(question, session, env) {
       correctness: correctInfo,
       disabled: env.mode !== 'gather',
       scoringType,
-      studentCategoryDefaultLabel,
+      studentNewCategoryDefaultLabel,
     };
 
     const answers = filterCategories(getScore(normalizedQuestion, session, env).answers);

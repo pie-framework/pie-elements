@@ -1063,7 +1063,7 @@ describe('getScore partial scoring - NOT editable - randomly interactive', () =>
 
 describe('createCorrectResponseSession', () => {
   const question = {
-    studentCategoryDefaultLabel: 'Category',
+    studentNewCategoryDefaultLabel: 'Category',
     chartType: 'lineCross',
     correctAnswer: {
       data: [

@@ -60,7 +60,7 @@ export class Main extends React.Component {
       range,
       title,
       addCategoryEnabled,
-      studentCategoryDefaultLabel,
+      studentNewCategoryDefaultLabel,
       rationale,
       correctedAnswer,
       correctAnswer,
@@ -116,7 +116,7 @@ export class Main extends React.Component {
             title={title}
             onDataChange={this.changeData}
             addCategoryEnabled={false}
-            categoryDefaultLabel={studentCategoryDefaultLabel}
+            categoryDefaultLabel={studentNewCategoryDefaultLabel}
           />
         ) : (
           <Chart
@@ -137,7 +137,7 @@ export class Main extends React.Component {
             title={title}
             onDataChange={this.changeData}
             addCategoryEnabled={addCategoryEnabled}
-            categoryDefaultLabel={studentCategoryDefaultLabel}
+            categoryDefaultLabel={studentNewCategoryDefaultLabel}
           />
         )}
 
