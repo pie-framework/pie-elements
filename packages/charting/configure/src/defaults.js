@@ -66,6 +66,15 @@ export default {
       interactive: true,
       editable: false,
     },
+    availableChartTypes: {
+      bar: 'Bar Chart',
+      histogram: 'Histogram',
+      lineDot: 'Line Chart ●',
+      lineCross: 'Line Chart x',
+      dotPlot: 'Dot/Line Plot ⬤',
+      linePlot: 'Dot/Line Plot X',
+    },
+    chartTypeLabel: 'ChartTypeFROMCONFIG',
     studentNewCategoryDefaultLabel: {
       settings: false,
       label: 'Category',

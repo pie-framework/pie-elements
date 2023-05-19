@@ -114,8 +114,10 @@ export class Configure extends React.Component {
       titlePlaceholder = {},
       withRubric = {},
       chartingOptions = {},
+      availableChartTypes = {},
+      chartTypeLabel,
     } = configuration || {};
-    const { errors, promptEnabled, rationaleEnabled, spellCheckEnabled, teacherInstructionsEnabled} = model || {};
+    const { errors, promptEnabled, rationaleEnabled, spellCheckEnabled, teacherInstructionsEnabled } = model || {};
     const { categoryErrors, correctAnswerErrors } = errors || {};
     const { gridValues, labelValues } = this.state;
     const showPixeGuides = chartDimensions.showInConfigPanel || true;
@@ -124,9 +126,12 @@ export class Configure extends React.Component {
     const defaultImageMaxHeight = maxImageHeight && maxImageHeight.prompt;
 
     const panelItemType = {
-      changeInteractiveEnabled: chartingOptions.changeInteractive?.settings && toggle(chartingOptions.changeInteractive.settingsLabel),
-      changeEditableEnabled: chartingOptions.changeEditable?.settings && toggle(chartingOptions.changeEditable.settingsLabel),
-      changeAddCategoryEnabled: chartingOptions.addCategory?.settings && toggle(chartingOptions.addCategory.settingsLabel),
+      changeInteractiveEnabled:
+        chartingOptions.changeInteractive?.settings && toggle(chartingOptions.changeInteractive.settingsLabel),
+      changeEditableEnabled:
+        chartingOptions.changeEditable?.settings && toggle(chartingOptions.changeEditable.settingsLabel),
+      changeAddCategoryEnabled:
+        chartingOptions.addCategory?.settings && toggle(chartingOptions.addCategory.settingsLabel),
     };
 
     const panelProperties = {
@@ -205,6 +210,8 @@ export class Configure extends React.Component {
           chartDimensions={chartDimensions}
           charts={charts}
           studentNewCategoryDefaultLabel={studentNewCategoryDefaultLabel}
+          availableChartTypes={availableChartTypes}
+          chartTypeLabel={chartTypeLabel}
         />
 
         <ChartingConfig
