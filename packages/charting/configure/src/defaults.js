@@ -67,7 +67,6 @@ export default {
       interactive: true,
       editable: false,
     },
-<<<<<<< HEAD
     availableChartTypes: {
       bar: 'Bar Chart',
       histogram: 'Histogram',
@@ -81,8 +80,6 @@ export default {
       settings: false,
       label: 'Category',
     },
-=======
->>>>>>> develop
     prompt: {
       settings: true,
       label: 'Item Stem',
