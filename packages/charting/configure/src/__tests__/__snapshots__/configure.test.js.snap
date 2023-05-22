@@ -71,6 +71,14 @@ exports[`Configure renders snapshot 1`] = `
             "label": "Category",
             "settings": false,
           },
+          "availableChartTypes": Object {
+            "bar": "Bar Chart",
+            "dotPlot": "Dot/Line Plot ⬤",
+            "histogram": "Histogram",
+            "lineCross": "Line Chart x",
+            "lineDot": "Line Chart ●",
+            "linePlot": "Dot/Line Plot X",
+          },
           "chartDimensions": Object {
             "height": Object {
               "max": 700,
@@ -86,6 +94,7 @@ exports[`Configure renders snapshot 1`] = `
               "step": 20,
             },
           },
+          "chartTypeLabel": "ChartType",
           "chartingOptions": Object {
             "addCategory": Object {
               "authoringLabel": "Student can add categories",
@@ -263,6 +272,16 @@ exports[`Configure renders snapshot 1`] = `
     />
   </InputContainer>
   <Component
+    availableChartTypes={
+      Object {
+        "bar": "Bar Chart",
+        "dotPlot": "Dot/Line Plot ⬤",
+        "histogram": "Histogram",
+        "lineCross": "Line Chart x",
+        "lineDot": "Line Chart ●",
+        "linePlot": "Dot/Line Plot X",
+      }
+    }
     chartDimensions={
       Object {
         "height": Object {
@@ -280,6 +299,7 @@ exports[`Configure renders snapshot 1`] = `
         },
       }
     }
+    chartTypeLabel="ChartType"
     charts={
       Array [
         Object {

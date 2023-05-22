@@ -268,6 +268,38 @@ Indicates the label for the option
 
 Indicates the label for the item that has to be displayed in the Settings Panel
 
+# `availableChartTypes` (object)
+
+Properties of the `availableChartTypes` object:
+
+## `bar` (string, required)
+
+Indicates if bar chart is available and the label used for it.
+
+## `histogram` (string, required)
+
+Indicates if histogram is available and the label used for it.
+
+## `lineDot` (string, required)
+
+Indicates if line chart with dots is available and the label used for it.
+
+## `lineCross` (string, required)
+
+Indicates if line chart with crosses is available and the label used for it.
+
+## `dotPlot` (string, required)
+
+Indicates if dot plot is available and the label used for it.
+
+## `linePlot` (string, required)
+
+Indicates if line plot is available and the label used for it.
+
+# `chartTypeLabel` (string, required)
+
+Indicates the label for the chart type
+
 # `showPrompt` (boolean)
 
 Determines whether prompt field will be displayed or not
@@ -491,3 +523,31 @@ Indicates the label for the option
 ### `settingsLabel` (string)
 
 Indicates the label for the item that has to be displayed in the Settings Panel
+
+## `AvailableChartTypes` (object)
+
+Properties of the `AvailableChartTypes` object:
+
+### `bar` (string, required)
+
+Indicates if bar chart is available and the label used for it.
+
+### `histogram` (string, required)
+
+Indicates if histogram is available and the label used for it.
+
+### `lineDot` (string, required)
+
+Indicates if line chart with dots is available and the label used for it.
+
+### `lineCross` (string, required)
+
+Indicates if line chart with crosses is available and the label used for it.
+
+### `dotPlot` (string, required)
+
+Indicates if dot plot is available and the label used for it.
+
+### `linePlot` (string, required)
+
+Indicates if line plot is available and the label used for it.
