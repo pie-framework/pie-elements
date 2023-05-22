@@ -74,7 +74,7 @@ export default {
       dotPlot: 'Dot/Line Plot ⬤',
       linePlot: 'Dot/Line Plot X',
     },
-    chartTypeLabel: 'ChartTypeFROMCONFIG',
+    chartTypeLabel: 'ChartType',
     studentNewCategoryDefaultLabel: {
       settings: false,
       label: 'Category',
