@@ -51,6 +51,26 @@ interface Category {
   };
 }
 
+interface AvailableChartTypes {
+  /** Indicates if bar chart is available and the label used for it. */
+  bar: string;
+
+  /** Indicates if histogram is available and the label used for it. */
+  histogram: string;
+
+  /** Indicates if line chart with dots is available and the label used for it. */
+  lineDot: string;
+
+  /** Indicates if line chart with crosses is available and the label used for it. */
+  lineCross: string;
+
+  /** Indicates if dot plot is available and the label used for it. */
+  dotPlot: string;
+
+  /** Indicates if line plot is available and the label used for it. */
+  linePlot: string;
+}
+
 interface Answer {
   /** Indicates name of answer */
   name: string;
@@ -300,4 +320,14 @@ export interface ChartingConfigure extends PromptConfig, CommonConfigSettings {
    * Authoring view settings for Charting
    */
   chartingOptions?: ChartingOptions;
+
+  /**
+   * Indicates the chart types that are available
+   */
+  availableChartTypes?: AvailableChartTypes;
+
+  /**
+   * Indicates the label for the chart type
+   */
+  chartTypeLabel: string;
 }

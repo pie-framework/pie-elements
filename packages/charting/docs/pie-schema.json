@@ -770,6 +770,50 @@
         }
       }
     },
+    "AvailableChartTypes": {
+      "title": "AvailableChartTypes",
+      "type": "object",
+      "properties": {
+        "bar": {
+          "description": "Indicates if bar chart is available and the label used for it.",
+          "type": "string",
+          "title": "bar"
+        },
+        "histogram": {
+          "description": "Indicates if histogram is available and the label used for it.",
+          "type": "string",
+          "title": "histogram"
+        },
+        "lineDot": {
+          "description": "Indicates if line chart with dots is available and the label used for it.",
+          "type": "string",
+          "title": "lineDot"
+        },
+        "lineCross": {
+          "description": "Indicates if line chart with crosses is available and the label used for it.",
+          "type": "string",
+          "title": "lineCross"
+        },
+        "dotPlot": {
+          "description": "Indicates if dot plot is available and the label used for it.",
+          "type": "string",
+          "title": "dotPlot"
+        },
+        "linePlot": {
+          "description": "Indicates if line plot is available and the label used for it.",
+          "type": "string",
+          "title": "linePlot"
+        }
+      },
+      "required": [
+        "bar",
+        "dotPlot",
+        "histogram",
+        "lineCross",
+        "lineDot",
+        "linePlot"
+      ]
+    },
     "Answer": {
       "title": "Answer",
       "type": "object",
