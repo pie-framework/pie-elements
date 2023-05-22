@@ -178,6 +178,10 @@ Indicates if teacher can enable/disable data[]:editable
 
 Indicates if teacher can enable/disable addCategoryEnabled
 
+# `studentNewCategoryDefaultLabel` (string, required)
+
+Label for new category in correct response and player's chart
+
 # `id` (string, required)
 
 Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.

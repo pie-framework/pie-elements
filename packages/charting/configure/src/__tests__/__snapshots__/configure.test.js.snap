@@ -150,10 +150,6 @@ exports[`Configure renders snapshot 1`] = `
             "label": "Student Instructions",
             "settings": false,
           },
-          "studentNewCategoryDefaultLabel": Object {
-            "label": "Category",
-            "settings": false,
-          },
           "teacherInstructions": Object {
             "label": "Teacher Instructions",
             "settings": true,
@@ -215,6 +211,7 @@ exports[`Configure renders snapshot 1`] = `
           "rationaleEnabled": true,
           "scoringType": "all or nothing",
           "studentInstructionsEnabled": true,
+          "studentNewCategoryDefaultLabel": "New Category",
           "teacherInstructionsEnabled": true,
           "title": "",
         }
@@ -374,17 +371,13 @@ exports[`Configure renders snapshot 1`] = `
         "rationaleEnabled": true,
         "scoringType": "all or nothing",
         "studentInstructionsEnabled": true,
+        "studentNewCategoryDefaultLabel": "New Category",
         "teacherInstructionsEnabled": true,
         "title": "",
       }
     }
     onChange={[Function]}
-    studentNewCategoryDefaultLabel={
-      Object {
-        "label": "Category",
-        "settings": false,
-      }
-    }
+    studentNewCategoryDefaultLabel="New Category"
   />
   <WithStyles(ChartingConfig)
     authorNewCategoryDefaults={
@@ -475,6 +468,7 @@ exports[`Configure renders snapshot 1`] = `
         "rationaleEnabled": true,
         "scoringType": "all or nothing",
         "studentInstructionsEnabled": true,
+        "studentNewCategoryDefaultLabel": "New Category",
         "teacherInstructionsEnabled": true,
         "title": "",
       }
@@ -547,16 +541,12 @@ exports[`Configure renders snapshot 1`] = `
         "rationaleEnabled": true,
         "scoringType": "all or nothing",
         "studentInstructionsEnabled": true,
+        "studentNewCategoryDefaultLabel": "New Category",
         "teacherInstructionsEnabled": true,
         "title": "",
       }
     }
-    studentNewCategoryDefaultLabel={
-      Object {
-        "label": "Category",
-        "settings": false,
-      }
-    }
+    studentNewCategoryDefaultLabel="New Category"
   />
   <InputContainer
     label="Rationale"

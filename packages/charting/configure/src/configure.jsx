@@ -100,7 +100,6 @@ export class Configure extends React.Component {
       contentDimensions = {},
       chartDimensions = {},
       authorNewCategoryDefaults = {},
-      studentNewCategoryDefaultLabel = {},
       labelsPlaceholders = {},
       maxImageWidth = {},
       maxImageHeight = {},
@@ -117,7 +116,11 @@ export class Configure extends React.Component {
       availableChartTypes = {},
       chartTypeLabel,
     } = configuration || {};
+<<<<<<< HEAD
     const { errors, promptEnabled, rationaleEnabled, spellCheckEnabled, teacherInstructionsEnabled } = model || {};
+=======
+    const { errors, promptEnabled, rationaleEnabled, spellCheckEnabled, teacherInstructionsEnabled, studentNewCategoryDefaultLabel } = model || {};
+>>>>>>> develop
     const { categoryErrors, correctAnswerErrors } = errors || {};
     const { gridValues, labelValues } = this.state;
     const showPixeGuides = chartDimensions.showInConfigPanel || true;

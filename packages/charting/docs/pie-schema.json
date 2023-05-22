@@ -518,6 +518,11 @@
       "type": "boolean",
       "title": "changeAddCategoryEnabled"
     },
+    "studentNewCategoryDefaultLabel": {
+      "description": "Label for new category in correct response and player's chart",
+      "type": "string",
+      "title": "studentNewCategoryDefaultLabel"
+    },
     "id": {
       "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
       "type": "string",
@@ -546,6 +551,7 @@
     "rubricEnabled",
     "spellCheckEnabled",
     "studentInstructionsEnabled",
+    "studentNewCategoryDefaultLabel",
     "teacherInstructionsEnabled"
   ],
   "definitions": {

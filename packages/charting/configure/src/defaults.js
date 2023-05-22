@@ -35,6 +35,7 @@ export default {
     rationaleEnabled: true,
     teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true,
+    studentNewCategoryDefaultLabel: 'New Category',
     changeInteractiveEnabled: true,
     changeEditableEnabled: true,
     changeAddCategoryEnabled: true,
@@ -66,6 +67,7 @@ export default {
       interactive: true,
       editable: false,
     },
+<<<<<<< HEAD
     availableChartTypes: {
       bar: 'Bar Chart',
       histogram: 'Histogram',
@@ -79,6 +81,8 @@ export default {
       settings: false,
       label: 'Category',
     },
+=======
+>>>>>>> develop
     prompt: {
       settings: true,
       label: 'Item Stem',

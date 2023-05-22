@@ -101,7 +101,7 @@ export class CorrectResponse extends React.Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
     correctAnswerErrors: PropTypes.object,
-    studentNewCategoryDefaultLabel: PropTypes.object,
+    studentNewCategoryDefaultLabel: PropTypes.string,
     model: PropTypes.object.isRequired,
     onChange: PropTypes.func.isRequired,
     charts: PropTypes.array,
@@ -250,7 +250,7 @@ export class CorrectResponse extends React.Component {
                 title={model.title}
                 onDataChange={(data) => this.changeData(data)}
                 addCategoryEnabled={model.addCategoryEnabled}
-                categoryDefaultLabel={studentNewCategoryDefaultLabel?.label}
+                categoryDefaultLabel={studentNewCategoryDefaultLabel}
                 error={error}
               />
             </div>
