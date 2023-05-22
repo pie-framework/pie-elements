@@ -160,18 +160,6 @@ Indicates if new category is interactive
 
 Indicates if new category is editable
 
-# `studentNewCategoryDefaultLabel` (object, required)
-
-Properties of the `studentNewCategoryDefaultLabel` object:
-
-## `settings` (boolean)
-
-Indicates if the item has to be displayed in the Settings Panel
-
-## `label` (string)
-
-Indicates the label for the item that has to be displayed in the Settings Panel
-
 # `maxImageWidth` (object)
 
 Properties of the `maxImageWidth` object:

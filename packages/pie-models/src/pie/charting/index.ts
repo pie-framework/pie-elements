@@ -144,6 +144,11 @@ export interface ChartingPie extends PieModel {
 
   /** Indicates if teacher can enable/disable addCategoryEnabled */
   changeAddCategoryEnabled: boolean;
+
+  /**
+   * Label for new category in correct response and player's chart
+   */
+  studentNewCategoryDefaultLabel: string;
 }
 
 interface LabelsPlaceholderConfigProp extends ConfigurePropWithEnabled {
@@ -275,11 +280,6 @@ export interface ChartingConfigure extends PromptConfig, CommonConfigSettings {
    * Coonfiguration for new category in define chart
    */
   authorNewCategoryDefaults: AuthorNewCategoryDefaults;
-
-  /**
-   * Label for new category in correct response and player's chart
-   */
-  studentNewCategoryDefaultLabel: ConfigureProp;
 
   /**
    * Maximum image width for input fields
