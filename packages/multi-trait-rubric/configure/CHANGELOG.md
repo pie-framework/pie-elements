@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.7.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-configure@2.7.2...@pie-element/multi-trait-rubric-configure@2.7.3) (2023-05-02)
+
+
+### Bug Fixes
+
+* update pie-libs PD-2755, PD-2625, PD-2119 ([698446b](https://github.com/pie-framework/pie-elements/commit/698446b29a553a022c91825118370faae824b723))
+* update pie-libs PD-2755, PD-2625, PD-491, PD-2753, PD-2758, PD-2720, PD-2770 ([2cf9ffa](https://github.com/pie-framework/pie-elements/commit/2cf9ffa4fbef6f2ebc0924f305debc9fc6560a75))
+* **multi-trait-rubric:** fix scrolling issue on add description PD-2741 ([e5b309c](https://github.com/pie-framework/pie-elements/commit/e5b309c1944ba6e6d473c020344c52fb034582de))
+* update pie-libs (fix eslint problems PD-2732) ([3fa630e](https://github.com/pie-framework/pie-elements/commit/3fa630eb96b116cb685ab58fbf216fb572d1c333))
+* **multi-trait-rubric:** set default minNoOfScales to 1 PD-2740 ([4f61a21](https://github.com/pie-framework/pie-elements/commit/4f61a21932e75914ce9207ea1e56f2c08a152d8a))
+* **multi-trait-rubric:** use traitLabel as default value instead of 'Trait' PD-1582 ([d6d7049](https://github.com/pie-framework/pie-elements/commit/d6d70490060220d0282d38e5a71e1f76a784dbda))
+
+
+
+
+
 ## [2.7.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-configure@2.7.1...@pie-element/multi-trait-rubric-configure@2.7.2) (2023-04-25)
 
 

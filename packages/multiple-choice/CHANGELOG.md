@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.11.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@7.11.2...@pie-element/multiple-choice@7.11.3) (2023-05-02)
+
+
+### Bug Fixes
+
+* update pie-libs PD-2755, PD-2625, PD-2119 ([698446b](https://github.com/pie-framework/pie-elements/commit/698446b29a553a022c91825118370faae824b723))
+* update pie-libs PD-2755, PD-2625, PD-491, PD-2753, PD-2758, PD-2720, PD-2770 ([2cf9ffa](https://github.com/pie-framework/pie-elements/commit/2cf9ffa4fbef6f2ebc0924f305debc9fc6560a75))
+* **multiple-choice:** fix vertical allignment within choice labels ([25b2602](https://github.com/pie-framework/pie-elements/commit/25b2602c25ecb6b1b5d867a194e9e8071346b530))
+* **multiple-choice:** fix vertical allignment within choice labels PD-2720 ([7434961](https://github.com/pie-framework/pie-elements/commit/74349619147a5b9cbd40930e914e9755c1cdebf2))
+* update pie-libs (fix eslint problems PD-2732) ([3fa630e](https://github.com/pie-framework/pie-elements/commit/3fa630eb96b116cb685ab58fbf216fb572d1c333))
+
+
+
+
+
 ## [7.11.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@7.11.1...@pie-element/multiple-choice@7.11.2) (2023-04-25)
 
 

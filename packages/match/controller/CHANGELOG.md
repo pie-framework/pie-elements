@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.8.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-controller@4.8.4...@pie-element/match-controller@4.8.5) (2023-05-02)
+
+
+### Bug Fixes
+
+* remove this ([622bafc](https://github.com/pie-framework/pie-elements/commit/622bafcea2e66b1fa4778a39f8454904400c3f92))
+* update pie-libs (fix eslint problems PD-2732) ([3fa630e](https://github.com/pie-framework/pie-elements/commit/3fa630eb96b116cb685ab58fbf216fb572d1c333))
+* **match:** fix validation method PD-2752 ([1a92b96](https://github.com/pie-framework/pie-elements/commit/1a92b9654897f5dcd37a0cefd007e18036ce034a))
+
+
+
+
+
 ## [4.8.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-controller@4.8.3...@pie-element/match-controller@4.8.4) (2023-04-25)
 
 
