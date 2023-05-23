@@ -152,7 +152,6 @@ export function model(question, session, env) {
     const normalizedQuestion = normalize(question);
     const {
       addCategoryEnabled,
-      categoryDefaultLabel,
       chartType,
       data,
       domain,
@@ -167,13 +166,13 @@ export function model(question, session, env) {
       teacherInstructionsEnabled,
       correctAnswer,
       scoringType,
+      studentNewCategoryDefaultLabel,
     } = normalizedQuestion;
 
     const correctInfo = { correctness: 'incorrect', score: '0%' };
 
     const base = {
       addCategoryEnabled,
-      categoryDefaultLabel,
       chartType,
       data: filterCategories(data),
       domain,
@@ -186,6 +185,7 @@ export function model(question, session, env) {
       correctness: correctInfo,
       disabled: env.mode !== 'gather',
       scoringType,
+      studentNewCategoryDefaultLabel,
     };
 
     const answers = filterCategories(getScore(normalizedQuestion, session, env).answers);

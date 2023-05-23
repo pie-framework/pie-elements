@@ -35,7 +35,7 @@ interface Category {
   /** Indicates category value */
   value: number;
 
-  /** Indicates if category label & value are interactive */
+  /** Indicates if category value is interactive */
   interactive: boolean;
 
   /** Indicates if category label is editable */
@@ -49,6 +49,26 @@ interface Category {
     value: 'correct' | 'incorrect';
     label: 'correct' | 'incorrect';
   };
+}
+
+interface AvailableChartTypes {
+  /** Indicates if bar chart is available and the label used for it. */
+  bar: string;
+
+  /** Indicates if histogram is available and the label used for it. */
+  histogram: string;
+
+  /** Indicates if line chart with dots is available and the label used for it. */
+  lineDot: string;
+
+  /** Indicates if line chart with crosses is available and the label used for it. */
+  lineCross: string;
+
+  /** Indicates if dot plot is available and the label used for it. */
+  dotPlot: string;
+
+  /** Indicates if line plot is available and the label used for it. */
+  linePlot: string;
 }
 
 interface Answer {
@@ -79,9 +99,6 @@ interface Placeholder {
 export interface ChartingPie extends PieModel {
   /** Indicates if user can add more categories */
   addCategoryEnabled: boolean;
-
-  /** Indicates default value for a new category's label */
-  categoryDefaultLabel: string;
 
   chartType: 'bar' | 'histogram' | 'lineCross' | 'lineDot' | 'dorPlot' | 'linePlot';
 
@@ -138,6 +155,20 @@ export interface ChartingPie extends PieModel {
 
   /** Indicates if Rubric is enabled */
   rubricEnabled: boolean;
+
+  /** Indicates if teacher can enable/disable data[]:interactive */
+  changeInteractiveEnabled: boolean;
+
+  /** Indicates if teacher can enable/disable data[]:editable */
+  changeEditableEnabled: boolean;
+
+  /** Indicates if teacher can enable/disable addCategoryEnabled */
+  changeAddCategoryEnabled: boolean;
+
+  /**
+   * Label for new category in correct response and player's chart
+   */
+  studentNewCategoryDefaultLabel: string;
 }
 
 interface LabelsPlaceholderConfigProp extends ConfigurePropWithEnabled {
@@ -160,6 +191,54 @@ interface LabelsPlaceholderConfigProp extends ConfigurePropWithEnabled {
    * Indicates the placeholder for the left label
    */
   left?: string;
+}
+
+interface AuthorNewCategoryDefaults {
+  /**
+   * Indicates if the item has to be displayed in the Settings Panel
+   */
+  settings?: boolean;
+
+  /**
+   * Indicates the label for the new category
+   */
+  label?: string;
+
+  /** Indicates if new category is interactive */
+  interactive?: boolean;
+
+  /** Indicates if new category is editable */
+  editable?: boolean;
+}
+
+interface ChartingOption {
+  /**
+   * Indicates if the item has to be displayed in the Settings Panel
+   */
+  settings?: boolean;
+
+  /**
+   * Indicates the label for the option
+   */
+  authoringLabel?: string;
+
+  /**
+   * Indicates the label for the item that has to be displayed in the Settings Panel
+   */
+  settingsLabel?: string;
+}
+
+interface ChartingOptions {
+  /** Indicates if teacher can enable/disable data[]:interactive */
+  changeInteractive?: ChartingOption;
+
+  /**
+   *  Indicates if teacher can enable/disable data[]:editable
+   */
+  changeEditable?: ChartingOption;
+
+  /** Indicates if teacher can enable/disable addCategoryEnabled */
+  addCategory?: ChartingOption;
 }
 
 /**
@@ -218,6 +297,11 @@ export interface ChartingConfigure extends PromptConfig, CommonConfigSettings {
   title?: ConfigurePropWithEnabled;
 
   /**
+   * Coonfiguration for new category in define chart
+   */
+  authorNewCategoryDefaults: AuthorNewCategoryDefaults;
+
+  /**
    * Maximum image width for input fields
    */
   maxImageWidth?: ConfigureMaxImageDimensionsProp;
@@ -231,4 +315,19 @@ export interface ChartingConfigure extends PromptConfig, CommonConfigSettings {
    * Rubric configuration - only relevant in environments that use pie-player-components
    */
   withRubric?: ConfigureProp;
+
+  /**
+   * Authoring view settings for Charting
+   */
+  chartingOptions?: ChartingOptions;
+
+  /**
+   * Indicates the chart types that are available
+   */
+  availableChartTypes?: AvailableChartTypes;
+
+  /**
+   * Indicates the label for the chart type
+   */
+  chartTypeLabel: string;
 }

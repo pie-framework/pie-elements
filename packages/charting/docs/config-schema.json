@@ -182,6 +182,32 @@
         }
       }
     },
+    "authorNewCategoryDefaults": {
+      "title": "AuthorNewCategoryDefaults",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "Indicates if the item has to be displayed in the Settings Panel",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the new category",
+          "type": "string",
+          "title": "label"
+        },
+        "interactive": {
+          "description": "Indicates if new category is interactive",
+          "type": "boolean",
+          "title": "interactive"
+        },
+        "editable": {
+          "description": "Indicates if new category is editable",
+          "type": "boolean",
+          "title": "editable"
+        }
+      }
+    },
     "maxImageWidth": {
       "title": "ConfigureMaxImageDimensionsProp",
       "type": "object",
@@ -239,6 +265,124 @@
           "title": "label"
         }
       }
+    },
+    "chartingOptions": {
+      "title": "ChartingOptions",
+      "type": "object",
+      "properties": {
+        "changeInteractive": {
+          "title": "ChartingOption",
+          "type": "object",
+          "properties": {
+            "settings": {
+              "description": "Indicates if the item has to be displayed in the Settings Panel",
+              "type": "boolean",
+              "title": "settings"
+            },
+            "authoringLabel": {
+              "description": "Indicates the label for the option",
+              "type": "string",
+              "title": "authoringLabel"
+            },
+            "settingsLabel": {
+              "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+              "type": "string",
+              "title": "settingsLabel"
+            }
+          }
+        },
+        "changeEditable": {
+          "title": "ChartingOption",
+          "type": "object",
+          "properties": {
+            "settings": {
+              "description": "Indicates if the item has to be displayed in the Settings Panel",
+              "type": "boolean",
+              "title": "settings"
+            },
+            "authoringLabel": {
+              "description": "Indicates the label for the option",
+              "type": "string",
+              "title": "authoringLabel"
+            },
+            "settingsLabel": {
+              "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+              "type": "string",
+              "title": "settingsLabel"
+            }
+          }
+        },
+        "addCategory": {
+          "title": "ChartingOption",
+          "type": "object",
+          "properties": {
+            "settings": {
+              "description": "Indicates if the item has to be displayed in the Settings Panel",
+              "type": "boolean",
+              "title": "settings"
+            },
+            "authoringLabel": {
+              "description": "Indicates the label for the option",
+              "type": "string",
+              "title": "authoringLabel"
+            },
+            "settingsLabel": {
+              "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+              "type": "string",
+              "title": "settingsLabel"
+            }
+          }
+        }
+      }
+    },
+    "availableChartTypes": {
+      "title": "AvailableChartTypes",
+      "type": "object",
+      "properties": {
+        "bar": {
+          "description": "Indicates if bar chart is available and the label used for it.",
+          "type": "string",
+          "title": "bar"
+        },
+        "histogram": {
+          "description": "Indicates if histogram is available and the label used for it.",
+          "type": "string",
+          "title": "histogram"
+        },
+        "lineDot": {
+          "description": "Indicates if line chart with dots is available and the label used for it.",
+          "type": "string",
+          "title": "lineDot"
+        },
+        "lineCross": {
+          "description": "Indicates if line chart with crosses is available and the label used for it.",
+          "type": "string",
+          "title": "lineCross"
+        },
+        "dotPlot": {
+          "description": "Indicates if dot plot is available and the label used for it.",
+          "type": "string",
+          "title": "dotPlot"
+        },
+        "linePlot": {
+          "description": "Indicates if line plot is available and the label used for it.",
+          "type": "string",
+          "title": "linePlot"
+        }
+      },
+      "required": [
+        "bar",
+        "dotPlot",
+        "histogram",
+        "lineCross",
+        "lineDot",
+        "linePlot"
+      ]
+    },
+    "chartTypeLabel": {
+      "description": "Indicates the label for the chart type",
+      "type": "string",
+      "title": "chartTypeLabel"
     },
     "showPrompt": {
       "description": "Determines whether prompt field will be displayed or not",
@@ -303,6 +447,10 @@
       "title": "settingsPartialScoring"
     }
   },
+  "required": [
+    "authorNewCategoryDefaults",
+    "chartTypeLabel"
+  ],
   "definitions": {
     "ConfigureProp": {
       "title": "ConfigureProp",
@@ -382,6 +530,32 @@
         }
       }
     },
+    "AuthorNewCategoryDefaults": {
+      "title": "AuthorNewCategoryDefaults",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "Indicates if the item has to be displayed in the Settings Panel",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the new category",
+          "type": "string",
+          "title": "label"
+        },
+        "interactive": {
+          "description": "Indicates if new category is interactive",
+          "type": "boolean",
+          "title": "interactive"
+        },
+        "editable": {
+          "description": "Indicates if new category is editable",
+          "type": "boolean",
+          "title": "editable"
+        }
+      }
+    },
     "ConfigureMaxImageDimensionsProp": {
       "title": "ConfigureMaxImageDimensionsProp",
       "type": "object",
@@ -402,6 +576,140 @@
           "title": "rationale"
         }
       }
+    },
+    "ChartingOptions": {
+      "title": "ChartingOptions",
+      "type": "object",
+      "properties": {
+        "changeInteractive": {
+          "title": "ChartingOption",
+          "type": "object",
+          "properties": {
+            "settings": {
+              "description": "Indicates if the item has to be displayed in the Settings Panel",
+              "type": "boolean",
+              "title": "settings"
+            },
+            "authoringLabel": {
+              "description": "Indicates the label for the option",
+              "type": "string",
+              "title": "authoringLabel"
+            },
+            "settingsLabel": {
+              "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+              "type": "string",
+              "title": "settingsLabel"
+            }
+          }
+        },
+        "changeEditable": {
+          "title": "ChartingOption",
+          "type": "object",
+          "properties": {
+            "settings": {
+              "description": "Indicates if the item has to be displayed in the Settings Panel",
+              "type": "boolean",
+              "title": "settings"
+            },
+            "authoringLabel": {
+              "description": "Indicates the label for the option",
+              "type": "string",
+              "title": "authoringLabel"
+            },
+            "settingsLabel": {
+              "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+              "type": "string",
+              "title": "settingsLabel"
+            }
+          }
+        },
+        "addCategory": {
+          "title": "ChartingOption",
+          "type": "object",
+          "properties": {
+            "settings": {
+              "description": "Indicates if the item has to be displayed in the Settings Panel",
+              "type": "boolean",
+              "title": "settings"
+            },
+            "authoringLabel": {
+              "description": "Indicates the label for the option",
+              "type": "string",
+              "title": "authoringLabel"
+            },
+            "settingsLabel": {
+              "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+              "type": "string",
+              "title": "settingsLabel"
+            }
+          }
+        }
+      }
+    },
+    "ChartingOption": {
+      "title": "ChartingOption",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "Indicates if the item has to be displayed in the Settings Panel",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "authoringLabel": {
+          "description": "Indicates the label for the option",
+          "type": "string",
+          "title": "authoringLabel"
+        },
+        "settingsLabel": {
+          "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+          "type": "string",
+          "title": "settingsLabel"
+        }
+      }
+    },
+    "AvailableChartTypes": {
+      "title": "AvailableChartTypes",
+      "type": "object",
+      "properties": {
+        "bar": {
+          "description": "Indicates if bar chart is available and the label used for it.",
+          "type": "string",
+          "title": "bar"
+        },
+        "histogram": {
+          "description": "Indicates if histogram is available and the label used for it.",
+          "type": "string",
+          "title": "histogram"
+        },
+        "lineDot": {
+          "description": "Indicates if line chart with dots is available and the label used for it.",
+          "type": "string",
+          "title": "lineDot"
+        },
+        "lineCross": {
+          "description": "Indicates if line chart with crosses is available and the label used for it.",
+          "type": "string",
+          "title": "lineCross"
+        },
+        "dotPlot": {
+          "description": "Indicates if dot plot is available and the label used for it.",
+          "type": "string",
+          "title": "dotPlot"
+        },
+        "linePlot": {
+          "description": "Indicates if line plot is available and the label used for it.",
+          "type": "string",
+          "title": "linePlot"
+        }
+      },
+      "required": [
+        "bar",
+        "dotPlot",
+        "histogram",
+        "lineCross",
+        "lineDot",
+        "linePlot"
+      ]
     }
   },
   "$schema": "http://json-schema.org/draft-07/schema#"

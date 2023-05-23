@@ -6,10 +6,6 @@ The schema defines the following properties:
 
 Indicates if user can add more categories
 
-# `categoryDefaultLabel` (string, required)
-
-Indicates default value for a new category's label
-
 # `chartType` (string, enum, required)
 
 This element must be one of the following enum values:
@@ -170,6 +166,22 @@ Indicates if Teacher Instructions are enabled
 
 Indicates if Rubric is enabled
 
+# `changeInteractiveEnabled` (boolean, required)
+
+Indicates if teacher can enable/disable data[]:interactive
+
+# `changeEditableEnabled` (boolean, required)
+
+Indicates if teacher can enable/disable data[]:editable
+
+# `changeAddCategoryEnabled` (boolean, required)
+
+Indicates if teacher can enable/disable addCategoryEnabled
+
+# `studentNewCategoryDefaultLabel` (string, required)
+
+Label for new category in correct response and player's chart
+
 # `id` (string, required)
 
 Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.
@@ -246,6 +258,26 @@ Indicates the label for the item that has to be displayed in the Settings Panel
 Indicates the value of the item if it affects config-ui
 (eg.: if item is a switch and displaying an input on the config-ui depends on the switch value: on/off)
 
+## `AuthorNewCategoryDefaults` (object)
+
+Properties of the `AuthorNewCategoryDefaults` object:
+
+### `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+### `label` (string)
+
+Indicates the label for the new category
+
+### `interactive` (boolean)
+
+Indicates if new category is interactive
+
+### `editable` (boolean)
+
+Indicates if new category is editable
+
 ## `ConfigureMaxImageDimensionsProp` (object)
 
 Properties of the `ConfigureMaxImageDimensionsProp` object:
@@ -261,6 +293,102 @@ Indicates the max dimension for images in prompt - this is also the default dime
 ### `rationale` (number)
 
 Indicates the max dimension for images in rationale
+
+## `ChartingOptions` (object)
+
+Properties of the `ChartingOptions` object:
+
+### `changeInteractive` (object)
+
+Properties of the `changeInteractive` object:
+
+#### `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+#### `authoringLabel` (string)
+
+Indicates the label for the option
+
+#### `settingsLabel` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
+
+### `changeEditable` (object)
+
+Properties of the `changeEditable` object:
+
+#### `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+#### `authoringLabel` (string)
+
+Indicates the label for the option
+
+#### `settingsLabel` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
+
+### `addCategory` (object)
+
+Properties of the `addCategory` object:
+
+#### `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+#### `authoringLabel` (string)
+
+Indicates the label for the option
+
+#### `settingsLabel` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
+
+## `ChartingOption` (object)
+
+Properties of the `ChartingOption` object:
+
+### `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+### `authoringLabel` (string)
+
+Indicates the label for the option
+
+### `settingsLabel` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
+
+## `AvailableChartTypes` (object)
+
+Properties of the `AvailableChartTypes` object:
+
+### `bar` (string, required)
+
+Indicates if bar chart is available and the label used for it.
+
+### `histogram` (string, required)
+
+Indicates if histogram is available and the label used for it.
+
+### `lineDot` (string, required)
+
+Indicates if line chart with dots is available and the label used for it.
+
+### `lineCross` (string, required)
+
+Indicates if line chart with crosses is available and the label used for it.
+
+### `dotPlot` (string, required)
+
+Indicates if dot plot is available and the label used for it.
+
+### `linePlot` (string, required)
+
+Indicates if line plot is available and the label used for it.
 
 ## `Answer` (object)
 
@@ -292,7 +420,7 @@ Indicates category value
 
 ### `interactive` (boolean, required)
 
-Indicates if category label & value are interactive
+Indicates if category value is interactive
 
 ### `editable` (boolean, required)
 

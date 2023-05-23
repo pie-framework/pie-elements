@@ -5,11 +5,21 @@ import { RUBRIC_TYPES } from '@pie-lib/rubric';
 const RUBRIC_TAG_NAME = 'complex-rubric-simple';
 const MULTI_TRAIT_RUBRIC_TAG_NAME = 'complex-rubric-multi-trait';
 
-class ComplexRubricSimple extends Rubric {
-}
+class ComplexRubricSimple extends Rubric {}
+class ComplexRubricMultiTrait extends MultiTraitRubric {}
 
-class ComplexRubricMultiTrait extends MultiTraitRubric {
-}
+const preparePrintModel = (model, opts) => {
+  const instr = opts.role === 'instructor';
+
+  if (!instr) {
+    return {};
+  }
+
+  model.mode = 'evaluate';
+  model.animationsDisabled = true;
+
+  return model;
+};
 
 const defineRubrics = () => {
   if (!customElements.get(RUBRIC_TAG_NAME)) {
@@ -23,11 +33,12 @@ const defineRubrics = () => {
 
 defineRubrics();
 
-class ComplexRubric extends HTMLElement {
+class ComplexRubricPrint extends HTMLElement {
   constructor() {
     super();
     this._model = {};
     this._type = RUBRIC_TYPES.SIMPLE_RUBRIC;
+    this._options = null;
   }
 
   set type(t) {
@@ -64,24 +75,26 @@ class ComplexRubric extends HTMLElement {
 
   setRubricModel(simpleRubric) {
     if (this._model && this._model.rubrics && this._model.rubrics.simpleRubric) {
-      const { mode } = this._model;
-
-      simpleRubric.model = {
-        ...this._model.rubrics.simpleRubric,
-        mode,
-      };
+      simpleRubric.model = preparePrintModel(this._model.rubrics.simpleRubric, this._options);
     }
   }
 
   setMultiTraitRubricModel(multiTraitRubric) {
     if (this._model && this._model.rubrics && this._model.rubrics.multiTraitRubric) {
-      const { mode } = this._model;
+      const { scales, excludeZero } = this._model.rubrics.multiTraitRubric || {};
+      const parsedScales = (scales || []).map((scale) => ({ ...scale, excludeZero }));
 
       multiTraitRubric.model = {
-        ...this._model.rubrics.multiTraitRubric,
-        mode,
+        ...preparePrintModel(this._model.rubrics.multiTraitRubric, this._options),
+        visible: true,
+        arrowsDisabled: true,
+        scales: parsedScales,
       };
     }
+  }
+
+  set options(o) {
+    this._options = o;
   }
 
   get multiTraitRubric() {
@@ -97,29 +110,10 @@ class ComplexRubric extends HTMLElement {
   }
 
   _render() {
-    const rubricTag =
-      this._type === RUBRIC_TYPES.SIMPLE_RUBRIC
-        ? `<${RUBRIC_TAG_NAME} id="simpleRubric" />`
-        : `<${MULTI_TRAIT_RUBRIC_TAG_NAME} id="multiTraitRubric" />`;
-
-    this.innerHTML = rubricTag;
-
-    // when item is re-rendered (due to connectedCallback), if the custom element is already defined,
-    // we need to set the model and session, otherwise the setters are not reached again
-    switch (this._type) {
-      case RUBRIC_TYPES.SIMPLE_RUBRIC:
-      default:
-        if (customElements.get(RUBRIC_TAG_NAME)) {
-          this.setRubricModel(this.simpleRubric);
-        }
-        break;
-      case RUBRIC_TYPES.MULTI_TRAIT_RUBRIC:
-        if (customElements.get(MULTI_TRAIT_RUBRIC_TAG_NAME)) {
-          this.setMultiTraitRubricModel(this.multiTraitRubric);
-        }
-        break;
-    }
+    this.innerHTML = this._type === RUBRIC_TYPES.SIMPLE_RUBRIC
+      ? `<${RUBRIC_TAG_NAME} id="simpleRubric" />`
+      : `<${MULTI_TRAIT_RUBRIC_TAG_NAME} id="multiTraitRubric" />`;
   }
 }
 
-export default ComplexRubric;
+export default ComplexRubricPrint;

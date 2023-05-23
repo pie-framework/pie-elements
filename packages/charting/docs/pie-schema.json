@@ -8,11 +8,6 @@
       "type": "boolean",
       "title": "addCategoryEnabled"
     },
-    "categoryDefaultLabel": {
-      "description": "Indicates default value for a new category's label",
-      "type": "string",
-      "title": "categoryDefaultLabel"
-    },
     "chartType": {
       "enum": [
         "bar",
@@ -53,7 +48,7 @@
                   "title": "value"
                 },
                 "interactive": {
-                  "description": "Indicates if category label & value are interactive",
+                  "description": "Indicates if category value is interactive",
                   "type": "boolean",
                   "title": "interactive"
                 },
@@ -123,7 +118,7 @@
                     "title": "value"
                   },
                   "interactive": {
-                    "description": "Indicates if category label & value are interactive",
+                    "description": "Indicates if category value is interactive",
                     "type": "boolean",
                     "title": "interactive"
                   },
@@ -203,7 +198,7 @@
               "title": "value"
             },
             "interactive": {
-              "description": "Indicates if category label & value are interactive",
+              "description": "Indicates if category value is interactive",
               "type": "boolean",
               "title": "interactive"
             },
@@ -273,7 +268,7 @@
                 "title": "value"
               },
               "interactive": {
-                "description": "Indicates if category label & value are interactive",
+                "description": "Indicates if category value is interactive",
                 "type": "boolean",
                 "title": "interactive"
               },
@@ -508,6 +503,26 @@
       "type": "boolean",
       "title": "rubricEnabled"
     },
+    "changeInteractiveEnabled": {
+      "description": "Indicates if teacher can enable/disable data[]:interactive",
+      "type": "boolean",
+      "title": "changeInteractiveEnabled"
+    },
+    "changeEditableEnabled": {
+      "description": "Indicates if teacher can enable/disable data[]:editable",
+      "type": "boolean",
+      "title": "changeEditableEnabled"
+    },
+    "changeAddCategoryEnabled": {
+      "description": "Indicates if teacher can enable/disable addCategoryEnabled",
+      "type": "boolean",
+      "title": "changeAddCategoryEnabled"
+    },
+    "studentNewCategoryDefaultLabel": {
+      "description": "Label for new category in correct response and player's chart",
+      "type": "string",
+      "title": "studentNewCategoryDefaultLabel"
+    },
     "id": {
       "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
       "type": "string",
@@ -521,7 +536,9 @@
   },
   "required": [
     "addCategoryEnabled",
-    "categoryDefaultLabel",
+    "changeAddCategoryEnabled",
+    "changeEditableEnabled",
+    "changeInteractiveEnabled",
     "chartType",
     "correctAnswer",
     "data",
@@ -534,6 +551,7 @@
     "rubricEnabled",
     "spellCheckEnabled",
     "studentInstructionsEnabled",
+    "studentNewCategoryDefaultLabel",
     "teacherInstructionsEnabled"
   ],
   "definitions": {
@@ -615,6 +633,32 @@
         }
       }
     },
+    "AuthorNewCategoryDefaults": {
+      "title": "AuthorNewCategoryDefaults",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "Indicates if the item has to be displayed in the Settings Panel",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the new category",
+          "type": "string",
+          "title": "label"
+        },
+        "interactive": {
+          "description": "Indicates if new category is interactive",
+          "type": "boolean",
+          "title": "interactive"
+        },
+        "editable": {
+          "description": "Indicates if new category is editable",
+          "type": "boolean",
+          "title": "editable"
+        }
+      }
+    },
     "ConfigureMaxImageDimensionsProp": {
       "title": "ConfigureMaxImageDimensionsProp",
       "type": "object",
@@ -635,6 +679,140 @@
           "title": "rationale"
         }
       }
+    },
+    "ChartingOptions": {
+      "title": "ChartingOptions",
+      "type": "object",
+      "properties": {
+        "changeInteractive": {
+          "title": "ChartingOption",
+          "type": "object",
+          "properties": {
+            "settings": {
+              "description": "Indicates if the item has to be displayed in the Settings Panel",
+              "type": "boolean",
+              "title": "settings"
+            },
+            "authoringLabel": {
+              "description": "Indicates the label for the option",
+              "type": "string",
+              "title": "authoringLabel"
+            },
+            "settingsLabel": {
+              "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+              "type": "string",
+              "title": "settingsLabel"
+            }
+          }
+        },
+        "changeEditable": {
+          "title": "ChartingOption",
+          "type": "object",
+          "properties": {
+            "settings": {
+              "description": "Indicates if the item has to be displayed in the Settings Panel",
+              "type": "boolean",
+              "title": "settings"
+            },
+            "authoringLabel": {
+              "description": "Indicates the label for the option",
+              "type": "string",
+              "title": "authoringLabel"
+            },
+            "settingsLabel": {
+              "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+              "type": "string",
+              "title": "settingsLabel"
+            }
+          }
+        },
+        "addCategory": {
+          "title": "ChartingOption",
+          "type": "object",
+          "properties": {
+            "settings": {
+              "description": "Indicates if the item has to be displayed in the Settings Panel",
+              "type": "boolean",
+              "title": "settings"
+            },
+            "authoringLabel": {
+              "description": "Indicates the label for the option",
+              "type": "string",
+              "title": "authoringLabel"
+            },
+            "settingsLabel": {
+              "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+              "type": "string",
+              "title": "settingsLabel"
+            }
+          }
+        }
+      }
+    },
+    "ChartingOption": {
+      "title": "ChartingOption",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "Indicates if the item has to be displayed in the Settings Panel",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "authoringLabel": {
+          "description": "Indicates the label for the option",
+          "type": "string",
+          "title": "authoringLabel"
+        },
+        "settingsLabel": {
+          "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+          "type": "string",
+          "title": "settingsLabel"
+        }
+      }
+    },
+    "AvailableChartTypes": {
+      "title": "AvailableChartTypes",
+      "type": "object",
+      "properties": {
+        "bar": {
+          "description": "Indicates if bar chart is available and the label used for it.",
+          "type": "string",
+          "title": "bar"
+        },
+        "histogram": {
+          "description": "Indicates if histogram is available and the label used for it.",
+          "type": "string",
+          "title": "histogram"
+        },
+        "lineDot": {
+          "description": "Indicates if line chart with dots is available and the label used for it.",
+          "type": "string",
+          "title": "lineDot"
+        },
+        "lineCross": {
+          "description": "Indicates if line chart with crosses is available and the label used for it.",
+          "type": "string",
+          "title": "lineCross"
+        },
+        "dotPlot": {
+          "description": "Indicates if dot plot is available and the label used for it.",
+          "type": "string",
+          "title": "dotPlot"
+        },
+        "linePlot": {
+          "description": "Indicates if line plot is available and the label used for it.",
+          "type": "string",
+          "title": "linePlot"
+        }
+      },
+      "required": [
+        "bar",
+        "dotPlot",
+        "histogram",
+        "lineCross",
+        "lineDot",
+        "linePlot"
+      ]
     },
     "Answer": {
       "title": "Answer",
@@ -664,7 +842,7 @@
                   "title": "value"
                 },
                 "interactive": {
-                  "description": "Indicates if category label & value are interactive",
+                  "description": "Indicates if category value is interactive",
                   "type": "boolean",
                   "title": "interactive"
                 },
@@ -734,7 +912,7 @@
                     "title": "value"
                   },
                   "interactive": {
-                    "description": "Indicates if category label & value are interactive",
+                    "description": "Indicates if category value is interactive",
                     "type": "boolean",
                     "title": "interactive"
                   },
@@ -810,7 +988,7 @@
           "title": "value"
         },
         "interactive": {
-          "description": "Indicates if category label & value are interactive",
+          "description": "Indicates if category value is interactive",
           "type": "boolean",
           "title": "interactive"
         },

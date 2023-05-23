@@ -4,7 +4,7 @@ import cloneDeep from 'lodash/cloneDeep';
 import uniqWith from 'lodash/uniqWith';
 import isEmpty from 'lodash/isEmpty';
 import defaults from './defaults';
-import { equalMarks, sortedAnswers } from './utils';
+import { equalMarks, sortedAnswers, removeInvalidAnswers } from './utils';
 
 import { partialScoring } from '@pie-lib/controller-utils';
 
@@ -38,13 +38,27 @@ export const getAnswerCorrected = ({ sessionAnswers, marks: correctAnswers }) =>
   sessionAnswers = sessionAnswers || [];
   correctAnswers = correctAnswers || [];
 
-  return cloneDeep(sessionAnswers).reduce((correctedAnswer, answer) => {
+  const rez = cloneDeep(sessionAnswers).reduce((correctedAnswer, answer) => {
     const answerIsCorrect = correctAnswers.find((mark) => compareMarks(answer, mark));
 
     answer.correctness = answerIsCorrect ? 'correct' : 'incorrect';
 
     return [...correctedAnswer, answer];
   }, []);
+
+  // add missing objects from correct answer
+  const missingAnswers = cloneDeep(correctAnswers).reduce((correctedAnswer, answer) => {
+    const answerIndex = sessionAnswers.find((mark) => compareMarks(answer, mark));
+
+    if (!answerIndex) {
+      // means that corrected answer is missing from session, so we mark it as missing object
+      return [...correctedAnswer, { ...answer, correctness: 'missing' }];
+    }
+
+    return correctedAnswer;
+  }, []);
+
+  return [...rez, ...missingAnswers];
 };
 
 const getPartialScoring = ({ scoringType, env }) => {
@@ -105,13 +119,16 @@ export const getBestAnswer = (question, session, env = {}) => {
       // returns array of marks, each having 'correctness' property
       const correctedAnswer = getAnswerCorrected({ sessionAnswers, marks });
       const correctMarks = correctedAnswer.filter((answer) => answer.correctness === 'correct');
+      // filter out missing objects because they do not affect the calculation of the score
+      // only correct and incorrect are needed
+      const scoredCorrectedAnswer = correctedAnswer.filter((answer) => answer.correctness !== 'missing');
 
       const maxScore = marks.length;
       let score = correctMarks.length;
 
       // if extra placements
-      if (correctedAnswer.length > maxScore) {
-        score -= correctedAnswer.length - maxScore;
+      if (scoredCorrectedAnswer.length > maxScore) {
+        score -= scoredCorrectedAnswer.length - maxScore;
       }
 
       if (score < 0) {
@@ -147,6 +164,10 @@ export const normalize = (question) => ({ ...defaults, ...question });
 export function model(question, session, env) {
   return new Promise((resolve) => {
     const normalizedQuestion = normalize(question);
+    // ensure removing of invalid answers
+    // need this if undo redo was last operation
+    session.answer = removeInvalidAnswers(session.answer);
+    // console.log('normalizedQuestion', normalizedQuestion);
     const { defaultTool, prompt, promptEnabled, graph, answers, toolbarTools, ...questionProps } =
       normalizedQuestion || {};
     let { arrows } = normalizedQuestion;

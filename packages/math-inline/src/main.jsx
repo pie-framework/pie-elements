@@ -349,7 +349,7 @@ export class Main extends React.Component {
     // Safari Hack: https://stackoverflow.com/a/42764495/5757635
     setTimeout(() => {
       if (ref && IS_SAFARI) {
-        const div = document.querySelector('[role=\'tooltip\']');
+        const div = document.querySelector("[role='tooltip']");
 
         if (div) {
           const el = div.firstChild;
@@ -402,6 +402,7 @@ export class Main extends React.Component {
     const printView = (
       <div className={classes.printContainer}>
         <mq.Static
+          className={classes.static}
           ref={(mqStatic) => (this.mqStatic = mqStatic || this.mqStatic)}
           latex={staticLatex}
           onSubFieldChange={this.subFieldChanged}
@@ -491,6 +492,7 @@ export class Main extends React.Component {
                     )}
                   >
                     <mq.Static
+                      className={classes.static}
                       ref={(mqStatic) => (this.mqStatic = mqStatic || this.mqStatic)}
                       latex={staticLatex}
                       onSubFieldChange={this.subFieldChanged}
@@ -678,6 +680,13 @@ const styles = (theme) => ({
       },
       '& sup': {
         top: 0,
+      },
+    },
+  },
+  static: {
+    '& > .mq-root-block': {
+      '& > .mq-editable-field': {
+        borderColor: color.text(),
       },
     },
   },

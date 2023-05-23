@@ -12,6 +12,7 @@ export const RubricType = PropTypes.shape({
   excludeZero: PropTypes.bool,
   points: PropTypes.arrayOf(PropTypes.string),
   sampleAnswers: PropTypes.arrayOf(PropTypes.string),
+  animationsDisabled: PropTypes.bool,
 });
 
 class Rubric extends React.Component {
@@ -46,7 +47,9 @@ class Rubric extends React.Component {
   };
 
   render() {
-    const { value, classes, animationsDisabled } = this.props;
+    const { value, classes } = this.props;
+    let { animationsDisabled } = this.props;
+    animationsDisabled = animationsDisabled || value.animationsDisabled;
 
     if (value && value.points) {
       const { points, sampleAnswers } = value;

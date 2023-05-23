@@ -10,8 +10,6 @@ import { choiceIsEmpty } from './markupUtils';
 import { withStyles } from '@material-ui/core/styles';
 import { AlertDialog } from '@pie-lib/config-ui';
 
-window.renMath = renderMath;
-
 const styles = (theme) => ({
   design: {
     display: 'flex',
@@ -52,6 +50,7 @@ export class Choices extends React.Component {
   };
 
   state = { showWarning: false };
+  preventDone = false;
 
   componentDidMount() {
     this.rerenderMath();
@@ -232,11 +231,27 @@ export class Choices extends React.Component {
                       disabled: true,
                     },
                   }}
-                  onChange={(val) => this.onChoiceChanged(choice.value, val, choice.id)}
+                  languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+                  onChange={(val) => {
+                    if (this.preventDone) {
+                      return;
+                    }
+
+                    this.onChoiceChanged(choice.value, val, choice.id);
+                  }}
                   onDone={() => {
+                    if (this.preventDone) {
+                      return;
+                    }
+
                     this.setState({
                       focusedEl: undefined,
                     });
+                  }}
+                  onBlur={(e) => {
+                    const inInInsertCharacter = e.relatedTarget && e.relatedTarget.closest('.insert-character-dialog');
+
+                    this.preventDone = inInInsertCharacter;
                   }}
                   disableUnderline
                   toolbarOpts={toolbarOpts}

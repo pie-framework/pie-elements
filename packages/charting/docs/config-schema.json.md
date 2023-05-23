@@ -140,6 +140,26 @@ Indicates the label for the item that has to be displayed in the Settings Panel
 Indicates the value of the item if it affects config-ui
 (eg.: if item is a switch and displaying an input on the config-ui depends on the switch value: on/off)
 
+# `authorNewCategoryDefaults` (object, required)
+
+Properties of the `authorNewCategoryDefaults` object:
+
+## `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+## `label` (string)
+
+Indicates the label for the new category
+
+## `interactive` (boolean)
+
+Indicates if new category is interactive
+
+## `editable` (boolean)
+
+Indicates if new category is editable
+
 # `maxImageWidth` (object)
 
 Properties of the `maxImageWidth` object:
@@ -183,6 +203,90 @@ Indicates if the item has to be displayed in the Settings Panel
 ## `label` (string)
 
 Indicates the label for the item that has to be displayed in the Settings Panel
+
+# `chartingOptions` (object)
+
+Properties of the `chartingOptions` object:
+
+## `changeInteractive` (object)
+
+Properties of the `changeInteractive` object:
+
+### `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+### `authoringLabel` (string)
+
+Indicates the label for the option
+
+### `settingsLabel` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
+
+## `changeEditable` (object)
+
+Properties of the `changeEditable` object:
+
+### `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+### `authoringLabel` (string)
+
+Indicates the label for the option
+
+### `settingsLabel` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
+
+## `addCategory` (object)
+
+Properties of the `addCategory` object:
+
+### `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+### `authoringLabel` (string)
+
+Indicates the label for the option
+
+### `settingsLabel` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
+
+# `availableChartTypes` (object)
+
+Properties of the `availableChartTypes` object:
+
+## `bar` (string, required)
+
+Indicates if bar chart is available and the label used for it.
+
+## `histogram` (string, required)
+
+Indicates if histogram is available and the label used for it.
+
+## `lineDot` (string, required)
+
+Indicates if line chart with dots is available and the label used for it.
+
+## `lineCross` (string, required)
+
+Indicates if line chart with crosses is available and the label used for it.
+
+## `dotPlot` (string, required)
+
+Indicates if dot plot is available and the label used for it.
+
+## `linePlot` (string, required)
+
+Indicates if line plot is available and the label used for it.
+
+# `chartTypeLabel` (string, required)
+
+Indicates the label for the chart type
 
 # `showPrompt` (boolean)
 
@@ -304,6 +408,26 @@ Indicates the label for the item that has to be displayed in the Settings Panel
 Indicates the value of the item if it affects config-ui
 (eg.: if item is a switch and displaying an input on the config-ui depends on the switch value: on/off)
 
+## `AuthorNewCategoryDefaults` (object)
+
+Properties of the `AuthorNewCategoryDefaults` object:
+
+### `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+### `label` (string)
+
+Indicates the label for the new category
+
+### `interactive` (boolean)
+
+Indicates if new category is interactive
+
+### `editable` (boolean)
+
+Indicates if new category is editable
+
 ## `ConfigureMaxImageDimensionsProp` (object)
 
 Properties of the `ConfigureMaxImageDimensionsProp` object:
@@ -319,3 +443,99 @@ Indicates the max dimension for images in prompt - this is also the default dime
 ### `rationale` (number)
 
 Indicates the max dimension for images in rationale
+
+## `ChartingOptions` (object)
+
+Properties of the `ChartingOptions` object:
+
+### `changeInteractive` (object)
+
+Properties of the `changeInteractive` object:
+
+#### `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+#### `authoringLabel` (string)
+
+Indicates the label for the option
+
+#### `settingsLabel` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
+
+### `changeEditable` (object)
+
+Properties of the `changeEditable` object:
+
+#### `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+#### `authoringLabel` (string)
+
+Indicates the label for the option
+
+#### `settingsLabel` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
+
+### `addCategory` (object)
+
+Properties of the `addCategory` object:
+
+#### `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+#### `authoringLabel` (string)
+
+Indicates the label for the option
+
+#### `settingsLabel` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
+
+## `ChartingOption` (object)
+
+Properties of the `ChartingOption` object:
+
+### `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+### `authoringLabel` (string)
+
+Indicates the label for the option
+
+### `settingsLabel` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
+
+## `AvailableChartTypes` (object)
+
+Properties of the `AvailableChartTypes` object:
+
+### `bar` (string, required)
+
+Indicates if bar chart is available and the label used for it.
+
+### `histogram` (string, required)
+
+Indicates if histogram is available and the label used for it.
+
+### `lineDot` (string, required)
+
+Indicates if line chart with dots is available and the label used for it.
+
+### `lineCross` (string, required)
+
+Indicates if line chart with crosses is available and the label used for it.
+
+### `dotPlot` (string, required)
+
+Indicates if dot plot is available and the label used for it.
+
+### `linePlot` (string, required)
+
+Indicates if line plot is available and the label used for it.

@@ -55,7 +55,7 @@ export class GraphingConfig extends React.Component {
     onChange: PropTypes.func.isRequired,
     showLabels: PropTypes.bool,
     showTitle: PropTypes.bool,
-    titlePlaceholder: PropTypes.string
+    titlePlaceholder: PropTypes.string,
   };
 
   constructor(props) {

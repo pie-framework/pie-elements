@@ -14,6 +14,7 @@ const styles = (theme) => ({
     color: color.text(),
   },
   tab: {
+    backgroundColor: color.background(),
     fontSize: '0.8125em',
   },
   stickyTabs: {
@@ -30,7 +31,7 @@ const styles = (theme) => ({
     marginBottom: theme.spacing.unit,
   },
   buttonContainer: {
-    background: theme.palette.common.white,
+    background: color.background(),
   },
 });
 
@@ -42,7 +43,7 @@ function TabContainer(props) {
     <Typography
       component="div"
       role="tabpanel"
-      aria-labelledby= {ariaLabelledby}
+      aria-labelledby={ariaLabelledby}
       id={id}
       style={{
         padding,
@@ -117,7 +118,6 @@ class StimulusTabs extends React.Component {
     }
   };
 
-
   parsedText = (text) => {
     // fix imported audio content for Safari PD-1391
     const div = document.createElement('div');
@@ -143,14 +143,16 @@ class StimulusTabs extends React.Component {
 
     if (tabs && tabs.length > 1) {
       return disabledTabs ? (
-        <div className="passages">
+        <div className={classNames(classes.root, 'passages')}>
           {tabs.map((tab) => (
-            <div key={tab.id}
-            className={`passage-${tab.id}`}
-            id={`tabpanel-${tab.id}`}
-            aria-labelledby={`tab-${tab.id}`}
-            aria-controls={`tabpanel-${tab.id}`}
-            tabIndex="0">
+            <div
+              key={tab.id}
+              className={`passage-${tab.id}`}
+              id={`tabpanel-${tab.id}`}
+              aria-labelledby={`tab-${tab.id}`}
+              aria-controls={`tabpanel-${tab.id}`}
+              tabIndex="0"
+            >
               <TabContainer multiple id={`tabpanel-${tab.id}`} role="tabpanel" ariaLabelledby={`button-${tab.id}`}>
                 <div
                   className={classNames(classes.title, 'title')}
@@ -164,7 +166,7 @@ class StimulusTabs extends React.Component {
           ))}
         </div>
       ) : (
-        <div className={classes.root}>
+        <div className={classNames(classes.root, 'passages')}>
           <Tabs
             classes={{
               root: classes.stickyTabs,
@@ -195,7 +197,13 @@ class StimulusTabs extends React.Component {
 
           {tabs.map((tab) =>
             activeTab === tab.id ? (
-              <TabContainer multiple key={tab.id} id={`tabpanel-${tab.id}`} role="tabpanel" ariaLabelledby={`button-${tab.id}`}>
+              <TabContainer
+                multiple
+                key={tab.id}
+                id={`tabpanel-${tab.id}`}
+                role="tabpanel"
+                ariaLabelledby={`button-${tab.id}`}
+              >
                 <Purpose purpose="passage-text">
                   <div key={tab.id} dangerouslySetInnerHTML={{ __html: this.parsedText(tab.text) }} />
                 </Purpose>

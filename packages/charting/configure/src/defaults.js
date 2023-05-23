@@ -14,7 +14,6 @@
 export default {
   model: {
     addCategoryEnabled: true,
-    categoryDefaultLabel: 'Category',
     chartType: 'lineCross',
     correctAnswer: {},
     data: [],
@@ -36,6 +35,10 @@ export default {
     rationaleEnabled: true,
     teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true,
+    studentNewCategoryDefaultLabel: 'New Category',
+    changeInteractiveEnabled: true,
+    changeEditableEnabled: true,
+    changeAddCategoryEnabled: true,
   },
   configuration: {
     spellCheck: {
@@ -57,6 +60,25 @@ export default {
         max: 700,
         step: 20,
       },
+    },
+    authorNewCategoryDefaults: {
+      settings: false,
+      label: 'Category',
+      interactive: true,
+      editable: false,
+    },
+    availableChartTypes: {
+      bar: 'Bar Chart',
+      histogram: 'Histogram',
+      lineDot: 'Line Chart ●',
+      lineCross: 'Line Chart x',
+      dotPlot: 'Dot/Line Plot ⬤',
+      linePlot: 'Dot/Line Plot X',
+    },
+    chartTypeLabel: 'ChartType',
+    studentNewCategoryDefaultLabel: {
+      settings: false,
+      label: 'Category',
     },
     prompt: {
       settings: true,
@@ -106,6 +128,23 @@ export default {
     withRubric: {
       settings: false,
       label: 'Add Rubric',
+    },
+    chartingOptions: {
+      changeInteractive: {
+        settings: false,
+        authoringLabel: 'Student can set value',
+        settingsLabel: 'Allow non-interactive categories',
+      },
+      changeEditable: {
+        settings: false,
+        authoringLabel: 'Student can edit name',
+        settingsLabel: 'Allow editable category names',
+      },
+      addCategory: {
+        settings: false,
+        authoringLabel: 'Student can add categories',
+        settingsLabel: 'Allow changes to whether students can add categories',
+      },
     },
   },
 };
