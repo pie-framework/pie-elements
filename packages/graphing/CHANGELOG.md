@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.13.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@4.13.3...@pie-element/graphing@4.13.4) (2023-05-02)
+
+
+### Bug Fixes
+
+* update pie-libs PD-2755, PD-2625, PD-2119 ([698446b](https://github.com/pie-framework/pie-elements/commit/698446b29a553a022c91825118370faae824b723))
+* update pie-libs PD-2755, PD-2625, PD-491, PD-2753, PD-2758, PD-2720, PD-2770 ([2cf9ffa](https://github.com/pie-framework/pie-elements/commit/2cf9ffa4fbef6f2ebc0924f305debc9fc6560a75))
+* **graphing:** display the primary correct answer as the default correct answer PD-1756 ([2f95e9e](https://github.com/pie-framework/pie-elements/commit/2f95e9e6e3a3102f761d42c0607aac5e968d2e2a))
+* update pie-libs (fix eslint problems PD-2732) ([3fa630e](https://github.com/pie-framework/pie-elements/commit/3fa630eb96b116cb685ab58fbf216fb572d1c333))
+* **graphing:** hide student's answer when correct response is displayed PD-576 ([3892dbc](https://github.com/pie-framework/pie-elements/commit/3892dbc55a968a5c479189bf86d78796c5884fbb))
+
+
+
+
+
 ## [4.13.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@4.13.2...@pie-element/graphing@4.13.3) (2023-04-25)
 
 

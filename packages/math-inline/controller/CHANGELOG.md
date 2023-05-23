@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.8.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@5.8.3...@pie-element/math-inline-controller@5.8.4) (2023-05-02)
+
+
+### Bug Fixes
+
+* update pie-libs (fix eslint problems PD-2732) ([3fa630e](https://github.com/pie-framework/pie-elements/commit/3fa630eb96b116cb685ab58fbf216fb572d1c333))
+* **math-inline:** enable custom keys in advanced multi PD-1865 ([d7f29de](https://github.com/pie-framework/pie-elements/commit/d7f29def38bf6db8023fa8fe178964f022b89855))
+* **pie-elements:** avoid logs pbs and add fragments as containers ([b4bd2b7](https://github.com/pie-framework/pie-elements/commit/b4bd2b7f994d7affdac443bd486047e5a629b763))
+
+
+
+
+
 ## [5.8.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@5.8.2...@pie-element/math-inline-controller@5.8.3) (2023-04-25)
 
 

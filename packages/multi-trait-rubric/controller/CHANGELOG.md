@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-controller@1.3.3...@pie-element/multi-trait-rubric-controller@1.3.4) (2023-05-02)
+
+
+### Bug Fixes
+
+* update pie-libs (fix eslint problems PD-2732) ([3fa630e](https://github.com/pie-framework/pie-elements/commit/3fa630eb96b116cb685ab58fbf216fb572d1c333))
+* **pie-elements:** avoid logs pbs and add fragments as containers ([b4bd2b7](https://github.com/pie-framework/pie-elements/commit/b4bd2b7f994d7affdac443bd486047e5a629b763))
+
+
+
+
+
 ## [1.3.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-controller@1.3.2...@pie-element/multi-trait-rubric-controller@1.3.3) (2023-04-25)
 
 
