@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.9.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@5.8.3...@pie-element/hotspot-configure@5.9.0) (2023-05-23)
+
+
+### Bug Fixes
+
+* trigger build PD-2707 ([7fe9cac](https://github.com/pie-framework/pie-elements/commit/7fe9cac35bee1934e607232a71cd49be8c40dd55))
+* update pie-lib PD-2777, PD-1914, PD-2066 ([7102893](https://github.com/pie-framework/pie-elements/commit/71028930a6dc554eb587cf4de0c1d0d28bfff1f5))
+* update pie-libs PD-2774, PD-1026 ([04f8cd0](https://github.com/pie-framework/pie-elements/commit/04f8cd000afdb2ccb0c25146d46acb60c5fea651))
+* use getter instead of property PD-2707 ([56d9c9e](https://github.com/pie-framework/pie-elements/commit/56d9c9ebab92481ba3c1dd6a4681e324b02515d4))
+
+
+### Features
+
+* ability to upload images when using imageSupoort from pie-api-components PD-2707 ([685f3b0](https://github.com/pie-framework/pie-elements/commit/685f3b035d86c5f4ad60cdb9ec84690d5ccaa4fc))
+
+
+
+
+
 ## [5.8.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@5.8.2...@pie-element/hotspot-configure@5.8.3) (2023-05-02)
 
 

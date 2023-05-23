@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.8.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@5.8.4...@pie-element/math-inline-controller@5.8.5) (2023-05-23)
+
+
+### Bug Fixes
+
+* **math-inline:** show note when multiple responses are defined PD-2044 ([20360e1](https://github.com/pie-framework/pie-elements/commit/20360e1536a7d972cec5da656e506dd25abe127e))
+
+
+
+
+
 ## [5.8.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@5.8.3...@pie-element/math-inline-controller@5.8.4) (2023-05-02)
 
 

@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.11.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.11.2...@pie-element/passage@1.11.3) (2023-05-23)
+
+
+### Bug Fixes
+
+* **passage:** adjust title color contrast PD-2064 ([4058fcd](https://github.com/pie-framework/pie-elements/commit/4058fcde2b95c3cddaf8be95d36b2f838a76759a))
+* update pie-libs PD-2774, PD-1026 ([04f8cd0](https://github.com/pie-framework/pie-elements/commit/04f8cd000afdb2ccb0c25146d46acb60c5fea651))
+
+
+
+
+
 ## [1.11.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.11.1...@pie-element/passage@1.11.2) (2023-05-02)
 
 

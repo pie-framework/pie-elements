@@ -3,6 +3,45 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-configure@5.8.3...@pie-element/charting-configure@6.0.0) (2023-05-23)
+
+
+### Bug Fixes
+
+* update pie-lib PD-2777, PD-1914, PD-2066 ([7102893](https://github.com/pie-framework/pie-elements/commit/71028930a6dc554eb587cf4de0c1d0d28bfff1f5))
+* **charting:** move studentNewCategoryDefaultLabel from config to model, since it is needed in player ([60154f2](https://github.com/pie-framework/pie-elements/commit/60154f25ff1046b0cbcb3e65ccdb1126de85337f))
+* update pie-lib PD-2775 ([0aa4731](https://github.com/pie-framework/pie-elements/commit/0aa473194410242abfc74adc67a27d885b5a0f17))
+* update pie-lib PD-2821, PD-2776 ([134ec97](https://github.com/pie-framework/pie-elements/commit/134ec97ae39133fe8be6a1aeca00a8eb4d2566b5))
+* update pie-libs PD-2774, PD-1026 ([04f8cd0](https://github.com/pie-framework/pie-elements/commit/04f8cd000afdb2ccb0c25146d46acb60c5fea651))
+* **charting:** if correctAnswer is not defined in the model set correctAnswer to equal the data ([e93df9d](https://github.com/pie-framework/pie-elements/commit/e93df9dfeb07c77c9d2a06c9ec577d8590ddf3dd))
+* **charting:** if correctAnswer is not defined in the model set correctAnswer to equal the data PD-2626 ([ea911b5](https://github.com/pie-framework/pie-elements/commit/ea911b54c1ae5c4f1f240adb420f87924752a4a3))
+* **charting:** if correctAnswer is not defined in the model set correctAnswer to equal the data PD-2626 ([7243e9d](https://github.com/pie-framework/pie-elements/commit/7243e9d5a177bce1d51055d8846ab688daea3ee0))
+
+
+### Features
+
+* **charting:** add authoring view settings for authorNewCategoryDefaults and studentNewCategoryDefaultLabel PD-2774 ([6b1d0dc](https://github.com/pie-framework/pie-elements/commit/6b1d0dc6f55779781ffeb50a69569a5ec8acf25a))
+* **charting:** add new authoring view settings to restrict the permitted chart types and allow their names to be changed PD-2777 ([8122775](https://github.com/pie-framework/pie-elements/commit/8122775bec1086ec52e2489dffb2c113e7662db8))
+* **charting:** add new item properties, settings, and authoring view settings ([1924978](https://github.com/pie-framework/pie-elements/commit/1924978ef5dc963b40f01613d87557b2d459ad5b))
+* **charting:** add new item properties, settings, and authoring view settings for changeInteractive, changeEditable and addCategory ([7c79dc5](https://github.com/pie-framework/pie-elements/commit/7c79dc593c2ef90fd1fd028fcc96eb6df812997c))
+* **charting:** add prop validation ([131177f](https://github.com/pie-framework/pie-elements/commit/131177f5742a58cfc19ba05a70a964d30a73fa69))
+* **charting:** fix conflicts and snapshots PD-2777 ([0a014ae](https://github.com/pie-framework/pie-elements/commit/0a014ae7ab40ffe6ea63ebfc84c8f4be359d9ba3))
+* **charting:** hide chartingOptions from settings ([c4a3bd5](https://github.com/pie-framework/pie-elements/commit/c4a3bd5fb2f39db0348303dac7a77eabd738c0ac))
+* **charting:** remove categoryDefaultLabel from model ([f1af01e](https://github.com/pie-framework/pie-elements/commit/f1af01e171e17b9e22a95025e0aef873bd4969a9))
+* **charting:** update pie-models PD-2777 ([a7d34c0](https://github.com/pie-framework/pie-elements/commit/a7d34c05639d4a2b95bf81be90c689f96b73a38c))
+* **charting:** update schemas and snapshots  PD-2777 ([bc8dee5](https://github.com/pie-framework/pie-elements/commit/bc8dee5936ec0ecc09eae638fd3fc8f4196eef52))
+* **charting:** update schemas PD-2777 ([74b4884](https://github.com/pie-framework/pie-elements/commit/74b4884cb4c0407e9ff457dbd3249172ade3e42c))
+* ability to upload images when using imageSupoort from pie-api-components PD-2707 ([685f3b0](https://github.com/pie-framework/pie-elements/commit/685f3b035d86c5f4ad60cdb9ec84690d5ccaa4fc))
+
+
+### BREAKING CHANGES
+
+* **charting:** The categoryDefaultLabel property has been removed. authorNewCategoryDefaults and studentNewCategoryDefaultLabel from configuration will be used as category default label.
+
+
+
+
+
 ## [5.8.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-configure@5.8.2...@pie-element/charting-configure@5.8.3) (2023-05-02)
 
 

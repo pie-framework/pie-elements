@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-controller@2.4.2...@pie-element/charting-controller@3.0.0) (2023-05-23)
+
+
+### Bug Fixes
+
+* **charting:** move studentNewCategoryDefaultLabel from config to model, since it is needed in player ([60154f2](https://github.com/pie-framework/pie-elements/commit/60154f25ff1046b0cbcb3e65ccdb1126de85337f))
+
+
+### Features
+
+* **charting:** add authoring view settings for authorNewCategoryDefaults and studentNewCategoryDefaultLabel PD-2774 ([6b1d0dc](https://github.com/pie-framework/pie-elements/commit/6b1d0dc6f55779781ffeb50a69569a5ec8acf25a))
+* **charting:** remove categoryDefaultLabel from model ([f1af01e](https://github.com/pie-framework/pie-elements/commit/f1af01e171e17b9e22a95025e0aef873bd4969a9))
+
+
+### BREAKING CHANGES
+
+* **charting:** The categoryDefaultLabel property has been removed. authorNewCategoryDefaults and studentNewCategoryDefaultLabel from configuration will be used as category default label.
+
+
+
+
+
 ## [2.4.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-controller@2.4.1...@pie-element/charting-controller@2.4.2) (2023-04-25)
 
 

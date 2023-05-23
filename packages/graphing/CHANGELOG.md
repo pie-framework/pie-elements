@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.14.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@4.13.4...@pie-element/graphing@4.14.0) (2023-05-23)
+
+
+### Bug Fixes
+
+* update pie-lib PD-2777, PD-1914, PD-2066 ([7102893](https://github.com/pie-framework/pie-elements/commit/71028930a6dc554eb587cf4de0c1d0d28bfff1f5))
+* update pie-lib PD-2821, PD-2776 ([134ec97](https://github.com/pie-framework/pie-elements/commit/134ec97ae39133fe8be6a1aeca00a8eb4d2566b5))
+* **graphing:** PD-2811 undo issue ([8ed29c3](https://github.com/pie-framework/pie-elements/commit/8ed29c36f8066ddecfd5ae921088e41770456de8))
+* update pie-libs PD-2774, PD-1026 ([04f8cd0](https://github.com/pie-framework/pie-elements/commit/04f8cd000afdb2ccb0c25146d46acb60c5fea651))
+* **graphing:** add comments ([885a9b9](https://github.com/pie-framework/pie-elements/commit/885a9b99c9ba26568b91310508420d3e8589ed68))
+* **graphing:** add missing answers as incorrect co correctedAnswers-PD-1026 ([eb02e4e](https://github.com/pie-framework/pie-elements/commit/eb02e4e0c8f07795daeec48879e7852c770e04a5))
+* **graphing:** update tests and missing objects -PD-1026 ([18c4039](https://github.com/pie-framework/pie-elements/commit/18c4039a17618f1792906407eef1359224b72230))
+
+
+### Features
+
+* **charting:** add new item properties, settings, and authoring view settings ([1924978](https://github.com/pie-framework/pie-elements/commit/1924978ef5dc963b40f01613d87557b2d459ad5b))
+* ability to upload images when using imageSupoort from pie-api-components PD-2707 ([685f3b0](https://github.com/pie-framework/pie-elements/commit/685f3b035d86c5f4ad60cdb9ec84690d5ccaa4fc))
+
+
+
+
+
 ## [4.13.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@4.13.3...@pie-element/graphing@4.13.4) (2023-05-02)
 
 

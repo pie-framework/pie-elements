@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.4.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-controller@4.4.2...@pie-element/graphing-controller@4.4.3) (2023-05-23)
+
+
+### Bug Fixes
+
+* **graphing:** add comments ([885a9b9](https://github.com/pie-framework/pie-elements/commit/885a9b99c9ba26568b91310508420d3e8589ed68))
+* **graphing:** add missing answers as incorrect co correctedAnswers-PD-1026 ([eb02e4e](https://github.com/pie-framework/pie-elements/commit/eb02e4e0c8f07795daeec48879e7852c770e04a5))
+* **graphing:** PD-2811 undo issue ([8ed29c3](https://github.com/pie-framework/pie-elements/commit/8ed29c36f8066ddecfd5ae921088e41770456de8))
+* **graphing:** update tests and missing objects -PD-1026 ([18c4039](https://github.com/pie-framework/pie-elements/commit/18c4039a17618f1792906407eef1359224b72230))
+
+
+
+
+
 ## [4.4.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-controller@4.4.1...@pie-element/graphing-controller@4.4.2) (2023-05-02)
 
 

@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@12.11.0...@pie-element/pie-models@13.0.0) (2023-05-23)
+
+
+### Features
+
+* **charting:** remove categoryDefaultLabel from model ([f1af01e](https://github.com/pie-framework/pie-elements/commit/f1af01e171e17b9e22a95025e0aef873bd4969a9))
+* **charting:** update pie-models and schemas ([ca51be4](https://github.com/pie-framework/pie-elements/commit/ca51be465ac3db38b5aa586022be5c498f444e05))
+* **charting:** update pie-models PD-2777 ([a7d34c0](https://github.com/pie-framework/pie-elements/commit/a7d34c05639d4a2b95bf81be90c689f96b73a38c))
+* **charting:** update schemas PD-2777 ([74b4884](https://github.com/pie-framework/pie-elements/commit/74b4884cb4c0407e9ff457dbd3249172ade3e42c))
+* **charting:** update snapshots and pie-models ([5548d97](https://github.com/pie-framework/pie-elements/commit/5548d97e6d63270e32e451621740d8cd112e3880))
+
+
+### BREAKING CHANGES
+
+* **charting:** The categoryDefaultLabel property has been removed. authorNewCategoryDefaults and studentNewCategoryDefaultLabel from configuration will be used as category default label.
+
+
+
+
+
 # [12.11.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@12.10.1...@pie-element/pie-models@12.11.0) (2023-04-10)
 
 
