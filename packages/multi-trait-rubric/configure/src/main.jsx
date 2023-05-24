@@ -46,6 +46,13 @@ function ShowModal({ showExcludeZeroDialog, excludeZero, changeExcludeZero, canc
   }
 }
 
+ShowModal.propTypes = {
+  showExcludeZeroDialog: PropTypes.bool,
+  excludeZero: PropTypes.bool,
+  changeExcludeZero: PropTypes.func,
+  cancel: PropTypes.func,
+};
+
 export class Main extends React.Component {
   state = {
     showDecreaseMaxPointsDialog: false,
@@ -172,6 +179,8 @@ export class Main extends React.Component {
   hideToggleExcludeZeroModal = () => {
     this.set({ showExcludeZeroDialog: false });
   };
+
+  onCloseInfoDialog = () => this.set({ showInfoDialog: false });
 
   changeExcludeZero = (excludeZeroType) => {
     const { model, onModelChanged } = this.props || {};
@@ -304,10 +313,6 @@ export class Main extends React.Component {
       maxPointsEnabled: showMaxPoint.settings && toggle(showMaxPoint.label),
       addScaleEnabled: addScale.settings && toggle(addScale.label),
     };
-
-    console.log('!excludeZero', excludeZero);
-    console.log('showExcludeZeroDialog', showExcludeZeroDialog);
-    console.log('showExcludeZeroDialog && !excludeZero', showExcludeZeroDialog && excludeZero);
 
     return (
       <layout.ConfigLayout
