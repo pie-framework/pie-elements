@@ -76,6 +76,14 @@ exports[`Main snapshot renders 1`] = `
           },
         }
       }
+      modal={
+        <ShowModal
+          cancel={[Function]}
+          changeExcludeZero={[Function]}
+          excludeZero={true}
+          showExcludeZeroDialog={false}
+        />
+      }
       model={
         Object {
           "description": false,
@@ -1042,16 +1050,6 @@ Overall appearance is acceptable or better",
       width="650px"
     />
   </div>
-  <WithStyles(RawExcludeZeroDialog)
-    cancel={[Function]}
-    changeExcludeZero={[Function]}
-    open={false}
-  />
-  <WithStyles(RawIncludeZeroDialog)
-    cancel={[Function]}
-    changeExcludeZero={[Function]}
-    open={false}
-  />
   <WithStyles(RawInfoDialog)
     onClose={[Function]}
     open={false}
@@ -1136,6 +1134,14 @@ exports[`Main snapshot renders without scales 1`] = `
           },
         }
       }
+      modal={
+        <ShowModal
+          cancel={[Function]}
+          changeExcludeZero={[Function]}
+          excludeZero={true}
+          showExcludeZeroDialog={false}
+        />
+      }
       model={
         Object {
           "description": false,
@@ -1159,16 +1165,6 @@ exports[`Main snapshot renders without scales 1`] = `
         "width": "650px",
       }
     }
-  />
-  <WithStyles(RawExcludeZeroDialog)
-    cancel={[Function]}
-    changeExcludeZero={[Function]}
-    open={false}
-  />
-  <WithStyles(RawIncludeZeroDialog)
-    cancel={[Function]}
-    changeExcludeZero={[Function]}
-    open={false}
   />
   <WithStyles(RawInfoDialog)
     onClose={[Function]}

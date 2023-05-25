@@ -24,7 +24,7 @@ const styles = (theme) => ({
   },
 });
 
-function ShowModal({ showExcludeZeroDialog, excludeZero, changeExcludeZero, cancel }) {
+const ShowModal = ({ showExcludeZeroDialog, excludeZero, changeExcludeZero, cancel }) => {
   if (showExcludeZeroDialog && !excludeZero) {
     return (
       <ExcludeZeroDialog
@@ -44,7 +44,7 @@ function ShowModal({ showExcludeZeroDialog, excludeZero, changeExcludeZero, canc
   } else {
     return null;
   }
-}
+};
 
 ShowModal.propTypes = {
   showExcludeZeroDialog: PropTypes.bool,
