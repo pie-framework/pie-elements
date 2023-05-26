@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.9.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric@2.8.3...@pie-element/rubric@2.9.0) (2023-05-23)
+
+
+### Bug Fixes
+
+* update pie-lib PD-2777, PD-1914, PD-2066 ([7102893](https://github.com/pie-framework/pie-elements/commit/71028930a6dc554eb587cf4de0c1d0d28bfff1f5))
+* update pie-libs PD-2774, PD-1026 ([04f8cd0](https://github.com/pie-framework/pie-elements/commit/04f8cd000afdb2ccb0c25146d46acb60c5fea651))
+
+
+### Features
+
+* ability to upload images when using imageSupoort from pie-api-components PD-2707 ([685f3b0](https://github.com/pie-framework/pie-elements/commit/685f3b035d86c5f4ad60cdb9ec84690d5ccaa4fc))
+* **complex-rubric, rubric:** wip add file for complex-rubric, managed to make simple rubric work PD-2748 ([91b8848](https://github.com/pie-framework/pie-elements/commit/91b8848efaa9ed677003227e56b35c17e0897e6f))
+
+
+
+
+
 ## [2.8.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric@2.8.2...@pie-element/rubric@2.8.3) (2023-05-02)
 
 
