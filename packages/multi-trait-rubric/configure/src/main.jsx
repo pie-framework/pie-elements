@@ -44,7 +44,7 @@ export class Main extends React.Component {
     }
 
     // if no default trait label is defined, take the trait label of the first scale
-    defaultTraitLabel = defaultTraitLabel ?? (scales[0] ? scales[0].traitLabel : '');
+    defaultTraitLabel = typeof defaultTraitLabel === 'string' ? defaultTraitLabel : scales[0]?.traitLabel || '';
 
     if (scales.length === maxNoOfScales) {
       this.set({
