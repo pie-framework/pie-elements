@@ -134,7 +134,6 @@ export class ChoiceInput extends React.Component {
     correctness: PropTypes.string,
     disabled: PropTypes.bool.isRequired,
     feedback: PropTypes.string,
-    index: PropTypes.number,
     label: PropTypes.string.isRequired,
     rationale: PropTypes.string,
     accessibility: PropTypes.string,
@@ -158,6 +157,7 @@ export class ChoiceInput extends React.Component {
   constructor(props) {
     super(props);
     this.onToggleChoice = this.onToggleChoice.bind(this);
+    this.choiceId = this.generateChoiceId();
   }
 
   onToggleChoice(event) {
@@ -166,6 +166,10 @@ export class ChoiceInput extends React.Component {
       value: this.props.value,
       selected: !this.props.checked,
     });
+  }
+
+  generateChoiceId() {
+    return 'choice-' + (Math.random() * 10000).toFixed();
   }
 
   render() {
@@ -185,7 +189,6 @@ export class ChoiceInput extends React.Component {
       choicesLayout,
       value,
       checked,
-      index
     } = this.props;
 
     const Tag = choiceMode === 'checkbox' ? StyledCheckbox : StyledRadio;
@@ -200,13 +203,13 @@ export class ChoiceInput extends React.Component {
         {displayKey ? (
           <span className={classes.row}>
             {displayKey}.{'\u00A0'}
-            <PreviewPrompt className='label' prompt={label} tagName='span' />
+            <PreviewPrompt className="label" prompt={label} tagName="span" />
           </span>
         ) : (
-          <PreviewPrompt className='label' prompt={label} tagName='span' />
+          <PreviewPrompt className="label" prompt={label} tagName="span" />
         )}
       </>
-    );    
+    );
 
     return (
       <div className={classNames(className, 'corespring-' + classSuffix, 'choice-input')}>
@@ -216,7 +219,7 @@ export class ChoiceInput extends React.Component {
             <StyledFormControlLabel
               label={choicelabel}
               value={value}
-              htmlFor={`choice-${index}`}
+              htmlFor={this.choiceId}
               control={
                 <Tag
                   accessibility={accessibility}
@@ -224,14 +227,14 @@ export class ChoiceInput extends React.Component {
                   checked={checked}
                   correctness={correctness}
                   value={value}
-                  id={`choice-${index}`}
+                  id={this.choiceId}
                   onChange={this.onToggleChoice}
                 />
               }
             />
           </div>
         </div>
-        {rationale && <PreviewPrompt className='rationale' defaultClassName='rationale' prompt={rationale} />}
+        {rationale && <PreviewPrompt className="rationale" defaultClassName="rationale" prompt={rationale} />}
         <Feedback feedback={feedback} correctness={correctness} />
       </div>
     );
