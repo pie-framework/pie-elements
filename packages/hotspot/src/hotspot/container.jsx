@@ -139,6 +139,9 @@ const styles = (theme) => ({
     marginTop: theme.spacing.unit * 2,
     marginBottom: theme.spacing.unit * 2,
     position: 'relative',
+    background: theme.palette.common.white,
+    border: `${theme.spacing.unit}px solid ${theme.palette.common.white}`,
+    width: 'fit-content',
   },
   image: {
     alignItems: 'center',
