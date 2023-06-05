@@ -12,7 +12,6 @@ import { layout, settings } from '@pie-lib/config-ui';
 import Scale from './scale';
 import { MultiTraitButton } from './common';
 import { ExcludeZeroDialog, excludeZeroTypes, IncludeZeroDialog, InfoDialog } from './modals';
-import { checkLabelsEquality } from '@pie-element/charting-controller';
 
 const { Panel, toggle } = settings;
 const MIN_WIDTH = '650px';
