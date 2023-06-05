@@ -12,6 +12,7 @@ import { layout, settings } from '@pie-lib/config-ui';
 import Scale from './scale';
 import { MultiTraitButton } from './common';
 import { ExcludeZeroDialog, excludeZeroTypes, IncludeZeroDialog, InfoDialog } from './modals';
+import { checkLabelsEquality } from '@pie-element/charting-controller';
 
 const { Panel, toggle } = settings;
 const MIN_WIDTH = '650px';
@@ -22,6 +23,35 @@ const styles = (theme) => ({
     fontSize: theme.typography.fontSize,
   },
 });
+
+const ShowModal = ({ showExcludeZeroDialog, excludeZero, changeExcludeZero, cancel }) => {
+  if (showExcludeZeroDialog && !excludeZero) {
+    return (
+      <ExcludeZeroDialog
+        open={showExcludeZeroDialog && !excludeZero}
+        changeExcludeZero={changeExcludeZero}
+        cancel={cancel}
+      />
+    );
+  } else if (showExcludeZeroDialog && excludeZero) {
+    return (
+      <IncludeZeroDialog
+        open={showExcludeZeroDialog && excludeZero}
+        changeExcludeZero={changeExcludeZero}
+        cancel={cancel}
+      />
+    );
+  } else {
+    return null;
+  }
+};
+
+ShowModal.propTypes = {
+  showExcludeZeroDialog: PropTypes.bool,
+  excludeZero: PropTypes.bool,
+  changeExcludeZero: PropTypes.func,
+  cancel: PropTypes.func,
+};
 
 export class Main extends React.Component {
   state = {
@@ -146,7 +176,11 @@ export class Main extends React.Component {
   // Exclude Zero
   showToggleExcludeZeroModal = () => this.set({ showExcludeZeroDialog: true });
 
-  hideToggleExcludeZeroModal = () => this.set({ showExcludeZeroDialog: false });
+  hideToggleExcludeZeroModal = () => {
+    this.set({ showExcludeZeroDialog: false });
+  };
+
+  onCloseInfoDialog = () => this.set({ showInfoDialog: false });
 
   changeExcludeZero = (excludeZeroType) => {
     const { model, onModelChanged } = this.props || {};
@@ -294,6 +328,14 @@ export class Main extends React.Component {
               Settings: panelSettings,
               Properties: panelProperties,
             }}
+            modal={
+              <ShowModal
+                showExcludeZeroDialog={showExcludeZeroDialog}
+                excludeZero={excludeZero}
+                changeExcludeZero={this.changeExcludeZero}
+                cancel={this.hideToggleExcludeZeroModal}
+              ></ShowModal>
+            }
           />
         }
       >
@@ -323,18 +365,6 @@ export class Main extends React.Component {
           ))}
           {addScaleEnabled && <MultiTraitButton onClick={this.onScaleAdded}>Add Scale</MultiTraitButton>}
         </div>
-
-        <ExcludeZeroDialog
-          open={showExcludeZeroDialog && !excludeZero}
-          changeExcludeZero={this.changeExcludeZero}
-          cancel={this.hideToggleExcludeZeroModal}
-        />
-
-        <IncludeZeroDialog
-          open={showExcludeZeroDialog && excludeZero}
-          changeExcludeZero={this.changeExcludeZero}
-          cancel={this.hideToggleExcludeZeroModal}
-        />
 
         <InfoDialog open={showInfoDialog} text={infoDialogText} onClose={() => this.set({ showInfoDialog: false })} />
       </layout.ConfigLayout>
