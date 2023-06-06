@@ -153,4 +153,5 @@ exports.model = (id, element) => ({
   rationale: 'Rationale goes here',
   title: 'Graph title',
   rubricEnabled: false,
+  language: 'es_ES'
 });
