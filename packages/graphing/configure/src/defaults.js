@@ -1,4 +1,7 @@
 import { tools } from '@pie-lib/graphing';
+import Translator from '@pie-lib/translator';
+
+const { languageOptions } = Translator;
 
 const { allTools = [] } = tools;
 
@@ -369,5 +372,15 @@ export default {
       settings: false,
       label: 'Add Rubric',
     },
+    language: {
+      settings: false,
+      label: 'Specify Language',
+      enabled: true,
+    },
+    languageChoices: {
+      label: 'Language Choices',
+      // TODO update Setting's Panel dropdown to accept an array of values with labels
+      options: (languageOptions || []).map(l => l.value),
+    }
   },
 };

@@ -45,6 +45,7 @@ export class Main extends React.Component {
       titleEnabled,
       teacherInstructions,
       toolbarTools,
+      language,
     } = model || {};
     const marks = answersCorrected || answer || [];
 
@@ -82,6 +83,7 @@ export class Main extends React.Component {
             size={size}
             title={title}
             toolbarTools={toolbarTools}
+            language={language}
           />
         ) : (
           <GraphContainer
@@ -103,6 +105,7 @@ export class Main extends React.Component {
             size={size}
             title={title}
             toolbarTools={toolbarTools}
+            language={language}
           />
         )}
 

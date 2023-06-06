@@ -274,6 +274,18 @@ exports[`Configure renders snapshot 1`] = `
             "settings": true,
             "top": "Click here to add a top label",
           },
+          "language": Object {
+            "enabled": true,
+            "label": "Specify Language",
+            "settings": false,
+          },
+          "languageChoices": Object {
+            "label": "Language Choices",
+            "options": Array [
+              "en_US",
+              "es_ES",
+            ],
+          },
           "maxImageHeight": Object {
             "prompt": 300,
             "rationale": 300,
@@ -344,6 +356,8 @@ exports[`Configure renders snapshot 1`] = `
             "coordinatesOnHover": undefined,
             "dimensionsEnabled": false,
             "labelsEnabled": undefined,
+            "language": false,
+            "language.enabled": false,
             "padding": false,
             "titleEnabled": undefined,
           },

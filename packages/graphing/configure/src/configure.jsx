@@ -10,7 +10,7 @@ import GraphingConfig from './graphing-config';
 import CorrectResponse from './correct-response';
 import intersection from 'lodash/intersection';
 
-const { Panel, toggle, radio, checkboxes, textField } = settings;
+const { Panel, toggle, radio, checkboxes, textField, dropdown } = settings;
 const log = debug('@pie-element:graphing:configure');
 
 const styles = (theme) => ({
@@ -109,6 +109,8 @@ export class Configure extends React.Component {
       maxImageWidth = {},
       maxImageHeight = {},
       withRubric = {},
+      language = {},
+      languageChoices = {},
     } = configuration || {};
     const {
       errors = {},
@@ -144,10 +146,12 @@ export class Configure extends React.Component {
       titleEnabled: title.settings && toggle(title.label),
       padding: padding.settings && toggle(padding.label),
       labelsEnabled: labels.settings && toggle(labels.label),
+      'language.enabled': language.settings && toggle(language.label, true),
+      language: language.settings && language.enabled && dropdown(languageChoices.label, languageChoices.options),
       dimensionsEnabled: graphDimensions.settings && toggle(graphDimensions.label),
       coordinatesOnHover: coordinatesOnHover.settings && toggle(coordinatesOnHover.label),
     };
-    
+
     const panelProperties = {
       'authoring.enabled': authoring.settings && toggle(authoring.label, true),
       teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
