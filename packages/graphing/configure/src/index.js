@@ -79,6 +79,26 @@ export default class GraphLinesConfigure extends HTMLElement {
 
   set configuration(c) {
     this._configuration = c;
+
+    // // For instance, if language:enabled is true, then the corresponding default item model should include a language value;
+    // // whereas if it is false, then the language field should be omitted from the item model.
+    // // Similarly, if a default item model includes a language value (e.g., en_US) and the corresponding authoring view settings have language:settings = true,
+    // // then (a) language:enabled should also be true, and (b) that default language value should be represented in languageChoices[] (as a key).
+    // if (c.language.enabled) {
+    //   if (c.languageChoices?.options?.length) {
+    //     this._model.language = c.languageChoices.options[0].value;
+    //   }
+    // } else {
+    //   if (c.language.settings) {
+    //     if (this._model.language) {
+    //       this._configuration.language.enabled = true;
+    //     }
+    //   } else {
+    //     delete this._model.language;
+    //   }
+    // }
+
+
     this._render();
   }
 
