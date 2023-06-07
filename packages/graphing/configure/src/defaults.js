@@ -1,8 +1,4 @@
 import { tools } from '@pie-lib/graphing';
-import Translator from '@pie-lib/translator';
-
-const { languageOptions } = Translator;
-
 const { allTools = [] } = tools;
 
 export default {
@@ -375,12 +371,12 @@ export default {
     language: {
       settings: false,
       label: 'Specify Language',
-      enabled: true,
+      enabled: false,
     },
     languageChoices: {
       label: 'Language Choices',
       // TODO update Setting's Panel dropdown to accept an array of values with labels
-      options: (languageOptions || []).map(l => l.value),
+      options: [],
     }
   },
 };

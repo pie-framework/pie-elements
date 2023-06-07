@@ -275,16 +275,13 @@ exports[`Configure renders snapshot 1`] = `
             "top": "Click here to add a top label",
           },
           "language": Object {
-            "enabled": true,
+            "enabled": false,
             "label": "Specify Language",
             "settings": false,
           },
           "languageChoices": Object {
             "label": "Language Choices",
-            "options": Array [
-              "en_US",
-              "es_ES",
-            ],
+            "options": Array [],
           },
           "maxImageHeight": Object {
             "prompt": 300,
