@@ -2398,10 +2398,10 @@
     debug "^4.1.1"
     lodash "^4.17.11"
 
-"@pie-lib/graphing@^2.13.2":
-  version "2.13.2"
-  resolved "https://registry.yarnpkg.com/@pie-lib/graphing/-/graphing-2.13.2.tgz#a86e01fd5b48cd995796aa15309301b991d88b5d"
-  integrity sha512-4Cogkd58MmQqjmSULEkDawXQTdfzdgIMNh8h3x7kyHj4SEN6124ut8ClopomAUrhzRCwJvCPfTBJkY9Nb8osig==
+"@pie-lib/graphing@^2.13.3":
+  version "2.13.3"
+  resolved "https://registry.yarnpkg.com/@pie-lib/graphing/-/graphing-2.13.3.tgz#6e366facf18d491fc35e289da8da65f03c53b371"
+  integrity sha512-YlPzWuqcXxiGMBHOQXbNDCuXf5JXjqHjgiS1W4d6MiE5bnNyqzDtD8VdiiENu9Wc4oqkHTlZI1AHWlQEbSZJIw==
   dependencies:
     "@mapbox/point-geometry" "^0.1.0"
     "@material-ui/core" "^3.8.3"
