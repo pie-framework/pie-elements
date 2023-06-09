@@ -369,14 +369,16 @@ export default {
       label: 'Add Rubric',
     },
     language: {
-      settings: false,
+      settings: true,
       label: 'Specify Language',
       enabled: false,
     },
     languageChoices: {
       label: 'Language Choices',
-      // TODO update Setting's Panel dropdown to accept an array of values with labels
-      options: [],
+      options: [
+        { value: 'en_US', label: 'English (US)' },
+        { value: 'es_ES', label: 'Spanish' }
+      ],
     }
   },
 };
