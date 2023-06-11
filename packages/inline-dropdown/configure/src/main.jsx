@@ -325,6 +325,10 @@ export class Main extends React.Component {
     this.onModelChange({ choices: cloneDeep(respAreaChoices) });
   };
 
+  onDone = () => {
+    console.log('onDone');
+  };
+
   render() {
     const { warning } = this.state;
     const { classes, model, configuration, onConfigurationChanged, imageSupport, uploadSoundSupport } = this.props;
@@ -517,7 +521,7 @@ export class Main extends React.Component {
           onChange={this.onChange}
           imageSupport={imageSupport}
           disableImageAlignmentButtons={true}
-          onBlur={this.onBlur}
+          onDone={this.onDone}
           disabled={false}
           highlightShape={false}
           error={responseAreasError}
