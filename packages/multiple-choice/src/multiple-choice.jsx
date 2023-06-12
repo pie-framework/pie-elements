@@ -36,6 +36,14 @@ const styles = (theme) => ({
     margin: '0px',
     minWidth: '0px',
   },
+  srOnly: {
+    position: 'absolute',
+    left: '-10000px',
+    top: 'auto',
+    width: '1px',
+    height: '1px',
+    overflow: 'hidden',
+  },
 });
 
 export class MultipleChoice extends React.Component {
@@ -170,6 +178,21 @@ export class MultipleChoice extends React.Component {
       : this.state.selectedValues.includes(choice.value);
   }
 
+  // renderHeading function was added for accessibility.
+  renderHeading() {
+    const { mode, choiceMode, classes } = this.props;
+
+    if (mode !== 'gather') {
+      return null;
+    }
+
+    return choiceMode === 'radio' ? (
+      <h2 className={classes.srOnly}>Multiple Choice Question</h2>
+    ) : (
+      <h2 className={classes.srOnly}>Multiple Select Question</h2>
+    );
+  }
+
   render() {
     const {
       mode,
@@ -204,6 +227,8 @@ export class MultipleChoice extends React.Component {
     return (
       <div className={classNames(classes.main, className, 'multiple-choice')}>
         {partLabel && <div className={classes.partLabel}>{partLabel}</div>}
+
+        {this.renderHeading()}
 
         {teacherInstructions && (
           <div className={classes.teacherInstructions}>
