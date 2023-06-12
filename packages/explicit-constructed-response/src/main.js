@@ -111,6 +111,8 @@ export class Main extends React.Component {
 
     return (
       <div className={mainClasses} style={{ display: `${displayType}` }}>
+        {mode === 'gather' && <h2 className={classes.srOnly}>Fill in the Blank Question</h2>}
+        
         {teacherInstructions && hasText(teacherInstructions) && (
           <div className={classes.collapsible}>
             {!animationsDisabled ? (
@@ -185,6 +187,14 @@ const styles = (theme) => ({
     '& *': {
       borderColor: `${color.text()} !important`,
     },
+  },
+  srOnly: {
+    position: 'absolute',
+    left: '-10000px',
+    top: 'auto',
+    width: '1px',
+    height: '1px',
+    overflow: 'hidden',
   },
 });
 
