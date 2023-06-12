@@ -517,7 +517,6 @@ export class Main extends React.Component {
           onChange={this.onChange}
           imageSupport={imageSupport}
           disableImageAlignmentButtons={true}
-          onBlur={this.onBlur}
           disabled={false}
           highlightShape={false}
           error={responseAreasError}
