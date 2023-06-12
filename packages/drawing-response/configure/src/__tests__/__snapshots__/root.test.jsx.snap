@@ -12,6 +12,24 @@ exports[`Root snapshot renders 1`] = `
             "label": "Background Image",
             "settings": true,
           },
+          "language": Object {
+            "enabled": false,
+            "label": "Specify Language",
+            "settings": true,
+          },
+          "languageChoices": Object {
+            "label": "Language Choices",
+            "options": Array [
+              Object {
+                "label": "English (US)",
+                "value": "en_US",
+              },
+              Object {
+                "label": "Spanish",
+                "value": "es_ES",
+              },
+            ],
+          },
           "mathMlOptions": Object {
             "mmlEditing": false,
             "mmlOutput": false,
@@ -53,6 +71,8 @@ exports[`Root snapshot renders 1`] = `
           },
           "Settings": Object {
             "backgroundImageEnabled": undefined,
+            "language": false,
+            "language.enabled": undefined,
             "promptEnabled": undefined,
           },
         }
