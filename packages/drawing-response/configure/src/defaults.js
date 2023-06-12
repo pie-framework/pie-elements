@@ -44,5 +44,17 @@ export default {
       settings: false,
       label: 'Add Rubric',
     },
+    language: {
+      settings: true,
+      label: 'Specify Language',
+      enabled: false,
+    },
+    languageChoices: {
+      label: 'Language Choices',
+      options: [
+        { value: 'en_US', label: 'English (US)' },
+        { value: 'es_ES', label: 'Spanish' }
+      ],
+    }
   },
 };

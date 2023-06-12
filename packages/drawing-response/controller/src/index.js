@@ -13,7 +13,7 @@ export const normalize = (question) => ({
 
 export function model(question, session, env) {
   const normalizedQuestion = normalize(question);
-  const { imageUrl, imageDimensions, prompt, promptEnabled, backgroundImageEnabled } = normalizedQuestion;
+  const { imageUrl, imageDimensions, prompt, promptEnabled, backgroundImageEnabled, language } = normalizedQuestion;
 
   return new Promise((resolve) => {
     const out = {
@@ -23,6 +23,7 @@ export function model(question, session, env) {
       imageUrl,
       prompt: promptEnabled ? prompt : null,
       backgroundImageEnabled,
+      language
     };
 
     if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
