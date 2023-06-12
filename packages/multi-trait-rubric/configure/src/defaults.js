@@ -111,6 +111,10 @@ export default {
     maxNoOfTraits: 10,
     minNoOfScales: 1,
     maxNoOfScales: 10,
-    defaultTraitLabel: 'Trait'
+    defaultTraitLabel: 'Trait',
+    mathMlOptions: {
+      mmlOutput: false,
+      mmlEditing: false,
+    },
   },
 };

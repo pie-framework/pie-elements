@@ -2,7 +2,7 @@ import { PromptConfig } from '../../PromptConfig';
 import { CommonConfigSettings } from '../../CommonConfigSettings';
 import { PieModel } from '../../PieModel';
 import { ComplexFeedbackType } from '../../Feedback';
-import { ConfigureProp } from '../ConfigurationProp';
+import {ConfigureMathMLProp, ConfigureProp} from '../ConfigurationProp';
 
 /**
  * One row in the match list.
@@ -234,4 +234,7 @@ export interface MatchConfigure extends PromptConfig, CommonConfigSettings {
    * How large (in px) should match be
    */
   width: string;
+
+  /** Configuration for editable-html */
+  mathMlOptions?: ConfigureMathMLProp;
 }

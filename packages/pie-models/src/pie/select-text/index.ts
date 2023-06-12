@@ -2,7 +2,7 @@ import { PromptConfig } from '../../PromptConfig';
 import { PieModel } from '../../PieModel';
 import { CommonConfigSettings } from '../../CommonConfigSettings';
 import { ComplexFeedbackType } from '../../Feedback';
-import { ConfigureMaxImageDimensionsProp, ConfigureProp } from '../ConfigurationProp';
+import {ConfigureMathMLProp, ConfigureMaxImageDimensionsProp, ConfigureProp} from '../ConfigurationProp';
 
 interface TextToken {
   /** The token text */
@@ -205,4 +205,7 @@ export interface SelectTextConfigure extends PromptConfig, CommonConfigSettings 
    * Rubric configuration - only relevant in environments that use pie-player-components
    */
   withRubric?: ConfigureProp;
+
+  /** Configuration for editable-html */
+  mathMlOptions?: ConfigureMathMLProp;
 }

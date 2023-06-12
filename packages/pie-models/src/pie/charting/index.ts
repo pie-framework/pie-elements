@@ -1,7 +1,12 @@
 import { PromptConfig } from '../../PromptConfig';
 import { CommonConfigSettings } from '../../CommonConfigSettings';
 import { PieModel } from '../../PieModel';
-import { ConfigureMaxImageDimensionsProp, ConfigureProp, ConfigurePropWithEnabled } from '../ConfigurationProp';
+import {
+  ConfigureMathMLProp,
+  ConfigureMaxImageDimensionsProp,
+  ConfigureProp,
+  ConfigurePropWithEnabled
+} from '../ConfigurationProp';
 
 interface Chart {
   /** Width for chart representation */
@@ -300,6 +305,9 @@ export interface ChartingConfigure extends PromptConfig, CommonConfigSettings {
    * Coonfiguration for new category in define chart
    */
   authorNewCategoryDefaults: AuthorNewCategoryDefaults;
+
+  /** Configuration for editable-html */
+  mathMlOptions?: ConfigureMathMLProp;
 
   /**
    * Maximum image width for input fields

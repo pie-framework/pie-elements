@@ -208,6 +208,18 @@ if true:
 - this property will not be visible in Settings Panel (settings will become automatically false)
 - the model property afferent to it will become automatically false
 
+## `ConfigureMathMLProp` (object)
+
+Properties of the `ConfigureMathMLProp` object:
+
+### `mmlOutput` (number)
+
+Indicates if model should have mathML output instead of latex
+
+### `mmlEditing` (number)
+
+Indicates if mathML that's already in model should be editable
+
 ## `Dimensions` (object)
 
 Properties of the `Dimensions` object:

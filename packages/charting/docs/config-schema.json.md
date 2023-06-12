@@ -160,6 +160,18 @@ Indicates if new category is interactive
 
 Indicates if new category is editable
 
+# `mathMlOptions` (object)
+
+Properties of the `mathMlOptions` object:
+
+## `mmlOutput` (number)
+
+Indicates if model should have mathML output instead of latex
+
+## `mmlEditing` (number)
+
+Indicates if mathML that's already in model should be editable
+
 # `maxImageWidth` (object)
 
 Properties of the `maxImageWidth` object:
@@ -427,6 +439,18 @@ Indicates if new category is interactive
 ### `editable` (boolean)
 
 Indicates if new category is editable
+
+## `ConfigureMathMLProp` (object)
+
+Properties of the `ConfigureMathMLProp` object:
+
+### `mmlOutput` (number)
+
+Indicates if model should have mathML output instead of latex
+
+### `mmlEditing` (number)
+
+Indicates if mathML that's already in model should be editable
 
 ## `ConfigureMaxImageDimensionsProp` (object)
 

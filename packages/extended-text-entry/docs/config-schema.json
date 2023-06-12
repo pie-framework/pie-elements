@@ -236,6 +236,22 @@
         }
       }
     },
+    "mathMlOptions": {
+      "title": "ConfigureMathMLProp",
+      "type": "object",
+      "properties": {
+        "mmlOutput": {
+          "description": "Indicates if model should have mathML output instead of latex",
+          "type": "number",
+          "title": "mmlOutput"
+        },
+        "mmlEditing": {
+          "description": "Indicates if mathML that's already in model should be editable",
+          "type": "number",
+          "title": "mmlEditing"
+        }
+      }
+    },
     "showPrompt": {
       "description": "Determines whether prompt field will be displayed or not",
       "default": true,
@@ -376,6 +392,22 @@
           "description": "Indicates the value for the toggle;\nif true:\n- this property will not be visible in Settings Panel (settings will become automatically false)\n- the model property afferent to it will become automatically false",
           "type": "boolean",
           "title": "forceEnabled"
+        }
+      }
+    },
+    "ConfigureMathMLProp": {
+      "title": "ConfigureMathMLProp",
+      "type": "object",
+      "properties": {
+        "mmlOutput": {
+          "description": "Indicates if model should have mathML output instead of latex",
+          "type": "number",
+          "title": "mmlOutput"
+        },
+        "mmlEditing": {
+          "description": "Indicates if mathML that's already in model should be editable",
+          "type": "number",
+          "title": "mmlEditing"
         }
       }
     }

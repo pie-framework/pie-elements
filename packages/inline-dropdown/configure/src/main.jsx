@@ -342,6 +342,7 @@ export class Main extends React.Component {
       spellCheck = {},
       teacherInstructions = {},
       withRubric = {},
+      mathMlOptions = {},
     } = configuration || {};
     const {
       choiceRationaleEnabled,
@@ -389,6 +390,7 @@ export class Main extends React.Component {
                     maxImageWidth={(maxImageWidth && maxImageWidth.rationale) || defaultImageMaxWidth}
                     maxImageHeight={(maxImageHeight && maxImageHeight.rationale) || defaultImageMaxHeight}
                     uploadSoundSupport={uploadSoundSupport}
+                    mathMlOptions={mathMlOptions}
                   />
                 </InputContainer>
               ))}
@@ -447,6 +449,7 @@ export class Main extends React.Component {
               maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
               uploadSoundSupport={uploadSoundSupport}
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+              mathMlOptions={mathMlOptions}
             />
           </InputContainer>
         )}
@@ -466,6 +469,7 @@ export class Main extends React.Component {
               maxImageHeight={defaultImageMaxHeight}
               uploadSoundSupport={uploadSoundSupport}
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+              mathMlOptions={mathMlOptions}
             />
           </InputContainer>
         )}
@@ -507,6 +511,7 @@ export class Main extends React.Component {
                   choices={respAreaChoices[node.data.get('index')]}
                   spellCheck={spellCheckEnabled}
                   uploadSoundSupport={uploadSoundSupport}
+                  mathMlOptions={mathMlOptions}
                 />
               );
             },
@@ -522,6 +527,7 @@ export class Main extends React.Component {
           error={responseAreasError}
           uploadSoundSupport={uploadSoundSupport}
           languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+          mathMlOptions={mathMlOptions}
         />
         {responseAreasError && <div className={classes.errorText}>{responseAreasError}</div>}
         {responseAreaChoicesError && <div className={classes.errorText}>{responseAreaChoicesError}</div>}
@@ -541,6 +547,7 @@ export class Main extends React.Component {
               maxImageHeight={(maxImageHeight && maxImageHeight.rationale) || defaultImageMaxHeight}
               uploadSoundSupport={uploadSoundSupport}
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+              mathMlOptions={mathMlOptions}
             />
           </InputContainer>
         )}

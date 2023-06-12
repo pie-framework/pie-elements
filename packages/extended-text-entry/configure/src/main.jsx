@@ -69,6 +69,7 @@ export class Main extends React.Component {
       maxImageHeight = {},
       multiple = {},
       withRubric = {},
+      mathMlOptions = {},
     } = configuration || {};
     const { feedbackEnabled, promptEnabled, spellCheckEnabled, teacherInstructionsEnabled, toolbarEditorPosition } =
       model || {};
@@ -148,6 +149,7 @@ export class Main extends React.Component {
               maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
               uploadSoundSupport={uploadSoundSupport}
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+              mathMlOptions={mathMlOptions}
             />
           </InputContainer>
         )}
@@ -167,6 +169,7 @@ export class Main extends React.Component {
               maxImageHeight={defaultImageMaxHeight}
               uploadSoundSupport={uploadSoundSupport}
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+              mathMlOptions={mathMlOptions}
             />
           </InputContainer>
         )}

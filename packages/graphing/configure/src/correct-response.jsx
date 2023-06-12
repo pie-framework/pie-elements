@@ -347,7 +347,7 @@ export class CorrectResponse extends React.Component {
   };
 
   render() {
-    const { availableTools, classes, errors, model } = this.props;
+    const { availableTools, classes, errors, model, mathMlOptions } = this.props;
     const { dialog } = this.state;
     const {
       answers = {},
@@ -420,6 +420,7 @@ export class CorrectResponse extends React.Component {
                 title={title}
                 toolbarTools={toolbarTools}
                 onChangeTools={(toolbarTools) => this.updateModel({ toolbarTools })}
+                mathMlOptions={mathMlOptions}
               />
 
               {correctAnswerErrors[key] && <div className={classes.errorMessage}>{correctAnswerErrors[key]}</div>}

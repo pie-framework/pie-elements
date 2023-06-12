@@ -145,6 +145,10 @@ export default {
         authoringLabel: 'Student can add categories',
         settingsLabel: 'Allow changes to whether students can add categories',
       },
+      mathMlOptions: {
+        mmlOutput: false,
+        mmlEditing: false,
+      },
     },
   },
 };

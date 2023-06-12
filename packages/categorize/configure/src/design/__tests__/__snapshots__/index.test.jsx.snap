@@ -74,6 +74,7 @@ exports[`Design snapshot renders 1`] = `
           },
         ]
       }
+      mathMlOptions={Object {}}
       model={
         Object {
           "categories": Array [

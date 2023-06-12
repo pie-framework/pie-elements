@@ -319,6 +319,22 @@
       "type": "string",
       "title": "width"
     },
+    "mathMlOptions": {
+      "title": "ConfigureMathMLProp",
+      "type": "object",
+      "properties": {
+        "mmlOutput": {
+          "description": "Indicates if model should have mathML output instead of latex",
+          "type": "number",
+          "title": "mmlOutput"
+        },
+        "mmlEditing": {
+          "description": "Indicates if mathML that's already in model should be editable",
+          "type": "number",
+          "title": "mmlEditing"
+        }
+      }
+    },
     "showPrompt": {
       "description": "Determines whether prompt field will be displayed or not",
       "default": true,
@@ -425,6 +441,22 @@
           "description": "Indicates the max dimension for images in row labels",
           "type": "number",
           "title": "rowTitles"
+        }
+      }
+    },
+    "ConfigureMathMLProp": {
+      "title": "ConfigureMathMLProp",
+      "type": "object",
+      "properties": {
+        "mmlOutput": {
+          "description": "Indicates if model should have mathML output instead of latex",
+          "type": "number",
+          "title": "mmlOutput"
+        },
+        "mmlEditing": {
+          "description": "Indicates if mathML that's already in model should be editable",
+          "type": "number",
+          "title": "mmlEditing"
         }
       }
     }

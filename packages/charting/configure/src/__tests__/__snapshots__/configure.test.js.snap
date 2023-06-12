@@ -111,6 +111,10 @@ exports[`Configure renders snapshot 1`] = `
               "settings": false,
               "settingsLabel": "Allow non-interactive categories",
             },
+            "mathMlOptions": Object {
+              "mmlEditing": false,
+              "mmlOutput": false,
+            },
           },
           "labelsPlaceholders": Object {
             "bottom": "Click here to add a label for this axis",
@@ -244,6 +248,7 @@ exports[`Configure renders snapshot 1`] = `
         ]
       }
       markup=""
+      mathMlOptions={Object {}}
       maxImageHeight={300}
       maxImageWidth={300}
       nonEmpty={false}
@@ -266,6 +271,7 @@ exports[`Configure renders snapshot 1`] = `
         ]
       }
       markup=""
+      mathMlOptions={Object {}}
       maxImageHeight={300}
       maxImageWidth={300}
       nonEmpty={false}
@@ -409,6 +415,10 @@ exports[`Configure renders snapshot 1`] = `
           "settings": false,
           "settingsLabel": "Allow non-interactive categories",
         },
+        "mathMlOptions": Object {
+          "mmlEditing": false,
+          "mmlOutput": false,
+        },
       }
     }
     charts={
@@ -447,6 +457,7 @@ exports[`Configure renders snapshot 1`] = `
         "top": "",
       }
     }
+    mathMlOptions={Object {}}
     model={
       Object {
         "addCategoryEnabled": true,
@@ -520,6 +531,7 @@ exports[`Configure renders snapshot 1`] = `
         "width": 480,
       }
     }
+    mathMlOptions={Object {}}
     model={
       Object {
         "addCategoryEnabled": true,
@@ -567,6 +579,7 @@ exports[`Configure renders snapshot 1`] = `
         ]
       }
       markup=""
+      mathMlOptions={Object {}}
       maxImageHeight={300}
       maxImageWidth={300}
       onChange={[Function]}

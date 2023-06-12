@@ -58,6 +58,7 @@ export class InputHeader extends React.Component {
       maxImageWidth,
       maxImageHeight,
       uploadSoundSupport,
+      mathMlOptions
     } = this.props;
     const choicePlugins = {
       audio: { disabled: true },
@@ -89,6 +90,7 @@ export class InputHeader extends React.Component {
           onDone={() => {
             deleteFocusedEl && deleteFocusedEl();
           }}
+          mathMlOptions={mathMlOptions}
         />
       </div>
     );

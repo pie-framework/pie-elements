@@ -214,6 +214,18 @@ Indicates the max dimension for images in rationale
 
 Indicates the max dimension for images in choices
 
+## `mathMlOptions` (object)
+
+Properties of the `mathMlOptions` object:
+
+### `mmlOutput` (number)
+
+Indicates if model should have mathML output instead of latex
+
+### `mmlEditing` (number)
+
+Indicates if mathML that's already in model should be editable
+
 # `partB` (object, required)
 
 Properties of the `partB` object:
@@ -425,6 +437,18 @@ Indicates the max dimension for images in rationale
 ### `choices` (number)
 
 Indicates the max dimension for images in choices
+
+## `mathMlOptions` (object)
+
+Properties of the `mathMlOptions` object:
+
+### `mmlOutput` (number)
+
+Indicates if model should have mathML output instead of latex
+
+### `mmlEditing` (number)
+
+Indicates if mathML that's already in model should be editable
 
 # `partLabels` (object)
 
@@ -736,6 +760,18 @@ Indicates the max dimension for images in rationale
 
 Indicates the max dimension for images in choices
 
+### `mathMlOptions` (object)
+
+Properties of the `mathMlOptions` object:
+
+#### `mmlOutput` (number)
+
+Indicates if model should have mathML output instead of latex
+
+#### `mmlEditing` (number)
+
+Indicates if mathML that's already in model should be editable
+
 ## `ConfigureProp` (object)
 
 Properties of the `ConfigureProp` object:
@@ -767,3 +803,15 @@ Indicates the max dimension for images in rationale
 ### `choices` (number)
 
 Indicates the max dimension for images in choices
+
+## `ConfigureMathMLProp` (object)
+
+Properties of the `ConfigureMathMLProp` object:
+
+### `mmlOutput` (number)
+
+Indicates if model should have mathML output instead of latex
+
+### `mmlEditing` (number)
+
+Indicates if mathML that's already in model should be editable

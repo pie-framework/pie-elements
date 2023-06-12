@@ -242,6 +242,18 @@ Indicates the maximum length of first column headings
 
 How large (in px) should match be
 
+# `mathMlOptions` (object)
+
+Properties of the `mathMlOptions` object:
+
+## `mmlOutput` (number)
+
+Indicates if model should have mathML output instead of latex
+
+## `mmlEditing` (number)
+
+Indicates if mathML that's already in model should be editable
+
 # `showPrompt` (boolean)
 
 Determines whether prompt field will be displayed or not
@@ -331,3 +343,15 @@ Indicates the max dimension for images in rationale
 ### `rowTitles` (number)
 
 Indicates the max dimension for images in row labels
+
+## `ConfigureMathMLProp` (object)
+
+Properties of the `ConfigureMathMLProp` object:
+
+### `mmlOutput` (number)
+
+Indicates if model should have mathML output instead of latex
+
+### `mmlEditing` (number)
+
+Indicates if mathML that's already in model should be editable

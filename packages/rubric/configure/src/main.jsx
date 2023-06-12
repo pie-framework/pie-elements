@@ -20,6 +20,7 @@ class Main extends React.Component {
       settingsPanelDisabled,
       showExcludeZero = {},
       showMaxPoint = {},
+      mathMlOptions = {},
       width,
     } = configuration || {};
 
@@ -45,7 +46,7 @@ class Main extends React.Component {
         }
       >
         <div style={{ maxWidth: width }}>
-          <Authoring value={model} onChange={onModelChanged} />
+          <Authoring value={model} onChange={onModelChanged} mathMlOptions={mathMlOptions} />
         </div>
       </layout.ConfigLayout>
     );

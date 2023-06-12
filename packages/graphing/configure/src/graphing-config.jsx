@@ -188,6 +188,7 @@ export class GraphingConfig extends React.Component {
       dimensionsEnabled,
       showTitle,
       titlePlaceholder,
+      mathMlOptions
     } = this.props;
     const {
       arrows,
@@ -299,6 +300,7 @@ export class GraphingConfig extends React.Component {
             title={title}
             titlePlaceholder={titlePlaceholder}
             toolbarTools={availableTools}
+            mathMlOptions={mathMlOptions}
           />
         </div>
 

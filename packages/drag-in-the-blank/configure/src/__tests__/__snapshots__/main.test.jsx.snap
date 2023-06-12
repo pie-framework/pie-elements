@@ -20,6 +20,10 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
             "label": "Lock Choice Order",
             "settings": true,
           },
+          "mathMlOptions": Object {
+            "mmlEditing": false,
+            "mmlOutput": false,
+          },
           "maxImageHeight": Object {
             "prompt": 300,
             "rationale": 300,
@@ -136,6 +140,12 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
         ]
       }
       markup=""
+      mathMlOptions={
+        Object {
+          "mmlEditing": false,
+          "mmlOutput": false,
+        }
+      }
       maxImageHeight={300}
       maxImageWidth={300}
       nonEmpty={false}
@@ -163,6 +173,12 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
         ]
       }
       markup="<p>Solve the equation below.</p>"
+      mathMlOptions={
+        Object {
+          "mmlEditing": false,
+          "mmlOutput": false,
+        }
+      }
       maxImageHeight={300}
       maxImageWidth={300}
       nonEmpty={false}
@@ -217,6 +233,12 @@ There should be at least 2 tokens defined."
       ]
     }
     markup="<span data-type=\\"drag_in_the_blank\\" data-index=\\"0\\" data-id=\\"0\\" data-value=\\"&lt;div&gt;6&lt;/div&gt;\\"></span> + <span data-type=\\"drag_in_the_blank\\" data-index=\\"1\\" data-id=\\"1\\" data-value=\\"&lt;div&gt;9&lt;/div&gt;\\"></span> = 15"
+    mathMlOptions={
+      Object {
+        "mmlEditing": false,
+        "mmlOutput": false,
+      }
+    }
     nonEmpty={false}
     onChange={[Function]}
     responseAreaProps={
@@ -236,6 +258,12 @@ There should be at least 2 tokens defined."
   />
   <WithStyles(Choices)
     duplicates={true}
+    mathMlOptions={
+      Object {
+        "mmlEditing": false,
+        "mmlOutput": false,
+      }
+    }
     model={
       Object {
         "alternateResponses": Array [
@@ -297,6 +325,12 @@ There should be at least 2 tokens defined."
         ]
       }
       markup="<p>A correct response is shown below:</p><ul><li>2/6 = 1/3</li><li>4/8 = 1/2</li><li>6/10 = 3/5</li><li>9/12 = 3/4</li></ul>"
+      mathMlOptions={
+        Object {
+          "mmlEditing": false,
+          "mmlOutput": false,
+        }
+      }
       maxImageHeight={300}
       maxImageWidth={300}
       onChange={[Function]}
@@ -329,6 +363,10 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
           "lockChoiceOrder": Object {
             "label": "Lock Choice Order",
             "settings": true,
+          },
+          "mathMlOptions": Object {
+            "mmlEditing": false,
+            "mmlOutput": false,
           },
           "maxImageHeight": Object {
             "prompt": 300,
@@ -474,6 +512,12 @@ There should be at least 2 tokens defined."
       ]
     }
     markup="<span data-type=\\"drag_in_the_blank\\" data-index=\\"0\\" data-id=\\"0\\" data-value=\\"&lt;div&gt;6&lt;/div&gt;\\"></span> + <span data-type=\\"drag_in_the_blank\\" data-index=\\"1\\" data-id=\\"1\\" data-value=\\"&lt;div&gt;9&lt;/div&gt;\\"></span> = 15"
+    mathMlOptions={
+      Object {
+        "mmlEditing": false,
+        "mmlOutput": false,
+      }
+    }
     nonEmpty={false}
     onChange={[Function]}
     responseAreaProps={
@@ -493,6 +537,12 @@ There should be at least 2 tokens defined."
   />
   <WithStyles(Choices)
     duplicates={true}
+    mathMlOptions={
+      Object {
+        "mmlEditing": false,
+        "mmlOutput": false,
+      }
+    }
     model={
       Object {
         "alternateResponses": Array [
