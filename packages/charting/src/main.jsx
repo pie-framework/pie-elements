@@ -6,6 +6,9 @@ import { Chart, chartTypes } from '@pie-lib/charting';
 import isArray from 'lodash/isArray';
 import isEqual from 'lodash/isEqual';
 import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
+import Translator from '@pie-lib/translator';
+
+const { translator } = Translator;
 
 export class Main extends React.Component {
   static propTypes = {
@@ -64,6 +67,7 @@ export class Main extends React.Component {
       rationale,
       correctedAnswer,
       correctAnswer,
+      language
     } = model;
 
     const correctData =
@@ -117,6 +121,7 @@ export class Main extends React.Component {
             onDataChange={this.changeData}
             addCategoryEnabled={false}
             categoryDefaultLabel={studentNewCategoryDefaultLabel}
+            language={language}
           />
         ) : (
           <Chart
@@ -138,6 +143,7 @@ export class Main extends React.Component {
             onDataChange={this.changeData}
             addCategoryEnabled={addCategoryEnabled}
             categoryDefaultLabel={studentNewCategoryDefaultLabel}
+            language={language}
           />
         )}
 

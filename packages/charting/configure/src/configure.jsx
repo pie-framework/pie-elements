@@ -12,7 +12,7 @@ import CorrectResponse from './correct-response';
 import { applyConstraints, getGridValues, getLabelValues } from './utils';
 
 const log = debug('@pie-element:graphing:configure');
-const { Panel, toggle, radio } = settings;
+const { Panel, toggle, radio, dropdown } = settings;
 
 const styles = (theme) => ({
   title: {
@@ -116,6 +116,8 @@ export class Configure extends React.Component {
       availableChartTypes = {},
       mathMlOptions = {},
       chartTypeLabel,
+      language = {},
+      languageChoices = {},
     } = configuration || {};
     const { errors, promptEnabled, rationaleEnabled, spellCheckEnabled, teacherInstructionsEnabled, studentNewCategoryDefaultLabel } = model || {};
     const { categoryErrors, correctAnswerErrors } = errors || {};
@@ -142,6 +144,8 @@ export class Configure extends React.Component {
       promptEnabled: prompt.settings && toggle(prompt.label),
       scoringType: scoringType.settings && radio(scoringType.label, ['all or nothing', 'partial scoring']),
       rubricEnabled: withRubric?.settings && toggle(withRubric?.label),
+      'language.enabled': language.settings && toggle(language.label, true),
+      language: language.settings && language.enabled && dropdown(languageChoices.label, languageChoices.options),
     };
 
     return (
