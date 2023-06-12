@@ -52,7 +52,7 @@ export class Main extends React.Component {
 
   render() {
     const { model, classes, session } = this.props;
-    console.log(this.props, 'this props');
+
     const {
       dimensions,
       disabled,
