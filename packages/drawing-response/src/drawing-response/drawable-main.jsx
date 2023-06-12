@@ -208,8 +208,7 @@ export class DrawableMain extends React.Component {
       stage: this.stage,
       onMouseOverElement: this.onMouseOverElement,
       onMouseOutElement: this.onMouseOutElement,
-      scale,
-      language
+      scale
     };
 
     let listeners = {};
