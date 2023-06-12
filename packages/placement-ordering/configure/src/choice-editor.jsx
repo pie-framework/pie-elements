@@ -241,6 +241,7 @@ class ChoiceEditor extends React.Component {
       maxImageWidth,
       maxImageHeight,
       errors,
+      mathMlOptions = {}
     } = this.props;
     const { warning } = this.state;
     const { choicesErrors, orderError } = errors || {};
@@ -281,6 +282,7 @@ class ChoiceEditor extends React.Component {
               maxImageWidth={maxImageWidth}
               maxImageHeight={maxImageHeight}
               error={choicesErrors?.[choice.id] || (orderError && ' ') || null}
+              mathMlOptions={mathMlOptions}
             />
           ))}
         </div>

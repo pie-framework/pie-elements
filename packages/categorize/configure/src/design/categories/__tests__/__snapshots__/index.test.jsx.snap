@@ -48,6 +48,7 @@ At least one token should be assigned to at least one category."
       categoriesPerRow={2}
       disabled={false}
       markup=""
+      mathMlOptions={Object {}}
       onChange={[Function]}
       rowIndex={0}
     />

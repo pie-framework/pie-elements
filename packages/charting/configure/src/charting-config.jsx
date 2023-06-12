@@ -118,7 +118,7 @@ export class ChartingConfig extends React.Component {
     });
 
   render() {
-    const { classes, model, charts, labelsPlaceholders, titlePlaceholder, showPixelGuides, authorNewCategoryDefaults, chartingOptions } = this.props;
+    const { classes, model, charts, labelsPlaceholders, titlePlaceholder, showPixelGuides, authorNewCategoryDefaults, chartingOptions, mathMlOptions = {} } = this.props;
     const { dialog } = this.state;
     const { domain = {}, range = {} } = model || {};
 
@@ -156,6 +156,7 @@ export class ChartingConfig extends React.Component {
               categoryDefaults={authorNewCategoryDefaults}
               labelsPlaceholders={labelsPlaceholders}
               titlePlaceholder={titlePlaceholder?.label}
+              mathMlOptions={mathMlOptions}
             />
             {model.changeAddCategoryEnabled && (
               <div>

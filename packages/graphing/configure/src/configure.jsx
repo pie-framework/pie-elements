@@ -111,6 +111,7 @@ export class Configure extends React.Component {
       withRubric = {},
       language = {},
       languageChoices = {},
+      mathMlOptions = {},
     } = configuration || {};
     const {
       errors = {},
@@ -198,6 +199,7 @@ export class Configure extends React.Component {
               maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
               uploadSoundSupport={uploadSoundSupport}
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+              mathMlOptions={mathMlOptions}
             />
           </InputContainer>
         )}
@@ -216,6 +218,7 @@ export class Configure extends React.Component {
               maxImageHeight={defaultImageMaxHeight}
               uploadSoundSupport={uploadSoundSupport}
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+              mathMlOptions={mathMlOptions}
             />
           </InputContainer>
         )}
@@ -232,6 +235,7 @@ export class Configure extends React.Component {
           showTitle={titleEnabled}
           titlePlaceholder={title.placeholder}
           onChange={this.props.onModelChanged}
+          mathMlOptions={mathMlOptions}
         />
 
         <CorrectResponse
@@ -239,6 +243,7 @@ export class Configure extends React.Component {
           errors={errors}
           model={model}
           onChange={this.props.onModelChanged}
+          mathMlOptions={mathMlOptions}
         />
 
         {rationaleEnabled && (
@@ -253,6 +258,7 @@ export class Configure extends React.Component {
               maxImageHeight={(maxImageHeight && maxImageHeight.rationale) || defaultImageMaxHeight}
               uploadSoundSupport={uploadSoundSupport}
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+              mathMlOptions={mathMlOptions}
             />
           </InputContainer>
         )}

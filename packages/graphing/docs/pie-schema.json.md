@@ -783,6 +783,18 @@ Indicates the max dimension for images in prompt - this is also the default dime
 
 Indicates the max dimension for images in rationale
 
+## `ConfigureMathMLProp` (object)
+
+Properties of the `ConfigureMathMLProp` object:
+
+### `mmlOutput` (number)
+
+Indicates if model should have mathML output instead of latex
+
+### `mmlEditing` (number)
+
+Indicates if mathML that's already in model should be editable
+
 ## `Answer` (object)
 
 Properties of the `Answer` object:

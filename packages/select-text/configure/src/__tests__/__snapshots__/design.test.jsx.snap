@@ -19,6 +19,10 @@ exports[`design snapshot renders all items except feedback 1`] = `
             "label": "Highlight choices",
             "settings": true,
           },
+          "mathMlOptions": Object {
+            "mmlEditing": false,
+            "mmlOutput": false,
+          },
           "maxImageHeight": Object {
             "prompt": 300,
             "rationale": 300,
@@ -196,6 +200,10 @@ exports[`design snapshot renders all items except the content input 1`] = `
             "label": "Highlight choices",
             "settings": true,
           },
+          "mathMlOptions": Object {
+            "mmlEditing": false,
+            "mmlOutput": false,
+          },
           "maxImageHeight": Object {
             "prompt": 300,
             "rationale": 300,
@@ -360,6 +368,10 @@ exports[`design snapshot renders all items with defaultProps 1`] = `
           "highlightChoices": Object {
             "label": "Highlight choices",
             "settings": true,
+          },
+          "mathMlOptions": Object {
+            "mmlEditing": false,
+            "mmlOutput": false,
           },
           "maxImageHeight": Object {
             "prompt": 300,
@@ -537,6 +549,10 @@ exports[`design snapshot tokenizer renders with html entities 1`] = `
           "highlightChoices": Object {
             "label": "Highlight choices",
             "settings": true,
+          },
+          "mathMlOptions": Object {
+            "mmlEditing": false,
+            "mmlOutput": false,
           },
           "maxImageHeight": Object {
             "prompt": 300,

@@ -143,6 +143,7 @@ export class Main extends React.Component {
       maxImageWidth = {},
       maxImageHeight = {},
       withRubric = {},
+      mathMlOptions = {},
     } = configuration || {};
     const {
       rationaleEnabled,
@@ -209,6 +210,7 @@ export class Main extends React.Component {
               maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
               uploadSoundSupport={uploadSoundSupport}
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+              mathMlOptions={mathMlOptions}
             />
           </InputContainer>
         )}
@@ -228,6 +230,7 @@ export class Main extends React.Component {
               maxImageHeight={defaultImageMaxHeight}
               uploadSoundSupport={uploadSoundSupport}
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+              mathMlOptions={mathMlOptions}
             />
           </InputContainer>
         )}
@@ -266,6 +269,7 @@ export class Main extends React.Component {
           spellCheck={spellCheckEnabled}
           uploadSoundSupport={uploadSoundSupport}
           languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+          mathMlOptions={mathMlOptions}
         />
         {responseAreasError && <div className={classes.errorText}>{responseAreasError}</div>}
         {correctResponseError && <div className={classes.errorText}>{correctResponseError}</div>}
@@ -278,6 +282,7 @@ export class Main extends React.Component {
           toolbarOpts={toolbarOpts}
           maxChoices={maxChoices}
           uploadSoundSupport={uploadSoundSupport}
+          mathMlOptions={mathMlOptions}
         />
 
         {rationaleEnabled && (
@@ -293,6 +298,7 @@ export class Main extends React.Component {
               maxImageHeight={(maxImageHeight && maxImageHeight.rationale) || defaultImageMaxHeight}
               uploadSoundSupport={uploadSoundSupport}
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+              mathMlOptions={mathMlOptions}
             />
           </InputContainer>
         )}

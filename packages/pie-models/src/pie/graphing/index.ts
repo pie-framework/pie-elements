@@ -1,7 +1,12 @@
 import {PromptConfig} from '../../PromptConfig';
 import {CommonConfigSettings} from '../../CommonConfigSettings';
 import {PieModel} from '../../PieModel';
-import {ConfigureMaxImageDimensionsProp, ConfigureProp, ConfigurePropWithEnabled} from '../ConfigurationProp';
+import {
+    ConfigureMathMLProp,
+    ConfigureMaxImageDimensionsProp,
+    ConfigureProp,
+    ConfigurePropWithEnabled
+} from '../ConfigurationProp';
 
 interface Graph {
     /** Width for graph representation */
@@ -516,4 +521,7 @@ export interface GraphingConfigure extends PromptConfig, CommonConfigSettings {
      * Rubric configuration - only relevant in environments that use pie-player-components
      */
     withRubric?: ConfigureProp;
+
+    /** Configuration for editable-html */
+    mathMlOptions?: ConfigureMathMLProp;
 }

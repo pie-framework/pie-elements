@@ -119,6 +119,7 @@ export class Row extends React.Component {
       maxImageWidth,
       maxImageHeight,
       uploadSoundSupport,
+      mathMlOptions = {}
     } = this.props;
     const { dialog } = this.state;
     const opacity = isDragging ? 0 : 1;
@@ -159,6 +160,7 @@ export class Row extends React.Component {
               uploadSoundSupport={uploadSoundSupport}
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               error={error && error !== 'No correct response defined.'}
+              mathMlOptions={mathMlOptions}
             />
           </div>
 

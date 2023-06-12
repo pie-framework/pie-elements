@@ -65,6 +65,10 @@ const defaultConfig = {
     rationale: 300,
     choices: 300,
   },
+  mathMlOptions: {
+    mmlOutput: false,
+    mmlEditing: false,
+  },
 };
 
 const partModel = (base) => ({

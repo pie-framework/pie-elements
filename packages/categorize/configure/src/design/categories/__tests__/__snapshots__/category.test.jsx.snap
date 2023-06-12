@@ -8,6 +8,7 @@ exports[`category snapshot renders with default props 1`] = `
     <WithStyles(InputHeader)
       disabled={false}
       label="Category title"
+      mathMlOptions={Object {}}
       onChange={[Function]}
       onDelete={[MockFunction]}
     />
@@ -40,6 +41,7 @@ exports[`category snapshot renders without some components if no handlers are pr
     <WithStyles(InputHeader)
       disabled={false}
       label="Category title"
+      mathMlOptions={Object {}}
       onChange={[Function]}
     />
   </span>

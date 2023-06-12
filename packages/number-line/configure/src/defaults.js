@@ -54,4 +54,8 @@ export const configuration = {
     settings: false,
     enabled: true,
   },
+  mathMlOptions: {
+    mmlOutput: false,
+    mmlEditing: false,
+  },
 };

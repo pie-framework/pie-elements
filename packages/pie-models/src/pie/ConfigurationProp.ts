@@ -58,3 +58,12 @@ export interface ConfigureMaxImageDimensionsProp {
   /** Indicates the max dimension for images in rationale */
   rationale?: number;
 }
+
+export interface ConfigureMathMLProp {
+  /** Indicates if model should have mathML output instead of latex */
+  mmlOutput?: number;
+
+  /** Indicates if mathML that's already in model should be editable */
+  mmlEditing?: number;
+}
+

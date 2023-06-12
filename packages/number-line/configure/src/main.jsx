@@ -279,7 +279,7 @@ export class Main extends React.Component {
 
   render() {
     const { classes, model, onChange, configuration, uploadSoundSupport } = this.props;
-    const { contentDimensions = {}, prompt = {} } = configuration || {};
+    const { contentDimensions = {}, prompt = {}, mathMlOptions = {} } = configuration || {};
     const { errors, graph, spellCheckEnabled, toolbarEditorPosition } = model || {};
 
     const { widthError, domainError, maxError, pointsError, correctResponseError } = errors || {};
@@ -306,6 +306,7 @@ export class Main extends React.Component {
               spellCheck={spellCheckEnabled}
               uploadSoundSupport={uploadSoundSupport}
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+              mathMlOptions={mathMlOptions}
             />
           </InputContainer>
         )}
@@ -360,6 +361,7 @@ export class Main extends React.Component {
             spellCheck={spellCheckEnabled}
             uploadSoundSupport={uploadSoundSupport}
             languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+            mathMlOptions={mathMlOptions}
           />
         </FormSection>
 

@@ -25,6 +25,7 @@ exports[`ChartingConfig renders snapshot 1`] = `
         data={Array []}
         defineChart={true}
         domain={Object {}}
+        mathMlOptions={Object {}}
         onChangeLabels={[Function]}
         onChangeTitle={[Function]}
         onDataChange={[Function]}
@@ -110,6 +111,10 @@ exports[`Configure renders snapshot 1`] = `
               "authoringLabel": "Student can set value",
               "settings": false,
               "settingsLabel": "Allow non-interactive categories",
+            },
+            "mathMlOptions": Object {
+              "mmlEditing": false,
+              "mmlOutput": false,
             },
           },
           "labelsPlaceholders": Object {
@@ -244,6 +249,7 @@ exports[`Configure renders snapshot 1`] = `
         ]
       }
       markup=""
+      mathMlOptions={Object {}}
       maxImageHeight={300}
       maxImageWidth={300}
       nonEmpty={false}
@@ -266,6 +272,7 @@ exports[`Configure renders snapshot 1`] = `
         ]
       }
       markup=""
+      mathMlOptions={Object {}}
       maxImageHeight={300}
       maxImageWidth={300}
       nonEmpty={false}
@@ -409,6 +416,10 @@ exports[`Configure renders snapshot 1`] = `
           "settings": false,
           "settingsLabel": "Allow non-interactive categories",
         },
+        "mathMlOptions": Object {
+          "mmlEditing": false,
+          "mmlOutput": false,
+        },
       }
     }
     charts={
@@ -447,6 +458,7 @@ exports[`Configure renders snapshot 1`] = `
         "top": "",
       }
     }
+    mathMlOptions={Object {}}
     model={
       Object {
         "addCategoryEnabled": true,
@@ -520,6 +532,7 @@ exports[`Configure renders snapshot 1`] = `
         "width": 480,
       }
     }
+    mathMlOptions={Object {}}
     model={
       Object {
         "addCategoryEnabled": true,
@@ -567,6 +580,7 @@ exports[`Configure renders snapshot 1`] = `
         ]
       }
       markup=""
+      mathMlOptions={Object {}}
       maxImageHeight={300}
       maxImageWidth={300}
       onChange={[Function]}
@@ -601,6 +615,7 @@ exports[`CorrectResponse renders snapshot 1`] = `
           chartType="lineCross"
           data={Array []}
           domain={Object {}}
+          mathMlOptions={Object {}}
           onDataChange={[Function]}
           range={
             Object {
