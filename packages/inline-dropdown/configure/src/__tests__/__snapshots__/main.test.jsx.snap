@@ -251,7 +251,6 @@ There should be at most 10 choices defined per response area."
     }
     markup="<div><p>The <span data-type=\\"inline_dropdown\\" data-index=\\"0\\" data-value=\\"cow \\"></span> jumped <span data-type=\\"inline_dropdown\\" data-index=\\"1\\" data-value=\\"over \\"></span> the <span data-type=\\"inline_dropdown\\" data-index=\\"2\\" data-value=\\"moon \\"></span></p></div>"
     onChange={[Function]}
-    onDone={[Function]}
     responseAreaProps={
       Object {
         "maxResponseAreas": 10,
@@ -714,7 +713,6 @@ There should be at most 10 choices defined per response area."
     }
     markup="<div><p>The <span data-type=\\"inline_dropdown\\" data-index=\\"0\\" data-value=\\"cow \\"></span> jumped <span data-type=\\"inline_dropdown\\" data-index=\\"1\\" data-value=\\"over \\"></span> the <span data-type=\\"inline_dropdown\\" data-index=\\"2\\" data-value=\\"moon \\"></span></p></div>"
     onChange={[Function]}
-    onDone={[Function]}
     responseAreaProps={
       Object {
         "maxResponseAreas": 10,
