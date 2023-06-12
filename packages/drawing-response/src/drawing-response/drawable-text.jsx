@@ -1,6 +1,8 @@
 import React from 'react';
 import { Text } from 'react-konva';
+import Translator from '@pie-lib/translator';
 
+const { translator } = Translator;
 import Transformer from './drawable-transformer';
 
 export const generateId = () => Math.random().toString(36).substring(2) + new Date().getTime().toString(36);
@@ -30,14 +32,14 @@ export default class TextDrawable {
     this.props.forceUpdate();
   };
 
-  addNewTextEntry = () => {
+  addNewTextEntry = (language) => {
     const all = this.all;
     const id = generateId();
 
     all.push({
       id: id,
       isDefault: true,
-      label: 'Double click to edit this text. Press Enter to submit.',
+      label: translator.t('drawingResponse.onDoubleClick', { lng: language }),
       width: 200,
       x: (all.length + 1) * 5 + 50,
       y: (all.length + 1) * 5 + 50,

@@ -144,13 +144,14 @@ export class Container extends Component {
   handleMakeToolActive(tool) {
     const { TextEntry } = this.state;
     const { type } = tool;
+    const { language } = this.props;
 
     if (type !== 'Text') {
       this.setState({
         toolActive: tool,
       });
     } else {
-      TextEntry.addNewTextEntry();
+      TextEntry.addNewTextEntry(language);
       // Force update
       this.setState({
         updatedAt: new Date(),
