@@ -70,7 +70,7 @@ export class Category extends React.Component {
       maxImageWidth,
       maxImageHeight,
       uploadSoundSupport,
-      mathMlOptions
+      mathMlOptions = {}
     } = this.props;
     return (
       <Card

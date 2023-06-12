@@ -18,6 +18,7 @@ exports[`InputHeader snapshot renders 1`] = `
         },
       ]
     }
+    mathMlOptions={Object {}}
     onChange={[MockFunction]}
     onDone={[Function]}
     pluginProps={

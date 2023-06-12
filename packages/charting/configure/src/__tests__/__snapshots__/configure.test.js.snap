@@ -25,6 +25,7 @@ exports[`ChartingConfig renders snapshot 1`] = `
         data={Array []}
         defineChart={true}
         domain={Object {}}
+        mathMlOptions={Object {}}
         onChangeLabels={[Function]}
         onChangeTitle={[Function]}
         onDataChange={[Function]}
@@ -614,6 +615,7 @@ exports[`CorrectResponse renders snapshot 1`] = `
           chartType="lineCross"
           data={Array []}
           domain={Object {}}
+          mathMlOptions={Object {}}
           onDataChange={[Function]}
           range={
             Object {

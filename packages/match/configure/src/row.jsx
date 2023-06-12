@@ -119,7 +119,7 @@ export class Row extends React.Component {
       maxImageWidth,
       maxImageHeight,
       uploadSoundSupport,
-      mathMlOptions
+      mathMlOptions = {}
     } = this.props;
     const { dialog } = this.state;
     const opacity = isDragging ? 0 : 1;

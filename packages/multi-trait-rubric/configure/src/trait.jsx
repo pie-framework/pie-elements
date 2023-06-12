@@ -112,7 +112,7 @@ export class TraitTile extends React.Component {
       secondaryBlockWidth,
       spellCheck,
       uploadSoundSupport,
-      mathMlOptions
+      mathMlOptions = {}
     } = this.props;
     const { anchorEl } = this.state;
 

@@ -118,7 +118,7 @@ export class ChartingConfig extends React.Component {
     });
 
   render() {
-    const { classes, model, charts, labelsPlaceholders, titlePlaceholder, showPixelGuides, authorNewCategoryDefaults, chartingOptions, mathMlOptions } = this.props;
+    const { classes, model, charts, labelsPlaceholders, titlePlaceholder, showPixelGuides, authorNewCategoryDefaults, chartingOptions, mathMlOptions = {} } = this.props;
     const { dialog } = this.state;
     const { domain = {}, range = {} } = model || {};
 

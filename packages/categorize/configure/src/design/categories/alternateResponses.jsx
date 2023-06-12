@@ -153,7 +153,7 @@ export class AlternateResponses extends React.Component {
       toolbarOpts,
       defaultImageMaxHeight,
       defaultImageMaxWidth,
-      mathMlOptions
+      mathMlOptions = {}
     } = this.props;
     const { categoriesPerRow, errors, rowLabels } = model;
     const { duplicateAlternate } = errors || {};

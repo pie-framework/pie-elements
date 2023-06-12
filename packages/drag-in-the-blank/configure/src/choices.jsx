@@ -194,7 +194,7 @@ export class Choices extends React.Component {
       model: { choices },
       toolbarOpts,
       uploadSoundSupport,
-      mathMlOptions
+      mathMlOptions = {}
     } = this.props;
     const visibleChoices = this.getVisibleChoices() || [];
 

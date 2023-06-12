@@ -103,7 +103,7 @@ export class TraitsHeaderTile extends React.Component {
       spellCheck,
       uploadSoundSupport,
       maxPointsEnabled,
-      mathMlOptions
+      mathMlOptions = {}
     } = this.props;
     const { anchorEl } = this.state;
 

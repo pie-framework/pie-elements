@@ -58,7 +58,7 @@ export class InputHeader extends React.Component {
       maxImageWidth,
       maxImageHeight,
       uploadSoundSupport,
-      mathMlOptions
+      mathMlOptions = {}
     } = this.props;
     const choicePlugins = {
       audio: { disabled: true },

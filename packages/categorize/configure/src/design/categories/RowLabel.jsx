@@ -26,7 +26,7 @@ export const RowLabel = withStyles(styles)(
     maxImageWidth,
     maxImageHeight,
     uploadSoundSupport,
-     mathMlOptions
+     mathMlOptions = {}
   }) => {
     return (
       <div

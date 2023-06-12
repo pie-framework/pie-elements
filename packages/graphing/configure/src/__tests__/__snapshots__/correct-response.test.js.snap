@@ -66,6 +66,7 @@ exports[`CorrectResponse renders snapshot 1`] = `
     draggableTools={true}
     labels={Object {}}
     marks={Array []}
+    mathMlOptions={Object {}}
     onChangeMarks={[Function]}
     onChangeTools={[Function]}
     range={

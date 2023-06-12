@@ -188,7 +188,7 @@ export class GraphingConfig extends React.Component {
       dimensionsEnabled,
       showTitle,
       titlePlaceholder,
-      mathMlOptions
+      mathMlOptions = {}
     } = this.props;
     const {
       arrows,

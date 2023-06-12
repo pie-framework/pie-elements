@@ -347,7 +347,7 @@ export class CorrectResponse extends React.Component {
   };
 
   render() {
-    const { availableTools, classes, errors, model, mathMlOptions } = this.props;
+    const { availableTools, classes, errors, model, mathMlOptions = {} } = this.props;
     const { dialog } = this.state;
     const {
       answers = {},

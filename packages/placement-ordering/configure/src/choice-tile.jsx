@@ -68,7 +68,7 @@ export class ChoiceTile extends React.Component {
       maxImageWidth,
       maxImageHeight,
       error,
-      mathMlOptions
+      mathMlOptions = {}
     } = this.props;
 
     const dragSourceOpts = {}; //dropEffect: moveOnDrag ? 'move' : 'copy'};

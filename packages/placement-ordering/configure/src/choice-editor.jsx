@@ -241,7 +241,7 @@ class ChoiceEditor extends React.Component {
       maxImageWidth,
       maxImageHeight,
       errors,
-      mathMlOptions
+      mathMlOptions = {}
     } = this.props;
     const { warning } = this.state;
     const { choicesErrors, orderError } = errors || {};

@@ -145,7 +145,7 @@ export const ScorePoint = withStyles({
     alignToRight,
     spellCheck,
     uploadSoundSupport,
-     mathMlOptions
+     mathMlOptions = {}
   }) => {
     const scoreBoxClasses = showScorePointLabels
       ? classes.scorePointBox
@@ -231,7 +231,7 @@ export const SimpleInput = withStyles((theme) => ({
   slateEditor: {
     fontFamily: 'Cerebri',
   },
-}))(({ classes, markup, onChange, pluginProps, label, spellCheck, uploadSoundSupport, mathMlOptions }) => (
+}))(({ classes, markup, onChange, pluginProps, label, spellCheck, uploadSoundSupport, mathMlOptions = {} }) => (
   <div className={classes.simpleInput}>
     {label && <div>{label}</div>}
 
@@ -276,7 +276,7 @@ export const UnderlinedInput = withStyles((theme) => ({
   slateEditor: {
     fontFamily: 'Cerebri',
   },
-}))(({ classes, markup, onChange, pluginProps, label, placeholder, spellCheck, uploadSoundSupport, mathMlOptions }) => (
+}))(({ classes, markup, onChange, pluginProps, label, placeholder, spellCheck, uploadSoundSupport, mathMlOptions = {} }) => (
   <div className={classes.underlinedInputWrapper}>
     {label && <div>{label}</div>}
 
@@ -307,7 +307,7 @@ export const ExpandedInput = withStyles({
     margin: '10px',
     marginTop: 0,
   },
-})(({ classes, markup, onChange, pluginProps, placeholder, alignToRight, spellCheck, uploadSoundSupport, mathMlOptions }) => (
+})(({ classes, markup, onChange, pluginProps, placeholder, alignToRight, spellCheck, uploadSoundSupport, mathMlOptions = {} }) => (
   <div>
     <EditableHtml
       className={classes.prompt}

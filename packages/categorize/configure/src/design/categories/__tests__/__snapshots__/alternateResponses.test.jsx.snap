@@ -16,6 +16,7 @@ exports[`AlternateResponses snapshot renders 1`] = `
       categoriesPerRow={2}
       disabled={true}
       markup=""
+      mathMlOptions={Object {}}
       onChange={[Function]}
       rowIndex={0}
     />
@@ -30,6 +31,7 @@ exports[`AlternateResponses snapshot renders 1`] = `
       }
       isDuplicated={false}
       key="0"
+      mathMlOptions={Object {}}
       onAddChoice={[Function]}
       onDeleteChoice={[Function]}
       onMoveChoice={[Function]}

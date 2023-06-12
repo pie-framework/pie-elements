@@ -234,7 +234,7 @@ export class RespAreaToolbar extends React.Component {
   };
 
   render() {
-    const { classes, choices, spellCheck, uploadSoundSupport, mathMlOptions } = this.props;
+    const { classes, choices, spellCheck, uploadSoundSupport, mathMlOptions = {} } = this.props;
     const { respAreaMarkup, toolbarStyle } = this.state;
 
     const filteredDefaultPlugins = (DEFAULT_PLUGINS || []).filter(

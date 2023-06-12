@@ -222,7 +222,7 @@ export class CorrectResponse extends React.Component {
   }
 
   render() {
-    const { classes, model, charts, error, studentNewCategoryDefaultLabel, correctAnswerErrors, mathMlOptions } = this.props;
+    const { classes, model, charts, error, studentNewCategoryDefaultLabel, correctAnswerErrors, mathMlOptions = {} } = this.props;
     const { categories } = this.state;
     const { domain = {}, range = {} } = model || {};
     const { identicalError, categoriesError } = correctAnswerErrors || {};

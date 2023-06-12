@@ -250,7 +250,7 @@ export class Scale extends React.Component {
       width,
       uploadSoundSupport,
       maxPointsEnabled,
-      mathMlOptions
+      mathMlOptions = {}
     } = this.props || {};
 
     const { maxPoints, scorePointsLabels, traitLabel, traits } = scale || {};
