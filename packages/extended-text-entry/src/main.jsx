@@ -28,6 +28,14 @@ const style = (theme) => ({
     marginBottom: theme.spacing.unit * 2,
     borderRadius: '4px',
   },
+  srOnly: {
+    position: 'absolute',
+    left: '-10000px',
+    top: 'auto',
+    width: '1px',
+    height: '1px',
+    overflow: 'hidden',
+  },
 });
 
 export class Main extends React.Component {
@@ -44,6 +52,7 @@ export class Main extends React.Component {
 
   render() {
     const { model, classes, session } = this.props;
+    console.log(this.props, 'this props');
     const {
       dimensions,
       disabled,
@@ -84,6 +93,8 @@ export class Main extends React.Component {
           this.containerRef = ref;
         }}
       >
+        <h2 className={classes.srOnly}>Constructed Response Question</h2>
+
         {teacherInstructions && (
           <div className={classes.teacherInstructions}>
             {!animationsDisabled ? (
