@@ -112,6 +112,7 @@ export class TraitTile extends React.Component {
       secondaryBlockWidth,
       spellCheck,
       uploadSoundSupport,
+      mathMlOptions = {}
     } = this.props;
     const { anchorEl } = this.state;
 
@@ -161,6 +162,7 @@ export class TraitTile extends React.Component {
                 placeholder={`Enter ${traitLabel}`}
                 spellCheck={spellCheck}
                 uploadSoundSupport={uploadSoundSupport}
+                mathMlOptions={mathMlOptions}
               />
             </PrimaryBlock>
 
@@ -179,6 +181,7 @@ export class TraitTile extends React.Component {
                     pluginProps={pluginProps}
                     spellCheck={spellCheck}
                     uploadSoundSupport={uploadSoundSupport}
+                    mathMlOptions={mathMlOptions}
                   />
                 </Block>
               )}
@@ -192,6 +195,7 @@ export class TraitTile extends React.Component {
                     pluginProps={pluginProps}
                     spellCheck={spellCheck}
                     uploadSoundSupport={uploadSoundSupport}
+                    mathMlOptions={mathMlOptions}
                   />
                 </Block>
               )}
@@ -218,6 +222,7 @@ export class TraitTile extends React.Component {
                       alignToRight={remainingSpace < 296} // 296 is the space required for the toolbar
                       spellCheck={spellCheck}
                       uploadSoundSupport={uploadSoundSupport}
+                      mathMlOptions={mathMlOptions}
                     />
                   </Block>
                 );

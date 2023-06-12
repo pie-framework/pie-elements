@@ -6,7 +6,7 @@ import {
   ConfigureProp,
   ConfigurePropWithEnabled,
   ConfigureMaxImageDimensionsProp,
-  ConfigureWithForceProp,
+  ConfigureWithForceProp, ConfigureMathMLProp,
 } from '../ConfigurationProp';
 
 interface Dimensions {
@@ -193,4 +193,7 @@ export interface ExtendedTextEntryConfigure extends PromptConfig, CommonConfigSe
    * Rubric configuration - only relevant in environments that use pie-player-components
    */
   withRubric?: ConfigureWithForceProp;
+
+  /** Configuration for editable-html */
+  mathMlOptions?: ConfigureMathMLProp;
 }

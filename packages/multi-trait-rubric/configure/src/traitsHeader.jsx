@@ -103,6 +103,7 @@ export class TraitsHeaderTile extends React.Component {
       spellCheck,
       uploadSoundSupport,
       maxPointsEnabled,
+      mathMlOptions = {}
     } = this.props;
     const { anchorEl } = this.state;
 
@@ -117,6 +118,7 @@ export class TraitsHeaderTile extends React.Component {
               spellCheck={spellCheck}
               label="Level Label"
               uploadSoundSupport={uploadSoundSupport}
+              mathMlOptions={mathMlOptions}
             />
           )}
 
@@ -184,6 +186,7 @@ export class TraitsHeaderTile extends React.Component {
                   alignToRight={remainingSpace < 296} // 296 is the space required for the toolbar
                   spellCheck={spellCheck}
                   uploadSoundSupport={uploadSoundSupport}
+                  mathMlOptions={mathMlOptions}
                 />
               </Block>
             );

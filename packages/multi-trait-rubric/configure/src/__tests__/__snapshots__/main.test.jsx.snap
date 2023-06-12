@@ -360,6 +360,7 @@ Overall appearance is acceptable or better",
       enableDragAndDrop={false}
       excludeZero={true}
       key="scale-0"
+      mathMlOptions={Object {}}
       model={
         Object {
           "description": false,
@@ -805,6 +806,7 @@ Writing is expressive, engaging and has lots of energy",
       enableDragAndDrop={false}
       excludeZero={true}
       key="scale-1"
+      mathMlOptions={Object {}}
       model={
         Object {
           "description": false,

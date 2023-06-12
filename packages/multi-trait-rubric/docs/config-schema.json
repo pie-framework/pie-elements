@@ -197,6 +197,22 @@
       "description": "The default trait label for new created scales.\nIf it's not defined, it will default to the label of the first trait.",
       "type": "string",
       "title": "defaultTraitLabel"
+    },
+    "mathMlOptions": {
+      "title": "ConfigureMathMLProp",
+      "type": "object",
+      "properties": {
+        "mmlOutput": {
+          "description": "Indicates if model should have mathML output instead of latex",
+          "type": "number",
+          "title": "mmlOutput"
+        },
+        "mmlEditing": {
+          "description": "Indicates if mathML that's already in model should be editable",
+          "type": "number",
+          "title": "mmlEditing"
+        }
+      }
     }
   },
   "required": [
@@ -232,6 +248,22 @@
           "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
           "type": "string",
           "title": "label"
+        }
+      }
+    },
+    "ConfigureMathMLProp": {
+      "title": "ConfigureMathMLProp",
+      "type": "object",
+      "properties": {
+        "mmlOutput": {
+          "description": "Indicates if model should have mathML output instead of latex",
+          "type": "number",
+          "title": "mmlOutput"
+        },
+        "mmlEditing": {
+          "description": "Indicates if mathML that's already in model should be editable",
+          "type": "number",
+          "title": "mmlEditing"
         }
       }
     }

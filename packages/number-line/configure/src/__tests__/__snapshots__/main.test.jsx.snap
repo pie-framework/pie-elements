@@ -21,6 +21,12 @@ exports[`main snapshot renders 1`] = `
           },
         ]
       }
+      mathMlOptions={
+        Object {
+          "mmlEditing": false,
+          "mmlOutput": false,
+        }
+      }
       nonEmpty={false}
       onChange={[Function]}
       toolbarOpts={
@@ -160,6 +166,12 @@ The correct answer should include at least one number line object."
         ]
       }
       markup=""
+      mathMlOptions={
+        Object {
+          "mmlEditing": false,
+          "mmlOutput": false,
+        }
+      }
       onChange={[Function]}
       toolbarOpts={
         Object {

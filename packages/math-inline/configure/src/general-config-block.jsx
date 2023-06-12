@@ -354,6 +354,7 @@ class GeneralConfigBlock extends React.Component {
       maxResponseAreas,
       maxImageWidth = {},
       maxImageHeight = {},
+      mathMlOptions = {},
     } = configuration || {};
     const validationMessage = generateValidationMessage(configuration, model);
     const { responsesErrors, responseAreasError } = errors;
@@ -397,6 +398,7 @@ class GeneralConfigBlock extends React.Component {
               maxImageHeight={defaultImageMaxHeight}
               uploadSoundSupport={uploadSoundSupport}
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+              mathMlOptions={mathMlOptions}
             />
           </InputContainer>
         )}
@@ -509,6 +511,7 @@ class GeneralConfigBlock extends React.Component {
               maxImageHeight={(maxImageHeight && maxImageHeight.rationale) || defaultImageMaxHeight}
               uploadSoundSupport={uploadSoundSupport}
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+              mathMlOptions={mathMlOptions}
             />
           </InputContainer>
         )}

@@ -281,6 +281,22 @@
               "title": "choices"
             }
           }
+        },
+        "mathMlOptions": {
+          "title": "ConfigureMathMLProp",
+          "type": "object",
+          "properties": {
+            "mmlOutput": {
+              "description": "Indicates if model should have mathML output instead of latex",
+              "type": "number",
+              "title": "mmlOutput"
+            },
+            "mmlEditing": {
+              "description": "Indicates if mathML that's already in model should be editable",
+              "type": "number",
+              "title": "mmlEditing"
+            }
+          }
         }
       }
     },
@@ -560,6 +576,22 @@
               "description": "Indicates the max dimension for images in choices",
               "type": "number",
               "title": "choices"
+            }
+          }
+        },
+        "mathMlOptions": {
+          "title": "ConfigureMathMLProp",
+          "type": "object",
+          "properties": {
+            "mmlOutput": {
+              "description": "Indicates if model should have mathML output instead of latex",
+              "type": "number",
+              "title": "mmlOutput"
+            },
+            "mmlEditing": {
+              "description": "Indicates if mathML that's already in model should be editable",
+              "type": "number",
+              "title": "mmlEditing"
             }
           }
         }
@@ -964,6 +996,22 @@
               "title": "choices"
             }
           }
+        },
+        "mathMlOptions": {
+          "title": "ConfigureMathMLProp",
+          "type": "object",
+          "properties": {
+            "mmlOutput": {
+              "description": "Indicates if model should have mathML output instead of latex",
+              "type": "number",
+              "title": "mmlOutput"
+            },
+            "mmlEditing": {
+              "description": "Indicates if mathML that's already in model should be editable",
+              "type": "number",
+              "title": "mmlEditing"
+            }
+          }
         }
       }
     },
@@ -1006,6 +1054,22 @@
           "description": "Indicates the max dimension for images in choices",
           "type": "number",
           "title": "choices"
+        }
+      }
+    },
+    "ConfigureMathMLProp": {
+      "title": "ConfigureMathMLProp",
+      "type": "object",
+      "properties": {
+        "mmlOutput": {
+          "description": "Indicates if model should have mathML output instead of latex",
+          "type": "number",
+          "title": "mmlOutput"
+        },
+        "mmlEditing": {
+          "description": "Indicates if mathML that's already in model should be editable",
+          "type": "number",
+          "title": "mmlEditing"
         }
       }
     }

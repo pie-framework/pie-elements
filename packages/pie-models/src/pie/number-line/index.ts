@@ -2,7 +2,7 @@ import { PromptConfig } from '../../PromptConfig';
 import { CommonConfigSettings } from '../../CommonConfigSettings';
 import { PieModel } from '../../PieModel';
 import { ComplexFeedbackType } from '../../Feedback';
-import { ConfigureProp } from '../ConfigurationProp';
+import {ConfigureMathMLProp, ConfigureProp} from '../ConfigurationProp';
 
 interface ResponseDefault {
   /** Indicates the response type */
@@ -171,4 +171,7 @@ export interface NumberLineConfigure extends PromptConfig, CommonConfigSettings 
    * Configuration for the author's spellcheck
    */
   spellCheck?: ConfigureProp;
+
+  /** Configuration for editable-html */
+  mathMlOptions?: ConfigureMathMLProp;
 }

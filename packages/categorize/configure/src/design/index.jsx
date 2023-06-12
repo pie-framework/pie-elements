@@ -170,6 +170,7 @@ export class Design extends React.Component {
       studentInstructions = {},
       teacherInstructions = {},
       withRubric = {},
+      mathMlOptions = {},
     } = configuration || {};
     const {
       allowAlternateEnabled,
@@ -269,6 +270,7 @@ export class Design extends React.Component {
                 maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
                 uploadSoundSupport={uploadSoundSupport}
                 languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+                mathMlOptions={mathMlOptions}
               />
             </InputContainer>
           )}
@@ -288,6 +290,7 @@ export class Design extends React.Component {
                 maxImageHeight={maxImageHeight && maxImageHeight.prompt}
                 uploadSoundSupport={uploadSoundSupport}
                 languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+                mathMlOptions={mathMlOptions}
               />
             </InputContainer>
           )}
@@ -303,6 +306,7 @@ export class Design extends React.Component {
             configuration={configuration}
             defaultImageMaxWidth={defaultImageMaxWidth}
             defaultImageMaxHeight={defaultImageMaxHeight}
+            mathMlOptions={mathMlOptions}
           />
 
           <Choices
@@ -348,6 +352,7 @@ export class Design extends React.Component {
                     toolbarOpts={toolbarOpts}
                     defaultImageMaxWidth={defaultImageMaxWidth}
                     defaultImageMaxHeight={defaultImageMaxHeight}
+                    mathMlOptions={mathMlOptions}
                   />
                 </React.Fragment>
               );
@@ -367,6 +372,7 @@ export class Design extends React.Component {
                 maxImageHeight={(maxImageHeight && maxImageHeight.rationale) || defaultImageMaxHeight}
                 uploadSoundSupport={uploadSoundSupport}
                 languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+                mathMlOptions={mathMlOptions}
               />
             </InputContainer>
           )}

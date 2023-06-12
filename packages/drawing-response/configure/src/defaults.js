@@ -44,6 +44,10 @@ export default {
       settings: false,
       label: 'Add Rubric',
     },
+    mathMlOptions: {
+      mmlOutput: false,
+      mmlEditing: false,
+    },
     language: {
       settings: true,
       label: 'Specify Language',

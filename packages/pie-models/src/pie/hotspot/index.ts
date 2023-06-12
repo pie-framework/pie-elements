@@ -2,7 +2,7 @@ import { Shape } from '../../Shape';
 import { Dimension } from '../../Dimension';
 import { PieModel } from '../../PieModel';
 import { PromptConfig } from '../../PromptConfig';
-import { ConfigureMaxImageDimensionsProp, ConfigureProp } from '../ConfigurationProp';
+import {ConfigureMathMLProp, ConfigureMaxImageDimensionsProp, ConfigureProp} from '../ConfigurationProp';
 import { CommonConfigSettings } from '../../CommonConfigSettings';
 
 /**
@@ -131,4 +131,7 @@ export interface HotspotConfigure extends PromptConfig, CommonConfigSettings {
    * Rubric configuration - only relevant in environments that use pie-player-components
    */
   withRubric?: ConfigureProp;
+
+  /** Configuration for editable-html */
+  mathMlOptions?: ConfigureMathMLProp;
 }

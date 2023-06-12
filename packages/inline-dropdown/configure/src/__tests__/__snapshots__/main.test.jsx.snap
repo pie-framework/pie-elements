@@ -16,6 +16,10 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
             "label": "Lock Choice Order",
             "settings": true,
           },
+          "mathMlOptions": Object {
+            "mmlEditing": false,
+            "mmlOutput": false,
+          },
           "maxImageHeight": Object {
             "prompt": 300,
             "rationale": 300,
@@ -174,6 +178,12 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
         ]
       }
       markup=""
+      mathMlOptions={
+        Object {
+          "mmlEditing": false,
+          "mmlOutput": false,
+        }
+      }
       maxImageHeight={300}
       maxImageWidth={300}
       nonEmpty={false}
@@ -201,6 +211,12 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
         ]
       }
       markup="Use the dropdowns to complete the sentence"
+      mathMlOptions={
+        Object {
+          "mmlEditing": false,
+          "mmlOutput": false,
+        }
+      }
       maxImageHeight={300}
       maxImageWidth={300}
       nonEmpty={false}
@@ -250,6 +266,12 @@ There should be at most 10 choices defined per response area."
       ]
     }
     markup="<div><p>The <span data-type=\\"inline_dropdown\\" data-index=\\"0\\" data-value=\\"cow \\"></span> jumped <span data-type=\\"inline_dropdown\\" data-index=\\"1\\" data-value=\\"over \\"></span> the <span data-type=\\"inline_dropdown\\" data-index=\\"2\\" data-value=\\"moon \\"></span></p></div>"
+    mathMlOptions={
+      Object {
+        "mmlEditing": false,
+        "mmlOutput": false,
+      }
+    }
     onChange={[Function]}
     responseAreaProps={
       Object {
@@ -293,6 +315,12 @@ There should be at most 10 choices defined per response area."
         >
           <EditableHtml
             markup="rationale for cow"
+            mathMlOptions={
+              Object {
+                "mmlEditing": false,
+                "mmlOutput": false,
+              }
+            }
             maxImageHeight={300}
             maxImageWidth={300}
             onChange={[Function]}
@@ -312,6 +340,12 @@ There should be at most 10 choices defined per response area."
         >
           <EditableHtml
             markup=""
+            mathMlOptions={
+              Object {
+                "mmlEditing": false,
+                "mmlOutput": false,
+              }
+            }
             maxImageHeight={300}
             maxImageWidth={300}
             onChange={[Function]}
@@ -331,6 +365,12 @@ There should be at most 10 choices defined per response area."
         >
           <EditableHtml
             markup=""
+            mathMlOptions={
+              Object {
+                "mmlEditing": false,
+                "mmlOutput": false,
+              }
+            }
             maxImageHeight={300}
             maxImageWidth={300}
             onChange={[Function]}
@@ -365,6 +405,12 @@ There should be at most 10 choices defined per response area."
         >
           <EditableHtml
             markup="rationale for over"
+            mathMlOptions={
+              Object {
+                "mmlEditing": false,
+                "mmlOutput": false,
+              }
+            }
             maxImageHeight={300}
             maxImageWidth={300}
             onChange={[Function]}
@@ -384,6 +430,12 @@ There should be at most 10 choices defined per response area."
         >
           <EditableHtml
             markup=""
+            mathMlOptions={
+              Object {
+                "mmlEditing": false,
+                "mmlOutput": false,
+              }
+            }
             maxImageHeight={300}
             maxImageWidth={300}
             onChange={[Function]}
@@ -403,6 +455,12 @@ There should be at most 10 choices defined per response area."
         >
           <EditableHtml
             markup=""
+            mathMlOptions={
+              Object {
+                "mmlEditing": false,
+                "mmlOutput": false,
+              }
+            }
             maxImageHeight={300}
             maxImageWidth={300}
             onChange={[Function]}
@@ -437,6 +495,12 @@ There should be at most 10 choices defined per response area."
         >
           <EditableHtml
             markup="rationale for moon"
+            mathMlOptions={
+              Object {
+                "mmlEditing": false,
+                "mmlOutput": false,
+              }
+            }
             maxImageHeight={300}
             maxImageWidth={300}
             onChange={[Function]}
@@ -456,6 +520,12 @@ There should be at most 10 choices defined per response area."
         >
           <EditableHtml
             markup=""
+            mathMlOptions={
+              Object {
+                "mmlEditing": false,
+                "mmlOutput": false,
+              }
+            }
             maxImageHeight={300}
             maxImageWidth={300}
             onChange={[Function]}
@@ -475,6 +545,12 @@ There should be at most 10 choices defined per response area."
         >
           <EditableHtml
             markup=""
+            mathMlOptions={
+              Object {
+                "mmlEditing": false,
+                "mmlOutput": false,
+              }
+            }
             maxImageHeight={300}
             maxImageWidth={300}
             onChange={[Function]}
@@ -498,6 +574,12 @@ There should be at most 10 choices defined per response area."
         ]
       }
       markup=""
+      mathMlOptions={
+        Object {
+          "mmlEditing": false,
+          "mmlOutput": false,
+        }
+      }
       maxImageHeight={300}
       maxImageWidth={300}
       onChange={[Function]}
@@ -530,6 +612,10 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
           "lockChoiceOrder": Object {
             "label": "Lock Choice Order",
             "settings": true,
+          },
+          "mathMlOptions": Object {
+            "mmlEditing": false,
+            "mmlOutput": false,
           },
           "maxImageHeight": Object {
             "prompt": 300,
@@ -712,6 +798,12 @@ There should be at most 10 choices defined per response area."
       ]
     }
     markup="<div><p>The <span data-type=\\"inline_dropdown\\" data-index=\\"0\\" data-value=\\"cow \\"></span> jumped <span data-type=\\"inline_dropdown\\" data-index=\\"1\\" data-value=\\"over \\"></span> the <span data-type=\\"inline_dropdown\\" data-index=\\"2\\" data-value=\\"moon \\"></span></p></div>"
+    mathMlOptions={
+      Object {
+        "mmlEditing": false,
+        "mmlOutput": false,
+      }
+    }
     onChange={[Function]}
     responseAreaProps={
       Object {
@@ -755,6 +847,12 @@ There should be at most 10 choices defined per response area."
         >
           <EditableHtml
             markup="rationale for cow"
+            mathMlOptions={
+              Object {
+                "mmlEditing": false,
+                "mmlOutput": false,
+              }
+            }
             maxImageHeight={300}
             maxImageWidth={300}
             onChange={[Function]}
@@ -774,6 +872,12 @@ There should be at most 10 choices defined per response area."
         >
           <EditableHtml
             markup=""
+            mathMlOptions={
+              Object {
+                "mmlEditing": false,
+                "mmlOutput": false,
+              }
+            }
             maxImageHeight={300}
             maxImageWidth={300}
             onChange={[Function]}
@@ -793,6 +897,12 @@ There should be at most 10 choices defined per response area."
         >
           <EditableHtml
             markup=""
+            mathMlOptions={
+              Object {
+                "mmlEditing": false,
+                "mmlOutput": false,
+              }
+            }
             maxImageHeight={300}
             maxImageWidth={300}
             onChange={[Function]}
@@ -827,6 +937,12 @@ There should be at most 10 choices defined per response area."
         >
           <EditableHtml
             markup="rationale for over"
+            mathMlOptions={
+              Object {
+                "mmlEditing": false,
+                "mmlOutput": false,
+              }
+            }
             maxImageHeight={300}
             maxImageWidth={300}
             onChange={[Function]}
@@ -846,6 +962,12 @@ There should be at most 10 choices defined per response area."
         >
           <EditableHtml
             markup=""
+            mathMlOptions={
+              Object {
+                "mmlEditing": false,
+                "mmlOutput": false,
+              }
+            }
             maxImageHeight={300}
             maxImageWidth={300}
             onChange={[Function]}
@@ -865,6 +987,12 @@ There should be at most 10 choices defined per response area."
         >
           <EditableHtml
             markup=""
+            mathMlOptions={
+              Object {
+                "mmlEditing": false,
+                "mmlOutput": false,
+              }
+            }
             maxImageHeight={300}
             maxImageWidth={300}
             onChange={[Function]}
@@ -899,6 +1027,12 @@ There should be at most 10 choices defined per response area."
         >
           <EditableHtml
             markup="rationale for moon"
+            mathMlOptions={
+              Object {
+                "mmlEditing": false,
+                "mmlOutput": false,
+              }
+            }
             maxImageHeight={300}
             maxImageWidth={300}
             onChange={[Function]}
@@ -918,6 +1052,12 @@ There should be at most 10 choices defined per response area."
         >
           <EditableHtml
             markup=""
+            mathMlOptions={
+              Object {
+                "mmlEditing": false,
+                "mmlOutput": false,
+              }
+            }
             maxImageHeight={300}
             maxImageWidth={300}
             onChange={[Function]}
@@ -937,6 +1077,12 @@ There should be at most 10 choices defined per response area."
         >
           <EditableHtml
             markup=""
+            mathMlOptions={
+              Object {
+                "mmlEditing": false,
+                "mmlOutput": false,
+              }
+            }
             maxImageHeight={300}
             maxImageWidth={300}
             onChange={[Function]}

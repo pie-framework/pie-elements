@@ -126,6 +126,7 @@ const Design = withStyles(styles)((props) => {
     maxImageHeight = {},
     prompt = {},
     withRubric = {},
+    mathMlOptions = {},
   } = configuration || {};
   let { maxAnswerChoices } = configuration || {};
   const {
@@ -221,6 +222,7 @@ const Design = withStyles(styles)((props) => {
             maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
             uploadSoundSupport={uploadSoundSupport}
             languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+            mathMlOptions={mathMlOptions}
           />
         </InputContainer>
       )}
@@ -240,6 +242,7 @@ const Design = withStyles(styles)((props) => {
             maxImageHeight={maxImageHeight && maxImageHeight.prompt}
             uploadSoundSupport={uploadSoundSupport}
             languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+            mathMlOptions={mathMlOptions}
           />
         </InputContainer>
       )}
@@ -281,6 +284,7 @@ const Design = withStyles(styles)((props) => {
             maxImageWidth={(maxImageWidth && maxImageWidth.choices) || defaultImageMaxWidth}
             maxImageHeight={(maxImageHeight && maxImageHeight.choices) || defaultImageMaxHeight}
             uploadSoundSupport={uploadSoundSupport}
+            mathMlOptions={mathMlOptions}
           />
 
           {rationaleEnabled && (
@@ -297,6 +301,7 @@ const Design = withStyles(styles)((props) => {
                 maxImageHeight={(maxImageHeight && maxImageHeight.rationale) || defaultImageMaxHeight}
                 uploadSoundSupport={uploadSoundSupport}
                 languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+                mathMlOptions={mathMlOptions}
               />
             </InputContainer>
           )}
@@ -318,6 +323,7 @@ const Design = withStyles(styles)((props) => {
                 maxImageHeight={(maxImageHeight && maxImageHeight.choices) || defaultImageMaxHeight}
                 uploadSoundSupport={uploadSoundSupport}
                 languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+                mathMlOptions={mathMlOptions}
               />
             </InputContainer>
           )}

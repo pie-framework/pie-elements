@@ -2,7 +2,7 @@ import { PromptConfig } from '../../PromptConfig';
 import { PieModel } from '../../PieModel';
 import { CommonConfigSettings } from '../../CommonConfigSettings';
 import { ComplexFeedbackType } from '../../Feedback';
-import { ConfigureProp } from '../ConfigurationProp';
+import {ConfigureMathMLProp, ConfigureProp} from '../ConfigurationProp';
 
 interface CategoryChoice {
   /** Identifier for the choice */
@@ -197,6 +197,9 @@ export interface CategorizeConfigure extends PromptConfig, CommonConfigSettings 
    * Position of the choices
    */
   choicesPosition?: ConfigureProp;
+
+  /** Configuration for editable-html */
+  mathMlOptions?: ConfigureMathMLProp;
 
   /**
    * Maximum number of categories

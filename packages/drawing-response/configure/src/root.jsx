@@ -52,6 +52,7 @@ export class Root extends React.Component {
       withRubric = {},
       language = {},
       languageChoices = {},
+      mathMlOptions = {},
     } = configuration || {};
     const {
       backgroundImageEnabled,
@@ -111,6 +112,7 @@ export class Root extends React.Component {
               maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
               uploadSoundSupport={uploadSoundSupport}
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+              mathMlOptions={mathMlOptions}
             />
           </InputContainer>
         )}
@@ -127,6 +129,7 @@ export class Root extends React.Component {
               maxImageHeight={defaultImageMaxHeight}
               uploadSoundSupport={uploadSoundSupport}
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+              mathMlOptions={mathMlOptions}
             />
           </InputContainer>
         )}

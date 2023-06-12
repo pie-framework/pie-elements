@@ -1,7 +1,7 @@
 import { PieModel } from '../../PieModel';
 import { PromptConfig } from '../../PromptConfig';
 import { CommonConfigSettings } from '../../CommonConfigSettings';
-import { ConfigureMaxImageDimensionsProp, ConfigureProp } from '../ConfigurationProp';
+import {ConfigureMathMLProp, ConfigureMaxImageDimensionsProp, ConfigureProp} from '../ConfigurationProp';
 
 export interface Choice {
   /** The value for the choice */
@@ -147,6 +147,9 @@ export interface DragInTheBlankConfigure extends PromptConfig, CommonConfigSetti
 
   /** Rubric configuration */
   rubric?: ConfigureProp;
+
+  /** Configuration for editable-html */
+  mathMlOptions?: ConfigureMathMLProp;
 
   /**
    * Minimum number of choices

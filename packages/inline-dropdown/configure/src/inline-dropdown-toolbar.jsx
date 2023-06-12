@@ -107,6 +107,8 @@ export class RespAreaToolbar extends React.Component {
     }),
     spellCheck: PropTypes.bool,
   };
+  clickedInside = false;
+  preventDone = false;
 
   state = {
     respAreaMarkup: '',
@@ -232,7 +234,7 @@ export class RespAreaToolbar extends React.Component {
   };
 
   render() {
-    const { classes, choices, spellCheck, uploadSoundSupport } = this.props;
+    const { classes, choices, spellCheck, uploadSoundSupport, mathMlOptions = {} } = this.props;
     const { respAreaMarkup, toolbarStyle } = this.state;
 
     const filteredDefaultPlugins = (DEFAULT_PLUGINS || []).filter(
@@ -273,14 +275,34 @@ export class RespAreaToolbar extends React.Component {
             }}
             markup={respAreaMarkup}
             onKeyDown={this.onKeyDown}
-            onChange={this.onRespAreaChange}
-            onDone={this.onDone}
+            languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+            onChange={(respAreaMarkup) => {
+              if (this.preventDone) {
+                return;
+              }
+
+              this.onRespAreaChange(respAreaMarkup);
+            }}
+            onDone={(val) => {
+              if (this.preventDone) {
+                return;
+              }
+
+              this.onDone(val);
+            }}
+            onBlur={(e) => {
+              const inInInsertCharacter = e.relatedTarget && e.relatedTarget.closest('.insert-character-dialog');
+
+              this.preventDone = inInInsertCharacter;
+
+              this.onBlur(e);
+            }}
             placeholder="Add Choice"
             activePlugins={filteredDefaultPlugins}
             pluginProps={labelPlugins}
-            onBlur={this.onBlur}
             spellCheck={spellCheck}
             uploadSoundSupport={uploadSoundSupport}
+            mathMlOptions={mathMlOptions}
           />
           <i
             style={{

@@ -65,6 +65,7 @@ export class Configure extends React.Component {
       studentInstructions = {},
       teacherInstructions = {},
       withRubric = {},
+      mathMlOptions = {},
     } = configuration || {};
     const {
       feedbackEnabled,
@@ -131,6 +132,7 @@ export class Configure extends React.Component {
               maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
               uploadSoundSupport={uploadSoundSupport}
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+              mathMlOptions={mathMlOptions}
             />
           </InputContainer>
         )}

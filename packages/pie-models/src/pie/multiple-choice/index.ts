@@ -2,7 +2,7 @@ import { Choice } from '../../Choice';
 import { PieModel } from '../../PieModel';
 import { CommonConfigSettings } from '../../CommonConfigSettings';
 import { PromptConfig } from '../../PromptConfig';
-import { ConfigureProp, ConfigurePropWithEnabled } from '../ConfigurationProp';
+import {ConfigureMathMLProp, ConfigureProp, ConfigurePropWithEnabled} from '../ConfigurationProp';
 
 /**
  * NOTE: teacherInstructions, studentInstructions, rationale & scoringType
@@ -229,4 +229,7 @@ export interface MultipleChoiceConfigure extends PromptConfig, CommonConfigSetti
    * Rubric configuration - only relevant in environments that use pie-player-components
    */
   withRubric?: ConfigureProp;
+
+  /** Configuration for editable-html */
+  mathMlOptions?: ConfigureMathMLProp;
 }

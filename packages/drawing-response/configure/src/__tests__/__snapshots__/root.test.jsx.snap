@@ -12,6 +12,10 @@ exports[`Root snapshot renders 1`] = `
             "label": "Background Image",
             "settings": true,
           },
+          "mathMlOptions": Object {
+            "mmlEditing": false,
+            "mmlOutput": false,
+          },
           "maxImageHeight": Object {
             "prompt": 300,
             "teacherInstructions": 300,
@@ -84,6 +88,12 @@ exports[`Root snapshot renders 1`] = `
         ]
       }
       markup="Test Prompt"
+      mathMlOptions={
+        Object {
+          "mmlEditing": false,
+          "mmlOutput": false,
+        }
+      }
       maxImageHeight={300}
       maxImageWidth={300}
       onChange={[Function]}

@@ -283,6 +283,7 @@ export class Main extends React.Component {
       maxNoOfTraits,
       minNoOfTraits,
       width,
+      mathMlOptions = {}
     } = configuration || {};
     const {
       scales,
@@ -360,6 +361,7 @@ export class Main extends React.Component {
               minNoOfTraits={minNoOfTraits}
               {...this.props}
               classes={{}}
+              mathMlOptions={mathMlOptions}
             />
           ))}
           {addScaleEnabled && <MultiTraitButton onClick={this.onScaleAdded}>Add Scale</MultiTraitButton>}

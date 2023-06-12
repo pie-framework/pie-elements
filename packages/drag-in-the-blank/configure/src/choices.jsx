@@ -194,6 +194,7 @@ export class Choices extends React.Component {
       model: { choices },
       toolbarOpts,
       uploadSoundSupport,
+      mathMlOptions = {}
     } = this.props;
     const visibleChoices = this.getVisibleChoices() || [];
 
@@ -256,6 +257,7 @@ export class Choices extends React.Component {
                   disableUnderline
                   toolbarOpts={toolbarOpts}
                   uploadSoundSupport={uploadSoundSupport}
+                  mathMlOptions={mathMlOptions}
                 />
               </div>
             ) : (

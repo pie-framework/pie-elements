@@ -275,6 +275,7 @@ export class Main extends React.Component {
       spellCheck = {},
       teacherInstructions = {},
       withRubric = {},
+      mathMlOptions = {},
     } = configuration || {};
     const {
       errors,
@@ -340,6 +341,7 @@ export class Main extends React.Component {
               maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
               uploadSoundSupport={uploadSoundSupport}
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+              mathMlOptions={mathMlOptions}
             />
           </InputContainer>
         )}
@@ -359,6 +361,7 @@ export class Main extends React.Component {
               maxImageHeight={defaultImageMaxHeight}
               uploadSoundSupport={uploadSoundSupport}
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+              mathMlOptions={mathMlOptions}
             />
           </InputContainer>
         )}
@@ -414,6 +417,7 @@ export class Main extends React.Component {
           error={responseAreasError}
           uploadSoundSupport={uploadSoundSupport}
           languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+          mathMlOptions={mathMlOptions}
         />
         {responseAreasError && <div className={classes.errorText}>{responseAreasError}</div>}
 
@@ -444,6 +448,7 @@ export class Main extends React.Component {
               maxImageHeight={(maxImageHeight && maxImageHeight.rationale) || defaultImageMaxHeight}
               uploadSoundSupport={uploadSoundSupport}
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+              mathMlOptions={mathMlOptions}
             />
           </InputContainer>
         )}

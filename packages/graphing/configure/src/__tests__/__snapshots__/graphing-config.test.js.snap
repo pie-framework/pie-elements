@@ -45,6 +45,7 @@ exports[`GraphingConfig renders snapshot 1`] = `
       key="graphing-config"
       labels={Object {}}
       marks={Array []}
+      mathMlOptions={Object {}}
       onChangeLabels={[Function]}
       onChangeMarks={[Function]}
       onChangeTitle={[Function]}

@@ -25,5 +25,9 @@ export default {
       settings: false,
       label: 'Add Rubric',
     },
+    mathMlOptions: {
+      mmlOutput: false,
+      mmlEditing: false,
+    },
   },
 };

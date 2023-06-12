@@ -36,6 +36,7 @@ exports[`Trait snapshot renders 1`] = `
           </div>
           <WithStyles(Component)
             markup="Presentation"
+            mathMlOptions={Object {}}
             onChange={[Function]}
             placeholder="Enter Category"
             pluginProps={
@@ -63,6 +64,7 @@ exports[`Trait snapshot renders 1`] = `
           <WithStyles(Component)>
             <WithStyles(Component)
               markup=""
+              mathMlOptions={Object {}}
               onChange={[Function]}
               placeholder="Standards"
               pluginProps={
@@ -80,6 +82,7 @@ exports[`Trait snapshot renders 1`] = `
           <WithStyles(Component)>
             <WithStyles(Component)
               markup=""
+              mathMlOptions={Object {}}
               onChange={[Function]}
               placeholder="Description"
               pluginProps={
@@ -102,6 +105,7 @@ exports[`Trait snapshot renders 1`] = `
               markup="Handwriting is generally legible
 
 Overall appearance is acceptable or better"
+              mathMlOptions={Object {}}
               onChange={[Function]}
               placeholder="Enter Description Here"
               pluginProps={
@@ -124,6 +128,7 @@ Overall appearance is acceptable or better"
               markup="Handwriting poor
 
 Overall appearance is distracting to unacceptable"
+              mathMlOptions={Object {}}
               onChange={[Function]}
               placeholder="Enter Description Here"
               pluginProps={
@@ -144,6 +149,7 @@ Overall appearance is distracting to unacceptable"
             <WithStyles(Component)
               alignToRight={false}
               markup="Handwriting is unreadable, or response is blank, not in English, or too brief to evaluate. "
+              mathMlOptions={Object {}}
               onChange={[Function]}
               placeholder="Enter Description Here"
               pluginProps={
@@ -201,6 +207,7 @@ exports[`Trait snapshot renders with drag and drop 1`] = `
           </div>
           <WithStyles(Component)
             markup="Presentation"
+            mathMlOptions={Object {}}
             onChange={[Function]}
             placeholder="Enter Category"
             pluginProps={
@@ -228,6 +235,7 @@ exports[`Trait snapshot renders with drag and drop 1`] = `
           <WithStyles(Component)>
             <WithStyles(Component)
               markup=""
+              mathMlOptions={Object {}}
               onChange={[Function]}
               placeholder="Standards"
               pluginProps={
@@ -245,6 +253,7 @@ exports[`Trait snapshot renders with drag and drop 1`] = `
           <WithStyles(Component)>
             <WithStyles(Component)
               markup=""
+              mathMlOptions={Object {}}
               onChange={[Function]}
               placeholder="Description"
               pluginProps={
@@ -267,6 +276,7 @@ exports[`Trait snapshot renders with drag and drop 1`] = `
               markup="Handwriting is generally legible
 
 Overall appearance is acceptable or better"
+              mathMlOptions={Object {}}
               onChange={[Function]}
               placeholder="Enter Description Here"
               pluginProps={
@@ -289,6 +299,7 @@ Overall appearance is acceptable or better"
               markup="Handwriting poor
 
 Overall appearance is distracting to unacceptable"
+              mathMlOptions={Object {}}
               onChange={[Function]}
               placeholder="Enter Description Here"
               pluginProps={
@@ -309,6 +320,7 @@ Overall appearance is distracting to unacceptable"
             <WithStyles(Component)
               alignToRight={false}
               markup="Handwriting is unreadable, or response is blank, not in English, or too brief to evaluate. "
+              mathMlOptions={Object {}}
               onChange={[Function]}
               placeholder="Enter Description Here"
               pluginProps={
@@ -366,6 +378,7 @@ exports[`Trait snapshot renders without description 1`] = `
           </div>
           <WithStyles(Component)
             markup="Presentation"
+            mathMlOptions={Object {}}
             onChange={[Function]}
             placeholder="Enter Category"
             pluginProps={
@@ -393,6 +406,7 @@ exports[`Trait snapshot renders without description 1`] = `
           <WithStyles(Component)>
             <WithStyles(Component)
               markup=""
+              mathMlOptions={Object {}}
               onChange={[Function]}
               placeholder="Standards"
               pluginProps={
@@ -410,6 +424,7 @@ exports[`Trait snapshot renders without description 1`] = `
           <WithStyles(Component)>
             <WithStyles(Component)
               markup=""
+              mathMlOptions={Object {}}
               onChange={[Function]}
               placeholder="Description"
               pluginProps={
@@ -432,6 +447,7 @@ exports[`Trait snapshot renders without description 1`] = `
               markup="Handwriting is generally legible
 
 Overall appearance is acceptable or better"
+              mathMlOptions={Object {}}
               onChange={[Function]}
               placeholder="Enter Description Here"
               pluginProps={
@@ -454,6 +470,7 @@ Overall appearance is acceptable or better"
               markup="Handwriting poor
 
 Overall appearance is distracting to unacceptable"
+              mathMlOptions={Object {}}
               onChange={[Function]}
               placeholder="Enter Description Here"
               pluginProps={
@@ -474,6 +491,7 @@ Overall appearance is distracting to unacceptable"
             <WithStyles(Component)
               alignToRight={false}
               markup="Handwriting is unreadable, or response is blank, not in English, or too brief to evaluate. "
+              mathMlOptions={Object {}}
               onChange={[Function]}
               placeholder="Enter Description Here"
               pluginProps={
@@ -531,6 +549,7 @@ exports[`Trait snapshot renders without score points values 1`] = `
           </div>
           <WithStyles(Component)
             markup="Presentation"
+            mathMlOptions={Object {}}
             onChange={[Function]}
             placeholder="Enter Category"
             pluginProps={
@@ -558,6 +577,7 @@ exports[`Trait snapshot renders without score points values 1`] = `
           <WithStyles(Component)>
             <WithStyles(Component)
               markup=""
+              mathMlOptions={Object {}}
               onChange={[Function]}
               placeholder="Standards"
               pluginProps={
@@ -575,6 +595,7 @@ exports[`Trait snapshot renders without score points values 1`] = `
           <WithStyles(Component)>
             <WithStyles(Component)
               markup=""
+              mathMlOptions={Object {}}
               onChange={[Function]}
               placeholder="Description"
               pluginProps={
@@ -632,6 +653,7 @@ exports[`Trait snapshot renders without standards 1`] = `
           </div>
           <WithStyles(Component)
             markup="Presentation"
+            mathMlOptions={Object {}}
             onChange={[Function]}
             placeholder="Enter Category"
             pluginProps={
@@ -659,6 +681,7 @@ exports[`Trait snapshot renders without standards 1`] = `
           <WithStyles(Component)>
             <WithStyles(Component)
               markup=""
+              mathMlOptions={Object {}}
               onChange={[Function]}
               placeholder="Description"
               pluginProps={
@@ -681,6 +704,7 @@ exports[`Trait snapshot renders without standards 1`] = `
               markup="Handwriting is generally legible
 
 Overall appearance is acceptable or better"
+              mathMlOptions={Object {}}
               onChange={[Function]}
               placeholder="Enter Description Here"
               pluginProps={
@@ -703,6 +727,7 @@ Overall appearance is acceptable or better"
               markup="Handwriting poor
 
 Overall appearance is distracting to unacceptable"
+              mathMlOptions={Object {}}
               onChange={[Function]}
               placeholder="Enter Description Here"
               pluginProps={
@@ -723,6 +748,7 @@ Overall appearance is distracting to unacceptable"
             <WithStyles(Component)
               alignToRight={false}
               markup="Handwriting is unreadable, or response is blank, not in English, or too brief to evaluate. "
+              mathMlOptions={Object {}}
               onChange={[Function]}
               placeholder="Enter Description Here"
               pluginProps={

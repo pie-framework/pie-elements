@@ -1,7 +1,7 @@
 import { PieModel } from '../../PieModel';
 import { PromptConfig } from '../../PromptConfig';
 import { CommonConfigSettings } from '../../CommonConfigSettings';
-import { ConfigureProp } from '../ConfigurationProp';
+import {ConfigureMathMLProp, ConfigureProp} from '../ConfigurationProp';
 
 /**
  * Model for the RubricPie Interaction
@@ -41,4 +41,7 @@ export interface RubricConfigure extends PromptConfig, CommonConfigSettings {
    * How large can the rubric be
    */
   width?: string;
+
+  /** Configuration for editable-html */
+  mathMlOptions?: ConfigureMathMLProp;
 }

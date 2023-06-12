@@ -283,6 +283,10 @@ exports[`Configure renders snapshot 1`] = `
             "label": "Language Choices",
             "options": Array [],
           },
+          "mathMlOptions": Object {
+            "mmlEditing": false,
+            "mmlOutput": false,
+          },
           "maxImageHeight": Object {
             "prompt": 300,
             "rationale": 300,
@@ -434,6 +438,12 @@ exports[`Configure renders snapshot 1`] = `
         ]
       }
       markup=""
+      mathMlOptions={
+        Object {
+          "mmlEditing": false,
+          "mmlOutput": false,
+        }
+      }
       maxImageHeight={300}
       maxImageWidth={300}
       nonEmpty={false}
@@ -456,6 +466,12 @@ exports[`Configure renders snapshot 1`] = `
         ]
       }
       markup=""
+      mathMlOptions={
+        Object {
+          "mmlEditing": false,
+          "mmlOutput": false,
+        }
+      }
       maxImageHeight={300}
       maxImageWidth={300}
       nonEmpty={false}
@@ -710,6 +726,12 @@ exports[`Configure renders snapshot 1`] = `
         "top": "Click here to add a top label",
       }
     }
+    mathMlOptions={
+      Object {
+        "mmlEditing": false,
+        "mmlOutput": false,
+      }
+    }
     model={
       Object {
         "answers": Object {
@@ -766,6 +788,12 @@ exports[`Configure renders snapshot 1`] = `
   <WithStyles(CorrectResponse)
     availableTools={Array []}
     errors={Object {}}
+    mathMlOptions={
+      Object {
+        "mmlEditing": false,
+        "mmlOutput": false,
+      }
+    }
     model={
       Object {
         "answers": Object {
@@ -832,6 +860,12 @@ exports[`Configure renders snapshot 1`] = `
         ]
       }
       markup=""
+      mathMlOptions={
+        Object {
+          "mmlEditing": false,
+          "mmlOutput": false,
+        }
+      }
       maxImageHeight={300}
       maxImageWidth={300}
       onChange={[Function]}

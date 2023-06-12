@@ -103,6 +103,10 @@ export default {
     maxLengthQuestionsHeading: 100,
     maxAnswers: 5,
     maxLengthAnswers: 100,
-    maxLengthFirstColumnHeading: 100
+    maxLengthFirstColumnHeading: 100,
+    mathMlOptions: {
+      mmlOutput: false,
+      mmlEditing: false,
+    },
   },
 };

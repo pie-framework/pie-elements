@@ -193,6 +193,18 @@ Indicates the label for the item that has to be displayed in the Settings Panel
 
 How large can the rubric be
 
+### `mathMlOptions` (object)
+
+Properties of the `mathMlOptions` object:
+
+#### `mmlOutput` (number)
+
+Indicates if model should have mathML output instead of latex
+
+#### `mmlEditing` (number)
+
+Indicates if mathML that's already in model should be editable
+
 ### `showPrompt` (boolean)
 
 Determines whether prompt field will be displayed or not
@@ -256,6 +268,18 @@ Indicates if the item has to be displayed in the Settings Panel
 ### `label` (string)
 
 Indicates the label for the item that has to be displayed in the Settings Panel
+
+## `ConfigureMathMLProp` (object)
+
+Properties of the `ConfigureMathMLProp` object:
+
+### `mmlOutput` (number)
+
+Indicates if model should have mathML output instead of latex
+
+### `mmlEditing` (number)
+
+Indicates if mathML that's already in model should be editable
 
 ## `MultiTraitRubricConfigure` (object)
 
@@ -411,6 +435,18 @@ Maximum number of scales
 
 The default trait label for new created scales.
 If it's not defined, it will default to the label of the first trait.
+
+### `mathMlOptions` (object)
+
+Properties of the `mathMlOptions` object:
+
+#### `mmlOutput` (number)
+
+Indicates if model should have mathML output instead of latex
+
+#### `mmlEditing` (number)
+
+Indicates if mathML that's already in model should be editable
 
 ## `DialogContent` (object)
 

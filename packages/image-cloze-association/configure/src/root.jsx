@@ -22,6 +22,7 @@ export class Root extends React.Component {
       spellCheck = {},
       teacherInstructions = {},
       withRubric = {},
+      mathMlOptions = {},
     } = configuration || {};
     const { spellCheckEnabled } = model || {};
 
@@ -60,6 +61,7 @@ export class Root extends React.Component {
               maxImageHeight={maxImageHeight && maxImageHeight.teacherInstructions}
               uploadSoundSupport={uploadSoundSupport}
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+              mathMlOptions={mathMlOptions}
             />
           </InputContainer>
         )}
