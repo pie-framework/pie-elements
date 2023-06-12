@@ -416,6 +416,8 @@ export class Main extends React.Component {
 
     const midContent = (
       <div className={classes.main}>
+        {mode === 'gather' && <h2 className={classes.srOnly}>Math Equation Response Question</h2>}
+
         {viewMode &&
           teacherInstructions &&
           hasText(teacherInstructions) &&
@@ -790,6 +792,14 @@ const styles = (theme) => ({
   printContainer: {
     marginBottom: theme.spacing.unit,
     pointerEvents: 'none',
+  },
+    srOnly: {
+    position: 'absolute',
+    left: '-10000px',
+    top: 'auto',
+    width: '1px',
+    height: '1px',
+    overflow: 'hidden',
   },
 });
 
