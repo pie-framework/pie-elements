@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.15.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@4.14.0...@pie-element/graphing@4.15.0) (2023-06-13)
+
+
+### Bug Fixes
+
+* remove default language Choices as per my understanding from note 2 and started the logic configuration PD-2795 ([629a6a7](https://github.com/pie-framework/pie-elements/commit/629a6a75c03f2952f101ac15027865afb4488c38))
+* tests ([263be44](https://github.com/pie-framework/pie-elements/commit/263be44dfb82821fd042659af306a37dbcb8c9bc))
+* update docs ([bc716ee](https://github.com/pie-framework/pie-elements/commit/bc716ee68f0673b391375df9d68904af4110c37a))
+* update libs PD-2722, PD-2827, PD-2832 ([834ecf9](https://github.com/pie-framework/pie-elements/commit/834ecf92cc7204c851c68f0945ad5d52e453c9d0))
+* update pie-lib ([d77e728](https://github.com/pie-framework/pie-elements/commit/d77e728a2582d896211497af1e8a5f101185d99e))
+* update pie-libs ([649fb8f](https://github.com/pie-framework/pie-elements/commit/649fb8f535172d76b3ffc676ec53b2726432808c))
+* update pie-libs PD-2150, PD-2795 ([ff6f64a](https://github.com/pie-framework/pie-elements/commit/ff6f64afa6ccaa8a060c986b1637c680e68c62b6))
+* update snapshot ([3d18a41](https://github.com/pie-framework/pie-elements/commit/3d18a416a9fce3678016825007ea98de733317f8))
+* updated snapshots ([5cc0c23](https://github.com/pie-framework/pie-elements/commit/5cc0c23e41565160b7ffed3053d1d08aca637a88))
+* **graphing:** PD-2873 alternates out of order when deleted ([2672070](https://github.com/pie-framework/pie-elements/commit/26720706410b7dc6e3bef78948ea0cb6361de85a))
+
+
+### Features
+
+* add mathMlOptions PD-2150 ([0c6984c](https://github.com/pie-framework/pie-elements/commit/0c6984cf042141eac36badfbab1c46d8d42f71ee))
+* **graphing:** add settings to provide ability to select a language for player PD-2795 ([a5dfcfc](https://github.com/pie-framework/pie-elements/commit/a5dfcfc3636f265cd695d1305aa03948414641dc))
+
+
+
+
+
 # [4.14.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@4.13.4...@pie-element/graphing@4.14.0) (2023-05-23)
 
 

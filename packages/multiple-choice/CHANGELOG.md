@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.13.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@7.12.0...@pie-element/multiple-choice@7.13.0) (2023-06-13)
+
+
+### Bug Fixes
+
+* update libs PD-2722, PD-2827, PD-2832 ([834ecf9](https://github.com/pie-framework/pie-elements/commit/834ecf92cc7204c851c68f0945ad5d52e453c9d0))
+* update pie-libs ([649fb8f](https://github.com/pie-framework/pie-elements/commit/649fb8f535172d76b3ffc676ec53b2726432808c))
+* update pie-libs PD-2150, PD-2795 ([ff6f64a](https://github.com/pie-framework/pie-elements/commit/ff6f64afa6ccaa8a060c986b1637c680e68c62b6))
+* **multiple-choice:** avoid duplicate id for choice in case ebsr-PD-2831 ([36548f6](https://github.com/pie-framework/pie-elements/commit/36548f6342d47ec05ed977bd3bea43932f6aaeca))
+
+
+### Features
+
+* **ebsr:** make the part labels h3 headings for accessibility PD-2884 ([26c6eec](https://github.com/pie-framework/pie-elements/commit/26c6eec1f38fdd305088aff207b2bf8b0038ce70))
+* **multiple-choice:** add hidden heading for screen readers PD-2883 ([4487146](https://github.com/pie-framework/pie-elements/commit/4487146229d49db026259c1f08f0edfd8a90377b))
+* add mathMlOptions PD-2150 ([0c6984c](https://github.com/pie-framework/pie-elements/commit/0c6984cf042141eac36badfbab1c46d8d42f71ee))
+
+
+
+
+
 # [7.12.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@7.11.3...@pie-element/multiple-choice@7.12.0) (2023-05-23)
 
 

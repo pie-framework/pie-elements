@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-controller@4.5.2...@pie-element/number-line-controller@4.6.0) (2023-06-13)
+
+
+### Features
+
+* **number-line:** add translator PD-2795 ([23e78a9](https://github.com/pie-framework/pie-elements/commit/23e78a970805c88d7bad097bebaf170fe69003cc))
+
+
+
+
+
 ## [4.5.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-controller@4.5.1...@pie-element/number-line-controller@4.5.2) (2023-04-25)
 
 

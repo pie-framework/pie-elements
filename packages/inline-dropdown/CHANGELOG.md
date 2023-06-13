@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.14.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@4.13.0...@pie-element/inline-dropdown@4.14.0) (2023-06-13)
+
+
+### Bug Fixes
+
+* added insert spanish and special characters to the inline-dropdown choices input PD-2128 ([a7043b2](https://github.com/pie-framework/pie-elements/commit/a7043b2ab78b26ddbdea0f5ea11b7784b44dd587))
+* removed unnecessary changes PD-2128 ([63bc9e6](https://github.com/pie-framework/pie-elements/commit/63bc9e6c67502e95817955098628a3097c3b1e90))
+* update libs PD-2722, PD-2827, PD-2832 ([834ecf9](https://github.com/pie-framework/pie-elements/commit/834ecf92cc7204c851c68f0945ad5d52e453c9d0))
+* update pie-libs ([649fb8f](https://github.com/pie-framework/pie-elements/commit/649fb8f535172d76b3ffc676ec53b2726432808c))
+* update pie-libs PD-2150, PD-2795 ([ff6f64a](https://github.com/pie-framework/pie-elements/commit/ff6f64afa6ccaa8a060c986b1637c680e68c62b6))
+
+
+### Features
+
+* **inline-dropdown:** add hidden heading for screen readers PD-2883 ([9f19a0c](https://github.com/pie-framework/pie-elements/commit/9f19a0c8138eb0798827ee20aded93bf19ca2f00))
+* add mathMlOptions PD-2150 ([0c6984c](https://github.com/pie-framework/pie-elements/commit/0c6984cf042141eac36badfbab1c46d8d42f71ee))
+
+
+
+
+
 # [4.13.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@4.12.3...@pie-element/inline-dropdown@4.13.0) (2023-05-23)
 
 

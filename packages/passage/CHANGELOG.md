@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.11.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.11.3...@pie-element/passage@1.11.4) (2023-06-13)
+
+
+### Bug Fixes
+
+* update libs PD-2722, PD-2827, PD-2832 ([834ecf9](https://github.com/pie-framework/pie-elements/commit/834ecf92cc7204c851c68f0945ad5d52e453c9d0))
+* update pie-libs PD-2150, PD-2795 ([ff6f64a](https://github.com/pie-framework/pie-elements/commit/ff6f64afa6ccaa8a060c986b1637c680e68c62b6))
+
+
+
+
+
 ## [1.11.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.11.2...@pie-element/passage@1.11.3) (2023-05-23)
 
 

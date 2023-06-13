@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-controller@1.3.4...@pie-element/multi-trait-rubric-controller@1.3.5) (2023-06-13)
+
+
+### Bug Fixes
+
+* **multi-trait-rubric:** use the first scale trait label only if defaultTraitLabel is not defined PD-2869 ([87cf86f](https://github.com/pie-framework/pie-elements/commit/87cf86fe29d4cf6dbcbed800dd009b590b82fbf7))
+
+
+
+
+
 ## [1.3.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-controller@1.3.3...@pie-element/multi-trait-rubric-controller@1.3.4) (2023-05-02)
 
 
