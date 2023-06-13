@@ -17,6 +17,10 @@ const styles = (theme) => ({
     },
   },
   partLabel: {
+    display: 'block',
+    fontSize: 'inherit',
+    margin: '0',
+    fontWeight: 'normal',
     paddingBottom: theme.spacing.unit * 2,
   },
   teacherInstructions: {
@@ -226,7 +230,7 @@ export class MultipleChoice extends React.Component {
 
     return (
       <div className={classNames(classes.main, className, 'multiple-choice')}>
-        {partLabel && <div className={classes.partLabel}>{partLabel}</div>}
+        {partLabel && <h3 className={classes.partLabel}>{partLabel}</h3>}
 
         {this.renderHeading()}
 
