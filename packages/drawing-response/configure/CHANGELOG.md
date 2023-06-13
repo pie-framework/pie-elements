@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response-configure@6.3.0...@pie-element/drawing-response-configure@6.4.0) (2023-06-13)
+
+
+### Bug Fixes
+
+* tests ([b5c5cae](https://github.com/pie-framework/pie-elements/commit/b5c5cae308eea1f99f05c01dbf5ee89cd69ceac8))
+* update libs PD-2722, PD-2827, PD-2832 ([834ecf9](https://github.com/pie-framework/pie-elements/commit/834ecf92cc7204c851c68f0945ad5d52e453c9d0))
+* update pie-libs ([649fb8f](https://github.com/pie-framework/pie-elements/commit/649fb8f535172d76b3ffc676ec53b2726432808c))
+* update pie-libs PD-2150, PD-2795 ([ff6f64a](https://github.com/pie-framework/pie-elements/commit/ff6f64afa6ccaa8a060c986b1637c680e68c62b6))
+* updated snapshots ([5cc0c23](https://github.com/pie-framework/pie-elements/commit/5cc0c23e41565160b7ffed3053d1d08aca637a88))
+
+
+### Features
+
+* **drawing-response:** add translator PD-2795 ([371fbce](https://github.com/pie-framework/pie-elements/commit/371fbceba849a1777770c9aba7584d914c60728c))
+* add mathMlOptions PD-2150 ([0c6984c](https://github.com/pie-framework/pie-elements/commit/0c6984cf042141eac36badfbab1c46d8d42f71ee))
+
+
+
+
+
 # [6.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response-configure@6.2.3...@pie-element/drawing-response-configure@6.3.0) (2023-05-23)
 
 

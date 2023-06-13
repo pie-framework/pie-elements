@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.6.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-controller@4.6.7...@pie-element/select-text-controller@4.6.8) (2023-06-13)
+
+
+### Bug Fixes
+
+* update libs PD-2722, PD-2827, PD-2832 ([834ecf9](https://github.com/pie-framework/pie-elements/commit/834ecf92cc7204c851c68f0945ad5d52e453c9d0))
+* update pie-libs PD-2150, PD-2795 ([ff6f64a](https://github.com/pie-framework/pie-elements/commit/ff6f64afa6ccaa8a060c986b1637c680e68c62b6))
+
+
+
+
+
 ## [4.6.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-controller@4.6.6...@pie-element/select-text-controller@4.6.7) (2023-05-23)
 
 

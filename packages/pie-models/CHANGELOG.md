@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.0.0...@pie-element/pie-models@13.1.0) (2023-06-13)
+
+
+### Features
+
+* add mathMlOptions PD-2150 ([0c6984c](https://github.com/pie-framework/pie-elements/commit/0c6984cf042141eac36badfbab1c46d8d42f71ee))
+* **graphing:** add settings to provide ability to select a language for player PD-2795 ([a5dfcfc](https://github.com/pie-framework/pie-elements/commit/a5dfcfc3636f265cd695d1305aa03948414641dc))
+
+
+
+
+
 # [13.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@12.11.0...@pie-element/pie-models@13.0.0) (2023-05-23)
 
 

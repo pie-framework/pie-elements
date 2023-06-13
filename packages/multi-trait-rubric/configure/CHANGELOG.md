@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.9.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-configure@2.8.0...@pie-element/multi-trait-rubric-configure@2.9.0) (2023-06-13)
+
+
+### Bug Fixes
+
+* update pie-libs ([649fb8f](https://github.com/pie-framework/pie-elements/commit/649fb8f535172d76b3ffc676ec53b2726432808c))
+* update pie-libs PD-2150, PD-2795 ([ff6f64a](https://github.com/pie-framework/pie-elements/commit/ff6f64afa6ccaa8a060c986b1637c680e68c62b6))
+* **multi-trait-rubric:** PD-2827 delete unused import ([a41a3f0](https://github.com/pie-framework/pie-elements/commit/a41a3f0e07b5181289954c062b58cb42401d9012))
+* update libs PD-2722, PD-2827, PD-2832 ([834ecf9](https://github.com/pie-framework/pie-elements/commit/834ecf92cc7204c851c68f0945ad5d52e453c9d0))
+* **multi-trait-rubric:** use the first scale trait label only if defaultTraitLabel is not defined PD-2869 ([87cf86f](https://github.com/pie-framework/pie-elements/commit/87cf86fe29d4cf6dbcbed800dd009b590b82fbf7))
+
+
+### Features
+
+* add mathMlOptions PD-2150 ([0c6984c](https://github.com/pie-framework/pie-elements/commit/0c6984cf042141eac36badfbab1c46d8d42f71ee))
+
+
+
+
+
 # [2.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-configure@2.7.3...@pie-element/multi-trait-rubric-configure@2.8.0) (2023-05-23)
 
 

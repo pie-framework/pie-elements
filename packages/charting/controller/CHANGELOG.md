@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-controller@3.0.0...@pie-element/charting-controller@3.1.0) (2023-06-13)
+
+
+### Features
+
+* **charting:** add translator PD-2795 ([fa738e0](https://github.com/pie-framework/pie-elements/commit/fa738e03256d22ccdce0649cf5f9ac08ea73b4dd))
+
+
+
+
+
 # [3.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-controller@2.4.2...@pie-element/charting-controller@3.0.0) (2023-05-23)
 
 

@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.14.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@7.13.0...@pie-element/categorize@7.14.0) (2023-06-13)
+
+
+### Bug Fixes
+
+* **categorize:** PD-2605 update snapshots ([1d72f85](https://github.com/pie-framework/pie-elements/commit/1d72f85b134fa1371ed72f43bfef2f812b23a547))
+* **categorize:** PD-2605-avoid excessive white space in categories player ([7d9b531](https://github.com/pie-framework/pie-elements/commit/7d9b531e384b61766a5b17049a799414719a4212))
+* update libs PD-2722, PD-2827, PD-2832 ([834ecf9](https://github.com/pie-framework/pie-elements/commit/834ecf92cc7204c851c68f0945ad5d52e453c9d0))
+* update pie-libs ([649fb8f](https://github.com/pie-framework/pie-elements/commit/649fb8f535172d76b3ffc676ec53b2726432808c))
+* update pie-libs PD-2150, PD-2795 ([ff6f64a](https://github.com/pie-framework/pie-elements/commit/ff6f64afa6ccaa8a060c986b1637c680e68c62b6))
+
+
+### Features
+
+* add mathMlOptions PD-2150 ([0c6984c](https://github.com/pie-framework/pie-elements/commit/0c6984cf042141eac36badfbab1c46d8d42f71ee))
+
+
+
+
+
 # [7.13.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@7.12.3...@pie-element/categorize@7.13.0) (2023-05-23)
 
 

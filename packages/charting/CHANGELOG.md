@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@6.0.0...@pie-element/charting@6.1.0) (2023-06-13)
+
+
+### Bug Fixes
+
+* tests ([e1772ef](https://github.com/pie-framework/pie-elements/commit/e1772effca2d0cfc870c6cf15185f4bf11e746e7))
+* update docs ([bc716ee](https://github.com/pie-framework/pie-elements/commit/bc716ee68f0673b391375df9d68904af4110c37a))
+* update libs PD-2722, PD-2827, PD-2832 ([834ecf9](https://github.com/pie-framework/pie-elements/commit/834ecf92cc7204c851c68f0945ad5d52e453c9d0))
+* update pie-libs ([649fb8f](https://github.com/pie-framework/pie-elements/commit/649fb8f535172d76b3ffc676ec53b2726432808c))
+* update pie-libs PD-2150, PD-2795 ([ff6f64a](https://github.com/pie-framework/pie-elements/commit/ff6f64afa6ccaa8a060c986b1637c680e68c62b6))
+* updated snapshots ([5cc0c23](https://github.com/pie-framework/pie-elements/commit/5cc0c23e41565160b7ffed3053d1d08aca637a88))
+
+
+### Features
+
+* **charting:** add translator PD-2795 ([fa738e0](https://github.com/pie-framework/pie-elements/commit/fa738e03256d22ccdce0649cf5f9ac08ea73b4dd))
+* add mathMlOptions PD-2150 ([0c6984c](https://github.com/pie-framework/pie-elements/commit/0c6984cf042141eac36badfbab1c46d8d42f71ee))
+
+
+
+
+
 # [6.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@5.11.3...@pie-element/charting@6.0.0) (2023-05-23)
 
 
