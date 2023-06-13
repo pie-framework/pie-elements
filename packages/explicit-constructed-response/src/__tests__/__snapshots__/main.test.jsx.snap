@@ -121,6 +121,9 @@ exports[`Main render should render in gather mode 1`] = `
     }
   }
 >
+  <h2>
+    Fill in the Blank Question
+  </h2>
   <div>
     <WithStyles(Collapsible)
       labels={
@@ -345,6 +348,9 @@ exports[`Main render should render without prompt 1`] = `
     }
   }
 >
+  <h2>
+    Fill in the Blank Question
+  </h2>
   <div>
     <WithStyles(Collapsible)
       labels={
@@ -454,6 +460,9 @@ exports[`Main render should render without rationale 1`] = `
     }
   }
 >
+  <h2>
+    Fill in the Blank Question
+  </h2>
   <div>
     <WithStyles(Collapsible)
       labels={
@@ -552,6 +561,9 @@ exports[`Main render should render without teacher instructions 1`] = `
     }
   }
 >
+  <h2>
+    Fill in the Blank Question
+  </h2>
   <WithStyles(PreviewPrompt)
     prompt="Prompt"
   />

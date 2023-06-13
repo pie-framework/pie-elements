@@ -22,6 +22,7 @@ exports[`Math-Inline Main render renders correctly with snapshot 1`] = `
       "printCorrect": "Main-printCorrect-16",
       "responseContainer": "Main-responseContainer-10",
       "showCorrectness": "Main-showCorrectness-14",
+      "srOnly": "Main-srOnly-24",
       "static": "Main-static-12",
       "title": "Main-title-7",
       "toggle": "Main-toggle-21",

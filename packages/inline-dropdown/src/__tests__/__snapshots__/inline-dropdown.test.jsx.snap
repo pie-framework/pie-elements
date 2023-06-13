@@ -200,6 +200,9 @@ exports[`InlineDropdown render should render in gather mode 1`] = `
     }
   }
 >
+  <h2>
+    Inline Dropdown Question
+  </h2>
   <WithStyles(Collapsible)
     labels={
       Object {
@@ -584,6 +587,9 @@ exports[`InlineDropdown render should render without prompt 1`] = `
     }
   }
 >
+  <h2>
+    Inline Dropdown Question
+  </h2>
   <WithStyles(Collapsible)
     labels={
       Object {
@@ -773,6 +779,9 @@ exports[`InlineDropdown render should render without rationale 1`] = `
     }
   }
 >
+  <h2>
+    Inline Dropdown Question
+  </h2>
   <WithStyles(Collapsible)
     labels={
       Object {
@@ -953,6 +962,9 @@ exports[`InlineDropdown render should render without teacher instructions 1`] = 
     }
   }
 >
+  <h2>
+    Inline Dropdown Question
+  </h2>
   <WithStyles(PreviewPrompt)
     prompt="Prompt"
   />
