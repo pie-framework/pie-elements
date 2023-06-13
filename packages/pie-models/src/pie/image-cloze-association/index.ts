@@ -1,7 +1,12 @@
 import { PieModel } from '../../PieModel';
 import { PromptConfig } from '../../PromptConfig';
 import { CommonConfigSettings } from '../../CommonConfigSettings';
-import { ConfigureProp, ConfigureMaxImageDimensionsProp } from '../ConfigurationProp';
+import {
+  ConfigureProp,
+  ConfigureMaxImageDimensionsProp,
+  ConfigurePropWithEnabled,
+  ConfigureLanguageOptionsProp
+} from '../ConfigurationProp';
 
 interface ResponseContainer {
   /** The x coordinate of the response container */
@@ -107,6 +112,11 @@ export interface ImageClozeAssociationPie extends PieModel {
 
   /** Indicates if the possible responses have to be shuffled in the player */
   shuffle?: boolean;
+
+  /** Indicates the language of the component
+   * Supported options: en, es, en_US, en-US, es_ES, es-ES, es_MX, es-MX
+   */
+  language?: string;
 }
 
 /**
@@ -143,4 +153,18 @@ export interface ImageClozeAssociationConfigure extends PromptConfig, CommonConf
    * Rubric configuration - only relevant in environments that use pie-player-components
    */
   withRubric?: ConfigureProp;
+
+  /**
+   * Language configuration
+   */
+  language?: ConfigurePropWithEnabled;
+
+  /**
+   * Language choices configuration
+   * Only available if language is enabled
+   */
+  languageChoices?: {
+    label: string;
+    options: ConfigureLanguageOptionsProp[];
+  };
 }

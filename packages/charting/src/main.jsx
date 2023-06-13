@@ -6,9 +6,6 @@ import { Chart, chartTypes } from '@pie-lib/charting';
 import isArray from 'lodash/isArray';
 import isEqual from 'lodash/isEqual';
 import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
-import Translator from '@pie-lib/translator';
-
-const { translator } = Translator;
 
 export class Main extends React.Component {
   static propTypes = {

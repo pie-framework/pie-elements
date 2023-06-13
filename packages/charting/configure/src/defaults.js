@@ -130,16 +130,13 @@ export default {
       label: 'Add Rubric',
     },
     language: {
-      settings: true,
+      settings: false,
       label: 'Specify Language',
       enabled: false,
     },
     languageChoices: {
       label: 'Language Choices',
-      options: [
-        { value: 'en_US', label: 'English (US)' },
-        { value: 'es_ES', label: 'Spanish' }
-      ],
+      options: [],
     },
     chartingOptions: {
       changeInteractive: {

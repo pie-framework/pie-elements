@@ -67,3 +67,15 @@ export interface ConfigureMathMLProp {
   mmlEditing?: number;
 }
 
+export interface ConfigureLanguageOptionsProp {
+  /**
+   * Value of the language option
+   */
+  value: string;
+
+  /**
+   * Label of the language option
+   */
+  label: string;
+}
+

@@ -375,10 +375,7 @@ export default {
     },
     languageChoices: {
       label: 'Language Choices',
-      options: [
-        { value: 'en_US', label: 'English (US)' },
-        { value: 'es_ES', label: 'Spanish' }
-      ],
+      options: [],
     },
     mathMlOptions: {
       mmlOutput: false,
