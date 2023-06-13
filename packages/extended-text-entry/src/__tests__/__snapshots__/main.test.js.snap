@@ -2,6 +2,9 @@
 
 exports[`Render Main Component should match snapshot 1`] = `
 <div>
+  <h2>
+    Constructed Response Question
+  </h2>
   <EditableHtml
     className="response-area-editor"
     highlightShape={true}
@@ -36,6 +39,9 @@ exports[`Render Main Component should match snapshot 1`] = `
 
 exports[`Render Main Component should match snapshot with teacher instructions 1`] = `
 <div>
+  <h2>
+    Constructed Response Question
+  </h2>
   <div>
     <WithStyles(Collapsible)
       labels={

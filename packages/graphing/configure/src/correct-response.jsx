@@ -312,14 +312,21 @@ export class CorrectResponse extends React.Component {
     onChange(model);
   };
 
-  deleteAlternateResponse = (key, answer) => {
+  deleteAlternateResponse = (answerKey, answer) => {
     const { model, onChange } = this.props;
     const { answers } = model || {};
     const { marks = [], name } = answer || {};
 
     const deleteAnswer = () => {
-      delete answers[key];
-      onChange(model);
+      delete answers[answerKey];
+      // rebuild answers based on new alternate positions after deletion
+      const newAnswers = Object.entries(answers).reduce((acc, currentValue, index) => {
+        const [key, value] = currentValue;
+        const newAnswer = key === 'correctAnswer' ? {...acc, [key]: value} : {...acc, ['alternate'+ index]: {...value, name:  `Alternate ${index}`}}
+        return newAnswer
+      }, {});
+
+      onChange({...model, answers: newAnswers});
     };
 
     if (marks.length) {
@@ -340,7 +347,7 @@ export class CorrectResponse extends React.Component {
   };
 
   render() {
-    const { availableTools, classes, errors, model } = this.props;
+    const { availableTools, classes, errors, model, mathMlOptions = {} } = this.props;
     const { dialog } = this.state;
     const {
       answers = {},
@@ -413,6 +420,7 @@ export class CorrectResponse extends React.Component {
                 title={title}
                 toolbarTools={toolbarTools}
                 onChangeTools={(toolbarTools) => this.updateModel({ toolbarTools })}
+                mathMlOptions={mathMlOptions}
               />
 
               {correctAnswerErrors[key] && <div className={classes.errorMessage}>{correctAnswerErrors[key]}</div>}

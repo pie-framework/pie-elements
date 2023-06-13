@@ -23,6 +23,35 @@ const styles = (theme) => ({
   },
 });
 
+const ShowModal = ({ showExcludeZeroDialog, excludeZero, changeExcludeZero, cancel }) => {
+  if (showExcludeZeroDialog && !excludeZero) {
+    return (
+      <ExcludeZeroDialog
+        open={showExcludeZeroDialog && !excludeZero}
+        changeExcludeZero={changeExcludeZero}
+        cancel={cancel}
+      />
+    );
+  } else if (showExcludeZeroDialog && excludeZero) {
+    return (
+      <IncludeZeroDialog
+        open={showExcludeZeroDialog && excludeZero}
+        changeExcludeZero={changeExcludeZero}
+        cancel={cancel}
+      />
+    );
+  } else {
+    return null;
+  }
+};
+
+ShowModal.propTypes = {
+  showExcludeZeroDialog: PropTypes.bool,
+  excludeZero: PropTypes.bool,
+  changeExcludeZero: PropTypes.func,
+  cancel: PropTypes.func,
+};
+
 export class Main extends React.Component {
   state = {
     showDecreaseMaxPointsDialog: false,
@@ -44,7 +73,7 @@ export class Main extends React.Component {
     }
 
     // if no default trait label is defined, take the trait label of the first scale
-    defaultTraitLabel = defaultTraitLabel || (scales[0] ? scales[0].traitLabel : '');
+    defaultTraitLabel = typeof defaultTraitLabel === 'string' ? defaultTraitLabel : scales[0]?.traitLabel || '';
 
     if (scales.length === maxNoOfScales) {
       this.set({
@@ -146,7 +175,11 @@ export class Main extends React.Component {
   // Exclude Zero
   showToggleExcludeZeroModal = () => this.set({ showExcludeZeroDialog: true });
 
-  hideToggleExcludeZeroModal = () => this.set({ showExcludeZeroDialog: false });
+  hideToggleExcludeZeroModal = () => {
+    this.set({ showExcludeZeroDialog: false });
+  };
+
+  onCloseInfoDialog = () => this.set({ showInfoDialog: false });
 
   changeExcludeZero = (excludeZeroType) => {
     const { model, onModelChanged } = this.props || {};
@@ -250,6 +283,7 @@ export class Main extends React.Component {
       maxNoOfTraits,
       minNoOfTraits,
       width,
+      mathMlOptions = {}
     } = configuration || {};
     const {
       scales,
@@ -294,6 +328,14 @@ export class Main extends React.Component {
               Settings: panelSettings,
               Properties: panelProperties,
             }}
+            modal={
+              <ShowModal
+                showExcludeZeroDialog={showExcludeZeroDialog}
+                excludeZero={excludeZero}
+                changeExcludeZero={this.changeExcludeZero}
+                cancel={this.hideToggleExcludeZeroModal}
+              ></ShowModal>
+            }
           />
         }
       >
@@ -319,22 +361,11 @@ export class Main extends React.Component {
               minNoOfTraits={minNoOfTraits}
               {...this.props}
               classes={{}}
+              mathMlOptions={mathMlOptions}
             />
           ))}
           {addScaleEnabled && <MultiTraitButton onClick={this.onScaleAdded}>Add Scale</MultiTraitButton>}
         </div>
-
-        <ExcludeZeroDialog
-          open={showExcludeZeroDialog && !excludeZero}
-          changeExcludeZero={this.changeExcludeZero}
-          cancel={this.hideToggleExcludeZeroModal}
-        />
-
-        <IncludeZeroDialog
-          open={showExcludeZeroDialog && excludeZero}
-          changeExcludeZero={this.changeExcludeZero}
-          cancel={this.hideToggleExcludeZeroModal}
-        />
 
         <InfoDialog open={showInfoDialog} text={infoDialogText} onClose={() => this.set({ showInfoDialog: false })} />
       </layout.ConfigLayout>

@@ -70,6 +70,7 @@ export class Category extends React.Component {
       maxImageWidth,
       maxImageHeight,
       uploadSoundSupport,
+      mathMlOptions = {}
     } = this.props;
     return (
       <Card
@@ -93,6 +94,7 @@ export class Category extends React.Component {
             maxImageWidth={maxImageWidth}
             maxImageHeight={maxImageHeight}
             uploadSoundSupport={uploadSoundSupport}
+            mathMlOptions={mathMlOptions}
           />
           {error && <div className={classes.errorText}>{error}</div>}
         </span>

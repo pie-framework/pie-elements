@@ -232,6 +232,18 @@ Only available for the width prop: indicates the max width for images in choices
 
 Only available for the height prop: indicates the max height for images in choices and choices labels
 
+## `ConfigureMathMLProp` (object)
+
+Properties of the `ConfigureMathMLProp` object:
+
+### `mmlOutput` (number)
+
+Indicates if model should have mathML output instead of latex
+
+### `mmlEditing` (number)
+
+Indicates if mathML that's already in model should be editable
+
 ## `Choice` (object)
 
 Properties of the `Choice` object:

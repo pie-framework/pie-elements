@@ -6,7 +6,9 @@ import { ShowRationale } from '@pie-lib/icons';
 import { color, Collapsible, PreviewPrompt, hasText } from '@pie-lib/render-ui';
 import { withStyles } from '@material-ui/core/styles';
 import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
+import Translator from '@pie-lib/translator';
 
+const { translator } = Translator;
 import Image from './image-container';
 import InteractiveSection from './interactive-section';
 import PossibleResponses from './possible-responses';
@@ -203,7 +205,8 @@ class ImageClozeAssociationComponent extends React.Component {
         prompt,
         showDashedBorder,
         mode,
-        rationale
+        rationale,
+        language
       },
     } = this.props;
     const {
@@ -232,9 +235,8 @@ class ImageClozeAssociationComponent extends React.Component {
       });
     }
 
-    const warningMessage =
-      `You’ve reached the limit of ${maxResponsePerZone} responses per area.` +
-      'To add another response, one must first be removed.';
+    const warningMessage = translator.t('imageClozeAssociation.reachedLimit_other',
+      { lng: language, count: maxResponsePerZone });
 
     let answersToShow =
       responseCorrect !== undefined ? getAnswersCorrectness(answers, validation, duplicateResponses) : answers;

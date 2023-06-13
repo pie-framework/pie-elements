@@ -102,5 +102,9 @@ export default {
       label: 'Add Rubric',
     },
     minCategoriesPerRow: 1,
+    mathMlOptions: {
+      mmlOutput: false,
+      mmlEditing: false,
+    },
   },
 };

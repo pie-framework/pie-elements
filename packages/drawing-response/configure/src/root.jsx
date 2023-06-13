@@ -7,6 +7,7 @@ import { withStyles } from '@material-ui/core/styles';
 
 import ImageContainer from './image-container';
 import cloneDeep from 'lodash/cloneDeep';
+import { dropdown } from '@pie-lib/config-ui/lib/settings';
 
 const { Panel, toggle } = settings;
 
@@ -49,6 +50,9 @@ export class Root extends React.Component {
       spellCheck = {},
       teacherInstructions = {},
       withRubric = {},
+      language = {},
+      languageChoices = {},
+      mathMlOptions = {},
     } = configuration || {};
     const {
       backgroundImageEnabled,
@@ -68,6 +72,8 @@ export class Root extends React.Component {
     const panelSettings = {
       backgroundImageEnabled: backgroundImage.settings && toggle(backgroundImage.label),
       promptEnabled: prompt.settings && toggle(prompt.label),
+      'language.enabled': language.settings && toggle(language.label, true),
+      language: language.settings && language.enabled && dropdown(languageChoices.label, languageChoices.options),
     };
 
     const panelProperties = {
@@ -106,6 +112,7 @@ export class Root extends React.Component {
               maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
               uploadSoundSupport={uploadSoundSupport}
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+              mathMlOptions={mathMlOptions}
             />
           </InputContainer>
         )}
@@ -122,6 +129,7 @@ export class Root extends React.Component {
               maxImageHeight={defaultImageMaxHeight}
               uploadSoundSupport={uploadSoundSupport}
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+              mathMlOptions={mathMlOptions}
             />
           </InputContainer>
         )}

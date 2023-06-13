@@ -1,5 +1,4 @@
 import { tools } from '@pie-lib/graphing';
-
 const { allTools = [] } = tools;
 
 export default {
@@ -368,6 +367,19 @@ export default {
     withRubric: {
       settings: false,
       label: 'Add Rubric',
+    },
+    language: {
+      settings: false,
+      label: 'Specify Language',
+      enabled: false,
+    },
+    languageChoices: {
+      label: 'Language Choices',
+      options: [],
+    },
+    mathMlOptions: {
+      mmlOutput: false,
+      mmlEditing: false,
     },
   },
 };

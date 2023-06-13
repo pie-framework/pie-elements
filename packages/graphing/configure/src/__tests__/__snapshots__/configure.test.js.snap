@@ -274,6 +274,19 @@ exports[`Configure renders snapshot 1`] = `
             "settings": true,
             "top": "Click here to add a top label",
           },
+          "language": Object {
+            "enabled": false,
+            "label": "Specify Language",
+            "settings": false,
+          },
+          "languageChoices": Object {
+            "label": "Language Choices",
+            "options": Array [],
+          },
+          "mathMlOptions": Object {
+            "mmlEditing": false,
+            "mmlOutput": false,
+          },
           "maxImageHeight": Object {
             "prompt": 300,
             "rationale": 300,
@@ -344,6 +357,8 @@ exports[`Configure renders snapshot 1`] = `
             "coordinatesOnHover": undefined,
             "dimensionsEnabled": false,
             "labelsEnabled": undefined,
+            "language": false,
+            "language.enabled": false,
             "padding": false,
             "titleEnabled": undefined,
           },
@@ -423,6 +438,12 @@ exports[`Configure renders snapshot 1`] = `
         ]
       }
       markup=""
+      mathMlOptions={
+        Object {
+          "mmlEditing": false,
+          "mmlOutput": false,
+        }
+      }
       maxImageHeight={300}
       maxImageWidth={300}
       nonEmpty={false}
@@ -445,6 +466,12 @@ exports[`Configure renders snapshot 1`] = `
         ]
       }
       markup=""
+      mathMlOptions={
+        Object {
+          "mmlEditing": false,
+          "mmlOutput": false,
+        }
+      }
       maxImageHeight={300}
       maxImageWidth={300}
       nonEmpty={false}
@@ -699,6 +726,12 @@ exports[`Configure renders snapshot 1`] = `
         "top": "Click here to add a top label",
       }
     }
+    mathMlOptions={
+      Object {
+        "mmlEditing": false,
+        "mmlOutput": false,
+      }
+    }
     model={
       Object {
         "answers": Object {
@@ -755,6 +788,12 @@ exports[`Configure renders snapshot 1`] = `
   <WithStyles(CorrectResponse)
     availableTools={Array []}
     errors={Object {}}
+    mathMlOptions={
+      Object {
+        "mmlEditing": false,
+        "mmlOutput": false,
+      }
+    }
     model={
       Object {
         "answers": Object {
@@ -821,6 +860,12 @@ exports[`Configure renders snapshot 1`] = `
         ]
       }
       markup=""
+      mathMlOptions={
+        Object {
+          "mmlEditing": false,
+          "mmlOutput": false,
+        }
+      }
       maxImageHeight={300}
       maxImageWidth={300}
       onChange={[Function]}

@@ -198,6 +198,7 @@ export class Categories extends React.Component {
       configuration,
       defaultImageMaxHeight,
       defaultImageMaxWidth,
+      mathMlOptions = {}
     } = this.props;
 
     const { categoriesPerRow, rowLabels, errors } = model;
@@ -249,6 +250,7 @@ export class Categories extends React.Component {
                     maxImageWidth={(maxImageWidth && maxImageWidth.rowLabel) || defaultImageMaxWidth}
                     maxImageHeight={(maxImageHeight && maxImageHeight.rowLabel) || defaultImageMaxHeight}
                     uploadSoundSupport={uploadSoundSupport}
+                    mathMlOptions={mathMlOptions}
                   />
                 )}
 

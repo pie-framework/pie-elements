@@ -19,6 +19,10 @@ exports[`Configure renders correctly with snapshot 1`] = `
           "label": "Ignore Order",
           "settings": false,
         },
+        "mathMlOptions": Object {
+          "mmlEditing": false,
+          "mmlOutput": false,
+        },
         "maxImageHeight": Object {
           "prompt": 300,
           "rationale": 300,
@@ -183,6 +187,12 @@ exports[`GeneralConfigBlock renders correctly with snapshot 1`] = `
         ]
       }
       markup=""
+      mathMlOptions={
+        Object {
+          "mmlEditing": false,
+          "mmlOutput": false,
+        }
+      }
       maxImageHeight={300}
       maxImageWidth={300}
       nonEmpty={false}

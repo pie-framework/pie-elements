@@ -225,6 +225,18 @@ Indicates the max dimension for images in rationale
 
 Indicates the max dimension for images in choices
 
+## `ConfigureMathMLProp` (object)
+
+Properties of the `ConfigureMathMLProp` object:
+
+### `mmlOutput` (number)
+
+Indicates if model should have mathML output instead of latex
+
+### `mmlEditing` (number)
+
+Indicates if mathML that's already in model should be editable
+
 ## `Choice` (object)
 
 Properties of the `Choice` object:

@@ -278,6 +278,18 @@ Indicates if the item has to be displayed in the Settings Panel
 
 Indicates the label for the item that has to be displayed in the Settings Panel
 
+# `mathMlOptions` (object)
+
+Properties of the `mathMlOptions` object:
+
+## `mmlOutput` (number)
+
+Indicates if model should have mathML output instead of latex
+
+## `mmlEditing` (number)
+
+Indicates if mathML that's already in model should be editable
+
 # `showPrompt` (boolean)
 
 Determines whether prompt field will be displayed or not
@@ -375,3 +387,15 @@ Only available for the width prop: indicates the max width for images in choices
 ### `choices` (number)
 
 Only available for the height prop: indicates the max height for images in choices and choices labels
+
+## `ConfigureMathMLProp` (object)
+
+Properties of the `ConfigureMathMLProp` object:
+
+### `mmlOutput` (number)
+
+Indicates if model should have mathML output instead of latex
+
+### `mmlEditing` (number)
+
+Indicates if mathML that's already in model should be editable

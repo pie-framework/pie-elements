@@ -8,6 +8,10 @@ exports[`Root render renders 1`] = `
     <Panel
       configuration={
         Object {
+          "mathMlOptions": Object {
+            "mmlEditing": false,
+            "mmlOutput": false,
+          },
           "maxImageHeight": Object {
             "prompt": 300,
             "rationale": 300,

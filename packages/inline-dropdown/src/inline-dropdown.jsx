@@ -70,6 +70,8 @@ export class InlineDropdown extends React.Component {
 
     return (
       <div className={classes.mainContainer} style={{ display: `${displayType}` }}>
+        {mode === 'gather' && <h2 className={classes.srOnly}>Inline Dropdown Question</h2>}
+
         {teacherInstructions && hasText(teacherInstructions) && (
           <Collapsible
             className={classes.collapsible}
@@ -146,6 +148,14 @@ const styles = (theme) => ({
     '&.incorrect': {
       color: color.incorrect(),
     },
+  },
+  srOnly: {
+    position: 'absolute',
+    left: '-10000px',
+    top: 'auto',
+    width: '1px',
+    height: '1px',
+    overflow: 'hidden',
   },
 });
 

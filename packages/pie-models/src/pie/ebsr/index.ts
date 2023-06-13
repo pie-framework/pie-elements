@@ -1,5 +1,5 @@
 import { PieModel } from '../../PieModel';
-import { ConfigureProp } from '../ConfigurationProp';
+import {ConfigureMathMLProp, ConfigureProp} from '../ConfigurationProp';
 import { PromptConfig } from '../../PromptConfig';
 import { CommonConfigSettings } from '../../CommonConfigSettings';
 
@@ -191,6 +191,9 @@ interface PartConfiguration {
    * Maximum image height for input fields
    */
   maxImageHeight?: ConfigureMaxImageDimensionsProp;
+
+  /** Configuration for editable-html */
+  mathMlOptions?: ConfigureMathMLProp;
 }
 
 /**

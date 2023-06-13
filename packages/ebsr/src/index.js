@@ -7,8 +7,7 @@ const SESSION_CHANGED = SessionChangedEvent.TYPE;
 const MC_TAG_NAME = 'ebsr-multiple-choice';
 const log = debug('pie-elements:ebsr');
 
-class EbsrMC extends MultipleChoice {
-}
+class EbsrMC extends MultipleChoice {}
 
 const defineMultipleChoice = () => {
   if (!customElements.get(MC_TAG_NAME)) {
@@ -128,6 +127,19 @@ export default class Ebsr extends HTMLElement {
     this.ariaLabel = 'Two-Part Question';
     this.role = 'region';
     this.innerHTML = `
+      <style>
+        .srOnly {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        left: -10000px;
+        top: auto;
+      }
+      </style>
+        <h2 class="srOnly">Two-Part Question</h2>
         <${MC_TAG_NAME} id="a"></${MC_TAG_NAME}>
         <${MC_TAG_NAME} id="b"></${MC_TAG_NAME}>
     `;

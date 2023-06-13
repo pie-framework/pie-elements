@@ -69,6 +69,11 @@ Default: `": 'bottom'"`
 
 Indicates if Rubric is enabled
 
+# `language` (string)
+
+Indicates the language of the component
+Supported options: en, es, en_US, en-US, es_ES, es-ES, es_MX, es-MX
+
 # `id` (string, required)
 
 Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.
@@ -146,6 +151,30 @@ Indicates the value for the toggle;
 if true:
 - this property will not be visible in Settings Panel (settings will become automatically false)
 - the model property afferent to it will become automatically false
+
+## `ConfigureMathMLProp` (object)
+
+Properties of the `ConfigureMathMLProp` object:
+
+### `mmlOutput` (number)
+
+Indicates if model should have mathML output instead of latex
+
+### `mmlEditing` (number)
+
+Indicates if mathML that's already in model should be editable
+
+## `ConfigureLanguageOptionsProp` (object)
+
+Properties of the `ConfigureLanguageOptionsProp` object:
+
+### `value` (string, required)
+
+Value of the language option
+
+### `label` (string, required)
+
+Label of the language option
 
 ## `Dimension` (object)
 

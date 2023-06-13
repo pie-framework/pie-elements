@@ -8,8 +8,8 @@
   "dependencies": {
     "@material-ui/core": "^3.9.2",
     "@pie-framework/pie-configure-events": "^1.3.0",
-    "@pie-lib/config-ui": "^11.6.10",
-    "@pie-lib/rubric": "^0.7.29",
+    "@pie-lib/config-ui": "^11.8.1",
+    "@pie-lib/rubric": "^0.8.1",
     "debug": "^4.1.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"

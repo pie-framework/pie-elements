@@ -18,5 +18,9 @@ export default {
     },
     settingsPanelDisabled: false,
     // width: '500px'
+    mathMlOptions: {
+      mmlOutput: false,
+      mmlEditing: false,
+    }
   },
 };

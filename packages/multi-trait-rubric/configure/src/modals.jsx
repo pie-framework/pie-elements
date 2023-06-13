@@ -79,7 +79,7 @@ const RawExcludeZeroDialog = ({ open, changeExcludeZero, cancel, classes }) => (
     </DialogContent>
 
     <DialogActions>
-      <Button classes={{ root: `${classes.button} ${classes.cancelButton}` }} onClick={cancel}>
+      <Button classes={{ root: `${classes.button} ${classes.cancelButton}` }} onClick={() => cancel()}>
         Cancel
       </Button>
 
@@ -114,7 +114,7 @@ const RawIncludeZeroDialog = ({ open, changeExcludeZero, cancel, classes }) => (
     </DialogContent>
 
     <DialogActions>
-      <Button classes={{ root: `${classes.button} ${classes.cancelButton}` }} onClick={cancel}>
+      <Button classes={{ root: `${classes.button} ${classes.cancelButton}` }} onClick={() => cancel()}>
         Cancel
       </Button>
 

@@ -54,4 +54,17 @@ export const configuration = {
     settings: false,
     enabled: true,
   },
+  mathMlOptions: {
+    mmlOutput: false,
+    mmlEditing: false,
+  },
+  language: {
+    settings: false,
+    label: 'Specify Language',
+    enabled: false,
+  },
+  languageChoices: {
+    label: 'Language Choices',
+    options: [],
+  },
 };

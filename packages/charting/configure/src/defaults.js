@@ -129,6 +129,15 @@ export default {
       settings: false,
       label: 'Add Rubric',
     },
+    language: {
+      settings: false,
+      label: 'Specify Language',
+      enabled: false,
+    },
+    languageChoices: {
+      label: 'Language Choices',
+      options: [],
+    },
     chartingOptions: {
       changeInteractive: {
         settings: false,
@@ -144,6 +153,10 @@ export default {
         settings: false,
         authoringLabel: 'Student can add categories',
         settingsLabel: 'Allow changes to whether students can add categories',
+      },
+      mathMlOptions: {
+        mmlOutput: false,
+        mmlEditing: false,
       },
     },
   },

@@ -123,6 +123,12 @@ exports[`AnswerConfigBlock render snapshot 1`] = `
     <DropTarget(DragSource(WithStyles(Row)))
       idx={0}
       key="0"
+      mathMlOptions={
+        Object {
+          "mmlEditing": false,
+          "mmlOutput": false,
+        }
+      }
       maxImageHeight={150}
       maxImageWidth={300}
       model={
@@ -207,6 +213,12 @@ exports[`AnswerConfigBlock render snapshot 1`] = `
     <DropTarget(DragSource(WithStyles(Row)))
       idx={1}
       key="1"
+      mathMlOptions={
+        Object {
+          "mmlEditing": false,
+          "mmlOutput": false,
+        }
+      }
       maxImageHeight={150}
       maxImageWidth={300}
       model={
@@ -291,6 +303,12 @@ exports[`AnswerConfigBlock render snapshot 1`] = `
     <DropTarget(DragSource(WithStyles(Row)))
       idx={2}
       key="2"
+      mathMlOptions={
+        Object {
+          "mmlEditing": false,
+          "mmlOutput": false,
+        }
+      }
       maxImageHeight={150}
       maxImageWidth={300}
       model={
@@ -375,6 +393,12 @@ exports[`AnswerConfigBlock render snapshot 1`] = `
     <DropTarget(DragSource(WithStyles(Row)))
       idx={3}
       key="3"
+      mathMlOptions={
+        Object {
+          "mmlEditing": false,
+          "mmlOutput": false,
+        }
+      }
       maxImageHeight={150}
       maxImageWidth={300}
       model={

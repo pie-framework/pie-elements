@@ -26,6 +26,7 @@ export const RowLabel = withStyles(styles)(
     maxImageWidth,
     maxImageHeight,
     uploadSoundSupport,
+     mathMlOptions = {}
   }) => {
     return (
       <div
@@ -47,6 +48,7 @@ export const RowLabel = withStyles(styles)(
             maxImageHeight={maxImageHeight}
             uploadSoundSupport={uploadSoundSupport}
             languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+            mathMlOptions={mathMlOptions}
           />
         </InputContainer>
       </div>

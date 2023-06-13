@@ -270,6 +270,7 @@ export function model(question, session, env) {
             message: feedbackMessage,
           },
           colorContrast: (env.accessibility && env.accessibility.colorContrast) || 'black_on_white',
+          language: normalizedQuestion.language,
         };
 
         resolve(omitBy(out, (v) => !v));

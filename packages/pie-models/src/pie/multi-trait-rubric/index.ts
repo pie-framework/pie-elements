@@ -1,5 +1,5 @@
 import { PieModel } from '../../PieModel';
-import { ConfigureProp } from '../ConfigurationProp';
+import {ConfigureMathMLProp, ConfigureProp} from '../ConfigurationProp';
 
 interface Trait {
   /** Trait name */
@@ -174,4 +174,7 @@ export interface MultiTraitRubricConfigure {
    * If it's not defined, it will default to the label of the first trait.
    */
   defaultTraitLabel?: string;
+
+  /** Configuration for editable-html */
+  mathMlOptions?: ConfigureMathMLProp;
 }

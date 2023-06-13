@@ -12,6 +12,19 @@ exports[`Root snapshot renders 1`] = `
             "label": "Background Image",
             "settings": true,
           },
+          "language": Object {
+            "enabled": false,
+            "label": "Specify Language",
+            "settings": false,
+          },
+          "languageChoices": Object {
+            "label": "Language Choices",
+            "options": Array [],
+          },
+          "mathMlOptions": Object {
+            "mmlEditing": false,
+            "mmlOutput": false,
+          },
           "maxImageHeight": Object {
             "prompt": 300,
             "teacherInstructions": 300,
@@ -49,6 +62,8 @@ exports[`Root snapshot renders 1`] = `
           },
           "Settings": Object {
             "backgroundImageEnabled": undefined,
+            "language": false,
+            "language.enabled": false,
             "promptEnabled": undefined,
           },
         }
@@ -84,6 +99,12 @@ exports[`Root snapshot renders 1`] = `
         ]
       }
       markup="Test Prompt"
+      mathMlOptions={
+        Object {
+          "mmlEditing": false,
+          "mmlOutput": false,
+        }
+      }
       maxImageHeight={300}
       maxImageWidth={300}
       onChange={[Function]}

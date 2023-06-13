@@ -120,6 +120,7 @@ export class Design extends React.Component {
       targetLabel = {},
       teacherInstructions = {},
       withRubric = {},
+      mathMlOptions = {},
     } = configuration || {};
     const {
       choiceLabelEnabled,
@@ -199,6 +200,7 @@ export class Design extends React.Component {
               maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
               uploadSoundSupport={uploadSoundSupport}
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+              mathMlOptions={mathMlOptions}
             />
           </InputContainer>
         )}
@@ -216,6 +218,7 @@ export class Design extends React.Component {
               maxImageHeight={maxImageHeight && maxImageHeight.prompt}
               uploadSoundSupport={uploadSoundSupport}
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+              mathMlOptions={mathMlOptions}
             />
           </InputContainer>
         )}
@@ -253,6 +256,7 @@ export class Design extends React.Component {
                   maxImageHeight={maxChoicesImageHeight}
                   uploadSoundSupport={uploadSoundSupport}
                   languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+                  mathMlOptions={mathMlOptions}
                 />
               </InputContainer>
             )}
@@ -272,6 +276,7 @@ export class Design extends React.Component {
                   maxImageHeight={maxChoicesImageHeight}
                   uploadSoundSupport={uploadSoundSupport}
                   languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+                  mathMlOptions={mathMlOptions}
                 />
               </InputContainer>
             )}
@@ -293,6 +298,7 @@ export class Design extends React.Component {
               maxImageWidth={maxChoicesImageWidth}
               maxImageHeight={maxChoicesImageHeight}
               errors={errors || {}}
+              mathMlOptions={mathMlOptions}
             />
           )}
         </FormSection>
@@ -310,6 +316,7 @@ export class Design extends React.Component {
               maxImageHeight={(maxImageHeight && maxImageHeight.rationale) || defaultImageMaxHeight}
               uploadSoundSupport={uploadSoundSupport}
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+              mathMlOptions={mathMlOptions}
             />
           </InputContainer>
         )}
