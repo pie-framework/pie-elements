@@ -281,16 +281,7 @@ exports[`Configure renders snapshot 1`] = `
           },
           "languageChoices": Object {
             "label": "Language Choices",
-            "options": Array [
-              Object {
-                "label": "English (US)",
-                "value": "en_US",
-              },
-              Object {
-                "label": "Spanish",
-                "value": "es_ES",
-              },
-            ],
+            "options": Array [],
           },
           "mathMlOptions": Object {
             "mmlEditing": false,

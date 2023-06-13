@@ -126,20 +126,11 @@ exports[`Configure renders snapshot 1`] = `
           "language": Object {
             "enabled": false,
             "label": "Specify Language",
-            "settings": true,
+            "settings": false,
           },
           "languageChoices": Object {
             "label": "Language Choices",
-            "options": Array [
-              Object {
-                "label": "English (US)",
-                "value": "en_US",
-              },
-              Object {
-                "label": "Spanish",
-                "value": "es_ES",
-              },
-            ],
+            "options": Array [],
           },
           "maxImageHeight": Object {
             "prompt": 300,
@@ -199,7 +190,7 @@ exports[`Configure renders snapshot 1`] = `
         Object {
           "Properties": Object {
             "language": false,
-            "language.enabled": undefined,
+            "language.enabled": false,
             "promptEnabled": undefined,
             "rationaleEnabled": undefined,
             "rubricEnabled": false,
