@@ -12,6 +12,9 @@ import injectSheet from 'react-jss';
 import isArray from 'lodash/isArray';
 import isNumber from 'lodash/isNumber';
 import isEqual from 'lodash/isEqual';
+import Translator from '@pie-lib/translator';
+
+const { translator } = Translator;
 
 export { Graph };
 
@@ -179,6 +182,7 @@ export class NumberLine extends React.Component {
       emptyAnswer,
       feedback,
       colorContrast,
+      language
     } = model;
     let addElement = this.addElement.bind(this);
     let elementsSelected = !disabled && selectedElements && selectedElements.length > 0;
@@ -216,7 +220,10 @@ export class NumberLine extends React.Component {
 
     let elements = showCorrectAnswer ? getCorrectAnswerElements() : getAnswerElements();
 
-    let maxPointsMessage = () => `You can only add ${maxNumberOfPoints} element${maxNumberOfPoints == 1 ? '' : 's'}`;
+    let maxPointsMessage = () => maxNumberOfPoints == 1 ? translator.t('numberLine.addElementLimit_one', {
+      lng: language,
+      count: 1
+    }) : translator.t('numberLine.addElementLimit_other', { lng: language, count: maxNumberOfPoints });
 
     let deleteElements = () => {
       onDeleteElements(selectedElements);
@@ -270,6 +277,7 @@ export class NumberLine extends React.Component {
             onClearElements={this.clearAll.bind(this)}
             onUndoElement={this.undo.bind(this)}
             icons={getIcons()}
+            language={language}
           />
         )}
 

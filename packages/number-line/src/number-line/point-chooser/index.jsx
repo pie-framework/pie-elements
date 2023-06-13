@@ -5,6 +5,9 @@ import injectSheet from 'react-jss';
 import styles from './styles';
 import PropTypes from 'prop-types';
 import Button from './button';
+import Translator from '@pie-lib/translator';
+
+const { translator } = Translator;
 
 const DeleteIcon = ({ classes }) => {
   return (
@@ -78,6 +81,7 @@ export class PointChooser extends React.Component {
     onUndoElement: PropTypes.func.isRequired,
     onClearElements: PropTypes.func.isRequired,
     icons: PropTypes.array,
+    language: PropTypes.string,
   };
 
   render() {
@@ -90,6 +94,7 @@ export class PointChooser extends React.Component {
       icons,
       classes,
       onElementType,
+      language
     } = this.props;
 
     return (
@@ -101,8 +106,8 @@ export class PointChooser extends React.Component {
               <DeleteIcon classes={classes} />
             </span>
           )}
-          <Button onClick={onUndoElement} label="Undo" />
-          <Button onClick={onClearElements} label="Clear all" />
+          <Button onClick={onUndoElement} label={translator.t('common:undo', { lng: language })} />
+          <Button onClick={onClearElements} label={translator.t('numberLine.clearAll', { lng: language })} />
         </div>
       </div>
     );

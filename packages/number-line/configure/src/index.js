@@ -32,9 +32,19 @@ const updateTicks = (model) => {
 
 export default class NumberLine extends HTMLElement {
   static createDefaultModel = (model = {}) => {
+    const c = defaults.configuration;
+    let language = '';
+
+    if (c.language && c.language.enabled) {
+      if (c.languageChoices?.options?.length) {
+        language = c.languageChoices.options[0].value;
+      }
+    }
+
     const normalizedModel = {
       ...defaults.model,
       ...model,
+      language
     };
 
     return updateTicks(normalizedModel);
