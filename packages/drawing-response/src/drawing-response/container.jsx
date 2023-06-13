@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
+import Translator from '@pie-lib/translator';
 
 import constants from './constants';
 import Button from './button';
@@ -10,6 +11,7 @@ import DrawableText from './drawable-text';
 import Icon from './icon';
 
 const { tools: TOOLS } = constants;
+const { translator } = Translator;
 
 const ROGVAIV = ['red', 'orange', 'yellow', 'violet', 'blue', 'green', 'white', 'black'].map((c) => ({
   value: c,
@@ -25,6 +27,7 @@ export class Container extends Component {
     imageDimensions: PropTypes.object.isRequired,
     imageUrl: PropTypes.string.isRequired,
     backgroundImageEnabled: PropTypes.bool.isRequired,
+    language: PropTypes.string,
   };
 
   constructor(props) {
@@ -53,6 +56,30 @@ export class Container extends Component {
     };
   }
 
+  setTranslatedState(language) {
+    const translatedROGVAIV = ROGVAIV.map((c) => ({
+      value: c.value,
+      label: translator.t(`drawingResponse.${c.label}`, { lng: language }),
+    }));
+
+    this.setState({
+      fillColorList: [
+        { value: 'transparent', label: translator.t('drawingResponse.noFill', { lng: language }), },
+        { value: 'lightblue', label: translator.t('drawingResponse.lightblue', { lng: language }), },
+        { value: 'lightyellow', label: translator.t('drawingResponse.lightyellow', { lng: language }), },
+        ...translatedROGVAIV,
+      ],
+      paintColor: translator.t('drawingResponse.red', { lng: language }),
+      outlineColorList: translatedROGVAIV,
+      paintColorList: translatedROGVAIV,
+    });
+  }
+
+  UNSAFE_componentWillReceiveProps(props) {
+    const { language } = props;
+    this.setTranslatedState(language);
+  }
+
   setDimensions() {
     const checkExist = setInterval(() => {
       try {
@@ -75,6 +102,9 @@ export class Container extends Component {
   }
 
   componentDidMount() {
+    const { language } = this.props;
+    this.setTranslatedState(language);
+
     this.setDimensions();
 
     this.observer = new MutationObserver((mutations) => {
@@ -114,13 +144,14 @@ export class Container extends Component {
   handleMakeToolActive(tool) {
     const { TextEntry } = this.state;
     const { type } = tool;
+    const { language } = this.props;
 
     if (type !== 'Text') {
       this.setState({
         toolActive: tool,
       });
     } else {
-      TextEntry.addNewTextEntry();
+      TextEntry.addNewTextEntry(language);
       // Force update
       this.setState({
         updatedAt: new Date(),
@@ -147,7 +178,7 @@ export class Container extends Component {
   }
 
   render() {
-    const { classes, disabled, imageUrl, imageDimensions, onSessionChange, session, backgroundImageEnabled } =
+    const { classes, disabled, imageUrl, imageDimensions, onSessionChange, session, backgroundImageEnabled, language } =
       this.props;
     const {
       drawableDimensions,
@@ -176,6 +207,7 @@ export class Container extends Component {
             onFillColorChange={(color) => this.handleColorChange('fill', color)}
             onOutlineColorChange={(color) => this.handleColorChange('outline', color)}
             onPaintColorChange={(color) => this.handleColorChange('paint', color)}
+            language={language}
           />
         )}
 
@@ -190,7 +222,7 @@ export class Container extends Component {
                   key={type}
                   disabled={this.checkIfToolIsDisabled(type)}
                   onClick={() => this.handleMakeToolActive(tool)}
-                  label={<Icon path={icon} />}
+                  label={<Icon path={icon}/>}
                 />
               );
             })}
@@ -217,6 +249,7 @@ export class Container extends Component {
               toolActive={toolActive}
               TextEntry={TextEntry}
               backgroundImageEnabled={backgroundImageEnabled}
+              language={language}
             />
           </div>
         </div>

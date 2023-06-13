@@ -7,47 +7,47 @@ exports[`Container snapshot renders 1`] = `
     fillList={
       Array [
         Object {
-          "label": "no fill",
+          "label": "No fill",
           "value": "transparent",
         },
         Object {
-          "label": "light blue",
+          "label": "Light blue",
           "value": "lightblue",
         },
         Object {
-          "label": "light yellow",
+          "label": "Light yellow",
           "value": "lightyellow",
         },
         Object {
-          "label": "red",
+          "label": "Red",
           "value": "red",
         },
         Object {
-          "label": "orange",
+          "label": "Orange",
           "value": "orange",
         },
         Object {
-          "label": "yellow",
+          "label": "Yellow",
           "value": "yellow",
         },
         Object {
-          "label": "violet",
+          "label": "Violet",
           "value": "violet",
         },
         Object {
-          "label": "blue",
+          "label": "Blue",
           "value": "blue",
         },
         Object {
-          "label": "green",
+          "label": "Green",
           "value": "green",
         },
         Object {
-          "label": "white",
+          "label": "White",
           "value": "white",
         },
         Object {
-          "label": "black",
+          "label": "Black",
           "value": "black",
         },
       ]
@@ -59,72 +59,72 @@ exports[`Container snapshot renders 1`] = `
     outlineList={
       Array [
         Object {
-          "label": "red",
+          "label": "Red",
           "value": "red",
         },
         Object {
-          "label": "orange",
+          "label": "Orange",
           "value": "orange",
         },
         Object {
-          "label": "yellow",
+          "label": "Yellow",
           "value": "yellow",
         },
         Object {
-          "label": "violet",
+          "label": "Violet",
           "value": "violet",
         },
         Object {
-          "label": "blue",
+          "label": "Blue",
           "value": "blue",
         },
         Object {
-          "label": "green",
+          "label": "Green",
           "value": "green",
         },
         Object {
-          "label": "white",
+          "label": "White",
           "value": "white",
         },
         Object {
-          "label": "black",
+          "label": "Black",
           "value": "black",
         },
       ]
     }
-    paintColor="red"
+    paintColor="Red"
     paintList={
       Array [
         Object {
-          "label": "red",
+          "label": "Red",
           "value": "red",
         },
         Object {
-          "label": "orange",
+          "label": "Orange",
           "value": "orange",
         },
         Object {
-          "label": "yellow",
+          "label": "Yellow",
           "value": "yellow",
         },
         Object {
-          "label": "violet",
+          "label": "Violet",
           "value": "violet",
         },
         Object {
-          "label": "blue",
+          "label": "Blue",
           "value": "blue",
         },
         Object {
-          "label": "green",
+          "label": "Green",
           "value": "green",
         },
         Object {
-          "label": "white",
+          "label": "White",
           "value": "white",
         },
         Object {
-          "label": "black",
+          "label": "Black",
           "value": "black",
         },
       ]
@@ -244,7 +244,7 @@ exports[`Container snapshot renders 1`] = `
         imageUrl="url"
         onSessionChange={[MockFunction]}
         outlineColor="black"
-        paintColor="red"
+        paintColor="Red"
         scale={1}
         session={Object {}}
         toolActive={
@@ -377,7 +377,7 @@ exports[`Container snapshot renders disabled 1`] = `
         imageUrl="url"
         onSessionChange={[MockFunction]}
         outlineColor="black"
-        paintColor="red"
+        paintColor="Red"
         scale={1}
         session={Object {}}
         toolActive={

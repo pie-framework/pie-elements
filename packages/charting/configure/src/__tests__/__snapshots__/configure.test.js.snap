@@ -123,6 +123,15 @@ exports[`Configure renders snapshot 1`] = `
             "right": "",
             "top": "",
           },
+          "language": Object {
+            "enabled": false,
+            "label": "Specify Language",
+            "settings": false,
+          },
+          "languageChoices": Object {
+            "label": "Language Choices",
+            "options": Array [],
+          },
           "maxImageHeight": Object {
             "prompt": 300,
             "rationale": 300,
@@ -180,6 +189,8 @@ exports[`Configure renders snapshot 1`] = `
       groups={
         Object {
           "Properties": Object {
+            "language": false,
+            "language.enabled": false,
             "promptEnabled": undefined,
             "rationaleEnabled": undefined,
             "rubricEnabled": false,

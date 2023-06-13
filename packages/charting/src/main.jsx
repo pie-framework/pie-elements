@@ -64,6 +64,7 @@ export class Main extends React.Component {
       rationale,
       correctedAnswer,
       correctAnswer,
+      language
     } = model;
 
     const correctData =
@@ -117,6 +118,7 @@ export class Main extends React.Component {
             onDataChange={this.changeData}
             addCategoryEnabled={false}
             categoryDefaultLabel={studentNewCategoryDefaultLabel}
+            language={language}
           />
         ) : (
           <Chart
@@ -138,6 +140,7 @@ export class Main extends React.Component {
             onDataChange={this.changeData}
             addCategoryEnabled={addCategoryEnabled}
             categoryDefaultLabel={studentNewCategoryDefaultLabel}
+            language={language}
           />
         )}
 

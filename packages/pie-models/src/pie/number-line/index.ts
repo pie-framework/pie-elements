@@ -2,7 +2,12 @@ import { PromptConfig } from '../../PromptConfig';
 import { CommonConfigSettings } from '../../CommonConfigSettings';
 import { PieModel } from '../../PieModel';
 import { ComplexFeedbackType } from '../../Feedback';
-import {ConfigureMathMLProp, ConfigureProp} from '../ConfigurationProp';
+import {
+  ConfigureLanguageOptionsProp,
+  ConfigureMathMLProp,
+  ConfigureProp,
+  ConfigurePropWithEnabled
+} from '../ConfigurationProp';
 
 interface ResponseDefault {
   /** Indicates the response type */
@@ -155,6 +160,11 @@ export interface NumberLinePie extends PieModel {
    * @default: 'bottom'
    */
   toolbarEditorPosition?: 'bottom' | 'top';
+
+  /** Indicates the language of the component
+   * Supported options: en, es, en_US, en-US, es_ES, es-ES, es_MX, es-MX
+   */
+  language?: string;
 }
 
 /**
@@ -174,4 +184,18 @@ export interface NumberLineConfigure extends PromptConfig, CommonConfigSettings 
 
   /** Configuration for editable-html */
   mathMlOptions?: ConfigureMathMLProp;
+
+  /**
+   * Language configuration
+   */
+  language?: ConfigurePropWithEnabled;
+
+  /**
+   * Language choices configuration
+   * Only available if language is enabled
+   */
+  languageChoices?: {
+    label: string;
+    options: ConfigureLanguageOptionsProp[];
+  };
 }

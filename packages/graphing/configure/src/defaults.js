@@ -375,7 +375,6 @@ export default {
     },
     languageChoices: {
       label: 'Language Choices',
-      // TODO update Setting's Panel dropdown to accept an array of values with labels
       options: [],
     },
     mathMlOptions: {

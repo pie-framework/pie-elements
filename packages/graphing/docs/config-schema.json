@@ -536,7 +536,7 @@
         "options": {
           "type": "array",
           "items": {
-            "title": "LanguageOptionsProp",
+            "title": "ConfigureLanguageOptionsProp",
             "type": "object",
             "properties": {
               "value": {
@@ -1480,8 +1480,8 @@
         }
       }
     },
-    "LanguageOptionsProp": {
-      "title": "LanguageOptionsProp",
+    "ConfigureLanguageOptionsProp": {
+      "title": "ConfigureLanguageOptionsProp",
       "type": "object",
       "properties": {
         "value": {

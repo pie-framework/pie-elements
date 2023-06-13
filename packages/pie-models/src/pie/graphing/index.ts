@@ -2,6 +2,7 @@ import {PromptConfig} from '../../PromptConfig';
 import {CommonConfigSettings} from '../../CommonConfigSettings';
 import {PieModel} from '../../PieModel';
 import {
+    ConfigureLanguageOptionsProp,
     ConfigureMathMLProp,
     ConfigureMaxImageDimensionsProp,
     ConfigureProp,
@@ -395,18 +396,6 @@ interface TitleConfigProp extends ConfigurePropWithEnabled {
     placeholder?: string;
 }
 
-interface LanguageOptionsProp {
-    /**
-     * Value of the language option
-     */
-    value: string;
-
-    /**
-     * Label of the language option
-     */
-    label: string;
-}
-
 /**
  * Config Object for @pie-elements/graphing
  * @additionalProperties false
@@ -464,7 +453,7 @@ export interface GraphingConfigure extends PromptConfig, CommonConfigSettings {
      */
     languageChoices?: {
         label: string;
-        options: LanguageOptionsProp[];
+        options: ConfigureLanguageOptionsProp[];
     };
 
     /**

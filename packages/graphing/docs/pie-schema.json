@@ -2223,8 +2223,8 @@
         }
       }
     },
-    "LanguageOptionsProp": {
-      "title": "LanguageOptionsProp",
+    "ConfigureLanguageOptionsProp": {
+      "title": "ConfigureLanguageOptionsProp",
       "type": "object",
       "properties": {
         "value": {

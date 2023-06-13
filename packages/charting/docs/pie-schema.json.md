@@ -182,6 +182,11 @@ Indicates if teacher can enable/disable addCategoryEnabled
 
 Label for new category in correct response and player's chart
 
+# `language` (string)
+
+Indicates the language of the component
+Supported options: en, es, en_US, en-US, es_ES, es-ES, es_MX, es-MX
+
 # `id` (string, required)
 
 Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.
@@ -401,6 +406,18 @@ Indicates if dot plot is available and the label used for it.
 ### `linePlot` (string, required)
 
 Indicates if line plot is available and the label used for it.
+
+## `ConfigureLanguageOptionsProp` (object)
+
+Properties of the `ConfigureLanguageOptionsProp` object:
+
+### `value` (string, required)
+
+Value of the language option
+
+### `label` (string, required)
+
+Label of the language option
 
 ## `Answer` (object)
 

@@ -20,7 +20,16 @@ class DrawingResponseComponent extends React.Component {
 
   render() {
     const {
-      model: { disabled, imageDimensions, imageUrl, prompt, mode, teacherInstructions, backgroundImageEnabled = true },
+      model: {
+        disabled,
+        imageDimensions,
+        imageUrl,
+        prompt,
+        mode,
+        teacherInstructions,
+        backgroundImageEnabled,
+        language
+      },
       session,
       onSessionChange,
       classes,
@@ -54,6 +63,7 @@ class DrawingResponseComponent extends React.Component {
           imageUrl={imageUrl}
           backgroundImageEnabled={backgroundImageEnabled}
           disabled={disabled}
+          language={language}
         />
       </div>
     );

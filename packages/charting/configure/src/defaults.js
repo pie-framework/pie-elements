@@ -129,6 +129,15 @@ export default {
       settings: false,
       label: 'Add Rubric',
     },
+    language: {
+      settings: false,
+      label: 'Specify Language',
+      enabled: false,
+    },
+    languageChoices: {
+      label: 'Language Choices',
+      options: [],
+    },
     chartingOptions: {
       changeInteractive: {
         settings: false,

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { settings, layout, InputContainer } from '@pie-lib/config-ui';
 import EditableHtml from '@pie-lib/editable-html';
 import { withStyles } from '@material-ui/core/styles';
+import { dropdown } from '@pie-lib/config-ui/lib/settings';
 
 const { Panel, toggle } = settings;
 
@@ -23,6 +24,8 @@ export class Root extends React.Component {
       teacherInstructions = {},
       withRubric = {},
       mathMlOptions = {},
+      language = {},
+      languageChoices = {},
     } = configuration || {};
     const { spellCheckEnabled } = model || {};
 
@@ -30,6 +33,8 @@ export class Root extends React.Component {
       teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
       spellCheckEnabled: spellCheck.settings && toggle(spellCheck.label),
       rubricEnabled: withRubric?.settings && toggle(withRubric?.label),
+      'language.enabled': language.settings && toggle(language.label, true),
+      language: language.settings && language.enabled && dropdown(languageChoices.label, languageChoices.options),
     };
 
     return (

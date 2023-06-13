@@ -149,6 +149,11 @@ Indicates if Rubric is enabled
 
 Indicates if the possible responses have to be shuffled in the player
 
+# `language` (string)
+
+Indicates the language of the component
+Supported options: en, es, en_US, en-US, es_ES, es-ES, es_MX, es-MX
+
 # `id` (string, required)
 
 Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.
@@ -190,6 +195,35 @@ Indicates if the item has to be displayed in the Settings Panel
 ### `label` (string)
 
 Indicates the label for the item that has to be displayed in the Settings Panel
+
+## `ConfigurePropWithEnabled` (object)
+
+Properties of the `ConfigurePropWithEnabled` object:
+
+### `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+### `label` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
+
+### `enabled` (boolean)
+
+Indicates the value of the item if it affects config-ui
+(eg.: if item is a switch and displaying an input on the config-ui depends on the switch value: on/off)
+
+## `ConfigureLanguageOptionsProp` (object)
+
+Properties of the `ConfigureLanguageOptionsProp` object:
+
+### `value` (string, required)
+
+Value of the language option
+
+### `label` (string, required)
+
+Label of the language option
 
 ## `Image` (object)
 
