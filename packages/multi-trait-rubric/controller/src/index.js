@@ -75,7 +75,7 @@ export const validate  = (model, config) => {
       }
     });
     if(Object.keys(scaleErrors).length > 0){
-      traitsErrors[scaleIndex]=scaleErrors;
+      traitsErrors[scaleIndex] = scaleErrors;
     }
   });
   if(Object.keys(traitsErrors).length > 0){

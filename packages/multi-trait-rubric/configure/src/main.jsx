@@ -268,37 +268,6 @@ export class Main extends React.Component {
     return (s || '').replace(/(<([^>]+)>)/ig, '');
   };
 
-  validate  = (model, config) => {
-    const { scales } = model;
-    const errors = {};
-    const traitsErrors = {};
-
-    (scales || []).forEach((scale, scaleIndex) => {
-      const { traits = [] } = scale;
-      const scaleErrors = {};
-      traits.forEach((trait, traitIndex) => {
-        if(!trait.name || trait.name === '<div></div>') {
-          scaleErrors[traitIndex] = 'Trait names should not be empty.'
-        }
-        else{
-          const identicalTraitName = traits.slice(traitIndex + 1).some(t => this.markupToText(t.name) === this.markupToText(trait.name));
-
-          if (identicalTraitName) {
-            scaleErrors[traitIndex] = 'Trait names should be unique.'
-          }
-        }
-      })
-      if(Object.keys(scaleErrors).length > 0){
-        traitsErrors[scaleIndex]=scaleErrors;
-      }
-    })
-    if(Object.keys(traitsErrors).length > 0){
-      errors.traitsErrors = traitsErrors;
-    }
-
-    return errors;
-  }
-
   render() {
     const { model, configuration, onConfigurationChanged, uploadSoundSupport } = this.props || {};
     const {
@@ -382,7 +351,7 @@ export class Main extends React.Component {
               key={`scale-${scaleIndex}`}
               scale={scale}
               scaleIndex={scaleIndex}
-              errors = {traitsErrors && traitsErrors[scaleIndex]}
+              errors={traitsErrors && traitsErrors[scaleIndex]}
               onScaleRemoved={this.onScaleRemoved}
               onScaleChanged={this.onScaleChanged}
               showStandards={standards}
