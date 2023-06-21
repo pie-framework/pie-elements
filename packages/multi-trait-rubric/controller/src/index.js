@@ -67,7 +67,7 @@ export const validate  = (model, config) => {
         scaleErrors[traitIndex] = 'Trait names should not be empty.';
       }
       else{
-        const identicalTraitName = traits.slice(traitIndex + 1).some(t => this.markupToText(t.name) === this.markupToText(trait.name));
+        const identicalTraitName = traits.slice(traitIndex + 1).some(t => markupToText(t.name) === markupToText(trait.name));
 
         if (identicalTraitName) {
           scaleErrors[traitIndex] = 'Trait names should be unique.';
