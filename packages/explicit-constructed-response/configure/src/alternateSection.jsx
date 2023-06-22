@@ -111,6 +111,9 @@ export class Choice extends React.Component {
             labelWidth={0}
             disableUnderline
             spellCheck={spellCheck}
+            inputProps={{
+              maxLength: 25,
+            }}
           />
           <IconButton aria-label="delete" className={classes.deleteBtn} onClick={onDelete}>
             <Delete />
