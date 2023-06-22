@@ -84,7 +84,7 @@ exports[`Trait snapshot renders 1`] = `
               markup=""
               mathMlOptions={Object {}}
               onChange={[Function]}
-              placeholder="Description"
+              placeholder="Enter Description"
               pluginProps={
                 Object {
                   "image": Object {
@@ -107,7 +107,7 @@ exports[`Trait snapshot renders 1`] = `
 Overall appearance is acceptable or better"
               mathMlOptions={Object {}}
               onChange={[Function]}
-              placeholder="Enter Description Here"
+              placeholder="Enter Descriptor"
               pluginProps={
                 Object {
                   "image": Object {
@@ -130,7 +130,7 @@ Overall appearance is acceptable or better"
 Overall appearance is distracting to unacceptable"
               mathMlOptions={Object {}}
               onChange={[Function]}
-              placeholder="Enter Description Here"
+              placeholder="Enter Descriptor"
               pluginProps={
                 Object {
                   "image": Object {
@@ -151,7 +151,7 @@ Overall appearance is distracting to unacceptable"
               markup="Handwriting is unreadable, or response is blank, not in English, or too brief to evaluate. "
               mathMlOptions={Object {}}
               onChange={[Function]}
-              placeholder="Enter Description Here"
+              placeholder="Enter Descriptor"
               pluginProps={
                 Object {
                   "image": Object {
@@ -255,7 +255,7 @@ exports[`Trait snapshot renders with drag and drop 1`] = `
               markup=""
               mathMlOptions={Object {}}
               onChange={[Function]}
-              placeholder="Description"
+              placeholder="Enter Description"
               pluginProps={
                 Object {
                   "image": Object {
@@ -278,7 +278,7 @@ exports[`Trait snapshot renders with drag and drop 1`] = `
 Overall appearance is acceptable or better"
               mathMlOptions={Object {}}
               onChange={[Function]}
-              placeholder="Enter Description Here"
+              placeholder="Enter Descriptor"
               pluginProps={
                 Object {
                   "image": Object {
@@ -301,7 +301,7 @@ Overall appearance is acceptable or better"
 Overall appearance is distracting to unacceptable"
               mathMlOptions={Object {}}
               onChange={[Function]}
-              placeholder="Enter Description Here"
+              placeholder="Enter Descriptor"
               pluginProps={
                 Object {
                   "image": Object {
@@ -322,7 +322,7 @@ Overall appearance is distracting to unacceptable"
               markup="Handwriting is unreadable, or response is blank, not in English, or too brief to evaluate. "
               mathMlOptions={Object {}}
               onChange={[Function]}
-              placeholder="Enter Description Here"
+              placeholder="Enter Descriptor"
               pluginProps={
                 Object {
                   "image": Object {
@@ -426,7 +426,7 @@ exports[`Trait snapshot renders without description 1`] = `
               markup=""
               mathMlOptions={Object {}}
               onChange={[Function]}
-              placeholder="Description"
+              placeholder="Enter Description"
               pluginProps={
                 Object {
                   "image": Object {
@@ -449,7 +449,7 @@ exports[`Trait snapshot renders without description 1`] = `
 Overall appearance is acceptable or better"
               mathMlOptions={Object {}}
               onChange={[Function]}
-              placeholder="Enter Description Here"
+              placeholder="Enter Descriptor"
               pluginProps={
                 Object {
                   "image": Object {
@@ -472,7 +472,7 @@ Overall appearance is acceptable or better"
 Overall appearance is distracting to unacceptable"
               mathMlOptions={Object {}}
               onChange={[Function]}
-              placeholder="Enter Description Here"
+              placeholder="Enter Descriptor"
               pluginProps={
                 Object {
                   "image": Object {
@@ -493,7 +493,7 @@ Overall appearance is distracting to unacceptable"
               markup="Handwriting is unreadable, or response is blank, not in English, or too brief to evaluate. "
               mathMlOptions={Object {}}
               onChange={[Function]}
-              placeholder="Enter Description Here"
+              placeholder="Enter Descriptor"
               pluginProps={
                 Object {
                   "image": Object {
@@ -597,7 +597,7 @@ exports[`Trait snapshot renders without score points values 1`] = `
               markup=""
               mathMlOptions={Object {}}
               onChange={[Function]}
-              placeholder="Description"
+              placeholder="Enter Description"
               pluginProps={
                 Object {
                   "image": Object {
@@ -683,7 +683,7 @@ exports[`Trait snapshot renders without standards 1`] = `
               markup=""
               mathMlOptions={Object {}}
               onChange={[Function]}
-              placeholder="Description"
+              placeholder="Enter Description"
               pluginProps={
                 Object {
                   "image": Object {
@@ -706,7 +706,7 @@ exports[`Trait snapshot renders without standards 1`] = `
 Overall appearance is acceptable or better"
               mathMlOptions={Object {}}
               onChange={[Function]}
-              placeholder="Enter Description Here"
+              placeholder="Enter Descriptor"
               pluginProps={
                 Object {
                   "image": Object {
@@ -729,7 +729,7 @@ Overall appearance is acceptable or better"
 Overall appearance is distracting to unacceptable"
               mathMlOptions={Object {}}
               onChange={[Function]}
-              placeholder="Enter Description Here"
+              placeholder="Enter Descriptor"
               pluginProps={
                 Object {
                   "image": Object {
@@ -750,7 +750,7 @@ Overall appearance is distracting to unacceptable"
               markup="Handwriting is unreadable, or response is blank, not in English, or too brief to evaluate. "
               mathMlOptions={Object {}}
               onChange={[Function]}
-              placeholder="Enter Description Here"
+              placeholder="Enter Descriptor"
               pluginProps={
                 Object {
                   "image": Object {
