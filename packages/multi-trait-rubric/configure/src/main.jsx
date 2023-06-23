@@ -296,7 +296,14 @@ export class Main extends React.Component {
       addScaleEnabled,
     } = model || {};
     const { showExcludeZeroDialog, showInfoDialog, infoDialogText } = this.state || {};
-    const adjustedWidth = parseInt(width) > parseInt(MIN_WIDTH) ? width : MIN_WIDTH;
+
+    // set 100% width for wide screens to fix PD-2901
+    const screenWidth = window.innerWidth;
+    let adjustedWidth = parseInt(width) > parseInt(MIN_WIDTH) ? width : MIN_WIDTH;
+
+    if (screenWidth > 2500) {
+      adjustedWidth = '100%';
+    }
 
     const panelSettings = {
       standards: showStandards.settings && toggle(showStandards.label),
