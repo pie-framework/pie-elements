@@ -189,7 +189,7 @@ export class TraitTile extends React.Component {
               {showDescription && (
                 <Block>
                   <ExpandedInput
-                    placeholder="Description"
+                    placeholder="Enter Description"
                     markup={description}
                     onChange={(description) => this.onTraitChanged({ description })}
                     pluginProps={pluginProps}
@@ -215,7 +215,7 @@ export class TraitTile extends React.Component {
                 return (
                   <Block key={`key-key-${index}`}>
                     <ExpandedInput
-                      placeholder="Enter Description Here"
+                      placeholder="Enter Descriptor"
                       markup={scoreDescriptor}
                       onChange={(descriptor) => this.onScorePointDescriptorChange({ descriptor, value })}
                       pluginProps={pluginProps}
