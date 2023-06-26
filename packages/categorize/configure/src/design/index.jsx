@@ -38,9 +38,8 @@ export class Design extends React.Component {
   constructor(props) {
     super(props);
     this.uid = props.uid || uid.generateId();
-    const {
-      model: { correctResponse },
-    } = props;
+    const { model } = props || {};
+    const { correctResponse } = model || [];
     // PD-2960: make sure we don't have alternates in model authoring initialization or possibility to add them (temporary solution)
     this.updateModel({
       allowAlternateEnabled: false,
@@ -237,7 +236,8 @@ export class Design extends React.Component {
         ]),
       promptEnabled: prompt.settings && toggle(prompt.label),
       feedbackEnabled: feedback.settings && toggle(feedback.label),
-      allowAlternateEnabled: allowAlternate.settings && toggle(allowAlternate.label),
+      // PD-2960: deleted temporary from settings panel
+      // allowAlternateEnabled: allowAlternate.settings && toggle(allowAlternate.label),
     };
 
     const panelProperties = {
