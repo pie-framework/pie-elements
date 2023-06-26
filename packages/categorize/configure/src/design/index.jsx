@@ -38,6 +38,17 @@ export class Design extends React.Component {
   constructor(props) {
     super(props);
     this.uid = props.uid || uid.generateId();
+    const {
+      model: { correctResponse },
+    } = props;
+    // PD-2960: make sure we don't have alternates in model authoring initialization or possibility to add them (temporary solution)
+    this.updateModel({
+      allowAlternateEnabled: false,
+      correctResponse: (correctResponse || []).map((cr) => ({
+        ...cr,
+        alternateResponses: [],
+      })),
+    });
   }
 
   updateModel = (props) => {
