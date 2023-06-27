@@ -41,7 +41,7 @@ export default class CategorizeConfigure extends HTMLElement {
   }
 
   set model(m) {
-    this._model = CategorizeConfigure.createDefaultModel(m);
+    this._model = CategorizeConfigure.disableAlternateResponses(CategorizeConfigure.createDefaultModel(m));
     this.render();
   }
 
