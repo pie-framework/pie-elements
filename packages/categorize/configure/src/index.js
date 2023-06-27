@@ -18,6 +18,22 @@ export default class CategorizeConfigure extends HTMLElement {
     ...model,
   });
 
+  // PD-2960: make sure we don't have alternates in model or possibility to add them (temporary solution)
+  // this function is used in controller, too
+  static disableAlternateResponses = (m) => {
+    let { correctResponse } = m || {};
+    correctResponse = correctResponse || [];
+    const mappedCorrectResponse = correctResponse.map((cr) => {
+      const { alternateResponses, ...response } = cr;
+      return response;
+    });
+    return {
+      ...m,
+      correctResponse: mappedCorrectResponse,
+      allowAlternateEnabled: false,
+    };
+  };
+
   constructor() {
     super();
     this._model = CategorizeConfigure.createDefaultModel();
