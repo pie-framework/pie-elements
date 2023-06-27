@@ -9,6 +9,22 @@ import defaults from './defaults';
 
 export { score };
 
+// PD-2960: make sure we don't have alternates in model or possibility to add them (temporary solution)
+// this function is used in configure part, too
+const disableAlternateResponses = (question) => {
+  let { correctResponse } = question || {};
+  correctResponse = correctResponse || [];
+  const mappedCorrectResponse = correctResponse.map((cr) => {
+    const { alternateResponses, ...response } = cr;
+    return response;
+  });
+  return {
+    ...question,
+    correctResponse: mappedCorrectResponse,
+    allowAlternateEnabled: false,
+  };
+};
+
 export const getPartialScore = (correctResponse, builtCategories) => {
   // in the resulted best scenario we make a sum with all the correct responses
   // and all the placements
@@ -94,10 +110,13 @@ export const createDefaultModel = (model = {}) =>
     });
   });
 
-export const normalize = (question) => ({
-  ...defaults,
-  ...question,
-});
+export const normalize = (question) => {
+  const newQuestion = disableAlternateResponses(question);
+  return {
+    ...defaults,
+    ...newQuestion,
+  };
+};
 
 /**
  *
@@ -207,16 +226,23 @@ export const createCorrectResponseSession = (question, env) => {
 
 export const validate = (model = {}, config = {}) => {
   const { categories, choices, correctResponse } = model;
-  const { minChoices = 1, maxChoices = 15, minCategories = 1, maxCategories = 12, maxLengthPerChoice = 300, maxLengthPerCategory = 150 } = config;
-  const reversedChoices = [ ...choices || []].reverse();
+  const {
+    minChoices = 1,
+    maxChoices = 15,
+    minCategories = 1,
+    maxCategories = 12,
+    maxLengthPerChoice = 300,
+    maxLengthPerCategory = 150,
+  } = config;
+  const reversedChoices = [...(choices || [])].reverse();
   const errors = {};
   const choicesErrors = {};
   const categoriesErrors = {};
 
   (categories || []).forEach((category) => {
-    const {id, label} = category;
+    const { id, label } = category;
     const parsedLabel = label.replace(/<(?:.|\n)*?>/gm, '');
-    if (parsedLabel.length > maxLengthPerCategory){
+    if (parsedLabel.length > maxLengthPerCategory) {
       categoriesErrors[id] = `Category labels should be no more than ${maxLengthPerCategory} characters long.`;
     }
   });
@@ -224,13 +250,13 @@ export const validate = (model = {}, config = {}) => {
   (reversedChoices || []).forEach((choice, index) => {
     const { id, content } = choice;
     const parsedContent = content.replace(/<(?:.|\n)*?>/gm, '');
-    if (parsedContent.length > maxLengthPerChoice){
+    if (parsedContent.length > maxLengthPerChoice) {
       choicesErrors[id] = `Tokens should be no more than ${maxLengthPerChoice} characters long.`;
     }
     if (content === '' || content === '<div></div>') {
       choicesErrors[id] = 'Tokens should not be empty.';
     } else {
-      const identicalAnswer = reversedChoices.slice(index + 1).some(c => c.content === content);
+      const identicalAnswer = reversedChoices.slice(index + 1).some((c) => c.content === content);
 
       if (identicalAnswer) {
         choicesErrors[id] = 'Tokens content should be unique.';
@@ -256,13 +282,13 @@ export const validate = (model = {}, config = {}) => {
   if (nbOfChoices && nbOfCategories) {
     let hasAssociations = false;
 
-    (correctResponse || []).forEach(response => {
+    (correctResponse || []).forEach((response) => {
       const { choices = [], alternateResponses = [] } = response;
 
       if (choices.length) {
         hasAssociations = true;
       } else {
-        alternateResponses.forEach(alternate => {
+        alternateResponses.forEach((alternate) => {
           if ((alternate || []).length) {
             hasAssociations = true;
           }
@@ -272,10 +298,10 @@ export const validate = (model = {}, config = {}) => {
 
     let duplicateAlternateIndex = -1;
     let duplicateCategory = '';
-    (correctResponse || []).forEach(response => {
+    (correctResponse || []).forEach((response) => {
       const { choices = [], alternateResponses = [], category } = response;
       if (duplicateAlternateIndex === -1) {
-        duplicateAlternateIndex = isCorrectResponseDuplicated(choices,alternateResponses);
+        duplicateAlternateIndex = isCorrectResponseDuplicated(choices, alternateResponses);
         if (duplicateAlternateIndex === -1) {
           duplicateAlternateIndex = isAlternateDuplicated(alternateResponses);
         }
@@ -284,7 +310,7 @@ export const validate = (model = {}, config = {}) => {
     });
 
     if (duplicateAlternateIndex > -1) {
-      errors.duplicateAlternate = {index:duplicateAlternateIndex, category:duplicateCategory};
+      errors.duplicateAlternate = { index: duplicateAlternateIndex, category: duplicateCategory };
     }
 
     if (!hasAssociations) {

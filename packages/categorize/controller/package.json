@@ -2,9 +2,9 @@
   "name": "@pie-element/categorize-controller",
   "private": true,
   "dependencies": {
-    "@pie-lib/categorize": "^0.8.16",
-    "@pie-lib/controller-utils": "^0.2.43",
-    "@pie-lib/feedback": "^0.4.42",
+    "@pie-lib/categorize": "^0.8.17",
+    "@pie-lib/controller-utils": "^0.2.44",
+    "@pie-lib/feedback": "^0.4.43",
     "lodash": "^4.17.15"
   },
   "version": "5.9.4",

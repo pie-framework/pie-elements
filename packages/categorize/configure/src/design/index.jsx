@@ -226,7 +226,8 @@ export class Design extends React.Component {
         ]),
       promptEnabled: prompt.settings && toggle(prompt.label),
       feedbackEnabled: feedback.settings && toggle(feedback.label),
-      allowAlternateEnabled: allowAlternate.settings && toggle(allowAlternate.label),
+      // PD-2960: deleted temporary from settings panel
+      // allowAlternateEnabled: allowAlternate.settings && toggle(allowAlternate.label),
     };
 
     const panelProperties = {

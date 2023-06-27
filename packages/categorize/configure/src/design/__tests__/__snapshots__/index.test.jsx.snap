@@ -19,7 +19,6 @@ exports[`Design snapshot renders 1`] = `
               "teacherInstructionsEnabled": undefined,
             },
             "Settings": Object {
-              "allowAlternateEnabled": undefined,
               "allowMultiplePlacementsEnabled": undefined,
               "categoriesPerRow": undefined,
               "choicesPosition": undefined,
