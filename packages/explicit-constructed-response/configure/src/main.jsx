@@ -387,6 +387,7 @@ export class Main extends React.Component {
             type: 'explicit-constructed-response',
             options: {
               duplicates: true,
+              charactersLimit: 25,
             },
             maxResponseAreas: maxResponseAreas,
             respAreaToolbar: (node, value, onToolbarDone) => {
