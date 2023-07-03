@@ -276,13 +276,14 @@ export const UnderlinedInput = withStyles((theme) => ({
   slateEditor: {
     fontFamily: 'Cerebri',
   },
-}))(({ classes, markup, onChange, pluginProps, label, placeholder, spellCheck, uploadSoundSupport, mathMlOptions = {} }) => (
+}))(({ classes,error, markup, onChange, pluginProps, label, placeholder, spellCheck, uploadSoundSupport, mathMlOptions = {} }) => (
   <div className={classes.underlinedInputWrapper}>
     {label && <div>{label}</div>}
 
     <EditableHtml
       className={classes.editableLevel}
       classes={{ slateEditor: classes.slateEditor }}
+      error={error}
       markup={markup}
       onChange={onChange}
       placeholder={placeholder}

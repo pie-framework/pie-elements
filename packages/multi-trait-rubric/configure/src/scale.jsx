@@ -237,6 +237,7 @@ export class Scale extends React.Component {
   render() {
     const {
       classes,
+      errors,
       scale,
       scaleIndex,
       showStandards,
@@ -314,6 +315,7 @@ export class Scale extends React.Component {
           <TraitTile
             key={index}
             index={index}
+            error={errors && errors[index]}
             trait={trait}
             traitLabel={traitLabel || 'Trait'}
             scorePointsValues={scorePointsValues}
@@ -381,6 +383,7 @@ export class Scale extends React.Component {
 
 Scale.propTypes = {
   classes: PropTypes.object,
+  errors: PropTypes.object,
   scale: PropTypes.shape({
     maxPoints: PropTypes.number,
     scorePointsLabels: PropTypes.arrayOf(PropTypes.string),

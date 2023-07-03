@@ -1,4 +1,5 @@
 import defaults from './defaults';
+import { markupToText } from './utils';
 
 export function createDefaultModel(model = {}) {
   return new Promise((resolve) => resolve({ ...defaults, ...model }));
@@ -50,4 +51,36 @@ export const createCorrectResponseSession = (question, env) => {
       resolve(null);
     }
   });
+};
+
+
+export const validate  = (model, config) => {
+  const { scales } = model;
+  const errors = {};
+  const traitsErrors = {};
+
+  (scales || []).forEach((scale, scaleIndex) => {
+    const { traits = [] } = scale;
+    const scaleErrors = {};
+    traits.forEach((trait, traitIndex) => {
+      if(!trait.name || trait.name === '<div></div>') {
+        scaleErrors[traitIndex] = 'Trait names should not be empty.';
+      }
+      else{
+        const identicalTraitName = traits.slice(traitIndex + 1).some(t => markupToText(t.name) === markupToText(trait.name));
+
+        if (identicalTraitName) {
+          scaleErrors[traitIndex] = 'Trait names should be unique.';
+        }
+      }
+    });
+    if(Object.keys(scaleErrors).length > 0){
+      traitsErrors[scaleIndex] = scaleErrors;
+    }
+  });
+  if(Object.keys(traitsErrors).length > 0){
+    errors.traitsErrors = traitsErrors;
+  }
+
+  return errors;
 };
