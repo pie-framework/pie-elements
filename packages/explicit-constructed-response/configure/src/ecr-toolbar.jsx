@@ -21,6 +21,7 @@ export class ECRToolbar extends React.Component {
         getNextText: PropTypes.func.isRequired,
       }),
     }),
+    maxLengthPerChoiceEnabled: PropTypes.bool,
   };
 
   state = {
@@ -70,8 +71,9 @@ export class ECRToolbar extends React.Component {
   onChange = (e) => this.setState({ markup: e.target.value });
 
   render() {
-    const { classes } = this.props;
+    const { classes, maxLengthPerChoiceEnabled } = this.props;
     const { markup, toolbarStyle } = this.state;
+    const inputProps = maxLengthPerChoiceEnabled ? {} : { maxLength: 25 };
 
     return (
       <div
@@ -90,6 +92,7 @@ export class ECRToolbar extends React.Component {
           onChange={this.onChange}
           onBlur={this.onDone}
           value={markup || ''}
+          inputProps={inputProps}
         />
       </div>
     );
