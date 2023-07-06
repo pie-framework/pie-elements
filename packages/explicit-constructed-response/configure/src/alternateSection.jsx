@@ -70,6 +70,7 @@ export class Choice extends React.Component {
     onDelete: PropTypes.func.isRequired,
     value: PropTypes.string,
     spellCheck: PropTypes.bool,
+    showMaxLength: PropTypes.bool,
   };
 
   state = {
@@ -93,7 +94,8 @@ export class Choice extends React.Component {
 
   render() {
     const { value } = this.state;
-    const { classes, onDelete, spellCheck, error } = this.props;
+    const { classes, onDelete, spellCheck, error, showMaxLength } = this.props;
+    const inputProps = showMaxLength ? {} : { maxLength: 25 };
 
     return (
       <React.Fragment>
@@ -111,6 +113,7 @@ export class Choice extends React.Component {
             labelWidth={0}
             disableUnderline
             spellCheck={spellCheck}
+            inputProps={inputProps}
           />
           <IconButton aria-label="delete" className={classes.deleteBtn} onClick={onDelete}>
             <Delete />
@@ -235,6 +238,7 @@ export class AlternateSection extends React.Component {
     const { classes, selectChoices, maxLength, showMaxLength, value, spellCheck, errors } = this.props;
     const { choices } = this.state;
     const minLength = this.getChoicesMaxLength();
+    console.log('showMaxLength, maxlength', showMaxLength, maxLength);
 
     return (
       <div className={classes.design}>
@@ -292,6 +296,7 @@ export class AlternateSection extends React.Component {
                     onDelete={() => this.onRemoveChoice(c)}
                     spellCheck={spellCheck}
                     error={errors && errors[index]}
+                    showMaxLength={showMaxLength}
                   />
                 ),
             )}
