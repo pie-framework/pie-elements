@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.7.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-controller@3.7.2...@pie-element/multiple-choice-controller@3.7.3) (2023-07-06)
+
+
+### Bug Fixes
+
+* updated editable-html dependent packages for PD-2150 ([ffa6297](https://github.com/pie-framework/pie-elements/commit/ffa62977a9e329c1e12ea1dfcb2af4ba4c993bca))
+
+
+
+
+
 ## [3.7.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-controller@3.7.1...@pie-element/multiple-choice-controller@3.7.2) (2023-04-25)
 
 

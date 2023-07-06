@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.10.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-configure@2.9.0...@pie-element/multi-trait-rubric-configure@2.10.0) (2023-07-06)
+
+
+### Bug Fixes
+
+* updated pie-lib PD-2150 ([72f20be](https://github.com/pie-framework/pie-elements/commit/72f20be258248c86dde8d5d587290cd640bfd947))
+* **multi-trait-rubric:** fix conflicts ([52f3c3d](https://github.com/pie-framework/pie-elements/commit/52f3c3d87cca681094c1475085dce9f0cf395030))
+* updated editable-html dependent packages for PD-2150 ([ffa6297](https://github.com/pie-framework/pie-elements/commit/ffa62977a9e329c1e12ea1dfcb2af4ba4c993bca))
+* **multi-trait-rubric:** set 100% width for wide screens PD-2901 ([158faee](https://github.com/pie-framework/pie-elements/commit/158faeeabf6e9f9b84cd47a9d2b5c966e3a057a4))
+
+
+### Features
+
+* **multi-trait-rubric:** PD-2872-ui part of validations ([bba8c0c](https://github.com/pie-framework/pie-elements/commit/bba8c0cd410cb1968c5f144c97aded00624cece2))
+* **multi-trait-rubric:** PD-2939-placeholder values changes, snapshot updates ([093f919](https://github.com/pie-framework/pie-elements/commit/093f919841cb0ed35a1a58501b4f9dbd6c7c5c40))
+* **multi-trait-rubric:** solve review observations ([b4aef59](https://github.com/pie-framework/pie-elements/commit/b4aef594a59c80530b3049cc30754eef905982ed))
+
+
+
+
+
 # [2.9.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-configure@2.8.0...@pie-element/multi-trait-rubric-configure@2.9.0) (2023-06-13)
 
 

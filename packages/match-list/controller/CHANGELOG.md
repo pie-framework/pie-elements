@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.6.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list-controller@1.6.2...@pie-element/match-list-controller@1.6.3) (2023-07-06)
+
+
+### Bug Fixes
+
+* updated editable-html dependent packages for PD-2150 ([ffa6297](https://github.com/pie-framework/pie-elements/commit/ffa62977a9e329c1e12ea1dfcb2af4ba4c993bca))
+
+
+
+
+
 ## [1.6.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list-controller@1.6.1...@pie-element/match-list-controller@1.6.2) (2023-05-02)
 
 

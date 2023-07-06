@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.14.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@6.14.0...@pie-element/categorize-configure@6.14.1) (2023-07-06)
+
+
+### Bug Fixes
+
+* updated pie-lib PD-2150 ([72f20be](https://github.com/pie-framework/pie-elements/commit/72f20be258248c86dde8d5d587290cd640bfd947))
+* **categorize:** PD-2960-create method to eliminate alternates ([9cc631c](https://github.com/pie-framework/pie-elements/commit/9cc631cf93c57f2192d93a306f064bbcf31ce03d))
+* **categorize:** PD-2960-update snapshot ([232a96a](https://github.com/pie-framework/pie-elements/commit/232a96a5582c573c1044dd98195c9cac09662985))
+* **categorize:** PD-2960: delete allow alternate from panel ([eebc1f6](https://github.com/pie-framework/pie-elements/commit/eebc1f6ea3753a8a1757b4b0e0521a94ce9bc166))
+* **categorize:** PD-2960: disableAlternate in set model ([9bab550](https://github.com/pie-framework/pie-elements/commit/9bab550a5ef4aaf6bc3ae430d4e11e0df041d601))
+* **categorize:** PD-2960: ensure alternate are removed from model (authoring and controller) ([4e12be5](https://github.com/pie-framework/pie-elements/commit/4e12be53aa7a0f0dd5c34b6a685c8e07ed62e975))
+* **categorize:** PD-2960: set allowAlternate  on false ([da85316](https://github.com/pie-framework/pie-elements/commit/da853165ed1f3777c6e1eaf508b90feee1ed32bf))
+* updated editable-html dependent packages for PD-2150 ([ffa6297](https://github.com/pie-framework/pie-elements/commit/ffa62977a9e329c1e12ea1dfcb2af4ba4c993bca))
+
+
+
+
+
 # [6.14.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@6.13.0...@pie-element/categorize-configure@6.14.0) (2023-06-13)
 
 
