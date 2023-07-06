@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.6.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-controller@4.6.0...@pie-element/number-line-controller@4.6.1) (2023-07-06)
+
+
+### Bug Fixes
+
+* updated editable-html dependent packages for PD-2150 ([ffa6297](https://github.com/pie-framework/pie-elements/commit/ffa62977a9e329c1e12ea1dfcb2af4ba4c993bca))
+
+
+
+
+
 # [4.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-controller@4.5.2...@pie-element/number-line-controller@4.6.0) (2023-06-13)
 
 

@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-controller@1.3.5...@pie-element/multi-trait-rubric-controller@1.4.0) (2023-07-06)
+
+
+### Bug Fixes
+
+* **multi-trait-rubric:** fix conflicts ([52f3c3d](https://github.com/pie-framework/pie-elements/commit/52f3c3d87cca681094c1475085dce9f0cf395030))
+* updated editable-html dependent packages for PD-2150 ([ffa6297](https://github.com/pie-framework/pie-elements/commit/ffa62977a9e329c1e12ea1dfcb2af4ba4c993bca))
+
+
+### Features
+
+* **multi-trait-rubric:** PD-2872-add validations in controller ([8d31062](https://github.com/pie-framework/pie-elements/commit/8d31062f539455d22382ed07e13a97fd93c5847b))
+* **multi-trait-rubric:** PD-2872-call imported method without this ([567372f](https://github.com/pie-framework/pie-elements/commit/567372f5806c0e0a54fc31727f20ce97369538e7))
+* **multi-trait-rubric:** PD-2872-ui part of validations ([bba8c0c](https://github.com/pie-framework/pie-elements/commit/bba8c0cd410cb1968c5f144c97aded00624cece2))
+* **multi-trait-rubric:** solve review observations ([b4aef59](https://github.com/pie-framework/pie-elements/commit/b4aef594a59c80530b3049cc30754eef905982ed))
+
+
+
+
+
 ## [1.3.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-controller@1.3.4...@pie-element/multi-trait-rubric-controller@1.3.5) (2023-06-13)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.12](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric-controller@1.2.11...@pie-element/rubric-controller@1.2.12) (2023-07-06)
+
+
+### Bug Fixes
+
+* updated editable-html dependent packages for PD-2150 ([ffa6297](https://github.com/pie-framework/pie-elements/commit/ffa62977a9e329c1e12ea1dfcb2af4ba4c993bca))
+
+
+
+
+
 ## [1.2.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric-controller@1.2.10...@pie-element/rubric-controller@1.2.11) (2023-04-25)
 
 

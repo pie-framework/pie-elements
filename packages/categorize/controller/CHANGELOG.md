@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.9.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-controller@5.9.4...@pie-element/categorize-controller@5.9.5) (2023-07-06)
+
+
+### Bug Fixes
+
+* **categorize:** PD-2960-create method to eliminate alternates ([9cc631c](https://github.com/pie-framework/pie-elements/commit/9cc631cf93c57f2192d93a306f064bbcf31ce03d))
+* **categorize:** PD-2960: ensure alternate are removed from model (authoring and controller) ([4e12be5](https://github.com/pie-framework/pie-elements/commit/4e12be53aa7a0f0dd5c34b6a685c8e07ed62e975))
+* updated editable-html dependent packages for PD-2150 ([ffa6297](https://github.com/pie-framework/pie-elements/commit/ffa62977a9e329c1e12ea1dfcb2af4ba4c993bca))
+
+
+
+
+
 ## [5.9.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-controller@5.9.3...@pie-element/categorize-controller@5.9.4) (2023-05-23)
 
 

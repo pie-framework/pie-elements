@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.7.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-controller@6.7.3...@pie-element/placement-ordering-controller@6.7.4) (2023-07-06)
+
+
+### Bug Fixes
+
+* updated editable-html dependent packages for PD-2150 ([ffa6297](https://github.com/pie-framework/pie-elements/commit/ffa62977a9e329c1e12ea1dfcb2af4ba4c993bca))
+
+
+
+
+
 ## [6.7.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-controller@6.7.2...@pie-element/placement-ordering-controller@6.7.3) (2023-05-02)
 
 

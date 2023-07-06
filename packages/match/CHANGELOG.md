@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.11.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@5.11.0...@pie-element/match@5.11.1) (2023-07-06)
+
+
+### Bug Fixes
+
+* updated editable-html dependent packages for PD-2150 ([ffa6297](https://github.com/pie-framework/pie-elements/commit/ffa62977a9e329c1e12ea1dfcb2af4ba4c993bca))
+* updated pie-lib PD-2150 ([72f20be](https://github.com/pie-framework/pie-elements/commit/72f20be258248c86dde8d5d587290cd640bfd947))
+
+
+
+
+
 # [5.11.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@5.10.0...@pie-element/match@5.11.0) (2023-06-13)
 
 

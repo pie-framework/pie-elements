@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.11.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.11.4...@pie-element/passage@1.11.5) (2023-07-06)
+
+
+### Bug Fixes
+
+* updated editable-html dependent packages for PD-2150 ([ffa6297](https://github.com/pie-framework/pie-elements/commit/ffa62977a9e329c1e12ea1dfcb2af4ba4c993bca))
+
+
+
+
+
 ## [1.11.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.11.3...@pie-element/passage@1.11.4) (2023-06-13)
 
 
