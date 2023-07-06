@@ -42,6 +42,11 @@ const styles = (theme) => ({
     display: 'flex',
     whiteSpace: 'break-spaces',
   },
+  errorText: {
+    fontSize: theme.typography.fontSize - 2,
+    color: theme.palette.error.main,
+    paddingBottom: theme.spacing.unit,
+  },
 });
 
 export class TraitTile extends React.Component {
@@ -102,6 +107,7 @@ export class TraitTile extends React.Component {
       connectDragSource,
       connectDropTarget,
       connectDragPreview,
+      error,
       trait: { name, standards, description, scorePointsDescriptors },
       traitLabel,
       scorePointsValues,
@@ -157,6 +163,7 @@ export class TraitTile extends React.Component {
 
               <UnderlinedInput
                 markup={name}
+                error={error}
                 onChange={(name) => this.onTraitChanged({ name })}
                 pluginProps={labelPlugins}
                 placeholder={`Enter ${traitLabel}`}
@@ -164,6 +171,7 @@ export class TraitTile extends React.Component {
                 uploadSoundSupport={uploadSoundSupport}
                 mathMlOptions={mathMlOptions}
               />
+              {error && <div className={classes.errorText}>{error}</div>}
             </PrimaryBlock>
 
             <SecondaryBlock
@@ -189,7 +197,7 @@ export class TraitTile extends React.Component {
               {showDescription && (
                 <Block>
                   <ExpandedInput
-                    placeholder="Description"
+                    placeholder="Enter Description"
                     markup={description}
                     onChange={(description) => this.onTraitChanged({ description })}
                     pluginProps={pluginProps}
@@ -215,7 +223,7 @@ export class TraitTile extends React.Component {
                 return (
                   <Block key={`key-key-${index}`}>
                     <ExpandedInput
-                      placeholder="Enter Description Here"
+                      placeholder="Enter Descriptor"
                       markup={scoreDescriptor}
                       onChange={(descriptor) => this.onScorePointDescriptorChange({ descriptor, value })}
                       pluginProps={pluginProps}
@@ -240,6 +248,7 @@ TraitTile.propTypes = {
   connectDropTarget: PropTypes.func.isRequired,
   connectDragPreview: PropTypes.func.isRequired,
   classes: PropTypes.object.isRequired,
+  error: PropTypes.string,
   isDragging: PropTypes.bool.isRequired,
   id: PropTypes.any,
   isOver: PropTypes.bool,
