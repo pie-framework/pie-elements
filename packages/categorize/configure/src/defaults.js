@@ -8,6 +8,8 @@ export default {
     lockChoiceOrder: true,
     allowMultiplePlacementsEnabled: multiplePlacements.enabled,
     allowAlternateEnabled: false,
+    allowMaxChoicesPerCategory: false,
+    maxChoicesPerCategory: 0,
     categoriesPerRow: 2,
     categories: [],
     alternates: [],
@@ -43,6 +45,10 @@ export default {
     allowMultiplePlacements: {
       settings: true,
       label: 'Allow Multiple Placements',
+    },
+    maxPlacements: {
+      settings: true,
+      label: 'Max choices per category',
     },
     allowAlternate: {
       settings: true,
