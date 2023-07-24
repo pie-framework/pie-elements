@@ -10,7 +10,7 @@
     "@pie-element/multi-trait-rubric": "^2.5.1-beta.0",
     "@pie-element/rubric": "^2.4.1-beta.0",
     "@pie-framework/pie-player-events": "^0.1.0",
-    "@pie-lib/rubric": "1.0.0-beta.3",
+    "@pie-lib/rubric": "1.0.0-beta.5",
     "classnames": "^2.2.5",
     "debug": "^4.1.1",
     "is-plain-object": "^5.0.0",
