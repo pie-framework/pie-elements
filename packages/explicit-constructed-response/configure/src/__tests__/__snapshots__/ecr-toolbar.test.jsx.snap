@@ -15,6 +15,11 @@ exports[`ECRToolbar snapshot renders 1`] = `
         "input": undefined,
       }
     }
+    inputProps={
+      Object {
+        "maxLength": 25,
+      }
+    }
     labelWidth={0}
     onBlur={[Function]}
     onChange={[Function]}

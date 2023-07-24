@@ -57,7 +57,10 @@ export class Scale extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.scale.maxPoints !== this.props.scale.maxPoints || prevProps.showDescription !== this.props.showDescription) {
+    if (
+      prevProps.scale.maxPoints !== this.props.scale.maxPoints ||
+      prevProps.showDescription !== this.props.showDescription
+    ) {
       this.setState({ showRight: this.secondaryBlockRef.scrollWidth - this.secondaryBlockRef.offsetWidth });
     }
   }
@@ -251,7 +254,7 @@ export class Scale extends React.Component {
       width,
       uploadSoundSupport,
       maxPointsEnabled,
-      mathMlOptions = {}
+      mathMlOptions = {},
     } = this.props || {};
 
     const { maxPoints, scorePointsLabels, traitLabel, traits } = scale || {};
@@ -325,6 +328,7 @@ export class Scale extends React.Component {
             onTraitDropped={this.onTraitDropped}
             showStandards={showStandards}
             showDescription={showDescription}
+            maxPoints={maxPoints}
             currentPosition={currentPosition}
             enableDragAndDrop={enableDragAndDrop}
             secondaryBlockWidth={secondaryBlockWidth}

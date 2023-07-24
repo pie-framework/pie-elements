@@ -400,6 +400,7 @@ export class Main extends React.Component {
                   value={value}
                   onToolbarDone={onToolbarDone}
                   correctChoice={correctChoice}
+                  maxLengthPerChoiceEnabled={maxLengthPerChoiceEnabled}
                 />
               );
             },

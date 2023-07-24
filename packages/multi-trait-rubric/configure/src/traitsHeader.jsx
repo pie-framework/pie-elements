@@ -46,10 +46,9 @@ const styles = (theme) => ({
 });
 
 export class TraitsHeaderTile extends React.Component {
-
   static propTypes = {
     maxPointsEnabled: PropTypes.bool,
-   spellCheck: PropTypes.bool,
+    spellCheck: PropTypes.bool,
   };
 
   state = {
@@ -103,7 +102,7 @@ export class TraitsHeaderTile extends React.Component {
       spellCheck,
       uploadSoundSupport,
       maxPointsEnabled,
-      mathMlOptions = {}
+      mathMlOptions = {},
     } = this.props;
     const { anchorEl } = this.state;
 
@@ -183,7 +182,7 @@ export class TraitsHeaderTile extends React.Component {
                   pluginProps={labelPlugins}
                   showScorePointLabels={showScorePointLabels}
                   onChange={(scorePointLabel) => this.onScorePointLabelChange({ scorePointLabel, value })}
-                  alignToRight={remainingSpace < 296} // 296 is the space required for the toolbar
+                  alignToRight={remainingSpace < 296 && scorePointsValue < maxPoints} // 296 is the space required for the toolbar
                   spellCheck={spellCheck}
                   uploadSoundSupport={uploadSoundSupport}
                   mathMlOptions={mathMlOptions}
