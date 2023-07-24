@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.15.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@4.15.1...@pie-element/graphing-configure@4.15.2) (2023-07-24)
+
+
+### Bug Fixes
+
+* update pie-libs PD-2984, PD-2991, PD-2992, PD-3036 ([12c9426](https://github.com/pie-framework/pie-elements/commit/12c94269e3b645d74a0014c597d30662823bb34a))
+* **graphing:** PD-2976 - add validation info to correct answer ([50aa559](https://github.com/pie-framework/pie-elements/commit/50aa55949c49c7d0664de20c5ff4024554cf6027))
+
+
+
+
+
 ## [4.15.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@4.15.0...@pie-element/graphing-configure@4.15.1) (2023-07-06)
 
 
