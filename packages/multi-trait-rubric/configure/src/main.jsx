@@ -283,7 +283,7 @@ export class Main extends React.Component {
       maxNoOfTraits,
       minNoOfTraits,
       width,
-      mathMlOptions = {}
+      mathMlOptions = {},
     } = configuration || {};
     const {
       errors,
@@ -348,7 +348,7 @@ export class Main extends React.Component {
           />
         }
       >
-        <div style={{ width: adjustedWidth }}>
+        <div style={{ width: screenWidth > 2500 ? '100%' : adjustedWidth }}>
           {(scales || []).map((scale, scaleIndex) => (
             <Scale
               key={`scale-${scaleIndex}`}
