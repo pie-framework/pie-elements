@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.11.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-configure@4.11.1...@pie-element/explicit-constructed-response-configure@4.11.2) (2023-07-24)
+
+
+### Bug Fixes
+
+* update pie-libs PD-2984, PD-2991, PD-2992, PD-3036 ([12c9426](https://github.com/pie-framework/pie-elements/commit/12c94269e3b645d74a0014c597d30662823bb34a))
+* **explicit-constructed-response:** address PR comments PD-1808 ([c86bd15](https://github.com/pie-framework/pie-elements/commit/c86bd150b59c3a3cba438915f5a48987029cbcba))
+* **explicit-constructed-response:** set maxlength for alternate responses PD-1808 ([43b7d3e](https://github.com/pie-framework/pie-elements/commit/43b7d3e4d37cd6167a556ed2a1c2553f42754850))
+* **explicit-constructed-response:** set maxlength for correct responses PD-1808 ([11cceaa](https://github.com/pie-framework/pie-elements/commit/11cceaa54cea4bf743ca56b82a5e41bf7b221251))
+* **explicit-constructed-response:** update snapshots PD-1808 ([d5d6efd](https://github.com/pie-framework/pie-elements/commit/d5d6efd8b6faf5979d959b7e7a61a2d49679c7db))
+
+
+
+
+
 ## [4.11.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-configure@4.11.0...@pie-element/explicit-constructed-response-configure@4.11.1) (2023-07-06)
 
 

@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.13.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric@2.13.0...@pie-element/multi-trait-rubric@2.13.1) (2023-07-24)
+
+
+### Bug Fixes
+
+* update pie-libs PD-2984, PD-2991, PD-2992, PD-3036 ([12c9426](https://github.com/pie-framework/pie-elements/commit/12c94269e3b645d74a0014c597d30662823bb34a))
+* **multi-trait-rubric:** PD-2904 text formatting toolbar gets truncated ([3f0f9e3](https://github.com/pie-framework/pie-elements/commit/3f0f9e33550a3052c025d410ba0ad0c1333a9b6a))
+* **multi-trait-rubric:** PD-2904 update snapshots ([c70252f](https://github.com/pie-framework/pie-elements/commit/c70252f8c357d85386e1d4571308f320199b960a))
+
+
+
+
+
 # [2.13.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric@2.12.0...@pie-element/multi-trait-rubric@2.13.0) (2023-07-06)
 
 

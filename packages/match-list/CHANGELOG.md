@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.17.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@1.17.9...@pie-element/match-list@1.17.10) (2023-07-24)
+
+
+### Bug Fixes
+
+* update pie-libs PD-2984, PD-2991, PD-2992, PD-3036 ([12c9426](https://github.com/pie-framework/pie-elements/commit/12c94269e3b645d74a0014c597d30662823bb34a))
+
+
+
+
+
 ## [1.17.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@1.17.8...@pie-element/match-list@1.17.9) (2023-07-06)
 
 
