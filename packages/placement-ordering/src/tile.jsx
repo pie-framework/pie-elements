@@ -196,6 +196,7 @@ const tileSource = {
       id: props.id,
       type: props.type,
       instanceId: props.instanceId,
+      value: props.label,
     };
   },
   endDrag(props, monitor) {
