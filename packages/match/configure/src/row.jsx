@@ -119,7 +119,7 @@ export class Row extends React.Component {
       maxImageWidth,
       maxImageHeight,
       uploadSoundSupport,
-      mathMlOptions = {}
+      mathMlOptions = {},
     } = this.props;
     const { dialog } = this.state;
     const opacity = isDragging ? 0 : 1;
@@ -167,9 +167,18 @@ export class Row extends React.Component {
           {row.values.map((rowValue, rowIdx) => (
             <div key={rowIdx} className={classes.rowItem}>
               {model.choiceMode === 'radio' ? (
-                <Radio onChange={this.onRowValueChange(idx, rowIdx)} checked={rowValue === true} />
+                <Radio
+                  className={classNames({ [classes.errorResponse]: error === 'No correct response defined.' })}
+                  onChange={this.onRowValueChange(idx, rowIdx)}
+                  checked={rowValue === true}
+                />
               ) : (
-                <Checkbox onChange={this.onRowValueChange(idx, rowIdx)} checked={rowValue === true} label={''} />
+                <Checkbox
+                  onChange={this.onRowValueChange(idx, rowIdx)}
+                  checked={rowValue === true}
+                  label={''}
+                  error={error === 'No correct response defined.'}
+                />
               )}
             </div>
           ))}
@@ -261,6 +270,9 @@ const styles = (theme) => ({
     fontSize: theme.typography.fontSize - 2,
     color: theme.palette.error.main,
     paddingTop: theme.spacing.unit,
+  },
+  errorResponse: {
+    color: theme.palette.error.main,
   },
 });
 
