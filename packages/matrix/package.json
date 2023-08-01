@@ -4,7 +4,7 @@
     "access": "public"
   },
   "repository": "pie-framework/pie-elements",
-  "version": "0.7.1-beta.0",
+  "version": "0.7.1-beta.3+e0e0490c5",
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -23,7 +23,7 @@
   },
   "author": "",
   "license": "ISC",
-  "gitHead": "a18cc6f915182fbee198dc3069a72aa6df578afa",
+  "gitHead": "e0e0490c5b040c67f504c0bdfd00f6b834a28481",
   "main": "lib/index.js",
   "module": "src/index.js"
 }

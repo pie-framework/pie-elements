@@ -1,6 +1,6 @@
 {
   "name": "@pie-element/calculator",
-  "version": "3.4.1-beta.1",
+  "version": "3.4.1-beta.3+e0e0490c5",
   "description": "A catalog tool",
   "repository": "pie-framework/pie-elements",
   "scripts": {
@@ -32,7 +32,7 @@
     "react-dom": "^16.8.1",
     "react-draggable": "^3.0.5"
   },
-  "gitHead": "0e14ff981bcdc8a89a0e58484026496701bfdbc3",
+  "gitHead": "e0e0490c5b040c67f504c0bdfd00f6b834a28481",
   "main": "lib/index.js",
   "module": "src/index.js"
 }

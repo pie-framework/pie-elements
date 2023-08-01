@@ -1,13 +1,13 @@
 {
   "name": "@pie-element/ebsr",
-  "version": "8.5.1-beta.0",
+  "version": "8.5.1-beta.3+e0e0490c5",
   "description": "",
   "repository": "pie-framework/pie-elements",
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
-    "@pie-element/multiple-choice": "^7.6.1-beta.0",
+    "@pie-element/multiple-choice": "^7.6.1-beta.3+e0e0490c5",
     "@pie-framework/pie-player-events": "^0.1.0",
     "classnames": "^2.2.5",
     "debug": "^4.1.1",
@@ -15,7 +15,7 @@
   },
   "author": "pie framework developers",
   "license": "ISC",
-  "gitHead": "0e14ff981bcdc8a89a0e58484026496701bfdbc3",
+  "gitHead": "e0e0490c5b040c67f504c0bdfd00f6b834a28481",
   "scripts": {
     "postpublish": "../../scripts/postpublish"
   },

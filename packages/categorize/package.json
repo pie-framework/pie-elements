@@ -4,7 +4,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "7.7.2-beta.0",
+  "version": "7.7.2-beta.3+e0e0490c5",
   "description": "",
   "author": "pie framework developers",
   "license": "ISC",
@@ -25,7 +25,7 @@
     "react-dnd": "^14.0.5",
     "react-dom": "^16.8.1"
   },
-  "gitHead": "0e14ff981bcdc8a89a0e58484026496701bfdbc3",
+  "gitHead": "e0e0490c5b040c67f504c0bdfd00f6b834a28481",
   "scripts": {
     "postpublish": "../../scripts/postpublish"
   },
