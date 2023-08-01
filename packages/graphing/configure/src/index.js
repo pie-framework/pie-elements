@@ -68,7 +68,6 @@ export default class GraphLinesConfigure extends HTMLElement {
 
   constructor() {
     super();
-    console.log('constructor');
     this._model = GraphLinesConfigure.createDefaultModel();
     this._configuration = defaultValues.configuration;
   }
