@@ -1,5 +1,5 @@
 export default {
-    types: {
-      response: 'react-dnd-response',
-    },
-  };
+  types: {
+    response: 'react-dnd-response',
+  },
+};
