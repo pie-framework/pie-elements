@@ -13,7 +13,8 @@ import SimpleQuestionBlock from './simple-question-block';
 import MathQuill from '@pie-framework/mathquill';
 import { color } from '@pie-lib/render-ui';
 import isEmpty from 'lodash/isEmpty';
-
+import Translator from '@pie-lib/translator';
+const { translator } = Translator;
 let registered = false;
 
 const NEWLINE_LATEX = /\\newline/g;
@@ -373,6 +374,7 @@ export class Main extends React.Component {
       animationsDisabled,
       printMode,
       alwaysShowCorrect,
+      language
     } = model || {};
 
     if (!config) {
@@ -546,6 +548,7 @@ export class Main extends React.Component {
               <div className={classes.main}>
                 {showCorrectAnswerToggle && (
                   <CorrectAnswerToggle
+                    language={language}
                     className={classes.toggle}
                     show
                     toggled={showCorrect}
@@ -572,11 +575,11 @@ export class Main extends React.Component {
                   className={classes.collapsible}
                   key="collapsible-note"
                   labels={{
-                    hidden: 'Show Note',
-                    visible: 'Hide Note',
+                    hidden: translator.t('common:showNote', { lng: language }),
+                    visible: translator.t('common:hideNote', { lng: language }),
                   }}
                 >
-                  <PreviewPrompt prompt={note} />
+                  <PreviewPrompt prompt={translator.t('mathInline.primaryCorrectWithAlternates', { lng: language })}/>
                 </Collapsible>
               )}
 
