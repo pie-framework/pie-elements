@@ -19,7 +19,6 @@ const ImageDropTarget = ({
   showDashedBorder,
   // dnd-related props
   connectDropTarget,
-  isOverCurrent,
 }) =>
   connectDropTarget(
     <div
@@ -30,15 +29,7 @@ const ImageDropTarget = ({
       `}
       style={containerStyle}
     >
-      {/* HOVER */}
-      {isOverCurrent && !duplicateResponses ? (
-        <div className={classes.dragOverContainer}>
-          <span dangerouslySetInnerHTML={{ __html: draggingElement.value }} />
-        </div>
-      ) : null}
-
-      {/* EXISTING ANSWERS */}
-      {(!isOverCurrent && answers.length) || (duplicateResponses && answers.length) ? (
+      {answers.length || (duplicateResponses && answers.length) ? (
         <div className={classes.answers}>
           {answers.map((answer) => (
             <PossibleResponse
@@ -108,5 +99,6 @@ const tileSource = {
 
 export default DropTarget(c.types.response, tileSource, (connect, monitor) => ({
   connectDropTarget: connect.dropTarget(),
-  isOverCurrent: monitor.isOver({ shallow: true }),
+  isOver: monitor.isOver(),
+  dragItem: monitor.getItem(),
 }))(Styled);
