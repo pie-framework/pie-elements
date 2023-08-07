@@ -70,6 +70,8 @@ export class Main extends React.Component {
       partialScoring = {},
       settingsPanelDisabled,
       scoringType = {},
+      language = {},
+      languageChoices = {},
       ...generalConfiguration
     } = configuration;
     const {
@@ -119,6 +121,8 @@ export class Main extends React.Component {
       partLabelType: model.partLabels && dropdown('', ['Numbers', 'Letters']),
       partialScoring: partialScoring.settings && toggle(partialScoring.label),
       scoringType: scoringType.settings && radio(scoringType.label, ['auto', 'rubric']),
+      'language.enabled': language.settings && toggle(language.label, true),
+      language: language.settings && language.enabled && dropdown(languageChoices.label, languageChoices.options),
     };
 
     const panelSettingsPartA = {
