@@ -3,6 +3,7 @@ import { PromptConfig } from '../../PromptConfig';
 import { CommonConfigSettings } from '../../CommonConfigSettings';
 import { ComplexFeedbackType } from '../../Feedback';
 import {
+  ConfigureLanguageOptionsProp,
   ConfigureMathMLProp,
   ConfigureMaxImageDimensionsProp,
   ConfigureProp,
@@ -156,6 +157,11 @@ export interface MathInlinePie extends PieModel {
 
   /** Indicates if Rubric is enabled */
   rubricEnabled: boolean;
+
+  /** Indicates the language of the component
+   * Supported options: en, es, en_US, en-US, es_ES, es-ES, es_MX, es-MX
+   */
+  language?: string;
 }
 
 /**
@@ -240,4 +246,18 @@ export interface MathInlineConfigure extends PromptConfig, CommonConfigSettings 
 
   /** Configuration for editable-html */
   mathMlOptions?: ConfigureMathMLProp;
+
+  /**
+   * Language configuration
+   */
+  language?: ConfigurePropWithEnabled;
+
+  /**
+   * Language choices configuration
+   * Only available if language is enabled
+   */
+  languageChoices?: {
+    label: string;
+    options: ConfigureLanguageOptionsProp[];
+  };
 }

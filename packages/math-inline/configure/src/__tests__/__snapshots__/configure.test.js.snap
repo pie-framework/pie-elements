@@ -19,6 +19,15 @@ exports[`Configure renders correctly with snapshot 1`] = `
           "label": "Ignore Order",
           "settings": false,
         },
+        "language": Object {
+          "enabled": false,
+          "label": "Specify Language",
+          "settings": false,
+        },
+        "languageChoices": Object {
+          "label": "Language Choices",
+          "options": Array [],
+        },
         "mathMlOptions": Object {
           "mmlEditing": false,
           "mmlOutput": false,

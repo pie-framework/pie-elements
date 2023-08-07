@@ -143,7 +143,7 @@ export function model(question, session, env) {
   return new Promise((resolve) => {
     const normalizedQuestion = normalize(question);
     const correctness = getCorrectness(normalizedQuestion, env, session);
-    const { responses, ...config } = normalizedQuestion;
+    const { responses, language, ...config } = normalizedQuestion;
 
     if (config.responseType === ResponseTypes.simple) {
       config.responses = responses.slice(0, 1);
@@ -197,6 +197,7 @@ export function model(question, session, env) {
 
       out.config.env = env;
       out.config.prompt = normalizedQuestion.promptEnabled ? normalizedQuestion.prompt : null;
+      out.language = language;
 
       log('out: ', out);
       resolve(out);

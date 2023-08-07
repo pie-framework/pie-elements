@@ -109,5 +109,14 @@ export default {
       mmlOutput: false,
       mmlEditing: false,
     },
+    language: {
+      settings: false,
+      label: 'Specify Language',
+      enabled: false,
+    },
+    languageChoices: {
+      label: 'Language Choices',
+      options: [],
+    },
   },
 };
