@@ -569,8 +569,7 @@ export class Main extends React.Component {
                   <PreviewPrompt prompt={teacherInstructions} />
                 </Collapsible>
               )}
-
-              {displayNote && (
+              {displayNote && hasText(note) && (
                 <Collapsible
                   className={classes.collapsible}
                   key="collapsible-note"
@@ -579,7 +578,7 @@ export class Main extends React.Component {
                     visible: translator.t('common:hideNote', { lng: language }),
                   }}
                 >
-                  <PreviewPrompt prompt={hasText(note) ? note : translator.t('mathInline.primaryCorrectWithAlternates', { lng: language })}/>
+                  <PreviewPrompt prompt={note} />
                 </Collapsible>
               )}
 

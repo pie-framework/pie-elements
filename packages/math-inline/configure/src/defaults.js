@@ -27,7 +27,6 @@ export default {
     equationEditor: '8',
     expression: '',
     rationale: 'Rationale goes here.',
-    note: 'The answer shown above is the primary correct answer specified by the author for this item, but other answers may also be recognized as correct.',
     prompt: '',
     responses: [],
     customKeys: [],
@@ -110,13 +109,15 @@ export default {
       mmlEditing: false,
     },
     language: {
-      settings: false,
+      settings: true,
       label: 'Specify Language',
-      enabled: false,
+      enabled: true,
     },
     languageChoices: {
       label: 'Language Choices',
-      options: [],
+      options: [{
+         value: 'es_ES', label: 'spanish'
+      }],
     },
   },
 };

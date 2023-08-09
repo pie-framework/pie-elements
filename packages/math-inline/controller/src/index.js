@@ -2,7 +2,9 @@ import debug from 'debug';
 import isEmpty from 'lodash/isEmpty';
 import { getFeedbackForCorrectness } from '@pie-lib/feedback';
 import { ResponseTypes } from './utils';
+import Translator from '@pie-lib/translator';
 
+const { translator } = Translator;
 import defaults from './defaults';
 
 import * as mv from '@pie-framework/math-validation';
@@ -144,6 +146,7 @@ export function model(question, session, env) {
     const normalizedQuestion = normalize(question);
     const correctness = getCorrectness(normalizedQuestion, env, session);
     const { responses, language, ...config } = normalizedQuestion;
+    let { note } = normalizedQuestion;
 
     if (config.responseType === ResponseTypes.simple) {
       config.responses = responses.slice(0, 1);
@@ -167,7 +170,12 @@ export function model(question, session, env) {
 
       const out = base;
       let showNote = !!(config?.responses?.length > 1);
-
+      console.log('language', language);
+      // TODO: how to check if note is default and change on language change and don't overwrite if defined in model ?
+      if (!note) {
+        console.log('translator.t(\'mathInline.primaryCorrectWithAlternates\', { lng: language })', translator.t('mathInline.primaryCorrectWithAlternates', { lng: language }))
+        note = translator.t('mathInline.primaryCorrectWithAlternates', { lng: language });
+      }
       ((config && config.responses) || []).forEach((response) => {
         if (response.validation === 'symbolic' || Object.keys(response.alternates || {}).length > 0) {
           showNote = true;
@@ -178,6 +186,7 @@ export function model(question, session, env) {
       if (env.mode === 'evaluate') {
         out.correctResponse = {};
         out.config.showNote = showNote;
+        out.config.note = note;
       } else {
         out.config.responses = [];
         out.config.showNote = false;
