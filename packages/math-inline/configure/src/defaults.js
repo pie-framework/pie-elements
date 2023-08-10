@@ -109,15 +109,13 @@ export default {
       mmlEditing: false,
     },
     language: {
-      settings: true,
+      settings: false,
       label: 'Specify Language',
-      enabled: true,
+      enabled: false,
     },
     languageChoices: {
       label: 'Language Choices',
-      options: [{
-         value: 'es_ES', label: 'spanish'
-      }],
+      options: [],
     },
   },
 };

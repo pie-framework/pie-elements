@@ -170,10 +170,7 @@ export function model(question, session, env) {
 
       const out = base;
       let showNote = !!(config?.responses?.length > 1);
-      console.log('language', language);
-      // TODO: how to check if note is default and change on language change and don't overwrite if defined in model ?
       if (!note) {
-        console.log('translator.t(\'mathInline.primaryCorrectWithAlternates\', { lng: language })', translator.t('mathInline.primaryCorrectWithAlternates', { lng: language }))
         note = translator.t('mathInline.primaryCorrectWithAlternates', { lng: language });
       }
       ((config && config.responses) || []).forEach((response) => {

@@ -182,6 +182,13 @@ export class Main extends React.Component {
     const { config } = this.props.model;
     const { config: nextConfig = {} } = nextProps.model || {};
 
+    // check if the note is the default one for prev language and change to the default one for new language
+    // this check is necessary in order to diferanciate between default and authour defined note
+    // and only change between languages for default ones
+    if (config.note && config.language && config.language !== nextConfig.language && config.note === translator.t('mathInline.primaryCorrectWithAlternates', { lng: config.language })) {
+      config.note = translator.t('mathInline.primaryCorrectWithAlternates', { lng: nextConfig.language });
+    }
+
     if ((config.env && config.env.mode !== 'evaluate') || (nextConfig.env && nextConfig.env.mode !== 'evaluate')) {
       this.setState({ ...this.state.session, showCorrect: false });
     }
