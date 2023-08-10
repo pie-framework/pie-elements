@@ -170,6 +170,7 @@ export function model(question, session, env) {
 
       const out = base;
       let showNote = !!(config?.responses?.length > 1);
+
       if (!note) {
         note = translator.t('mathInline.primaryCorrectWithAlternates', { lng: language });
       }

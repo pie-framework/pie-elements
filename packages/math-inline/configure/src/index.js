@@ -44,7 +44,6 @@ export default class MathInlineConfigure extends HTMLElement {
   set configuration(c) {
     this._configuration = c;
 
-
     // if language:enabled is true, then the corresponding default item model should include a language value;
     // if it is false, then the language field should be omitted from the item model.
     // if a default item model includes a language value (e.g., en_US) and the corresponding authoring view settings have language:settings = true,
