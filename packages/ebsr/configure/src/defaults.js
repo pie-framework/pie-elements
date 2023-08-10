@@ -116,5 +116,14 @@ export default {
       label: 'Part Labels',
     },
     settingsPanelDisabled: false,
+    language: {
+      settings: false,
+      label: 'Specify Language',
+      enabled: false,
+    },
+    languageChoices: {
+      label: 'Language Choices',
+      options: [],
+    }
   },
 };
