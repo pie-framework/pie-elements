@@ -21,6 +21,7 @@ const buildTokens = (tokens, selectedTokens, evaluateMode) => {
   selectedTokens = selectedTokens || [];
 
   return tokens.map((t) => {
+    // map the correct answer that are missing from session
     const isNotSelected = selectedTokens.findIndex((selectedToken) => isAnswerSelected(t, selectedToken)) === -1;
     return Object.assign(
       {},
