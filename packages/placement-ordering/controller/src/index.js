@@ -10,6 +10,9 @@ import isEqual from 'lodash/isEqual';
 import isEmpty from 'lodash/isEmpty';
 
 const log = debug('@pie-element:placement-ordering:controller');
+import Translator from '@pie-lib/translator';
+
+const { translator } = Translator;
 
 export const questionError = () =>
   new Error('Question is missing required array: correctResponse');
@@ -86,6 +89,7 @@ export function model(question, session, env) {
     base.choices = (normalizedQuestion.choices || []).filter(choice => choice.label);
     base.note = normalizedQuestion.note;
     base.showNote = normalizedQuestion.alternateResponses && normalizedQuestion.alternateResponses.length > 0;
+    base.language = normalizedQuestion.language;
 
     log('[model] removing tileSize for the moment.');
 
@@ -103,6 +107,10 @@ export function model(question, session, env) {
     };
 
     base.disabled = env.mode !== 'gather';
+
+    if (!base.note) {
+      base.note = translator.t('common:commonCorrectAnswerWithAlternates', { lng: normalizedQuestion.language });
+    }
 
     if (
       env.role === 'instructor' &&
