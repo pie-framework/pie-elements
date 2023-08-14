@@ -2314,10 +2314,10 @@
     debug "^4.1.1"
     lodash "^4.17.11"
 
-"@pie-lib/correct-answer-toggle@2.4.0", "@pie-lib/correct-answer-toggle@^2.4.0":
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/@pie-lib/correct-answer-toggle/-/correct-answer-toggle-2.4.0.tgz#10f706ddebc3f92a6e7d1f7aade58ea15e2e0009"
-  integrity sha512-Kc964WQoDmBx8zVvL1R72jCd63171RUc35eq+CvnmJ0/kmQcvDw0Oio1lOaHJQT71FNT2lDmZm8XLpt7ga+bxQ==
+"@pie-lib/correct-answer-toggle@2.5.0", "@pie-lib/correct-answer-toggle@^2.5.0":
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/@pie-lib/correct-answer-toggle/-/correct-answer-toggle-2.5.0.tgz#1b341017cc2f639d244a434dca7aaf8ef3ffb41c"
+  integrity sha512-ZS8TsF7qfOOOgciexhowrzI+A5fRni/ht7Uc3TlUxzIuOBtZ+yq+9To+CfRubQ42uylkVwg1f/dJsmM4ajREsw==
   dependencies:
     "@material-ui/core" "^3.8.3"
     "@pie-lib/icons" "^2.4.43"
