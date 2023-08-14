@@ -18,7 +18,7 @@ import { getAdjustedLength } from './markupUtils';
 import { generateValidationMessage } from './utils';
 import classnames from 'classnames';
 
-const { toggle, Panel } = settings;
+const { toggle, Panel, dropdown } = settings;
 
 const styles = (theme) => ({
   promptHolder: {
@@ -276,6 +276,8 @@ export class Main extends React.Component {
       teacherInstructions = {},
       withRubric = {},
       mathMlOptions = {},
+      language = {},
+      languageChoices = {},
     } = configuration || {};
     const {
       errors,
@@ -300,6 +302,9 @@ export class Main extends React.Component {
     const panelSettings = {
       partialScoring: partialScoring.settings && toggle(partialScoring.label),
       maxLengthPerChoiceEnabled: maxLengthPerChoice.settings && toggle(maxLengthPerChoice.label),
+      'language.enabled': language.settings && toggle(language.label, true),
+      language: language.settings && language.enabled && dropdown(languageChoices.label, languageChoices.options),
+
     };
     const panelProperties = {
       teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),

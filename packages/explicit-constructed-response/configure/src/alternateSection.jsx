@@ -238,7 +238,6 @@ export class AlternateSection extends React.Component {
     const { classes, selectChoices, maxLength, showMaxLength, value, spellCheck, errors } = this.props;
     const { choices } = this.state;
     const minLength = this.getChoicesMaxLength();
-    console.log('showMaxLength, maxlength', showMaxLength, maxLength);
 
     return (
       <div className={classes.design}>

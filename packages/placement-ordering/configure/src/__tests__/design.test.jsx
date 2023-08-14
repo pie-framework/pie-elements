@@ -16,7 +16,8 @@ jest.mock('@pie-lib/config-ui', () => ({
   settings: {
     Panel: props => <div onChange={props.onChange} />,
     toggle: jest.fn(),
-    radio: jest.fn()
+    radio: jest.fn(),
+    dropdown: jest.fn(),
   }
 }));
 
