@@ -261,6 +261,7 @@ export class Main extends React.Component {
 
   render() {
     const { classes, model, configuration, onConfigurationChanged, imageSupport, uploadSoundSupport } = this.props;
+  
     const {
       contentDimensions = {},
       maxImageWidth = {},
@@ -273,6 +274,7 @@ export class Main extends React.Component {
       rationale = {},
       settingsPanelDisabled,
       spellCheck = {},
+      editSource = {},
       teacherInstructions = {},
       withRubric = {},
       mathMlOptions = {},
@@ -283,9 +285,14 @@ export class Main extends React.Component {
       promptEnabled,
       rationaleEnabled,
       spellCheckEnabled,
+      editSourceEnabled,
       teacherInstructionsEnabled,
       toolbarEditorPosition,
     } = model || {};
+
+    const choicePlugins = {
+      html: { disabled: !editSourceEnabled  },
+    };
 
     const { choicesErrors = {}, responseAreasError } = errors || {};
     const validationMessage = generateValidationMessage(configuration);
@@ -308,6 +315,7 @@ export class Main extends React.Component {
       spellCheckEnabled: spellCheck.settings && toggle(spellCheck.label),
       playerSpellCheckEnabled: playerSpellCheck.settings && toggle(playerSpellCheck.label),
       rubricEnabled: withRubric?.settings && toggle(withRubric?.label),
+      editSourceEnabled: editSource.settings && toggle(editSource.label),
     };
 
     return (
@@ -383,6 +391,7 @@ export class Main extends React.Component {
           activePlugins={ALL_PLUGINS}
           toolbarOpts={{ position: 'top' }}
           spellCheck={spellCheckEnabled}
+          pluginProps={choicePlugins}
           responseAreaProps={{
             type: 'explicit-constructed-response',
             options: {
