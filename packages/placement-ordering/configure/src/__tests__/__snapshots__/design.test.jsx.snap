@@ -26,22 +26,13 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
             "settings": true,
           },
           "language": Object {
-            "enabled": true,
+            "enabled": false,
             "label": "Specify Language",
-            "settings": true,
+            "settings": false,
           },
           "languageChoices": Object {
             "label": "Language Choices",
-            "options": Array [
-              Object {
-                "label": "spanish",
-                "value": "es_ES",
-              },
-              Object {
-                "label": "english",
-                "value": "en_US",
-              },
-            ],
+            "options": Array [],
           },
           "mathMlOptions": Object {
             "mmlEditing": false,
@@ -131,8 +122,8 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
             "choiceLabelEnabled": undefined,
             "enableImages": undefined,
             "feedbackEnabled": undefined,
-            "language": undefined,
-            "language.enabled": undefined,
+            "language": false,
+            "language.enabled": false,
             "numberedGuides": false,
             "orientation": undefined,
             "partialScoring": false,
@@ -384,22 +375,13 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
             "settings": true,
           },
           "language": Object {
-            "enabled": true,
+            "enabled": false,
             "label": "Specify Language",
-            "settings": true,
+            "settings": false,
           },
           "languageChoices": Object {
             "label": "Language Choices",
-            "options": Array [
-              Object {
-                "label": "spanish",
-                "value": "es_ES",
-              },
-              Object {
-                "label": "english",
-                "value": "en_US",
-              },
-            ],
+            "options": Array [],
           },
           "mathMlOptions": Object {
             "mmlEditing": false,
@@ -489,8 +471,8 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
             "choiceLabelEnabled": undefined,
             "enableImages": undefined,
             "feedbackEnabled": undefined,
-            "language": undefined,
-            "language.enabled": undefined,
+            "language": false,
+            "language.enabled": false,
             "numberedGuides": false,
             "orientation": undefined,
             "partialScoring": false,
