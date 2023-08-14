@@ -8,6 +8,8 @@ import { buildState, removeChoiceFromCategory, moveChoiceToCategory } from '@pie
 import { withDragContext, uid } from '@pie-lib/drag';
 import { color, Feedback, Collapsible, hasText, PreviewPrompt } from '@pie-lib/render-ui';
 import debug from 'debug';
+import Translator from '@pie-lib/translator';
+const { translator } = Translator;
 
 const log = debug('@pie-ui:categorize');
 
@@ -79,7 +81,18 @@ export class Categorize extends React.Component {
     }
   };
 
-  UNSAFE_componentWillReceiveProps() {
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    const { model } = this.props;
+    const { model: nextModel } = nextProps;
+
+    // check if the note is the default one for prev language and change to the default one for new language
+    // this check is necessary in order to diferanciate between default and authour defined note
+    // and only change between languages for default ones
+    if (model.note && model.language && model.language !== nextModel.language
+      && model.note === translator.t('common:commonCorrectAnswerWithAlternates', { lng: model.language })) {
+      model.note = translator.t('common:commonCorrectAnswerWithAlternates', { lng: nextModel.language });
+    }
+
     this.setState({ showCorrect: false });
   }
 
@@ -116,7 +129,7 @@ export class Categorize extends React.Component {
   render() {
     const { classes, model, session } = this.props;
     const { showCorrect } = this.state;
-    const { choicesPosition, note, showNote, env } = model;
+    const { choicesPosition, note, showNote, env, language } = model;
     const { mode, role } = env || {};
     const choicePosition = choicesPosition || 'above';
 
@@ -161,6 +174,7 @@ export class Categorize extends React.Component {
           show={showCorrect || correct === false}
           toggled={showCorrect}
           onToggle={this.toggleShowCorrect}
+          language={language}
         />
 
         <div className={classes.categorize} style={style}>
@@ -204,7 +218,7 @@ export class Categorize extends React.Component {
           <div
             className={classes.note}
             dangerouslySetInnerHTML={{
-              __html: `<strong>Note:</strong> ${note}`,
+              __html: note,
             }}
           />
         )}
