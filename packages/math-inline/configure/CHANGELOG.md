@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.11.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@6.10.2...@pie-element/math-inline-configure@6.11.0) (2023-08-15)
+
+
+### Bug Fixes
+
+* conflicts with develop ([eb27ce2](https://github.com/pie-framework/pie-elements/commit/eb27ce2d4005a64d66caf311f5349d7e7ad30950))
+* snapshot ([c2adcf9](https://github.com/pie-framework/pie-elements/commit/c2adcf942e4eb74cae04e2824042201619570bb0))
+* update pie-libs PD-3049, PD-2916, PD-2059 ([0e800b5](https://github.com/pie-framework/pie-elements/commit/0e800b54b852304d222a292400362e0870f0cc9a))
+* updated pie-lib to fix PD-2802, PD-3050, PD-3051 ([34b4dd7](https://github.com/pie-framework/pie-elements/commit/34b4dd7ba18f4c18589975921cc9d127926f8294))
+* updated pie-libs Pd-1163 ([300c1db](https://github.com/pie-framework/pie-elements/commit/300c1db1658ce85ca58f3cc2981b604aefbf9f01))
+
+
+### Features
+
+* **math-inline:** add note logic for translations PD-2802 ([ed83f78](https://github.com/pie-framework/pie-elements/commit/ed83f783b255b1045b485a60ac673003ae1265a6))
+* **math-inline:** add translator PD-2795 PD-2802 ([2ab3ce9](https://github.com/pie-framework/pie-elements/commit/2ab3ce99c43d937d8cd5e6dd1925f0d89c74c537))
+* **math-inline:** small tweaks PD-2802 ([d48b2f9](https://github.com/pie-framework/pie-elements/commit/d48b2f914efa1580cc18ef2b1a98a90a29479e92))
+* **math-inline:** wip PD-2802 ([ba331be](https://github.com/pie-framework/pie-elements/commit/ba331be2e3cd58ce069a8a85e582318675325e40))
+
+
+
+
+
 ## [6.10.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@6.10.1...@pie-element/math-inline-configure@6.10.2) (2023-07-24)
 
 
