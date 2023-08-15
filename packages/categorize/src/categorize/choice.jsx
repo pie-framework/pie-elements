@@ -111,6 +111,8 @@ export const spec = {
       id: props.id,
       categoryId: props.categoryId,
       choiceIndex: props.choiceIndex,
+      value: props.content,
+      itemType: 'categorize'
     };
     log('[beginDrag] out:', out);
     return out;

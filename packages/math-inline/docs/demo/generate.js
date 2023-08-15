@@ -30,7 +30,6 @@ const E262456 = {
       id: '1',
     },
   ],
-  note: 'The answer shown above is the primary correct answer specified by the author for this item, but other answers may also be recognized as correct.',
   responseType: 'Advanced Multi',
 };
 

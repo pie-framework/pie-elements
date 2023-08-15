@@ -1,7 +1,13 @@
 import { PieModel } from '../../PieModel';
 import { PromptConfig } from '../../PromptConfig';
 import { CommonConfigSettings } from '../../CommonConfigSettings';
-import {ConfigureMathMLProp, ConfigureMaxImageDimensionsProp, ConfigureProp} from '../ConfigurationProp';
+import {
+  ConfigureLanguageOptionsProp,
+  ConfigureMathMLProp,
+  ConfigureMaxImageDimensionsProp,
+  ConfigureProp,
+  ConfigurePropWithEnabled
+} from '../ConfigurationProp';
 
 export interface Choice {
   /** The value for the choice */
@@ -87,6 +93,11 @@ export interface ExplicitConstructedResponsePie extends PieModel {
 
   /** Indicates if Rubric is enabled */
   rubricEnabled: boolean;
+
+  /** Indicates the language of the component
+   * Supported options: en, es, en_US, en-US, es_ES, es-ES, es_MX, es-MX
+   */
+  language?: string;
 }
 
 /**
@@ -170,4 +181,18 @@ export interface ExplicitConstructedResponseConfigure extends PromptConfig, Comm
 
   /** Configuration for editable-html */
   mathMlOptions?: ConfigureMathMLProp;
+
+  /**
+   * Language configuration
+   */
+  language?: ConfigurePropWithEnabled;
+
+  /**
+   * Language choices configuration
+   * Only available if language is enabled
+   */
+  languageChoices?: {
+    label: string;
+    options: ConfigureLanguageOptionsProp[];
+  };
 }

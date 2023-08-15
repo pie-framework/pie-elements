@@ -3,6 +3,9 @@ import { lockChoices, getShuffledChoices, partialScoring } from '@pie-lib/contro
 import { isResponseCorrect } from './utils';
 import get from 'lodash/get';
 import isEmpty from 'lodash/isEmpty';
+import Translator from '@pie-lib/translator';
+
+const { translator } = Translator;
 
 const prepareChoice = (model, env, defaultFeedback) => (choice) => {
   const out = {
@@ -136,8 +139,9 @@ export async function model(question, session, env, updateSession) {
   }
 
   if (normalizedQuestion.partLabels) {
-    partA.partLabel = normalizedQuestion.partLabelType === 'Letters' ? 'Part A' : 'Part 1';
-    partB.partLabel = normalizedQuestion.partLabelType === 'Letters' ? 'Part B' : 'Part 2';
+    const language = normalizedQuestion.language;
+    partA.partLabel = translator.t('ebsr.part', {lng: language, index: normalizedQuestion.partLabelType === 'Letters' ? 'A' : '1'});
+    partB.partLabel = translator.t('ebsr.part', {lng: language, index: normalizedQuestion.partLabelType === 'Letters' ? 'B' : '2'});
   } else {
     partA.partLabel = undefined;
     partB.partLabel = undefined;

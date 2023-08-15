@@ -5,6 +5,9 @@ import isEmpty from 'lodash/isEmpty';
 import debug from 'debug';
 import { partialScoring } from '@pie-lib/controller-utils';
 import defaults from './defaults';
+import Translator from '@pie-lib/translator';
+
+const { translator } = Translator;
 
 const log = debug('explicit-constructed-response:controller');
 
@@ -130,6 +133,12 @@ export function model(question, session, env) {
       }
     });
 
+    let { note } = normalizedQuestion;
+
+    if (!note) {
+      note = translator.t('common:commonCorrectAnswerWithAlternates', { lng: normalizedQuestion.language });
+    }
+
     const { maxLengthPerChoice = [], maxLengthPerChoiceEnabled } = normalizedQuestion;
     const undefinedLengths = !maxLengthPerChoice.length;
 
@@ -156,13 +165,14 @@ export function model(question, session, env) {
       choices,
       feedback,
       env,
-      note: normalizedQuestion.note,
+      note,
       showNote,
       maxLengthPerChoice,
       maxLengthPerChoiceEnabled,
       displayType: normalizedQuestion.displayType,
       playerSpellCheckEnabled: normalizedQuestion.playerSpellCheckEnabled,
       responseCorrect: env.mode === 'evaluate' ? getScore(normalizedQuestion, session) === 1 : undefined,
+      language: normalizedQuestion.language
     };
 
     if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {

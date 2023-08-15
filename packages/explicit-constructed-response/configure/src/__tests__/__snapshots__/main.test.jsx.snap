@@ -8,6 +8,15 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
     <Panel
       configuration={
         Object {
+          "language": Object {
+            "enabled": false,
+            "label": "Specify Language",
+            "settings": false,
+          },
+          "languageChoices": Object {
+            "label": "Language Choices",
+            "options": Array [],
+          },
           "mathMlOptions": Object {
             "mmlEditing": false,
             "mmlOutput": false,
@@ -71,6 +80,8 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
             "teacherInstructionsEnabled": undefined,
           },
           "Settings": Object {
+            "language": false,
+            "language.enabled": false,
             "maxLengthPerChoiceEnabled": undefined,
             "partialScoring": false,
           },
@@ -393,6 +404,15 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
     <Panel
       configuration={
         Object {
+          "language": Object {
+            "enabled": false,
+            "label": "Specify Language",
+            "settings": false,
+          },
+          "languageChoices": Object {
+            "label": "Language Choices",
+            "options": Array [],
+          },
           "mathMlOptions": Object {
             "mmlEditing": false,
             "mmlOutput": false,
@@ -456,6 +476,8 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
             "teacherInstructionsEnabled": undefined,
           },
           "Settings": Object {
+            "language": false,
+            "language.enabled": false,
             "maxLengthPerChoiceEnabled": undefined,
             "partialScoring": false,
           },

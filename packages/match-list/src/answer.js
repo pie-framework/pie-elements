@@ -193,6 +193,7 @@ const answerSource = {
       id: props.id,
       type: props.type,
       instanceId: props.instanceId,
+      value: props.title,
       promptId: props.promptId,
     };
   },

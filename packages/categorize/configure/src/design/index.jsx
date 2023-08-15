@@ -171,6 +171,8 @@ export class Design extends React.Component {
       teacherInstructions = {},
       withRubric = {},
       mathMlOptions = {},
+      language = {},
+      languageChoices = {},
     } = configuration || {};
     const {
       allowAlternateEnabled,
@@ -228,6 +230,8 @@ export class Design extends React.Component {
       feedbackEnabled: feedback.settings && toggle(feedback.label),
       // PD-2960: deleted temporary from settings panel
       // allowAlternateEnabled: allowAlternate.settings && toggle(allowAlternate.label),
+      'language.enabled': language.settings && toggle(language.label, true),
+      language: language.settings && language.enabled && dropdown(languageChoices.label, languageChoices.options),
     };
 
     const panelProperties = {
