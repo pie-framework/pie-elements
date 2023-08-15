@@ -6,15 +6,11 @@ import defaults from './defaults';
 
 const log = debug('@pie-element:select-text:controller');
 
-const isAnswerSelected = (token, selectedToken) => {
-  return (
-    token.correct === true &&
+const isAnswerSelected = (token, selectedToken) => token && selectedToken && token.correct === true &&
     !(
-      (token.start === selectedToken.start && token.end === selectedToken.end) ||
-      (token.start === selectedToken.oldStart && token.end === selectedToken.oldEnd)
-    )
-  );
-};
+        (token.start === selectedToken.start && token.end === selectedToken.end) ||
+        (token.start === selectedToken.oldStart && token.end === selectedToken.oldEnd)
+    );
 
 const buildTokens = (tokens, selectedTokens, evaluateMode) => {
   tokens = tokens || [];
