@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.14.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@4.13.2...@pie-element/explicit-constructed-response@4.14.0) (2023-08-15)
+
+
+### Bug Fixes
+
+* update pie-libs PD-3049, PD-2916, PD-2059 ([0e800b5](https://github.com/pie-framework/pie-elements/commit/0e800b54b852304d222a292400362e0870f0cc9a))
+* updated pie-lib to fix PD-2802 ([eab79f7](https://github.com/pie-framework/pie-elements/commit/eab79f70ad4488207a5b9b401679eb096feba247))
+* updated pie-lib to fix PD-2802, PD-3050, PD-3051 ([34b4dd7](https://github.com/pie-framework/pie-elements/commit/34b4dd7ba18f4c18589975921cc9d127926f8294))
+* updated pie-libs Pd-1163 ([300c1db](https://github.com/pie-framework/pie-elements/commit/300c1db1658ce85ca58f3cc2981b604aefbf9f01))
+
+
+### Features
+
+* **explicit-constructed-response, placement-ordering:** translations PD-2802 PD-2795 ([bdac725](https://github.com/pie-framework/pie-elements/commit/bdac725d9e547a7221f71884e1730cb738dfa962))
+* **placement-ordering, explicit-constructed-response:** PD-2795 update doc ([7949fc1](https://github.com/pie-framework/pie-elements/commit/7949fc11fc5dbadaeb2e6c07b9ac84a8dbb07837))
+
+
+
+
+
 ## [4.13.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@4.13.1...@pie-element/explicit-constructed-response@4.13.2) (2023-07-24)
 
 

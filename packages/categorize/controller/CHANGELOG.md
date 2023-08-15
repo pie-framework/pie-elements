@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.10.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-controller@5.9.5...@pie-element/categorize-controller@5.10.0) (2023-08-15)
+
+
+### Features
+
+* **categorize:** translations PD-2802 PD-2795 ([bfed488](https://github.com/pie-framework/pie-elements/commit/bfed48826b6b1f3fe39d582ffd3958d5a85b931b))
+
+
+
+
+
 ## [5.9.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-controller@5.9.4...@pie-element/categorize-controller@5.9.5) (2023-07-06)
 
 

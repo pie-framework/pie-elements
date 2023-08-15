@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.1.0...@pie-element/pie-models@13.2.0) (2023-08-15)
+
+
+### Features
+
+* **categorize:** translations PD-2802 PD-2795 ([bfed488](https://github.com/pie-framework/pie-elements/commit/bfed48826b6b1f3fe39d582ffd3958d5a85b931b))
+* **explicit-constructed-response, placement-ordering:** translations PD-2802 PD-2795 ([bdac725](https://github.com/pie-framework/pie-elements/commit/bdac725d9e547a7221f71884e1730cb738dfa962))
+* **math-inline:** add translator PD-2795 PD-2802 ([2ab3ce9](https://github.com/pie-framework/pie-elements/commit/2ab3ce99c43d937d8cd5e6dd1925f0d89c74c537))
+
+
+
+
+
 # [13.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.0.0...@pie-element/pie-models@13.1.0) (2023-06-13)
 
 

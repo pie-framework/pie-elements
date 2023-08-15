@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.9.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@5.8.6...@pie-element/math-inline-controller@5.9.0) (2023-08-15)
+
+
+### Bug Fixes
+
+* conflicts with develop ([eb27ce2](https://github.com/pie-framework/pie-elements/commit/eb27ce2d4005a64d66caf311f5349d7e7ad30950))
+
+
+### Features
+
+* **math-inline:** add note logic for translations PD-2802 ([ed83f78](https://github.com/pie-framework/pie-elements/commit/ed83f783b255b1045b485a60ac673003ae1265a6))
+* **math-inline:** add translator PD-2795 PD-2802 ([2ab3ce9](https://github.com/pie-framework/pie-elements/commit/2ab3ce99c43d937d8cd5e6dd1925f0d89c74c537))
+* **math-inline:** small tweaks PD-2802 ([d48b2f9](https://github.com/pie-framework/pie-elements/commit/d48b2f914efa1580cc18ef2b1a98a90a29479e92))
+* **math-inline:** wip PD-2802 ([ba331be](https://github.com/pie-framework/pie-elements/commit/ba331be2e3cd58ce069a8a85e582318675325e40))
+
+
+
+
+
 ## [5.8.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@5.8.5...@pie-element/math-inline-controller@5.8.6) (2023-07-06)
 
 
