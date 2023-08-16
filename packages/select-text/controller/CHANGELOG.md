@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-controller@4.7.0...@pie-element/select-text-controller@4.8.0) (2023-08-16)
+
+
+### Bug Fixes
+
+* updated pie-libs Pd-1163 ([076f321](https://github.com/pie-framework/pie-elements/commit/076f3212856ddd39e5643f4aeecc65fbb9ad8f9c))
+
+
+### Features
+
+* **select-text:** PD-1163 - add legend for icons in eval mode ([01c8920](https://github.com/pie-framework/pie-elements/commit/01c8920f58cb9dcbc4ce624223f753e49178bd22))
+
+
+
+
+
 # [4.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-controller@4.6.10...@pie-element/select-text-controller@4.7.0) (2023-08-15)
 
 
