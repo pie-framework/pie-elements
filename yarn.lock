@@ -2632,10 +2632,10 @@
   resolved "https://registry.yarnpkg.com/@pie-lib/test-utils/-/test-utils-0.2.33.tgz#7632be69cbef25754e5f9fafbbcf94d2f0629ac4"
   integrity sha512-OWbvVHIzY5paEZUV4Fkv+H6kGX2d78uS2AOwBCXM+m9rlr6poMvsLUTcOMRIfKfSWw+ydhZ536V3X82kWRluWQ==
 
-"@pie-lib/text-select@^1.10.0":
-  version "1.10.0"
-  resolved "https://registry.yarnpkg.com/@pie-lib/text-select/-/text-select-1.10.0.tgz#c0ac50c66f56350307c39f1fb1379b83a8a58102"
-  integrity sha512-CmDe9LBIsKKGRMqLBKhtqh6N+jKA6JMB6pjg0w7Uhhx83AxOmNepZT0hUgFee//HPy9Y7Phx6y8Qpr6dorABDA==
+"@pie-lib/text-select@^1.11.0":
+  version "1.11.0"
+  resolved "https://registry.yarnpkg.com/@pie-lib/text-select/-/text-select-1.11.0.tgz#272ca81b098667d2eaf4201f259389c048cf40a4"
+  integrity sha512-rFhZU232imI4+DVItoNdManu8o9mX1tKz+HiknFd3SRqDe3ttt34yH3dlgYAzYi1yKg8yeDfjwyr9X3BGTZBtA==
   dependencies:
     "@pie-framework/parse-english" "^1.0.0"
     "@pie-lib/render-ui" "^4.15.0"
