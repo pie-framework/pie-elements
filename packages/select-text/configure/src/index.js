@@ -34,6 +34,34 @@ export default class SelectTextConfigure extends HTMLElement {
 
   set configuration(c) {
     this._configuration = c;
+
+    // if language:enabled is true, then the corresponding default item model should include a language value;
+    // if it is false, then the language field should be omitted from the item model.
+    // if a default item model includes a language value (e.g., en_US) and the corresponding authoring view settings have language:settings = true,
+    // then (a) language:enabled should also be true, and (b) that default language value should be represented in languageChoices[] (as a key).
+    if (c.language.enabled) {
+      if (c.languageChoices?.options?.length) {
+        this._model.language = c.languageChoices.options[0].value;
+      }
+    } else if (c.language.settings && this._model.language) {
+      this._configuration.language.enabled = true;
+
+      if (!this._configuration.languageChoices.options || !this._configuration.languageChoices.options.length) {
+        this._configuration.languageChoices.options = [];
+      }
+
+      // check if the language is already included in the languageChoices.options array
+      // and if not, then add it.
+      if (!this._configuration.languageChoices.options.find(option => option.value === this._model.language)) {
+        this._configuration.languageChoices.options.push({
+          value: this._model.language,
+          label: this._model.language,
+        });
+      }
+    } else {
+      delete this._model.language;
+    }
+
     this.render();
   }
 

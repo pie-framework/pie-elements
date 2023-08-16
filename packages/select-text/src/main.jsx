@@ -84,6 +84,7 @@ export class Main extends React.Component {
             show={model.disabled && model.incorrect}
             toggled={showCorrectAnswer}
             onToggle={this.toggleShowCorrect}
+            language={model.language}
           />
         )}
 
