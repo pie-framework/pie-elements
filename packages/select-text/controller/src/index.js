@@ -152,6 +152,7 @@ export const model = (question, session, env) => {
         disabled: env.mode !== 'gather',
         maxSelections: normalizedQuestion.maxSelections,
         correctness,
+        env,
         feedback,
         incorrect: env.mode === 'evaluate' ? correctness !== 'correct' : undefined,
       };
