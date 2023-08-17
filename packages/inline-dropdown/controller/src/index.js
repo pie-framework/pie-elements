@@ -130,6 +130,7 @@ export function model(question, session, env, updateSession) {
       responseCorrect: env.mode === 'evaluate' ? getScore(normalizedQuestion, session) === 1 : undefined,
       rationale,
       teacherInstructions,
+      language: normalizedQuestion.language
     };
 
     resolve(out);
