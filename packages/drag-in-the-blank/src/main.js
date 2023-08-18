@@ -32,7 +32,7 @@ export class Main extends React.Component {
   render() {
     const { showCorrectAnswer } = this.state;
     const { model, onChange, value, classes } = this.props;
-    const { prompt, mode } = model;
+    const { prompt, mode, language } = model;
     const modelWithValue = { ...model, value };
     const showCorrectAnswerToggle = mode === 'evaluate';
 
@@ -53,6 +53,7 @@ export class Main extends React.Component {
           show={showCorrectAnswerToggle}
           toggled={showCorrectAnswer}
           onToggle={this.toggleShowCorrect}
+          language={language}
         />
 
         <DraggableDragInTheBlank {...modelWithValue} onChange={onChange} showCorrectAnswer={showCorrectAnswer} />
