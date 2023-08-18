@@ -106,7 +106,7 @@ export class Main extends React.Component {
   render() {
     const { model, classes } = this.props;
     const { showCorrect, session } = this.state;
-    const { correctness = {} } = model;
+    const { correctness = {}, language } = model;
     const showCorrectAnswerToggle = correctness.correctness && correctness.correctness !== 'correct';
 
     return (
@@ -129,7 +129,12 @@ export class Main extends React.Component {
           </div>
         )}
 
-        <CorrectAnswerToggle show={showCorrectAnswerToggle} toggled={showCorrect} onToggle={this.toggleShowCorrect} />
+        <CorrectAnswerToggle
+          language={language}
+          show={showCorrectAnswerToggle}
+          toggled={showCorrect}
+          onToggle={this.toggleShowCorrect}
+        />
 
         <AnswerGrid
           showCorrect={showCorrect}
