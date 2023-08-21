@@ -15,7 +15,7 @@ export const normalize = (question) => ({
 
 export function model(question, session, env) {
   const normalizedQuestion = normalize(question);
-  const { imageUrl, dimensions, hotspotColor, multipleCorrect, outlineColor, partialScoring, prompt, shapes } =
+  const { imageUrl, dimensions, hotspotColor, multipleCorrect, outlineColor, partialScoring, prompt, shapes, language } =
     normalizedQuestion;
   const { rectangles, polygons } = shapes || {};
 
@@ -29,6 +29,7 @@ export function model(question, session, env) {
       hotspotColor,
       multipleCorrect,
       partialScoring,
+      language,
       shapes: {
         ...shapes,
         // eslint-disable-next-line no-unused-vars
