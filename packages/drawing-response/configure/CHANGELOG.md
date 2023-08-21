@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.5.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response-configure@6.5.1...@pie-element/drawing-response-configure@6.5.2) (2023-08-21)
+
+
+### Bug Fixes
+
+* update pie-libs PD-3119 ([01c474b](https://github.com/pie-framework/pie-elements/commit/01c474bf9396374dc86b9248651206672b765af6))
+
+
+
+
+
 ## [6.5.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response-configure@6.5.0...@pie-element/drawing-response-configure@6.5.1) (2023-08-21)
 
 **Note:** Version bump only for package @pie-element/drawing-response-configure
