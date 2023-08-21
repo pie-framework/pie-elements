@@ -293,7 +293,7 @@ export class Main extends React.Component {
       return;
     }
 
-    if (choiceIndex >= 0 && respAreaChoices[index][choiceIndex]) {
+    if (choiceIndex >= 0 && respAreaChoices[index]?.[choiceIndex]) {
       // we need to update the choice label with the new value
       respAreaChoices[index][choiceIndex].label = label;
     } else {
@@ -309,6 +309,7 @@ export class Main extends React.Component {
         correct: false,
       });
     }
+    console.log('addd choiceeee');
 
     this.onModelChange({ choices: cloneDeep(respAreaChoices) });
   };
@@ -323,6 +324,7 @@ export class Main extends React.Component {
 
   onSelectChoice = (respIndex, selectedIndex) => {
     const { respAreaChoices } = this.state;
+    console.log('ON SELECT');
 
     respAreaChoices[respIndex] = respAreaChoices[respIndex].map((choice, index) => ({
       ...choice,
