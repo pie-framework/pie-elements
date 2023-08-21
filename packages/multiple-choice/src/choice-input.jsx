@@ -24,6 +24,9 @@ const styleSheet = (theme) => ({
     flex: 1,
     '& label': {
       color: color.text(),
+      '& > span':{
+        fontSize: 'inherit',
+      }
     },
   },
   horizontalLayout: {
