@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.14.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@4.14.0...@pie-element/explicit-constructed-response@4.14.1) (2023-08-21)
+
+**Note:** Version bump only for package @pie-element/explicit-constructed-response
+
+
+
+
+
 # [4.14.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@4.13.2...@pie-element/explicit-constructed-response@4.14.0) (2023-08-15)
 
 
