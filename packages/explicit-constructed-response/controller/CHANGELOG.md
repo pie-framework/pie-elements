@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-controller@3.6.3...@pie-element/explicit-constructed-response-controller@3.7.0) (2023-08-15)
+
+
+### Features
+
+* **explicit-constructed-response, placement-ordering:** translations PD-2802 PD-2795 ([bdac725](https://github.com/pie-framework/pie-elements/commit/bdac725d9e547a7221f71884e1730cb738dfa962))
+
+
+
+
+
 ## [3.6.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-controller@3.6.2...@pie-element/explicit-constructed-response-controller@3.6.3) (2023-07-06)
 
 

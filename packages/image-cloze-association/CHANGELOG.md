@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.14.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@4.14.4...@pie-element/image-cloze-association@4.14.5) (2023-08-21)
+
+
+### Bug Fixes
+
+* update pie-libs PD-3119 ([01c474b](https://github.com/pie-framework/pie-elements/commit/01c474bf9396374dc86b9248651206672b765af6))
+
+
+
+
+
+## [4.14.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@4.14.3...@pie-element/image-cloze-association@4.14.4) (2023-08-21)
+
+**Note:** Version bump only for package @pie-element/image-cloze-association
+
+
+
+
+
+## [4.14.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@4.14.2...@pie-element/image-cloze-association@4.14.3) (2023-08-15)
+
+
+### Bug Fixes
+
+* update pie-libs PD-3049, PD-2916, PD-2059 ([0e800b5](https://github.com/pie-framework/pie-elements/commit/0e800b54b852304d222a292400362e0870f0cc9a))
+* updated pie-lib to fix PD-2802 ([eab79f7](https://github.com/pie-framework/pie-elements/commit/eab79f70ad4488207a5b9b401679eb096feba247))
+* updated pie-lib to fix PD-2802, PD-3050, PD-3051 ([34b4dd7](https://github.com/pie-framework/pie-elements/commit/34b4dd7ba18f4c18589975921cc9d127926f8294))
+* updated pie-libs Pd-1163 ([300c1db](https://github.com/pie-framework/pie-elements/commit/300c1db1658ce85ca58f3cc2981b604aefbf9f01))
+* **image-cloze-association:** Introduce droppablePlaceholder to enhance user interaction on touch devices PD-3050 ([37c2ee1](https://github.com/pie-framework/pie-elements/commit/37c2ee14e073239adce76990e6096de7d18a73e8))
+
+
+
+
+
 ## [4.14.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@4.14.1...@pie-element/image-cloze-association@4.14.2) (2023-07-24)
 
 
