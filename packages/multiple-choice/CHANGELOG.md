@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.13.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@7.13.4...@pie-element/multiple-choice@7.13.5) (2023-08-21)
+
+
+### Bug Fixes
+
+* update pie-libs PD-3119 ([01c474b](https://github.com/pie-framework/pie-elements/commit/01c474bf9396374dc86b9248651206672b765af6))
+
+
+
+
+
+## [7.13.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@7.13.3...@pie-element/multiple-choice@7.13.4) (2023-08-21)
+
+
+### Bug Fixes
+
+* **multiple-choice:** dna-17953 - prevent element to compute size based on root ([66534c4](https://github.com/pie-framework/pie-elements/commit/66534c4eee58dfabc0f4493913da39522fbd145d))
+
+
+
+
+
 ## [7.13.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@7.13.2...@pie-element/multiple-choice@7.13.3) (2023-08-15)
 
 

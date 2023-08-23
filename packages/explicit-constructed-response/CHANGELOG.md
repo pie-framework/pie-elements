@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.14.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@4.14.1...@pie-element/explicit-constructed-response@4.14.2) (2023-08-21)
+
+
+### Bug Fixes
+
+* update pie-libs PD-3119 ([01c474b](https://github.com/pie-framework/pie-elements/commit/01c474bf9396374dc86b9248651206672b765af6))
+
+
+
+
+
+## [4.14.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@4.14.0...@pie-element/explicit-constructed-response@4.14.1) (2023-08-21)
+
+**Note:** Version bump only for package @pie-element/explicit-constructed-response
+
+
+
+
+
 # [4.14.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@4.13.2...@pie-element/explicit-constructed-response@4.14.0) (2023-08-15)
 
 

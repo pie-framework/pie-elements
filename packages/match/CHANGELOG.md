@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.11.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@5.11.4...@pie-element/match@5.11.5) (2023-08-21)
+
+
+### Bug Fixes
+
+* update pie-libs PD-3119 ([01c474b](https://github.com/pie-framework/pie-elements/commit/01c474bf9396374dc86b9248651206672b765af6))
+
+
+
+
+
+## [5.11.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@5.11.3...@pie-element/match@5.11.4) (2023-08-21)
+
+**Note:** Version bump only for package @pie-element/match
+
+
+
+
+
 ## [5.11.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@5.11.2...@pie-element/match@5.11.3) (2023-08-15)
 
 
