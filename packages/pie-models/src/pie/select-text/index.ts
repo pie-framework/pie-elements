@@ -2,7 +2,13 @@ import { PromptConfig } from '../../PromptConfig';
 import { PieModel } from '../../PieModel';
 import { CommonConfigSettings } from '../../CommonConfigSettings';
 import { ComplexFeedbackType } from '../../Feedback';
-import {ConfigureMathMLProp, ConfigureMaxImageDimensionsProp, ConfigureProp} from '../ConfigurationProp';
+import {
+  ConfigureLanguageOptionsProp,
+  ConfigureMathMLProp,
+  ConfigureMaxImageDimensionsProp,
+  ConfigureProp,
+  ConfigurePropWithEnabled
+} from '../ConfigurationProp';
 
 interface TextToken {
   /** The token text */
@@ -91,6 +97,11 @@ export interface SelectTextPie extends PieModel {
 
   /** Indicates if Rubric is enabled */
   rubricEnabled: boolean;
+
+  /** Indicates the language of the component
+   * Supported options: en, es, en_US, en-US, es_ES, es-ES, es_MX, es-MX
+   */
+  language?: string;
 }
 
 /**
@@ -208,4 +219,18 @@ export interface SelectTextConfigure extends PromptConfig, CommonConfigSettings 
 
   /** Configuration for editable-html */
   mathMlOptions?: ConfigureMathMLProp;
+
+  /**
+   * Language configuration
+   */
+  language?: ConfigurePropWithEnabled;
+
+  /**
+   * Language choices configuration
+   * Only available if language is enabled
+   */
+  languageChoices?: {
+    label: string;
+    options: ConfigureLanguageOptionsProp[];
+  };
 }

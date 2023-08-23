@@ -2,7 +2,13 @@ import { Shape } from '../../Shape';
 import { Dimension } from '../../Dimension';
 import { PieModel } from '../../PieModel';
 import { PromptConfig } from '../../PromptConfig';
-import {ConfigureMathMLProp, ConfigureMaxImageDimensionsProp, ConfigureProp} from '../ConfigurationProp';
+import {
+  ConfigureMathMLProp,
+  ConfigureMaxImageDimensionsProp,
+  ConfigureProp,
+  ConfigurePropWithEnabled,
+  ConfigureLanguageOptionsProp
+} from '../ConfigurationProp';
 import { CommonConfigSettings } from '../../CommonConfigSettings';
 
 /**
@@ -69,6 +75,11 @@ export interface HotspotPie extends PieModel {
 
   /** Indicates if Rubric is enabled */
   rubricEnabled: boolean;
+
+  /** Indicates the language of the component
+   * Supported options: en, es, en_US, en-US, es_ES, es-ES, es_MX, es-MX
+   */
+  language?: string;
 }
 
 /**
@@ -134,4 +145,18 @@ export interface HotspotConfigure extends PromptConfig, CommonConfigSettings {
 
   /** Configuration for editable-html */
   mathMlOptions?: ConfigureMathMLProp;
+
+  /**
+   * Language configuration
+   */
+  language?: ConfigurePropWithEnabled;
+
+  /**
+   * Language choices configuration
+   * Only available if language is enabled
+   */
+  languageChoices?: {
+    label: string;
+    options: ConfigureLanguageOptionsProp[];
+  };
 }
