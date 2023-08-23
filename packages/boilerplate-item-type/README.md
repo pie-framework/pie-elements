@@ -1,5 +1,5 @@
 # boilerplate-item-type
 
-TODO...
-
-> Don't release until 1.0.0-beta.46 is fixed and I can remove @babel/runtime
+To generate new item types, copy the folder and replace all occurrences of:
+1. boilerplate-item-type with your-item-type
+2. BoilerplateItemType with YourItemType
