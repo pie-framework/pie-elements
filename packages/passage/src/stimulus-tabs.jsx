@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import { withStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
 import { color, Purpose } from '@pie-lib/render-ui';
 import classNames from 'classnames';
 
@@ -40,20 +39,18 @@ function TabContainer(props) {
   const { ariaLabelledby, id } = props;
 
   return (
-    <Typography
-      component="div"
+    <div
       role="tabpanel"
       aria-labelledby={ariaLabelledby}
       id={id}
       style={{
         padding,
-        fontSize: '0.875em',
         backgroundColor: color.background(),
         color: color.text(),
       }}
     >
       {props.children}
-    </Typography>
+    </div>
   );
 }
 
