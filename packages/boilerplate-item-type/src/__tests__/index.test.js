@@ -1,4 +1,4 @@
-import SelectText from '..';
+import BoilerplateItemType from '..';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { SessionChangedEvent } from '@pie-framework/pie-player-events';
@@ -22,7 +22,7 @@ jest.mock('react-dom', () => ({
 describe('boilerplate-item-type', () => {
   let c;
   beforeEach(() => {
-    c = new SelectText();
+    c = new BoilerplateItemType();
     c.dispatchEvent = jest.fn();
     c.tagName = 'boilerplate-item-type';
     c.model = {};

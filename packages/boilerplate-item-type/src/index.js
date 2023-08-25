@@ -4,7 +4,7 @@ import { SessionChangedEvent, ModelSetEvent } from '@pie-framework/pie-player-ev
 import Main from './main';
 import { renderMath } from '@pie-lib/math-rendering';
 
-export default class SelectText extends HTMLElement {
+export default class BoilerplateItemType extends HTMLElement {
   set model(m) {
     this._model = m;
 

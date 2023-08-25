@@ -11,13 +11,8 @@ describe('main', () => {
     return shallow(
       <Main
         onSessionChange={jest.fn()}
-        model={{
-          text: 'foo',
-          tokens: [{ start: 0, end: 1, text: 'f' }],
-        }}
-        session={{
-          selectedTokens: [{ start: 0, end: 1, text: 'f' }],
-        }}
+        model={{}}
+        session={{}}
         classes={{}}
         {...props}
       />,

@@ -10,7 +10,7 @@ import {
 } from '@pie-framework/pie-configure-events';
 import defaultValues from './defaults';
 
-export default class SelectTextConfigure extends HTMLElement {
+export default class BoilerplateItemTypeConfigure extends HTMLElement {
   /**
    * This function makes sure you set the default values on the model
    * @param model
@@ -23,12 +23,12 @@ export default class SelectTextConfigure extends HTMLElement {
 
   constructor() {
     super();
-    this._model = SelectTextConfigure.createDefaultModel();
+    this._model = BoilerplateItemTypeConfigure.createDefaultModel();
     this._configuration = defaultValues.configuration;
   }
 
   set model(m) {
-    this._model = SelectTextConfigure.createDefaultModel(m);
+    this._model = BoilerplateItemTypeConfigure.createDefaultModel(m);
     this.render();
   }
 
