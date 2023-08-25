@@ -14,6 +14,7 @@ const styles = (theme) => ({
   },
   tab: {
     backgroundColor: color.background(),
+    fontSize: 'inherit',
   },
   stickyTabs: {
     background: color.background(),
