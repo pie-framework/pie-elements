@@ -14,7 +14,6 @@ const styles = (theme) => ({
   },
   tab: {
     backgroundColor: color.background(),
-    fontSize: theme.typography.fontSize,
   },
   stickyTabs: {
     background: color.background(),
