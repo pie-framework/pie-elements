@@ -2400,10 +2400,10 @@
     debug "^4.1.1"
     lodash "^4.17.11"
 
-"@pie-lib/graphing@^2.14.8":
-  version "2.14.8"
-  resolved "https://registry.yarnpkg.com/@pie-lib/graphing/-/graphing-2.14.8.tgz#9fb9f3e48f196793170c0d85df9548bdc1e45d2b"
-  integrity sha512-xg2/Py9jvHT0zFK2hSFx5qfOyB+ObolnEYk5/IMFrjvcJWwndjdm4O0lgMlD/cNroFbqGVzT8wn/votw4uJDew==
+"@pie-lib/graphing@^2.14.9":
+  version "2.14.9"
+  resolved "https://registry.yarnpkg.com/@pie-lib/graphing/-/graphing-2.14.9.tgz#e90575ac830a0a7f516733bbd54147e919438d0a"
+  integrity sha512-mpm4Yjjc0TEqkTo9a6slk+TZOtKEiirrdV/S6l8q68d95elQufXADwlX/dZjD0K3FOtogE5IEhm5tRJUNi/zhw==
   dependencies:
     "@mapbox/point-geometry" "^0.1.0"
     "@material-ui/core" "^3.8.3"
@@ -2632,10 +2632,10 @@
   resolved "https://registry.yarnpkg.com/@pie-lib/test-utils/-/test-utils-0.2.33.tgz#7632be69cbef25754e5f9fafbbcf94d2f0629ac4"
   integrity sha512-OWbvVHIzY5paEZUV4Fkv+H6kGX2d78uS2AOwBCXM+m9rlr6poMvsLUTcOMRIfKfSWw+ydhZ536V3X82kWRluWQ==
 
-"@pie-lib/text-select@^1.11.1":
-  version "1.11.1"
-  resolved "https://registry.yarnpkg.com/@pie-lib/text-select/-/text-select-1.11.1.tgz#e09c86f1c5fc5a4ed72c8675315523531779abc7"
-  integrity sha512-cJS0p2sFiIaE+mpTctpU/NfVLBCeWrtW2V+ZO+dJJINmKCPGbzq+IyxUOyElzsYi2RppavKEIAxeckZyX0vI0w==
+"@pie-lib/text-select@^1.11.2":
+  version "1.11.2"
+  resolved "https://registry.yarnpkg.com/@pie-lib/text-select/-/text-select-1.11.2.tgz#b06256e85f15684eed453e549cccc9a49cf4f88b"
+  integrity sha512-x2/rmjtNxM+HfI+BaAIIs81E0DCYMlcX0u4SH4ttFADAHlYolJOFSMEikaJmLlcjdjY6/2ppi5xUG8o2lWZ5sQ==
   dependencies:
     "@pie-framework/parse-english" "^1.0.0"
     "@pie-lib/render-ui" "^4.15.1"
