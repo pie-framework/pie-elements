@@ -254,7 +254,7 @@ export class Main extends React.Component {
     }
   };
 
-  onAddChoice = (index, label) => {
+  onAddChoice = (index, label, choiceIndex) => {
     const { respAreaChoices } = this.state;
     const { maxResponseAreaChoices } = this.props.configuration;
 
@@ -278,6 +278,7 @@ export class Main extends React.Component {
     }
 
     if ((respAreaChoices[index] || []).find((r) => prepareVal(r.label) === prepareVal(label))) {
+      // show warning for duplicated answers
       this.setState({
         warning: {
           open: true,
@@ -292,16 +293,22 @@ export class Main extends React.Component {
       return;
     }
 
-    const value =
-      (respAreaChoices[index] &&
-        max(respAreaChoices[index].map((c) => parseInt(c.value)).filter((val) => !isNaN(val)))) ||
-      0;
+    if (choiceIndex >= 0 && respAreaChoices[index]?.[choiceIndex]) {
+      // we need to update the choice label with the new value
+      respAreaChoices[index][choiceIndex].label = label;
+    } else {
+      // add a new choice
+      const value =
+        (respAreaChoices[index] &&
+          max(respAreaChoices[index].map((c) => parseInt(c.value)).filter((val) => !isNaN(val)))) ||
+        0;
 
-    respAreaChoices[index].push({
-      label,
-      value: `${value + 1}`,
-      correct: false,
-    });
+      respAreaChoices[index].push({
+        label,
+        value: `${value + 1}`,
+        correct: false,
+      });
+    }
 
     this.onModelChange({ choices: cloneDeep(respAreaChoices) });
   };

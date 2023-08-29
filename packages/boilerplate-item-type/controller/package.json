@@ -1,0 +1,19 @@
+{
+  "name": "@pie-element/boilerplate-item-type-controller",
+  "private": true,
+  "version": "1.1.0",
+  "description": "",
+  "main": "lib/index.js",
+  "module": "src/index.js",
+  "dependencies": {
+    "@pie-lib/controller-utils": "^0.2.44",
+    "@pie-lib/feedback": "^0.4.43",
+    "debug": "^3.1.0",
+    "lodash": "^4.17.15"
+  },
+  "devDependencies": {
+    "lodash": "^4.17.15"
+  },
+  "author": "",
+  "license": "ISC"
+}

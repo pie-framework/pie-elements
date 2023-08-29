@@ -1,6 +1,6 @@
 {
   "name": "@pie-element/passage",
-  "version": "1.11.8",
+  "version": "1.11.9",
   "publishConfig": {
     "access": "public"
   },
