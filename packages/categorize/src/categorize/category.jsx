@@ -67,6 +67,7 @@ const styles = (theme) => ({
   category: {
     display: 'flex',
     flexDirection: 'column',
+    flex: 2
   },
 });
 
