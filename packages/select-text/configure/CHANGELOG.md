@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.9.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@6.9.6...@pie-element/select-text-configure@6.9.7) (2023-08-29)
+
+
+### Bug Fixes
+
+* updated pie-lib PD-3117, PD-3134, PD-3005 ([d60efe2](https://github.com/pie-framework/pie-elements/commit/d60efe250eabee5aae410e00f1ccaf47da12850a))
+
+
+
+
+
 ## [6.9.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@6.9.5...@pie-element/select-text-configure@6.9.6) (2023-08-21)
 
 
