@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-controller@6.3.3...@pie-element/ebsr-controller@6.4.0) (2023-08-15)
+
+
+### Bug Fixes
+
+* updated pie-lib to fix PD-2802, PD-3050, PD-3051 ([34b4dd7](https://github.com/pie-framework/pie-elements/commit/34b4dd7ba18f4c18589975921cc9d127926f8294))
+
+
+### Features
+
+* **ebsr:** add translator PD-1208 ([a164196](https://github.com/pie-framework/pie-elements/commit/a164196379ba627e37a25aafe2cd92711df54941))
+
+
+
+
+
 ## [6.3.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-controller@6.3.2...@pie-element/ebsr-controller@6.3.3) (2023-07-06)
 
 

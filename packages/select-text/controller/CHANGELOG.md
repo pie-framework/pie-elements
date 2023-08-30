@@ -3,6 +3,59 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.8.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-controller@4.8.1...@pie-element/select-text-controller@4.8.2) (2023-08-29)
+
+
+### Bug Fixes
+
+* updated pie-lib PD-3117, PD-3134, PD-3005 ([d60efe2](https://github.com/pie-framework/pie-elements/commit/d60efe250eabee5aae410e00f1ccaf47da12850a))
+
+
+
+
+
+## [4.8.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-controller@4.8.0...@pie-element/select-text-controller@4.8.1) (2023-08-21)
+
+**Note:** Version bump only for package @pie-element/select-text-controller
+
+
+
+
+
+# [4.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-controller@4.7.0...@pie-element/select-text-controller@4.8.0) (2023-08-16)
+
+
+### Bug Fixes
+
+* updated pie-libs Pd-1163 ([076f321](https://github.com/pie-framework/pie-elements/commit/076f3212856ddd39e5643f4aeecc65fbb9ad8f9c))
+
+
+### Features
+
+* **select-text:** PD-1163 - add legend for icons in eval mode ([01c8920](https://github.com/pie-framework/pie-elements/commit/01c8920f58cb9dcbc4ce624223f753e49178bd22))
+
+
+
+
+
+# [4.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-controller@4.6.10...@pie-element/select-text-controller@4.7.0) (2023-08-15)
+
+
+### Bug Fixes
+
+* updated pie-libs Pd-1163 ([300c1db](https://github.com/pie-framework/pie-elements/commit/300c1db1658ce85ca58f3cc2981b604aefbf9f01))
+
+
+### Features
+
+* **select-text:** design updates in Evaluate ([b7ed769](https://github.com/pie-framework/pie-elements/commit/b7ed769ac7dcc494204094b47c76d5ad46eec35f))
+* **select-text:** PD-1163 - add santity check for tokens in missing answers method ([eb60f30](https://github.com/pie-framework/pie-elements/commit/eb60f3078844ef2347bf193228f164abe9e85ec8))
+* **select-text:** PD-1163 select comments when necesarry ([d99fb2f](https://github.com/pie-framework/pie-elements/commit/d99fb2f9cffec2923166128009d0f6452a4d7b43))
+
+
+
+
+
 ## [4.6.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-controller@4.6.9...@pie-element/select-text-controller@4.6.10) (2023-07-24)
 
 

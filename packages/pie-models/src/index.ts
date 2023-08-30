@@ -1,5 +1,6 @@
 export { PieItem } from './PieItem';
 export { MultipleChoicePie, MultipleChoiceConfigure } from './pie/multiple-choice';
+export { BoilerplateItemTypePie, BoilerplateItemTypeConfigure } from './pie/boilerplate-item-type';
 export { CategorizePie, CategorizeConfigure } from './pie/categorize';
 export { CalculatorPie } from './pie/calculator';
 export { DragInTheBlankPie, DragInTheBlankConfigure } from './pie/drag-in-the-blank';

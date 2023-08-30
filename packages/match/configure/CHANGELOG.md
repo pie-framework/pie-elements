@@ -3,6 +3,39 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.11.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-configure@5.11.4...@pie-element/match-configure@5.11.5) (2023-08-21)
+
+
+### Bug Fixes
+
+* update pie-libs PD-3119 ([01c474b](https://github.com/pie-framework/pie-elements/commit/01c474bf9396374dc86b9248651206672b765af6))
+
+
+
+
+
+## [5.11.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-configure@5.11.3...@pie-element/match-configure@5.11.4) (2023-08-21)
+
+**Note:** Version bump only for package @pie-element/match-configure
+
+
+
+
+
+## [5.11.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-configure@5.11.2...@pie-element/match-configure@5.11.3) (2023-08-15)
+
+
+### Bug Fixes
+
+* update pie-libs PD-3049, PD-2916, PD-2059 ([0e800b5](https://github.com/pie-framework/pie-elements/commit/0e800b54b852304d222a292400362e0870f0cc9a))
+* updated pie-lib to fix PD-2802, PD-3050, PD-3051 ([34b4dd7](https://github.com/pie-framework/pie-elements/commit/34b4dd7ba18f4c18589975921cc9d127926f8294))
+* updated pie-libs Pd-1163 ([300c1db](https://github.com/pie-framework/pie-elements/commit/300c1db1658ce85ca58f3cc2981b604aefbf9f01))
+* **match:** highlight in red unselected response when no correct response defined PD-2916 ([f7137d5](https://github.com/pie-framework/pie-elements/commit/f7137d5f0d71aee00cb1160c5620bdc88b38423e))
+
+
+
+
+
 ## [5.11.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-configure@5.11.1...@pie-element/match-configure@5.11.2) (2023-07-24)
 
 

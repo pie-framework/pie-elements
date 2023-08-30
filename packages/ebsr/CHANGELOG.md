@@ -3,6 +3,44 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.12.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@8.12.1...@pie-element/ebsr@8.12.2) (2023-08-21)
+
+
+### Bug Fixes
+
+* update pie-libs PD-3119 ([01c474b](https://github.com/pie-framework/pie-elements/commit/01c474bf9396374dc86b9248651206672b765af6))
+
+
+
+
+
+## [8.12.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@8.12.0...@pie-element/ebsr@8.12.1) (2023-08-21)
+
+**Note:** Version bump only for package @pie-element/ebsr
+
+
+
+
+
+# [8.12.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@8.11.2...@pie-element/ebsr@8.12.0) (2023-08-15)
+
+
+### Bug Fixes
+
+* update pie-libs PD-3049, PD-2916, PD-2059 ([0e800b5](https://github.com/pie-framework/pie-elements/commit/0e800b54b852304d222a292400362e0870f0cc9a))
+* updated pie-lib to fix PD-2802, PD-3050, PD-3051 ([34b4dd7](https://github.com/pie-framework/pie-elements/commit/34b4dd7ba18f4c18589975921cc9d127926f8294))
+* updated pie-libs Pd-1163 ([300c1db](https://github.com/pie-framework/pie-elements/commit/300c1db1658ce85ca58f3cc2981b604aefbf9f01))
+
+
+### Features
+
+* **ebsr:** add ebsr logic for configuration - translations PD-2795 ([2f6b3c6](https://github.com/pie-framework/pie-elements/commit/2f6b3c6ba619a296034a32b261141d21fc74b5a6))
+* **ebsr:** add translator PD-1208 ([a164196](https://github.com/pie-framework/pie-elements/commit/a164196379ba627e37a25aafe2cd92711df54941))
+
+
+
+
+
 ## [8.11.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@8.11.1...@pie-element/ebsr@8.11.2) (2023-07-24)
 
 
