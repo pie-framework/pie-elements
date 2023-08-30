@@ -287,13 +287,12 @@ export class Main extends React.Component {
       promptEnabled,
       rationaleEnabled,
       spellCheckEnabled,
-      editSourceEnabled,
       teacherInstructionsEnabled,
       toolbarEditorPosition,
     } = model || {};
 
     const choicePlugins = {
-      html: { disabled: !editSourceEnabled  },
+      html: { disabled: !editSource.enabled  },
     };
 
     const { choicesErrors = {}, responseAreasError } = errors || {};
@@ -320,7 +319,7 @@ export class Main extends React.Component {
       spellCheckEnabled: spellCheck.settings && toggle(spellCheck.label),
       playerSpellCheckEnabled: playerSpellCheck.settings && toggle(playerSpellCheck.label),
       rubricEnabled: withRubric?.settings && toggle(withRubric?.label),
-      editSourceEnabled: editSource.settings && toggle(editSource.label),
+      'editSource.enabled': editSource?.settings && toggle(editSource.label, true),
     };
 
     return (
@@ -355,6 +354,7 @@ export class Main extends React.Component {
               uploadSoundSupport={uploadSoundSupport}
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               mathMlOptions={mathMlOptions}
+              pluginProps={choicePlugins}
             />
           </InputContainer>
         )}
@@ -375,6 +375,7 @@ export class Main extends React.Component {
               uploadSoundSupport={uploadSoundSupport}
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               mathMlOptions={mathMlOptions}
+              pluginProps={choicePlugins}
             />
           </InputContainer>
         )}
@@ -464,6 +465,7 @@ export class Main extends React.Component {
               uploadSoundSupport={uploadSoundSupport}
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               mathMlOptions={mathMlOptions}
+              pluginProps={choicePlugins}
             />
           </InputContainer>
         )}

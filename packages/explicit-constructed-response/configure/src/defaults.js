@@ -8,7 +8,6 @@ export default {
     toolbarEditorPosition: 'bottom',
     displayType: 'block',
     spellCheckEnabled: true,
-    editSourceEnabled: true,
     playerSpellCheckEnabled: true,
     choices: {
       0: [
@@ -80,10 +79,10 @@ export default {
       settings: false,
       enabled: true,
     },
-      editSource: {
+    editSource: {
       label: 'Edit Source',
-      settings: true,
-      enabled: true,
+      settings: false,
+      enabled: false,
     },
     playerSpellCheck: {
       label: 'Student Spellcheck',
