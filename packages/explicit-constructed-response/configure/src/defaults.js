@@ -79,6 +79,11 @@ export default {
       settings: false,
       enabled: true,
     },
+    editSource: {
+      label: 'Edit Source',
+      settings: false,
+      enabled: false,
+    },
     playerSpellCheck: {
       label: 'Student Spellcheck',
       settings: true,
