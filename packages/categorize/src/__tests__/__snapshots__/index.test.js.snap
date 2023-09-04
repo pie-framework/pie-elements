@@ -33,6 +33,7 @@ exports[`categorize renders snapshot 1`] = `
         }
         onDropChoice={[Function]}
         onRemoveChoice={[Function]}
+        rowLabels={Array []}
       />
     </div>
     <WithStyles(Choices)
@@ -86,6 +87,7 @@ exports[`categorize renders snapshot with rationale 1`] = `
         }
         onDropChoice={[Function]}
         onRemoveChoice={[Function]}
+        rowLabels={Array []}
       />
     </div>
     <WithStyles(Choices)
@@ -164,6 +166,7 @@ exports[`categorize renders snapshot with teacherInstructions 1`] = `
         }
         onDropChoice={[Function]}
         onRemoveChoice={[Function]}
+        rowLabels={Array []}
       />
     </div>
     <WithStyles(Choices)
