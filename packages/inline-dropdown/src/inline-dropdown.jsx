@@ -52,7 +52,7 @@ export class InlineDropdown extends React.Component {
 
   render() {
     const { showCorrectAnswer } = this.state;
-    const { classes, prompt, mode, rationale, teacherInstructions, choices, displayType } = this.props;
+    const { classes, prompt, mode, rationale, teacherInstructions, choices, displayType, language } = this.props;
     const showCorrectAnswerToggle = mode === 'evaluate';
     let choiceRationalesHaveText = false;
 
@@ -87,6 +87,7 @@ export class InlineDropdown extends React.Component {
           show={showCorrectAnswerToggle}
           toggled={showCorrectAnswer}
           onToggle={this.toggleShowCorrect}
+          language={language}
         />
 
         <DropDown {...this.props} showCorrectAnswer={showCorrectAnswer} />

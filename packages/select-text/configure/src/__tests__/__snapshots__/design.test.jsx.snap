@@ -19,6 +19,15 @@ exports[`design snapshot renders all items except feedback 1`] = `
             "label": "Highlight choices",
             "settings": true,
           },
+          "language": Object {
+            "enabled": false,
+            "label": "Specify Language",
+            "settings": false,
+          },
+          "languageChoices": Object {
+            "label": "Language Choices",
+            "options": Array [],
+          },
           "mathMlOptions": Object {
             "mmlEditing": false,
             "mmlOutput": false,
@@ -103,6 +112,8 @@ exports[`design snapshot renders all items except feedback 1`] = `
           "Settings": Object {
             "feedbackEnabled": false,
             "highlightChoices": undefined,
+            "language": false,
+            "language.enabled": false,
             "partialScoring": false,
           },
         }
@@ -200,6 +211,15 @@ exports[`design snapshot renders all items except the content input 1`] = `
             "label": "Highlight choices",
             "settings": true,
           },
+          "language": Object {
+            "enabled": false,
+            "label": "Specify Language",
+            "settings": false,
+          },
+          "languageChoices": Object {
+            "label": "Language Choices",
+            "options": Array [],
+          },
           "mathMlOptions": Object {
             "mmlEditing": false,
             "mmlOutput": false,
@@ -284,6 +304,8 @@ exports[`design snapshot renders all items except the content input 1`] = `
           "Settings": Object {
             "feedbackEnabled": false,
             "highlightChoices": undefined,
+            "language": false,
+            "language.enabled": false,
             "partialScoring": false,
           },
         }
@@ -369,6 +391,15 @@ exports[`design snapshot renders all items with defaultProps 1`] = `
             "label": "Highlight choices",
             "settings": true,
           },
+          "language": Object {
+            "enabled": false,
+            "label": "Specify Language",
+            "settings": false,
+          },
+          "languageChoices": Object {
+            "label": "Language Choices",
+            "options": Array [],
+          },
           "mathMlOptions": Object {
             "mmlEditing": false,
             "mmlOutput": false,
@@ -453,6 +484,8 @@ exports[`design snapshot renders all items with defaultProps 1`] = `
           "Settings": Object {
             "feedbackEnabled": undefined,
             "highlightChoices": undefined,
+            "language": false,
+            "language.enabled": false,
             "partialScoring": false,
           },
         }
@@ -550,6 +583,15 @@ exports[`design snapshot tokenizer renders with html entities 1`] = `
             "label": "Highlight choices",
             "settings": true,
           },
+          "language": Object {
+            "enabled": false,
+            "label": "Specify Language",
+            "settings": false,
+          },
+          "languageChoices": Object {
+            "label": "Language Choices",
+            "options": Array [],
+          },
           "mathMlOptions": Object {
             "mmlEditing": false,
             "mmlOutput": false,
@@ -634,6 +676,8 @@ exports[`design snapshot tokenizer renders with html entities 1`] = `
           "Settings": Object {
             "feedbackEnabled": undefined,
             "highlightChoices": undefined,
+            "language": false,
+            "language.enabled": false,
             "partialScoring": false,
           },
         }

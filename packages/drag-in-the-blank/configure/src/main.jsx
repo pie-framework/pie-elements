@@ -144,6 +144,8 @@ export class Main extends React.Component {
       maxImageHeight = {},
       withRubric = {},
       mathMlOptions = {},
+      language = {},
+      languageChoices = {},
     } = configuration || {};
     const {
       rationaleEnabled,
@@ -169,6 +171,8 @@ export class Main extends React.Component {
       duplicates: duplicates.settings && toggle(duplicates.label),
       lockChoiceOrder: lockChoiceOrder.settings && toggle(lockChoiceOrder.label),
       choicesPosition: choicesPosition.settings && dropdown(choicesPosition.label, ['above', 'below', 'left', 'right']),
+      'language.enabled': language.settings && toggle(language.label, true),
+      language: language.settings && language.enabled && dropdown(languageChoices.label, languageChoices.options),
     };
 
     const panelProperties = {

@@ -8,6 +8,11 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
     <Panel
       configuration={
         Object {
+          "editSource": Object {
+            "enabled": false,
+            "label": "Edit Source",
+            "settings": false,
+          },
           "language": Object {
             "enabled": false,
             "label": "Specify Language",
@@ -72,6 +77,7 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
       groups={
         Object {
           "Properties": Object {
+            "editSource.enabled": false,
             "playerSpellCheckEnabled": undefined,
             "promptEnabled": undefined,
             "rationaleEnabled": undefined,
@@ -177,6 +183,13 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
       maxImageWidth={300}
       nonEmpty={false}
       onChange={[Function]}
+      pluginProps={
+        Object {
+          "html": Object {
+            "disabled": true,
+          },
+        }
+      }
       spellCheck={true}
       toolbarOpts={
         Object {
@@ -211,6 +224,13 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
       maxImageWidth={300}
       nonEmpty={false}
       onChange={[Function]}
+      pluginProps={
+        Object {
+          "html": Object {
+            "disabled": true,
+          },
+        }
+      }
       spellCheck={true}
       toolbarOpts={
         Object {
@@ -270,6 +290,13 @@ There should be at least 1 and at most 10 response areas defined."
       }
     }
     onChange={[Function]}
+    pluginProps={
+      Object {
+        "html": Object {
+          "disabled": true,
+        },
+      }
+    }
     responseAreaProps={
       Object {
         "error": [Function],
@@ -385,6 +412,13 @@ There should be at least 1 and at most 10 response areas defined."
       maxImageHeight={300}
       maxImageWidth={300}
       onChange={[Function]}
+      pluginProps={
+        Object {
+          "html": Object {
+            "disabled": true,
+          },
+        }
+      }
       spellCheck={true}
       toolbarOpts={
         Object {
@@ -404,6 +438,11 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
     <Panel
       configuration={
         Object {
+          "editSource": Object {
+            "enabled": false,
+            "label": "Edit Source",
+            "settings": false,
+          },
           "language": Object {
             "enabled": false,
             "label": "Specify Language",
@@ -468,6 +507,7 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
       groups={
         Object {
           "Properties": Object {
+            "editSource.enabled": false,
             "playerSpellCheckEnabled": undefined,
             "promptEnabled": undefined,
             "rationaleEnabled": undefined,
@@ -599,6 +639,13 @@ There should be at least 1 and at most 10 response areas defined."
       }
     }
     onChange={[Function]}
+    pluginProps={
+      Object {
+        "html": Object {
+          "disabled": true,
+        },
+      }
+    }
     responseAreaProps={
       Object {
         "error": [Function],

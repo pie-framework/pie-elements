@@ -97,6 +97,7 @@ export class Choice extends React.Component {
     const { classes, onDelete, spellCheck, error, showMaxLength } = this.props;
     const inputProps = showMaxLength ? {} : { maxLength: 25 };
 
+
     return (
       <React.Fragment>
         <div
@@ -253,8 +254,8 @@ export class AlternateSection extends React.Component {
               <em>{value ? 'Remove selection' : 'Select a response'}</em>
             </MenuItem>
             {selectChoices.map((c, index) => (
-              <MenuItem key={index} value={c.value}>
-                {c.label}
+              <MenuItem key={index} value={c?.value}>
+                {c?.label}
               </MenuItem>
             ))}
           </Select>
