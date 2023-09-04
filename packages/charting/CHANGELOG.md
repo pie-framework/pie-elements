@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@6.1.5...@pie-element/charting@6.2.0) (2023-09-04)
+
+
+### Bug Fixes
+
+* update pie-libs PD-3051 ([1e1a7a3](https://github.com/pie-framework/pie-elements/commit/1e1a7a38732eff5585ad789aea5a08c5e94720ae))
+* updated pie-libs PD-2765, PD-3051 ([e6f5b17](https://github.com/pie-framework/pie-elements/commit/e6f5b17c95faf426898f897651863089a54ff3ff))
+
+
+### Features
+
+* **charting:** translations PD-2802 ([83161ec](https://github.com/pie-framework/pie-elements/commit/83161ec7676abf6e0bb26e565b7b7f189f1e6c41))
+
+
+
+
+
 ## [6.1.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@6.1.4...@pie-element/charting@6.1.5) (2023-08-21)
 
 

@@ -3,6 +3,34 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@4.14.2...@pie-element/explicit-constructed-response@5.0.0) (2023-09-04)
+
+
+### Bug Fixes
+
+* update pie-libs PD-3051 ([1e1a7a3](https://github.com/pie-framework/pie-elements/commit/1e1a7a38732eff5585ad789aea5a08c5e94720ae))
+* updated pie-libs PD-2765, PD-3051 ([e6f5b17](https://github.com/pie-framework/pie-elements/commit/e6f5b17c95faf426898f897651863089a54ff3ff))
+
+
+### chore
+
+* updated pie-libs ([ff37da4](https://github.com/pie-framework/pie-elements/commit/ff37da472c0766afdf73c23b6b2026899962b24b))
+
+
+### Features
+
+* **ecr:** add sanity checks for choices PD-2765 ([272d669](https://github.com/pie-framework/pie-elements/commit/272d669dcd42f5ce20116344bc9e23192d4848f2))
+* **explicit-constructed-response:** refactor authoring view settings for edit source PD-2765 ([3a81be7](https://github.com/pie-framework/pie-elements/commit/3a81be7d21aa4eb0740295141c5724e0a154aa62))
+
+
+### BREAKING CHANGES
+
+* updated editable-html major version.
+
+
+
+
+
 ## [4.14.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@4.14.1...@pie-element/explicit-constructed-response@4.14.2) (2023-08-21)
 
 

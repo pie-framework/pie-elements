@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.11.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@5.10.5...@pie-element/hotspot-configure@5.11.0) (2023-09-04)
+
+
+### Bug Fixes
+
+* update pie-libs PD-3051 ([1e1a7a3](https://github.com/pie-framework/pie-elements/commit/1e1a7a38732eff5585ad789aea5a08c5e94720ae))
+* update snapshots ([7f7432d](https://github.com/pie-framework/pie-elements/commit/7f7432d4e79747bd8824470ea19ebf7d40617fc5))
+* updated pie-libs PD-2765, PD-3051 ([e6f5b17](https://github.com/pie-framework/pie-elements/commit/e6f5b17c95faf426898f897651863089a54ff3ff))
+
+
+### Features
+
+* **hotspot:** translations PD-2802 PD-2795 ([15b03fd](https://github.com/pie-framework/pie-elements/commit/15b03fd1d6659364c4d765406c807d30dc5375d1))
+
+
+
+
+
 ## [5.10.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@5.10.4...@pie-element/hotspot-configure@5.10.5) (2023-08-21)
 
 

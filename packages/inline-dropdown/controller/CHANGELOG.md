@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-controller@4.2.2...@pie-element/inline-dropdown-controller@4.3.0) (2023-09-04)
+
+
+### Features
+
+* **inline-dropdown:** translations PD-2802 PD-2795 ([2f8cf08](https://github.com/pie-framework/pie-elements/commit/2f8cf08ac692bcf95c4f51ae10d1d06313314cd1))
+
+
+
+
+
 ## [4.2.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-controller@4.2.1...@pie-element/inline-dropdown-controller@4.2.2) (2023-07-06)
 
 

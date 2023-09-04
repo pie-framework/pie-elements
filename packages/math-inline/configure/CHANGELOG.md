@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.11.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@6.11.2...@pie-element/math-inline-configure@6.11.3) (2023-09-04)
+
+
+### Bug Fixes
+
+* update pie-libs PD-3051 ([1e1a7a3](https://github.com/pie-framework/pie-elements/commit/1e1a7a38732eff5585ad789aea5a08c5e94720ae))
+* updated pie-libs PD-2765, PD-3051 ([e6f5b17](https://github.com/pie-framework/pie-elements/commit/e6f5b17c95faf426898f897651863089a54ff3ff))
+
+
+
+
+
 ## [6.11.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@6.11.1...@pie-element/math-inline-configure@6.11.2) (2023-08-21)
 
 

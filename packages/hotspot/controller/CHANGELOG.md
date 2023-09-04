@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-controller@3.6.3...@pie-element/hotspot-controller@3.7.0) (2023-09-04)
+
+
+### Features
+
+* **hotspot:** translations PD-2802 PD-2795 ([15b03fd](https://github.com/pie-framework/pie-elements/commit/15b03fd1d6659364c4d765406c807d30dc5375d1))
+
+
+
+
+
 ## [3.6.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-controller@3.6.2...@pie-element/hotspot-controller@3.6.3) (2023-07-06)
 
 

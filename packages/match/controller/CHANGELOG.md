@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.9.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-controller@4.8.6...@pie-element/match-controller@4.9.0) (2023-09-04)
+
+
+### Features
+
+* **match:** translations PD-2802 PD-2795 ([ff0d065](https://github.com/pie-framework/pie-elements/commit/ff0d065dd15d4f2cca94cf521123b9b466b1d424))
+
+
+
+
+
 ## [4.8.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-controller@4.8.5...@pie-element/match-controller@4.8.6) (2023-07-06)
 
 

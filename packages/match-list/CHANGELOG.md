@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.18.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@1.17.12...@pie-element/match-list@1.18.0) (2023-09-04)
+
+
+### Features
+
+* **match-list:** translations PD-2802 PD-2795 ([840a94d](https://github.com/pie-framework/pie-elements/commit/840a94d2066f1e62c03774ad408c1e72c6a2c959))
+* **select-text, inline-dropdown:** PD-2797-PD-2802 update documentation ([b8ba6c7](https://github.com/pie-framework/pie-elements/commit/b8ba6c7d12eea9d0d729a38e18e87a21ea496a8b))
+
+
+
+
+
 ## [1.17.12](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@1.17.11...@pie-element/match-list@1.17.12) (2023-08-21)
 
 **Note:** Version bump only for package @pie-element/match-list

@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.13.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-configure@4.12.0...@pie-element/inline-dropdown-configure@4.13.0) (2023-09-04)
+
+
+### Bug Fixes
+
+* update pie-libs PD-3051 ([1e1a7a3](https://github.com/pie-framework/pie-elements/commit/1e1a7a38732eff5585ad789aea5a08c5e94720ae))
+* update snapshots ([7f7432d](https://github.com/pie-framework/pie-elements/commit/7f7432d4e79747bd8824470ea19ebf7d40617fc5))
+* updated pie-libs PD-2765, PD-3051 ([e6f5b17](https://github.com/pie-framework/pie-elements/commit/e6f5b17c95faf426898f897651863089a54ff3ff))
+
+
+### Features
+
+* **inline-dropdown:** translations PD-2802 PD-2795 ([2f8cf08](https://github.com/pie-framework/pie-elements/commit/2f8cf08ac692bcf95c4f51ae10d1d06313314cd1))
+
+
+
+
+
 # [4.12.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-configure@4.11.5...@pie-element/inline-dropdown-configure@4.12.0) (2023-08-29)
 
 
