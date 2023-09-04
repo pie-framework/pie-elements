@@ -65,14 +65,18 @@ export class Main extends React.Component {
     const { showCorrectAnswer } = this.state;
     const { classes, model, session } = this.props;
     const { config, mode } = model;
-    const { prompt } = config;
+    const { prompt, language } = config;
 
     return (
       <div className={classes.mainContainer}>
         <PreviewPrompt className="prompt" prompt={prompt} />
 
-        <CorrectAnswerToggle show={mode === 'evaluate'} toggled={showCorrectAnswer} onToggle={this.toggleShowCorrect} />
-
+        <CorrectAnswerToggle
+          show={mode === 'evaluate'}
+          toggled={showCorrectAnswer}
+          onToggle={this.toggleShowCorrect}
+          language={language}
+        />
         <AnswerArea
           instanceId={this.instanceId}
           model={model}

@@ -9,7 +9,7 @@ import GeneralConfigBlock from './general-config-block';
 import AnswerConfigBlock from './answer-config-block';
 
 const log = debug('@pie-element:match:configure');
-const { Panel, toggle, radio } = settings;
+const { Panel, toggle, radio, dropdown } = settings;
 
 const styles = (theme) => ({
   promptHolder: {
@@ -178,6 +178,8 @@ class Configure extends React.Component {
       studentInstructions = {},
       teacherInstructions = {},
       withRubric = {},
+      language = {},
+      languageChoices = {},
     } = configuration || {};
     const {
       feedbackEnabled,
@@ -200,6 +202,8 @@ class Configure extends React.Component {
       partialScoring: partialScoring.settings && toggle(partialScoring.label),
       lockChoiceOrder: lockChoiceOrder.settings && toggle(lockChoiceOrder.label),
       feedbackEnabled: feedback.settings && toggle(feedback.label),
+      'language.enabled': language.settings && toggle(language.label, true),
+      language: language.settings && language.enabled && dropdown(languageChoices.label, languageChoices.options),
     };
     const panelProperties = {
       teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),

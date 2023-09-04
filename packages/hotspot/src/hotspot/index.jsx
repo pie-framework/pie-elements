@@ -72,6 +72,7 @@ class HotspotComponent extends React.Component {
         teacherInstructions,
         strokeWidth,
         responseCorrect,
+        language,
       },
       onSelectChoice,
       classes,
@@ -98,6 +99,7 @@ class HotspotComponent extends React.Component {
             show={showCorrectAnswerToggle}
             toggled={showCorrect}
             onToggle={this.onToggle.bind(this)}
+            language={language}
           />
         )}
 

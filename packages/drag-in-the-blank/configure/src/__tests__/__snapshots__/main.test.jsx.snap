@@ -16,6 +16,15 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
             "label": "Duplicates",
             "settings": true,
           },
+          "language": Object {
+            "enabled": false,
+            "label": "Specify Language",
+            "settings": false,
+          },
+          "languageChoices": Object {
+            "label": "Language Choices",
+            "options": Array [],
+          },
           "lockChoiceOrder": Object {
             "label": "Lock Choice Order",
             "settings": true,
@@ -76,6 +85,8 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
           "Settings": Object {
             "choicesPosition": undefined,
             "duplicates": undefined,
+            "language": false,
+            "language.enabled": false,
             "lockChoiceOrder": undefined,
             "partialScoring": false,
           },
@@ -360,6 +371,15 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
             "label": "Duplicates",
             "settings": true,
           },
+          "language": Object {
+            "enabled": false,
+            "label": "Specify Language",
+            "settings": false,
+          },
+          "languageChoices": Object {
+            "label": "Language Choices",
+            "options": Array [],
+          },
           "lockChoiceOrder": Object {
             "label": "Lock Choice Order",
             "settings": true,
@@ -420,6 +440,8 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
           "Settings": Object {
             "choicesPosition": undefined,
             "duplicates": undefined,
+            "language": false,
+            "language.enabled": false,
             "lockChoiceOrder": undefined,
             "partialScoring": false,
           },

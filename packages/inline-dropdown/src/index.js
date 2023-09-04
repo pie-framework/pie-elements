@@ -42,6 +42,7 @@ export default class RootInlineDropdown extends HTMLElement {
         choices: this._model.choices,
         value: this._session.value,
         feedback: this._model.feedback,
+        language:  this._model.language,
         onChange: this.changeSession,
       });
 

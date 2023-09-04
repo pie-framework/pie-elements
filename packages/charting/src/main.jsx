@@ -96,7 +96,12 @@ export class Main extends React.Component {
 
         {prompt && <PreviewPrompt className="prompt" prompt={prompt} />}
 
-        <CorrectAnswerToggle show={showToggle} toggled={showingCorrect} onToggle={this.toggleCorrect} />
+        <CorrectAnswerToggle
+          show={showToggle}
+          toggled={showingCorrect}
+          onToggle={this.toggleCorrect}
+          language={language}
+        />
 
         {showingCorrect && showToggle ? (
           <Chart

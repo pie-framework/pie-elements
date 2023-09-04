@@ -21,7 +21,7 @@ import Info from '@material-ui/icons/Info';
 import InlineDropdownToolbar from './inline-dropdown-toolbar';
 import { generateValidationMessage } from './utils';
 
-const { toggle, Panel } = settings;
+const { toggle, Panel, dropdown } = settings;
 
 const styles = (theme) => ({
   promptHolder: {
@@ -350,6 +350,8 @@ export class Main extends React.Component {
       teacherInstructions = {},
       withRubric = {},
       mathMlOptions = {},
+      language = {},
+      languageChoices = {},
     } = configuration || {};
     const {
       choiceRationaleEnabled,
@@ -415,6 +417,8 @@ export class Main extends React.Component {
     const panelSettings = {
       partialScoring: partialScoring.settings && toggle(partialScoring.label),
       lockChoiceOrder: lockChoiceOrder.settings && toggle(lockChoiceOrder.label),
+      'language.enabled': language.settings && toggle(language.label, true),
+      language: language.settings && language.enabled && dropdown(languageChoices.label, languageChoices.options),
     };
     const panelProperties = {
       teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),

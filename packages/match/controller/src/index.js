@@ -229,6 +229,7 @@ export function model(question, session, env, updateSession) {
         feedback,
         disabled: env.mode !== 'gather',
         view: env.mode === 'view',
+        language: normalizedQuestion.language
       };
 
       if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {

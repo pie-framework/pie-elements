@@ -45,6 +45,11 @@ export interface MatchListPie extends PieModel {
 
   /** Indicates if duplicates are allowed */
   duplicates?: boolean;
+
+  /** Indicates the language of the component
+   * Supported options: en, es, en_US, en-US, es_ES, es-ES, es_MX, es-MX
+   */
+  language?: string;
 }
 
 /**

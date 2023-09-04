@@ -13,7 +13,7 @@ import EditableHtml from '@pie-lib/editable-html';
 import Tooltip from '@material-ui/core/Tooltip';
 import { generateValidationMessage } from './utils';
 
-const { Panel, toggle, radio } = settings;
+const { Panel, toggle, radio, dropdown } = settings;
 
 const log = debug('@pie-element:select-text:configure');
 
@@ -146,6 +146,8 @@ export class Design extends React.Component {
       maxImageHeight = {},
       withRubric = {},
       mathMlOptions = {},
+      language = {},
+      languageChoices = {},
     } = configuration || {};
     const {
       errors,
@@ -176,6 +178,8 @@ export class Design extends React.Component {
       partialScoring: partialScoring.settings && toggle(partialScoring.label),
       highlightChoices: highlightChoices.settings && toggle(highlightChoices.label),
       feedbackEnabled: feedback.settings && toggle(feedback.label),
+      'language.enabled': language.settings && toggle(language.label, true),
+      language: language.settings && language.enabled && dropdown(languageChoices.label, languageChoices.options),
     };
 
     const panelProperties = {
