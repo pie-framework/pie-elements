@@ -71,7 +71,7 @@ class RectComponent extends React.Component {
 
     return (
       <Group
-          classes={classes.base}
+          classes={classes.group}
           onMouseLeave={this.handleMouseLeave}
           onMouseEnter={this.handleMouseEnter}
       >
@@ -94,11 +94,12 @@ class RectComponent extends React.Component {
         { this.state.hovered && (
             <Transformer
               ref={this.trRef}
+              rotateEnabled={false}
               boundBoxFunc={(oldBox, newBox) => {
                 // limit resize
-                // if (newBox.width < 5 || newBox.height < 5) {
-                //return oldBox;
-                //}
+                 if (newBox.width < 10 || newBox.height < 10) {
+                    return oldBox;
+                }
                 return newBox;
               }}
             /> )}
