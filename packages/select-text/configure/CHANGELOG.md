@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.10.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@6.9.7...@pie-element/select-text-configure@6.10.0) (2023-09-04)
+
+
+### Bug Fixes
+
+* update pie-libs PD-3051 ([1e1a7a3](https://github.com/pie-framework/pie-elements/commit/1e1a7a38732eff5585ad789aea5a08c5e94720ae))
+* update snapshots ([7f7432d](https://github.com/pie-framework/pie-elements/commit/7f7432d4e79747bd8824470ea19ebf7d40617fc5))
+* updated pie-libs PD-2765, PD-3051 ([e6f5b17](https://github.com/pie-framework/pie-elements/commit/e6f5b17c95faf426898f897651863089a54ff3ff))
+
+
+### Features
+
+* **select-text:** translations PD-2802 PD-2795 ([0c95953](https://github.com/pie-framework/pie-elements/commit/0c95953a298005c968f7af88abb71a9c3ab4357f))
+
+
+
+
+
 ## [6.9.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@6.9.6...@pie-element/select-text-configure@6.9.7) (2023-08-29)
 
 

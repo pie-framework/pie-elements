@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.11.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-configure@4.10.5...@pie-element/drag-in-the-blank-configure@4.11.0) (2023-09-04)
+
+
+### Bug Fixes
+
+* update pie-libs PD-3051 ([1e1a7a3](https://github.com/pie-framework/pie-elements/commit/1e1a7a38732eff5585ad789aea5a08c5e94720ae))
+* update snapshots ([7f7432d](https://github.com/pie-framework/pie-elements/commit/7f7432d4e79747bd8824470ea19ebf7d40617fc5))
+* updated pie-libs PD-2765, PD-3051 ([e6f5b17](https://github.com/pie-framework/pie-elements/commit/e6f5b17c95faf426898f897651863089a54ff3ff))
+
+
+### Features
+
+* **drag-in-the-blank:** translations PD-2802 PD-2795 ([4cf0868](https://github.com/pie-framework/pie-elements/commit/4cf08686055b6cd658aa0f73a14ce1aa4f7246a3))
+
+
+
+
+
 ## [4.10.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-configure@4.10.4...@pie-element/drag-in-the-blank-configure@4.10.5) (2023-08-21)
 
 

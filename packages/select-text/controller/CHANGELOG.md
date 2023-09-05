@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.9.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-controller@4.8.2...@pie-element/select-text-controller@4.9.0) (2023-09-04)
+
+
+### Features
+
+* **select-text:** translations PD-2802 PD-2795 ([0c95953](https://github.com/pie-framework/pie-elements/commit/0c95953a298005c968f7af88abb71a9c3ab4357f))
+
+
+
+
+
 ## [4.8.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-controller@4.8.1...@pie-element/select-text-controller@4.8.2) (2023-08-29)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.3.0...@pie-element/pie-models@13.4.0) (2023-09-04)
+
+
+### Features
+
+* add docs ([d5ee3c0](https://github.com/pie-framework/pie-elements/commit/d5ee3c011cb776e2aa472bdf7f30599f1aa013d7))
+
+
+
+
+
 # [13.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.2.0...@pie-element/pie-models@13.3.0) (2023-08-29)
 
 

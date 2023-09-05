@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.12.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-configure@5.11.5...@pie-element/match-configure@5.12.0) (2023-09-04)
+
+
+### Bug Fixes
+
+* update pie-libs PD-3051 ([1e1a7a3](https://github.com/pie-framework/pie-elements/commit/1e1a7a38732eff5585ad789aea5a08c5e94720ae))
+* updated pie-libs PD-2765, PD-3051 ([e6f5b17](https://github.com/pie-framework/pie-elements/commit/e6f5b17c95faf426898f897651863089a54ff3ff))
+
+
+### Features
+
+* **match:** translations PD-2802 PD-2795 ([ff0d065](https://github.com/pie-framework/pie-elements/commit/ff0d065dd15d4f2cca94cf521123b9b466b1d424))
+
+
+
+
+
 ## [5.11.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-configure@5.11.4...@pie-element/match-configure@5.11.5) (2023-08-21)
 
 
