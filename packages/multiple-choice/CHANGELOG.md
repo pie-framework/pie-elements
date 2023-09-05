@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.13.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@7.13.6...@pie-element/multiple-choice@7.13.7) (2023-09-05)
+
+
+### Bug Fixes
+
+* update pie-libs PD-2765 ([f03972d](https://github.com/pie-framework/pie-elements/commit/f03972dda33ff5d4c0343f094fd33acadad30cb4))
+
+
+
+
+
 ## [7.13.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@7.13.5...@pie-element/multiple-choice@7.13.6) (2023-09-04)
 
 

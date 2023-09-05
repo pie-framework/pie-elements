@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.13.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@6.13.3...@pie-element/math-inline@6.13.4) (2023-09-05)
+
+
+### Bug Fixes
+
+* update pie-libs PD-2765 ([f03972d](https://github.com/pie-framework/pie-elements/commit/f03972dda33ff5d4c0343f094fd33acadad30cb4))
+
+
+
+
+
 ## [6.13.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@6.13.2...@pie-element/math-inline@6.13.3) (2023-09-04)
 
 
