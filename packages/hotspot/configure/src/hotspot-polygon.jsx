@@ -3,11 +3,9 @@ import PropTypes from 'prop-types';
 import { Group, Line, Circle } from 'react-konva';
 import { withStyles } from '@material-ui/core/styles/index';
 
-class PolComponent extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+const HOVERED_COLOR = '#00BFFF';
 
+class PolComponent extends React.Component {
   getOffset = (points) => {
     const xList = points.map((p) => p.x);
     const yList = points.map((p) => p.y);
@@ -120,7 +118,7 @@ class PolComponent extends React.Component {
     const { points, x, y, hovered } = this.state;
 
     const calculatedStrokeWidth = correct ? strokeWidth : hovered ? 1 : 0;
-    const calculatedStroke = correct ? outlineColor : hovered ? '#00BFFF' : '';
+    const calculatedStroke = correct ? outlineColor : hovered ? HOVERED_COLOR : '';
 
     return (
       <Group classes={classes.group} onMouseLeave={this.handleMouseLeave} onMouseEnter={this.handleMouseEnter}>
@@ -149,7 +147,7 @@ class PolComponent extends React.Component {
               y={point.y}
               radius={5}
               fill={'white'}
-              stroke={'#00BFFF'}
+              stroke={HOVERED_COLOR}
               strokeWidth={1}
               draggable
               onDragMove={(e) => {
