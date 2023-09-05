@@ -1,9 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Rect, Group } from 'react-konva';
+import { Rect, Group, Transformer } from 'react-konva';
 import { withStyles } from '@material-ui/core/styles/index';
 
 class RectComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      hovered: false,
+    };
+    this.shapeRef = React.createRef();
+    this.trRef = React.createRef();
+  }
+
   handleClick = (e) => {
     const { width, height, isDrawing, onClick, id } = this.props;
     if (width < 0 && height < 0 && isDrawing) {
@@ -15,9 +24,13 @@ class RectComponent extends React.Component {
 
   handleMouseEnter = () => {
     document.body.style.cursor = 'pointer';
+    this.setState({ hovered: true });
+    this.trRef.current.setNode(this.shapeRef.current);
+    this.trRef.current.getLayer().batchDraw();
   };
 
   handleMouseLeave = () => {
+    this.setState({ hovered: false });
     document.body.style.cursor = 'default';
   };
 
@@ -30,13 +43,36 @@ class RectComponent extends React.Component {
     });
   };
 
+  onResizeEnd = () => {
+    const { onDragEnd, id } = this.props;
+    // transformer is changing scale of the node
+    // and NOT its width or height
+    // but in the store we have only width and height
+    // to match the data better we will reset scale on transform end
+    const node = this.shapeRef.current;
+    const scaleX = node.scaleX();
+    const scaleY = node.scaleY();
+
+    // we will reset it back
+    node.scaleX(1);
+    node.scaleY(1);
+    onDragEnd(id, {
+      x: node.x(),
+      y: node.y(),
+      // set minimal value
+      width: Math.max(5, node.width() * scaleX),
+      height: Math.max(node.height() * scaleY),
+    });
+  };
+
   render() {
     const { classes, correct, height, hotspotColor, outlineColor, width, x, y, strokeWidth = 5 } = this.props;
 
     return (
-      <Group>
+      <Group classes={classes.group} onMouseLeave={this.handleMouseLeave} onMouseEnter={this.handleMouseEnter}>
         <Rect
           classes={classes.base}
+          ref={this.shapeRef}
           width={width}
           height={height}
           fill={hotspotColor}
@@ -45,12 +81,24 @@ class RectComponent extends React.Component {
           draggable
           stroke={outlineColor}
           strokeWidth={correct ? strokeWidth : 0}
-          onMouseLeave={this.handleMouseLeave}
-          onMouseEnter={this.handleMouseEnter}
           onDragEnd={this.handleOnDragEnd}
+          onTransformEnd={this.onResizeEnd}
           x={x}
           y={y}
         />
+        {this.state.hovered && (
+          <Transformer
+            ref={this.trRef}
+            rotateEnabled={false}
+            boundBoxFunc={(oldBox, newBox) => {
+              // limit resize
+              if (newBox.width < 10 || newBox.height < 10) {
+                return oldBox;
+              }
+              return newBox;
+            }}
+          />
+        )}
       </Group>
     );
   }
@@ -60,6 +108,10 @@ const styles = () => ({
   base: {
     cursor: 'pointer',
     opacity: 0.5,
+  },
+
+  group: {
+    padding: '12px',
   },
 });
 
