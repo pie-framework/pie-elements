@@ -4,7 +4,6 @@ import { Rect, Group, Transformer } from 'react-konva';
 import { withStyles } from '@material-ui/core/styles/index';
 
 class RectComponent extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -25,13 +24,13 @@ class RectComponent extends React.Component {
 
   handleMouseEnter = () => {
     document.body.style.cursor = 'pointer';
-    this.setState({hovered: true});
+    this.setState({ hovered: true });
     this.trRef.current.setNode(this.shapeRef.current);
     this.trRef.current.getLayer().batchDraw();
   };
 
   handleMouseLeave = () => {
-    this.setState({hovered: false});
+    this.setState({ hovered: false });
     document.body.style.cursor = 'default';
   };
 
@@ -70,11 +69,7 @@ class RectComponent extends React.Component {
     const { classes, correct, height, hotspotColor, outlineColor, width, x, y, strokeWidth = 5 } = this.props;
 
     return (
-      <Group
-          classes={classes.group}
-          onMouseLeave={this.handleMouseLeave}
-          onMouseEnter={this.handleMouseEnter}
-      >
+      <Group classes={classes.group} onMouseLeave={this.handleMouseLeave} onMouseEnter={this.handleMouseEnter}>
         <Rect
           classes={classes.base}
           ref={this.shapeRef}
@@ -91,18 +86,19 @@ class RectComponent extends React.Component {
           x={x}
           y={y}
         />
-        { this.state.hovered && (
-            <Transformer
-              ref={this.trRef}
-              rotateEnabled={false}
-              boundBoxFunc={(oldBox, newBox) => {
-                // limit resize
-                 if (newBox.width < 10 || newBox.height < 10) {
-                    return oldBox;
-                }
-                return newBox;
-              }}
-            /> )}
+        {this.state.hovered && (
+          <Transformer
+            ref={this.trRef}
+            rotateEnabled={false}
+            boundBoxFunc={(oldBox, newBox) => {
+              // limit resize
+              if (newBox.width < 10 || newBox.height < 10) {
+                return oldBox;
+              }
+              return newBox;
+            }}
+          />
+        )}
       </Group>
     );
   }
@@ -112,12 +108,11 @@ const styles = () => ({
   base: {
     cursor: 'pointer',
     opacity: 0.5,
-    // padding: '12px'
   },
 
   group: {
     padding: '12px',
-  }
+  },
 });
 
 RectComponent.propTypes = {
