@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.12.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@5.11.0...@pie-element/hotspot-configure@5.12.0) (2023-09-05)
+
+
+### Bug Fixes
+
+* update pie-libs PD-2765 ([f03972d](https://github.com/pie-framework/pie-elements/commit/f03972dda33ff5d4c0343f094fd33acadad30cb4))
+
+
+### Features
+
+* **hotpot:** PD-599 - add functionality to move a vertex for a polygon ([d84b902](https://github.com/pie-framework/pie-elements/commit/d84b902911b3552f3c005fb56fcfed92145ca584))
+* **hotspot:** PD-599 - add resize functionality for rectangle ([0a8f811](https://github.com/pie-framework/pie-elements/commit/0a8f811e2303d3b1bf30973c0243bce7f0832429))
+* **hotspot:** PD-599- solve review observations ([bba9546](https://github.com/pie-framework/pie-elements/commit/bba954691178c78dcc29f4c9309efeb5c1be6158))
+
+
+
+
+
 # [5.11.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@5.10.5...@pie-element/hotspot-configure@5.11.0) (2023-09-04)
 
 

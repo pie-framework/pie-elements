@@ -1,6 +1,6 @@
 {
   "name": "@pie-element/multiple-choice-configure",
-  "version": "5.10.6",
+  "version": "5.10.7",
   "private": true,
   "main": "lib/index.js",
   "module": "src/index.js",

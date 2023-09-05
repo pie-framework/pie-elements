@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.15.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@7.15.0...@pie-element/select-text@7.15.1) (2023-09-05)
+
+
+### Bug Fixes
+
+* update pie-libs PD-2765 ([f03972d](https://github.com/pie-framework/pie-elements/commit/f03972dda33ff5d4c0343f094fd33acadad30cb4))
+
+
+
+
+
 # [7.15.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@7.14.3...@pie-element/select-text@7.15.0) (2023-09-04)
 
 
