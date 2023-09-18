@@ -13,7 +13,7 @@
     "@pie-framework/pie-player-events": "^0.1.0",
     "@pie-lib/math-rendering": "^2.5.18",
     "@pie-lib/render-ui": "^4.15.2",
-    "@pie-lib/translator": "^2.2.0",
+    "@pie-lib/translator": "^2.3.0",
     "classnames": "^2.2.6",
     "enzyme-to-json": "^3.3.5",
     "konva": "^3.4.1",
