@@ -60,7 +60,7 @@ export default class DragInTheBlank extends HTMLElement {
     // if it is false, then the language field should be omitted from the item model.
     // if a default item model includes a language value (e.g., en_US) and the corresponding authoring view settings have language:settings = true,
     // then (a) language:enabled should also be true, and (b) that default language value should be represented in languageChoices[] (as a key).
-    if (c.language.enabled) {
+    if (c.language?.enabled) {
       if (c.languageChoices?.options?.length) {
         this._model.language = c.languageChoices.options[0].value;
       }
