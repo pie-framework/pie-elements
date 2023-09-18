@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.13.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@6.13.4...@pie-element/math-inline@6.13.5) (2023-09-18)
+
+
+### Bug Fixes
+
+* add sanity checks DNA-18268 ([29d7de9](https://github.com/pie-framework/pie-elements/commit/29d7de9422c075117173a3afeb2b29acf1caab3c))
+
+
+
+
+
 ## [6.13.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@6.13.3...@pie-element/math-inline@6.13.4) (2023-09-05)
 
 
