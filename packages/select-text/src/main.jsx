@@ -112,7 +112,7 @@ export class Main extends React.Component {
           maxNoOfSelections={model.maxSelections}
           animationsDisabled={model.animationsDisabled}
         />
-        { mode === 'evaluate' && <Legend></Legend> }
+        {mode === 'evaluate' && <Legend language={model.language} />}
 
         {model.rationale &&
           hasText(model.rationale) &&
