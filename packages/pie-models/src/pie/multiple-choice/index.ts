@@ -2,7 +2,12 @@ import { Choice } from '../../Choice';
 import { PieModel } from '../../PieModel';
 import { CommonConfigSettings } from '../../CommonConfigSettings';
 import { PromptConfig } from '../../PromptConfig';
-import {ConfigureMathMLProp, ConfigureProp, ConfigurePropWithEnabled} from '../ConfigurationProp';
+import {
+  ConfigureLanguageOptionsProp,
+  ConfigureMathMLProp,
+  ConfigureProp,
+  ConfigurePropWithEnabled
+} from '../ConfigurationProp';
 
 /**
  * NOTE: teacherInstructions, studentInstructions, rationale & scoringType
@@ -232,4 +237,18 @@ export interface MultipleChoiceConfigure extends PromptConfig, CommonConfigSetti
 
   /** Configuration for editable-html */
   mathMlOptions?: ConfigureMathMLProp;
+
+  /**
+   * Language configuration
+   */
+  language?: ConfigurePropWithEnabled;
+
+  /**
+   * Language choices configuration
+   * Only available if language is enabled
+   */
+  languageChoices?: {
+    label: string;
+    options: ConfigureLanguageOptionsProp[];
+  };
 }

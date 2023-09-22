@@ -127,6 +127,8 @@ const Design = withStyles(styles)((props) => {
     prompt = {},
     withRubric = {},
     mathMlOptions = {},
+    language = {},
+    languageChoices = {},
   } = configuration || {};
   let { maxAnswerChoices } = configuration || {};
   const {
@@ -178,6 +180,8 @@ const Design = withStyles(styles)((props) => {
       model.choicesLayout === 'grid' &&
       nrOfColumnsAvailable.length > 0 &&
       dropdown(gridColumns.label, nrOfColumnsAvailable),
+    'language.enabled': language.settings && toggle(language.label, true),
+    language: language.settings && language.enabled && dropdown(languageChoices.label, languageChoices.options),
   };
 
   const panelProperties = {
