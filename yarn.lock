@@ -1271,7 +1271,7 @@
     "@floating-ui/core" "^1.4.1"
     "@floating-ui/utils" "^0.1.1"
 
-"@floating-ui/react-dom@^2.0.1":
+"@floating-ui/react-dom@^2.0.1", "@floating-ui/react-dom@^2.0.2":
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/@floating-ui/react-dom/-/react-dom-2.0.2.tgz#fab244d64db08e6bed7be4b5fcce65315ef44d20"
   integrity sha512-5qhlDvjaLmAst/rKb3VdlCinwTF4EYMiVxuuc/HVUjs46W0zgtbMmAZ1UTsDrRTxRmUEzl92mOtWbeeXL26lSQ==
@@ -2155,6 +2155,24 @@
     prop-types "^15.8.1"
     react-is "^18.2.0"
 
+"@mui/base@5.0.0-beta.16":
+  version "5.0.0-beta.16"
+  resolved "https://registry.yarnpkg.com/@mui/base/-/base-5.0.0-beta.16.tgz#5869b8cc83ea5da0083bb11790bda007c2384564"
+  integrity sha512-OYxhC81c9bO0wobGcM8rrY5bRwpCXAI21BL0P2wz/2vTv4ek7ALz9+U5M8wgdmtRNUhmCmAB4L2WRwFRf5Cd8Q==
+  dependencies:
+    "@babel/runtime" "^7.22.15"
+    "@floating-ui/react-dom" "^2.0.2"
+    "@mui/types" "^7.2.4"
+    "@mui/utils" "^5.14.10"
+    "@popperjs/core" "^2.11.8"
+    clsx "^2.0.0"
+    prop-types "^15.8.1"
+
+"@mui/core-downloads-tracker@^5.14.10":
+  version "5.14.10"
+  resolved "https://registry.yarnpkg.com/@mui/core-downloads-tracker/-/core-downloads-tracker-5.14.10.tgz#32a8581be98344bbda5ed31fc7b41788bd2e3bc5"
+  integrity sha512-kPHu/NhZq1k+vSZR5wq3AyUfD4bnfWAeuKpps0+8PS7ZHQ2Lyv1cXJh+PlFdCIOa0PK98rk3JPwMzS8BMhdHwQ==
+
 "@mui/core-downloads-tracker@^5.14.7":
   version "5.14.7"
   resolved "https://registry.yarnpkg.com/@mui/core-downloads-tracker/-/core-downloads-tracker-5.14.7.tgz#95bed2487bf59632125a13b8eb8f4c21e460afec"
@@ -2174,6 +2192,24 @@
   dependencies:
     "@babel/runtime" "^7.22.15"
 
+"@mui/material@^5.14.10":
+  version "5.14.10"
+  resolved "https://registry.yarnpkg.com/@mui/material/-/material-5.14.10.tgz#b8c6ba17c25c0df54053cb0f1bb35083bc91dace"
+  integrity sha512-ejFMppnO+lzBXpzju+N4SSz0Mhmi5sihXUGcr5FxpgB6bfUP0Lpe32O0Sw/3s8xlmLEvG1fqVT0rRyAVMlCA+A==
+  dependencies:
+    "@babel/runtime" "^7.22.15"
+    "@mui/base" "5.0.0-beta.16"
+    "@mui/core-downloads-tracker" "^5.14.10"
+    "@mui/system" "^5.14.10"
+    "@mui/types" "^7.2.4"
+    "@mui/utils" "^5.14.10"
+    "@types/react-transition-group" "^4.4.6"
+    clsx "^2.0.0"
+    csstype "^3.1.2"
+    prop-types "^15.8.1"
+    react-is "^18.2.0"
+    react-transition-group "^4.4.5"
+
 "@mui/material@^5.14.4":
   version "5.14.7"
   resolved "https://registry.yarnpkg.com/@mui/material/-/material-5.14.7.tgz#6c2c0de8a625562f789e1bb33cb4cfc8cf20bdb0"
@@ -2192,6 +2228,15 @@
     react-is "^18.2.0"
     react-transition-group "^4.4.5"
 
+"@mui/private-theming@^5.14.10":
+  version "5.14.10"
+  resolved "https://registry.yarnpkg.com/@mui/private-theming/-/private-theming-5.14.10.tgz#42b176b27435931aff40d50833413d10150ac007"
+  integrity sha512-f67xOj3H06wWDT9xBg7hVL/HSKNF+HG1Kx0Pm23skkbEqD2Ef2Lif64e5nPdmWVv+7cISCYtSuE2aeuzrZe78w==
+  dependencies:
+    "@babel/runtime" "^7.22.15"
+    "@mui/utils" "^5.14.10"
+    prop-types "^15.8.1"
+
 "@mui/private-theming@^5.14.7":
   version "5.14.7"
   resolved "https://registry.yarnpkg.com/@mui/private-theming/-/private-theming-5.14.7.tgz#c9fec31e59bf66b12959e724b0e8ec3bb4a3d923"
@@ -2201,6 +2246,16 @@
     "@mui/utils" "^5.14.7"
     prop-types "^15.8.1"
 
+"@mui/styled-engine@^5.14.10":
+  version "5.14.10"
+  resolved "https://registry.yarnpkg.com/@mui/styled-engine/-/styled-engine-5.14.10.tgz#2ec443031e48425cd6fda63be498cfa262c1d3a0"
+  integrity sha512-EJckxmQHrsBvDbFu1trJkvjNw/1R7jfNarnqPSnL+jEQawCkQIqVELWLrlOa611TFtxSJGkdUfCFXeJC203HVg==
+  dependencies:
+    "@babel/runtime" "^7.22.15"
+    "@emotion/cache" "^11.11.0"
+    csstype "^3.1.2"
+    prop-types "^15.8.1"
+
 "@mui/styled-engine@^5.14.7":
   version "5.14.7"
   resolved "https://registry.yarnpkg.com/@mui/styled-engine/-/styled-engine-5.14.7.tgz#aaacec6c87bcc9a180b2da062c613213af10f2e3"
@@ -2208,6 +2263,20 @@
   dependencies:
     "@babel/runtime" "^7.22.10"
     "@emotion/cache" "^11.11.0"
+    csstype "^3.1.2"
+    prop-types "^15.8.1"
+
+"@mui/system@^5.14.10":
+  version "5.14.10"
+  resolved "https://registry.yarnpkg.com/@mui/system/-/system-5.14.10.tgz#b125f8370c1c92af04f1839c40e034d4edc4ad29"
+  integrity sha512-QQmtTG/R4gjmLiL5ECQ7kRxLKDm8aKKD7seGZfbINtRVJDyFhKChA1a+K2bfqIAaBo1EMDv+6FWNT1Q5cRKjFA==
+  dependencies:
+    "@babel/runtime" "^7.22.15"
+    "@mui/private-theming" "^5.14.10"
+    "@mui/styled-engine" "^5.14.10"
+    "@mui/types" "^7.2.4"
+    "@mui/utils" "^5.14.10"
+    clsx "^2.0.0"
     csstype "^3.1.2"
     prop-types "^15.8.1"
 
@@ -2229,6 +2298,16 @@
   version "7.2.4"
   resolved "https://registry.yarnpkg.com/@mui/types/-/types-7.2.4.tgz#b6fade19323b754c5c6de679a38f068fd50b9328"
   integrity sha512-LBcwa8rN84bKF+f5sDyku42w1NTxaPgPyYKODsh01U1fVstTClbUoSA96oyRBnSNyEiAVjKm6Gwx9vjR+xyqHA==
+
+"@mui/utils@^5.14.10":
+  version "5.14.10"
+  resolved "https://registry.yarnpkg.com/@mui/utils/-/utils-5.14.10.tgz#4b0a2a26f1ee12323010daa9d7aecf3384acfc3c"
+  integrity sha512-Rn+vYQX7FxkcW0riDX/clNUwKuOJFH45HiULxwmpgnzQoQr3A0lb+QYwaZ+FAkZrR7qLoHKmLQlcItu6LT0y/Q==
+  dependencies:
+    "@babel/runtime" "^7.22.15"
+    "@types/prop-types" "^15.7.5"
+    prop-types "^15.8.1"
+    react-is "^18.2.0"
 
 "@mui/utils@^5.14.7":
   version "5.14.7"
@@ -2517,14 +2596,17 @@
     debug "^4.1.1"
     lodash "^4.17.11"
 
-"@pie-lib/charting@^5.15.1":
-  version "5.15.1"
-  resolved "https://registry.yarnpkg.com/@pie-lib/charting/-/charting-5.15.1.tgz#2aa39907c2a59141b78a41e6fb0704414994082b"
-  integrity sha512-LYkZTOA8q0TbKUuX1g62v3bFhzeKvoYugGXhAoCOQxuduh1Y88ShQJFZDnjhtczX6bIKpTSjfVoDEpHSx0qumA==
+"@pie-lib/charting@^5.15.2":
+  version "5.15.2"
+  resolved "https://registry.yarnpkg.com/@pie-lib/charting/-/charting-5.15.2.tgz#7420b452c986477d9410578a7c90b76c7b35db8a"
+  integrity sha512-3ySaIDnwSqO5/ljH3QxUXt1PuGlDoMPQUHvzqIfQbNJWSbDT/zxx2Ctcdk5Bo8KjPQKWkynQ2wS6RC5Ywy/g/A==
   dependencies:
+    "@emotion/react" "^11.11.1"
+    "@emotion/styled" "^11.11.0"
     "@mapbox/point-geometry" "^0.1.0"
     "@material-ui/core" "^3.8.3"
     "@mui/icons-material" "^5.14.9"
+    "@mui/material" "^5.14.10"
     "@pie-lib/plot" "^2.7.2"
     "@pie-lib/translator" "^2.3.0"
     "@vx/axis" "^0.0.183"
