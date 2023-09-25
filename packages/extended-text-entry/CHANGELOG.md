@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@9.4.7...@pie-element/extended-text-entry@9.5.0) (2023-09-25)
+
+
+### Bug Fixes
+
+* update pie-libs PD-3167 ([1b109bb](https://github.com/pie-framework/pie-elements/commit/1b109bb3b74dcea72ee2f241996a5e6a71893b4e))
+* update pie-libs PD-3167 ([b21d0c3](https://github.com/pie-framework/pie-elements/commit/b21d0c332623667257a5de1363b9f4fc6ee2bb51))
+* update pie-libs PD-3167 ([1a76806](https://github.com/pie-framework/pie-elements/commit/1a7680657ebe0a73969f3100e60f0a090ffc7ada))
+* update pie-libs PD-3167, PD-3105, PD-3162, PD-2765 ([26199b2](https://github.com/pie-framework/pie-elements/commit/26199b255ddbcb9255f2769091c7ba58f8b1dae0))
+
+
+### Features
+
+* update pie-libs PD-3011 ([0fd32b3](https://github.com/pie-framework/pie-elements/commit/0fd32b3fd1333bb25de584b98c8ef0471de2d5e8))
+
+
+
+
+
 ## [9.4.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@9.4.6...@pie-element/extended-text-entry@9.4.7) (2023-09-05)
 
 
