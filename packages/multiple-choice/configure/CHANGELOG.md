@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.12.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@5.11.0...@pie-element/multiple-choice-configure@5.12.0) (2023-09-25)
+
+
+### Features
+
+* **multiple-choice:** add translations ([fe4dc0f](https://github.com/pie-framework/pie-elements/commit/fe4dc0f15158c039ad9276f09d8b9874d61224cf))
+
+
+
+
+
 # [5.11.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@5.10.7...@pie-element/multiple-choice-configure@5.11.0) (2023-09-25)
 
 
