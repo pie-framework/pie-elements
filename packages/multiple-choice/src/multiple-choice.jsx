@@ -70,6 +70,7 @@ export class MultipleChoice extends React.Component {
     gridColumns: PropTypes.string,
     alwaysShowCorrect: PropTypes.bool,
     animationsDisabled: PropTypes.bool,
+    language: PropTypes.string,
   };
 
   constructor(props) {
@@ -213,6 +214,7 @@ export class MultipleChoice extends React.Component {
       classes,
       alwaysShowCorrect,
       animationsDisabled,
+      language
     } = this.props;
     const { showCorrect } = this.state;
     const isEvaluateMode = mode === 'evaluate';
@@ -259,6 +261,7 @@ export class MultipleChoice extends React.Component {
               show={showCorrectAnswerToggle}
               toggled={showCorrect}
               onToggle={this.onToggle.bind(this)}
+              language={language}
             />
           )}
 
