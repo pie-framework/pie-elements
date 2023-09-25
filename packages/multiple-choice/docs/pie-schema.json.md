@@ -162,6 +162,11 @@ Indicates if Accessibility Labels are enabled
 
 Indicates if Rubric is enabled
 
+# `language` (string)
+
+Indicates the language of the component
+Supported options: en, es, en_US, en-US, es_ES, es-ES, es_MX, es-MX
+
 # `id` (string, required)
 
 Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.
