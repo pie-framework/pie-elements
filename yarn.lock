@@ -2503,10 +2503,10 @@
     debug "^4.1.1"
     lodash "^4.17.11"
 
-"@pie-lib/charting@^5.14.3":
-  version "5.14.3"
-  resolved "https://registry.yarnpkg.com/@pie-lib/charting/-/charting-5.14.3.tgz#c266c285dd3cc926417518ad5cf25ca4763aa6ba"
-  integrity sha512-DXNj5j8FMBwt99fR8cZYXAXShX3Pxx7HygL3ysr8jafOFrCMkwHloOyvoBse7caI+0Eqfbi3dbSF2MO4sorrAg==
+"@pie-lib/charting@^5.15.0":
+  version "5.15.0"
+  resolved "https://registry.yarnpkg.com/@pie-lib/charting/-/charting-5.15.0.tgz#90087051602bbdcc269fc5a830e4d2019650c6c2"
+  integrity sha512-MVxPFZxr/OrbVEB+/SeaYbBXDwl7d1Qknh9HaoSRG8A3emezQUBt737x0gRDLM9vHFNzb2OAFzt+oNEcemunww==
   dependencies:
     "@mapbox/point-geometry" "^0.1.0"
     "@material-ui/core" "^3.8.3"
@@ -2909,7 +2909,7 @@
     react-portal "^4.2.0"
     trigonometry-calculator "^2.0.0"
 
-"@pie-lib/translator@^2.2.0", "@pie-lib/translator@^2.3.0":
+"@pie-lib/translator@^2.3.0":
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/@pie-lib/translator/-/translator-2.3.0.tgz#e0e63fb273443bcdfaf0b187e3982a5e4b9e5543"
   integrity sha512-TtvSvHKuyws367dnxpUZj8gOiHSPJA+CBcEZFnmetNv+EC8Gid00wFyNUJ4/PhEmvIWvS7QN3YqzHlOk4QrYoQ==
