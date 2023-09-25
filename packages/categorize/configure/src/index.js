@@ -46,17 +46,22 @@ export default class CategorizeConfigure extends HTMLElement {
   }
 
   set configuration(c) {
-    this._configuration = c;
+    const newConfiguration = {
+      ...defaults.configuration,
+      ...c,
+    };
+
+    this._configuration = newConfiguration;
 
     // if language:enabled is true, then the corresponding default item model should include a language value;
     // if it is false, then the language field should be omitted from the item model.
     // if a default item model includes a language value (e.g., en_US) and the corresponding authoring view settings have language:settings = true,
     // then (a) language:enabled should also be true, and (b) that default language value should be represented in languageChoices[] (as a key).
-    if (c.language?.enabled) {
-      if (c.languageChoices?.options?.length) {
-        this._model.language = c.languageChoices.options[0].value;
+    if (newConfiguration?.language?.enabled) {
+      if (newConfiguration?.languageChoices?.options?.length) {
+        this._model.language = newConfiguration?.languageChoices.options[0].value;
       }
-    } else if (c.language.settings && this._model.language) {
+    } else if (newConfiguration.language.settings && this._model.language) {
       this._configuration.language.enabled = true;
 
       if (!this._configuration.languageChoices.options || !this._configuration.languageChoices.options.length) {
