@@ -237,6 +237,18 @@ Indicates if model should have mathML output instead of latex
 
 Indicates if mathML that's already in model should be editable
 
+## `ConfigureLanguageOptionsProp` (object)
+
+Properties of the `ConfigureLanguageOptionsProp` object:
+
+### `value` (string, required)
+
+Value of the language option
+
+### `label` (string, required)
+
+Label of the language option
+
 ## `Choice` (object)
 
 Properties of the `Choice` object:
