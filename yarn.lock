@@ -2517,35 +2517,6 @@
     debug "^4.1.1"
     lodash "^4.17.11"
 
-"@pie-lib/charting@^5.15.0":
-  version "5.15.0"
-  resolved "https://registry.yarnpkg.com/@pie-lib/charting/-/charting-5.15.0.tgz#90087051602bbdcc269fc5a830e4d2019650c6c2"
-  integrity sha512-MVxPFZxr/OrbVEB+/SeaYbBXDwl7d1Qknh9HaoSRG8A3emezQUBt737x0gRDLM9vHFNzb2OAFzt+oNEcemunww==
-  dependencies:
-    "@mapbox/point-geometry" "^0.1.0"
-    "@material-ui/core" "^3.8.3"
-    "@pie-lib/plot" "^2.7.2"
-    "@pie-lib/translator" "^2.3.0"
-    "@vx/axis" "^0.0.183"
-    "@vx/event" "^0.0.182"
-    "@vx/grid" "^0.0.183"
-    "@vx/group" "^0.0.183"
-    "@vx/point" "^0.0.182"
-    "@vx/scale" "^0.0.182"
-    "@vx/shape" "^0.0.183"
-    classnames "^2.2.6"
-    d3-scale "^2.1.2"
-    d3-selection "^1.3.2"
-    debug "^4.1.1"
-    invariant "^2.2.4"
-    lodash "^4.17.11"
-    react "^16.8.1"
-    react-draggable "^3.1.1"
-    react-input-autosize "^2.2.1"
-    react-redux "^6.0.0"
-    redux "^4.0.1"
-    redux-undo beta
-
 "@pie-lib/charting@^5.15.1":
   version "5.15.1"
   resolved "https://registry.yarnpkg.com/@pie-lib/charting/-/charting-5.15.1.tgz#2aa39907c2a59141b78a41e6fb0704414994082b"
