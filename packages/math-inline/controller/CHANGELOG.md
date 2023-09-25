@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.9.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@5.9.0...@pie-element/math-inline-controller@5.9.1) (2023-09-25)
+
+
+### Bug Fixes
+
+* update pie-libs PD-3167, PD-3105, PD-3162, PD-2765 ([26199b2](https://github.com/pie-framework/pie-elements/commit/26199b255ddbcb9255f2769091c7ba58f8b1dae0))
+
+
+
+
+
 # [5.9.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@5.8.6...@pie-element/math-inline-controller@5.9.0) (2023-08-15)
 
 

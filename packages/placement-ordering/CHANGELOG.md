@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.16.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@8.15.5...@pie-element/placement-ordering@8.16.0) (2023-09-25)
+
+
+### Bug Fixes
+
+* configuration setter fix for language props ([da6bc07](https://github.com/pie-framework/pie-elements/commit/da6bc07a067f0a4d1167ab85e07bef6c605643ad))
+* update pie-libs PD-3167 ([1b109bb](https://github.com/pie-framework/pie-elements/commit/1b109bb3b74dcea72ee2f241996a5e6a71893b4e))
+* update pie-libs PD-3167 ([b21d0c3](https://github.com/pie-framework/pie-elements/commit/b21d0c332623667257a5de1363b9f4fc6ee2bb51))
+* update pie-libs PD-3167 ([1a76806](https://github.com/pie-framework/pie-elements/commit/1a7680657ebe0a73969f3100e60f0a090ffc7ada))
+* update pie-libs PD-3167, PD-3105, PD-3162, PD-2765 ([26199b2](https://github.com/pie-framework/pie-elements/commit/26199b255ddbcb9255f2769091c7ba58f8b1dae0))
+
+
+### Features
+
+* update pie-libs PD-3011 ([0fd32b3](https://github.com/pie-framework/pie-elements/commit/0fd32b3fd1333bb25de584b98c8ef0471de2d5e8))
+
+
+
+
+
 ## [8.15.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@8.15.4...@pie-element/placement-ordering@8.15.5) (2023-09-18)
 
 
