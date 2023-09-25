@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.15.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@7.14.0...@pie-element/multiple-choice@7.15.0) (2023-09-25)
+
+
+### Features
+
+* **multiple-choice:** add translations ([fe4dc0f](https://github.com/pie-framework/pie-elements/commit/fe4dc0f15158c039ad9276f09d8b9874d61224cf))
+* **multiple-choice:** pd-1508 update doc ([93dab94](https://github.com/pie-framework/pie-elements/commit/93dab9475a5987d8e33fd0e8bf1141a0dfec00f3))
+* **multiple-choice:** pd-1508 update doc ([556fbc4](https://github.com/pie-framework/pie-elements/commit/556fbc490379fcf0dc0039f3a010ce29d88d0ed5))
+
+
+
+
+
 # [7.14.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@7.13.7...@pie-element/multiple-choice@7.14.0) (2023-09-25)
 
 

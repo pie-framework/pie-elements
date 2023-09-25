@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-controller@3.7.3...@pie-element/multiple-choice-controller@3.8.0) (2023-09-25)
+
+
+### Features
+
+* **multiple-choice:** add translations ([fe4dc0f](https://github.com/pie-framework/pie-elements/commit/fe4dc0f15158c039ad9276f09d8b9874d61224cf))
+
+
+
+
+
 ## [3.7.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-controller@3.7.2...@pie-element/multiple-choice-controller@3.7.3) (2023-07-06)
 
 

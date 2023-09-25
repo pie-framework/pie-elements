@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.4.0...@pie-element/pie-models@13.5.0) (2023-09-25)
+
+
+### Features
+
+* add language in model docs ([08e212d](https://github.com/pie-framework/pie-elements/commit/08e212d959988c5e3a7b83b49f134070275d5437))
+* **multiple-choice:** add translations ([fe4dc0f](https://github.com/pie-framework/pie-elements/commit/fe4dc0f15158c039ad9276f09d8b9874d61224cf))
+
+
+
+
+
 # [13.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.3.0...@pie-element/pie-models@13.4.0) (2023-09-04)
 
 
