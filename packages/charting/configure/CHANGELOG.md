@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.3.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-configure@6.3.3...@pie-element/charting-configure@6.3.4) (2023-09-25)
+
+
+### Bug Fixes
+
+* update pie-libs ([643c5ec](https://github.com/pie-framework/pie-elements/commit/643c5ec4000f4ceb71e5292f951f4026bf14b1ff))
+
+
+
+
+
 ## [6.3.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-configure@6.3.2...@pie-element/charting-configure@6.3.3) (2023-09-25)
 
 
