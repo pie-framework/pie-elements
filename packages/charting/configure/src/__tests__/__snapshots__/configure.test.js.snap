@@ -117,6 +117,12 @@ exports[`Configure renders snapshot 1`] = `
               "mmlOutput": false,
             },
           },
+          "instruction": Object {
+            "label": "This item type provides various types of interactive charts. Depending upon how an item is configured,
+          students can change the heights of bars (or other similar chart elements) created by the author; relabel bars
+          created by the author; and/or add new bars, label them, and set their heights.",
+            "settings": false,
+          },
           "labelsPlaceholders": Object {
             "bottom": "Click here to add a label for this axis",
             "left": "Click here to add a label for this axis",
@@ -189,6 +195,7 @@ exports[`Configure renders snapshot 1`] = `
       groups={
         Object {
           "Properties": Object {
+            "instruction": false,
             "language": false,
             "language.enabled": false,
             "promptEnabled": undefined,
@@ -243,7 +250,9 @@ exports[`Configure renders snapshot 1`] = `
     component="div"
     type="body1"
   >
-    This item type provides various types of interactive charts. Depending upon how an item is configured, students can change the heights of bars (or other similar chart elements) created by the author; relabel bars created by the author; and/or add new bars, label them, and set their heights.
+    This item type provides various types of interactive charts. Depending upon how an item is configured,
+          students can change the heights of bars (or other similar chart elements) created by the author; relabel bars
+          created by the author; and/or add new bars, label them, and set their heights.
   </WithStyles(Typography)>
   <InputContainer
     label="Teacher Instructions"
