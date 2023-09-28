@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.5.0...@pie-element/pie-models@13.6.0) (2023-09-28)
+
+
+### Features
+
+* **charting:** PD-3165 move intstruction into authoring settings ([80f209f](https://github.com/pie-framework/pie-elements/commit/80f209f523b67d5a38ef9a4825ee78ca85f72560))
+
+
+
+
+
 # [13.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.4.0...@pie-element/pie-models@13.5.0) (2023-09-25)
 
 
