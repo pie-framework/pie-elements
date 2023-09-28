@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.13.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@5.13.3...@pie-element/hotspot-configure@5.13.4) (2023-09-28)
+
+
+### Bug Fixes
+
+* **hotpot:** update tests and snapshots ([b078802](https://github.com/pie-framework/pie-elements/commit/b078802157816730d68f3f7b5c05d42f9febc53d))
+* **hotspot:** reset state when image dimensions changed ([15b1ce7](https://github.com/pie-framework/pie-elements/commit/15b1ce7c1900c2e0796462dec2cd2db6292766dd))
+
+
+
+
+
 ## [5.13.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@5.13.2...@pie-element/hotspot-configure@5.13.3) (2023-09-28)
 
 **Note:** Version bump only for package @pie-element/hotspot-configure

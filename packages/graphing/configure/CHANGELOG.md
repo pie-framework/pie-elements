@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.16.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@4.16.3...@pie-element/graphing-configure@4.16.4) (2023-09-28)
+
+
+### Bug Fixes
+
+* updated versions PD-2790, PD-3209 ([e1484d6](https://github.com/pie-framework/pie-elements/commit/e1484d6161b4a68812b7c3379778655449c07e6b))
+
+
+
+
+
 ## [4.16.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@4.16.2...@pie-element/graphing-configure@4.16.3) (2023-09-28)
 
 **Note:** Version bump only for package @pie-element/graphing-configure
