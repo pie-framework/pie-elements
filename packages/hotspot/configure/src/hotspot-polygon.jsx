@@ -6,6 +6,39 @@ import { withStyles } from '@material-ui/core/styles/index';
 const HOVERED_COLOR = '#00BFFF';
 
 class PolComponent extends React.Component {
+  static getDerivedStateFromProps(nextProps, prevState) {
+    const { points, imageHeight, imageWidth } = nextProps;
+
+    // we execute this code only if image dimensions changed
+    if (prevState.imageHeight !== nextProps.imageHeight || prevState.imageWidth !== nextProps.imageWidth) {
+      if (points.length) {
+        const xList = points.map((p) => p.x);
+        const yList = points.map((p) => p.y);
+
+        const x = Math.min(...xList);
+        const y = Math.max(...yList);
+
+        return {
+          x,
+          y,
+          points,
+          imageHeight,
+          imageWidth,
+        };
+      }
+
+      return {
+        x: 0,
+        y: 0,
+        points: [],
+        imageHeight,
+        imageWidth,
+      };
+    } else {
+      return null;
+    }
+  }
+
   getOffset = (points) => {
     const xList = points.map((p) => p.x);
     const yList = points.map((p) => p.y);
@@ -192,6 +225,8 @@ PolComponent.propTypes = {
     }),
   ).isRequired,
   strokeWidth: PropTypes.number,
+  imageHeight: PropTypes.number,
+  imageWidth: PropTypes.number,
 };
 
 PolComponent.defaultProps = {
