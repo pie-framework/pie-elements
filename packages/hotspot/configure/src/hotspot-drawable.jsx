@@ -312,6 +312,8 @@ export class Drawable extends React.Component {
                   y={shape.y}
                   points={shape.points}
                   strokeWidth={strokeWidth}
+                  imageHeight={heightFromState || height}
+                  imageWidth={widthFromState || width}
                 />
               );
             })}
