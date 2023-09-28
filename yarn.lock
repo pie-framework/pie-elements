@@ -2268,10 +2268,10 @@
     debug "^4.1.1"
     lodash "^4.17.11"
 
-"@pie-lib/charting@^5.15.4":
-  version "5.15.4"
-  resolved "https://registry.yarnpkg.com/@pie-lib/charting/-/charting-5.15.4.tgz#0e31a062b6e6b6f7121d801443914a003a4f63e7"
-  integrity sha512-KIdszyODI6HTRLOepyVOQ80AEUjUjMaGt3cD/1daSgyB8vrxqNnszeFkm6DWlhjmwaJXV9L4r3BUSOU4f1qvmw==
+"@pie-lib/charting@^5.15.5":
+  version "5.15.5"
+  resolved "https://registry.yarnpkg.com/@pie-lib/charting/-/charting-5.15.5.tgz#86594bcb097a00af12e8e103d59a98bf64d3e3b3"
+  integrity sha512-kRyyomaksUUc1wQo6q1NdPnjK0UyXP56UOIkIen84LUAmsw8iZ+M9Df3YaKmmsAfs83953runzPhKYjF9tQDKQ==
   dependencies:
     "@mapbox/point-geometry" "^0.1.0"
     "@material-ui/core" "^3.8.3"
@@ -2409,10 +2409,10 @@
     debug "^4.1.1"
     lodash "^4.17.11"
 
-"@pie-lib/graphing@^2.14.17":
-  version "2.14.17"
-  resolved "https://registry.yarnpkg.com/@pie-lib/graphing/-/graphing-2.14.17.tgz#79957c260f3df915273cc3ff9a91bae68d0991ee"
-  integrity sha512-W3VaAccFKwBh676V9w+1wrr9rVfvNZg6YZPtjw0FRn2sM/Kbkr7oJHAQJDePERXky9INMRGxIxKWb5V+UzSMZg==
+"@pie-lib/graphing@^2.14.18":
+  version "2.14.18"
+  resolved "https://registry.yarnpkg.com/@pie-lib/graphing/-/graphing-2.14.18.tgz#254308f73cb68b03cb132bd675fd3a9e76123506"
+  integrity sha512-1M75rjZrTWjsA+HsEMBeePvIgKSXXGzITbVr+KGHXRG51lebdBCDibmL3dFyOJnlJMwFqOK+43fQEcJt8qYQLQ==
   dependencies:
     "@mapbox/point-geometry" "^0.1.0"
     "@material-ui/core" "^3.8.3"
