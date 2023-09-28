@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.4.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@6.4.0...@pie-element/charting@6.4.1) (2023-09-28)
+
+
+### Bug Fixes
+
+* updated versions PD-2790, PD-3209 ([e1484d6](https://github.com/pie-framework/pie-elements/commit/e1484d6161b4a68812b7c3379778655449c07e6b))
+
+
+
+
+
 # [6.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@6.3.5...@pie-element/charting@6.4.0) (2023-09-28)
 
 
