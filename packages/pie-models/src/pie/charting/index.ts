@@ -6,7 +6,7 @@ import {
   ConfigureMathMLProp,
   ConfigureMaxImageDimensionsProp,
   ConfigureProp,
-  ConfigurePropWithEnabled
+  ConfigurePropWithEnabled,
 } from '../ConfigurationProp';
 
 interface Chart {
@@ -306,6 +306,11 @@ export interface ChartingConfigure extends PromptConfig, CommonConfigSettings {
    * Chart title configuration
    */
   title?: ConfigurePropWithEnabled;
+
+  /**
+   * Author instruction to build a new chart
+   */
+  instruction?: ConfigureProp;
 
   /**
    * Coonfiguration for new category in define chart
