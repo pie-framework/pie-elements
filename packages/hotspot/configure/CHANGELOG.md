@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.13.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@5.13.4...@pie-element/hotspot-configure@5.13.5) (2023-10-03)
+
+
+### Bug Fixes
+
+* update with latest pie-libs, forcing pie-lib/math-rendering to v2.5.18 ([7ff936a](https://github.com/pie-framework/pie-elements/commit/7ff936ab9fc85c264032181755ce5e2149825406))
+
+
+
+
+
 ## [5.13.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@5.13.3...@pie-element/hotspot-configure@5.13.4) (2023-09-28)
 
 
