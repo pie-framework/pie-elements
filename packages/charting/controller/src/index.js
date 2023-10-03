@@ -167,7 +167,7 @@ export function model(question, session, env) {
       correctAnswer,
       scoringType,
       studentNewCategoryDefaultLabel,
-      language
+      language,
     } = normalizedQuestion;
 
     const correctInfo = { correctness: 'incorrect', score: '0%' };
@@ -187,7 +187,7 @@ export function model(question, session, env) {
       disabled: env.mode !== 'gather',
       scoringType,
       studentNewCategoryDefaultLabel,
-      language
+      language,
     };
 
     const answers = filterCategories(getScore(normalizedQuestion, session, env).answers);
@@ -267,18 +267,29 @@ export const validate = (model = {}) => {
   const correctAnswerErrors = {};
   const categoryErrors = {};
 
+  let isUniqueErrorSet;
+  let isEmptyErrorSet;
+
+  const isLabelEmpty = (label) => label === '' || label === '<div></div>';
+
+  const setDuplicateError = (index, duplicateIndex) => {
+    const matchingIndex = index + 1 + duplicateIndex;
+    categoryErrors[index] = isUniqueErrorSet ? '' : 'ategory names should be unique.';
+    categoryErrors[matchingIndex] = '';
+    if (!isUniqueErrorSet) isUniqueErrorSet = true;
+  };
+
   categories.forEach((category, index) => {
     const { label } = category;
 
-    if (label === '' || label === '<div></div>') {
-      categoryErrors[index] = 'Content should not be empty.';
-    } else {
-      const identicalAnswer = categories.slice(index + 1).some((c) => c.label === label);
-
-      if (identicalAnswer) {
-        categoryErrors[index + 1] = 'Category names should be unique. ';
-      }
+    if (isLabelEmpty(label)) {
+      categoryErrors[index] = isEmptyErrorSet ? '' : 'Content should not be empty.';
+      if (!isEmptyErrorSet) isEmptyErrorSet = true;
+      return; // If the label is empty, we don't need to check for duplicates.
     }
+
+    const duplicateIndex = correctData.slice(index + 1).findIndex((cat) => cat.label === label);
+    if (duplicateIndex !== -1) setDuplicateError(index, duplicateIndex);
   });
 
   if (categories.length < 1 || categories.length > 20) {

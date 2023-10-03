@@ -40,39 +40,6 @@ const charts = [
   chartTypes.LinePlot(),
 ];
 
-const validate = (model = {}) => {
-  const { correctAnswer = {} } = model;
-  const { data: correctData = [] } = correctAnswer;
-
-  const categoryErrors = {};
-  let isUniqueErrorSet;
-  let isEmptyErrorSet;
-
-  const isLabelEmpty = (label) => label === '' || label === '<div></div>';
-
-  const setDuplicateError = (index, duplicateIndex) => {
-    const matchingIndex = index + 1 + duplicateIndex;
-    categoryErrors[index] = isUniqueErrorSet ? '' : 'Content should be unique.';
-    categoryErrors[matchingIndex] = '';
-    if (!isUniqueErrorSet) isUniqueErrorSet = true;
-  }
-
-  correctData.forEach((category, index) => {
-    const { label } = category;
-
-    if (isLabelEmpty(label)) {
-      categoryErrors[index] = isEmptyErrorSet ? '' : 'Content should not be empty.';
-      if (!isEmptyErrorSet) isEmptyErrorSet = true;
-      return; // If the label is empty, we don't need to check for duplicates.
-    }
-
-    const duplicateIndex = correctData.slice(index + 1).findIndex(cat => cat.label === label);
-    if (duplicateIndex !== -1) setDuplicateError(index, duplicateIndex);
-  });
-
-  return categoryErrors;
-};
-
 export class Configure extends React.Component {
   static propTypes = {
     onModelChanged: PropTypes.func,
@@ -120,7 +87,6 @@ export class Configure extends React.Component {
 
     this.setState({ gridValues, labelValues });
     onModelChanged(updatedModel);
-    validate(updatedModel);
   };
 
   render() {
@@ -162,9 +128,7 @@ export class Configure extends React.Component {
       teacherInstructionsEnabled,
       studentNewCategoryDefaultLabel,
     } = model || {};
-    const categoryErrors = validate(model, configuration);
-    // const { categoryErrors, correctAnswerErrors } = errors || {};
-    const { correctAnswerErrors } = errors || {};
+    const { categoryErrors, correctAnswerErrors } = errors || {};
     const { gridValues, labelValues } = this.state;
     const showPixeGuides = chartDimensions.showInConfigPanel || true;
 
