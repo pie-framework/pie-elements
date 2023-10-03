@@ -10,7 +10,6 @@ export default class RootInlineDropdown extends HTMLElement {
     this._model = null;
     this._session = null;
   }
-
   set model(m) {
     this._model = m;
     this.dispatchEvent(
@@ -63,7 +62,7 @@ export default class RootInlineDropdown extends HTMLElement {
   };
 
   connectedCallback() {
-    this.setAttribute('aria-label', 'Inline Dropdown Question'); 
+    this.setAttribute('aria-label', 'Inline Dropdown Question');
     this.setAttribute('role', 'region');
 
     this._render();
