@@ -40,6 +40,32 @@ const charts = [
   chartTypes.LinePlot(),
 ];
 
+const validate = (model = {}) => {
+  const { correctAnswer, data } = model || {};
+  const { data: correctData } = correctAnswer || {};
+  const categories = correctData || [];
+
+  console.log(model)
+  const errors = {};
+  const correctAnswerErrors = {};
+  const categoryErrors = {};
+
+  categories.forEach((category, index) => {
+    const { label } = category;
+
+    if (label === '' || label === '<div></div>') {
+      categoryErrors[index] = 'Content should not be empty.';
+    } else {
+      const identicalAnswer = categories.slice(index + 1).some((c) => c.label === label);
+
+      if (identicalAnswer) {
+        categoryErrors[index + 1] = 'Content should be unique.';
+      }
+    }
+  });
+
+  return categoryErrors
+}
 export class Configure extends React.Component {
   static propTypes = {
     onModelChanged: PropTypes.func,
@@ -62,6 +88,7 @@ export class Configure extends React.Component {
   }
 
   static defaultProps = { classes: {} };
+  
 
   onRationaleChange = (rationale) => this.props.onModelChanged({ ...this.props.model, rationale });
 
@@ -87,6 +114,7 @@ export class Configure extends React.Component {
 
     this.setState({ gridValues, labelValues });
     onModelChanged(updatedModel);
+    validate(updatedModel)
   };
 
   render() {
@@ -121,14 +149,16 @@ export class Configure extends React.Component {
       languageChoices = {},
     } = configuration || {};
     const {
-      errors,
+    errors,
       promptEnabled,
       rationaleEnabled,
       spellCheckEnabled,
       teacherInstructionsEnabled,
       studentNewCategoryDefaultLabel,
     } = model || {};
-    const { categoryErrors, correctAnswerErrors } = errors || {};
+    const categoryErrors = validate(model,configuration);
+   // const { categoryErrors, correctAnswerErrors } = errors || {};
+   const {  correctAnswerErrors } = errors || {};
     const { gridValues, labelValues } = this.state;
     const showPixeGuides = chartDimensions.showInConfigPanel || true;
 
@@ -156,6 +186,8 @@ export class Configure extends React.Component {
       language: language.settings && language.enabled && dropdown(languageChoices.label, languageChoices.options),
       instruction: instruction.settings && textField(instruction.label),
     };
+
+    console.log(validate(model), "validate")
 
     return (
       <layout.ConfigLayout
