@@ -70,7 +70,7 @@ class GeneralConfigBlock extends React.Component {
     const { classes, model, configuration } = this.props;
     const { layout = {}, choiceMode = {} } = configuration || {};
 
-    const validationMessage = generateValidationMessage(model);
+    const validationMessage = generateValidationMessage(model, configuration);
 
     return (
       <React.Fragment>

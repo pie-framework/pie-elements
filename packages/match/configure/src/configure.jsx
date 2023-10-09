@@ -1,6 +1,6 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import { FeedbackConfig, settings, layout, InputContainer } from '@pie-lib/config-ui';
+import { FeedbackConfig, settings, layout, InputContainer, AlertDialog } from '@pie-lib/config-ui';
 import EditableHtml from '@pie-lib/editable-html';
 import { withDragContext } from '@pie-lib/drag';
 import PropTypes from 'prop-types';
@@ -47,6 +47,10 @@ class Configure extends React.Component {
 
     this.state = {
       activeTab: 0,
+      dialog: {
+        open: false,
+        text: '',
+      },
     };
   }
 
@@ -79,8 +83,19 @@ class Configure extends React.Component {
   };
 
   onAddRow = () => {
-    const { model } = this.props;
+    const { model, configuration } = this.props;
     const newModel = { ...model };
+    const { maxQuestions } = configuration || {};
+
+    if (maxQuestions && newModel.rows.length >= maxQuestions) {
+      this.setState({
+        dialog: {
+          open: true,
+          text: `There can be maximum ${maxQuestions} question row` + (maxQuestions > 1 ? 's' : '') + '.',
+        },
+      });
+      return;
+    }
 
     newModel.rows = newModel.rows.concat({
       id: this.rowIdCounter + 1,
@@ -189,6 +204,7 @@ class Configure extends React.Component {
       teacherInstructionsEnabled,
       toolbarEditorPosition,
     } = model || {};
+    const { dialog } = this.state;
 
     const toolbarOpts = {
       position: toolbarEditorPosition === 'top' ? 'top' : 'bottom',
@@ -310,6 +326,12 @@ class Configure extends React.Component {
         {feedbackEnabled && (
           <FeedbackConfig feedback={model.feedback} onChange={this.onFeedbackChange} toolbarOpts={toolbarOpts} />
         )}
+        <AlertDialog
+          open={dialog.open}
+          title="Warning"
+          text={dialog.text}
+          onConfirm={() => this.setState({ dialog: { open: false } })}
+        />
       </layout.ConfigLayout>
     );
   }
