@@ -68,7 +68,7 @@ class GeneralConfigBlock extends React.Component {
 
   render() {
     const { classes, model, configuration } = this.props;
-    const { layout = {}, choiceMode = {} } = configuration || {};
+    const { layout = {}, choiceMode = {}, maxAnswers } = configuration || {};
 
     const validationMessage = generateValidationMessage(model, configuration);
 
@@ -94,7 +94,7 @@ class GeneralConfigBlock extends React.Component {
                 <NumberTextField
                   type="number"
                   min={3}
-                  max={10}
+                  max={maxAnswers || 10}
                   value={model.layout}
                   onChange={(e, v) => this.onChangeColumns('layout', v)}
                   suffix={'Columns'}
