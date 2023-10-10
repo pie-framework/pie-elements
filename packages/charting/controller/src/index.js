@@ -267,29 +267,20 @@ export const validate = (model = {}) => {
   const correctAnswerErrors = {};
   const categoryErrors = {};
 
-  let isUniqueErrorSet;
-  let isEmptyErrorSet;
-
   const isLabelEmpty = (label) => label === '' || label === '<div></div>';
-
-  const setDuplicateError = (index, duplicateIndex) => {
-    const matchingIndex = index + 1 + duplicateIndex;
-    categoryErrors[index] = isUniqueErrorSet ? '' : 'ategory names should be unique.';
-    categoryErrors[matchingIndex] = '';
-    if (!isUniqueErrorSet) isUniqueErrorSet = true;
-  };
 
   categories.forEach((category, index) => {
     const { label } = category;
 
     if (isLabelEmpty(label)) {
-      categoryErrors[index] = isEmptyErrorSet ? '' : 'Content should not be empty.';
-      if (!isEmptyErrorSet) isEmptyErrorSet = true;
-      return; // If the label is empty, we don't need to check for duplicates.
-    }
+      categoryErrors[index] = 'Content should not be empty.';
+    } else {
+      const identicalAnswer = categories.slice(index + 1).some((c) => c.label === label);
 
-    const duplicateIndex = correctData.slice(index + 1).findIndex((cat) => cat.label === label);
-    if (duplicateIndex !== -1) setDuplicateError(index, duplicateIndex);
+      if (identicalAnswer) {
+        categoryErrors[index + 1] = categoryErrors[index] = 'Content should be unique.';
+      }
+    }
   });
 
   if (categories.length < 1 || categories.length > 20) {
