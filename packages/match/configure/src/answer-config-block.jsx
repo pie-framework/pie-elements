@@ -21,7 +21,7 @@ const styles = (theme) => ({
     display: 'flex',
     alignItems: 'center',
     flex: 1,
-    width: 'fit-content',
+    width: '100%',
     borderBottom: `2px solid ${theme.palette.grey['A100']}`,
     paddingBottom: theme.spacing.unit * 2,
     marginTop: theme.spacing.unit * 2,
