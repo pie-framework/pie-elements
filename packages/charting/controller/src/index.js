@@ -269,17 +269,19 @@ export const validate = (model = {}) => {
 
   const isLabelEmpty = (label) => label === '' || label === '<div></div>';
 
+  const setDuplicateError = (index, duplicateIndex) => {
+    const matchingIndex = index + 1 + duplicateIndex;
+    categoryErrors[index] = categoryErrors[matchingIndex] = 'Content should be unique.';
+  };
+
   categories.forEach((category, index) => {
     const { label } = category;
 
     if (isLabelEmpty(label)) {
       categoryErrors[index] = 'Content should not be empty.';
     } else {
-      const identicalAnswer = categories.slice(index + 1).some((c) => c.label === label);
-
-      if (identicalAnswer) {
-        categoryErrors[index + 1] = categoryErrors[index] = 'Category names should be unique.';
-      }
+      const duplicateIndex = correctData.slice(index + 1).findIndex((cat) => cat.label === label);
+      if (duplicateIndex !== -1) setDuplicateError(index, duplicateIndex);
     }
   });
 
