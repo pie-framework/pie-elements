@@ -276,7 +276,7 @@ export const validate = (model = {}) => {
       const identicalAnswer = categories.some((c, i) => c.label === label && index !== i);
 
       if (identicalAnswer) {
-        categoryErrors[index] = 'Content should be unique.';
+        categoryErrors[index] = 'Category names should be unique.”';
       }
     }
   });
