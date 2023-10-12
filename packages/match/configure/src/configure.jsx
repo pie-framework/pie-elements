@@ -87,7 +87,7 @@ class Configure extends React.Component {
     const newModel = { ...model };
     const { maxQuestions } = configuration || {};
 
-    if (maxQuestions && newModel.rows.length >= maxQuestions) {
+    if (maxQuestions && (newModel.rows || []).length >= maxQuestions) {
       this.setState({
         dialog: {
           open: true,
@@ -99,7 +99,7 @@ class Configure extends React.Component {
 
     newModel.rows = newModel.rows.concat({
       id: this.rowIdCounter + 1,
-      title: `Question Text ${newModel.rows.length + 1}`,
+      title: `Question Text ${(newModel.rows || []).length + 1}`,
       values: new Array(model.layout - 1).fill(false),
     });
 
