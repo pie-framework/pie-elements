@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.17.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@4.17.3...@pie-element/inline-dropdown@4.17.4) (2023-10-03)
+
+
+### Bug Fixes
+
+* trigger build ([3a456ae](https://github.com/pie-framework/pie-elements/commit/3a456aef3bec8260d150fb4606fb7cd89c1369f9))
+* update with latest pie-libs, forcing pie-lib/math-rendering to v2.5.18 ([7ff936a](https://github.com/pie-framework/pie-elements/commit/7ff936ab9fc85c264032181755ce5e2149825406))
+* **inline-dropdown:** revert, and check if the latest pie-lib versions are pulled ([50ac53b](https://github.com/pie-framework/pie-elements/commit/50ac53b46c16e530ec03e43909cb777a3f69c0a7))
+* **inline-dropdown:** use specific pie-lib versions, before math-rendering was updated ([84389ba](https://github.com/pie-framework/pie-elements/commit/84389baa99c99f3a7e8612266adbe3ee029cfa8b))
+
+
+
+
+
 ## [4.17.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@4.17.2...@pie-element/inline-dropdown@4.17.3) (2023-09-28)
 
 **Note:** Version bump only for package @pie-element/inline-dropdown
