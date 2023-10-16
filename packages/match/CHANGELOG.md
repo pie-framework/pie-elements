@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.13.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@5.13.4...@pie-element/match@5.13.5) (2023-10-16)
+
+
+### Bug Fixes
+
+* updated pie-libs PD-3223, PD-3121, PD-3018, PD-2765, PD-3105 ([666e660](https://github.com/pie-framework/pie-elements/commit/666e6604c40b9bde8b88af5ce1b02ba65f11e957))
+* **match:** fix row misalignment by adjusting container width ([b4c066a](https://github.com/pie-framework/pie-elements/commit/b4c066ae73cef8ba1a7b1e3fcb179f0f85cb1521))
+
+
+
+
+
 ## [5.13.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@5.13.3...@pie-element/match@5.13.4) (2023-10-03)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.13.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@8.13.5...@pie-element/ebsr@8.13.6) (2023-10-16)
+
+
+### Bug Fixes
+
+* updated pie-libs PD-3223, PD-3121, PD-3018, PD-2765, PD-3105 ([666e660](https://github.com/pie-framework/pie-elements/commit/666e6604c40b9bde8b88af5ce1b02ba65f11e957))
+
+
+
+
+
 ## [8.13.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@8.13.4...@pie-element/ebsr@8.13.5) (2023-10-03)
 
 
