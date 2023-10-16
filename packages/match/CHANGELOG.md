@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.14.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@5.14.0...@pie-element/match@5.14.1) (2023-10-16)
+
+
+### Bug Fixes
+
+* **match:** fix row misalignment by adjusting row content  width PD-3231 ([1be8323](https://github.com/pie-framework/pie-elements/commit/1be83230c0c0f0a5bbb65f70ff742477db946d3e))
+
+
+
+
+
 # [5.14.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@5.13.5...@pie-element/match@5.14.0) (2023-10-16)
 
 
