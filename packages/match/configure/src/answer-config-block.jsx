@@ -159,7 +159,7 @@ class AnswerConfigBlock extends React.Component {
   render() {
     const { classes, model, onAddRow, imageSupport, configuration, toolbarOpts, spellCheck, uploadSoundSupport } =
       this.props;
-    const { headers = {}, maxImageWidth = {}, maxImageHeight = {}, mathMlOptions = {} } = configuration || {};
+    const { headers = {}, maxImageWidth = {}, maxImageHeight = {}, mathMlOptions = {}, minQuestions } = configuration || {};
     const { errors } = model || {};
     const { correctResponseError, rowsErrors, columnsErrors, noOfRowsError, columnsLengthError } = errors || {};
 
@@ -233,6 +233,7 @@ class AnswerConfigBlock extends React.Component {
               maxImageHeight={(maxImageHeight && maxImageHeight.rowTitles) || defaultImageMaxHeight}
               uploadSoundSupport={uploadSoundSupport}
               mathMlOptions={mathMlOptions}
+              minQuestions={minQuestions}
             />
           ))}
 
