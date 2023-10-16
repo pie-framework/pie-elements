@@ -137,7 +137,7 @@ export class Row extends React.Component {
     );
 
     const content = (
-      <div style={{ opacity: opacity, width: 'fit-content' }}>
+      <div style={{ opacity: opacity, width: '100%' }}>
         <span itemID={'handle'} className={classes.dragHandle} onMouseDown={this.onMouseDownOnHandle}>
           <DragHandle color={'primary'} />
         </span>

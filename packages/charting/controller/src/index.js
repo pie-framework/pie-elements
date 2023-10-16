@@ -271,12 +271,12 @@ export const validate = (model = {}) => {
     const { label } = category;
 
     if (label === '' || label === '<div></div>') {
-      categoryErrors[index] = 'Content should not be empty.';
+      categoryErrors[index] = 'Content should not be empty. ';
     } else {
       const identicalAnswer = categories.some((c, i) => c.label === label && index !== i);
 
       if (identicalAnswer) {
-        categoryErrors[index] = 'Category names should be unique.”';
+        categoryErrors[index] = 'Category names should be unique. ';
       }
     }
   });
