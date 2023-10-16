@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.13.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-configure@4.12.5...@pie-element/drag-in-the-blank-configure@4.13.0) (2023-10-16)
+
+
+### Features
+
+* updated pie-libs PD-2950 ([acffe41](https://github.com/pie-framework/pie-elements/commit/acffe41120fbe288e375321cbd58cfbd48f98595))
+
+
+
+
+
 ## [4.12.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-configure@4.12.4...@pie-element/drag-in-the-blank-configure@4.12.5) (2023-10-16)
 
 

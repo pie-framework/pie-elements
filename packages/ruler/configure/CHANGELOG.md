@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.9.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ruler-configure@3.8.5...@pie-element/ruler-configure@3.9.0) (2023-10-16)
+
+
+### Features
+
+* updated pie-libs PD-2950 ([acffe41](https://github.com/pie-framework/pie-elements/commit/acffe41120fbe288e375321cbd58cfbd48f98595))
+
+
+
+
+
 ## [3.8.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/ruler-configure@3.8.4...@pie-element/ruler-configure@3.8.5) (2023-10-16)
 
 
