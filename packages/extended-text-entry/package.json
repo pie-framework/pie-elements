@@ -12,7 +12,7 @@
     "@material-ui/core": "^3.9.2",
     "@material-ui/icons": "^3.0.2",
     "@pie-framework/pie-player-events": "^0.1.0",
-    "@pie-lib/editable-html": "^11.0.8",
+    "@pie-lib/editable-html": "^11.0.9",
     "@pie-lib/math-rendering": "2.5.18",
     "@pie-lib/render-ui": "^4.15.9",
     "classnames": "^2.2.5",

@@ -167,7 +167,7 @@ export function model(question, session, env) {
       correctAnswer,
       scoringType,
       studentNewCategoryDefaultLabel,
-      language
+      language,
     } = normalizedQuestion;
 
     const correctInfo = { correctness: 'incorrect', score: '0%' };
@@ -187,7 +187,7 @@ export function model(question, session, env) {
       disabled: env.mode !== 'gather',
       scoringType,
       studentNewCategoryDefaultLabel,
-      language
+      language,
     };
 
     const answers = filterCategories(getScore(normalizedQuestion, session, env).answers);
@@ -273,10 +273,10 @@ export const validate = (model = {}) => {
     if (label === '' || label === '<div></div>') {
       categoryErrors[index] = 'Content should not be empty.';
     } else {
-      const identicalAnswer = categories.slice(index + 1).some((c) => c.label === label);
+      const identicalAnswer = categories.some((c, i) => c.label === label && index !== i);
 
       if (identicalAnswer) {
-        categoryErrors[index + 1] = 'Content should be unique.';
+        categoryErrors[index] = 'Category names should be unique.”';
       }
     }
   });
