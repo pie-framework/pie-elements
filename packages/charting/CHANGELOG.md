@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.4.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@6.4.2...@pie-element/charting@6.4.3) (2023-10-16)
+
+
+### Bug Fixes
+
+* updated pie-libs PD-3223, PD-3121, PD-3018, PD-2765, PD-3105 ([666e660](https://github.com/pie-framework/pie-elements/commit/666e6604c40b9bde8b88af5ce1b02ba65f11e957))
+* **charting:** fix validation function for duplicated category labels from the initial state PD-3121 ([9749312](https://github.com/pie-framework/pie-elements/commit/9749312428fc56bcef5a271e7e600dbeb8f8df10))
+* **charting:** fix validation function for duplicated category labels from the initial state PD-3121 ([c77709a](https://github.com/pie-framework/pie-elements/commit/c77709a17b52a6ca30df766db24f6f26dfcffd02))
+* **charting:** move validate function back in controller ([244e055](https://github.com/pie-framework/pie-elements/commit/244e0558e9612b33eef47931b207d98df95ff5c8))
+* **charting:** refactor validation function to display the validation message a single time for duplicate categories and for empty labels PD-3121 ([1a83b5d](https://github.com/pie-framework/pie-elements/commit/1a83b5d3b3a569fa7a7c7bcb64efe8ef93b27957))
+* **charting:** refactor validation function to display the validation message a single time for duplicate categories and for empty labels PD-3121 ([562a095](https://github.com/pie-framework/pie-elements/commit/562a095e5bb418740e32b9e09e43de459b94cbc9))
+* **charting:** update validation message for unique labels PD-3121 ([e448ee2](https://github.com/pie-framework/pie-elements/commit/e448ee25026140ccb1dff7e6639245b76b76d382))
+* **charting:** update validation message for unique labels PD-3121 ([f606731](https://github.com/pie-framework/pie-elements/commit/f606731de97dcb28b947924f0d5afe2a5fc1c29f))
+* **charting:** update validation message for unique labels PD-3121 ([c70bace](https://github.com/pie-framework/pie-elements/commit/c70bace0548f773bc4e543e6c71fd33d59071261))
+
+
+
+
+
 ## [6.4.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@6.4.1...@pie-element/charting@6.4.2) (2023-10-03)
 
 

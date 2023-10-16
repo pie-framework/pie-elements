@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-controller@3.1.1...@pie-element/charting-controller@3.1.2) (2023-10-16)
+
+
+### Bug Fixes
+
+* **charting:** fix validation function for duplicated category labels from the initial state PD-3121 ([9749312](https://github.com/pie-framework/pie-elements/commit/9749312428fc56bcef5a271e7e600dbeb8f8df10))
+* **charting:** fix validation function for duplicated category labels from the initial state PD-3121 ([c77709a](https://github.com/pie-framework/pie-elements/commit/c77709a17b52a6ca30df766db24f6f26dfcffd02))
+* **charting:** move validate function back in controller ([244e055](https://github.com/pie-framework/pie-elements/commit/244e0558e9612b33eef47931b207d98df95ff5c8))
+* **charting:** refactor validation function to display the validation message a single time for duplicate categories and for empty labels PD-3121 ([1a83b5d](https://github.com/pie-framework/pie-elements/commit/1a83b5d3b3a569fa7a7c7bcb64efe8ef93b27957))
+* **charting:** update validation message for unique labels PD-3121 ([e448ee2](https://github.com/pie-framework/pie-elements/commit/e448ee25026140ccb1dff7e6639245b76b76d382))
+* **charting:** update validation message for unique labels PD-3121 ([f606731](https://github.com/pie-framework/pie-elements/commit/f606731de97dcb28b947924f0d5afe2a5fc1c29f))
+* **charting:** update validation message for unique labels PD-3121 ([c70bace](https://github.com/pie-framework/pie-elements/commit/c70bace0548f773bc4e543e6c71fd33d59071261))
+
+
+
+
+
 ## [3.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-controller@3.1.0...@pie-element/charting-controller@3.1.1) (2023-07-06)
 
 
