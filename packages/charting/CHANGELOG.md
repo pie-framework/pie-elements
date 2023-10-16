@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.5.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@6.5.0...@pie-element/charting@6.5.1) (2023-10-16)
+
+
+### Bug Fixes
+
+* **charting:** remove unwanted double quotes from error message ([89ca1db](https://github.com/pie-framework/pie-elements/commit/89ca1db5f2d33d56da8054849e555c2cffdb5c49))
+
+
+
+
+
 # [6.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@6.4.3...@pie-element/charting@6.5.0) (2023-10-16)
 
 

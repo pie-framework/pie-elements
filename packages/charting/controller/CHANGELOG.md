@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-controller@3.1.2...@pie-element/charting-controller@3.1.3) (2023-10-16)
+
+
+### Bug Fixes
+
+* **charting:** remove unwanted double quotes from error message ([89ca1db](https://github.com/pie-framework/pie-elements/commit/89ca1db5f2d33d56da8054849e555c2cffdb5c49))
+
+
+
+
+
 ## [3.1.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-controller@3.1.1...@pie-element/charting-controller@3.1.2) (2023-10-16)
 
 
