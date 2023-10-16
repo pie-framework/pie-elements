@@ -263,7 +263,7 @@ class ImageClozeAssociationComponent extends React.Component {
 
         <PreviewPrompt defaultClassName={classes.stimulus} prompt={stimulus} />
 
-        <CorrectAnswerToggle show={showToggle} toggled={showCorrect} onToggle={this.toggleCorrect} />
+        <CorrectAnswerToggle show={showToggle} toggled={showCorrect} onToggle={this.toggleCorrect} language={language}/>
 
         {showCorrect && showToggle ? (
           <InteractiveSection responseCorrect={true}>

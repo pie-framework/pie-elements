@@ -265,6 +265,7 @@ export class NumberLine extends React.Component {
             toggled={showCorrectAnswer}
             onToggle={onShowCorrectAnswer}
             initialValue={false}
+            language={language}
           />
         </div>
 
