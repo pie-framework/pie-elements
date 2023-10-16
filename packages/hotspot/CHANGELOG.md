@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.18.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@5.17.6...@pie-element/hotspot@5.18.0) (2023-10-16)
+
+
+### Features
+
+* updated pie-libs PD-2950 ([acffe41](https://github.com/pie-framework/pie-elements/commit/acffe41120fbe288e375321cbd58cfbd48f98595))
+
+
+
+
+
 ## [5.17.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@5.17.5...@pie-element/hotspot@5.17.6) (2023-10-16)
 
 

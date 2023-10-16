@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/boilerplate-item-type-configure@1.2.5...@pie-element/boilerplate-item-type-configure@1.3.0) (2023-10-16)
+
+
+### Features
+
+* updated pie-libs PD-2950 ([acffe41](https://github.com/pie-framework/pie-elements/commit/acffe41120fbe288e375321cbd58cfbd48f98595))
+
+
+
+
+
 ## [1.2.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/boilerplate-item-type-configure@1.2.4...@pie-element/boilerplate-item-type-configure@1.2.5) (2023-10-16)
 
 

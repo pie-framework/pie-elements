@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.14.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@5.13.5...@pie-element/match@5.14.0) (2023-10-16)
+
+
+### Bug Fixes
+
+* add sanity checks ([4d3227e](https://github.com/pie-framework/pie-elements/commit/4d3227ed7327cf9e3d2188cbd5488610b6a4ee66))
+* update snapshots ([91d777d](https://github.com/pie-framework/pie-elements/commit/91d777d395c4d64da687db32838e8671681d23c4))
+* **match:** add max answers to number text field for number of answers ([d79271b](https://github.com/pie-framework/pie-elements/commit/d79271b38d3e71b6a6ac3e5b188cb13fe5bcd789))
+* **match:** add validation on question number based on configuration PD-3225 ([14ecdf0](https://github.com/pie-framework/pie-elements/commit/14ecdf07692ab0a7422fe4d1baa1a0f3bd99a263))
+
+
+### Features
+
+* updated pie-libs PD-2950 ([acffe41](https://github.com/pie-framework/pie-elements/commit/acffe41120fbe288e375321cbd58cfbd48f98595))
+
+
+
+
+
 ## [5.13.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@5.13.4...@pie-element/match@5.13.5) (2023-10-16)
 
 
