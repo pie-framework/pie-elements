@@ -131,6 +131,7 @@ exports[`AnswerConfigBlock render snapshot 1`] = `
       }
       maxImageHeight={150}
       maxImageWidth={300}
+      minQuestions={2}
       model={
         Object {
           "choiceMode": "radio",
@@ -221,6 +222,7 @@ exports[`AnswerConfigBlock render snapshot 1`] = `
       }
       maxImageHeight={150}
       maxImageWidth={300}
+      minQuestions={2}
       model={
         Object {
           "choiceMode": "radio",
@@ -311,6 +313,7 @@ exports[`AnswerConfigBlock render snapshot 1`] = `
       }
       maxImageHeight={150}
       maxImageWidth={300}
+      minQuestions={2}
       model={
         Object {
           "choiceMode": "radio",
@@ -401,6 +404,7 @@ exports[`AnswerConfigBlock render snapshot 1`] = `
       }
       maxImageHeight={150}
       maxImageWidth={300}
+      minQuestions={2}
       model={
         Object {
           "choiceMode": "radio",

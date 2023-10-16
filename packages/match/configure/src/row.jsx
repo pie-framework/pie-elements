@@ -41,6 +41,7 @@ export class Row extends React.Component {
     toolbarOpts: PropTypes.object,
     error: PropTypes.string,
     spellCheck: PropTypes.bool,
+    minQuestions: PropTypes.number,
   };
 
   static defaultProps = {};
@@ -80,13 +81,13 @@ export class Row extends React.Component {
   };
 
   onDeleteRow = (idx) => () => {
-    const { model, onDeleteRow } = this.props;
+    const { model, onDeleteRow, minQuestions } = this.props;
 
-    if (model.rows && model.rows.length === 1) {
+    if (model.rows && model.rows.length === minQuestions) {
       this.setState({
         dialog: {
           open: true,
-          text: 'There has to be at least one question row.',
+          text: `There should be at least ${minQuestions} question row` + (minQuestions > 1 ? 's' : '') + '.',
         },
       });
     } else {
