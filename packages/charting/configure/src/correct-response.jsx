@@ -1,11 +1,13 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { Chart } from '@pie-lib/charting';
+import Charting from '@pie-lib/chart-toolbox/charting';
 import isEqual from 'lodash/isEqual';
 import isEmpty from 'lodash/isEmpty';
 
 import Typography from '@material-ui/core/Typography';
+
+const { Chart } = Charting;
 
 const styles = (theme) => ({
   container: {
