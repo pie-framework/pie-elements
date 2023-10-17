@@ -1,7 +1,6 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import Charting from '@pie-lib/chart-toolbox/charting';
-
+import { chartTypes, ConfigureChartPanel } from '@pie-lib/charting';
 import { settings, layout, InputContainer } from '@pie-lib/config-ui';
 import PropTypes from 'prop-types';
 import debug from 'debug';
@@ -14,8 +13,6 @@ import { applyConstraints, getGridValues, getLabelValues } from './utils';
 
 const log = debug('@pie-element:graphing:configure');
 const { Panel, toggle, radio, dropdown, textField } = settings;
-
-const { chartTypes, ConfigureChartPanel } = Charting;
 
 const styles = (theme) => ({
   title: {

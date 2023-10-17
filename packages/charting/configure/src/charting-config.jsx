@@ -1,13 +1,11 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import Charting from '@pie-lib/chart-toolbox/charting';
+import { Chart } from '@pie-lib/charting';
 import { AlertDialog } from '@pie-lib/config-ui';
 import Checkbox from '@material-ui/core/Checkbox';
 
 import Typography from '@material-ui/core/Typography';
-
-const { Chart } = Charting;
 
 const styles = (theme) => ({
   container: {
