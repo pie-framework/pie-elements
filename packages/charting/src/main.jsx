@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { color, Collapsible, hasText, PreviewPrompt } from '@pie-lib/render-ui';
+import { color, Collapsible, hasText, PreviewPrompt } from '@pie-lib/chart-toolbox/render-ui';
 import { Chart, chartTypes } from '@pie-lib/chart-toolbox/charting';
 import isArray from 'lodash/isArray';
 import isEqual from 'lodash/isEqual';
