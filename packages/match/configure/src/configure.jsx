@@ -54,6 +54,31 @@ class Configure extends React.Component {
     };
   }
 
+  componentDidMount() {
+    const { updatedRows, wasChanged } = this.validateRowsID(this.props.model.rows);
+    
+    if (wasChanged) {
+      const newModel = { ...this.props.model, rows: updatedRows };
+      this.props.onModelChanged(newModel);
+    }
+  }
+
+  validateRowsID(rows) {
+    let wasChanged = false;
+
+    const updatedRows = (rows || []).map((row, index) => {
+      if (row.id !== index + 1) {
+        wasChanged = true;
+
+        return { ...row, id: index + 1 };
+      }
+
+      return row;
+    });
+
+    return { updatedRows, wasChanged };
+  }
+
   onTabChange = (event, value) => {
     this.setState({ activeTab: value });
   };
