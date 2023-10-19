@@ -36,9 +36,9 @@ export default {
     teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true,
     studentNewCategoryDefaultLabel: 'New Category',
-    changeInteractiveEnabled: true,
-    changeEditableEnabled: true,
-    changeAddCategoryEnabled: true,
+    changeInteractiveEnabled: false,
+    changeEditableEnabled: false,
+    changeAddCategoryEnabled: false,
   },
   configuration: {
     spellCheck: {
