@@ -1,7 +1,7 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { Chart } from '@pie-lib/charting';
+import { Chart } from '@pie-lib/chart-toolbox/charting';
 import { AlertDialog } from '@pie-lib/config-ui';
 import Checkbox from '@material-ui/core/Checkbox';
 

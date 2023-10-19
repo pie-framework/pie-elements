@@ -21,7 +21,7 @@ jest.mock('@pie-lib/config-ui', () => ({
   },
 }));
 
-jest.mock('@pie-lib/charting', () => ({
+jest.mock('@pie-lib/chart-toolbox/charting', () => ({
   Chart: () => <div />,
   chartTypes: {
     Bar: () => ({
