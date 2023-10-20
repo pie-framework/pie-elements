@@ -43,7 +43,13 @@ class Configure extends React.Component {
   constructor(props) {
     super(props);
 
-    this.rowIdCounter = props.model.rows[props.model.rows.length - 1].id + 1;
+    let maxId = 0;
+
+    if (props.model.rows && props.model.rows.length > 0) {
+        maxId = Math.max(...props.model.rows.map(row => row.id));
+    }
+
+    this.rowIdCounter = maxId + 1;
 
     this.state = {
       activeTab: 0,
