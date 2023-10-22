@@ -26,17 +26,14 @@ export class Main extends React.Component {
     };
   }
 
-  static getDerivedStateFromProps(nextProps, prevState) {
-    const { categories: newCategories, model: { data: defaultCategories = [] } = {} } = nextProps;
-    const { categories } = prevState;
-    const nextCategories = isArray(newCategories) ? newCategories : defaultCategories;
-
-    if (!isEqual(nextCategories, categories)) {
-      return { categories: nextCategories };
+  componentDidUpdate(prevProps) {
+    if (!isEqual(prevProps.categories, this.props.categories)) {
+        this.setState({ categories: this.props.categories });
+    } else if (!isEqual(prevProps.model.data, this.props.model.data)) {
+        this.setState({ categories: this.props.model.data });
     }
+}
 
-    return null;
-  }
 
   changeData = (data) =>
     this.setState(
