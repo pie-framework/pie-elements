@@ -95,7 +95,7 @@ export default {
       teacherInstructions: 300,
       prompt: 300,
       rationale: 636,
-      choices: 500,
+      choices: 900,
     },
     maxImageHeight: {
       teacherInstructions: 300,
