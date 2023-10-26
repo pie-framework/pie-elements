@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.5.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@6.5.1...@pie-element/charting@6.5.2) (2023-10-26)
+
+
+### Bug Fixes
+
+* update pie-lib PD-3221 ([f04d59f](https://github.com/pie-framework/pie-elements/commit/f04d59f204852e430dc3e8fe2c442bb9a1634761))
+* **charting:** synchronize Gather state with Chart 1 changes, shifted logic from  to  for clearer prop change detection PD-3224 ([57b516e](https://github.com/pie-framework/pie-elements/commit/57b516e26eef78cbaf7c74066e4881c1b2b9a32d))
+* **charting:** synchronize Gather state with Chart 1 changes, shifted logic from getDerivedStateFromProps to componentDidUpdate for clearer prop change detection PD-3224 ([fdaa055](https://github.com/pie-framework/pie-elements/commit/fdaa0554a774930159cd46294e50e53d37be3add))
+
+
+
+
+
 ## [6.5.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@6.5.0...@pie-element/charting@6.5.1) (2023-10-16)
 
 

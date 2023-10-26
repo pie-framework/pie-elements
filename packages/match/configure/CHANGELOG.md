@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.14.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-configure@5.14.1...@pie-element/match-configure@5.14.2) (2023-10-26)
+
+
+### Bug Fixes
+
+* update pie-lib PD-3221 ([f04d59f](https://github.com/pie-framework/pie-elements/commit/f04d59f204852e430dc3e8fe2c442bb9a1634761))
+* **match:** Introduced  function to ensure row IDs are sequential and unique. PD-3234 ([304f59d](https://github.com/pie-framework/pie-elements/commit/304f59d0a0a98d0ff8dd0cc657f24b2d245808e9))
+* **match:** refactor rowIdCounter initialization to ensure highest id value PD-3234 ([b0ac329](https://github.com/pie-framework/pie-elements/commit/b0ac3292b1e48fa0ba16840a4fbb988eaf0e75f0))
+
+
+
+
+
 ## [5.14.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-configure@5.14.0...@pie-element/match-configure@5.14.1) (2023-10-16)
 
 
