@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.5.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-configure@6.5.0...@pie-element/charting-configure@6.5.1) (2023-10-26)
+
+
+### Bug Fixes
+
+* revert experiments ([bc1636e](https://github.com/pie-framework/pie-elements/commit/bc1636ef7210abc3582ac2b230515465fb1170b3))
+* update pie-lib PD-3221 ([f04d59f](https://github.com/pie-framework/pie-elements/commit/f04d59f204852e430dc3e8fe2c442bb9a1634761))
+
+
+
+
+
 # [6.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-configure@6.4.3...@pie-element/charting-configure@6.5.0) (2023-10-16)
 
 

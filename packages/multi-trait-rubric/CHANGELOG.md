@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.15.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric@2.15.0...@pie-element/multi-trait-rubric@2.15.1) (2023-10-26)
+
+
+### Bug Fixes
+
+* update pie-lib PD-3221 ([f04d59f](https://github.com/pie-framework/pie-elements/commit/f04d59f204852e430dc3e8fe2c442bb9a1634761))
+
+
+
+
+
 # [2.15.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric@2.14.5...@pie-element/multi-trait-rubric@2.15.0) (2023-10-16)
 
 
