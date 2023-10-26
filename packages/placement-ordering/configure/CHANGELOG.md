@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.14.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-configure@6.14.0...@pie-element/placement-ordering-configure@6.14.1) (2023-10-26)
+
+
+### Bug Fixes
+
+* update pie-lib PD-3221 ([f04d59f](https://github.com/pie-framework/pie-elements/commit/f04d59f204852e430dc3e8fe2c442bb9a1634761))
+
+
+
+
+
 # [6.14.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-configure@6.13.5...@pie-element/placement-ordering-configure@6.14.0) (2023-10-16)
 
 
