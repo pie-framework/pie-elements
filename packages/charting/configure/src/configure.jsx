@@ -1,6 +1,6 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import { chartTypes, ConfigureChartPanel } from '@pie-lib/chart-toolbox/charting';
+import { chartTypes, ConfigureChartPanel } from '@pie-lib/charting';
 import { settings, layout, InputContainer } from '@pie-lib/config-ui';
 import PropTypes from 'prop-types';
 import debug from 'debug';
