@@ -77,6 +77,17 @@ jobs:
       - save_cache: *save_yarn_cache
       - run: *reg_auth
       - run: scripts/build release --token $NPM_TOKEN
+  beta_release:
+    <<: *defaults
+    steps:
+      - restore_cache: *restore_src_cache
+      - checkout
+      - save_cache: *save_src_cache
+      - restore_cache: *restore_yarn_cache
+      - run: yarn install
+      - save_cache: *save_yarn_cache
+      - run: *reg_auth
+      - run: scripts/build release --beta --token $NPM_TOKEN
 
 workflows:
   version: 2
