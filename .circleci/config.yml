@@ -89,12 +89,14 @@ workflows:
               ignore:
                 - develop
                 - master
+                - beta
       - test:
           filters:
             branches:
               ignore:
                 - develop
                 - master
+                - beta
   build:
     jobs:
       - build:
@@ -112,6 +114,16 @@ workflows:
             branches:
               only:
                 - master
+
+  beta_release:
+    jobs:
+      - beta_release:
+          context: jira
+          filters:
+            branches:
+              only:
+                - beta
+
   # nightly:
   #   triggers:
   #     - schedule:

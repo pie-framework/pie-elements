@@ -2174,6 +2174,50 @@
   dependencies:
     "@octokit/openapi-types" "^11.2.0"
 
+"@pie-element/multi-trait-rubric@^2.15.1":
+  version "2.15.1"
+  resolved "https://registry.yarnpkg.com/@pie-element/multi-trait-rubric/-/multi-trait-rubric-2.15.1.tgz#aac623f775afd9f81e74fa1d6aba9e6d491a3569"
+  integrity sha512-NoXaeyE9YGfCIO89GM64zu+2dbFNNTquZSMQzrU4+e/8/ape2svNWclT45lEPgrW+j/Eoigvb+M78mxkbwFcWg==
+  dependencies:
+    "@material-ui/core" "^3.9.2"
+    "@pie-framework/pie-player-events" "^0.1.0"
+    "@pie-lib/render-ui" "^4.15.9"
+    clsx "^1.1.1"
+    enzyme-to-json "^3.3.5"
+    prop-types "^15.6.1"
+    react "^16.8.1"
+    react-dom "^16.8.1"
+
+"@pie-element/multiple-choice@^7.16.1":
+  version "7.16.1"
+  resolved "https://registry.yarnpkg.com/@pie-element/multiple-choice/-/multiple-choice-7.16.1.tgz#712ab629f815e9ab5943107172b6a1c6804d515c"
+  integrity sha512-rPCVNXkG9UhzHr/Idi9IQu2KSMr1mLi1Zuql/3BgoPKzAI/ejfBN7UUSagw7xKfBT1SJdL8uUMhxDznn+YBheA==
+  dependencies:
+    "@material-ui/core" "^3.9.2"
+    "@pie-lib/config-ui" "^11.9.24"
+    "@pie-lib/correct-answer-toggle" "^2.5.11"
+    "@pie-lib/math-rendering" "2.5.18"
+    "@pie-lib/render-ui" "^4.15.9"
+    "@pie-lib/translator" "^2.3.0"
+    classnames "^2.2.5"
+    debug "^4.1.1"
+    enzyme-to-json "^3.3.3"
+    lodash "^4.17.10"
+    prop-types "^15.6.1"
+    react "^16.8.1"
+    react-dom "^16.8.1"
+    react-test-renderer "^16.3.2"
+    react-transition-group "^2.3.1"
+
+"@pie-element/rubric@^2.12.1":
+  version "2.12.1"
+  resolved "https://registry.yarnpkg.com/@pie-element/rubric/-/rubric-2.12.1.tgz#f79835fc15b0a7f926ab2079faebc06d21dfd4a0"
+  integrity sha512-4CLTGM9RS+O5+Nk8JDLV7zBIcKW91igYzw3hWL1Ffzq4g3s8m8Nf2X42QdyzrW7XL8/o17c8fxHNiNcqRZC+Xw==
+  dependencies:
+    "@material-ui/core" "^3.9.2"
+    "@pie-lib/render-ui" "^4.15.9"
+    prop-types "^15.7.2"
+
 "@pie-framework/build-helper@^5.2.9":
   version "5.2.9"
   resolved "https://registry.yarnpkg.com/@pie-framework/build-helper/-/build-helper-5.2.9.tgz#1a06eb0b7c471042eefce3d5f994192c6576d311"
