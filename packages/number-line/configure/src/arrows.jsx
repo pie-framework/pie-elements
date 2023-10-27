@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import cn from 'classnames';
-import { InputCheckbox } from '@pie-lib/config-ui';
+import { InputCheckbox } from '@pie-lib/pie-toolbox/config-ui';
 
 export class Arrows extends React.Component {
   static propTypes = {

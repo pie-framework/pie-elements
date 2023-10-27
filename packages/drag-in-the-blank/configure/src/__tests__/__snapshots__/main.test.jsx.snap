@@ -140,6 +140,7 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
     label="Teacher Instructions"
   >
     <EditableHtml
+      allowValidation={false}
       languageCharactersProps={
         Array [
           Object {
@@ -161,6 +162,7 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
       maxImageWidth={300}
       nonEmpty={false}
       onChange={[Function]}
+      onDone={[Function]}
       toolbarOpts={
         Object {
           "position": "bottom",
@@ -172,6 +174,7 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
     label="Prompt"
   >
     <EditableHtml
+      allowValidation={false}
       disableUnderline={true}
       languageCharactersProps={
         Array [
@@ -194,6 +197,7 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
       maxImageWidth={300}
       nonEmpty={false}
       onChange={[Function]}
+      onDone={[Function]}
       toolbarOpts={
         Object {
           "position": "bottom",
@@ -231,6 +235,7 @@ There should be at least 2 tokens defined."
     </WithStyles(Tooltip)>
   </div>
   <EditableHtml
+    allowValidation={false}
     disableImageAlignmentButtons={true}
     disableUnderline={true}
     languageCharactersProps={
@@ -252,6 +257,7 @@ There should be at least 2 tokens defined."
     }
     nonEmpty={false}
     onChange={[Function]}
+    onDone={[Function]}
     responseAreaProps={
       Object {
         "maxResponseAreas": 10,
@@ -325,6 +331,7 @@ There should be at least 2 tokens defined."
     label="Rationale"
   >
     <EditableHtml
+      allowValidation={false}
       languageCharactersProps={
         Array [
           Object {
@@ -345,6 +352,7 @@ There should be at least 2 tokens defined."
       maxImageHeight={300}
       maxImageWidth={300}
       onChange={[Function]}
+      onDone={[Function]}
       toolbarOpts={
         Object {
           "position": "bottom",
@@ -521,6 +529,7 @@ There should be at least 2 tokens defined."
     </WithStyles(Tooltip)>
   </div>
   <EditableHtml
+    allowValidation={false}
     disableImageAlignmentButtons={true}
     disableUnderline={true}
     languageCharactersProps={
@@ -542,6 +551,7 @@ There should be at least 2 tokens defined."
     }
     nonEmpty={false}
     onChange={[Function]}
+    onDone={[Function]}
     responseAreaProps={
       Object {
         "maxResponseAreas": 10,

@@ -2,14 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
-import { AlertDialog, Checkbox } from '@pie-lib/config-ui';
+import { AlertDialog, Checkbox } from '@pie-lib/pie-toolbox/config-ui';
 import DragHandle from '@material-ui/icons/DragHandle';
 import Radio from '@material-ui/core/Radio';
 import IconButton from '@material-ui/core/IconButton';
 import Delete from '@material-ui/icons/Delete';
 import { DragSource, DropTarget } from 'react-dnd';
 import debug from 'debug';
-import EditableHtml, { DEFAULT_PLUGINS } from '@pie-lib/editable-html';
+import EditableHtml, { DEFAULT_PLUGINS } from '@pie-lib/pie-toolbox/editable-html';
 
 const log = debug('@pie-element:categorize:configure:choice');
 

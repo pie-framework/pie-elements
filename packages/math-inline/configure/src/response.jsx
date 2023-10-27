@@ -1,7 +1,7 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import { InputContainer } from '@pie-lib/config-ui';
-import { MathToolbar } from '@pie-lib/math-toolbar';
+import { InputContainer } from '@pie-lib/pie-toolbox/config-ui';
+import { MathToolbar } from '@pie-lib/pie-toolbox/math-toolbar';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';

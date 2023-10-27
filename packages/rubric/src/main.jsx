@@ -5,7 +5,7 @@ import List from '@material-ui/core/List';
 import ListItemText from '@material-ui/core/ListItemText';
 import Link from '@material-ui/core/Link';
 import Collapse from '@material-ui/core/Collapse';
-import { color } from '@pie-lib/render-ui';
+import { color } from '@pie-lib/pie-toolbox/render-ui';
 import PropTypes from 'prop-types';
 
 export const RubricType = PropTypes.shape({

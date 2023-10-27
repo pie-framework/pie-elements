@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import Translator from '@pie-lib/translator';
+import Translator from '@pie-lib/pie-toolbox/translator';
 
 import constants from './constants';
 import Button from './button';

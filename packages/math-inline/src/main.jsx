@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
-import { mq, HorizontalKeypad, updateSpans } from '@pie-lib/math-input';
-import { Feedback, Collapsible, Readable, hasText, PreviewPrompt } from '@pie-lib/render-ui';
-import { renderMath } from '@pie-lib/math-rendering';
+import CorrectAnswerToggle from '@pie-lib/pie-toolbox/correct-answer-toggle';
+import { mq, HorizontalKeypad, updateSpans } from '@pie-lib/pie-toolbox/math-input';
+import { Feedback, Collapsible, Readable, hasText, PreviewPrompt } from '@pie-lib/pie-toolbox/render-ui';
+import { renderMath } from '@pie-lib/pie-toolbox/math-rendering';
 import { withStyles } from '@material-ui/core/styles';
 import Tooltip from '@material-ui/core/Tooltip';
 import { ResponseTypes } from './utils';
@@ -11,9 +11,9 @@ import isEqual from 'lodash/isEqual';
 import cx from 'classnames';
 import SimpleQuestionBlock from './simple-question-block';
 import MathQuill from '@pie-framework/mathquill';
-import { color } from '@pie-lib/render-ui';
+import { color } from '@pie-lib/pie-toolbox/render-ui';
 import isEmpty from 'lodash/isEmpty';
-import Translator from '@pie-lib/translator';
+import Translator from '@pie-lib/pie-toolbox/translator';
 const { translator } = Translator;
 let registered = false;
 

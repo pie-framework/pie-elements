@@ -5,8 +5,8 @@ import { withStyles } from '@material-ui/core/styles';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 
-import { withDragContext } from '@pie-lib/drag';
-import { color } from '@pie-lib/render-ui';
+import { withDragContext } from '@pie-lib/pie-toolbox/drag';
+import { color } from '@pie-lib/pie-toolbox/render-ui';
 
 import TraitsHeader from './traitsHeader';
 import TraitTile from './trait';

@@ -162,6 +162,7 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
     label="Teacher Instructions"
   >
     <EditableHtml
+      allowValidation={false}
       languageCharactersProps={
         Array [
           Object {
@@ -183,6 +184,7 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
       maxImageWidth={300}
       nonEmpty={false}
       onChange={[Function]}
+      onDone={[Function]}
       pluginProps={
         Object {
           "html": Object {
@@ -202,6 +204,7 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
     label="Prompt"
   >
     <EditableHtml
+      allowValidation={false}
       disableUnderline={true}
       languageCharactersProps={
         Array [
@@ -224,6 +227,7 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
       maxImageWidth={300}
       nonEmpty={false}
       onChange={[Function]}
+      onDone={[Function]}
       pluginProps={
         Object {
           "html": Object {
@@ -269,6 +273,7 @@ There should be at least 1 and at most 10 response areas defined."
     </WithStyles(Tooltip)>
   </div>
   <EditableHtml
+    allowValidation={false}
     disableImageAlignmentButtons={true}
     disabled={false}
     highlightShape={false}
@@ -290,6 +295,7 @@ There should be at least 1 and at most 10 response areas defined."
       }
     }
     onChange={[Function]}
+    onDone={[Function]}
     pluginProps={
       Object {
         "html": Object {
@@ -392,6 +398,7 @@ There should be at least 1 and at most 10 response areas defined."
     label="Rationale"
   >
     <EditableHtml
+      allowValidation={false}
       languageCharactersProps={
         Array [
           Object {
@@ -412,6 +419,7 @@ There should be at least 1 and at most 10 response areas defined."
       maxImageHeight={300}
       maxImageWidth={300}
       onChange={[Function]}
+      onDone={[Function]}
       pluginProps={
         Object {
           "html": Object {
@@ -618,6 +626,7 @@ There should be at least 1 and at most 10 response areas defined."
     </WithStyles(Tooltip)>
   </div>
   <EditableHtml
+    allowValidation={false}
     disableImageAlignmentButtons={true}
     disabled={false}
     highlightShape={false}
@@ -639,6 +648,7 @@ There should be at least 1 and at most 10 response areas defined."
       }
     }
     onChange={[Function]}
+    onDone={[Function]}
     pluginProps={
       Object {
         "html": Object {

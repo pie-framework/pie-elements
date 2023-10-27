@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
 import { DragSource } from 'react-dnd';
-import { uid } from '@pie-lib/drag';
+import { uid } from '@pie-lib/pie-toolbox/drag';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
-import { color } from '@pie-lib/render-ui';
+import { color } from '@pie-lib/pie-toolbox/render-ui';
 import debug from 'debug';
 
 const log = debug('@pie-ui:categorize:choice');

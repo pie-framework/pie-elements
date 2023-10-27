@@ -1,6 +1,6 @@
 import isEmpty from 'lodash/isEmpty';
-import { getFeedbackForCorrectness } from '@pie-lib/feedback';
-import { lockChoices, getShuffledChoices, partialScoring } from '@pie-lib/controller-utils';
+import { getFeedbackForCorrectness } from '@pie-lib/pie-toolbox/feedback';
+import { lockChoices, getShuffledChoices, partialScoring } from '@pie-lib/pie-toolbox/controller-utils';
 import debug from 'debug';
 
 const log = debug('@pie-element:match-list:controller');

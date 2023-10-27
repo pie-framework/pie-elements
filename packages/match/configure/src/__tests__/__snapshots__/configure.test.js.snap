@@ -21,7 +21,7 @@ exports[`AnswerConfigBlock render snapshot 1`] = `
         className="AnswerConfigBlock-rowItem-10 AnswerConfigBlock-questionText-12"
         key="0"
       >
-        <EditableHtml
+        <Component
           activePlugins={Array []}
           autoWidthToolbar={true}
           className="AnswerConfigBlock-headerInput-14"
@@ -54,7 +54,7 @@ exports[`AnswerConfigBlock render snapshot 1`] = `
         className="AnswerConfigBlock-rowItem-10"
         key="1"
       >
-        <EditableHtml
+        <Component
           activePlugins={Array []}
           autoWidthToolbar={true}
           className="AnswerConfigBlock-headerInput-14"
@@ -87,7 +87,7 @@ exports[`AnswerConfigBlock render snapshot 1`] = `
         className="AnswerConfigBlock-rowItem-10"
         key="2"
       >
-        <EditableHtml
+        <Component
           activePlugins={Array []}
           autoWidthToolbar={true}
           className="AnswerConfigBlock-headerInput-14"

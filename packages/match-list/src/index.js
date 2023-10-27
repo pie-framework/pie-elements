@@ -4,7 +4,7 @@ import debug from 'debug';
 import Main from './main';
 
 import { SessionChangedEvent } from '@pie-framework/pie-player-events';
-import { renderMath } from '@pie-lib/math-rendering';
+import { renderMath } from '@pie-lib/pie-toolbox/math-rendering';
 
 const log = debug('pie-ui:graph-lines');
 

@@ -3,7 +3,7 @@ import React from 'react';
 import { Design } from '../design';
 import defaultValues from '../defaultConfiguration';
 
-jest.mock('@pie-lib/config-ui', () => ({
+jest.mock('@pie-lib/pie-toolbox/config-ui', () => ({
   layout: {
     ConfigLayout: (props) => <div>{props.children}</div>,
   },

@@ -2,7 +2,7 @@ import { shallow } from 'enzyme';
 import React from 'react';
 import { Main } from '../main';
 
-jest.mock('@pie-lib/text-select', () => ({
+jest.mock('@pie-lib/pie-toolbox/text-select', () => ({
   prepareText: jest.fn(),
 }));
 

@@ -1,6 +1,6 @@
 import React from 'react';
-import { InputCheckbox, FeedbackConfig, FormSection, InputContainer, layout } from '@pie-lib/config-ui';
-import EditableHtml from '@pie-lib/editable-html';
+import { InputCheckbox, FeedbackConfig, FormSection, InputContainer, layout } from '@pie-lib/pie-toolbox/config-ui';
+import EditableHtml from '@pie-lib/pie-toolbox/editable-html';
 import { NumberLineComponent, dataConverter, tickUtils } from '@pie-element/number-line';
 import NumberTextField from './number-text-field';
 import CardBar from './card-bar';

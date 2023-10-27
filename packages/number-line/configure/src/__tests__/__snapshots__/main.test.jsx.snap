@@ -10,6 +10,7 @@ exports[`main snapshot renders 1`] = `
     label="Prompt"
   >
     <EditableHtml
+      allowValidation={false}
       disableUnderline={true}
       languageCharactersProps={
         Array [
@@ -29,6 +30,7 @@ exports[`main snapshot renders 1`] = `
       }
       nonEmpty={false}
       onChange={[Function]}
+      onDone={[Function]}
       toolbarOpts={
         Object {
           "position": "bottom",
@@ -155,6 +157,7 @@ The correct answer should include at least one number line object."
     label="Title"
   >
     <EditableHtml
+      allowValidation={false}
       languageCharactersProps={
         Array [
           Object {
@@ -173,6 +176,7 @@ The correct answer should include at least one number line object."
         }
       }
       onChange={[Function]}
+      onDone={[Function]}
       toolbarOpts={
         Object {
           "position": "bottom",

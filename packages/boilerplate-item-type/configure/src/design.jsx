@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import cloneDeep from 'lodash/cloneDeep';
-import { InputContainer, settings, layout } from '@pie-lib/config-ui';
-import EditableHtml from '@pie-lib/editable-html';
+import { InputContainer, settings, layout } from '@pie-lib/pie-toolbox/config-ui';
+import EditableHtml from '@pie-lib/pie-toolbox/editable-html';
 
 const { Panel, toggle } = settings;
 

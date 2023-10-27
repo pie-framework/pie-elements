@@ -1,8 +1,8 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import { FeedbackConfig, settings, layout, InputContainer, AlertDialog } from '@pie-lib/config-ui';
-import EditableHtml from '@pie-lib/editable-html';
-import { withDragContext } from '@pie-lib/drag';
+import { FeedbackConfig, settings, layout, InputContainer, AlertDialog } from '@pie-lib/pie-toolbox/config-ui';
+import EditableHtml from '@pie-lib/pie-toolbox/editable-html';
+import { withDragContext } from '@pie-lib/pie-toolbox/drag';
 import PropTypes from 'prop-types';
 import debug from 'debug';
 import GeneralConfigBlock from './general-config-block';
@@ -62,7 +62,7 @@ class Configure extends React.Component {
 
   componentDidMount() {
     const { updatedRows, wasChanged } = this.validateRowsID(this.props.model.rows);
-    
+
     if (wasChanged) {
       const newModel = { ...this.props.model, rows: updatedRows };
       this.props.onModelChanged(newModel);

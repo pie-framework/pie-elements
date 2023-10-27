@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { PreviewLayout } from '@pie-lib/render-ui';
+import { PreviewLayout } from '@pie-lib/pie-toolbox/render-ui';
 import Matrix from './Matrix';
 
 class Main extends React.Component {

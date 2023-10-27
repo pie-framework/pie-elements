@@ -1,14 +1,15 @@
 import React from 'react';
-import { settings, layout, InputContainer } from '@pie-lib/config-ui';
+import { settings, layout, InputContainer } from '@pie-lib/pie-toolbox/config-ui';
 import PropTypes from 'prop-types';
-import EditableHtml from '@pie-lib/editable-html';
+import EditableHtml from '@pie-lib/pie-toolbox/editable-html';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 
 import ImageContainer from './image-container';
 import cloneDeep from 'lodash/cloneDeep';
-import { dropdown } from '@pie-lib/config-ui/lib/settings';
+import ConfigUiSettings from '@pie-lib/pie-toolbox/config-ui';
 
+const { dropdown } = ConfigUiSettings;
 const { Panel, toggle } = settings;
 
 export class Root extends React.Component {

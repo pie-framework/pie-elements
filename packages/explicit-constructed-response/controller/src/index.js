@@ -3,9 +3,9 @@ import reduce from 'lodash/reduce';
 import find from 'lodash/find';
 import isEmpty from 'lodash/isEmpty';
 import debug from 'debug';
-import { partialScoring } from '@pie-lib/controller-utils';
+import { partialScoring } from '@pie-lib/pie-toolbox/controller-utils';
 import defaults from './defaults';
-import Translator from '@pie-lib/translator';
+import Translator from '@pie-lib/pie-toolbox/translator';
 
 const { translator } = Translator;
 

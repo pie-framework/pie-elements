@@ -1,8 +1,8 @@
 import isEmpty from 'lodash/isEmpty';
-import { buildState, score } from '@pie-lib/categorize';
-import { getFeedbackForCorrectness } from '@pie-lib/feedback';
-import { lockChoices, getShuffledChoices, partialScoring } from '@pie-lib/controller-utils';
-import Translator from '@pie-lib/translator';
+import { buildState, score } from '@pie-lib/pie-toolbox/categorize';
+import { getFeedbackForCorrectness } from '@pie-lib/pie-toolbox/feedback';
+import { lockChoices, getShuffledChoices, partialScoring } from '@pie-lib/pie-toolbox/controller-utils';
+import Translator from '@pie-lib/pie-toolbox/translator';
 
 const { translator } = Translator;
 import defaults from './defaults';
