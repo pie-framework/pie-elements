@@ -8,6 +8,7 @@ const _ = require('lodash');
 const { Commands, getPackage } = require('@pie-framework/build-helper');
 const { resolve, relative, join } = require('path');
 const minimist = require('minimist');
+const invariant = require('invariant');
 log('scope: ', argv.scope);
 
 const toPkgFlag = (p) => `--package ${p.pkg.name}`;
@@ -41,6 +42,25 @@ const getElementPackages = (dir) => {
   return out;
 };
 
+const getCiVars = () => {
+  if (process.env.TRAVIS) {
+    return {
+      branch: process.env.TRAVIS_BRANCH,
+      email: 'travis@travis-ci.org',
+      repo: process.env.TRAVIS_REPO_SLUG,
+      username: 'travis',
+    };
+  }
+  if (process.env.CI) {
+    return {
+      branch: process.env.CIRCLE_BRANCH,
+      email: 'circleci@circleci.com',
+      repo: `${process.env.CIRCLE_PROJECT_USERNAME}/${process.env.CIRCLE_PROJECT_REPONAME}`,
+      username: 'circleci',
+    };
+  }
+};
+
 class ElementsCommands extends Commands {
   constructor(root, args) {
     super(root, args, getElementPackages);
@@ -60,30 +80,140 @@ class ElementsCommands extends Commands {
     );
   }
 
-  async sharedBuild() {
-    const root = resolve(__dirname, '../packages');
-    const allPackages = readdirSync(root);
-    const pkgJson = await Promise.all(
-      allPackages.map(async (n) => {
-        const dir = resolve(root, n);
-        return { dir, pkg: await readJson(resolve(dir, 'package.json')) };
-      })
-    );
+  async release() {
+    console.log('----> release', this.args);
 
-    const printPkgs = pkgJson.filter(
-      (p) => p.pkg.exports && p.pkg.exports['./print']
-    );
-    console.log(
-      'printPkgs',
-      printPkgs.map((p) => p.dir)
-    );
+    const { GITHUB_TOKEN } = process.env;
 
-    const cmd = `yarn pslb --config pslb/pslb.config.js ${printPkgs
-      .map(toPkgFlag)
-      .join(' ')} --logLevel silly`;
+    const ciVars = getCiVars();
 
-    return this.runCmd(cmd);
+    if (ciVars) {
+      invariant(GITHUB_TOKEN, 'GITHUB_TOKEN env var must be defined');
+
+      log(
+          '-----> running in TRAVIS - checkout the branch (detached head doesnt work with lerna)'
+      );
+      await this.runCmds([
+        `git remote set-url origin https://${GITHUB_TOKEN}@github.com/${ciVars.repo}.git`,
+        `git checkout ${ciVars.branch}`,
+        'git rev-parse --short HEAD',
+        `git config user.name "${ciVars.username}"`,
+        `git config user.email "${ciVars.email}"`,
+      ]);
+
+      await this.runCmds([`git status`]);
+    }
+
+    await this.build();
+
+    if (!this.args.skipPublishHooks) {
+      await this.beforePublish();
+      log('beforePublish - done...');
+    }
+
+    const getNextOpts = () => {
+      const nextOpts = [
+        '--canary',
+        '--preid next',
+        '--dist-tag next',
+        '--include-merged-tags',
+        /**
+         * Lerna only checks the last commit to detect changes, so it misses any historicaly changes since
+         * the last tag. Ideally we wouldn't force-publish but just get it to find these changes correctly?
+         * See: https://github.com/lerna/lerna/blob/master/utils/collect-updates/collect-updates.js#L37
+         * > from src:
+         * // if it's a merge commit, it will return all the commits that were part of the merge
+         * // ex: If `ab7533e` had 2 commits, ab7533e^..ab7533e would contain 2 commits + the merge commit
+         * committish = `${sha}^..${sha}`;
+         *
+         * We would want `${sha}~${refCount}` instead.
+         */
+        '--force-publish',
+      ];
+
+      if (this.args.skipForcePublish) {
+        nextOpts.pop();
+      }
+
+      return nextOpts.join(' ');
+    };
+    const getBetaOpts = () => {
+      const betaOpts = [
+        '--canary',
+        '--preid beta',
+        '--dist-tag beta',
+        '--include-merged-tags',
+        /**
+         * Lerna only checks the last commit to detect changes, so it misses any historicaly changes since
+         * the last tag. Ideally we wouldn't force-publish but just get it to find these changes correctly?
+         * See: https://github.com/lerna/lerna/blob/master/utils/collect-updates/collect-updates.js#L37
+         * > from src:
+         * // if it's a merge commit, it will return all the commits that were part of the merge
+         * // ex: If `ab7533e` had 2 commits, ab7533e^..ab7533e would contain 2 commits + the merge commit
+         * committish = `${sha}^..${sha}`;
+         *
+         * We would want `${sha}~${refCount}` instead.
+         */
+        '--force-publish',
+      ];
+
+      if (this.args.skipForcePublish) {
+        betaOpts.pop();
+      }
+
+      return betaOpts.join(' ');
+    };
+
+    let options = '';
+
+    if (this.args.next) {
+      options = getNextOpts();
+    }
+    if (this.args.beta) {
+      options = getBetaOpts();
+    }
+
+    const releaseCmd = `${
+        this.p.lerna
+    } publish --conventional-commits --no-verify-access ${
+        this.args.lernaLogLevel ? `--loglevel ${this.args.lernaLogLevel}` : ''
+    } ${this.args.interactive ? '' : '--yes'} ${options}`;
+
+    await this.runCmds([releaseCmd]);
+
+    if (!this.args.skipPublishHooks) {
+      await this.afterPublish();
+    }
+    // TODO this should use getCurrentBranch
+    const branchToPush = ciVars ? ciVars.branch : 'beta';
+    await this.runCmd(`git push origin ${branchToPush}`);
   }
+
+
+  // async sharedBuild() {
+  //   const root = resolve(__dirname, '../packages');
+  //   const allPackages = readdirSync(root);
+  //   const pkgJson = await Promise.all(
+  //     allPackages.map(async (n) => {
+  //       const dir = resolve(root, n);
+  //       return { dir, pkg: await readJson(resolve(dir, 'package.json')) };
+  //     })
+  //   );
+  //
+  //   const printPkgs = pkgJson.filter(
+  //     (p) => p.pkg.exports && p.pkg.exports['./print']
+  //   );
+  //   console.log(
+  //     'printPkgs',
+  //     printPkgs.map((p) => p.dir)
+  //   );
+  //
+  //   const cmd = `yarn pslb --config pslb/pslb.config.js ${printPkgs
+  //     .map(toPkgFlag)
+  //     .join(' ')} --logLevel silly`;
+  //
+  //   return this.runCmd(cmd);
+  // }
   //
   // build() {
   //   return super.build().then(() => this.sharedBuild());
