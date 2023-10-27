@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { settings, layout, InputContainer } from '@pie-lib/config-ui';
-import EditableHtml from '@pie-lib/editable-html';
+import { settings, layout, InputContainer } from '@pie-lib/pie-toolbox/config-ui';
+import EditableHtml from '@pie-lib/pie-toolbox/editable-html';
 import { withStyles } from '@material-ui/core/styles';
-import { dropdown } from '@pie-lib/config-ui/lib/settings';
+import ConfigUiSettings from '@pie-lib/pie-toolbox/config-ui';
 
+const { dropdown } = ConfigUiSettings;
 const { Panel, toggle } = settings;
 
 export class Root extends React.Component {

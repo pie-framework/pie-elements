@@ -1,6 +1,6 @@
 import * as React from 'react';
 import AnswerGrid from '../answer-grid';
-import { shallowChild } from '@pie-lib/test-utils';
+import { shallowChild } from '@pie-lib/pie-toolbox/test-utils';
 import Radio from '@material-ui/core/Radio';
 import Checkbox from '@material-ui/core/Checkbox';
 import Typography from '@material-ui/core/Typography';

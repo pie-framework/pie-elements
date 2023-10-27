@@ -5,8 +5,8 @@ import isEqual from 'lodash/isEqual';
 import isEqualWith from 'lodash/isEqualWith';
 import merge from 'lodash/merge';
 import omitBy from 'lodash/omitBy';
-import { getFeedbackForCorrectness } from '@pie-lib/feedback';
-import { partialScoring } from '@pie-lib/controller-utils';
+import { getFeedbackForCorrectness } from '@pie-lib/pie-toolbox/feedback';
+import { partialScoring } from '@pie-lib/pie-toolbox/controller-utils';
 import * as math from 'mathjs';
 
 import defaults from './defaults';

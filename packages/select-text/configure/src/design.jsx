@@ -4,12 +4,12 @@ import TextField from '@material-ui/core/TextField';
 import { withStyles } from '@material-ui/core/styles';
 import cloneDeep from 'lodash/cloneDeep';
 import debounce from 'lodash/debounce';
-import { Tokenizer } from '@pie-lib/text-select';
-import { InputContainer, NumberTextField, FeedbackConfig, settings, layout } from '@pie-lib/config-ui';
+import { Tokenizer } from '@pie-lib/pie-toolbox/text-select';
+import { InputContainer, NumberTextField, FeedbackConfig, settings, layout } from '@pie-lib/pie-toolbox/config-ui';
 import Chip from '@material-ui/core/Chip';
 import Info from '@material-ui/icons/Info';
 import debug from 'debug';
-import EditableHtml from '@pie-lib/editable-html';
+import EditableHtml from '@pie-lib/pie-toolbox/editable-html';
 import Tooltip from '@material-ui/core/Tooltip';
 import { generateValidationMessage } from './utils';
 

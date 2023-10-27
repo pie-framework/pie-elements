@@ -4,7 +4,7 @@ exports[`ChoicePreview snapshot renders 1`] = `
 <div
   className="className"
 >
-  <Component
+  <Wrapped
     choice={
       Object {
         "content": "content",
@@ -25,6 +25,6 @@ exports[`ChoicePreview snapshot renders 1`] = `
     >
       <pure(RemoveCircleOutlineIcon) />
     </WithStyles(IconButton)>
-  </Component>
+  </Wrapped>
 </div>
 `;

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
 import Category from './category';
-import { moveChoiceToAlternate } from '@pie-lib/categorize';
+import { moveChoiceToAlternate } from '@pie-lib/pie-toolbox/categorize';
 import { RowLabel } from './RowLabel';
 
 const styles = (theme) => ({

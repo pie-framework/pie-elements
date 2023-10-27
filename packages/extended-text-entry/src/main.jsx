@@ -1,11 +1,11 @@
 import React from 'react';
-import EditableHTML from '@pie-lib/editable-html';
+import EditableHTML from '@pie-lib/pie-toolbox/editable-html';
 import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import debug from 'debug';
 import debounce from 'lodash/debounce';
-import { color, Feedback, Collapsible, PreviewPrompt } from '@pie-lib/render-ui';
+import { color, Feedback, Collapsible, PreviewPrompt } from '@pie-lib/pie-toolbox/render-ui';
 import classnames from 'classnames';
 
 const log = debug('@pie-ui:extended-text-entry');

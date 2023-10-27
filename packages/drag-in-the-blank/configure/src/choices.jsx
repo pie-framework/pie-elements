@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import EditableHtml from '@pie-lib/editable-html';
-import { renderMath } from '@pie-lib/math-rendering';
+import EditableHtml from '@pie-lib/pie-toolbox/editable-html';
+import { renderMath } from '@pie-lib/pie-toolbox/math-rendering';
 import find from 'lodash/find';
 import Button from '@material-ui/core/Button';
 import Choice from './choice';
 import { choiceIsEmpty } from './markupUtils';
 import { withStyles } from '@material-ui/core/styles';
-import { AlertDialog } from '@pie-lib/config-ui';
+import { AlertDialog } from '@pie-lib/pie-toolbox/config-ui';
 
 const styles = (theme) => ({
   design: {

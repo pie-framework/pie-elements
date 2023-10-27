@@ -1,8 +1,8 @@
 import * as React from 'react';
 import Main from '../main';
-import { shallowChild } from '@pie-lib/test-utils';
-import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
-import { Feedback } from '@pie-lib/render-ui';
+import { shallowChild } from '@pie-lib/pie-toolbox/test-utils';
+import CorrectAnswerToggle from '@pie-lib/pie-toolbox/correct-answer-toggle';
+import { Feedback } from '@pie-lib/pie-toolbox/render-ui';
 import AnswerGrid from '../answer-grid';
 import { shallow } from 'enzyme/build';
 

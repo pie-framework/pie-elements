@@ -133,6 +133,7 @@ exports[`Render Main Component Match Snapshot 1`] = `
     label="Teacher Instructions"
   >
     <EditableHtml
+      allowValidation={false}
       imageSupport={Object {}}
       languageCharactersProps={
         Array [
@@ -155,6 +156,7 @@ exports[`Render Main Component Match Snapshot 1`] = `
       maxImageWidth={300}
       nonEmpty={false}
       onChange={[Function]}
+      onDone={[Function]}
       spellCheck={true}
       toolbarOpts={
         Object {
@@ -167,6 +169,7 @@ exports[`Render Main Component Match Snapshot 1`] = `
     label="Prompt"
   >
     <EditableHtml
+      allowValidation={false}
       imageSupport={Object {}}
       languageCharactersProps={
         Array [
@@ -189,6 +192,7 @@ exports[`Render Main Component Match Snapshot 1`] = `
       maxImageWidth={300}
       nonEmpty={false}
       onChange={[Function]}
+      onDone={[Function]}
       spellCheck={true}
       toolbarOpts={
         Object {

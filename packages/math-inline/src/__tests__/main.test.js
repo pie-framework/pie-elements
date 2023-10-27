@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { shallow } from 'enzyme';
 import Main from '../main';
-import { mq, HorizontalKeypad } from '@pie-lib/math-input';
-import { shallowChild } from '@pie-lib/test-utils';
-import { Feedback } from '@pie-lib/render-ui';
-import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
+import { mq, HorizontalKeypad } from '@pie-lib/pie-toolbox/math-input';
+import { shallowChild } from '@pie-lib/pie-toolbox/test-utils';
+import { Feedback } from '@pie-lib/pie-toolbox/render-ui';
+import CorrectAnswerToggle from '@pie-lib/pie-toolbox/correct-answer-toggle';
 import SimpleQuestionBlock from '../simple-question-block';
 
 const Mathquill = require('@pie-framework/mathquill');

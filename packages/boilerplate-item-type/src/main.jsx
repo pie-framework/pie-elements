@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { PreviewPrompt } from '@pie-lib/render-ui';
+import { PreviewPrompt } from '@pie-lib/pie-toolbox/render-ui';
 
 export default class Main extends React.Component {
   static propTypes = {

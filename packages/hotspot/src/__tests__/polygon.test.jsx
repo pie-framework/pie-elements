@@ -5,7 +5,7 @@ import toJson from 'enzyme-to-json';
 import Konva from 'konva';
 import { Line } from 'react-konva';
 
-import { shallowChild } from '@pie-lib/test-utils';
+import { shallowChild } from '@pie-lib/pie-toolbox/test-utils';
 
 import Polygon from '../hotspot/polygon';
 import Image from '../hotspot/image';

@@ -1,5 +1,5 @@
 import * as colors from '../../colors';
-import { color } from '@pie-lib/render-ui';
+import { color } from '@pie-lib/pie-toolbox/render-ui';
 import React from 'react';
 import PropTypes from 'prop-types';
 import Arrow from '../arrow';

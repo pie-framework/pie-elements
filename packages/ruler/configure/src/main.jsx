@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { layout, TwoChoice, NChoice, NumberTextField } from '@pie-lib/config-ui';
+import { layout, TwoChoice, NChoice, NumberTextField } from '@pie-lib/pie-toolbox/config-ui';
 import { withStyles } from '@material-ui/core/styles';
 
 const metricLabels = [

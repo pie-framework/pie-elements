@@ -1,10 +1,10 @@
 import React from 'react';
-import { MathToolbar } from '@pie-lib/math-toolbar';
-import { mq } from '@pie-lib/math-input';
+import { MathToolbar } from '@pie-lib/pie-toolbox/math-toolbar';
+import { mq } from '@pie-lib/pie-toolbox/math-input';
 import cx from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
-import { color } from '@pie-lib/render-ui';
+import { color } from '@pie-lib/pie-toolbox/render-ui';
 
 export class SimpleQuestionBlockRaw extends React.Component {
   static propTypes = {

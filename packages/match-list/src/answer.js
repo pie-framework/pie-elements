@@ -5,9 +5,9 @@ import React from 'react';
 import classNames from 'classnames';
 import debug from 'debug';
 import { withStyles } from '@material-ui/core/styles';
-import { PlaceHolder } from '@pie-lib/drag';
+import { PlaceHolder } from '@pie-lib/pie-toolbox/drag';
 import isEmpty from 'lodash/isEmpty';
-import { color } from '@pie-lib/render-ui';
+import { color } from '@pie-lib/pie-toolbox/render-ui';
 
 const log = debug('pie-elements:match-title:answer');
 

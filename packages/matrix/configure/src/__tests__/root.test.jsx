@@ -4,7 +4,7 @@ import React from 'react';
 import { Main } from '../Main';
 import defaults from '../defaults';
 
-jest.mock('@pie-lib/config-ui', () => ({
+jest.mock('@pie-lib/pie-toolbox/config-ui', () => ({
   settings: {
     Panel: (props) => <div {...props} />,
   },
