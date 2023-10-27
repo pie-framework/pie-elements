@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.15-beta.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/likert-controller@0.0.15...@pie-element/likert-controller@0.0.15-beta.1) (2023-10-27)
+
+**Note:** Version bump only for package @pie-element/likert-controller
+
+
+
+
+
 ## [0.0.15](https://github.com/pie-framework/pie-elements/compare/@pie-element/likert-controller@0.0.14...@pie-element/likert-controller@0.0.15) (2022-12-07)
 
 **Note:** Version bump only for package @pie-element/likert-controller

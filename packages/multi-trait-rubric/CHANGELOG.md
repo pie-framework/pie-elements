@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.15.1-beta.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric@2.15.1...@pie-element/multi-trait-rubric@2.15.1-beta.1) (2023-10-27)
+
+**Note:** Version bump only for package @pie-element/multi-trait-rubric
+
+
+
+
+
 ## [2.15.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric@2.15.0...@pie-element/multi-trait-rubric@2.15.1) (2023-10-26)
 
 

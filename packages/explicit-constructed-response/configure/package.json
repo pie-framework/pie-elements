@@ -1,6 +1,6 @@
 {
   "name": "@pie-element/explicit-constructed-response-configure",
-  "version": "5.2.1-beta.0",
+  "version": "5.2.1-beta.1",
   "private": true,
   "main": "lib/index.js",
   "modue": "src/index.js",

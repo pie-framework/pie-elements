@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.8.1-beta.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-controller@6.8.1...@pie-element/placement-ordering-controller@6.8.1-beta.1) (2023-10-27)
+
+**Note:** Version bump only for package @pie-element/placement-ordering-controller
+
+
+
+
+
 ## [6.8.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-controller@6.8.0...@pie-element/placement-ordering-controller@6.8.1) (2023-09-25)
 
 

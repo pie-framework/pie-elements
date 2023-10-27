@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.12-beta.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric-controller@1.2.12...@pie-element/rubric-controller@1.2.12-beta.1) (2023-10-27)
+
+**Note:** Version bump only for package @pie-element/rubric-controller
+
+
+
+
+
 ## [1.2.12](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric-controller@1.2.11...@pie-element/rubric-controller@1.2.12) (2023-07-06)
 
 

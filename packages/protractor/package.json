@@ -1,6 +1,6 @@
 {
   "name": "@pie-element/protractor",
-  "version": "2.9.3-beta.0",
+  "version": "2.9.3-beta.1",
   "publishConfig": {
     "access": "public"
   },
