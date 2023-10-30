@@ -3,10 +3,8 @@ import PropTypes from 'prop-types';
 import { settings, layout, InputContainer } from '@pie-lib/pie-toolbox/config-ui';
 import EditableHtml from '@pie-lib/pie-toolbox/editable-html';
 import { withStyles } from '@material-ui/core/styles';
-import ConfigUiSettings from '@pie-lib/pie-toolbox/config-ui';
 
-const { dropdown } = ConfigUiSettings;
-const { Panel, toggle } = settings;
+const { Panel, toggle, dropdown } = settings;
 
 export class Root extends React.Component {
   onTeacherInstructionsChanged = (teacherInstructions) => {
