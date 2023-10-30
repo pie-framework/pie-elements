@@ -7,10 +7,8 @@ import { withStyles } from '@material-ui/core/styles';
 
 import ImageContainer from './image-container';
 import cloneDeep from 'lodash/cloneDeep';
-import ConfigUiSettings from '@pie-lib/pie-toolbox/config-ui';
 
-const { dropdown } = ConfigUiSettings;
-const { Panel, toggle } = settings;
+const { Panel, toggle, dropdown } = settings;
 
 export class Root extends React.Component {
   onPromptChanged = (prompt) => {
