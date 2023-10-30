@@ -267,6 +267,24 @@ There should be at most 10 choices defined per response area."
     </WithStyles(Tooltip)>
   </div>
   <EditableHtml
+    activePlugins={
+      Array [
+        "bold",
+        "html",
+        "italic",
+        "underline",
+        "strikethrough",
+        "bulleted-list",
+        "numbered-list",
+        "image",
+        "math",
+        "languageCharacters",
+        "table",
+        "video",
+        "audio",
+        "responseArea",
+      ]
+    }
     allowValidation={false}
     disableImageAlignmentButtons={true}
     disabled={false}
@@ -832,6 +850,24 @@ There should be at most 10 choices defined per response area."
     </WithStyles(Tooltip)>
   </div>
   <EditableHtml
+    activePlugins={
+      Array [
+        "bold",
+        "html",
+        "italic",
+        "underline",
+        "strikethrough",
+        "bulleted-list",
+        "numbered-list",
+        "image",
+        "math",
+        "languageCharacters",
+        "table",
+        "video",
+        "audio",
+        "responseArea",
+      ]
+    }
     allowValidation={false}
     disableImageAlignmentButtons={true}
     disabled={false}

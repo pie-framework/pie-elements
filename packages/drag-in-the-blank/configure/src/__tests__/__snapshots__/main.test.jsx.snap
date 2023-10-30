@@ -235,6 +235,24 @@ There should be at least 2 tokens defined."
     </WithStyles(Tooltip)>
   </div>
   <EditableHtml
+    activePlugins={
+      Array [
+        "bold",
+        "html",
+        "italic",
+        "underline",
+        "strikethrough",
+        "bulleted-list",
+        "numbered-list",
+        "image",
+        "math",
+        "languageCharacters",
+        "table",
+        "video",
+        "audio",
+        "responseArea",
+      ]
+    }
     allowValidation={false}
     disableImageAlignmentButtons={true}
     disableUnderline={true}
@@ -529,6 +547,24 @@ There should be at least 2 tokens defined."
     </WithStyles(Tooltip)>
   </div>
   <EditableHtml
+    activePlugins={
+      Array [
+        "bold",
+        "html",
+        "italic",
+        "underline",
+        "strikethrough",
+        "bulleted-list",
+        "numbered-list",
+        "image",
+        "math",
+        "languageCharacters",
+        "table",
+        "video",
+        "audio",
+        "responseArea",
+      ]
+    }
     allowValidation={false}
     disableImageAlignmentButtons={true}
     disableUnderline={true}

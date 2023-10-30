@@ -169,6 +169,24 @@ exports[`Render Main Component Match Snapshot 1`] = `
     label="Prompt"
   >
     <EditableHtml
+      activePlugins={
+        Array [
+          "bold",
+          "html",
+          "italic",
+          "underline",
+          "strikethrough",
+          "bulleted-list",
+          "numbered-list",
+          "image",
+          "math",
+          "languageCharacters",
+          "table",
+          "video",
+          "audio",
+          "responseArea",
+        ]
+      }
       allowValidation={false}
       imageSupport={Object {}}
       languageCharactersProps={

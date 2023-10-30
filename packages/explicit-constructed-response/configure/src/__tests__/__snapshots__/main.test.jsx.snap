@@ -273,6 +273,24 @@ There should be at least 1 and at most 10 response areas defined."
     </WithStyles(Tooltip)>
   </div>
   <EditableHtml
+    activePlugins={
+      Array [
+        "bold",
+        "html",
+        "italic",
+        "underline",
+        "strikethrough",
+        "bulleted-list",
+        "numbered-list",
+        "image",
+        "math",
+        "languageCharacters",
+        "table",
+        "video",
+        "audio",
+        "responseArea",
+      ]
+    }
     allowValidation={false}
     disableImageAlignmentButtons={true}
     disabled={false}
@@ -626,6 +644,24 @@ There should be at least 1 and at most 10 response areas defined."
     </WithStyles(Tooltip)>
   </div>
   <EditableHtml
+    activePlugins={
+      Array [
+        "bold",
+        "html",
+        "italic",
+        "underline",
+        "strikethrough",
+        "bulleted-list",
+        "numbered-list",
+        "image",
+        "math",
+        "languageCharacters",
+        "table",
+        "video",
+        "audio",
+        "responseArea",
+      ]
+    }
     allowValidation={false}
     disableImageAlignmentButtons={true}
     disabled={false}
