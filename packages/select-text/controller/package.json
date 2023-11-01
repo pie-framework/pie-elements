@@ -6,7 +6,7 @@
   "main": "lib/index.js",
   "module": "src/index.js",
   "dependencies": {
-    "@pie-lib/pie-toolbox": "1.0.3",
+    "@pie-lib/pie-toolbox": "1.0.4",
     "debug": "^3.1.0",
     "lodash": "^4.17.15"
   },
