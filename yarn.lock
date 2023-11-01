@@ -2345,10 +2345,10 @@
     trigonometry-calculator "^2.0.0"
     unist-util-inspect "^4.1.3"
 
-"@pie-lib/pie-toolbox@1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@pie-lib/pie-toolbox/-/pie-toolbox-1.0.2.tgz#ce42b17aad983f217918509756f5d6c09438e3f7"
-  integrity sha512-qq0yZ0DcYdLy2KVprVdveHVI6QfreinMIl0mkVCq6lczyQ+AZ9X9ppI5X7j+4V71/roryHV/U3Nol4Gr5s1LPw==
+"@pie-lib/pie-toolbox@1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@pie-lib/pie-toolbox/-/pie-toolbox-1.0.3.tgz#f4b3dbfd3163160ba53b52609a38d9e6ec09c5a9"
+  integrity sha512-xEoFe56Qk+/NQ4Af0Q0co6ZAaUvMNqGmtMgc2hnh3VM7TsMOo9xxgU6j2/P9EHA1bpjizzQQzZKZpO2JKT4xzQ==
   dependencies:
     "@mapbox/point-geometry" "^0.1.0"
     "@material-ui/core" "^3.8.3"
