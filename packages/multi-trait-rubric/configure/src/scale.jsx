@@ -59,7 +59,8 @@ export class Scale extends React.Component {
   componentDidUpdate(prevProps) {
     if (
       prevProps.scale.maxPoints !== this.props.scale.maxPoints ||
-      prevProps.showDescription !== this.props.showDescription
+      prevProps.showDescription !== this.props.showDescription ||
+      prevProps.excludeZero !== this.props.excludeZero
     ) {
       this.setState({ showRight: this.secondaryBlockRef.scrollWidth - this.secondaryBlockRef.offsetWidth });
     }
