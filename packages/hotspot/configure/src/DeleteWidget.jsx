@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Text, Group, Label } from 'react-konva';
+import { Group } from 'react-konva';
+import { faDelete } from './icons';
+import Image from './image';
 
 function calculate(polygonPoints) {
   let minX = polygonPoints[0].x;
@@ -64,15 +66,7 @@ const DeleteWidget = ({ height, id, width, x, y, points, outlineColor, handleWid
 
   return (
     <Group onClick={() => handleWidgetClick(id)}>
-      {/* Trash icon for deletion */}
-      <Text
-        x={positionX} // Position it to the left of the Rect
-        y={positionY} // Position it above the Rect
-        text={'X'}
-        fontFamily="Material Icons"
-        fontSize={20}
-        fill={outlineColor}
-      />
+      <Image width={20} height={20} x={positionX} y={positionY} src={faDelete} />
     </Group>
   );
 };
