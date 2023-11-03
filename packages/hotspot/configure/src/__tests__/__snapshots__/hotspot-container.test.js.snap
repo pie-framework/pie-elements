@@ -18,11 +18,6 @@ exports[`HotspotContainer render renders 1`] = `
       />
       <WithStyles(RawButton)
         disabled={false}
-        label="Undo"
-        onClick={[Function]}
-      />
-      <WithStyles(RawButton)
-        disabled={false}
         label="Clear all"
         onClick={[Function]}
       />

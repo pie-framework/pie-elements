@@ -31,6 +31,7 @@ export class Container extends Component {
       dragEnabled: true,
       // always transform shapes map into shapes array at this level
       shapes: getAllShapes(props.shapes),
+      undoStack: getAllShapes(props.shapes),
     };
     this.fakeImageHandler = {
       cancel: () => {},
@@ -112,19 +113,6 @@ export class Container extends Component {
     );
   };
 
-  handleUndo = () => {
-    const { shapes } = this.state;
-
-    if (shapes && shapes.length) {
-      // sort by index value
-      let newShapes = shapes.sort((a, b) => parseInt(a.index) - parseInt(b.index));
-
-      newShapes = newShapes ? newShapes.slice(0, newShapes.length - 1) : [];
-
-      this.onUpdateShapes(newShapes);
-    }
-  };
-
   onDeleteShape = (id) => {
     const { shapes } = this.state;
     if (shapes && shapes.length) {
@@ -195,8 +183,6 @@ export class Container extends Component {
                 }}
               />
             )}
-
-            <Button disabled={!(shapes && shapes.length)} onClick={this.handleUndo} label="Undo" />
             <Button disabled={!(shapes && shapes.length)} onClick={this.handleClearAll} label="Clear all" />
           </div>
 

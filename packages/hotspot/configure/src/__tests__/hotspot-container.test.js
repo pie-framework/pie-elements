@@ -219,33 +219,6 @@ describe('HotspotContainer', () => {
       });
     });
 
-    it('handleUndo if no new shape was added', () => {
-      wrapper.instance().handleUndo();
-      expect(onUpdateShapes).toHaveBeenLastCalledWith({
-        ...initialModel.shapes,
-        polygons: initialModel.shapes.polygons.slice(0, -1),
-      });
-    });
-
-    it('handleUndo if new shape was added', () => {
-      const newShape = {
-        id: '7',
-        height: 140,
-        width: 130,
-        x: 280,
-        y: 1,
-        index: 6,
-      };
-
-      // first, add a new shape
-      wrapper.instance().state.shapes = getAllShapes({
-        ...initialModel.shapes,
-        rectangles: [...initialModel.shapes.rectangles, newShape],
-      });
-      wrapper.instance().handleUndo();
-      expect(onUpdateShapes).toBeCalledWith(initialModel.shapes);
-    });
-
     it('handleClearAll', () => {
       wrapper.instance().handleClearAll();
       expect(onUpdateShapes).toHaveBeenLastCalledWith({
