@@ -11,7 +11,7 @@
     "@pie-element/multi-trait-rubric": "next",
     "@pie-element/rubric": "next",
     "@pie-framework/pie-configure-events": "^1.3.0",
-    "@pie-lib/pie-toolbox": "1.0.4",
+    "@pie-lib/pie-toolbox": "1.0.5",
     "debug": "^4.1.1",
     "lodash": "^4.17.15",
     "prop-types": "^15.6.2",
