@@ -11,7 +11,7 @@
     "@pie-lib/pie-toolbox": "1.0.5",
     "debug": "^3.1.0",
     "lodash": "^4.17.15",
-    "nested-property": "^0.0.7",
+    "nested-property": "^4.0.0",
     "pluralize": "^8.0.0",
     "prop-types": "^15.6.2",
     "react": "^16.8.1",
