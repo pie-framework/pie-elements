@@ -31,7 +31,6 @@ export class Container extends Component {
       dragEnabled: true,
       // always transform shapes map into shapes array at this level
       shapes: getAllShapes(props.shapes),
-      undoStack: getAllShapes(props.shapes),
     };
     this.fakeImageHandler = {
       cancel: () => {},
