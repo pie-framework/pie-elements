@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.14.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@5.13.1...@pie-element/multiple-choice-configure@5.14.0) (2023-11-07)
+
+
+### Features
+
+* **multiple-choice:** increase default value for maxImageWidth choices PD-3249 ([4692b46](https://github.com/pie-framework/pie-elements/commit/4692b46e7c38654808fb7db1e5eb64f2c3128159))
+* **multiple-choice:** set maxImageWidth for choices to 900 PD-3249 ([5cb9059](https://github.com/pie-framework/pie-elements/commit/5cb905965eac8bd504f0bdb7937dc15aba516f9f))
+
+
+
+
+
 ## [5.13.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@5.13.0...@pie-element/multiple-choice-configure@5.13.1) (2023-10-26)
 
 
