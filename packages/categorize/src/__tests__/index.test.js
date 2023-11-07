@@ -4,7 +4,7 @@ import { shallow } from 'enzyme';
 import { ModelSetEvent, SessionChangedEvent } from '@pie-framework/pie-player-events';
 import { Categorize as UnStyledCategorize } from '../categorize/index';
 
-jest.mock('@pie-lib/math-rendering', () => ({ renderMath: jest.fn() }));
+jest.mock('@pie-lib/pie-toolbox/math-rendering', () => ({ renderMath: jest.fn() }));
 
 describe('categorize', () => {
   describe('renders', () => {

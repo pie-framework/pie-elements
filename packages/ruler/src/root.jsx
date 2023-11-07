@@ -1,5 +1,5 @@
 import React from 'react';
-import { Ruler } from '@pie-lib/tools';
+import { Ruler } from '@pie-lib/pie-toolbox/tools';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Toggle from './toggle';

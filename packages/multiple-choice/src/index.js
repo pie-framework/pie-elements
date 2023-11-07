@@ -3,7 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import debounce from 'lodash/debounce';
 import debug from 'debug';
-import { renderMath } from '@pie-lib/math-rendering';
+import { renderMath } from '@pie-lib/pie-toolbox/math-rendering';
 import { updateSessionValue } from './session-updater';
 
 const log = debug('pie-ui:multiple-choice');
@@ -29,7 +29,7 @@ export default class MultipleChoice extends HTMLElement {
           this.setAttribute(
             'aria-label',
             this._model.choiceMode === 'radio' ? 'Multiple Choice Question' : 'Multiple Correct Answer Question',
-          ); 
+          );
           this.setAttribute('role', 'region');
 
           ReactDOM.render(element, this, () => {

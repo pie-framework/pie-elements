@@ -3,7 +3,7 @@ import React from 'react';
 
 import { ImageContainer } from '../image-container';
 
-jest.mock('@pie-lib/config-ui', () => ({
+jest.mock('@pie-lib/pie-toolbox/config-ui', () => ({
   settings: {
     Panel: (props) => <div {...props} />,
     toggle: jest.fn(),

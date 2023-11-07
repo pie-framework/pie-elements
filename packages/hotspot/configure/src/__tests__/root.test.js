@@ -3,7 +3,7 @@ import React from 'react';
 import { Root } from '../root';
 import defaultValues from '../defaults';
 
-jest.mock('@pie-lib/config-ui', () => ({
+jest.mock('@pie-lib/pie-toolbox/config-ui', () => ({
   choiceUtils: {
     firstAvailableIndex: jest.fn(),
   },

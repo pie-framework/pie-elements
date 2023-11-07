@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { FeedbackConfig, InputContainer, layout, settings } from '@pie-lib/config-ui';
-import { countInAnswer, ensureNoExtraChoicesInAnswer, ensureNoExtraChoicesInAlternate } from '@pie-lib/categorize';
-import EditableHtml from '@pie-lib/editable-html';
-import { uid, withDragContext } from '@pie-lib/drag';
+import { FeedbackConfig, InputContainer, layout, settings } from '@pie-lib/pie-toolbox/config-ui';
+import { countInAnswer, ensureNoExtraChoicesInAnswer, ensureNoExtraChoicesInAlternate } from '@pie-lib/pie-toolbox/categorize';
+import EditableHtml from '@pie-lib/pie-toolbox/editable-html';
+import { uid, withDragContext } from '@pie-lib/pie-toolbox/drag';
 
 import Categories from './categories';
 import AlternateResponses from './categories/alternateResponses';

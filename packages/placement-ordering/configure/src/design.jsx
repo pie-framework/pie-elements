@@ -1,7 +1,7 @@
-import { FeedbackConfig, FormSection, InputContainer, settings, layout } from '@pie-lib/config-ui';
-import EditableHtml from '@pie-lib/editable-html';
+import { FeedbackConfig, FormSection, InputContainer, settings, layout } from '@pie-lib/pie-toolbox/config-ui';
+import EditableHtml from '@pie-lib/pie-toolbox/editable-html';
 import { withStyles } from '@material-ui/core/styles';
-import { withDragContext } from '@pie-lib/drag';
+import { withDragContext } from '@pie-lib/pie-toolbox/drag';
 import Info from '@material-ui/icons/Info';
 import Tooltip from '@material-ui/core/Tooltip';
 

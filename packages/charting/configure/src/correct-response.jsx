@@ -1,7 +1,7 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { Chart } from '@pie-lib/charting';
+import { Chart } from '@pie-lib/pie-toolbox/charting';
 import isEqual from 'lodash/isEqual';
 import isEmpty from 'lodash/isEmpty';
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { choiceUtils as utils } from '@pie-lib/config-ui';
+import { choiceUtils as utils } from '@pie-lib/pie-toolbox/config-ui';
 import classNames from 'classnames';
 import Info from '@material-ui/icons/Info';
 import Tooltip from '@material-ui/core/Tooltip';
@@ -10,7 +10,7 @@ import {
   removeCategory,
   removeChoiceFromCategory,
   verifyAllowMultiplePlacements,
-} from '@pie-lib/categorize';
+} from '@pie-lib/pie-toolbox/categorize';
 
 import Category from './category';
 import Header from '../header';

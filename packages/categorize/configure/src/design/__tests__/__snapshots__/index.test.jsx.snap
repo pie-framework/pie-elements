@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Design snapshot renders 1`] = `
-<mockConstructor
+<ContextProvider
   value="1"
 >
   <ConfigLayout
@@ -151,5 +151,5 @@ exports[`Design snapshot renders 1`] = `
       }
     />
   </ConfigLayout>
-</mockConstructor>
+</ContextProvider>
 `;

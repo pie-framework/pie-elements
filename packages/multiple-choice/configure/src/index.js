@@ -10,7 +10,7 @@ import {
 } from '@pie-framework/pie-configure-events';
 
 import Main from './main';
-import { choiceUtils as utils } from '@pie-lib/config-ui';
+import { choiceUtils as utils } from '@pie-lib/pie-toolbox/config-ui';
 import defaults from 'lodash/defaults';
 
 import sensibleDefaults from './defaults';

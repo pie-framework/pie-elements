@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
+import CorrectAnswerToggle from '@pie-lib/pie-toolbox/correct-answer-toggle';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
-import { color, Collapsible, PreviewPrompt } from '@pie-lib/render-ui';
+import { color, Collapsible, PreviewPrompt } from '@pie-lib/pie-toolbox/render-ui';
 import StyledChoice from './choice';
 
 // MultipleChoice

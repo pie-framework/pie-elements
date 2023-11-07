@@ -3,7 +3,7 @@ import isEqual from 'lodash/isEqual';
 import isEmpty from 'lodash/isEmpty';
 import pick from 'lodash/pick';
 
-import { partialScoring } from '@pie-lib/controller-utils';
+import { partialScoring } from '@pie-lib/pie-toolbox/controller-utils';
 
 const log = debug('@pie-element:graphing:controller');
 

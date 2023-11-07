@@ -1,4 +1,4 @@
-import { tools } from '@pie-lib/graphing';
+import { tools } from '@pie-lib/pie-toolbox/graphing';
 const { allTools = [] } = tools;
 
 export default {

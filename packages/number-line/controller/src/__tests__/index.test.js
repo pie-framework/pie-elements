@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { defaults } from '@pie-lib/feedback';
+import { defaults } from '@pie-lib/pie-toolbox/feedback';
 import * as controller from '../index';
 import { normalize } from '../index';
 

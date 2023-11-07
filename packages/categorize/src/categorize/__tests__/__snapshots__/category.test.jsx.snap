@@ -4,7 +4,7 @@ exports[`category snapshots disabled 1`] = `
 <div
   className="category"
 >
-  <DropTarget(DroppablePlaceholder)
+  <Wrapped
     className="placeholder"
     disabled={true}
   />
@@ -15,16 +15,16 @@ exports[`category snapshots incorrect 1`] = `
 <div
   className="category"
 >
-  <DropTarget(DroppablePlaceholder)
+  <Wrapped
     className="placeholder"
   >
-    <DragSource(Choice)
+    <Wrapped
       categoryId="1"
       choiceIndex={0}
       correct={false}
       key="0"
     />
-  </DropTarget(DroppablePlaceholder)>
+  </Wrapped>
 </div>
 `;
 
@@ -32,7 +32,7 @@ exports[`category snapshots renders 1`] = `
 <div
   className="category"
 >
-  <DropTarget(DroppablePlaceholder)
+  <Wrapped
     className="placeholder"
   />
 </div>

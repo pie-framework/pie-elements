@@ -1,11 +1,11 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import { chartTypes, ConfigureChartPanel } from '@pie-lib/charting';
-import { settings, layout, InputContainer } from '@pie-lib/config-ui';
+import { chartTypes, ConfigureChartPanel } from '@pie-lib/pie-toolbox/charting';
+import { settings, layout, InputContainer } from '@pie-lib/pie-toolbox/config-ui';
 import PropTypes from 'prop-types';
 import debug from 'debug';
 import Typography from '@material-ui/core/Typography';
-import EditableHtml from '@pie-lib/editable-html';
+import EditableHtml from '@pie-lib/pie-toolbox/editable-html';
 
 import ChartingConfig from './charting-config';
 import CorrectResponse from './correct-response';

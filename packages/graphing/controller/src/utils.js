@@ -2,7 +2,7 @@ import isEqual from 'lodash/isEqual';
 import lodash from 'lodash';
 import uniqWith from 'lodash/uniqWith';
 import differenceWith from 'lodash/differenceWith';
-import { getAmplitudeAndFreq, pointsToABC } from '@pie-lib/graphing-utils';
+import { getAmplitudeAndFreq, pointsToABC } from '@pie-lib/pie-toolbox/graphing-utils';
 
 export const equalPoint = (A, B) => {
   // x1 = x2 & y1 = y2

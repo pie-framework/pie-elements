@@ -3,16 +3,16 @@ import Graph from './graph';
 import PropTypes from 'prop-types';
 import PointChooser from './point-chooser';
 import React from 'react';
-import Toggle from '@pie-lib/correct-answer-toggle';
+import Toggle from '@pie-lib/pie-toolbox/correct-answer-toggle';
 import { buildElementModel } from './graph/elements/builder';
 import classNames from 'classnames';
 import cloneDeep from 'lodash/cloneDeep';
-import { color, PreviewPrompt } from '@pie-lib/render-ui';
+import { color, PreviewPrompt } from '@pie-lib/pie-toolbox/render-ui';
 import injectSheet from 'react-jss';
 import isArray from 'lodash/isArray';
 import isNumber from 'lodash/isNumber';
 import isEqual from 'lodash/isEqual';
-import Translator from '@pie-lib/translator';
+import Translator from '@pie-lib/pie-toolbox/translator';
 
 const { translator } = Translator;
 

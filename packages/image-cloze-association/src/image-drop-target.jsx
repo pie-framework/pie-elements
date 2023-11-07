@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { DropTarget } from '@pie-lib/drag';
+import { DropTarget } from '@pie-lib/pie-toolbox/drag';
 import { withStyles } from '@material-ui/core/styles';
-import { color } from '@pie-lib/render-ui';
+import { color } from '@pie-lib/pie-toolbox/render-ui';
 
 import PossibleResponse from './possible-response';
 import c from './constants';

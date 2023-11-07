@@ -1,7 +1,7 @@
 import debug from 'debug';
 
 const log = debug('@pie-element:extended-text-entry:controller');
-import { getFeedback } from '@pie-lib/feedback';
+import { getFeedback } from '@pie-lib/pie-toolbox/feedback';
 
 import defaults from './defaults';
 

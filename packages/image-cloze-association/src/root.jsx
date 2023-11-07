@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withDragContext } from '@pie-lib/drag';
+import { withDragContext } from '@pie-lib/pie-toolbox/drag';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import { ShowRationale } from '@pie-lib/icons';
-import { color, Collapsible, PreviewPrompt, hasText } from '@pie-lib/render-ui';
+import { ShowRationale } from '@pie-lib/pie-toolbox/icons';
+import { color, Collapsible, PreviewPrompt, hasText } from '@pie-lib/pie-toolbox/render-ui';
 import { withStyles } from '@material-ui/core/styles';
-import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
-import Translator from '@pie-lib/translator';
+import CorrectAnswerToggle from '@pie-lib/pie-toolbox/correct-answer-toggle';
+import Translator from '@pie-lib/pie-toolbox/translator';
 
 const { translator } = Translator;
 import Image from './image-container';

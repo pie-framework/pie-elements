@@ -9,7 +9,7 @@ jest.mock('react-dom', () => ({
   render: jest.fn(),
 }));
 
-jest.mock('@pie-lib/config-ui', () => ({
+jest.mock('@pie-lib/pie-toolbox/config-ui', () => ({
   FeedbackConfig: (props) => <div />,
   InputCheckbox: (props) => <div />,
   layout: {

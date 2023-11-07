@@ -6,7 +6,7 @@ import { get, set } from 'nested-property';
 import { Design } from '../design';
 import defaultValues from '../defaults';
 
-jest.mock('@pie-lib/config-ui', () => ({
+jest.mock('@pie-lib/pie-toolbox/config-ui', () => ({
   FeedbackConfig: props => (<div/>),
   FormSection: props => (<div/>),
   InputContainer: props => (<div/>),

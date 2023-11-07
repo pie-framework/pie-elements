@@ -6,12 +6,14 @@ exports[`Render Main Component should match snapshot 1`] = `
     Constructed Response Question
   </h2>
   <EditableHtml
+    allowValidation={false}
     className="response-area-editor"
     highlightShape={true}
     languageCharactersProps={Array []}
     markup="hi"
     maxHeight="40vh"
     onChange={[Function]}
+    onDone={[Function]}
     pluginProps={
       Object {
         "audio": Object {
@@ -58,12 +60,14 @@ exports[`Render Main Component should match snapshot with teacher instructions 1
     </WithStyles(Collapsible)>
   </div>
   <EditableHtml
+    allowValidation={false}
     className="response-area-editor"
     highlightShape={true}
     languageCharactersProps={Array []}
     markup="hi"
     maxHeight="40vh"
     onChange={[Function]}
+    onDone={[Function]}
     pluginProps={
       Object {
         "audio": Object {

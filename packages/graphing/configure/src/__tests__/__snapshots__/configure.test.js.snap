@@ -427,6 +427,7 @@ exports[`Configure renders snapshot 1`] = `
     label="Teacher Instructions"
   >
     <EditableHtml
+      allowValidation={false}
       languageCharactersProps={
         Array [
           Object {
@@ -448,12 +449,14 @@ exports[`Configure renders snapshot 1`] = `
       maxImageWidth={300}
       nonEmpty={false}
       onChange={[Function]}
+      onDone={[Function]}
     />
   </InputContainer>
   <InputContainer
     label="Item Stem"
   >
     <EditableHtml
+      allowValidation={false}
       disableUnderline={true}
       languageCharactersProps={
         Array [
@@ -476,6 +479,7 @@ exports[`Configure renders snapshot 1`] = `
       maxImageWidth={300}
       nonEmpty={false}
       onChange={[Function]}
+      onDone={[Function]}
     />
   </InputContainer>
   <WithStyles(GraphingConfig)
@@ -849,6 +853,7 @@ exports[`Configure renders snapshot 1`] = `
     label="Rationale"
   >
     <EditableHtml
+      allowValidation={false}
       languageCharactersProps={
         Array [
           Object {
@@ -869,6 +874,7 @@ exports[`Configure renders snapshot 1`] = `
       maxImageHeight={300}
       maxImageWidth={300}
       onChange={[Function]}
+      onDone={[Function]}
     />
   </InputContainer>
 </ConfigLayout>

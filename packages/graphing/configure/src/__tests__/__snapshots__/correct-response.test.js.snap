@@ -128,7 +128,7 @@ exports[`CorrectResponse renders snapshot 1`] = `
   >
     ADD ALTERNATE
   </div>
-  <Component
+  <AlertDialog
     open={false}
   />
 </div>
@@ -160,7 +160,7 @@ exports[`CorrectResponse: if answers is null it should still work as expected re
   >
     ADD ALTERNATE
   </div>
-  <Component
+  <AlertDialog
     open={false}
   />
 </div>
@@ -192,7 +192,7 @@ exports[`CorrectResponse: if answers is undefined it should still work as expect
   >
     ADD ALTERNATE
   </div>
-  <Component
+  <AlertDialog
     open={false}
   />
 </div>

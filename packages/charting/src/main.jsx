@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { color, Collapsible, hasText, PreviewPrompt } from '@pie-lib/render-ui';
-import { Chart, chartTypes } from '@pie-lib/charting';
+import { color, Collapsible, hasText, PreviewPrompt } from '@pie-lib/pie-toolbox/render-ui';
+import { Chart, chartTypes } from '@pie-lib/pie-toolbox/charting';
 import isArray from 'lodash/isArray';
 import isEqual from 'lodash/isEqual';
-import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
+import CorrectAnswerToggle from '@pie-lib/pie-toolbox/correct-answer-toggle';
 
 export class Main extends React.Component {
   static propTypes = {

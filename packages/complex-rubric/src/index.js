@@ -1,6 +1,6 @@
 import Rubric from '@pie-element/rubric';
 import MultiTraitRubric from '@pie-element/multi-trait-rubric';
-import { RUBRIC_TYPES } from '@pie-lib/rubric';
+import { RUBRIC_TYPES } from '@pie-lib/pie-toolbox/rubric';
 
 const RUBRIC_TAG_NAME = 'complex-rubric-simple';
 const MULTI_TRAIT_RUBRIC_TAG_NAME = 'complex-rubric-multi-trait';
