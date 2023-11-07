@@ -132,12 +132,11 @@ class PolComponent extends React.Component {
       return acc;
     }, []);
 
-    if (updateModel) {
-      this.setState({ points: newPoints, ...this.getOffset(newPoints), isDragging: false });
-      onDragEnd(id, { points: newPoints });
-    } else {
-      this.setState({ points: newPoints, ...this.getOffset(newPoints) });
-    }
+    this.setState({
+      points: newPoints,
+      ...this.getOffset(newPoints),
+      isDragging: updateModel ? false : this.state.isDragging,
+    });
   };
 
   handleOnDragVertex = (e, changedIndex, updateModel) => {
@@ -148,11 +147,14 @@ class PolComponent extends React.Component {
       index === changedIndex ? { x: e.target.x(), y: e.target.y() } : point,
     );
 
+    this.setState({
+      points: newPoints,
+      ...this.getOffset(newPoints),
+      isDragging: updateModel ? false : this.state.isDragging,
+    });
+
     if (updateModel) {
       onDragEnd(id, { points: newPoints });
-      this.setState({ points: newPoints, ...this.getOffset(newPoints), isDragging: false });
-    } else {
-      this.setState({ points: newPoints, ...this.getOffset(newPoints) });
     }
   };
 
