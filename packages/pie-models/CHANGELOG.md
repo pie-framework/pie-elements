@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.6.0...@pie-element/pie-models@13.7.0) (2023-11-07)
+
+
+### Features
+
+* **charting:** Update default behavior of charting authoring UI properties. Update docs accordingly. PD-3216 ([207ebe2](https://github.com/pie-framework/pie-elements/commit/207ebe2be2fd06519f7199da65f2c9d2c7ba3007))
+
+
+
+
+
 # [13.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.5.0...@pie-element/pie-models@13.6.0) (2023-09-28)
 
 

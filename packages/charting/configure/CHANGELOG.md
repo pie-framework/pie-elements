@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-configure@6.5.1...@pie-element/charting-configure@6.6.0) (2023-11-07)
+
+
+### Features
+
+* **charting:** Update default behavior of charting authoring UI properties PD-3216 ([f9474f7](https://github.com/pie-framework/pie-elements/commit/f9474f7f5018dbe2a7ce8d38eb20edb87d6dcbce))
+
+
+
+
+
 ## [6.5.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-configure@6.5.0...@pie-element/charting-configure@6.5.1) (2023-10-26)
 
 
