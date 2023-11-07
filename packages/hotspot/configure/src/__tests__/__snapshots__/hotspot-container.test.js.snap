@@ -18,11 +18,6 @@ exports[`HotspotContainer render renders 1`] = `
       />
       <WithStyles(RawButton)
         disabled={false}
-        label="Undo"
-        onClick={[Function]}
-      />
-      <WithStyles(RawButton)
-        disabled={false}
         label="Clear all"
         onClick={[Function]}
       />
@@ -40,6 +35,7 @@ exports[`HotspotContainer render renders 1`] = `
         hotspotColor="rgba(137, 183, 244, 0.65)"
         imageUrl="https://cdn.fluence.net/image/0240eb1455ce4c4bb6180232347b6aef_W"
         multipleCorrect={true}
+        onDeleteShape={[Function]}
         onUpdateImageDimension={[MockFunction]}
         onUpdateShapes={[Function]}
         outlineColor="blue"

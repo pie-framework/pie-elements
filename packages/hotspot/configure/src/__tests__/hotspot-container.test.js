@@ -78,6 +78,7 @@ describe('HotspotContainer', () => {
   let w,
     onImageUpload = jest.fn(),
     onUpdateImageDimension = jest.fn(),
+    onDeleteShape = jest.fn(),
     onUpdateShapes = jest.fn(),
     initialModel = model();
   beforeEach(() => {
@@ -91,6 +92,7 @@ describe('HotspotContainer', () => {
         outlineColor: initialModel.outlineColor,
         onUpdateImageDimension: onUpdateImageDimension,
         onUpdateShapes: onUpdateShapes,
+        onDeleteShape: onDeleteShape,
         onImageUpload: onImageUpload,
         shapes: initialModel.shapes,
         ...extras,
@@ -210,6 +212,54 @@ describe('HotspotContainer', () => {
       });
     });
 
+    it('onDeleteShape by id', () => {
+      console.log('wrapper', wrapper.instance());
+      wrapper.instance().onDeleteShape('7');
+      expect(onUpdateShapes).toHaveBeenCalledWith(
+        groupShapes([
+          { correct: true, group: 'rectangles', height: 140, id: '0', index: 0, width: 130, x: 1, y: 1 },
+          { group: 'rectangles', height: 140, id: '1', index: 1, width: 130, x: 140, y: 1 },
+          { group: 'rectangles', height: 140, id: '2', index: 2, width: 130, x: 280, y: 1 },
+          {
+            correct: true,
+            group: 'polygons',
+            id: '3',
+            index: 3,
+            points: [
+              { x: 1, y: 148 },
+              { x: 1, y: 288 },
+              { x: 129, y: 288 },
+              { x: 129, y: 148 },
+            ],
+          },
+          {
+            correct: false,
+            group: 'polygons',
+            id: '4',
+            index: 4,
+            points: [
+              { x: 141, y: 151 },
+              { x: 141, y: 289 },
+              { x: 269, y: 289 },
+              { x: 269, y: 151 },
+            ],
+          },
+          {
+            correct: false,
+            group: 'polygons',
+            id: '5',
+            index: 5,
+            points: [
+              { x: 279, y: 150 },
+              { x: 279, y: 289 },
+              { x: 407, y: 289 },
+              { x: 407, y: 150 },
+            ],
+          },
+        ]),
+      );
+    });
+
     it('onUpdateShapes with no shapes', () => {
       wrapper.instance().onUpdateShapes([]);
 
@@ -217,33 +267,6 @@ describe('HotspotContainer', () => {
         rectangles: [],
         polygons: [],
       });
-    });
-
-    it('handleUndo if no new shape was added', () => {
-      wrapper.instance().handleUndo();
-      expect(onUpdateShapes).toHaveBeenLastCalledWith({
-        ...initialModel.shapes,
-        polygons: initialModel.shapes.polygons.slice(0, -1),
-      });
-    });
-
-    it('handleUndo if new shape was added', () => {
-      const newShape = {
-        id: '7',
-        height: 140,
-        width: 130,
-        x: 280,
-        y: 1,
-        index: 6,
-      };
-
-      // first, add a new shape
-      wrapper.instance().state.shapes = getAllShapes({
-        ...initialModel.shapes,
-        rectangles: [...initialModel.shapes.rectangles, newShape],
-      });
-      wrapper.instance().handleUndo();
-      expect(onUpdateShapes).toBeCalledWith(initialModel.shapes);
     });
 
     it('handleClearAll', () => {
