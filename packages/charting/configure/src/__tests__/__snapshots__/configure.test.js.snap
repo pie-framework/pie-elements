@@ -19,8 +19,8 @@ exports[`ChartingConfig renders snapshot 1`] = `
       </WithStyles(Typography)>
       <Chart
         addCategoryEnabled={true}
-        changeEditableEnabled={true}
-        changeInteractiveEnabled={true}
+        changeEditableEnabled={false}
+        changeInteractiveEnabled={false}
         chartType="lineCross"
         data={Array []}
         defineChart={true}
@@ -44,12 +44,6 @@ exports[`ChartingConfig renders snapshot 1`] = `
         }
         title=""
       />
-      <div>
-        <WithStyles(Checkbox)
-          checked={true}
-          onChange={[Function]}
-        />
-      </div>
       <Component
         open={false}
       />
@@ -216,9 +210,9 @@ exports[`Configure renders snapshot 1`] = `
       model={
         Object {
           "addCategoryEnabled": true,
-          "changeAddCategoryEnabled": true,
-          "changeEditableEnabled": true,
-          "changeInteractiveEnabled": true,
+          "changeAddCategoryEnabled": false,
+          "changeEditableEnabled": false,
+          "changeInteractiveEnabled": false,
           "chartType": "lineCross",
           "correctAnswer": Object {},
           "data": Array [],
@@ -384,9 +378,9 @@ exports[`Configure renders snapshot 1`] = `
     model={
       Object {
         "addCategoryEnabled": true,
-        "changeAddCategoryEnabled": true,
-        "changeEditableEnabled": true,
-        "changeInteractiveEnabled": true,
+        "changeAddCategoryEnabled": false,
+        "changeEditableEnabled": false,
+        "changeInteractiveEnabled": false,
         "chartType": "lineCross",
         "correctAnswer": Object {},
         "data": Array [],
@@ -486,9 +480,9 @@ exports[`Configure renders snapshot 1`] = `
     model={
       Object {
         "addCategoryEnabled": true,
-        "changeAddCategoryEnabled": true,
-        "changeEditableEnabled": true,
-        "changeInteractiveEnabled": true,
+        "changeAddCategoryEnabled": false,
+        "changeEditableEnabled": false,
+        "changeInteractiveEnabled": false,
         "chartType": "lineCross",
         "correctAnswer": Object {},
         "data": Array [],
@@ -560,9 +554,9 @@ exports[`Configure renders snapshot 1`] = `
     model={
       Object {
         "addCategoryEnabled": true,
-        "changeAddCategoryEnabled": true,
-        "changeEditableEnabled": true,
-        "changeInteractiveEnabled": true,
+        "changeAddCategoryEnabled": false,
+        "changeEditableEnabled": false,
+        "changeInteractiveEnabled": false,
         "chartType": "lineCross",
         "correctAnswer": Object {},
         "data": Array [],

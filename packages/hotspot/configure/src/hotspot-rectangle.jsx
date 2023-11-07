@@ -2,12 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Rect, Group, Transformer } from 'react-konva';
 import { withStyles } from '@material-ui/core/styles/index';
+import DeleteWidget from './DeleteWidget';
 
 class RectComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       hovered: false,
+      isDragging: false,
     };
     this.shapeRef = React.createRef();
     this.trRef = React.createRef();
@@ -36,7 +38,7 @@ class RectComponent extends React.Component {
 
   handleOnDragEnd = (e) => {
     const { onDragEnd, id } = this.props;
-
+    this.setState({ isDragging: false });
     onDragEnd(id, {
       x: e.target.x(),
       y: e.target.y(),
@@ -56,6 +58,7 @@ class RectComponent extends React.Component {
     // we will reset it back
     node.scaleX(1);
     node.scaleY(1);
+    this.setState({ isDragging: false });
     onDragEnd(id, {
       x: node.x(),
       y: node.y(),
@@ -65,9 +68,13 @@ class RectComponent extends React.Component {
     });
   };
 
-  render() {
-    const { classes, correct, height, hotspotColor, outlineColor, width, x, y, strokeWidth = 5 } = this.props;
+  handleDelete = (id) => {
+    const { onDeleteShape } = this.props;
+    onDeleteShape(id);
+  };
 
+  render() {
+    const { classes, correct, height, hotspotColor, id, outlineColor, width, x, y, strokeWidth = 5 } = this.props;
     return (
       <Group classes={classes.group} onMouseLeave={this.handleMouseLeave} onMouseEnter={this.handleMouseEnter}>
         <Rect
@@ -81,11 +88,24 @@ class RectComponent extends React.Component {
           draggable
           stroke={outlineColor}
           strokeWidth={correct ? strokeWidth : 0}
+          onDragStart={() => this.setState({ isDragging: true })}
           onDragEnd={this.handleOnDragEnd}
+          onTransformStart={() => this.setState({ isDragging: true })}
           onTransformEnd={this.onResizeEnd}
           x={x}
           y={y}
         />
+        {!this.state.isDragging && this.state.hovered && (
+          <DeleteWidget
+            id={id}
+            height={height}
+            width={width}
+            x={x}
+            y={y}
+            outlineColor={outlineColor}
+            handleWidgetClick={this.handleDelete}
+          />
+        )}
         {this.state.hovered && (
           <Transformer
             ref={this.trRef}
@@ -123,6 +143,7 @@ RectComponent.propTypes = {
   height: PropTypes.number.isRequired,
   hotspotColor: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
+  onDeleteShape: PropTypes.func.isRequired,
   onDragEnd: PropTypes.func.isRequired,
   outlineColor: PropTypes.string.isRequired,
   width: PropTypes.number.isRequired,

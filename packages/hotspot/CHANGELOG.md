@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.19.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@5.18.1...@pie-element/hotspot@5.19.0) (2023-11-07)
+
+
+### Features
+
+* **hotspot:** ability to delete an hospot pd-597 ([972c4c9](https://github.com/pie-framework/pie-elements/commit/972c4c90c41fe7dd447715e711883af4517bc2a5))
+* **hotspot:** add image component to delete button pd-597 ([17c64c5](https://github.com/pie-framework/pie-elements/commit/17c64c5984977299cdfdc1594438d53b775c57fe))
+* **hotspot:** add tests for delete functionality pd-597 ([772762e](https://github.com/pie-framework/pie-elements/commit/772762ee7760356c16ab74cef41ec73a3de0dc65))
+* **hotspot:** delete unused field from state pd-597 ([620b9a6](https://github.com/pie-framework/pie-elements/commit/620b9a693063de7cff5448ce95ff3026b5803ce9))
+* **hotspot:** get rid of undo pd-597 ([185f7d1](https://github.com/pie-framework/pie-elements/commit/185f7d1fde2f6af6ba9b3c4b82597066f267805d))
+* **hotspot:** refactor code where needed pd-597 ([b7640d2](https://github.com/pie-framework/pie-elements/commit/b7640d203accb908fd56a9d2dcae4bd4959fd130))
+* **hotspot:** update snapshot pd-597 ([7e81c25](https://github.com/pie-framework/pie-elements/commit/7e81c2589eecc0f2ce97a2873d468929241a05e8))
+
+
+
+
+
 ## [5.18.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@5.18.0...@pie-element/hotspot@5.18.1) (2023-10-26)
 
 

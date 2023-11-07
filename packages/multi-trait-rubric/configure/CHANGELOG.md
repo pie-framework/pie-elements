@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.12.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-configure@2.12.1...@pie-element/multi-trait-rubric-configure@2.12.2) (2023-11-06)
+
+
+### Bug Fixes
+
+* **multi-trait-rubric:** horizontal scrollbar missing initially PD-3267 ([a7b0d13](https://github.com/pie-framework/pie-elements/commit/a7b0d1350459792b44e11e4679c545c38b9e953b))
+
+
+
+
+
 ## [2.12.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-configure@2.12.0...@pie-element/multi-trait-rubric-configure@2.12.1) (2023-10-26)
 
 

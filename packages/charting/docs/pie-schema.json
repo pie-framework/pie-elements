@@ -504,17 +504,17 @@
       "title": "rubricEnabled"
     },
     "changeInteractiveEnabled": {
-      "description": "Indicates if teacher can enable/disable data[]:interactive",
+      "description": "Indicates if teacher can enable/disable data[]:interactive. Default value is false",
       "type": "boolean",
       "title": "changeInteractiveEnabled"
     },
     "changeEditableEnabled": {
-      "description": "Indicates if teacher can enable/disable data[]:editable",
+      "description": "Indicates if teacher can enable/disable data[]:editable. Default value is false",
       "type": "boolean",
       "title": "changeEditableEnabled"
     },
     "changeAddCategoryEnabled": {
-      "description": "Indicates if teacher can enable/disable addCategoryEnabled",
+      "description": "Indicates if teacher can enable/disable addCategoryEnabled. Default value is false",
       "type": "boolean",
       "title": "changeAddCategoryEnabled"
     },
