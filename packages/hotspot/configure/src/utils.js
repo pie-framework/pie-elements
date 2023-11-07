@@ -114,6 +114,58 @@ const groupShapes = (shapesArray) => {
   return cloneDeep(shapesMap);
 };
 
+const isPointInsidePolygon = (polygon, x, y) => {
+  let inside = false;
+
+  if (!polygon || polygon.length <= 0) {
+    return inside;
+  }
+
+  for (let i = 0, j = polygon.length - 1; i < polygon.length; j = i++) {
+    const xi = polygon[i].x;
+    const yi = polygon[i].y;
+    const xj = polygon[j].x;
+    const yj = polygon[j].y;
+
+    const intersect = yi > y !== yj > y && x < ((xj - xi) * (y - yi)) / (yj - yi) + xi;
+
+    if (intersect) {
+      inside = !inside;
+    }
+  }
+
+  return inside;
+};
+
+const calculate = (polygonPoints) => {
+  if (!polygonPoints || polygonPoints.length <= 0) {
+    return { x: 0, y: 0 };
+  }
+
+  const xPoints = polygonPoints.map((point) => point.x);
+  const yPoints = polygonPoints.map((point) => point.y);
+  const minX = Math.min(...xPoints);
+  const minY = Math.min(...yPoints);
+  const maxX = Math.max(...xPoints);
+  const maxY = Math.max(...yPoints);
+
+  // Find a suitable position for the text element within the polygon
+  let textX, textY;
+
+  for (let x = minX; x <= maxX - 20; x++) {
+    for (let y = maxY - 20; y > minY; y--) {
+      // Check if the text element's position (x, y) is within the polygon
+      if (isPointInsidePolygon(polygonPoints, x, y)) {
+        textX = x - 10;
+        textY = y;
+        break;
+      }
+    }
+  }
+
+  return { x: textX, y: textY };
+};
+
 const generateValidationMessage = (config) => {
   const { minShapes, maxShapes, maxSelections } = config;
 
@@ -133,6 +185,8 @@ const generateValidationMessage = (config) => {
 };
 
 export {
+  calculate,
+  isPointInsidePolygon,
   updateImageDimensions,
   generateValidationMessage,
   getUpdatedShapes,
