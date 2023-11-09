@@ -14,7 +14,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@pie-lib/pie-toolbox": "1.0.5",
+    "@pie-lib/pie-toolbox": "1.0.9",
     "lodash": "^4.17.15"
   },
   "author": "",
