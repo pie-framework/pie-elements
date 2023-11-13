@@ -208,7 +208,6 @@ describe('Rectangle', () => {
           showCorrectEnabled: true,
           markAsCorrect: true,
         });
-        console.log('rectangleComponent', rectangleComponent);
         const imgComponent = rectangleComponent.find(ImageComponent);
         expect(imgComponent.prop('src')).toEqual(faCorrect);
       });
@@ -230,7 +229,6 @@ describe('Rectangle', () => {
           selected: true,
           isCorrect: false,
         });
-        console.log('Andreea', rectangleComponent);
         const imgComponent = rectangleComponent.find(ImageComponent);
         expect(imgComponent.length).toEqual(0);
       });
