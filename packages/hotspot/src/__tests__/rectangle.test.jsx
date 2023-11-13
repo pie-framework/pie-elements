@@ -8,7 +8,7 @@ import { Rect } from 'react-konva';
 import { shallowChild } from '@pie-lib/pie-toolbox/test-utils';
 
 import Rectangle from '../hotspot/rectangle';
-import Image from '../hotspot/image';
+import { ImageComponent } from '@pie-lib/pie-toolbox/icons';
 import { faCorrect, faWrong } from '../hotspot/icons';
 
 global.MutationObserver = class {
@@ -136,7 +136,7 @@ describe('Rectangle', () => {
       });
 
       it('should have a green checkmark icon', () => {
-        const imgComponent = rectangleComponent.find(Image);
+        const imgComponent = rectangleComponent.find(ImageComponent);
         expect(imgComponent.length).toEqual(1);
         expect(imgComponent.prop('src')).toEqual(faCorrect);
       });
@@ -153,7 +153,7 @@ describe('Rectangle', () => {
       });
 
       it('should have no icon', () => {
-        const imgComponent = rectangleComponent.find(Image);
+        const imgComponent = rectangleComponent.find(ImageComponent);
         expect(imgComponent.length).toEqual(0);
       });
     });
@@ -170,7 +170,7 @@ describe('Rectangle', () => {
       });
 
       it('should have a red x icon', () => {
-        const imgComponent = rectangleComponent.find(Image);
+        const imgComponent = rectangleComponent.find(ImageComponent);
         expect(imgComponent.length).toEqual(1);
         expect(imgComponent.prop('src')).toEqual(faWrong);
       });
@@ -187,7 +187,7 @@ describe('Rectangle', () => {
       });
 
       it('should have a red x icon', () => {
-        const imgComponent = rectangleComponent.find(Image);
+        const imgComponent = rectangleComponent.find(ImageComponent);
         expect(imgComponent.length).toEqual(1);
         expect(imgComponent.prop('src')).toEqual(faWrong);
       });
@@ -208,7 +208,8 @@ describe('Rectangle', () => {
           showCorrectEnabled: true,
           markAsCorrect: true,
         });
-        const imgComponent = rectangleComponent.find(Image);
+        console.log('rectangleComponent', rectangleComponent);
+        const imgComponent = rectangleComponent.find(ImageComponent);
         expect(imgComponent.prop('src')).toEqual(faCorrect);
       });
 
@@ -229,7 +230,8 @@ describe('Rectangle', () => {
           selected: true,
           isCorrect: false,
         });
-        const imgComponent = rectangleComponent.find(Image);
+        console.log('Andreea', rectangleComponent);
+        const imgComponent = rectangleComponent.find(ImageComponent);
         expect(imgComponent.length).toEqual(0);
       });
     });
