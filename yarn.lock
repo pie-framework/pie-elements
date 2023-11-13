@@ -2374,10 +2374,10 @@
     keycode "^2.2.0"
     lodash "^4.17.11"
 
-"@pie-lib/pie-toolbox@1.0.9":
-  version "1.0.9"
-  resolved "https://registry.yarnpkg.com/@pie-lib/pie-toolbox/-/pie-toolbox-1.0.9.tgz#60ed399a4c013ce93712d918ba4a4f26ae528b66"
-  integrity sha512-IrQYrp7RiOv02zH7bRF6OAPiG4usw/IdncBpFA/cmvjmmAwFlbpmMOvtaECJOw68SoyJDLIG+kY/mDTJJopzpQ==
+"@pie-lib/pie-toolbox@1.0.10":
+  version "1.0.10"
+  resolved "https://registry.yarnpkg.com/@pie-lib/pie-toolbox/-/pie-toolbox-1.0.10.tgz#3129e5b034bb5674f222ddb97f083eb7765c7cf5"
+  integrity sha512-97IL095yb92JkGTIwbwAvX0zo1Mby/UbFIUt9O7btLNTYMWkR9tDST2yesKwHHopoDyR8Se8K9WHKmyWFxnSKw==
   dependencies:
     "@mapbox/point-geometry" "^0.1.0"
     "@material-ui/core" "^3.8.3"
@@ -2405,6 +2405,7 @@
     invariant "^2.2.4"
     jsesc "^2.5.2"
     keycode "^2.2.0"
+    konva "^3.2.4"
     lodash "^4.17.11"
     mathjax-full "3.2.2"
     mathjs "^7.0.1"
@@ -2421,6 +2422,7 @@
     react-draggable "^3.1.1"
     react-input-autosize "^2.2.1"
     react-jss "^8.6.1"
+    react-konva "^16.9.0-0"
     react-measure "^2.2.2"
     react-portal "^4.2.0"
     react-redux "^6.0.0"
