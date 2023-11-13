@@ -168,15 +168,15 @@ Indicates if Rubric is enabled
 
 # `changeInteractiveEnabled` (boolean, required)
 
-Indicates if teacher can enable/disable data[]:interactive
+Indicates if teacher can enable/disable data[]:interactive. Default value is false
 
 # `changeEditableEnabled` (boolean, required)
 
-Indicates if teacher can enable/disable data[]:editable
+Indicates if teacher can enable/disable data[]:editable. Default value is false
 
 # `changeAddCategoryEnabled` (boolean, required)
 
-Indicates if teacher can enable/disable addCategoryEnabled
+Indicates if teacher can enable/disable addCategoryEnabled. Default value is false
 
 # `studentNewCategoryDefaultLabel` (string, required)
 

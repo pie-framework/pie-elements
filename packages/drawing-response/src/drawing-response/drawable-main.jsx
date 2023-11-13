@@ -6,7 +6,7 @@ import isEqual from 'lodash/isEqual';
 import classnames from 'classnames';
 import { Layer, Stage } from 'react-konva';
 import { withStyles } from '@material-ui/core/styles';
-import Translator from '@pie-lib/translator';
+import Translator from '@pie-lib/pie-toolbox/translator';
 
 const { translator } = Translator;
 import ImageBackground from './drawable-image';

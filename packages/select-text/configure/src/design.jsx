@@ -4,16 +4,16 @@ import TextField from '@material-ui/core/TextField';
 import { withStyles } from '@material-ui/core/styles';
 import cloneDeep from 'lodash/cloneDeep';
 import debounce from 'lodash/debounce';
-import { Tokenizer } from '@pie-lib/text-select';
-import { InputContainer, NumberTextField, FeedbackConfig, settings, layout } from '@pie-lib/config-ui';
+import { Tokenizer } from '@pie-lib/pie-toolbox/text-select';
+import { InputContainer, NumberTextField, FeedbackConfig, settings, layout } from '@pie-lib/pie-toolbox/config-ui';
 import Chip from '@material-ui/core/Chip';
 import Info from '@material-ui/icons/Info';
 import debug from 'debug';
-import EditableHtml from '@pie-lib/editable-html';
+import EditableHtml from '@pie-lib/pie-toolbox/editable-html';
 import Tooltip from '@material-ui/core/Tooltip';
 import { generateValidationMessage } from './utils';
 
-const { Panel, toggle, radio } = settings;
+const { Panel, toggle, radio, dropdown } = settings;
 
 const log = debug('@pie-element:select-text:configure');
 
@@ -146,6 +146,8 @@ export class Design extends React.Component {
       maxImageHeight = {},
       withRubric = {},
       mathMlOptions = {},
+      language = {},
+      languageChoices = {},
     } = configuration || {};
     const {
       errors,
@@ -176,6 +178,8 @@ export class Design extends React.Component {
       partialScoring: partialScoring.settings && toggle(partialScoring.label),
       highlightChoices: highlightChoices.settings && toggle(highlightChoices.label),
       feedbackEnabled: feedback.settings && toggle(feedback.label),
+      'language.enabled': language.settings && toggle(language.label, true),
+      language: language.settings && language.enabled && dropdown(languageChoices.label, languageChoices.options),
     };
 
     const panelProperties = {

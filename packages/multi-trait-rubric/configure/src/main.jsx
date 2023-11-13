@@ -6,8 +6,8 @@ import isEmpty from 'lodash/isEmpty';
 
 import { withStyles } from '@material-ui/core/styles';
 
-import { withDragContext } from '@pie-lib/drag';
-import { layout, settings } from '@pie-lib/config-ui';
+import { withDragContext } from '@pie-lib/pie-toolbox/drag';
+import { layout, settings } from '@pie-lib/pie-toolbox/config-ui';
 
 import Scale from './scale';
 import { MultiTraitButton } from './common';
@@ -283,7 +283,7 @@ export class Main extends React.Component {
       maxNoOfTraits,
       minNoOfTraits,
       width,
-      mathMlOptions = {}
+      mathMlOptions = {},
     } = configuration || {};
     const {
       errors,
@@ -348,7 +348,7 @@ export class Main extends React.Component {
           />
         }
       >
-        <div style={{ width: adjustedWidth }}>
+        <div style={{ width: screenWidth > 2500 ? '100%' : adjustedWidth }}>
           {(scales || []).map((scale, scaleIndex) => (
             <Scale
               key={`scale-${scaleIndex}`}

@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { FeedbackConfig, InputContainer, layout, settings } from '@pie-lib/config-ui';
-import { countInAnswer, ensureNoExtraChoicesInAnswer, ensureNoExtraChoicesInAlternate } from '@pie-lib/categorize';
-import EditableHtml from '@pie-lib/editable-html';
-import { uid, withDragContext } from '@pie-lib/drag';
+import { FeedbackConfig, InputContainer, layout, settings } from '@pie-lib/pie-toolbox/config-ui';
+import { countInAnswer, ensureNoExtraChoicesInAnswer, ensureNoExtraChoicesInAlternate } from '@pie-lib/pie-toolbox/categorize';
+import EditableHtml from '@pie-lib/pie-toolbox/editable-html';
+import { uid, withDragContext } from '@pie-lib/pie-toolbox/drag';
 
 import Categories from './categories';
 import AlternateResponses from './categories/alternateResponses';
@@ -172,6 +172,8 @@ export class Design extends React.Component {
       teacherInstructions = {},
       withRubric = {},
       mathMlOptions = {},
+      language = {},
+      languageChoices = {},
     } = configuration || {};
     const {
       allowAlternateEnabled,
@@ -239,6 +241,8 @@ export class Design extends React.Component {
       feedbackEnabled: feedback.settings && toggle(feedback.label),
       // PD-2960: deleted temporary from settings panel
       // allowAlternateEnabled: allowAlternate.settings && toggle(allowAlternate.label),
+      'language.enabled': language.settings && toggle(language.label, true),
+      language: language.settings && language.enabled && dropdown(languageChoices.label, languageChoices.options),
     };
 
     const panelProperties = {

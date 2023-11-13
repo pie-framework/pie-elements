@@ -1,15 +1,15 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import { FeedbackConfig, settings, layout, InputContainer } from '@pie-lib/config-ui';
-import EditableHtml from '@pie-lib/editable-html';
-import { withDragContext } from '@pie-lib/drag';
+import { FeedbackConfig, settings, layout, InputContainer, AlertDialog } from '@pie-lib/pie-toolbox/config-ui';
+import EditableHtml from '@pie-lib/pie-toolbox/editable-html';
+import { withDragContext } from '@pie-lib/pie-toolbox/drag';
 import PropTypes from 'prop-types';
 import debug from 'debug';
 import GeneralConfigBlock from './general-config-block';
 import AnswerConfigBlock from './answer-config-block';
 
 const log = debug('@pie-element:match:configure');
-const { Panel, toggle, radio } = settings;
+const { Panel, toggle, radio, dropdown } = settings;
 
 const styles = (theme) => ({
   promptHolder: {
@@ -43,11 +43,46 @@ class Configure extends React.Component {
   constructor(props) {
     super(props);
 
-    this.rowIdCounter = props.model.rows[props.model.rows.length - 1].id + 1;
+    let maxId = 0;
+
+    if (props.model.rows && props.model.rows.length > 0) {
+        maxId = Math.max(...props.model.rows.map(row => row.id));
+    }
+
+    this.rowIdCounter = maxId + 1;
 
     this.state = {
       activeTab: 0,
+      dialog: {
+        open: false,
+        text: '',
+      },
     };
+  }
+
+  componentDidMount() {
+    const { updatedRows, wasChanged } = this.validateRowsID(this.props.model.rows);
+
+    if (wasChanged) {
+      const newModel = { ...this.props.model, rows: updatedRows };
+      this.props.onModelChanged(newModel);
+    }
+  }
+
+  validateRowsID(rows) {
+    let wasChanged = false;
+
+    const updatedRows = (rows || []).map((row, index) => {
+      if (row.id !== index + 1) {
+        wasChanged = true;
+
+        return { ...row, id: index + 1 };
+      }
+
+      return row;
+    });
+
+    return { updatedRows, wasChanged };
   }
 
   onTabChange = (event, value) => {
@@ -79,12 +114,23 @@ class Configure extends React.Component {
   };
 
   onAddRow = () => {
-    const { model } = this.props;
+    const { model, configuration } = this.props;
     const newModel = { ...model };
+    const { maxQuestions } = configuration || {};
+
+    if (maxQuestions && (newModel.rows || []).length >= maxQuestions) {
+      this.setState({
+        dialog: {
+          open: true,
+          text: `There can be maximum ${maxQuestions} question row` + (maxQuestions > 1 ? 's' : '') + '.',
+        },
+      });
+      return;
+    }
 
     newModel.rows = newModel.rows.concat({
       id: this.rowIdCounter + 1,
-      title: `Question Text ${newModel.rows.length + 1}`,
+      title: `Question Text ${(newModel.rows || []).length + 1}`,
       values: new Array(model.layout - 1).fill(false),
     });
 
@@ -178,6 +224,8 @@ class Configure extends React.Component {
       studentInstructions = {},
       teacherInstructions = {},
       withRubric = {},
+      language = {},
+      languageChoices = {},
     } = configuration || {};
     const {
       feedbackEnabled,
@@ -187,6 +235,7 @@ class Configure extends React.Component {
       teacherInstructionsEnabled,
       toolbarEditorPosition,
     } = model || {};
+    const { dialog } = this.state;
 
     const toolbarOpts = {
       position: toolbarEditorPosition === 'top' ? 'top' : 'bottom',
@@ -200,6 +249,8 @@ class Configure extends React.Component {
       partialScoring: partialScoring.settings && toggle(partialScoring.label),
       lockChoiceOrder: lockChoiceOrder.settings && toggle(lockChoiceOrder.label),
       feedbackEnabled: feedback.settings && toggle(feedback.label),
+      'language.enabled': language.settings && toggle(language.label, true),
+      language: language.settings && language.enabled && dropdown(languageChoices.label, languageChoices.options),
     };
     const panelProperties = {
       teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
@@ -306,6 +357,12 @@ class Configure extends React.Component {
         {feedbackEnabled && (
           <FeedbackConfig feedback={model.feedback} onChange={this.onFeedbackChange} toolbarOpts={toolbarOpts} />
         )}
+        <AlertDialog
+          open={dialog.open}
+          title="Warning"
+          text={dialog.text}
+          onConfirm={() => this.setState({ dialog: { open: false } })}
+        />
       </layout.ConfigLayout>
     );
   }

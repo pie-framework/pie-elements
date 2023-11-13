@@ -10,7 +10,7 @@ import {
 } from '@pie-framework/pie-configure-events';
 import debug from 'debug';
 import defaultValues from './defaults';
-import { renderMath } from '@pie-lib/math-rendering';
+import { renderMath } from '@pie-lib/pie-toolbox/math-rendering';
 
 const log = debug('pie-elements:graphing:configure');
 
@@ -85,7 +85,7 @@ export default class GraphLinesConfigure extends HTMLElement {
     // if a default item model includes a language value (e.g., en_US) and the corresponding authoring view settings have language:settings = true,
     // then (a) language:enabled should also be true, and (b) that default language value should be represented in languageChoices[] (as a key).
     //TODO: add logic in controller and add tests
-    if (c.language.enabled) {
+    if (c.language?.enabled) {
       if (c.languageChoices?.options?.length) {
         this._model.language = c.languageChoices.options[0].value;
       }

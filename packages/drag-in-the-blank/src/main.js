@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
-import { DragInTheBlank } from '@pie-lib/mask-markup';
-import { withDragContext } from '@pie-lib/drag';
-import { color, Collapsible, hasText, PreviewPrompt } from '@pie-lib/render-ui';
+import CorrectAnswerToggle from '@pie-lib/pie-toolbox/correct-answer-toggle';
+import { DragInTheBlank } from '@pie-lib/pie-toolbox/mask-markup';
+import { withDragContext } from '@pie-lib/pie-toolbox/drag';
+import { color, Collapsible, hasText, PreviewPrompt } from '@pie-lib/pie-toolbox/render-ui';
 import { withStyles } from '@material-ui/core/styles';
 
 const DraggableDragInTheBlank = withDragContext(DragInTheBlank);
@@ -32,7 +32,7 @@ export class Main extends React.Component {
   render() {
     const { showCorrectAnswer } = this.state;
     const { model, onChange, value, classes } = this.props;
-    const { prompt, mode } = model;
+    const { prompt, mode, language } = model;
     const modelWithValue = { ...model, value };
     const showCorrectAnswerToggle = mode === 'evaluate';
 
@@ -53,6 +53,7 @@ export class Main extends React.Component {
           show={showCorrectAnswerToggle}
           toggled={showCorrectAnswer}
           onToggle={this.toggleShowCorrect}
+          language={language}
         />
 
         <DraggableDragInTheBlank {...modelWithValue} onChange={onChange} showCorrectAnswer={showCorrectAnswer} />

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core';
 import Check from '@material-ui/icons/Check';
 import Close from '@material-ui/icons/Close';
-import { color } from '@pie-lib/render-ui';
+import { color } from '@pie-lib/pie-toolbox/render-ui';
 
 const getCorrectnessClass = (isCorrect, filled) => {
   if (filled) {

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { settings, layout } from '@pie-lib/config-ui';
+import { settings, layout } from '@pie-lib/pie-toolbox/config-ui';
 import { withStyles } from '@material-ui/core/styles';
 
 const { Panel, toggle, radio, dropdown } = settings;
@@ -70,6 +70,8 @@ export class Main extends React.Component {
       partialScoring = {},
       settingsPanelDisabled,
       scoringType = {},
+      language = {},
+      languageChoices = {},
       ...generalConfiguration
     } = configuration;
     const {
@@ -119,6 +121,8 @@ export class Main extends React.Component {
       partLabelType: model.partLabels && dropdown('', ['Numbers', 'Letters']),
       partialScoring: partialScoring.settings && toggle(partialScoring.label),
       scoringType: scoringType.settings && radio(scoringType.label, ['auto', 'rubric']),
+      'language.enabled': language.settings && toggle(language.label, true),
+      language: language.settings && language.enabled && dropdown(languageChoices.label, languageChoices.options),
     };
 
     const panelSettingsPartA = {

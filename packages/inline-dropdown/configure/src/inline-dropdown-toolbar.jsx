@@ -1,13 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import EditableHtml from '@pie-lib/editable-html';
-import { renderMath } from '@pie-lib/math-rendering';
+import EditableHtml from '@pie-lib/pie-toolbox/editable-html';
+import { renderMath } from '@pie-lib/pie-toolbox/math-rendering';
 import { withStyles } from '@material-ui/core/styles';
 import isEqual from 'lodash/isEqual';
 import isEmpty from 'lodash/isEmpty';
 import classnames from 'classnames';
-import { DEFAULT_PLUGINS } from '@pie-lib/editable-html';
+import { DEFAULT_PLUGINS } from '@pie-lib/pie-toolbox/editable-html';
+import { color } from '@pie-lib/pie-toolbox/render-ui';
+
+import AddIcon from '@material-ui/icons/Add';
+import CheckIcon from '@material-ui/icons/Check';
+import CloseIcon from '@material-ui/icons/Close';
+import EditIcon from '@material-ui/icons/Edit';
+import IconButton from '@material-ui/core/IconButton';
 
 class MenuItemComp extends React.Component {
   static propTypes = {
@@ -15,6 +22,7 @@ class MenuItemComp extends React.Component {
     correct: PropTypes.bool.isRequired,
     onClick: PropTypes.func.isRequired,
     onRemoveChoice: PropTypes.func.isRequired,
+    onEditChoice: PropTypes.func.isRequired,
     value: PropTypes.string.isRequired,
   };
 
@@ -27,20 +35,40 @@ class MenuItemComp extends React.Component {
     onRemoveChoice();
   };
 
+  onEditClick = (e) => {
+    const { onEditChoice } = this.props;
+
+    e.preventDefault();
+    e.stopPropagation();
+
+    onEditChoice();
+  };
+
   render() {
     const { classes, correct, onClick, value } = this.props;
 
     return (
-      <div className={classnames(classes.wrapper, { [classes.correct]: correct })} onClick={onClick}>
+      <div className={classes.wrapper}>
+        {correct && (
+          <div className={classes.selectedIcon} onClick={onClick}>
+            <CheckIcon fontSize="inherit" />
+          </div>
+        )}
         <div
-          className={classes.valueHolder}
+          className={classnames(classes.valueHolder, { [classes.correct]: correct })}
+          onClick={onClick}
           dangerouslySetInnerHTML={{
             __html: value,
           }}
         />
-        <i className={classes.removeIcon} onClick={this.onRemoveClick}>
-          x
-        </i>
+        <div className={classes.actionButtons}>
+          <IconButton className={classes.iconButton} onClick={this.onEditClick} size="small" aria-label="Edit">
+            <EditIcon fontSize="inherit" />
+          </IconButton>
+          <IconButton className={classes.iconButton} onClick={this.onRemoveClick} size="small" aria-label="Remove">
+            <CloseIcon fontSize="inherit" />
+          </IconButton>
+        </div>
       </div>
     );
   }
@@ -48,30 +76,46 @@ class MenuItemComp extends React.Component {
 
 const MenuItem = withStyles((theme) => ({
   wrapper: {
-    background: theme.palette.common.white,
-    borderBottom: `1px solid ${theme.palette.common.black}`,
-    boxSizing: 'border-box',
-    display: 'block',
-    cursor: 'pointer',
-    lineHeight: '30px',
-    padding: '10px 25px 10px 10px',
+    display: 'flex',
+    alignItems: 'flex-start',
     position: 'relative',
+    background: theme.palette.common.white,
+    borderBottom: `1px solid ${theme.palette.grey[400]}`,
+
+    '&:last-child': {
+      borderRadius: '0 0 4px 4px',
+    },
   },
   correct: {
-    background: '#C4DCFA',
+    background: color.correctSecondary(),
   },
-  removeIcon: {
-    cursor: 'pointer',
-    fontSize: '20px',
+  actionButtons: {
+    margin: theme.spacing.unit / 2,
+    display: 'flex',
+  },
+  iconButton: {
+    fontSize: theme.typography.fontSize,
+    padding: theme.spacing.unit / 2,
+    color: theme.palette.common.black,
+  },
+  selectedIcon: {
+    display: 'flex',
+    justifyContent: 'center',
+    color: theme.palette.common.white,
+    fontSize: theme.typography.fontSize,
     fontStyle: 'normal',
     position: 'absolute',
     transform: 'translate(0, -50%)',
-    top: '50%',
-    right: '5px',
+    backgroundColor: color.correct(),
+    borderRadius: '50%',
+    top: theme.spacing.unit * 2,
+    left: theme.spacing.unit,
     zIndex: 3,
   },
   valueHolder: {
-    wordBreak: 'break-all',
+    flex: 1,
+    padding: theme.spacing.unit * 0.75,
+    paddingLeft: theme.spacing.unit * 3.5,
   },
 }))(MenuItemComp);
 
@@ -112,6 +156,7 @@ export class RespAreaToolbar extends React.Component {
 
   state = {
     respAreaMarkup: '',
+    editedChoiceIndex: -1,
   };
 
   componentDidMount() {
@@ -132,7 +177,6 @@ export class RespAreaToolbar extends React.Component {
           position: 'absolute',
           top: `${top + domNodeRect.height + 60}px`,
           left: `${left + 25}px`,
-          width: domNodeRect.width,
         },
       });
     }
@@ -156,12 +200,22 @@ export class RespAreaToolbar extends React.Component {
   };
 
   onDone = (val) => {
-    const { node, onAddChoice } = this.props;
+    const { choices, node, value, onAddChoice, onToolbarDone } = this.props;
+    const { editedChoiceIndex } = this.state;
     const onlyText = createElementFromHTML(val).textContent.trim();
 
-    if (!isEmpty(onlyText)) {
-      onAddChoice(node.data.get('index'), val);
+    if (editedChoiceIndex >= 0 && choices?.[editedChoiceIndex]?.correct) {
+      const update = { ...node.data.toJSON(), value: val };
+      const change = value.change().setNodeByKey(node.key, { data: update });
+
+      onToolbarDone(change, false);
     }
+
+    if (!isEmpty(onlyText)) {
+      onAddChoice(node.data.get('index'), val, editedChoiceIndex);
+    }
+
+    this.setState({ editedChoiceIndex: -1 });
   };
 
   onSelectChoice = (newValue, index) => {
@@ -189,6 +243,11 @@ export class RespAreaToolbar extends React.Component {
     }
 
     onRemoveChoice(index);
+  };
+
+  onEditChoice = (val, index) => {
+    this.onRespAreaChange(val);
+    this.setState({ editedChoiceIndex: index });
   };
 
   onKeyDown = (event) => {
@@ -251,6 +310,7 @@ export class RespAreaToolbar extends React.Component {
 
     return (
       <div
+        className={classes.responseContainer}
         style={{
           ...toolbarStyle,
           backgroundColor: '#E0E1E6',
@@ -304,23 +364,17 @@ export class RespAreaToolbar extends React.Component {
             uploadSoundSupport={uploadSoundSupport}
             mathMlOptions={mathMlOptions}
           />
-          <i
-            style={{
-              cursor: 'pointer',
-              fontSize: '20px',
-              fontStyle: 'normal',
-              position: 'absolute',
-              top: '50%',
-              right: '15px',
-              transform: 'translate(0, -50%)',
-            }}
-            contentEditable={false}
+          <IconButton
+            className={classes.addButton}
             onMouseDown={() => this.focusInput()}
             onClick={() => this.onAddChoice()}
+            size="small"
+            aria-label="Add"
           >
-            +
-          </i>
+            <AddIcon fontSize="inherit" />
+          </IconButton>
         </div>
+
         {choices && (
           <div className={classes.choicesHolder}>
             {choices.map(({ label, correct }, index) => (
@@ -328,6 +382,7 @@ export class RespAreaToolbar extends React.Component {
                 key={index}
                 onClick={() => this.onSelectChoice(label, index)}
                 onRemoveChoice={() => this.onRemoveChoice(label, index)}
+                onEditChoice={() => this.onEditChoice(label, index)}
                 value={label}
                 correct={correct}
               />
@@ -340,11 +395,26 @@ export class RespAreaToolbar extends React.Component {
 }
 
 const StyledRespAreaToolbar = withStyles((theme) => ({
+  responseContainer: {
+    boxShadow: theme.shadows[2],
+    borderRadius: '4px',
+    width: '400px',
+  },
   respArea: {
+    borderRadius: '4px',
     backgroundColor: theme.palette.common.white,
     '& [data-slate-editor="true"]': {
       minHeight: 'initial !important',
     },
+  },
+  addButton: {
+    fontSize: theme.typography.fontSize + 2,
+    padding: theme.spacing.unit / 2,
+    color: theme.palette.common.black,
+    position: 'absolute',
+    top: '50%',
+    right: theme.spacing.unit * 2,
+    transform: 'translate(0, -50%)',
   },
   choicesHolder: {
     display: 'flex',
@@ -354,7 +424,7 @@ const StyledRespAreaToolbar = withStyles((theme) => ({
     },
   },
   itemBuilder: {
-    padding: theme.spacing.unit,
+    padding: theme.spacing.unit / 2,
     position: 'relative',
   },
 }))(RespAreaToolbar);

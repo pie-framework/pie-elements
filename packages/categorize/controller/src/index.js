@@ -1,9 +1,12 @@
 import isEmpty from 'lodash/isEmpty';
-import { buildState, score } from '@pie-lib/categorize';
-import { getFeedbackForCorrectness } from '@pie-lib/feedback';
-import { isAlternateDuplicated, isCorrectResponseDuplicated } from './utils';
-import { lockChoices, getShuffledChoices, partialScoring } from '@pie-lib/controller-utils';
+import { buildState, score } from '@pie-lib/pie-toolbox/categorize';
+import { getFeedbackForCorrectness } from '@pie-lib/pie-toolbox/feedback';
+import { lockChoices, getShuffledChoices, partialScoring } from '@pie-lib/pie-toolbox/controller-utils';
+import Translator from '@pie-lib/pie-toolbox/translator';
+
+const { translator } = Translator;
 import defaults from './defaults';
+import { isAlternateDuplicated, isCorrectResponseDuplicated } from './utils';
 
 // eslint-disable-next-line no-console
 
@@ -145,11 +148,11 @@ export const model = (question, session, env, updateSession) =>
       rowLabels,
       rationaleEnabled,
       rationale,
-      note,
       teacherInstructionsEnabled,
       teacherInstructions,
+      language
     } = normalizedQuestion;
-    let { choices } = normalizedQuestion;
+    let { choices, note } = normalizedQuestion;
     let fb;
 
     const lockChoiceOrder = lockChoices(normalizedQuestion, session, env);
@@ -165,6 +168,10 @@ export const model = (question, session, env, updateSession) =>
 
     if (!lockChoiceOrder) {
       choices = await getShuffledChoices(choices, session, updateSession, 'id');
+    }
+
+    if (!note) {
+      note = translator.t('common:commonCorrectAnswerWithAlternates', { lng: language });
     }
 
     const alternates = getAlternates(filteredCorrectResponse);
@@ -184,6 +191,7 @@ export const model = (question, session, env, updateSession) =>
       env,
       showNote: alternates && alternates.length > 0,
       correctResponse: mode === 'evaluate' ? filteredCorrectResponse : undefined,
+      language
     };
 
     if (role === 'instructor' && (mode === 'view' || mode === 'evaluate')) {

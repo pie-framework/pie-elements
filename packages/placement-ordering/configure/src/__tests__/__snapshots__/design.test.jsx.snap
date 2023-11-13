@@ -25,6 +25,15 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
             "label": "Feedback",
             "settings": true,
           },
+          "language": Object {
+            "enabled": false,
+            "label": "Specify Language",
+            "settings": false,
+          },
+          "languageChoices": Object {
+            "label": "Language Choices",
+            "options": Array [],
+          },
           "mathMlOptions": Object {
             "mmlEditing": false,
             "mmlOutput": false,
@@ -113,6 +122,8 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
             "choiceLabelEnabled": undefined,
             "enableImages": undefined,
             "feedbackEnabled": undefined,
+            "language": false,
+            "language.enabled": false,
             "numberedGuides": false,
             "orientation": undefined,
             "partialScoring": false,
@@ -153,6 +164,7 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
     label="Teacher Instructions"
   >
     <EditableHtml
+      allowValidation={false}
       languageCharactersProps={
         Array [
           Object {
@@ -174,6 +186,7 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
       maxImageWidth={300}
       nonEmpty={false}
       onChange={[Function]}
+      onDone={[Function]}
       toolbarOpts={
         Object {
           "position": "bottom",
@@ -185,6 +198,7 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
     label="Item Stem"
   >
     <EditableHtml
+      allowValidation={false}
       languageCharactersProps={
         Array [
           Object {
@@ -205,6 +219,7 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
       maxImageHeight={300}
       maxImageWidth={300}
       onChange={[Function]}
+      onDone={[Function]}
       toolbarOpts={
         Object {
           "position": "bottom",
@@ -251,6 +266,7 @@ The correct ordering should not be identical to the initial ordering."
         label="Choice label"
       >
         <EditableHtml
+          allowValidation={false}
           languageCharactersProps={
             Array [
               Object {
@@ -271,6 +287,7 @@ The correct ordering should not be identical to the initial ordering."
           maxImageHeight={150}
           maxImageWidth={300}
           onChange={[Function]}
+          onDone={[Function]}
           toolbarOpts={
             Object {
               "position": "bottom",
@@ -308,6 +325,7 @@ The correct ordering should not be identical to the initial ordering."
     label="Rationale"
   >
     <EditableHtml
+      allowValidation={false}
       languageCharactersProps={
         Array [
           Object {
@@ -328,6 +346,7 @@ The correct ordering should not be identical to the initial ordering."
       maxImageHeight={300}
       maxImageWidth={300}
       onChange={[Function]}
+      onDone={[Function]}
       toolbarOpts={
         Object {
           "position": "bottom",
@@ -362,6 +381,15 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
             "enabled": true,
             "label": "Feedback",
             "settings": true,
+          },
+          "language": Object {
+            "enabled": false,
+            "label": "Specify Language",
+            "settings": false,
+          },
+          "languageChoices": Object {
+            "label": "Language Choices",
+            "options": Array [],
           },
           "mathMlOptions": Object {
             "mmlEditing": false,
@@ -451,6 +479,8 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
             "choiceLabelEnabled": undefined,
             "enableImages": undefined,
             "feedbackEnabled": undefined,
+            "language": false,
+            "language.enabled": false,
             "numberedGuides": false,
             "orientation": undefined,
             "partialScoring": false,
@@ -491,6 +521,7 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
     label="Teacher Instructions"
   >
     <EditableHtml
+      allowValidation={false}
       languageCharactersProps={
         Array [
           Object {
@@ -512,6 +543,7 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
       maxImageWidth={300}
       nonEmpty={false}
       onChange={[Function]}
+      onDone={[Function]}
       toolbarOpts={
         Object {
           "position": "bottom",
@@ -523,6 +555,7 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
     label="Item Stem"
   >
     <EditableHtml
+      allowValidation={false}
       languageCharactersProps={
         Array [
           Object {
@@ -543,6 +576,7 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
       maxImageHeight={300}
       maxImageWidth={300}
       onChange={[Function]}
+      onDone={[Function]}
       toolbarOpts={
         Object {
           "position": "bottom",
@@ -589,6 +623,7 @@ The correct ordering should not be identical to the initial ordering."
         label="Choice label"
       >
         <EditableHtml
+          allowValidation={false}
           languageCharactersProps={
             Array [
               Object {
@@ -609,6 +644,7 @@ The correct ordering should not be identical to the initial ordering."
           maxImageHeight={150}
           maxImageWidth={300}
           onChange={[Function]}
+          onDone={[Function]}
           toolbarOpts={
             Object {
               "position": "bottom",
@@ -646,6 +682,7 @@ The correct ordering should not be identical to the initial ordering."
     label="Rationale"
   >
     <EditableHtml
+      allowValidation={false}
       languageCharactersProps={
         Array [
           Object {
@@ -666,6 +703,7 @@ The correct ordering should not be identical to the initial ordering."
       maxImageHeight={300}
       maxImageWidth={300}
       onChange={[Function]}
+      onDone={[Function]}
       toolbarOpts={
         Object {
           "position": "bottom",

@@ -5,8 +5,8 @@ import React from 'react';
 import classNames from 'classnames';
 import debug from 'debug';
 import { withStyles } from '@material-ui/core/styles';
-import { PlaceHolder } from '@pie-lib/drag';
-import { color } from '@pie-lib/render-ui';
+import { PlaceHolder } from '@pie-lib/pie-toolbox/drag';
+import { color } from '@pie-lib/pie-toolbox/render-ui';
 
 const log = debug('pie-elements:placement-ordering:tile');
 
@@ -196,6 +196,7 @@ const tileSource = {
       id: props.id,
       type: props.type,
       instanceId: props.instanceId,
+      value: props.label,
     };
   },
   endDrag(props, monitor) {

@@ -5,8 +5,8 @@ import { withStyles } from '@material-ui/core/styles';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 
-import { withDragContext } from '@pie-lib/drag';
-import { color } from '@pie-lib/render-ui';
+import { withDragContext } from '@pie-lib/pie-toolbox/drag';
+import { color } from '@pie-lib/pie-toolbox/render-ui';
 
 import TraitsHeader from './traitsHeader';
 import TraitTile from './trait';
@@ -57,7 +57,11 @@ export class Scale extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.scale.maxPoints !== this.props.scale.maxPoints || prevProps.showDescription !== this.props.showDescription) {
+    if (
+      prevProps.scale.maxPoints !== this.props.scale.maxPoints ||
+      prevProps.showDescription !== this.props.showDescription ||
+      prevProps.excludeZero !== this.props.excludeZero
+    ) {
       this.setState({ showRight: this.secondaryBlockRef.scrollWidth - this.secondaryBlockRef.offsetWidth });
     }
   }
@@ -251,7 +255,7 @@ export class Scale extends React.Component {
       width,
       uploadSoundSupport,
       maxPointsEnabled,
-      mathMlOptions = {}
+      mathMlOptions = {},
     } = this.props || {};
 
     const { maxPoints, scorePointsLabels, traitLabel, traits } = scale || {};
@@ -325,6 +329,7 @@ export class Scale extends React.Component {
             onTraitDropped={this.onTraitDropped}
             showStandards={showStandards}
             showDescription={showDescription}
+            maxPoints={maxPoints}
             currentPosition={currentPosition}
             enableDragAndDrop={enableDragAndDrop}
             secondaryBlockWidth={secondaryBlockWidth}

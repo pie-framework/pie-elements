@@ -3,6 +3,70 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-controller@4.0.0...@pie-element/charting-controller@4.0.1) (2023-11-09)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3221, PD-3249, PD-2765 ([9de1563](https://github.com/pie-framework/pie-elements/commit/9de1563d636983c3ddceee0279c0709d396d4f96))
+
+
+
+
+
+# [4.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-controller@3.1.3...@pie-element/charting-controller@4.0.0) (2023-11-07)
+
+
+### Bug Fixes
+
+* revert experiments ([bc1636e](https://github.com/pie-framework/pie-elements/commit/bc1636ef7210abc3582ac2b230515465fb1170b3))
+* update pie-lib version to fix imports for pie-lib/pie-toolbox/editable-html ([a90cbf6](https://github.com/pie-framework/pie-elements/commit/a90cbf6be81824e7266df23c2dc49b259337c1b6))
+* update pie-lib/pie-toolbox version ([212cbfa](https://github.com/pie-framework/pie-elements/commit/212cbfad27b29f0b1b2a3706ba82f6fb59147001))
+* update pie-lib/pie-toolbox version ([b791e10](https://github.com/pie-framework/pie-elements/commit/b791e10857928766e2d73c6aa80b3fb50fd1afac))
+* update pie-lib/pie-toolbox version ([7f64f9f](https://github.com/pie-framework/pie-elements/commit/7f64f9f2b874fd08bd8f6f05c1c4292c34ac6338))
+
+
+### Code Refactoring
+
+* replaced all pie-lib packages with the new pie-toolbox package that contains all of them. ([073d7e5](https://github.com/pie-framework/pie-elements/commit/073d7e5175f7a73069f09d2ceda799682acce494))
+
+
+### BREAKING CHANGES
+
+* using pie-lib/pie-toolbox now, instead of any other pie-lib package.
+
+
+
+
+
+## [3.1.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-controller@3.1.2...@pie-element/charting-controller@3.1.3) (2023-10-16)
+
+
+### Bug Fixes
+
+* **charting:** remove unwanted double quotes from error message ([89ca1db](https://github.com/pie-framework/pie-elements/commit/89ca1db5f2d33d56da8054849e555c2cffdb5c49))
+
+
+
+
+
+## [3.1.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-controller@3.1.1...@pie-element/charting-controller@3.1.2) (2023-10-16)
+
+
+### Bug Fixes
+
+* **charting:** fix validation function for duplicated category labels from the initial state PD-3121 ([9749312](https://github.com/pie-framework/pie-elements/commit/9749312428fc56bcef5a271e7e600dbeb8f8df10))
+* **charting:** fix validation function for duplicated category labels from the initial state PD-3121 ([c77709a](https://github.com/pie-framework/pie-elements/commit/c77709a17b52a6ca30df766db24f6f26dfcffd02))
+* **charting:** move validate function back in controller ([244e055](https://github.com/pie-framework/pie-elements/commit/244e0558e9612b33eef47931b207d98df95ff5c8))
+* **charting:** refactor validation function to display the validation message a single time for duplicate categories and for empty labels PD-3121 ([1a83b5d](https://github.com/pie-framework/pie-elements/commit/1a83b5d3b3a569fa7a7c7bcb64efe8ef93b27957))
+* **charting:** update validation message for unique labels PD-3121 ([e448ee2](https://github.com/pie-framework/pie-elements/commit/e448ee25026140ccb1dff7e6639245b76b76d382))
+* **charting:** update validation message for unique labels PD-3121 ([f606731](https://github.com/pie-framework/pie-elements/commit/f606731de97dcb28b947924f0d5afe2a5fc1c29f))
+* **charting:** update validation message for unique labels PD-3121 ([c70bace](https://github.com/pie-framework/pie-elements/commit/c70bace0548f773bc4e543e6c71fd33d59071261))
+
+
+
+
+
 ## [3.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-controller@3.1.0...@pie-element/charting-controller@3.1.1) (2023-07-06)
 
 

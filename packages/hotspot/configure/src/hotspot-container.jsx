@@ -33,13 +33,10 @@ export class Container extends Component {
       shapes: getAllShapes(props.shapes),
     };
     this.fakeImageHandler = {
-      cancel: () => {
-      },
+      cancel: () => {},
       done: (a, url) => this.props.onImageUpload(url),
-      fileChosen: () => {
-      },
-      progress: () => {
-      }
+      fileChosen: () => {},
+      progress: () => {},
     };
   }
 
@@ -55,7 +52,7 @@ export class Container extends Component {
         insertImage({
           ...this.fakeImageHandler,
           getChosenFile: () => file,
-          isPasted: true
+          isPasted: true,
         });
       }
     }
@@ -108,23 +105,18 @@ export class Container extends Component {
 
   onUpdateShapes = (newShapes) => {
     const { onUpdateShapes } = this.props;
-
     this.setState(
       { shapes: newShapes },
       // always transform shapes array back into shapes map when saving changes
-      () => onUpdateShapes(groupShapes(newShapes))
+      () => onUpdateShapes(groupShapes(newShapes)),
     );
   };
 
-  handleUndo = () => {
+  onDeleteShape = (id) => {
     const { shapes } = this.state;
-
     if (shapes && shapes.length) {
-      // sort by index value
-      let newShapes = shapes.sort((a, b) => parseInt(a.index) - parseInt(b.index));
-
-      newShapes = newShapes ? newShapes.slice(0, newShapes.length - 1) : [];
-
+      // filter the deleted shape out
+      let newShapes = shapes.filter((shape) => shape.id !== id);
       this.onUpdateShapes(newShapes);
     }
   };
@@ -170,12 +162,12 @@ export class Container extends Component {
           })}
           {...(dragEnabled
             ? {
-              onDragExit: this.handleOnDragExit,
-              onDragLeave: this.handleOnDragExit,
-              onDragOver: this.handleOnDragOver,
-              onDrop: this.handleOnDrop,
-              onPaste: this.handleOnPaste,
-            }
+                onDragExit: this.handleOnDragExit,
+                onDragLeave: this.handleOnDragExit,
+                onDragOver: this.handleOnDragOver,
+                onDrop: this.handleOnDrop,
+                onPaste: this.handleOnPaste,
+              }
             : {})}
         >
           <div className={classes.toolbar}>
@@ -190,9 +182,7 @@ export class Container extends Component {
                 }}
               />
             )}
-
-            <Button disabled={!(shapes && shapes.length)} onClick={this.handleUndo} label="Undo"/>
-            <Button disabled={!(shapes && shapes.length)} onClick={this.handleClearAll} label="Clear all"/>
+            <Button disabled={!(shapes && shapes.length)} onClick={this.handleClearAll} label="Clear all" />
           </div>
 
           <div
@@ -211,6 +201,7 @@ export class Container extends Component {
                 multipleCorrect={multipleCorrect}
                 onUpdateImageDimension={onUpdateImageDimension}
                 onUpdateShapes={this.onUpdateShapes}
+                onDeleteShape={this.onDeleteShape}
                 outlineColor={outlineColor}
                 shapes={shapes}
                 strokeWidth={strokeWidth}
@@ -219,7 +210,7 @@ export class Container extends Component {
             ) : (
               <div className={classNames(classes.drawableHeight, classes.centered)}>
                 <label>Drag and drop or upload image from computer</label>
-                <br/>
+                <br />
                 <UploadControl
                   label="Upload Image"
                   onInputClick={this.handleInputClick}
@@ -238,11 +229,11 @@ export class Container extends Component {
                   <label>
                     Click and drag to create a hotspot. Click the hotspot to mark correct. Click again to unmark.
                   </label>
-                  <div className={classes.tooltipArrow}/>
+                  <div className={classes.tooltipArrow} />
                 </div>
               )}
 
-              <Help className={classes.icon} onMouseOut={this.toggleTooltip} onMouseOver={this.toggleTooltip}/>
+              <Help className={classes.icon} onMouseOut={this.toggleTooltip} onMouseOver={this.toggleTooltip} />
             </div>
           )}
         </div>

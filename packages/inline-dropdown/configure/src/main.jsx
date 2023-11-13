@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import EditableHtml, { ALL_PLUGINS } from '@pie-lib/editable-html';
-import { AlertDialog, InputContainer, layout, settings } from '@pie-lib/config-ui';
-import { renderMath } from '@pie-lib/math-rendering';
+import EditableHtml, { ALL_PLUGINS } from '@pie-lib/pie-toolbox/editable-html';
+import { AlertDialog, InputContainer, layout, settings } from '@pie-lib/pie-toolbox/config-ui';
+import { renderMath } from '@pie-lib/pie-toolbox/math-rendering';
 import cloneDeep from 'lodash/cloneDeep';
 import isEqual from 'lodash/isEqual';
 import isUndefined from 'lodash/isUndefined';
@@ -21,7 +21,7 @@ import Info from '@material-ui/icons/Info';
 import InlineDropdownToolbar from './inline-dropdown-toolbar';
 import { generateValidationMessage } from './utils';
 
-const { toggle, Panel } = settings;
+const { toggle, Panel, dropdown } = settings;
 
 const styles = (theme) => ({
   promptHolder: {
@@ -254,7 +254,7 @@ export class Main extends React.Component {
     }
   };
 
-  onAddChoice = (index, label) => {
+  onAddChoice = (index, label, choiceIndex) => {
     const { respAreaChoices } = this.state;
     const { maxResponseAreaChoices } = this.props.configuration;
 
@@ -278,6 +278,7 @@ export class Main extends React.Component {
     }
 
     if ((respAreaChoices[index] || []).find((r) => prepareVal(r.label) === prepareVal(label))) {
+      // show warning for duplicated answers
       this.setState({
         warning: {
           open: true,
@@ -292,16 +293,22 @@ export class Main extends React.Component {
       return;
     }
 
-    const value =
-      (respAreaChoices[index] &&
-        max(respAreaChoices[index].map((c) => parseInt(c.value)).filter((val) => !isNaN(val)))) ||
-      0;
+    if (choiceIndex >= 0 && respAreaChoices[index]?.[choiceIndex]) {
+      // we need to update the choice label with the new value
+      respAreaChoices[index][choiceIndex].label = label;
+    } else {
+      // add a new choice
+      const value =
+        (respAreaChoices[index] &&
+          max(respAreaChoices[index].map((c) => parseInt(c.value)).filter((val) => !isNaN(val)))) ||
+        0;
 
-    respAreaChoices[index].push({
-      label,
-      value: `${value + 1}`,
-      correct: false,
-    });
+      respAreaChoices[index].push({
+        label,
+        value: `${value + 1}`,
+        correct: false,
+      });
+    }
 
     this.onModelChange({ choices: cloneDeep(respAreaChoices) });
   };
@@ -343,6 +350,8 @@ export class Main extends React.Component {
       teacherInstructions = {},
       withRubric = {},
       mathMlOptions = {},
+      language = {},
+      languageChoices = {},
     } = configuration || {};
     const {
       choiceRationaleEnabled,
@@ -408,6 +417,8 @@ export class Main extends React.Component {
     const panelSettings = {
       partialScoring: partialScoring.settings && toggle(partialScoring.label),
       lockChoiceOrder: lockChoiceOrder.settings && toggle(lockChoiceOrder.label),
+      'language.enabled': language.settings && toggle(language.label, true),
+      language: language.settings && language.enabled && dropdown(languageChoices.label, languageChoices.options),
     };
     const panelProperties = {
       teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),

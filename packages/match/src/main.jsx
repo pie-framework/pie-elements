@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
-import { color, Collapsible, Feedback, hasText, PreviewPrompt } from '@pie-lib/render-ui';
+import CorrectAnswerToggle from '@pie-lib/pie-toolbox/correct-answer-toggle';
+import { color, Collapsible, Feedback, hasText, PreviewPrompt } from '@pie-lib/pie-toolbox/render-ui';
 import AnswerGrid from './answer-grid';
 import { withStyles } from '@material-ui/core/styles';
 
@@ -106,7 +106,7 @@ export class Main extends React.Component {
   render() {
     const { model, classes } = this.props;
     const { showCorrect, session } = this.state;
-    const { correctness = {} } = model;
+    const { correctness = {}, language } = model;
     const showCorrectAnswerToggle = correctness.correctness && correctness.correctness !== 'correct';
 
     return (
@@ -129,7 +129,12 @@ export class Main extends React.Component {
           </div>
         )}
 
-        <CorrectAnswerToggle show={showCorrectAnswerToggle} toggled={showCorrect} onToggle={this.toggleShowCorrect} />
+        <CorrectAnswerToggle
+          language={language}
+          show={showCorrectAnswerToggle}
+          toggled={showCorrect}
+          onToggle={this.toggleShowCorrect}
+        />
 
         <AnswerGrid
           showCorrect={showCorrect}

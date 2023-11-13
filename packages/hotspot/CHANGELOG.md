@@ -3,6 +3,253 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@6.0.0...@pie-element/hotspot@6.0.1) (2023-11-09)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3221, PD-3249, PD-2765 ([9de1563](https://github.com/pie-framework/pie-elements/commit/9de1563d636983c3ddceee0279c0709d396d4f96))
+
+
+
+
+
+# [6.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@5.19.0...@pie-element/hotspot@6.0.0) (2023-11-07)
+
+
+### Bug Fixes
+
+* update pie-lib version to fix imports for pie-lib/pie-toolbox/editable-html ([a90cbf6](https://github.com/pie-framework/pie-elements/commit/a90cbf6be81824e7266df23c2dc49b259337c1b6))
+* update pie-lib/pie-toolbox version ([212cbfa](https://github.com/pie-framework/pie-elements/commit/212cbfad27b29f0b1b2a3706ba82f6fb59147001))
+* update pie-lib/pie-toolbox version ([b791e10](https://github.com/pie-framework/pie-elements/commit/b791e10857928766e2d73c6aa80b3fb50fd1afac))
+* update pie-lib/pie-toolbox version ([7f64f9f](https://github.com/pie-framework/pie-elements/commit/7f64f9f2b874fd08bd8f6f05c1c4292c34ac6338))
+
+
+### Code Refactoring
+
+* replaced all pie-lib packages with the new pie-toolbox package that contains all of them. ([073d7e5](https://github.com/pie-framework/pie-elements/commit/073d7e5175f7a73069f09d2ceda799682acce494))
+
+
+### BREAKING CHANGES
+
+* using pie-lib/pie-toolbox now, instead of any other pie-lib package.
+
+
+
+
+
+# [5.19.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@5.18.1...@pie-element/hotspot@5.19.0) (2023-11-07)
+
+
+### Features
+
+* **hotspot:** ability to delete an hospot pd-597 ([972c4c9](https://github.com/pie-framework/pie-elements/commit/972c4c90c41fe7dd447715e711883af4517bc2a5))
+* **hotspot:** add image component to delete button pd-597 ([17c64c5](https://github.com/pie-framework/pie-elements/commit/17c64c5984977299cdfdc1594438d53b775c57fe))
+* **hotspot:** add tests for delete functionality pd-597 ([772762e](https://github.com/pie-framework/pie-elements/commit/772762ee7760356c16ab74cef41ec73a3de0dc65))
+* **hotspot:** delete unused field from state pd-597 ([620b9a6](https://github.com/pie-framework/pie-elements/commit/620b9a693063de7cff5448ce95ff3026b5803ce9))
+* **hotspot:** get rid of undo pd-597 ([185f7d1](https://github.com/pie-framework/pie-elements/commit/185f7d1fde2f6af6ba9b3c4b82597066f267805d))
+* **hotspot:** refactor code where needed pd-597 ([b7640d2](https://github.com/pie-framework/pie-elements/commit/b7640d203accb908fd56a9d2dcae4bd4959fd130))
+* **hotspot:** update snapshot pd-597 ([7e81c25](https://github.com/pie-framework/pie-elements/commit/7e81c2589eecc0f2ce97a2873d468929241a05e8))
+
+
+
+
+
+## [5.18.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@5.18.0...@pie-element/hotspot@5.18.1) (2023-10-26)
+
+
+### Bug Fixes
+
+* update pie-lib PD-3221 ([f04d59f](https://github.com/pie-framework/pie-elements/commit/f04d59f204852e430dc3e8fe2c442bb9a1634761))
+
+
+
+
+
+# [5.18.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@5.17.6...@pie-element/hotspot@5.18.0) (2023-10-16)
+
+
+### Features
+
+* updated pie-libs PD-2950 ([acffe41](https://github.com/pie-framework/pie-elements/commit/acffe41120fbe288e375321cbd58cfbd48f98595))
+
+
+
+
+
+## [5.17.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@5.17.5...@pie-element/hotspot@5.17.6) (2023-10-16)
+
+
+### Bug Fixes
+
+* updated pie-libs PD-3223, PD-3121, PD-3018, PD-2765, PD-3105 ([666e660](https://github.com/pie-framework/pie-elements/commit/666e6604c40b9bde8b88af5ce1b02ba65f11e957))
+
+
+
+
+
+## [5.17.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@5.17.4...@pie-element/hotspot@5.17.5) (2023-10-03)
+
+
+### Bug Fixes
+
+* update with latest pie-libs, forcing pie-lib/math-rendering to v2.5.18 ([7ff936a](https://github.com/pie-framework/pie-elements/commit/7ff936ab9fc85c264032181755ce5e2149825406))
+
+
+
+
+
+## [5.17.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@5.17.3...@pie-element/hotspot@5.17.4) (2023-09-28)
+
+
+### Bug Fixes
+
+* **hotpot:** update tests and snapshots ([b078802](https://github.com/pie-framework/pie-elements/commit/b078802157816730d68f3f7b5c05d42f9febc53d))
+* **hotspot:** reset state when image dimensions changed ([15b1ce7](https://github.com/pie-framework/pie-elements/commit/15b1ce7c1900c2e0796462dec2cd2db6292766dd))
+
+
+
+
+
+## [5.17.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@5.17.2...@pie-element/hotspot@5.17.3) (2023-09-28)
+
+**Note:** Version bump only for package @pie-element/hotspot
+
+
+
+
+
+## [5.17.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@5.17.1...@pie-element/hotspot@5.17.2) (2023-09-26)
+
+
+### Bug Fixes
+
+* update pie-libs ([702f4c6](https://github.com/pie-framework/pie-elements/commit/702f4c657f3413274b3a4443c1950e2cdf8e5588))
+
+
+
+
+
+## [5.17.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@5.17.0...@pie-element/hotspot@5.17.1) (2023-09-25)
+
+**Note:** Version bump only for package @pie-element/hotspot
+
+
+
+
+
+# [5.17.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@5.16.1...@pie-element/hotspot@5.17.0) (2023-09-25)
+
+
+### Bug Fixes
+
+* configuration setter fix for language props ([da6bc07](https://github.com/pie-framework/pie-elements/commit/da6bc07a067f0a4d1167ab85e07bef6c605643ad))
+* update pie-libs PD-3167 ([1b109bb](https://github.com/pie-framework/pie-elements/commit/1b109bb3b74dcea72ee2f241996a5e6a71893b4e))
+* update pie-libs PD-3167 ([b21d0c3](https://github.com/pie-framework/pie-elements/commit/b21d0c332623667257a5de1363b9f4fc6ee2bb51))
+* update pie-libs PD-3167 ([1a76806](https://github.com/pie-framework/pie-elements/commit/1a7680657ebe0a73969f3100e60f0a090ffc7ada))
+* update pie-libs PD-3167, PD-3105, PD-3162, PD-2765 ([26199b2](https://github.com/pie-framework/pie-elements/commit/26199b255ddbcb9255f2769091c7ba58f8b1dae0))
+
+
+### Features
+
+* update pie-libs PD-3011 ([0fd32b3](https://github.com/pie-framework/pie-elements/commit/0fd32b3fd1333bb25de584b98c8ef0471de2d5e8))
+
+
+
+
+
+## [5.16.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@5.16.0...@pie-element/hotspot@5.16.1) (2023-09-18)
+
+
+### Bug Fixes
+
+* add sanity checks DNA-18268 ([29d7de9](https://github.com/pie-framework/pie-elements/commit/29d7de9422c075117173a3afeb2b29acf1caab3c))
+
+
+
+
+
+# [5.16.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@5.15.0...@pie-element/hotspot@5.16.0) (2023-09-05)
+
+
+### Bug Fixes
+
+* update pie-libs PD-2765 ([f03972d](https://github.com/pie-framework/pie-elements/commit/f03972dda33ff5d4c0343f094fd33acadad30cb4))
+
+
+### Features
+
+* **hotpot:** PD-599 - add functionality to move a vertex for a polygon ([d84b902](https://github.com/pie-framework/pie-elements/commit/d84b902911b3552f3c005fb56fcfed92145ca584))
+* **hotspot:** PD-599 - add resize functionality for rectangle ([0a8f811](https://github.com/pie-framework/pie-elements/commit/0a8f811e2303d3b1bf30973c0243bce7f0832429))
+* **hotspot:** PD-599- solve review observations ([bba9546](https://github.com/pie-framework/pie-elements/commit/bba954691178c78dcc29f4c9309efeb5c1be6158))
+
+
+
+
+
+# [5.15.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@5.14.5...@pie-element/hotspot@5.15.0) (2023-09-04)
+
+
+### Bug Fixes
+
+* update pie-libs PD-3051 ([1e1a7a3](https://github.com/pie-framework/pie-elements/commit/1e1a7a38732eff5585ad789aea5a08c5e94720ae))
+* update snapshots ([7f7432d](https://github.com/pie-framework/pie-elements/commit/7f7432d4e79747bd8824470ea19ebf7d40617fc5))
+* updated pie-libs PD-2765, PD-3051 ([e6f5b17](https://github.com/pie-framework/pie-elements/commit/e6f5b17c95faf426898f897651863089a54ff3ff))
+
+
+### Features
+
+* **hotspot:** translations PD-2802 PD-2795 ([15b03fd](https://github.com/pie-framework/pie-elements/commit/15b03fd1d6659364c4d765406c807d30dc5375d1))
+* **select-text, inline-dropdown:** PD-2797-PD-2802 update documentation ([b8ba6c7](https://github.com/pie-framework/pie-elements/commit/b8ba6c7d12eea9d0d729a38e18e87a21ea496a8b))
+
+
+
+
+
+## [5.14.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@5.14.4...@pie-element/hotspot@5.14.5) (2023-08-21)
+
+
+### Bug Fixes
+
+* update pie-libs PD-3119 ([01c474b](https://github.com/pie-framework/pie-elements/commit/01c474bf9396374dc86b9248651206672b765af6))
+
+
+
+
+
+## [5.14.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@5.14.3...@pie-element/hotspot@5.14.4) (2023-08-21)
+
+**Note:** Version bump only for package @pie-element/hotspot
+
+
+
+
+
+## [5.14.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@5.14.2...@pie-element/hotspot@5.14.3) (2023-08-15)
+
+
+### Bug Fixes
+
+* update pie-libs PD-3049, PD-2916, PD-2059 ([0e800b5](https://github.com/pie-framework/pie-elements/commit/0e800b54b852304d222a292400362e0870f0cc9a))
+* updated pie-lib to fix PD-2802 ([eab79f7](https://github.com/pie-framework/pie-elements/commit/eab79f70ad4488207a5b9b401679eb096feba247))
+* updated pie-lib to fix PD-2802, PD-3050, PD-3051 ([34b4dd7](https://github.com/pie-framework/pie-elements/commit/34b4dd7ba18f4c18589975921cc9d127926f8294))
+* updated pie-libs Pd-1163 ([300c1db](https://github.com/pie-framework/pie-elements/commit/300c1db1658ce85ca58f3cc2981b604aefbf9f01))
+
+
+
+
+
+## [5.14.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@5.14.1...@pie-element/hotspot@5.14.2) (2023-07-24)
+
+
+### Bug Fixes
+
+* update pie-libs PD-2984, PD-2991, PD-2992, PD-3036 ([12c9426](https://github.com/pie-framework/pie-elements/commit/12c94269e3b645d74a0014c597d30662823bb34a))
+
+
+
+
+
 ## [5.14.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@5.14.0...@pie-element/hotspot@5.14.1) (2023-07-06)
 
 

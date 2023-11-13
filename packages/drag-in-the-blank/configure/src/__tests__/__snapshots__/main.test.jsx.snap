@@ -16,6 +16,15 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
             "label": "Duplicates",
             "settings": true,
           },
+          "language": Object {
+            "enabled": false,
+            "label": "Specify Language",
+            "settings": false,
+          },
+          "languageChoices": Object {
+            "label": "Language Choices",
+            "options": Array [],
+          },
           "lockChoiceOrder": Object {
             "label": "Lock Choice Order",
             "settings": true,
@@ -76,6 +85,8 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
           "Settings": Object {
             "choicesPosition": undefined,
             "duplicates": undefined,
+            "language": false,
+            "language.enabled": false,
             "lockChoiceOrder": undefined,
             "partialScoring": false,
           },
@@ -129,6 +140,7 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
     label="Teacher Instructions"
   >
     <EditableHtml
+      allowValidation={false}
       languageCharactersProps={
         Array [
           Object {
@@ -150,6 +162,7 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
       maxImageWidth={300}
       nonEmpty={false}
       onChange={[Function]}
+      onDone={[Function]}
       toolbarOpts={
         Object {
           "position": "bottom",
@@ -161,6 +174,7 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
     label="Prompt"
   >
     <EditableHtml
+      allowValidation={false}
       disableUnderline={true}
       languageCharactersProps={
         Array [
@@ -183,6 +197,7 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
       maxImageWidth={300}
       nonEmpty={false}
       onChange={[Function]}
+      onDone={[Function]}
       toolbarOpts={
         Object {
           "position": "bottom",
@@ -220,6 +235,25 @@ There should be at least 2 tokens defined."
     </WithStyles(Tooltip)>
   </div>
   <EditableHtml
+    activePlugins={
+      Array [
+        "bold",
+        "html",
+        "italic",
+        "underline",
+        "strikethrough",
+        "bulleted-list",
+        "numbered-list",
+        "image",
+        "math",
+        "languageCharacters",
+        "table",
+        "video",
+        "audio",
+        "responseArea",
+      ]
+    }
+    allowValidation={false}
     disableImageAlignmentButtons={true}
     disableUnderline={true}
     languageCharactersProps={
@@ -241,6 +275,7 @@ There should be at least 2 tokens defined."
     }
     nonEmpty={false}
     onChange={[Function]}
+    onDone={[Function]}
     responseAreaProps={
       Object {
         "maxResponseAreas": 10,
@@ -314,6 +349,7 @@ There should be at least 2 tokens defined."
     label="Rationale"
   >
     <EditableHtml
+      allowValidation={false}
       languageCharactersProps={
         Array [
           Object {
@@ -334,6 +370,7 @@ There should be at least 2 tokens defined."
       maxImageHeight={300}
       maxImageWidth={300}
       onChange={[Function]}
+      onDone={[Function]}
       toolbarOpts={
         Object {
           "position": "bottom",
@@ -359,6 +396,15 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
           "duplicates": Object {
             "label": "Duplicates",
             "settings": true,
+          },
+          "language": Object {
+            "enabled": false,
+            "label": "Specify Language",
+            "settings": false,
+          },
+          "languageChoices": Object {
+            "label": "Language Choices",
+            "options": Array [],
           },
           "lockChoiceOrder": Object {
             "label": "Lock Choice Order",
@@ -420,6 +466,8 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
           "Settings": Object {
             "choicesPosition": undefined,
             "duplicates": undefined,
+            "language": false,
+            "language.enabled": false,
             "lockChoiceOrder": undefined,
             "partialScoring": false,
           },
@@ -499,6 +547,25 @@ There should be at least 2 tokens defined."
     </WithStyles(Tooltip)>
   </div>
   <EditableHtml
+    activePlugins={
+      Array [
+        "bold",
+        "html",
+        "italic",
+        "underline",
+        "strikethrough",
+        "bulleted-list",
+        "numbered-list",
+        "image",
+        "math",
+        "languageCharacters",
+        "table",
+        "video",
+        "audio",
+        "responseArea",
+      ]
+    }
+    allowValidation={false}
     disableImageAlignmentButtons={true}
     disableUnderline={true}
     languageCharactersProps={
@@ -520,6 +587,7 @@ There should be at least 2 tokens defined."
     }
     nonEmpty={false}
     onChange={[Function]}
+    onDone={[Function]}
     responseAreaProps={
       Object {
         "maxResponseAreas": 10,

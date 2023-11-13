@@ -48,11 +48,17 @@ describe('spec', () => {
     const id = '1';
     const categoryId = '1';
     const choiceIndex = 0;
+    const content = 'mar';
+    const value = 'mar';
+    const itemType = 'categorize'
+
     it('returns data', () => {
-      expect(spec.beginDrag({ id, categoryId, choiceIndex })).toEqual({
+      expect(spec.beginDrag({ id, categoryId, choiceIndex, content })).toEqual({
         id,
         categoryId,
         choiceIndex,
+        value,
+        itemType
       });
     });
   });

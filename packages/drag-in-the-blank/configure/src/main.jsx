@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import EditableHtml, { ALL_PLUGINS } from '@pie-lib/editable-html';
-import { InputContainer, layout, settings } from '@pie-lib/config-ui';
-import { withDragContext } from '@pie-lib/drag';
-import { renderMath } from '@pie-lib/math-rendering';
+import EditableHtml, { ALL_PLUGINS } from '@pie-lib/pie-toolbox/editable-html';
+import { InputContainer, layout, settings } from '@pie-lib/pie-toolbox/config-ui';
+import { withDragContext } from '@pie-lib/pie-toolbox/drag';
+import { renderMath } from '@pie-lib/pie-toolbox/math-rendering';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Info from '@material-ui/icons/Info';
@@ -144,6 +144,8 @@ export class Main extends React.Component {
       maxImageHeight = {},
       withRubric = {},
       mathMlOptions = {},
+      language = {},
+      languageChoices = {},
     } = configuration || {};
     const {
       rationaleEnabled,
@@ -169,6 +171,8 @@ export class Main extends React.Component {
       duplicates: duplicates.settings && toggle(duplicates.label),
       lockChoiceOrder: lockChoiceOrder.settings && toggle(lockChoiceOrder.label),
       choicesPosition: choicesPosition.settings && dropdown(choicesPosition.label, ['above', 'below', 'left', 'right']),
+      'language.enabled': language.settings && toggle(language.label, true),
+      language: language.settings && language.enabled && dropdown(languageChoices.label, languageChoices.options),
     };
 
     const panelProperties = {

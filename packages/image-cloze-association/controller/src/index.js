@@ -2,7 +2,7 @@ import debug from 'debug';
 import isEmpty from 'lodash/isEmpty';
 import shuffle from 'lodash/shuffle';
 import { camelizeKeys } from 'humps';
-import { partialScoring } from '@pie-lib/controller-utils';
+import { partialScoring } from '@pie-lib/pie-toolbox/controller-utils';
 
 import { getAllUniqueCorrectness } from './utils';
 import { cloneDeep } from 'lodash';

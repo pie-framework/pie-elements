@@ -19,8 +19,8 @@ exports[`ChartingConfig renders snapshot 1`] = `
       </WithStyles(Typography)>
       <Chart
         addCategoryEnabled={true}
-        changeEditableEnabled={true}
-        changeInteractiveEnabled={true}
+        changeEditableEnabled={false}
+        changeInteractiveEnabled={false}
         chartType="lineCross"
         data={Array []}
         defineChart={true}
@@ -44,12 +44,6 @@ exports[`ChartingConfig renders snapshot 1`] = `
         }
         title=""
       />
-      <div>
-        <WithStyles(Checkbox)
-          checked={true}
-          onChange={[Function]}
-        />
-      </div>
       <Component
         open={false}
       />
@@ -116,6 +110,12 @@ exports[`Configure renders snapshot 1`] = `
               "mmlEditing": false,
               "mmlOutput": false,
             },
+          },
+          "instruction": Object {
+            "label": "This item type provides various types of interactive charts. Depending upon how an item is configured,
+          students can change the heights of bars (or other similar chart elements) created by the author; relabel bars
+          created by the author; and/or add new bars, label them, and set their heights.",
+            "settings": false,
           },
           "labelsPlaceholders": Object {
             "bottom": "Click here to add a label for this axis",
@@ -189,6 +189,7 @@ exports[`Configure renders snapshot 1`] = `
       groups={
         Object {
           "Properties": Object {
+            "instruction": false,
             "language": false,
             "language.enabled": false,
             "promptEnabled": undefined,
@@ -209,9 +210,9 @@ exports[`Configure renders snapshot 1`] = `
       model={
         Object {
           "addCategoryEnabled": true,
-          "changeAddCategoryEnabled": true,
-          "changeEditableEnabled": true,
-          "changeInteractiveEnabled": true,
+          "changeAddCategoryEnabled": false,
+          "changeEditableEnabled": false,
+          "changeInteractiveEnabled": false,
           "chartType": "lineCross",
           "correctAnswer": Object {},
           "data": Array [],
@@ -243,12 +244,15 @@ exports[`Configure renders snapshot 1`] = `
     component="div"
     type="body1"
   >
-    This item type provides various types of interactive charts. Depending upon how an item is configured, students can change the heights of bars (or other similar chart elements) created by the author; relabel bars created by the author; and/or add new bars, label them, and set their heights.
+    This item type provides various types of interactive charts. Depending upon how an item is configured,
+          students can change the heights of bars (or other similar chart elements) created by the author; relabel bars
+          created by the author; and/or add new bars, label them, and set their heights.
   </WithStyles(Typography)>
   <InputContainer
     label="Teacher Instructions"
   >
     <EditableHtml
+      allowValidation={false}
       languageCharactersProps={
         Array [
           Object {
@@ -265,12 +269,14 @@ exports[`Configure renders snapshot 1`] = `
       maxImageWidth={300}
       nonEmpty={false}
       onChange={[Function]}
+      onDone={[Function]}
     />
   </InputContainer>
   <InputContainer
     label="Item Stem"
   >
     <EditableHtml
+      allowValidation={false}
       disableUnderline={true}
       languageCharactersProps={
         Array [
@@ -288,6 +294,7 @@ exports[`Configure renders snapshot 1`] = `
       maxImageWidth={300}
       nonEmpty={false}
       onChange={[Function]}
+      onDone={[Function]}
     />
   </InputContainer>
   <Component
@@ -371,9 +378,9 @@ exports[`Configure renders snapshot 1`] = `
     model={
       Object {
         "addCategoryEnabled": true,
-        "changeAddCategoryEnabled": true,
-        "changeEditableEnabled": true,
-        "changeInteractiveEnabled": true,
+        "changeAddCategoryEnabled": false,
+        "changeEditableEnabled": false,
+        "changeInteractiveEnabled": false,
         "chartType": "lineCross",
         "correctAnswer": Object {},
         "data": Array [],
@@ -473,9 +480,9 @@ exports[`Configure renders snapshot 1`] = `
     model={
       Object {
         "addCategoryEnabled": true,
-        "changeAddCategoryEnabled": true,
-        "changeEditableEnabled": true,
-        "changeInteractiveEnabled": true,
+        "changeAddCategoryEnabled": false,
+        "changeEditableEnabled": false,
+        "changeInteractiveEnabled": false,
         "chartType": "lineCross",
         "correctAnswer": Object {},
         "data": Array [],
@@ -547,9 +554,9 @@ exports[`Configure renders snapshot 1`] = `
     model={
       Object {
         "addCategoryEnabled": true,
-        "changeAddCategoryEnabled": true,
-        "changeEditableEnabled": true,
-        "changeInteractiveEnabled": true,
+        "changeAddCategoryEnabled": false,
+        "changeEditableEnabled": false,
+        "changeInteractiveEnabled": false,
         "chartType": "lineCross",
         "correctAnswer": Object {},
         "data": Array [],
@@ -580,6 +587,7 @@ exports[`Configure renders snapshot 1`] = `
     label="Rationale"
   >
     <EditableHtml
+      allowValidation={false}
       languageCharactersProps={
         Array [
           Object {
@@ -595,6 +603,7 @@ exports[`Configure renders snapshot 1`] = `
       maxImageHeight={300}
       maxImageWidth={300}
       onChange={[Function]}
+      onDone={[Function]}
     />
   </InputContainer>
 </ConfigLayout>

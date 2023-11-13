@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { TextSelect } from '@pie-lib/text-select';
-import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
-import { color, Feedback, Collapsible, hasText, PreviewPrompt } from '@pie-lib/render-ui';
+import { TextSelect, Legend } from '@pie-lib/pie-toolbox/text-select';
+import CorrectAnswerToggle from '@pie-lib/pie-toolbox/correct-answer-toggle';
+import { color, Feedback, Collapsible, hasText, PreviewPrompt } from '@pie-lib/pie-toolbox/render-ui';
 import { withStyles } from '@material-ui/core/styles';
 import generateModel from './utils';
 
@@ -50,6 +50,9 @@ export class Main extends React.Component {
   render() {
     const { session, onSelectionChange, classes } = this.props;
     const { showCorrectAnswer, model } = this.state;
+    const { env } = model;
+    const { mode } = env || {};
+
 
     const selectedTokens = showCorrectAnswer ? this.correctAnswer() : session.selectedTokens;
 
@@ -81,6 +84,7 @@ export class Main extends React.Component {
             show={model.disabled && model.incorrect}
             toggled={showCorrectAnswer}
             onToggle={this.toggleShowCorrect}
+            language={model.language}
           />
         )}
 
@@ -108,6 +112,7 @@ export class Main extends React.Component {
           maxNoOfSelections={model.maxSelections}
           animationsDisabled={model.animationsDisabled}
         />
+        {mode === 'evaluate' && <Legend language={model.language} />}
 
         {model.rationale &&
           hasText(model.rationale) &&

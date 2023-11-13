@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { GraphContainer } from '@pie-lib/graphing';
-import { color, Collapsible, hasText, PreviewPrompt } from '@pie-lib/render-ui';
-import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
+import { GraphContainer } from '@pie-lib/pie-toolbox/graphing';
+import { color, Collapsible, hasText, PreviewPrompt } from '@pie-lib/pie-toolbox/render-ui';
+import CorrectAnswerToggle from '@pie-lib/pie-toolbox/correct-answer-toggle';
 
 export class Main extends React.Component {
   static propTypes = {
@@ -62,7 +62,12 @@ export class Main extends React.Component {
 
         {prompt && <PreviewPrompt className="prompt" prompt={prompt} />}
 
-        <CorrectAnswerToggle show={showToggle} toggled={showingCorrect} onToggle={this.toggleCorrect} />
+        <CorrectAnswerToggle
+          show={showToggle}
+          toggled={showingCorrect}
+          onToggle={this.toggleCorrect}
+          language={language}
+        />
 
         {showingCorrect && showToggle ? (
           <GraphContainer

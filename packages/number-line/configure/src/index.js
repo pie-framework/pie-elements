@@ -33,9 +33,9 @@ const updateTicks = (model) => {
 export default class NumberLine extends HTMLElement {
   static createDefaultModel = (model = {}) => {
     const c = defaults.configuration;
-    let language = '';
+    let language = model.language || '';
 
-    if (c.language && c.language.enabled) {
+    if (!language && c.language && c.language.enabled) {
       if (c.languageChoices?.options?.length) {
         language = c.languageChoices.options[0].value;
       }
@@ -44,7 +44,7 @@ export default class NumberLine extends HTMLElement {
     const normalizedModel = {
       ...defaults.model,
       ...model,
-      language
+      language,
     };
 
     return updateTicks(normalizedModel);

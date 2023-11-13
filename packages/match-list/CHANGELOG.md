@@ -3,6 +3,130 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@2.0.0...@pie-element/match-list@2.0.1) (2023-11-09)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3221, PD-3249, PD-2765 ([9de1563](https://github.com/pie-framework/pie-elements/commit/9de1563d636983c3ddceee0279c0709d396d4f96))
+
+
+
+
+
+# [2.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@1.19.3...@pie-element/match-list@2.0.0) (2023-11-07)
+
+
+### Bug Fixes
+
+* update pie-lib version to fix imports for pie-lib/pie-toolbox/editable-html ([a90cbf6](https://github.com/pie-framework/pie-elements/commit/a90cbf6be81824e7266df23c2dc49b259337c1b6))
+* update pie-lib/pie-toolbox version ([212cbfa](https://github.com/pie-framework/pie-elements/commit/212cbfad27b29f0b1b2a3706ba82f6fb59147001))
+* update pie-lib/pie-toolbox version ([b791e10](https://github.com/pie-framework/pie-elements/commit/b791e10857928766e2d73c6aa80b3fb50fd1afac))
+* update pie-lib/pie-toolbox version ([7f64f9f](https://github.com/pie-framework/pie-elements/commit/7f64f9f2b874fd08bd8f6f05c1c4292c34ac6338))
+
+
+### Code Refactoring
+
+* replaced all pie-lib packages with the new pie-toolbox package that contains all of them. ([073d7e5](https://github.com/pie-framework/pie-elements/commit/073d7e5175f7a73069f09d2ceda799682acce494))
+
+
+### BREAKING CHANGES
+
+* using pie-lib/pie-toolbox now, instead of any other pie-lib package.
+
+
+
+
+
+## [1.19.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@1.19.2...@pie-element/match-list@1.19.3) (2023-10-03)
+
+
+### Bug Fixes
+
+* update with latest pie-libs, forcing pie-lib/math-rendering to v2.5.18 ([7ff936a](https://github.com/pie-framework/pie-elements/commit/7ff936ab9fc85c264032181755ce5e2149825406))
+
+
+
+
+
+## [1.19.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@1.19.1...@pie-element/match-list@1.19.2) (2023-09-28)
+
+**Note:** Version bump only for package @pie-element/match-list
+
+
+
+
+
+## [1.19.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@1.19.0...@pie-element/match-list@1.19.1) (2023-09-25)
+
+**Note:** Version bump only for package @pie-element/match-list
+
+
+
+
+
+# [1.19.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@1.18.0...@pie-element/match-list@1.19.0) (2023-09-25)
+
+
+### Bug Fixes
+
+* update pie-libs PD-3167 ([1b109bb](https://github.com/pie-framework/pie-elements/commit/1b109bb3b74dcea72ee2f241996a5e6a71893b4e))
+* update pie-libs PD-3167, PD-3105, PD-3162, PD-2765 ([26199b2](https://github.com/pie-framework/pie-elements/commit/26199b255ddbcb9255f2769091c7ba58f8b1dae0))
+
+
+### Features
+
+* update pie-libs PD-3011 ([0fd32b3](https://github.com/pie-framework/pie-elements/commit/0fd32b3fd1333bb25de584b98c8ef0471de2d5e8))
+
+
+
+
+
+# [1.18.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@1.17.12...@pie-element/match-list@1.18.0) (2023-09-04)
+
+
+### Features
+
+* **match-list:** translations PD-2802 PD-2795 ([840a94d](https://github.com/pie-framework/pie-elements/commit/840a94d2066f1e62c03774ad408c1e72c6a2c959))
+* **select-text, inline-dropdown:** PD-2797-PD-2802 update documentation ([b8ba6c7](https://github.com/pie-framework/pie-elements/commit/b8ba6c7d12eea9d0d729a38e18e87a21ea496a8b))
+
+
+
+
+
+## [1.17.12](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@1.17.11...@pie-element/match-list@1.17.12) (2023-08-21)
+
+**Note:** Version bump only for package @pie-element/match-list
+
+
+
+
+
+## [1.17.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@1.17.10...@pie-element/match-list@1.17.11) (2023-08-15)
+
+
+### Bug Fixes
+
+* update pie-libs PD-3049, PD-2916, PD-2059 ([0e800b5](https://github.com/pie-framework/pie-elements/commit/0e800b54b852304d222a292400362e0870f0cc9a))
+* updated pie-lib to fix PD-2802 ([eab79f7](https://github.com/pie-framework/pie-elements/commit/eab79f70ad4488207a5b9b401679eb096feba247))
+* updated pie-lib to fix PD-2802, PD-3050, PD-3051 ([34b4dd7](https://github.com/pie-framework/pie-elements/commit/34b4dd7ba18f4c18589975921cc9d127926f8294))
+* updated pie-libs Pd-1163 ([300c1db](https://github.com/pie-framework/pie-elements/commit/300c1db1658ce85ca58f3cc2981b604aefbf9f01))
+
+
+
+
+
+## [1.17.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@1.17.9...@pie-element/match-list@1.17.10) (2023-07-24)
+
+
+### Bug Fixes
+
+* update pie-libs PD-2984, PD-2991, PD-2992, PD-3036 ([12c9426](https://github.com/pie-framework/pie-elements/commit/12c94269e3b645d74a0014c597d30662823bb34a))
+
+
+
+
+
 ## [1.17.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@1.17.8...@pie-element/match-list@1.17.9) (2023-07-06)
 
 

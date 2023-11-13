@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import isEmpty from 'lodash/isEmpty';
-import { renderMath } from '@pie-lib/math-rendering';
+import { renderMath } from '@pie-lib/pie-toolbox/math-rendering';
 import { ModelSetEvent, SessionChangedEvent } from '@pie-framework/pie-player-events';
 
 import DrawingResponseComponent from './drawing-response';

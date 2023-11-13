@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
-import { Choice } from '@pie-lib/drag';
+import { Choice } from '@pie-lib/pie-toolbox/drag';
 import IconButton from '@material-ui/core/IconButton';
 import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
-import { HtmlAndMath } from '@pie-lib/render-ui';
+import { HtmlAndMath } from '@pie-lib/pie-toolbox/render-ui';
 
 export class ChoicePreview extends React.Component {
   static propTypes = {

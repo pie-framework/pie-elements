@@ -1,6 +1,6 @@
 import debug from 'debug';
 import isEmpty from 'lodash/isEmpty';
-import { partialScoring } from '@pie-lib/controller-utils';
+import { partialScoring } from '@pie-lib/pie-toolbox/controller-utils';
 
 import { isResponseCorrect } from './utils';
 
@@ -15,7 +15,7 @@ export const normalize = (question) => ({
 
 export function model(question, session, env) {
   const normalizedQuestion = normalize(question);
-  const { imageUrl, dimensions, hotspotColor, multipleCorrect, outlineColor, partialScoring, prompt, shapes } =
+  const { imageUrl, dimensions, hotspotColor, multipleCorrect, outlineColor, partialScoring, prompt, shapes, language } =
     normalizedQuestion;
   const { rectangles, polygons } = shapes || {};
 
@@ -29,6 +29,7 @@ export function model(question, session, env) {
       hotspotColor,
       multipleCorrect,
       partialScoring,
+      language,
       shapes: {
         ...shapes,
         // eslint-disable-next-line no-unused-vars

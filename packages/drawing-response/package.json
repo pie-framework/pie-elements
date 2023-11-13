@@ -1,6 +1,6 @@
 {
   "name": "@pie-element/drawing-response",
-  "version": "6.5.1",
+  "version": "7.0.1",
   "description": "",
   "repository": "pie-framework/pie-elements",
   "publishConfig": {
@@ -11,9 +11,7 @@
     "@mdi/js": "^3.6.95",
     "@mdi/react": "^1.1.1",
     "@pie-framework/pie-player-events": "^0.1.0",
-    "@pie-lib/math-rendering": "^2.5.17",
-    "@pie-lib/render-ui": "^4.14.28",
-    "@pie-lib/translator": "^2.1.1",
+    "@pie-lib/pie-toolbox": "1.0.10",
     "classnames": "^2.2.6",
     "enzyme-to-json": "^3.3.5",
     "konva": "^3.4.1",

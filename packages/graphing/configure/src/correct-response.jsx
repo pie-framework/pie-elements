@@ -2,11 +2,12 @@ import * as React from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { GraphContainer as Graph } from '@pie-lib/graphing';
-import { AlertDialog } from '@pie-lib/config-ui';
+import { GraphContainer as Graph } from '@pie-lib/pie-toolbox/graphing';
+import { AlertDialog } from '@pie-lib/pie-toolbox/config-ui';
 import Delete from '@material-ui/icons/Delete';
 import { set, isEqual } from 'lodash';
-import { MenuItem, Select, Typography } from '@material-ui/core';
+import { MenuItem, Select, Tooltip, Typography } from '@material-ui/core';
+import Info from '@material-ui/icons/Info';
 
 const styles = (theme) => ({
   column: {
@@ -66,6 +67,11 @@ const styles = (theme) => ({
   },
   name: {
     marginBottom: theme.spacing.unit / 2,
+  },
+  tooltip: {
+    fontSize: theme.typography.fontSize - 2,
+    whiteSpace: 'pre',
+    maxWidth: '500px',
   },
   subtitleText: {
     marginTop: theme.spacing.unit * 1.5,
@@ -322,11 +328,14 @@ export class CorrectResponse extends React.Component {
       // rebuild answers based on new alternate positions after deletion
       const newAnswers = Object.entries(answers).reduce((acc, currentValue, index) => {
         const [key, value] = currentValue;
-        const newAnswer = key === 'correctAnswer' ? {...acc, [key]: value} : {...acc, ['alternate'+ index]: {...value, name:  `Alternate ${index}`}}
-        return newAnswer
+        const newAnswer =
+          key === 'correctAnswer'
+            ? { ...acc, [key]: value }
+            : { ...acc, ['alternate' + index]: { ...value, name: `Alternate ${index}` } };
+        return newAnswer;
       }, {});
 
-      onChange({...model, answers: newAnswers});
+      onChange({ ...model, answers: newAnswers });
     };
 
     if (marks.length) {
@@ -396,6 +405,17 @@ export class CorrectResponse extends React.Component {
             <React.Fragment key={`correct-response-graph-${name}`}>
               <div className={classes.responseTitle}>
                 <div className={classes.name}>{name}</div>
+                {key === 'correctAnswer' && (
+                  <Tooltip
+                    classes={{ tooltip: classes.tooltip }}
+                    disableFocusListener
+                    disableTouchListener
+                    placement={'right'}
+                    title={'At least 1 graph object should be defined.'}
+                  >
+                    <Info fontSize={'small'} color={'primary'} style={{ marginLeft: '8px', marginBottom: 'auto' }} />
+                  </Tooltip>
+                )}
                 {key !== 'correctAnswer' && (
                   <Delete className={classes.iconButton} onClick={() => this.deleteAlternateResponse(key, answer)} />
                 )}

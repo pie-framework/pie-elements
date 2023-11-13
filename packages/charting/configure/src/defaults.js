@@ -36,9 +36,9 @@ export default {
     teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true,
     studentNewCategoryDefaultLabel: 'New Category',
-    changeInteractiveEnabled: true,
-    changeEditableEnabled: true,
-    changeAddCategoryEnabled: true,
+    changeInteractiveEnabled: false,
+    changeEditableEnabled: false,
+    changeAddCategoryEnabled: false,
   },
   configuration: {
     spellCheck: {
@@ -104,6 +104,13 @@ export default {
     title: {
       settings: false,
       label: 'Chart Title',
+    },
+    instruction: {
+      settings: false,
+      label:
+        'This item type provides various types of interactive charts. Depending upon how an item is configured,\n' +
+        '          students can change the heights of bars (or other similar chart elements) created by the author; relabel bars\n' +
+        '          created by the author; and/or add new bars, label them, and set their heights.',
     },
     titlePlaceholder: {
       settings: false,

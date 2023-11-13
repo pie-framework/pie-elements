@@ -1,15 +1,30 @@
 import debug from 'debug';
 import isEmpty from 'lodash/isEmpty';
-import { getFeedbackForCorrectness } from '@pie-lib/feedback';
-import { partialScoring } from '@pie-lib/controller-utils';
+import { getFeedbackForCorrectness } from '@pie-lib/pie-toolbox/feedback';
+import { partialScoring } from '@pie-lib/pie-toolbox/controller-utils';
 import defaults from './defaults';
 
 const log = debug('@pie-element:select-text:controller');
 
-const buildTokens = (tokens, evaluateMode) => {
-  tokens = tokens || [];
+const isAnswerSelected = (token, selectedToken) => token && selectedToken && token.correct === true &&
+    !(
+        (token.start === selectedToken.start && token.end === selectedToken.end) ||
+        (token.start === selectedToken.oldStart && token.end === selectedToken.oldEnd)
+    );
 
-  return tokens.map((t) => Object.assign({}, t, evaluateMode ? { correct: !!t.correct } : { correct: undefined }));
+const buildTokens = (tokens, selectedTokens, evaluateMode) => {
+  tokens = tokens || [];
+  selectedTokens = selectedTokens || [];
+
+  return tokens.map((t) => {
+    // map the correct answer that are missing from session
+    const isNotSelected = selectedTokens.findIndex((selectedToken) => isAnswerSelected(t, selectedToken)) === -1;
+    return Object.assign(
+      {},
+      t,
+      evaluateMode ? { correct: !!t.correct, isMissing: !isNotSelected } : { correct: undefined, isMissing: undefined },
+    );
+  });
 };
 
 export const getCorrectness = (tokens, selected) => {
@@ -118,7 +133,7 @@ export const model = (question, session, env) => {
   return new Promise((resolve) => {
     log('[model]', 'normalizedQuestion: ', normalizedQuestion);
     log('[model]', 'session: ', session);
-    const tokens = buildTokens(normalizedQuestion.tokens, env.mode === 'evaluate');
+    const tokens = buildTokens(normalizedQuestion.tokens, session.selectedTokens, env.mode === 'evaluate');
     log('tokens:', tokens);
     const correctness =
       env.mode === 'evaluate' ? getCorrectness(normalizedQuestion.tokens, session.selectedTokens) : undefined;
@@ -137,8 +152,10 @@ export const model = (question, session, env) => {
         disabled: env.mode !== 'gather',
         maxSelections: normalizedQuestion.maxSelections,
         correctness,
+        env,
         feedback,
         incorrect: env.mode === 'evaluate' ? correctness !== 'correct' : undefined,
+        language: normalizedQuestion.language,
       };
 
       if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {

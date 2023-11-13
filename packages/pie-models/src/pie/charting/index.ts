@@ -6,7 +6,7 @@ import {
   ConfigureMathMLProp,
   ConfigureMaxImageDimensionsProp,
   ConfigureProp,
-  ConfigurePropWithEnabled
+  ConfigurePropWithEnabled,
 } from '../ConfigurationProp';
 
 interface Chart {
@@ -162,13 +162,13 @@ export interface ChartingPie extends PieModel {
   /** Indicates if Rubric is enabled */
   rubricEnabled: boolean;
 
-  /** Indicates if teacher can enable/disable data[]:interactive */
+  /** Indicates if teacher can enable/disable data[]:interactive. Default value is false */
   changeInteractiveEnabled: boolean;
 
-  /** Indicates if teacher can enable/disable data[]:editable */
+  /** Indicates if teacher can enable/disable data[]:editable. Default value is false */
   changeEditableEnabled: boolean;
 
-  /** Indicates if teacher can enable/disable addCategoryEnabled */
+  /** Indicates if teacher can enable/disable addCategoryEnabled. Default value is false */
   changeAddCategoryEnabled: boolean;
 
   /**
@@ -306,6 +306,11 @@ export interface ChartingConfigure extends PromptConfig, CommonConfigSettings {
    * Chart title configuration
    */
   title?: ConfigurePropWithEnabled;
+
+  /**
+   * Author instruction to build a new chart
+   */
+  instruction?: ConfigureProp;
 
   /**
    * Coonfiguration for new category in define chart

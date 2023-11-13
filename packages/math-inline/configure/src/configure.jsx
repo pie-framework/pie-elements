@@ -1,14 +1,14 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import { FeedbackConfig, settings, layout, InputContainer } from '@pie-lib/config-ui';
+import { FeedbackConfig, settings, layout, InputContainer } from '@pie-lib/pie-toolbox/config-ui';
 import PropTypes from 'prop-types';
 import debug from 'debug';
-import EditableHtml from '@pie-lib/editable-html';
+import EditableHtml from '@pie-lib/pie-toolbox/editable-html';
 import GeneralConfigBlock from './general-config-block';
 import { ResponseTypes } from './utils';
 
 const log = debug('@pie-element:math-inline:configure');
-const { Panel, toggle, radio } = settings;
+const { Panel, toggle, radio, dropdown } = settings;
 
 const styles = (theme) => ({
   promptHolder: {
@@ -66,6 +66,8 @@ export class Configure extends React.Component {
       teacherInstructions = {},
       withRubric = {},
       mathMlOptions = {},
+      language = {},
+      languageChoices = {},
     } = configuration || {};
     const {
       feedbackEnabled,
@@ -89,6 +91,8 @@ export class Configure extends React.Component {
       responseType: responseType.settings && radio(responseType.label, [ResponseTypes.simple, ResponseTypes.advanced]),
       feedbackEnabled: feedback.settings && toggle(feedback.label),
       promptEnabled: prompt.settings && toggle(prompt.label),
+      'language.enabled': language.settings && toggle(language.label, true),
+      language: language.settings && language.enabled && dropdown(languageChoices.label, languageChoices.options),
     };
     const panelProperties = {
       teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),

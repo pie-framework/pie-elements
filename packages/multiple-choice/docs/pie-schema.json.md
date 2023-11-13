@@ -162,6 +162,11 @@ Indicates if Accessibility Labels are enabled
 
 Indicates if Rubric is enabled
 
+# `language` (string)
+
+Indicates the language of the component
+Supported options: en, es, en_US, en-US, es_ES, es-ES, es_MX, es-MX
+
 # `id` (string, required)
 
 Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.
@@ -236,6 +241,18 @@ Indicates if model should have mathML output instead of latex
 ### `mmlEditing` (number)
 
 Indicates if mathML that's already in model should be editable
+
+## `ConfigureLanguageOptionsProp` (object)
+
+Properties of the `ConfigureLanguageOptionsProp` object:
+
+### `value` (string, required)
+
+Value of the language option
+
+### `label` (string, required)
+
+Label of the language option
 
 ## `Choice` (object)
 

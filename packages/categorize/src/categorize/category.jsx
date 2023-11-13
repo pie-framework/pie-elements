@@ -4,7 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
 import Choice from './choice';
 import PlaceHolder from './droppable-placeholder';
-import { color } from '@pie-lib/render-ui';
+import { color } from '@pie-lib/pie-toolbox/render-ui';
 
 export const CategoryType = {
   id: PropTypes.string.isRequired,
@@ -67,6 +67,7 @@ const styles = (theme) => ({
   category: {
     display: 'flex',
     flexDirection: 'column',
+    flex: 2
   },
 });
 

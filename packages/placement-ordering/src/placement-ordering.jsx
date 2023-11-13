@@ -1,16 +1,19 @@
 import { HorizontalTiler, VerticalTiler } from './tiler';
 import { buildState, reducer } from './ordering';
-import { color, Feedback, Collapsible, hasText, PreviewPrompt } from '@pie-lib/render-ui';
-import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
+import { color, Feedback, Collapsible, hasText, PreviewPrompt } from '@pie-lib/pie-toolbox/render-ui';
+import CorrectAnswerToggle from '@pie-lib/pie-toolbox/correct-answer-toggle';
 import PropTypes from 'prop-types';
 import React from 'react';
 import debug from 'debug';
 import uniqueId from 'lodash/uniqueId';
 import { withStyles } from '@material-ui/core/styles';
 import ReactDOM from 'react-dom';
-import { renderMath } from '@pie-lib/math-rendering';
+import { renderMath } from '@pie-lib/pie-toolbox/math-rendering';
 import isEqual from 'lodash/isEqual';
 import difference from 'lodash/difference';
+import Translator from '@pie-lib/pie-toolbox/translator';
+
+const { translator } = Translator;
 
 const log = debug('pie-elements:placement-ordering');
 
@@ -122,6 +125,19 @@ export class PlacementOrdering extends React.Component {
   };
 
   UNSAFE_componentWillReceiveProps(nextProps) {
+    const { model: nextModel } = nextProps || {};
+    const { model } = this.props || {};
+
+    // check if the note is the default one for prev language and change to the default one for new language
+    // this check is necessary in order to diferanciate between default and authour defined note
+    // and only change between languages for default ones
+    if (model.note && model.language && model.language !== nextModel.language &&
+      model.note === translator.t('common:commonCorrectAnswerWithAlternates', { lng: model.language })) {
+      console.log('here');
+      model.note = translator.t('common:commonCorrectAnswerWithAlternates', { lng: nextModel.language });
+    }
+
+
     const newState = {};
     const { correctResponse, config } = nextProps?.model;
     const { includeTargets } = config || {};
@@ -218,6 +234,7 @@ export class PlacementOrdering extends React.Component {
       env,
       disabled,
       teacherInstructions,
+      language
     } = model;
     const showToggle = correctResponse && correctResponse.length > 0;
     const { showingCorrect } = this.state;
@@ -253,6 +270,7 @@ export class PlacementOrdering extends React.Component {
           show={showToggle}
           toggled={showingCorrect}
           onToggle={this.toggleCorrect}
+          language={language}
         />
 
         <OrderingTiler
@@ -271,7 +289,7 @@ export class PlacementOrdering extends React.Component {
         />
 
         {displayNote && (
-          <div className={classes.note} dangerouslySetInnerHTML={{ __html: `<strong>Note:</strong> ${note}` }}/>
+          <div className={classes.note} dangerouslySetInnerHTML={{ __html: note }}/>
         )}
 
         {rationale && hasText(rationale) && (

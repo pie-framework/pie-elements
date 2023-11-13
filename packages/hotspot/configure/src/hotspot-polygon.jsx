@@ -1,35 +1,90 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Group, Line } from 'react-konva';
+import { Group, Line, Circle } from 'react-konva';
 import { withStyles } from '@material-ui/core/styles/index';
+import DeleteWidget from './DeleteWidget';
+
+const HOVERED_COLOR = '#00BFFF';
 
 class PolComponent extends React.Component {
-  static getDerivedStateFromProps(nextProps) {
-    const { points } = nextProps;
+  static getDerivedStateFromProps(nextProps, prevState) {
+    const { id, points, imageHeight, imageWidth } = nextProps;
+    // we execute this code only if image dimensions changed or an hotspot was added/deleted
+    if (
+      prevState.imageHeight !== nextProps.imageHeight ||
+      prevState.imageWidth !== nextProps.imageWidth ||
+      prevState.id !== nextProps.id
+    ) {
+      if (points.length) {
+        const xList = points.map((p) => p.x);
+        const yList = points.map((p) => p.y);
+
+        const x = Math.min(...xList);
+        const y = Math.max(...yList);
+
+        return {
+          id,
+          x,
+          y,
+          points,
+          imageHeight,
+          imageWidth,
+        };
+      }
+
+      return {
+        id: '',
+        x: 0,
+        y: 0,
+        points: [],
+        imageHeight,
+        imageWidth,
+      };
+    } else {
+      return null;
+    }
+  }
+
+  getOffset = (points) => {
     const xList = points.map((p) => p.x);
     const yList = points.map((p) => p.y);
 
-    const xOffset = Math.min(...xList);
-    const yOffset = Math.max(...yList);
+    return {
+      x: Math.min(...xList),
+      y: Math.max(...yList),
+    };
+  };
 
+  serialize = (points) => {
+    const { x: xOffset, y: yOffset } = this.getOffset(points);
+
+    return points.reduce((acc, point) => [...acc, point.x - xOffset, point.y - yOffset], []);
+  };
+
+  getInitialState = (points) => {
     if (points.length) {
+      const { x, y } = this.getOffset(points);
+
       return {
-        x: xOffset,
-        y: yOffset,
-        points: points.reduce((acc, point) => {
-          return acc.concat([point.x - xOffset, point.y - yOffset]);
-        }, []),
+        x,
+        y,
+        points,
       };
     }
 
     return {
+      id: '',
       x: 0,
       y: 0,
       points: [],
     };
-  }
+  };
 
-  state = {};
+  state = {
+    hovered: false,
+    isDragging: false,
+    ...this.getInitialState(this.props.points),
+  };
 
   handleClick = (e) => {
     const { points } = this.props;
@@ -50,57 +105,124 @@ class PolComponent extends React.Component {
   };
 
   handleMouseEnter = () => {
+    this.setState({ hovered: true });
     document.body.style.cursor = 'pointer';
   };
 
   handleMouseLeave = () => {
+    this.setState({ hovered: false });
     document.body.style.cursor = 'default';
   };
 
-  handleOnDragEnd = (e) => {
+  handleOnDragEnd = (e, updateModel = false) => {
     const { onDragEnd, id } = this.props;
-    const points = e.target.points() || this.state.points;
+    const points = e.target.points() || this.serialize(this.state.points);
 
     const newPoints = points.reduce((acc, currentPointCoordinate, index) => {
       if (index % 2 === 0 && index + 1 < points.length) {
-        acc.push({
-          x: currentPointCoordinate + e.target.x(),
-          y: points[index + 1] + e.target.y(),
-        });
-
-        return acc;
-      } else {
-        return acc;
+        return [
+          ...acc,
+          {
+            x: currentPointCoordinate + e.target.x(),
+            y: points[index + 1] + e.target.y(),
+          },
+        ];
       }
+
+      return acc;
     }, []);
 
-    onDragEnd(id, {
+    this.setState({
       points: newPoints,
+      ...this.getOffset(newPoints),
+      isDragging: updateModel ? false : this.state.isDragging,
     });
   };
 
-  render() {
-    const { classes, correct, hotspotColor, outlineColor, strokeWidth = 5 } = this.props;
-    const { points, x, y } = this.state;
+  handleOnDragVertex = (e, changedIndex, updateModel) => {
+    const { onDragEnd, id } = this.props;
+    const { points } = this.state;
 
+    const newPoints = points.map((point, index) =>
+      index === changedIndex ? { x: e.target.x(), y: e.target.y() } : point,
+    );
+
+    this.setState({
+      points: newPoints,
+      ...this.getOffset(newPoints),
+      isDragging: updateModel ? false : this.state.isDragging,
+    });
+
+    if (updateModel) {
+      onDragEnd(id, { points: newPoints });
+    }
+  };
+
+  onDragStart = () => {
+    this.setState({ isDragging: true });
+  };
+
+  handleDelete = (id) => {
+    const { onDeleteShape } = this.props;
+    onDeleteShape(id);
+  };
+
+  render() {
+    const { classes, correct, id, hotspotColor, outlineColor, strokeWidth = 5 } = this.props;
+    const { points, x, y, hovered } = this.state;
+
+    const calculatedStrokeWidth = correct ? strokeWidth : hovered ? 1 : 0;
+    const calculatedStroke = correct ? outlineColor : hovered ? HOVERED_COLOR : '';
     return (
-      <Group>
+      <Group classes={classes.group} onMouseLeave={this.handleMouseLeave} onMouseEnter={this.handleMouseEnter}>
         <Line
           classes={classes.base}
-          points={points}
+          points={this.serialize(points)}
           closed={true}
           fill={hotspotColor}
           onClick={this.handleClick}
           onTap={this.handleClick}
           draggable
-          stroke={outlineColor}
-          strokeWidth={correct ? strokeWidth : 0}
-          onMouseLeave={this.handleMouseLeave}
-          onMouseEnter={this.handleMouseEnter}
-          onDragEnd={this.handleOnDragEnd}
+          stroke={calculatedStroke}
+          strokeWidth={calculatedStrokeWidth}
+          onDragStart={this.onDragStart}
+          onDragMove={this.handleOnDragEnd}
+          onDragEnd={(e) => this.handleOnDragEnd(e, true)}
           x={x}
           y={y}
         />
+
+        {hovered &&
+          points.map((point, index) => (
+            <Circle
+              key={index}
+              className={classes.circle}
+              x={point.x}
+              y={point.y}
+              radius={5}
+              fill={'white'}
+              stroke={HOVERED_COLOR}
+              strokeWidth={1}
+              onDragStart={this.onDragStart}
+              onDragMove={(e) => {
+                this.handleOnDragVertex(e, index);
+              }}
+              onDragEnd={(e) => {
+                this.handleOnDragVertex(e, index, true);
+              }}
+              draggable
+            />
+          ))}
+        {!this.state.isDragging && this.state.hovered && (
+          <DeleteWidget
+            x={x}
+            y={y}
+            id={id}
+            handleWidgetClick={this.handleDelete}
+            points={points}
+            outlineColor={outlineColor}
+          />
+        )}
       </Group>
     );
   }
@@ -111,6 +233,12 @@ const styles = () => ({
     cursor: 'pointer',
     opacity: 0.5,
   },
+  circle: {
+    opacity: 4,
+  },
+  group: {
+    padding: '12px',
+  },
 });
 
 PolComponent.propTypes = {
@@ -118,8 +246,11 @@ PolComponent.propTypes = {
   correct: PropTypes.bool,
   isDrawing: PropTypes.bool.isRequired,
   id: PropTypes.string.isRequired,
+  imageHeight: PropTypes.number,
+  imageWidth: PropTypes.number,
   hotspotColor: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
+  onDeleteShape: PropTypes.func.isRequired,
   onDragEnd: PropTypes.func.isRequired,
   outlineColor: PropTypes.string.isRequired,
   points: PropTypes.arrayOf(

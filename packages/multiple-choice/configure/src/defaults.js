@@ -95,7 +95,7 @@ export default {
       teacherInstructions: 300,
       prompt: 300,
       rationale: 636,
-      choices: 636,
+      choices: 900,
     },
     maxImageHeight: {
       teacherInstructions: 300,
@@ -110,6 +110,15 @@ export default {
     mathMlOptions: {
       mmlOutput: false,
       mmlEditing: false,
+    },
+    language: {
+      settings: false,
+      label: 'Specify Language',
+      enabled: false,
+    },
+    languageChoices: {
+      label: 'Language Choices',
+      options: [],
     },
   },
 };

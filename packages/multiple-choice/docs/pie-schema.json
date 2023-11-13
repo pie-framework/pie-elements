@@ -188,6 +188,11 @@
       "type": "boolean",
       "title": "rubricEnabled"
     },
+    "language": {
+      "description": "Indicates the language of the component\nSupported options: en, es, en_US, en-US, es_ES, es-ES, es_MX, es-MX",
+      "type": "string",
+      "title": "language"
+    },
     "id": {
       "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
       "type": "string",
@@ -290,6 +295,26 @@
           "title": "mmlEditing"
         }
       }
+    },
+    "ConfigureLanguageOptionsProp": {
+      "title": "ConfigureLanguageOptionsProp",
+      "type": "object",
+      "properties": {
+        "value": {
+          "description": "Value of the language option",
+          "type": "string",
+          "title": "value"
+        },
+        "label": {
+          "description": "Label of the language option",
+          "type": "string",
+          "title": "label"
+        }
+      },
+      "required": [
+        "label",
+        "value"
+      ]
     },
     "Choice": {
       "title": "Choice",

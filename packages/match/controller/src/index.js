@@ -1,8 +1,8 @@
 import isEqual from 'lodash/isEqual';
 import isEmpty from 'lodash/isEmpty';
 import cloneDeep from 'lodash/cloneDeep';
-import { getFeedbackForCorrectness } from '@pie-lib/feedback';
-import { lockChoices, getShuffledChoices, partialScoring } from '@pie-lib/controller-utils';
+import { getFeedbackForCorrectness } from '@pie-lib/pie-toolbox/feedback';
+import { lockChoices, getShuffledChoices, partialScoring } from '@pie-lib/pie-toolbox/controller-utils';
 import debug from 'debug';
 
 const log = debug('@pie-element:match:controller');
@@ -229,6 +229,7 @@ export function model(question, session, env, updateSession) {
         feedback,
         disabled: env.mode !== 'gather',
         view: env.mode === 'view',
+        language: normalizedQuestion.language
       };
 
       if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {

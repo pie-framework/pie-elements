@@ -3,6 +3,215 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response@7.0.0...@pie-element/drawing-response@7.0.1) (2023-11-09)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3221, PD-3249, PD-2765 ([9de1563](https://github.com/pie-framework/pie-elements/commit/9de1563d636983c3ddceee0279c0709d396d4f96))
+
+
+
+
+
+# [7.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response@6.8.1...@pie-element/drawing-response@7.0.0) (2023-11-07)
+
+
+### Bug Fixes
+
+* fixed imports and used next version of rubric and multi-trait-rubric for complex-rubric ([bdf07b0](https://github.com/pie-framework/pie-elements/commit/bdf07b05e4fe0c32576bdfb4b7d3a2a4d7a5cbd7))
+* update pie-lib version to fix imports for pie-lib/pie-toolbox/editable-html ([a90cbf6](https://github.com/pie-framework/pie-elements/commit/a90cbf6be81824e7266df23c2dc49b259337c1b6))
+* update pie-lib/pie-toolbox version ([212cbfa](https://github.com/pie-framework/pie-elements/commit/212cbfad27b29f0b1b2a3706ba82f6fb59147001))
+* update pie-lib/pie-toolbox version ([b791e10](https://github.com/pie-framework/pie-elements/commit/b791e10857928766e2d73c6aa80b3fb50fd1afac))
+* update pie-lib/pie-toolbox version ([7f64f9f](https://github.com/pie-framework/pie-elements/commit/7f64f9f2b874fd08bd8f6f05c1c4292c34ac6338))
+
+
+### Code Refactoring
+
+* replaced all pie-lib packages with the new pie-toolbox package that contains all of them. ([073d7e5](https://github.com/pie-framework/pie-elements/commit/073d7e5175f7a73069f09d2ceda799682acce494))
+
+
+### BREAKING CHANGES
+
+* using pie-lib/pie-toolbox now, instead of any other pie-lib package.
+
+
+
+
+
+## [6.8.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response@6.8.0...@pie-element/drawing-response@6.8.1) (2023-10-26)
+
+
+### Bug Fixes
+
+* update pie-lib PD-3221 ([f04d59f](https://github.com/pie-framework/pie-elements/commit/f04d59f204852e430dc3e8fe2c442bb9a1634761))
+
+
+
+
+
+# [6.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response@6.7.5...@pie-element/drawing-response@6.8.0) (2023-10-16)
+
+
+### Features
+
+* updated pie-libs PD-2950 ([acffe41](https://github.com/pie-framework/pie-elements/commit/acffe41120fbe288e375321cbd58cfbd48f98595))
+
+
+
+
+
+## [6.7.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response@6.7.4...@pie-element/drawing-response@6.7.5) (2023-10-16)
+
+
+### Bug Fixes
+
+* updated pie-libs PD-3223, PD-3121, PD-3018, PD-2765, PD-3105 ([666e660](https://github.com/pie-framework/pie-elements/commit/666e6604c40b9bde8b88af5ce1b02ba65f11e957))
+
+
+
+
+
+## [6.7.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response@6.7.3...@pie-element/drawing-response@6.7.4) (2023-10-03)
+
+
+### Bug Fixes
+
+* update with latest pie-libs, forcing pie-lib/math-rendering to v2.5.18 ([7ff936a](https://github.com/pie-framework/pie-elements/commit/7ff936ab9fc85c264032181755ce5e2149825406))
+
+
+
+
+
+## [6.7.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response@6.7.2...@pie-element/drawing-response@6.7.3) (2023-09-28)
+
+**Note:** Version bump only for package @pie-element/drawing-response
+
+
+
+
+
+## [6.7.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response@6.7.1...@pie-element/drawing-response@6.7.2) (2023-09-26)
+
+
+### Bug Fixes
+
+* update pie-libs ([702f4c6](https://github.com/pie-framework/pie-elements/commit/702f4c657f3413274b3a4443c1950e2cdf8e5588))
+
+
+
+
+
+## [6.7.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response@6.7.0...@pie-element/drawing-response@6.7.1) (2023-09-25)
+
+**Note:** Version bump only for package @pie-element/drawing-response
+
+
+
+
+
+# [6.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response@6.6.5...@pie-element/drawing-response@6.7.0) (2023-09-25)
+
+
+### Bug Fixes
+
+* configuration setter fix for language props ([da6bc07](https://github.com/pie-framework/pie-elements/commit/da6bc07a067f0a4d1167ab85e07bef6c605643ad))
+* update pie-libs PD-3167 ([1b109bb](https://github.com/pie-framework/pie-elements/commit/1b109bb3b74dcea72ee2f241996a5e6a71893b4e))
+* update pie-libs PD-3167 ([b21d0c3](https://github.com/pie-framework/pie-elements/commit/b21d0c332623667257a5de1363b9f4fc6ee2bb51))
+* update pie-libs PD-3167 ([1a76806](https://github.com/pie-framework/pie-elements/commit/1a7680657ebe0a73969f3100e60f0a090ffc7ada))
+* update pie-libs PD-3167, PD-3105, PD-3162, PD-2765 ([26199b2](https://github.com/pie-framework/pie-elements/commit/26199b255ddbcb9255f2769091c7ba58f8b1dae0))
+
+
+### Features
+
+* update pie-libs PD-3011 ([0fd32b3](https://github.com/pie-framework/pie-elements/commit/0fd32b3fd1333bb25de584b98c8ef0471de2d5e8))
+
+
+
+
+
+## [6.6.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response@6.6.4...@pie-element/drawing-response@6.6.5) (2023-09-18)
+
+
+### Bug Fixes
+
+* add sanity checks DNA-18268 ([29d7de9](https://github.com/pie-framework/pie-elements/commit/29d7de9422c075117173a3afeb2b29acf1caab3c))
+
+
+
+
+
+## [6.6.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response@6.6.3...@pie-element/drawing-response@6.6.4) (2023-09-05)
+
+
+### Bug Fixes
+
+* update pie-libs PD-2765 ([f03972d](https://github.com/pie-framework/pie-elements/commit/f03972dda33ff5d4c0343f094fd33acadad30cb4))
+
+
+
+
+
+## [6.6.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response@6.6.2...@pie-element/drawing-response@6.6.3) (2023-09-04)
+
+
+### Bug Fixes
+
+* update pie-libs PD-3051 ([1e1a7a3](https://github.com/pie-framework/pie-elements/commit/1e1a7a38732eff5585ad789aea5a08c5e94720ae))
+* updated pie-libs PD-2765, PD-3051 ([e6f5b17](https://github.com/pie-framework/pie-elements/commit/e6f5b17c95faf426898f897651863089a54ff3ff))
+
+
+
+
+
+## [6.6.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response@6.6.1...@pie-element/drawing-response@6.6.2) (2023-08-21)
+
+
+### Bug Fixes
+
+* update pie-libs PD-3119 ([01c474b](https://github.com/pie-framework/pie-elements/commit/01c474bf9396374dc86b9248651206672b765af6))
+
+
+
+
+
+## [6.6.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response@6.6.0...@pie-element/drawing-response@6.6.1) (2023-08-21)
+
+**Note:** Version bump only for package @pie-element/drawing-response
+
+
+
+
+
+# [6.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response@6.5.2...@pie-element/drawing-response@6.6.0) (2023-08-15)
+
+
+### Bug Fixes
+
+* update pie-libs PD-3049, PD-2916, PD-2059 ([0e800b5](https://github.com/pie-framework/pie-elements/commit/0e800b54b852304d222a292400362e0870f0cc9a))
+* updated pie-lib to fix PD-2802, PD-3050, PD-3051 ([34b4dd7](https://github.com/pie-framework/pie-elements/commit/34b4dd7ba18f4c18589975921cc9d127926f8294))
+* updated pie-libs Pd-1163 ([300c1db](https://github.com/pie-framework/pie-elements/commit/300c1db1658ce85ca58f3cc2981b604aefbf9f01))
+
+
+### Features
+
+* **drawing-response:** add drawing response logic for configuration ([7137cc5](https://github.com/pie-framework/pie-elements/commit/7137cc5a70cc81997587cfcafc205dd82dfb3a37))
+
+
+
+
+
+## [6.5.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response@6.5.1...@pie-element/drawing-response@6.5.2) (2023-07-24)
+
+
+### Bug Fixes
+
+* update pie-libs PD-2984, PD-2991, PD-2992, PD-3036 ([12c9426](https://github.com/pie-framework/pie-elements/commit/12c94269e3b645d74a0014c597d30662823bb34a))
+
+
+
+
+
 ## [6.5.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response@6.5.0...@pie-element/drawing-response@6.5.1) (2023-07-06)
 
 

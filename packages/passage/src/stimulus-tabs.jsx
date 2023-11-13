@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import { withStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import { color, Purpose } from '@pie-lib/render-ui';
+import { color, Purpose } from '@pie-lib/pie-toolbox/render-ui';
 import classNames from 'classnames';
 
 const styles = (theme) => ({
@@ -15,11 +14,10 @@ const styles = (theme) => ({
   },
   tab: {
     backgroundColor: color.background(),
-    fontSize: '0.8125em',
+    fontSize: 'inherit',
   },
   stickyTabs: {
     background: color.background(),
-    paddingBottom: theme.spacing.unit * 2.5,
     position: 'sticky',
     top: 0,
   },
@@ -33,36 +31,15 @@ const styles = (theme) => ({
   buttonContainer: {
     background: color.background(),
   },
+  tabContainer: {
+    backgroundColor: color.background(),
+    color: color.text(),
+    padding: theme.spacing.unit * 2,
+  },
+  breakSpaces: {
+    whiteSpace: 'break-spaces',
+  },
 });
-
-function TabContainer(props) {
-  const padding = props.multiple ? '0 24px 24px 24px' : '24px';
-  const { ariaLabelledby, id } = props;
-
-  return (
-    <Typography
-      component="div"
-      role="tabpanel"
-      aria-labelledby={ariaLabelledby}
-      id={id}
-      style={{
-        padding,
-        fontSize: '0.875em',
-        backgroundColor: color.background(),
-        color: color.text(),
-      }}
-    >
-      {props.children}
-    </Typography>
-  );
-}
-
-TabContainer.propTypes = {
-  ariaLabelledby: PropTypes.string,
-  id: PropTypes.any,
-  children: PropTypes.node.isRequired,
-  multiple: PropTypes.bool,
-};
 
 class StimulusTabs extends React.Component {
   state = {
@@ -153,7 +130,12 @@ class StimulusTabs extends React.Component {
               aria-controls={`tabpanel-${tab.id}`}
               tabIndex="0"
             >
-              <TabContainer multiple id={`tabpanel-${tab.id}`} role="tabpanel" ariaLabelledby={`button-${tab.id}`}>
+              <div
+                className={classes.tabContainer}
+                id={`tabpanel-${tab.id}`}
+                role="tabpanel"
+                aria-labelledby={`button-${tab.id}`}
+              >
                 <div
                   className={classNames(classes.title, 'title')}
                   dangerouslySetInnerHTML={{ __html: this.parsedText(tab.title) }}
@@ -161,7 +143,7 @@ class StimulusTabs extends React.Component {
                 <Purpose purpose="passage-text">
                   <div className="text" key={tab.id} dangerouslySetInnerHTML={{ __html: this.parsedText(tab.text) }} />
                 </Purpose>
-              </TabContainer>
+              </div>
             </div>
           ))}
         </div>
@@ -197,27 +179,25 @@ class StimulusTabs extends React.Component {
 
           {tabs.map((tab) =>
             activeTab === tab.id ? (
-              <TabContainer
-                multiple
+              <div
+                className={classes.tabContainer}
                 key={tab.id}
                 id={`tabpanel-${tab.id}`}
                 role="tabpanel"
-                ariaLabelledby={`button-${tab.id}`}
+                aria-labelledby={`button-${tab.id}`}
               >
                 <Purpose purpose="passage-text">
                   <div key={tab.id} dangerouslySetInnerHTML={{ __html: this.parsedText(tab.text) }} />
                 </Purpose>
-              </TabContainer>
+              </div>
             ) : null,
           )}
         </div>
       );
     } else if (tabs && tabs[0]) {
       return (
-        <div className="passage" style={{ whiteSpace: 'break-spaces' }}>
-          <TabContainer>
-            <div className="text" dangerouslySetInnerHTML={{ __html: this.parsedText(tabs[0].text) }} />
-          </TabContainer>
+        <div className={classNames(classes.root, classes.tabContainer, classes.breakSpaces, 'passage')}>
+          <div className="text" dangerouslySetInnerHTML={{ __html: this.parsedText(tabs[0].text) }} />
         </div>
       );
     }

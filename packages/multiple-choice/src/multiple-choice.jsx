@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
+import CorrectAnswerToggle from '@pie-lib/pie-toolbox/correct-answer-toggle';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
-import { color, Collapsible, PreviewPrompt } from '@pie-lib/render-ui';
+import { color, Collapsible, PreviewPrompt } from '@pie-lib/pie-toolbox/render-ui';
 import StyledChoice from './choice';
 
 // MultipleChoice
@@ -70,6 +70,7 @@ export class MultipleChoice extends React.Component {
     gridColumns: PropTypes.string,
     alwaysShowCorrect: PropTypes.bool,
     animationsDisabled: PropTypes.bool,
+    language: PropTypes.string,
   };
 
   constructor(props) {
@@ -213,6 +214,7 @@ export class MultipleChoice extends React.Component {
       classes,
       alwaysShowCorrect,
       animationsDisabled,
+      language
     } = this.props;
     const { showCorrect } = this.state;
     const isEvaluateMode = mode === 'evaluate';
@@ -259,6 +261,7 @@ export class MultipleChoice extends React.Component {
               show={showCorrectAnswerToggle}
               toggled={showCorrect}
               onToggle={this.onToggle.bind(this)}
+              language={language}
             />
           )}
 

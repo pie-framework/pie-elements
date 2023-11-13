@@ -3,6 +3,160 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-controller@5.0.0...@pie-element/select-text-controller@5.0.1) (2023-11-09)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3221, PD-3249, PD-2765 ([9de1563](https://github.com/pie-framework/pie-elements/commit/9de1563d636983c3ddceee0279c0709d396d4f96))
+
+
+
+
+
+# [5.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-controller@4.10.3...@pie-element/select-text-controller@5.0.0) (2023-11-07)
+
+
+### Bug Fixes
+
+* update pie-lib version to fix imports for pie-lib/pie-toolbox/editable-html ([a90cbf6](https://github.com/pie-framework/pie-elements/commit/a90cbf6be81824e7266df23c2dc49b259337c1b6))
+* update pie-lib/pie-toolbox version ([212cbfa](https://github.com/pie-framework/pie-elements/commit/212cbfad27b29f0b1b2a3706ba82f6fb59147001))
+* update pie-lib/pie-toolbox version ([b791e10](https://github.com/pie-framework/pie-elements/commit/b791e10857928766e2d73c6aa80b3fb50fd1afac))
+* update pie-lib/pie-toolbox version ([7f64f9f](https://github.com/pie-framework/pie-elements/commit/7f64f9f2b874fd08bd8f6f05c1c4292c34ac6338))
+
+
+### Code Refactoring
+
+* replaced all pie-lib packages with the new pie-toolbox package that contains all of them. ([073d7e5](https://github.com/pie-framework/pie-elements/commit/073d7e5175f7a73069f09d2ceda799682acce494))
+
+
+### BREAKING CHANGES
+
+* using pie-lib/pie-toolbox now, instead of any other pie-lib package.
+
+
+
+
+
+## [4.10.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-controller@4.10.2...@pie-element/select-text-controller@4.10.3) (2023-10-03)
+
+
+### Bug Fixes
+
+* update with latest pie-libs, forcing pie-lib/math-rendering to v2.5.18 ([7ff936a](https://github.com/pie-framework/pie-elements/commit/7ff936ab9fc85c264032181755ce5e2149825406))
+
+
+
+
+
+## [4.10.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-controller@4.10.1...@pie-element/select-text-controller@4.10.2) (2023-09-28)
+
+**Note:** Version bump only for package @pie-element/select-text-controller
+
+
+
+
+
+## [4.10.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-controller@4.10.0...@pie-element/select-text-controller@4.10.1) (2023-09-25)
+
+**Note:** Version bump only for package @pie-element/select-text-controller
+
+
+
+
+
+# [4.10.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-controller@4.9.0...@pie-element/select-text-controller@4.10.0) (2023-09-25)
+
+
+### Bug Fixes
+
+* update pie-libs PD-3167 ([1b109bb](https://github.com/pie-framework/pie-elements/commit/1b109bb3b74dcea72ee2f241996a5e6a71893b4e))
+* update pie-libs PD-3167, PD-3105, PD-3162, PD-2765 ([26199b2](https://github.com/pie-framework/pie-elements/commit/26199b255ddbcb9255f2769091c7ba58f8b1dae0))
+
+
+### Features
+
+* update pie-libs PD-3011 ([0fd32b3](https://github.com/pie-framework/pie-elements/commit/0fd32b3fd1333bb25de584b98c8ef0471de2d5e8))
+
+
+
+
+
+# [4.9.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-controller@4.8.2...@pie-element/select-text-controller@4.9.0) (2023-09-04)
+
+
+### Features
+
+* **select-text:** translations PD-2802 PD-2795 ([0c95953](https://github.com/pie-framework/pie-elements/commit/0c95953a298005c968f7af88abb71a9c3ab4357f))
+
+
+
+
+
+## [4.8.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-controller@4.8.1...@pie-element/select-text-controller@4.8.2) (2023-08-29)
+
+
+### Bug Fixes
+
+* updated pie-lib PD-3117, PD-3134, PD-3005 ([d60efe2](https://github.com/pie-framework/pie-elements/commit/d60efe250eabee5aae410e00f1ccaf47da12850a))
+
+
+
+
+
+## [4.8.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-controller@4.8.0...@pie-element/select-text-controller@4.8.1) (2023-08-21)
+
+**Note:** Version bump only for package @pie-element/select-text-controller
+
+
+
+
+
+# [4.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-controller@4.7.0...@pie-element/select-text-controller@4.8.0) (2023-08-16)
+
+
+### Bug Fixes
+
+* updated pie-libs Pd-1163 ([076f321](https://github.com/pie-framework/pie-elements/commit/076f3212856ddd39e5643f4aeecc65fbb9ad8f9c))
+
+
+### Features
+
+* **select-text:** PD-1163 - add legend for icons in eval mode ([01c8920](https://github.com/pie-framework/pie-elements/commit/01c8920f58cb9dcbc4ce624223f753e49178bd22))
+
+
+
+
+
+# [4.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-controller@4.6.10...@pie-element/select-text-controller@4.7.0) (2023-08-15)
+
+
+### Bug Fixes
+
+* updated pie-libs Pd-1163 ([300c1db](https://github.com/pie-framework/pie-elements/commit/300c1db1658ce85ca58f3cc2981b604aefbf9f01))
+
+
+### Features
+
+* **select-text:** design updates in Evaluate ([b7ed769](https://github.com/pie-framework/pie-elements/commit/b7ed769ac7dcc494204094b47c76d5ad46eec35f))
+* **select-text:** PD-1163 - add santity check for tokens in missing answers method ([eb60f30](https://github.com/pie-framework/pie-elements/commit/eb60f3078844ef2347bf193228f164abe9e85ec8))
+* **select-text:** PD-1163 select comments when necesarry ([d99fb2f](https://github.com/pie-framework/pie-elements/commit/d99fb2f9cffec2923166128009d0f6452a4d7b43))
+
+
+
+
+
+## [4.6.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-controller@4.6.9...@pie-element/select-text-controller@4.6.10) (2023-07-24)
+
+
+### Bug Fixes
+
+* update pie-libs PD-2984, PD-2991, PD-2992, PD-3036 ([12c9426](https://github.com/pie-framework/pie-elements/commit/12c94269e3b645d74a0014c597d30662823bb34a))
+
+
+
+
+
 ## [4.6.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-controller@4.6.8...@pie-element/select-text-controller@4.6.9) (2023-07-06)
 
 

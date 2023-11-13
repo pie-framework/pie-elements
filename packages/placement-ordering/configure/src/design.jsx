@@ -1,7 +1,7 @@
-import { FeedbackConfig, FormSection, InputContainer, settings, layout } from '@pie-lib/config-ui';
-import EditableHtml from '@pie-lib/editable-html';
+import { FeedbackConfig, FormSection, InputContainer, settings, layout } from '@pie-lib/pie-toolbox/config-ui';
+import EditableHtml from '@pie-lib/pie-toolbox/editable-html';
 import { withStyles } from '@material-ui/core/styles';
-import { withDragContext } from '@pie-lib/drag';
+import { withDragContext } from '@pie-lib/pie-toolbox/drag';
 import Info from '@material-ui/icons/Info';
 import Tooltip from '@material-ui/core/Tooltip';
 
@@ -16,7 +16,7 @@ import ChoiceEditor from './choice-editor';
 import { generateValidationMessage } from './utils';
 
 const log = debug('@pie-element:placement-ordering:design');
-const { Panel, toggle, radio } = settings;
+const { Panel, toggle, radio, dropdown } = settings;
 
 const getSingularAndPlural = (label) =>
   !pluralize.isPlural(label)
@@ -121,6 +121,8 @@ export class Design extends React.Component {
       teacherInstructions = {},
       withRubric = {},
       mathMlOptions = {},
+      language = {},
+      languageChoices = {},
     } = configuration || {};
     const {
       choiceLabelEnabled,
@@ -157,6 +159,8 @@ export class Design extends React.Component {
       removeTilesAfterPlacing: removeTilesAfterPlacing.settings && toggle(removeTilesAfterPlacing.label),
       partialScoring: partialScoring.settings && toggle(partialScoring.label),
       feedbackEnabled: feedback.settings && toggle(feedback.label),
+      'language.enabled': language.settings && toggle(language.label, true),
+      language: language.settings && language.enabled && dropdown(languageChoices.label, languageChoices.options),
     };
 
     const panelProperties = {

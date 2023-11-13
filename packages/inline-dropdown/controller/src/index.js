@@ -1,7 +1,7 @@
 import map from 'lodash/map';
 import reduce from 'lodash/reduce';
 import isEmpty from 'lodash/isEmpty';
-import { lockChoices, getShuffledChoices, partialScoring } from '@pie-lib/controller-utils';
+import { lockChoices, getShuffledChoices, partialScoring } from '@pie-lib/pie-toolbox/controller-utils';
 
 import { getAllCorrectResponses } from './utils';
 
@@ -130,6 +130,7 @@ export function model(question, session, env, updateSession) {
       responseCorrect: env.mode === 'evaluate' ? getScore(normalizedQuestion, session) === 1 : undefined,
       rationale,
       teacherInstructions,
+      language: normalizedQuestion.language
     };
 
     resolve(out);

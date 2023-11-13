@@ -2,7 +2,7 @@ import { shallow } from 'enzyme';
 import React from 'react';
 import { Categorize } from '../index';
 
-jest.mock('@pie-lib/drag', () => ({
+jest.mock('@pie-lib/pie-toolbox/drag', () => ({
   uid: {
     withUid: jest.fn((a) => a),
     Provider: jest.fn((a) => a),

@@ -4,9 +4,9 @@ import cloneDeep from 'lodash/cloneDeep';
 import isEmpty from 'lodash/isEmpty';
 import pick from 'lodash/pick';
 import throttle from 'lodash/throttle';
-import EditableHtml, { ALL_PLUGINS } from '@pie-lib/editable-html';
+import EditableHtml, { ALL_PLUGINS } from '@pie-lib/pie-toolbox/editable-html';
 // import EditableHtmlNew from 'editable-html';
-import { InputContainer, layout, settings } from '@pie-lib/config-ui';
+import { InputContainer, layout, settings } from '@pie-lib/pie-toolbox/config-ui';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Info from '@material-ui/icons/Info';
@@ -18,7 +18,7 @@ import { getAdjustedLength } from './markupUtils';
 import { generateValidationMessage } from './utils';
 import classnames from 'classnames';
 
-const { toggle, Panel } = settings;
+const { toggle, Panel, dropdown } = settings;
 
 const styles = (theme) => ({
   promptHolder: {
@@ -261,6 +261,7 @@ export class Main extends React.Component {
 
   render() {
     const { classes, model, configuration, onConfigurationChanged, imageSupport, uploadSoundSupport } = this.props;
+  
     const {
       contentDimensions = {},
       maxImageWidth = {},
@@ -273,9 +274,12 @@ export class Main extends React.Component {
       rationale = {},
       settingsPanelDisabled,
       spellCheck = {},
+      editSource = {},
       teacherInstructions = {},
       withRubric = {},
       mathMlOptions = {},
+      language = {},
+      languageChoices = {},
     } = configuration || {};
     const {
       errors,
@@ -286,6 +290,10 @@ export class Main extends React.Component {
       teacherInstructionsEnabled,
       toolbarEditorPosition,
     } = model || {};
+
+    const choicePlugins = {
+      html: { disabled: !editSource.enabled  },
+    };
 
     const { choicesErrors = {}, responseAreasError } = errors || {};
     const validationMessage = generateValidationMessage(configuration);
@@ -300,6 +308,9 @@ export class Main extends React.Component {
     const panelSettings = {
       partialScoring: partialScoring.settings && toggle(partialScoring.label),
       maxLengthPerChoiceEnabled: maxLengthPerChoice.settings && toggle(maxLengthPerChoice.label),
+      'language.enabled': language.settings && toggle(language.label, true),
+      language: language.settings && language.enabled && dropdown(languageChoices.label, languageChoices.options),
+
     };
     const panelProperties = {
       teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
@@ -308,6 +319,7 @@ export class Main extends React.Component {
       spellCheckEnabled: spellCheck.settings && toggle(spellCheck.label),
       playerSpellCheckEnabled: playerSpellCheck.settings && toggle(playerSpellCheck.label),
       rubricEnabled: withRubric?.settings && toggle(withRubric?.label),
+      'editSource.enabled': editSource?.settings && toggle(editSource.label, true),
     };
 
     return (
@@ -342,6 +354,7 @@ export class Main extends React.Component {
               uploadSoundSupport={uploadSoundSupport}
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               mathMlOptions={mathMlOptions}
+              pluginProps={choicePlugins}
             />
           </InputContainer>
         )}
@@ -362,6 +375,7 @@ export class Main extends React.Component {
               uploadSoundSupport={uploadSoundSupport}
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               mathMlOptions={mathMlOptions}
+              pluginProps={choicePlugins}
             />
           </InputContainer>
         )}
@@ -383,6 +397,7 @@ export class Main extends React.Component {
           activePlugins={ALL_PLUGINS}
           toolbarOpts={{ position: 'top' }}
           spellCheck={spellCheckEnabled}
+          pluginProps={choicePlugins}
           responseAreaProps={{
             type: 'explicit-constructed-response',
             options: {
@@ -450,6 +465,7 @@ export class Main extends React.Component {
               uploadSoundSupport={uploadSoundSupport}
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               mathMlOptions={mathMlOptions}
+              pluginProps={choicePlugins}
             />
           </InputContainer>
         )}

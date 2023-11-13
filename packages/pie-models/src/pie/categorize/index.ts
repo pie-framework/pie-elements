@@ -2,7 +2,12 @@ import { PromptConfig } from '../../PromptConfig';
 import { PieModel } from '../../PieModel';
 import { CommonConfigSettings } from '../../CommonConfigSettings';
 import { ComplexFeedbackType } from '../../Feedback';
-import {ConfigureMathMLProp, ConfigureProp} from '../ConfigurationProp';
+import {
+  ConfigureLanguageOptionsProp,
+  ConfigureMathMLProp,
+  ConfigureProp,
+  ConfigurePropWithEnabled
+} from '../ConfigurationProp';
 
 interface CategoryChoice {
   /** Identifier for the choice */
@@ -121,6 +126,11 @@ export interface CategorizePie extends PieModel {
 
   /** Indicates if Rubric is enabled */
   rubricEnabled: boolean;
+
+  /** Indicates the language of the component
+   * Supported options: en, es, en_US, en-US, es_ES, es-ES, es_MX, es-MX
+   */
+  language?: string;
 }
 
 interface ConfigureMaxImageDimensionsProp {
@@ -225,4 +235,18 @@ export interface CategorizeConfigure extends PromptConfig, CommonConfigSettings 
    * Rubric configuration - only relevant in environments that use pie-player-components
    */
   withRubric?: ConfigureProp;
+
+  /**
+   * Language configuration
+   */
+  language?: ConfigurePropWithEnabled;
+
+  /**
+   * Language choices configuration
+   * Only available if language is enabled
+   */
+  languageChoices?: {
+    label: string;
+    options: ConfigureLanguageOptionsProp[];
+  };
 }

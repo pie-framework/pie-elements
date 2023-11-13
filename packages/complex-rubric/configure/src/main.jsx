@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { RUBRIC_TYPES } from '@pie-lib/rubric';
-import { layout } from '@pie-lib/config-ui';
+import { RUBRIC_TYPES } from '@pie-lib/pie-toolbox/rubric';
+import { layout } from '@pie-lib/pie-toolbox/config-ui';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import { withStyles } from '@material-ui/core/styles';

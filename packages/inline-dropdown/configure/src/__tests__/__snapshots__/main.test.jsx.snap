@@ -12,6 +12,15 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
             "label": "Choice Rationale",
             "settings": true,
           },
+          "language": Object {
+            "enabled": false,
+            "label": "Specify Language",
+            "settings": false,
+          },
+          "languageChoices": Object {
+            "label": "Language Choices",
+            "options": Array [],
+          },
           "lockChoiceOrder": Object {
             "label": "Lock Choice Order",
             "settings": true,
@@ -75,6 +84,8 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
             "teacherInstructionsEnabled": undefined,
           },
           "Settings": Object {
+            "language": false,
+            "language.enabled": false,
             "lockChoiceOrder": undefined,
             "partialScoring": false,
           },
@@ -167,6 +178,7 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
     label="Teacher Instructions"
   >
     <EditableHtml
+      allowValidation={false}
       languageCharactersProps={
         Array [
           Object {
@@ -188,6 +200,7 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
       maxImageWidth={300}
       nonEmpty={false}
       onChange={[Function]}
+      onDone={[Function]}
       toolbarOpts={
         Object {
           "position": "bottom",
@@ -199,6 +212,7 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
     label="Prompt"
   >
     <EditableHtml
+      allowValidation={false}
       disableUnderline={true}
       languageCharactersProps={
         Array [
@@ -221,6 +235,7 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
       maxImageWidth={300}
       nonEmpty={false}
       onChange={[Function]}
+      onDone={[Function]}
       toolbarOpts={
         Object {
           "position": "bottom",
@@ -252,6 +267,25 @@ There should be at most 10 choices defined per response area."
     </WithStyles(Tooltip)>
   </div>
   <EditableHtml
+    activePlugins={
+      Array [
+        "bold",
+        "html",
+        "italic",
+        "underline",
+        "strikethrough",
+        "bulleted-list",
+        "numbered-list",
+        "image",
+        "math",
+        "languageCharacters",
+        "table",
+        "video",
+        "audio",
+        "responseArea",
+      ]
+    }
+    allowValidation={false}
     disableImageAlignmentButtons={true}
     disabled={false}
     highlightShape={false}
@@ -273,6 +307,7 @@ There should be at most 10 choices defined per response area."
       }
     }
     onChange={[Function]}
+    onDone={[Function]}
     responseAreaProps={
       Object {
         "maxResponseAreas": 10,
@@ -314,6 +349,7 @@ There should be at most 10 choices defined per response area."
           }
         >
           <EditableHtml
+            allowValidation={false}
             markup="rationale for cow"
             mathMlOptions={
               Object {
@@ -324,6 +360,7 @@ There should be at most 10 choices defined per response area."
             maxImageHeight={300}
             maxImageWidth={300}
             onChange={[Function]}
+            onDone={[Function]}
           />
         </InputContainer>
         <InputContainer
@@ -339,6 +376,7 @@ There should be at most 10 choices defined per response area."
           }
         >
           <EditableHtml
+            allowValidation={false}
             markup=""
             mathMlOptions={
               Object {
@@ -349,6 +387,7 @@ There should be at most 10 choices defined per response area."
             maxImageHeight={300}
             maxImageWidth={300}
             onChange={[Function]}
+            onDone={[Function]}
           />
         </InputContainer>
         <InputContainer
@@ -364,6 +403,7 @@ There should be at most 10 choices defined per response area."
           }
         >
           <EditableHtml
+            allowValidation={false}
             markup=""
             mathMlOptions={
               Object {
@@ -374,6 +414,7 @@ There should be at most 10 choices defined per response area."
             maxImageHeight={300}
             maxImageWidth={300}
             onChange={[Function]}
+            onDone={[Function]}
           />
         </InputContainer>
       </WithStyles(ExpansionPanelDetails)>
@@ -404,6 +445,7 @@ There should be at most 10 choices defined per response area."
           }
         >
           <EditableHtml
+            allowValidation={false}
             markup="rationale for over"
             mathMlOptions={
               Object {
@@ -414,6 +456,7 @@ There should be at most 10 choices defined per response area."
             maxImageHeight={300}
             maxImageWidth={300}
             onChange={[Function]}
+            onDone={[Function]}
           />
         </InputContainer>
         <InputContainer
@@ -429,6 +472,7 @@ There should be at most 10 choices defined per response area."
           }
         >
           <EditableHtml
+            allowValidation={false}
             markup=""
             mathMlOptions={
               Object {
@@ -439,6 +483,7 @@ There should be at most 10 choices defined per response area."
             maxImageHeight={300}
             maxImageWidth={300}
             onChange={[Function]}
+            onDone={[Function]}
           />
         </InputContainer>
         <InputContainer
@@ -454,6 +499,7 @@ There should be at most 10 choices defined per response area."
           }
         >
           <EditableHtml
+            allowValidation={false}
             markup=""
             mathMlOptions={
               Object {
@@ -464,6 +510,7 @@ There should be at most 10 choices defined per response area."
             maxImageHeight={300}
             maxImageWidth={300}
             onChange={[Function]}
+            onDone={[Function]}
           />
         </InputContainer>
       </WithStyles(ExpansionPanelDetails)>
@@ -494,6 +541,7 @@ There should be at most 10 choices defined per response area."
           }
         >
           <EditableHtml
+            allowValidation={false}
             markup="rationale for moon"
             mathMlOptions={
               Object {
@@ -504,6 +552,7 @@ There should be at most 10 choices defined per response area."
             maxImageHeight={300}
             maxImageWidth={300}
             onChange={[Function]}
+            onDone={[Function]}
           />
         </InputContainer>
         <InputContainer
@@ -519,6 +568,7 @@ There should be at most 10 choices defined per response area."
           }
         >
           <EditableHtml
+            allowValidation={false}
             markup=""
             mathMlOptions={
               Object {
@@ -529,6 +579,7 @@ There should be at most 10 choices defined per response area."
             maxImageHeight={300}
             maxImageWidth={300}
             onChange={[Function]}
+            onDone={[Function]}
           />
         </InputContainer>
         <InputContainer
@@ -544,6 +595,7 @@ There should be at most 10 choices defined per response area."
           }
         >
           <EditableHtml
+            allowValidation={false}
             markup=""
             mathMlOptions={
               Object {
@@ -554,6 +606,7 @@ There should be at most 10 choices defined per response area."
             maxImageHeight={300}
             maxImageWidth={300}
             onChange={[Function]}
+            onDone={[Function]}
           />
         </InputContainer>
       </WithStyles(ExpansionPanelDetails)>
@@ -563,6 +616,7 @@ There should be at most 10 choices defined per response area."
     label="Rationale"
   >
     <EditableHtml
+      allowValidation={false}
       languageCharactersProps={
         Array [
           Object {
@@ -583,6 +637,7 @@ There should be at most 10 choices defined per response area."
       maxImageHeight={300}
       maxImageWidth={300}
       onChange={[Function]}
+      onDone={[Function]}
       toolbarOpts={
         Object {
           "position": "bottom",
@@ -608,6 +663,15 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
           "choiceRationale": Object {
             "label": "Choice Rationale",
             "settings": true,
+          },
+          "language": Object {
+            "enabled": false,
+            "label": "Specify Language",
+            "settings": false,
+          },
+          "languageChoices": Object {
+            "label": "Language Choices",
+            "options": Array [],
           },
           "lockChoiceOrder": Object {
             "label": "Lock Choice Order",
@@ -672,6 +736,8 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
             "teacherInstructionsEnabled": undefined,
           },
           "Settings": Object {
+            "language": false,
+            "language.enabled": false,
             "lockChoiceOrder": undefined,
             "partialScoring": false,
           },
@@ -784,6 +850,25 @@ There should be at most 10 choices defined per response area."
     </WithStyles(Tooltip)>
   </div>
   <EditableHtml
+    activePlugins={
+      Array [
+        "bold",
+        "html",
+        "italic",
+        "underline",
+        "strikethrough",
+        "bulleted-list",
+        "numbered-list",
+        "image",
+        "math",
+        "languageCharacters",
+        "table",
+        "video",
+        "audio",
+        "responseArea",
+      ]
+    }
+    allowValidation={false}
     disableImageAlignmentButtons={true}
     disabled={false}
     highlightShape={false}
@@ -805,6 +890,7 @@ There should be at most 10 choices defined per response area."
       }
     }
     onChange={[Function]}
+    onDone={[Function]}
     responseAreaProps={
       Object {
         "maxResponseAreas": 10,
@@ -846,6 +932,7 @@ There should be at most 10 choices defined per response area."
           }
         >
           <EditableHtml
+            allowValidation={false}
             markup="rationale for cow"
             mathMlOptions={
               Object {
@@ -856,6 +943,7 @@ There should be at most 10 choices defined per response area."
             maxImageHeight={300}
             maxImageWidth={300}
             onChange={[Function]}
+            onDone={[Function]}
           />
         </InputContainer>
         <InputContainer
@@ -871,6 +959,7 @@ There should be at most 10 choices defined per response area."
           }
         >
           <EditableHtml
+            allowValidation={false}
             markup=""
             mathMlOptions={
               Object {
@@ -881,6 +970,7 @@ There should be at most 10 choices defined per response area."
             maxImageHeight={300}
             maxImageWidth={300}
             onChange={[Function]}
+            onDone={[Function]}
           />
         </InputContainer>
         <InputContainer
@@ -896,6 +986,7 @@ There should be at most 10 choices defined per response area."
           }
         >
           <EditableHtml
+            allowValidation={false}
             markup=""
             mathMlOptions={
               Object {
@@ -906,6 +997,7 @@ There should be at most 10 choices defined per response area."
             maxImageHeight={300}
             maxImageWidth={300}
             onChange={[Function]}
+            onDone={[Function]}
           />
         </InputContainer>
       </WithStyles(ExpansionPanelDetails)>
@@ -936,6 +1028,7 @@ There should be at most 10 choices defined per response area."
           }
         >
           <EditableHtml
+            allowValidation={false}
             markup="rationale for over"
             mathMlOptions={
               Object {
@@ -946,6 +1039,7 @@ There should be at most 10 choices defined per response area."
             maxImageHeight={300}
             maxImageWidth={300}
             onChange={[Function]}
+            onDone={[Function]}
           />
         </InputContainer>
         <InputContainer
@@ -961,6 +1055,7 @@ There should be at most 10 choices defined per response area."
           }
         >
           <EditableHtml
+            allowValidation={false}
             markup=""
             mathMlOptions={
               Object {
@@ -971,6 +1066,7 @@ There should be at most 10 choices defined per response area."
             maxImageHeight={300}
             maxImageWidth={300}
             onChange={[Function]}
+            onDone={[Function]}
           />
         </InputContainer>
         <InputContainer
@@ -986,6 +1082,7 @@ There should be at most 10 choices defined per response area."
           }
         >
           <EditableHtml
+            allowValidation={false}
             markup=""
             mathMlOptions={
               Object {
@@ -996,6 +1093,7 @@ There should be at most 10 choices defined per response area."
             maxImageHeight={300}
             maxImageWidth={300}
             onChange={[Function]}
+            onDone={[Function]}
           />
         </InputContainer>
       </WithStyles(ExpansionPanelDetails)>
@@ -1026,6 +1124,7 @@ There should be at most 10 choices defined per response area."
           }
         >
           <EditableHtml
+            allowValidation={false}
             markup="rationale for moon"
             mathMlOptions={
               Object {
@@ -1036,6 +1135,7 @@ There should be at most 10 choices defined per response area."
             maxImageHeight={300}
             maxImageWidth={300}
             onChange={[Function]}
+            onDone={[Function]}
           />
         </InputContainer>
         <InputContainer
@@ -1051,6 +1151,7 @@ There should be at most 10 choices defined per response area."
           }
         >
           <EditableHtml
+            allowValidation={false}
             markup=""
             mathMlOptions={
               Object {
@@ -1061,6 +1162,7 @@ There should be at most 10 choices defined per response area."
             maxImageHeight={300}
             maxImageWidth={300}
             onChange={[Function]}
+            onDone={[Function]}
           />
         </InputContainer>
         <InputContainer
@@ -1076,6 +1178,7 @@ There should be at most 10 choices defined per response area."
           }
         >
           <EditableHtml
+            allowValidation={false}
             markup=""
             mathMlOptions={
               Object {
@@ -1086,6 +1189,7 @@ There should be at most 10 choices defined per response area."
             maxImageHeight={300}
             maxImageWidth={300}
             onChange={[Function]}
+            onDone={[Function]}
           />
         </InputContainer>
       </WithStyles(ExpansionPanelDetails)>

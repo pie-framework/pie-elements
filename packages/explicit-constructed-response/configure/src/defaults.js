@@ -79,6 +79,11 @@ export default {
       settings: false,
       enabled: true,
     },
+    editSource: {
+      label: 'Edit Source',
+      settings: false,
+      enabled: false,
+    },
     playerSpellCheck: {
       label: 'Student Spellcheck',
       settings: true,
@@ -110,6 +115,15 @@ export default {
     mathMlOptions: {
       mmlOutput: false,
       mmlEditing: false,
+    },
+    language: {
+      settings: false,
+      label: 'Specify Language',
+      enabled: false,
+    },
+    languageChoices: {
+      label: 'Language Choices',
+      options: [],
     },
   },
 };

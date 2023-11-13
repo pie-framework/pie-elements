@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
-import EditableHtml from '@pie-lib/editable-html';
+import EditableHtml from '@pie-lib/pie-toolbox/editable-html';
 
 export class InputHeader extends React.Component {
   static propTypes = {

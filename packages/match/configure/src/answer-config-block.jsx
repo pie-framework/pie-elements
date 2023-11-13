@@ -7,7 +7,7 @@ import AddRow from './add-row';
 import Row from './row';
 import debug from 'debug';
 import lodash from 'lodash';
-import EditableHTML, { DEFAULT_PLUGINS } from '@pie-lib/editable-html';
+import EditableHTML, { DEFAULT_PLUGINS } from '@pie-lib/pie-toolbox/editable-html';
 
 const log = debug('pie-elements:match:configure');
 
@@ -21,7 +21,7 @@ const styles = (theme) => ({
     display: 'flex',
     alignItems: 'center',
     flex: 1,
-    width: 'fit-content',
+    width: '100%',
     borderBottom: `2px solid ${theme.palette.grey['A100']}`,
     paddingBottom: theme.spacing.unit * 2,
     marginTop: theme.spacing.unit * 2,
@@ -159,7 +159,7 @@ class AnswerConfigBlock extends React.Component {
   render() {
     const { classes, model, onAddRow, imageSupport, configuration, toolbarOpts, spellCheck, uploadSoundSupport } =
       this.props;
-    const { headers = {}, maxImageWidth = {}, maxImageHeight = {}, mathMlOptions = {} } = configuration || {};
+    const { headers = {}, maxImageWidth = {}, maxImageHeight = {}, mathMlOptions = {}, minQuestions } = configuration || {};
     const { errors } = model || {};
     const { correctResponseError, rowsErrors, columnsErrors, noOfRowsError, columnsLengthError } = errors || {};
 
@@ -233,6 +233,7 @@ class AnswerConfigBlock extends React.Component {
               maxImageHeight={(maxImageHeight && maxImageHeight.rowTitles) || defaultImageMaxHeight}
               uploadSoundSupport={uploadSoundSupport}
               mathMlOptions={mathMlOptions}
+              minQuestions={minQuestions}
             />
           ))}
 

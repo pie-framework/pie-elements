@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { ModelSetEvent, SessionChangedEvent } from '@pie-framework/pie-player-events';
-import { renderMath } from '@pie-lib/math-rendering';
+import { renderMath } from '@pie-lib/pie-toolbox/math-rendering';
 import InlineDropdown from './inline-dropdown';
 
 export default class RootInlineDropdown extends HTMLElement {
@@ -10,7 +10,6 @@ export default class RootInlineDropdown extends HTMLElement {
     this._model = null;
     this._session = null;
   }
-
   set model(m) {
     this._model = m;
     this.dispatchEvent(
@@ -42,6 +41,7 @@ export default class RootInlineDropdown extends HTMLElement {
         choices: this._model.choices,
         value: this._session.value,
         feedback: this._model.feedback,
+        language:  this._model.language,
         onChange: this.changeSession,
       });
 
@@ -62,7 +62,7 @@ export default class RootInlineDropdown extends HTMLElement {
   };
 
   connectedCallback() {
-    this.setAttribute('aria-label', 'Inline Dropdown Question'); 
+    this.setAttribute('aria-label', 'Inline Dropdown Question');
     this.setAttribute('role', 'region');
 
     this._render();

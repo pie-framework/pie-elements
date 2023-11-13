@@ -2,13 +2,13 @@ import React from 'react';
 import classnames from 'classnames';
 
 import { withStyles } from '@material-ui/core/styles';
-import EditableHtml from '@pie-lib/editable-html';
+import EditableHtml from '@pie-lib/pie-toolbox/editable-html';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import InputBase from '@material-ui/core/InputBase';
-import { color } from '@pie-lib/render-ui';
+import { color } from '@pie-lib/pie-toolbox/render-ui';
 import grey from '@material-ui/core/colors/grey';
 import { filteredDefaultPlugins } from './utils';
 
@@ -145,7 +145,7 @@ export const ScorePoint = withStyles({
     alignToRight,
     spellCheck,
     uploadSoundSupport,
-     mathMlOptions = {}
+    mathMlOptions = {},
   }) => {
     const scoreBoxClasses = showScorePointLabels
       ? classes.scorePointBox
@@ -276,26 +276,39 @@ export const UnderlinedInput = withStyles((theme) => ({
   slateEditor: {
     fontFamily: 'Cerebri',
   },
-}))(({ classes,error, markup, onChange, pluginProps, label, placeholder, spellCheck, uploadSoundSupport, mathMlOptions = {} }) => (
-  <div className={classes.underlinedInputWrapper}>
-    {label && <div>{label}</div>}
+}))(
+  ({
+    classes,
+    error,
+    markup,
+    onChange,
+    pluginProps,
+    label,
+    placeholder,
+    spellCheck,
+    uploadSoundSupport,
+    mathMlOptions = {},
+  }) => (
+    <div className={classes.underlinedInputWrapper}>
+      {label && <div>{label}</div>}
 
-    <EditableHtml
-      className={classes.editableLevel}
-      classes={{ slateEditor: classes.slateEditor }}
-      error={error}
-      markup={markup}
-      onChange={onChange}
-      placeholder={placeholder}
-      pluginProps={pluginProps}
-      activePlugins={filteredDefaultPlugins}
-      spellCheck={spellCheck}
-      uploadSoundSupport={uploadSoundSupport}
-      languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
-      mathMlOptions={mathMlOptions}
-    />
-  </div>
-));
+      <EditableHtml
+        className={classes.editableLevel}
+        classes={{ slateEditor: classes.slateEditor }}
+        error={error}
+        markup={markup}
+        onChange={onChange}
+        placeholder={placeholder}
+        pluginProps={pluginProps}
+        activePlugins={filteredDefaultPlugins}
+        spellCheck={spellCheck}
+        uploadSoundSupport={uploadSoundSupport}
+        languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+        mathMlOptions={mathMlOptions}
+      />
+    </div>
+  ),
+);
 
 export const ExpandedInput = withStyles({
   slateEditor: {
@@ -308,24 +321,36 @@ export const ExpandedInput = withStyles({
     margin: '10px',
     marginTop: 0,
   },
-})(({ classes, markup, onChange, pluginProps, placeholder, alignToRight, spellCheck, uploadSoundSupport, mathMlOptions = {} }) => (
-  <div>
-    <EditableHtml
-      className={classes.prompt}
-      classes={{ slateEditor: classes.slateEditor }}
-      markup={markup}
-      onChange={onChange}
-      placeholder={placeholder}
-      pluginProps={pluginProps}
-      toolbarOpts={alignToRight && { alignment: 'right' }}
-      spellCheck={spellCheck}
-      uploadSoundSupport={uploadSoundSupport}
-      languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
-      autoWidthToolbar
-      mathMlOptions={mathMlOptions}
-    />
-  </div>
-));
+})(
+  ({
+    classes,
+    markup,
+    onChange,
+    pluginProps,
+    placeholder,
+    alignToRight,
+    spellCheck,
+    uploadSoundSupport,
+    mathMlOptions = {},
+  }) => (
+    <div>
+      <EditableHtml
+        className={classes.prompt}
+        classes={{ slateEditor: classes.slateEditor }}
+        markup={markup}
+        onChange={onChange}
+        placeholder={placeholder}
+        pluginProps={pluginProps}
+        toolbarOpts={alignToRight && { alignment: 'right' }}
+        spellCheck={spellCheck}
+        uploadSoundSupport={uploadSoundSupport}
+        languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+        autoWidthToolbar
+        mathMlOptions={mathMlOptions}
+      />
+    </div>
+  ),
+);
 
 export const ScaleSettings = withStyles({
   scaleSettings: {

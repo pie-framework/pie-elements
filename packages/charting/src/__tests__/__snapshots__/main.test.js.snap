@@ -42,7 +42,6 @@ exports[`Main render snapshot 1`] = `
         },
       ]
     }
-    data={Array []}
     onDataChange={[Function]}
   />
 </div>

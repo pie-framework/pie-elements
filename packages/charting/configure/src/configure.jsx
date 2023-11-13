@@ -1,18 +1,18 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import { chartTypes, ConfigureChartPanel } from '@pie-lib/charting';
-import { settings, layout, InputContainer } from '@pie-lib/config-ui';
+import { chartTypes, ConfigureChartPanel } from '@pie-lib/pie-toolbox/charting';
+import { settings, layout, InputContainer } from '@pie-lib/pie-toolbox/config-ui';
 import PropTypes from 'prop-types';
 import debug from 'debug';
 import Typography from '@material-ui/core/Typography';
-import EditableHtml from '@pie-lib/editable-html';
+import EditableHtml from '@pie-lib/pie-toolbox/editable-html';
 
 import ChartingConfig from './charting-config';
 import CorrectResponse from './correct-response';
 import { applyConstraints, getGridValues, getLabelValues } from './utils';
 
 const log = debug('@pie-element:graphing:configure');
-const { Panel, toggle, radio, dropdown } = settings;
+const { Panel, toggle, radio, dropdown, textField } = settings;
 
 const styles = (theme) => ({
   title: {
@@ -101,6 +101,7 @@ export class Configure extends React.Component {
       chartDimensions = {},
       authorNewCategoryDefaults = {},
       labelsPlaceholders = {},
+      instruction = {},
       maxImageWidth = {},
       maxImageHeight = {},
       prompt = {},
@@ -119,7 +120,14 @@ export class Configure extends React.Component {
       language = {},
       languageChoices = {},
     } = configuration || {};
-    const { errors, promptEnabled, rationaleEnabled, spellCheckEnabled, teacherInstructionsEnabled, studentNewCategoryDefaultLabel } = model || {};
+    const {
+      errors,
+      promptEnabled,
+      rationaleEnabled,
+      spellCheckEnabled,
+      teacherInstructionsEnabled,
+      studentNewCategoryDefaultLabel,
+    } = model || {};
     const { categoryErrors, correctAnswerErrors } = errors || {};
     const { gridValues, labelValues } = this.state;
     const showPixeGuides = chartDimensions.showInConfigPanel || true;
@@ -146,6 +154,7 @@ export class Configure extends React.Component {
       rubricEnabled: withRubric?.settings && toggle(withRubric?.label),
       'language.enabled': language.settings && toggle(language.label, true),
       language: language.settings && language.enabled && dropdown(languageChoices.label, languageChoices.options),
+      instruction: instruction.settings && textField(instruction.label),
     };
 
     return (
@@ -166,9 +175,7 @@ export class Configure extends React.Component {
         }
       >
         <Typography component="div" type="body1" className={classes.description}>
-          This item type provides various types of interactive charts. Depending upon how an item is configured,
-          students can change the heights of bars (or other similar chart elements) created by the author; relabel bars
-          created by the author; and/or add new bars, label them, and set their heights.
+          {instruction?.label || ''}
         </Typography>
 
         {teacherInstructionsEnabled && (

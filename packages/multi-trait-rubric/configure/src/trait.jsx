@@ -5,7 +5,7 @@ import isEmpty from 'lodash/isEmpty';
 import { DragSource, DropTarget } from 'react-dnd';
 
 import { withStyles } from '@material-ui/core/styles';
-import { color } from '@pie-lib/render-ui';
+import { color } from '@pie-lib/pie-toolbox/render-ui';
 
 import { Block, BlockWidth, ExpandedInput, PrimaryBlock, Row, SecondaryBlock, UnderlinedInput } from './common';
 import { labelPlugins } from './utils';
@@ -117,8 +117,9 @@ export class TraitTile extends React.Component {
       currentPosition,
       secondaryBlockWidth,
       spellCheck,
+      maxPoints,
       uploadSoundSupport,
-      mathMlOptions = {}
+      mathMlOptions = {},
     } = this.props;
     const { anchorEl } = this.state;
 
@@ -227,7 +228,7 @@ export class TraitTile extends React.Component {
                       markup={scoreDescriptor}
                       onChange={(descriptor) => this.onScorePointDescriptorChange({ descriptor, value })}
                       pluginProps={pluginProps}
-                      alignToRight={remainingSpace < 296} // 296 is the space required for the toolbar
+                      alignToRight={remainingSpace < 296 && scorePointsValue < maxPoints} // 296 is the space required for the toolbar
                       spellCheck={spellCheck}
                       uploadSoundSupport={uploadSoundSupport}
                       mathMlOptions={mathMlOptions}
@@ -265,6 +266,7 @@ TraitTile.propTypes = {
   scorePointsValues: PropTypes.arrayOf(PropTypes.number),
   showStandards: PropTypes.bool,
   showDescription: PropTypes.bool,
+  maxPoints: PropTypes.number,
   enableDragAndDrop: PropTypes.bool,
   currentPosition: PropTypes.number,
   secondaryBlockWidth: PropTypes.number,

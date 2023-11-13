@@ -102,7 +102,6 @@ export class Drawable extends React.Component {
           x: currShape.x,
           y: currShape.y,
         };
-
         // On mouse move don't trigger any event. Put the shapes on this state instead.
         this.setState({ stateShapes: newShapesList });
       }
@@ -254,6 +253,7 @@ export class Drawable extends React.Component {
       outlineColor,
       shapes,
       strokeWidth,
+      onDeleteShape,
     } = this.props;
     const {
       stateShapes,
@@ -293,9 +293,8 @@ export class Drawable extends React.Component {
           onMouseMove={this.handleMouseMove}
         >
           <Layer>
-            {shapesToUse.map((shape, index) => {
+            {shapesToUse.map((shape, i) => {
               const Tag = shape.group === 'polygons' ? Polygon : Rectangle;
-
               return (
                 <Tag
                   correct={shape.correct}
@@ -303,15 +302,18 @@ export class Drawable extends React.Component {
                   height={shape.height}
                   hotspotColor={hotspotColor}
                   id={shape.id}
-                  key={index}
+                  key={i}
                   onClick={() => this.handleOnSetAsCorrect(shape)}
                   onDragEnd={this.handleOnDragEnd}
+                  onDeleteShape={onDeleteShape}
                   outlineColor={outlineColor}
                   width={shape.width}
                   x={shape.x}
                   y={shape.y}
                   points={shape.points}
                   strokeWidth={strokeWidth}
+                  imageHeight={heightFromState || height}
+                  imageWidth={widthFromState || width}
                 />
               );
             })}
@@ -362,6 +364,7 @@ Drawable.propTypes = {
   multipleCorrect: PropTypes.bool.isRequired,
   onUpdateImageDimension: PropTypes.func.isRequired,
   onUpdateShapes: PropTypes.func.isRequired,
+  onDeleteShape: PropTypes.func.isRequired,
   outlineColor: PropTypes.string.isRequired,
   shapes: PropTypes.array.isRequired,
   strokeWidth: PropTypes.number,

@@ -3,6 +3,75 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.6.0...@pie-element/pie-models@13.7.0) (2023-11-07)
+
+
+### Features
+
+* **charting:** Update default behavior of charting authoring UI properties. Update docs accordingly. PD-3216 ([207ebe2](https://github.com/pie-framework/pie-elements/commit/207ebe2be2fd06519f7199da65f2c9d2c7ba3007))
+
+
+
+
+
+# [13.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.5.0...@pie-element/pie-models@13.6.0) (2023-09-28)
+
+
+### Features
+
+* **charting:** PD-3165 move intstruction into authoring settings ([80f209f](https://github.com/pie-framework/pie-elements/commit/80f209f523b67d5a38ef9a4825ee78ca85f72560))
+
+
+
+
+
+# [13.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.4.0...@pie-element/pie-models@13.5.0) (2023-09-25)
+
+
+### Features
+
+* add language in model docs ([08e212d](https://github.com/pie-framework/pie-elements/commit/08e212d959988c5e3a7b83b49f134070275d5437))
+* **multiple-choice:** add translations ([fe4dc0f](https://github.com/pie-framework/pie-elements/commit/fe4dc0f15158c039ad9276f09d8b9874d61224cf))
+
+
+
+
+
+# [13.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.3.0...@pie-element/pie-models@13.4.0) (2023-09-04)
+
+
+### Features
+
+* add docs ([d5ee3c0](https://github.com/pie-framework/pie-elements/commit/d5ee3c011cb776e2aa472bdf7f30599f1aa013d7))
+
+
+
+
+
+# [13.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.2.0...@pie-element/pie-models@13.3.0) (2023-08-29)
+
+
+### Features
+
+* create a boilerplate item type ([2cae8df](https://github.com/pie-framework/pie-elements/commit/2cae8df90b913f13875fb24fb09d61c60b7292f9))
+
+
+
+
+
+# [13.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.1.0...@pie-element/pie-models@13.2.0) (2023-08-15)
+
+
+### Features
+
+* **categorize:** translations PD-2802 PD-2795 ([bfed488](https://github.com/pie-framework/pie-elements/commit/bfed48826b6b1f3fe39d582ffd3958d5a85b931b))
+* **explicit-constructed-response, placement-ordering:** translations PD-2802 PD-2795 ([bdac725](https://github.com/pie-framework/pie-elements/commit/bdac725d9e547a7221f71884e1730cb738dfa962))
+* **math-inline:** add translator PD-2795 PD-2802 ([2ab3ce9](https://github.com/pie-framework/pie-elements/commit/2ab3ce99c43d937d8cd5e6dd1925f0d89c74c537))
+
+
+
+
+
 # [13.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.0.0...@pie-element/pie-models@13.1.0) (2023-06-13)
 
 

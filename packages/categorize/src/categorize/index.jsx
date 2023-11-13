@@ -2,12 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Choices from './choices';
 import Categories from './categories';
-import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
+import CorrectAnswerToggle from '@pie-lib/pie-toolbox/correct-answer-toggle';
 import { withStyles } from '@material-ui/core/styles';
-import { buildState, removeChoiceFromCategory, moveChoiceToCategory } from '@pie-lib/categorize';
-import { withDragContext, uid } from '@pie-lib/drag';
-import { color, Feedback, Collapsible, hasText, PreviewPrompt } from '@pie-lib/render-ui';
+import { buildState, removeChoiceFromCategory, moveChoiceToCategory } from '@pie-lib/pie-toolbox/categorize';
+import { withDragContext, uid } from '@pie-lib/pie-toolbox/drag';
+import { color, Feedback, Collapsible, hasText, PreviewPrompt } from '@pie-lib/pie-toolbox/render-ui';
 import debug from 'debug';
+import Translator from '@pie-lib/pie-toolbox/translator';
+const { translator } = Translator;
 
 const log = debug('@pie-ui:categorize');
 
@@ -79,7 +81,18 @@ export class Categorize extends React.Component {
     }
   };
 
-  UNSAFE_componentWillReceiveProps() {
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    const { model } = this.props;
+    const { model: nextModel } = nextProps;
+
+    // check if the note is the default one for prev language and change to the default one for new language
+    // this check is necessary in order to diferanciate between default and authour defined note
+    // and only change between languages for default ones
+    if (model.note && model.language && model.language !== nextModel.language
+      && model.note === translator.t('common:commonCorrectAnswerWithAlternates', { lng: model.language })) {
+      model.note = translator.t('common:commonCorrectAnswerWithAlternates', { lng: nextModel.language });
+    }
+
     this.setState({ showCorrect: false });
   }
 
@@ -116,7 +129,7 @@ export class Categorize extends React.Component {
   render() {
     const { classes, model, session } = this.props;
     const { showCorrect } = this.state;
-    const { choicesPosition, note, showNote, env } = model;
+    const { choicesPosition, note, showNote, env, language } = model;
     const { mode, role } = env || {};
     const choicePosition = choicesPosition || 'above';
 
@@ -161,33 +174,18 @@ export class Categorize extends React.Component {
           show={showCorrect || correct === false}
           toggled={showCorrect}
           onToggle={this.toggleShowCorrect}
+          language={language}
         />
 
         <div className={classes.categorize} style={style}>
           <div style={{ display: 'flex', flex: 1 }}>
-            {!!(rowLabels && nbOfRows) && (
-              <div style={{ display: 'grid' }}>
-                {rowLabels.slice(0, nbOfRows).map((label, index) => (
-                  <div
-                    key={index}
-                    style={{
-                      alignItems: 'center',
-                      display: 'flex',
-                      justifyContent: 'center',
-                    }}
-                    dangerouslySetInnerHTML={{
-                      __html: label,
-                    }}
-                  />
-                ))}
-              </div>
-            )}
             <Categories
               model={model}
               disabled={model.disabled}
               categories={categories}
               onDropChoice={this.dropChoice}
               onRemoveChoice={this.removeChoice}
+              rowLabels={(rowLabels || []).slice(0, nbOfRows)}
             />
           </div>
           <Choices
@@ -204,7 +202,7 @@ export class Categorize extends React.Component {
           <div
             className={classes.note}
             dangerouslySetInnerHTML={{
-              __html: `<strong>Note:</strong> ${note}`,
+              __html: note,
             }}
           />
         )}

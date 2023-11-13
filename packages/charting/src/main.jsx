@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { color, Collapsible, hasText, PreviewPrompt } from '@pie-lib/render-ui';
-import { Chart, chartTypes } from '@pie-lib/charting';
+import { color, Collapsible, hasText, PreviewPrompt } from '@pie-lib/pie-toolbox/render-ui';
+import { Chart, chartTypes } from '@pie-lib/pie-toolbox/charting';
 import isArray from 'lodash/isArray';
 import isEqual from 'lodash/isEqual';
-import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
+import CorrectAnswerToggle from '@pie-lib/pie-toolbox/correct-answer-toggle';
 
 export class Main extends React.Component {
   static propTypes = {
@@ -26,17 +26,14 @@ export class Main extends React.Component {
     };
   }
 
-  static getDerivedStateFromProps(nextProps, prevState) {
-    const { categories: newCategories, model: { data: defaultCategories = [] } = {} } = nextProps;
-    const { categories } = prevState;
-    const nextCategories = isArray(newCategories) ? newCategories : defaultCategories;
-
-    if (!isEqual(nextCategories, categories)) {
-      return { categories: nextCategories };
+  componentDidUpdate(prevProps) {
+    if (!isEqual(prevProps.categories, this.props.categories)) {
+        this.setState({ categories: this.props.categories });
+    } else if (!isEqual(prevProps.model.data, this.props.model.data)) {
+        this.setState({ categories: this.props.model.data });
     }
+}
 
-    return null;
-  }
 
   changeData = (data) =>
     this.setState(
@@ -96,7 +93,12 @@ export class Main extends React.Component {
 
         {prompt && <PreviewPrompt className="prompt" prompt={prompt} />}
 
-        <CorrectAnswerToggle show={showToggle} toggled={showingCorrect} onToggle={this.toggleCorrect} />
+        <CorrectAnswerToggle
+          show={showToggle}
+          toggled={showingCorrect}
+          onToggle={this.toggleCorrect}
+          language={language}
+        />
 
         {showingCorrect && showToggle ? (
           <Chart

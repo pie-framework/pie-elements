@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import EditableHtml from '@pie-lib/editable-html';
+import EditableHtml from '@pie-lib/pie-toolbox/editable-html';
 import {
   AlertDialog,
   InputContainer,
@@ -8,8 +8,8 @@ import {
   settings,
   layout,
   choiceUtils as utils,
-} from '@pie-lib/config-ui';
-import { color } from '@pie-lib/render-ui';
+} from '@pie-lib/pie-toolbox/config-ui';
+import { color } from '@pie-lib/pie-toolbox/render-ui';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Tooltip from '@material-ui/core/Tooltip';
@@ -127,6 +127,8 @@ const Design = withStyles(styles)((props) => {
     prompt = {},
     withRubric = {},
     mathMlOptions = {},
+    language = {},
+    languageChoices = {},
   } = configuration || {};
   let { maxAnswerChoices } = configuration || {};
   const {
@@ -178,6 +180,8 @@ const Design = withStyles(styles)((props) => {
       model.choicesLayout === 'grid' &&
       nrOfColumnsAvailable.length > 0 &&
       dropdown(gridColumns.label, nrOfColumnsAvailable),
+    'language.enabled': language.settings && toggle(language.label, true),
+    language: language.settings && language.enabled && dropdown(languageChoices.label, languageChoices.options),
   };
 
   const panelProperties = {

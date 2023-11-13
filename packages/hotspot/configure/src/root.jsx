@@ -1,7 +1,7 @@
 import React from 'react';
-import { settings, layout, InputContainer, NumberTextField } from '@pie-lib/config-ui';
+import { settings, layout, InputContainer, NumberTextField } from '@pie-lib/pie-toolbox/config-ui';
 import PropTypes from 'prop-types';
-import EditableHtml from '@pie-lib/editable-html';
+import EditableHtml from '@pie-lib/pie-toolbox/editable-html';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Info from '@material-ui/icons/Info';
@@ -10,7 +10,7 @@ import HotspotPalette from './hotspot-palette';
 import HotspotContainer from './hotspot-container';
 import { updateImageDimensions, generateValidationMessage, getUpdatedShapes, getAllShapes, groupShapes } from './utils';
 
-const { Panel, toggle } = settings;
+const { Panel, toggle, dropdown } = settings;
 
 export class Root extends React.Component {
   handleColorChange = (fieldType, color) => {
@@ -77,6 +77,8 @@ export class Root extends React.Component {
       teacherInstructions = {},
       withRubric = {},
       mathMlOptions = {},
+      language = {},
+      languageChoices = {},
     } = configuration || {};
     const {
       errors,
@@ -100,6 +102,8 @@ export class Root extends React.Component {
       multipleCorrect: multipleCorrect.settings && toggle(multipleCorrect.label),
       partialScoring: partialScoring.settings && toggle(partialScoring.label),
       promptEnabled: prompt.settings && toggle(prompt.label),
+      'language.enabled': language.settings && toggle(language.label, true),
+      language: language.settings && language.enabled && dropdown(languageChoices.label, languageChoices.options),
     };
     const panelProperties = {
       teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
