@@ -160,6 +160,7 @@ export class Design extends React.Component {
       lockChoiceOrder = {},
       maxImageHeight = {},
       maxImageWidth = {},
+      maxPlacements = {},
       minCategoriesPerRow = 1,
       partialScoring = {},
       prompt = {},
@@ -176,7 +177,9 @@ export class Design extends React.Component {
     } = configuration || {};
     const {
       allowAlternateEnabled,
+      allowMaxChoicesPerCategory,
       feedbackEnabled,
+      maxChoicesPerCategory,
       promptEnabled,
       rationaleEnabled,
       spellCheckEnabled,
@@ -226,6 +229,14 @@ export class Design extends React.Component {
           multiplePlacements.disabled,
           multiplePlacements.perChoice,
         ]),
+      allowMaxChoicesPerCategory: maxPlacements.settings && toggle(maxPlacements.label),
+      maxChoicesPerCategory:
+        allowMaxChoicesPerCategory === true &&
+        numberField('', {
+          label: '',
+          min: 1,
+          max: 30,
+        }),
       promptEnabled: prompt.settings && toggle(prompt.label),
       feedbackEnabled: feedback.settings && toggle(feedback.label),
       // PD-2960: deleted temporary from settings panel
