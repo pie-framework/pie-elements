@@ -2266,10 +2266,10 @@
   dependencies:
     "@octokit/openapi-types" "^11.2.0"
 
-"@pie-element/multi-trait-rubric@^3.0.2-next.14":
-  version "3.0.2-next.14"
-  resolved "https://registry.yarnpkg.com/@pie-element/multi-trait-rubric/-/multi-trait-rubric-3.0.2-next.14.tgz#63fc8a0480567616b9a853afdf7747cc1c98fe24"
-  integrity sha512-OfsNKwQq3xhlAi6pT1yGCs3DbPycP9LO9yld4T/FFv9vc9r2QeLQtThfQRhe+ulZkly9HuKCTdeqtCkzElJ7Yg==
+"@pie-element/multi-trait-rubric@next":
+  version "3.0.2-next.15"
+  resolved "https://registry.yarnpkg.com/@pie-element/multi-trait-rubric/-/multi-trait-rubric-3.0.2-next.15.tgz#8ec927e2529e978808e2be45cddd8b3dc009c818"
+  integrity sha512-9W8gcNtSbO/69Yl4LIs3Kui1bsFcbFaUhenFSe92bwZbe3kS4wxnxVdDJuQVcLlL6u4mQbiVsQf8ZgmXI5Pu/A==
   dependencies:
     "@material-ui/core" "^3.9.2"
     "@pie-framework/pie-player-events" "^0.1.0"
@@ -2280,10 +2280,10 @@
     react "^16.8.1"
     react-dom "^16.8.1"
 
-"@pie-element/multiple-choice@^8.0.2-next.14":
-  version "8.0.2-next.14"
-  resolved "https://registry.yarnpkg.com/@pie-element/multiple-choice/-/multiple-choice-8.0.2-next.14.tgz#6e5dcac7005c6d786e8a6d24650e31cf23447cc9"
-  integrity sha512-qp1xlEwtBLTzZioWeq9sEc0Siuq99BHIJiqnng1iVHGmmb1/GX0jVRj4sgul7hcDXUCJjVx1fQpTosXBT3COSg==
+"@pie-element/multiple-choice@next":
+  version "8.0.2-next.15"
+  resolved "https://registry.yarnpkg.com/@pie-element/multiple-choice/-/multiple-choice-8.0.2-next.15.tgz#d88e29b5c0e37ced9cf220e39fd4932b6cd58dcc"
+  integrity sha512-gorE/oUkDu2rYwC11KYxYu46mzEhgEf4cAg2Jq0Lby0/ruMme9XWMUHSh4gk36jvvQKjb9/J/u5U3Tor+LmtNw==
   dependencies:
     "@material-ui/core" "^3.9.2"
     "@pie-lib/pie-toolbox" "1.0.12-next.3"
@@ -2297,10 +2297,10 @@
     react-test-renderer "^16.3.2"
     react-transition-group "^2.3.1"
 
-"@pie-element/rubric@^3.0.2-next.14":
-  version "3.0.2-next.14"
-  resolved "https://registry.yarnpkg.com/@pie-element/rubric/-/rubric-3.0.2-next.14.tgz#97e844a4291838b3d909cdba8173c5da8516968d"
-  integrity sha512-ie1090aJdl8dyGBasW5maOOGkUFoSS5OF1QXdGz8TVTCLV47Yj9r2fmxoO64NjtZ9U19RwaNRfWFIGrQ2fr0QQ==
+"@pie-element/rubric@next":
+  version "3.0.2-next.15"
+  resolved "https://registry.yarnpkg.com/@pie-element/rubric/-/rubric-3.0.2-next.15.tgz#eb571f18e5d686f4eee5476729f35a90600f70cd"
+  integrity sha512-m+cSRNRii33aiYx93V7HomN1B5APzTaGoNRu58Bjzot/0WqxTYb8B2nx+b2b+ws+1BWgHyCe5gmq98DXjlyh2A==
   dependencies:
     "@material-ui/core" "^3.9.2"
     "@pie-lib/pie-toolbox" "1.0.12-next.3"

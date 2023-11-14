@@ -8,7 +8,7 @@
   "author": "",
   "dependencies": {
     "@material-ui/core": "^3.9.2",
-    "@pie-element/multiple-choice": "^8.0.2-next.14",
+    "@pie-element/multiple-choice": "next",
     "@pie-framework/pie-configure-events": "^1.2.0",
     "@pie-lib/pie-toolbox": "1.0.12-next.3",
     "lodash": "^4.17.15",
