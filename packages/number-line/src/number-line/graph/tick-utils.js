@@ -147,6 +147,7 @@ export const minorLimits = (domain) => {
 
 export const isMultiple = (multiple, src) => {
   const mod = math.mod(multiple, src);
+
   return math.equal(mod, 0);
 };
 
@@ -171,10 +172,13 @@ export const normalizeTicks = (domain, ticks, opts) => {
     : math.fraction(ticks.minor);
   const major = l ? limit(fraction(ticks.major), minor, math.multiply(minor, 10)) : math.fraction(ticks.major);
 
-  const m = isMultiple(major, minor);
+  const multiple = isMultiple(major, minor);
 
-  if (!m) {
-    return { minor, major: math.multiply(minor, 2) };
+  if (!multiple) {
+    const multiplier = math.divide(major, minor);
+    const multiplyBy = multiplier <= 2 ? 2 : Math.round(multiplier);
+
+    return { minor, major: math.multiply(minor, multiplyBy) };
   }
 
   return { major, minor };
