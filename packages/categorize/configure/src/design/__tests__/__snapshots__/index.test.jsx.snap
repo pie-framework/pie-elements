@@ -19,6 +19,7 @@ exports[`Design snapshot renders 1`] = `
               "teacherInstructionsEnabled": undefined,
             },
             "Settings": Object {
+              "allowMaxChoicesPerCategory": undefined,
               "allowMultiplePlacementsEnabled": undefined,
               "categoriesPerRow": undefined,
               "choicesPosition": undefined,
@@ -26,6 +27,7 @@ exports[`Design snapshot renders 1`] = `
               "language": undefined,
               "language.enabled": undefined,
               "lockChoiceOrder": undefined,
+              "maxChoicesPerCategory": false,
               "partialScoring": undefined,
               "promptEnabled": undefined,
             },
