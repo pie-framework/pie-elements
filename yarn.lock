@@ -2266,6 +2266,46 @@
   dependencies:
     "@octokit/openapi-types" "^11.2.0"
 
+"@pie-element/multi-trait-rubric@^3.0.2-next.14":
+  version "3.0.2-next.14"
+  resolved "https://registry.yarnpkg.com/@pie-element/multi-trait-rubric/-/multi-trait-rubric-3.0.2-next.14.tgz#63fc8a0480567616b9a853afdf7747cc1c98fe24"
+  integrity sha512-OfsNKwQq3xhlAi6pT1yGCs3DbPycP9LO9yld4T/FFv9vc9r2QeLQtThfQRhe+ulZkly9HuKCTdeqtCkzElJ7Yg==
+  dependencies:
+    "@material-ui/core" "^3.9.2"
+    "@pie-framework/pie-player-events" "^0.1.0"
+    "@pie-lib/pie-toolbox" "1.0.12-next.3"
+    clsx "^1.1.1"
+    enzyme-to-json "^3.3.5"
+    prop-types "^15.6.1"
+    react "^16.8.1"
+    react-dom "^16.8.1"
+
+"@pie-element/multiple-choice@^8.0.2-next.14":
+  version "8.0.2-next.14"
+  resolved "https://registry.yarnpkg.com/@pie-element/multiple-choice/-/multiple-choice-8.0.2-next.14.tgz#6e5dcac7005c6d786e8a6d24650e31cf23447cc9"
+  integrity sha512-qp1xlEwtBLTzZioWeq9sEc0Siuq99BHIJiqnng1iVHGmmb1/GX0jVRj4sgul7hcDXUCJjVx1fQpTosXBT3COSg==
+  dependencies:
+    "@material-ui/core" "^3.9.2"
+    "@pie-lib/pie-toolbox" "1.0.12-next.3"
+    classnames "^2.2.5"
+    debug "^4.1.1"
+    enzyme-to-json "^3.3.3"
+    lodash "^4.17.10"
+    prop-types "^15.6.1"
+    react "^16.8.1"
+    react-dom "^16.8.1"
+    react-test-renderer "^16.3.2"
+    react-transition-group "^2.3.1"
+
+"@pie-element/rubric@^3.0.2-next.14":
+  version "3.0.2-next.14"
+  resolved "https://registry.yarnpkg.com/@pie-element/rubric/-/rubric-3.0.2-next.14.tgz#97e844a4291838b3d909cdba8173c5da8516968d"
+  integrity sha512-ie1090aJdl8dyGBasW5maOOGkUFoSS5OF1QXdGz8TVTCLV47Yj9r2fmxoO64NjtZ9U19RwaNRfWFIGrQ2fr0QQ==
+  dependencies:
+    "@material-ui/core" "^3.9.2"
+    "@pie-lib/pie-toolbox" "1.0.12-next.3"
+    prop-types "^15.7.2"
+
 "@pie-framework/build-helper@^5.2.9":
   version "5.2.9"
   resolved "https://registry.yarnpkg.com/@pie-framework/build-helper/-/build-helper-5.2.9.tgz#1a06eb0b7c471042eefce3d5f994192c6576d311"
