@@ -177,7 +177,7 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
   <InputContainer
     label="Teacher Instructions"
   >
-    <EditableHtml
+    <ForwardRef
       allowValidation={false}
       languageCharactersProps={
         Array [
@@ -211,7 +211,7 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
   <InputContainer
     label="Prompt"
   >
-    <EditableHtml
+    <ForwardRef
       allowValidation={false}
       disableUnderline={true}
       languageCharactersProps={
@@ -266,7 +266,7 @@ There should be at most 10 choices defined per response area."
       />
     </WithStyles(Tooltip)>
   </div>
-  <EditableHtml
+  <ForwardRef
     activePlugins={
       Array [
         "bold",
@@ -348,7 +348,7 @@ There should be at most 10 choices defined per response area."
             />
           }
         >
-          <EditableHtml
+          <ForwardRef
             allowValidation={false}
             markup="rationale for cow"
             mathMlOptions={
@@ -375,7 +375,7 @@ There should be at most 10 choices defined per response area."
             />
           }
         >
-          <EditableHtml
+          <ForwardRef
             allowValidation={false}
             markup=""
             mathMlOptions={
@@ -402,7 +402,7 @@ There should be at most 10 choices defined per response area."
             />
           }
         >
-          <EditableHtml
+          <ForwardRef
             allowValidation={false}
             markup=""
             mathMlOptions={
@@ -444,7 +444,7 @@ There should be at most 10 choices defined per response area."
             />
           }
         >
-          <EditableHtml
+          <ForwardRef
             allowValidation={false}
             markup="rationale for over"
             mathMlOptions={
@@ -471,7 +471,7 @@ There should be at most 10 choices defined per response area."
             />
           }
         >
-          <EditableHtml
+          <ForwardRef
             allowValidation={false}
             markup=""
             mathMlOptions={
@@ -498,7 +498,7 @@ There should be at most 10 choices defined per response area."
             />
           }
         >
-          <EditableHtml
+          <ForwardRef
             allowValidation={false}
             markup=""
             mathMlOptions={
@@ -540,7 +540,7 @@ There should be at most 10 choices defined per response area."
             />
           }
         >
-          <EditableHtml
+          <ForwardRef
             allowValidation={false}
             markup="rationale for moon"
             mathMlOptions={
@@ -567,7 +567,7 @@ There should be at most 10 choices defined per response area."
             />
           }
         >
-          <EditableHtml
+          <ForwardRef
             allowValidation={false}
             markup=""
             mathMlOptions={
@@ -594,7 +594,7 @@ There should be at most 10 choices defined per response area."
             />
           }
         >
-          <EditableHtml
+          <ForwardRef
             allowValidation={false}
             markup=""
             mathMlOptions={
@@ -615,7 +615,7 @@ There should be at most 10 choices defined per response area."
   <InputContainer
     label="Rationale"
   >
-    <EditableHtml
+    <ForwardRef
       allowValidation={false}
       languageCharactersProps={
         Array [
@@ -849,7 +849,7 @@ There should be at most 10 choices defined per response area."
       />
     </WithStyles(Tooltip)>
   </div>
-  <EditableHtml
+  <ForwardRef
     activePlugins={
       Array [
         "bold",
@@ -931,7 +931,7 @@ There should be at most 10 choices defined per response area."
             />
           }
         >
-          <EditableHtml
+          <ForwardRef
             allowValidation={false}
             markup="rationale for cow"
             mathMlOptions={
@@ -958,7 +958,7 @@ There should be at most 10 choices defined per response area."
             />
           }
         >
-          <EditableHtml
+          <ForwardRef
             allowValidation={false}
             markup=""
             mathMlOptions={
@@ -985,7 +985,7 @@ There should be at most 10 choices defined per response area."
             />
           }
         >
-          <EditableHtml
+          <ForwardRef
             allowValidation={false}
             markup=""
             mathMlOptions={
@@ -1027,7 +1027,7 @@ There should be at most 10 choices defined per response area."
             />
           }
         >
-          <EditableHtml
+          <ForwardRef
             allowValidation={false}
             markup="rationale for over"
             mathMlOptions={
@@ -1054,7 +1054,7 @@ There should be at most 10 choices defined per response area."
             />
           }
         >
-          <EditableHtml
+          <ForwardRef
             allowValidation={false}
             markup=""
             mathMlOptions={
@@ -1081,7 +1081,7 @@ There should be at most 10 choices defined per response area."
             />
           }
         >
-          <EditableHtml
+          <ForwardRef
             allowValidation={false}
             markup=""
             mathMlOptions={
@@ -1123,7 +1123,7 @@ There should be at most 10 choices defined per response area."
             />
           }
         >
-          <EditableHtml
+          <ForwardRef
             allowValidation={false}
             markup="rationale for moon"
             mathMlOptions={
@@ -1150,7 +1150,7 @@ There should be at most 10 choices defined per response area."
             />
           }
         >
-          <EditableHtml
+          <ForwardRef
             allowValidation={false}
             markup=""
             mathMlOptions={
@@ -1177,7 +1177,7 @@ There should be at most 10 choices defined per response area."
             />
           }
         >
-          <EditableHtml
+          <ForwardRef
             allowValidation={false}
             markup=""
             mathMlOptions={
