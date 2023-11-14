@@ -8,7 +8,7 @@ import { Line } from 'react-konva';
 import { shallowChild } from '@pie-lib/pie-toolbox/test-utils';
 
 import Polygon from '../hotspot/polygon';
-import Image from '../hotspot/image';
+import { ImageComponent } from '@pie-lib/pie-toolbox/icons';
 import { faCorrect, faWrong } from '../hotspot/icons';
 
 Konva.isBrowser = false;
@@ -134,7 +134,7 @@ describe('Polygon', () => {
       });
 
       it('should have a green checkmark icon', () => {
-        const imgComponent = polygonComponent.find(Image);
+        const imgComponent = polygonComponent.find(ImageComponent);
         expect(imgComponent.length).toEqual(1);
         expect(imgComponent.prop('src')).toEqual(faCorrect);
       });
@@ -151,7 +151,7 @@ describe('Polygon', () => {
       });
 
       it('should have no icon', () => {
-        const imgComponent = polygonComponent.find(Image);
+        const imgComponent = polygonComponent.find(ImageComponent);
         expect(imgComponent.length).toEqual(0);
       });
     });
@@ -168,7 +168,7 @@ describe('Polygon', () => {
       });
 
       it('should have a red x icon', () => {
-        const imgComponent = polygonComponent.find(Image);
+        const imgComponent = polygonComponent.find(ImageComponent);
         expect(imgComponent.length).toEqual(1);
         expect(imgComponent.prop('src')).toEqual(faWrong);
       });
@@ -185,7 +185,7 @@ describe('Polygon', () => {
       });
 
       it('should have a red x icon', () => {
-        const imgComponent = polygonComponent.find(Image);
+        const imgComponent = polygonComponent.find(ImageComponent);
         expect(imgComponent.length).toEqual(1);
         expect(imgComponent.prop('src')).toEqual(faWrong);
       });
@@ -206,7 +206,7 @@ describe('Polygon', () => {
           showCorrectEnabled: true,
           markAsCorrect: true,
         });
-        const imgComponent = polygonComponent.find(Image);
+        const imgComponent = polygonComponent.find(ImageComponent);
         expect(imgComponent.prop('src')).toEqual(faCorrect);
       });
 
@@ -227,7 +227,7 @@ describe('Polygon', () => {
           selected: true,
           isCorrect: false,
         });
-        const imgComponent = polygonComponent.find(Image);
+        const imgComponent = polygonComponent.find(ImageComponent);
         expect(imgComponent.length).toEqual(0);
       });
     });
