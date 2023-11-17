@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Main from './main';
-import { SessionChangedEvent } from '@pie-framework/pie-player-events';
+import { SessionChangedEvent, ModelSetEvent } from '@pie-framework/pie-player-events';
 import { renderMath } from '@pie-lib/pie-toolbox/math-rendering';
 
 export { Main as Component };
