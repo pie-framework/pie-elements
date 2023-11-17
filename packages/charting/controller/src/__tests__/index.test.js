@@ -1486,7 +1486,6 @@ describe('outcome', () => {
 
       const result = await outcome(mod, session, env);
 
-      //expect(getScore(mod, session, { mode: 'view', partialScoring: 'true' }).answers).toEqual(mod.correctedAnswer);
       expect(result.score).toEqual(expected);
     },
   );
