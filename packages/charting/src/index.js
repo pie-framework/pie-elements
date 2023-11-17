@@ -13,6 +13,13 @@ export default class Graphing extends HTMLElement {
 
   set model(m) {
     this._model = m;
+
+    if (this._session && this.isComplete(this._session.answer)) {
+      this.dispatchEvent(new ModelSetEvent(this.tagName.toLowerCase(), true, !!this._model));
+    } else {
+      this.dispatchEvent(new ModelSetEvent(this.tagName.toLowerCase(), false, !!this._model));
+    }
+
     this._render();
   }
 
