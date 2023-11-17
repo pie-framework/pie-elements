@@ -88,13 +88,13 @@ workflows:
             branches:
               ignore:
                 - develop
-                - master
+                - old-master
       - test:
           filters:
             branches:
               ignore:
                 - develop
-                - master
+                - old-master
   build:
     jobs:
       - build:
@@ -111,7 +111,7 @@ workflows:
           filters:
             branches:
               only:
-                - master
+                - old-master
   # nightly:
   #   triggers:
   #     - schedule:
