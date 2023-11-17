@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.0.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@7.0.2...@pie-element/charting@7.0.3) (2023-11-17)
+
+
+### Bug Fixes
+
+* **charting:** Add dispatching of ModelSetEvent on model update in charting component, add tests PD-3270 ([773eece](https://github.com/pie-framework/pie-elements/commit/773eece6242b1f3085602997847b9d24f4de9e56))
+
+
+
+
+
 ## [7.0.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@7.0.1...@pie-element/charting@7.0.2) (2023-11-17)
 
 
