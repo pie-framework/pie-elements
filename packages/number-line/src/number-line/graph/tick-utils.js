@@ -9,6 +9,7 @@ export const fractionSnapTo = (min, max, interval, value) => {
   let v;
 
   const half = interval.div(2);
+
   if (math.largerEq(math.abs(mod), half)) {
     const d = interval.sub(math.abs(mod));
     const fn = math.largerEq(value, 0) ? 'add' : 'sub';
@@ -17,16 +18,19 @@ export const fractionSnapTo = (min, max, interval, value) => {
     const fn2 = math.largerEq(value, 0) ? 'sub' : 'add';
     v = value[fn2](math.abs(mod));
   }
+
   return v;
 };
 
 export const snapTo = (min, max, interval, value) => {
   const out = fractionSnapTo(math.fraction(min), math.fraction(max), math.fraction(interval), math.fraction(value));
+
   return math.number(out);
 };
 
 export const fractionRange = (start, end, interval) => {
   const m = math.mod(math.abs(start), math.abs(interval));
+
   if (!math.equal(m, 0)) {
     throw new Error('start point must be divisible by interval');
   }
@@ -36,23 +40,25 @@ export const fractionRange = (start, end, interval) => {
   }
 
   const e = math.subtract(end, math.mod(end, math.abs(interval)));
-
   const direction = math.larger(interval, 0) ? 'positive' : 'negative';
 
   if (direction === 'negative' && math.largerEq(end, start)) {
     throw new Error('start must be > than end when doing a negative decrement');
   }
+
   if (direction === 'positive' && math.smallerEq(end, start)) {
     throw new Error('start must be < end when doing increments');
   }
+
   const compareFn = direction === 'positive' ? math.smallerEq : math.equal(e, end) ? math.largerEq : math.larger;
   const out = [];
-
   let next = start;
+
   while (compareFn(next, e)) {
     out.push(next);
     next = math.add(next, interval);
   }
+
   return out;
 };
 
@@ -69,6 +75,7 @@ export const zeroBasedRange = (start, end, interval) => {
   if (math.larger(length, math.abs(end))) {
     throw new Error(zbrErrorMessage(start, end));
   }
+
   const a = {
     start: math.abs(start),
     end: math.abs(end),
@@ -85,20 +92,24 @@ export const zeroBasedRange = (start, end, interval) => {
   if (math.smaller(interval, 0)) {
     out.reverse();
   }
+
   return out;
 };
 
 const fmin = (a, b) => {
   a = math.fraction(a);
   b = math.fraction(b);
+
   return math.smaller(a, b) ? a : b;
 };
 
 const fmax = (a, b) => {
   a = math.fraction(a);
   b = math.fraction(b);
+
   return math.larger(a, b) ? a : b;
 };
+
 /**
  * the lodash range was causing too much variance in the rounding errors
  * such that it was hard to round the numbers.
@@ -110,38 +121,37 @@ export const simpleRange = (start, end, interval) => {
   interval = math.fraction(interval);
 
   const positiveRange = math.larger(end, 0) ? zeroBasedRange(fmax(0, start), end, interval) : [];
-
   const negativeRange = math.smaller(start, 0) ? zeroBasedRange(fmin(0, end), start, math.multiply(interval, -1)) : [];
-  let together = negativeRange.concat(positiveRange);
 
-  const out = uniqWith(together, math.equal);
-  return out;
+  return uniqWith([...negativeRange, ...positiveRange], math.equal);
 };
 
 export const closeTo = (a, b, precision) => {
   precision = precision || 2;
   const expectedDiff = Math.pow(10, -precision) / 2;
   const receivedDiff = Math.abs(a - b);
+
   return receivedDiff < expectedDiff;
 };
 
-const limit = (v, min, max) => {
-  if (math.smaller(v, min)) {
+const limit = (value, min, max) => {
+  if (math.smaller(value, min)) {
     return min;
   }
 
-  if (math.larger(v, max)) {
+  if (math.larger(value, max)) {
     return max;
   }
 
-  return v;
+  return value;
 };
 
-export const minorLimits = (domain) => {
+export const getMinorLimits = (domain) => {
   const end = domain.max - domain.min;
+
   return {
     min: math.divide(math.fraction(end), 100),
-    max: math.divide(math.fraction(end), 3),
+    max: math.divide(math.fraction(end), 2),
   };
 };
 
@@ -165,19 +175,19 @@ export const fraction = (v) => {
 };
 
 export const normalizeTicks = (domain, ticks, opts) => {
-  const l = opts ? opts.limit !== false : true;
-  const end = fraction(domain.max - domain.min);
-  const minor = l
-    ? limit(fraction(ticks.minor), math.divide(end, 100), math.divide(end, 3))
-    : math.fraction(ticks.minor);
-  const major = l ? limit(fraction(ticks.major), minor, math.multiply(minor, 10)) : math.fraction(ticks.major);
+  const useLimit = opts ? opts.limit !== false : true;
+  const minorLimits = getMinorLimits(domain);
 
-  const multiple = isMultiple(major, minor);
+  const minor = useLimit ? limit(fraction(ticks.minor), minorLimits.min, minorLimits.max) : fraction(ticks.minor);
+  const major = useLimit ? limit(fraction(ticks.major), minor, math.multiply(minor, 20)) : fraction(ticks.major);
 
-  if (!multiple) {
+  const isMajorMultiple = isMultiple(major, minor);
+
+  if (!isMajorMultiple) {
     const multiplier = math.divide(major, minor);
     const multiplyBy = multiplier <= 2 ? 2 : Math.round(multiplier);
 
+    // major must be a multiple of minor
     return { minor, major: math.multiply(minor, multiplyBy) };
   }
 
@@ -189,9 +199,9 @@ export const normalizeTicks = (domain, ticks, opts) => {
  */
 export const buildTickDataAsFractions = (domain, ticks, opts) => {
   ticks = normalizeTicks(domain, ticks, opts);
-  const rng = simpleRange(domain.min, domain.max, ticks.minor);
+  const range = simpleRange(domain.min, domain.max, ticks.minor);
 
-  const o = rng
+  return range
     .filter((x) => math.smallerEq(x, math.fraction(domain.max)))
     .map((x) => {
       let type = 'minor';
@@ -203,16 +213,12 @@ export const buildTickDataAsFractions = (domain, ticks, opts) => {
 
       return { x, type };
     });
-
-  return o;
 };
 
 export const buildTickData = (domain, ticks, opts) => {
-  const result = buildTickDataAsFractions(domain, ticks, opts);
+  const fractionTicks = buildTickDataAsFractions(domain, ticks, opts);
 
-  const out = result.map((o) => (opts.fraction ? o : { ...o, x: math.number(o.x) || 0 }));
-
-  return out;
+  return fractionTicks.map((o) => (opts.fraction ? o : { ...o, x: math.number(o.x) || 0 }));
 };
 
 export const snapElements = (domain, ticks, elements) => {
