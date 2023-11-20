@@ -3,9 +3,25 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { color, Collapsible, hasText, PreviewPrompt } from '@pie-lib/pie-toolbox/render-ui';
 import { Chart, chartTypes } from '@pie-lib/pie-toolbox/charting';
-import isArray from 'lodash/isArray';
 import isEqual from 'lodash/isEqual';
 import CorrectAnswerToggle from '@pie-lib/pie-toolbox/correct-answer-toggle';
+
+const compareAndAddCorrectness = (categories, answers) => {
+  return categories.map((category, index) => {
+    const answer = answers[index];
+
+    const isLabelCorrect = answer && category.label === answer.label;
+    const isValueCorrect = answer && category.value === answer.value;
+
+    return {
+      ...category,
+      correctness: {
+        label: isLabelCorrect ? 'correct' : 'incorrect',
+        value: isValueCorrect ? 'correct' : 'incorrect',
+      },
+    };
+  });
+};
 
 export class Main extends React.Component {
   static propTypes = {
@@ -28,12 +44,11 @@ export class Main extends React.Component {
 
   componentDidUpdate(prevProps) {
     if (!isEqual(prevProps.categories, this.props.categories)) {
-        this.setState({ categories: this.props.categories });
+      this.setState({ categories: this.props.categories });
     } else if (!isEqual(prevProps.model.data, this.props.model.data)) {
-        this.setState({ categories: this.props.model.data });
+      this.setState({ categories: this.props.model.data });
     }
-}
-
+  }
 
   changeData = (data) =>
     this.setState(
@@ -59,9 +74,9 @@ export class Main extends React.Component {
       addCategoryEnabled,
       studentNewCategoryDefaultLabel,
       rationale,
-      correctedAnswer,
+      disabled,
       correctAnswer,
-      language
+      language,
     } = model;
 
     const correctData =
@@ -76,6 +91,19 @@ export class Main extends React.Component {
         : [];
 
     const showToggle = correctData && correctData.length > 0;
+
+    const viewModeCategories =
+      disabled &&
+      categories.map((data) => {
+        return {
+          ...data,
+          interactive: false,
+          editable: false,
+        };
+      });
+
+    const evaluateModeCategories =
+      disabled && correctData.length > 0 ? compareAndAddCorrectness(categories, correctData) : viewModeCategories;
 
     return (
       <div className={classes.mainContainer}>
@@ -137,7 +165,7 @@ export class Main extends React.Component {
               chartTypes.DotPlot(),
               chartTypes.LinePlot(),
             ]}
-            data={correctedAnswer || categories}
+            data={disabled ? evaluateModeCategories : categories}
             title={title}
             onDataChange={this.changeData}
             addCategoryEnabled={addCategoryEnabled}
