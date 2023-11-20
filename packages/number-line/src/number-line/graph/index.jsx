@@ -213,7 +213,7 @@ export class NumberLineGraph extends React.Component {
 
       return (
         <svg width={width} height={fraction ? height + 20 : height}>
-          {true && <Debug domain={domain} ticks={ticks} />}
+          {false && <Debug domain={domain} ticks={ticks} />}
           <BaseLine y={lineY} width={width} />
           {arrows.left && <Arrow y={lineY} />}
           {arrows.right && <Arrow x={width} y={lineY} direction="right" />}

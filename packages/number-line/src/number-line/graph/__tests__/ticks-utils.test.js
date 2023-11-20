@@ -25,7 +25,11 @@ describe('ticks', () => {
 
     assertNormalize(domain(0, 100), ticks(1, 10), ticks(f(1, 1), f(10, 1)));
     assertNormalize(domain(-2, 1), ticks(0.2, 0.4), ticks(f(1, 5), f(2, 5)));
-    assertNormalize(domain(-2, 1), ticks(0.2, 0.5), ticks(f(1, 5), f(2, 5)));
+    assertNormalize(domain(-2, 1), ticks(0.2, 0.5), ticks(f(1, 5), f(3, 5)));
+    assertNormalize(domain(0, 1), ticks(0.0714, 1), ticks(f(357, 5000), f(357, 500)));
+    assertNormalize(domain(0, 1), ticks(0.0625, 1), ticks(f(1, 16), f(5, 8)));
+    assertNormalize(domain(0, 1), ticks(0.0833, 0.25), ticks(f(833, 10000), f(2499, 10000)));
+    assertNormalize(domain(0, 80), ticks(40, 40), ticks(f(80, 3), f(160, 3)));
   });
 
   describe('fractionRange', () => {
