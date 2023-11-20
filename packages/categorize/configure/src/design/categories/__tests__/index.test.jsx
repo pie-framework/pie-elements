@@ -5,7 +5,9 @@ import { Categories } from '../index';
 
 describe('Categories', () => {
   let w;
-  let onModelChanged = jest.fn();
+  let onModelChanged;
+
+
   let model = {
     choices: [
       {
@@ -36,22 +38,29 @@ describe('Categories', () => {
     partialScoring: true,
   };
 
-  const wrapper = (extras) => {
-    const defaults = {
-      classes: {
-        categories: 'categories',
-        categoriesHolder: 'categoriesHolder',
-        row: 'row',
-      },
-      categories: [{ id: '1', label: 'foo', choices: [] }],
-      className: 'className',
-      model,
-      onModelChanged,
-    };
+  let wrapper;
 
-    const props = { ...defaults, ...extras };
-    return shallow(<Categories {...props} />);
-  };
+
+  beforeEach(() => {
+    console.log('Andreea');
+    onModelChanged = jest.fn();
+    wrapper = (extras) => {
+      const defaults = {
+        classes: {
+          categories: 'categories',
+          categoriesHolder: 'categoriesHolder',
+          row: 'row',
+        },
+        categories: [{ id: '1', label: 'foo', choices: [] }],
+        className: 'className',
+        model,
+        onModelChanged,
+      };
+
+      const props = { ...defaults, ...extras };
+      return shallow(<Categories {...props} />)};
+  });
+
 
   describe('snapshot', () => {
     it('renders', () => {
@@ -62,20 +71,24 @@ describe('Categories', () => {
 
   describe('logic', () => {
     describe('add', () => {
-      w = wrapper();
-      w.instance().add();
+      it('calls onChange', () => {
+        w = wrapper();
+        w.instance().add();
 
-      expect(onModelChanged).toBeCalledWith({
-        categories: expect.arrayContaining([{ id: '1', label: 'Category 1' }]),
-        rowLabels: [''],
+        expect(onModelChanged).toBeCalledWith({
+          categories: expect.arrayContaining([{id: '1', label: 'Category 1'}]),
+          rowLabels: [''],
+        });
       });
     });
 
     describe('delete', () => {
-      w = wrapper();
-      w.instance().delete({ id: '0' });
+      it('calls onChange', () => {
+        w = wrapper();
+        w.instance().delete({id: '0'});
 
-      expect(onModelChanged).toBeCalledWith(expect.objectContaining({ categories: [] }));
+        expect(onModelChanged).toBeCalledWith(expect.objectContaining({categories: []}));
+      });
     });
 
     describe('change', () => {
@@ -88,20 +101,36 @@ describe('Categories', () => {
     });
 
     describe('addChoiceToCategory', () => {
-      w = wrapper();
-      w.instance().addChoiceToCategory({ id: '1', content: 'foo' }, '0');
+      it('calls onChange', () => {
+        w = wrapper();
+        w.instance().addChoiceToCategory({id: '1', content: 'foo'}, '0');
 
-      expect(onModelChanged).toBeCalledWith({
-        correctResponse: [{ category: '0', choices: ['1'] }],
+        expect(onModelChanged).toBeCalledWith({
+          correctResponse: [{category: '0', choices: ['1']}], maxChoicesPerCategory: 0,
+        });
+      });
+    });
+
+
+    describe('addChoiceToCategory when maxChoicesPerCategory is set', () => {
+      it('calls onChange', () => {
+        w = wrapper();
+        w.instance().addChoiceToCategory({id: '1', content: 'foo'}, '0');
+
+        expect(onModelChanged).toBeCalledWith({
+          correctResponse: [{category: '0', choices: ['1']}], maxChoicesPerCategory: 0,
+        });
       });
     });
 
     describe('deleteChoiceFromCategory', () => {
-      w = wrapper();
-      w.instance().deleteChoiceFromCategory({ id: '0' }, { id: '1' }, 0);
+      it('calls onChange', () => {
+        w = wrapper();
+        w.instance().deleteChoiceFromCategory({id: '0'}, {id: '1'}, 0);
 
-      expect(onModelChanged).toBeCalledWith({
-        correctResponse: [{ category: '0', choices: [] }],
+        expect(onModelChanged).toBeCalledWith({
+          correctResponse: [{category: '0', choices: []}],
+        });
       });
     });
   });

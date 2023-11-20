@@ -7,6 +7,7 @@ export default {
   lockChoiceOrder: true,
   allowMultiplePlacementsEnabled: multiplePlacements.enabled,
   categoriesPerRow: 2,
+  maxChoicesPerCategory: 1,
   categories: [],
   alternates: [],
   correctResponse: [],

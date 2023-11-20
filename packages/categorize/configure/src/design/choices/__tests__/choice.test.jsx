@@ -10,6 +10,7 @@ describe('choice', () => {
   let connectDropTarget;
 
   beforeEach(() => {
+    console.log('aleluia');
     onChange = jest.fn();
     onDelete = jest.fn();
     connectDragSource = jest.fn();
