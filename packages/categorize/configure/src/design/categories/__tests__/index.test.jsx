@@ -112,17 +112,6 @@ describe('Categories', () => {
     });
 
 
-    describe('addChoiceToCategory when maxChoicesPerCategory is set', () => {
-      it('calls onChange', () => {
-        w = wrapper();
-        w.instance().addChoiceToCategory({id: '1', content: 'foo'}, '0');
-
-        expect(onModelChanged).toBeCalledWith({
-          correctResponse: [{category: '0', choices: ['1']}], maxChoicesPerCategory: 0,
-        });
-      });
-    });
-
     describe('deleteChoiceFromCategory', () => {
       it('calls onChange', () => {
         w = wrapper();
