@@ -161,7 +161,7 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
   <InputContainer
     label="Teacher Instructions"
   >
-    <ForwardRef
+    <EditableHtml
       allowValidation={false}
       languageCharactersProps={
         Array [
@@ -203,7 +203,7 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
   <InputContainer
     label="Prompt"
   >
-    <ForwardRef
+    <EditableHtml
       allowValidation={false}
       disableUnderline={true}
       languageCharactersProps={
@@ -272,7 +272,7 @@ There should be at least 1 and at most 10 response areas defined."
       />
     </WithStyles(Tooltip)>
   </div>
-  <ForwardRef
+  <EditableHtml
     activePlugins={
       Array [
         "bold",
@@ -415,7 +415,7 @@ There should be at least 1 and at most 10 response areas defined."
   <InputContainer
     label="Rationale"
   >
-    <ForwardRef
+    <EditableHtml
       allowValidation={false}
       languageCharactersProps={
         Array [
@@ -643,7 +643,7 @@ There should be at least 1 and at most 10 response areas defined."
       />
     </WithStyles(Tooltip)>
   </div>
-  <ForwardRef
+  <EditableHtml
     activePlugins={
       Array [
         "bold",
