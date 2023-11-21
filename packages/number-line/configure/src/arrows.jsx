@@ -29,22 +29,30 @@ export class Arrows extends React.Component {
   render() {
     const { classes, className, arrows } = this.props;
     return (
-      <div className={cn(classes.arrows, className)}>
-        <InputCheckbox className={classes.checkbox} label={'Left'} checked={arrows.left} onChange={this.changeLeft} />
-        &nbsp;
-        <InputCheckbox
-          className={classes.checkbox}
-          label={'Right'}
-          checked={arrows.right}
-          onChange={this.changeRight}
-        />
-      </div>
+        <div className={classes.flexRow}>
+          <label>Arrows</label>
+          <div className={cn(classes.arrows, className)}>
+            <InputCheckbox className={classes.checkbox} label={'Left'} checked={arrows.left} onChange={this.changeLeft} />
+            &nbsp;
+            <InputCheckbox
+                className={classes.checkbox}
+                label={'Right'}
+                checked={arrows.right}
+                onChange={this.changeRight}
+            />
+          </div>
+        </div>
     );
   }
 }
 const styles = (theme) => ({
   arrows: {
     paddingTop: theme.spacing.unit * 2,
+  },
+  flexRow: {
+    display: 'flex',
+    'align-items': 'center',
+    gap: '10px',
   },
 });
 export default withStyles(styles)(Arrows);
