@@ -66,7 +66,7 @@ class ImageClozeAssociationComponent extends React.Component {
       draggingElement: { id: '', value: '' },
       possibleResponses: duplicateResponses ? possibleResponsesWithIds : possibleResponsesFiltered,
       // set id for each response containers
-      responseContainers: responseContainers.map((item, index) => ({
+      responseContainers: (responseContainers || []).map((item, index) => ({
         index,
         ...item,
         id: `${index}`,
@@ -110,6 +110,8 @@ class ImageClozeAssociationComponent extends React.Component {
 
       // if duplicates are not allowed, make sure to put the shifted value back in possible responses
       if (!duplicateResponses) {
+        possibleResponses = Array.isArray(possibleResponses) ? possibleResponses : [];
+
         possibleResponses.push({
           ...shiftedItem,
           containerIndex: '',
