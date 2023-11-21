@@ -3,6 +3,11 @@
   "additionalProperties": false,
   "type": "object",
   "properties": {
+    "allowMaxChoicesPerCategory": {
+      "description": "Indicates if author has the possibility to set maxChoicesPerCategory",
+      "type": "boolean",
+      "title": "allowMaxChoicesPerCategory"
+    },
     "choices": {
       "description": "The available choices",
       "type": "array",
@@ -348,6 +353,11 @@
         "incorrect"
       ]
     },
+    "maxChoicesPerCategory": {
+      "description": "Indicates the maximum number of choices from a category",
+      "type": "number",
+      "title": "maxChoicesPerCategory"
+    },
     "rationale": {
       "description": "Indicates the value for rationale",
       "type": "string",
@@ -420,11 +430,13 @@
     }
   },
   "required": [
+    "allowMaxChoicesPerCategory",
     "categories",
     "choices",
     "element",
     "feedbackEnabled",
     "id",
+    "maxChoicesPerCategory",
     "prompt",
     "rationaleEnabled",
     "rubricEnabled",

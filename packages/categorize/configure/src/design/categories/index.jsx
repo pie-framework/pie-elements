@@ -136,6 +136,7 @@ export class Categories extends React.Component {
 
   addChoiceToCategory = (addedChoice, categoryId) => {
     const { model, onModelChanged } = this.props;
+    console.log('Andreea model', model);
     let { choices = [], correctResponse = [], maxChoicesPerCategory = 0 } = model || {};
     const choice = (choices || []).find((choice) => choice.id === addedChoice.id);
     correctResponse = moveChoiceToCategory(addedChoice.id, undefined, categoryId, 0, model.correctResponse);

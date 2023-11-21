@@ -318,7 +318,7 @@ exports.model = (id, element) => ({
   correctResponse: [
     {
       category: 'id-fructe',
-      choices: ['id-mar',],
+      choices: ['id-mar', 'id-mar', 'id-mar', 'id-para'],
       alternateResponses: [
         ['id-mar', 'id-para', 'id-rosie'],
         ['id-mar', 'id-para', 'id-rosie'],
@@ -326,7 +326,7 @@ exports.model = (id, element) => ({
     },
     {
       category: 'id-legume',
-      choices: ['id-rosie'],
+      choices: ['id-rosie', 'id-rosie', 'id-morcov'],
       alternateResponses: [['id-rosie', 'id-morcov'], ['id-morcov']],
     },
   ],

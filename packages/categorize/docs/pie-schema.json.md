@@ -2,6 +2,10 @@ Pie Model Object for @pie-elements/categorize
 
 The schema defines the following properties:
 
+# `allowMaxChoicesPerCategory` (boolean, required)
+
+Indicates if author has the possibility to set maxChoicesPerCategory
+
 # `choices` (array, required)
 
 The available choices
@@ -128,6 +132,10 @@ Indicates the configuration for feedback when answer is incorrect
 ## `partial`
 
 Indicates the configuration for feedback when answer is partially correct
+
+# `maxChoicesPerCategory` (number, required)
+
+Indicates the maximum number of choices from a category
 
 # `rationale` (string)
 
