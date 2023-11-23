@@ -1,5 +1,5 @@
 import React from 'react';
-import { InputCheckbox, FeedbackConfig, FormSection, InputContainer, layout } from '@pie-lib/pie-toolbox/config-ui';
+import { FormSection, InputContainer, AlertDialog, layout } from '@pie-lib/pie-toolbox/config-ui';
 import EditableHtml from '@pie-lib/pie-toolbox/editable-html';
 import { NumberLineComponent, dataConverter, tickUtils } from '@pie-element/number-line';
 import NumberTextField from './number-text-field';
@@ -11,10 +11,10 @@ import Arrows from './arrows';
 import PointConfig from './point-config';
 import cloneDeep from 'lodash/cloneDeep';
 import { withStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
 import Info from '@material-ui/icons/Info';
 import Tooltip from '@material-ui/core/Tooltip';
-
+import * as math from 'mathjs';
 import Ticks from './ticks';
 import { model as defaultModel } from './defaults';
 import { generateValidationMessage } from './utils';
@@ -23,9 +23,25 @@ const trimModel = (model) => ({
   ...model,
   feedback: undefined,
   prompt: undefined,
-  graph: { ...model.graph, title: undefined },
+  teacherInstructions: undefined,
+  graph: { ...model.graph, title: undefined, disabled: true },
   correctResponse: undefined,
 });
+
+let ticksModel = {
+  tickIntervalType: 'F',
+  integerTick: 0,
+  fractionTick: '0/1',
+  decimalTick: 0,
+  fractionLabel: '0/1',
+  decimalLabel: 0,
+};
+
+let data = {
+  minorLimits: {},
+  minorValues: {},
+  majorValues: {},
+};
 
 const { lineIsSwitched, switchGraphLine, toGraphFormat, toSessionFormat } = dataConverter;
 
@@ -71,6 +87,14 @@ const styles = (theme) => ({
     color: theme.palette.error.main,
     paddingTop: theme.spacing.unit,
   },
+  flexRow: {
+    display: 'flex',
+    'align-items': 'center',
+    gap: '10px',
+  },
+  description: {
+    marginBottom: theme.spacing.unit * 2.5,
+  },
 });
 
 export const toPointType = (response) => {
@@ -106,36 +130,166 @@ export class Main extends React.Component {
       },
     } = props;
     const height = this.getAdjustedHeight(availableTypes, maxNumberOfPoints);
-
+    this.state = {
+      dialog: {
+        open: false,
+        text: '',
+      },
+      correctAnswerDialog: {
+        open: false,
+        text: '',
+      },
+    };
     this.graphChange({ height });
   }
 
   graphChange = (obj) => {
     const { model, onChange } = this.props;
     const graph = { ...model.graph, ...obj };
-
+    this.reloadTicksData(graph.domain, graph.width, graph.ticks);
+    this.assignTicksModelToGraph(graph);
     onChange({ graph });
   };
 
   changeSize = ({ width, height }) => this.graphChange({ width, height });
 
+  reloadTicksData = (domain, width, ticks) => {
+    //check correct response
+    const { model } = this.props;
+    const graph = { ...model.graph };
+    let respIndex = [];
+    model.correctResponse.forEach((correctResp, key) => {
+      if (
+        correctResp.domainPosition < domain.min ||
+        correctResp.domainPosition > domain.max ||
+        (correctResp.size &&
+          (correctResp.domainPosition + correctResp.size < domain.min ||
+            correctResp.domainPosition + correctResp.size > domain.max))
+      ) {
+        respIndex.push(key);
+      }
+    });
+    if (respIndex.length > 0) {
+      this.setState({
+        correctAnswerDialog: {
+          open: true,
+          text:
+            'This\n' +
+            'change would make it impossible for students to plot one or more elements in the current\n' +
+            'correct answer. If you proceed, all such elements will be removed from the correct\n' +
+            'answer.',
+          indices: respIndex,
+          graph: graph,
+        },
+      });
+    }
+
+    data.minorLimits = tickUtils.minorLimits(domain, width);
+    data.minorValues = tickUtils.generateMinorValues(data.minorLimits);
+    data.majorValues = {};
+    const initTickModel = () => {
+      if (ticks.tickIntervalType) ticksModel.tickIntervalType = ticks.tickIntervalType;
+      //setting minor values
+      if (ticks.minor < data.minorLimits.min || ticks.minor > data.minorLimits.max) {
+        ticksModel.decimalTick = data.minorValues.decimal[0];
+        ticksModel.fractionTick = data.minorValues.fraction[0];
+      } else {
+        ticksModel.decimalTick = math.number(ticks.minor);
+        ticksModel.fractionTick = data.minorValues.fraction[data.minorValues.decimal.indexOf(ticksModel.decimalTick)];
+      }
+      if (Number.isInteger(ticksModel.decimalTick)) {
+        ticksModel.integerTick = math.number(ticksModel.decimalTick);
+      } else {
+        const firstInteger = data.minorValues.decimal.find(function (el) {
+          return Number.isInteger(el);
+        });
+        if (firstInteger) {
+          const index = data.minorValues.decimal.indexOf(firstInteger);
+          ticksModel.integerTick = math.number(firstInteger);
+          if (ticksModel.tickIntervalType === 'I') {
+            ticksModel.fractionTick = data.minorValues.fraction[index];
+            ticksModel.decimalTick = data.minorValues.decimal[index];
+          }
+        } else {
+          if (ticksModel.tickIntervalType === 'I') {
+            ticksModel.tickIntervalType = 'F';
+            ticksModel.decimalTick = data.minorValues.decimal[data.minorValues.decimal.length - 1];
+            ticksModel.fractionTick = data.minorValues.fraction[data.minorValues.fraction.length - 1];
+          }
+          ticksModel.integerTick = data.minorValues.decimal.reduce((a, b) => {
+            return Math.abs(b - ticksModel.decimalTick) < Math.abs(a - ticksModel.decimalTick) ? b : a;
+          });
+          if (!Number.isInteger(ticksModel.integerTick)) {
+            ticksModel.integerTick = math.ceil(ticksModel.integerTick);
+          }
+        }
+      }
+      //setting major values
+      data.majorValues = tickUtils.generateMajorValuesForMinor(ticksModel.decimalTick, data.minorValues);
+      if (!ticks.major) {
+        ticksModel.decimalLabel = data.majorValues.decimal[0];
+        ticksModel.fractionLabel = data.majorValues.fraction[0];
+      } else {
+        ticksModel.decimalLabel = math.number(ticks.major);
+        if (data.majorValues.decimal.indexOf(ticksModel.decimalLabel) === -1) {
+          let currIndex = 0;
+          if (ticksModel.tickIntervalType === 'I') {
+            currIndex = 4;
+          } else {
+            currIndex = data.majorValues.decimal.length - 1;
+          }
+          while (currIndex !== 0) {
+            let ticksData = { minor: ticksModel.decimalTick, major: data.majorValues.decimal[currIndex] };
+            let out = tickUtils.buildTickData(domain, ticksData, { fraction: undefined });
+            if (out.filter((x) => x.type === 'major').length > 1) {
+              break;
+            } else {
+              currIndex = currIndex - 1;
+            }
+          }
+          ticksModel.decimalLabel = data.majorValues.decimal[currIndex];
+          ticksModel.fractionLabel = data.majorValues.fraction[currIndex];
+        } else {
+          ticksModel.fractionLabel =
+            data.majorValues.fraction[data.majorValues.decimal.indexOf(ticksModel.decimalLabel)];
+        }
+      }
+    };
+    initTickModel();
+  };
+
+  assignTicksModelToGraph = (graph) => {
+    graph.ticks.minor = ticksModel.decimalTick;
+    graph.ticks.major = ticksModel.decimalLabel;
+    graph.ticks.tickIntervalType = ticksModel.tickIntervalType;
+    graph.ticks.tickStep = ticksModel.fractionTick;
+    graph.ticks.labelStep = ticksModel.fractionLabel;
+  };
+
   getAdjustedHeight = (availableTypes, maxNumberOfPoints) => {
     let onlyPFAvailable = true;
-
     Object.entries(availableTypes || {}).forEach(([type, value]) => {
       if (type !== 'PF' && value) {
         onlyPFAvailable = false;
-
         return;
       }
     });
-
     return maxNumberOfPoints && (maxNumberOfPoints === 1 || onlyPFAvailable)
       ? 100
       : 50 + (maxNumberOfPoints || 20) * 25;
   };
 
   changeMaxNoOfPoints = (e, maxNumberOfPoints) => {
+    maxNumberOfPoints = Math.floor(maxNumberOfPoints);
+    if (this.isAvailableTypesGreaterThanMaxElements(this.props.model.graph.availableTypes, maxNumberOfPoints)) {
+      this.setState({
+        dialog: {
+          open: true,
+          text: 'To use this value, you must first remove one or more elements from the correct answer.',
+        },
+      });
+      return;
+    }
     const {
       model: {
         graph: { availableTypes },
@@ -146,14 +300,31 @@ export class Main extends React.Component {
     this.graphChange({ maxNumberOfPoints, height });
   };
 
+  isAvailableTypesGreaterThanMaxElements = (availableTypes, maxElements) => {
+    let availableTypeCount = 0;
+    Object.entries(availableTypes || {}).forEach(([type, value]) => {
+      if (value) {
+        availableTypeCount = availableTypeCount + 1;
+      }
+    });
+    return availableTypeCount > maxElements;
+  };
+
   changeGraphTitle = (title) => this.graphChange({ title });
 
-  changeTicks = (ticks) => {
+  changeTicks = (object) => {
     const { model, onChange } = this.props;
+    const { ticks } = model.graph;
+    ticks.minor = object.ticksModel.decimalTick;
+    ticks.major = object.ticksModel.decimalLabel;
+    ticks.tickIntervalType = object.ticksModel.tickIntervalType;
+    ticks.tickStep = object.ticksModel.fractionTick;
+    ticks.labelStep = object.ticksModel.fractionLabel;
     const correctResponse = tickUtils.snapElements(model.graph.domain, ticks, model.correctResponse);
     const initialElements = tickUtils.snapElements(model.graph.domain, ticks, model.graph.initialElements);
     const graph = { ...model.graph, ticks, initialElements };
-
+    this.reloadTicksData(graph.domain, graph.width, graph.ticks);
+    this.assignTicksModelToGraph(graph);
     onChange({ graph, correctResponse });
   };
 
@@ -169,12 +340,6 @@ export class Main extends React.Component {
     this.props.onChange({ graph });
   };
 
-  exhibitChanged = (event, value) => {
-    const graph = { ...this.props.model.graph, exhibitOnly: value };
-
-    this.props.onChange({ graph });
-  };
-
   moveCorrectResponse = (index, el, position) => {
     el.position = position;
 
@@ -186,18 +351,6 @@ export class Main extends React.Component {
     onChange({ correctResponse });
   };
 
-  moveInitialView = (index, el, position) => {
-    el.position = position;
-
-    const { model, onChange } = this.props;
-    const update = toSessionFormat(el.type === 'line' && lineIsSwitched(el) ? switchGraphLine(el) : el);
-    const initialElements = [...model.graph.initialElements];
-    initialElements[index] = update;
-    const graph = { ...model.graph, initialElements };
-
-    onChange({ graph });
-  };
-
   availableTypesChange = (availableTypes) => {
     const { model, onChange } = this.props;
     const {
@@ -205,11 +358,21 @@ export class Main extends React.Component {
       graph: { maxNumberOfPoints },
     } = model;
 
+    let availableTypeCount = 0;
+    Object.entries(availableTypes || {}).forEach(([type, value]) => {
+      if (value) {
+        availableTypeCount = availableTypeCount + 1;
+      }
+    });
+    if (maxNumberOfPoints < availableTypeCount) {
+      this.props.model.graph.maxNumberOfPoints = availableTypeCount;
+    }
+
     new Set(correctResponse.map(toPointType)).forEach((pointType) => {
       availableTypes[pointType] = true;
     });
 
-    const height = this.getAdjustedHeight(availableTypes, maxNumberOfPoints);
+    const height = this.getAdjustedHeight(availableTypes, this.props.model.graph.maxNumberOfPoints);
     const graph = { ...model.graph, availableTypes, height };
 
     onChange({ graph });
@@ -222,14 +385,6 @@ export class Main extends React.Component {
     onChange({ correctResponse });
   };
 
-  deleteInitialView = (indices) => {
-    const { model, onChange } = this.props;
-    const initialElements = model.graph.initialElements.filter((v, index) => !indices.some((d) => d === index));
-    const graph = { ...model.graph, initialElements };
-
-    onChange({ graph });
-  };
-
   addCorrectResponse = (data) => {
     const { model, onChange } = this.props;
     const correctResponse = [...model.correctResponse];
@@ -238,55 +393,42 @@ export class Main extends React.Component {
     onChange({ correctResponse });
   };
 
-  addInitialView = (data) => {
-    const { onChange, model } = this.props;
-    const graph = { ...model.graph };
-    graph.initialElements = graph.initialElements || [];
-    graph.initialElements.push(toSessionFormat(data));
-
-    onChange({ graph });
-  };
-
   clearCorrectResponse = () => {
     const { onChange } = this.props;
 
     onChange({ correctResponse: [] });
   };
 
-  clearInitialView = () => {
-    const { model, onChange } = this.props;
-    const graph = { ...model.graph, initialElements: [] };
-
-    onChange({ graph });
-  };
-
   undoCorrectResponse = () => {
     const { model, onChange } = this.props;
     const correctResponse = [...model.correctResponse];
     correctResponse.pop();
-
     onChange({ correctResponse });
-  };
-
-  undoInitialView = () => {
-    const { onChange, model } = this.props;
-    const graph = { ...model.graph };
-    graph.initialElements = graph.initialElements || [];
-    graph.initialElements.pop();
-
-    onChange({ graph });
   };
 
   render() {
     const { classes, model, onChange, configuration, uploadSoundSupport } = this.props;
-    const { contentDimensions = {}, prompt = {}, mathMlOptions = {} } = configuration || {};
-    const { errors, graph, spellCheckEnabled, toolbarEditorPosition } = model || {};
+    const {
+      contentDimensions = {},
+      instruction = {},
+      teacherInstructions = {},
+      prompt = {},
+      mathMlOptions = {},
+      numberLineDimensions = {},
+      maxMaxElements = undefined,
+      hidePointConfigButtons = false,
+      availableTools = ['PF'],
+    } = configuration || {};
+    const { errors = {}, graph, spellCheckEnabled, toolbarEditorPosition } = model || {};
+    const { dialog, correctAnswerDialog } = this.state;
 
     const { widthError, domainError, maxError, pointsError, correctResponseError } = errors || {};
     const validationMessage = generateValidationMessage();
 
     const correctResponse = cloneDeep(model.correctResponse || []).map(toGraphFormat);
-    const initialView = cloneDeep(graph.initialElements || []).map(toGraphFormat);
+
+    const initialModel = cloneDeep(model);
+    initialModel['disabled'] = true;
 
     const toolbarOpts = {
       position: toolbarEditorPosition === 'top' ? 'top' : 'bottom',
@@ -294,6 +436,27 @@ export class Main extends React.Component {
 
     return (
       <layout.ConfigLayout dimensions={contentDimensions} hideSettings={true} settings={null}>
+        <Typography component="div" type="body1" className={classes.description}>
+          {instruction.label}
+        </Typography>
+
+        {teacherInstructions.settings && (
+          <InputContainer label={teacherInstructions.label} className={classes.promptContainer}>
+            <EditableHtml
+              className={classes.teacherInstructions}
+              markup={model.teacherInstructions}
+              onChange={(teacherInstructions) => onChange({ teacherInstructions })}
+              nonEmpty={false}
+              disableUnderline
+              toolbarOpts={toolbarOpts}
+              spellCheck={spellCheckEnabled}
+              uploadSoundSupport={uploadSoundSupport}
+              languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+              mathMlOptions={mathMlOptions}
+            />
+          </InputContainer>
+        )}
+
         {prompt.settings && (
           <InputContainer label={prompt.label} className={classes.promptContainer}>
             <EditableHtml
@@ -312,7 +475,7 @@ export class Main extends React.Component {
         )}
 
         <CardBar
-          header="Attributes"
+          header="Set Up Number Line"
           info={
             <Tooltip
               classes={{ tooltip: classes.tooltip }}
@@ -330,34 +493,59 @@ export class Main extends React.Component {
         </CardBar>
 
         <div className={classes.row}>
-          <FormSection label={'Size'}>
-            <Size size={graph} onChange={this.changeSize} />
-          </FormSection>
-
-          <FormSection label={'Domain'}>
-            <Domain domain={graph.domain} onChange={(domain) => this.graphChange({ domain })} />
-          </FormSection>
+          <Domain domain={graph.domain} errors={errors} onChange={(domain) => this.graphChange({ domain })} />
         </div>
 
-        {widthError && <div className={classes.errorText}>{widthError}</div>}
         {maxError && <div className={classes.errorText}>{maxError}</div>}
         {domainError && <div className={classes.errorText}>{domainError}</div>}
 
-        <div className={classes.row}>
-          <FormSection label={'Ticks'}>
-            <Ticks ticks={graph.ticks} onChange={this.changeTicks} domain={graph.domain} />
-          </FormSection>
-
-          <FormSection label={'Arrows'}>
-            <Arrows arrows={graph.arrows} onChange={this.changeArrows} />
+        <div>
+          <FormSection>
+            <Ticks ticksModel={ticksModel} data={data} onChange={this.changeTicks} />
           </FormSection>
         </div>
+
+        <div className={classes.flexRow}>
+          {model.widthEnabled && (
+            <Size
+              size={graph}
+              min={numberLineDimensions.min}
+              max={numberLineDimensions.max}
+              step={numberLineDimensions.step}
+              onChange={this.changeSize}
+            />
+          )}
+          <div></div>
+          <Arrows arrows={graph.arrows} onChange={this.changeArrows} />
+        </div>
+
+        {widthError && <div className={classes.errorText}>{widthError}</div>}
+
+        <NumberLineComponent
+          onMoveElement={() => {}}
+          onDeleteElements={() => {}}
+          onAddElement={() => {}}
+          onClearElements={() => {}}
+          onUndoElement={() => {}}
+          model={trimModel(initialModel)}
+        />
 
         <FormSection label={'Title'} className={classes.title}>
           <EditableHtml
             markup={graph.title || ''}
             onChange={this.changeGraphTitle}
             toolbarOpts={toolbarOpts}
+            activePlugins={[
+              'bold',
+              'html',
+              'italic',
+              'underline',
+              'strikethrough',
+              'image',
+              'math',
+              'languageCharacters',
+              'responseArea',
+            ]}
             spellCheck={spellCheckEnabled}
             uploadSoundSupport={uploadSoundSupport}
             languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
@@ -365,36 +553,41 @@ export class Main extends React.Component {
           />
         </FormSection>
 
-        <FormSection label={'Limits'}>
-          <NumberTextField
-            className={classes.maxNumberOfPoints}
-            label="Max No of Elements"
-            min={1}
-            max={20}
-            value={graph.maxNumberOfPoints}
-            onChange={this.changeMaxNoOfPoints}
-          />
-          {pointsError && <div className={classes.errorText}>{pointsError}</div>}
-        </FormSection>
-
-        <Button className={classes.resetButton} variant="outlined" mini color="primary" onClick={this.setDefaults}>
-          Reset to default values
-        </Button>
-
         {!graph.exhibitOnly && (
           <React.Fragment>
-            <CardBar header="Available Types" mini>
+            <CardBar header="Define Tool Set and Correct Response">
+              Select answer type and place it on the number line. Intersecting points, line segments and/or rays will
+              appear above the number line. <i>Note: A maximum of 20 points, line segments or rays may be plotted.</i>
+            </CardBar>
+
+            <CardBar header="Available Tools" mini>
               Click on the input options to be displayed to the students. All inputs will display by default.
             </CardBar>
 
             <div className={classes.pointTypeChooser}>
-              <PointConfig onSelectionChange={this.availableTypesChange} selection={graph.availableTypes} />
+              <PointConfig
+                onSelectionChange={this.availableTypesChange}
+                selection={graph.availableTypes}
+                availableTools={availableTools}
+                hideButtons={hidePointConfigButtons}
+              />
             </div>
 
-            <CardBar header="Correct Response">
-              Select answer type and place it on the number line. Intersecting points, line segments and/or rays will
-              appear above the number line. <i>Note: A maximum of 20 points, line segments or rays may be plotted.</i>
-            </CardBar>
+            <FormSection className={classes.flexRow}>
+              <label>Max No of Elements</label>
+              <NumberTextField
+                className={classes.maxNumberOfPoints}
+                min={1}
+                max={maxMaxElements || 10}
+                onlyIntegersAllowed={true}
+                value={graph.maxNumberOfPoints}
+                onChange={this.changeMaxNoOfPoints}
+              />
+              {pointsError && <div className={classes.errorText}>{pointsError}</div>}
+            </FormSection>
+
+            <label>Correct Answer</label>
+
             <NumberLineComponent
               onMoveElement={this.moveCorrectResponse}
               onDeleteElements={this.deleteCorrectResponse}
@@ -408,36 +601,33 @@ export class Main extends React.Component {
             {correctResponseError && <div className={classes.errorText}>{correctResponseError}</div>}
           </React.Fragment>
         )}
-
-        <CardBar header="Initial view/Make Exhibit">
-          Use this number line to set a starting point, line segment or ray. This is optional. <br />
-          This number line may also be used to make an exhibit number line, which can not be manipulated by a student.
-        </CardBar>
-        <NumberLineComponent
-          onMoveElement={this.moveInitialView}
-          onDeleteElements={this.deleteInitialView}
-          onAddElement={this.addInitialView}
-          onClearElements={this.clearInitialView}
-          onUndoElement={this.undoInitialView}
-          answer={initialView}
-          model={trimModel(model)}
+        <AlertDialog
+          open={dialog.open}
+          title="Warning"
+          text={dialog.text}
+          onConfirm={() => this.setState({ dialog: { open: false } })}
         />
-
-        <InputCheckbox
-          label="Make exhibit"
-          className={classes.checkbox}
-          checked={graph.exhibitOnly}
-          onChange={this.exhibitChanged}
-          value={'exhibitOnly'}
+        <AlertDialog
+          open={correctAnswerDialog.open}
+          title="Warning"
+          text={correctAnswerDialog.text}
+          onConfirm={() => {
+            let indices = this.state.correctAnswerDialog.indices;
+            if (indices && indices.length > 0) {
+              this.deleteCorrectResponse(indices);
+            }
+            this.setState({ correctAnswerDialog: { open: false } });
+          }}
+          onClose={() => {
+            const graph = this.state.correctAnswerDialog.graph;
+            this.reloadTicksData(graph.domain, graph.width, graph.ticks);
+            this.assignTicksModelToGraph(graph);
+            onChange({ graph });
+            this.setState({ correctAnswerDialog: { open: false } });
+          }}
+          onConfirmText={'OK'}
+          onCloseText={'Cancel'}
         />
-
-        {!graph.exhibitOnly && (
-          <FeedbackConfig
-            feedback={model.feedback}
-            onChange={(feedback) => onChange({ feedback })}
-            toolbarOpts={toolbarOpts}
-          />
-        )}
       </layout.ConfigLayout>
     );
   }
