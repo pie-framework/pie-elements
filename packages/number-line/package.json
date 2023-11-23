@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "@material-ui/core": "^3.9.2",
-    "@pie-lib/pie-toolbox": "1.0.15",
+    "@pie-lib/pie-toolbox": "1.0.18",
     "classnames": "^2.2.5",
     "d3-scale": "^3.2.1",
     "d3-selection": "^1.4.1",

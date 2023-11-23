@@ -2360,6 +2360,13 @@
     lodash "^4.17.21"
     mathjs "^9.4.2"
 
+"@pie-framework/mathml-to-latex@1.3.3":
+  version "1.3.3"
+  resolved "https://registry.yarnpkg.com/@pie-framework/mathml-to-latex/-/mathml-to-latex-1.3.3.tgz#db676051d453397e45875d8dcdb8a730011c09e3"
+  integrity sha512-Ulr6a/UapS4VrdP/cdHMXF1aiOixZ5+i15VE8gGu1sF77ULE/OKpVXNkvJtV7JluIwEDipDOKlWdl/mSeQYhEw==
+  dependencies:
+    "@xmldom/xmldom" "^0.8.10"
+
 "@pie-framework/mathquill@^1.1.3":
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/@pie-framework/mathquill/-/mathquill-1.1.3.tgz#0ab8fd19d6a5cd29310e0a8dd588a41b1f388972"
@@ -2580,16 +2587,17 @@
     trigonometry-calculator "^2.0.0"
     unist-util-inspect "^4.1.3"
 
-"@pie-lib/pie-toolbox@1.0.15":
-  version "1.0.15"
-  resolved "https://registry.yarnpkg.com/@pie-lib/pie-toolbox/-/pie-toolbox-1.0.15.tgz#b4a1df038972f7e4e8ca16d1eeaf0cde657adbee"
-  integrity sha512-eOOabowAUJ730PvmT9LpLdcjZW/QZj1Hmt34tiFpRSgTb07GEjOvOIAuyX/qo1Y44AgYQdYn59NckQdDFc+W0g==
+"@pie-lib/pie-toolbox@1.0.18":
+  version "1.0.18"
+  resolved "https://registry.yarnpkg.com/@pie-lib/pie-toolbox/-/pie-toolbox-1.0.18.tgz#82a54a2ecbeffd0502b0a5cd80c51e43eaff4159"
+  integrity sha512-F7WD+x76mdJYe64bvjFv2nCXMkipoqeG9r3RrW/NUJyTqAt2RklQFrgk7pm1QspWLXeuSyFXRkJA9JBMPqDwZg==
   dependencies:
     "@mapbox/point-geometry" "^0.1.0"
     "@material-ui/core" "^3.8.3"
     "@material-ui/icons" "^3.0.2"
     "@material-ui/styles" "^3.0.0-alpha.10"
     "@pie-framework/math-expressions" "^3.0.0"
+    "@pie-framework/mathml-to-latex" "1.3.3"
     "@pie-framework/mathquill" "^1.1.3"
     "@pie-framework/parse-english" "^1.0.0"
     "@vx/axis" "^0.0.183"
@@ -2615,7 +2623,6 @@
     lodash "^4.17.11"
     mathjax-full "3.2.2"
     mathjs "^7.0.1"
-    mathml-to-latex "1.2.0"
     prop-types "^15.7.2"
     react "^16.8.1"
     react-attr-converter "^0.3.1"
@@ -3167,6 +3174,11 @@
     lodash "^4.17.4"
     prop-types "^15.6.2"
     reduce-css-calc "^1.3.0"
+
+"@xmldom/xmldom@^0.8.10":
+  version "0.8.10"
+  resolved "https://registry.yarnpkg.com/@xmldom/xmldom/-/xmldom-0.8.10.tgz#a1337ca426aa61cef9fe15b5b28e340a72f6fa99"
+  integrity sha512-2WALfTl4xo2SkGCYRt6rDTFfk9R1czmBvUQy12gK2KuRKIpWEhcbbzy8EZXtz/jkRqHX8bFEc6FC1HjX4TUWYw==
 
 "@yarnpkg/lockfile@^1.1.0":
   version "1.1.0"
