@@ -55,7 +55,7 @@ exports[`categorize renders snapshot 1`] = `
     onCloseText="CANCEL"
     onConfirmText="OK"
     open={false}
-    text="You ve reached the limit of undefined responses per area. To add another response, one must first be removed"
+    text="categorize.limitMaxChoicesPerCategory"
     title="Warning"
   />
 </div>
@@ -130,7 +130,7 @@ exports[`categorize renders snapshot with rationale 1`] = `
     onCloseText="CANCEL"
     onConfirmText="OK"
     open={false}
-    text="You ve reached the limit of undefined responses per area. To add another response, one must first be removed"
+    text="categorize.limitMaxChoicesPerCategory"
     title="Warning"
   />
 </div>
@@ -205,7 +205,7 @@ exports[`categorize renders snapshot with teacherInstructions 1`] = `
     onCloseText="CANCEL"
     onConfirmText="OK"
     open={false}
-    text="You ve reached the limit of undefined responses per area. To add another response, one must first be removed"
+    text="categorize.limitMaxChoicesPerCategory"
     title="Warning"
   />
 </div>

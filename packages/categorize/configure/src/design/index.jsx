@@ -13,7 +13,9 @@ import { buildAlternateResponses, buildCategories } from './builder';
 import Header from './header';
 import { getMaxCategoryChoices, multiplePlacements } from '../utils';
 import { AlertDialog } from '@pie-lib/pie-toolbox/config-ui';
+import Translator from '@pie-lib/pie-toolbox/translator';
 
+const { translator } = Translator;
 const { dropdown, Panel, toggle, radio, numberField } = settings;
 const { Provider: IdProvider } = uid;
 
@@ -274,7 +276,7 @@ export class Design extends React.Component {
     };
 
     const isOpened = this.isAlertModalOpened();
-    const alertMaxChoicesMsg = `To change this value to ${maxChoicesPerCategory}, each category must have ${maxChoicesPerCategory} or fewer answer choice[s]`;
+    const alertMaxChoicesMsg = translator.t('translation:categorize:maxChoicesPerCategoryRestriction', {lng: model.language, maxChoicesPerCategory });
 
     return (
       <IdProvider value={this.uid}>

@@ -20,7 +20,7 @@ export const generateValidationMessage = (config) => {
 export const multiplePlacements = { enabled: 'Yes', disabled: 'No', perChoice: 'Set Per Choice' };
 
 export const  getMaxCategoryChoices = (model) => {
-  const { correctResponse } = model || [];
+  const { correctResponse = [] } = model || {};
   return correctResponse.reduce((max, correctRes) => {
     const choicesLength = correctRes.choices.length;
     return choicesLength > max ? choicesLength : max;

@@ -189,7 +189,7 @@ export class Categorize extends React.Component {
     const existAlternate = this.existAlternateResponse(correctResponse) || false;
     const displayNote =
       (showCorrect || (mode === 'view' && role === 'instructor')) && showNote && note && existAlternate;
-    const alertMessage = `You ve reached the limit of ${maxChoicesPerCategory} responses per area. To add another response, one must first be removed`;
+    const alertMessage = translator.t('translation:categorize:limitMaxChoicesPerCategory', { lng: model.language, maxChoicesPerCategory });
 
     return (
       <div className={classes.mainContainer}>
