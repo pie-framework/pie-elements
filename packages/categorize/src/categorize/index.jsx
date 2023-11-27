@@ -9,6 +9,7 @@ import { withDragContext, uid } from '@pie-lib/pie-toolbox/drag';
 import { color, Feedback, Collapsible, hasText, PreviewPrompt } from '@pie-lib/pie-toolbox/render-ui';
 import debug from 'debug';
 import Translator from '@pie-lib/pie-toolbox/translator';
+import { AlertDialog }  from '@pie-lib/pie-toolbox/config-ui';
 const { translator } = Translator;
 
 const log = debug('@pie-ui:categorize');
@@ -48,6 +49,7 @@ export class Categorize extends React.Component {
 
     this.state = {
       showCorrect: false,
+      showMaxChoiceAlert: false,
     };
   }
 
@@ -59,25 +61,61 @@ export class Categorize extends React.Component {
   };
 
   dropChoice = (categoryId, draggedChoice) => {
-    const { session, onAnswersChange } = this.props;
+    const { session, onAnswersChange, model } = this.props;
+    const { maxChoicesPerCategory = 0 } = model || {};
+    const { answers = [] } = session || {};
+    let newAnswers;
     if (draggedChoice) {
       log('[dropChoice] category: ', draggedChoice.categoryId, 'choice: ', draggedChoice);
     } else {
       log('[dropChoice] category: ', undefined, 'choice: ', undefined);
     }
 
-    const answers = draggedChoice
-      ? moveChoiceToCategory(
+    const answer = answers.find(answer => answer.category === categoryId);
+
+    // treat special case to replace the existing choice with the new one when maxChoicesPerCategory = 1
+    if (draggedChoice && maxChoicesPerCategory === 1 && answer && answer.choices &&  answer.choices.length === 1) {
+        newAnswers = moveChoiceToCategory(
+            draggedChoice.id,
+            draggedChoice.categoryId,
+            categoryId,
+            draggedChoice.choiceIndex,
+            answers,
+        );
+        newAnswers = removeChoiceFromCategory(answer.choices[0], categoryId, 0, answers)
+    }
+
+    // treat special case when there are as many choices as maxChoicesPerCategory is
+    else if (draggedChoice && maxChoicesPerCategory > 1 && answer && answer.choices &&  answer.choices.length === maxChoicesPerCategory ) {
+      newAnswers = draggedChoice.categoryId ? moveChoiceToCategory(
           draggedChoice.id,
           draggedChoice.categoryId,
-          categoryId,
+          draggedChoice.categoryId,
           draggedChoice.choiceIndex,
-          session.answers,
-        )
-      : this.removeChoice(categoryId);
+          answers,
+      ) : removeChoiceFromCategory(draggedChoice.id, draggedChoice.categoryId, draggedChoice.choiceIndex, answers);
+      this.setState({ showMaxChoiceAlert: true })
+    }
+
+    // treat special case when there are more choices that maxChoicesPerCategory is (testing purpose in pits)
+    else if (maxChoicesPerCategory !== 0 && answer && answer.choices && answer.choices.length > maxChoicesPerCategory) {
+      newAnswers = answers;
+      this.setState({ showMaxChoiceAlert: true });
+    }
+    else {
+      newAnswers = draggedChoice
+          ? moveChoiceToCategory(
+              draggedChoice.id,
+              draggedChoice.categoryId,
+              categoryId,
+              draggedChoice.choiceIndex,
+              answers,
+          )
+          : this.removeChoice(categoryId);
+    }
 
     if (draggedChoice) {
-      onAnswersChange(answers);
+      onAnswersChange(newAnswers);
     }
   };
 
@@ -128,8 +166,8 @@ export class Categorize extends React.Component {
 
   render() {
     const { classes, model, session } = this.props;
-    const { showCorrect } = this.state;
-    const { choicesPosition, note, showNote, env, language } = model;
+    const { showCorrect, showMaxChoiceAlert } = this.state;
+    const { choicesPosition, note, showNote, env, language, maxChoicesPerCategory } = model;
     const { mode, role } = env || {};
     const choicePosition = choicesPosition || 'above';
 
@@ -151,6 +189,7 @@ export class Categorize extends React.Component {
     const existAlternate = this.existAlternateResponse(correctResponse) || false;
     const displayNote =
       (showCorrect || (mode === 'view' && role === 'instructor')) && showNote && note && existAlternate;
+    const alertMessage = translator.t('translation:categorize:limitMaxChoicesPerCategory', { lng: model.language, maxChoicesPerCategory });
 
     return (
       <div className={classes.mainContainer}>
@@ -216,6 +255,13 @@ export class Categorize extends React.Component {
         {model.correctness && model.feedback && !showCorrect && (
           <Feedback correctness={model.correctness} feedback={model.feedback} />
         )}
+        <AlertDialog
+            title={'Warning'}
+            text={alertMessage}
+            open={showMaxChoiceAlert}
+            onClose={() => this.setState({ showMaxChoiceAlert: false })}
+              >
+        </AlertDialog>
       </div>
     );
   }

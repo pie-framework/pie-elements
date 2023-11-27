@@ -59,6 +59,10 @@ enum ChoicesPosition {
  * @additionalProperties false
  */
 export interface CategorizePie extends PieModel {
+
+  /** Indicates if author has the possibility to set maxChoicesPerCategory */
+  allowMaxChoicesPerCategory: boolean
+
   /** The available choices */
   choices: CategoryChoice[];
 
@@ -94,6 +98,9 @@ export interface CategorizePie extends PieModel {
   /** Feedback configuration */
   feedback?: ComplexFeedbackType;
 
+  /** Indicates the maximum number of choices from a category */
+  maxChoicesPerCategory: number
+
   /** Indicates the value for rationale */
   rationale?: string;
 
@@ -111,7 +118,6 @@ export interface CategorizePie extends PieModel {
 
   /** Indicates if Student Instructions are enabled */
   studentInstructionsEnabled: boolean;
-
   /** Indicates if Teacher Instructions are enabled */
   teacherInstructionsEnabled: boolean;
 

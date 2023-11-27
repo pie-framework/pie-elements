@@ -33,6 +33,14 @@ exports[`Design snapshot renders 1`] = `
             },
           }
         }
+        modal={
+          <UNDEFINED
+            onClose={[Function]}
+            open={false}
+            text="To change this value to , each category must have  or fewer answer choice[s]"
+            title="Warning"
+          />
+        }
         model={
           Object {
             "categories": Array [

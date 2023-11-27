@@ -150,7 +150,8 @@ export const model = (question, session, env, updateSession) =>
       rationale,
       teacherInstructionsEnabled,
       teacherInstructions,
-      language
+      language,
+      maxChoicesPerCategory,
     } = normalizedQuestion;
     let { choices, note } = normalizedQuestion;
     let fb;
@@ -178,6 +179,7 @@ export const model = (question, session, env, updateSession) =>
     const out = {
       categories: categories || [],
       categoriesPerRow: categoriesPerRow || 2,
+      maxChoicesPerCategory,
       correctness: answerCorrectness,
       choices: choices || [],
       choicesLabel: choicesLabel || '',
