@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-controller@5.0.2...@pie-element/graphing-controller@5.0.3) (2023-11-27)
+
+
+### Bug Fixes
+
+* update pie-lib ([74283d7](https://github.com/pie-framework/pie-elements/commit/74283d71b12ab9c82875ce995368e5e39f4face6))
+
+
+
+
+
 ## [5.0.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-controller@5.0.1...@pie-element/graphing-controller@5.0.2) (2023-11-27)
 
 
