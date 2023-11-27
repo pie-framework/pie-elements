@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@7.0.1...@pie-element/categorize-configure@7.1.0) (2023-11-27)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-597 ([1ec84aa](https://github.com/pie-framework/pie-elements/commit/1ec84aadae515088ef65b99f780a5e5dca516f99))
+* update pie-libs PD-2996 ([cd092c6](https://github.com/pie-framework/pie-elements/commit/cd092c6b5c4db91645394cd23febc1f9a07f46f9))
+
+
+### Features
+
+* **categorize:** add maxChoicesPerCategory logic both author and student PD-2996 ([fbb7562](https://github.com/pie-framework/pie-elements/commit/fbb7562f2a878bcdaa68114c1ec430150c45e62c))
+* **categorize:** correct tests PD-2996 ([12f5dd4](https://github.com/pie-framework/pie-elements/commit/12f5dd41de9db5ede18a0ad32358c8d8dd5413ad))
+* **categorize:** PD-2996 - add setting for max nr of choices in a category ([b6162c6](https://github.com/pie-framework/pie-elements/commit/b6162c6294c851f4dfeb984211c97a0bc610166e))
+* **categorize:** solve code review observations, add translator PD-2996 ([be13dc6](https://github.com/pie-framework/pie-elements/commit/be13dc671ab416212b7db06d8dc08666ef218b7e))
+* **categorize:** update tests, update docu PD-2996 ([4c13904](https://github.com/pie-framework/pie-elements/commit/4c13904299d9fe518c3cc13398a0114e61f723ca))
+
+
+
+
+
 ## [7.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@7.0.0...@pie-element/categorize-configure@7.0.1) (2023-11-09)
 
 

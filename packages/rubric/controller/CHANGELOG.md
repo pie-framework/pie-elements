@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric-controller@2.0.1...@pie-element/rubric-controller@2.0.2) (2023-11-27)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-597 ([1ec84aa](https://github.com/pie-framework/pie-elements/commit/1ec84aadae515088ef65b99f780a5e5dca516f99))
+* update pie-libs PD-2996 ([cd092c6](https://github.com/pie-framework/pie-elements/commit/cd092c6b5c4db91645394cd23febc1f9a07f46f9))
+
+
+
+
+
 ## [2.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric-controller@2.0.0...@pie-element/rubric-controller@2.0.1) (2023-11-09)
 
 
