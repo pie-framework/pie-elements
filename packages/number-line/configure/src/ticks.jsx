@@ -4,29 +4,36 @@ import { withStyles } from '@material-ui/core/styles';
 import { MiniField } from './number-text-field';
 import { tickUtils } from '@pie-element/number-line';
 import * as math from 'mathjs';
+
 export const Ticks = (props) => {
   const { classes, ticks, onChange, domain } = props;
 
   const changeMinor = (e, minor) => onChange({ ...props.ticks, minor });
   const changeMajor = (e, major) => onChange({ ...props.ticks, major });
 
-  const t = tickUtils.normalizeTicks(domain, ticks);
+  const normalizedTicks = tickUtils.normalizeTicks(domain, ticks);
+  const minorLimits = tickUtils.getMinorLimits(domain);
 
-  const minorLimits = tickUtils.minorLimits(domain);
   return (
     <React.Fragment>
       <MiniField
         label="Frequency"
-        value={math.number(t.minor)}
+        value={math.number(normalizedTicks.minor)}
         min={math.number(minorLimits.min)}
         max={math.number(minorLimits.max)}
         className={classes.nl}
         onChange={changeMinor}
       />
-      <MiniField label="Labels" value={math.number(t.major)} className={classes.nl} onChange={changeMajor} />
+      <MiniField
+        label="Labels"
+        value={math.number(normalizedTicks.major)}
+        className={classes.nl}
+        onChange={changeMajor}
+      />
     </React.Fragment>
   );
 };
+
 Ticks.propTypes = {
   classes: PropTypes.object.isRequired,
   onChange: PropTypes.func,
@@ -38,4 +45,5 @@ Ticks.propTypes = {
 };
 
 const styles = () => ({});
+
 export default withStyles(styles)(Ticks);

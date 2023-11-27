@@ -25,7 +25,11 @@ describe('ticks', () => {
 
     assertNormalize(domain(0, 100), ticks(1, 10), ticks(f(1, 1), f(10, 1)));
     assertNormalize(domain(-2, 1), ticks(0.2, 0.4), ticks(f(1, 5), f(2, 5)));
-    assertNormalize(domain(-2, 1), ticks(0.2, 0.5), ticks(f(1, 5), f(2, 5)));
+    assertNormalize(domain(-2, 1), ticks(0.2, 0.5), ticks(f(1, 5), f(3, 5)));
+    assertNormalize(domain(0, 1), ticks(0.0714, 1), ticks(f(357, 5000), f(2499, 2500)));
+    assertNormalize(domain(0, 1), ticks(0.0625, 1), ticks(f(1, 16), f(1, 1)));
+    assertNormalize(domain(0, 1), ticks(0.0833, 0.25), ticks(f(833, 10000), f(2499, 10000)));
+    assertNormalize(domain(0, 80), ticks(40, 40), ticks(f(40, 1), f(40, 1)));
   });
 
   describe('fractionRange', () => {
@@ -182,9 +186,13 @@ describe('ticks', () => {
       100: [tt(100, 'major')],
     });
 
-    //limited to 100/3 + 200/3
     assertTicks(0, 100, 50, 50, {
-      0: [tt(0, 'major'), tt(33.333333333333336, 'minor'), tt(66.666666666666666, 'major')],
+      0: [tt(0, 'major'), tt(50, 'major'), tt(100, 'major')],
+    });
+
+    // limited to minor 100/2 and major 2000/2
+    assertTicks(0, 100, 70, 80, {
+      0: [tt(0, 'major'), tt(50, 'minor'), tt(100, 'major')],
     });
   });
 
