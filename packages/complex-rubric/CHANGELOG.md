@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@2.1.0...@pie-element/complex-rubric@2.1.1) (2023-11-27)
+
+
+### Bug Fixes
+
+* trigger new version ([0ac3b67](https://github.com/pie-framework/pie-elements/commit/0ac3b676f3b1d3b390769b2479fb38525e5e521a))
+* update pie-lib ([74283d7](https://github.com/pie-framework/pie-elements/commit/74283d71b12ab9c82875ce995368e5e39f4face6))
+
+
+
+
+
 # [2.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@2.0.1...@pie-element/complex-rubric@2.1.0) (2023-11-27)
 
 
