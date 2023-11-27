@@ -14,7 +14,7 @@ import {
 
 import Category from './category';
 import Header from '../header';
-import { generateValidationMessage } from '../../utils';
+import { generateValidationMessage, getMaxCategoryChoices } from '../../utils';
 import { RowLabel } from './RowLabel';
 
 const styles = (theme) => ({
@@ -136,14 +136,16 @@ export class Categories extends React.Component {
 
   addChoiceToCategory = (addedChoice, categoryId) => {
     const { model, onModelChanged } = this.props;
-    let { choices = [], correctResponse = [] } = model || {};
+    let { choices = [], correctResponse = [], maxChoicesPerCategory = 0 } = model || {};
     const choice = (choices || []).find((choice) => choice.id === addedChoice.id);
     correctResponse = moveChoiceToCategory(addedChoice.id, undefined, categoryId, 0, model.correctResponse);
     // if multiplePlacements not allowed, ensure the consistency in the other categories
     if (choice.categoryCount !== 0) {
       correctResponse = verifyAllowMultiplePlacements(addedChoice, categoryId, correctResponse);
     }
-    onModelChanged({ correctResponse });
+    const maxCategoryChoices = getMaxCategoryChoices(model);
+    // when maxChoicesPerCategory is set to 0, there is no limit so it should not be updated
+    onModelChanged({ correctResponse, maxChoicesPerCategory: maxChoicesPerCategory !== 0 && maxChoicesPerCategory < maxCategoryChoices ? maxChoicesPerCategory + 1 : maxChoicesPerCategory });
   };
 
   deleteChoiceFromCategory = (category, choice, choiceIndex) => {
@@ -155,7 +157,7 @@ export class Categories extends React.Component {
 
   moveChoice = (choiceId, from, to, choiceIndex) => {
     const { model, onModelChanged } = this.props;
-    let { choices, correctResponse = [] } = model || {};
+    let { choices, correctResponse = [],  maxChoicesPerCategory = 0 } = model || {};
     const choice = (choices || []).find((choice) => choice.id === choiceId);
     if (to === from || !choice) {
       return;
@@ -166,7 +168,9 @@ export class Categories extends React.Component {
     } else if (choice.categoryCount === 0) {
       correctResponse = moveChoiceToCategory(choice.id, undefined, to, 0, correctResponse);
     }
-    onModelChanged({ correctResponse });
+    const maxCategoryChoices = getMaxCategoryChoices(model);
+    // when maxChoicesPerCategory is set to 0, there is no limit so it should not be updated
+    onModelChanged({ correctResponse, maxChoicesPerCategory: maxChoicesPerCategory !== 0 && maxChoicesPerCategory < maxCategoryChoices ? maxChoicesPerCategory + 1 : maxChoicesPerCategory });
   };
 
   changeRowLabel = (val, index) => {

@@ -19,6 +19,7 @@ exports[`Design snapshot renders 1`] = `
               "teacherInstructionsEnabled": undefined,
             },
             "Settings": Object {
+              "allowMaxChoicesPerCategory": undefined,
               "allowMultiplePlacementsEnabled": undefined,
               "categoriesPerRow": undefined,
               "choicesPosition": undefined,
@@ -26,10 +27,19 @@ exports[`Design snapshot renders 1`] = `
               "language": undefined,
               "language.enabled": undefined,
               "lockChoiceOrder": undefined,
+              "maxChoicesPerCategory": false,
               "partialScoring": undefined,
               "promptEnabled": undefined,
             },
           }
+        }
+        modal={
+          <UNDEFINED
+            onClose={[Function]}
+            open={false}
+            text="To change this value to , each category must have  or fewer answer choice[s]"
+            title="Warning"
+          />
         }
         model={
           Object {

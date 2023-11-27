@@ -2,8 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Line, Group } from 'react-konva';
 import { withStyles } from '@material-ui/core/styles';
-
-import Image from './image';
+import { ImageComponent } from '@pie-lib/pie-toolbox/icons';
 import { faCorrect, faWrong } from './icons';
 
 class PolygonComponent extends React.Component {
@@ -130,7 +129,7 @@ class PolygonComponent extends React.Component {
           onMouseLeave={this.handleMouseLeave}
           onMouseEnter={this.handleMouseEnter}
         />
-        {isEvaluateMode && iconSrc ? <Image src={iconSrc} x={iconX} y={iconY} tooltip={evaluateText} /> : null}
+        {isEvaluateMode && iconSrc ? <ImageComponent src={iconSrc} x={iconX} y={iconY} tooltip={evaluateText} /> : null}
       </Group>
     );
   }

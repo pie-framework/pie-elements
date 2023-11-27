@@ -11,8 +11,11 @@ import AlternateResponses from './categories/alternateResponses';
 import Choices from './choices';
 import { buildAlternateResponses, buildCategories } from './builder';
 import Header from './header';
-import { multiplePlacements } from '../utils';
+import { getMaxCategoryChoices, multiplePlacements } from '../utils';
+import { AlertDialog } from '@pie-lib/pie-toolbox/config-ui';
+import Translator from '@pie-lib/pie-toolbox/translator';
 
+const { translator } = Translator;
 const { dropdown, Panel, toggle, radio, numberField } = settings;
 const { Provider: IdProvider } = uid;
 
@@ -76,6 +79,9 @@ export class Design extends React.Component {
       content: h.content,
       categoryCount: h.categoryCount,
     }));
+
+    // ensure that maxChoicesPerCategory is reset if author switch back the corresponding switch (allowMaxChoicesPerCategory)
+    updatedModel.maxChoicesPerCategory = updatedModel.allowMaxChoicesPerCategory ? updatedModel.maxChoicesPerCategory : 0;
 
     onChange(updatedModel);
   };
@@ -148,6 +154,21 @@ export class Design extends React.Component {
     return c.categoryCount || 0;
   };
 
+  isAlertModalOpened = () => {
+    const { model } = this.props;
+    const { maxChoicesPerCategory = 0 } = model || {};
+    const maxChoices = getMaxCategoryChoices(model);
+    // when maxChoicesPerCategory is set to 0, there is no limit so modal should not be opened
+    return maxChoicesPerCategory !== 0 ? maxChoices > maxChoicesPerCategory : false;
+  };
+
+  onAlertModalCancel = () => {
+    const { model } = this.props;
+    const maxChoices = getMaxCategoryChoices(model);
+    this.updateModel({ maxChoicesPerCategory: maxChoices });
+  };
+
+
   render() {
     const { classes, configuration, imageSupport, model, uploadSoundSupport, onConfigurationChanged } = this.props;
     const {
@@ -160,6 +181,7 @@ export class Design extends React.Component {
       lockChoiceOrder = {},
       maxImageHeight = {},
       maxImageWidth = {},
+      maxPlacements = {},
       minCategoriesPerRow = 1,
       partialScoring = {},
       prompt = {},
@@ -176,7 +198,9 @@ export class Design extends React.Component {
     } = configuration || {};
     const {
       allowAlternateEnabled,
+      allowMaxChoicesPerCategory,
       feedbackEnabled,
+      maxChoicesPerCategory,
       promptEnabled,
       rationaleEnabled,
       spellCheckEnabled,
@@ -226,6 +250,14 @@ export class Design extends React.Component {
           multiplePlacements.disabled,
           multiplePlacements.perChoice,
         ]),
+      allowMaxChoicesPerCategory: maxPlacements.settings && toggle(maxPlacements.label),
+      maxChoicesPerCategory:
+        allowMaxChoicesPerCategory === true &&
+        numberField(maxPlacements.label, {
+          label: '',
+          min: 0,
+          max: 30,
+        }),
       promptEnabled: prompt.settings && toggle(prompt.label),
       feedbackEnabled: feedback.settings && toggle(feedback.label),
       // PD-2960: deleted temporary from settings panel
@@ -243,6 +275,9 @@ export class Design extends React.Component {
       rubricEnabled: withRubric?.settings && toggle(withRubric?.label),
     };
 
+    const isOpened = this.isAlertModalOpened();
+    const alertMaxChoicesMsg = translator.t('translation:categorize:maxChoicesPerCategoryRestriction', {lng: model.language, maxChoicesPerCategory });
+
     return (
       <IdProvider value={this.uid}>
         <layout.ConfigLayout
@@ -258,6 +293,12 @@ export class Design extends React.Component {
                 Settings: panelSettings,
                 Properties: panelProperties,
               }}
+              modal={<AlertDialog
+                  title={'Warning'}
+                  text={alertMaxChoicesMsg}
+                  open={isOpened}
+                  onClose={this.onAlertModalCancel}
+              />}
             />
           }
         >
