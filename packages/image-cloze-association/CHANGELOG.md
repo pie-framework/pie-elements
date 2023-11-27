@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@5.0.1...@pie-element/image-cloze-association@5.1.0) (2023-11-27)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3271, PD-3261 ([7a795bf](https://github.com/pie-framework/pie-elements/commit/7a795bfd7e2fd865774828ad23b0a8cbbac98356))
+* update pie-lib/pie-toolbox PD-597 ([1ec84aa](https://github.com/pie-framework/pie-elements/commit/1ec84aadae515088ef65b99f780a5e5dca516f99))
+* update pie-lib/pie-toolbox to test build ([9750cdd](https://github.com/pie-framework/pie-elements/commit/9750cdd3ce3018ef8bb63bc2c6db6abba3dad0c4))
+* update pie-lib/pie-toolbox to test build ([4e04cef](https://github.com/pie-framework/pie-elements/commit/4e04cefc163d504d136c9e3b17dbb32d1e22326b))
+* update pie-libs PD-2996 ([cd092c6](https://github.com/pie-framework/pie-elements/commit/cd092c6b5c4db91645394cd23febc1f9a07f46f9))
+* update pie-libs PD-3011, PD-3130, PD-3271 ([7a36106](https://github.com/pie-framework/pie-elements/commit/7a36106efeac0448b7b825989c1eb0b29b6688d4))
+* **image-cloze-association:** add null checks for responseContainers and possibleResponses PD-3308 ([520886a](https://github.com/pie-framework/pie-elements/commit/520886af988c2095a1b4ca25fc93681efd9bcf07))
+* update pie-toolbox version PD-3298 ([0c282d5](https://github.com/pie-framework/pie-elements/commit/0c282d540aba5b2bb7a8b515bcaa2dba8302d49a))
+
+
+### Features
+
+* update pie-lib/pie-toolbox PD-1886 ([4a978d0](https://github.com/pie-framework/pie-elements/commit/4a978d058b865cc21c1fc84d7d39224e0d7cc88d))
+
+
+
+
+
 ## [5.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@5.0.0...@pie-element/image-cloze-association@5.0.1) (2023-11-09)
 
 
