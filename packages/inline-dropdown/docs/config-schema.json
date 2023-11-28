@@ -20,9 +20,14 @@
       }
     },
     "prompt": {
-      "title": "ConfigureProp",
+      "title": "ConfigureRequiredProp",
       "type": "object",
       "properties": {
+        "required": {
+          "description": "Indicates if the item is required and the value cannot be empty",
+          "type": "boolean",
+          "title": "required"
+        },
         "settings": {
           "description": "Indicates if the item has to be displayed in the Settings Panel",
           "type": "boolean",
@@ -68,9 +73,14 @@
       }
     },
     "rationale": {
-      "title": "ConfigureProp",
+      "title": "ConfigureRequiredProp",
       "type": "object",
       "properties": {
+        "required": {
+          "description": "Indicates if the item is required and the value cannot be empty",
+          "type": "boolean",
+          "title": "required"
+        },
         "settings": {
           "description": "Indicates if the item has to be displayed in the Settings Panel",
           "type": "boolean",
@@ -153,9 +163,14 @@
       }
     },
     "teacherInstructions": {
-      "title": "ConfigureProp",
+      "title": "ConfigureRequiredProp",
       "type": "object",
       "properties": {
+        "required": {
+          "description": "Indicates if the item is required and the value cannot be empty",
+          "type": "boolean",
+          "title": "required"
+        },
         "settings": {
           "description": "Indicates if the item has to be displayed in the Settings Panel",
           "type": "boolean",
@@ -256,6 +271,11 @@
       "title": "ConfigurePropWithEnabled",
       "type": "object",
       "properties": {
+        "enabled": {
+          "description": "Indicates the value of the item if it affects config-ui\n(eg.: if item is a switch and displaying an input on the config-ui depends on the switch value: on/off)",
+          "type": "boolean",
+          "title": "enabled"
+        },
         "settings": {
           "description": "Indicates if the item has to be displayed in the Settings Panel",
           "type": "boolean",
@@ -265,11 +285,6 @@
           "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
           "type": "string",
           "title": "label"
-        },
-        "enabled": {
-          "description": "Indicates the value of the item if it affects config-ui\n(eg.: if item is a switch and displaying an input on the config-ui depends on the switch value: on/off)",
-          "type": "boolean",
-          "title": "enabled"
         }
       }
     },
@@ -392,6 +407,27 @@
         }
       }
     },
+    "ConfigureRequiredProp": {
+      "title": "ConfigureRequiredProp",
+      "type": "object",
+      "properties": {
+        "required": {
+          "description": "Indicates if the item is required and the value cannot be empty",
+          "type": "boolean",
+          "title": "required"
+        },
+        "settings": {
+          "description": "Indicates if the item has to be displayed in the Settings Panel",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+          "type": "string",
+          "title": "label"
+        }
+      }
+    },
     "ConfigureMaxImageDimensionsProp": {
       "title": "ConfigureMaxImageDimensionsProp",
       "type": "object",
@@ -433,6 +469,11 @@
       "title": "ConfigurePropWithEnabled",
       "type": "object",
       "properties": {
+        "enabled": {
+          "description": "Indicates the value of the item if it affects config-ui\n(eg.: if item is a switch and displaying an input on the config-ui depends on the switch value: on/off)",
+          "type": "boolean",
+          "title": "enabled"
+        },
         "settings": {
           "description": "Indicates if the item has to be displayed in the Settings Panel",
           "type": "boolean",
@@ -442,11 +483,6 @@
           "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
           "type": "string",
           "title": "label"
-        },
-        "enabled": {
-          "description": "Indicates the value of the item if it affects config-ui\n(eg.: if item is a switch and displaying an input on the config-ui depends on the switch value: on/off)",
-          "type": "boolean",
-          "title": "enabled"
         }
       }
     },
