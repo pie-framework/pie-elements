@@ -258,7 +258,9 @@ export const createCorrectResponseSession = (question, env) => {
   });
 };
 
-export const validate = (model = {}) => {
+const getInnerText = (html) => (html || '').replaceAll(/<[^>]*>/g, '');
+
+export const validate = (model = {}, config = {}) => {
   const { correctAnswer, data } = model || {};
   const { data: correctData } = correctAnswer || {};
   const categories = correctData || [];
@@ -267,10 +269,16 @@ export const validate = (model = {}) => {
   const correctAnswerErrors = {};
   const categoryErrors = {};
 
+  ['teacherInstructions', 'prompt', 'rationale'].forEach((field) => {
+    if (config[field]?.required && !getInnerText(model[field])) {
+      errors[field] = 'This field is required';
+    }
+  });
+
   categories.forEach((category, index) => {
     const { label } = category;
 
-    if (label === '' || label === '<div></div>') {
+    if (!getInnerText(label)) {
       categoryErrors[index] = 'Content should not be empty. ';
     } else {
       const identicalAnswer = categories.some((c, i) => c.label === label && index !== i);

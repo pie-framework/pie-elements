@@ -366,11 +366,11 @@ export class Main extends React.Component {
       toolbarEditorPosition,
     } = model || {};
     const {
+      prompt: promptError,
+      rationale: rationaleError,
       responseAreasError,
       responseAreaChoicesError,
       teacherInstructions: teacherInstructionsError,
-      prompt: promptError,
-      rationale: rationaleError,
     } = errors || {};
 
     const defaultImageMaxWidth = maxImageWidth && maxImageWidth.prompt;
