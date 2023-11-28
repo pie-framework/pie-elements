@@ -31,7 +31,6 @@ const styles = (theme) => ({
   },
   markup: {
     minHeight: '100px',
-    paddingBottom: theme.spacing.unit * 2.5,
     width: '100%',
     '& [data-slate-editor="true"]': {
       minHeight: '100px',
@@ -51,6 +50,9 @@ const styles = (theme) => ({
   },
   rationaleChoices: {
     marginBottom: theme.spacing.unit * 2.5,
+  },
+  responseArea: {
+    paddingBottom: theme.spacing.unit * 2.5,
   },
   panelDetails: {
     display: 'block',
@@ -363,7 +365,13 @@ export class Main extends React.Component {
       teacherInstructionsEnabled,
       toolbarEditorPosition,
     } = model || {};
-    const { responseAreasError, responseAreaChoicesError } = errors || {};
+    const {
+      responseAreasError,
+      responseAreaChoicesError,
+      teacherInstructions: teacherInstructionsError,
+      prompt: promptError,
+      rationale: rationaleError,
+    } = errors || {};
 
     const defaultImageMaxWidth = maxImageWidth && maxImageWidth.prompt;
     const defaultImageMaxHeight = maxImageHeight && maxImageHeight.prompt;
@@ -454,6 +462,7 @@ export class Main extends React.Component {
               onChange={this.onTeacherInstructionsChanged}
               imageSupport={imageSupport}
               nonEmpty={false}
+              error={teacherInstructionsError}
               toolbarOpts={toolbarOpts}
               spellCheck={spellCheckEnabled}
               maxImageWidth={(maxImageWidth && maxImageWidth.teacherInstructions) || defaultImageMaxWidth}
@@ -462,6 +471,7 @@ export class Main extends React.Component {
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               mathMlOptions={mathMlOptions}
             />
+            {teacherInstructionsError && <div className={classes.errorText}>{teacherInstructionsError}</div>}
           </InputContainer>
         )}
 
@@ -474,6 +484,7 @@ export class Main extends React.Component {
               imageSupport={imageSupport}
               nonEmpty={false}
               disableUnderline
+              error={promptError}
               toolbarOpts={toolbarOpts}
               spellCheck={spellCheckEnabled}
               maxImageWidth={defaultImageMaxWidth}
@@ -482,6 +493,7 @@ export class Main extends React.Component {
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               mathMlOptions={mathMlOptions}
             />
+            {promptError && <div className={classes.errorText}>{promptError}</div>}
           </InputContainer>
         )}
 
@@ -498,50 +510,52 @@ export class Main extends React.Component {
           </Tooltip>
         </div>
 
-        <EditableHtml
-          activePlugins={ALL_PLUGINS}
-          toolbarOpts={{ position: 'top' }}
-          responseAreaProps={{
-            type: 'inline-dropdown',
-            options: {
-              duplicates: true,
-            },
-            maxResponseAreas: maxResponseAreas,
-            respAreaToolbar: (node, value, onToolbarDone) => {
-              const { respAreaChoices } = this.state;
+        <div className={classes.responseArea}>
+          <EditableHtml
+            activePlugins={ALL_PLUGINS}
+            toolbarOpts={{ position: 'top' }}
+            responseAreaProps={{
+              type: 'inline-dropdown',
+              options: {
+                duplicates: true,
+              },
+              maxResponseAreas: maxResponseAreas,
+              respAreaToolbar: (node, value, onToolbarDone) => {
+                const { respAreaChoices } = this.state;
 
-              return () => (
-                <InlineDropdownToolbar
-                  onAddChoice={this.onAddChoice}
-                  onCheck={this.onCheck}
-                  onRemoveChoice={(index) => this.onRemoveChoice(node.data.get('index'), index)}
-                  onSelectChoice={(index) => this.onSelectChoice(node.data.get('index'), index)}
-                  node={node}
-                  value={value}
-                  onToolbarDone={onToolbarDone}
-                  choices={respAreaChoices[node.data.get('index')]}
-                  spellCheck={spellCheckEnabled}
-                  uploadSoundSupport={uploadSoundSupport}
-                  mathMlOptions={mathMlOptions}
-                />
-              );
-            },
-          }}
-          spellCheck={spellCheckEnabled}
-          className={classes.markup}
-          markup={model.slateMarkup || ''}
-          onChange={this.onChange}
-          imageSupport={imageSupport}
-          disableImageAlignmentButtons={true}
-          disabled={false}
-          highlightShape={false}
-          error={responseAreasError}
-          uploadSoundSupport={uploadSoundSupport}
-          languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
-          mathMlOptions={mathMlOptions}
-        />
-        {responseAreasError && <div className={classes.errorText}>{responseAreasError}</div>}
-        {responseAreaChoicesError && <div className={classes.errorText}>{responseAreaChoicesError}</div>}
+                return () => (
+                  <InlineDropdownToolbar
+                    onAddChoice={this.onAddChoice}
+                    onCheck={this.onCheck}
+                    onRemoveChoice={(index) => this.onRemoveChoice(node.data.get('index'), index)}
+                    onSelectChoice={(index) => this.onSelectChoice(node.data.get('index'), index)}
+                    node={node}
+                    value={value}
+                    onToolbarDone={onToolbarDone}
+                    choices={respAreaChoices[node.data.get('index')]}
+                    spellCheck={spellCheckEnabled}
+                    uploadSoundSupport={uploadSoundSupport}
+                    mathMlOptions={mathMlOptions}
+                  />
+                );
+              },
+            }}
+            spellCheck={spellCheckEnabled}
+            className={classes.markup}
+            markup={model.slateMarkup || ''}
+            onChange={this.onChange}
+            imageSupport={imageSupport}
+            disableImageAlignmentButtons={true}
+            disabled={false}
+            highlightShape={false}
+            error={responseAreasError}
+            uploadSoundSupport={uploadSoundSupport}
+            languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+            mathMlOptions={mathMlOptions}
+          />
+          {responseAreasError && <div className={classes.errorText}>{responseAreasError}</div>}
+          {responseAreaChoicesError && <div className={classes.errorText}>{responseAreaChoicesError}</div>}
+        </div>
 
         {choiceRationaleEnabled && renderChoiceRationale()}
 
@@ -552,6 +566,7 @@ export class Main extends React.Component {
               markup={model.rationale || ''}
               onChange={this.onRationaleChanged}
               imageSupport={imageSupport}
+              error={rationaleError}
               toolbarOpts={toolbarOpts}
               spellCheck={spellCheckEnabled}
               maxImageWidth={(maxImageWidth && maxImageWidth.rationale) || defaultImageMaxWidth}
@@ -560,6 +575,7 @@ export class Main extends React.Component {
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               mathMlOptions={mathMlOptions}
             />
+            {rationaleError && <div className={classes.errorText}>{rationaleError}</div>}
           </InputContainer>
         )}
 
