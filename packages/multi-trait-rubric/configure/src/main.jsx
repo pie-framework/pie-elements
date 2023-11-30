@@ -327,14 +327,6 @@ export class Main extends React.Component {
     const { showExcludeZeroDialog, showInfoDialog, infoDialogText, adjustedWidth } = this.state || {};
     const { traitsErrors } = errors || {};
 
-    // // set 100% width for wide screens to fix PD-2901
-    // const screenWidth = window.innerWidth;
-    // let adjustedWidth = parseInt(width) > parseInt(MIN_WIDTH) ? width : MIN_WIDTH;
-    //
-    // if (screenWidth > 2500) {
-    //   adjustedWidth = '100%';
-    // }
-
     const panelSettings = {
       standards: showStandards.settings && toggle(showStandards.label),
       'showLevelTagInput.enabled': showLevelTagInput.settings && toggle(showLevelTagInput.label, true),
@@ -377,7 +369,7 @@ export class Main extends React.Component {
         }
       >
         <div style={{ width: '100%' }} ref={this.divRef}/>
-        <div style={{ width: adjustedWidth }}>
+        <div style={{ width: width || adjustedWidth }}>
           {(scales || []).map((scale, scaleIndex) => (
             <Scale
               key={`scale-${scaleIndex}`}
