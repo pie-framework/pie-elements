@@ -130,7 +130,7 @@ export function model(question, session, env, updateSession) {
       responseCorrect: env.mode === 'evaluate' ? getScore(normalizedQuestion, session) === 1 : undefined,
       rationale,
       teacherInstructions,
-      language: normalizedQuestion.language
+      language: normalizedQuestion.language,
     };
 
     resolve(out);
@@ -225,10 +225,18 @@ export const createCorrectResponseSession = (question, env) => {
   });
 };
 
+const getInnerText = (html) => (html || '').replaceAll(/<[^>]*>/g, '');
+
 export const validate = (model = {}, config = {}) => {
   const { markup, choices } = model;
   const { maxResponseAreas, maxResponseAreaChoices } = config;
   const errors = {};
+
+  ['teacherInstructions', 'prompt', 'rationale'].forEach((field) => {
+    if (config[field]?.required && !getInnerText(model[field])) {
+      errors[field] = 'This field is required';
+    }
+  });
 
   const nbOfResponseAreas = ((markup || '').match(/\{\{(\d+)\}\}/g) || []).length;
 

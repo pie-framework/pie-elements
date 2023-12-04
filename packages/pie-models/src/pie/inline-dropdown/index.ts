@@ -6,7 +6,8 @@ import {
   ConfigureMathMLProp,
   ConfigureMaxImageDimensionsProp,
   ConfigureProp,
-  ConfigurePropWithEnabled
+  ConfigurePropWithEnabled,
+  ConfigureRequiredProp,
 } from '../ConfigurationProp';
 
 export interface Choice {
@@ -123,7 +124,7 @@ export interface InlineDropdownConfigure extends PromptConfig, CommonConfigSetti
   /**
    * Item Stem configuration
    */
-  prompt?: ConfigureProp;
+  prompt?: ConfigureRequiredProp;
 
   /**
    * Lock Choice Order configuration
@@ -138,7 +139,7 @@ export interface InlineDropdownConfigure extends PromptConfig, CommonConfigSetti
   /**
    * Rationale configuration
    */
-  rationale?: ConfigureProp;
+  rationale?: ConfigureRequiredProp;
 
   /**
    * Configuration for the author's spellcheck
@@ -168,7 +169,7 @@ export interface InlineDropdownConfigure extends PromptConfig, CommonConfigSetti
   /**
    * Teacher Instructions configuration
    */
-  teacherInstructions?: ConfigureProp;
+  teacherInstructions?: ConfigureRequiredProp;
 
   /**
    * Maximum number of response areas
