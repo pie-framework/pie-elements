@@ -89,6 +89,7 @@ export default class ComplexRubricConfigureElement extends HTMLElement {
     this._model = ComplexRubricConfigureElement.createDefaultModel(m, this._model);
 
     this.dispatchModelUpdated(reset);
+
     this._render();
   };
 

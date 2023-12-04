@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.7.0...@pie-element/pie-models@13.8.0) (2023-11-27)
+
+
+### Features
+
+* **categorize:** update tests, update docu PD-2996 ([4c13904](https://github.com/pie-framework/pie-elements/commit/4c13904299d9fe518c3cc13398a0114e61f723ca))
+
+
+
+
+
 # [13.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.6.0...@pie-element/pie-models@13.7.0) (2023-11-07)
 
 

@@ -3,6 +3,41 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@6.1.0...@pie-element/hotspot@6.1.1) (2023-11-27)
+
+
+### Bug Fixes
+
+* update pie-lib ([74283d7](https://github.com/pie-framework/pie-elements/commit/74283d71b12ab9c82875ce995368e5e39f4face6))
+
+
+
+
+
+# [6.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@6.0.1...@pie-element/hotspot@6.1.0) (2023-11-27)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3271, PD-3261 ([7a795bf](https://github.com/pie-framework/pie-elements/commit/7a795bfd7e2fd865774828ad23b0a8cbbac98356))
+* update pie-lib/pie-toolbox PD-597 ([1ec84aa](https://github.com/pie-framework/pie-elements/commit/1ec84aadae515088ef65b99f780a5e5dca516f99))
+* update pie-lib/pie-toolbox to test build ([9750cdd](https://github.com/pie-framework/pie-elements/commit/9750cdd3ce3018ef8bb63bc2c6db6abba3dad0c4))
+* update pie-lib/pie-toolbox to test build ([4e04cef](https://github.com/pie-framework/pie-elements/commit/4e04cefc163d504d136c9e3b17dbb32d1e22326b))
+* update pie-libs PD-2996 ([cd092c6](https://github.com/pie-framework/pie-elements/commit/cd092c6b5c4db91645394cd23febc1f9a07f46f9))
+* update pie-libs PD-3011, PD-3130, PD-3271 ([7a36106](https://github.com/pie-framework/pie-elements/commit/7a36106efeac0448b7b825989c1eb0b29b6688d4))
+* update pie-toolbox version PD-3298 ([0c282d5](https://github.com/pie-framework/pie-elements/commit/0c282d540aba5b2bb7a8b515bcaa2dba8302d49a))
+* **hotspot:** add tests for new delete widget, refactor with the comp from pie-lib pd-597 ([6fd6a8f](https://github.com/pie-framework/pie-elements/commit/6fd6a8f96a3b59c7269310552122fce8f30579b7))
+* **hotspot:** delete console.logs pd-597 ([65ae002](https://github.com/pie-framework/pie-elements/commit/65ae00223f789dd2945d2538c1a25c69f4d265c2))
+
+
+### Features
+
+* update pie-lib/pie-toolbox PD-1886 ([4a978d0](https://github.com/pie-framework/pie-elements/commit/4a978d058b865cc21c1fc84d7d39224e0d7cc88d))
+
+
+
+
+
 ## [6.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@6.0.0...@pie-element/hotspot@6.0.1) (2023-11-09)
 
 

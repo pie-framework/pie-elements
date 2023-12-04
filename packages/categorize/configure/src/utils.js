@@ -18,3 +18,11 @@ export const generateValidationMessage = (config) => {
 
 // used in controller too, for consistency modify it there too
 export const multiplePlacements = { enabled: 'Yes', disabled: 'No', perChoice: 'Set Per Choice' };
+
+export const  getMaxCategoryChoices = (model) => {
+  const { correctResponse = [] } = model || {};
+  return correctResponse.reduce((max, correctRes) => {
+    const choicesLength = correctRes.choices.length;
+    return choicesLength > max ? choicesLength : max;
+  }, 0);
+};

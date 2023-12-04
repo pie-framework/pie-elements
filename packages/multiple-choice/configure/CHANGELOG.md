@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.0.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@6.0.2...@pie-element/multiple-choice-configure@6.0.3) (2023-11-27)
+
+
+### Bug Fixes
+
+* update pie-lib ([74283d7](https://github.com/pie-framework/pie-elements/commit/74283d71b12ab9c82875ce995368e5e39f4face6))
+
+
+
+
+
+## [6.0.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@6.0.1...@pie-element/multiple-choice-configure@6.0.2) (2023-11-27)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-597 ([1ec84aa](https://github.com/pie-framework/pie-elements/commit/1ec84aadae515088ef65b99f780a5e5dca516f99))
+* update pie-libs PD-2996 ([cd092c6](https://github.com/pie-framework/pie-elements/commit/cd092c6b5c4db91645394cd23febc1f9a07f46f9))
+
+
+
+
+
 ## [6.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@6.0.0...@pie-element/multiple-choice-configure@6.0.1) (2023-11-09)
 
 

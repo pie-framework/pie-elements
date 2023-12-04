@@ -325,7 +325,6 @@ export class Main extends React.Component {
       addScaleEnabled,
     } = model || {};
     const { showExcludeZeroDialog, showInfoDialog, infoDialogText, adjustedWidth } = this.state || {};
-    const { traitsErrors } = errors || {};
 
     const panelSettings = {
       standards: showStandards.settings && toggle(showStandards.label),
@@ -375,7 +374,7 @@ export class Main extends React.Component {
               key={`scale-${scaleIndex}`}
               scale={scale}
               scaleIndex={scaleIndex}
-              errors={traitsErrors && traitsErrors[scaleIndex]}
+              errors={errors}
               onScaleRemoved={this.onScaleRemoved}
               onScaleChanged={this.onScaleChanged}
               showStandards={standards}

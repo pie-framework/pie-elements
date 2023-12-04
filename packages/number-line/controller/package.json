@@ -1,7 +1,7 @@
 {
   "name": "@pie-element/number-line-controller",
   "private": true,
-  "version": "5.0.1",
+  "version": "5.0.3",
   "description": "Controller logic for @pie-ui/number-line",
   "keywords": [
     "pie",
@@ -14,7 +14,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@pie-lib/pie-toolbox": "1.0.13-next.2",
+    "@pie-lib/pie-toolbox": "1.2.0",
     "lodash": "^4.17.15"
   },
   "author": "",
