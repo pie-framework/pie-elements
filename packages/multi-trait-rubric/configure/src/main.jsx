@@ -53,6 +53,12 @@ ShowModal.propTypes = {
 };
 
 export class Main extends React.Component {
+  constructor(props) {
+    super(props);
+    this.divRef = React.createRef();
+    this.updateDivWidth = this.updateDivWidth.bind(this);
+  }
+
   state = {
     showDecreaseMaxPointsDialog: false,
     showDeleteScaleDialog: false,
@@ -60,7 +66,29 @@ export class Main extends React.Component {
     showExcludeZeroDialog: false,
     showInfoDialog: false,
     infoDialogText: '',
+    adjustedWidth: MIN_WIDTH,
   };
+
+  componentDidMount() {
+    this.updateDivWidth();
+
+    window.addEventListener('resize', this.updateDivWidth);
+    window.addEventListener('load', this.updateDivWidth);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateDivWidth);
+    window.removeEventListener('load', this.updateDivWidth);
+  }
+
+  updateDivWidth() {
+    if (this.divRef && this.divRef.current) {
+      const divWidth = this.divRef.current.offsetWidth;
+      this.set({
+        adjustedWidth: divWidth,
+      });
+    }
+  }
 
   onScaleAdded = () => {
     const { model, onModelChanged, configuration } = this.props;
@@ -296,14 +324,7 @@ export class Main extends React.Component {
       maxPointsEnabled,
       addScaleEnabled,
     } = model || {};
-    const { showExcludeZeroDialog, showInfoDialog, infoDialogText } = this.state || {};
-    // set 100% width for wide screens to fix PD-2901
-    const screenWidth = window.innerWidth;
-    let adjustedWidth = parseInt(width) > parseInt(MIN_WIDTH) ? width : MIN_WIDTH;
-
-    if (screenWidth > 2500) {
-      adjustedWidth = '100%';
-    }
+    const { showExcludeZeroDialog, showInfoDialog, infoDialogText, adjustedWidth } = this.state || {};
 
     const panelSettings = {
       standards: showStandards.settings && toggle(showStandards.label),
@@ -346,7 +367,8 @@ export class Main extends React.Component {
           />
         }
       >
-        <div style={{ width: screenWidth > 2500 ? '100%' : adjustedWidth }}>
+        <div style={{ width: '100%' }} ref={this.divRef}/>
+        <div style={{ width: width || adjustedWidth }}>
           {(scales || []).map((scale, scaleIndex) => (
             <Scale
               key={`scale-${scaleIndex}`}
@@ -375,7 +397,7 @@ export class Main extends React.Component {
           {addScaleEnabled && <MultiTraitButton onClick={this.onScaleAdded}>Add Scale</MultiTraitButton>}
         </div>
 
-        <InfoDialog open={showInfoDialog} text={infoDialogText} onClose={() => this.set({ showInfoDialog: false })} />
+        <InfoDialog open={showInfoDialog} text={infoDialogText} onClose={() => this.set({ showInfoDialog: false })}/>
       </layout.ConfigLayout>
     );
   }

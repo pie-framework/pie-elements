@@ -83,7 +83,8 @@ export default {
       settings: true,
       label: 'Half Scoring',
     },
-    width: '900px',
+    // commenting this in order to use the dynamic width if the width was not set by the client (PD-3203)
+    // width: '900px',
     // these should not be set to true (should not be used) for now
     showStandards: {
       settings: false,

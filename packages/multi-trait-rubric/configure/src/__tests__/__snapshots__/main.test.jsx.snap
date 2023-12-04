@@ -299,6 +299,13 @@ Overall appearance is acceptable or better",
   <div
     style={
       Object {
+        "width": "100%",
+      }
+    }
+  />
+  <div
+    style={
+      Object {
         "width": "650px",
       }
     }
@@ -1161,6 +1168,13 @@ exports[`Main snapshot renders without scales 1`] = `
     />
   }
 >
+  <div
+    style={
+      Object {
+        "width": "100%",
+      }
+    }
+  />
   <div
     style={
       Object {
