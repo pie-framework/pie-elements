@@ -6,6 +6,7 @@ exports[`Scale snapshot renders 1`] = `
 >
   <WithStyles(TraitsHeaderTile)
     currentPosition={0}
+    errors={Object {}}
     key="header-key"
     mathMlOptions={Object {}}
     maxPoints={2}
@@ -121,6 +122,7 @@ exports[`Scale snapshot renders with drag and drop enabled 1`] = `
 >
   <WithStyles(TraitsHeaderTile)
     currentPosition={0}
+    errors={Object {}}
     key="header-key"
     mathMlOptions={Object {}}
     maxPoints={2}
@@ -236,6 +238,7 @@ exports[`Scale snapshot renders without descriptions 1`] = `
 >
   <WithStyles(TraitsHeaderTile)
     currentPosition={0}
+    errors={Object {}}
     key="header-key"
     mathMlOptions={Object {}}
     maxPoints={2}
@@ -353,6 +356,7 @@ exports[`Scale snapshot renders without standards 1`] = `
 >
   <WithStyles(TraitsHeaderTile)
     currentPosition={0}
+    errors={Object {}}
     key="header-key"
     mathMlOptions={Object {}}
     maxPoints={2}
@@ -468,6 +472,7 @@ exports[`Scale snapshot renders without traits 1`] = `
 >
   <WithStyles(TraitsHeaderTile)
     currentPosition={0}
+    errors={Object {}}
     key="header-key"
     mathMlOptions={Object {}}
     maxPoints={2}

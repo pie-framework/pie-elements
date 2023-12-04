@@ -271,7 +271,7 @@ export class Scale extends React.Component {
       infoDialogText,
     } = this.state;
 
-    const { traitsErrors, scorePointsErrors } = errors;
+    const { traitsErrors, scorePointsErrors } = errors || {};
     const currentScaleTraitsErrors = traitsErrors && traitsErrors[scaleIndex] || {};
     const currentScalePointsLabelsErrors = scorePointsErrors && scorePointsErrors[scaleIndex] || {};
 
