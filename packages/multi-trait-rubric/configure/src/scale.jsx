@@ -271,6 +271,10 @@ export class Scale extends React.Component {
       infoDialogText,
     } = this.state;
 
+    const { traitsErrors, scorePointsErrors } = errors || {};
+    const currentScaleTraitsErrors = traitsErrors && traitsErrors[scaleIndex] || {};
+    const currentScalePointsLabelsErrors = scorePointsErrors && scorePointsErrors[scaleIndex] || {};
+
     const scorePointsValues = [];
     const secondaryBlockWidth = parseInt(width) - DragHandleSpace - PrimaryBlockWidth || 320; // 320 is minWidth
 
@@ -294,6 +298,7 @@ export class Scale extends React.Component {
             }
           }}
           key={'header-key'}
+          errors={currentScalePointsLabelsErrors}
           traitLabel={traitLabel}
           scorePointsValues={scorePointsValues}
           scorePointsLabels={scorePointsLabels}
@@ -319,7 +324,7 @@ export class Scale extends React.Component {
           <TraitTile
             key={index}
             index={index}
-            error={errors && errors[index]}
+            error={currentScaleTraitsErrors && currentScaleTraitsErrors[index]}
             trait={trait}
             traitLabel={traitLabel || 'Trait'}
             scorePointsValues={scorePointsValues}

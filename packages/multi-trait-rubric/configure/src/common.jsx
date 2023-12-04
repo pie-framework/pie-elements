@@ -93,7 +93,55 @@ export const Row = withStyles({
   </div>
 ));
 
-export const ScorePoint = withStyles({
+const scorePointsStyles = (theme) => ({
+    scorePointBoxWrapper: {
+        padding: '0 10px',
+    },
+    scorePointBox: {
+        display: 'flex',
+        borderRadius: '4px',
+        background: 'white',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        border: greyBorder,
+    },
+    scorePointBoxDisabled: {
+        background: 'none',
+        justifyContent: 'center',
+        border: '0',
+    },
+    subLabel: {
+        width: '24px',
+        textAlign: 'center',
+    },
+    editableLabel: {
+        textAlign: 'left',
+        flex: 1,
+        border: 'none',
+
+        '& div': {
+            padding: 0,
+        },
+
+        '& > div': {
+            border: 'none',
+            borderLeft: greyBorder,
+            borderRadius: 0,
+            padding: Padding,
+        },
+    },
+    slateEditor: {
+        fontFamily: 'Cerebri',
+    },
+    errorText: {
+        fontSize: theme.typography.fontSize - 2,
+        color: theme.palette.error.main,
+        paddingBottom: theme.spacing.unit,
+    },
+})
+
+export const ScorePoint = withStyles((theme) => ({
   scorePointBoxWrapper: {
     padding: '0 10px',
   },
@@ -134,9 +182,14 @@ export const ScorePoint = withStyles({
   slateEditor: {
     fontFamily: 'Cerebri',
   },
-})(
+    errorText: {
+        fontSize: theme.typography.fontSize - 2,
+        color: theme.palette.error.main,
+        paddingBottom: theme.spacing.unit,
+    },
+}))(
   ({
-    classes,
+    classes, error='',
     scorePointsValue,
     scoreDescriptor,
     pluginProps,
@@ -160,6 +213,7 @@ export const ScorePoint = withStyles({
             <EditableHtml
               className={classes.editableLabel}
               classes={{ slateEditor: classes.slateEditor }}
+              error={error}
               markup={scoreDescriptor}
               placeholder=" Enter Label"
               onChange={onChange}
@@ -323,7 +377,7 @@ export const ExpandedInput = withStyles({
   },
 })(
   ({
-    classes,
+    classes, error,
     markup,
     onChange,
     pluginProps,
@@ -337,6 +391,7 @@ export const ExpandedInput = withStyles({
       <EditableHtml
         className={classes.prompt}
         classes={{ slateEditor: classes.slateEditor }}
+        error={error}
         markup={markup}
         onChange={onChange}
         placeholder={placeholder}

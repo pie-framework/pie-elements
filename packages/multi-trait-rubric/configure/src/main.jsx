@@ -297,8 +297,6 @@ export class Main extends React.Component {
       addScaleEnabled,
     } = model || {};
     const { showExcludeZeroDialog, showInfoDialog, infoDialogText } = this.state || {};
-    const { traitsErrors } = errors || {};
-
     // set 100% width for wide screens to fix PD-2901
     const screenWidth = window.innerWidth;
     let adjustedWidth = parseInt(width) > parseInt(MIN_WIDTH) ? width : MIN_WIDTH;
@@ -354,7 +352,7 @@ export class Main extends React.Component {
               key={`scale-${scaleIndex}`}
               scale={scale}
               scaleIndex={scaleIndex}
-              errors={traitsErrors && traitsErrors[scaleIndex]}
+              errors={errors}
               onScaleRemoved={this.onScaleRemoved}
               onScaleChanged={this.onScaleChanged}
               showStandards={standards}
