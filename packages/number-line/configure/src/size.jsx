@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { MiniField } from './number-text-field-custom';
+import { NumberTextFieldCustom } from '@pie-lib/pie-toolbox/config-ui';
 
 const Size = (props) => {
   const { classes, size, min, max, step, onChange } = props;
@@ -14,7 +14,7 @@ const Size = (props) => {
           Min {min}, Max {max}
         </label>
       </div>
-      <MiniField
+      <NumberTextFieldCustom
         value={size.width}
         min={min}
         max={max}
@@ -43,7 +43,7 @@ const styles = () => ({
   class: {},
   flexRow: {
     display: 'flex',
-    'align-items': 'center',
+    alignItems: 'center',
     gap: '10px',
   },
   flexCol: {

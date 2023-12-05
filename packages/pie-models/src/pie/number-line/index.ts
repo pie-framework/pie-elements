@@ -6,7 +6,7 @@ import {
   ConfigureLanguageOptionsProp,
   ConfigureMathMLProp,
   ConfigureProp,
-  ConfigurePropWithEnabled
+  ConfigurePropWithEnabled,
 } from '../ConfigurationProp';
 
 interface ResponseDefault {
@@ -63,11 +63,29 @@ interface Ticks {
 
   /** larger tick - These ticks have labels. */
   major: number;
+
+  /** Fraction representation of major. */
+  labelStep: string;
+
+  /** Contains tick interval type Integer, Fraction, Decimal */
+  tickIntervalType: string;
+
+  /** Fraction representation of minor. */
+  tickStep: string;
 }
 
 interface Arrows {
   left: boolean;
   right: boolean;
+}
+
+interface NumberLineDimensions {
+  settings: boolean;
+  label: string;
+  enabled: boolean;
+  min: number;
+  max: number;
+  step: number;
 }
 
 interface NumberLineDomainConfiguration {
@@ -125,6 +143,9 @@ interface NumberLineDomainConfiguration {
     REP: boolean;
   };
 
+  /** If enabled, allows user to set width for number line. */
+  widthEnabled: boolean;
+
   /** Array of initial responses */
   initialElements: ResponseArray;
 
@@ -173,14 +194,38 @@ export interface NumberLinePie extends PieModel {
  */
 export interface NumberLineConfigure extends PromptConfig, CommonConfigSettings {
   /**
+   * Configuration for the instruction
+   */
+  instruction?: ConfigurePropWithEnabled;
+
+  /**
    * Configuration for the prompt
    */
   prompt?: ConfigureProp;
 
   /**
+   * Configuration for the teacher instructions
+   */
+  teacherInstructions?: ConfigureProp;
+
+  /*
+   *Hold default values for number line width like min , max and step.
+   * */
+  numberLineDimensions?: NumberLineDimensions;
+
+  /**
    * Configuration for the author's spellcheck
    */
   spellCheck?: ConfigureProp;
+
+  /* Holds numeric value for maximum number of elements allowed on number line.*/
+  maxMaxElements?: number;
+
+  /* Hide buttons in point configuration module (Select All / None).*/
+  hidePointConfigButtons?: boolean;
+
+  /* Array of available tools for author.*/
+  availableTools?: string[];
 
   /** Configuration for editable-html */
   mathMlOptions?: ConfigureMathMLProp;

@@ -13,7 +13,7 @@ exports.model = (id, element) => ({
       minor: 0.125,
       major: 1,
       labelStep: '1',
-      tickIntervalType: 'F',
+      tickIntervalType: 'Fraction',
       tickStep: '1/8',
     },
     arrows: {
@@ -31,11 +31,11 @@ exports.model = (id, element) => ({
     availableTypes: {
       PF: true,
     },
-    title: '<div></div>',
+    title: '',
   },
   widthEnabled: true,
   id,
-  teacherInstructions: '<div></div>',
-  prompt: '<div></div>',
+  teacherInstructions: '',
+  prompt: '',
   element,
 });

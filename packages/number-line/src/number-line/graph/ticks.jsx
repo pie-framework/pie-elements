@@ -137,15 +137,16 @@ export class Ticks extends React.Component {
       max: PropTypes.number.isRequired,
     }).isRequired,
     fraction: PropTypes.bool,
+    width: PropTypes.number,
     ticks: TickValidator,
     y: PropTypes.number.isRequired,
   };
 
   render() {
-    let { domain, ticks, y, classes, fraction } = this.props;
+    let { domain, width, ticks, y, classes, fraction } = this.props;
     let { xScale } = this.context;
 
-    const tickData = buildTickData(domain, ticks, { fraction });
+    const tickData = buildTickData(domain, width, ticks, { fraction });
 
     return (
       <g>

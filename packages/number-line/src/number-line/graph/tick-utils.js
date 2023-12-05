@@ -149,18 +149,18 @@ export const closeTo = (a, b, precision) => {
 };
 
 const limit = (v, min, max) => {
-  if (math.smaller(v, min)) {
+  if (math.smaller(fraction(v), fraction(min))) {
     return min;
   }
 
-  if (math.larger(v, max)) {
+  if (math.larger(fraction(v), fraction(max))) {
     return max;
   }
 
   return v;
 };
 
-export const minorLimits = (domain, width) => {
+export const getMinorLimits = (domain, width) => {
   const end = domain.max - domain.min;
   const min = math.number(math.multiply(10, math.divide(math.fraction(end), width)));
   const max = math.number(math.multiply(20, min));
@@ -188,18 +188,21 @@ export const fraction = (v) => {
   }
 };
 
-export const normalizeTicks = (domain, ticks, opts) => {
-  const l = opts ? opts.limit !== false : true;
-  const end = fraction(domain.max - domain.min);
-  const minor = l
-    ? limit(fraction(ticks.minor), math.divide(end, 100), math.divide(end, 3))
-    : math.fraction(ticks.minor);
-  const major = l ? limit(fraction(ticks.major), minor, math.multiply(minor, 10)) : math.fraction(ticks.major);
+export const normalizeTicks = (domain, width, ticks, opts) => {
+  const useLimit = opts ? opts.limit !== false : true;
+  const minorLimits = getMinorLimits(domain, width);
 
-  const m = isMultiple(major, minor);
+  const minor = useLimit ? limit(fraction(ticks.minor), minorLimits.min, minorLimits.max) : fraction(ticks.minor);
+  const major = useLimit ? limit(fraction(ticks.major), minor, math.multiply(minor, 20)) : fraction(ticks.major);
 
-  if (!m) {
-    return { minor, major: math.multiply(minor, 2) };
+  const isMajorMultiple = isMultiple(major, minor);
+
+  if (!isMajorMultiple) {
+    const multiplier = math.divide(major, minor);
+    const multiplyBy = multiplier <= 2 ? 2 : Math.round(multiplier);
+
+    // major must be a multiple of minor
+    return { minor, major: math.multiply(minor, multiplyBy) };
   }
 
   return { major, minor };
@@ -208,8 +211,8 @@ export const normalizeTicks = (domain, ticks, opts) => {
 /**
  * Build ticks as an array of mathjs Fractions
  */
-export const buildTickDataAsFractions = (domain, ticks, opts) => {
-  ticks = normalizeTicks(domain, ticks, opts);
+export const buildTickDataAsFractions = (domain, width, ticks, opts) => {
+  ticks = normalizeTicks(domain, width, ticks, opts);
   const rng = simpleRange(domain.min, domain.max, ticks.minor);
 
   const o = rng
@@ -274,8 +277,8 @@ export const generateMajorValuesForMinor = (minor, minorValues) => {
   return out;
 };
 
-export const buildTickData = (domain, ticks, opts) => {
-  const result = buildTickDataAsFractions(domain, ticks, opts);
+export const buildTickData = (domain, width, ticks, opts) => {
+  const result = buildTickDataAsFractions(domain, width, ticks, opts);
 
   const out = result.map((o) => (opts.fraction ? o : { ...o, x: math.number(o.x) || 0 }));
 

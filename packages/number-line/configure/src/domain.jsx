@@ -56,7 +56,7 @@ const styles = (theme) => ({
   },
   flexRow: {
     display: 'flex',
-    'align-items': 'center',
+    alignItems: 'center',
     gap: '10px',
   },
 });

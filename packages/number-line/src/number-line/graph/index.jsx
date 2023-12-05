@@ -217,7 +217,7 @@ export class NumberLineGraph extends React.Component {
           <BaseLine y={lineY} width={width} />
           {arrows.left && <Arrow y={lineY} />}
           {arrows.right && <Arrow x={width} y={lineY} direction="right" />}
-          <Ticks y={lineY} domain={domain} ticks={ticks} fraction={fraction} />
+          <Ticks y={lineY} domain={domain} width={width} ticks={ticks} fraction={fraction} />
           <rect
             ref={(rect) => (this.rect = rect)}
             //need to have a fill for it to be clickable

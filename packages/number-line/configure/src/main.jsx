@@ -29,7 +29,7 @@ const trimModel = (model) => ({
 });
 
 let ticksModel = {
-  tickIntervalType: 'F',
+  tickIntervalType: 'Fraction',
   integerTick: 0,
   fractionTick: '0/1',
   decimalTick: 0,
@@ -89,7 +89,7 @@ const styles = (theme) => ({
   },
   flexRow: {
     display: 'flex',
-    'align-items': 'center',
+    alignItems: 'center',
     gap: '10px',
   },
   description: {
@@ -184,7 +184,7 @@ export class Main extends React.Component {
       });
     }
 
-    data.minorLimits = tickUtils.minorLimits(domain, width);
+    data.minorLimits = tickUtils.getMinorLimits(domain, width);
     data.minorValues = tickUtils.generateMinorValues(data.minorLimits);
     data.majorValues = {};
     const initTickModel = () => {
@@ -206,13 +206,13 @@ export class Main extends React.Component {
         if (firstInteger) {
           const index = data.minorValues.decimal.indexOf(firstInteger);
           ticksModel.integerTick = math.number(firstInteger);
-          if (ticksModel.tickIntervalType === 'I') {
+          if (ticksModel.tickIntervalType === 'Integer') {
             ticksModel.fractionTick = data.minorValues.fraction[index];
             ticksModel.decimalTick = data.minorValues.decimal[index];
           }
         } else {
-          if (ticksModel.tickIntervalType === 'I') {
-            ticksModel.tickIntervalType = 'F';
+          if (ticksModel.tickIntervalType === 'Integer') {
+            ticksModel.tickIntervalType = 'Fraction';
             ticksModel.decimalTick = data.minorValues.decimal[data.minorValues.decimal.length - 1];
             ticksModel.fractionTick = data.minorValues.fraction[data.minorValues.fraction.length - 1];
           }
@@ -233,14 +233,14 @@ export class Main extends React.Component {
         ticksModel.decimalLabel = math.number(ticks.major);
         if (data.majorValues.decimal.indexOf(ticksModel.decimalLabel) === -1) {
           let currIndex = 0;
-          if (ticksModel.tickIntervalType === 'I') {
+          if (ticksModel.tickIntervalType === 'Integer') {
             currIndex = 4;
           } else {
             currIndex = data.majorValues.decimal.length - 1;
           }
           while (currIndex !== 0) {
             let ticksData = { minor: ticksModel.decimalTick, major: data.majorValues.decimal[currIndex] };
-            let out = tickUtils.buildTickData(domain, ticksData, { fraction: undefined });
+            let out = tickUtils.buildTickData(domain, width, ticksData, { fraction: undefined });
             if (out.filter((x) => x.type === 'major').length > 1) {
               break;
             } else {

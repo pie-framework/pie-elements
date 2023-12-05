@@ -9,7 +9,7 @@ export const model = {
       minor: 0.125,
       major: 0.5,
       labelStep: '1/2',
-      tickIntervalType: 'F',
+      tickIntervalType: 'Fraction',
       tickStep: '1/8',
     },
     arrows: {
@@ -46,6 +46,7 @@ export const model = {
 export const configuration = {
   instruction: {
     settings: false,
+    enabled: true,
     label:
       'Number line questions involve plotting points or other objects. To create one, first set up the number line, then select the plotting tools students will be offered and use them to define the correct answer.',
   },
