@@ -94,51 +94,51 @@ export const Row = withStyles({
 ));
 
 const scorePointsStyles = (theme) => ({
-    scorePointBoxWrapper: {
-        padding: '0 10px',
-    },
-    scorePointBox: {
-        display: 'flex',
-        borderRadius: '4px',
-        background: 'white',
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        border: greyBorder,
-    },
-    scorePointBoxDisabled: {
-        background: 'none',
-        justifyContent: 'center',
-        border: '0',
-    },
-    subLabel: {
-        width: '24px',
-        textAlign: 'center',
-    },
-    editableLabel: {
-        textAlign: 'left',
-        flex: 1,
-        border: 'none',
+  scorePointBoxWrapper: {
+    padding: '0 10px',
+  },
+  scorePointBox: {
+    display: 'flex',
+    borderRadius: '4px',
+    background: 'white',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    border: greyBorder,
+  },
+  scorePointBoxDisabled: {
+    background: 'none',
+    justifyContent: 'center',
+    border: '0',
+  },
+  subLabel: {
+    width: '24px',
+    textAlign: 'center',
+  },
+  editableLabel: {
+    textAlign: 'left',
+    flex: 1,
+    border: 'none',
 
-        '& div': {
-            padding: 0,
-        },
+    '& div': {
+      padding: 0,
+    },
 
-        '& > div': {
-            border: 'none',
-            borderLeft: greyBorder,
-            borderRadius: 0,
-            padding: Padding,
-        },
+    '& > div': {
+      border: 'none',
+      borderLeft: greyBorder,
+      borderRadius: 0,
+      padding: Padding,
     },
-    slateEditor: {
-        fontFamily: 'Cerebri',
-    },
-    errorText: {
-        fontSize: theme.typography.fontSize - 2,
-        color: theme.palette.error.main,
-        paddingBottom: theme.spacing.unit,
-    },
+  },
+  slateEditor: {
+    fontFamily: 'Cerebri',
+  },
+  errorText: {
+    fontSize: theme.typography.fontSize - 2,
+    color: theme.palette.error.main,
+    paddingBottom: theme.spacing.unit,
+  },
 })
 
 export const ScorePoint = withStyles((theme) => ({
@@ -182,24 +182,24 @@ export const ScorePoint = withStyles((theme) => ({
   slateEditor: {
     fontFamily: 'Cerebri',
   },
-    errorText: {
-        fontSize: theme.typography.fontSize - 2,
-        color: theme.palette.error.main,
-        paddingBottom: theme.spacing.unit,
-    },
+  errorText: {
+    fontSize: theme.typography.fontSize - 2,
+    color: theme.palette.error.main,
+    paddingBottom: theme.spacing.unit,
+  },
 }))(
   ({
-    classes, error='',
-    scorePointsValue,
-    scoreDescriptor,
-    pluginProps,
-    onChange,
-    showScorePointLabels,
-    alignToRight,
-    spellCheck,
-    uploadSoundSupport,
-    mathMlOptions = {},
-  }) => {
+     classes, error = '',
+     scorePointsValue,
+     scoreDescriptor,
+     pluginProps,
+     onChange,
+     showScorePointLabels,
+     alignToRight,
+     spellCheck,
+     uploadSoundSupport,
+     mathMlOptions = {},
+   }) => {
     const scoreBoxClasses = showScorePointLabels
       ? classes.scorePointBox
       : `${classes.scorePointBox} ${classes.scorePointBoxDisabled}`;
@@ -232,7 +232,6 @@ export const ScorePoint = withStyles((theme) => ({
   },
 );
 
-const maxScoreOptions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 const inputStyles = (theme) => ({
   root: {
     background: theme.palette.common.white,
@@ -258,11 +257,12 @@ const inputStyles = (theme) => ({
 
 const BootstrapInput = withStyles(inputStyles)(InputBase);
 
-export const MaxPointsPicker = withStyles({})(({ maxPoints, onChange }) => (
+const createMaxScoreOptions = (maxMaxPoints) => Array.from({ length: maxMaxPoints }, (_, i) => i + 1)
+export const MaxPointsPicker = withStyles({})(({ maxPoints, onChange, maxMaxPoints }) => (
   <FormControl>
     <InputLabel>Max Points</InputLabel>
-    <Select value={maxPoints} onChange={onChange} input={<BootstrapInput />}>
-      {(maxScoreOptions || []).map((maxScore) => (
+    <Select value={maxPoints} onChange={onChange} input={<BootstrapInput/>}>
+      {createMaxScoreOptions(maxMaxPoints).map((maxScore) => (
         <MenuItem key={`menu-item-${maxScore}`} value={maxScore}>
           {maxScore}
         </MenuItem>
@@ -332,17 +332,17 @@ export const UnderlinedInput = withStyles((theme) => ({
   },
 }))(
   ({
-    classes,
-    error,
-    markup,
-    onChange,
-    pluginProps,
-    label,
-    placeholder,
-    spellCheck,
-    uploadSoundSupport,
-    mathMlOptions = {},
-  }) => (
+     classes,
+     error,
+     markup,
+     onChange,
+     pluginProps,
+     label,
+     placeholder,
+     spellCheck,
+     uploadSoundSupport,
+     mathMlOptions = {},
+   }) => (
     <div className={classes.underlinedInputWrapper}>
       {label && <div>{label}</div>}
 
@@ -377,16 +377,16 @@ export const ExpandedInput = withStyles({
   },
 })(
   ({
-    classes, error,
-    markup,
-    onChange,
-    pluginProps,
-    placeholder,
-    alignToRight,
-    spellCheck,
-    uploadSoundSupport,
-    mathMlOptions = {},
-  }) => (
+     classes, error,
+     markup,
+     onChange,
+     pluginProps,
+     placeholder,
+     alignToRight,
+     spellCheck,
+     uploadSoundSupport,
+     mathMlOptions = {},
+   }) => (
     <div>
       <EditableHtml
         className={classes.prompt}
