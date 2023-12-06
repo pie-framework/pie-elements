@@ -208,31 +208,25 @@ export interface NumberLineConfigure extends PromptConfig, CommonConfigSettings 
    */
   teacherInstructions?: ConfigureProp;
 
-  /*
-   *Hold default values for number line width like min , max and step.
-   * */
+  /** Hold default values for number line width like min , max and step. */
   numberLineDimensions?: NumberLineDimensions;
 
-  /**
-   * Configuration for the author's spellcheck
-   */
+  /** Configuration for the author's spellcheck */
   spellCheck?: ConfigureProp;
 
-  /* Holds numeric value for maximum number of elements allowed on number line.*/
+  /** Holds numeric value for maximum number of elements allowed on number line. */
   maxMaxElements?: number;
 
-  /* Hide buttons in point configuration module (Select All / None).*/
+  /** Hide buttons in point configuration module (Select All / None). */
   hidePointConfigButtons?: boolean;
 
-  /* Array of available tools for author.*/
+  /** Array of available tools for author. */
   availableTools?: string[];
 
   /** Configuration for editable-html */
   mathMlOptions?: ConfigureMathMLProp;
 
-  /**
-   * Language configuration
-   */
+  /** Language configuration */
   language?: ConfigurePropWithEnabled;
 
   /**
