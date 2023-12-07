@@ -7,7 +7,7 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import Radio from '@material-ui/core/Radio';
 import * as math from 'mathjs';
 
-export const TickIntervals = ['Interval', 'Fraction', 'Decimal'];
+export const TickIntervals = ['Integer', 'Fraction', 'Decimal'];
 
 export const Ticks = (props) => {
   const { classes, ticksModel, onChange, data } = props;
@@ -75,7 +75,7 @@ export const Ticks = (props) => {
                 <td>
                   <NumberTextFieldCustom
                     value={ticksModel.integerTick}
-                    min={math.number(math.floor(data.minorLimits.min))}
+                    min={math.number(math.ceil(data.minorLimits.min))}
                     max={math.number(math.ceil(data.minorLimits.max))}
                     step={1}
                     onlyIntegersAllowed={true}
