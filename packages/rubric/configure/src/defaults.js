@@ -22,6 +22,6 @@ export default {
       mmlOutput: false,
       mmlEditing: false,
     },
-    maxMaxPoints: 100,
+    maxMaxPoints: 9,
   },
 };

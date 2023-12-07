@@ -22,6 +22,7 @@ class Main extends React.Component {
       showMaxPoint = {},
       mathMlOptions = {},
       width,
+      maxMaxPoints
     } = configuration || {};
 
     const panelProperties = {
@@ -46,7 +47,12 @@ class Main extends React.Component {
         }
       >
         <div style={{ maxWidth: width }}>
-          <Authoring value={model} onChange={onModelChanged} mathMlOptions={mathMlOptions} />
+          <Authoring
+            value={model}
+            onChange={onModelChanged}
+            mathMlOptions={mathMlOptions}
+            maxMaxPoints={Math.abs(maxMaxPoints)}
+          />
         </div>
       </layout.ConfigLayout>
     );
