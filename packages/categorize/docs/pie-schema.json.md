@@ -2,6 +2,10 @@ Pie Model Object for @pie-elements/categorize
 
 The schema defines the following properties:
 
+# `allowMaxChoicesPerCategory` (boolean, required)
+
+Indicates if author has the possibility to set maxChoicesPerCategory
+
 # `choices` (array, required)
 
 The available choices
@@ -129,6 +133,10 @@ Indicates the configuration for feedback when answer is incorrect
 
 Indicates the configuration for feedback when answer is partially correct
 
+# `maxChoicesPerCategory` (number, required)
+
+Indicates the maximum number of choices from a category
+
 # `rationale` (string)
 
 Indicates the value for rationale
@@ -251,6 +259,11 @@ Indicates the max dimension for images in category labels
 
 Properties of the `ConfigurePropWithEnabled` object:
 
+### `enabled` (boolean)
+
+Indicates the value of the item if it affects config-ui
+(eg.: if item is a switch and displaying an input on the config-ui depends on the switch value: on/off)
+
 ### `settings` (boolean)
 
 Indicates if the item has to be displayed in the Settings Panel
@@ -258,11 +271,6 @@ Indicates if the item has to be displayed in the Settings Panel
 ### `label` (string)
 
 Indicates the label for the item that has to be displayed in the Settings Panel
-
-### `enabled` (boolean)
-
-Indicates the value of the item if it affects config-ui
-(eg.: if item is a switch and displaying an input on the config-ui depends on the switch value: on/off)
 
 ## `ConfigureLanguageOptionsProp` (object)
 

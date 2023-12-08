@@ -7,6 +7,7 @@ import {
   ConfigureMaxImageDimensionsProp,
   ConfigureProp,
   ConfigurePropWithEnabled,
+  ConfigureRequiredProp,
 } from '../ConfigurationProp';
 
 interface Chart {
@@ -260,12 +261,12 @@ export interface ChartingConfigure extends PromptConfig, CommonConfigSettings {
   /**
    * Rationale configuration
    */
-  prompt?: ConfigureProp;
+  prompt?: ConfigureRequiredProp;
 
   /**
    * Prompt configuration
    */
-  rationale?: ConfigureProp;
+  rationale?: ConfigureRequiredProp;
 
   /**
    * Configuration for the author's spellcheck
@@ -300,7 +301,7 @@ export interface ChartingConfigure extends PromptConfig, CommonConfigSettings {
   /**
    * Teacher Instructions configuration
    */
-  teacherInstructions?: ConfigureProp;
+  teacherInstructions?: ConfigureRequiredProp;
 
   /**
    * Chart title configuration

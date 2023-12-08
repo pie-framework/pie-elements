@@ -77,6 +77,7 @@ exports[`Trait Header snapshot renders 1`] = `
     >
       <WithStyles(Component)
         alignToRight={false}
+        error=""
         mathMlOptions={Object {}}
         onChange={[Function]}
         pluginProps={
@@ -105,6 +106,7 @@ exports[`Trait Header snapshot renders 1`] = `
     >
       <WithStyles(Component)
         alignToRight={false}
+        error=""
         mathMlOptions={Object {}}
         onChange={[Function]}
         pluginProps={
@@ -133,6 +135,7 @@ exports[`Trait Header snapshot renders 1`] = `
     >
       <WithStyles(Component)
         alignToRight={false}
+        error=""
         mathMlOptions={Object {}}
         onChange={[Function]}
         pluginProps={
@@ -232,6 +235,7 @@ exports[`Trait Header snapshot renders without description 1`] = `
     >
       <WithStyles(Component)
         alignToRight={false}
+        error=""
         mathMlOptions={Object {}}
         onChange={[Function]}
         pluginProps={
@@ -260,6 +264,7 @@ exports[`Trait Header snapshot renders without description 1`] = `
     >
       <WithStyles(Component)
         alignToRight={false}
+        error=""
         mathMlOptions={Object {}}
         onChange={[Function]}
         pluginProps={
@@ -288,6 +293,7 @@ exports[`Trait Header snapshot renders without description 1`] = `
     >
       <WithStyles(Component)
         alignToRight={false}
+        error=""
         mathMlOptions={Object {}}
         onChange={[Function]}
         pluginProps={
@@ -370,6 +376,7 @@ exports[`Trait Header snapshot renders without level tag input 1`] = `
     >
       <WithStyles(Component)
         alignToRight={false}
+        error=""
         mathMlOptions={Object {}}
         onChange={[Function]}
         pluginProps={
@@ -398,6 +405,7 @@ exports[`Trait Header snapshot renders without level tag input 1`] = `
     >
       <WithStyles(Component)
         alignToRight={false}
+        error=""
         mathMlOptions={Object {}}
         onChange={[Function]}
         pluginProps={
@@ -426,6 +434,7 @@ exports[`Trait Header snapshot renders without level tag input 1`] = `
     >
       <WithStyles(Component)
         alignToRight={false}
+        error=""
         mathMlOptions={Object {}}
         onChange={[Function]}
         pluginProps={
@@ -530,6 +539,7 @@ exports[`Trait Header snapshot renders without score point labels 1`] = `
     >
       <WithStyles(Component)
         alignToRight={false}
+        error=""
         mathMlOptions={Object {}}
         onChange={[Function]}
         pluginProps={
@@ -558,6 +568,7 @@ exports[`Trait Header snapshot renders without score point labels 1`] = `
     >
       <WithStyles(Component)
         alignToRight={false}
+        error=""
         mathMlOptions={Object {}}
         onChange={[Function]}
         pluginProps={
@@ -586,6 +597,7 @@ exports[`Trait Header snapshot renders without score point labels 1`] = `
     >
       <WithStyles(Component)
         alignToRight={false}
+        error=""
         mathMlOptions={Object {}}
         onChange={[Function]}
         pluginProps={
@@ -761,6 +773,7 @@ exports[`Trait Header snapshot renders without standards 1`] = `
     >
       <WithStyles(Component)
         alignToRight={false}
+        error=""
         mathMlOptions={Object {}}
         onChange={[Function]}
         pluginProps={
@@ -789,6 +802,7 @@ exports[`Trait Header snapshot renders without standards 1`] = `
     >
       <WithStyles(Component)
         alignToRight={false}
+        error=""
         mathMlOptions={Object {}}
         onChange={[Function]}
         pluginProps={
@@ -817,6 +831,7 @@ exports[`Trait Header snapshot renders without standards 1`] = `
     >
       <WithStyles(Component)
         alignToRight={false}
+        error=""
         mathMlOptions={Object {}}
         onChange={[Function]}
         pluginProps={

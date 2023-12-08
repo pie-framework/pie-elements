@@ -164,7 +164,7 @@ export class TraitTile extends React.Component {
 
               <UnderlinedInput
                 markup={name}
-                error={error}
+                error={error?.name || ''}
                 onChange={(name) => this.onTraitChanged({ name })}
                 pluginProps={labelPlugins}
                 placeholder={`Enter ${traitLabel}`}
@@ -172,7 +172,7 @@ export class TraitTile extends React.Component {
                 uploadSoundSupport={uploadSoundSupport}
                 mathMlOptions={mathMlOptions}
               />
-              {error && <div className={classes.errorText}>{error}</div>}
+              {error && <div className={classes.errorText}>{error.name || ''}</div>}
             </PrimaryBlock>
 
             <SecondaryBlock
@@ -200,12 +200,14 @@ export class TraitTile extends React.Component {
                   <ExpandedInput
                     placeholder="Enter Description"
                     markup={description}
+                    error={error?.description || ''}
                     onChange={(description) => this.onTraitChanged({ description })}
                     pluginProps={pluginProps}
                     spellCheck={spellCheck}
                     uploadSoundSupport={uploadSoundSupport}
                     mathMlOptions={mathMlOptions}
                   />
+                  {error && <div className={classes.errorText}>{error.description || ''}</div>}
                 </Block>
               )}
 
@@ -249,7 +251,7 @@ TraitTile.propTypes = {
   connectDropTarget: PropTypes.func.isRequired,
   connectDragPreview: PropTypes.func.isRequired,
   classes: PropTypes.object.isRequired,
-  error: PropTypes.string,
+  error: PropTypes.object,
   isDragging: PropTypes.bool.isRequired,
   id: PropTypes.any,
   isOver: PropTypes.bool,

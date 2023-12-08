@@ -19,6 +19,7 @@ export default {
     prompt: {
       settings: true,
       label: 'Prompt',
+      required: false,
     },
     settingsPanelDisabled: false,
     spellCheck: {
@@ -37,10 +38,12 @@ export default {
     rationale: {
       settings: true,
       label: 'Rationale',
+      required: false,
     },
     teacherInstructions: {
       settings: true,
       label: 'Teacher Instructions',
+      required: false,
     },
     choiceRationale: {
       settings: true,

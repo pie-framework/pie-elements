@@ -35,6 +35,7 @@ exports[`Trait snapshot renders 1`] = `
             </WithStyles(Menu)>
           </div>
           <WithStyles(Component)
+            error=""
             markup="Presentation"
             mathMlOptions={Object {}}
             onChange={[Function]}
@@ -81,6 +82,7 @@ exports[`Trait snapshot renders 1`] = `
           </WithStyles(Component)>
           <WithStyles(Component)>
             <WithStyles(Component)
+              error=""
               markup=""
               mathMlOptions={Object {}}
               onChange={[Function]}
@@ -206,6 +208,7 @@ exports[`Trait snapshot renders with drag and drop 1`] = `
             </WithStyles(Menu)>
           </div>
           <WithStyles(Component)
+            error=""
             markup="Presentation"
             mathMlOptions={Object {}}
             onChange={[Function]}
@@ -252,6 +255,7 @@ exports[`Trait snapshot renders with drag and drop 1`] = `
           </WithStyles(Component)>
           <WithStyles(Component)>
             <WithStyles(Component)
+              error=""
               markup=""
               mathMlOptions={Object {}}
               onChange={[Function]}
@@ -377,6 +381,7 @@ exports[`Trait snapshot renders without description 1`] = `
             </WithStyles(Menu)>
           </div>
           <WithStyles(Component)
+            error=""
             markup="Presentation"
             mathMlOptions={Object {}}
             onChange={[Function]}
@@ -423,6 +428,7 @@ exports[`Trait snapshot renders without description 1`] = `
           </WithStyles(Component)>
           <WithStyles(Component)>
             <WithStyles(Component)
+              error=""
               markup=""
               mathMlOptions={Object {}}
               onChange={[Function]}
@@ -548,6 +554,7 @@ exports[`Trait snapshot renders without score points values 1`] = `
             </WithStyles(Menu)>
           </div>
           <WithStyles(Component)
+            error=""
             markup="Presentation"
             mathMlOptions={Object {}}
             onChange={[Function]}
@@ -594,6 +601,7 @@ exports[`Trait snapshot renders without score points values 1`] = `
           </WithStyles(Component)>
           <WithStyles(Component)>
             <WithStyles(Component)
+              error=""
               markup=""
               mathMlOptions={Object {}}
               onChange={[Function]}
@@ -652,6 +660,7 @@ exports[`Trait snapshot renders without standards 1`] = `
             </WithStyles(Menu)>
           </div>
           <WithStyles(Component)
+            error=""
             markup="Presentation"
             mathMlOptions={Object {}}
             onChange={[Function]}
@@ -680,6 +689,7 @@ exports[`Trait snapshot renders without standards 1`] = `
         >
           <WithStyles(Component)>
             <WithStyles(Component)
+              error=""
               markup=""
               mathMlOptions={Object {}}
               onChange={[Function]}

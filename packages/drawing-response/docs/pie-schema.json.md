@@ -92,6 +92,11 @@ The schema defines the following additional types:
 
 Properties of the `ConfigurePropWithEnabled` object:
 
+### `enabled` (boolean)
+
+Indicates the value of the item if it affects config-ui
+(eg.: if item is a switch and displaying an input on the config-ui depends on the switch value: on/off)
+
 ### `settings` (boolean)
 
 Indicates if the item has to be displayed in the Settings Panel
@@ -99,11 +104,6 @@ Indicates if the item has to be displayed in the Settings Panel
 ### `label` (string)
 
 Indicates the label for the item that has to be displayed in the Settings Panel
-
-### `enabled` (boolean)
-
-Indicates the value of the item if it affects config-ui
-(eg.: if item is a switch and displaying an input on the config-ui depends on the switch value: on/off)
 
 ## `ConfigureProp` (object)
 
@@ -137,6 +137,13 @@ Indicates the max dimension for images in rationale
 
 Properties of the `ConfigureWithForceProp` object:
 
+### `forceEnabled` (boolean)
+
+Indicates the value for the toggle;
+if true:
+- this property will not be visible in Settings Panel (settings will become automatically false)
+- the model property afferent to it will become automatically false
+
 ### `settings` (boolean)
 
 Indicates if the item has to be displayed in the Settings Panel
@@ -144,13 +151,6 @@ Indicates if the item has to be displayed in the Settings Panel
 ### `label` (string)
 
 Indicates the label for the item that has to be displayed in the Settings Panel
-
-### `forceEnabled` (boolean)
-
-Indicates the value for the toggle;
-if true:
-- this property will not be visible in Settings Panel (settings will become automatically false)
-- the model property afferent to it will become automatically false
 
 ## `ConfigureMathMLProp` (object)
 
