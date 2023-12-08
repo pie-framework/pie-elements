@@ -181,20 +181,9 @@ describe('ticks', () => {
       0: [tt(-96, 'major'), tt(-88, 'minor'), tt(-80, 'major')],
     });
 
-    // assertTicks(0, 100, 1, 10, {
-    //   0: [tt(0, 'major')],
-    //   90: [tt(90, 'major')],
-    //   100: [tt(100, 'major')],
-    // });
-
     assertTicks(0, 100, 50, 50, {
       0: [tt(0, 'major'), tt(50, 'major'), tt(100, 'major')],
     });
-
-    // // limited to minor 100/2 and major 2000/2
-    // assertTicks(0, 100, 70, 80, {
-    //   0: [tt(0, 'major'), tt(50, 'minor'), tt(100, 'major')],
-    // });
   });
 
   describe('fractionSnapTo', () => {
