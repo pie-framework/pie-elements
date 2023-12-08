@@ -21,7 +21,7 @@ describe('main', () => {
       classes: {},
       className: 'className',
       onChange,
-      model: { correctResponse: [], graph: { ...defaultModel } },
+      model: { correctResponse: [], graph: { ...defaultModel.graph } },
       configuration: { ...defaultConfig },
     };
     const props = { ...defaults, ...extras };

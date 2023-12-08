@@ -37,7 +37,7 @@ exports[`Design snapshot renders 1`] = `
           <UNDEFINED
             onClose={[Function]}
             open={false}
-            text="To change this value to , each category must have  or fewer answer choice[s]."
+            text="categorize.maxChoicesPerCategoryRestriction"
             title="Warning"
           />
         }
