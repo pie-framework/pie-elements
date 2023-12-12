@@ -34,9 +34,11 @@ export class Main extends React.Component {
 
   render() {
     const { model, configuration, canUpdateModel } = this.props;
+    console.log('model Andreea', model);
+
     const { rubrics = {} } = model;
     let { rubricType } = model;
-    const { contentDimensions = {}, multiTraitRubric, simpleRubric, width } = configuration;
+    const { contentDimensions = {}, multiTraitRubric, simpleRubric, rubricless, width } = configuration;
     let rubricTag = '';
 
     if (!rubricType) {
@@ -78,6 +80,23 @@ export class Main extends React.Component {
             />
           );
           break;
+
+        case 'rubricless':
+          rubricTag = (
+              <rubric-configure
+                  id="rubricless"
+                  key="rubricless"
+                  ref={(ref) => {
+                    if (ref) {
+                      this.rubricless = ref;
+
+                      this.rubricless.model = rubrics.rubricless;
+                      this.rubricless.configuration = { ...rubricless, width };
+                    }
+                  }}
+              />
+          );
+          break;
       }
     }
 
@@ -99,6 +118,12 @@ export class Main extends React.Component {
             value={RUBRIC_TYPES.MULTI_TRAIT_RUBRIC}
             control={<Radio checked={rubricType === RUBRIC_TYPES.MULTI_TRAIT_RUBRIC} />}
             label="Multi Trait Rubric"
+          />
+
+          <FormControlLabel
+              value={'rubricless'}
+              control={<Radio checked={rubricType === 'rubricless'} />}
+              label="Rubricless"
           />
         </RadioGroup>
 

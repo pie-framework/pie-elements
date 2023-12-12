@@ -15,6 +15,11 @@ const rubricDefaultModel = {
   excludeZero: false,
 };
 
+const rubriclessDefaultModel = {
+  maxPoints: 10,
+  excludeZero: false,
+};
+
 const multiTraitDefaultConfiguration = {
   settingsPanelDisabled: false,
   excludeZeroDialogBoxContent: {
@@ -121,10 +126,11 @@ const rubricDefaultConfiguration = {
 export default {
   model: {
     rubricType: 'simpleRubric',
-    rubrics: { simpleRubric: rubricDefaultModel, multiTraitRubric: multiTraitDefaultModel },
+    rubrics: { simpleRubric: rubricDefaultModel, multiTraitRubric: multiTraitDefaultModel, rubricless: rubriclessDefaultModel },
   },
   configuration: {
     multiTraitRubric: multiTraitDefaultConfiguration,
     simpleRubric: rubricDefaultConfiguration,
+    rubricless: rubricDefaultConfiguration,
   },
 };

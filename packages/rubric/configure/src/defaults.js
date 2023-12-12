@@ -21,6 +21,8 @@ export default {
     mathMlOptions: {
       mmlOutput: false,
       mmlEditing: false,
-    }
+    },
+    // shows us if it simple rubric or rubricless(simple rubric with less structure)
+    rubricless: false,
   },
 };

@@ -16,6 +16,7 @@ class Main extends React.Component {
   render() {
     const { model, configuration, onConfigurationChanged, onModelChanged } = this.props || {};
     const {
+      rubricless = false,
       contentDimensions = {},
       settingsPanelDisabled,
       showExcludeZero = {},
@@ -46,7 +47,7 @@ class Main extends React.Component {
         }
       >
         <div style={{ maxWidth: width }}>
-          <Authoring value={model} onChange={onModelChanged} mathMlOptions={mathMlOptions} />
+          <Authoring value={model} onChange={onModelChanged} mathMlOptions={mathMlOptions} rubricless={rubricless} />
         </div>
       </layout.ConfigLayout>
     );

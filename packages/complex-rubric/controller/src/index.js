@@ -4,6 +4,7 @@ import defaults from './defaults';
 const RUBRIC_TYPES = {
   SIMPLE_RUBRIC: 'simpleRubric',
   MULTI_TRAIT_RUBRIC: 'multiTraitRubric',
+  'rubricless': 'rubricless',
 };
 
 export function createDefaultModel(model = {}) {
@@ -20,7 +21,7 @@ export const normalize = (question) => ({ ...defaults.model, ...question });
 export async function model(question, session, env) {
   const normalizedQuestion = normalize(question);
 
-  if (normalizedQuestion.rubricType === RUBRIC_TYPES.SIMPLE_RUBRIC) {
+  if (normalizedQuestion.rubricType === RUBRIC_TYPES.SIMPLE_RUBRIC || normalizedQuestion.rubricType === 'rubricless') {
     return new Promise((resolve) => {
       resolve(
         env && env.role && env.role === 'instructor'
@@ -57,6 +58,10 @@ export async function model(question, session, env) {
         ...normalizedQuestion.rubrics,
         simpleRubric: {
           ...normalizedQuestion.rubrics.simpleRubric,
+          visible: false,
+        },
+        rubricless: {
+          ...normalizedQuestion.rubrics.rubricless,
           visible: false,
         },
         multiTraitRubric: {
