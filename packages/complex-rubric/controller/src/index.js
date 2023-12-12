@@ -90,6 +90,7 @@ export const createCorrectResponseSession = (question, env) => {
   });
 };
 
+// this should always be updated when validate function of rubric is changed (as for ebsr)
 const validateSimpleRubric = (model) => {
   const { points } = model;
   const errors = {};
@@ -115,6 +116,7 @@ const validateSimpleRubric = (model) => {
   return errors;
 };
 
+// this should always be updated when validate function of multi-trait-rubric is changed (as for ebsr)
 const validateMultiTraitRubric = (model) => {
   const { scales, description = false, pointLabels = false } = model;
   const errors = {};
@@ -132,7 +134,7 @@ const validateMultiTraitRubric = (model) => {
         if (!scorePointLabel || scorePointLabel === '<div></div>') {
           scorePointsLabelsErrors[scoreIndex] = 'Points labels should not be empty.';
         } else {
-          const identicalScorePointLabel = scorePointsLabels.slice(scoreIndex + 1).some(s => this.markupToText(s) === this.markupToText(scorePointLabel));
+          const identicalScorePointLabel = scorePointsLabels.slice(scoreIndex + 1).some(s => markupToText(s) === markupToText(scorePointLabel));
 
           if (identicalScorePointLabel) {
             scorePointsLabelsErrors[scoreIndex] = 'Points labels should be unique.';
