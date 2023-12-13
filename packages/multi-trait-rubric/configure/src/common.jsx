@@ -258,6 +258,7 @@ const inputStyles = (theme) => ({
 const BootstrapInput = withStyles(inputStyles)(InputBase);
 
 const createMaxScoreOptions = (maxMaxPoints) => Array.from({ length: maxMaxPoints }, (_, i) => i + 1)
+
 export const MaxPointsPicker = withStyles({})(({ maxPoints, onChange, maxMaxPoints }) => (
   <FormControl>
     <InputLabel>Max Points</InputLabel>
