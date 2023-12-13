@@ -90,7 +90,8 @@ export const createCorrectResponseSession = (question, env) => {
   });
 };
 
-// this should always be updated when validate function of rubric is changed (as for ebsr)
+// IMPORTANT! This function is a duplicate of rubric/controller/validate function!
+// If you make any changes to this function, please make sure you also update rubric/controller/validate function!“.
 const validateSimpleRubric = (model) => {
   const { points } = model;
   const errors = {};
@@ -116,7 +117,8 @@ const validateSimpleRubric = (model) => {
   return errors;
 };
 
-// this should always be updated when validate function of multi-trait-rubric is changed (as for ebsr)
+// IMPORTANT! This function is a duplicate of multi-trait-rubric/controller/validate function!
+// If you make any changes to this function, please make sure you also update multi-trait-rubric/controller/validate function!“.
 const validateMultiTraitRubric = (model) => {
   const { scales, description = false, pointLabels = false } = model;
   const errors = {};
@@ -188,7 +190,6 @@ const validateMultiTraitRubric = (model) => {
 
 
 export const validate = (model = {}, config = {}) => {
-  console.log(model);
   const { rubrics = {}, rubricType } = model;
   const { multiTraitRubric = {}, simpleRubric = {} } = rubrics;
   let errors = {};

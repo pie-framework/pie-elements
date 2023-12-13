@@ -54,6 +54,7 @@ export const createCorrectResponseSession = (question, env) => {
 };
 
 
+// IMPORTANT! If you make any changes to this function, please make sure you also update complex-rubric/controller/validateMultiTraitRubric function!“.
 export const validate  = (model, config) => {
   const { scales, description = false, pointLabels = false } = model;
   const errors = {};
