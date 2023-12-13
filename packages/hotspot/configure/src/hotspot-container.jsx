@@ -31,6 +31,7 @@ export class Container extends Component {
       dragEnabled: true,
       // always transform shapes map into shapes array at this level
       shapes: getAllShapes(props.shapes),
+      selectedShape: 'none',
     };
     this.fakeImageHandler = {
       cancel: () => {},
@@ -135,6 +136,11 @@ export class Container extends Component {
     }
   };
 
+  handleFinishDrawing = () => {
+    // Explicitly end the current shape drawing session
+    // This would cause the finalizeCreation method to be called in the HotspotDrawable component
+    this.setState({ selectedShape: 'none' });
+  };
   toggleTooltip = () => this.setState({ showTooltip: !this.state.showTooltip });
 
   render() {
@@ -171,6 +177,10 @@ export class Container extends Component {
             : {})}
         >
           <div className={classes.toolbar}>
+            <button onClick={() => this.setState({ selectedShape: 'rectangle' })}>Draw Rectangle</button>
+            {/*<button onClick={() => this.setState({ selectedShape: 'circle' })}>Draw Circle</button>*/}
+            <button onClick={() => this.setState({ selectedShape: 'polygon' })}>Draw Polygon</button>
+            {/*<button onClick={this.handleFinishDrawing}>Finish Drawing Current Shape</button>*/}
             {imageUrl && (
               <UploadControl
                 classNameButton={classes.replaceButton}
@@ -196,6 +206,8 @@ export class Container extends Component {
                 dimensions={dimensions}
                 disableDrag={this.handleDisableDrag}
                 enableDrag={this.handleEnableDrag}
+                shapeType={this.state.selectedShape}
+                handleFinishDrawing={this.handleFinishDrawing}
                 imageUrl={imageUrl}
                 hotspotColor={hotspotColor}
                 multipleCorrect={multipleCorrect}

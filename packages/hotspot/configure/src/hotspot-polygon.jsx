@@ -13,8 +13,10 @@ class PolComponent extends React.Component {
     if (
       prevState.imageHeight !== nextProps.imageHeight ||
       prevState.imageWidth !== nextProps.imageWidth ||
-      prevState.id !== nextProps.id
+      prevState.id !== nextProps.id ||
+      prevState.points.length !== points.length
     ) {
+      console.log(id);
       if (points.length) {
         const xList = points.map((p) => p.x);
         const yList = points.map((p) => p.y);
@@ -87,6 +89,7 @@ class PolComponent extends React.Component {
   };
 
   handleClick = (e) => {
+    console.log('hereeee');
     const { points } = this.props;
     const xList = points.map((p) => p.x);
     const yList = points.map((p) => p.y);
@@ -95,8 +98,13 @@ class PolComponent extends React.Component {
     const height = Math.max(...yList) - Math.min(...yList);
 
     const { isDrawing, onClick, id } = this.props;
+    console.log({ isDrawing });
 
     if (width < 0 && height < 0 && isDrawing) {
+      return;
+    }
+
+    if (isDrawing && id === 'newPolygon') {
       return;
     }
 
@@ -170,9 +178,30 @@ class PolComponent extends React.Component {
   render() {
     const { classes, correct, id, hotspotColor, outlineColor, strokeWidth = 5 } = this.props;
     const { points, x, y, hovered } = this.state;
+    const showPoints = hovered || id === 'newPolygon';
 
     const calculatedStrokeWidth = correct ? strokeWidth : hovered ? 1 : 0;
     const calculatedStroke = correct ? outlineColor : hovered ? HOVERED_COLOR : '';
+
+    // if (this.props.id === this.state.isDrawingShapeId) {
+    //   return <>{(this.props.points.map((point, index) => {
+    //
+    //     // Assuming you're using react-konva for rendering shapes
+    //     // This will add a small circle on the stage for every point of the polygon while it is being drawn
+    //     return (<Circle
+    //       key={index}
+    //       x={point.x}
+    //       y={point.y}
+    //       radius={3}
+    //       fill='black'
+    //       stroke='black'
+    //       strokeWidth={1}
+    //     />)
+    //   })}
+    //   </>
+    //
+    // }
+
     return (
       <Group classes={classes.group} onMouseLeave={this.handleMouseLeave} onMouseEnter={this.handleMouseEnter}>
         <Line
@@ -192,7 +221,7 @@ class PolComponent extends React.Component {
           y={y}
         />
 
-        {hovered &&
+        {showPoints &&
           points.map((point, index) => (
             <Circle
               key={index}
@@ -203,6 +232,7 @@ class PolComponent extends React.Component {
               fill={'white'}
               stroke={HOVERED_COLOR}
               strokeWidth={1}
+              onClick={this.handleClick}
               onDragStart={this.onDragStart}
               onDragMove={(e) => {
                 this.handleOnDragVertex(e, index);
