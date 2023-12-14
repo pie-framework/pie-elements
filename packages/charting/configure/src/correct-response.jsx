@@ -4,6 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { Chart } from '@pie-lib/pie-toolbox/charting';
 import isEqual from 'lodash/isEqual';
 import isEmpty from 'lodash/isEmpty';
+import cloneDeep from 'lodash/cloneDeep';
 
 import Typography from '@material-ui/core/Typography';
 
@@ -132,70 +133,54 @@ export class CorrectResponse extends React.Component {
   getUpdatedCategories(nextProps, prevProps = this.props, prevState = this.state) {
     const nextData = nextProps.model.data || [];
     const data = prevProps.model.data || [];
-    const nextCorrectAnswerData = nextProps.model.correctAnswer.data || [];
-    const categories = prevState ? prevState.categories : [];
+    const nextCorrectAnswerDataCopy = cloneDeep(nextProps.model.correctAnswer.data || []);
+
+    console.log(nextCorrectAnswerDataCopy, 'nextCorrectAnswerDataCopy');
+
+    const categoriesCopy = cloneDeep(prevState ? prevState.categories : []);
 
     let nextCategories = [];
+
+    // Handle categories insertion in Define Chart
     if (nextData.length > data.length) {
-      nextCategories = insertCategory(nextCorrectAnswerData, nextData);
+      nextCategories = insertCategory(nextCorrectAnswerDataCopy, nextData);
+      return nextCategories;
     }
 
+    // Handle categories removal from Define Chart
     if (nextData.length < data.length) {
-      let removedIndex = nextData.length;
+      let removedIndex = data.findIndex((item, index) => item.index !== index);
+      removedIndex = removedIndex === -1 ? nextData.length : removedIndex;
 
-      // we need to remove the category from the correct answer data and categories, from the same index it was removed from the data
-      // index is a property of the nextData category
-      for (let index = 0; index < nextData.length; index++) {
-        if (nextData[index].index !== index) {
-          removedIndex = index;
-          break;
-        }
-      }
-
-      (this.props.model.correctAnswer.data || []).splice(removedIndex, 1);
-      nextCategories = removeCategory(categories, nextData, removedIndex);
+      nextCategories = removeCategory(categoriesCopy, nextData, removedIndex);
       return nextCategories;
     }
 
-    if (nextCorrectAnswerData.length > 0 && !isEqual(nextCorrectAnswerData, this.props.model.correctAnswer.data)) {
-      nextCategories = nextCorrectAnswerData.map((correct, index) => ({
-        ...correct,
-        editable: index < data.length ? data[index].editable : true,
-        interactive: index < data.length ? data[index].interactive : true,
-      }));
-    } else if (isEmpty(nextCategories)) {
-      nextCategories = updateCorrectResponseData(nextCorrectAnswerData, nextData);
+    // Handle category value or label changes in Define Chart
+    // Handle categories update in Define Correct Response Chart
+    nextCategories = updateCorrectResponseData(nextCorrectAnswerDataCopy, nextData);
 
-      nextCorrectAnswerData.map((answer, currentIndex) => {
-        const dataExists = currentIndex < nextData.length;
-        let label;
-        let value;
+    nextCorrectAnswerDataCopy.forEach((answer, currentIndex) => {
+      const dataExists = currentIndex < nextData.length;
+      nextCorrectAnswerDataCopy[currentIndex] = {
+        editable: dataExists ? nextData[currentIndex].editable : true,
+        interactive: dataExists ? nextData[currentIndex].interactive : true,
+        label:
+          dataExists && nextData[currentIndex].editable
+            ? answer.label
+            : dataExists
+            ? nextData[currentIndex].label
+            : answer.label,
+        value:
+          dataExists && nextData[currentIndex].interactive
+            ? answer.value
+            : dataExists
+            ? nextData[currentIndex].value
+            : answer.value,
+      };
+    });
 
-        if (dataExists) {
-          label = nextData[currentIndex].editable ? answer.label : nextData[currentIndex].label;
-          value = nextData[currentIndex].interactive ? answer.value : nextData[currentIndex].value;
-        } else {
-          label = answer.label;
-          value = answer.value;
-        }
-
-        nextCorrectAnswerData[currentIndex] = {
-          label: label,
-          value: value,
-        };
-      });
-    }
-
-    if (
-      !isEqual(nextCategories, data) ||
-      !isEqual(nextCorrectAnswerData, prevProps.model.correctAnswer.data) ||
-      !isEqual(nextCategories, categories) ||
-      (isEmpty(nextCategories) && isEmpty(data))
-    ) {
-      return nextCategories;
-    }
-
-    return null;
+    return nextCategories;
   }
 
   componentDidMount() {
@@ -210,11 +195,6 @@ export class CorrectResponse extends React.Component {
   componentDidUpdate(prevProps, prevState) {
     const nextCategories = this.getUpdatedCategories(this.props, prevProps, prevState);
 
-    // this check is needed when all the categories are removed from Chart1
-    if (nextCategories?.length === 0 && this.state.categories?.length === 0 && prevProps.model.data.length > 0) {
-      this.setState({ categories: nextCategories });
-    }
-
     if (nextCategories && !isEqual(nextCategories, this.state.categories)) {
       this.changeData(nextCategories);
       this.setState({ categories: nextCategories });
@@ -222,8 +202,17 @@ export class CorrectResponse extends React.Component {
   }
 
   render() {
-    const { classes, model, charts, error, studentNewCategoryDefaultLabel, correctAnswerErrors, mathMlOptions = {} } = this.props;
+    const {
+      classes,
+      model,
+      charts,
+      error,
+      studentNewCategoryDefaultLabel,
+      correctAnswerErrors,
+      mathMlOptions = {},
+    } = this.props;
     const { categories } = this.state;
+
     const { domain = {}, range = {} } = model || {};
     const { identicalError, categoriesError } = correctAnswerErrors || {};
 
@@ -248,7 +237,7 @@ export class CorrectResponse extends React.Component {
                 charts={charts}
                 data={categories}
                 title={model.title}
-                onDataChange={(data) => this.changeData(data)}
+                onDataChange={this.changeData}
                 addCategoryEnabled={model.addCategoryEnabled}
                 categoryDefaultLabel={studentNewCategoryDefaultLabel}
                 error={error}
