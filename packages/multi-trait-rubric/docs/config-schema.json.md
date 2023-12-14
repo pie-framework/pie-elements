@@ -163,6 +163,10 @@ Indicates if model should have mathML output instead of latex
 
 Indicates if mathML that's already in model should be editable
 
+# `maxMaxPoints` (number)
+
+Indicates the max limit for scoring points
+
 ---
 
 # Sub Schemas
