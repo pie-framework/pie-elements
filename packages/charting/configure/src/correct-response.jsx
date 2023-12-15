@@ -99,9 +99,9 @@ const removeCategory = (correctAnswer, data, positionToRemove) => {
 };
 
 export const getUpdatedCategories = (nextProps, prevProps, prevState) => {
-  const nextData = nextProps.model.data || [];
-  const data = prevProps.model.data || [];
-  const nextCorrectAnswerDataCopy = cloneDeep(nextProps.model.correctAnswer.data || []);
+  const nextData = (nextProps && nextProps.model && nextProps.model.data) || [];
+  const data = (prevProps && prevProps.model && prevProps.model.data) || [];
+  const nextCorrectAnswerDataCopy = cloneDeep((nextProps && nextProps.model && nextProps.model.correctAnswer && nextProps.model.correctAnswer.data) || []);
 
   const categoriesCopy = cloneDeep(prevState ? prevState.categories : []);
 
