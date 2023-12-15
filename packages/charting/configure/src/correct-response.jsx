@@ -98,6 +98,57 @@ const removeCategory = (correctAnswer, data, positionToRemove) => {
   return addCategoryProps(correctAnswerData, data);
 };
 
+export const getUpdatedCategories = (nextProps, prevProps, prevState) => {
+  const nextData = nextProps.model.data || [];
+  const data = prevProps.model.data || [];
+  const nextCorrectAnswerDataCopy = cloneDeep(nextProps.model.correctAnswer.data || []);
+
+  const categoriesCopy = cloneDeep(prevState ? prevState.categories : []);
+
+  let nextCategories = [];
+
+  // Handle categories insertion in Define Chart
+  if (nextData.length > data.length) {
+    nextCategories = insertCategory(nextCorrectAnswerDataCopy, nextData);
+    return nextCategories;
+  }
+
+  // Handle categories removal from Define Chart
+  if (nextData.length < data.length) {
+    let removedIndex = data.findIndex((item, index) => item.index !== index);
+    removedIndex = removedIndex === -1 ? nextData.length : removedIndex;
+
+    nextCategories = removeCategory(categoriesCopy, nextData, removedIndex);
+    return nextCategories;
+  }
+
+  // Handle category value or label changes in Define Chart
+  // Handle categories update in Define Correct Response Chart
+  nextCategories = updateCorrectResponseData(nextCorrectAnswerDataCopy, nextData);
+
+  nextCorrectAnswerDataCopy.forEach((answer, currentIndex) => {
+    const dataExists = currentIndex < nextData.length;
+    nextCorrectAnswerDataCopy[currentIndex] = {
+      editable: dataExists ? nextData[currentIndex].editable : true,
+      interactive: dataExists ? nextData[currentIndex].interactive : true,
+      label:
+        dataExists && nextData[currentIndex].editable
+          ? answer.label
+          : dataExists
+          ? nextData[currentIndex].label
+          : answer.label,
+      value:
+        dataExists && nextData[currentIndex].interactive
+          ? answer.value
+          : dataExists
+          ? nextData[currentIndex].value
+          : answer.value,
+    };
+  });
+
+  return nextCategories;
+};
+
 export class CorrectResponse extends React.Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
@@ -130,61 +181,8 @@ export class CorrectResponse extends React.Component {
     });
   };
 
-  getUpdatedCategories(nextProps, prevProps = this.props, prevState = this.state) {
-    const nextData = nextProps.model.data || [];
-    const data = prevProps.model.data || [];
-    const nextCorrectAnswerDataCopy = cloneDeep(nextProps.model.correctAnswer.data || []);
-
-    console.log(nextCorrectAnswerDataCopy, 'nextCorrectAnswerDataCopy');
-
-    const categoriesCopy = cloneDeep(prevState ? prevState.categories : []);
-
-    let nextCategories = [];
-
-    // Handle categories insertion in Define Chart
-    if (nextData.length > data.length) {
-      nextCategories = insertCategory(nextCorrectAnswerDataCopy, nextData);
-      return nextCategories;
-    }
-
-    // Handle categories removal from Define Chart
-    if (nextData.length < data.length) {
-      let removedIndex = data.findIndex((item, index) => item.index !== index);
-      removedIndex = removedIndex === -1 ? nextData.length : removedIndex;
-
-      nextCategories = removeCategory(categoriesCopy, nextData, removedIndex);
-      return nextCategories;
-    }
-
-    // Handle category value or label changes in Define Chart
-    // Handle categories update in Define Correct Response Chart
-    nextCategories = updateCorrectResponseData(nextCorrectAnswerDataCopy, nextData);
-
-    nextCorrectAnswerDataCopy.forEach((answer, currentIndex) => {
-      const dataExists = currentIndex < nextData.length;
-      nextCorrectAnswerDataCopy[currentIndex] = {
-        editable: dataExists ? nextData[currentIndex].editable : true,
-        interactive: dataExists ? nextData[currentIndex].interactive : true,
-        label:
-          dataExists && nextData[currentIndex].editable
-            ? answer.label
-            : dataExists
-            ? nextData[currentIndex].label
-            : answer.label,
-        value:
-          dataExists && nextData[currentIndex].interactive
-            ? answer.value
-            : dataExists
-            ? nextData[currentIndex].value
-            : answer.value,
-      };
-    });
-
-    return nextCategories;
-  }
-
   componentDidMount() {
-    const initialCategories = this.getUpdatedCategories(this.props, this.props, null);
+    const initialCategories = getUpdatedCategories(this.props, this.props, null);
 
     this.setState({
       categories:
@@ -193,7 +191,7 @@ export class CorrectResponse extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    const nextCategories = this.getUpdatedCategories(this.props, prevProps, prevState);
+    const nextCategories = getUpdatedCategories(this.props, prevProps, prevState);
 
     if (nextCategories && !isEqual(nextCategories, this.state.categories)) {
       this.changeData(nextCategories);
