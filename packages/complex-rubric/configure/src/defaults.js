@@ -1,3 +1,5 @@
+import {RUBRIC_TYPES} from '@pie-lib/pie-toolbox/rubric';
+
 const multiTraitDefaultModel = {
   visibleToStudent: true,
   halfScoring: false,
@@ -16,9 +18,9 @@ const rubricDefaultModel = {
 };
 
 const rubriclessDefaultModel = {
-  maxPoints: 20,
+  maxPoints: 100,
   excludeZero: false,
-  rubricless: true,
+  rubriclessInstructionEnabled: true,
 };
 
 const multiTraitDefaultConfiguration = {
@@ -125,15 +127,36 @@ const rubricDefaultConfiguration = {
   settingsPanelDisabled: false,
 };
 
+
+const rubriclessDefaultConfiguration = {
+  showExcludeZero: {
+    settings: true,
+    label: 'Ability to exclude zero',
+  },
+  showMaxPoint: {
+    settings: true,
+    label: 'Show max points dropdown',
+  },
+  settingsPanelDisabled: false,
+  // shows us if it simple rubric or rubricless(simple rubric with less structure)
+  rubricless: true,
+  // scoring instruction for rubricless
+  rubriclessInstruction: {
+    settings: true,
+    label: 'Instruction',
+  },
+  maxMaxPoints: 100,
+};
+
 export default {
   model: {
     rubricType: 'simpleRubric',
-    rubrics: { simpleRubric: rubricDefaultModel, multiTraitRubric: multiTraitDefaultModel, rubricless: rubriclessDefaultModel },
+    rubrics: { [RUBRIC_TYPES.SIMPLE_RUBRIC]: rubricDefaultModel, [RUBRIC_TYPES.MULTI_TRAIT_RUBRIC]: multiTraitDefaultModel, [RUBRIC_TYPES.RUBRICLESS]: rubriclessDefaultModel },
   },
   configuration: {
     // width: '770px',
-    multiTraitRubric: multiTraitDefaultConfiguration,
-    simpleRubric: rubricDefaultConfiguration,
-    rubricless: rubricDefaultConfiguration,
+    [RUBRIC_TYPES.MULTI_TRAIT_RUBRIC]: multiTraitDefaultConfiguration,
+    [RUBRIC_TYPES.SIMPLE_RUBRIC]: rubricDefaultConfiguration,
+    [RUBRIC_TYPES.RUBRICLESS]: rubriclessDefaultConfiguration,
   },
 };

@@ -8,6 +8,11 @@ import { withStyles } from '@material-ui/core/styles';
 import { FormControlLabel } from '@material-ui/core';
 
 const styles = {};
+const rubricLabels = {
+  [RUBRIC_TYPES.MULTI_TRAIT_RUBRIC]: 'Multi Trait Rubric',
+  [RUBRIC_TYPES.SIMPLE_RUBRIC]: 'Simple Rubric',
+  [RUBRIC_TYPES.RUBRICLESS]: 'Rubricless',
+};
 
 export class Main extends React.Component {
   static propTypes = {
@@ -34,9 +39,9 @@ export class Main extends React.Component {
 
   render() {
     const { model, configuration, canUpdateModel } = this.props;
-    console.log('model Andreea', model);
 
-    const { rubrics = {} } = model;
+    const { rubrics = {} } = model || {};
+    const availableRubrics = Object.keys(rubrics) || [];
     let { rubricType } = model;
     const { contentDimensions = {}, multiTraitRubric, simpleRubric, rubricless, width } = configuration;
     let rubricTag = '';
@@ -81,7 +86,7 @@ export class Main extends React.Component {
           );
           break;
 
-        case 'rubricless':
+        case RUBRIC_TYPES.RUBRICLESS:
           rubricTag = (
               <rubric-configure
                   id="rubricless"
@@ -108,23 +113,16 @@ export class Main extends React.Component {
           value={model.rubricType}
           onChange={this.onChangeRubricType}
         >
-          <FormControlLabel
-            value={RUBRIC_TYPES.SIMPLE_RUBRIC}
-            control={<Radio checked={rubricType === RUBRIC_TYPES.SIMPLE_RUBRIC} />}
-            label="Simple Rubric"
-          />
-
-          <FormControlLabel
-            value={RUBRIC_TYPES.MULTI_TRAIT_RUBRIC}
-            control={<Radio checked={rubricType === RUBRIC_TYPES.MULTI_TRAIT_RUBRIC} />}
-            label="Multi Trait Rubric"
-          />
-
-          <FormControlLabel
-              value={'rubricless'}
-              control={<Radio checked={rubricType === 'rubricless'} />}
-              label="Rubricless"
-          />
+          {
+            availableRubrics.length > 1 && availableRubrics.map((availableRubric, i)=>
+              <FormControlLabel
+                key={i}
+                value={availableRubric}
+                control={<Radio checked={rubricType === availableRubric} />}
+                label={rubricLabels[availableRubric]}
+            />
+          )
+          }
         </RadioGroup>
 
         {rubricTag}

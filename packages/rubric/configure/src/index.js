@@ -6,12 +6,6 @@ import debug from 'debug';
 import Main from './main';
 import defaults from './defaults';
 
-const verifyRubricless = (m) => {
-  console.log('verify rubricless Andreea');
-  const { rubricless = false } = m || {};
-  return rubricless ? (({ points, sampleAnswers, ...rest }) => rest)(m) : m;
-
-};
 const modelWithDefaults = (m) => ({ ...defaults.model, ...m });
 const configurationWithDefaults = (c) => ({ ...defaults.configuration, ...c });
 
@@ -28,8 +22,7 @@ export default class RubricElement extends HTMLElement {
   }
 
   set model(m) {
-    this._model = verifyRubricless(modelWithDefaults(m));
-    console.log('Andreea in rubric set model', this._model);
+    this._model = modelWithDefaults(m);
     this._render();
   }
 

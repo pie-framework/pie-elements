@@ -10,9 +10,9 @@ exports.model = (id, element) => ({
       excludeZero: false,
     },
     rubricless: {
-      maxPoints: 20,
+      maxPoints: 100,
       excludeZero: false,
-      rubricless: true,
+      rubriclessInstructionEnabled: true,
     },
     multiTraitRubric: {
       visibleToStudent: true,
