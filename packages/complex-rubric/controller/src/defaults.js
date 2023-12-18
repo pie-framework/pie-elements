@@ -16,8 +16,9 @@ const rubricDefaultModel = {
 };
 
 const rubriclessDefaultModel = {
-  maxPoints: 10,
+  maxPoints: 100,
   excludeZero: false,
+  rubriclessInstructionEnabled: true,
 };
 
 const multiTraitDefaultConfiguration = {
@@ -123,6 +124,26 @@ const rubricDefaultConfiguration = {
   settingsPanelDisabled: false,
 };
 
+const rubriclessDefaultConfiguration = {
+  showExcludeZero: {
+    settings: true,
+    label: 'Ability to exclude zero',
+  },
+  showMaxPoint: {
+    settings: true,
+    label: 'Show max points dropdown',
+  },
+  settingsPanelDisabled: false,
+  // shows us if it simple rubric or rubricless(simple rubric with less structure)
+  rubricless: true,
+  // scoring instruction for rubricless
+  rubriclessInstruction: {
+    settings: true,
+    label: 'Instruction',
+  },
+  maxMaxPoints: 100,
+};
+
 export default {
   model: {
     rubricType: 'simpleRubric',
@@ -131,6 +152,6 @@ export default {
   configuration: {
     multiTraitRubric: multiTraitDefaultConfiguration,
     simpleRubric: rubricDefaultConfiguration,
-    rubricless: rubricDefaultConfiguration,
+    rubricless: rubriclessDefaultConfiguration,
   },
 };

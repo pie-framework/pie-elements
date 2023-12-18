@@ -55,7 +55,7 @@ class ComplexRubric extends HTMLElement {
           this.setMultiTraitRubricModel(this.multiTraitRubric);
         });
         break;
-      case 'rubricless':
+      case RUBRIC_TYPES.RUBRICLESS:
         customElements.whenDefined(RUBRIC_TAG_NAME).then(() => {
           this.setRubriclessModel(this.rubricless);
         });
@@ -121,7 +121,7 @@ class ComplexRubric extends HTMLElement {
     if (this._type === RUBRIC_TYPES.SIMPLE_RUBRIC) {
       rubricTag = `<${RUBRIC_TAG_NAME} id="simpleRubric" />`
     }
-    else if (this._type === 'rubricless'){
+    else if (this._type === RUBRIC_TYPES.RUBRICLESS){
       rubricTag = `<${RUBRIC_TAG_NAME} id="rubricless" />`;
     }
     else{
@@ -144,7 +144,7 @@ class ComplexRubric extends HTMLElement {
           this.setMultiTraitRubricModel(this.multiTraitRubric);
         }
         break;
-      case 'rubricless':
+      case RUBRIC_TYPES.RUBRICLESS:
         if (customElements.get(RUBRIC_TAG_NAME)) {
           this.setRubriclessModel(this.rubricless);
         }

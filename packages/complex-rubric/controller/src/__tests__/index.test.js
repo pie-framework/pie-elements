@@ -45,6 +45,10 @@ describe('complex rubric model', () => {
           ...state.rubrics.simpleRubric,
           visible: false,
         },
+        rubricless: {
+          ...state.rubrics.rubricless,
+          visible: false,
+        }
       },
     });
   });
