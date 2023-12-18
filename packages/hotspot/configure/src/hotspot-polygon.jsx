@@ -181,25 +181,6 @@ class PolComponent extends React.Component {
     const calculatedStrokeWidth = correct ? strokeWidth : hovered ? 1 : 0;
     const calculatedStroke = correct ? outlineColor : hovered ? HOVERED_COLOR : '';
 
-    // if (this.props.id === this.state.isDrawingShapeId) {
-    //   return <>{(this.props.points.map((point, index) => {
-    //
-    //     // Assuming you're using react-konva for rendering shapes
-    //     // This will add a small circle on the stage for every point of the polygon while it is being drawn
-    //     return (<Circle
-    //       key={index}
-    //       x={point.x}
-    //       y={point.y}
-    //       radius={3}
-    //       fill='black'
-    //       stroke='black'
-    //       strokeWidth={1}
-    //     />)
-    //   })}
-    //   </>
-    //
-    // }
-
     return (
       <Group classes={classes.group} onMouseLeave={this.handleMouseLeave} onMouseEnter={this.handleMouseEnter}>
         <Line

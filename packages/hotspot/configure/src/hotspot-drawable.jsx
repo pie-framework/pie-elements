@@ -42,28 +42,6 @@ export class Drawable extends React.Component {
     };
   }
 
-  // handleOnMouseDown = (e) => {
-  //   if (e.target !== e.currentTarget) {
-  //     return;
-  //   }
-  //
-  //   const { isCreatingPolygon, onUpdateShapes, shapes } = this.props;
-  //   let newShapes;
-  //
-  //   if (isCreatingPolygon) {
-  //     newShapes = this.createPolygon(shapes, e);
-  //   } else {
-  //     newShapes = this.createRectangle(shapes, e);
-  //     this.setState({
-  //       isDrawing: true,
-  //       isDrawingShapeId: `${newShapes[newShapes.length - 1].id}`,
-  //     });
-  //   }
-  //
-  //   this.setState({ isDrawing: true });
-  //   onUpdateShapes(newShapes);
-  // };
-
   handleOnMouseDown = (e) => {
     const { shapeType, onUpdateShapes, shapes } = this.props;
     let newState, newShapeId;
