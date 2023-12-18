@@ -5,6 +5,8 @@ import { withStyles } from '@material-ui/core/styles/index';
 import Help from '@material-ui/icons/Help';
 
 import Drawable from './hotspot-drawable';
+import { RectangleButton } from './buttons/rectangle';
+import { PolygonButton } from './buttons/polygon';
 import Button from './button';
 import UploadControl from './upload-control';
 import { getAllShapes, groupShapes } from './utils';
@@ -31,6 +33,7 @@ export class Container extends Component {
       dragEnabled: true,
       // always transform shapes map into shapes array at this level
       shapes: getAllShapes(props.shapes),
+      selectedShape: 'none',
     };
     this.fakeImageHandler = {
       cancel: () => {},
@@ -135,6 +138,11 @@ export class Container extends Component {
     }
   };
 
+  handleFinishDrawing = () => {
+    // Explicitly end the current shape drawing session
+    // This would cause the finalizeCreation method to be called in the HotspotDrawable component
+    this.setState({ selectedShape: 'none' });
+  };
   toggleTooltip = () => this.setState({ showTooltip: !this.state.showTooltip });
 
   render() {
@@ -151,7 +159,7 @@ export class Container extends Component {
       preserveAspectRatioEnabled,
     } = this.props;
     const { dropzoneActive, dragEnabled, showTooltip } = this.state;
-    const { shapes } = this.state;
+    const { shapes, selectedShape } = this.state;
 
     return (
       <div className={classes.base}>
@@ -171,6 +179,19 @@ export class Container extends Component {
             : {})}
         >
           <div className={classes.toolbar}>
+            <div
+              onClick={() => this.setState({ selectedShape: selectedShape === 'rectangle' ? 'none' : 'rectangle' })}
+              className={classes.buttonShape}
+            >
+              <RectangleButton isActive={selectedShape === 'rectangle'} />
+            </div>
+            <div
+              onClick={() => this.setState({ selectedShape: selectedShape === 'polygon' ? 'none' : 'polygon' })}
+              className={classes.buttonShape}
+            >
+              <PolygonButton isActive={selectedShape === 'polygon'} />
+            </div>
+
             {imageUrl && (
               <UploadControl
                 classNameButton={classes.replaceButton}
@@ -196,6 +217,8 @@ export class Container extends Component {
                 dimensions={dimensions}
                 disableDrag={this.handleDisableDrag}
                 enableDrag={this.handleEnableDrag}
+                shapeType={this.state.selectedShape}
+                handleFinishDrawing={this.handleFinishDrawing}
                 imageUrl={imageUrl}
                 hotspotColor={hotspotColor}
                 multipleCorrect={multipleCorrect}
@@ -243,6 +266,12 @@ export class Container extends Component {
 }
 
 const styles = (theme) => ({
+  buttonShape: {
+    marginRight: '5px',
+    '&:hover': {
+      cursor: 'pointer',
+    },
+  },
   base: {
     marginTop: theme.spacing.unit * 1.5,
     marginBottom: theme.spacing.unit * 2.5,
@@ -282,7 +311,7 @@ const styles = (theme) => ({
     marginRight: 'auto',
   },
   toolbar: {
-    backgroundColor: '#ECEDF1',
+    backgroundColor: '#FFF',
     borderBottom: '1px solid #E0E1E6',
     borderTopLeftRadius: '5px',
     borderTopRightRadius: '5px',

@@ -1,14 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Layer, Stage } from 'react-konva';
-import max from 'lodash/max';
 import cloneDeep from 'lodash/cloneDeep';
 import { withStyles } from '@material-ui/core/styles/index';
 
 import Rectangle from './hotspot-rectangle';
 import Polygon from './hotspot-polygon';
 import { updateImageDimensions, getUpdatedShapes } from './utils';
-
+import RectangleShape from './shapes/rectagle';
+import CircleShape from './shapes/circle';
+import PolygonShape from './shapes/polygon';
 const IMAGE_MAX_WIDTH = 800;
 
 export class Drawable extends React.Component {
@@ -32,6 +33,8 @@ export class Drawable extends React.Component {
       isDrawing: false,
       stateShapes: false,
       resizing: false,
+      temporaryPolygon: null,
+      shapes: [],
       dimensions: {
         height: 0,
         width: 0,
@@ -39,72 +42,122 @@ export class Drawable extends React.Component {
     };
   }
 
-  /// start of handling HotSpots section
   handleOnMouseDown = (e) => {
-    if (e.target === e.currentTarget) {
-      const { onUpdateShapes, shapes } = this.props;
-      // Add a new rectangle at the mouse position with 0 width and height
-      const newShapes = shapes.slice();
-      const value = max(newShapes.map((c) => parseInt(c.id)).filter((id) => !isNaN(id))) || 0;
+    const { shapeType, onUpdateShapes, shapes } = this.props;
+    let newState, newShapeId;
 
-      newShapes.push({
-        id: `${value + 1}`,
-        height: 0,
-        width: 0,
-        x: e.evt.layerX,
-        y: e.evt.layerY,
-        group: 'rectangles',
-        index: shapes.length,
-      });
-
-      this.setState({ isDrawing: true, isDrawingShapeId: `${value + 1}` });
-      onUpdateShapes(newShapes);
+    // Ensure that the click originated from the expected element
+    if (e.target !== e.currentTarget) {
+      return;
     }
+
+    switch (shapeType) {
+      case 'rectangle':
+        newState = RectangleShape.create(shapes, e);
+        break;
+      case 'circle':
+        newState = CircleShape.create(shapes, e);
+        break;
+      case 'polygon':
+        newShapeId = this.state.isDrawingShapeId;
+
+        if (newShapeId) {
+          // If a polygon is in progress, add a new point
+          const shapes = this.addPolygonPoint(e);
+
+          newState = {
+            isDrawing: true,
+            isDrawingShapeId: newShapeId,
+            shapes: shapes,
+          };
+        } else {
+          // Else start a new one
+          newState = PolygonShape.create(shapes, e);
+        }
+        break;
+      default:
+        console.error(`Unsupported shape type: ${shapeType}`);
+        return;
+    }
+
+    this.setState({
+      ...newState,
+    });
+
+    onUpdateShapes(newState.shapes);
   };
 
+  addPolygonPoint(e) {
+    const { shapes } = PolygonShape.addPoint(this.state, e, (newShapes) => {
+      this.setState({
+        isDrawing: false,
+        shapes: newShapes,
+        isDrawingShapeId: undefined,
+      });
+
+      this.props.onUpdateShapes(newShapes);
+      this.props.handleFinishDrawing();
+    });
+
+    return shapes;
+  }
+
   handleOnMouseUp = () => {
-    // !IMPORTANT: currently, only 'rectangles' are drawable
-    const { isDrawing, stateShapes } = this.state;
-    const { onUpdateShapes } = this.props;
+    const { shapeType, onUpdateShapes } = this.props;
+    let newState;
 
-    // If we're drawing a shape, a click finishes the drawing and sends the new shapes to HOC
-    if (isDrawing) {
-      this.setState({ isDrawing: !isDrawing, stateShapes: false, isDrawingShapeId: undefined });
-
-      if (stateShapes) {
-        onUpdateShapes(stateShapes);
-      }
+    if (shapeType === 'polygon') {
+      return;
     }
+
+    switch (shapeType) {
+      case 'rectangle':
+        newState = RectangleShape.finalizeCreation(this.state, this.props);
+        break;
+      case 'circle':
+        newState = CircleShape.finalizeCreation(this.state, this.props);
+        break;
+      default:
+        console.error(`Unsupported shape type: ${shapeType}`);
+        return;
+    }
+
+    this.setState({
+      ...newState,
+      isDrawing: false,
+    });
+
+    onUpdateShapes(newState.shapes);
   };
 
   handleMouseMove = (e) => {
-    // !IMPORTANT: currently, only 'rectangles' are drawable
-    const { isDrawing, isDrawingShapeId } = this.state;
-    const { shapes } = this.props;
+    const { shapeType, onUpdateShapes, shapes } = this.props;
+    let newState;
 
-    if (isDrawing && isDrawingShapeId) {
-      const mouseX = e.evt.layerX;
-      const mouseY = e.evt.layerY;
-
-      const currShapeIndex = shapes.findIndex((shape) => shape.id === isDrawingShapeId);
-      const currShape = shapes[currShapeIndex];
-
-      if (currShape) {
-        const newWidth = mouseX - currShape.x;
-        const newHeight = mouseY - currShape.y;
-
-        const newShapesList = shapes.slice();
-
-        newShapesList[currShapeIndex] = {
-          ...newShapesList[currShapeIndex],
-          height: newHeight,
-          width: newWidth,
-          x: currShape.x,
-          y: currShape.y,
-        };
-        // On mouse move don't trigger any event. Put the shapes on this state instead.
-        this.setState({ stateShapes: newShapesList });
+    if (this.state.isDrawing) {
+      switch (shapeType) {
+        case 'rectangle':
+          newState = RectangleShape.handleMouseMove(this.state, e);
+          break;
+        case 'circle':
+          newState = CircleShape.handleMouseMove(this.state, e);
+          break;
+        case 'polygon':
+          newState = PolygonShape.handleMouseMove(this.state, e);
+          break;
+        default:
+          console.error(`Unsupported shape type: ${shapeType}`);
+          return;
       }
+
+      this.setState(newState);
+      onUpdateShapes(newState.shapes);
+    }
+  };
+
+  handleOnMouseOutOrLeave = (e) => {
+    if (this.state.isDrawing) {
+      this.handleOnMouseUp(e);
     }
   };
 
@@ -291,6 +344,8 @@ export class Drawable extends React.Component {
           onMouseDown={this.handleOnMouseDown}
           onMouseUp={this.handleOnMouseUp}
           onMouseMove={this.handleMouseMove}
+          onContentMouseOut={this.handleOnMouseOutOrLeave}
+          onContentMouseLeave={this.handleOnMouseOutOrLeave}
         >
           <Layer>
             {shapesToUse.map((shape, i) => {
@@ -314,6 +369,7 @@ export class Drawable extends React.Component {
                   strokeWidth={strokeWidth}
                   imageHeight={heightFromState || height}
                   imageWidth={widthFromState || width}
+                  addPolygonPoint={(e) => this.addPolygonPoint(e)}
                 />
               );
             })}
@@ -359,7 +415,9 @@ Drawable.propTypes = {
   disableDrag: PropTypes.func.isRequired,
   dimensions: PropTypes.object.isRequired,
   enableDrag: PropTypes.func.isRequired,
+  shapeType: PropTypes.oneOf(['rectangle', 'circle', 'polygon']),
   imageUrl: PropTypes.string.isRequired,
+  handleFinishDrawing: PropTypes.func.isRequired,
   hotspotColor: PropTypes.string.isRequired,
   multipleCorrect: PropTypes.bool.isRequired,
   onUpdateImageDimension: PropTypes.func.isRequired,
