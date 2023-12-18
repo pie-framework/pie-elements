@@ -66,7 +66,7 @@ export class Drawable extends React.Component {
 
   handleOnMouseDown = (e) => {
     const { shapeType, onUpdateShapes, shapes } = this.props;
-    let newShapes, newState, newShapeId;
+    let newState, newShapeId;
 
     // Ensure that the click originated from the expected element
     if (e.target !== e.currentTarget) {
@@ -85,16 +85,7 @@ export class Drawable extends React.Component {
 
         if (newShapeId) {
           // If a polygon is in progress, add a new point
-          const { shapes } = PolygonShape.addPoint(this.state, e, (newShapes) => {
-            this.setState({
-              isDrawing: false,
-              shapes: newShapes,
-              isDrawingShapeId: undefined,
-            });
-
-            onUpdateShapes(newShapes);
-            this.props.handleFinishDrawing();
-          });
+          const shapes = this.addPolygonPoint(e);
 
           newState = {
             isDrawing: true,
@@ -102,42 +93,39 @@ export class Drawable extends React.Component {
             shapes: shapes,
           };
         } else {
-          // If no polygon is in progress, start a new one
+          // Else start a new one
           newState = PolygonShape.create(shapes, e);
         }
         break;
-
       default:
         console.error(`Unsupported shape type: ${shapeType}`);
         return;
     }
 
-    console.log({
-      isDrawing: true,
-      ...newState,
-    });
-
     this.setState({
-      isDrawing: true,
       ...newState,
     });
 
     onUpdateShapes(newState.shapes);
   };
 
-  // finalizePolygonCreation = () => {
-  //   const { shapes, onUpdateShapes } = this.props;
-  //   let newShapes = shapes.slice();
-  //   const polygonIndex = newShapes.findIndex((shape) => shape.id === 'newPolygon');
-  //
-  //   if (polygonIndex !== -1 && newShapes[polygonIndex].points.length > 2) {
-  //     onUpdateShapes(newShapes);
-  //     this.setState({ isDrawing: false });
-  //   }
-  // };
+  addPolygonPoint(e) {
+    const { shapes } = PolygonShape.addPoint(this.state, e, (newShapes) => {
+      this.setState({
+        isDrawing: false,
+        shapes: newShapes,
+        isDrawingShapeId: undefined,
+      });
+
+      this.props.onUpdateShapes(newShapes);
+      this.props.handleFinishDrawing();
+    });
+
+    return shapes;
+  }
 
   handleOnMouseUp = () => {
-    const { shapeType, onUpdateShapes, shapes } = this.props;
+    const { shapeType, onUpdateShapes } = this.props;
     let newState;
 
     if (shapeType === 'polygon') {
@@ -151,17 +139,14 @@ export class Drawable extends React.Component {
       case 'circle':
         newState = CircleShape.finalizeCreation(this.state, this.props);
         break;
-      case 'polygon':
-        newState = PolygonShape.finalizeCreation(this.state, this.props);
-        break;
       default:
         console.error(`Unsupported shape type: ${shapeType}`);
         return;
     }
 
     this.setState({
-      isDrawing: false,
       ...newState,
+      isDrawing: false,
     });
 
     onUpdateShapes(newState.shapes);
@@ -406,6 +391,7 @@ export class Drawable extends React.Component {
                   strokeWidth={strokeWidth}
                   imageHeight={heightFromState || height}
                   imageWidth={widthFromState || width}
+                  addPolygonPoint={(e) => this.addPolygonPoint(e)}
                 />
               );
             })}

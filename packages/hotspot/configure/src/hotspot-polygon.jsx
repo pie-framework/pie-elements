@@ -16,7 +16,6 @@ class PolComponent extends React.Component {
       prevState.id !== nextProps.id ||
       prevState.points.length !== points.length
     ) {
-      console.log(id);
       if (points.length) {
         const xList = points.map((p) => p.x);
         const yList = points.map((p) => p.y);
@@ -89,7 +88,6 @@ class PolComponent extends React.Component {
   };
 
   handleClick = (e) => {
-    console.log('hereeee');
     const { points } = this.props;
     const xList = points.map((p) => p.x);
     const yList = points.map((p) => p.y);
@@ -98,13 +96,13 @@ class PolComponent extends React.Component {
     const height = Math.max(...yList) - Math.min(...yList);
 
     const { isDrawing, onClick, id } = this.props;
-    console.log({ isDrawing });
 
     if (width < 0 && height < 0 && isDrawing) {
       return;
     }
 
     if (isDrawing && id === 'newPolygon') {
+      this.props.addPolygonPoint(e);
       return;
     }
 
@@ -280,6 +278,7 @@ PolComponent.propTypes = {
   imageWidth: PropTypes.number,
   hotspotColor: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
+  addPolygonPoint: PropTypes.func.isRequired,
   onDeleteShape: PropTypes.func.isRequired,
   onDragEnd: PropTypes.func.isRequired,
   outlineColor: PropTypes.string.isRequired,

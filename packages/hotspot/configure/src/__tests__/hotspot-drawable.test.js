@@ -95,6 +95,9 @@ describe('HotspotDrawable', () => {
         outlineColor: initialModel.outlineColor,
         shapes: initialModel.shapes,
         strokeWidth: 5,
+        shapeType: 'rectangle',
+        handleFinishDrawing: jest.fn(),
+        onDeleteShape: jest.fn(),
         ...extras,
       };
 
@@ -168,7 +171,7 @@ describe('HotspotDrawable', () => {
 
     it('handleOnMouseUp isDrawing = true', () => {
       wrapper.instance().state.isDrawing = true;
-      wrapper.instance().state.stateShapes = initialModel.shapes.slice(0, 2);
+      wrapper.instance().state.shapes = initialModel.shapes.slice(0, 2);
 
       wrapper.instance().handleOnMouseUp({
         evt: {

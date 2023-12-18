@@ -1,6 +1,5 @@
 export default class PolygonShape {
   static create(shapes, e) {
-    console.log('polygon create');
     const newShapes = [...shapes];
     const newPolygon = {
       id: 'newPolygon',
@@ -19,7 +18,6 @@ export default class PolygonShape {
   }
 
   static addPoint(state, e, onPolygonComplete) {
-    console.log('add point is called');
     // Number of pixels allowed to determine if the first point was clicked
     const clickDelta = 5;
 
@@ -31,16 +29,12 @@ export default class PolygonShape {
       if (currentShape.points && Array.isArray(currentShape.points)) {
         const firstPoint = currentShape.points[0];
 
-        console.log(clickDelta);
         // If click is close enough to the first point (within clickDelta pixels), close the polygon
         if (
           Math.abs(firstPoint.x - e.evt.layerX) <= clickDelta &&
           Math.abs(firstPoint.y - e.evt.layerY) <= clickDelta
         ) {
-          onPolygonComplete(shapesCopy);
-          return {
-            isDrawingShapeId: undefined,
-          };
+          return PolygonShape.finalizeCreation(state, onPolygonComplete);
         }
 
         currentShape.points.push({ x: e.evt.layerX, y: e.evt.layerY });
@@ -54,19 +48,18 @@ export default class PolygonShape {
     return state;
   }
 
-  static finalizeCreation(state, props) {
-    console.log('polygon finalizeCreation');
+  static finalizeCreation(state, onPolygonComplete) {
     const { shapes } = state;
-    const { onUpdateShapes } = props;
     const tempShapes = [...shapes];
+    const highestId = Math.max(...state.shapes.map((shape) => parseInt(shape.id) || 0), 0);
 
     const polygonIndex = tempShapes.findIndex((shape) => shape.id === state.isDrawingShapeId);
 
     if (polygonIndex !== -1 && tempShapes[polygonIndex].points.length > 2) {
       const completedPolygon = tempShapes[polygonIndex];
-      // Replace the temporary `newPolygon` ID with some unique ID
-      completedPolygon.id = `polygon-${new Date().getTime()}`;
-      onUpdateShapes(tempShapes);
+
+      completedPolygon.id = `${highestId + 1}`;
+      onPolygonComplete(tempShapes);
 
       return {
         isDrawing: false,
@@ -79,7 +72,7 @@ export default class PolygonShape {
   }
 
   // No need to update anything on mouse move,
-  // but it's here if you need to add any logic later.
+  // but it's here if we need to add any logic later.
   static handleMouseMove(state, e) {
     return state;
   }

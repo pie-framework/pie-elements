@@ -27,7 +27,6 @@ export default class CircleShape {
       const currentShape = state.shapes[currentShapeIndex];
       const updatedShapes = [...props.shapes];
 
-      // Check if the shape is a valid circle (has more than 0 radius) before finalizing
       if (currentShape.radius > 0) {
         updatedShapes.push(currentShape);
 
@@ -40,7 +39,6 @@ export default class CircleShape {
       }
     }
 
-    // Return current state if not drawing a circle
     return state;
   }
 
@@ -54,8 +52,6 @@ export default class CircleShape {
       if (resizingShapeIndex !== -1) {
         const resizingShape = tempShapes[resizingShapeIndex];
 
-        // Diagrammatically in a 2D plane, the radius of a circle would be the distance from the center to the edge
-        // Therefore you can use the formula of euclidian distance sqrt((x2 - x1)² + (y2 - y1)²)
         resizingShape.radius = Math.sqrt(
           Math.pow(e.evt.layerX - resizingShape.x, 2) + Math.pow(e.evt.layerY - resizingShape.y, 2),
         );
