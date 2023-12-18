@@ -213,6 +213,11 @@
           "title": "mmlEditing"
         }
       }
+    },
+    "maxMaxPoints": {
+      "description": "Indicates the max limit for scoring points",
+      "type": "number",
+      "title": "maxMaxPoints"
     }
   },
   "required": [

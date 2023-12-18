@@ -117,5 +117,6 @@ export default {
       mmlOutput: false,
       mmlEditing: false,
     },
+    maxMaxPoints: 10,
   },
 };

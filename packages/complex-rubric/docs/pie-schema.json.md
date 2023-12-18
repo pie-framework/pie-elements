@@ -205,6 +205,10 @@ Indicates if model should have mathML output instead of latex
 
 Indicates if mathML that's already in model should be editable
 
+### `maxMaxPoints` (number)
+
+Indicates the max limit for scoring points
+
 ### `showPrompt` (boolean)
 
 Determines whether prompt field will be displayed or not
@@ -447,6 +451,10 @@ Indicates if model should have mathML output instead of latex
 #### `mmlEditing` (number)
 
 Indicates if mathML that's already in model should be editable
+
+### `maxMaxPoints` (number)
+
+Indicates the max limit for scoring points
 
 ## `DialogContent` (object)
 

@@ -110,6 +110,7 @@ export class TraitsHeaderTile extends React.Component {
       maxPointsEnabled,
       mathMlOptions = {},
       errors = {},
+      maxMaxPoints,
     } = this.props;
     const { anchorEl } = this.state;
 
@@ -131,7 +132,7 @@ export class TraitsHeaderTile extends React.Component {
           <ScaleSettings>
             <div>Scale {scaleIndex + 1}</div>
 
-            {maxPointsEnabled && <MaxPointsPicker maxPoints={maxPoints} onChange={updateMaxPointsFieldValue} />}
+            {maxPointsEnabled && <MaxPointsPicker maxPoints={maxPoints} maxMaxPoints={maxMaxPoints} onChange={updateMaxPointsFieldValue} />}
 
             <div>
               <IconButton aria-label="more" aria-controls="long-menu" aria-haspopup="true" onClick={this.handleClick}>
@@ -227,6 +228,7 @@ TraitsHeaderTile.propTypes = {
   showScorePointLabels: PropTypes.bool,
   setSecondaryBlockRef: PropTypes.func,
   uploadSoundSupport: PropTypes.object,
+  maxMaxPoints: PropTypes.number
 };
 
 export default withStyles(styles)(TraitsHeaderTile);
