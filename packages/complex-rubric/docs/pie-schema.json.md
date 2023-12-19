@@ -7,6 +7,7 @@ The schema defines the following properties:
 This element must be one of the following enum values:
 
 * `multiTraitRubric`
+* `rubricless`
 * `simpleRubric`
 
 # `rubrics` (object, required)
@@ -134,6 +135,30 @@ Trait description
 Score point descriptors. Starting from 0 to max.
 
 The object is an array with all elements of the type `string`.
+
+### `id` (string, required)
+
+Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.
+
+### `element` (string, required)
+
+The html Element tag name
+
+## `rubricless` (object, required)
+
+Properties of the `rubricless` object:
+
+### `maxPoints` (number)
+
+Indicates the max limit for scoring points
+
+### `excludeZeros` (boolean)
+
+Indicates if point 0 should be shown
+
+### `rubriclessInstructionEnabled` (boolean, required)
+
+Indicates that rubricInstruction is enabled
 
 ### `id` (string, required)
 
@@ -468,6 +493,134 @@ Dialog box title
 
 Dialog box text
 
+## `RubriclessConfigure` (object)
+
+Properties of the `RubriclessConfigure` object:
+
+### `settingsPanelDisabled` (boolean)
+
+Indicates if the settings panel is not available
+
+### `showExcludeZero` (object)
+
+Properties of the `showExcludeZero` object:
+
+#### `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+#### `label` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
+
+### `showMaxPoint` (object)
+
+Properties of the `showMaxPoint` object:
+
+#### `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+#### `label` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
+
+### `width` (string)
+
+How large can the rubric be
+
+### `mathMlOptions` (object)
+
+Properties of the `mathMlOptions` object:
+
+#### `mmlOutput` (number)
+
+Indicates if model should have mathML output instead of latex
+
+#### `mmlEditing` (number)
+
+Indicates if mathML that's already in model should be editable
+
+### `maxMaxPoints` (number)
+
+Indicates the max limit for scoring points
+
+### `rubricless` (boolean, enum, required)
+
+Indicates that it is rubricless
+
+This element must be one of the following enum values:
+
+* `true`
+
+### `rubriclessInstruction` (object, required)
+
+Properties of the `rubriclessInstruction` object:
+
+#### `settings` (boolean, enum, required)
+
+This element must be one of the following enum values:
+
+* `true`
+
+#### `label` (string, enum, required)
+
+This element must be one of the following enum values:
+
+* `Instruction`
+
+### `showPrompt` (boolean)
+
+Determines whether prompt field will be displayed or not
+
+Default: `true`
+
+### `promptLabel` (string)
+
+The label for the item stem/prompt field
+
+Default: `"Item Stemm"`
+
+### `contentDimensions` (object)
+
+Indicates the dimensions configuration for the authoring container
+Note: Some items have a default minimum width because of their content, but if
+the minWidth is lower than this, the overflow behavior will take care of that
+
+Properties of the `contentDimensions` object:
+
+#### `maxHeight` (string,number)
+
+Indicates the max height of the authoring container
+
+Default: `"undefined"`
+
+#### `maxWidth` (string,number)
+
+Indicates the max width of the authoring container
+
+Default: `"undefined"`
+
+#### `minHeight` (string,number)
+
+Indicates the min height of the authoring container
+
+Default: `"undefined"`
+
+#### `minWidth` (string,number)
+
+Indicates the min width of the authoring container
+
+Default: `"undefined"`
+
+Default: `": {}"`
+
+### `settingsPartialScoring` (boolean)
+
+Indicates whether the settings panel wil allow the author to modify settings for partial scoring
+
+Default: `true`
+
 ## `RubricType` (string)
 
 ## `RubricModels` (object)
@@ -595,6 +748,30 @@ Trait description
 Score point descriptors. Starting from 0 to max.
 
 The object is an array with all elements of the type `string`.
+
+#### `id` (string, required)
+
+Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.
+
+#### `element` (string, required)
+
+The html Element tag name
+
+### `rubricless` (object, required)
+
+Properties of the `rubricless` object:
+
+#### `maxPoints` (number)
+
+Indicates the max limit for scoring points
+
+#### `excludeZeros` (boolean)
+
+Indicates if point 0 should be shown
+
+#### `rubriclessInstructionEnabled` (boolean, required)
+
+Indicates that rubricInstruction is enabled
 
 #### `id` (string, required)
 
@@ -803,3 +980,27 @@ Trait description
 Score point descriptors. Starting from 0 to max.
 
 The object is an array with all elements of the type `string`.
+
+## `RubriclessPie` (object)
+
+Properties of the `RubriclessPie` object:
+
+### `maxPoints` (number)
+
+Indicates the max limit for scoring points
+
+### `excludeZeros` (boolean)
+
+Indicates if point 0 should be shown
+
+### `rubriclessInstructionEnabled` (boolean, required)
+
+Indicates that rubricInstruction is enabled
+
+### `id` (string, required)
+
+Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.
+
+### `element` (string, required)
+
+The html Element tag name

@@ -6,6 +6,14 @@
       "type": "string",
       "title": "width"
     },
+    "rubricOptions": {
+      "description": "Contains the available rubric types",
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "title": "rubricOptions"
+    },
     "simpleRubric": {
       "title": "RubricConfigure",
       "type": "object",
@@ -363,10 +371,178 @@
       "required": [
         "width"
       ]
+    },
+    "rubricless": {
+      "title": "RubriclessConfigure",
+      "type": "object",
+      "properties": {
+        "settingsPanelDisabled": {
+          "description": "Indicates if the settings panel is not available",
+          "type": "boolean",
+          "title": "settingsPanelDisabled"
+        },
+        "showExcludeZero": {
+          "title": "ConfigureProp",
+          "type": "object",
+          "properties": {
+            "settings": {
+              "description": "Indicates if the item has to be displayed in the Settings Panel",
+              "type": "boolean",
+              "title": "settings"
+            },
+            "label": {
+              "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+              "type": "string",
+              "title": "label"
+            }
+          }
+        },
+        "showMaxPoint": {
+          "title": "ConfigureProp",
+          "type": "object",
+          "properties": {
+            "settings": {
+              "description": "Indicates if the item has to be displayed in the Settings Panel",
+              "type": "boolean",
+              "title": "settings"
+            },
+            "label": {
+              "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+              "type": "string",
+              "title": "label"
+            }
+          }
+        },
+        "width": {
+          "description": "How large can the rubric be",
+          "type": "string",
+          "title": "width"
+        },
+        "mathMlOptions": {
+          "title": "ConfigureMathMLProp",
+          "type": "object",
+          "properties": {
+            "mmlOutput": {
+              "description": "Indicates if model should have mathML output instead of latex",
+              "type": "number",
+              "title": "mmlOutput"
+            },
+            "mmlEditing": {
+              "description": "Indicates if mathML that's already in model should be editable",
+              "type": "number",
+              "title": "mmlEditing"
+            }
+          }
+        },
+        "maxMaxPoints": {
+          "description": "Indicates the max limit for scoring points",
+          "type": "number",
+          "title": "maxMaxPoints"
+        },
+        "rubricless": {
+          "description": "Indicates that it is rubricless",
+          "type": "boolean",
+          "enum": [
+            true
+          ],
+          "title": "rubricless"
+        },
+        "rubriclessInstruction": {
+          "type": "object",
+          "properties": {
+            "settings": {
+              "type": "boolean",
+              "enum": [
+                true
+              ],
+              "title": "settings"
+            },
+            "label": {
+              "type": "string",
+              "enum": [
+                "Instruction"
+              ],
+              "title": "label"
+            }
+          },
+          "required": [
+            "label",
+            "settings"
+          ],
+          "title": "rubriclessInstruction"
+        },
+        "showPrompt": {
+          "description": "Determines whether prompt field will be displayed or not",
+          "default": true,
+          "type": "boolean",
+          "title": "showPrompt"
+        },
+        "promptLabel": {
+          "description": "The label for the item stem/prompt field",
+          "default": "Item Stemm",
+          "type": "string",
+          "title": "promptLabel"
+        },
+        "contentDimensions": {
+          "description": "Indicates the dimensions configuration for the authoring container\nNote: Some items have a default minimum width because of their content, but if\nthe minWidth is lower than this, the overflow behavior will take care of that",
+          "default": ": {}",
+          "type": "object",
+          "properties": {
+            "maxHeight": {
+              "description": "Indicates the max height of the authoring container",
+              "default": "undefined",
+              "type": [
+                "string",
+                "number"
+              ],
+              "title": "maxHeight"
+            },
+            "maxWidth": {
+              "description": "Indicates the max width of the authoring container",
+              "default": "undefined",
+              "type": [
+                "string",
+                "number"
+              ],
+              "title": "maxWidth"
+            },
+            "minHeight": {
+              "description": "Indicates the min height of the authoring container",
+              "default": "undefined",
+              "type": [
+                "string",
+                "number"
+              ],
+              "title": "minHeight"
+            },
+            "minWidth": {
+              "description": "Indicates the min width of the authoring container",
+              "default": "undefined",
+              "type": [
+                "string",
+                "number"
+              ],
+              "title": "minWidth"
+            }
+          },
+          "title": "contentDimensions"
+        },
+        "settingsPartialScoring": {
+          "description": "Indicates whether the settings panel wil allow the author to modify settings for partial scoring",
+          "default": true,
+          "type": "boolean",
+          "title": "settingsPartialScoring"
+        }
+      },
+      "required": [
+        "rubricless",
+        "rubriclessInstruction"
+      ]
     }
   },
   "required": [
     "multiTraitRubric",
+    "rubricless",
     "simpleRubric"
   ],
   "definitions": {
@@ -775,6 +951,173 @@
           "title": "text"
         }
       }
+    },
+    "RubriclessConfigure": {
+      "title": "RubriclessConfigure",
+      "type": "object",
+      "properties": {
+        "settingsPanelDisabled": {
+          "description": "Indicates if the settings panel is not available",
+          "type": "boolean",
+          "title": "settingsPanelDisabled"
+        },
+        "showExcludeZero": {
+          "title": "ConfigureProp",
+          "type": "object",
+          "properties": {
+            "settings": {
+              "description": "Indicates if the item has to be displayed in the Settings Panel",
+              "type": "boolean",
+              "title": "settings"
+            },
+            "label": {
+              "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+              "type": "string",
+              "title": "label"
+            }
+          }
+        },
+        "showMaxPoint": {
+          "title": "ConfigureProp",
+          "type": "object",
+          "properties": {
+            "settings": {
+              "description": "Indicates if the item has to be displayed in the Settings Panel",
+              "type": "boolean",
+              "title": "settings"
+            },
+            "label": {
+              "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+              "type": "string",
+              "title": "label"
+            }
+          }
+        },
+        "width": {
+          "description": "How large can the rubric be",
+          "type": "string",
+          "title": "width"
+        },
+        "mathMlOptions": {
+          "title": "ConfigureMathMLProp",
+          "type": "object",
+          "properties": {
+            "mmlOutput": {
+              "description": "Indicates if model should have mathML output instead of latex",
+              "type": "number",
+              "title": "mmlOutput"
+            },
+            "mmlEditing": {
+              "description": "Indicates if mathML that's already in model should be editable",
+              "type": "number",
+              "title": "mmlEditing"
+            }
+          }
+        },
+        "maxMaxPoints": {
+          "description": "Indicates the max limit for scoring points",
+          "type": "number",
+          "title": "maxMaxPoints"
+        },
+        "rubricless": {
+          "description": "Indicates that it is rubricless",
+          "type": "boolean",
+          "enum": [
+            true
+          ],
+          "title": "rubricless"
+        },
+        "rubriclessInstruction": {
+          "type": "object",
+          "properties": {
+            "settings": {
+              "type": "boolean",
+              "enum": [
+                true
+              ],
+              "title": "settings"
+            },
+            "label": {
+              "type": "string",
+              "enum": [
+                "Instruction"
+              ],
+              "title": "label"
+            }
+          },
+          "required": [
+            "label",
+            "settings"
+          ],
+          "title": "rubriclessInstruction"
+        },
+        "showPrompt": {
+          "description": "Determines whether prompt field will be displayed or not",
+          "default": true,
+          "type": "boolean",
+          "title": "showPrompt"
+        },
+        "promptLabel": {
+          "description": "The label for the item stem/prompt field",
+          "default": "Item Stemm",
+          "type": "string",
+          "title": "promptLabel"
+        },
+        "contentDimensions": {
+          "description": "Indicates the dimensions configuration for the authoring container\nNote: Some items have a default minimum width because of their content, but if\nthe minWidth is lower than this, the overflow behavior will take care of that",
+          "default": ": {}",
+          "type": "object",
+          "properties": {
+            "maxHeight": {
+              "description": "Indicates the max height of the authoring container",
+              "default": "undefined",
+              "type": [
+                "string",
+                "number"
+              ],
+              "title": "maxHeight"
+            },
+            "maxWidth": {
+              "description": "Indicates the max width of the authoring container",
+              "default": "undefined",
+              "type": [
+                "string",
+                "number"
+              ],
+              "title": "maxWidth"
+            },
+            "minHeight": {
+              "description": "Indicates the min height of the authoring container",
+              "default": "undefined",
+              "type": [
+                "string",
+                "number"
+              ],
+              "title": "minHeight"
+            },
+            "minWidth": {
+              "description": "Indicates the min width of the authoring container",
+              "default": "undefined",
+              "type": [
+                "string",
+                "number"
+              ],
+              "title": "minWidth"
+            }
+          },
+          "title": "contentDimensions"
+        },
+        "settingsPartialScoring": {
+          "description": "Indicates whether the settings panel wil allow the author to modify settings for partial scoring",
+          "default": true,
+          "type": "boolean",
+          "title": "settingsPartialScoring"
+        }
+      },
+      "required": [
+        "rubricless",
+        "rubriclessInstruction"
+      ]
     }
   },
   "$schema": "http://json-schema.org/draft-07/schema#"
