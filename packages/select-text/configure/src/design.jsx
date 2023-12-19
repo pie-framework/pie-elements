@@ -9,7 +9,7 @@ import { InputContainer, NumberTextField, FeedbackConfig, settings, layout } fro
 import Chip from '@material-ui/core/Chip';
 import Info from '@material-ui/icons/Info';
 import debug from 'debug';
-import EditableHtml from '@pie-lib/pie-toolbox/editable-html';
+import {EditableHtml} from '@pie-lib/pie-toolbox/editable-html';
 import Tooltip from '@material-ui/core/Tooltip';
 import { generateValidationMessage } from './utils';
 

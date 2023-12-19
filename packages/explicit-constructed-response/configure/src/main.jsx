@@ -4,7 +4,7 @@ import cloneDeep from 'lodash/cloneDeep';
 import isEmpty from 'lodash/isEmpty';
 import pick from 'lodash/pick';
 import throttle from 'lodash/throttle';
-import EditableHtml, { ALL_PLUGINS } from '@pie-lib/pie-toolbox/editable-html';
+import { EditableHtml, ALL_PLUGINS } from '@pie-lib/pie-toolbox/editable-html';
 // import EditableHtmlNew from 'editable-html';
 import { InputContainer, layout, settings } from '@pie-lib/pie-toolbox/config-ui';
 import { withStyles } from '@material-ui/core/styles';
@@ -261,7 +261,7 @@ export class Main extends React.Component {
 
   render() {
     const { classes, model, configuration, onConfigurationChanged, imageSupport, uploadSoundSupport } = this.props;
-  
+
     const {
       contentDimensions = {},
       maxImageWidth = {},

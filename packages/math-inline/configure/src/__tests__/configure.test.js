@@ -5,7 +5,7 @@ import { InputContainer, InputCheckbox } from '@pie-lib/pie-toolbox/config-ui';
 import { shallowChild } from '@pie-lib/pie-toolbox/test-utils';
 import Response from '../response';
 import { MathToolbar } from '@pie-lib/pie-toolbox/math-toolbar';
-import EditableHtml from '@pie-lib/pie-toolbox/editable-html';
+import {EditableHtml} from '@pie-lib/pie-toolbox/editable-html';
 import { shallow } from 'enzyme';
 
 import { FeedbackConfig, layout, settings } from '@pie-lib/pie-toolbox/config-ui';

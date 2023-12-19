@@ -18,6 +18,7 @@ export default class Main extends React.Component {
       <div>
         {model.prompt && (
           <div>
+            <p>Boilerplate Item</p>
             <PreviewPrompt prompt={model.prompt}/>
           </div>
         )}

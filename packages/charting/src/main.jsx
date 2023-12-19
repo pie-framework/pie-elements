@@ -5,7 +5,7 @@ import { color, Collapsible, hasText, PreviewPrompt } from '@pie-lib/pie-toolbox
 import { Chart, chartTypes } from '@pie-lib/pie-toolbox/charting';
 import isArray from 'lodash/isArray';
 import isEqual from 'lodash/isEqual';
-import CorrectAnswerToggle from '@pie-lib/pie-toolbox/correct-answer-toggle';
+import {CorrectAnswerToggle} from '@pie-lib/pie-toolbox/correct-answer-toggle';
 
 export class Main extends React.Component {
   static propTypes = {
