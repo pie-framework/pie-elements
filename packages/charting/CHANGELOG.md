@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@7.2.0...@pie-element/charting@7.2.1) (2023-12-19)
+
+
+### Bug Fixes
+
+* **charting:** fix state sync issues in Define Correct Response Chart when Define Chart data is modified or removed PD-3164 ([baa04e6](https://github.com/pie-framework/pie-elements/commit/baa04e6942c1f8e4279f2b83327c142464fde6e5))
+
+
+
+
+
 # [7.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@7.1.1...@pie-element/charting@7.2.0) (2023-12-19)
 
 
