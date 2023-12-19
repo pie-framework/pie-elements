@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric-configure@2.0.3...@pie-element/complex-rubric-configure@2.1.0) (2023-12-19)
+
+
+### Bug Fixes
+
+* **complex-rubric:** switch back to initial versions PD-3260 ([e9806a2](https://github.com/pie-framework/pie-elements/commit/e9806a2008bb2677bdc3bd1c8752c416197a79a2))
+* **complex-rubric:** update docu, revert next versions PD-2555 ([5eb1a68](https://github.com/pie-framework/pie-elements/commit/5eb1a68e9de96258c2b648b37913820e2086a377))
+* **complex-rubric:** update multi-trait-rubric to next versions PD-3260 ([037aab8](https://github.com/pie-framework/pie-elements/commit/037aab8e78c9405d3123c25515068b17277fa940))
+* **multi-trait-rubric + complex-rubric:** width calculations PD-3203 ([a55afb5](https://github.com/pie-framework/pie-elements/commit/a55afb5e4859fa3e85e0f1615287efb5ee98b820))
+
+
+### Features
+
+* **complex-rubric:** add instruction for rubricless, render rubricTypes dinamically PD-2555 ([3c0c44f](https://github.com/pie-framework/pie-elements/commit/3c0c44f4e570c6f7a6edc8859277967fbd1719b0))
+* **complex-rubric:** add rubricOptions to config PD-2555 ([379110a](https://github.com/pie-framework/pie-elements/commit/379110a02e0858a78eb5679a80b26e0f976132bd))
+* **complex-rubric:** add validate logic PD-3260 ([0d07a83](https://github.com/pie-framework/pie-elements/commit/0d07a83254d7aab1f87a67893a858c04938d16ea))
+* **complex-rubric:** update test PD-2555 ([5e2ab67](https://github.com/pie-framework/pie-elements/commit/5e2ab67268927d43649459f99c3cc3259540d4aa))
+* **complex-rubric:** update tests and use enum for new rubric type PD-2555 ([0bafc9a](https://github.com/pie-framework/pie-elements/commit/0bafc9aa6d563378b08f4d478828da454d38ad20))
+* **complex-rubric:** update versions of next for testing purpose PD-2555 ([2953283](https://github.com/pie-framework/pie-elements/commit/295328364783905cd717c6a67ee40c229295b611))
+* **complex-rubrix:** add new rubric type and asjust logic ([e49fc22](https://github.com/pie-framework/pie-elements/commit/e49fc2281a8df02bd7dec9b931d06aa74e919031))
+* **rubric:** solve conflicts PD-2555 ([b67c659](https://github.com/pie-framework/pie-elements/commit/b67c65945fc68ef1bd577a915b5f8918da0a716b))
+* **rubrics:** add documentation for maxMaxPoints, add defaults in complex-rubric PD-3307 ([ab0572e](https://github.com/pie-framework/pie-elements/commit/ab0572e69502e9bec6e32cad73a37f3aae0eaf42))
+
+
+
+
+
 ## [2.0.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric-configure@2.0.2...@pie-element/complex-rubric-configure@2.0.3) (2023-11-27)
 
 

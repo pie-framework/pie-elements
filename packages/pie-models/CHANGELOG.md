@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.9.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.8.0...@pie-element/pie-models@13.9.0) (2023-12-19)
+
+
+### Bug Fixes
+
+* **complex-rubric:** update docu, revert next versions PD-2555 ([5eb1a68](https://github.com/pie-framework/pie-elements/commit/5eb1a68e9de96258c2b648b37913820e2086a377))
+
+
+### Features
+
+* **charting:** Add possibility to mark fields as required PD-3310 ([4034d0b](https://github.com/pie-framework/pie-elements/commit/4034d0b20b4277f30f0d373c0f62932f6f6ba33b))
+* **inline-dropdown:** Add possibility to mark fields as required PD-3310 ([d347e3d](https://github.com/pie-framework/pie-elements/commit/d347e3d6000b216b46c14a03fdec6d7b87378006))
+* **rubrics:** add documentation for maxMaxPoints, add defaults in complex-rubric PD-3307 ([ab0572e](https://github.com/pie-framework/pie-elements/commit/ab0572e69502e9bec6e32cad73a37f3aae0eaf42))
+
+
+
+
+
 # [13.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.7.0...@pie-element/pie-models@13.8.0) (2023-11-27)
 
 

@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@7.0.3...@pie-element/math-inline-configure@7.1.0) (2023-12-19)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-2068 ([34eccd5](https://github.com/pie-framework/pie-elements/commit/34eccd52c44259eddf3e2b816b00b82f83bc2bf8))
+
+
+### Features
+
+* update pie-lib/pie-toolbox PD-2555 ([86d4fd9](https://github.com/pie-framework/pie-elements/commit/86d4fd909180dd1fcbc446bd8b29c23af21a1c69))
+* update pie-lib/pie-toolbox PD-3307, PD-2067, PD-3271, PD-3041, PD-2068 ([2eabcbd](https://github.com/pie-framework/pie-elements/commit/2eabcbd036e318bb24552f4140ca7384ad865951))
+
+
+
+
+
 ## [7.0.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@7.0.2...@pie-element/math-inline-configure@7.0.3) (2023-11-27)
 
 

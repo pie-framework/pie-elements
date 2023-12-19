@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric-configure@3.0.3...@pie-element/rubric-configure@3.1.0) (2023-12-19)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-2068 ([34eccd5](https://github.com/pie-framework/pie-elements/commit/34eccd52c44259eddf3e2b816b00b82f83bc2bf8))
+
+
+### Features
+
+* update pie-lib/pie-toolbox PD-2555 ([86d4fd9](https://github.com/pie-framework/pie-elements/commit/86d4fd909180dd1fcbc446bd8b29c23af21a1c69))
+* **rubric:** solve conflicts PD-2555 ([b67c659](https://github.com/pie-framework/pie-elements/commit/b67c65945fc68ef1bd577a915b5f8918da0a716b))
+* update pie-lib/pie-toolbox PD-3307, PD-2067, PD-3271, PD-3041, PD-2068 ([2eabcbd](https://github.com/pie-framework/pie-elements/commit/2eabcbd036e318bb24552f4140ca7384ad865951))
+* **complex-rubric:** add instruction for rubricless, render rubricTypes dinamically PD-2555 ([3c0c44f](https://github.com/pie-framework/pie-elements/commit/3c0c44f4e570c6f7a6edc8859277967fbd1719b0))
+* **complex-rubrix:** add new rubric type and asjust logic ([e49fc22](https://github.com/pie-framework/pie-elements/commit/e49fc2281a8df02bd7dec9b931d06aa74e919031))
+* **multi-trait-rubric:** add new property maxMaxPoints to authoring configuration PD-3307 ([6e43337](https://github.com/pie-framework/pie-elements/commit/6e4333707021159b25d8ca3f692b9f701b3835e8))
+* **rubric:** add new property maxMaxPoints to authoring configuration PD-3307 ([5f80c3f](https://github.com/pie-framework/pie-elements/commit/5f80c3fd84757361e148dbe749470a2a4653bd22))
+
+
+
+
+
 ## [3.0.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric-configure@3.0.2...@pie-element/rubric-configure@3.0.3) (2023-11-27)
 
 

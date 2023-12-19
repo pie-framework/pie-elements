@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric@3.0.3...@pie-element/multi-trait-rubric@3.1.0) (2023-12-19)
+
+
+### Bug Fixes
+
+* tweaks PD-3307 ([15f7c05](https://github.com/pie-framework/pie-elements/commit/15f7c05c42a34286b9cbca02d5404a4fc2fd2ccd))
+* update pie-lib/pie-toolbox PD-2068 ([34eccd5](https://github.com/pie-framework/pie-elements/commit/34eccd52c44259eddf3e2b816b00b82f83bc2bf8))
+* **complex-rubric:** add comments, delete logs PD-3260 ([e3991c6](https://github.com/pie-framework/pie-elements/commit/e3991c6c09a2b1f4815d3b2216b32f073e5cbf3c))
+* **multi-trait-rubric:** use markupToText from utils PD-3260 ([24a785b](https://github.com/pie-framework/pie-elements/commit/24a785b8cca686bd032d2006be58c1de16ff195e))
+* tests ([6e621f3](https://github.com/pie-framework/pie-elements/commit/6e621f3e0e5f379fa58652f39f4eacdfda72ab43))
+* **multi-trait-rubric:** wip use all horizontal space PD-3203 ([b1484c0](https://github.com/pie-framework/pie-elements/commit/b1484c059993e2b0ce78898797571a77f56eeda8))
+* **multi-trait-rubric + complex-rubric:** width calculations PD-3203 ([a55afb5](https://github.com/pie-framework/pie-elements/commit/a55afb5e4859fa3e85e0f1615287efb5ee98b820))
+
+
+### Features
+
+* update pie-lib/pie-toolbox PD-2555 ([86d4fd9](https://github.com/pie-framework/pie-elements/commit/86d4fd909180dd1fcbc446bd8b29c23af21a1c69))
+* update pie-lib/pie-toolbox PD-3307, PD-2067, PD-3271, PD-3041, PD-2068 ([2eabcbd](https://github.com/pie-framework/pie-elements/commit/2eabcbd036e318bb24552f4140ca7384ad865951))
+* **complex-rubric:** updated docu PD-3307 ([a22cb2b](https://github.com/pie-framework/pie-elements/commit/a22cb2b553c62f5384b03c99a22d018ab4a043e5))
+* **multi-trait-rubric:** add new property maxMaxPoints to authoring configuration PD-3307 ([6e43337](https://github.com/pie-framework/pie-elements/commit/6e4333707021159b25d8ca3f692b9f701b3835e8))
+
+
+
+
+
 ## [3.0.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric@3.0.2...@pie-element/multi-trait-rubric@3.0.3) (2023-11-27)
 
 
