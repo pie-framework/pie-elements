@@ -41,11 +41,13 @@ const prepareCustomizationObject = (config, model) => {
 export default class ComplexRubricConfigureElement extends HTMLElement {
   static createDefaultModel = (
     {
-      rubrics: { simpleRubric = {}, multiTraitRubric = {} } = { simpleRubric: {}, multiTraitRubric: {} },
+      rubrics: { simpleRubric = {}, rubricless = {}, multiTraitRubric = {} } = { simpleRubric: {}, rubricless: {}, multiTraitRubric: {} },
       ...model
     } = {},
     defaults = {},
-  ) => ({
+  ) =>
+  {
+    return {
     ...defaults,
     ...model,
     rubrics: {
@@ -57,8 +59,12 @@ export default class ComplexRubricConfigureElement extends HTMLElement {
         ...(defaults.rubrics || {}).multiTraitRubric,
         ...multiTraitRubric,
       },
+      rubricless: {
+        ...(defaults.rubrics || {}).rubricless,
+        ...rubricless,
+      },
     },
-  });
+  }};
 
   constructor() {
     super();

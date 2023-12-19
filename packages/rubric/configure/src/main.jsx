@@ -13,6 +13,12 @@ const styles = (theme) => ({
 });
 
 class Main extends React.Component {
+
+  verifyRubriclessModel = (m, config) => {
+    const { rubricless = false } = config || {};
+    return rubricless ? (({ points, sampleAnswers, ...rest }) => rest)(m) : m;
+  };
+
   render() {
     const { model, configuration, onConfigurationChanged, onModelChanged } = this.props || {};
     const {
@@ -21,13 +27,18 @@ class Main extends React.Component {
       showExcludeZero = {},
       showMaxPoint = {},
       mathMlOptions = {},
+      rubricless = false,
+      rubriclessInstruction,
       width,
-      maxMaxPoints
     } = configuration || {};
+
+    // ensure to eliminate points and sampleAnswers in case of rubricless
+    const value = this.verifyRubriclessModel(model, configuration);
 
     const panelProperties = {
       excludeZeroEnabled: showExcludeZero.settings && toggle(showExcludeZero.label),
       maxPointsEnabled: showMaxPoint.settings && toggle(showMaxPoint.label),
+      rubriclessInstructionEnabled: rubricless && rubriclessInstruction.settings && toggle(rubriclessInstruction.label),
     };
 
     return (
@@ -47,12 +58,7 @@ class Main extends React.Component {
         }
       >
         <div style={{ maxWidth: width }}>
-          <Authoring
-            value={model}
-            onChange={onModelChanged}
-            mathMlOptions={mathMlOptions}
-            maxMaxPoints={Math.abs(maxMaxPoints)}
-          />
+          <Authoring value={value} config={configuration} onChange={onModelChanged} mathMlOptions={mathMlOptions} rubricless={rubricless} />
         </div>
       </layout.ConfigLayout>
     );

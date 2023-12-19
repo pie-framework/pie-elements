@@ -2,12 +2,18 @@ exports.model = (id, element) => ({
   id,
   element,
   rubricType: 'simpleRubric',
+  rubricOptions: ['simpleRubric', 'multiTraitRubric', 'rubricless'],
   rubrics: {
     simpleRubric: {
       points: ['nothing right', 'a teeny bit right', 'mostly right', 'bingo'],
       sampleAnswers: [null, 'just right', 'not left', null],
       maxPoints: 4,
       excludeZero: false,
+    },
+    rubricless: {
+      maxPoints: 100,
+      excludeZero: false,
+      rubriclessInstructionEnabled: true,
     },
     multiTraitRubric: {
       visibleToStudent: true,
