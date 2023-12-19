@@ -1,10 +1,11 @@
 import { PieModel } from '../../PieModel';
-import { RubricConfigure, RubricPie } from '../rubric';
+import { RubricConfigure, RubriclessConfigure, RubricPie, RubriclessPie } from '../rubric';
 import { MultiTraitRubricConfigure, MultiTraitRubricPie } from '../multi-trait-rubric';
 
 enum RubricType {
   SimpleRubric = 'simpleRubric',
   MultiTraitRubric = 'multiTraitRubric',
+  Rubricless = 'rubricless',
 }
 
 interface RubricModels {
@@ -12,6 +13,9 @@ interface RubricModels {
   [RubricType.SimpleRubric]: RubricPie;
   /** Contains the multi trait rubric model. */
   [RubricType.MultiTraitRubric]: MultiTraitRubricPie;
+
+  /** Contains the rubricless model. */
+  [RubricType.Rubricless]: RubriclessPie;
 }
 
 /**
@@ -34,9 +38,17 @@ export interface ComplexRubricConfigure {
    */
   width?: string;
 
+  /**
+   * Contains the available rubric types
+   */
+  rubricOptions?: Array<string>;
+
   /** Contains the simple rubric configuration. */
   [RubricType.SimpleRubric]: RubricConfigure;
 
   /** Contains the multi trait rubric configuration. */
   [RubricType.MultiTraitRubric]: MultiTraitRubricConfigure;
+
+  /** Contains the rubricless configuration. */
+  [RubricType.Rubricless]: RubriclessConfigure;
 }

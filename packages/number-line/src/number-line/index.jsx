@@ -259,15 +259,17 @@ export class NumberLine extends React.Component {
           </div>
         )}
 
-        <div style={{ width: adjustedWidth }} className={classes.toggle}>
-          <Toggle
-            show={isArray(correctResponse) && correctResponse.length && !emptyAnswer}
-            toggled={showCorrectAnswer}
-            onToggle={onShowCorrectAnswer}
-            initialValue={false}
-            language={language}
-          />
-        </div>
+        {!disabled && (
+            <div style={{ width: adjustedWidth }} className={classes.toggle}>
+              <Toggle
+                  show={isArray(correctResponse) && correctResponse.length && !emptyAnswer}
+                  toggled={showCorrectAnswer}
+                  onToggle={onShowCorrectAnswer}
+                  initialValue={false}
+                  language={language}
+              />
+            </div>
+        )}
 
         {!disabled && (
           <PointChooser

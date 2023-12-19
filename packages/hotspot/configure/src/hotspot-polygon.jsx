@@ -13,7 +13,8 @@ class PolComponent extends React.Component {
     if (
       prevState.imageHeight !== nextProps.imageHeight ||
       prevState.imageWidth !== nextProps.imageWidth ||
-      prevState.id !== nextProps.id
+      prevState.id !== nextProps.id ||
+      prevState.points.length !== points.length
     ) {
       if (points.length) {
         const xList = points.map((p) => p.x);
@@ -100,6 +101,11 @@ class PolComponent extends React.Component {
       return;
     }
 
+    if (isDrawing && id === 'newPolygon') {
+      this.props.addPolygonPoint(e);
+      return;
+    }
+
     e.cancelBubble = true;
     onClick(id);
   };
@@ -170,9 +176,11 @@ class PolComponent extends React.Component {
   render() {
     const { classes, correct, id, hotspotColor, outlineColor, strokeWidth = 5 } = this.props;
     const { points, x, y, hovered } = this.state;
+    const showPoints = hovered || id === 'newPolygon';
 
     const calculatedStrokeWidth = correct ? strokeWidth : hovered ? 1 : 0;
     const calculatedStroke = correct ? outlineColor : hovered ? HOVERED_COLOR : '';
+
     return (
       <Group classes={classes.group} onMouseLeave={this.handleMouseLeave} onMouseEnter={this.handleMouseEnter}>
         <Line
@@ -192,7 +200,7 @@ class PolComponent extends React.Component {
           y={y}
         />
 
-        {hovered &&
+        {showPoints &&
           points.map((point, index) => (
             <Circle
               key={index}
@@ -203,6 +211,7 @@ class PolComponent extends React.Component {
               fill={'white'}
               stroke={HOVERED_COLOR}
               strokeWidth={1}
+              onClick={this.handleClick}
               onDragStart={this.onDragStart}
               onDragMove={(e) => {
                 this.handleOnDragVertex(e, index);
@@ -250,6 +259,7 @@ PolComponent.propTypes = {
   imageWidth: PropTypes.number,
   hotspotColor: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
+  addPolygonPoint: PropTypes.func.isRequired,
   onDeleteShape: PropTypes.func.isRequired,
   onDragEnd: PropTypes.func.isRequired,
   outlineColor: PropTypes.string.isRequired,

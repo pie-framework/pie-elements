@@ -36,6 +36,7 @@ describe('Main', () => {
       classes: {},
       model: model(extras),
       configuration: {
+        rubricOptions: ['simpleRubric', 'multiTraitRubric', 'rubricless'],
         multiTraitrubric: {
           showStandards: {
             settings: false,

@@ -380,11 +380,29 @@
               "description": "larger tick - These ticks have labels.",
               "type": "number",
               "title": "major"
+            },
+            "labelStep": {
+              "description": "Fraction representation of major.",
+              "type": "string",
+              "title": "labelStep"
+            },
+            "tickIntervalType": {
+              "description": "Contains tick interval type Integer, Fraction, Decimal",
+              "type": "string",
+              "title": "tickIntervalType"
+            },
+            "tickStep": {
+              "description": "Fraction representation of minor.",
+              "type": "string",
+              "title": "tickStep"
             }
           },
           "required": [
+            "labelStep",
             "major",
-            "minor"
+            "minor",
+            "tickIntervalType",
+            "tickStep"
           ]
         },
         "title": {
@@ -475,6 +493,11 @@
             "RFP"
           ],
           "title": "availableTypes"
+        },
+        "widthEnabled": {
+          "description": "If enabled, allows user to set width for number line.",
+          "type": "boolean",
+          "title": "widthEnabled"
         },
         "initialElements": {
           "description": "Array that returns responses",
@@ -635,7 +658,8 @@
         "labelStep",
         "maxNumberOfPoints",
         "tick",
-        "width"
+        "width",
+        "widthEnabled"
       ]
     },
     "prompt": {
@@ -683,6 +707,27 @@
     "spellCheckEnabled"
   ],
   "definitions": {
+    "ConfigurePropWithEnabled": {
+      "title": "ConfigurePropWithEnabled",
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "description": "Indicates the value of the item if it affects config-ui\n(eg.: if item is a switch and displaying an input on the config-ui depends on the switch value: on/off)",
+          "type": "boolean",
+          "title": "enabled"
+        },
+        "settings": {
+          "description": "Indicates if the item has to be displayed in the Settings Panel",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+          "type": "string",
+          "title": "label"
+        }
+      }
+    },
     "ConfigureProp": {
       "title": "ConfigureProp",
       "type": "object",
@@ -699,6 +744,44 @@
         }
       }
     },
+    "NumberLineDimensions": {
+      "title": "NumberLineDimensions",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "type": "string",
+          "title": "label"
+        },
+        "enabled": {
+          "type": "boolean",
+          "title": "enabled"
+        },
+        "min": {
+          "type": "number",
+          "title": "min"
+        },
+        "max": {
+          "type": "number",
+          "title": "max"
+        },
+        "step": {
+          "type": "number",
+          "title": "step"
+        }
+      },
+      "required": [
+        "enabled",
+        "label",
+        "max",
+        "min",
+        "settings",
+        "step"
+      ]
+    },
     "ConfigureMathMLProp": {
       "title": "ConfigureMathMLProp",
       "type": "object",
@@ -712,27 +795,6 @@
           "description": "Indicates if mathML that's already in model should be editable",
           "type": "number",
           "title": "mmlEditing"
-        }
-      }
-    },
-    "ConfigurePropWithEnabled": {
-      "title": "ConfigurePropWithEnabled",
-      "type": "object",
-      "properties": {
-        "settings": {
-          "description": "Indicates if the item has to be displayed in the Settings Panel",
-          "type": "boolean",
-          "title": "settings"
-        },
-        "label": {
-          "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
-          "type": "string",
-          "title": "label"
-        },
-        "enabled": {
-          "description": "Indicates the value of the item if it affects config-ui\n(eg.: if item is a switch and displaying an input on the config-ui depends on the switch value: on/off)",
-          "type": "boolean",
-          "title": "enabled"
         }
       }
     },
@@ -1162,11 +1224,29 @@
               "description": "larger tick - These ticks have labels.",
               "type": "number",
               "title": "major"
+            },
+            "labelStep": {
+              "description": "Fraction representation of major.",
+              "type": "string",
+              "title": "labelStep"
+            },
+            "tickIntervalType": {
+              "description": "Contains tick interval type Integer, Fraction, Decimal",
+              "type": "string",
+              "title": "tickIntervalType"
+            },
+            "tickStep": {
+              "description": "Fraction representation of minor.",
+              "type": "string",
+              "title": "tickStep"
             }
           },
           "required": [
+            "labelStep",
             "major",
-            "minor"
+            "minor",
+            "tickIntervalType",
+            "tickStep"
           ]
         },
         "title": {
@@ -1257,6 +1337,11 @@
             "RFP"
           ],
           "title": "availableTypes"
+        },
+        "widthEnabled": {
+          "description": "If enabled, allows user to set width for number line.",
+          "type": "boolean",
+          "title": "widthEnabled"
         },
         "initialElements": {
           "description": "Array that returns responses",
@@ -1417,7 +1502,8 @@
         "labelStep",
         "maxNumberOfPoints",
         "tick",
-        "width"
+        "width",
+        "widthEnabled"
       ]
     },
     "Arrows": {
@@ -1469,11 +1555,29 @@
           "description": "larger tick - These ticks have labels.",
           "type": "number",
           "title": "major"
+        },
+        "labelStep": {
+          "description": "Fraction representation of major.",
+          "type": "string",
+          "title": "labelStep"
+        },
+        "tickIntervalType": {
+          "description": "Contains tick interval type Integer, Fraction, Decimal",
+          "type": "string",
+          "title": "tickIntervalType"
+        },
+        "tickStep": {
+          "description": "Fraction representation of minor.",
+          "type": "string",
+          "title": "tickStep"
         }
       },
       "required": [
+        "labelStep",
         "major",
-        "minor"
+        "minor",
+        "tickIntervalType",
+        "tickStep"
       ]
     }
   },

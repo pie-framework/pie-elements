@@ -10,17 +10,14 @@ export interface ConfigureProp {
   label?: string;
 }
 
-export interface ConfigureWithForceProp {
+export interface ConfigureRequiredProp extends ConfigureProp {
   /**
-   * Indicates if the item has to be displayed in the Settings Panel
+   * Indicates if the item is required and the value cannot be empty
    */
-  settings?: boolean;
+  required?: boolean;
+}
 
-  /**
-   * Indicates the label for the item that has to be displayed in the Settings Panel
-   */
-  label?: string;
-
+export interface ConfigureWithForceProp extends ConfigureProp {
   /**
    * Indicates the value for the toggle;
    * if true:
@@ -30,17 +27,7 @@ export interface ConfigureWithForceProp {
   forceEnabled?: boolean;
 }
 
-export interface ConfigurePropWithEnabled {
-  /**
-   * Indicates if the item has to be displayed in the Settings Panel
-   */
-  settings?: boolean;
-
-  /**
-   * Indicates the label for the item that has to be displayed in the Settings Panel
-   */
-  label?: string;
-
+export interface ConfigurePropWithEnabled extends ConfigureProp {
   /**
    * Indicates the value of the item if it affects config-ui
    * (eg.: if item is a switch and displaying an input on the config-ui depends on the switch value: on/off)
@@ -78,4 +65,3 @@ export interface ConfigureLanguageOptionsProp {
    */
   label: string;
 }
-

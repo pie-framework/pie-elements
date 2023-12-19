@@ -43,12 +43,18 @@ const styles = (theme) => ({
   primaryBlockGreyHeader: {
     paddingTop: theme.spacing.unit * 1.5,
   },
+  errorText: {
+    fontSize: theme.typography.fontSize - 2,
+    color: theme.palette.error.main,
+    paddingTop: theme.spacing.unit / 2,
+  },
 });
 
 export class TraitsHeaderTile extends React.Component {
   static propTypes = {
     maxPointsEnabled: PropTypes.bool,
     spellCheck: PropTypes.bool,
+    errors: PropTypes.object,
   };
 
   state = {
@@ -103,6 +109,8 @@ export class TraitsHeaderTile extends React.Component {
       uploadSoundSupport,
       maxPointsEnabled,
       mathMlOptions = {},
+      errors = {},
+      maxMaxPoints,
     } = this.props;
     const { anchorEl } = this.state;
 
@@ -124,7 +132,7 @@ export class TraitsHeaderTile extends React.Component {
           <ScaleSettings>
             <div>Scale {scaleIndex + 1}</div>
 
-            {maxPointsEnabled && <MaxPointsPicker maxPoints={maxPoints} onChange={updateMaxPointsFieldValue} />}
+            {maxPointsEnabled && <MaxPointsPicker maxPoints={maxPoints} maxMaxPoints={maxMaxPoints} onChange={updateMaxPointsFieldValue} />}
 
             <div>
               <IconButton aria-label="more" aria-controls="long-menu" aria-haspopup="true" onClick={this.handleClick}>
@@ -167,17 +175,21 @@ export class TraitsHeaderTile extends React.Component {
             const remainingSpace = secondaryBlockWidth - adjustedBlockWidth * index + currentPosition - 128;
             const value = scorePointsValues.length - index - 1;
             let scoreDescriptor;
+            let error;
 
             try {
               scoreDescriptor = scorePointsLabels[value] || '';
+              error = errors[value] || '';
             } catch (e) {
               scoreDescriptor = '';
             }
+
 
             return (
               <Block key={`secondary-block-part-${index}`}>
                 <ScorePoint
                   scorePointsValue={scorePointsValue}
+                  error={error}
                   scoreDescriptor={scoreDescriptor}
                   pluginProps={labelPlugins}
                   showScorePointLabels={showScorePointLabels}
@@ -187,6 +199,7 @@ export class TraitsHeaderTile extends React.Component {
                   uploadSoundSupport={uploadSoundSupport}
                   mathMlOptions={mathMlOptions}
                 />
+                {error && <div className={classes.errorText}>{error}</div>}
               </Block>
             );
           })}
@@ -215,6 +228,7 @@ TraitsHeaderTile.propTypes = {
   showScorePointLabels: PropTypes.bool,
   setSecondaryBlockRef: PropTypes.func,
   uploadSoundSupport: PropTypes.object,
+  maxMaxPoints: PropTypes.number
 };
 
 export default withStyles(styles)(TraitsHeaderTile);

@@ -2,6 +2,23 @@ Config Object for @pie-elements/number-line
 
 The schema defines the following properties:
 
+# `instruction` (object)
+
+Properties of the `instruction` object:
+
+## `enabled` (boolean)
+
+Indicates the value of the item if it affects config-ui
+(eg.: if item is a switch and displaying an input on the config-ui depends on the switch value: on/off)
+
+## `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+## `label` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
+
 # `prompt` (object)
 
 Properties of the `prompt` object:
@@ -14,6 +31,34 @@ Indicates if the item has to be displayed in the Settings Panel
 
 Indicates the label for the item that has to be displayed in the Settings Panel
 
+# `teacherInstructions` (object)
+
+Properties of the `teacherInstructions` object:
+
+## `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+## `label` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
+
+# `numberLineDimensions` (object)
+
+Properties of the `numberLineDimensions` object:
+
+## `settings` (boolean, required)
+
+## `label` (string, required)
+
+## `enabled` (boolean, required)
+
+## `min` (number, required)
+
+## `max` (number, required)
+
+## `step` (number, required)
+
 # `spellCheck` (object)
 
 Properties of the `spellCheck` object:
@@ -25,6 +70,20 @@ Indicates if the item has to be displayed in the Settings Panel
 ## `label` (string)
 
 Indicates the label for the item that has to be displayed in the Settings Panel
+
+# `maxMaxElements` (number)
+
+Holds numeric value for maximum number of elements allowed on number line.
+
+# `hidePointConfigButtons` (boolean)
+
+Hide buttons in point configuration module (Select All / None).
+
+# `availableTools` (array)
+
+Array of available tools for author.
+
+The object is an array with all elements of the type `string`.
 
 # `mathMlOptions` (object)
 
@@ -42,6 +101,11 @@ Indicates if mathML that's already in model should be editable
 
 Properties of the `language` object:
 
+## `enabled` (boolean)
+
+Indicates the value of the item if it affects config-ui
+(eg.: if item is a switch and displaying an input on the config-ui depends on the switch value: on/off)
+
 ## `settings` (boolean)
 
 Indicates if the item has to be displayed in the Settings Panel
@@ -49,11 +113,6 @@ Indicates if the item has to be displayed in the Settings Panel
 ## `label` (string)
 
 Indicates the label for the item that has to be displayed in the Settings Panel
-
-## `enabled` (boolean)
-
-Indicates the value of the item if it affects config-ui
-(eg.: if item is a switch and displaying an input on the config-ui depends on the switch value: on/off)
 
 # `languageChoices` (object)
 
@@ -136,6 +195,23 @@ Default: `true`
 
 The schema defines the following additional types:
 
+## `ConfigurePropWithEnabled` (object)
+
+Properties of the `ConfigurePropWithEnabled` object:
+
+### `enabled` (boolean)
+
+Indicates the value of the item if it affects config-ui
+(eg.: if item is a switch and displaying an input on the config-ui depends on the switch value: on/off)
+
+### `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+### `label` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
+
 ## `ConfigureProp` (object)
 
 Properties of the `ConfigureProp` object:
@@ -148,6 +224,22 @@ Indicates if the item has to be displayed in the Settings Panel
 
 Indicates the label for the item that has to be displayed in the Settings Panel
 
+## `NumberLineDimensions` (object)
+
+Properties of the `NumberLineDimensions` object:
+
+### `settings` (boolean, required)
+
+### `label` (string, required)
+
+### `enabled` (boolean, required)
+
+### `min` (number, required)
+
+### `max` (number, required)
+
+### `step` (number, required)
+
 ## `ConfigureMathMLProp` (object)
 
 Properties of the `ConfigureMathMLProp` object:
@@ -159,23 +251,6 @@ Indicates if model should have mathML output instead of latex
 ### `mmlEditing` (number)
 
 Indicates if mathML that's already in model should be editable
-
-## `ConfigurePropWithEnabled` (object)
-
-Properties of the `ConfigurePropWithEnabled` object:
-
-### `settings` (boolean)
-
-Indicates if the item has to be displayed in the Settings Panel
-
-### `label` (string)
-
-Indicates the label for the item that has to be displayed in the Settings Panel
-
-### `enabled` (boolean)
-
-Indicates the value of the item if it affects config-ui
-(eg.: if item is a switch and displaying an input on the config-ui depends on the switch value: on/off)
 
 ## `ConfigureLanguageOptionsProp` (object)
 

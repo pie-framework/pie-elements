@@ -83,10 +83,12 @@ export default {
     prompt: {
       settings: true,
       label: 'Item Stem',
+      required: false,
     },
     rationale: {
       settings: true,
       label: 'Rationale',
+      required: false,
     },
     scoringType: {
       settings: false,
@@ -100,6 +102,7 @@ export default {
     teacherInstructions: {
       settings: true,
       label: 'Teacher Instructions',
+      required: false,
     },
     title: {
       settings: false,

@@ -177,4 +177,7 @@ export interface MultiTraitRubricConfigure {
 
   /** Configuration for editable-html */
   mathMlOptions?: ConfigureMathMLProp;
+
+  /** Indicates the max limit for scoring points */
+  maxMaxPoints?: number;
 }

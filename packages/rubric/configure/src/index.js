@@ -10,6 +10,8 @@ const modelWithDefaults = (m) => ({ ...defaults.model, ...m });
 const configurationWithDefaults = (c) => ({ ...defaults.configuration, ...c });
 
 export default class RubricElement extends HTMLElement {
+
+
   constructor() {
     super();
     debug.log('constructor called');

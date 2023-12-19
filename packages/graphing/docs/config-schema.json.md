@@ -344,6 +344,11 @@ Indicates the placeholder for the bottom label
 
 Indicates the placeholder for the left label
 
+## `enabled` (boolean)
+
+Indicates the value of the item if it affects config-ui
+(eg.: if item is a switch and displaying an input on the config-ui depends on the switch value: on/off)
+
 ## `settings` (boolean)
 
 Indicates if the item has to be displayed in the Settings Panel
@@ -351,16 +356,16 @@ Indicates if the item has to be displayed in the Settings Panel
 ## `label` (string)
 
 Indicates the label for the item that has to be displayed in the Settings Panel
-
-## `enabled` (boolean)
-
-Indicates the value of the item if it affects config-ui
-(eg.: if item is a switch and displaying an input on the config-ui depends on the switch value: on/off)
 
 # `language` (object)
 
 Properties of the `language` object:
 
+## `enabled` (boolean)
+
+Indicates the value of the item if it affects config-ui
+(eg.: if item is a switch and displaying an input on the config-ui depends on the switch value: on/off)
+
 ## `settings` (boolean)
 
 Indicates if the item has to be displayed in the Settings Panel
@@ -368,11 +373,6 @@ Indicates if the item has to be displayed in the Settings Panel
 ## `label` (string)
 
 Indicates the label for the item that has to be displayed in the Settings Panel
-
-## `enabled` (boolean)
-
-Indicates the value of the item if it affects config-ui
-(eg.: if item is a switch and displaying an input on the config-ui depends on the switch value: on/off)
 
 # `languageChoices` (object)
 
@@ -481,6 +481,11 @@ Properties of the `title` object:
 
 Indicates the placeholder for the title label
 
+## `enabled` (boolean)
+
+Indicates the value of the item if it affects config-ui
+(eg.: if item is a switch and displaying an input on the config-ui depends on the switch value: on/off)
+
 ## `settings` (boolean)
 
 Indicates if the item has to be displayed in the Settings Panel
@@ -488,11 +493,6 @@ Indicates if the item has to be displayed in the Settings Panel
 ## `label` (string)
 
 Indicates the label for the item that has to be displayed in the Settings Panel
-
-## `enabled` (boolean)
-
-Indicates the value of the item if it affects config-ui
-(eg.: if item is a switch and displaying an input on the config-ui depends on the switch value: on/off)
 
 # `maxImageWidth` (object)
 
@@ -1028,6 +1028,11 @@ Indicates the placeholder for the bottom label
 
 Indicates the placeholder for the left label
 
+### `enabled` (boolean)
+
+Indicates the value of the item if it affects config-ui
+(eg.: if item is a switch and displaying an input on the config-ui depends on the switch value: on/off)
+
 ### `settings` (boolean)
 
 Indicates if the item has to be displayed in the Settings Panel
@@ -1035,16 +1040,16 @@ Indicates if the item has to be displayed in the Settings Panel
 ### `label` (string)
 
 Indicates the label for the item that has to be displayed in the Settings Panel
-
-### `enabled` (boolean)
-
-Indicates the value of the item if it affects config-ui
-(eg.: if item is a switch and displaying an input on the config-ui depends on the switch value: on/off)
 
 ## `ConfigurePropWithEnabled` (object)
 
 Properties of the `ConfigurePropWithEnabled` object:
 
+### `enabled` (boolean)
+
+Indicates the value of the item if it affects config-ui
+(eg.: if item is a switch and displaying an input on the config-ui depends on the switch value: on/off)
+
 ### `settings` (boolean)
 
 Indicates if the item has to be displayed in the Settings Panel
@@ -1052,11 +1057,6 @@ Indicates if the item has to be displayed in the Settings Panel
 ### `label` (string)
 
 Indicates the label for the item that has to be displayed in the Settings Panel
-
-### `enabled` (boolean)
-
-Indicates the value of the item if it affects config-ui
-(eg.: if item is a switch and displaying an input on the config-ui depends on the switch value: on/off)
 
 ## `ConfigureLanguageOptionsProp` (object)
 
@@ -1078,6 +1078,11 @@ Properties of the `TitleConfigProp` object:
 
 Indicates the placeholder for the title label
 
+### `enabled` (boolean)
+
+Indicates the value of the item if it affects config-ui
+(eg.: if item is a switch and displaying an input on the config-ui depends on the switch value: on/off)
+
 ### `settings` (boolean)
 
 Indicates if the item has to be displayed in the Settings Panel
@@ -1085,11 +1090,6 @@ Indicates if the item has to be displayed in the Settings Panel
 ### `label` (string)
 
 Indicates the label for the item that has to be displayed in the Settings Panel
-
-### `enabled` (boolean)
-
-Indicates the value of the item if it affects config-ui
-(eg.: if item is a switch and displaying an input on the config-ui depends on the switch value: on/off)
 
 ## `ConfigureMaxImageDimensionsProp` (object)
 

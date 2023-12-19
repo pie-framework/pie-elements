@@ -18,6 +18,10 @@ Indicates the label for the item that has to be displayed in the Settings Panel
 
 Properties of the `prompt` object:
 
+## `required` (boolean)
+
+Indicates if the item is required and the value cannot be empty
+
 ## `settings` (boolean)
 
 Indicates if the item has to be displayed in the Settings Panel
@@ -53,6 +57,10 @@ Indicates the label for the item that has to be displayed in the Settings Panel
 # `rationale` (object)
 
 Properties of the `rationale` object:
+
+## `required` (boolean)
+
+Indicates if the item is required and the value cannot be empty
 
 ## `settings` (boolean)
 
@@ -117,6 +125,10 @@ Indicates the label for the item that has to be displayed in the Settings Panel
 # `teacherInstructions` (object)
 
 Properties of the `teacherInstructions` object:
+
+## `required` (boolean)
+
+Indicates if the item is required and the value cannot be empty
 
 ## `settings` (boolean)
 
@@ -194,6 +206,11 @@ Indicates if mathML that's already in model should be editable
 
 Properties of the `language` object:
 
+## `enabled` (boolean)
+
+Indicates the value of the item if it affects config-ui
+(eg.: if item is a switch and displaying an input on the config-ui depends on the switch value: on/off)
+
 ## `settings` (boolean)
 
 Indicates if the item has to be displayed in the Settings Panel
@@ -201,11 +218,6 @@ Indicates if the item has to be displayed in the Settings Panel
 ## `label` (string)
 
 Indicates the label for the item that has to be displayed in the Settings Panel
-
-## `enabled` (boolean)
-
-Indicates the value of the item if it affects config-ui
-(eg.: if item is a switch and displaying an input on the config-ui depends on the switch value: on/off)
 
 # `languageChoices` (object)
 
@@ -300,6 +312,22 @@ Indicates if the item has to be displayed in the Settings Panel
 
 Indicates the label for the item that has to be displayed in the Settings Panel
 
+## `ConfigureRequiredProp` (object)
+
+Properties of the `ConfigureRequiredProp` object:
+
+### `required` (boolean)
+
+Indicates if the item is required and the value cannot be empty
+
+### `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+### `label` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
+
 ## `ConfigureMaxImageDimensionsProp` (object)
 
 Properties of the `ConfigureMaxImageDimensionsProp` object:
@@ -332,6 +360,11 @@ Indicates if mathML that's already in model should be editable
 
 Properties of the `ConfigurePropWithEnabled` object:
 
+### `enabled` (boolean)
+
+Indicates the value of the item if it affects config-ui
+(eg.: if item is a switch and displaying an input on the config-ui depends on the switch value: on/off)
+
 ### `settings` (boolean)
 
 Indicates if the item has to be displayed in the Settings Panel
@@ -339,11 +372,6 @@ Indicates if the item has to be displayed in the Settings Panel
 ### `label` (string)
 
 Indicates the label for the item that has to be displayed in the Settings Panel
-
-### `enabled` (boolean)
-
-Indicates the value of the item if it affects config-ui
-(eg.: if item is a switch and displaying an input on the config-ui depends on the switch value: on/off)
 
 ## `ConfigureLanguageOptionsProp` (object)
 

@@ -19,6 +19,8 @@ class PointConfig extends React.Component {
     onSelectionChange: PropTypes.func,
     selection: PropTypes.object,
     classes: PropTypes.object,
+    availableTools: PropTypes.array,
+    hideButtons: PropTypes.bool,
   };
   constructor(props) {
     super(props);
@@ -54,9 +56,9 @@ class PointConfig extends React.Component {
   }
 
   render() {
-    const { classes } = this.props;
+    const { classes, availableTools, hideButtons } = this.props;
 
-    const icons = PointConfig.types.map((point) => {
+    const icons = availableTools.map((point) => {
       return (
         <Point
           iconKey={point.toLowerCase()}
@@ -70,9 +72,9 @@ class PointConfig extends React.Component {
     return (
       <div>
         <div>{icons}</div>
-        <div className={classes.displayToggles}>
+        <div className={classes.displayToggles} hidden={hideButtons}>
           <Button variant="outlined" size="small" onClick={this.toggleAll.bind(this, true)}>
-            Display All
+            Select All
           </Button>
           <Button variant="outlined" size="small" onClick={this.toggleAll.bind(this, false)}>
             None
