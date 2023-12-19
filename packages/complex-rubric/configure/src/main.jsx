@@ -41,14 +41,15 @@ export class Main extends React.Component {
     const { model, configuration, canUpdateModel } = this.props;
 
     const { rubrics = {} } = model || {};
-    const availableRubrics = Object.keys(rubrics) || [];
     let { rubricType } = model;
-    const { contentDimensions = {}, multiTraitRubric, simpleRubric, rubricless, width } = configuration;
+    const { contentDimensions = {}, rubricOptions, multiTraitRubric, simpleRubric, rubricless, width } = configuration;
     let rubricTag = '';
 
     if (!rubricType) {
       rubricType = RUBRIC_TYPES.SIMPLE_RUBRIC;
     }
+
+    const isRubricTypeAvailable =  rubricOptions.indexOf(rubricType) > -1;
 
     if (canUpdateModel) {
       switch (rubricType) {
@@ -114,7 +115,7 @@ export class Main extends React.Component {
           onChange={this.onChangeRubricType}
         >
           {
-            availableRubrics.length > 1 && availableRubrics.map((availableRubric, i)=>
+            rubricOptions.length > 1 && rubricOptions.map((availableRubric, i)=>
               <FormControlLabel
                 key={i}
                 value={availableRubric}
@@ -125,7 +126,7 @@ export class Main extends React.Component {
           }
         </RadioGroup>
 
-        {rubricTag}
+        {isRubricTypeAvailable && rubricTag}
       </layout.ConfigLayout>
     );
   }
