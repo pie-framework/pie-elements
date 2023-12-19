@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@6.1.1...@pie-element/hotspot-configure@6.2.0) (2023-12-19)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-2068 ([34eccd5](https://github.com/pie-framework/pie-elements/commit/34eccd52c44259eddf3e2b816b00b82f83bc2bf8))
+
+
+### Features
+
+* add ability to create polygons PD-412 ([d0292c2](https://github.com/pie-framework/pie-elements/commit/d0292c2cb2be86f75f5dfa8aafb550c648c83ea8))
+* fix buttons and tests PD-412 ([9b87d22](https://github.com/pie-framework/pie-elements/commit/9b87d22801adb802139497b4e5a7a86da17391aa))
+* remove commented out code PD-412 ([a71b4cf](https://github.com/pie-framework/pie-elements/commit/a71b4cfbe32059138a58e3470656b743147139a7))
+* update pie-lib/pie-toolbox PD-2555 ([86d4fd9](https://github.com/pie-framework/pie-elements/commit/86d4fd909180dd1fcbc446bd8b29c23af21a1c69))
+* update pie-lib/pie-toolbox PD-3307, PD-2067, PD-3271, PD-3041, PD-2068 ([2eabcbd](https://github.com/pie-framework/pie-elements/commit/2eabcbd036e318bb24552f4140ca7384ad865951))
+
+
+
+
+
 ## [6.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@6.1.0...@pie-element/hotspot-configure@6.1.1) (2023-11-27)
 
 
