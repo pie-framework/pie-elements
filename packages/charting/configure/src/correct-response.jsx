@@ -115,8 +115,16 @@ export const getUpdatedCategories = (nextProps, prevProps, prevState) => {
 
   // Handle categories removal from Define Chart
   if (nextData.length < data.length) {
-    let removedIndex = data.findIndex((item, index) => item.index !== index);
-    removedIndex = removedIndex === -1 ? nextData.length : removedIndex;
+    let removedIndex = nextData.length;
+
+      // we need to remove the category from the correct answer data and categories, from the same index it was removed from the data
+      // index is a property of the nextData category
+      for (let index = 0; index < nextData.length; index++) {
+        if (nextData[index].index !== index) {
+          removedIndex = index;
+          break;
+        }
+      }
 
     nextCategories = removeCategory(categoriesCopy, nextData, removedIndex);
     return nextCategories;
@@ -125,26 +133,6 @@ export const getUpdatedCategories = (nextProps, prevProps, prevState) => {
   // Handle category value or label changes in Define Chart
   // Handle categories update in Define Correct Response Chart
   nextCategories = updateCorrectResponseData(nextCorrectAnswerDataCopy, nextData);
-
-  nextCorrectAnswerDataCopy.forEach((answer, currentIndex) => {
-    const dataExists = currentIndex < nextData.length;
-    nextCorrectAnswerDataCopy[currentIndex] = {
-      editable: dataExists ? nextData[currentIndex].editable : true,
-      interactive: dataExists ? nextData[currentIndex].interactive : true,
-      label:
-        dataExists && nextData[currentIndex].editable
-          ? answer.label
-          : dataExists
-          ? nextData[currentIndex].label
-          : answer.label,
-      value:
-        dataExists && nextData[currentIndex].interactive
-          ? answer.value
-          : dataExists
-          ? nextData[currentIndex].value
-          : answer.value,
-    };
-  });
 
   return nextCategories;
 };
