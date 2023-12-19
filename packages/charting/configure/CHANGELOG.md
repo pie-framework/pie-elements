@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-configure@7.0.3...@pie-element/charting-configure@7.1.0) (2023-12-19)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-2068 ([34eccd5](https://github.com/pie-framework/pie-elements/commit/34eccd52c44259eddf3e2b816b00b82f83bc2bf8))
+* **charting:** fix state sync issues in Define Correct Response Chart when Define Chart data is modified or removed PD-3164 ([f4d06e9](https://github.com/pie-framework/pie-elements/commit/f4d06e9ff7b184befd9c5df9d12d6f5360270a94))
+
+
+### Features
+
+* update pie-lib/pie-toolbox PD-2555 ([86d4fd9](https://github.com/pie-framework/pie-elements/commit/86d4fd909180dd1fcbc446bd8b29c23af21a1c69))
+* update pie-lib/pie-toolbox PD-3307, PD-2067, PD-3271, PD-3041, PD-2068 ([2eabcbd](https://github.com/pie-framework/pie-elements/commit/2eabcbd036e318bb24552f4140ca7384ad865951))
+* **charting:** Add possibility to mark fields as required PD-3310 ([4034d0b](https://github.com/pie-framework/pie-elements/commit/4034d0b20b4277f30f0d373c0f62932f6f6ba33b))
+
+
+
+
+
 ## [7.0.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-configure@7.0.2...@pie-element/charting-configure@7.0.3) (2023-11-27)
 
 

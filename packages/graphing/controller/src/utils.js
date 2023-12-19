@@ -8,6 +8,9 @@ export const equalPoint = (A, B) => {
   // x1 = x2 & y1 = y2
   let equalLabel = true;
 
+  A = {...A};
+  B = {...B};
+
   if (A.label || B.label) {
     equalLabel = isEqual(A.label, B.label);
   }
@@ -43,6 +46,8 @@ export const sortedAnswers = (answers) =>
     }, {});
 
 const returnLineEquationCoefficients = (line) => {
+  line = {...line, to: { ...line.to }, from: { ...line.from }};
+
   const xA = line.from.x;
   const yA = line.from.y;
   const xB = line.to.x;
@@ -95,6 +100,9 @@ export const equalLine = (line1, line2) => {
 };
 
 export const equalRay = (ray1, ray2) => {
+  ray1 = {...ray1, to: { ...ray1.to }, from: { ...ray1.from }};
+  ray2 = {...ray2, to: { ...ray2.to }, from: { ...ray2.from }};
+
   // slope: m = (y2-y1)/(x2-x1)
   // slope & x1 = x3 & y1 = y3 & angle between (x1, y1) (x2, y2) is same as angle between (x3, y3) (x4, y4)
   const mRay1 = (ray1.to.y - ray1.from.y) / (ray1.to.x - ray1.from.x);
@@ -158,6 +166,9 @@ export const equalCircle = (c1, c2) => {
 
 export const equalSine = (sine1, sine2) => {
   const getPoints = ({ root, edge }) => {
+    root = { ...root};
+    edge = { ...edge};
+
     const { amplitude, freq } = getAmplitudeAndFreq(root, edge);
     // the height of the sine wave
     const tY = Math.abs(root.y - edge.y) * 2;
@@ -223,13 +234,21 @@ export const equalSine = (sine1, sine2) => {
 };
 
 export const equalParabola = (p1, p2) => {
-  const { edge: edgeP1, root: rootP1 } = p1;
-  const { edge: edgeP2, root: rootP2 } = p2;
+  const { edge: edgeP1 } = p1;
+  const { edge: edgeP2 } = p2;
+  let { root: rootP1 } = p1;
+  let { root: rootP2 } = p2;
+
+  rootP1 = {...rootP1};
+  rootP2 = {...rootP2};
+
   const p1edge = edgeP1 || { ...rootP1 };
   const p2edge = edgeP2 || { ...rootP2 };
 
   const p1mirrorEdge = { x: rootP1.x - (p1edge.x - rootP1.x), y: p1edge.y };
   const p2mirrorEdge = { x: rootP2.x - (p2edge.x - rootP2.x), y: p2edge.y };
+
+  if (!edgeP1 || !edgeP2) return false;
 
   const { a: a1, b: b1, c: c1 } = pointsToABC(rootP1, edgeP1, p1mirrorEdge);
   const { a: a2, b: b2, c: c2 } = pointsToABC(rootP2, edgeP2, p2mirrorEdge);

@@ -256,6 +256,7 @@ export class Scale extends React.Component {
       uploadSoundSupport,
       maxPointsEnabled,
       mathMlOptions = {},
+      maxMaxPoints
     } = this.props || {};
 
     const { maxPoints, scorePointsLabels, traitLabel, traits } = scale || {};
@@ -318,6 +319,7 @@ export class Scale extends React.Component {
           uploadSoundSupport={uploadSoundSupport}
           maxPointsEnabled={maxPointsEnabled}
           mathMlOptions={mathMlOptions}
+          maxMaxPoints={maxMaxPoints}
         />
 
         {traits.map((trait, index) => (

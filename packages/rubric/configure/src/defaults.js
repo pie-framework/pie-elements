@@ -21,6 +21,7 @@ export default {
     mathMlOptions: {
       mmlOutput: false,
       mmlEditing: false,
-    }
+    },
+    maxMaxPoints: 9,
   },
 };

@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric-controller@2.0.3...@pie-element/complex-rubric-controller@2.1.0) (2023-12-19)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-2068 ([34eccd5](https://github.com/pie-framework/pie-elements/commit/34eccd52c44259eddf3e2b816b00b82f83bc2bf8))
+* **complex-rubric:** add comments PD-3260 ([998a941](https://github.com/pie-framework/pie-elements/commit/998a941a9c2e88d1914ee2ad7506e57a7e3f7865))
+* **complex-rubric:** add comments, delete logs PD-3260 ([e3991c6](https://github.com/pie-framework/pie-elements/commit/e3991c6c09a2b1f4815d3b2216b32f073e5cbf3c))
+
+
+### Features
+
+* update pie-lib/pie-toolbox PD-2555 ([86d4fd9](https://github.com/pie-framework/pie-elements/commit/86d4fd909180dd1fcbc446bd8b29c23af21a1c69))
+* **complex-rubric:** add rubricOptions to config PD-2555 ([379110a](https://github.com/pie-framework/pie-elements/commit/379110a02e0858a78eb5679a80b26e0f976132bd))
+* **complex-rubric:** add validate logic PD-3260 ([0d07a83](https://github.com/pie-framework/pie-elements/commit/0d07a83254d7aab1f87a67893a858c04938d16ea))
+* **complex-rubric:** update tests and use enum for new rubric type PD-2555 ([0bafc9a](https://github.com/pie-framework/pie-elements/commit/0bafc9aa6d563378b08f4d478828da454d38ad20))
+* **rubric:** solve conflicts PD-2555 ([b67c659](https://github.com/pie-framework/pie-elements/commit/b67c65945fc68ef1bd577a915b5f8918da0a716b))
+* update pie-lib/pie-toolbox PD-3307, PD-2067, PD-3271, PD-3041, PD-2068 ([2eabcbd](https://github.com/pie-framework/pie-elements/commit/2eabcbd036e318bb24552f4140ca7384ad865951))
+* **complex-rubrix:** add new rubric type and asjust logic ([e49fc22](https://github.com/pie-framework/pie-elements/commit/e49fc2281a8df02bd7dec9b931d06aa74e919031))
+
+
+
+
+
 ## [2.0.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric-controller@2.0.2...@pie-element/complex-rubric-controller@2.0.3) (2023-11-27)
 
 

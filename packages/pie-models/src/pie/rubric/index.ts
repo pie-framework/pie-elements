@@ -21,6 +21,18 @@ export interface RubricPie extends PieModel {
   excludeZeros?: boolean;
 }
 
+
+export interface RubriclessPie extends PieModel {
+  /** Indicates the max limit for scoring points */
+  maxPoints?: number;
+
+  /** Indicates if point 0 should be shown */
+  excludeZeros?: boolean;
+
+  /** Indicates that rubricInstruction is enabled*/
+  rubriclessInstructionEnabled: boolean,
+}
+
 export interface RubricConfigure extends PromptConfig, CommonConfigSettings {
   /**
    * Indicates if the settings panel is not available
@@ -44,4 +56,46 @@ export interface RubricConfigure extends PromptConfig, CommonConfigSettings {
 
   /** Configuration for editable-html */
   mathMlOptions?: ConfigureMathMLProp;
+
+  /** Indicates the max limit for scoring points */
+  maxMaxPoints?: number;
+}
+
+export interface RubriclessConfigure extends PromptConfig, CommonConfigSettings {
+  /**
+   * Indicates if the settings panel is not available
+   */
+  settingsPanelDisabled?: boolean;
+
+  /**
+   * Ability to exclude zero configuration
+   */
+  showExcludeZero?: ConfigureProp;
+
+  /**
+   * Show max points dropdown configuration
+   */
+  showMaxPoint?: ConfigureProp;
+
+  /**
+   * How large can the rubric be
+   */
+  width?: string;
+
+  /** Configuration for editable-html */
+  mathMlOptions?: ConfigureMathMLProp;
+
+  /** Indicates the max limit for scoring points */
+  maxMaxPoints?: number;
+
+  /** Indicates that it is rubricless */
+  rubricless: true,
+
+  // scoring instruction for rubricless
+  rubriclessInstruction: {
+    settings: true,
+    label: 'Instruction',
+  },
+
+
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Choices from './choices';
 import Categories from './categories';
-import CorrectAnswerToggle from '@pie-lib/pie-toolbox/correct-answer-toggle';
+import {CorrectAnswerToggle} from '@pie-lib/pie-toolbox/correct-answer-toggle';
 import { withStyles } from '@material-ui/core/styles';
 import { buildState, removeChoiceFromCategory, moveChoiceToCategory } from '@pie-lib/pie-toolbox/categorize';
 import { withDragContext, uid } from '@pie-lib/pie-toolbox/drag';

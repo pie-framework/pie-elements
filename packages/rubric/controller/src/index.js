@@ -11,6 +11,7 @@ function markupToText(s) {
 }
 
 
+// IMPORTANT! If you make any changes to this function, please make sure you also update complex-rubric/controller/validateSimpleRubric function!“.
 export function validate (model, config) {
   const { points } = model;
   const errors = {};
