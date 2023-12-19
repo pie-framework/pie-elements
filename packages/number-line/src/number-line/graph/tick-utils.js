@@ -3,6 +3,8 @@ import uniqWith from 'lodash/uniqWith';
 import isObject from 'lodash/isObject';
 import isNumber from 'lodash/isNumber';
 
+/*This const will store possible multiplier for label interval that needs to be multiplied 
+with tick interval with denominator represented with object key.*/
 export const labelMultiplier = {
   1: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
   2: [1, 2, 4, 6, 8, 10],
@@ -160,6 +162,11 @@ const limit = (v, min, max) => {
   return v;
 };
 
+/*
+ * Function to get tick interval limits based on min, max and width entered by the user.
+ * @param domain object containing max and min value.
+ * @param width number represents width of number line.
+ * */
 export const getMinorLimits = (domain, width) => {
   const end = domain.max - domain.min;
   const min = math.number(math.multiply(10, math.divide(math.fraction(end), width)));
@@ -231,6 +238,12 @@ export const buildTickDataAsFractions = (domain, width, ticks, opts) => {
   return o;
 };
 
+/*
+ * This function will generate tick interval values based on min and max limits of ticks.
+ * @param minorLimits object containing min and max values
+ * @return out object containing three arrays 1. fraction values, 2. decimal values,
+ * 3. rounded decimal values upto 3 point precision for tick intervals.
+ * */
 export const generateMinorValues = (minorLimits) => {
   const denoms = [1000, 100, 64, 50, 32, 25, 20, 16, 15, 12, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1];
   const startValue = math.floor(minorLimits.min);
@@ -249,6 +262,13 @@ export const generateMinorValues = (minorLimits) => {
   return out;
 };
 
+/*
+ * This function will generate label interval values for provided tick interval value.
+ * @param minor number representing tick interval value.
+ * @param minorValues object containing array of tick intervals.
+ * @return out object containing three arrays 1. fraction values, 2. decimal values,
+ * 3. rounded decimal values upto 3 point precision for label intervals.
+ * */
 export const generateMajorValuesForMinor = (minor, minorValues) => {
   let out = { decimal: [], fraction: [], rounded: [] };
   let minorValue = math.number(minor);

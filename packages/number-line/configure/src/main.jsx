@@ -1,6 +1,6 @@
 import React from 'react';
 import { FormSection, InputContainer, AlertDialog, layout } from '@pie-lib/pie-toolbox/config-ui';
-import {EditableHtml} from '@pie-lib/pie-toolbox/editable-html';
+import { EditableHtml } from '@pie-lib/pie-toolbox/editable-html';
 import { NumberLineComponent, dataConverter, tickUtils } from '@pie-element/number-line';
 import NumberTextField from './number-text-field';
 import CardBar from './card-bar';
@@ -28,6 +28,7 @@ const trimModel = (model) => ({
   correctResponse: undefined,
 });
 
+// Object holding information related to tick and label interval values.
 let ticksModel = {
   tickIntervalType: 'Fraction',
   integerTick: 0,
@@ -36,7 +37,7 @@ let ticksModel = {
   fractionLabel: '0/1',
   decimalLabel: 0,
 };
-
+// Object holding data related to possible values for ticks and label interval in array.
 let data = {
   minorLimits: {},
   minorValues: {},
@@ -153,6 +154,13 @@ export class Main extends React.Component {
 
   changeSize = ({ width, height }) => this.graphChange({ width, height });
 
+  /*
+   * This function gets called whenever the min, max or width for number line is changed
+   * and it calculates ticks and label values and stores in ticks model.
+   * @param domain containing min and max values.
+   * @param width represents number line width
+   * @param ticks represnt current values for minor and major.
+   * */
   reloadTicksData = (domain, width, ticks) => {
     //check correct response
     const { model } = this.props;
@@ -258,6 +266,10 @@ export class Main extends React.Component {
     initTickModel();
   };
 
+  /*
+   * This function updates calculated ticks values to graph model.
+   * @param graph object
+   * */
   assignTicksModelToGraph = (graph) => {
     graph.ticks.minor = ticksModel.decimalTick;
     graph.ticks.major = ticksModel.decimalLabel;
@@ -300,6 +312,12 @@ export class Main extends React.Component {
     this.graphChange({ maxNumberOfPoints, height });
   };
 
+  /*
+   * Validation check on wether available type of dot plot is greater than max elements allowed to plot.
+   * @param availableTypes array of string.
+   * @param maxElements number of max elements to use set by user.
+   * @return boolean.
+   * */
   isAvailableTypesGreaterThanMaxElements = (availableTypes, maxElements) => {
     let availableTypeCount = 0;
     Object.entries(availableTypes || {}).forEach(([type, value]) => {
@@ -312,6 +330,9 @@ export class Main extends React.Component {
 
   changeGraphTitle = (title) => this.graphChange({ title });
 
+  /*
+   * Gets triggered whenever ticks related data is changed by user.
+   * */
   changeTicks = (object) => {
     const { model, onChange } = this.props;
     const { ticks } = model.graph;
@@ -415,7 +436,7 @@ export class Main extends React.Component {
       prompt = {},
       mathMlOptions = {},
       numberLineDimensions = {},
-      maxMaxElements = undefined,
+      maxMaxElements = 10,
       hidePointConfigButtons = false,
       availableTools = ['PF'],
     } = configuration || {};
