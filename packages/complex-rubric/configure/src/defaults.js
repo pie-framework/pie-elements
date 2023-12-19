@@ -113,6 +113,7 @@ const multiTraitDefaultConfiguration = {
     label: 'Enable Drag and Drop',
     enabled: false,
   },
+  maxMaxPoints: 9
 };
 
 const rubricDefaultConfiguration = {
@@ -125,6 +126,7 @@ const rubricDefaultConfiguration = {
     label: 'Show max points dropdown',
   },
   settingsPanelDisabled: false,
+  maxMaxPoints: 9
 };
 
 

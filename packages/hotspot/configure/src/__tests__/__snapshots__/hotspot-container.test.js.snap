@@ -11,6 +11,20 @@ exports[`HotspotContainer render renders 1`] = `
     onPaste={[Function]}
   >
     <div>
+      <div
+        onClick={[Function]}
+      >
+        <RectangleButton
+          isActive={false}
+        />
+      </div>
+      <div
+        onClick={[Function]}
+      >
+        <PolygonButton
+          isActive={false}
+        />
+      </div>
       <WithStyles(UploadControl)
         label="Replace Image"
         onInputClick={[Function]}
@@ -32,6 +46,7 @@ exports[`HotspotContainer render renders 1`] = `
         }
         disableDrag={[Function]}
         enableDrag={[Function]}
+        handleFinishDrawing={[Function]}
         hotspotColor="rgba(137, 183, 244, 0.65)"
         imageUrl="https://cdn.fluence.net/image/0240eb1455ce4c4bb6180232347b6aef_W"
         multipleCorrect={true}
@@ -39,6 +54,7 @@ exports[`HotspotContainer render renders 1`] = `
         onUpdateImageDimension={[MockFunction]}
         onUpdateShapes={[Function]}
         outlineColor="blue"
+        shapeType="none"
         shapes={
           Array [
             Object {

@@ -44,4 +44,7 @@ export interface RubricConfigure extends PromptConfig, CommonConfigSettings {
 
   /** Configuration for editable-html */
   mathMlOptions?: ConfigureMathMLProp;
+
+  /** Indicates the max limit for scoring points */
+  maxMaxPoints?: number;
 }

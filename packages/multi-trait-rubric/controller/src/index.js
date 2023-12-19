@@ -54,6 +54,7 @@ export const createCorrectResponseSession = (question, env) => {
 };
 
 
+// IMPORTANT! If you make any changes to this function, please make sure you also update complex-rubric/controller/validateMultiTraitRubric function!“.
 export const validate  = (model, config) => {
   const { scales, description = false, pointLabels = false } = model;
   const errors = {};
@@ -71,7 +72,7 @@ export const validate  = (model, config) => {
         if (!scorePointLabel || scorePointLabel === '<div></div>') {
           scorePointsLabelsErrors[scoreIndex] = 'Points labels should not be empty.';
         } else {
-          const identicalScorePointLabel = scorePointsLabels.slice(scoreIndex + 1).some(s => this.markupToText(s) === this.markupToText(scorePointLabel));
+          const identicalScorePointLabel = scorePointsLabels.slice(scoreIndex + 1).some(s => markupToText(s) === markupToText(scorePointLabel));
 
           if (identicalScorePointLabel) {
             scorePointsLabelsErrors[scoreIndex] = 'Points labels should be unique.';

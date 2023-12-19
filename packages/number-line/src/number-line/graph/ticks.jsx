@@ -19,14 +19,7 @@ export const TickValidator = PropTypes.shape({
   /** the number of major ticks (including min + max)
    * to display. cant be lower than 2.
    */
-  major: (props, propName) => {
-    let major = props[propName];
-    let minor = props.minor;
-
-    if (!isMultiple(major, minor)) {
-      return new Error(`Invalid prop major. It must be a multiple of ${minor}`);
-    }
-  },
+  major: (props, propName) => {},
   /** the number of minor ticks to display between major ticks.
    * Can't be less than zero.
    */
@@ -144,15 +137,16 @@ export class Ticks extends React.Component {
       max: PropTypes.number.isRequired,
     }).isRequired,
     fraction: PropTypes.bool,
+    width: PropTypes.number,
     ticks: TickValidator,
     y: PropTypes.number.isRequired,
   };
 
   render() {
-    let { domain, ticks, y, classes, fraction } = this.props;
+    let { domain, width, ticks, y, classes, fraction } = this.props;
     let { xScale } = this.context;
 
-    const tickData = buildTickData(domain, ticks, { fraction });
+    const tickData = buildTickData(domain, width, ticks, { fraction });
 
     return (
       <g>

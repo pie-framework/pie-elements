@@ -68,6 +68,11 @@
             }
           }
         },
+        "maxMaxPoints": {
+          "description": "Indicates the max limit for scoring points",
+          "type": "number",
+          "title": "maxMaxPoints"
+        },
         "showPrompt": {
           "description": "Determines whether prompt field will be displayed or not",
           "default": true,
@@ -348,6 +353,11 @@
               "title": "mmlEditing"
             }
           }
+        },
+        "maxMaxPoints": {
+          "description": "Indicates the max limit for scoring points",
+          "type": "number",
+          "title": "maxMaxPoints"
         }
       },
       "required": [
@@ -421,6 +431,11 @@
               "title": "mmlEditing"
             }
           }
+        },
+        "maxMaxPoints": {
+          "description": "Indicates the max limit for scoring points",
+          "type": "number",
+          "title": "maxMaxPoints"
         },
         "showPrompt": {
           "description": "Determines whether prompt field will be displayed or not",
@@ -734,6 +749,11 @@
               "title": "mmlEditing"
             }
           }
+        },
+        "maxMaxPoints": {
+          "description": "Indicates the max limit for scoring points",
+          "type": "number",
+          "title": "maxMaxPoints"
         }
       },
       "required": [

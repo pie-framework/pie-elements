@@ -62,7 +62,7 @@ export class Main extends React.Component {
               ref={(ref) => {
                 if (ref) {
                   this.simpleRubric = ref;
-                  this.simpleRubric.model = rubrics.simpleRubric;
+                  this.simpleRubric.model = {...rubrics.simpleRubric, errors: model.errors || {}};
                   this.simpleRubric.configuration = { ...simpleRubric, width };
                 }
               }}
@@ -79,7 +79,7 @@ export class Main extends React.Component {
                 if (ref) {
                   this.multiTraitRubric = ref;
 
-                  this.multiTraitRubric.model = rubrics.multiTraitRubric;
+                  this.multiTraitRubric.model = {...rubrics.multiTraitRubric, errors: model.errors || {} };
                   this.multiTraitRubric.configuration = { ...multiTraitRubric, width: width || multiTraitRubric.width };
                 }
               }}
