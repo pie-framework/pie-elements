@@ -42,7 +42,7 @@ export class Main extends React.Component {
 
     const { rubrics = {} } = model || {};
     let { rubricType } = model;
-    const { contentDimensions = {}, rubricOptions, multiTraitRubric, simpleRubric, rubricless, width } = configuration;
+    const { contentDimensions = {}, rubricOptions = [], multiTraitRubric, simpleRubric, rubricless, width } = configuration;
     let rubricTag = '';
 
     if (!rubricType) {

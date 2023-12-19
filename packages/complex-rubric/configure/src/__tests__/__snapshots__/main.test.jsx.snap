@@ -39,8 +39,7 @@ exports[`Main snapshot renders 1`] = `
         />
       }
       key="2"
-      label="Rubricless"
-      value="undefined"
+      value="rubricless"
     />
   </RadioGroup>
   <rubric-configure
@@ -89,8 +88,7 @@ exports[`Main snapshot renders multi trait rubric 1`] = `
         />
       }
       key="2"
-      label="Rubricless"
-      value="undefined"
+      value="rubricless"
     />
   </RadioGroup>
   <multi-trait-rubric-configure
@@ -139,8 +137,7 @@ exports[`Main snapshot renders simple rubric 1`] = `
         />
       }
       key="2"
-      label="Rubricless"
-      value="undefined"
+      value="rubricless"
     />
   </RadioGroup>
   <rubric-configure
