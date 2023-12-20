@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@2.2.0...@pie-element/complex-rubric@2.2.1) (2023-12-20)
+
+
+### Bug Fixes
+
+* **complex-rubric:** adjust defaults based on requirements PD-2555 ([c2c3566](https://github.com/pie-framework/pie-elements/commit/c2c3566dafd2fbc5792c196af6f040a60f8a8751))
+
+
+
+
+
 # [2.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@2.1.1...@pie-element/complex-rubric@2.2.0) (2023-12-19)
 
 
