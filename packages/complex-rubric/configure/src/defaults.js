@@ -157,7 +157,7 @@ export default {
   },
   configuration: {
     // width: '770px',
-    rubricOptions: ['simpleRubric', 'multiTraitRubric', 'rubricless'],
+    rubricOptions: ['simpleRubric', 'multiTraitRubric'],
     [RUBRIC_TYPES.MULTI_TRAIT_RUBRIC]: multiTraitDefaultConfiguration,
     [RUBRIC_TYPES.SIMPLE_RUBRIC]: rubricDefaultConfiguration,
     [RUBRIC_TYPES.RUBRICLESS]: rubriclessDefaultConfiguration,

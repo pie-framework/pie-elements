@@ -2,7 +2,7 @@ exports.model = (id, element) => ({
   id,
   element,
   rubricType: 'simpleRubric',
-  rubricOptions: ['simpleRubric', 'multiTraitRubric', 'rubricless'],
+  rubricOptions: ['simpleRubric', 'multiTraitRubric'],
   rubrics: {
     simpleRubric: {
       points: ['nothing right', 'a teeny bit right', 'mostly right', 'bingo'],

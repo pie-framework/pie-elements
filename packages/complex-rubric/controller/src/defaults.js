@@ -146,7 +146,7 @@ const rubriclessDefaultConfiguration = {
 
 export default {
   model: {
-    rubricOptions: ['simpleRubric', 'multiTraitRubric', 'rubricless'],
+    rubricOptions: ['simpleRubric', 'multiTraitRubric'],
     rubricType: 'simpleRubric',
     rubrics: { simpleRubric: rubricDefaultModel, multiTraitRubric: multiTraitDefaultModel, rubricless: rubriclessDefaultModel },
   },
