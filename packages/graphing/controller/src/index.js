@@ -20,6 +20,8 @@ const initializeGraphMap = () => ({
   circle: [],
   sine: [],
   parabola: [],
+  absolute: [],
+  exponential: [],
 });
 
 export const compareMarks = (mark1, mark2) => {
