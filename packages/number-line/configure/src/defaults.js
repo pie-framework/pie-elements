@@ -62,7 +62,7 @@ export const configuration = {
     settings: true,
     label: 'Width',
     enabled: true,
-    min: 150,
+    min: 200,
     max: 800,
     step: 20,
   },

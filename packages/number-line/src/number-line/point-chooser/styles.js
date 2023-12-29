@@ -61,6 +61,9 @@ export default {
     display: 'flex',
     paddingTop: '7px',
   },
+  buttonText: {
+    textWrap: 'nowrap',
+  },
   pf: styleElement(0),
   lff: styleElement(1),
   lef: styleElement(2),

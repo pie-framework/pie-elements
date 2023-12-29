@@ -94,7 +94,7 @@ export class PointChooser extends React.Component {
       icons,
       classes,
       onElementType,
-      language
+      language,
     } = this.props;
 
     return (
@@ -106,8 +106,16 @@ export class PointChooser extends React.Component {
               <DeleteIcon classes={classes} />
             </span>
           )}
-          <Button onClick={onUndoElement} label={translator.t('common:undo', { lng: language })} />
-          <Button onClick={onClearElements} label={translator.t('numberLine.clearAll', { lng: language })} />
+          <Button
+            className={classes.buttonText}
+            onClick={onUndoElement}
+            label={translator.t('common:undo', { lng: language })}
+          />
+          <Button
+            className={classes.buttonText}
+            onClick={onClearElements}
+            label={translator.t('numberLine.clearAll', { lng: language })}
+          />
         </div>
       </div>
     );

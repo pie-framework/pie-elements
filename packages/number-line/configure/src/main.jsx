@@ -297,7 +297,16 @@ export class Main extends React.Component {
       this.setState({
         dialog: {
           open: true,
-          text: 'To use this value, you must first remove one or more elements from the correct answer.',
+          text: 'To use this value, you must first remove one or more elements from the available types.',
+        },
+      });
+      return;
+    }
+    if (this.props.model.correctResponse.length > maxNumberOfPoints) {
+      this.setState({
+        dialog: {
+          open: true,
+          text: 'To use this value, you must first remove one or more elements from the correct answers.',
         },
       });
       return;
