@@ -31,8 +31,6 @@ exports[`CorrectResponse renders snapshot 1`] = `
         "segment",
         "sine",
         "vector",
-        "absolute",
-        "exponential",
       ]
     }
   />
@@ -122,8 +120,6 @@ exports[`CorrectResponse renders snapshot 1`] = `
         "segment",
         "sine",
         "vector",
-        "absolute",
-        "exponential",
       ]
     }
   />
