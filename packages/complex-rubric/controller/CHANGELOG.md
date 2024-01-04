@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric-controller@2.1.1...@pie-element/complex-rubric-controller@2.1.2) (2024-01-04)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-2068, PD-2060 ([e918850](https://github.com/pie-framework/pie-elements/commit/e9188502ffeaefe41bf0f23895d4bb2daf839364))
+* update pie-lib/pie-toolbox PD-3037 ([b2f689a](https://github.com/pie-framework/pie-elements/commit/b2f689a416c2c39d7ed423a22db02dd32415ba82))
+
+
+
+
+
 ## [2.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric-controller@2.1.0...@pie-element/complex-rubric-controller@2.1.1) (2023-12-20)
 
 
