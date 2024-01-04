@@ -25,7 +25,7 @@ export const addWeightToCorrectResponse = (correctResponse) =>
     if (correct.weight !== undefined) {
       return { id: correct.id, weight: correct.weight };
     } else {
-      return { id: correct, weight: 0 };
+      return { id: correct.id || correct, weight: 0 };
     }
   });
 /**

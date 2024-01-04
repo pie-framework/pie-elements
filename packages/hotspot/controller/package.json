@@ -11,7 +11,7 @@
   "main": "lib/index.js",
   "module": "src/index.js",
   "dependencies": {
-    "@pie-lib/pie-toolbox": "1.4.1",
+    "@pie-lib/pie-toolbox": "1.4.3",
     "debug": "^4.1.1",
     "lodash": "^4.17.15"
   }
