@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { TextSelect, Legend } from '@pie-lib/pie-toolbox/text-select';
-import CorrectAnswerToggle from '@pie-lib/pie-toolbox/correct-answer-toggle';
+import {CorrectAnswerToggle} from '@pie-lib/pie-toolbox/correct-answer-toggle';
 import { color, Feedback, Collapsible, hasText, PreviewPrompt } from '@pie-lib/pie-toolbox/render-ui';
 import { withStyles } from '@material-ui/core/styles';
 import generateModel from './utils';

@@ -1,7 +1,7 @@
 import React from 'react';
 import { settings, layout, InputContainer } from '@pie-lib/pie-toolbox/config-ui';
 import PropTypes from 'prop-types';
-import EditableHtml from '@pie-lib/pie-toolbox/editable-html';
+import {EditableHtml} from '@pie-lib/pie-toolbox/editable-html';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 

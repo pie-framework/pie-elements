@@ -7,7 +7,7 @@ import AddRow from './add-row';
 import Row from './row';
 import debug from 'debug';
 import lodash from 'lodash';
-import EditableHTML, { DEFAULT_PLUGINS } from '@pie-lib/pie-toolbox/editable-html';
+import { EditableHtml, DEFAULT_PLUGINS } from '@pie-lib/pie-toolbox/editable-html';
 
 const log = debug('pie-elements:match:configure');
 
@@ -196,7 +196,7 @@ class AnswerConfigBlock extends React.Component {
                     [classes.questionText]: idx === 0,
                   })}
                 >
-                  <EditableHTML
+                  <EditableHtml
                     onChange={this.onHeaderChange(idx)}
                     markup={header}
                     className={columnsErrors && !columnsErrors[idx] ? classes.marginBottom : classes.headerInput}

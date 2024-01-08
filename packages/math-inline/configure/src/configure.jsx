@@ -3,7 +3,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { FeedbackConfig, settings, layout, InputContainer } from '@pie-lib/pie-toolbox/config-ui';
 import PropTypes from 'prop-types';
 import debug from 'debug';
-import EditableHtml from '@pie-lib/pie-toolbox/editable-html';
+import {EditableHtml} from '@pie-lib/pie-toolbox/editable-html';
 import GeneralConfigBlock from './general-config-block';
 import { ResponseTypes } from './utils';
 

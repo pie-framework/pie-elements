@@ -1,7 +1,7 @@
 import { HorizontalTiler, VerticalTiler } from './tiler';
 import { buildState, reducer } from './ordering';
 import { color, Feedback, Collapsible, hasText, PreviewPrompt } from '@pie-lib/pie-toolbox/render-ui';
-import CorrectAnswerToggle from '@pie-lib/pie-toolbox/correct-answer-toggle';
+import {CorrectAnswerToggle} from '@pie-lib/pie-toolbox/correct-answer-toggle';
 import PropTypes from 'prop-types';
 import React from 'react';
 import debug from 'debug';

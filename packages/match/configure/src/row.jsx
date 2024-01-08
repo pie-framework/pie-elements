@@ -9,7 +9,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Delete from '@material-ui/icons/Delete';
 import { DragSource, DropTarget } from 'react-dnd';
 import debug from 'debug';
-import EditableHtml, { DEFAULT_PLUGINS } from '@pie-lib/pie-toolbox/editable-html';
+import { EditableHtml, DEFAULT_PLUGINS } from '@pie-lib/pie-toolbox/editable-html';
 
 const log = debug('@pie-element:categorize:configure:choice');
 

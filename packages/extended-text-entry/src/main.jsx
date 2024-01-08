@@ -1,5 +1,5 @@
 import React from 'react';
-import EditableHTML from '@pie-lib/pie-toolbox/editable-html';
+import {EditableHtml} from '@pie-lib/pie-toolbox/editable-html';
 import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
@@ -116,7 +116,7 @@ export class Main extends React.Component {
           </Typography>
         )}
 
-        <EditableHTML
+        <EditableHtml
           className={classnames(classes.editor, 'response-area-editor')}
           onChange={this.changeSession}
           markup={value || ''}

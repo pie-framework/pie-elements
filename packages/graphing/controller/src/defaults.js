@@ -1,13 +1,26 @@
 // TODO: This is lifted from @pie-lib/graphing, however importing this will break a controller build because it has jsx source in that package.
-const allTools = ['circle', 'line', 'label', 'parabola', 'point', 'polygon', 'ray', 'segment', 'sine', 'vector'];
+const allTools = [
+  'circle',
+  'line',
+  'label',
+  'parabola',
+  'point',
+  'polygon',
+  'ray',
+  'segment',
+  'sine',
+  'vector',
+  // 'absolute', // - not available as default
+  // 'exponential', // - not available as default
+];
 
 /* model defaults */
 export default {
   answers: {
     correctAnswer: {
       name: 'Correct Answer',
-      marks: []
-    }
+      marks: [],
+    },
   },
   arrows: {
     left: true,

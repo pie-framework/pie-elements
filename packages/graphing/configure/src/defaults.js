@@ -1,5 +1,17 @@
-import { tools } from '@pie-lib/pie-toolbox/graphing';
-const { allTools = [] } = tools;
+const allTools = [
+  'circle',
+  'line',
+  'label',
+  'parabola',
+  'point',
+  'polygon',
+  'ray',
+  'segment',
+  'sine',
+  'vector',
+  // 'absolute', // - not available as default
+  // 'exponential', // - not available as default
+];
 
 export default {
   model: {

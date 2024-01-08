@@ -5,7 +5,7 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { ShowRationale } from '@pie-lib/pie-toolbox/icons';
 import { color, Collapsible, PreviewPrompt, hasText } from '@pie-lib/pie-toolbox/render-ui';
 import { withStyles } from '@material-ui/core/styles';
-import CorrectAnswerToggle from '@pie-lib/pie-toolbox/correct-answer-toggle';
+import {CorrectAnswerToggle} from '@pie-lib/pie-toolbox/correct-answer-toggle';
 import Translator from '@pie-lib/pie-toolbox/translator';
 
 const { translator } = Translator;

@@ -56,9 +56,10 @@ class PointConfig extends React.Component {
   }
 
   render() {
-    const { classes, availableTools, hideButtons } = this.props;
+    // Setting default value if not passed in configuration properties.
+    const { classes, availableTools, hideButtons = false } = this.props;
 
-    const icons = availableTools.map((point) => {
+    const icons = (availableTools || []).map((point) => {
       return (
         <Point
           iconKey={point.toLowerCase()}

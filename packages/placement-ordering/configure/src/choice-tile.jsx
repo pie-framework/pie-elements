@@ -1,4 +1,4 @@
-import EditableHtml, { DEFAULT_PLUGINS } from '@pie-lib/pie-toolbox/editable-html';
+import { EditableHtml, DEFAULT_PLUGINS } from '@pie-lib/pie-toolbox/editable-html';
 import CardActions from '@material-ui/core/CardActions';
 import DragHandle from '@material-ui/icons/DragHandle';
 
