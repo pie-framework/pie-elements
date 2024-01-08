@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.2.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-configure@6.2.2...@pie-element/number-line-configure@6.2.3) (2024-01-08)
+
+
+### Bug Fixes
+
+* **number-line:** add set method for configuration PD-3361 ([50489d4](https://github.com/pie-framework/pie-elements/commit/50489d466cefb5997530978ba7e25cb65b1dc709))
+
+
+
+
+
+## [6.2.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-configure@6.2.1...@pie-element/number-line-configure@6.2.2) (2024-01-08)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3352,PD-3348, PD-3296 ([48b1952](https://github.com/pie-framework/pie-elements/commit/48b1952831835ead598b692abb3d492ec9adb564))
+
+
+
+
+
 ## [6.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-configure@6.2.0...@pie-element/number-line-configure@6.2.1) (2024-01-04)
 
 
