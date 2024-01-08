@@ -8,6 +8,13 @@ import {
   ConfigureLanguageOptionsProp
 } from '../ConfigurationProp';
 
+enum ChoicesPosition {
+  top= 'top',
+  bottom = 'bottom',
+  left = 'left',
+  right = 'right',
+}
+
 interface ResponseContainer {
   /** The x coordinate of the response container */
   x?: number;
@@ -117,6 +124,14 @@ export interface ImageClozeAssociationPie extends PieModel {
    * Supported options: en, es, en_US, en-US, es_ES, es-ES, es_MX, es-MX
    */
   language?: string;
+
+  /** Indicates style options of the component
+   * Supported options: fontsize, possibilityListPosition (top, bottom, left, right)
+   */
+  uiStyle?: {
+    possibilityListPosition?: ChoicesPosition,
+    fontsize: string
+  }
 }
 
 /**

@@ -154,6 +154,24 @@ Indicates if the possible responses have to be shuffled in the player
 Indicates the language of the component
 Supported options: en, es, en_US, en-US, es_ES, es-ES, es_MX, es-MX
 
+# `uiStyle` (object)
+
+Indicates style options of the component
+Supported options: fontsize, possibilityListPosition (top, bottom, left, right)
+
+Properties of the `uiStyle` object:
+
+## `possibilityListPosition` (string, enum)
+
+This element must be one of the following enum values:
+
+* `bottom`
+* `left`
+* `right`
+* `top`
+
+## `fontsize` (string, required)
+
 # `id` (string, required)
 
 Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.
@@ -331,3 +349,5 @@ Properties of the `value` object:
 An array containing a string that is a img tag
 
 The object is an array with all elements of the type `string`.
+
+## `ChoicesPosition` (string)
