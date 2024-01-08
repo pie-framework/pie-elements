@@ -51,7 +51,18 @@ exports[`Configure renders snapshot 1`] = `
               "label": "Grid Interval",
             },
           },
-          "availableTools": Array [],
+          "availableTools": Array [
+            "circle",
+            "line",
+            "label",
+            "parabola",
+            "point",
+            "polygon",
+            "ray",
+            "segment",
+            "sine",
+            "vector",
+          ],
           "coordinatesOnHover": Object {
             "label": "Coordinates on Hover",
             "settings": true,
@@ -411,7 +422,18 @@ exports[`Configure renders snapshot 1`] = `
           "studentInstructionsEnabled": true,
           "teacherInstructionsEnabled": true,
           "title": "",
-          "toolbarTools": Array [],
+          "toolbarTools": Array [
+            "circle",
+            "line",
+            "label",
+            "parabola",
+            "point",
+            "polygon",
+            "ray",
+            "segment",
+            "sine",
+            "vector",
+          ],
         }
       }
     />
@@ -512,7 +534,20 @@ exports[`Configure renders snapshot 1`] = `
         },
       }
     }
-    availableTools={Array []}
+    availableTools={
+      Array [
+        "circle",
+        "line",
+        "label",
+        "parabola",
+        "point",
+        "polygon",
+        "ray",
+        "segment",
+        "sine",
+        "vector",
+      ]
+    }
     graphDimensions={
       Object {
         "enabled": true,
@@ -783,14 +818,38 @@ exports[`Configure renders snapshot 1`] = `
         "studentInstructionsEnabled": true,
         "teacherInstructionsEnabled": true,
         "title": "",
-        "toolbarTools": Array [],
+        "toolbarTools": Array [
+          "circle",
+          "line",
+          "label",
+          "parabola",
+          "point",
+          "polygon",
+          "ray",
+          "segment",
+          "sine",
+          "vector",
+        ],
       }
     }
     showLabels={true}
     titlePlaceholder="Click here to add a title for this graph"
   />
   <WithStyles(CorrectResponse)
-    availableTools={Array []}
+    availableTools={
+      Array [
+        "circle",
+        "line",
+        "label",
+        "parabola",
+        "point",
+        "polygon",
+        "ray",
+        "segment",
+        "sine",
+        "vector",
+      ]
+    }
     errors={Object {}}
     mathMlOptions={
       Object {
@@ -845,7 +904,18 @@ exports[`Configure renders snapshot 1`] = `
         "studentInstructionsEnabled": true,
         "teacherInstructionsEnabled": true,
         "title": "",
-        "toolbarTools": Array [],
+        "toolbarTools": Array [
+          "circle",
+          "line",
+          "label",
+          "parabola",
+          "point",
+          "polygon",
+          "ray",
+          "segment",
+          "sine",
+          "vector",
+        ],
       }
     }
   />
