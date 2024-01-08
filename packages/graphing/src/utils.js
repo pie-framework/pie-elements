@@ -15,6 +15,8 @@ const completeMark = {
   vector: completeFromTo,
   circle: completeRootEdge,
   parabola: completeRootEdge,
+  absolute: completeRootEdge,
+  exponential: completeRootEdge,
   sine: completeRootEdge,
   polygon: completePoints,
 };

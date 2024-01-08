@@ -2,7 +2,12 @@ import isEqual from 'lodash/isEqual';
 import lodash from 'lodash';
 import uniqWith from 'lodash/uniqWith';
 import differenceWith from 'lodash/differenceWith';
-import { getAmplitudeAndFreq, pointsToABC } from '@pie-lib/pie-toolbox/graphing-utils';
+import {
+  getAmplitudeAndFreq,
+  pointsToABC,
+  pointsToAForAbsolute,
+  pointsToABForExponential,
+} from '@pie-lib/pie-toolbox/graphing-utils';
 
 export const equalPoint = (A, B) => {
   // x1 = x2 & y1 = y2
@@ -259,10 +264,62 @@ export const equalParabola = (p1, p2) => {
   return round(a1) === round(a2) && round(b1) === round(b2) && round(c1) === round(c2);
 };
 
+/*
+ * Function to check if given two points for absolute function
+ * for correct answer and student answer are equal or not.
+ * @param p1 - student answer
+ * @param p2 - correct answer
+ * */
+export const equalAbsolute = (p1, p2) => {
+  const { edge: edgeP1 } = p1;
+  const { edge: edgeP2 } = p2;
+  let { root: rootP1 } = p1;
+  let { root: rootP2 } = p2;
+
+  rootP1 = { ...rootP1 };
+  rootP2 = { ...rootP2 };
+
+  const p1edge = edgeP1 || { ...rootP1 };
+  const p2edge = edgeP2 || { ...rootP2 };
+
+  const p1a1 = pointsToAForAbsolute(rootP1, p1edge);
+  const p2a2 = pointsToAForAbsolute(rootP2, p2edge);
+
+  // if both root and a value are equal
+  return isEqual(rootP2, rootP1) && isEqual(p2a2, p1a1);
+};
+
+/*
+ * Function to check if given two points for exponential function
+ * for correct answer and student answer are equal or not.
+ * @param p1 - student answer
+ * @param p2 - correct answer
+ * */
+export const equalExponential = (p1, p2) => {
+  const { edge: edgeP1 } = p1;
+  const { edge: edgeP2 } = p2;
+  let { root: rootP1 } = p1;
+  let { root: rootP2 } = p2;
+
+  rootP1 = { ...rootP1 };
+  rootP2 = { ...rootP2 };
+
+  const p1edge = edgeP1 || { ...rootP1 };
+  const p2edge = edgeP2 || { ...rootP2 };
+
+  const { a1, b1 } = pointsToABForExponential(rootP1, p1edge);
+  const { a2, b2 } = pointsToABForExponential(rootP2, p2edge);
+
+  // if both a and b value are equal
+  return isEqual(a2, a1) && isEqual(b2, b1);
+};
+
 export const equalMarks = {
   circle: (sessAnswer, mark) => equalCircle(sessAnswer, mark),
   line: (sessAnswer, mark) => equalLine(sessAnswer, mark),
   parabola: (sessAnswer, mark) => equalParabola(sessAnswer, mark),
+  absolute: (sessAnswer, mark) => equalAbsolute(sessAnswer, mark),
+  exponential: (sessAnswer, mark) => equalExponential(sessAnswer, mark),
   point: (sessAnswer, mark) => equalPoint(sessAnswer, mark),
   polygon: (sessAnswer, poly) => equalPolygon(sessAnswer, poly),
   ray: (sessAnswer, mark) => equalRay(sessAnswer, mark),
@@ -288,6 +345,8 @@ const completeMark = {
   vector: completeFromTo,
   circle: completeRootEdge,
   parabola: completeRootEdge,
+  absolute: completeRootEdge,
+  exponential: completeRootEdge,
   sine: completeRootEdge,
   polygon: completePoints,
 };
