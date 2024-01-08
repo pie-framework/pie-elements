@@ -7,11 +7,53 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import Radio from '@material-ui/core/Radio';
 import * as math from 'mathjs';
 
+// This const will store available tick interval types.
 export const TickIntervals = ['Integer', 'Fraction', 'Decimal'];
 
 export const Ticks = (props) => {
-  const { classes, ticksModel, onChange, data } = props;
+  const {
+    classes,
+    ticksModel = {
+      tickIntervalType: 'Fraction',
+      integerTick: 0,
+      fractionTick: '0/1',
+      decimalTick: 0,
+      fractionLabel: '0/1',
+      decimalLabel: 0,
+    },
+    onChange,
+    data = {
+      minorLimits: { min: 0, max: 1 },
+      minorValues: { fraction: [], decimal: [], rounded: [] },
+      majorValues: { fraction: [], decimal: [], rounded: [] },
+    }, // added default values if not present in model.
+  } = props;
 
+  /*
+   * Function to validate minor values object
+   * */
+  const validateMinorValuesObject = () => {
+    if (!data.minorValues) {
+      return false;
+    }
+    return !!(data.minorValues.fraction || data.minorValues.decimal || data.minorValues.rounded);
+  };
+
+  /*
+   * Function to validate major values object
+   * */
+  const validateMajorValuesObject = () => {
+    if (!data.majorValues) {
+      return false;
+    }
+    return !!(data.majorValues.fraction || data.majorValues.decimal || data.majorValues.rounded);
+  };
+
+  /*
+   * Function to handle tick interval type radio group change
+   * @param e change event object
+   * @param tickIntervalType string value for changed tick interval type
+   * */
   const changeTickIntervalType = (e, tickIntervalType) => {
     if (!TickIntervals.includes(tickIntervalType)) {
       return;
@@ -20,6 +62,11 @@ export const Ticks = (props) => {
     onChange({ ticksModel });
   };
 
+  /*
+   * Function to handle change in integer tick interval
+   * @param e change event object
+   * @param integerTick number value for changed tick
+   * */
   const changeIntegerTick = (e, integerTick) => {
     ticksModel.integerTick = integerTick;
     ticksModel.fractionTick = integerTick.toString();
@@ -27,28 +74,56 @@ export const Ticks = (props) => {
     onChange({ ticksModel });
   };
 
+  /*
+   * Function to handle change in fraction tick interval
+   * @param e change event object
+   * @param fractionTick string value for changed tick
+   * */
   const changeFractionTick = (e, fractionTick) => {
-    ticksModel.fractionTick = fractionTick;
-    ticksModel.decimalTick = data.minorValues.decimal[data.minorValues.fraction.indexOf(ticksModel.fractionTick)];
-    onChange({ ticksModel });
+    if (validateMinorValuesObject()) {
+      ticksModel.fractionTick = fractionTick;
+      ticksModel.decimalTick = data.minorValues.decimal[data.minorValues.fraction.indexOf(ticksModel.fractionTick)];
+      onChange({ ticksModel });
+    }
   };
 
+  /*
+   * Function to handle change in decimal tick interval
+   * @param e change event object
+   * @param decimalTick number value for changed tick
+   * */
   const changeDecimalTick = (e, decimalTick) => {
-    ticksModel.decimalTick = data.minorValues.decimal[data.minorValues.rounded.indexOf(decimalTick)];
-    ticksModel.fractionTick = data.minorValues.fraction[data.minorValues.decimal.indexOf(ticksModel.decimalTick)];
-    onChange({ ticksModel });
+    if (validateMinorValuesObject()) {
+      ticksModel.decimalTick = data.minorValues.decimal[data.minorValues.rounded.indexOf(decimalTick)];
+      ticksModel.fractionTick = data.minorValues.fraction[data.minorValues.decimal.indexOf(ticksModel.decimalTick)];
+      onChange({ ticksModel });
+    }
   };
 
+  /*
+   * Function to handle change in fraction label interval value
+   * @param e change event object
+   * @param fractionLabel string value for changed label interval
+   * */
   const changeFractionLabel = (e, fractionLabel) => {
-    ticksModel.fractionLabel = fractionLabel;
-    ticksModel.decimalLabel = data.majorValues.decimal[data.majorValues.fraction.indexOf(ticksModel.fractionLabel)];
-    onChange({ ticksModel });
+    if (validateMajorValuesObject()) {
+      ticksModel.fractionLabel = fractionLabel;
+      ticksModel.decimalLabel = data.majorValues.decimal[data.majorValues.fraction.indexOf(ticksModel.fractionLabel)];
+      onChange({ ticksModel });
+    }
   };
 
+  /*
+   * Function to handle change in decimal label interval value
+   * @param e change event object
+   * @param decimalLabel number value for changed label interval
+   * */
   const changeDecimalLabel = (e, decimalLabel) => {
-    ticksModel.decimalLabel = data.majorValues.decimal[data.majorValues.rounded.indexOf(decimalLabel)];
-    ticksModel.fractionLabel = data.majorValues.fraction[data.majorValues.decimal.indexOf(ticksModel.decimalLabel)];
-    onChange({ ticksModel });
+    if (validateMajorValuesObject()) {
+      ticksModel.decimalLabel = data.majorValues.decimal[data.majorValues.rounded.indexOf(decimalLabel)];
+      ticksModel.fractionLabel = data.majorValues.fraction[data.majorValues.decimal.indexOf(ticksModel.decimalLabel)];
+      onChange({ ticksModel });
+    }
   };
 
   return (

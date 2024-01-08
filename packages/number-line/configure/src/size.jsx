@@ -4,7 +4,8 @@ import { withStyles } from '@material-ui/core/styles';
 import { NumberTextFieldCustom } from '@pie-lib/pie-toolbox/config-ui';
 
 const Size = (props) => {
-  const { classes, size, min, max, step, onChange } = props;
+  // Setting default value if not passed in configuration properties.
+  const { classes, size = { width: 500 }, min = 150, max = 800, step = 20, onChange } = props;
   const changeWidth = (e, width) => onChange({ ...props.size, width });
   return (
     <div className={classes.flexRow}>
