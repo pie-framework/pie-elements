@@ -10,8 +10,8 @@ const allTools = [
   'segment',
   'sine',
   'vector',
-  'absolute',
-  'exponential',
+  // 'absolute', // - not available as default
+  // 'exponential', // - not available as default
 ];
 
 /* model defaults */
