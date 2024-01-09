@@ -50,7 +50,6 @@ class InteractiveSection extends React.Component {
     const { children, responseCorrect, uiStyle } = this.props;
     const classname = this.getClassname();
     const { possibilityListPosition = 'bottom'} = uiStyle || {};
-    console.log('Andreea uiStyle', uiStyle);
     const style = {
       flexDirection: this.getPositionDirection(possibilityListPosition),
     };
