@@ -1,7 +1,7 @@
 {
   "name": "@pie-element/boilerplate-item-type-configure",
   "private": true,
-  "version": "2.1.2",
+  "version": "2.2.0",
   "description": "",
   "main": "lib/index.js",
   "module": "src/index.js",

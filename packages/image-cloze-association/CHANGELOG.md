@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@5.3.0...@pie-element/image-cloze-association@5.4.0) (2024-01-09)
+
+
+### Features
+
+* **image-cloze-association:** add conf to determine the position of the pool PD-3103 ([bf020fa](https://github.com/pie-framework/pie-elements/commit/bf020fa10fea4fe3083b3a287c2fafdcfccd84ba))
+* **image-cloze-association:** add styling for response container PD-3103 ([4cb7165](https://github.com/pie-framework/pie-elements/commit/4cb716571e85a4ccac2f3d5b1575b4344f78db3e))
+* **image-cloze-association:** delete console log PD-3103 ([9f43235](https://github.com/pie-framework/pie-elements/commit/9f4323591b77ab0af38ea12ff755dcc9da9150f2))
+* **image-cloze-association:** delete console log PD-3103 ([ee2c9d5](https://github.com/pie-framework/pie-elements/commit/ee2c9d56e0da71b66ea8325e031b771fc67a4e38))
+
+
+
+
+
+# [5.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@5.2.2...@pie-element/image-cloze-association@5.3.0) (2024-01-08)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-2068, PD-2060 ([b63f783](https://github.com/pie-framework/pie-elements/commit/b63f78371452e265f31f721dcfa5f8ba9789089c))
+* update pie-lib/pie-toolbox PD-3352 ([c40c326](https://github.com/pie-framework/pie-elements/commit/c40c326209315b57ce8da802b8e00616256e3bd6))
+* update pie-lib/pie-toolbox SC-27396, SC-27398 ([658a553](https://github.com/pie-framework/pie-elements/commit/658a55358181271b508f7d550467eefadcd71544))
+
+
+### Features
+
+* refactor for pie-lib/pie-toolbox and add print module for boilerplate-item-type ([8230d26](https://github.com/pie-framework/pie-elements/commit/8230d264069672c4a3242ff5ed60a6842bf5147f))
+
+
+
+
+
 ## [5.2.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@5.2.1...@pie-element/image-cloze-association@5.2.2) (2024-01-08)
 
 

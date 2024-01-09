@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@2.2.3...@pie-element/complex-rubric@2.2.4) (2024-01-08)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-2068, PD-2060 ([b63f783](https://github.com/pie-framework/pie-elements/commit/b63f78371452e265f31f721dcfa5f8ba9789089c))
+* update pie-lib/pie-toolbox PD-3352 ([c40c326](https://github.com/pie-framework/pie-elements/commit/c40c326209315b57ce8da802b8e00616256e3bd6))
+* update pie-lib/pie-toolbox SC-27396, SC-27398 ([658a553](https://github.com/pie-framework/pie-elements/commit/658a55358181271b508f7d550467eefadcd71544))
+* **complex-rubric:** adjust defaults based on requirements PD-2555 ([37e64b2](https://github.com/pie-framework/pie-elements/commit/37e64b261b4c089dcf5e1482faea4c5faa6e4c7e))
+
+
+
+
+
 ## [2.2.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@2.2.2...@pie-element/complex-rubric@2.2.3) (2024-01-08)
 
 

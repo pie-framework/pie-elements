@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.10.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.9.0...@pie-element/pie-models@13.10.0) (2024-01-09)
+
+
+### Features
+
+* **image-cloze-association:** add conf to determine the position of the pool PD-3103 ([bf020fa](https://github.com/pie-framework/pie-elements/commit/bf020fa10fea4fe3083b3a287c2fafdcfccd84ba))
+
+
+
+
+
 # [13.9.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.8.0...@pie-element/pie-models@13.9.0) (2023-12-19)
 
 
