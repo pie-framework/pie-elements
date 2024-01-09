@@ -33,6 +33,8 @@ const styles = (theme) => ({
   base: {
     backgroundColor: color.background(),
     padding: theme.spacing.unit * 2,
+    display: 'flex',
+    alignItems: 'center',
   },
 });
 
