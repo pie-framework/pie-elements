@@ -208,7 +208,8 @@ class ImageClozeAssociationComponent extends React.Component {
         showDashedBorder,
         mode,
         rationale,
-        language
+        language,
+        uiStyle = {},
       },
     } = this.props;
     const {
@@ -268,7 +269,7 @@ class ImageClozeAssociationComponent extends React.Component {
         <CorrectAnswerToggle show={showToggle} toggled={showCorrect} onToggle={this.toggleCorrect} language={language}/>
 
         {showCorrect && showToggle ? (
-          <InteractiveSection responseCorrect={true}>
+          <InteractiveSection responseCorrect={true} uiStyle={uiStyle}>
             <Image
               canDrag={false}
               answers={correctAnswers}
@@ -283,7 +284,7 @@ class ImageClozeAssociationComponent extends React.Component {
             />
           </InteractiveSection>
         ) : (
-          <InteractiveSection responseCorrect={responseCorrect}>
+          <InteractiveSection responseCorrect={responseCorrect} uiStyle={uiStyle}>
             <Image
               canDrag={!disabled}
               answers={answersToShow}
