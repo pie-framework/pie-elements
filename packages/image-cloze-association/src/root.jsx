@@ -223,7 +223,6 @@ class ImageClozeAssociationComponent extends React.Component {
     } = this.state;
     const isEvaluateMode = mode === 'evaluate';
     const showToggle = isEvaluateMode && !responseCorrect;
-    console.log('Andreea', this.props.model);
 
     const { validResponse } = validation || {};
     const correctAnswers = [];
