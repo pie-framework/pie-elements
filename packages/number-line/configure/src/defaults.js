@@ -9,7 +9,7 @@ export const model = {
       minor: 0.125,
       major: 0.5,
       labelStep: '1/2',
-      tickIntervalType: 'Fraction',
+      tickIntervalType: 'Decimal',
       tickStep: '1/8',
     },
     arrows: {

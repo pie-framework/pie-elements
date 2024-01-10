@@ -30,7 +30,7 @@ const trimModel = (model) => ({
 
 // Object holding information related to tick and label interval values.
 let ticksModel = {
-  tickIntervalType: 'Fraction',
+  tickIntervalType: 'Decimal',
   integerTick: 0,
   fractionTick: '0/1',
   decimalTick: 0,
@@ -278,6 +278,33 @@ export class Main extends React.Component {
     graph.ticks.labelStep = ticksModel.fractionLabel;
   };
 
+  /*
+   * This function updates ticks model from ticks values in graph model.
+   * @param ticks object
+   * */
+  assignGraphToTicksModel = (ticks) => {
+    if (ticks.tickIntervalType) {
+      ticksModel.tickIntervalType = ticks.tickIntervalType;
+    }
+    if (ticks.minor) {
+      ticksModel.decimalTick = ticks.minor;
+      if (ticksModel.tickIntervalType === 'Integer') {
+        ticksModel.integerTick = ticks.minor;
+      } else {
+        ticksModel.integerTick = math.ceil(ticks.minor);
+      }
+      if (ticks.tickStep) {
+        ticksModel.fractionTick = ticks.tickStep;
+      }
+    }
+    if (ticks.major) {
+      ticksModel.decimalLabel = ticks.major;
+      if (ticks.labelStep) {
+        ticksModel.fractionLabel = ticks.labelStep;
+      }
+    }
+  };
+
   getAdjustedHeight = (availableTypes, maxNumberOfPoints) => {
     let onlyPFAvailable = true;
     Object.entries(availableTypes || {}).forEach(([type, value]) => {
@@ -450,6 +477,7 @@ export class Main extends React.Component {
       availableTools = ['PF'],
     } = configuration || {};
     const { errors = {}, graph, spellCheckEnabled, toolbarEditorPosition } = model || {};
+    this.assignGraphToTicksModel(graph.ticks);
     const { dialog, correctAnswerDialog } = this.state;
 
     const { widthError, domainError, maxError, pointsError, correctResponseError } = errors || {};
@@ -539,9 +567,9 @@ export class Main extends React.Component {
           {model.widthEnabled && (
             <Size
               size={graph}
-              min={numberLineDimensions.min}
-              max={numberLineDimensions.max}
-              step={numberLineDimensions.step}
+              min={numberLineDimensions ? numberLineDimensions.min : 400}
+              max={numberLineDimensions ? numberLineDimensions.max : 1600}
+              step={numberLineDimensions ? numberLineDimensions.step : 20}
               onChange={this.changeSize}
             />
           )}
@@ -557,6 +585,8 @@ export class Main extends React.Component {
           onAddElement={() => {}}
           onClearElements={() => {}}
           onUndoElement={() => {}}
+          minWidth={numberLineDimensions.min ? numberLineDimensions.min : 400}
+          maxWidth={numberLineDimensions.max ? numberLineDimensions.max : 1600}
           model={trimModel(initialModel)}
         />
 
@@ -624,6 +654,8 @@ export class Main extends React.Component {
               onAddElement={this.addCorrectResponse}
               onClearElements={this.clearCorrectResponse}
               onUndoElement={this.undoCorrectResponse}
+              minWidth={numberLineDimensions.min ? numberLineDimensions.min : 400}
+              maxWidth={numberLineDimensions.max ? numberLineDimensions.max : 1600}
               answer={correctResponse}
               //strip feedback for this model
               model={trimModel(model)}

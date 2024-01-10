@@ -23,7 +23,13 @@ export class Domain extends React.Component {
 
   change(key, event, value) {
     const { onChange } = this.props;
-    const update = { ...this.props.domain, [key]: value };
+    let update;
+    //Added condition when min and max is same, then it should not update the value
+    if ((key === 'min' && value === this.props.domain.max) || (key === 'max' && value === this.props.domain.min)) {
+      update = { ...this.props.domain };
+    } else {
+      update = { ...this.props.domain, [key]: value };
+    }
     onChange(sort(update));
   }
 
@@ -34,11 +40,11 @@ export class Domain extends React.Component {
       <div className={classes.displayFlex}>
         <div className={classes.flexRow}>
           <label>Min Value</label>
-          <MiniField value={domain.min} name={DOMAIN_BEGIN} onChange={this.changeMin} />
+          <MiniField min={-100000} max={99999} value={domain.min} name={DOMAIN_BEGIN} onChange={this.changeMin} />
         </div>
         <div className={classes.flexRow}>
           <label>Max Value</label>
-          <MiniField value={domain.max} name={DOMAIN_END} onChange={this.changeMax} />
+          <MiniField min={-99999} max={100000} value={domain.max} name={DOMAIN_END} onChange={this.changeMax} />
         </div>
       </div>
     );

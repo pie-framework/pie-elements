@@ -24,15 +24,12 @@ class PointConfig extends React.Component {
   };
   constructor(props) {
     super(props);
-    this.state = {
-      selection: props.selection,
-    };
   }
 
   toggle(point) {
-    const update = { ...this.state.selection };
+    const update = { ...this.props.selection };
     update[point] = !update[point];
-    this._stateUpdate(update);
+    this._propsUpdate(update);
   }
 
   toggleAll(value) {
@@ -42,17 +39,15 @@ class PointConfig extends React.Component {
       return acc;
     }, {});
 
-    this._stateUpdate(display);
+    this._propsUpdate(display);
   }
 
-  _stateUpdate(selection) {
-    this.setState({ selection }, () => {
-      this.props.onSelectionChange(this.state.selection);
-    });
+  _propsUpdate(selection) {
+    this.props.onSelectionChange(selection);
   }
 
   active(point) {
-    return this.state.selection[point] === true; // ? 'active' : '';
+    return this.props.selection[point] === true; // ? 'active' : '';
   }
 
   render() {
