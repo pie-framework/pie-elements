@@ -65,7 +65,7 @@ export default class MultipleChoicePrint extends HTMLElement {
 
           ReactDOM.render(element, this, () => {
             log('render complete - render math');
-            renderMath(this);
+          //  renderMath(this);
           });
         } else {
           log('skip');

@@ -5,6 +5,7 @@ import debounce from 'lodash/debounce';
 import debug from 'debug';
 import { renderMath } from '@pie-lib/pie-toolbox/math-rendering';
 import { updateSessionValue } from './session-updater';
+//import { initializeMathJax } from './mathjax-script';
 
 const log = debug('pie-ui:multiple-choice');
 
@@ -34,7 +35,7 @@ export default class MultipleChoice extends HTMLElement {
 
           ReactDOM.render(element, this, () => {
             log('render complete - render math');
-            renderMath(this);
+             renderMath(this);
           });
         } else {
           log('skip');
@@ -100,6 +101,36 @@ export default class MultipleChoice extends HTMLElement {
   }
 
   connectedCallback() {
-    this._rerender();
+    //initializeMathJax()
+  // Usage example
+// initializeMathJax();
+// window.mathjaxLoadedP.then(() => {
+//   console.log('MathJax is ready');
+//   console.log('window.MathJax.startup?.document:', window.MathJax.startup?.document);
+//   let mathList = window.MathJax.startup?.document?.getMathItemsWithin(document);
+//       console.log('Math items found:', mathList);
+//   // You can safely use MathJax here
+//   // For example, window.MathJax.startup.defaultPageReady();
+// });
+
+    // if (window.MathJax) {
+    //   // Process the math content
+    //   console.log('window.MathJax.startup?.document:', window.MathJax.startup?.document);
+    
+    // }
+    
+
+
+
+
+    //   console.log('window.MathJax.startup?.document:', window.MathJax.startup?.document);
+    //   let mathList = window.MathJax.startup?.document?.getMathItemsWithin(el);
+    //   console.log('Math items found:', mathList);
+    //   // mathList.forEach((math) => {
+    //   //   console.log('Typesetting math item:', math);
+    //   //   math.typeset();
+    //   // });
+      this._rerender();
+
   }
 }
