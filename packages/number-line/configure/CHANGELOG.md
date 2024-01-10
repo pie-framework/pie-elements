@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-configure@6.3.0...@pie-element/number-line-configure@6.3.1) (2024-01-10)
+
+
+### Bug Fixes
+
+* **number-line:** update default value PD-3368 ([dd06599](https://github.com/pie-framework/pie-elements/commit/dd065995f4526f5fa2252c943a320da6680ae0cd))
+
+
+
+
+
 # [6.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-configure@6.2.3...@pie-element/number-line-configure@6.3.0) (2024-01-08)
 
 
