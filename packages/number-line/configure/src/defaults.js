@@ -84,8 +84,7 @@ export const configuration = {
     label: 'Language Choices',
     options: [],
   },
-  maxMaxElements: 10,
+  maxMaxElements: 20,
   hidePointConfigButtons: false,
-  // availableTools: ["PF"],
   availableTools: ['PF', 'LFF', 'LEF', 'LFE', 'LEE', 'RFN', 'RFP', 'REN', 'REP'],
 };
