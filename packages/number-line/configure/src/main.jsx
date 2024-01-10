@@ -445,7 +445,7 @@ export class Main extends React.Component {
       prompt = {},
       mathMlOptions = {},
       numberLineDimensions = {},
-      maxMaxElements = 10,
+      maxMaxElements = 20,
       hidePointConfigButtons = false,
       availableTools = ['PF'],
     } = configuration || {};
@@ -608,7 +608,7 @@ export class Main extends React.Component {
               <NumberTextField
                 className={classes.maxNumberOfPoints}
                 min={1}
-                max={maxMaxElements || 10}
+                max={maxMaxElements}
                 onlyIntegersAllowed={true}
                 value={graph.maxNumberOfPoints}
                 onChange={this.changeMaxNoOfPoints}
