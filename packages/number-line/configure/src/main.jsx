@@ -567,9 +567,9 @@ export class Main extends React.Component {
           {model.widthEnabled && (
             <Size
               size={graph}
-              min={numberLineDimensions ? numberLineDimensions.min : 400}
-              max={numberLineDimensions ? numberLineDimensions.max : 1600}
-              step={numberLineDimensions ? numberLineDimensions.step : 20}
+              min={numberLineDimensions.min}
+              max={numberLineDimensions.max}
+              step={numberLineDimensions.step}
               onChange={this.changeSize}
             />
           )}
@@ -585,8 +585,8 @@ export class Main extends React.Component {
           onAddElement={() => {}}
           onClearElements={() => {}}
           onUndoElement={() => {}}
-          minWidth={numberLineDimensions.min ? numberLineDimensions.min : 400}
-          maxWidth={numberLineDimensions.max ? numberLineDimensions.max : 1600}
+          minWidth={numberLineDimensions.min}
+          maxWidth={numberLineDimensions.max}
           model={trimModel(initialModel)}
         />
 
@@ -654,8 +654,8 @@ export class Main extends React.Component {
               onAddElement={this.addCorrectResponse}
               onClearElements={this.clearCorrectResponse}
               onUndoElement={this.undoCorrectResponse}
-              minWidth={numberLineDimensions.min ? numberLineDimensions.min : 400}
-              maxWidth={numberLineDimensions.max ? numberLineDimensions.max : 1600}
+              minWidth={numberLineDimensions.min}
+              maxWidth={numberLineDimensions.max}
               answer={correctResponse}
               //strip feedback for this model
               model={trimModel(model)}
