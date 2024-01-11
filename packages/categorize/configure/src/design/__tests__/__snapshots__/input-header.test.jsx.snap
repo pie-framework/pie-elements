@@ -4,7 +4,7 @@ exports[`InputHeader snapshot renders 1`] = `
 <div
   className="inputHeader className"
 >
-  <ForwardRef
+  <EditableHtml
     allowValidation={false}
     autoWidthToolbar={true}
     className="editor"
