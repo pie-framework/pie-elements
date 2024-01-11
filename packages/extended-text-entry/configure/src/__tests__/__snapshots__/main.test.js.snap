@@ -132,7 +132,7 @@ exports[`Render Main Component Match Snapshot 1`] = `
   <Component
     label="Teacher Instructions"
   >
-    <EditableHtml
+    <ForwardRef
       allowValidation={false}
       imageSupport={Object {}}
       languageCharactersProps={
@@ -168,7 +168,7 @@ exports[`Render Main Component Match Snapshot 1`] = `
   <Component
     label="Prompt"
   >
-    <EditableHtml
+    <ForwardRef
       activePlugins={
         Array [
           "bold",

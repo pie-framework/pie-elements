@@ -448,7 +448,7 @@ exports[`Configure renders snapshot 1`] = `
   <InputContainer
     label="Teacher Instructions"
   >
-    <EditableHtml
+    <ForwardRef
       allowValidation={false}
       languageCharactersProps={
         Array [
@@ -477,7 +477,7 @@ exports[`Configure renders snapshot 1`] = `
   <InputContainer
     label="Item Stem"
   >
-    <EditableHtml
+    <ForwardRef
       allowValidation={false}
       disableUnderline={true}
       languageCharactersProps={
@@ -922,7 +922,7 @@ exports[`Configure renders snapshot 1`] = `
   <InputContainer
     label="Rationale"
   >
-    <EditableHtml
+    <ForwardRef
       allowValidation={false}
       languageCharactersProps={
         Array [

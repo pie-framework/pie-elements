@@ -15,7 +15,7 @@ exports[`main snapshot renders 1`] = `
   <Component
     label="Teacher Instructions"
   >
-    <EditableHtml
+    <ForwardRef
       allowValidation={false}
       disableUnderline={true}
       languageCharactersProps={
@@ -47,7 +47,7 @@ exports[`main snapshot renders 1`] = `
   <Component
     label="Item Stem"
   >
-    <EditableHtml
+    <ForwardRef
       allowValidation={false}
       disableUnderline={true}
       languageCharactersProps={
@@ -271,7 +271,7 @@ The correct answer should include at least one number line object."
   <FormSection
     label="Title"
   >
-    <EditableHtml
+    <ForwardRef
       activePlugins={
         Array [
           "bold",
