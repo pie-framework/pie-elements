@@ -206,7 +206,7 @@ The correct answer should include at least one number line object."
             "fractionLabel": "1/2",
             "fractionTick": "1/8",
             "integerTick": 1,
-            "tickIntervalType": "Fraction",
+            "tickIntervalType": "Decimal",
           }
         }
       />
@@ -225,6 +225,8 @@ The correct answer should include at least one number line object."
     />
   </div>
   <Jss(NumberLine)
+    maxWidth={800}
+    minWidth={200}
     model={
       Object {
         "correctResponse": undefined,
@@ -251,7 +253,7 @@ The correct answer should include at least one number line object."
             "labelStep": "1/2",
             "major": 0.5,
             "minor": 0.125,
-            "tickIntervalType": "Fraction",
+            "tickIntervalType": "Decimal",
             "tickStep": "1/8",
           },
           "title": undefined,
@@ -367,6 +369,8 @@ The correct answer should include at least one number line object."
   </label>
   <Jss(NumberLine)
     answer={Array []}
+    maxWidth={800}
+    minWidth={200}
     model={
       Object {
         "correctResponse": undefined,
@@ -392,7 +396,7 @@ The correct answer should include at least one number line object."
             "labelStep": "1/2",
             "major": 0.5,
             "minor": 0.125,
-            "tickIntervalType": "Fraction",
+            "tickIntervalType": "Decimal",
             "tickStep": "1/8",
           },
           "title": undefined,
