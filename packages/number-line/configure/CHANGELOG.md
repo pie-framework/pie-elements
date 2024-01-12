@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.3.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-configure@6.3.2...@pie-element/number-line-configure@6.3.3) (2024-01-12)
+
+
+### Bug Fixes
+
+* **number-line:** Fix issue with ticks loading | SC-28674 ([e812e88](https://github.com/pie-framework/pie-elements/commit/e812e88ee9cc7542e180848dbb47d0854f5c32ab))
+
+
+
+
+
 ## [6.3.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-configure@6.3.1...@pie-element/number-line-configure@6.3.2) (2024-01-12)
 
 
