@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.3.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-configure@6.3.1...@pie-element/number-line-configure@6.3.2) (2024-01-12)
+
+
+### Bug Fixes
+
+* **number-line:** Fix issue with domain and ticks as per SC-28651 ([d9d4509](https://github.com/pie-framework/pie-elements/commit/d9d45098f7aa9dda06624291e37d1233a81ba3e8))
+* **number-line:** Fix issue with domain and ticks as per SC-28651 ([16a53c0](https://github.com/pie-framework/pie-elements/commit/16a53c084898aa67df25d06be91ca64f5ec11b35))
+
+
+
+
+
 ## [6.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-configure@6.3.0...@pie-element/number-line-configure@6.3.1) (2024-01-10)
 
 
