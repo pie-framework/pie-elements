@@ -171,7 +171,7 @@ export class NumberLine extends React.Component {
   }
 
   render() {
-    let { model, classes, onDeleteElements, onMoveElement } = this.props;
+    let { model, classes, onDeleteElements, onMoveElement, minWidth = 400, maxWidth = 1600 } = this.props;
     let { showCorrectAnswer, answers, selectedElements, showMaxPointsWarning, elementType } = this.state;
     let {
       corrected = { correct: [], incorrect: [] },
@@ -187,7 +187,7 @@ export class NumberLine extends React.Component {
     let addElement = this.addElement.bind(this);
     let elementsSelected = !disabled && selectedElements && selectedElements.length > 0;
     const { ticks, domain, arrows, maxNumberOfPoints, height, availableTypes, title, fraction } = graph;
-    const width = this.getSize('width', 400, 1600, 600);
+    const width = this.getSize('width', minWidth, maxWidth, 600);
     const graphProps = {
       disabled,
       domain,

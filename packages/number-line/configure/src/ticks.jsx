@@ -14,7 +14,7 @@ export const Ticks = (props) => {
   const {
     classes,
     ticksModel = {
-      tickIntervalType: 'Fraction',
+      tickIntervalType: 'Decimal',
       integerTick: 0,
       fractionTick: '0/1',
       decimalTick: 0,
