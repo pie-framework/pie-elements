@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.3.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@7.3.4...@pie-element/number-line@7.3.5) (2024-01-15)
+
+
+### Bug Fixes
+
+* **number-line:** Fix blank screen on domain change | SC-26467 ([b3992e0](https://github.com/pie-framework/pie-elements/commit/b3992e019063df1c48f931c9131af9c987ebccf6))
+
+
+
+
+
 ## [7.3.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@7.3.3...@pie-element/number-line@7.3.4) (2024-01-15)
 
 
