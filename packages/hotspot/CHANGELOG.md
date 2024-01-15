@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@6.3.0...@pie-element/hotspot@6.3.1) (2024-01-15)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3366, PD-3367, PD-3381 ([8c9d35f](https://github.com/pie-framework/pie-elements/commit/8c9d35ff6f0dad1a161d6a2dba203a169169e562))
+
+
+
+
+
 # [6.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@6.2.2...@pie-element/hotspot@6.3.0) (2024-01-08)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.1.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association-controller@4.1.3...@pie-element/image-cloze-association-controller@4.1.4) (2024-01-15)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3366, PD-3367, PD-3381 ([8c9d35f](https://github.com/pie-framework/pie-elements/commit/8c9d35ff6f0dad1a161d6a2dba203a169169e562))
+
+
+
+
+
 ## [4.1.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association-controller@4.1.2...@pie-element/image-cloze-association-controller@4.1.3) (2024-01-08)
 
 
