@@ -147,6 +147,32 @@ export class Main extends React.Component {
   graphChange = (obj) => {
     const { model, onChange } = this.props;
     const graph = { ...model.graph, ...obj };
+    let respIndex = [];
+    model.correctResponse.forEach((correctResp, key) => {
+      if (
+        correctResp.domainPosition < graph.domain.min ||
+        correctResp.domainPosition > graph.domain.max ||
+        (correctResp.size &&
+          (correctResp.domainPosition + correctResp.size < graph.domain.min ||
+            correctResp.domainPosition + correctResp.size > graph.domain.max))
+      ) {
+        respIndex.push(key);
+      }
+    });
+    if (respIndex.length > 0) {
+      this.setState({
+        correctAnswerDialog: {
+          open: true,
+          text:
+            'This\n' +
+            'change would make it impossible for students to plot one or more elements in the current\n' +
+            'correct answer. If you proceed, all such elements will be removed from the correct\n' +
+            'answer.',
+          indices: respIndex,
+          graph: model.graph,
+        },
+      });
+    }
     this.reloadTicksData(graph.domain, graph.width, graph.ticks);
     this.assignTicksModelToGraph(graph);
     onChange({ graph });
@@ -165,32 +191,6 @@ export class Main extends React.Component {
     //check correct response
     const { model } = this.props;
     const graph = { ...model.graph };
-    let respIndex = [];
-    model.correctResponse.forEach((correctResp, key) => {
-      if (
-        correctResp.domainPosition < domain.min ||
-        correctResp.domainPosition > domain.max ||
-        (correctResp.size &&
-          (correctResp.domainPosition + correctResp.size < domain.min ||
-            correctResp.domainPosition + correctResp.size > domain.max))
-      ) {
-        respIndex.push(key);
-      }
-    });
-    if (respIndex.length > 0) {
-      this.setState({
-        correctAnswerDialog: {
-          open: true,
-          text:
-            'This\n' +
-            'change would make it impossible for students to plot one or more elements in the current\n' +
-            'correct answer. If you proceed, all such elements will be removed from the correct\n' +
-            'answer.',
-          indices: respIndex,
-          graph: graph,
-        },
-      });
-    }
 
     data.minorLimits = tickUtils.getMinorLimits(domain, width);
     data.minorValues = tickUtils.generateMinorValues(data.minorLimits);
