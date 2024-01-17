@@ -1,6 +1,6 @@
 {
   "lerna": "3.13.1",
-  "packages": ["packages/*", "packages/*/configure", "packages/*/controller"],
+  "packages": ["pie-utils","packages/*", "packages/*/configure", "packages/*/controller"],
   "version": "independent",
   "npmClient": "yarn",
   "useWorkspaces": true,
