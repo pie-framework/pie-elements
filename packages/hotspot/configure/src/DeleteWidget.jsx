@@ -5,16 +5,23 @@ import { faDelete } from './icons';
 import { ImageComponent } from '@pie-lib/pie-toolbox/icons';
 import { calculate } from './utils';
 
-const DeleteWidget = ({ height, id, width, x, y, points, outlineColor, handleWidgetClick }) => {
+const DeleteWidget = ({ height, id, width, x, y, points, isCircle, radius, handleWidgetClick }) => {
   let positionX, positionY;
-  // if points exist we have an irregular form (polygon) and position should be computed
-  if (points) {
-    const { x, y } = calculate(points);
-    positionX = x;
+  const offset = 20;
+
+  if (isCircle) {
+    // For circles, position the delete icon above the circle
+    positionX = x + radius - offset;
     positionY = y;
+  } else if (points) {
+    // For polygons, compute position based on points
+    const calculated = calculate(points);
+    positionX = calculated.x;
+    positionY = calculated.y;
   } else {
-    positionX = x + width - 20; // 10 pixels to the left
-    positionY = y + height - 20; // 10 pixels above
+    // For rectangles
+    positionX = x + width - offset;
+    positionY = y + height - offset;
   }
 
   return (
@@ -31,13 +38,14 @@ DeleteWidget.propTypes = {
   x: PropTypes.number.isRequired,
   y: PropTypes.number.isRequired,
   handleWidgetClick: PropTypes.func.isRequired,
+  radius: PropTypes.number,
+  isCircle: PropTypes.bool,
   points: PropTypes.arrayOf(
     PropTypes.shape({
       x: PropTypes.number,
       y: PropTypes.number,
     }),
   ),
-  outlineColor: PropTypes.string.isRequired,
 };
 
 export default DeleteWidget;

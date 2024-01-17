@@ -14,7 +14,7 @@ export default class CircleShape {
     newShapes.push(newCircle);
 
     return {
-      newShapes,
+      shapes: newShapes,
       isDrawing: true,
       isDrawingShapeId: newCircle.id,
     };
@@ -25,21 +25,32 @@ export default class CircleShape {
 
     if (currentShapeIndex !== -1) {
       const currentShape = state.shapes[currentShapeIndex];
-      const updatedShapes = [...props.shapes];
 
+      // Check if the shape is a valid circle (has more than 0 radius) before finalizing
       if (currentShape.radius > 0) {
-        updatedShapes.push(currentShape);
-
         return {
+          ...state,
           isDrawing: false,
           stateShapes: false,
           isDrawingShapeId: undefined,
-          shapes: updatedShapes,
+        };
+      } else {
+        return {
+          ...state,
+          isDrawing: false,
+          stateShapes: false,
+          isDrawingShapeId: undefined,
+          shapes: state.shapes.filter((shape) => shape.id !== state.isDrawingShapeId),
         };
       }
     }
 
-    return state;
+    return {
+      ...state,
+      isDrawing: false,
+      stateShapes: false,
+      isDrawingShapeId: undefined,
+    };
   }
 
   static handleMouseMove(state, e) {
@@ -52,9 +63,10 @@ export default class CircleShape {
       if (resizingShapeIndex !== -1) {
         const resizingShape = tempShapes[resizingShapeIndex];
 
-        resizingShape.radius = Math.sqrt(
-          Math.pow(e.evt.layerX - resizingShape.x, 2) + Math.pow(e.evt.layerY - resizingShape.y, 2),
-        );
+        // Calculate radius based on mouse position
+        const dx = e.evt.layerX - resizingShape.x;
+        const dy = e.evt.layerY - resizingShape.y;
+        resizingShape.radius = Math.sqrt(dx * dx + dy * dy);
 
         return {
           shapes: tempShapes,

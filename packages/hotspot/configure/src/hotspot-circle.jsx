@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Rect, Group, Transformer } from 'react-konva';
-import { withStyles } from '@material-ui/core/styles/index';
+import { Circle, Group, Transformer } from 'react-konva';
+import { withStyles } from '@material-ui/core/styles';
 import DeleteWidget from './DeleteWidget';
 
-class RectComponent extends React.Component {
+class CircleComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -16,8 +16,8 @@ class RectComponent extends React.Component {
   }
 
   handleClick = (e) => {
-    const { width, height, isDrawing, onClick, id } = this.props;
-    if (width < 0 && height < 0 && isDrawing) {
+    const { radius, isDrawing, onClick, id } = this.props;
+    if (radius <= 0 && isDrawing) {
       return;
     }
     e.cancelBubble = true;
@@ -47,25 +47,19 @@ class RectComponent extends React.Component {
 
   onResizeEnd = () => {
     const { onDragEnd, id } = this.props;
-    // transformer is changing scale of the node
-    // and NOT its width or height
-    // but in the store we have only width and height
-    // to match the data better we will reset scale on transform end
     const node = this.shapeRef.current;
-    const scaleX = node.scaleX();
-    const scaleY = node.scaleY();
 
-    // we will reset it back
-    node.scaleX(1);
-    node.scaleY(1);
+    const newRadius = Math.max(node.radius() * node.scaleX(), 5);
+
     this.setState({ isDragging: false });
     onDragEnd(id, {
       x: node.x(),
       y: node.y(),
-      // set minimal value
-      width: Math.max(5, node.width() * scaleX),
-      height: Math.max(node.height() * scaleY),
+      radius: newRadius,
     });
+
+    node.scaleX(1);
+    node.scaleY(1);
   };
 
   handleDelete = (id) => {
@@ -74,14 +68,16 @@ class RectComponent extends React.Component {
   };
 
   render() {
-    const { classes, correct, height, hotspotColor, id, outlineColor, width, x, y, strokeWidth = 5 } = this.props;
+    const { classes, correct, radius, hotspotColor, id, outlineColor, x, y, strokeWidth = 5 } = this.props;
+    const offset = 20;
+    console.log({ x, y });
+
     return (
       <Group classes={classes.group} onMouseLeave={this.handleMouseLeave} onMouseEnter={this.handleMouseEnter}>
-        <Rect
+        <Circle
           classes={classes.base}
           ref={this.shapeRef}
-          width={width}
-          height={height}
+          radius={radius}
           fill={hotspotColor}
           onClick={this.handleClick}
           onTap={this.handleClick}
@@ -96,14 +92,15 @@ class RectComponent extends React.Component {
           y={y}
         />
         {!this.state.isDragging && this.state.hovered && (
-          <DeleteWidget id={id} height={height} width={width} x={x} y={y} handleWidgetClick={this.handleDelete} />
+          <DeleteWidget id={id} radius={radius} x={x} y={y} handleWidgetClick={this.handleDelete} isCircle={true} />
         )}
         {this.state.hovered && (
           <Transformer
             ref={this.trRef}
             rotateEnabled={false}
+            keepRatio={true}
             boundBoxFunc={(oldBox, newBox) => {
-              // limit resize
+              // Constraint to prevent resizing too small
               if (newBox.width < 10 || newBox.height < 10) {
                 return oldBox;
               }
@@ -127,25 +124,24 @@ const styles = () => ({
   },
 });
 
-RectComponent.propTypes = {
+CircleComponent.propTypes = {
   classes: PropTypes.object.isRequired,
   correct: PropTypes.bool,
   isDrawing: PropTypes.bool.isRequired,
   id: PropTypes.string.isRequired,
-  height: PropTypes.number.isRequired,
+  radius: PropTypes.number.isRequired,
   hotspotColor: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
   onDeleteShape: PropTypes.func.isRequired,
   onDragEnd: PropTypes.func.isRequired,
   outlineColor: PropTypes.string.isRequired,
-  width: PropTypes.number.isRequired,
   x: PropTypes.number.isRequired,
   y: PropTypes.number.isRequired,
   strokeWidth: PropTypes.number,
 };
 
-RectComponent.defaultProps = {
+CircleComponent.defaultProps = {
   correct: false,
 };
 
-export default withStyles(styles)(RectComponent);
+export default withStyles(styles)(CircleComponent);
