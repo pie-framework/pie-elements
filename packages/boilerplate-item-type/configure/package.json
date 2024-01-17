@@ -15,7 +15,6 @@
     "react": "^16.8.1",
     "react-dom": "^16.8.1"
   },
-  "workspaceDependencies": ["@pie-element/pie-utils"],
   "author": "",
   "license": "ISC"
 }

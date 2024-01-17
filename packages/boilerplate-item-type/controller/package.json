@@ -13,7 +13,6 @@
   "devDependencies": {
     "lodash": "^4.17.15"
   },
-  "workspaceDependencies": ["@pie-element/pie-utils"],
   "author": "",
   "license": "ISC"
 }

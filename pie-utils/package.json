@@ -1,5 +1,5 @@
 {
-  "name": "@pie-element/pie-utils",
+  "name": "pie-utils",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",

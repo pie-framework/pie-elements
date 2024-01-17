@@ -1,6 +1,6 @@
 import isEmpty from 'lodash/isEmpty';
 import defaults from './defaults';
-import {callTest} from '@pie-element/pie-utils';
+import {callTest} from 'pie-utils';
 
 callTest('controller');
 export const getCorrectness = (model) => {
