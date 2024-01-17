@@ -303,6 +303,14 @@ export const validate = (model = {}) => {
     if (!value.marks.length) {
       correctAnswerErrors[key] = 'At least 1 graph object should be defined.';
     }
+    // check if all graph objects are correctly defined with respect to root, edge and from, to
+    if (value.marks.length > 0) {
+      value.marks.forEach((mark) => {
+        if (mark.building) {
+          correctAnswerErrors[key] = '1 or more graph object should be correctly defined.';
+        }
+      });
+    }
   });
 
   if (!isEmpty(correctAnswerErrors)) {
