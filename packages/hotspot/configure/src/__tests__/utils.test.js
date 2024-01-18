@@ -163,6 +163,7 @@ const shapesArray = [
 ];
 
 const shapesMap = {
+  circles: [],
   rectangles: [
     {
       height: 100,
@@ -217,9 +218,9 @@ describe('groupShapes', () => {
   it.each`
     shapesArray    | expected
     ${shapesArray} | ${shapesMap}
-    ${null}        | ${{ rectangles: [], polygons: [] }}
-    ${undefined}   | ${{ rectangles: [], polygons: [] }}
-    ${[]}          | ${{ rectangles: [], polygons: [] }}
+    ${null}        | ${{ rectangles: [], polygons: [], circles: [] }}
+    ${undefined}   | ${{ rectangles: [], polygons: [], circles: [] }}
+    ${[]}          | ${{ rectangles: [], polygons: [], circles: [] }}
   `('TURNS shapes = $shapesArray INTO $expected', async ({ shapesArray, expected }) => {
     expect(groupShapes(shapesArray)).toEqual(expected);
   });

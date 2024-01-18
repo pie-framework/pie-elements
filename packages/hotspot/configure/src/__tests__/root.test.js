@@ -177,6 +177,7 @@ describe('Root', () => {
               index: 1,
             },
           ],
+          circles: [],
         });
       });
 
@@ -199,6 +200,7 @@ describe('Root', () => {
               index: 1,
             },
           ],
+          circles: [],
         });
       });
 
@@ -221,6 +223,7 @@ describe('Root', () => {
               index: 1,
             },
           ],
+          circles: [],
         });
       });
 
@@ -243,6 +246,7 @@ describe('Root', () => {
               index: 1,
             },
           ],
+          circles: [],
         });
       });
     });
@@ -284,6 +288,7 @@ describe('Root', () => {
               index: 1,
             },
           ],
+          circles: [],
         });
       });
 
@@ -306,6 +311,7 @@ describe('Root', () => {
               index: 1,
             },
           ],
+          circles: [],
         });
       });
 
@@ -328,6 +334,7 @@ describe('Root', () => {
               ],
             },
           ],
+          circles: [],
         });
       });
 
@@ -350,6 +357,7 @@ describe('Root', () => {
               index: 1,
             },
           ],
+          circles: [],
         });
       });
     });

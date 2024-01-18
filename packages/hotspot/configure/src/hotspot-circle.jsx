@@ -69,8 +69,6 @@ class CircleComponent extends React.Component {
 
   render() {
     const { classes, correct, radius, hotspotColor, id, outlineColor, x, y, strokeWidth = 5 } = this.props;
-    const offset = 20;
-    console.log({ x, y });
 
     return (
       <Group classes={classes.group} onMouseLeave={this.handleMouseLeave} onMouseEnter={this.handleMouseEnter}>

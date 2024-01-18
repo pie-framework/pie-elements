@@ -209,6 +209,7 @@ describe('HotspotContainer', () => {
           },
         ],
         polygons: initialModel.shapes.polygons,
+        circles: [],
       });
     });
 
@@ -266,6 +267,7 @@ describe('HotspotContainer', () => {
       expect(onUpdateShapes).toHaveBeenLastCalledWith({
         rectangles: [],
         polygons: [],
+        circles: [],
       });
     });
 
@@ -274,6 +276,7 @@ describe('HotspotContainer', () => {
       expect(onUpdateShapes).toHaveBeenLastCalledWith({
         rectangles: [],
         polygons: [],
+        circles: [],
       });
     });
   });

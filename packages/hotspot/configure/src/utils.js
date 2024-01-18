@@ -102,6 +102,7 @@ const groupShapes = (shapesArray) => {
   const shapesMap = {
     rectangles: [],
     polygons: [],
+    circles: [],
   };
 
   if (shapesArray.length) {
