@@ -307,7 +307,7 @@ export const validate = (model = {}) => {
     if (value.marks.length > 0) {
       value.marks.forEach((mark) => {
         if (mark.building) {
-          correctAnswerErrors[key] = '1 or more graph object should be correctly defined.';
+          correctAnswerErrors[key] = 'At least 1 graph object is not correctly defined.';
         }
       });
     }
