@@ -80,6 +80,15 @@ const model = () => ({
         id: '5',
       },
     ],
+    circles: [
+      {
+        id: '6',
+        radius: 70,
+        x: 100,
+        y: 100,
+        correct: false,
+      },
+    ],
   },
   dimensions: { height: 300, width: 400 },
   hotspotColor: 'rgba(137, 183, 244, 0.65)',

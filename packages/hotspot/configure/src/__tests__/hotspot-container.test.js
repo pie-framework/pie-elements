@@ -63,6 +63,22 @@ const model = () => ({
           correct: false,
         },
       ],
+      circles: [
+        {
+          id: '6',
+          radius: 70,
+          x: 100,
+          y: 100,
+          correct: false,
+        },
+        {
+          id: '7',
+          radius: 30,
+          x: 200,
+          y: 150,
+          correct: true,
+        },
+      ],
     }),
   ),
   dimensions: {
@@ -175,6 +191,24 @@ describe('HotspotContainer', () => {
         group: 'polygons',
         index: 5,
       },
+      {
+        id: '6',
+        radius: 70,
+        x: 100,
+        y: 100,
+        correct: false,
+        group: 'circles',
+        index: 6,
+      },
+      {
+        id: '7',
+        radius: 30,
+        x: 200,
+        y: 150,
+        correct: true,
+        group: 'circles',
+        index: 7,
+      },
     ];
 
     beforeEach(() => {
@@ -187,7 +221,7 @@ describe('HotspotContainer', () => {
 
     it('onUpdateShapes with new added shape', () => {
       const newShape = {
-        id: '7',
+        id: '8',
         height: 140,
         width: 130,
         x: 280,
@@ -201,7 +235,7 @@ describe('HotspotContainer', () => {
         rectangles: [
           ...initialModel.shapes.rectangles,
           {
-            id: '7',
+            id: '8',
             height: 140,
             width: 130,
             x: 280,
@@ -209,13 +243,13 @@ describe('HotspotContainer', () => {
           },
         ],
         polygons: initialModel.shapes.polygons,
-        circles: [],
+        circles: initialModel.shapes.circles,
       });
     });
 
     it('onDeleteShape by id', () => {
       console.log('wrapper', wrapper.instance());
-      wrapper.instance().onDeleteShape('7');
+      wrapper.instance().onDeleteShape('8');
       expect(onUpdateShapes).toHaveBeenCalledWith(
         groupShapes([
           { correct: true, group: 'rectangles', height: 140, id: '0', index: 0, width: 130, x: 1, y: 1 },
@@ -256,6 +290,24 @@ describe('HotspotContainer', () => {
               { x: 407, y: 289 },
               { x: 407, y: 150 },
             ],
+          },
+          {
+            id: '6',
+            radius: 70,
+            x: 100,
+            y: 100,
+            correct: false,
+            group: 'circles',
+            index: 6,
+          },
+          {
+            id: '7',
+            radius: 30,
+            x: 200,
+            y: 150,
+            correct: true,
+            group: 'circles',
+            index: 7,
           },
         ]),
       );

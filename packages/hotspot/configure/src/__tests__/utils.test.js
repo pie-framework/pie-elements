@@ -160,10 +160,16 @@ const shapesArray = [
     group: 'polygons',
     index: 3,
   },
+  {
+    radius: 50,
+    x: 300,
+    y: 150,
+    group: 'circles',
+    index: 4,
+  },
 ];
 
 const shapesMap = {
-  circles: [],
   rectangles: [
     {
       height: 100,
@@ -198,6 +204,14 @@ const shapesMap = {
         { x: 400, y: 200 },
       ],
       index: 3,
+    },
+  ],
+  circles: [
+    {
+      radius: 50,
+      x: 300,
+      y: 150,
+      index: 4,
     },
   ],
 };
