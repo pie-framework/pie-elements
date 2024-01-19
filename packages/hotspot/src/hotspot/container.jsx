@@ -6,6 +6,7 @@ import { color } from '@pie-lib/pie-toolbox/render-ui';
 
 import Rectangle from './rectangle';
 import Polygon from './polygon';
+import Circle from './circle';
 
 export class Container extends React.Component {
   isSelected(shape) {
@@ -41,7 +42,7 @@ export class Container extends React.Component {
       isEvaluateMode,
       outlineColor,
       onSelectChoice,
-      shapes: { rectangles, polygons },
+      shapes: { rectangles = [], polygons = [], circles = [] },
       scale: SCALE,
       strokeWidth,
       showCorrect,
@@ -121,6 +122,35 @@ export class Container extends React.Component {
                   onClick={onSelectChoice}
                   outlineColor={outlineColor}
                   points={polygon.points}
+                  strokeWidth={strokeWidth}
+                  markAsCorrect={markAsCorrect}
+                  showCorrectEnabled={showCorrect}
+                />
+              );
+            })}
+            {circles.map((shape) => {
+              const selected = this.isSelected(shape);
+              const isCorrect = isEvaluateMode ? this.correctness(shape.correct, selected) : undefined;
+              const evaluateText = isEvaluateMode ? this.getEvaluateText(shape.correct, selected) : null;
+              const markAsCorrect = !!(isEvaluateMode && showCorrect && shape.correct);
+
+              return (
+                <Circle
+                  classes={classes}
+                  scale={SCALE}
+                  isEvaluateMode={isEvaluateMode}
+                  isCorrect={isCorrect}
+                  evaluateText={evaluateText}
+                  disabled={disabled}
+                  selected={selected}
+                  radius={shape.radius}
+                  hotspotColor={hotspotColor}
+                  id={shape.id}
+                  key={shape.id}
+                  onClick={onSelectChoice}
+                  outlineColor={outlineColor}
+                  x={shape.x}
+                  y={shape.y}
                   strokeWidth={strokeWidth}
                   markAsCorrect={markAsCorrect}
                   showCorrectEnabled={showCorrect}

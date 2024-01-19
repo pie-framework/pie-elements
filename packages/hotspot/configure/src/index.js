@@ -60,7 +60,7 @@ export default class HotspotConfigure extends HTMLElement {
 
       // check if the language is already included in the languageChoices.options array
       // and if not, then add it.
-      if (!this._configuration.languageChoices.options.find(option => option.value === this._model.language)) {
+      if (!this._configuration.languageChoices.options.find((option) => option.value === this._model.language)) {
         this._configuration.languageChoices.options.push({
           value: this._model.language,
           label: this._model.language,
@@ -94,10 +94,11 @@ export default class HotspotConfigure extends HTMLElement {
     const _model = m;
 
     if (propertyType === 'multipleCorrect') {
-      const { rectangles = [], polygons = [] } = _model.shapes || {};
+      const { rectangles = [], polygons = [], circles = [] } = _model.shapes || {};
 
       _model.shapes.rectangles = rectangles.map((shape) => ({ ...shape, correct: false }));
       _model.shapes.polygons = polygons.map((shape) => ({ ...shape, correct: false }));
+      _model.shapes.circles = circles.map((shape) => ({ ...shape, correct: false }));
     }
 
     this.onModelChanged(_model);

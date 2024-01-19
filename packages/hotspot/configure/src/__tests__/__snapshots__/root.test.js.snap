@@ -110,6 +110,15 @@ exports[`Root render renders 1`] = `
           "partialScoring": false,
           "prompt": "This is the question prompt",
           "shapes": Object {
+            "circles": Array [
+              Object {
+                "correct": false,
+                "id": "6",
+                "radius": 70,
+                "x": 100,
+                "y": 100,
+              },
+            ],
             "polygons": Array [
               Object {
                 "correct": true,
@@ -273,6 +282,15 @@ There should be at least 1 shape selected."
     preserveAspectRatioEnabled={true}
     shapes={
       Object {
+        "circles": Array [
+          Object {
+            "correct": false,
+            "id": "6",
+            "radius": 70,
+            "x": 100,
+            "y": 100,
+          },
+        ],
         "polygons": Array [
           Object {
             "correct": true,
