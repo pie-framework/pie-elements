@@ -452,8 +452,15 @@ export class Main extends React.Component {
     const { errors = {}, graph, spellCheckEnabled, toolbarEditorPosition } = model || {};
     this.reloadTicksData(graph.domain, graph.width, graph.ticks);
     const { dialog, correctAnswerDialog } = this.state;
-
-    const { widthError, domainError, maxError, pointsError, correctResponseError } = errors || {};
+    const {
+      correctResponseError,
+      domainError,
+      maxError,
+      pointsError,
+      prompt: promptError,
+      teacherInstructions: teacherInstructionsError,
+      widthError,
+    } = errors || {};
     const validationMessage = generateValidationMessage();
 
     const correctResponse = cloneDeep(model.correctResponse || []).map(toGraphFormat);
@@ -479,12 +486,14 @@ export class Main extends React.Component {
               onChange={(teacherInstructions) => onChange({ teacherInstructions })}
               nonEmpty={false}
               disableUnderline
+              error={teacherInstructionsError}
               toolbarOpts={toolbarOpts}
               spellCheck={spellCheckEnabled}
               uploadSoundSupport={uploadSoundSupport}
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               mathMlOptions={mathMlOptions}
             />
+            {teacherInstructionsError && <div className={classes.errorText}>{teacherInstructionsError}</div>}
           </InputContainer>
         )}
 
@@ -496,12 +505,14 @@ export class Main extends React.Component {
               onChange={(prompt) => onChange({ prompt })}
               nonEmpty={false}
               disableUnderline
+              error={promptError}
               toolbarOpts={toolbarOpts}
               spellCheck={spellCheckEnabled}
               uploadSoundSupport={uploadSoundSupport}
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               mathMlOptions={mathMlOptions}
             />
+            {promptError && <div className={classes.errorText}>{promptError}</div>}
           </InputContainer>
         )}
 
