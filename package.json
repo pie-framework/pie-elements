@@ -50,7 +50,6 @@
     "yarn": "^1.22.0"
   },
   "workspaces": [
-    "pie-utils",
     "packages/*",
     "packages/*/configure",
     "packages/*/controller",

@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.2.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@5.2.1...@pie-element/graphing@5.2.2) (2024-01-18)
+
+
+### Bug Fixes
+
+* **graphing:** Fix validation issue in Graphing Item | SC-28876 ([e8c0d4f](https://github.com/pie-framework/pie-elements/commit/e8c0d4f0a1d415c2624557262098348d4f70f701))
+* **graphing:** Update error message string | SC-28876 ([d52e0ae](https://github.com/pie-framework/pie-elements/commit/d52e0aeacb16599739c45e533b2812ee41faa64f))
+
+
+
+
+
 ## [5.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@5.2.0...@pie-element/graphing@5.2.1) (2024-01-15)
 
 

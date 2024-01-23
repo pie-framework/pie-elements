@@ -30,9 +30,7 @@ exports[`design snapshot renders all items with defaultProps 1`] = `
       onChangeModel={[Function]}
     />
   }
->
-  TEST
-</ConfigLayout>
+/>
 `;
 
 exports[`design snapshot tokenizer renders with html entities 1`] = `
@@ -66,7 +64,5 @@ exports[`design snapshot tokenizer renders with html entities 1`] = `
       onChangeModel={[Function]}
     />
   }
->
-  TEST
-</ConfigLayout>
+/>
 `;
