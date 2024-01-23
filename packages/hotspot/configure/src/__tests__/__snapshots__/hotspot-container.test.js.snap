@@ -25,13 +25,6 @@ exports[`HotspotContainer render renders 1`] = `
           isActive={false}
         />
       </div>
-      <div
-        onClick={[Function]}
-      >
-        <CircleButton
-          isActive={false}
-        />
-      </div>
       <WithStyles(UploadControl)
         label="Replace Image"
         onInputClick={[Function]}

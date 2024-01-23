@@ -192,12 +192,12 @@ export class Container extends Component {
             >
               <PolygonButton isActive={selectedShape === 'polygon'} />
             </div>
-            <div
-              onClick={() => this.setState({ selectedShape: selectedShape === 'circle' ? 'none' : 'circle' })}
-              className={classes.buttonShape}
-            >
-              <CircleButton isActive={selectedShape === 'circle'} />
-            </div>
+            {/*<div*/}
+            {/*  onClick={() => this.setState({ selectedShape: selectedShape === 'circle' ? 'none' : 'circle' })}*/}
+            {/*  className={classes.buttonShape}*/}
+            {/*>*/}
+            {/*  <CircleButton isActive={selectedShape === 'circle'} />*/}
+            {/*</div>*/}
 
             {imageUrl && (
               <UploadControl
