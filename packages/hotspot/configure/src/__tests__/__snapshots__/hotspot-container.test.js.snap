@@ -25,6 +25,13 @@ exports[`HotspotContainer render renders 1`] = `
           isActive={false}
         />
       </div>
+      <div
+        onClick={[Function]}
+      >
+        <CircleButton
+          isActive={false}
+        />
+      </div>
       <WithStyles(UploadControl)
         label="Replace Image"
         onInputClick={[Function]}
@@ -156,6 +163,24 @@ exports[`HotspotContainer render renders 1`] = `
                   "y": 150,
                 },
               ],
+            },
+            Object {
+              "correct": false,
+              "group": "circles",
+              "id": "6",
+              "index": 6,
+              "radius": 70,
+              "x": 100,
+              "y": 100,
+            },
+            Object {
+              "correct": true,
+              "group": "circles",
+              "id": "7",
+              "index": 7,
+              "radius": 30,
+              "x": 200,
+              "y": 150,
             },
           ]
         }

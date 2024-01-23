@@ -80,6 +80,15 @@ const model = () => ({
         id: '5',
       },
     ],
+    circles: [
+      {
+        id: '6',
+        radius: 70,
+        x: 100,
+        y: 100,
+        correct: false,
+      },
+    ],
   },
   dimensions: { height: 300, width: 400 },
   hotspotColor: 'rgba(137, 183, 244, 0.65)',
@@ -177,6 +186,7 @@ describe('Root', () => {
               index: 1,
             },
           ],
+          circles: [],
         });
       });
 
@@ -199,6 +209,7 @@ describe('Root', () => {
               index: 1,
             },
           ],
+          circles: [],
         });
       });
 
@@ -221,6 +232,7 @@ describe('Root', () => {
               index: 1,
             },
           ],
+          circles: [],
         });
       });
 
@@ -243,6 +255,7 @@ describe('Root', () => {
               index: 1,
             },
           ],
+          circles: [],
         });
       });
     });
@@ -284,6 +297,7 @@ describe('Root', () => {
               index: 1,
             },
           ],
+          circles: [],
         });
       });
 
@@ -306,6 +320,7 @@ describe('Root', () => {
               index: 1,
             },
           ],
+          circles: [],
         });
       });
 
@@ -328,6 +343,7 @@ describe('Root', () => {
               ],
             },
           ],
+          circles: [],
         });
       });
 
@@ -350,6 +366,7 @@ describe('Root', () => {
               index: 1,
             },
           ],
+          circles: [],
         });
       });
     });

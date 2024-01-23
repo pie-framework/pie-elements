@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 export const CircleButton = ({ isActive = false }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="48" height="32" viewBox="0 0 48 32" fill="none">
+  <svg xmlns="http://www.w3.org/2000/svg" width="48" height="32" viewBox="56 0 48 32" fill="none">
     <path
       fillRule="evenodd"
       clipRule="evenodd"

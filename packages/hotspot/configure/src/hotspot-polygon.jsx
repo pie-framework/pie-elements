@@ -223,14 +223,7 @@ class PolComponent extends React.Component {
             />
           ))}
         {!this.state.isDragging && this.state.hovered && (
-          <DeleteWidget
-            x={x}
-            y={y}
-            id={id}
-            handleWidgetClick={this.handleDelete}
-            points={points}
-            outlineColor={outlineColor}
-          />
+          <DeleteWidget x={x} y={y} id={id} handleWidgetClick={this.handleDelete} points={points} />
         )}
       </Group>
     );

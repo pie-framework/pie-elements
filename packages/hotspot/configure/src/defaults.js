@@ -6,6 +6,7 @@ export default {
     shapes: {
       rectangles: [],
       polygons: [],
+      circles: [],
     },
     multipleCorrect: true,
     partialScoring: false,

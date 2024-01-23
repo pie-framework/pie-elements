@@ -1,13 +1,14 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles/index';
 import Help from '@material-ui/icons/Help';
+import classNames from 'classnames';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import Button from './button';
+import { CircleButton } from './buttons/circle';
+import { PolygonButton } from './buttons/polygon';
+import { RectangleButton } from './buttons/rectangle';
 
 import Drawable from './hotspot-drawable';
-import { RectangleButton } from './buttons/rectangle';
-import { PolygonButton } from './buttons/polygon';
-import Button from './button';
 import UploadControl from './upload-control';
 import { getAllShapes, groupShapes } from './utils';
 
@@ -190,6 +191,12 @@ export class Container extends Component {
               className={classes.buttonShape}
             >
               <PolygonButton isActive={selectedShape === 'polygon'} />
+            </div>
+            <div
+              onClick={() => this.setState({ selectedShape: selectedShape === 'circle' ? 'none' : 'circle' })}
+              className={classes.buttonShape}
+            >
+              <CircleButton isActive={selectedShape === 'circle'} />
             </div>
 
             {imageUrl && (

@@ -15,8 +15,17 @@ export const normalize = (question) => ({
 
 export function model(question, session, env) {
   const normalizedQuestion = normalize(question);
-  const { imageUrl, dimensions, hotspotColor, multipleCorrect, outlineColor, partialScoring, prompt, shapes, language } =
-    normalizedQuestion;
+  const {
+    imageUrl,
+    dimensions,
+    hotspotColor,
+    multipleCorrect,
+    outlineColor,
+    partialScoring,
+    prompt,
+    shapes,
+    language,
+  } = normalizedQuestion;
   const { rectangles, polygons } = shapes || {};
 
   return new Promise((resolve) => {
@@ -73,7 +82,7 @@ const getScore = (config, session, env = {}) => {
     return 0;
   }
 
-  const { shapes: { rectangles = [], polygons = [] } = {} } = config;
+  const { shapes: { rectangles = [], polygons = [], circles = [] } = {} } = config;
   const partialScoringEnabled = partialScoring.enabled(config, env);
 
   if (!partialScoringEnabled) {
@@ -83,7 +92,7 @@ const getScore = (config, session, env = {}) => {
   let correctAnswers = 0;
   let selectedChoices = 0;
 
-  const choices = [...rectangles, ...polygons];
+  const choices = [...rectangles, ...polygons, ...circles];
 
   const correctChoices = choices.filter((choice) => choice.correct);
 
@@ -140,13 +149,14 @@ const returnShapesCorrect = (shapes) => {
 export const createCorrectResponseSession = (question, env) => {
   return new Promise((resolve) => {
     if (env.mode !== 'evaluate' && env.role === 'instructor') {
-      const { shapes: { rectangles = [], polygons = {} } = {} } = question;
+      const { shapes: { rectangles = [], circles = [], polygons = {} } = {} } = question;
 
       const rectangleCorrect = returnShapesCorrect(rectangles);
       const polygonsCorrect = returnShapesCorrect(polygons);
+      const circlesCorrect = returnShapesCorrect(circles);
 
       resolve({
-        answers: [...rectangleCorrect, ...polygonsCorrect],
+        answers: [...rectangleCorrect, ...polygonsCorrect, ...circlesCorrect],
         id: '1',
       });
     } else {
