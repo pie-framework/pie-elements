@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@6.3.1...@pie-element/hotspot-configure@6.4.0) (2024-01-23)
+
+
+### Bug Fixes
+
+* update to pie-lib/pie-toolbox 1.5.4 for PD-3387, PD-3384, PD-3383, PD-3392 ([2278f9a](https://github.com/pie-framework/pie-elements/commit/2278f9a3fdf1bc89ab590f240d926a857339179e))
+* update to pie-lib/pie-toolbox 1.5.5 for PD-3392 ([d4286e0](https://github.com/pie-framework/pie-elements/commit/d4286e08a060a73e6de098f87173baaaa88cc997))
+
+
+### Features
+
+* add ability to create circles PD-1446 ([6b2a479](https://github.com/pie-framework/pie-elements/commit/6b2a479803898bcb633ea309b5c65c5de4e17b20))
+* display and validate circles PD-1446 ([d42e74e](https://github.com/pie-framework/pie-elements/commit/d42e74e449c531c14cfe1fa0957154bcb3adbfd7))
+* updated tests to cover circles PD-1446 ([51500c6](https://github.com/pie-framework/pie-elements/commit/51500c64f7ea68866e4bd48259d24234cbce63d0))
+
+
+
+
+
 ## [6.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@6.3.0...@pie-element/hotspot-configure@6.3.1) (2024-01-15)
 
 
