@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.19.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/matrix@0.19.3...@pie-element/matrix@0.19.4) (2024-01-24)
+
+
+### Bug Fixes
+
+* update to pie-lib/pie-toolbox 1.5.7 PD-3404 ([eae668d](https://github.com/pie-framework/pie-elements/commit/eae668d980ef4731af5eceb3e70329b7621a232b))
+
+
+
+
+
 ## [0.19.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/matrix@0.19.2...@pie-element/matrix@0.19.3) (2024-01-24)
 
 
