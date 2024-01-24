@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@6.4.0...@pie-element/hotspot@6.5.0) (2024-01-24)
+
+
+### Bug Fixes
+
+* update to pie-lib/pie-toolbox 1.5.6 to fix issue introduced by fix for PD-3392 ([8d0a33f](https://github.com/pie-framework/pie-elements/commit/8d0a33f51a5ebe442eb824749cb419bf23c44d28))
+
+
+### Features
+
+* updated tests to hide circles PD-1446 ([6a5b2e7](https://github.com/pie-framework/pie-elements/commit/6a5b2e7e2a8885b5eb4da145c240b43da4b24bd3))
+
+
+
+
+
 # [6.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@6.3.1...@pie-element/hotspot@6.4.0) (2024-01-23)
 
 
