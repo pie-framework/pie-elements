@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.2.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-configure@7.2.2...@pie-element/charting-configure@7.2.3) (2024-01-24)
+
+
+### Bug Fixes
+
+* update to pie-lib/pie-toolbox 1.5.6 to fix issue introduced by fix for PD-3392 ([8d0a33f](https://github.com/pie-framework/pie-elements/commit/8d0a33f51a5ebe442eb824749cb419bf23c44d28))
+
+
+
+
+
 ## [7.2.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-configure@7.2.1...@pie-element/charting-configure@7.2.2) (2024-01-23)
 
 
