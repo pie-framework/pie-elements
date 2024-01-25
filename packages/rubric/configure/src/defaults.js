@@ -2,8 +2,8 @@ export default {
   model: {
     points: ['', '', '', ''],
     sampleAnswers: [null, null, null, null],
-    maxPoints: 4,
-    excludeZero: false,
+    maxPoints: 3,
+    excludeZero: true,
     excludeZeroEnabled: true,
     maxPointsEnabled: true,
   },
