@@ -31,6 +31,7 @@ const styles = (theme) => ({
     flex: 1,
     display: 'flex',
     justifyContent: 'center',
+    alignItems: 'center',
     flexDirection: 'column',
     '&> div': {
       width: '150px',
