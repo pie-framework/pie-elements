@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric-controller@2.1.8...@pie-element/complex-rubric-controller@2.1.9) (2024-01-29)
+
+
+### Bug Fixes
+
+* **rubric, complex-rubric:** fix validation for simple rubric exclude zero PD-3407 ([7b62d85](https://github.com/pie-framework/pie-elements/commit/7b62d85c04822794b0b2d17b62cf9fb75fbcda21))
+
+
+
+
+
 ## [2.1.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric-controller@2.1.7...@pie-element/complex-rubric-controller@2.1.8) (2024-01-24)
 
 

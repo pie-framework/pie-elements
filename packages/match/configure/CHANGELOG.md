@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.2.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-configure@6.2.4...@pie-element/match-configure@6.2.5) (2024-01-29)
+
+
+### Bug Fixes
+
+* **match:** fix alignment issues in authoring PD-3390 ([79bd955](https://github.com/pie-framework/pie-elements/commit/79bd9551a3154dfd184d4ed1197fea589582a11e))
+
+
+
+
+
 ## [6.2.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-configure@6.2.3...@pie-element/match-configure@6.2.4) (2024-01-24)
 
 
