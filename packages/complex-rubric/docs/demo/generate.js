@@ -7,7 +7,7 @@ exports.model = (id, element) => ({
     simpleRubric: {
       points: ['nothing right', 'a teeny bit right', 'mostly right', 'bingo'],
       sampleAnswers: [null, 'just right', 'not left', null],
-      maxPoints: 4,
+      maxPoints: 3,
       excludeZero: false,
     },
     rubricless: {

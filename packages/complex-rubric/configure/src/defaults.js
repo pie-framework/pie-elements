@@ -13,7 +13,7 @@ const multiTraitDefaultModel = {
 const rubricDefaultModel = {
   points: ['', '', '', ''],
   sampleAnswers: [null, null, null, null],
-  maxPoints: 4,
+  maxPoints: 3,
   excludeZero: false,
 };
 

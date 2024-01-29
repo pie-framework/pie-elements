@@ -238,6 +238,7 @@ const styles = (theme) => ({
     flex: 1,
     display: 'flex',
     justifyContent: 'center',
+    alignItems: 'center',
     minWidth: '150px',
     padding: `0 ${theme.spacing.unit}px`,
   },
