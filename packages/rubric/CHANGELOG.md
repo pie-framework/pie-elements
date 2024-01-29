@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric@3.1.7...@pie-element/rubric@3.1.8) (2024-01-29)
+
+
+### Bug Fixes
+
+* revert unwanted change ([d415608](https://github.com/pie-framework/pie-elements/commit/d4156088b645b92aa7b925176de9d0047f231fa6))
+* **rubric, complex-rubric:** fix validation for simple rubric exclude zero PD-3407 ([7b62d85](https://github.com/pie-framework/pie-elements/commit/7b62d85c04822794b0b2d17b62cf9fb75fbcda21))
+* **rubric, complex-rubric:** update defaults and demo files maxPoints value in model to be consistent with the points array and excludeZero property PD-3406 ([230c7b2](https://github.com/pie-framework/pie-elements/commit/230c7b258e62f9e2bfe92ff71ac30362aa5f1591))
+
+
+
+
+
 ## [3.1.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric@3.1.6...@pie-element/rubric@3.1.7) (2024-01-24)
 
 
