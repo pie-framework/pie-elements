@@ -53,10 +53,12 @@ export const configuration = {
   prompt: {
     settings: true,
     label: 'Item Stem',
+    required: false,
   },
   teacherInstructions: {
     settings: true,
     label: 'Teacher Instructions',
+    required: false,
   },
   numberLineDimensions: {
     settings: true,

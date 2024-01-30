@@ -296,27 +296,38 @@ export const createCorrectResponseSession = (question, env) => {
   });
 };
 
-export const validate = (model = {}) => {
-  // TODO: add configurable validation props after authoring is updated
+const getInnerText = (html) => (html || '').replaceAll(/<[^>]*>/g, '');
+
+export const validate = (model = {}, config = {}) => {
   const { graph, correctResponse } = model || {};
+  const { maxMaxElements = 20, numberLineDimensions: { min: minWidth = 200, max: maxWidth = 800 } = {} } = config || {};
   const { width, domain, maxNumberOfPoints } = graph || {};
   const { min, max } = domain || {};
   const errors = {};
 
-  if (width < 200 || width > 800) {
-    errors.widthError = 'Width should be a value between 200 and 800.';
+  ['teacherInstructions', 'prompt'].forEach((field) => {
+    if (config[field]?.required && !getInnerText(model[field])) {
+      errors[field] = 'This field is required';
+    }
+  });
+
+  if (width < minWidth || width > maxWidth) {
+    errors.widthError = `Width should be a value between ${minWidth} and ${maxWidth}.`;
   }
 
-  if (min < -100000 || min > 10000 || max < -100000 || max > 10000) {
-    errors.domainError = 'Min and max must both be in the range [-100000, 10000].';
+  const MIN_DOMAIN = -100000;
+  const MAX_DOMAIN = 100000;
+
+  if (min < MIN_DOMAIN || min > MAX_DOMAIN || max < MIN_DOMAIN || max > MAX_DOMAIN) {
+    errors.domainError = `Min and max values must both be in the range [${MIN_DOMAIN}, ${MAX_DOMAIN}].`;
   }
 
   if (min >= max) {
-    errors.maxError = 'Max must be greater than min.';
+    errors.maxError = 'Max value must be greater than min value.';
   }
 
-  if (maxNumberOfPoints < 1 || maxNumberOfPoints > 20) {
-    errors.pointsError = 'Max number of elements should be between 1 and 20.';
+  if (maxNumberOfPoints < 1 || maxNumberOfPoints > maxMaxElements) {
+    errors.pointsError = `Max number of elements should be between 1 and ${maxMaxElements}.`;
   }
 
   if (correctResponse && correctResponse.length === 0) {
