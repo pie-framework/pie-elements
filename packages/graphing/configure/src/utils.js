@@ -40,7 +40,12 @@ export const VALID_LABEL_VALUES = {
 export const getGridValues = (axis, size, prefferedValues = false) => {
   const minValue = (10 * (axis.max - axis.min)) / size;
   const maxValue = minValue * 10;
-  const values = prefferedValues ? PREFERRED_VALID_GRID_VALUES : VALID_GRID_VALUES;
+
+  // if preferred values should be used enforce all values to be used if the axis step
+  // is included in all supported values and not included in preferred values
+  const useAllValues =
+    prefferedValues && !PREFERRED_VALID_GRID_VALUES.includes(axis.step) && VALID_GRID_VALUES.includes(axis.step);
+  const values = !prefferedValues || useAllValues ? VALID_GRID_VALUES : PREFERRED_VALID_GRID_VALUES;
 
   return values.filter((value) => value >= minValue && value <= maxValue);
 };
