@@ -95,6 +95,7 @@ export default {
       label: 'Scoring Type',
     },
     settingsPanelDisabled: false,
+    preferredValues: true,
     studentInstructions: {
       settings: false,
       label: 'Student Instructions',

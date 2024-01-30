@@ -5,7 +5,7 @@ import { settings, layout, InputContainer } from '@pie-lib/pie-toolbox/config-ui
 import PropTypes from 'prop-types';
 import debug from 'debug';
 import Typography from '@material-ui/core/Typography';
-import {EditableHtml} from '@pie-lib/pie-toolbox/editable-html';
+import { EditableHtml } from '@pie-lib/pie-toolbox/editable-html';
 
 import ChartingConfig from './charting-config';
 import CorrectResponse from './correct-response';
@@ -60,7 +60,11 @@ export class Configure extends React.Component {
   constructor(props) {
     super(props);
     const { range = {}, graph } = props.model || {};
-    const gridValues = { range: getGridValues(range, graph.height, true) };
+    /*Check weather to use preferred grid value or use valid values based on configuration setting, will
+    default to true if no configuration is provided.*/
+    const preferredValues =
+      typeof props.configuration.preferredValues !== 'undefined' ? props.configuration.preferredValues : true;
+    const gridValues = { range: getGridValues(range, graph.height, preferredValues) };
     const labelValues = { range: getLabelValues(range.step || 1) };
 
     this.state = { gridValues, labelValues };

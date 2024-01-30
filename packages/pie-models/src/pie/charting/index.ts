@@ -292,6 +292,11 @@ export interface ChartingConfigure extends PromptConfig, CommonConfigSettings {
    * Indicates if the settings panel is not available
    */
   settingsPanelDisabled?: boolean;
+  
+  /**
+   * Indicates weather the preferred values should be used or default valid values for grid interval
+   */
+  preferredValues?: boolean;
 
   /**
    * Student Instructions configuration
