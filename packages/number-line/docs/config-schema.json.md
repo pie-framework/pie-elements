@@ -23,6 +23,10 @@ Indicates the label for the item that has to be displayed in the Settings Panel
 
 Properties of the `prompt` object:
 
+## `required` (boolean)
+
+Indicates if the item is required and the value cannot be empty
+
 ## `settings` (boolean)
 
 Indicates if the item has to be displayed in the Settings Panel
@@ -34,6 +38,10 @@ Indicates the label for the item that has to be displayed in the Settings Panel
 # `teacherInstructions` (object)
 
 Properties of the `teacherInstructions` object:
+
+## `required` (boolean)
+
+Indicates if the item is required and the value cannot be empty
 
 ## `settings` (boolean)
 
@@ -212,9 +220,13 @@ Indicates if the item has to be displayed in the Settings Panel
 
 Indicates the label for the item that has to be displayed in the Settings Panel
 
-## `ConfigureProp` (object)
+## `ConfigureRequiredProp` (object)
 
-Properties of the `ConfigureProp` object:
+Properties of the `ConfigureRequiredProp` object:
+
+### `required` (boolean)
+
+Indicates if the item is required and the value cannot be empty
 
 ### `settings` (boolean)
 
@@ -239,6 +251,18 @@ Properties of the `NumberLineDimensions` object:
 ### `max` (number, required)
 
 ### `step` (number, required)
+
+## `ConfigureProp` (object)
+
+Properties of the `ConfigureProp` object:
+
+### `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+### `label` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
 
 ## `ConfigureMathMLProp` (object)
 

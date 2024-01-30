@@ -7,6 +7,7 @@ import {
   ConfigureMathMLProp,
   ConfigureProp,
   ConfigurePropWithEnabled,
+  ConfigureRequiredProp,
 } from '../ConfigurationProp';
 
 interface ResponseDefault {
@@ -201,12 +202,12 @@ export interface NumberLineConfigure extends PromptConfig, CommonConfigSettings 
   /**
    * Configuration for the prompt
    */
-  prompt?: ConfigureProp;
+  prompt?: ConfigureRequiredProp;
 
   /**
    * Configuration for the teacher instructions
    */
-  teacherInstructions?: ConfigureProp;
+  teacherInstructions?: ConfigureRequiredProp;
 
   /** Hold default values for number line width like min , max and step. */
   numberLineDimensions?: NumberLineDimensions;
