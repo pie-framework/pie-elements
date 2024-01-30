@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-controller@5.1.7...@pie-element/number-line-controller@5.2.0) (2024-01-30)
+
+
+### Features
+
+* **number-line:** Add possibility to mark fields as required PD-3137 and update validation PD-3369 ([30516d6](https://github.com/pie-framework/pie-elements/commit/30516d6cfa863c215b17f9671de64f83eab43269))
+
+
+
+
+
 ## [5.1.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-controller@5.1.6...@pie-element/number-line-controller@5.1.7) (2024-01-24)
 
 
