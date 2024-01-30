@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.11.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.10.0...@pie-element/pie-models@13.11.0) (2024-01-30)
+
+
+### Features
+
+* **number-line:** Add possibility to mark fields as required PD-3137 and update validation PD-3369 ([30516d6](https://github.com/pie-framework/pie-elements/commit/30516d6cfa863c215b17f9671de64f83eab43269))
+
+
+
+
+
 # [13.10.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.9.0...@pie-element/pie-models@13.10.0) (2024-01-09)
 
 
