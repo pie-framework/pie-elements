@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.5.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@6.5.1...@pie-element/hotspot@6.5.2) (2024-01-30)
+
+
+### Bug Fixes
+
+* circle not resizing properly from the top PD-1446 ([7cc20a4](https://github.com/pie-framework/pie-elements/commit/7cc20a4c3eab6b49e38f106c1c86538596273d9f))
+* circle not resizing properly from the top PD-1446 ([bb3b1a6](https://github.com/pie-framework/pie-elements/commit/bb3b1a69314876586c7809edfa3a05610fae5949))
+
+
+
+
+
 ## [6.5.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@6.5.0...@pie-element/hotspot@6.5.1) (2024-01-24)
 
 
