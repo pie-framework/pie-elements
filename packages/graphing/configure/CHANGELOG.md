@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.2.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@5.2.4...@pie-element/graphing-configure@5.2.5) (2024-01-30)
+
+
+### Bug Fixes
+
+* **graphing, charting:** use all supported values if given value is not included in the preferred ones PD-3427 ([04f9dde](https://github.com/pie-framework/pie-elements/commit/04f9ddeb89ed01de48a6954c6851ff392408fb95))
+
+
+
+
+
 ## [5.2.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@5.2.3...@pie-element/graphing-configure@5.2.4) (2024-01-24)
 
 
