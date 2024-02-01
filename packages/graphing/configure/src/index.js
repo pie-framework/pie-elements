@@ -11,6 +11,7 @@ import {
 import debug from 'debug';
 import defaultValues from './defaults';
 import { renderMath } from '@pie-lib/pie-toolbox/math-rendering';
+import cloneDeep from 'lodash/cloneDeep';
 
 const log = debug('pie-elements:graphing:configure');
 
@@ -74,6 +75,7 @@ export default class GraphLinesConfigure extends HTMLElement {
 
   set model(m) {
     this._model = GraphLinesConfigure.createDefaultModel(m);
+    this._modelCopy = cloneDeep(this._model);
     this._render();
   }
 
@@ -98,7 +100,8 @@ export default class GraphLinesConfigure extends HTMLElement {
         delete this._model.language;
       }
     }
-    this._render();
+
+    this.onModelChanged(this._modelCopy);
   }
 
   onModelChanged = (model) => {
