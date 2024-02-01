@@ -81,6 +81,7 @@ export default class GraphLinesConfigure extends HTMLElement {
 
   set configuration(c) {
     this._configuration = c;
+    this._model = this._modelCopy;
 
     // if language:enabled is true, then the corresponding default item model should include a language value;
     // if it is false, then the language field should be omitted from the item model.
@@ -101,7 +102,7 @@ export default class GraphLinesConfigure extends HTMLElement {
       }
     }
 
-    this.onModelChanged(this._modelCopy);
+    this._render();
   }
 
   onModelChanged = (model) => {
