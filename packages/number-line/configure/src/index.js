@@ -70,6 +70,7 @@ export default class NumberLine extends HTMLElement {
     };
 
     this._configuration = newConfiguration;
+    this._model = this._modelCopy;
 
     // if language:enabled is true, then the corresponding default item model should include a language value;
     // if it is false, then the language field should be omitted from the item model.
@@ -98,7 +99,7 @@ export default class NumberLine extends HTMLElement {
       delete this._model.language;
     }
 
-    this.onChange(this._modelCopy);
+    this._rerender();
   }
 
   onChange = (o) => {
