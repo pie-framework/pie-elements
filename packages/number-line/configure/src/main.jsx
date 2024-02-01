@@ -18,6 +18,7 @@ import * as math from 'mathjs';
 import Ticks from './ticks';
 import { model as defaultModel } from './defaults';
 import { generateValidationMessage } from './utils';
+import isEqual from 'lodash/isEqual';
 
 const trimModel = (model) => ({
   ...model,
@@ -125,12 +126,7 @@ export class Main extends React.Component {
 
   constructor(props) {
     super(props);
-    const {
-      model: {
-        graph: { availableTypes, maxNumberOfPoints },
-      },
-    } = props;
-    const height = this.getAdjustedHeight(availableTypes, maxNumberOfPoints);
+
     this.state = {
       dialog: {
         open: false,
@@ -141,7 +137,25 @@ export class Main extends React.Component {
         text: '',
       },
     };
+
+    this.checkAndAdjustHeight(props);
+  }
+
+  checkAndAdjustHeight = (props) => {
+    const {
+      model: {
+        graph: { availableTypes, maxNumberOfPoints },
+      },
+    } = props;
+
+    const height = this.getAdjustedHeight(availableTypes, maxNumberOfPoints);
     this.graphChange({ height });
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (!isEqual(prevProps?.configuration, this.props?.configuration)) {
+      this.checkAndAdjustHeight(this.props);
+    }
   }
 
   graphChange = (obj) => {

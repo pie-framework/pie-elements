@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import { ModelUpdatedEvent, InsertSoundEvent, DeleteSoundEvent } from '@pie-framework/pie-configure-events';
 import * as defaults from './defaults';
 import * as math from 'mathjs';
+import cloneDeep from 'lodash/cloneDeep';
 
 // this function is duplicated in controller; at some point, use the same shared function
 const updateTicks = (model) => {
@@ -58,6 +59,7 @@ export default class NumberLine extends HTMLElement {
 
   set model(m) {
     this._model = NumberLine.createDefaultModel(m);
+    this._modelCopy = cloneDeep(this._model);
     this._rerender();
   }
 
@@ -96,7 +98,7 @@ export default class NumberLine extends HTMLElement {
       delete this._model.language;
     }
 
-    this._rerender();
+    this.onChange(this._modelCopy);
   }
 
   onChange = (o) => {
