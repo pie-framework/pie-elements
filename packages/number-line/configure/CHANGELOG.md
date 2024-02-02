@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-configure@6.4.0...@pie-element/number-line-configure@6.5.0) (2024-02-02)
+
+
+### Bug Fixes
+
+* store model copy and reset model after configuration gets set PD-3370 ([be8b8d9](https://github.com/pie-framework/pie-elements/commit/be8b8d9ee24a0073a72ee98b9a4fea10bd6223ec))
+* update model before making the language checks ([d305e91](https://github.com/pie-framework/pie-elements/commit/d305e916023bdd1f3b0d9aebc33b9ed8f9040fb9))
+
+
+### Features
+
+* use model copy in PLAYER environments to reset model after set configuration PD-3370 ([8a7ef36](https://github.com/pie-framework/pie-elements/commit/8a7ef3663d39ec444f91705b632ea25785d0e66f))
+
+
+
+
+
 # [6.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-configure@6.3.8...@pie-element/number-line-configure@6.4.0) (2024-01-30)
 
 
