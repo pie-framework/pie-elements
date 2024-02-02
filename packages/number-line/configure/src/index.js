@@ -55,12 +55,31 @@ export default class NumberLine extends HTMLElement {
     super();
     this._model = NumberLine.createDefaultModel();
     this._configuration = defaults.configuration;
+
+    // In environments that use pie-player-components, model is set before configuration.
+    // This is the reason why sometimes the model gets altered non-reversible
+    // (altered using default configuration instead of client configuration, because at that point client configuration was not set yet)
+    // Therefore, in such environments, we will make sure to keep a modelCopy (initialised in set model) and use it to reset
+    // the model in set configuration (resetModelAfterConfigurationIsSet) if set configuration is ever called
+    const pieAuthors = document.querySelectorAll('pie-author');
+    this.hasPlayerAsParent = Array.from(pieAuthors).some(author => author.contains(this));
   }
 
   set model(m) {
     this._model = NumberLine.createDefaultModel(m);
     this._modelCopy = cloneDeep(this._model);
+
     this._rerender();
+  }
+
+  resetModelAfterConfigurationIsSet = () => {
+    if (this.hasPlayerAsParent) {
+      if (this._modelCopy) {
+        this._model = this._modelCopy;
+      } else {
+        delete this._modelCopy;
+      }
+    }
   }
 
   set configuration(c) {
@@ -70,7 +89,8 @@ export default class NumberLine extends HTMLElement {
     };
 
     this._configuration = newConfiguration;
-    this._model = this._modelCopy;
+
+    this.resetModelAfterConfigurationIsSet();
 
     // if language:enabled is true, then the corresponding default item model should include a language value;
     // if it is false, then the language field should be omitted from the item model.
