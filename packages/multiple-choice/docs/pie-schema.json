@@ -125,7 +125,7 @@
       "title": "toolbarEditorPosition"
     },
     "lockChoiceOrder": {
-      "description": "Indicates the order of choices should be randomly ordered when presented to user",
+      "description": "Indicates the order of choices presented to user\nif true, answer choices will be presented in the order they are defined in the model\nIf false, answer choices may be presented in a random order (depending upon the value of the lockChoiceOrder environment variable)",
       "type": "boolean",
       "title": "lockChoiceOrder"
     },
