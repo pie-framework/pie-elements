@@ -1,6 +1,8 @@
 import isEmpty from 'lodash/isEmpty';
 import defaults from './defaults';
+import {test, callTest} from '@pie-element/pie-utils';
 
+callTest('configure');
 export const getCorrectness = (model) => {
   const correctnessCondition = 'c';
 

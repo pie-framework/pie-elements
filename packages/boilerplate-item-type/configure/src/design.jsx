@@ -5,6 +5,10 @@ import cloneDeep from 'lodash/cloneDeep';
 import { InputContainer, settings, layout } from '@pie-lib/pie-toolbox/config-ui';
 import {EditableHtml} from '@pie-lib/pie-toolbox/editable-html';
 
+import {test, callTest} from '@pie-element/pie-utils';
+
+callTest('configure');
+
 const { Panel, toggle } = settings;
 
 export class Design extends React.Component {
@@ -64,6 +68,7 @@ export class Design extends React.Component {
           />
         }
       >
+        {test}
         {promptEnabled && (
           <InputContainer label={prompt.label || ''} className={classes.promptHolder}>
             <EditableHtml
