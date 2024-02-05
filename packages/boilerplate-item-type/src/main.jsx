@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { PreviewPrompt } from '@pie-lib/pie-toolbox/render-ui';
-import {test, callTest} from '@pie-element/pie-utils';
+import UTILS from '@pie-element/pie-utils';
+
+const {test, callTest} = UTILS;
 
 callTest('player');
 export default class Main extends React.Component {

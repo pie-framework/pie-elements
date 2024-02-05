@@ -1,6 +1,16 @@
 {
   "name": "@pie-element/pie-utils",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": "pie-framework/pie-elements",
+  "description": "",
   "version": "1.0.2",
-  "main": "src/index.js",
-  "license": "MIT"
+  "author": "",
+  "license": "ISC",
+  "main": "lib/index.js",
+  "module": "src/index.js",
+  "exports": {
+    ".": "./src/index.js"
+  }
 }
