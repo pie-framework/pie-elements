@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { PreviewPrompt } from '@pie-lib/pie-toolbox/render-ui';
 import TEST from '@pie-element/common';
+
+console.log('TEST', TEST);
 export default class Main extends React.Component {
   static propTypes = {
     model: PropTypes.object,
