@@ -89,11 +89,13 @@ workflows:
               ignore:
                 - develop
                 - master
+                - feat/PD-3373-2
       - test:
           filters:
             branches:
               ignore:
                 - develop
+                - feat/PD-3373-2
                 - master
   build:
     jobs:
