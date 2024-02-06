@@ -8,9 +8,12 @@
   "version": "1.0.2",
   "author": "",
   "license": "ISC",
-  "main": "lib/index.js",
-  "module": "src/index.js",
+  "dependencies": {
+    "@pie-lib/pie-toolbox": "1.5.7"
+  },
+  "main": "./index.js",
+  "module": "source/index.js",
   "exports": {
-    ".": "./src/index.js"
+    ".": "./source/index.js"
   }
 }

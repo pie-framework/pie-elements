@@ -8,13 +8,14 @@
   "dependencies": {
     "@pie-lib/pie-toolbox": "1.5.7",
     "debug": "^3.1.0",
-    "lodash": "^4.17.15",
-    "@pie-element/pie-utils": "*"
+    "lodash": "^4.17.15"
   },
   "devDependencies": {
     "lodash": "^4.17.15"
   },
-  "workspaceDependencies": ["@pie-element/pie-utils"],
+  "workspaceDependencies": [
+    "@pie-element/pie-utils"
+  ],
   "author": "",
   "license": "ISC"
 }

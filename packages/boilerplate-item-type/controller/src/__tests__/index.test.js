@@ -1,6 +1,6 @@
 import { getCorrectness, model, outcome } from '../index';
 
-jest.mock('@pie-lib/pie-toolbox/text-select', () => ({
+jest.mock('@pie-element/pie-utils/text-select', () => ({
   prepareText: jest.fn(),
 }));
 

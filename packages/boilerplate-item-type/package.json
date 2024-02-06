@@ -12,10 +12,11 @@
     "@pie-lib/pie-toolbox": "1.5.7",
     "prop-types": "^15.6.1",
     "react": "^16.8.1",
-    "react-dom": "^16.8.1",
-    "@pie-element/pie-utils": "*"
+    "react-dom": "^16.8.1"
   },
-  "workspaceDependencies": ["@pie-element/pie-utils"],
+  "workspaceDependencies": [
+    "@pie-element/pie-utils"
+  ],
   "author": "",
   "license": "ISC",
   "gitHead": "0e14ff981bcdc8a89a0e58484026496701bfdbc3",

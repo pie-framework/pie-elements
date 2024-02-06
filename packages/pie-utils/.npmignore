@@ -1,4 +1,8 @@
+**/__tests__/**
+**/__mocks__/**
+*.tgz
+NEXT.CHANGELOG.json
 __mocks__
 jestsetup.js
-src
+source
 node_modules

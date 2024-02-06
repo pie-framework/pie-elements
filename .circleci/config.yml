@@ -88,14 +88,14 @@ workflows:
             branches:
               ignore:
                 - develop
-                - feat/PD-3373
+#                - feat/PD-3373
                 - master
       - test:
           filters:
             branches:
               ignore:
                 - develop
-                - feat/PD-3373
+#                - feat/PD-3373
                 - master
   build:
     jobs:
@@ -105,7 +105,7 @@ workflows:
             branches:
               only:
                 - develop
-                - feat/PD-3373
+#                - feat/PD-3373
 
   release:
     jobs:

@@ -1,0 +1,10 @@
+# Ignore all files in the built "code" directory
+code/*
+code
+# Ignore built files
+*.js
+*.js.map
+# Except for the "src/code" directory and its contents
+!source/code/
+!source/code/**
+

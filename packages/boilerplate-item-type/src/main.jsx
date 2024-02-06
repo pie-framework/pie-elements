@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { PreviewPrompt } from '@pie-lib/pie-toolbox/render-ui';
+import { PreviewPrompt } from '@pie-element/pie-utils/render-ui';
 import UTILS from '@pie-element/pie-utils';
 
 const {test, callTest} = UTILS;

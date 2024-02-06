@@ -90,15 +90,27 @@ class ElementsCommands extends Commands {
   // }
 
   babel() {
-    return Promise.all(
-      getElementPackages(join(this.projectRoot, 'packages'))
-        .filter((p) => pathExistsSync(join(p.dir, 'src')))
-        .map((p) => {
-          const cwd = resolve(__dirname, '..', p.dir);
-          const cmd = `${this.p.babel} --ignore '**/__test__/**','**/__tests__/**','**/__mocks__/**' src -d lib --source-maps --root-mode upward`;
-          return this.runCmd(cmd, { cwd });
-        })
-    );
+    const elementPackages = getElementPackages(join(this.projectRoot, 'packages'));
+    const filteredElementPackages = elementPackages.filter((p) => pathExistsSync(join(p.dir, 'src')));
+    const filteredElementPackagesWithSource = elementPackages.filter((p) => pathExistsSync(join(p.dir, 'source')));
+
+    let mappedElementPackages = filteredElementPackages.map((p) => {
+      const cwd = resolve(__dirname, '..', p.dir);
+      const cmd = `${this.p.babel} --ignore '**/__test__/**','**/__tests__/**','**/__mocks__/**' src -d lib --source-maps --root-mode upward`;
+      return this.runCmd(cmd, { cwd });
+    });
+    const mappedElementWithSources = filteredElementPackagesWithSource.map((p) => {
+      const cwd = resolve(__dirname, '..', p.dir);
+      const cmd = `${this.p.babel} --ignore '**/__test__/**','**/__tests__/**','**/__mocks__/**' source -d ./ --source-maps --root-mode upward`;
+      return this.runCmd(cmd, { cwd });
+    });
+
+    mappedElementPackages = mappedElementPackages.concat(mappedElementPackages);
+
+    console.log('filteredElementPackages', filteredElementPackages);
+    console.log('filteredElementPackagesWithSource', filteredElementPackagesWithSource);
+
+    return Promise.all(mappedElementPackages);
   }
 }
 
