@@ -103,6 +103,7 @@ workflows:
             branches:
               only:
                 - develop
+                - feat/PD-3373-2
 
   release:
     jobs:

@@ -12,7 +12,8 @@
     "@pie-lib/pie-toolbox": "1.5.7",
     "prop-types": "^15.6.1",
     "react": "^16.8.1",
-    "react-dom": "^16.8.1"
+    "react-dom": "^16.8.1",
+    "@pie-element/common": "1.0.0"
   },
   "author": "",
   "license": "ISC",
