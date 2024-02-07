@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.11.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.11.0...@pie-element/pie-models@13.11.1) (2024-02-07)
+
+
+### Bug Fixes
+
+* **multiple-choice:** update documentation for lockChoiceOrder PD-3428 ([39c91dd](https://github.com/pie-framework/pie-elements/commit/39c91dd932b66a49acb3e9d3b632f3ee4a38b766))
+
+
+
+
+
 # [13.11.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.10.0...@pie-element/pie-models@13.11.0) (2024-01-30)
 
 
