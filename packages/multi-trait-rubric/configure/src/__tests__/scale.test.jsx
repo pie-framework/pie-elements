@@ -99,10 +99,11 @@ describe('Scale', () => {
 
     describe('changeMaxPoints', () => {
       it('removes zero', () => {
+        const { scorePointsLabels } = w.instance().props?.scale || {};
         w.instance().setState({ newMaxPoints: 10 });
         w.instance().changeMaxPoints();
 
-        expect(onScaleChanged).toBeCalledWith(0, { maxPoints: 10 });
+        expect(onScaleChanged).toBeCalledWith(0, { maxPoints: 10, scorePointsLabels });
       });
     });
 
