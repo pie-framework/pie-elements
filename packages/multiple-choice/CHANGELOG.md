@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.2.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@8.2.5...@pie-element/multiple-choice@8.2.6) (2024-02-07)
+
+
+### Bug Fixes
+
+* **multiple-choice:** update documentation for lockChoiceOrder PD-3428 ([39c91dd](https://github.com/pie-framework/pie-elements/commit/39c91dd932b66a49acb3e9d3b632f3ee4a38b766))
+
+
+
+
+
 ## [8.2.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@8.2.4...@pie-element/multiple-choice@8.2.5) (2024-02-07)
 
 
