@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric-configure@3.1.8...@pie-element/rubric-configure@3.1.9) (2024-02-07)
+
+
+### Bug Fixes
+
+* update pie-toolbox version PD-3423 ([053ad69](https://github.com/pie-framework/pie-elements/commit/053ad690619980bce68b1b44e51975fcf91054ec))
+
+
+
+
+
 ## [3.1.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric-configure@3.1.7...@pie-element/rubric-configure@3.1.8) (2024-01-29)
 
 

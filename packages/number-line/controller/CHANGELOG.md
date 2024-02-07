@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-controller@5.2.0...@pie-element/number-line-controller@5.2.1) (2024-02-07)
+
+
+### Bug Fixes
+
+* update pie-toolbox version PD-3423 ([053ad69](https://github.com/pie-framework/pie-elements/commit/053ad690619980bce68b1b44e51975fcf91054ec))
+
+
+
+
+
 # [5.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-controller@5.1.7...@pie-element/number-line-controller@5.2.0) (2024-01-30)
 
 
