@@ -207,7 +207,7 @@ export class Categorize extends React.Component {
           </React.Fragment>
         )}
 
-        {model.prompt && removeHTMLTags(model.prompt) && <PreviewPrompt prompt={model.prompt} />}
+        {model.prompt && <PreviewPrompt prompt={model.prompt} />}
 
         <CorrectAnswerToggle
           show={showCorrect || correct === false}
