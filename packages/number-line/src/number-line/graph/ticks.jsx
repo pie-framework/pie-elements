@@ -80,7 +80,7 @@ export class Tick extends React.Component {
     } = (this.text && this.text.getBBox()) || {};
 
     const xText = !fraction ? (
-      Number(x.toFixed(2))
+      Number(x.toFixed(3))
     ) : !displayFraction ? (
       x.n * x.s
     ) : (
@@ -152,7 +152,15 @@ export class Ticks extends React.Component {
       <g>
         {tickData.map(({ x, type }) => {
           return (
-            <Tick classes={classes} fraction={fraction} x={x} y={y} type={type} xScale={xScale} key={`${x}-${type}`} />
+            <Tick
+              classes={classes}
+              fraction={fraction}
+              x={x}
+              y={y}
+              type={type}
+              xScale={xScale}
+              key={`${x}-${type}-${fraction}`}
+            />
           );
         })}
       </g>

@@ -14,11 +14,10 @@ import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Info from '@material-ui/icons/Info';
 import Tooltip from '@material-ui/core/Tooltip';
-import * as math from 'mathjs';
 import Ticks from './ticks';
 import { model as defaultModel } from './defaults';
 import { generateValidationMessage } from './utils';
-import isEqual from 'lodash/isEqual';
+import * as math from 'mathjs';
 
 const trimModel = (model) => ({
   ...model,
@@ -29,23 +28,10 @@ const trimModel = (model) => ({
   correctResponse: undefined,
 });
 
-// Object holding information related to tick and label interval values.
-let ticksModel = {
-  tickIntervalType: 'Decimal',
-  integerTick: 0,
-  fractionTick: '0/1',
-  decimalTick: 0,
-  fractionLabel: '0/1',
-  decimalLabel: 0,
-};
-// Object holding data related to possible values for ticks and label interval in array.
-let data = {
-  minorLimits: {},
-  minorValues: {},
-  majorValues: {},
-};
-
 const { lineIsSwitched, switchGraphLine, toGraphFormat, toSessionFormat } = dataConverter;
+let minorLimits = {};
+let minorValues = {};
+let majorValues = {};
 
 const styles = (theme) => ({
   maxNumberOfPoints: {
@@ -126,7 +112,12 @@ export class Main extends React.Component {
 
   constructor(props) {
     super(props);
-
+    const {
+      model: {
+        graph: { availableTypes, maxNumberOfPoints },
+      },
+    } = props;
+    const height = this.getAdjustedHeight(availableTypes, maxNumberOfPoints);
     this.state = {
       dialog: {
         open: false,
@@ -137,30 +128,12 @@ export class Main extends React.Component {
         text: '',
       },
     };
-
-    this.checkAndAdjustHeight(props);
-  }
-
-  checkAndAdjustHeight = (props) => {
-    const {
-      model: {
-        graph: { availableTypes, maxNumberOfPoints },
-      },
-    } = props;
-
-    const height = this.getAdjustedHeight(availableTypes, maxNumberOfPoints);
     this.graphChange({ height });
-  }
-
-  componentDidUpdate(prevProps, prevState, snapshot) {
-    if (!isEqual(prevProps?.configuration, this.props?.configuration)) {
-      this.checkAndAdjustHeight(this.props);
-    }
   }
 
   graphChange = (obj) => {
     const { model, onChange } = this.props;
-    const graph = { ...model.graph, ...obj };
+    let graph = { ...model.graph, ...obj };
     let respIndex = [];
     model.correctResponse.forEach((correctResp, key) => {
       if (
@@ -187,110 +160,12 @@ export class Main extends React.Component {
         },
       });
     }
-    this.reloadTicksData(graph.domain, graph.width, graph.ticks);
-    this.assignTicksModelToGraph(graph);
+    //reload ticks value whenever domain and width is changed
+    graph = this.reloadTicksData(graph);
     onChange({ graph });
   };
 
   changeSize = ({ width, height }) => this.graphChange({ width, height });
-
-  /*
-   * This function gets called whenever the min, max or width for number line is changed
-   * and it calculates ticks and label values and stores in ticks model.
-   * @param domain containing min and max values.
-   * @param width represents number line width
-   * @param ticks represnt current values for minor and major.
-   * */
-  reloadTicksData = (domain, width, ticks) => {
-    //check correct response
-    const { model } = this.props;
-    const graph = { ...model.graph };
-
-    data.minorLimits = tickUtils.getMinorLimits(domain, width);
-    data.minorValues = tickUtils.generateMinorValues(data.minorLimits);
-    data.majorValues = {};
-    const initTickModel = () => {
-      if (ticks.tickIntervalType) ticksModel.tickIntervalType = ticks.tickIntervalType;
-      //setting minor values
-      if (ticks.minor < data.minorLimits.min || ticks.minor > data.minorLimits.max) {
-        ticksModel.decimalTick = data.minorValues.decimal[0];
-        ticksModel.fractionTick = data.minorValues.fraction[0];
-      } else {
-        ticksModel.decimalTick = math.number(ticks.minor);
-        ticksModel.fractionTick = data.minorValues.fraction[data.minorValues.decimal.indexOf(ticksModel.decimalTick)];
-      }
-      if (Number.isInteger(ticksModel.decimalTick)) {
-        ticksModel.integerTick = math.number(ticksModel.decimalTick);
-      } else {
-        const firstInteger = data.minorValues.decimal.find(function (el) {
-          return Number.isInteger(el);
-        });
-        if (firstInteger) {
-          const index = data.minorValues.decimal.indexOf(firstInteger);
-          ticksModel.integerTick = math.number(firstInteger);
-          if (ticksModel.tickIntervalType === 'Integer') {
-            ticksModel.fractionTick = data.minorValues.fraction[index];
-            ticksModel.decimalTick = data.minorValues.decimal[index];
-          }
-        } else {
-          if (ticksModel.tickIntervalType === 'Integer') {
-            ticksModel.tickIntervalType = 'Fraction';
-            ticksModel.decimalTick = data.minorValues.decimal[data.minorValues.decimal.length - 1];
-            ticksModel.fractionTick = data.minorValues.fraction[data.minorValues.fraction.length - 1];
-          }
-          ticksModel.integerTick = data.minorValues.decimal.reduce((a, b) => {
-            return Math.abs(b - ticksModel.decimalTick) < Math.abs(a - ticksModel.decimalTick) ? b : a;
-          });
-          if (!Number.isInteger(ticksModel.integerTick)) {
-            ticksModel.integerTick = math.ceil(ticksModel.integerTick);
-          }
-        }
-      }
-      //setting major values
-      data.majorValues = tickUtils.generateMajorValuesForMinor(ticksModel.decimalTick, data.minorValues);
-      if (!ticks.major) {
-        ticksModel.decimalLabel = data.majorValues.decimal[0];
-        ticksModel.fractionLabel = data.majorValues.fraction[0];
-      } else {
-        ticksModel.decimalLabel = math.number(ticks.major);
-        if (data.majorValues.decimal.indexOf(ticksModel.decimalLabel) === -1) {
-          let currIndex = 0;
-          if (ticksModel.tickIntervalType === 'Integer') {
-            currIndex = 4;
-          } else {
-            currIndex = data.majorValues.decimal.length - 1;
-          }
-          while (currIndex !== 0) {
-            let ticksData = { minor: ticksModel.decimalTick, major: data.majorValues.decimal[currIndex] };
-            let out = tickUtils.buildTickData(domain, width, ticksData, { fraction: undefined });
-            if (out.filter((x) => x.type === 'major').length > 1) {
-              break;
-            } else {
-              currIndex = currIndex - 1;
-            }
-          }
-          ticksModel.decimalLabel = data.majorValues.decimal[currIndex];
-          ticksModel.fractionLabel = data.majorValues.fraction[currIndex];
-        } else {
-          ticksModel.fractionLabel =
-            data.majorValues.fraction[data.majorValues.decimal.indexOf(ticksModel.decimalLabel)];
-        }
-      }
-    };
-    initTickModel();
-  };
-
-  /*
-   * This function updates calculated ticks values to graph model.
-   * @param graph object
-   * */
-  assignTicksModelToGraph = (graph) => {
-    graph.ticks.minor = ticksModel.decimalTick;
-    graph.ticks.major = ticksModel.decimalLabel;
-    graph.ticks.tickIntervalType = ticksModel.tickIntervalType;
-    graph.ticks.tickStep = ticksModel.fractionTick;
-    graph.ticks.labelStep = ticksModel.fractionLabel;
-  };
 
   getAdjustedHeight = (availableTypes, maxNumberOfPoints) => {
     let onlyPFAvailable = true;
@@ -307,15 +182,6 @@ export class Main extends React.Component {
 
   changeMaxNoOfPoints = (e, maxNumberOfPoints) => {
     maxNumberOfPoints = Math.floor(maxNumberOfPoints);
-    if (this.isAvailableTypesGreaterThanMaxElements(this.props.model.graph.availableTypes, maxNumberOfPoints)) {
-      this.setState({
-        dialog: {
-          open: true,
-          text: 'To use this value, you must first remove one or more elements from the available types.',
-        },
-      });
-      return;
-    }
     if (this.props.model.correctResponse.length > maxNumberOfPoints) {
       this.setState({
         dialog: {
@@ -335,22 +201,6 @@ export class Main extends React.Component {
     this.graphChange({ maxNumberOfPoints, height });
   };
 
-  /*
-   * Validation check on wether available type of dot plot is greater than max elements allowed to plot.
-   * @param availableTypes array of string.
-   * @param maxElements number of max elements to use set by user.
-   * @return boolean.
-   * */
-  isAvailableTypesGreaterThanMaxElements = (availableTypes, maxElements) => {
-    let availableTypeCount = 0;
-    Object.entries(availableTypes || {}).forEach(([type, value]) => {
-      if (value) {
-        availableTypeCount = availableTypeCount + 1;
-      }
-    });
-    return availableTypeCount > maxElements;
-  };
-
   changeGraphTitle = (title) => this.graphChange({ title });
 
   /*
@@ -358,18 +208,144 @@ export class Main extends React.Component {
    * */
   changeTicks = (object) => {
     const { model, onChange } = this.props;
-    const { ticks } = model.graph;
-    ticks.minor = object.ticksModel.decimalTick;
-    ticks.major = object.ticksModel.decimalLabel;
-    ticks.tickIntervalType = object.ticksModel.tickIntervalType;
-    ticks.tickStep = object.ticksModel.fractionTick;
-    ticks.labelStep = object.ticksModel.fractionLabel;
+    let { ticks } = object;
     const correctResponse = tickUtils.snapElements(model.graph.domain, ticks, model.correctResponse);
     const initialElements = tickUtils.snapElements(model.graph.domain, ticks, model.graph.initialElements);
-    const graph = { ...model.graph, ticks, initialElements };
-    this.reloadTicksData(graph.domain, graph.width, graph.ticks);
-    this.assignTicksModelToGraph(graph);
+    let updatedGraph = this.updateMajorValue({ ...model.graph, ticks });
+    const graph = { ...updatedGraph, initialElements };
     onChange({ graph, correctResponse });
+  };
+
+  /*
+   * This function will reload ticks data whenever graph object is changed and also sets required tick object
+   * for rendering Ticks Components.
+   * @param graph object containing domain, ticks and width value
+   * @return graph object with updated ticks values
+   * */
+  reloadTicksData = (graph) => {
+    const { domain, ticks, width } = graph;
+    //Set tick interval type if not present for legacy number line models
+    if (!ticks.tickIntervalType) {
+      if (ticks.minor >= 1) {
+        ticks.tickIntervalType = 'Integer';
+      } else {
+        ticks.tickIntervalType = 'Decimal';
+      }
+    }
+    // This section will calculate minor and major values array and assign respective value
+    // to different tick types object
+    minorLimits = tickUtils.getMinorLimits(domain, width);
+    if (minorLimits.min >= 1) {
+      /*
+       * In this scenario only integer tick will be enabled
+       * */
+      ticks.tickIntervalType = 'Integer';
+      ticks.minor =
+        ticks.minor < 1
+          ? math.number(math.ceil(minorLimits.min))
+          : ticks.minor >= math.number(math.ceil(minorLimits.min)) &&
+            ticks.minor <= math.number(math.floor(minorLimits.max))
+          ? ticks.minor
+          : math.number(math.ceil(minorLimits.min));
+      ticks.integerTick = ticks.minor;
+      minorValues = { decimal: [], fraction: [] };
+      ticks.fractionTick = '0';
+      ticks.decimalTick = 0;
+    } else if (minorLimits.min >= 0 && minorLimits.max < 1) {
+      /*
+       * In this scenario only decimal or fraction tick will be enabled
+       * */
+      if (ticks.tickIntervalType === 'Integer') {
+        ticks.tickIntervalType = 'Fraction';
+      }
+      minorValues = tickUtils.generateMinorValues(minorLimits);
+      let minValue = math.number(math.fraction(minorValues.fraction[0]));
+      let maxValue = math.number(math.fraction(minorValues.fraction[minorValues.fraction.length - 1]));
+      if (ticks.minor < minValue || ticks.minor > maxValue) {
+        if (ticks.tickIntervalType === 'Fraction') {
+          ticks.minor = math.number(math.fraction(minorValues.fraction[minorValues.fraction.length - 1]));
+          ticks.fractionTick = minorValues.fraction[minorValues.fraction.length - 1];
+          ticks.decimalTick = minorValues.decimal[0];
+        } else {
+          ticks.minor = minorValues.decimal[minorValues.decimal.length - 1];
+          ticks.decimalTick = minorValues.decimal[minorValues.decimal.length - 1];
+          ticks.fractionTick = minorValues.fraction[0];
+        }
+      } else {
+        if (ticks.tickIntervalType === 'Fraction') {
+          let fraction = math.fraction(math.number(ticks.minor));
+          ticks.fractionTick = fraction.n + '/' + fraction.d;
+          ticks.decimalTick = ticks.decimalTick ? ticks.decimalTick : minorValues.decimal[0];
+        } else {
+          ticks.decimalTick = ticks.minor;
+          ticks.fractionTick = ticks.fractionTick ? ticks.fractionTick : minorValues.fraction[0];
+        }
+      }
+      ticks.integerTick = 1;
+    } else if (minorLimits.min < 1 && minorLimits.max >= 1) {
+      /*
+       * In this scenario all integer, decimal or fraction tick will be enabled
+       * */
+      minorValues = tickUtils.generateMinorValues(minorLimits);
+      if (!(ticks.minor >= minorLimits.min && ticks.minor <= minorLimits.max)) {
+        if (minorLimits.min > 0.5) {
+          ticks.tickIntervalType = 'Integer';
+        }
+        if (ticks.tickIntervalType === 'Integer') {
+          ticks.minor = math.number(math.ceil(minorLimits.min));
+          ticks.integerTick = ticks.minor;
+          ticks.decimalTick = minorLimits.min > 0.5 ? 0 : minorValues.decimal[0];
+          ticks.fractionTick = minorLimits.min > 0.5 ? '0' : minorValues.fraction[0];
+        } else if (ticks.tickIntervalType === 'Decimal') {
+          ticks.minor = minorValues.decimal[0];
+          ticks.integerTick = 1;
+          ticks.decimalTick = ticks.minor;
+          ticks.fractionTick = minorValues.fraction[0];
+        } else {
+          ticks.minor = math.number(math.fraction(minorValues.fraction[0]));
+          ticks.integerTick = 1;
+          ticks.decimalTick = minorValues.decimal[0];
+          ticks.fractionTick = minorValues.fraction[0];
+        }
+      } else {
+        if (ticks.tickIntervalType === 'Integer') {
+          ticks.integerTick = ticks.minor;
+          ticks.decimalTick = minorLimits.min > 0.5 ? 0 : minorValues.decimal[0];
+          ticks.fractionTick = minorLimits.min > 0.5 ? '0' : minorValues.fraction[0];
+        } else if (ticks.tickIntervalType === 'Decimal') {
+          ticks.integerTick = 1;
+          ticks.decimalTick = ticks.minor;
+          ticks.fractionTick = minorValues.fraction[0];
+        } else {
+          ticks.integerTick = 1;
+          ticks.decimalTick = minorValues.decimal[0];
+          let fraction = math.fraction(math.number(ticks.minor));
+          ticks.fractionTick = fraction.n + '/' + fraction.d;
+        }
+      }
+    }
+    return this.updateMajorValue({ ...graph, ticks });
+  };
+
+  /*
+   * This function will update major value whenever minor value is changed or tick type is changed
+   * @param graph object containing domain, ticks and width value
+   * @return graph object with updated ticks values
+   * */
+  updateMajorValue = (graph) => {
+    const { domain, ticks, width } = graph;
+    majorValues = tickUtils.generateMajorValuesForMinor(ticks.minor, domain, width);
+    if (majorValues.decimal.indexOf(ticks.major) === -1) {
+      let currIndex = 0;
+      if (ticks.tickIntervalType === 'Integer') {
+        currIndex = majorValues.decimal.length > 4 ? 4 : majorValues.decimal.length - 1;
+      } else {
+        currIndex = majorValues.decimal.length - 1;
+      }
+      ticks.major = majorValues.decimal[currIndex];
+    }
+    graph.fraction = ticks.tickIntervalType === 'Fraction' && ticks.major < 1;
+    return { ...graph, ticks };
   };
 
   changeArrows = (arrows) => this.graphChange({ arrows });
@@ -402,21 +378,11 @@ export class Main extends React.Component {
       graph: { maxNumberOfPoints },
     } = model;
 
-    let availableTypeCount = 0;
-    Object.entries(availableTypes || {}).forEach(([type, value]) => {
-      if (value) {
-        availableTypeCount = availableTypeCount + 1;
-      }
-    });
-    if (maxNumberOfPoints < availableTypeCount) {
-      this.props.model.graph.maxNumberOfPoints = availableTypeCount;
-    }
-
     new Set(correctResponse.map(toPointType)).forEach((pointType) => {
       availableTypes[pointType] = true;
     });
 
-    const height = this.getAdjustedHeight(availableTypes, this.props.model.graph.maxNumberOfPoints);
+    const height = this.getAdjustedHeight(availableTypes, maxNumberOfPoints);
     const graph = { ...model.graph, availableTypes, height };
 
     onChange({ graph });
@@ -463,8 +429,9 @@ export class Main extends React.Component {
       hidePointConfigButtons = false,
       availableTools = ['PF'],
     } = configuration || {};
-    const { errors = {}, graph, spellCheckEnabled, toolbarEditorPosition } = model || {};
-    this.reloadTicksData(graph.domain, graph.width, graph.ticks);
+    const { errors = {}, spellCheckEnabled, toolbarEditorPosition } = model || {};
+    let { graph } = model;
+    graph = this.reloadTicksData(graph);
     const { dialog, correctAnswerDialog } = this.state;
     const {
       correctResponseError,
@@ -476,16 +443,12 @@ export class Main extends React.Component {
       widthError,
     } = errors || {};
     const validationMessage = generateValidationMessage();
-
     const correctResponse = cloneDeep(model.correctResponse || []).map(toGraphFormat);
-
     const initialModel = cloneDeep(model);
     initialModel['disabled'] = true;
-
     const toolbarOpts = {
       position: toolbarEditorPosition === 'top' ? 'top' : 'bottom',
     };
-
     return (
       <layout.ConfigLayout dimensions={contentDimensions} hideSettings={true} settings={null}>
         <Typography component="div" type="body1" className={classes.description}>
@@ -557,7 +520,13 @@ export class Main extends React.Component {
 
         <div>
           <FormSection>
-            <Ticks ticksModel={ticksModel} data={data} onChange={this.changeTicks} />
+            <Ticks
+              ticks={graph.ticks}
+              minorLimits={minorLimits}
+              minorValues={minorValues}
+              majorValues={majorValues}
+              onChange={this.changeTicks}
+            />
           </FormSection>
         </div>
 
@@ -680,8 +649,6 @@ export class Main extends React.Component {
           }}
           onClose={() => {
             const graph = this.state.correctAnswerDialog.graph;
-            this.reloadTicksData(graph.domain, graph.width, graph.ticks);
-            this.assignTicksModelToGraph(graph);
             onChange({ graph });
             this.setState({ correctAnswerDialog: { open: false } });
           }}

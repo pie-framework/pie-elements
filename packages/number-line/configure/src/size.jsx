@@ -16,6 +16,7 @@ const Size = (props) => {
         </label>
       </div>
       <NumberTextFieldCustom
+        inputClassName={classes.numberTextField}
         value={size.width}
         min={min}
         max={max}
@@ -54,6 +55,9 @@ const styles = () => ({
   minMaxLabel: {
     'font-size': 'small',
     color: 'gray',
+  },
+  numberTextField: {
+    cursor: 'default',
   },
 });
 export default withStyles(styles)(Size);
