@@ -224,9 +224,9 @@ export class Main extends React.Component {
    * */
   reloadTicksData = (graph) => {
     const { domain, ticks, width } = graph;
-    //Set tick interval type if not present for legacy number line models
+    //Set tick interval type if not present for legacy number line models depending upon minor value
     if (!ticks.tickIntervalType) {
-      if (ticks.minor >= 1) {
+      if (ticks.minor > 0.5) {
         ticks.tickIntervalType = 'Integer';
       } else {
         ticks.tickIntervalType = 'Decimal';
@@ -262,23 +262,29 @@ export class Main extends React.Component {
       let minValue = math.number(math.fraction(minorValues.fraction[0]));
       let maxValue = math.number(math.fraction(minorValues.fraction[minorValues.fraction.length - 1]));
       if (ticks.minor < minValue || ticks.minor > maxValue) {
-        if (ticks.tickIntervalType === 'Fraction') {
-          ticks.minor = math.number(math.fraction(minorValues.fraction[minorValues.fraction.length - 1]));
-          ticks.fractionTick = minorValues.fraction[minorValues.fraction.length - 1];
-          ticks.decimalTick = minorValues.decimal[0];
-        } else {
-          ticks.minor = minorValues.decimal[minorValues.decimal.length - 1];
-          ticks.decimalTick = minorValues.decimal[minorValues.decimal.length - 1];
-          ticks.fractionTick = minorValues.fraction[0];
+        switch (ticks.tickIntervalType) {
+          case 'Fraction':
+            ticks.minor = math.number(math.fraction(minorValues.fraction[minorValues.fraction.length - 1]));
+            ticks.fractionTick = minorValues.fraction[minorValues.fraction.length - 1];
+            ticks.decimalTick = minorValues.decimal[0];
+            break;
+          case 'Decimal':
+          case 'Integer':
+            ticks.minor = minorValues.decimal[minorValues.decimal.length - 1];
+            ticks.decimalTick = minorValues.decimal[minorValues.decimal.length - 1];
+            ticks.fractionTick = minorValues.fraction[0];
         }
       } else {
-        if (ticks.tickIntervalType === 'Fraction') {
-          let fraction = math.fraction(math.number(ticks.minor));
-          ticks.fractionTick = fraction.n + '/' + fraction.d;
-          ticks.decimalTick = ticks.decimalTick ? ticks.decimalTick : minorValues.decimal[0];
-        } else {
-          ticks.decimalTick = ticks.minor;
-          ticks.fractionTick = ticks.fractionTick ? ticks.fractionTick : minorValues.fraction[0];
+        switch (ticks.tickIntervalType) {
+          case 'Fraction':
+            let fraction = math.fraction(math.number(ticks.minor));
+            ticks.fractionTick = fraction.n + '/' + fraction.d;
+            ticks.decimalTick = ticks.decimalTick ? ticks.decimalTick : minorValues.decimal[0];
+            break;
+          case 'Decimal':
+          case 'Integer':
+            ticks.decimalTick = ticks.minor;
+            ticks.fractionTick = ticks.fractionTick ? ticks.fractionTick : minorValues.fraction[0];
         }
       }
       ticks.integerTick = 1;
@@ -291,36 +297,42 @@ export class Main extends React.Component {
         if (minorLimits.min > 0.5) {
           ticks.tickIntervalType = 'Integer';
         }
-        if (ticks.tickIntervalType === 'Integer') {
-          ticks.minor = math.number(math.ceil(minorLimits.min));
-          ticks.integerTick = ticks.minor;
-          ticks.decimalTick = minorLimits.min > 0.5 ? 0 : minorValues.decimal[0];
-          ticks.fractionTick = minorLimits.min > 0.5 ? '0' : minorValues.fraction[0];
-        } else if (ticks.tickIntervalType === 'Decimal') {
-          ticks.minor = minorValues.decimal[0];
-          ticks.integerTick = 1;
-          ticks.decimalTick = ticks.minor;
-          ticks.fractionTick = minorValues.fraction[0];
-        } else {
-          ticks.minor = math.number(math.fraction(minorValues.fraction[0]));
-          ticks.integerTick = 1;
-          ticks.decimalTick = minorValues.decimal[0];
-          ticks.fractionTick = minorValues.fraction[0];
+        switch (ticks.tickIntervalType) {
+          case 'Integer':
+            ticks.minor = math.number(math.ceil(minorLimits.min));
+            ticks.integerTick = ticks.minor;
+            ticks.decimalTick = minorLimits.min > 0.5 ? 0 : minorValues.decimal[0];
+            ticks.fractionTick = minorLimits.min > 0.5 ? '0' : minorValues.fraction[0];
+            break;
+          case 'Decimal':
+            ticks.minor = minorValues.decimal[0];
+            ticks.integerTick = 1;
+            ticks.decimalTick = ticks.minor;
+            ticks.fractionTick = minorValues.fraction[0];
+            break;
+          case 'Fraction':
+            ticks.minor = math.number(math.fraction(minorValues.fraction[0]));
+            ticks.integerTick = 1;
+            ticks.decimalTick = minorValues.decimal[0];
+            ticks.fractionTick = minorValues.fraction[0];
         }
       } else {
-        if (ticks.tickIntervalType === 'Integer') {
-          ticks.integerTick = ticks.minor;
-          ticks.decimalTick = minorLimits.min > 0.5 ? 0 : minorValues.decimal[0];
-          ticks.fractionTick = minorLimits.min > 0.5 ? '0' : minorValues.fraction[0];
-        } else if (ticks.tickIntervalType === 'Decimal') {
-          ticks.integerTick = 1;
-          ticks.decimalTick = ticks.minor;
-          ticks.fractionTick = minorValues.fraction[0];
-        } else {
-          ticks.integerTick = 1;
-          ticks.decimalTick = minorValues.decimal[0];
-          let fraction = math.fraction(math.number(ticks.minor));
-          ticks.fractionTick = fraction.n + '/' + fraction.d;
+        switch (ticks.tickIntervalType) {
+          case 'Integer':
+            ticks.integerTick = ticks.minor;
+            ticks.decimalTick = minorLimits.min > 0.5 ? 0 : minorValues.decimal[0];
+            ticks.fractionTick = minorLimits.min > 0.5 ? '0' : minorValues.fraction[0];
+            break;
+          case 'Decimal':
+            ticks.integerTick = 1;
+            ticks.decimalTick = ticks.minor;
+            ticks.fractionTick = minorValues.fraction[0];
+            break;
+          case 'Fraction':
+            ticks.integerTick = 1;
+            ticks.decimalTick = minorValues.decimal[0];
+            let fraction = math.fraction(math.number(ticks.minor));
+            ticks.fractionTick = fraction.n + '/' + fraction.d;
         }
       }
     }
