@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-controller@2.1.8...@pie-element/multi-trait-rubric-controller@2.2.0) (2024-02-09)
+
+
+### Features
+
+* update pie-toolbox version SC-28868 ([5745f50](https://github.com/pie-framework/pie-elements/commit/5745f502c89d730e72d4cdb83e96c9465a81ae19))
+
+
+
+
+
 ## [2.1.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-controller@2.1.7...@pie-element/multi-trait-rubric-controller@2.1.8) (2024-02-07)
 
 
