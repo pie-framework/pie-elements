@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.3.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@8.3.5...@pie-element/categorize@8.3.6) (2024-02-09)
+
+
+### Bug Fixes
+
+* remove unused method PD-3440 ([d2c79be](https://github.com/pie-framework/pie-elements/commit/d2c79be7ddfa539630de09dadefe1b6f8e7f5592))
+* **categorize:** no need to remove tags for preview prompt - PD-3440 ([2cf3827](https://github.com/pie-framework/pie-elements/commit/2cf38271253ce548a424b7777bead7f195a54015))
+
+
+
+
+
 ## [8.3.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@8.3.4...@pie-element/categorize@8.3.5) (2024-02-07)
 
 
