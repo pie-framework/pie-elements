@@ -150,7 +150,7 @@ export class Main extends React.Component {
 
     const height = this.getAdjustedHeight(availableTypes, maxNumberOfPoints);
     this.graphChange({ height });
-  }
+  };
 
   componentDidUpdate(prevProps, prevState, snapshot) {
     if (!isEqual(prevProps?.configuration, this.props?.configuration)) {
@@ -585,6 +585,7 @@ export class Main extends React.Component {
           onUndoElement={() => {}}
           minWidth={numberLineDimensions.min}
           maxWidth={numberLineDimensions.max}
+          maxHeight={70}
           model={trimModel(initialModel)}
         />
 

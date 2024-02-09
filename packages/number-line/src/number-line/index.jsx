@@ -171,7 +171,7 @@ export class NumberLine extends React.Component {
   }
 
   render() {
-    let { model, classes, onDeleteElements, onMoveElement, minWidth = 400, maxWidth = 1600 } = this.props;
+    let { model, classes, onDeleteElements, onMoveElement, minWidth = 400, maxWidth = 1600, maxHeight } = this.props;
     let { showCorrectAnswer, answers, selectedElements, showMaxPointsWarning, elementType } = this.state;
     let {
       corrected = { correct: [], incorrect: [] },
@@ -182,18 +182,18 @@ export class NumberLine extends React.Component {
       emptyAnswer,
       feedback,
       colorContrast,
-      language
+      language,
     } = model;
     let addElement = this.addElement.bind(this);
     let elementsSelected = !disabled && selectedElements && selectedElements.length > 0;
-    const { ticks, domain, arrows, maxNumberOfPoints, height, availableTypes, title, fraction } = graph;
+    const { ticks, domain, arrows, maxNumberOfPoints, height = 100, availableTypes, title, fraction } = graph;
     const width = this.getSize('width', minWidth, maxWidth, 600);
     const graphProps = {
       disabled,
       domain,
       ticks,
       width,
-      height: height || 100,
+      height: (height > maxHeight ? maxHeight : height) || 100,
       arrows,
       fraction,
     };
@@ -220,10 +220,10 @@ export class NumberLine extends React.Component {
 
     let elements = showCorrectAnswer ? getCorrectAnswerElements() : getAnswerElements();
 
-    let maxPointsMessage = () => maxNumberOfPoints == 1 ? translator.t('numberLine.addElementLimit_one', {
-      lng: language,
-      count: 1
-    }) : translator.t('numberLine.addElementLimit_other', { lng: language, count: maxNumberOfPoints });
+    let maxPointsMessage = () =>
+      maxNumberOfPoints == 1
+        ? translator.t('numberLine.addElementLimit_one', { lng: language, count: 1 })
+        : translator.t('numberLine.addElementLimit_other', { lng: language, count: maxNumberOfPoints });
 
     let deleteElements = () => {
       onDeleteElements(selectedElements);
@@ -260,15 +260,15 @@ export class NumberLine extends React.Component {
         )}
 
         {!disabled && (
-            <div style={{ width: adjustedWidth }} className={classes.toggle}>
-              <Toggle
-                  show={isArray(correctResponse) && correctResponse.length && !emptyAnswer}
-                  toggled={showCorrectAnswer}
-                  onToggle={onShowCorrectAnswer}
-                  initialValue={false}
-                  language={language}
-              />
-            </div>
+          <div style={{ width: adjustedWidth }} className={classes.toggle}>
+            <Toggle
+              show={isArray(correctResponse) && correctResponse.length && !emptyAnswer}
+              toggled={showCorrectAnswer}
+              onToggle={onShowCorrectAnswer}
+              initialValue={false}
+              language={language}
+            />
+          </div>
         )}
 
         {!disabled && (

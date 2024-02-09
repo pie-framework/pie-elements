@@ -225,6 +225,7 @@ The correct answer should include at least one number line object."
     />
   </div>
   <Jss(NumberLine)
+    maxHeight={70}
     maxWidth={800}
     minWidth={200}
     model={
