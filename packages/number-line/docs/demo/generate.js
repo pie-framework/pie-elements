@@ -14,7 +14,7 @@ exports.model = (id, element) => ({
     "arrows": { "left": true, "right": true },
     "width": 500,
     "domain": { "min": -5, "max": 5 },
-    "ticks": { "minor": 1, "major": 2, "labelStep": '2', "tickIntervalType": 'Integer', "tickStep": '1' },
+    "ticks": { "minor": 1, "major": 2, "tickIntervalType": 'Integer' },
     "initialElements": [],
     "maxNumberOfPoints": 30,
     "showMinorTicks": true,
