@@ -14,16 +14,6 @@ const { translator } = Translator;
 
 const log = debug('@pie-ui:categorize');
 
-const removeHTMLTags = (html) => {
-  const tmp = document.createElement('DIV');
-
-  tmp.innerHTML = html;
-
-  const value = tmp.textContent || tmp.innerText || '';
-
-  return value.trim();
-};
-
 export class Categorize extends React.Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
@@ -207,7 +197,7 @@ export class Categorize extends React.Component {
           </React.Fragment>
         )}
 
-        {model.prompt && removeHTMLTags(model.prompt) && <PreviewPrompt prompt={model.prompt} />}
+        {model.prompt && <PreviewPrompt prompt={model.prompt} />}
 
         <CorrectAnswerToggle
           show={showCorrect || correct === false}
