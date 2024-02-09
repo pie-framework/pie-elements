@@ -21,6 +21,10 @@ export default {
     gridColumns: '2',
   },
   configuration: {
+    baseInputConfiguration: {
+      audio: { disabled: false },
+      video: { disabled: false },
+    },
     spellCheck: {
       label: 'Spellcheck',
       settings: false,
@@ -68,10 +72,18 @@ export default {
     rationale: {
       settings: true,
       label: 'Rationale',
+      inputConfiguration: {
+        audio: { disabled: true },
+        video: { disabled: true },
+      },
     },
     accessibility: {
       settings: false,
       label: 'Accessibility Label',
+      inputConfiguration: {
+        audio: { disabled: true },
+        video: { disabled: true },
+      },
     },
     scoringType: {
       settings: false,
