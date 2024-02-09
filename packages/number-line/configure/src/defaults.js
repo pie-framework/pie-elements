@@ -8,9 +8,7 @@ export const model = {
     ticks: {
       minor: 0.125,
       major: 0.5,
-      labelStep: '1/2',
       tickIntervalType: 'Decimal',
-      tickStep: '1/8',
     },
     arrows: {
       left: true,

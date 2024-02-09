@@ -2,6 +2,33 @@ import * as math from 'mathjs';
 import uniqWith from 'lodash/uniqWith';
 import isObject from 'lodash/isObject';
 import isNumber from 'lodash/isNumber';
+import { tickUtils } from '../../index';
+
+/*This will store the possible decimal tick values*/
+export const decimalTickValues = [0.001, 0.01, 0.02, 0.04, 0.05, 0.1, 0.125, 0.2, 0.25, 0.5];
+
+/*This will store the possible fraction tick values*/
+export const fractionTickValues = [
+  '1/1000',
+  '1/100',
+  '1/64',
+  '1/50',
+  '1/32',
+  '1/25',
+  '1/20',
+  '1/16',
+  '1/15',
+  '1/12',
+  '1/10',
+  '1/9',
+  '1/8',
+  '1/7',
+  '1/6',
+  '1/5',
+  '1/4',
+  '1/3',
+  '1/2',
+];
 
 /*This const will store possible multiplier for label interval that needs to be multiplied 
 with tick interval with denominator represented with object key.*/
@@ -242,56 +269,60 @@ export const buildTickDataAsFractions = (domain, width, ticks, opts) => {
  * This function will generate tick interval values based on min and max limits of ticks.
  * @param minorLimits object containing min and max values
  * @return out object containing three arrays 1. fraction values, 2. decimal values,
- * 3. rounded decimal values upto 3 point precision for tick intervals.
  * */
 export const generateMinorValues = (minorLimits) => {
-  const denoms = [1000, 100, 64, 50, 32, 25, 20, 16, 15, 12, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1];
-  const startValue = math.floor(minorLimits.min);
-  const endValue = math.ceil(minorLimits.max);
-  let out = { fraction: [], decimal: [], rounded: [] };
-  for (let i = startValue; i < endValue; i++) {
-    denoms.map((denom) => {
-      let val = math.add(i, math.fraction(1, denom));
-      if (val <= minorLimits.max && val >= minorLimits.min) {
-        out.fraction.push(val.n + '/' + val.d);
-        out.decimal.push(math.number(val));
-        out.rounded.push(math.number(math.round(val, 3)));
-      }
-    });
-  }
+  let out = { fraction: [], decimal: [] };
+  decimalTickValues.forEach((value) => {
+    if (value >= minorLimits.min && value <= minorLimits.max) {
+      out.decimal.push(value);
+    }
+  });
+  fractionTickValues.forEach((value) => {
+    let decimalValue = math.number(math.fraction(value));
+    if (decimalValue >= minorLimits.min && decimalValue <= minorLimits.max) {
+      out.fraction.push(value);
+    }
+  });
   return out;
 };
 
 /*
  * This function will generate label interval values for provided tick interval value.
  * @param minor number representing tick interval value.
- * @param minorValues object containing array of tick intervals.
+ * @param domain object containing min and max values.
+ * @param width number representing width of number line.
  * @return out object containing three arrays 1. fraction values, 2. decimal values,
- * 3. rounded decimal values upto 3 point precision for label intervals.
  * */
-export const generateMajorValuesForMinor = (minor, minorValues) => {
-  let out = { decimal: [], fraction: [], rounded: [] };
-  let minorValue = math.number(minor);
-  let fraction = minorValues.fraction[minorValues.decimal.indexOf(minorValue)];
-  let n = math.number(fraction.split('/')[0]);
-  let d = math.number(fraction.split('/')[1]);
+export const generateMajorValuesForMinor = (minor, domain, width) => {
+  let out = { decimal: [], fraction: [] };
+  let fraction = math.fraction(math.number(math.number(minor)));
+  let n = fraction.n;
+  let d = fraction.d;
   if (n >= 1 && d === 1) {
     for (let i = 1; i <= 10; i++) {
       let num = math.number(math.multiply(n, i));
-      out.fraction.push(num.toString());
-      out.decimal.push(num);
-      out.rounded.push(num);
+      //Here we check if this major value can plot at least 2 points on number line.
+      let ticksData = { minor: minor, major: num };
+      let output = tickUtils.buildTickData(domain, width, ticksData, { fraction: undefined });
+      if (output.filter((x) => x.type === 'major').length > 1) {
+        out.fraction.push(num.toString());
+        out.decimal.push(num);
+      }
     }
   } else {
     for (const multiplierKey in labelMultiplier[d]) {
       let num = math.multiply(math.fraction(n, d), labelMultiplier[d][multiplierKey]);
-      if (num.d !== 1) {
-        out.fraction.push(num.n + '/' + num.d);
-      } else {
-        out.fraction.push(num.n.toString());
+      //Here we check if this major value can plot at least 2 points on number line.
+      let ticksData = { minor: minor, major: math.number(num) };
+      let output = tickUtils.buildTickData(domain, width, ticksData, { fraction: undefined });
+      if (output.filter((x) => x.type === 'major').length > 1) {
+        if (num.d !== 1) {
+          out.fraction.push(num.n + '/' + num.d);
+        } else {
+          out.fraction.push(num.n.toString());
+        }
+        out.decimal.push(math.number(num));
       }
-      out.decimal.push(math.number(num));
-      out.rounded.push(math.number(math.round(num, 3)));
     }
   }
   return out;
