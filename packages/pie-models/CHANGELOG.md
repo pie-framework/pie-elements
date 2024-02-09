@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.12.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.11.1...@pie-element/pie-models@13.12.0) (2024-02-09)
+
+
+### Features
+
+* **number-line:** Update Tick Interval logic for number line labels | SC-28865 ([a177718](https://github.com/pie-framework/pie-elements/commit/a1777185305cd828d9d6930024e236c09d3845a9))
+
+
+
+
+
 ## [13.11.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.11.0...@pie-element/pie-models@13.11.1) (2024-02-07)
 
 
