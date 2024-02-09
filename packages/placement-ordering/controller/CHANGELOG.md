@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-controller@7.1.8...@pie-element/placement-ordering-controller@7.2.0) (2024-02-09)
+
+
+### Features
+
+* update pie-toolbox version SC-28868 ([5745f50](https://github.com/pie-framework/pie-elements/commit/5745f502c89d730e72d4cdb83e96c9465a81ae19))
+
+
+
+
+
 ## [7.1.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-controller@7.1.7...@pie-element/placement-ordering-controller@7.1.8) (2024-02-07)
 
 
