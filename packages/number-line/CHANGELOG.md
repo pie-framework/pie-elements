@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.5.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@7.5.1...@pie-element/number-line@7.5.2) (2024-02-09)
+
+
+### Bug Fixes
+
+* **number-line:** remove drawing space for config graph PD-3432 ([b74905e](https://github.com/pie-framework/pie-elements/commit/b74905e64f3a46adaed5f8e56311a4ad1ffdf13f))
+
+
+
+
+
 ## [7.5.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@7.5.0...@pie-element/number-line@7.5.1) (2024-02-07)
 
 
