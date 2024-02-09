@@ -14,16 +14,6 @@ const { translator } = Translator;
 
 const log = debug('@pie-ui:categorize');
 
-const removeHTMLTags = (html) => {
-  const tmp = document.createElement('DIV');
-
-  tmp.innerHTML = html;
-
-  const value = tmp.textContent || tmp.innerText || '';
-
-  return value.trim();
-};
-
 export class Categorize extends React.Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
