@@ -1,4 +1,3 @@
-import { configuration } from '@pie-element/number-line-configure/src/defaults';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { EditableHtml } from '@pie-lib/pie-toolbox/editable-html';
