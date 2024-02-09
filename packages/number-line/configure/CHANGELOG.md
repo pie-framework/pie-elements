@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-configure@6.6.0...@pie-element/number-line-configure@7.0.0) (2024-02-09)
+
+
+### Features
+
+* **number-line:** Refactored reload ticks data method | SC-28865 ([9cd45fe](https://github.com/pie-framework/pie-elements/commit/9cd45fe9abab69f56b56708cccf319faca804b1c))
+* **number-line:** Update Tick Interval logic for number line labels | SC-28865 ([a177718](https://github.com/pie-framework/pie-elements/commit/a1777185305cd828d9d6930024e236c09d3845a9))
+
+
+### BREAKING CHANGES
+
+* **number-line:** Replace labelStep and tickStep from graph.tick with integerTick, decimalTick and fractionTick.
+
+Change List document can be found at https://docs.google.com/document/d/1u0WaPQWwZa_R7pvGvHoq4qGGg7iY7lHmr4S7nMe5nJY/edit
+
+
+
+
+
 # [6.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-configure@6.5.2...@pie-element/number-line-configure@6.6.0) (2024-02-09)
 
 
