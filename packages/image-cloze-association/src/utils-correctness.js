@@ -1,5 +1,5 @@
 const getAllCorrectAnswers = (answers, responses) =>
-  answers.map((answer) => ({
+  (answers || []).map((answer) => ({
     ...answer,
     isCorrect: (responses[answer.containerIndex] && responses[answer.containerIndex].images || []).includes(answer.value),
   }));
@@ -20,7 +20,7 @@ const getUniqueCorrectAnswers = (answers, validResponses) => {
       valuesToParse.shift();
       // mark duplicates as incorrect
       valuesToParse.forEach((value, index) => {
-        finalAnswers = finalAnswers.map((finalAnswer) => {
+        finalAnswers = (finalAnswers || []).map((finalAnswer) => {
           if (finalAnswer.id === value.id) {
             let valid = getValidAnswer(finalAnswer, validResponses);
 
@@ -73,7 +73,7 @@ export const getAnswersCorrectness = (answers, validation) => {
 
   // Look for alternate correct responses if there are incorrect responses.
   if (noOfCorrect < uniqueAnswers.length && altResponses && altResponses.length) {
-    const altUniqueStack = altResponses.map((altResponse) => {
+    const altUniqueStack = (altResponses || []).map((altResponse) => {
       const altValue = altResponse.value;
 
       const altAllCorrect = getAllCorrectAnswers(answers, altValue);
