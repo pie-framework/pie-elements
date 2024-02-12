@@ -1,7 +1,7 @@
 {
   "name": "@pie-element/complex-rubric-configure",
   "private": true,
-  "version": "2.1.12",
+  "version": "2.1.13",
   "description": "Complex Rubric authoring view",
   "main": "lib/index.js",
   "module": "src/index.js",

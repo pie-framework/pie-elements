@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@2.3.0...@pie-element/complex-rubric@2.3.1) (2024-02-12)
+
+
+### Bug Fixes
+
+* **complex-rubric:** add rubricless as default option PD-3451 ([735f000](https://github.com/pie-framework/pie-elements/commit/735f000c22c93af2ccd57620e0f0cca81874bcfd))
+
+
+
+
+
 # [2.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@2.2.11...@pie-element/complex-rubric@2.3.0) (2024-02-09)
 
 
