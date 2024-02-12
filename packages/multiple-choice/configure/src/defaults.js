@@ -24,6 +24,14 @@ export default {
     baseInputConfiguration: {
       audio: { disabled: false },
       video: { disabled: false },
+      image: { disabled: false },
+    },
+    choices: {
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
     },
     spellCheck: {
       label: 'Spellcheck',
@@ -60,6 +68,11 @@ export default {
     prompt: {
       settings: true,
       label: 'Prompt',
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
     },
     lockChoiceOrder: {
       settings: true,
@@ -75,6 +88,7 @@ export default {
       inputConfiguration: {
         audio: { disabled: true },
         video: { disabled: true },
+        image: { disabled: false },
       },
     },
     accessibility: {
@@ -83,6 +97,7 @@ export default {
       inputConfiguration: {
         audio: { disabled: true },
         video: { disabled: true },
+        image: { disabled: false },
       },
     },
     scoringType: {
@@ -96,6 +111,11 @@ export default {
     teacherInstructions: {
       settings: true,
       label: 'Teacher Instructions',
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
     },
     toolbarEditorPosition: {
       settings: false,

@@ -6,7 +6,9 @@ import {
   ConfigureLanguageOptionsProp,
   ConfigureMathMLProp,
   ConfigureProp,
-  ConfigurePropWithEnabled
+  ConfigurePropWithEnabled,
+  EditableHtmlConfigureProp,
+  EditableHtmlPluginConfigure,
 } from '../ConfigurationProp';
 
 /**
@@ -127,6 +129,18 @@ export interface MultipleChoiceConfigure extends PromptConfig, CommonConfigSetti
   addChoiceButton?: ConfigureProp;
 
   /**
+   * Base editable html input configuration regarding plugins that are enabled/disabled
+   * E.g. audio, video, image
+   */
+  baseInputConfiguration?: EditableHtmlConfigureProp;
+
+  /**
+   * Editable html input configuration regarding plugins that are enabled/disabled
+   * E.g. audio, video, image
+   */
+  choices?: EditableHtmlPluginConfigure;
+
+  /**
    * Indicates whether the settings panel will allow an author to modify the choice
    * mode (radio / checkboxes) for single or multi-choice questions
    */
@@ -153,7 +167,7 @@ export interface MultipleChoiceConfigure extends PromptConfig, CommonConfigSetti
   /**
    * Configuration for the prompt
    */
-  prompt?: ConfigureProp;
+  prompt?: EditableHtmlPluginConfigure;
 
   /**
    * Configuration for the author's spellcheck
@@ -183,7 +197,7 @@ export interface MultipleChoiceConfigure extends PromptConfig, CommonConfigSetti
   /**
    * Rationale configuration
    */
-  rationale?: ConfigureProp;
+  rationale?: EditableHtmlPluginConfigure;
 
   /**
    * Scoring Type configuration
@@ -203,7 +217,7 @@ export interface MultipleChoiceConfigure extends PromptConfig, CommonConfigSetti
   /**
    * Teacher Instructions configuration
    */
-  teacherInstructions?: ConfigureProp;
+  teacherInstructions?: EditableHtmlPluginConfigure;
 
   /**
    * Indicates if sequential choice labels configuration (currently not used)
@@ -213,7 +227,7 @@ export interface MultipleChoiceConfigure extends PromptConfig, CommonConfigSetti
   /**
    * Accessibility configuration
    */
-  accessibility?: ConfigureProp;
+  accessibility?: EditableHtmlPluginConfigure;
 
   /**
    * Minimum number of answer choices

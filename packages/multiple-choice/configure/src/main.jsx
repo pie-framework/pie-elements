@@ -287,6 +287,7 @@ const Design = withStyles(styles)((props) => {
             allowFeedBack={feedbackEnabled}
             allowDelete={deleteChoice.settings}
             noLabels
+            pluginOpts={getPluginProps(configuration?.choices?.inputConfiguration)}
             toolbarOpts={toolbarOpts}
             spellCheck={spellCheckEnabled}
             error={choicesErrors?.[choice.value] || null}
