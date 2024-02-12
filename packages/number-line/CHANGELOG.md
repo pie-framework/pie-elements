@@ -3,6 +3,97 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@8.0.0...@pie-element/number-line@8.0.1) (2024-02-12)
+
+
+### Bug Fixes
+
+* build ([8d2eca4](https://github.com/pie-framework/pie-elements/commit/8d2eca4a7d509068e5299de344a17a706e8276fb))
+
+
+
+
+
+# [8.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@7.6.0...@pie-element/number-line@8.0.0) (2024-02-09)
+
+
+### Features
+
+* **number-line:** Refactored reload ticks data method | SC-28865 ([9cd45fe](https://github.com/pie-framework/pie-elements/commit/9cd45fe9abab69f56b56708cccf319faca804b1c))
+* **number-line:** Update Tick Interval logic for number line labels | SC-28865 ([a177718](https://github.com/pie-framework/pie-elements/commit/a1777185305cd828d9d6930024e236c09d3845a9))
+
+
+### BREAKING CHANGES
+
+* **number-line:** Replace labelStep and tickStep from graph.tick with integerTick, decimalTick and fractionTick.
+
+Change List document can be found at https://docs.google.com/document/d/1u0WaPQWwZa_R7pvGvHoq4qGGg7iY7lHmr4S7nMe5nJY/edit
+
+
+
+
+
+# [7.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@7.5.2...@pie-element/number-line@7.6.0) (2024-02-09)
+
+
+### Features
+
+* update pie-toolbox version SC-28868 ([5745f50](https://github.com/pie-framework/pie-elements/commit/5745f502c89d730e72d4cdb83e96c9465a81ae19))
+
+
+
+
+
+## [7.5.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@7.5.1...@pie-element/number-line@7.5.2) (2024-02-09)
+
+
+### Bug Fixes
+
+* **number-line:** remove drawing space for config graph PD-3432 ([b74905e](https://github.com/pie-framework/pie-elements/commit/b74905e64f3a46adaed5f8e56311a4ad1ffdf13f))
+
+
+
+
+
+## [7.5.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@7.5.0...@pie-element/number-line@7.5.1) (2024-02-07)
+
+
+### Bug Fixes
+
+* update pie-toolbox version PD-3423 ([053ad69](https://github.com/pie-framework/pie-elements/commit/053ad690619980bce68b1b44e51975fcf91054ec))
+
+
+
+
+
+# [7.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@7.4.0...@pie-element/number-line@7.5.0) (2024-02-02)
+
+
+### Bug Fixes
+
+* store model copy and reset model after configuration gets set PD-3370 ([be8b8d9](https://github.com/pie-framework/pie-elements/commit/be8b8d9ee24a0073a72ee98b9a4fea10bd6223ec))
+* update model before making the language checks ([d305e91](https://github.com/pie-framework/pie-elements/commit/d305e916023bdd1f3b0d9aebc33b9ed8f9040fb9))
+
+
+### Features
+
+* use model copy in PLAYER environments to reset model after set configuration PD-3370 ([8a7ef36](https://github.com/pie-framework/pie-elements/commit/8a7ef3663d39ec444f91705b632ea25785d0e66f))
+
+
+
+
+
+# [7.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@7.3.8...@pie-element/number-line@7.4.0) (2024-01-30)
+
+
+### Features
+
+* **number-line:** Add possibility to mark fields as required PD-3137 and update validation PD-3369 ([30516d6](https://github.com/pie-framework/pie-elements/commit/30516d6cfa863c215b17f9671de64f83eab43269))
+
+
+
+
+
 ## [7.3.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@7.3.7...@pie-element/number-line@7.3.8) (2024-01-24)
 
 

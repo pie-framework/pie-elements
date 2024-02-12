@@ -381,28 +381,31 @@
               "type": "number",
               "title": "major"
             },
-            "labelStep": {
-              "description": "Fraction representation of major.",
-              "type": "string",
-              "title": "labelStep"
-            },
             "tickIntervalType": {
               "description": "Contains tick interval type Integer, Fraction, Decimal",
               "type": "string",
               "title": "tickIntervalType"
             },
-            "tickStep": {
+            "integerTick": {
+              "description": "Integer representation of minor.",
+              "type": "number",
+              "title": "integerTick"
+            },
+            "decimalTick": {
+              "description": "Decimal representation of minor.",
+              "type": "number",
+              "title": "decimalTick"
+            },
+            "fractionTick": {
               "description": "Fraction representation of minor.",
               "type": "string",
-              "title": "tickStep"
+              "title": "fractionTick"
             }
           },
           "required": [
-            "labelStep",
             "major",
             "minor",
-            "tickIntervalType",
-            "tickStep"
+            "tickIntervalType"
           ]
         },
         "title": {
@@ -1246,28 +1249,31 @@
               "type": "number",
               "title": "major"
             },
-            "labelStep": {
-              "description": "Fraction representation of major.",
-              "type": "string",
-              "title": "labelStep"
-            },
             "tickIntervalType": {
               "description": "Contains tick interval type Integer, Fraction, Decimal",
               "type": "string",
               "title": "tickIntervalType"
             },
-            "tickStep": {
+            "integerTick": {
+              "description": "Integer representation of minor.",
+              "type": "number",
+              "title": "integerTick"
+            },
+            "decimalTick": {
+              "description": "Decimal representation of minor.",
+              "type": "number",
+              "title": "decimalTick"
+            },
+            "fractionTick": {
               "description": "Fraction representation of minor.",
               "type": "string",
-              "title": "tickStep"
+              "title": "fractionTick"
             }
           },
           "required": [
-            "labelStep",
             "major",
             "minor",
-            "tickIntervalType",
-            "tickStep"
+            "tickIntervalType"
           ]
         },
         "title": {
@@ -1577,28 +1583,31 @@
           "type": "number",
           "title": "major"
         },
-        "labelStep": {
-          "description": "Fraction representation of major.",
-          "type": "string",
-          "title": "labelStep"
-        },
         "tickIntervalType": {
           "description": "Contains tick interval type Integer, Fraction, Decimal",
           "type": "string",
           "title": "tickIntervalType"
         },
-        "tickStep": {
+        "integerTick": {
+          "description": "Integer representation of minor.",
+          "type": "number",
+          "title": "integerTick"
+        },
+        "decimalTick": {
+          "description": "Decimal representation of minor.",
+          "type": "number",
+          "title": "decimalTick"
+        },
+        "fractionTick": {
           "description": "Fraction representation of minor.",
           "type": "string",
-          "title": "tickStep"
+          "title": "fractionTick"
         }
       },
       "required": [
-        "labelStep",
         "major",
         "minor",
-        "tickIntervalType",
-        "tickStep"
+        "tickIntervalType"
       ]
     }
   },

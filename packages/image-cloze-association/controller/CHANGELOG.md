@@ -3,6 +3,39 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association-controller@4.2.0...@pie-element/image-cloze-association-controller@4.2.1) (2024-02-10)
+
+
+### Bug Fixes
+
+* add sanity checks ([26d413d](https://github.com/pie-framework/pie-elements/commit/26d413dedee87f1873b4bdbb9f9ebdaf07313a26))
+
+
+
+
+
+# [4.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association-controller@4.1.8...@pie-element/image-cloze-association-controller@4.2.0) (2024-02-09)
+
+
+### Features
+
+* update pie-toolbox version SC-28868 ([5745f50](https://github.com/pie-framework/pie-elements/commit/5745f502c89d730e72d4cdb83e96c9465a81ae19))
+
+
+
+
+
+## [4.1.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association-controller@4.1.7...@pie-element/image-cloze-association-controller@4.1.8) (2024-02-07)
+
+
+### Bug Fixes
+
+* update pie-toolbox version PD-3423 ([053ad69](https://github.com/pie-framework/pie-elements/commit/053ad690619980bce68b1b44e51975fcf91054ec))
+
+
+
+
+
 ## [4.1.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association-controller@4.1.6...@pie-element/image-cloze-association-controller@4.1.7) (2024-01-24)
 
 

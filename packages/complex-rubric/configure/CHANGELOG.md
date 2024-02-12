@@ -3,6 +3,41 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.13](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric-configure@2.1.12...@pie-element/complex-rubric-configure@2.1.13) (2024-02-12)
+
+
+### Bug Fixes
+
+* **complex-rubric:** add rubricless as default option PD-3451 ([735f000](https://github.com/pie-framework/pie-elements/commit/735f000c22c93af2ccd57620e0f0cca81874bcfd))
+
+
+
+
+
+## [2.1.12](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric-configure@2.1.11...@pie-element/complex-rubric-configure@2.1.12) (2024-02-09)
+
+**Note:** Version bump only for package @pie-element/complex-rubric-configure
+
+
+
+
+
+## [2.1.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric-configure@2.1.10...@pie-element/complex-rubric-configure@2.1.11) (2024-02-07)
+
+**Note:** Version bump only for package @pie-element/complex-rubric-configure
+
+
+
+
+
+## [2.1.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric-configure@2.1.9...@pie-element/complex-rubric-configure@2.1.10) (2024-02-07)
+
+**Note:** Version bump only for package @pie-element/complex-rubric-configure
+
+
+
+
+
 ## [2.1.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric-configure@2.1.8...@pie-element/complex-rubric-configure@2.1.9) (2024-01-29)
 
 

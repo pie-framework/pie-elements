@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@8.2.5...@pie-element/select-text@8.3.0) (2024-02-09)
+
+
+### Features
+
+* update pie-toolbox version SC-28868 ([5745f50](https://github.com/pie-framework/pie-elements/commit/5745f502c89d730e72d4cdb83e96c9465a81ae19))
+
+
+
+
+
+## [8.2.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@8.2.4...@pie-element/select-text@8.2.5) (2024-02-07)
+
+
+### Bug Fixes
+
+* update pie-toolbox version PD-3423 ([053ad69](https://github.com/pie-framework/pie-elements/commit/053ad690619980bce68b1b44e51975fcf91054ec))
+
+
+
+
+
 ## [8.2.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@8.2.3...@pie-element/select-text@8.2.4) (2024-01-24)
 
 

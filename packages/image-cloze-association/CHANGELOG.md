@@ -3,6 +3,39 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.5.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@5.5.0...@pie-element/image-cloze-association@5.5.1) (2024-02-10)
+
+
+### Bug Fixes
+
+* add sanity checks ([26d413d](https://github.com/pie-framework/pie-elements/commit/26d413dedee87f1873b4bdbb9f9ebdaf07313a26))
+
+
+
+
+
+# [5.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@5.4.5...@pie-element/image-cloze-association@5.5.0) (2024-02-09)
+
+
+### Features
+
+* update pie-toolbox version SC-28868 ([5745f50](https://github.com/pie-framework/pie-elements/commit/5745f502c89d730e72d4cdb83e96c9465a81ae19))
+
+
+
+
+
+## [5.4.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@5.4.4...@pie-element/image-cloze-association@5.4.5) (2024-02-07)
+
+
+### Bug Fixes
+
+* update pie-toolbox version PD-3423 ([053ad69](https://github.com/pie-framework/pie-elements/commit/053ad690619980bce68b1b44e51975fcf91054ec))
+
+
+
+
+
 ## [5.4.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@5.4.3...@pie-element/image-cloze-association@5.4.4) (2024-01-24)
 
 

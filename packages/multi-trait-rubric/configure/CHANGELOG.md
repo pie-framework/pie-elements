@@ -3,6 +3,39 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-configure@3.2.6...@pie-element/multi-trait-rubric-configure@3.3.0) (2024-02-09)
+
+
+### Features
+
+* update pie-toolbox version SC-28868 ([5745f50](https://github.com/pie-framework/pie-elements/commit/5745f502c89d730e72d4cdb83e96c9465a81ae19))
+
+
+
+
+
+## [3.2.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-configure@3.2.5...@pie-element/multi-trait-rubric-configure@3.2.6) (2024-02-07)
+
+
+### Bug Fixes
+
+* update pie-toolbox version PD-3423 ([053ad69](https://github.com/pie-framework/pie-elements/commit/053ad690619980bce68b1b44e51975fcf91054ec))
+
+
+
+
+
+## [3.2.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-configure@3.2.4...@pie-element/multi-trait-rubric-configure@3.2.5) (2024-02-07)
+
+
+### Bug Fixes
+
+* delete extra scorePointsLabels when maxPoints is decreased DNA-19572 ([76ee4fa](https://github.com/pie-framework/pie-elements/commit/76ee4fab5fc2be721e4f6dd52f4fa354a4606b1f))
+
+
+
+
+
 ## [3.2.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-configure@3.2.3...@pie-element/multi-trait-rubric-configure@3.2.4) (2024-01-24)
 
 

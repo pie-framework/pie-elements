@@ -65,14 +65,17 @@ interface Ticks {
   /** larger tick - These ticks have labels. */
   major: number;
 
-  /** Fraction representation of major. */
-  labelStep: string;
-
   /** Contains tick interval type Integer, Fraction, Decimal */
   tickIntervalType: string;
 
+  /** Integer representation of minor. */
+  integerTick: number;
+  
+  /** Decimal representation of minor. */
+  decimalTick: number;
+  
   /** Fraction representation of minor. */
-  tickStep: string;
+  fractionTick: string;
 }
 
 interface Arrows {

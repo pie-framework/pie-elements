@@ -3,6 +3,39 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@7.3.6...@pie-element/charting@7.4.0) (2024-02-09)
+
+
+### Features
+
+* update pie-toolbox version SC-28868 ([5745f50](https://github.com/pie-framework/pie-elements/commit/5745f502c89d730e72d4cdb83e96c9465a81ae19))
+
+
+
+
+
+## [7.3.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@7.3.5...@pie-element/charting@7.3.6) (2024-02-07)
+
+
+### Bug Fixes
+
+* update pie-toolbox version PD-3423 ([053ad69](https://github.com/pie-framework/pie-elements/commit/053ad690619980bce68b1b44e51975fcf91054ec))
+
+
+
+
+
+## [7.3.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@7.3.4...@pie-element/charting@7.3.5) (2024-01-30)
+
+
+### Bug Fixes
+
+* **graphing, charting:** use all supported values if given value is not included in the preferred ones PD-3427 ([04f9dde](https://github.com/pie-framework/pie-elements/commit/04f9ddeb89ed01de48a6954c6851ff392408fb95))
+
+
+
+
+
 ## [7.3.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@7.3.3...@pie-element/charting@7.3.4) (2024-01-24)
 
 

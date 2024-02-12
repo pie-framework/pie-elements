@@ -3,6 +3,39 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.12.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.11.1...@pie-element/pie-models@13.12.0) (2024-02-09)
+
+
+### Features
+
+* **number-line:** Update Tick Interval logic for number line labels | SC-28865 ([a177718](https://github.com/pie-framework/pie-elements/commit/a1777185305cd828d9d6930024e236c09d3845a9))
+
+
+
+
+
+## [13.11.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.11.0...@pie-element/pie-models@13.11.1) (2024-02-07)
+
+
+### Bug Fixes
+
+* **multiple-choice:** update documentation for lockChoiceOrder PD-3428 ([39c91dd](https://github.com/pie-framework/pie-elements/commit/39c91dd932b66a49acb3e9d3b632f3ee4a38b766))
+
+
+
+
+
+# [13.11.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.10.0...@pie-element/pie-models@13.11.0) (2024-01-30)
+
+
+### Features
+
+* **number-line:** Add possibility to mark fields as required PD-3137 and update validation PD-3369 ([30516d6](https://github.com/pie-framework/pie-elements/commit/30516d6cfa863c215b17f9671de64f83eab43269))
+
+
+
+
+
 # [13.10.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.9.0...@pie-element/pie-models@13.10.0) (2024-01-09)
 
 

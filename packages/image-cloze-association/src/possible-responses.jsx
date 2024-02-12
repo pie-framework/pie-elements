@@ -9,7 +9,7 @@ import PossibleResponse from './possible-response';
 const PossibleResponses = ({ canDrag, classes, data, onAnswerRemove, onDragBegin, onDragEnd }) => (
   <div className={classes.base}>
     <ICADroppablePlaceholder disabled={!canDrag} onRemoveAnswer={onAnswerRemove}>
-      {data.map((item) => (
+      {(data || []).map((item) => (
         <PossibleResponse canDrag={canDrag} key={item.id} data={item} onDragBegin={onDragBegin} onDragEnd={onDragEnd} />
       ))}
     </ICADroppablePlaceholder>

@@ -3,6 +3,56 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@5.3.1...@pie-element/graphing-configure@5.4.0) (2024-02-09)
+
+
+### Features
+
+* update pie-toolbox version SC-28868 ([5745f50](https://github.com/pie-framework/pie-elements/commit/5745f502c89d730e72d4cdb83e96c9465a81ae19))
+
+
+
+
+
+## [5.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@5.3.0...@pie-element/graphing-configure@5.3.1) (2024-02-07)
+
+
+### Bug Fixes
+
+* update pie-toolbox version PD-3423 ([053ad69](https://github.com/pie-framework/pie-elements/commit/053ad690619980bce68b1b44e51975fcf91054ec))
+
+
+
+
+
+# [5.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@5.2.5...@pie-element/graphing-configure@5.3.0) (2024-02-02)
+
+
+### Bug Fixes
+
+* store model copy and reset model after configuration gets set PD-3370 ([be8b8d9](https://github.com/pie-framework/pie-elements/commit/be8b8d9ee24a0073a72ee98b9a4fea10bd6223ec))
+* update model before making the language checks ([d305e91](https://github.com/pie-framework/pie-elements/commit/d305e916023bdd1f3b0d9aebc33b9ed8f9040fb9))
+
+
+### Features
+
+* use model copy in PLAYER environments to reset model after set configuration PD-3370 ([8a7ef36](https://github.com/pie-framework/pie-elements/commit/8a7ef3663d39ec444f91705b632ea25785d0e66f))
+
+
+
+
+
+## [5.2.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@5.2.4...@pie-element/graphing-configure@5.2.5) (2024-01-30)
+
+
+### Bug Fixes
+
+* **graphing, charting:** use all supported values if given value is not included in the preferred ones PD-3427 ([04f9dde](https://github.com/pie-framework/pie-elements/commit/04f9ddeb89ed01de48a6954c6851ff392408fb95))
+
+
+
+
+
 ## [5.2.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@5.2.3...@pie-element/graphing-configure@5.2.4) (2024-01-24)
 
 

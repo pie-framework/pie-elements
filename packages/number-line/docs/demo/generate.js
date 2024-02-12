@@ -1,41 +1,39 @@
 exports.model = (id, element) => ({
-  toolbarEditorPosition: 'bottom',
-  correctResponse: [
-    {
-      pointType: 'full',
-      type: 'point',
-      domainPosition: 0,
-    },
+  "correctResponse": [
+    { "type": "point", "pointType": "full", "domainPosition": 0 }
   ],
-  graph: {
-    maxNumberOfPoints: 1,
-    ticks: {
-      minor: 0.125,
-      major: 1,
-      labelStep: '1',
-      tickIntervalType: 'Fraction',
-      tickStep: '1/8',
-    },
-    arrows: {
-      left: true,
-      right: true,
-    },
-    domain: {
-      min: 0,
-      max: 1,
-    },
-    width: 350,
-    tickLabelOverrides: ['1/6', '1/3', '1/2', '2/3', '5/6'],
-    initialElements: [],
-    initialType: 'PF',
-    availableTypes: {
-      PF: true,
-    },
-    title: '',
+  "feedback": {
+    "correct": { "type": "default", "default": "Correct" },
+    "partial": { "type": "default", "default": "Nearly" },
+    "incorrect": { "type": "default", "default": "Incorrect" }
   },
-  widthEnabled: true,
+  "prompt": "",
+  "widthEnabled": true,
+  "graph": {
+    "title": "",
+    "arrows": { "left": true, "right": true },
+    "width": 500,
+    "domain": { "min": -5, "max": 5 },
+    "ticks": { "minor": 1, "major": 2, "tickIntervalType": 'Integer' },
+    "initialElements": [],
+    "maxNumberOfPoints": 30,
+    "showMinorTicks": true,
+    "snapPerTick": 1,
+    "tickLabelOverrides": [],
+    "initialType": "PF",
+    "exhibitOnly": false,
+    "availableTypes": {
+      "PF": true,
+      "LFF": true,
+      "LEF": true,
+      "LFE": true,
+      "LEE": true,
+      "RFN": true,
+      "RFP": true,
+      "REN": true,
+      "REP": true
+    }
+  },
   id,
-  teacherInstructions: '',
-  prompt: '',
   element,
 });

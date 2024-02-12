@@ -66,15 +66,19 @@ smallest tick - These ticks don't have labels.
 
 larger tick - These ticks have labels.
 
-### `labelStep` (string, required)
-
-Fraction representation of major.
-
 ### `tickIntervalType` (string, required)
 
 Contains tick interval type Integer, Fraction, Decimal
 
-### `tickStep` (string, required)
+### `integerTick` (number)
+
+Integer representation of minor.
+
+### `decimalTick` (number)
+
+Decimal representation of minor.
+
+### `fractionTick` (string)
 
 Fraction representation of minor.
 
@@ -471,15 +475,19 @@ smallest tick - These ticks don't have labels.
 
 larger tick - These ticks have labels.
 
-#### `labelStep` (string, required)
-
-Fraction representation of major.
-
 #### `tickIntervalType` (string, required)
 
 Contains tick interval type Integer, Fraction, Decimal
 
-#### `tickStep` (string, required)
+#### `integerTick` (number)
+
+Integer representation of minor.
+
+#### `decimalTick` (number)
+
+Decimal representation of minor.
+
+#### `fractionTick` (string)
 
 Fraction representation of minor.
 
@@ -589,14 +597,18 @@ smallest tick - These ticks don't have labels.
 
 larger tick - These ticks have labels.
 
-### `labelStep` (string, required)
-
-Fraction representation of major.
-
 ### `tickIntervalType` (string, required)
 
 Contains tick interval type Integer, Fraction, Decimal
 
-### `tickStep` (string, required)
+### `integerTick` (number)
+
+Integer representation of minor.
+
+### `decimalTick` (number)
+
+Decimal representation of minor.
+
+### `fractionTick` (string)
 
 Fraction representation of minor.

@@ -49,7 +49,8 @@ class CircleComponent extends React.Component {
     const { onDragEnd, id } = this.props;
     const node = this.shapeRef.current;
 
-    const newRadius = Math.max(node.radius() * node.scaleX(), 5);
+    const scale = node.scaleX() !== 1 ? node.scaleX() : node.scaleY();
+    const newRadius = Math.max(node.radius() * scale, 5);
 
     this.setState({ isDragging: false });
     onDragEnd(id, {
@@ -97,6 +98,7 @@ class CircleComponent extends React.Component {
             ref={this.trRef}
             rotateEnabled={false}
             keepRatio={true}
+            enabledAnchors={['middle-left', 'middle-right', 'top-center', 'bottom-center']}
             boundBoxFunc={(oldBox, newBox) => {
               // Constraint to prevent resizing too small
               if (newBox.width < 10 || newBox.height < 10) {

@@ -31,7 +31,7 @@ const ImageDropTarget = ({
     >
       {answers.length || (duplicateResponses && answers.length) ? (
         <div className={classes.answers}>
-          {answers.map((answer) => (
+          {(answers || []).map((answer) => (
             <PossibleResponse
               canDrag={canDrag}
               containerStyle={answer.isCorrect === undefined ? { borderWidth: 0 } : {}}

@@ -55,7 +55,11 @@ export interface MultipleChoicePie extends PieModel {
    */
   toolbarEditorPosition?: 'bottom' | 'top';
 
-  /**  Indicates the order of choices should be randomly ordered when presented to user */
+  /**
+   * Indicates the order of choices presented to user
+   * if true, answer choices will be presented in the order they are defined in the model
+   * If false, answer choices may be presented in a random order (depending upon the value of the lockChoiceOrder environment variable)
+   */
   lockChoiceOrder?: boolean;
 
   /** Indicates that the item should use partial scoring */
