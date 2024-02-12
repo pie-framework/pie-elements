@@ -1,4 +1,4 @@
-const getAllCorrectness = (answers, responses) => answers.map((answer) => ({
+const getAllCorrectness = (answers, responses) => (answers || []).map((answer) => ({
     ...answer,
     isCorrect: (responses[answer.containerIndex] && responses[answer.containerIndex].images || []).includes(answer.value),
 }));
@@ -19,7 +19,7 @@ export const getAllUniqueCorrectness = (answers, validResponses) => {
       valuesToParse.shift();
       // mark duplicates as incorrect
       valuesToParse.forEach((value, index) => {
-        allCorrectness = allCorrectness.map((finalAnswer) => {
+        allCorrectness = (allCorrectness || []).map((finalAnswer) => {
           if (finalAnswer.id === value.id) {
             let valid = getValidAnswer(finalAnswer, validResponses);
             return {
