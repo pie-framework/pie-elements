@@ -163,7 +163,7 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
   <InputContainer
     label="Teacher Instructions"
   >
-    <ForwardRef
+    <EditableHtml
       allowValidation={false}
       languageCharactersProps={
         Array [
@@ -197,7 +197,7 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
   <InputContainer
     label="Item Stem"
   >
-    <ForwardRef
+    <EditableHtml
       allowValidation={false}
       languageCharactersProps={
         Array [
@@ -265,7 +265,7 @@ The correct ordering should not be identical to the initial ordering."
       <InputContainer
         label="Choice label"
       >
-        <ForwardRef
+        <EditableHtml
           allowValidation={false}
           languageCharactersProps={
             Array [
@@ -324,7 +324,7 @@ The correct ordering should not be identical to the initial ordering."
   <InputContainer
     label="Rationale"
   >
-    <ForwardRef
+    <EditableHtml
       allowValidation={false}
       languageCharactersProps={
         Array [
@@ -520,7 +520,7 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
   <InputContainer
     label="Teacher Instructions"
   >
-    <ForwardRef
+    <EditableHtml
       allowValidation={false}
       languageCharactersProps={
         Array [
@@ -554,7 +554,7 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
   <InputContainer
     label="Item Stem"
   >
-    <ForwardRef
+    <EditableHtml
       allowValidation={false}
       languageCharactersProps={
         Array [
@@ -622,7 +622,7 @@ The correct ordering should not be identical to the initial ordering."
       <InputContainer
         label="Choice label"
       >
-        <ForwardRef
+        <EditableHtml
           allowValidation={false}
           languageCharactersProps={
             Array [
@@ -681,7 +681,7 @@ The correct ordering should not be identical to the initial ordering."
   <InputContainer
     label="Rationale"
   >
-    <ForwardRef
+    <EditableHtml
       allowValidation={false}
       languageCharactersProps={
         Array [
