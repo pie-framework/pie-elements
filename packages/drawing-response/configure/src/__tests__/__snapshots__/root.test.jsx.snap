@@ -87,7 +87,7 @@ exports[`Root snapshot renders 1`] = `
   <Component
     label="Item Stem"
   >
-    <EditableHtml
+    <ForwardRef
       allowValidation={false}
       languageCharactersProps={
         Array [

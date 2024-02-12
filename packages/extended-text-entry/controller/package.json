@@ -6,7 +6,7 @@
   "main": "lib/index.js",
   "module": "src/index.js",
   "dependencies": {
-    "@pie-lib/pie-toolbox": "1.6.0"
+    "@pie-lib/pie-toolbox": "1.5.2-next.73"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
