@@ -14,7 +14,6 @@ import { renderMath } from '@pie-lib/pie-toolbox/math-rendering';
 
 //Expose some additional modules for configuration
 export { Graph, NumberLineComponent, tickUtils, dataConverter, pointChooser };
-
 export default class NumberLine extends HTMLElement {
   constructor() {
     super();
