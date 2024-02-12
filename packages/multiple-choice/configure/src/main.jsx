@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {EditableHtml} from '@pie-lib/pie-toolbox/editable-html';
+import { EditableHtml } from '@pie-lib/pie-toolbox/editable-html';
 import {
   AlertDialog,
   InputContainer,
@@ -147,11 +147,7 @@ const Design = withStyles(styles)((props) => {
   const { choicesErrors, correctResponseError, answerChoicesError } = errors || {};
   const nrOfColumnsAvailable = choices?.length ? Array.from({ length: choices.length }, (_, i) => `${i + 1}`) : [];
 
-  const labelPlugins = {
-    audio: { disabled: true },
-    video: { disabled: true },
-  };
-
+  const { baseInputConfiguration = {} } = configuration;
   const toolbarOpts = {
     position: toolbarEditorPosition === 'top' ? 'top' : 'bottom',
   };
@@ -160,6 +156,14 @@ const Design = withStyles(styles)((props) => {
   if (limitChoicesNumber) {
     maxAnswerChoices = MAX_CHOICES;
   }
+
+  const getPluginProps = (props) => {
+    return Object.assign({
+        ...baseInputConfiguration,
+      },
+      props || {},
+    );
+  };
 
   const validationMessage = generateValidationMessage(configuration);
   const defaultImageMaxWidth = maxImageWidth && maxImageWidth.prompt;
@@ -221,6 +225,7 @@ const Design = withStyles(styles)((props) => {
             imageSupport={imageSupport}
             nonEmpty={false}
             toolbarOpts={toolbarOpts}
+            pluginProps={getPluginProps(configuration?.teacherInstructions?.inputConfiguration)}
             spellCheck={spellCheckEnabled}
             maxImageWidth={(maxImageWidth && maxImageWidth.teacherInstructions) || defaultImageMaxWidth}
             maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
@@ -241,6 +246,7 @@ const Design = withStyles(styles)((props) => {
             nonEmpty={false}
             disableUnderline
             toolbarOpts={toolbarOpts}
+            pluginProps={getPluginProps(configuration?.prompt?.inputConfiguration)}
             spellCheck={spellCheckEnabled}
             maxImageWidth={maxImageWidth && maxImageWidth.prompt}
             maxImageHeight={maxImageHeight && maxImageHeight.prompt}
@@ -281,6 +287,7 @@ const Design = withStyles(styles)((props) => {
             allowFeedBack={feedbackEnabled}
             allowDelete={deleteChoice.settings}
             noLabels
+            pluginOpts={getPluginProps(configuration?.choices?.inputConfiguration)}
             toolbarOpts={toolbarOpts}
             spellCheck={spellCheckEnabled}
             error={choicesErrors?.[choice.value] || null}
@@ -299,7 +306,7 @@ const Design = withStyles(styles)((props) => {
                 onChange={(c) => onChoiceChanged(index, { ...choice, rationale: c })}
                 imageSupport={imageSupport}
                 toolbarOpts={toolbarOpts}
-                pluginProps={labelPlugins}
+                pluginProps={getPluginProps(configuration?.rationale?.inputConfiguration)}
                 spellCheck={spellCheckEnabled}
                 maxImageWidth={(maxImageWidth && maxImageWidth.rationale) || defaultImageMaxWidth}
                 maxImageHeight={(maxImageHeight && maxImageHeight.rationale) || defaultImageMaxHeight}
@@ -321,7 +328,7 @@ const Design = withStyles(styles)((props) => {
                 markup={choice.accessibility || ''}
                 onChange={(c) => onChoiceChanged(index, { ...choice, accessibility: c })}
                 imageSupport={imageSupport}
-                pluginProps={labelPlugins}
+                pluginProps={getPluginProps(configuration?.accessibility?.inputConfiguration)}
                 spellCheck={spellCheckEnabled}
                 maxImageWidth={(maxImageWidth && maxImageWidth.choices) || defaultImageMaxWidth}
                 maxImageHeight={(maxImageHeight && maxImageHeight.choices) || defaultImageMaxHeight}

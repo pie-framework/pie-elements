@@ -10,6 +10,38 @@ export interface ConfigureProp {
   label?: string;
 }
 
+export interface EditableHtmlButtonConfigure {
+  /**
+   * Indicates if the plugin is disabled or not
+   */
+  disabled?: boolean
+}
+
+export interface EditableHtmlConfigureProp {
+  /**
+   * Indicates if the audio plugin is disabled or not
+   */
+  audio?: EditableHtmlButtonConfigure,
+
+  /**
+   * Indicates if the video plugin is disabled or not
+   */
+  video?: EditableHtmlButtonConfigure,
+
+  /**
+   * Indicates if the image plugin is disabled or not
+   */
+  image?: EditableHtmlButtonConfigure,
+}
+
+export interface EditableHtmlPluginConfigure extends ConfigureProp {
+  /**
+   * Indicates the custom configuration for the editable html buttons
+   * E.g. audio, video, image
+   */
+  inputConfiguration?: EditableHtmlConfigureProp
+}
+
 export interface ConfigureRequiredProp extends ConfigureProp {
   /**
    * Indicates if the item is required and the value cannot be empty
