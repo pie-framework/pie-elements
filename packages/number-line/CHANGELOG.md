@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@8.0.0...@pie-element/number-line@8.0.1) (2024-02-12)
+
+
+### Bug Fixes
+
+* build ([8d2eca4](https://github.com/pie-framework/pie-elements/commit/8d2eca4a7d509068e5299de344a17a706e8276fb))
+
+
+
+
+
 # [8.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@7.6.0...@pie-element/number-line@8.0.0) (2024-02-09)
 
 
