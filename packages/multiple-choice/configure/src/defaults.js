@@ -21,6 +21,18 @@ export default {
     gridColumns: '2',
   },
   configuration: {
+    baseInputConfiguration: {
+      audio: { disabled: false },
+      video: { disabled: false },
+      image: { disabled: false },
+    },
+    choices: {
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
+    },
     spellCheck: {
       label: 'Spellcheck',
       settings: false,
@@ -56,6 +68,11 @@ export default {
     prompt: {
       settings: true,
       label: 'Prompt',
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
     },
     lockChoiceOrder: {
       settings: true,
@@ -68,10 +85,20 @@ export default {
     rationale: {
       settings: true,
       label: 'Rationale',
+      inputConfiguration: {
+        audio: { disabled: true },
+        video: { disabled: true },
+        image: { disabled: false },
+      },
     },
     accessibility: {
       settings: false,
       label: 'Accessibility Label',
+      inputConfiguration: {
+        audio: { disabled: true },
+        video: { disabled: true },
+        image: { disabled: false },
+      },
     },
     scoringType: {
       settings: false,
@@ -84,6 +111,11 @@ export default {
     teacherInstructions: {
       settings: true,
       label: 'Teacher Instructions',
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
     },
     toolbarEditorPosition: {
       settings: false,
