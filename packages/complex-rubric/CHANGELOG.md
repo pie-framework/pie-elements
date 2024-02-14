@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.3.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@2.3.1...@pie-element/complex-rubric@2.3.2) (2024-02-14)
+
+
+### Bug Fixes
+
+* adjust width for complex-rubric selection options and add styles on hover PD-3463 ([bc5ef47](https://github.com/pie-framework/pie-elements/commit/bc5ef477d462ec9abd3111e57c9a001fe4dafd98))
+* pie-lib/pie-toolbox with slate updates ([a8f8707](https://github.com/pie-framework/pie-elements/commit/a8f8707b2c197c2b40fb6632cee0ba4c27aa9aa4))
+* update pie-lib/pie-toolbox ([cec328c](https://github.com/pie-framework/pie-elements/commit/cec328caf5b69d9fee00473c502aed62d6e27462))
+
+
+
+
+
 ## [2.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@2.3.0...@pie-element/complex-rubric@2.3.1) (2024-02-12)
 
 

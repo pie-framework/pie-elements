@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.13.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.12.0...@pie-element/pie-models@13.13.0) (2024-02-14)
+
+
+### Features
+
+* add configuration for custom buttons on multiple choice PD-3395 ([d0569c2](https://github.com/pie-framework/pie-elements/commit/d0569c2fb6398c497ec8b53f4a76adcf375ff1cd))
+
+
+
+
+
 # [13.12.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.11.1...@pie-element/pie-models@13.12.0) (2024-02-09)
 
 

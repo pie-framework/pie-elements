@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.20.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/likert@0.20.0...@pie-element/likert@0.20.1) (2024-02-14)
+
+
+### Bug Fixes
+
+* pie-lib/pie-toolbox with slate updates ([a8f8707](https://github.com/pie-framework/pie-elements/commit/a8f8707b2c197c2b40fb6632cee0ba4c27aa9aa4))
+* update pie-lib/pie-toolbox ([cec328c](https://github.com/pie-framework/pie-elements/commit/cec328caf5b69d9fee00473c502aed62d6e27462))
+
+
+
+
+
 # [0.20.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/likert@0.19.5...@pie-element/likert@0.20.0) (2024-02-09)
 
 

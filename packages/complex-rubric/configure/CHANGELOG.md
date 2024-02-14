@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.14](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric-configure@2.1.13...@pie-element/complex-rubric-configure@2.1.14) (2024-02-14)
+
+
+### Bug Fixes
+
+* adjust width for complex-rubric selection options and add styles on hover PD-3463 ([bc5ef47](https://github.com/pie-framework/pie-elements/commit/bc5ef477d462ec9abd3111e57c9a001fe4dafd98))
+
+
+
+
+
 ## [2.1.13](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric-configure@2.1.12...@pie-element/complex-rubric-configure@2.1.13) (2024-02-12)
 
 

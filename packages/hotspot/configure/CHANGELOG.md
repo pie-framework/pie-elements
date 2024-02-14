@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.6.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@6.6.0...@pie-element/hotspot-configure@6.6.1) (2024-02-14)
+
+
+### Bug Fixes
+
+* pie-lib/pie-toolbox with slate updates ([a8f8707](https://github.com/pie-framework/pie-elements/commit/a8f8707b2c197c2b40fb6632cee0ba4c27aa9aa4))
+* update pie-lib/pie-toolbox ([cec328c](https://github.com/pie-framework/pie-elements/commit/cec328caf5b69d9fee00473c502aed62d6e27462))
+
+
+
+
+
 # [6.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@6.5.3...@pie-element/hotspot-configure@6.6.0) (2024-02-09)
 
 

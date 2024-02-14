@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@6.3.0...@pie-element/multiple-choice-configure@6.4.0) (2024-02-14)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox ([cec328c](https://github.com/pie-framework/pie-elements/commit/cec328caf5b69d9fee00473c502aed62d6e27462))
+* **math-rendering-accessible:** set same key as in math-rendering for testing purpose PD-1870 ([f5bc28e](https://github.com/pie-framework/pie-elements/commit/f5bc28e1664dab639202a9ef09e059ed4ab5e20e))
+* pie-lib/pie-toolbox with slate updates ([a8f8707](https://github.com/pie-framework/pie-elements/commit/a8f8707b2c197c2b40fb6632cee0ba4c27aa9aa4))
+
+
+### Features
+
+* add configuration for custom buttons on multiple choice PD-3395 ([d0569c2](https://github.com/pie-framework/pie-elements/commit/d0569c2fb6398c497ec8b53f4a76adcf375ff1cd))
+* Add configuration for custom buttons PD-3395 ([19a4cd4](https://github.com/pie-framework/pie-elements/commit/19a4cd44de52a52f5fbb44092793d6b85b7e5ecf))
+* Add configuration for custom buttons PD-3395 ([2370db5](https://github.com/pie-framework/pie-elements/commit/2370db5e1ddcb68d2b9f20a9116278daa5e0194e))
+
+
+
+
+
 # [6.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@6.2.5...@pie-element/multiple-choice-configure@6.3.0) (2024-02-09)
 
 
