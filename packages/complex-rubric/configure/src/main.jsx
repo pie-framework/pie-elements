@@ -4,10 +4,19 @@ import { RUBRIC_TYPES } from '@pie-lib/pie-toolbox/rubric';
 import { layout } from '@pie-lib/pie-toolbox/config-ui';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { withStyles } from '@material-ui/core/styles';
-import { FormControlLabel } from '@material-ui/core';
 
-const styles = {};
+const styles = {
+  root: {
+    width: 'fit-content',
+    paddingRight: '24px',
+    boxSizing: 'border-box',
+    '&:hover': {
+      background: 'var(--pie-secondary-background, rgba(241,241,241,1))'
+    }
+  }
+};
 const rubricLabels = {
   [RUBRIC_TYPES.MULTI_TRAIT_RUBRIC]: 'Multi Trait Rubric',
   [RUBRIC_TYPES.SIMPLE_RUBRIC]: 'Simple Rubric',
@@ -38,7 +47,7 @@ export class Main extends React.Component {
   };
 
   render() {
-    const { model, configuration, canUpdateModel } = this.props;
+    const { model, configuration, canUpdateModel, classes } = this.props;
 
     const { rubrics = {} } = model || {};
     let { rubricType } = model;
@@ -121,6 +130,7 @@ export class Main extends React.Component {
                 value={availableRubric}
                 control={<Radio checked={rubricType === availableRubric} />}
                 label={rubricLabels[availableRubric]}
+                classes={{ root: classes.root }}
             />
           )
           }
