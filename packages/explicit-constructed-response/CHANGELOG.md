@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@6.3.0...@pie-element/explicit-constructed-response@6.3.1) (2024-02-14)
+
+
+### Bug Fixes
+
+* pie-lib/pie-toolbox with slate updates ([a8f8707](https://github.com/pie-framework/pie-elements/commit/a8f8707b2c197c2b40fb6632cee0ba4c27aa9aa4))
+* update pie-lib/pie-toolbox ([cec328c](https://github.com/pie-framework/pie-elements/commit/cec328caf5b69d9fee00473c502aed62d6e27462))
+
+
+
+
+
 # [6.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@6.2.5...@pie-element/explicit-constructed-response@6.3.0) (2024-02-09)
 
 
