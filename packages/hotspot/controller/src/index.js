@@ -26,7 +26,7 @@ export function model(question, session, env) {
     shapes,
     language,
   } = normalizedQuestion;
-  const { rectangles, polygons } = shapes || {};
+  const { rectangles, polygons, circles } = shapes || {};
 
   return new Promise((resolve) => {
     const out = {
@@ -45,6 +45,8 @@ export function model(question, session, env) {
         rectangles: (rectangles || []).map(({ index, ...rectProps }) => ({ ...rectProps })),
         // eslint-disable-next-line no-unused-vars
         polygons: (polygons || []).map(({ index, ...polyProps }) => ({ ...polyProps })),
+        // eslint-disable-next-line no-unused-vars
+        circles: (circles || []).map(({ index, ...circleProps }) => ({ ...circleProps })),
       },
       responseCorrect: env.mode === 'evaluate' ? isResponseCorrect(normalizedQuestion, session) : undefined,
     };
@@ -78,7 +80,7 @@ export const createDefaultModel = (model = {}) =>
 const getScore = (config, session, env = {}) => {
   const { answers } = session || {};
 
-  if (!config.shapes || (!config.shapes.rectangles && !config.shapes.polygons)) {
+  if (!config.shapes || (!config.shapes.rectangles && !config.shapes.polygons && !config.shapes.circles)) {
     return 0;
   }
 
