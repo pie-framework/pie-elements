@@ -93,7 +93,6 @@ export class Drawable extends React.Component {
       });
 
       this.props.onUpdateShapes(newShapes);
-      this.props.handleFinishDrawing();
     });
 
     return shapes;
@@ -289,6 +288,14 @@ export class Drawable extends React.Component {
 
     this.setState({ resizing: false, stateShapes: false });
   };
+
+  deleteShape = (id) => {
+    this.setState({
+      isDrawing: false,
+      isDrawingShapeId: undefined,
+    });
+    this.props.onDeleteShape(id);
+  }
   /// end of handling Image section
 
   render() {
@@ -370,7 +377,7 @@ export class Drawable extends React.Component {
                   key={i}
                   onClick={() => this.handleOnSetAsCorrect(shape)}
                   onDragEnd={this.handleOnDragEnd}
-                  onDeleteShape={onDeleteShape}
+                  onDeleteShape={this.deleteShape}
                   outlineColor={outlineColor}
                   width={shape.width}
                   x={shape.x}
