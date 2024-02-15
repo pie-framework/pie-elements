@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.6.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@6.6.1...@pie-element/hotspot@6.6.2) (2024-02-15)
+
+
+### Bug Fixes
+
+* isResponseCorrect to include circles PD-3458 ([f2aeb5f](https://github.com/pie-framework/pie-elements/commit/f2aeb5f1c620e00a311ad6e823f5bde73f75ddd0))
+
+
+
+
+
 ## [6.6.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@6.6.0...@pie-element/hotspot@6.6.1) (2024-02-14)
 
 
