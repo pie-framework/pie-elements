@@ -68,6 +68,13 @@ class CircleComponent extends React.Component {
     onDeleteShape(id);
   };
 
+  onTransform = () => {
+    const node = this.shapeRef.current;
+    const avgScale = (node.scaleX() + node.scaleY()) / 2;
+    node.scaleX(avgScale);
+    node.scaleY(avgScale);
+  };
+
   render() {
     const { classes, correct, radius, hotspotColor, id, outlineColor, x, y, strokeWidth = 5 } = this.props;
 
@@ -98,12 +105,25 @@ class CircleComponent extends React.Component {
             ref={this.trRef}
             rotateEnabled={false}
             keepRatio={true}
+            onTransform={this.onTransform}
             enabledAnchors={['middle-left', 'middle-right', 'top-center', 'bottom-center']}
             boundBoxFunc={(oldBox, newBox) => {
               // Constraint to prevent resizing too small
               if (newBox.width < 10 || newBox.height < 10) {
                 return oldBox;
               }
+
+              const oldCenterX = oldBox.x + oldBox.width / 2;
+              const oldCenterY = oldBox.y + oldBox.height / 2;
+              const newCenterX = newBox.x + newBox.width / 2;
+              const newCenterY = newBox.y + newBox.height / 2;
+
+              const offsetX = oldCenterX - newCenterX;
+              const offsetY = oldCenterY - newCenterY;
+
+              newBox.x += offsetX;
+              newBox.y += offsetY;
+
               return newBox;
             }}
           />
