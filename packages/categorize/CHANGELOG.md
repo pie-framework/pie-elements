@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@8.4.2...@pie-element/categorize@8.5.0) (2024-02-20)
+
+
+### Features
+
+* **categorize:** ensure categoryCount is set PD-2974 ([c001e0f](https://github.com/pie-framework/pie-elements/commit/c001e0fddf15bbfef53ebc85e7013d4cb5d61797))
+
+
+
+
+
 ## [8.4.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@8.4.1...@pie-element/categorize@8.4.2) (2024-02-20)
 
 
