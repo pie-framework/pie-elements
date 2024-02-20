@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@6.6.3...@pie-element/hotspot@6.7.0) (2024-02-20)
+
+
+### Features
+
+* **hotspot:** change the demo model PD-3459 ([b30cf8e](https://github.com/pie-framework/pie-elements/commit/b30cf8e9f97cff4a64f68b2675c6edc6224a5644))
+* **hotspot:** get rid of the authoring tooltip PD-3462 ([808530f](https://github.com/pie-framework/pie-elements/commit/808530fc984e752237c4ce182db1060f0bc6e1f9))
+
+
+
+
+
 ## [6.6.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@6.6.2...@pie-element/hotspot@6.6.3) (2024-02-20)
 
 

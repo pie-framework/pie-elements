@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@6.6.2...@pie-element/hotspot-configure@6.7.0) (2024-02-20)
+
+
+### Features
+
+* **hotspot:** get rid of the authoring tooltip PD-3462 ([808530f](https://github.com/pie-framework/pie-elements/commit/808530fc984e752237c4ce182db1060f0bc6e1f9))
+
+
+
+
+
 ## [6.6.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@6.6.1...@pie-element/hotspot-configure@6.6.2) (2024-02-20)
 
 
