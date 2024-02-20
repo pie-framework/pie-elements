@@ -1,5 +1,4 @@
 import { withStyles } from '@material-ui/core/styles/index';
-import Help from '@material-ui/icons/Help';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
@@ -144,7 +143,6 @@ export class Container extends Component {
     // This would cause the finalizeCreation method to be called in the HotspotDrawable component
     this.setState({ selectedShape: 'none' });
   };
-  toggleTooltip = () => this.setState({ showTooltip: !this.state.showTooltip });
 
   render() {
     const {
@@ -159,7 +157,7 @@ export class Container extends Component {
       strokeWidth,
       preserveAspectRatioEnabled,
     } = this.props;
-    const { dropzoneActive, dragEnabled, showTooltip } = this.state;
+    const { dropzoneActive, dragEnabled } = this.state;
     const { shapes, selectedShape } = this.state;
 
     return (
@@ -251,21 +249,6 @@ export class Container extends Component {
               </div>
             )}
           </div>
-
-          {imageUrl && (
-            <div className={classes.tooltip}>
-              {showTooltip && (
-                <div className={classes.tooltipContent}>
-                  <label>
-                    Click and drag to create a hotspot. Click the hotspot to mark correct. Click again to unmark.
-                  </label>
-                  <div className={classes.tooltipArrow} />
-                </div>
-              )}
-
-              <Help className={classes.icon} onMouseOut={this.toggleTooltip} onMouseOver={this.toggleTooltip} />
-            </div>
-          )}
         </div>
       </div>
     );
@@ -325,35 +308,6 @@ const styles = (theme) => ({
     display: 'flex',
     justifyContent: 'flex-end',
     padding: theme.spacing.unit,
-  },
-  tooltip: {
-    position: 'relative',
-    textAlign: 'right',
-    padding: theme.spacing.unit,
-  },
-  tooltipContent: {
-    background: '#333131',
-    borderRadius: '4px',
-    color: theme.palette.common.white,
-    fontSize: theme.typography.fontSize,
-    lineHeight: '18px',
-    marginTop: '-60px',
-    padding: theme.spacing.unit,
-    position: 'absolute',
-    right: '5px',
-    textAlign: 'left',
-    width: '300px',
-  },
-  tooltipArrow: {
-    width: 0,
-    height: 0,
-    borderLeft: '10px solid transparent',
-    borderRight: '10px solid transparent',
-    borderTop: '10px solid #333131',
-    marginBottom: -10,
-    marginTop: '4px',
-    position: 'absolute',
-    right: '5px',
   },
 });
 
