@@ -225,7 +225,8 @@ export class Design extends React.Component {
 
     const choices = model.choices.map((c) => {
       c.correctResponseCount = this.countChoiceInCorrectResponse(c);
-
+      // ensure categoryCount is set even though updatedModel hasn't been called
+      c.categoryCount =  this.checkAllowMultiplePlacements(model.allowMultiplePlacementsEnabled, c);
       return c;
     });
 
