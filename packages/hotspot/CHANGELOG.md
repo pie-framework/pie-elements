@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.6.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@6.6.2...@pie-element/hotspot@6.6.3) (2024-02-20)
+
+
+### Bug Fixes
+
+* circle to maintain shape on resize PD-1446 ([8118f72](https://github.com/pie-framework/pie-elements/commit/8118f72cd5da7a84544052093a912ad0a965f1f4))
+* update pie-lib/pie-toolbox PD-3372, PD-3385, PD-3439 ([a79d800](https://github.com/pie-framework/pie-elements/commit/a79d800bb69af0d175793bc737282100168c4c60))
+* **hotspot:** delete no completed hotspot PD-3450 ([aff3685](https://github.com/pie-framework/pie-elements/commit/aff36854e3765f31e7a7e9e34a8ea4a7c973dc99))
+* update pie-lib/pie-toolbox PD-3455 ([4ff9971](https://github.com/pie-framework/pie-elements/commit/4ff9971e65b680aea180c94f9e85cab7249af2fb))
+
+
+
+
+
 ## [6.6.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@6.6.1...@pie-element/hotspot@6.6.2) (2024-02-15)
 
 

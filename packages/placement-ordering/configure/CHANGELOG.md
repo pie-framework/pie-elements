@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.3.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-configure@7.3.1...@pie-element/placement-ordering-configure@7.3.2) (2024-02-20)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3372, PD-3385, PD-3439 ([a79d800](https://github.com/pie-framework/pie-elements/commit/a79d800bb69af0d175793bc737282100168c4c60))
+* update pie-lib/pie-toolbox PD-3455 ([4ff9971](https://github.com/pie-framework/pie-elements/commit/4ff9971e65b680aea180c94f9e85cab7249af2fb))
+
+
+
+
+
 ## [7.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-configure@7.3.0...@pie-element/placement-ordering-configure@7.3.1) (2024-02-14)
 
 
