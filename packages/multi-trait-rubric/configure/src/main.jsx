@@ -67,6 +67,7 @@ export class Main extends React.Component {
     showInfoDialog: false,
     infoDialogText: '',
     adjustedWidth: MIN_WIDTH,
+    initialUpdateCompleted: false // flag to track the initial update of the div width
   };
 
   componentDidMount() {
@@ -81,6 +82,13 @@ export class Main extends React.Component {
     window.removeEventListener('load', this.updateDivWidth);
   }
 
+  componentDidUpdate() {
+    if (!this.state.initialUpdateCompleted) {
+      this.updateDivWidth();
+      this.setState({ initialUpdateCompleted: true });
+    }
+  }
+
   updateDivWidth() {
     if (this.divRef && this.divRef.current) {
       const divWidth = this.divRef.current.offsetWidth;
@@ -92,7 +100,7 @@ export class Main extends React.Component {
 
   onScaleAdded = () => {
     const { model, onModelChanged, configuration } = this.props;
-    let { scales } = model || {};
+    let { scales, excludeZero } = model || {};
     const { maxNoOfScales } = configuration || {};
     let { defaultTraitLabel } = configuration || '';
 
@@ -113,9 +121,8 @@ export class Main extends React.Component {
     }
 
     scales.push({
-      excludeZero: false,
       maxPoints: 1,
-      scorePointsLabels: ['', ''],
+      scorePointsLabels: excludeZero ? [''] : ['', ''],
       traitLabel: defaultTraitLabel,
       traits: [],
     });
