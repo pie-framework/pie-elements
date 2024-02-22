@@ -67,6 +67,7 @@ export class Main extends React.Component {
     showInfoDialog: false,
     infoDialogText: '',
     adjustedWidth: MIN_WIDTH,
+    initialUpdateCompleted: false // flag to track the initial update of the div width
   };
 
   componentDidMount() {
@@ -79,6 +80,13 @@ export class Main extends React.Component {
   componentWillUnmount() {
     window.removeEventListener('resize', this.updateDivWidth);
     window.removeEventListener('load', this.updateDivWidth);
+  }
+
+  componentDidUpdate() {
+    if (!this.state.initialUpdateCompleted) {
+      this.updateDivWidth();
+      this.setState({ initialUpdateCompleted: true });
+    }
   }
 
   updateDivWidth() {
