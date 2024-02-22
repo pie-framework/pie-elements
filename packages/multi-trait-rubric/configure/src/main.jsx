@@ -92,7 +92,7 @@ export class Main extends React.Component {
 
   onScaleAdded = () => {
     const { model, onModelChanged, configuration } = this.props;
-    let { scales } = model || {};
+    let { scales, excludeZero } = model || {};
     const { maxNoOfScales } = configuration || {};
     let { defaultTraitLabel } = configuration || '';
 
@@ -113,9 +113,8 @@ export class Main extends React.Component {
     }
 
     scales.push({
-      excludeZero: false,
       maxPoints: 1,
-      scorePointsLabels: ['', ''],
+      scorePointsLabels: excludeZero ? [''] : ['', ''],
       traitLabel: defaultTraitLabel,
       traits: [],
     });
