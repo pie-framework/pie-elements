@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { GraphContainer } from '@pie-lib/pie-toolbox/graphing';
 import { color, Collapsible, hasText, PreviewPrompt } from '@pie-lib/pie-toolbox/render-ui';
-import {CorrectAnswerToggle} from '@pie-lib/pie-toolbox/correct-answer-toggle';
+import { CorrectAnswerToggle } from '@pie-lib/pie-toolbox/correct-answer-toggle';
 
 export class Main extends React.Component {
   static propTypes = {
@@ -39,7 +39,6 @@ export class Main extends React.Component {
       prompt,
       range,
       rationale,
-      size,
       showToggle,
       title,
       titleEnabled,
@@ -47,6 +46,7 @@ export class Main extends React.Component {
       toolbarTools,
       language,
     } = model || {};
+    const size = model?.size || model?.graph || {}; // need this for models that are not processed by controller
     const marks = answersCorrected || answer || [];
 
     return (
