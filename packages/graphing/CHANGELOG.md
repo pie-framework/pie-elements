@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.4.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@5.4.2...@pie-element/graphing@5.4.3) (2024-02-23)
+
+
+### Bug Fixes
+
+* **graphing:** fallback to graph when size is not set on the model PD-3477 ([04f3594](https://github.com/pie-framework/pie-elements/commit/04f3594ec302ed58d348d6d162641d6b0591ab41))
+
+
+
+
+
 ## [5.4.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@5.4.1...@pie-element/graphing@5.4.2) (2024-02-20)
 
 
