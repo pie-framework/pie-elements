@@ -46,7 +46,7 @@ export class Main extends React.Component {
       toolbarTools,
       language,
     } = model || {};
-    const size = model.size || model.graph; // need this for models that are not processed by controller
+    const size = model?.size || model?.graph || {}; // need this for models that are not processed by controller
     const marks = answersCorrected || answer || [];
 
     return (
