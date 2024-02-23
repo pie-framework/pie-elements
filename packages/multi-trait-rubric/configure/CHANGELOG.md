@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.3.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-configure@3.3.2...@pie-element/multi-trait-rubric-configure@3.3.3) (2024-02-22)
+
+
+### Bug Fixes
+
+* **multi-trait-rubric:** add dynamic width calculations in componentDidUpdate for initial render PD-3470 ([2d95fa7](https://github.com/pie-framework/pie-elements/commit/2d95fa73cad1309ee888469ab33adc18d6df432a))
+* **multi-trait-rubric:** scorePointsLabels shouve have length 1 or 1 based on excludeZero PD-3468 ([de5d575](https://github.com/pie-framework/pie-elements/commit/de5d5759627e584c6a2e697bfe6bd261e0396a8d))
+
+
+
+
+
 ## [3.3.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-configure@3.3.1...@pie-element/multi-trait-rubric-configure@3.3.2) (2024-02-20)
 
 
