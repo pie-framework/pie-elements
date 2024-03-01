@@ -29,7 +29,7 @@ export default class PiePassage extends HTMLElement {
   }
 
   _render() {
-    const { showTeacherInstructions = false, teacherInstructions = '' } = this._model;
+    const { showTeacherInstructions = false } = this._model;
 
     if (this._model.passages.length > 0) {
       const passagesTabs = this._model.passages.map((passage, index) => {
