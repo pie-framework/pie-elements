@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {CorrectAnswerToggle} from '@pie-lib/pie-toolbox/correct-answer-toggle';
+import { CorrectAnswerToggle } from '@pie-lib/pie-toolbox/correct-answer-toggle';
 import { color, Collapsible, Feedback, hasText, PreviewPrompt } from '@pie-lib/pie-toolbox/render-ui';
 import AnswerGrid from './answer-grid';
 import { withStyles } from '@material-ui/core/styles';
@@ -28,11 +28,10 @@ export class Main extends React.Component {
   }
 
   generateAnswers = (model) => {
-    const { config } = model;
     const answers = {};
 
-    config.rows.forEach((row) => {
-      answers[row.id] = new Array(config.layout - 1).fill(false);
+    model.rows.forEach((row) => {
+      answers[row.id] = new Array(model.layout - 1).fill(false);
     });
 
     return answers;
@@ -41,18 +40,17 @@ export class Main extends React.Component {
   isAnswerRegenerationRequired = (nextProps) => {
     let isRequired = false;
 
-    if (this.props.model.config.choiceMode !== nextProps.model.config.choiceMode) {
+    if (this.props.model.choiceMode !== nextProps.model.choiceMode) {
       isRequired = true;
     }
 
-    if (this.props.model.config.layout !== nextProps.model.config.layout) {
+    if (this.props.model.layout !== nextProps.model.layout) {
       isRequired = true;
     }
 
     if (
-      this.props.model.config.rows.length !== nextProps.model.config.rows.length ||
-      (nextProps.session.answers &&
-        nextProps.model.config.rows.length !== Object.keys(nextProps.session.answers).length)
+      this.props.model.rows.length !== nextProps.model.rows.length ||
+      (nextProps.session.answers && nextProps.model.rows.length !== Object.keys(nextProps.session.answers).length)
     ) {
       isRequired = true;
     }
@@ -142,10 +140,10 @@ export class Main extends React.Component {
           disabled={model.disabled}
           view={model.view}
           onAnswerChange={this.onAnswerChange}
-          choiceMode={model.config.choiceMode}
+          choiceMode={model.choiceMode}
           answers={showCorrect ? model.correctResponse : session.answers}
-          headers={model.config.headers}
-          rows={model.config.rows}
+          headers={model.headers}
+          rows={model.rows}
         />
 
         {model.rationale && hasText(model.rationale) && (
@@ -154,7 +152,7 @@ export class Main extends React.Component {
           </Collapsible>
         )}
 
-        {model.feedback && <Feedback correctness={model.correctness.correctness} feedback={model.feedback} />}
+        {model.feedback && <Feedback correctness={correctness.correctness} feedback={model.feedback} />}
       </div>
     );
   }
