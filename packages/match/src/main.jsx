@@ -30,7 +30,7 @@ export class Main extends React.Component {
   generateAnswers = (model) => {
     const answers = {};
 
-    model.rows.forEach((row) => {
+    model.rows?.forEach((row) => {
       answers[row.id] = new Array(model.layout - 1).fill(false);
     });
 
@@ -38,24 +38,26 @@ export class Main extends React.Component {
   };
 
   isAnswerRegenerationRequired = (nextProps) => {
+    const { model: { choiceMode, layout, rows } = {} } = this.props;
+    const { session: { answers } = {} } = nextProps;
     let isRequired = false;
 
-    if (this.props.model.choiceMode !== nextProps.model.choiceMode) {
+    if (choiceMode !== nextProps.model.choiceMode) {
       isRequired = true;
     }
 
-    if (this.props.model.layout !== nextProps.model.layout) {
+    if (layout !== nextProps.model.layout) {
       isRequired = true;
     }
 
     if (
-      this.props.model.rows.length !== nextProps.model.rows.length ||
-      (nextProps.session.answers && nextProps.model.rows.length !== Object.keys(nextProps.session.answers).length)
+      rows.length !== nextProps.model.rows.length ||
+      (answers && nextProps.model.rows.length !== Object.keys(answers).length)
     ) {
       isRequired = true;
     }
 
-    return isRequired || !nextProps.session.answers;
+    return isRequired || !answers;
   };
 
   UNSAFE_componentWillReceiveProps(nextProps) {
@@ -141,7 +143,7 @@ export class Main extends React.Component {
           view={model.view}
           onAnswerChange={this.onAnswerChange}
           choiceMode={model.choiceMode}
-          answers={showCorrect ? model.correctResponse : session.answers}
+          answers={showCorrect ? model.correctResponse || {} : session.answers}
           headers={model.headers}
           rows={model.rows}
         />
