@@ -403,6 +403,9 @@
             }
           },
           "required": [
+            "decimalTick",
+            "fractionTick",
+            "integerTick",
             "major",
             "minor",
             "tickIntervalType"
@@ -1271,6 +1274,9 @@
             }
           },
           "required": [
+            "decimalTick",
+            "fractionTick",
+            "integerTick",
             "major",
             "minor",
             "tickIntervalType"
@@ -1605,6 +1611,9 @@
         }
       },
       "required": [
+        "decimalTick",
+        "fractionTick",
+        "integerTick",
         "major",
         "minor",
         "tickIntervalType"

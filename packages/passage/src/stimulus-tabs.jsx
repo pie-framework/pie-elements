@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import { withStyles } from '@material-ui/core/styles';
-import { color, Purpose } from '@pie-lib/pie-toolbox/render-ui';
+import { Collapsible, color, PreviewPrompt, Purpose } from '@pie-lib/pie-toolbox/render-ui';
 import classNames from 'classnames';
 
 const styles = (theme) => ({
@@ -38,6 +38,9 @@ const styles = (theme) => ({
   },
   breakSpaces: {
     whiteSpace: 'break-spaces',
+  },
+  teacherInstructions: {
+    marginBottom: theme.spacing.unit * 2,
   },
 });
 
@@ -114,8 +117,38 @@ class StimulusTabs extends React.Component {
     return div.innerHTML;
   };
 
+  renderInstructions(showTeacherInstructions, teacherInstructions, disabledTabs = false) {
+    if (!showTeacherInstructions || !teacherInstructions) {
+      return;
+    }
+
+    const teacherInstructionsDiv = (
+      <PreviewPrompt
+        tagName="div"
+        className="prompt"
+        defaultClassName="teacher-instructions"
+        prompt={teacherInstructions}
+      />
+    );
+
+    if (disabledTabs) {
+      return teacherInstructionsDiv;
+    }
+
+    return (
+      <Collapsible
+        labels={{
+          hidden: 'Show Teacher Instructions',
+          visible: 'Hide Teacher Instructions',
+        }}
+      >
+        {teacherInstructionsDiv}
+      </Collapsible>
+    );
+  }
+
   render() {
-    const { classes, tabs, disabledTabs } = this.props;
+    const { classes, tabs, disabledTabs, showTeacherInstructions } = this.props;
     const { activeTab } = this.state;
 
     if (tabs && tabs.length > 1) {
@@ -140,6 +173,7 @@ class StimulusTabs extends React.Component {
                   className={classNames(classes.title, 'title')}
                   dangerouslySetInnerHTML={{ __html: this.parsedText(tab.title) }}
                 />
+                {this.renderInstructions(showTeacherInstructions, tab.teacherInstructions, disabledTabs)}
                 <Purpose purpose="passage-text">
                   <div className="text" key={tab.id} dangerouslySetInnerHTML={{ __html: this.parsedText(tab.text) }} />
                 </Purpose>
@@ -186,6 +220,8 @@ class StimulusTabs extends React.Component {
                 role="tabpanel"
                 aria-labelledby={`button-${tab.id}`}
               >
+                {this.renderInstructions(showTeacherInstructions, tab.teacherInstructions)}
+
                 <Purpose purpose="passage-text">
                   <div key={tab.id} dangerouslySetInnerHTML={{ __html: this.parsedText(tab.text) }} />
                 </Purpose>
@@ -196,9 +232,12 @@ class StimulusTabs extends React.Component {
       );
     } else if (tabs && tabs[0]) {
       return (
-        <div className={classNames(classes.root, classes.tabContainer, classes.breakSpaces, 'passage')}>
-          <div className="text" dangerouslySetInnerHTML={{ __html: this.parsedText(tabs[0].text) }} />
-        </div>
+        <>
+          {this.renderInstructions(showTeacherInstructions, tabs[0].teacherInstructions, disabledTabs)}
+          <div className={classNames(classes.root, classes.tabContainer, classes.breakSpaces, 'passage')}>
+            <div className="text" dangerouslySetInnerHTML={{ __html: this.parsedText(tabs[0].text) }} />
+          </div>
+        </>
       );
     }
   }
@@ -211,9 +250,11 @@ StimulusTabs.propTypes = {
       id: PropTypes.number.isRequired,
       title: PropTypes.string.isRequired,
       text: PropTypes.string.isRequired,
+      teacherInstructions: PropTypes.string,
     }).isRequired,
   ).isRequired,
   disabledTabs: PropTypes.bool,
+  showTeacherInstructions: PropTypes.bool,
 };
 
 export default withStyles(styles)(StimulusTabs);
