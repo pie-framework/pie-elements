@@ -9,7 +9,7 @@ import { InputContainer, NumberTextField, FeedbackConfig, settings, layout } fro
 import Chip from '@material-ui/core/Chip';
 import Info from '@material-ui/icons/Info';
 import debug from 'debug';
-import {EditableHtml} from '@pie-lib/pie-toolbox/editable-html';
+import { EditableHtml } from '@pie-lib/pie-toolbox/editable-html';
 import Tooltip from '@material-ui/core/Tooltip';
 import { generateValidationMessage } from './utils';
 
@@ -125,6 +125,7 @@ export class Design extends React.Component {
     const { classes, configuration, imageSupport, model, onConfigurationChanged, onModelChanged, uploadSoundSupport } =
       this.props;
     const {
+      baseInputConfiguration = {},
       correctAnswer = {},
       contentDimensions = {},
       feedback = {},
@@ -192,6 +193,15 @@ export class Design extends React.Component {
       rubricEnabled: withRubric?.settings && toggle(withRubric?.label),
     };
 
+    const getPluginProps = (props) => {
+      return Object.assign(
+        {
+          ...baseInputConfiguration,
+        },
+        props || {},
+      );
+    };
+
     return (
       <layout.ConfigLayout
         dimensions={contentDimensions}
@@ -218,6 +228,7 @@ export class Design extends React.Component {
               imageSupport={imageSupport}
               nonEmpty={false}
               toolbarOpts={toolbarOpts}
+              pluginProps={getPluginProps(configuration?.teacherInstructions?.inputConfiguration)}
               spellCheck={spellCheckEnabled}
               maxImageWidth={(maxImageWidth && maxImageWidth.teacherInstructions) || defaultImageMaxWidth}
               maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
@@ -236,6 +247,7 @@ export class Design extends React.Component {
               onChange={this.onPromptChanged}
               imageSupport={imageSupport}
               toolbarOpts={toolbarOpts}
+              pluginProps={getPluginProps(configuration?.prompt?.inputConfiguration)}
               spellCheck={spellCheckEnabled}
               maxImageWidth={defaultImageMaxWidth}
               maxImageHeight={defaultImageMaxHeight}
@@ -317,6 +329,7 @@ export class Design extends React.Component {
               onChange={this.onRationaleChanged}
               imageSupport={imageSupport}
               toolbarOpts={toolbarOpts}
+              pluginProps={getPluginProps(configuration?.rationale?.inputConfiguration)}
               spellCheck={spellCheckEnabled}
               maxImageWidth={(maxImageWidth && maxImageWidth.rationale) || defaultImageMaxWidth}
               maxImageHeight={(maxImageHeight && maxImageHeight.rationale) || defaultImageMaxHeight}

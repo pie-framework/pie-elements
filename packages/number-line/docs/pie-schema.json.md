@@ -70,15 +70,15 @@ larger tick - These ticks have labels.
 
 Contains tick interval type Integer, Fraction, Decimal
 
-### `integerTick` (number)
+### `integerTick` (number, required)
 
 Integer representation of minor.
 
-### `decimalTick` (number)
+### `decimalTick` (number, required)
 
 Decimal representation of minor.
 
-### `fractionTick` (string)
+### `fractionTick` (string, required)
 
 Fraction representation of minor.
 
@@ -479,15 +479,15 @@ larger tick - These ticks have labels.
 
 Contains tick interval type Integer, Fraction, Decimal
 
-#### `integerTick` (number)
+#### `integerTick` (number, required)
 
 Integer representation of minor.
 
-#### `decimalTick` (number)
+#### `decimalTick` (number, required)
 
 Decimal representation of minor.
 
-#### `fractionTick` (string)
+#### `fractionTick` (string, required)
 
 Fraction representation of minor.
 
@@ -601,14 +601,14 @@ larger tick - These ticks have labels.
 
 Contains tick interval type Integer, Fraction, Decimal
 
-### `integerTick` (number)
+### `integerTick` (number, required)
 
 Integer representation of minor.
 
-### `decimalTick` (number)
+### `decimalTick` (number, required)
 
 Decimal representation of minor.
 
-### `fractionTick` (string)
+### `fractionTick` (string, required)
 
 Fraction representation of minor.
