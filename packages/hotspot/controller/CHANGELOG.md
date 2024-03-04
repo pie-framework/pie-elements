@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-controller@4.3.3...@pie-element/hotspot-controller@4.4.0) (2024-03-04)
+
+
+### Features
+
+* update pie-lib/pie-toolbox version PD-1870 and PD-3501 ([8df1d8d](https://github.com/pie-framework/pie-elements/commit/8df1d8d281a0d6023d5a9c0e6fdd29fea71b6ac1))
+
+
+
+
+
 ## [4.3.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-controller@4.3.2...@pie-element/hotspot-controller@4.3.3) (2024-02-20)
 
 

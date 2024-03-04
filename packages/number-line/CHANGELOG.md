@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@8.0.3...@pie-element/number-line@8.1.0) (2024-03-04)
+
+
+### Features
+
+* Add configuration for custom buttons PD-3506 ([690e6d3](https://github.com/pie-framework/pie-elements/commit/690e6d31cf66ad02287501ad5cb9c5cc22d6b088))
+* update pie-lib/pie-toolbox version PD-1870 and PD-3501 ([8df1d8d](https://github.com/pie-framework/pie-elements/commit/8df1d8d281a0d6023d5a9c0e6fdd29fea71b6ac1))
+
+
+
+
+
 ## [8.0.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@8.0.2...@pie-element/number-line@8.0.3) (2024-02-20)
 
 

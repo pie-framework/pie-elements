@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@8.3.2...@pie-element/select-text@8.4.0) (2024-03-04)
+
+
+### Features
+
+* Add configuration for custom buttons PD-3506 ([0fa8fee](https://github.com/pie-framework/pie-elements/commit/0fa8fee71238f31f3c94be66263a58595e19b407))
+* Add configuration for custom buttons PD-3506 ([690e6d3](https://github.com/pie-framework/pie-elements/commit/690e6d31cf66ad02287501ad5cb9c5cc22d6b088))
+* update pie-lib/pie-toolbox version PD-1870 and PD-3501 ([8df1d8d](https://github.com/pie-framework/pie-elements/commit/8df1d8d281a0d6023d5a9c0e6fdd29fea71b6ac1))
+
+
+
+
+
 ## [8.3.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@8.3.1...@pie-element/select-text@8.3.2) (2024-02-20)
 
 
