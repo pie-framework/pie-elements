@@ -52,15 +52,15 @@ export default class ComplexRubricConfigureElement extends HTMLElement {
     ...model,
     rubrics: {
       simpleRubric: {
-        ...(defaults.rubrics || {}).simpleRubric,
+        ...(sensibleDefaults?.model?.rubrics || {}).simpleRubric,
         ...simpleRubric,
       },
       multiTraitRubric: {
-        ...(defaults.rubrics || {}).multiTraitRubric,
+        ...(sensibleDefaults?.model?.rubrics || {}).multiTraitRubric,
         ...multiTraitRubric,
       },
       rubricless: {
-        ...(defaults.rubrics || {}).rubricless,
+        ...(sensibleDefaults?.model?.rubrics || {}).rubricless,
         ...rubricless,
       },
     },
