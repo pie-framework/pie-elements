@@ -44,11 +44,9 @@ export default class ComplexRubricConfigureElement extends HTMLElement {
       rubrics: { simpleRubric = {}, rubricless = {}, multiTraitRubric = {} } = { simpleRubric: {}, rubricless: {}, multiTraitRubric: {} },
       ...model
     } = {},
-    defaults = {},
   ) =>
   {
     return {
-    ...defaults,
     ...model,
     rubrics: {
       simpleRubric: {
@@ -79,7 +77,7 @@ export default class ComplexRubricConfigureElement extends HTMLElement {
   }
 
   set model(m) {
-    this._model = ComplexRubricConfigureElement.createDefaultModel(m, this._model);
+    this._model = ComplexRubricConfigureElement.createDefaultModel(m);
 
     this.canUpdateModel = true;
     this._render();
@@ -92,7 +90,7 @@ export default class ComplexRubricConfigureElement extends HTMLElement {
   }
 
   onModelChanged = (m, reset) => {
-    this._model = ComplexRubricConfigureElement.createDefaultModel(m, this._model);
+    this._model = ComplexRubricConfigureElement.createDefaultModel(m);
 
     this.dispatchModelUpdated(reset);
 
