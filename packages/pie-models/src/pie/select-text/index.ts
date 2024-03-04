@@ -7,7 +7,9 @@ import {
   ConfigureMathMLProp,
   ConfigureMaxImageDimensionsProp,
   ConfigureProp,
-  ConfigurePropWithEnabled
+  ConfigurePropWithEnabled,
+  EditableHtmlConfigureProp,
+  EditableHtmlPluginConfigure,
 } from '../ConfigurationProp';
 
 interface TextToken {
@@ -113,6 +115,12 @@ export interface SelectTextPie extends PieModel {
  */
 export interface SelectTextConfigure extends PromptConfig, CommonConfigSettings {
   /**
+   * Base editable html input configuration regarding plugins that are enabled/disabled
+   * E.g. audio, video, image
+   */
+  baseInputConfiguration?: EditableHtmlConfigureProp;
+
+  /**
    * Selection Count configuration
    */
   selectionCount?: ConfigureProp;
@@ -150,7 +158,7 @@ export interface SelectTextConfigure extends PromptConfig, CommonConfigSettings 
   /**
    * Prompt configuration
    */
-  prompt?: ConfigureProp;
+  prompt?: EditableHtmlPluginConfigure;
 
   /**
    * Highlight Choices configuration
@@ -160,7 +168,7 @@ export interface SelectTextConfigure extends PromptConfig, CommonConfigSettings 
   /**
    * Rationale configuration
    */
-  rationale?: ConfigureProp;
+  rationale?: EditableHtmlPluginConfigure;
 
   /**
    * Indicates if the settings panel is not available
@@ -185,7 +193,7 @@ export interface SelectTextConfigure extends PromptConfig, CommonConfigSettings 
   /**
    * Teacher Instructions configuration
    */
-  teacherInstructions?: ConfigureProp;
+  teacherInstructions?: EditableHtmlPluginConfigure;
 
   /**
    * Maximum number of selected tokens in correct answer

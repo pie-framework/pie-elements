@@ -24,6 +24,11 @@ export default {
     toolbarEditorPosition: 'bottom',
   },
   configuration: {
+    baseInputConfiguration: {
+      audio: { disabled: false },
+      video: { disabled: false },
+      image: { disabled: false },
+    },
     selectionCount: {
       settings: true,
       label: 'Selection count',
@@ -43,6 +48,11 @@ export default {
     rationale: {
       settings: true,
       label: 'Rationale',
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
     },
     scoringType: {
       settings: false,
@@ -55,10 +65,20 @@ export default {
     teacherInstructions: {
       settings: true,
       label: 'Teacher Instructions',
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
     },
     prompt: {
       label: 'Prompt',
       settings: true,
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
     },
     text: {
       settings: true,
