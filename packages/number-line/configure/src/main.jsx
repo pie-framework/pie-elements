@@ -129,7 +129,7 @@ export class Main extends React.Component {
       },
     };
     this.graphChange({ height });
-  };
+  }
 
   graphChange = (obj) => {
     const { model, onChange } = this.props;
@@ -431,6 +431,7 @@ export class Main extends React.Component {
   render() {
     const { classes, model, onChange, configuration, uploadSoundSupport } = this.props;
     const {
+      baseInputConfiguration = {},
       contentDimensions = {},
       instruction = {},
       teacherInstructions = {},
@@ -461,6 +462,16 @@ export class Main extends React.Component {
     const toolbarOpts = {
       position: toolbarEditorPosition === 'top' ? 'top' : 'bottom',
     };
+
+    const getPluginProps = (props) => {
+      return Object.assign(
+        {
+          ...baseInputConfiguration,
+        },
+        props || {},
+      );
+    };
+
     return (
       <layout.ConfigLayout dimensions={contentDimensions} hideSettings={true} settings={null}>
         <Typography component="div" type="body1" className={classes.description}>
@@ -477,6 +488,7 @@ export class Main extends React.Component {
               disableUnderline
               error={teacherInstructionsError}
               toolbarOpts={toolbarOpts}
+              pluginProps={getPluginProps(teacherInstructions?.inputConfiguration)}
               spellCheck={spellCheckEnabled}
               uploadSoundSupport={uploadSoundSupport}
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
@@ -496,6 +508,7 @@ export class Main extends React.Component {
               disableUnderline
               error={promptError}
               toolbarOpts={toolbarOpts}
+              pluginProps={getPluginProps(prompt?.inputConfiguration)}
               spellCheck={spellCheckEnabled}
               uploadSoundSupport={uploadSoundSupport}
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}

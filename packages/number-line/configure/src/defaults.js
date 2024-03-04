@@ -42,6 +42,11 @@ export const model = {
 };
 
 export const configuration = {
+  baseInputConfiguration: {
+    audio: { disabled: false },
+    video: { disabled: false },
+    image: { disabled: false },
+  },
   instruction: {
     settings: false,
     enabled: true,
@@ -52,11 +57,21 @@ export const configuration = {
     settings: true,
     label: 'Item Stem',
     required: false,
+    inputConfiguration: {
+      audio: { disabled: false },
+      video: { disabled: false },
+      image: { disabled: false },
+    },
   },
   teacherInstructions: {
     settings: true,
     label: 'Teacher Instructions',
     required: false,
+    inputConfiguration: {
+      audio: { disabled: false },
+      video: { disabled: false },
+      image: { disabled: false },
+    },
   },
   numberLineDimensions: {
     settings: true,

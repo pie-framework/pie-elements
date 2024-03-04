@@ -7,7 +7,8 @@ import {
   ConfigureMathMLProp,
   ConfigureProp,
   ConfigurePropWithEnabled,
-  ConfigureRequiredProp,
+  EditableHtmlConfigureProp,
+  EditableHtmlPluginConfigureRequired,
 } from '../ConfigurationProp';
 
 interface ResponseDefault {
@@ -70,10 +71,10 @@ interface Ticks {
 
   /** Integer representation of minor. */
   integerTick: number;
-  
+
   /** Decimal representation of minor. */
   decimalTick: number;
-  
+
   /** Fraction representation of minor. */
   fractionTick: string;
 }
@@ -198,6 +199,12 @@ export interface NumberLinePie extends PieModel {
  */
 export interface NumberLineConfigure extends PromptConfig, CommonConfigSettings {
   /**
+   * Base editable html input configuration regarding plugins that are enabled/disabled
+   * E.g. audio, video, image
+   */
+  baseInputConfiguration?: EditableHtmlConfigureProp;
+
+  /**
    * Configuration for the instruction
    */
   instruction?: ConfigurePropWithEnabled;
@@ -205,12 +212,12 @@ export interface NumberLineConfigure extends PromptConfig, CommonConfigSettings 
   /**
    * Configuration for the prompt
    */
-  prompt?: ConfigureRequiredProp;
+  prompt?: EditableHtmlPluginConfigureRequired;
 
   /**
    * Configuration for the teacher instructions
    */
-  teacherInstructions?: ConfigureRequiredProp;
+  teacherInstructions?: EditableHtmlPluginConfigureRequired;
 
   /** Hold default values for number line width like min , max and step. */
   numberLineDimensions?: NumberLineDimensions;
