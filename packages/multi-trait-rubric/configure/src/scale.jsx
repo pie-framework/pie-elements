@@ -97,12 +97,12 @@ export class Scale extends React.Component {
       this.showDecreaseMaxPointsModal({ newMaxPoints: numberValue });
     } else {
       for (let i = 0; i < numberValue; i++) {
-        if (!scorePointsLabels[i]) {
+        if (!scorePointsLabels[i] && scorePointsLabels[i] !== '') {
           scorePointsLabels.push('');
         }
 
         traits.forEach((trait, index) => {
-          if (!traits[index].scorePointsDescriptors[i]) {
+          if (!traits[index].scorePointsDescriptors[i] && traits[index].scorePointsDescriptors[i] !== '') {
             traits[index].scorePointsDescriptors.push('');
           }
         });
