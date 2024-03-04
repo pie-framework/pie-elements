@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association-configure@5.3.2...@pie-element/image-cloze-association-configure@5.4.0) (2024-03-04)
+
+
+### Features
+
+* update pie-lib/pie-toolbox version PD-1870 and PD-3501 ([8df1d8d](https://github.com/pie-framework/pie-elements/commit/8df1d8d281a0d6023d5a9c0e6fdd29fea71b6ac1))
+
+
+
+
+
 ## [5.3.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association-configure@5.3.1...@pie-element/image-cloze-association-configure@5.3.2) (2024-02-20)
 
 

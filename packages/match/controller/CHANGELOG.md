@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-controller@5.2.2...@pie-element/match-controller@6.0.0) (2024-03-04)
+
+
+### Bug Fixes
+
+* **match:** refactor player model structure PD-3499 ([95cfbbb](https://github.com/pie-framework/pie-elements/commit/95cfbbbce4030f8738f2c4f135135643627a1243))
+
+
+### Features
+
+* update pie-lib/pie-toolbox version PD-1870 and PD-3501 ([8df1d8d](https://github.com/pie-framework/pie-elements/commit/8df1d8d281a0d6023d5a9c0e6fdd29fea71b6ac1))
+
+
+### BREAKING CHANGES
+
+* **match:** config object was removed from the player model and should no longer be used
+
+
+
+
+
 ## [5.2.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-controller@5.2.1...@pie-element/match-controller@5.2.2) (2024-02-20)
 
 
