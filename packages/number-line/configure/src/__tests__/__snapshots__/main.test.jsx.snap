@@ -37,6 +37,19 @@ exports[`main snapshot renders 1`] = `
       nonEmpty={false}
       onChange={[Function]}
       onDone={[Function]}
+      pluginProps={
+        Object {
+          "audio": Object {
+            "disabled": false,
+          },
+          "image": Object {
+            "disabled": false,
+          },
+          "video": Object {
+            "disabled": false,
+          },
+        }
+      }
       toolbarOpts={
         Object {
           "position": "bottom",
@@ -69,6 +82,19 @@ exports[`main snapshot renders 1`] = `
       nonEmpty={false}
       onChange={[Function]}
       onDone={[Function]}
+      pluginProps={
+        Object {
+          "audio": Object {
+            "disabled": false,
+          },
+          "image": Object {
+            "disabled": false,
+          },
+          "video": Object {
+            "disabled": false,
+          },
+        }
+      }
       toolbarOpts={
         Object {
           "position": "bottom",
