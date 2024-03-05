@@ -174,22 +174,6 @@ export class Main extends React.Component {
     renderMath(this.root);
   };
 
-  componentDidMount() {
-    this.updateAriaHidden();
-  }
-
-  componentDidUpdate() {
-    this.handleAnswerBlockDomUpdate();
-    this.updateAriaHidden();
-  }
-
-  updateAriaHidden = () => {
-    if (this.root) {
-      const selectableElements = this.root.querySelectorAll('.mq-selectable');
-      (selectableElements || []).forEach((elem) => elem.setAttribute('aria-hidden', 'true'));
-    }
-  };
-
   UNSAFE_componentWillReceiveProps(nextProps) {
     const { config } = this.props.model;
     const { config: nextConfig = {} } = nextProps.model || {};
@@ -254,8 +238,21 @@ export class Main extends React.Component {
 
   componentDidMount() {
     this.handleAnswerBlockDomUpdate();
+    this.updateAriaHidden();
     setTimeout(() => renderMath(this.root), 100);
   }
+
+  componentDidUpdate() {
+    this.handleAnswerBlockDomUpdate();
+    this.updateAriaHidden();
+  }
+
+  updateAriaHidden = () => {
+    if (this.root) {
+      const selectableElements = this.root.querySelectorAll('.mq-selectable');
+      (selectableElements || []).forEach((elem) => elem.setAttribute('aria-hidden', 'true'));
+    }
+  };
 
   onDone = () => {};
 
