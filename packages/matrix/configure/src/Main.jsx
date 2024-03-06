@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {EditableHtml} from '@pie-lib/pie-toolbox/editable-html';
+import { EditableHtml } from '@pie-lib/pie-toolbox/editable-html';
 import { InputContainer, settings, layout } from '@pie-lib/pie-toolbox/config-ui';
 import { withStyles } from '@material-ui/core/styles';
 import MatrixColumnsSizeHeaderInput from './MatrixColumnsSizeHeaderInput';
@@ -38,6 +38,7 @@ const Design = withStyles(styles)((props) => {
     onTeacherInstructionsChanged,
   } = props;
   const {
+    baseInputConfiguration = {},
     contentDimensions = {},
     prompt = {},
     scoringType = {},
@@ -51,6 +52,15 @@ const Design = withStyles(styles)((props) => {
     teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
     spellCheckEnabled: spellCheck.settings && toggle(spellCheck.label),
     scoringType: scoringType.settings && radio(scoringType.label, ['auto', 'rubric']),
+  };
+
+  const getPluginProps = (props) => {
+    return Object.assign(
+      {
+        ...baseInputConfiguration,
+      },
+      props || {},
+    );
   };
 
   return (
@@ -76,6 +86,7 @@ const Design = withStyles(styles)((props) => {
             markup={model.teacherInstructions || ''}
             onChange={onTeacherInstructionsChanged}
             imageSupport={imageSupport}
+            pluginProps={getPluginProps(teacherInstructions?.inputConfiguration)}
             nonEmpty={false}
             spellCheck={spellCheckEnabled}
             uploadSoundSupport={uploadSoundSupport}
@@ -89,6 +100,7 @@ const Design = withStyles(styles)((props) => {
           markup={model.prompt}
           onChange={onPromptChanged}
           imageSupport={imageSupport}
+          pluginProps={getPluginProps(prompt?.inputConfiguration)}
           nonEmpty={!prompt.settings}
           spellCheck={spellCheckEnabled}
           uploadSoundSupport={uploadSoundSupport}
