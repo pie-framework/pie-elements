@@ -1,3 +1,4 @@
+import { getPluginProps } from './utils';
 import * as React from 'react';
 import cx from 'classnames';
 import PropTypes from 'prop-types';
@@ -160,17 +161,21 @@ class AnswerConfigBlock extends React.Component {
   render() {
     const { classes, model, onAddRow, imageSupport, configuration, toolbarOpts, spellCheck, uploadSoundSupport } =
       this.props;
-    const { headers = {}, maxImageWidth = {}, maxImageHeight = {}, mathMlOptions = {}, minQuestions } = configuration || {};
+    const {
+      baseInputConfiguration = {},
+      headers = {},
+      rows = {},
+      maxImageWidth = {},
+      maxImageHeight = {},
+      mathMlOptions = {},
+      minQuestions,
+    } = configuration || {};
     const { errors } = model || {};
     const { correctResponseError, rowsErrors, columnsErrors, noOfRowsError, columnsLengthError } = errors || {};
 
     const filteredDefaultPlugins = (DEFAULT_PLUGINS || []).filter(
       (p) => p !== 'table' && p !== 'bulleted-list' && p !== 'numbered-list',
     );
-    const labelPlugins = {
-      audio: { disabled: true },
-      video: { disabled: true },
-    };
 
     const defaultImageMaxWidth = maxImageWidth && maxImageWidth.prompt;
     const defaultImageMaxHeight = maxImageHeight && maxImageHeight.prompt;
@@ -203,7 +208,7 @@ class AnswerConfigBlock extends React.Component {
                     className={columnsErrors && !columnsErrors[idx] ? classes.marginBottom : classes.headerInput}
                     label={'column label'}
                     activePlugins={filteredDefaultPlugins}
-                    pluginProps={labelPlugins}
+                    pluginProps={getPluginProps(headers?.inputConfiguration, baseInputConfiguration)}
                     autoWidthToolbar
                     spellCheck={spellCheck}
                     uploadSoundSupport={uploadSoundSupport}
@@ -235,6 +240,7 @@ class AnswerConfigBlock extends React.Component {
               uploadSoundSupport={uploadSoundSupport}
               mathMlOptions={mathMlOptions}
               minQuestions={minQuestions}
+              inputConfiguration={getPluginProps(rows?.inputConfiguration, baseInputConfiguration)}
             />
           ))}
 

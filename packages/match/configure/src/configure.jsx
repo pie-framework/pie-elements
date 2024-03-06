@@ -1,7 +1,8 @@
+import { getPluginProps } from './utils';
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { FeedbackConfig, settings, layout, InputContainer, AlertDialog } from '@pie-lib/pie-toolbox/config-ui';
-import {EditableHtml} from '@pie-lib/pie-toolbox/editable-html';
+import { EditableHtml } from '@pie-lib/pie-toolbox/editable-html';
 import { withDragContext } from '@pie-lib/pie-toolbox/drag';
 import PropTypes from 'prop-types';
 import debug from 'debug';
@@ -46,7 +47,7 @@ class Configure extends React.Component {
     let maxId = 0;
 
     if (props.model.rows && props.model.rows.length > 0) {
-        maxId = Math.max(...props.model.rows.map(row => row.id));
+      maxId = Math.max(...props.model.rows.map((row) => row.id));
     }
 
     this.rowIdCounter = maxId + 1;
@@ -209,6 +210,7 @@ class Configure extends React.Component {
     const { classes, model, imageSupport, onModelChanged, configuration, onConfigurationChanged, uploadSoundSupport } =
       this.props;
     const {
+      baseInputConfiguration = {},
       contentDimensions = {},
       enableImages = {},
       feedback = {},
@@ -290,6 +292,7 @@ class Configure extends React.Component {
               imageSupport={imageSupport}
               nonEmpty={false}
               toolbarOpts={toolbarOpts}
+              pluginProps={getPluginProps(teacherInstructions?.inputConfiguration, baseInputConfiguration)}
               spellCheck={spellCheckEnabled}
               maxImageWidth={(maxImageWidth && maxImageWidth.teacherInstructions) || defaultImageMaxWidth}
               maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
@@ -309,6 +312,7 @@ class Configure extends React.Component {
               nonEmpty={false}
               disableUnderline
               toolbarOpts={toolbarOpts}
+              pluginProps={getPluginProps(prompt?.inputConfiguration, baseInputConfiguration)}
               spellCheck={spellCheckEnabled}
               maxImageWidth={maxImageWidth && maxImageWidth.prompt}
               maxImageHeight={maxImageHeight && maxImageHeight.prompt}
@@ -345,6 +349,7 @@ class Configure extends React.Component {
               onChange={this.onRationaleChanged}
               imageSupport={imageSupport}
               toolbarOpts={toolbarOpts}
+              pluginProps={getPluginProps(rationale?.inputConfiguration, baseInputConfiguration)}
               spellCheck={spellCheckEnabled}
               maxImageWidth={(maxImageWidth && maxImageWidth.rationale) || defaultImageMaxWidth}
               maxImageHeight={(maxImageHeight && maxImageHeight.rationale) || defaultImageMaxHeight}
