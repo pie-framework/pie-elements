@@ -8,6 +8,7 @@ import {
   ConfigureProp,
   ConfigurePropWithEnabled,
   EditableHtmlConfigureProp,
+  EditableHtmlPluginConfigure,
   EditableHtmlPluginConfigureRequired,
 } from '../ConfigurationProp';
 
@@ -218,6 +219,11 @@ export interface NumberLineConfigure extends PromptConfig, CommonConfigSettings 
    * Configuration for the teacher instructions
    */
   teacherInstructions?: EditableHtmlPluginConfigureRequired;
+
+  /**
+   * Configuration for the title
+   */
+  title?: EditableHtmlPluginConfigure;
 
   /** Hold default values for number line width like min , max and step. */
   numberLineDimensions?: NumberLineDimensions;

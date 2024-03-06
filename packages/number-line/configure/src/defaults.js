@@ -73,6 +73,14 @@ export const configuration = {
       image: { disabled: false },
     },
   },
+  title: {
+    label: 'Title',
+    inputConfiguration: {
+      audio: { disabled: false },
+      video: { disabled: false },
+      image: { disabled: false },
+    },
+  },
   numberLineDimensions: {
     settings: true,
     label: 'Width',

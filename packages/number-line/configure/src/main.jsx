@@ -435,6 +435,7 @@ export class Main extends React.Component {
       contentDimensions = {},
       instruction = {},
       teacherInstructions = {},
+      title = {},
       prompt = {},
       mathMlOptions = {},
       numberLineDimensions = {},
@@ -583,7 +584,7 @@ export class Main extends React.Component {
           model={trimModel(initialModel)}
         />
 
-        <FormSection label={'Title'} className={classes.title}>
+        <FormSection label={title?.label || 'Title'} className={classes.title}>
           <EditableHtml
             markup={graph.title || ''}
             onChange={this.changeGraphTitle}
@@ -599,6 +600,7 @@ export class Main extends React.Component {
               'languageCharacters',
               'responseArea',
             ]}
+            pluginProps={getPluginProps(title?.inputConfiguration)}
             spellCheck={spellCheckEnabled}
             uploadSoundSupport={uploadSoundSupport}
             languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
