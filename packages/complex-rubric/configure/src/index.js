@@ -44,6 +44,7 @@ export default class ComplexRubricConfigureElement extends HTMLElement {
       rubrics: { simpleRubric = {}, rubricless = {}, multiTraitRubric = {} } = { simpleRubric: {}, rubricless: {}, multiTraitRubric: {} },
       ...model
     } = {},
+    defaults = {},
   ) =>
   {
     return {
@@ -51,14 +52,17 @@ export default class ComplexRubricConfigureElement extends HTMLElement {
     rubrics: {
       simpleRubric: {
         ...(sensibleDefaults?.model?.rubrics || {}).simpleRubric,
+        ...(defaults.rubrics || {}).simpleRubric,
         ...simpleRubric,
       },
       multiTraitRubric: {
         ...(sensibleDefaults?.model?.rubrics || {}).multiTraitRubric,
+        ...(defaults.rubrics || {}).multiTraitRubric,
         ...multiTraitRubric,
       },
       rubricless: {
         ...(sensibleDefaults?.model?.rubrics || {}).rubricless,
+        ...(defaults.rubrics || {}).rubricless,
         ...rubricless,
       },
     },
@@ -77,7 +81,7 @@ export default class ComplexRubricConfigureElement extends HTMLElement {
   }
 
   set model(m) {
-    this._model = ComplexRubricConfigureElement.createDefaultModel(m);
+    this._model = ComplexRubricConfigureElement.createDefaultModel(m, this._model);
 
     this.canUpdateModel = true;
     this._render();
@@ -90,7 +94,7 @@ export default class ComplexRubricConfigureElement extends HTMLElement {
   }
 
   onModelChanged = (m, reset) => {
-    this._model = ComplexRubricConfigureElement.createDefaultModel(m);
+    this._model = ComplexRubricConfigureElement.createDefaultModel(m, this._model);
 
     this.dispatchModelUpdated(reset);
 
