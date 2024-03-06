@@ -239,18 +239,31 @@ export class Main extends React.Component {
   componentDidMount() {
     this.handleAnswerBlockDomUpdate();
     this.updateAriaHidden();
+    this.updateAriaLabel();
     setTimeout(() => renderMath(this.root), 100);
   }
 
   componentDidUpdate() {
     this.handleAnswerBlockDomUpdate();
     this.updateAriaHidden();
+    this.updateAriaLabel();
   }
 
   updateAriaHidden = () => {
     if (this.root) {
       const selectableElements = this.root.querySelectorAll('.mq-selectable');
+
       (selectableElements || []).forEach((elem) => elem.setAttribute('aria-hidden', 'true'));
+    }
+  };
+
+  updateAriaLabel = () => {
+    if (this.root) {
+      const textareaElements = this.root.querySelectorAll('textarea');
+
+      (textareaElements || []).forEach((elem) => {
+        elem.setAttribute('aria-label', 'Enter answer using math editor buttons or keyboard.');
+      });
     }
   };
 
