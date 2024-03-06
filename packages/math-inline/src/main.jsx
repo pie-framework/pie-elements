@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {CorrectAnswerToggle} from '@pie-lib/pie-toolbox/correct-answer-toggle';
+import { CorrectAnswerToggle } from '@pie-lib/pie-toolbox/correct-answer-toggle';
 import { mq, HorizontalKeypad, updateSpans } from '@pie-lib/pie-toolbox/math-input';
 import { Feedback, Collapsible, Readable, hasText, PreviewPrompt } from '@pie-lib/pie-toolbox/render-ui';
 import { renderMath } from '@pie-lib/pie-toolbox/math-rendering';
@@ -174,10 +174,6 @@ export class Main extends React.Component {
     renderMath(this.root);
   };
 
-  componentDidUpdate() {
-    this.handleAnswerBlockDomUpdate();
-  }
-
   UNSAFE_componentWillReceiveProps(nextProps) {
     const { config } = this.props.model;
     const { config: nextConfig = {} } = nextProps.model || {};
@@ -185,7 +181,12 @@ export class Main extends React.Component {
     // check if the note is the default one for prev language and change to the default one for new language
     // this check is necessary in order to diferanciate between default and authour defined note
     // and only change between languages for default ones
-    if (config.note && config.language && config.language !== nextConfig.language && config.note === translator.t('mathInline.primaryCorrectWithAlternates', { lng: config.language })) {
+    if (
+      config.note &&
+      config.language &&
+      config.language !== nextConfig.language &&
+      config.note === translator.t('mathInline.primaryCorrectWithAlternates', { lng: config.language })
+    ) {
       config.note = translator.t('mathInline.primaryCorrectWithAlternates', { lng: nextConfig.language });
     }
 
@@ -237,8 +238,21 @@ export class Main extends React.Component {
 
   componentDidMount() {
     this.handleAnswerBlockDomUpdate();
+    this.updateAriaHidden();
     setTimeout(() => renderMath(this.root), 100);
   }
+
+  componentDidUpdate() {
+    this.handleAnswerBlockDomUpdate();
+    this.updateAriaHidden();
+  }
+
+  updateAriaHidden = () => {
+    if (this.root) {
+      const selectableElements = this.root.querySelectorAll('.mq-selectable');
+      (selectableElements || []).forEach((elem) => elem.setAttribute('aria-hidden', 'true'));
+    }
+  };
 
   onDone = () => {};
 
@@ -357,7 +371,7 @@ export class Main extends React.Component {
     // Safari Hack: https://stackoverflow.com/a/42764495/5757635
     setTimeout(() => {
       if (ref && IS_SAFARI) {
-        const div = document.querySelector('[role=\'tooltip\']');
+        const div = document.querySelector("[role='tooltip']");
 
         if (div) {
           const el = div.firstChild;
@@ -381,7 +395,7 @@ export class Main extends React.Component {
       animationsDisabled,
       printMode,
       alwaysShowCorrect,
-      language
+      language,
     } = model || {};
 
     if (!config) {
