@@ -48,7 +48,8 @@ export default class ComplexRubricConfigureElement extends HTMLElement {
   ) =>
   {
     return {
-    ...model,
+      ...defaults,
+      ...model,
     rubrics: {
       simpleRubric: {
         ...(sensibleDefaults?.model?.rubrics || {}).simpleRubric,
