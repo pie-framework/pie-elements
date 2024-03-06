@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-configure@6.3.2...@pie-element/match-configure@6.4.0) (2024-03-04)
+
+
+### Features
+
+* **match:** use model copy in PLAYER environments to reset model after set configuration PD-3509 ([9af9909](https://github.com/pie-framework/pie-elements/commit/9af9909cc83627d5ebce977a34283c890943979f))
+* update pie-lib/pie-toolbox version PD-1870 and PD-3501 ([8df1d8d](https://github.com/pie-framework/pie-elements/commit/8df1d8d281a0d6023d5a9c0e6fdd29fea71b6ac1))
+
+
+
+
+
 ## [6.3.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-configure@6.3.1...@pie-element/match-configure@6.3.2) (2024-02-20)
 
 

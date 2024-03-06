@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric@3.3.4...@pie-element/multi-trait-rubric@3.4.0) (2024-03-04)
+
+
+### Features
+
+* update pie-lib/pie-toolbox version PD-1870 and PD-3501 ([8df1d8d](https://github.com/pie-framework/pie-elements/commit/8df1d8d281a0d6023d5a9c0e6fdd29fea71b6ac1))
+
+
+
+
+
+## [3.3.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric@3.3.3...@pie-element/multi-trait-rubric@3.3.4) (2024-02-29)
+
+
+### Bug Fixes
+
+* **multi-trait-rubric:** additional verif for emty string to avoid additional elemnts to be added PD-3492 ([2dc6858](https://github.com/pie-framework/pie-elements/commit/2dc6858836fffaf2393bfce3670c3ba25a4175ea))
+
+
+
+
+
 ## [3.3.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric@3.3.2...@pie-element/multi-trait-rubric@3.3.3) (2024-02-22)
 
 

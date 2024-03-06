@@ -10,6 +10,7 @@ import {
 } from '@pie-framework/pie-configure-events';
 import debug from 'debug';
 import defaultValues from './defaults';
+import cloneDeep from 'lodash/cloneDeep';
 
 const log = debug('pie-elements:match:configure');
 
@@ -23,12 +24,32 @@ export default class MatchConfigure extends HTMLElement {
     super();
     this._model = MatchConfigure.createDefaultModel();
     this._configuration = defaultValues.configuration;
+
+    // In environments that use pie-player-components, model is set before configuration.
+    // This is the reason why sometimes the model gets altered non-reversible
+    // (altered using default configuration instead of client configuration, because at that point client configuration was not set yet)
+    // Therefore, in such environments, we will make sure to keep a modelCopy (initialised in set model) and use it to reset
+    // the model in set configuration (resetModelAfterConfigurationIsSet) if set configuration is ever called
+    const pieAuthors = document.querySelectorAll('pie-author');
+    this.hasPlayerAsParent = Array.from(pieAuthors).some((author) => author.contains(this));
   }
 
   set model(m) {
     this._model = MatchConfigure.createDefaultModel(m);
+    this._modelCopy = cloneDeep(this._model);
+
     this._render();
   }
+
+  resetModelAfterConfigurationIsSet = () => {
+    if (this.hasPlayerAsParent) {
+      if (this._modelCopy) {
+        this._model = this._modelCopy;
+      } else {
+        delete this._modelCopy;
+      }
+    }
+  };
 
   set configuration(c) {
     const newConfiguration = {
@@ -37,6 +58,8 @@ export default class MatchConfigure extends HTMLElement {
     };
 
     this._configuration = newConfiguration;
+
+    this.resetModelAfterConfigurationIsSet();
 
     // if language:enabled is true, then the corresponding default item model should include a language value;
     // if it is false, then the language field should be omitted from the item model.
@@ -55,7 +78,7 @@ export default class MatchConfigure extends HTMLElement {
 
       // check if the language is already included in the languageChoices.options array
       // and if not, then add it.
-      if (!this._configuration.languageChoices.options.find(option => option.value === this._model.language)) {
+      if (!this._configuration.languageChoices.options.find((option) => option.value === this._model.language)) {
         this._configuration.languageChoices.options.push({
           value: this._model.language,
           label: this._model.language,

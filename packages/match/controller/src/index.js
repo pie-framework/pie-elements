@@ -133,8 +133,8 @@ const getOutComeScore = (question, env, answers = {}) => {
   return correctness === 'correct'
     ? 1
     : correctness === 'partial' && isPartialScoring
-      ? getPartialScore(question, answers)
-      : 0;
+    ? getPartialScore(question, answers)
+    : 0;
 };
 
 export const outcome = (question, session, env) => {
@@ -219,17 +219,15 @@ export function model(question, session, env, updateSession) {
         : Promise.resolve(undefined);
 
     fb.then((feedback) => {
+      const { feedbackEnabled, promptEnabled, prompt, lockChoiceOrder, ...essentials } = normalizedQuestion;
       const out = {
-        allowFeedback: normalizedQuestion.feedbackEnabled,
-        prompt: normalizedQuestion.promptEnabled ? normalizedQuestion.prompt : null,
-        config: {
-          ...normalizedQuestion,
-          shuffled: !normalizedQuestion.lockChoiceOrder,
-        },
+        ...essentials,
+        allowFeedback: feedbackEnabled,
+        prompt: promptEnabled ? prompt : null,
+        shuffled: !lockChoiceOrder,
         feedback,
         disabled: env.mode !== 'gather',
         view: env.mode === 'view',
-        language: normalizedQuestion.language
       };
 
       if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
@@ -240,8 +238,6 @@ export function model(question, session, env, updateSession) {
       } else {
         out.rationale = null;
         out.teacherInstructions = null;
-        out.config.rationale = null;
-        out.config.teacherInstructions = null;
       }
 
       if (env.mode === 'evaluate') {
@@ -278,7 +274,7 @@ export const createCorrectResponseSession = (question, env) => {
 };
 
 const markupToText = (s) => {
-  return (s || '').replace(/(<([^>]+)>)/ig, '');
+  return (s || '').replace(/(<([^>]+)>)/gi, '');
 };
 
 export const validate = (model = {}, config = {}) => {
@@ -289,7 +285,7 @@ export const validate = (model = {}, config = {}) => {
     maxLengthQuestionsHeading,
     maxAnswers,
     maxLengthAnswers,
-    maxLengthFirstColumnHeading
+    maxLengthFirstColumnHeading,
   } = config;
   const rowsErrors = {};
   const columnsErrors = {};
@@ -308,7 +304,9 @@ export const validate = (model = {}, config = {}) => {
     rowsErrors[id] = '';
 
     if (maxLengthQuestionsHeading && markupToText(title).length > maxLengthQuestionsHeading) {
-      rowsErrors[id] += `Questions rows content length should not be more than ${maxLengthQuestionsHeading} characters. `;
+      rowsErrors[
+        id
+      ] += `Questions rows content length should not be more than ${maxLengthQuestionsHeading} characters. `;
     } else if (title === '' || title === '<div></div>') {
       rowsErrors[id] += 'Content should not be empty. ';
     } else {
@@ -340,8 +338,8 @@ export const validate = (model = {}, config = {}) => {
     columnsErrors[0] = `The first column heading should have the maximum length of ${maxLengthFirstColumnHeading} characters.`;
   }
 
-  //remove first column since it does not require validation
-  const validateHeaders = (cloneDeep(headers) || []).map(heading => markupToText(heading));
+  // remove first column since it does not require validation
+  const validateHeaders = (cloneDeep(headers) || []).map((heading) => markupToText(heading));
   validateHeaders.shift();
 
   (validateHeaders || []).forEach((heading, index) => {

@@ -3,19 +3,20 @@ import ReactDOM from 'react-dom';
 import Main from './main';
 import { SessionChangedEvent } from '@pie-framework/pie-player-events';
 import { renderMath } from '@pie-lib/pie-toolbox/math-rendering';
-import get from 'lodash/get';
 
 export { Main as Component };
 
 export const isComplete = (session, model) => {
-  const rows = get(model, 'config.rows');
-  const ids = rows.map((r) => r.id);
+  const ids = model?.rows?.map((r) => r.id) || [];
+
   return ids.reduce((acc, id) => {
     if (!acc) {
       return false;
     }
+
     const arr = session.answers && session.answers[id];
     const hasChoice = Array.isArray(arr) && arr.includes(true);
+
     return hasChoice && acc;
   }, true);
 };
@@ -26,7 +27,9 @@ export default class Match extends HTMLElement {
   }
 
   set model(m) {
-    this._model = m;
+    // config object props should be part of the model props
+    // model.config should be no longer used
+    this._model = { ...m, ...(m?.config || {}) };
     this._render();
   }
 
