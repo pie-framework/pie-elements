@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@7.4.0...@pie-element/math-inline@7.5.0) (2024-03-06)
+
+
+### Features
+
+* **math-inline:** Implement aria-hidden to exclude MathQuill selectable elements from screen reader accessibility PD-2448 ([4ec94f7](https://github.com/pie-framework/pie-elements/commit/4ec94f7f104b4c30e858694c1dec897a8e121baf))
+
+
+
+
+
 # [7.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@7.3.2...@pie-element/math-inline@7.4.0) (2024-03-04)
 
 

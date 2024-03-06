@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.22.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/matrix@0.21.0...@pie-element/matrix@0.22.0) (2024-03-06)
+
+
+### Features
+
+* Add configuration for custom buttons PD-3508 ([a1a681a](https://github.com/pie-framework/pie-elements/commit/a1a681a9f614dc54e57eb81aa56886cfaaa22310))
+
+
+
+
+
 # [0.21.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/matrix@0.20.2...@pie-element/matrix@0.21.0) (2024-03-04)
 
 
