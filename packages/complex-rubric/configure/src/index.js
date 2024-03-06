@@ -44,23 +44,28 @@ export default class ComplexRubricConfigureElement extends HTMLElement {
       rubrics: { simpleRubric = {}, rubricless = {}, multiTraitRubric = {} } = { simpleRubric: {}, rubricless: {}, multiTraitRubric: {} },
       ...model
     } = {},
-    defaults = {},
+    currentModel = {},
   ) =>
   {
+    const pieDefaults = sensibleDefaults?.model || {}
     return {
-    ...defaults,
-    ...model,
+      ...pieDefaults,
+      ...currentModel,
+      ...model,
     rubrics: {
       simpleRubric: {
-        ...(defaults.rubrics || {}).simpleRubric,
+        ...(sensibleDefaults?.model?.rubrics || {}).simpleRubric,
+        ...(currentModel.rubrics || {}).simpleRubric,
         ...simpleRubric,
       },
       multiTraitRubric: {
-        ...(defaults.rubrics || {}).multiTraitRubric,
+        ...(sensibleDefaults?.model?.rubrics || {}).multiTraitRubric,
+        ...(currentModel.rubrics || {}).multiTraitRubric,
         ...multiTraitRubric,
       },
       rubricless: {
-        ...(defaults.rubrics || {}).rubricless,
+        ...(sensibleDefaults?.model?.rubrics || {}).rubricless,
+        ...(currentModel.rubrics || {}).rubricless,
         ...rubricless,
       },
     },
