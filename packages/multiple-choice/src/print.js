@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import debounce from 'lodash/debounce';
 import cloneDeep from 'lodash/cloneDeep';
 import Main from './main';
-import { renderMath } from '@pie-lib/pie-toolbox/math-rendering';
+import { renderMath } from '@pie-lib/pie-toolbox/math-rendering-accessible';
 import debug from 'debug';
 
 const log = debug('pie-element:multiple-choice:print');
