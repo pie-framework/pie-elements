@@ -128,14 +128,6 @@ export class Row extends React.Component {
     const { dialog } = this.state;
     const opacity = isDragging ? 0 : 1;
 
-    // default to enableImages property for now
-    // this is deprecated and will be removed in the future
-    const rowPlugins = getPluginProps(inputConfiguration, {
-      image: {
-        disabled: !enableImages,
-      },
-    });
-
     const filteredDefaultPlugins = (DEFAULT_PLUGINS || []).filter(
       (p) => p !== 'bulleted-list' && p !== 'numbered-list',
     );
@@ -156,7 +148,7 @@ export class Row extends React.Component {
               markup={row.title}
               onChange={this.onRowTitleChange(idx)}
               className={classes.editor}
-              pluginProps={rowPlugins}
+              pluginProps={inputConfiguration}
               toolbarOpts={toolbarOpts}
               activePlugins={filteredDefaultPlugins}
               spellCheck={spellCheck}

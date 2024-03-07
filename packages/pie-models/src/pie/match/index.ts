@@ -34,7 +34,9 @@ export interface MatchRow {
  * @additionalProperties false
  */
 export interface MatchPie extends PieModel {
-  /** Indicates if questions can contain images */
+  /** Indicates if questions can contain images
+   * @Deprecated since we added rows.inputConfiguration
+   * */
   enableImages?: boolean;
 
   /** Feedback for student responses */
