@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@7.1.0...@pie-element/match@7.1.1) (2024-03-07)
+
+
+### Bug Fixes
+
+* update pie-toolbox PD-3509 ([bb8de4b](https://github.com/pie-framework/pie-elements/commit/bb8de4bea663c381a6d00dfe10b31562dfbf5db7))
+
+
+
+
+
 # [7.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@7.0.0...@pie-element/match@7.1.0) (2024-03-07)
 
 
