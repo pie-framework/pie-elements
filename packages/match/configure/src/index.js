@@ -1,3 +1,4 @@
+import { isEmpty, set } from 'lodash';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Configure from './configure';
@@ -86,6 +87,17 @@ export default class MatchConfigure extends HTMLElement {
       }
     } else {
       delete this._model.language;
+    }
+
+    /**
+     * @Deprecated we added rows.inputConfiguration to handle the plugins in the editable html fields
+     * if rows.inputConfiguration we try to default to the old enableImages flag
+     * This flag 'enableImages' will be removed in the future
+     */
+    if (isEmpty(!c?.rows?.inputConfiguration)) {
+      set(this._configuration.rows, 'inputConfiguration.image.disabled', !this._model?.enableImages);
+      set(this._configuration.rows, 'inputConfiguration.video.disabled', true);
+      set(this._configuration.rows, 'inputConfiguration.audio.disabled', true);
     }
 
     this._render();
