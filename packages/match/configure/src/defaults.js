@@ -28,6 +28,18 @@ export default {
     studentInstructionsEnabled: true,
   },
   configuration: {
+    baseInputConfiguration: {
+      audio: { disabled: false },
+      video: { disabled: false },
+      image: { disabled: false },
+    },
+    rows: {
+      inputConfiguration: {
+        audio: { disabled: true },
+        video: { disabled: true },
+        image: { disabled: false },
+      },
+    },
     enableImages: {
       settings: true,
       label: 'Enable Images',
@@ -39,6 +51,11 @@ export default {
     },
     headers: {
       settings: true,
+      inputConfiguration: {
+        audio: { disabled: true },
+        video: { disabled: true },
+        image: { disabled: false },
+      },
     },
     layout: {
       settings: true,
@@ -59,10 +76,20 @@ export default {
     prompt: {
       settings: true,
       label: 'Prompt',
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
     },
     rationale: {
       settings: true,
       label: 'Rationale',
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
     },
     settingsPanelDisabled: false,
     spellCheck: {
@@ -81,6 +108,11 @@ export default {
     teacherInstructions: {
       settings: true,
       label: 'Teacher Instructions',
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
     },
     maxImageWidth: {
       teacherInstructions: 300,

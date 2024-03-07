@@ -43,6 +43,9 @@ exports[`AnswerConfigBlock render snapshot 1`] = `
               "audio": Object {
                 "disabled": true,
               },
+              "image": Object {
+                "disabled": false,
+              },
               "video": Object {
                 "disabled": true,
               },
@@ -75,6 +78,9 @@ exports[`AnswerConfigBlock render snapshot 1`] = `
             Object {
               "audio": Object {
                 "disabled": true,
+              },
+              "image": Object {
+                "disabled": false,
               },
               "video": Object {
                 "disabled": true,
@@ -109,6 +115,9 @@ exports[`AnswerConfigBlock render snapshot 1`] = `
               "audio": Object {
                 "disabled": true,
               },
+              "image": Object {
+                "disabled": false,
+              },
               "video": Object {
                 "disabled": true,
               },
@@ -122,6 +131,19 @@ exports[`AnswerConfigBlock render snapshot 1`] = `
     </div>
     <DropTarget(DragSource(WithStyles(Row)))
       idx={0}
+      inputConfiguration={
+        Object {
+          "audio": Object {
+            "disabled": true,
+          },
+          "image": Object {
+            "disabled": false,
+          },
+          "video": Object {
+            "disabled": true,
+          },
+        }
+      }
       key="0"
       mathMlOptions={
         Object {
@@ -213,6 +235,19 @@ exports[`AnswerConfigBlock render snapshot 1`] = `
     />
     <DropTarget(DragSource(WithStyles(Row)))
       idx={1}
+      inputConfiguration={
+        Object {
+          "audio": Object {
+            "disabled": true,
+          },
+          "image": Object {
+            "disabled": false,
+          },
+          "video": Object {
+            "disabled": true,
+          },
+        }
+      }
       key="1"
       mathMlOptions={
         Object {
@@ -304,6 +339,19 @@ exports[`AnswerConfigBlock render snapshot 1`] = `
     />
     <DropTarget(DragSource(WithStyles(Row)))
       idx={2}
+      inputConfiguration={
+        Object {
+          "audio": Object {
+            "disabled": true,
+          },
+          "image": Object {
+            "disabled": false,
+          },
+          "video": Object {
+            "disabled": true,
+          },
+        }
+      }
       key="2"
       mathMlOptions={
         Object {
@@ -395,6 +443,19 @@ exports[`AnswerConfigBlock render snapshot 1`] = `
     />
     <DropTarget(DragSource(WithStyles(Row)))
       idx={3}
+      inputConfiguration={
+        Object {
+          "audio": Object {
+            "disabled": true,
+          },
+          "image": Object {
+            "disabled": false,
+          },
+          "video": Object {
+            "disabled": true,
+          },
+        }
+      }
       key="3"
       mathMlOptions={
         Object {

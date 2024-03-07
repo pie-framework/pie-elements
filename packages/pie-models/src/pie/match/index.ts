@@ -6,7 +6,9 @@ import {
   ConfigureLanguageOptionsProp,
   ConfigureMathMLProp,
   ConfigureProp,
-  ConfigurePropWithEnabled
+  ConfigurePropWithEnabled,
+  EditableHtmlConfigureProp,
+  EditableHtmlPluginConfigure,
 } from '../ConfigurationProp';
 
 /**
@@ -32,7 +34,9 @@ export interface MatchRow {
  * @additionalProperties false
  */
 export interface MatchPie extends PieModel {
-  /** Indicates if questions can contain images */
+  /** Indicates if questions can contain images
+   * @Deprecated since we added rows.inputConfiguration
+   * */
   enableImages?: boolean;
 
   /** Feedback for student responses */
@@ -125,9 +129,22 @@ interface ConfigureMaxImageDimensionsProp {
  */
 export interface MatchConfigure extends PromptConfig, CommonConfigSettings {
   /**
+   * Base editable html input configuration regarding plugins that are enabled/disabled
+   * E.g. audio, video, image
+   */
+  baseInputConfiguration?: EditableHtmlConfigureProp;
+
+  /**
    * Configuration for enable images
    */
   enableImages?: ConfigureProp;
+
+  /**
+   * Configuration for html input configuration regarding plugins that are enabled/disabled
+   * on each question row
+   * E.g. audio, video, image
+   */
+  rows?: EditableHtmlPluginConfigure;
 
   /**
    * Configuration for feedback
@@ -137,7 +154,7 @@ export interface MatchConfigure extends PromptConfig, CommonConfigSettings {
   /**
    * Configuration for headers
    */
-  headers?: ConfigureProp;
+  headers?: EditableHtmlPluginConfigure;
 
   /**
    * Configuration for layout
@@ -162,7 +179,7 @@ export interface MatchConfigure extends PromptConfig, CommonConfigSettings {
   /**
    * Configuration for the prompt
    */
-  prompt?: ConfigureProp;
+  prompt?: EditableHtmlPluginConfigure;
 
   /**
    * Indicates if the settings panel is not available
@@ -177,7 +194,7 @@ export interface MatchConfigure extends PromptConfig, CommonConfigSettings {
   /**
    * Rationale configuration
    */
-  rationale?: ConfigureProp;
+  rationale?: EditableHtmlPluginConfigure;
 
   /**
    * Scoring Type configuration
@@ -192,7 +209,7 @@ export interface MatchConfigure extends PromptConfig, CommonConfigSettings {
   /**
    * Teacher Instructions configuration
    */
-  teacherInstructions?: ConfigureProp;
+  teacherInstructions?: EditableHtmlPluginConfigure;
 
   /**
    * Maximum image width for input fields
