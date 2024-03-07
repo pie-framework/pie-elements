@@ -1,7 +1,7 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
-import {EditableHtml} from '@pie-lib/pie-toolbox/editable-html';
+import { EditableHtml } from '@pie-lib/pie-toolbox/editable-html';
 import { InputContainer } from '@pie-lib/pie-toolbox/config-ui';
 import { withStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -10,7 +10,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Response from './response';
 import { MathToolbar } from '@pie-lib/pie-toolbox/math-toolbar';
 import isEqual from 'lodash/isEqual';
-import { ResponseTypes, generateValidationMessage } from './utils';
+import { ResponseTypes, generateValidationMessage, getPluginProps } from './utils';
 import MathQuill from '@pie-framework/mathquill';
 import Info from '@material-ui/icons/Info';
 import Tooltip from '@material-ui/core/Tooltip';
@@ -347,6 +347,7 @@ class GeneralConfigBlock extends React.Component {
       errors = {},
     } = model;
     const {
+      baseInputConfiguration = {},
       rationale: cRationale = {},
       prompt: cPrompt = {},
       ignoreOrder: cIgnoreOrder = {},
@@ -393,6 +394,7 @@ class GeneralConfigBlock extends React.Component {
               imageSupport={imageSupport}
               nonEmpty={false}
               toolbarOpts={toolbarOpts}
+              pluginProps={getPluginProps(cPrompt?.inputConfiguration, baseInputConfiguration)}
               spellCheck={spellCheckEnabled}
               maxImageWidth={defaultImageMaxWidth}
               maxImageHeight={defaultImageMaxHeight}
@@ -497,15 +499,16 @@ class GeneralConfigBlock extends React.Component {
             <EditableHtml
               className={classes.prompt}
               markup={rationale || ''}
-              pluginProps={{
-                math: {
-                  controlledKeypadMode: false,
-                },
-              }}
               onChange={this.onChange('rationale')}
               imageSupport={imageSupport}
               nonEmpty={false}
               toolbarOpts={toolbarOpts}
+              pluginProps={getPluginProps(cRationale?.inputConfiguration, {
+                ...baseInputConfiguration,
+                math: {
+                  controlledKeypadMode: false,
+                },
+              })}
               spellCheck={spellCheckEnabled}
               maxImageWidth={(maxImageWidth && maxImageWidth.rationale) || defaultImageMaxWidth}
               maxImageHeight={(maxImageHeight && maxImageHeight.rationale) || defaultImageMaxHeight}

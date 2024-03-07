@@ -3,9 +3,9 @@ import { withStyles } from '@material-ui/core/styles';
 import { FeedbackConfig, settings, layout, InputContainer } from '@pie-lib/pie-toolbox/config-ui';
 import PropTypes from 'prop-types';
 import debug from 'debug';
-import {EditableHtml} from '@pie-lib/pie-toolbox/editable-html';
+import { EditableHtml } from '@pie-lib/pie-toolbox/editable-html';
 import GeneralConfigBlock from './general-config-block';
-import { ResponseTypes } from './utils';
+import { getPluginProps, ResponseTypes } from './utils';
 
 const log = debug('@pie-element:math-inline:configure');
 const { Panel, toggle, radio, dropdown } = settings;
@@ -51,6 +51,7 @@ export class Configure extends React.Component {
       this.props;
     const {
       allowTrailingZeros = {},
+      baseInputConfiguration = {},
       contentDimensions = {},
       feedback = {},
       ignoreOrder = {},
@@ -131,6 +132,7 @@ export class Configure extends React.Component {
               imageSupport={imageSupport}
               nonEmpty={false}
               toolbarOpts={toolbarOpts}
+              pluginProps={getPluginProps(teacherInstructions?.inputConfiguration, baseInputConfiguration)}
               spellCheck={spellCheckEnabled}
               maxImageWidth={(maxImageWidth && maxImageWidth.teacherInstructions) || defaultImageMaxWidth}
               maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}

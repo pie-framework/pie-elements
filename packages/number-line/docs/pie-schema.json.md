@@ -198,6 +198,42 @@ The html Element tag name
 
 The schema defines the following additional types:
 
+## `EditableHtmlConfigureProp` (object)
+
+Properties of the `EditableHtmlConfigureProp` object:
+
+### `audio` (object)
+
+Properties of the `audio` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `video` (object)
+
+Properties of the `video` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `image` (object)
+
+Properties of the `image` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+## `EditableHtmlButtonConfigure` (object)
+
+Properties of the `EditableHtmlButtonConfigure` object:
+
+### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
 ## `ConfigurePropWithEnabled` (object)
 
 Properties of the `ConfigurePropWithEnabled` object:
@@ -215,13 +251,81 @@ Indicates if the item has to be displayed in the Settings Panel
 
 Indicates the label for the item that has to be displayed in the Settings Panel
 
-## `ConfigureRequiredProp` (object)
+## `EditableHtmlPluginConfigureRequired` (object)
 
-Properties of the `ConfigureRequiredProp` object:
+Properties of the `EditableHtmlPluginConfigureRequired` object:
+
+### `inputConfiguration` (object)
+
+Properties of the `inputConfiguration` object:
+
+#### `audio` (object)
+
+Properties of the `audio` object:
+
+##### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+#### `video` (object)
+
+Properties of the `video` object:
+
+##### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+#### `image` (object)
+
+Properties of the `image` object:
+
+##### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
 
 ### `required` (boolean)
 
 Indicates if the item is required and the value cannot be empty
+
+### `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+### `label` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
+
+## `EditableHtmlPluginConfigure` (object)
+
+Properties of the `EditableHtmlPluginConfigure` object:
+
+### `inputConfiguration` (object)
+
+Properties of the `inputConfiguration` object:
+
+#### `audio` (object)
+
+Properties of the `audio` object:
+
+##### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+#### `video` (object)
+
+Properties of the `video` object:
+
+##### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+#### `image` (object)
+
+Properties of the `image` object:
+
+##### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
 
 ### `settings` (boolean)
 
