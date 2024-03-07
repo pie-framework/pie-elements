@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@7.5.0...@pie-element/math-inline@7.6.0) (2024-03-07)
+
+
+### Features
+
+* Add configuration for custom buttons PD-3511 ([a642e82](https://github.com/pie-framework/pie-elements/commit/a642e82a2767738e0936f31bfc88c2e28b263575))
+
+
+
+
+
 # [7.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@7.4.0...@pie-element/math-inline@7.5.0) (2024-03-06)
 
 
