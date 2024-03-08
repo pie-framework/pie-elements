@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@material-ui/core": "^3.9.2",
-    "@pie-lib/pie-toolbox": "1.8.3-next.17",
+    "@pie-lib/pie-toolbox": "1.8.1",
     "prop-types": "^15.7.2"
   },
   "author": "pie framework developers",
