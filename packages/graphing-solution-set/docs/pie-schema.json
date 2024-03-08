@@ -1,0 +1,969 @@
+{
+  "description": "Model Object for",
+  "additionalProperties": false,
+  "type": "object",
+  "properties": {
+    "answers": {
+      "description": "Indicates marks that are set as answers",
+      "type": "object",
+      "properties": {
+        "correctAnswer": {
+          "title": "Answer",
+          "type": "object",
+          "properties": {
+            "name": {
+              "description": "Indicates name of answer",
+              "type": "string",
+              "title": "name"
+            },
+            "marks": {
+              "description": "Indicates marks for the answer",
+              "type": "array",
+              "items": [
+                {
+                  "title": "Mark",
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "description": "Indicates type of mark",
+                      "type": "string",
+                      "const": "line",
+                      "title": "type"
+                    },
+                    "showLabel": {
+                      "description": "Indicates if label should be visible",
+                      "type": "boolean",
+                      "title": "showLabel"
+                    },
+                    "label": {
+                      "description": "Indicates label value for mark",
+                      "type": "string",
+                      "title": "label"
+                    },
+                    "building": {
+                      "description": "Indicates if mark is in build process",
+                      "type": "boolean",
+                      "title": "building"
+                    },
+                    "x": {
+                      "description": "Indicates x coordinate if type is point",
+                      "type": "number",
+                      "title": "x"
+                    },
+                    "y": {
+                      "description": "Indicates y coordinate if type is point",
+                      "type": "number",
+                      "title": "y"
+                    },
+                    "from": {
+                      "title": "Point",
+                      "type": "object",
+                      "properties": {
+                        "x": {
+                          "description": "Indicates x coordinate",
+                          "type": "number",
+                          "title": "x"
+                        },
+                        "y": {
+                          "description": "Indicates y coordinate",
+                          "type": "number",
+                          "title": "y"
+                        }
+                      },
+                      "required": [
+                        "x",
+                        "y"
+                      ]
+                    },
+                    "to": {
+                      "title": "Point",
+                      "type": "object",
+                      "properties": {
+                        "x": {
+                          "description": "Indicates x coordinate",
+                          "type": "number",
+                          "title": "x"
+                        },
+                        "y": {
+                          "description": "Indicates y coordinate",
+                          "type": "number",
+                          "title": "y"
+                        }
+                      },
+                      "required": [
+                        "x",
+                        "y"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "building",
+                    "type"
+                  ]
+                }
+              ],
+              "minItems": 1,
+              "maxItems": 1,
+              "title": "marks"
+            }
+          },
+          "required": [
+            "marks",
+            "name"
+          ]
+        }
+      },
+      "required": [
+        "correctAnswer"
+      ],
+      "title": "answers"
+    },
+    "arrows": {
+      "title": "Arrows",
+      "type": "object",
+      "properties": {
+        "left": {
+          "description": "Indicates if left arrow is enabled",
+          "type": "boolean",
+          "title": "left"
+        },
+        "right": {
+          "description": "Indicates if right arrow is enabled",
+          "type": "boolean",
+          "title": "right"
+        },
+        "up": {
+          "description": "Indicates if up arrow is enabled",
+          "type": "boolean",
+          "title": "up"
+        },
+        "down": {
+          "description": "Indicates if down arrow is enabled",
+          "type": "boolean",
+          "title": "down"
+        }
+      },
+      "required": [
+        "down",
+        "left",
+        "right",
+        "up"
+      ]
+    },
+    "defaultGridConfiguration": {
+      "title": "Number",
+      "type": "object"
+    },
+    "coordinatesOnHover": {
+      "description": "Indicates if coordinates of a point are displayed on hover",
+      "type": "boolean",
+      "title": "coordinatesOnHover"
+    },
+    "domain": {
+      "title": "GraphSettings",
+      "type": "object",
+      "properties": {
+        "min": {
+          "description": "Min value",
+          "type": "number",
+          "title": "min"
+        },
+        "max": {
+          "description": "Max value",
+          "type": "number",
+          "title": "max"
+        },
+        "padding": {
+          "description": "Padding value",
+          "type": "number",
+          "title": "padding"
+        },
+        "step": {
+          "description": "Step value",
+          "type": "number",
+          "title": "step"
+        },
+        "labelStep": {
+          "description": "Label step value",
+          "type": "number",
+          "title": "labelStep"
+        },
+        "axisLabel": {
+          "description": "Axis Label",
+          "type": "string",
+          "title": "axisLabel"
+        }
+      },
+      "required": [
+        "axisLabel",
+        "labelStep",
+        "max",
+        "min",
+        "padding",
+        "step"
+      ]
+    },
+    "graph": {
+      "title": "Graph",
+      "type": "object",
+      "properties": {
+        "width": {
+          "description": "Width for graph representation",
+          "type": "number",
+          "title": "width"
+        },
+        "height": {
+          "description": "Height for graph representation",
+          "type": "number",
+          "title": "height"
+        }
+      },
+      "required": [
+        "height",
+        "width"
+      ]
+    },
+    "gssLineData": {
+      "title": "GssLineData",
+      "type": "object",
+      "properties": {
+        "numberOfLines": {
+          "description": "Indicates number of lines for GSS item",
+          "type": "number",
+          "title": "numberOfLines"
+        },
+        "selectedTool": {
+          "description": "Indicates selected tool default is lineA",
+          "enum": [
+            "lineA",
+            "lineB",
+            "solutionSet"
+          ],
+          "type": "string",
+          "title": "selectedTool"
+        },
+        "sections": {
+          "description": "Indicates array of polygons points formed by intersection of lines drawn",
+          "type": "array",
+          "items": [
+            {
+              "title": "Point",
+              "type": "object",
+              "properties": {
+                "x": {
+                  "description": "Indicates x coordinate",
+                  "type": "number",
+                  "title": "x"
+                },
+                "y": {
+                  "description": "Indicates y coordinate",
+                  "type": "number",
+                  "title": "y"
+                }
+              },
+              "required": [
+                "x",
+                "y"
+              ]
+            }
+          ],
+          "minItems": 1,
+          "maxItems": 1,
+          "title": "sections"
+        },
+        "lineA": {
+          "title": "LineType",
+          "type": "object",
+          "properties": {
+            "lineType": {
+              "description": "Indicates if line is Solid or Dashed",
+              "enum": [
+                "Dashed",
+                "Solid"
+              ],
+              "type": "string",
+              "title": "lineType"
+            }
+          },
+          "required": [
+            "lineType"
+          ]
+        },
+        "lineB": {
+          "title": "LineType",
+          "type": "object",
+          "properties": {
+            "lineType": {
+              "description": "Indicates if line is Solid or Dashed",
+              "enum": [
+                "Dashed",
+                "Solid"
+              ],
+              "type": "string",
+              "title": "lineType"
+            }
+          },
+          "required": [
+            "lineType"
+          ]
+        }
+      },
+      "required": [
+        "lineA",
+        "lineB",
+        "numberOfLines",
+        "sections",
+        "selectedTool"
+      ]
+    },
+    "includeAxes": {
+      "description": "Indicates if the graph axes and labels are enabled",
+      "type": "boolean",
+      "title": "includeAxes"
+    },
+    "labels": {
+      "title": "Labels",
+      "type": "object",
+      "properties": {
+        "top": {
+          "description": "Label for top side of the graph",
+          "type": "string",
+          "title": "top"
+        },
+        "bottom": {
+          "description": "Label for bottom side of the graph",
+          "type": "string",
+          "title": "bottom"
+        },
+        "left": {
+          "description": "Label for left side of the graph",
+          "type": "string",
+          "title": "left"
+        },
+        "right": {
+          "description": "Label for right side of the graph",
+          "type": "string",
+          "title": "right"
+        }
+      },
+      "required": [
+        "bottom",
+        "left",
+        "right",
+        "top"
+      ]
+    },
+    "language": {
+      "description": "Indicates the language of the component\nSupported options: en, es, en_US, en-US, es_ES, es-ES, es_MX, es-MX",
+      "type": "string",
+      "title": "language"
+    },
+    "padding": {
+      "description": "Indicates if padding is enabled",
+      "type": "boolean",
+      "title": "padding"
+    },
+    "prompt": {
+      "description": "Indicates prompt value",
+      "type": "string",
+      "title": "prompt"
+    },
+    "promptEnabled": {
+      "description": "Indicates if the prompt is enabled",
+      "type": "boolean",
+      "title": "promptEnabled"
+    },
+    "range": {
+      "title": "GraphSettings",
+      "type": "object",
+      "properties": {
+        "min": {
+          "description": "Min value",
+          "type": "number",
+          "title": "min"
+        },
+        "max": {
+          "description": "Max value",
+          "type": "number",
+          "title": "max"
+        },
+        "padding": {
+          "description": "Padding value",
+          "type": "number",
+          "title": "padding"
+        },
+        "step": {
+          "description": "Step value",
+          "type": "number",
+          "title": "step"
+        },
+        "labelStep": {
+          "description": "Label step value",
+          "type": "number",
+          "title": "labelStep"
+        },
+        "axisLabel": {
+          "description": "Axis Label",
+          "type": "string",
+          "title": "axisLabel"
+        }
+      },
+      "required": [
+        "axisLabel",
+        "labelStep",
+        "max",
+        "min",
+        "padding",
+        "step"
+      ]
+    },
+    "rationale": {
+      "description": "Indicates rationale for the answer",
+      "type": "string",
+      "title": "rationale"
+    },
+    "scoringType": {
+      "description": "Indicates scoring type",
+      "type": "string",
+      "const": "dichotomous",
+      "title": "scoringType"
+    },
+    "studentInstructions": {
+      "description": "Indicates student instructions",
+      "type": "string",
+      "title": "studentInstructions"
+    },
+    "teacherInstructions": {
+      "description": "Indicates teacher instructions",
+      "type": "string",
+      "title": "teacherInstructions"
+    },
+    "title": {
+      "description": "Indicates graph title",
+      "type": "string",
+      "title": "title"
+    },
+    "labelsEnabled": {
+      "description": "Indicates if the graph labels are displayed",
+      "type": "boolean",
+      "title": "labelsEnabled"
+    },
+    "dimensionsEnabled": {
+      "description": "Indicates if the graph dimensions are displayed",
+      "type": "boolean",
+      "title": "dimensionsEnabled"
+    },
+    "titleEnabled": {
+      "description": "Indicates if the graph title is displayed",
+      "type": "boolean",
+      "title": "titleEnabled"
+    },
+    "rationaleEnabled": {
+      "description": "Indicates if Rationale are enabled",
+      "type": "boolean",
+      "title": "rationaleEnabled"
+    },
+    "spellCheckEnabled": {
+      "description": "Indicates if spellcheck is enabled for the author. Default value is true",
+      "type": "boolean",
+      "title": "spellCheckEnabled"
+    },
+    "standardGrid": {
+      "description": "Indicates if some domain values will be synched to the range values",
+      "type": "boolean",
+      "title": "standardGrid"
+    },
+    "studentInstructionsEnabled": {
+      "description": "Indicates if Student Instructions are enabled",
+      "type": "boolean",
+      "title": "studentInstructionsEnabled"
+    },
+    "teacherInstructionsEnabled": {
+      "description": "Indicates if Teacher Instructions are enabled",
+      "type": "boolean",
+      "title": "teacherInstructionsEnabled"
+    },
+    "rubricEnabled": {
+      "description": "Indicates if Rubric is enabled",
+      "type": "boolean",
+      "title": "rubricEnabled"
+    },
+    "id": {
+      "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
+      "type": "string",
+      "title": "id"
+    },
+    "element": {
+      "description": "The html Element tag name",
+      "type": "string",
+      "title": "element"
+    }
+  },
+  "required": [
+    "answers",
+    "defaultGridConfiguration",
+    "domain",
+    "element",
+    "graph",
+    "gssLineData",
+    "id",
+    "range",
+    "rationaleEnabled",
+    "rubricEnabled",
+    "spellCheckEnabled",
+    "studentInstructionsEnabled",
+    "teacherInstructionsEnabled"
+  ],
+  "definitions": {
+    "Answer": {
+      "title": "Answer",
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "Indicates name of answer",
+          "type": "string",
+          "title": "name"
+        },
+        "marks": {
+          "description": "Indicates marks for the answer",
+          "type": "array",
+          "items": [
+            {
+              "title": "Mark",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "description": "Indicates type of mark",
+                  "type": "string",
+                  "const": "line",
+                  "title": "type"
+                },
+                "showLabel": {
+                  "description": "Indicates if label should be visible",
+                  "type": "boolean",
+                  "title": "showLabel"
+                },
+                "label": {
+                  "description": "Indicates label value for mark",
+                  "type": "string",
+                  "title": "label"
+                },
+                "building": {
+                  "description": "Indicates if mark is in build process",
+                  "type": "boolean",
+                  "title": "building"
+                },
+                "x": {
+                  "description": "Indicates x coordinate if type is point",
+                  "type": "number",
+                  "title": "x"
+                },
+                "y": {
+                  "description": "Indicates y coordinate if type is point",
+                  "type": "number",
+                  "title": "y"
+                },
+                "from": {
+                  "title": "Point",
+                  "type": "object",
+                  "properties": {
+                    "x": {
+                      "description": "Indicates x coordinate",
+                      "type": "number",
+                      "title": "x"
+                    },
+                    "y": {
+                      "description": "Indicates y coordinate",
+                      "type": "number",
+                      "title": "y"
+                    }
+                  },
+                  "required": [
+                    "x",
+                    "y"
+                  ]
+                },
+                "to": {
+                  "title": "Point",
+                  "type": "object",
+                  "properties": {
+                    "x": {
+                      "description": "Indicates x coordinate",
+                      "type": "number",
+                      "title": "x"
+                    },
+                    "y": {
+                      "description": "Indicates y coordinate",
+                      "type": "number",
+                      "title": "y"
+                    }
+                  },
+                  "required": [
+                    "x",
+                    "y"
+                  ]
+                }
+              },
+              "required": [
+                "building",
+                "type"
+              ]
+            }
+          ],
+          "minItems": 1,
+          "maxItems": 1,
+          "title": "marks"
+        }
+      },
+      "required": [
+        "marks",
+        "name"
+      ]
+    },
+    "Mark": {
+      "title": "Mark",
+      "type": "object",
+      "properties": {
+        "type": {
+          "description": "Indicates type of mark",
+          "type": "string",
+          "const": "line",
+          "title": "type"
+        },
+        "showLabel": {
+          "description": "Indicates if label should be visible",
+          "type": "boolean",
+          "title": "showLabel"
+        },
+        "label": {
+          "description": "Indicates label value for mark",
+          "type": "string",
+          "title": "label"
+        },
+        "building": {
+          "description": "Indicates if mark is in build process",
+          "type": "boolean",
+          "title": "building"
+        },
+        "x": {
+          "description": "Indicates x coordinate if type is point",
+          "type": "number",
+          "title": "x"
+        },
+        "y": {
+          "description": "Indicates y coordinate if type is point",
+          "type": "number",
+          "title": "y"
+        },
+        "from": {
+          "title": "Point",
+          "type": "object",
+          "properties": {
+            "x": {
+              "description": "Indicates x coordinate",
+              "type": "number",
+              "title": "x"
+            },
+            "y": {
+              "description": "Indicates y coordinate",
+              "type": "number",
+              "title": "y"
+            }
+          },
+          "required": [
+            "x",
+            "y"
+          ]
+        },
+        "to": {
+          "title": "Point",
+          "type": "object",
+          "properties": {
+            "x": {
+              "description": "Indicates x coordinate",
+              "type": "number",
+              "title": "x"
+            },
+            "y": {
+              "description": "Indicates y coordinate",
+              "type": "number",
+              "title": "y"
+            }
+          },
+          "required": [
+            "x",
+            "y"
+          ]
+        }
+      },
+      "required": [
+        "building",
+        "type"
+      ]
+    },
+    "Point": {
+      "title": "Point",
+      "type": "object",
+      "properties": {
+        "x": {
+          "description": "Indicates x coordinate",
+          "type": "number",
+          "title": "x"
+        },
+        "y": {
+          "description": "Indicates y coordinate",
+          "type": "number",
+          "title": "y"
+        }
+      },
+      "required": [
+        "x",
+        "y"
+      ]
+    },
+    "Arrows": {
+      "title": "Arrows",
+      "type": "object",
+      "properties": {
+        "left": {
+          "description": "Indicates if left arrow is enabled",
+          "type": "boolean",
+          "title": "left"
+        },
+        "right": {
+          "description": "Indicates if right arrow is enabled",
+          "type": "boolean",
+          "title": "right"
+        },
+        "up": {
+          "description": "Indicates if up arrow is enabled",
+          "type": "boolean",
+          "title": "up"
+        },
+        "down": {
+          "description": "Indicates if down arrow is enabled",
+          "type": "boolean",
+          "title": "down"
+        }
+      },
+      "required": [
+        "down",
+        "left",
+        "right",
+        "up"
+      ]
+    },
+    "Number": {
+      "title": "Number",
+      "type": "object"
+    },
+    "GraphSettings": {
+      "title": "GraphSettings",
+      "type": "object",
+      "properties": {
+        "min": {
+          "description": "Min value",
+          "type": "number",
+          "title": "min"
+        },
+        "max": {
+          "description": "Max value",
+          "type": "number",
+          "title": "max"
+        },
+        "padding": {
+          "description": "Padding value",
+          "type": "number",
+          "title": "padding"
+        },
+        "step": {
+          "description": "Step value",
+          "type": "number",
+          "title": "step"
+        },
+        "labelStep": {
+          "description": "Label step value",
+          "type": "number",
+          "title": "labelStep"
+        },
+        "axisLabel": {
+          "description": "Axis Label",
+          "type": "string",
+          "title": "axisLabel"
+        }
+      },
+      "required": [
+        "axisLabel",
+        "labelStep",
+        "max",
+        "min",
+        "padding",
+        "step"
+      ]
+    },
+    "Graph": {
+      "title": "Graph",
+      "type": "object",
+      "properties": {
+        "width": {
+          "description": "Width for graph representation",
+          "type": "number",
+          "title": "width"
+        },
+        "height": {
+          "description": "Height for graph representation",
+          "type": "number",
+          "title": "height"
+        }
+      },
+      "required": [
+        "height",
+        "width"
+      ]
+    },
+    "GssLineData": {
+      "title": "GssLineData",
+      "type": "object",
+      "properties": {
+        "numberOfLines": {
+          "description": "Indicates number of lines for GSS item",
+          "type": "number",
+          "title": "numberOfLines"
+        },
+        "selectedTool": {
+          "description": "Indicates selected tool default is lineA",
+          "enum": [
+            "lineA",
+            "lineB",
+            "solutionSet"
+          ],
+          "type": "string",
+          "title": "selectedTool"
+        },
+        "sections": {
+          "description": "Indicates array of polygons points formed by intersection of lines drawn",
+          "type": "array",
+          "items": [
+            {
+              "title": "Point",
+              "type": "object",
+              "properties": {
+                "x": {
+                  "description": "Indicates x coordinate",
+                  "type": "number",
+                  "title": "x"
+                },
+                "y": {
+                  "description": "Indicates y coordinate",
+                  "type": "number",
+                  "title": "y"
+                }
+              },
+              "required": [
+                "x",
+                "y"
+              ]
+            }
+          ],
+          "minItems": 1,
+          "maxItems": 1,
+          "title": "sections"
+        },
+        "lineA": {
+          "title": "LineType",
+          "type": "object",
+          "properties": {
+            "lineType": {
+              "description": "Indicates if line is Solid or Dashed",
+              "enum": [
+                "Dashed",
+                "Solid"
+              ],
+              "type": "string",
+              "title": "lineType"
+            }
+          },
+          "required": [
+            "lineType"
+          ]
+        },
+        "lineB": {
+          "title": "LineType",
+          "type": "object",
+          "properties": {
+            "lineType": {
+              "description": "Indicates if line is Solid or Dashed",
+              "enum": [
+                "Dashed",
+                "Solid"
+              ],
+              "type": "string",
+              "title": "lineType"
+            }
+          },
+          "required": [
+            "lineType"
+          ]
+        }
+      },
+      "required": [
+        "lineA",
+        "lineB",
+        "numberOfLines",
+        "sections",
+        "selectedTool"
+      ]
+    },
+    "LineType": {
+      "title": "LineType",
+      "type": "object",
+      "properties": {
+        "lineType": {
+          "description": "Indicates if line is Solid or Dashed",
+          "enum": [
+            "Dashed",
+            "Solid"
+          ],
+          "type": "string",
+          "title": "lineType"
+        }
+      },
+      "required": [
+        "lineType"
+      ]
+    },
+    "Labels": {
+      "title": "Labels",
+      "type": "object",
+      "properties": {
+        "top": {
+          "description": "Label for top side of the graph",
+          "type": "string",
+          "title": "top"
+        },
+        "bottom": {
+          "description": "Label for bottom side of the graph",
+          "type": "string",
+          "title": "bottom"
+        },
+        "left": {
+          "description": "Label for left side of the graph",
+          "type": "string",
+          "title": "left"
+        },
+        "right": {
+          "description": "Label for right side of the graph",
+          "type": "string",
+          "title": "right"
+        }
+      },
+      "required": [
+        "bottom",
+        "left",
+        "right",
+        "top"
+      ]
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}
