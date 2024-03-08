@@ -5,7 +5,7 @@ exports[`Render Main Component should match snapshot 1`] = `
   <h2>
     Constructed Response Question
   </h2>
-  <EditableHtml
+  <ForwardRef
     allowValidation={false}
     className="response-area-editor"
     highlightShape={true}
@@ -59,7 +59,7 @@ exports[`Render Main Component should match snapshot with teacher instructions 1
       />
     </WithStyles(Collapsible)>
   </div>
-  <EditableHtml
+  <ForwardRef
     allowValidation={false}
     className="response-area-editor"
     highlightShape={true}

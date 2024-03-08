@@ -139,7 +139,7 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
   <InputContainer
     label="Teacher Instructions"
   >
-    <EditableHtml
+    <ForwardRef
       allowValidation={false}
       languageCharactersProps={
         Array [
@@ -173,7 +173,7 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
   <InputContainer
     label="Prompt"
   >
-    <EditableHtml
+    <ForwardRef
       allowValidation={false}
       disableUnderline={true}
       languageCharactersProps={
@@ -234,7 +234,7 @@ There should be at least 2 tokens defined."
       />
     </WithStyles(Tooltip)>
   </div>
-  <EditableHtml
+  <ForwardRef
     activePlugins={
       Array [
         "bold",
@@ -348,7 +348,7 @@ There should be at least 2 tokens defined."
   <InputContainer
     label="Rationale"
   >
-    <EditableHtml
+    <ForwardRef
       allowValidation={false}
       languageCharactersProps={
         Array [
@@ -546,7 +546,7 @@ There should be at least 2 tokens defined."
       />
     </WithStyles(Tooltip)>
   </div>
-  <EditableHtml
+  <ForwardRef
     activePlugins={
       Array [
         "bold",
