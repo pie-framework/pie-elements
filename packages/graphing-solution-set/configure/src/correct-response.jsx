@@ -297,7 +297,8 @@ export class CorrectResponse extends React.Component {
       }
       this.handleGssLineDataChange(gssLineData, answers);
     } else {
-      if (oldSelectedTool === 'solutionSet') {
+      let polygons = answers.correctAnswer.marks.filter((mark) => mark.type === 'polygon');
+      if (oldSelectedTool === 'solutionSet' && polygons.length > 0) {
         this.setState({
           dialog: {
             open: true,
