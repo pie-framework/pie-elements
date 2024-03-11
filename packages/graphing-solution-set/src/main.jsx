@@ -127,7 +127,8 @@ export class Main extends React.Component {
       }
       this.handleGssDataChange(gssData, session);
     } else {
-      if (oldSelectedTool === 'solutionSet') {
+      let polygons = session.answer.filter((mark) => mark.type === 'polygon');
+      if (oldSelectedTool === 'solutionSet' && polygons.length > 0) {
         this.setState({
           dialog: {
             open: true,
