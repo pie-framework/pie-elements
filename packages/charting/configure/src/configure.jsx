@@ -5,7 +5,7 @@ import { settings, layout, InputContainer } from '@pie-lib/pie-toolbox/config-ui
 import PropTypes from 'prop-types';
 import debug from 'debug';
 import Typography from '@material-ui/core/Typography';
-import {EditableHtml} from '@pie-lib/pie-toolbox/editable-html';
+import { EditableHtml } from '@pie-lib/pie-toolbox/editable-html';
 
 import ChartingConfig from './charting-config';
 import CorrectResponse from './correct-response';
@@ -102,6 +102,7 @@ export class Configure extends React.Component {
 
     const { graph } = model;
     const {
+      baseInputConfiguration = {},
       contentDimensions = {},
       chartDimensions = {},
       authorNewCategoryDefaults = {},
@@ -168,6 +169,15 @@ export class Configure extends React.Component {
       instruction: instruction.settings && textField(instruction.label),
     };
 
+    const getPluginProps = (props = {}) => {
+      return Object.assign(
+        {
+          ...baseInputConfiguration,
+        },
+        props || {},
+      );
+    };
+
     return (
       <layout.ConfigLayout
         dimensions={contentDimensions}
@@ -199,6 +209,7 @@ export class Configure extends React.Component {
               nonEmpty={false}
               error={teacherInstructionsError}
               spellCheck={spellCheckEnabled}
+              pluginProps={getPluginProps(teacherInstructions?.inputConfiguration)}
               maxImageWidth={(maxImageWidth && maxImageWidth.teacherInstructions) || defaultImageMaxWidth}
               maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
               uploadSoundSupport={uploadSoundSupport}
@@ -220,6 +231,7 @@ export class Configure extends React.Component {
               error={promptError}
               spellCheck={spellCheckEnabled}
               disableUnderline
+              pluginProps={getPluginProps(prompt?.inputConfiguration)}
               maxImageWidth={defaultImageMaxWidth}
               maxImageHeight={defaultImageMaxHeight}
               uploadSoundSupport={uploadSoundSupport}
@@ -274,6 +286,7 @@ export class Configure extends React.Component {
               imageSupport={imageSupport}
               error={rationaleError}
               spellCheck={spellCheckEnabled}
+              pluginProps={getPluginProps(rationale?.inputConfiguration)}
               maxImageWidth={(maxImageWidth && maxImageWidth.rationale) || defaultImageMaxWidth}
               maxImageHeight={(maxImageHeight && maxImageHeight.rationale) || defaultImageMaxHeight}
               uploadSoundSupport={uploadSoundSupport}
