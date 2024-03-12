@@ -25,6 +25,11 @@ export default {
     strokeWidth: 5,
   },
   configuration: {
+    baseInputConfiguration: {
+      audio: { disabled: false },
+      video: { disabled: false },
+      image: { disabled: false },
+    },
     multipleCorrect: {
       settings: true,
       label: 'Multiple Correct Responses',
@@ -36,10 +41,20 @@ export default {
     rationale: {
       settings: true,
       label: 'Rationale',
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
     },
     prompt: {
       settings: true,
       label: 'Prompt',
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
     },
     settingsPanelDisabled: false,
     spellCheck: {
@@ -50,6 +65,11 @@ export default {
     teacherInstructions: {
       settings: true,
       label: 'Teacher Instructions',
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
     },
     preserveAspectRatio: {
       settings: false,
