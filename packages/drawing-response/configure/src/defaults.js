@@ -14,6 +14,11 @@ export default {
     toolbarEditorPosition: 'bottom',
   },
   configuration: {
+    baseInputConfiguration: {
+      audio: { disabled: false },
+      video: { disabled: false },
+      image: { disabled: false },
+    },
     spellCheck: {
       label: 'Spellcheck',
       settings: false,
@@ -26,11 +31,21 @@ export default {
     prompt: {
       settings: true,
       label: 'Prompt',
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
     },
     settingsPanelDisabled: false,
     teacherInstructions: {
       settings: true,
       label: 'Teacher Instructions',
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
     },
     maxImageWidth: {
       teacherInstructions: 300,
@@ -56,6 +71,6 @@ export default {
     languageChoices: {
       label: 'Language Choices',
       options: [],
-    }
+    },
   },
 };
