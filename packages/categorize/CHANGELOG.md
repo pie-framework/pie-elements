@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@8.7.0...@pie-element/categorize@8.8.0) (2024-03-12)
+
+
+### Features
+
+* Add configuration for custom buttons PD-3514 ([4b18830](https://github.com/pie-framework/pie-elements/commit/4b18830dc0ed20e50285aaebe562e6377077a520))
+* Add configuration for custom buttons PD-3514 ([78c4add](https://github.com/pie-framework/pie-elements/commit/78c4add8bf3796577e7863814c3f9e93ba607231))
+
+
+
+
+
 # [8.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@8.6.1...@pie-element/categorize@8.7.0) (2024-03-12)
 
 
