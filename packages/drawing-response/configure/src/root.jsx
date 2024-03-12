@@ -1,7 +1,7 @@
 import React from 'react';
 import { settings, layout, InputContainer } from '@pie-lib/pie-toolbox/config-ui';
 import PropTypes from 'prop-types';
-import {EditableHtml} from '@pie-lib/pie-toolbox/editable-html';
+import { EditableHtml } from '@pie-lib/pie-toolbox/editable-html';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 
@@ -40,6 +40,7 @@ export class Root extends React.Component {
     const { classes, configuration, imageSupport, model, onConfigurationChanged, onModelChanged, uploadSoundSupport } =
       this.props;
     const {
+      baseInputConfiguration = {},
       backgroundImage = {},
       contentDimensions = {},
       maxImageWidth = {},
@@ -81,6 +82,15 @@ export class Root extends React.Component {
       rubricEnabled: withRubric?.settings && toggle(withRubric?.label),
     };
 
+    const getPluginProps = (props) => {
+      return Object.assign(
+        {
+          ...baseInputConfiguration,
+        },
+        props || {},
+      );
+    };
+
     return (
       <layout.ConfigLayout
         dimensions={contentDimensions}
@@ -106,6 +116,7 @@ export class Root extends React.Component {
               imageSupport={imageSupport}
               nonEmpty={false}
               toolbarOpts={toolbarOpts}
+              pluginProps={getPluginProps(teacherInstructions?.inputConfiguration)}
               spellCheck={spellCheckEnabled}
               maxImageWidth={(maxImageWidth && maxImageWidth.teacherInstructions) || defaultImageMaxWidth}
               maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
@@ -123,6 +134,7 @@ export class Root extends React.Component {
               onChange={this.onPromptChanged}
               toolbarOpts={toolbarOpts}
               spellCheck={spellCheckEnabled}
+              pluginProps={getPluginProps(prompt?.inputConfiguration)}
               imageSupport={imageSupport}
               maxImageWidth={defaultImageMaxWidth}
               maxImageHeight={defaultImageMaxHeight}
