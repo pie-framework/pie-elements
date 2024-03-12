@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@5.6.0...@pie-element/graphing@5.7.0) (2024-03-12)
+
+
+### Features
+
+* Add configuration for custom buttons PD-3522 ([c319fdd](https://github.com/pie-framework/pie-elements/commit/c319fddb5403467196993eafc9b21a8201d8a99e))
+
+
+
+
+
 # [5.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@5.5.1...@pie-element/graphing@5.6.0) (2024-03-12)
 
 
