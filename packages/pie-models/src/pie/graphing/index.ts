@@ -7,7 +7,7 @@ import {
   ConfigureMaxImageDimensionsProp,
   ConfigureProp,
   ConfigurePropWithEnabled,
-  ConfigureRequiredProp,
+  EditableHtmlConfigureProp,
 } from '../ConfigurationProp';
 
 interface Graph {
@@ -403,6 +403,12 @@ interface TitleConfigProp extends ConfigurePropWithEnabled {
  */
 export interface GraphingConfigure extends PromptConfig, CommonConfigSettings {
   /**
+   * Base editable html input configuration regarding plugins that are enabled/disabled
+   * E.g. audio, video, image
+   */
+  baseInputConfiguration?: EditableHtmlConfigureProp;
+
+  /**
    * Grid Setup Panel configuration
    */
   authoring?: AuthoringConfigProp;
@@ -459,7 +465,7 @@ export interface GraphingConfigure extends PromptConfig, CommonConfigSettings {
   /**
    * Rationale configuration
    */
-  prompt?: ConfigureRequiredProp;
+  prompt?: EditableHtmlPluginConfigureRequired;
 
   /**
    * Indicates if the settings panel is not available
@@ -474,7 +480,7 @@ export interface GraphingConfigure extends PromptConfig, CommonConfigSettings {
   /**
    * Prompt configuration
    */
-  rationale?: ConfigureRequiredProp;
+  rationale?: EditableHtmlPluginConfigureRequired;
 
   /**
    * Scoring Type configuration
@@ -489,7 +495,7 @@ export interface GraphingConfigure extends PromptConfig, CommonConfigSettings {
   /**
    * Teacher Instructions configuration
    */
-  teacherInstructions?: ConfigureRequiredProp;
+  teacherInstructions?: EditableHtmlPluginConfigureRequired;
 
   /**
    * Graph title configuration
