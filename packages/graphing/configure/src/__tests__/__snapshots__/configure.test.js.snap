@@ -314,10 +314,12 @@ exports[`Configure renders snapshot 1`] = `
           },
           "prompt": Object {
             "label": "Item Stem",
+            "required": false,
             "settings": true,
           },
           "rationale": Object {
             "label": "Rationale",
+            "required": false,
             "settings": true,
           },
           "scoringType": Object {
@@ -336,6 +338,7 @@ exports[`Configure renders snapshot 1`] = `
           },
           "teacherInstructions": Object {
             "label": "Teacher Instructions",
+            "required": false,
             "settings": true,
           },
           "title": Object {
