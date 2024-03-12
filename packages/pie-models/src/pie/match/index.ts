@@ -9,6 +9,7 @@ import {
   ConfigurePropWithEnabled,
   EditableHtmlConfigureProp,
   EditableHtmlPluginConfigure,
+  EditableHtmlPluginConfigureRequired,
 } from '../ConfigurationProp';
 
 /**
@@ -179,7 +180,7 @@ export interface MatchConfigure extends PromptConfig, CommonConfigSettings {
   /**
    * Configuration for the prompt
    */
-  prompt?: EditableHtmlPluginConfigure;
+  prompt?: EditableHtmlPluginConfigureRequired;
 
   /**
    * Indicates if the settings panel is not available
@@ -194,7 +195,7 @@ export interface MatchConfigure extends PromptConfig, CommonConfigSettings {
   /**
    * Rationale configuration
    */
-  rationale?: EditableHtmlPluginConfigure;
+  rationale?: EditableHtmlPluginConfigureRequired;
 
   /**
    * Scoring Type configuration
@@ -209,7 +210,7 @@ export interface MatchConfigure extends PromptConfig, CommonConfigSettings {
   /**
    * Teacher Instructions configuration
    */
-  teacherInstructions?: EditableHtmlPluginConfigure;
+  teacherInstructions?: EditableHtmlPluginConfigureRequired;
 
   /**
    * Maximum image width for input fields

@@ -81,6 +81,7 @@ export default {
         video: { disabled: false },
         image: { disabled: false },
       },
+      required: false,
     },
     rationale: {
       settings: true,
@@ -90,6 +91,7 @@ export default {
         video: { disabled: false },
         image: { disabled: false },
       },
+      required: false,
     },
     settingsPanelDisabled: false,
     spellCheck: {
@@ -113,6 +115,7 @@ export default {
         video: { disabled: false },
         image: { disabled: false },
       },
+      required: false
     },
     maxImageWidth: {
       teacherInstructions: 300,
