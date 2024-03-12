@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.5.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-configure@6.5.0...@pie-element/match-configure@6.5.1) (2024-03-07)
+
+
+### Bug Fixes
+
+* update pie-toolbox PD-3509 ([bb8de4b](https://github.com/pie-framework/pie-elements/commit/bb8de4bea663c381a6d00dfe10b31562dfbf5db7))
+
+
+
+
+
+# [6.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-configure@6.4.0...@pie-element/match-configure@6.5.0) (2024-03-07)
+
+
+### Features
+
+* Add configuration for custom buttons PD-3512 ([6665e0f](https://github.com/pie-framework/pie-elements/commit/6665e0f992c36755deefd86c2d8ba7c284232225))
+* Add configuration for custom buttons PD-3512 ([b11f5f8](https://github.com/pie-framework/pie-elements/commit/b11f5f80db0e2419699d56d58fb5cc1e069af58a))
+
+
+
+
+
 # [6.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-configure@6.3.2...@pie-element/match-configure@6.4.0) (2024-03-04)
 
 

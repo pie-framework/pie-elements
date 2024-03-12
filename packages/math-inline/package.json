@@ -4,11 +4,10 @@
     "access": "public"
   },
   "repository": "pie-framework/pie-elements",
-  "version": "7.4.0",
+  "version": "7.6.0",
   "main": "lib/index.js",
   "description": "",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "postpublish": "../../scripts/postpublish"
   },
   "dependencies": {

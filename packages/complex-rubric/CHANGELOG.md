@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.4.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@2.4.0...@pie-element/complex-rubric@2.4.1) (2024-03-06)
+
+
+### Bug Fixes
+
+* **complex-rubric:** adjust createDefaults method PD-3488 ([328fb26](https://github.com/pie-framework/pie-elements/commit/328fb26617860936fcfd7a45f16f40cb90ddda25))
+* **complex-rubric:** avoid defaults always empty PD-3499 ([274857e](https://github.com/pie-framework/pie-elements/commit/274857e394429c9a1dcd404083ffbe7651283a5c))
+* **complex-rubric:** change parameters name to be more clear PD-3488 ([53029e3](https://github.com/pie-framework/pie-elements/commit/53029e36a034c2e16442a082dab4f6dbc7a2c15a))
+* **complex-rubric:** fix createModel to use defaults PD-3488 ([49e3510](https://github.com/pie-framework/pie-elements/commit/49e3510dff5dfec482d4ac2af4488b410b06e81b))
+* **complex-rubric:** use actual model in createModel to avoid inconsistencies PD-3488 ([99fc1be](https://github.com/pie-framework/pie-elements/commit/99fc1be3017c282097e02262806bde936f674b64))
+
+
+
+
+
 # [2.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@2.3.5...@pie-element/complex-rubric@2.4.0) (2024-03-04)
 
 

@@ -14,24 +14,24 @@ export interface EditableHtmlButtonConfigure {
   /**
    * Indicates if the plugin is disabled or not
    */
-  disabled?: boolean
+  disabled?: boolean;
 }
 
 export interface EditableHtmlConfigureProp {
   /**
    * Indicates if the audio plugin is disabled or not
    */
-  audio?: EditableHtmlButtonConfigure,
+  audio?: EditableHtmlButtonConfigure;
 
   /**
    * Indicates if the video plugin is disabled or not
    */
-  video?: EditableHtmlButtonConfigure,
+  video?: EditableHtmlButtonConfigure;
 
   /**
    * Indicates if the image plugin is disabled or not
    */
-  image?: EditableHtmlButtonConfigure,
+  image?: EditableHtmlButtonConfigure;
 }
 
 export interface EditableHtmlPluginConfigure extends ConfigureProp {
@@ -39,7 +39,15 @@ export interface EditableHtmlPluginConfigure extends ConfigureProp {
    * Indicates the custom configuration for the editable html buttons
    * E.g. audio, video, image
    */
-  inputConfiguration?: EditableHtmlConfigureProp
+  inputConfiguration?: EditableHtmlConfigureProp;
+}
+
+export interface EditableHtmlPluginConfigureRequired extends ConfigureRequiredProp {
+  /**
+   * Indicates the custom configuration for the editable html buttons
+   * E.g. audio, video, image
+   */
+  inputConfiguration?: EditableHtmlConfigureProp;
 }
 
 export interface ConfigureRequiredProp extends ConfigureProp {

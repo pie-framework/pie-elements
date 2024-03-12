@@ -42,9 +42,19 @@ export default {
     allowTrailingZerosDefault: false,
   },
   configuration: {
+    baseInputConfiguration: {
+      audio: { disabled: false },
+      video: { disabled: false },
+      image: { disabled: false },
+    },
     prompt: {
       settings: true,
       label: 'Prompt',
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
     },
     feedback: {
       settings: true,
@@ -57,6 +67,11 @@ export default {
     rationale: {
       settings: true,
       label: 'Rationale',
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
     },
     settingsPanelDisabled: false,
     spellCheck: {
@@ -75,6 +90,11 @@ export default {
     teacherInstructions: {
       settings: true,
       label: 'Teacher Instructions',
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
     },
     partialScoring: {
       settings: false,
