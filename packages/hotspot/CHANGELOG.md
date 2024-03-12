@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.9.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@6.8.1...@pie-element/hotspot@6.9.0) (2024-03-12)
+
+
+### Features
+
+* Add configuration for custom buttons PD-3523 ([222bf0a](https://github.com/pie-framework/pie-elements/commit/222bf0aad21d14aca11a5571b400826410fad8bb))
+
+
+
+
+
+## [6.8.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@6.8.0...@pie-element/hotspot@6.8.1) (2024-03-12)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3509, PD-3465 ([b1745aa](https://github.com/pie-framework/pie-elements/commit/b1745aa981722b5561aab1f4495ac81ac7bc4155))
+
+
+
+
+
 # [6.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@6.7.0...@pie-element/hotspot@6.8.0) (2024-03-04)
 
 

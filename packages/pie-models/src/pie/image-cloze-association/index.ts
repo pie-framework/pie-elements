@@ -5,11 +5,13 @@ import {
   ConfigureProp,
   ConfigureMaxImageDimensionsProp,
   ConfigurePropWithEnabled,
-  ConfigureLanguageOptionsProp
+  ConfigureLanguageOptionsProp,
+  EditableHtmlPluginConfigure,
+  EditableHtmlConfigureProp,
 } from '../ConfigurationProp';
 
 enum ChoicesPosition {
-  top= 'top',
+  top = 'top',
   bottom = 'bottom',
   left = 'left',
   right = 'right',
@@ -129,9 +131,9 @@ export interface ImageClozeAssociationPie extends PieModel {
    * Supported options: fontsize, possibilityListPosition (top, bottom, left, right)
    */
   uiStyle?: {
-    possibilityListPosition?: ChoicesPosition,
-    fontsize: string
-  }
+    possibilityListPosition?: ChoicesPosition;
+    fontsize: string;
+  };
 }
 
 /**
@@ -139,6 +141,12 @@ export interface ImageClozeAssociationPie extends PieModel {
  * @additionalProperties false
  */
 export interface ImageClozeAssociationConfigure extends PromptConfig, CommonConfigSettings {
+  /**
+   * Base editable html input configuration regarding plugins that are enabled/disabled
+   * E.g. audio, video, image
+   */
+  baseInputConfiguration?: EditableHtmlConfigureProp;
+
   /**
    * Maximum image width for input fields
    */
@@ -162,7 +170,7 @@ export interface ImageClozeAssociationConfigure extends PromptConfig, CommonConf
   /**
    * Teacher Instructions configuration
    */
-  teacherInstructions?: ConfigureProp;
+  teacherInstructions?: EditableHtmlPluginConfigure;
 
   /**
    * Rubric configuration - only relevant in environments that use pie-player-components

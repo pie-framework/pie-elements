@@ -8,7 +8,6 @@ import {
   ConfigureProp,
   ConfigurePropWithEnabled,
   EditableHtmlConfigureProp,
-  EditableHtmlPluginConfigure,
 } from '../ConfigurationProp';
 
 interface Graph {
@@ -466,7 +465,7 @@ export interface GraphingConfigure extends PromptConfig, CommonConfigSettings {
   /**
    * Rationale configuration
    */
-  prompt?: EditableHtmlPluginConfigure;
+  prompt?: EditableHtmlPluginConfigureRequired;
 
   /**
    * Indicates if the settings panel is not available
@@ -481,7 +480,7 @@ export interface GraphingConfigure extends PromptConfig, CommonConfigSettings {
   /**
    * Prompt configuration
    */
-  rationale?: EditableHtmlPluginConfigure;
+  rationale?: EditableHtmlPluginConfigureRequired;
 
   /**
    * Scoring Type configuration
@@ -496,7 +495,7 @@ export interface GraphingConfigure extends PromptConfig, CommonConfigSettings {
   /**
    * Teacher Instructions configuration
    */
-  teacherInstructions?: EditableHtmlPluginConfigure;
+  teacherInstructions?: EditableHtmlPluginConfigureRequired;
 
   /**
    * Graph title configuration

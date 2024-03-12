@@ -336,6 +336,7 @@ exports[`Configure renders snapshot 1`] = `
               },
             },
             "label": "Item Stem",
+            "required": false,
             "settings": true,
           },
           "rationale": Object {
@@ -351,6 +352,7 @@ exports[`Configure renders snapshot 1`] = `
               },
             },
             "label": "Rationale",
+            "required": false,
             "settings": true,
           },
           "scoringType": Object {
@@ -380,6 +382,7 @@ exports[`Configure renders snapshot 1`] = `
               },
             },
             "label": "Teacher Instructions",
+            "required": false,
             "settings": true,
           },
           "title": Object {
