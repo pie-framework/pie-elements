@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@7.6.1...@pie-element/categorize-configure@7.7.0) (2024-03-12)
+
+
+### Features
+
+* **categorize:** add required fields functionality PD-3546 ([e370f14](https://github.com/pie-framework/pie-elements/commit/e370f14ff25afff8154b1b08a4ad4626aadcc547))
+
+
+
+
+
 ## [7.6.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@7.6.0...@pie-element/categorize-configure@7.6.1) (2024-03-12)
 
 
