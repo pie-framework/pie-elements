@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@5.5.1...@pie-element/graphing@5.6.0) (2024-03-12)
+
+
+### Features
+
+* **graphing:** add required fields functionality PD-3547 ([7ad6d2f](https://github.com/pie-framework/pie-elements/commit/7ad6d2f09bc60c6d84a3b8c21a3d0e875ad9c164))
+
+
+
+
+
 ## [5.5.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@5.5.0...@pie-element/graphing@5.5.1) (2024-03-12)
 
 

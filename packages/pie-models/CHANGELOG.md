@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.18.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.17.0...@pie-element/pie-models@13.18.0) (2024-03-12)
+
+
+### Features
+
+* **categorize:** add required fields functionality PD-3546 ([e370f14](https://github.com/pie-framework/pie-elements/commit/e370f14ff25afff8154b1b08a4ad4626aadcc547))
+* **graphing:** add required fields functionality PD-3547 ([7ad6d2f](https://github.com/pie-framework/pie-elements/commit/7ad6d2f09bc60c6d84a3b8c21a3d0e875ad9c164))
+* **match:** add required fields functionality PD-3548 ([469f52f](https://github.com/pie-framework/pie-elements/commit/469f52f5ac795991ce115b11c6eee19eaedbf851))
+
+
+
+
+
 # [13.17.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.16.0...@pie-element/pie-models@13.17.0) (2024-03-07)
 
 

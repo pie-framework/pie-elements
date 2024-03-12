@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@7.1.2...@pie-element/match@7.2.0) (2024-03-12)
+
+
+### Features
+
+* **match:** add required fields functionality PD-3548 ([469f52f](https://github.com/pie-framework/pie-elements/commit/469f52f5ac795991ce115b11c6eee19eaedbf851))
+
+
+
+
+
 ## [7.1.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@7.1.1...@pie-element/match@7.1.2) (2024-03-12)
 
 
