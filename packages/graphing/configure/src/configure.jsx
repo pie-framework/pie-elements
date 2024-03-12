@@ -28,6 +28,11 @@ const styles = (theme) => ({
   description: {
     marginBottom: theme.spacing.unit * 2.5,
   },
+  errorText: {
+    fontSize: theme.typography.fontSize - 2,
+    color: theme.palette.error.main,
+    paddingTop: theme.spacing.unit,
+  },
 });
 
 export class Configure extends React.Component {
@@ -123,6 +128,11 @@ export class Configure extends React.Component {
       teacherInstructionsEnabled,
       titleEnabled,
     } = model || {};
+    const {
+      prompt: promptError,
+      rationale: rationaleError,
+      teacherInstructions: teacherInstructionsError,
+    } = errors || {};
 
     log('[render] model', model);
 
@@ -193,6 +203,7 @@ export class Configure extends React.Component {
               markup={model.teacherInstructions || ''}
               onChange={this.onTeacherInstructionsChange}
               imageSupport={imageSupport}
+              error={teacherInstructionsError}
               nonEmpty={false}
               spellCheck={spellCheckEnabled}
               maxImageWidth={(maxImageWidth && maxImageWidth.teacherInstructions) || defaultImageMaxWidth}
@@ -201,6 +212,7 @@ export class Configure extends React.Component {
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               mathMlOptions={mathMlOptions}
             />
+            {teacherInstructionsError && <div className={classes.errorText}>{teacherInstructionsError}</div>}
           </InputContainer>
         )}
 
@@ -211,6 +223,7 @@ export class Configure extends React.Component {
               markup={model.prompt}
               onChange={this.onPromptChange}
               imageSupport={imageSupport}
+              error={promptError}
               nonEmpty={false}
               spellCheck={spellCheckEnabled}
               disableUnderline
@@ -220,6 +233,7 @@ export class Configure extends React.Component {
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               mathMlOptions={mathMlOptions}
             />
+            {promptError && <div className={classes.errorText}>{promptError}</div>}
           </InputContainer>
         )}
 
@@ -253,6 +267,7 @@ export class Configure extends React.Component {
               markup={model.rationale || ''}
               onChange={this.onRationaleChange}
               imageSupport={imageSupport}
+              error={rationaleError}
               spellCheck={spellCheckEnabled}
               maxImageWidth={(maxImageWidth && maxImageWidth.rationale) || defaultImageMaxWidth}
               maxImageHeight={(maxImageHeight && maxImageHeight.rationale) || defaultImageMaxHeight}
@@ -260,6 +275,7 @@ export class Configure extends React.Component {
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               mathMlOptions={mathMlOptions}
             />
+            {rationaleError && <div className={classes.errorText}>{rationaleError}</div>}
           </InputContainer>
         )}
       </layout.ConfigLayout>
