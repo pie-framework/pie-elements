@@ -70,6 +70,7 @@ export default {
     prompt: {
       settings: true,
       label: 'Prompt',
+      required: false,
       inputConfiguration: {
         audio: { disabled: false },
         video: { disabled: false },
@@ -79,6 +80,7 @@ export default {
     rationale: {
       settings: true,
       label: 'Rationale',
+      required: false,
       inputConfiguration: {
         audio: { disabled: false },
         video: { disabled: false },
@@ -97,6 +99,7 @@ export default {
     teacherInstructions: {
       settings: true,
       label: 'Teacher Instructions',
+      required: false,
       inputConfiguration: {
         audio: { disabled: false },
         video: { disabled: false },

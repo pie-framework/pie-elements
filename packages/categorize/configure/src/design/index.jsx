@@ -205,6 +205,7 @@ export class Design extends React.Component {
     const {
       allowAlternateEnabled,
       allowMaxChoicesPerCategory,
+      errors,
       feedbackEnabled,
       maxChoicesPerCategory,
       promptEnabled,
@@ -213,6 +214,11 @@ export class Design extends React.Component {
       teacherInstructionsEnabled,
       toolbarEditorPosition,
     } = model || {};
+    const {
+      prompt: promptError,
+      rationale: rationaleError,
+      teacherInstructions: teacherInstructionsError,
+    } = errors || {};
 
     const toolbarOpts = {
       position: toolbarEditorPosition === 'top' ? 'top' : 'bottom',
@@ -321,6 +327,7 @@ export class Design extends React.Component {
                 markup={model.teacherInstructions || ''}
                 onChange={this.changeTeacherInstructions}
                 imageSupport={imageSupport}
+                error={teacherInstructionsError}
                 nonEmpty={false}
                 toolbarOpts={toolbarOpts}
                 pluginProps={getPluginProps(teacherInstructions?.inputConfiguration, baseInputConfiguration)}
@@ -331,6 +338,7 @@ export class Design extends React.Component {
                 languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
                 mathMlOptions={mathMlOptions}
               />
+              {teacherInstructionsError && <div className={classes.errorText}>{teacherInstructionsError}</div>}
             </InputContainer>
           )}
 
@@ -341,6 +349,7 @@ export class Design extends React.Component {
                 markup={model.prompt || ''}
                 onChange={this.onPromptChanged}
                 imageSupport={imageSupport}
+                error={promptError}
                 nonEmpty={false}
                 disableUnderline
                 toolbarOpts={toolbarOpts}
@@ -352,6 +361,7 @@ export class Design extends React.Component {
                 languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
                 mathMlOptions={mathMlOptions}
               />
+              {promptError && <div className={classes.errorText}>{promptError}</div>}
             </InputContainer>
           )}
 
@@ -425,6 +435,7 @@ export class Design extends React.Component {
                 markup={model.rationale || ''}
                 onChange={this.changeRationale}
                 imageSupport={imageSupport}
+                error={rationaleError}
                 nonEmpty={false}
                 toolbarOpts={toolbarOpts}
                 pluginProps={getPluginProps(prompt?.inputConfiguration, baseInputConfiguration)}
@@ -435,6 +446,7 @@ export class Design extends React.Component {
                 languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
                 mathMlOptions={mathMlOptions}
               />
+              {rationaleError && <div className={classes.errorText}>{rationaleError}</div>}
             </InputContainer>
           )}
 
@@ -462,6 +474,11 @@ const styles = (theme) => ({
   },
   title: {
     marginBottom: theme.spacing.unit * 4,
+  },
+  errorText: {
+    fontSize: theme.typography.fontSize - 2,
+    color: theme.palette.error.main,
+    paddingTop: theme.spacing.unit,
   },
 });
 

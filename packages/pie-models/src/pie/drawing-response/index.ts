@@ -3,7 +3,11 @@ import {
   ConfigureProp,
   ConfigurePropWithEnabled,
   ConfigureMaxImageDimensionsProp,
-  ConfigureWithForceProp, ConfigureMathMLProp, ConfigureLanguageOptionsProp,
+  ConfigureWithForceProp,
+  ConfigureMathMLProp,
+  ConfigureLanguageOptionsProp,
+  EditableHtmlConfigureProp,
+  EditableHtmlPluginConfigure,
 } from '../ConfigurationProp';
 import { PromptConfig } from '../../PromptConfig';
 import { Dimension } from '../../Dimension';
@@ -70,6 +74,12 @@ export interface DrawingResponsePie extends PieModel {
  */
 export interface DrawingResponseConfigure extends PromptConfig, CommonConfigSettings {
   /**
+   * Base editable html input configuration regarding plugins that are enabled/disabled
+   * E.g. audio, video, image
+   */
+  baseInputConfiguration?: EditableHtmlConfigureProp;
+
+  /**
    * Configuration for multiple correct
    */
   backgroundImage?: ConfigurePropWithEnabled;
@@ -97,7 +107,12 @@ export interface DrawingResponseConfigure extends PromptConfig, CommonConfigSett
   /**
    * Teacher Instructions configuration
    */
-  teacherInstructions?: ConfigureProp;
+  teacherInstructions?: EditableHtmlPluginConfigure;
+
+  /**
+   * Prompt configuration
+   */
+  prompt?: EditableHtmlPluginConfigure;
 
   /**
    * Maximum image width for input fields

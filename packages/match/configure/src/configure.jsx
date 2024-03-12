@@ -18,6 +18,11 @@ const styles = (theme) => ({
     paddingTop: theme.spacing.unit * 2,
     marginBottom: theme.spacing.unit * 2,
   },
+  errorText: {
+    fontSize: theme.typography.fontSize - 2,
+    color: theme.palette.error.main,
+    paddingTop: theme.spacing.unit,
+  },
 });
 
 class Configure extends React.Component {
@@ -230,6 +235,7 @@ class Configure extends React.Component {
       languageChoices = {},
     } = configuration || {};
     const {
+      errors,
       feedbackEnabled,
       promptEnabled,
       rationaleEnabled,
@@ -237,6 +243,11 @@ class Configure extends React.Component {
       teacherInstructionsEnabled,
       toolbarEditorPosition,
     } = model || {};
+    const {
+      prompt: promptError,
+      rationale: rationaleError,
+      teacherInstructions: teacherInstructionsError,
+    } = errors || {};
     const { dialog } = this.state;
 
     const toolbarOpts = {
@@ -290,6 +301,7 @@ class Configure extends React.Component {
               markup={model.teacherInstructions || ''}
               onChange={this.onTeacherInstructionsChanged}
               imageSupport={imageSupport}
+              error={teacherInstructionsError}
               nonEmpty={false}
               toolbarOpts={toolbarOpts}
               pluginProps={getPluginProps(teacherInstructions?.inputConfiguration, baseInputConfiguration)}
@@ -299,6 +311,7 @@ class Configure extends React.Component {
               uploadSoundSupport={uploadSoundSupport}
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
             />
+            {teacherInstructionsError && <div className={classes.errorText}>{teacherInstructionsError}</div>}
           </InputContainer>
         )}
 
@@ -309,6 +322,7 @@ class Configure extends React.Component {
               markup={model.prompt}
               onChange={this.onPromptChanged}
               imageSupport={imageSupport}
+              error={promptError}
               nonEmpty={false}
               disableUnderline
               toolbarOpts={toolbarOpts}
@@ -319,6 +333,7 @@ class Configure extends React.Component {
               uploadSoundSupport={uploadSoundSupport}
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
             />
+            {promptError && <div className={classes.errorText}>{promptError}</div>}
           </InputContainer>
         )}
 
@@ -348,6 +363,7 @@ class Configure extends React.Component {
               markup={model.rationale || ''}
               onChange={this.onRationaleChanged}
               imageSupport={imageSupport}
+              error={rationaleError}
               toolbarOpts={toolbarOpts}
               pluginProps={getPluginProps(rationale?.inputConfiguration, baseInputConfiguration)}
               spellCheck={spellCheckEnabled}
@@ -356,6 +372,7 @@ class Configure extends React.Component {
               uploadSoundSupport={uploadSoundSupport}
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
             />
+            {rationaleError && <div className={classes.errorText}>{rationaleError}</div>}
           </InputContainer>
         )}
 

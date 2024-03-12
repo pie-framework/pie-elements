@@ -1,4 +1,3 @@
-import { PromptConfig } from '../../PromptConfig';
 import { PieModel } from '../../PieModel';
 import { CommonConfigSettings } from '../../CommonConfigSettings';
 import { ComplexFeedbackType } from '../../Feedback';
@@ -6,9 +5,10 @@ import {
   ConfigureLanguageOptionsProp,
   ConfigureMathMLProp,
   ConfigureProp,
-  ConfigurePropWithEnabled,
   EditableHtmlConfigureProp,
   EditableHtmlPluginConfigure,
+  ConfigurePropWithEnabled,
+  EditableHtmlPluginConfigureRequired,
 } from '../ConfigurationProp';
 
 interface CategoryChoice {
@@ -164,7 +164,7 @@ interface ConfigureMaxImageDimensionsProp {
  * Config Object for @pie-elements/categorize
  * @additionalProperties false
  */
-export interface CategorizeConfigure extends PromptConfig, CommonConfigSettings {
+export interface CategorizeConfigure extends CommonConfigSettings {
   /**
    * Base editable html input configuration regarding plugins that are enabled/disabled
    * E.g. audio, video, image
@@ -179,7 +179,7 @@ export interface CategorizeConfigure extends PromptConfig, CommonConfigSettings 
   /**
    * Rationale configuration
    */
-  rationale?: EditableHtmlPluginConfigure;
+  rationale?: EditableHtmlPluginConfigureRequired;
 
   /**
    * Configuration for the author's spellcheck
@@ -204,12 +204,12 @@ export interface CategorizeConfigure extends PromptConfig, CommonConfigSettings 
   /**
    * Teacher Instructions configuration
    */
-  teacherInstructions?: EditableHtmlPluginConfigure;
+  teacherInstructions?: EditableHtmlPluginConfigureRequired;
 
   /**
    * Configuration for the prompt
    */
-  prompt?: EditableHtmlPluginConfigure;
+  prompt?: EditableHtmlPluginConfigureRequired;
 
   /**
    * Configuration for the headers

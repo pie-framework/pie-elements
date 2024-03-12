@@ -1,7 +1,7 @@
 import React from 'react';
 import { settings, layout, InputContainer, NumberTextField } from '@pie-lib/pie-toolbox/config-ui';
 import PropTypes from 'prop-types';
-import {EditableHtml} from '@pie-lib/pie-toolbox/editable-html';
+import { EditableHtml } from '@pie-lib/pie-toolbox/editable-html';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Info from '@material-ui/icons/Info';
@@ -64,6 +64,7 @@ export class Root extends React.Component {
       onUpdateShapes,
     } = this.props;
     const {
+      baseInputConfiguration = {},
       contentDimensions = {},
       maxImageWidth = {},
       maxImageHeight = {},
@@ -112,6 +113,15 @@ export class Root extends React.Component {
       rubricEnabled: withRubric?.settings && toggle(withRubric?.label),
     };
 
+    const getPluginProps = (props) => {
+      return Object.assign(
+        {
+          ...baseInputConfiguration,
+        },
+        props || {},
+      );
+    };
+
     return (
       <layout.ConfigLayout
         dimensions={contentDimensions}
@@ -137,6 +147,7 @@ export class Root extends React.Component {
               imageSupport={imageSupport}
               nonEmpty={false}
               toolbarOpts={toolbarOpts}
+              pluginProps={getPluginProps(teacherInstructions?.inputConfiguration)}
               spellCheck={spellCheckEnabled}
               maxImageWidth={(maxImageWidth && maxImageWidth.teacherInstructions) || defaultImageMaxWidth}
               maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
@@ -155,6 +166,7 @@ export class Root extends React.Component {
               imageSupport={imageSupport}
               nonEmpty={false}
               toolbarOpts={toolbarOpts}
+              pluginProps={getPluginProps(prompt?.inputConfiguration)}
               spellCheck={spellCheckEnabled}
               maxImageWidth={defaultImageMaxWidth}
               maxImageHeight={defaultImageMaxHeight}
@@ -242,6 +254,7 @@ export class Root extends React.Component {
               onChange={onRationaleChanged}
               imageSupport={imageSupport}
               toolbarOpts={toolbarOpts}
+              pluginProps={getPluginProps(rationale?.inputConfiguration)}
               spellCheck={spellCheckEnabled}
               maxImageWidth={(maxImageWidth && maxImageWidth.rationale) || defaultImageMaxWidth}
               maxImageHeight={(maxImageHeight && maxImageHeight.rationale) || defaultImageMaxHeight}

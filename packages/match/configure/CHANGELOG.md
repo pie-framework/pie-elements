@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-configure@6.5.2...@pie-element/match-configure@6.6.0) (2024-03-12)
+
+
+### Features
+
+* **match:** add required fields functionality PD-3548 ([469f52f](https://github.com/pie-framework/pie-elements/commit/469f52f5ac795991ce115b11c6eee19eaedbf851))
+
+
+
+
+
+## [6.5.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-configure@6.5.1...@pie-element/match-configure@6.5.2) (2024-03-12)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3509, PD-3465 ([b1745aa](https://github.com/pie-framework/pie-elements/commit/b1745aa981722b5561aab1f4495ac81ac7bc4155))
+
+
+
+
+
 ## [6.5.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-configure@6.5.0...@pie-element/match-configure@6.5.1) (2024-03-07)
 
 

@@ -186,6 +186,42 @@ The html Element tag name
 
 The schema defines the following additional types:
 
+## `EditableHtmlConfigureProp` (object)
+
+Properties of the `EditableHtmlConfigureProp` object:
+
+### `audio` (object)
+
+Properties of the `audio` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `video` (object)
+
+Properties of the `video` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `image` (object)
+
+Properties of the `image` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+## `EditableHtmlButtonConfigure` (object)
+
+Properties of the `EditableHtmlButtonConfigure` object:
+
+### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
 ## `ConfigureMaxImageDimensionsProp` (object)
 
 Properties of the `ConfigureMaxImageDimensionsProp` object:
@@ -205,6 +241,46 @@ Indicates the max dimension for images in rationale
 ## `ConfigureProp` (object)
 
 Properties of the `ConfigureProp` object:
+
+### `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+### `label` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
+
+## `EditableHtmlPluginConfigure` (object)
+
+Properties of the `EditableHtmlPluginConfigure` object:
+
+### `inputConfiguration` (object)
+
+Properties of the `inputConfiguration` object:
+
+#### `audio` (object)
+
+Properties of the `audio` object:
+
+##### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+#### `video` (object)
+
+Properties of the `video` object:
+
+##### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+#### `image` (object)
+
+Properties of the `image` object:
+
+##### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
 
 ### `settings` (boolean)
 

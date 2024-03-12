@@ -214,6 +214,10 @@ Properties of the `image` object:
 
 Indicates if the plugin is disabled or not
 
+## `required` (boolean)
+
+Indicates if the item is required and the value cannot be empty
+
 ## `settings` (boolean)
 
 Indicates if the item has to be displayed in the Settings Panel
@@ -269,6 +273,10 @@ Properties of the `image` object:
 #### `disabled` (boolean)
 
 Indicates if the plugin is disabled or not
+
+## `required` (boolean)
+
+Indicates if the item is required and the value cannot be empty
 
 ## `settings` (boolean)
 
@@ -333,6 +341,10 @@ Properties of the `image` object:
 #### `disabled` (boolean)
 
 Indicates if the plugin is disabled or not
+
+## `required` (boolean)
+
+Indicates if the item is required and the value cannot be empty
 
 ## `settings` (boolean)
 
@@ -611,6 +623,50 @@ Properties of the `image` object:
 ##### `disabled` (boolean)
 
 Indicates if the plugin is disabled or not
+
+### `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+### `label` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
+
+## `EditableHtmlPluginConfigureRequired` (object)
+
+Properties of the `EditableHtmlPluginConfigureRequired` object:
+
+### `inputConfiguration` (object)
+
+Properties of the `inputConfiguration` object:
+
+#### `audio` (object)
+
+Properties of the `audio` object:
+
+##### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+#### `video` (object)
+
+Properties of the `video` object:
+
+##### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+#### `image` (object)
+
+Properties of the `image` object:
+
+##### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `required` (boolean)
+
+Indicates if the item is required and the value cannot be empty
 
 ### `settings` (boolean)
 
