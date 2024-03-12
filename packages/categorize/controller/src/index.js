@@ -234,6 +234,8 @@ export const createCorrectResponseSession = (question, env) => {
   });
 };
 
+const getInnerText = (html) => (html || '').replaceAll(/<[^>]*>/g, '');
+
 export const validate = (model = {}, config = {}) => {
   const { categories, choices, correctResponse } = model;
   const {
@@ -249,6 +251,12 @@ export const validate = (model = {}, config = {}) => {
   const choicesErrors = {};
   const categoriesErrors = {};
 
+  ['teacherInstructions', 'prompt', 'rationale'].forEach((field) => {
+    if (config[field]?.required && !getInnerText(model[field])) {
+      errors[field] = 'This field is required';
+    }
+  });
+
   (categories || []).forEach((category) => {
     const { id, label } = category;
     const parsedLabel = label.replace(/<(?:.|\n)*?>/gm, '');
@@ -263,7 +271,7 @@ export const validate = (model = {}, config = {}) => {
     if (parsedContent.length > maxLengthPerChoice) {
       choicesErrors[id] = `Tokens should be no more than ${maxLengthPerChoice} characters long.`;
     }
-    if (content === '' || content === '<div></div>') {
+    if (!getInnerText(content)) {
       choicesErrors[id] = 'Tokens should not be empty.';
     } else {
       const identicalAnswer = reversedChoices.slice(index + 1).some((c) => c.content === content);
@@ -335,5 +343,6 @@ export const validate = (model = {}, config = {}) => {
   if (!isEmpty(categoriesErrors)) {
     errors.categoriesErrors = categoriesErrors;
   }
+
   return errors;
 };

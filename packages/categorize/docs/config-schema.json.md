@@ -14,9 +14,29 @@ Indicates if the item has to be displayed in the Settings Panel
 
 Indicates the label for the item that has to be displayed in the Settings Panel
 
+# `prompt` (object)
+
+Properties of the `prompt` object:
+
+## `required` (boolean)
+
+Indicates if the item is required and the value cannot be empty
+
+## `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+## `label` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
+
 # `rationale` (object)
 
 Properties of the `rationale` object:
+
+## `required` (boolean)
+
+Indicates if the item is required and the value cannot be empty
 
 ## `settings` (boolean)
 
@@ -69,6 +89,10 @@ Indicates the label for the item that has to be displayed in the Settings Panel
 # `teacherInstructions` (object)
 
 Properties of the `teacherInstructions` object:
+
+## `required` (boolean)
+
+Indicates if the item is required and the value cannot be empty
 
 ## `settings` (boolean)
 
@@ -226,18 +250,6 @@ Value of the language option
 
 Label of the language option
 
-# `showPrompt` (boolean)
-
-Determines whether prompt field will be displayed or not
-
-Default: `true`
-
-# `promptLabel` (string)
-
-The label for the item stem/prompt field
-
-Default: `"Item Stemm"`
-
 # `contentDimensions` (object)
 
 Indicates the dimensions configuration for the authoring container
@@ -287,6 +299,22 @@ The schema defines the following additional types:
 ## `ConfigureProp` (object)
 
 Properties of the `ConfigureProp` object:
+
+### `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+### `label` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
+
+## `ConfigureRequiredProp` (object)
+
+Properties of the `ConfigureRequiredProp` object:
+
+### `required` (boolean)
+
+Indicates if the item is required and the value cannot be empty
 
 ### `settings` (boolean)
 
