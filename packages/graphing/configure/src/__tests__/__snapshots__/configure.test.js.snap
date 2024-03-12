@@ -63,6 +63,17 @@ exports[`Configure renders snapshot 1`] = `
             "sine",
             "vector",
           ],
+          "baseInputConfiguration": Object {
+            "audio": Object {
+              "disabled": false,
+            },
+            "image": Object {
+              "disabled": false,
+            },
+            "video": Object {
+              "disabled": false,
+            },
+          },
           "coordinatesOnHover": Object {
             "label": "Coordinates on Hover",
             "settings": true,
@@ -313,11 +324,33 @@ exports[`Configure renders snapshot 1`] = `
             "settings": false,
           },
           "prompt": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": false,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": false,
+              },
+            },
             "label": "Item Stem",
             "required": false,
             "settings": true,
           },
           "rationale": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": false,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": false,
+              },
+            },
             "label": "Rationale",
             "required": false,
             "settings": true,
@@ -337,6 +370,17 @@ exports[`Configure renders snapshot 1`] = `
             "settings": false,
           },
           "teacherInstructions": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": false,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": false,
+              },
+            },
             "label": "Teacher Instructions",
             "required": false,
             "settings": true,
@@ -475,6 +519,19 @@ exports[`Configure renders snapshot 1`] = `
       nonEmpty={false}
       onChange={[Function]}
       onDone={[Function]}
+      pluginProps={
+        Object {
+          "audio": Object {
+            "disabled": false,
+          },
+          "image": Object {
+            "disabled": false,
+          },
+          "video": Object {
+            "disabled": false,
+          },
+        }
+      }
     />
   </InputContainer>
   <InputContainer
@@ -505,6 +562,19 @@ exports[`Configure renders snapshot 1`] = `
       nonEmpty={false}
       onChange={[Function]}
       onDone={[Function]}
+      pluginProps={
+        Object {
+          "audio": Object {
+            "disabled": false,
+          },
+          "image": Object {
+            "disabled": false,
+          },
+          "video": Object {
+            "disabled": false,
+          },
+        }
+      }
     />
   </InputContainer>
   <WithStyles(GraphingConfig)
@@ -948,6 +1018,19 @@ exports[`Configure renders snapshot 1`] = `
       maxImageWidth={300}
       onChange={[Function]}
       onDone={[Function]}
+      pluginProps={
+        Object {
+          "audio": Object {
+            "disabled": false,
+          },
+          "image": Object {
+            "disabled": false,
+          },
+          "video": Object {
+            "disabled": false,
+          },
+        }
+      }
     />
   </InputContainer>
 </ConfigLayout>
