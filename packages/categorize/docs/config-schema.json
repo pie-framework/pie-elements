@@ -19,10 +19,36 @@
         }
       }
     },
-    "rationale": {
-      "title": "ConfigureProp",
+    "prompt": {
+      "title": "ConfigureRequiredProp",
       "type": "object",
       "properties": {
+        "required": {
+          "description": "Indicates if the item is required and the value cannot be empty",
+          "type": "boolean",
+          "title": "required"
+        },
+        "settings": {
+          "description": "Indicates if the item has to be displayed in the Settings Panel",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+          "type": "string",
+          "title": "label"
+        }
+      }
+    },
+    "rationale": {
+      "title": "ConfigureRequiredProp",
+      "type": "object",
+      "properties": {
+        "required": {
+          "description": "Indicates if the item is required and the value cannot be empty",
+          "type": "boolean",
+          "title": "required"
+        },
         "settings": {
           "description": "Indicates if the item has to be displayed in the Settings Panel",
           "type": "boolean",
@@ -89,9 +115,14 @@
       }
     },
     "teacherInstructions": {
-      "title": "ConfigureProp",
+      "title": "ConfigureRequiredProp",
       "type": "object",
       "properties": {
+        "required": {
+          "description": "Indicates if the item is required and the value cannot be empty",
+          "type": "boolean",
+          "title": "required"
+        },
         "settings": {
           "description": "Indicates if the item has to be displayed in the Settings Panel",
           "type": "boolean",
@@ -304,18 +335,6 @@
       ],
       "title": "languageChoices"
     },
-    "showPrompt": {
-      "description": "Determines whether prompt field will be displayed or not",
-      "default": true,
-      "type": "boolean",
-      "title": "showPrompt"
-    },
-    "promptLabel": {
-      "description": "The label for the item stem/prompt field",
-      "default": "Item Stemm",
-      "type": "string",
-      "title": "promptLabel"
-    },
     "contentDimensions": {
       "description": "Indicates the dimensions configuration for the authoring container\nNote: Some items have a default minimum width because of their content, but if\nthe minWidth is lower than this, the overflow behavior will take care of that",
       "default": ": {}",
@@ -372,6 +391,27 @@
       "title": "ConfigureProp",
       "type": "object",
       "properties": {
+        "settings": {
+          "description": "Indicates if the item has to be displayed in the Settings Panel",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+          "type": "string",
+          "title": "label"
+        }
+      }
+    },
+    "ConfigureRequiredProp": {
+      "title": "ConfigureRequiredProp",
+      "type": "object",
+      "properties": {
+        "required": {
+          "description": "Indicates if the item is required and the value cannot be empty",
+          "type": "boolean",
+          "title": "required"
+        },
         "settings": {
           "description": "Indicates if the item has to be displayed in the Settings Panel",
           "type": "boolean",

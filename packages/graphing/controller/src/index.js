@@ -289,7 +289,9 @@ export const createCorrectResponseSession = (question, env) => {
   });
 };
 
-export const validate = (model = {}) => {
+const getInnerText = (html) => (html || '').replaceAll(/<[^>]*>/g, '');
+
+export const validate = (model = {}, config = {}) => {
   const { answers, toolbarTools } = model;
   const errors = {};
   const correctAnswerErrors = {};
@@ -298,6 +300,12 @@ export const validate = (model = {}) => {
   if (!toolbarToolsNoLabel.length) {
     errors.toolbarToolsError = 'There should be at least 1 tool defined.';
   }
+
+  ['teacherInstructions', 'prompt', 'rationale'].forEach((field) => {
+    if (config[field]?.required && !getInnerText(model[field])) {
+      errors[field] = 'This field is required';
+    }
+  });
 
   Object.entries(answers || {}).forEach(([key, value]) => {
     if (!value.marks.length) {
