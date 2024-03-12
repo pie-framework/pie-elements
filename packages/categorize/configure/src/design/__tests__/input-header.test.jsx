@@ -13,7 +13,7 @@ describe('InputHeader', () => {
       onChange,
       onDelete,
     };
-    const props = { ...defaults, ...extras };
+    const props = { ...defaults, ...extras, configuration: {} };
     return shallow(<InputHeader {...props} />);
   };
   describe('snapshot', () => {

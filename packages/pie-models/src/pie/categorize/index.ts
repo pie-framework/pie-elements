@@ -6,7 +6,9 @@ import {
   ConfigureLanguageOptionsProp,
   ConfigureMathMLProp,
   ConfigureProp,
-  ConfigurePropWithEnabled
+  ConfigurePropWithEnabled,
+  EditableHtmlConfigureProp,
+  EditableHtmlPluginConfigure,
 } from '../ConfigurationProp';
 
 interface CategoryChoice {
@@ -59,9 +61,8 @@ enum ChoicesPosition {
  * @additionalProperties false
  */
 export interface CategorizePie extends PieModel {
-
   /** Indicates if author has the possibility to set maxChoicesPerCategory */
-  allowMaxChoicesPerCategory: boolean
+  allowMaxChoicesPerCategory: boolean;
 
   /** The available choices */
   choices: CategoryChoice[];
@@ -99,7 +100,7 @@ export interface CategorizePie extends PieModel {
   feedback?: ComplexFeedbackType;
 
   /** Indicates the maximum number of choices from a category */
-  maxChoicesPerCategory: number
+  maxChoicesPerCategory: number;
 
   /** Indicates the value for rationale */
   rationale?: string;
@@ -165,6 +166,12 @@ interface ConfigureMaxImageDimensionsProp {
  */
 export interface CategorizeConfigure extends PromptConfig, CommonConfigSettings {
   /**
+   * Base editable html input configuration regarding plugins that are enabled/disabled
+   * E.g. audio, video, image
+   */
+  baseInputConfiguration?: EditableHtmlConfigureProp;
+
+  /**
    * Partial Scoring configuration
    */
   partialScoring?: ConfigureProp;
@@ -172,7 +179,7 @@ export interface CategorizeConfigure extends PromptConfig, CommonConfigSettings 
   /**
    * Rationale configuration
    */
-  rationale?: ConfigureProp;
+  rationale?: EditableHtmlPluginConfigure;
 
   /**
    * Configuration for the author's spellcheck
@@ -197,7 +204,22 @@ export interface CategorizeConfigure extends PromptConfig, CommonConfigSettings 
   /**
    * Teacher Instructions configuration
    */
-  teacherInstructions?: ConfigureProp;
+  teacherInstructions?: EditableHtmlPluginConfigure;
+
+  /**
+   * Configuration for the prompt
+   */
+  prompt?: EditableHtmlPluginConfigure;
+
+  /**
+   * Configuration for the headers
+   */
+  headers?: EditableHtmlPluginConfigure;
+
+  /**
+   * Configuration for the row labels
+   */
+  rowLabels?: EditableHtmlPluginConfigure;
 
   /**
    * Minimum number of choices
