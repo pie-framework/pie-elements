@@ -273,9 +273,7 @@ export const createCorrectResponseSession = (question, env) => {
   });
 };
 
-const markupToText = (s) => {
-  return (s || '').replace(/(<([^>]+)>)/gi, '');
-};
+const getInnerText = (html) => (html || '').replaceAll(/<[^>]*>/g, '');
 
 export const validate = (model = {}, config = {}) => {
   const { rows, choiceMode, headers } = model;
@@ -291,6 +289,12 @@ export const validate = (model = {}, config = {}) => {
   const columnsErrors = {};
   const errors = {};
 
+  ['teacherInstructions', 'prompt', 'rationale'].forEach((field) => {
+    if (config[field]?.required && !getInnerText(model[field])) {
+      errors[field] = 'This field is required';
+    }
+  });
+
   if (rows.length < minQuestions) {
     errors.noOfRowsError = `There should be at least ${minQuestions} question rows.`;
   } else if (rows.length > maxQuestions) {
@@ -303,15 +307,15 @@ export const validate = (model = {}, config = {}) => {
 
     rowsErrors[id] = '';
 
-    if (maxLengthQuestionsHeading && markupToText(title).length > maxLengthQuestionsHeading) {
+    if (maxLengthQuestionsHeading && getInnerText(title).length > maxLengthQuestionsHeading) {
       rowsErrors[
         id
       ] += `Questions rows content length should not be more than ${maxLengthQuestionsHeading} characters. `;
-    } else if (title === '' || title === '<div></div>') {
+    } else if (!getInnerText(title)) {
       rowsErrors[id] += 'Content should not be empty. ';
     } else {
       const identicalAnswer = rows.slice(index + 1).some((r) => {
-        return markupToText(r.title) === markupToText(title);
+        return getInnerText(r.title) === getInnerText(title);
       });
 
       if (identicalAnswer) {
@@ -339,11 +343,11 @@ export const validate = (model = {}, config = {}) => {
   }
 
   // remove first column since it does not require validation
-  const validateHeaders = (cloneDeep(headers) || []).map((heading) => markupToText(heading));
+  const validateHeaders = (cloneDeep(headers) || []).map((heading) => getInnerText(heading));
   validateHeaders.shift();
 
   (validateHeaders || []).forEach((heading, index) => {
-    if (heading === '' || heading === '<div></div>') {
+    if (!getInnerText(heading)) {
       columnsErrors[index + 1] = 'Content should not be empty.';
     } else if (maxLengthAnswers && heading.length > maxLengthAnswers) {
       columnsErrors[index + 1] = `Content length should be maximum ${maxLengthAnswers} characters.`;
