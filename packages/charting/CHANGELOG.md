@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@7.5.1...@pie-element/charting@7.6.0) (2024-03-12)
+
+
+### Features
+
+* Add configuration for custom buttons PD-3515 ([645574c](https://github.com/pie-framework/pie-elements/commit/645574c42638d85253afa0aefe5d09fd8fae0207))
+
+
+
+
+
 ## [7.5.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@7.5.0...@pie-element/charting@7.5.1) (2024-03-12)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association-configure@5.4.1...@pie-element/image-cloze-association-configure@5.5.0) (2024-03-12)
+
+
+### Features
+
+* Add configuration for custom buttons PD-3524 ([94d3fc9](https://github.com/pie-framework/pie-elements/commit/94d3fc9aa56ddaa41b3dbaa8bc6c2a01514b9202))
+
+
+
+
+
 ## [5.4.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association-configure@5.4.0...@pie-element/image-cloze-association-configure@5.4.1) (2024-03-12)
 
 

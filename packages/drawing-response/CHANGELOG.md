@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response@7.4.1...@pie-element/drawing-response@7.5.0) (2024-03-12)
+
+
+### Features
+
+* Add configuration for custom buttons PD-3518 ([992f573](https://github.com/pie-framework/pie-elements/commit/992f5736c5d34f0d05b071c6b5be3c11c1301fae))
+
+
+
+
+
 ## [7.4.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response@7.4.0...@pie-element/drawing-response@7.4.1) (2024-03-12)
 
 
