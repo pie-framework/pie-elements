@@ -5,7 +5,7 @@ import { settings, layout, InputContainer } from '@pie-lib/pie-toolbox/config-ui
 import PropTypes from 'prop-types';
 import debug from 'debug';
 import Typography from '@material-ui/core/Typography';
-import {EditableHtml} from '@pie-lib/pie-toolbox/editable-html';
+import { EditableHtml } from '@pie-lib/pie-toolbox/editable-html';
 import GraphingConfig from './graphing-config';
 import CorrectResponse from './correct-response';
 import intersection from 'lodash/intersection';
@@ -91,6 +91,7 @@ export class Configure extends React.Component {
       arrows = {},
       authoring = {},
       availableTools = [],
+      baseInputConfiguration = {},
       coordinatesOnHover = {},
       contentDimensions = {},
       gridConfigurations = [],
@@ -165,6 +166,15 @@ export class Configure extends React.Component {
       instruction: instruction.settings && textField(instruction.label),
     };
 
+    const getPluginProps = (props) => {
+      return Object.assign(
+        {
+          ...baseInputConfiguration,
+        },
+        props || {},
+      );
+    };
+
     return (
       <layout.ConfigLayout
         dimensions={contentDimensions}
@@ -194,6 +204,7 @@ export class Configure extends React.Component {
               onChange={this.onTeacherInstructionsChange}
               imageSupport={imageSupport}
               nonEmpty={false}
+              pluginProps={getPluginProps(teacherInstructions?.inputConfiguration)}
               spellCheck={spellCheckEnabled}
               maxImageWidth={(maxImageWidth && maxImageWidth.teacherInstructions) || defaultImageMaxWidth}
               maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
@@ -213,6 +224,7 @@ export class Configure extends React.Component {
               imageSupport={imageSupport}
               nonEmpty={false}
               spellCheck={spellCheckEnabled}
+              pluginProps={getPluginProps(prompt?.inputConfiguration)}
               disableUnderline
               maxImageWidth={defaultImageMaxWidth}
               maxImageHeight={defaultImageMaxHeight}
@@ -254,6 +266,7 @@ export class Configure extends React.Component {
               onChange={this.onRationaleChange}
               imageSupport={imageSupport}
               spellCheck={spellCheckEnabled}
+              pluginProps={getPluginProps(rationale?.inputConfiguration)}
               maxImageWidth={(maxImageWidth && maxImageWidth.rationale) || defaultImageMaxWidth}
               maxImageHeight={(maxImageHeight && maxImageHeight.rationale) || defaultImageMaxHeight}
               uploadSoundSupport={uploadSoundSupport}
