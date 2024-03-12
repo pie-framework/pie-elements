@@ -153,7 +153,7 @@ export class AlternateResponses extends React.Component {
       toolbarOpts,
       defaultImageMaxHeight,
       defaultImageMaxWidth,
-      mathMlOptions = {}
+      mathMlOptions = {},
     } = this.props;
     const { categoriesPerRow, errors, rowLabels } = model;
     const { duplicateAlternate } = errors || {};
@@ -187,6 +187,7 @@ export class AlternateResponses extends React.Component {
                     maxImageHeight={(maxImageHeight && maxImageHeight.rowLabel) || defaultImageMaxHeight}
                     uploadSoundSupport={uploadSoundSupport}
                     mathMlOptions={mathMlOptions}
+                    configuration={configuration}
                   />
                 )}
 
@@ -204,6 +205,7 @@ export class AlternateResponses extends React.Component {
                   }
                   uploadSoundSupport={uploadSoundSupport}
                   mathMlOptions={mathMlOptions}
+                  configuration={configuration}
                 />
               </React.Fragment>
             );

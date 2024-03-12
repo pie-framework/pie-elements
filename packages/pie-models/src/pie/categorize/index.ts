@@ -5,8 +5,10 @@ import {
   ConfigureLanguageOptionsProp,
   ConfigureMathMLProp,
   ConfigureProp,
+  EditableHtmlConfigureProp,
+  EditableHtmlPluginConfigure,
   ConfigurePropWithEnabled,
-  ConfigureRequiredProp,
+  EditableHtmlPluginConfigureRequired,
 } from '../ConfigurationProp';
 
 interface CategoryChoice {
@@ -164,19 +166,20 @@ interface ConfigureMaxImageDimensionsProp {
  */
 export interface CategorizeConfigure extends CommonConfigSettings {
   /**
+   * Base editable html input configuration regarding plugins that are enabled/disabled
+   * E.g. audio, video, image
+   */
+  baseInputConfiguration?: EditableHtmlConfigureProp;
+
+  /**
    * Partial Scoring configuration
    */
   partialScoring?: ConfigureProp;
 
   /**
-   * Prompt configuration
-   */
-  prompt?: ConfigureRequiredProp;
-
-  /**
    * Rationale configuration
    */
-  rationale?: ConfigureRequiredProp;
+  rationale?: EditableHtmlPluginConfigureRequired;
 
   /**
    * Configuration for the author's spellcheck
@@ -201,7 +204,22 @@ export interface CategorizeConfigure extends CommonConfigSettings {
   /**
    * Teacher Instructions configuration
    */
-  teacherInstructions?: ConfigureRequiredProp;
+  teacherInstructions?: EditableHtmlPluginConfigureRequired;
+
+  /**
+   * Configuration for the prompt
+   */
+  prompt?: EditableHtmlPluginConfigureRequired;
+
+  /**
+   * Configuration for the headers
+   */
+  headers?: EditableHtmlPluginConfigure;
+
+  /**
+   * Configuration for the row labels
+   */
+  rowLabels?: EditableHtmlPluginConfigure;
 
   /**
    * Minimum number of choices

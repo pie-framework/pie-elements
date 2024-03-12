@@ -15,6 +15,7 @@ export class Category extends React.Component {
     classes: PropTypes.object.isRequired,
     className: PropTypes.string,
     category: PropTypes.object.isRequired,
+    configuration: PropTypes.object.isRequired,
     defaultImageMaxHeight: PropTypes.number,
     defaultImageMaxWidth: PropTypes.number,
     deleteFocusedEl: PropTypes.func,
@@ -55,6 +56,7 @@ export class Category extends React.Component {
       category,
       classes,
       className,
+      configuration,
       deleteFocusedEl,
       focusedEl,
       index,
@@ -70,8 +72,10 @@ export class Category extends React.Component {
       maxImageWidth,
       maxImageHeight,
       uploadSoundSupport,
-      mathMlOptions = {}
+      mathMlOptions = {},
     } = this.props;
+
+    console.log({category: configuration});
     return (
       <Card
         className={classNames(classes.category, className, {
@@ -95,6 +99,7 @@ export class Category extends React.Component {
             maxImageHeight={maxImageHeight}
             uploadSoundSupport={uploadSoundSupport}
             mathMlOptions={mathMlOptions}
+            configuration={configuration}
           />
           {error && <div className={classes.errorText}>{error}</div>}
         </span>

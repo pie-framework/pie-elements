@@ -1,9 +1,14 @@
+import { getPluginProps } from './utils';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { FeedbackConfig, InputContainer, layout, settings } from '@pie-lib/pie-toolbox/config-ui';
-import { countInAnswer, ensureNoExtraChoicesInAnswer, ensureNoExtraChoicesInAlternate } from '@pie-lib/pie-toolbox/categorize';
-import {EditableHtml} from '@pie-lib/pie-toolbox/editable-html';
+import {
+  countInAnswer,
+  ensureNoExtraChoicesInAnswer,
+  ensureNoExtraChoicesInAlternate,
+} from '@pie-lib/pie-toolbox/categorize';
+import { EditableHtml } from '@pie-lib/pie-toolbox/editable-html';
 import { uid, withDragContext } from '@pie-lib/pie-toolbox/drag';
 
 import Categories from './categories';
@@ -81,7 +86,9 @@ export class Design extends React.Component {
     }));
 
     // ensure that maxChoicesPerCategory is reset if author switch back the corresponding switch (allowMaxChoicesPerCategory)
-    updatedModel.maxChoicesPerCategory = updatedModel.allowMaxChoicesPerCategory ? updatedModel.maxChoicesPerCategory : 0;
+    updatedModel.maxChoicesPerCategory = updatedModel.allowMaxChoicesPerCategory
+      ? updatedModel.maxChoicesPerCategory
+      : 0;
 
     onChange(updatedModel);
   };
@@ -168,12 +175,11 @@ export class Design extends React.Component {
     this.updateModel({ maxChoicesPerCategory: maxChoices });
   };
 
-
   render() {
     const { classes, configuration, imageSupport, model, uploadSoundSupport, onConfigurationChanged } = this.props;
     const {
       allowMultiplePlacements = {},
-      allowAlternate = {},
+      baseInputConfiguration = {},
       categoriesPerRow = {},
       choicesPosition = {},
       contentDimensions = {},
@@ -232,7 +238,7 @@ export class Design extends React.Component {
     const choices = model.choices.map((c) => {
       c.correctResponseCount = this.countChoiceInCorrectResponse(c);
       // ensure categoryCount is set even though updatedModel hasn't been called
-      c.categoryCount =  this.checkAllowMultiplePlacements(model.allowMultiplePlacementsEnabled, c);
+      c.categoryCount = this.checkAllowMultiplePlacements(model.allowMultiplePlacementsEnabled, c);
       return c;
     });
 
@@ -283,7 +289,10 @@ export class Design extends React.Component {
     };
 
     const isOpened = this.isAlertModalOpened();
-    const alertMaxChoicesMsg = translator.t('translation:categorize:maxChoicesPerCategoryRestriction', {lng: model.language, maxChoicesPerCategory });
+    const alertMaxChoicesMsg = translator.t('translation:categorize:maxChoicesPerCategoryRestriction', {
+      lng: model.language,
+      maxChoicesPerCategory,
+    });
 
     return (
       <IdProvider value={this.uid}>
@@ -300,12 +309,14 @@ export class Design extends React.Component {
                 Settings: panelSettings,
                 Properties: panelProperties,
               }}
-              modal={<AlertDialog
+              modal={
+                <AlertDialog
                   title={'Warning'}
                   text={alertMaxChoicesMsg}
                   open={isOpened}
                   onClose={this.onAlertModalCancel}
-              />}
+                />
+              }
             />
           }
         >
@@ -319,6 +330,7 @@ export class Design extends React.Component {
                 error={teacherInstructionsError}
                 nonEmpty={false}
                 toolbarOpts={toolbarOpts}
+                pluginProps={getPluginProps(teacherInstructions?.inputConfiguration, baseInputConfiguration)}
                 spellCheck={spellCheckEnabled}
                 maxImageWidth={(maxImageWidth && maxImageWidth.teacherInstructions) || defaultImageMaxWidth}
                 maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
@@ -341,6 +353,7 @@ export class Design extends React.Component {
                 nonEmpty={false}
                 disableUnderline
                 toolbarOpts={toolbarOpts}
+                pluginProps={getPluginProps(prompt?.inputConfiguration, baseInputConfiguration)}
                 spellCheck={spellCheckEnabled}
                 maxImageWidth={maxImageWidth && maxImageWidth.prompt}
                 maxImageHeight={maxImageHeight && maxImageHeight.prompt}
@@ -425,6 +438,7 @@ export class Design extends React.Component {
                 error={rationaleError}
                 nonEmpty={false}
                 toolbarOpts={toolbarOpts}
+                pluginProps={getPluginProps(prompt?.inputConfiguration, baseInputConfiguration)}
                 spellCheck={spellCheckEnabled}
                 maxImageWidth={(maxImageWidth && maxImageWidth.rationale) || defaultImageMaxWidth}
                 maxImageHeight={(maxImageHeight && maxImageHeight.rationale) || defaultImageMaxHeight}
