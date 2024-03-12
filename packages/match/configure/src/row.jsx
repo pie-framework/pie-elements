@@ -1,3 +1,4 @@
+import { getPluginProps } from './utils';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
@@ -37,6 +38,7 @@ export class Row extends React.Component {
       add: PropTypes.func.isRequired,
       delete: PropTypes.func.isRequired,
     }),
+    inputConfiguration: PropTypes.object,
     enableImages: PropTypes.bool,
     toolbarOpts: PropTypes.object,
     error: PropTypes.string,
@@ -113,6 +115,7 @@ export class Row extends React.Component {
       model,
       row,
       idx,
+      inputConfiguration = {},
       enableImages,
       toolbarOpts,
       spellCheck,
@@ -125,13 +128,6 @@ export class Row extends React.Component {
     const { dialog } = this.state;
     const opacity = isDragging ? 0 : 1;
 
-    const rowPlugins = {
-      image: {
-        disabled: !enableImages,
-      },
-      audio: { disabled: true },
-      video: { disabled: true },
-    };
     const filteredDefaultPlugins = (DEFAULT_PLUGINS || []).filter(
       (p) => p !== 'bulleted-list' && p !== 'numbered-list',
     );
@@ -152,7 +148,7 @@ export class Row extends React.Component {
               markup={row.title}
               onChange={this.onRowTitleChange(idx)}
               className={classes.editor}
-              pluginProps={rowPlugins}
+              pluginProps={inputConfiguration}
               toolbarOpts={toolbarOpts}
               activePlugins={filteredDefaultPlugins}
               spellCheck={spellCheck}

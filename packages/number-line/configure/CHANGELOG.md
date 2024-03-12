@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-configure@7.1.0...@pie-element/number-line-configure@7.2.0) (2024-03-07)
+
+
+### Features
+
+* Add configuration for custom buttons PD-3507 ([951008b](https://github.com/pie-framework/pie-elements/commit/951008b7fe230a73c237044b29f7f4bedeef26ff))
+* Add configuration for custom buttons PD-3507 ([7342ae3](https://github.com/pie-framework/pie-elements/commit/7342ae35a6877b14dac2db57ce5e7b1b6c93140d))
+* Add configuration for custom buttons PD-3507 ([822e574](https://github.com/pie-framework/pie-elements/commit/822e574c40cc0c2981795432cdbb25961000e3f8))
+* Add configuration for custom buttons PD-3507 ([b15e002](https://github.com/pie-framework/pie-elements/commit/b15e00266033775bbab3f03ab3228301064860f9))
+
+
+
+
+
 # [7.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-configure@7.0.2...@pie-element/number-line-configure@7.1.0) (2024-03-04)
 
 

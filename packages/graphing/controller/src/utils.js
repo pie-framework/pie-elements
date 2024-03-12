@@ -157,6 +157,8 @@ export const equalPolygon = (poly1, poly2) => {
 };
 
 export const equalCircle = (c1, c2) => {
+  c1 = {...c1, root: { ...c1.root }, edge: { ...c1.edge }};
+  c2 = {...c2, root: { ...c2.root }, edge: { ...c2.edge }};
   const equalRootAndEdge = isEqual(c2.edge, c1.edge) && isEqual(c2.root, c1.root);
 
   // if both edge and root are the same, it means the shapes are exactly the same

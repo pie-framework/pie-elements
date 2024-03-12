@@ -174,10 +174,17 @@ export class Main extends React.Component {
     renderMath(this.root);
   };
 
+  countResponseOccurrences(expression) {
+    const pattern = /\{\{response\}\}/g;
+    const matches = expression.match(pattern);
+
+    return matches ? matches.length : 0;
+  }
+
+
   UNSAFE_componentWillReceiveProps(nextProps) {
     const { config } = this.props.model;
     const { config: nextConfig = {} } = nextProps.model || {};
-
     // check if the note is the default one for prev language and change to the default one for new language
     // this check is necessary in order to diferanciate between default and authour defined note
     // and only change between languages for default ones
@@ -196,6 +203,10 @@ export class Main extends React.Component {
 
     if (nextConfig.alwaysShowCorrect) {
       this.setState({ showCorrect: true });
+    }
+
+    if(this.countResponseOccurrences(config.expression) < this.countResponseOccurrences(nextConfig.expression)) {
+      setTimeout(() => this.updateAria(), 100);
     }
 
     if (
@@ -238,19 +249,25 @@ export class Main extends React.Component {
 
   componentDidMount() {
     this.handleAnswerBlockDomUpdate();
-    this.updateAriaHidden();
+    this.updateAria();
     setTimeout(() => renderMath(this.root), 100);
   }
 
   componentDidUpdate() {
     this.handleAnswerBlockDomUpdate();
-    this.updateAriaHidden();
   }
 
-  updateAriaHidden = () => {
+  updateAria = () => {
     if (this.root) {
+      // Update aria-hidden for .mq-selectable elements
       const selectableElements = this.root.querySelectorAll('.mq-selectable');
-      (selectableElements || []).forEach((elem) => elem.setAttribute('aria-hidden', 'true'));
+      selectableElements.forEach(elem => elem.setAttribute('aria-hidden', 'true'));
+  
+      // Update aria-label for textarea elements
+      const textareaElements = this.root.querySelectorAll('textarea');
+      textareaElements.forEach(elem => {
+        elem.setAttribute('aria-label', 'Enter answer using math editor buttons or keyboard.');
+      });
     }
   };
 
