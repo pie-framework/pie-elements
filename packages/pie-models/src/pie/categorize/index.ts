@@ -1,4 +1,3 @@
-import { PromptConfig } from '../../PromptConfig';
 import { PieModel } from '../../PieModel';
 import { CommonConfigSettings } from '../../CommonConfigSettings';
 import { ComplexFeedbackType } from '../../Feedback';
@@ -6,7 +5,8 @@ import {
   ConfigureLanguageOptionsProp,
   ConfigureMathMLProp,
   ConfigureProp,
-  ConfigurePropWithEnabled
+  ConfigurePropWithEnabled,
+  ConfigureRequiredProp,
 } from '../ConfigurationProp';
 
 interface CategoryChoice {
@@ -59,9 +59,8 @@ enum ChoicesPosition {
  * @additionalProperties false
  */
 export interface CategorizePie extends PieModel {
-
   /** Indicates if author has the possibility to set maxChoicesPerCategory */
-  allowMaxChoicesPerCategory: boolean
+  allowMaxChoicesPerCategory: boolean;
 
   /** The available choices */
   choices: CategoryChoice[];
@@ -99,7 +98,7 @@ export interface CategorizePie extends PieModel {
   feedback?: ComplexFeedbackType;
 
   /** Indicates the maximum number of choices from a category */
-  maxChoicesPerCategory: number
+  maxChoicesPerCategory: number;
 
   /** Indicates the value for rationale */
   rationale?: string;
@@ -163,16 +162,21 @@ interface ConfigureMaxImageDimensionsProp {
  * Config Object for @pie-elements/categorize
  * @additionalProperties false
  */
-export interface CategorizeConfigure extends PromptConfig, CommonConfigSettings {
+export interface CategorizeConfigure extends CommonConfigSettings {
   /**
    * Partial Scoring configuration
    */
   partialScoring?: ConfigureProp;
 
   /**
+   * Prompt configuration
+   */
+  prompt?: ConfigureRequiredProp;
+
+  /**
    * Rationale configuration
    */
-  rationale?: ConfigureProp;
+  rationale?: ConfigureRequiredProp;
 
   /**
    * Configuration for the author's spellcheck
@@ -197,7 +201,7 @@ export interface CategorizeConfigure extends PromptConfig, CommonConfigSettings 
   /**
    * Teacher Instructions configuration
    */
-  teacherInstructions?: ConfigureProp;
+  teacherInstructions?: ConfigureRequiredProp;
 
   /**
    * Minimum number of choices
