@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.3.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-controller@5.3.1...@pie-element/inline-dropdown-controller@5.3.2) (2024-03-13)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3549 ([b5d7d13](https://github.com/pie-framework/pie-elements/commit/b5d7d1352169cc67eaedcd56898a5806b0a8812a))
+
+
+
+
+
 ## [5.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-controller@5.3.0...@pie-element/inline-dropdown-controller@5.3.1) (2024-03-12)
 
 
