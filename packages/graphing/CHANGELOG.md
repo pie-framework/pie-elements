@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@5.7.0...@pie-element/graphing@5.8.0) (2024-03-13)
+
+
+### Features
+
+* Updated docs for graphing PD-3522 ([5bbba54](https://github.com/pie-framework/pie-elements/commit/5bbba542374fc74a7080fba20aa8442287c17d00))
+
+
+
+
+
 # [5.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@5.6.0...@pie-element/graphing@5.7.0) (2024-03-12)
 
 

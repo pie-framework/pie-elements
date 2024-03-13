@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.7.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@7.7.0...@pie-element/math-inline@7.7.1) (2024-03-13)
+
+
+### Bug Fixes
+
+* **math-inline:** update documentation for equationEditor property in model PD-3549 ([a3c59b4](https://github.com/pie-framework/pie-elements/commit/a3c59b41092631e9714776d37cb1788372d0c1e1))
+* **math-inline:** update documentation PD-3549 ([c76c7ad](https://github.com/pie-framework/pie-elements/commit/c76c7ad1d9be3116969862456d65faa0307e3874))
+
+
+
+
+
 # [7.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@7.6.0...@pie-element/math-inline@7.7.0) (2024-03-12)
 
 

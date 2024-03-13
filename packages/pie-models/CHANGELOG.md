@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.21.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.20.0...@pie-element/pie-models@13.21.0) (2024-03-13)
+
+
+### Bug Fixes
+
+* **math-inline:** update documentation for equationEditor property in model PD-3549 ([a3c59b4](https://github.com/pie-framework/pie-elements/commit/a3c59b41092631e9714776d37cb1788372d0c1e1))
+* **math-inline:** update documentation PD-3549 ([c76c7ad](https://github.com/pie-framework/pie-elements/commit/c76c7ad1d9be3116969862456d65faa0307e3874))
+
+
+### Features
+
+* Updated docs for graphing PD-3522 ([5bbba54](https://github.com/pie-framework/pie-elements/commit/5bbba542374fc74a7080fba20aa8442287c17d00))
+
+
+
+
+
 # [13.20.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.19.0...@pie-element/pie-models@13.20.0) (2024-03-12)
 
 
