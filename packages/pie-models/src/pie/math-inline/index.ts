@@ -92,7 +92,7 @@ export interface MathInlinePie extends PieModel {
    * @default - item-authoring
    */
   equationEditor?: 'geometry' | 'advanced-algebra' | 'statistics' | 'item-authoring'
-    | '1' | '3' | '6' | '8' | 'non-negative-integers' | 'integers' | 'decimals' | 'fractions';
+    | 1 | 3 | 6 | 8 | 'non-negative-integers' | 'integers' | 'decimals' | 'fractions';
 
   /** Feedback configuration for the responses */
   feedback?: ComplexFeedbackType;

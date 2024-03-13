@@ -23,7 +23,7 @@ Determines if prompt should show
 
 Indicates the expression for advanced mode
 
-# `equationEditor` (string, enum)
+# `equationEditor`
 
 Indicates what type of editor should be displayed for all the possible responses
 1 for Grade 1 - 2
