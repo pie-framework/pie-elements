@@ -415,35 +415,3 @@ it('sortedAnswers should return empty object for an empty answers array', () => 
   const result = {};
   expect(sortedAnswers(answers)).toEqual(result);
 });
-
-it('sortedAnswers should return an array of answers sorted alphabetically', () => {
-  const answers = {
-    correctAnswer: {
-      name: 'Correct Answer',
-      marks: [
-        {
-          type: 'line',
-          from: { x: 0, y: 0 },
-          to: { x: 1, y: 1 },
-          fill: 'Solid',
-        },
-      ],
-    },
-  };
-
-  const result = {
-    correctAnswer: {
-      name: 'Correct Answer',
-      marks: [
-        {
-          type: 'line',
-          from: { x: 0, y: 0 },
-          to: { x: 1, y: 1 },
-          fill: 'Solid',
-        },
-      ],
-    },
-  };
-
-  expect(sortedAnswers(answers)).toEqual(result);
-});

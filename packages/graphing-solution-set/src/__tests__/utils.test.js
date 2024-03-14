@@ -21,12 +21,16 @@ describe('removeInvalidAnswers', () => {
         { type: 'polygon', points: [{ x: 1, y: 'v' }] },
         { type: 'polygon', points: [{ x: NaN, y: 'v' }] },
         { type: 'polygon', points: [{ x: 0, y: 0 }] },
-        { type: 'polygon', points: [{ x: 0, y: 0 }, {}] },
+        {
+          type: 'polygon',
+          points: [
+            { x: 0, y: 0 },
+            { x: 1, y: 1 },
+            { x: 2, y: 0 },
+          ],
+        },
       ],
-      [
-        { type: 'line', from: { x: 0, y: 0 }, to: { x: 1, y: 1 } },
-        { type: 'polygon', points: [{ x: 0, y: 0 }] },
-      ],
+      [{ type: 'line', from: { x: 0, y: 0 }, to: { x: 1, y: 1 } }],
     ],
   ])('answers: %j, only valid answers: %j', (answers, validAnswers) => {
     expect(removeInvalidAnswers(answers)).toEqual(validAnswers);

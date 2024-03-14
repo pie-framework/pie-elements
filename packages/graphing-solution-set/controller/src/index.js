@@ -144,9 +144,11 @@ export function model(question, session, env) {
     // need this if undo redo was last operation
     session.answer = removeInvalidAnswers(session.answer);
     // console.log('normalizedQuestion', normalizedQuestion);
-    const { defaultTool, prompt, promptEnabled, graph, answers, ...questionProps } = normalizedQuestion || {};
+    const { defaultTool, prompt, promptEnabled, graph, answers, toolbarTools, ...questionProps } =
+      normalizedQuestion || {};
     let { arrows } = normalizedQuestion;
     const { mode, role } = env || {};
+
     // This is used for offering support for old models which have the property arrows: boolean
     // Same thing is set in authoring : packages/graphing/configure/src/configure.jsx - componentDidMount
     if (typeof arrows === 'boolean') {
@@ -166,10 +168,12 @@ export function model(question, session, env) {
         };
       }
     }
+
     const base = {
       ...questionProps,
       answers,
       arrows,
+      defaultTool: 'line',
       disabled: env.mode !== 'gather',
       prompt: promptEnabled ? prompt : null,
       rationale: null,
@@ -181,12 +185,16 @@ export function model(question, session, env) {
         answers.correctAnswer.marks &&
         !isEmpty(answers.correctAnswer.marks),
       teacherInstructions: null,
+      toolbarTools,
     };
+
     if (role === 'instructor' && (mode === 'view' || mode === 'evaluate')) {
       const { rationale, rationaleEnabled, teacherInstructions, teacherInstructionsEnabled } = normalizedQuestion || {};
+
       base.rationale = rationaleEnabled ? rationale : null;
       base.teacherInstructions = teacherInstructionsEnabled ? teacherInstructions : null;
     }
+
     if (mode === 'evaluate') {
       if (
         !isEmpty(answers) &&
@@ -204,6 +212,7 @@ export function model(question, session, env) {
         base.correctResponse = [];
       }
     }
+
     log('base: ', base);
     resolve(base);
   });

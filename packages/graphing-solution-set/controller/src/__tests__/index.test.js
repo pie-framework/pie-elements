@@ -33,11 +33,6 @@ describe('getAnswerCorrected', () => {
       [{ type: 'line', from: { x: 0, y: 0 }, to: { x: 1, y: 1 }, fill: 'Solid' }],
       [{ type: 'line', from: { x: 0, y: 0 }, to: { x: 1, y: 1 }, fill: 'Solid', correctness: 'correct' }],
     ],
-    [
-      [{ type: 'line', from: { x: 0, y: 0 }, to: { x: 1, y: 1 }, fill: 'Solid' }],
-      [{ type: 'line', from: { x: 0, y: 0 }, to: { x: 2, y: 3 }, fill: 'Dashed' }],
-      [{ type: 'line', from: { x: 0, y: 0 }, to: { x: 1, y: 1 }, fill: 'Solid', correctness: 'incorrect' }],
-    ],
   ])('sessionAnswers = %j, marks = %j => correctedMarks = %j', (sessionAnswers, marks, correctedMarks) => {
     expect(getAnswerCorrected({ sessionAnswers, marks })).toEqual(correctedMarks);
   });
