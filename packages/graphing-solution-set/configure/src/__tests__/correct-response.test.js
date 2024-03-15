@@ -33,7 +33,7 @@ describe('CorrectResponse', () => {
       const component = wrapper();
       const marks = [{ type: 'line', from: { x: 0, y: 0 }, to: { x: 1, y: 1 }, fill: 'Solid' }];
 
-      component.instance().changeMarks('correctAnswer', marks);
+      component.instance().changeMarks(marks);
 
       expect(component.instance().props.onChange).toBeCalledWith({
         ...defaultValues.model,
@@ -80,7 +80,7 @@ describe('CorrectResponse: if answers is null it should still work as expected',
       const component = wrapper();
       const marks = [{ type: 'line', from: { x: 0, y: 0 }, to: { x: 1, y: 1 }, fill: 'Solid' }];
 
-      component.instance().changeMarks('correctAnswer', marks);
+      component.instance().changeMarks(marks);
 
       expect(component.instance().props.onChange).toBeCalledWith({
         ...defaultValues.model,
@@ -127,7 +127,7 @@ describe('CorrectResponse: if answers is undefined it should still work as expec
       const component = wrapper();
       const marks = [{ type: 'line', from: { x: 0, y: 0 }, to: { x: 1, y: 1 }, fill: 'Solid' }];
 
-      component.instance().changeMarks('correctAnswer', marks);
+      component.instance().changeMarks(marks);
 
       expect(component.instance().props.onChange).toBeCalledWith({
         ...defaultValues.model,

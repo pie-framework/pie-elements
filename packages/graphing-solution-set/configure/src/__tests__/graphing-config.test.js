@@ -28,18 +28,4 @@ describe('GraphingConfig', () => {
       expect(wrapper()).toMatchSnapshot();
     });
   });
-
-  describe('logic', () => {
-    it('changeBackgroundMarks calls onChange', () => {
-      const component = wrapper();
-      const bM = [];
-
-      component.instance().changeBackgroundMarks(bM);
-
-      expect(component.instance().props.onChange).toBeCalledWith({
-        ...defaultValues.model,
-        backgroundMarks: bM,
-      });
-    });
-  });
 });
