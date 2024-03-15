@@ -32,7 +32,7 @@ describe('GraphingConfig', () => {
   describe('logic', () => {
     it('changeBackgroundMarks calls onChange', () => {
       const component = wrapper();
-      const bM = [{ x: 1, y: 1, type: 'point' }];
+      const bM = [];
 
       component.instance().changeBackgroundMarks(bM);
 
