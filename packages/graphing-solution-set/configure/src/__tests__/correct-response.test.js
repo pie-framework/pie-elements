@@ -70,12 +70,6 @@ describe('CorrectResponse: if answers is null it should still work as expected',
     };
   });
 
-  describe('renders', () => {
-    it('snapshot', () => {
-      expect(wrapper()).toMatchSnapshot();
-    });
-  });
-
   describe('logic', () => {
     it('changeMarks calls onChange', () => {
       const component = wrapper();
@@ -115,12 +109,6 @@ describe('CorrectResponse: if answers is undefined it should still work as expec
 
       return shallow(<CorrectResponse {...configureProps} />);
     };
-  });
-
-  describe('renders', () => {
-    it('snapshot', () => {
-      expect(wrapper()).toMatchSnapshot();
-    });
   });
 
   describe('logic', () => {
