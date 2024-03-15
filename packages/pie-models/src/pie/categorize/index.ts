@@ -1,4 +1,3 @@
-import { PromptConfig } from '../../PromptConfig';
 import { PieModel } from '../../PieModel';
 import { CommonConfigSettings } from '../../CommonConfigSettings';
 import { ComplexFeedbackType } from '../../Feedback';
@@ -6,7 +5,10 @@ import {
   ConfigureLanguageOptionsProp,
   ConfigureMathMLProp,
   ConfigureProp,
-  ConfigurePropWithEnabled
+  EditableHtmlConfigureProp,
+  EditableHtmlPluginConfigure,
+  ConfigurePropWithEnabled,
+  EditableHtmlPluginConfigureRequired,
 } from '../ConfigurationProp';
 
 interface CategoryChoice {
@@ -59,9 +61,8 @@ enum ChoicesPosition {
  * @additionalProperties false
  */
 export interface CategorizePie extends PieModel {
-
   /** Indicates if author has the possibility to set maxChoicesPerCategory */
-  allowMaxChoicesPerCategory: boolean
+  allowMaxChoicesPerCategory: boolean;
 
   /** The available choices */
   choices: CategoryChoice[];
@@ -99,7 +100,7 @@ export interface CategorizePie extends PieModel {
   feedback?: ComplexFeedbackType;
 
   /** Indicates the maximum number of choices from a category */
-  maxChoicesPerCategory: number
+  maxChoicesPerCategory: number;
 
   /** Indicates the value for rationale */
   rationale?: string;
@@ -163,7 +164,13 @@ interface ConfigureMaxImageDimensionsProp {
  * Config Object for @pie-elements/categorize
  * @additionalProperties false
  */
-export interface CategorizeConfigure extends PromptConfig, CommonConfigSettings {
+export interface CategorizeConfigure extends CommonConfigSettings {
+  /**
+   * Base editable html input configuration regarding plugins that are enabled/disabled
+   * E.g. audio, video, image
+   */
+  baseInputConfiguration?: EditableHtmlConfigureProp;
+
   /**
    * Partial Scoring configuration
    */
@@ -172,7 +179,7 @@ export interface CategorizeConfigure extends PromptConfig, CommonConfigSettings 
   /**
    * Rationale configuration
    */
-  rationale?: ConfigureProp;
+  rationale?: EditableHtmlPluginConfigureRequired;
 
   /**
    * Configuration for the author's spellcheck
@@ -197,7 +204,22 @@ export interface CategorizeConfigure extends PromptConfig, CommonConfigSettings 
   /**
    * Teacher Instructions configuration
    */
-  teacherInstructions?: ConfigureProp;
+  teacherInstructions?: EditableHtmlPluginConfigureRequired;
+
+  /**
+   * Configuration for the prompt
+   */
+  prompt?: EditableHtmlPluginConfigureRequired;
+
+  /**
+   * Configuration for the headers
+   */
+  headers?: EditableHtmlPluginConfigure;
+
+  /**
+   * Configuration for the row labels
+   */
+  rowLabels?: EditableHtmlPluginConfigure;
 
   /**
    * Minimum number of choices

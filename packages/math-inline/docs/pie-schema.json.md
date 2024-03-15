@@ -30,6 +30,13 @@ Indicates what type of editor should be displayed for all the possible responses
 3 for Grade 3 - 5
 6 for Grade 6 - 7
 8 for Grade 8 - HS
+non-negative-integers
+integers
+decimals
+fractions
+geometry
+advanced-algebra
+statistics
 
 This element must be one of the following enum values:
 
@@ -38,11 +45,15 @@ This element must be one of the following enum values:
 * `6`
 * `8`
 * `advanced-algebra`
+* `decimals`
+* `fractions`
 * `geometry`
-* `miscellaneous`
+* `integers`
+* `item-authoring`
+* `non-negative-integers`
 * `statistics`
 
-Default: `"- miscellaneous"`
+Default: `"- item-authoring"`
 
 # `feedback` (object)
 

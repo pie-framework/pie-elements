@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.3.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/ruler@5.3.1...@pie-element/ruler@5.3.2) (2024-03-13)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3549 ([b5d7d13](https://github.com/pie-framework/pie-elements/commit/b5d7d1352169cc67eaedcd56898a5806b0a8812a))
+
+
+
+
+
+## [5.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/ruler@5.3.0...@pie-element/ruler@5.3.1) (2024-03-12)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3509, PD-3465 ([b1745aa](https://github.com/pie-framework/pie-elements/commit/b1745aa981722b5561aab1f4495ac81ac7bc4155))
+
+
+
+
+
 # [5.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ruler@5.2.2...@pie-element/ruler@5.3.0) (2024-03-04)
 
 

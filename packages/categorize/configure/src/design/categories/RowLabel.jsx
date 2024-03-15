@@ -1,6 +1,7 @@
+import { getPluginProps } from '../utils';
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import {EditableHtml} from '@pie-lib/pie-toolbox/editable-html';
+import { EditableHtml } from '@pie-lib/pie-toolbox/editable-html';
 import { InputContainer } from '@pie-lib/pie-toolbox/render-ui';
 
 const styles = (theme) => ({
@@ -17,6 +18,7 @@ export const RowLabel = withStyles(styles)(
   ({
     categoriesPerRow,
     classes,
+    configuration,
     disabled,
     markup,
     imageSupport,
@@ -26,8 +28,10 @@ export const RowLabel = withStyles(styles)(
     maxImageWidth,
     maxImageHeight,
     uploadSoundSupport,
-     mathMlOptions = {}
+    mathMlOptions = {},
   }) => {
+    const { rowLabels, baseInputConfiguration } = configuration;
+
     return (
       <div
         style={{
@@ -43,6 +47,7 @@ export const RowLabel = withStyles(styles)(
             imageSupport={imageSupport}
             nonEmpty={false}
             toolbarOpts={toolbarOpts}
+            pluginProps={getPluginProps(rowLabels?.inputConfiguration, baseInputConfiguration)}
             spellCheck={spellCheck}
             maxImageWidth={maxImageWidth}
             maxImageHeight={maxImageHeight}

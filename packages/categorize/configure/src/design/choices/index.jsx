@@ -151,6 +151,7 @@ export class Choices extends React.Component {
                 maxImageWidth={(maxImageWidth && maxImageWidth.choice) || defaultImageMaxWidth}
                 maxImageHeight={(maxImageHeight && maxImageHeight.choice) || defaultImageMaxHeight}
                 uploadSoundSupport={uploadSoundSupport}
+                configuration={configuration}
               />
             );
           })}

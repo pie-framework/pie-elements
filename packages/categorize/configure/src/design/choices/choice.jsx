@@ -33,6 +33,7 @@ export class Choice extends React.Component {
     allowMultiplePlacements: PropTypes.string,
     classes: PropTypes.object.isRequired,
     className: PropTypes.string,
+    configuration: PropTypes.object.isRequired,
     choice: PropTypes.object.isRequired,
     connectDropTarget: PropTypes.func,
     deleteFocusedEl: PropTypes.func,
@@ -86,6 +87,7 @@ export class Choice extends React.Component {
       allowMultiplePlacements,
       classes,
       className,
+      configuration,
       choice,
       deleteFocusedEl,
       focusedEl,
@@ -133,6 +135,7 @@ export class Choice extends React.Component {
               maxImageWidth={maxImageWidth}
               maxImageHeight={maxImageHeight}
               uploadSoundSupport={uploadSoundSupport}
+              configuration={configuration}
             />
             {error && <div className={classes.errorText}>{error}</div>}
           </span>,

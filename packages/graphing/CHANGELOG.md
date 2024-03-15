@@ -3,6 +3,62 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.8.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@5.8.0...@pie-element/graphing@5.8.1) (2024-03-13)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3549 ([b5d7d13](https://github.com/pie-framework/pie-elements/commit/b5d7d1352169cc67eaedcd56898a5806b0a8812a))
+
+
+
+
+
+# [5.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@5.7.0...@pie-element/graphing@5.8.0) (2024-03-13)
+
+
+### Features
+
+* Updated docs for graphing PD-3522 ([5bbba54](https://github.com/pie-framework/pie-elements/commit/5bbba542374fc74a7080fba20aa8442287c17d00))
+
+
+
+
+
+# [5.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@5.6.0...@pie-element/graphing@5.7.0) (2024-03-12)
+
+
+### Features
+
+* Add configuration for custom buttons PD-3522 ([c319fdd](https://github.com/pie-framework/pie-elements/commit/c319fddb5403467196993eafc9b21a8201d8a99e))
+
+
+
+
+
+# [5.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@5.5.1...@pie-element/graphing@5.6.0) (2024-03-12)
+
+
+### Features
+
+* **graphing:** add required fields functionality PD-3547 ([7ad6d2f](https://github.com/pie-framework/pie-elements/commit/7ad6d2f09bc60c6d84a3b8c21a3d0e875ad9c164))
+
+
+
+
+
+## [5.5.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@5.5.0...@pie-element/graphing@5.5.1) (2024-03-12)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3509, PD-3465 ([b1745aa](https://github.com/pie-framework/pie-elements/commit/b1745aa981722b5561aab1f4495ac81ac7bc4155))
+* **graphing:** overwrite with an empty object for incomplete circles PD-3341 ([46ce4dc](https://github.com/pie-framework/pie-elements/commit/46ce4dce1e91784a5985fcf64544af33cefb9bb2))
+
+
+
+
+
 # [5.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@5.4.3...@pie-element/graphing@5.5.0) (2024-03-04)
 
 

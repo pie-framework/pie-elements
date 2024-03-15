@@ -7,7 +7,8 @@ import {
   ConfigureMaxImageDimensionsProp,
   ConfigureProp,
   ConfigurePropWithEnabled,
-  ConfigureRequiredProp,
+  EditableHtmlConfigureProp,
+  EditableHtmlPluginConfigureRequired,
 } from '../ConfigurationProp';
 
 interface Chart {
@@ -259,14 +260,20 @@ interface ChartingOptions {
  */
 export interface ChartingConfigure extends PromptConfig, CommonConfigSettings {
   /**
+   * Base editable html input configuration regarding plugins that are enabled/disabled
+   * E.g. audio, video, image
+   */
+  baseInputConfiguration?: EditableHtmlConfigureProp;
+
+  /**
    * Rationale configuration
    */
-  prompt?: ConfigureRequiredProp;
+  prompt?: EditableHtmlPluginConfigureRequired;
 
   /**
    * Prompt configuration
    */
-  rationale?: ConfigureRequiredProp;
+  rationale?: EditableHtmlPluginConfigureRequired;
 
   /**
    * Configuration for the author's spellcheck
@@ -301,7 +308,7 @@ export interface ChartingConfigure extends PromptConfig, CommonConfigSettings {
   /**
    * Teacher Instructions configuration
    */
-  teacherInstructions?: ConfigureRequiredProp;
+  teacherInstructions?: EditableHtmlPluginConfigureRequired;
 
   /**
    * Chart title configuration

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { settings, layout, InputContainer } from '@pie-lib/pie-toolbox/config-ui';
-import {EditableHtml} from '@pie-lib/pie-toolbox/editable-html';
+import { EditableHtml } from '@pie-lib/pie-toolbox/editable-html';
 import { withStyles } from '@material-ui/core/styles';
 
 const { Panel, toggle, dropdown } = settings;
@@ -15,6 +15,7 @@ export class Root extends React.Component {
     const { classes, model, configuration, onModelChanged, onConfigurationChanged, imageSupport, uploadSoundSupport } =
       this.props;
     const {
+      baseInputConfiguration = {},
       contentDimensions = {},
       maxImageWidth = {},
       maxImageHeight = {},
@@ -34,6 +35,15 @@ export class Root extends React.Component {
       rubricEnabled: withRubric?.settings && toggle(withRubric?.label),
       'language.enabled': language.settings && toggle(language.label, true),
       language: language.settings && language.enabled && dropdown(languageChoices.label, languageChoices.options),
+    };
+
+    const getPluginProps = (props) => {
+      return Object.assign(
+        {
+          ...baseInputConfiguration,
+        },
+        props || {},
+      );
     };
 
     return (
@@ -61,6 +71,7 @@ export class Root extends React.Component {
               imageSupport={imageSupport}
               nonEmpty={false}
               spellCheck={spellCheckEnabled}
+              pluginProps={getPluginProps(teacherInstructions?.inputConfiguration)}
               maxImageWidth={maxImageWidth && maxImageWidth.teacherInstructions}
               maxImageHeight={maxImageHeight && maxImageHeight.teacherInstructions}
               uploadSoundSupport={uploadSoundSupport}

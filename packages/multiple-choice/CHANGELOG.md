@@ -3,6 +3,34 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.6.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@8.6.0...@pie-element/multiple-choice@8.6.1) (2024-03-13)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3549 ([b5d7d13](https://github.com/pie-framework/pie-elements/commit/b5d7d1352169cc67eaedcd56898a5806b0a8812a))
+
+
+
+
+
+# [8.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@8.5.0...@pie-element/multiple-choice@8.6.0) (2024-03-12)
+
+
+### Bug Fixes
+
+* revert feat/PD-1870-W ([58a2b40](https://github.com/pie-framework/pie-elements/commit/58a2b4054c992254766b1fe55211f61c2187acdd))
+* update pie-lib/pie-toolbox PD-3509, PD-3465 ([b1745aa](https://github.com/pie-framework/pie-elements/commit/b1745aa981722b5561aab1f4495ac81ac7bc4155))
+
+
+### Features
+
+* **multiple-choice:** update pie-toolbox ([1fa452f](https://github.com/pie-framework/pie-elements/commit/1fa452f3263653a4ea306c5e6cf8ea544c5a10bf))
+
+
+
+
+
 # [8.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@8.4.1...@pie-element/multiple-choice@8.5.0) (2024-03-04)
 
 

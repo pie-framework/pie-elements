@@ -3,6 +3,62 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.21.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.20.0...@pie-element/pie-models@13.21.0) (2024-03-13)
+
+
+### Bug Fixes
+
+* **math-inline:** update documentation for equationEditor property in model PD-3549 ([a3c59b4](https://github.com/pie-framework/pie-elements/commit/a3c59b41092631e9714776d37cb1788372d0c1e1))
+* **math-inline:** update documentation PD-3549 ([c76c7ad](https://github.com/pie-framework/pie-elements/commit/c76c7ad1d9be3116969862456d65faa0307e3874))
+
+
+### Features
+
+* Updated docs for graphing PD-3522 ([5bbba54](https://github.com/pie-framework/pie-elements/commit/5bbba542374fc74a7080fba20aa8442287c17d00))
+
+
+
+
+
+# [13.20.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.19.0...@pie-element/pie-models@13.20.0) (2024-03-12)
+
+
+### Features
+
+* Add configuration for custom buttons PD-3514 ([78c4add](https://github.com/pie-framework/pie-elements/commit/78c4add8bf3796577e7863814c3f9e93ba607231))
+* Add configuration for custom buttons PD-3522 ([c319fdd](https://github.com/pie-framework/pie-elements/commit/c319fddb5403467196993eafc9b21a8201d8a99e))
+
+
+
+
+
+# [13.19.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.18.0...@pie-element/pie-models@13.19.0) (2024-03-12)
+
+
+### Features
+
+* Add configuration for custom buttons PD-3515 ([645574c](https://github.com/pie-framework/pie-elements/commit/645574c42638d85253afa0aefe5d09fd8fae0207))
+* Add configuration for custom buttons PD-3518 ([992f573](https://github.com/pie-framework/pie-elements/commit/992f5736c5d34f0d05b071c6b5be3c11c1301fae))
+* Add configuration for custom buttons PD-3523 ([222bf0a](https://github.com/pie-framework/pie-elements/commit/222bf0aad21d14aca11a5571b400826410fad8bb))
+* Add configuration for custom buttons PD-3524 ([94d3fc9](https://github.com/pie-framework/pie-elements/commit/94d3fc9aa56ddaa41b3dbaa8bc6c2a01514b9202))
+
+
+
+
+
+# [13.18.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.17.0...@pie-element/pie-models@13.18.0) (2024-03-12)
+
+
+### Features
+
+* **categorize:** add required fields functionality PD-3546 ([e370f14](https://github.com/pie-framework/pie-elements/commit/e370f14ff25afff8154b1b08a4ad4626aadcc547))
+* **graphing:** add required fields functionality PD-3547 ([7ad6d2f](https://github.com/pie-framework/pie-elements/commit/7ad6d2f09bc60c6d84a3b8c21a3d0e875ad9c164))
+* **match:** add required fields functionality PD-3548 ([469f52f](https://github.com/pie-framework/pie-elements/commit/469f52f5ac795991ce115b11c6eee19eaedbf851))
+
+
+
+
+
 # [13.17.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.16.0...@pie-element/pie-models@13.17.0) (2024-03-07)
 
 

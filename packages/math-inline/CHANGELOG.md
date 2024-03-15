@@ -3,6 +3,46 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.7.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@7.7.1...@pie-element/math-inline@7.7.2) (2024-03-13)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3549 ([b5d7d13](https://github.com/pie-framework/pie-elements/commit/b5d7d1352169cc67eaedcd56898a5806b0a8812a))
+
+
+
+
+
+## [7.7.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@7.7.0...@pie-element/math-inline@7.7.1) (2024-03-13)
+
+
+### Bug Fixes
+
+* **math-inline:** update documentation for equationEditor property in model PD-3549 ([a3c59b4](https://github.com/pie-framework/pie-elements/commit/a3c59b41092631e9714776d37cb1788372d0c1e1))
+* **math-inline:** update documentation PD-3549 ([c76c7ad](https://github.com/pie-framework/pie-elements/commit/c76c7ad1d9be3116969862456d65faa0307e3874))
+
+
+
+
+
+# [7.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@7.6.0...@pie-element/math-inline@7.7.0) (2024-03-12)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3509, PD-3465 ([b1745aa](https://github.com/pie-framework/pie-elements/commit/b1745aa981722b5561aab1f4495ac81ac7bc4155))
+
+
+### Features
+
+* **math-inline:** add aria-label for textarea PD-2457 ([43471af](https://github.com/pie-framework/pie-elements/commit/43471af3c6f157b3ee6e36acd60d82cdfd357242))
+* **math-inline:** refactor aria hidden and aria label PD-2448 & PD-2457 ([20b0621](https://github.com/pie-framework/pie-elements/commit/20b0621009b528f6141a1305b0c150e0b255945d))
+
+
+
+
+
 # [7.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@7.5.0...@pie-element/math-inline@7.6.0) (2024-03-07)
 
 

@@ -25,14 +25,6 @@ export default class MatchConfigure extends HTMLElement {
     super();
     this._model = MatchConfigure.createDefaultModel();
     this._configuration = defaultValues.configuration;
-
-    // In environments that use pie-player-components, model is set before configuration.
-    // This is the reason why sometimes the model gets altered non-reversible
-    // (altered using default configuration instead of client configuration, because at that point client configuration was not set yet)
-    // Therefore, in such environments, we will make sure to keep a modelCopy (initialised in set model) and use it to reset
-    // the model in set configuration (resetModelAfterConfigurationIsSet) if set configuration is ever called
-    const pieAuthors = document.querySelectorAll('pie-author');
-    this.hasPlayerAsParent = Array.from(pieAuthors).some((author) => author.contains(this));
   }
 
   set model(m) {
@@ -43,6 +35,14 @@ export default class MatchConfigure extends HTMLElement {
   }
 
   resetModelAfterConfigurationIsSet = () => {
+    // In environments that use pie-player-components, model is set before configuration.
+    // This is the reason why sometimes the model gets altered non-reversible
+    // (altered using default configuration instead of client configuration, because at that point client configuration was not set yet)
+    // Therefore, in such environments, we will make sure to keep a modelCopy (initialised in set model) and use it to reset
+    // the model in set configuration (resetModelAfterConfigurationIsSet) if set configuration is ever called
+    const pieAuthors = document.querySelectorAll('pie-author');
+    this.hasPlayerAsParent = Array.from(pieAuthors).some((author) => author.contains(this));
+
     if (this.hasPlayerAsParent) {
       if (this._modelCopy) {
         this._model = this._modelCopy;

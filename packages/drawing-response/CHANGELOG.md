@@ -3,6 +3,39 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.5.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response@7.5.0...@pie-element/drawing-response@7.5.1) (2024-03-13)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3549 ([b5d7d13](https://github.com/pie-framework/pie-elements/commit/b5d7d1352169cc67eaedcd56898a5806b0a8812a))
+
+
+
+
+
+# [7.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response@7.4.1...@pie-element/drawing-response@7.5.0) (2024-03-12)
+
+
+### Features
+
+* Add configuration for custom buttons PD-3518 ([992f573](https://github.com/pie-framework/pie-elements/commit/992f5736c5d34f0d05b071c6b5be3c11c1301fae))
+
+
+
+
+
+## [7.4.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response@7.4.0...@pie-element/drawing-response@7.4.1) (2024-03-12)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3509, PD-3465 ([b1745aa](https://github.com/pie-framework/pie-elements/commit/b1745aa981722b5561aab1f4495ac81ac7bc4155))
+
+
+
+
+
 # [7.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response@7.3.2...@pie-element/drawing-response@7.4.0) (2024-03-04)
 
 

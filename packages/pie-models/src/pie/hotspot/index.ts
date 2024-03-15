@@ -7,7 +7,9 @@ import {
   ConfigureMaxImageDimensionsProp,
   ConfigureProp,
   ConfigurePropWithEnabled,
-  ConfigureLanguageOptionsProp
+  ConfigureLanguageOptionsProp,
+  EditableHtmlConfigureProp,
+  EditableHtmlPluginConfigure,
 } from '../ConfigurationProp';
 import { CommonConfigSettings } from '../../CommonConfigSettings';
 
@@ -88,6 +90,12 @@ export interface HotspotPie extends PieModel {
  */
 export interface HotspotConfigure extends PromptConfig, CommonConfigSettings {
   /**
+   * Base editable html input configuration regarding plugins that are enabled/disabled
+   * E.g. audio, video, image
+   */
+  baseInputConfiguration?: EditableHtmlConfigureProp;
+
+  /**
    * Configuration for multiple correct
    */
   multipleCorrect?: ConfigureProp;
@@ -98,7 +106,13 @@ export interface HotspotConfigure extends PromptConfig, CommonConfigSettings {
   partialScoring?: ConfigureProp;
 
   /** Configuration for rationale */
-  rationale?: ConfigureProp;
+  rationale?: EditableHtmlPluginConfigure;
+
+  /** Configuration for prompt */
+  prompt?: EditableHtmlPluginConfigure;
+
+  /** Configuration for teacher instructions */
+  teacherInstructions?: EditableHtmlPluginConfigure;
 
   /**
    * Indicates if the settings panel is not available

@@ -145,7 +145,13 @@ export class Categories extends React.Component {
     }
     const maxCategoryChoices = getMaxCategoryChoices(model);
     // when maxChoicesPerCategory is set to 0, there is no limit so it should not be updated
-    onModelChanged({ correctResponse, maxChoicesPerCategory: maxChoicesPerCategory !== 0 && maxChoicesPerCategory < maxCategoryChoices ? maxChoicesPerCategory + 1 : maxChoicesPerCategory });
+    onModelChanged({
+      correctResponse,
+      maxChoicesPerCategory:
+        maxChoicesPerCategory !== 0 && maxChoicesPerCategory < maxCategoryChoices
+          ? maxChoicesPerCategory + 1
+          : maxChoicesPerCategory,
+    });
   };
 
   deleteChoiceFromCategory = (category, choice, choiceIndex) => {
@@ -157,7 +163,7 @@ export class Categories extends React.Component {
 
   moveChoice = (choiceId, from, to, choiceIndex) => {
     const { model, onModelChanged } = this.props;
-    let { choices, correctResponse = [],  maxChoicesPerCategory = 0 } = model || {};
+    let { choices, correctResponse = [], maxChoicesPerCategory = 0 } = model || {};
     const choice = (choices || []).find((choice) => choice.id === choiceId);
     if (to === from || !choice) {
       return;
@@ -170,7 +176,13 @@ export class Categories extends React.Component {
     }
     const maxCategoryChoices = getMaxCategoryChoices(model);
     // when maxChoicesPerCategory is set to 0, there is no limit so it should not be updated
-    onModelChanged({ correctResponse, maxChoicesPerCategory: maxChoicesPerCategory !== 0 && maxChoicesPerCategory < maxCategoryChoices ? maxChoicesPerCategory + 1 : maxChoicesPerCategory });
+    onModelChanged({
+      correctResponse,
+      maxChoicesPerCategory:
+        maxChoicesPerCategory !== 0 && maxChoicesPerCategory < maxCategoryChoices
+          ? maxChoicesPerCategory + 1
+          : maxChoicesPerCategory,
+    });
   };
 
   changeRowLabel = (val, index) => {
@@ -202,7 +214,7 @@ export class Categories extends React.Component {
       configuration,
       defaultImageMaxHeight,
       defaultImageMaxWidth,
-      mathMlOptions = {}
+      mathMlOptions = {},
     } = this.props;
 
     const { categoriesPerRow, rowLabels, errors } = model;
@@ -255,6 +267,7 @@ export class Categories extends React.Component {
                     maxImageHeight={(maxImageHeight && maxImageHeight.rowLabel) || defaultImageMaxHeight}
                     uploadSoundSupport={uploadSoundSupport}
                     mathMlOptions={mathMlOptions}
+                    configuration={configuration}
                   />
                 )}
 
@@ -275,6 +288,7 @@ export class Categories extends React.Component {
                   maxImageWidth={(maxImageWidth && maxImageWidth.categoryLabel) || defaultImageMaxWidth}
                   maxImageHeight={(maxImageHeight && maxImageHeight.categoryLabel) || defaultImageMaxHeight}
                   uploadSoundSupport={uploadSoundSupport}
+                  configuration={configuration}
                 />
               </React.Fragment>
             );

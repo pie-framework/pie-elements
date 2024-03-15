@@ -5,6 +5,11 @@ export default {
     studentInstructionsEnabled: true,
   },
   configuration: {
+    baseInputConfiguration: {
+      audio: { disabled: false },
+      video: { disabled: false },
+      image: { disabled: false },
+    },
     maxImageWidth: {
       teacherInstructions: 300,
     },
@@ -20,6 +25,11 @@ export default {
     teacherInstructions: {
       settings: true,
       label: 'Teacher Instructions',
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
     },
     withRubric: {
       settings: false,
@@ -37,6 +47,6 @@ export default {
     languageChoices: {
       label: 'Language Choices',
       options: [],
-    }
+    },
   },
 };
