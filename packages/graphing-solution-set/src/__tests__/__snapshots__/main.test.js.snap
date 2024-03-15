@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Main render snapshot 1`] = `
+<div>
+  <WithStyles(CorrectAnswerToggle)
+    onToggle={[Function]}
+    toggled={false}
+  />
+  <Root
+    axesSettings={
+      Object {
+        "includeArrows": undefined,
+      }
+    }
+    disabledLabels={true}
+    disabledTitle={true}
+    marks={Array []}
+    onChangeGssLineData={[Function]}
+    onChangeMarks={[MockFunction]}
+    onCustomReset={[Function]}
+    onSolutionSetSelected={[Function]}
+    toolbarTools={
+      Array [
+        "line",
+        "polygon",
+      ]
+    }
+  />
+  <AlertDialog
+    onCloseText="CANCEL"
+    onConfirmText="OK"
+    open={false}
+  />
+</div>
+`;
