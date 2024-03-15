@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.10.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@6.9.1...@pie-element/hotspot-configure@6.10.0) (2024-03-15)
+
+
+### Features
+
+* update pie-lib/pie-toolbox SC-27890,PD-2461 ([13d94fa](https://github.com/pie-framework/pie-elements/commit/13d94faaf0cf9cf923bbc64587cdd4202154ea33))
+
+
+
+
+
 ## [6.9.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@6.9.0...@pie-element/hotspot-configure@6.9.1) (2024-03-13)
 
 
