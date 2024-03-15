@@ -449,7 +449,7 @@ export class CorrectResponse extends React.Component {
             domain={domain}
             draggableTools={true}
             labels={labels}
-            marks={answers.correctAnswer.marks}
+            marks={answers && answers.correctAnswer && answers.correctAnswer.marks ? answers.correctAnswer.marks : []}
             onChangeMarks={(newMarks) => this.changeMarks(newMarks)}
             onCustomReset={this.onResetClick}
             range={range}

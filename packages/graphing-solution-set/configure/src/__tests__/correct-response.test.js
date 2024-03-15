@@ -40,6 +40,7 @@ describe('CorrectResponse', () => {
         answers: {
           ...defaultValues.model.answers,
           correctAnswer: {
+            name: 'Correct Answer',
             marks,
           },
         },
