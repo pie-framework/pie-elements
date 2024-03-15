@@ -2381,10 +2381,10 @@
     keycode "^2.2.0"
     lodash "^4.17.11"
 
-"@pie-lib/pie-toolbox@1.8.6":
-  version "1.8.6"
-  resolved "https://registry.yarnpkg.com/@pie-lib/pie-toolbox/-/pie-toolbox-1.8.6.tgz#96169d9bf7c30d9de4b41adb5d9ef76cc86519ae"
-  integrity sha512-/S5R5RnMBrEG2kY3N2mSRBdvyHBd0evbqcxNp4+1lo1aFUNtXHJJQnoyU8dh3BZgmw0h5XwlsnvrLlP1Rpmq3w==
+"@pie-lib/pie-toolbox@1.9.0":
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/@pie-lib/pie-toolbox/-/pie-toolbox-1.9.0.tgz#6af4eca04d82845f108f357368b441f46e7cb98b"
+  integrity sha512-y84oI6F4YwBletYBd8R3/Zy9aGAAVW+Kvrgyksw93JFEZI2e1xRky9k9VBw1nPjKYq6ky75hvSWZ3l6Xqzq5lw==
   dependencies:
     "@mapbox/point-geometry" "^0.1.0"
     "@material-ui/core" "^3.8.3"
@@ -2505,10 +2505,10 @@
     debug "^4.1.1"
     lodash "^4.17.11"
 
-"@pie-lib/test-utils@^0.2.13":
-  version "0.2.19"
-  resolved "https://registry.yarnpkg.com/@pie-lib/test-utils/-/test-utils-0.2.19.tgz#655afd9d4a396ddea5e07df751d97fc644e696ca"
-  integrity sha512-RbNuq6hbPH8pejROms3XXuFHD1JoyTvtpaG/9Rya4bKFo9onZK3IyiqpaeInOtpE1wM2MhVC84MYmdHGEOvhhQ==
+"@pie-lib/test-utils@^0.2.33":
+  version "0.2.33"
+  resolved "https://registry.yarnpkg.com/@pie-lib/test-utils/-/test-utils-0.2.33.tgz#7632be69cbef25754e5f9fafbbcf94d2f0629ac4"
+  integrity sha512-OWbvVHIzY5paEZUV4Fkv+H6kGX2d78uS2AOwBCXM+m9rlr6poMvsLUTcOMRIfKfSWw+ydhZ536V3X82kWRluWQ==
 
 "@pslb/estree-helper@^4.2.0":
   version "4.2.0"
