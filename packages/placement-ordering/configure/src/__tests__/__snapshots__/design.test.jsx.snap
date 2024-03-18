@@ -69,10 +69,12 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
           },
           "prompt": Object {
             "label": "Item Stem",
+            "required": false,
             "settings": true,
           },
           "rationale": Object {
             "label": "Rationale",
+            "required": false,
             "settings": true,
           },
           "removeTilesAfterPlacing": Object {
@@ -99,6 +101,7 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
           },
           "teacherInstructions": Object {
             "label": "Teacher Instructions",
+            "required": false,
             "settings": true,
           },
           "withRubric": Object {
@@ -426,10 +429,12 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
           },
           "prompt": Object {
             "label": "Item Stem",
+            "required": false,
             "settings": false,
           },
           "rationale": Object {
             "label": "Rationale",
+            "required": false,
             "settings": true,
           },
           "removeTilesAfterPlacing": Object {
@@ -456,6 +461,7 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
           },
           "teacherInstructions": Object {
             "label": "Teacher Instructions",
+            "required": false,
             "settings": true,
           },
           "withRubric": Object {
