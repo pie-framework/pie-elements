@@ -275,7 +275,7 @@ export const validate = (model = {}) => {
   const correctAnswerErrors = {};
   let found = false;
   if (gssLineData.numberOfLines === 1) {
-    if (answers.correctAnswer.marks.length !== 1) {
+    if (answers.correctAnswer.marks.length < 1) {
       found = true;
       correctAnswerErrors.correctAnswer = 'At least 1 line object should be defined.';
     } else if (answers.correctAnswer.marks.length === 1 && answers.correctAnswer.marks[0].building) {
@@ -283,7 +283,7 @@ export const validate = (model = {}) => {
       correctAnswerErrors.correctAnswer = '1 or more graph object should be correctly defined.';
     }
   } else {
-    if (answers.correctAnswer.marks.length !== 2) {
+    if (answers.correctAnswer.marks.length < 2) {
       found = true;
       correctAnswerErrors.correctAnswer = 'At least 2 line object should be defined.';
     } else if (answers.correctAnswer.marks.length === 2) {
@@ -293,7 +293,8 @@ export const validate = (model = {}) => {
       }
     }
   }
-  if (!found && (!gssLineData.selectedTool === 'solutionSet' || !answers.correctAnswer.section)) {
+  let polygon = answers.correctAnswer.marks.find((mark) => mark.type === 'polygon');
+  if (!found && (!gssLineData.selectedTool === 'solutionSet' || !polygon)) {
     correctAnswerErrors.correctAnswer = 'Please select a solution set for the graphing solution set item.';
   }
   if (!isEmpty(correctAnswerErrors)) {
