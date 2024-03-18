@@ -46,6 +46,7 @@ export default {
     prompt: {
       settings: true,
       label: 'Item Stem',
+      required: false,
     },
     numberedGuides: {
       settings: true,
@@ -66,6 +67,7 @@ export default {
     rationale: {
       settings: true,
       label: 'Rationale',
+      required: false,
     },
     removeTilesAfterPlacing: {
       settings: false,
@@ -92,6 +94,7 @@ export default {
     teacherInstructions: {
       settings: true,
       label: 'Teacher Instructions',
+      required: false,
     },
     maxImageWidth: {
       teacherInstructions: 300,
