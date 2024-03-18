@@ -75,6 +75,7 @@ exports[`design snapshot renders all items except feedback 1`] = `
               },
             },
             "label": "Prompt",
+            "required": false,
             "settings": true,
           },
           "rationale": Object {
@@ -90,6 +91,7 @@ exports[`design snapshot renders all items except feedback 1`] = `
               },
             },
             "label": "Rationale",
+            "required": false,
             "settings": true,
           },
           "scoringType": Object {
@@ -126,6 +128,7 @@ exports[`design snapshot renders all items except feedback 1`] = `
               },
             },
             "label": "Teacher Instructions",
+            "required": false,
             "settings": true,
           },
           "text": Object {
@@ -311,6 +314,7 @@ exports[`design snapshot renders all items except the content input 1`] = `
               },
             },
             "label": "Prompt",
+            "required": false,
             "settings": true,
           },
           "rationale": Object {
@@ -326,6 +330,7 @@ exports[`design snapshot renders all items except the content input 1`] = `
               },
             },
             "label": "Rationale",
+            "required": false,
             "settings": true,
           },
           "scoringType": Object {
@@ -362,6 +367,7 @@ exports[`design snapshot renders all items except the content input 1`] = `
               },
             },
             "label": "Teacher Instructions",
+            "required": false,
             "settings": true,
           },
           "text": Object {
@@ -535,6 +541,7 @@ exports[`design snapshot renders all items with defaultProps 1`] = `
               },
             },
             "label": "Prompt",
+            "required": false,
             "settings": true,
           },
           "rationale": Object {
@@ -550,6 +557,7 @@ exports[`design snapshot renders all items with defaultProps 1`] = `
               },
             },
             "label": "Rationale",
+            "required": false,
             "settings": true,
           },
           "scoringType": Object {
@@ -586,6 +594,7 @@ exports[`design snapshot renders all items with defaultProps 1`] = `
               },
             },
             "label": "Teacher Instructions",
+            "required": false,
             "settings": true,
           },
           "text": Object {
@@ -771,6 +780,7 @@ exports[`design snapshot tokenizer renders with html entities 1`] = `
               },
             },
             "label": "Prompt",
+            "required": false,
             "settings": true,
           },
           "rationale": Object {
@@ -786,6 +796,7 @@ exports[`design snapshot tokenizer renders with html entities 1`] = `
               },
             },
             "label": "Rationale",
+            "required": false,
             "settings": true,
           },
           "scoringType": Object {
@@ -822,6 +833,7 @@ exports[`design snapshot tokenizer renders with html entities 1`] = `
               },
             },
             "label": "Teacher Instructions",
+            "required": false,
             "settings": true,
           },
           "text": Object {
