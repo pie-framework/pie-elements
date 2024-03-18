@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.22.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.21.0...@pie-element/pie-models@13.22.0) (2024-03-15)
+
+
+### Features
+
+* **graphing-solution-set:** Added new item type - GSS | SC-27890 ([5ea9240](https://github.com/pie-framework/pie-elements/commit/5ea92409dc9330f3822607cf1aa3cdadae6e9bb5))
+
+
+
+
+
 # [13.21.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.20.0...@pie-element/pie-models@13.21.0) (2024-03-13)
 
 
