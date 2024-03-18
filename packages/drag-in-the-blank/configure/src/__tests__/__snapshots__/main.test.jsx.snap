@@ -8,6 +8,30 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
     <Panel
       configuration={
         Object {
+          "addChoice": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": true,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": true,
+              },
+            },
+          },
+          "baseInputConfiguration": Object {
+            "audio": Object {
+              "disabled": false,
+            },
+            "image": Object {
+              "disabled": false,
+            },
+            "video": Object {
+              "disabled": false,
+            },
+          },
           "choicesPosition": Object {
             "label": "Choices Position",
             "settings": true,
@@ -50,10 +74,32 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
             "settings": false,
           },
           "prompt": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": false,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": false,
+              },
+            },
             "label": "Prompt",
             "settings": true,
           },
           "rationale": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": false,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": false,
+              },
+            },
             "label": "Rationale",
             "settings": true,
           },
@@ -64,6 +110,17 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
             "settings": false,
           },
           "teacherInstructions": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": false,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": false,
+              },
+            },
             "label": "Teacher Instructions",
             "settings": true,
           },
@@ -163,6 +220,19 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
       nonEmpty={false}
       onChange={[Function]}
       onDone={[Function]}
+      pluginProps={
+        Object {
+          "audio": Object {
+            "disabled": false,
+          },
+          "image": Object {
+            "disabled": false,
+          },
+          "video": Object {
+            "disabled": false,
+          },
+        }
+      }
       toolbarOpts={
         Object {
           "position": "bottom",
@@ -198,6 +268,19 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
       nonEmpty={false}
       onChange={[Function]}
       onDone={[Function]}
+      pluginProps={
+        Object {
+          "audio": Object {
+            "disabled": false,
+          },
+          "image": Object {
+            "disabled": false,
+          },
+          "video": Object {
+            "disabled": false,
+          },
+        }
+      }
       toolbarOpts={
         Object {
           "position": "bottom",
@@ -339,6 +422,19 @@ There should be at least 2 tokens defined."
       }
     }
     onChange={[Function]}
+    pluginProps={
+      Object {
+        "audio": Object {
+          "disabled": true,
+        },
+        "image": Object {
+          "disabled": false,
+        },
+        "video": Object {
+          "disabled": true,
+        },
+      }
+    }
     toolbarOpts={
       Object {
         "position": "bottom",
@@ -371,6 +467,19 @@ There should be at least 2 tokens defined."
       maxImageWidth={300}
       onChange={[Function]}
       onDone={[Function]}
+      pluginProps={
+        Object {
+          "audio": Object {
+            "disabled": false,
+          },
+          "image": Object {
+            "disabled": false,
+          },
+          "video": Object {
+            "disabled": false,
+          },
+        }
+      }
       toolbarOpts={
         Object {
           "position": "bottom",
@@ -389,6 +498,30 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
     <Panel
       configuration={
         Object {
+          "addChoice": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": true,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": true,
+              },
+            },
+          },
+          "baseInputConfiguration": Object {
+            "audio": Object {
+              "disabled": false,
+            },
+            "image": Object {
+              "disabled": false,
+            },
+            "video": Object {
+              "disabled": false,
+            },
+          },
           "choicesPosition": Object {
             "label": "Choices Position",
             "settings": true,
@@ -431,10 +564,32 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
             "settings": false,
           },
           "prompt": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": false,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": false,
+              },
+            },
             "label": "Prompt",
             "settings": true,
           },
           "rationale": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": false,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": false,
+              },
+            },
             "label": "Rationale",
             "settings": true,
           },
@@ -445,6 +600,17 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
             "settings": false,
           },
           "teacherInstructions": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": false,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": false,
+              },
+            },
             "label": "Teacher Instructions",
             "settings": true,
           },
@@ -651,6 +817,19 @@ There should be at least 2 tokens defined."
       }
     }
     onChange={[Function]}
+    pluginProps={
+      Object {
+        "audio": Object {
+          "disabled": true,
+        },
+        "image": Object {
+          "disabled": false,
+        },
+        "video": Object {
+          "disabled": true,
+        },
+      }
+    }
     toolbarOpts={
       Object {
         "position": "bottom",

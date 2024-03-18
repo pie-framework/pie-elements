@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import {EditableHtml} from '@pie-lib/pie-toolbox/editable-html';
+import { EditableHtml } from '@pie-lib/pie-toolbox/editable-html';
 import { renderMath } from '@pie-lib/pie-toolbox/math-rendering';
 import find from 'lodash/find';
 import Button from '@material-ui/core/Button';
@@ -45,6 +45,7 @@ export class Choices extends React.Component {
     onChange: PropTypes.func.isRequired,
     classes: PropTypes.object.isRequired,
     toolbarOpts: PropTypes.object,
+    pluginProps: PropTypes.object,
     maxChoices: PropTypes.number,
     uploadSoundSupport: PropTypes.object,
   };
@@ -211,6 +212,7 @@ export class Choices extends React.Component {
       model: { choices },
       toolbarOpts,
       uploadSoundSupport,
+      pluginProps = {},
     } = this.props;
     const visibleChoices = this.getVisibleChoices() || [];
 
@@ -240,14 +242,7 @@ export class Choices extends React.Component {
                   ref={(ref) => (this.focusedNodeRef = ref)}
                   className={classes.prompt}
                   markup={choice.value}
-                  pluginProps={{
-                    video: {
-                      disabled: true,
-                    },
-                    audio: {
-                      disabled: true,
-                    },
-                  }}
+                  pluginProps={pluginProps}
                   languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
                   onChange={(val) => {
                     if (this.preventDone) {
