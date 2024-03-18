@@ -18,11 +18,21 @@ export default class Graphing extends HTMLElement {
    * @param {object} m - Model object
    * */
   set model(m) {
-    const { answer } = this._session || {};
-    let section = answer && answer.filter((mark) => mark.type === 'polygon').length > 0;
     this._model = m;
-    if (m.gssLineData.numberOfLines === 1) {
-      m.gssData = {
+    this._render();
+  }
+
+  /*
+   * Function to set session
+   * @param {object} s - Session object
+   * */
+  set session(s) {
+    this._session = s;
+    const { answer } = this._session || {};
+    const { gssLineData, domain, range } = this._model;
+    let section = answer && answer.filter((mark) => mark.type === 'polygon').length > 0;
+    if (gssLineData.numberOfLines === 1) {
+      this._model.gssData = {
         numberOfLines: 1,
         selectedTool: section ? 'solutionSet' : 'lineA',
         sections: [],
@@ -31,7 +41,7 @@ export default class Graphing extends HTMLElement {
         },
       };
     } else {
-      m.gssData = {
+      this._model.gssData = {
         numberOfLines: 2,
         selectedTool: section ? 'solutionSet' : 'lineA',
         sections: [],
@@ -44,17 +54,8 @@ export default class Graphing extends HTMLElement {
       };
     }
     if (section) {
-      m.gssData = findSectionsInSolutionSet(m.gssData, answer, this._model.domain, this._model.range);
+      this._model.gssData = findSectionsInSolutionSet(this._model.gssData, answer, domain, range);
     }
-    this._render();
-  }
-
-  /*
-   * Function to set session
-   * @param {object} s - Session object
-   * */
-  set session(s) {
-    this._session = s;
     this._render();
   }
 
