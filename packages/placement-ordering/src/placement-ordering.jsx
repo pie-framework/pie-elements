@@ -8,7 +8,7 @@ import debug from 'debug';
 import uniqueId from 'lodash/uniqueId';
 import { withStyles } from '@material-ui/core/styles';
 import ReactDOM from 'react-dom';
-import { renderMath } from '@pie-lib/pie-toolbox/math-rendering';
+import { renderMath } from '@pie-lib/pie-toolbox/math-rendering-accessible';
 import isEqual from 'lodash/isEqual';
 import difference from 'lodash/difference';
 import Translator from '@pie-lib/pie-toolbox/translator';
