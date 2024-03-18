@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-solution-set-controller@1.1.0...@pie-element/graphing-solution-set-controller@1.1.1) (2024-03-18)
+
+
+### Bug Fixes
+
+* **graphing-solution-set:** Fix issue with validation logic SC-29578 ([290edab](https://github.com/pie-framework/pie-elements/commit/290edab818503993947b85bb77f7df1a25e01154))
+
+
+
+
+
 # 1.1.0 (2024-03-15)
 
 
