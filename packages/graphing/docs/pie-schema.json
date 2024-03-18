@@ -1575,6 +1575,56 @@
     "teacherInstructionsEnabled"
   ],
   "definitions": {
+    "EditableHtmlConfigureProp": {
+      "title": "EditableHtmlConfigureProp",
+      "type": "object",
+      "properties": {
+        "audio": {
+          "title": "EditableHtmlButtonConfigure",
+          "type": "object",
+          "properties": {
+            "disabled": {
+              "description": "Indicates if the plugin is disabled or not",
+              "type": "boolean",
+              "title": "disabled"
+            }
+          }
+        },
+        "video": {
+          "title": "EditableHtmlButtonConfigure",
+          "type": "object",
+          "properties": {
+            "disabled": {
+              "description": "Indicates if the plugin is disabled or not",
+              "type": "boolean",
+              "title": "disabled"
+            }
+          }
+        },
+        "image": {
+          "title": "EditableHtmlButtonConfigure",
+          "type": "object",
+          "properties": {
+            "disabled": {
+              "description": "Indicates if the plugin is disabled or not",
+              "type": "boolean",
+              "title": "disabled"
+            }
+          }
+        }
+      }
+    },
+    "EditableHtmlButtonConfigure": {
+      "title": "EditableHtmlButtonConfigure",
+      "type": "object",
+      "properties": {
+        "disabled": {
+          "description": "Indicates if the plugin is disabled or not",
+          "type": "boolean",
+          "title": "disabled"
+        }
+      }
+    },
     "AuthoringConfigProp": {
       "title": "AuthoringConfigProp",
       "type": "object",
@@ -2243,10 +2293,49 @@
         "value"
       ]
     },
-    "ConfigureRequiredProp": {
-      "title": "ConfigureRequiredProp",
+    "EditableHtmlPluginConfigureRequired": {
+      "title": "EditableHtmlPluginConfigureRequired",
       "type": "object",
       "properties": {
+        "inputConfiguration": {
+          "title": "EditableHtmlConfigureProp",
+          "type": "object",
+          "properties": {
+            "audio": {
+              "title": "EditableHtmlButtonConfigure",
+              "type": "object",
+              "properties": {
+                "disabled": {
+                  "description": "Indicates if the plugin is disabled or not",
+                  "type": "boolean",
+                  "title": "disabled"
+                }
+              }
+            },
+            "video": {
+              "title": "EditableHtmlButtonConfigure",
+              "type": "object",
+              "properties": {
+                "disabled": {
+                  "description": "Indicates if the plugin is disabled or not",
+                  "type": "boolean",
+                  "title": "disabled"
+                }
+              }
+            },
+            "image": {
+              "title": "EditableHtmlButtonConfigure",
+              "type": "object",
+              "properties": {
+                "disabled": {
+                  "description": "Indicates if the plugin is disabled or not",
+                  "type": "boolean",
+                  "title": "disabled"
+                }
+              }
+            }
+          }
+        },
         "required": {
           "description": "Indicates if the item is required and the value cannot be empty",
           "type": "boolean",

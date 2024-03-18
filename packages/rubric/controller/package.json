@@ -1,13 +1,13 @@
 {
   "name": "@pie-element/rubric-controller",
   "private": true,
-  "version": "2.3.1",
+  "version": "2.4.0",
   "main": "lib/index.js",
   "scripts": {
     "test": "./node_modules/.bin/jest"
   },
   "dependencies": {
-    "@pie-lib/pie-toolbox": "1.8.4",
+    "@pie-lib/pie-toolbox": "1.10.0",
     "lodash": "^4.17.15"
   }
 }

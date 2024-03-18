@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-controller@2.3.2...@pie-element/multi-trait-rubric-controller@2.4.0) (2024-03-15)
+
+
+### Features
+
+* update pie-lib/pie-toolbox SC-27890,PD-2461 ([13d94fa](https://github.com/pie-framework/pie-elements/commit/13d94faaf0cf9cf923bbc64587cdd4202154ea33))
+
+
+
+
+
+## [2.3.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-controller@2.3.1...@pie-element/multi-trait-rubric-controller@2.3.2) (2024-03-13)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3549 ([b5d7d13](https://github.com/pie-framework/pie-elements/commit/b5d7d1352169cc67eaedcd56898a5806b0a8812a))
+
+
+
+
+
 ## [2.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-controller@2.3.0...@pie-element/multi-trait-rubric-controller@2.3.1) (2024-03-12)
 
 

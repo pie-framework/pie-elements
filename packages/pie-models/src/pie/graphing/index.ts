@@ -8,6 +8,7 @@ import {
   ConfigureProp,
   ConfigurePropWithEnabled,
   EditableHtmlConfigureProp,
+  EditableHtmlPluginConfigureRequired,
 } from '../ConfigurationProp';
 
 interface Graph {

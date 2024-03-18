@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { SessionChangedEvent, ModelSetEvent } from '@pie-framework/pie-player-events';
 import Main from './main';
-import { renderMath } from '@pie-lib/pie-toolbox/math-rendering';
+import { renderMath } from '@pie-lib/pie-toolbox/math-rendering-accessible';
 import generateModel from './utils';
 
 export default class SelectText extends HTMLElement {
