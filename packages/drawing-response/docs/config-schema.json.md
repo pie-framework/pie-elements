@@ -6,6 +6,14 @@ The schema defines the following properties:
 
 Properties of the `baseInputConfiguration` object:
 
+## `html` (object)
+
+Properties of the `html` object:
+
+### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
 ## `audio` (object)
 
 Properties of the `audio` object:
@@ -95,6 +103,14 @@ Properties of the `teacherInstructions` object:
 
 Properties of the `inputConfiguration` object:
 
+### `html` (object)
+
+Properties of the `html` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
 ### `audio` (object)
 
 Properties of the `audio` object:
@@ -134,6 +150,14 @@ Properties of the `prompt` object:
 ## `inputConfiguration` (object)
 
 Properties of the `inputConfiguration` object:
+
+### `html` (object)
+
+Properties of the `html` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
 
 ### `audio` (object)
 
@@ -332,6 +356,14 @@ The schema defines the following additional types:
 
 Properties of the `EditableHtmlConfigureProp` object:
 
+### `html` (object)
+
+Properties of the `html` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
 ### `audio` (object)
 
 Properties of the `audio` object:
@@ -400,6 +432,14 @@ Properties of the `EditableHtmlPluginConfigure` object:
 ### `inputConfiguration` (object)
 
 Properties of the `inputConfiguration` object:
+
+#### `html` (object)
+
+Properties of the `html` object:
+
+##### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
 
 #### `audio` (object)
 

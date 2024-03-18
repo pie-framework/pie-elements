@@ -366,7 +366,9 @@ Overall appearance is acceptable or better",
       }
       enableDragAndDrop={false}
       excludeZero={true}
+      expandedPluginProps={Object {}}
       key="scale-0"
+      labelPluginProps={Object {}}
       mathMlOptions={Object {}}
       model={
         Object {
@@ -812,7 +814,9 @@ Writing is expressive, engaging and has lots of energy",
       }
       enableDragAndDrop={false}
       excludeZero={true}
+      expandedPluginProps={Object {}}
       key="scale-1"
+      labelPluginProps={Object {}}
       mathMlOptions={Object {}}
       model={
         Object {

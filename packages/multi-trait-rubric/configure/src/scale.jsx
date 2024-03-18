@@ -262,7 +262,9 @@ export class Scale extends React.Component {
       uploadSoundSupport,
       maxPointsEnabled,
       mathMlOptions = {},
-      maxMaxPoints
+      maxMaxPoints,
+      expandedPluginProps = {},
+      labelPluginProps = {},
     } = this.props || {};
 
     const { maxPoints, scorePointsLabels, traitLabel, traits } = scale || {};
@@ -279,8 +281,8 @@ export class Scale extends React.Component {
     } = this.state;
 
     const { traitsErrors, scorePointsErrors } = errors || {};
-    const currentScaleTraitsErrors = traitsErrors && traitsErrors[scaleIndex] || {};
-    const currentScalePointsLabelsErrors = scorePointsErrors && scorePointsErrors[scaleIndex] || {};
+    const currentScaleTraitsErrors = (traitsErrors && traitsErrors[scaleIndex]) || {};
+    const currentScalePointsLabelsErrors = (scorePointsErrors && scorePointsErrors[scaleIndex]) || {};
 
     const scorePointsValues = [];
     const secondaryBlockWidth = parseInt(width) - DragHandleSpace - PrimaryBlockWidth || 320; // 320 is minWidth
@@ -326,6 +328,8 @@ export class Scale extends React.Component {
           maxPointsEnabled={maxPointsEnabled}
           mathMlOptions={mathMlOptions}
           maxMaxPoints={maxMaxPoints}
+          expandedPluginProps={expandedPluginProps}
+          labelPluginProps={labelPluginProps}
         />
 
         {traits.map((trait, index) => (
@@ -349,6 +353,8 @@ export class Scale extends React.Component {
             spellCheck={spellCheck}
             uploadSoundSupport={uploadSoundSupport}
             mathMlOptions={mathMlOptions}
+            expandedPluginProps={expandedPluginProps}
+            labelPluginProps={labelPluginProps}
           />
         ))}
 
@@ -426,6 +432,8 @@ Scale.propTypes = {
   uploadSoundSupport: PropTypes.object,
   showScorePointLabels: PropTypes.bool,
   enableDragAndDrop: PropTypes.bool,
+  expandedPluginProps: PropTypes.object,
+  labelPluginProps: PropTypes.object,
 };
 
 export default withDragContext(withStyles(styles)(Scale));

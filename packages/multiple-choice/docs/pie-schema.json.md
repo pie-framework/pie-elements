@@ -199,6 +199,14 @@ Indicates the label for the item that has to be displayed in the Settings Panel
 
 Properties of the `EditableHtmlConfigureProp` object:
 
+### `html` (object)
+
+Properties of the `html` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
 ### `audio` (object)
 
 Properties of the `audio` object:
@@ -238,6 +246,14 @@ Properties of the `EditableHtmlPluginConfigure` object:
 ### `inputConfiguration` (object)
 
 Properties of the `inputConfiguration` object:
+
+#### `html` (object)
+
+Properties of the `html` object:
+
+##### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
 
 #### `audio` (object)
 

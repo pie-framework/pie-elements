@@ -11,6 +11,27 @@ export default {
     addScaleEnabled: true,
   },
   configuration: {
+    baseInputConfiguration: {
+      audio: { disabled: false },
+      video: { disabled: false },
+      image: { disabled: false },
+    },
+    expandedInput: {
+      inputConfiguration: {
+        math: { disabled: true },
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: true },
+      },
+    },
+    labelInput: {
+      inputConfiguration: {
+        math: { disabled: true },
+        audio: { disabled: true },
+        video: { disabled: true },
+        image: { disabled: true },
+      },
+    },
     excludeZeroDialogBoxContent: {
       title: 'Exclude 0 (Zero) from Score Point Values.',
       text: `<div>

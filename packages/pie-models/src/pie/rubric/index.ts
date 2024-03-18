@@ -1,7 +1,12 @@
 import { PieModel } from '../../PieModel';
 import { PromptConfig } from '../../PromptConfig';
 import { CommonConfigSettings } from '../../CommonConfigSettings';
-import {ConfigureMathMLProp, ConfigureProp} from '../ConfigurationProp';
+import {
+  ConfigureMathMLProp,
+  ConfigureProp,
+  EditableHtmlConfigureProp,
+  EditableHtmlPluginConfigure,
+} from '../ConfigurationProp';
 
 /**
  * Model for the RubricPie Interaction
@@ -21,7 +26,6 @@ export interface RubricPie extends PieModel {
   excludeZeros?: boolean;
 }
 
-
 export interface RubriclessPie extends PieModel {
   /** Indicates the max limit for scoring points */
   maxPoints?: number;
@@ -30,10 +34,16 @@ export interface RubriclessPie extends PieModel {
   excludeZeros?: boolean;
 
   /** Indicates that rubricInstruction is enabled*/
-  rubriclessInstructionEnabled: boolean,
+  rubriclessInstructionEnabled: boolean;
 }
 
 export interface RubricConfigure extends PromptConfig, CommonConfigSettings {
+  /**
+   * Base editable html input configuration regarding plugins that are enabled/disabled
+   * E.g. audio, video, image
+   */
+  baseInputConfiguration?: EditableHtmlConfigureProp;
+
   /**
    * Indicates if the settings panel is not available
    */
@@ -89,13 +99,8 @@ export interface RubriclessConfigure extends PromptConfig, CommonConfigSettings 
   maxMaxPoints?: number;
 
   /** Indicates that it is rubricless */
-  rubricless: true,
+  rubricless: true;
 
   // scoring instruction for rubricless
-  rubriclessInstruction: {
-    settings: true,
-    label: 'Instruction',
-  },
-
-
+  rubriclessInstruction: EditableHtmlPluginConfigure;
 }

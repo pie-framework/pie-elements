@@ -1,4 +1,4 @@
-import {RUBRIC_TYPES} from '@pie-lib/pie-toolbox/rubric';
+import { RUBRIC_TYPES } from '@pie-lib/pie-toolbox/rubric';
 
 const multiTraitDefaultModel = {
   visibleToStudent: true,
@@ -24,6 +24,27 @@ const rubriclessDefaultModel = {
 };
 
 const multiTraitDefaultConfiguration = {
+  baseInputConfiguration: {
+    audio: { disabled: false },
+    video: { disabled: false },
+    image: { disabled: false },
+  },
+  expandedInput: {
+    inputConfiguration: {
+      math: { disabled: true },
+      audio: { disabled: false },
+      video: { disabled: false },
+      image: { disabled: true },
+    },
+  },
+  labelInput: {
+    inputConfiguration: {
+      math: { disabled: true },
+      audio: { disabled: true },
+      video: { disabled: true },
+      image: { disabled: true },
+    },
+  },
   settingsPanelDisabled: false,
   excludeZeroDialogBoxContent: {
     title: 'Exclude 0 (Zero) from Score Point Values.',
@@ -113,10 +134,15 @@ const multiTraitDefaultConfiguration = {
     label: 'Enable Drag and Drop',
     enabled: false,
   },
-  maxMaxPoints: 9
+  maxMaxPoints: 9,
 };
 
 const rubricDefaultConfiguration = {
+  baseInputConfiguration: {
+    audio: { disabled: false },
+    video: { disabled: false },
+    image: { disabled: false },
+  },
   showExcludeZero: {
     settings: true,
     label: 'Ability to exclude zero',
@@ -126,11 +152,15 @@ const rubricDefaultConfiguration = {
     label: 'Show max points dropdown',
   },
   settingsPanelDisabled: false,
-  maxMaxPoints: 9
+  maxMaxPoints: 9,
 };
 
-
 const rubriclessDefaultConfiguration = {
+  baseInputConfiguration: {
+    audio: { disabled: false },
+    video: { disabled: false },
+    image: { disabled: false },
+  },
   showExcludeZero: {
     settings: true,
     label: 'Ability to exclude zero',
@@ -146,6 +176,11 @@ const rubriclessDefaultConfiguration = {
   rubriclessInstruction: {
     settings: true,
     label: 'Instruction',
+    inputConfiguration: {
+      audio: { disabled: false },
+      video: { disabled: false },
+      image: { disabled: false },
+    },
   },
   maxMaxPoints: 100,
 };
@@ -153,7 +188,11 @@ const rubriclessDefaultConfiguration = {
 export default {
   model: {
     rubricType: 'simpleRubric',
-    rubrics: { [RUBRIC_TYPES.SIMPLE_RUBRIC]: rubricDefaultModel, [RUBRIC_TYPES.MULTI_TRAIT_RUBRIC]: multiTraitDefaultModel, [RUBRIC_TYPES.RUBRICLESS]: rubriclessDefaultModel },
+    rubrics: {
+      [RUBRIC_TYPES.SIMPLE_RUBRIC]: rubricDefaultModel,
+      [RUBRIC_TYPES.MULTI_TRAIT_RUBRIC]: multiTraitDefaultModel,
+      [RUBRIC_TYPES.RUBRICLESS]: rubriclessDefaultModel,
+    },
   },
   configuration: {
     // width: '770px',
