@@ -9,7 +9,7 @@ import {
   ConfigureProp,
   ConfigurePropWithEnabled,
   EditableHtmlConfigureProp,
-  EditableHtmlPluginConfigure,
+  EditableHtmlPluginConfigureRequired,
 } from '../ConfigurationProp';
 
 interface TextToken {
@@ -158,7 +158,7 @@ export interface SelectTextConfigure extends PromptConfig, CommonConfigSettings 
   /**
    * Prompt configuration
    */
-  prompt?: EditableHtmlPluginConfigure;
+  prompt?: EditableHtmlPluginConfigureRequired;
 
   /**
    * Highlight Choices configuration
@@ -168,7 +168,7 @@ export interface SelectTextConfigure extends PromptConfig, CommonConfigSettings 
   /**
    * Rationale configuration
    */
-  rationale?: EditableHtmlPluginConfigure;
+  rationale?: EditableHtmlPluginConfigureRequired;
 
   /**
    * Indicates if the settings panel is not available
@@ -193,7 +193,7 @@ export interface SelectTextConfigure extends PromptConfig, CommonConfigSettings 
   /**
    * Teacher Instructions configuration
    */
-  teacherInstructions?: EditableHtmlPluginConfigure;
+  teacherInstructions?: EditableHtmlPluginConfigureRequired;
 
   /**
    * Maximum number of selected tokens in correct answer

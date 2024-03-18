@@ -189,11 +189,19 @@ export const createCorrectResponseSession = (question, env) => {
   });
 };
 
+const getInnerText = (html) => (html || '').replaceAll(/<[^>]*>/g, '');
+
 export const validate = (model = {}, config = {}) => {
   const { tokens } = model;
   const { minTokens = 2, maxTokens, maxSelections } = config;
   const errors = {};
   const nbOfTokens = (tokens || []).length;
+
+  ['teacherInstructions', 'prompt', 'rationale'].forEach((field) => {
+    if (config[field]?.required && !getInnerText(model[field])) {
+      errors[field] = 'This field is required.';
+    }
+  });
 
   const nbOfSelections = (tokens || []).reduce((acc, token) => (token.correct ? acc + 1 : acc), 0);
 

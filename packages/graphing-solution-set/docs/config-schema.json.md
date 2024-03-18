@@ -1,4 +1,4 @@
-Config Object for
+Config Object for @pie-elements/graphing-solution-set
 
 The schema defines the following properties:
 
