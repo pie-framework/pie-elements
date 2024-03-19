@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-solution-set@1.1.1...@pie-element/graphing-solution-set@1.1.2) (2024-03-19)
+
+
+### Bug Fixes
+
+* update pie-toolbox ([bc3643e](https://github.com/pie-framework/pie-elements/commit/bc3643e45680e4d1eff9a4ca9fd8d3f34289aa61))
+* **graphing-solution-set:** Model loading issue in item preview. ([ff689c0](https://github.com/pie-framework/pie-elements/commit/ff689c056e5563ff1590d19f18a560c94b0f9742))
+
+
+
+
+
 ## [1.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-solution-set@1.1.0...@pie-element/graphing-solution-set@1.1.1) (2024-03-18)
 
 
