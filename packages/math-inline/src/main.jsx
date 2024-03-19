@@ -442,7 +442,7 @@ export class Main extends React.Component {
           ))}
 
         {prompt && (
-          <div className={classes.content}>
+          <div className={classes.promptContainer}>
             <PreviewPrompt prompt={prompt} />
           </div>
         )}
@@ -654,6 +654,9 @@ const styles = (theme) => ({
     width: '650px',
     opacity: 1,
   },
+  promptContainer: {
+    marginBottom: theme.spacing.unit * 2,
+  },
   main: {
     width: '100%',
     position: 'relative',
@@ -702,8 +705,6 @@ const styles = (theme) => ({
     },
   },
   inputAndKeypadContainer: {
-    marginTop: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit * 2,
     position: 'relative',
     '& .mq-overarrow-inner': {
       border: 'none !important',
