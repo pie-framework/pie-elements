@@ -13,8 +13,9 @@ const styles = (theme) => ({
     color: color.text(),
   },
   tab: {
-    backgroundColor: color.background(),
+    background: theme.palette.common.white, // replace with color.background() once PD-2801 is DONE
     fontSize: 'inherit',
+    color: theme.palette.common.black, // remove when PD-2801 is DONE
   },
   stickyTabs: {
     background: color.background(),
@@ -29,7 +30,7 @@ const styles = (theme) => ({
     marginBottom: theme.spacing.unit,
   },
   buttonContainer: {
-    background: color.background(),
+    background: theme.palette.common.white, // replace with color.background() once PD-2801 is DONE
   },
   tabContainer: {
     backgroundColor: color.background(),
