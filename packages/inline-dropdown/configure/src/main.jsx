@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { EditableHtml, ALL_PLUGINS } from '@pie-lib/pie-toolbox/editable-html';
 import { AlertDialog, InputContainer, layout, settings } from '@pie-lib/pie-toolbox/config-ui';
-import { renderMath } from '@pie-lib/pie-toolbox/math-rendering-accessible';
+import { renderMath } from '@pie-lib/pie-toolbox/math-rendering';
 import cloneDeep from 'lodash/cloneDeep';
 import isEqual from 'lodash/isEqual';
 import isUndefined from 'lodash/isUndefined';

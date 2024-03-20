@@ -2381,10 +2381,10 @@
     keycode "^2.2.0"
     lodash "^4.17.11"
 
-"@pie-lib/pie-toolbox@1.10.0":
-  version "1.10.0"
-  resolved "https://registry.yarnpkg.com/@pie-lib/pie-toolbox/-/pie-toolbox-1.10.0.tgz#c0e398a63c106450f7b2fa98a4e1caa13c517fe6"
-  integrity sha512-o3QkvAnb5Ml8+v6Jl6qQwsBDFBP+QN8kYNjQ8GFWmtuokwVGUL3gbe6+URANUFfah04vCihT9RtpjDyftVNAqQ==
+"@pie-lib/pie-toolbox@1.11.0":
+  version "1.11.0"
+  resolved "https://registry.yarnpkg.com/@pie-lib/pie-toolbox/-/pie-toolbox-1.11.0.tgz#57e753f0a255ea55495cb6ddf13890a78c68c5f1"
+  integrity sha512-38V/YFOWocCs6ycd1zqw49plyxZVzGDmb0UgTMHuj4BkfeiUpApwzgJIknMdNFNyp+QD9AsptxHNmNix2jdccg==
   dependencies:
     "@mapbox/point-geometry" "^0.1.0"
     "@material-ui/core" "^3.8.3"
