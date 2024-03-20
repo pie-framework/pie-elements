@@ -8,7 +8,6 @@ import { withStyles } from '@material-ui/core/styles';
 import { color } from '@pie-lib/pie-toolbox/render-ui';
 
 import { Block, BlockWidth, ExpandedInput, PrimaryBlock, Row, SecondaryBlock, UnderlinedInput } from './common';
-import { labelPlugins } from './utils';
 
 import IconButton from '@material-ui/core/IconButton';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
@@ -120,13 +119,10 @@ export class TraitTile extends React.Component {
       maxPoints,
       uploadSoundSupport,
       mathMlOptions = {},
+      expandedPluginProps = {},
+      labelPluginProps = {},
     } = this.props;
     const { anchorEl } = this.state;
-
-    const pluginProps = {
-      image: { disabled: true },
-      math: { disabled: true },
-    };
 
     return connectDragPreview(
       connectDropTarget(
@@ -166,7 +162,7 @@ export class TraitTile extends React.Component {
                 markup={name}
                 error={error?.name || ''}
                 onChange={(name) => this.onTraitChanged({ name })}
-                pluginProps={labelPlugins}
+                pluginProps={labelPluginProps}
                 placeholder={`Enter ${traitLabel}`}
                 spellCheck={spellCheck}
                 uploadSoundSupport={uploadSoundSupport}
@@ -187,7 +183,7 @@ export class TraitTile extends React.Component {
                     placeholder="Standards"
                     markup={standards.join(',')}
                     onChange={(standards) => this.onTraitChanged({ standards: standards.split(',') })}
-                    pluginProps={pluginProps}
+                    pluginProps={expandedPluginProps}
                     spellCheck={spellCheck}
                     uploadSoundSupport={uploadSoundSupport}
                     mathMlOptions={mathMlOptions}
@@ -202,7 +198,7 @@ export class TraitTile extends React.Component {
                     markup={description}
                     error={error?.description || ''}
                     onChange={(description) => this.onTraitChanged({ description })}
-                    pluginProps={pluginProps}
+                    pluginProps={expandedPluginProps}
                     spellCheck={spellCheck}
                     uploadSoundSupport={uploadSoundSupport}
                     mathMlOptions={mathMlOptions}
@@ -229,7 +225,7 @@ export class TraitTile extends React.Component {
                       placeholder="Enter Descriptor"
                       markup={scoreDescriptor}
                       onChange={(descriptor) => this.onScorePointDescriptorChange({ descriptor, value })}
-                      pluginProps={pluginProps}
+                      pluginProps={expandedPluginProps}
                       alignToRight={remainingSpace < 296 && scorePointsValue < maxPoints} // 296 is the space required for the toolbar
                       spellCheck={spellCheck}
                       uploadSoundSupport={uploadSoundSupport}
@@ -272,6 +268,8 @@ TraitTile.propTypes = {
   enableDragAndDrop: PropTypes.bool,
   currentPosition: PropTypes.number,
   secondaryBlockWidth: PropTypes.number,
+  expandedPluginProps: PropTypes.object,
+  labelPluginProps: PropTypes.object,
 };
 
 export const StyledTrait = withStyles(styles)(TraitTile);

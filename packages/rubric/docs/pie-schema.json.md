@@ -40,6 +40,50 @@ The html Element tag name
 
 The schema defines the following additional types:
 
+## `EditableHtmlConfigureProp` (object)
+
+Properties of the `EditableHtmlConfigureProp` object:
+
+### `html` (object)
+
+Properties of the `html` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `audio` (object)
+
+Properties of the `audio` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `video` (object)
+
+Properties of the `video` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `image` (object)
+
+Properties of the `image` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+## `EditableHtmlButtonConfigure` (object)
+
+Properties of the `EditableHtmlButtonConfigure` object:
+
+### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
 ## `ConfigureProp` (object)
 
 Properties of the `ConfigureProp` object:

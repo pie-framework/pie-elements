@@ -186,6 +186,42 @@ The schema defines the following additional types:
 
 Properties of the `RubricConfigure` object:
 
+### `baseInputConfiguration` (object)
+
+Properties of the `baseInputConfiguration` object:
+
+#### `html` (object)
+
+Properties of the `html` object:
+
+##### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+#### `audio` (object)
+
+Properties of the `audio` object:
+
+##### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+#### `video` (object)
+
+Properties of the `video` object:
+
+##### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+#### `image` (object)
+
+Properties of the `image` object:
+
+##### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
 ### `settingsPanelDisabled` (boolean)
 
 Indicates if the settings panel is not available
@@ -286,6 +322,50 @@ Indicates whether the settings panel wil allow the author to modify settings for
 
 Default: `true`
 
+## `EditableHtmlConfigureProp` (object)
+
+Properties of the `EditableHtmlConfigureProp` object:
+
+### `html` (object)
+
+Properties of the `html` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `audio` (object)
+
+Properties of the `audio` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `video` (object)
+
+Properties of the `video` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `image` (object)
+
+Properties of the `image` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+## `EditableHtmlButtonConfigure` (object)
+
+Properties of the `EditableHtmlButtonConfigure` object:
+
+### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
 ## `ConfigureProp` (object)
 
 Properties of the `ConfigureProp` object:
@@ -315,6 +395,138 @@ Indicates if mathML that's already in model should be editable
 Config Object for @pie-elements/multi-trait-rubric
 
 Properties of the `MultiTraitRubricConfigure` object:
+
+### `baseInputConfiguration` (object)
+
+Properties of the `baseInputConfiguration` object:
+
+#### `html` (object)
+
+Properties of the `html` object:
+
+##### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+#### `audio` (object)
+
+Properties of the `audio` object:
+
+##### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+#### `video` (object)
+
+Properties of the `video` object:
+
+##### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+#### `image` (object)
+
+Properties of the `image` object:
+
+##### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `expandedInput` (object)
+
+Properties of the `expandedInput` object:
+
+#### `inputConfiguration` (object)
+
+Properties of the `inputConfiguration` object:
+
+##### `html` (object)
+
+Properties of the `html` object:
+
+###### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+##### `audio` (object)
+
+Properties of the `audio` object:
+
+###### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+##### `video` (object)
+
+Properties of the `video` object:
+
+###### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+##### `image` (object)
+
+Properties of the `image` object:
+
+###### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+#### `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+#### `label` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
+
+### `labelInput` (object)
+
+Properties of the `labelInput` object:
+
+#### `inputConfiguration` (object)
+
+Properties of the `inputConfiguration` object:
+
+##### `html` (object)
+
+Properties of the `html` object:
+
+###### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+##### `audio` (object)
+
+Properties of the `audio` object:
+
+###### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+##### `video` (object)
+
+Properties of the `video` object:
+
+###### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+##### `image` (object)
+
+Properties of the `image` object:
+
+###### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+#### `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+#### `label` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
 
 ### `excludeZeroDialogBoxContent` (object)
 
@@ -481,6 +693,54 @@ Indicates if mathML that's already in model should be editable
 
 Indicates the max limit for scoring points
 
+## `EditableHtmlPluginConfigure` (object)
+
+Properties of the `EditableHtmlPluginConfigure` object:
+
+### `inputConfiguration` (object)
+
+Properties of the `inputConfiguration` object:
+
+#### `html` (object)
+
+Properties of the `html` object:
+
+##### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+#### `audio` (object)
+
+Properties of the `audio` object:
+
+##### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+#### `video` (object)
+
+Properties of the `video` object:
+
+##### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+#### `image` (object)
+
+Properties of the `image` object:
+
+##### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+### `label` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
+
 ## `DialogContent` (object)
 
 Properties of the `DialogContent` object:
@@ -557,17 +817,49 @@ This element must be one of the following enum values:
 
 Properties of the `rubriclessInstruction` object:
 
-#### `settings` (boolean, enum, required)
+#### `inputConfiguration` (object)
 
-This element must be one of the following enum values:
+Properties of the `inputConfiguration` object:
 
-* `true`
+##### `html` (object)
 
-#### `label` (string, enum, required)
+Properties of the `html` object:
 
-This element must be one of the following enum values:
+###### `disabled` (boolean)
 
-* `Instruction`
+Indicates if the plugin is disabled or not
+
+##### `audio` (object)
+
+Properties of the `audio` object:
+
+###### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+##### `video` (object)
+
+Properties of the `video` object:
+
+###### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+##### `image` (object)
+
+Properties of the `image` object:
+
+###### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+#### `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+#### `label` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
 
 ### `showPrompt` (boolean)
 

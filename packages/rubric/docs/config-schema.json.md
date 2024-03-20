@@ -1,5 +1,41 @@
 The schema defines the following properties:
 
+# `baseInputConfiguration` (object)
+
+Properties of the `baseInputConfiguration` object:
+
+## `html` (object)
+
+Properties of the `html` object:
+
+### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+## `audio` (object)
+
+Properties of the `audio` object:
+
+### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+## `video` (object)
+
+Properties of the `video` object:
+
+### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+## `image` (object)
+
+Properties of the `image` object:
+
+### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
 # `settingsPanelDisabled` (boolean)
 
 Indicates if the settings panel is not available
@@ -105,6 +141,50 @@ Default: `true`
 # Sub Schemas
 
 The schema defines the following additional types:
+
+## `EditableHtmlConfigureProp` (object)
+
+Properties of the `EditableHtmlConfigureProp` object:
+
+### `html` (object)
+
+Properties of the `html` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `audio` (object)
+
+Properties of the `audio` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `video` (object)
+
+Properties of the `video` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `image` (object)
+
+Properties of the `image` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+## `EditableHtmlButtonConfigure` (object)
+
+Properties of the `EditableHtmlButtonConfigure` object:
+
+### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
 
 ## `ConfigureProp` (object)
 

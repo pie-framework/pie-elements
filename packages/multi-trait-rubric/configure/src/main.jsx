@@ -67,7 +67,7 @@ export class Main extends React.Component {
     showInfoDialog: false,
     infoDialogText: '',
     adjustedWidth: MIN_WIDTH,
-    initialUpdateCompleted: false // flag to track the initial update of the div width
+    initialUpdateCompleted: false, // flag to track the initial update of the div width
   };
 
   componentDidMount() {
@@ -303,6 +303,7 @@ export class Main extends React.Component {
     const { model, configuration, onConfigurationChanged, uploadSoundSupport } = this.props || {};
     const {
       addScale,
+      baseInputConfiguration = {},
       dragAndDrop,
       contentDimensions = {},
       showDescription,
@@ -319,7 +320,9 @@ export class Main extends React.Component {
       minNoOfTraits,
       width,
       mathMlOptions = {},
-      maxMaxPoints
+      maxMaxPoints,
+      expandedInput = {},
+      labelInput = {},
     } = configuration || {};
     const {
       errors,
@@ -350,6 +353,15 @@ export class Main extends React.Component {
       addScaleEnabled: addScale.settings && toggle(addScale.label),
     };
 
+    const getPluginProps = (props) => {
+      return Object.assign(
+        {
+          ...baseInputConfiguration,
+        },
+        props || {},
+      );
+    };
+
     return (
       <layout.ConfigLayout
         dimensions={contentDimensions}
@@ -375,7 +387,7 @@ export class Main extends React.Component {
           />
         }
       >
-        <div style={{ width: '100%' }} ref={this.divRef}/>
+        <div style={{ width: '100%' }} ref={this.divRef} />
         <div style={{ width: width || adjustedWidth }}>
           {(scales || []).map((scale, scaleIndex) => (
             <Scale
@@ -401,12 +413,14 @@ export class Main extends React.Component {
               classes={{}}
               mathMlOptions={mathMlOptions}
               maxMaxPoints={maxMaxPoints}
+              expandedPluginProps={getPluginProps(expandedInput?.inputConfiguration)}
+              labelPluginProps={getPluginProps(labelInput?.inputConfiguration)}
             />
           ))}
           {addScaleEnabled && <MultiTraitButton onClick={this.onScaleAdded}>Add Scale</MultiTraitButton>}
         </div>
 
-        <InfoDialog open={showInfoDialog} text={infoDialogText} onClose={() => this.set({ showInfoDialog: false })}/>
+        <InfoDialog open={showInfoDialog} text={infoDialogText} onClose={() => this.set({ showInfoDialog: false })} />
       </layout.ConfigLayout>
     );
   }
