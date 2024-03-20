@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-configure@6.5.0...@pie-element/explicit-constructed-response-configure@6.6.0) (2024-03-20)
+
+
+### Bug Fixes
+
+* updated pie-lib/pie-toolbox SC-28500 ([a8e4e6a](https://github.com/pie-framework/pie-elements/commit/a8e4e6ab27584435ce7ac3e964ccac2747402777))
+
+
+### Features
+
+* Add configuration for custom buttons PD-3520 ([a7a7ace](https://github.com/pie-framework/pie-elements/commit/a7a7ace27eaac47c9a0f172f7ae0440c6dc4e600))
+* Add configuration for custom buttons PD-3520 ([ee0574f](https://github.com/pie-framework/pie-elements/commit/ee0574f85d3430f45b12f4dd433d14a5d6459458))
+* updated pie-lib/pie-toolbox SC-27890 and reverted once again math-rendering-accessible ([fd312e1](https://github.com/pie-framework/pie-elements/commit/fd312e1336999893025231946649496d290883e4))
+* use math-rendering-accessible everywhere PD-1870 ([d52e660](https://github.com/pie-framework/pie-elements/commit/d52e6607ad8847d704bd9cb9b7e3107c130f0500))
+
+
+
+
+
 # [6.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-configure@6.4.2...@pie-element/explicit-constructed-response-configure@6.5.0) (2024-03-15)
 
 

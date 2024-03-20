@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@9.5.0...@pie-element/ebsr@9.6.0) (2024-03-20)
+
+
+### Bug Fixes
+
+* updated pie-lib/pie-toolbox SC-28500 ([a8e4e6a](https://github.com/pie-framework/pie-elements/commit/a8e4e6ab27584435ce7ac3e964ccac2747402777))
+
+
+### Features
+
+* Replace math-rendering package with math-rendering-accessible-package for accessibility PD-1870 ([b6cdee8](https://github.com/pie-framework/pie-elements/commit/b6cdee8915b06e4c11b002b10437db07ce966501))
+* updated pie-lib/pie-toolbox SC-27890 and reverted once again math-rendering-accessible ([fd312e1](https://github.com/pie-framework/pie-elements/commit/fd312e1336999893025231946649496d290883e4))
+* use math-rendering-accessible everywhere PD-1870 ([d52e660](https://github.com/pie-framework/pie-elements/commit/d52e6607ad8847d704bd9cb9b7e3107c130f0500))
+
+
+
+
+
 # [9.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@9.4.2...@pie-element/ebsr@9.5.0) (2024-03-15)
 
 

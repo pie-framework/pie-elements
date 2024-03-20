@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.11.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@6.10.0...@pie-element/hotspot@6.11.0) (2024-03-20)
+
+
+### Bug Fixes
+
+* Renamed the html prop to the correct math prop PD-3527 ([28061b6](https://github.com/pie-framework/pie-elements/commit/28061b6032817dae15837131d8a0bf5a08683b10))
+* updated pie-lib/pie-toolbox SC-28500 ([a8e4e6a](https://github.com/pie-framework/pie-elements/commit/a8e4e6ab27584435ce7ac3e964ccac2747402777))
+
+
+### Features
+
+* Add configuration for custom buttons PD-3520 ([a7a7ace](https://github.com/pie-framework/pie-elements/commit/a7a7ace27eaac47c9a0f172f7ae0440c6dc4e600))
+* Add configuration for custom buttons PD-3527 ([45a32bd](https://github.com/pie-framework/pie-elements/commit/45a32bd8e9d7bd33beca74cc10c7dd973a9f9dbc))
+* Replace math-rendering package with math-rendering-accessible-package for accessibility PD-1870 ([b6cdee8](https://github.com/pie-framework/pie-elements/commit/b6cdee8915b06e4c11b002b10437db07ce966501))
+* updated pie-lib/pie-toolbox SC-27890 and reverted once again math-rendering-accessible ([fd312e1](https://github.com/pie-framework/pie-elements/commit/fd312e1336999893025231946649496d290883e4))
+* use math-rendering-accessible everywhere PD-1870 ([d52e660](https://github.com/pie-framework/pie-elements/commit/d52e6607ad8847d704bd9cb9b7e3107c130f0500))
+
+
+
+
+
 # [6.10.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@6.9.1...@pie-element/hotspot@6.10.0) (2024-03-15)
 
 

@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.23.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.22.0...@pie-element/pie-models@13.23.0) (2024-03-20)
+
+
+### Bug Fixes
+
+* Renamed the html prop to the correct math prop PD-3527 ([28061b6](https://github.com/pie-framework/pie-elements/commit/28061b6032817dae15837131d8a0bf5a08683b10))
+
+
+### Features
+
+* **placement-ordering:** add required fields functionality PD-3566 ([f72681b](https://github.com/pie-framework/pie-elements/commit/f72681b9f9eab2a868b2a8c371cdd9efcfde6ffc))
+* **select-text:** add required fields functionality PD-3565 ([9d8aaa5](https://github.com/pie-framework/pie-elements/commit/9d8aaa56c97eaf91fb13a20bfece4f0e3d4239d2))
+* Add configuration for custom buttons PD-3517 ([2544a76](https://github.com/pie-framework/pie-elements/commit/2544a761424daad5324caf68c3b3c222ec38515a))
+* Add configuration for custom buttons PD-3520 ([ee0574f](https://github.com/pie-framework/pie-elements/commit/ee0574f85d3430f45b12f4dd433d14a5d6459458))
+* Add configuration for custom buttons PD-3527 ([45a32bd](https://github.com/pie-framework/pie-elements/commit/45a32bd8e9d7bd33beca74cc10c7dd973a9f9dbc))
+
+
+
+
+
 # [13.22.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.21.0...@pie-element/pie-models@13.22.0) (2024-03-15)
 
 
