@@ -63,7 +63,7 @@
       "title": "EditableHtmlConfigureProp",
       "type": "object",
       "properties": {
-        "html": {
+        "math": {
           "title": "EditableHtmlButtonConfigure",
           "type": "object",
           "properties": {

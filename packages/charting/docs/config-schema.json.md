@@ -6,9 +6,9 @@ The schema defines the following properties:
 
 Properties of the `baseInputConfiguration` object:
 
-## `html` (object)
+## `math` (object)
 
-Properties of the `html` object:
+Properties of the `math` object:
 
 ### `disabled` (boolean)
 
@@ -46,9 +46,9 @@ Properties of the `prompt` object:
 
 Properties of the `inputConfiguration` object:
 
-### `html` (object)
+### `math` (object)
 
-Properties of the `html` object:
+Properties of the `math` object:
 
 #### `disabled` (boolean)
 
@@ -98,9 +98,9 @@ Properties of the `rationale` object:
 
 Properties of the `inputConfiguration` object:
 
-### `html` (object)
+### `math` (object)
 
-Properties of the `html` object:
+Properties of the `math` object:
 
 #### `disabled` (boolean)
 
@@ -235,9 +235,9 @@ Properties of the `teacherInstructions` object:
 
 Properties of the `inputConfiguration` object:
 
-### `html` (object)
+### `math` (object)
 
-Properties of the `html` object:
+Properties of the `math` object:
 
 #### `disabled` (boolean)
 
@@ -570,9 +570,9 @@ The schema defines the following additional types:
 
 Properties of the `EditableHtmlConfigureProp` object:
 
-### `html` (object)
+### `math` (object)
 
-Properties of the `html` object:
+Properties of the `math` object:
 
 #### `disabled` (boolean)
 
@@ -618,9 +618,9 @@ Properties of the `EditableHtmlPluginConfigureRequired` object:
 
 Properties of the `inputConfiguration` object:
 
-#### `html` (object)
+#### `math` (object)
 
-Properties of the `html` object:
+Properties of the `math` object:
 
 ##### `disabled` (boolean)
 

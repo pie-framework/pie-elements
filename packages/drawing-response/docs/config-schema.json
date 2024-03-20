@@ -7,7 +7,7 @@
       "title": "EditableHtmlConfigureProp",
       "type": "object",
       "properties": {
-        "html": {
+        "math": {
           "title": "EditableHtmlButtonConfigure",
           "type": "object",
           "properties": {
@@ -135,7 +135,7 @@
           "title": "EditableHtmlConfigureProp",
           "type": "object",
           "properties": {
-            "html": {
+            "math": {
               "title": "EditableHtmlButtonConfigure",
               "type": "object",
               "properties": {
@@ -201,7 +201,7 @@
           "title": "EditableHtmlConfigureProp",
           "type": "object",
           "properties": {
-            "html": {
+            "math": {
               "title": "EditableHtmlButtonConfigure",
               "type": "object",
               "properties": {
@@ -466,7 +466,7 @@
       "title": "EditableHtmlConfigureProp",
       "type": "object",
       "properties": {
-        "html": {
+        "math": {
           "title": "EditableHtmlButtonConfigure",
           "type": "object",
           "properties": {
@@ -568,7 +568,7 @@
           "title": "EditableHtmlConfigureProp",
           "type": "object",
           "properties": {
-            "html": {
+            "math": {
               "title": "EditableHtmlButtonConfigure",
               "type": "object",
               "properties": {
