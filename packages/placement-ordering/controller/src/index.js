@@ -184,14 +184,18 @@ export const createCorrectResponseSession = (question, env) => {
   });
 };
 
+// remove all html tags
 const getInnerText = (html) => (html || '').replaceAll(/<[^>]*>/g, '');
+
+// remove all html tags except img and iframe
+const getContent = (html) => (html || '').replace(/(<(?!img|iframe)([^>]+)>)/gi, '');
 
 export const validate = (model = {}, config = {}) => {
   const { choices, correctResponse } = model;
   const errors = {};
 
   ['teacherInstructions', 'prompt', 'rationale'].forEach((field) => {
-    if (config[field]?.required && !getInnerText(model[field])) {
+    if (config[field]?.required && !getContent(model[field])) {
       errors[field] = 'This field is required.';
     }
   });
@@ -202,7 +206,7 @@ export const validate = (model = {}, config = {}) => {
   reversedChoices.forEach((choice, index) => {
     const { id, label } = choice;
 
-    if (!getInnerText(label)) {
+    if (!getContent(label)) {
       choicesErrors[id] = 'Content should not be empty.';
     } else {
       const identicalAnswer = reversedChoices.slice(index + 1).some((c) => c.label === label);
