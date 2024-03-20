@@ -10,7 +10,7 @@ import {
 import debug from 'debug';
 import Configure from './configure';
 import defaultValues from './defaults';
-import { renderMath } from '@pie-lib/pie-toolbox/math-rendering-accessible';
+import { renderMath } from '@pie-lib/pie-toolbox/math-rendering';
 
 const log = debug('pie-elements:graphing:configure');
 
