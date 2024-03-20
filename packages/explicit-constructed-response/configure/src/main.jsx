@@ -318,14 +318,10 @@ export class Main extends React.Component {
       'editSource.enabled': editSource?.settings && toggle(editSource.label, true),
     };
 
-    const getPluginProps = (props) => {
-      return Object.assign(
-        {
-          ...baseInputConfiguration,
-        },
-        props || {},
-      );
-    };
+    const getPluginProps = (props = {}) => ({
+      ...baseInputConfiguration,
+      ...props,
+    });
 
     return (
       <layout.ConfigLayout

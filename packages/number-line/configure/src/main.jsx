@@ -464,14 +464,10 @@ export class Main extends React.Component {
       position: toolbarEditorPosition === 'top' ? 'top' : 'bottom',
     };
 
-    const getPluginProps = (props) => {
-      return Object.assign(
-        {
-          ...baseInputConfiguration,
-        },
-        props || {},
-      );
-    };
+    const getPluginProps = (props = {}) => ({
+      ...baseInputConfiguration,
+      ...props,
+    });
 
     return (
       <layout.ConfigLayout dimensions={contentDimensions} hideSettings={true} settings={null}>
