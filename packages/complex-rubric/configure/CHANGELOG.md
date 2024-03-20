@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric-configure@2.1.22...@pie-element/complex-rubric-configure@2.2.0) (2024-03-20)
+
+
+### Features
+
+* Add configuration for custom buttons PD-3527 ([45a32bd](https://github.com/pie-framework/pie-elements/commit/45a32bd8e9d7bd33beca74cc10c7dd973a9f9dbc))
+
+
+
+
+
 ## [2.1.22](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric-configure@2.1.21...@pie-element/complex-rubric-configure@2.1.22) (2024-03-15)
 
 **Note:** Version bump only for package @pie-element/complex-rubric-configure

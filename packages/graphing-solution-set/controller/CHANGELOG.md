@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-solution-set-controller@1.1.2...@pie-element/graphing-solution-set-controller@1.2.0) (2024-03-20)
+
+
+### Bug Fixes
+
+* updated pie-lib/pie-toolbox SC-28500 ([a8e4e6a](https://github.com/pie-framework/pie-elements/commit/a8e4e6ab27584435ce7ac3e964ccac2747402777))
+
+
+### Features
+
+* updated pie-lib/pie-toolbox SC-27890 and reverted once again math-rendering-accessible ([fd312e1](https://github.com/pie-framework/pie-elements/commit/fd312e1336999893025231946649496d290883e4))
+
+
+
+
+
 ## [1.1.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-solution-set-controller@1.1.1...@pie-element/graphing-solution-set-controller@1.1.2) (2024-03-19)
 
 

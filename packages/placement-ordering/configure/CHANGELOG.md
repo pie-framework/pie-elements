@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-configure@7.5.0...@pie-element/placement-ordering-configure@7.6.0) (2024-03-20)
+
+
+### Bug Fixes
+
+* updated pie-lib/pie-toolbox SC-28500 ([a8e4e6a](https://github.com/pie-framework/pie-elements/commit/a8e4e6ab27584435ce7ac3e964ccac2747402777))
+
+
+### Features
+
+* updated pie-lib/pie-toolbox SC-27890 and reverted once again math-rendering-accessible ([fd312e1](https://github.com/pie-framework/pie-elements/commit/fd312e1336999893025231946649496d290883e4))
+* **placement-ordering:** add required fields functionality PD-3566 ([f72681b](https://github.com/pie-framework/pie-elements/commit/f72681b9f9eab2a868b2a8c371cdd9efcfde6ffc))
+* use math-rendering-accessible everywhere PD-1870 ([d52e660](https://github.com/pie-framework/pie-elements/commit/d52e6607ad8847d704bd9cb9b7e3107c130f0500))
+
+
+
+
+
 # [7.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-configure@7.4.2...@pie-element/placement-ordering-configure@7.5.0) (2024-03-15)
 
 
