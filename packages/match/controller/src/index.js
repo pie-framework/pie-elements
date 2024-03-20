@@ -273,7 +273,11 @@ export const createCorrectResponseSession = (question, env) => {
   });
 };
 
+// remove all html tags
 const getInnerText = (html) => (html || '').replaceAll(/<[^>]*>/g, '');
+
+// remove all html tags except img and iframe
+const getContent = (html) => (html || '').replace(/(<(?!img|iframe)([^>]+)>)/gi, '');
 
 export const validate = (model = {}, config = {}) => {
   const { rows, choiceMode, headers } = model;
@@ -290,8 +294,8 @@ export const validate = (model = {}, config = {}) => {
   const errors = {};
 
   ['teacherInstructions', 'prompt', 'rationale'].forEach((field) => {
-    if (config[field]?.required && !getInnerText(model[field])) {
-      errors[field] = 'This field is required';
+    if (config[field]?.required && !getContent(model[field])) {
+      errors[field] = 'This field is required.';
     }
   });
 
@@ -303,31 +307,24 @@ export const validate = (model = {}, config = {}) => {
 
   (rows || []).forEach((row, index) => {
     const { id, values = [], title } = row;
-    let hasCorrectResponse = false;
-
     rowsErrors[id] = '';
 
     if (maxLengthQuestionsHeading && getInnerText(title).length > maxLengthQuestionsHeading) {
-      rowsErrors[
-        id
-      ] += `Questions rows content length should not be more than ${maxLengthQuestionsHeading} characters. `;
-    } else if (!getInnerText(title)) {
+      rowsErrors[id] += `Content length should be maximum ${maxLengthQuestionsHeading} characters. `;
+    }
+
+    if (!getContent(title)) {
       rowsErrors[id] += 'Content should not be empty. ';
     } else {
-      const identicalAnswer = rows.slice(index + 1).some((r) => {
-        return getInnerText(r.title) === getInnerText(title);
-      });
+      // check for identical content with the previous answers
+      const identicalAnswer = rows.slice(0, index).some((r) => getContent(r.title) === getContent(title));
 
       if (identicalAnswer) {
-        rowsErrors[id] = 'Content should be unique. ';
+        rowsErrors[id] += 'Content should be unique. ';
       }
     }
 
-    values.forEach((value) => {
-      if (value) {
-        hasCorrectResponse = true;
-      }
-    });
+    const hasCorrectResponse = values.some((value) => !!value);
 
     if (!hasCorrectResponse) {
       rowsErrors[id] += 'No correct response defined.';
@@ -339,47 +336,41 @@ export const validate = (model = {}, config = {}) => {
   }
 
   if (maxLengthFirstColumnHeading && headers[0].length > maxLengthFirstColumnHeading) {
-    columnsErrors[0] = `The first column heading should have the maximum length of ${maxLengthFirstColumnHeading} characters.`;
+    columnsErrors[0] = `Content length should be maximum ${maxLengthFirstColumnHeading} characters.`;
   }
 
+  const headersContent = (headers || []).map((heading) => getContent(heading));
   // remove first column since it does not require validation
-  const validateHeaders = (cloneDeep(headers) || []).map((heading) => getInnerText(heading));
-  validateHeaders.shift();
+  headersContent.shift();
 
-  (validateHeaders || []).forEach((heading, index) => {
-    if (!getInnerText(heading)) {
-      columnsErrors[index + 1] = 'Content should not be empty.';
-    } else if (maxLengthAnswers && heading.length > maxLengthAnswers) {
-      columnsErrors[index + 1] = `Content length should be maximum ${maxLengthAnswers} characters.`;
+  headersContent.forEach((heading, index) => {
+    const headerIndex = index + 1; // we need to add 1 because we removed first header from validation
+    columnsErrors[headerIndex] = '';
+
+    if (maxLengthAnswers && getInnerText(heading).length > maxLengthAnswers) {
+      columnsErrors[headerIndex] += `Content length should be maximum ${maxLengthQuestionsHeading} characters. `;
+    }
+
+    if (!heading) {
+      columnsErrors[headerIndex] += 'Content should not be empty.';
     } else {
-      const identicalAnswer = validateHeaders.some((h, index) => {
-        if (h === heading) {
-          return validateHeaders.indexOf(h) !== index;
-        }
-      });
+      // check for identical content with the previous headers
+      const identicalAnswer = headersContent.slice(0, index).some((head) => head === heading);
 
       if (identicalAnswer) {
-        columnsErrors[index + 1] = 'Content should be unique.';
+        columnsErrors[index + 1] += 'Content should be unique.';
       }
     }
   });
 
-  let hasRowErrors = false;
-  Object.entries(rowsErrors).forEach(([, rowError]) => {
-    if (rowError.length) {
-      hasRowErrors = true;
-    }
-  });
+  const hasRowErrors = Object.values(rowsErrors).some((error) => (error || '').length);
 
   if (hasRowErrors) {
     errors.rowsErrors = rowsErrors;
-    let noCorrectAnswer = false;
 
-    Object.entries(rowsErrors).forEach(([, rowError]) => {
-      if ((rowError || '').includes('No correct response defined.')) {
-        noCorrectAnswer = true;
-      }
-    });
+    const noCorrectAnswer = Object.values(rowsErrors).some((error) =>
+      (error || '').includes('No correct response defined.'),
+    );
 
     if (noCorrectAnswer) {
       errors.correctResponseError =
