@@ -128,6 +128,8 @@ export class Main extends React.Component {
   render() {
     const { classes, model, configuration, onConfigurationChanged, imageSupport, uploadSoundSupport } = this.props;
     const {
+      addChoice = {},
+      baseInputConfiguration = {},
       contentDimensions = {},
       duplicates = {},
       prompt = {},
@@ -183,6 +185,15 @@ export class Main extends React.Component {
       rubricEnabled: withRubric?.settings && toggle(withRubric?.label),
     };
 
+    const getPluginProps = (props) => {
+      return Object.assign(
+        {
+          ...baseInputConfiguration,
+        },
+        props || {},
+      );
+    };
+
     return (
       <layout.ConfigLayout
         dimensions={contentDimensions}
@@ -209,6 +220,7 @@ export class Main extends React.Component {
               imageSupport={imageSupport}
               nonEmpty={false}
               toolbarOpts={toolbarOpts}
+              pluginProps={getPluginProps(teacherInstructions?.inputConfiguration)}
               spellCheck={spellCheckEnabled}
               maxImageWidth={(maxImageWidth && maxImageWidth.teacherInstructions) || defaultImageMaxWidth}
               maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
@@ -229,6 +241,7 @@ export class Main extends React.Component {
               nonEmpty={false}
               disableUnderline
               toolbarOpts={toolbarOpts}
+              pluginProps={getPluginProps(prompt?.inputConfiguration)}
               spellCheck={spellCheckEnabled}
               maxImageWidth={defaultImageMaxWidth}
               maxImageHeight={defaultImageMaxHeight}
@@ -287,6 +300,7 @@ export class Main extends React.Component {
           maxChoices={maxChoices}
           uploadSoundSupport={uploadSoundSupport}
           mathMlOptions={mathMlOptions}
+          pluginProps={getPluginProps(addChoice?.inputConfiguration)}
         />
 
         {rationaleEnabled && (
@@ -297,6 +311,7 @@ export class Main extends React.Component {
               onChange={this.onRationaleChanged}
               imageSupport={imageSupport}
               toolbarOpts={toolbarOpts}
+              pluginProps={getPluginProps(rationale?.inputConfiguration)}
               spellCheck={spellCheckEnabled}
               maxImageWidth={(maxImageWidth && maxImageWidth.rationale) || defaultImageMaxWidth}
               maxImageHeight={(maxImageHeight && maxImageHeight.rationale) || defaultImageMaxHeight}

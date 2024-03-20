@@ -15,6 +15,11 @@ export default {
     toolbarEditorPosition: 'bottom',
   },
   configuration: {
+    baseInputConfiguration: {
+      audio: { disabled: false },
+      video: { disabled: false },
+      image: { disabled: false },
+    },
     spellCheck: {
       label: 'Spellcheck',
       settings: false,
@@ -27,6 +32,18 @@ export default {
     prompt: {
       settings: true,
       label: 'Prompt',
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
+    },
+    addChoice: {
+      inputConfiguration: {
+        audio: { disabled: true },
+        video: { disabled: true },
+        image: { disabled: false },
+      },
     },
     duplicates: {
       settings: true,
@@ -43,11 +60,21 @@ export default {
     rationale: {
       settings: true,
       label: 'Rationale',
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
     },
     settingsPanelDisabled: false,
     teacherInstructions: {
       settings: true,
       label: 'Teacher Instructions',
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
     },
     minChoices: 2,
     maxResponseAreas: 10,

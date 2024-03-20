@@ -6,7 +6,9 @@ import {
   ConfigureMathMLProp,
   ConfigureMaxImageDimensionsProp,
   ConfigureProp,
-  ConfigurePropWithEnabled
+  ConfigurePropWithEnabled,
+  EditableHtmlConfigureProp,
+  EditableHtmlPluginConfigure,
 } from '../ConfigurationProp';
 
 export interface Choice {
@@ -117,6 +119,12 @@ export interface DragInTheBlankPie extends PieModel {
  */
 export interface DragInTheBlankConfigure extends PromptConfig, CommonConfigSettings {
   /**
+   * Base editable html input configuration regarding plugins that are enabled/disabled
+   * E.g. audio, video, image
+   */
+  baseInputConfiguration?: EditableHtmlConfigureProp;
+
+  /**
    * Choices configuration
    */
   choices?: ConfigureProp;
@@ -129,7 +137,7 @@ export interface DragInTheBlankConfigure extends PromptConfig, CommonConfigSetti
   /**
    * Item Stem configuration
    */
-  prompt?: ConfigureProp;
+  prompt?: EditableHtmlPluginConfigure;
 
   /**
    * Indicates if the settings panel is not available
@@ -144,7 +152,7 @@ export interface DragInTheBlankConfigure extends PromptConfig, CommonConfigSetti
   /**
    * Rationale configuration
    */
-  rationale?: ConfigureProp;
+  rationale?: EditableHtmlPluginConfigure;
 
   /**
    * Student Instructions configuration
@@ -154,7 +162,12 @@ export interface DragInTheBlankConfigure extends PromptConfig, CommonConfigSetti
   /**
    * Teacher Instructions configuration
    */
-  teacherInstructions?: ConfigureProp;
+  teacherInstructions?: EditableHtmlPluginConfigure;
+
+  /**
+   * Add choice configuration
+   */
+  addChoice?: EditableHtmlPluginConfigure;
 
   /** Rubric configuration */
   rubric?: ConfigureProp;
