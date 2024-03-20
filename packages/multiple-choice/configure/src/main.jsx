@@ -157,13 +157,10 @@ const Design = withStyles(styles)((props) => {
     maxAnswerChoices = MAX_CHOICES;
   }
 
-  const getPluginProps = (props) => {
-    return Object.assign({
-        ...baseInputConfiguration,
-      },
-      props || {},
-    );
-  };
+  const getPluginProps = (props = {}) => ({
+    ...baseInputConfiguration,
+    ...props,
+  });
 
   const validationMessage = generateValidationMessage(configuration);
   const defaultImageMaxWidth = maxImageWidth && maxImageWidth.prompt;

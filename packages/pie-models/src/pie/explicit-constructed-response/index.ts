@@ -6,7 +6,9 @@ import {
   ConfigureMathMLProp,
   ConfigureMaxImageDimensionsProp,
   ConfigureProp,
-  ConfigurePropWithEnabled
+  ConfigurePropWithEnabled,
+  EditableHtmlConfigureProp,
+  EditableHtmlPluginConfigure,
 } from '../ConfigurationProp';
 
 export interface Choice {
@@ -106,6 +108,12 @@ export interface ExplicitConstructedResponsePie extends PieModel {
  */
 export interface ExplicitConstructedResponseConfigure extends PromptConfig, CommonConfigSettings {
   /**
+   * Base editable html input configuration regarding plugins that are enabled/disabled
+   * E.g. audio, video, image
+   */
+  baseInputConfiguration?: EditableHtmlConfigureProp;
+
+  /**
    * Choices configuration
    */
   choices?: ConfigureProp;
@@ -113,12 +121,12 @@ export interface ExplicitConstructedResponseConfigure extends PromptConfig, Comm
   /**
    * Item Stem configuration
    */
-  prompt?: ConfigureProp;
+  prompt?: EditableHtmlPluginConfigure;
 
   /**
    * Rationale configuration
    */
-  rationale?: ConfigureProp;
+  rationale?: EditableHtmlPluginConfigure;
 
   /**
    * Indicates if the settings panel is not available
@@ -148,7 +156,12 @@ export interface ExplicitConstructedResponseConfigure extends PromptConfig, Comm
   /**
    * Teacher Instructions configuration
    */
-  teacherInstructions?: ConfigureProp;
+  teacherInstructions?: EditableHtmlPluginConfigure;
+
+  /**
+   * Template configuration
+   */
+  template?: EditableHtmlPluginConfigure;
 
   /** Rubric configuration */
   rubric?: ConfigureProp;

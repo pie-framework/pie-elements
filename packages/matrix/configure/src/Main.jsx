@@ -54,14 +54,10 @@ const Design = withStyles(styles)((props) => {
     scoringType: scoringType.settings && radio(scoringType.label, ['auto', 'rubric']),
   };
 
-  const getPluginProps = (props) => {
-    return Object.assign(
-      {
-        ...baseInputConfiguration,
-      },
-      props || {},
-    );
-  };
+  const getPluginProps = (props = {}) => ({
+    ...baseInputConfiguration,
+    ...props,
+  });
 
   return (
     <layout.ConfigLayout

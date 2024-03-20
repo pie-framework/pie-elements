@@ -5,7 +5,6 @@ import isEmpty from 'lodash/isEmpty';
 import pick from 'lodash/pick';
 import throttle from 'lodash/throttle';
 import { EditableHtml, ALL_PLUGINS } from '@pie-lib/pie-toolbox/editable-html';
-// import EditableHtmlNew from 'editable-html';
 import { InputContainer, layout, settings } from '@pie-lib/pie-toolbox/config-ui';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
@@ -263,6 +262,7 @@ export class Main extends React.Component {
     const { classes, model, configuration, onConfigurationChanged, imageSupport, uploadSoundSupport } = this.props;
 
     const {
+      baseInputConfiguration = {},
       contentDimensions = {},
       maxImageWidth = {},
       maxImageHeight = {},
@@ -272,6 +272,7 @@ export class Main extends React.Component {
       playerSpellCheck = {},
       prompt = {},
       rationale = {},
+      template = {},
       settingsPanelDisabled,
       spellCheck = {},
       editSource = {},
@@ -291,10 +292,6 @@ export class Main extends React.Component {
       toolbarEditorPosition,
     } = model || {};
 
-    const choicePlugins = {
-      html: { disabled: !editSource.enabled  },
-    };
-
     const { choicesErrors = {}, responseAreasError } = errors || {};
     const validationMessage = generateValidationMessage(configuration);
 
@@ -310,7 +307,6 @@ export class Main extends React.Component {
       maxLengthPerChoiceEnabled: maxLengthPerChoice.settings && toggle(maxLengthPerChoice.label),
       'language.enabled': language.settings && toggle(language.label, true),
       language: language.settings && language.enabled && dropdown(languageChoices.label, languageChoices.options),
-
     };
     const panelProperties = {
       teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
@@ -321,6 +317,11 @@ export class Main extends React.Component {
       rubricEnabled: withRubric?.settings && toggle(withRubric?.label),
       'editSource.enabled': editSource?.settings && toggle(editSource.label, true),
     };
+
+    const getPluginProps = (props = {}) => ({
+      ...baseInputConfiguration,
+      ...props,
+    });
 
     return (
       <layout.ConfigLayout
@@ -348,13 +349,13 @@ export class Main extends React.Component {
               imageSupport={imageSupport}
               nonEmpty={false}
               toolbarOpts={toolbarOpts}
+              pluginProps={getPluginProps(teacherInstructions?.inputConfiguration)}
               spellCheck={spellCheckEnabled}
               maxImageWidth={(maxImageWidth && maxImageWidth.teacherInstructions) || defaultImageMaxWidth}
               maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
               uploadSoundSupport={uploadSoundSupport}
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               mathMlOptions={mathMlOptions}
-              pluginProps={choicePlugins}
             />
           </InputContainer>
         )}
@@ -369,13 +370,13 @@ export class Main extends React.Component {
               nonEmpty={false}
               disableUnderline
               toolbarOpts={toolbarOpts}
+              pluginProps={getPluginProps(prompt?.inputConfiguration)}
               spellCheck={spellCheckEnabled}
               maxImageWidth={defaultImageMaxWidth}
               maxImageHeight={defaultImageMaxHeight}
               uploadSoundSupport={uploadSoundSupport}
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               mathMlOptions={mathMlOptions}
-              pluginProps={choicePlugins}
             />
           </InputContainer>
         )}
@@ -397,7 +398,7 @@ export class Main extends React.Component {
           activePlugins={ALL_PLUGINS}
           toolbarOpts={{ position: 'top' }}
           spellCheck={spellCheckEnabled}
-          pluginProps={choicePlugins}
+          pluginProps={getPluginProps(template?.inputConfiguration)}
           responseAreaProps={{
             type: 'explicit-constructed-response',
             options: {
@@ -459,13 +460,13 @@ export class Main extends React.Component {
               onChange={this.onRationaleChanged}
               imageSupport={imageSupport}
               toolbarOpts={toolbarOpts}
+              pluginProps={getPluginProps(rationale?.inputConfiguration)}
               spellCheck={spellCheckEnabled}
               maxImageWidth={(maxImageWidth && maxImageWidth.rationale) || defaultImageMaxWidth}
               maxImageHeight={(maxImageHeight && maxImageHeight.rationale) || defaultImageMaxHeight}
               uploadSoundSupport={uploadSoundSupport}
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               mathMlOptions={mathMlOptions}
-              pluginProps={choicePlugins}
             />
           </InputContainer>
         )}
