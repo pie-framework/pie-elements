@@ -53,6 +53,7 @@ export default {
         video: { disabled: false },
         image: { disabled: false },
       },
+      required: false,
     },
     scoringType: {
       settings: false,
@@ -70,6 +71,7 @@ export default {
         video: { disabled: false },
         image: { disabled: false },
       },
+      required: false,
     },
     prompt: {
       label: 'Prompt',
@@ -79,6 +81,7 @@ export default {
         video: { disabled: false },
         image: { disabled: false },
       },
+      required: false,
     },
     text: {
       settings: true,

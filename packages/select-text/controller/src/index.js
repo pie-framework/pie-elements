@@ -6,11 +6,14 @@ import defaults from './defaults';
 
 const log = debug('@pie-element:select-text:controller');
 
-const isAnswerSelected = (token, selectedToken) => token && selectedToken && token.correct === true &&
-    !(
-        (token.start === selectedToken.start && token.end === selectedToken.end) ||
-        (token.start === selectedToken.oldStart && token.end === selectedToken.oldEnd)
-    );
+const isAnswerSelected = (token, selectedToken) =>
+  token &&
+  selectedToken &&
+  token.correct === true &&
+  !(
+    (token.start === selectedToken.start && token.end === selectedToken.end) ||
+    (token.start === selectedToken.oldStart && token.end === selectedToken.oldEnd)
+  );
 
 const buildTokens = (tokens, selectedTokens, evaluateMode) => {
   tokens = tokens || [];
@@ -189,11 +192,23 @@ export const createCorrectResponseSession = (question, env) => {
   });
 };
 
+// remove all html tags
+const getInnerText = (html) => (html || '').replaceAll(/<[^>]*>/g, '');
+
+// remove all html tags except img and iframe
+const getContent = (html) => (html || '').replace(/(<(?!img|iframe)([^>]+)>)/gi, '');
+
 export const validate = (model = {}, config = {}) => {
   const { tokens } = model;
   const { minTokens = 2, maxTokens, maxSelections } = config;
   const errors = {};
   const nbOfTokens = (tokens || []).length;
+
+  ['teacherInstructions', 'prompt', 'rationale'].forEach((field) => {
+    if (config[field]?.required && !getContent(model[field])) {
+      errors[field] = 'This field is required.';
+    }
+  });
 
   const nbOfSelections = (tokens || []).reduce((acc, token) => (token.correct ? acc + 1 : acc), 0);
 
