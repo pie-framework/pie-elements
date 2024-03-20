@@ -6,7 +6,8 @@ import {
   ConfigureLanguageOptionsProp,
   ConfigureMathMLProp,
   ConfigureProp,
-  ConfigurePropWithEnabled
+  ConfigurePropWithEnabled,
+  ConfigureRequiredProp,
 } from '../ConfigurationProp';
 
 export interface Choice {
@@ -183,7 +184,7 @@ export interface PlacementOrderingConfigure extends PromptConfig, CommonConfigSe
   /**
    * Item Stem configuration
    */
-  prompt?: ConfigureProp;
+  prompt?: ConfigureRequiredProp;
 
   /**
    * Lock Choice Order configuration
@@ -213,7 +214,7 @@ export interface PlacementOrderingConfigure extends PromptConfig, CommonConfigSe
   /**
    * Rationale configuration
    */
-  rationale?: ConfigureProp;
+  rationale?: ConfigureRequiredProp;
 
   /**
    * Configuration for the author's spellcheck
@@ -246,7 +247,7 @@ export interface PlacementOrderingConfigure extends PromptConfig, CommonConfigSe
   /**
    * Teacher Instructions configuration
    */
-  teacherInstructions?: ConfigureProp;
+  teacherInstructions?: ConfigureRequiredProp;
 
   /**
    * Maximum image width for input fields
