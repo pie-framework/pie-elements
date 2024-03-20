@@ -262,7 +262,7 @@ export class Main extends React.Component {
       // Update aria-hidden for .mq-selectable elements
       const selectableElements = this.root.querySelectorAll('.mq-selectable');
       selectableElements.forEach(elem => elem.setAttribute('aria-hidden', 'true'));
-  
+
       // Update aria-label for textarea elements
       const textareaElements = this.root.querySelectorAll('textarea');
       textareaElements.forEach(elem => {
