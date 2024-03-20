@@ -190,9 +190,9 @@ Properties of the `RubricConfigure` object:
 
 Properties of the `baseInputConfiguration` object:
 
-#### `html` (object)
+#### `math` (object)
 
-Properties of the `html` object:
+Properties of the `math` object:
 
 ##### `disabled` (boolean)
 
@@ -326,9 +326,9 @@ Default: `true`
 
 Properties of the `EditableHtmlConfigureProp` object:
 
-### `html` (object)
+### `math` (object)
 
-Properties of the `html` object:
+Properties of the `math` object:
 
 #### `disabled` (boolean)
 
@@ -400,9 +400,9 @@ Properties of the `MultiTraitRubricConfigure` object:
 
 Properties of the `baseInputConfiguration` object:
 
-#### `html` (object)
+#### `math` (object)
 
-Properties of the `html` object:
+Properties of the `math` object:
 
 ##### `disabled` (boolean)
 
@@ -440,9 +440,9 @@ Properties of the `expandedInput` object:
 
 Properties of the `inputConfiguration` object:
 
-##### `html` (object)
+##### `math` (object)
 
-Properties of the `html` object:
+Properties of the `math` object:
 
 ###### `disabled` (boolean)
 
@@ -488,9 +488,9 @@ Properties of the `labelInput` object:
 
 Properties of the `inputConfiguration` object:
 
-##### `html` (object)
+##### `math` (object)
 
-Properties of the `html` object:
+Properties of the `math` object:
 
 ###### `disabled` (boolean)
 
@@ -701,9 +701,9 @@ Properties of the `EditableHtmlPluginConfigure` object:
 
 Properties of the `inputConfiguration` object:
 
-#### `html` (object)
+#### `math` (object)
 
-Properties of the `html` object:
+Properties of the `math` object:
 
 ##### `disabled` (boolean)
 
@@ -821,9 +821,9 @@ Properties of the `rubriclessInstruction` object:
 
 Properties of the `inputConfiguration` object:
 
-##### `html` (object)
+##### `math` (object)
 
-Properties of the `html` object:
+Properties of the `math` object:
 
 ###### `disabled` (boolean)
 

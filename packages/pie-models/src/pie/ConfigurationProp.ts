@@ -21,7 +21,7 @@ export interface EditableHtmlConfigureProp {
   /**
    * Indicates if the html plugin is disabled or not
    */
-  html?: EditableHtmlButtonConfigure;
+  math?: EditableHtmlButtonConfigure;
 
   /**
    * Indicates if the audio plugin is disabled or not
