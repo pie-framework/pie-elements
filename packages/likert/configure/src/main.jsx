@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {EditableHtml} from '@pie-lib/pie-toolbox/editable-html';
+import { EditableHtml } from '@pie-lib/pie-toolbox/editable-html';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -190,6 +190,8 @@ const Design = withStyles(styles)((props) => {
     settingsPanelDisabled,
     spellCheck = {},
     teacherInstructions = {},
+    baseInputConfiguration = {},
+    likertChoice = {},
   } = configuration || {};
   const { spellCheckEnabled, teacherInstructionsEnabled } = model || {};
 
@@ -198,6 +200,15 @@ const Design = withStyles(styles)((props) => {
     teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
     spellCheckEnabled: spellCheck.settings && toggle(spellCheck.label),
     scoringType: scoringType.settings && radio(scoringType.label, ['auto', 'rubric']),
+  };
+
+  const getPluginProps = (props = {}) => {
+    return Object.assign(
+        {
+          ...baseInputConfiguration,
+        },
+        props || {},
+    );
   };
 
   return (
@@ -226,6 +237,7 @@ const Design = withStyles(styles)((props) => {
             nonEmpty={false}
             spellCheck={spellCheckEnabled}
             uploadSoundSupport={uploadSoundSupport}
+            pluginProps={getPluginProps(teacherInstructions?.inputConfiguration)}
           />
         </InputContainer>
       )}
@@ -240,6 +252,7 @@ const Design = withStyles(styles)((props) => {
           spellCheck={spellCheckEnabled}
           disableUnderline
           uploadSoundSupport={uploadSoundSupport}
+          pluginProps={getPluginProps(prompt?.inputConfiguration)}
         />
       </InputContainer>
 
@@ -260,6 +273,7 @@ const Design = withStyles(styles)((props) => {
               imageSupport={imageSupport}
               spellCheck={spellCheckEnabled}
               uploadSoundSupport={uploadSoundSupport}
+              pluginProps={getPluginProps(likertChoice?.inputConfiguration)}
             />
           </InputContainer>
 
