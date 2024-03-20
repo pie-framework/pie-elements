@@ -207,6 +207,14 @@ The schema defines the following additional types:
 
 Properties of the `EditableHtmlConfigureProp` object:
 
+### `math` (object)
+
+Properties of the `math` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
 ### `audio` (object)
 
 Properties of the `audio` object:
@@ -259,6 +267,14 @@ Properties of the `EditableHtmlPluginConfigureRequired` object:
 
 Properties of the `inputConfiguration` object:
 
+#### `math` (object)
+
+Properties of the `math` object:
+
+##### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
 #### `audio` (object)
 
 Properties of the `audio` object:
@@ -302,6 +318,14 @@ Properties of the `EditableHtmlPluginConfigure` object:
 ### `inputConfiguration` (object)
 
 Properties of the `inputConfiguration` object:
+
+#### `math` (object)
+
+Properties of the `math` object:
+
+##### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
 
 #### `audio` (object)
 

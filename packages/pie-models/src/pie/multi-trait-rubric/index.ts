@@ -1,5 +1,10 @@
 import { PieModel } from '../../PieModel';
-import {ConfigureMathMLProp, ConfigureProp} from '../ConfigurationProp';
+import {
+  ConfigureMathMLProp,
+  ConfigureProp,
+  EditableHtmlConfigureProp,
+  EditableHtmlPluginConfigure,
+} from '../ConfigurationProp';
 
 interface Trait {
   /** Trait name */
@@ -72,6 +77,22 @@ interface DialogContent {
  * @additionalProperties false
  */
 export interface MultiTraitRubricConfigure {
+  /**
+   * Base editable html input configuration regarding plugins that are enabled/disabled
+   * E.g. audio, video, image
+   */
+  baseInputConfiguration?: EditableHtmlConfigureProp;
+
+  /**
+   * Expanded input configurations
+   */
+  expandedInput?: EditableHtmlPluginConfigure;
+
+  /**
+   * Label input configurations
+   */
+  labelInput?: EditableHtmlPluginConfigure;
+
   /**
    * Configuration for Excluding Zero Dialog Box
    */

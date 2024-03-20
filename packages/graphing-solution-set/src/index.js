@@ -28,6 +28,9 @@ export default class Graphing extends HTMLElement {
    * */
   set session(s) {
     this._session = s;
+    if (!this._session.answer) {
+      this._session.answer = [];
+    }
     const { answer } = this._session || {};
     const { gssLineData, domain, range } = this._model;
     let section = answer && answer.filter((mark) => mark.type === 'polygon').length > 0;

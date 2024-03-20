@@ -1,5 +1,5 @@
 import { FeedbackConfig, FormSection, InputContainer, settings, layout } from '@pie-lib/pie-toolbox/config-ui';
-import {EditableHtml} from '@pie-lib/pie-toolbox/editable-html';
+import { EditableHtml } from '@pie-lib/pie-toolbox/editable-html';
 import { withStyles } from '@material-ui/core/styles';
 import { withDragContext } from '@pie-lib/pie-toolbox/drag';
 import Info from '@material-ui/icons/Info';
@@ -30,7 +30,6 @@ const getSingularAndPlural = (label) =>
       };
 
 export class Design extends React.Component {
-
   static propTypes = {
     uploadSoundSupport: PropTypes.object,
   };
@@ -134,6 +133,12 @@ export class Design extends React.Component {
       teacherInstructionsEnabled,
       toolbarEditorPosition,
     } = model || {};
+    const {
+      prompt: promptError,
+      rationale: rationaleError,
+      teacherInstructions: teacherInstructionsError,
+    } = errors || {};
+
     const validationMessage = generateValidationMessage();
 
     const { singularLabel = '', pluralLabel = '' } = (choices?.label && getSingularAndPlural(choices.label)) || {};
@@ -198,6 +203,7 @@ export class Design extends React.Component {
               onChange={this.onTeacherInstructionsChange}
               imageSupport={imageSupport}
               nonEmpty={false}
+              error={teacherInstructionsError}
               toolbarOpts={toolbarOpts}
               spellCheck={spellCheckEnabled}
               maxImageWidth={(maxImageWidth && maxImageWidth.teacherInstructions) || defaultImageMaxWidth}
@@ -206,6 +212,7 @@ export class Design extends React.Component {
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               mathMlOptions={mathMlOptions}
             />
+            {teacherInstructionsError && <div className={classes.errorText}>{teacherInstructionsError}</div>}
           </InputContainer>
         )}
 
@@ -216,6 +223,7 @@ export class Design extends React.Component {
               markup={model.prompt}
               onChange={this.onPromptChange}
               imageSupport={imageSupport}
+              error={promptError}
               toolbarOpts={toolbarOpts}
               spellCheck={spellCheckEnabled}
               maxImageWidth={maxImageWidth && maxImageWidth.prompt}
@@ -224,6 +232,7 @@ export class Design extends React.Component {
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               mathMlOptions={mathMlOptions}
             />
+            {promptError && <div className={classes.errorText}>{promptError}</div>}
           </InputContainer>
         )}
 
@@ -314,6 +323,7 @@ export class Design extends React.Component {
               markup={model.rationale || ''}
               onChange={this.onRationaleChange}
               imageSupport={imageSupport}
+              error={rationaleError}
               toolbarOpts={toolbarOpts}
               spellCheck={spellCheckEnabled}
               maxImageWidth={(maxImageWidth && maxImageWidth.rationale) || defaultImageMaxWidth}
@@ -322,6 +332,7 @@ export class Design extends React.Component {
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               mathMlOptions={mathMlOptions}
             />
+            {rationaleError && <div className={classes.errorText}>{rationaleError}</div>}
           </InputContainer>
         )}
 
@@ -377,6 +388,11 @@ export default withDragContext(
     inlineFlexContainer: {
       display: 'inline-flex',
       position: 'absolute',
+    },
+    errorText: {
+      fontSize: theme.typography.fontSize - 2,
+      color: theme.palette.error.main,
+      paddingTop: theme.spacing.unit,
     },
   }))(Design),
 );

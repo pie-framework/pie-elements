@@ -8,6 +8,17 @@ exports[`Render Main Component Match Snapshot 1`] = `
     <Panel
       configuration={
         Object {
+          "baseInputConfiguration": Object {
+            "audio": Object {
+              "disabled": false,
+            },
+            "image": Object {
+              "disabled": false,
+            },
+            "video": Object {
+              "disabled": false,
+            },
+          },
           "dimensions": Object {
             "label": "Text-Entry Display Size",
             "settings": true,

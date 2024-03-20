@@ -28,6 +28,14 @@ Indicates the label for the item that has to be displayed in the Settings Panel
 
 Properties of the `baseInputConfiguration` object:
 
+## `math` (object)
+
+Properties of the `math` object:
+
+### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
 ## `audio` (object)
 
 Properties of the `audio` object:
@@ -59,6 +67,14 @@ Properties of the `choices` object:
 ## `inputConfiguration` (object)
 
 Properties of the `inputConfiguration` object:
+
+### `math` (object)
+
+Properties of the `math` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
 
 ### `audio` (object)
 
@@ -147,6 +163,14 @@ Properties of the `prompt` object:
 ## `inputConfiguration` (object)
 
 Properties of the `inputConfiguration` object:
+
+### `math` (object)
+
+Properties of the `math` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
 
 ### `audio` (object)
 
@@ -248,6 +272,14 @@ Properties of the `rationale` object:
 
 Properties of the `inputConfiguration` object:
 
+### `math` (object)
+
+Properties of the `math` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
 ### `audio` (object)
 
 Properties of the `audio` object:
@@ -316,6 +348,14 @@ Properties of the `teacherInstructions` object:
 
 Properties of the `inputConfiguration` object:
 
+### `math` (object)
+
+Properties of the `math` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
 ### `audio` (object)
 
 Properties of the `audio` object:
@@ -372,6 +412,14 @@ Properties of the `accessibility` object:
 ## `inputConfiguration` (object)
 
 Properties of the `inputConfiguration` object:
+
+### `math` (object)
+
+Properties of the `math` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
 
 ### `audio` (object)
 
@@ -591,6 +639,14 @@ Indicates the label for the item that has to be displayed in the Settings Panel
 
 Properties of the `EditableHtmlConfigureProp` object:
 
+### `math` (object)
+
+Properties of the `math` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
 ### `audio` (object)
 
 Properties of the `audio` object:
@@ -630,6 +686,14 @@ Properties of the `EditableHtmlPluginConfigure` object:
 ### `inputConfiguration` (object)
 
 Properties of the `inputConfiguration` object:
+
+#### `math` (object)
+
+Properties of the `math` object:
+
+##### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
 
 #### `audio` (object)
 

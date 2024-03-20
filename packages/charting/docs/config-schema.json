@@ -7,6 +7,17 @@
       "title": "EditableHtmlConfigureProp",
       "type": "object",
       "properties": {
+        "math": {
+          "title": "EditableHtmlButtonConfigure",
+          "type": "object",
+          "properties": {
+            "disabled": {
+              "description": "Indicates if the plugin is disabled or not",
+              "type": "boolean",
+              "title": "disabled"
+            }
+          }
+        },
         "audio": {
           "title": "EditableHtmlButtonConfigure",
           "type": "object",
@@ -50,6 +61,17 @@
           "title": "EditableHtmlConfigureProp",
           "type": "object",
           "properties": {
+            "math": {
+              "title": "EditableHtmlButtonConfigure",
+              "type": "object",
+              "properties": {
+                "disabled": {
+                  "description": "Indicates if the plugin is disabled or not",
+                  "type": "boolean",
+                  "title": "disabled"
+                }
+              }
+            },
             "audio": {
               "title": "EditableHtmlButtonConfigure",
               "type": "object",
@@ -110,6 +132,17 @@
           "title": "EditableHtmlConfigureProp",
           "type": "object",
           "properties": {
+            "math": {
+              "title": "EditableHtmlButtonConfigure",
+              "type": "object",
+              "properties": {
+                "disabled": {
+                  "description": "Indicates if the plugin is disabled or not",
+                  "type": "boolean",
+                  "title": "disabled"
+                }
+              }
+            },
             "audio": {
               "title": "EditableHtmlButtonConfigure",
               "type": "object",
@@ -280,6 +313,17 @@
           "title": "EditableHtmlConfigureProp",
           "type": "object",
           "properties": {
+            "math": {
+              "title": "EditableHtmlButtonConfigure",
+              "type": "object",
+              "properties": {
+                "disabled": {
+                  "description": "Indicates if the plugin is disabled or not",
+                  "type": "boolean",
+                  "title": "disabled"
+                }
+              }
+            },
             "audio": {
               "title": "EditableHtmlButtonConfigure",
               "type": "object",
@@ -719,6 +763,17 @@
       "title": "EditableHtmlConfigureProp",
       "type": "object",
       "properties": {
+        "math": {
+          "title": "EditableHtmlButtonConfigure",
+          "type": "object",
+          "properties": {
+            "disabled": {
+              "description": "Indicates if the plugin is disabled or not",
+              "type": "boolean",
+              "title": "disabled"
+            }
+          }
+        },
         "audio": {
           "title": "EditableHtmlButtonConfigure",
           "type": "object",
@@ -773,6 +828,17 @@
           "title": "EditableHtmlConfigureProp",
           "type": "object",
           "properties": {
+            "math": {
+              "title": "EditableHtmlButtonConfigure",
+              "type": "object",
+              "properties": {
+                "disabled": {
+                  "description": "Indicates if the plugin is disabled or not",
+                  "type": "boolean",
+                  "title": "disabled"
+                }
+              }
+            },
             "audio": {
               "title": "EditableHtmlButtonConfigure",
               "type": "object",

@@ -13,7 +13,6 @@ const styles = (theme) => ({
 });
 
 class Main extends React.Component {
-
   verifyRubriclessModel = (m, config) => {
     const { rubricless = false } = config || {};
     return rubricless ? (({ points, sampleAnswers, ...rest }) => rest)(m) : m;
@@ -22,6 +21,7 @@ class Main extends React.Component {
   render() {
     const { model, configuration, onConfigurationChanged, onModelChanged } = this.props || {};
     const {
+      baseInputConfiguration = {},
       contentDimensions = {},
       settingsPanelDisabled,
       showExcludeZero = {},
@@ -41,6 +41,15 @@ class Main extends React.Component {
       rubriclessInstructionEnabled: rubricless && rubriclessInstruction.settings && toggle(rubriclessInstruction.label),
     };
 
+    const getPluginProps = (props) => {
+      return Object.assign(
+        {
+          ...baseInputConfiguration,
+        },
+        props || {},
+      );
+    };
+
     return (
       <layout.ConfigLayout
         dimensions={contentDimensions}
@@ -51,6 +60,7 @@ class Main extends React.Component {
             onChangeModel={onModelChanged}
             configuration={configuration}
             onChangeConfiguration={onConfigurationChanged}
+            pluginOpts={getPluginProps(rubriclessInstruction?.inputConfiguration)}
             groups={{
               Properties: panelProperties,
             }}
@@ -58,7 +68,14 @@ class Main extends React.Component {
         }
       >
         <div style={{ maxWidth: width }}>
-          <Authoring value={value} config={configuration} onChange={onModelChanged} mathMlOptions={mathMlOptions} rubricless={rubricless} />
+          <Authoring
+            value={value}
+            config={configuration}
+            onChange={onModelChanged}
+            mathMlOptions={mathMlOptions}
+            rubricless={rubricless}
+            pluginOpts={baseInputConfiguration}
+          />
         </div>
       </layout.ConfigLayout>
     );

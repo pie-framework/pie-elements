@@ -8,6 +8,18 @@ export default {
     maxPointsEnabled: true,
   },
   configuration: {
+    baseInputConfiguration: {
+      audio: { disabled: false },
+      video: { disabled: false },
+      image: { disabled: false },
+    },
+    rubriclessInstruction: {
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
+    },
     showExcludeZero: {
       settings: true,
       label: 'Ability to exclude zero',

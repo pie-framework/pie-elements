@@ -37,14 +37,10 @@ export class Root extends React.Component {
       language: language.settings && language.enabled && dropdown(languageChoices.label, languageChoices.options),
     };
 
-    const getPluginProps = (props) => {
-      return Object.assign(
-        {
-          ...baseInputConfiguration,
-        },
-        props || {},
-      );
-    };
+    const getPluginProps = (props = {}) => ({
+      ...baseInputConfiguration,
+      ...props,
+    });
 
     return (
       <layout.ConfigLayout

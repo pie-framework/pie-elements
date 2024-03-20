@@ -113,14 +113,10 @@ export class Root extends React.Component {
       rubricEnabled: withRubric?.settings && toggle(withRubric?.label),
     };
 
-    const getPluginProps = (props) => {
-      return Object.assign(
-        {
-          ...baseInputConfiguration,
-        },
-        props || {},
-      );
-    };
+    const getPluginProps = (props = {}) => ({
+      ...baseInputConfiguration,
+      ...props,
+    });
 
     return (
       <layout.ConfigLayout

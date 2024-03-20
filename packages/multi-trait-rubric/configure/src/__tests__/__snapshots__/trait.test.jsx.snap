@@ -40,22 +40,7 @@ exports[`Trait snapshot renders 1`] = `
             mathMlOptions={Object {}}
             onChange={[Function]}
             placeholder="Enter Category"
-            pluginProps={
-              Object {
-                "audio": Object {
-                  "disabled": true,
-                },
-                "image": Object {
-                  "disabled": true,
-                },
-                "math": Object {
-                  "disabled": true,
-                },
-                "video": Object {
-                  "disabled": true,
-                },
-              }
-            }
+            pluginProps={Object {}}
           />
         </WithStyles(Component)>
         <WithStyles(Component)
@@ -68,16 +53,7 @@ exports[`Trait snapshot renders 1`] = `
               mathMlOptions={Object {}}
               onChange={[Function]}
               placeholder="Standards"
-              pluginProps={
-                Object {
-                  "image": Object {
-                    "disabled": true,
-                  },
-                  "math": Object {
-                    "disabled": true,
-                  },
-                }
-              }
+              pluginProps={Object {}}
             />
           </WithStyles(Component)>
           <WithStyles(Component)>
@@ -87,16 +63,7 @@ exports[`Trait snapshot renders 1`] = `
               mathMlOptions={Object {}}
               onChange={[Function]}
               placeholder="Enter Description"
-              pluginProps={
-                Object {
-                  "image": Object {
-                    "disabled": true,
-                  },
-                  "math": Object {
-                    "disabled": true,
-                  },
-                }
-              }
+              pluginProps={Object {}}
             />
           </WithStyles(Component)>
           <WithStyles(Component)
@@ -110,16 +77,7 @@ Overall appearance is acceptable or better"
               mathMlOptions={Object {}}
               onChange={[Function]}
               placeholder="Enter Descriptor"
-              pluginProps={
-                Object {
-                  "image": Object {
-                    "disabled": true,
-                  },
-                  "math": Object {
-                    "disabled": true,
-                  },
-                }
-              }
+              pluginProps={Object {}}
             />
           </WithStyles(Component)>
           <WithStyles(Component)
@@ -133,16 +91,7 @@ Overall appearance is distracting to unacceptable"
               mathMlOptions={Object {}}
               onChange={[Function]}
               placeholder="Enter Descriptor"
-              pluginProps={
-                Object {
-                  "image": Object {
-                    "disabled": true,
-                  },
-                  "math": Object {
-                    "disabled": true,
-                  },
-                }
-              }
+              pluginProps={Object {}}
             />
           </WithStyles(Component)>
           <WithStyles(Component)
@@ -154,16 +103,7 @@ Overall appearance is distracting to unacceptable"
               mathMlOptions={Object {}}
               onChange={[Function]}
               placeholder="Enter Descriptor"
-              pluginProps={
-                Object {
-                  "image": Object {
-                    "disabled": true,
-                  },
-                  "math": Object {
-                    "disabled": true,
-                  },
-                }
-              }
+              pluginProps={Object {}}
             />
           </WithStyles(Component)>
         </WithStyles(Component)>
@@ -213,22 +153,7 @@ exports[`Trait snapshot renders with drag and drop 1`] = `
             mathMlOptions={Object {}}
             onChange={[Function]}
             placeholder="Enter Category"
-            pluginProps={
-              Object {
-                "audio": Object {
-                  "disabled": true,
-                },
-                "image": Object {
-                  "disabled": true,
-                },
-                "math": Object {
-                  "disabled": true,
-                },
-                "video": Object {
-                  "disabled": true,
-                },
-              }
-            }
+            pluginProps={Object {}}
           />
         </WithStyles(Component)>
         <WithStyles(Component)
@@ -241,16 +166,7 @@ exports[`Trait snapshot renders with drag and drop 1`] = `
               mathMlOptions={Object {}}
               onChange={[Function]}
               placeholder="Standards"
-              pluginProps={
-                Object {
-                  "image": Object {
-                    "disabled": true,
-                  },
-                  "math": Object {
-                    "disabled": true,
-                  },
-                }
-              }
+              pluginProps={Object {}}
             />
           </WithStyles(Component)>
           <WithStyles(Component)>
@@ -260,16 +176,7 @@ exports[`Trait snapshot renders with drag and drop 1`] = `
               mathMlOptions={Object {}}
               onChange={[Function]}
               placeholder="Enter Description"
-              pluginProps={
-                Object {
-                  "image": Object {
-                    "disabled": true,
-                  },
-                  "math": Object {
-                    "disabled": true,
-                  },
-                }
-              }
+              pluginProps={Object {}}
             />
           </WithStyles(Component)>
           <WithStyles(Component)
@@ -283,16 +190,7 @@ Overall appearance is acceptable or better"
               mathMlOptions={Object {}}
               onChange={[Function]}
               placeholder="Enter Descriptor"
-              pluginProps={
-                Object {
-                  "image": Object {
-                    "disabled": true,
-                  },
-                  "math": Object {
-                    "disabled": true,
-                  },
-                }
-              }
+              pluginProps={Object {}}
             />
           </WithStyles(Component)>
           <WithStyles(Component)
@@ -306,16 +204,7 @@ Overall appearance is distracting to unacceptable"
               mathMlOptions={Object {}}
               onChange={[Function]}
               placeholder="Enter Descriptor"
-              pluginProps={
-                Object {
-                  "image": Object {
-                    "disabled": true,
-                  },
-                  "math": Object {
-                    "disabled": true,
-                  },
-                }
-              }
+              pluginProps={Object {}}
             />
           </WithStyles(Component)>
           <WithStyles(Component)
@@ -327,16 +216,7 @@ Overall appearance is distracting to unacceptable"
               mathMlOptions={Object {}}
               onChange={[Function]}
               placeholder="Enter Descriptor"
-              pluginProps={
-                Object {
-                  "image": Object {
-                    "disabled": true,
-                  },
-                  "math": Object {
-                    "disabled": true,
-                  },
-                }
-              }
+              pluginProps={Object {}}
             />
           </WithStyles(Component)>
         </WithStyles(Component)>
@@ -386,22 +266,7 @@ exports[`Trait snapshot renders without description 1`] = `
             mathMlOptions={Object {}}
             onChange={[Function]}
             placeholder="Enter Category"
-            pluginProps={
-              Object {
-                "audio": Object {
-                  "disabled": true,
-                },
-                "image": Object {
-                  "disabled": true,
-                },
-                "math": Object {
-                  "disabled": true,
-                },
-                "video": Object {
-                  "disabled": true,
-                },
-              }
-            }
+            pluginProps={Object {}}
           />
         </WithStyles(Component)>
         <WithStyles(Component)
@@ -414,16 +279,7 @@ exports[`Trait snapshot renders without description 1`] = `
               mathMlOptions={Object {}}
               onChange={[Function]}
               placeholder="Standards"
-              pluginProps={
-                Object {
-                  "image": Object {
-                    "disabled": true,
-                  },
-                  "math": Object {
-                    "disabled": true,
-                  },
-                }
-              }
+              pluginProps={Object {}}
             />
           </WithStyles(Component)>
           <WithStyles(Component)>
@@ -433,16 +289,7 @@ exports[`Trait snapshot renders without description 1`] = `
               mathMlOptions={Object {}}
               onChange={[Function]}
               placeholder="Enter Description"
-              pluginProps={
-                Object {
-                  "image": Object {
-                    "disabled": true,
-                  },
-                  "math": Object {
-                    "disabled": true,
-                  },
-                }
-              }
+              pluginProps={Object {}}
             />
           </WithStyles(Component)>
           <WithStyles(Component)
@@ -456,16 +303,7 @@ Overall appearance is acceptable or better"
               mathMlOptions={Object {}}
               onChange={[Function]}
               placeholder="Enter Descriptor"
-              pluginProps={
-                Object {
-                  "image": Object {
-                    "disabled": true,
-                  },
-                  "math": Object {
-                    "disabled": true,
-                  },
-                }
-              }
+              pluginProps={Object {}}
             />
           </WithStyles(Component)>
           <WithStyles(Component)
@@ -479,16 +317,7 @@ Overall appearance is distracting to unacceptable"
               mathMlOptions={Object {}}
               onChange={[Function]}
               placeholder="Enter Descriptor"
-              pluginProps={
-                Object {
-                  "image": Object {
-                    "disabled": true,
-                  },
-                  "math": Object {
-                    "disabled": true,
-                  },
-                }
-              }
+              pluginProps={Object {}}
             />
           </WithStyles(Component)>
           <WithStyles(Component)
@@ -500,16 +329,7 @@ Overall appearance is distracting to unacceptable"
               mathMlOptions={Object {}}
               onChange={[Function]}
               placeholder="Enter Descriptor"
-              pluginProps={
-                Object {
-                  "image": Object {
-                    "disabled": true,
-                  },
-                  "math": Object {
-                    "disabled": true,
-                  },
-                }
-              }
+              pluginProps={Object {}}
             />
           </WithStyles(Component)>
         </WithStyles(Component)>
@@ -559,22 +379,7 @@ exports[`Trait snapshot renders without score points values 1`] = `
             mathMlOptions={Object {}}
             onChange={[Function]}
             placeholder="Enter Category"
-            pluginProps={
-              Object {
-                "audio": Object {
-                  "disabled": true,
-                },
-                "image": Object {
-                  "disabled": true,
-                },
-                "math": Object {
-                  "disabled": true,
-                },
-                "video": Object {
-                  "disabled": true,
-                },
-              }
-            }
+            pluginProps={Object {}}
           />
         </WithStyles(Component)>
         <WithStyles(Component)
@@ -587,16 +392,7 @@ exports[`Trait snapshot renders without score points values 1`] = `
               mathMlOptions={Object {}}
               onChange={[Function]}
               placeholder="Standards"
-              pluginProps={
-                Object {
-                  "image": Object {
-                    "disabled": true,
-                  },
-                  "math": Object {
-                    "disabled": true,
-                  },
-                }
-              }
+              pluginProps={Object {}}
             />
           </WithStyles(Component)>
           <WithStyles(Component)>
@@ -606,16 +402,7 @@ exports[`Trait snapshot renders without score points values 1`] = `
               mathMlOptions={Object {}}
               onChange={[Function]}
               placeholder="Enter Description"
-              pluginProps={
-                Object {
-                  "image": Object {
-                    "disabled": true,
-                  },
-                  "math": Object {
-                    "disabled": true,
-                  },
-                }
-              }
+              pluginProps={Object {}}
             />
           </WithStyles(Component)>
         </WithStyles(Component)>
@@ -665,22 +452,7 @@ exports[`Trait snapshot renders without standards 1`] = `
             mathMlOptions={Object {}}
             onChange={[Function]}
             placeholder="Enter Category"
-            pluginProps={
-              Object {
-                "audio": Object {
-                  "disabled": true,
-                },
-                "image": Object {
-                  "disabled": true,
-                },
-                "math": Object {
-                  "disabled": true,
-                },
-                "video": Object {
-                  "disabled": true,
-                },
-              }
-            }
+            pluginProps={Object {}}
           />
         </WithStyles(Component)>
         <WithStyles(Component)
@@ -694,16 +466,7 @@ exports[`Trait snapshot renders without standards 1`] = `
               mathMlOptions={Object {}}
               onChange={[Function]}
               placeholder="Enter Description"
-              pluginProps={
-                Object {
-                  "image": Object {
-                    "disabled": true,
-                  },
-                  "math": Object {
-                    "disabled": true,
-                  },
-                }
-              }
+              pluginProps={Object {}}
             />
           </WithStyles(Component)>
           <WithStyles(Component)
@@ -717,16 +480,7 @@ Overall appearance is acceptable or better"
               mathMlOptions={Object {}}
               onChange={[Function]}
               placeholder="Enter Descriptor"
-              pluginProps={
-                Object {
-                  "image": Object {
-                    "disabled": true,
-                  },
-                  "math": Object {
-                    "disabled": true,
-                  },
-                }
-              }
+              pluginProps={Object {}}
             />
           </WithStyles(Component)>
           <WithStyles(Component)
@@ -740,16 +494,7 @@ Overall appearance is distracting to unacceptable"
               mathMlOptions={Object {}}
               onChange={[Function]}
               placeholder="Enter Descriptor"
-              pluginProps={
-                Object {
-                  "image": Object {
-                    "disabled": true,
-                  },
-                  "math": Object {
-                    "disabled": true,
-                  },
-                }
-              }
+              pluginProps={Object {}}
             />
           </WithStyles(Component)>
           <WithStyles(Component)
@@ -761,16 +506,7 @@ Overall appearance is distracting to unacceptable"
               mathMlOptions={Object {}}
               onChange={[Function]}
               placeholder="Enter Descriptor"
-              pluginProps={
-                Object {
-                  "image": Object {
-                    "disabled": true,
-                  },
-                  "math": Object {
-                    "disabled": true,
-                  },
-                }
-              }
+              pluginProps={Object {}}
             />
           </WithStyles(Component)>
         </WithStyles(Component)>

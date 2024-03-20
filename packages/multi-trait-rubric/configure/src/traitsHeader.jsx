@@ -21,7 +21,6 @@ import {
   HeaderHeight,
   HeaderHeightLarge,
 } from './common';
-import { labelPlugins } from './utils';
 
 const styles = (theme) => ({
   label: {
@@ -111,6 +110,7 @@ export class TraitsHeaderTile extends React.Component {
       mathMlOptions = {},
       errors = {},
       maxMaxPoints,
+      labelPluginProps = {},
     } = this.props;
     const { anchorEl } = this.state;
 
@@ -121,7 +121,7 @@ export class TraitsHeaderTile extends React.Component {
             <SimpleInput
               markup={traitLabel || 'Trait'}
               onChange={onTraitLabelChange}
-              pluginProps={labelPlugins}
+              pluginProps={labelPluginProps}
               spellCheck={spellCheck}
               label="Level Label"
               uploadSoundSupport={uploadSoundSupport}
@@ -132,7 +132,9 @@ export class TraitsHeaderTile extends React.Component {
           <ScaleSettings>
             <div>Scale {scaleIndex + 1}</div>
 
-            {maxPointsEnabled && <MaxPointsPicker maxPoints={maxPoints} maxMaxPoints={maxMaxPoints} onChange={updateMaxPointsFieldValue} />}
+            {maxPointsEnabled && (
+              <MaxPointsPicker maxPoints={maxPoints} maxMaxPoints={maxMaxPoints} onChange={updateMaxPointsFieldValue} />
+            )}
 
             <div>
               <IconButton aria-label="more" aria-controls="long-menu" aria-haspopup="true" onClick={this.handleClick}>
@@ -184,14 +186,13 @@ export class TraitsHeaderTile extends React.Component {
               scoreDescriptor = '';
             }
 
-
             return (
               <Block key={`secondary-block-part-${index}`}>
                 <ScorePoint
                   scorePointsValue={scorePointsValue}
                   error={error}
                   scoreDescriptor={scoreDescriptor}
-                  pluginProps={labelPlugins}
+                  pluginProps={labelPluginProps}
                   showScorePointLabels={showScorePointLabels}
                   onChange={(scorePointLabel) => this.onScorePointLabelChange({ scorePointLabel, value })}
                   alignToRight={remainingSpace < 296 && scorePointsValue < maxPoints} // 296 is the space required for the toolbar
@@ -228,7 +229,8 @@ TraitsHeaderTile.propTypes = {
   showScorePointLabels: PropTypes.bool,
   setSecondaryBlockRef: PropTypes.func,
   uploadSoundSupport: PropTypes.object,
-  maxMaxPoints: PropTypes.number
+  maxMaxPoints: PropTypes.number,
+  labelPluginProps: PropTypes.object,
 };
 
 export default withStyles(styles)(TraitsHeaderTile);

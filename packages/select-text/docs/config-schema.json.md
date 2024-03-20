@@ -6,6 +6,14 @@ The schema defines the following properties:
 
 Properties of the `baseInputConfiguration` object:
 
+## `math` (object)
+
+Properties of the `math` object:
+
+### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
 ## `audio` (object)
 
 Properties of the `audio` object:
@@ -122,6 +130,14 @@ Properties of the `prompt` object:
 
 Properties of the `inputConfiguration` object:
 
+### `math` (object)
+
+Properties of the `math` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
 ### `audio` (object)
 
 Properties of the `audio` object:
@@ -145,6 +161,10 @@ Properties of the `image` object:
 #### `disabled` (boolean)
 
 Indicates if the plugin is disabled or not
+
+## `required` (boolean)
+
+Indicates if the item is required and the value cannot be empty
 
 ## `settings` (boolean)
 
@@ -174,6 +194,14 @@ Properties of the `rationale` object:
 
 Properties of the `inputConfiguration` object:
 
+### `math` (object)
+
+Properties of the `math` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
 ### `audio` (object)
 
 Properties of the `audio` object:
@@ -197,6 +225,10 @@ Properties of the `image` object:
 #### `disabled` (boolean)
 
 Indicates if the plugin is disabled or not
+
+## `required` (boolean)
+
+Indicates if the item is required and the value cannot be empty
 
 ## `settings` (boolean)
 
@@ -254,6 +286,14 @@ Properties of the `teacherInstructions` object:
 
 Properties of the `inputConfiguration` object:
 
+### `math` (object)
+
+Properties of the `math` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
 ### `audio` (object)
 
 Properties of the `audio` object:
@@ -277,6 +317,10 @@ Properties of the `image` object:
 #### `disabled` (boolean)
 
 Indicates if the plugin is disabled or not
+
+## `required` (boolean)
+
+Indicates if the item is required and the value cannot be empty
 
 ## `settings` (boolean)
 
@@ -456,6 +500,14 @@ The schema defines the following additional types:
 
 Properties of the `EditableHtmlConfigureProp` object:
 
+### `math` (object)
+
+Properties of the `math` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
 ### `audio` (object)
 
 Properties of the `audio` object:
@@ -500,13 +552,21 @@ Indicates if the item has to be displayed in the Settings Panel
 
 Indicates the label for the item that has to be displayed in the Settings Panel
 
-## `EditableHtmlPluginConfigure` (object)
+## `EditableHtmlPluginConfigureRequired` (object)
 
-Properties of the `EditableHtmlPluginConfigure` object:
+Properties of the `EditableHtmlPluginConfigureRequired` object:
 
 ### `inputConfiguration` (object)
 
 Properties of the `inputConfiguration` object:
+
+#### `math` (object)
+
+Properties of the `math` object:
+
+##### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
 
 #### `audio` (object)
 
@@ -531,6 +591,10 @@ Properties of the `image` object:
 ##### `disabled` (boolean)
 
 Indicates if the plugin is disabled or not
+
+### `required` (boolean)
+
+Indicates if the item is required and the value cannot be empty
 
 ### `settings` (boolean)
 
