@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.4.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@7.4.0...@pie-element/match@7.4.1) (2024-03-21)
+
+
+### Bug Fixes
+
+* **match:** exclude column errors if no error occurred PD-3570 ([c0c16fa](https://github.com/pie-framework/pie-elements/commit/c0c16facf76906c4d3510eb9793f631790d35af7))
+
+
+
+
+
 # [7.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@7.3.0...@pie-element/match@7.4.0) (2024-03-20)
 
 
