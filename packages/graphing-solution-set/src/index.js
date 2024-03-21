@@ -115,6 +115,7 @@ export default class Graphing extends HTMLElement {
   setGssData = (gssData, session) => {
     this._model.gssData = gssData;
     this._session = session;
+    this.dispatchEvent(new SessionChangedEvent(this.tagName.toLowerCase(), this.isComplete(this._session.answer)));
     this._render();
   };
 
