@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-solution-set@1.2.0...@pie-element/graphing-solution-set@1.2.1) (2024-03-21)
+
+
+### Bug Fixes
+
+* **graphing-solution-set:** Fixed issue with session change event. ([ccfc6cb](https://github.com/pie-framework/pie-elements/commit/ccfc6cb9d009fee7a8fec98097f37c3787815d26))
+
+
+
+
+
 # [1.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-solution-set@1.1.2...@pie-element/graphing-solution-set@1.2.0) (2024-03-20)
 
 
