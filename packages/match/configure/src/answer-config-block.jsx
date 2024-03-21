@@ -70,11 +70,16 @@ const styles = (theme) => ({
   marginBottom: {
     marginBottom: theme.typography.fontSize - 2 + theme.spacing.unit,
   },
-  errorText: {
+  columnErrorText: {
     fontSize: theme.typography.fontSize - 2,
     color: theme.palette.error.main,
     paddingTop: `${theme.spacing.unit}px !important`,
     width: 'fit-content !important',
+  },
+  errorText: {
+    fontSize: theme.typography.fontSize - 2,
+    color: theme.palette.error.main,
+    paddingBottom: theme.spacing.unit,
   },
 });
 
@@ -185,9 +190,6 @@ class AnswerConfigBlock extends React.Component {
         <Typography type="body1" component="div">
           Click on the labels to edit or remove. Set the correct answers by clicking each correct answer per row.
         </Typography>
-        {correctResponseError && <div className={classes.errorText}>{correctResponseError}</div>}
-        {noOfRowsError && <div className={classes.errorText}>{noOfRowsError}</div>}
-        {columnsLengthError && <div className={classes.errorText}>{columnsLengthError}</div>}
 
         <div
           className={classes.rowTable}
@@ -215,7 +217,9 @@ class AnswerConfigBlock extends React.Component {
                     languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
                     error={columnsErrors && columnsErrors[idx]}
                   />
-                  {columnsErrors && columnsErrors[idx] && <div className={classes.errorText}>{columnsErrors[idx]}</div>}
+                  {columnsErrors && columnsErrors[idx] && (
+                    <div className={classes.columnErrorText}>{columnsErrors[idx]}</div>
+                  )}
                 </div>
               ))}
             <div className={classes.deleteIcon} />
@@ -243,6 +247,10 @@ class AnswerConfigBlock extends React.Component {
               inputConfiguration={getPluginProps(rows?.inputConfiguration, baseInputConfiguration)}
             />
           ))}
+
+          {correctResponseError && <div className={classes.errorText}>{correctResponseError}</div>}
+          {noOfRowsError && <div className={classes.errorText}>{noOfRowsError}</div>}
+          {columnsLengthError && <div className={classes.errorText}>{columnsLengthError}</div>}
 
           <AddRow onAddClick={onAddRow} />
         </div>

@@ -340,8 +340,7 @@ export const validate = (model = {}, config = {}) => {
   }
 
   const headersContent = (headers || []).map((heading) => getContent(heading));
-  // remove first column since it does not require validation
-  headersContent.shift();
+  headersContent.shift(); // remove first column since it does not require validation
 
   headersContent.forEach((heading, index) => {
     const headerIndex = index + 1; // we need to add 1 because we removed first header from validation
@@ -380,7 +379,9 @@ export const validate = (model = {}, config = {}) => {
     }
   }
 
-  if (!isEmpty(columnsErrors)) {
+  const hasColumnErrors = Object.values(columnsErrors).some((error) => (error || '').length);
+
+  if (hasColumnErrors) {
     errors.columnsErrors = columnsErrors;
   }
 
