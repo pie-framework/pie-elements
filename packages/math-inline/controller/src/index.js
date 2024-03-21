@@ -310,10 +310,23 @@ export const createCorrectResponseSession = (question, env) => {
   }
 };
 
+// remove all html tags
+const getInnerText = (html) => (html || '').replaceAll(/<[^>]*>/g, '');
+
+// remove all html tags except img and iframe
+const getContent = (html) => (html || '').replace(/(<(?!img|iframe)([^>]+)>)/gi, '');
+
 export const validate = (model = {}, config = {}) => {
   const { expression = '', responses, responseType } = model;
   const { maxResponseAreas } = config;
   const responsesErrors = {};
+  const errors = {};
+
+  ['teacherInstructions', 'prompt', 'rationale'].forEach((field) => {
+    if (config[field]?.required && !getContent(model[field])) {
+      errors[field] = 'This field is required.';
+    }
+  });
 
   (responses || []).forEach((response, index) => {
     const { answer } = response;
@@ -342,8 +355,6 @@ export const validate = (model = {}, config = {}) => {
       responsesErrors[index] = { ...responseError, ...alternatesErrors };
     }
   });
-
-  const errors = {};
 
   if (responseType === 'Advanced Multi') {
     const nbOfResponseAreas = (expression.match(/\{\{response\}\}/g) || []).length;

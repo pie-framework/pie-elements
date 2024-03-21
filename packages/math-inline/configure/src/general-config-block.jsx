@@ -358,7 +358,7 @@ class GeneralConfigBlock extends React.Component {
       mathMlOptions = {},
     } = configuration || {};
     const validationMessage = generateValidationMessage(configuration, model);
-    const { responsesErrors, responseAreasError } = errors;
+    const { prompt: promptError, rationale: rationaleError, responsesErrors, responseAreasError } = errors;
 
     const defaultImageMaxWidth = maxImageWidth && maxImageWidth.prompt;
     const defaultImageMaxHeight = maxImageHeight && maxImageHeight.prompt;
@@ -393,6 +393,7 @@ class GeneralConfigBlock extends React.Component {
               onChange={this.onChange('prompt')}
               imageSupport={imageSupport}
               nonEmpty={false}
+              error={promptError}
               toolbarOpts={toolbarOpts}
               pluginProps={getPluginProps(cPrompt?.inputConfiguration, baseInputConfiguration)}
               spellCheck={spellCheckEnabled}
@@ -402,6 +403,7 @@ class GeneralConfigBlock extends React.Component {
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               mathMlOptions={mathMlOptions}
             />
+            {promptError && <div className={classes.errorText}>{promptError}</div>}
           </InputContainer>
         )}
 
@@ -502,6 +504,7 @@ class GeneralConfigBlock extends React.Component {
               onChange={this.onChange('rationale')}
               imageSupport={imageSupport}
               nonEmpty={false}
+              error={rationaleError}
               toolbarOpts={toolbarOpts}
               pluginProps={getPluginProps(cRationale?.inputConfiguration, {
                 ...baseInputConfiguration,
@@ -516,6 +519,7 @@ class GeneralConfigBlock extends React.Component {
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               mathMlOptions={mathMlOptions}
             />
+            {rationaleError && <div className={classes.errorText}>{rationaleError}</div>}
           </InputContainer>
         )}
       </div>
