@@ -2,7 +2,7 @@ import React from 'react';
 import { SessionChangedEvent } from '@pie-framework/pie-player-events';
 import { isSessionComplete } from '..';
 
-jest.mock('@pie-lib/pie-toolbox/math-rendering', () => ({ renderMath: jest.fn() }));
+jest.mock('@pie-lib/pie-toolbox/math-rendering-accessible', () => ({ renderMath: jest.fn() }));
 jest.mock('@pie-element/multiple-choice', () => jest.fn());
 
 const PART_A = 'partA';
