@@ -9,6 +9,7 @@ import {
   ConfigurePropWithEnabled,
   EditableHtmlConfigureProp,
   EditableHtmlPluginConfigure,
+  EditableHtmlPluginConfigureRequired,
 } from '../ConfigurationProp';
 
 /**
@@ -171,7 +172,7 @@ export interface MultipleChoiceConfigure extends PromptConfig, CommonConfigSetti
   /**
    * Configuration for the prompt
    */
-  prompt?: EditableHtmlPluginConfigure;
+  prompt?: EditableHtmlPluginConfigureRequired;
 
   /**
    * Configuration for the author's spellcheck
@@ -201,7 +202,7 @@ export interface MultipleChoiceConfigure extends PromptConfig, CommonConfigSetti
   /**
    * Rationale configuration
    */
-  rationale?: EditableHtmlPluginConfigure;
+  rationale?: EditableHtmlPluginConfigureRequired;
 
   /**
    * Scoring Type configuration
@@ -221,7 +222,7 @@ export interface MultipleChoiceConfigure extends PromptConfig, CommonConfigSetti
   /**
    * Teacher Instructions configuration
    */
-  teacherInstructions?: EditableHtmlPluginConfigure;
+  teacherInstructions?: EditableHtmlPluginConfigureRequired;
 
   /**
    * Indicates if sequential choice labels configuration (currently not used)

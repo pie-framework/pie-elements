@@ -144,7 +144,14 @@ const Design = withStyles(styles)((props) => {
     toolbarEditorPosition,
   } = model || {};
 
-  const { choicesErrors, correctResponseError, answerChoicesError } = errors || {};
+  const {
+    answerChoices: answerChoicesError,
+    choices: choicesErrors,
+    correctResponse: correctResponseError,
+    prompt: promptError,
+    rationale: rationaleErrors,
+    teacherInstructions: teacherInstructionsError,
+  } = errors || {};
   const nrOfColumnsAvailable = choices?.length ? Array.from({ length: choices.length }, (_, i) => `${i + 1}`) : [];
 
   const { baseInputConfiguration = {} } = configuration;
@@ -221,6 +228,7 @@ const Design = withStyles(styles)((props) => {
             onChange={onTeacherInstructionsChanged}
             imageSupport={imageSupport}
             nonEmpty={false}
+            error={teacherInstructionsError}
             toolbarOpts={toolbarOpts}
             pluginProps={getPluginProps(configuration?.teacherInstructions?.inputConfiguration)}
             spellCheck={spellCheckEnabled}
@@ -230,6 +238,7 @@ const Design = withStyles(styles)((props) => {
             languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
             mathMlOptions={mathMlOptions}
           />
+          {teacherInstructionsError && <div className={classes.errorText}>{teacherInstructionsError}</div>}
         </InputContainer>
       )}
 
@@ -242,6 +251,7 @@ const Design = withStyles(styles)((props) => {
             imageSupport={imageSupport}
             nonEmpty={false}
             disableUnderline
+            error={promptError}
             toolbarOpts={toolbarOpts}
             pluginProps={getPluginProps(configuration?.prompt?.inputConfiguration)}
             spellCheck={spellCheckEnabled}
@@ -251,6 +261,7 @@ const Design = withStyles(styles)((props) => {
             languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
             mathMlOptions={mathMlOptions}
           />
+          {promptError && <div className={classes.errorText}>{promptError}</div>}
         </InputContainer>
       )}
 
@@ -302,6 +313,7 @@ const Design = withStyles(styles)((props) => {
                 markup={choice.rationale || ''}
                 onChange={(c) => onChoiceChanged(index, { ...choice, rationale: c })}
                 imageSupport={imageSupport}
+                error={rationaleErrors?.[choice.value] || null}
                 toolbarOpts={toolbarOpts}
                 pluginProps={getPluginProps(configuration?.rationale?.inputConfiguration)}
                 spellCheck={spellCheckEnabled}
@@ -311,6 +323,9 @@ const Design = withStyles(styles)((props) => {
                 languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
                 mathMlOptions={mathMlOptions}
               />
+              {rationaleErrors?.[choice.value] && (
+                <div className={classes.errorText}>{rationaleErrors?.[choice.value]}</div>
+              )}
             </InputContainer>
           )}
 
