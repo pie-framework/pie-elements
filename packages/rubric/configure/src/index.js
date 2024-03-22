@@ -26,6 +26,9 @@ export default class RubricElement extends HTMLElement {
         const validatedModel = nextModel;
         const {maxPoints, excludeZero} = validatedModel;
 
+        validatedModel.points = [...validatedModel.points];
+        validatedModel.sampleAnswers = [...validatedModel.sampleAnswers];
+
         const howManyPointsShouldHave = excludeZero ? maxPoints : maxPoints + 1;
         const howManyPointsDoesItHave = validatedModel.points.length;
 
