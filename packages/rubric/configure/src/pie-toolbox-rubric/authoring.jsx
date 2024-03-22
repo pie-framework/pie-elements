@@ -184,10 +184,7 @@ export class RawAuthoring extends React.Component {
   };
 
   changeMaxPoints = (maxPoints) => {
-    const { value, onChange, rubricless } = this.props;
-    const currentMax = value.points.length - 1;
-
-    log('current', currentMax, 'new: ', maxPoints);
+    const { value, onChange } = this.props;
 
     onChange({ ...value, maxPoints });
   };
