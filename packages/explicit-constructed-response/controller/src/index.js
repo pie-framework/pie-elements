@@ -172,7 +172,7 @@ export function model(question, session, env) {
       displayType: normalizedQuestion.displayType,
       playerSpellCheckEnabled: normalizedQuestion.playerSpellCheckEnabled,
       responseCorrect: env.mode === 'evaluate' ? getScore(normalizedQuestion, session) === 1 : undefined,
-      language: normalizedQuestion.language
+      language: normalizedQuestion.language,
     };
 
     if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
@@ -268,10 +268,23 @@ export const createCorrectResponseSession = (question, env) => {
   });
 };
 
+// remove all html tags
+const getInnerText = (html) => (html || '').replaceAll(/<[^>]*>/g, '');
+
+// remove all html tags except img and iframe
+const getContent = (html) => (html || '').replace(/(<(?!img|iframe)([^>]+)>)/gi, '');
+
 export const validate = (model = {}, config = {}) => {
   const { choices, markup } = model;
   const { maxResponseAreas } = config;
   const allChoicesErrors = {};
+  const errors = {};
+
+  ['teacherInstructions', 'prompt', 'rationale'].forEach((field) => {
+    if (config[field]?.required && !getContent(model[field])) {
+      errors[field] = 'This field is required.';
+    }
+  });
 
   Object.entries(choices || {}).forEach(([key, values]) => {
     const reversedChoices = [...(values || [])].reverse();
@@ -296,17 +309,16 @@ export const validate = (model = {}, config = {}) => {
     }
   });
 
-  const errors = {};
   const nbOfResponseAreas = (markup.match(/\{\{(\d+)\}\}/g) || []).length;
 
   if (nbOfResponseAreas > maxResponseAreas) {
-    errors.responseAreasError = `No more than ${maxResponseAreas} response areas should be defined.`;
+    errors.responseAreas = `No more than ${maxResponseAreas} response areas should be defined.`;
   } else if (nbOfResponseAreas < 1) {
-    errors.responseAreasError = 'There should be at least 1 response area defined.';
+    errors.responseAreas = 'There should be at least 1 response area defined.';
   }
 
   if (!isEmpty(allChoicesErrors)) {
-    errors.choicesErrors = allChoicesErrors;
+    errors.choices = allChoicesErrors;
   }
 
   return errors;
