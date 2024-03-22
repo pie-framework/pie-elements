@@ -27,10 +27,20 @@ const defaultConfig = {
   prompt: {
     settings: true,
     label: 'Prompt',
+    inputConfiguration: {
+      audio: { disabled: false },
+      video: { disabled: false },
+      image: { disabled: false },
+    }
   },
   rationale: {
     settings: true,
     label: 'Rationale',
+    inputConfiguration: {
+      audio: { disabled: false },
+      video: { disabled: false },
+      image: { disabled: false },
+    }
   },
   settingsPanelDisabled: true,
   studentInstructions: {
@@ -40,6 +50,11 @@ const defaultConfig = {
   teacherInstructions: {
     settings: true,
     label: 'Teacher Instructions',
+    inputConfiguration: {
+      audio: { disabled: false },
+      video: { disabled: false },
+      image: { disabled: false },
+    }
   },
   choicesLayout: {
     settings: false,
@@ -68,6 +83,13 @@ const defaultConfig = {
   mathMlOptions: {
     mmlOutput: false,
     mmlEditing: false,
+  },
+  choices: {
+    inputConfiguration: {
+      audio: { disabled: false },
+      video: { disabled: false },
+      image: { disabled: false },
+    },
   },
 };
 
@@ -98,6 +120,11 @@ export default {
     partB: partModel({ prompt: 'Prompt B' }),
   },
   configuration: {
+    baseInputConfiguration: {
+      audio: { disabled: false },
+      video: { disabled: false },
+      image: { disabled: false },
+    },
     partialScoring: {
       label: 'Allow Partial Scoring',
       // this will turn off partial scoring toggle in the settings tab by default for the interaction
