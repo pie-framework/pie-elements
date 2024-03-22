@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.6.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-configure@3.6.0...@pie-element/multi-trait-rubric-configure@3.6.1) (2024-03-22)
+
+
+### Bug Fixes
+
+* instead if updating scales when maxPoints change (in multiple places), add a validation function that does that PD-3574 ([9a0fac2](https://github.com/pie-framework/pie-elements/commit/9a0fac228c1d7115f94cdc88021989544e6f7a43))
+
+
+
+
+
 # [3.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-configure@3.5.0...@pie-element/multi-trait-rubric-configure@3.6.0) (2024-03-20)
 
 
