@@ -21,10 +21,13 @@ export default class MultiTraitRubricElement extends HTMLElement {
     const { scales, excludeZero } = validatedModel;
 
     (scales || []).forEach(scale => {
-      const { maxPoints, scorePointsLabels, traits } = scale || {};
+      const { maxPoints } = scale || {};
+
+      scale.scorePointsLabels = [ ...scale.scorePointsLabels ];
+      scale.traits = [ ...scale.traits ];
 
       const howManyScorePointLabelsShouldHave = excludeZero ? maxPoints : maxPoints + 1;
-      const howManyScorePointLabelsItHas = scorePointsLabels.length;
+      const howManyScorePointLabelsItHas = scale.scorePointsLabels.length;
 
       if (howManyScorePointLabelsItHas !== howManyScorePointLabelsShouldHave) {
         if (howManyScorePointLabelsItHas < howManyScorePointLabelsShouldHave) {
@@ -32,14 +35,14 @@ export default class MultiTraitRubricElement extends HTMLElement {
             scale.scorePointsLabels.push('');
           }
         } else {
-          scale.scorePointsLabels = scorePointsLabels.slice(0, howManyScorePointLabelsShouldHave);
+          scale.scorePointsLabels = scale.scorePointsLabels.slice(0, howManyScorePointLabelsShouldHave);
         }
       }
 
-      (traits || []).forEach(trait => {
-        const { scorePointsDescriptors } = trait || {};
+      (scale.traits || []).forEach(trait => {
+        trait.scorePointsDescriptors = [ ...trait.scorePointsDescriptors ];
 
-        const howManyScorePointDescriptorsItHas = scorePointsDescriptors.length;
+        const howManyScorePointDescriptorsItHas = trait.scorePointsDescriptors.length;
 
         if (howManyScorePointDescriptorsItHas !== howManyScorePointLabelsShouldHave) {
           if (howManyScorePointDescriptorsItHas < howManyScorePointLabelsShouldHave) {
@@ -47,7 +50,7 @@ export default class MultiTraitRubricElement extends HTMLElement {
               trait.scorePointsDescriptors.push('');
             }
           } else {
-            trait.scorePointsDescriptors = scorePointsDescriptors.slice(0, howManyScorePointLabelsShouldHave);
+            trait.scorePointsDescriptors = trait.scorePointsDescriptors.slice(0, howManyScorePointLabelsShouldHave);
           }
         }
       });
