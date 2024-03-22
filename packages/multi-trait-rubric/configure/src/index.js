@@ -16,8 +16,48 @@ export default class MultiTraitRubricElement extends HTMLElement {
     this._configuration = configurationWithDefaults();
   }
 
+  validateModel = (m) => {
+    const validatedModel = m;
+    const { scales, excludeZero } = validatedModel;
+
+    (scales || []).forEach(scale => {
+      const { maxPoints, scorePointsLabels, traits } = scale || {};
+
+      const howManyScorePointLabelsShouldHave = excludeZero ? maxPoints : maxPoints + 1;
+      const howManyScorePointLabelsItHas = scorePointsLabels.length;
+
+      if (howManyScorePointLabelsItHas !== howManyScorePointLabelsShouldHave) {
+        if (howManyScorePointLabelsItHas < howManyScorePointLabelsShouldHave) {
+          for (let i = 0; i< howManyScorePointLabelsShouldHave - howManyScorePointLabelsItHas; i++) {
+            scale.scorePointsLabels.push('');
+          }
+        } else {
+          scale.scorePointsLabels = scorePointsLabels.slice(0, howManyScorePointLabelsShouldHave);
+        }
+      }
+
+      (traits || []).forEach(trait => {
+        const { scorePointsDescriptors } = trait || {};
+
+        const howManyScorePointDescriptorsItHas = scorePointsDescriptors.length;
+
+        if (howManyScorePointDescriptorsItHas !== howManyScorePointLabelsShouldHave) {
+          if (howManyScorePointDescriptorsItHas < howManyScorePointLabelsShouldHave) {
+            for (let i = 0; i< howManyScorePointLabelsShouldHave - howManyScorePointDescriptorsItHas; i++) {
+              trait.scorePointsDescriptors.push('');
+            }
+          } else {
+            trait.scorePointsDescriptors = scorePointsDescriptors.slice(0, howManyScorePointLabelsShouldHave);
+          }
+        }
+      });
+    });
+
+    return validatedModel;
+  };
+
   set model(m) {
-    this._model = modelWithDefaults(m);
+    this._model = this.validateModel(modelWithDefaults(m));
     this._render();
   }
 
@@ -27,7 +67,7 @@ export default class MultiTraitRubricElement extends HTMLElement {
   }
 
   onModelChanged = (m) => {
-    this._model = modelWithDefaults(m);
+    this._model = this.validateModel(modelWithDefaults(m));
     this._render();
     this.dispatchEvent(new ModelUpdatedEvent(this._model, false));
   };
@@ -47,6 +87,7 @@ export default class MultiTraitRubricElement extends HTMLElement {
   }
 
   _render() {
+    console.log('THE MODEL', this._model);
     if (this._model) {
       let element = React.createElement(Main, {
         model: this._model,
