@@ -91,6 +91,11 @@ const defaultConfig = {
       image: { disabled: false },
     },
   },
+  baseInputConfiguration: {
+    audio: { disabled: false },
+    video: { disabled: false },
+    image: { disabled: false },
+  },
 };
 
 const partModel = (base) => ({
