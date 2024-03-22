@@ -38,12 +38,12 @@ export default class RubricElement extends HTMLElement {
         if (howManyPointsDoesItHave < howManyPointsShouldHave) {
             if (excludeZeroChanged && !excludeZero) {
                 validatedModel.points = ['', ...validatedModel.points];
-                validatedModel.sampleAnswers = ['', ...validatedModel.sampleAnswers];
+                validatedModel.sampleAnswers = [null, ...validatedModel.sampleAnswers];
             }
             if (maxPointsChanged) {
                 for (let i = 0; i < howManyPointsShouldHave - howManyPointsDoesItHave; i++) {
                     validatedModel.points.push('');
-                    validatedModel.sampleAnswers.push('');
+                    validatedModel.sampleAnswers.push(null);
                 }
             }
 
