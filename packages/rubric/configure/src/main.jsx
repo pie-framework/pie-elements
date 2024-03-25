@@ -1,5 +1,5 @@
 import React from 'react';
-import { Authoring } from '@pie-lib/pie-toolbox/rubric';
+import { Authoring } from './pie-toolbox-rubric/index';
 import { withStyles } from '@material-ui/core/styles';
 import { layout, settings } from '@pie-lib/pie-toolbox/config-ui';
 
