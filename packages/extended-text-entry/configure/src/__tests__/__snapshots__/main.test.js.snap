@@ -61,6 +61,7 @@ exports[`Render Main Component Match Snapshot 1`] = `
           },
           "prompt": Object {
             "label": "Prompt",
+            "required": true,
             "settings": true,
           },
           "settingsPanelDisabled": false,
@@ -85,6 +86,7 @@ exports[`Render Main Component Match Snapshot 1`] = `
           },
           "teacherInstructions": Object {
             "label": "Teacher Instructions",
+            "required": true,
             "settings": true,
           },
           "withRubric": Object {

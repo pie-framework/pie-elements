@@ -75,10 +75,12 @@ export default {
     prompt: {
       settings: true,
       label: 'Prompt',
+      required: false,
     },
     teacherInstructions: {
       settings: true,
       label: 'Teacher Instructions',
+      required: false,
     },
     maxImageWidth: {
       teacherInstructions: 300,

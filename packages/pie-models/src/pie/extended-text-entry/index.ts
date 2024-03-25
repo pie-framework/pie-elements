@@ -6,7 +6,9 @@ import {
   ConfigureProp,
   ConfigurePropWithEnabled,
   ConfigureMaxImageDimensionsProp,
-  ConfigureWithForceProp, ConfigureMathMLProp,
+  ConfigureWithForceProp,
+  ConfigureMathMLProp,
+  ConfigureRequiredProp,
 } from '../ConfigurationProp';
 
 interface Dimensions {
@@ -135,6 +137,11 @@ export interface ExtendedTextEntryConfigure extends PromptConfig, CommonConfigSe
   mathInput?: ConfigureProp;
 
   /**
+   * Prompt configuration
+   */
+  prompt?: ConfigureRequiredProp;
+
+  /**
    * Indicates if the settings panel is not available
    */
   settingsPanelDisabled?: boolean;
@@ -162,7 +169,7 @@ export interface ExtendedTextEntryConfigure extends PromptConfig, CommonConfigSe
   /**
    * Teacher Instructions configuration
    */
-  teacherInstructions?: ConfigureProp;
+  teacherInstructions?: ConfigureRequiredProp;
 
   /**
    * Configuration for the author's spellcheck

@@ -26,6 +26,22 @@ Indicates if the item has to be displayed in the Settings Panel
 
 Indicates the label for the item that has to be displayed in the Settings Panel
 
+# `prompt` (object)
+
+Properties of the `prompt` object:
+
+## `required` (boolean)
+
+Indicates if the item is required and the value cannot be empty
+
+## `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+## `label` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
+
 # `settingsPanelDisabled` (boolean)
 
 Indicates if the settings panel is not available
@@ -86,6 +102,10 @@ Indicates the label for the item that has to be displayed in the Settings Panel
 # `teacherInstructions` (object)
 
 Properties of the `teacherInstructions` object:
+
+## `required` (boolean)
+
+Indicates if the item is required and the value cannot be empty
 
 ## `settings` (boolean)
 
@@ -255,6 +275,22 @@ The schema defines the following additional types:
 ## `ConfigureProp` (object)
 
 Properties of the `ConfigureProp` object:
+
+### `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+### `label` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
+
+## `ConfigureRequiredProp` (object)
+
+Properties of the `ConfigureRequiredProp` object:
+
+### `required` (boolean)
+
+Indicates if the item is required and the value cannot be empty
 
 ### `settings` (boolean)
 
