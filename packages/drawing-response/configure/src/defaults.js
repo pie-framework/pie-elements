@@ -36,6 +36,7 @@ export default {
         video: { disabled: false },
         image: { disabled: false },
       },
+      required: false,
     },
     settingsPanelDisabled: false,
     teacherInstructions: {
@@ -46,6 +47,7 @@ export default {
         video: { disabled: false },
         image: { disabled: false },
       },
+      required: false,
     },
     maxImageWidth: {
       teacherInstructions: 300,
