@@ -11,7 +11,6 @@ const MODEL_UPDATED = ModelUpdatedEvent.TYPE;
 const MC_TAG_NAME = 'ebsr-multiple-choice-configure';
 
 class EbsrMCConfigure extends MultipleChoiceConfigure {}
-
 const defineMultipleChoice = () => {
   if (!customElements.get(MC_TAG_NAME)) {
     customElements.define(MC_TAG_NAME, EbsrMCConfigure);

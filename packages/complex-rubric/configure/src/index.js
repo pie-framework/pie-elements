@@ -12,8 +12,7 @@ const MODEL_UPDATED = ModelUpdatedEvent.TYPE;
 const RUBRIC_TAG_NAME = 'rubric-configure';
 const MULTI_TRAIT_RUBRIC_TAG_NAME = 'multi-trait-rubric-configure';
 
-class ComplexSimpleRubricConfigure extends RubricConfigure {
-}
+class ComplexSimpleRubricConfigure extends RubricConfigure {}
 
 class ComplexMTRConfigure extends MultiTraitRubricConfigure {
 }
