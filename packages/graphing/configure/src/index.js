@@ -10,7 +10,7 @@ import {
 } from '@pie-framework/pie-configure-events';
 import debug from 'debug';
 import defaultValues from './defaults';
-import { renderMath } from '@pie-lib/pie-toolbox/math-rendering';
+import { renderMath } from '@pie-lib/pie-toolbox/math-rendering-accessible';
 import cloneDeep from 'lodash/cloneDeep';
 
 const log = debug('pie-elements:graphing:configure');
