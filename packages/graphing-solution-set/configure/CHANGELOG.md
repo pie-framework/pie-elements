@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-solution-set-configure@1.2.0...@pie-element/graphing-solution-set-configure@1.3.0) (2024-03-26)
+
+
+### Features
+
+* Replace math-rendering package with math-rendering-accessible-package for accessibility PD-1870 ([a416664](https://github.com/pie-framework/pie-elements/commit/a41666452b86426a35e8501ab2a4ac95f327ad53))
+
+
+
+
+
 # [1.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-solution-set-configure@1.1.1...@pie-element/graphing-solution-set-configure@1.2.0) (2024-03-20)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response@7.7.0...@pie-element/drawing-response@7.8.0) (2024-03-26)
+
+
+### Features
+
+* Replace math-rendering package with math-rendering-accessible-package for accessibility PD-1870 ([a416664](https://github.com/pie-framework/pie-elements/commit/a41666452b86426a35e8501ab2a4ac95f327ad53))
+
+
+
+
+
 # [7.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response@7.6.0...@pie-element/drawing-response@7.7.0) (2024-03-20)
 
 
