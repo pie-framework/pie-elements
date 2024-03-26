@@ -1,6 +1,6 @@
 import { PieModel } from '../../PieModel';
 import { PromptConfig } from '../../PromptConfig';
-import { ConfigureProp } from '../ConfigurationProp';
+import { ConfigureProp, ConfigureRequiredProp } from '../ConfigurationProp';
 import { LikertChoice } from '../../LikertChoice';
 import { CommonConfigSettings } from '../../CommonConfigSettings';
 
@@ -35,6 +35,11 @@ export interface LikertPie extends PieModel {
  */
 export interface LikertConfigure extends PromptConfig, CommonConfigSettings {
   /**
+   * Prompt configuration
+   */
+  prompt?: ConfigureRequiredProp;
+
+  /**
    * Indicates if the settings panel is not available
    */
   settingsPanelDisabled?: boolean;
@@ -47,5 +52,5 @@ export interface LikertConfigure extends PromptConfig, CommonConfigSettings {
   /**
    * Teacher Instructions configuration
    */
-  teacherInstructions?: ConfigureProp;
+  teacherInstructions?: ConfigureRequiredProp;
 }

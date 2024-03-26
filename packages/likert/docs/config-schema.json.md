@@ -2,6 +2,22 @@ Config Object for @pie-elements/likert
 
 The schema defines the following properties:
 
+# `prompt` (object)
+
+Properties of the `prompt` object:
+
+## `required` (boolean)
+
+Indicates if the item is required and the value cannot be empty
+
+## `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+## `label` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
+
 # `settingsPanelDisabled` (boolean)
 
 Indicates if the settings panel is not available
@@ -21,6 +37,10 @@ Indicates the label for the item that has to be displayed in the Settings Panel
 # `teacherInstructions` (object)
 
 Properties of the `teacherInstructions` object:
+
+## `required` (boolean)
+
+Indicates if the item is required and the value cannot be empty
 
 ## `settings` (boolean)
 
@@ -87,6 +107,22 @@ Default: `true`
 # Sub Schemas
 
 The schema defines the following additional types:
+
+## `ConfigureRequiredProp` (object)
+
+Properties of the `ConfigureRequiredProp` object:
+
+### `required` (boolean)
+
+Indicates if the item is required and the value cannot be empty
+
+### `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+### `label` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
 
 ## `ConfigureProp` (object)
 

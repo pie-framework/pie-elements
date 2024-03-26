@@ -3,6 +3,27 @@
   "additionalProperties": false,
   "type": "object",
   "properties": {
+    "prompt": {
+      "title": "ConfigureRequiredProp",
+      "type": "object",
+      "properties": {
+        "required": {
+          "description": "Indicates if the item is required and the value cannot be empty",
+          "type": "boolean",
+          "title": "required"
+        },
+        "settings": {
+          "description": "Indicates if the item has to be displayed in the Settings Panel",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+          "type": "string",
+          "title": "label"
+        }
+      }
+    },
     "settingsPanelDisabled": {
       "description": "Indicates if the settings panel is not available",
       "type": "boolean",
@@ -25,9 +46,14 @@
       }
     },
     "teacherInstructions": {
-      "title": "ConfigureProp",
+      "title": "ConfigureRequiredProp",
       "type": "object",
       "properties": {
+        "required": {
+          "description": "Indicates if the item is required and the value cannot be empty",
+          "type": "boolean",
+          "title": "required"
+        },
         "settings": {
           "description": "Indicates if the item has to be displayed in the Settings Panel",
           "type": "boolean",
@@ -104,6 +130,27 @@
     }
   },
   "definitions": {
+    "ConfigureRequiredProp": {
+      "title": "ConfigureRequiredProp",
+      "type": "object",
+      "properties": {
+        "required": {
+          "description": "Indicates if the item is required and the value cannot be empty",
+          "type": "boolean",
+          "title": "required"
+        },
+        "settings": {
+          "description": "Indicates if the item has to be displayed in the Settings Panel",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+          "type": "string",
+          "title": "label"
+        }
+      }
+    },
     "ConfigureProp": {
       "title": "ConfigureProp",
       "type": "object",

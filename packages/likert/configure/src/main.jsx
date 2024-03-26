@@ -64,6 +64,11 @@ const styles = (theme) => ({
     width: '30px',
     paddingTop: theme.spacing.unit * 4,
   },
+  errorText: {
+    fontSize: theme.typography.fontSize - 2,
+    color: theme.palette.error.main,
+    paddingTop: theme.spacing.unit,
+  },
 });
 
 const LikertOrientation = withStyles(styles)((props) => {
@@ -191,7 +196,8 @@ const Design = withStyles(styles)((props) => {
     spellCheck = {},
     teacherInstructions = {},
   } = configuration || {};
-  const { spellCheckEnabled, teacherInstructionsEnabled } = model || {};
+  const { errors = {}, spellCheckEnabled, teacherInstructionsEnabled } = model || {};
+  const { prompt: promptError, teacherInstructions: teacherInstructionsError } = errors;
 
   const valuesMap = buildValuesMap(model);
   const panelProperties = {
@@ -224,9 +230,11 @@ const Design = withStyles(styles)((props) => {
             onChange={onTeacherInstructionsChanged}
             imageSupport={imageSupport}
             nonEmpty={false}
+            error={teacherInstructionsError}
             spellCheck={spellCheckEnabled}
             uploadSoundSupport={uploadSoundSupport}
           />
+          {teacherInstructionsError && <div className={classes.errorText}>{teacherInstructionsError}</div>}
         </InputContainer>
       )}
 
@@ -237,10 +245,12 @@ const Design = withStyles(styles)((props) => {
           onChange={onPromptChanged}
           imageSupport={imageSupport}
           nonEmpty={false}
+          error={promptError}
           spellCheck={spellCheckEnabled}
           disableUnderline
           uploadSoundSupport={uploadSoundSupport}
         />
+        {promptError && <div className={classes.errorText}>{promptError}</div>}
       </InputContainer>
 
       <div className={classes.likertOptionsHolder}>

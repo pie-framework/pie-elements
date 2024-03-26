@@ -14,6 +14,7 @@ export default {
     prompt: {
       settings: true,
       label: 'Prompt',
+      required: false,
     },
     settingsPanelDisabled: false,
     spellCheck: {
@@ -24,6 +25,7 @@ export default {
     teacherInstructions: {
       settings: true,
       label: 'Teacher Instructions',
+      required: false,
     },
   },
 };
