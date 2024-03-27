@@ -61,37 +61,37 @@ class Rubric extends React.Component {
             .reverse()
             .map((desc, index) => {
               index = points.length - index - 1;
+              const pointsLabel = value.excludeZero ? index + 1: index;
+
               return (
-                this.shouldRenderPoint(index, value) && (
                   <React.Fragment key={index}>
                     <ListItem key={`P${index}`}>
                       <ListItemText
-                        className={classes.rubricCol}
-                        primary={<div className={classes.text}>{index === 1 ? `${index} PT` : `${index} PTS`}</div>}
+                          className={classes.rubricCol}
+                          primary={<div className={classes.text}>{pointsLabel === 1 ? `${pointsLabel} PT` : `${pointsLabel} PTS`}</div>}
                       />
 
                       <ListItemText
-                        primary={<div className={classes.text} dangerouslySetInnerHTML={{ __html: desc }} />}
+                          primary={<div className={classes.text} dangerouslySetInnerHTML={{ __html: desc }} />}
                       />
                     </ListItem>
 
                     {sampleAnswers && sampleAnswers[index] && (
-                      <ListItem key={`S${index}`}>
-                        <ListItemText
-                          className={classes.rubricCol}
-                          style={{ marginLeft: '20px' }}
-                          primary={<div className={classes.text}>Sample Answer</div>}
-                        />
+                        <ListItem key={`S${index}`}>
+                          <ListItemText
+                              className={classes.rubricCol}
+                              style={{ marginLeft: '20px' }}
+                              primary={<div className={classes.text}>Sample Answer</div>}
+                          />
 
-                        <ListItemText
-                          primary={
-                            <div className={classes.text} dangerouslySetInnerHTML={{ __html: sampleAnswers[index] }} />
-                          }
-                        />
-                      </ListItem>
+                          <ListItemText
+                              primary={
+                                <div className={classes.text} dangerouslySetInnerHTML={{ __html: sampleAnswers[index] }} />
+                              }
+                          />
+                        </ListItem>
                     )}
                   </React.Fragment>
-                )
               );
             })}
         </List>
