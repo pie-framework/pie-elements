@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.6.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric@3.6.1...@pie-element/rubric@3.6.2) (2024-03-27)
+
+
+### Bug Fixes
+
+* add back changes for PD-1870, that were reverted in previous version ([0cad3b8](https://github.com/pie-framework/pie-elements/commit/0cad3b8f29a123e34098b865190e57b92fbf5ecc))
+
+
+
+
+
 ## [3.6.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric@3.6.0...@pie-element/rubric@3.6.1) (2024-03-27)
 
 
