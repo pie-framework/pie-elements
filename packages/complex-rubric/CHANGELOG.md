@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.6.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@2.6.5...@pie-element/complex-rubric@2.6.6) (2024-03-27)
+
+
+### Bug Fixes
+
+* revert changes made for PD-1870, we'll add them back later ([3e7e73e](https://github.com/pie-framework/pie-elements/commit/3e7e73ecc31de0ae16c59163bad95b6d7a02bb37))
+
+
+
+
+
 ## [2.6.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@2.6.4...@pie-element/complex-rubric@2.6.5) (2024-03-26)
 
 

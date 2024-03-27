@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.5.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric-configure@3.5.3...@pie-element/rubric-configure@3.5.4) (2024-03-27)
+
+
+### Bug Fixes
+
+* revert changes made for PD-1870, we'll add them back later ([3e7e73e](https://github.com/pie-framework/pie-elements/commit/3e7e73ecc31de0ae16c59163bad95b6d7a02bb37))
+
+
+
+
+
 ## [3.5.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric-configure@3.5.2...@pie-element/rubric-configure@3.5.3) (2024-03-26)
 
 **Note:** Version bump only for package @pie-element/rubric-configure

@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.6.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric@3.6.0...@pie-element/rubric@3.6.1) (2024-03-27)
+
+
+### Bug Fixes
+
+* display rubric in player according to last changes (PD-3573) PD-3599 ([f7a9038](https://github.com/pie-framework/pie-elements/commit/f7a9038922a923d9b4d8977ae6c212fae842eac6))
+* revert changes made for PD-1870, we'll add them back later ([3e7e73e](https://github.com/pie-framework/pie-elements/commit/3e7e73ecc31de0ae16c59163bad95b6d7a02bb37))
+
+
+
+
+
 # [3.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric@3.5.2...@pie-element/rubric@3.6.0) (2024-03-26)
 
 

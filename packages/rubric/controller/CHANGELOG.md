@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.5.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric-controller@2.5.1...@pie-element/rubric-controller@2.5.2) (2024-03-27)
+
+
+### Bug Fixes
+
+* revert changes made for PD-1870, we'll add them back later ([3e7e73e](https://github.com/pie-framework/pie-elements/commit/3e7e73ecc31de0ae16c59163bad95b6d7a02bb37))
+
+
+
+
+
 ## [2.5.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric-controller@2.5.0...@pie-element/rubric-controller@2.5.1) (2024-03-26)
 
 **Note:** Version bump only for package @pie-element/rubric-controller
