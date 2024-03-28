@@ -3,6 +3,39 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.5.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric-controller@2.5.3...@pie-element/complex-rubric-controller@2.5.4) (2024-03-28)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3603 ([8fc82ab](https://github.com/pie-framework/pie-elements/commit/8fc82ab19baf45aecb40e4b364a7c307a9840130))
+
+
+
+
+
+## [2.5.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric-controller@2.5.2...@pie-element/complex-rubric-controller@2.5.3) (2024-03-27)
+
+
+### Bug Fixes
+
+* add back changes for PD-1870, that were reverted in previous version ([0cad3b8](https://github.com/pie-framework/pie-elements/commit/0cad3b8f29a123e34098b865190e57b92fbf5ecc))
+
+
+
+
+
+## [2.5.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric-controller@2.5.1...@pie-element/complex-rubric-controller@2.5.2) (2024-03-27)
+
+
+### Bug Fixes
+
+* revert changes made for PD-1870, we'll add them back later ([3e7e73e](https://github.com/pie-framework/pie-elements/commit/3e7e73ecc31de0ae16c59163bad95b6d7a02bb37))
+
+
+
+
+
 ## [2.5.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric-controller@2.5.0...@pie-element/complex-rubric-controller@2.5.1) (2024-03-26)
 
 **Note:** Version bump only for package @pie-element/complex-rubric-controller

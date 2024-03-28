@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@6.7.0...@pie-element/explicit-constructed-response@6.8.0) (2024-03-28)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3603 ([8fc82ab](https://github.com/pie-framework/pie-elements/commit/8fc82ab19baf45aecb40e4b364a7c307a9840130))
+
+
+### Features
+
+* **explicit-constructed-response:** add required fields functionality PD-3583 ([84d8856](https://github.com/pie-framework/pie-elements/commit/84d8856cbc1cf915b4b033c7a4ef9a54014b1dba))
+
+
+
+
+
 # [6.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@6.6.0...@pie-element/explicit-constructed-response@6.7.0) (2024-03-26)
 
 

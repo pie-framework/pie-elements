@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@6.7.1...@pie-element/multiple-choice-configure@6.8.0) (2024-03-28)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3603 ([8fc82ab](https://github.com/pie-framework/pie-elements/commit/8fc82ab19baf45aecb40e4b364a7c307a9840130))
+
+
+### Features
+
+* **multiple-choice:** add required fields functionality PD-3572 ([739f7b1](https://github.com/pie-framework/pie-elements/commit/739f7b188dea00f82f870d6ed0a708256f8f1f83))
+
+
+
+
+
 ## [6.7.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@6.7.0...@pie-element/multiple-choice-configure@6.7.1) (2024-03-26)
 
 **Note:** Version bump only for package @pie-element/multiple-choice-configure

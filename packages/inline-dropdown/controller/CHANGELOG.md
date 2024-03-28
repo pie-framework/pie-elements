@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.5.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-controller@5.5.1...@pie-element/inline-dropdown-controller@5.5.2) (2024-03-28)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3603 ([8fc82ab](https://github.com/pie-framework/pie-elements/commit/8fc82ab19baf45aecb40e4b364a7c307a9840130))
+* update validation to work with images, audio and video content PD-3571 ([60f7594](https://github.com/pie-framework/pie-elements/commit/60f7594e01ea286070b365fc1b8a546da669524d))
+
+
+
+
+
 ## [5.5.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-controller@5.5.0...@pie-element/inline-dropdown-controller@5.5.1) (2024-03-26)
 
 **Note:** Version bump only for package @pie-element/inline-dropdown-controller

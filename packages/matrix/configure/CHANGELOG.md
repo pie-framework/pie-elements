@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.21.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/matrix-configure@0.20.1...@pie-element/matrix-configure@0.21.0) (2024-03-28)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3603 ([8fc82ab](https://github.com/pie-framework/pie-elements/commit/8fc82ab19baf45aecb40e4b364a7c307a9840130))
+
+
+### Features
+
+* **matrix:** add required fields functionality PD-3596 ([356233e](https://github.com/pie-framework/pie-elements/commit/356233ea58c9bc1366b706fa6a86305e5d48bb8f))
+
+
+
+
+
 ## [0.20.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/matrix-configure@0.20.0...@pie-element/matrix-configure@0.20.1) (2024-03-26)
 
 **Note:** Version bump only for package @pie-element/matrix-configure
