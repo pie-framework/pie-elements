@@ -36,9 +36,7 @@ export function model(question, session, env) {
       out.teacherInstructions = questionCamelized.teacherInstructionsEnabled
         ? questionCamelized.teacherInstructions
         : null;
-      out.rationale = questionCamelized.rationale
-        ? questionCamelized.rationale
-        : null;
+      out.rationale = questionCamelized.rationale ? questionCamelized.rationale : null;
     } else {
       out.teacherInstructions = null;
       out.rationale = null;
@@ -60,7 +58,9 @@ export const isResponseCorrect = (responses, session) => {
 
   if (session.answers && totalValidResponses === session.answers.length) {
     session.answers.forEach((answer) => {
-      if (!(responses[answer.containerIndex] && responses[answer.containerIndex].images || []).includes(answer.value)) {
+      if (
+        !((responses[answer.containerIndex] && responses[answer.containerIndex].images) || []).includes(answer.value)
+      ) {
         isCorrect = false;
       }
     });
@@ -72,19 +72,19 @@ export const isResponseCorrect = (responses, session) => {
 
 // This applies for correct responses that have empty values
 const keepNonEmptyResponses = (responses) => {
-  const filtered = responses.filter(response => response.images && response.images.length);
+  const filtered = responses.filter((response) => response.images && response.images.length);
   return cloneDeep(filtered);
 };
 
 // This applies for items that don't support partial scoring.
 const isDefaultOrAltResponseCorrect = (question, session) => {
   const {
-    validation: { altResponses }
+    validation: { altResponses },
   } = question;
   let {
     validation: {
       validResponse: { value },
-    }
+    },
   } = question;
 
   let isCorrect = isResponseCorrect(value, session);
@@ -217,4 +217,22 @@ export const createCorrectResponseSession = (question, env) => {
       resolve(null);
     }
   });
+};
+
+// remove all html tags
+const getInnerText = (html) => (html || '').replaceAll(/<[^>]*>/g, '');
+
+// remove all html tags except img and iframe
+const getContent = (html) => (html || '').replace(/(<(?!img|iframe)([^>]+)>)/gi, '');
+
+export const validate = (model = {}, config = {}) => {
+  const errors = {};
+
+  ['teacherInstructions'].forEach((field) => {
+    if (config[field]?.required && !getContent(model[field])) {
+      errors[field] = 'This field is required.';
+    }
+  });
+
+  return errors;
 };
