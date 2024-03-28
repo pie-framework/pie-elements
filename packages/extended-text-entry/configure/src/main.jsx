@@ -70,6 +70,7 @@ export class Main extends React.Component {
       multiple = {},
       withRubric = {},
       mathMlOptions = {},
+      baseInputConfiguration = {},
     } = configuration || {};
     const { feedbackEnabled, promptEnabled, spellCheckEnabled, teacherInstructionsEnabled, toolbarEditorPosition } =
       model || {};
@@ -118,6 +119,15 @@ export class Main extends React.Component {
       rubricEnabled: withRubric?.settings && toggle(withRubric?.label),
     };
 
+    const getPluginProps = (props) => {
+      return Object.assign(
+          {
+            ...baseInputConfiguration,
+          },
+          props || {},
+      );
+    };
+
     return (
       <layout.ConfigLayout
         dimensions={contentDimensions}
@@ -150,6 +160,7 @@ export class Main extends React.Component {
               uploadSoundSupport={uploadSoundSupport}
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               mathMlOptions={mathMlOptions}
+              pluginProps={getPluginProps(teacherInstructions?.inputConfiguration)}
             />
           </InputContainer>
         )}
@@ -170,6 +181,7 @@ export class Main extends React.Component {
               uploadSoundSupport={uploadSoundSupport}
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               mathMlOptions={mathMlOptions}
+              pluginProps={getPluginProps(prompt?.inputConfiguration)}
             />
           </InputContainer>
         )}

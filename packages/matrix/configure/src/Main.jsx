@@ -23,6 +23,11 @@ const styles = (theme) => ({
     paddingBottom: theme.spacing.unit * 2.5,
     justifyContent: 'space-around',
   },
+  errorText: {
+    fontSize: theme.typography.fontSize - 2,
+    color: theme.palette.error.main,
+    paddingTop: theme.spacing.unit,
+  },
 });
 
 const Design = withStyles(styles)((props) => {
@@ -46,7 +51,8 @@ const Design = withStyles(styles)((props) => {
     spellCheck = {},
     teacherInstructions = {},
   } = configuration || {};
-  const { teacherInstructionsEnabled, spellCheckEnabled } = model || {};
+  const { errors = {}, teacherInstructionsEnabled, spellCheckEnabled } = model || {};
+  const { prompt: promptError, teacherInstructions: teacherInstructionsError } = errors;
 
   const panelProperties = {
     teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
@@ -82,11 +88,13 @@ const Design = withStyles(styles)((props) => {
             markup={model.teacherInstructions || ''}
             onChange={onTeacherInstructionsChanged}
             imageSupport={imageSupport}
+            error={teacherInstructionsError}
             pluginProps={getPluginProps(teacherInstructions?.inputConfiguration)}
             nonEmpty={false}
             spellCheck={spellCheckEnabled}
             uploadSoundSupport={uploadSoundSupport}
           />
+          {teacherInstructionsError && <div className={classes.errorText}>{teacherInstructionsError}</div>}
         </InputContainer>
       )}
 
@@ -96,12 +104,14 @@ const Design = withStyles(styles)((props) => {
           markup={model.prompt}
           onChange={onPromptChanged}
           imageSupport={imageSupport}
+          error={promptError}
           pluginProps={getPluginProps(prompt?.inputConfiguration)}
           nonEmpty={!prompt.settings}
           spellCheck={spellCheckEnabled}
           uploadSoundSupport={uploadSoundSupport}
           disableUnderline
         />
+        {promptError && <div className={classes.errorText}>{promptError}</div>}
       </InputContainer>
 
       <div className={classes.matrixHeaderOptionsHolder}>

@@ -6,7 +6,10 @@ import {
   ConfigureProp,
   ConfigurePropWithEnabled,
   ConfigureMaxImageDimensionsProp,
-  ConfigureWithForceProp, ConfigureMathMLProp,
+  ConfigureWithForceProp,
+  ConfigureMathMLProp,
+  EditableHtmlPluginConfigure,
+  EditableHtmlConfigureProp,
 } from '../ConfigurationProp';
 
 interface Dimensions {
@@ -162,7 +165,12 @@ export interface ExtendedTextEntryConfigure extends PromptConfig, CommonConfigSe
   /**
    * Teacher Instructions configuration
    */
-  teacherInstructions?: ConfigureProp;
+  teacherInstructions?: EditableHtmlPluginConfigure;
+
+  /**
+   * Prompt configuration
+   */
+  prompt?: EditableHtmlPluginConfigure;
 
   /**
    * Configuration for the author's spellcheck
@@ -196,4 +204,10 @@ export interface ExtendedTextEntryConfigure extends PromptConfig, CommonConfigSe
 
   /** Configuration for editable-html */
   mathMlOptions?: ConfigureMathMLProp;
+
+  /**
+   * Base editable html input configuration regarding plugins that are enabled/disabled
+   * E.g. audio, video, image
+   */
+  baseInputConfiguration?: EditableHtmlConfigureProp;
 }

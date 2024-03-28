@@ -296,7 +296,11 @@ export const createCorrectResponseSession = (question, env) => {
   });
 };
 
+// remove all html tags
 const getInnerText = (html) => (html || '').replaceAll(/<[^>]*>/g, '');
+
+// remove all html tags except img and iframe
+const getContent = (html) => (html || '').replace(/(<(?!img|iframe)([^>]+)>)/gi, '');
 
 export const validate = (model = {}, config = {}) => {
   const { graph, correctResponse } = model || {};
@@ -306,8 +310,8 @@ export const validate = (model = {}, config = {}) => {
   const errors = {};
 
   ['teacherInstructions', 'prompt'].forEach((field) => {
-    if (config[field]?.required && !getInnerText(model[field])) {
-      errors[field] = 'This field is required';
+    if (config[field]?.required && !getContent(model[field])) {
+      errors[field] = 'This field is required.';
     }
   });
 

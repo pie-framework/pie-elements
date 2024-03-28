@@ -9,7 +9,7 @@ import {
   ConfigurePropWithEnabled,
   ConfigureLanguageOptionsProp,
   EditableHtmlConfigureProp,
-  EditableHtmlPluginConfigure,
+  EditableHtmlPluginConfigureRequired,
 } from '../ConfigurationProp';
 import { CommonConfigSettings } from '../../CommonConfigSettings';
 
@@ -106,13 +106,13 @@ export interface HotspotConfigure extends PromptConfig, CommonConfigSettings {
   partialScoring?: ConfigureProp;
 
   /** Configuration for rationale */
-  rationale?: EditableHtmlPluginConfigure;
+  rationale?: EditableHtmlPluginConfigureRequired;
 
   /** Configuration for prompt */
-  prompt?: EditableHtmlPluginConfigure;
+  prompt?: EditableHtmlPluginConfigureRequired;
 
   /** Configuration for teacher instructions */
-  teacherInstructions?: EditableHtmlPluginConfigure;
+  teacherInstructions?: EditableHtmlPluginConfigureRequired;
 
   /**
    * Indicates if the settings panel is not available

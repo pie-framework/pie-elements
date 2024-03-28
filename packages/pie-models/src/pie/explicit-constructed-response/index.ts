@@ -9,6 +9,7 @@ import {
   ConfigurePropWithEnabled,
   EditableHtmlConfigureProp,
   EditableHtmlPluginConfigure,
+  EditableHtmlPluginConfigureRequired,
 } from '../ConfigurationProp';
 
 export interface Choice {
@@ -121,12 +122,12 @@ export interface ExplicitConstructedResponseConfigure extends PromptConfig, Comm
   /**
    * Item Stem configuration
    */
-  prompt?: EditableHtmlPluginConfigure;
+  prompt?: EditableHtmlPluginConfigureRequired;
 
   /**
    * Rationale configuration
    */
-  rationale?: EditableHtmlPluginConfigure;
+  rationale?: EditableHtmlPluginConfigureRequired;
 
   /**
    * Indicates if the settings panel is not available
@@ -156,7 +157,7 @@ export interface ExplicitConstructedResponseConfigure extends PromptConfig, Comm
   /**
    * Teacher Instructions configuration
    */
-  teacherInstructions?: EditableHtmlPluginConfigure;
+  teacherInstructions?: EditableHtmlPluginConfigureRequired;
 
   /**
    * Template configuration

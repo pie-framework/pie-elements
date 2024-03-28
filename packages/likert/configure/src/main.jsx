@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {EditableHtml} from '@pie-lib/pie-toolbox/editable-html';
+import { EditableHtml } from '@pie-lib/pie-toolbox/editable-html';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -195,6 +195,8 @@ const Design = withStyles(styles)((props) => {
     settingsPanelDisabled,
     spellCheck = {},
     teacherInstructions = {},
+    baseInputConfiguration = {},
+    likertChoice = {},
   } = configuration || {};
   const { errors = {}, spellCheckEnabled, teacherInstructionsEnabled } = model || {};
   const { prompt: promptError, teacherInstructions: teacherInstructionsError } = errors;
@@ -204,6 +206,15 @@ const Design = withStyles(styles)((props) => {
     teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
     spellCheckEnabled: spellCheck.settings && toggle(spellCheck.label),
     scoringType: scoringType.settings && radio(scoringType.label, ['auto', 'rubric']),
+  };
+
+  const getPluginProps = (props = {}) => {
+    return Object.assign(
+        {
+          ...baseInputConfiguration,
+        },
+        props || {},
+    );
   };
 
   return (
@@ -233,6 +244,7 @@ const Design = withStyles(styles)((props) => {
             error={teacherInstructionsError}
             spellCheck={spellCheckEnabled}
             uploadSoundSupport={uploadSoundSupport}
+            pluginProps={getPluginProps(teacherInstructions?.inputConfiguration)}
           />
           {teacherInstructionsError && <div className={classes.errorText}>{teacherInstructionsError}</div>}
         </InputContainer>
@@ -249,6 +261,7 @@ const Design = withStyles(styles)((props) => {
           spellCheck={spellCheckEnabled}
           disableUnderline
           uploadSoundSupport={uploadSoundSupport}
+          pluginProps={getPluginProps(prompt?.inputConfiguration)}
         />
         {promptError && <div className={classes.errorText}>{promptError}</div>}
       </InputContainer>
@@ -270,6 +283,7 @@ const Design = withStyles(styles)((props) => {
               imageSupport={imageSupport}
               spellCheck={spellCheckEnabled}
               uploadSoundSupport={uploadSoundSupport}
+              pluginProps={getPluginProps(likertChoice?.inputConfiguration)}
             />
           </InputContainer>
 

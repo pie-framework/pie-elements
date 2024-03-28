@@ -75,6 +75,7 @@ export default {
         video: { disabled: false },
         image: { disabled: false },
       },
+      required: false,
     },
     partialScoring: {
       settings: false,
@@ -88,6 +89,7 @@ export default {
         video: { disabled: false },
         image: { disabled: false },
       },
+      required: false,
     },
     settingsPanelDisabled: false,
     spellCheck: {
@@ -113,6 +115,7 @@ export default {
         video: { disabled: false },
         image: { disabled: false },
       },
+      required: false,
     },
     template: {
       inputConfiguration: {

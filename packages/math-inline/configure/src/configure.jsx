@@ -16,6 +16,11 @@ const styles = (theme) => ({
     paddingTop: theme.spacing.unit * 2,
     marginBottom: theme.spacing.unit * 2,
   },
+  errorText: {
+    fontSize: theme.typography.fontSize - 2,
+    color: theme.palette.error.main,
+    paddingTop: theme.spacing.unit,
+  },
 });
 
 export class Configure extends React.Component {
@@ -71,6 +76,7 @@ export class Configure extends React.Component {
       languageChoices = {},
     } = configuration || {};
     const {
+      errors = {},
       feedbackEnabled,
       promptEnabled,
       rationaleEnabled,
@@ -78,6 +84,8 @@ export class Configure extends React.Component {
       teacherInstructionsEnabled,
       toolbarEditorPosition,
     } = model || {};
+
+    const { teacherInstructions: teacherInstructionsError } = errors;
 
     log('[render] model', model);
 
@@ -131,6 +139,7 @@ export class Configure extends React.Component {
               onChange={this.changeTeacherInstructions}
               imageSupport={imageSupport}
               nonEmpty={false}
+              error={teacherInstructionsError}
               toolbarOpts={toolbarOpts}
               pluginProps={getPluginProps(teacherInstructions?.inputConfiguration, baseInputConfiguration)}
               spellCheck={spellCheckEnabled}
@@ -140,6 +149,7 @@ export class Configure extends React.Component {
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               mathMlOptions={mathMlOptions}
             />
+            {teacherInstructionsError && <div className={classes.errorText}>{teacherInstructionsError}</div>}
           </InputContainer>
         )}
 

@@ -27,7 +27,8 @@ export class Root extends React.Component {
       language = {},
       languageChoices = {},
     } = configuration || {};
-    const { spellCheckEnabled } = model || {};
+    const { errors = {}, spellCheckEnabled } = model || {};
+    const { teacherInstructions: teacherInstructionsError } = errors;
 
     const panelProperties = {
       teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
@@ -66,6 +67,7 @@ export class Root extends React.Component {
               onChange={this.onTeacherInstructionsChanged}
               imageSupport={imageSupport}
               nonEmpty={false}
+              error={teacherInstructionsError}
               spellCheck={spellCheckEnabled}
               pluginProps={getPluginProps(teacherInstructions?.inputConfiguration)}
               maxImageWidth={maxImageWidth && maxImageWidth.teacherInstructions}
@@ -74,6 +76,7 @@ export class Root extends React.Component {
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               mathMlOptions={mathMlOptions}
             />
+            {teacherInstructionsError && <div className={classes.errorText}>{teacherInstructionsError}</div>}
           </InputContainer>
         )}
 
@@ -88,6 +91,11 @@ const styles = (theme) => ({
     width: '100%',
     paddingTop: theme.spacing.unit * 2,
     marginBottom: theme.spacing.unit * 2,
+  },
+  errorText: {
+    fontSize: theme.typography.fontSize - 2,
+    color: theme.palette.error.main,
+    paddingTop: theme.spacing.unit,
   },
 });
 

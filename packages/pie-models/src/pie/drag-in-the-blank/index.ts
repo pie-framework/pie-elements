@@ -9,6 +9,7 @@ import {
   ConfigurePropWithEnabled,
   EditableHtmlConfigureProp,
   EditableHtmlPluginConfigure,
+  EditableHtmlPluginConfigureRequired,
 } from '../ConfigurationProp';
 
 export interface Choice {
@@ -137,7 +138,7 @@ export interface DragInTheBlankConfigure extends PromptConfig, CommonConfigSetti
   /**
    * Item Stem configuration
    */
-  prompt?: EditableHtmlPluginConfigure;
+  prompt?: EditableHtmlPluginConfigureRequired;
 
   /**
    * Indicates if the settings panel is not available
@@ -152,7 +153,7 @@ export interface DragInTheBlankConfigure extends PromptConfig, CommonConfigSetti
   /**
    * Rationale configuration
    */
-  rationale?: EditableHtmlPluginConfigure;
+  rationale?: EditableHtmlPluginConfigureRequired;
 
   /**
    * Student Instructions configuration
@@ -162,7 +163,7 @@ export interface DragInTheBlankConfigure extends PromptConfig, CommonConfigSetti
   /**
    * Teacher Instructions configuration
    */
-  teacherInstructions?: EditableHtmlPluginConfigure;
+  teacherInstructions?: EditableHtmlPluginConfigureRequired;
 
   /**
    * Add choice configuration

@@ -7,7 +7,7 @@ import {
   ConfigureMathMLProp,
   ConfigureLanguageOptionsProp,
   EditableHtmlConfigureProp,
-  EditableHtmlPluginConfigure,
+  EditableHtmlPluginConfigureRequired,
 } from '../ConfigurationProp';
 import { PromptConfig } from '../../PromptConfig';
 import { Dimension } from '../../Dimension';
@@ -107,12 +107,12 @@ export interface DrawingResponseConfigure extends PromptConfig, CommonConfigSett
   /**
    * Teacher Instructions configuration
    */
-  teacherInstructions?: EditableHtmlPluginConfigure;
+  teacherInstructions?: EditableHtmlPluginConfigureRequired;
 
   /**
    * Prompt configuration
    */
-  prompt?: EditableHtmlPluginConfigure;
+  prompt?: EditableHtmlPluginConfigureRequired;
 
   /**
    * Maximum image width for input fields

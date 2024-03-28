@@ -4,12 +4,12 @@
     "access": "public"
   },
   "repository": "pie-framework/pie-elements",
-  "version": "2.6.0",
+  "version": "2.7.0",
   "description": "",
   "dependencies": {
     "@material-ui/core": "^3.9.2",
     "@pie-framework/pie-player-events": "^0.1.0",
-    "@pie-lib/pie-toolbox": "1.12.1",
+    "@pie-lib/pie-toolbox": "1.12.2",
     "prop-types": "^15.6.1",
     "react": "^16.8.1",
     "react-dom": "^16.8.1"

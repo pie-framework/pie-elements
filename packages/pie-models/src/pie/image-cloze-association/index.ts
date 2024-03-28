@@ -6,8 +6,8 @@ import {
   ConfigureMaxImageDimensionsProp,
   ConfigurePropWithEnabled,
   ConfigureLanguageOptionsProp,
-  EditableHtmlPluginConfigure,
   EditableHtmlConfigureProp,
+  EditableHtmlPluginConfigureRequired,
 } from '../ConfigurationProp';
 
 enum ChoicesPosition {
@@ -170,7 +170,7 @@ export interface ImageClozeAssociationConfigure extends PromptConfig, CommonConf
   /**
    * Teacher Instructions configuration
    */
-  teacherInstructions?: EditableHtmlPluginConfigure;
+  teacherInstructions?: EditableHtmlPluginConfigureRequired;
 
   /**
    * Rubric configuration - only relevant in environments that use pie-player-components
