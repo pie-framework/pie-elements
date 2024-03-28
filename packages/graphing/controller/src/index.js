@@ -289,7 +289,11 @@ export const createCorrectResponseSession = (question, env) => {
   });
 };
 
+// remove all html tags
 const getInnerText = (html) => (html || '').replaceAll(/<[^>]*>/g, '');
+
+// remove all html tags except img and iframe
+const getContent = (html) => (html || '').replace(/(<(?!img|iframe)([^>]+)>)/gi, '');
 
 export const validate = (model = {}, config = {}) => {
   const { answers, toolbarTools } = model;
@@ -302,8 +306,8 @@ export const validate = (model = {}, config = {}) => {
   }
 
   ['teacherInstructions', 'prompt', 'rationale'].forEach((field) => {
-    if (config[field]?.required && !getInnerText(model[field])) {
-      errors[field] = 'This field is required';
+    if (config[field]?.required && !getContent(model[field])) {
+      errors[field] = 'This field is required.';
     }
   });
 
@@ -311,6 +315,7 @@ export const validate = (model = {}, config = {}) => {
     if (!value.marks.length) {
       correctAnswerErrors[key] = 'At least 1 graph object should be defined.';
     }
+
     // check if all graph objects are correctly defined with respect to root, edge and from, to
     if (value.marks.length > 0) {
       value.marks.forEach((mark) => {
