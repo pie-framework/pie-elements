@@ -60,6 +60,17 @@ exports[`Render Main Component Match Snapshot 1`] = `
             "settings": true,
           },
           "prompt": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": false,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": false,
+              },
+            },
             "label": "Prompt",
             "settings": true,
           },
@@ -84,6 +95,17 @@ exports[`Render Main Component Match Snapshot 1`] = `
             "settings": false,
           },
           "teacherInstructions": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": false,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": false,
+              },
+            },
             "label": "Teacher Instructions",
             "settings": true,
           },
@@ -168,6 +190,19 @@ exports[`Render Main Component Match Snapshot 1`] = `
       nonEmpty={false}
       onChange={[Function]}
       onDone={[Function]}
+      pluginProps={
+        Object {
+          "audio": Object {
+            "disabled": false,
+          },
+          "image": Object {
+            "disabled": false,
+          },
+          "video": Object {
+            "disabled": false,
+          },
+        }
+      }
       spellCheck={true}
       toolbarOpts={
         Object {
@@ -222,6 +257,19 @@ exports[`Render Main Component Match Snapshot 1`] = `
       nonEmpty={false}
       onChange={[Function]}
       onDone={[Function]}
+      pluginProps={
+        Object {
+          "audio": Object {
+            "disabled": false,
+          },
+          "image": Object {
+            "disabled": false,
+          },
+          "video": Object {
+            "disabled": false,
+          },
+        }
+      }
       spellCheck={true}
       toolbarOpts={
         Object {
