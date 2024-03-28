@@ -104,9 +104,59 @@
           }
         },
         "prompt": {
-          "title": "ConfigureProp",
+          "title": "EditableHtmlPluginConfigure",
           "type": "object",
           "properties": {
+            "inputConfiguration": {
+              "title": "EditableHtmlConfigureProp",
+              "type": "object",
+              "properties": {
+                "math": {
+                  "title": "EditableHtmlButtonConfigure",
+                  "type": "object",
+                  "properties": {
+                    "disabled": {
+                      "description": "Indicates if the plugin is disabled or not",
+                      "type": "boolean",
+                      "title": "disabled"
+                    }
+                  }
+                },
+                "audio": {
+                  "title": "EditableHtmlButtonConfigure",
+                  "type": "object",
+                  "properties": {
+                    "disabled": {
+                      "description": "Indicates if the plugin is disabled or not",
+                      "type": "boolean",
+                      "title": "disabled"
+                    }
+                  }
+                },
+                "video": {
+                  "title": "EditableHtmlButtonConfigure",
+                  "type": "object",
+                  "properties": {
+                    "disabled": {
+                      "description": "Indicates if the plugin is disabled or not",
+                      "type": "boolean",
+                      "title": "disabled"
+                    }
+                  }
+                },
+                "image": {
+                  "title": "EditableHtmlButtonConfigure",
+                  "type": "object",
+                  "properties": {
+                    "disabled": {
+                      "description": "Indicates if the plugin is disabled or not",
+                      "type": "boolean",
+                      "title": "disabled"
+                    }
+                  }
+                }
+              }
+            },
             "settings": {
               "description": "Indicates if the item has to be displayed in the Settings Panel",
               "type": "boolean",
@@ -141,9 +191,59 @@
           }
         },
         "rationale": {
-          "title": "ConfigureProp",
+          "title": "EditableHtmlPluginConfigure",
           "type": "object",
           "properties": {
+            "inputConfiguration": {
+              "title": "EditableHtmlConfigureProp",
+              "type": "object",
+              "properties": {
+                "math": {
+                  "title": "EditableHtmlButtonConfigure",
+                  "type": "object",
+                  "properties": {
+                    "disabled": {
+                      "description": "Indicates if the plugin is disabled or not",
+                      "type": "boolean",
+                      "title": "disabled"
+                    }
+                  }
+                },
+                "audio": {
+                  "title": "EditableHtmlButtonConfigure",
+                  "type": "object",
+                  "properties": {
+                    "disabled": {
+                      "description": "Indicates if the plugin is disabled or not",
+                      "type": "boolean",
+                      "title": "disabled"
+                    }
+                  }
+                },
+                "video": {
+                  "title": "EditableHtmlButtonConfigure",
+                  "type": "object",
+                  "properties": {
+                    "disabled": {
+                      "description": "Indicates if the plugin is disabled or not",
+                      "type": "boolean",
+                      "title": "disabled"
+                    }
+                  }
+                },
+                "image": {
+                  "title": "EditableHtmlButtonConfigure",
+                  "type": "object",
+                  "properties": {
+                    "disabled": {
+                      "description": "Indicates if the plugin is disabled or not",
+                      "type": "boolean",
+                      "title": "disabled"
+                    }
+                  }
+                }
+              }
+            },
             "settings": {
               "description": "Indicates if the item has to be displayed in the Settings Panel",
               "type": "boolean",
@@ -173,9 +273,59 @@
           }
         },
         "teacherInstructions": {
-          "title": "ConfigureProp",
+          "title": "EditableHtmlPluginConfigure",
           "type": "object",
           "properties": {
+            "inputConfiguration": {
+              "title": "EditableHtmlConfigureProp",
+              "type": "object",
+              "properties": {
+                "math": {
+                  "title": "EditableHtmlButtonConfigure",
+                  "type": "object",
+                  "properties": {
+                    "disabled": {
+                      "description": "Indicates if the plugin is disabled or not",
+                      "type": "boolean",
+                      "title": "disabled"
+                    }
+                  }
+                },
+                "audio": {
+                  "title": "EditableHtmlButtonConfigure",
+                  "type": "object",
+                  "properties": {
+                    "disabled": {
+                      "description": "Indicates if the plugin is disabled or not",
+                      "type": "boolean",
+                      "title": "disabled"
+                    }
+                  }
+                },
+                "video": {
+                  "title": "EditableHtmlButtonConfigure",
+                  "type": "object",
+                  "properties": {
+                    "disabled": {
+                      "description": "Indicates if the plugin is disabled or not",
+                      "type": "boolean",
+                      "title": "disabled"
+                    }
+                  }
+                },
+                "image": {
+                  "title": "EditableHtmlButtonConfigure",
+                  "type": "object",
+                  "properties": {
+                    "disabled": {
+                      "description": "Indicates if the plugin is disabled or not",
+                      "type": "boolean",
+                      "title": "disabled"
+                    }
+                  }
+                }
+              }
+            },
             "settings": {
               "description": "Indicates if the item has to be displayed in the Settings Panel",
               "type": "boolean",
@@ -295,6 +445,122 @@
               "description": "Indicates if mathML that's already in model should be editable",
               "type": "number",
               "title": "mmlEditing"
+            }
+          }
+        },
+        "baseInputConfiguration": {
+          "title": "EditableHtmlConfigureProp",
+          "type": "object",
+          "properties": {
+            "math": {
+              "title": "EditableHtmlButtonConfigure",
+              "type": "object",
+              "properties": {
+                "disabled": {
+                  "description": "Indicates if the plugin is disabled or not",
+                  "type": "boolean",
+                  "title": "disabled"
+                }
+              }
+            },
+            "audio": {
+              "title": "EditableHtmlButtonConfigure",
+              "type": "object",
+              "properties": {
+                "disabled": {
+                  "description": "Indicates if the plugin is disabled or not",
+                  "type": "boolean",
+                  "title": "disabled"
+                }
+              }
+            },
+            "video": {
+              "title": "EditableHtmlButtonConfigure",
+              "type": "object",
+              "properties": {
+                "disabled": {
+                  "description": "Indicates if the plugin is disabled or not",
+                  "type": "boolean",
+                  "title": "disabled"
+                }
+              }
+            },
+            "image": {
+              "title": "EditableHtmlButtonConfigure",
+              "type": "object",
+              "properties": {
+                "disabled": {
+                  "description": "Indicates if the plugin is disabled or not",
+                  "type": "boolean",
+                  "title": "disabled"
+                }
+              }
+            }
+          }
+        },
+        "choices": {
+          "title": "EditableHtmlPluginConfigure",
+          "type": "object",
+          "properties": {
+            "inputConfiguration": {
+              "title": "EditableHtmlConfigureProp",
+              "type": "object",
+              "properties": {
+                "math": {
+                  "title": "EditableHtmlButtonConfigure",
+                  "type": "object",
+                  "properties": {
+                    "disabled": {
+                      "description": "Indicates if the plugin is disabled or not",
+                      "type": "boolean",
+                      "title": "disabled"
+                    }
+                  }
+                },
+                "audio": {
+                  "title": "EditableHtmlButtonConfigure",
+                  "type": "object",
+                  "properties": {
+                    "disabled": {
+                      "description": "Indicates if the plugin is disabled or not",
+                      "type": "boolean",
+                      "title": "disabled"
+                    }
+                  }
+                },
+                "video": {
+                  "title": "EditableHtmlButtonConfigure",
+                  "type": "object",
+                  "properties": {
+                    "disabled": {
+                      "description": "Indicates if the plugin is disabled or not",
+                      "type": "boolean",
+                      "title": "disabled"
+                    }
+                  }
+                },
+                "image": {
+                  "title": "EditableHtmlButtonConfigure",
+                  "type": "object",
+                  "properties": {
+                    "disabled": {
+                      "description": "Indicates if the plugin is disabled or not",
+                      "type": "boolean",
+                      "title": "disabled"
+                    }
+                  }
+                }
+              }
+            },
+            "settings": {
+              "description": "Indicates if the item has to be displayed in the Settings Panel",
+              "type": "boolean",
+              "title": "settings"
+            },
+            "label": {
+              "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+              "type": "string",
+              "title": "label"
             }
           }
         }
@@ -401,9 +667,59 @@
           }
         },
         "prompt": {
-          "title": "ConfigureProp",
+          "title": "EditableHtmlPluginConfigure",
           "type": "object",
           "properties": {
+            "inputConfiguration": {
+              "title": "EditableHtmlConfigureProp",
+              "type": "object",
+              "properties": {
+                "math": {
+                  "title": "EditableHtmlButtonConfigure",
+                  "type": "object",
+                  "properties": {
+                    "disabled": {
+                      "description": "Indicates if the plugin is disabled or not",
+                      "type": "boolean",
+                      "title": "disabled"
+                    }
+                  }
+                },
+                "audio": {
+                  "title": "EditableHtmlButtonConfigure",
+                  "type": "object",
+                  "properties": {
+                    "disabled": {
+                      "description": "Indicates if the plugin is disabled or not",
+                      "type": "boolean",
+                      "title": "disabled"
+                    }
+                  }
+                },
+                "video": {
+                  "title": "EditableHtmlButtonConfigure",
+                  "type": "object",
+                  "properties": {
+                    "disabled": {
+                      "description": "Indicates if the plugin is disabled or not",
+                      "type": "boolean",
+                      "title": "disabled"
+                    }
+                  }
+                },
+                "image": {
+                  "title": "EditableHtmlButtonConfigure",
+                  "type": "object",
+                  "properties": {
+                    "disabled": {
+                      "description": "Indicates if the plugin is disabled or not",
+                      "type": "boolean",
+                      "title": "disabled"
+                    }
+                  }
+                }
+              }
+            },
             "settings": {
               "description": "Indicates if the item has to be displayed in the Settings Panel",
               "type": "boolean",
@@ -438,9 +754,59 @@
           }
         },
         "rationale": {
-          "title": "ConfigureProp",
+          "title": "EditableHtmlPluginConfigure",
           "type": "object",
           "properties": {
+            "inputConfiguration": {
+              "title": "EditableHtmlConfigureProp",
+              "type": "object",
+              "properties": {
+                "math": {
+                  "title": "EditableHtmlButtonConfigure",
+                  "type": "object",
+                  "properties": {
+                    "disabled": {
+                      "description": "Indicates if the plugin is disabled or not",
+                      "type": "boolean",
+                      "title": "disabled"
+                    }
+                  }
+                },
+                "audio": {
+                  "title": "EditableHtmlButtonConfigure",
+                  "type": "object",
+                  "properties": {
+                    "disabled": {
+                      "description": "Indicates if the plugin is disabled or not",
+                      "type": "boolean",
+                      "title": "disabled"
+                    }
+                  }
+                },
+                "video": {
+                  "title": "EditableHtmlButtonConfigure",
+                  "type": "object",
+                  "properties": {
+                    "disabled": {
+                      "description": "Indicates if the plugin is disabled or not",
+                      "type": "boolean",
+                      "title": "disabled"
+                    }
+                  }
+                },
+                "image": {
+                  "title": "EditableHtmlButtonConfigure",
+                  "type": "object",
+                  "properties": {
+                    "disabled": {
+                      "description": "Indicates if the plugin is disabled or not",
+                      "type": "boolean",
+                      "title": "disabled"
+                    }
+                  }
+                }
+              }
+            },
             "settings": {
               "description": "Indicates if the item has to be displayed in the Settings Panel",
               "type": "boolean",
@@ -470,9 +836,59 @@
           }
         },
         "teacherInstructions": {
-          "title": "ConfigureProp",
+          "title": "EditableHtmlPluginConfigure",
           "type": "object",
           "properties": {
+            "inputConfiguration": {
+              "title": "EditableHtmlConfigureProp",
+              "type": "object",
+              "properties": {
+                "math": {
+                  "title": "EditableHtmlButtonConfigure",
+                  "type": "object",
+                  "properties": {
+                    "disabled": {
+                      "description": "Indicates if the plugin is disabled or not",
+                      "type": "boolean",
+                      "title": "disabled"
+                    }
+                  }
+                },
+                "audio": {
+                  "title": "EditableHtmlButtonConfigure",
+                  "type": "object",
+                  "properties": {
+                    "disabled": {
+                      "description": "Indicates if the plugin is disabled or not",
+                      "type": "boolean",
+                      "title": "disabled"
+                    }
+                  }
+                },
+                "video": {
+                  "title": "EditableHtmlButtonConfigure",
+                  "type": "object",
+                  "properties": {
+                    "disabled": {
+                      "description": "Indicates if the plugin is disabled or not",
+                      "type": "boolean",
+                      "title": "disabled"
+                    }
+                  }
+                },
+                "image": {
+                  "title": "EditableHtmlButtonConfigure",
+                  "type": "object",
+                  "properties": {
+                    "disabled": {
+                      "description": "Indicates if the plugin is disabled or not",
+                      "type": "boolean",
+                      "title": "disabled"
+                    }
+                  }
+                }
+              }
+            },
             "settings": {
               "description": "Indicates if the item has to be displayed in the Settings Panel",
               "type": "boolean",
@@ -592,6 +1008,122 @@
               "description": "Indicates if mathML that's already in model should be editable",
               "type": "number",
               "title": "mmlEditing"
+            }
+          }
+        },
+        "baseInputConfiguration": {
+          "title": "EditableHtmlConfigureProp",
+          "type": "object",
+          "properties": {
+            "math": {
+              "title": "EditableHtmlButtonConfigure",
+              "type": "object",
+              "properties": {
+                "disabled": {
+                  "description": "Indicates if the plugin is disabled or not",
+                  "type": "boolean",
+                  "title": "disabled"
+                }
+              }
+            },
+            "audio": {
+              "title": "EditableHtmlButtonConfigure",
+              "type": "object",
+              "properties": {
+                "disabled": {
+                  "description": "Indicates if the plugin is disabled or not",
+                  "type": "boolean",
+                  "title": "disabled"
+                }
+              }
+            },
+            "video": {
+              "title": "EditableHtmlButtonConfigure",
+              "type": "object",
+              "properties": {
+                "disabled": {
+                  "description": "Indicates if the plugin is disabled or not",
+                  "type": "boolean",
+                  "title": "disabled"
+                }
+              }
+            },
+            "image": {
+              "title": "EditableHtmlButtonConfigure",
+              "type": "object",
+              "properties": {
+                "disabled": {
+                  "description": "Indicates if the plugin is disabled or not",
+                  "type": "boolean",
+                  "title": "disabled"
+                }
+              }
+            }
+          }
+        },
+        "choices": {
+          "title": "EditableHtmlPluginConfigure",
+          "type": "object",
+          "properties": {
+            "inputConfiguration": {
+              "title": "EditableHtmlConfigureProp",
+              "type": "object",
+              "properties": {
+                "math": {
+                  "title": "EditableHtmlButtonConfigure",
+                  "type": "object",
+                  "properties": {
+                    "disabled": {
+                      "description": "Indicates if the plugin is disabled or not",
+                      "type": "boolean",
+                      "title": "disabled"
+                    }
+                  }
+                },
+                "audio": {
+                  "title": "EditableHtmlButtonConfigure",
+                  "type": "object",
+                  "properties": {
+                    "disabled": {
+                      "description": "Indicates if the plugin is disabled or not",
+                      "type": "boolean",
+                      "title": "disabled"
+                    }
+                  }
+                },
+                "video": {
+                  "title": "EditableHtmlButtonConfigure",
+                  "type": "object",
+                  "properties": {
+                    "disabled": {
+                      "description": "Indicates if the plugin is disabled or not",
+                      "type": "boolean",
+                      "title": "disabled"
+                    }
+                  }
+                },
+                "image": {
+                  "title": "EditableHtmlButtonConfigure",
+                  "type": "object",
+                  "properties": {
+                    "disabled": {
+                      "description": "Indicates if the plugin is disabled or not",
+                      "type": "boolean",
+                      "title": "disabled"
+                    }
+                  }
+                }
+              }
+            },
+            "settings": {
+              "description": "Indicates if the item has to be displayed in the Settings Panel",
+              "type": "boolean",
+              "title": "settings"
+            },
+            "label": {
+              "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+              "type": "string",
+              "title": "label"
             }
           }
         }
@@ -819,9 +1351,59 @@
           }
         },
         "prompt": {
-          "title": "ConfigureProp",
+          "title": "EditableHtmlPluginConfigure",
           "type": "object",
           "properties": {
+            "inputConfiguration": {
+              "title": "EditableHtmlConfigureProp",
+              "type": "object",
+              "properties": {
+                "math": {
+                  "title": "EditableHtmlButtonConfigure",
+                  "type": "object",
+                  "properties": {
+                    "disabled": {
+                      "description": "Indicates if the plugin is disabled or not",
+                      "type": "boolean",
+                      "title": "disabled"
+                    }
+                  }
+                },
+                "audio": {
+                  "title": "EditableHtmlButtonConfigure",
+                  "type": "object",
+                  "properties": {
+                    "disabled": {
+                      "description": "Indicates if the plugin is disabled or not",
+                      "type": "boolean",
+                      "title": "disabled"
+                    }
+                  }
+                },
+                "video": {
+                  "title": "EditableHtmlButtonConfigure",
+                  "type": "object",
+                  "properties": {
+                    "disabled": {
+                      "description": "Indicates if the plugin is disabled or not",
+                      "type": "boolean",
+                      "title": "disabled"
+                    }
+                  }
+                },
+                "image": {
+                  "title": "EditableHtmlButtonConfigure",
+                  "type": "object",
+                  "properties": {
+                    "disabled": {
+                      "description": "Indicates if the plugin is disabled or not",
+                      "type": "boolean",
+                      "title": "disabled"
+                    }
+                  }
+                }
+              }
+            },
             "settings": {
               "description": "Indicates if the item has to be displayed in the Settings Panel",
               "type": "boolean",
@@ -856,9 +1438,59 @@
           }
         },
         "rationale": {
-          "title": "ConfigureProp",
+          "title": "EditableHtmlPluginConfigure",
           "type": "object",
           "properties": {
+            "inputConfiguration": {
+              "title": "EditableHtmlConfigureProp",
+              "type": "object",
+              "properties": {
+                "math": {
+                  "title": "EditableHtmlButtonConfigure",
+                  "type": "object",
+                  "properties": {
+                    "disabled": {
+                      "description": "Indicates if the plugin is disabled or not",
+                      "type": "boolean",
+                      "title": "disabled"
+                    }
+                  }
+                },
+                "audio": {
+                  "title": "EditableHtmlButtonConfigure",
+                  "type": "object",
+                  "properties": {
+                    "disabled": {
+                      "description": "Indicates if the plugin is disabled or not",
+                      "type": "boolean",
+                      "title": "disabled"
+                    }
+                  }
+                },
+                "video": {
+                  "title": "EditableHtmlButtonConfigure",
+                  "type": "object",
+                  "properties": {
+                    "disabled": {
+                      "description": "Indicates if the plugin is disabled or not",
+                      "type": "boolean",
+                      "title": "disabled"
+                    }
+                  }
+                },
+                "image": {
+                  "title": "EditableHtmlButtonConfigure",
+                  "type": "object",
+                  "properties": {
+                    "disabled": {
+                      "description": "Indicates if the plugin is disabled or not",
+                      "type": "boolean",
+                      "title": "disabled"
+                    }
+                  }
+                }
+              }
+            },
             "settings": {
               "description": "Indicates if the item has to be displayed in the Settings Panel",
               "type": "boolean",
@@ -888,9 +1520,59 @@
           }
         },
         "teacherInstructions": {
-          "title": "ConfigureProp",
+          "title": "EditableHtmlPluginConfigure",
           "type": "object",
           "properties": {
+            "inputConfiguration": {
+              "title": "EditableHtmlConfigureProp",
+              "type": "object",
+              "properties": {
+                "math": {
+                  "title": "EditableHtmlButtonConfigure",
+                  "type": "object",
+                  "properties": {
+                    "disabled": {
+                      "description": "Indicates if the plugin is disabled or not",
+                      "type": "boolean",
+                      "title": "disabled"
+                    }
+                  }
+                },
+                "audio": {
+                  "title": "EditableHtmlButtonConfigure",
+                  "type": "object",
+                  "properties": {
+                    "disabled": {
+                      "description": "Indicates if the plugin is disabled or not",
+                      "type": "boolean",
+                      "title": "disabled"
+                    }
+                  }
+                },
+                "video": {
+                  "title": "EditableHtmlButtonConfigure",
+                  "type": "object",
+                  "properties": {
+                    "disabled": {
+                      "description": "Indicates if the plugin is disabled or not",
+                      "type": "boolean",
+                      "title": "disabled"
+                    }
+                  }
+                },
+                "image": {
+                  "title": "EditableHtmlButtonConfigure",
+                  "type": "object",
+                  "properties": {
+                    "disabled": {
+                      "description": "Indicates if the plugin is disabled or not",
+                      "type": "boolean",
+                      "title": "disabled"
+                    }
+                  }
+                }
+              }
+            },
             "settings": {
               "description": "Indicates if the item has to be displayed in the Settings Panel",
               "type": "boolean",
@@ -1012,6 +1694,122 @@
               "title": "mmlEditing"
             }
           }
+        },
+        "baseInputConfiguration": {
+          "title": "EditableHtmlConfigureProp",
+          "type": "object",
+          "properties": {
+            "math": {
+              "title": "EditableHtmlButtonConfigure",
+              "type": "object",
+              "properties": {
+                "disabled": {
+                  "description": "Indicates if the plugin is disabled or not",
+                  "type": "boolean",
+                  "title": "disabled"
+                }
+              }
+            },
+            "audio": {
+              "title": "EditableHtmlButtonConfigure",
+              "type": "object",
+              "properties": {
+                "disabled": {
+                  "description": "Indicates if the plugin is disabled or not",
+                  "type": "boolean",
+                  "title": "disabled"
+                }
+              }
+            },
+            "video": {
+              "title": "EditableHtmlButtonConfigure",
+              "type": "object",
+              "properties": {
+                "disabled": {
+                  "description": "Indicates if the plugin is disabled or not",
+                  "type": "boolean",
+                  "title": "disabled"
+                }
+              }
+            },
+            "image": {
+              "title": "EditableHtmlButtonConfigure",
+              "type": "object",
+              "properties": {
+                "disabled": {
+                  "description": "Indicates if the plugin is disabled or not",
+                  "type": "boolean",
+                  "title": "disabled"
+                }
+              }
+            }
+          }
+        },
+        "choices": {
+          "title": "EditableHtmlPluginConfigure",
+          "type": "object",
+          "properties": {
+            "inputConfiguration": {
+              "title": "EditableHtmlConfigureProp",
+              "type": "object",
+              "properties": {
+                "math": {
+                  "title": "EditableHtmlButtonConfigure",
+                  "type": "object",
+                  "properties": {
+                    "disabled": {
+                      "description": "Indicates if the plugin is disabled or not",
+                      "type": "boolean",
+                      "title": "disabled"
+                    }
+                  }
+                },
+                "audio": {
+                  "title": "EditableHtmlButtonConfigure",
+                  "type": "object",
+                  "properties": {
+                    "disabled": {
+                      "description": "Indicates if the plugin is disabled or not",
+                      "type": "boolean",
+                      "title": "disabled"
+                    }
+                  }
+                },
+                "video": {
+                  "title": "EditableHtmlButtonConfigure",
+                  "type": "object",
+                  "properties": {
+                    "disabled": {
+                      "description": "Indicates if the plugin is disabled or not",
+                      "type": "boolean",
+                      "title": "disabled"
+                    }
+                  }
+                },
+                "image": {
+                  "title": "EditableHtmlButtonConfigure",
+                  "type": "object",
+                  "properties": {
+                    "disabled": {
+                      "description": "Indicates if the plugin is disabled or not",
+                      "type": "boolean",
+                      "title": "disabled"
+                    }
+                  }
+                }
+              }
+            },
+            "settings": {
+              "description": "Indicates if the item has to be displayed in the Settings Panel",
+              "type": "boolean",
+              "title": "settings"
+            },
+            "label": {
+              "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+              "type": "string",
+              "title": "label"
+            }
+          }
         }
       }
     },
@@ -1028,6 +1826,133 @@
           "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
           "type": "string",
           "title": "label"
+        }
+      }
+    },
+    "EditableHtmlPluginConfigure": {
+      "title": "EditableHtmlPluginConfigure",
+      "type": "object",
+      "properties": {
+        "inputConfiguration": {
+          "title": "EditableHtmlConfigureProp",
+          "type": "object",
+          "properties": {
+            "math": {
+              "title": "EditableHtmlButtonConfigure",
+              "type": "object",
+              "properties": {
+                "disabled": {
+                  "description": "Indicates if the plugin is disabled or not",
+                  "type": "boolean",
+                  "title": "disabled"
+                }
+              }
+            },
+            "audio": {
+              "title": "EditableHtmlButtonConfigure",
+              "type": "object",
+              "properties": {
+                "disabled": {
+                  "description": "Indicates if the plugin is disabled or not",
+                  "type": "boolean",
+                  "title": "disabled"
+                }
+              }
+            },
+            "video": {
+              "title": "EditableHtmlButtonConfigure",
+              "type": "object",
+              "properties": {
+                "disabled": {
+                  "description": "Indicates if the plugin is disabled or not",
+                  "type": "boolean",
+                  "title": "disabled"
+                }
+              }
+            },
+            "image": {
+              "title": "EditableHtmlButtonConfigure",
+              "type": "object",
+              "properties": {
+                "disabled": {
+                  "description": "Indicates if the plugin is disabled or not",
+                  "type": "boolean",
+                  "title": "disabled"
+                }
+              }
+            }
+          }
+        },
+        "settings": {
+          "description": "Indicates if the item has to be displayed in the Settings Panel",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+          "type": "string",
+          "title": "label"
+        }
+      }
+    },
+    "EditableHtmlConfigureProp": {
+      "title": "EditableHtmlConfigureProp",
+      "type": "object",
+      "properties": {
+        "math": {
+          "title": "EditableHtmlButtonConfigure",
+          "type": "object",
+          "properties": {
+            "disabled": {
+              "description": "Indicates if the plugin is disabled or not",
+              "type": "boolean",
+              "title": "disabled"
+            }
+          }
+        },
+        "audio": {
+          "title": "EditableHtmlButtonConfigure",
+          "type": "object",
+          "properties": {
+            "disabled": {
+              "description": "Indicates if the plugin is disabled or not",
+              "type": "boolean",
+              "title": "disabled"
+            }
+          }
+        },
+        "video": {
+          "title": "EditableHtmlButtonConfigure",
+          "type": "object",
+          "properties": {
+            "disabled": {
+              "description": "Indicates if the plugin is disabled or not",
+              "type": "boolean",
+              "title": "disabled"
+            }
+          }
+        },
+        "image": {
+          "title": "EditableHtmlButtonConfigure",
+          "type": "object",
+          "properties": {
+            "disabled": {
+              "description": "Indicates if the plugin is disabled or not",
+              "type": "boolean",
+              "title": "disabled"
+            }
+          }
+        }
+      }
+    },
+    "EditableHtmlButtonConfigure": {
+      "title": "EditableHtmlButtonConfigure",
+      "type": "object",
+      "properties": {
+        "disabled": {
+          "description": "Indicates if the plugin is disabled or not",
+          "type": "boolean",
+          "title": "disabled"
         }
       }
     },

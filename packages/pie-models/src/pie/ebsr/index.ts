@@ -1,5 +1,10 @@
 import { PieModel } from '../../PieModel';
-import {ConfigureMathMLProp, ConfigureProp} from '../ConfigurationProp';
+import {
+  ConfigureMathMLProp,
+  ConfigureProp,
+  EditableHtmlConfigureProp,
+  EditableHtmlPluginConfigure
+} from '../ConfigurationProp';
 import { PromptConfig } from '../../PromptConfig';
 import { CommonConfigSettings } from '../../CommonConfigSettings';
 
@@ -135,7 +140,7 @@ interface PartConfiguration {
   /**
    * Indicates whether the Edit prompt input should be displayed
    */
-  prompt?: ConfigureProp;
+  prompt?: EditableHtmlPluginConfigure;
 
   /**
    * Indicates if the settings panel is not available
@@ -150,7 +155,7 @@ interface PartConfiguration {
   /**
    * Rationale configuration
    */
-  rationale?: ConfigureProp;
+  rationale?: EditableHtmlPluginConfigure;
 
   /**
    * Student Instructions configuration
@@ -160,7 +165,7 @@ interface PartConfiguration {
   /**
    * Teacher Instructions configuration
    */
-  teacherInstructions?: ConfigureProp;
+  teacherInstructions?: EditableHtmlPluginConfigure;
 
   /** Indicates the layout of choices for player
    * @default: 'vertical'
@@ -194,6 +199,17 @@ interface PartConfiguration {
 
   /** Configuration for editable-html */
   mathMlOptions?: ConfigureMathMLProp;
+
+  /**
+   * Base editable html input configuration regarding plugins that are enabled/disabled
+   * E.g. audio, video, image
+   */
+  baseInputConfiguration?: EditableHtmlConfigureProp;
+
+  /**
+   * Choices configuration
+   */
+  choices?: EditableHtmlPluginConfigure;
 }
 
 /**

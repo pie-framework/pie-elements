@@ -9,7 +9,7 @@ import {
   ConfigureProp,
   ConfigurePropWithEnabled,
   EditableHtmlConfigureProp,
-  EditableHtmlPluginConfigure,
+  EditableHtmlPluginConfigureRequired,
 } from '../ConfigurationProp';
 
 interface Alternate {
@@ -93,8 +93,19 @@ export interface MathInlinePie extends PieModel {
    * statistics
    * @default - item-authoring
    */
-  equationEditor?: 'geometry' | 'advanced-algebra' | 'statistics' | 'item-authoring'
-    | 1 | 3 | 6 | 8 | 'non-negative-integers' | 'integers' | 'decimals' | 'fractions';
+  equationEditor?:
+    | 'geometry'
+    | 'advanced-algebra'
+    | 'statistics'
+    | 'item-authoring'
+    | 1
+    | 3
+    | 6
+    | 8
+    | 'non-negative-integers'
+    | 'integers'
+    | 'decimals'
+    | 'fractions';
 
   /** Feedback configuration for the responses */
   feedback?: ComplexFeedbackType;
@@ -188,7 +199,7 @@ export interface MathInlineConfigure extends PromptConfig, CommonConfigSettings 
   /**
    * Configuration for prompt
    */
-  prompt?: EditableHtmlPluginConfigure;
+  prompt?: EditableHtmlPluginConfigureRequired;
 
   /**
    * Configuration for response type
@@ -203,7 +214,7 @@ export interface MathInlineConfigure extends PromptConfig, CommonConfigSettings 
   /**
    * Rationale configuration
    */
-  rationale?: EditableHtmlPluginConfigure;
+  rationale?: EditableHtmlPluginConfigureRequired;
 
   /**
    * Indicates if the settings panel is not available
@@ -228,7 +239,7 @@ export interface MathInlineConfigure extends PromptConfig, CommonConfigSettings 
   /**
    * Teacher Instructions configuration
    */
-  teacherInstructions?: EditableHtmlPluginConfigure;
+  teacherInstructions?: EditableHtmlPluginConfigureRequired;
 
   /**
    * Ignore Order configuration

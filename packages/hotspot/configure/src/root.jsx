@@ -89,7 +89,13 @@ export class Root extends React.Component {
       teacherInstructionsEnabled,
       toolbarEditorPosition,
     } = model || {};
-    const { shapesError, selectionsError } = errors || {};
+    const {
+      prompt: promptError,
+      rationale: rationaleError,
+      shapes: shapesError,
+      selections: selectionsError,
+      teacherInstructions: teacherInstructionsError,
+    } = errors || {};
     const validationMessage = generateValidationMessage(configuration);
 
     const defaultImageMaxWidth = maxImageWidth && maxImageWidth.prompt;
@@ -142,6 +148,7 @@ export class Root extends React.Component {
               onChange={onTeacherInstructionsChanged}
               imageSupport={imageSupport}
               nonEmpty={false}
+              error={teacherInstructionsError}
               toolbarOpts={toolbarOpts}
               pluginProps={getPluginProps(teacherInstructions?.inputConfiguration)}
               spellCheck={spellCheckEnabled}
@@ -151,6 +158,7 @@ export class Root extends React.Component {
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               mathMlOptions={mathMlOptions}
             />
+            {teacherInstructionsError && <div className={classes.errorText}>{teacherInstructionsError}</div>}
           </InputContainer>
         )}
 
@@ -161,6 +169,7 @@ export class Root extends React.Component {
               onChange={onPromptChanged}
               imageSupport={imageSupport}
               nonEmpty={false}
+              error={promptError}
               toolbarOpts={toolbarOpts}
               pluginProps={getPluginProps(prompt?.inputConfiguration)}
               spellCheck={spellCheckEnabled}
@@ -170,6 +179,7 @@ export class Root extends React.Component {
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               mathMlOptions={mathMlOptions}
             />
+            {promptError && <div className={classes.errorText}>{promptError}</div>}
           </InputContainer>
         )}
 
@@ -249,6 +259,7 @@ export class Root extends React.Component {
               markup={model.rationale || ''}
               onChange={onRationaleChanged}
               imageSupport={imageSupport}
+              error={rationaleError}
               toolbarOpts={toolbarOpts}
               pluginProps={getPluginProps(rationale?.inputConfiguration)}
               spellCheck={spellCheckEnabled}
@@ -258,6 +269,7 @@ export class Root extends React.Component {
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               mathMlOptions={mathMlOptions}
             />
+            {rationaleError && <div className={classes.errorText}>{rationaleError}</div>}
           </InputContainer>
         )}
       </layout.ConfigLayout>
