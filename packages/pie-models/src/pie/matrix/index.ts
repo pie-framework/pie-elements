@@ -1,6 +1,10 @@
 import { PieModel } from '../../PieModel';
 import { PromptConfig } from '../../PromptConfig';
-import { ConfigureProp, EditableHtmlConfigureProp, EditableHtmlPluginConfigure } from '../ConfigurationProp';
+import {
+  ConfigureProp,
+  EditableHtmlConfigureProp,
+  EditableHtmlPluginConfigureRequired,
+} from '../ConfigurationProp';
 import { CommonConfigSettings } from '../../CommonConfigSettings';
 
 /**
@@ -52,10 +56,10 @@ export interface MatrixConfigure extends PromptConfig, CommonConfigSettings {
   /**
    * Teacher Instructions configuration
    */
-  teacherInstructions?: EditableHtmlPluginConfigure;
+  teacherInstructions?: EditableHtmlPluginConfigureRequired;
 
   /**
    * Configuration for the prompt
    */
-  prompt?: EditableHtmlPluginConfigure;
+  prompt?: EditableHtmlPluginConfigureRequired;
 }
