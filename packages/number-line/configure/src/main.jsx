@@ -479,7 +479,7 @@ export class Main extends React.Component {
           <InputContainer label={teacherInstructions.label} className={classes.promptContainer}>
             <EditableHtml
               className={classes.teacherInstructions}
-              markup={model.teacherInstructions}
+              markup={model.teacherInstructions || ''}
               onChange={(teacherInstructions) => onChange({ teacherInstructions })}
               nonEmpty={false}
               disableUnderline
@@ -499,7 +499,7 @@ export class Main extends React.Component {
           <InputContainer label={prompt.label} className={classes.promptContainer}>
             <EditableHtml
               className={classes.prompt}
-              markup={model.prompt}
+              markup={model.prompt || ''}
               onChange={(prompt) => onChange({ prompt })}
               nonEmpty={false}
               disableUnderline

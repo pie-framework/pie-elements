@@ -28,6 +28,7 @@ exports[`main snapshot renders 1`] = `
           },
         ]
       }
+      markup=""
       mathMlOptions={
         Object {
           "mmlEditing": false,
@@ -73,6 +74,7 @@ exports[`main snapshot renders 1`] = `
           },
         ]
       }
+      markup=""
       mathMlOptions={
         Object {
           "mmlEditing": false,
