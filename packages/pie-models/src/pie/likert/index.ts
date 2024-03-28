@@ -1,6 +1,6 @@
 import { PieModel } from '../../PieModel';
 import { PromptConfig } from '../../PromptConfig';
-import { ConfigureProp } from '../ConfigurationProp';
+import { ConfigureProp, EditableHtmlConfigureProp, EditableHtmlPluginConfigure } from '../ConfigurationProp';
 import { LikertChoice } from '../../LikertChoice';
 import { CommonConfigSettings } from '../../CommonConfigSettings';
 
@@ -47,5 +47,21 @@ export interface LikertConfigure extends PromptConfig, CommonConfigSettings {
   /**
    * Teacher Instructions configuration
    */
-  teacherInstructions?: ConfigureProp;
+  teacherInstructions?: EditableHtmlPluginConfigure;
+
+  /**
+   * Configuration for prompt
+   */
+  prompt?: EditableHtmlPluginConfigure;
+
+  /**
+   * Base editable html input configuration regarding plugins that are enabled/disabled
+   * E.g. audio, video, image
+   */
+  baseInputConfiguration?: EditableHtmlConfigureProp;
+
+  /**
+   * Configuration for likert choice
+   */
+  likertChoice?: EditableHtmlPluginConfigure;
 }
