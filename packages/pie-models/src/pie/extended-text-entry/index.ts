@@ -9,7 +9,7 @@ import {
   ConfigureWithForceProp,
   ConfigureMathMLProp,
   EditableHtmlPluginConfigure,
-  EditableHtmlConfigureProp,
+  EditableHtmlConfigureProp, EditableHtmlPluginConfigureRequired,
 } from '../ConfigurationProp';
 
 interface Dimensions {
@@ -165,12 +165,12 @@ export interface ExtendedTextEntryConfigure extends PromptConfig, CommonConfigSe
   /**
    * Teacher Instructions configuration
    */
-  teacherInstructions?: EditableHtmlPluginConfigure;
+  teacherInstructions?: EditableHtmlPluginConfigureRequired;
 
   /**
    * Prompt configuration
    */
-  prompt?: EditableHtmlPluginConfigure;
+  prompt?: EditableHtmlPluginConfigureRequired;
 
   /**
    * Configuration for the author's spellcheck

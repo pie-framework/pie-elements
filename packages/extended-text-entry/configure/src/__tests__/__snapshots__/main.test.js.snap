@@ -72,6 +72,7 @@ exports[`Render Main Component Match Snapshot 1`] = `
               },
             },
             "label": "Prompt",
+            "required": false,
             "settings": true,
           },
           "settingsPanelDisabled": false,
@@ -107,6 +108,7 @@ exports[`Render Main Component Match Snapshot 1`] = `
               },
             },
             "label": "Teacher Instructions",
+            "required": false,
             "settings": true,
           },
           "withRubric": Object {

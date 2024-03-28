@@ -72,8 +72,15 @@ export class Main extends React.Component {
       mathMlOptions = {},
       baseInputConfiguration = {},
     } = configuration || {};
-    const { feedbackEnabled, promptEnabled, spellCheckEnabled, teacherInstructionsEnabled, toolbarEditorPosition } =
-      model || {};
+    const {
+      errors = {},
+      feedbackEnabled,
+      promptEnabled,
+      spellCheckEnabled,
+      teacherInstructionsEnabled,
+      toolbarEditorPosition,
+    } = model || {};
+    const { prompt: promptError, teacherInstructions: teacherInstructionsError } = errors;
 
     const defaultImageMaxWidth = maxImageWidth && maxImageWidth.prompt;
     const defaultImageMaxHeight = maxImageHeight && maxImageHeight.prompt;
@@ -153,6 +160,7 @@ export class Main extends React.Component {
               onChange={this.changeTeacherInstructions}
               imageSupport={imageSupport}
               nonEmpty={false}
+              error={teacherInstructionsError}
               toolbarOpts={toolbarOpts}
               spellCheck={spellCheckEnabled}
               maxImageWidth={(maxImageWidth && maxImageWidth.teacherInstructions) || defaultImageMaxWidth}
@@ -162,6 +170,7 @@ export class Main extends React.Component {
               mathMlOptions={mathMlOptions}
               pluginProps={getPluginProps(teacherInstructions?.inputConfiguration)}
             />
+            {teacherInstructionsError && <div className={classes.errorText}>{teacherInstructionsError}</div>}
           </InputContainer>
         )}
 
@@ -174,6 +183,7 @@ export class Main extends React.Component {
               onChange={this.onPromptChange}
               imageSupport={imageSupport}
               nonEmpty={false}
+              error={promptError}
               toolbarOpts={toolbarOpts}
               spellCheck={spellCheckEnabled}
               maxImageWidth={defaultImageMaxWidth}
@@ -183,6 +193,7 @@ export class Main extends React.Component {
               mathMlOptions={mathMlOptions}
               pluginProps={getPluginProps(prompt?.inputConfiguration)}
             />
+            {promptError && <div className={classes.errorText}>{promptError}</div>}
           </InputContainer>
         )}
 
@@ -212,5 +223,10 @@ export default withStyles((theme) => ({
     paddingTop: theme.spacing.unit * 2,
     marginBottom: theme.spacing.unit * 2,
     width: '100%',
+  },
+  errorText: {
+    fontSize: theme.typography.fontSize - 2,
+    color: theme.palette.error.main,
+    paddingTop: theme.spacing.unit,
   },
 }))(Main);

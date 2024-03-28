@@ -110,7 +110,7 @@
       }
     },
     "teacherInstructions": {
-      "title": "EditableHtmlPluginConfigure",
+      "title": "EditableHtmlPluginConfigureRequired",
       "type": "object",
       "properties": {
         "inputConfiguration": {
@@ -162,6 +162,11 @@
               }
             }
           }
+        },
+        "required": {
+          "description": "Indicates if the item is required and the value cannot be empty",
+          "type": "boolean",
+          "title": "required"
         },
         "settings": {
           "description": "Indicates if the item has to be displayed in the Settings Panel",
@@ -176,7 +181,7 @@
       }
     },
     "prompt": {
-      "title": "EditableHtmlPluginConfigure",
+      "title": "EditableHtmlPluginConfigureRequired",
       "type": "object",
       "properties": {
         "inputConfiguration": {
@@ -228,6 +233,11 @@
               }
             }
           }
+        },
+        "required": {
+          "description": "Indicates if the item is required and the value cannot be empty",
+          "type": "boolean",
+          "title": "required"
         },
         "settings": {
           "description": "Indicates if the item has to be displayed in the Settings Panel",
@@ -519,8 +529,8 @@
         }
       }
     },
-    "EditableHtmlPluginConfigure": {
-      "title": "EditableHtmlPluginConfigure",
+    "EditableHtmlPluginConfigureRequired": {
+      "title": "EditableHtmlPluginConfigureRequired",
       "type": "object",
       "properties": {
         "inputConfiguration": {
@@ -572,6 +582,11 @@
               }
             }
           }
+        },
+        "required": {
+          "description": "Indicates if the item is required and the value cannot be empty",
+          "type": "boolean",
+          "title": "required"
         },
         "settings": {
           "description": "Indicates if the item has to be displayed in the Settings Panel",

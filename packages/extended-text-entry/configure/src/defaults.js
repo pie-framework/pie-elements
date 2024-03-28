@@ -80,6 +80,7 @@ export default {
         video: { disabled: false },
         image: { disabled: false },
       },
+      required: false,
     },
     teacherInstructions: {
       settings: true,
@@ -89,6 +90,7 @@ export default {
         video: { disabled: false },
         image: { disabled: false },
       },
+      required: false,
     },
     maxImageWidth: {
       teacherInstructions: 300,
