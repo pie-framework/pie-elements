@@ -69,6 +69,7 @@ exports[`Root render renders 1`] = `
               },
             },
             "label": "Prompt",
+            "required": false,
             "settings": true,
           },
           "rationale": Object {
@@ -84,6 +85,7 @@ exports[`Root render renders 1`] = `
               },
             },
             "label": "Rationale",
+            "required": false,
             "settings": true,
           },
           "settingsPanelDisabled": false,
@@ -105,6 +107,7 @@ exports[`Root render renders 1`] = `
               },
             },
             "label": "Teacher Instructions",
+            "required": false,
             "settings": true,
           },
           "withRubric": Object {

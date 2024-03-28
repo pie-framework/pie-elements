@@ -46,6 +46,7 @@ export default {
         video: { disabled: false },
         image: { disabled: false },
       },
+      required: false,
     },
     prompt: {
       settings: true,
@@ -55,6 +56,7 @@ export default {
         video: { disabled: false },
         image: { disabled: false },
       },
+      required: false,
     },
     settingsPanelDisabled: false,
     spellCheck: {
@@ -70,6 +72,7 @@ export default {
         video: { disabled: false },
         image: { disabled: false },
       },
+      required: false,
     },
     preserveAspectRatio: {
       settings: false,

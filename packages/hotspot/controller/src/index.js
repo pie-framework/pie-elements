@@ -167,10 +167,22 @@ export const createCorrectResponseSession = (question, env) => {
   });
 };
 
+// remove all html tags
+const getInnerText = (html) => (html || '').replaceAll(/<[^>]*>/g, '');
+
+// remove all html tags except img and iframe
+const getContent = (html) => (html || '').replace(/(<(?!img|iframe)([^>]+)>)/gi, '');
+
 export const validate = (model = {}, config = {}) => {
   const { shapes } = model;
   const { minShapes = 2, maxShapes, maxSelections } = config;
   const errors = {};
+
+  ['teacherInstructions', 'prompt', 'rationale'].forEach((field) => {
+    if (config[field]?.required && !getContent(model[field])) {
+      errors[field] = 'This field is required.';
+    }
+  });
 
   const allShapes = Object.values(shapes || {}).reduce((acc, shape) => [...acc, ...shape], []);
 
@@ -179,15 +191,15 @@ export const validate = (model = {}, config = {}) => {
   const nbOfShapes = (allShapes || []).length;
 
   if (nbOfShapes < minShapes) {
-    errors.shapesError = `There should be at least ${minShapes} shapes defined.`;
+    errors.shapes = `There should be at least ${minShapes} shapes defined.`;
   } else if (nbOfShapes > maxShapes) {
-    errors.shapesError = `No more than ${maxShapes} shapes should be defined.`;
+    errors.shapes = `No more than ${maxShapes} shapes should be defined.`;
   }
 
   if (nbOfSelections < 1) {
-    errors.selectionsError = 'There should be at least 1 shape selected.';
+    errors.selections = 'There should be at least 1 shape selected.';
   } else if (nbOfSelections > maxSelections) {
-    errors.selectionsError = `No more than ${maxSelections} shapes should be selected.`;
+    errors.selections = `No more than ${maxSelections} shapes should be selected.`;
   }
 
   return errors;
