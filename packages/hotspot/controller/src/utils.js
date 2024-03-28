@@ -9,7 +9,7 @@ export const getCorrectResponse = (choices) =>
 
 export const isResponseCorrect = (question, session) => {
   const {
-    shapes: { rectangles, polygons, circles },
+    shapes: { rectangles = [], polygons = [], circles = [] },
   } = question;
   const choices = [...rectangles, ...polygons, ...circles];
   let correctResponseIds = getCorrectResponse(choices);
