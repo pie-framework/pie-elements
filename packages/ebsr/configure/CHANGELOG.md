@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-configure@9.5.2...@pie-element/ebsr-configure@9.6.0) (2024-03-28)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3603 ([8fc82ab](https://github.com/pie-framework/pie-elements/commit/8fc82ab19baf45aecb40e4b364a7c307a9840130))
+
+
+### Features
+
+* Add configuration for custom buttons PD-3519 ([41f94d4](https://github.com/pie-framework/pie-elements/commit/41f94d46d800f848f1a1414cef396ed1a00e64a0))
+* Add configuration for custom buttons PD-3519 ([4c46702](https://github.com/pie-framework/pie-elements/commit/4c46702f0f52ab5b4d1b9a0c2d0aedaec6822a61))
+
+
+
+
+
 ## [9.5.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-configure@9.5.1...@pie-element/ebsr-configure@9.5.2) (2024-03-26)
 
 

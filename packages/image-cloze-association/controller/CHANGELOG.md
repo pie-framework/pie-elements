@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association-controller@4.5.1...@pie-element/image-cloze-association-controller@4.6.0) (2024-03-28)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3603 ([8fc82ab](https://github.com/pie-framework/pie-elements/commit/8fc82ab19baf45aecb40e4b364a7c307a9840130))
+
+
+### Features
+
+* **image-cloze-association:** add required fields functionality PD-3591 ([cfa5f51](https://github.com/pie-framework/pie-elements/commit/cfa5f51cced10d0fc3b8ef779f2d5fdd1d21dfce))
+
+
+
+
+
 ## [4.5.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association-controller@4.5.0...@pie-element/image-cloze-association-controller@4.5.1) (2024-03-26)
 
 **Note:** Version bump only for package @pie-element/image-cloze-association-controller

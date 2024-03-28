@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@5.7.0...@pie-element/drag-in-the-blank@5.8.0) (2024-03-28)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3603 ([8fc82ab](https://github.com/pie-framework/pie-elements/commit/8fc82ab19baf45aecb40e4b364a7c307a9840130))
+
+
+### Features
+
+* **drag-in-the-blank:** add required fields functionality PD-3584 ([4647d4c](https://github.com/pie-framework/pie-elements/commit/4647d4c179f48be70ff683f2721a30f2386513b1))
+
+
+
+
+
 # [5.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@5.6.0...@pie-element/drag-in-the-blank@5.7.0) (2024-03-26)
 
 

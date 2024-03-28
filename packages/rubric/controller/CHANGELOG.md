@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.5.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric-controller@2.5.3...@pie-element/rubric-controller@2.5.4) (2024-03-28)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3603 ([8fc82ab](https://github.com/pie-framework/pie-elements/commit/8fc82ab19baf45aecb40e4b364a7c307a9840130))
+
+
+
+
+
 ## [2.5.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric-controller@2.5.2...@pie-element/rubric-controller@2.5.3) (2024-03-27)
 
 

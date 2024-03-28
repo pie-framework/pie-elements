@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.24.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.23.0...@pie-element/pie-models@13.24.0) (2024-03-28)
+
+
+### Features
+
+* **drag-in-the-blank:** add required fields functionality PD-3584 ([4647d4c](https://github.com/pie-framework/pie-elements/commit/4647d4c179f48be70ff683f2721a30f2386513b1))
+* **drawing-response:** add required fields functionality PD-3589 ([8f57ade](https://github.com/pie-framework/pie-elements/commit/8f57ade13c83d226d1b58e389f844f3519eb7337))
+* **explicit-constructed-response:** add required fields functionality PD-3583 ([84d8856](https://github.com/pie-framework/pie-elements/commit/84d8856cbc1cf915b4b033c7a4ef9a54014b1dba))
+* **extended-text-entry:** add required fields functionality PD-3590 ([73f441f](https://github.com/pie-framework/pie-elements/commit/73f441f9ba77dabc457fdbcf958c73261a15bc88))
+* **hotspot:** added required fields functionality PD-3580 ([7ab62d4](https://github.com/pie-framework/pie-elements/commit/7ab62d4380bcab46649a0780afcef4ddc8e7730d))
+* **image-cloze-association:** add required fields functionality PD-3591 ([cfa5f51](https://github.com/pie-framework/pie-elements/commit/cfa5f51cced10d0fc3b8ef779f2d5fdd1d21dfce))
+* **likert:** add required fields functionality PD-3595 ([629eb63](https://github.com/pie-framework/pie-elements/commit/629eb633c074156286a47239c5a5d29e796b4c16))
+* **math-inline:** add required fields functionality PD-3576 ([a16cf4f](https://github.com/pie-framework/pie-elements/commit/a16cf4f40788cd33b48fa714ce5528e220df3765))
+* **matrix:** add required fields functionality PD-3596 ([356233e](https://github.com/pie-framework/pie-elements/commit/356233ea58c9bc1366b706fa6a86305e5d48bb8f))
+* Add configuration for custom buttons PD-3513 ([0d3f941](https://github.com/pie-framework/pie-elements/commit/0d3f94186c1757f51efb77a06cffa3dfecab0921))
+* Add configuration for custom buttons PD-3519 ([4c46702](https://github.com/pie-framework/pie-elements/commit/4c46702f0f52ab5b4d1b9a0c2d0aedaec6822a61))
+* **multiple-choice:** add required fields functionality PD-3572 ([739f7b1](https://github.com/pie-framework/pie-elements/commit/739f7b188dea00f82f870d6ed0a708256f8f1f83))
+* Add configuration for custom buttons PD-3521 ([9c9ff5e](https://github.com/pie-framework/pie-elements/commit/9c9ff5e038a493a9d1e480407af6a43a5e9073ab))
+
+
+
+
+
 # [13.23.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.22.0...@pie-element/pie-models@13.23.0) (2024-03-20)
 
 

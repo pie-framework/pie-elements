@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response-configure@7.7.1...@pie-element/drawing-response-configure@7.8.0) (2024-03-28)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3603 ([8fc82ab](https://github.com/pie-framework/pie-elements/commit/8fc82ab19baf45aecb40e4b364a7c307a9840130))
+
+
+### Features
+
+* **drawing-response:** add required fields functionality PD-3589 ([8f57ade](https://github.com/pie-framework/pie-elements/commit/8f57ade13c83d226d1b58e389f844f3519eb7337))
+
+
+
+
+
 ## [7.7.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response-configure@7.7.0...@pie-element/drawing-response-configure@7.7.1) (2024-03-26)
 
 **Note:** Version bump only for package @pie-element/drawing-response-configure

@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-controller@4.6.1...@pie-element/hotspot-controller@4.7.0) (2024-03-28)
+
+
+### Bug Fixes
+
+* Add sanity check for score calculation on shapes PD-3604 ([abf6312](https://github.com/pie-framework/pie-elements/commit/abf6312044c6adf45fde83319f4dbe9ee752309f))
+* update pie-lib/pie-toolbox PD-3603 ([8fc82ab](https://github.com/pie-framework/pie-elements/commit/8fc82ab19baf45aecb40e4b364a7c307a9840130))
+
+
+### Features
+
+* **hotspot:** added required fields functionality PD-3580 ([7ab62d4](https://github.com/pie-framework/pie-elements/commit/7ab62d4380bcab46649a0780afcef4ddc8e7730d))
+
+
+
+
+
 ## [4.6.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-controller@4.6.0...@pie-element/hotspot-controller@4.6.1) (2024-03-26)
 
 **Note:** Version bump only for package @pie-element/hotspot-controller

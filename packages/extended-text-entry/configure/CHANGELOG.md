@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-configure@9.6.1...@pie-element/extended-text-entry-configure@9.7.0) (2024-03-28)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3603 ([8fc82ab](https://github.com/pie-framework/pie-elements/commit/8fc82ab19baf45aecb40e4b364a7c307a9840130))
+
+
+### Features
+
+* **extended-text-entry:** add required fields functionality PD-3590 ([73f441f](https://github.com/pie-framework/pie-elements/commit/73f441f9ba77dabc457fdbcf958c73261a15bc88))
+* Add configuration for custom buttons PD-3521 ([9c9ff5e](https://github.com/pie-framework/pie-elements/commit/9c9ff5e038a493a9d1e480407af6a43a5e9073ab))
+
+
+
+
+
 ## [9.6.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-configure@9.6.0...@pie-element/extended-text-entry-configure@9.6.1) (2024-03-26)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry-configure

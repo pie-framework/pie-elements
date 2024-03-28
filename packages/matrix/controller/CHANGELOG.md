@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/matrix-controller@0.0.14...@pie-element/matrix-controller@0.1.0) (2024-03-28)
+
+
+### Features
+
+* **matrix:** add required fields functionality PD-3596 ([356233e](https://github.com/pie-framework/pie-elements/commit/356233ea58c9bc1366b706fa6a86305e5d48bb8f))
+
+
+
+
+
 ## [0.0.14](https://github.com/pie-framework/pie-elements/compare/@pie-element/matrix-controller@0.0.13...@pie-element/matrix-controller@0.0.14) (2023-05-02)
 
 
