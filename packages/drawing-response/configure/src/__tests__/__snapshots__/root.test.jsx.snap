@@ -57,6 +57,7 @@ exports[`Root snapshot renders 1`] = `
               },
             },
             "label": "Prompt",
+            "required": false,
             "settings": true,
           },
           "settingsPanelDisabled": false,
@@ -78,6 +79,7 @@ exports[`Root snapshot renders 1`] = `
               },
             },
             "label": "Teacher Instructions",
+            "required": false,
             "settings": true,
           },
           "withRubric": Object {
