@@ -23,7 +23,8 @@ export default {
         audio: { disabled: false },
         video: { disabled: false },
         image: { disabled: false },
-      }
+      },
+      required: false,
     },
     settingsPanelDisabled: false,
     spellCheck: {
@@ -38,7 +39,8 @@ export default {
         audio: { disabled: false },
         video: { disabled: false },
         image: { disabled: false },
-      }
+      },
+      required: false,
     },
     likertChoice: {
       label: 'Choice',
@@ -46,7 +48,7 @@ export default {
         audio: { disabled: false },
         video: { disabled: false },
         image: { disabled: false },
-      }
+      },
     },
   },
 };

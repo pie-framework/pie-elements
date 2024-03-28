@@ -26,9 +26,9 @@ Properties of the `teacherInstructions` object:
 
 Properties of the `inputConfiguration` object:
 
-### `html` (object)
+### `math` (object)
 
-Properties of the `html` object:
+Properties of the `math` object:
 
 #### `disabled` (boolean)
 
@@ -57,6 +57,10 @@ Properties of the `image` object:
 #### `disabled` (boolean)
 
 Indicates if the plugin is disabled or not
+
+## `required` (boolean)
+
+Indicates if the item is required and the value cannot be empty
 
 ## `settings` (boolean)
 
@@ -74,9 +78,9 @@ Properties of the `prompt` object:
 
 Properties of the `inputConfiguration` object:
 
-### `html` (object)
+### `math` (object)
 
-Properties of the `html` object:
+Properties of the `math` object:
 
 #### `disabled` (boolean)
 
@@ -106,6 +110,10 @@ Properties of the `image` object:
 
 Indicates if the plugin is disabled or not
 
+## `required` (boolean)
+
+Indicates if the item is required and the value cannot be empty
+
 ## `settings` (boolean)
 
 Indicates if the item has to be displayed in the Settings Panel
@@ -118,9 +126,9 @@ Indicates the label for the item that has to be displayed in the Settings Panel
 
 Properties of the `baseInputConfiguration` object:
 
-## `html` (object)
+## `math` (object)
 
-Properties of the `html` object:
+Properties of the `math` object:
 
 ### `disabled` (boolean)
 
@@ -158,9 +166,9 @@ Properties of the `likertChoice` object:
 
 Properties of the `inputConfiguration` object:
 
-### `html` (object)
+### `math` (object)
 
-Properties of the `html` object:
+Properties of the `math` object:
 
 #### `disabled` (boolean)
 
@@ -268,17 +276,17 @@ Indicates if the item has to be displayed in the Settings Panel
 
 Indicates the label for the item that has to be displayed in the Settings Panel
 
-## `EditableHtmlPluginConfigure` (object)
+## `EditableHtmlPluginConfigureRequired` (object)
 
-Properties of the `EditableHtmlPluginConfigure` object:
+Properties of the `EditableHtmlPluginConfigureRequired` object:
 
 ### `inputConfiguration` (object)
 
 Properties of the `inputConfiguration` object:
 
-#### `html` (object)
+#### `math` (object)
 
-Properties of the `html` object:
+Properties of the `math` object:
 
 ##### `disabled` (boolean)
 
@@ -308,6 +316,10 @@ Properties of the `image` object:
 
 Indicates if the plugin is disabled or not
 
+### `required` (boolean)
+
+Indicates if the item is required and the value cannot be empty
+
 ### `settings` (boolean)
 
 Indicates if the item has to be displayed in the Settings Panel
@@ -320,9 +332,9 @@ Indicates the label for the item that has to be displayed in the Settings Panel
 
 Properties of the `EditableHtmlConfigureProp` object:
 
-### `html` (object)
+### `math` (object)
 
-Properties of the `html` object:
+Properties of the `math` object:
 
 #### `disabled` (boolean)
 
@@ -359,3 +371,51 @@ Properties of the `EditableHtmlButtonConfigure` object:
 ### `disabled` (boolean)
 
 Indicates if the plugin is disabled or not
+
+## `EditableHtmlPluginConfigure` (object)
+
+Properties of the `EditableHtmlPluginConfigure` object:
+
+### `inputConfiguration` (object)
+
+Properties of the `inputConfiguration` object:
+
+#### `math` (object)
+
+Properties of the `math` object:
+
+##### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+#### `audio` (object)
+
+Properties of the `audio` object:
+
+##### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+#### `video` (object)
+
+Properties of the `video` object:
+
+##### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+#### `image` (object)
+
+Properties of the `image` object:
+
+##### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+### `label` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel

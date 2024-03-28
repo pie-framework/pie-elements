@@ -294,9 +294,9 @@ Properties of the `prompt` object:
 
 Properties of the `inputConfiguration` object:
 
-##### `html` (object)
+##### `math` (object)
 
-Properties of the `html` object:
+Properties of the `math` object:
 
 ###### `disabled` (boolean)
 
@@ -358,9 +358,9 @@ Properties of the `rationale` object:
 
 Properties of the `inputConfiguration` object:
 
-##### `html` (object)
+##### `math` (object)
 
-Properties of the `html` object:
+Properties of the `math` object:
 
 ###### `disabled` (boolean)
 
@@ -418,9 +418,9 @@ Properties of the `teacherInstructions` object:
 
 Properties of the `inputConfiguration` object:
 
-##### `html` (object)
+##### `math` (object)
 
-Properties of the `html` object:
+Properties of the `math` object:
 
 ###### `disabled` (boolean)
 
@@ -546,9 +546,9 @@ Indicates if mathML that's already in model should be editable
 
 Properties of the `baseInputConfiguration` object:
 
-#### `html` (object)
+#### `math` (object)
 
-Properties of the `html` object:
+Properties of the `math` object:
 
 ##### `disabled` (boolean)
 
@@ -586,9 +586,9 @@ Properties of the `choices` object:
 
 Properties of the `inputConfiguration` object:
 
-##### `html` (object)
+##### `math` (object)
 
-Properties of the `html` object:
+Properties of the `math` object:
 
 ###### `disabled` (boolean)
 
@@ -646,9 +646,9 @@ Properties of the `EditableHtmlPluginConfigure` object:
 
 Properties of the `inputConfiguration` object:
 
-#### `html` (object)
+#### `math` (object)
 
-Properties of the `html` object:
+Properties of the `math` object:
 
 ##### `disabled` (boolean)
 
@@ -690,9 +690,9 @@ Indicates the label for the item that has to be displayed in the Settings Panel
 
 Properties of the `EditableHtmlConfigureProp` object:
 
-### `html` (object)
+### `math` (object)
 
-Properties of the `html` object:
+Properties of the `math` object:
 
 #### `disabled` (boolean)
 

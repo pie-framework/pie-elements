@@ -1,6 +1,11 @@
 import { PieModel } from '../../PieModel';
 import { PromptConfig } from '../../PromptConfig';
-import { ConfigureProp, EditableHtmlConfigureProp, EditableHtmlPluginConfigure } from '../ConfigurationProp';
+import {
+  ConfigureProp,
+  EditableHtmlConfigureProp,
+  EditableHtmlPluginConfigure,
+  EditableHtmlPluginConfigureRequired,
+} from '../ConfigurationProp';
 import { LikertChoice } from '../../LikertChoice';
 import { CommonConfigSettings } from '../../CommonConfigSettings';
 
@@ -17,14 +22,19 @@ import { CommonConfigSettings } from '../../CommonConfigSettings';
 export interface LikertPie extends PieModel {
   /** Indicates the likert scale */
   likertScale?: 'likert3' | 'likert5' | 'likert7';
+
   /** Indicates the likert type */
   likertType?: 'agreement' | 'frequency' | 'yesNo' | 'importance' | 'likelihood' | 'like';
+
   /** Indicates the likert type */
   likertOrientation?: 'horizontal' | 'vertical';
+
   /** The choice options for the question */
   choices: LikertChoice[];
+
   /** Indicates if Teacher Instructions are enabled */
   teacherInstructionsEnabled: boolean;
+
   /** Indicates if spellcheck is enabled for the author. Default value is true */
   spellCheckEnabled: boolean;
 }
@@ -47,12 +57,12 @@ export interface LikertConfigure extends PromptConfig, CommonConfigSettings {
   /**
    * Teacher Instructions configuration
    */
-  teacherInstructions?: EditableHtmlPluginConfigure;
+  teacherInstructions?: EditableHtmlPluginConfigureRequired;
 
   /**
    * Configuration for prompt
    */
-  prompt?: EditableHtmlPluginConfigure;
+  prompt?: EditableHtmlPluginConfigureRequired;
 
   /**
    * Base editable html input configuration regarding plugins that are enabled/disabled
