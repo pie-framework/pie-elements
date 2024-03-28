@@ -83,7 +83,7 @@ export class Scale extends React.Component {
   // Max Points
   updateMaxPointsFieldValue = ({ target }) => {
     const { scale, scaleIndex, onScaleChanged } = this.props || {};
-    const { maxPoints, scorePointsLabels, traits } = scale;
+    const { maxPoints } = scale;
 
     const numberValue = parseInt(target.value, 10);
 
@@ -96,19 +96,7 @@ export class Scale extends React.Component {
     if (numberValue < maxPoints) {
       this.showDecreaseMaxPointsModal({ newMaxPoints: numberValue });
     } else {
-      for (let i = 0; i < numberValue; i++) {
-        if (!scorePointsLabels[i] && scorePointsLabels[i] !== '') {
-          scorePointsLabels.push('');
-        }
-
-        traits.forEach((trait, index) => {
-          if (!traits[index].scorePointsDescriptors[i] && traits[index].scorePointsDescriptors[i] !== '') {
-            traits[index].scorePointsDescriptors.push('');
-          }
-        });
-      }
-
-      onScaleChanged(scaleIndex, { maxPoints: numberValue, scorePointsLabels, traits });
+      onScaleChanged(scaleIndex, { maxPoints: numberValue });
     }
   };
 
@@ -118,16 +106,10 @@ export class Scale extends React.Component {
 
   changeMaxPoints = () => {
     const { newMaxPoints } = this.state || {};
-    const { scaleIndex, onScaleChanged, scale } = this.props || {};
-    const { maxPoints } = scale || {};
-    let { scorePointsLabels } = scale || {};
+    const { scaleIndex, onScaleChanged } = this.props || {};
 
     if (newMaxPoints) {
-      if (newMaxPoints < maxPoints) {
-        scorePointsLabels = scorePointsLabels.slice(0, newMaxPoints);
-      }
-
-      onScaleChanged(scaleIndex, { maxPoints: newMaxPoints, scorePointsLabels });
+      onScaleChanged(scaleIndex, { maxPoints: newMaxPoints });
     }
 
     this.hideDecreaseMaxPointsModal();

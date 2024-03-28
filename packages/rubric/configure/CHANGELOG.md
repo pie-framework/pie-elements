@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.5.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric-configure@3.5.2...@pie-element/rubric-configure@3.5.3) (2024-03-26)
+
+**Note:** Version bump only for package @pie-element/rubric-configure
+
+
+
+
+
+## [3.5.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric-configure@3.5.1...@pie-element/rubric-configure@3.5.2) (2024-03-22)
+
+
+### Bug Fixes
+
+* don't push a value for empty sample answer ([0628eee](https://github.com/pie-framework/pie-elements/commit/0628eeeece526b11115e5608675f7846b2a73703))
+
+
+
+
+
+## [3.5.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric-configure@3.5.0...@pie-element/rubric-configure@3.5.1) (2024-03-22)
+
+
+### Bug Fixes
+
+* Move rubric from pie-lib/pie-toolbox.Instead of updating points when maxPoints or exclude zero changes, run a validation function PD-3573 ([567a540](https://github.com/pie-framework/pie-elements/commit/567a5405c4554916f9e6feccac91ebee154ba00f))
+
+
+
+
+
 # [3.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric-configure@3.4.0...@pie-element/rubric-configure@3.5.0) (2024-03-20)
 
 

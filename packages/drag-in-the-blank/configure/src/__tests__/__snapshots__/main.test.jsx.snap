@@ -86,6 +86,7 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
               },
             },
             "label": "Prompt",
+            "required": false,
             "settings": true,
           },
           "rationale": Object {
@@ -101,6 +102,7 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
               },
             },
             "label": "Rationale",
+            "required": false,
             "settings": true,
           },
           "settingsPanelDisabled": false,
@@ -122,6 +124,7 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
               },
             },
             "label": "Teacher Instructions",
+            "required": false,
             "settings": true,
           },
           "withRubric": Object {
@@ -576,6 +579,7 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
               },
             },
             "label": "Prompt",
+            "required": false,
             "settings": true,
           },
           "rationale": Object {
@@ -591,6 +595,7 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
               },
             },
             "label": "Rationale",
+            "required": false,
             "settings": true,
           },
           "settingsPanelDisabled": false,
@@ -612,6 +617,7 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
               },
             },
             "label": "Teacher Instructions",
+            "required": false,
             "settings": true,
           },
           "withRubric": Object {

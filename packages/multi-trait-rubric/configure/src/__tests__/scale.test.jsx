@@ -89,11 +89,7 @@ describe('Scale', () => {
 
         w.instance().updateMaxPointsFieldValue({ target: { value: maxPoints + 1 } });
 
-        expect(onScaleChanged).toBeCalledWith(0, {
-          maxPoints: maxPoints + 1,
-          scorePointsLabels,
-          traits,
-        });
+        expect(onScaleChanged).toBeCalledWith(0, { maxPoints: maxPoints + 1 });
       });
     });
 
@@ -103,7 +99,7 @@ describe('Scale', () => {
         w.instance().setState({ newMaxPoints: 10 });
         w.instance().changeMaxPoints();
 
-        expect(onScaleChanged).toBeCalledWith(0, { maxPoints: 10, scorePointsLabels });
+        expect(onScaleChanged).toBeCalledWith(0, { maxPoints: 10 });
       });
     });
 

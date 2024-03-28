@@ -73,6 +73,7 @@ export default {
         video: { disabled: false },
         image: { disabled: false },
       },
+      required: false,
     },
     lockChoiceOrder: {
       settings: true,
@@ -90,6 +91,7 @@ export default {
         video: { disabled: true },
         image: { disabled: false },
       },
+      required: false,
     },
     accessibility: {
       settings: false,
@@ -116,6 +118,7 @@ export default {
         video: { disabled: false },
         image: { disabled: false },
       },
+      required: false,
     },
     toolbarEditorPosition: {
       settings: false,

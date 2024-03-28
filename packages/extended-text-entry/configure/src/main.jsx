@@ -70,6 +70,7 @@ export class Main extends React.Component {
       multiple = {},
       withRubric = {},
       mathMlOptions = {},
+      baseInputConfiguration = {},
     } = configuration || {};
     const {
       errors = {},
@@ -125,6 +126,15 @@ export class Main extends React.Component {
       rubricEnabled: withRubric?.settings && toggle(withRubric?.label),
     };
 
+    const getPluginProps = (props) => {
+      return Object.assign(
+          {
+            ...baseInputConfiguration,
+          },
+          props || {},
+      );
+    };
+
     return (
       <layout.ConfigLayout
         dimensions={contentDimensions}
@@ -158,6 +168,7 @@ export class Main extends React.Component {
               uploadSoundSupport={uploadSoundSupport}
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               mathMlOptions={mathMlOptions}
+              pluginProps={getPluginProps(teacherInstructions?.inputConfiguration)}
             />
             {teacherInstructionsError && <div className={classes.errorText}>{teacherInstructionsError}</div>}
           </InputContainer>
@@ -180,6 +191,7 @@ export class Main extends React.Component {
               uploadSoundSupport={uploadSoundSupport}
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               mathMlOptions={mathMlOptions}
+              pluginProps={getPluginProps(prompt?.inputConfiguration)}
             />
             {promptError && <div className={classes.errorText}>{promptError}</div>}
           </InputContainer>

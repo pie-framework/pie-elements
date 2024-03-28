@@ -30,6 +30,7 @@ export default {
         video: { disabled: false },
         image: { disabled: false },
       },
+      required: false,
     },
     withRubric: {
       settings: false,

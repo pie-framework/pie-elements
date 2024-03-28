@@ -56,11 +56,13 @@ export class Root extends React.Component {
     } = configuration || {};
     const {
       backgroundImageEnabled,
+      errors = {},
       promptEnabled,
       spellCheckEnabled,
       teacherInstructionsEnabled,
       toolbarEditorPosition,
     } = model || {};
+    const { prompt: promptError, teacherInstructions: teacherInstructionsError } = errors;
 
     const defaultImageMaxWidth = maxImageWidth && maxImageWidth.prompt;
     const defaultImageMaxHeight = maxImageHeight && maxImageHeight.prompt;
@@ -111,6 +113,7 @@ export class Root extends React.Component {
               onChange={this.onTeacherInstructionsChanged}
               imageSupport={imageSupport}
               nonEmpty={false}
+              error={teacherInstructionsError}
               toolbarOpts={toolbarOpts}
               pluginProps={getPluginProps(teacherInstructions?.inputConfiguration)}
               spellCheck={spellCheckEnabled}
@@ -120,6 +123,7 @@ export class Root extends React.Component {
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               mathMlOptions={mathMlOptions}
             />
+            {teacherInstructionsError && <div className={classes.errorText}>{teacherInstructionsError}</div>}
           </InputContainer>
         )}
 
@@ -128,6 +132,7 @@ export class Root extends React.Component {
             <EditableHtml
               markup={model.prompt}
               onChange={this.onPromptChanged}
+              error={promptError}
               toolbarOpts={toolbarOpts}
               spellCheck={spellCheckEnabled}
               pluginProps={getPluginProps(prompt?.inputConfiguration)}
@@ -138,6 +143,7 @@ export class Root extends React.Component {
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               mathMlOptions={mathMlOptions}
             />
+            {promptError && <div className={classes.errorText}>{promptError}</div>}
           </InputContainer>
         )}
 
@@ -163,6 +169,11 @@ const styles = (theme) => ({
     paddingTop: theme.spacing.unit * 2,
     marginBottom: theme.spacing.unit * 2,
     width: '100%',
+  },
+  errorText: {
+    fontSize: theme.typography.fontSize - 2,
+    color: theme.palette.error.main,
+    paddingTop: theme.spacing.unit,
   },
 });
 

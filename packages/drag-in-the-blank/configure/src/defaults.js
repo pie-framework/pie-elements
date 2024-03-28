@@ -37,6 +37,7 @@ export default {
         video: { disabled: false },
         image: { disabled: false },
       },
+      required: false,
     },
     addChoice: {
       inputConfiguration: {
@@ -65,6 +66,7 @@ export default {
         video: { disabled: false },
         image: { disabled: false },
       },
+      required: false,
     },
     settingsPanelDisabled: false,
     teacherInstructions: {
@@ -75,6 +77,7 @@ export default {
         video: { disabled: false },
         image: { disabled: false },
       },
+      required: false,
     },
     minChoices: 2,
     maxResponseAreas: 10,

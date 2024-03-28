@@ -23,7 +23,7 @@ export function model(question, session, env) {
       imageUrl,
       prompt: promptEnabled ? prompt : null,
       backgroundImageEnabled,
-      language
+      language,
     };
 
     if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
@@ -56,3 +56,21 @@ export function outcome(/*config, session*/) {
     });
   });
 }
+
+// remove all html tags
+const getInnerText = (html) => (html || '').replaceAll(/<[^>]*>/g, '');
+
+// remove all html tags except img and iframe
+const getContent = (html) => (html || '').replace(/(<(?!img|iframe)([^>]+)>)/gi, '');
+
+export const validate = (model = {}, config = {}) => {
+  const errors = {};
+
+  ['teacherInstructions', 'prompt'].forEach((field) => {
+    if (config[field]?.required && !getContent(model[field])) {
+      errors[field] = 'This field is required.';
+    }
+  });
+
+  return errors;
+};

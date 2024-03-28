@@ -157,7 +157,7 @@ describe('Math-Inline Main', () => {
       expect(wrapper.find(HorizontalKeypad).length).toEqual(0);
       wrapper.instance().onSubFieldFocus('r1');
       wrapper.instance().onBlur({
-        relatedTarget: { offsetParent: { children: [{ attributes: { 'data-keypad': true } }] } },
+        relatedTarget: { offsetParent: { getAttribute: () => 'tooltip', children: [{ attributes: { 'data-keypad': true } }] } },
         currentTarget: { offsetParent: 'editor1' },
       });
       expect(wrapper.state().activeAnswerBlock).toEqual('r1');
@@ -168,7 +168,7 @@ describe('Math-Inline Main', () => {
 
       expect(wrapper.find(HorizontalKeypad).length).toEqual(0);
       wrapper.instance().onBlur({
-        relatedTarget: { offsetParent: { children: [{ attributes: { 'data-keypad': false } }] } },
+        relatedTarget: { offsetParent: { getAttribute: () => 'tooltip', children: [{ attributes: { 'data-keypad': false } }] } },
         currentTarget: { offsetParent: 'editor2' },
       });
       expect(wrapper.state().activeAnswerBlock).toEqual('');

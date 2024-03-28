@@ -234,7 +234,11 @@ export const createCorrectResponseSession = (question, env) => {
   });
 };
 
+// remove all html tags
 const getInnerText = (html) => (html || '').replaceAll(/<[^>]*>/g, '');
+
+// remove all html tags except img and iframe
+const getContent = (html) => (html || '').replace(/(<(?!img|iframe)([^>]+)>)/gi, '');
 
 export const validate = (model = {}, config = {}) => {
   const { categories, choices, correctResponse } = model;
@@ -252,26 +256,27 @@ export const validate = (model = {}, config = {}) => {
   const categoriesErrors = {};
 
   ['teacherInstructions', 'prompt', 'rationale'].forEach((field) => {
-    if (config[field]?.required && !getInnerText(model[field])) {
-      errors[field] = 'This field is required';
+    if (config[field]?.required && !getContent(model[field])) {
+      errors[field] = 'This field is required.';
     }
   });
 
   (categories || []).forEach((category) => {
     const { id, label } = category;
-    const parsedLabel = label.replace(/<(?:.|\n)*?>/gm, '');
-    if (parsedLabel.length > maxLengthPerCategory) {
+
+    if (getInnerText(label).length > maxLengthPerCategory) {
       categoriesErrors[id] = `Category labels should be no more than ${maxLengthPerCategory} characters long.`;
     }
   });
 
   (reversedChoices || []).forEach((choice, index) => {
     const { id, content } = choice;
-    const parsedContent = content.replace(/<(?:.|\n)*?>/gm, '');
-    if (parsedContent.length > maxLengthPerChoice) {
+
+    if (getInnerText(content).length > maxLengthPerChoice) {
       choicesErrors[id] = `Tokens should be no more than ${maxLengthPerChoice} characters long.`;
     }
-    if (!getInnerText(content)) {
+
+    if (!getContent(content)) {
       choicesErrors[id] = 'Tokens should not be empty.';
     } else {
       const identicalAnswer = reversedChoices.slice(index + 1).some((c) => c.content === content);
@@ -318,11 +323,14 @@ export const validate = (model = {}, config = {}) => {
     let duplicateCategory = '';
     (correctResponse || []).forEach((response) => {
       const { choices = [], alternateResponses = [], category } = response;
+
       if (duplicateAlternateIndex === -1) {
         duplicateAlternateIndex = isCorrectResponseDuplicated(choices, alternateResponses);
+
         if (duplicateAlternateIndex === -1) {
           duplicateAlternateIndex = isAlternateDuplicated(alternateResponses);
         }
+
         duplicateCategory = category;
       }
     });

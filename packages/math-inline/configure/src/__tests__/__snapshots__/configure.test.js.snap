@@ -70,6 +70,7 @@ exports[`Configure renders correctly with snapshot 1`] = `
             },
           },
           "label": "Prompt",
+          "required": false,
           "settings": true,
         },
         "rationale": Object {
@@ -85,6 +86,7 @@ exports[`Configure renders correctly with snapshot 1`] = `
             },
           },
           "label": "Rationale",
+          "required": false,
           "settings": true,
         },
         "responseType": Object {
@@ -118,6 +120,7 @@ exports[`Configure renders correctly with snapshot 1`] = `
             },
           },
           "label": "Teacher Instructions",
+          "required": false,
           "settings": true,
         },
         "withRubric": Object {
@@ -221,10 +224,10 @@ exports[`Configure renders correctly with snapshot 1`] = `
 
 exports[`GeneralConfigBlock renders correctly with snapshot 1`] = `
 <div
-  className="GeneralConfigBlock-container-2"
+  className="GeneralConfigBlock-container-3"
 >
   <InputContainer
-    className="GeneralConfigBlock-promptHolder-10"
+    className="GeneralConfigBlock-promptHolder-11"
     label="Prompt"
   >
     <EditableHtml
@@ -270,10 +273,10 @@ exports[`GeneralConfigBlock renders correctly with snapshot 1`] = `
     />
   </InputContainer>
   <div
-    className="GeneralConfigBlock-advancedResponse-18"
+    className="GeneralConfigBlock-advancedResponse-19"
   >
     <div
-      className="GeneralConfigBlock-flexContainer-6"
+      className="GeneralConfigBlock-flexContainer-7"
       style={
         Object {
           "justifyContent": "flex-start",
@@ -281,14 +284,14 @@ exports[`GeneralConfigBlock renders correctly with snapshot 1`] = `
       }
     >
       <div
-        className="GeneralConfigBlock-title-4"
+        className="GeneralConfigBlock-title-5"
       >
         Define Response
       </div>
       <WithStyles(Tooltip)
         classes={
           Object {
-            "tooltip": "GeneralConfigBlock-tooltip-16",
+            "tooltip": "GeneralConfigBlock-tooltip-17",
           }
         }
         disableFocusListener={true}
@@ -309,7 +312,7 @@ All correct answers (the primary and any alternates) should not be empty and sho
       </WithStyles(Tooltip)>
     </div>
     <InputContainer
-      className="GeneralConfigBlock-selectContainer-7"
+      className="GeneralConfigBlock-selectContainer-8"
       key="templateEditorType"
       label="Response Template Equation Editor"
     >
@@ -380,11 +383,11 @@ All correct answers (the primary and any alternates) should not be empty and sho
       </WithStyles(WithFormControlContext(Select))>
     </InputContainer>
     <div
-      className="GeneralConfigBlock-responseTemplate-8"
+      className="GeneralConfigBlock-responseTemplate-9"
       key="templateHolder"
     >
       <WithStyles(WithFormControlContext(InputLabel))
-        className="GeneralConfigBlock-templateTitle-3"
+        className="GeneralConfigBlock-templateTitle-4"
       >
         RESPONSE TEMPLATE
       </WithStyles(WithFormControlContext(InputLabel))>
@@ -392,7 +395,7 @@ All correct answers (the primary and any alternates) should not be empty and sho
         allowAnswerBlock={true}
         classNames={
           Object {
-            "editor": "GeneralConfigBlock-responseEditor-9",
+            "editor": "GeneralConfigBlock-responseEditor-10",
             "mathToolbar": undefined,
           }
         }
@@ -407,7 +410,7 @@ All correct answers (the primary and any alternates) should not be empty and sho
     </div>
   </div>
   <div
-    className="GeneralConfigBlock-flexContainer-6"
+    className="GeneralConfigBlock-flexContainer-7"
     style={
       Object {
         "justifyContent": "flex-start",
@@ -415,13 +418,13 @@ All correct answers (the primary and any alternates) should not be empty and sho
     }
   >
     <div
-      className="GeneralConfigBlock-title-4"
+      className="GeneralConfigBlock-title-5"
     >
       Define Correct Response
     </div>
   </div>
   <InputContainer
-    className="GeneralConfigBlock-selectContainer-7"
+    className="GeneralConfigBlock-selectContainer-8"
     label="Equation Editor"
   >
     <WithStyles(WithFormControlContext(Select))

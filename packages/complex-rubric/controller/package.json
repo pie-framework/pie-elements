@@ -1,13 +1,13 @@
 {
   "name": "@pie-element/complex-rubric-controller",
   "private": true,
-  "version": "2.5.0",
+  "version": "2.5.1",
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@pie-lib/pie-toolbox": "1.12.0",
+    "@pie-lib/pie-toolbox": "1.12.2",
     "lodash": "^4.17.15"
   },
   "author": "",
