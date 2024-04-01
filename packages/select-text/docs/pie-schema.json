@@ -386,6 +386,43 @@
               "title": "disabled"
             }
           }
+        },
+        "customPlugins": {
+          "description": "An array of objects that determine custom plugins.\nA custom plugin is an object which determines how the button will look like (icon) and the event name that will be triggered when button gets pressed (event).\nExample can be found at https://github.com/pie-framework/pie-lib/blob/develop/packages/demo/pages/editable-html.js#L425.",
+          "type": "array",
+          "items": {
+            "title": "CustomPlugin",
+            "type": "object",
+            "properties": {
+              "event": {
+                "description": "The name of the custom event. It needs to be valid (only letters, numbers and \"_\" can be used).\nPIE will emit the event prefixed with \"PIE-\".\nEg: event = 'client_custom_event_A' => the emitted event will be \"PIE-client_custom_event_A\"",
+                "type": "string",
+                "title": "event"
+              },
+              "iconAlt": {
+                "description": "The alt for the custom button icon",
+                "type": "string",
+                "title": "iconAlt"
+              },
+              "iconType": {
+                "description": "The icon type.\nCurrently, only \"SVG\" is supported.",
+                "type": "string",
+                "title": "iconType"
+              },
+              "icon": {
+                "description": "The icon string. Currently, only \"SVG\" is supported, so it needs to be a valid svg.",
+                "type": "string",
+                "title": "icon"
+              }
+            },
+            "required": [
+              "event",
+              "icon",
+              "iconAlt",
+              "iconType"
+            ]
+          },
+          "title": "customPlugins"
         }
       }
     },
@@ -399,6 +436,38 @@
           "title": "disabled"
         }
       }
+    },
+    "CustomPlugin": {
+      "title": "CustomPlugin",
+      "type": "object",
+      "properties": {
+        "event": {
+          "description": "The name of the custom event. It needs to be valid (only letters, numbers and \"_\" can be used).\nPIE will emit the event prefixed with \"PIE-\".\nEg: event = 'client_custom_event_A' => the emitted event will be \"PIE-client_custom_event_A\"",
+          "type": "string",
+          "title": "event"
+        },
+        "iconAlt": {
+          "description": "The alt for the custom button icon",
+          "type": "string",
+          "title": "iconAlt"
+        },
+        "iconType": {
+          "description": "The icon type.\nCurrently, only \"SVG\" is supported.",
+          "type": "string",
+          "title": "iconType"
+        },
+        "icon": {
+          "description": "The icon string. Currently, only \"SVG\" is supported, so it needs to be a valid svg.",
+          "type": "string",
+          "title": "icon"
+        }
+      },
+      "required": [
+        "event",
+        "icon",
+        "iconAlt",
+        "iconType"
+      ]
     },
     "ConfigureProp": {
       "title": "ConfigureProp",
@@ -467,6 +536,43 @@
                   "title": "disabled"
                 }
               }
+            },
+            "customPlugins": {
+              "description": "An array of objects that determine custom plugins.\nA custom plugin is an object which determines how the button will look like (icon) and the event name that will be triggered when button gets pressed (event).\nExample can be found at https://github.com/pie-framework/pie-lib/blob/develop/packages/demo/pages/editable-html.js#L425.",
+              "type": "array",
+              "items": {
+                "title": "CustomPlugin",
+                "type": "object",
+                "properties": {
+                  "event": {
+                    "description": "The name of the custom event. It needs to be valid (only letters, numbers and \"_\" can be used).\nPIE will emit the event prefixed with \"PIE-\".\nEg: event = 'client_custom_event_A' => the emitted event will be \"PIE-client_custom_event_A\"",
+                    "type": "string",
+                    "title": "event"
+                  },
+                  "iconAlt": {
+                    "description": "The alt for the custom button icon",
+                    "type": "string",
+                    "title": "iconAlt"
+                  },
+                  "iconType": {
+                    "description": "The icon type.\nCurrently, only \"SVG\" is supported.",
+                    "type": "string",
+                    "title": "iconType"
+                  },
+                  "icon": {
+                    "description": "The icon string. Currently, only \"SVG\" is supported, so it needs to be a valid svg.",
+                    "type": "string",
+                    "title": "icon"
+                  }
+                },
+                "required": [
+                  "event",
+                  "icon",
+                  "iconAlt",
+                  "iconType"
+                ]
+              },
+              "title": "customPlugins"
             }
           }
         },

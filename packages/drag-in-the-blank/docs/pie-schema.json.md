@@ -163,6 +163,35 @@ Properties of the `image` object:
 
 Indicates if the plugin is disabled or not
 
+### `customPlugins` (array)
+
+An array of objects that determine custom plugins.
+A custom plugin is an object which determines how the button will look like (icon) and the event name that will be triggered when button gets pressed (event).
+Example can be found at https://github.com/pie-framework/pie-lib/blob/develop/packages/demo/pages/editable-html.js#L425.
+
+The object is an array with all elements of the type `object`.
+
+The array object has the following properties:
+
+#### `event` (string, required)
+
+The name of the custom event. It needs to be valid (only letters, numbers and "_" can be used).
+PIE will emit the event prefixed with "PIE-".
+Eg: event = 'client_custom_event_A' => the emitted event will be "PIE-client_custom_event_A"
+
+#### `iconAlt` (string, required)
+
+The alt for the custom button icon
+
+#### `iconType` (string, required)
+
+The icon type.
+Currently, only "SVG" is supported.
+
+#### `icon` (string, required)
+
+The icon string. Currently, only "SVG" is supported, so it needs to be a valid svg.
+
 ## `EditableHtmlButtonConfigure` (object)
 
 Properties of the `EditableHtmlButtonConfigure` object:
@@ -170,6 +199,29 @@ Properties of the `EditableHtmlButtonConfigure` object:
 ### `disabled` (boolean)
 
 Indicates if the plugin is disabled or not
+
+## `CustomPlugin` (object)
+
+Properties of the `CustomPlugin` object:
+
+### `event` (string, required)
+
+The name of the custom event. It needs to be valid (only letters, numbers and "_" can be used).
+PIE will emit the event prefixed with "PIE-".
+Eg: event = 'client_custom_event_A' => the emitted event will be "PIE-client_custom_event_A"
+
+### `iconAlt` (string, required)
+
+The alt for the custom button icon
+
+### `iconType` (string, required)
+
+The icon type.
+Currently, only "SVG" is supported.
+
+### `icon` (string, required)
+
+The icon string. Currently, only "SVG" is supported, so it needs to be a valid svg.
 
 ## `ConfigureProp` (object)
 
@@ -223,6 +275,35 @@ Properties of the `image` object:
 
 Indicates if the plugin is disabled or not
 
+#### `customPlugins` (array)
+
+An array of objects that determine custom plugins.
+A custom plugin is an object which determines how the button will look like (icon) and the event name that will be triggered when button gets pressed (event).
+Example can be found at https://github.com/pie-framework/pie-lib/blob/develop/packages/demo/pages/editable-html.js#L425.
+
+The object is an array with all elements of the type `object`.
+
+The array object has the following properties:
+
+##### `event` (string, required)
+
+The name of the custom event. It needs to be valid (only letters, numbers and "_" can be used).
+PIE will emit the event prefixed with "PIE-".
+Eg: event = 'client_custom_event_A' => the emitted event will be "PIE-client_custom_event_A"
+
+##### `iconAlt` (string, required)
+
+The alt for the custom button icon
+
+##### `iconType` (string, required)
+
+The icon type.
+Currently, only "SVG" is supported.
+
+##### `icon` (string, required)
+
+The icon string. Currently, only "SVG" is supported, so it needs to be a valid svg.
+
 ### `required` (boolean)
 
 Indicates if the item is required and the value cannot be empty
@@ -274,6 +355,35 @@ Properties of the `image` object:
 ##### `disabled` (boolean)
 
 Indicates if the plugin is disabled or not
+
+#### `customPlugins` (array)
+
+An array of objects that determine custom plugins.
+A custom plugin is an object which determines how the button will look like (icon) and the event name that will be triggered when button gets pressed (event).
+Example can be found at https://github.com/pie-framework/pie-lib/blob/develop/packages/demo/pages/editable-html.js#L425.
+
+The object is an array with all elements of the type `object`.
+
+The array object has the following properties:
+
+##### `event` (string, required)
+
+The name of the custom event. It needs to be valid (only letters, numbers and "_" can be used).
+PIE will emit the event prefixed with "PIE-".
+Eg: event = 'client_custom_event_A' => the emitted event will be "PIE-client_custom_event_A"
+
+##### `iconAlt` (string, required)
+
+The alt for the custom button icon
+
+##### `iconType` (string, required)
+
+The icon type.
+Currently, only "SVG" is supported.
+
+##### `icon` (string, required)
+
+The icon string. Currently, only "SVG" is supported, so it needs to be a valid svg.
 
 ### `settings` (boolean)
 
