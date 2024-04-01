@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.25.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.24.0...@pie-element/pie-models@13.25.0) (2024-04-01)
+
+
+### Features
+
+* **ebsr:** add required fields functionality and fix validation PD-3592 ([a7fe66f](https://github.com/pie-framework/pie-elements/commit/a7fe66f2e46b0369efc6042e03194de437aff91c))
+
+
+
+
+
 # [13.24.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.23.0...@pie-element/pie-models@13.24.0) (2024-03-28)
 
 

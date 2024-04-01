@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-configure@7.4.2...@pie-element/number-line-configure@7.5.0) (2024-04-01)
+
+
+### Bug Fixes
+
+* **number-line:** add sanity checks for empty prompt and teacher instructions PD-3601 ([644bf63](https://github.com/pie-framework/pie-elements/commit/644bf632193baf8c56ecb4c09a44c6bde094ea2b))
+
+
+### Features
+
+* update pie-lib/pie-toolbox PD-3567, PD-3426 ([2a706d7](https://github.com/pie-framework/pie-elements/commit/2a706d799bb000c60b7a77a790de9dc66345ebf5))
+
+
+
+
+
 ## [7.4.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-configure@7.4.1...@pie-element/number-line-configure@7.4.2) (2024-03-28)
 
 

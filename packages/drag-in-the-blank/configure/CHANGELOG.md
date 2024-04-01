@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.9.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-configure@5.8.0...@pie-element/drag-in-the-blank-configure@5.9.0) (2024-04-01)
+
+
+### Bug Fixes
+
+* **drag-in-the-blank:** addChoice inputConfiguration image setting not working ([9859bf7](https://github.com/pie-framework/pie-elements/commit/9859bf74ac921d5e1c3fc8e30d3aa4dd2ee4de74))
+
+
+### Features
+
+* update pie-lib/pie-toolbox PD-3567, PD-3426 ([2a706d7](https://github.com/pie-framework/pie-elements/commit/2a706d799bb000c60b7a77a790de9dc66345ebf5))
+
+
+
+
+
 # [5.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-configure@5.7.0...@pie-element/drag-in-the-blank-configure@5.8.0) (2024-03-28)
 
 
