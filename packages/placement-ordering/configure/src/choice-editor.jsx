@@ -118,10 +118,10 @@ class ChoiceEditor extends React.Component {
       add: PropTypes.func.isRequired,
       delete: PropTypes.func.isRequired,
     }),
-    disableImages: PropTypes.bool,
     maxImageHeight: PropTypes.object,
     maxImageWidth: PropTypes.object,
     toolbarOpts: PropTypes.object,
+    pluginProps: PropTypes.object,
     placementArea: PropTypes.bool,
     singularChoiceLabel: PropTypes.string,
     pluralChoiceLabel: PropTypes.string,
@@ -232,8 +232,8 @@ class ChoiceEditor extends React.Component {
       correctResponse,
       choices,
       imageSupport,
-      disableImages,
       toolbarOpts,
+      pluginProps,
       singularChoiceLabel,
       pluralChoiceLabel,
       choicesLabel,
@@ -241,7 +241,7 @@ class ChoiceEditor extends React.Component {
       maxImageWidth,
       maxImageHeight,
       errors,
-      mathMlOptions = {}
+      mathMlOptions = {},
     } = this.props;
     const { warning } = this.state;
     const { choicesErrors, orderError } = errors || {};
@@ -274,8 +274,8 @@ class ChoiceEditor extends React.Component {
               onDelete={this.onDelete.bind(this, choice)}
               onChoiceChange={this.onChoiceChange}
               onDropChoice={(source, index) => this.onDropChoice(ordering, choice, source, index)}
-              disableImages={disableImages}
               toolbarOpts={toolbarOpts}
+              pluginProps={pluginProps}
               choices={choices}
               choicesLabel={choicesLabel}
               spellCheck={spellCheck}
