@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import {EditableHtml} from '@pie-lib/pie-toolbox/editable-html';
+import { EditableHtml } from '@pie-lib/pie-toolbox/editable-html';
 import { renderMath } from '@pie-lib/pie-toolbox/math-rendering-accessible';
 import find from 'lodash/find';
 import Button from '@material-ui/core/Button';
@@ -212,6 +212,7 @@ export class Choices extends React.Component {
       model: { choices },
       toolbarOpts,
       uploadSoundSupport,
+      imageSupport = {},
       pluginProps = {},
     } = this.props;
     const visibleChoices = this.getVisibleChoices() || [];
@@ -241,6 +242,7 @@ export class Choices extends React.Component {
                 <EditableHtml
                   ref={(ref) => (this.focusedNodeRef = ref)}
                   className={classes.prompt}
+                  imageSupport={imageSupport}
                   markup={choice.value}
                   pluginProps={pluginProps}
                   languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
