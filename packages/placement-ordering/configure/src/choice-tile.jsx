@@ -39,8 +39,8 @@ export class ChoiceTile extends React.Component {
     choices: PropTypes.array.isRequired,
     onChoiceChange: PropTypes.func.isRequired,
     onDelete: PropTypes.func.isRequired,
-    disableImages: PropTypes.bool,
     toolbarOpts: PropTypes.object,
+    pluginProps: PropTypes.object,
     choicesLabel: PropTypes.string,
     error: PropTypes.string,
     spellCheck: PropTypes.bool,
@@ -62,22 +62,16 @@ export class ChoiceTile extends React.Component {
       classes,
       onDelete,
       imageSupport,
-      disableImages,
       spellCheck,
       toolbarOpts,
+      pluginProps,
       maxImageWidth,
       maxImageHeight,
       error,
-      mathMlOptions = {}
+      mathMlOptions = {},
     } = this.props;
 
     const dragSourceOpts = {}; //dropEffect: moveOnDrag ? 'move' : 'copy'};
-
-    const choicePlugins = {
-      image: { disabled: disableImages },
-      audio: { disabled: true },
-      video: { disabled: true },
-    };
     const filteredDefaultPlugins = (DEFAULT_PLUGINS || []).filter(
       (p) => p !== 'bulleted-list' && p !== 'numbered-list',
     );
@@ -99,7 +93,7 @@ export class ChoiceTile extends React.Component {
             markup={label}
             imageSupport={imageSupport || undefined}
             onChange={this.onLabelChange}
-            pluginProps={choicePlugins}
+            pluginProps={pluginProps}
             toolbarOpts={toolbarOpts}
             activePlugins={filteredDefaultPlugins}
             spellCheck={spellCheck}

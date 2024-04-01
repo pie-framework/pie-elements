@@ -2,9 +2,81 @@ Config Object for @pie-elements/placement-ordering
 
 The schema defines the following properties:
 
+# `baseInputConfiguration` (object)
+
+Properties of the `baseInputConfiguration` object:
+
+## `math` (object)
+
+Properties of the `math` object:
+
+### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+## `audio` (object)
+
+Properties of the `audio` object:
+
+### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+## `video` (object)
+
+Properties of the `video` object:
+
+### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+## `image` (object)
+
+Properties of the `image` object:
+
+### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
 # `choiceLabel` (object)
 
 Properties of the `choiceLabel` object:
+
+## `inputConfiguration` (object)
+
+Properties of the `inputConfiguration` object:
+
+### `math` (object)
+
+Properties of the `math` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `audio` (object)
+
+Properties of the `audio` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `video` (object)
+
+Properties of the `video` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `image` (object)
+
+Properties of the `image` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
 
 ## `settings` (boolean)
 
@@ -17,6 +89,42 @@ Indicates the label for the item that has to be displayed in the Settings Panel
 # `choices` (object)
 
 Properties of the `choices` object:
+
+## `inputConfiguration` (object)
+
+Properties of the `inputConfiguration` object:
+
+### `math` (object)
+
+Properties of the `math` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `audio` (object)
+
+Properties of the `audio` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `video` (object)
+
+Properties of the `video` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `image` (object)
+
+Properties of the `image` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
 
 ## `settings` (boolean)
 
@@ -54,9 +162,41 @@ Indicates the label for the item that has to be displayed in the Settings Panel
 
 Properties of the `prompt` object:
 
-## `required` (boolean)
+## `inputConfiguration` (object)
 
-Indicates if the item is required and the value cannot be empty
+Properties of the `inputConfiguration` object:
+
+### `math` (object)
+
+Properties of the `math` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `audio` (object)
+
+Properties of the `audio` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `video` (object)
+
+Properties of the `video` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `image` (object)
+
+Properties of the `image` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
 
 ## `settings` (boolean)
 
@@ -129,6 +269,42 @@ Indicates the label for the item that has to be displayed in the Settings Panel
 # `rationale` (object)
 
 Properties of the `rationale` object:
+
+## `inputConfiguration` (object)
+
+Properties of the `inputConfiguration` object:
+
+### `math` (object)
+
+Properties of the `math` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `audio` (object)
+
+Properties of the `audio` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `video` (object)
+
+Properties of the `video` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `image` (object)
+
+Properties of the `image` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
 
 ## `required` (boolean)
 
@@ -209,6 +385,42 @@ Indicates the label for the item that has to be displayed in the Settings Panel
 # `teacherInstructions` (object)
 
 Properties of the `teacherInstructions` object:
+
+## `inputConfiguration` (object)
+
+Properties of the `inputConfiguration` object:
+
+### `math` (object)
+
+Properties of the `math` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `audio` (object)
+
+Properties of the `audio` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `video` (object)
+
+Properties of the `video` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `image` (object)
+
+Properties of the `image` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
 
 ## `required` (boolean)
 
@@ -400,6 +612,98 @@ Default: `true`
 
 The schema defines the following additional types:
 
+## `EditableHtmlConfigureProp` (object)
+
+Properties of the `EditableHtmlConfigureProp` object:
+
+### `math` (object)
+
+Properties of the `math` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `audio` (object)
+
+Properties of the `audio` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `video` (object)
+
+Properties of the `video` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `image` (object)
+
+Properties of the `image` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+## `EditableHtmlButtonConfigure` (object)
+
+Properties of the `EditableHtmlButtonConfigure` object:
+
+### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+## `EditableHtmlPluginConfigure` (object)
+
+Properties of the `EditableHtmlPluginConfigure` object:
+
+### `inputConfiguration` (object)
+
+Properties of the `inputConfiguration` object:
+
+#### `math` (object)
+
+Properties of the `math` object:
+
+##### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+#### `audio` (object)
+
+Properties of the `audio` object:
+
+##### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+#### `video` (object)
+
+Properties of the `video` object:
+
+##### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+#### `image` (object)
+
+Properties of the `image` object:
+
+##### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+### `label` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
+
 ## `ConfigureProp` (object)
 
 Properties of the `ConfigureProp` object:
@@ -412,9 +716,45 @@ Indicates if the item has to be displayed in the Settings Panel
 
 Indicates the label for the item that has to be displayed in the Settings Panel
 
-## `ConfigureRequiredProp` (object)
+## `EditableHtmlPluginConfigureRequired` (object)
 
-Properties of the `ConfigureRequiredProp` object:
+Properties of the `EditableHtmlPluginConfigureRequired` object:
+
+### `inputConfiguration` (object)
+
+Properties of the `inputConfiguration` object:
+
+#### `math` (object)
+
+Properties of the `math` object:
+
+##### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+#### `audio` (object)
+
+Properties of the `audio` object:
+
+##### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+#### `video` (object)
+
+Properties of the `video` object:
+
+##### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+#### `image` (object)
+
+Properties of the `image` object:
+
+##### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
 
 ### `required` (boolean)
 

@@ -8,6 +8,9 @@ import {
   ConfigureProp,
   ConfigurePropWithEnabled,
   ConfigureRequiredProp,
+  EditableHtmlConfigureProp,
+  EditableHtmlPluginConfigure,
+  EditableHtmlPluginConfigureRequired,
 } from '../ConfigurationProp';
 
 export interface Choice {
@@ -162,14 +165,20 @@ interface ConfigureMaxImageDimensionsProp {
  */
 export interface PlacementOrderingConfigure extends PromptConfig, CommonConfigSettings {
   /**
+   * Base editable html input configuration regarding plugins that are enabled/disabled
+   * E.g. audio, video, image
+   */
+  baseInputConfiguration?: EditableHtmlConfigureProp;
+
+  /**
    * Choice Label configuration
    */
-  choiceLabel?: ConfigureProp;
+  choiceLabel?: EditableHtmlPluginConfigure;
 
   /**
    * Choices configuration
    */
-  choices?: ConfigureProp;
+  choices?: EditableHtmlPluginConfigure;
 
   /**
    * Numbered Guides configuration
@@ -184,7 +193,7 @@ export interface PlacementOrderingConfigure extends PromptConfig, CommonConfigSe
   /**
    * Item Stem configuration
    */
-  prompt?: ConfigureRequiredProp;
+  prompt?: EditableHtmlPluginConfigure;
 
   /**
    * Lock Choice Order configuration
@@ -214,7 +223,7 @@ export interface PlacementOrderingConfigure extends PromptConfig, CommonConfigSe
   /**
    * Rationale configuration
    */
-  rationale?: ConfigureRequiredProp;
+  rationale?: EditableHtmlPluginConfigureRequired;
 
   /**
    * Configuration for the author's spellcheck
@@ -247,7 +256,7 @@ export interface PlacementOrderingConfigure extends PromptConfig, CommonConfigSe
   /**
    * Teacher Instructions configuration
    */
-  teacherInstructions?: ConfigureRequiredProp;
+  teacherInstructions?: EditableHtmlPluginConfigureRequired;
 
   /**
    * Maximum image width for input fields
