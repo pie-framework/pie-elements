@@ -1,7 +1,7 @@
 {
   "name": "@pie-element/number-line-configure",
   "private": true,
-  "version": "7.4.2",
+  "version": "7.5.0",
   "main": "lib/index.js",
   "module": "src/index.js",
   "dependencies": {
