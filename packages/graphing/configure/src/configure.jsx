@@ -118,6 +118,7 @@ export class Configure extends React.Component {
       language = {},
       languageChoices = {},
       mathMlOptions = {},
+      removeIncompleteTool = false,
     } = configuration || {};
     const {
       errors = {},
@@ -258,6 +259,7 @@ export class Configure extends React.Component {
           titlePlaceholder={title.placeholder}
           onChange={this.props.onModelChanged}
           mathMlOptions={mathMlOptions}
+          removeIncompleteTool={removeIncompleteTool}
         />
 
         <CorrectResponse
@@ -266,6 +268,7 @@ export class Configure extends React.Component {
           model={model}
           onChange={this.props.onModelChanged}
           mathMlOptions={mathMlOptions}
+          removeIncompleteTool={removeIncompleteTool}
         />
 
         {rationaleEnabled && (

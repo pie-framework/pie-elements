@@ -416,5 +416,6 @@ export default {
       mmlOutput: false,
       mmlEditing: false,
     },
+    removeIncompleteTool: false,
   },
 };
