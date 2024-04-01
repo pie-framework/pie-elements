@@ -16,10 +16,20 @@ export default {
     displayType: 'block',
   },
   configuration: {
+    baseInputConfiguration: {
+      audio: { disabled: false },
+      video: { disabled: false },
+      image: { disabled: false },
+    },
     prompt: {
       settings: true,
       label: 'Prompt',
       required: false,
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
     },
     settingsPanelDisabled: false,
     spellCheck: {
@@ -39,11 +49,28 @@ export default {
       settings: true,
       label: 'Rationale',
       required: false,
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
     },
     teacherInstructions: {
       settings: true,
       label: 'Teacher Instructions',
       required: false,
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
+    },
+    template: {
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
     },
     choiceRationale: {
       settings: true,

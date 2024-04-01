@@ -8,6 +8,17 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
     <Panel
       configuration={
         Object {
+          "baseInputConfiguration": Object {
+            "audio": Object {
+              "disabled": false,
+            },
+            "image": Object {
+              "disabled": false,
+            },
+            "video": Object {
+              "disabled": false,
+            },
+          },
           "choiceRationale": Object {
             "label": "Choice Rationale",
             "settings": true,
@@ -46,11 +57,33 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
             "settings": false,
           },
           "prompt": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": false,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": false,
+              },
+            },
             "label": "Prompt",
             "required": false,
             "settings": true,
           },
           "rationale": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": false,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": false,
+              },
+            },
             "label": "Rationale",
             "required": false,
             "settings": true,
@@ -62,9 +95,33 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
             "settings": false,
           },
           "teacherInstructions": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": false,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": false,
+              },
+            },
             "label": "Teacher Instructions",
             "required": false,
             "settings": true,
+          },
+          "template": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": false,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": false,
+              },
+            },
           },
           "toolbarEditorPosition": Object {
             "label": "Toolbar Editor Position",
@@ -204,6 +261,19 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
       nonEmpty={false}
       onChange={[Function]}
       onDone={[Function]}
+      pluginProps={
+        Object {
+          "audio": Object {
+            "disabled": false,
+          },
+          "image": Object {
+            "disabled": false,
+          },
+          "video": Object {
+            "disabled": false,
+          },
+        }
+      }
       toolbarOpts={
         Object {
           "position": "bottom",
@@ -239,6 +309,19 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
       nonEmpty={false}
       onChange={[Function]}
       onDone={[Function]}
+      pluginProps={
+        Object {
+          "audio": Object {
+            "disabled": false,
+          },
+          "image": Object {
+            "disabled": false,
+          },
+          "video": Object {
+            "disabled": false,
+          },
+        }
+      }
       toolbarOpts={
         Object {
           "position": "bottom",
@@ -312,6 +395,19 @@ There should be at most 10 choices defined per response area."
       }
       onChange={[Function]}
       onDone={[Function]}
+      pluginProps={
+        Object {
+          "audio": Object {
+            "disabled": false,
+          },
+          "image": Object {
+            "disabled": false,
+          },
+          "video": Object {
+            "disabled": false,
+          },
+        }
+      }
       responseAreaProps={
         Object {
           "maxResponseAreas": 10,
@@ -643,6 +739,19 @@ There should be at most 10 choices defined per response area."
       maxImageWidth={300}
       onChange={[Function]}
       onDone={[Function]}
+      pluginProps={
+        Object {
+          "audio": Object {
+            "disabled": false,
+          },
+          "image": Object {
+            "disabled": false,
+          },
+          "video": Object {
+            "disabled": false,
+          },
+        }
+      }
       toolbarOpts={
         Object {
           "position": "bottom",
@@ -665,6 +774,17 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
     <Panel
       configuration={
         Object {
+          "baseInputConfiguration": Object {
+            "audio": Object {
+              "disabled": false,
+            },
+            "image": Object {
+              "disabled": false,
+            },
+            "video": Object {
+              "disabled": false,
+            },
+          },
           "choiceRationale": Object {
             "label": "Choice Rationale",
             "settings": true,
@@ -703,11 +823,33 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
             "settings": false,
           },
           "prompt": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": false,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": false,
+              },
+            },
             "label": "Prompt",
             "required": false,
             "settings": true,
           },
           "rationale": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": false,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": false,
+              },
+            },
             "label": "Rationale",
             "required": false,
             "settings": true,
@@ -719,9 +861,33 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
             "settings": false,
           },
           "teacherInstructions": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": false,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": false,
+              },
+            },
             "label": "Teacher Instructions",
             "required": false,
             "settings": true,
+          },
+          "template": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": false,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": false,
+              },
+            },
           },
           "toolbarEditorPosition": Object {
             "label": "Toolbar Editor Position",
@@ -900,6 +1066,19 @@ There should be at most 10 choices defined per response area."
       }
       onChange={[Function]}
       onDone={[Function]}
+      pluginProps={
+        Object {
+          "audio": Object {
+            "disabled": false,
+          },
+          "image": Object {
+            "disabled": false,
+          },
+          "video": Object {
+            "disabled": false,
+          },
+        }
+      }
       responseAreaProps={
         Object {
           "maxResponseAreas": 10,
