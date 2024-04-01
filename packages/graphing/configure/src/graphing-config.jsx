@@ -188,7 +188,8 @@ export class GraphingConfig extends React.Component {
       dimensionsEnabled,
       showTitle,
       titlePlaceholder,
-      mathMlOptions = {}
+      mathMlOptions = {},
+      removeIncompleteTool,
     } = this.props;
     const {
       arrows,
@@ -301,6 +302,7 @@ export class GraphingConfig extends React.Component {
             titlePlaceholder={titlePlaceholder}
             toolbarTools={availableTools}
             mathMlOptions={mathMlOptions}
+            removeIncompleteTool={removeIncompleteTool}
           />
         </div>
 

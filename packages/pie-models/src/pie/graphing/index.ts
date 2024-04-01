@@ -520,4 +520,7 @@ export interface GraphingConfigure extends PromptConfig, CommonConfigSettings {
 
   /** Configuration for editable-html */
   mathMlOptions?: ConfigureMathMLProp;
+
+  /** Ability to remove incomplete tool added after switching current tool. */
+  removeIncompleteTool?: boolean;
 }
