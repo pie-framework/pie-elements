@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.11.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@7.11.0...@pie-element/charting@7.11.1) (2024-04-01)
+
+**Note:** Version bump only for package @pie-element/charting
+
+
+
+
+
 # [7.11.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@7.10.0...@pie-element/charting@7.11.0) (2024-04-01)
 
 
