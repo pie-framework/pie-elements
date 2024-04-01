@@ -338,6 +338,7 @@ export class Main extends React.Component {
     const { warning } = this.state;
     const { classes, model, configuration, onConfigurationChanged, imageSupport, uploadSoundSupport } = this.props;
     const {
+      baseInputConfiguration = {},
       choiceRationale = {},
       contentDimensions = {},
       lockChoiceOrder = {},
@@ -350,6 +351,7 @@ export class Main extends React.Component {
       settingsPanelDisabled,
       spellCheck = {},
       teacherInstructions = {},
+      template = {},
       withRubric = {},
       mathMlOptions = {},
       language = {},
@@ -437,6 +439,11 @@ export class Main extends React.Component {
       rubricEnabled: withRubric?.settings && toggle(withRubric?.label),
     };
 
+    const getPluginProps = (props = {}) => ({
+      ...baseInputConfiguration,
+      ...props,
+    });
+
     return (
       <layout.ConfigLayout
         dimensions={contentDimensions}
@@ -464,6 +471,7 @@ export class Main extends React.Component {
               nonEmpty={false}
               error={teacherInstructionsError}
               toolbarOpts={toolbarOpts}
+              pluginProps={getPluginProps(teacherInstructions?.inputConfiguration)}
               spellCheck={spellCheckEnabled}
               maxImageWidth={(maxImageWidth && maxImageWidth.teacherInstructions) || defaultImageMaxWidth}
               maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
@@ -486,6 +494,7 @@ export class Main extends React.Component {
               disableUnderline
               error={promptError}
               toolbarOpts={toolbarOpts}
+              pluginProps={getPluginProps(prompt?.inputConfiguration)}
               spellCheck={spellCheckEnabled}
               maxImageWidth={defaultImageMaxWidth}
               maxImageHeight={defaultImageMaxHeight}
@@ -512,6 +521,7 @@ export class Main extends React.Component {
 
         <div className={classes.responseArea}>
           <EditableHtml
+            pluginProps={getPluginProps(template?.inputConfiguration)}
             activePlugins={ALL_PLUGINS}
             toolbarOpts={{ position: 'top' }}
             responseAreaProps={{
@@ -568,6 +578,7 @@ export class Main extends React.Component {
               imageSupport={imageSupport}
               error={rationaleError}
               toolbarOpts={toolbarOpts}
+              pluginProps={getPluginProps(rationale?.inputConfiguration)}
               spellCheck={spellCheckEnabled}
               maxImageWidth={(maxImageWidth && maxImageWidth.rationale) || defaultImageMaxWidth}
               maxImageHeight={(maxImageHeight && maxImageHeight.rationale) || defaultImageMaxHeight}
