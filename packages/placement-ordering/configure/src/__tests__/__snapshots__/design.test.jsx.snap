@@ -8,11 +8,44 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
     <Panel
       configuration={
         Object {
+          "baseInputConfiguration": Object {
+            "audio": Object {
+              "disabled": false,
+            },
+            "image": Object {
+              "disabled": false,
+            },
+            "video": Object {
+              "disabled": false,
+            },
+          },
           "choiceLabel": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": false,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": false,
+              },
+            },
             "label": "Choice label",
             "settings": true,
           },
           "choices": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": true,
+              },
+              "image": Object {
+                "disabled": true,
+              },
+              "video": Object {
+                "disabled": true,
+              },
+            },
             "label": "Choices",
             "settings": true,
           },
@@ -68,11 +101,33 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
             "settings": true,
           },
           "prompt": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": false,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": false,
+              },
+            },
             "label": "Item Stem",
             "required": false,
             "settings": true,
           },
           "rationale": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": false,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": false,
+              },
+            },
             "label": "Rationale",
             "required": false,
             "settings": true,
@@ -100,6 +155,17 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
             "settings": true,
           },
           "teacherInstructions": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": false,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": false,
+              },
+            },
             "label": "Teacher Instructions",
             "required": false,
             "settings": true,
@@ -190,6 +256,19 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
       nonEmpty={false}
       onChange={[Function]}
       onDone={[Function]}
+      pluginProps={
+        Object {
+          "audio": Object {
+            "disabled": false,
+          },
+          "image": Object {
+            "disabled": false,
+          },
+          "video": Object {
+            "disabled": false,
+          },
+        }
+      }
       toolbarOpts={
         Object {
           "position": "bottom",
@@ -223,6 +302,19 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
       maxImageWidth={300}
       onChange={[Function]}
       onDone={[Function]}
+      pluginProps={
+        Object {
+          "audio": Object {
+            "disabled": false,
+          },
+          "image": Object {
+            "disabled": false,
+          },
+          "video": Object {
+            "disabled": false,
+          },
+        }
+      }
       toolbarOpts={
         Object {
           "position": "bottom",
@@ -291,6 +383,19 @@ The correct ordering should not be identical to the initial ordering."
           maxImageWidth={300}
           onChange={[Function]}
           onDone={[Function]}
+          pluginProps={
+            Object {
+              "audio": Object {
+                "disabled": false,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": false,
+              },
+            }
+          }
           toolbarOpts={
             Object {
               "position": "bottom",
@@ -303,7 +408,6 @@ The correct ordering should not be identical to the initial ordering."
       choices={Array []}
       choicesLabel="Choices"
       correctResponse={Array []}
-      disableImages={true}
       errors={Object {}}
       mathMlOptions={
         Object {
@@ -315,6 +419,19 @@ The correct ordering should not be identical to the initial ordering."
       maxImageWidth={300}
       onChange={[Function]}
       placementArea={false}
+      pluginProps={
+        Object {
+          "audio": Object {
+            "disabled": true,
+          },
+          "image": Object {
+            "disabled": true,
+          },
+          "video": Object {
+            "disabled": true,
+          },
+        }
+      }
       pluralChoiceLabel="Choices"
       singularChoiceLabel="Choice"
       toolbarOpts={
@@ -350,6 +467,19 @@ The correct ordering should not be identical to the initial ordering."
       maxImageWidth={300}
       onChange={[Function]}
       onDone={[Function]}
+      pluginProps={
+        Object {
+          "audio": Object {
+            "disabled": false,
+          },
+          "image": Object {
+            "disabled": false,
+          },
+          "video": Object {
+            "disabled": false,
+          },
+        }
+      }
       toolbarOpts={
         Object {
           "position": "bottom",
@@ -368,11 +498,44 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
     <Panel
       configuration={
         Object {
+          "baseInputConfiguration": Object {
+            "audio": Object {
+              "disabled": false,
+            },
+            "image": Object {
+              "disabled": false,
+            },
+            "video": Object {
+              "disabled": false,
+            },
+          },
           "choiceLabel": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": false,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": false,
+              },
+            },
             "label": "Choice label",
             "settings": true,
           },
           "choices": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": true,
+              },
+              "image": Object {
+                "disabled": true,
+              },
+              "video": Object {
+                "disabled": true,
+              },
+            },
             "label": "Choices",
             "settings": true,
           },
@@ -428,11 +591,33 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
             "settings": true,
           },
           "prompt": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": false,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": false,
+              },
+            },
             "label": "Item Stem",
             "required": false,
             "settings": false,
           },
           "rationale": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": false,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": false,
+              },
+            },
             "label": "Rationale",
             "required": false,
             "settings": true,
@@ -460,6 +645,17 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
             "settings": true,
           },
           "teacherInstructions": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": false,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": false,
+              },
+            },
             "label": "Teacher Instructions",
             "required": false,
             "settings": true,
@@ -550,6 +746,19 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
       nonEmpty={false}
       onChange={[Function]}
       onDone={[Function]}
+      pluginProps={
+        Object {
+          "audio": Object {
+            "disabled": false,
+          },
+          "image": Object {
+            "disabled": false,
+          },
+          "video": Object {
+            "disabled": false,
+          },
+        }
+      }
       toolbarOpts={
         Object {
           "position": "bottom",
@@ -583,6 +792,19 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
       maxImageWidth={300}
       onChange={[Function]}
       onDone={[Function]}
+      pluginProps={
+        Object {
+          "audio": Object {
+            "disabled": false,
+          },
+          "image": Object {
+            "disabled": false,
+          },
+          "video": Object {
+            "disabled": false,
+          },
+        }
+      }
       toolbarOpts={
         Object {
           "position": "bottom",
@@ -651,6 +873,19 @@ The correct ordering should not be identical to the initial ordering."
           maxImageWidth={300}
           onChange={[Function]}
           onDone={[Function]}
+          pluginProps={
+            Object {
+              "audio": Object {
+                "disabled": false,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": false,
+              },
+            }
+          }
           toolbarOpts={
             Object {
               "position": "bottom",
@@ -663,7 +898,6 @@ The correct ordering should not be identical to the initial ordering."
       choices={Array []}
       choicesLabel="Choices"
       correctResponse={Array []}
-      disableImages={true}
       errors={Object {}}
       mathMlOptions={
         Object {
@@ -675,6 +909,19 @@ The correct ordering should not be identical to the initial ordering."
       maxImageWidth={300}
       onChange={[Function]}
       placementArea={false}
+      pluginProps={
+        Object {
+          "audio": Object {
+            "disabled": true,
+          },
+          "image": Object {
+            "disabled": true,
+          },
+          "video": Object {
+            "disabled": true,
+          },
+        }
+      }
       pluralChoiceLabel="Choices"
       singularChoiceLabel="Choice"
       toolbarOpts={
@@ -710,6 +957,19 @@ The correct ordering should not be identical to the initial ordering."
       maxImageWidth={300}
       onChange={[Function]}
       onDone={[Function]}
+      pluginProps={
+        Object {
+          "audio": Object {
+            "disabled": false,
+          },
+          "image": Object {
+            "disabled": false,
+          },
+          "video": Object {
+            "disabled": false,
+          },
+        }
+      }
       toolbarOpts={
         Object {
           "position": "bottom",

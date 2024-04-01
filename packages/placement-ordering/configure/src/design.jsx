@@ -98,6 +98,7 @@ export class Design extends React.Component {
     const { model, classes, imageSupport, uploadSoundSupport, onModelChanged, configuration, onConfigurationChanged } =
       this.props;
     const {
+      baseInputConfiguration = {},
       choiceLabel = {},
       choices = {},
       contentDimensions = {},
@@ -178,6 +179,11 @@ export class Design extends React.Component {
       rubricEnabled: withRubric?.settings && toggle(withRubric?.label),
     };
 
+    const getPluginProps = (props = {}) => ({
+      ...baseInputConfiguration,
+      ...props,
+    });
+
     return (
       <layout.ConfigLayout
         dimensions={contentDimensions}
@@ -205,6 +211,7 @@ export class Design extends React.Component {
               nonEmpty={false}
               error={teacherInstructionsError}
               toolbarOpts={toolbarOpts}
+              pluginProps={getPluginProps(teacherInstructions?.inputConfiguration)}
               spellCheck={spellCheckEnabled}
               maxImageWidth={(maxImageWidth && maxImageWidth.teacherInstructions) || defaultImageMaxWidth}
               maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
@@ -225,6 +232,7 @@ export class Design extends React.Component {
               imageSupport={imageSupport}
               error={promptError}
               toolbarOpts={toolbarOpts}
+              pluginProps={getPluginProps(prompt?.inputConfiguration)}
               spellCheck={spellCheckEnabled}
               maxImageWidth={maxImageWidth && maxImageWidth.prompt}
               maxImageHeight={maxImageHeight && maxImageHeight.prompt}
@@ -264,6 +272,7 @@ export class Design extends React.Component {
                   markup={model.choiceLabel}
                   onChange={this.onChoiceAreaLabelChange}
                   toolbarOpts={toolbarOpts}
+                  pluginProps={getPluginProps(choiceLabel?.inputConfiguration)}
                   spellCheck={spellCheckEnabled}
                   maxImageWidth={maxChoicesImageWidth}
                   maxImageHeight={maxChoicesImageHeight}
@@ -301,8 +310,8 @@ export class Design extends React.Component {
               choices={model.choices}
               onChange={this.onChoiceEditorChange}
               imageSupport={imageSupport}
-              disableImages={!model.enableImages}
               toolbarOpts={toolbarOpts}
+              pluginProps={getPluginProps(choices?.inputConfiguration)}
               choicesLabel={choices.label}
               placementArea={model.placementArea}
               singularChoiceLabel={singularLabel}
@@ -325,6 +334,7 @@ export class Design extends React.Component {
               imageSupport={imageSupport}
               error={rationaleError}
               toolbarOpts={toolbarOpts}
+              pluginProps={getPluginProps(rationale?.inputConfiguration)}
               spellCheck={spellCheckEnabled}
               maxImageWidth={(maxImageWidth && maxImageWidth.rationale) || defaultImageMaxWidth}
               maxImageHeight={(maxImageHeight && maxImageHeight.rationale) || defaultImageMaxHeight}
