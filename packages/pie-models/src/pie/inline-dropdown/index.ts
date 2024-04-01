@@ -7,7 +7,9 @@ import {
   ConfigureMaxImageDimensionsProp,
   ConfigureProp,
   ConfigurePropWithEnabled,
-  ConfigureRequiredProp,
+  EditableHtmlConfigureProp,
+  EditableHtmlPluginConfigure,
+  EditableHtmlPluginConfigureRequired,
 } from '../ConfigurationProp';
 
 export interface Choice {
@@ -117,6 +119,12 @@ export interface InlineDropdownPie extends PieModel {
  */
 export interface InlineDropdownConfigure extends PromptConfig, CommonConfigSettings {
   /**
+   * Base editable html input configuration regarding plugins that are enabled/disabled
+   * E.g. audio, video, image
+   */
+  baseInputConfiguration?: EditableHtmlConfigureProp;
+
+  /**
    * Choices configuration
    */
   choices?: ConfigureProp;
@@ -124,7 +132,7 @@ export interface InlineDropdownConfigure extends PromptConfig, CommonConfigSetti
   /**
    * Item Stem configuration
    */
-  prompt?: ConfigureRequiredProp;
+  prompt?: EditableHtmlPluginConfigureRequired;
 
   /**
    * Lock Choice Order configuration
@@ -139,7 +147,7 @@ export interface InlineDropdownConfigure extends PromptConfig, CommonConfigSetti
   /**
    * Rationale configuration
    */
-  rationale?: ConfigureRequiredProp;
+  rationale?: EditableHtmlPluginConfigureRequired;
 
   /**
    * Configuration for the author's spellcheck
@@ -169,7 +177,12 @@ export interface InlineDropdownConfigure extends PromptConfig, CommonConfigSetti
   /**
    * Teacher Instructions configuration
    */
-  teacherInstructions?: ConfigureRequiredProp;
+  teacherInstructions?: EditableHtmlPluginConfigureRequired;
+
+  /**
+   * Template configuration
+   */
+  template?: EditableHtmlPluginConfigure;
 
   /**
    * Maximum number of response areas
