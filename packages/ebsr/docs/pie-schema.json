@@ -384,7 +384,7 @@
           }
         },
         "prompt": {
-          "title": "EditableHtmlPluginConfigure",
+          "title": "EditableHtmlPluginConfigureRequired",
           "type": "object",
           "properties": {
             "inputConfiguration": {
@@ -436,6 +436,11 @@
                   }
                 }
               }
+            },
+            "required": {
+              "description": "Indicates if the item is required and the value cannot be empty",
+              "type": "boolean",
+              "title": "required"
             },
             "settings": {
               "description": "Indicates if the item has to be displayed in the Settings Panel",
@@ -471,7 +476,7 @@
           }
         },
         "rationale": {
-          "title": "EditableHtmlPluginConfigure",
+          "title": "EditableHtmlPluginConfigureRequired",
           "type": "object",
           "properties": {
             "inputConfiguration": {
@@ -523,6 +528,11 @@
                   }
                 }
               }
+            },
+            "required": {
+              "description": "Indicates if the item is required and the value cannot be empty",
+              "type": "boolean",
+              "title": "required"
             },
             "settings": {
               "description": "Indicates if the item has to be displayed in the Settings Panel",
@@ -553,7 +563,7 @@
           }
         },
         "teacherInstructions": {
-          "title": "EditableHtmlPluginConfigure",
+          "title": "EditableHtmlPluginConfigureRequired",
           "type": "object",
           "properties": {
             "inputConfiguration": {
@@ -605,6 +615,11 @@
                   }
                 }
               }
+            },
+            "required": {
+              "description": "Indicates if the item is required and the value cannot be empty",
+              "type": "boolean",
+              "title": "required"
             },
             "settings": {
               "description": "Indicates if the item has to be displayed in the Settings Panel",
@@ -862,8 +877,8 @@
         }
       }
     },
-    "EditableHtmlPluginConfigure": {
-      "title": "EditableHtmlPluginConfigure",
+    "EditableHtmlPluginConfigureRequired": {
+      "title": "EditableHtmlPluginConfigureRequired",
       "type": "object",
       "properties": {
         "inputConfiguration": {
@@ -915,6 +930,11 @@
               }
             }
           }
+        },
+        "required": {
+          "description": "Indicates if the item is required and the value cannot be empty",
+          "type": "boolean",
+          "title": "required"
         },
         "settings": {
           "description": "Indicates if the item has to be displayed in the Settings Panel",
@@ -1028,6 +1048,72 @@
           "description": "Indicates if mathML that's already in model should be editable",
           "type": "number",
           "title": "mmlEditing"
+        }
+      }
+    },
+    "EditableHtmlPluginConfigure": {
+      "title": "EditableHtmlPluginConfigure",
+      "type": "object",
+      "properties": {
+        "inputConfiguration": {
+          "title": "EditableHtmlConfigureProp",
+          "type": "object",
+          "properties": {
+            "math": {
+              "title": "EditableHtmlButtonConfigure",
+              "type": "object",
+              "properties": {
+                "disabled": {
+                  "description": "Indicates if the plugin is disabled or not",
+                  "type": "boolean",
+                  "title": "disabled"
+                }
+              }
+            },
+            "audio": {
+              "title": "EditableHtmlButtonConfigure",
+              "type": "object",
+              "properties": {
+                "disabled": {
+                  "description": "Indicates if the plugin is disabled or not",
+                  "type": "boolean",
+                  "title": "disabled"
+                }
+              }
+            },
+            "video": {
+              "title": "EditableHtmlButtonConfigure",
+              "type": "object",
+              "properties": {
+                "disabled": {
+                  "description": "Indicates if the plugin is disabled or not",
+                  "type": "boolean",
+                  "title": "disabled"
+                }
+              }
+            },
+            "image": {
+              "title": "EditableHtmlButtonConfigure",
+              "type": "object",
+              "properties": {
+                "disabled": {
+                  "description": "Indicates if the plugin is disabled or not",
+                  "type": "boolean",
+                  "title": "disabled"
+                }
+              }
+            }
+          }
+        },
+        "settings": {
+          "description": "Indicates if the item has to be displayed in the Settings Panel",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+          "type": "string",
+          "title": "label"
         }
       }
     },

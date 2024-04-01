@@ -304,6 +304,7 @@ export class Main extends React.Component {
 
         <Choices
           model={model}
+          imageSupport={imageSupport}
           duplicates={model.duplicates}
           error={choicesError}
           onChange={this.onResponsesChanged}

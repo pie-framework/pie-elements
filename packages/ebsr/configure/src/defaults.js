@@ -31,7 +31,8 @@ const defaultConfig = {
       audio: { disabled: false },
       video: { disabled: false },
       image: { disabled: false },
-    }
+    },
+    required: false,
   },
   rationale: {
     settings: true,
@@ -40,7 +41,8 @@ const defaultConfig = {
       audio: { disabled: false },
       video: { disabled: false },
       image: { disabled: false },
-    }
+    },
+    required: false,
   },
   settingsPanelDisabled: true,
   studentInstructions: {
@@ -54,7 +56,8 @@ const defaultConfig = {
       audio: { disabled: false },
       video: { disabled: false },
       image: { disabled: false },
-    }
+    },
+    required: false,
   },
   choicesLayout: {
     settings: false,

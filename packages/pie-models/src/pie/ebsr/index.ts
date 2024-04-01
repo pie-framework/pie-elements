@@ -3,7 +3,8 @@ import {
   ConfigureMathMLProp,
   ConfigureProp,
   EditableHtmlConfigureProp,
-  EditableHtmlPluginConfigure
+  EditableHtmlPluginConfigure,
+  EditableHtmlPluginConfigureRequired,
 } from '../ConfigurationProp';
 import { PromptConfig } from '../../PromptConfig';
 import { CommonConfigSettings } from '../../CommonConfigSettings';
@@ -138,9 +139,9 @@ interface PartConfiguration {
   lockChoiceOrder?: ConfigureProp;
 
   /**
-   * Indicates whether the Edit prompt input should be displayed
+   * Prompt configuration
    */
-  prompt?: EditableHtmlPluginConfigure;
+  prompt?: EditableHtmlPluginConfigureRequired;
 
   /**
    * Indicates if the settings panel is not available
@@ -155,7 +156,7 @@ interface PartConfiguration {
   /**
    * Rationale configuration
    */
-  rationale?: EditableHtmlPluginConfigure;
+  rationale?: EditableHtmlPluginConfigureRequired;
 
   /**
    * Student Instructions configuration
@@ -165,7 +166,7 @@ interface PartConfiguration {
   /**
    * Teacher Instructions configuration
    */
-  teacherInstructions?: EditableHtmlPluginConfigure;
+  teacherInstructions?: EditableHtmlPluginConfigureRequired;
 
   /** Indicates the layout of choices for player
    * @default: 'vertical'
