@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.9.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@2.8.0...@pie-element/match-list@2.9.0) (2024-04-01)
+
+
+### Features
+
+* **inline-dropdown:** upgrade pie-toolbox PD-2465 ([828d1c1](https://github.com/pie-framework/pie-elements/commit/828d1c1bc9e9221c1e141baaa8f89a4929ad0eb9))
+
+
+
+
+
 # [2.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@2.7.1...@pie-element/match-list@2.8.0) (2024-04-01)
 
 
