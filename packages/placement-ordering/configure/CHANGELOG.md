@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-configure@7.7.0...@pie-element/placement-ordering-configure@7.8.0) (2024-04-01)
+
+
+### Features
+
+* Add configuration for custom buttons PD-3528 ([bd85aa5](https://github.com/pie-framework/pie-elements/commit/bd85aa53144f69b1f713209edbb888fc4fb48fd6))
+
+
+
+
+
 # [7.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-configure@7.6.2...@pie-element/placement-ordering-configure@7.7.0) (2024-04-01)
 
 
