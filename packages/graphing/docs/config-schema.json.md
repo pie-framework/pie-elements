@@ -822,6 +822,10 @@ Indicates if model should have mathML output instead of latex
 
 Indicates if mathML that's already in model should be editable
 
+# `removeIncompleteTool` (boolean)
+
+Ability to remove incomplete tool added after switching current tool.
+
 # `showPrompt` (boolean)
 
 Determines whether prompt field will be displayed or not

@@ -1128,6 +1128,11 @@
         }
       }
     },
+    "removeIncompleteTool": {
+      "description": "Ability to remove incomplete tool added after switching current tool.",
+      "type": "boolean",
+      "title": "removeIncompleteTool"
+    },
     "showPrompt": {
       "description": "Determines whether prompt field will be displayed or not",
       "default": true,

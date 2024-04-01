@@ -355,6 +355,7 @@ exports[`Configure renders snapshot 1`] = `
             "required": false,
             "settings": true,
           },
+          "removeIncompleteTool": false,
           "scoringType": Object {
             "label": "Scoring Type",
             "settings": false,
@@ -905,6 +906,7 @@ exports[`Configure renders snapshot 1`] = `
         ],
       }
     }
+    removeIncompleteTool={false}
     showLabels={true}
     titlePlaceholder="Click here to add a title for this graph"
   />
@@ -991,6 +993,7 @@ exports[`Configure renders snapshot 1`] = `
         ],
       }
     }
+    removeIncompleteTool={false}
   />
   <InputContainer
     label="Rationale"
