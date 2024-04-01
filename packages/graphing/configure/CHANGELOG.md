@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.12.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@5.12.0...@pie-element/graphing-configure@5.12.1) (2024-04-01)
+
+
+### Bug Fixes
+
+* **graphing:** Fixed issue when incomplete tool is hidden on changing current tool | SC-30392 ([0d4d21e](https://github.com/pie-framework/pie-elements/commit/0d4d21e8efa217b283ddccec88fe1c34291a27f9))
+
+
+
+
+
 # [5.12.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@5.11.1...@pie-element/graphing-configure@5.12.0) (2024-04-01)
 
 

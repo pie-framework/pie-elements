@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.8.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-configure@3.8.0...@pie-element/multi-trait-rubric-configure@3.8.1) (2024-04-01)
+
+**Note:** Version bump only for package @pie-element/multi-trait-rubric-configure
+
+
+
+
+
 # [3.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-configure@3.7.0...@pie-element/multi-trait-rubric-configure@3.8.0) (2024-04-01)
 
 
