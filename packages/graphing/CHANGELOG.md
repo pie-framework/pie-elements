@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.12.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@5.12.0...@pie-element/graphing@5.12.1) (2024-04-01)
+
+
+### Bug Fixes
+
+* check for pie-author when configuration is set PD-3614 ([a40d3d9](https://github.com/pie-framework/pie-elements/commit/a40d3d954486cc782d5e80a7c6120c2912c58b39))
+
+
+
+
+
 # [5.12.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@5.11.1...@pie-element/graphing@5.12.0) (2024-04-01)
 
 

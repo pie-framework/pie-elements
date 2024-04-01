@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.27.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.26.0...@pie-element/pie-models@13.27.0) (2024-04-01)
+
+
+### Features
+
+* Add configuration for custom buttons PD-3528 ([bd85aa5](https://github.com/pie-framework/pie-elements/commit/bd85aa53144f69b1f713209edbb888fc4fb48fd6))
+
+
+
+
+
 # [13.26.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.25.0...@pie-element/pie-models@13.26.0) (2024-04-01)
 
 
