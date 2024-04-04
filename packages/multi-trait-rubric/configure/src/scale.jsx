@@ -247,6 +247,7 @@ export class Scale extends React.Component {
       maxMaxPoints,
       expandedPluginProps = {},
       labelPluginProps = {},
+      imageSupport = {},
     } = this.props || {};
 
     const { maxPoints, scorePointsLabels, traitLabel, traits } = scale || {};
@@ -312,6 +313,7 @@ export class Scale extends React.Component {
           maxMaxPoints={maxMaxPoints}
           expandedPluginProps={expandedPluginProps}
           labelPluginProps={labelPluginProps}
+          imageSupport={imageSupport}
         />
 
         {traits.map((trait, index) => (
@@ -337,6 +339,7 @@ export class Scale extends React.Component {
             mathMlOptions={mathMlOptions}
             expandedPluginProps={expandedPluginProps}
             labelPluginProps={labelPluginProps}
+            imageSupport={imageSupport}
           />
         ))}
 

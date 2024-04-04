@@ -19,7 +19,7 @@ class Main extends React.Component {
   };
 
   render() {
-    const { model, configuration, onConfigurationChanged, onModelChanged } = this.props || {};
+    const { model, configuration, onConfigurationChanged, onModelChanged, imageSupport } = this.props || {};
     const {
       baseInputConfiguration = {},
       contentDimensions = {},
@@ -64,6 +64,7 @@ class Main extends React.Component {
             groups={{
               Properties: panelProperties,
             }}
+            imageSupport={imageSupport}
           />
         }
       >
@@ -75,6 +76,7 @@ class Main extends React.Component {
             mathMlOptions={mathMlOptions}
             rubricless={rubricless}
             pluginOpts={baseInputConfiguration}
+            imageSupport={imageSupport}
           />
         </div>
       </layout.ConfigLayout>

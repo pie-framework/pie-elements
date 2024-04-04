@@ -21,7 +21,7 @@ export default {
         math: { disabled: true },
         audio: { disabled: false },
         video: { disabled: false },
-        image: { disabled: true },
+        image: { disabled: false },
       },
     },
     labelInput: {
