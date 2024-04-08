@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.8.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-controller@5.8.1...@pie-element/graphing-controller@5.8.2) (2024-04-08)
+
+
+### Bug Fixes
+
+* **graphing:** add sanity check for session in controller to prevent error in pie-website where it's initially undefined PD-3602 ([5efc2aa](https://github.com/pie-framework/pie-elements/commit/5efc2aa0e5c9375044babec90c6cd7edd0df2853))
+
+
+
+
+
 ## [5.8.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-controller@5.8.0...@pie-element/graphing-controller@5.8.1) (2024-04-01)
 
 **Note:** Version bump only for package @pie-element/graphing-controller
