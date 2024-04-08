@@ -109,6 +109,9 @@ const styles = (theme) => ({
     width: 'fit-content',
     padding: '.5rem 0',
   },
+  radioButton: {
+    color: '#000000 !important',
+  },
 });
 
 export class CorrectResponse extends React.Component {
@@ -428,13 +431,13 @@ export class CorrectResponse extends React.Component {
           <FormControlLabel
             className={classes.radioButtonClass}
             value="1"
-            control={<Radio checked={gssLineData.numberOfLines === 1} />}
+            control={<Radio checked={gssLineData.numberOfLines === 1} className={classes.radioButton} />}
             label="One"
           />
           <FormControlLabel
             className={classes.radioButtonClass}
             value="2"
-            control={<Radio checked={gssLineData.numberOfLines === 2} />}
+            control={<Radio checked={gssLineData.numberOfLines === 2} className={classes.radioButton} />}
             label="Two"
           />
         </RadioGroup>
