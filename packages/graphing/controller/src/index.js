@@ -166,6 +166,11 @@ export const normalize = (question) => ({ ...defaults, ...question });
 export function model(question, session, env) {
   return new Promise((resolve) => {
     const normalizedQuestion = normalize(question);
+
+    // added a sanity check for session for environments where it is not passed initially (ex. pie-website)
+    if (session === undefined || session === null) {
+      session = {};
+    }
     // ensure removing of invalid answers
     // need this if undo redo was last operation
     session.answer = removeInvalidAnswers(session.answer);
