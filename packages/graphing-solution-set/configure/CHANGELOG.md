@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.6.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-solution-set-configure@1.6.0...@pie-element/graphing-solution-set-configure@1.6.1) (2024-04-08)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox SC-30530 ([23436bf](https://github.com/pie-framework/pie-elements/commit/23436bfcb951b0daef2119354c78283ae21dd8b8))
+
+
+
+
+
 # [1.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-solution-set-configure@1.5.1...@pie-element/graphing-solution-set-configure@1.6.0) (2024-04-08)
 
 
