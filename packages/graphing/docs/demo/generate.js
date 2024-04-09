@@ -77,44 +77,44 @@
 //   toolbarTools: ['line']
 // };
 
-const SCmodel =       {
-  "promptEnabled": true,
-  "domain": { "min": -10, "max": 10, "step": 1, "labelStep": 1, "axisLabel": "x" },
-  "range": { "min": -10, "max": 10, "step": 1, "labelStep": 1, "axisLabel": "y" },
-  "backgroundMarks": [],
-  "answers": { "correctAnswer": { "name": "Correct Answer", "marks": [] } },
-  "arrows": { "left": true, "right": true, "up": true, "down": true },
-  "defaultGridConfiguration": 0,
-  "graph": { "width": 480, "height": 480 },
-  "includeAxes": true,
-  "labels": {},
-  "labelsEnabled": true,
-  "padding": true,
-  "prompt": "",
-  "rationale": "",
-  "standardGrid": true,
-  "title": "",
-  "toolbarTools": [
-    "circle",
-    "line",
-    "label",
-    "parabola",
-    "point",
-    "polygon",
-    "ray",
-    "segment",
-    "sine",
-    "vector",
-    "absolute",
-    "exponential"
+const SCmodel = {
+  promptEnabled: true,
+  domain: { min: -10, max: 10, step: 1, labelStep: 1, axisLabel: 'x' },
+  range: { min: -10, max: 10, step: 1, labelStep: 1, axisLabel: 'y' },
+  backgroundMarks: [],
+  answers: { correctAnswer: { name: 'Correct Answer', marks: [] } },
+  arrows: { left: true, right: true, up: true, down: true },
+  defaultGridConfiguration: 0,
+  graph: { width: 480, height: 480 },
+  includeAxes: true,
+  labels: {},
+  labelsEnabled: true,
+  padding: true,
+  prompt: '',
+  rationale: '',
+  standardGrid: true,
+  title: '',
+  toolbarTools: [
+    'circle',
+    'line',
+    'label',
+    'parabola',
+    'point',
+    'polygon',
+    'ray',
+    'segment',
+    'sine',
+    'vector',
+    'absolute',
+    'exponential',
   ],
-  "coordinatesOnHover": false,
-  "rationaleEnabled": false,
-  "teacherInstructionsEnabled": false,
-  "studentInstructionsEnabled": false,
-  "defaultTool": "line",
-  "titleEnabled": true,
-  "dimensionsEnabled": true
+  coordinatesOnHover: false,
+  rationaleEnabled: false,
+  teacherInstructionsEnabled: false,
+  studentInstructionsEnabled: false,
+  defaultTool: 'line',
+  titleEnabled: true,
+  dimensionsEnabled: true,
 };
 
 const oldModel = {
@@ -191,11 +191,10 @@ const oldModel = {
   rationale: 'Rationale goes here',
   title: 'Graph title',
   rubricEnabled: false,
-  language: 'es_ES'
 };
 
 exports.model = (id, element) => ({
   id,
   element,
-  ...SCmodel
+  ...oldModel,
 });
