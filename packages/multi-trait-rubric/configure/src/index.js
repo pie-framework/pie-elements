@@ -16,22 +16,28 @@ export default class MultiTraitRubricElement extends HTMLElement {
     this._configuration = configurationWithDefaults();
   }
 
-  validateModel = (m) => {
-    const validatedModel = m;
+  updateModelAccordingToReceivedProps = (m) => {
+    if (!m) {
+      return { ...defaults.model };
+    }
+
+    const validatedModel = { ...m };
     const { scales, excludeZero } = validatedModel;
 
     (scales || []).forEach(scale => {
+      if (!scale) return;
+
       const { maxPoints } = scale || {};
 
-      scale.scorePointsLabels = [ ...scale.scorePointsLabels ];
-      scale.traits = [ ...scale.traits ];
+      scale.scorePointsLabels = [ ...(scale.scorePointsLabels || []) ];
+      scale.traits = [ ...(scale.traits || []) ];
 
       const howManyScorePointLabelsShouldHave = excludeZero ? maxPoints : maxPoints + 1;
       const howManyScorePointLabelsItHas = scale.scorePointsLabels.length;
 
       if (howManyScorePointLabelsItHas !== howManyScorePointLabelsShouldHave) {
         if (howManyScorePointLabelsItHas < howManyScorePointLabelsShouldHave) {
-          for (let i = 0; i< howManyScorePointLabelsShouldHave - howManyScorePointLabelsItHas; i++) {
+          for (let i = 0; i < howManyScorePointLabelsShouldHave - howManyScorePointLabelsItHas; i++) {
             scale.scorePointsLabels.push('');
           }
         } else {
@@ -40,13 +46,15 @@ export default class MultiTraitRubricElement extends HTMLElement {
       }
 
       (scale.traits || []).forEach(trait => {
-        trait.scorePointsDescriptors = [ ...trait.scorePointsDescriptors ];
+        if (!trait) return;
+
+        trait.scorePointsDescriptors = [ ...(trait.scorePointsDescriptors || []) ];
 
         const howManyScorePointDescriptorsItHas = trait.scorePointsDescriptors.length;
 
         if (howManyScorePointDescriptorsItHas !== howManyScorePointLabelsShouldHave) {
           if (howManyScorePointDescriptorsItHas < howManyScorePointLabelsShouldHave) {
-            for (let i = 0; i< howManyScorePointLabelsShouldHave - howManyScorePointDescriptorsItHas; i++) {
+            for (let i = 0; i < howManyScorePointLabelsShouldHave - howManyScorePointDescriptorsItHas; i++) {
               trait.scorePointsDescriptors.push('');
             }
           } else {
