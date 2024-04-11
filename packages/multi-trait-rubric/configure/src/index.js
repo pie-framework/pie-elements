@@ -68,7 +68,7 @@ export default class MultiTraitRubricElement extends HTMLElement {
   };
 
   set model(m) {
-    this._model = this.validateModel(modelWithDefaults(m));
+    this._model = this.updateModelAccordingToReceivedProps(modelWithDefaults(m));
     this._render();
   }
 
@@ -78,7 +78,7 @@ export default class MultiTraitRubricElement extends HTMLElement {
   }
 
   onModelChanged = (m) => {
-    this._model = this.validateModel(modelWithDefaults(m));
+    this._model = this.updateModelAccordingToReceivedProps(modelWithDefaults(m));
     this._render();
     this.dispatchEvent(new ModelUpdatedEvent(this._model, false));
   };

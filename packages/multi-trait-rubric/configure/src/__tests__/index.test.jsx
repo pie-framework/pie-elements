@@ -282,9 +282,6 @@ const configuration = () => ({
             settings: true,
             label: 'Half Scoring',
         },
-        // commenting this in order to use the dynamic width if the width was not set by the client (PD-3203)
-        // width: '900px',
-        // these should not be set to true (should not be used) for now
         showStandards: {
             settings: false,
             label: 'Show Standards',
@@ -388,24 +385,23 @@ describe('MultiTraitRubricElement', () => {
     describe('updateModelAccordingToReceivedProps', () => {
         it('should return the same model if it is already valid', () => {
             const validModel = model();
-            const validatedModel = element.validateModel(validModel);
+            const validatedModel = element.updateModelAccordingToReceivedProps(validModel);
             expect(validatedModel).toEqual(validModel);
         });
 
         it('should return an empty model if the input model is undefined', () => {
-            const validatedModel = element.validateModel(undefined);
+            const validatedModel = element.updateModelAccordingToReceivedProps(undefined);
             expect(validatedModel).toEqual(defaults.model);
         });
 
         it('should return an empty model if the input model is null', () => {
-            const validatedModel = element.validateModel(null);
+            const validatedModel = element.updateModelAccordingToReceivedProps(null);
             expect(validatedModel).toEqual(defaults.model);
         });
 
-
         it('should return the model with an empty scales array if scales array is empty', () => {
             const inputModel = model({ scales: [] });
-            const validatedModel = element.validateModel(inputModel);
+            const validatedModel = element.updateModelAccordingToReceivedProps(inputModel);
             expect(validatedModel.scales).toEqual([]);
         });
 
@@ -424,7 +420,7 @@ describe('MultiTraitRubricElement', () => {
                     },
                 ],
             });
-            const validatedModel = element.validateModel(inputModel);
+            const validatedModel = element.updateModelAccordingToReceivedProps(inputModel);
             expect(validatedModel.scales[0].traits).toEqual([]);
             expect(validatedModel.scales[1].traits).toEqual([]);
         });
@@ -453,9 +449,9 @@ describe('MultiTraitRubricElement', () => {
                     },
                 ],
             });
-            const validatedModel = element.validateModel(inputModel);
-            expect(validatedModel.scales[0].scorePointsLabels).toEqual(["","","",""]);
-            expect(validatedModel.scales[1].scorePointsLabels).toEqual(["",""]);
+            const validatedModel = element.updateModelAccordingToReceivedProps(inputModel);
+            expect(validatedModel.scales[0].scorePointsLabels).toEqual(["", "", "", ""]);
+            expect(validatedModel.scales[1].scorePointsLabels).toEqual(["", ""]);
         });
 
         it('should handle undefined or null scorePointsDescriptors array within traits', () => {
@@ -475,9 +471,9 @@ describe('MultiTraitRubricElement', () => {
                     },
                 ],
             });
-            const validatedModel = element.validateModel(inputModel);
-            expect(validatedModel.scales[0].traits[0].scorePointsDescriptors).toEqual(["","","","",""]);
-            expect(validatedModel.scales[0].traits[1].scorePointsDescriptors).toEqual(["","","","",""]);
+            const validatedModel = element.updateModelAccordingToReceivedProps(inputModel);
+            expect(validatedModel.scales[0].traits[0].scorePointsDescriptors).toEqual(["", "" ,"", "", ""]);
+            expect(validatedModel.scales[0].traits[1].scorePointsDescriptors).toEqual(["", "", "", "", ""]);
         });
 
         it('should adjust the model if scorePointsLabels do not match the expected length', () => {
@@ -496,7 +492,7 @@ describe('MultiTraitRubricElement', () => {
                     },
                 ],
             });
-            const validatedModel = element.validateModel(invalidModel);
+            const validatedModel = element.updateModelAccordingToReceivedProps(invalidModel);
             expect(validatedModel.scales[0].scorePointsLabels.length).toBe(4);
         });
 
@@ -515,7 +511,7 @@ describe('MultiTraitRubricElement', () => {
                     },
                 ],
             });
-            const validatedModel = element.validateModel(invalidModel);
+            const validatedModel = element.updateModelAccordingToReceivedProps(invalidModel);
             expect(validatedModel.scales[0].traits[0].scorePointsDescriptors.length).toBe(4);
             expect(validatedModel.scales[0].traits[0].scorePointsDescriptors[2]).toBe('');
             expect(validatedModel.scales[0].traits[0].scorePointsDescriptors[3]).toBe('');
@@ -536,7 +532,7 @@ describe('MultiTraitRubricElement', () => {
                     },
                 ],
             });
-            const validatedModel = element.validateModel(invalidModel);
+            const validatedModel = element.updateModelAccordingToReceivedProps(invalidModel);
             expect(validatedModel.scales[0].scorePointsLabels.length).toBe(3);
             expect(validatedModel.scales[0].traits[0].scorePointsDescriptors.length).toBe(3);
         });
