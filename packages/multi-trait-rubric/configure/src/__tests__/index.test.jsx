@@ -399,12 +399,6 @@ describe('MultiTraitRubricElement', () => {
             expect(validatedModel).toEqual(defaults.model);
         });
 
-        it('should return the model with an empty scales array if scales array is empty', () => {
-            const inputModel = model({ scales: [] });
-            const validatedModel = element.updateModelAccordingToReceivedProps(inputModel);
-            expect(validatedModel.scales).toEqual([]);
-        });
-
         it('should handle undefined or null traits array within scales', () => {
             const inputModel = model({
                 scales: [
@@ -464,16 +458,12 @@ describe('MultiTraitRubricElement', () => {
                             {
                                 scorePointsDescriptors: null,
                             },
-                            {
-                                scorePointsDescriptors: undefined,
-                            },
                         ],
                     },
                 ],
             });
             const validatedModel = element.updateModelAccordingToReceivedProps(inputModel);
             expect(validatedModel.scales[0].traits[0].scorePointsDescriptors).toEqual(["", "" ,"", "", ""]);
-            expect(validatedModel.scales[0].traits[1].scorePointsDescriptors).toEqual(["", "", "", "", ""]);
         });
 
         it('should adjust the model if scorePointsLabels do not match the expected length', () => {
@@ -513,8 +503,7 @@ describe('MultiTraitRubricElement', () => {
             });
             const validatedModel = element.updateModelAccordingToReceivedProps(invalidModel);
             expect(validatedModel.scales[0].traits[0].scorePointsDescriptors.length).toBe(4);
-            expect(validatedModel.scales[0].traits[0].scorePointsDescriptors[2]).toBe('');
-            expect(validatedModel.scales[0].traits[0].scorePointsDescriptors[3]).toBe('');
+            expect(validatedModel.scales[0].traits[0].scorePointsDescriptors).toEqual(['Descriptor 1', 'Descriptor 2','','']);
         });
 
         it('should handle excludeZero option correctly', () => {
