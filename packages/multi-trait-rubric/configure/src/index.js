@@ -90,7 +90,6 @@ export default class MultiTraitRubricElement extends HTMLElement {
   }
 
   _render() {
-    console.log('THE MODEL', this._model);
     if (this._model) {
       let element = React.createElement(Main, {
         model: this._model,

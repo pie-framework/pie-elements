@@ -42,7 +42,8 @@ const styles = (theme) => ({
   primaryBlockGreyHeader: {
     paddingTop: theme.spacing.unit * 1.5,
   },
-  errorText: {
+  scorePointErrorText: {
+    position: 'absolute',
     fontSize: theme.typography.fontSize - 2,
     color: theme.palette.error.main,
     paddingTop: theme.spacing.unit / 2,
@@ -200,7 +201,7 @@ export class TraitsHeaderTile extends React.Component {
                   uploadSoundSupport={uploadSoundSupport}
                   mathMlOptions={mathMlOptions}
                 />
-                {error && <div className={classes.errorText}>{error}</div>}
+                {error && <div className={classes.scorePointErrorText}>{error}</div>}
               </Block>
             );
           })}

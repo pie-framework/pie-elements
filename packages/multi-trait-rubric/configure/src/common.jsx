@@ -220,7 +220,7 @@ export const ScorePoint = withStyles((theme) => ({
               pluginProps={pluginProps}
               activePlugins={filteredDefaultPlugins}
               spellCheck={spellCheck}
-              toolbarOpts={alignToRight && { alignment: 'right' }}
+              toolbarOpts={alignToRight ? { alignment: 'right' } : {}}
               uploadSoundSupport={uploadSoundSupport}
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               mathMlOptions={mathMlOptions}
@@ -397,7 +397,7 @@ export const ExpandedInput = withStyles({
         onChange={onChange}
         placeholder={placeholder}
         pluginProps={pluginProps}
-        toolbarOpts={alignToRight && { alignment: 'right' }}
+        toolbarOpts={alignToRight ? { alignment: 'right' } : {}}
         spellCheck={spellCheck}
         uploadSoundSupport={uploadSoundSupport}
         languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
