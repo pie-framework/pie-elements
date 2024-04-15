@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.9.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/boilerplate-item-type@2.9.1...@pie-element/boilerplate-item-type@2.9.2) (2024-04-15)
+
+**Note:** Version bump only for package @pie-element/boilerplate-item-type
+
+
+
+
+
 ## [2.9.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/boilerplate-item-type@2.9.0...@pie-element/boilerplate-item-type@2.9.1) (2024-04-01)
 
 **Note:** Version bump only for package @pie-element/boilerplate-item-type
