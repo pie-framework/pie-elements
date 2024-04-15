@@ -27,15 +27,15 @@ export const getPartialScore = (question, session) => {
 export const outcome = (question, session, env) =>
   new Promise((resolve) => {
     if (!session || isEmpty(session)) {
-      resolve({ score: 0, empty: true });
+      resolve({ score: 0, empty: true, test: env.test });
     }
 
     session = normalizeSession(session);
 
     if (env.mode !== 'evaluate') {
-      resolve({ score: undefined, completed: undefined });
+      resolve({ score: undefined, completed: undefined, test: env.test });
     } else {
-      resolve({ score: 1 });
+      resolve({ score: 1, test: env.test });
     }
   });
 
