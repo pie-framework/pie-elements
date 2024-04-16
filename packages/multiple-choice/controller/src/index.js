@@ -141,12 +141,23 @@ export const getScore = (config, session) => {
 export function outcome(model, session, env) {
   return new Promise((resolve) => {
     if (!session || isEmpty(session)) {
-      resolve({ score: 0, empty: true, extraProps: { test: 'test' } });
+      const result = { score: 0, empty: true };
+
+      if (env.test) {
+        result.extraProps = { test: env.test };
+      }
+
+      resolve(result);
     } else {
       const partialScoringEnabled = partialScoring.enabled(model, env) && model.choiceMode !== 'radio';
       const score = getScore(model, session);
+      const result = { score: partialScoringEnabled ? score : score === 1 ? 1 : 0, empty: false };
 
-      resolve({ score: partialScoringEnabled ? score : score === 1 ? 1 : 0, empty: false, extraProps: { test: 'test' } });
+      if (env.test) {
+        result.extraProps = { test: env.test };
+      }
+
+      resolve(result);
     }
   });
 }
