@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.7.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/boilerplate-item-type-controller@2.7.2...@pie-element/boilerplate-item-type-controller@2.7.3) (2024-04-16)
+
+
+### Bug Fixes
+
+* revert previous experiments and add another one PD-3664 ([954d576](https://github.com/pie-framework/pie-elements/commit/954d576cdc0632c00fef10c75fb3008ed6fec487))
+
+
+
+
+
 ## [2.7.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/boilerplate-item-type-controller@2.7.1...@pie-element/boilerplate-item-type-controller@2.7.2) (2024-04-15)
 
 **Note:** Version bump only for package @pie-element/boilerplate-item-type-controller

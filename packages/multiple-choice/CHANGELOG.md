@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.12.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@8.12.2...@pie-element/multiple-choice@8.12.3) (2024-04-16)
+
+
+### Bug Fixes
+
+* revert previous experiments and add another one PD-3664 ([954d576](https://github.com/pie-framework/pie-elements/commit/954d576cdc0632c00fef10c75fb3008ed6fec487))
+
+
+
+
+
 ## [8.12.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@8.12.1...@pie-element/multiple-choice@8.12.2) (2024-04-15)
 
 **Note:** Version bump only for package @pie-element/multiple-choice
