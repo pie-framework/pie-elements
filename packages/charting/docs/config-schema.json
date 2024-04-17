@@ -800,6 +800,11 @@
         }
       }
     },
+    "labelsCharactersLimit": {
+      "description": "Indicates the maximum character limit for X and Y axis labels",
+      "type": "number",
+      "title": "labelsCharactersLimit"
+    },
     "languageChoices": {
       "description": "Language choices configuration\nOnly available if language is enabled",
       "type": "object",
@@ -848,6 +853,10 @@
     "promptLabel": {
       "description": "The label for the item stem/prompt field",
       "default": "Item Stemm",
+      "examples": [
+        "Question Prompt",
+        "Item Stem"
+      ],
       "type": "string",
       "title": "promptLabel"
     },
