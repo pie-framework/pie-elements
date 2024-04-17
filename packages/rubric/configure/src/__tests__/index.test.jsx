@@ -18,34 +18,7 @@ const model = (extras) => ({
     maxPointsEnabled: true,
     ...extras,
 });
-const configuration = () => ({
-    baseInputConfiguration: {
-        audio: { disabled: false },
-        video: { disabled: false },
-        image: { disabled: false },
-    },
-    rubriclessInstruction: {
-        inputConfiguration: {
-            audio: { disabled: false },
-            video: { disabled: false },
-            image: { disabled: false },
-        },
-    },
-    showExcludeZero: {
-        settings: true,
-        label: 'Ability to exclude zero',
-    },
-    showMaxPoint: {
-        settings: true,
-        label: 'Show max points dropdown',
-    },
-    settingsPanelDisabled: false,
-    mathMlOptions: {
-        mmlOutput: false,
-        mmlEditing: false,
-    },
-    maxMaxPoints: 9,
-    });
+const configuration = (c) => ({...defaults.configuration, ...c});
 
 describe('RubricElement', () => {
     let element;
@@ -85,11 +58,11 @@ describe('RubricElement', () => {
     });
 
     describe('onConfigurationChanged', () => {
-        it('should call _render method on configuration change', () => {
-            const newConfiguration = configuration();
+        it('should call _render method on configuration change and overwrite the defaults with the new values', () => {
+            const newConfiguration = configuration({maxMaxPoints: 10});
             const renderSpy = jest.spyOn(element, '_render');
             element.onConfigurationChanged(newConfiguration);
-            expect(element._configuration).toEqual(newConfiguration);
+            expect(element._configuration.maxMaxPoints).toEqual(10);
             expect(renderSpy).toHaveBeenCalled();
         });
     });
@@ -123,65 +96,55 @@ describe('RubricElement', () => {
 
         it('should handle undefined points and sampleAnswers arrays', () => {
             const validatedModel = element.updateModelAccordingToReceivedProps({ maxPoints: 5, excludeZero: false });
-            expect(validatedModel.points).toEqual(["", "", "", "", "", ""]);
+            expect(validatedModel.points).toEqual(['', '', '', '', '', '']);
             expect(validatedModel.sampleAnswers).toEqual([null, null, null, null, null, null]);
         });
 
-        it('should handle case when howManyPointsDoesItHave is less than howManyPointsShouldHave, maxPointsChanged & excludeZeroChanged', () => {
-            const nextModel = {
+        it('should handle case when howManyPointsDoesItHave is less than howManyPointsShouldHave with maxPoints & excludeZero changed', () => {
+            const nextModel = model({
                 maxPoints: 7,
                 excludeZero: true,
-                points: ['A','B', 'C', 'D'],
-                sampleAnswers: [true, true, false, false],
-            };
+            });
             const result = element.updateModelAccordingToReceivedProps(nextModel);
             expect(result.points).toEqual(['A', 'B', 'C', 'D', '', '', '']);
             expect(result.sampleAnswers).toEqual([true, true, false, false, null, null, null]);
         });
 
         it('should handle case when howManyPointsDoesItHave is less than howManyPointsShouldHave and maxPointsChanged', () => {
-            const nextModel = {
+            const nextModel = model({
                 maxPoints: 4,
-                excludeZero: false,
-                points: ['A', 'B', 'C', 'D'],
-                sampleAnswers: [true, true, false, false],
-            };
+                excludeZero: false
+            });
             const result = element.updateModelAccordingToReceivedProps(nextModel);
             expect(result.points).toEqual(['A', 'B', 'C', 'D', '']);
             expect(result.sampleAnswers).toEqual([true, true, false, false, null]);
         });
 
         it('should handle case when howManyPointsDoesItHave is greater than howManyPointsShouldHave and excludeZeroChanged', () => {
-            const nextModel = {
+            const nextModel = model({
                 maxPoints: 3,
                 excludeZero: true,
-                points: ['A', 'B', 'C', 'D'],
-                sampleAnswers: [true, true, false, false],
-            };
+            });
             const result = element.updateModelAccordingToReceivedProps(nextModel);
             expect(result.points).toEqual(['B', 'C', 'D']);
             expect(result.sampleAnswers).toEqual([true, false, false]);
         });
 
         it('should handle case when howManyPointsDoesItHave is greater than howManyPointsShouldHave and maxPointsChanged', () => {
-            const nextModel = {
+            const nextModel = model({
                 maxPoints: 1,
                 excludeZero: false,
-                points: ['A', 'B', 'C', 'D'],
-                sampleAnswers: [true, true, false, false],
-            };
+            });
             const result = element.updateModelAccordingToReceivedProps(nextModel);
             expect(result.points).toEqual(['A','B']);
             expect(result.sampleAnswers).toEqual([true, true]);
         });
 
         it('should handle case when howManyPointsDoesItHave is greater than howManyPointsShouldHave, maxPointsChanged & excludeZeroChanged', () => {
-            const nextModel = {
+            const nextModel = model({
                 maxPoints: 1,
                 excludeZero: true,
-                points: ['A', 'B', 'C', 'D'],
-                sampleAnswers: [true, true, false, false],
-            };
+            });
             const result = element.updateModelAccordingToReceivedProps(nextModel);
             expect(result.points).toEqual(['B']);
             expect(result.sampleAnswers).toEqual([true]);

@@ -17,15 +17,18 @@ export default class MultiTraitRubricElement extends HTMLElement {
   }
 
   updateModelAccordingToReceivedProps = (m) => {
+    const currentModel = {...this._model};
     if (!m) {
-      return { ...defaults.model };
+      return currentModel;
     }
 
     const validatedModel = { ...m };
-    const { scales, excludeZero } = validatedModel;
+    const { scales, excludeZero } = validatedModel || {};
 
     (scales || []).forEach(scale => {
-      if (!scale) return;
+      if (!scale) {
+        scale = { scorePointsLabels: [], traits: [] };
+      }
 
       const { maxPoints } = scale || {};
 
@@ -46,7 +49,9 @@ export default class MultiTraitRubricElement extends HTMLElement {
       }
 
       (scale.traits || []).forEach(trait => {
-        if (!trait) return;
+        if (!trait) {
+          trait = { scorePointsDescriptors: [] };
+        }
 
         trait.scorePointsDescriptors = [ ...(trait.scorePointsDescriptors || []) ];
 
