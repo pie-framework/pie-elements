@@ -151,18 +151,16 @@ export const getScore = (question, session, env = {}) => {
     }
   }
 
+  let score = {
+    score: parseFloat(result.toFixed(2)),
+    answers,
+  };
+
   if (env.extraProps && env.extraProps.correctResponseEnabled) {
-    return {
-      score: parseFloat(result.toFixed(2)),
-      correctResponses: correctResponses,
-      answers,
-    };
-  } else {
-    return {
-      score: parseFloat(result.toFixed(2)),
-      answers,
-    };
+    score.correctResponses = correctResponses;
   }
+
+  return score;
 };
 
 // eslint-disable-next-line no-unused-vars
