@@ -125,6 +125,7 @@ export class Configure extends React.Component {
       chartTypeLabel,
       language = {},
       languageChoices = {},
+      labelsCharactersLimit,
     } = configuration || {};
     const {
       errors,
@@ -260,6 +261,7 @@ export class Configure extends React.Component {
           authorNewCategoryDefaults={authorNewCategoryDefaults}
           chartingOptions={chartingOptions}
           mathMlOptions={mathMlOptions}
+          labelsCharactersLimit={labelsCharactersLimit}
         />
 
         <CorrectResponse

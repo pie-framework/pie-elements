@@ -34,6 +34,7 @@ export const normalize = (question) => ({
 
 export const getScore = (question, session, env = {}) => {
   const { correctAnswer, data: initialData = [], scoringType } = question;
+  let correctResponses = [];
 
   const isPartialScoring = partialScoring.enabled(
     { partialScoring: scoringType !== undefined ? scoringType === 'partial scoring' : scoringType },
@@ -55,18 +56,23 @@ export const getScore = (question, session, env = {}) => {
     let score = 0;
 
     const scoreForLabelAndValueEditable = (answer, corrAnswer) => {
-      const { value, label } = answer;
-
+      const { value, label, index } = answer;
+      const valueIsCorrect = value === corrAnswer.value;
+      const labelIsCorrect = checkLabelsEquality(label, corrAnswer.label);
       maxScore += 2;
 
-      if (value === corrAnswer.value) {
+      if (valueIsCorrect) {
         score += 1;
         answer.correctness.value = 'correct';
       }
 
-      if (checkLabelsEquality(label, corrAnswer.label)) {
+      if (labelIsCorrect) {
         score += 1;
         answer.correctness.label = 'correct';
+      }
+
+      if (valueIsCorrect && labelIsCorrect) {
+        correctResponses.push({ label: label, index: index });
       }
     };
 
@@ -87,6 +93,7 @@ export const getScore = (question, session, env = {}) => {
             if (answer.value === corrAnswer.value) {
               score += 1;
               answer.correctness.value = 'correct';
+              correctResponses.push({ label: answer.label, index: index });
             }
             answer.correctness.label = 'correct';
 
@@ -97,6 +104,7 @@ export const getScore = (question, session, env = {}) => {
           } else if (!answer.interactive) {
             answer.correctness.value = 'correct';
             answer.correctness.label = 'correct';
+            correctResponses.push({ label: answer.label, index: index });
           }
         } else {
           // if there is not a corresponding category at the same position in the default answer
@@ -121,13 +129,19 @@ export const getScore = (question, session, env = {}) => {
       correctAnswers.forEach((corrAnswer, index) => {
         const { value, label } = answers[index];
 
-        if (value !== corrAnswer.value) {
+        const valueIsCorrect = value === corrAnswer.value;
+        const labelIsCorrect = lowerCase(label) === lowerCase(corrAnswer.label);
+
+        if (!valueIsCorrect) {
           result = 0;
           answers[index].correctness.value = 'incorrect';
         }
-        if (lowerCase(label) !== lowerCase(corrAnswer.label)) {
+        if (!labelIsCorrect) {
           result = 0;
           answers[index].correctness.label = 'incorrect';
+        }
+        if (valueIsCorrect && labelIsCorrect) {
+          correctResponses.push({ label: label, index: index });
         }
       });
     } else {
@@ -138,10 +152,16 @@ export const getScore = (question, session, env = {}) => {
     }
   }
 
-  return {
+  const score = {
     score: parseFloat(result.toFixed(2)),
     answers,
   };
+
+  if (env.extraProps && env.extraProps.correctResponseEnabled) {
+    score.correctResponses = correctResponses;
+  }
+
+  return score;
 };
 
 // eslint-disable-next-line no-unused-vars
@@ -222,10 +242,15 @@ export function model(question, session, env) {
 
 export function outcome(model, session, env) {
   return new Promise((resolve) => {
-    resolve({
-      score: getScore(model, session, env).score,
+    const scoreObject = getScore(model, session, env);
+    const result = {
+      score: scoreObject.score,
       empty: !session || isEmpty(session),
-    });
+    };
+    if (env.extraProps && env.extraProps.correctResponseEnabled) {
+      result.extraProps = { correctResponse: scoreObject.correctResponses };
+    }
+    resolve(result);
   });
 }
 
