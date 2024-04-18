@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.10.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-controller@4.9.1...@pie-element/hotspot-controller@4.10.0) (2024-04-18)
+
+
+### Features
+
+* update pie-lib/pie-toolbox SC-30530, SC-30682, PD-3607, PD-3655 ([f08bccf](https://github.com/pie-framework/pie-elements/commit/f08bccf86fcb430e75e410116b000b3affc252c0))
+
+
+
+
+
 ## [4.9.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-controller@4.9.0...@pie-element/hotspot-controller@4.9.1) (2024-04-01)
 
 **Note:** Version bump only for package @pie-element/hotspot-controller
