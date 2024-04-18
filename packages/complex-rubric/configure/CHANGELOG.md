@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.12](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric-configure@2.2.11...@pie-element/complex-rubric-configure@2.2.12) (2024-04-18)
+
+
+### Bug Fixes
+
+* **complex-rubric:** added imageSupport to fix missing image setting from editable-html ([4a40858](https://github.com/pie-framework/pie-elements/commit/4a408580d012d27bf333f117308483b4854e2b20))
+
+
+
+
+
 ## [2.2.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric-configure@2.2.10...@pie-element/complex-rubric-configure@2.2.11) (2024-04-01)
 
 **Note:** Version bump only for package @pie-element/complex-rubric-configure
