@@ -22,22 +22,31 @@ export default class MultiTraitRubricElement extends HTMLElement {
     this._configuration = configurationWithDefaults();
   }
 
-  validateModel = (m) => {
-    const validatedModel = m;
-    const { scales, excludeZero } = validatedModel;
+  updateModelAccordingToReceivedProps = (m) => {
+    const currentModel = {...this._model};
+    if (!m) {
+      return currentModel;
+    }
+
+    const validatedModel = { ...m };
+    const { scales, excludeZero } = validatedModel || {};
 
     (scales || []).forEach(scale => {
+      if (!scale) {
+        scale = { scorePointsLabels: [], traits: [] };
+      }
+
       const { maxPoints } = scale || {};
 
-      scale.scorePointsLabels = [ ...scale.scorePointsLabels ];
-      scale.traits = [ ...scale.traits ];
+      scale.scorePointsLabels = [ ...(scale.scorePointsLabels || []) ];
+      scale.traits = [ ...(scale.traits || []) ];
 
       const howManyScorePointLabelsShouldHave = excludeZero ? maxPoints : maxPoints + 1;
       const howManyScorePointLabelsItHas = scale.scorePointsLabels.length;
 
       if (howManyScorePointLabelsItHas !== howManyScorePointLabelsShouldHave) {
         if (howManyScorePointLabelsItHas < howManyScorePointLabelsShouldHave) {
-          for (let i = 0; i< howManyScorePointLabelsShouldHave - howManyScorePointLabelsItHas; i++) {
+          for (let i = 0; i < howManyScorePointLabelsShouldHave - howManyScorePointLabelsItHas; i++) {
             scale.scorePointsLabels.push('');
           }
         } else {
@@ -46,13 +55,17 @@ export default class MultiTraitRubricElement extends HTMLElement {
       }
 
       (scale.traits || []).forEach(trait => {
-        trait.scorePointsDescriptors = [ ...trait.scorePointsDescriptors ];
+        if (!trait) {
+          trait = { scorePointsDescriptors: [] };
+        }
+
+        trait.scorePointsDescriptors = [ ...(trait.scorePointsDescriptors || []) ];
 
         const howManyScorePointDescriptorsItHas = trait.scorePointsDescriptors.length;
 
         if (howManyScorePointDescriptorsItHas !== howManyScorePointLabelsShouldHave) {
           if (howManyScorePointDescriptorsItHas < howManyScorePointLabelsShouldHave) {
-            for (let i = 0; i< howManyScorePointLabelsShouldHave - howManyScorePointDescriptorsItHas; i++) {
+            for (let i = 0; i < howManyScorePointLabelsShouldHave - howManyScorePointDescriptorsItHas; i++) {
               trait.scorePointsDescriptors.push('');
             }
           } else {
@@ -66,7 +79,7 @@ export default class MultiTraitRubricElement extends HTMLElement {
   };
 
   set model(m) {
-    this._model = this.validateModel(modelWithDefaults(m));
+    this._model = this.updateModelAccordingToReceivedProps(modelWithDefaults(m));
     this._render();
   }
 
@@ -76,7 +89,7 @@ export default class MultiTraitRubricElement extends HTMLElement {
   }
 
   onModelChanged = (m) => {
-    this._model = this.validateModel(modelWithDefaults(m));
+    this._model = this.updateModelAccordingToReceivedProps(modelWithDefaults(m));
     this._render();
     this.dispatchEvent(new ModelUpdatedEvent(this._model, false));
   };
