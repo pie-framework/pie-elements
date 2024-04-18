@@ -261,7 +261,6 @@ export class NumberLine extends React.Component {
         )}
 
         <div className={numberLineContainerNames} style={{ width }}>
-          {!disabled && (
             <div style={{ width: adjustedWidth }} className={classes.toggle}>
               <Toggle
                 show={isArray(correctResponse) && correctResponse.length && !emptyAnswer}
@@ -271,7 +270,6 @@ export class NumberLine extends React.Component {
                 language={language}
               />
             </div>
-          )}
 
           {!disabled && (
             <PointChooser
