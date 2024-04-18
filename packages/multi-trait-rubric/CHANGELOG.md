@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.8.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric@3.8.1...@pie-element/multi-trait-rubric@3.8.2) (2024-04-18)
+
+
+### Bug Fixes
+
+* **complex-rubric:** added imageSupport to fix missing image setting from editable-html ([4a40858](https://github.com/pie-framework/pie-elements/commit/4a408580d012d27bf333f117308483b4854e2b20))
+* **complex-rubric:** update test snapshots ([246cf26](https://github.com/pie-framework/pie-elements/commit/246cf261620cede3ddadfe22b2ffdb4a0a8ac605))
+* **multi-trait-rubric:** fixed validation error layout, fixed some prop types mismatch, removed console log PD-3579 ([7d6ab8b](https://github.com/pie-framework/pie-elements/commit/7d6ab8b69ab63d6f646a8a9e69ea4fffbe618cff))
+
+
+
+
+
 ## [3.8.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric@3.8.0...@pie-element/multi-trait-rubric@3.8.1) (2024-04-01)
 
 **Note:** Version bump only for package @pie-element/multi-trait-rubric
