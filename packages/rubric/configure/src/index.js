@@ -1,4 +1,8 @@
-import {ModelUpdatedEvent} from '@pie-framework/pie-configure-events';
+import {
+    ModelUpdatedEvent,
+    InsertImageEvent,
+    DeleteImageEvent
+} from '@pie-framework/pie-configure-events';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import debug from 'debug';
@@ -90,6 +94,14 @@ export default class RubricElement extends HTMLElement {
         this._render();
     };
 
+    insertImage(handler) {
+        this.dispatchEvent(new InsertImageEvent(handler));
+    }
+
+    onDeleteImage(src, done) {
+        this.dispatchEvent(new DeleteImageEvent(src, done));
+    }
+
     connectedCallback() {
         this._render();
     }
@@ -102,6 +114,10 @@ export default class RubricElement extends HTMLElement {
                 configuration: this._configuration,
                 onModelChanged: this.onModelChanged,
                 onConfigurationChanged: this.onConfigurationChanged,
+                imageSupport: {
+                    add: this.insertImage.bind(this),
+                    delete: this.onDeleteImage.bind(this),
+                },
             });
 
             ReactDOM.render(element, this);

@@ -112,6 +112,7 @@ export class TraitsHeaderTile extends React.Component {
       errors = {},
       maxMaxPoints,
       labelPluginProps = {},
+      imageSupport = {},
     } = this.props;
     const { anchorEl } = this.state;
 
@@ -127,6 +128,7 @@ export class TraitsHeaderTile extends React.Component {
               label="Level Label"
               uploadSoundSupport={uploadSoundSupport}
               mathMlOptions={mathMlOptions}
+              imageSupport={imageSupport}
             />
           )}
 
@@ -200,6 +202,7 @@ export class TraitsHeaderTile extends React.Component {
                   spellCheck={spellCheck}
                   uploadSoundSupport={uploadSoundSupport}
                   mathMlOptions={mathMlOptions}
+                  imageSupport={imageSupport}
                 />
                 {error && <div className={classes.scorePointErrorText}>{error}</div>}
               </Block>
@@ -232,6 +235,10 @@ TraitsHeaderTile.propTypes = {
   uploadSoundSupport: PropTypes.object,
   maxMaxPoints: PropTypes.number,
   labelPluginProps: PropTypes.object,
+  imageSupport: PropTypes.shape({
+    add: PropTypes.func.isRequired,
+    delete: PropTypes.func.isRequired,
+  }),
 };
 
 export default withStyles(styles)(TraitsHeaderTile);
