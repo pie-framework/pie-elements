@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@8.7.2...@pie-element/number-line@8.8.0) (2024-04-18)
+
+
+### Bug Fixes
+
+* number-line correct toggle answer is missing PD-3618 ([93ffd10](https://github.com/pie-framework/pie-elements/commit/93ffd101aa8ed565d4f55ec13f21602f5cdb2293))
+
+
+### Features
+
+* update pie-lib/pie-toolbox SC-30530, SC-30682, PD-3607, PD-3655 ([f08bccf](https://github.com/pie-framework/pie-elements/commit/f08bccf86fcb430e75e410116b000b3affc252c0))
+
+
+
+
+
 ## [8.7.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@8.7.1...@pie-element/number-line@8.7.2) (2024-04-18)
 
 
