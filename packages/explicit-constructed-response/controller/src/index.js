@@ -57,14 +57,7 @@ const getAdjustedLength = (length) => {
   return length + 5;
 };
 
-export const normalize = (question) => ({
-  ...defaults,
-  rationaleEnabled: true,
-  promptEnabled: true,
-  teacherInstructionsEnabled: true,
-  studentInstructionsEnabled: true,
-  ...question,
-});
+export const normalize = (question) => ({ ...defaults, ...question });
 
 /**
  *
