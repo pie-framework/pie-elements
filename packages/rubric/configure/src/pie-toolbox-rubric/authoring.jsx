@@ -104,7 +104,7 @@ export const PointConfig = withStyles((theme) => ({
     paddingTop: theme.spacing.unit,
   },
 }))((props) => {
-  const { points, content, classes, sampleAnswer, mathMlOptions = {}, error, pluginOpts = {}, excludeZero } = props;
+  const { points, content, classes, sampleAnswer, mathMlOptions = {}, error, pluginOpts = {}, excludeZero, imageSupport = {}, } = props;
   const pointsCount = excludeZero ? points + 1 : points;
   const pointsLabel = `${pointsCount} ${pointsCount <= 1 ? 'pt' : 'pts'}`;
   const showSampleAnswer = checkSampleAnswer(sampleAnswer);
@@ -124,6 +124,7 @@ export const PointConfig = withStyles((theme) => ({
           markup={content}
           onChange={props.onChange}
           mathMlOptions={mathMlOptions}
+          imageSupport={imageSupport}
         />
         <PointMenu
           classes={{
@@ -145,6 +146,7 @@ export const PointConfig = withStyles((theme) => ({
             pluginProps={pluginOpts}
             onChange={props.onSampleChange}
             mathMlOptions={mathMlOptions}
+            imageSupport={imageSupport}
           />
         </div>
       )}
@@ -161,6 +163,10 @@ export class RawAuthoring extends React.Component {
     pluginOpts: PropTypes.object,
     rubricless: PropTypes.bool,
     onChange: PropTypes.func,
+    imageSupport: PropTypes.shape({
+      add: PropTypes.func.isRequired,
+      delete: PropTypes.func.isRequired,
+    }),
   };
 
   static defaultProps = {};
@@ -236,6 +242,7 @@ export class RawAuthoring extends React.Component {
       config = {},
       rubricless = false,
       pluginOpts = {},
+      imageSupport = {},
     } = this.props;
     let {
       excludeZeroEnabled = true,
@@ -267,6 +274,7 @@ export class RawAuthoring extends React.Component {
               value={maxPointsValue}
               onChange={this.changeMaxPoints}
               pluginOpts={pluginOpts}
+              imageSupport={imageSupport}
             />
           )}
           {excludeZeroEnabled && (
@@ -288,6 +296,7 @@ export class RawAuthoring extends React.Component {
               disableUnderline
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               mathMlOptions={mathMlOptions}
+              imageSupport={imageSupport}
             />
           </InputContainer>
         )}
@@ -320,6 +329,7 @@ export class RawAuthoring extends React.Component {
                                       onMenuChange={(clickedItem) => this.onPointMenuChange(index, clickedItem)}
                                       mathMlOptions={mathMlOptions}
                                       pluginOpts={pluginOpts}
+                                      imageSupport={imageSupport}
                                       excludeZero={value.excludeZero}
                                   />
                                 </div>
@@ -369,7 +379,7 @@ const styles = (theme) => ({
 const StyledRawAuthoring = withStyles(styles)(RawAuthoring);
 
 const Reverse = (props) => {
-  const { rubricless = false, config = {}, pluginOpts = {} } = props || {};
+  const { rubricless = false, config = {}, pluginOpts = {}, imageSupport = {} } = props || {};
   const points = Array.from(props.value.points || []).reverse();
   let sampleAnswers = Array.from(props.value.sampleAnswers || []).reverse();
 
@@ -396,6 +406,7 @@ const Reverse = (props) => {
       onChange={onChange}
       rubricless={rubricless}
       pluginOpts={pluginOpts}
+      imageSupport={imageSupport}
     />
   );
 };
@@ -407,6 +418,10 @@ Reverse.propTypes = {
   rubricless: PropTypes.bool,
   getIndex: PropTypes.func,
   onChange: PropTypes.func,
+  imageSupport: PropTypes.shape({
+    add: PropTypes.func.isRequired,
+    delete: PropTypes.func.isRequired,
+  }),
 };
 
 export default Reverse;

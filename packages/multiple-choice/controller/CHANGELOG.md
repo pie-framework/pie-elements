@@ -3,6 +3,47 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.8.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-controller@4.8.4...@pie-element/multiple-choice-controller@4.8.5) (2024-04-16)
+
+
+### Bug Fixes
+
+* revert experiments for PD-3664 ([9d28f6e](https://github.com/pie-framework/pie-elements/commit/9d28f6ee635166c519f9902b7abb2bec67ac6fd0))
+
+
+
+
+
+## [4.8.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-controller@4.8.3...@pie-element/multiple-choice-controller@4.8.4) (2024-04-16)
+
+
+### Bug Fixes
+
+* experiment PD-3664 ([147d33d](https://github.com/pie-framework/pie-elements/commit/147d33d5fd6a52d782b7fc6cc22f8a04525b1491))
+
+
+
+
+
+## [4.8.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-controller@4.8.2...@pie-element/multiple-choice-controller@4.8.3) (2024-04-16)
+
+
+### Bug Fixes
+
+* revert previous experiments and add another one PD-3664 ([954d576](https://github.com/pie-framework/pie-elements/commit/954d576cdc0632c00fef10c75fb3008ed6fec487))
+
+
+
+
+
+## [4.8.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-controller@4.8.1...@pie-element/multiple-choice-controller@4.8.2) (2024-04-15)
+
+**Note:** Version bump only for package @pie-element/multiple-choice-controller
+
+
+
+
+
 ## [4.8.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-controller@4.8.0...@pie-element/multiple-choice-controller@4.8.1) (2024-04-01)
 
 **Note:** Version bump only for package @pie-element/multiple-choice-controller

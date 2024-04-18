@@ -121,6 +121,7 @@ export class TraitTile extends React.Component {
       mathMlOptions = {},
       expandedPluginProps = {},
       labelPluginProps = {},
+      imageSupport = {},
     } = this.props;
     const { anchorEl } = this.state;
 
@@ -167,6 +168,7 @@ export class TraitTile extends React.Component {
                 spellCheck={spellCheck}
                 uploadSoundSupport={uploadSoundSupport}
                 mathMlOptions={mathMlOptions}
+                imageSupport={imageSupport}
               />
               {error && <div className={classes.errorText}>{error.name || ''}</div>}
             </PrimaryBlock>
@@ -187,6 +189,7 @@ export class TraitTile extends React.Component {
                     spellCheck={spellCheck}
                     uploadSoundSupport={uploadSoundSupport}
                     mathMlOptions={mathMlOptions}
+                    imageSupport={imageSupport}
                   />
                 </Block>
               )}
@@ -202,6 +205,7 @@ export class TraitTile extends React.Component {
                     spellCheck={spellCheck}
                     uploadSoundSupport={uploadSoundSupport}
                     mathMlOptions={mathMlOptions}
+                    imageSupport={imageSupport}
                   />
                   {error && <div className={classes.errorText}>{error.description || ''}</div>}
                 </Block>
@@ -230,6 +234,7 @@ export class TraitTile extends React.Component {
                       spellCheck={spellCheck}
                       uploadSoundSupport={uploadSoundSupport}
                       mathMlOptions={mathMlOptions}
+                      imageSupport={imageSupport}
                     />
                   </Block>
                 );
@@ -270,6 +275,10 @@ TraitTile.propTypes = {
   secondaryBlockWidth: PropTypes.number,
   expandedPluginProps: PropTypes.object,
   labelPluginProps: PropTypes.object,
+  imageSupport: PropTypes.shape({
+    add: PropTypes.func.isRequired,
+    delete: PropTypes.func.isRequired,
+  }),
 };
 
 export const StyledTrait = withStyles(styles)(TraitTile);

@@ -42,7 +42,8 @@ const styles = (theme) => ({
   primaryBlockGreyHeader: {
     paddingTop: theme.spacing.unit * 1.5,
   },
-  errorText: {
+  scorePointErrorText: {
+    position: 'absolute',
     fontSize: theme.typography.fontSize - 2,
     color: theme.palette.error.main,
     paddingTop: theme.spacing.unit / 2,
@@ -111,6 +112,7 @@ export class TraitsHeaderTile extends React.Component {
       errors = {},
       maxMaxPoints,
       labelPluginProps = {},
+      imageSupport = {},
     } = this.props;
     const { anchorEl } = this.state;
 
@@ -126,6 +128,7 @@ export class TraitsHeaderTile extends React.Component {
               label="Level Label"
               uploadSoundSupport={uploadSoundSupport}
               mathMlOptions={mathMlOptions}
+              imageSupport={imageSupport}
             />
           )}
 
@@ -199,8 +202,9 @@ export class TraitsHeaderTile extends React.Component {
                   spellCheck={spellCheck}
                   uploadSoundSupport={uploadSoundSupport}
                   mathMlOptions={mathMlOptions}
+                  imageSupport={imageSupport}
                 />
-                {error && <div className={classes.errorText}>{error}</div>}
+                {error && <div className={classes.scorePointErrorText}>{error}</div>}
               </Block>
             );
           })}
@@ -231,6 +235,10 @@ TraitsHeaderTile.propTypes = {
   uploadSoundSupport: PropTypes.object,
   maxMaxPoints: PropTypes.number,
   labelPluginProps: PropTypes.object,
+  imageSupport: PropTypes.shape({
+    add: PropTypes.func.isRequired,
+    delete: PropTypes.func.isRequired,
+  }),
 };
 
 export default withStyles(styles)(TraitsHeaderTile);

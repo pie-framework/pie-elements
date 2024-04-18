@@ -300,7 +300,7 @@ export class Main extends React.Component {
   };
 
   render() {
-    const { model, configuration, onConfigurationChanged, uploadSoundSupport } = this.props || {};
+    const { model, configuration, onConfigurationChanged, uploadSoundSupport, imageSupport } = this.props || {};
     const {
       addScale,
       baseInputConfiguration = {},
@@ -409,6 +409,7 @@ export class Main extends React.Component {
               maxPointsEnabled={maxPointsEnabled}
               maxNoOfTraits={maxNoOfTraits}
               minNoOfTraits={minNoOfTraits}
+              imageSupport={imageSupport}
               {...this.props}
               classes={{}}
               mathMlOptions={mathMlOptions}
@@ -433,6 +434,10 @@ Main.propTypes = {
   configuration: PropTypes.object,
   onModelChanged: PropTypes.func,
   onConfigurationChanged: PropTypes.func,
+  imageSupport: PropTypes.shape({
+    add: PropTypes.func.isRequired,
+    delete: PropTypes.func.isRequired,
+  }),
 };
 
 export default withDragContext(withStyles(styles)(Main));
