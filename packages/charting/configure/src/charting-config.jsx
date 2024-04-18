@@ -128,7 +128,7 @@ export class ChartingConfig extends React.Component {
       authorNewCategoryDefaults,
       chartingOptions,
       mathMlOptions = {},
-      charactersLimit,
+      labelsCharactersLimit,
     } = this.props;
     const { dialog } = this.state;
     const { domain = {}, range = {} } = model || {};
@@ -168,7 +168,7 @@ export class ChartingConfig extends React.Component {
               labelsPlaceholders={labelsPlaceholders}
               titlePlaceholder={titlePlaceholder?.label}
               mathMlOptions={mathMlOptions}
-              charactersLimit={charactersLimit}
+              labelsCharactersLimit={labelsCharactersLimit}
             />
             {model.changeAddCategoryEnabled && (
               <div>

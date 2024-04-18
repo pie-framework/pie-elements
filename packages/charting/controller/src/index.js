@@ -57,23 +57,21 @@ export const getScore = (question, session, env = {}) => {
 
     const scoreForLabelAndValueEditable = (answer, corrAnswer) => {
       const { value, label, index } = answer;
-      let firstEquality = false;
-      let secondEquality = false;
+      const valueIsCorrect = value === corrAnswer.value;
+      const labelIsCorrect = checkLabelsEquality(label, corrAnswer.label);
       maxScore += 2;
 
-      if (value === corrAnswer.value) {
+      if (valueIsCorrect) {
         score += 1;
         answer.correctness.value = 'correct';
-        firstEquality = true;
       }
 
-      if (checkLabelsEquality(label, corrAnswer.label)) {
+      if (labelIsCorrect) {
         score += 1;
         answer.correctness.label = 'correct';
-        secondEquality = true;
       }
 
-      if (firstEquality && secondEquality) {
+      if (valueIsCorrect && labelIsCorrect) {
         correctResponses.push({ label: label, index: index });
       }
     };
@@ -131,15 +129,18 @@ export const getScore = (question, session, env = {}) => {
       correctAnswers.forEach((corrAnswer, index) => {
         const { value, label } = answers[index];
 
-        if (value !== corrAnswer.value) {
+        const valueIsCorrect = value === corrAnswer.value;
+        const labelIsCorrect = lowerCase(label) === lowerCase(corrAnswer.label);
+
+        if (!valueIsCorrect) {
           result = 0;
           answers[index].correctness.value = 'incorrect';
         }
-        if (lowerCase(label) !== lowerCase(corrAnswer.label)) {
+        if (!labelIsCorrect) {
           result = 0;
           answers[index].correctness.label = 'incorrect';
         }
-        if (value === corrAnswer.value && lowerCase(label) === lowerCase(corrAnswer.label)) {
+        if (valueIsCorrect && labelIsCorrect) {
           correctResponses.push({ label: label, index: index });
         }
       });
@@ -151,7 +152,7 @@ export const getScore = (question, session, env = {}) => {
     }
   }
 
-  let score = {
+  const score = {
     score: parseFloat(result.toFixed(2)),
     answers,
   };
@@ -241,8 +242,8 @@ export function model(question, session, env) {
 
 export function outcome(model, session, env) {
   return new Promise((resolve) => {
-    let scoreObject = getScore(model, session, env);
-    let result = {
+    const scoreObject = getScore(model, session, env);
+    const result = {
       score: scoreObject.score,
       empty: !session || isEmpty(session),
     };

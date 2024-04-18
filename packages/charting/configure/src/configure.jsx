@@ -261,7 +261,7 @@ export class Configure extends React.Component {
           authorNewCategoryDefaults={authorNewCategoryDefaults}
           chartingOptions={chartingOptions}
           mathMlOptions={mathMlOptions}
-          charactersLimit={labelsCharactersLimit}
+          labelsCharactersLimit={labelsCharactersLimit}
         />
 
         <CorrectResponse
