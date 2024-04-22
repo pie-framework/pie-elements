@@ -84,16 +84,6 @@ const createElementFromHTML = (htmlString) => {
   return div;
 };
 
-const prepareVal = (html) => {
-  const tmp = document.createElement('DIV');
-
-  tmp.innerHTML = html;
-
-  const value = tmp.textContent || tmp.innerText || '';
-
-  return value.trim();
-};
-
 export class Main extends React.Component {
   static propTypes = {
     configuration: PropTypes.object.isRequired,
@@ -279,7 +269,8 @@ export class Main extends React.Component {
       respAreaChoices[index] = [];
     }
 
-    if ((respAreaChoices[index] || []).find((r) => prepareVal(r.label) === prepareVal(label))) {
+    // check for duplicate answer, but exclude the one that is currently edited
+    if ((respAreaChoices[index] || []).find((r, idx) => r.label === label && idx !== choiceIndex)) {
       // show warning for duplicated answers
       this.setState({
         warning: {
