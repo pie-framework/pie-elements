@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.9.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/boilerplate-item-type-controller@2.8.1...@pie-element/boilerplate-item-type-controller@2.9.0) (2024-04-22)
+
+
+### Features
+
+* update pie-lib/pie-toolbox PD-2449 ([2a0b40a](https://github.com/pie-framework/pie-elements/commit/2a0b40a826f0338b5eda2e8301f79870be3d0073))
+
+
+
+
+
 ## [2.8.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/boilerplate-item-type-controller@2.8.0...@pie-element/boilerplate-item-type-controller@2.8.1) (2024-04-22)
 
 
