@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.15.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@6.15.0...@pie-element/hotspot-configure@6.15.1) (2024-04-22)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3644, PD-3673 ([5e28ce0](https://github.com/pie-framework/pie-elements/commit/5e28ce0dab4a7ecd93ef7bba45ddb20f768b450b))
+
+
+
+
+
 # [6.15.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@6.14.1...@pie-element/hotspot-configure@6.15.0) (2024-04-18)
 
 
