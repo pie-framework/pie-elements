@@ -13,6 +13,25 @@ const model = (extras) => ({
     ...defaults.model,
     ...extras,
 });
+
+const invalidModel = (extras) => ({
+    id: '2',
+    element: 'multi-trait-rubric',
+    excludeZero: true,
+    scales: [
+        {
+            maxPoints: 10,
+            scorePointsLabels: ['Label 1', 'Label 2', 'Label 3', 'Label 4', 'Label 5'],
+            traits: [
+                {
+                    scorePointsDescriptors: null,
+                },
+            ],
+        },
+    ],
+    ...extras,
+});
+
 const configuration = (c) => ({...defaults.configuration, ...c});
 
 describe('MultiTraitRubricElement', () => {
@@ -25,7 +44,7 @@ describe('MultiTraitRubricElement', () => {
     afterEach(() => {
         jest.clearAllMocks();
     });
-    
+
     describe('set model', () => {
         it('should set the model correctly', () => {
             const newModel = model();
@@ -208,6 +227,14 @@ describe('MultiTraitRubricElement', () => {
             expect(validatedModel.scales[0].scorePointsLabels).toEqual(['Label 1', 'Label 2', 'Label 3']);
             expect(validatedModel.scales[0].traits[0].scorePointsDescriptors.length).toBe(3);
             expect(validatedModel.scales[0].traits[0].scorePointsDescriptors).toEqual(['Descriptor 1', 'Descriptor 2', 'Descriptor 3']);
+        });
+
+        it('should handle case if invalid model is set, after updateModelAccordingToReceivedProps the returned model is valid', () => {
+            const newModel = invalidModel();
+            element.onModelChanged(newModel);
+            expect(element._model.scales[0].scorePointsLabels.length).toBe(10);
+            expect(element._model.scales[0].scorePointsLabels).toEqual(['Label 1', 'Label 2', 'Label 3','Label 4', 'Label 5', '', '', '', '', '']);
+            expect(element._model.scales[0].traits[0].scorePointsDescriptors).toEqual(['', '', '', '', '', '', '', '', '', '']);
         });
     });
     
