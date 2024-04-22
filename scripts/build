@@ -86,7 +86,7 @@ class ElementsCommands extends Commands {
   }
 
   build() {
-    return super.build().then(() => this.sharedBuild());
+    // return super.build().then(() => this.sharedBuild());
   }
 
   babel() {
