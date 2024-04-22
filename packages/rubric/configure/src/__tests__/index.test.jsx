@@ -18,6 +18,18 @@ const model = (extras) => ({
     maxPointsEnabled: true,
     ...extras,
 });
+
+const invalidModel = (extras) => ({
+    id: '2',
+    element: 'pie-rubric',
+    points: ['A', 'B', 'C', 'D'],
+    sampleAnswers: [true, true, false, false],
+    maxPoints: 5,
+    excludeZero: false,
+    excludeZeroEnabled: true,
+    maxPointsEnabled: true,
+    ...extras,
+});
 const configuration = (c) => ({...defaults.configuration, ...c});
 
 describe('RubricElement', () => {
@@ -148,6 +160,13 @@ describe('RubricElement', () => {
             const result = element.updateModelAccordingToReceivedProps(nextModel);
             expect(result.points).toEqual(['B']);
             expect(result.sampleAnswers).toEqual([true]);
+        });
+
+        it('should handle case if invalid model is set, after updateModelAccordingToReceivedProps the returned model is valid', () => {
+            const newModel = invalidModel();
+            element.onModelChanged(newModel);
+            expect(element._model.points).toEqual(["A", "B", "C", "D", "", ""]);
+            expect(element._model.sampleAnswers).toEqual([true, true, false, false, null, null]);
         });
     });
     
