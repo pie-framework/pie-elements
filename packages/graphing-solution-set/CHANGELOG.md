@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-solution-set@1.7.0...@pie-element/graphing-solution-set@1.7.1) (2024-04-22)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3644, PD-3673 ([5e28ce0](https://github.com/pie-framework/pie-elements/commit/5e28ce0dab4a7ecd93ef7bba45ddb20f768b450b))
+
+
+
+
+
 # [1.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-solution-set@1.6.1...@pie-element/graphing-solution-set@1.7.0) (2024-04-18)
 
 
