@@ -36,6 +36,7 @@ exports[`Trait snapshot renders 1`] = `
           </div>
           <WithStyles(Component)
             error=""
+            imageSupport={Object {}}
             markup="Presentation"
             mathMlOptions={Object {}}
             onChange={[Function]}
@@ -49,6 +50,7 @@ exports[`Trait snapshot renders 1`] = `
         >
           <WithStyles(Component)>
             <WithStyles(Component)
+              imageSupport={Object {}}
               markup=""
               mathMlOptions={Object {}}
               onChange={[Function]}
@@ -59,6 +61,7 @@ exports[`Trait snapshot renders 1`] = `
           <WithStyles(Component)>
             <WithStyles(Component)
               error=""
+              imageSupport={Object {}}
               markup=""
               mathMlOptions={Object {}}
               onChange={[Function]}
@@ -71,6 +74,7 @@ exports[`Trait snapshot renders 1`] = `
           >
             <WithStyles(Component)
               alignToRight={false}
+              imageSupport={Object {}}
               markup="Handwriting is generally legible
 
 Overall appearance is acceptable or better"
@@ -85,6 +89,7 @@ Overall appearance is acceptable or better"
           >
             <WithStyles(Component)
               alignToRight={false}
+              imageSupport={Object {}}
               markup="Handwriting poor
 
 Overall appearance is distracting to unacceptable"
@@ -99,6 +104,7 @@ Overall appearance is distracting to unacceptable"
           >
             <WithStyles(Component)
               alignToRight={false}
+              imageSupport={Object {}}
               markup="Handwriting is unreadable, or response is blank, not in English, or too brief to evaluate. "
               mathMlOptions={Object {}}
               onChange={[Function]}
@@ -149,6 +155,7 @@ exports[`Trait snapshot renders with drag and drop 1`] = `
           </div>
           <WithStyles(Component)
             error=""
+            imageSupport={Object {}}
             markup="Presentation"
             mathMlOptions={Object {}}
             onChange={[Function]}
@@ -162,6 +169,7 @@ exports[`Trait snapshot renders with drag and drop 1`] = `
         >
           <WithStyles(Component)>
             <WithStyles(Component)
+              imageSupport={Object {}}
               markup=""
               mathMlOptions={Object {}}
               onChange={[Function]}
@@ -172,6 +180,7 @@ exports[`Trait snapshot renders with drag and drop 1`] = `
           <WithStyles(Component)>
             <WithStyles(Component)
               error=""
+              imageSupport={Object {}}
               markup=""
               mathMlOptions={Object {}}
               onChange={[Function]}
@@ -184,6 +193,7 @@ exports[`Trait snapshot renders with drag and drop 1`] = `
           >
             <WithStyles(Component)
               alignToRight={false}
+              imageSupport={Object {}}
               markup="Handwriting is generally legible
 
 Overall appearance is acceptable or better"
@@ -198,6 +208,7 @@ Overall appearance is acceptable or better"
           >
             <WithStyles(Component)
               alignToRight={false}
+              imageSupport={Object {}}
               markup="Handwriting poor
 
 Overall appearance is distracting to unacceptable"
@@ -212,6 +223,7 @@ Overall appearance is distracting to unacceptable"
           >
             <WithStyles(Component)
               alignToRight={false}
+              imageSupport={Object {}}
               markup="Handwriting is unreadable, or response is blank, not in English, or too brief to evaluate. "
               mathMlOptions={Object {}}
               onChange={[Function]}
@@ -262,6 +274,7 @@ exports[`Trait snapshot renders without description 1`] = `
           </div>
           <WithStyles(Component)
             error=""
+            imageSupport={Object {}}
             markup="Presentation"
             mathMlOptions={Object {}}
             onChange={[Function]}
@@ -275,6 +288,7 @@ exports[`Trait snapshot renders without description 1`] = `
         >
           <WithStyles(Component)>
             <WithStyles(Component)
+              imageSupport={Object {}}
               markup=""
               mathMlOptions={Object {}}
               onChange={[Function]}
@@ -285,6 +299,7 @@ exports[`Trait snapshot renders without description 1`] = `
           <WithStyles(Component)>
             <WithStyles(Component)
               error=""
+              imageSupport={Object {}}
               markup=""
               mathMlOptions={Object {}}
               onChange={[Function]}
@@ -297,6 +312,7 @@ exports[`Trait snapshot renders without description 1`] = `
           >
             <WithStyles(Component)
               alignToRight={false}
+              imageSupport={Object {}}
               markup="Handwriting is generally legible
 
 Overall appearance is acceptable or better"
@@ -311,6 +327,7 @@ Overall appearance is acceptable or better"
           >
             <WithStyles(Component)
               alignToRight={false}
+              imageSupport={Object {}}
               markup="Handwriting poor
 
 Overall appearance is distracting to unacceptable"
@@ -325,6 +342,7 @@ Overall appearance is distracting to unacceptable"
           >
             <WithStyles(Component)
               alignToRight={false}
+              imageSupport={Object {}}
               markup="Handwriting is unreadable, or response is blank, not in English, or too brief to evaluate. "
               mathMlOptions={Object {}}
               onChange={[Function]}
@@ -375,6 +393,7 @@ exports[`Trait snapshot renders without score points values 1`] = `
           </div>
           <WithStyles(Component)
             error=""
+            imageSupport={Object {}}
             markup="Presentation"
             mathMlOptions={Object {}}
             onChange={[Function]}
@@ -388,6 +407,7 @@ exports[`Trait snapshot renders without score points values 1`] = `
         >
           <WithStyles(Component)>
             <WithStyles(Component)
+              imageSupport={Object {}}
               markup=""
               mathMlOptions={Object {}}
               onChange={[Function]}
@@ -398,6 +418,7 @@ exports[`Trait snapshot renders without score points values 1`] = `
           <WithStyles(Component)>
             <WithStyles(Component)
               error=""
+              imageSupport={Object {}}
               markup=""
               mathMlOptions={Object {}}
               onChange={[Function]}
@@ -448,6 +469,7 @@ exports[`Trait snapshot renders without standards 1`] = `
           </div>
           <WithStyles(Component)
             error=""
+            imageSupport={Object {}}
             markup="Presentation"
             mathMlOptions={Object {}}
             onChange={[Function]}
@@ -462,6 +484,7 @@ exports[`Trait snapshot renders without standards 1`] = `
           <WithStyles(Component)>
             <WithStyles(Component)
               error=""
+              imageSupport={Object {}}
               markup=""
               mathMlOptions={Object {}}
               onChange={[Function]}
@@ -474,6 +497,7 @@ exports[`Trait snapshot renders without standards 1`] = `
           >
             <WithStyles(Component)
               alignToRight={false}
+              imageSupport={Object {}}
               markup="Handwriting is generally legible
 
 Overall appearance is acceptable or better"
@@ -488,6 +512,7 @@ Overall appearance is acceptable or better"
           >
             <WithStyles(Component)
               alignToRight={false}
+              imageSupport={Object {}}
               markup="Handwriting poor
 
 Overall appearance is distracting to unacceptable"
@@ -502,6 +527,7 @@ Overall appearance is distracting to unacceptable"
           >
             <WithStyles(Component)
               alignToRight={false}
+              imageSupport={Object {}}
               markup="Handwriting is unreadable, or response is blank, not in English, or too brief to evaluate. "
               mathMlOptions={Object {}}
               onChange={[Function]}

@@ -362,6 +362,11 @@ export interface ChartingConfigure extends PromptConfig, CommonConfigSettings {
    * Language configuration
    */
   language?: ConfigurePropWithEnabled;
+  
+  /**
+   * Indicates the maximum character limit for X and Y axis labels
+   */
+  labelsCharactersLimit?: number
 
   /**
    * Language choices configuration

@@ -3,6 +3,55 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.9.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@8.8.1...@pie-element/number-line@8.9.0) (2024-04-22)
+
+
+### Features
+
+* update pie-lib/pie-toolbox PD-2449 ([2a0b40a](https://github.com/pie-framework/pie-elements/commit/2a0b40a826f0338b5eda2e8301f79870be3d0073))
+
+
+
+
+
+## [8.8.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@8.8.0...@pie-element/number-line@8.8.1) (2024-04-22)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3644, PD-3673 ([5e28ce0](https://github.com/pie-framework/pie-elements/commit/5e28ce0dab4a7ecd93ef7bba45ddb20f768b450b))
+
+
+
+
+
+# [8.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@8.7.2...@pie-element/number-line@8.8.0) (2024-04-18)
+
+
+### Bug Fixes
+
+* number-line correct toggle answer is missing PD-3618 ([93ffd10](https://github.com/pie-framework/pie-elements/commit/93ffd101aa8ed565d4f55ec13f21602f5cdb2293))
+
+
+### Features
+
+* update pie-lib/pie-toolbox SC-30530, SC-30682, PD-3607, PD-3655 ([f08bccf](https://github.com/pie-framework/pie-elements/commit/f08bccf86fcb430e75e410116b000b3affc252c0))
+
+
+
+
+
+## [8.7.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@8.7.1...@pie-element/number-line@8.7.2) (2024-04-18)
+
+
+### Bug Fixes
+
+* **number-line:** let prompt width expand to max of container and don't restrict based on width prop PD-3661 ([0dc5f77](https://github.com/pie-framework/pie-elements/commit/0dc5f77bceb44433ceaaed026a97dcf74544642e))
+
+
+
+
+
 ## [8.7.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@8.7.0...@pie-element/number-line@8.7.1) (2024-04-01)
 
 **Note:** Version bump only for package @pie-element/number-line

@@ -601,6 +601,10 @@ Indicates if the item has to be displayed in the Settings Panel
 
 Indicates the label for the item that has to be displayed in the Settings Panel
 
+# `labelsCharactersLimit` (number)
+
+Indicates the maximum character limit for X and Y axis labels
+
 # `languageChoices` (object)
 
 Language choices configuration

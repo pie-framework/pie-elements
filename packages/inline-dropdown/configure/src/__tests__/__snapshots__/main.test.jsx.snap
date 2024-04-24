@@ -163,43 +163,43 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
             "0": Array [
               Object {
                 "correct": true,
-                "label": "cow ",
+                "label": "cow",
                 "rationale": "rationale for cow",
                 "value": "0",
               },
               Object {
                 "correct": false,
-                "label": "dog ",
+                "label": "dog",
                 "value": "1",
               },
               Object {
                 "correct": false,
-                "label": "cat ",
+                "label": "cat",
                 "value": "2",
               },
             ],
             "1": Array [
               Object {
                 "correct": true,
-                "label": "over ",
+                "label": "over",
                 "rationale": "rationale for over",
                 "value": "0",
               },
               Object {
                 "correct": false,
-                "label": "under ",
+                "label": "under",
                 "value": "1",
               },
               Object {
                 "correct": false,
-                "label": "across ",
+                "label": "across",
                 "value": "2",
               },
             ],
             "2": Array [
               Object {
                 "correct": true,
-                "label": "moon ",
+                "label": "moon",
                 "rationale": "rationale for moon",
                 "value": "0",
               },
@@ -210,7 +210,7 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
               },
               Object {
                 "correct": false,
-                "label": "house ",
+                "label": "house",
                 "value": "3",
               },
             ],
@@ -223,7 +223,7 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
           "promptEnabled": true,
           "rationaleEnabled": true,
           "shuffle": true,
-          "slateMarkup": "<div><p>The <span data-type=\\"inline_dropdown\\" data-index=\\"0\\" data-value=\\"cow \\"></span> jumped <span data-type=\\"inline_dropdown\\" data-index=\\"1\\" data-value=\\"over \\"></span> the <span data-type=\\"inline_dropdown\\" data-index=\\"2\\" data-value=\\"moon \\"></span></p></div>",
+          "slateMarkup": "<div><p>The <span data-type=\\"inline_dropdown\\" data-index=\\"0\\" data-value=\\"cow\\"></span> jumped <span data-type=\\"inline_dropdown\\" data-index=\\"1\\" data-value=\\"over\\"></span> the <span data-type=\\"inline_dropdown\\" data-index=\\"2\\" data-value=\\"moon\\"></span></p></div>",
           "studentInstructionsEnabled": true,
           "teacherInstructionsEnabled": true,
           "toolbarEditorPosition": "bottom",
@@ -386,7 +386,7 @@ There should be at most 10 choices defined per response area."
           },
         ]
       }
-      markup="<div><p>The <span data-type=\\"inline_dropdown\\" data-index=\\"0\\" data-value=\\"cow \\"></span> jumped <span data-type=\\"inline_dropdown\\" data-index=\\"1\\" data-value=\\"over \\"></span> the <span data-type=\\"inline_dropdown\\" data-index=\\"2\\" data-value=\\"moon \\"></span></p></div>"
+      markup="<div><p>The <span data-type=\\"inline_dropdown\\" data-index=\\"0\\" data-value=\\"cow\\"></span> jumped <span data-type=\\"inline_dropdown\\" data-index=\\"1\\" data-value=\\"over\\"></span> the <span data-type=\\"inline_dropdown\\" data-index=\\"2\\" data-value=\\"moon\\"></span></p></div>"
       mathMlOptions={
         Object {
           "mmlEditing": false,
@@ -438,12 +438,12 @@ There should be at most 10 choices defined per response area."
       </WithStyles(ExpansionPanelSummary)>
       <WithStyles(ExpansionPanelDetails)>
         <InputContainer
-          key="cow "
+          key="cow"
           label={
             <span
               dangerouslySetInnerHTML={
                 Object {
-                  "__html": "Rationale for cow  (correct)",
+                  "__html": "Rationale for cow (correct)",
                 }
               }
             />
@@ -465,12 +465,12 @@ There should be at most 10 choices defined per response area."
           />
         </InputContainer>
         <InputContainer
-          key="dog "
+          key="dog"
           label={
             <span
               dangerouslySetInnerHTML={
                 Object {
-                  "__html": "Rationale for dog  (incorrect)",
+                  "__html": "Rationale for dog (incorrect)",
                 }
               }
             />
@@ -492,12 +492,12 @@ There should be at most 10 choices defined per response area."
           />
         </InputContainer>
         <InputContainer
-          key="cat "
+          key="cat"
           label={
             <span
               dangerouslySetInnerHTML={
                 Object {
-                  "__html": "Rationale for cat  (incorrect)",
+                  "__html": "Rationale for cat (incorrect)",
                 }
               }
             />
@@ -534,12 +534,12 @@ There should be at most 10 choices defined per response area."
       </WithStyles(ExpansionPanelSummary)>
       <WithStyles(ExpansionPanelDetails)>
         <InputContainer
-          key="over "
+          key="over"
           label={
             <span
               dangerouslySetInnerHTML={
                 Object {
-                  "__html": "Rationale for over  (correct)",
+                  "__html": "Rationale for over (correct)",
                 }
               }
             />
@@ -561,12 +561,12 @@ There should be at most 10 choices defined per response area."
           />
         </InputContainer>
         <InputContainer
-          key="under "
+          key="under"
           label={
             <span
               dangerouslySetInnerHTML={
                 Object {
-                  "__html": "Rationale for under  (incorrect)",
+                  "__html": "Rationale for under (incorrect)",
                 }
               }
             />
@@ -588,12 +588,12 @@ There should be at most 10 choices defined per response area."
           />
         </InputContainer>
         <InputContainer
-          key="across "
+          key="across"
           label={
             <span
               dangerouslySetInnerHTML={
                 Object {
-                  "__html": "Rationale for across  (incorrect)",
+                  "__html": "Rationale for across (incorrect)",
                 }
               }
             />
@@ -630,12 +630,12 @@ There should be at most 10 choices defined per response area."
       </WithStyles(ExpansionPanelSummary)>
       <WithStyles(ExpansionPanelDetails)>
         <InputContainer
-          key="moon "
+          key="moon"
           label={
             <span
               dangerouslySetInnerHTML={
                 Object {
-                  "__html": "Rationale for moon  (correct)",
+                  "__html": "Rationale for moon (correct)",
                 }
               }
             />
@@ -684,12 +684,12 @@ There should be at most 10 choices defined per response area."
           />
         </InputContainer>
         <InputContainer
-          key="house "
+          key="house"
           label={
             <span
               dangerouslySetInnerHTML={
                 Object {
-                  "__html": "Rationale for house  (incorrect)",
+                  "__html": "Rationale for house (incorrect)",
                 }
               }
             />
@@ -929,43 +929,43 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
             "0": Array [
               Object {
                 "correct": true,
-                "label": "cow ",
+                "label": "cow",
                 "rationale": "rationale for cow",
                 "value": "0",
               },
               Object {
                 "correct": false,
-                "label": "dog ",
+                "label": "dog",
                 "value": "1",
               },
               Object {
                 "correct": false,
-                "label": "cat ",
+                "label": "cat",
                 "value": "2",
               },
             ],
             "1": Array [
               Object {
                 "correct": true,
-                "label": "over ",
+                "label": "over",
                 "rationale": "rationale for over",
                 "value": "0",
               },
               Object {
                 "correct": false,
-                "label": "under ",
+                "label": "under",
                 "value": "1",
               },
               Object {
                 "correct": false,
-                "label": "across ",
+                "label": "across",
                 "value": "2",
               },
             ],
             "2": Array [
               Object {
                 "correct": true,
-                "label": "moon ",
+                "label": "moon",
                 "rationale": "rationale for moon",
                 "value": "0",
               },
@@ -976,7 +976,7 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
               },
               Object {
                 "correct": false,
-                "label": "house ",
+                "label": "house",
                 "value": "3",
               },
             ],
@@ -989,7 +989,7 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
           "promptEnabled": false,
           "rationaleEnabled": false,
           "shuffle": true,
-          "slateMarkup": "<div><p>The <span data-type=\\"inline_dropdown\\" data-index=\\"0\\" data-value=\\"cow \\"></span> jumped <span data-type=\\"inline_dropdown\\" data-index=\\"1\\" data-value=\\"over \\"></span> the <span data-type=\\"inline_dropdown\\" data-index=\\"2\\" data-value=\\"moon \\"></span></p></div>",
+          "slateMarkup": "<div><p>The <span data-type=\\"inline_dropdown\\" data-index=\\"0\\" data-value=\\"cow\\"></span> jumped <span data-type=\\"inline_dropdown\\" data-index=\\"1\\" data-value=\\"over\\"></span> the <span data-type=\\"inline_dropdown\\" data-index=\\"2\\" data-value=\\"moon\\"></span></p></div>",
           "studentInstructionsEnabled": true,
           "teacherInstructionsEnabled": false,
           "toolbarEditorPosition": "bottom",
@@ -1057,7 +1057,7 @@ There should be at most 10 choices defined per response area."
           },
         ]
       }
-      markup="<div><p>The <span data-type=\\"inline_dropdown\\" data-index=\\"0\\" data-value=\\"cow \\"></span> jumped <span data-type=\\"inline_dropdown\\" data-index=\\"1\\" data-value=\\"over \\"></span> the <span data-type=\\"inline_dropdown\\" data-index=\\"2\\" data-value=\\"moon \\"></span></p></div>"
+      markup="<div><p>The <span data-type=\\"inline_dropdown\\" data-index=\\"0\\" data-value=\\"cow\\"></span> jumped <span data-type=\\"inline_dropdown\\" data-index=\\"1\\" data-value=\\"over\\"></span> the <span data-type=\\"inline_dropdown\\" data-index=\\"2\\" data-value=\\"moon\\"></span></p></div>"
       mathMlOptions={
         Object {
           "mmlEditing": false,
@@ -1109,12 +1109,12 @@ There should be at most 10 choices defined per response area."
       </WithStyles(ExpansionPanelSummary)>
       <WithStyles(ExpansionPanelDetails)>
         <InputContainer
-          key="cow "
+          key="cow"
           label={
             <span
               dangerouslySetInnerHTML={
                 Object {
-                  "__html": "Rationale for cow  (correct)",
+                  "__html": "Rationale for cow (correct)",
                 }
               }
             />
@@ -1136,12 +1136,12 @@ There should be at most 10 choices defined per response area."
           />
         </InputContainer>
         <InputContainer
-          key="dog "
+          key="dog"
           label={
             <span
               dangerouslySetInnerHTML={
                 Object {
-                  "__html": "Rationale for dog  (incorrect)",
+                  "__html": "Rationale for dog (incorrect)",
                 }
               }
             />
@@ -1163,12 +1163,12 @@ There should be at most 10 choices defined per response area."
           />
         </InputContainer>
         <InputContainer
-          key="cat "
+          key="cat"
           label={
             <span
               dangerouslySetInnerHTML={
                 Object {
-                  "__html": "Rationale for cat  (incorrect)",
+                  "__html": "Rationale for cat (incorrect)",
                 }
               }
             />
@@ -1205,12 +1205,12 @@ There should be at most 10 choices defined per response area."
       </WithStyles(ExpansionPanelSummary)>
       <WithStyles(ExpansionPanelDetails)>
         <InputContainer
-          key="over "
+          key="over"
           label={
             <span
               dangerouslySetInnerHTML={
                 Object {
-                  "__html": "Rationale for over  (correct)",
+                  "__html": "Rationale for over (correct)",
                 }
               }
             />
@@ -1232,12 +1232,12 @@ There should be at most 10 choices defined per response area."
           />
         </InputContainer>
         <InputContainer
-          key="under "
+          key="under"
           label={
             <span
               dangerouslySetInnerHTML={
                 Object {
-                  "__html": "Rationale for under  (incorrect)",
+                  "__html": "Rationale for under (incorrect)",
                 }
               }
             />
@@ -1259,12 +1259,12 @@ There should be at most 10 choices defined per response area."
           />
         </InputContainer>
         <InputContainer
-          key="across "
+          key="across"
           label={
             <span
               dangerouslySetInnerHTML={
                 Object {
-                  "__html": "Rationale for across  (incorrect)",
+                  "__html": "Rationale for across (incorrect)",
                 }
               }
             />
@@ -1301,12 +1301,12 @@ There should be at most 10 choices defined per response area."
       </WithStyles(ExpansionPanelSummary)>
       <WithStyles(ExpansionPanelDetails)>
         <InputContainer
-          key="moon "
+          key="moon"
           label={
             <span
               dangerouslySetInnerHTML={
                 Object {
-                  "__html": "Rationale for moon  (correct)",
+                  "__html": "Rationale for moon (correct)",
                 }
               }
             />
@@ -1355,12 +1355,12 @@ There should be at most 10 choices defined per response area."
           />
         </InputContainer>
         <InputContainer
-          key="house "
+          key="house"
           label={
             <span
               dangerouslySetInnerHTML={
                 Object {
-                  "__html": "Rationale for house  (incorrect)",
+                  "__html": "Rationale for house (incorrect)",
                 }
               }
             />

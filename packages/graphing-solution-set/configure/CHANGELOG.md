@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-solution-set-configure@1.7.1...@pie-element/graphing-solution-set-configure@1.8.0) (2024-04-22)
+
+
+### Features
+
+* update pie-lib/pie-toolbox PD-2449 ([2a0b40a](https://github.com/pie-framework/pie-elements/commit/2a0b40a826f0338b5eda2e8301f79870be3d0073))
+
+
+
+
+
+## [1.7.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-solution-set-configure@1.7.0...@pie-element/graphing-solution-set-configure@1.7.1) (2024-04-22)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3644, PD-3673 ([5e28ce0](https://github.com/pie-framework/pie-elements/commit/5e28ce0dab4a7ecd93ef7bba45ddb20f768b450b))
+
+
+
+
+
+# [1.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-solution-set-configure@1.6.1...@pie-element/graphing-solution-set-configure@1.7.0) (2024-04-18)
+
+
+### Features
+
+* update pie-lib/pie-toolbox SC-30530, SC-30682, PD-3607, PD-3655 ([f08bccf](https://github.com/pie-framework/pie-elements/commit/f08bccf86fcb430e75e410116b000b3affc252c0))
+* **charting, graphing-solution-set:** Charting Item Relative Scoring and Label Characters Limit SC-29795, SC-30682 ([083f91a](https://github.com/pie-framework/pie-elements/commit/083f91a10e08b417514a76b547c6439c95461f32))
+
+
+
+
+
 ## [1.6.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-solution-set-configure@1.6.0...@pie-element/graphing-solution-set-configure@1.6.1) (2024-04-08)
 
 

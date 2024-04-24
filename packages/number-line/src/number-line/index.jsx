@@ -249,54 +249,55 @@ export class NumberLine extends React.Component {
 
     let adjustedWidth = graphProps.width - 20;
 
-    const names = classNames(classes.numberLine, classes.mainContainer, classes[colorContrast]);
+    const containerNames = classNames(classes.mainContainer, classes[colorContrast]);
+    const numberLineContainerNames = classNames(classes.numberLine, classes.mainContainer, classes[colorContrast]);
 
     return (
-      <div className={names} style={{ width }}>
+      <div className={containerNames}>
         {prompt && (
           <div className={classes.prompt}>
-            <PreviewPrompt prompt={prompt} />
+            <PreviewPrompt prompt={prompt}/>
           </div>
         )}
 
-        {!disabled && (
-          <div style={{ width: adjustedWidth }} className={classes.toggle}>
-            <Toggle
-              show={isArray(correctResponse) && correctResponse.length && !emptyAnswer}
-              toggled={showCorrectAnswer}
-              onToggle={onShowCorrectAnswer}
-              initialValue={false}
+        <div className={numberLineContainerNames} style={{ width }}>
+            <div style={{ width: adjustedWidth }} className={classes.toggle}>
+              <Toggle
+                show={isArray(correctResponse) && correctResponse.length && !emptyAnswer}
+                toggled={showCorrectAnswer}
+                onToggle={onShowCorrectAnswer}
+                initialValue={false}
+                language={language}
+              />
+            </div>
+
+          {!disabled && (
+            <PointChooser
+              elementType={elementType}
+              showDeleteButton={elementsSelected}
+              onDeleteClick={deleteElements}
+              onElementType={this.elementTypeSelected.bind(this)}
+              onClearElements={this.clearAll.bind(this)}
+              onUndoElement={this.undo.bind(this)}
+              icons={getIcons()}
               language={language}
             />
-          </div>
-        )}
+          )}
 
-        {!disabled && (
-          <PointChooser
-            elementType={elementType}
-            showDeleteButton={elementsSelected}
-            onDeleteClick={deleteElements}
-            onElementType={this.elementTypeSelected.bind(this)}
-            onClearElements={this.clearAll.bind(this)}
-            onUndoElement={this.undo.bind(this)}
-            icons={getIcons()}
-            language={language}
+          <Graph
+            {...graphProps}
+            elements={elements}
+            onAddElement={addElement}
+            onMoveElement={onMoveElement}
+            onToggleElement={this.toggleElement.bind(this)}
+            onDeselectElements={this.deselectElements.bind(this)}
+            debug={false}
           />
-        )}
+          {title && <div className={classes.graphTitle} dangerouslySetInnerHTML={{ __html: title }}/>}
 
-        <Graph
-          {...graphProps}
-          elements={elements}
-          onAddElement={addElement}
-          onMoveElement={onMoveElement}
-          onToggleElement={this.toggleElement.bind(this)}
-          onDeselectElements={this.deselectElements.bind(this)}
-          debug={false}
-        />
-        {title && <div className={classes.graphTitle} dangerouslySetInnerHTML={{ __html: title }} />}
-
-        {showMaxPointsWarning && <Feedback type="info" width={adjustedWidth} message={maxPointsMessage()} />}
-        {feedback && !showCorrectAnswer && <Feedback {...feedback} width={adjustedWidth} />}
+          {showMaxPointsWarning && <Feedback type="info" width={adjustedWidth} message={maxPointsMessage()}/>}
+          {feedback && !showCorrectAnswer && <Feedback {...feedback} width={adjustedWidth}/>}
+        </div>
       </div>
     );
   }

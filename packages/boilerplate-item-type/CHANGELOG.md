@@ -3,6 +3,44 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.11.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/boilerplate-item-type@2.10.1...@pie-element/boilerplate-item-type@2.11.0) (2024-04-22)
+
+
+### Features
+
+* update pie-lib/pie-toolbox PD-2449 ([2a0b40a](https://github.com/pie-framework/pie-elements/commit/2a0b40a826f0338b5eda2e8301f79870be3d0073))
+
+
+
+
+
+## [2.10.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/boilerplate-item-type@2.10.0...@pie-element/boilerplate-item-type@2.10.1) (2024-04-22)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3644, PD-3673 ([5e28ce0](https://github.com/pie-framework/pie-elements/commit/5e28ce0dab4a7ecd93ef7bba45ddb20f768b450b))
+
+
+
+
+
+# [2.10.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/boilerplate-item-type@2.9.3...@pie-element/boilerplate-item-type@2.10.0) (2024-04-18)
+
+
+### Bug Fixes
+
+* revert experiments for PD-3664 ([9d28f6e](https://github.com/pie-framework/pie-elements/commit/9d28f6ee635166c519f9902b7abb2bec67ac6fd0))
+
+
+### Features
+
+* update pie-lib/pie-toolbox SC-30530, SC-30682, PD-3607, PD-3655 ([f08bccf](https://github.com/pie-framework/pie-elements/commit/f08bccf86fcb430e75e410116b000b3affc252c0))
+
+
+
+
+
 ## [2.9.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/boilerplate-item-type@2.9.2...@pie-element/boilerplate-item-type@2.9.3) (2024-04-16)
 
 

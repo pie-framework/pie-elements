@@ -1,4 +1,8 @@
-import {ModelUpdatedEvent} from '@pie-framework/pie-configure-events';
+import {
+    ModelUpdatedEvent,
+    InsertImageEvent,
+    DeleteImageEvent
+} from '@pie-framework/pie-configure-events';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import debug from 'debug';
@@ -21,13 +25,17 @@ export default class RubricElement extends HTMLElement {
         this.onConfigurationChanged = this.onConfigurationChanged.bind(this);
     }
 
-    validateModel = (nextModel) => {
+    updateModelAccordingToReceivedProps = (nextModel) => {
         const currentModel = {...this._model};
-        const validatedModel = nextModel;
-        const {maxPoints, excludeZero} = validatedModel;
+        if (!nextModel) {
+            return currentModel;
+        }
 
-        validatedModel.points = [...validatedModel.points];
-        validatedModel.sampleAnswers = [...validatedModel.sampleAnswers];
+        const validatedModel = nextModel;
+        const { maxPoints, excludeZero } = validatedModel || {};
+
+        validatedModel.points = validatedModel.points ? [...validatedModel.points] : [];
+        validatedModel.sampleAnswers = validatedModel.sampleAnswers ? [...validatedModel.sampleAnswers] : [];
 
         const howManyPointsShouldHave = excludeZero ? maxPoints : maxPoints + 1;
         const howManyPointsDoesItHave = validatedModel.points.length;
@@ -46,11 +54,8 @@ export default class RubricElement extends HTMLElement {
                     validatedModel.sampleAnswers.push(null);
                 }
             }
-
-            return validatedModel;
-        }
-
-        if (howManyPointsDoesItHave > howManyPointsShouldHave) {
+        } 
+        else if (howManyPointsDoesItHave > howManyPointsShouldHave) {
             if (excludeZeroChanged && excludeZero) {
                 validatedModel.points = validatedModel.points.slice(1);
                 validatedModel.sampleAnswers = validatedModel.sampleAnswers.slice(1);
@@ -65,7 +70,7 @@ export default class RubricElement extends HTMLElement {
     }
 
     set model(m) {
-        this._model = this.validateModel(modelWithDefaults(m));
+        this._model = this.updateModelAccordingToReceivedProps(modelWithDefaults(m));
         this._render();
     }
 
@@ -75,7 +80,7 @@ export default class RubricElement extends HTMLElement {
     }
 
     onModelChanged(m) {
-        this._model = this.validateModel(m);
+        this._model = this.updateModelAccordingToReceivedProps(m);
         this._render();
         this.dispatchEvent(new ModelUpdatedEvent(this._model, false));
     }
@@ -90,6 +95,14 @@ export default class RubricElement extends HTMLElement {
         this._render();
     };
 
+    insertImage(handler) {
+        this.dispatchEvent(new InsertImageEvent(handler));
+    }
+
+    onDeleteImage(src, done) {
+        this.dispatchEvent(new DeleteImageEvent(src, done));
+    }
+
     connectedCallback() {
         this._render();
     }
@@ -102,6 +115,10 @@ export default class RubricElement extends HTMLElement {
                 configuration: this._configuration,
                 onModelChanged: this.onModelChanged,
                 onConfigurationChanged: this.onConfigurationChanged,
+                imageSupport: {
+                    add: this.insertImage.bind(this),
+                    delete: this.onDeleteImage.bind(this),
+                },
             });
 
             ReactDOM.render(element, this);

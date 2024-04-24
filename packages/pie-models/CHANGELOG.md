@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.28.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.27.2...@pie-element/pie-models@13.28.0) (2024-04-18)
+
+
+### Features
+
+* **charting, graphing-solution-set:** Charting Item Relative Scoring and Label Characters Limit SC-29795, SC-30682 ([083f91a](https://github.com/pie-framework/pie-elements/commit/083f91a10e08b417514a76b547c6439c95461f32))
+
+
+
+
+
 ## [13.27.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.27.1...@pie-element/pie-models@13.27.2) (2024-04-01)
 
 

@@ -198,6 +198,7 @@ export const ScorePoint = withStyles((theme) => ({
      alignToRight,
      spellCheck,
      uploadSoundSupport,
+     imageSupport = {},
      mathMlOptions = {},
    }) => {
     const scoreBoxClasses = showScorePointLabels
@@ -220,10 +221,11 @@ export const ScorePoint = withStyles((theme) => ({
               pluginProps={pluginProps}
               activePlugins={filteredDefaultPlugins}
               spellCheck={spellCheck}
-              toolbarOpts={alignToRight && { alignment: 'right' }}
+              toolbarOpts={alignToRight ? { alignment: 'right' } : {}}
               uploadSoundSupport={uploadSoundSupport}
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               mathMlOptions={mathMlOptions}
+              imageSupport={imageSupport}
             />
           ) : null}
         </div>
@@ -286,7 +288,7 @@ export const SimpleInput = withStyles((theme) => ({
   slateEditor: {
     fontFamily: 'Cerebri',
   },
-}))(({ classes, markup, onChange, pluginProps, label, spellCheck, uploadSoundSupport, mathMlOptions = {} }) => (
+}))(({ classes, markup, onChange, pluginProps, label, spellCheck, uploadSoundSupport, mathMlOptions = {}, imageSupport={} }) => (
   <div className={classes.simpleInput}>
     {label && <div>{label}</div>}
 
@@ -302,6 +304,7 @@ export const SimpleInput = withStyles((theme) => ({
       uploadSoundSupport={uploadSoundSupport}
       languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
       mathMlOptions={mathMlOptions}
+      imageSupport={imageSupport}
     />
   </div>
 ));
@@ -342,6 +345,7 @@ export const UnderlinedInput = withStyles((theme) => ({
      placeholder,
      spellCheck,
      uploadSoundSupport,
+     imageSupport = {},
      mathMlOptions = {},
    }) => (
     <div className={classes.underlinedInputWrapper}>
@@ -360,6 +364,7 @@ export const UnderlinedInput = withStyles((theme) => ({
         uploadSoundSupport={uploadSoundSupport}
         languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
         mathMlOptions={mathMlOptions}
+        imageSupport={imageSupport}
       />
     </div>
   ),
@@ -387,6 +392,7 @@ export const ExpandedInput = withStyles({
      spellCheck,
      uploadSoundSupport,
      mathMlOptions = {},
+     imageSupport = {},
    }) => (
     <div>
       <EditableHtml
@@ -397,12 +403,13 @@ export const ExpandedInput = withStyles({
         onChange={onChange}
         placeholder={placeholder}
         pluginProps={pluginProps}
-        toolbarOpts={alignToRight && { alignment: 'right' }}
+        toolbarOpts={alignToRight ? { alignment: 'right' } : {}}
         spellCheck={spellCheck}
         uploadSoundSupport={uploadSoundSupport}
         languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
         autoWidthToolbar
         mathMlOptions={mathMlOptions}
+        imageSupport={imageSupport}
       />
     </div>
   ),
