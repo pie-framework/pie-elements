@@ -422,7 +422,7 @@ export class CorrectResponse extends React.Component {
           Define Line Type(s) and Correct Response
         </Typography>
         <Typography component="div" variant="body1" className={classes.subtitleText}>
-          Use this interface to choose how many lines students will be able to use, and to define the correct answer.
+          Use this interface to choose how many lines students will be able to draw, and to define the correct answer.
         </Typography>
         <Typography component="div" variant="body1" className={classes.subtitleText}>
           Choose Number of Lines
