@@ -12,7 +12,7 @@ exports[`CorrectResponse renders snapshot 1`] = `
     component="div"
     variant="body1"
   >
-    Use this interface to choose how many lines students will be able to use, and to define the correct answer
+    Use this interface to choose how many lines students will be able to draw, and to define the correct answer.
   </WithStyles(Typography)>
   <WithStyles(Typography)
     component="div"

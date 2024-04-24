@@ -313,7 +313,7 @@ export default {
     instruction: {
       settings: false,
       label:
-        'Graphing Solution Set items involve plotting one or two lines on a graph and then selecting the correct area that represents the solution set. To create one, first configure the grid, then select if one or two lines will be offered and if the lines should be solid or dashed. After defining the line(s), define the solution set by clicking the area that represents the solution set.',
+        'Graphing Solution Set items involve plotting one or two lines on a graph and then selecting the correct area that represents the solution set. To create one, first configure the grid, then select if one or two lines will be offered and if the lines should be solid or dashed. After defining the line(s), define the correct answer by clicking the area that represents the solution set.',
     },
     settingsPanelDisabled: false,
     spellCheck: {
