@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.9.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-solution-set-configure@1.8.0...@pie-element/graphing-solution-set-configure@1.9.0) (2024-04-24)
+
+
+### Features
+
+* **graphing-solution-set:** Updated UI messages for GSS item | SC-28591 ([1c3237c](https://github.com/pie-framework/pie-elements/commit/1c3237c64066046f464ac38df833dd726139abde))
+
+
+
+
+
 # [1.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-solution-set-configure@1.7.1...@pie-element/graphing-solution-set-configure@1.8.0) (2024-04-22)
 
 
