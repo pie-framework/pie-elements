@@ -7,7 +7,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@pie-element/multiple-choice": "next",
+    "@pie-element/multiple-choice": "^8.14.0",
     "@pie-framework/pie-player-events": "^0.1.0",
     "classnames": "^2.2.5",
     "debug": "^4.1.1",

@@ -230,7 +230,7 @@ exports[`GeneralConfigBlock renders correctly with snapshot 1`] = `
     className="GeneralConfigBlock-promptHolder-11"
     label="Prompt"
   >
-    <ForwardRef
+    <EditableHtml
       allowValidation={false}
       imageSupport={Object {}}
       languageCharactersProps={
