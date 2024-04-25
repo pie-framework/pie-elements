@@ -2280,6 +2280,29 @@
   dependencies:
     "@octokit/openapi-types" "^11.2.0"
 
+"@pie-element/multi-trait-rubric@3.10.1-next.10":
+  version "3.10.1-next.10"
+  resolved "https://registry.yarnpkg.com/@pie-element/multi-trait-rubric/-/multi-trait-rubric-3.10.1-next.10.tgz#745b4c2a9564fd46c4bdba9a7df377f5d5dbe930"
+  integrity sha512-96mTPdo964dPovA+V4MJPARX1kx7NAsUFqJlqFSa6V2rKs12lca5rwlMgOpkZYeJQEtLi0CXkATzfWQ0cyGmQA==
+  dependencies:
+    "@material-ui/core" "^3.9.2"
+    "@pie-framework/pie-player-events" "^0.1.0"
+    "@pie-lib/pie-toolbox" "1.16.1-next.28"
+    clsx "^1.1.1"
+    enzyme-to-json "^3.3.5"
+    prop-types "^15.6.1"
+    react "^16.8.1"
+    react-dom "^16.8.1"
+
+"@pie-element/rubric@3.10.1-next.10":
+  version "3.10.1-next.10"
+  resolved "https://registry.yarnpkg.com/@pie-element/rubric/-/rubric-3.10.1-next.10.tgz#3dbe930744391c60b7333b25d54753eee18ccc71"
+  integrity sha512-V9mcZp7axjW1TR5ri3H5VKArksvo50Jc5n9KSMPAwLnW1cNBHPFugIMLJpUwAbXq5OniNRFick/I+RqFFPS3Mw==
+  dependencies:
+    "@material-ui/core" "^3.9.2"
+    "@pie-lib/pie-toolbox" "1.16.1-next.28"
+    prop-types "^15.7.2"
+
 "@pie-framework/build-helper@^5.2.9":
   version "5.2.9"
   resolved "https://registry.yarnpkg.com/@pie-framework/build-helper/-/build-helper-5.2.9.tgz#1a06eb0b7c471042eefce3d5f994192c6576d311"
