@@ -15,23 +15,26 @@ import classnames from 'classnames';
 
 import { getAdjustedLength } from './markupUtils';
 
-const styles = () => ({
+const styles = (theme) => ({
+  design: {
+    marginBottom: theme.spacing.unit / 2,
+  },
   altChoices: {
     alignItems: 'flex-start',
     flexDirection: 'column',
     display: 'flex',
-    padding: '20px 0 0 0',
+    paddingTop: theme.spacing.unit * 2.5,
     '& > *': {
-      marginBottom: '20px',
+      marginBottom: theme.spacing.unit * 2.5,
       width: '100%',
     },
   },
   choice: {
     flex: '1',
-    marginRight: '20px',
+    marginRight: theme.spacing.unit * 2.5,
   },
   deleteBtn: {
-    fill: 'gray',
+    fill: theme.palette.grey[600],
   },
   selectContainer: {
     alignItems: 'flex-end',
@@ -45,15 +48,15 @@ const styles = () => ({
   },
   lengthField: {
     width: '230px',
-    marginRight: '20px',
+    marginRight: theme.spacing.unit * 2.5,
   },
   errorText: {
-    fontSize: '12px',
-    color: 'red',
-    paddingTop: '5px',
+    fontSize: theme.typography.fontSize - 2,
+    color: theme.palette.error.main,
+    paddingTop: theme.spacing.unit / 2,
   },
   inputError: {
-    border: '2px solid red',
+    border: `2px solid ${theme.palette.error.main}`,
     borderRadius: '6px',
   },
 });
@@ -61,10 +64,13 @@ const styles = () => ({
 export class Choice extends React.Component {
   static propTypes = {
     classes: PropTypes.object,
+    error: PropTypes.string,
     markup: PropTypes.string,
     onChange: PropTypes.func.isRequired,
     onDelete: PropTypes.func.isRequired,
     value: PropTypes.string,
+    spellCheck: PropTypes.bool,
+    showMaxLength: PropTypes.bool,
   };
 
   state = {
@@ -88,10 +94,12 @@ export class Choice extends React.Component {
 
   render() {
     const { value } = this.state;
-    const { classes, onDelete, spellCheck, error } = this.props;
+    const { classes, onDelete, spellCheck, error, showMaxLength } = this.props;
+    const inputProps = showMaxLength ? {} : { maxLength: 25 };
+
 
     return (
-      <>
+      <React.Fragment>
         <div
           style={{
             alignItems: 'center',
@@ -106,13 +114,14 @@ export class Choice extends React.Component {
             labelWidth={0}
             disableUnderline
             spellCheck={spellCheck}
+            inputProps={inputProps}
           />
           <IconButton aria-label="delete" className={classes.deleteBtn} onClick={onDelete}>
             <Delete />
           </IconButton>
         </div>
         {error && <div className={classes.errorText}>{error}</div>}
-      </>
+      </React.Fragment>
     );
   }
 }
@@ -122,6 +131,7 @@ export class AlternateSection extends React.Component {
     choices: PropTypes.array,
     selectChoices: PropTypes.array.isRequired,
     classes: PropTypes.object.isRequired,
+    errors: PropTypes.object,
     onSelect: PropTypes.func.isRequired,
     choiceChanged: PropTypes.func.isRequired,
     lengthChanged: PropTypes.func,
@@ -129,6 +139,7 @@ export class AlternateSection extends React.Component {
     value: PropTypes.string,
     maxLength: PropTypes.number,
     showMaxLength: PropTypes.bool,
+    spellCheck: PropTypes.bool,
   };
 
   state = {};
@@ -243,11 +254,12 @@ export class AlternateSection extends React.Component {
               <em>{value ? 'Remove selection' : 'Select a response'}</em>
             </MenuItem>
             {selectChoices.map((c, index) => (
-              <MenuItem key={index} value={c.value}>
-                {c.label}
+              <MenuItem key={index} value={c?.value}>
+                {c?.label}
               </MenuItem>
             ))}
           </Select>
+
           {choices && choices.length > 0 && (
             <div className={classes.rightContainer}>
               {maxLength && showMaxLength && (
@@ -270,6 +282,7 @@ export class AlternateSection extends React.Component {
           )}
         </div>
         {errors && errors[0] && <div className={classes.errorText}>{errors[0]}</div>}
+
         <div className={classes.altChoices}>
           {choices &&
             choices.map(
@@ -283,6 +296,7 @@ export class AlternateSection extends React.Component {
                     onDelete={() => this.onRemoveChoice(c)}
                     spellCheck={spellCheck}
                     error={errors && errors[index]}
+                    showMaxLength={showMaxLength}
                   />
                 ),
             )}

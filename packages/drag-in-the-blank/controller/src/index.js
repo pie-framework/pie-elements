@@ -1,7 +1,7 @@
 import reduce from 'lodash/reduce';
 import isEmpty from 'lodash/isEmpty';
 import { getAllCorrectResponses, choiceIsEmpty } from './utils';
-import { lockChoices, getShuffledChoices, partialScoring } from '@pie-lib/controller-utils';
+import { lockChoices, getShuffledChoices, partialScoring } from '@pie-lib/pie-toolbox/controller-utils';
 
 export const normalize = (question) => ({
   rationaleEnabled: true,
@@ -164,10 +164,22 @@ export const createCorrectResponseSession = (question, env) => {
   });
 };
 
+// remove all html tags
+const getInnerText = (html) => (html || '').replaceAll(/<[^>]*>/g, '');
+
+// remove all html tags except img and iframe
+const getContent = (html) => (html || '').replace(/(<(?!img|iframe)([^>]+)>)/gi, '');
+
 export const validate = (model = {}, config = {}) => {
   const { choices, correctResponse, markup } = model;
   const { minChoices = 2, maxChoices, maxResponseAreas } = config;
   const errors = {};
+
+  ['teacherInstructions', 'prompt', 'rationale'].forEach((field) => {
+    if (config[field]?.required && !getContent(model[field])) {
+      errors[field] = 'This field is required.';
+    }
+  });
 
   const nbOfResponseAreas = ((markup || '').match(/\{\{(\d+)\}\}/g) || []).length;
   const nbOfChoices = (choices || []).length;

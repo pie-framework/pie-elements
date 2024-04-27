@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { renderMath } from '@pie-lib/math-rendering';
+import { renderMath } from '@pie-lib/pie-toolbox/math-rendering-accessible';
 import { SessionChangedEvent, ModelSetEvent } from '@pie-framework/pie-player-events';
 import CategorizeComponent from './categorize';
 
@@ -8,6 +8,7 @@ export default class Categorize extends HTMLElement {
   set model(m) {
     this._model = m;
 
+    this.eliminateBlindAnswersFromSession();
     this.dispatchEvent(new ModelSetEvent(this.tagName.toLowerCase(), this.isComplete(), !!this._model));
     this.render();
   }
@@ -31,6 +32,20 @@ export default class Categorize extends HTMLElement {
 
   get session() {
     return this._session;
+  }
+
+  eliminateBlindAnswersFromSession(){
+    const { answers = [] } = this._session || {};
+    const { choices = [] } = this._model || {};
+    const mappedChoices  = choices.map(c => c.id) || [];
+    const filteredAnswers = answers.map(answer => {
+      const answerChoices = answer?.choices || [];
+      answer.choices = answerChoices.filter(c => mappedChoices.includes(c));
+      return answer;
+    })
+    if(filteredAnswers.length > 0){
+      this.changeAnswers(filteredAnswers);
+    }
   }
 
   changeAnswers(answers) {

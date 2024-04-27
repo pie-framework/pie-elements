@@ -12,7 +12,7 @@ class ImageContainer extends Component {
       classes,
       draggingElement,
       duplicateResponses,
-      image: { height, src, width },
+      image: { height, src, width } = {},
       onAnswerSelect,
       onDragAnswerBegin,
       onDragAnswerEnd,
@@ -23,7 +23,7 @@ class ImageContainer extends Component {
     return (
       <div className={classes.base}>
         <img src={src} height={height} width={width} />
-        {responseContainers.map((r, i) => {
+        {(responseContainers || []).map((r, i) => {
           const rHeight = (r.height.replace('%', '') / 100) * height;
           const rWidth = (r.width.replace('%', '') / 100) * width;
           const rLeft = (r.x / 100) * width;

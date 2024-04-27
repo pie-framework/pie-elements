@@ -13,7 +13,9 @@ const RUBRIC_TAG_NAME = 'rubric-configure';
 const MULTI_TRAIT_RUBRIC_TAG_NAME = 'multi-trait-rubric-configure';
 
 class ComplexSimpleRubricConfigure extends RubricConfigure {}
-class ComplexMTRConfigure extends MultiTraitRubricConfigure {}
+
+class ComplexMTRConfigure extends MultiTraitRubricConfigure {
+}
 
 const defineComplexRubric = () => {
   if (!customElements.get(RUBRIC_TAG_NAME)) {
@@ -38,37 +40,52 @@ const prepareCustomizationObject = (config, model) => {
 export default class ComplexRubricConfigureElement extends HTMLElement {
   static createDefaultModel = (
     {
-      rubrics: { simpleRubric = {}, multiTraitRubric = {} } = { simpleRubric: {}, multiTraitRubric: {} },
+      rubrics: { simpleRubric = {}, rubricless = {}, multiTraitRubric = {} } = { simpleRubric: {}, rubricless: {}, multiTraitRubric: {} },
       ...model
     } = {},
-    defaults = {},
-  ) => ({
-    ...defaults,
-    ...model,
+    currentModel = {},
+  ) =>
+  {
+    const pieDefaults = sensibleDefaults?.model || {}
+    return {
+      ...pieDefaults,
+      ...currentModel,
+      ...model,
     rubrics: {
       simpleRubric: {
-        ...(defaults.rubrics || {}).simpleRubric,
+        ...(sensibleDefaults?.model?.rubrics || {}).simpleRubric,
+        ...(currentModel.rubrics || {}).simpleRubric,
         ...simpleRubric,
       },
       multiTraitRubric: {
-        ...(defaults.rubrics || {}).multiTraitRubric,
+        ...(sensibleDefaults?.model?.rubrics || {}).multiTraitRubric,
+        ...(currentModel.rubrics || {}).multiTraitRubric,
         ...multiTraitRubric,
       },
+      rubricless: {
+        ...(sensibleDefaults?.model?.rubrics || {}).rubricless,
+        ...(currentModel.rubrics || {}).rubricless,
+        ...rubricless,
+      },
     },
-  });
+  }};
 
   constructor() {
     super();
-    debug.log('constructor called');
-    this._model = ComplexRubricConfigureElement.createDefaultModel();
+    this.canUpdateModel = false;
 
+    debug.log('constructor called');
+
+    this._model = ComplexRubricConfigureElement.createDefaultModel();
     this._configuration = sensibleDefaults.configuration;
+
     this.onConfigurationChanged = this.onConfigurationChanged.bind(this);
   }
 
   set model(m) {
     this._model = ComplexRubricConfigureElement.createDefaultModel(m, this._model);
 
+    this.canUpdateModel = true;
     this._render();
   }
 
@@ -82,6 +99,7 @@ export default class ComplexRubricConfigureElement extends HTMLElement {
     this._model = ComplexRubricConfigureElement.createDefaultModel(m, this._model);
 
     this.dispatchModelUpdated(reset);
+
     this._render();
   };
 
@@ -136,6 +154,7 @@ export default class ComplexRubricConfigureElement extends HTMLElement {
       configuration: this._configuration,
       onModelChanged: this.onModelChanged,
       onConfigurationChanged: this.onConfigurationChanged,
+      canUpdateModel: this.canUpdateModel
     });
 
     ReactDOM.render(element, this);

@@ -10,7 +10,8 @@ import {
 } from '@pie-framework/pie-configure-events';
 import debug from 'debug';
 import defaultValues from './defaults';
-import { renderMath } from '@pie-lib/math-rendering';
+import { renderMath } from '@pie-lib/pie-toolbox/math-rendering-accessible';
+import cloneDeep from 'lodash/cloneDeep';
 
 const log = debug('pie-elements:graphing:configure');
 
@@ -74,11 +75,53 @@ export default class GraphLinesConfigure extends HTMLElement {
 
   set model(m) {
     this._model = GraphLinesConfigure.createDefaultModel(m);
+    this._modelCopy = cloneDeep(this._model);
+
     this._render();
+  }
+
+  resetModelAfterConfigurationIsSet = () => {
+    // In environments that use pie-player-components, model is set before configuration.
+    // This is the reason why sometimes the model gets altered non-reversible
+    // (altered using default configuration instead of client configuration, because at that point client configuration was not set yet)
+    // Therefore, in such environments, we will make sure to keep a modelCopy (initialised in set model) and use it to reset
+    // the model in set configuration (resetModelAfterConfigurationIsSet) if set configuration is ever called
+    const pieAuthors = document.querySelectorAll('pie-author');
+    this.hasPlayerAsParent = Array.from(pieAuthors).some(author => author.contains(this));
+
+    if (this.hasPlayerAsParent) {
+      if (this._modelCopy) {
+        this._model = this._modelCopy;
+      } else {
+        delete this._modelCopy;
+      }
+    }
   }
 
   set configuration(c) {
     this._configuration = c;
+
+    this.resetModelAfterConfigurationIsSet();
+
+    // if language:enabled is true, then the corresponding default item model should include a language value;
+    // if it is false, then the language field should be omitted from the item model.
+    // if a default item model includes a language value (e.g., en_US) and the corresponding authoring view settings have language:settings = true,
+    // then (a) language:enabled should also be true, and (b) that default language value should be represented in languageChoices[] (as a key).
+    //TODO: add logic in controller and add tests
+    if (c.language?.enabled) {
+      if (c.languageChoices?.options?.length) {
+        this._model.language = c.languageChoices.options[0].value;
+      }
+    } else {
+      if (c.language.settings) {
+        if (this._model.language) {
+          this._configuration.language.enabled = true;
+        }
+      } else {
+        delete this._model.language;
+      }
+    }
+
     this._render();
   }
 

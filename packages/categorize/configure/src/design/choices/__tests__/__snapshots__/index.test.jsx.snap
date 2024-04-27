@@ -90,7 +90,7 @@ exports[`choices snapshot renders 1`] = `
       }
     }
   >
-    <DropTarget(DragSource(WithStyles(Choice)))
+    <Wrapped
       choice={
         Object {
           "content": "Choice 0",
@@ -107,6 +107,5 @@ exports[`choices snapshot renders 1`] = `
       rearrangeChoices={[Function]}
     />
   </div>
-  <WithStyles(Component) />
 </div>
 `;

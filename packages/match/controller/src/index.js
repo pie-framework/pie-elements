@@ -1,8 +1,8 @@
 import isEqual from 'lodash/isEqual';
 import isEmpty from 'lodash/isEmpty';
 import cloneDeep from 'lodash/cloneDeep';
-import { getFeedbackForCorrectness } from '@pie-lib/feedback';
-import { lockChoices, getShuffledChoices, partialScoring } from '@pie-lib/controller-utils';
+import { getFeedbackForCorrectness } from '@pie-lib/pie-toolbox/feedback';
+import { lockChoices, getShuffledChoices, partialScoring } from '@pie-lib/pie-toolbox/controller-utils';
 import debug from 'debug';
 
 const log = debug('@pie-element:match:controller');
@@ -133,8 +133,8 @@ const getOutComeScore = (question, env, answers = {}) => {
   return correctness === 'correct'
     ? 1
     : correctness === 'partial' && isPartialScoring
-      ? getPartialScore(question, answers)
-      : 0;
+    ? getPartialScore(question, answers)
+    : 0;
 };
 
 export const outcome = (question, session, env) => {
@@ -165,7 +165,7 @@ export function createDefaultModel(model = {}) {
 }
 
 export const normalize = (question) => ({
-  feedbackEnabled: true,
+  feedbackEnabled: false,
   promptEnabled: true,
   rationaleEnabled: true,
   teacherInstructionsEnabled: true,
@@ -219,13 +219,12 @@ export function model(question, session, env, updateSession) {
         : Promise.resolve(undefined);
 
     fb.then((feedback) => {
+      const { feedbackEnabled, promptEnabled, prompt, lockChoiceOrder, ...essentials } = normalizedQuestion;
       const out = {
-        allowFeedback: normalizedQuestion.feedbackEnabled,
-        prompt: normalizedQuestion.promptEnabled ? normalizedQuestion.prompt : null,
-        config: {
-          ...normalizedQuestion,
-          shuffled: !normalizedQuestion.lockChoiceOrder,
-        },
+        ...essentials,
+        allowFeedback: feedbackEnabled,
+        prompt: promptEnabled ? prompt : null,
+        shuffled: !lockChoiceOrder,
         feedback,
         disabled: env.mode !== 'gather',
         view: env.mode === 'view',
@@ -239,8 +238,6 @@ export function model(question, session, env, updateSession) {
       } else {
         out.rationale = null;
         out.teacherInstructions = null;
-        out.config.rationale = null;
-        out.config.teacherInstructions = null;
       }
 
       if (env.mode === 'evaluate') {
@@ -276,9 +273,11 @@ export const createCorrectResponseSession = (question, env) => {
   });
 };
 
-const markupToText = (s) => {
-  return s.replace(/(<([^>]+)>)/ig, '');
-};
+// remove all html tags
+const getInnerText = (html) => (html || '').replaceAll(/<[^>]*>/g, '');
+
+// remove all html tags except img and iframe
+const getContent = (html) => (html || '').replace(/(<(?!img|iframe)([^>]+)>)/gi, '');
 
 export const validate = (model = {}, config = {}) => {
   const { rows, choiceMode, headers } = model;
@@ -288,11 +287,17 @@ export const validate = (model = {}, config = {}) => {
     maxLengthQuestionsHeading,
     maxAnswers,
     maxLengthAnswers,
-    maxLengthFirstColumnHeading
+    maxLengthFirstColumnHeading,
   } = config;
   const rowsErrors = {};
   const columnsErrors = {};
   const errors = {};
+
+  ['teacherInstructions', 'prompt', 'rationale'].forEach((field) => {
+    if (config[field]?.required && !getContent(model[field])) {
+      errors[field] = 'This field is required.';
+    }
+  });
 
   if (rows.length < minQuestions) {
     errors.noOfRowsError = `There should be at least ${minQuestions} question rows.`;
@@ -302,29 +307,24 @@ export const validate = (model = {}, config = {}) => {
 
   (rows || []).forEach((row, index) => {
     const { id, values = [], title } = row;
-    let hasCorrectResponse = false;
-
     rowsErrors[id] = '';
 
-    if (maxLengthQuestionsHeading && markupToText(title).length > maxLengthQuestionsHeading) {
-      rowsErrors[id] += `Questions rows content length should not be more than ${maxLengthQuestionsHeading} characters. `;
-    } else if (title === '' || title === '<div></div>') {
+    if (maxLengthQuestionsHeading && getInnerText(title).length > maxLengthQuestionsHeading) {
+      rowsErrors[id] += `Content length should be maximum ${maxLengthQuestionsHeading} characters. `;
+    }
+
+    if (!getContent(title)) {
       rowsErrors[id] += 'Content should not be empty. ';
     } else {
-      const identicalAnswer = rows.slice(index + 1).some((r) => {
-        return r.title === title;
-      });
+      // check for identical content with the previous answers
+      const identicalAnswer = rows.slice(0, index).some((r) => getContent(r.title) === getContent(title));
 
       if (identicalAnswer) {
-        rowsErrors[id] = 'Content should be unique. ';
+        rowsErrors[id] += 'Content should be unique. ';
       }
     }
 
-    values.forEach((value) => {
-      if (value) {
-        hasCorrectResponse = true;
-      }
-    });
+    const hasCorrectResponse = values.some((value) => !!value);
 
     if (!hasCorrectResponse) {
       rowsErrors[id] += 'No correct response defined.';
@@ -336,35 +336,52 @@ export const validate = (model = {}, config = {}) => {
   }
 
   if (maxLengthFirstColumnHeading && headers[0].length > maxLengthFirstColumnHeading) {
-    columnsErrors[0] = `The first column heading should have the maximum length of ${maxLengthFirstColumnHeading} characters.`;
+    columnsErrors[0] = `Content length should be maximum ${maxLengthFirstColumnHeading} characters.`;
   }
 
-  (headers || []).slice(1).forEach((heading, index) => {
-    if (heading === '' || heading === '<div></div>') {
-      columnsErrors[index + 1] = 'Content should not be empty.';
-    } else if (maxLengthAnswers && heading.length > maxLengthAnswers) {
-      columnsErrors[index + 1] = `Content length should be maximum ${maxLengthAnswers} characters.`;
+  const headersContent = (headers || []).map((heading) => getContent(heading));
+  headersContent.shift(); // remove first column since it does not require validation
+
+  headersContent.forEach((heading, index) => {
+    const headerIndex = index + 1; // we need to add 1 because we removed first header from validation
+    columnsErrors[headerIndex] = '';
+
+    if (maxLengthAnswers && getInnerText(heading).length > maxLengthAnswers) {
+      columnsErrors[headerIndex] += `Content length should be maximum ${maxLengthQuestionsHeading} characters. `;
+    }
+
+    if (!heading) {
+      columnsErrors[headerIndex] += 'Content should not be empty.';
     } else {
-      const identicalAnswer = headers.slice(index + 2).some((h) => {
-        return h === heading;
-      });
+      // check for identical content with the previous headers
+      const identicalAnswer = headersContent.slice(0, index).some((head) => head === heading);
 
       if (identicalAnswer) {
-        columnsErrors[index + 2] = 'Content should be unique.';
+        columnsErrors[index + 1] += 'Content should be unique.';
       }
     }
   });
 
+  const hasRowErrors = Object.values(rowsErrors).some((error) => (error || '').length);
 
-  if (!isEmpty(rowsErrors)) {
+  if (hasRowErrors) {
     errors.rowsErrors = rowsErrors;
-    errors.correctResponseError =
-      choiceMode === 'radio'
-        ? 'There should be a correct response defined for every row.'
-        : 'There should be at least one correct response defined for every row.';
+
+    const noCorrectAnswer = Object.values(rowsErrors).some((error) =>
+      (error || '').includes('No correct response defined.'),
+    );
+
+    if (noCorrectAnswer) {
+      errors.correctResponseError =
+        choiceMode === 'radio'
+          ? 'There should be a correct response defined for every row.'
+          : 'There should be at least one correct response defined for every row.';
+    }
   }
 
-  if (!isEmpty(columnsErrors)) {
+  const hasColumnErrors = Object.values(columnsErrors).some((error) => (error || '').length);
+
+  if (hasColumnErrors) {
     errors.columnsErrors = columnsErrors;
   }
 

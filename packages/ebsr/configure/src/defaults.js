@@ -27,10 +27,22 @@ const defaultConfig = {
   prompt: {
     settings: true,
     label: 'Prompt',
+    inputConfiguration: {
+      audio: { disabled: false },
+      video: { disabled: false },
+      image: { disabled: false },
+    },
+    required: false,
   },
   rationale: {
     settings: true,
     label: 'Rationale',
+    inputConfiguration: {
+      audio: { disabled: false },
+      video: { disabled: false },
+      image: { disabled: false },
+    },
+    required: false,
   },
   settingsPanelDisabled: true,
   studentInstructions: {
@@ -40,6 +52,12 @@ const defaultConfig = {
   teacherInstructions: {
     settings: true,
     label: 'Teacher Instructions',
+    inputConfiguration: {
+      audio: { disabled: false },
+      video: { disabled: false },
+      image: { disabled: false },
+    },
+    required: false,
   },
   choicesLayout: {
     settings: false,
@@ -65,6 +83,22 @@ const defaultConfig = {
     rationale: 300,
     choices: 300,
   },
+  mathMlOptions: {
+    mmlOutput: false,
+    mmlEditing: false,
+  },
+  choices: {
+    inputConfiguration: {
+      audio: { disabled: false },
+      video: { disabled: false },
+      image: { disabled: false },
+    },
+  },
+  baseInputConfiguration: {
+    audio: { disabled: false },
+    video: { disabled: false },
+    image: { disabled: false },
+  },
 };
 
 const partModel = (base) => ({
@@ -73,7 +107,7 @@ const partModel = (base) => ({
   choicePrefix: 'numbers',
   prompt: 'Prompt',
   rationaleEnabled: true,
-  feedbackEnabled: true,
+  feedbackEnabled: false,
   promptEnabled: true,
   teacherInstructions: '',
   rationale: '',
@@ -94,6 +128,11 @@ export default {
     partB: partModel({ prompt: 'Prompt B' }),
   },
   configuration: {
+    baseInputConfiguration: {
+      audio: { disabled: false },
+      video: { disabled: false },
+      image: { disabled: false },
+    },
     partialScoring: {
       label: 'Allow Partial Scoring',
       // this will turn off partial scoring toggle in the settings tab by default for the interaction
@@ -112,5 +151,14 @@ export default {
       label: 'Part Labels',
     },
     settingsPanelDisabled: false,
+    language: {
+      settings: false,
+      label: 'Specify Language',
+      enabled: false,
+    },
+    languageChoices: {
+      label: 'Language Choices',
+      options: [],
+    }
   },
 };

@@ -1,14 +1,14 @@
 import React from 'react';
-import { settings, layout, InputContainer } from '@pie-lib/config-ui';
+import { settings, layout, InputContainer } from '@pie-lib/pie-toolbox/config-ui';
 import PropTypes from 'prop-types';
-import EditableHtml from '@pie-lib/editable-html';
+import { EditableHtml } from '@pie-lib/pie-toolbox/editable-html';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 
 import ImageContainer from './image-container';
 import cloneDeep from 'lodash/cloneDeep';
 
-const { Panel, toggle } = settings;
+const { Panel, toggle, dropdown } = settings;
 
 export class Root extends React.Component {
   onPromptChanged = (prompt) => {
@@ -40,7 +40,9 @@ export class Root extends React.Component {
     const { classes, configuration, imageSupport, model, onConfigurationChanged, onModelChanged, uploadSoundSupport } =
       this.props;
     const {
+      baseInputConfiguration = {},
       backgroundImage = {},
+      contentDimensions = {},
       maxImageWidth = {},
       maxImageHeight = {},
       prompt = {},
@@ -48,14 +50,19 @@ export class Root extends React.Component {
       spellCheck = {},
       teacherInstructions = {},
       withRubric = {},
+      language = {},
+      languageChoices = {},
+      mathMlOptions = {},
     } = configuration || {};
     const {
       backgroundImageEnabled,
+      errors = {},
       promptEnabled,
       spellCheckEnabled,
       teacherInstructionsEnabled,
       toolbarEditorPosition,
     } = model || {};
+    const { prompt: promptError, teacherInstructions: teacherInstructionsError } = errors;
 
     const defaultImageMaxWidth = maxImageWidth && maxImageWidth.prompt;
     const defaultImageMaxHeight = maxImageHeight && maxImageHeight.prompt;
@@ -67,99 +74,106 @@ export class Root extends React.Component {
     const panelSettings = {
       backgroundImageEnabled: backgroundImage.settings && toggle(backgroundImage.label),
       promptEnabled: prompt.settings && toggle(prompt.label),
+      'language.enabled': language.settings && toggle(language.label, true),
+      language: language.settings && language.enabled && dropdown(languageChoices.label, languageChoices.options),
     };
 
     const panelProperties = {
       teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
       spellCheckEnabled: spellCheck.settings && toggle(spellCheck.label),
-      rubricEnabled: !withRubric?.forceEnabled && withRubric?.settings && toggle(withRubric?.label),
+      rubricEnabled: withRubric?.settings && toggle(withRubric?.label),
     };
 
+    const getPluginProps = (props = {}) => ({
+      ...baseInputConfiguration,
+      ...props,
+    });
+
     return (
-      <div className={classes.base}>
-        <layout.ConfigLayout
-          hideSettings={settingsPanelDisabled}
-          settings={
-            <Panel
-              model={model}
-              onChangeModel={onModelChanged}
-              configuration={configuration}
-              onChangeConfiguration={onConfigurationChanged}
-              groups={{
-                Settings: panelSettings,
-                Properties: panelProperties,
-              }}
+      <layout.ConfigLayout
+        dimensions={contentDimensions}
+        hideSettings={settingsPanelDisabled}
+        settings={
+          <Panel
+            model={model}
+            onChangeModel={onModelChanged}
+            configuration={configuration}
+            onChangeConfiguration={onConfigurationChanged}
+            groups={{
+              Settings: panelSettings,
+              Properties: panelProperties,
+            }}
+          />
+        }
+      >
+        {teacherInstructionsEnabled && (
+          <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
+            <EditableHtml
+              markup={model.teacherInstructions || ''}
+              onChange={this.onTeacherInstructionsChanged}
+              imageSupport={imageSupport}
+              nonEmpty={false}
+              error={teacherInstructionsError}
+              toolbarOpts={toolbarOpts}
+              pluginProps={getPluginProps(teacherInstructions?.inputConfiguration)}
+              spellCheck={spellCheckEnabled}
+              maxImageWidth={(maxImageWidth && maxImageWidth.teacherInstructions) || defaultImageMaxWidth}
+              maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
+              uploadSoundSupport={uploadSoundSupport}
+              languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+              mathMlOptions={mathMlOptions}
             />
-          }
-        >
-          <div className={classes.regular}>
-            {teacherInstructionsEnabled && (
-              <InputContainer label={teacherInstructions.label} className={classes.prompt}>
-                <EditableHtml
-                  markup={model.teacherInstructions || ''}
-                  onChange={this.onTeacherInstructionsChanged}
-                  imageSupport={imageSupport}
-                  nonEmpty={false}
-                  toolbarOpts={toolbarOpts}
-                  spellCheck={spellCheckEnabled}
-                  maxImageWidth={(maxImageWidth && maxImageWidth.teacherInstructions) || defaultImageMaxWidth}
-                  maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
-                  uploadSoundSupport={uploadSoundSupport}
-                  languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
-                />
-              </InputContainer>
-            )}
+            {teacherInstructionsError && <div className={classes.errorText}>{teacherInstructionsError}</div>}
+          </InputContainer>
+        )}
 
-            {promptEnabled && (
-              <InputContainer label="Item Stem" className={classes.prompt}>
-                <EditableHtml
-                  markup={model.prompt}
-                  onChange={this.onPromptChanged}
-                  toolbarOpts={toolbarOpts}
-                  spellCheck={spellCheckEnabled}
-                  imageSupport={imageSupport}
-                  maxImageWidth={defaultImageMaxWidth}
-                  maxImageHeight={defaultImageMaxHeight}
-                  uploadSoundSupport={uploadSoundSupport}
-                  languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
-                />
-              </InputContainer>
-            )}
+        {promptEnabled && (
+          <InputContainer label="Item Stem" className={classes.promptHolder}>
+            <EditableHtml
+              markup={model.prompt}
+              onChange={this.onPromptChanged}
+              error={promptError}
+              toolbarOpts={toolbarOpts}
+              spellCheck={spellCheckEnabled}
+              pluginProps={getPluginProps(prompt?.inputConfiguration)}
+              imageSupport={imageSupport}
+              maxImageWidth={defaultImageMaxWidth}
+              maxImageHeight={defaultImageMaxHeight}
+              uploadSoundSupport={uploadSoundSupport}
+              languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+              mathMlOptions={mathMlOptions}
+            />
+            {promptError && <div className={classes.errorText}>{promptError}</div>}
+          </InputContainer>
+        )}
 
-            {backgroundImageEnabled && (
-              <div>
-                <Typography className={classes.label} variant="subheading">
-                  Define Background Image
-                </Typography>
+        {backgroundImageEnabled && (
+          <React.Fragment>
+            <Typography variant="subheading">Define Background Image</Typography>
 
-                <ImageContainer
-                  imageUrl={model.imageUrl}
-                  onUpdateImageDimension={this.onUpdateImageDimension}
-                  onImageUpload={this.onImageUpload}
-                  imageDimensions={model.imageDimensions}
-                />
-              </div>
-            )}
-          </div>
-        </layout.ConfigLayout>
-      </div>
+            <ImageContainer
+              imageUrl={model.imageUrl}
+              onUpdateImageDimension={this.onUpdateImageDimension}
+              onImageUpload={this.onImageUpload}
+              imageDimensions={model.imageDimensions}
+            />
+          </React.Fragment>
+        )}
+      </layout.ConfigLayout>
     );
   }
 }
 
 const styles = (theme) => ({
-  base: {
-    marginTop: theme.spacing.unit * 3,
-  },
-  label: {
-    marginTop: theme.spacing.unit * 4,
-  },
-  prompt: {
+  promptHolder: {
     paddingTop: theme.spacing.unit * 2,
+    marginBottom: theme.spacing.unit * 2,
     width: '100%',
   },
-  regular: {
-    marginBottom: theme.spacing.unit * 3,
+  errorText: {
+    fontSize: theme.typography.fontSize - 2,
+    color: theme.palette.error.main,
+    paddingTop: theme.spacing.unit,
   },
 });
 

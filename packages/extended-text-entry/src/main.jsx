@@ -1,11 +1,12 @@
 import React from 'react';
-import EditableHTML from '@pie-lib/editable-html';
+import {EditableHtml} from '@pie-lib/pie-toolbox/editable-html';
 import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import debug from 'debug';
 import debounce from 'lodash/debounce';
-import { color, Feedback, Collapsible, PreviewPrompt } from '@pie-lib/render-ui';
+import { color, Feedback, Collapsible, PreviewPrompt } from '@pie-lib/pie-toolbox/render-ui';
+import classnames from 'classnames';
 
 const log = debug('@pie-ui:extended-text-entry');
 
@@ -19,6 +20,21 @@ const style = (theme) => ({
     color: color.text(),
     marginBottom: theme.spacing.unit * 2,
     fontSize: 'inherit',
+  },
+  teacherInstructions: {
+    marginBottom: theme.spacing.unit * 2,
+  },
+  editor: {
+    marginBottom: theme.spacing.unit * 2,
+    borderRadius: '4px',
+  },
+  srOnly: {
+    position: 'absolute',
+    left: '-10000px',
+    top: 'auto',
+    width: '1px',
+    height: '1px',
+    overflow: 'hidden',
   },
 });
 
@@ -36,6 +52,7 @@ export class Main extends React.Component {
 
   render() {
     const { model, classes, session } = this.props;
+
     const {
       dimensions,
       disabled,
@@ -51,22 +68,13 @@ export class Main extends React.Component {
     const { value } = session;
     const { width, height } = dimensions || {};
     const maxHeight = '40vh';
-    const toolbarOpts = {};
+    const toolbarOpts = { position: playersToolbarPosition === 'top' ? 'top' : 'bottom' };
 
     log('[render] disabled? ', disabled);
 
     const teacherInstructionsDiv = (
       <PreviewPrompt defaultClassName="teacher-instructions" prompt={teacherInstructions} />
     );
-
-    switch (playersToolbarPosition) {
-      case 'top':
-        toolbarOpts.position = 'top';
-        break;
-      default:
-        toolbarOpts.position = 'bottom';
-        break;
-    }
 
     const languageCharactersProps = [];
 
@@ -85,8 +93,10 @@ export class Main extends React.Component {
           this.containerRef = ref;
         }}
       >
+        <h2 className={classes.srOnly}>Constructed Response Question</h2>
+
         {teacherInstructions && (
-          <div>
+          <div className={classes.teacherInstructions}>
             {!animationsDisabled ? (
               <Collapsible
                 labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}
@@ -97,16 +107,17 @@ export class Main extends React.Component {
             ) : (
               teacherInstructionsDiv
             )}
-            <br />
           </div>
         )}
+
         {model.prompt && (
           <Typography component={'span'} className={classes.prompt}>
             <PreviewPrompt defaultClassName="prompt" prompt={model.prompt} />
           </Typography>
         )}
-        <EditableHTML
-          className="response-area-editor"
+
+        <EditableHtml
+          className={classnames(classes.editor, 'response-area-editor')}
           onChange={this.changeSession}
           markup={value || ''}
           width={width && width.toString()}
@@ -132,12 +143,8 @@ export class Main extends React.Component {
           }}
           languageCharactersProps={languageCharactersProps}
         />
-        {feedback && (
-          <div>
-            <br />
-            <Feedback correctness="correct" feedback={feedback} />
-          </div>
-        )}
+
+        {feedback && <Feedback correctness="correct" feedback={feedback} />}
       </div>
     );
   }

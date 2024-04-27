@@ -5,32 +5,31 @@ import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 const { Point } = pointChooser;
 
-const styles = {
+const styles = (theme) => ({
   displayToggles: {
-    paddingTop: '20px',
+    paddingTop: theme.spacing.unit * 2.5,
     '& > :first-child': {
-      marginRight: '8px',
+      marginRight: theme.spacing.unit,
     },
   },
-};
+});
 
 class PointConfig extends React.Component {
   static propTypes = {
     onSelectionChange: PropTypes.func,
     selection: PropTypes.object,
     classes: PropTypes.object,
+    availableTools: PropTypes.array,
+    hideButtons: PropTypes.bool,
   };
   constructor(props) {
     super(props);
-    this.state = {
-      selection: props.selection,
-    };
   }
 
   toggle(point) {
-    const update = { ...this.state.selection };
+    const update = { ...this.props.selection };
     update[point] = !update[point];
-    this._stateUpdate(update);
+    this._propsUpdate(update);
   }
 
   toggleAll(value) {
@@ -40,23 +39,22 @@ class PointConfig extends React.Component {
       return acc;
     }, {});
 
-    this._stateUpdate(display);
+    this._propsUpdate(display);
   }
 
-  _stateUpdate(selection) {
-    this.setState({ selection }, () => {
-      this.props.onSelectionChange(this.state.selection);
-    });
+  _propsUpdate(selection) {
+    this.props.onSelectionChange(selection);
   }
 
   active(point) {
-    return this.state.selection[point] === true; // ? 'active' : '';
+    return this.props.selection[point] === true; // ? 'active' : '';
   }
 
   render() {
-    const { classes } = this.props;
+    // Setting default value if not passed in configuration properties.
+    const { classes, availableTools, hideButtons = false } = this.props;
 
-    const icons = PointConfig.types.map((point) => {
+    const icons = (availableTools || []).map((point) => {
       return (
         <Point
           iconKey={point.toLowerCase()}
@@ -70,9 +68,9 @@ class PointConfig extends React.Component {
     return (
       <div>
         <div>{icons}</div>
-        <div className={classes.displayToggles}>
+        <div className={classes.displayToggles} hidden={hideButtons}>
           <Button variant="outlined" size="small" onClick={this.toggleAll.bind(this, true)}>
-            Display All
+            Select All
           </Button>
           <Button variant="outlined" size="small" onClick={this.toggleAll.bind(this, false)}>
             None

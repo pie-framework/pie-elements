@@ -1,5 +1,5 @@
 import React from 'react';
-import { Protractor } from '@pie-lib/tools';
+import { Protractor } from '@pie-lib/pie-toolbox/tools';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Toggle from './toggle';
@@ -27,9 +27,11 @@ class Main extends React.Component {
   render() {
     const { show } = this.state;
     const { classes } = this.props;
+
     return (
       <div>
         <Toggle active={show} onToggle={this.onToggle} />
+
         {show && <Protractor className={classes.protractor} startPosition={{ left: 100, top: 100 }} />}
       </div>
     );

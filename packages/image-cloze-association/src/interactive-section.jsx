@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core';
-import { color } from '@pie-lib/render-ui';
+import { color } from '@pie-lib/pie-toolbox/render-ui';
 
 import EvaluationIcon from './evaluation-icon';
 
@@ -24,9 +24,35 @@ class InteractiveSection extends React.Component {
     return classes[styleProp];
   }
 
+  getPositionDirection (choicePosition) {
+    let flexDirection;
+
+    switch (choicePosition) {
+      case 'left':
+        flexDirection = 'row-reverse';
+        break;
+      case 'right':
+        flexDirection = 'row';
+        break;
+      case 'top':
+        flexDirection = 'column-reverse';
+        break;
+      default:
+        // bottom
+        flexDirection = 'column';
+        break;
+    }
+
+    return flexDirection;
+  };
+
   render() {
-    const { children, responseCorrect } = this.props;
+    const { children, responseCorrect, uiStyle } = this.props;
     const classname = this.getClassname();
+    const { possibilityListPosition = 'bottom'} = uiStyle || {};
+    const style = {
+      flexDirection: this.getPositionDirection(possibilityListPosition),
+    };
     const evaluationStyle = {
       display: 'flex',
       margin: '0 auto',
@@ -34,7 +60,7 @@ class InteractiveSection extends React.Component {
     };
 
     return (
-      <div className={classname}>
+      <div className={classname} style={style}>
         <EvaluationIcon containerStyle={evaluationStyle} filled isCorrect={responseCorrect} />
         {children}
       </div>
@@ -46,6 +72,7 @@ InteractiveSection.propTypes = {
   classes: PropTypes.object,
   children: PropTypes.oneOfType([PropTypes.element, PropTypes.array]).isRequired,
   responseCorrect: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
+  uiStyle: PropTypes.object,
 };
 
 InteractiveSection.defaultProps = {
@@ -53,15 +80,21 @@ InteractiveSection.defaultProps = {
   responseCorrect: undefined,
 };
 
-const styles = () => ({
+const styles = (theme) => ({
   interactiveDefault: {
+    marginTop: theme.spacing.unit * 2,
     border: `1px solid ${color.disabled()}`,
+    display: 'flex',
   },
   interactiveCorrect: {
+    marginTop: theme.spacing.unit * 2,
     border: `2px solid ${color.correct()}`,
+    display: 'flex',
   },
   interactiveIncorrect: {
+    marginTop: theme.spacing.unit * 2,
     border: `2px solid ${color.incorrect()}`,
+    display: 'flex',
   },
 });
 

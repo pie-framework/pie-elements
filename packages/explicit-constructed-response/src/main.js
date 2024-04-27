@@ -3,11 +3,14 @@ import PropTypes from 'prop-types';
 import debounce from 'lodash/debounce';
 import isEmpty from 'lodash/isEmpty';
 import isEqual from 'lodash/isEqual';
-import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
-import { ConstructedResponse } from '@pie-lib/mask-markup';
-import { color, Collapsible, hasText, PreviewPrompt } from '@pie-lib/render-ui';
+import {CorrectAnswerToggle} from '@pie-lib/pie-toolbox/correct-answer-toggle';
+import { ConstructedResponse } from '@pie-lib/pie-toolbox/mask-markup';
+import { color, Collapsible, hasText, PreviewPrompt } from '@pie-lib/pie-toolbox/render-ui';
 import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
+import Translator from '@pie-lib/pie-toolbox/translator';
+
+const { translator } = Translator;
 
 export class Main extends React.Component {
   static propTypes = {
@@ -18,6 +21,7 @@ export class Main extends React.Component {
     env: PropTypes.object,
     rationale: PropTypes.string,
     disabled: PropTypes.bool,
+    displayType: PropTypes.string,
     markup: PropTypes.string,
     mode: PropTypes.string,
     teacherInstructions: PropTypes.string,
@@ -27,7 +31,9 @@ export class Main extends React.Component {
     alwaysShowCorrect: PropTypes.bool,
     animationsDisabled: PropTypes.bool,
     maxLengthPerChoice: PropTypes.array,
+    maxLengthPerChoiceEnabled: PropTypes.bool,
     playerSpellCheckEnabled: PropTypes.bool,
+    language: PropTypes.string,
   };
 
   static defaultProps = {
@@ -46,7 +52,8 @@ export class Main extends React.Component {
       : debounce(this.props.onChange, 1500, { maxWait: 1500 });
 
   UNSAFE_componentWillReceiveProps(nextProps) {
-    const { maxLengthPerChoice } = this.props;
+    const { maxLengthPerChoice, language } = this.props;
+    let { note } = this.props;
 
     if (isEmpty(nextProps.feedback)) {
       this.setState({ showCorrectAnswer: false });
@@ -58,6 +65,14 @@ export class Main extends React.Component {
 
     if (maxLengthPerChoice && !isEqual(maxLengthPerChoice, nextProps.maxLengthPerChoice)) {
       this.changeSession = this.getChangeSession(nextProps.maxLengthPerChoice);
+    }
+
+    // check if the note is the default one for prev language and change to the default one for new language
+    // this check is necessary in order to diferanciate between default and authour defined note
+    // and only change between languages for default ones
+    if (note && language && language !== nextProps.language &&
+      note === translator.t('common:commonCorrectAnswerWithAlternates', { lng: language })) {
+      note = translator.t('common:commonCorrectAnswerWithAlternates', { lng: nextProps.language });
     }
   }
 
@@ -90,6 +105,7 @@ export class Main extends React.Component {
       maxLengthPerChoiceEnabled,
       displayType,
       playerSpellCheckEnabled,
+      language
     } = this.props;
 
     const { role } = env || {};
@@ -109,6 +125,8 @@ export class Main extends React.Component {
 
     return (
       <div className={mainClasses} style={{ display: `${displayType}` }}>
+        {mode === 'gather' && <h2 className={classes.srOnly}>Fill in the Blank Question</h2>}
+
         {teacherInstructions && hasText(teacherInstructions) && (
           <div className={classes.collapsible}>
             {!animationsDisabled ? (
@@ -120,14 +138,18 @@ export class Main extends React.Component {
             )}
           </div>
         )}
+
+        {prompt && <PreviewPrompt prompt={prompt} />}
+
         {!alwaysShowCorrect && (
           <CorrectAnswerToggle
             show={mode === 'evaluate'}
             toggled={showCorrectAnswer}
             onToggle={this.toggleShowCorrect}
+            language={language}
           />
         )}
-        {prompt && <PreviewPrompt prompt={prompt} />}
+
         <ConstructedResponse
           {...this.props}
           onChange={this.onChange}
@@ -137,12 +159,14 @@ export class Main extends React.Component {
           adjustedLimit={maxLengthPerChoiceEnabled}
           spellCheck={playerSpellCheckEnabled}
         />
+
         {displayNote && (
           <div
             className={classNames(classes.note, 'note')}
-            dangerouslySetInnerHTML={{ __html: `<strong>Note:</strong> ${note}` }}
+            dangerouslySetInnerHTML={{ __html: note }}
           />
         )}
+
         {rationale && hasText(rationale) && (
           <div className={classes.collapsible}>
             {!animationsDisabled ? (
@@ -159,7 +183,6 @@ export class Main extends React.Component {
 
 const styles = (theme) => ({
   mainContainer: {
-    padding: theme.spacing.unit,
     color: color.text(),
     backgroundColor: color.background(),
   },
@@ -170,15 +193,23 @@ const styles = (theme) => ({
     display: 'block',
   },
   note: {
-    padding: '5px 0',
+    marginBottom: theme.spacing.unit * 2,
   },
   collapsible: {
-    margin: `${theme.spacing.unit * 2}px 0`,
+    marginBottom: theme.spacing.unit * 2,
   },
   noBorderColor: {
     '& *': {
       borderColor: `${color.text()} !important`,
     },
+  },
+  srOnly: {
+    position: 'absolute',
+    left: '-10000px',
+    top: 'auto',
+    width: '1px',
+    height: '1px',
+    overflow: 'hidden',
   },
 });
 

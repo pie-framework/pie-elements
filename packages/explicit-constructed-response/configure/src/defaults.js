@@ -61,9 +61,21 @@ export default {
     studentInstructionsEnabled: true,
   },
   configuration: {
+    baseInputConfiguration: {
+      html: { disabled: true },
+      audio: { disabled: false },
+      video: { disabled: false },
+      image: { disabled: false },
+    },
     prompt: {
       settings: true,
       label: 'Prompt',
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
+      required: false,
     },
     partialScoring: {
       settings: false,
@@ -72,12 +84,23 @@ export default {
     rationale: {
       settings: true,
       label: 'Rationale',
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
+      required: false,
     },
     settingsPanelDisabled: false,
     spellCheck: {
       label: 'Spellcheck',
       settings: false,
       enabled: true,
+    },
+    editSource: {
+      label: 'Edit Source',
+      settings: false,
+      enabled: false,
     },
     playerSpellCheck: {
       label: 'Student Spellcheck',
@@ -87,6 +110,19 @@ export default {
     teacherInstructions: {
       settings: true,
       label: 'Teacher Instructions',
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
+      required: false,
+    },
+    template: {
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
     },
     maxLengthPerChoice: {
       settings: true,
@@ -106,6 +142,19 @@ export default {
     withRubric: {
       settings: false,
       label: 'Add Rubric',
+    },
+    mathMlOptions: {
+      mmlOutput: false,
+      mmlEditing: false,
+    },
+    language: {
+      settings: false,
+      label: 'Specify Language',
+      enabled: false,
+    },
+    languageChoices: {
+      label: 'Language Choices',
+      options: [],
     },
   },
 };

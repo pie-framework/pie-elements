@@ -14,7 +14,6 @@
 export default {
   model: {
     addCategoryEnabled: true,
-    categoryDefaultLabel: 'Category',
     chartType: 'lineCross',
     correctAnswer: {},
     data: [],
@@ -36,8 +35,17 @@ export default {
     rationaleEnabled: true,
     teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true,
+    studentNewCategoryDefaultLabel: 'New Category',
+    changeInteractiveEnabled: false,
+    changeEditableEnabled: false,
+    changeAddCategoryEnabled: false,
   },
   configuration: {
+    baseInputConfiguration: {
+      audio: { disabled: false },
+      video: { disabled: false },
+      image: { disabled: false },
+    },
     spellCheck: {
       label: 'Spellcheck',
       settings: false,
@@ -58,13 +66,44 @@ export default {
         step: 20,
       },
     },
+    authorNewCategoryDefaults: {
+      settings: false,
+      label: 'Category',
+      interactive: true,
+      editable: false,
+    },
+    availableChartTypes: {
+      bar: 'Bar Chart',
+      histogram: 'Histogram',
+      lineDot: 'Line Chart ●',
+      lineCross: 'Line Chart x',
+      dotPlot: 'Dot/Line Plot ⬤',
+      linePlot: 'Dot/Line Plot X',
+    },
+    chartTypeLabel: 'ChartType',
+    studentNewCategoryDefaultLabel: {
+      settings: false,
+      label: 'Category',
+    },
     prompt: {
       settings: true,
       label: 'Item Stem',
+      required: false,
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
     },
     rationale: {
       settings: true,
       label: 'Rationale',
+      required: false,
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
     },
     scoringType: {
       settings: false,
@@ -78,10 +117,23 @@ export default {
     teacherInstructions: {
       settings: true,
       label: 'Teacher Instructions',
+      required: false,
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
     },
     title: {
       settings: false,
       label: 'Chart Title',
+    },
+    instruction: {
+      settings: false,
+      label:
+        'This item type provides various types of interactive charts. Depending upon how an item is configured,\n' +
+        '          students can change the heights of bars (or other similar chart elements) created by the author; relabel bars\n' +
+        '          created by the author; and/or add new bars, label them, and set their heights.',
     },
     titlePlaceholder: {
       settings: false,
@@ -106,6 +158,36 @@ export default {
     withRubric: {
       settings: false,
       label: 'Add Rubric',
+    },
+    language: {
+      settings: false,
+      label: 'Specify Language',
+      enabled: false,
+    },
+    languageChoices: {
+      label: 'Language Choices',
+      options: [],
+    },
+    chartingOptions: {
+      changeInteractive: {
+        settings: false,
+        authoringLabel: 'Student can set value',
+        settingsLabel: 'Allow non-interactive categories',
+      },
+      changeEditable: {
+        settings: false,
+        authoringLabel: 'Student can edit name',
+        settingsLabel: 'Allow editable category names',
+      },
+      addCategory: {
+        settings: false,
+        authoringLabel: 'Student can add categories',
+        settingsLabel: 'Allow changes to whether students can add categories',
+      },
+      mathMlOptions: {
+        mmlOutput: false,
+        mmlEditing: false,
+      },
     },
   },
 };

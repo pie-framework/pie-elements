@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import { color } from '@pie-lib/render-ui';
+import { color } from '@pie-lib/pie-toolbox/render-ui';
 
 import chunk from 'lodash/chunk';
 
@@ -21,6 +21,7 @@ export class Categories extends React.Component {
     disabled: PropTypes.bool,
     onDropChoice: PropTypes.func.isRequired,
     onRemoveChoice: PropTypes.func.isRequired,
+    rowLabels: PropTypes.array
   };
 
   static defaultProps = {
@@ -30,12 +31,24 @@ export class Categories extends React.Component {
   };
 
   render() {
-    const { classes, categories, model, disabled, onDropChoice, onRemoveChoice } = this.props;
+    const { classes, categories, model, disabled, onDropChoice, onRemoveChoice, rowLabels } = this.props;
     const { categoriesPerRow } = model;
 
     // split categories into an array of arrays (inner array),
     // where each inner array represents how many categories should be displayed on one row
     const chunkedCategories = chunk(categories, categoriesPerRow);
+
+    const hasNonEmptyString = (array) => {
+      let found = false;
+
+      (array || []).forEach(element => {
+        if (typeof element === 'string' && element.trim() !== '' && element.trim() !== '<div></div>') {
+          found = true;
+        }
+      });
+
+      return found;
+    };
 
     return (
       <GridContent
@@ -47,33 +60,37 @@ export class Categories extends React.Component {
           let items = [];
 
           // for each inner array of categories, create a row with category titles
+          // first cell of row has to be the row label
           cat.forEach((c, columnIndex) => {
             items.push(
-              <Typography className={classes.label} key={`category-label-${rowIndex}-${columnIndex}`}>
-                <span dangerouslySetInnerHTML={{ __html: c.label }} />
-              </Typography>,
+              <div style={{ display: 'flex' }}>
+                {columnIndex === 0 && hasNonEmptyString(rowLabels) ? <div
+                  key={rowIndex}
+                  className={classes.rowLabel}
+                  dangerouslySetInnerHTML={{
+                    __html: rowLabels[rowIndex] || '',
+                  }}
+                /> : null}
+                <div className={classes.categoryWrapper}>
+                  <Typography className={classes.label} key={`category-label-${rowIndex}-${columnIndex}`}>
+                    <span dangerouslySetInnerHTML={{ __html: c.label }}/>
+                  </Typography>
+                  <Category
+                    onDropChoice={(h) => onDropChoice(c.id, h)}
+                    onRemoveChoice={onRemoveChoice}
+                    disabled={disabled}
+                    className={classes.category}
+                    key={`category-element-${rowIndex}-${columnIndex}`}
+                    {...c}
+                  />
+                </div>
+              </div>
             );
           });
 
-            // if the last row has less categories than max on a row, fill the spaces with divs
-            items = items.concat(Array(categoriesPerRow - cat.length).fill(<div/>).map((value,index) => <div key={`fill-space-${index}`} />));
-
-          // for each inner array of categories, create a row with category containers
-          cat.forEach((c, columnIndex) => {
-            items.push(
-              <Category
-                onDropChoice={(h) => onDropChoice(c.id, h)}
-                onRemoveChoice={onRemoveChoice}
-                disabled={disabled}
-                className={classes.category}
-                key={`category-element-${rowIndex}-${columnIndex}`}
-                {...c}
-              />,
-            );
-          });
-
-            // if the last row has less categories than max on a row, fill the spaces with divs
-            items = items.concat(Array(categoriesPerRow - cat.length).fill(<div/>).map((value,index) =><div key={`fill-space-final-${index}`} />));
+          // if the last row has fewer categories than max on a row, fill the spaces with divs
+          items = items.concat(Array(categoriesPerRow - cat.length).fill(<div/>).map((value, index) => <div
+            key={`fill-space-final-${index}`}/>));
 
           return items;
         })}
@@ -94,5 +111,17 @@ const styles = (theme) => ({
     textAlign: 'center',
     paddingTop: theme.spacing.unit,
   },
+  rowLabel: {
+    alignItems: 'center',
+    display: 'flex',
+    justifyContent: 'center',
+    flex: 0.5,
+    marginRight: '12px'
+  },
+  categoryWrapper: {
+    display: 'flex',
+    flex: '2',
+    flexDirection: 'column'
+  }
 });
 export default withStyles(styles)(Categories);

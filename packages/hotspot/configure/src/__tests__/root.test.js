@@ -3,7 +3,7 @@ import React from 'react';
 import { Root } from '../root';
 import defaultValues from '../defaults';
 
-jest.mock('@pie-lib/config-ui', () => ({
+jest.mock('@pie-lib/pie-toolbox/config-ui', () => ({
   choiceUtils: {
     firstAvailableIndex: jest.fn(),
   },
@@ -78,6 +78,15 @@ const model = () => ({
         ],
         correct: false,
         id: '5',
+      },
+    ],
+    circles: [
+      {
+        id: '6',
+        radius: 70,
+        x: 100,
+        y: 100,
+        correct: false,
       },
     ],
   },
@@ -177,6 +186,7 @@ describe('Root', () => {
               index: 1,
             },
           ],
+          circles: [],
         });
       });
 
@@ -199,6 +209,7 @@ describe('Root', () => {
               index: 1,
             },
           ],
+          circles: [],
         });
       });
 
@@ -221,6 +232,7 @@ describe('Root', () => {
               index: 1,
             },
           ],
+          circles: [],
         });
       });
 
@@ -243,6 +255,7 @@ describe('Root', () => {
               index: 1,
             },
           ],
+          circles: [],
         });
       });
     });
@@ -284,6 +297,7 @@ describe('Root', () => {
               index: 1,
             },
           ],
+          circles: [],
         });
       });
 
@@ -306,6 +320,7 @@ describe('Root', () => {
               index: 1,
             },
           ],
+          circles: [],
         });
       });
 
@@ -328,6 +343,7 @@ describe('Root', () => {
               ],
             },
           ],
+          circles: [],
         });
       });
 
@@ -350,6 +366,7 @@ describe('Root', () => {
               index: 1,
             },
           ],
+          circles: [],
         });
       });
     });

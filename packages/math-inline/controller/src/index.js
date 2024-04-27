@@ -1,8 +1,10 @@
 import debug from 'debug';
 import isEmpty from 'lodash/isEmpty';
-import { getFeedbackForCorrectness } from '@pie-lib/feedback';
+import { getFeedbackForCorrectness } from '@pie-lib/pie-toolbox/feedback';
 import { ResponseTypes } from './utils';
+import Translator from '@pie-lib/pie-toolbox/translator';
 
+const { translator } = Translator;
 import defaults from './defaults';
 
 import * as mv from '@pie-framework/math-validation';
@@ -130,7 +132,7 @@ export const normalize = (question) => {
 
   return {
     ...defaults,
-    feedbackEnabled: true,
+    feedbackEnabled: false,
     promptEnabled: true,
     rationaleEnabled: true,
     teacherInstructionsEnabled: true,
@@ -143,13 +145,13 @@ export function model(question, session, env) {
   return new Promise((resolve) => {
     const normalizedQuestion = normalize(question);
     const correctness = getCorrectness(normalizedQuestion, env, session);
-    const { responses, ...config } = normalizedQuestion;
+    const { responses, language, ...config } = normalizedQuestion;
+    let { note } = normalizedQuestion;
 
     if (config.responseType === ResponseTypes.simple) {
       config.responses = responses.slice(0, 1);
     } else {
       config.responses = responses;
-      config.customKeys = [];
     }
 
     const fb =
@@ -167,8 +169,11 @@ export function model(question, session, env) {
       };
 
       const out = base;
-      let showNote = false;
+      let showNote = !!(config?.responses?.length > 1);
 
+      if (!note) {
+        note = translator.t('mathInline.primaryCorrectWithAlternates', { lng: language });
+      }
       ((config && config.responses) || []).forEach((response) => {
         if (response.validation === 'symbolic' || Object.keys(response.alternates || {}).length > 0) {
           showNote = true;
@@ -179,6 +184,7 @@ export function model(question, session, env) {
       if (env.mode === 'evaluate') {
         out.correctResponse = {};
         out.config.showNote = showNote;
+        out.config.note = note;
       } else {
         out.config.responses = [];
         out.config.showNote = false;
@@ -198,6 +204,7 @@ export function model(question, session, env) {
 
       out.config.env = env;
       out.config.prompt = normalizedQuestion.promptEnabled ? normalizedQuestion.prompt : null;
+      out.language = language;
 
       log('out: ', out);
       resolve(out);
@@ -219,8 +226,13 @@ const simpleSessionResponse = (question) =>
     });
   });
 
+// use this for items like E672793
+const removeTrailingEscape = (str) => {
+  return str.endsWith('\\') ? str.slice(0, -1) : str;
+};
+
 const advancedSessionResponse = (question) =>
-  new Promise((resolve, reject) => {
+  new Promise((resolve) => {
     const { responses, id } = question;
     const { answer } = responses && responses.length ? responses[0] : {};
 
@@ -253,6 +265,7 @@ const advancedSessionResponse = (question) =>
           completeAnswer: answer,
         });
 
+        // eslint-disable-next-line no-console
         console.log(`can not find match: ${o} in ${answer}`);
 
         return;
@@ -263,7 +276,7 @@ const advancedSessionResponse = (question) =>
       const answers = {};
 
       for (var i = 0; i < count; i++) {
-        answers[`r${i + 1}`] = { value: m[i].trim() };
+        answers[`r${i + 1}`] = { value: removeTrailingEscape(m[i].trim()) };
       }
 
       resolve({
@@ -277,7 +290,7 @@ const advancedSessionResponse = (question) =>
         answers: {},
         completeAnswer: answer,
       });
-
+      // eslint-disable-next-line no-console
       console.error(e.toString());
     }
   });
@@ -297,10 +310,23 @@ export const createCorrectResponseSession = (question, env) => {
   }
 };
 
+// remove all html tags
+const getInnerText = (html) => (html || '').replaceAll(/<[^>]*>/g, '');
+
+// remove all html tags except img and iframe
+const getContent = (html) => (html || '').replace(/(<(?!img|iframe)([^>]+)>)/gi, '');
+
 export const validate = (model = {}, config = {}) => {
   const { expression = '', responses, responseType } = model;
   const { maxResponseAreas } = config;
   const responsesErrors = {};
+  const errors = {};
+
+  ['teacherInstructions', 'prompt', 'rationale'].forEach((field) => {
+    if (config[field]?.required && !getContent(model[field])) {
+      errors[field] = 'This field is required.';
+    }
+  });
 
   (responses || []).forEach((response, index) => {
     const { answer } = response;
@@ -329,8 +355,6 @@ export const validate = (model = {}, config = {}) => {
       responsesErrors[index] = { ...responseError, ...alternatesErrors };
     }
   });
-
-  const errors = {};
 
   if (responseType === 'Advanced Multi') {
     const nbOfResponseAreas = (expression.match(/\{\{response\}\}/g) || []).length;

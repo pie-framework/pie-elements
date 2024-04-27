@@ -18,6 +18,22 @@ export default class CategorizeConfigure extends HTMLElement {
     ...model,
   });
 
+  // PD-2960: make sure we don't have alternates in model or possibility to add them (temporary solution)
+  // this function is used in controller, too
+  static disableAlternateResponses = (m) => {
+    let { correctResponse } = m || {};
+    correctResponse = correctResponse || [];
+    const mappedCorrectResponse = correctResponse.map((cr) => {
+      const { alternateResponses, ...response } = cr;
+      return response;
+    });
+    return {
+      ...m,
+      correctResponse: mappedCorrectResponse,
+      allowAlternateEnabled: false,
+    };
+  };
+
   constructor() {
     super();
     this._model = CategorizeConfigure.createDefaultModel();
@@ -25,12 +41,45 @@ export default class CategorizeConfigure extends HTMLElement {
   }
 
   set model(m) {
-    this._model = CategorizeConfigure.createDefaultModel(m);
+    this._model = CategorizeConfigure.disableAlternateResponses(CategorizeConfigure.createDefaultModel(m));
     this.render();
   }
 
   set configuration(c) {
-    this._configuration = c;
+    const newConfiguration = {
+      ...defaults.configuration,
+      ...c,
+    };
+
+    this._configuration = newConfiguration;
+
+    // if language:enabled is true, then the corresponding default item model should include a language value;
+    // if it is false, then the language field should be omitted from the item model.
+    // if a default item model includes a language value (e.g., en_US) and the corresponding authoring view settings have language:settings = true,
+    // then (a) language:enabled should also be true, and (b) that default language value should be represented in languageChoices[] (as a key).
+    if (newConfiguration?.language?.enabled) {
+      if (newConfiguration?.languageChoices?.options?.length) {
+        this._model.language = newConfiguration?.languageChoices.options[0].value;
+      }
+    } else if (newConfiguration.language.settings && this._model.language) {
+      this._configuration.language.enabled = true;
+
+      if (!this._configuration.languageChoices.options || !this._configuration.languageChoices.options.length) {
+        this._configuration.languageChoices.options = [];
+      }
+
+      // check if the language is already included in the languageChoices.options array
+      // and if not, then add it.
+      if (!this._configuration.languageChoices.options.find(option => option.value === this._model.language)) {
+        this._configuration.languageChoices.options.push({
+          value: this._model.language,
+          label: this._model.language,
+        });
+      }
+    } else {
+      delete this._model.language;
+    }
+
     this.render();
   }
 

@@ -1,17 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { settings, layout } from '@pie-lib/config-ui';
+import { settings, layout } from '@pie-lib/pie-toolbox/config-ui';
 import { withStyles } from '@material-ui/core/styles';
 
 const { Panel, toggle, radio, dropdown } = settings;
 
 const styles = (theme) => ({
-  part: {
-    display: 'flex',
-    flexDirection: 'column',
-    '&:not(:first-child)': {
-      paddingTop: theme.spacing.unit * 4,
-    },
+  partLabel: {
+    paddingBottom: theme.spacing.unit * 2,
+  },
+  divider: {
+    flex: 1,
+    height: theme.spacing.unit * 2.5,
   },
 });
 
@@ -63,7 +63,17 @@ export class Main extends React.Component {
   render() {
     const { classes, model, configuration, onConfigurationChanged } = this.props;
     const { partLabelType, partA: modelPartA, partB: modelPartB } = model;
-    const { partA, partB, partialScoring, settingsPanelDisabled, scoringType, ...generalConfiguration } = configuration;
+    const {
+      contentDimensions = {},
+      partA = {},
+      partB = {},
+      partialScoring = {},
+      settingsPanelDisabled,
+      scoringType = {},
+      language = {},
+      languageChoices = {},
+      ...generalConfiguration
+    } = configuration;
     const {
       feedback: feedbackA = {},
       choiceMode: choiceModeA = {},
@@ -111,6 +121,8 @@ export class Main extends React.Component {
       partLabelType: model.partLabels && dropdown('', ['Numbers', 'Letters']),
       partialScoring: partialScoring.settings && toggle(partialScoring.label),
       scoringType: scoringType.settings && radio(scoringType.label, ['auto', 'rubric']),
+      'language.enabled': language.settings && toggle(language.label, true),
+      language: language.settings && language.enabled && dropdown(languageChoices.label, languageChoices.options),
     };
 
     const panelSettingsPartA = {
@@ -157,6 +169,7 @@ export class Main extends React.Component {
 
     return (
       <layout.ConfigLayout
+        dimensions={contentDimensions}
         hideSettings={settingsPanelDisabled}
         settings={
           <Panel
@@ -174,51 +187,47 @@ export class Main extends React.Component {
           />
         }
       >
-        <div>
-          <div className={classes.part}>
-            {model.partLabels && <div>{firstPart}</div>}
-            <ebsr-multiple-choice-configure
-              id="A"
-              key="partA"
-              ref={(ref) => {
-                if (ref) {
-                  // do not use destructuring to get model from props
-                  this.partA = ref;
-                  this.partA._model = {
-                    ...this.props.model.partA,
-                    errors: (this.props.model.errors && this.props.model.errors.partA) || {},
-                  };
-                  this.partA.configuration = {
-                    ...partA,
-                    ...generalConfiguration,
-                  };
-                }
-              }}
-            />
-          </div>
+        {model.partLabels && <div className={classes.partLabel}>{firstPart}</div>}
+        <ebsr-multiple-choice-configure
+          id="A"
+          key="partA"
+          ref={(ref) => {
+            if (ref) {
+              // do not use destructuring to get model from props
+              this.partA = ref;
+              this.partA._model = {
+                ...this.props.model.partA,
+                errors: (this.props.model.errors && this.props.model.errors.partA) || {},
+              };
+              this.partA.configuration = {
+                ...partA,
+                ...generalConfiguration,
+              };
+            }
+          }}
+        />
 
-          <div className={classes.part}>
-            {model.partLabels && <div>{secondPart}</div>}
-            <ebsr-multiple-choice-configure
-              id="B"
-              key="partB"
-              ref={(ref) => {
-                if (ref) {
-                  // do not use destructuring to get model from props
-                  this.partB = ref;
-                  this.partB._model = {
-                    ...this.props.model.partB,
-                    errors: (this.props.model.errors && this.props.model.errors.partB) || {},
-                  };
-                  this.partB.configuration = {
-                    ...partB,
-                    ...generalConfiguration,
-                  };
-                }
-              }}
-            />
-          </div>
-        </div>
+        <div className={classes.divider} />
+
+        {model.partLabels && <div className={classes.partLabel}>{secondPart}</div>}
+        <ebsr-multiple-choice-configure
+          id="B"
+          key="partB"
+          ref={(ref) => {
+            if (ref) {
+              // do not use destructuring to get model from props
+              this.partB = ref;
+              this.partB._model = {
+                ...this.props.model.partB,
+                errors: (this.props.model.errors && this.props.model.errors.partB) || {},
+              };
+              this.partB.configuration = {
+                ...partB,
+                ...generalConfiguration,
+              };
+            }
+          }}
+        />
       </layout.ConfigLayout>
     );
   }

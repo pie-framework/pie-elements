@@ -4,7 +4,7 @@ import { shallow } from 'enzyme';
 import { Configure } from '../configure';
 import defaultValues from '../defaults';
 
-jest.mock('@pie-lib/config-ui', () => ({
+jest.mock('@pie-lib/pie-toolbox/config-ui', () => ({
   InputContainer: (props) => <div>{props.children}</div>,
   InputCheckbox: (props) => <div>{props.children}</div>,
   FeedbackConfig: (props) => <div>{props.children}</div>,
@@ -17,10 +17,11 @@ jest.mock('@pie-lib/config-ui', () => ({
     radio: jest.fn(),
     numberFields: jest.fn(),
     checkboxes: jest.fn(),
+    textField: jest.fn(),
   },
 }));
 
-jest.mock('@pie-lib/graphing', () => ({
+jest.mock('@pie-lib/pie-toolbox/graphing', () => ({
   GraphContainer: (props) => <div>{props.children}</div>,
   tools: {
     point: () => ({

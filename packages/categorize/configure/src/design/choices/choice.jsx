@@ -5,12 +5,12 @@ import classNames from 'classnames';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import InputHeader from '../input-header';
-import { Checkbox } from '@pie-lib/config-ui';
+import { Checkbox } from '@pie-lib/pie-toolbox/config-ui';
 import { DeleteButton } from '../buttons';
 import DragHandle from '@material-ui/icons/DragHandle';
 import { DragSource, DropTarget } from 'react-dnd';
 import debug from 'debug';
-import { uid } from '@pie-lib/drag';
+import { uid } from '@pie-lib/pie-toolbox/drag';
 import { multiplePlacements } from '../../utils';
 import flow from 'lodash/flow';
 
@@ -33,11 +33,17 @@ export class Choice extends React.Component {
     allowMultiplePlacements: PropTypes.string,
     classes: PropTypes.object.isRequired,
     className: PropTypes.string,
+    configuration: PropTypes.object.isRequired,
     choice: PropTypes.object.isRequired,
+    connectDropTarget: PropTypes.func,
     deleteFocusedEl: PropTypes.func,
+    defaultImageMaxHeight: PropTypes.number,
+    defaultImageMaxWidth: PropTypes.number,
     focusedEl: PropTypes.number,
     index: PropTypes.number,
     lockChoiceOrder: PropTypes.bool,
+    maxImageHeight: PropTypes.object,
+    maxImageWidth: PropTypes.object,
     onChange: PropTypes.func.isRequired,
     onDelete: PropTypes.func.isRequired,
     connectDragSource: PropTypes.func.isRequired,
@@ -53,6 +59,7 @@ export class Choice extends React.Component {
       add: PropTypes.func.isRequired,
       delete: PropTypes.func.isRequired,
     }),
+    spellCheck: PropTypes.bool,
   };
 
   static defaultProps = {};
@@ -80,6 +87,7 @@ export class Choice extends React.Component {
       allowMultiplePlacements,
       classes,
       className,
+      configuration,
       choice,
       deleteFocusedEl,
       focusedEl,
@@ -127,6 +135,7 @@ export class Choice extends React.Component {
               maxImageWidth={maxImageWidth}
               maxImageHeight={maxImageHeight}
               uploadSoundSupport={uploadSoundSupport}
+              configuration={configuration}
             />
             {error && <div className={classes.errorText}>{error}</div>}
           </span>,
@@ -153,6 +162,7 @@ const styles = (theme) => ({
     justifyContent: 'space-between',
   },
   choice: {
+    minWidth: '196px',
     padding: theme.spacing.unit,
     overflow: 'visible',
   },
@@ -163,9 +173,9 @@ const styles = (theme) => ({
     cursor: 'inherit',
   },
   errorText: {
-    fontSize: '11px',
-    color: 'red',
-    paddingBottom: '5px',
+    fontSize: theme.typography.fontSize - 2,
+    color: theme.palette.error.main,
+    paddingBottom: theme.spacing.unit,
   },
 });
 

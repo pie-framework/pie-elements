@@ -6,8 +6,13 @@ exports.model = (id, element) => ({
     simpleRubric: {
       points: ['nothing right', 'a teeny bit right', 'mostly right', 'bingo'],
       sampleAnswers: [null, 'just right', 'not left', null],
-      maxPoints: 4,
+      maxPoints: 3,
       excludeZero: false,
+    },
+    rubricless: {
+      maxPoints: 100,
+      excludeZero: false,
+      rubriclessInstructionEnabled: true,
     },
     multiTraitRubric: {
       visibleToStudent: true,
@@ -141,7 +146,7 @@ exports.model = (id, element) => ({
             {
               name: 'Voice',
               standards: [],
-              description: "the personal tone and flavor of the author's message",
+              description: 'the personal tone and flavor of the author\'s message',
               scorePointsDescriptors: [
                 'Student’s response is blank, not in English, not legible, or does not respond to the prompt.',
                 'Not concerned with audience or purpose\n' +

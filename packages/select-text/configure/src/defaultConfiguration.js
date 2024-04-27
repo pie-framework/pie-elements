@@ -16,7 +16,7 @@ export default {
     text: '',
     tokens: tokens(),
     scoringType: 'auto',
-    feedbackEnabled: true,
+    feedbackEnabled: false,
     rationaleEnabled: true,
     promptEnabled: true,
     teacherInstructionsEnabled: true,
@@ -24,6 +24,11 @@ export default {
     toolbarEditorPosition: 'bottom',
   },
   configuration: {
+    baseInputConfiguration: {
+      audio: { disabled: false },
+      video: { disabled: false },
+      image: { disabled: false },
+    },
     selectionCount: {
       settings: true,
       label: 'Selection count',
@@ -43,6 +48,12 @@ export default {
     rationale: {
       settings: true,
       label: 'Rationale',
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
+      required: false,
     },
     scoringType: {
       settings: false,
@@ -55,10 +66,22 @@ export default {
     teacherInstructions: {
       settings: true,
       label: 'Teacher Instructions',
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
+      required: false,
     },
     prompt: {
       label: 'Prompt',
       settings: true,
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
+      required: false,
     },
     text: {
       settings: true,
@@ -99,6 +122,19 @@ export default {
     withRubric: {
       settings: false,
       label: 'Add Rubric',
+    },
+    mathMlOptions: {
+      mmlOutput: false,
+      mmlEditing: false,
+    },
+    language: {
+      settings: false,
+      label: 'Specify Language',
+      enabled: false,
+    },
+    languageChoices: {
+      label: 'Language Choices',
+      options: [],
     },
   },
 };

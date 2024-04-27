@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { DragSource } from '@pie-lib/drag';
+import { DragSource } from '@pie-lib/pie-toolbox/drag';
 import { withStyles } from '@material-ui/core/styles';
-import { color } from '@pie-lib/render-ui';
+import { color } from '@pie-lib/pie-toolbox/render-ui';
 import classNames from 'classnames';
-
+import { PreviewPrompt } from '@pie-lib/pie-toolbox/render-ui';
 import EvaluationIcon from './evaluation-icon';
 import c from './constants';
 
@@ -42,10 +42,7 @@ export class PossibleResponse extends React.Component {
 
     return connectDragSource(
       <div className={`${classes.base} ${additionalClass}`} style={containerStyle}>
-        <span
-          className={classNames([classes.span, { [classes.hiddenSpan]: data.hidden }])}
-          dangerouslySetInnerHTML={{ __html: data.value }}
-        />
+        <PreviewPrompt className={classNames([classes.span, { [classes.hiddenSpan]: data.hidden }])} prompt={data.value} tagName="span" />
         <EvaluationIcon isCorrect={data.isCorrect} containerStyle={evaluationStyle} />
       </div>,
     );
@@ -90,6 +87,10 @@ const styles = () => ({
   },
   span: {
     backgroundColor: color.background(),
+    // Added for touch devices, for image content.
+    // This will prevent the context menu from appearing and not allowing other interactions with the image.
+    // If interactions with the image in the token will be requested we should handle only the context Menu.
+    pointerEvents: 'none',
   },
   hiddenSpan: {
     visibility: 'hidden',

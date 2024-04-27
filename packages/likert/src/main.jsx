@@ -2,8 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
-import classNames from 'classnames';
-import { PreviewLayout } from '@pie-lib/render-ui';
+import { PreviewLayout } from '@pie-lib/pie-toolbox/render-ui';
 import Likert from './likert';
 
 class Main extends React.Component {
@@ -20,12 +19,11 @@ class Main extends React.Component {
   };
 
   render() {
-    const { model, onSessionChange, session, classes } = this.props;
+    const { model, onSessionChange, session } = this.props;
+
     return (
       <PreviewLayout>
-        <div className={classNames(classes.root, classes[model.className])}>
-          <Likert {...model} session={session} onSessionChange={onSessionChange} />
-        </div>
+        <Likert {...model} session={session} onSessionChange={onSessionChange} />
       </PreviewLayout>
     );
   }

@@ -1,11 +1,11 @@
 const tokens = () => [
   {
-    text: "If 'tweren't for sight and sound and smell,",
+    text: 'If \'tweren\'t for sight and sound and smell,',
     start: 0,
     end: 43,
   },
   {
-    text: "I'd like the city pretty well,",
+    text: 'I\'d like the city pretty well,',
     start: 44,
     end: 74,
   },
@@ -25,7 +25,7 @@ const tokens = () => [
     end: 176,
   },
   {
-    text: "Just quit the city's din and dust,",
+    text: 'Just quit the city\'s din and dust,',
     start: 177,
     end: 211,
   },
@@ -40,9 +40,6 @@ const tokens = () => [
     end: 285,
   },
 ];
-
-const mathSampleText =
-  '<p><math xmlns="http://www.w3.org/1998/Math/MathML">\n  <mstyle displaystyle="true">\n    <mrow>\n      <mo>(</mo>\n      <mn>6</mn>\n      <mi>x</mi>\n      <mo>+</mo>\n      <mn>2</mn>\n      <mo>)</mo>\n    </mrow>\n    <mrow>\n      <mo>(</mo>\n      <mo>-</mo>\n      <msup>\n        <mi>x</mi>\n        <mn>2</mn>\n      </msup>\n      <mo>+</mo>\n      <mn>3</mn>\n      <mi>x</mi>\n      <mo>-</mo>\n      <mn>1</mn>\n      <mo>)</mo>\n    </mrow>\n    <mrow>\n      <mo>(</mo>\n      <msup>\n        <mi>x</mi>\n        <mn>2</mn>\n      </msup>\n      <mo>)</mo>\n    </mrow>\n  </mstyle>\n</math></p>\n\n<p><span class="lrn_token"><math xmlns="http://www.w3.org/1998/Math/MathML">\n  <mstyle displaystyle="true">\n    <mrow>\n      <mo>[</mo>\n      <mn>6</mn>\n      <mi>x</mi>\n      <mrow>\n        <mo>(</mo>\n        <mo>-</mo>\n        <msup>\n          <mi>x</mi>\n          <mn>2</mn>\n        </msup>\n        <mo>+</mo>\n        <mn>3</mn>\n        <mi>x</mi>\n        <mo>-</mo>\n        <mn>1</mn>\n        <mo>)</mo>\n      </mrow>\n      <mo>+</mo>\n      <mn>2</mn>\n      <mrow>\n        <mo>(</mo>\n        <mo>-</mo>\n        <msup>\n          <mi>x</mi>\n          <mn>2</mn>\n        </msup>\n        <mo>+</mo>\n        <mn>3</mn>\n        <mi>x</mi>\n        <mo>-</mo>\n        <mn>1</mn>\n        <mo>)</mo>\n      </mrow>\n      <mo>]</mo>\n    </mrow>\n    <mrow>\n      <mo>(</mo>\n      <msup>\n        <mi>x</mi>\n        <mn>2</mn>\n      </msup>\n      <mo>)</mo>\n    </mrow>\n  </mstyle>\n</math></span></p>\n\n<p><span class="lrn_token"><math xmlns="http://www.w3.org/1998/Math/MathML">\n  <mstyle displaystyle="true">\n    <mrow>\n      <mo>(</mo>\n      <mo>-</mo>\n      <mn>6</mn>\n      <msup>\n        <mi>x</mi>\n        <mn>3</mn>\n      </msup>\n      <mo>+</mo>\n      <mn>18</mn>\n      <msup>\n        <mi>x</mi>\n        <mn>2</mn>\n      </msup>\n      <mo>-</mo>\n      <mn>6</mn>\n      <mi>x</mi>\n      <mo>-</mo>\n      <mn>2</mn>\n      <msup>\n        <mi>x</mi>\n        <mn>2</mn>\n      </msup>\n      <mo>+</mo>\n      <mn>6</mn>\n      <mi>x</mi>\n      <mo>-</mo>\n      <mn>2</mn>\n      <mo>)</mo>\n    </mrow>\n    <mrow>\n      <mo>(</mo>\n      <msup>\n        <mi>x</mi>\n        <mn>2</mn>\n      </msup>\n      <mo>)</mo>\n    </mrow>\n  </mstyle>\n</math></span></p>\n\n<p><span class="lrn_token"><math xmlns="http://www.w3.org/1998/Math/MathML">\n  <mstyle displaystyle="true">\n    <mo>-</mo>\n    <mn>6</mn>\n    <msup>\n      <mi>x</mi>\n      <mn>3</mn>\n    </msup>\n    <mo>+</mo>\n    <mn>18</mn>\n    <msup>\n      <mi>x</mi>\n      <mn>2</mn>\n    </msup>\n    <mo>-</mo>\n    <mn>6</mn>\n    <mi>x</mi>\n    <mo>-</mo>\n    <mn>2</mn>\n    <msup>\n      <mi>x</mi>\n      <mn>2</mn>\n    </msup>\n    <mo>+</mo>\n    <mn>6</mn>\n    <mi>x</mi>\n    <mo>-</mo>\n    <mn>2</mn>\n    <msup>\n      <mi>x</mi>\n      <mn>2</mn>\n    </msup>\n  </mstyle>\n</math></span></p>\n\n<p><span class="lrn_token"><math xmlns="http://www.w3.org/1998/Math/MathML">\n  <mstyle displaystyle="true">\n    <mo>-</mo>\n    <mn>6</mn>\n    <msup>\n      <mi>x</mi>\n      <mn>3</mn>\n    </msup>\n    <mo>+</mo>\n    <mn>14</mn>\n    <msup>\n      <mi>x</mi>\n      <mn>2</mn>\n    </msup>\n  </mstyle>\n</math></span></p>';
 
 const mathSampleTokens = [
   {
@@ -215,46 +212,6 @@ exports.htmlAscii = (id, element) => ({
   ],
 });
 
-const simpleItem = {
-  text: 'A. Almost never\n\nB. Once in a while\n\nC. Sometimes\n\nD. Often\n\nE. Almost all the time',
-  tokens: [
-    {
-      text: 'A. Almost never',
-      end: 15,
-      start: 0,
-      correct: true,
-    },
-    {
-      start: 17,
-      end: 35,
-      correct: false,
-      text: 'B. Once in a while',
-    },
-    {
-      correct: false,
-      end: 49,
-      start: 37,
-      text: 'C. Sometimes',
-    },
-    {
-      text: 'D. Often',
-      correct: false,
-      end: 59,
-      start: 51,
-    },
-    {
-      start: 61,
-      correct: false,
-      end: 83,
-      text: 'E. Almost all the time',
-    },
-  ],
-  rationale: '<p>answers vary</p>',
-  partialScoring: true,
-  teacherInstructions: '',
-  prompt: '<p>I got my work done right away instead of waiting until the last minute.</p>',
-  maxSelections: 1,
-};
 
 exports.model = (id, element) => {
   return Object.assign(
@@ -284,12 +241,12 @@ exports.model = (id, element) => {
         {
           end: 627,
           correct: false,
-          text: "At last Natasha's moment arrived.",
+          text: 'At last Natasha\'s moment arrived.',
           start: 594,
         },
         {
           end: 743,
-          text: "The faces of past giants of gymnastics swam before her mind's eye, now razor&#8211;sharp with fierce determination.",
+          text: 'The faces of past giants of gymnastics swam before her mind\'s eye, now razor&#8211;sharp with fierce determination.',
           correct: false,
           start: 628,
         },
@@ -313,7 +270,7 @@ exports.model = (id, element) => {
         },
       ],
       // "element": "select-text",
-      text: "<p>She thought about what she had to do, struggling to rein in her wild, fearful thoughts. Coach Cummings always said that an undisciplined mind never scored a perfect 10. Natasha wanted to please her Coach, yet sometimes his approval wasn't as exciting as his anger. The gymnasts were unanimous about one thing: Coach Cummings's fits of disapproving rage were much more humorous to witness than his infrequent, backslapping moments of high praise. Just for a hair of a moment, Natasha wondered if she really wanted a perfect 10, so weary was she of trying for but never achieving one.</p>\n\n<p>At last Natasha's moment arrived. The faces of past giants of gymnastics swam before her mind's eye, now razor&#8211;sharp with fierce determination. \"I am talented. I am not afraid. I will make a perfect 10,\" she spoke aloud to herself, as she approached the mat, dusted her hands with chalk to prevent slippage, and returned to her starting point. Suddenly, the din of the gymnasium was silent to her. Forcing all sound out of her mind, she focused on the gleaming balance beam ahead of her. Taking a deep breath, Natasha made her graceful, yet powerful approach, mounted the beam flawlessly, and...executed her first perfect 10.</p>\n",
+      text: '<p>She thought about what she had to do, struggling to rein in her wild, fearful thoughts. Coach Cummings always said that an undisciplined mind never scored a perfect 10. Natasha wanted to please her Coach, yet sometimes his approval wasn\'t as exciting as his anger. The gymnasts were unanimous about one thing: Coach Cummings\'s fits of disapproving rage were much more humorous to witness than his infrequent, backslapping moments of high praise. Just for a hair of a moment, Natasha wondered if she really wanted a perfect 10, so weary was she of trying for but never achieving one.</p>\n\n<p>At last Natasha\'s moment arrived. The faces of past giants of gymnastics swam before her mind\'s eye, now razor&#8211;sharp with fierce determination. "I am talented. I am not afraid. I will make a perfect 10," she spoke aloud to herself, as she approached the mat, dusted her hands with chalk to prevent slippage, and returned to her starting point. Suddenly, the din of the gymnasium was silent to her. Forcing all sound out of her mind, she focused on the gleaming balance beam ahead of her. Taking a deep breath, Natasha made her graceful, yet powerful approach, mounted the beam flawlessly, and...executed her first perfect 10.</p>\n',
       rubricEnabled: false,
     }),
   );

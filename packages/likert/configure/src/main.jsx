@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import EditableHtml from '@pie-lib/editable-html';
+import { EditableHtml } from '@pie-lib/pie-toolbox/editable-html';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import { InputContainer, settings, layout, NumberTextField } from '@pie-lib/config-ui';
+import { InputContainer, settings, layout, NumberTextField } from '@pie-lib/pie-toolbox/config-ui';
 import { withStyles } from '@material-ui/core/styles';
 import merge from 'lodash/merge';
 import { LIKERT_TYPE, LIKERT_SCALE, LIKERT_ORIENTATION } from './likertEntities';
@@ -15,38 +15,35 @@ const { Panel, toggle, radio } = settings;
 const styles = (theme) => ({
   promptHolder: {
     width: '100%',
-    paddingBottom: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit * 2,
-  },
-  prompt: {
     paddingTop: theme.spacing.unit * 2,
-    width: '100%',
+    marginBottom: theme.spacing.unit * 2,
   },
   radioButtonsWrapper: {
     display: 'flex',
     flexDirection: 'column',
   },
   radioButtonsColumnHeader: {
-    color: '#c3c3c3',
+    color: theme.palette.grey[400],
     fontSize: theme.typography.fontSize - 2,
   },
   likertLabelHolder: {
     display: 'flex',
     width: '100%',
     alignItems: 'flex-start',
+    marginBottom: theme.spacing.unit * 2,
   },
   likertOptionsHolder: {
     display: 'flex',
     width: '100%',
-    padding: `${theme.spacing.unit * 2.5}px 0`,
     justifyContent: 'space-around',
+    marginBottom: theme.spacing.unit * 2.5,
   },
   likertLabelInput: {
     width: 'calc(100% - 200px)',
     marginRight: 0,
   },
   errorMessage: {
-    color: '#b5000e',
+    color: theme.palette.error.main,
     fontSize: theme.typography.fontSize - 2,
   },
   width100: {
@@ -63,18 +60,14 @@ const styles = (theme) => ({
   likertLabelEditableHtml: {
     paddingTop: theme.spacing.unit * 2,
   },
-  design: {
-    paddingTop: theme.spacing.unit * 3,
-  },
-  choiceConfigurationHolder: {
-    marginTop: theme.spacing.unit * 2,
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'start',
-  },
   inputFormGroupIndex: {
     width: '30px',
     paddingTop: theme.spacing.unit * 4,
+  },
+  errorText: {
+    fontSize: theme.typography.fontSize - 2,
+    color: theme.palette.error.main,
+    paddingTop: theme.spacing.unit,
   },
 });
 
@@ -196,13 +189,17 @@ const Design = withStyles(styles)((props) => {
     uploadSoundSupport,
   } = props;
   const {
+    contentDimensions = {},
     prompt = {},
     scoringType = {},
     settingsPanelDisabled,
     spellCheck = {},
     teacherInstructions = {},
+    baseInputConfiguration = {},
+    likertChoice = {},
   } = configuration || {};
-  const { spellCheckEnabled, teacherInstructionsEnabled } = model || {};
+  const { errors = {}, spellCheckEnabled, teacherInstructionsEnabled } = model || {};
+  const { prompt: promptError, teacherInstructions: teacherInstructionsError } = errors;
 
   const valuesMap = buildValuesMap(model);
   const panelProperties = {
@@ -211,97 +208,104 @@ const Design = withStyles(styles)((props) => {
     scoringType: scoringType.settings && radio(scoringType.label, ['auto', 'rubric']),
   };
 
+  const getPluginProps = (props = {}) => {
+    return Object.assign(
+        {
+          ...baseInputConfiguration,
+        },
+        props || {},
+    );
+  };
+
   return (
-    <div className={classes.design}>
-      <layout.ConfigLayout
-        hideSettings={settingsPanelDisabled}
-        settings={
-          <Panel
-            model={model}
-            onChangeModel={onChangeModel}
-            configuration={configuration}
-            onChangeConfiguration={onConfigurationChanged}
-            groups={{
-              Properties: panelProperties,
-            }}
+    <layout.ConfigLayout
+      dimensions={contentDimensions}
+      hideSettings={settingsPanelDisabled}
+      settings={
+        <Panel
+          model={model}
+          onChangeModel={onChangeModel}
+          configuration={configuration}
+          onChangeConfiguration={onConfigurationChanged}
+          groups={{
+            Properties: panelProperties,
+          }}
+        />
+      }
+    >
+      {teacherInstructionsEnabled && (
+        <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
+          <EditableHtml
+            className={classes.prompt}
+            markup={model.teacherInstructions || ''}
+            onChange={onTeacherInstructionsChanged}
+            imageSupport={imageSupport}
+            nonEmpty={false}
+            error={teacherInstructionsError}
+            spellCheck={spellCheckEnabled}
+            uploadSoundSupport={uploadSoundSupport}
+            pluginProps={getPluginProps(teacherInstructions?.inputConfiguration)}
           />
-        }
-      >
-        <div>
-          <div className={classes.likertOptionsHolder}>
-            <LikertScale model={model} onChangeModel={onChangeModel} />
-            <LikertType model={model} onChangeModel={onChangeModel} />
-            <LikertOrientation model={model} onChangeModel={onChangeModel} />
-          </div>
+          {teacherInstructionsError && <div className={classes.errorText}>{teacherInstructionsError}</div>}
+        </InputContainer>
+      )}
 
-          {teacherInstructionsEnabled && (
-            <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
-              <EditableHtml
-                className={classes.prompt}
-                markup={model.teacherInstructions || ''}
-                onChange={onTeacherInstructionsChanged}
-                imageSupport={imageSupport}
-                nonEmpty={false}
-                spellCheck={spellCheckEnabled}
-                uploadSoundSupport={uploadSoundSupport}
-              />
-            </InputContainer>
-          )}
+      <InputContainer label={prompt.label} className={classes.promptHolder}>
+        <EditableHtml
+          className={classes.prompt}
+          markup={model.prompt}
+          onChange={onPromptChanged}
+          imageSupport={imageSupport}
+          nonEmpty={false}
+          error={promptError}
+          spellCheck={spellCheckEnabled}
+          disableUnderline
+          uploadSoundSupport={uploadSoundSupport}
+          pluginProps={getPluginProps(prompt?.inputConfiguration)}
+        />
+        {promptError && <div className={classes.errorText}>{promptError}</div>}
+      </InputContainer>
 
-          <InputContainer label={prompt.label} className={classes.promptHolder}>
+      <div className={classes.likertOptionsHolder}>
+        <LikertScale model={model} onChangeModel={onChangeModel} />
+        <LikertType model={model} onChangeModel={onChangeModel} />
+        <LikertOrientation model={model} onChangeModel={onChangeModel} />
+      </div>
+
+      {model.choices.map((choice, index) => (
+        <div key={`choice-${index}`} className={classes.likertLabelHolder}>
+          <span className={classes.inputFormGroupIndex}>{index + 1}.</span>
+          <InputContainer key={`likert-label-${index}`} label={'Likert Label'} className={classes.likertLabelInput}>
             <EditableHtml
-              className={classes.prompt}
-              markup={model.prompt}
-              onChange={onPromptChanged}
+              className={classes.likertLabelEditableHtml}
+              markup={choice.label || ''}
+              onChange={(c) => onChoiceChanged(index, { ...choice, label: c })}
               imageSupport={imageSupport}
-              nonEmpty={false}
               spellCheck={spellCheckEnabled}
-              disableUnderline
               uploadSoundSupport={uploadSoundSupport}
+              pluginProps={getPluginProps(likertChoice?.inputConfiguration)}
             />
           </InputContainer>
 
-          {model.choices.map((choice, index) => (
-            <div key={`choice-${index}`} className={classes.choiceConfigurationHolder}>
-              <div className={classes.likertLabelHolder}>
-                <span className={classes.inputFormGroupIndex}>{index + 1}.</span>
-                <InputContainer
-                  key={`likert-label-${index}`}
-                  label={'Likert Label'}
-                  className={classes.likertLabelInput}
-                >
-                  <EditableHtml
-                    className={classes.likertLabelEditableHtml}
-                    markup={choice.label || ''}
-                    onChange={(c) => onChoiceChanged(index, { ...choice, label: c })}
-                    imageSupport={imageSupport}
-                    spellCheck={spellCheckEnabled}
-                    uploadSoundSupport={uploadSoundSupport}
-                  />
-                </InputContainer>
-
-                <div className={classes.likertValueHolder}>
-                  <NumberTextField
-                    label={'Likert Value'}
-                    value={choice.value}
-                    className={classes.width100}
-                    max={100}
-                    min={-100}
-                    onChange={(e, t) => {
-                      onChoiceChanged(index, { ...choice, value: t });
-                    }}
-                    imageSupport={imageSupport}
-                  />
-                  {valuesMap[choice.value] && valuesMap[choice.value] > 1 && (
-                    <p className={classes.errorMessage}>Value should be unique</p>
-                  )}
-                </div>
-              </div>
-            </div>
-          ))}
+          <div className={classes.likertValueHolder}>
+            <NumberTextField
+              label={'Likert Value'}
+              value={choice.value}
+              className={classes.width100}
+              max={100}
+              min={-100}
+              onChange={(e, t) => {
+                onChoiceChanged(index, { ...choice, value: t });
+              }}
+              imageSupport={imageSupport}
+            />
+            {valuesMap[choice.value] && valuesMap[choice.value] > 1 && (
+              <p className={classes.errorMessage}>Value should be unique</p>
+            )}
+          </div>
         </div>
-      </layout.ConfigLayout>
-    </div>
+      ))}
+    </layout.ConfigLayout>
   );
 });
 

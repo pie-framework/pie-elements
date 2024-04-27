@@ -33,6 +33,7 @@ exports[`categorize renders snapshot 1`] = `
         }
         onDropChoice={[Function]}
         onRemoveChoice={[Function]}
+        rowLabels={Array []}
       />
     </div>
     <WithStyles(Choices)
@@ -49,6 +50,12 @@ exports[`categorize renders snapshot 1`] = `
       onRemoveChoice={[Function]}
     />
   </div>
+  <WithStyles(AlertDialog)
+    onClose={[Function]}
+    open={false}
+    text="You've reached the limit of  responses per area. To add another response, one must first be removed."
+    title="Warning"
+  />
 </div>
 `;
 
@@ -86,6 +93,7 @@ exports[`categorize renders snapshot with rationale 1`] = `
         }
         onDropChoice={[Function]}
         onRemoveChoice={[Function]}
+        rowLabels={Array []}
       />
     </div>
     <WithStyles(Choices)
@@ -115,6 +123,12 @@ exports[`categorize renders snapshot with rationale 1`] = `
       prompt="This is rationale"
     />
   </WithStyles(Collapsible)>
+  <WithStyles(AlertDialog)
+    onClose={[Function]}
+    open={false}
+    text="You've reached the limit of  responses per area. To add another response, one must first be removed."
+    title="Warning"
+  />
 </div>
 `;
 
@@ -132,7 +146,6 @@ exports[`categorize renders snapshot with teacherInstructions 1`] = `
       prompt="These are teacher instructions"
     />
   </WithStyles(Collapsible)>
-  <br />
   <WithStyles(CorrectAnswerToggle)
     onToggle={[Function]}
     show={false}
@@ -165,6 +178,7 @@ exports[`categorize renders snapshot with teacherInstructions 1`] = `
         }
         onDropChoice={[Function]}
         onRemoveChoice={[Function]}
+        rowLabels={Array []}
       />
     </div>
     <WithStyles(Choices)
@@ -182,5 +196,11 @@ exports[`categorize renders snapshot with teacherInstructions 1`] = `
       onRemoveChoice={[Function]}
     />
   </div>
+  <WithStyles(AlertDialog)
+    onClose={[Function]}
+    open={false}
+    text="You've reached the limit of  responses per area. To add another response, one must first be removed."
+    title="Warning"
+  />
 </div>
 `;

@@ -1,13 +1,32 @@
 import isEmpty from 'lodash/isEmpty';
-import { buildState, score } from '@pie-lib/categorize';
-import { getFeedbackForCorrectness } from '@pie-lib/feedback';
-import { isAlternateDuplicated, isCorrectResponseDuplicated } from './utils';
-import { lockChoices, getShuffledChoices, partialScoring } from '@pie-lib/controller-utils';
+import { buildState, score } from '@pie-lib/pie-toolbox/categorize';
+import { getFeedbackForCorrectness } from '@pie-lib/pie-toolbox/feedback';
+import { lockChoices, getShuffledChoices, partialScoring } from '@pie-lib/pie-toolbox/controller-utils';
+import Translator from '@pie-lib/pie-toolbox/translator';
+
+const { translator } = Translator;
 import defaults from './defaults';
+import { isAlternateDuplicated, isCorrectResponseDuplicated } from './utils';
 
 // eslint-disable-next-line no-console
 
 export { score };
+
+// PD-2960: make sure we don't have alternates in model or possibility to add them (temporary solution)
+// this function is used in configure part, too
+const disableAlternateResponses = (question) => {
+  let { correctResponse } = question || {};
+  correctResponse = correctResponse || [];
+  const mappedCorrectResponse = correctResponse.map((cr) => {
+    const { alternateResponses, ...response } = cr;
+    return response;
+  });
+  return {
+    ...question,
+    correctResponse: mappedCorrectResponse,
+    allowAlternateEnabled: false,
+  };
+};
 
 export const getPartialScore = (correctResponse, builtCategories) => {
   // in the resulted best scenario we make a sum with all the correct responses
@@ -94,10 +113,13 @@ export const createDefaultModel = (model = {}) =>
     });
   });
 
-export const normalize = (question) => ({
-  ...defaults,
-  ...question,
-});
+export const normalize = (question) => {
+  const newQuestion = disableAlternateResponses(question);
+  return {
+    ...defaults,
+    ...newQuestion,
+  };
+};
 
 /**
  *
@@ -126,11 +148,12 @@ export const model = (question, session, env, updateSession) =>
       rowLabels,
       rationaleEnabled,
       rationale,
-      note,
       teacherInstructionsEnabled,
       teacherInstructions,
+      language,
+      maxChoicesPerCategory,
     } = normalizedQuestion;
-    let { choices } = normalizedQuestion;
+    let { choices, note } = normalizedQuestion;
     let fb;
 
     const lockChoiceOrder = lockChoices(normalizedQuestion, session, env);
@@ -148,10 +171,15 @@ export const model = (question, session, env, updateSession) =>
       choices = await getShuffledChoices(choices, session, updateSession, 'id');
     }
 
+    if (!note) {
+      note = translator.t('common:commonCorrectAnswerWithAlternates', { lng: language });
+    }
+
     const alternates = getAlternates(filteredCorrectResponse);
     const out = {
       categories: categories || [],
       categoriesPerRow: categoriesPerRow || 2,
+      maxChoicesPerCategory,
       correctness: answerCorrectness,
       choices: choices || [],
       choicesLabel: choicesLabel || '',
@@ -165,6 +193,7 @@ export const model = (question, session, env, updateSession) =>
       env,
       showNote: alternates && alternates.length > 0,
       correctResponse: mode === 'evaluate' ? filteredCorrectResponse : undefined,
+      language
     };
 
     if (role === 'instructor' && (mode === 'view' || mode === 'evaluate')) {
@@ -205,32 +234,52 @@ export const createCorrectResponseSession = (question, env) => {
   });
 };
 
+// remove all html tags
+const getInnerText = (html) => (html || '').replaceAll(/<[^>]*>/g, '');
+
+// remove all html tags except img and iframe
+const getContent = (html) => (html || '').replace(/(<(?!img|iframe)([^>]+)>)/gi, '');
+
 export const validate = (model = {}, config = {}) => {
   const { categories, choices, correctResponse } = model;
-  const { minChoices = 1, maxChoices = 15, minCategories = 1, maxCategories = 12, maxLengthPerChoice = 300, maxLengthPerCategory = 150 } = config;
-  const reversedChoices = [ ...choices || []].reverse();
+  const {
+    minChoices = 1,
+    maxChoices = 15,
+    minCategories = 1,
+    maxCategories = 12,
+    maxLengthPerChoice = 300,
+    maxLengthPerCategory = 150,
+  } = config;
+  const reversedChoices = [...(choices || [])].reverse();
   const errors = {};
   const choicesErrors = {};
   const categoriesErrors = {};
 
+  ['teacherInstructions', 'prompt', 'rationale'].forEach((field) => {
+    if (config[field]?.required && !getContent(model[field])) {
+      errors[field] = 'This field is required.';
+    }
+  });
+
   (categories || []).forEach((category) => {
-    const {id, label} = category;
-    const parsedLabel = label.replace(/<(?:.|\n)*?>/gm, '');
-    if (parsedLabel.length > maxLengthPerCategory){
+    const { id, label } = category;
+
+    if (getInnerText(label).length > maxLengthPerCategory) {
       categoriesErrors[id] = `Category labels should be no more than ${maxLengthPerCategory} characters long.`;
     }
   });
 
   (reversedChoices || []).forEach((choice, index) => {
     const { id, content } = choice;
-    const parsedContent = content.replace(/<(?:.|\n)*?>/gm, '');
-    if (parsedContent.length > maxLengthPerChoice){
+
+    if (getInnerText(content).length > maxLengthPerChoice) {
       choicesErrors[id] = `Tokens should be no more than ${maxLengthPerChoice} characters long.`;
     }
-    if (content === '' || content === '<div></div>') {
+
+    if (!getContent(content)) {
       choicesErrors[id] = 'Tokens should not be empty.';
     } else {
-      const identicalAnswer = reversedChoices.slice(index + 1).some(c => c.content === content);
+      const identicalAnswer = reversedChoices.slice(index + 1).some((c) => c.content === content);
 
       if (identicalAnswer) {
         choicesErrors[id] = 'Tokens content should be unique.';
@@ -256,13 +305,13 @@ export const validate = (model = {}, config = {}) => {
   if (nbOfChoices && nbOfCategories) {
     let hasAssociations = false;
 
-    (correctResponse || []).forEach(response => {
+    (correctResponse || []).forEach((response) => {
       const { choices = [], alternateResponses = [] } = response;
 
       if (choices.length) {
         hasAssociations = true;
       } else {
-        alternateResponses.forEach(alternate => {
+        alternateResponses.forEach((alternate) => {
           if ((alternate || []).length) {
             hasAssociations = true;
           }
@@ -272,19 +321,22 @@ export const validate = (model = {}, config = {}) => {
 
     let duplicateAlternateIndex = -1;
     let duplicateCategory = '';
-    (correctResponse || []).forEach(response => {
+    (correctResponse || []).forEach((response) => {
       const { choices = [], alternateResponses = [], category } = response;
+
       if (duplicateAlternateIndex === -1) {
-        duplicateAlternateIndex = isCorrectResponseDuplicated(choices,alternateResponses);
+        duplicateAlternateIndex = isCorrectResponseDuplicated(choices, alternateResponses);
+
         if (duplicateAlternateIndex === -1) {
           duplicateAlternateIndex = isAlternateDuplicated(alternateResponses);
         }
+
         duplicateCategory = category;
       }
     });
 
     if (duplicateAlternateIndex > -1) {
-      errors.duplicateAlternate = {index:duplicateAlternateIndex, category:duplicateCategory};
+      errors.duplicateAlternate = { index: duplicateAlternateIndex, category: duplicateCategory };
     }
 
     if (!hasAssociations) {
@@ -299,5 +351,6 @@ export const validate = (model = {}, config = {}) => {
   if (!isEmpty(categoriesErrors)) {
     errors.categoriesErrors = categoriesErrors;
   }
+
   return errors;
 };

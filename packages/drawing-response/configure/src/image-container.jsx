@@ -10,6 +10,13 @@ const isImage = (file) => {
 };
 
 export class ImageContainer extends Component {
+
+  static propTypes = {
+    imageDimensions: PropTypes.object,
+  };
+
+  static defaultProps = {};
+
   constructor(props) {
     super(props);
     this.state = {
@@ -233,7 +240,7 @@ export class ImageContainer extends Component {
 
 const styles = (theme) => ({
   base: {
-    marginTop: theme.spacing.unit * 2,
+    marginTop: theme.spacing.unit,
   },
   box: {
     border: '1px solid #E0E1E6',

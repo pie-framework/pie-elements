@@ -2,11 +2,19 @@ import isEqual from 'lodash/isEqual';
 import lodash from 'lodash';
 import uniqWith from 'lodash/uniqWith';
 import differenceWith from 'lodash/differenceWith';
-import { getAmplitudeAndFreq, pointsToABC } from '@pie-lib/graphing-utils';
+import {
+  getAmplitudeAndFreq,
+  pointsToABC,
+  pointsToAForAbsolute,
+  pointsToABForExponential,
+} from '@pie-lib/pie-toolbox/graphing-utils';
 
 export const equalPoint = (A, B) => {
   // x1 = x2 & y1 = y2
   let equalLabel = true;
+
+  A = {...A};
+  B = {...B};
 
   if (A.label || B.label) {
     equalLabel = isEqual(A.label, B.label);
@@ -43,6 +51,8 @@ export const sortedAnswers = (answers) =>
     }, {});
 
 const returnLineEquationCoefficients = (line) => {
+  line = {...line, to: { ...line.to }, from: { ...line.from }};
+
   const xA = line.from.x;
   const yA = line.from.y;
   const xB = line.to.x;
@@ -95,6 +105,9 @@ export const equalLine = (line1, line2) => {
 };
 
 export const equalRay = (ray1, ray2) => {
+  ray1 = {...ray1, to: { ...ray1.to }, from: { ...ray1.from }};
+  ray2 = {...ray2, to: { ...ray2.to }, from: { ...ray2.from }};
+
   // slope: m = (y2-y1)/(x2-x1)
   // slope & x1 = x3 & y1 = y3 & angle between (x1, y1) (x2, y2) is same as angle between (x3, y3) (x4, y4)
   const mRay1 = (ray1.to.y - ray1.from.y) / (ray1.to.x - ray1.from.x);
@@ -144,6 +157,8 @@ export const equalPolygon = (poly1, poly2) => {
 };
 
 export const equalCircle = (c1, c2) => {
+  c1 = {...c1, root: { ...c1.root }, edge: { ...c1.edge }};
+  c2 = {...c2, root: { ...c2.root }, edge: { ...c2.edge }};
   const equalRootAndEdge = isEqual(c2.edge, c1.edge) && isEqual(c2.root, c1.root);
 
   // if both edge and root are the same, it means the shapes are exactly the same
@@ -158,6 +173,9 @@ export const equalCircle = (c1, c2) => {
 
 export const equalSine = (sine1, sine2) => {
   const getPoints = ({ root, edge }) => {
+    root = { ...root};
+    edge = { ...edge};
+
     const { amplitude, freq } = getAmplitudeAndFreq(root, edge);
     // the height of the sine wave
     const tY = Math.abs(root.y - edge.y) * 2;
@@ -223,13 +241,21 @@ export const equalSine = (sine1, sine2) => {
 };
 
 export const equalParabola = (p1, p2) => {
-  const { edge: edgeP1, root: rootP1 } = p1;
-  const { edge: edgeP2, root: rootP2 } = p2;
+  const { edge: edgeP1 } = p1;
+  const { edge: edgeP2 } = p2;
+  let { root: rootP1 } = p1;
+  let { root: rootP2 } = p2;
+
+  rootP1 = {...rootP1};
+  rootP2 = {...rootP2};
+
   const p1edge = edgeP1 || { ...rootP1 };
   const p2edge = edgeP2 || { ...rootP2 };
 
   const p1mirrorEdge = { x: rootP1.x - (p1edge.x - rootP1.x), y: p1edge.y };
   const p2mirrorEdge = { x: rootP2.x - (p2edge.x - rootP2.x), y: p2edge.y };
+
+  if (!edgeP1 || !edgeP2) return false;
 
   const { a: a1, b: b1, c: c1 } = pointsToABC(rootP1, edgeP1, p1mirrorEdge);
   const { a: a2, b: b2, c: c2 } = pointsToABC(rootP2, edgeP2, p2mirrorEdge);
@@ -240,10 +266,62 @@ export const equalParabola = (p1, p2) => {
   return round(a1) === round(a2) && round(b1) === round(b2) && round(c1) === round(c2);
 };
 
+/*
+ * Function to check if given two points for absolute function
+ * for correct answer and student answer are equal or not.
+ * @param p1 - student answer
+ * @param p2 - correct answer
+ * */
+export const equalAbsolute = (p1, p2) => {
+  const { edge: edgeP1 } = p1;
+  const { edge: edgeP2 } = p2;
+  let { root: rootP1 } = p1;
+  let { root: rootP2 } = p2;
+
+  rootP1 = { ...rootP1 };
+  rootP2 = { ...rootP2 };
+
+  const p1edge = edgeP1 || { ...rootP1 };
+  const p2edge = edgeP2 || { ...rootP2 };
+
+  const p1a1 = pointsToAForAbsolute(rootP1, p1edge);
+  const p2a2 = pointsToAForAbsolute(rootP2, p2edge);
+
+  // if both root and a value are equal
+  return isEqual(rootP2, rootP1) && isEqual(p2a2, p1a1);
+};
+
+/*
+ * Function to check if given two points for exponential function
+ * for correct answer and student answer are equal or not.
+ * @param p1 - student answer
+ * @param p2 - correct answer
+ * */
+export const equalExponential = (p1, p2) => {
+  const { edge: edgeP1 } = p1;
+  const { edge: edgeP2 } = p2;
+  let { root: rootP1 } = p1;
+  let { root: rootP2 } = p2;
+
+  rootP1 = { ...rootP1 };
+  rootP2 = { ...rootP2 };
+
+  const p1edge = edgeP1 || { ...rootP1 };
+  const p2edge = edgeP2 || { ...rootP2 };
+
+  const { a1, b1 } = pointsToABForExponential(rootP1, p1edge);
+  const { a2, b2 } = pointsToABForExponential(rootP2, p2edge);
+
+  // if both a and b value are equal
+  return isEqual(a2, a1) && isEqual(b2, b1);
+};
+
 export const equalMarks = {
   circle: (sessAnswer, mark) => equalCircle(sessAnswer, mark),
   line: (sessAnswer, mark) => equalLine(sessAnswer, mark),
   parabola: (sessAnswer, mark) => equalParabola(sessAnswer, mark),
+  absolute: (sessAnswer, mark) => equalAbsolute(sessAnswer, mark),
+  exponential: (sessAnswer, mark) => equalExponential(sessAnswer, mark),
   point: (sessAnswer, mark) => equalPoint(sessAnswer, mark),
   polygon: (sessAnswer, poly) => equalPolygon(sessAnswer, poly),
   ray: (sessAnswer, mark) => equalRay(sessAnswer, mark),
@@ -251,3 +329,31 @@ export const equalMarks = {
   sine: (sessAnswer, mark) => equalSine(sessAnswer, mark),
   vector: (sessAnswer, mark) => equalVector(sessAnswer, mark),
 };
+
+const completePoint = (point) => point && Number.isFinite(point.x) && Number.isFinite(point.y);
+const completeFromTo = (item) => item && completeMark.point(item.from) && completeMark.point(item.to);
+const completeRootEdge = (item) => item && completeMark.point(item.edge) && completeMark.point(item.root);
+const completePoints = (item) =>
+  item &&
+  item.points &&
+  item.points.length &&
+  (item.points.filter((point) => completePoint(point)) || []).length === item.points.length;
+
+const completeMark = {
+  point: completePoint,
+  line: completeFromTo,
+  ray: completeFromTo,
+  segment: completeFromTo,
+  vector: completeFromTo,
+  circle: completeRootEdge,
+  parabola: completeRootEdge,
+  absolute: completeRootEdge,
+  exponential: completeRootEdge,
+  sine: completeRootEdge,
+  polygon: completePoints,
+};
+
+export const removeInvalidAnswers = (answers) =>
+  answers
+    ? (answers || []).filter(({ type, ...answer }) => (completeMark[type] ? completeMark[type](answer) : false))
+    : [];

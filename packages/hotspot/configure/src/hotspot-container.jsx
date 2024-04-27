@@ -1,11 +1,13 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles/index';
-import Help from '@material-ui/icons/Help';
+import classNames from 'classnames';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import Button from './button';
+import { CircleButton } from './buttons/circle';
+import { PolygonButton } from './buttons/polygon';
+import { RectangleButton } from './buttons/rectangle';
 
 import Drawable from './hotspot-drawable';
-import Button from './button';
 import UploadControl from './upload-control';
 import { getAllShapes, groupShapes } from './utils';
 
@@ -31,25 +33,33 @@ export class Container extends Component {
       dragEnabled: true,
       // always transform shapes map into shapes array at this level
       shapes: getAllShapes(props.shapes),
+      selectedShape: 'none',
+    };
+    this.fakeImageHandler = {
+      cancel: () => {},
+      done: (a, url) => this.props.onImageUpload(url),
+      fileChosen: () => {},
+      progress: () => {},
     };
   }
 
   handleFileRead = (file) => {
     if (file instanceof Blob) {
-      const { onImageUpload } = this.props;
+      const { onImageUpload, insertImage } = this.props;
       const reader = new FileReader();
 
       reader.onloadend = () => onImageUpload(reader.result);
       reader.readAsDataURL(file);
+
+      if (insertImage) {
+        insertImage({
+          ...this.fakeImageHandler,
+          getChosenFile: () => file,
+          isPasted: true,
+        });
+      }
     }
   };
-
-  handleUploadImage = (e) => {
-    e.preventDefault();
-
-    this.handleFileRead(e.target.files[0]);
-  };
-
   enableDropzone = () => this.setState({ dropzoneActive: true });
 
   disableDropzone = () => this.setState({ dropzoneActive: false });
@@ -98,7 +108,6 @@ export class Container extends Component {
 
   onUpdateShapes = (newShapes) => {
     const { onUpdateShapes } = this.props;
-
     this.setState(
       { shapes: newShapes },
       // always transform shapes array back into shapes map when saving changes
@@ -106,15 +115,11 @@ export class Container extends Component {
     );
   };
 
-  handleUndo = () => {
+  onDeleteShape = (id) => {
     const { shapes } = this.state;
-
     if (shapes && shapes.length) {
-      // sort by index value
-      let newShapes = shapes.sort((a, b) => parseInt(a.index) - parseInt(b.index));
-
-      newShapes = newShapes ? newShapes.slice(0, newShapes.length - 1) : [];
-
+      // filter the deleted shape out
+      let newShapes = shapes.filter((shape) => shape.id !== id);
       this.onUpdateShapes(newShapes);
     }
   };
@@ -125,9 +130,19 @@ export class Container extends Component {
 
   handleDisableDrag = () => this.setState({ dragEnabled: false });
 
-  handleInputClick = () => this.input.click();
+  handleInputClick = () => {
+    const { insertImage } = this.props;
 
-  toggleTooltip = () => this.setState({ showTooltip: !this.state.showTooltip });
+    if (insertImage) {
+      insertImage(this.fakeImageHandler);
+    }
+  };
+
+  handleFinishDrawing = () => {
+    // Explicitly end the current shape drawing session
+    // This would cause the finalizeCreation method to be called in the HotspotDrawable component
+    this.setState({ selectedShape: 'none' });
+  };
 
   render() {
     const {
@@ -142,8 +157,8 @@ export class Container extends Component {
       strokeWidth,
       preserveAspectRatioEnabled,
     } = this.props;
-    const { dropzoneActive, dragEnabled, showTooltip } = this.state;
-    const { shapes } = this.state;
+    const { dropzoneActive, dragEnabled } = this.state;
+    const { shapes, selectedShape } = this.state;
 
     return (
       <div className={classes.base}>
@@ -163,20 +178,36 @@ export class Container extends Component {
             : {})}
         >
           <div className={classes.toolbar}>
+            <div
+              onClick={() => this.setState({ selectedShape: selectedShape === 'rectangle' ? 'none' : 'rectangle' })}
+              className={classes.buttonShape}
+            >
+              <RectangleButton isActive={selectedShape === 'rectangle'} />
+            </div>
+            <div
+              onClick={() => this.setState({ selectedShape: selectedShape === 'polygon' ? 'none' : 'polygon' })}
+              className={classes.buttonShape}
+            >
+              <PolygonButton isActive={selectedShape === 'polygon'} />
+            </div>
+            <div
+              onClick={() => this.setState({ selectedShape: selectedShape === 'circle' ? 'none' : 'circle' })}
+              className={classes.buttonShape}
+            >
+              <CircleButton isActive={selectedShape === 'circle'} />
+            </div>
+
             {imageUrl && (
               <UploadControl
                 classNameButton={classes.replaceButton}
                 classNameSection={classes.replaceSection}
                 label="Replace Image"
                 onInputClick={this.handleInputClick}
-                onUploadImage={this.handleUploadImage}
                 setRef={(ref) => {
                   this.input = ref;
                 }}
               />
             )}
-
-            <Button disabled={!(shapes && shapes.length)} onClick={this.handleUndo} label="Undo" />
             <Button disabled={!(shapes && shapes.length)} onClick={this.handleClearAll} label="Clear all" />
           </div>
 
@@ -191,11 +222,14 @@ export class Container extends Component {
                 dimensions={dimensions}
                 disableDrag={this.handleDisableDrag}
                 enableDrag={this.handleEnableDrag}
+                shapeType={this.state.selectedShape}
+                handleFinishDrawing={this.handleFinishDrawing}
                 imageUrl={imageUrl}
                 hotspotColor={hotspotColor}
                 multipleCorrect={multipleCorrect}
                 onUpdateImageDimension={onUpdateImageDimension}
                 onUpdateShapes={this.onUpdateShapes}
+                onDeleteShape={this.onDeleteShape}
                 outlineColor={outlineColor}
                 shapes={shapes}
                 strokeWidth={strokeWidth}
@@ -208,7 +242,6 @@ export class Container extends Component {
                 <UploadControl
                   label="Upload Image"
                   onInputClick={this.handleInputClick}
-                  onUploadImage={this.handleUploadImage}
                   setRef={(ref) => {
                     this.input = ref;
                   }}
@@ -216,21 +249,6 @@ export class Container extends Component {
               </div>
             )}
           </div>
-
-          {imageUrl && (
-            <div className={classes.tooltip}>
-              {showTooltip && (
-                <div className={classes.tooltipContent}>
-                  <label>
-                    Click and drag to create a hotspot. Click the hotspot to mark correct. Click again to unmark.
-                  </label>
-                  <div className={classes.tooltipArrow} />
-                </div>
-              )}
-
-              <Help className={classes.icon} onMouseOut={this.toggleTooltip} onMouseOver={this.toggleTooltip} />
-            </div>
-          )}
         </div>
       </div>
     );
@@ -238,8 +256,15 @@ export class Container extends Component {
 }
 
 const styles = (theme) => ({
+  buttonShape: {
+    marginRight: '5px',
+    '&:hover': {
+      cursor: 'pointer',
+    },
+  },
   base: {
-    marginTop: theme.spacing.unit * 2,
+    marginTop: theme.spacing.unit * 1.5,
+    marginBottom: theme.spacing.unit * 2.5,
   },
   box: {
     border: '1px solid #E0E1E6',
@@ -249,7 +274,7 @@ const styles = (theme) => ({
     border: '1px solid #0032C2',
   },
   boxError: {
-    border: '1px solid red',
+    border: `1px solid ${theme.palette.error.main}`,
   },
   centered: {
     alignItems: 'center',
@@ -276,42 +301,13 @@ const styles = (theme) => ({
     marginRight: 'auto',
   },
   toolbar: {
-    backgroundColor: '#ECEDF1',
+    backgroundColor: '#FFF',
     borderBottom: '1px solid #E0E1E6',
     borderTopLeftRadius: '5px',
     borderTopRightRadius: '5px',
     display: 'flex',
     justifyContent: 'flex-end',
     padding: theme.spacing.unit,
-  },
-  tooltip: {
-    position: 'relative',
-    textAlign: 'right',
-    padding: theme.spacing.unit,
-  },
-  tooltipContent: {
-    background: '#333131',
-    borderRadius: '4px',
-    color: '#FFFFFF',
-    fontSize: theme.typography.fontSize,
-    lineHeight: '18px',
-    marginTop: '-60px',
-    padding: theme.spacing.unit,
-    position: 'absolute',
-    right: '5px',
-    textAlign: 'left',
-    width: '300px',
-  },
-  tooltipArrow: {
-    width: 0,
-    height: 0,
-    borderLeft: '10px solid transparent',
-    borderRight: '10px solid transparent',
-    borderTop: '10px solid #333131',
-    marginBottom: -10,
-    marginTop: '4px',
-    position: 'absolute',
-    right: '5px',
   },
 });
 
@@ -323,6 +319,7 @@ Container.propTypes = {
   multipleCorrect: PropTypes.bool.isRequired,
   onImageUpload: PropTypes.func.isRequired,
   onUpdateImageDimension: PropTypes.func.isRequired,
+  insertImage: PropTypes.func,
   onUpdateShapes: PropTypes.func.isRequired,
   outlineColor: PropTypes.string.isRequired,
   shapes: PropTypes.shape({
@@ -331,6 +328,7 @@ Container.propTypes = {
   }).isRequired,
   strokeWidth: PropTypes.number,
   preserveAspectRatioEnabled: PropTypes.bool,
+  hasErrors: PropTypes.bool,
 };
 
 Container.defaultProps = {

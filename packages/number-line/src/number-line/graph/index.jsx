@@ -1,7 +1,7 @@
 import React from 'react';
 import { scaleLinear } from 'd3-scale';
 import { select, mouse } from 'd3-selection';
-import { color } from '@pie-lib/render-ui';
+import { color } from '@pie-lib/pie-toolbox/render-ui';
 import Point from './elements/point';
 import Line from './elements/line';
 import Ray from './elements/ray';
@@ -44,6 +44,7 @@ export class NumberLineGraph extends React.Component {
       max: PropTypes.number.isRequired,
     }).isRequired,
     ticks: PropTypes.shape({ minor: PropTypes.number, major: PropTypes.number }).isRequired,
+    fraction: PropTypes.bool,
     width: PropTypes.number.isRequired,
     height: PropTypes.number.isRequired,
     onToggleElement: PropTypes.func.isRequired,
@@ -216,7 +217,7 @@ export class NumberLineGraph extends React.Component {
           <BaseLine y={lineY} width={width} />
           {arrows.left && <Arrow y={lineY} />}
           {arrows.right && <Arrow x={width} y={lineY} direction="right" />}
-          <Ticks y={lineY} domain={domain} ticks={ticks} fraction={fraction} />
+          <Ticks y={lineY} domain={domain} width={width} ticks={ticks} fraction={fraction} />
           <rect
             ref={(rect) => (this.rect = rect)}
             //need to have a fill for it to be clickable

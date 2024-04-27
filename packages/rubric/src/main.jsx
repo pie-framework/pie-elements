@@ -5,12 +5,14 @@ import List from '@material-ui/core/List';
 import ListItemText from '@material-ui/core/ListItemText';
 import Link from '@material-ui/core/Link';
 import Collapse from '@material-ui/core/Collapse';
+import { color } from '@pie-lib/pie-toolbox/render-ui';
 import PropTypes from 'prop-types';
 
 export const RubricType = PropTypes.shape({
   excludeZero: PropTypes.bool,
   points: PropTypes.arrayOf(PropTypes.string),
   sampleAnswers: PropTypes.arrayOf(PropTypes.string),
+  animationsDisabled: PropTypes.bool,
 });
 
 class Rubric extends React.Component {
@@ -45,7 +47,9 @@ class Rubric extends React.Component {
   };
 
   render() {
-    const { value, classes, animationsDisabled } = this.props;
+    const { value, classes } = this.props;
+    let { animationsDisabled } = this.props;
+    animationsDisabled = animationsDisabled || value.animationsDisabled;
 
     if (value && value.points) {
       const { points, sampleAnswers } = value;
@@ -57,28 +61,37 @@ class Rubric extends React.Component {
             .reverse()
             .map((desc, index) => {
               index = points.length - index - 1;
+              const pointsLabel = value.excludeZero ? index + 1: index;
+
               return (
-                this.shouldRenderPoint(index, value) && (
                   <React.Fragment key={index}>
                     <ListItem key={`P${index}`}>
                       <ListItemText
-                        className={classes.rubricCol}
-                        primary={index === 1 ? `${index} PT` : `${index} PTS`}
-                      />
-                      <ListItemText primary={<div dangerouslySetInnerHTML={{ __html: desc }} />} />
-                    </ListItem>
-                    {sampleAnswers && sampleAnswers[index] && (
-                      <ListItem key={`S${index}`}>
-                        <ListItemText
                           className={classes.rubricCol}
-                          style={{ marginLeft: '20px' }}
-                          primary={'Sample Answer'}
-                        />
-                        <ListItemText primary={<div dangerouslySetInnerHTML={{ __html: sampleAnswers[index] }} />} />
-                      </ListItem>
+                          primary={<div className={classes.text}>{pointsLabel === 1 ? `${pointsLabel} PT` : `${pointsLabel} PTS`}</div>}
+                      />
+
+                      <ListItemText
+                          primary={<div className={classes.text} dangerouslySetInnerHTML={{ __html: desc }} />}
+                      />
+                    </ListItem>
+
+                    {sampleAnswers && sampleAnswers[index] && (
+                        <ListItem key={`S${index}`}>
+                          <ListItemText
+                              className={classes.rubricCol}
+                              style={{ marginLeft: '20px' }}
+                              primary={<div className={classes.text}>Sample Answer</div>}
+                          />
+
+                          <ListItemText
+                              primary={
+                                <div className={classes.text} dangerouslySetInnerHTML={{ __html: sampleAnswers[index] }} />
+                              }
+                          />
+                        </ListItem>
                     )}
                   </React.Fragment>
-                )
               );
             })}
         </List>
@@ -107,9 +120,16 @@ class Rubric extends React.Component {
 }
 
 const styles = () => ({
+  root: {
+    color: color.text(),
+    backgroundColor: color.background(),
+  },
   rubricCol: {
     flex: '0 1 auto',
     minWidth: 'fit-content',
+  },
+  text: {
+    color: color.text(),
   },
 });
 

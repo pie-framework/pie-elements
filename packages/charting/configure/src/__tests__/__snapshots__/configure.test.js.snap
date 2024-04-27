@@ -2,7 +2,9 @@
 
 exports[`ChartingConfig renders snapshot 1`] = `
 <div>
-  Define Initial Chart Attributes
+  <div>
+    Define Initial Chart Attributes
+  </div>
   <div>
     <div
       key="graph"
@@ -17,11 +19,13 @@ exports[`ChartingConfig renders snapshot 1`] = `
       </WithStyles(Typography)>
       <Chart
         addCategoryEnabled={true}
-        categoryDefaultLabel="Category"
+        changeEditableEnabled={false}
+        changeInteractiveEnabled={false}
         chartType="lineCross"
         data={Array []}
         defineChart={true}
         domain={Object {}}
+        mathMlOptions={Object {}}
         onChangeLabels={[Function]}
         onChangeTitle={[Function]}
         onDataChange={[Function]}
@@ -40,13 +44,6 @@ exports[`ChartingConfig renders snapshot 1`] = `
         }
         title=""
       />
-      <div>
-        <WithStyles(Checkbox)
-          checked={true}
-          onChange={[Function]}
-        />
-        Student can add categories
-      </div>
       <Component
         open={false}
       />
@@ -57,11 +54,37 @@ exports[`ChartingConfig renders snapshot 1`] = `
 
 exports[`Configure renders snapshot 1`] = `
 <ConfigLayout
+  dimensions={Object {}}
   hideSettings={false}
   settings={
     <Panel
       configuration={
         Object {
+          "authorNewCategoryDefaults": Object {
+            "editable": false,
+            "interactive": true,
+            "label": "Category",
+            "settings": false,
+          },
+          "availableChartTypes": Object {
+            "bar": "Bar Chart",
+            "dotPlot": "Dot/Line Plot ⬤",
+            "histogram": "Histogram",
+            "lineCross": "Line Chart x",
+            "lineDot": "Line Chart ●",
+            "linePlot": "Dot/Line Plot X",
+          },
+          "baseInputConfiguration": Object {
+            "audio": Object {
+              "disabled": false,
+            },
+            "image": Object {
+              "disabled": false,
+            },
+            "video": Object {
+              "disabled": false,
+            },
+          },
           "chartDimensions": Object {
             "height": Object {
               "max": 700,
@@ -77,11 +100,48 @@ exports[`Configure renders snapshot 1`] = `
               "step": 20,
             },
           },
+          "chartTypeLabel": "ChartType",
+          "chartingOptions": Object {
+            "addCategory": Object {
+              "authoringLabel": "Student can add categories",
+              "settings": false,
+              "settingsLabel": "Allow changes to whether students can add categories",
+            },
+            "changeEditable": Object {
+              "authoringLabel": "Student can edit name",
+              "settings": false,
+              "settingsLabel": "Allow editable category names",
+            },
+            "changeInteractive": Object {
+              "authoringLabel": "Student can set value",
+              "settings": false,
+              "settingsLabel": "Allow non-interactive categories",
+            },
+            "mathMlOptions": Object {
+              "mmlEditing": false,
+              "mmlOutput": false,
+            },
+          },
+          "instruction": Object {
+            "label": "This item type provides various types of interactive charts. Depending upon how an item is configured,
+          students can change the heights of bars (or other similar chart elements) created by the author; relabel bars
+          created by the author; and/or add new bars, label them, and set their heights.",
+            "settings": false,
+          },
           "labelsPlaceholders": Object {
             "bottom": "Click here to add a label for this axis",
             "left": "Click here to add a label for this axis",
             "right": "",
             "top": "",
+          },
+          "language": Object {
+            "enabled": false,
+            "label": "Specify Language",
+            "settings": false,
+          },
+          "languageChoices": Object {
+            "label": "Language Choices",
+            "options": Array [],
           },
           "maxImageHeight": Object {
             "prompt": 300,
@@ -94,11 +154,35 @@ exports[`Configure renders snapshot 1`] = `
             "teacherInstructions": 300,
           },
           "prompt": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": false,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": false,
+              },
+            },
             "label": "Item Stem",
+            "required": false,
             "settings": true,
           },
           "rationale": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": false,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": false,
+              },
+            },
             "label": "Rationale",
+            "required": false,
             "settings": true,
           },
           "scoringType": Object {
@@ -115,8 +199,24 @@ exports[`Configure renders snapshot 1`] = `
             "label": "Student Instructions",
             "settings": false,
           },
+          "studentNewCategoryDefaultLabel": Object {
+            "label": "Category",
+            "settings": false,
+          },
           "teacherInstructions": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": false,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": false,
+              },
+            },
             "label": "Teacher Instructions",
+            "required": false,
             "settings": true,
           },
           "title": Object {
@@ -136,6 +236,9 @@ exports[`Configure renders snapshot 1`] = `
       groups={
         Object {
           "Properties": Object {
+            "instruction": false,
+            "language": false,
+            "language.enabled": false,
             "promptEnabled": undefined,
             "rationaleEnabled": undefined,
             "rubricEnabled": false,
@@ -144,12 +247,19 @@ exports[`Configure renders snapshot 1`] = `
             "studentInstructionsEnabled": false,
             "teacherInstructionsEnabled": undefined,
           },
+          "Settings": Object {
+            "changeAddCategoryEnabled": false,
+            "changeEditableEnabled": false,
+            "changeInteractiveEnabled": false,
+          },
         }
       }
       model={
         Object {
           "addCategoryEnabled": true,
-          "categoryDefaultLabel": "Category",
+          "changeAddCategoryEnabled": false,
+          "changeEditableEnabled": false,
+          "changeInteractiveEnabled": false,
           "chartType": "lineCross",
           "correctAnswer": Object {},
           "data": Array [],
@@ -169,6 +279,7 @@ exports[`Configure renders snapshot 1`] = `
           "rationaleEnabled": true,
           "scoringType": "all or nothing",
           "studentInstructionsEnabled": true,
+          "studentNewCategoryDefaultLabel": "New Category",
           "teacherInstructionsEnabled": true,
           "title": "",
         }
@@ -176,316 +287,419 @@ exports[`Configure renders snapshot 1`] = `
     />
   }
 >
-  <div>
-    <WithStyles(Typography)
-      component="div"
-      type="body1"
-    >
-      <span>
-        This item type provides various types of interactive charts. Depending upon how an item is configured, students can change the heights of bars (or other similar chart elements) created by the author; relabel bars created by the author; and/or add new bars, label them, and set their heights.
-      </span>
-    </WithStyles(Typography)>
-    <InputContainer
-      label="Teacher Instructions"
-    >
-      <EditableHtml
-        languageCharactersProps={
-          Array [
-            Object {
-              "language": "spanish",
-            },
-            Object {
-              "language": "special",
-            },
-          ]
-        }
-        markup=""
-        maxImageHeight={300}
-        maxImageWidth={300}
-        nonEmpty={false}
-        onChange={[Function]}
-      />
-    </InputContainer>
-    <InputContainer
-      label="Item Stem"
-    >
-      <EditableHtml
-        disableUnderline={true}
-        languageCharactersProps={
-          Array [
-            Object {
-              "language": "spanish",
-            },
-            Object {
-              "language": "special",
-            },
-          ]
-        }
-        markup=""
-        maxImageHeight={300}
-        maxImageWidth={300}
-        nonEmpty={false}
-        onChange={[Function]}
-      />
-    </InputContainer>
-    <InputContainer
-      label="Rationale"
-    >
-      <EditableHtml
-        languageCharactersProps={
-          Array [
-            Object {
-              "language": "spanish",
-            },
-            Object {
-              "language": "special",
-            },
-          ]
-        }
-        markup=""
-        maxImageHeight={300}
-        maxImageWidth={300}
-        onChange={[Function]}
-      />
-    </InputContainer>
-    <Component
-      chartDimensions={
-        Object {
-          "height": Object {
-            "max": 700,
-            "min": 400,
-            "step": 20,
-          },
-          "label": "Chart Dimensions",
-          "settings": false,
-          "showInConfigPanel": true,
-          "width": Object {
-            "max": 700,
-            "min": 50,
-            "step": 20,
-          },
-        }
-      }
-      charts={
+  <WithStyles(Typography)
+    component="div"
+    type="body1"
+  >
+    This item type provides various types of interactive charts. Depending upon how an item is configured,
+          students can change the heights of bars (or other similar chart elements) created by the author; relabel bars
+          created by the author; and/or add new bars, label them, and set their heights.
+  </WithStyles(Typography)>
+  <InputContainer
+    label="Teacher Instructions"
+  >
+    <EditableHtml
+      allowValidation={false}
+      languageCharactersProps={
         Array [
           Object {
-            "Component": [Function],
-            "type": "bar",
+            "language": "spanish",
           },
           Object {
-            "Component": [Function],
-            "type": "histogram",
-          },
-          Object {
-            "Component": [Function],
-            "type": "lineDot",
-          },
-          Object {
-            "Component": [Function],
-            "type": "lineCross",
-          },
-          Object {
-            "Component": [Function],
-            "type": "dotPlot",
-          },
-          Object {
-            "Component": [Function],
-            "type": "linePlot",
+            "language": "special",
           },
         ]
       }
-      gridValues={
-        Object {
-          "range": Array [
-            0.05,
-            0.1,
-            0.2,
-          ],
-        }
-      }
-      labelValues={
-        Object {
-          "range": Array [
-            0,
-            1,
-            2,
-            4,
-            5,
-            10,
-          ],
-        }
-      }
-      model={
-        Object {
-          "addCategoryEnabled": true,
-          "categoryDefaultLabel": "Category",
-          "chartType": "lineCross",
-          "correctAnswer": Object {},
-          "data": Array [],
-          "domain": Object {},
-          "graph": Object {
-            "height": 480,
-            "width": 480,
-          },
-          "prompt": "",
-          "promptEnabled": true,
-          "range": Object {
-            "label": "",
-            "max": 1,
-            "min": 0,
-          },
-          "rationale": "",
-          "rationaleEnabled": true,
-          "scoringType": "all or nothing",
-          "studentInstructionsEnabled": true,
-          "teacherInstructionsEnabled": true,
-          "title": "",
-        }
-      }
+      markup=""
+      mathMlOptions={Object {}}
+      maxImageHeight={300}
+      maxImageWidth={300}
+      nonEmpty={false}
       onChange={[Function]}
-    />
-    <WithStyles(ChartingConfig)
-      charts={
-        Array [
-          Object {
-            "Component": [Function],
-            "type": "bar",
-          },
-          Object {
-            "Component": [Function],
-            "type": "histogram",
-          },
-          Object {
-            "Component": [Function],
-            "type": "lineDot",
-          },
-          Object {
-            "Component": [Function],
-            "type": "lineCross",
-          },
-          Object {
-            "Component": [Function],
-            "type": "dotPlot",
-          },
-          Object {
-            "Component": [Function],
-            "type": "linePlot",
-          },
-        ]
-      }
-      labelsPlaceholders={
+      onDone={[Function]}
+      pluginProps={
         Object {
-          "bottom": "Click here to add a label for this axis",
-          "left": "Click here to add a label for this axis",
-          "right": "",
-          "top": "",
-        }
-      }
-      model={
-        Object {
-          "addCategoryEnabled": true,
-          "categoryDefaultLabel": "Category",
-          "chartType": "lineCross",
-          "correctAnswer": Object {},
-          "data": Array [],
-          "domain": Object {},
-          "graph": Object {
-            "height": 480,
-            "width": 480,
+          "audio": Object {
+            "disabled": false,
           },
-          "prompt": "",
-          "promptEnabled": true,
-          "range": Object {
-            "label": "",
-            "max": 1,
-            "min": 0,
+          "image": Object {
+            "disabled": false,
           },
-          "rationale": "",
-          "rationaleEnabled": true,
-          "scoringType": "all or nothing",
-          "studentInstructionsEnabled": true,
-          "teacherInstructionsEnabled": true,
-          "title": "",
-        }
-      }
-      showPixelGuides={true}
-      titlePlaceholder={
-        Object {
-          "label": "Click here to add a title",
-          "settings": false,
+          "video": Object {
+            "disabled": false,
+          },
         }
       }
     />
-    <WithStyles(CorrectResponse)
-      charts={
+  </InputContainer>
+  <InputContainer
+    label="Item Stem"
+  >
+    <EditableHtml
+      allowValidation={false}
+      disableUnderline={true}
+      languageCharactersProps={
         Array [
           Object {
-            "Component": [Function],
-            "type": "bar",
+            "language": "spanish",
           },
           Object {
-            "Component": [Function],
-            "type": "histogram",
-          },
-          Object {
-            "Component": [Function],
-            "type": "lineDot",
-          },
-          Object {
-            "Component": [Function],
-            "type": "lineCross",
-          },
-          Object {
-            "Component": [Function],
-            "type": "dotPlot",
-          },
-          Object {
-            "Component": [Function],
-            "type": "linePlot",
+            "language": "special",
           },
         ]
       }
-      config={
+      markup=""
+      mathMlOptions={Object {}}
+      maxImageHeight={300}
+      maxImageWidth={300}
+      nonEmpty={false}
+      onChange={[Function]}
+      onDone={[Function]}
+      pluginProps={
         Object {
+          "audio": Object {
+            "disabled": false,
+          },
+          "image": Object {
+            "disabled": false,
+          },
+          "video": Object {
+            "disabled": false,
+          },
+        }
+      }
+    />
+  </InputContainer>
+  <Component
+    availableChartTypes={
+      Object {
+        "bar": "Bar Chart",
+        "dotPlot": "Dot/Line Plot ⬤",
+        "histogram": "Histogram",
+        "lineCross": "Line Chart x",
+        "lineDot": "Line Chart ●",
+        "linePlot": "Dot/Line Plot X",
+      }
+    }
+    chartDimensions={
+      Object {
+        "height": Object {
+          "max": 700,
+          "min": 400,
+          "step": 20,
+        },
+        "label": "Chart Dimensions",
+        "settings": false,
+        "showInConfigPanel": true,
+        "width": Object {
+          "max": 700,
+          "min": 50,
+          "step": 20,
+        },
+      }
+    }
+    chartTypeLabel="ChartType"
+    charts={
+      Array [
+        Object {
+          "Component": [Function],
+          "type": "bar",
+        },
+        Object {
+          "Component": [Function],
+          "type": "histogram",
+        },
+        Object {
+          "Component": [Function],
+          "type": "lineDot",
+        },
+        Object {
+          "Component": [Function],
+          "type": "lineCross",
+        },
+        Object {
+          "Component": [Function],
+          "type": "dotPlot",
+        },
+        Object {
+          "Component": [Function],
+          "type": "linePlot",
+        },
+      ]
+    }
+    gridValues={
+      Object {
+        "range": Array [
+          0.05,
+          0.1,
+          0.2,
+        ],
+      }
+    }
+    labelValues={
+      Object {
+        "range": Array [
+          0,
+          1,
+          2,
+          4,
+          5,
+          10,
+        ],
+      }
+    }
+    model={
+      Object {
+        "addCategoryEnabled": true,
+        "changeAddCategoryEnabled": false,
+        "changeEditableEnabled": false,
+        "changeInteractiveEnabled": false,
+        "chartType": "lineCross",
+        "correctAnswer": Object {},
+        "data": Array [],
+        "domain": Object {},
+        "graph": Object {
           "height": 480,
           "width": 480,
-        }
+        },
+        "prompt": "",
+        "promptEnabled": true,
+        "range": Object {
+          "label": "",
+          "max": 1,
+          "min": 0,
+        },
+        "rationale": "",
+        "rationaleEnabled": true,
+        "scoringType": "all or nothing",
+        "studentInstructionsEnabled": true,
+        "studentNewCategoryDefaultLabel": "New Category",
+        "teacherInstructionsEnabled": true,
+        "title": "",
       }
-      model={
+    }
+    onChange={[Function]}
+    studentNewCategoryDefaultLabel="New Category"
+  />
+  <WithStyles(ChartingConfig)
+    authorNewCategoryDefaults={
+      Object {
+        "editable": false,
+        "interactive": true,
+        "label": "Category",
+        "settings": false,
+      }
+    }
+    chartingOptions={
+      Object {
+        "addCategory": Object {
+          "authoringLabel": "Student can add categories",
+          "settings": false,
+          "settingsLabel": "Allow changes to whether students can add categories",
+        },
+        "changeEditable": Object {
+          "authoringLabel": "Student can edit name",
+          "settings": false,
+          "settingsLabel": "Allow editable category names",
+        },
+        "changeInteractive": Object {
+          "authoringLabel": "Student can set value",
+          "settings": false,
+          "settingsLabel": "Allow non-interactive categories",
+        },
+        "mathMlOptions": Object {
+          "mmlEditing": false,
+          "mmlOutput": false,
+        },
+      }
+    }
+    charts={
+      Array [
         Object {
-          "addCategoryEnabled": true,
-          "categoryDefaultLabel": "Category",
-          "chartType": "lineCross",
-          "correctAnswer": Object {},
-          "data": Array [],
-          "domain": Object {},
-          "graph": Object {
-            "height": 480,
-            "width": 480,
+          "Component": [Function],
+          "type": "bar",
+        },
+        Object {
+          "Component": [Function],
+          "type": "histogram",
+        },
+        Object {
+          "Component": [Function],
+          "type": "lineDot",
+        },
+        Object {
+          "Component": [Function],
+          "type": "lineCross",
+        },
+        Object {
+          "Component": [Function],
+          "type": "dotPlot",
+        },
+        Object {
+          "Component": [Function],
+          "type": "linePlot",
+        },
+      ]
+    }
+    labelsPlaceholders={
+      Object {
+        "bottom": "Click here to add a label for this axis",
+        "left": "Click here to add a label for this axis",
+        "right": "",
+        "top": "",
+      }
+    }
+    mathMlOptions={Object {}}
+    model={
+      Object {
+        "addCategoryEnabled": true,
+        "changeAddCategoryEnabled": false,
+        "changeEditableEnabled": false,
+        "changeInteractiveEnabled": false,
+        "chartType": "lineCross",
+        "correctAnswer": Object {},
+        "data": Array [],
+        "domain": Object {},
+        "graph": Object {
+          "height": 480,
+          "width": 480,
+        },
+        "prompt": "",
+        "promptEnabled": true,
+        "range": Object {
+          "label": "",
+          "max": 1,
+          "min": 0,
+        },
+        "rationale": "",
+        "rationaleEnabled": true,
+        "scoringType": "all or nothing",
+        "studentInstructionsEnabled": true,
+        "studentNewCategoryDefaultLabel": "New Category",
+        "teacherInstructionsEnabled": true,
+        "title": "",
+      }
+    }
+    showPixelGuides={true}
+    titlePlaceholder={
+      Object {
+        "label": "Click here to add a title",
+        "settings": false,
+      }
+    }
+  />
+  <WithStyles(CorrectResponse)
+    charts={
+      Array [
+        Object {
+          "Component": [Function],
+          "type": "bar",
+        },
+        Object {
+          "Component": [Function],
+          "type": "histogram",
+        },
+        Object {
+          "Component": [Function],
+          "type": "lineDot",
+        },
+        Object {
+          "Component": [Function],
+          "type": "lineCross",
+        },
+        Object {
+          "Component": [Function],
+          "type": "dotPlot",
+        },
+        Object {
+          "Component": [Function],
+          "type": "linePlot",
+        },
+      ]
+    }
+    config={
+      Object {
+        "height": 480,
+        "width": 480,
+      }
+    }
+    mathMlOptions={Object {}}
+    model={
+      Object {
+        "addCategoryEnabled": true,
+        "changeAddCategoryEnabled": false,
+        "changeEditableEnabled": false,
+        "changeInteractiveEnabled": false,
+        "chartType": "lineCross",
+        "correctAnswer": Object {},
+        "data": Array [],
+        "domain": Object {},
+        "graph": Object {
+          "height": 480,
+          "width": 480,
+        },
+        "prompt": "",
+        "promptEnabled": true,
+        "range": Object {
+          "label": "",
+          "max": 1,
+          "min": 0,
+        },
+        "rationale": "",
+        "rationaleEnabled": true,
+        "scoringType": "all or nothing",
+        "studentInstructionsEnabled": true,
+        "studentNewCategoryDefaultLabel": "New Category",
+        "teacherInstructionsEnabled": true,
+        "title": "",
+      }
+    }
+    studentNewCategoryDefaultLabel="New Category"
+  />
+  <InputContainer
+    label="Rationale"
+  >
+    <EditableHtml
+      allowValidation={false}
+      languageCharactersProps={
+        Array [
+          Object {
+            "language": "spanish",
           },
-          "prompt": "",
-          "promptEnabled": true,
-          "range": Object {
-            "label": "",
-            "max": 1,
-            "min": 0,
+          Object {
+            "language": "special",
           },
-          "rationale": "",
-          "rationaleEnabled": true,
-          "scoringType": "all or nothing",
-          "studentInstructionsEnabled": true,
-          "teacherInstructionsEnabled": true,
-          "title": "",
+        ]
+      }
+      markup=""
+      mathMlOptions={Object {}}
+      maxImageHeight={300}
+      maxImageWidth={300}
+      onChange={[Function]}
+      onDone={[Function]}
+      pluginProps={
+        Object {
+          "audio": Object {
+            "disabled": false,
+          },
+          "image": Object {
+            "disabled": false,
+          },
+          "video": Object {
+            "disabled": false,
+          },
         }
       }
     />
-  </div>
+  </InputContainer>
 </ConfigLayout>
 `;
 
 exports[`CorrectResponse renders snapshot 1`] = `
 <div>
-  Define Correct Response
+  <div>
+    Define Correct Response
+  </div>
   <div>
     <div
       key="graph"
@@ -499,15 +713,15 @@ exports[`CorrectResponse renders snapshot 1`] = `
         </span>
       </WithStyles(Typography)>
       <div
-        className={Object {}}
+        className=""
         key="correct-response-graph-undefined"
       >
         <Chart
           addCategoryEnabled={true}
-          categoryDefaultLabel="Category"
           chartType="lineCross"
           data={Array []}
           domain={Object {}}
+          mathMlOptions={Object {}}
           onDataChange={[Function]}
           range={
             Object {

@@ -1,15 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { Divider } from '../buttons';
 import classNames from 'classnames';
 import Choice from './choice';
 import Header from '../header';
 import every from 'lodash/every';
 import Config from './config';
-import { choiceUtils as utils } from '@pie-lib/config-ui';
-import { removeAllChoices } from '@pie-lib/categorize';
-import { rearrangeChoices } from '@pie-lib/categorize';
+import { choiceUtils as utils } from '@pie-lib/pie-toolbox/config-ui';
+import { removeAllChoices } from '@pie-lib/pie-toolbox/categorize';
+import { rearrangeChoices } from '@pie-lib/pie-toolbox/categorize';
 
 export class Choices extends React.Component {
   static propTypes = {
@@ -18,6 +17,8 @@ export class Choices extends React.Component {
     classes: PropTypes.object.isRequired,
     className: PropTypes.string,
     choices: PropTypes.array.isRequired,
+    defaultImageMaxWidth: PropTypes.number,
+    defaultImageMaxHeight: PropTypes.number,
     onModelChanged: PropTypes.func.isRequired,
     imageSupport: PropTypes.shape({
       add: PropTypes.func.isRequired,
@@ -28,6 +29,7 @@ export class Choices extends React.Component {
       delete: PropTypes.func.isRequired,
     }),
     toolbarOpts: PropTypes.object,
+    spellCheck: PropTypes.bool,
   };
 
   static defaultProps = {};
@@ -112,7 +114,6 @@ export class Choices extends React.Component {
     const { choicesError, choicesErrors } = errors || {};
     const { maxChoices, maxImageWidth = {}, maxImageHeight = {} } = configuration || {};
 
-    const categoryCountIsOne = this.allChoicesHaveCount(1);
     const choiceHolderStyle = {
       gridTemplateColumns: `repeat(${model.categoriesPerRow}, 1fr)`,
     };
@@ -125,8 +126,9 @@ export class Choices extends React.Component {
           onAdd={this.addChoice}
           buttonDisabled={maxChoices && choices && maxChoices === choices.length}
         />
-        {choicesError && <div className={classes.errorText}>{choicesError}</div>}
+
         <Config config={model} onModelChanged={onModelChanged} spellCheck={spellCheck} />
+
         <div className={classes.choiceHolder} style={choiceHolderStyle}>
           {choices.map((h, index) => {
             return (
@@ -149,15 +151,17 @@ export class Choices extends React.Component {
                 maxImageWidth={(maxImageWidth && maxImageWidth.choice) || defaultImageMaxWidth}
                 maxImageHeight={(maxImageHeight && maxImageHeight.choice) || defaultImageMaxHeight}
                 uploadSoundSupport={uploadSoundSupport}
+                configuration={configuration}
               />
             );
           })}
         </div>
-        <Divider />
+        {choicesError && <div className={classes.errorText}>{choicesError}</div>}
       </div>
     );
   }
 }
+
 const styles = (theme) => ({
   choiceHolder: {
     paddingTop: theme.spacing.unit,
@@ -167,14 +171,13 @@ const styles = (theme) => ({
     gridColumnGap: `${theme.spacing.unit}px`,
   },
   choices: {
-    paddingTop: theme.spacing.unit * 2,
-    paddingBottom: theme.spacing.unit * 2,
+    marginBottom: theme.spacing.unit * 2.5,
   },
-  label: {},
   errorText: {
-    fontSize: '12px',
-    color: 'red',
-    padding: '5px 0',
+    fontSize: theme.typography.fontSize - 2,
+    color: theme.palette.error.main,
+    paddingTop: theme.spacing.unit / 2,
   },
 });
+
 export default withStyles(styles)(Choices);

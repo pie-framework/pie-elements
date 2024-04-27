@@ -1,5 +1,6 @@
 export { PieItem } from './PieItem';
 export { MultipleChoicePie, MultipleChoiceConfigure } from './pie/multiple-choice';
+export { BoilerplateItemTypePie, BoilerplateItemTypeConfigure } from './pie/boilerplate-item-type';
 export { CategorizePie, CategorizeConfigure } from './pie/categorize';
 export { CalculatorPie } from './pie/calculator';
 export { DragInTheBlankPie, DragInTheBlankConfigure } from './pie/drag-in-the-blank';
@@ -18,6 +19,7 @@ export { SelectTextPie, SelectTextConfigure } from './pie/select-text';
 export { FunctionEntryPie, FunctionEntryConfigure } from './pie/function-entry';
 export { GraphLinesPie, GraphLinesConfigure } from './pie/graph-lines';
 export { GraphingPie, GraphingConfigure } from './pie/graphing';
+export { GraphingSolutionSetPie, GraphingSolutionSetConfigure } from './pie/graphing-solution-set';
 export { NumberLinePie, NumberLineConfigure } from './pie/number-line';
 export { MathInlinePie, MathInlineConfigure } from './pie/math-inline';
 export { PlacementOrderingPie, PlacementOrderingConfigure } from './pie/placement-ordering';

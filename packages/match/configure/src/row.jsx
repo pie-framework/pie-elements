@@ -1,15 +1,16 @@
+import { getPluginProps } from './utils';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
-import { AlertDialog, Checkbox } from '@pie-lib/config-ui';
+import { AlertDialog, Checkbox } from '@pie-lib/pie-toolbox/config-ui';
 import DragHandle from '@material-ui/icons/DragHandle';
 import Radio from '@material-ui/core/Radio';
 import IconButton from '@material-ui/core/IconButton';
 import Delete from '@material-ui/icons/Delete';
 import { DragSource, DropTarget } from 'react-dnd';
 import debug from 'debug';
-import EditableHtml, { DEFAULT_PLUGINS } from '@pie-lib/editable-html';
+import { EditableHtml, DEFAULT_PLUGINS } from '@pie-lib/pie-toolbox/editable-html';
 
 const log = debug('@pie-element:categorize:configure:choice');
 
@@ -22,6 +23,8 @@ export class Row extends React.Component {
     row: PropTypes.object.isRequired,
     idx: PropTypes.number.isRequired,
     isDragging: PropTypes.bool.isRequired,
+    maxImageWidth: PropTypes.object,
+    maxImageHeight: PropTypes.object,
     onDeleteRow: PropTypes.func.isRequired,
     onChange: PropTypes.func.isRequired,
     connectDragSource: PropTypes.func.isRequired,
@@ -35,9 +38,12 @@ export class Row extends React.Component {
       add: PropTypes.func.isRequired,
       delete: PropTypes.func.isRequired,
     }),
+    inputConfiguration: PropTypes.object,
     enableImages: PropTypes.bool,
     toolbarOpts: PropTypes.object,
     error: PropTypes.string,
+    spellCheck: PropTypes.bool,
+    minQuestions: PropTypes.number,
   };
 
   static defaultProps = {};
@@ -77,13 +83,13 @@ export class Row extends React.Component {
   };
 
   onDeleteRow = (idx) => () => {
-    const { model, onDeleteRow } = this.props;
+    const { model, onDeleteRow, minQuestions } = this.props;
 
-    if (model.rows && model.rows.length === 1) {
+    if (model.rows && model.rows.length === minQuestions) {
       this.setState({
         dialog: {
           open: true,
-          text: 'There has to be at least one question row.',
+          text: `There should be at least ${minQuestions} question row` + (minQuestions > 1 ? 's' : '') + '.',
         },
       });
     } else {
@@ -109,6 +115,7 @@ export class Row extends React.Component {
       model,
       row,
       idx,
+      inputConfiguration = {},
       enableImages,
       toolbarOpts,
       spellCheck,
@@ -116,23 +123,17 @@ export class Row extends React.Component {
       maxImageWidth,
       maxImageHeight,
       uploadSoundSupport,
+      mathMlOptions = {},
     } = this.props;
     const { dialog } = this.state;
     const opacity = isDragging ? 0 : 1;
 
-    const rowPlugins = {
-      image: {
-        disabled: !enableImages,
-      },
-      audio: { disabled: true },
-      video: { disabled: true },
-    };
     const filteredDefaultPlugins = (DEFAULT_PLUGINS || []).filter(
       (p) => p !== 'bulleted-list' && p !== 'numbered-list',
     );
 
     const content = (
-      <div style={{ opacity: opacity, width: 'fit-content' }}>
+      <div style={{ opacity: opacity, width: '100%' }}>
         <span itemID={'handle'} className={classes.dragHandle} onMouseDown={this.onMouseDownOnHandle}>
           <DragHandle color={'primary'} />
         </span>
@@ -147,7 +148,7 @@ export class Row extends React.Component {
               markup={row.title}
               onChange={this.onRowTitleChange(idx)}
               className={classes.editor}
-              pluginProps={rowPlugins}
+              pluginProps={inputConfiguration}
               toolbarOpts={toolbarOpts}
               activePlugins={filteredDefaultPlugins}
               spellCheck={spellCheck}
@@ -156,15 +157,25 @@ export class Row extends React.Component {
               uploadSoundSupport={uploadSoundSupport}
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               error={error && error !== 'No correct response defined.'}
+              mathMlOptions={mathMlOptions}
             />
           </div>
 
           {row.values.map((rowValue, rowIdx) => (
             <div key={rowIdx} className={classes.rowItem}>
               {model.choiceMode === 'radio' ? (
-                <Radio onChange={this.onRowValueChange(idx, rowIdx)} checked={rowValue === true} />
+                <Radio
+                  className={classNames({ [classes.errorResponse]: error?.includes('No correct response defined.') })}
+                  onChange={this.onRowValueChange(idx, rowIdx)}
+                  checked={rowValue === true}
+                />
               ) : (
-                <Checkbox onChange={this.onRowValueChange(idx, rowIdx)} checked={rowValue === true} label={''} />
+                <Checkbox
+                  onChange={this.onRowValueChange(idx, rowIdx)}
+                  checked={rowValue === true}
+                  label={''}
+                  error={error?.includes('No correct response defined.')}
+                />
               )}
             </div>
           ))}
@@ -223,6 +234,7 @@ const styles = (theme) => ({
     flex: 1,
     display: 'flex',
     justifyContent: 'center',
+    alignItems: 'center',
     minWidth: '150px',
     padding: `0 ${theme.spacing.unit}px`,
   },
@@ -249,13 +261,16 @@ const styles = (theme) => ({
   separator: {
     marginTop: theme.spacing.unit * 2,
     border: 0,
-    borderTop: '2px solid lightgray',
+    borderTop: `2px solid ${theme.palette.grey['A100']}`,
     width: '100%',
   },
   errorText: {
     fontSize: theme.typography.fontSize - 2,
-    color: 'red',
+    color: theme.palette.error.main,
     paddingTop: theme.spacing.unit,
+  },
+  errorResponse: {
+    color: theme.palette.error.main,
   },
 });
 

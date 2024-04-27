@@ -6,7 +6,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import { color } from '@pie-lib/render-ui';
+import { color } from '@pie-lib/pie-toolbox/render-ui';
 
 import {
   Block,
@@ -21,14 +21,13 @@ import {
   HeaderHeight,
   HeaderHeightLarge,
 } from './common';
-import { labelPlugins } from './utils';
 
-const styles = {
+const styles = (theme) => ({
   label: {
     textAlign: 'center',
     width: '140px',
     border: 'none',
-    margin: '8px',
+    margin: theme.spacing.unit,
     padding: '10px 0',
     display: 'flex',
     alignItems: 'center',
@@ -38,13 +37,26 @@ const styles = {
     background: color.secondaryBackground(),
     borderRadius: '4px',
     position: 'relative',
+    marginBottom: theme.spacing.unit * 2,
   },
   primaryBlockGreyHeader: {
-    paddingTop: '12px',
+    paddingTop: theme.spacing.unit * 1.5,
   },
-};
+  scorePointErrorText: {
+    position: 'absolute',
+    fontSize: theme.typography.fontSize - 2,
+    color: theme.palette.error.main,
+    paddingTop: theme.spacing.unit / 2,
+  },
+});
 
 export class TraitsHeaderTile extends React.Component {
+  static propTypes = {
+    maxPointsEnabled: PropTypes.bool,
+    spellCheck: PropTypes.bool,
+    errors: PropTypes.object,
+  };
+
   state = {
     anchorEl: null,
   };
@@ -96,6 +108,11 @@ export class TraitsHeaderTile extends React.Component {
       spellCheck,
       uploadSoundSupport,
       maxPointsEnabled,
+      mathMlOptions = {},
+      errors = {},
+      maxMaxPoints,
+      labelPluginProps = {},
+      imageSupport = {},
     } = this.props;
     const { anchorEl } = this.state;
 
@@ -106,17 +123,21 @@ export class TraitsHeaderTile extends React.Component {
             <SimpleInput
               markup={traitLabel || 'Trait'}
               onChange={onTraitLabelChange}
-              pluginProps={labelPlugins}
+              pluginProps={labelPluginProps}
               spellCheck={spellCheck}
               label="Level Label"
               uploadSoundSupport={uploadSoundSupport}
+              mathMlOptions={mathMlOptions}
+              imageSupport={imageSupport}
             />
           )}
 
           <ScaleSettings>
             <div>Scale {scaleIndex + 1}</div>
 
-            {maxPointsEnabled && <MaxPointsPicker maxPoints={maxPoints} onChange={updateMaxPointsFieldValue} />}
+            {maxPointsEnabled && (
+              <MaxPointsPicker maxPoints={maxPoints} maxMaxPoints={maxMaxPoints} onChange={updateMaxPointsFieldValue} />
+            )}
 
             <div>
               <IconButton aria-label="more" aria-controls="long-menu" aria-haspopup="true" onClick={this.handleClick}>
@@ -159,9 +180,11 @@ export class TraitsHeaderTile extends React.Component {
             const remainingSpace = secondaryBlockWidth - adjustedBlockWidth * index + currentPosition - 128;
             const value = scorePointsValues.length - index - 1;
             let scoreDescriptor;
+            let error;
 
             try {
               scoreDescriptor = scorePointsLabels[value] || '';
+              error = errors[value] || '';
             } catch (e) {
               scoreDescriptor = '';
             }
@@ -170,14 +193,18 @@ export class TraitsHeaderTile extends React.Component {
               <Block key={`secondary-block-part-${index}`}>
                 <ScorePoint
                   scorePointsValue={scorePointsValue}
+                  error={error}
                   scoreDescriptor={scoreDescriptor}
-                  pluginProps={labelPlugins}
+                  pluginProps={labelPluginProps}
                   showScorePointLabels={showScorePointLabels}
                   onChange={(scorePointLabel) => this.onScorePointLabelChange({ scorePointLabel, value })}
-                  alignToRight={remainingSpace < 296} // 296 is the space required for the toolbar
+                  alignToRight={remainingSpace < 296 && scorePointsValue < maxPoints} // 296 is the space required for the toolbar
                   spellCheck={spellCheck}
                   uploadSoundSupport={uploadSoundSupport}
+                  mathMlOptions={mathMlOptions}
+                  imageSupport={imageSupport}
                 />
+                {error && <div className={classes.scorePointErrorText}>{error}</div>}
               </Block>
             );
           })}
@@ -206,6 +233,12 @@ TraitsHeaderTile.propTypes = {
   showScorePointLabels: PropTypes.bool,
   setSecondaryBlockRef: PropTypes.func,
   uploadSoundSupport: PropTypes.object,
+  maxMaxPoints: PropTypes.number,
+  labelPluginProps: PropTypes.object,
+  imageSupport: PropTypes.shape({
+    add: PropTypes.func.isRequired,
+    delete: PropTypes.func.isRequired,
+  }),
 };
 
 export default withStyles(styles)(TraitsHeaderTile);

@@ -2,7 +2,7 @@
 import isEmpty from 'lodash/isEmpty';
 import { isResponseCorrect, parseHTML } from './utils';
 import defaults from './defaults';
-import { lockChoices, partialScoring, getShuffledChoices } from '@pie-lib/controller-utils';
+import { lockChoices, partialScoring, getShuffledChoices } from '@pie-lib/pie-toolbox/controller-utils';
 
 const prepareChoice = (model, env, defaultFeedback) => (choice) => {
   const { role, mode } = env || {};
@@ -69,7 +69,7 @@ export async function model(question, session, env, updateSession) {
     normalizedQuestion.defaultFeedback,
   );
 
-  let choices = normalizedQuestion.choices.map(prepareChoice(normalizedQuestion, env, defaultFeedback));
+  let choices = (normalizedQuestion.choices || []).map(prepareChoice(normalizedQuestion, env, defaultFeedback));
 
   const lockChoiceOrder = lockChoices(normalizedQuestion, session, env);
 
@@ -87,6 +87,7 @@ export async function model(question, session, env, updateSession) {
     keyMode: normalizedQuestion.choicePrefix,
     choices,
     responseCorrect: env.mode === 'evaluate' ? isResponseCorrect(normalizedQuestion, session) : undefined,
+    language: normalizedQuestion.language,
   };
 
   const { role, mode } = env || {};
@@ -165,21 +166,36 @@ export const createCorrectResponseSession = (question, env) => {
   });
 };
 
+// remove all html tags
+const getInnerText = (html) => (html || '').replaceAll(/<[^>]*>/g, '');
+
+// remove all html tags except img and iframe
+const getContent = (html) => (html || '').replace(/(<(?!img|iframe)([^>]+)>)/gi, '');
+
 export const validate = (model = {}, config = {}) => {
   const { choices } = model;
   const { minAnswerChoices = 2, maxAnswerChoices } = config;
   const reversedChoices = [...(choices || [])].reverse();
   const choicesErrors = {};
+  const rationaleErrors = {};
+  const errors = {};
+
+  ['teacherInstructions', 'prompt'].forEach((field) => {
+    if (config[field]?.required && !getContent(model[field])) {
+      errors[field] = 'This field is required.';
+    }
+  });
+
   let hasCorrectResponse = false;
 
   reversedChoices.forEach((choice, index) => {
-    const { correct, value, label } = choice;
+    const { correct, value, label, rationale } = choice;
 
     if (correct) {
       hasCorrectResponse = true;
     }
 
-    if (label === '' || label === '<div></div>') {
+    if (!getContent(label)) {
       choicesErrors[value] = 'Content should not be empty.';
     } else {
       const identicalAnswer = reversedChoices.slice(index + 1).some((c) => c.label === label);
@@ -188,23 +204,30 @@ export const validate = (model = {}, config = {}) => {
         choicesErrors[value] = 'Content should be unique.';
       }
     }
+
+    if (config.rationale?.required && !getContent(rationale)) {
+      rationaleErrors[value] = 'This field is required.';
+    }
   });
 
-  const errors = {};
   const nbOfChoices = (choices || []).length;
 
   if (nbOfChoices < minAnswerChoices) {
-    errors.answerChoicesError = `There should be at least ${minAnswerChoices} choices defined.`;
+    errors.answerChoices = `There should be at least ${minAnswerChoices} choices defined.`;
   } else if (nbOfChoices > maxAnswerChoices) {
-    errors.answerChoicesError = `No more than ${maxAnswerChoices} choices should be defined.`;
+    errors.answerChoices = `No more than ${maxAnswerChoices} choices should be defined.`;
   }
 
   if (!hasCorrectResponse) {
-    errors.correctResponseError = 'No correct response defined.';
+    errors.correctResponse = 'No correct response defined.';
   }
 
   if (!isEmpty(choicesErrors)) {
-    errors.choicesErrors = choicesErrors;
+    errors.choices = choicesErrors;
+  }
+
+  if (!isEmpty(rationaleErrors)) {
+    errors.rationale = rationaleErrors;
   }
 
   return errors;

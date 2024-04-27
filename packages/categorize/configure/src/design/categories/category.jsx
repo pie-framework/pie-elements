@@ -15,11 +15,16 @@ export class Category extends React.Component {
     classes: PropTypes.object.isRequired,
     className: PropTypes.string,
     category: PropTypes.object.isRequired,
+    configuration: PropTypes.object.isRequired,
+    defaultImageMaxHeight: PropTypes.number,
+    defaultImageMaxWidth: PropTypes.number,
     deleteFocusedEl: PropTypes.func,
     focusedEl: PropTypes.number,
     index: PropTypes.number,
     error: PropTypes.string,
     isDuplicated: PropTypes.bool,
+    maxImageWidth: PropTypes.object,
+    maxImageHeight: PropTypes.object,
     onChange: PropTypes.func,
     onDelete: PropTypes.func,
     onDeleteChoice: PropTypes.func,
@@ -30,6 +35,7 @@ export class Category extends React.Component {
       delete: PropTypes.func.isRequired,
     }),
     toolbarOpts: PropTypes.object,
+    spellCheck: PropTypes.bool,
     uploadSoundSupport: PropTypes.shape({
       add: PropTypes.func.isRequired,
       delete: PropTypes.func.isRequired,
@@ -50,12 +56,12 @@ export class Category extends React.Component {
       category,
       classes,
       className,
+      configuration,
       deleteFocusedEl,
       focusedEl,
       index,
       error,
       isDuplicated,
-      onChange,
       onDelete,
       onDeleteChoice,
       onAddChoice,
@@ -66,30 +72,37 @@ export class Category extends React.Component {
       maxImageWidth,
       maxImageHeight,
       uploadSoundSupport,
+      mathMlOptions = {},
     } = this.props;
+
+    console.log({category: configuration});
     return (
-      <Card className={classNames(classes.category, className, {
-        [classes.duplicateError]: isDuplicated
-      })}>
-            <span>
-              <InputHeader
-                label={category.label}
-                focusedEl={focusedEl}
-                deleteFocusedEl={deleteFocusedEl}
-                index={index}
-                disabled={!!alternateResponseIndex || alternateResponseIndex===0}
-                error={error}
-                onChange={this.changeLabel}
-                onDelete={onDelete}
-                imageSupport={imageSupport}
-                toolbarOpts={toolbarOpts}
-                spellCheck={spellCheck}
-                maxImageWidth={maxImageWidth}
-                maxImageHeight={maxImageHeight}
-                uploadSoundSupport={uploadSoundSupport}
-             />
-              {error && <div className={classes.errorText}>{error}</div>}
-              </span>
+      <Card
+        className={classNames(classes.category, className, {
+          [classes.duplicateError]: isDuplicated,
+        })}
+      >
+        <span>
+          <InputHeader
+            label={category.label}
+            focusedEl={focusedEl}
+            deleteFocusedEl={deleteFocusedEl}
+            index={index}
+            disabled={!!alternateResponseIndex || alternateResponseIndex === 0}
+            error={error}
+            onChange={this.changeLabel}
+            onDelete={onDelete}
+            imageSupport={imageSupport}
+            toolbarOpts={toolbarOpts}
+            spellCheck={spellCheck}
+            maxImageWidth={maxImageWidth}
+            maxImageHeight={maxImageHeight}
+            uploadSoundSupport={uploadSoundSupport}
+            mathMlOptions={mathMlOptions}
+            configuration={configuration}
+          />
+          {error && <div className={classes.errorText}>{error}</div>}
+        </span>
         <PlaceHolder
           className={classes.placeHolder}
           alternateResponseIndex={alternateResponseIndex}
@@ -130,6 +143,7 @@ const styles = (theme) => ({
     justifyContent: 'space-between',
   },
   category: {
+    minWidth: '196px',
     padding: theme.spacing.unit,
     overflow: 'visible',
   },
@@ -137,9 +151,9 @@ const styles = (theme) => ({
     border: '1px solid red',
   },
   errorText: {
-    fontSize: '11px',
-    color: 'red',
-    paddingBottom: '5px'
+    fontSize: theme.typography.fontSize - 2,
+    color: theme.palette.error.main,
+    paddingBottom: theme.spacing.unit,
   },
   editor: {
     flex: '1',

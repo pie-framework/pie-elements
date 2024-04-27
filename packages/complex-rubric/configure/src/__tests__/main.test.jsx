@@ -4,13 +4,13 @@ import { Main } from '../main';
 
 import defaults from '../defaults';
 
-jest.mock('@pie-lib/config-ui', () => ({
+jest.mock('@pie-lib/pie-toolbox/config-ui', () => ({
   layout: {
     ConfigLayout: (props) => <div>{props.children}</div>,
   },
 }));
 
-jest.mock('@pie-lib/rubric', () => ({
+jest.mock('@pie-lib/pie-toolbox/rubric', () => ({
   RUBRIC_TYPES: {
     SIMPLE_RUBRIC: 'simpleRubric',
     MULTI_TRAIT_RUBRIC: 'multiTraitRubric',
@@ -36,6 +36,7 @@ describe('Main', () => {
       classes: {},
       model: model(extras),
       configuration: {
+        rubricOptions: ['simpleRubric', 'multiTraitRubric', 'rubricless'],
         multiTraitrubric: {
           showStandards: {
             settings: false,
@@ -79,6 +80,7 @@ describe('Main', () => {
           },
         },
       },
+      canUpdateModel: true
     };
     const props = { ...defaults };
 

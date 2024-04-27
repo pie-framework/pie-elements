@@ -53,6 +53,7 @@ describe('controller', () => {
       duplicate_responses: true,
       max_response_per_zone: 5,
       partialScoring: false,
+      shuffle: true
     };
   });
 
@@ -160,6 +161,93 @@ describe('controller', () => {
         ],
       });
       expect(result.score).toEqual(1);
+    });
+
+    it('returns correct score for valid response with empty response containers and partialScoring: false', async () => {
+      const result = await outcome({
+        ...question,
+        validation: {
+          valid_response: {
+            score: 1,
+            value: [
+              {
+                images: [rhomb, square],
+              },
+              {
+                images: [],
+              },
+            ],
+          },
+        }
+      }, {
+        answers: [
+          { value: rhomb, containerIndex: 0 },
+          { value: square, containerIndex: 0 },
+        ],
+      });
+
+      expect(result.score).toEqual(1);
+    });
+
+    it('returns correct score for valid response with empty response containers and partialScoring: true', async () => {
+      const result = await outcome({
+        ...question,
+        partialScoring: true,
+        validation: {
+          valid_response: {
+            score: 1,
+            value: [
+              {
+                images: [rhomb, square],
+              },
+              {
+                images: [],
+              },
+            ],
+          },
+        }
+      }, {
+        answers: [
+          { value: rhomb, containerIndex: 0 },
+        ],
+      });
+
+      expect(result.score).toEqual(0.5);
+    });
+
+    it('returns correct score for valid response with empty response containers, incorrect answers and partialScoring: true', async () => {
+      const result = await outcome({
+        ...question,
+        partialScoring: true,
+        validation: {
+          valid_response: {
+            score: 1,
+            value: [
+              {
+                images: [rhomb],
+              },
+              {
+                images: [],
+              },
+              {
+                images: [rhomb],
+              },
+              {
+                images: [],
+              },
+            ],
+          },
+        }
+      }, {
+        answers: [
+          { value: rhomb, containerIndex: 0 },
+          { value: rhomb, containerIndex: 1 },
+          { value: rhomb, containerIndex: 2 },
+          { value: rhomb, containerIndex: 3 },
+        ],
+      });
+
+      expect(result.score).toEqual(0);
     });
 
     describe('returns score 0 for wrong validation format', () => {
@@ -403,6 +491,10 @@ describe('controller', () => {
 
       it('does not return responseCorrect', () => {
         expect(result.responseCorrect).toBe(undefined);
+      });
+
+      it('returns possibleResponses in shuffled order', () => {
+        expect(result.possibleResponses).toEqual(expect.arrayContaining(question.possible_responses));
       });
     });
 

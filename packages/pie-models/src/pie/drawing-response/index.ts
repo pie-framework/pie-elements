@@ -4,9 +4,14 @@ import {
   ConfigurePropWithEnabled,
   ConfigureMaxImageDimensionsProp,
   ConfigureWithForceProp,
+  ConfigureMathMLProp,
+  ConfigureLanguageOptionsProp,
+  EditableHtmlConfigureProp,
+  EditableHtmlPluginConfigureRequired,
 } from '../ConfigurationProp';
 import { PromptConfig } from '../../PromptConfig';
 import { Dimension } from '../../Dimension';
+import { CommonConfigSettings } from '../../CommonConfigSettings';
 
 /** NOTE: teacherInstructions, studentInstructions and rationale
  * functionalities are not defined yet - the value for those can belong to
@@ -56,13 +61,24 @@ export interface DrawingResponsePie extends PieModel {
 
   /** Indicates if Rubric is enabled */
   rubricEnabled: boolean;
+
+  /** Indicates the language of the component
+   * Supported options: en, es, en_US, en-US, es_ES, es-ES, es_MX, es-MX
+   */
+  language?: string;
 }
 
 /**
  * Config Object for @pie-elements/drawing-response
  * @additionalProperties false
  */
-export interface DrawingResponseConfigure extends PromptConfig {
+export interface DrawingResponseConfigure extends PromptConfig, CommonConfigSettings {
+  /**
+   * Base editable html input configuration regarding plugins that are enabled/disabled
+   * E.g. audio, video, image
+   */
+  baseInputConfiguration?: EditableHtmlConfigureProp;
+
   /**
    * Configuration for multiple correct
    */
@@ -91,7 +107,12 @@ export interface DrawingResponseConfigure extends PromptConfig {
   /**
    * Teacher Instructions configuration
    */
-  teacherInstructions?: ConfigureProp;
+  teacherInstructions?: EditableHtmlPluginConfigureRequired;
+
+  /**
+   * Prompt configuration
+   */
+  prompt?: EditableHtmlPluginConfigureRequired;
 
   /**
    * Maximum image width for input fields
@@ -107,4 +128,21 @@ export interface DrawingResponseConfigure extends PromptConfig {
    * Rubric configuration - only relevant in environments that use pie-player-components
    */
   withRubric?: ConfigureWithForceProp;
+
+  /** Configuration for editable-html */
+  mathMlOptions?: ConfigureMathMLProp;
+
+  /**
+   * Language configuration
+   */
+  language?: ConfigurePropWithEnabled;
+
+  /**
+   * Language choices configuration
+   * Only available if language is enabled
+   */
+  languageChoices?: {
+    label: string;
+    options: ConfigureLanguageOptionsProp[];
+  };
 }

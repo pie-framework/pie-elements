@@ -17,7 +17,7 @@ exports[`Main render snapshot 1`] = `
     disabledTitle={true}
     marks={Array []}
     onChangeMarks={[MockFunction]}
+    size={Object {}}
   />
-  <br />
 </div>
 `;

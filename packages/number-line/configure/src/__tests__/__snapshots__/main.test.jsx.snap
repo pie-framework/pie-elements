@@ -2,13 +2,21 @@
 
 exports[`main snapshot renders 1`] = `
 <ConfigLayout
+  dimensions={Object {}}
   hideSettings={true}
   settings={null}
 >
-  <FormSection
-    label="Prompt"
+  <WithStyles(Typography)
+    component="div"
+    type="body1"
+  >
+    Number line questions involve plotting points or other objects. To create one, first set up the number line, then select the plotting tools students will be offered and use them to define the correct answer.
+  </WithStyles(Typography)>
+  <Component
+    label="Teacher Instructions"
   >
     <EditableHtml
+      allowValidation={false}
       disableUnderline={true}
       languageCharactersProps={
         Array [
@@ -20,17 +28,84 @@ exports[`main snapshot renders 1`] = `
           },
         ]
       }
+      markup=""
+      mathMlOptions={
+        Object {
+          "mmlEditing": false,
+          "mmlOutput": false,
+        }
+      }
       nonEmpty={false}
       onChange={[Function]}
+      onDone={[Function]}
+      pluginProps={
+        Object {
+          "audio": Object {
+            "disabled": false,
+          },
+          "image": Object {
+            "disabled": false,
+          },
+          "video": Object {
+            "disabled": false,
+          },
+        }
+      }
       toolbarOpts={
         Object {
           "position": "bottom",
         }
       }
     />
-  </FormSection>
+  </Component>
+  <Component
+    label="Item Stem"
+  >
+    <EditableHtml
+      allowValidation={false}
+      disableUnderline={true}
+      languageCharactersProps={
+        Array [
+          Object {
+            "language": "spanish",
+          },
+          Object {
+            "language": "special",
+          },
+        ]
+      }
+      markup=""
+      mathMlOptions={
+        Object {
+          "mmlEditing": false,
+          "mmlOutput": false,
+        }
+      }
+      nonEmpty={false}
+      onChange={[Function]}
+      onDone={[Function]}
+      pluginProps={
+        Object {
+          "audio": Object {
+            "disabled": false,
+          },
+          "image": Object {
+            "disabled": false,
+          },
+          "video": Object {
+            "disabled": false,
+          },
+        }
+      }
+      toolbarOpts={
+        Object {
+          "position": "bottom",
+        }
+      }
+    />
+  </Component>
   <WithStyles(CardBar)
-    header="Attributes"
+    header="Set Up Number Line"
     info={
       <WithStyles(Tooltip)
         classes={
@@ -42,10 +117,6 @@ exports[`main snapshot renders 1`] = `
         disableTouchListener={true}
         placement="right"
         title="Validation requirements:
-Width should be a value between 200 and 800.
-Min and max must both be in the range [-100000, 10000].
-Max must be greater than min.
-Max number of elements should be between 1 and 20.
 The correct answer should include at least one number line object."
       >
         <pure(InfoIcon)
@@ -63,91 +134,163 @@ The correct answer should include at least one number line object."
     Set up the number line by entering the domain and number of tick marks to display. Labels on the number line can be edited or removed by clicking on the label.
   </WithStyles(CardBar)>
   <div>
-    <FormSection
-      label="Size"
-    >
-      <WithStyles(Size)
-        onChange={[Function]}
-        size={
+    <WithStyles(Domain)
+      domain={
+        Object {
+          "max": 1,
+          "min": -1,
+        }
+      }
+      errors={Object {}}
+      onChange={[Function]}
+    />
+  </div>
+  <div>
+    <FormSection>
+      <WithStyles(Ticks)
+        majorValues={
           Object {
-            "correctResponse": Array [],
-            "feedback": Object {
-              "correct": Object {
-                "default": "Correct",
-                "type": "none",
-              },
-              "incorrect": Object {
-                "default": "Incorrect",
-                "type": "none",
-              },
-              "partial": Object {
-                "default": "Nearly",
-                "type": "none",
-              },
-            },
-            "graph": Object {
-              "arrows": Object {
-                "left": true,
-                "right": true,
-              },
-              "availableTypes": Object {
-                "LEE": true,
-                "LEF": true,
-                "LFE": true,
-                "LFF": true,
-                "PF": true,
-                "REN": true,
-                "REP": true,
-                "RFN": true,
-                "RFP": true,
-              },
-              "domain": Object {
-                "max": 5,
-                "min": -5,
-              },
-              "exhibitOnly": false,
-              "initialElements": Array [],
-              "initialType": "PF",
-              "maxNumberOfPoints": 20,
-              "ticks": Object {
-                "major": 2,
-                "minor": 1,
-              },
-              "toolbarEditorPosition": "bottom",
-              "width": 500,
-            },
+            "decimal": Array [
+              0.125,
+              0.25,
+              0.5,
+              1,
+            ],
+            "fraction": Array [
+              "1/8",
+              "1/4",
+              "1/2",
+              "1",
+            ],
+          }
+        }
+        minorLimits={
+          Object {
+            "max": 0.8,
+            "min": 0.04,
+          }
+        }
+        minorValues={
+          Object {
+            "decimal": Array [
+              0.04,
+              0.05,
+              0.1,
+              0.125,
+              0.2,
+              0.25,
+              0.5,
+            ],
+            "fraction": Array [
+              "1/25",
+              "1/20",
+              "1/16",
+              "1/15",
+              "1/12",
+              "1/10",
+              "1/9",
+              "1/8",
+              "1/7",
+              "1/6",
+              "1/5",
+              "1/4",
+              "1/3",
+              "1/2",
+            ],
+          }
+        }
+        onChange={[Function]}
+        ticks={
+          Object {
+            "decimalTick": 0.125,
+            "fractionTick": "1/25",
+            "integerTick": 1,
+            "major": 0.5,
+            "minor": 0.125,
+            "tickIntervalType": "Decimal",
           }
         }
       />
     </FormSection>
-    <FormSection
-      label="Domain"
-    >
-      <Domain
-        onChange={[Function]}
-      />
-    </FormSection>
   </div>
   <div>
-    <FormSection
-      label="Ticks"
-    >
-      <WithStyles(Ticks)
-        onChange={[Function]}
-      />
-    </FormSection>
-    <FormSection
-      label="Arrows"
-    >
-      <WithStyles(Arrows)
-        onChange={[Function]}
-      />
-    </FormSection>
+    <div />
+    <WithStyles(Arrows)
+      arrows={
+        Object {
+          "left": true,
+          "right": true,
+        }
+      }
+      onChange={[Function]}
+    />
   </div>
+  <Jss(NumberLine)
+    maxHeight={70}
+    maxWidth={800}
+    minWidth={200}
+    model={
+      Object {
+        "correctResponse": undefined,
+        "disabled": true,
+        "feedback": undefined,
+        "graph": Object {
+          "arrows": Object {
+            "left": true,
+            "right": true,
+          },
+          "availableTypes": Object {
+            "PF": true,
+          },
+          "disabled": true,
+          "domain": Object {
+            "max": 1,
+            "min": -1,
+          },
+          "exhibitOnly": false,
+          "initialElements": Array [],
+          "initialType": "PF",
+          "maxNumberOfPoints": 1,
+          "ticks": Object {
+            "decimalTick": 0.125,
+            "fractionTick": "1/25",
+            "integerTick": 1,
+            "major": 0.5,
+            "minor": 0.125,
+            "tickIntervalType": "Decimal",
+          },
+          "title": undefined,
+          "toolbarEditorPosition": "bottom",
+          "width": 500,
+        },
+        "prompt": undefined,
+        "teacherInstructions": undefined,
+      }
+    }
+    onAddElement={[Function]}
+    onClearElements={[Function]}
+    onDeleteElements={[Function]}
+    onMoveElement={[Function]}
+    onUndoElement={[Function]}
+  />
   <FormSection
     label="Title"
   >
     <EditableHtml
+      activePlugins={
+        Array [
+          "bold",
+          "html",
+          "italic",
+          "underline",
+          "strikethrough",
+          "image",
+          "math",
+          "languageCharacters",
+          "responseArea",
+        ]
+      }
+      allowValidation={false}
       languageCharactersProps={
         Array [
           Object {
@@ -159,7 +302,27 @@ The correct answer should include at least one number line object."
         ]
       }
       markup=""
+      mathMlOptions={
+        Object {
+          "mmlEditing": false,
+          "mmlOutput": false,
+        }
+      }
       onChange={[Function]}
+      onDone={[Function]}
+      pluginProps={
+        Object {
+          "audio": Object {
+            "disabled": false,
+          },
+          "image": Object {
+            "disabled": false,
+          },
+          "video": Object {
+            "disabled": false,
+          },
+        }
+      }
       toolbarOpts={
         Object {
           "position": "bottom",
@@ -167,174 +330,98 @@ The correct answer should include at least one number line object."
       }
     />
   </FormSection>
-  <FormSection
-    label="Limits"
+  <WithStyles(CardBar)
+    header="Define Tool Set and Correct Response"
   >
+    Select answer type and place it on the number line. Intersecting points, line segments and/or rays will appear above the number line. 
+    <i>
+      Note: A maximum of 20 points, line segments or rays may be plotted.
+    </i>
+  </WithStyles(CardBar)>
+  <WithStyles(CardBar)
+    header="Available Tools"
+    mini={true}
+  >
+    Click on the input options to be displayed to the students. All inputs will display by default.
+  </WithStyles(CardBar)>
+  <div>
+    <WithStyles(PointConfig)
+      availableTools={
+        Array [
+          "PF",
+          "LFF",
+          "LEF",
+          "LFE",
+          "LEE",
+          "RFN",
+          "RFP",
+          "REN",
+          "REP",
+        ]
+      }
+      hideButtons={false}
+      onSelectionChange={[Function]}
+      selection={
+        Object {
+          "PF": true,
+        }
+      }
+    />
+  </div>
+  <FormSection>
+    <label>
+      Max No of Elements
+    </label>
     <WithStyles(NumberTextField)
-      label="Max No of Elements"
       max={20}
       min={1}
       onChange={[Function]}
+      onlyIntegersAllowed={true}
+      value={1}
     />
   </FormSection>
-  <WithStyles(Button)
-    color="primary"
-    mini={true}
-    onClick={[Function]}
-    variant="outlined"
-  >
-    Reset to default values
-  </WithStyles(Button)>
-  <br />
-  <br />
-  <div>
-    <WithStyles(CardBar)
-      header="Correct Response"
-    >
-      Select answer type and place it on the number line. Intersecting points, line segments and/or rays will appear above the number line. 
-      <i>
-        Note: A maximum of 20 points, line segments or rays may be plotted.
-      </i>
-    </WithStyles(CardBar)>
-    <Jss(NumberLine)
-      answer={Array []}
-      model={
-        Object {
-          "correctResponse": undefined,
-          "feedback": undefined,
-          "graph": Object {
-            "correctResponse": Array [],
-            "feedback": Object {
-              "correct": Object {
-                "default": "Correct",
-                "type": "none",
-              },
-              "incorrect": Object {
-                "default": "Incorrect",
-                "type": "none",
-              },
-              "partial": Object {
-                "default": "Nearly",
-                "type": "none",
-              },
-            },
-            "graph": Object {
-              "arrows": Object {
-                "left": true,
-                "right": true,
-              },
-              "availableTypes": Object {
-                "LEE": true,
-                "LEF": true,
-                "LFE": true,
-                "LFF": true,
-                "PF": true,
-                "REN": true,
-                "REP": true,
-                "RFN": true,
-                "RFP": true,
-              },
-              "domain": Object {
-                "max": 5,
-                "min": -5,
-              },
-              "exhibitOnly": false,
-              "initialElements": Array [],
-              "initialType": "PF",
-              "maxNumberOfPoints": 20,
-              "ticks": Object {
-                "major": 2,
-                "minor": 1,
-              },
-              "toolbarEditorPosition": "bottom",
-              "width": 500,
-            },
-            "title": undefined,
-          },
-          "prompt": undefined,
-        }
-      }
-      onAddElement={[Function]}
-      onClearElements={[Function]}
-      onDeleteElements={[Function]}
-      onMoveElement={[Function]}
-      onUndoElement={[Function]}
-    />
-    <WithStyles(CardBar)
-      header="Available Types"
-      mini={true}
-    >
-      Click on the input options to be displayed to the students. All inputs will display by default.
-    </WithStyles(CardBar)>
-    <div>
-      <WithStyles(PointConfig)
-        onSelectionChange={[Function]}
-      />
-    </div>
-  </div>
-  <WithStyles(CardBar)
-    header="Initial view/Make Exhibit"
-  >
-    Use this number line to set a starting point, line segment or ray. This is optional. 
-    <br />
-    This number line may also be used to make an exhibit number line, which can not be manipulated by a student.
-  </WithStyles(CardBar)>
+  <label>
+    Correct Answer
+  </label>
   <Jss(NumberLine)
     answer={Array []}
+    maxWidth={800}
+    minWidth={200}
     model={
       Object {
         "correctResponse": undefined,
         "feedback": undefined,
         "graph": Object {
-          "correctResponse": Array [],
-          "feedback": Object {
-            "correct": Object {
-              "default": "Correct",
-              "type": "none",
-            },
-            "incorrect": Object {
-              "default": "Incorrect",
-              "type": "none",
-            },
-            "partial": Object {
-              "default": "Nearly",
-              "type": "none",
-            },
+          "arrows": Object {
+            "left": true,
+            "right": true,
           },
-          "graph": Object {
-            "arrows": Object {
-              "left": true,
-              "right": true,
-            },
-            "availableTypes": Object {
-              "LEE": true,
-              "LEF": true,
-              "LFE": true,
-              "LFF": true,
-              "PF": true,
-              "REN": true,
-              "REP": true,
-              "RFN": true,
-              "RFP": true,
-            },
-            "domain": Object {
-              "max": 5,
-              "min": -5,
-            },
-            "exhibitOnly": false,
-            "initialElements": Array [],
-            "initialType": "PF",
-            "maxNumberOfPoints": 20,
-            "ticks": Object {
-              "major": 2,
-              "minor": 1,
-            },
-            "toolbarEditorPosition": "bottom",
-            "width": 500,
+          "availableTypes": Object {
+            "PF": true,
+          },
+          "disabled": true,
+          "domain": Object {
+            "max": 1,
+            "min": -1,
+          },
+          "exhibitOnly": false,
+          "initialElements": Array [],
+          "initialType": "PF",
+          "maxNumberOfPoints": 1,
+          "ticks": Object {
+            "decimalTick": 0.125,
+            "fractionTick": "1/25",
+            "integerTick": 1,
+            "major": 0.5,
+            "minor": 0.125,
+            "tickIntervalType": "Decimal",
           },
           "title": undefined,
+          "toolbarEditorPosition": "bottom",
+          "width": 500,
         },
         "prompt": undefined,
+        "teacherInstructions": undefined,
       }
     }
     onAddElement={[Function]}
@@ -343,19 +430,20 @@ The correct answer should include at least one number line object."
     onMoveElement={[Function]}
     onUndoElement={[Function]}
   />
-  <InputCheckbox
-    label="Make exhibit"
-    onChange={[Function]}
-    value="exhibitOnly"
+  <Component
+    onConfirm={[Function]}
+    open={false}
+    text=""
+    title="Warning"
   />
-  <br />
-  <FeedbackConfig
-    onChange={[Function]}
-    toolbarOpts={
-      Object {
-        "position": "bottom",
-      }
-    }
+  <Component
+    onClose={[Function]}
+    onCloseText="Cancel"
+    onConfirm={[Function]}
+    onConfirmText="OK"
+    open={false}
+    text=""
+    title="Warning"
   />
 </ConfigLayout>
 `;

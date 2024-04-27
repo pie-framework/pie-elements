@@ -1,18 +1,18 @@
 import * as React from 'react';
 import Configure, { Configure as ConfigureNotStyled } from '../configure';
 import GeneralConfigBlock from '../general-config-block';
-import { InputContainer, InputCheckbox } from '@pie-lib/config-ui';
-import { shallowChild } from '@pie-lib/test-utils';
+import { InputContainer, InputCheckbox } from '@pie-lib/pie-toolbox/config-ui';
+import { shallowChild } from '@pie-lib/pie-toolbox/test-utils';
 import Response from '../response';
-import { MathToolbar } from '@pie-lib/math-toolbar';
-import EditableHtml from '@pie-lib/editable-html';
+import { MathToolbar } from '@pie-lib/pie-toolbox/math-toolbar';
+import {EditableHtml} from '@pie-lib/pie-toolbox/editable-html';
 import { shallow } from 'enzyme';
 
-import { FeedbackConfig, layout, settings } from '@pie-lib/config-ui';
+import { FeedbackConfig, layout, settings } from '@pie-lib/pie-toolbox/config-ui';
 
 import defaultValues from '../defaults';
 
-jest.mock('@pie-lib/config-ui', () => ({
+jest.mock('@pie-lib/pie-toolbox/config-ui', () => ({
   InputContainer: (props) => <div>{props.children}</div>,
   InputCheckbox: (props) => <div>{props.children}</div>,
   FeedbackConfig: (props) => <div>{props.children}</div>,
@@ -26,7 +26,7 @@ jest.mock('@pie-lib/config-ui', () => ({
   },
 }));
 
-jest.mock('@pie-lib/math-toolbar', () => ({
+jest.mock('@pie-lib/pie-toolbox/math-toolbar', () => ({
   MathToolbar: () => <div />,
 }));
 
@@ -104,7 +104,6 @@ describe('Configure', () => {
     component = wrapper();
 
     expect(component.find(GeneralConfigBlock).length).toEqual(1);
-    expect(component.find(layout.ConfigLayout).length).toEqual(1);
     expect(component.find(FeedbackConfig).length).toEqual(1);
   });
 

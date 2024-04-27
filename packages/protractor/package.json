@@ -1,6 +1,6 @@
 {
   "name": "@pie-element/protractor",
-  "version": "2.7.17-beta.3+e0e0490c5",
+  "version": "3.9.0",
   "publishConfig": {
     "access": "public"
   },
@@ -10,12 +10,12 @@
   "license": "ISC",
   "dependencies": {
     "@material-ui/core": "^3.9.2",
-    "@pie-lib/tools": "^0.9.35",
+    "@pie-lib/pie-toolbox": "1.16.1-next.28",
     "classnames": "^2.2.5",
     "react": "^16.8.1",
     "react-dom": "^16.8.1"
   },
-  "gitHead": "e0e0490c5b040c67f504c0bdfd00f6b834a28481",
+  "gitHead": "0e14ff981bcdc8a89a0e58484026496701bfdbc3",
   "scripts": {
     "postpublish": "../../scripts/postpublish"
   },

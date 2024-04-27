@@ -19,20 +19,35 @@ export default {
     scoringType: 'auto',
     targetLabel: '',
     rationaleEnabled: true,
-    feedbackEnabled: true,
+    feedbackEnabled: false,
     promptEnabled: true,
     teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true,
     toolbarEditorPosition: 'bottom',
   },
   configuration: {
+    baseInputConfiguration: {
+      audio: { disabled: false },
+      video: { disabled: false },
+      image: { disabled: false },
+    },
     choiceLabel: {
       settings: true,
       label: 'Choice label',
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
     },
     choices: {
       settings: true,
       label: 'Choices',
+      inputConfiguration: {
+        audio: { disabled: true },
+        video: { disabled: true },
+        image: { disabled: true },
+      },
     },
     enableImages: {
       settings: true,
@@ -46,6 +61,12 @@ export default {
     prompt: {
       settings: true,
       label: 'Item Stem',
+      required: false,
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
     },
     numberedGuides: {
       settings: true,
@@ -66,6 +87,12 @@ export default {
     rationale: {
       settings: true,
       label: 'Rationale',
+      required: false,
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
     },
     removeTilesAfterPlacing: {
       settings: false,
@@ -92,6 +119,12 @@ export default {
     teacherInstructions: {
       settings: true,
       label: 'Teacher Instructions',
+      required: false,
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
     },
     maxImageWidth: {
       teacherInstructions: 300,
@@ -109,6 +142,19 @@ export default {
     withRubric: {
       settings: false,
       label: 'Add Rubric',
+    },
+    mathMlOptions: {
+      mmlOutput: false,
+      mmlEditing: false,
+    },
+    language: {
+      settings: false,
+      label: 'Specify Language',
+      enabled: false,
+    },
+    languageChoices: {
+      label: 'Language Choices',
+      options: [],
     },
   },
 };

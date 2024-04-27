@@ -36,7 +36,10 @@ describe('getAnswerCorrected', () => {
     [
       [{ type: 'point', x: 0, y: 1 }],
       [{ type: 'point', x: 1, y: 1 }],
-      [{ type: 'point', x: 0, y: 1, correctness: 'incorrect' }],
+      [
+        { type: 'point', x: 0, y: 1, correctness: 'incorrect' },
+        { correctness: 'missing', type: 'point', x: 1, y: 1 },
+      ],
     ],
     [
       [
@@ -63,6 +66,7 @@ describe('getAnswerCorrected', () => {
           y: 1,
           correctness: 'incorrect',
         },
+        { correctness: 'missing', type: 'point', x: 1, y: 1 },
       ],
     ],
   ])('sessionAnswers = %j, marks = %j => correctedMarks = %j', (sessionAnswers, marks, correctedMarks) => {
@@ -136,18 +140,18 @@ describe('model', () => {
     ],
     [
       { mode: 'evaluate', role: 'instructor' },
-      { answers: { a1: { marks: [{ type: 'point', x: 1, y: 1 }] } } },
+      { answers: { correctAnswer: { marks: [{ type: 'point', x: 1, y: 1 }] } } },
       {
         disabled: true,
         showToggle: true,
-        answersCorrected: [],
+        answersCorrected: [{ correctness: 'missing', type: 'point', x: 1, y: 1 }],
         correctResponse: [{ type: 'point', x: 1, y: 1 }],
       },
       {},
     ],
     [
       { mode: 'evaluate' },
-      { answers: { a1: { marks: [{ type: 'point', x: 1, y: 1 }] } } },
+      { answers: { correctAnswer: { marks: [{ type: 'point', x: 1, y: 1 }] } } },
       {
         disabled: true,
         rationale: null,
@@ -160,13 +164,16 @@ describe('model', () => {
     ],
     [
       { mode: 'evaluate' },
-      { answers: { a1: { marks: [{ type: 'point', x: 1, y: 1 }] } } },
+      { answers: { correctAnswer: { marks: [{ type: 'point', x: 1, y: 1 }] } } },
       {
         disabled: true,
         rationale: null,
         teacherInstructions: null,
         showToggle: true,
-        answersCorrected: [{ type: 'point', x: 0, y: 1, correctness: 'incorrect' }],
+        answersCorrected: [
+          { type: 'point', x: 0, y: 1, correctness: 'incorrect' },
+          { correctness: 'missing', type: 'point', x: 1, y: 1 },
+        ],
         correctResponse: [{ type: 'point', x: 1, y: 1 }],
       },
       { answer: [{ type: 'point', x: 0, y: 1 }] },
@@ -187,6 +194,7 @@ describe('model', () => {
   ])('model env = %j', async (env, extraQuestionProps, expectedResult, session) => {
     const question = {
       ...defaults,
+      answers: {},
       prompt: 'This is prompt',
       rationale: 'Rationale',
       teacherInstructions: 'Teacher Instructions',
@@ -210,7 +218,7 @@ describe('model', () => {
 
 describe('getBestAnswer', () => {
   const answers = {
-    a1: {
+    correctAnswer: {
       marks: [
         { x: 1, y: 1, type: 'point' },
         { x: 2, y: 2, type: 'point' },
@@ -302,6 +310,20 @@ describe('getBestAnswer', () => {
         type: 'segment',
         correctness: 'correct',
       },
+      { correctness: 'missing', type: 'point', x: 2, y: 2 },
+      { correctness: 'missing', type: 'point', x: 3, y: 3 },
+    ];
+
+    const correctMarksPartial = [
+      { x: 1, y: 1, type: 'point', correctness: 'correct' },
+      { x: 4, y: 4, type: 'point', correctness: 'incorrect' },
+      {
+        from: { x: 1, y: 1 },
+        to: { x: 2, y: 2 },
+        type: 'segment',
+        correctness: 'correct',
+      },
+      { correctness: 'missing', type: 'point', x: 2, y: 2 },
     ];
 
     test.each([
@@ -310,7 +332,7 @@ describe('getBestAnswer', () => {
       ['dichotomous', answer2, correctMarks2, 1],
       ['partial scoring', answer2, correctMarks2, 1],
       ['dichotomous', answer3, correctMarks3, 0],
-      ['partial scoring', answer3, correctMarks3, 0.67],
+      ['partial scoring', answer3, correctMarksPartial, 0.67],
     ])('scoringType = %s, answer = %j, correctMarks = %j => score = %d', (scoringType, answer, correctMarks, score) => {
       const result = getBestAnswer({ ...question, scoringType }, { answer });
 
@@ -393,7 +415,7 @@ describe('outcome', () => {
     async ({ mode, partialScoring, scoringType, expected }) => {
       const env = { mode, partialScoring };
       const answers = {
-        a1: {
+        correctAnswer: {
           marks: [
             { x: 1, y: 1, type: 'point' },
             { x: 2, y: 2, type: 'point' },
@@ -601,7 +623,7 @@ describe('createCorrectResponseSession', () => {
     toolbarTools: ['point', 'circle', 'polygon', 'segment', 'ray', 'vector', 'line', 'sine', 'parabola', 'label'],
     answers: {
       alternate1: {
-        pname: 'Alternate 1',
+        name: 'Alternate 1',
         marks: [
           {
             type: 'segment',
@@ -643,16 +665,9 @@ describe('createCorrectResponseSession', () => {
     expect(sess).toEqual({
       answer: [
         {
-          type: 'segment',
-          from: { x: 0, y: 0 },
-          to: { x: 1, y: 1 },
-        },
-        {
           type: 'point',
-          x: 3,
-          y: 3,
-          label: 'Point',
-          showLabel: true,
+          x: 0,
+          y: 0,
         },
       ],
       id: '1',
@@ -668,16 +683,9 @@ describe('createCorrectResponseSession', () => {
     expect(sess).toEqual({
       answer: [
         {
-          type: 'segment',
-          from: { x: 0, y: 0 },
-          to: { x: 1, y: 1 },
-        },
-        {
           type: 'point',
-          x: 3,
-          y: 3,
-          label: 'Point',
-          showLabel: true,
+          x: 0,
+          y: 0,
         },
       ],
       id: '1',

@@ -1,22 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { RUBRIC_TYPES } from '@pie-lib/rubric';
-import { layout } from '@pie-lib/config-ui';
+import { RUBRIC_TYPES } from '@pie-lib/pie-toolbox/rubric';
+import { layout } from '@pie-lib/pie-toolbox/config-ui';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { withStyles } from '@material-ui/core/styles';
-import { FormControlLabel } from '@material-ui/core';
 
 const styles = {
-  rubric: {
-    display: 'flex',
-    flexDirection: 'column',
-  },
+  root: {
+    width: 'fit-content',
+    paddingRight: '24px',
+    boxSizing: 'border-box',
+    '&:hover': {
+      background: 'var(--pie-secondary-background, rgba(241,241,241,1))'
+    }
+  }
+};
+const rubricLabels = {
+  [RUBRIC_TYPES.MULTI_TRAIT_RUBRIC]: 'Multi Trait Rubric',
+  [RUBRIC_TYPES.SIMPLE_RUBRIC]: 'Simple Rubric',
+  [RUBRIC_TYPES.RUBRICLESS]: 'Rubricless',
 };
 
 export class Main extends React.Component {
   static propTypes = {
     classes: PropTypes.object,
+    canUpdateModel: PropTypes.bool,
     configuration: PropTypes.object,
     model: PropTypes.object,
     onModelChanged: PropTypes.func,
@@ -37,77 +47,96 @@ export class Main extends React.Component {
   };
 
   render() {
-    const { classes, model, configuration } = this.props;
-    const { rubrics = {} } = model;
-    let { rubricType }  = model;
-    const { multiTraitRubric, simpleRubric } = configuration;
+    const { model, configuration, canUpdateModel, classes } = this.props;
+
+    const { rubrics = {} } = model || {};
+    let { rubricType } = model;
+    const { contentDimensions = {}, rubricOptions = [], multiTraitRubric, simpleRubric, rubricless, width } = configuration;
     let rubricTag = '';
 
     if (!rubricType) {
       rubricType = RUBRIC_TYPES.SIMPLE_RUBRIC;
     }
 
-    switch (rubricType) {
-      case RUBRIC_TYPES.SIMPLE_RUBRIC:
-      default:
-        rubricTag = (
-          <rubric-configure
-            id="simpleRubric"
-            key="simple-rubric"
-            ref={(ref) => {
-              if (ref) {
-                this.simpleRubric = ref;
-                this.simpleRubric.model = rubrics.simpleRubric;
-                this.simpleRubric.configuration = simpleRubric;
-              }
-            }}
-          />
-        );
-        break;
+    const isRubricTypeAvailable =  rubricOptions.indexOf(rubricType) > -1;
 
-      case RUBRIC_TYPES.MULTI_TRAIT_RUBRIC:
-        rubricTag = (
-          <multi-trait-rubric-configure
-            id="multiTraitRubric"
-            key="multi-trait-rubric"
-            ref={(ref) => {
-              if (ref) {
-                this.multiTraitRubric = ref;
-                this.multiTraitRubric.model = { ...rubrics.multiTraitRubric };
-                this.multiTraitRubric.configuration = multiTraitRubric;
-              }
-            }}
-          />
-        );
-        break;
+    if (canUpdateModel) {
+      switch (rubricType) {
+        case RUBRIC_TYPES.SIMPLE_RUBRIC:
+        default:
+          rubricTag = (
+            <rubric-configure
+              id="simpleRubric"
+              key="simple-rubric"
+              ref={(ref) => {
+                if (ref) {
+                  this.simpleRubric = ref;
+                  this.simpleRubric.model = {...rubrics.simpleRubric, errors: model.errors || {}};
+                  this.simpleRubric.configuration = { ...simpleRubric, width };
+                }
+              }}
+            />
+          );
+          break;
+
+        case RUBRIC_TYPES.MULTI_TRAIT_RUBRIC:
+          rubricTag = (
+            <multi-trait-rubric-configure
+              id="multiTraitRubric"
+              key="multi-trait-rubric"
+              ref={(ref) => {
+                if (ref) {
+                  this.multiTraitRubric = ref;
+
+                  this.multiTraitRubric.model = {...rubrics.multiTraitRubric, errors: model.errors || {} };
+                  this.multiTraitRubric.configuration = { ...multiTraitRubric, width: width || multiTraitRubric.width };
+                }
+              }}
+            />
+          );
+          break;
+
+        case RUBRIC_TYPES.RUBRICLESS:
+          rubricTag = (
+              <rubric-configure
+                  id="rubricless"
+                  key="rubricless"
+                  ref={(ref) => {
+                    if (ref) {
+                      this.rubricless = ref;
+
+                      this.rubricless.model = rubrics.rubricless;
+                      this.rubricless.configuration = { ...rubricless, width };
+                    }
+                  }}
+              />
+          );
+          break;
+      }
     }
 
     return (
-      <layout.ConfigLayout hideSettings={true} settings={null}>
-        <div className={classes.rubric}>
-          <div>
-            <RadioGroup
-              aria-label="rubric-type"
-              name="rubricType"
-              value={model.rubricType}
-              onChange={this.onChangeRubricType}
-            >
+      <layout.ConfigLayout dimensions={contentDimensions} hideSettings={true} settings={null}>
+        <RadioGroup
+          aria-label="rubric-type"
+          name="rubricType"
+          value={model.rubricType}
+          onChange={this.onChangeRubricType}
+        >
+          {
+            rubricOptions.length > 1 && rubricOptions.map((availableRubric, i)=>
               <FormControlLabel
-                value={RUBRIC_TYPES.SIMPLE_RUBRIC}
-                control={<Radio checked={rubricType === RUBRIC_TYPES.SIMPLE_RUBRIC} />}
-                label="Simple Rubric"
-              />
+                key={i}
+                value={availableRubric}
+                control={<Radio checked={rubricType === availableRubric} />}
+                label={rubricLabels[availableRubric]}
+                classes={{ root: classes.root }}
+            />
+          )
+          }
+        </RadioGroup>
 
-              <FormControlLabel
-                value={RUBRIC_TYPES.MULTI_TRAIT_RUBRIC}
-                control={<Radio checked={rubricType === RUBRIC_TYPES.MULTI_TRAIT_RUBRIC} />}
-                label="Multi Trait Rubric"
-              />
-            </RadioGroup>
-          </div>
-
-          <div>{rubricTag}</div>
-        </div>
+        {isRubricTypeAvailable && rubricTag}
       </layout.ConfigLayout>
     );
   }

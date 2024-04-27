@@ -6,7 +6,7 @@ exports[`grid-content snapshots className 1`] = `
   style={
     Object {
       "gridTemplateColumns": "repeat(2, 1fr)",
-      "gridTemplateRows": "repeat(2, auto)",
+      "gridTemplateRows": "auto 1fr",
     }
   }
 >
@@ -20,7 +20,7 @@ exports[`grid-content snapshots columns 1`] = `
   style={
     Object {
       "gridTemplateColumns": "repeat(3, 1fr)",
-      "gridTemplateRows": "repeat(2, auto)",
+      "gridTemplateRows": "auto 1fr",
     }
   }
 >
@@ -34,7 +34,7 @@ exports[`grid-content snapshots renders 1`] = `
   style={
     Object {
       "gridTemplateColumns": "repeat(2, 1fr)",
-      "gridTemplateRows": "repeat(2, auto)",
+      "gridTemplateRows": "auto 1fr",
     }
   }
 >

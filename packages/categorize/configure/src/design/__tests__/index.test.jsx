@@ -10,7 +10,7 @@ const model = (extras) => ({
   ...extras,
 });
 
-jest.mock('@pie-lib/config-ui', () => ({
+jest.mock('@pie-lib/pie-toolbox/config-ui', () => ({
   layout: {
     ConfigLayout: (props) => <div {...props} />,
   },
@@ -24,7 +24,7 @@ jest.mock('@pie-lib/config-ui', () => ({
   },
 }))
 
-jest.mock('@pie-lib/categorize', () => ({
+jest.mock('@pie-lib/pie-toolbox/categorize', () => ({
   ensureNoExtraChoicesInAlternate: jest.fn(),
   countInAnswer: jest.fn().mockReturnValue(1),
   ensureNoExtraChoicesInAnswer: jest.fn()

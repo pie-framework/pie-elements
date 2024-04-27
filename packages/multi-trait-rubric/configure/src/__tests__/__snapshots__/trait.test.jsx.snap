@@ -35,25 +35,13 @@ exports[`Trait snapshot renders 1`] = `
             </WithStyles(Menu)>
           </div>
           <WithStyles(Component)
+            error=""
+            imageSupport={Object {}}
             markup="Presentation"
+            mathMlOptions={Object {}}
             onChange={[Function]}
-            placeholder="Enter Trait"
-            pluginProps={
-              Object {
-                "audio": Object {
-                  "disabled": true,
-                },
-                "image": Object {
-                  "disabled": true,
-                },
-                "math": Object {
-                  "disabled": true,
-                },
-                "video": Object {
-                  "disabled": true,
-                },
-              }
-            }
+            placeholder="Enter Category"
+            pluginProps={Object {}}
           />
         </WithStyles(Component)>
         <WithStyles(Component)
@@ -62,36 +50,23 @@ exports[`Trait snapshot renders 1`] = `
         >
           <WithStyles(Component)>
             <WithStyles(Component)
+              imageSupport={Object {}}
               markup=""
+              mathMlOptions={Object {}}
               onChange={[Function]}
               placeholder="Standards"
-              pluginProps={
-                Object {
-                  "image": Object {
-                    "disabled": true,
-                  },
-                  "math": Object {
-                    "disabled": true,
-                  },
-                }
-              }
+              pluginProps={Object {}}
             />
           </WithStyles(Component)>
           <WithStyles(Component)>
             <WithStyles(Component)
+              error=""
+              imageSupport={Object {}}
               markup=""
+              mathMlOptions={Object {}}
               onChange={[Function]}
-              placeholder="Description"
-              pluginProps={
-                Object {
-                  "image": Object {
-                    "disabled": true,
-                  },
-                  "math": Object {
-                    "disabled": true,
-                  },
-                }
-              }
+              placeholder="Enter Description"
+              pluginProps={Object {}}
             />
           </WithStyles(Component)>
           <WithStyles(Component)
@@ -99,21 +74,14 @@ exports[`Trait snapshot renders 1`] = `
           >
             <WithStyles(Component)
               alignToRight={false}
+              imageSupport={Object {}}
               markup="Handwriting is generally legible
 
 Overall appearance is acceptable or better"
+              mathMlOptions={Object {}}
               onChange={[Function]}
-              placeholder="Enter Description Here"
-              pluginProps={
-                Object {
-                  "image": Object {
-                    "disabled": true,
-                  },
-                  "math": Object {
-                    "disabled": true,
-                  },
-                }
-              }
+              placeholder="Enter Descriptor"
+              pluginProps={Object {}}
             />
           </WithStyles(Component)>
           <WithStyles(Component)
@@ -121,21 +89,14 @@ Overall appearance is acceptable or better"
           >
             <WithStyles(Component)
               alignToRight={false}
+              imageSupport={Object {}}
               markup="Handwriting poor
 
 Overall appearance is distracting to unacceptable"
+              mathMlOptions={Object {}}
               onChange={[Function]}
-              placeholder="Enter Description Here"
-              pluginProps={
-                Object {
-                  "image": Object {
-                    "disabled": true,
-                  },
-                  "math": Object {
-                    "disabled": true,
-                  },
-                }
-              }
+              placeholder="Enter Descriptor"
+              pluginProps={Object {}}
             />
           </WithStyles(Component)>
           <WithStyles(Component)
@@ -143,19 +104,12 @@ Overall appearance is distracting to unacceptable"
           >
             <WithStyles(Component)
               alignToRight={false}
+              imageSupport={Object {}}
               markup="Handwriting is unreadable, or response is blank, not in English, or too brief to evaluate. "
+              mathMlOptions={Object {}}
               onChange={[Function]}
-              placeholder="Enter Description Here"
-              pluginProps={
-                Object {
-                  "image": Object {
-                    "disabled": true,
-                  },
-                  "math": Object {
-                    "disabled": true,
-                  },
-                }
-              }
+              placeholder="Enter Descriptor"
+              pluginProps={Object {}}
             />
           </WithStyles(Component)>
         </WithStyles(Component)>
@@ -200,25 +154,13 @@ exports[`Trait snapshot renders with drag and drop 1`] = `
             </WithStyles(Menu)>
           </div>
           <WithStyles(Component)
+            error=""
+            imageSupport={Object {}}
             markup="Presentation"
+            mathMlOptions={Object {}}
             onChange={[Function]}
-            placeholder="Enter Trait"
-            pluginProps={
-              Object {
-                "audio": Object {
-                  "disabled": true,
-                },
-                "image": Object {
-                  "disabled": true,
-                },
-                "math": Object {
-                  "disabled": true,
-                },
-                "video": Object {
-                  "disabled": true,
-                },
-              }
-            }
+            placeholder="Enter Category"
+            pluginProps={Object {}}
           />
         </WithStyles(Component)>
         <WithStyles(Component)
@@ -227,36 +169,23 @@ exports[`Trait snapshot renders with drag and drop 1`] = `
         >
           <WithStyles(Component)>
             <WithStyles(Component)
+              imageSupport={Object {}}
               markup=""
+              mathMlOptions={Object {}}
               onChange={[Function]}
               placeholder="Standards"
-              pluginProps={
-                Object {
-                  "image": Object {
-                    "disabled": true,
-                  },
-                  "math": Object {
-                    "disabled": true,
-                  },
-                }
-              }
+              pluginProps={Object {}}
             />
           </WithStyles(Component)>
           <WithStyles(Component)>
             <WithStyles(Component)
+              error=""
+              imageSupport={Object {}}
               markup=""
+              mathMlOptions={Object {}}
               onChange={[Function]}
-              placeholder="Description"
-              pluginProps={
-                Object {
-                  "image": Object {
-                    "disabled": true,
-                  },
-                  "math": Object {
-                    "disabled": true,
-                  },
-                }
-              }
+              placeholder="Enter Description"
+              pluginProps={Object {}}
             />
           </WithStyles(Component)>
           <WithStyles(Component)
@@ -264,21 +193,14 @@ exports[`Trait snapshot renders with drag and drop 1`] = `
           >
             <WithStyles(Component)
               alignToRight={false}
+              imageSupport={Object {}}
               markup="Handwriting is generally legible
 
 Overall appearance is acceptable or better"
+              mathMlOptions={Object {}}
               onChange={[Function]}
-              placeholder="Enter Description Here"
-              pluginProps={
-                Object {
-                  "image": Object {
-                    "disabled": true,
-                  },
-                  "math": Object {
-                    "disabled": true,
-                  },
-                }
-              }
+              placeholder="Enter Descriptor"
+              pluginProps={Object {}}
             />
           </WithStyles(Component)>
           <WithStyles(Component)
@@ -286,21 +208,14 @@ Overall appearance is acceptable or better"
           >
             <WithStyles(Component)
               alignToRight={false}
+              imageSupport={Object {}}
               markup="Handwriting poor
 
 Overall appearance is distracting to unacceptable"
+              mathMlOptions={Object {}}
               onChange={[Function]}
-              placeholder="Enter Description Here"
-              pluginProps={
-                Object {
-                  "image": Object {
-                    "disabled": true,
-                  },
-                  "math": Object {
-                    "disabled": true,
-                  },
-                }
-              }
+              placeholder="Enter Descriptor"
+              pluginProps={Object {}}
             />
           </WithStyles(Component)>
           <WithStyles(Component)
@@ -308,19 +223,12 @@ Overall appearance is distracting to unacceptable"
           >
             <WithStyles(Component)
               alignToRight={false}
+              imageSupport={Object {}}
               markup="Handwriting is unreadable, or response is blank, not in English, or too brief to evaluate. "
+              mathMlOptions={Object {}}
               onChange={[Function]}
-              placeholder="Enter Description Here"
-              pluginProps={
-                Object {
-                  "image": Object {
-                    "disabled": true,
-                  },
-                  "math": Object {
-                    "disabled": true,
-                  },
-                }
-              }
+              placeholder="Enter Descriptor"
+              pluginProps={Object {}}
             />
           </WithStyles(Component)>
         </WithStyles(Component)>
@@ -365,25 +273,13 @@ exports[`Trait snapshot renders without description 1`] = `
             </WithStyles(Menu)>
           </div>
           <WithStyles(Component)
+            error=""
+            imageSupport={Object {}}
             markup="Presentation"
+            mathMlOptions={Object {}}
             onChange={[Function]}
-            placeholder="Enter Trait"
-            pluginProps={
-              Object {
-                "audio": Object {
-                  "disabled": true,
-                },
-                "image": Object {
-                  "disabled": true,
-                },
-                "math": Object {
-                  "disabled": true,
-                },
-                "video": Object {
-                  "disabled": true,
-                },
-              }
-            }
+            placeholder="Enter Category"
+            pluginProps={Object {}}
           />
         </WithStyles(Component)>
         <WithStyles(Component)
@@ -392,36 +288,23 @@ exports[`Trait snapshot renders without description 1`] = `
         >
           <WithStyles(Component)>
             <WithStyles(Component)
+              imageSupport={Object {}}
               markup=""
+              mathMlOptions={Object {}}
               onChange={[Function]}
               placeholder="Standards"
-              pluginProps={
-                Object {
-                  "image": Object {
-                    "disabled": true,
-                  },
-                  "math": Object {
-                    "disabled": true,
-                  },
-                }
-              }
+              pluginProps={Object {}}
             />
           </WithStyles(Component)>
           <WithStyles(Component)>
             <WithStyles(Component)
+              error=""
+              imageSupport={Object {}}
               markup=""
+              mathMlOptions={Object {}}
               onChange={[Function]}
-              placeholder="Description"
-              pluginProps={
-                Object {
-                  "image": Object {
-                    "disabled": true,
-                  },
-                  "math": Object {
-                    "disabled": true,
-                  },
-                }
-              }
+              placeholder="Enter Description"
+              pluginProps={Object {}}
             />
           </WithStyles(Component)>
           <WithStyles(Component)
@@ -429,21 +312,14 @@ exports[`Trait snapshot renders without description 1`] = `
           >
             <WithStyles(Component)
               alignToRight={false}
+              imageSupport={Object {}}
               markup="Handwriting is generally legible
 
 Overall appearance is acceptable or better"
+              mathMlOptions={Object {}}
               onChange={[Function]}
-              placeholder="Enter Description Here"
-              pluginProps={
-                Object {
-                  "image": Object {
-                    "disabled": true,
-                  },
-                  "math": Object {
-                    "disabled": true,
-                  },
-                }
-              }
+              placeholder="Enter Descriptor"
+              pluginProps={Object {}}
             />
           </WithStyles(Component)>
           <WithStyles(Component)
@@ -451,21 +327,14 @@ Overall appearance is acceptable or better"
           >
             <WithStyles(Component)
               alignToRight={false}
+              imageSupport={Object {}}
               markup="Handwriting poor
 
 Overall appearance is distracting to unacceptable"
+              mathMlOptions={Object {}}
               onChange={[Function]}
-              placeholder="Enter Description Here"
-              pluginProps={
-                Object {
-                  "image": Object {
-                    "disabled": true,
-                  },
-                  "math": Object {
-                    "disabled": true,
-                  },
-                }
-              }
+              placeholder="Enter Descriptor"
+              pluginProps={Object {}}
             />
           </WithStyles(Component)>
           <WithStyles(Component)
@@ -473,19 +342,12 @@ Overall appearance is distracting to unacceptable"
           >
             <WithStyles(Component)
               alignToRight={false}
+              imageSupport={Object {}}
               markup="Handwriting is unreadable, or response is blank, not in English, or too brief to evaluate. "
+              mathMlOptions={Object {}}
               onChange={[Function]}
-              placeholder="Enter Description Here"
-              pluginProps={
-                Object {
-                  "image": Object {
-                    "disabled": true,
-                  },
-                  "math": Object {
-                    "disabled": true,
-                  },
-                }
-              }
+              placeholder="Enter Descriptor"
+              pluginProps={Object {}}
             />
           </WithStyles(Component)>
         </WithStyles(Component)>
@@ -530,25 +392,13 @@ exports[`Trait snapshot renders without score points values 1`] = `
             </WithStyles(Menu)>
           </div>
           <WithStyles(Component)
+            error=""
+            imageSupport={Object {}}
             markup="Presentation"
+            mathMlOptions={Object {}}
             onChange={[Function]}
-            placeholder="Enter Trait"
-            pluginProps={
-              Object {
-                "audio": Object {
-                  "disabled": true,
-                },
-                "image": Object {
-                  "disabled": true,
-                },
-                "math": Object {
-                  "disabled": true,
-                },
-                "video": Object {
-                  "disabled": true,
-                },
-              }
-            }
+            placeholder="Enter Category"
+            pluginProps={Object {}}
           />
         </WithStyles(Component)>
         <WithStyles(Component)
@@ -557,36 +407,23 @@ exports[`Trait snapshot renders without score points values 1`] = `
         >
           <WithStyles(Component)>
             <WithStyles(Component)
+              imageSupport={Object {}}
               markup=""
+              mathMlOptions={Object {}}
               onChange={[Function]}
               placeholder="Standards"
-              pluginProps={
-                Object {
-                  "image": Object {
-                    "disabled": true,
-                  },
-                  "math": Object {
-                    "disabled": true,
-                  },
-                }
-              }
+              pluginProps={Object {}}
             />
           </WithStyles(Component)>
           <WithStyles(Component)>
             <WithStyles(Component)
+              error=""
+              imageSupport={Object {}}
               markup=""
+              mathMlOptions={Object {}}
               onChange={[Function]}
-              placeholder="Description"
-              pluginProps={
-                Object {
-                  "image": Object {
-                    "disabled": true,
-                  },
-                  "math": Object {
-                    "disabled": true,
-                  },
-                }
-              }
+              placeholder="Enter Description"
+              pluginProps={Object {}}
             />
           </WithStyles(Component)>
         </WithStyles(Component)>
@@ -631,25 +468,13 @@ exports[`Trait snapshot renders without standards 1`] = `
             </WithStyles(Menu)>
           </div>
           <WithStyles(Component)
+            error=""
+            imageSupport={Object {}}
             markup="Presentation"
+            mathMlOptions={Object {}}
             onChange={[Function]}
-            placeholder="Enter Trait"
-            pluginProps={
-              Object {
-                "audio": Object {
-                  "disabled": true,
-                },
-                "image": Object {
-                  "disabled": true,
-                },
-                "math": Object {
-                  "disabled": true,
-                },
-                "video": Object {
-                  "disabled": true,
-                },
-              }
-            }
+            placeholder="Enter Category"
+            pluginProps={Object {}}
           />
         </WithStyles(Component)>
         <WithStyles(Component)
@@ -658,19 +483,13 @@ exports[`Trait snapshot renders without standards 1`] = `
         >
           <WithStyles(Component)>
             <WithStyles(Component)
+              error=""
+              imageSupport={Object {}}
               markup=""
+              mathMlOptions={Object {}}
               onChange={[Function]}
-              placeholder="Description"
-              pluginProps={
-                Object {
-                  "image": Object {
-                    "disabled": true,
-                  },
-                  "math": Object {
-                    "disabled": true,
-                  },
-                }
-              }
+              placeholder="Enter Description"
+              pluginProps={Object {}}
             />
           </WithStyles(Component)>
           <WithStyles(Component)
@@ -678,21 +497,14 @@ exports[`Trait snapshot renders without standards 1`] = `
           >
             <WithStyles(Component)
               alignToRight={false}
+              imageSupport={Object {}}
               markup="Handwriting is generally legible
 
 Overall appearance is acceptable or better"
+              mathMlOptions={Object {}}
               onChange={[Function]}
-              placeholder="Enter Description Here"
-              pluginProps={
-                Object {
-                  "image": Object {
-                    "disabled": true,
-                  },
-                  "math": Object {
-                    "disabled": true,
-                  },
-                }
-              }
+              placeholder="Enter Descriptor"
+              pluginProps={Object {}}
             />
           </WithStyles(Component)>
           <WithStyles(Component)
@@ -700,21 +512,14 @@ Overall appearance is acceptable or better"
           >
             <WithStyles(Component)
               alignToRight={false}
+              imageSupport={Object {}}
               markup="Handwriting poor
 
 Overall appearance is distracting to unacceptable"
+              mathMlOptions={Object {}}
               onChange={[Function]}
-              placeholder="Enter Description Here"
-              pluginProps={
-                Object {
-                  "image": Object {
-                    "disabled": true,
-                  },
-                  "math": Object {
-                    "disabled": true,
-                  },
-                }
-              }
+              placeholder="Enter Descriptor"
+              pluginProps={Object {}}
             />
           </WithStyles(Component)>
           <WithStyles(Component)
@@ -722,19 +527,12 @@ Overall appearance is distracting to unacceptable"
           >
             <WithStyles(Component)
               alignToRight={false}
+              imageSupport={Object {}}
               markup="Handwriting is unreadable, or response is blank, not in English, or too brief to evaluate. "
+              mathMlOptions={Object {}}
               onChange={[Function]}
-              placeholder="Enter Description Here"
-              pluginProps={
-                Object {
-                  "image": Object {
-                    "disabled": true,
-                  },
-                  "math": Object {
-                    "disabled": true,
-                  },
-                }
-              }
+              placeholder="Enter Descriptor"
+              pluginProps={Object {}}
             />
           </WithStyles(Component)>
         </WithStyles(Component)>

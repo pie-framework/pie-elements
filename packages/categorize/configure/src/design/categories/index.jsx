@@ -1,29 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
-import Typography from '@material-ui/core/Typography';
-import { choiceUtils as utils } from '@pie-lib/config-ui';
-import EditableHtml from '@pie-lib/editable-html';
+import { choiceUtils as utils } from '@pie-lib/pie-toolbox/config-ui';
 import classNames from 'classnames';
 import Info from '@material-ui/icons/Info';
 import Tooltip from '@material-ui/core/Tooltip';
 import {
-  moveChoiceToAlternate,
   moveChoiceToCategory,
   removeCategory,
   removeChoiceFromCategory,
   verifyAllowMultiplePlacements,
-} from '@pie-lib/categorize';
+} from '@pie-lib/pie-toolbox/categorize';
 
 import Category from './category';
 import Header from '../header';
-import { generateValidationMessage } from '../../utils';
+import { generateValidationMessage, getMaxCategoryChoices } from '../../utils';
 import { RowLabel } from './RowLabel';
 
 const styles = (theme) => ({
   categories: {
-    marginBottom: theme.spacing.unit,
+    marginBottom: theme.spacing.unit * 3,
   },
   categoriesHolder: {
     display: 'grid',
@@ -46,19 +42,21 @@ const styles = (theme) => ({
     width: '100%',
   },
   tooltip: {
-    fontSize: '12px',
+    fontSize: theme.typography.fontSize - 2,
     whiteSpace: 'pre',
     maxWidth: '500px',
   },
   errorText: {
-    fontSize: '12px',
-    color: 'red',
-    padding: '5px 0',
+    fontSize: theme.typography.fontSize - 2,
+    color: theme.palette.error.main,
+    paddingTop: theme.spacing.unit / 2,
   },
 });
 
 export class Categories extends React.Component {
   static propTypes = {
+    defaultImageMaxHeight: PropTypes.number,
+    defaultImageMaxWidth: PropTypes.number,
     imageSupport: PropTypes.shape({
       add: PropTypes.func.isRequired,
       delete: PropTypes.func.isRequired,
@@ -74,6 +72,7 @@ export class Categories extends React.Component {
     model: PropTypes.object.isRequired,
     configuration: PropTypes.object.isRequired,
     toolbarOpts: PropTypes.object,
+    spellCheck: PropTypes.bool,
   };
 
   state = {
@@ -137,14 +136,22 @@ export class Categories extends React.Component {
 
   addChoiceToCategory = (addedChoice, categoryId) => {
     const { model, onModelChanged } = this.props;
-    let { choices = [], correctResponse = [] } = model || {};
+    let { choices = [], correctResponse = [], maxChoicesPerCategory = 0 } = model || {};
     const choice = (choices || []).find((choice) => choice.id === addedChoice.id);
     correctResponse = moveChoiceToCategory(addedChoice.id, undefined, categoryId, 0, model.correctResponse);
     // if multiplePlacements not allowed, ensure the consistency in the other categories
     if (choice.categoryCount !== 0) {
       correctResponse = verifyAllowMultiplePlacements(addedChoice, categoryId, correctResponse);
     }
-    onModelChanged({ correctResponse });
+    const maxCategoryChoices = getMaxCategoryChoices(model);
+    // when maxChoicesPerCategory is set to 0, there is no limit so it should not be updated
+    onModelChanged({
+      correctResponse,
+      maxChoicesPerCategory:
+        maxChoicesPerCategory !== 0 && maxChoicesPerCategory < maxCategoryChoices
+          ? maxChoicesPerCategory + 1
+          : maxChoicesPerCategory,
+    });
   };
 
   deleteChoiceFromCategory = (category, choice, choiceIndex) => {
@@ -156,7 +163,7 @@ export class Categories extends React.Component {
 
   moveChoice = (choiceId, from, to, choiceIndex) => {
     const { model, onModelChanged } = this.props;
-    let { choices, correctResponse = [] } = model || {};
+    let { choices, correctResponse = [], maxChoicesPerCategory = 0 } = model || {};
     const choice = (choices || []).find((choice) => choice.id === choiceId);
     if (to === from || !choice) {
       return;
@@ -167,7 +174,15 @@ export class Categories extends React.Component {
     } else if (choice.categoryCount === 0) {
       correctResponse = moveChoiceToCategory(choice.id, undefined, to, 0, correctResponse);
     }
-    onModelChanged({ correctResponse });
+    const maxCategoryChoices = getMaxCategoryChoices(model);
+    // when maxChoicesPerCategory is set to 0, there is no limit so it should not be updated
+    onModelChanged({
+      correctResponse,
+      maxChoicesPerCategory:
+        maxChoicesPerCategory !== 0 && maxChoicesPerCategory < maxCategoryChoices
+          ? maxChoicesPerCategory + 1
+          : maxChoicesPerCategory,
+    });
   };
 
   changeRowLabel = (val, index) => {
@@ -199,6 +214,7 @@ export class Categories extends React.Component {
       configuration,
       defaultImageMaxHeight,
       defaultImageMaxWidth,
+      mathMlOptions = {},
     } = this.props;
 
     const { categoriesPerRow, rowLabels, errors } = model;
@@ -229,8 +245,7 @@ export class Categories extends React.Component {
           }
           buttonDisabled={maxCategories && categories && maxCategories === categories.length}
         />
-        {associationError && <div className={classes.errorText}>{associationError}</div>}
-        {categoriesError && <div className={classes.errorText}>{categoriesError}</div>}
+
         <div className={classes.categoriesHolder} style={holderStyle}>
           {categories.map((category, index) => {
             const hasRowLabel = index % categoriesPerRow === 0;
@@ -251,8 +266,11 @@ export class Categories extends React.Component {
                     maxImageWidth={(maxImageWidth && maxImageWidth.rowLabel) || defaultImageMaxWidth}
                     maxImageHeight={(maxImageHeight && maxImageHeight.rowLabel) || defaultImageMaxHeight}
                     uploadSoundSupport={uploadSoundSupport}
+                    mathMlOptions={mathMlOptions}
+                    configuration={configuration}
                   />
                 )}
+
                 <Category
                   imageSupport={imageSupport}
                   focusedEl={this.state.focusedEl}
@@ -270,11 +288,15 @@ export class Categories extends React.Component {
                   maxImageWidth={(maxImageWidth && maxImageWidth.categoryLabel) || defaultImageMaxWidth}
                   maxImageHeight={(maxImageHeight && maxImageHeight.categoryLabel) || defaultImageMaxHeight}
                   uploadSoundSupport={uploadSoundSupport}
+                  configuration={configuration}
                 />
               </React.Fragment>
             );
           })}
         </div>
+
+        {associationError && <div className={classes.errorText}>{associationError}</div>}
+        {categoriesError && <div className={classes.errorText}>{categoriesError}</div>}
       </div>
     );
   }

@@ -2,6 +2,58 @@ import * as math from 'mathjs';
 import uniqWith from 'lodash/uniqWith';
 import isObject from 'lodash/isObject';
 import isNumber from 'lodash/isNumber';
+import { tickUtils } from '../../index';
+
+/*This will store the possible decimal tick values*/
+export const decimalTickValues = [0.001, 0.01, 0.02, 0.04, 0.05, 0.1, 0.125, 0.2, 0.25, 0.5];
+
+/*This will store the possible fraction tick values*/
+export const fractionTickValues = [
+  '1/1000',
+  '1/100',
+  '1/64',
+  '1/50',
+  '1/32',
+  '1/25',
+  '1/20',
+  '1/16',
+  '1/15',
+  '1/12',
+  '1/10',
+  '1/9',
+  '1/8',
+  '1/7',
+  '1/6',
+  '1/5',
+  '1/4',
+  '1/3',
+  '1/2',
+];
+
+/*This const will store possible multiplier for label interval that needs to be multiplied 
+with tick interval with denominator represented with object key.*/
+export const labelMultiplier = {
+  1: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+  2: [1, 2, 4, 6, 8, 10],
+  3: [1, 3, 6, 9],
+  4: [1, 2, 4, 8],
+  5: [1, 5, 10],
+  6: [1, 2, 3, 6],
+  7: [1, 7],
+  8: [1, 2, 4, 8],
+  9: [1, 3, 9],
+  10: [1, 2, 5, 10],
+  12: [1, 2, 3, 4, 6],
+  15: [1, 3, 5],
+  16: [1, 2, 4, 8],
+  20: [1, 2, 4, 5, 10],
+  25: [1, 5],
+  32: [1, 2, 4, 8],
+  50: [1, 2, 5, 10],
+  64: [1, 2, 4, 8],
+  100: [1, 2, 4, 5, 10],
+  1000: [1, 2, 4, 5, 8, 10],
+};
 
 export const fractionSnapTo = (min, max, interval, value) => {
   value = fmax(fmin(value, max), min);
@@ -126,22 +178,29 @@ export const closeTo = (a, b, precision) => {
 };
 
 const limit = (v, min, max) => {
-  if (math.smaller(v, min)) {
+  if (math.smaller(fraction(v), fraction(min))) {
     return min;
   }
 
-  if (math.larger(v, max)) {
+  if (math.larger(fraction(v), fraction(max))) {
     return max;
   }
 
   return v;
 };
 
-export const minorLimits = (domain) => {
+/*
+ * Function to get tick interval limits based on min, max and width entered by the user.
+ * @param domain object containing max and min value.
+ * @param width number represents width of number line.
+ * */
+export const getMinorLimits = (domain, width) => {
   const end = domain.max - domain.min;
+  const min = math.number(math.multiply(10, math.divide(math.fraction(end), width)));
+  const max = math.number(math.multiply(20, min));
   return {
-    min: math.divide(math.fraction(end), 100),
-    max: math.divide(math.fraction(end), 3),
+    min: min,
+    max: max,
   };
 };
 
@@ -163,18 +222,21 @@ export const fraction = (v) => {
   }
 };
 
-export const normalizeTicks = (domain, ticks, opts) => {
-  const l = opts ? opts.limit !== false : true;
-  const end = fraction(domain.max - domain.min);
-  const minor = l
-    ? limit(fraction(ticks.minor), math.divide(end, 100), math.divide(end, 3))
-    : math.fraction(ticks.minor);
-  const major = l ? limit(fraction(ticks.major), minor, math.multiply(minor, 10)) : math.fraction(ticks.major);
+export const normalizeTicks = (domain, width, ticks, opts) => {
+  const useLimit = opts ? opts.limit !== false : true;
+  const minorLimits = getMinorLimits(domain, width);
 
-  const m = isMultiple(major, minor);
+  const minor = useLimit ? limit(fraction(ticks.minor), minorLimits.min, minorLimits.max) : fraction(ticks.minor);
+  const major = useLimit ? limit(fraction(ticks.major), minor, math.multiply(minor, 20)) : fraction(ticks.major);
 
-  if (!m) {
-    return { minor, major: math.multiply(minor, 2) };
+  const isMajorMultiple = isMultiple(major, minor);
+
+  if (!isMajorMultiple) {
+    const multiplier = math.divide(major, minor);
+    const multiplyBy = multiplier <= 2 ? 2 : Math.round(multiplier);
+
+    // major must be a multiple of minor
+    return { minor, major: math.multiply(minor, multiplyBy) };
   }
 
   return { major, minor };
@@ -183,8 +245,8 @@ export const normalizeTicks = (domain, ticks, opts) => {
 /**
  * Build ticks as an array of mathjs Fractions
  */
-export const buildTickDataAsFractions = (domain, ticks, opts) => {
-  ticks = normalizeTicks(domain, ticks, opts);
+export const buildTickDataAsFractions = (domain, width, ticks, opts) => {
+  ticks = normalizeTicks(domain, width, ticks, opts);
   const rng = simpleRange(domain.min, domain.max, ticks.minor);
 
   const o = rng
@@ -203,8 +265,71 @@ export const buildTickDataAsFractions = (domain, ticks, opts) => {
   return o;
 };
 
-export const buildTickData = (domain, ticks, opts) => {
-  const result = buildTickDataAsFractions(domain, ticks, opts);
+/*
+ * This function will generate tick interval values based on min and max limits of ticks.
+ * @param minorLimits object containing min and max values
+ * @return out object containing three arrays 1. fraction values, 2. decimal values,
+ * */
+export const generateMinorValues = (minorLimits) => {
+  let out = { fraction: [], decimal: [] };
+  decimalTickValues.forEach((value) => {
+    if (value >= minorLimits.min && value <= minorLimits.max) {
+      out.decimal.push(value);
+    }
+  });
+  fractionTickValues.forEach((value) => {
+    let decimalValue = math.number(math.fraction(value));
+    if (decimalValue >= minorLimits.min && decimalValue <= minorLimits.max) {
+      out.fraction.push(value);
+    }
+  });
+  return out;
+};
+
+/*
+ * This function will generate label interval values for provided tick interval value.
+ * @param minor number representing tick interval value.
+ * @param domain object containing min and max values.
+ * @param width number representing width of number line.
+ * @return out object containing three arrays 1. fraction values, 2. decimal values,
+ * */
+export const generateMajorValuesForMinor = (minor, domain, width) => {
+  let out = { decimal: [], fraction: [] };
+  let fraction = math.fraction(math.number(math.number(minor)));
+  let n = fraction.n;
+  let d = fraction.d;
+  if (n >= 1 && d === 1) {
+    for (let i = 1; i <= 10; i++) {
+      let num = math.number(math.multiply(n, i));
+      //Here we check if this major value can plot at least 2 points on number line.
+      let ticksData = { minor: minor, major: num };
+      let output = tickUtils.buildTickData(domain, width, ticksData, { fraction: undefined });
+      if (output.filter((x) => x.type === 'major').length > 1) {
+        out.fraction.push(num.toString());
+        out.decimal.push(num);
+      }
+    }
+  } else {
+    for (const multiplierKey in labelMultiplier[d]) {
+      let num = math.multiply(math.fraction(n, d), labelMultiplier[d][multiplierKey]);
+      //Here we check if this major value can plot at least 2 points on number line.
+      let ticksData = { minor: minor, major: math.number(num) };
+      let output = tickUtils.buildTickData(domain, width, ticksData, { fraction: undefined });
+      if (output.filter((x) => x.type === 'major').length > 1) {
+        if (num.d !== 1) {
+          out.fraction.push(num.n + '/' + num.d);
+        } else {
+          out.fraction.push(num.n.toString());
+        }
+        out.decimal.push(math.number(num));
+      }
+    }
+  }
+  return out;
+};
+
+export const buildTickData = (domain, width, ticks, opts) => {
+  const result = buildTickDataAsFractions(domain, width, ticks, opts);
 
   const out = result.map((o) => (opts.fraction ? o : { ...o, x: math.number(o.x) || 0 }));
 

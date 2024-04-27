@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withDragContext, swap } from '@pie-lib/drag';
-import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
-import { color, Feedback, PreviewPrompt } from '@pie-lib/render-ui';
+import { withDragContext, swap } from '@pie-lib/pie-toolbox/drag';
+import {CorrectAnswerToggle} from '@pie-lib/pie-toolbox/correct-answer-toggle';
+import { color, Feedback, PreviewPrompt } from '@pie-lib/pie-toolbox/render-ui';
 import { withStyles } from '@material-ui/core/styles';
 import uniqueId from 'lodash/uniqueId';
 import isUndefined from 'lodash/isUndefined';
@@ -65,12 +65,18 @@ export class Main extends React.Component {
     const { showCorrectAnswer } = this.state;
     const { classes, model, session } = this.props;
     const { config, mode } = model;
-    const { prompt } = config;
+    const { prompt, language } = config;
 
     return (
       <div className={classes.mainContainer}>
-        <CorrectAnswerToggle show={mode === 'evaluate'} toggled={showCorrectAnswer} onToggle={this.toggleShowCorrect} />
         <PreviewPrompt className="prompt" prompt={prompt} />
+
+        <CorrectAnswerToggle
+          show={mode === 'evaluate'}
+          toggled={showCorrectAnswer}
+          onToggle={this.toggleShowCorrect}
+          language={language}
+        />
         <AnswerArea
           instanceId={this.instanceId}
           model={model}
@@ -80,7 +86,15 @@ export class Main extends React.Component {
           disabled={mode !== 'gather'}
           showCorrect={showCorrectAnswer}
         />
-        <ChoicesList instanceId={this.instanceId} model={model} session={session} disabled={mode !== 'gather'} onRemoveAnswer={(id) => this.onRemoveAnswer(id)}/>
+
+        <ChoicesList
+          instanceId={this.instanceId}
+          model={model}
+          session={session}
+          disabled={mode !== 'gather'}
+          onRemoveAnswer={(id) => this.onRemoveAnswer(id)}
+        />
+
         {model.correctness && model.feedback && !showCorrectAnswer && (
           <Feedback correctness={model.correctness.correctness} feedback={model.feedback} />
         )}
@@ -89,23 +103,16 @@ export class Main extends React.Component {
   }
 }
 
-const styles = (theme) => ({
+const styles = () => ({
   mainContainer: {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
     color: color.text(),
     backgroundColor: color.background(),
-    padding: (theme.spacing.unit * 3) / 2,
   },
   promptList: {
     alignItems: 'flex-start',
-  },
-  main: {
-    width: '100%',
-  },
-  toggle: {
-    paddingBottom: theme.spacing.unit * 3,
   },
 });
 

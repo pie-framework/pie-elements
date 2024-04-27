@@ -2,16 +2,50 @@
 
 exports[`Placement Ordering snapshot renders all default items 1`] = `
 <ConfigLayout
+  dimensions={Object {}}
   hideSettings={false}
   settings={
     <Panel
       configuration={
         Object {
+          "baseInputConfiguration": Object {
+            "audio": Object {
+              "disabled": false,
+            },
+            "image": Object {
+              "disabled": false,
+            },
+            "video": Object {
+              "disabled": false,
+            },
+          },
           "choiceLabel": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": false,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": false,
+              },
+            },
             "label": "Choice label",
             "settings": true,
           },
           "choices": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": true,
+              },
+              "image": Object {
+                "disabled": true,
+              },
+              "video": Object {
+                "disabled": true,
+              },
+            },
             "label": "Choices",
             "settings": true,
           },
@@ -23,6 +57,19 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
             "enabled": true,
             "label": "Feedback",
             "settings": true,
+          },
+          "language": Object {
+            "enabled": false,
+            "label": "Specify Language",
+            "settings": false,
+          },
+          "languageChoices": Object {
+            "label": "Language Choices",
+            "options": Array [],
+          },
+          "mathMlOptions": Object {
+            "mmlEditing": false,
+            "mmlOutput": false,
           },
           "maxImageHeight": Object {
             "choices": 150,
@@ -54,11 +101,35 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
             "settings": true,
           },
           "prompt": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": false,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": false,
+              },
+            },
             "label": "Item Stem",
+            "required": false,
             "settings": true,
           },
           "rationale": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": false,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": false,
+              },
+            },
             "label": "Rationale",
+            "required": false,
             "settings": true,
           },
           "removeTilesAfterPlacing": Object {
@@ -84,7 +155,19 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
             "settings": true,
           },
           "teacherInstructions": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": false,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": false,
+              },
+            },
             "label": "Teacher Instructions",
+            "required": false,
             "settings": true,
           },
           "withRubric": Object {
@@ -108,6 +191,8 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
             "choiceLabelEnabled": undefined,
             "enableImages": undefined,
             "feedbackEnabled": undefined,
+            "language": false,
+            "language.enabled": false,
             "numberedGuides": false,
             "orientation": undefined,
             "partialScoring": false,
@@ -123,7 +208,7 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
           "choices": Array [],
           "correctResponse": Array [],
           "enableImages": false,
-          "feedbackEnabled": true,
+          "feedbackEnabled": false,
           "numberedGuides": false,
           "orientation": "vertical",
           "partialScoring": true,
@@ -148,6 +233,7 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
     label="Teacher Instructions"
   >
     <EditableHtml
+      allowValidation={false}
       languageCharactersProps={
         Array [
           Object {
@@ -159,10 +245,30 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
         ]
       }
       markup=""
+      mathMlOptions={
+        Object {
+          "mmlEditing": false,
+          "mmlOutput": false,
+        }
+      }
       maxImageHeight={300}
       maxImageWidth={300}
       nonEmpty={false}
       onChange={[Function]}
+      onDone={[Function]}
+      pluginProps={
+        Object {
+          "audio": Object {
+            "disabled": false,
+          },
+          "image": Object {
+            "disabled": false,
+          },
+          "video": Object {
+            "disabled": false,
+          },
+        }
+      }
       toolbarOpts={
         Object {
           "position": "bottom",
@@ -170,58 +276,52 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
       }
     />
   </InputContainer>
-  <FormSection>
-    <InputContainer
-      label="Item Stem"
-    >
-      <EditableHtml
-        languageCharactersProps={
-          Array [
-            Object {
-              "language": "spanish",
-            },
-            Object {
-              "language": "special",
-            },
-          ]
-        }
-        markup="Item Stem goes here"
-        maxImageHeight={300}
-        maxImageWidth={300}
-        onChange={[Function]}
-        toolbarOpts={
+  <InputContainer
+    label="Item Stem"
+  >
+    <EditableHtml
+      allowValidation={false}
+      languageCharactersProps={
+        Array [
           Object {
-            "position": "bottom",
-          }
-        }
-      />
-    </InputContainer>
-    <InputContainer
-      label="Rationale"
-    >
-      <EditableHtml
-        languageCharactersProps={
-          Array [
-            Object {
-              "language": "spanish",
-            },
-            Object {
-              "language": "special",
-            },
-          ]
-        }
-        markup=""
-        maxImageHeight={300}
-        maxImageWidth={300}
-        onChange={[Function]}
-        toolbarOpts={
+            "language": "spanish",
+          },
           Object {
-            "position": "bottom",
-          }
+            "language": "special",
+          },
+        ]
+      }
+      markup="Item Stem goes here"
+      mathMlOptions={
+        Object {
+          "mmlEditing": false,
+          "mmlOutput": false,
         }
-      />
-    </InputContainer>
-  </FormSection>
+      }
+      maxImageHeight={300}
+      maxImageWidth={300}
+      onChange={[Function]}
+      onDone={[Function]}
+      pluginProps={
+        Object {
+          "audio": Object {
+            "disabled": false,
+          },
+          "image": Object {
+            "disabled": false,
+          },
+          "video": Object {
+            "disabled": false,
+          },
+        }
+      }
+      toolbarOpts={
+        Object {
+          "position": "bottom",
+        }
+      }
+    />
+  </InputContainer>
   <FormSection
     label="Define Choices"
     labelExtraStyle={
@@ -261,6 +361,7 @@ The correct ordering should not be identical to the initial ordering."
         label="Choice label"
       >
         <EditableHtml
+          allowValidation={false}
           languageCharactersProps={
             Array [
               Object {
@@ -272,9 +373,29 @@ The correct ordering should not be identical to the initial ordering."
             ]
           }
           markup=""
+          mathMlOptions={
+            Object {
+              "mmlEditing": false,
+              "mmlOutput": false,
+            }
+          }
           maxImageHeight={150}
           maxImageWidth={300}
           onChange={[Function]}
+          onDone={[Function]}
+          pluginProps={
+            Object {
+              "audio": Object {
+                "disabled": false,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": false,
+              },
+            }
+          }
           toolbarOpts={
             Object {
               "position": "bottom",
@@ -287,12 +408,30 @@ The correct ordering should not be identical to the initial ordering."
       choices={Array []}
       choicesLabel="Choices"
       correctResponse={Array []}
-      disableImages={true}
       errors={Object {}}
+      mathMlOptions={
+        Object {
+          "mmlEditing": false,
+          "mmlOutput": false,
+        }
+      }
       maxImageHeight={150}
       maxImageWidth={300}
       onChange={[Function]}
       placementArea={false}
+      pluginProps={
+        Object {
+          "audio": Object {
+            "disabled": true,
+          },
+          "image": Object {
+            "disabled": true,
+          },
+          "video": Object {
+            "disabled": true,
+          },
+        }
+      }
       pluralChoiceLabel="Choices"
       singularChoiceLabel="Choice"
       toolbarOpts={
@@ -302,29 +441,101 @@ The correct ordering should not be identical to the initial ordering."
       }
     />
   </FormSection>
-  <FeedbackConfig
-    onChange={[Function]}
-    toolbarOpts={
-      Object {
-        "position": "bottom",
+  <InputContainer
+    label="Rationale"
+  >
+    <EditableHtml
+      allowValidation={false}
+      languageCharactersProps={
+        Array [
+          Object {
+            "language": "spanish",
+          },
+          Object {
+            "language": "special",
+          },
+        ]
       }
-    }
-  />
+      markup=""
+      mathMlOptions={
+        Object {
+          "mmlEditing": false,
+          "mmlOutput": false,
+        }
+      }
+      maxImageHeight={300}
+      maxImageWidth={300}
+      onChange={[Function]}
+      onDone={[Function]}
+      pluginProps={
+        Object {
+          "audio": Object {
+            "disabled": false,
+          },
+          "image": Object {
+            "disabled": false,
+          },
+          "video": Object {
+            "disabled": false,
+          },
+        }
+      }
+      toolbarOpts={
+        Object {
+          "position": "bottom",
+        }
+      }
+    />
+  </InputContainer>
 </ConfigLayout>
 `;
 
 exports[`Placement Ordering snapshot renders custom items 1`] = `
 <ConfigLayout
+  dimensions={Object {}}
   hideSettings={false}
   settings={
     <Panel
       configuration={
         Object {
+          "baseInputConfiguration": Object {
+            "audio": Object {
+              "disabled": false,
+            },
+            "image": Object {
+              "disabled": false,
+            },
+            "video": Object {
+              "disabled": false,
+            },
+          },
           "choiceLabel": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": false,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": false,
+              },
+            },
             "label": "Choice label",
             "settings": true,
           },
           "choices": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": true,
+              },
+              "image": Object {
+                "disabled": true,
+              },
+              "video": Object {
+                "disabled": true,
+              },
+            },
             "label": "Choices",
             "settings": true,
           },
@@ -336,6 +547,19 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
             "enabled": true,
             "label": "Feedback",
             "settings": true,
+          },
+          "language": Object {
+            "enabled": false,
+            "label": "Specify Language",
+            "settings": false,
+          },
+          "languageChoices": Object {
+            "label": "Language Choices",
+            "options": Array [],
+          },
+          "mathMlOptions": Object {
+            "mmlEditing": false,
+            "mmlOutput": false,
           },
           "maxImageHeight": Object {
             "choices": 150,
@@ -367,11 +591,35 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
             "settings": true,
           },
           "prompt": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": false,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": false,
+              },
+            },
             "label": "Item Stem",
+            "required": false,
             "settings": false,
           },
           "rationale": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": false,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": false,
+              },
+            },
             "label": "Rationale",
+            "required": false,
             "settings": true,
           },
           "removeTilesAfterPlacing": Object {
@@ -397,7 +645,19 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
             "settings": true,
           },
           "teacherInstructions": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": false,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": false,
+              },
+            },
             "label": "Teacher Instructions",
+            "required": false,
             "settings": true,
           },
           "withRubric": Object {
@@ -421,6 +681,8 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
             "choiceLabelEnabled": undefined,
             "enableImages": undefined,
             "feedbackEnabled": undefined,
+            "language": false,
+            "language.enabled": false,
             "numberedGuides": false,
             "orientation": undefined,
             "partialScoring": false,
@@ -436,7 +698,7 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
           "choices": Array [],
           "correctResponse": Array [],
           "enableImages": false,
-          "feedbackEnabled": true,
+          "feedbackEnabled": false,
           "numberedGuides": false,
           "orientation": "vertical",
           "partialScoring": true,
@@ -461,6 +723,7 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
     label="Teacher Instructions"
   >
     <EditableHtml
+      allowValidation={false}
       languageCharactersProps={
         Array [
           Object {
@@ -472,10 +735,30 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
         ]
       }
       markup=""
+      mathMlOptions={
+        Object {
+          "mmlEditing": false,
+          "mmlOutput": false,
+        }
+      }
       maxImageHeight={300}
       maxImageWidth={300}
       nonEmpty={false}
       onChange={[Function]}
+      onDone={[Function]}
+      pluginProps={
+        Object {
+          "audio": Object {
+            "disabled": false,
+          },
+          "image": Object {
+            "disabled": false,
+          },
+          "video": Object {
+            "disabled": false,
+          },
+        }
+      }
       toolbarOpts={
         Object {
           "position": "bottom",
@@ -483,58 +766,52 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
       }
     />
   </InputContainer>
-  <FormSection>
-    <InputContainer
-      label="Item Stem"
-    >
-      <EditableHtml
-        languageCharactersProps={
-          Array [
-            Object {
-              "language": "spanish",
-            },
-            Object {
-              "language": "special",
-            },
-          ]
-        }
-        markup="Item Stem goes here"
-        maxImageHeight={300}
-        maxImageWidth={300}
-        onChange={[Function]}
-        toolbarOpts={
+  <InputContainer
+    label="Item Stem"
+  >
+    <EditableHtml
+      allowValidation={false}
+      languageCharactersProps={
+        Array [
           Object {
-            "position": "bottom",
-          }
-        }
-      />
-    </InputContainer>
-    <InputContainer
-      label="Rationale"
-    >
-      <EditableHtml
-        languageCharactersProps={
-          Array [
-            Object {
-              "language": "spanish",
-            },
-            Object {
-              "language": "special",
-            },
-          ]
-        }
-        markup=""
-        maxImageHeight={300}
-        maxImageWidth={300}
-        onChange={[Function]}
-        toolbarOpts={
+            "language": "spanish",
+          },
           Object {
-            "position": "bottom",
-          }
+            "language": "special",
+          },
+        ]
+      }
+      markup="Item Stem goes here"
+      mathMlOptions={
+        Object {
+          "mmlEditing": false,
+          "mmlOutput": false,
         }
-      />
-    </InputContainer>
-  </FormSection>
+      }
+      maxImageHeight={300}
+      maxImageWidth={300}
+      onChange={[Function]}
+      onDone={[Function]}
+      pluginProps={
+        Object {
+          "audio": Object {
+            "disabled": false,
+          },
+          "image": Object {
+            "disabled": false,
+          },
+          "video": Object {
+            "disabled": false,
+          },
+        }
+      }
+      toolbarOpts={
+        Object {
+          "position": "bottom",
+        }
+      }
+    />
+  </InputContainer>
   <FormSection
     label="Define Choices"
     labelExtraStyle={
@@ -574,6 +851,7 @@ The correct ordering should not be identical to the initial ordering."
         label="Choice label"
       >
         <EditableHtml
+          allowValidation={false}
           languageCharactersProps={
             Array [
               Object {
@@ -585,9 +863,29 @@ The correct ordering should not be identical to the initial ordering."
             ]
           }
           markup=""
+          mathMlOptions={
+            Object {
+              "mmlEditing": false,
+              "mmlOutput": false,
+            }
+          }
           maxImageHeight={150}
           maxImageWidth={300}
           onChange={[Function]}
+          onDone={[Function]}
+          pluginProps={
+            Object {
+              "audio": Object {
+                "disabled": false,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": false,
+              },
+            }
+          }
           toolbarOpts={
             Object {
               "position": "bottom",
@@ -600,12 +898,30 @@ The correct ordering should not be identical to the initial ordering."
       choices={Array []}
       choicesLabel="Choices"
       correctResponse={Array []}
-      disableImages={true}
       errors={Object {}}
+      mathMlOptions={
+        Object {
+          "mmlEditing": false,
+          "mmlOutput": false,
+        }
+      }
       maxImageHeight={150}
       maxImageWidth={300}
       onChange={[Function]}
       placementArea={false}
+      pluginProps={
+        Object {
+          "audio": Object {
+            "disabled": true,
+          },
+          "image": Object {
+            "disabled": true,
+          },
+          "video": Object {
+            "disabled": true,
+          },
+        }
+      }
       pluralChoiceLabel="Choices"
       singularChoiceLabel="Choice"
       toolbarOpts={
@@ -615,13 +931,51 @@ The correct ordering should not be identical to the initial ordering."
       }
     />
   </FormSection>
-  <FeedbackConfig
-    onChange={[Function]}
-    toolbarOpts={
-      Object {
-        "position": "bottom",
+  <InputContainer
+    label="Rationale"
+  >
+    <EditableHtml
+      allowValidation={false}
+      languageCharactersProps={
+        Array [
+          Object {
+            "language": "spanish",
+          },
+          Object {
+            "language": "special",
+          },
+        ]
       }
-    }
-  />
+      markup=""
+      mathMlOptions={
+        Object {
+          "mmlEditing": false,
+          "mmlOutput": false,
+        }
+      }
+      maxImageHeight={300}
+      maxImageWidth={300}
+      onChange={[Function]}
+      onDone={[Function]}
+      pluginProps={
+        Object {
+          "audio": Object {
+            "disabled": false,
+          },
+          "image": Object {
+            "disabled": false,
+          },
+          "video": Object {
+            "disabled": false,
+          },
+        }
+      }
+      toolbarOpts={
+        Object {
+          "position": "bottom",
+        }
+      }
+    />
+  </InputContainer>
 </ConfigLayout>
 `;

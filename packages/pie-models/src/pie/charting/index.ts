@@ -1,7 +1,15 @@
 import { PromptConfig } from '../../PromptConfig';
 import { CommonConfigSettings } from '../../CommonConfigSettings';
 import { PieModel } from '../../PieModel';
-import { ConfigureMaxImageDimensionsProp, ConfigureProp, ConfigurePropWithEnabled } from '../ConfigurationProp';
+import {
+  ConfigureLanguageOptionsProp,
+  ConfigureMathMLProp,
+  ConfigureMaxImageDimensionsProp,
+  ConfigureProp,
+  ConfigurePropWithEnabled,
+  EditableHtmlConfigureProp,
+  EditableHtmlPluginConfigureRequired,
+} from '../ConfigurationProp';
 
 interface Chart {
   /** Width for chart representation */
@@ -35,7 +43,7 @@ interface Category {
   /** Indicates category value */
   value: number;
 
-  /** Indicates if category label & value are interactive */
+  /** Indicates if category value is interactive */
   interactive: boolean;
 
   /** Indicates if category label is editable */
@@ -49,6 +57,26 @@ interface Category {
     value: 'correct' | 'incorrect';
     label: 'correct' | 'incorrect';
   };
+}
+
+interface AvailableChartTypes {
+  /** Indicates if bar chart is available and the label used for it. */
+  bar: string;
+
+  /** Indicates if histogram is available and the label used for it. */
+  histogram: string;
+
+  /** Indicates if line chart with dots is available and the label used for it. */
+  lineDot: string;
+
+  /** Indicates if line chart with crosses is available and the label used for it. */
+  lineCross: string;
+
+  /** Indicates if dot plot is available and the label used for it. */
+  dotPlot: string;
+
+  /** Indicates if line plot is available and the label used for it. */
+  linePlot: string;
 }
 
 interface Answer {
@@ -79,9 +107,6 @@ interface Placeholder {
 export interface ChartingPie extends PieModel {
   /** Indicates if user can add more categories */
   addCategoryEnabled: boolean;
-
-  /** Indicates default value for a new category's label */
-  categoryDefaultLabel: string;
 
   chartType: 'bar' | 'histogram' | 'lineCross' | 'lineDot' | 'dorPlot' | 'linePlot';
 
@@ -138,6 +163,25 @@ export interface ChartingPie extends PieModel {
 
   /** Indicates if Rubric is enabled */
   rubricEnabled: boolean;
+
+  /** Indicates if teacher can enable/disable data[]:interactive. Default value is false */
+  changeInteractiveEnabled: boolean;
+
+  /** Indicates if teacher can enable/disable data[]:editable. Default value is false */
+  changeEditableEnabled: boolean;
+
+  /** Indicates if teacher can enable/disable addCategoryEnabled. Default value is false */
+  changeAddCategoryEnabled: boolean;
+
+  /**
+   * Label for new category in correct response and player's chart
+   */
+  studentNewCategoryDefaultLabel: string;
+
+  /** Indicates the language of the component
+   * Supported options: en, es, en_US, en-US, es_ES, es-ES, es_MX, es-MX
+   */
+  language?: string;
 }
 
 interface LabelsPlaceholderConfigProp extends ConfigurePropWithEnabled {
@@ -162,20 +206,74 @@ interface LabelsPlaceholderConfigProp extends ConfigurePropWithEnabled {
   left?: string;
 }
 
+interface AuthorNewCategoryDefaults {
+  /**
+   * Indicates if the item has to be displayed in the Settings Panel
+   */
+  settings?: boolean;
+
+  /**
+   * Indicates the label for the new category
+   */
+  label?: string;
+
+  /** Indicates if new category is interactive */
+  interactive?: boolean;
+
+  /** Indicates if new category is editable */
+  editable?: boolean;
+}
+
+interface ChartingOption {
+  /**
+   * Indicates if the item has to be displayed in the Settings Panel
+   */
+  settings?: boolean;
+
+  /**
+   * Indicates the label for the option
+   */
+  authoringLabel?: string;
+
+  /**
+   * Indicates the label for the item that has to be displayed in the Settings Panel
+   */
+  settingsLabel?: string;
+}
+
+interface ChartingOptions {
+  /** Indicates if teacher can enable/disable data[]:interactive */
+  changeInteractive?: ChartingOption;
+
+  /**
+   *  Indicates if teacher can enable/disable data[]:editable
+   */
+  changeEditable?: ChartingOption;
+
+  /** Indicates if teacher can enable/disable addCategoryEnabled */
+  addCategory?: ChartingOption;
+}
+
 /**
  * Config Object for @pie-elements/charting
  * @additionalProperties false
  */
 export interface ChartingConfigure extends PromptConfig, CommonConfigSettings {
   /**
+   * Base editable html input configuration regarding plugins that are enabled/disabled
+   * E.g. audio, video, image
+   */
+  baseInputConfiguration?: EditableHtmlConfigureProp;
+
+  /**
    * Rationale configuration
    */
-  prompt?: ConfigureProp;
+  prompt?: EditableHtmlPluginConfigureRequired;
 
   /**
    * Prompt configuration
    */
-  rationale?: ConfigureProp;
+  rationale?: EditableHtmlPluginConfigureRequired;
 
   /**
    * Configuration for the author's spellcheck
@@ -210,12 +308,25 @@ export interface ChartingConfigure extends PromptConfig, CommonConfigSettings {
   /**
    * Teacher Instructions configuration
    */
-  teacherInstructions?: ConfigureProp;
+  teacherInstructions?: EditableHtmlPluginConfigureRequired;
 
   /**
    * Chart title configuration
    */
   title?: ConfigurePropWithEnabled;
+
+  /**
+   * Author instruction to build a new chart
+   */
+  instruction?: ConfigureProp;
+
+  /**
+   * Coonfiguration for new category in define chart
+   */
+  authorNewCategoryDefaults: AuthorNewCategoryDefaults;
+
+  /** Configuration for editable-html */
+  mathMlOptions?: ConfigureMathMLProp;
 
   /**
    * Maximum image width for input fields
@@ -231,4 +342,38 @@ export interface ChartingConfigure extends PromptConfig, CommonConfigSettings {
    * Rubric configuration - only relevant in environments that use pie-player-components
    */
   withRubric?: ConfigureProp;
+
+  /**
+   * Authoring view settings for Charting
+   */
+  chartingOptions?: ChartingOptions;
+
+  /**
+   * Indicates the chart types that are available
+   */
+  availableChartTypes?: AvailableChartTypes;
+
+  /**
+   * Indicates the label for the chart type
+   */
+  chartTypeLabel: string;
+
+  /**
+   * Language configuration
+   */
+  language?: ConfigurePropWithEnabled;
+  
+  /**
+   * Indicates the maximum character limit for X and Y axis labels
+   */
+  labelsCharactersLimit?: number
+
+  /**
+   * Language choices configuration
+   * Only available if language is enabled
+   */
+  languageChoices?: {
+    label: string;
+    options: ConfigureLanguageOptionsProp[];
+  };
 }

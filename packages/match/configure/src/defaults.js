@@ -21,13 +21,25 @@ export default {
       },
     ],
     scoringType: 'auto',
-    feedbackEnabled: true,
+    feedbackEnabled: false,
     promptEnabled: true,
     rationaleEnabled: true,
     teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true,
   },
   configuration: {
+    baseInputConfiguration: {
+      audio: { disabled: false },
+      video: { disabled: false },
+      image: { disabled: false },
+    },
+    rows: {
+      inputConfiguration: {
+        audio: { disabled: true },
+        video: { disabled: true },
+        image: { disabled: false },
+      },
+    },
     enableImages: {
       settings: true,
       label: 'Enable Images',
@@ -39,6 +51,11 @@ export default {
     },
     headers: {
       settings: true,
+      inputConfiguration: {
+        audio: { disabled: true },
+        video: { disabled: true },
+        image: { disabled: false },
+      },
     },
     layout: {
       settings: true,
@@ -59,10 +76,22 @@ export default {
     prompt: {
       settings: true,
       label: 'Prompt',
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
+      required: false,
     },
     rationale: {
       settings: true,
       label: 'Rationale',
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
+      required: false,
     },
     settingsPanelDisabled: false,
     spellCheck: {
@@ -81,6 +110,12 @@ export default {
     teacherInstructions: {
       settings: true,
       label: 'Teacher Instructions',
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
+      required: false
     },
     maxImageWidth: {
       teacherInstructions: 300,
@@ -103,6 +138,19 @@ export default {
     maxLengthQuestionsHeading: 100,
     maxAnswers: 5,
     maxLengthAnswers: 100,
-    maxLengthFirstColumnHeading: 100
+    maxLengthFirstColumnHeading: 100,
+    mathMlOptions: {
+      mmlOutput: false,
+      mmlEditing: false,
+    },
+    language: {
+      settings: false,
+      label: 'Specify Language',
+      enabled: false,
+    },
+    languageChoices: {
+      label: 'Language Choices',
+      options: [],
+    },
   },
 };

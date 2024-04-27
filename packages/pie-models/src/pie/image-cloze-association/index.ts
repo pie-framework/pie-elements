@@ -1,7 +1,21 @@
 import { PieModel } from '../../PieModel';
 import { PromptConfig } from '../../PromptConfig';
 import { CommonConfigSettings } from '../../CommonConfigSettings';
-import { ConfigureProp, ConfigureMaxImageDimensionsProp } from '../ConfigurationProp';
+import {
+  ConfigureProp,
+  ConfigureMaxImageDimensionsProp,
+  ConfigurePropWithEnabled,
+  ConfigureLanguageOptionsProp,
+  EditableHtmlConfigureProp,
+  EditableHtmlPluginConfigureRequired,
+} from '../ConfigurationProp';
+
+enum ChoicesPosition {
+  top = 'top',
+  bottom = 'bottom',
+  left = 'left',
+  right = 'right',
+}
 
 interface ResponseContainer {
   /** The x coordinate of the response container */
@@ -104,6 +118,22 @@ export interface ImageClozeAssociationPie extends PieModel {
 
   /** Indicates if Rubric is enabled */
   rubricEnabled: boolean;
+
+  /** Indicates if the possible responses have to be shuffled in the player */
+  shuffle?: boolean;
+
+  /** Indicates the language of the component
+   * Supported options: en, es, en_US, en-US, es_ES, es-ES, es_MX, es-MX
+   */
+  language?: string;
+
+  /** Indicates style options of the component
+   * Supported options: fontsize, possibilityListPosition (top, bottom, left, right)
+   */
+  uiStyle?: {
+    possibilityListPosition?: ChoicesPosition;
+    fontsize: string;
+  };
 }
 
 /**
@@ -111,6 +141,12 @@ export interface ImageClozeAssociationPie extends PieModel {
  * @additionalProperties false
  */
 export interface ImageClozeAssociationConfigure extends PromptConfig, CommonConfigSettings {
+  /**
+   * Base editable html input configuration regarding plugins that are enabled/disabled
+   * E.g. audio, video, image
+   */
+  baseInputConfiguration?: EditableHtmlConfigureProp;
+
   /**
    * Maximum image width for input fields
    */
@@ -134,10 +170,24 @@ export interface ImageClozeAssociationConfigure extends PromptConfig, CommonConf
   /**
    * Teacher Instructions configuration
    */
-  teacherInstructions?: ConfigureProp;
+  teacherInstructions?: EditableHtmlPluginConfigureRequired;
 
   /**
    * Rubric configuration - only relevant in environments that use pie-player-components
    */
   withRubric?: ConfigureProp;
+
+  /**
+   * Language configuration
+   */
+  language?: ConfigurePropWithEnabled;
+
+  /**
+   * Language choices configuration
+   * Only available if language is enabled
+   */
+  languageChoices?: {
+    label: string;
+    options: ConfigureLanguageOptionsProp[];
+  };
 }

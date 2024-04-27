@@ -1,20 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { DropTarget } from '@pie-lib/drag';
 import { withStyles } from '@material-ui/core';
-import { color } from '@pie-lib/render-ui';
+import { color } from '@pie-lib/pie-toolbox/render-ui';
+import { ICADroppablePlaceholder } from '@pie-lib/pie-toolbox/drag';
 
 import PossibleResponse from './possible-response';
-import c from './constants';
 
-const PossibleResponses = ({ canDrag, classes, connectDropTarget, data, isOverCurrent, onDragBegin, onDragEnd }) =>
-  connectDropTarget(
-    <div className={`${classes.base} ${isOverCurrent ? classes.active : ''}`}>
-      {data.map((item) => (
+const PossibleResponses = ({ canDrag, classes, data, onAnswerRemove, onDragBegin, onDragEnd }) => (
+  <div className={classes.base}>
+    <ICADroppablePlaceholder disabled={!canDrag} onRemoveAnswer={onAnswerRemove}>
+      {(data || []).map((item) => (
         <PossibleResponse canDrag={canDrag} key={item.id} data={item} onDragBegin={onDragBegin} onDragEnd={onDragEnd} />
       ))}
-    </div>,
-  );
+    </ICADroppablePlaceholder>
+  </div>
+);
 
 PossibleResponses.propTypes = {
   canDrag: PropTypes.bool.isRequired,
@@ -30,31 +30,12 @@ PossibleResponses.defaultProps = {
 };
 
 const styles = (theme) => ({
-  active: {
-    border: `1px solid ${color.primary()}`,
-  },
   base: {
     backgroundColor: color.background(),
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'center',
     padding: theme.spacing.unit * 2,
+    display: 'flex',
+    alignItems: 'center',
   },
 });
 
-const Styled = withStyles(styles)(PossibleResponses);
-
-const tileSource = {
-  hover(props, monitor) {
-    monitor.isOver({ shallow: true });
-  },
-  drop(props, monitor) {
-    const item = monitor.getItem();
-    props.onAnswerRemove(item);
-  },
-};
-
-export default DropTarget(c.types.response, tileSource, (connect, monitor) => ({
-  connectDropTarget: connect.dropTarget(),
-  isOverCurrent: monitor.isOver({ shallow: true }),
-}))(Styled);
+export default withStyles(styles)(PossibleResponses);

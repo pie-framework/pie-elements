@@ -1,7 +1,7 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import { GraphContainer, GridSetup } from '@pie-lib/graphing';
-import { AlertDialog } from '@pie-lib/config-ui';
+import { GraphContainer, GridSetup } from '@pie-lib/pie-toolbox/graphing';
+import { AlertDialog } from '@pie-lib/pie-toolbox/config-ui';
 import { MenuItem, Select, Typography, OutlinedInput } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import { applyConstraints, filterPlotableMarks, getGridValues, getLabelValues } from './utils';
@@ -11,13 +11,13 @@ const styles = (theme) => ({
   container: {
     display: 'flex',
     flexWrap: 'wrap',
-    marginBottom: theme.spacing.unit * 7,
+    marginBottom: theme.spacing.unit * 2.5,
   },
   gridConfigWrapper: {
     display: 'flex',
     flexDirection: 'column',
-    marginRight: theme.spacing.unit * 4,
-    marginBottom: theme.spacing.unit * 3,
+    marginRight: theme.spacing.unit * 3,
+    marginBottom: theme.spacing.unit * 2.5,
   },
   graphConfig: {
     display: 'flex',
@@ -29,12 +29,13 @@ const styles = (theme) => ({
   },
   gridConfig: {
     display: 'flex',
+    flexWrap: 'wrap',
     alignItems: 'center',
     width: '100%',
-    marginBottom: '16px',
+    marginBottom: theme.spacing.unit * 2.5,
   },
   gridConfigLabel: {
-    padding: '0 8px',
+    padding: `0 ${theme.spacing.unit}px`,
   },
   gridConfigSelect: {
     flex: '1',
@@ -43,12 +44,18 @@ const styles = (theme) => ({
 
 export class GraphingConfig extends React.Component {
   static propTypes = {
+    availableTools: PropTypes.array,
     classes: PropTypes.object.isRequired,
     authoring: PropTypes.object,
+    dimensionsEnabled: PropTypes.bool,
     graphDimensions: PropTypes.object,
     gridConfigurations: PropTypes.array,
+    labelsPlaceholders: PropTypes.object,
     model: PropTypes.object.isRequired,
     onChange: PropTypes.func.isRequired,
+    showLabels: PropTypes.bool,
+    showTitle: PropTypes.bool,
+    titlePlaceholder: PropTypes.string,
   };
 
   constructor(props) {
@@ -67,7 +74,6 @@ export class GraphingConfig extends React.Component {
     this.state = {
       gridValues,
       labelValues,
-      selectedGrid: 0,
       showPixelGuides: false,
       dialog: { isOpened: false },
       domain: { ...domain },
@@ -93,13 +99,15 @@ export class GraphingConfig extends React.Component {
     onChange({ ...model, title });
   };
 
-  onConfigChange = (config) => {
+  onConfigChange = (config, newSelectedGrid) => {
     const { model, onChange } = this.props;
+    const { defaultGridConfiguration: oldSelectedGrid = 0 } = model;
     const { gridValues: oldGridValues, labelValues: oldLabelValues, domain: oldDomain, range: oldRange } = this.state;
     const updatedModel = { ...model, ...config };
     const { answers, domain, includeAxes, graph, range, standardGrid } = updatedModel;
     const gridValues = { domain: [], range: [] };
     const labelValues = { domain: [], range: [] };
+    const selectedGrid = newSelectedGrid >= 0 ? newSelectedGrid : oldSelectedGrid;
 
     if (includeAxes) {
       const domainConstraints = applyConstraints(domain, graph.width, oldGridValues.domain, oldLabelValues.domain);
@@ -132,8 +140,14 @@ export class GraphingConfig extends React.Component {
             this.setState({ dialog: { isOpened: false } }, onChange({ ...model, domain: oldDomain, range: oldRange })),
           onConfirm: () => {
             this.setState(
-              { gridValues, labelValues, dialog: { isOpened: false }, domain: { ...domain }, range: { ...range } },
-              onChange({ ...updatedModel, answers: plotableAnswers }),
+              {
+                gridValues,
+                labelValues,
+                dialog: { isOpened: false },
+                domain: { ...domain },
+                range: { ...range },
+              },
+              onChange({ ...updatedModel, answers: plotableAnswers, defaultGridConfiguration: selectedGrid }),
             );
           },
         },
@@ -143,7 +157,7 @@ export class GraphingConfig extends React.Component {
     }
 
     this.setState({ gridValues, labelValues, domain: { ...domain }, range: { ...range } });
-    onChange(updatedModel);
+    onChange({ ...updatedModel, defaultGridConfiguration: selectedGrid });
   };
 
   onChangeView = (event, expanded) => {
@@ -155,12 +169,10 @@ export class GraphingConfig extends React.Component {
   };
 
   changeGridConfiguration = (event) => {
-    const { gridConfigurations, model, onChange } = this.props;
+    const { gridConfigurations } = this.props;
     const { value } = event.target;
-    const { label, ...updatedModel } = gridConfigurations[value] || {};
 
-    this.setState({ selectedGrid: value });
-    onChange({ ...model, ...updatedModel });
+    this.onConfigChange(gridConfigurations?.[value] || {}, value);
   };
 
   render() {
@@ -173,14 +185,27 @@ export class GraphingConfig extends React.Component {
       labelsPlaceholders,
       model,
       showLabels,
+      dimensionsEnabled,
       showTitle,
       titlePlaceholder,
+      mathMlOptions = {},
+      removeIncompleteTool,
     } = this.props;
-    const { arrows, backgroundMarks, coordinatesOnHover, domain, includeAxes, labels, range, standardGrid, title } =
-      model || {};
+    const {
+      arrows,
+      backgroundMarks,
+      coordinatesOnHover,
+      defaultGridConfiguration,
+      domain,
+      includeAxes,
+      labels,
+      range,
+      standardGrid,
+      title,
+    } = model || {};
     const graph = (model || {}).graph || {};
-    const { enabled: dimensionsEnabled, min, max, step } = graphDimensions || {};
-    const { dialog = {}, gridValues, labelValues, selectedGrid, showPixelGuides } = this.state;
+    const { min, max, step } = graphDimensions || {};
+    const { dialog = {}, gridValues, labelValues, showPixelGuides } = this.state;
 
     const sizeConstraints = {
       min: Math.max(150, min),
@@ -209,14 +234,15 @@ export class GraphingConfig extends React.Component {
           {gridConfigurations && gridConfigurations.length ? (
             <div className={classes.gridConfig}>
               <Typography component="div" variant="subheading" className={classes.gridConfigLabel}>
-                <span>Grid Configuration</span>
+                Grid Configuration
               </Typography>
+
               <Select
                 input={<OutlinedInput />}
                 className={classes.gridConfigSelect}
                 displayEmpty
                 onChange={this.changeGridConfiguration}
-                value={selectedGrid}
+                value={defaultGridConfiguration}
               >
                 {(gridConfigurations || []).map((config, index) => (
                   <MenuItem key={index} value={index}>
@@ -226,11 +252,11 @@ export class GraphingConfig extends React.Component {
               </Select>
             </div>
           ) : null}
+
           {displayGridSetup && (
             <GridSetup
               displayedFields={displayedFields}
               domain={domain}
-              dimensionsEnabled={dimensionsEnabled}
               gridValues={gridValues}
               includeAxes={includeAxes}
               labelValues={labelValues}
@@ -246,11 +272,11 @@ export class GraphingConfig extends React.Component {
 
         <div className={classes.graphConfig} key="graph">
           <Typography component="div" variant="subheading">
-            <span>Define Graph Attributes</span>
+            Define Graph Attributes
           </Typography>
 
           <Typography component="div" variant="body1" className={classes.subtitleText}>
-            <span>Use this interface to add/edit a title and/or labels, and to set background shapes</span>
+            Use this interface to add/edit a title and/or labels, and to set background shapes
           </Typography>
 
           <GraphContainer
@@ -275,6 +301,8 @@ export class GraphingConfig extends React.Component {
             title={title}
             titlePlaceholder={titlePlaceholder}
             toolbarTools={availableTools}
+            mathMlOptions={mathMlOptions}
+            removeIncompleteTool={removeIncompleteTool}
           />
         </div>
 

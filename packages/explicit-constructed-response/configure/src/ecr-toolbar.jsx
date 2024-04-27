@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
-import classNames from 'classnames';
 
 const findSlateNode = (key) => {
   return window.document.querySelector('[data-key="' + key + '"]');
@@ -17,7 +16,8 @@ export class ECRToolbar extends React.Component {
     onDone: PropTypes.func,
     onChangeResponse: PropTypes.func.isRequired,
     onToolbarDone: PropTypes.func.isRequired,
-    editor: PropTypes.object
+    editor: PropTypes.object,
+    maxLengthPerChoiceEnabled: PropTypes.bool,
   };
 
   state = {
@@ -71,8 +71,9 @@ export class ECRToolbar extends React.Component {
   onChange = (e) => this.setState({ markup: e.target.value });
 
   render() {
-    const { classes, node } = this.props;
+    const { classes, node, maxLengthPerChoiceEnabled } = this.props;
     const { markup, toolbarStyle } = this.state;
+    const inputProps = maxLengthPerChoiceEnabled ? {} : { maxLength: 25 };
 
     return (
       <div
@@ -91,23 +92,24 @@ export class ECRToolbar extends React.Component {
           onChange={this.onChange}
           onBlur={this.onDone}
           value={markup || node?.data?.value || ''}
+          inputProps={inputProps}
         />
       </div>
     );
   }
 }
 
-const StyledECRToolbar = withStyles({
+const StyledECRToolbar = withStyles((theme) => ({
   respArea: {
-    backgroundColor: '#fff',
+    backgroundColor: theme.palette.common.white,
   },
   input: {
-    backgroundColor: '#fff',
+    backgroundColor: theme.palette.common.white,
     padding: '10px 20px 10px 10px',
   },
   errorInput: {
-    border: '2px solid red',
+    border: `2px solid ${theme.palette.error.main}`,
   },
-})(ECRToolbar);
+}))(ECRToolbar);
 
 export default StyledECRToolbar;

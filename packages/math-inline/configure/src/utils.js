@@ -22,3 +22,8 @@ export const generateValidationMessage = (model = {}, config = {}) => {
 
   return 'Validation requirements:' + answersMessage + responseAreasMessage;
 };
+
+export const getPluginProps = (props = {}, baseInputConfiguration = {}) => ({
+  ...baseInputConfiguration,
+  ...props,
+});

@@ -1,10 +1,10 @@
 import React from 'react';
-import { Main } from '../main';
 import { shallow } from 'enzyme';
 
+import { Main } from '../main';
 import defaults from '../defaults';
 
-jest.mock('@pie-lib/config-ui', () => ({
+jest.mock('@pie-lib/pie-toolbox/config-ui', () => ({
   layout: {
     ConfigLayout: (props) => <div>{props.children}</div>,
   },

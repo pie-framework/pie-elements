@@ -1,3 +1,4 @@
+import { getPluginProps } from './utils';
 import * as React from 'react';
 import cx from 'classnames';
 import PropTypes from 'prop-types';
@@ -7,13 +8,13 @@ import AddRow from './add-row';
 import Row from './row';
 import debug from 'debug';
 import lodash from 'lodash';
-import EditableHTML, { DEFAULT_PLUGINS } from '@pie-lib/editable-html';
+import { EditableHtml, DEFAULT_PLUGINS } from '@pie-lib/pie-toolbox/editable-html';
 
 const log = debug('pie-elements:match:configure');
 
 const styles = (theme) => ({
   container: {
-    marginTop: theme.spacing.unit * 2,
+    marginBottom: theme.spacing.unit * 2.5,
     display: 'flex',
     flexDirection: 'column',
   },
@@ -21,8 +22,8 @@ const styles = (theme) => ({
     display: 'flex',
     alignItems: 'center',
     flex: 1,
-    width: 'fit-content',
-    borderBottom: '2px solid lightgray',
+    width: '100%',
+    borderBottom: `2px solid ${theme.palette.grey['A100']}`,
     paddingBottom: theme.spacing.unit * 2,
     marginTop: theme.spacing.unit * 2,
     marginBottom: theme.spacing.unit,
@@ -31,6 +32,7 @@ const styles = (theme) => ({
     flex: 1,
     display: 'flex',
     justifyContent: 'center',
+    alignItems: 'center',
     flexDirection: 'column',
     '&> div': {
       width: '150px',
@@ -65,11 +67,19 @@ const styles = (theme) => ({
       fontWeight: 'bold',
     },
   },
-  errorText: {
+  marginBottom: {
+    marginBottom: theme.typography.fontSize - 2 + theme.spacing.unit,
+  },
+  columnErrorText: {
     fontSize: theme.typography.fontSize - 2,
-    color: 'red',
+    color: theme.palette.error.main,
     paddingTop: `${theme.spacing.unit}px !important`,
     width: 'fit-content !important',
+  },
+  errorText: {
+    fontSize: theme.typography.fontSize - 2,
+    color: theme.palette.error.main,
+    paddingBottom: theme.spacing.unit,
   },
 });
 
@@ -90,6 +100,7 @@ class AnswerConfigBlock extends React.Component {
       delete: PropTypes.func.isRequired,
     }),
     toolbarOpts: PropTypes.object,
+    spellCheck: PropTypes.bool,
   };
 
   moveRow = (from, to) => {
@@ -155,17 +166,21 @@ class AnswerConfigBlock extends React.Component {
   render() {
     const { classes, model, onAddRow, imageSupport, configuration, toolbarOpts, spellCheck, uploadSoundSupport } =
       this.props;
-    const { headers = {}, maxImageWidth = {}, maxImageHeight = {} } = configuration || {};
+    const {
+      baseInputConfiguration = {},
+      headers = {},
+      rows = {},
+      maxImageWidth = {},
+      maxImageHeight = {},
+      mathMlOptions = {},
+      minQuestions,
+    } = configuration || {};
     const { errors } = model || {};
     const { correctResponseError, rowsErrors, columnsErrors, noOfRowsError, columnsLengthError } = errors || {};
 
     const filteredDefaultPlugins = (DEFAULT_PLUGINS || []).filter(
       (p) => p !== 'table' && p !== 'bulleted-list' && p !== 'numbered-list',
     );
-    const labelPlugins = {
-      audio: { disabled: true },
-      video: { disabled: true },
-    };
 
     const defaultImageMaxWidth = maxImageWidth && maxImageWidth.prompt;
     const defaultImageMaxHeight = maxImageHeight && maxImageHeight.prompt;
@@ -175,9 +190,6 @@ class AnswerConfigBlock extends React.Component {
         <Typography type="body1" component="div">
           Click on the labels to edit or remove. Set the correct answers by clicking each correct answer per row.
         </Typography>
-        {correctResponseError && <div className={classes.errorText}>{correctResponseError}</div>}
-        {noOfRowsError && <div className={classes.errorText}>{noOfRowsError}</div>}
-        {columnsLengthError && <div className={classes.errorText}>{columnsLengthError}</div>}
 
         <div
           className={classes.rowTable}
@@ -192,20 +204,22 @@ class AnswerConfigBlock extends React.Component {
                     [classes.questionText]: idx === 0,
                   })}
                 >
-                  <EditableHTML
+                  <EditableHtml
                     onChange={this.onHeaderChange(idx)}
                     markup={header}
-                    className={classes.headerInput}
+                    className={columnsErrors && !columnsErrors[idx] ? classes.marginBottom : classes.headerInput}
                     label={'column label'}
                     activePlugins={filteredDefaultPlugins}
-                    pluginProps={labelPlugins}
+                    pluginProps={getPluginProps(headers?.inputConfiguration, baseInputConfiguration)}
                     autoWidthToolbar
                     spellCheck={spellCheck}
                     uploadSoundSupport={uploadSoundSupport}
                     languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
                     error={columnsErrors && columnsErrors[idx]}
                   />
-                  {columnsErrors && columnsErrors[idx] && <div className={classes.errorText}>{columnsErrors[idx]}</div>}
+                  {columnsErrors && columnsErrors[idx] && (
+                    <div className={classes.columnErrorText}>{columnsErrors[idx]}</div>
+                  )}
                 </div>
               ))}
             <div className={classes.deleteIcon} />
@@ -228,8 +242,15 @@ class AnswerConfigBlock extends React.Component {
               maxImageWidth={(maxImageWidth && maxImageWidth.rowTitles) || defaultImageMaxWidth}
               maxImageHeight={(maxImageHeight && maxImageHeight.rowTitles) || defaultImageMaxHeight}
               uploadSoundSupport={uploadSoundSupport}
+              mathMlOptions={mathMlOptions}
+              minQuestions={minQuestions}
+              inputConfiguration={getPluginProps(rows?.inputConfiguration, baseInputConfiguration)}
             />
           ))}
+
+          {correctResponseError && <div className={classes.errorText}>{correctResponseError}</div>}
+          {noOfRowsError && <div className={classes.errorText}>{noOfRowsError}</div>}
+          {columnsLengthError && <div className={classes.errorText}>{columnsLengthError}</div>}
 
           <AddRow onAddClick={onAddRow} />
         </div>

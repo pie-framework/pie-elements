@@ -5,8 +5,8 @@ import { withStyles } from '@material-ui/core/styles';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 
-import { withDragContext } from '@pie-lib/drag';
-import { color } from '@pie-lib/render-ui';
+import { withDragContext } from '@pie-lib/pie-toolbox/drag';
+import { color } from '@pie-lib/pie-toolbox/render-ui';
 
 import TraitsHeader from './traitsHeader';
 import TraitTile from './trait';
@@ -15,25 +15,26 @@ import { DecreaseMaxPoints, DeleteScale, DeleteTrait, InfoDialog } from './modal
 
 const AdjustedBlockWidth = BlockWidth + 2 * 8; // 8 is padding
 
-const styles = {
+const styles = (theme) => ({
   scaleWrapper: {
     display: 'flex',
     flexDirection: 'column',
-    margin: '12px 0',
     wordBreak: 'break-word',
-    padding: `16px 0 16px ${DragHandleSpace}px`,
     position: 'relative',
+    marginBottom: theme.spacing.unit * 2.5,
   },
   maxPoints: {
     width: '300px',
-    margin: '16px 0 32px',
+    marginTop: theme.spacing.unit * 2,
+    marginBottom: theme.spacing.unit * 4,
   },
   trait: {
     background: color.secondaryBackground(),
-    margin: '16px 0',
-    padding: '16px',
+    marginTop: theme.spacing.unit * 2,
+    marginBottom: theme.spacing.unit * 2,
+    padding: theme.spacing.unit * 2,
   },
-};
+});
 
 export class Scale extends React.Component {
   state = {
@@ -55,6 +56,16 @@ export class Scale extends React.Component {
     }
   }
 
+  componentDidUpdate(prevProps) {
+    if (
+      prevProps.scale.maxPoints !== this.props.scale.maxPoints ||
+      prevProps.showDescription !== this.props.showDescription ||
+      prevProps.excludeZero !== this.props.excludeZero
+    ) {
+      this.setState({ showRight: this.secondaryBlockRef.scrollWidth - this.secondaryBlockRef.offsetWidth });
+    }
+  }
+
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (
       nextProps.excludeZero !== this.props.excludeZero ||
@@ -72,7 +83,7 @@ export class Scale extends React.Component {
   // Max Points
   updateMaxPointsFieldValue = ({ target }) => {
     const { scale, scaleIndex, onScaleChanged } = this.props || {};
-    const { maxPoints, scorePointsLabels, traits } = scale;
+    const { maxPoints } = scale;
 
     const numberValue = parseInt(target.value, 10);
 
@@ -85,19 +96,7 @@ export class Scale extends React.Component {
     if (numberValue < maxPoints) {
       this.showDecreaseMaxPointsModal({ newMaxPoints: numberValue });
     } else {
-      for (let i = 0; i <= numberValue; i++) {
-        if (!scorePointsLabels[i]) {
-          scorePointsLabels.push('');
-        }
-
-        traits.forEach((trait, index) => {
-          if (!traits[index].scorePointsDescriptors[i]) {
-            traits[index].scorePointsDescriptors.push('');
-          }
-        });
-      }
-
-      onScaleChanged(scaleIndex, { maxPoints: numberValue, scorePointsLabels, traits });
+      onScaleChanged(scaleIndex, { maxPoints: numberValue });
     }
   };
 
@@ -192,7 +191,7 @@ export class Scale extends React.Component {
   };
 
   onTraitDropped = (source, newIndex) => {
-    const { scale, scaleIndex, onScaleChanged, maxNoOfTraits, minNoOfTraits } = this.props || {};
+    const { scale, scaleIndex, onScaleChanged } = this.props || {};
     const { traits } = scale || {};
     const { index: oldIndex } = source;
     const cup = traits[oldIndex];
@@ -230,6 +229,7 @@ export class Scale extends React.Component {
   render() {
     const {
       classes,
+      errors,
       scale,
       scaleIndex,
       showStandards,
@@ -243,6 +243,11 @@ export class Scale extends React.Component {
       width,
       uploadSoundSupport,
       maxPointsEnabled,
+      mathMlOptions = {},
+      maxMaxPoints,
+      expandedPluginProps = {},
+      labelPluginProps = {},
+      imageSupport = {},
     } = this.props || {};
 
     const { maxPoints, scorePointsLabels, traitLabel, traits } = scale || {};
@@ -257,6 +262,10 @@ export class Scale extends React.Component {
       showInfoDialog,
       infoDialogText,
     } = this.state;
+
+    const { traitsErrors, scorePointsErrors } = errors || {};
+    const currentScaleTraitsErrors = (traitsErrors && traitsErrors[scaleIndex]) || {};
+    const currentScalePointsLabelsErrors = (scorePointsErrors && scorePointsErrors[scaleIndex]) || {};
 
     const scorePointsValues = [];
     const secondaryBlockWidth = parseInt(width) - DragHandleSpace - PrimaryBlockWidth || 320; // 320 is minWidth
@@ -281,6 +290,7 @@ export class Scale extends React.Component {
             }
           }}
           key={'header-key'}
+          errors={currentScalePointsLabelsErrors}
           traitLabel={traitLabel}
           scorePointsValues={scorePointsValues}
           scorePointsLabels={scorePointsLabels}
@@ -299,13 +309,20 @@ export class Scale extends React.Component {
           spellCheck={spellCheck}
           uploadSoundSupport={uploadSoundSupport}
           maxPointsEnabled={maxPointsEnabled}
+          mathMlOptions={mathMlOptions}
+          maxMaxPoints={maxMaxPoints}
+          expandedPluginProps={expandedPluginProps}
+          labelPluginProps={labelPluginProps}
+          imageSupport={imageSupport}
         />
 
         {traits.map((trait, index) => (
           <TraitTile
             key={index}
             index={index}
+            error={currentScaleTraitsErrors && currentScaleTraitsErrors[index]}
             trait={trait}
+            traitLabel={traitLabel || 'Trait'}
             scorePointsValues={scorePointsValues}
             scorePointsLabels={scorePointsLabels}
             onTraitRemoved={() => this.showDeleteTraitModal(index)}
@@ -313,11 +330,16 @@ export class Scale extends React.Component {
             onTraitDropped={this.onTraitDropped}
             showStandards={showStandards}
             showDescription={showDescription}
+            maxPoints={maxPoints}
             currentPosition={currentPosition}
             enableDragAndDrop={enableDragAndDrop}
             secondaryBlockWidth={secondaryBlockWidth}
             spellCheck={spellCheck}
             uploadSoundSupport={uploadSoundSupport}
+            mathMlOptions={mathMlOptions}
+            expandedPluginProps={expandedPluginProps}
+            labelPluginProps={labelPluginProps}
+            imageSupport={imageSupport}
           />
         ))}
 
@@ -325,7 +347,7 @@ export class Scale extends React.Component {
           width={`${AdjustedBlockWidth / 2}px`}
           show={showLeft}
           onClick={this.decreasePosition}
-          left={`${PrimaryBlockWidth + DragHandleSpace}px`}
+          left={`${PrimaryBlockWidth}px`}
           showLevelTagInput={showLevelTagInput}
         >
           <ArrowBackIosIcon />
@@ -370,6 +392,7 @@ export class Scale extends React.Component {
 
 Scale.propTypes = {
   classes: PropTypes.object,
+  errors: PropTypes.object,
   scale: PropTypes.shape({
     maxPoints: PropTypes.number,
     scorePointsLabels: PropTypes.arrayOf(PropTypes.string),
@@ -394,6 +417,8 @@ Scale.propTypes = {
   uploadSoundSupport: PropTypes.object,
   showScorePointLabels: PropTypes.bool,
   enableDragAndDrop: PropTypes.bool,
+  expandedPluginProps: PropTypes.object,
+  labelPluginProps: PropTypes.object,
 };
 
 export default withDragContext(withStyles(styles)(Scale));

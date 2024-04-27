@@ -1,4 +1,3 @@
-import React from 'react';
 
 var createElementFromHTML = function createElementFromHTML() {
   var htmlString = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
@@ -29,7 +28,7 @@ var prepareText = function prepareText(text) {
   var txtDom = createElementFromHTML(text);
 
   var div = document.createElement('div');
-  div.innerHTML = "<div separator='true'>".concat(txtDom.innerHTML, '</div>');
+  div.innerHTML = '<div separator=\'true\'>'.concat(txtDom.innerHTML, '</div>');
   txtDom = div;
 
   var allDomElements = Array.from(txtDom.querySelectorAll('*'));
@@ -102,7 +101,7 @@ export const generateValidationMessage = (config) => {
     `\nThere should be at least ${minTokens} ` + (maxTokens ? `and at most ${maxTokens} ` : '') + 'tokens defined.';
 
   const selectionsMessage =
-    `\nThere should be at least 1 ` +
+    '\nThere should be at least 1 ' +
     (maxSelections ? `and at most ${maxSelections} ` : '') +
     'token' +
     (maxSelections ? 's' : '') +

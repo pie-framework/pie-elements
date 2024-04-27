@@ -32,7 +32,6 @@ const styleElement = (index) => ({
 
 export default {
   pointChooser: {
-    backgroundColor: 'white',
     display: 'flex',
     justifyContent: 'space-between',
     borderRadius: '4px',
@@ -61,6 +60,9 @@ export default {
   controls: {
     display: 'flex',
     paddingTop: '7px',
+  },
+  buttonText: {
+    textWrap: 'nowrap',
   },
   pf: styleElement(0),
   lff: styleElement(1),

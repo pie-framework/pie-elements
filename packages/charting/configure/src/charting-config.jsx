@@ -1,18 +1,20 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { Chart } from '@pie-lib/charting';
-import { AlertDialog } from '@pie-lib/config-ui';
+import { Chart } from '@pie-lib/pie-toolbox/charting';
+import { AlertDialog } from '@pie-lib/pie-toolbox/config-ui';
 import Checkbox from '@material-ui/core/Checkbox';
 
 import Typography from '@material-ui/core/Typography';
 
 const styles = (theme) => ({
   container: {
-    marginTop: theme.spacing.unit * 3,
-    marginBottom: theme.spacing.unit * 3,
+    marginBottom: theme.spacing.unit * 2.5,
     display: 'flex',
     flex: 1,
+  },
+  title: {
+    marginBottom: theme.spacing.unit,
   },
   column: {
     flex: 1,
@@ -51,6 +53,11 @@ export class ChartingConfig extends React.Component {
     model: PropTypes.object.isRequired,
     onChange: PropTypes.func.isRequired,
     charts: PropTypes.array,
+    labelsPlaceholders: PropTypes.object,
+    titlePlaceholder: PropTypes.object,
+    showPixelGuides: PropTypes.bool,
+    authorNewCategoryDefaults: PropTypes.object,
+    chartingOptions: PropTypes.object,
   };
 
   constructor(props) {
@@ -81,7 +88,7 @@ export class ChartingConfig extends React.Component {
         dialog: {
           open: true,
           title: 'Warning',
-          text: `This change will remove any correct answer categories that are not part of the initial item configuration.`,
+          text: 'This change will remove any correct answer categories that are not part of the initial item configuration.',
           onConfirm: () =>
             this.handleAlertDialog(
               false,
@@ -111,13 +118,24 @@ export class ChartingConfig extends React.Component {
     });
 
   render() {
-    const { classes, model, charts, labelsPlaceholders, titlePlaceholder, showPixelGuides } = this.props;
+    const {
+      classes,
+      model,
+      charts,
+      labelsPlaceholders,
+      titlePlaceholder,
+      showPixelGuides,
+      authorNewCategoryDefaults,
+      chartingOptions,
+      mathMlOptions = {},
+      labelsCharactersLimit,
+    } = this.props;
     const { dialog } = this.state;
     const { domain = {}, range = {} } = model || {};
 
     return (
       <div>
-        Define Initial Chart Attributes
+        <div className={classes.title}>Define Initial Chart Attributes</div>
         <div className={classes.container}>
           <div className={classes.column} key="graph">
             <Typography component="div" type="body1">
@@ -126,6 +144,7 @@ export class ChartingConfig extends React.Component {
 
             <Chart
               defineChart={true}
+              chartingOptions={chartingOptions}
               showPixelGuides={showPixelGuides}
               chartType={model.chartType}
               size={model.graph}
@@ -142,20 +161,26 @@ export class ChartingConfig extends React.Component {
               onChangeTitle={this.changeTitle}
               onChangeLabels={this.changeLabel}
               addCategoryEnabled={true}
-              categoryDefaultLabel={model.categoryDefaultLabel}
+              changeInteractiveEnabled={model.changeInteractiveEnabled}
+              changeEditableEnabled={model.changeEditableEnabled}
+              categoryDefaultLabel={authorNewCategoryDefaults?.label}
+              categoryDefaults={authorNewCategoryDefaults}
               labelsPlaceholders={labelsPlaceholders}
               titlePlaceholder={titlePlaceholder?.label}
+              mathMlOptions={mathMlOptions}
+              labelsCharactersLimit={labelsCharactersLimit}
             />
-            <div>
-              <Checkbox
-                checked={model.addCategoryEnabled}
-                onChange={(e) => {
-                  this.changeAddRemoveEnabled(e.target.checked);
-                }}
-              />
-              Student can add categories
-            </div>
-
+            {model.changeAddCategoryEnabled && (
+              <div>
+                <Checkbox
+                  checked={model.addCategoryEnabled}
+                  onChange={(e) => {
+                    this.changeAddRemoveEnabled(e.target.checked);
+                  }}
+                />
+                {chartingOptions?.addCategory?.authoringLabel}
+              </div>
+            )}
             <AlertDialog
               open={dialog.open}
               title={dialog.title}

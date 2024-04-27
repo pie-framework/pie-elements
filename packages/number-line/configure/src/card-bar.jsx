@@ -32,14 +32,13 @@ CardBar.propTypes = {
   mini: PropTypes.bool,
   header: PropTypes.string,
   children: PropTypes.node,
+  info: PropTypes.any,
 };
 
 const styles = (theme) => ({
   cardBar: {
     display: 'flex',
     justifyContent: 'space-between',
-    paddingBottom: theme.spacing.unit * 2,
-    paddingTop: theme.spacing.unit * 2,
   },
   button: {
     margin: 0,

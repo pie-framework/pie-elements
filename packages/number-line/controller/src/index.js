@@ -5,8 +5,8 @@ import isEqual from 'lodash/isEqual';
 import isEqualWith from 'lodash/isEqualWith';
 import merge from 'lodash/merge';
 import omitBy from 'lodash/omitBy';
-import { getFeedbackForCorrectness } from '@pie-lib/feedback';
-import { partialScoring } from '@pie-lib/controller-utils';
+import { getFeedbackForCorrectness } from '@pie-lib/pie-toolbox/feedback';
+import { partialScoring } from '@pie-lib/pie-toolbox/controller-utils';
 import * as math from 'mathjs';
 
 import defaults from './defaults';
@@ -270,6 +270,7 @@ export function model(question, session, env) {
             message: feedbackMessage,
           },
           colorContrast: (env.accessibility && env.accessibility.colorContrast) || 'black_on_white',
+          language: normalizedQuestion.language,
         };
 
         resolve(omitBy(out, (v) => !v));
@@ -295,27 +296,42 @@ export const createCorrectResponseSession = (question, env) => {
   });
 };
 
+// remove all html tags
+const getInnerText = (html) => (html || '').replaceAll(/<[^>]*>/g, '');
+
+// remove all html tags except img and iframe
+const getContent = (html) => (html || '').replace(/(<(?!img|iframe)([^>]+)>)/gi, '');
+
 export const validate = (model = {}, config = {}) => {
-  // TODO: add configurable validation props after authoring is updated
   const { graph, correctResponse } = model || {};
+  const { maxMaxElements = 20, numberLineDimensions: { min: minWidth = 200, max: maxWidth = 800 } = {} } = config || {};
   const { width, domain, maxNumberOfPoints } = graph || {};
   const { min, max } = domain || {};
   const errors = {};
 
-  if (width < 200 || width > 800) {
-    errors.widthError = 'Width should be a value between 200 and 800.';
+  ['teacherInstructions', 'prompt'].forEach((field) => {
+    if (config[field]?.required && !getContent(model[field])) {
+      errors[field] = 'This field is required.';
+    }
+  });
+
+  if (width < minWidth || width > maxWidth) {
+    errors.widthError = `Width should be a value between ${minWidth} and ${maxWidth}.`;
   }
 
-  if (min < -100000 || min > 10000 || max < -100000 || max > 10000) {
-    errors.domainError = 'Min and max must both be in the range [-100000, 10000].';
+  const MIN_DOMAIN = -100000;
+  const MAX_DOMAIN = 100000;
+
+  if (min < MIN_DOMAIN || min > MAX_DOMAIN || max < MIN_DOMAIN || max > MAX_DOMAIN) {
+    errors.domainError = `Min and max values must both be in the range [${MIN_DOMAIN}, ${MAX_DOMAIN}].`;
   }
 
   if (min >= max) {
-    errors.maxError = 'Max must be greater than min.';
+    errors.maxError = 'Max value must be greater than min value.';
   }
 
-  if (maxNumberOfPoints < 1 || maxNumberOfPoints > 20) {
-    errors.pointsError = 'Max number of elements should be between 1 and 20.';
+  if (maxNumberOfPoints < 1 || maxNumberOfPoints > maxMaxElements) {
+    errors.pointsError = `Max number of elements should be between 1 and ${maxMaxElements}.`;
   }
 
   if (correctResponse && correctResponse.length === 0) {

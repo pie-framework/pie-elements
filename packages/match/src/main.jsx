@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
-import { color, Collapsible, Feedback, hasText, PreviewPrompt } from '@pie-lib/render-ui';
+import { CorrectAnswerToggle } from '@pie-lib/pie-toolbox/correct-answer-toggle';
+import { color, Collapsible, Feedback, hasText, PreviewPrompt } from '@pie-lib/pie-toolbox/render-ui';
 import AnswerGrid from './answer-grid';
 import { withStyles } from '@material-ui/core/styles';
 
@@ -28,36 +28,36 @@ export class Main extends React.Component {
   }
 
   generateAnswers = (model) => {
-    const { config } = model;
     const answers = {};
 
-    config.rows.forEach((row) => {
-      answers[row.id] = new Array(config.layout - 1).fill(false);
+    model.rows?.forEach((row) => {
+      answers[row.id] = new Array(model.layout - 1).fill(false);
     });
 
     return answers;
   };
 
   isAnswerRegenerationRequired = (nextProps) => {
+    const { model: { choiceMode, layout, rows } = {} } = this.props;
+    const { session: { answers } = {} } = nextProps;
     let isRequired = false;
 
-    if (this.props.model.config.choiceMode !== nextProps.model.config.choiceMode) {
+    if (choiceMode !== nextProps.model.choiceMode) {
       isRequired = true;
     }
 
-    if (this.props.model.config.layout !== nextProps.model.config.layout) {
+    if (layout !== nextProps.model.layout) {
       isRequired = true;
     }
 
     if (
-      this.props.model.config.rows.length !== nextProps.model.config.rows.length ||
-      (nextProps.session.answers &&
-        nextProps.model.config.rows.length !== Object.keys(nextProps.session.answers).length)
+      rows.length !== nextProps.model.rows.length ||
+      (answers && nextProps.model.rows.length !== Object.keys(answers).length)
     ) {
       isRequired = true;
     }
 
-    return isRequired || !nextProps.session.answers;
+    return isRequired || !answers;
   };
 
   UNSAFE_componentWillReceiveProps(nextProps) {
@@ -106,7 +106,7 @@ export class Main extends React.Component {
   render() {
     const { model, classes } = this.props;
     const { showCorrect, session } = this.state;
-    const { correctness = {} } = model;
+    const { correctness = {}, language } = model;
     const showCorrectAnswerToggle = correctness.correctness && correctness.correctness !== 'correct';
 
     return (
@@ -129,27 +129,32 @@ export class Main extends React.Component {
           </div>
         )}
 
-        <div className={classes.main}>
-          <CorrectAnswerToggle show={showCorrectAnswerToggle} toggled={showCorrect} onToggle={this.toggleShowCorrect} />
-          {showCorrectAnswerToggle && <br />}
-          <AnswerGrid
-            showCorrect={showCorrect}
-            correctAnswers={model.correctResponse}
-            disabled={model.disabled}
-            view={model.view}
-            onAnswerChange={this.onAnswerChange}
-            choiceMode={model.config.choiceMode}
-            answers={showCorrect ? model.correctResponse : session.answers}
-            headers={model.config.headers}
-            rows={model.config.rows}
-          />
-        </div>
+        <CorrectAnswerToggle
+          language={language}
+          show={showCorrectAnswerToggle}
+          toggled={showCorrect}
+          onToggle={this.toggleShowCorrect}
+        />
+
+        <AnswerGrid
+          showCorrect={showCorrect}
+          correctAnswers={model.correctResponse}
+          disabled={model.disabled}
+          view={model.view}
+          onAnswerChange={this.onAnswerChange}
+          choiceMode={model.choiceMode}
+          answers={showCorrect ? model.correctResponse || {} : session.answers}
+          headers={model.headers}
+          rows={model.rows}
+        />
+
         {model.rationale && hasText(model.rationale) && (
           <Collapsible labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }} className={classes.collapsible}>
             <PreviewPrompt prompt={model.rationale} />
           </Collapsible>
         )}
-        {model.feedback && <Feedback correctness={model.correctness.correctness} feedback={model.feedback} />}
+
+        {model.feedback && <Feedback correctness={correctness.correctness} feedback={model.feedback} />}
       </div>
     );
   }
@@ -159,23 +164,15 @@ const styles = (theme) => ({
   mainContainer: {
     color: color.text(),
     backgroundColor: color.background(),
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
   },
   main: {
     width: '100%',
   },
-  toggle: {
-    paddingBottom: theme.spacing.unit * 3,
-  },
   prompt: {
     verticalAlign: 'middle',
-    marginBottom: theme.spacing.unit * 2,
   },
   collapsible: {
-    paddingTop: theme.spacing.unit * 2,
-    paddingBottom: theme.spacing.unit * 2,
+    marginBottom: theme.spacing.unit * 2,
   },
 });
 

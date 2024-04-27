@@ -1,6 +1,6 @@
 {
   "name": "@pie-element/passage",
-  "version": "1.8.1-beta.3+e0e0490c5",
+  "version": "2.10.0",
   "publishConfig": {
     "access": "public"
   },
@@ -11,13 +11,13 @@
   "dependencies": {
     "@material-ui/core": "^3.9.2",
     "@pie-framework/pie-player-events": "^0.1.0",
-    "@pie-lib/render-ui": "^4.14.12",
+    "@pie-lib/pie-toolbox": "1.16.1-next.28",
     "classnames": "^2.2.5",
     "prop-types": "^15.6.1",
     "react": "^16.8.1",
     "react-dom": "^16.8.1"
   },
-  "gitHead": "e0e0490c5b040c67f504c0bdfd00f6b834a28481",
+  "gitHead": "0e14ff981bcdc8a89a0e58484026496701bfdbc3",
   "scripts": {
     "postpublish": "../../scripts/postpublish"
   },

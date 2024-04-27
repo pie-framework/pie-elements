@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { InputContainer, NumberTextField } from '@pie-lib/config-ui';
+import { InputContainer, NumberTextField } from '@pie-lib/pie-toolbox/config-ui';
 import PropTypes from 'prop-types';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -27,13 +27,9 @@ const styles = (theme) => ({
   flexContainer: {
     display: 'flex',
     alignItems: 'center',
-    marginTop: theme.spacing.unit,
   },
   titleText: {
-    fontFamily: 'Cerebri Sans',
     fontSize: theme.typography.fontSize + 2,
-    lineHeight: '19px',
-    color: '#495B8F',
     marginRight: theme.spacing.unit,
   },
   tooltip: {
@@ -72,12 +68,12 @@ class GeneralConfigBlock extends React.Component {
 
   render() {
     const { classes, model, configuration } = this.props;
-    const { layout = {}, choiceMode = {} } = configuration || {};
+    const { layout = {}, choiceMode = {}, maxAnswers } = configuration || {};
 
-    const validationMessage = generateValidationMessage(model);
+    const validationMessage = generateValidationMessage(model, configuration);
 
     return (
-      <>
+      <React.Fragment>
         <div className={classes.flexContainer}>
           <Typography className={classes.titleText}>Define questions</Typography>
           <Tooltip
@@ -98,7 +94,7 @@ class GeneralConfigBlock extends React.Component {
                 <NumberTextField
                   type="number"
                   min={3}
-                  max={10}
+                  max={maxAnswers || 10}
                   value={model.layout}
                   onChange={(e, v) => this.onChangeColumns('layout', v)}
                   suffix={'Columns'}
@@ -119,7 +115,7 @@ class GeneralConfigBlock extends React.Component {
             )}
           </div>
         </div>
-      </>
+      </React.Fragment>
     );
   }
 }

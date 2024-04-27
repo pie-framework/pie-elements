@@ -2,7 +2,15 @@ import { PromptConfig } from '../../PromptConfig';
 import { CommonConfigSettings } from '../../CommonConfigSettings';
 import { PieModel } from '../../PieModel';
 import { ComplexFeedbackType } from '../../Feedback';
-import { ConfigureProp } from '../ConfigurationProp';
+import {
+  ConfigureLanguageOptionsProp,
+  ConfigureMathMLProp,
+  ConfigureProp,
+  ConfigurePropWithEnabled,
+  EditableHtmlConfigureProp,
+  EditableHtmlPluginConfigure,
+  EditableHtmlPluginConfigureRequired,
+} from '../ConfigurationProp';
 
 interface ResponseDefault {
   /** Indicates the response type */
@@ -58,11 +66,32 @@ interface Ticks {
 
   /** larger tick - These ticks have labels. */
   major: number;
+
+  /** Contains tick interval type Integer, Fraction, Decimal */
+  tickIntervalType: string;
+
+  /** Integer representation of minor. */
+  integerTick: number;
+
+  /** Decimal representation of minor. */
+  decimalTick: number;
+
+  /** Fraction representation of minor. */
+  fractionTick: string;
 }
 
 interface Arrows {
   left: boolean;
   right: boolean;
+}
+
+interface NumberLineDimensions {
+  settings: boolean;
+  label: string;
+  enabled: boolean;
+  min: number;
+  max: number;
+  step: number;
 }
 
 interface NumberLineDomainConfiguration {
@@ -120,6 +149,9 @@ interface NumberLineDomainConfiguration {
     REP: boolean;
   };
 
+  /** If enabled, allows user to set width for number line. */
+  widthEnabled: boolean;
+
   /** Array of initial responses */
   initialElements: ResponseArray;
 
@@ -155,6 +187,11 @@ export interface NumberLinePie extends PieModel {
    * @default: 'bottom'
    */
   toolbarEditorPosition?: 'bottom' | 'top';
+
+  /** Indicates the language of the component
+   * Supported options: en, es, en_US, en-US, es_ES, es-ES, es_MX, es-MX
+   */
+  language?: string;
 }
 
 /**
@@ -163,12 +200,58 @@ export interface NumberLinePie extends PieModel {
  */
 export interface NumberLineConfigure extends PromptConfig, CommonConfigSettings {
   /**
-   * Configuration for the prompt
+   * Base editable html input configuration regarding plugins that are enabled/disabled
+   * E.g. audio, video, image
    */
-  prompt?: ConfigureProp;
+  baseInputConfiguration?: EditableHtmlConfigureProp;
 
   /**
-   * Configuration for the author's spellcheck
+   * Configuration for the instruction
    */
+  instruction?: ConfigurePropWithEnabled;
+
+  /**
+   * Configuration for the prompt
+   */
+  prompt?: EditableHtmlPluginConfigureRequired;
+
+  /**
+   * Configuration for the teacher instructions
+   */
+  teacherInstructions?: EditableHtmlPluginConfigureRequired;
+
+  /**
+   * Configuration for the title
+   */
+  title?: EditableHtmlPluginConfigure;
+
+  /** Hold default values for number line width like min , max and step. */
+  numberLineDimensions?: NumberLineDimensions;
+
+  /** Configuration for the author's spellcheck */
   spellCheck?: ConfigureProp;
+
+  /** Holds numeric value for maximum number of elements allowed on number line. */
+  maxMaxElements?: number;
+
+  /** Hide buttons in point configuration module (Select All / None). */
+  hidePointConfigButtons?: boolean;
+
+  /** Array of available tools for author. */
+  availableTools?: string[];
+
+  /** Configuration for editable-html */
+  mathMlOptions?: ConfigureMathMLProp;
+
+  /** Language configuration */
+  language?: ConfigurePropWithEnabled;
+
+  /**
+   * Language choices configuration
+   * Only available if language is enabled
+   */
+  languageChoices?: {
+    label: string;
+    options: ConfigureLanguageOptionsProp[];
+  };
 }

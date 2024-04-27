@@ -4,17 +4,17 @@ import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
 import ChoicePreview from './choice-preview';
 import { DropTarget } from 'react-dnd';
-import { uid, PlaceHolder } from '@pie-lib/drag';
+import { uid, PlaceHolder } from '@pie-lib/pie-toolbox/drag';
 import debug from 'debug';
 
 const log = debug('@pie-element:categorize:configure');
 
-const Helper = withStyles(() => ({
+const Helper = withStyles((theme) => ({
   helper: {
     display: 'flex',
     alignItems: 'center',
-    fontSize: '12px',
-    color: 'rgba(0,0,0,0.4)',
+    fontSize: theme.typography.fontSize - 2,
+    color: `rgba(${theme.palette.common.black}, 0.4)`,
     width: '100%',
     height: '100%',
   },
@@ -103,7 +103,7 @@ export const spec = {
 
     if (item.from && item.alternateResponseIndex === props.alternateResponseIndex) {
       props.onMoveChoice(item.choiceId, item.from, props.categoryId, item.choiceIndex, item.alternateResponseIndex);
-    } else if (!item.from){
+    } else if (!item.from) {
       // avoid dropping choice when user tries to move it to an alternate with other index
       props.onDropChoice(item, props.categoryId);
     }

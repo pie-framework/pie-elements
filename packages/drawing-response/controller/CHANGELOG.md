@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response-controller@3.3.0...@pie-element/drawing-response-controller@3.4.0) (2024-03-28)
+
+
+### Features
+
+* **drawing-response:** add required fields functionality PD-3589 ([8f57ade](https://github.com/pie-framework/pie-elements/commit/8f57ade13c83d226d1b58e389f844f3519eb7337))
+
+
+
+
+
+# [3.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response-controller@3.2.9...@pie-element/drawing-response-controller@3.3.0) (2023-06-13)
+
+
+### Features
+
+* **drawing-response:** add translator PD-2795 ([371fbce](https://github.com/pie-framework/pie-elements/commit/371fbceba849a1777770c9aba7584d914c60728c))
+
+
+
+
+
 ## [3.2.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response-controller@3.2.8...@pie-element/drawing-response-controller@3.2.9) (2022-12-07)
 
 

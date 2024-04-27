@@ -1063,7 +1063,7 @@ describe('getScore partial scoring - NOT editable - randomly interactive', () =>
 
 describe('createCorrectResponseSession', () => {
   const question = {
-    categoryDefaultLabel: 'Category',
+    studentNewCategoryDefaultLabel: 'Category',
     chartType: 'lineCross',
     correctAnswer: {
       data: [
@@ -1204,6 +1204,139 @@ describe('createCorrectResponseSession', () => {
     });
 
     expect(noResult).toBeNull();
+  });
+});
+
+const mockFetchSession = jest.fn();
+const question = {
+  addCategoryEnabled: true,
+  chartType: 'bar',
+  data: [
+    {
+      interactive: true,
+      value: 3,
+      label: 'Three',
+    },
+    {
+      interactive: true,
+      value: 0,
+      label: 'Four',
+    },
+    {
+      interactive: true,
+      value: 0,
+      label: 'Five',
+    },
+  ],
+  correctAnswer: {
+    data: [
+      {
+        value: 3,
+        label: 'Three',
+      },
+      {
+        value: 2,
+        label: 'Four',
+      },
+      {
+        value: 4,
+        label: 'Five',
+      },
+      {
+        value: 0,
+        label: 'Six',
+      },
+      {
+        value: 1,
+        label: 'Seven',
+      },
+      {
+        value: 1,
+        label: 'Eight',
+      },
+    ],
+  },
+  domain: {
+    label: 'Number of Letters',
+  },
+  graph: {
+    height: 500,
+    width: 500,
+  },
+  prompt:
+    '<p>Ms. Byrd shows her third grade students how to make a bar graph. She uses the number of letters in some of her students&#39; first names. The students&#39; names she uses for the bar graph are shown below.</p><p><img alt="image 2eade8e8a2fa445dae432c417e8a2731" id="2eade8e8a2fa445dae432c417e8a2731" src="https://storage.googleapis.com/pie-prod-221718-assets/image/cf2c334e-340c-4523-9a47-cb835fddfefe"></p><p>Ms. Byrd starts the bar graph by writing some of the labels.&#160;Finish the bar graph below by dragging the bars to show the correct number of first name letters of all the students and adding labels as needed.</p><p></p><p></p><p></p>',
+  range: {
+    label: 'Number of Students',
+    max: 6,
+    labelStep: 0.25,
+    step: 0.25,
+    min: 0,
+  },
+  rationale: null,
+  title: 'Number of Letters in First Name',
+  disabled: false,
+  teacherInstructions: null,
+};
+
+mockFetchSession.mockResolvedValue({
+  answer: [
+    {
+      interactive: false,
+      value: 3,
+      label: 'Three',
+    },
+    {
+      value: 2,
+      label: 'Four',
+      interactive: false,
+    },
+    {
+      value: 4,
+      label: 'Five',
+      interactive: false,
+    },
+    {
+      interactive: false,
+      value: 0.25,
+      label: 'six',
+    },
+    {
+      value: 1,
+      label: 'seven',
+      interactive: false,
+    },
+    {
+      interactive: false,
+      value: 1,
+      label: 'eight',
+    },
+  ],
+});
+
+// Test to check if getScore correctly processes the session data from API
+describe('getScore with API session data', () => {
+  it('correctly processes session data from API in evaluate mode', async () => {
+    const session = await mockFetchSession();
+    const env = { mode: 'evaluate', partialScoring: true };
+    const mod = await model(question, session, env);
+
+    // Simulate the API call and process the data
+    const scoreResult = getScore(mod, session, env);
+
+    // Check if the answers from getScore match the correctedAnswer in mod
+    expect(scoreResult.answers).toEqual(mod.correctedAnswer);
+  });
+
+  it('correctly processes session data from API in view mode', async () => {
+    const session = await mockFetchSession();
+    const env = { mode: 'view', partialScoring: true };
+    const mod = await model(question, session, env);
+
+    // Simulate the API call and process the data
+    const scoreResult = getScore(mod, session, env);
+
+    // Check if the answers from getScore match the correctedAnswer in mod
+    expect(scoreResult.answers).toEqual(setCorrectness(mod.correctedAnswer, true));
   });
 });
 

@@ -7,6 +7,9 @@ import {
   ConfigurePropWithEnabled,
   ConfigureMaxImageDimensionsProp,
   ConfigureWithForceProp,
+  ConfigureMathMLProp,
+  EditableHtmlPluginConfigure,
+  EditableHtmlConfigureProp, EditableHtmlPluginConfigureRequired,
 } from '../ConfigurationProp';
 
 interface Dimensions {
@@ -162,7 +165,12 @@ export interface ExtendedTextEntryConfigure extends PromptConfig, CommonConfigSe
   /**
    * Teacher Instructions configuration
    */
-  teacherInstructions?: ConfigureProp;
+  teacherInstructions?: EditableHtmlPluginConfigureRequired;
+
+  /**
+   * Prompt configuration
+   */
+  prompt?: EditableHtmlPluginConfigureRequired;
 
   /**
    * Configuration for the author's spellcheck
@@ -193,4 +201,13 @@ export interface ExtendedTextEntryConfigure extends PromptConfig, CommonConfigSe
    * Rubric configuration - only relevant in environments that use pie-player-components
    */
   withRubric?: ConfigureWithForceProp;
+
+  /** Configuration for editable-html */
+  mathMlOptions?: ConfigureMathMLProp;
+
+  /**
+   * Base editable html input configuration regarding plugins that are enabled/disabled
+   * E.g. audio, video, image
+   */
+  baseInputConfiguration?: EditableHtmlConfigureProp;
 }

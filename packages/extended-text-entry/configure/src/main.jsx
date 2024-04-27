@@ -1,9 +1,9 @@
 import React from 'react';
-import { FeedbackSelector, InputContainer, settings, layout } from '@pie-lib/config-ui';
+import { FeedbackSelector, InputContainer, settings, layout } from '@pie-lib/pie-toolbox/config-ui';
 import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
-import EditableHtml, { ALL_PLUGINS } from '@pie-lib/editable-html';
+import { EditableHtml, ALL_PLUGINS } from '@pie-lib/pie-toolbox/editable-html';
 
 const { Panel, toggle, numberFields, dropdown } = settings;
 
@@ -52,6 +52,7 @@ export class Main extends React.Component {
     const { model, classes, configuration, imageSupport, onConfigurationChanged, onModelChanged, uploadSoundSupport } =
       this.props;
     const {
+      contentDimensions = {},
       dimensions = {},
       equationEditor = {},
       feedback = {},
@@ -68,9 +69,18 @@ export class Main extends React.Component {
       maxImageHeight = {},
       multiple = {},
       withRubric = {},
+      mathMlOptions = {},
+      baseInputConfiguration = {},
     } = configuration || {};
-    const { feedbackEnabled, promptEnabled, spellCheckEnabled, teacherInstructionsEnabled, toolbarEditorPosition } =
-      model || {};
+    const {
+      errors = {},
+      feedbackEnabled,
+      promptEnabled,
+      spellCheckEnabled,
+      teacherInstructionsEnabled,
+      toolbarEditorPosition,
+    } = model || {};
+    const { prompt: promptError, teacherInstructions: teacherInstructionsError } = errors;
 
     const defaultImageMaxWidth = maxImageWidth && maxImageWidth.prompt;
     const defaultImageMaxHeight = maxImageHeight && maxImageHeight.prompt;
@@ -113,11 +123,21 @@ export class Main extends React.Component {
     const panelProperties = {
       teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
       studentInstructionsEnabled: studentInstructions.settings && toggle(studentInstructions.label),
-      rubricEnabled: !withRubric?.forceEnabled && withRubric?.settings && toggle(withRubric?.label),
+      rubricEnabled: withRubric?.settings && toggle(withRubric?.label),
+    };
+
+    const getPluginProps = (props) => {
+      return Object.assign(
+          {
+            ...baseInputConfiguration,
+          },
+          props || {},
+      );
     };
 
     return (
       <layout.ConfigLayout
+        dimensions={contentDimensions}
         hideSettings={settingsPanelDisabled}
         settings={
           <Panel
@@ -132,59 +152,65 @@ export class Main extends React.Component {
           />
         }
       >
-        <div>
-          {teacherInstructionsEnabled && (
-            <InputContainer label={teacherInstructions.label} className={classes.promptContainer}>
-              <EditableHtml
-                className={classes.prompt}
-                markup={model.teacherInstructions || ''}
-                onChange={this.changeTeacherInstructions}
-                imageSupport={imageSupport}
-                nonEmpty={false}
-                toolbarOpts={toolbarOpts}
-                spellCheck={spellCheckEnabled}
-                maxImageWidth={(maxImageWidth && maxImageWidth.teacherInstructions) || defaultImageMaxWidth}
-                maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
-                uploadSoundSupport={uploadSoundSupport}
-                languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
-              />
-            </InputContainer>
-          )}
+        {teacherInstructionsEnabled && (
+          <InputContainer label={teacherInstructions.label} className={classes.promptContainer}>
+            <EditableHtml
+              className={classes.prompt}
+              markup={model.teacherInstructions || ''}
+              onChange={this.changeTeacherInstructions}
+              imageSupport={imageSupport}
+              nonEmpty={false}
+              error={teacherInstructionsError}
+              toolbarOpts={toolbarOpts}
+              spellCheck={spellCheckEnabled}
+              maxImageWidth={(maxImageWidth && maxImageWidth.teacherInstructions) || defaultImageMaxWidth}
+              maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
+              uploadSoundSupport={uploadSoundSupport}
+              languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+              mathMlOptions={mathMlOptions}
+              pluginProps={getPluginProps(teacherInstructions?.inputConfiguration)}
+            />
+            {teacherInstructionsError && <div className={classes.errorText}>{teacherInstructionsError}</div>}
+          </InputContainer>
+        )}
 
-          {promptEnabled && (
-            <InputContainer label={prompt.label} className={classes.promptContainer}>
-              <EditableHtml
-                activePlugins={ALL_PLUGINS}
-                className={classes.prompt}
-                markup={model.prompt || ''}
-                onChange={this.onPromptChange}
-                imageSupport={imageSupport}
-                nonEmpty={false}
-                toolbarOpts={toolbarOpts}
-                spellCheck={spellCheckEnabled}
-                maxImageWidth={defaultImageMaxWidth}
-                maxImageHeight={defaultImageMaxHeight}
-                uploadSoundSupport={uploadSoundSupport}
-                languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
-              />
-            </InputContainer>
-          )}
+        {promptEnabled && (
+          <InputContainer label={prompt.label} className={classes.promptContainer}>
+            <EditableHtml
+              activePlugins={ALL_PLUGINS}
+              className={classes.prompt}
+              markup={model.prompt || ''}
+              onChange={this.onPromptChange}
+              imageSupport={imageSupport}
+              nonEmpty={false}
+              error={promptError}
+              toolbarOpts={toolbarOpts}
+              spellCheck={spellCheckEnabled}
+              maxImageWidth={defaultImageMaxWidth}
+              maxImageHeight={defaultImageMaxHeight}
+              uploadSoundSupport={uploadSoundSupport}
+              languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+              mathMlOptions={mathMlOptions}
+              pluginProps={getPluginProps(prompt?.inputConfiguration)}
+            />
+            {promptError && <div className={classes.errorText}>{promptError}</div>}
+          </InputContainer>
+        )}
 
-          {feedbackEnabled && (
-            <React.Fragment>
-              <Typography className={classes.header} variant="subheading">
-                Feedback
-              </Typography>
+        {feedbackEnabled && (
+          <React.Fragment>
+            <Typography className={classes.header} variant="subheading">
+              Feedback
+            </Typography>
 
-              <FeedbackSelector
-                label="When submitted, show"
-                feedback={model.feedback || defaultFeedback}
-                onChange={this.changeFeedback}
-                toolbarOpts={toolbarOpts}
-              />
-            </React.Fragment>
-          )}
-        </div>
+            <FeedbackSelector
+              label="When submitted, show"
+              feedback={model.feedback || defaultFeedback}
+              onChange={this.changeFeedback}
+              toolbarOpts={toolbarOpts}
+            />
+          </React.Fragment>
+        )}
       </layout.ConfigLayout>
     );
   }
@@ -198,11 +224,9 @@ export default withStyles((theme) => ({
     marginBottom: theme.spacing.unit * 2,
     width: '100%',
   },
-  promptInput: {
-    width: '100%',
-    marginBottom: theme.spacing.unit,
-  },
-  field: {
-    width: '200px',
+  errorText: {
+    fontSize: theme.typography.fontSize - 2,
+    color: theme.palette.error.main,
+    paddingTop: theme.spacing.unit,
   },
 }))(Main);

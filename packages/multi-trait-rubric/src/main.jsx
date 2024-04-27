@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import Scale from './scale';
 import Link from '@material-ui/core/Link';
 import Collapse from '@material-ui/core/Collapse';
+import { color } from '@pie-lib/pie-toolbox/render-ui';
 
 class Main extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -22,16 +22,21 @@ class Main extends React.Component {
   }
 
   render() {
-    const { model, animationsDisabled } = this.props;
-    const { halfScoring, scales, visible, pointLabels, description, standards } = model || {};
+    const { model } = this.props;
+    let { animationsDisabled } = this.props;
+    const { halfScoring, scales, visible, pointLabels, description, standards, arrowsDisabled } = model || {};
+    animationsDisabled = animationsDisabled || model.animationsDisabled;
 
     if (!scales || !visible) {
       return null;
     }
 
     const rubricItem = (
-      <div style={{ fontFamily: 'Cerebri Sans' }}>
-        {halfScoring ? <p>* Half-point or in-between scores are permitted under this rubric.</p> : null}
+      <div style={{ fontFamily: 'Cerebri Sans', color: color.text(), backgroundColor: color.background() }}>
+        {halfScoring ? (
+          <div style={{ marginBottom: '16px' }}>* Half-point or in-between scores are permitted under this rubric.</div>
+        ) : null}
+
         {scales.map((scale, scaleIndex) => (
           <Scale
             key={`scale_${scaleIndex}`}
@@ -40,25 +45,24 @@ class Main extends React.Component {
             showPointsLabels={pointLabels}
             showDescription={description}
             showStandards={standards}
+            arrowsDisabled={arrowsDisabled}
           />
         ))}
       </div>
     );
 
+    if (animationsDisabled) {
+      return rubricItem;
+    }
+
     return (
-      <div>
-        {!animationsDisabled ? (
-          <React.Fragment>
-            <Link href={this.dudUrl} onClick={this.toggleRubric}>
-              {this.state.linkPrefix} Rubric
-            </Link>
-            <Collapse in={this.state.rubricOpen} timeout="auto">
-              {rubricItem}
-            </Collapse>
-          </React.Fragment>
-        ) : (
-          rubricItem
-        )}
+      <div style={{ color: color.text(), backgroundColor: color.background() }}>
+        <Link style={{ backgroundColor: color.background() }} href={this.dudUrl} onClick={this.toggleRubric}>
+          {this.state.linkPrefix} Rubric
+        </Link>
+        <Collapse style={{ marginTop: '16px' }} in={this.state.rubricOpen} timeout="auto">
+          {rubricItem}
+        </Collapse>
       </div>
     );
   }
@@ -87,6 +91,7 @@ Main.propTypes = {
     pointLabels: PropTypes.bool,
     description: PropTypes.bool,
     standards: PropTypes.bool,
+    animationsDisabled: PropTypes.bool,
   }),
   animationsDisabled: PropTypes.bool,
 };

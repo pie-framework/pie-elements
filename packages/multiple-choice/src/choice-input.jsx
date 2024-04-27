@@ -4,14 +4,14 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 
 import Checkbox from '@material-ui/core/Checkbox';
-import { Feedback, color, PreviewPrompt } from '@pie-lib/render-ui';
+import { Feedback, color, PreviewPrompt } from '@pie-lib/pie-toolbox/render-ui';
 import FeedbackTick from './feedback-tick';
 import Radio from '@material-ui/core/Radio';
 import classNames from 'classnames';
 
 const CLASS_NAME = 'multiple-choice-component';
 
-const styleSheet = () => ({
+const styleSheet = (theme) => ({
   row: {
     display: 'flex',
     alignItems: 'center',
@@ -24,11 +24,14 @@ const styleSheet = () => ({
     flex: 1,
     '& label': {
       color: color.text(),
+      '& > span':{
+        fontSize: 'inherit',
+      }
     },
   },
   horizontalLayout: {
     [`& .${CLASS_NAME}`]: {
-      paddingRight: '8px',
+      paddingRight: theme.spacing.unit,
     },
   },
 });
@@ -71,7 +74,7 @@ const inputStyles = {
 };
 
 export const StyledCheckbox = withStyles(inputStyles)((props) => {
-  const { correctness, classes, checked, onChange, disabled, accessibility } = props;
+  const { correctness, classes, checked, onChange, disabled, accessibility, value, id } = props;
   const key = (k) => (correctness ? `${correctness}-${k}` : k);
 
   const resolved = {
@@ -80,10 +83,13 @@ export const StyledCheckbox = withStyles(inputStyles)((props) => {
     disabled: classes[key('disabled')],
   };
 
-  const miniProps = { checked, onChange, disabled };
+  const miniProps = { checked, onChange, disabled, value };
+
   return (
     <Checkbox
+      id={id}
       aria-label={accessibility}
+      aria-checked={checked}
       {...miniProps}
       className={CLASS_NAME}
       classes={{
@@ -96,7 +102,7 @@ export const StyledCheckbox = withStyles(inputStyles)((props) => {
 });
 
 export const StyledRadio = withStyles(inputStyles)((props) => {
-  const { correctness, classes, checked, onChange, disabled, accessibility } = props;
+  const { correctness, classes, checked, onChange, disabled, accessibility, value, id } = props;
   const key = (k) => (correctness ? `${correctness}-${k}` : k);
 
   const resolved = {
@@ -105,11 +111,13 @@ export const StyledRadio = withStyles(inputStyles)((props) => {
     disabled: classes[key('disabled')],
   };
 
-  const miniProps = { checked, onChange, disabled };
+  const miniProps = { checked, onChange, disabled, value };
 
   return (
     <Radio
+      id={id}
       aria-label={accessibility}
+      aria-checked={checked}
       {...miniProps}
       className={CLASS_NAME}
       classes={{
@@ -139,6 +147,7 @@ export class ChoiceInput extends React.Component {
     hideTick: PropTypes.bool,
     isEvaluateMode: PropTypes.bool,
     choicesLayout: PropTypes.oneOf(['vertical', 'grid', 'horizontal']),
+    updateSession: PropTypes.func,
   };
 
   static defaultProps = {
@@ -151,13 +160,19 @@ export class ChoiceInput extends React.Component {
   constructor(props) {
     super(props);
     this.onToggleChoice = this.onToggleChoice.bind(this);
+    this.choiceId = this.generateChoiceId();
   }
 
-  onToggleChoice() {
-    this.props.onChange({
+  onToggleChoice(event) {
+    this.props.onChange(event);
+    this.props.updateSession({
       value: this.props.value,
       selected: !this.props.checked,
     });
+  }
+
+  generateChoiceId() {
+    return 'choice-' + (Math.random() * 10000).toFixed();
   }
 
   render() {
@@ -167,7 +182,6 @@ export class ChoiceInput extends React.Component {
       displayKey,
       feedback,
       label,
-      checked,
       correctness,
       classes,
       className,
@@ -176,6 +190,8 @@ export class ChoiceInput extends React.Component {
       hideTick,
       isEvaluateMode,
       choicesLayout,
+      value,
+      checked,
     } = this.props;
 
     const Tag = choiceMode === 'checkbox' ? StyledCheckbox : StyledRadio;
@@ -185,24 +201,40 @@ export class ChoiceInput extends React.Component {
       [classes.horizontalLayout]: choicesLayout === 'horizontal',
     });
 
+    const choicelabel = (
+      <>
+        {displayKey ? (
+          <span className={classes.row}>
+            {displayKey}.{'\u00A0'}
+            <PreviewPrompt className="label" prompt={label} tagName="span" />
+          </span>
+        ) : (
+          <PreviewPrompt className="label" prompt={label} tagName="span" />
+        )}
+      </>
+    );
+
     return (
       <div className={classNames(className, 'corespring-' + classSuffix, 'choice-input')}>
         <div className={classes.row}>
           {!hideTick && isEvaluateMode && <FeedbackTick correctness={correctness} />}
           <div className={classNames(holderClassNames, 'checkbox-holder')}>
             <StyledFormControlLabel
-              disabled={disabled}
-              label={displayKey ? displayKey + '. ' : ''}
+              label={choicelabel}
+              value={value}
+              htmlFor={this.choiceId}
               control={
                 <Tag
                   accessibility={accessibility}
+                  disabled={disabled}
                   checked={checked}
                   correctness={correctness}
+                  value={value}
+                  id={this.choiceId}
                   onChange={this.onToggleChoice}
                 />
               }
             />
-            <PreviewPrompt className="label" onClick={this.onToggleChoice} prompt={label} tagName="span" />
           </div>
         </div>
         {rationale && <PreviewPrompt className="rationale" defaultClassName="rationale" prompt={rationale} />}

@@ -9,7 +9,7 @@ export default {
     spanishInput: false,
     specialInput: false,
     equationEditor: 'Grade 8 - HS',
-    feedbackEnabled: true,
+    feedbackEnabled: false,
     rationaleEnabled: true,
     promptEnabled: true,
     teacherInstructionsEnabled: true,
@@ -19,6 +19,11 @@ export default {
     toolbarEditorPosition: 'bottom',
   },
   configuration: {
+    baseInputConfiguration: {
+      audio: { disabled: false },
+      video: { disabled: false },
+      image: { disabled: false },
+    },
     dimensions: {
       settings: true,
       label: 'Text-Entry Display Size',
@@ -70,10 +75,22 @@ export default {
     prompt: {
       settings: true,
       label: 'Prompt',
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
+      required: false,
     },
     teacherInstructions: {
       settings: true,
       label: 'Teacher Instructions',
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
+      required: false,
     },
     maxImageWidth: {
       teacherInstructions: 300,
@@ -86,6 +103,10 @@ export default {
     withRubric: {
       settings: false,
       label: 'Add Rubric',
+    },
+    mathMlOptions: {
+      mmlOutput: false,
+      mmlEditing: false,
     },
   },
 };

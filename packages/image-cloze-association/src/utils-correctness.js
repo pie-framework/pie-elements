@@ -1,7 +1,7 @@
 const getAllCorrectAnswers = (answers, responses) =>
-  answers.map((answer) => ({
+  (answers || []).map((answer) => ({
     ...answer,
-    isCorrect: (responses[answer.containerIndex].images || []).includes(answer.value),
+    isCorrect: (responses[answer.containerIndex] && responses[answer.containerIndex].images || []).includes(answer.value),
   }));
 
 const getValidAnswer = (answer, response) =>
@@ -20,7 +20,7 @@ const getUniqueCorrectAnswers = (answers, validResponses) => {
       valuesToParse.shift();
       // mark duplicates as incorrect
       valuesToParse.forEach((value, index) => {
-        finalAnswers = finalAnswers.map((finalAnswer) => {
+        finalAnswers = (finalAnswers || []).map((finalAnswer) => {
           if (finalAnswer.id === value.id) {
             let valid = getValidAnswer(finalAnswer, validResponses);
 
@@ -40,8 +40,9 @@ const getUniqueCorrectAnswers = (answers, validResponses) => {
 export const getUnansweredAnswers = (answers, validation) => {
   const { validResponse: { value } = {} } = validation;
 
-  const unansweredAnswers = (value || []).reduce((unanswered, response, index) => {
+  return (value || []).reduce((unanswered, response, index) => {
     const isAnswered = !!answers.find((answer) => answer.containerIndex === index);
+    response.images = response.images || [];
 
     if (!isAnswered) {
       return [
@@ -50,7 +51,7 @@ export const getUnansweredAnswers = (answers, validation) => {
           id: `unanswered-${index}`,
           value: response.images[0] || '',
           containerIndex: index,
-          isCorrect: false,
+          isCorrect: !response.images.length ? undefined : false,
           hidden: true,
         },
       ];
@@ -58,8 +59,6 @@ export const getUnansweredAnswers = (answers, validation) => {
 
     return unanswered;
   }, []);
-
-  return unansweredAnswers;
 };
 
 export const getAnswersCorrectness = (answers, validation) => {
@@ -74,7 +73,7 @@ export const getAnswersCorrectness = (answers, validation) => {
 
   // Look for alternate correct responses if there are incorrect responses.
   if (noOfCorrect < uniqueAnswers.length && altResponses && altResponses.length) {
-    const altUniqueStack = altResponses.map((altResponse) => {
+    const altUniqueStack = (altResponses || []).map((altResponse) => {
       const altValue = altResponse.value;
 
       const altAllCorrect = getAllCorrectAnswers(answers, altValue);

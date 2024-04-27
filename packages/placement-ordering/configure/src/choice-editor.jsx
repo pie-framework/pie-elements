@@ -9,8 +9,8 @@ import uniqueId from 'lodash/uniqueId';
 import shuffle from 'lodash/shuffle';
 import isEqual from 'lodash/isEqual';
 import Button from '@material-ui/core/Button';
-import { InputContainer } from '@pie-lib/render-ui';
-import { AlertDialog } from '@pie-lib/config-ui';
+import { InputContainer } from '@pie-lib/pie-toolbox/render-ui';
+import { AlertDialog } from '@pie-lib/pie-toolbox/config-ui';
 
 function findFreeChoiceSlot(choices) {
   let slot = 1;
@@ -118,13 +118,16 @@ class ChoiceEditor extends React.Component {
       add: PropTypes.func.isRequired,
       delete: PropTypes.func.isRequired,
     }),
-    disableImages: PropTypes.bool,
+    maxImageHeight: PropTypes.object,
+    maxImageWidth: PropTypes.object,
     toolbarOpts: PropTypes.object,
+    pluginProps: PropTypes.object,
     placementArea: PropTypes.bool,
     singularChoiceLabel: PropTypes.string,
     pluralChoiceLabel: PropTypes.string,
     choicesLabel: PropTypes.string,
     errors: PropTypes.object,
+    spellCheck: PropTypes.bool,
   };
 
   state = { warning: { open: false } };
@@ -229,8 +232,8 @@ class ChoiceEditor extends React.Component {
       correctResponse,
       choices,
       imageSupport,
-      disableImages,
       toolbarOpts,
+      pluginProps,
       singularChoiceLabel,
       pluralChoiceLabel,
       choicesLabel,
@@ -238,6 +241,7 @@ class ChoiceEditor extends React.Component {
       maxImageWidth,
       maxImageHeight,
       errors,
+      mathMlOptions = {},
     } = this.props;
     const { warning } = this.state;
     const { choicesErrors, orderError } = errors || {};
@@ -270,14 +274,15 @@ class ChoiceEditor extends React.Component {
               onDelete={this.onDelete.bind(this, choice)}
               onChoiceChange={this.onChoiceChange}
               onDropChoice={(source, index) => this.onDropChoice(ordering, choice, source, index)}
-              disableImages={disableImages}
               toolbarOpts={toolbarOpts}
+              pluginProps={pluginProps}
               choices={choices}
               choicesLabel={choicesLabel}
               spellCheck={spellCheck}
               maxImageWidth={maxImageWidth}
               maxImageHeight={maxImageHeight}
               error={choicesErrors?.[choice.id] || (orderError && ' ') || null}
+              mathMlOptions={mathMlOptions}
             />
           ))}
         </div>
@@ -319,9 +324,7 @@ class ChoiceEditor extends React.Component {
 
 const styles = (theme) => ({
   allToggle: {},
-  choiceEditor: {
-    marginTop: theme.spacing.unit,
-  },
+  choiceEditor: {},
   controls: {
     display: 'flex',
     alignItems: 'center',
@@ -333,7 +336,7 @@ const styles = (theme) => ({
     fill: theme.palette.primary[500],
   },
   addButtonRoot: {
-    marginTop: theme.spacing.unit * 3,
+    marginTop: theme.spacing.unit * 2.5,
     paddingHorizontal: theme.spacing.unit * 1.5,
   },
   addButtonLabel: {
@@ -349,12 +352,11 @@ const styles = (theme) => ({
   },
   columnLabel: {
     width: '100%',
-    paddingTop: theme.spacing.unit * 3,
-    marginTop: theme.spacing.unit * 2,
+    paddingTop: theme.spacing.unit * 2,
   },
   errorText: {
     fontSize: theme.typography.fontSize - 2,
-    color: 'red',
+    color: theme.palette.error.main,
     paddingTop: theme.spacing.unit,
   },
 });

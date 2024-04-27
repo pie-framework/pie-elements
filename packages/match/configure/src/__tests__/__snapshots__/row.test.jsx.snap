@@ -21,7 +21,7 @@ exports[`AnswerConfigBlock render snapshot 1`] = `
         className="AnswerConfigBlock-rowItem-10 AnswerConfigBlock-questionText-12"
         key="0"
       >
-        <EditableHtml
+        <Component
           activePlugins={Array []}
           autoWidthToolbar={true}
           className="AnswerConfigBlock-headerInput-14"
@@ -43,6 +43,9 @@ exports[`AnswerConfigBlock render snapshot 1`] = `
               "audio": Object {
                 "disabled": true,
               },
+              "image": Object {
+                "disabled": false,
+              },
               "video": Object {
                 "disabled": true,
               },
@@ -54,7 +57,7 @@ exports[`AnswerConfigBlock render snapshot 1`] = `
         className="AnswerConfigBlock-rowItem-10"
         key="1"
       >
-        <EditableHtml
+        <Component
           activePlugins={Array []}
           autoWidthToolbar={true}
           className="AnswerConfigBlock-headerInput-14"
@@ -76,6 +79,9 @@ exports[`AnswerConfigBlock render snapshot 1`] = `
               "audio": Object {
                 "disabled": true,
               },
+              "image": Object {
+                "disabled": false,
+              },
               "video": Object {
                 "disabled": true,
               },
@@ -87,7 +93,7 @@ exports[`AnswerConfigBlock render snapshot 1`] = `
         className="AnswerConfigBlock-rowItem-10"
         key="2"
       >
-        <EditableHtml
+        <Component
           activePlugins={Array []}
           autoWidthToolbar={true}
           className="AnswerConfigBlock-headerInput-14"
@@ -109,6 +115,9 @@ exports[`AnswerConfigBlock render snapshot 1`] = `
               "audio": Object {
                 "disabled": true,
               },
+              "image": Object {
+                "disabled": false,
+              },
               "video": Object {
                 "disabled": true,
               },
@@ -122,9 +131,29 @@ exports[`AnswerConfigBlock render snapshot 1`] = `
     </div>
     <DropTarget(DragSource(WithStyles(Row)))
       idx={0}
+      inputConfiguration={
+        Object {
+          "audio": Object {
+            "disabled": true,
+          },
+          "image": Object {
+            "disabled": false,
+          },
+          "video": Object {
+            "disabled": true,
+          },
+        }
+      }
       key="0"
+      mathMlOptions={
+        Object {
+          "mmlEditing": false,
+          "mmlOutput": false,
+        }
+      }
       maxImageHeight={150}
       maxImageWidth={300}
+      minQuestions={2}
       model={
         Object {
           "choiceMode": "radio",
@@ -206,9 +235,29 @@ exports[`AnswerConfigBlock render snapshot 1`] = `
     />
     <DropTarget(DragSource(WithStyles(Row)))
       idx={1}
+      inputConfiguration={
+        Object {
+          "audio": Object {
+            "disabled": true,
+          },
+          "image": Object {
+            "disabled": false,
+          },
+          "video": Object {
+            "disabled": true,
+          },
+        }
+      }
       key="1"
+      mathMlOptions={
+        Object {
+          "mmlEditing": false,
+          "mmlOutput": false,
+        }
+      }
       maxImageHeight={150}
       maxImageWidth={300}
+      minQuestions={2}
       model={
         Object {
           "choiceMode": "radio",
@@ -290,9 +339,29 @@ exports[`AnswerConfigBlock render snapshot 1`] = `
     />
     <DropTarget(DragSource(WithStyles(Row)))
       idx={2}
+      inputConfiguration={
+        Object {
+          "audio": Object {
+            "disabled": true,
+          },
+          "image": Object {
+            "disabled": false,
+          },
+          "video": Object {
+            "disabled": true,
+          },
+        }
+      }
       key="2"
+      mathMlOptions={
+        Object {
+          "mmlEditing": false,
+          "mmlOutput": false,
+        }
+      }
       maxImageHeight={150}
       maxImageWidth={300}
+      minQuestions={2}
       model={
         Object {
           "choiceMode": "radio",
@@ -374,9 +443,29 @@ exports[`AnswerConfigBlock render snapshot 1`] = `
     />
     <DropTarget(DragSource(WithStyles(Row)))
       idx={3}
+      inputConfiguration={
+        Object {
+          "audio": Object {
+            "disabled": true,
+          },
+          "image": Object {
+            "disabled": false,
+          },
+          "video": Object {
+            "disabled": true,
+          },
+        }
+      }
       key="3"
+      mathMlOptions={
+        Object {
+          "mmlEditing": false,
+          "mmlOutput": false,
+        }
+      }
       maxImageHeight={150}
       maxImageWidth={300}
+      minQuestions={2}
       model={
         Object {
           "choiceMode": "radio",

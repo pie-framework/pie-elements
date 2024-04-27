@@ -1,9 +1,11 @@
 export default {
-  prompt: 'This is the question prompt',
+  prompt: '',
+  toolbarEditorPosition: 'bottom',
   imageUrl: '',
   shapes: {
     rectangles: [],
     polygons: [],
+    circles: [],
   },
   multipleCorrect: true,
   partialScoring: false,
@@ -15,4 +17,9 @@ export default {
   hotspotList: ['rgba(137, 183, 244, 0.25)'],
   outlineColor: 'blue',
   outlineList: ['blue'],
+  promptEnabled: true,
+  rationaleEnabled: true,
+  teacherInstructionsEnabled: true,
+  studentInstructionsEnabled: true,
+  strokeWidth: 5,
 };

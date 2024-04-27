@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Typography from '@material-ui/core/Typography';
-import { withDragContext } from '@pie-lib/drag';
+import { withDragContext } from '@pie-lib/pie-toolbox/drag';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import { ShowRationale } from '@pie-lib/icons';
-import { Collapsible, PreviewPrompt } from '@pie-lib/render-ui';
+import { ShowRationale } from '@pie-lib/pie-toolbox/icons';
+import { color, Collapsible, PreviewPrompt, hasText } from '@pie-lib/pie-toolbox/render-ui';
 import { withStyles } from '@material-ui/core/styles';
-import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
+import {CorrectAnswerToggle} from '@pie-lib/pie-toolbox/correct-answer-toggle';
+import Translator from '@pie-lib/pie-toolbox/translator';
 
+const { translator } = Translator;
 import Image from './image-container';
 import InteractiveSection from './interactive-section';
 import PossibleResponses from './possible-responses';
@@ -15,6 +16,22 @@ import { getUnansweredAnswers, getAnswersCorrectness } from './utils-correctness
 import _ from 'lodash';
 
 const generateId = () => Math.random().toString(36).substring(2) + new Date().getTime().toString(36);
+
+const styles = (theme) => ({
+  main: {
+    color: color.text(),
+    backgroundColor: color.background(),
+  },
+  stimulus: {
+    fontSize: theme.typography.fontSize,
+  },
+  teacherInstructions: {
+    marginBottom: theme.spacing.unit * 2,
+  },
+  rationale: {
+    marginTop: theme.spacing.unit * 2,
+  }
+});
 
 class ImageClozeAssociationComponent extends React.Component {
   constructor(props) {
@@ -49,7 +66,7 @@ class ImageClozeAssociationComponent extends React.Component {
       draggingElement: { id: '', value: '' },
       possibleResponses: duplicateResponses ? possibleResponsesWithIds : possibleResponsesFiltered,
       // set id for each response containers
-      responseContainers: responseContainers.map((item, index) => ({
+      responseContainers: (responseContainers || []).map((item, index) => ({
         index,
         ...item,
         id: `${index}`,
@@ -93,6 +110,8 @@ class ImageClozeAssociationComponent extends React.Component {
 
       // if duplicates are not allowed, make sure to put the shifted value back in possible responses
       if (!duplicateResponses) {
+        possibleResponses = Array.isArray(possibleResponses) ? possibleResponses : [];
+
         possibleResponses.push({
           ...shiftedItem,
           containerIndex: '',
@@ -176,6 +195,7 @@ class ImageClozeAssociationComponent extends React.Component {
 
   render() {
     const {
+      classes,
       model: {
         disabled,
         duplicateResponses,
@@ -187,6 +207,9 @@ class ImageClozeAssociationComponent extends React.Component {
         prompt,
         showDashedBorder,
         mode,
+        rationale,
+        language,
+        uiStyle = {},
       },
     } = this.props;
     const {
@@ -215,9 +238,8 @@ class ImageClozeAssociationComponent extends React.Component {
       });
     }
 
-    const warningMessage =
-      `You’ve reached the limit of ${maxResponsePerZone} responses per area.` +
-      'To add another response, one must first be removed.';
+    const warningMessage = translator.t('imageClozeAssociation.reachedLimit_other',
+      { lng: language, count: maxResponsePerZone });
 
     let answersToShow =
       responseCorrect !== undefined ? getAnswersCorrectness(answers, validation, duplicateResponses) : answers;
@@ -227,11 +249,10 @@ class ImageClozeAssociationComponent extends React.Component {
     }
 
     return (
-      <div>
-        <PreviewPrompt className="prompt" prompt={prompt} />
-
-        {teacherInstructions && (
+      <div className={classes.main}>
+        {teacherInstructions && hasText(teacherInstructions) && (
           <Collapsible
+            className={classes.teacherInstructions}
             labels={{
               hidden: 'Show Teacher Instructions',
               visible: 'Hide Teacher Instructions',
@@ -241,15 +262,14 @@ class ImageClozeAssociationComponent extends React.Component {
           </Collapsible>
         )}
 
-        <Typography>
-          <span dangerouslySetInnerHTML={{ __html: stimulus }} />
-        </Typography>
+        <PreviewPrompt className="prompt" prompt={prompt} />
 
-        <CorrectAnswerToggle show={showToggle} toggled={showCorrect} onToggle={this.toggleCorrect} />
-        <br />
+        <PreviewPrompt defaultClassName={classes.stimulus} prompt={stimulus} />
+
+        <CorrectAnswerToggle show={showToggle} toggled={showCorrect} onToggle={this.toggleCorrect} language={language}/>
 
         {showCorrect && showToggle ? (
-          <InteractiveSection responseCorrect={true}>
+          <InteractiveSection responseCorrect={true} uiStyle={uiStyle}>
             <Image
               canDrag={false}
               answers={correctAnswers}
@@ -264,7 +284,7 @@ class ImageClozeAssociationComponent extends React.Component {
             />
           </InteractiveSection>
         ) : (
-          <InteractiveSection responseCorrect={responseCorrect}>
+          <InteractiveSection responseCorrect={responseCorrect} uiStyle={uiStyle}>
             <Image
               canDrag={!disabled}
               answers={answersToShow}
@@ -289,16 +309,28 @@ class ImageClozeAssociationComponent extends React.Component {
             />
           </InteractiveSection>
         )}
+
+        {rationale && hasText(rationale) && (
+          <Collapsible
+            className={classes.rationale}
+            labels={{
+              hidden: 'Show Rationale',
+              visible: 'Hide Rationale',
+            }}
+          >
+            <PreviewPrompt prompt={rationale} />
+          </Collapsible>
+        )}
       </div>
     );
   }
 }
 
-const WarningInfo = withStyles({
+const WarningInfo = withStyles((theme) => ({
   warning: {
-    margin: '0 16px',
+    margin: `0 ${theme.spacing.unit * 2}px`,
     backgroundColor: '#dddddd',
-    padding: '10px',
+    padding: theme.spacing.unit,
     display: 'flex',
     alignItems: 'center',
     width: 'fit-content',
@@ -311,10 +343,10 @@ const WarningInfo = withStyles({
     },
   },
   message: {
-    paddingLeft: '5px',
+    paddingLeft: theme.spacing.unit / 2,
     userSelect: 'none',
   },
-})(({ classes, message }) => (
+}))(({ classes, message }) => (
   <TransitionGroup>
     <CSSTransition classNames={'fb'} key="fb" timeout={300}>
       <div key="panel" className={classes.warning}>
@@ -341,4 +373,6 @@ ImageClozeAssociationComponent.defaultProps = {
   classes: {},
 };
 
-export default withDragContext(ImageClozeAssociationComponent);
+const StyledComponent = withStyles(styles)(ImageClozeAssociationComponent);
+
+export default withDragContext(StyledComponent);

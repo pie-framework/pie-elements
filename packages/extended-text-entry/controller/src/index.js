@@ -1,7 +1,7 @@
 import debug from 'debug';
 
 const log = debug('@pie-element:extended-text-entry:controller');
-import { getFeedback } from '@pie-lib/feedback';
+import { getFeedback } from '@pie-lib/pie-toolbox/feedback';
 
 import defaults from './defaults';
 
@@ -16,7 +16,7 @@ export async function createDefaultModel(model = {}) {
 
 export const normalize = (question) => ({
   ...defaults,
-  feedbackEnabled: true,
+  feedbackEnabled: false,
   rationaleEnabled: true,
   promptEnabled: true,
   teacherInstructionsEnabled: true,
@@ -83,3 +83,21 @@ export async function outcome(/*question, session, env*/) {
     note: 'Requires manual scoring',
   };
 }
+
+// remove all html tags
+const getInnerText = (html) => (html || '').replaceAll(/<[^>]*>/g, '');
+
+// remove all html tags except img and iframe
+const getContent = (html) => (html || '').replace(/(<(?!img|iframe)([^>]+)>)/gi, '');
+
+export const validate = (model = {}, config = {}) => {
+  const errors = {};
+
+  ['teacherInstructions', 'prompt'].forEach((field) => {
+    if (config[field]?.required && !getContent(model[field])) {
+      errors[field] = 'This field is required.';
+    }
+  });
+
+  return errors;
+};

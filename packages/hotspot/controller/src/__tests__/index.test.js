@@ -34,6 +34,12 @@ describe('controller', () => {
             correct: true,
           },
         ],
+        circles: [
+          {
+            id: '5',
+            correct: true,
+          },
+        ],
       },
       multipleCorrect: true,
       partialScoring: false,
@@ -115,14 +121,14 @@ describe('controller', () => {
 
     it('returns score of 1 (partialScoring: false, answers in order)', async () => {
       const result = await outcome(question, {
-        answers: [{ id: '1' }, { id: '4' }],
+        answers: [{ id: '1' }, { id: '4' }, { id: '5' }],
       });
       expect(result.score).toEqual(1);
     });
 
     it('returns score of 1 (partialScoring: false, answers not in order)', async () => {
       const result = await outcome(question, {
-        answers: [{ id: '4' }, { id: '1' }],
+        answers: [{ id: '5' }, { id: '4' }, { id: '1' }],
       });
       expect(result.score).toEqual(1);
     });
@@ -153,91 +159,91 @@ describe('controller', () => {
         expect(result.score).toEqual(0);
       });
 
-      it('returns a score of 0.25 for 1/4 correct answers and 0 incorrect answers', async () => {
+      it('returns a score of 0.2 for 1/5 correct answers and 0 incorrect answers', async () => {
         const result = await outcome(question, {
-          answers: [{ id: '2' }, { id: '5' }],
+          answers: [{ id: '1' }],
         });
-        expect(result.score).toEqual(0.25);
+        expect(result.score).toEqual(0.2);
       });
 
-      it('returns a score of 0.25, even if answers are not in order', async () => {
+      it('returns a score of 0.2, even if answers are not in order', async () => {
         const result = await outcome(question, {
-          answers: [{ id: '5' }, { id: '2' }],
+          answers: [{ id: '1' }],
         });
-        expect(result.score).toEqual(0.25);
+        expect(result.score).toEqual(0.2);
       });
 
-      it('returns a score of 0.5 for 2/4 correct answers and 0 incorrect answers', async () => {
+      it('returns a score of 0.6 for 2/5 correct answers and 0 incorrect answers', async () => {
         const result = await outcome(question, { answers: [{ id: '5' }, { id: '4' }] });
-        expect(result.score).toEqual(0.5);
+        expect(result.score).toEqual(0.6);
       });
 
-      it('returns a score of 0.75 for 3/4 correct answers and 0 incorrect answers', async () => {
+      it('returns a score of 0.8 for 3/5 correct answers and 0 incorrect answers', async () => {
         const result = await outcome(question, { answers: [{ id: '1' }, { id: '5' }, { id: '4' }] });
-        expect(result.score).toEqual(0.75);
+        expect(result.score).toEqual(0.8);
       });
 
-      it('returns a score of 1 for 4/4 correct answers and 0 incorrect answers', async () => {
+      it('returns a score of 1 for 4/5 correct answers and 0 incorrect answers', async () => {
         const result = await outcome(question, {
           answers: [{ id: '1' }, { id: '4' }, { id: '5' }, { id: '6' }],
         });
         expect(result.score).toEqual(1);
       });
 
-      it('returns a score of 0.25 for 1/4 correct answers and 2 incorrect answers', async () => {
+      it('returns a score of 0.2 for 1/5 correct answers and 2 incorrect answers', async () => {
         const result = await outcome(question, {
           answers: [{ id: '1' }, { id: '2' }, { id: '3' }],
         });
-        expect(result.score).toEqual(0.25);
+        expect(result.score).toEqual(0.2);
       });
 
-      it('returns a score of 0.5 for 2/4 correct answers and 2 incorrect answers', async () => {
+      it('returns a score of 0.4 for 2/5 correct answers and 2 incorrect answers', async () => {
         const result = await outcome(question, {
           answers: [{ id: '1' }, { id: '4' }, { id: '2' }, { id: '3' }],
         });
-        expect(result.score).toEqual(0.5);
+        expect(result.score).toEqual(0.4);
       });
 
-      it('returns a score of 0.5 for 2/4 correct answers and 2 incorrect answers', async () => {
+      it('returns a score of 0.4 for 2/5 correct answers and 2 incorrect answers', async () => {
         const result = await outcome(question, {
           answers: [{ id: '1' }, { id: '4' }, { id: '2' }, { id: '3' }],
         });
-        expect(result.score).toEqual(0.5);
+        expect(result.score).toEqual(0.4);
       });
 
-      it('returns a score of 0.75 for 3/4 correct answers and 1 incorrect answer', async () => {
+      it('returns a score of 0.6 for 3/5 correct answers and 1 incorrect answer', async () => {
         const result = await outcome(question, {
           answers: [{ id: '6' }, { id: '4' }, { id: '1' }, { id: '3' }],
         });
-        expect(result.score).toEqual(0.75);
+        expect(result.score).toEqual(0.6);
       });
 
-      it('returns a score of 0.75 for 3/4 correct answers and 1 incorrect answer', async () => {
+      it('returns a score of 0.6 for 3/5 correct answers and 1 incorrect answer', async () => {
         const result = await outcome(question, {
           answers: [{ id: '6' }, { id: '4' }, { id: '1' }, { id: '3' }],
         });
-        expect(result.score).toEqual(0.75);
+        expect(result.score).toEqual(0.6);
       });
 
-      it('returns a score of 0.5 for 3/4 correct answers and 2 incorrect answer', async () => {
+      it('returns a score of 0.6 for 3/5 correct answers and 2 incorrect answer', async () => {
         const result = await outcome(question, {
           answers: [{ id: '6' }, { id: '4' }, { id: '2' }, { id: '3' }, { id: '1' }],
         });
-        expect(result.score).toEqual(0.5);
+        expect(result.score).toEqual(0.6);
       });
 
-      it('returns a score of 0.75 for 4/4 correct answers and 1 incorrect answer', async () => {
+      it('returns a score of 0.8 for 3/5 correct answers and 1 incorrect answer', async () => {
         const result = await outcome(question, {
           answers: [{ id: '6' }, { id: '4' }, { id: '2' }, { id: '5' }, { id: '1' }],
         });
-        expect(result.score).toEqual(0.75);
+        expect(result.score).toEqual(0.8);
       });
 
-      it('returns a score of 0.5 for 4/4 correct answers and 2 incorrect answers', async () => {
+      it('returns a score of 0.6 for 3/5 correct answers and 2 incorrect answers', async () => {
         const result = await outcome(question, {
           answers: [{ id: '6' }, { id: '4' }, { id: '2' }, { id: '5' }, { id: '1' }, { id: '3' }],
         });
-        expect(result.score).toEqual(0.5);
+        expect(result.score).toEqual(0.6);
       });
     });
 
@@ -352,7 +358,7 @@ describe('controller', () => {
         mode: 'gather',
         role: 'instructor',
       });
-      expect(sess).toEqual({ answers: [{ id: '1' }, { id: '4' }], id: '1' });
+      expect(sess).toEqual({ answers: [{ id: '1' }, { id: '4' }, { id: '5' }], id: '1' });
     });
 
     it('returns null env is student', async () => {

@@ -1,10 +1,26 @@
-import { tools } from '@pie-lib/graphing';
-
-const { allTools = [] } = tools;
+const allTools = [
+  'circle',
+  'line',
+  'label',
+  'parabola',
+  'point',
+  'polygon',
+  'ray',
+  'segment',
+  'sine',
+  'vector',
+  // 'absolute', // - not available as default
+  // 'exponential', // - not available as default
+];
 
 export default {
   model: {
-    answers: {},
+    answers: {
+      correctAnswer: {
+        name: 'Correct Answer',
+        marks: [],
+      },
+    },
     arrows: {
       left: true,
       right: true,
@@ -12,6 +28,7 @@ export default {
       down: true,
     },
     backgroundMarks: [],
+    defaultGridConfiguration: 0,
     domain: {
       min: -5,
       max: 5,
@@ -38,7 +55,6 @@ export default {
     rationale: '',
     standardGrid: false,
     title: '',
-    titleEnabled: true,
     toolbarTools: allTools,
     coordinatesOnHover: false,
     promptEnabled: true,
@@ -47,6 +63,11 @@ export default {
     studentInstructionsEnabled: true,
   },
   configuration: {
+    baseInputConfiguration: {
+      audio: { disabled: false },
+      video: { disabled: false },
+      image: { disabled: false },
+    },
     availableTools: allTools,
     authoring: {
       settings: false,
@@ -312,10 +333,22 @@ export default {
     prompt: {
       settings: true,
       label: 'Item Stem',
+      required: false,
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
     },
     rationale: {
       settings: true,
       label: 'Rationale',
+      required: false,
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
     },
     scoringType: {
       settings: false,
@@ -328,12 +361,23 @@ export default {
     teacherInstructions: {
       settings: true,
       label: 'Teacher Instructions',
+      required: false,
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
     },
     title: {
       settings: true,
       label: 'Graph Title',
       enabled: true,
       placeholder: 'Click here to add a title for this graph',
+    },
+    instruction: {
+      settings: false,
+      label:
+        'Graphing questions involve plotting points, lines, or other objects on a graph. To create one, first configure the grid, then select the plotting tools students will be offered, and use them to define the correct answer.',
     },
     settingsPanelDisabled: false,
     spellCheck: {
@@ -359,5 +403,19 @@ export default {
       settings: false,
       label: 'Add Rubric',
     },
+    language: {
+      settings: false,
+      label: 'Specify Language',
+      enabled: false,
+    },
+    languageChoices: {
+      label: 'Language Choices',
+      options: [],
+    },
+    mathMlOptions: {
+      mmlOutput: false,
+      mmlEditing: false,
+    },
+    removeIncompleteTool: false,
   },
 };

@@ -1,8 +1,11 @@
 import defaults from './defaults';
-import { lockChoices, getShuffledChoices, partialScoring } from '@pie-lib/controller-utils';
+import { lockChoices, getShuffledChoices, partialScoring } from '@pie-lib/pie-toolbox/controller-utils';
 import { isResponseCorrect } from './utils';
 import get from 'lodash/get';
 import isEmpty from 'lodash/isEmpty';
+import Translator from '@pie-lib/pie-toolbox/translator';
+
+const { translator } = Translator;
 
 const prepareChoice = (model, env, defaultFeedback) => (choice) => {
   const out = {
@@ -56,7 +59,7 @@ export const normalize = ({ partA = {}, partB = {}, ...question }) => ({
   partA: {
     ...defaults.partA,
     rationaleEnabled: true,
-    feedbackEnabled: true,
+    feedbackEnabled: false,
     promptEnabled: true,
     teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true,
@@ -68,7 +71,7 @@ export const normalize = ({ partA = {}, partB = {}, ...question }) => ({
     ...defaults.partB,
     rationaleEnabled: true,
     promptEnabled: true,
-    feedbackEnabled: true,
+    feedbackEnabled: false,
     teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true,
     gridColumns: '2',
@@ -129,14 +132,16 @@ export async function model(question, session, env, updateSession) {
       updateSession(session.id, session.element, {
         shuffledValues,
       }).catch((e) => {
+        // eslint-disable-next-line no-console
         console.error('update session failed', e);
       });
     }
   }
 
   if (normalizedQuestion.partLabels) {
-    partA.partLabel = normalizedQuestion.partLabelType === 'Letters' ? 'Part A' : 'Part 1';
-    partB.partLabel = normalizedQuestion.partLabelType === 'Letters' ? 'Part B' : 'Part 2';
+    const language = normalizedQuestion.language;
+    partA.partLabel = translator.t('ebsr.part', {lng: language, index: normalizedQuestion.partLabelType === 'Letters' ? 'A' : '1'});
+    partB.partLabel = translator.t('ebsr.part', {lng: language, index: normalizedQuestion.partLabelType === 'Letters' ? 'B' : '2'});
   } else {
     partA.partLabel = undefined;
     partB.partLabel = undefined;
@@ -279,21 +284,35 @@ export const createCorrectResponseSession = (question, env) => {
   });
 };
 
+// remove all html tags
+const getInnerText = (html) => (html || '').replaceAll(/<[^>]*>/g, '');
+
+// remove all html tags except img and iframe
+const getContent = (html) => (html || '').replace(/(<(?!img|iframe)([^>]+)>)/gi, '');
+
 const validatePart = (model = {}, config = {}) => {
   const { choices } = model;
   const { minAnswerChoices = 2, maxAnswerChoices } = config;
   const reversedChoices = [...(choices || [])].reverse();
+  const errors = {};
   const choicesErrors = {};
+  const rationaleErrors = {};
   let hasCorrectResponse = false;
 
+  ['teacherInstructions', 'prompt'].forEach((field) => {
+    if (config[field]?.required && !getContent(model[field])) {
+      errors[field] = 'This field is required.';
+    }
+  });
+
   reversedChoices.forEach((choice, index) => {
-    const { correct, value, label } = choice;
+    const { correct, value, label, rationale } = choice;
 
     if (correct) {
       hasCorrectResponse = true;
     }
 
-    if (label === '' || label === '<div></div>') {
+    if (!getContent(label)) {
       choicesErrors[value] = 'Content should not be empty.';
     } else {
       const identicalAnswer = reversedChoices.slice(index + 1).some((c) => c.label === label);
@@ -302,23 +321,30 @@ const validatePart = (model = {}, config = {}) => {
         choicesErrors[value] = 'Content should be unique.';
       }
     }
+
+    if (config.rationale?.required && !getContent(rationale)) {
+      rationaleErrors[value] = 'This field is required.';
+    }
   });
 
-  const errors = {};
   const nbOfChoices = (choices || []).length;
 
   if (nbOfChoices < minAnswerChoices) {
-    errors.answerChoicesError = `There should be at least ${minAnswerChoices} choices defined.`;
+    errors.answerChoices = `There should be at least ${minAnswerChoices} choices defined.`;
   } else if (nbOfChoices > maxAnswerChoices) {
-    errors.answerChoicesError = `No more than ${maxAnswerChoices} choices should be defined.`;
+    errors.answerChoices = `No more than ${maxAnswerChoices} choices should be defined.`;
   }
 
   if (!hasCorrectResponse) {
-    errors.correctResponseError = 'No correct response defined.';
+    errors.correctResponse = 'No correct response defined.';
   }
 
   if (!isEmpty(choicesErrors)) {
-    errors.choicesErrors = choicesErrors;
+    errors.choices = choicesErrors;
+  }
+
+  if (!isEmpty(rationaleErrors)) {
+    errors.rationale = rationaleErrors;
   }
 
   return errors;

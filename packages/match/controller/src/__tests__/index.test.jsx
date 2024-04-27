@@ -1,5 +1,5 @@
 import { model, outcome, createCorrectResponseSession } from '../index';
-import { defaults as feedbackDefaults } from '@pie-lib/feedback';
+import { defaults as feedbackDefaults } from '@pie-lib/pie-toolbox/feedback';
 
 const defaultModel = {
   id: '1',
@@ -139,15 +139,15 @@ describe('model', () => {
     });
 
     it('returns rows without correct values', () => {
-      expect(result.config.rows).toEqual(defaultModel.rows.map(({ id, title }) => ({ id, title })));
+      expect(result.rows).toEqual(defaultModel.rows.map(({ id, title }) => ({ id, title })));
     });
 
     it('returns null for rationale', () => {
-      expect(result.config.rationale).toEqual(null);
+      expect(result.rationale).toEqual(null);
     });
 
     it('returns null for teacher instructions', () => {
-      expect(result.config.teacherInstructions).toEqual(null);
+      expect(result.teacherInstructions).toEqual(null);
     });
   });
 
@@ -198,7 +198,7 @@ describe('model', () => {
     });
 
     it('returns rows without correct values', () => {
-      expect(result.config.rows).toEqual(defaultModel.rows.map(({ id, title }) => ({ id, title })));
+      expect(result.rows).toEqual(defaultModel.rows.map(({ id, title }) => ({ id, title })));
     });
   });
 
@@ -239,7 +239,7 @@ describe('model', () => {
     });
 
     it('returns rows with correct values', () => {
-      expect(result.config.rows).toEqual(defaultModel.rows);
+      expect(result.rows).toEqual(defaultModel.rows);
     });
 
     const returnCorrectness = (sess) => {

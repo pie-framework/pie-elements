@@ -4,7 +4,7 @@ import React from 'react';
 import { Main } from '../main';
 import { model as defaultModel, configuration as defaultConfig } from '../defaults';
 
-jest.mock('@pie-lib/config-ui', () => ({
+jest.mock('@pie-lib/pie-toolbox/config-ui', () => ({
   FormSection: () => <div />,
   FeedbackConfig: () => <div />,
   InputCheckbox: () => <div />,
@@ -21,7 +21,7 @@ describe('main', () => {
       classes: {},
       className: 'className',
       onChange,
-      model: { correctResponse: [], graph: { ...defaultModel } },
+      model: { correctResponse: [], graph: { ...defaultModel.graph } },
       configuration: { ...defaultConfig },
     };
     const props = { ...defaults, ...extras };

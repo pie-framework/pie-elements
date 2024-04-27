@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Main from './main';
-import { SessionChangedEvent } from '@pie-framework/pie-player-events';
-import { renderMath } from '@pie-lib/math-rendering';
+import { SessionChangedEvent, ModelSetEvent } from '@pie-framework/pie-player-events';
+import { renderMath } from '@pie-lib/pie-toolbox/math-rendering-accessible';
 
 export { Main as Component };
 
@@ -13,6 +13,13 @@ export default class Graphing extends HTMLElement {
 
   set model(m) {
     this._model = m;
+
+    if (this._session && this.isComplete(this._session.answer)) {
+      this.dispatchEvent(new ModelSetEvent(this.tagName.toLowerCase(), true, !!this._model));
+    } else {
+      this.dispatchEvent(new ModelSetEvent(this.tagName.toLowerCase(), false, !!this._model));
+    }
+
     this._render();
   }
 

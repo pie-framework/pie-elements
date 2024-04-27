@@ -1,7 +1,15 @@
 import { PromptConfig } from '../../PromptConfig';
 import { CommonConfigSettings } from '../../CommonConfigSettings';
 import { PieModel } from '../../PieModel';
-import { ConfigureMaxImageDimensionsProp, ConfigureProp, ConfigurePropWithEnabled } from '../ConfigurationProp';
+import {
+  ConfigureLanguageOptionsProp,
+  ConfigureMathMLProp,
+  ConfigureMaxImageDimensionsProp,
+  ConfigureProp,
+  ConfigurePropWithEnabled,
+  EditableHtmlConfigureProp,
+  EditableHtmlPluginConfigureRequired,
+} from '../ConfigurationProp';
 
 interface Graph {
   /** Width for graph representation */
@@ -148,6 +156,9 @@ export interface GraphingPie extends PieModel {
   /** Indicates marks that have to be displayed in background */
   backgroundMarks: [Mark];
 
+  /** Indicates the default grid configuration */
+  defaultGridConfiguration: Number;
+
   /** Indicates if coordinates of a point are displayed on hover */
   coordinatesOnHover?: boolean;
 
@@ -165,6 +176,11 @@ export interface GraphingPie extends PieModel {
 
   /** Indicates labels */
   labels?: Labels;
+
+  /** Indicates the language of the component
+   * Supported options: en, es, en_US, en-US, es_ES, es-ES, es_MX, es-MX
+   */
+  language?: string;
 
   /** Indicates if padding is enabled */
   padding?: boolean;
@@ -195,6 +211,9 @@ export interface GraphingPie extends PieModel {
 
   /** Indicates if the graph labels are displayed */
   labelsEnabled?: boolean;
+
+  /** Indicates if the graph dimensions are displayed */
+  dimensionsEnabled?: boolean;
 
   /** Indicates if the graph title is displayed */
   titleEnabled?: boolean;
@@ -385,6 +404,12 @@ interface TitleConfigProp extends ConfigurePropWithEnabled {
  */
 export interface GraphingConfigure extends PromptConfig, CommonConfigSettings {
   /**
+   * Base editable html input configuration regarding plugins that are enabled/disabled
+   * E.g. audio, video, image
+   */
+  baseInputConfiguration?: EditableHtmlConfigureProp;
+
+  /**
    * Grid Setup Panel configuration
    */
   authoring?: AuthoringConfigProp;
@@ -425,9 +450,23 @@ export interface GraphingConfigure extends PromptConfig, CommonConfigSettings {
   labels?: LabelsConfigProp;
 
   /**
+   * Language configuration
+   */
+  language?: ConfigurePropWithEnabled;
+
+  /**
+   * Language choices configuration
+   * Only available if language is enabled
+   */
+  languageChoices?: {
+    label: string;
+    options: ConfigureLanguageOptionsProp[];
+  };
+
+  /**
    * Rationale configuration
    */
-  prompt?: ConfigureProp;
+  prompt?: EditableHtmlPluginConfigureRequired;
 
   /**
    * Indicates if the settings panel is not available
@@ -442,7 +481,7 @@ export interface GraphingConfigure extends PromptConfig, CommonConfigSettings {
   /**
    * Prompt configuration
    */
-  rationale?: ConfigureProp;
+  rationale?: EditableHtmlPluginConfigureRequired;
 
   /**
    * Scoring Type configuration
@@ -457,7 +496,7 @@ export interface GraphingConfigure extends PromptConfig, CommonConfigSettings {
   /**
    * Teacher Instructions configuration
    */
-  teacherInstructions?: ConfigureProp;
+  teacherInstructions?: EditableHtmlPluginConfigureRequired;
 
   /**
    * Graph title configuration
@@ -478,4 +517,10 @@ export interface GraphingConfigure extends PromptConfig, CommonConfigSettings {
    * Rubric configuration - only relevant in environments that use pie-player-components
    */
   withRubric?: ConfigureProp;
+
+  /** Configuration for editable-html */
+  mathMlOptions?: ConfigureMathMLProp;
+
+  /** Ability to remove incomplete tool added after switching current tool. */
+  removeIncompleteTool?: boolean;
 }

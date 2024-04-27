@@ -3,7 +3,11 @@ import reduce from 'lodash/reduce';
 import find from 'lodash/find';
 import isEmpty from 'lodash/isEmpty';
 import debug from 'debug';
-import { partialScoring } from '@pie-lib/controller-utils';
+import { partialScoring } from '@pie-lib/pie-toolbox/controller-utils';
+import defaults from './defaults';
+import Translator from '@pie-lib/pie-toolbox/translator';
+
+const { translator } = Translator;
 
 const log = debug('explicit-constructed-response:controller');
 
@@ -53,13 +57,7 @@ const getAdjustedLength = (length) => {
   return length + 5;
 };
 
-export const normalize = (question) => ({
-  rationaleEnabled: true,
-  promptEnabled: true,
-  teacherInstructionsEnabled: true,
-  studentInstructionsEnabled: true,
-  ...question,
-});
+export const normalize = (question) => ({ ...defaults, ...question });
 
 /**
  *
@@ -128,6 +126,12 @@ export function model(question, session, env) {
       }
     });
 
+    let { note } = normalizedQuestion;
+
+    if (!note) {
+      note = translator.t('common:commonCorrectAnswerWithAlternates', { lng: normalizedQuestion.language });
+    }
+
     const { maxLengthPerChoice = [], maxLengthPerChoiceEnabled } = normalizedQuestion;
     const undefinedLengths = !maxLengthPerChoice.length;
 
@@ -154,13 +158,14 @@ export function model(question, session, env) {
       choices,
       feedback,
       env,
-      note: normalizedQuestion.note,
+      note,
       showNote,
       maxLengthPerChoice,
       maxLengthPerChoiceEnabled,
       displayType: normalizedQuestion.displayType,
       playerSpellCheckEnabled: normalizedQuestion.playerSpellCheckEnabled,
       responseCorrect: env.mode === 'evaluate' ? getScore(normalizedQuestion, session) === 1 : undefined,
+      language: normalizedQuestion.language,
     };
 
     if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
@@ -256,10 +261,23 @@ export const createCorrectResponseSession = (question, env) => {
   });
 };
 
+// remove all html tags
+const getInnerText = (html) => (html || '').replaceAll(/<[^>]*>/g, '');
+
+// remove all html tags except img and iframe
+const getContent = (html) => (html || '').replace(/(<(?!img|iframe)([^>]+)>)/gi, '');
+
 export const validate = (model = {}, config = {}) => {
   const { choices, markup } = model;
   const { maxResponseAreas } = config;
   const allChoicesErrors = {};
+  const errors = {};
+
+  ['teacherInstructions', 'prompt', 'rationale'].forEach((field) => {
+    if (config[field]?.required && !getContent(model[field])) {
+      errors[field] = 'This field is required.';
+    }
+  });
 
   Object.entries(choices || {}).forEach(([key, values]) => {
     const reversedChoices = [...(values || [])].reverse();
@@ -284,17 +302,16 @@ export const validate = (model = {}, config = {}) => {
     }
   });
 
-  const errors = {};
   const nbOfResponseAreas = (markup.match(/\{\{(\d+)\}\}/g) || []).length;
 
   if (nbOfResponseAreas > maxResponseAreas) {
-    errors.responseAreasError = `No more than ${maxResponseAreas} response areas should be defined.`;
+    errors.responseAreas = `No more than ${maxResponseAreas} response areas should be defined.`;
   } else if (nbOfResponseAreas < 1) {
-    errors.responseAreasError = 'There should be at least 1 response area defined.';
+    errors.responseAreas = 'There should be at least 1 response area defined.';
   }
 
   if (!isEmpty(allChoicesErrors)) {
-    errors.choicesErrors = allChoicesErrors;
+    errors.choices = allChoicesErrors;
   }
 
   return errors;

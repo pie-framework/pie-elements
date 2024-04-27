@@ -3,6 +3,482 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.10.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-controller@4.9.1...@pie-element/charting-controller@4.10.0) (2024-04-22)
+
+
+### Features
+
+* update pie-lib/pie-toolbox PD-2449 ([2a0b40a](https://github.com/pie-framework/pie-elements/commit/2a0b40a826f0338b5eda2e8301f79870be3d0073))
+
+
+
+
+
+## [4.9.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-controller@4.9.0...@pie-element/charting-controller@4.9.1) (2024-04-22)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3644, PD-3673 ([5e28ce0](https://github.com/pie-framework/pie-elements/commit/5e28ce0dab4a7ecd93ef7bba45ddb20f768b450b))
+
+
+
+
+
+# [4.9.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-controller@4.8.1...@pie-element/charting-controller@4.9.0) (2024-04-18)
+
+
+### Features
+
+* update pie-lib/pie-toolbox SC-30530, SC-30682, PD-3607, PD-3655 ([f08bccf](https://github.com/pie-framework/pie-elements/commit/f08bccf86fcb430e75e410116b000b3affc252c0))
+* **charting, graphing-solution-set:** Charting Item Relative Scoring and Label Characters Limit SC-29795, SC-30682 ([083f91a](https://github.com/pie-framework/pie-elements/commit/083f91a10e08b417514a76b547c6439c95461f32))
+
+
+
+
+
+## [4.8.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-controller@4.8.0...@pie-element/charting-controller@4.8.1) (2024-04-01)
+
+**Note:** Version bump only for package @pie-element/charting-controller
+
+
+
+
+
+# [4.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-controller@4.7.0...@pie-element/charting-controller@4.8.0) (2024-04-01)
+
+
+### Features
+
+* **inline-dropdown:** upgrade pie-toolbox PD-2465 ([828d1c1](https://github.com/pie-framework/pie-elements/commit/828d1c1bc9e9221c1e141baaa8f89a4929ad0eb9))
+
+
+
+
+
+# [4.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-controller@4.6.2...@pie-element/charting-controller@4.7.0) (2024-04-01)
+
+
+### Features
+
+* update pie-lib/pie-toolbox PD-3567, PD-3426 ([2a706d7](https://github.com/pie-framework/pie-elements/commit/2a706d799bb000c60b7a77a790de9dc66345ebf5))
+
+
+
+
+
+## [4.6.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-controller@4.6.1...@pie-element/charting-controller@4.6.2) (2024-03-28)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3603 ([8fc82ab](https://github.com/pie-framework/pie-elements/commit/8fc82ab19baf45aecb40e4b364a7c307a9840130))
+* update validation to work with images, audio and video content PD-3571 ([60f7594](https://github.com/pie-framework/pie-elements/commit/60f7594e01ea286070b365fc1b8a546da669524d))
+
+
+
+
+
+## [4.6.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-controller@4.6.0...@pie-element/charting-controller@4.6.1) (2024-03-26)
+
+**Note:** Version bump only for package @pie-element/charting-controller
+
+
+
+
+
+# [4.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-controller@4.5.0...@pie-element/charting-controller@4.6.0) (2024-03-20)
+
+
+### Bug Fixes
+
+* updated pie-lib/pie-toolbox SC-28500 ([a8e4e6a](https://github.com/pie-framework/pie-elements/commit/a8e4e6ab27584435ce7ac3e964ccac2747402777))
+
+
+### Features
+
+* updated pie-lib/pie-toolbox SC-27890 and reverted once again math-rendering-accessible ([fd312e1](https://github.com/pie-framework/pie-elements/commit/fd312e1336999893025231946649496d290883e4))
+* use math-rendering-accessible everywhere PD-1870 ([d52e660](https://github.com/pie-framework/pie-elements/commit/d52e6607ad8847d704bd9cb9b7e3107c130f0500))
+
+
+
+
+
+# [4.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-controller@4.4.2...@pie-element/charting-controller@4.5.0) (2024-03-15)
+
+
+### Features
+
+* update pie-lib/pie-toolbox SC-27890,PD-2461 ([13d94fa](https://github.com/pie-framework/pie-elements/commit/13d94faaf0cf9cf923bbc64587cdd4202154ea33))
+
+
+
+
+
+## [4.4.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-controller@4.4.1...@pie-element/charting-controller@4.4.2) (2024-03-13)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3549 ([b5d7d13](https://github.com/pie-framework/pie-elements/commit/b5d7d1352169cc67eaedcd56898a5806b0a8812a))
+
+
+
+
+
+## [4.4.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-controller@4.4.0...@pie-element/charting-controller@4.4.1) (2024-03-12)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3509, PD-3465 ([b1745aa](https://github.com/pie-framework/pie-elements/commit/b1745aa981722b5561aab1f4495ac81ac7bc4155))
+
+
+
+
+
+# [4.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-controller@4.3.2...@pie-element/charting-controller@4.4.0) (2024-03-04)
+
+
+### Features
+
+* update pie-lib/pie-toolbox version PD-1870 and PD-3501 ([8df1d8d](https://github.com/pie-framework/pie-elements/commit/8df1d8d281a0d6023d5a9c0e6fdd29fea71b6ac1))
+
+
+
+
+
+## [4.3.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-controller@4.3.1...@pie-element/charting-controller@4.3.2) (2024-02-20)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3372, PD-3385, PD-3439 ([a79d800](https://github.com/pie-framework/pie-elements/commit/a79d800bb69af0d175793bc737282100168c4c60))
+* update pie-lib/pie-toolbox PD-3455 ([4ff9971](https://github.com/pie-framework/pie-elements/commit/4ff9971e65b680aea180c94f9e85cab7249af2fb))
+
+
+
+
+
+## [4.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-controller@4.3.0...@pie-element/charting-controller@4.3.1) (2024-02-14)
+
+
+### Bug Fixes
+
+* pie-lib/pie-toolbox with slate updates ([a8f8707](https://github.com/pie-framework/pie-elements/commit/a8f8707b2c197c2b40fb6632cee0ba4c27aa9aa4))
+* update pie-lib/pie-toolbox ([cec328c](https://github.com/pie-framework/pie-elements/commit/cec328caf5b69d9fee00473c502aed62d6e27462))
+
+
+
+
+
+# [4.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-controller@4.2.8...@pie-element/charting-controller@4.3.0) (2024-02-09)
+
+
+### Features
+
+* update pie-toolbox version SC-28868 ([5745f50](https://github.com/pie-framework/pie-elements/commit/5745f502c89d730e72d4cdb83e96c9465a81ae19))
+
+
+
+
+
+## [4.2.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-controller@4.2.7...@pie-element/charting-controller@4.2.8) (2024-02-07)
+
+
+### Bug Fixes
+
+* update pie-toolbox version PD-3423 ([053ad69](https://github.com/pie-framework/pie-elements/commit/053ad690619980bce68b1b44e51975fcf91054ec))
+
+
+
+
+
+## [4.2.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-controller@4.2.6...@pie-element/charting-controller@4.2.7) (2024-01-24)
+
+
+### Bug Fixes
+
+* update to pie-lib/pie-toolbox 1.5.7 PD-3404 ([eae668d](https://github.com/pie-framework/pie-elements/commit/eae668d980ef4731af5eceb3e70329b7621a232b))
+
+
+
+
+
+## [4.2.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-controller@4.2.5...@pie-element/charting-controller@4.2.6) (2024-01-24)
+
+
+### Bug Fixes
+
+* update to pie-lib/pie-toolbox 1.5.6 to fix issue introduced by fix for PD-3392 ([8d0a33f](https://github.com/pie-framework/pie-elements/commit/8d0a33f51a5ebe442eb824749cb419bf23c44d28))
+
+
+
+
+
+## [4.2.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-controller@4.2.4...@pie-element/charting-controller@4.2.5) (2024-01-23)
+
+
+### Bug Fixes
+
+* update to pie-lib/pie-toolbox 1.5.4 for PD-3387, PD-3384, PD-3383, PD-3392 ([2278f9a](https://github.com/pie-framework/pie-elements/commit/2278f9a3fdf1bc89ab590f240d926a857339179e))
+* update to pie-lib/pie-toolbox 1.5.5 for PD-3392 ([d4286e0](https://github.com/pie-framework/pie-elements/commit/d4286e08a060a73e6de098f87173baaaa88cc997))
+
+
+
+
+
+## [4.2.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-controller@4.2.3...@pie-element/charting-controller@4.2.4) (2024-01-15)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3366, PD-3367, PD-3381 ([8c9d35f](https://github.com/pie-framework/pie-elements/commit/8c9d35ff6f0dad1a161d6a2dba203a169169e562))
+
+
+
+
+
+## [4.2.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-controller@4.2.2...@pie-element/charting-controller@4.2.3) (2024-01-08)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-2068, PD-2060 ([b63f783](https://github.com/pie-framework/pie-elements/commit/b63f78371452e265f31f721dcfa5f8ba9789089c))
+* update pie-lib/pie-toolbox PD-3352 ([c40c326](https://github.com/pie-framework/pie-elements/commit/c40c326209315b57ce8da802b8e00616256e3bd6))
+* update pie-lib/pie-toolbox SC-27396, SC-27398 ([658a553](https://github.com/pie-framework/pie-elements/commit/658a55358181271b508f7d550467eefadcd71544))
+
+
+
+
+
+## [4.2.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-controller@4.2.1...@pie-element/charting-controller@4.2.2) (2024-01-08)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3352,PD-3348, PD-3296 ([48b1952](https://github.com/pie-framework/pie-elements/commit/48b1952831835ead598b692abb3d492ec9adb564))
+
+
+
+
+
+## [4.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-controller@4.2.0...@pie-element/charting-controller@4.2.1) (2024-01-04)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-2068, PD-2060 ([e918850](https://github.com/pie-framework/pie-elements/commit/e9188502ffeaefe41bf0f23895d4bb2daf839364))
+* update pie-lib/pie-toolbox PD-3037 ([b2f689a](https://github.com/pie-framework/pie-elements/commit/b2f689a416c2c39d7ed423a22db02dd32415ba82))
+
+
+
+
+
+# [4.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-controller@4.1.1...@pie-element/charting-controller@4.2.0) (2023-12-19)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-2068 ([34eccd5](https://github.com/pie-framework/pie-elements/commit/34eccd52c44259eddf3e2b816b00b82f83bc2bf8))
+
+
+### Features
+
+* update pie-lib/pie-toolbox PD-2555 ([86d4fd9](https://github.com/pie-framework/pie-elements/commit/86d4fd909180dd1fcbc446bd8b29c23af21a1c69))
+* update pie-lib/pie-toolbox PD-3307, PD-2067, PD-3271, PD-3041, PD-2068 ([2eabcbd](https://github.com/pie-framework/pie-elements/commit/2eabcbd036e318bb24552f4140ca7384ad865951))
+* **charting:** Add possibility to mark fields as required PD-3310 ([4034d0b](https://github.com/pie-framework/pie-elements/commit/4034d0b20b4277f30f0d373c0f62932f6f6ba33b))
+
+
+
+
+
+## [4.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-controller@4.1.0...@pie-element/charting-controller@4.1.1) (2023-11-27)
+
+
+### Bug Fixes
+
+* update pie-lib ([74283d7](https://github.com/pie-framework/pie-elements/commit/74283d71b12ab9c82875ce995368e5e39f4face6))
+
+
+
+
+
+# [4.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-controller@4.0.2...@pie-element/charting-controller@4.1.0) (2023-11-27)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3271, PD-3261 ([7a795bf](https://github.com/pie-framework/pie-elements/commit/7a795bfd7e2fd865774828ad23b0a8cbbac98356))
+* update pie-lib/pie-toolbox PD-597 ([1ec84aa](https://github.com/pie-framework/pie-elements/commit/1ec84aadae515088ef65b99f780a5e5dca516f99))
+* update pie-lib/pie-toolbox to test build ([9750cdd](https://github.com/pie-framework/pie-elements/commit/9750cdd3ce3018ef8bb63bc2c6db6abba3dad0c4))
+* update pie-lib/pie-toolbox to test build ([4e04cef](https://github.com/pie-framework/pie-elements/commit/4e04cefc163d504d136c9e3b17dbb32d1e22326b))
+* update pie-libs PD-2996 ([cd092c6](https://github.com/pie-framework/pie-elements/commit/cd092c6b5c4db91645394cd23febc1f9a07f46f9))
+* update pie-libs PD-3011, PD-3130, PD-3271 ([7a36106](https://github.com/pie-framework/pie-elements/commit/7a36106efeac0448b7b825989c1eb0b29b6688d4))
+* update pie-toolbox version PD-3298 ([0c282d5](https://github.com/pie-framework/pie-elements/commit/0c282d540aba5b2bb7a8b515bcaa2dba8302d49a))
+
+
+### Features
+
+* update pie-lib/pie-toolbox PD-1886 ([4a978d0](https://github.com/pie-framework/pie-elements/commit/4a978d058b865cc21c1fc84d7d39224e0d7cc88d))
+
+
+
+
+
+## [4.0.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-controller@4.0.1...@pie-element/charting-controller@4.0.2) (2023-11-17)
+
+
+### Bug Fixes
+
+* **charting:** Add dispatching of ModelSetEvent on model update in charting component, add tests PD-3270 ([617be98](https://github.com/pie-framework/pie-elements/commit/617be98409374728afda7d6552c3e68e21c7b72c))
+
+
+
+
+
+## [4.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-controller@4.0.0...@pie-element/charting-controller@4.0.1) (2023-11-09)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3221, PD-3249, PD-2765 ([9de1563](https://github.com/pie-framework/pie-elements/commit/9de1563d636983c3ddceee0279c0709d396d4f96))
+
+
+
+
+
+# [4.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-controller@3.1.3...@pie-element/charting-controller@4.0.0) (2023-11-07)
+
+
+### Bug Fixes
+
+* revert experiments ([bc1636e](https://github.com/pie-framework/pie-elements/commit/bc1636ef7210abc3582ac2b230515465fb1170b3))
+* update pie-lib version to fix imports for pie-lib/pie-toolbox/editable-html ([a90cbf6](https://github.com/pie-framework/pie-elements/commit/a90cbf6be81824e7266df23c2dc49b259337c1b6))
+* update pie-lib/pie-toolbox version ([212cbfa](https://github.com/pie-framework/pie-elements/commit/212cbfad27b29f0b1b2a3706ba82f6fb59147001))
+* update pie-lib/pie-toolbox version ([b791e10](https://github.com/pie-framework/pie-elements/commit/b791e10857928766e2d73c6aa80b3fb50fd1afac))
+* update pie-lib/pie-toolbox version ([7f64f9f](https://github.com/pie-framework/pie-elements/commit/7f64f9f2b874fd08bd8f6f05c1c4292c34ac6338))
+
+
+### Code Refactoring
+
+* replaced all pie-lib packages with the new pie-toolbox package that contains all of them. ([073d7e5](https://github.com/pie-framework/pie-elements/commit/073d7e5175f7a73069f09d2ceda799682acce494))
+
+
+### BREAKING CHANGES
+
+* using pie-lib/pie-toolbox now, instead of any other pie-lib package.
+
+
+
+
+
+## [3.1.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-controller@3.1.2...@pie-element/charting-controller@3.1.3) (2023-10-16)
+
+
+### Bug Fixes
+
+* **charting:** remove unwanted double quotes from error message ([89ca1db](https://github.com/pie-framework/pie-elements/commit/89ca1db5f2d33d56da8054849e555c2cffdb5c49))
+
+
+
+
+
+## [3.1.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-controller@3.1.1...@pie-element/charting-controller@3.1.2) (2023-10-16)
+
+
+### Bug Fixes
+
+* **charting:** fix validation function for duplicated category labels from the initial state PD-3121 ([9749312](https://github.com/pie-framework/pie-elements/commit/9749312428fc56bcef5a271e7e600dbeb8f8df10))
+* **charting:** fix validation function for duplicated category labels from the initial state PD-3121 ([c77709a](https://github.com/pie-framework/pie-elements/commit/c77709a17b52a6ca30df766db24f6f26dfcffd02))
+* **charting:** move validate function back in controller ([244e055](https://github.com/pie-framework/pie-elements/commit/244e0558e9612b33eef47931b207d98df95ff5c8))
+* **charting:** refactor validation function to display the validation message a single time for duplicate categories and for empty labels PD-3121 ([1a83b5d](https://github.com/pie-framework/pie-elements/commit/1a83b5d3b3a569fa7a7c7bcb64efe8ef93b27957))
+* **charting:** update validation message for unique labels PD-3121 ([e448ee2](https://github.com/pie-framework/pie-elements/commit/e448ee25026140ccb1dff7e6639245b76b76d382))
+* **charting:** update validation message for unique labels PD-3121 ([f606731](https://github.com/pie-framework/pie-elements/commit/f606731de97dcb28b947924f0d5afe2a5fc1c29f))
+* **charting:** update validation message for unique labels PD-3121 ([c70bace](https://github.com/pie-framework/pie-elements/commit/c70bace0548f773bc4e543e6c71fd33d59071261))
+
+
+
+
+
+## [3.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-controller@3.1.0...@pie-element/charting-controller@3.1.1) (2023-07-06)
+
+
+### Bug Fixes
+
+* updated editable-html dependent packages for PD-2150 ([ffa6297](https://github.com/pie-framework/pie-elements/commit/ffa62977a9e329c1e12ea1dfcb2af4ba4c993bca))
+
+
+
+
+
+# [3.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-controller@3.0.0...@pie-element/charting-controller@3.1.0) (2023-06-13)
+
+
+### Features
+
+* **charting:** add translator PD-2795 ([fa738e0](https://github.com/pie-framework/pie-elements/commit/fa738e03256d22ccdce0649cf5f9ac08ea73b4dd))
+
+
+
+
+
+# [3.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-controller@2.4.2...@pie-element/charting-controller@3.0.0) (2023-05-23)
+
+
+### Bug Fixes
+
+* **charting:** move studentNewCategoryDefaultLabel from config to model, since it is needed in player ([60154f2](https://github.com/pie-framework/pie-elements/commit/60154f25ff1046b0cbcb3e65ccdb1126de85337f))
+
+
+### Features
+
+* **charting:** add authoring view settings for authorNewCategoryDefaults and studentNewCategoryDefaultLabel PD-2774 ([6b1d0dc](https://github.com/pie-framework/pie-elements/commit/6b1d0dc6f55779781ffeb50a69569a5ec8acf25a))
+* **charting:** remove categoryDefaultLabel from model ([f1af01e](https://github.com/pie-framework/pie-elements/commit/f1af01e171e17b9e22a95025e0aef873bd4969a9))
+
+
+### BREAKING CHANGES
+
+* **charting:** The categoryDefaultLabel property has been removed. authorNewCategoryDefaults and studentNewCategoryDefaultLabel from configuration will be used as category default label.
+
+
+
+
+
+## [2.4.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-controller@2.4.1...@pie-element/charting-controller@2.4.2) (2023-04-25)
+
+
+### Bug Fixes
+
+* update pie-libs PD-2762 ([7ac4313](https://github.com/pie-framework/pie-elements/commit/7ac431346b822fe3bbb0d13375f044f6ce1f426b))
+
+
+
+
+
+## [2.4.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-controller@2.4.0...@pie-element/charting-controller@2.4.1) (2023-04-10)
+
+
+### Bug Fixes
+
+* **all elements:** fix eslint problems-PD-2732 ([eaeabfb](https://github.com/pie-framework/pie-elements/commit/eaeabfbbe3a868a1f9828ef831a7ea864dee75a9))
+* **eslint:** object destructuring -PD-2732 ([dbc46dc](https://github.com/pie-framework/pie-elements/commit/dbc46dc87cbc2240965ad183e9f34d6f4a920666))
+
+
+
+
+
+# [2.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-controller@2.3.1...@pie-element/charting-controller@2.4.0) (2023-02-01)
+
+
+### Features
+
+* update pie-libs ([0af590d](https://github.com/pie-framework/pie-elements/commit/0af590d624f4b2c0af58039e935531cef52e2a86))
+
+
+
+
+
 ## [2.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-controller@2.3.0...@pie-element/charting-controller@2.3.1) (2022-12-07)
 
 

@@ -1,101 +1,169 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Root snapshot renders 1`] = `
-<div>
-  <ConfigLayout
-    hideSettings={false}
-    settings={
-      <Panel
-        configuration={
-          Object {
-            "backgroundImage": Object {
-              "label": "Background Image",
-              "settings": true,
+<ConfigLayout
+  dimensions={Object {}}
+  hideSettings={false}
+  settings={
+    <Panel
+      configuration={
+        Object {
+          "backgroundImage": Object {
+            "label": "Background Image",
+            "settings": true,
+          },
+          "baseInputConfiguration": Object {
+            "audio": Object {
+              "disabled": false,
             },
-            "maxImageHeight": Object {
-              "prompt": 300,
-              "teacherInstructions": 300,
+            "image": Object {
+              "disabled": false,
             },
-            "maxImageWidth": Object {
-              "prompt": 300,
-              "teacherInstructions": 300,
+            "video": Object {
+              "disabled": false,
             },
-            "prompt": Object {
-              "label": "Prompt",
-              "settings": true,
+          },
+          "language": Object {
+            "enabled": false,
+            "label": "Specify Language",
+            "settings": false,
+          },
+          "languageChoices": Object {
+            "label": "Language Choices",
+            "options": Array [],
+          },
+          "mathMlOptions": Object {
+            "mmlEditing": false,
+            "mmlOutput": false,
+          },
+          "maxImageHeight": Object {
+            "prompt": 300,
+            "teacherInstructions": 300,
+          },
+          "maxImageWidth": Object {
+            "prompt": 300,
+            "teacherInstructions": 300,
+          },
+          "prompt": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": false,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": false,
+              },
             },
-            "settingsPanelDisabled": false,
-            "spellCheck": Object {
-              "enabled": true,
-              "label": "Spellcheck",
-              "settings": false,
+            "label": "Prompt",
+            "required": false,
+            "settings": true,
+          },
+          "settingsPanelDisabled": false,
+          "spellCheck": Object {
+            "enabled": true,
+            "label": "Spellcheck",
+            "settings": false,
+          },
+          "teacherInstructions": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": false,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": false,
+              },
             },
-            "teacherInstructions": Object {
-              "label": "Teacher Instructions",
-              "settings": true,
-            },
-            "withRubric": Object {
-              "label": "Add Rubric",
-              "settings": false,
-            },
-          }
+            "label": "Teacher Instructions",
+            "required": false,
+            "settings": true,
+          },
+          "withRubric": Object {
+            "label": "Add Rubric",
+            "settings": false,
+          },
         }
-        groups={
-          Object {
-            "Properties": Object {
-              "rubricEnabled": false,
-              "spellCheckEnabled": false,
-              "teacherInstructionsEnabled": undefined,
-            },
-            "Settings": Object {
-              "backgroundImageEnabled": undefined,
-              "promptEnabled": undefined,
-            },
-          }
+      }
+      groups={
+        Object {
+          "Properties": Object {
+            "rubricEnabled": false,
+            "spellCheckEnabled": false,
+            "teacherInstructionsEnabled": undefined,
+          },
+          "Settings": Object {
+            "backgroundImageEnabled": undefined,
+            "language": false,
+            "language.enabled": false,
+            "promptEnabled": undefined,
+          },
         }
-        model={
-          Object {
-            "imageDimensions": Object {
-              "height": 100,
-              "width": 100,
-            },
-            "imageUrl": "",
-            "prompt": "Test Prompt",
-            "promptEnabled": true,
-          }
+      }
+      model={
+        Object {
+          "imageDimensions": Object {
+            "height": 100,
+            "width": 100,
+          },
+          "imageUrl": "",
+          "prompt": "Test Prompt",
+          "promptEnabled": true,
         }
-        onChangeConfiguration={[MockFunction]}
-        onChangeModel={[MockFunction]}
-      />
-    }
+      }
+      onChangeConfiguration={[MockFunction]}
+      onChangeModel={[MockFunction]}
+    />
+  }
+>
+  <Component
+    label="Item Stem"
   >
-    <div>
-      <Component
-        label="Item Stem"
-      >
-        <EditableHtml
-          languageCharactersProps={
-            Array [
-              Object {
-                "language": "spanish",
-              },
-              Object {
-                "language": "special",
-              },
-            ]
-          }
-          markup="Test Prompt"
-          maxImageHeight={300}
-          maxImageWidth={300}
-          onChange={[Function]}
-          toolbarOpts={
-            Object {
-              "position": "bottom",
-            }
-          }
-        />
-      </Component>
-    </div>
-  </ConfigLayout>
-</div>
+    <EditableHtml
+      allowValidation={false}
+      languageCharactersProps={
+        Array [
+          Object {
+            "language": "spanish",
+          },
+          Object {
+            "language": "special",
+          },
+        ]
+      }
+      markup="Test Prompt"
+      mathMlOptions={
+        Object {
+          "mmlEditing": false,
+          "mmlOutput": false,
+        }
+      }
+      maxImageHeight={300}
+      maxImageWidth={300}
+      onChange={[Function]}
+      onDone={[Function]}
+      pluginProps={
+        Object {
+          "audio": Object {
+            "disabled": false,
+          },
+          "image": Object {
+            "disabled": false,
+          },
+          "video": Object {
+            "disabled": false,
+          },
+        }
+      }
+      toolbarOpts={
+        Object {
+          "position": "bottom",
+        }
+      }
+    />
+  </Component>
+</ConfigLayout>
 `;

@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Typography from '@material-ui/core/Typography';
-import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
-import { Collapsible, hasText, PreviewPrompt } from '@pie-lib/render-ui';
+import { CorrectAnswerToggle } from '@pie-lib/pie-toolbox/correct-answer-toggle';
+import { color, Collapsible, hasText, PreviewPrompt } from '@pie-lib/pie-toolbox/render-ui';
 import { withStyles } from '@material-ui/core/styles';
 
 import Container from './container';
@@ -22,10 +21,11 @@ class HotspotComponent extends React.Component {
       mutations.forEach(() => {
         const target = document.getElementById('question-container')?.style?.cssText;
         const zoom = target?.substring(target.indexOf('--pie-zoom') + 11, target.lastIndexOf('%'));
-
         const zoomParsed = zoom?.replace(/\s/g, '');
+
         if (zoomParsed) {
           const newScale = parseFloat(zoomParsed) / 100;
+
           if (newScale !== this.state.scale) {
             this.setState({
               scale: parseFloat(zoomParsed) / 100,
@@ -40,6 +40,7 @@ class HotspotComponent extends React.Component {
     });
 
     const target = document.getElementById('question-container');
+
     if (target) {
       this.observer.observe(target, { attributes: true, attributeFilter: ['style'] });
     }
@@ -71,6 +72,7 @@ class HotspotComponent extends React.Component {
         teacherInstructions,
         strokeWidth,
         responseCorrect,
+        language,
       },
       onSelectChoice,
       classes,
@@ -80,15 +82,7 @@ class HotspotComponent extends React.Component {
     const showCorrectAnswerToggle = isEvaluateMode && !responseCorrect;
 
     return (
-      <div>
-        {showCorrectAnswerToggle && (
-          <CorrectAnswerToggle
-            show={showCorrectAnswerToggle}
-            toggled={showCorrect}
-            onToggle={this.onToggle.bind(this)}
-          />
-        )}
-        {showCorrectAnswerToggle && <br />}
+      <div className={classes.main}>
         {teacherInstructions && hasText(teacherInstructions) && (
           <Collapsible
             labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}
@@ -98,9 +92,16 @@ class HotspotComponent extends React.Component {
           </Collapsible>
         )}
 
-        <Typography className={classes.prompt}>
-          <PreviewPrompt className="prompt" prompt={prompt} />
-        </Typography>
+        {prompt && <PreviewPrompt className="prompt" prompt={prompt} />}
+
+        {showCorrectAnswerToggle && (
+          <CorrectAnswerToggle
+            show={showCorrectAnswerToggle}
+            toggled={showCorrect}
+            onToggle={this.onToggle.bind(this)}
+            language={language}
+          />
+        )}
 
         {imageUrl ? (
           <Container
@@ -121,7 +122,7 @@ class HotspotComponent extends React.Component {
         ) : null}
 
         {rationale && hasText(rationale) && (
-          <Collapsible labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }} className={classes.collapsible}>
+          <Collapsible labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }}>
             <PreviewPrompt className="prompt" prompt={rationale} />
           </Collapsible>
         )}
@@ -142,9 +143,12 @@ HotspotComponent.defaultProps = {
 };
 
 const styles = (theme) => ({
+  main: {
+    color: color.text(),
+    backgroundColor: color.background(),
+  },
   collapsible: {
-    paddingTop: theme.spacing.unit * 2,
-    paddingBottom: theme.spacing.unit * 2,
+    marginBottom: theme.spacing.unit * 2,
   },
   prompt: {
     fontSize: 'inherit',

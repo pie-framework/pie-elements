@@ -1,5 +1,10 @@
 import { PieModel } from '../../PieModel';
-import { ConfigureProp } from '../ConfigurationProp';
+import {
+  ConfigureMathMLProp,
+  ConfigureProp,
+  EditableHtmlConfigureProp,
+  EditableHtmlPluginConfigure,
+} from '../ConfigurationProp';
 
 interface Trait {
   /** Trait name */
@@ -72,6 +77,22 @@ interface DialogContent {
  * @additionalProperties false
  */
 export interface MultiTraitRubricConfigure {
+  /**
+   * Base editable html input configuration regarding plugins that are enabled/disabled
+   * E.g. audio, video, image
+   */
+  baseInputConfiguration?: EditableHtmlConfigureProp;
+
+  /**
+   * Expanded input configurations
+   */
+  expandedInput?: EditableHtmlPluginConfigure;
+
+  /**
+   * Label input configurations
+   */
+  labelInput?: EditableHtmlPluginConfigure;
+
   /**
    * Configuration for Excluding Zero Dialog Box
    */
@@ -168,4 +189,16 @@ export interface MultiTraitRubricConfigure {
    * Maximum number of scales
    */
   maxNoOfScales?: number;
+
+  /**
+   * The default trait label for new created scales.
+   * If it's not defined, it will default to the label of the first trait.
+   */
+  defaultTraitLabel?: string;
+
+  /** Configuration for editable-html */
+  mathMlOptions?: ConfigureMathMLProp;
+
+  /** Indicates the max limit for scoring points */
+  maxMaxPoints?: number;
 }

@@ -1,12 +1,12 @@
 export default {
   model: {
-    prompt: 'This is the question prompt',
+    prompt: '',
     toolbarEditorPosition: 'bottom',
-    promptEnabled: true,
     imageUrl: '',
     shapes: {
       rectangles: [],
       polygons: [],
+      circles: [],
     },
     multipleCorrect: true,
     partialScoring: false,
@@ -18,12 +18,18 @@ export default {
     hotspotList: ['rgba(137, 183, 244, 0.25)'],
     outlineColor: 'blue',
     outlineList: ['blue'],
+    promptEnabled: true,
     rationaleEnabled: true,
     teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true,
     strokeWidth: 5,
   },
   configuration: {
+    baseInputConfiguration: {
+      audio: { disabled: false },
+      video: { disabled: false },
+      image: { disabled: false },
+    },
     multipleCorrect: {
       settings: true,
       label: 'Multiple Correct Responses',
@@ -35,10 +41,22 @@ export default {
     rationale: {
       settings: true,
       label: 'Rationale',
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
+      required: false,
     },
     prompt: {
       settings: true,
       label: 'Prompt',
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
+      required: false,
     },
     settingsPanelDisabled: false,
     spellCheck: {
@@ -49,6 +67,12 @@ export default {
     teacherInstructions: {
       settings: true,
       label: 'Teacher Instructions',
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
+      required: false,
     },
     preserveAspectRatio: {
       settings: false,
@@ -69,6 +93,19 @@ export default {
     withRubric: {
       settings: false,
       label: 'Add Rubric',
+    },
+    mathMlOptions: {
+      mmlOutput: false,
+      mmlEditing: false,
+    },
+    language: {
+      settings: false,
+      label: 'Specify Language',
+      enabled: false,
+    },
+    languageChoices: {
+      label: 'Language Choices',
+      options: [],
     },
   },
 };

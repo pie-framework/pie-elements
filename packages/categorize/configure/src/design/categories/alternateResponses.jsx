@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
 import Category from './category';
-import { moveChoiceToAlternate } from '@pie-lib/categorize';
-import {RowLabel} from './RowLabel';
+import { moveChoiceToAlternate } from '@pie-lib/pie-toolbox/categorize';
+import { RowLabel } from './RowLabel';
 
 const styles = (theme) => ({
   categories: {
-    marginBottom: theme.spacing.unit,
+    marginBottom: theme.spacing.unit * 2.5,
   },
   categoriesHolder: {
     display: 'grid',
@@ -43,6 +43,8 @@ export class AlternateResponses extends React.Component {
     classes: PropTypes.object.isRequired,
     className: PropTypes.string,
     categories: PropTypes.array,
+    defaultImageMaxHeight: PropTypes.number,
+    defaultImageMaxWidth: PropTypes.number,
     onModelChanged: PropTypes.func,
     model: PropTypes.object.isRequired,
     uploadSoundSupport: PropTypes.shape({
@@ -50,6 +52,7 @@ export class AlternateResponses extends React.Component {
       delete: PropTypes.func.isRequired,
     }),
     toolbarOpts: PropTypes.object,
+    spellCheck: PropTypes.bool,
   };
 
   addChoiceToCategory = (addedChoice, categoryId) => {
@@ -137,11 +140,24 @@ export class AlternateResponses extends React.Component {
   };
 
   render() {
-    const { altIndex, model, configuration, classes, className, categories, imageSupport, spellCheck, uploadSoundSupport, toolbarOpts, defaultImageMaxHeight, defaultImageMaxWidth } =
-      this.props;
+    const {
+      altIndex,
+      model,
+      configuration,
+      classes,
+      className,
+      categories,
+      imageSupport,
+      spellCheck,
+      uploadSoundSupport,
+      toolbarOpts,
+      defaultImageMaxHeight,
+      defaultImageMaxWidth,
+      mathMlOptions = {},
+    } = this.props;
     const { categoriesPerRow, errors, rowLabels } = model;
     const { duplicateAlternate } = errors || {};
-    const {  maxImageWidth = {}, maxImageHeight = {} } = configuration || {};
+    const { maxImageWidth = {}, maxImageHeight = {} } = configuration || {};
 
     const holderStyle = {
       gridTemplateColumns: `repeat(${categoriesPerRow}, 1fr)`,
@@ -154,39 +170,45 @@ export class AlternateResponses extends React.Component {
           {categories.map((category, index) => {
             const hasRowLabel = index % categoriesPerRow === 0;
             const rowIndex = index / categoriesPerRow;
+
             return (
-                <React.Fragment key={index}>
-                  {hasRowLabel && (
-                      <RowLabel
-                          categoriesPerRow={categoriesPerRow}
-                          disabled={true}
-                          rowIndex={rowIndex}
-                          markup={rowLabels[rowIndex] || ''}
-                          onChange={(val) => this.changeRowLabel(val, rowIndex)}
-                          imageSupport={imageSupport}
-                          toolbarOpts={toolbarOpts}
-                          spellCheck={spellCheck}
-                          maxImageWidth={(maxImageWidth && maxImageWidth.rowLabel) || defaultImageMaxWidth}
-                          maxImageHeight={(maxImageHeight && maxImageHeight.rowLabel) || defaultImageMaxHeight}
-                          uploadSoundSupport={uploadSoundSupport}
-                      />
-                  )}
-                  <Category
-                    key={index}
-                    alternateResponseIndex={altIndex}
+              <React.Fragment key={index}>
+                {hasRowLabel && (
+                  <RowLabel
+                    categoriesPerRow={categoriesPerRow}
+                    disabled={true}
+                    rowIndex={rowIndex}
+                    markup={rowLabels[rowIndex] || ''}
+                    onChange={(val) => this.changeRowLabel(val, rowIndex)}
                     imageSupport={imageSupport}
-                    isDuplicated={isDuplicated && duplicateAlternate.category === category.id}
-                    category={category}
+                    toolbarOpts={toolbarOpts}
                     spellCheck={spellCheck}
-                    onAddChoice={this.addChoiceToCategory}
-                    onDeleteChoice={(choice, choiceIndex) => this.deleteChoiceFromCategory(category, choice, choiceIndex)}
-                    onMoveChoice={(choiceId, from, to, choiceIndex, alternateIndex) =>
-                      this.moveChoice(choiceId, from, to, choiceIndex, alternateIndex)
-                    }
+                    maxImageWidth={(maxImageWidth && maxImageWidth.rowLabel) || defaultImageMaxWidth}
+                    maxImageHeight={(maxImageHeight && maxImageHeight.rowLabel) || defaultImageMaxHeight}
                     uploadSoundSupport={uploadSoundSupport}
+                    mathMlOptions={mathMlOptions}
+                    configuration={configuration}
                   />
-                </React.Fragment>
-            )
+                )}
+
+                <Category
+                  key={index}
+                  alternateResponseIndex={altIndex}
+                  imageSupport={imageSupport}
+                  isDuplicated={isDuplicated && duplicateAlternate.category === category.id}
+                  category={category}
+                  spellCheck={spellCheck}
+                  onAddChoice={this.addChoiceToCategory}
+                  onDeleteChoice={(choice, choiceIndex) => this.deleteChoiceFromCategory(category, choice, choiceIndex)}
+                  onMoveChoice={(choiceId, from, to, choiceIndex, alternateIndex) =>
+                    this.moveChoice(choiceId, from, to, choiceIndex, alternateIndex)
+                  }
+                  uploadSoundSupport={uploadSoundSupport}
+                  mathMlOptions={mathMlOptions}
+                  configuration={configuration}
+                />
+              </React.Fragment>
+            );
           })}
         </div>
       </div>

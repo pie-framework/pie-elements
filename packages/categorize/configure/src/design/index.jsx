@@ -1,20 +1,26 @@
+import { getPluginProps } from './utils';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import classNames from 'classnames';
-import { FeedbackConfig, InputContainer, layout, settings } from '@pie-lib/config-ui';
-import { countInAnswer, ensureNoExtraChoicesInAnswer, ensureNoExtraChoicesInAlternate } from '@pie-lib/categorize';
-import EditableHtml from '@pie-lib/editable-html';
-import { uid, withDragContext } from '@pie-lib/drag';
+import { FeedbackConfig, InputContainer, layout, settings } from '@pie-lib/pie-toolbox/config-ui';
+import {
+  countInAnswer,
+  ensureNoExtraChoicesInAnswer,
+  ensureNoExtraChoicesInAlternate,
+} from '@pie-lib/pie-toolbox/categorize';
+import { EditableHtml } from '@pie-lib/pie-toolbox/editable-html';
+import { uid, withDragContext } from '@pie-lib/pie-toolbox/drag';
 
 import Categories from './categories';
 import AlternateResponses from './categories/alternateResponses';
 import Choices from './choices';
-import { Divider } from './buttons';
 import { buildAlternateResponses, buildCategories } from './builder';
 import Header from './header';
-import { multiplePlacements } from '../utils';
+import { getMaxCategoryChoices, multiplePlacements } from '../utils';
+import { AlertDialog } from '@pie-lib/pie-toolbox/config-ui';
+import Translator from '@pie-lib/pie-toolbox/translator';
 
+const { translator } = Translator;
 const { dropdown, Panel, toggle, radio, numberField } = settings;
 const { Provider: IdProvider } = uid;
 
@@ -78,6 +84,11 @@ export class Design extends React.Component {
       content: h.content,
       categoryCount: h.categoryCount,
     }));
+
+    // ensure that maxChoicesPerCategory is reset if author switch back the corresponding switch (allowMaxChoicesPerCategory)
+    updatedModel.maxChoicesPerCategory = updatedModel.allowMaxChoicesPerCategory
+      ? updatedModel.maxChoicesPerCategory
+      : 0;
 
     onChange(updatedModel);
   };
@@ -150,25 +161,33 @@ export class Design extends React.Component {
     return c.categoryCount || 0;
   };
 
+  isAlertModalOpened = () => {
+    const { model } = this.props;
+    const { maxChoicesPerCategory = 0 } = model || {};
+    const maxChoices = getMaxCategoryChoices(model);
+    // when maxChoicesPerCategory is set to 0, there is no limit so modal should not be opened
+    return maxChoicesPerCategory !== 0 ? maxChoices > maxChoicesPerCategory : false;
+  };
+
+  onAlertModalCancel = () => {
+    const { model } = this.props;
+    const maxChoices = getMaxCategoryChoices(model);
+    this.updateModel({ maxChoicesPerCategory: maxChoices });
+  };
+
   render() {
-    const {
-      classes,
-      className,
-      configuration,
-      imageSupport,
-      model,
-      uploadSoundSupport,
-      onConfigurationChanged,
-    } = this.props;
+    const { classes, configuration, imageSupport, model, uploadSoundSupport, onConfigurationChanged } = this.props;
     const {
       allowMultiplePlacements = {},
-      allowAlternate = {},
+      baseInputConfiguration = {},
       categoriesPerRow = {},
       choicesPosition = {},
+      contentDimensions = {},
       feedback = {},
       lockChoiceOrder = {},
       maxImageHeight = {},
       maxImageWidth = {},
+      maxPlacements = {},
       minCategoriesPerRow = 1,
       partialScoring = {},
       prompt = {},
@@ -179,16 +198,27 @@ export class Design extends React.Component {
       studentInstructions = {},
       teacherInstructions = {},
       withRubric = {},
+      mathMlOptions = {},
+      language = {},
+      languageChoices = {},
     } = configuration || {};
     const {
       allowAlternateEnabled,
+      allowMaxChoicesPerCategory,
+      errors,
       feedbackEnabled,
+      maxChoicesPerCategory,
       promptEnabled,
       rationaleEnabled,
       spellCheckEnabled,
       teacherInstructionsEnabled,
       toolbarEditorPosition,
     } = model || {};
+    const {
+      prompt: promptError,
+      rationale: rationaleError,
+      teacherInstructions: teacherInstructionsError,
+    } = errors || {};
 
     const toolbarOpts = {
       position: toolbarEditorPosition === 'top' ? 'top' : 'bottom',
@@ -207,7 +237,8 @@ export class Design extends React.Component {
 
     const choices = model.choices.map((c) => {
       c.correctResponseCount = this.countChoiceInCorrectResponse(c);
-
+      // ensure categoryCount is set even though updatedModel hasn't been called
+      c.categoryCount = this.checkAllowMultiplePlacements(model.allowMultiplePlacementsEnabled, c);
       return c;
     });
 
@@ -232,9 +263,20 @@ export class Design extends React.Component {
           multiplePlacements.disabled,
           multiplePlacements.perChoice,
         ]),
+      allowMaxChoicesPerCategory: maxPlacements.settings && toggle(maxPlacements.label),
+      maxChoicesPerCategory:
+        allowMaxChoicesPerCategory === true &&
+        numberField(maxPlacements.label, {
+          label: '',
+          min: 0,
+          max: 30,
+        }),
       promptEnabled: prompt.settings && toggle(prompt.label),
       feedbackEnabled: feedback.settings && toggle(feedback.label),
-      allowAlternateEnabled: allowAlternate.settings && toggle(allowAlternate.label),
+      // PD-2960: deleted temporary from settings panel
+      // allowAlternateEnabled: allowAlternate.settings && toggle(allowAlternate.label),
+      'language.enabled': language.settings && toggle(language.label, true),
+      language: language.settings && language.enabled && dropdown(languageChoices.label, languageChoices.options),
     };
 
     const panelProperties = {
@@ -246,9 +288,16 @@ export class Design extends React.Component {
       rubricEnabled: withRubric?.settings && toggle(withRubric?.label),
     };
 
+    const isOpened = this.isAlertModalOpened();
+    const alertMaxChoicesMsg = translator.t('translation:categorize:maxChoicesPerCategoryRestriction', {
+      lng: model.language,
+      maxChoicesPerCategory,
+    });
+
     return (
       <IdProvider value={this.uid}>
         <layout.ConfigLayout
+          dimensions={contentDimensions}
           hideSettings={settingsPanelDisabled}
           settings={
             <Panel
@@ -260,130 +309,150 @@ export class Design extends React.Component {
                 Settings: panelSettings,
                 Properties: panelProperties,
               }}
+              modal={
+                <AlertDialog
+                  title={'Warning'}
+                  text={alertMaxChoicesMsg}
+                  open={isOpened}
+                  onClose={this.onAlertModalCancel}
+                />
+              }
             />
           }
         >
-          <div className={classNames(classes.design, className)}>
-            {promptEnabled && (
-              <InputContainer label={prompt.label} className={classes.promptHolder}>
-                <EditableHtml
-                  className={classes.prompt}
-                  markup={model.prompt || ''}
-                  onChange={this.onPromptChanged}
-                  imageSupport={imageSupport}
-                  nonEmpty={false}
-                  disableUnderline
-                  toolbarOpts={toolbarOpts}
-                  spellCheck={spellCheckEnabled}
-                  maxImageWidth={maxImageWidth && maxImageWidth.prompt}
-                  maxImageHeight={maxImageHeight && maxImageHeight.prompt}
-                  uploadSoundSupport={uploadSoundSupport}
-                  languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
-                />
-              </InputContainer>
-            )}
+          {teacherInstructionsEnabled && (
+            <InputContainer label={teacherInstructions.label} className={classes.inputContainer}>
+              <EditableHtml
+                className={classes.input}
+                markup={model.teacherInstructions || ''}
+                onChange={this.changeTeacherInstructions}
+                imageSupport={imageSupport}
+                error={teacherInstructionsError}
+                nonEmpty={false}
+                toolbarOpts={toolbarOpts}
+                pluginProps={getPluginProps(teacherInstructions?.inputConfiguration, baseInputConfiguration)}
+                spellCheck={spellCheckEnabled}
+                maxImageWidth={(maxImageWidth && maxImageWidth.teacherInstructions) || defaultImageMaxWidth}
+                maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
+                uploadSoundSupport={uploadSoundSupport}
+                languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+                mathMlOptions={mathMlOptions}
+              />
+              {teacherInstructionsError && <div className={classes.errorText}>{teacherInstructionsError}</div>}
+            </InputContainer>
+          )}
 
-            {teacherInstructionsEnabled && (
-              <InputContainer label={teacherInstructions.label} className={classes.inputHolder}>
-                <EditableHtml
-                  className={classes.input}
-                  markup={model.teacherInstructions || ''}
-                  onChange={this.changeTeacherInstructions}
-                  imageSupport={imageSupport}
-                  nonEmpty={false}
-                  toolbarOpts={toolbarOpts}
-                  spellCheck={spellCheckEnabled}
-                  maxImageWidth={(maxImageWidth && maxImageWidth.teacherInstructions) || defaultImageMaxWidth}
-                  maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
-                  uploadSoundSupport={uploadSoundSupport}
-                  languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
-                />
-              </InputContainer>
-            )}
+          {promptEnabled && (
+            <InputContainer label={prompt.label} className={classes.inputContainer}>
+              <EditableHtml
+                className={classes.input}
+                markup={model.prompt || ''}
+                onChange={this.onPromptChanged}
+                imageSupport={imageSupport}
+                error={promptError}
+                nonEmpty={false}
+                disableUnderline
+                toolbarOpts={toolbarOpts}
+                pluginProps={getPluginProps(prompt?.inputConfiguration, baseInputConfiguration)}
+                spellCheck={spellCheckEnabled}
+                maxImageWidth={maxImageWidth && maxImageWidth.prompt}
+                maxImageHeight={maxImageHeight && maxImageHeight.prompt}
+                uploadSoundSupport={uploadSoundSupport}
+                languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+                mathMlOptions={mathMlOptions}
+              />
+              {promptError && <div className={classes.errorText}>{promptError}</div>}
+            </InputContainer>
+          )}
 
-            {rationaleEnabled && (
-              <InputContainer label={rationale.label} className={classes.inputHolder}>
-                <EditableHtml
-                  className={classes.input}
-                  markup={model.rationale || ''}
-                  onChange={this.changeRationale}
-                  imageSupport={imageSupport}
-                  nonEmpty={false}
-                  toolbarOpts={toolbarOpts}
-                  spellCheck={spellCheckEnabled}
-                  maxImageWidth={(maxImageWidth && maxImageWidth.rationale) || defaultImageMaxWidth}
-                  maxImageHeight={(maxImageHeight && maxImageHeight.rationale) || defaultImageMaxHeight}
-                  uploadSoundSupport={uploadSoundSupport}
-                  languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
-                />
-              </InputContainer>
-            )}
+          <Categories
+            imageSupport={imageSupport}
+            uploadSoundSupport={uploadSoundSupport}
+            model={model}
+            categories={categories || []}
+            onModelChanged={this.updateModel}
+            toolbarOpts={toolbarOpts}
+            spellCheck={spellCheckEnabled}
+            configuration={configuration}
+            defaultImageMaxWidth={defaultImageMaxWidth}
+            defaultImageMaxHeight={defaultImageMaxHeight}
+            mathMlOptions={mathMlOptions}
+          />
 
-            <Categories
-              imageSupport={imageSupport}
-              uploadSoundSupport={uploadSoundSupport}
-              model={model}
-              categories={categories || []}
-              onModelChanged={this.updateModel}
-              toolbarOpts={toolbarOpts}
-              spellCheck={spellCheckEnabled}
-              configuration={configuration}
-              defaultImageMaxWidth={defaultImageMaxWidth}
-              defaultImageMaxHeight={defaultImageMaxHeight}
+          <Choices
+            imageSupport={imageSupport}
+            uploadSoundSupport={uploadSoundSupport}
+            choices={choices}
+            model={model}
+            onModelChanged={this.updateModel}
+            toolbarOpts={toolbarOpts}
+            spellCheck={spellCheckEnabled}
+            configuration={configuration}
+            defaultImageMaxWidth={defaultImageMaxWidth}
+            defaultImageMaxHeight={defaultImageMaxHeight}
+          />
+
+          {allowAlternateEnabled && (
+            <Header
+              className={classes.alternatesHeader}
+              label="Alternate Responses"
+              buttonLabel="ADD AN ALTERNATE RESPONSE"
+              onAdd={this.onAddAlternateResponse}
             />
-            <Choices
-              imageSupport={imageSupport}
-              uploadSoundSupport={uploadSoundSupport}
-              choices={choices}
-              model={model}
-              onModelChanged={this.updateModel}
-              toolbarOpts={toolbarOpts}
-              spellCheck={spellCheckEnabled}
-              configuration={configuration}
-              defaultImageMaxWidth={defaultImageMaxWidth}
-              defaultImageMaxHeight={defaultImageMaxHeight}
-            />
-            {allowAlternateEnabled && (
-                <Header
+          )}
+          {allowAlternateEnabled &&
+            alternateResponses.map((categoriesList, index) => {
+              return (
+                <React.Fragment key={index}>
+                  <Header
                     className={classes.alternatesHeader}
-                    label="Alternate Responses"
-                    buttonLabel="ADD AN ALTERNATE RESPONSE"
-                    onAdd={this.onAddAlternateResponse}
-                />
-            )}
-            {allowAlternateEnabled &&
-                alternateResponses.map((categoriesList, index) => {
-                  return (
-                      <React.Fragment key={index}>
-                        <Header
-                            className={classes.alternatesHeader}
-                            variant={'subtitle1'}
-                            label="Alternate Response"
-                            buttonLabel="REMOVE ALTERNATE RESPONSE"
-                            onAdd={() => this.onRemoveAlternateResponse(index)}
-                        />
-                        <AlternateResponses
-                            altIndex={index}
-                            imageSupport={imageSupport}
-                            model={model}
-                            configuration={configuration}
-                            categories={categoriesList}
-                            onModelChanged={this.updateModel}
-                            uploadSoundSupport={uploadSoundSupport}
-                            toolbarOpts={toolbarOpts}
-                            defaultImageMaxWidth={defaultImageMaxWidth}
-                            defaultImageMaxHeight={defaultImageMaxHeight}
-                        />
-                      </React.Fragment>
-                  );
-                })}
-            {allowAlternateEnabled &&
-                <Divider/>
-            }
-            {feedbackEnabled && (
-              <FeedbackConfig feedback={model.feedback} onChange={this.changeFeedback} toolbarOpts={toolbarOpts} />
-            )}
-          </div>
+                    variant={'subtitle1'}
+                    label="Alternate Response"
+                    buttonLabel="REMOVE ALTERNATE RESPONSE"
+                    onAdd={() => this.onRemoveAlternateResponse(index)}
+                  />
+                  <AlternateResponses
+                    altIndex={index}
+                    imageSupport={imageSupport}
+                    model={model}
+                    configuration={configuration}
+                    categories={categoriesList}
+                    onModelChanged={this.updateModel}
+                    uploadSoundSupport={uploadSoundSupport}
+                    toolbarOpts={toolbarOpts}
+                    defaultImageMaxWidth={defaultImageMaxWidth}
+                    defaultImageMaxHeight={defaultImageMaxHeight}
+                    mathMlOptions={mathMlOptions}
+                  />
+                </React.Fragment>
+              );
+            })}
+
+          {rationaleEnabled && (
+            <InputContainer label={rationale.label} className={classes.inputContainer}>
+              <EditableHtml
+                className={classes.input}
+                markup={model.rationale || ''}
+                onChange={this.changeRationale}
+                imageSupport={imageSupport}
+                error={rationaleError}
+                nonEmpty={false}
+                toolbarOpts={toolbarOpts}
+                pluginProps={getPluginProps(prompt?.inputConfiguration, baseInputConfiguration)}
+                spellCheck={spellCheckEnabled}
+                maxImageWidth={(maxImageWidth && maxImageWidth.rationale) || defaultImageMaxWidth}
+                maxImageHeight={(maxImageHeight && maxImageHeight.rationale) || defaultImageMaxHeight}
+                uploadSoundSupport={uploadSoundSupport}
+                languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+                mathMlOptions={mathMlOptions}
+              />
+              {rationaleError && <div className={classes.errorText}>{rationaleError}</div>}
+            </InputContainer>
+          )}
+
+          {feedbackEnabled && (
+            <FeedbackConfig feedback={model.feedback} onChange={this.changeFeedback} toolbarOpts={toolbarOpts} />
+          )}
         </layout.ConfigLayout>
       </IdProvider>
     );
@@ -392,38 +461,24 @@ export class Design extends React.Component {
 
 const styles = (theme) => ({
   alternatesHeader: {
-    paddingTop: theme.spacing.unit * 2,
-    paddingBottom: theme.spacing.unit * 2,
+    marginBottom: theme.spacing.unit * 2,
   },
   text: {
     paddingTop: theme.spacing.unit * 2,
     paddingBottom: theme.spacing.unit * 2,
   },
-  design: {
-    paddingTop: theme.spacing.unit,
-    paddingBottom: theme.spacing.unit,
-  },
-  inputHolder: {
+  inputContainer: {
     width: '100%',
-    paddingBottom: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit * 2,
-  },
-  input: {
     paddingTop: theme.spacing.unit * 2,
-    width: '100%',
-    maxWidth: '600px',
-  },
-  prompt: {
-    paddingTop: theme.spacing.unit * 2,
-    width: '100%',
-  },
-  promptHolder: {
-    width: '100%',
-    paddingBottom: theme.spacing.unit * 2,
     marginBottom: theme.spacing.unit * 2,
   },
   title: {
     marginBottom: theme.spacing.unit * 4,
+  },
+  errorText: {
+    fontSize: theme.typography.fontSize - 2,
+    color: theme.palette.error.main,
+    paddingTop: theme.spacing.unit,
   },
 });
 

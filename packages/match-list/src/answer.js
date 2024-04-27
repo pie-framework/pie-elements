@@ -5,18 +5,18 @@ import React from 'react';
 import classNames from 'classnames';
 import debug from 'debug';
 import { withStyles } from '@material-ui/core/styles';
-import { PlaceHolder } from '@pie-lib/drag';
+import { PlaceHolder } from '@pie-lib/pie-toolbox/drag';
 import isEmpty from 'lodash/isEmpty';
-import { color } from '@pie-lib/render-ui';
+import { color } from '@pie-lib/pie-toolbox/render-ui';
 
 const log = debug('pie-elements:match-title:answer');
 
-const Holder = withStyles(() => ({
+const Holder = withStyles((theme) => ({
   number: {
     width: '100%',
     fontSize: '18px',
     textAlign: 'center',
-    color: 'rgba(0,0,0,0.6)',
+    color: `rgba(${theme.palette.common.black}, 0.6)`,
   },
   placeholder: {
     display: 'flex',
@@ -37,14 +37,14 @@ Holder.propTypes = {
   disabled: PropTypes.bool,
 };
 
-const AnswerContent = withStyles({
+const AnswerContent = withStyles((theme) => ({
   over: {
     opacity: 0.2,
   },
   answerContent: {
     color: color.text(),
     backgroundColor: color.background(),
-    border: '1px solid #c2c2c2', // TODO hardcoded color
+    border: `1px solid ${theme.palette.grey[400]}`,
     cursor: 'pointer',
     width: '100%',
     padding: '10px',
@@ -52,6 +52,10 @@ const AnswerContent = withStyles({
     overflow: 'hidden',
     transition: 'opacity 200ms linear',
     wordBreak: 'break-word',
+    // Added for touch devices, for image content.
+    // This will prevent the context menu from appearing and not allowing other interactions with the image.
+    // If interactions with the image in the token will be requested we should handle only the context Menu.
+    pointerEvents: 'none',
   },
   dragging: {
     opacity: 0.5,
@@ -67,7 +71,7 @@ const AnswerContent = withStyles({
   correct: {
     border: `1px solid ${color.correct()}`,
   },
-})((props) => {
+}))((props) => {
   const { classes, isDragging, isOver, title, disabled, empty, outcome, guideIndex, type } = props;
 
   if (empty) {
@@ -189,6 +193,7 @@ const answerSource = {
       id: props.id,
       type: props.type,
       instanceId: props.instanceId,
+      value: props.title,
       promptId: props.promptId,
     };
   },

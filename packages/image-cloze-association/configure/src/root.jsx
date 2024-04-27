@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { settings, layout, InputContainer } from '@pie-lib/config-ui';
-import EditableHtml from '@pie-lib/editable-html';
+import { settings, layout, InputContainer } from '@pie-lib/pie-toolbox/config-ui';
+import { EditableHtml } from '@pie-lib/pie-toolbox/editable-html';
 import { withStyles } from '@material-ui/core/styles';
 
-const { Panel, toggle } = settings;
+const { Panel, toggle, dropdown } = settings;
 
 export class Root extends React.Component {
   onTeacherInstructionsChanged = (teacherInstructions) => {
@@ -15,23 +15,37 @@ export class Root extends React.Component {
     const { classes, model, configuration, onModelChanged, onConfigurationChanged, imageSupport, uploadSoundSupport } =
       this.props;
     const {
+      baseInputConfiguration = {},
+      contentDimensions = {},
       maxImageWidth = {},
       maxImageHeight = {},
       settingsPanelDisabled,
       spellCheck = {},
       teacherInstructions = {},
       withRubric = {},
+      mathMlOptions = {},
+      language = {},
+      languageChoices = {},
     } = configuration || {};
-    const { spellCheckEnabled } = model || {};
+    const { errors = {}, spellCheckEnabled } = model || {};
+    const { teacherInstructions: teacherInstructionsError } = errors;
 
     const panelProperties = {
       teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
       spellCheckEnabled: spellCheck.settings && toggle(spellCheck.label),
       rubricEnabled: withRubric?.settings && toggle(withRubric?.label),
+      'language.enabled': language.settings && toggle(language.label, true),
+      language: language.settings && language.enabled && dropdown(languageChoices.label, languageChoices.options),
     };
+
+    const getPluginProps = (props = {}) => ({
+      ...baseInputConfiguration,
+      ...props,
+    });
 
     return (
       <layout.ConfigLayout
+        dimensions={contentDimensions}
         hideSettings={settingsPanelDisabled}
         settings={
           <Panel
@@ -45,42 +59,43 @@ export class Root extends React.Component {
           />
         }
       >
-        <div className={classes.content}>
-          {model && model.teacherInstructionsEnabled && (
-            <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
-              <EditableHtml
-                className={classes.prompt}
-                markup={model.teacherInstructions || ''}
-                onChange={this.onTeacherInstructionsChanged}
-                imageSupport={imageSupport}
-                nonEmpty={false}
-                spellCheck={spellCheckEnabled}
-                maxImageWidth={maxImageWidth && maxImageWidth.teacherInstructions}
-                maxImageHeight={maxImageHeight && maxImageHeight.teacherInstructions}
-                uploadSoundSupport={uploadSoundSupport}
-                languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
-              />
-            </InputContainer>
-          )}
+        {model && model.teacherInstructionsEnabled && (
+          <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
+            <EditableHtml
+              className={classes.prompt}
+              markup={model.teacherInstructions || ''}
+              onChange={this.onTeacherInstructionsChanged}
+              imageSupport={imageSupport}
+              nonEmpty={false}
+              error={teacherInstructionsError}
+              spellCheck={spellCheckEnabled}
+              pluginProps={getPluginProps(teacherInstructions?.inputConfiguration)}
+              maxImageWidth={maxImageWidth && maxImageWidth.teacherInstructions}
+              maxImageHeight={maxImageHeight && maxImageHeight.teacherInstructions}
+              uploadSoundSupport={uploadSoundSupport}
+              languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+              mathMlOptions={mathMlOptions}
+            />
+            {teacherInstructionsError && <div className={classes.errorText}>{teacherInstructionsError}</div>}
+          </InputContainer>
+        )}
 
-          <div>Image cloze association</div>
-        </div>
+        <div>Image cloze association</div>
       </layout.ConfigLayout>
     );
   }
 }
 
 const styles = (theme) => ({
-  base: {
-    marginTop: theme.spacing.unit * 3,
-  },
   promptHolder: {
     width: '100%',
     paddingTop: theme.spacing.unit * 2,
+    marginBottom: theme.spacing.unit * 2,
   },
-  prompt: {
-    paddingTop: theme.spacing.unit * 2,
-    width: '100%',
+  errorText: {
+    fontSize: theme.typography.fontSize - 2,
+    color: theme.palette.error.main,
+    paddingTop: theme.spacing.unit,
   },
 });
 

@@ -4,7 +4,7 @@ import React from 'react';
 import { Main } from '../main';
 import { excludeZeroTypes } from '../modals';
 
-jest.mock('@pie-lib/config-ui', () => ({
+jest.mock('@pie-lib/pie-toolbox/config-ui', () => ({
   layout: {
     ConfigLayout: (props) => <div {...props} />,
   },
@@ -623,10 +623,9 @@ describe('Main', () => {
           scales: [
             ...initialModel.scales,
             {
-              excludeZero: false,
               maxPoints: 1,
-              scorePointsLabels: ['', ''],
-              traitLabel: '',
+              scorePointsLabels: [''],
+              traitLabel: 'Trait',
               traits: [],
             },
           ],
@@ -668,17 +667,6 @@ describe('Main', () => {
         w.instance().onScaleChanged(0, {});
 
         expect(onModelChanged).not.toBeCalled();
-      });
-
-      it("changes a scale's excludeZero", () => {
-        const w = wrapper();
-        const [firstScale, ...scales] = w.instance().props.model.scales;
-        w.instance().onScaleChanged(0, { excludeZero: true });
-
-        expect(onModelChanged).toBeCalledWith({
-          ...initialModel,
-          scales: [{ ...firstScale, excludeZero: true }, ...scales],
-        });
       });
 
       it("changes a scale's maxPoints", () => {

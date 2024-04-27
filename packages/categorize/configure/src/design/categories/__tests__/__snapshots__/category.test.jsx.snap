@@ -8,11 +8,12 @@ exports[`category snapshot renders with default props 1`] = `
     <WithStyles(InputHeader)
       disabled={false}
       label="Category title"
+      mathMlOptions={Object {}}
       onChange={[Function]}
       onDelete={[MockFunction]}
     />
   </span>
-  <DropTarget(WithStyles(DroppablePlaceHolder))
+  <Wrapped
     category={
       Object {
         "id": "1",
@@ -40,10 +41,11 @@ exports[`category snapshot renders without some components if no handlers are pr
     <WithStyles(InputHeader)
       disabled={false}
       label="Category title"
+      mathMlOptions={Object {}}
       onChange={[Function]}
     />
   </span>
-  <DropTarget(WithStyles(DroppablePlaceHolder))
+  <Wrapped
     category={
       Object {
         "id": "1",

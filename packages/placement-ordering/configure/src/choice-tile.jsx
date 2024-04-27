@@ -1,4 +1,4 @@
-import EditableHtml, { DEFAULT_PLUGINS } from '@pie-lib/editable-html';
+import { EditableHtml, DEFAULT_PLUGINS } from '@pie-lib/pie-toolbox/editable-html';
 import CardActions from '@material-ui/core/CardActions';
 import DragHandle from '@material-ui/icons/DragHandle';
 
@@ -11,7 +11,7 @@ import React from 'react';
 import RemoveCircle from '@material-ui/icons/RemoveCircle';
 import debug from 'debug';
 import { withStyles } from '@material-ui/core/styles';
-import { color } from '@pie-lib/render-ui';
+import { color } from '@pie-lib/pie-toolbox/render-ui';
 
 const log = debug('@pie-element:placement-ordering:configure:choice-tile');
 
@@ -21,6 +21,8 @@ export class ChoiceTile extends React.Component {
     connectDropTarget: PropTypes.func.isRequired,
     isDragging: PropTypes.bool.isRequired,
     id: PropTypes.any,
+    maxImageHeight: PropTypes.object,
+    maxImageWidth: PropTypes.object,
     label: PropTypes.string,
     isOver: PropTypes.bool,
     classes: PropTypes.object.isRequired,
@@ -37,10 +39,11 @@ export class ChoiceTile extends React.Component {
     choices: PropTypes.array.isRequired,
     onChoiceChange: PropTypes.func.isRequired,
     onDelete: PropTypes.func.isRequired,
-    disableImages: PropTypes.bool,
     toolbarOpts: PropTypes.object,
+    pluginProps: PropTypes.object,
     choicesLabel: PropTypes.string,
     error: PropTypes.string,
+    spellCheck: PropTypes.bool,
   };
 
   onLabelChange = (label) => {
@@ -52,28 +55,23 @@ export class ChoiceTile extends React.Component {
 
   render() {
     const {
-      choice: { label, editable },
+      choice: { label, editable, type },
       isDragging,
       connectDragSource,
       connectDropTarget,
       classes,
       onDelete,
       imageSupport,
-      disableImages,
       spellCheck,
       toolbarOpts,
+      pluginProps,
       maxImageWidth,
       maxImageHeight,
       error,
+      mathMlOptions = {},
     } = this.props;
 
     const dragSourceOpts = {}; //dropEffect: moveOnDrag ? 'move' : 'copy'};
-
-    const choicePlugins = {
-      image: { disabled: disableImages },
-      audio: { disabled: true },
-      video: { disabled: true },
-    };
     const filteredDefaultPlugins = (DEFAULT_PLUGINS || []).filter(
       (p) => p !== 'bulleted-list' && p !== 'numbered-list',
     );
@@ -91,11 +89,11 @@ export class ChoiceTile extends React.Component {
           <EditableHtml
             disabled={!editable}
             className={classNames(classes.prompt, !editable && classes.targetPrompt)}
-            placeholder="Enter a choice"
+            placeholder={type !== 'target' && !label.includes('data-latex') ? 'Enter a choice' : ''}
             markup={label}
             imageSupport={imageSupport || undefined}
             onChange={this.onLabelChange}
-            pluginProps={choicePlugins}
+            pluginProps={pluginProps}
             toolbarOpts={toolbarOpts}
             activePlugins={filteredDefaultPlugins}
             spellCheck={spellCheck}
@@ -103,6 +101,7 @@ export class ChoiceTile extends React.Component {
             maxImageHeight={maxImageHeight}
             languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
             error={editable && error}
+            mathMlOptions={mathMlOptions}
           />
 
           {editable && (
@@ -128,7 +127,7 @@ const Styled = withStyles((theme) => ({
   },
   choiceTile: {
     cursor: 'move',
-    backgroundColor: 'white',
+    backgroundColor: theme.palette.common.white,
     margin: `${theme.spacing.unit}px 0`,
     display: 'flex',
     flexDirection: 'column',
@@ -143,14 +142,14 @@ const Styled = withStyles((theme) => ({
     borderRadius: '4px',
   },
   targetPrompt: {
-    backgroundColor: '#D7D7D7',
+    backgroundColor: theme.palette.error['A100'],
   },
   actions: {
-    color: '#B1B1B1',
+    color: theme.palette.error[400],
   },
   errorText: {
     fontSize: theme.typography.fontSize - 2,
-    color: 'red',
+    color: theme.palette.error.main,
     marginLeft: theme.spacing.unit * 5,
     marginTop: theme.spacing.unit,
   },

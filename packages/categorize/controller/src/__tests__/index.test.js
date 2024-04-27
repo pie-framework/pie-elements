@@ -1,18 +1,18 @@
 import { model, outcome, getCorrectness, createCorrectResponseSession, getTotalScore, getPartialScore } from '../index';
 import React from 'react';
 
-jest.mock('@pie-lib/categorize', () => ({
+jest.mock('@pie-lib/pie-toolbox/categorize', () => ({
   // used this algorithm in order to control the value of correct; check `fakeCorrect` below
   buildState: (mockedCategories, choices, answers) => ({
     categories: mockedCategories,
     correct: mockedCategories === answers,
   }),
 }));
-jest.mock('@pie-lib/feedback', () => ({
+jest.mock('@pie-lib/pie-toolbox/feedback', () => ({
   getFeedbackForCorrectness: () => new Promise((resolve) => resolve('This is getFeedbackForCorrectness response.')),
 }));
-jest.mock('@pie-lib/controller-utils', () => ({
-  ...jest.requireActual('@pie-lib/controller-utils'),
+jest.mock('@pie-lib/pie-toolbox/controller-utils', () => ({
+  ...jest.requireActual('@pie-lib/pie-toolbox/controller-utils'),
   getShuffledChoices: (choices, session, updateSession, key) => {
     const currentShuffled = ((session || {}).shuffledValues || []).filter((v) => v);
 
@@ -86,7 +86,7 @@ describe('controller', () => {
     });
 
     it('feedback: returns proper feedback in evaluate mode', async () => {
-      const result = await model(question, {}, { mode: 'evaluate' }, jest.fn());
+      const result = await model({...question, feedbackEnabled:true}, {}, { mode: 'evaluate' }, jest.fn());
       expect(result.feedback).toEqual('This is getFeedbackForCorrectness response.');
     });
 

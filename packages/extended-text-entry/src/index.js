@@ -1,7 +1,7 @@
 import Main from './main';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { renderMath } from '@pie-lib/math-rendering';
+import { renderMath } from '@pie-lib/pie-toolbox/math-rendering-accessible';
 
 import { ModelSetEvent, SessionChangedEvent } from '@pie-framework/pie-player-events';
 import debug from 'debug';
@@ -60,6 +60,9 @@ export default class RootExtendedTextEntry extends HTMLElement {
   }
 
   connectedCallback() {
+    this.setAttribute('aria-label', 'Written Response Question');
+    this.setAttribute('role', 'region');
+
     this.render();
   }
 

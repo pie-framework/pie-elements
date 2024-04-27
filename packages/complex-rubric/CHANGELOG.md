@@ -3,6 +3,928 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.10.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@2.9.1...@pie-element/complex-rubric@2.10.0) (2024-04-22)
+
+
+### Features
+
+* update pie-lib/pie-toolbox PD-2449 ([2a0b40a](https://github.com/pie-framework/pie-elements/commit/2a0b40a826f0338b5eda2e8301f79870be3d0073))
+
+
+
+
+
+## [2.9.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@2.9.0...@pie-element/complex-rubric@2.9.1) (2024-04-22)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3644, PD-3673 ([5e28ce0](https://github.com/pie-framework/pie-elements/commit/5e28ce0dab4a7ecd93ef7bba45ddb20f768b450b))
+
+
+
+
+
+# [2.9.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@2.8.2...@pie-element/complex-rubric@2.9.0) (2024-04-18)
+
+
+### Features
+
+* update pie-lib/pie-toolbox SC-30530, SC-30682, PD-3607, PD-3655 ([f08bccf](https://github.com/pie-framework/pie-elements/commit/f08bccf86fcb430e75e410116b000b3affc252c0))
+
+
+
+
+
+## [2.8.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@2.8.1...@pie-element/complex-rubric@2.8.2) (2024-04-18)
+
+
+### Bug Fixes
+
+* **complex-rubric:** added imageSupport to fix missing image setting from editable-html ([4a40858](https://github.com/pie-framework/pie-elements/commit/4a408580d012d27bf333f117308483b4854e2b20))
+
+
+
+
+
+## [2.8.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@2.8.0...@pie-element/complex-rubric@2.8.1) (2024-04-01)
+
+**Note:** Version bump only for package @pie-element/complex-rubric
+
+
+
+
+
+# [2.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@2.7.0...@pie-element/complex-rubric@2.8.0) (2024-04-01)
+
+
+### Features
+
+* **inline-dropdown:** upgrade pie-toolbox PD-2465 ([828d1c1](https://github.com/pie-framework/pie-elements/commit/828d1c1bc9e9221c1e141baaa8f89a4929ad0eb9))
+
+
+
+
+
+# [2.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@2.6.8...@pie-element/complex-rubric@2.7.0) (2024-04-01)
+
+
+### Features
+
+* update pie-lib/pie-toolbox PD-3567, PD-3426 ([2a706d7](https://github.com/pie-framework/pie-elements/commit/2a706d799bb000c60b7a77a790de9dc66345ebf5))
+
+
+
+
+
+## [2.6.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@2.6.7...@pie-element/complex-rubric@2.6.8) (2024-03-28)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3603 ([8fc82ab](https://github.com/pie-framework/pie-elements/commit/8fc82ab19baf45aecb40e4b364a7c307a9840130))
+
+
+
+
+
+## [2.6.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@2.6.6...@pie-element/complex-rubric@2.6.7) (2024-03-27)
+
+
+### Bug Fixes
+
+* add back changes for PD-1870, that were reverted in previous version ([0cad3b8](https://github.com/pie-framework/pie-elements/commit/0cad3b8f29a123e34098b865190e57b92fbf5ecc))
+
+
+
+
+
+## [2.6.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@2.6.5...@pie-element/complex-rubric@2.6.6) (2024-03-27)
+
+
+### Bug Fixes
+
+* revert changes made for PD-1870, we'll add them back later ([3e7e73e](https://github.com/pie-framework/pie-elements/commit/3e7e73ecc31de0ae16c59163bad95b6d7a02bb37))
+
+
+
+
+
+## [2.6.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@2.6.4...@pie-element/complex-rubric@2.6.5) (2024-03-26)
+
+
+### Bug Fixes
+
+* trigger build ([d7d5acc](https://github.com/pie-framework/pie-elements/commit/d7d5acc3f690f9d54bff1892a52c01c6d136d127))
+
+
+
+
+
+## [2.6.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@2.6.3...@pie-element/complex-rubric@2.6.4) (2024-03-26)
+
+**Note:** Version bump only for package @pie-element/complex-rubric
+
+
+
+
+
+## [2.6.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@2.6.2...@pie-element/complex-rubric@2.6.3) (2024-03-22)
+
+**Note:** Version bump only for package @pie-element/complex-rubric
+
+
+
+
+
+## [2.6.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@2.6.1...@pie-element/complex-rubric@2.6.2) (2024-03-22)
+
+**Note:** Version bump only for package @pie-element/complex-rubric
+
+
+
+
+
+## [2.6.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@2.6.0...@pie-element/complex-rubric@2.6.1) (2024-03-22)
+
+**Note:** Version bump only for package @pie-element/complex-rubric
+
+
+
+
+
+# [2.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@2.5.0...@pie-element/complex-rubric@2.6.0) (2024-03-20)
+
+
+### Bug Fixes
+
+* Renamed the html prop to the correct math prop PD-3527 ([28061b6](https://github.com/pie-framework/pie-elements/commit/28061b6032817dae15837131d8a0bf5a08683b10))
+* updated pie-lib/pie-toolbox SC-28500 ([a8e4e6a](https://github.com/pie-framework/pie-elements/commit/a8e4e6ab27584435ce7ac3e964ccac2747402777))
+
+
+### Features
+
+* Add configuration for custom buttons PD-3527 ([45a32bd](https://github.com/pie-framework/pie-elements/commit/45a32bd8e9d7bd33beca74cc10c7dd973a9f9dbc))
+* updated pie-lib/pie-toolbox SC-27890 and reverted once again math-rendering-accessible ([fd312e1](https://github.com/pie-framework/pie-elements/commit/fd312e1336999893025231946649496d290883e4))
+* use math-rendering-accessible everywhere PD-1870 ([d52e660](https://github.com/pie-framework/pie-elements/commit/d52e6607ad8847d704bd9cb9b7e3107c130f0500))
+
+
+
+
+
+# [2.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@2.4.3...@pie-element/complex-rubric@2.5.0) (2024-03-15)
+
+
+### Features
+
+* update pie-lib/pie-toolbox SC-27890,PD-2461 ([13d94fa](https://github.com/pie-framework/pie-elements/commit/13d94faaf0cf9cf923bbc64587cdd4202154ea33))
+
+
+
+
+
+## [2.4.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@2.4.2...@pie-element/complex-rubric@2.4.3) (2024-03-13)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3549 ([b5d7d13](https://github.com/pie-framework/pie-elements/commit/b5d7d1352169cc67eaedcd56898a5806b0a8812a))
+
+
+
+
+
+## [2.4.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@2.4.1...@pie-element/complex-rubric@2.4.2) (2024-03-12)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3509, PD-3465 ([b1745aa](https://github.com/pie-framework/pie-elements/commit/b1745aa981722b5561aab1f4495ac81ac7bc4155))
+
+
+
+
+
+## [2.4.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@2.4.0...@pie-element/complex-rubric@2.4.1) (2024-03-06)
+
+
+### Bug Fixes
+
+* **complex-rubric:** adjust createDefaults method PD-3488 ([328fb26](https://github.com/pie-framework/pie-elements/commit/328fb26617860936fcfd7a45f16f40cb90ddda25))
+* **complex-rubric:** avoid defaults always empty PD-3499 ([274857e](https://github.com/pie-framework/pie-elements/commit/274857e394429c9a1dcd404083ffbe7651283a5c))
+* **complex-rubric:** change parameters name to be more clear PD-3488 ([53029e3](https://github.com/pie-framework/pie-elements/commit/53029e36a034c2e16442a082dab4f6dbc7a2c15a))
+* **complex-rubric:** fix createModel to use defaults PD-3488 ([49e3510](https://github.com/pie-framework/pie-elements/commit/49e3510dff5dfec482d4ac2af4488b410b06e81b))
+* **complex-rubric:** use actual model in createModel to avoid inconsistencies PD-3488 ([99fc1be](https://github.com/pie-framework/pie-elements/commit/99fc1be3017c282097e02262806bde936f674b64))
+
+
+
+
+
+# [2.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@2.3.5...@pie-element/complex-rubric@2.4.0) (2024-03-04)
+
+
+### Features
+
+* update pie-lib/pie-toolbox version PD-1870 and PD-3501 ([8df1d8d](https://github.com/pie-framework/pie-elements/commit/8df1d8d281a0d6023d5a9c0e6fdd29fea71b6ac1))
+
+
+
+
+
+## [2.3.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@2.3.4...@pie-element/complex-rubric@2.3.5) (2024-02-29)
+
+**Note:** Version bump only for package @pie-element/complex-rubric
+
+
+
+
+
+## [2.3.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@2.3.3...@pie-element/complex-rubric@2.3.4) (2024-02-22)
+
+**Note:** Version bump only for package @pie-element/complex-rubric
+
+
+
+
+
+## [2.3.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@2.3.2...@pie-element/complex-rubric@2.3.3) (2024-02-20)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3372, PD-3385, PD-3439 ([a79d800](https://github.com/pie-framework/pie-elements/commit/a79d800bb69af0d175793bc737282100168c4c60))
+* update pie-lib/pie-toolbox PD-3455 ([4ff9971](https://github.com/pie-framework/pie-elements/commit/4ff9971e65b680aea180c94f9e85cab7249af2fb))
+
+
+
+
+
+## [2.3.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@2.3.1...@pie-element/complex-rubric@2.3.2) (2024-02-14)
+
+
+### Bug Fixes
+
+* adjust width for complex-rubric selection options and add styles on hover PD-3463 ([bc5ef47](https://github.com/pie-framework/pie-elements/commit/bc5ef477d462ec9abd3111e57c9a001fe4dafd98))
+* pie-lib/pie-toolbox with slate updates ([a8f8707](https://github.com/pie-framework/pie-elements/commit/a8f8707b2c197c2b40fb6632cee0ba4c27aa9aa4))
+* update pie-lib/pie-toolbox ([cec328c](https://github.com/pie-framework/pie-elements/commit/cec328caf5b69d9fee00473c502aed62d6e27462))
+
+
+
+
+
+## [2.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@2.3.0...@pie-element/complex-rubric@2.3.1) (2024-02-12)
+
+
+### Bug Fixes
+
+* **complex-rubric:** add rubricless as default option PD-3451 ([735f000](https://github.com/pie-framework/pie-elements/commit/735f000c22c93af2ccd57620e0f0cca81874bcfd))
+
+
+
+
+
+# [2.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@2.2.11...@pie-element/complex-rubric@2.3.0) (2024-02-09)
+
+
+### Features
+
+* update pie-toolbox version SC-28868 ([5745f50](https://github.com/pie-framework/pie-elements/commit/5745f502c89d730e72d4cdb83e96c9465a81ae19))
+
+
+
+
+
+## [2.2.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@2.2.10...@pie-element/complex-rubric@2.2.11) (2024-02-07)
+
+
+### Bug Fixes
+
+* update pie-toolbox version PD-3423 ([053ad69](https://github.com/pie-framework/pie-elements/commit/053ad690619980bce68b1b44e51975fcf91054ec))
+
+
+
+
+
+## [2.2.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@2.2.9...@pie-element/complex-rubric@2.2.10) (2024-02-07)
+
+**Note:** Version bump only for package @pie-element/complex-rubric
+
+
+
+
+
+## [2.2.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@2.2.8...@pie-element/complex-rubric@2.2.9) (2024-01-29)
+
+
+### Bug Fixes
+
+* **rubric, complex-rubric:** fix validation for simple rubric exclude zero PD-3407 ([7b62d85](https://github.com/pie-framework/pie-elements/commit/7b62d85c04822794b0b2d17b62cf9fb75fbcda21))
+* **rubric, complex-rubric:** update defaults and demo files maxPoints value in model to be consistent with the points array and excludeZero property PD-3406 ([230c7b2](https://github.com/pie-framework/pie-elements/commit/230c7b258e62f9e2bfe92ff71ac30362aa5f1591))
+
+
+
+
+
+## [2.2.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@2.2.7...@pie-element/complex-rubric@2.2.8) (2024-01-24)
+
+
+### Bug Fixes
+
+* update to pie-lib/pie-toolbox 1.5.7 PD-3404 ([eae668d](https://github.com/pie-framework/pie-elements/commit/eae668d980ef4731af5eceb3e70329b7621a232b))
+
+
+
+
+
+## [2.2.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@2.2.6...@pie-element/complex-rubric@2.2.7) (2024-01-24)
+
+
+### Bug Fixes
+
+* update to pie-lib/pie-toolbox 1.5.6 to fix issue introduced by fix for PD-3392 ([8d0a33f](https://github.com/pie-framework/pie-elements/commit/8d0a33f51a5ebe442eb824749cb419bf23c44d28))
+
+
+
+
+
+## [2.2.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@2.2.5...@pie-element/complex-rubric@2.2.6) (2024-01-23)
+
+
+### Bug Fixes
+
+* update to pie-lib/pie-toolbox 1.5.4 for PD-3387, PD-3384, PD-3383, PD-3392 ([2278f9a](https://github.com/pie-framework/pie-elements/commit/2278f9a3fdf1bc89ab590f240d926a857339179e))
+* update to pie-lib/pie-toolbox 1.5.5 for PD-3392 ([d4286e0](https://github.com/pie-framework/pie-elements/commit/d4286e08a060a73e6de098f87173baaaa88cc997))
+
+
+
+
+
+## [2.2.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@2.2.4...@pie-element/complex-rubric@2.2.5) (2024-01-15)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3366, PD-3367, PD-3381 ([8c9d35f](https://github.com/pie-framework/pie-elements/commit/8c9d35ff6f0dad1a161d6a2dba203a169169e562))
+
+
+
+
+
+## [2.2.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@2.2.3...@pie-element/complex-rubric@2.2.4) (2024-01-08)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-2068, PD-2060 ([b63f783](https://github.com/pie-framework/pie-elements/commit/b63f78371452e265f31f721dcfa5f8ba9789089c))
+* update pie-lib/pie-toolbox PD-3352 ([c40c326](https://github.com/pie-framework/pie-elements/commit/c40c326209315b57ce8da802b8e00616256e3bd6))
+* update pie-lib/pie-toolbox SC-27396, SC-27398 ([658a553](https://github.com/pie-framework/pie-elements/commit/658a55358181271b508f7d550467eefadcd71544))
+* **complex-rubric:** adjust defaults based on requirements PD-2555 ([37e64b2](https://github.com/pie-framework/pie-elements/commit/37e64b261b4c089dcf5e1482faea4c5faa6e4c7e))
+
+
+
+
+
+## [2.2.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@2.2.2...@pie-element/complex-rubric@2.2.3) (2024-01-08)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3352,PD-3348, PD-3296 ([48b1952](https://github.com/pie-framework/pie-elements/commit/48b1952831835ead598b692abb3d492ec9adb564))
+
+
+
+
+
+## [2.2.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@2.2.1...@pie-element/complex-rubric@2.2.2) (2024-01-04)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-2068, PD-2060 ([e918850](https://github.com/pie-framework/pie-elements/commit/e9188502ffeaefe41bf0f23895d4bb2daf839364))
+* update pie-lib/pie-toolbox PD-3037 ([b2f689a](https://github.com/pie-framework/pie-elements/commit/b2f689a416c2c39d7ed423a22db02dd32415ba82))
+
+
+
+
+
+## [2.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@2.2.0...@pie-element/complex-rubric@2.2.1) (2023-12-20)
+
+
+### Bug Fixes
+
+* **complex-rubric:** adjust defaults based on requirements PD-2555 ([c2c3566](https://github.com/pie-framework/pie-elements/commit/c2c3566dafd2fbc5792c196af6f040a60f8a8751))
+
+
+
+
+
+# [2.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@2.1.1...@pie-element/complex-rubric@2.2.0) (2023-12-19)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-2068 ([34eccd5](https://github.com/pie-framework/pie-elements/commit/34eccd52c44259eddf3e2b816b00b82f83bc2bf8))
+* **complex-rubric:** add comments PD-3260 ([998a941](https://github.com/pie-framework/pie-elements/commit/998a941a9c2e88d1914ee2ad7506e57a7e3f7865))
+* **complex-rubric:** add comments, delete logs PD-3260 ([e3991c6](https://github.com/pie-framework/pie-elements/commit/e3991c6c09a2b1f4815d3b2216b32f073e5cbf3c))
+* **complex-rubric:** add rubricless in generate file PD-3260 ([fad9bca](https://github.com/pie-framework/pie-elements/commit/fad9bcadd75e508f928a0fd81411c6f486234b7b))
+* **complex-rubric:** switch back to initial versions PD-3260 ([e9806a2](https://github.com/pie-framework/pie-elements/commit/e9806a2008bb2677bdc3bd1c8752c416197a79a2))
+* **complex-rubric:** update docu, revert next versions PD-2555 ([5eb1a68](https://github.com/pie-framework/pie-elements/commit/5eb1a68e9de96258c2b648b37913820e2086a377))
+* **complex-rubric:** update multi-trait-rubric to next versions PD-3260 ([037aab8](https://github.com/pie-framework/pie-elements/commit/037aab8e78c9405d3123c25515068b17277fa940))
+* **multi-trait-rubric + complex-rubric:** width calculations PD-3203 ([a55afb5](https://github.com/pie-framework/pie-elements/commit/a55afb5e4859fa3e85e0f1615287efb5ee98b820))
+
+
+### Features
+
+* **complex-rubric:** update versions of next for testing purpose PD-2555 ([2953283](https://github.com/pie-framework/pie-elements/commit/295328364783905cd717c6a67ee40c229295b611))
+* update pie-lib/pie-toolbox PD-2555 ([86d4fd9](https://github.com/pie-framework/pie-elements/commit/86d4fd909180dd1fcbc446bd8b29c23af21a1c69))
+* **complex-rubric:** add instruction for rubricless, render rubricTypes dinamically PD-2555 ([3c0c44f](https://github.com/pie-framework/pie-elements/commit/3c0c44f4e570c6f7a6edc8859277967fbd1719b0))
+* **complex-rubric:** add rubricOptions to config PD-2555 ([379110a](https://github.com/pie-framework/pie-elements/commit/379110a02e0858a78eb5679a80b26e0f976132bd))
+* **complex-rubric:** add validate logic PD-3260 ([0d07a83](https://github.com/pie-framework/pie-elements/commit/0d07a83254d7aab1f87a67893a858c04938d16ea))
+* **complex-rubric:** update test PD-2555 ([5e2ab67](https://github.com/pie-framework/pie-elements/commit/5e2ab67268927d43649459f99c3cc3259540d4aa))
+* **rubric:** solve conflicts PD-2555 ([b67c659](https://github.com/pie-framework/pie-elements/commit/b67c65945fc68ef1bd577a915b5f8918da0a716b))
+* update pie-lib/pie-toolbox PD-3307, PD-2067, PD-3271, PD-3041, PD-2068 ([2eabcbd](https://github.com/pie-framework/pie-elements/commit/2eabcbd036e318bb24552f4140ca7384ad865951))
+* **complex-rubric:** update tests and use enum for new rubric type PD-2555 ([0bafc9a](https://github.com/pie-framework/pie-elements/commit/0bafc9aa6d563378b08f4d478828da454d38ad20))
+* **complex-rubric:** updated docu PD-3307 ([a22cb2b](https://github.com/pie-framework/pie-elements/commit/a22cb2b553c62f5384b03c99a22d018ab4a043e5))
+* **complex-rubrix:** add new rubric type and asjust logic ([e49fc22](https://github.com/pie-framework/pie-elements/commit/e49fc2281a8df02bd7dec9b931d06aa74e919031))
+* **rubrics:** add documentation for maxMaxPoints, add defaults in complex-rubric PD-3307 ([ab0572e](https://github.com/pie-framework/pie-elements/commit/ab0572e69502e9bec6e32cad73a37f3aae0eaf42))
+
+
+
+
+
+## [2.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@2.1.0...@pie-element/complex-rubric@2.1.1) (2023-11-27)
+
+
+### Bug Fixes
+
+* trigger new version ([0ac3b67](https://github.com/pie-framework/pie-elements/commit/0ac3b676f3b1d3b390769b2479fb38525e5e521a))
+* update pie-lib ([74283d7](https://github.com/pie-framework/pie-elements/commit/74283d71b12ab9c82875ce995368e5e39f4face6))
+
+
+
+
+
+# [2.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@2.0.1...@pie-element/complex-rubric@2.1.0) (2023-11-27)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3271, PD-3261 ([7a795bf](https://github.com/pie-framework/pie-elements/commit/7a795bfd7e2fd865774828ad23b0a8cbbac98356))
+* update pie-lib/pie-toolbox PD-597 ([1ec84aa](https://github.com/pie-framework/pie-elements/commit/1ec84aadae515088ef65b99f780a5e5dca516f99))
+* update pie-lib/pie-toolbox to test build ([9750cdd](https://github.com/pie-framework/pie-elements/commit/9750cdd3ce3018ef8bb63bc2c6db6abba3dad0c4))
+* update pie-lib/pie-toolbox to test build ([4e04cef](https://github.com/pie-framework/pie-elements/commit/4e04cefc163d504d136c9e3b17dbb32d1e22326b))
+* update pie-libs PD-2996 ([cd092c6](https://github.com/pie-framework/pie-elements/commit/cd092c6b5c4db91645394cd23febc1f9a07f46f9))
+* update pie-libs PD-3011, PD-3130, PD-3271 ([7a36106](https://github.com/pie-framework/pie-elements/commit/7a36106efeac0448b7b825989c1eb0b29b6688d4))
+* update pie-toolbox version PD-3298 ([0c282d5](https://github.com/pie-framework/pie-elements/commit/0c282d540aba5b2bb7a8b515bcaa2dba8302d49a))
+* use next pie-element versions ([073ef79](https://github.com/pie-framework/pie-elements/commit/073ef790b3a39f2baaf91ec58983f52f20484fe4))
+* use next pie-element versions ([eafc185](https://github.com/pie-framework/pie-elements/commit/eafc185e7bbe508f93f5c2e342354cbb8ee3c5c6))
+
+
+### Features
+
+* update pie-lib/pie-toolbox PD-1886 ([4a978d0](https://github.com/pie-framework/pie-elements/commit/4a978d058b865cc21c1fc84d7d39224e0d7cc88d))
+
+
+
+
+
+## [2.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@2.0.0...@pie-element/complex-rubric@2.0.1) (2023-11-09)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3221, PD-3249, PD-2765 ([9de1563](https://github.com/pie-framework/pie-elements/commit/9de1563d636983c3ddceee0279c0709d396d4f96))
+
+
+
+
+
+# [2.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@1.12.2...@pie-element/complex-rubric@2.0.0) (2023-11-07)
+
+
+### Bug Fixes
+
+* fixed imports and used next version of rubric and multi-trait-rubric for complex-rubric ([bdf07b0](https://github.com/pie-framework/pie-elements/commit/bdf07b05e4fe0c32576bdfb4b7d3a2a4d7a5cbd7))
+* update pie-lib version to fix imports for pie-lib/pie-toolbox/editable-html ([a90cbf6](https://github.com/pie-framework/pie-elements/commit/a90cbf6be81824e7266df23c2dc49b259337c1b6))
+* update pie-lib/pie-toolbox version ([212cbfa](https://github.com/pie-framework/pie-elements/commit/212cbfad27b29f0b1b2a3706ba82f6fb59147001))
+* update pie-lib/pie-toolbox version ([b791e10](https://github.com/pie-framework/pie-elements/commit/b791e10857928766e2d73c6aa80b3fb50fd1afac))
+* update pie-lib/pie-toolbox version ([7f64f9f](https://github.com/pie-framework/pie-elements/commit/7f64f9f2b874fd08bd8f6f05c1c4292c34ac6338))
+
+
+### Code Refactoring
+
+* replaced all pie-lib packages with the new pie-toolbox package that contains all of them. ([073d7e5](https://github.com/pie-framework/pie-elements/commit/073d7e5175f7a73069f09d2ceda799682acce494))
+
+
+### BREAKING CHANGES
+
+* using pie-lib/pie-toolbox now, instead of any other pie-lib package.
+
+
+
+
+
+## [1.12.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@1.12.1...@pie-element/complex-rubric@1.12.2) (2023-11-06)
+
+**Note:** Version bump only for package @pie-element/complex-rubric
+
+
+
+
+
+## [1.12.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@1.12.0...@pie-element/complex-rubric@1.12.1) (2023-10-26)
+
+
+### Bug Fixes
+
+* update pie-lib PD-3221 ([f04d59f](https://github.com/pie-framework/pie-elements/commit/f04d59f204852e430dc3e8fe2c442bb9a1634761))
+
+
+
+
+
+# [1.12.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@1.11.6...@pie-element/complex-rubric@1.12.0) (2023-10-16)
+
+
+### Features
+
+* updated pie-libs PD-2950 ([acffe41](https://github.com/pie-framework/pie-elements/commit/acffe41120fbe288e375321cbd58cfbd48f98595))
+
+
+
+
+
+## [1.11.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@1.11.5...@pie-element/complex-rubric@1.11.6) (2023-10-16)
+
+
+### Bug Fixes
+
+* updated pie-libs PD-3223, PD-3121, PD-3018, PD-2765, PD-3105 ([666e660](https://github.com/pie-framework/pie-elements/commit/666e6604c40b9bde8b88af5ce1b02ba65f11e957))
+
+
+
+
+
+## [1.11.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@1.11.4...@pie-element/complex-rubric@1.11.5) (2023-10-03)
+
+
+### Bug Fixes
+
+* update with latest pie-libs, forcing pie-lib/math-rendering to v2.5.18 ([7ff936a](https://github.com/pie-framework/pie-elements/commit/7ff936ab9fc85c264032181755ce5e2149825406))
+
+
+
+
+
+## [1.11.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@1.11.2...@pie-element/complex-rubric@1.11.4) (2023-09-28)
+
+**Note:** Version bump only for package @pie-element/complex-rubric
+
+
+
+
+
+## [1.11.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@1.11.1...@pie-element/complex-rubric@1.11.2) (2023-09-26)
+
+
+### Bug Fixes
+
+* update pie-libs ([702f4c6](https://github.com/pie-framework/pie-elements/commit/702f4c657f3413274b3a4443c1950e2cdf8e5588))
+
+
+
+
+
+## [1.11.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@1.11.0...@pie-element/complex-rubric@1.11.1) (2023-09-25)
+
+**Note:** Version bump only for package @pie-element/complex-rubric
+
+
+
+
+
+# [1.11.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@1.10.7...@pie-element/complex-rubric@1.11.0) (2023-09-25)
+
+
+### Bug Fixes
+
+* update pie-libs PD-3167 ([1b109bb](https://github.com/pie-framework/pie-elements/commit/1b109bb3b74dcea72ee2f241996a5e6a71893b4e))
+* update pie-libs PD-3167 ([b21d0c3](https://github.com/pie-framework/pie-elements/commit/b21d0c332623667257a5de1363b9f4fc6ee2bb51))
+* update pie-libs PD-3167 ([1a76806](https://github.com/pie-framework/pie-elements/commit/1a7680657ebe0a73969f3100e60f0a090ffc7ada))
+* update pie-libs PD-3167, PD-3105, PD-3162, PD-2765 ([26199b2](https://github.com/pie-framework/pie-elements/commit/26199b255ddbcb9255f2769091c7ba58f8b1dae0))
+
+
+### Features
+
+* update pie-libs PD-3011 ([0fd32b3](https://github.com/pie-framework/pie-elements/commit/0fd32b3fd1333bb25de584b98c8ef0471de2d5e8))
+
+
+
+
+
+## [1.10.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@1.10.6...@pie-element/complex-rubric@1.10.7) (2023-09-05)
+
+
+### Bug Fixes
+
+* update pie-libs PD-2765 ([f03972d](https://github.com/pie-framework/pie-elements/commit/f03972dda33ff5d4c0343f094fd33acadad30cb4))
+
+
+
+
+
+## [1.10.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@1.10.5...@pie-element/complex-rubric@1.10.6) (2023-09-04)
+
+
+### Bug Fixes
+
+* update pie-libs PD-3051 ([1e1a7a3](https://github.com/pie-framework/pie-elements/commit/1e1a7a38732eff5585ad789aea5a08c5e94720ae))
+* updated pie-libs PD-2765, PD-3051 ([e6f5b17](https://github.com/pie-framework/pie-elements/commit/e6f5b17c95faf426898f897651863089a54ff3ff))
+
+
+
+
+
+## [1.10.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@1.10.4...@pie-element/complex-rubric@1.10.5) (2023-08-21)
+
+
+### Bug Fixes
+
+* update pie-libs PD-3119 ([01c474b](https://github.com/pie-framework/pie-elements/commit/01c474bf9396374dc86b9248651206672b765af6))
+
+
+
+
+
+## [1.10.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@1.10.3...@pie-element/complex-rubric@1.10.4) (2023-08-21)
+
+**Note:** Version bump only for package @pie-element/complex-rubric
+
+
+
+
+
+## [1.10.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@1.10.2...@pie-element/complex-rubric@1.10.3) (2023-08-15)
+
+
+### Bug Fixes
+
+* update pie-libs PD-3049, PD-2916, PD-2059 ([0e800b5](https://github.com/pie-framework/pie-elements/commit/0e800b54b852304d222a292400362e0870f0cc9a))
+* updated pie-lib to fix PD-2802, PD-3050, PD-3051 ([34b4dd7](https://github.com/pie-framework/pie-elements/commit/34b4dd7ba18f4c18589975921cc9d127926f8294))
+* updated pie-libs Pd-1163 ([300c1db](https://github.com/pie-framework/pie-elements/commit/300c1db1658ce85ca58f3cc2981b604aefbf9f01))
+
+
+
+
+
+## [1.10.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@1.10.1...@pie-element/complex-rubric@1.10.2) (2023-07-24)
+
+
+### Bug Fixes
+
+* update pie-libs PD-2984, PD-2991, PD-2992, PD-3036 ([12c9426](https://github.com/pie-framework/pie-elements/commit/12c94269e3b645d74a0014c597d30662823bb34a))
+
+
+
+
+
+## [1.10.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@1.10.0...@pie-element/complex-rubric@1.10.1) (2023-07-06)
+
+
+### Bug Fixes
+
+* updated editable-html dependent packages for PD-2150 ([ffa6297](https://github.com/pie-framework/pie-elements/commit/ffa62977a9e329c1e12ea1dfcb2af4ba4c993bca))
+* updated pie-lib PD-2150 ([72f20be](https://github.com/pie-framework/pie-elements/commit/72f20be258248c86dde8d5d587290cd640bfd947))
+
+
+
+
+
+# [1.10.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@1.9.0...@pie-element/complex-rubric@1.10.0) (2023-06-13)
+
+
+### Bug Fixes
+
+* update libs PD-2722, PD-2827, PD-2832 ([834ecf9](https://github.com/pie-framework/pie-elements/commit/834ecf92cc7204c851c68f0945ad5d52e453c9d0))
+* update pie-libs ([649fb8f](https://github.com/pie-framework/pie-elements/commit/649fb8f535172d76b3ffc676ec53b2726432808c))
+* update pie-libs PD-2150, PD-2795 ([ff6f64a](https://github.com/pie-framework/pie-elements/commit/ff6f64afa6ccaa8a060c986b1637c680e68c62b6))
+
+
+### Features
+
+* add mathMlOptions PD-2150 ([0c6984c](https://github.com/pie-framework/pie-elements/commit/0c6984cf042141eac36badfbab1c46d8d42f71ee))
+
+
+
+
+
+# [1.9.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@1.8.4...@pie-element/complex-rubric@1.9.0) (2023-05-23)
+
+
+### Bug Fixes
+
+* set back model (and session, where needed) if re-render happened PD-2830 ([5ed9cc4](https://github.com/pie-framework/pie-elements/commit/5ed9cc41f810a5eb65b5c8511cb7ece663989026))
+* update pie-lib PD-2777, PD-1914, PD-2066 ([7102893](https://github.com/pie-framework/pie-elements/commit/71028930a6dc554eb587cf4de0c1d0d28bfff1f5))
+* update pie-libs PD-2774, PD-1026 ([04f8cd0](https://github.com/pie-framework/pie-elements/commit/04f8cd000afdb2ccb0c25146d46acb60c5fea651))
+
+
+### Features
+
+* ability to upload images when using imageSupoort from pie-api-components PD-2707 ([685f3b0](https://github.com/pie-framework/pie-elements/commit/685f3b035d86c5f4ad60cdb9ec84690d5ccaa4fc))
+* **complex-rubric, rubric:** wip add file for complex-rubric, managed to make simple rubric work PD-2748 ([91b8848](https://github.com/pie-framework/pie-elements/commit/91b8848efaa9ed677003227e56b35c17e0897e6f))
+
+
+
+
+
+## [1.8.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@1.8.3...@pie-element/complex-rubric@1.8.4) (2023-05-02)
+
+
+### Bug Fixes
+
+* update pie-libs (fix eslint problems PD-2732) ([3fa630e](https://github.com/pie-framework/pie-elements/commit/3fa630eb96b116cb685ab58fbf216fb572d1c333))
+* update pie-libs PD-2755, PD-2625, PD-2119 ([698446b](https://github.com/pie-framework/pie-elements/commit/698446b29a553a022c91825118370faae824b723))
+* update pie-libs PD-2755, PD-2625, PD-491, PD-2753, PD-2758, PD-2720, PD-2770 ([2cf9ffa](https://github.com/pie-framework/pie-elements/commit/2cf9ffa4fbef6f2ebc0924f305debc9fc6560a75))
+* **complex-rubric:** use multi trait rubric default width if undefined PD-2745 ([a5e42d0](https://github.com/pie-framework/pie-elements/commit/a5e42d0c65549a3db11787b09edd5587869bee01))
+
+
+
+
+
+## [1.8.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@1.8.2...@pie-element/complex-rubric@1.8.3) (2023-04-25)
+
+
+### Bug Fixes
+
+* update pie-libs PD-2762 ([7ac4313](https://github.com/pie-framework/pie-elements/commit/7ac431346b822fe3bbb0d13375f044f6ce1f426b))
+
+
+
+
+
+## [1.8.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@1.8.1...@pie-element/complex-rubric@1.8.2) (2023-04-14)
+
+
+### Bug Fixes
+
+* update pie-libs ([830e9fc](https://github.com/pie-framework/pie-elements/commit/830e9fcf07f057e632b44d7a64ddb436353d49f6))
+
+
+
+
+
+## [1.8.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@1.8.0...@pie-element/complex-rubric@1.8.1) (2023-04-10)
+
+
+### Bug Fixes
+
+* **complex-rubric:** missing lib ([88f69b1](https://github.com/pie-framework/pie-elements/commit/88f69b1cf92033424e6df153e0a9f7f6328a7f63))
+
+
+
+
+
+# [1.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@1.7.9...@pie-element/complex-rubric@1.8.0) (2023-04-10)
+
+
+### Bug Fixes
+
+* update pie-libs ([b7d3e7f](https://github.com/pie-framework/pie-elements/commit/b7d3e7f7160aafd5dcfed2960bc6c2f03dba2180))
+* **all elements:** fix eslint problems-PD-2732 ([eaeabfb](https://github.com/pie-framework/pie-elements/commit/eaeabfbbe3a868a1f9828ef831a7ea864dee75a9))
+* add tests back ([286b458](https://github.com/pie-framework/pie-elements/commit/286b458727b8680df397c5e932cc0fa23d702ef4))
+* remove tests to see if they cause build break ([a0b0046](https://github.com/pie-framework/pie-elements/commit/a0b00464cd0859dbd3803c4629a88e8eb78bbae7))
+* remove usage of pie-lib/rubric to test webpack build ([50fa5dc](https://github.com/pie-framework/pie-elements/commit/50fa5dcae7ffcedfd5d6560ffc8519839d167658))
+* update pie-libs ([6738269](https://github.com/pie-framework/pie-elements/commit/6738269d878f24ec4429f210d18bbf591123a55f))
+* update pie-libs ([9f05be1](https://github.com/pie-framework/pie-elements/commit/9f05be1ae6bf0a9651739b6bef7eca32ecabb4ce))
+
+
+### Features
+
+* added the ability to set min/max width and height for the content PD-2425 ([befba3a](https://github.com/pie-framework/pie-elements/commit/befba3a8fa23e8dd21a3e3f63f306bd6dfc35bdd))
+
+
+
+
+
+## [1.7.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@1.7.8...@pie-element/complex-rubric@1.7.9) (2023-03-30)
+
+
+### Bug Fixes
+
+* revert adding pie-lib/rubric and remove its usage from controller ([2e58a35](https://github.com/pie-framework/pie-elements/commit/2e58a35e3490f4c002c82206eec3b74b215f3e57))
+
+
+
+
+
+## [1.7.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@1.7.7...@pie-element/complex-rubric@1.7.8) (2023-03-30)
+
+**Note:** Version bump only for package @pie-element/complex-rubric
+
+
+
+
+
+## [1.7.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@1.7.5...@pie-element/complex-rubric@1.7.7) (2023-03-20)
+
+
+### Bug Fixes
+
+* version bump ([b3f6919](https://github.com/pie-framework/pie-elements/commit/b3f6919c3ad2078953ed5162327cf356090c9aec))
+
+
+
+
+
+## [1.7.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@1.7.4...@pie-element/complex-rubric@1.7.5) (2023-03-20)
+
+
+### Bug Fixes
+
+* update pie-libs ([340825a](https://github.com/pie-framework/pie-elements/commit/340825aab8c88569378eb5af6c5b9c9b99aeb285))
+* update pie-libs ([1fe3d37](https://github.com/pie-framework/pie-elements/commit/1fe3d37d2b001f7944e4da7c895a83ccecefefcb))
+
+
+
+
+
+## [1.7.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@1.7.3...@pie-element/complex-rubric@1.7.4) (2023-02-28)
+
+
+### Bug Fixes
+
+* update pie-libs ([7bb37a7](https://github.com/pie-framework/pie-elements/commit/7bb37a7da11017eff7191968fad4517182f1c363))
+
+
+
+
+
+## [1.7.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@1.7.2...@pie-element/complex-rubric@1.7.3) (2023-02-28)
+
+
+### Bug Fixes
+
+* update pie-libs ([6a10f3f](https://github.com/pie-framework/pie-elements/commit/6a10f3f45306cc9d9e077e45a90245d047235521))
+
+
+
+
+
+## [1.7.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@1.7.1...@pie-element/complex-rubric@1.7.2) (2023-02-28)
+
+
+### Bug Fixes
+
+* complex-rubric renders more quickly then other items in item config with default values, because it uses 2 other item types that set the model before it should be set ([ea16d44](https://github.com/pie-framework/pie-elements/commit/ea16d449977ccb41db7180e3ac7aa5812b380cde))
+* complex-rubric renders more quickly then other items in item config with default values, because it uses 2 other item types that set the model before it should be set ([e863ca1](https://github.com/pie-framework/pie-elements/commit/e863ca18090744306bfa0b02fb87bfeb63b07838))
+* update pie-libs ([110161a](https://github.com/pie-framework/pie-elements/commit/110161ad113e76b5fdb6fc06e233889befbc366a))
+
+
+
+
+
+## [1.7.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@1.7.0...@pie-element/complex-rubric@1.7.1) (2023-02-22)
+
+
+### Bug Fixes
+
+* change withRubric type for extended-text-entry and drawing-response. docs update from different pr for multi-trait-rubric ([7bf77ad](https://github.com/pie-framework/pie-elements/commit/7bf77ada1a09bc56a053341bce9a0eaf02955672))
+
+
+
+
+
+# [1.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@1.6.0...@pie-element/complex-rubric@1.7.0) (2023-02-14)
+
+
+### Features
+
+* update pie-libs ([e2c0b89](https://github.com/pie-framework/pie-elements/commit/e2c0b894caa20ed5d5681302a84b2bfd20dbd9f6))
+* **complex-rurbic:** add width property to configuration and send to multi-trait-rubric and rubric ([7433a90](https://github.com/pie-framework/pie-elements/commit/7433a90426cf90b1fbfd6005f1911629bfa86a88))
+* **rubric:** add width property to configuration ([75bdb82](https://github.com/pie-framework/pie-elements/commit/75bdb82ddd3ffe41ce50aa98928914f321127eed))
+
+
+
+
+
+# [1.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@1.5.0...@pie-element/complex-rubric@1.6.0) (2023-02-01)
+
+
+### Bug Fixes
+
+* typo ([9328e51](https://github.com/pie-framework/pie-elements/commit/9328e512840c54a3da4b06d4edc79b871d3233c4))
+* **complex-rubric:** default rubricType to simple if it's undefined or null PD-2427 ([9760d46](https://github.com/pie-framework/pie-elements/commit/9760d469d599c8a4edf02ee253e3e0d65c520b67))
+
+
+### Features
+
+* update pie-libs ([0af590d](https://github.com/pie-framework/pie-elements/commit/0af590d624f4b2c0af58039e935531cef52e2a86))
+* **multi-trait-rubric:** update documentation - generated files PD-2589 ([c773dc8](https://github.com/pie-framework/pie-elements/commit/c773dc800572f389c47133fb691a5e2e3e447223))
+
+
+
+
+
 # [1.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@1.4.0...@pie-element/complex-rubric@1.5.0) (2023-01-17)
 
 

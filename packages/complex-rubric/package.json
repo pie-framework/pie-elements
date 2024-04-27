@@ -1,23 +1,21 @@
 {
   "name": "@pie-element/complex-rubric",
   "repository": "pie-framework/pie-elements",
-  "version": "1.5.1-beta.3+e0e0490c5",
+  "version": "2.10.0",
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
     "@material-ui/core": "^3.9.2",
-    "@pie-element/multi-trait-rubric": "^2.5.1-beta.3+e0e0490c5",
-    "@pie-element/rubric": "^2.4.1-beta.3+e0e0490c5",
+    "@pie-element/multi-trait-rubric": "^3.10.0",
+    "@pie-element/rubric": "^3.10.0",
     "@pie-framework/pie-player-events": "^0.1.0",
-    "@pie-lib/rubric": "1.0.0-beta.5",
     "classnames": "^2.2.5",
     "debug": "^4.1.1",
-    "is-plain-object": "^5.0.0",
     "lodash": "^4.17.11",
     "prop-types": "^15.7.2"
   },
-  "gitHead": "e0e0490c5b040c67f504c0bdfd00f6b834a28481",
+  "gitHead": "0e14ff981bcdc8a89a0e58484026496701bfdbc3",
   "scripts": {
     "postpublish": "../../scripts/postpublish"
   },
@@ -27,6 +25,7 @@
   "author": "pie framework developers",
   "license": "ISC",
   "exports": {
-    ".": "./src/index.js"
+    ".": "./src/index.js",
+    "./print": "./src/print.js"
   }
 }

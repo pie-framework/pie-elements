@@ -2,16 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
-import { Choice } from '@pie-lib/drag';
+import { Choice } from '@pie-lib/pie-toolbox/drag';
 import IconButton from '@material-ui/core/IconButton';
 import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
-import { HtmlAndMath } from '@pie-lib/render-ui';
+import { HtmlAndMath } from '@pie-lib/pie-toolbox/render-ui';
 
 export class ChoicePreview extends React.Component {
   static propTypes = {
+    alternateResponseIndex: PropTypes.number,
+    category: PropTypes.object,
     classes: PropTypes.object.isRequired,
     className: PropTypes.string,
     choice: PropTypes.object.isRequired,
+    choiceIndex: PropTypes.number,
     onDelete: PropTypes.func.isRequired,
   };
   static defaultProps = {};
@@ -27,7 +30,7 @@ export class ChoicePreview extends React.Component {
       <div className={classNames(classes.choicePreview, className)}>
         {choice ? (
           <Choice alternateResponseIndex={alternateResponseIndex} category={category} choice={choice} choiceIndex={choiceIndex} onRemoveChoice={() => this.delete()}>
-            <HtmlAndMath html={choice?.content} />
+            <HtmlAndMath html={choice?.content} className={`${classes.breakWord}`} />
             <IconButton color="secondary" aria-label="delete" className={classes.delete} onClick={this.delete}>
               <RemoveCircleOutlineIcon />
             </IconButton>
@@ -46,5 +49,9 @@ const styles = () => ({
     right: 0,
     top: 0,
   },
+  breakWord: {
+    maxWidth: '90%',
+    wordWrap: 'break-word',
+  }
 });
 export default withStyles(styles)(ChoicePreview);

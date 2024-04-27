@@ -9,9 +9,9 @@ export const getCorrectResponse = (choices) =>
 
 export const isResponseCorrect = (question, session) => {
   const {
-    shapes: { rectangles, polygons },
+    shapes: { rectangles = [], polygons = [], circles = [] },
   } = question;
-  const choices = [...rectangles, ...polygons];
+  const choices = [...rectangles, ...polygons, ...circles];
   let correctResponseIds = getCorrectResponse(choices);
 
   if (!session || isEmpty(session)) {

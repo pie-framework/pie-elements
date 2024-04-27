@@ -9,7 +9,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import Button from '@material-ui/core/Button';
-import { color } from '@pie-lib/render-ui';
+import { color } from '@pie-lib/pie-toolbox/render-ui';
 
 import defaults from './defaults';
 
@@ -29,12 +29,12 @@ export const excludeZeroTypes = {
   shiftRight: 'shiftRight',
 };
 
-const styles = () => ({
+const styles = (theme) => ({
   root: {
-    padding: '20px',
+    padding: theme.spacing.unit * 2.5,
   },
   title: {
-    padding: '0 0 18px 0',
+    padding: `0 0 ${theme.spacing.unit * 2}px 0`,
 
     '& h2': {
       fontSize: '20px',
@@ -47,20 +47,20 @@ const styles = () => ({
     paddingLeft: '0',
 
     '& p': {
-      fontSize: '16px',
+      fontSize: theme.typography.fontSize + 2,
       fontFamily: 'Cerebri Sans',
       color: color.text(),
     },
   },
   button: {
-    padding: '11px 16px',
+    padding: `${theme.spacing.unit * 1.5}px ${theme.spacing.unit * 2}px`,
     borderRadius: '4px',
-    fontSize: '14px',
+    fontSize: theme.typography.fontSize,
     fontFamily: 'Cerebri Sans',
     lineHeight: '14px',
     textTransform: 'none',
     background: color.primary(),
-    color: 'white',
+    color: theme.palette.common.white,
   },
   cancelButton: {
     background: color.secondaryBackground(),
@@ -79,7 +79,7 @@ const RawExcludeZeroDialog = ({ open, changeExcludeZero, cancel, classes }) => (
     </DialogContent>
 
     <DialogActions>
-      <Button classes={{ root: `${classes.button} ${classes.cancelButton}` }} onClick={cancel}>
+      <Button classes={{ root: `${classes.button} ${classes.cancelButton}` }} onClick={() => cancel()}>
         Cancel
       </Button>
 
@@ -114,7 +114,7 @@ const RawIncludeZeroDialog = ({ open, changeExcludeZero, cancel, classes }) => (
     </DialogContent>
 
     <DialogActions>
-      <Button classes={{ root: `${classes.button} ${classes.cancelButton}` }} onClick={cancel}>
+      <Button classes={{ root: `${classes.button} ${classes.cancelButton}` }} onClick={() => cancel()}>
         Cancel
       </Button>
 
@@ -230,6 +230,7 @@ RawDeleteTrait.propTypes = {
   open: PropTypes.bool,
   deleteTrait: PropTypes.func,
   cancel: PropTypes.func,
+  traitLabel: PropTypes.string,
 };
 
 const DeleteTrait = withStyles(styles)(RawDeleteTrait);
@@ -251,6 +252,7 @@ RawInfoDialog.propTypes = {
   open: PropTypes.bool,
   text: PropTypes.string,
   cancel: PropTypes.func,
+  onClose: PropTypes.func,
 };
 
 const InfoDialog = withStyles(styles)(RawInfoDialog);

@@ -1,6 +1,11 @@
 import { PieModel } from '../../PieModel';
 import { PromptConfig } from '../../PromptConfig';
-import { ConfigureProp } from '../ConfigurationProp';
+import {
+  ConfigureProp,
+  EditableHtmlConfigureProp,
+  EditableHtmlPluginConfigureRequired,
+} from '../ConfigurationProp';
+import { CommonConfigSettings } from '../../CommonConfigSettings';
 
 /**
  * NOTE: teacherInstruction functionality is not defined yet - the value for
@@ -31,7 +36,13 @@ export interface MatrixPie extends PieModel {
  * Config Object for @pie-elements/matrix
  * @additionalProperties false
  */
-export interface MatrixConfigure extends PromptConfig {
+export interface MatrixConfigure extends PromptConfig, CommonConfigSettings {
+  /**
+   * Base editable html input configuration regarding plugins that are enabled/disabled
+   * E.g. audio, video, image
+   */
+  baseInputConfiguration?: EditableHtmlConfigureProp;
+
   /**
    * Indicates if the settings panel is not available
    */
@@ -45,5 +56,10 @@ export interface MatrixConfigure extends PromptConfig {
   /**
    * Teacher Instructions configuration
    */
-  teacherInstructions?: ConfigureProp;
+  teacherInstructions?: EditableHtmlPluginConfigureRequired;
+
+  /**
+   * Configuration for the prompt
+   */
+  prompt?: EditableHtmlPluginConfigureRequired;
 }

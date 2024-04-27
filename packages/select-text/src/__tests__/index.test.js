@@ -3,8 +3,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { SessionChangedEvent } from '@pie-framework/pie-player-events';
 
-import { renderMath } from '@pie-lib/math-rendering';
-jest.mock('@pie-lib/math-rendering', () => ({
+import { renderMath } from '@pie-lib/pie-toolbox/math-rendering-accessible';
+jest.mock('@pie-lib/pie-toolbox/math-rendering-accessible', () => ({
   renderMath: jest.fn(),
 }));
 jest.mock('../main', () => jest.fn());

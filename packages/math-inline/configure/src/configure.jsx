@@ -1,32 +1,25 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import { FeedbackConfig, settings, layout, InputContainer } from '@pie-lib/config-ui';
+import { FeedbackConfig, settings, layout, InputContainer } from '@pie-lib/pie-toolbox/config-ui';
 import PropTypes from 'prop-types';
 import debug from 'debug';
-import EditableHtml from '@pie-lib/editable-html';
+import { EditableHtml } from '@pie-lib/pie-toolbox/editable-html';
 import GeneralConfigBlock from './general-config-block';
-import { ResponseTypes } from './utils';
+import { getPluginProps, ResponseTypes } from './utils';
 
 const log = debug('@pie-element:math-inline:configure');
-const { Panel, toggle, radio } = settings;
+const { Panel, toggle, radio, dropdown } = settings;
 
 const styles = (theme) => ({
-  title: {
-    fontSize: '1.1rem',
-    display: 'block',
-    marginTop: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit,
-  },
-  content: {
-    marginTop: theme.spacing.unit * 2,
-  },
   promptHolder: {
     width: '100%',
     paddingTop: theme.spacing.unit * 2,
+    marginBottom: theme.spacing.unit * 2,
   },
-  prompt: {
-    paddingTop: theme.spacing.unit * 2,
-    width: '100%',
+  errorText: {
+    fontSize: theme.typography.fontSize - 2,
+    color: theme.palette.error.main,
+    paddingTop: theme.spacing.unit,
   },
 });
 
@@ -63,6 +56,8 @@ export class Configure extends React.Component {
       this.props;
     const {
       allowTrailingZeros = {},
+      baseInputConfiguration = {},
+      contentDimensions = {},
       feedback = {},
       ignoreOrder = {},
       maxImageWidth = {},
@@ -76,8 +71,12 @@ export class Configure extends React.Component {
       studentInstructions = {},
       teacherInstructions = {},
       withRubric = {},
+      mathMlOptions = {},
+      language = {},
+      languageChoices = {},
     } = configuration || {};
     const {
+      errors = {},
       feedbackEnabled,
       promptEnabled,
       rationaleEnabled,
@@ -85,6 +84,8 @@ export class Configure extends React.Component {
       teacherInstructionsEnabled,
       toolbarEditorPosition,
     } = model || {};
+
+    const { teacherInstructions: teacherInstructionsError } = errors;
 
     log('[render] model', model);
 
@@ -99,6 +100,8 @@ export class Configure extends React.Component {
       responseType: responseType.settings && radio(responseType.label, [ResponseTypes.simple, ResponseTypes.advanced]),
       feedbackEnabled: feedback.settings && toggle(feedback.label),
       promptEnabled: prompt.settings && toggle(prompt.label),
+      'language.enabled': language.settings && toggle(language.label, true),
+      language: language.settings && language.enabled && dropdown(languageChoices.label, languageChoices.options),
     };
     const panelProperties = {
       teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
@@ -112,61 +115,60 @@ export class Configure extends React.Component {
     };
 
     return (
-      <div>
-        <layout.ConfigLayout
-          hideSettings={settingsPanelDisabled}
-          settings={
-            <Panel
-              model={model}
-              configuration={configuration}
-              onChangeModel={(model) => onModelChanged(model)}
-              onChangeConfiguration={(config) => onConfigurationChanged(config)}
-              groups={{
-                Settings: panelSettings,
-                Properties: panelProperties,
-              }}
+      <layout.ConfigLayout
+        dimensions={contentDimensions}
+        hideSettings={settingsPanelDisabled}
+        settings={
+          <Panel
+            model={model}
+            configuration={configuration}
+            onChangeModel={(model) => onModelChanged(model)}
+            onChangeConfiguration={(config) => onConfigurationChanged(config)}
+            groups={{
+              Settings: panelSettings,
+              Properties: panelProperties,
+            }}
+          />
+        }
+      >
+        {teacherInstructionsEnabled && (
+          <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
+            <EditableHtml
+              className={classes.prompt}
+              markup={model.teacherInstructions || ''}
+              onChange={this.changeTeacherInstructions}
+              imageSupport={imageSupport}
+              nonEmpty={false}
+              error={teacherInstructionsError}
+              toolbarOpts={toolbarOpts}
+              pluginProps={getPluginProps(teacherInstructions?.inputConfiguration, baseInputConfiguration)}
+              spellCheck={spellCheckEnabled}
+              maxImageWidth={(maxImageWidth && maxImageWidth.teacherInstructions) || defaultImageMaxWidth}
+              maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
+              uploadSoundSupport={uploadSoundSupport}
+              languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+              mathMlOptions={mathMlOptions}
             />
-          }
-        >
-          <div>
-            <div className={classes.content}>
-              {teacherInstructionsEnabled && (
-                <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
-                  <EditableHtml
-                    className={classes.prompt}
-                    markup={model.teacherInstructions || ''}
-                    onChange={this.changeTeacherInstructions}
-                    imageSupport={imageSupport}
-                    nonEmpty={false}
-                    toolbarOpts={toolbarOpts}
-                    spellCheck={spellCheckEnabled}
-                    maxImageWidth={(maxImageWidth && maxImageWidth.teacherInstructions) || defaultImageMaxWidth}
-                    maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
-                    uploadSoundSupport={uploadSoundSupport}
-                    languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
-                  />
-                </InputContainer>
-              )}
+            {teacherInstructionsError && <div className={classes.errorText}>{teacherInstructionsError}</div>}
+          </InputContainer>
+        )}
 
-              <GeneralConfigBlock
-                imageSupport={imageSupport}
-                uploadSoundSupport={uploadSoundSupport}
-                model={model}
-                configuration={configuration}
-                onChange={this.onChange}
-                rationaleEnabled={rationaleEnabled}
-                promptEnabled={promptEnabled}
-                toolbarOpts={toolbarOpts}
-                spellCheck={spellCheckEnabled}
-              />
+        <GeneralConfigBlock
+          imageSupport={imageSupport}
+          uploadSoundSupport={uploadSoundSupport}
+          model={model}
+          configuration={configuration}
+          onChange={this.onChange}
+          rationaleEnabled={rationaleEnabled}
+          promptEnabled={promptEnabled}
+          toolbarOpts={toolbarOpts}
+          spellCheck={spellCheckEnabled}
+        />
 
-              {feedbackEnabled && (
-                <FeedbackConfig feedback={model.feedback} onChange={this.onFeedbackChange} toolbarOpts={toolbarOpts} />
-              )}
-            </div>
-          </div>
-        </layout.ConfigLayout>
-      </div>
+        {feedbackEnabled && (
+          <FeedbackConfig feedback={model.feedback} onChange={this.onFeedbackChange} toolbarOpts={toolbarOpts} />
+        )}
+      </layout.ConfigLayout>
     );
   }
 }

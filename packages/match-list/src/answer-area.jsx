@@ -98,18 +98,14 @@ export class AnswerArea extends React.Component {
       <div className={classes.itemList}>
         {rows.map(({ sessionAnswer, title, id }, index) => {
           return (
-            <div
-              className={classes.row}
-              style={{
-                display: 'flex',
-              }}
-              key={index}
-            >
+            <div className={classes.row} key={index}>
               <div className={classes.promptEntry} dangerouslySetInnerHTML={{ __html: title }} />
+
               <div className={classes.arrowEntry}>
                 <Arrow direction="left" />
                 <Arrow />
               </div>
+
               <DragAndDropAnswer
                 key={index}
                 className={classes.answer}
@@ -133,7 +129,7 @@ export class AnswerArea extends React.Component {
   }
 }
 
-const styles = () => ({
+const styles = (theme) => ({
   answer: {
     flex: 1,
   },
@@ -149,9 +145,11 @@ const styles = () => ({
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'space-between',
+    marginTop: theme.spacing.unit * 2,
+    marginBottom: theme.spacing.unit * 2,
   },
   promptEntry: {
-    border: '1px solid #c2c2c2',
+    border: `1px solid ${theme.palette.grey[400]}`,
     boxSizing: 'border-box',
     flex: 1,
     margin: '10px 0',

@@ -1,14 +1,15 @@
 import React from 'react';
-import { PlaceHolder } from '@pie-lib/drag';
+import { PlaceHolder } from '@pie-lib/pie-toolbox/drag';
 import PropTypes from 'prop-types';
 import { DropTarget } from 'react-dnd';
-import { uid } from '@pie-lib/drag';
+import { uid } from '@pie-lib/pie-toolbox/drag';
 import debug from 'debug';
 
 const log = debug('@pie-ui:categorize:droppable-placeholder');
 
 export class DroppablePlaceholder extends React.Component {
   static propTypes = {
+    choiceBoard: PropTypes.bool,
     connectDropTarget: PropTypes.func.isRequired,
     isOver: PropTypes.bool,
     children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired,

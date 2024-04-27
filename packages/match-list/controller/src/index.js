@@ -1,6 +1,6 @@
 import isEmpty from 'lodash/isEmpty';
-import { getFeedbackForCorrectness } from '@pie-lib/feedback';
-import { lockChoices, getShuffledChoices, partialScoring } from '@pie-lib/controller-utils';
+import { getFeedbackForCorrectness } from '@pie-lib/pie-toolbox/feedback';
+import { lockChoices, getShuffledChoices, partialScoring } from '@pie-lib/pie-toolbox/controller-utils';
 import debug from 'debug';
 
 const log = debug('@pie-element:match-list:controller');
@@ -141,6 +141,7 @@ export function model(question, session, env, updateSession) {
         updateSession(session.id, session.element, {
           shuffledValues,
         }).catch((e) => {
+          // eslint-disable-next-line no-console
           console.error('update session failed', e);
         });
       }

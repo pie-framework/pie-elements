@@ -6,7 +6,7 @@ import cloneDeep from 'lodash/cloneDeep';
 import sensibleDefaults from '../defaults';
 import { createSlateMarkup, processMarkup } from '../markupUtils';
 
-jest.mock('@pie-lib/config-ui', () => ({
+jest.mock('@pie-lib/pie-toolbox/config-ui', () => ({
   choiceUtils: {
     firstAvailableIndex: jest.fn(),
   },
@@ -29,43 +29,43 @@ const model = {
   choices: {
     0: [
       {
-        label: 'cow ',
+        label: 'cow',
         value: '0',
         correct: true,
         rationale: 'rationale for cow',
       },
       {
-        label: 'dog ',
+        label: 'dog',
         value: '1',
         correct: false,
       },
       {
-        label: 'cat ',
+        label: 'cat',
         value: '2',
         correct: false,
       },
     ],
     1: [
       {
-        label: 'over ',
+        label: 'over',
         value: '0',
         correct: true,
         rationale: 'rationale for over',
       },
       {
-        label: 'under ',
+        label: 'under',
         value: '1',
         correct: false,
       },
       {
-        label: 'across ',
+        label: 'across',
         value: '2',
         correct: false,
       },
     ],
     2: [
       {
-        label: 'moon ',
+        label: 'moon',
         value: '0',
         correct: true,
         rationale: 'rationale for moon',
@@ -76,7 +76,7 @@ const model = {
         correct: false,
       },
       {
-        label: 'house ',
+        label: 'house',
         value: '3',
         correct: false,
       },
@@ -227,17 +227,17 @@ describe('Main', () => {
           ...model.choices,
           0: [
             {
-              label: 'cow ',
+              label: 'cow',
               value: '0',
               correct: false,
             },
             {
-              label: 'dog ',
+              label: 'dog',
               value: '1',
               correct: false,
             },
             {
-              label: 'cat ',
+              label: 'cat',
               value: '2',
               correct: false,
             },
@@ -258,7 +258,7 @@ describe('Main', () => {
           0: [
             ...model.choices['0'],
             {
-              label: 'pet ',
+              label: 'pet',
               value: '3',
               correct: false,
             },
@@ -282,7 +282,7 @@ describe('Main', () => {
           ...model.choices,
           3: [
             {
-              label: 'A ',
+              label: 'A',
               value: '0',
               correct: true,
             },
@@ -292,7 +292,7 @@ describe('Main', () => {
               correct: false,
             },
             {
-              label: 'C ',
+              label: 'C',
               value: '2',
               correct: false,
             },
@@ -332,7 +332,7 @@ describe('Main', () => {
     describe('onChoiceRationaleChanged', () => {
       it('changes the choice level rationale value', () => {
         w.instance().onChoiceRationaleChanged(0, {
-          label: 'cow ',
+          label: 'cow',
           value: '0',
           correct: true,
           rationale: 'new rationale for cow',
@@ -343,43 +343,43 @@ describe('Main', () => {
           choices: {
             0: [
               {
-                label: 'cow ',
+                label: 'cow',
                 value: '0',
                 correct: true,
                 rationale: 'new rationale for cow',
               },
               {
-                label: 'dog ',
+                label: 'dog',
                 value: '1',
                 correct: false,
               },
               {
-                label: 'cat ',
+                label: 'cat',
                 value: '2',
                 correct: false,
               },
             ],
             1: [
               {
-                label: 'over ',
+                label: 'over',
                 value: '0',
                 correct: true,
                 rationale: 'rationale for over',
               },
               {
-                label: 'under ',
+                label: 'under',
                 value: '1',
                 correct: false,
               },
               {
-                label: 'across ',
+                label: 'across',
                 value: '2',
                 correct: false,
               },
             ],
             2: [
               {
-                label: 'moon ',
+                label: 'moon',
                 value: '0',
                 correct: true,
                 rationale: 'rationale for moon',
@@ -390,7 +390,7 @@ describe('Main', () => {
                 correct: false,
               },
               {
-                label: 'house ',
+                label: 'house',
                 value: '3',
                 correct: false,
               },
@@ -449,9 +449,9 @@ describe('Main', () => {
         w.instance().setState({
           respAreaChoices: {
             0: [
-              { label: 'cow ', value: '0', correct: true },
-              { label: 'dog ', value: '1', correct: false },
-              { label: 'cat ', value: '2', correct: false },
+              { label: 'cow', value: '0', correct: true },
+              { label: 'dog', value: '1', correct: false },
+              { label: 'cat', value: '2', correct: false },
             ],
           },
         });
@@ -464,8 +464,8 @@ describe('Main', () => {
           expect.objectContaining({
             choices: {
               0: [
-                { label: 'dog ', value: '1', correct: false },
-                { label: 'cat ', value: '2', correct: false },
+                { label: 'dog', value: '1', correct: false },
+                { label: 'cat', value: '2', correct: false },
               ],
             },
           }),
@@ -476,7 +476,7 @@ describe('Main', () => {
         expect(onModelChanged).toBeCalledWith(
           expect.objectContaining({
             choices: {
-              0: [{ label: 'cat ', value: '2', correct: false }],
+              0: [{ label: 'cat', value: '2', correct: false }],
             },
           }),
         );
@@ -498,9 +498,9 @@ describe('Main', () => {
         w.instance().setState({
           respAreaChoices: {
             0: [
-              { label: 'cow ', value: '0', correct: true },
-              { label: 'dog ', value: '1', correct: false },
-              { label: 'cat ', value: '2', correct: false },
+              { label: 'cow', value: '0', correct: true },
+              { label: 'dog', value: '1', correct: false },
+              { label: 'cat', value: '2', correct: false },
             ],
           },
         });
@@ -513,9 +513,9 @@ describe('Main', () => {
           expect.objectContaining({
             choices: {
               0: [
-                { label: 'cow ', value: '0', correct: false },
-                { label: 'dog ', value: '1', correct: true },
-                { label: 'cat ', value: '2', correct: false },
+                { label: 'cow', value: '0', correct: false },
+                { label: 'dog', value: '1', correct: true },
+                { label: 'cat', value: '2', correct: false },
               ],
             },
           }),
@@ -527,9 +527,9 @@ describe('Main', () => {
           expect.objectContaining({
             choices: {
               0: [
-                { label: 'cow ', value: '0', correct: true },
-                { label: 'dog ', value: '1', correct: false },
-                { label: 'cat ', value: '2', correct: false },
+                { label: 'cow', value: '0', correct: true },
+                { label: 'dog', value: '1', correct: false },
+                { label: 'cat', value: '2', correct: false },
               ],
             },
           }),

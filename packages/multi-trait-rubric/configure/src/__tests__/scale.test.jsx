@@ -89,16 +89,13 @@ describe('Scale', () => {
 
         w.instance().updateMaxPointsFieldValue({ target: { value: maxPoints + 1 } });
 
-        expect(onScaleChanged).toBeCalledWith(0, {
-          maxPoints: maxPoints + 1,
-          scorePointsLabels,
-          traits,
-        });
+        expect(onScaleChanged).toBeCalledWith(0, { maxPoints: maxPoints + 1 });
       });
     });
 
     describe('changeMaxPoints', () => {
       it('removes zero', () => {
+        const { scorePointsLabels } = w.instance().props?.scale || {};
         w.instance().setState({ newMaxPoints: 10 });
         w.instance().changeMaxPoints();
 

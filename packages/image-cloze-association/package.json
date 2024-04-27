@@ -1,6 +1,6 @@
 {
   "name": "@pie-element/image-cloze-association",
-  "version": "4.6.1-beta.3+e0e0490c5",
+  "version": "5.15.0",
   "description": "",
   "repository": "pie-framework/pie-elements",
   "publishConfig": {
@@ -10,19 +10,15 @@
     "@material-ui/core": "^3.9.3",
     "@material-ui/icons": "^3.0.1",
     "@pie-framework/pie-player-events": "^0.1.0",
-    "@pie-lib/correct-answer-toggle": "^2.3.62",
-    "@pie-lib/drag": "^2.1.12",
-    "@pie-lib/math-rendering": "^2.5.12",
-    "@pie-lib/render-ui": "^4.14.12",
+    "@pie-lib/pie-toolbox": "1.16.1-next.28",
     "classnames": "^2.2.6",
-    "is-plain-object": "^5.0.0",
     "prop-types": "^15.6.1",
     "react": "^16.8.1",
     "react-dom": "^16.8.1"
   },
   "author": "pie framework developers",
   "license": "ISC",
-  "gitHead": "e0e0490c5b040c67f504c0bdfd00f6b834a28481",
+  "gitHead": "0e14ff981bcdc8a89a0e58484026496701bfdbc3",
   "scripts": {
     "postpublish": "../../scripts/postpublish"
   },

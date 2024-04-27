@@ -5,17 +5,17 @@ import React from 'react';
 import classNames from 'classnames';
 import debug from 'debug';
 import { withStyles } from '@material-ui/core/styles';
-import { PlaceHolder } from '@pie-lib/drag';
-import { color } from '@pie-lib/render-ui';
+import { PlaceHolder } from '@pie-lib/pie-toolbox/drag';
+import { color } from '@pie-lib/pie-toolbox/render-ui';
 
 const log = debug('pie-elements:placement-ordering:tile');
 
-const Holder = withStyles(() => ({
+const Holder = withStyles((theme) => ({
   number: {
     width: '100%',
-    fontSize: '18px',
+    fontSize: theme.typography.fontSize + 4,
     textAlign: 'center',
-    color: 'rgba(0,0,0,0.6)',
+    color: `rgba(${theme.palette.common.black}, 0.6)`,
   },
 }))(({ classes, type, index, isOver, disabled }) => (
   <PlaceHolder isOver={isOver} disabled={disabled}>
@@ -30,7 +30,7 @@ Holder.propTypes = {
   disabled: PropTypes.bool,
 };
 
-const TileContent = withStyles({
+const TileContent = withStyles((theme) => ({
   over: {
     opacity: 0.2,
   },
@@ -41,9 +41,13 @@ const TileContent = withStyles({
     padding: '10px',
     boxSizing: 'border-box',
     overflow: 'hidden',
-    border: '1px solid #c2c2c2',
+    border: `1px solid ${theme.palette.grey[400]}`,
     backgroundColor: color.background(),
     transition: 'opacity 200ms linear',
+    // Added for touch devices, for image content.
+    // This will prevent the context menu from appearing and not allowing other interactions with the image.
+    // If interactions with the image in the token will be requested we should handle only the context Menu.
+    pointerEvents: 'none',
     '&:hover': {
       backgroundColor: color.secondary(),
     },
@@ -71,7 +75,7 @@ const TileContent = withStyles({
       backgroundColor: 'unset',
     },
   },
-})((props) => {
+}))((props) => {
   const { type, classes, isDragging, empty, isOver, label, disabled, outcome, guideIndex } = props;
 
   if (empty) {
@@ -192,6 +196,7 @@ const tileSource = {
       id: props.id,
       type: props.type,
       instanceId: props.instanceId,
+      value: props.label,
     };
   },
   endDrag(props, monitor) {

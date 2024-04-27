@@ -11,7 +11,7 @@ export default {
     lockChoiceOrder: true,
     partialScoring: true,
     scoringType: 'auto',
-    feedbackEnabled: true,
+    feedbackEnabled: false,
     promptEnabled: true,
     rationaleEnabled: true,
     teacherInstructionsEnabled: true,
@@ -21,6 +21,18 @@ export default {
     gridColumns: '2',
   },
   configuration: {
+    baseInputConfiguration: {
+      audio: { disabled: false },
+      video: { disabled: false },
+      image: { disabled: false },
+    },
+    choices: {
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
+    },
     spellCheck: {
       label: 'Spellcheck',
       settings: false,
@@ -56,6 +68,12 @@ export default {
     prompt: {
       settings: true,
       label: 'Prompt',
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
+      required: false,
     },
     lockChoiceOrder: {
       settings: true,
@@ -68,10 +86,21 @@ export default {
     rationale: {
       settings: true,
       label: 'Rationale',
+      inputConfiguration: {
+        audio: { disabled: true },
+        video: { disabled: true },
+        image: { disabled: false },
+      },
+      required: false,
     },
     accessibility: {
       settings: false,
       label: 'Accessibility Label',
+      inputConfiguration: {
+        audio: { disabled: true },
+        video: { disabled: true },
+        image: { disabled: false },
+      },
     },
     scoringType: {
       settings: false,
@@ -84,6 +113,12 @@ export default {
     teacherInstructions: {
       settings: true,
       label: 'Teacher Instructions',
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
+      required: false,
     },
     toolbarEditorPosition: {
       settings: false,
@@ -95,7 +130,7 @@ export default {
       teacherInstructions: 300,
       prompt: 300,
       rationale: 636,
-      choices: 636,
+      choices: 900,
     },
     maxImageHeight: {
       teacherInstructions: 300,
@@ -106,6 +141,19 @@ export default {
     withRubric: {
       settings: false,
       label: 'Add Rubric',
+    },
+    mathMlOptions: {
+      mmlOutput: false,
+      mmlEditing: false,
+    },
+    language: {
+      settings: false,
+      label: 'Specify Language',
+      enabled: false,
+    },
+    languageChoices: {
+      label: 'Language Choices',
+      options: [],
     },
   },
 };

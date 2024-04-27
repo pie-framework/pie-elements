@@ -10,11 +10,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import RootComponent from './number-line';
 import cloneDeep from 'lodash/cloneDeep';
-import { renderMath } from '@pie-lib/math-rendering';
+import { renderMath } from '@pie-lib/pie-toolbox/math-rendering-accessible';
 
 //Expose some additional modules for configuration
 export { Graph, NumberLineComponent, tickUtils, dataConverter, pointChooser };
-
 export default class NumberLine extends HTMLElement {
   constructor() {
     super();

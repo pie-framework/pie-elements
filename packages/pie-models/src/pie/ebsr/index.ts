@@ -1,6 +1,13 @@
 import { PieModel } from '../../PieModel';
-import { ConfigureProp } from '../ConfigurationProp';
+import {
+  ConfigureMathMLProp,
+  ConfigureProp,
+  EditableHtmlConfigureProp,
+  EditableHtmlPluginConfigure,
+  EditableHtmlPluginConfigureRequired,
+} from '../ConfigurationProp';
 import { PromptConfig } from '../../PromptConfig';
+import { CommonConfigSettings } from '../../CommonConfigSettings';
 
 export interface Choice {
   /** The value for the choice */
@@ -132,9 +139,9 @@ interface PartConfiguration {
   lockChoiceOrder?: ConfigureProp;
 
   /**
-   * Indicates whether the Edit prompt input should be displayed
+   * Prompt configuration
    */
-  prompt?: ConfigureProp;
+  prompt?: EditableHtmlPluginConfigureRequired;
 
   /**
    * Indicates if the settings panel is not available
@@ -149,7 +156,7 @@ interface PartConfiguration {
   /**
    * Rationale configuration
    */
-  rationale?: ConfigureProp;
+  rationale?: EditableHtmlPluginConfigureRequired;
 
   /**
    * Student Instructions configuration
@@ -159,7 +166,7 @@ interface PartConfiguration {
   /**
    * Teacher Instructions configuration
    */
-  teacherInstructions?: ConfigureProp;
+  teacherInstructions?: EditableHtmlPluginConfigureRequired;
 
   /** Indicates the layout of choices for player
    * @default: 'vertical'
@@ -190,13 +197,27 @@ interface PartConfiguration {
    * Maximum image height for input fields
    */
   maxImageHeight?: ConfigureMaxImageDimensionsProp;
+
+  /** Configuration for editable-html */
+  mathMlOptions?: ConfigureMathMLProp;
+
+  /**
+   * Base editable html input configuration regarding plugins that are enabled/disabled
+   * E.g. audio, video, image
+   */
+  baseInputConfiguration?: EditableHtmlConfigureProp;
+
+  /**
+   * Choices configuration
+   */
+  choices?: EditableHtmlPluginConfigure;
 }
 
 /**
  * Config Object for @pie-elements/ebsr
  * @additionalProperties false
  */
-export interface EbsrConfigure extends PromptConfig {
+export interface EbsrConfigure extends PromptConfig, CommonConfigSettings {
   /**
    * Indicates configuration for part A
    */

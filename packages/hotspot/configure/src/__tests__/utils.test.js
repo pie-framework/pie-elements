@@ -160,6 +160,13 @@ const shapesArray = [
     group: 'polygons',
     index: 3,
   },
+  {
+    radius: 50,
+    x: 300,
+    y: 150,
+    group: 'circles',
+    index: 4,
+  },
 ];
 
 const shapesMap = {
@@ -199,6 +206,14 @@ const shapesMap = {
       index: 3,
     },
   ],
+  circles: [
+    {
+      radius: 50,
+      x: 300,
+      y: 150,
+      index: 4,
+    },
+  ],
 };
 
 describe('getAllShapes', () => {
@@ -217,9 +232,9 @@ describe('groupShapes', () => {
   it.each`
     shapesArray    | expected
     ${shapesArray} | ${shapesMap}
-    ${null}        | ${{ rectangles: [], polygons: [] }}
-    ${undefined}   | ${{ rectangles: [], polygons: [] }}
-    ${[]}          | ${{ rectangles: [], polygons: [] }}
+    ${null}        | ${{ rectangles: [], polygons: [], circles: [] }}
+    ${undefined}   | ${{ rectangles: [], polygons: [], circles: [] }}
+    ${[]}          | ${{ rectangles: [], polygons: [], circles: [] }}
   `('TURNS shapes = $shapesArray INTO $expected', async ({ shapesArray, expected }) => {
     expect(groupShapes(shapesArray)).toEqual(expected);
   });

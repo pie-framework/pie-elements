@@ -2,7 +2,16 @@ import { Shape } from '../../Shape';
 import { Dimension } from '../../Dimension';
 import { PieModel } from '../../PieModel';
 import { PromptConfig } from '../../PromptConfig';
-import { ConfigureMaxImageDimensionsProp, ConfigureProp } from '../ConfigurationProp';
+import {
+  ConfigureMathMLProp,
+  ConfigureMaxImageDimensionsProp,
+  ConfigureProp,
+  ConfigurePropWithEnabled,
+  ConfigureLanguageOptionsProp,
+  EditableHtmlConfigureProp,
+  EditableHtmlPluginConfigureRequired,
+} from '../ConfigurationProp';
+import { CommonConfigSettings } from '../../CommonConfigSettings';
 
 /**
  * Model for the @pie-elements/hotspot Interaction
@@ -68,13 +77,24 @@ export interface HotspotPie extends PieModel {
 
   /** Indicates if Rubric is enabled */
   rubricEnabled: boolean;
+
+  /** Indicates the language of the component
+   * Supported options: en, es, en_US, en-US, es_ES, es-ES, es_MX, es-MX
+   */
+  language?: string;
 }
 
 /**
  * Config Object for @pie-elements/hotspot
  * @additionalProperties false
  */
-export interface HotspotConfigure extends PromptConfig {
+export interface HotspotConfigure extends PromptConfig, CommonConfigSettings {
+  /**
+   * Base editable html input configuration regarding plugins that are enabled/disabled
+   * E.g. audio, video, image
+   */
+  baseInputConfiguration?: EditableHtmlConfigureProp;
+
   /**
    * Configuration for multiple correct
    */
@@ -86,7 +106,13 @@ export interface HotspotConfigure extends PromptConfig {
   partialScoring?: ConfigureProp;
 
   /** Configuration for rationale */
-  rationale?: ConfigureProp;
+  rationale?: EditableHtmlPluginConfigureRequired;
+
+  /** Configuration for prompt */
+  prompt?: EditableHtmlPluginConfigureRequired;
+
+  /** Configuration for teacher instructions */
+  teacherInstructions?: EditableHtmlPluginConfigureRequired;
 
   /**
    * Indicates if the settings panel is not available
@@ -130,4 +156,21 @@ export interface HotspotConfigure extends PromptConfig {
    * Rubric configuration - only relevant in environments that use pie-player-components
    */
   withRubric?: ConfigureProp;
+
+  /** Configuration for editable-html */
+  mathMlOptions?: ConfigureMathMLProp;
+
+  /**
+   * Language configuration
+   */
+  language?: ConfigurePropWithEnabled;
+
+  /**
+   * Language choices configuration
+   * Only available if language is enabled
+   */
+  languageChoices?: {
+    label: string;
+    options: ConfigureLanguageOptionsProp[];
+  };
 }

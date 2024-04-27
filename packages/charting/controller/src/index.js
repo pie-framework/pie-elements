@@ -3,7 +3,7 @@ import isEqual from 'lodash/isEqual';
 import isEmpty from 'lodash/isEmpty';
 import pick from 'lodash/pick';
 
-import { partialScoring } from '@pie-lib/controller-utils';
+import { partialScoring } from '@pie-lib/pie-toolbox/controller-utils';
 
 const log = debug('@pie-element:graphing:controller');
 
@@ -34,6 +34,7 @@ export const normalize = (question) => ({
 
 export const getScore = (question, session, env = {}) => {
   const { correctAnswer, data: initialData = [], scoringType } = question;
+  let correctResponses = [];
 
   const isPartialScoring = partialScoring.enabled(
     { partialScoring: scoringType !== undefined ? scoringType === 'partial scoring' : scoringType },
@@ -55,18 +56,23 @@ export const getScore = (question, session, env = {}) => {
     let score = 0;
 
     const scoreForLabelAndValueEditable = (answer, corrAnswer) => {
-      const { value, label } = answer;
-
+      const { value, label, index } = answer;
+      const valueIsCorrect = value === corrAnswer.value;
+      const labelIsCorrect = checkLabelsEquality(label, corrAnswer.label);
       maxScore += 2;
 
-      if (value === corrAnswer.value) {
+      if (valueIsCorrect) {
         score += 1;
         answer.correctness.value = 'correct';
       }
 
-      if (checkLabelsEquality(label, corrAnswer.label)) {
+      if (labelIsCorrect) {
         score += 1;
         answer.correctness.label = 'correct';
+      }
+
+      if (valueIsCorrect && labelIsCorrect) {
+        correctResponses.push({ label: label, index: index });
       }
     };
 
@@ -87,6 +93,7 @@ export const getScore = (question, session, env = {}) => {
             if (answer.value === corrAnswer.value) {
               score += 1;
               answer.correctness.value = 'correct';
+              correctResponses.push({ label: answer.label, index: index });
             }
             answer.correctness.label = 'correct';
 
@@ -97,6 +104,7 @@ export const getScore = (question, session, env = {}) => {
           } else if (!answer.interactive) {
             answer.correctness.value = 'correct';
             answer.correctness.label = 'correct';
+            correctResponses.push({ label: answer.label, index: index });
           }
         } else {
           // if there is not a corresponding category at the same position in the default answer
@@ -121,13 +129,19 @@ export const getScore = (question, session, env = {}) => {
       correctAnswers.forEach((corrAnswer, index) => {
         const { value, label } = answers[index];
 
-        if (value !== corrAnswer.value) {
+        const valueIsCorrect = value === corrAnswer.value;
+        const labelIsCorrect = lowerCase(label) === lowerCase(corrAnswer.label);
+
+        if (!valueIsCorrect) {
           result = 0;
           answers[index].correctness.value = 'incorrect';
         }
-        if (lowerCase(label) !== lowerCase(corrAnswer.label)) {
+        if (!labelIsCorrect) {
           result = 0;
           answers[index].correctness.label = 'incorrect';
+        }
+        if (valueIsCorrect && labelIsCorrect) {
+          correctResponses.push({ label: label, index: index });
         }
       });
     } else {
@@ -138,12 +152,19 @@ export const getScore = (question, session, env = {}) => {
     }
   }
 
-  return {
+  const score = {
     score: parseFloat(result.toFixed(2)),
     answers,
   };
+
+  if (env.extraProps && env.extraProps.correctResponseEnabled) {
+    score.correctResponses = correctResponses;
+  }
+
+  return score;
 };
 
+// eslint-disable-next-line no-unused-vars
 export const filterCategories = (categories) => (categories ? categories.map(({ deletable, ...rest }) => rest) : []);
 
 export function model(question, session, env) {
@@ -151,7 +172,6 @@ export function model(question, session, env) {
     const normalizedQuestion = normalize(question);
     const {
       addCategoryEnabled,
-      categoryDefaultLabel,
       chartType,
       data,
       domain,
@@ -166,13 +186,14 @@ export function model(question, session, env) {
       teacherInstructionsEnabled,
       correctAnswer,
       scoringType,
+      studentNewCategoryDefaultLabel,
+      language,
     } = normalizedQuestion;
 
     const correctInfo = { correctness: 'incorrect', score: '0%' };
 
     const base = {
       addCategoryEnabled,
-      categoryDefaultLabel,
       chartType,
       data: filterCategories(data),
       domain,
@@ -185,11 +206,14 @@ export function model(question, session, env) {
       correctness: correctInfo,
       disabled: env.mode !== 'gather',
       scoringType,
+      studentNewCategoryDefaultLabel,
+      language,
     };
 
     const answers = filterCategories(getScore(normalizedQuestion, session, env).answers);
 
     if (env.mode === 'view') {
+      // eslint-disable-next-line no-unused-vars
       base.correctedAnswer = answers.map(({ correctness, ...rest }) => {
         return { ...rest, interactive: false };
       });
@@ -218,10 +242,15 @@ export function model(question, session, env) {
 
 export function outcome(model, session, env) {
   return new Promise((resolve) => {
-    resolve({
-      score: getScore(model, session, env).score,
+    const scoreObject = getScore(model, session, env);
+    const result = {
+      score: scoreObject.score,
       empty: !session || isEmpty(session),
-    });
+    };
+    if (env.extraProps && env.extraProps.correctResponseEnabled) {
+      result.extraProps = { correctResponse: scoreObject.correctResponses };
+    }
+    resolve(result);
   });
 }
 
@@ -254,6 +283,12 @@ export const createCorrectResponseSession = (question, env) => {
   });
 };
 
+// remove all html tags
+const getInnerText = (html) => (html || '').replaceAll(/<[^>]*>/g, '');
+
+// remove all html tags except img and iframe
+const getContent = (html) => (html || '').replace(/(<(?!img|iframe)([^>]+)>)/gi, '');
+
 export const validate = (model = {}, config = {}) => {
   const { correctAnswer, data } = model || {};
   const { data: correctData } = correctAnswer || {};
@@ -263,16 +298,22 @@ export const validate = (model = {}, config = {}) => {
   const correctAnswerErrors = {};
   const categoryErrors = {};
 
+  ['teacherInstructions', 'prompt', 'rationale'].forEach((field) => {
+    if (config[field]?.required && !getContent(model[field])) {
+      errors[field] = 'This field is required.';
+    }
+  });
+
   categories.forEach((category, index) => {
     const { label } = category;
 
-    if (label === '' || label === '<div></div>') {
-      categoryErrors[index] = 'Content should not be empty.';
+    if (!getInnerText(label)) {
+      categoryErrors[index] = 'Content should not be empty. ';
     } else {
-      const identicalAnswer = categories.slice(index + 1).some((c) => c.label === label);
+      const identicalAnswer = categories.some((c, i) => c.label === label && index !== i);
 
       if (identicalAnswer) {
-        categoryErrors[index + 1] = 'Content should be unique.';
+        categoryErrors[index] = 'Category names should be unique. ';
       }
     }
   });

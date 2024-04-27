@@ -8,13 +8,15 @@ export default {
     lockChoiceOrder: true,
     allowMultiplePlacementsEnabled: multiplePlacements.enabled,
     allowAlternateEnabled: false,
+    allowMaxChoicesPerCategory: false,
+    maxChoicesPerCategory: 0,
     categoriesPerRow: 2,
     categories: [],
     alternates: [],
     correctResponse: [],
     rowLabels: [''],
     partialScoring: true,
-    feedbackEnabled: true,
+    feedbackEnabled: false,
     rationaleEnabled: true,
     promptEnabled: true,
     teacherInstructionsEnabled: true,
@@ -22,6 +24,11 @@ export default {
     toolbarEditorPosition: 'bottom',
   },
   configuration: {
+    baseInputConfiguration: {
+      audio: { disabled: false },
+      video: { disabled: false },
+      image: { disabled: false },
+    },
     spellCheck: {
       label: 'Spellcheck',
       settings: false,
@@ -44,6 +51,10 @@ export default {
       settings: true,
       label: 'Allow Multiple Placements',
     },
+    maxPlacements: {
+      settings: true,
+      label: 'Max choices per category',
+    },
     allowAlternate: {
       settings: true,
       label: 'Allow Alternate Correct Answers',
@@ -59,10 +70,22 @@ export default {
     prompt: {
       settings: true,
       label: 'Prompt',
+      required: false,
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
     },
     rationale: {
       settings: true,
       label: 'Rationale',
+      required: false,
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
     },
     scoringType: {
       settings: false,
@@ -76,6 +99,26 @@ export default {
     teacherInstructions: {
       settings: true,
       label: 'Teacher Instructions',
+      required: false,
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
+    },
+    headers: {
+      inputConfiguration: {
+        audio: { disabled: true },
+        video: { disabled: true },
+        image: { disabled: false },
+      },
+    },
+    rowLabels: {
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
     },
     toolbarEditorPosition: {
       settings: false,
@@ -102,5 +145,18 @@ export default {
       label: 'Add Rubric',
     },
     minCategoriesPerRow: 1,
+    mathMlOptions: {
+      mmlOutput: false,
+      mmlEditing: false,
+    },
+    language: {
+      settings: false,
+      label: 'Specify Language',
+      enabled: false,
+    },
+    languageChoices: {
+      label: 'Language Choices',
+      options: [],
+    },
   },
 };

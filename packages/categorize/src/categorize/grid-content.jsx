@@ -21,7 +21,7 @@ export class GridContent extends React.Component {
     const { classes, className, children, columns, extraStyle, rows } = this.props;
     const style = {
       gridTemplateColumns: `repeat(${columns}, 1fr)`,
-      gridTemplateRows: `repeat(${rows}, auto)`,
+      gridTemplateRows: rows === 2 ? 'auto 1fr' : `repeat(${rows}, auto)`,
       ...extraStyle,
     };
 

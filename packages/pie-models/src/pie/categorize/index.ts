@@ -1,8 +1,15 @@
-import { PromptConfig } from '../../PromptConfig';
 import { PieModel } from '../../PieModel';
 import { CommonConfigSettings } from '../../CommonConfigSettings';
 import { ComplexFeedbackType } from '../../Feedback';
-import { ConfigureProp } from '../ConfigurationProp';
+import {
+  ConfigureLanguageOptionsProp,
+  ConfigureMathMLProp,
+  ConfigureProp,
+  EditableHtmlConfigureProp,
+  EditableHtmlPluginConfigure,
+  ConfigurePropWithEnabled,
+  EditableHtmlPluginConfigureRequired,
+} from '../ConfigurationProp';
 
 interface CategoryChoice {
   /** Identifier for the choice */
@@ -54,6 +61,9 @@ enum ChoicesPosition {
  * @additionalProperties false
  */
 export interface CategorizePie extends PieModel {
+  /** Indicates if author has the possibility to set maxChoicesPerCategory */
+  allowMaxChoicesPerCategory: boolean;
+
   /** The available choices */
   choices: CategoryChoice[];
 
@@ -89,6 +99,9 @@ export interface CategorizePie extends PieModel {
   /** Feedback configuration */
   feedback?: ComplexFeedbackType;
 
+  /** Indicates the maximum number of choices from a category */
+  maxChoicesPerCategory: number;
+
   /** Indicates the value for rationale */
   rationale?: string;
 
@@ -106,7 +119,6 @@ export interface CategorizePie extends PieModel {
 
   /** Indicates if Student Instructions are enabled */
   studentInstructionsEnabled: boolean;
-
   /** Indicates if Teacher Instructions are enabled */
   teacherInstructionsEnabled: boolean;
 
@@ -121,6 +133,11 @@ export interface CategorizePie extends PieModel {
 
   /** Indicates if Rubric is enabled */
   rubricEnabled: boolean;
+
+  /** Indicates the language of the component
+   * Supported options: en, es, en_US, en-US, es_ES, es-ES, es_MX, es-MX
+   */
+  language?: string;
 }
 
 interface ConfigureMaxImageDimensionsProp {
@@ -147,7 +164,13 @@ interface ConfigureMaxImageDimensionsProp {
  * Config Object for @pie-elements/categorize
  * @additionalProperties false
  */
-export interface CategorizeConfigure extends PromptConfig, CommonConfigSettings {
+export interface CategorizeConfigure extends CommonConfigSettings {
+  /**
+   * Base editable html input configuration regarding plugins that are enabled/disabled
+   * E.g. audio, video, image
+   */
+  baseInputConfiguration?: EditableHtmlConfigureProp;
+
   /**
    * Partial Scoring configuration
    */
@@ -156,7 +179,7 @@ export interface CategorizeConfigure extends PromptConfig, CommonConfigSettings 
   /**
    * Rationale configuration
    */
-  rationale?: ConfigureProp;
+  rationale?: EditableHtmlPluginConfigureRequired;
 
   /**
    * Configuration for the author's spellcheck
@@ -181,7 +204,22 @@ export interface CategorizeConfigure extends PromptConfig, CommonConfigSettings 
   /**
    * Teacher Instructions configuration
    */
-  teacherInstructions?: ConfigureProp;
+  teacherInstructions?: EditableHtmlPluginConfigureRequired;
+
+  /**
+   * Configuration for the prompt
+   */
+  prompt?: EditableHtmlPluginConfigureRequired;
+
+  /**
+   * Configuration for the headers
+   */
+  headers?: EditableHtmlPluginConfigure;
+
+  /**
+   * Configuration for the row labels
+   */
+  rowLabels?: EditableHtmlPluginConfigure;
 
   /**
    * Minimum number of choices
@@ -197,6 +235,9 @@ export interface CategorizeConfigure extends PromptConfig, CommonConfigSettings 
    * Position of the choices
    */
   choicesPosition?: ConfigureProp;
+
+  /** Configuration for editable-html */
+  mathMlOptions?: ConfigureMathMLProp;
 
   /**
    * Maximum number of categories
@@ -222,4 +263,18 @@ export interface CategorizeConfigure extends PromptConfig, CommonConfigSettings 
    * Rubric configuration - only relevant in environments that use pie-player-components
    */
   withRubric?: ConfigureProp;
+
+  /**
+   * Language configuration
+   */
+  language?: ConfigurePropWithEnabled;
+
+  /**
+   * Language choices configuration
+   * Only available if language is enabled
+   */
+  languageChoices?: {
+    label: string;
+    options: ConfigureLanguageOptionsProp[];
+  };
 }

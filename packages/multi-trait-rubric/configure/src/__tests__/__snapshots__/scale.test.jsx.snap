@@ -6,7 +6,12 @@ exports[`Scale snapshot renders 1`] = `
 >
   <WithStyles(TraitsHeaderTile)
     currentPosition={0}
+    errors={Object {}}
+    expandedPluginProps={Object {}}
+    imageSupport={Object {}}
     key="header-key"
+    labelPluginProps={Object {}}
+    mathMlOptions={Object {}}
     maxPoints={2}
     onScaleChange={[Function]}
     onTraitLabelChange={[Function]}
@@ -28,8 +33,13 @@ exports[`Scale snapshot renders 1`] = `
   />
   <DropTarget(DragSource(WithStyles(TraitTile)))
     currentPosition={0}
+    expandedPluginProps={Object {}}
+    imageSupport={Object {}}
     index={0}
     key="0"
+    labelPluginProps={Object {}}
+    mathMlOptions={Object {}}
+    maxPoints={2}
     onTraitChanged={[Function]}
     onTraitDropped={[Function]}
     onTraitRemoved={[Function]}
@@ -59,9 +69,10 @@ Overall appearance is acceptable or better",
         "standards": Array [],
       }
     }
+    traitLabel="Category"
   />
   <WithStyles(Component)
-    left="232px"
+    left="200px"
     onClick={[Function]}
     show={null}
     width="108px"
@@ -117,7 +128,12 @@ exports[`Scale snapshot renders with drag and drop enabled 1`] = `
 >
   <WithStyles(TraitsHeaderTile)
     currentPosition={0}
+    errors={Object {}}
+    expandedPluginProps={Object {}}
+    imageSupport={Object {}}
     key="header-key"
+    labelPluginProps={Object {}}
+    mathMlOptions={Object {}}
     maxPoints={2}
     onScaleChange={[Function]}
     onTraitLabelChange={[Function]}
@@ -139,8 +155,13 @@ exports[`Scale snapshot renders with drag and drop enabled 1`] = `
   />
   <DropTarget(DragSource(WithStyles(TraitTile)))
     currentPosition={0}
+    expandedPluginProps={Object {}}
+    imageSupport={Object {}}
     index={0}
     key="0"
+    labelPluginProps={Object {}}
+    mathMlOptions={Object {}}
+    maxPoints={2}
     onTraitChanged={[Function]}
     onTraitDropped={[Function]}
     onTraitRemoved={[Function]}
@@ -170,9 +191,10 @@ Overall appearance is acceptable or better",
         "standards": Array [],
       }
     }
+    traitLabel="Category"
   />
   <WithStyles(Component)
-    left="232px"
+    left="200px"
     onClick={[Function]}
     show={null}
     width="108px"
@@ -228,7 +250,12 @@ exports[`Scale snapshot renders without descriptions 1`] = `
 >
   <WithStyles(TraitsHeaderTile)
     currentPosition={0}
+    errors={Object {}}
+    expandedPluginProps={Object {}}
+    imageSupport={Object {}}
     key="header-key"
+    labelPluginProps={Object {}}
+    mathMlOptions={Object {}}
     maxPoints={2}
     onScaleChange={[Function]}
     onTraitLabelChange={[Function]}
@@ -251,8 +278,13 @@ exports[`Scale snapshot renders without descriptions 1`] = `
   />
   <DropTarget(DragSource(WithStyles(TraitTile)))
     currentPosition={0}
+    expandedPluginProps={Object {}}
+    imageSupport={Object {}}
     index={0}
     key="0"
+    labelPluginProps={Object {}}
+    mathMlOptions={Object {}}
+    maxPoints={2}
     onTraitChanged={[Function]}
     onTraitDropped={[Function]}
     onTraitRemoved={[Function]}
@@ -283,9 +315,10 @@ Overall appearance is acceptable or better",
         "standards": Array [],
       }
     }
+    traitLabel="Category"
   />
   <WithStyles(Component)
-    left="232px"
+    left="200px"
     onClick={[Function]}
     show={null}
     width="108px"
@@ -341,7 +374,12 @@ exports[`Scale snapshot renders without standards 1`] = `
 >
   <WithStyles(TraitsHeaderTile)
     currentPosition={0}
+    errors={Object {}}
+    expandedPluginProps={Object {}}
+    imageSupport={Object {}}
     key="header-key"
+    labelPluginProps={Object {}}
+    mathMlOptions={Object {}}
     maxPoints={2}
     onScaleChange={[Function]}
     onTraitLabelChange={[Function]}
@@ -363,8 +401,13 @@ exports[`Scale snapshot renders without standards 1`] = `
   />
   <DropTarget(DragSource(WithStyles(TraitTile)))
     currentPosition={0}
+    expandedPluginProps={Object {}}
+    imageSupport={Object {}}
     index={0}
     key="0"
+    labelPluginProps={Object {}}
+    mathMlOptions={Object {}}
+    maxPoints={2}
     onTraitChanged={[Function]}
     onTraitDropped={[Function]}
     onTraitRemoved={[Function]}
@@ -394,9 +437,10 @@ Overall appearance is acceptable or better",
         "standards": Array [],
       }
     }
+    traitLabel="Category"
   />
   <WithStyles(Component)
-    left="232px"
+    left="200px"
     onClick={[Function]}
     show={null}
     width="108px"
@@ -452,7 +496,12 @@ exports[`Scale snapshot renders without traits 1`] = `
 >
   <WithStyles(TraitsHeaderTile)
     currentPosition={0}
+    errors={Object {}}
+    expandedPluginProps={Object {}}
+    imageSupport={Object {}}
     key="header-key"
+    labelPluginProps={Object {}}
+    mathMlOptions={Object {}}
     maxPoints={2}
     onScaleChange={[Function]}
     onTraitLabelChange={[Function]}
@@ -474,8 +523,13 @@ exports[`Scale snapshot renders without traits 1`] = `
   />
   <DropTarget(DragSource(WithStyles(TraitTile)))
     currentPosition={0}
+    expandedPluginProps={Object {}}
+    imageSupport={Object {}}
     index={0}
     key="0"
+    labelPluginProps={Object {}}
+    mathMlOptions={Object {}}
+    maxPoints={2}
     onTraitChanged={[Function]}
     onTraitDropped={[Function]}
     onTraitRemoved={[Function]}
@@ -505,9 +559,10 @@ Overall appearance is acceptable or better",
         "standards": Array [],
       }
     }
+    traitLabel="Category"
   />
   <WithStyles(Component)
-    left="232px"
+    left="200px"
     onClick={[Function]}
     show={null}
     width="108px"
