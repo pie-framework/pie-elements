@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.29.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/likert@0.29.0...@pie-element/likert@0.29.1) (2024-04-29)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3683, PD-3644 ([73734c5](https://github.com/pie-framework/pie-elements/commit/73734c50a1e4fcda6be4f67c725816d75aea222f))
+
+
+
+
+
 # [0.29.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/likert@0.28.1...@pie-element/likert@0.29.0) (2024-04-22)
 
 
