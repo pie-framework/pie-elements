@@ -89,12 +89,14 @@ workflows:
               ignore:
                 - develop
                 - master
+                - feat/PD-1886-testing
       - test:
           filters:
             branches:
               ignore:
                 - develop
                 - master
+                - feat/PD-1886-testing
   build:
     jobs:
       - build:
