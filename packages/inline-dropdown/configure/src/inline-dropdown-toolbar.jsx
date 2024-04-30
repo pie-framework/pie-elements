@@ -214,7 +214,7 @@ export class RespAreaToolbar extends React.Component {
     const { node, nodePath, editor, onToolbarDone, onSelectChoice } = this.props;
     const update = { ...node.data, value: newValue };
 
-    editor.apply({
+    editor && editor.apply({
       type: 'set_node',
       path: nodePath,
       properties: {
@@ -233,7 +233,7 @@ export class RespAreaToolbar extends React.Component {
     if (isEqual(val, node.data.value)) {
       const update = { ...node.data, value: null };
 
-      editor.apply({
+      editor && editor.apply({
         type: 'set_node',
         path: nodePath,
         properties: {

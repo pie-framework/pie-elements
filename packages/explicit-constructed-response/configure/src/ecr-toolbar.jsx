@@ -55,7 +55,7 @@ export class ECRToolbar extends React.Component {
     const { node, nodePath, editor, onToolbarDone, onChangeResponse } = this.props;
     const update = { ...node.data, value: newValue };
 
-    editor.apply({
+    editor && editor.apply({
       type: 'set_node',
       path: nodePath,
       properties: {
