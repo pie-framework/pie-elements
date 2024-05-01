@@ -2,10 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
-
-const findSlateNode = (key) => {
-  return window.document.querySelector('[data-key="' + key + '"]');
-};
+import { ReactEditor } from 'slate-react';
 
 export class ECRToolbar extends React.Component {
   static propTypes = {
@@ -25,16 +22,16 @@ export class ECRToolbar extends React.Component {
   };
 
   componentDidMount() {
-    const { correctChoice, node } = this.props;
+    const { editor, correctChoice, node } = this.props;
     const choice = correctChoice || {};
 
-    const domNode = findSlateNode(node.key);
+    const domNode = ReactEditor.toDOMNode(editor, node);
 
     if (domNode) {
-      //eslint-disable-next-line
+      // eslint-disable-next-line
       const domNodeRect = domNode.getBoundingClientRect();
-      const editor = domNode.closest('[data-slate-editor]');
-      const editorRect = editor.getBoundingClientRect();
+      const editorDOM = domNode.closest('[data-slate-editor]');
+      const editorRect = editorDOM.getBoundingClientRect();
       const top = domNodeRect.top - editorRect.top;
       const left = domNodeRect.left - editorRect.left;
 
@@ -42,18 +39,26 @@ export class ECRToolbar extends React.Component {
         markup: choice.label,
         toolbarStyle: {
           position: 'absolute',
-          top: `${top + domNodeRect.height + 20}px`,
-          left: `${left + 20}px`,
+          top: `${top + domNodeRect.height - 1}px`,
+          left: `${left + 17}px`,
           width: domNodeRect.width,
         },
       });
     }
   }
 
-  onDone = () => {
+  onDone = (e) => {
     const { markup: newValue } = this.state;
     const { node, nodePath, editor, onToolbarDone, onChangeResponse } = this.props;
     const update = { ...node.data, value: newValue };
+
+    const domNode = ReactEditor.toDOMNode(editor, node);
+    const slateWrapperForNode = domNode.closest('[data-slate-wrapper]')
+
+    if (e.relatedTarget && e.relatedTarget.closest('[data-slate-wrapper]') === slateWrapperForNode) {
+      // no need to call the blur function if the click is on the slate editor
+      return;
+    }
 
     editor && editor.apply({
       type: 'set_node',
