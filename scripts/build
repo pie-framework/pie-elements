@@ -70,10 +70,20 @@ class ElementsCommands extends Commands {
             })
         );
 
-        // TODO remove the blacklisted items (complex-rubric and ebsr)
+        // TODO remove the blacklisted items (complex-rubric, ebsr and explicit-constructed-response)
         const printPkgs = pkgJson.filter(
             (p) => p.pkg.exports && p.pkg.exports['./print']
-        ).filter(({pkg: {name} = {}}) => name !== '@pie-element/complex-rubric' && name !== '@pie-element/ebsr');
+        ).filter(({pkg: {name} = {}}) => ![
+            '@pie-element/complex-rubric',
+            '@pie-element/ebsr',
+            '@pie-element/explicit-constructed-response',
+            // '@pie-element/extended-text-entry',
+            // '@pie-element/math-inline',
+            // '@pie-element/multiple-choice',
+            // '@pie-element/passage',
+            // '@pie-element/rubric',
+            // '@pie-element/select-text'
+        ].includes(name));
         console.log(
             'printPkgs',
             printPkgs.map((p) => p.dir)
