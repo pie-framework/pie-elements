@@ -3,10 +3,10 @@
 const debug = require('debug');
 const log = debug('pie-element:scripts:build');
 const argv = require('minimist')(process.argv.slice(2));
-const { readdirSync, pathExistsSync, readJson } = require('fs-extra');
+const {readdirSync, pathExistsSync, readJson} = require('fs-extra');
 const _ = require('lodash');
-const { Commands, getPackage } = require('@pie-framework/build-helper');
-const { resolve, relative, join } = require('path');
+const {Commands, getPackage} = require('@pie-framework/build-helper');
+const {resolve, relative, join} = require('path');
 const minimist = require('minimist');
 log('scope: ', argv.scope);
 
@@ -15,103 +15,104 @@ const toPkgFlag = (p) => `--package ${p.pkg.name}`;
 const args = minimist(process.argv.slice(2));
 
 const r = (...parts) =>
-  resolve.apply(null, [__dirname, '..', 'packages'].concat(parts));
+    resolve.apply(null, [__dirname, '..', 'packages'].concat(parts));
 
 const rel = (p) => relative(resolve(__dirname, '..'), p);
 
 const expandPkg = (d) => {
-  const out = [];
+    const out = [];
 
-  out.push(rel(r(d)));
-  if (pathExistsSync(r(d, 'controller', 'src'))) {
-    out.push(rel(r(d, 'controller')));
-  }
+    out.push(rel(r(d)));
+    if (pathExistsSync(r(d, 'controller', 'src'))) {
+        out.push(rel(r(d, 'controller')));
+    }
 
-  if (pathExistsSync(r(d, 'configure', 'src'))) {
-    out.push(rel(r(d, 'configure')));
-  }
+    if (pathExistsSync(r(d, 'configure', 'src'))) {
+        out.push(rel(r(d, 'configure')));
+    }
 
-  return out;
+    return out;
 };
 
 const getElementPackages = (dir) => {
-  const dirs = readdirSync(dir);
-  const all = _.flatten(dirs.map((d) => expandPkg(d)));
-  const out = all.map(getPackage);
-  return out;
+    const dirs = readdirSync(dir);
+    const all = _.flatten(dirs.map((d) => expandPkg(d)));
+    const out = all.map(getPackage);
+    return out;
 };
 
 class ElementsCommands extends Commands {
-  constructor(root, args) {
-    super(root, args, getElementPackages);
-  }
+    constructor(root, args) {
+        super(root, args, getElementPackages);
+    }
 
-  beforePublish() {
-    return this.commit(['yarn.lock'], '[ci skip] commit yarn.lock');
-  }
+    beforePublish() {
+        return this.commit(['yarn.lock'], '[ci skip] commit yarn.lock');
+    }
 
-  clean() {
-    return Promise.all(
-      getElementPackages(join(this.projectRoot, 'packages')).map((p) => {
-        const cwd = resolve(__dirname, '..', p.dir);
-        log('cwd:', cwd);
-        return this.runCmd('rm -fr lib', { cwd });
-      })
-    );
-  }
+    clean() {
+        return Promise.all(
+            getElementPackages(join(this.projectRoot, 'packages')).map((p) => {
+                const cwd = resolve(__dirname, '..', p.dir);
+                log('cwd:', cwd);
+                return this.runCmd('rm -fr lib', {cwd});
+            })
+        );
+    }
 
-  async sharedBuild() {
-    const root = resolve(__dirname, '../packages');
-    const allPackages = readdirSync(root);
-    const pkgJson = await Promise.all(
-      allPackages.map(async (n) => {
-        const dir = resolve(root, n);
-        return { dir, pkg: await readJson(resolve(dir, 'package.json')) };
-      })
-    );
+    async sharedBuild() {
+        const root = resolve(__dirname, '../packages');
+        const allPackages = readdirSync(root);
+        const pkgJson = await Promise.all(
+            allPackages.map(async (n) => {
+                const dir = resolve(root, n);
+                return {dir, pkg: await readJson(resolve(dir, 'package.json'))};
+            })
+        );
 
-    const printPkgs = pkgJson.filter(
-      (p) => p.pkg.exports && p.pkg.exports['./print']
-    );
-    console.log(
-      'printPkgs',
-      printPkgs.map((p) => p.dir)
-    );
+        // TODO remove the blacklisted items (complex-rubric and ebsr)
+        const printPkgs = pkgJson.filter(
+            (p) => p.pkg.exports && p.pkg.exports['./print']
+        ).filter(({pkg: {name} = {}}) => name !== '@pie-element/complex-rubric' && name !== '@pie-element/ebsr');
+        console.log(
+            'printPkgs',
+            printPkgs.map((p) => p.dir)
+        );
 
-    const cmd = `yarn pslb --config pslb/pslb.config.js ${printPkgs
-      .map(toPkgFlag)
-      .join(' ')} --logLevel silly`;
+        const cmd = `yarn pslb --config pslb/pslb.config.js ${printPkgs
+            .map(toPkgFlag)
+            .join(' ')} --logLevel silly`;
 
-    return this.runCmd(cmd);
-  }
+        return this.runCmd(cmd);
+    }
 
-  build() {
-    return super.build().then(() => this.sharedBuild());
-  }
+    build() {
+        return super.build().then(() => this.sharedBuild());
+    }
 
-  babel() {
-    return Promise.all(
-      getElementPackages(join(this.projectRoot, 'packages'))
-        .filter((p) => pathExistsSync(join(p.dir, 'src')))
-        .map((p) => {
-          const cwd = resolve(__dirname, '..', p.dir);
-          const cmd = `${this.p.babel} --ignore '**/__test__/**','**/__tests__/**','**/__mocks__/**' src -d lib --source-maps --root-mode upward`;
-          return this.runCmd(cmd, { cwd });
-        })
-    );
-  }
+    babel() {
+        return Promise.all(
+            getElementPackages(join(this.projectRoot, 'packages'))
+                .filter((p) => pathExistsSync(join(p.dir, 'src')))
+                .map((p) => {
+                    const cwd = resolve(__dirname, '..', p.dir);
+                    const cmd = `${this.p.babel} --ignore '**/__test__/**','**/__tests__/**','**/__mocks__/**' src -d lib --source-maps --root-mode upward`;
+                    return this.runCmd(cmd, {cwd});
+                })
+        );
+    }
 }
 
 const cmds = new ElementsCommands(resolve(__dirname, '..'), args);
 
 cmds
-  .execute()
-  .then(() => {
-    console.log('all done');
-    process.exit(0);
-  })
-  .catch((e) => {
-    console.error('build failed:');
-    console.error(e);
-    process.exit(1);
-  });
+    .execute()
+    .then(() => {
+        console.log('all done');
+        process.exit(0);
+    })
+    .catch((e) => {
+        console.error('build failed:');
+        console.error(e);
+        process.exit(1);
+    });

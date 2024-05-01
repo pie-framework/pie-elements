@@ -2,7 +2,7 @@ const path = require('path');
 const fs = require('fs-extra');
 const _ = require('lodash');
 
-const blacklist = ['pie-models', 'complex-rubric', 'ebsr', 'math-inline', 'protractor', 'ruler', 'calculator', 'select-text'];
+const blacklist = ['pie-models', 'math-inline', 'protractor', 'ruler', 'calculator', 'select-text'];
 
 const packagesDir = path.resolve(__dirname, '../packages');
 /** Pslb will only support pie packages that have a configure and controller subpkg */
