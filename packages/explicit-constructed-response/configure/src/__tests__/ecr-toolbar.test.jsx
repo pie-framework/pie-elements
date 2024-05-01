@@ -3,6 +3,11 @@ import React from 'react';
 
 import { ECRToolbar } from '../ecr-toolbar';
 
+jest.mock('slate-react', () => ({
+  ReactEditor: {
+    toDOMNode: jest.fn(),
+  },
+}));
 describe('ECRToolbar', () => {
   let onChangeResponse = jest.fn();
   let onToolbarDone = jest.fn();

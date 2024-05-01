@@ -53,9 +53,9 @@ export class ECRToolbar extends React.Component {
     const update = { ...node.data, value: newValue };
 
     const domNode = ReactEditor.toDOMNode(editor, node);
-    const slateWrapperForNode = domNode.closest('[data-slate-wrapper]')
+    const slateWrapperForNode = domNode?.closest('[data-slate-wrapper]')
 
-    if (e.relatedTarget && e.relatedTarget.closest('[data-slate-wrapper]') === slateWrapperForNode) {
+    if (e?.relatedTarget && e.relatedTarget.closest('[data-slate-wrapper]') === slateWrapperForNode) {
       // no need to call the blur function if the click is on the slate editor
       return;
     }
