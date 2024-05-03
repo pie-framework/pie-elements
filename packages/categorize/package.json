@@ -4,7 +4,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "8.15.1",
+  "version": "8.15.2",
   "description": "",
   "author": "pie framework developers",
   "license": "ISC",

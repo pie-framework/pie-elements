@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.9.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-solution-set-configure@1.9.1...@pie-element/graphing-solution-set-configure@1.9.2) (2024-05-03)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3537, PD-3538, PD-3539, PD-3540,PD-3680 ([d9cb471](https://github.com/pie-framework/pie-elements/commit/d9cb47148a8fec71d5de29f2cf2b92ec7b479470))
+
+
+
+
+
 ## [1.9.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-solution-set-configure@1.9.0...@pie-element/graphing-solution-set-configure@1.9.1) (2024-04-29)
 
 
