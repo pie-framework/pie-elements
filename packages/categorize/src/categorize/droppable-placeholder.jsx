@@ -36,6 +36,7 @@ export class DroppablePlaceholder extends React.Component {
           grid={grid}
           disabled={disabled}
           choiceBoard={choiceBoard}
+          isCategorize
         >
           {children}
         </PlaceHolder>

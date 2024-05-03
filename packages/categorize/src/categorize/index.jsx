@@ -163,6 +163,7 @@ export class Categorize extends React.Component {
 
     const style = {
       flexDirection: this.getPositionDirection(choicePosition),
+      gap: '8px'
     };
 
     const { categories, choices, correct } = buildState(
