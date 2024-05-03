@@ -11,6 +11,7 @@ exports[`categorize renders snapshot 1`] = `
     style={
       Object {
         "flexDirection": "column-reverse",
+        "gap": "8px",
       }
     }
   >
@@ -70,6 +71,7 @@ exports[`categorize renders snapshot with rationale 1`] = `
     style={
       Object {
         "flexDirection": "column-reverse",
+        "gap": "8px",
       }
     }
   >
@@ -155,6 +157,7 @@ exports[`categorize renders snapshot with teacherInstructions 1`] = `
     style={
       Object {
         "flexDirection": "column-reverse",
+        "gap": "8px",
       }
     }
   >

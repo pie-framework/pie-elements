@@ -11,6 +11,7 @@ exports[`categorize snapshots incorrect 1`] = `
     style={
       Object {
         "flexDirection": "column-reverse",
+        "gap": "8px",
       }
     }
   >
@@ -68,6 +69,7 @@ exports[`categorize snapshots renders 1`] = `
     style={
       Object {
         "flexDirection": "column-reverse",
+        "gap": "8px",
       }
     }
   >
@@ -125,6 +127,7 @@ exports[`categorize snapshots renders with feedback 1`] = `
     style={
       Object {
         "flexDirection": "column-reverse",
+        "gap": "8px",
       }
     }
   >
