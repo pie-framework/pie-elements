@@ -151,7 +151,7 @@ class ImageClozeAssociationComponent extends React.Component {
         },
       ];
     }
-
+    let found = false;
     this.setState({
       maxResponsePerZoneWarning: false,
       answers: answersToStore,
@@ -159,7 +159,13 @@ class ImageClozeAssociationComponent extends React.Component {
         // for single response per container remove answer from possible responses
         duplicateResponses
           ? possibleResponses
-          : possibleResponses.filter((response) => response.value !== answer.value),
+          : possibleResponses.filter((response) => {
+            if(!found && response.value === answer.value){
+              found = true;  // Remove only the first occurrence
+              return false;
+            }
+              return true;
+          }),
     });
     updateAnswer(answersToStore);
   };
