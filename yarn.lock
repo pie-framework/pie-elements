@@ -2295,12 +2295,12 @@
     react-dom "^16.8.1"
 
 "@pie-element/multiple-choice@next":
-  version "8.14.2-next.6"
-  resolved "https://registry.yarnpkg.com/@pie-element/multiple-choice/-/multiple-choice-8.14.2-next.6.tgz#ad68689abfdda51c6b026d73c0e273fe3465c7f5"
-  integrity sha512-w/NC3ovRE24AaIW9ro5lHdBcMGfxdZ9J4jEktHx9N9GYlPMK7vbATjPVM7sQpikp7KsqNCsnUAtbZ2XK0i0kmA==
+  version "8.14.2-next.28"
+  resolved "https://registry.yarnpkg.com/@pie-element/multiple-choice/-/multiple-choice-8.14.2-next.28.tgz#79d4286629df4d7d193fcbc6611a27e257b28754"
+  integrity sha512-ePxQRHPuq5OWvOBmRHfp17jYa/1qrTA2cGO73wGB9N2zFhM9KGKVY2gvy7HJH4/WNryipPGJp+YmB1R0SLTbSQ==
   dependencies:
     "@material-ui/core" "^3.9.2"
-    "@pie-lib/pie-toolbox" "1.16.4"
+    "@pie-lib/pie-toolbox" next
     classnames "^2.2.5"
     debug "^4.1.1"
     enzyme-to-json "^3.3.3"
@@ -2312,12 +2312,12 @@
     react-transition-group "^2.3.1"
 
 "@pie-element/rubric@next":
-  version "3.10.2-next.6"
-  resolved "https://registry.yarnpkg.com/@pie-element/rubric/-/rubric-3.10.2-next.6.tgz#ac68ee47cb3462cd776953f8c1c96f27dc53cd0a"
-  integrity sha512-LeyUDtaEbdCIhbLIR4ATpkCGLtklbH88visjk9Zd5AiOYgtTJVUjPJ+wlNAwbQuO28662RChgR+YhQWM7puDmA==
+  version "3.10.2-next.28"
+  resolved "https://registry.yarnpkg.com/@pie-element/rubric/-/rubric-3.10.2-next.28.tgz#4fe4e1e6a9ae4056b98c17e21bd7b94c60bf4181"
+  integrity sha512-dBAYzRWX0DwWBKkmVciHvKaoSoPhH3qIa8355R4pxfNhEjhOJCcPAOs8YplfqzyqZbuuHngxN65lnOMCgLaoCw==
   dependencies:
     "@material-ui/core" "^3.9.2"
-    "@pie-lib/pie-toolbox" "1.16.4"
+    "@pie-lib/pie-toolbox" next
     prop-types "^15.7.2"
 
 "@pie-framework/build-helper@^5.2.9":

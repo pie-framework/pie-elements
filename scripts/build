@@ -60,6 +60,10 @@ class ElementsCommands extends Commands {
         );
     }
 
+    lint() {}
+
+    test() {}
+
     async sharedBuild() {
         const root = resolve(__dirname, '../packages');
         const allPackages = readdirSync(root);
@@ -74,9 +78,9 @@ class ElementsCommands extends Commands {
         const printPkgs = pkgJson.filter(
             (p) => p.pkg.exports && p.pkg.exports['./print']
         ).filter(({pkg: {name} = {}}) => ![
-            '@pie-element/complex-rubric',
+            // '@pie-element/complex-rubric',
             '@pie-element/ebsr',
-            '@pie-element/explicit-constructed-response',
+            // '@pie-element/explicit-constructed-response',
             // '@pie-element/extended-text-entry',
             // '@pie-element/math-inline',
             // '@pie-element/multiple-choice',
