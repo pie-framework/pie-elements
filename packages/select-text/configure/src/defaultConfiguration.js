@@ -2,8 +2,8 @@ const tokens = () => [
   {
     text: '',
     start: 0,
-    end: 0
-  }
+    end: 0,
+  },
 ];
 
 export default {
@@ -16,69 +16,125 @@ export default {
     text: '',
     tokens: tokens(),
     scoringType: 'auto',
-    feedbackEnabled: true,
+    feedbackEnabled: false,
     rationaleEnabled: true,
     promptEnabled: true,
     teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true,
-    toolbarEditorPosition: 'bottom'
+    toolbarEditorPosition: 'bottom',
   },
   configuration: {
+    baseInputConfiguration: {
+      audio: { disabled: false },
+      video: { disabled: false },
+      image: { disabled: false },
+    },
     selectionCount: {
       settings: true,
-      label: 'Selection count'
+      label: 'Selection count',
     },
     correctAnswer: {
       settings: true,
-      label: 'Correct Answers'
+      label: 'Correct Answers',
     },
     selections: {
       settings: true,
-      label: 'Selections Available'
+      label: 'Selections Available',
     },
     highlightChoices: {
       settings: true,
-      label: 'Highlight choices'
+      label: 'Highlight choices',
     },
     rationale: {
       settings: true,
-      label: 'Rationale'
+      label: 'Rationale',
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
+      required: false,
     },
     scoringType: {
       settings: false,
-      label: 'Scoring Type'
+      label: 'Scoring Type',
     },
     studentInstructions: {
       settings: false,
-      label: 'Student Instructions'
+      label: 'Student Instructions',
     },
     teacherInstructions: {
       settings: true,
-      label: 'Teacher Instructions'
+      label: 'Teacher Instructions',
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
+      required: false,
     },
     prompt: {
       label: 'Prompt',
-      settings: true
+      settings: true,
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
+      required: false,
     },
     text: {
       settings: true,
-      label: 'Content'
+      label: 'Content',
     },
     tokens: {
       settings: true,
-      label: 'Tokens'
+      label: 'Tokens',
     },
     feedback: {
       settings: true,
-      label: 'Feedback'
+      label: 'Feedback',
+    },
+    spellCheck: {
+      label: 'Spellcheck',
+      settings: false,
+      enabled: true,
     },
     partialScoring: {
       settings: false,
-      label: 'Allow Partial Scoring'
+      label: 'Allow Partial Scoring',
     },
     mode: {
       settings: true,
-      label: 'Mode'
-    }
-  }
+      label: 'Mode',
+    },
+    minTokens: 2,
+    maxImageWidth: {
+      teacherInstructions: 300,
+      prompt: 300,
+      rationale: 300,
+    },
+    maxImageHeight: {
+      teacherInstructions: 300,
+      prompt: 300,
+      rationale: 300,
+    },
+    withRubric: {
+      settings: false,
+      label: 'Add Rubric',
+    },
+    mathMlOptions: {
+      mmlOutput: false,
+      mmlEditing: false,
+    },
+    language: {
+      settings: false,
+      label: 'Specify Language',
+      enabled: false,
+    },
+    languageChoices: {
+      label: 'Language Choices',
+      options: [],
+    },
+  },
 };

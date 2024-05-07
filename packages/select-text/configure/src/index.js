@@ -2,18 +2,20 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Main from './design';
 import {
+  ModelUpdatedEvent,
   DeleteImageEvent,
   InsertImageEvent,
-  ModelUpdatedEvent
+  InsertSoundEvent,
+  DeleteSoundEvent,
 } from '@pie-framework/pie-configure-events';
 import defaultValues from './defaultConfiguration';
-import generateModel  from './utils';
+import { generateModel } from './utils';
 
 export default class SelectTextConfigure extends HTMLElement {
   static createDefaultModel = (model = {}) => {
     const newModel = {
       ...defaultValues.model,
-      ...model
+      ...model,
     };
 
     return generateModel(newModel);
@@ -31,7 +33,40 @@ export default class SelectTextConfigure extends HTMLElement {
   }
 
   set configuration(c) {
-    this._configuration = c;
+    const newConfiguration = {
+      ...defaultValues.configuration,
+      ...c,
+    };
+
+    this._configuration = newConfiguration;
+
+    // if language:enabled is true, then the corresponding default item model should include a language value;
+    // if it is false, then the language field should be omitted from the item model.
+    // if a default item model includes a language value (e.g., en_US) and the corresponding authoring view settings have language:settings = true,
+    // then (a) language:enabled should also be true, and (b) that default language value should be represented in languageChoices[] (as a key).
+    if (newConfiguration?.language?.enabled) {
+      if (newConfiguration?.languageChoices?.options?.length) {
+        this._model.language = newConfiguration?.languageChoices.options[0].value;
+      }
+    } else if (newConfiguration.language.settings && this._model.language) {
+      this._configuration.language.enabled = true;
+
+      if (!this._configuration.languageChoices.options || !this._configuration.languageChoices.options.length) {
+        this._configuration.languageChoices.options = [];
+      }
+
+      // check if the language is already included in the languageChoices.options array
+      // and if not, then add it.
+      if (!this._configuration.languageChoices.options.find(option => option.value === this._model.language)) {
+        this._configuration.languageChoices.options.push({
+          value: this._model.language,
+          label: this._model.language,
+        });
+      }
+    } else {
+      delete this._model.language;
+    }
+
     this.render();
   }
 
@@ -67,6 +102,14 @@ export default class SelectTextConfigure extends HTMLElement {
     this.dispatchEvent(new DeleteImageEvent(src, done));
   }
 
+  insertSound(handler) {
+    this.dispatchEvent(new InsertSoundEvent(handler));
+  }
+
+  onDeleteSound(src, done) {
+    this.dispatchEvent(new DeleteSoundEvent(src, done));
+  }
+
   render() {
     if (this._model) {
       const el = React.createElement(Main, {
@@ -76,8 +119,12 @@ export default class SelectTextConfigure extends HTMLElement {
         onConfigurationChanged: this.onConfigurationChanged.bind(this),
         imageSupport: {
           add: this.insertImage.bind(this),
-          delete: this.onDeleteImage.bind(this)
-        }
+          delete: this.onDeleteImage.bind(this),
+        },
+        uploadSoundSupport: {
+          add: this.insertSound.bind(this),
+          delete: this.onDeleteSound.bind(this),
+        },
       });
 
       ReactDOM.render(el, this);

@@ -1,28 +1,25 @@
 import React from 'react';
 import Categorize from '../index';
 import { shallow } from 'enzyme';
-import {
-  ModelSetEvent,
-  SessionChangedEvent
-} from '@pie-framework/pie-player-events';
+import { ModelSetEvent, SessionChangedEvent } from '@pie-framework/pie-player-events';
 import { Categorize as UnStyledCategorize } from '../categorize/index';
 
-jest.mock('@pie-lib/math-rendering', () => ({ renderMath: jest.fn() }));
+jest.mock('@pie-lib/pie-toolbox/math-rendering-accessible', () => ({ renderMath: jest.fn() }));
 
 describe('categorize', () => {
   describe('renders', () => {
-    let wrapper = props => {
+    let wrapper = (props) => {
       let defaultProps = {
         model: {
           categories: [],
           choices: [],
           correctResponse: [],
-          ...props
+          ...props,
         },
         session: {},
-        classes: {}
+        classes: {},
       };
-      return shallow(<UnStyledCategorize { ...defaultProps } />)
+      return shallow(<UnStyledCategorize {...defaultProps} />);
     };
 
     it('snapshot', () => {
@@ -31,12 +28,12 @@ describe('categorize', () => {
     });
 
     it('snapshot with rationale', () => {
-      const w = wrapper({ rationale: 'This is rationale'});
+      const w = wrapper({ rationale: 'This is rationale' });
       expect(w).toMatchSnapshot();
     });
 
     it('snapshot with teacherInstructions', () => {
-      const w = wrapper({ teacherInstructions: 'These are teacher instructions'});
+      const w = wrapper({ teacherInstructions: 'These are teacher instructions' });
       expect(w).toMatchSnapshot();
     });
   });
@@ -47,9 +44,7 @@ describe('categorize', () => {
         const el = new Categorize();
         el.tagName = 'categorize-el';
         el.model = {};
-        expect(el.dispatchEvent).toBeCalledWith(
-          new ModelSetEvent('categorize-el', false, true)
-        );
+        expect(el.dispatchEvent).toBeCalledWith(new ModelSetEvent('categorize-el', false, true));
       });
     });
     describe('changeAnswers', () => {
@@ -58,9 +53,7 @@ describe('categorize', () => {
         el.tagName = 'categorize-el';
         el.session = { answers: [] };
         el.changeAnswers([{ foo: 'bar' }]);
-        expect(el.dispatchEvent).toBeCalledWith(
-          new SessionChangedEvent('categorize-el', true)
-        );
+        expect(el.dispatchEvent).toBeCalledWith(new SessionChangedEvent('categorize-el', true));
       });
     });
   });

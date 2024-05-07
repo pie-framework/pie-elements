@@ -3,12 +3,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import debounce from 'lodash/debounce';
 import debug from 'debug';
-import { renderMath } from '@pie-lib/math-rendering';
+import { renderMath } from '@pie-lib/pie-toolbox/math-rendering-accessible';
 import { updateSessionValue } from './session-updater';
 
 const log = debug('pie-ui:multiple-choice');
 
-export const isComplete = session => !!(session && session.value && session.value.length);
+export const isComplete = (session) => !!(session && session.value && session.value.length);
 
 export default class MultipleChoice extends HTMLElement {
   constructor() {
@@ -22,8 +22,16 @@ export default class MultipleChoice extends HTMLElement {
           var element = React.createElement(Main, {
             model: this._model,
             session: this._session,
-            onChoiceChanged: this._onChange.bind(this)
+            onChoiceChanged: this._onChange.bind(this),
           });
+
+          //TODO: aria-label is set in the _rerender because we need to change it when the model.choiceMode is updated. Consider revisiting the placement of the aria-label setting in the _rerender
+          this.setAttribute(
+            'aria-label',
+            this._model.choiceMode === 'radio' ? 'Multiple Choice Question' : 'Multiple Correct Answer Question',
+          );
+          this.setAttribute('role', 'region');
+
           ReactDOM.render(element, this, () => {
             log('render complete - render math');
             renderMath(this);
@@ -33,7 +41,7 @@ export default class MultipleChoice extends HTMLElement {
         }
       },
       50,
-      { leading: false, trailing: true }
+      { leading: false, trailing: true },
     );
 
     this._dispatchResponseChanged = debounce(() => {
@@ -42,8 +50,8 @@ export default class MultipleChoice extends HTMLElement {
         composed: true,
         detail: {
           complete: isComplete(this._session),
-          component: this.tagName.toLowerCase()
-        }
+          component: this.tagName.toLowerCase(),
+        },
       });
 
       this.dispatchEvent(event);
@@ -58,13 +66,13 @@ export default class MultipleChoice extends HTMLElement {
             detail: {
               complete: isComplete(this._session),
               component: this.tagName.toLowerCase(),
-              hasModel: this._model !== undefined
-            }
-          })
+              hasModel: this._model !== undefined,
+            },
+          }),
         );
       },
       50,
-      { leading: false, trailing: true }
+      { leading: false, trailing: true },
     );
   }
 

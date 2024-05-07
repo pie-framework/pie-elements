@@ -1,5 +1,5 @@
 import { model, outcome, createCorrectResponseSession } from '../index';
-import { defaults as feedbackDefaults } from '@pie-lib/feedback';
+import { defaults as feedbackDefaults } from '@pie-lib/pie-toolbox/feedback';
 
 const defaultModel = {
   id: '1',
@@ -19,7 +19,7 @@ const defaultModel = {
       id: 3,
       title: 'Question Text 3',
       values: [false, true],
-    }
+    },
   ],
   lockChoiceOrder: true,
   partialScoring: false,
@@ -45,9 +45,7 @@ const defaultModel = {
 
 describe('outcome', () => {
   const returnCorrectness = (sess) => {
-    it(`returns empty: true and score: 0 if session is ${JSON.stringify(
-      sess
-    )}`, async () => {
+    it(`returns empty: true and score: 0 if session is ${JSON.stringify(sess)}`, async () => {
       const result = await outcome(defaultModel, sess, { mode: 'evaluate' });
       expect(result).toEqual({ score: 0, empty: true });
     });
@@ -67,7 +65,7 @@ describe('outcome partialScoring test', () => {
           ...extra,
         },
         sessionValue,
-        env
+        env,
       );
 
       expect(result).toEqual(expect.objectContaining(expected));
@@ -79,7 +77,7 @@ describe('outcome partialScoring test', () => {
     { partialScoring: true },
     { answers: { 1: [true, false] } },
     { mode: 'evaluate' },
-    { score: 0.25 }
+    { score: 0.25 },
   );
 
   assertOutcome(
@@ -87,7 +85,7 @@ describe('outcome partialScoring test', () => {
     { partialScoring: false },
     { answers: { 1: [true, false] } },
     { mode: 'evaluate' },
-    { score: 0 }
+    { score: 0 },
   );
 
   assertOutcome(
@@ -95,7 +93,7 @@ describe('outcome partialScoring test', () => {
     { partialScoring: false },
     { answers: { 1: [false, false] } },
     { mode: 'evaluate', partialScoring: true },
-    { score: 0 }
+    { score: 0 },
   );
 
   assertOutcome(
@@ -103,7 +101,7 @@ describe('outcome partialScoring test', () => {
     { partialScoring: true },
     { answers: { 1: [false, false] } },
     { mode: 'evaluate', partialScoring: false },
-    { score: 0 }
+    { score: 0 },
   );
 });
 
@@ -141,17 +139,15 @@ describe('model', () => {
     });
 
     it('returns rows without correct values', () => {
-      expect(result.config.rows).toEqual(
-        defaultModel.rows.map(({ id, title }) => ({ id, title }))
-      );
+      expect(result.rows).toEqual(defaultModel.rows.map(({ id, title }) => ({ id, title })));
     });
 
     it('returns null for rationale', () => {
-      expect(result.config.rationale).toEqual(null);
+      expect(result.rationale).toEqual(null);
     });
 
     it('returns null for teacher instructions', () => {
-      expect(result.config.teacherInstructions).toEqual(null);
+      expect(result.teacherInstructions).toEqual(null);
     });
   });
 
@@ -175,7 +171,7 @@ describe('model', () => {
           },
           session,
           env,
-          updateSession
+          updateSession,
         );
         expect(updateSession).toHaveBeenCalled();
       });
@@ -202,9 +198,7 @@ describe('model', () => {
     });
 
     it('returns rows without correct values', () => {
-      expect(result.config.rows).toEqual(
-        defaultModel.rows.map(({ id, title }) => ({ id, title }))
-      );
+      expect(result.rows).toEqual(defaultModel.rows.map(({ id, title }) => ({ id, title })));
     });
   });
 
@@ -245,13 +239,11 @@ describe('model', () => {
     });
 
     it('returns rows with correct values', () => {
-      expect(result.config.rows).toEqual(defaultModel.rows);
+      expect(result.rows).toEqual(defaultModel.rows);
     });
 
     const returnCorrectness = (sess) => {
-      it(`returns unanswered for correctness and 0 for score if session is ${JSON.stringify(
-        sess
-      )}`, async () => {
+      it(`returns unanswered for correctness and 0 for score if session is ${JSON.stringify(sess)}`, async () => {
         result = await model(question, sess, env);
         expect(result.correctness).toEqual({
           correctness: 'unanswered',
@@ -464,7 +456,7 @@ describe('model', () => {
         answers: {
           1: [true, true],
           2: [false, true],
-          3: [false, true]
+          3: [false, true],
         },
       };
 
@@ -477,7 +469,7 @@ describe('model', () => {
         answers: {
           2: [false, true],
           3: [false, true],
-          1: [true, true]
+          1: [true, true],
         },
       };
 
@@ -547,9 +539,9 @@ describe('model', () => {
       });
       expect(sess).toEqual({
         answers: {
-          '1': [true, true],
-          '2': [false, true],
-          '3': [false, true],
+          1: [true, true],
+          2: [false, true],
+          3: [false, true],
         },
         id: '1',
       });

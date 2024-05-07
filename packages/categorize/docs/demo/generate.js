@@ -1,4 +1,4 @@
-const E234 = {
+/* const E234 = {
   choicesPosition: 'below',
   lockChoiceOrder: false,
   choices: [
@@ -36,8 +36,7 @@ const E234 = {
   categoriesPerRow: 2,
   rationale:
     '<p>Traditional equipment must be carried on board or shipped from Earth. 3D-printed equipment can be built on demand or rebuilt if it gets lost or broken.</p>',
-  prompt:
-    '<p>Drag <span class="relative-emphasis">two</span> phrases into each of the categories.</p>',
+  prompt: '<p>Drag <span class="relative-emphasis">two</span> phrases into each of the categories.</p>',
   partialScoring: true,
   correctResponse: [
     {
@@ -49,7 +48,8 @@ const E234 = {
       category: '1',
     },
   ],
-};
+}; */
+
 // const E236 = {
 //   choices: [
 //     {
@@ -303,7 +303,6 @@ exports.model = (id, element) => ({
   choicesPosition: 'below',
   choicesLabel: '',
   lockChoiceOrder: true,
-  removeTilesAfterPlacing: false,
   categoriesPerRow: 2,
   categories: [
     {
@@ -331,7 +330,6 @@ exports.model = (id, element) => ({
       alternateResponses: [['id-rosie', 'id-morcov'], ['id-morcov']],
     },
   ],
-  note: 'The answer shown above is the most common correct answer for this item. One or more additional correct answers are also defined, and will also be recognized as correct.',
   rowLabels: ['', ''],
   partialScoring: true,
   feedbackEnabled: true,
@@ -339,4 +337,5 @@ exports.model = (id, element) => ({
   teacherInstructionsEnabled: true,
   studentInstructionsEnabled: true,
   toolbarEditorPosition: 'bottom',
+  rubricEnabled: false,
 });

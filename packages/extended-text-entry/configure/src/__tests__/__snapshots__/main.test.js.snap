@@ -2,10 +2,23 @@
 
 exports[`Render Main Component Match Snapshot 1`] = `
 <ConfigLayout
+  dimensions={Object {}}
+  hideSettings={false}
   settings={
     <Panel
       configuration={
         Object {
+          "baseInputConfiguration": Object {
+            "audio": Object {
+              "disabled": false,
+            },
+            "image": Object {
+              "disabled": false,
+            },
+            "video": Object {
+              "disabled": false,
+            },
+          },
           "dimensions": Object {
             "label": "Text-Entry Display Size",
             "settings": true,
@@ -24,28 +37,90 @@ exports[`Render Main Component Match Snapshot 1`] = `
             "label": "Student response can include math notation",
             "settings": true,
           },
+          "mathMlOptions": Object {
+            "mmlEditing": false,
+            "mmlOutput": false,
+          },
+          "maxImageHeight": Object {
+            "prompt": 300,
+            "teacherInstructions": 300,
+          },
+          "maxImageWidth": Object {
+            "prompt": 300,
+            "teacherInstructions": 300,
+          },
           "multiple": Object {
             "enabled": false,
             "label": "Multiple Parts",
             "settings": false,
           },
-          "prompt": Object {
-            "label": "Prompt",
+          "playerSpellCheck": Object {
+            "enabled": true,
+            "label": "Disable Student Spellcheck",
             "settings": true,
+          },
+          "prompt": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": false,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": false,
+              },
+            },
+            "label": "Prompt",
+            "required": false,
+            "settings": true,
+          },
+          "settingsPanelDisabled": false,
+          "spanishInput": Object {
+            "enabled": false,
+            "label": "Students can insert Spanish",
+            "settings": true,
+          },
+          "specialInput": Object {
+            "enabled": false,
+            "label": "Students can insert Special Characters",
+            "settings": true,
+          },
+          "spellCheck": Object {
+            "enabled": true,
+            "label": "Spellcheck",
+            "settings": false,
           },
           "studentInstructions": Object {
             "label": "Student Instructions",
             "settings": false,
           },
           "teacherInstructions": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": false,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": false,
+              },
+            },
             "label": "Teacher Instructions",
+            "required": false,
             "settings": true,
+          },
+          "withRubric": Object {
+            "label": "Add Rubric",
+            "settings": false,
           },
         }
       }
       groups={
         Object {
           "Properties": Object {
+            "rubricEnabled": false,
             "studentInstructionsEnabled": false,
             "teacherInstructionsEnabled": undefined,
           },
@@ -55,7 +130,11 @@ exports[`Render Main Component Match Snapshot 1`] = `
             "feedbackEnabled": undefined,
             "mathInput": undefined,
             "multiple.enabled": false,
+            "playerSpellCheckDisabled": undefined,
             "promptEnabled": undefined,
+            "spanishInput": undefined,
+            "specialInput": undefined,
+            "spellCheckEnabled": false,
           },
         }
       }
@@ -66,11 +145,15 @@ exports[`Render Main Component Match Snapshot 1`] = `
             "width": 500,
           },
           "equationEditor": "Grade 8 - HS",
-          "feedbackEnabled": true,
+          "feedbackEnabled": false,
           "mathInput": false,
+          "playerSpellCheckDisabled": true,
           "prompt": "This is the question prompt",
           "promptEnabled": true,
           "rationaleEnabled": true,
+          "spanishInput": false,
+          "specialInput": false,
+          "spellCheckEnabled": true,
           "studentInstructionsEnabled": true,
           "teacherInstructionsEnabled": true,
           "toolbarEditorPosition": "bottom",
@@ -81,58 +164,121 @@ exports[`Render Main Component Match Snapshot 1`] = `
     />
   }
 >
-  <div>
-    <Component
-      label="Teacher Instructions"
-    >
-      <EditableHtml
-        imageSupport={Object {}}
-        markup=""
-        nonEmpty={false}
-        onChange={[Function]}
-        toolbarOpts={
+  <Component
+    label="Teacher Instructions"
+  >
+    <EditableHtml
+      allowValidation={false}
+      imageSupport={Object {}}
+      languageCharactersProps={
+        Array [
           Object {
-            "position": "bottom",
-          }
-        }
-      />
-    </Component>
-    <br />
-    <Component
-      label="Prompt"
-    >
-      <EditableHtml
-        imageSupport={Object {}}
-        markup="This is the question prompt"
-        nonEmpty={false}
-        onChange={[Function]}
-        toolbarOpts={
+            "language": "spanish",
+          },
           Object {
-            "position": "bottom",
-          }
-        }
-      />
-    </Component>
-    <WithStyles(Typography)
-      variant="subheading"
-    >
-      Feedback
-    </WithStyles(Typography)>
-    <Component
-      feedback={
+            "language": "special",
+          },
+        ]
+      }
+      markup=""
+      mathMlOptions={
         Object {
-          "default": "Your answer has been submitted",
-          "type": "default",
+          "mmlEditing": false,
+          "mmlOutput": false,
         }
       }
-      label="When submitted, show"
+      maxImageHeight={300}
+      maxImageWidth={300}
+      nonEmpty={false}
       onChange={[Function]}
+      onDone={[Function]}
+      pluginProps={
+        Object {
+          "audio": Object {
+            "disabled": false,
+          },
+          "image": Object {
+            "disabled": false,
+          },
+          "video": Object {
+            "disabled": false,
+          },
+        }
+      }
+      spellCheck={true}
       toolbarOpts={
         Object {
           "position": "bottom",
         }
       }
     />
-  </div>
+  </Component>
+  <Component
+    label="Prompt"
+  >
+    <EditableHtml
+      activePlugins={
+        Array [
+          "bold",
+          "html",
+          "italic",
+          "underline",
+          "strikethrough",
+          "bulleted-list",
+          "numbered-list",
+          "image",
+          "math",
+          "languageCharacters",
+          "table",
+          "video",
+          "audio",
+          "responseArea",
+        ]
+      }
+      allowValidation={false}
+      imageSupport={Object {}}
+      languageCharactersProps={
+        Array [
+          Object {
+            "language": "spanish",
+          },
+          Object {
+            "language": "special",
+          },
+        ]
+      }
+      markup="This is the question prompt"
+      mathMlOptions={
+        Object {
+          "mmlEditing": false,
+          "mmlOutput": false,
+        }
+      }
+      maxImageHeight={300}
+      maxImageWidth={300}
+      nonEmpty={false}
+      onChange={[Function]}
+      onDone={[Function]}
+      pluginProps={
+        Object {
+          "audio": Object {
+            "disabled": false,
+          },
+          "image": Object {
+            "disabled": false,
+          },
+          "video": Object {
+            "disabled": false,
+          },
+        }
+      }
+      spellCheck={true}
+      toolbarOpts={
+        Object {
+          "position": "bottom",
+        }
+      }
+    />
+  </Component>
 </ConfigLayout>
 `;

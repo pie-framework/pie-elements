@@ -1,20 +1,16 @@
 import React from 'react';
-import {
-  settings,
-  layout,
-  InputContainer,
-  NumberTextField
-} from '@pie-lib/config-ui';
+import { settings, layout, InputContainer, NumberTextField } from '@pie-lib/pie-toolbox/config-ui';
 import PropTypes from 'prop-types';
-import EditableHtml from '@pie-lib/editable-html';
-import Typography from '@material-ui/core/Typography';
+import { EditableHtml } from '@pie-lib/pie-toolbox/editable-html';
 import { withStyles } from '@material-ui/core/styles';
-
+import Typography from '@material-ui/core/Typography';
+import Info from '@material-ui/icons/Info';
+import Tooltip from '@material-ui/core/Tooltip';
 import HotspotPalette from './hotspot-palette';
 import HotspotContainer from './hotspot-container';
-import { updateImageDimensions, getUpdatedShapes, getAllShapes, groupShapes } from './utils';
+import { updateImageDimensions, generateValidationMessage, getUpdatedShapes, getAllShapes, groupShapes } from './utils';
 
-const { Panel, toggle } = settings;
+const { Panel, toggle, dropdown } = settings;
 
 export class Root extends React.Component {
   handleColorChange = (fieldType, color) => {
@@ -39,7 +35,7 @@ export class Root extends React.Component {
       dimensions,
       nextImageDimensions,
       preserveAspectRatio.enabled,
-      resizeType
+      resizeType,
     );
     // transform shapes map into shapes array
     const shapesArray = getAllShapes(shapes);
@@ -57,6 +53,7 @@ export class Root extends React.Component {
       configuration,
       model,
       imageSupport,
+      uploadSoundSupport,
       onConfigurationChanged,
       onImageUpload,
       onModelChangedByConfig,
@@ -64,188 +61,253 @@ export class Root extends React.Component {
       onRationaleChanged,
       onUpdateImageDimension,
       onTeacherInstructionsChanged,
-      onUpdateShapes
+      onUpdateShapes,
     } = this.props;
     const {
+      baseInputConfiguration = {},
+      contentDimensions = {},
+      maxImageWidth = {},
+      maxImageHeight = {},
       multipleCorrect = {},
       partialScoring = {},
+      preserveAspectRatio = {},
       prompt = {},
-      teacherInstructions = {},
       rationale = {},
-      preserveAspectRatio = {}
+      settingsPanelDisabled,
+      spellCheck = {},
+      teacherInstructions = {},
+      withRubric = {},
+      mathMlOptions = {},
+      language = {},
+      languageChoices = {},
     } = configuration || {};
-    const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled } = model || {};
-    const toolbarOpts = {};
+    const {
+      errors,
+      promptEnabled,
+      rationaleEnabled,
+      spellCheckEnabled,
+      teacherInstructionsEnabled,
+      toolbarEditorPosition,
+    } = model || {};
+    const {
+      prompt: promptError,
+      rationale: rationaleError,
+      shapes: shapesError,
+      selections: selectionsError,
+      teacherInstructions: teacherInstructionsError,
+    } = errors || {};
+    const validationMessage = generateValidationMessage(configuration);
 
-    switch (model.toolbarEditorPosition) {
-      case 'top':
-        toolbarOpts.position = 'top';
-        break;
-      default:
-        toolbarOpts.position = 'bottom';
-        break;
-    }
+    const defaultImageMaxWidth = maxImageWidth && maxImageWidth.prompt;
+    const defaultImageMaxHeight = maxImageHeight && maxImageHeight.prompt;
+
+    const toolbarOpts = {
+      position: toolbarEditorPosition === 'top' ? 'top' : 'bottom',
+    };
+
+    const panelSettings = {
+      multipleCorrect: multipleCorrect.settings && toggle(multipleCorrect.label),
+      partialScoring: partialScoring.settings && toggle(partialScoring.label),
+      promptEnabled: prompt.settings && toggle(prompt.label),
+      'language.enabled': language.settings && toggle(language.label, true),
+      language: language.settings && language.enabled && dropdown(languageChoices.label, languageChoices.options),
+    };
+    const panelProperties = {
+      teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
+      rationaleEnabled: rationale.settings && toggle(rationale.label),
+      spellCheckEnabled: spellCheck.settings && toggle(spellCheck.label),
+      rubricEnabled: withRubric?.settings && toggle(withRubric?.label),
+    };
+
+    const getPluginProps = (props = {}) => ({
+      ...baseInputConfiguration,
+      ...props,
+    });
 
     return (
-      <div className={classes.base}>
-        <layout.ConfigLayout
-          settings={
-            <Panel
-              model={model}
-              onChangeModel={onModelChangedByConfig}
-              configuration={configuration}
-              onChangeConfiguration={onConfigurationChanged}
-              groups={{
-                'Settings': {
-                  multipleCorrect:
-                    multipleCorrect.settings && toggle(multipleCorrect.label),
-                  partialScoring:
-                    partialScoring.settings && toggle(partialScoring.label),
-                  promptEnabled:
-                    prompt.settings && toggle(prompt.label),
-                },
-                Properties: {
-                  teacherInstructionsEnabled:
-                    teacherInstructions.settings && toggle(teacherInstructions.label),
-                  rationaleEnabled: rationale.settings && toggle(rationale.label)
-                }
-              }}
+      <layout.ConfigLayout
+        dimensions={contentDimensions}
+        hideSettings={settingsPanelDisabled}
+        settings={
+          <Panel
+            model={model}
+            onChangeModel={onModelChangedByConfig}
+            configuration={configuration}
+            onChangeConfiguration={onConfigurationChanged}
+            groups={{
+              Settings: panelSettings,
+              Properties: panelProperties,
+            }}
+          />
+        }
+      >
+        {teacherInstructionsEnabled && (
+          <InputContainer label={teacherInstructions.label} className={classes.promptContainer}>
+            <EditableHtml
+              markup={model.teacherInstructions || ''}
+              onChange={onTeacherInstructionsChanged}
+              imageSupport={imageSupport}
+              nonEmpty={false}
+              error={teacherInstructionsError}
+              toolbarOpts={toolbarOpts}
+              pluginProps={getPluginProps(teacherInstructions?.inputConfiguration)}
+              spellCheck={spellCheckEnabled}
+              maxImageWidth={(maxImageWidth && maxImageWidth.teacherInstructions) || defaultImageMaxWidth}
+              maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
+              uploadSoundSupport={uploadSoundSupport}
+              languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+              mathMlOptions={mathMlOptions}
             />
-          }
-        >
-          <div className={classes.regular}>
-            {teacherInstructionsEnabled && (
-              <InputContainer label={teacherInstructions.label} className={classes.prompt}>
-                <EditableHtml
-                  markup={model.teacherInstructions || ''}
-                  onChange={onTeacherInstructionsChanged}
-                  imageSupport={imageSupport}
-                  nonEmpty={false}
-                  toolbarOpts={toolbarOpts}
-                />
-              </InputContainer>
-            )}
-            {promptEnabled && (
-              <InputContainer label={prompt.label} className={classes.prompt}>
-                <EditableHtml
-                  markup={model.prompt || ''}
-                  onChange={onPromptChanged}
-                  imageSupport={imageSupport}
-                  nonEmpty={false}
-                  toolbarOpts={toolbarOpts}
-                />
-              </InputContainer>
-            )}
+            {teacherInstructionsError && <div className={classes.errorText}>{teacherInstructionsError}</div>}
+          </InputContainer>
+        )}
 
-            {rationaleEnabled && (
-              <InputContainer
-                label={rationale.label}
-                className={classes.prompt}
-              >
-                <EditableHtml
-                  markup={model.rationale || ''}
-                  onChange={onRationaleChanged}
-                  imageSupport={imageSupport}
-                  toolbarOpts={toolbarOpts}
-                />
-              </InputContainer>
-            )}
-
-            <Typography className={classes.label} variant="subheading">
-              Define Hotspot
-            </Typography>
-
-            <HotspotPalette
-              hotspotColor={model.hotspotColor}
-              hotspotList={model.hotspotList}
-              outlineColor={model.outlineColor}
-              outlineList={model.outlineList}
-              onHotspotColorChange={color =>
-                this.handleColorChange('hotspot', color)
-              }
-              onOutlineColorChange={color =>
-                this.handleColorChange('outline', color)
-              }
+        {promptEnabled && (
+          <InputContainer label={prompt.label} className={classes.promptContainer}>
+            <EditableHtml
+              markup={model.prompt || ''}
+              onChange={onPromptChanged}
+              imageSupport={imageSupport}
+              nonEmpty={false}
+              error={promptError}
+              toolbarOpts={toolbarOpts}
+              pluginProps={getPluginProps(prompt?.inputConfiguration)}
+              spellCheck={spellCheckEnabled}
+              maxImageWidth={defaultImageMaxWidth}
+              maxImageHeight={defaultImageMaxHeight}
+              uploadSoundSupport={uploadSoundSupport}
+              languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+              mathMlOptions={mathMlOptions}
             />
+            {promptError && <div className={classes.errorText}>{promptError}</div>}
+          </InputContainer>
+        )}
 
-            <HotspotContainer
-              dimensions={model.dimensions}
-              imageUrl={model.imageUrl}
-              multipleCorrect={model.multipleCorrect}
-              hotspotColor={model.hotspotColor}
-              outlineColor={model.outlineColor}
-              onUpdateImageDimension={onUpdateImageDimension}
-              onUpdateShapes={onUpdateShapes}
-              onImageUpload={onImageUpload}
-              shapes={model.shapes}
-              strokeWidth={model.strokeWidth}
-              preserveAspectRatioEnabled={preserveAspectRatio.enabled}
+        <div className={classes.flexContainer}>
+          <Typography className={classes.subheading} variant="subheading">
+            Define Hotspot
+          </Typography>
+          <Tooltip
+            classes={{ tooltip: classes.tooltip }}
+            disableFocusListener
+            disableTouchListener
+            placement={'left'}
+            title={validationMessage}
+          >
+            <Info fontSize={'small'} color={'primary'} style={{ float: 'right' }} />
+          </Tooltip>
+        </div>
+
+        <HotspotPalette
+          hotspotColor={model.hotspotColor}
+          hotspotList={model.hotspotList}
+          outlineColor={model.outlineColor}
+          outlineList={model.outlineList}
+          onHotspotColorChange={(color) => this.handleColorChange('hotspot', color)}
+          onOutlineColorChange={(color) => this.handleColorChange('outline', color)}
+        />
+
+        <HotspotContainer
+          dimensions={model.dimensions}
+          imageUrl={model.imageUrl}
+          multipleCorrect={model.multipleCorrect}
+          hasErrors={!!shapesError || !!selectionsError}
+          hotspotColor={model.hotspotColor}
+          outlineColor={model.outlineColor}
+          onUpdateImageDimension={onUpdateImageDimension}
+          onUpdateShapes={onUpdateShapes}
+          onImageUpload={onImageUpload}
+          shapes={model.shapes}
+          strokeWidth={model.strokeWidth}
+          preserveAspectRatioEnabled={preserveAspectRatio.enabled}
+          insertImage={imageSupport && imageSupport.add}
+        />
+        {shapesError && <div className={classes.errorText}>{shapesError}</div>}
+        {selectionsError && <div className={classes.errorText}>{selectionsError}</div>}
+
+        {model.imageUrl && (
+          <React.Fragment>
+            <Typography variant="subheading">Image Dimensions</Typography>
+
+            <div className={classes.dimensions}>
+              <NumberTextField
+                key="hotspot-manual-width"
+                label="Width"
+                value={model.dimensions.width}
+                min={0}
+                onChange={(e, value) => this.handleOnUpdateImageDimensions(value, 'width')}
+                showErrorWhenOutsideRange
+                className={classes.field}
+              />
+
+              <NumberTextField
+                key="hotspot-manual-height"
+                label="Height"
+                value={model.dimensions.height}
+                min={0}
+                onChange={(e, value) => this.handleOnUpdateImageDimensions(value, 'height')}
+                showErrorWhenOutsideRange
+                className={classes.field}
+              />
+            </div>
+          </React.Fragment>
+        )}
+
+        {rationaleEnabled && (
+          <InputContainer label={rationale.label} className={classes.promptContainer}>
+            <EditableHtml
+              markup={model.rationale || ''}
+              onChange={onRationaleChanged}
+              imageSupport={imageSupport}
+              error={rationaleError}
+              toolbarOpts={toolbarOpts}
+              pluginProps={getPluginProps(rationale?.inputConfiguration)}
+              spellCheck={spellCheckEnabled}
+              maxImageWidth={(maxImageWidth && maxImageWidth.rationale) || defaultImageMaxWidth}
+              maxImageHeight={(maxImageHeight && maxImageHeight.rationale) || defaultImageMaxHeight}
+              uploadSoundSupport={uploadSoundSupport}
+              languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+              mathMlOptions={mathMlOptions}
             />
-
-            {model.imageUrl && (
-              <div>
-                <Typography className={classes.label} variant="subheading">
-                  Image Dimensions
-                </Typography>
-
-                <div className={classes.dimensions}>
-                  <NumberTextField
-                    key="hotspot-manual-width"
-                    label="Width"
-                    value={model.dimensions.width}
-                    min={0}
-                    onChange={(e, value) => this.handleOnUpdateImageDimensions(value, 'width')}
-                    showErrorWhenOutsideRange
-                    className={classes.field}
-                  />
-                  <NumberTextField
-                    key="hotspot-manual-height"
-                    label="Height"
-                    value={model.dimensions.height}
-                    min={0}
-                    onChange={(e, value) => this.handleOnUpdateImageDimensions(value, 'height')}
-                    showErrorWhenOutsideRange
-                    className={classes.field}
-                  />
-                </div>
-              </div>
-            )}
-          </div>
-        </layout.ConfigLayout>
-      </div>
+            {rationaleError && <div className={classes.errorText}>{rationaleError}</div>}
+          </InputContainer>
+        )}
+      </layout.ConfigLayout>
     );
   }
 }
 
-const styles = theme => ({
-  base: {
-    marginTop: theme.spacing.unit * 3
-  },
-  container: {
-    display: 'flex',
-    marginTop: theme.spacing.unit
-  },
+const styles = (theme) => ({
   dimensions: {
-    display: 'flex'
+    display: 'flex',
+    marginBottom: theme.spacing.unit * 1.5,
   },
   field: {
     flex: 1,
-    width: '90%'
+    width: '90%',
   },
-  label: {
-    marginTop: theme.spacing.unit * 4
-  },
-  prompt: {
+  promptContainer: {
     paddingTop: theme.spacing.unit * 2,
-    width: '100%'
+    marginBottom: theme.spacing.unit * 2,
+    width: '100%',
   },
-  regular: {
-    marginBottom: theme.spacing.unit * 3
+  subheading: {
+    marginRight: theme.spacing.unit,
   },
-  switchElement: {
-    justifyContent: 'space-between',
-    margin: 0
-  }
+  flexContainer: {
+    display: 'flex',
+    alignItems: 'center',
+  },
+  tooltip: {
+    fontSize: theme.typography.fontSize - 2,
+    whiteSpace: 'pre',
+    maxWidth: '500px',
+  },
+  errorText: {
+    fontSize: theme.typography.fontSize - 2,
+    color: theme.palette.error.main,
+    paddingTop: theme.spacing.unit,
+  },
 });
 
 Root.propTypes = {
@@ -254,7 +316,11 @@ Root.propTypes = {
   model: PropTypes.object.isRequired,
   imageSupport: PropTypes.shape({
     add: PropTypes.func,
-    delete: PropTypes.func
+    delete: PropTypes.func,
+  }),
+  uploadSoundSupport: PropTypes.shape({
+    add: PropTypes.func,
+    delete: PropTypes.func,
   }),
   onImageUpload: PropTypes.func.isRequired,
   onColorChanged: PropTypes.func.isRequired,

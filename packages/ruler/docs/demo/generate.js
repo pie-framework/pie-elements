@@ -5,5 +5,5 @@ exports.model = (id, element) => ({
   label: 'm',
   units: 10,
   width: 500,
-  imperialTicks: undefined
+  imperialTicks: undefined,
 });

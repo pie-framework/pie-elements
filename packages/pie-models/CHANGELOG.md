@@ -3,6 +3,725 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.28.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.27.2...@pie-element/pie-models@13.28.0) (2024-04-18)
+
+
+### Features
+
+* **charting, graphing-solution-set:** Charting Item Relative Scoring and Label Characters Limit SC-29795, SC-30682 ([083f91a](https://github.com/pie-framework/pie-elements/commit/083f91a10e08b417514a76b547c6439c95461f32))
+
+
+
+
+
+## [13.27.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.27.1...@pie-element/pie-models@13.27.2) (2024-04-01)
+
+
+### Bug Fixes
+
+* **graphing:** Fixed issue when incomplete tool is hidden on changing current tool | SC-30392 ([0d4d21e](https://github.com/pie-framework/pie-elements/commit/0d4d21e8efa217b283ddccec88fe1c34291a27f9))
+
+
+
+
+
+## [13.27.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.27.0...@pie-element/pie-models@13.27.1) (2024-04-01)
+
+**Note:** Version bump only for package @pie-element/pie-models
+
+
+
+
+
+# [13.27.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.26.0...@pie-element/pie-models@13.27.0) (2024-04-01)
+
+
+### Features
+
+* Add configuration for custom buttons PD-3528 ([bd85aa5](https://github.com/pie-framework/pie-elements/commit/bd85aa53144f69b1f713209edbb888fc4fb48fd6))
+
+
+
+
+
+# [13.26.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.25.0...@pie-element/pie-models@13.26.0) (2024-04-01)
+
+
+### Features
+
+* Add configuration for custom buttons PD-3525 ([6e9cb32](https://github.com/pie-framework/pie-elements/commit/6e9cb3244452726694f362338ed1712052e7d16d))
+
+
+
+
+
+# [13.25.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.24.0...@pie-element/pie-models@13.25.0) (2024-04-01)
+
+
+### Features
+
+* **ebsr:** add required fields functionality and fix validation PD-3592 ([a7fe66f](https://github.com/pie-framework/pie-elements/commit/a7fe66f2e46b0369efc6042e03194de437aff91c))
+
+
+
+
+
+# [13.24.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.23.0...@pie-element/pie-models@13.24.0) (2024-03-28)
+
+
+### Features
+
+* **drag-in-the-blank:** add required fields functionality PD-3584 ([4647d4c](https://github.com/pie-framework/pie-elements/commit/4647d4c179f48be70ff683f2721a30f2386513b1))
+* **drawing-response:** add required fields functionality PD-3589 ([8f57ade](https://github.com/pie-framework/pie-elements/commit/8f57ade13c83d226d1b58e389f844f3519eb7337))
+* **explicit-constructed-response:** add required fields functionality PD-3583 ([84d8856](https://github.com/pie-framework/pie-elements/commit/84d8856cbc1cf915b4b033c7a4ef9a54014b1dba))
+* **extended-text-entry:** add required fields functionality PD-3590 ([73f441f](https://github.com/pie-framework/pie-elements/commit/73f441f9ba77dabc457fdbcf958c73261a15bc88))
+* **hotspot:** added required fields functionality PD-3580 ([7ab62d4](https://github.com/pie-framework/pie-elements/commit/7ab62d4380bcab46649a0780afcef4ddc8e7730d))
+* **image-cloze-association:** add required fields functionality PD-3591 ([cfa5f51](https://github.com/pie-framework/pie-elements/commit/cfa5f51cced10d0fc3b8ef779f2d5fdd1d21dfce))
+* **likert:** add required fields functionality PD-3595 ([629eb63](https://github.com/pie-framework/pie-elements/commit/629eb633c074156286a47239c5a5d29e796b4c16))
+* **math-inline:** add required fields functionality PD-3576 ([a16cf4f](https://github.com/pie-framework/pie-elements/commit/a16cf4f40788cd33b48fa714ce5528e220df3765))
+* **matrix:** add required fields functionality PD-3596 ([356233e](https://github.com/pie-framework/pie-elements/commit/356233ea58c9bc1366b706fa6a86305e5d48bb8f))
+* Add configuration for custom buttons PD-3513 ([0d3f941](https://github.com/pie-framework/pie-elements/commit/0d3f94186c1757f51efb77a06cffa3dfecab0921))
+* Add configuration for custom buttons PD-3519 ([4c46702](https://github.com/pie-framework/pie-elements/commit/4c46702f0f52ab5b4d1b9a0c2d0aedaec6822a61))
+* **multiple-choice:** add required fields functionality PD-3572 ([739f7b1](https://github.com/pie-framework/pie-elements/commit/739f7b188dea00f82f870d6ed0a708256f8f1f83))
+* Add configuration for custom buttons PD-3521 ([9c9ff5e](https://github.com/pie-framework/pie-elements/commit/9c9ff5e038a493a9d1e480407af6a43a5e9073ab))
+
+
+
+
+
+# [13.23.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.22.0...@pie-element/pie-models@13.23.0) (2024-03-20)
+
+
+### Bug Fixes
+
+* Renamed the html prop to the correct math prop PD-3527 ([28061b6](https://github.com/pie-framework/pie-elements/commit/28061b6032817dae15837131d8a0bf5a08683b10))
+
+
+### Features
+
+* **placement-ordering:** add required fields functionality PD-3566 ([f72681b](https://github.com/pie-framework/pie-elements/commit/f72681b9f9eab2a868b2a8c371cdd9efcfde6ffc))
+* **select-text:** add required fields functionality PD-3565 ([9d8aaa5](https://github.com/pie-framework/pie-elements/commit/9d8aaa56c97eaf91fb13a20bfece4f0e3d4239d2))
+* Add configuration for custom buttons PD-3517 ([2544a76](https://github.com/pie-framework/pie-elements/commit/2544a761424daad5324caf68c3b3c222ec38515a))
+* Add configuration for custom buttons PD-3520 ([ee0574f](https://github.com/pie-framework/pie-elements/commit/ee0574f85d3430f45b12f4dd433d14a5d6459458))
+* Add configuration for custom buttons PD-3527 ([45a32bd](https://github.com/pie-framework/pie-elements/commit/45a32bd8e9d7bd33beca74cc10c7dd973a9f9dbc))
+
+
+
+
+
+# [13.22.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.21.0...@pie-element/pie-models@13.22.0) (2024-03-15)
+
+
+### Features
+
+* **graphing-solution-set:** Added new item type - GSS | SC-27890 ([5ea9240](https://github.com/pie-framework/pie-elements/commit/5ea92409dc9330f3822607cf1aa3cdadae6e9bb5))
+
+
+
+
+
+# [13.21.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.20.0...@pie-element/pie-models@13.21.0) (2024-03-13)
+
+
+### Bug Fixes
+
+* **math-inline:** update documentation for equationEditor property in model PD-3549 ([a3c59b4](https://github.com/pie-framework/pie-elements/commit/a3c59b41092631e9714776d37cb1788372d0c1e1))
+* **math-inline:** update documentation PD-3549 ([c76c7ad](https://github.com/pie-framework/pie-elements/commit/c76c7ad1d9be3116969862456d65faa0307e3874))
+
+
+### Features
+
+* Updated docs for graphing PD-3522 ([5bbba54](https://github.com/pie-framework/pie-elements/commit/5bbba542374fc74a7080fba20aa8442287c17d00))
+
+
+
+
+
+# [13.20.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.19.0...@pie-element/pie-models@13.20.0) (2024-03-12)
+
+
+### Features
+
+* Add configuration for custom buttons PD-3514 ([78c4add](https://github.com/pie-framework/pie-elements/commit/78c4add8bf3796577e7863814c3f9e93ba607231))
+* Add configuration for custom buttons PD-3522 ([c319fdd](https://github.com/pie-framework/pie-elements/commit/c319fddb5403467196993eafc9b21a8201d8a99e))
+
+
+
+
+
+# [13.19.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.18.0...@pie-element/pie-models@13.19.0) (2024-03-12)
+
+
+### Features
+
+* Add configuration for custom buttons PD-3515 ([645574c](https://github.com/pie-framework/pie-elements/commit/645574c42638d85253afa0aefe5d09fd8fae0207))
+* Add configuration for custom buttons PD-3518 ([992f573](https://github.com/pie-framework/pie-elements/commit/992f5736c5d34f0d05b071c6b5be3c11c1301fae))
+* Add configuration for custom buttons PD-3523 ([222bf0a](https://github.com/pie-framework/pie-elements/commit/222bf0aad21d14aca11a5571b400826410fad8bb))
+* Add configuration for custom buttons PD-3524 ([94d3fc9](https://github.com/pie-framework/pie-elements/commit/94d3fc9aa56ddaa41b3dbaa8bc6c2a01514b9202))
+
+
+
+
+
+# [13.18.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.17.0...@pie-element/pie-models@13.18.0) (2024-03-12)
+
+
+### Features
+
+* **categorize:** add required fields functionality PD-3546 ([e370f14](https://github.com/pie-framework/pie-elements/commit/e370f14ff25afff8154b1b08a4ad4626aadcc547))
+* **graphing:** add required fields functionality PD-3547 ([7ad6d2f](https://github.com/pie-framework/pie-elements/commit/7ad6d2f09bc60c6d84a3b8c21a3d0e875ad9c164))
+* **match:** add required fields functionality PD-3548 ([469f52f](https://github.com/pie-framework/pie-elements/commit/469f52f5ac795991ce115b11c6eee19eaedbf851))
+
+
+
+
+
+# [13.17.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.16.0...@pie-element/pie-models@13.17.0) (2024-03-07)
+
+
+### Features
+
+* Add configuration for custom buttons PD-3512 ([6665e0f](https://github.com/pie-framework/pie-elements/commit/6665e0f992c36755deefd86c2d8ba7c284232225))
+* Add configuration for custom buttons PD-3512 ([b11f5f8](https://github.com/pie-framework/pie-elements/commit/b11f5f80db0e2419699d56d58fb5cc1e069af58a))
+
+
+
+
+
+# [13.16.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.15.0...@pie-element/pie-models@13.16.0) (2024-03-07)
+
+
+### Features
+
+* Add configuration for custom buttons PD-3507 ([7342ae3](https://github.com/pie-framework/pie-elements/commit/7342ae35a6877b14dac2db57ce5e7b1b6c93140d))
+* Add configuration for custom buttons PD-3507 ([b15e002](https://github.com/pie-framework/pie-elements/commit/b15e00266033775bbab3f03ab3228301064860f9))
+* Add configuration for custom buttons PD-3511 ([a642e82](https://github.com/pie-framework/pie-elements/commit/a642e82a2767738e0936f31bfc88c2e28b263575))
+
+
+
+
+
+# [13.15.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.14.0...@pie-element/pie-models@13.15.0) (2024-03-06)
+
+
+### Features
+
+* Add configuration for custom buttons PD-3508 ([a1a681a](https://github.com/pie-framework/pie-elements/commit/a1a681a9f614dc54e57eb81aa56886cfaaa22310))
+
+
+
+
+
+# [13.14.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.13.0...@pie-element/pie-models@13.14.0) (2024-03-04)
+
+
+### Features
+
+* Add configuration for custom buttons PD-3506 ([690e6d3](https://github.com/pie-framework/pie-elements/commit/690e6d31cf66ad02287501ad5cb9c5cc22d6b088))
+
+
+
+
+
+# [13.13.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.12.0...@pie-element/pie-models@13.13.0) (2024-02-14)
+
+
+### Features
+
+* add configuration for custom buttons on multiple choice PD-3395 ([d0569c2](https://github.com/pie-framework/pie-elements/commit/d0569c2fb6398c497ec8b53f4a76adcf375ff1cd))
+
+
+
+
+
+# [13.12.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.11.1...@pie-element/pie-models@13.12.0) (2024-02-09)
+
+
+### Features
+
+* **number-line:** Update Tick Interval logic for number line labels | SC-28865 ([a177718](https://github.com/pie-framework/pie-elements/commit/a1777185305cd828d9d6930024e236c09d3845a9))
+
+
+
+
+
+## [13.11.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.11.0...@pie-element/pie-models@13.11.1) (2024-02-07)
+
+
+### Bug Fixes
+
+* **multiple-choice:** update documentation for lockChoiceOrder PD-3428 ([39c91dd](https://github.com/pie-framework/pie-elements/commit/39c91dd932b66a49acb3e9d3b632f3ee4a38b766))
+
+
+
+
+
+# [13.11.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.10.0...@pie-element/pie-models@13.11.0) (2024-01-30)
+
+
+### Features
+
+* **number-line:** Add possibility to mark fields as required PD-3137 and update validation PD-3369 ([30516d6](https://github.com/pie-framework/pie-elements/commit/30516d6cfa863c215b17f9671de64f83eab43269))
+
+
+
+
+
+# [13.10.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.9.0...@pie-element/pie-models@13.10.0) (2024-01-09)
+
+
+### Features
+
+* **image-cloze-association:** add conf to determine the position of the pool PD-3103 ([bf020fa](https://github.com/pie-framework/pie-elements/commit/bf020fa10fea4fe3083b3a287c2fafdcfccd84ba))
+
+
+
+
+
+# [13.9.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.8.0...@pie-element/pie-models@13.9.0) (2023-12-19)
+
+
+### Bug Fixes
+
+* **complex-rubric:** update docu, revert next versions PD-2555 ([5eb1a68](https://github.com/pie-framework/pie-elements/commit/5eb1a68e9de96258c2b648b37913820e2086a377))
+
+
+### Features
+
+* **charting:** Add possibility to mark fields as required PD-3310 ([4034d0b](https://github.com/pie-framework/pie-elements/commit/4034d0b20b4277f30f0d373c0f62932f6f6ba33b))
+* **inline-dropdown:** Add possibility to mark fields as required PD-3310 ([d347e3d](https://github.com/pie-framework/pie-elements/commit/d347e3d6000b216b46c14a03fdec6d7b87378006))
+* **rubrics:** add documentation for maxMaxPoints, add defaults in complex-rubric PD-3307 ([ab0572e](https://github.com/pie-framework/pie-elements/commit/ab0572e69502e9bec6e32cad73a37f3aae0eaf42))
+
+
+
+
+
+# [13.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.7.0...@pie-element/pie-models@13.8.0) (2023-11-27)
+
+
+### Features
+
+* **categorize:** update tests, update docu PD-2996 ([4c13904](https://github.com/pie-framework/pie-elements/commit/4c13904299d9fe518c3cc13398a0114e61f723ca))
+
+
+
+
+
+# [13.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.6.0...@pie-element/pie-models@13.7.0) (2023-11-07)
+
+
+### Features
+
+* **charting:** Update default behavior of charting authoring UI properties. Update docs accordingly. PD-3216 ([207ebe2](https://github.com/pie-framework/pie-elements/commit/207ebe2be2fd06519f7199da65f2c9d2c7ba3007))
+
+
+
+
+
+# [13.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.5.0...@pie-element/pie-models@13.6.0) (2023-09-28)
+
+
+### Features
+
+* **charting:** PD-3165 move intstruction into authoring settings ([80f209f](https://github.com/pie-framework/pie-elements/commit/80f209f523b67d5a38ef9a4825ee78ca85f72560))
+
+
+
+
+
+# [13.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.4.0...@pie-element/pie-models@13.5.0) (2023-09-25)
+
+
+### Features
+
+* add language in model docs ([08e212d](https://github.com/pie-framework/pie-elements/commit/08e212d959988c5e3a7b83b49f134070275d5437))
+* **multiple-choice:** add translations ([fe4dc0f](https://github.com/pie-framework/pie-elements/commit/fe4dc0f15158c039ad9276f09d8b9874d61224cf))
+
+
+
+
+
+# [13.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.3.0...@pie-element/pie-models@13.4.0) (2023-09-04)
+
+
+### Features
+
+* add docs ([d5ee3c0](https://github.com/pie-framework/pie-elements/commit/d5ee3c011cb776e2aa472bdf7f30599f1aa013d7))
+
+
+
+
+
+# [13.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.2.0...@pie-element/pie-models@13.3.0) (2023-08-29)
+
+
+### Features
+
+* create a boilerplate item type ([2cae8df](https://github.com/pie-framework/pie-elements/commit/2cae8df90b913f13875fb24fb09d61c60b7292f9))
+
+
+
+
+
+# [13.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.1.0...@pie-element/pie-models@13.2.0) (2023-08-15)
+
+
+### Features
+
+* **categorize:** translations PD-2802 PD-2795 ([bfed488](https://github.com/pie-framework/pie-elements/commit/bfed48826b6b1f3fe39d582ffd3958d5a85b931b))
+* **explicit-constructed-response, placement-ordering:** translations PD-2802 PD-2795 ([bdac725](https://github.com/pie-framework/pie-elements/commit/bdac725d9e547a7221f71884e1730cb738dfa962))
+* **math-inline:** add translator PD-2795 PD-2802 ([2ab3ce9](https://github.com/pie-framework/pie-elements/commit/2ab3ce99c43d937d8cd5e6dd1925f0d89c74c537))
+
+
+
+
+
+# [13.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.0.0...@pie-element/pie-models@13.1.0) (2023-06-13)
+
+
+### Features
+
+* add mathMlOptions PD-2150 ([0c6984c](https://github.com/pie-framework/pie-elements/commit/0c6984cf042141eac36badfbab1c46d8d42f71ee))
+* **graphing:** add settings to provide ability to select a language for player PD-2795 ([a5dfcfc](https://github.com/pie-framework/pie-elements/commit/a5dfcfc3636f265cd695d1305aa03948414641dc))
+
+
+
+
+
+# [13.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@12.11.0...@pie-element/pie-models@13.0.0) (2023-05-23)
+
+
+### Features
+
+* **charting:** remove categoryDefaultLabel from model ([f1af01e](https://github.com/pie-framework/pie-elements/commit/f1af01e171e17b9e22a95025e0aef873bd4969a9))
+* **charting:** update pie-models and schemas ([ca51be4](https://github.com/pie-framework/pie-elements/commit/ca51be465ac3db38b5aa586022be5c498f444e05))
+* **charting:** update pie-models PD-2777 ([a7d34c0](https://github.com/pie-framework/pie-elements/commit/a7d34c05639d4a2b95bf81be90c689f96b73a38c))
+* **charting:** update schemas PD-2777 ([74b4884](https://github.com/pie-framework/pie-elements/commit/74b4884cb4c0407e9ff457dbd3249172ade3e42c))
+* **charting:** update snapshots and pie-models ([5548d97](https://github.com/pie-framework/pie-elements/commit/5548d97e6d63270e32e451621740d8cd112e3880))
+
+
+### BREAKING CHANGES
+
+* **charting:** The categoryDefaultLabel property has been removed. authorNewCategoryDefaults and studentNewCategoryDefaultLabel from configuration will be used as category default label.
+
+
+
+
+
+# [12.11.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@12.10.1...@pie-element/pie-models@12.11.0) (2023-04-10)
+
+
+### Features
+
+* added the ability to set min/max width and height for the content PD-2425 ([befba3a](https://github.com/pie-framework/pie-elements/commit/befba3a8fa23e8dd21a3e3f63f306bd6dfc35bdd))
+
+
+
+
+
+## [12.10.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@12.10.0...@pie-element/pie-models@12.10.1) (2023-03-20)
+
+
+### Bug Fixes
+
+* **grapnig:** graphDimensions:settings setting does not behave as expected ([def133e](https://github.com/pie-framework/pie-elements/commit/def133ed3f8ecd33884f0dae87bad8936d1ba2e9))
+
+
+
+
+
+# [12.10.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@12.9.0...@pie-element/pie-models@12.10.0) (2023-02-28)
+
+
+### Features
+
+* add back forceEnabled functionality with documentation ([10a5502](https://github.com/pie-framework/pie-elements/commit/10a55021ca455b27dc5e5a38436648a1fd2f9d36))
+
+
+
+
+
+# [12.9.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@12.8.0...@pie-element/pie-models@12.9.0) (2023-02-22)
+
+
+### Bug Fixes
+
+* change withRubric type for extended-text-entry and drawing-response. docs update from different pr for multi-trait-rubric ([7bf77ad](https://github.com/pie-framework/pie-elements/commit/7bf77ada1a09bc56a053341bce9a0eaf02955672))
+
+
+### Features
+
+* **image-cloze-association:** add logic for suffle property. Update documentation PD-2650 ([f4b1e90](https://github.com/pie-framework/pie-elements/commit/f4b1e90f4f97a5cb808c8f9a66d7188c469f5e81))
+
+
+
+
+
+# [12.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@12.7.0...@pie-element/pie-models@12.8.0) (2023-02-14)
+
+
+### Features
+
+* remove force enabled logic from withRubric property PD-2624 ([9e557b9](https://github.com/pie-framework/pie-elements/commit/9e557b90285e3fe1ec3d70d2b3865fc4968cd690))
+* **complex-rurbic:** add width property to configuration and send to multi-trait-rubric and rubric ([940c270](https://github.com/pie-framework/pie-elements/commit/940c2702dadc6756d3e218e622687d17a66dc735))
+* **rubric:** add width property to configuration ([75bdb82](https://github.com/pie-framework/pie-elements/commit/75bdb82ddd3ffe41ce50aa98928914f321127eed))
+
+
+
+
+
+# [12.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@12.6.1...@pie-element/pie-models@12.7.0) (2023-02-01)
+
+
+### Bug Fixes
+
+* typo ([9328e51](https://github.com/pie-framework/pie-elements/commit/9328e512840c54a3da4b06d4edc79b871d3233c4))
+
+
+### Features
+
+* **multi-trait-rubric:** update documentation PD-2589 ([ca1d2c2](https://github.com/pie-framework/pie-elements/commit/ca1d2c23b0d3c33ac21088ffee8e0d51a0d0264b))
+* update documentation for withRubric configure prop PD-2519 ([8525c15](https://github.com/pie-framework/pie-elements/commit/8525c159e88407aaa35318755ee713675b5e1c00))
+
+
+
+
+
+## [12.6.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@12.6.0...@pie-element/pie-models@12.6.1) (2023-01-17)
+
+
+### Bug Fixes
+
+* **multi-trait-rubric:** fix validation bugs, update documentation. Fixed match docs typo PD-2427 ([26d598e](https://github.com/pie-framework/pie-elements/commit/26d598e7a32d50ed176d566605bb6b4ebdc07a2c))
+
+
+
+
+
+# [12.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@12.5.0...@pie-element/pie-models@12.6.0) (2023-01-05)
+
+
+### Features
+
+* added width property in match configuration ([6436fc6](https://github.com/pie-framework/pie-elements/commit/6436fc63b404dc4d25ac55aadcc5b84985421800))
+* **categorize:** added configuration prop to hide the settings panel PD-1999 ([405c321](https://github.com/pie-framework/pie-elements/commit/405c3215f6953d9326d1eee25444a2bf00167d95))
+* **charting:** added configuration prop to hide the settings panel PD-1999 ([a877144](https://github.com/pie-framework/pie-elements/commit/a8771441a7b62eaa061ccaee1ac8940fdcbb87be))
+* **drag-in-the-blank:** added configuration prop to hide the settings panel PD-1999 ([630cc87](https://github.com/pie-framework/pie-elements/commit/630cc87640183a21e456876b6389d2694a0e5553))
+* **drawing-response:** added configuration prop to hide the settings panel PD-1999 ([57ddf9e](https://github.com/pie-framework/pie-elements/commit/57ddf9e56540f77ab3286495d660821bc70deb59))
+* **ebsr:** added configuration prop to hide the settings panel PD-1999 ([30fd6c7](https://github.com/pie-framework/pie-elements/commit/30fd6c7bd6bbca6badd2d0ddc99b78a10fab7155))
+* **explicit-constructed-response:** added configuration prop to hide the settings panel PD-1999 ([8aec356](https://github.com/pie-framework/pie-elements/commit/8aec3566ad4e3b7c190bfabb5d1e65dc5e735a8f))
+* **extended-text-entry:** added configuration prop to hide the settings panel PD-1999 ([ca137ff](https://github.com/pie-framework/pie-elements/commit/ca137fffaac68d645f36b1bc41eeec3a0dcac3ba))
+* **graphing:** added configuration prop to hide the settings panel PD-1999 ([eb98b1c](https://github.com/pie-framework/pie-elements/commit/eb98b1c63db463d0d4a62dbfea2041e7b30825eb))
+* **hotspot:** added configuration prop to hide the settings panel PD-1999 ([55f4f86](https://github.com/pie-framework/pie-elements/commit/55f4f868be0321e944d3b4c9d9ed6c96adfa2886))
+* **image-cloze-association:** added configuration prop to hide the settings panel PD-1999 ([5d0739b](https://github.com/pie-framework/pie-elements/commit/5d0739b021caaedd757f6caccdbef7ea74451ded))
+* **inline-dropdown:** added configuration prop to hide the settings panel PD-1999 + replaced the warning message component ([3ea0366](https://github.com/pie-framework/pie-elements/commit/3ea0366e2149f59aaa592f2c35a776bf145e7a32))
+* **likert:** added configuration prop to hide the settings panel PD-1999 ([8ec7491](https://github.com/pie-framework/pie-elements/commit/8ec7491ea55a12bb1deb7bc250b2bc8b2e7ddf7e))
+* **match:** added configuration prop to hide the settings panel PD-1999 + refactoring ([b7087c6](https://github.com/pie-framework/pie-elements/commit/b7087c652df0172ee0f3a1d4041e4c1b144bafa0))
+* **match:** update docs PD-2417 ([e3b4e8b](https://github.com/pie-framework/pie-elements/commit/e3b4e8bec388b8b181b55b5c181bdf4fd3c260ae))
+* **math-inline:** added configuration prop to hide the settings panel PD-1999 ([bd9d932](https://github.com/pie-framework/pie-elements/commit/bd9d932ad24db60e53ebb2b988977afcaf7ef668))
+* **matrix:** added configuration prop to hide the settings panel PD-1999 ([5fded0a](https://github.com/pie-framework/pie-elements/commit/5fded0a3d989e5608bfbd98eaf722265662f510e))
+* **multi-trait-rubric:**  added configuration prop to hide the settings panel PD-1999 ([88e2ad2](https://github.com/pie-framework/pie-elements/commit/88e2ad2bf73ae5f8a95c3ca2930f9d8642281c13))
+* **multiple-choice:** added configuration prop to hide the settings pannel PD-1999 + refactoring ([f0f3f6e](https://github.com/pie-framework/pie-elements/commit/f0f3f6e95f9bd96196dec2ba5e861b5bf170e146))
+* **placement-ordering:** added configuration prop to hide the settings pannel PD-1999 + refactoring ([e293169](https://github.com/pie-framework/pie-elements/commit/e29316962aa5461ee864bd35e4e265a81ced6e35))
+* **rubric:** added configuration prop to hide the settings panel PD-1999 and updated documentation ([a01748b](https://github.com/pie-framework/pie-elements/commit/a01748bbddd34848dd07ec6be7d8a2b55c47214d))
+* **select-text:** added configuration prop to hide the settings panel PD-1999 + refactoring ([11dfb8e](https://github.com/pie-framework/pie-elements/commit/11dfb8e485b6614122ed92ec2b3ab1da031a222f))
+
+
+
+
+
+# [12.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@12.4.0...@pie-element/pie-models@12.5.0) (2022-12-20)
+
+
+### Bug Fixes
+
+* **categorize:** update docu-PD-2169 ([03b7d1b](https://github.com/pie-framework/pie-elements/commit/03b7d1b588afcaa0d90b9538c4dabfae37a9fb05))
+
+
+### Features
+
+* **pie-models:** update schemas for extended-text-entry in order to include the updated spellchek property ([d07ebe6](https://github.com/pie-framework/pie-elements/commit/d07ebe60b130df0e5e59189602af6af6f60c85d1))
+
+
+
+
+
+# [12.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@12.3.0...@pie-element/pie-models@12.4.0) (2022-12-07)
+
+
+### Features
+
+* **categorize:** change documentation for the added field in config-PD-1983 ([fa5d39e](https://github.com/pie-framework/pie-elements/commit/fa5d39ef97a93cf532316972c25ca70634de0eff))
+* **categorize:** update documentation with the new field in settings - PD-1980 ([8631c3f](https://github.com/pie-framework/pie-elements/commit/8631c3f4da3c8553fcd44aa23f467ab8e0c9eea5))
+* **categorize:** update documentation with the niew config fields-PD-1983 ([c81c36b](https://github.com/pie-framework/pie-elements/commit/c81c36b8eb5067413d7993647ba6c5b1bcdb9f12))
+
+
+
+
+
+# [12.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@12.2.0...@pie-element/pie-models@12.3.0) (2022-11-01)
+
+
+### Features
+
+* add a different property in the config,  to force a value ([300c664](https://github.com/pie-framework/pie-elements/commit/300c664618f46177137deef3bced2d096cdb8126))
+
+
+
+
+
+# [12.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@12.1.2...@pie-element/pie-models@12.2.0) (2022-10-17)
+
+
+### Features
+
+* **categorize:** add settings to enable rubric. Add withRubric prop to configuration and rubricEnabled prop to model PD-2019 ([fc719ea](https://github.com/pie-framework/pie-elements/commit/fc719ea36f0a3fd74829e4e550222d1d1a9b0df8))
+* **charting:** add settings to enable rubric. Add withRubric prop to configuration and rubricEnabled prop to model PD-2094 ([a58f5af](https://github.com/pie-framework/pie-elements/commit/a58f5af7cc94f2c6e1debcdd51f62d19e36fed19))
+* **complex-rubric:** write documentation PD-2013 ([eb6bc68](https://github.com/pie-framework/pie-elements/commit/eb6bc687e21d287ac413c31e9a7aa16ce295a848))
+* **drag-in-the-blank:** add settings to enable rubric. Add withRubric prop to configuration and rubricEnabled prop to model PD-2095 ([35462df](https://github.com/pie-framework/pie-elements/commit/35462df9cd6f70c9e4d730a133734b6d4932abd3))
+* **drawing-response:** add settings to enable rubric. Add withRubric prop to configuration and rubricEnabled prop to model PD-2096 ([142429a](https://github.com/pie-framework/pie-elements/commit/142429a1a92af9e41f670d4f611e9bb62039a1f3))
+* **explicit-constructed-response:** add settings to enable rubric. Add withRubric prop to configuration and rubricEnabled prop to model PD-2097 ([8c0acd3](https://github.com/pie-framework/pie-elements/commit/8c0acd3c19cf0cbf9ef39e1e045f895f996c9127))
+* **extended-text-entry:** add settings to enable rubric. Add withRubric prop to configuration and rubricEnabled prop to model PD-2098 ([1046c20](https://github.com/pie-framework/pie-elements/commit/1046c207db5d1246479ec2daf6219cb30a10ec00))
+* **graphing:** add settings to enable rubric. Add withRubric prop to configuration and rubricEnabled prop to model PD-2099 ([a7b78d8](https://github.com/pie-framework/pie-elements/commit/a7b78d8ff0263390723ce21f8547611b3dd1052f))
+* **hotspot:** add settings to enable rubric. Add withRubric prop to configuration and rubricEnabled prop to model PD-2100 ([fbddb7a](https://github.com/pie-framework/pie-elements/commit/fbddb7a0c11841ffd1fd4f93b77dc5331ac225fb))
+* **image-cloze-association:** add settings to enable rubric. Add withRubric prop to configuration and rubricEnabled prop to model PD-2101 ([e6d1ba7](https://github.com/pie-framework/pie-elements/commit/e6d1ba7c700f6a637006cb3b5befbc77bad9a3e1))
+* **inline-dropdown:** add settings to enable rubric. Add withRubric prop to configuration and rubricEnabled prop to model PD-2092 ([1e3b2e6](https://github.com/pie-framework/pie-elements/commit/1e3b2e6348a76264145c118bdee709f8e61f189e))
+* **match:** add settings to enable rubric. Add withRubric prop to configuration and rubricEnabled prop to model PD-2102 ([b0e09f9](https://github.com/pie-framework/pie-elements/commit/b0e09f94e582d6e9c18b1c34dd5517e907f0078d))
+* **math-inline:** add settings to enable rubric. Add withRubric prop to configuration and rubricEnabled prop to model PD-2104 ([543e355](https://github.com/pie-framework/pie-elements/commit/543e3551cc43477edb153c6d97cea7c8c6588235))
+* **multiple-choice:** add settings to enable rubric. Add withRubric prop to configuration and rubricEnabled prop to model PD-2019 ([92668e4](https://github.com/pie-framework/pie-elements/commit/92668e40e6e7f6a015c8ee49ab773c4d4cd09dc0))
+* **placement-ordering:** add settings to enable rubric. Add withRubric prop to configuration and rubricEnabled prop to model PD-2106 ([03968e5](https://github.com/pie-framework/pie-elements/commit/03968e52e450a1b031c460576bd996e54630844a))
+* **select-text:** add settings to enable rubric. Add withRubric prop to configuration and rubricEnabled prop to model PD-2107 ([cb2eb3c](https://github.com/pie-framework/pie-elements/commit/cb2eb3ca4a67a74a0359c83c8022a0502ccb8cfa))
+
+
+
+
+
+## [12.1.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@12.1.1...@pie-element/pie-models@12.1.2) (2022-09-29)
+
+**Note:** Version bump only for package @pie-element/pie-models
+
+
+
+
+
+## [12.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@12.1.0...@pie-element/pie-models@12.1.1) (2022-08-16)
+
+**Note:** Version bump only for package @pie-element/pie-models
+
+
+
+
+
+# [12.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@12.0.0...@pie-element/pie-models@12.1.0) (2022-08-02)
+
+
+### Features
+
+* **categorize:**  add maxImageWidth and maxImageHeight props PD-1801 ([c438cea](https://github.com/pie-framework/pie-elements/commit/c438cea310e6e5cdfbd8c057fc9aadb36d53bb76))
+* **charting:** add maxImageWidth and maxImageHeight props PD-1801 ([0bff787](https://github.com/pie-framework/pie-elements/commit/0bff787ff2c9301138346f02e04646ee55f659fc))
+* **drawing-response:** add maxImageWidth and maxImageHeight props PD-1801 ([4f1fb5d](https://github.com/pie-framework/pie-elements/commit/4f1fb5dfa4616c194eefd1702854a5aaa413ce1f))
+* **ebsr:** add maxImageWidth and maxImageHeight props PD-1801 ([61c9b25](https://github.com/pie-framework/pie-elements/commit/61c9b2511ab8ef1a146d86def588bf8517e23e96))
+* **extended-text-entry:** add maxImageWidth and maxImageHeight props PD-1801 ([82b1404](https://github.com/pie-framework/pie-elements/commit/82b1404a25c67d21599c916574a9caa66b536584))
+* **graphing:** add maxImageWidth and maxImageHeight props PD-1801 ([5d01857](https://github.com/pie-framework/pie-elements/commit/5d0185752ab1f1f9c3cf88232c522c0f742c3cb1))
+* **graphing:** Added default selected graphing tool property for gather PD-1689 ([57b4e4f](https://github.com/pie-framework/pie-elements/commit/57b4e4f75f0addf9f305e30304b0ba5f95de4571))
+* **graphing:** added the ability to customize the Grid Setup Panel PD-1688 ([6353019](https://github.com/pie-framework/pie-elements/commit/63530198694f740e70e126884e1512d4c373dd64))
+* **hotspot:** add maxImageWidth and maxImageHeight props PD-1801 ([8325bc1](https://github.com/pie-framework/pie-elements/commit/8325bc1bb9014027349bfab863b56bb1d519e5ca))
+* **image-cloze-association:** add maxImageWidth and maxImageHeight props PD-1801 ([f4132c8](https://github.com/pie-framework/pie-elements/commit/f4132c81475ad141fae5c38def311ac7e9729a42))
+* **inline-dropdown:** add maxImageWidth and maxImageHeight props PD-1801 ([a2ad5d5](https://github.com/pie-framework/pie-elements/commit/a2ad5d5298e5696541f45ab8ca9e5675f5bb1a57))
+* **inline-dropdown:** add missing configurable validation. Added maxResponseAreaChoices property to configuration ([5cfff17](https://github.com/pie-framework/pie-elements/commit/5cfff17c5df2c149c1b6e29a4109f3ff6b850110))
+* **input:** added configurability for inserting spanish and special characters [PD-1461], [PD-1462] ([11f381e](https://github.com/pie-framework/pie-elements/commit/11f381ea44a3ae2b2c5c189dc53932d689c8e044))
+* **match:** add maxImageWidth and maxImageHeight props PD-1801 ([d98c0db](https://github.com/pie-framework/pie-elements/commit/d98c0dbe6a7acb5d115a71a102553cd20b5a63d5))
+* **math-inline:** add maxImageWidth and maxImageHeight props PD-1801 ([24e60e2](https://github.com/pie-framework/pie-elements/commit/24e60e2d5e1bdc90530662f5c11528d67c2545ce))
+* **multiple-choice:** add maxImageWidth and maxImageHeight props PD-1801 ([36b9617](https://github.com/pie-framework/pie-elements/commit/36b961715f3913606b8abb9e9aae764bf02c8d7a))
+* **placement-ordering:** update docs ([96094af](https://github.com/pie-framework/pie-elements/commit/96094af26944b235f98b87a2e86270242c912264))
+* **select-text:** add maxImageWidth and maxImageHeight props PD-1801 ([9e8b343](https://github.com/pie-framework/pie-elements/commit/9e8b343703de33597461b18611dbc34f8ef2b92c))
+* update documentation for items that have validation with settings configurable by client systems PD-1789 ([8ef69cc](https://github.com/pie-framework/pie-elements/commit/8ef69cc0c7439a5803dc95f570efc7cd24c8e334))
+
+
+
+
+
+# [12.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@11.0.18...@pie-element/pie-models@12.0.0) (2022-06-28)
+
+
+### chore
+
+* Merge master with develop. ([cdca48a](https://github.com/pie-framework/pie-elements/commit/cdca48abaa1d4179e4a961e13d171e14b7ed2444))
+
+
+### BREAKING CHANGES
+
+* Image percent buttons were removed from toolbar.
+New properties maxImageWidth and maxImageHeight were added.
+
+
+
+
+
+## [11.0.18](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@11.0.17...@pie-element/pie-models@11.0.18) (2022-06-13)
+
+**Note:** Version bump only for package @pie-element/pie-models
+
+
+
+
+
+## [11.0.17](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@11.0.16...@pie-element/pie-models@11.0.17) (2022-05-30)
+
+**Note:** Version bump only for package @pie-element/pie-models
+
+
+
+
+
+## [11.0.16](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@11.0.15...@pie-element/pie-models@11.0.16) (2022-05-16)
+
+**Note:** Version bump only for package @pie-element/pie-models
+
+
+
+
+
+## [11.0.15](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@11.0.14...@pie-element/pie-models@11.0.15) (2022-03-28)
+
+**Note:** Version bump only for package @pie-element/pie-models
+
+
+
+
+
+## [11.0.14](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@11.0.13...@pie-element/pie-models@11.0.14) (2022-03-22)
+
+**Note:** Version bump only for package @pie-element/pie-models
+
+
+
+
+
+## [11.0.13](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@11.0.12...@pie-element/pie-models@11.0.13) (2022-03-08)
+
+**Note:** Version bump only for package @pie-element/pie-models
+
+
+
+
+
+## [11.0.12](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@11.0.11...@pie-element/pie-models@11.0.12) (2022-02-21)
+
+**Note:** Version bump only for package @pie-element/pie-models
+
+
+
+
+
+## [11.0.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@11.0.10...@pie-element/pie-models@11.0.11) (2022-02-04)
+
+**Note:** Version bump only for package @pie-element/pie-models
+
+
+
+
+
 ## [11.0.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@11.0.9...@pie-element/pie-models@11.0.10) (2022-01-10)
 
 **Note:** Version bump only for package @pie-element/pie-models

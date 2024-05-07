@@ -4,80 +4,18 @@ exports[`config snapshot renders 1`] = `
 <div
   className=""
 >
-  <div>
-    <Component
-      label="Remove all tiles after placing"
-      onChange={[Function]}
-    />
-    <Component
-      checked={true}
-      label="Lock Choice Order"
-      onChange={[Function]}
-    />
-  </div>
-  <div>
-    <TextField
-      InputLabelProps={
-        Object {
-          "shrink": true,
-        }
+  <TextField
+    InputLabelProps={
+      Object {
+        "shrink": true,
       }
-      label="Label"
-      onChange={[Function]}
-      required={false}
-      select={false}
-      value=""
-      variant="standard"
-    />
-    <WithStyles(List)
-      component="nav"
-    >
-      <WithStyles(ListItem)
-        aria-haspopup="true"
-        button={true}
-        onClick={[Function]}
-      >
-        <WithStyles(ListItemText)
-          primary="Choices Position"
-          secondary="Choices will be shown below categories"
-        />
-      </WithStyles(ListItem)>
-    </WithStyles(List)>
-    <WithStyles(Menu)
-      anchorEl={null}
-      id="lock-menu"
-      onClose={[Function]}
-      open={false}
-    >
-      <WithStyles(MenuItem)
-        key="above"
-        onClick={[Function]}
-        selected={false}
-      >
-        Above
-      </WithStyles(MenuItem)>
-      <WithStyles(MenuItem)
-        key="below"
-        onClick={[Function]}
-        selected={true}
-      >
-        Below
-      </WithStyles(MenuItem)>
-      <WithStyles(MenuItem)
-        key="left"
-        onClick={[Function]}
-        selected={false}
-      >
-        Left
-      </WithStyles(MenuItem)>
-      <WithStyles(MenuItem)
-        key="right"
-        onClick={[Function]}
-        selected={false}
-      >
-        Right
-      </WithStyles(MenuItem)>
-    </WithStyles(Menu)>
-  </div>
+    }
+    label="Label"
+    onChange={[Function]}
+    required={false}
+    select={false}
+    value=""
+    variant="outlined"
+  />
 </div>
 `;

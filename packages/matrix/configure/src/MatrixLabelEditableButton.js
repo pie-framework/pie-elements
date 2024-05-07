@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import Menu from '@material-ui/core/Menu';
@@ -35,7 +35,7 @@ const MatrixEditableButtonText = styled.p`
   padding: 3px 0 3px 4px;
   cursor: pointer;
   width: 100%;
-  
+
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -43,7 +43,7 @@ const MatrixEditableButtonText = styled.p`
   :hover {
     background: #00985d;
   }
-  
+
   transition: all 0.1s ease-in-out;
 `;
 
@@ -99,12 +99,12 @@ export const ACTION_TYPE = {
 };
 
 const MatrixLabelEditableButton = (props) => {
-  const { onLabelUpdate, value, resourceIndex, onAction } = props;
+  const { onLabelUpdate, value, resourceIndex, onAction, spellCheck } = props;
   const [labelValue, setLabelValue] = useState(null);
   const [scoreValue, setScoreValue] = useState('');
   const [showInput, setShowInput] = useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const [scoresToRef,] = React.useState(React.createRef());
+  const [scoresToRef] = React.useState(React.createRef());
 
   const open = Boolean(anchorEl);
 
@@ -164,54 +164,43 @@ const MatrixLabelEditableButton = (props) => {
   return (
     <MatrixEditableButtonWrapper>
       <MatrixEditableButtonContent>
-        {showInput
-          ? (
-            <InputWrapper
-              autoFocus
-              value={labelValue}
-              onChange={e => setLabelValue(e.target.value)}
-              onBlur={onBlur}
-            />
-          )
-          : (
-            <MatrixEditableButtonText onClick={onShowInput}>
-              {value}
-            </MatrixEditableButtonText>
-          )
-        }
-
+        {showInput ? (
+          <InputWrapper
+            autoFocus
+            value={labelValue}
+            onChange={(e) => setLabelValue(e.target.value)}
+            onBlur={onBlur}
+            spellCheck={spellCheck}
+          />
+        ) : (
+          <MatrixEditableButtonText onClick={onShowInput}>{value}</MatrixEditableButtonText>
+        )}
       </MatrixEditableButtonContent>
       <MatrixEditableButtonActions onClick={onActionClick}>
         <IconWrapper>
-          <KeyboardArrowDownIcon fontSize='inherit'/>
+          <KeyboardArrowDownIcon fontSize="inherit" />
         </IconWrapper>
-        <Menu
-          anchorEl={anchorEl}
-          open={open}
-          onClose={handleClose}
-        >
-          <MenuItem key='item1' selected={false} onClick={onClearScores}>
+        <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
+          <MenuItem key="item1" selected={false} onClick={onClearScores}>
             Clear Scores
           </MenuItem>
-          <MenuItem key='item2' selected={false} onClick={onSetScoresAscending}>
+          <MenuItem key="item2" selected={false} onClick={onSetScoresAscending}>
             Set Scores Ascending
           </MenuItem>
-          <MenuItem key='item3' selected={false} onClick={onSetScoresDescending}>
+          <MenuItem key="item3" selected={false} onClick={onSetScoresDescending}>
             Set Scores Descending
           </MenuItem>
-          <MenuItem key='item4' selected={false}>
+          <MenuItem key="item4" selected={false}>
             <SetScoresToWrapper>
-              <p onClick={onSetScoreToFocus}>
-                Set Scores To
-              </p>
+              <p onClick={onSetScoreToFocus}>Set Scores To</p>
               <SetScoresToInputWrapper>
                 <NumberInput
                   onFieldUpdate={onSetScores}
                   name={'setScoreTo'}
-                  placeholder='#'
+                  placeholder="#"
                   fieldValue={{
                     value: scoreValue,
-                    ref: scoresToRef
+                    ref: scoresToRef,
                   }}
                 />
               </SetScoresToInputWrapper>
@@ -220,7 +209,7 @@ const MatrixLabelEditableButton = (props) => {
         </Menu>
       </MatrixEditableButtonActions>
     </MatrixEditableButtonWrapper>
-  )
+  );
 };
 
 MatrixLabelEditableButton.propTypes = {
@@ -228,7 +217,7 @@ MatrixLabelEditableButton.propTypes = {
   resourceIndex: PropTypes.number.isRequired,
   onLabelUpdate: PropTypes.func.isRequired,
   onAction: PropTypes.func.isRequired,
+  spellCheck: PropTypes.bool,
 };
-
 
 export default MatrixLabelEditableButton;

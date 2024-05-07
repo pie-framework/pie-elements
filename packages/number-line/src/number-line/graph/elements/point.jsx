@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { color } from '@pie-lib/render-ui';
+import { color } from '@pie-lib/pie-toolbox/render-ui';
 import Draggable from '../../../draggable';
 import classNames from 'classnames';
 import injectSheet from 'react-jss';
@@ -19,32 +19,32 @@ const style = {
     fill: color.primary(),
     '&.react-draggable-dragging': {
       opacity: 0.25,
-      r: '10px'
+      r: '10px',
     },
     '&:hover': {
-      stroke: color.primaryDark()
-    }
+      stroke: color.primaryDark(),
+    },
   },
   selected: {
-    stroke: color.primaryDark()
+    stroke: color.primaryDark(),
   },
   disabled: {
     cursor: 'not-allowed',
-    opacity: 0.8
+    opacity: 0.8,
   },
   correct: {
     cursor: 'inherit',
     stroke: color.correct(),
-    fill: color.correct()
+    fill: color.correct(),
   },
   incorrect: {
     cursor: 'inherit',
     stroke: color.incorrect(),
-    fill: color.incorrect()
+    fill: color.incorrect(),
   },
   empty: {
-    fill: 'white'
-  }
+    fill: 'white',
+  },
 };
 
 export class Point extends React.Component {
@@ -53,7 +53,7 @@ export class Point extends React.Component {
     selected: false,
     empty: false,
     disabled: false,
-    correct: undefined
+    correct: undefined,
   };
 
   static propTypes = {
@@ -61,7 +61,7 @@ export class Point extends React.Component {
     position: PropTypes.number.isRequired,
     bounds: PropTypes.shape({
       left: PropTypes.number.isRequired,
-      right: PropTypes.number.isRequired
+      right: PropTypes.number.isRequired,
     }),
     selected: PropTypes.bool,
     disabled: PropTypes.bool,
@@ -73,12 +73,12 @@ export class Point extends React.Component {
     onDrag: PropTypes.func,
     onDragStop: PropTypes.func,
     onDragStart: PropTypes.func,
-    classes: PropTypes.object.isRequired
+    classes: PropTypes.object.isRequired,
   };
 
   static contextTypes = {
     xScale: PropTypes.func.isRequired,
-    snapValue: PropTypes.func.isRequired
+    snapValue: PropTypes.func.isRequired,
   };
 
   render() {
@@ -96,18 +96,18 @@ export class Point extends React.Component {
       disabled,
       correct,
       empty,
-      classes
+      classes,
     } = this.props;
 
     const { snapValue, xScale } = this.context;
 
-    const dragPosition = x => {
+    const dragPosition = (x) => {
       const normalized = x + xScale(0);
       const inverted = xScale.invert(normalized);
       return snapValue(position + inverted);
     };
 
-    const onStart = e => {
+    const onStart = (e) => {
       this.setState({ startX: e.clientX });
       if (onDragStart) {
         onDragStart();
@@ -135,12 +135,12 @@ export class Point extends React.Component {
     };
 
     //prevent the text select icon from rendering.
-    const onMouseDown = e => e.nativeEvent.preventDefault();
+    const onMouseDown = (e) => e.nativeEvent.preventDefault();
 
     const is = xScale(interval) - xScale(0);
     const scaledBounds = {
-      left: bounds.left / interval * is,
-      right: bounds.right / interval * is
+      left: (bounds.left / interval) * is,
+      right: (bounds.right / interval) * is,
     };
 
     const onDrag = (e, dd) => {
@@ -155,7 +155,7 @@ export class Point extends React.Component {
       [classes.selected]: selected,
       [classes.correct]: correct === true,
       [classes.incorrect]: correct === false,
-      [classes.empty]: empty === true
+      [classes.empty]: empty === true,
     });
 
     return (
@@ -169,13 +169,10 @@ export class Point extends React.Component {
         grid={[is]}
         bounds={scaledBounds}
       >
-        <circle
-          r="5"
-          strokeWidth="3"
-          className={circleClass}
-          cx={xScale(position)}
-          cy={y}
-        />
+        <g>
+          <circle r="20" strokeWidth="3" style={{ fill: 'transparent' }} cx={xScale(position)} cy={y} />
+          <circle r="5" strokeWidth="3" className={circleClass} cx={xScale(position)} cy={y} />
+        </g>
       </Draggable>
     );
   }

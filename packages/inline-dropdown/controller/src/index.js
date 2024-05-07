@@ -1,11 +1,7 @@
 import map from 'lodash/map';
 import reduce from 'lodash/reduce';
 import isEmpty from 'lodash/isEmpty';
-import {
-  lockChoices,
-  getShuffledChoices,
-  partialScoring,
-} from '@pie-lib/controller-utils';
+import { lockChoices, getShuffledChoices, partialScoring } from '@pie-lib/pie-toolbox/controller-utils';
 
 import { getAllCorrectResponses } from './utils';
 
@@ -44,7 +40,7 @@ export function model(question, session, env, updateSession) {
 
         return obj;
       },
-      {}
+      {},
     );
 
     let feedback = {};
@@ -60,8 +56,7 @@ export function model(question, session, env, updateSession) {
           (obj, choices, key) => {
             const answer = (value && value[key]) || '';
             const correctChoice = choices[i] || '';
-            const isCorrect =
-              answer && correctChoice && correctChoice === answer;
+            const isCorrect = answer && correctChoice && correctChoice === answer;
 
             obj.feedback[key] = getFeedback(isCorrect);
 
@@ -71,7 +66,7 @@ export function model(question, session, env, updateSession) {
 
             return obj;
           },
-          { correctResponses: 0, feedback: {} }
+          { correctResponses: 0, feedback: {} },
         );
 
         if (result.correctResponses >= correctResponses) {
@@ -94,44 +89,29 @@ export function model(question, session, env, updateSession) {
       for (i = 0; i < keys.length; i++) {
         const key = keys[i];
 
-        choices[key] = await getShuffledChoices(
-          choices[key],
-          session,
-          updateSession,
-          'value'
-        );
+        choices[key] = await getShuffledChoices(choices[key], session, updateSession, 'value');
       }
     }
 
     let teacherInstructions = null;
     let rationale = null;
 
-    const choicesWillNullRationales = (Object.keys(choices) || []).reduce(
-      (acc, currentValue) => {
-        acc[currentValue] = (choices[currentValue] || []).map((choice) => ({
-          ...choice,
-          rationale: null,
-        }));
+    const choicesWillNullRationales = (Object.keys(choices) || []).reduce((acc, currentValue) => {
+      acc[currentValue] = (choices[currentValue] || []).map((choice) => ({
+        ...choice,
+        rationale: null,
+      }));
 
-        return acc;
-      },
-      {}
-    );
+      return acc;
+    }, {});
 
-    if (
-      env.role === 'instructor' &&
-      (env.mode === 'view' || env.mode === 'evaluate')
-    ) {
-      rationale = normalizedQuestion.rationaleEnabled
-        ? normalizedQuestion.rationale
-        : null;
+    if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
+      rationale = normalizedQuestion.rationaleEnabled ? normalizedQuestion.rationale : null;
       teacherInstructions = normalizedQuestion.teacherInstructionsEnabled
         ? normalizedQuestion.teacherInstructions
         : null;
 
-      choices = normalizedQuestion.choiceRationaleEnabled
-        ? normalizedQuestion.choices
-        : choicesWillNullRationales;
+      choices = normalizedQuestion.choiceRationaleEnabled ? normalizedQuestion.choices : choicesWillNullRationales;
     } else {
       rationale = null;
       teacherInstructions = null;
@@ -141,20 +121,16 @@ export function model(question, session, env, updateSession) {
     const out = {
       disabled: env.mode !== 'gather',
       mode: env.mode,
-      prompt: normalizedQuestion.promptEnabled
-        ? normalizedQuestion.prompt
-        : null,
+      prompt: normalizedQuestion.promptEnabled ? normalizedQuestion.prompt : null,
       displayType: normalizedQuestion.displayType,
       markup: normalizedQuestion.markup,
       choices,
       feedback,
 
-      responseCorrect:
-        env.mode === 'evaluate'
-          ? getScore(normalizedQuestion, session) === 1
-          : undefined,
+      responseCorrect: env.mode === 'evaluate' ? getScore(normalizedQuestion, session) === 1 : undefined,
       rationale,
       teacherInstructions,
+      language: normalizedQuestion.language,
     };
 
     resolve(out);
@@ -163,8 +139,7 @@ export function model(question, session, env, updateSession) {
 
 export const getScore = (config, session) => {
   const { value = {} } = session || {};
-  const maxScore =
-    config && config.choices ? Object.keys(config.choices).length : 0;
+  const maxScore = config && config.choices ? Object.keys(config.choices).length : 0;
   const allCorrectResponses = getAllCorrectResponses(config);
   let correctCount = 0;
 
@@ -181,7 +156,7 @@ export const getScore = (config, session) => {
 
         return total - 1;
       },
-      maxScore
+      maxScore,
     );
 
     if (result > correctCount) {
@@ -234,8 +209,7 @@ export const createCorrectResponseSession = (question, env) => {
 
       if (choices) {
         Object.keys(choices).forEach((key, i) => {
-          const correctChoices =
-            choices[key] && choices[key].filter((c) => c.correct);
+          const correctChoices = choices[key] && choices[key].filter((c) => c.correct);
 
           value[i] = correctChoices && correctChoices[0].value;
         });
@@ -249,4 +223,38 @@ export const createCorrectResponseSession = (question, env) => {
       resolve(null);
     }
   });
+};
+
+// remove all html tags
+const getInnerText = (html) => (html || '').replaceAll(/<[^>]*>/g, '');
+
+// remove all html tags except img and iframe
+const getContent = (html) => (html || '').replace(/(<(?!img|iframe)([^>]+)>)/gi, '');
+
+export const validate = (model = {}, config = {}) => {
+  const { markup, choices } = model;
+  const { maxResponseAreas, maxResponseAreaChoices } = config;
+  const errors = {};
+
+  ['teacherInstructions', 'prompt', 'rationale'].forEach((field) => {
+    if (config[field]?.required && !getContent(model[field])) {
+      errors[field] = 'This field is required.';
+    }
+  });
+
+  const nbOfResponseAreas = ((markup || '').match(/\{\{(\d+)\}\}/g) || []).length;
+
+  if (nbOfResponseAreas > maxResponseAreas) {
+    errors.responseAreasError = `No more than ${maxResponseAreas} response areas should be defined.`;
+  } else if (nbOfResponseAreas < 1) {
+    errors.responseAreasError = 'There should be defined at least 1 response area.';
+  }
+
+  (Object.keys(choices) || []).forEach((choiceKey) => {
+    if (choices[choiceKey] && choices[choiceKey].length > maxResponseAreaChoices) {
+      errors.responseAreaChoicesError = `No more than ${maxResponseAreaChoices} choices per response area should be defined.`;
+    }
+  });
+
+  return errors;
 };

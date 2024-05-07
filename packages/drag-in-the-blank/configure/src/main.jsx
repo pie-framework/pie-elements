@@ -1,55 +1,56 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import EditableHtml, { ALL_PLUGINS } from '@pie-lib/editable-html';
-import { InputContainer, layout, settings } from '@pie-lib/config-ui';
-import { withDragContext } from '@pie-lib/drag';
-import { renderMath } from '@pie-lib/math-rendering';
+import { EditableHtml, ALL_PLUGINS } from '@pie-lib/pie-toolbox/editable-html';
+import { InputContainer, layout, settings } from '@pie-lib/pie-toolbox/config-ui';
+import { withDragContext } from '@pie-lib/pie-toolbox/drag';
+import { renderMath } from '@pie-lib/pie-toolbox/math-rendering-accessible';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
+import Info from '@material-ui/icons/Info';
+import Tooltip from '@material-ui/core/Tooltip';
 
 import Choices from './choices';
 import { createSlateMarkup } from './markupUtils';
+import { generateValidationMessage } from '../utils';
 const { dropdown, toggle, Panel } = settings;
 
-const styles = theme => ({
+const styles = (theme) => ({
   promptHolder: {
     width: '100%',
-    paddingBottom: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit * 2
-  },
-  prompt: {
     paddingTop: theme.spacing.unit * 2,
-    width: '100%'
+    marginBottom: theme.spacing.unit * 2,
   },
   markup: {
     minHeight: '235px',
-    paddingTop: theme.spacing.unit * 2,
+    paddingTop: theme.spacing.unit,
+    paddingBottom: theme.spacing.unit * 2,
     width: '100%',
     '& [data-slate-editor="true"]': {
-      minHeight: '235px'
-    }
-  },
-  design: {
-    paddingTop: theme.spacing.unit * 3
+      minHeight: '235px',
+    },
   },
   choiceConfiguration: {
     paddingTop: theme.spacing.unit * 2,
-    paddingBottom: theme.spacing.unit * 2
-  },
-  switchElement: {
-    justifyContent: 'space-between',
-    margin: 0
-  },
-  addButton: {
-    float: 'right'
+    paddingBottom: theme.spacing.unit * 2,
   },
   text: {
-    fontFamily: 'Cerebri Sans',
-    fontSize: '16px',
-    lineHeight: '19px',
-    color: '#495B8F'
-  }
+    fontSize: theme.typography.fontSize + 2,
+  },
+  tooltip: {
+    fontSize: theme.typography.fontSize - 2,
+    whiteSpace: 'pre',
+    maxWidth: '500px',
+  },
+  errorText: {
+    fontSize: theme.typography.fontSize - 2,
+    color: theme.palette.error.main,
+    paddingTop: theme.spacing.unit,
+  },
+  flexContainer: {
+    display: 'flex',
+    alignItems: 'end',
+  },
 });
 
 export class Main extends React.Component {
@@ -62,8 +63,9 @@ export class Main extends React.Component {
     classes: PropTypes.object.isRequired,
     imageSupport: PropTypes.shape({
       add: PropTypes.func.isRequired,
-      delete: PropTypes.func.isRequired
-    })
+      delete: PropTypes.func.isRequired,
+    }),
+    uploadSoundSupport: PropTypes.object,
   };
 
   state = {};
@@ -75,201 +77,265 @@ export class Main extends React.Component {
     renderMath(domNode);
   }
 
-  onModelChange = newVal => {
+  onModelChange = (newVal) => {
     this.props.onModelChanged({
       ...this.props.model,
-      ...newVal
+      ...newVal,
     });
   };
 
-  onPromptChanged = prompt => {
+  onPromptChanged = (prompt) => {
     this.props.onModelChanged({
       ...this.props.model,
-      prompt
+      prompt,
     });
   };
 
-  onRationaleChanged = rationale => {
+  onRationaleChanged = (rationale) => {
     this.props.onModelChanged({
       ...this.props.model,
-      rationale
+      rationale,
     });
   };
 
-  onTeacherInstructionsChanged = teacherInstructions => {
+  onTeacherInstructionsChanged = (teacherInstructions) => {
     this.props.onModelChanged({
       ...this.props.model,
-      teacherInstructions
+      teacherInstructions,
     });
   };
 
-  onMarkupChanged = slateMarkup => {
+  onMarkupChanged = (slateMarkup) => {
     this.props.onModelChanged({
       ...this.props.model,
-      slateMarkup
+      slateMarkup,
     });
   };
 
-  onResponsesChanged = choices => {
+  onResponsesChanged = (choices) => {
     const {
-      model: { correctResponse, markup }
+      model: { correctResponse, markup },
     } = this.props;
     const slateMarkup = createSlateMarkup(markup, choices, correctResponse);
 
     this.props.onModelChanged({
       ...this.props.model,
       slateMarkup,
-      choices
+      choices,
     });
   };
 
   render() {
+    const { classes, model, configuration, onConfigurationChanged, imageSupport, uploadSoundSupport } = this.props;
     const {
-      classes,
-      model,
-      configuration,
-      onConfigurationChanged,
-      imageSupport
-    } = this.props;
-    const {
+      addChoice = {},
+      baseInputConfiguration = {},
+      contentDimensions = {},
       duplicates = {},
       prompt = {},
       partialScoring = {},
       lockChoiceOrder = {},
       rationale = {},
       teacherInstructions = {},
-      choicesPosition = {}
+      choicesPosition = {},
+      spellCheck = {},
+      settingsPanelDisabled,
+      maxChoices,
+      maxResponseAreas,
+      maxImageWidth = {},
+      maxImageHeight = {},
+      withRubric = {},
+      mathMlOptions = {},
+      language = {},
+      languageChoices = {},
     } = configuration || {};
-    const { rationaleEnabled, promptEnabled, teacherInstructionsEnabled } =
-      model || {};
-    const toolbarOpts = {};
+    const {
+      rationaleEnabled,
+      promptEnabled,
+      teacherInstructionsEnabled,
+      spellCheckEnabled,
+      toolbarEditorPosition,
+      errors,
+    } = model || {};
 
-    switch (model.toolbarEditorPosition) {
-      case 'top':
-        toolbarOpts.position = 'top';
-        break;
-      default:
-        toolbarOpts.position = 'bottom';
-        break;
-    }
+    const {
+      choicesError,
+      correctResponseError,
+      prompt: promptError,
+      rationale: rationaleError,
+      responseAreasError,
+      teacherInstructions: teacherInstructionsError,
+    } = errors || {};
+    const validationMessage = generateValidationMessage(configuration);
+
+    const defaultImageMaxWidth = maxImageWidth && maxImageWidth.prompt;
+    const defaultImageMaxHeight = maxImageHeight && maxImageHeight.prompt;
+
+    const toolbarOpts = {
+      position: toolbarEditorPosition === 'top' ? 'top' : 'bottom',
+    };
+
+    const panelSettings = {
+      partialScoring: partialScoring.settings && toggle(partialScoring.label),
+      duplicates: duplicates.settings && toggle(duplicates.label),
+      lockChoiceOrder: lockChoiceOrder.settings && toggle(lockChoiceOrder.label),
+      choicesPosition: choicesPosition.settings && dropdown(choicesPosition.label, ['above', 'below', 'left', 'right']),
+      'language.enabled': language.settings && toggle(language.label, true),
+      language: language.settings && language.enabled && dropdown(languageChoices.label, languageChoices.options),
+    };
+
+    const panelProperties = {
+      teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
+      rationaleEnabled: rationale.settings && toggle(rationale.label),
+      spellCheckEnabled: spellCheck.settings && toggle(spellCheck.label),
+      promptEnabled: prompt.settings && toggle(prompt.label),
+      rubricEnabled: withRubric?.settings && toggle(withRubric?.label),
+    };
+
+    const getPluginProps = (props) => {
+      return Object.assign(
+        {
+          ...baseInputConfiguration,
+        },
+        props || {},
+      );
+    };
+
     return (
-      <div className={classes.design}>
-        <layout.ConfigLayout
-          settings={
-            <Panel
-              model={model}
-              configuration={configuration}
-              onChangeModel={model => this.onModelChange(model)}
-              onChangeConfiguration={configuration =>
-                onConfigurationChanged(configuration, true)
-              }
-              groups={{
-                Settings: {
-                  partialScoring:
-                    partialScoring.settings && toggle(partialScoring.label),
-                  duplicates: duplicates.settings && toggle(duplicates.label),
-                  lockChoiceOrder:
-                    lockChoiceOrder.settings && toggle(lockChoiceOrder.label),
-                  choicesPosition:
-                    choicesPosition.settings &&
-                    dropdown(choicesPosition.label, [
-                      'above',
-                      'below',
-                      'left',
-                      'right'
-                    ])
-                },
-                Properties: {
-                  teacherInstructionsEnabled:
-                    teacherInstructions.settings &&
-                    toggle(teacherInstructions.label),
-                  rationaleEnabled:
-                    rationale.settings && toggle(rationale.label),
-                  promptEnabled: prompt.settings && toggle(prompt.label)
-                }
-              }}
-            />
-          }
-        >
-          <div>
-            {teacherInstructionsEnabled && (
-              <InputContainer
-                label={teacherInstructions.label}
-                className={classes.promptHolder}
-              >
-                <EditableHtml
-                  className={classes.prompt}
-                  markup={model.teacherInstructions || ''}
-                  onChange={this.onTeacherInstructionsChanged}
-                  imageSupport={imageSupport}
-                  nonEmpty={false}
-                  toolbarOpts={toolbarOpts}
-                />
-              </InputContainer>
-            )}
-            {promptEnabled && (
-              <InputContainer
-                label={prompt.label}
-                className={classes.promptHolder}
-              >
-                <EditableHtml
-                  className={classes.prompt}
-                  markup={model.prompt}
-                  onChange={this.onPromptChanged}
-                  imageSupport={imageSupport}
-                  nonEmpty={false}
-                  disableUnderline
-                  toolbarOpts={toolbarOpts}
-                />
-              </InputContainer>
-            )}
-            <Typography className={classes.text}>
-              Define Template, Choices, and Correct Responses
-            </Typography>
+      <layout.ConfigLayout
+        dimensions={contentDimensions}
+        hideSettings={settingsPanelDisabled}
+        settings={
+          <Panel
+            model={model}
+            configuration={configuration}
+            onChangeModel={(model) => this.onModelChange(model)}
+            onChangeConfiguration={(configuration) => onConfigurationChanged(configuration, true)}
+            groups={{
+              Settings: panelSettings,
+              Properties: panelProperties,
+            }}
+          />
+        }
+      >
+        {teacherInstructionsEnabled && (
+          <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
             <EditableHtml
-              activePlugins={ALL_PLUGINS}
-              toolbarOpts={{ position: 'top' }}
-              responseAreaProps={{
-                type: 'drag-in-the-blank',
-                options: {
-                  duplicates: model.duplicates
-                }
-              }}
-              className={classes.markup}
-              markup={model.slateMarkup}
-              onChange={this.onMarkupChanged}
+              className={classes.prompt}
+              markup={model.teacherInstructions || ''}
+              onChange={this.onTeacherInstructionsChanged}
+              imageSupport={imageSupport}
+              nonEmpty={false}
+              error={teacherInstructionsError}
+              toolbarOpts={toolbarOpts}
+              pluginProps={getPluginProps(teacherInstructions?.inputConfiguration)}
+              spellCheck={spellCheckEnabled}
+              maxImageWidth={(maxImageWidth && maxImageWidth.teacherInstructions) || defaultImageMaxWidth}
+              maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
+              uploadSoundSupport={uploadSoundSupport}
+              languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+              mathMlOptions={mathMlOptions}
+            />
+            {teacherInstructionsError && <div className={classes.errorText}>{teacherInstructionsError}</div>}
+          </InputContainer>
+        )}
+
+        {promptEnabled && (
+          <InputContainer label={prompt.label} className={classes.promptHolder}>
+            <EditableHtml
+              className={classes.prompt}
+              markup={model.prompt}
+              onChange={this.onPromptChanged}
               imageSupport={imageSupport}
               nonEmpty={false}
               disableUnderline
-              pluginProps={{
-                audio: { disabled: true },
-                video: { disabled: true }
-              }}
+              error={promptError}
               toolbarOpts={toolbarOpts}
+              pluginProps={getPluginProps(prompt?.inputConfiguration)}
+              spellCheck={spellCheckEnabled}
+              maxImageWidth={defaultImageMaxWidth}
+              maxImageHeight={defaultImageMaxHeight}
+              uploadSoundSupport={uploadSoundSupport}
+              languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+              mathMlOptions={mathMlOptions}
             />
-            <Choices
-              model={model}
-              duplicates={model.duplicates}
-              onChange={this.onResponsesChanged}
+            {promptError && <div className={classes.errorText}>{promptError}</div>}
+          </InputContainer>
+        )}
+
+        <div className={classes.flexContainer}>
+          <Typography className={classes.text}>Define Template, Choices, and Correct Responses</Typography>
+          <Tooltip
+            classes={{ tooltip: classes.tooltip }}
+            disableFocusListener
+            disableTouchListener
+            placement={'right'}
+            title={validationMessage}
+          >
+            <Info fontSize={'small'} color={'primary'} style={{ marginLeft: '5px' }} />
+          </Tooltip>
+        </div>
+
+        <EditableHtml
+          activePlugins={ALL_PLUGINS}
+          responseAreaProps={{
+            type: 'drag-in-the-blank',
+            options: {
+              duplicates: model.duplicates,
+            },
+            maxResponseAreas: maxResponseAreas,
+          }}
+          className={classes.markup}
+          markup={model.slateMarkup}
+          onChange={this.onMarkupChanged}
+          imageSupport={imageSupport}
+          disableImageAlignmentButtons={true}
+          nonEmpty={false}
+          disableUnderline
+          error={responseAreasError || correctResponseError}
+          toolbarOpts={toolbarOpts}
+          spellCheck={spellCheckEnabled}
+          uploadSoundSupport={uploadSoundSupport}
+          languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+          mathMlOptions={mathMlOptions}
+        />
+        {responseAreasError && <div className={classes.errorText}>{responseAreasError}</div>}
+        {correctResponseError && <div className={classes.errorText}>{correctResponseError}</div>}
+
+        <Choices
+          model={model}
+          imageSupport={imageSupport}
+          duplicates={model.duplicates}
+          error={choicesError}
+          onChange={this.onResponsesChanged}
+          toolbarOpts={toolbarOpts}
+          maxChoices={maxChoices}
+          uploadSoundSupport={uploadSoundSupport}
+          mathMlOptions={mathMlOptions}
+          pluginProps={getPluginProps(addChoice?.inputConfiguration)}
+        />
+
+        {rationaleEnabled && (
+          <InputContainer label={rationale.label} className={classes.promptHolder}>
+            <EditableHtml
+              className={classes.prompt}
+              markup={model.rationale || ''}
+              onChange={this.onRationaleChanged}
+              imageSupport={imageSupport}
+              error={rationaleError}
               toolbarOpts={toolbarOpts}
+              pluginProps={getPluginProps(rationale?.inputConfiguration)}
+              spellCheck={spellCheckEnabled}
+              maxImageWidth={(maxImageWidth && maxImageWidth.rationale) || defaultImageMaxWidth}
+              maxImageHeight={(maxImageHeight && maxImageHeight.rationale) || defaultImageMaxHeight}
+              uploadSoundSupport={uploadSoundSupport}
+              languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+              mathMlOptions={mathMlOptions}
             />
-            {rationaleEnabled && (
-              <InputContainer
-                label={rationale.label}
-                className={classes.promptHolder}
-              >
-                <EditableHtml
-                  className={classes.prompt}
-                  markup={model.rationale || ''}
-                  onChange={this.onRationaleChanged}
-                  imageSupport={imageSupport}
-                  toolbarOpts={toolbarOpts}
-                />
-              </InputContainer>
-            )}
-          </div>
-        </layout.ConfigLayout>
-      </div>
+            {rationaleError && <div className={classes.errorText}>{rationaleError}</div>}
+          </InputContainer>
+        )}
+      </layout.ConfigLayout>
     );
   }
 }

@@ -5,38 +5,38 @@ import Icon from './icon';
 import IconButton from '@material-ui/core/IconButton';
 import classNames from 'classnames';
 
-const iconStyles = {
+const iconStyles = (theme) => ({
   icon: {
     '& path': {
       transition: 'fill 200ms',
-      fill: 'grey'
+      fill: theme.palette.grey[600],
     },
     '& rect': {
       transition: 'fill 200ms',
-      fill: 'grey'
+      fill: theme.palette.grey[600],
     },
     transition: 'fill 200ms',
     '&:hover': {
       '& path': {
-        fill: 'black'
+        fill: theme.palette.common.black,
       },
       '& rect': {
-        fill: 'black'
-      }
+        fill: theme.palette.common.black,
+      },
     },
     cursor: 'pointer',
     verticalAlign: 'middle',
-    fill: 'grey'
+    fill: theme.palette.grey[600],
   },
   active: {
     '& path': {
-      fill: 'black'
+      fill: theme.palette.common.black,
     },
     '& rect': {
-      fill: 'black'
-    }
-  }
-};
+      fill: theme.palette.common.black,
+    },
+  },
+});
 
 const RawToggle = ({ active, onToggle, classes }) => (
   <IconButton onClick={onToggle}>
@@ -47,7 +47,7 @@ const RawToggle = ({ active, onToggle, classes }) => (
 RawToggle.propTypes = {
   active: PropTypes.bool,
   onToggle: PropTypes.func,
-  classes: PropTypes.object
+  classes: PropTypes.object,
 };
 const Toggle = withStyles(iconStyles)(RawToggle);
 export default Toggle;

@@ -1,3 +1,555 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`AnswerConfigBlock render snapshot 1`] = `
+<div
+  className="AnswerConfigBlock-container-8"
+>
+  <WithStyles(Typography)
+    component="div"
+    type="body1"
+  >
+    Click on the labels to edit or remove. Set the correct answers by clicking each correct answer per row.
+  </WithStyles(Typography)>
+  <div
+    className="AnswerConfigBlock-rowTable-13"
+    style={Object {}}
+  >
+    <div
+      className="AnswerConfigBlock-rowContainer-9"
+    >
+      <div
+        className="AnswerConfigBlock-rowItem-10 AnswerConfigBlock-questionText-12"
+        key="0"
+      >
+        <Component
+          activePlugins={Array []}
+          autoWidthToolbar={true}
+          className="AnswerConfigBlock-headerInput-14"
+          label="column label"
+          languageCharactersProps={
+            Array [
+              Object {
+                "language": "spanish",
+              },
+              Object {
+                "language": "special",
+              },
+            ]
+          }
+          markup="Column 1"
+          onChange={[Function]}
+          pluginProps={
+            Object {
+              "audio": Object {
+                "disabled": true,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": true,
+              },
+            }
+          }
+        />
+      </div>
+      <div
+        className="AnswerConfigBlock-rowItem-10"
+        key="1"
+      >
+        <Component
+          activePlugins={Array []}
+          autoWidthToolbar={true}
+          className="AnswerConfigBlock-headerInput-14"
+          label="column label"
+          languageCharactersProps={
+            Array [
+              Object {
+                "language": "spanish",
+              },
+              Object {
+                "language": "special",
+              },
+            ]
+          }
+          markup="Column 2"
+          onChange={[Function]}
+          pluginProps={
+            Object {
+              "audio": Object {
+                "disabled": true,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": true,
+              },
+            }
+          }
+        />
+      </div>
+      <div
+        className="AnswerConfigBlock-rowItem-10"
+        key="2"
+      >
+        <Component
+          activePlugins={Array []}
+          autoWidthToolbar={true}
+          className="AnswerConfigBlock-headerInput-14"
+          label="column label"
+          languageCharactersProps={
+            Array [
+              Object {
+                "language": "spanish",
+              },
+              Object {
+                "language": "special",
+              },
+            ]
+          }
+          markup="Column 3"
+          onChange={[Function]}
+          pluginProps={
+            Object {
+              "audio": Object {
+                "disabled": true,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": true,
+              },
+            }
+          }
+        />
+      </div>
+      <div
+        className="AnswerConfigBlock-deleteIcon-11"
+      />
+    </div>
+    <DropTarget(DragSource(WithStyles(Row)))
+      idx={0}
+      inputConfiguration={
+        Object {
+          "audio": Object {
+            "disabled": true,
+          },
+          "image": Object {
+            "disabled": false,
+          },
+          "video": Object {
+            "disabled": true,
+          },
+        }
+      }
+      key="0"
+      mathMlOptions={
+        Object {
+          "mmlEditing": false,
+          "mmlOutput": false,
+        }
+      }
+      maxImageHeight={150}
+      maxImageWidth={300}
+      minQuestions={2}
+      model={
+        Object {
+          "choiceMode": "radio",
+          "element": "match-element",
+          "feedback": Object {
+            "correct": Object {
+              "default": "Correct",
+              "type": "none",
+            },
+            "incorrect": Object {
+              "default": "Incorrect",
+              "type": "none",
+            },
+            "partial": Object {
+              "default": "Nearly",
+              "type": "none",
+            },
+          },
+          "feedbackEnabled": true,
+          "headers": Array [
+            "Column 1",
+            "Column 2",
+            "Column 3",
+          ],
+          "id": "1",
+          "layout": 3,
+          "lockChoiceOrder": true,
+          "partialScoring": Array [],
+          "prompt": "Prompt",
+          "rows": Array [
+            Object {
+              "id": 1,
+              "title": "Question Text 1",
+              "values": Array [
+                false,
+                false,
+              ],
+            },
+            Object {
+              "id": 2,
+              "title": "Question Text 2",
+              "values": Array [
+                false,
+                false,
+              ],
+            },
+            Object {
+              "id": 3,
+              "title": "Question Text 3",
+              "values": Array [
+                false,
+                false,
+              ],
+            },
+            Object {
+              "id": 4,
+              "title": "Question Text 4",
+              "values": Array [
+                false,
+                false,
+              ],
+            },
+          ],
+        }
+      }
+      onChange={[MockFunction]}
+      onDeleteRow={[MockFunction]}
+      onMoveRow={[Function]}
+      row={
+        Object {
+          "id": 1,
+          "title": "Question Text 1",
+          "values": Array [
+            false,
+            false,
+          ],
+        }
+      }
+    />
+    <DropTarget(DragSource(WithStyles(Row)))
+      idx={1}
+      inputConfiguration={
+        Object {
+          "audio": Object {
+            "disabled": true,
+          },
+          "image": Object {
+            "disabled": false,
+          },
+          "video": Object {
+            "disabled": true,
+          },
+        }
+      }
+      key="1"
+      mathMlOptions={
+        Object {
+          "mmlEditing": false,
+          "mmlOutput": false,
+        }
+      }
+      maxImageHeight={150}
+      maxImageWidth={300}
+      minQuestions={2}
+      model={
+        Object {
+          "choiceMode": "radio",
+          "element": "match-element",
+          "feedback": Object {
+            "correct": Object {
+              "default": "Correct",
+              "type": "none",
+            },
+            "incorrect": Object {
+              "default": "Incorrect",
+              "type": "none",
+            },
+            "partial": Object {
+              "default": "Nearly",
+              "type": "none",
+            },
+          },
+          "feedbackEnabled": true,
+          "headers": Array [
+            "Column 1",
+            "Column 2",
+            "Column 3",
+          ],
+          "id": "1",
+          "layout": 3,
+          "lockChoiceOrder": true,
+          "partialScoring": Array [],
+          "prompt": "Prompt",
+          "rows": Array [
+            Object {
+              "id": 1,
+              "title": "Question Text 1",
+              "values": Array [
+                false,
+                false,
+              ],
+            },
+            Object {
+              "id": 2,
+              "title": "Question Text 2",
+              "values": Array [
+                false,
+                false,
+              ],
+            },
+            Object {
+              "id": 3,
+              "title": "Question Text 3",
+              "values": Array [
+                false,
+                false,
+              ],
+            },
+            Object {
+              "id": 4,
+              "title": "Question Text 4",
+              "values": Array [
+                false,
+                false,
+              ],
+            },
+          ],
+        }
+      }
+      onChange={[MockFunction]}
+      onDeleteRow={[MockFunction]}
+      onMoveRow={[Function]}
+      row={
+        Object {
+          "id": 2,
+          "title": "Question Text 2",
+          "values": Array [
+            false,
+            false,
+          ],
+        }
+      }
+    />
+    <DropTarget(DragSource(WithStyles(Row)))
+      idx={2}
+      inputConfiguration={
+        Object {
+          "audio": Object {
+            "disabled": true,
+          },
+          "image": Object {
+            "disabled": false,
+          },
+          "video": Object {
+            "disabled": true,
+          },
+        }
+      }
+      key="2"
+      mathMlOptions={
+        Object {
+          "mmlEditing": false,
+          "mmlOutput": false,
+        }
+      }
+      maxImageHeight={150}
+      maxImageWidth={300}
+      minQuestions={2}
+      model={
+        Object {
+          "choiceMode": "radio",
+          "element": "match-element",
+          "feedback": Object {
+            "correct": Object {
+              "default": "Correct",
+              "type": "none",
+            },
+            "incorrect": Object {
+              "default": "Incorrect",
+              "type": "none",
+            },
+            "partial": Object {
+              "default": "Nearly",
+              "type": "none",
+            },
+          },
+          "feedbackEnabled": true,
+          "headers": Array [
+            "Column 1",
+            "Column 2",
+            "Column 3",
+          ],
+          "id": "1",
+          "layout": 3,
+          "lockChoiceOrder": true,
+          "partialScoring": Array [],
+          "prompt": "Prompt",
+          "rows": Array [
+            Object {
+              "id": 1,
+              "title": "Question Text 1",
+              "values": Array [
+                false,
+                false,
+              ],
+            },
+            Object {
+              "id": 2,
+              "title": "Question Text 2",
+              "values": Array [
+                false,
+                false,
+              ],
+            },
+            Object {
+              "id": 3,
+              "title": "Question Text 3",
+              "values": Array [
+                false,
+                false,
+              ],
+            },
+            Object {
+              "id": 4,
+              "title": "Question Text 4",
+              "values": Array [
+                false,
+                false,
+              ],
+            },
+          ],
+        }
+      }
+      onChange={[MockFunction]}
+      onDeleteRow={[MockFunction]}
+      onMoveRow={[Function]}
+      row={
+        Object {
+          "id": 3,
+          "title": "Question Text 3",
+          "values": Array [
+            false,
+            false,
+          ],
+        }
+      }
+    />
+    <DropTarget(DragSource(WithStyles(Row)))
+      idx={3}
+      inputConfiguration={
+        Object {
+          "audio": Object {
+            "disabled": true,
+          },
+          "image": Object {
+            "disabled": false,
+          },
+          "video": Object {
+            "disabled": true,
+          },
+        }
+      }
+      key="3"
+      mathMlOptions={
+        Object {
+          "mmlEditing": false,
+          "mmlOutput": false,
+        }
+      }
+      maxImageHeight={150}
+      maxImageWidth={300}
+      minQuestions={2}
+      model={
+        Object {
+          "choiceMode": "radio",
+          "element": "match-element",
+          "feedback": Object {
+            "correct": Object {
+              "default": "Correct",
+              "type": "none",
+            },
+            "incorrect": Object {
+              "default": "Incorrect",
+              "type": "none",
+            },
+            "partial": Object {
+              "default": "Nearly",
+              "type": "none",
+            },
+          },
+          "feedbackEnabled": true,
+          "headers": Array [
+            "Column 1",
+            "Column 2",
+            "Column 3",
+          ],
+          "id": "1",
+          "layout": 3,
+          "lockChoiceOrder": true,
+          "partialScoring": Array [],
+          "prompt": "Prompt",
+          "rows": Array [
+            Object {
+              "id": 1,
+              "title": "Question Text 1",
+              "values": Array [
+                false,
+                false,
+              ],
+            },
+            Object {
+              "id": 2,
+              "title": "Question Text 2",
+              "values": Array [
+                false,
+                false,
+              ],
+            },
+            Object {
+              "id": 3,
+              "title": "Question Text 3",
+              "values": Array [
+                false,
+                false,
+              ],
+            },
+            Object {
+              "id": 4,
+              "title": "Question Text 4",
+              "values": Array [
+                false,
+                false,
+              ],
+            },
+          ],
+        }
+      }
+      onChange={[MockFunction]}
+      onDeleteRow={[MockFunction]}
+      onMoveRow={[Function]}
+      row={
+        Object {
+          "id": 4,
+          "title": "Question Text 4",
+          "values": Array [
+            false,
+            false,
+          ],
+        }
+      }
+    />
+    <WithStyles(AddRowButton)
+      onAddClick={[MockFunction]}
+    />
+  </div>
+</div>
+`;
+
 exports[`choice snapshot renders 1`] = `""`;

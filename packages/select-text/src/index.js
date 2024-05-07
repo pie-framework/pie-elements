@@ -1,11 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {
-  SessionChangedEvent,
-  ModelSetEvent
-} from '@pie-framework/pie-player-events';
+import { SessionChangedEvent, ModelSetEvent } from '@pie-framework/pie-player-events';
 import Main from './main';
-import { renderMath } from '@pie-lib/math-rendering';
+import { renderMath } from '@pie-lib/pie-toolbox/math-rendering-accessible';
 import generateModel from './utils';
 
 export default class SelectText extends HTMLElement {
@@ -18,11 +15,7 @@ export default class SelectText extends HTMLElement {
 
     this.render();
     this.dispatchEvent(
-      new ModelSetEvent(
-        this.tagName.toLowerCase(),
-        this.isSessionComplete(),
-        this._model !== undefined
-      )
+      new ModelSetEvent(this.tagName.toLowerCase(), this.isSessionComplete(), this._model !== undefined),
     );
   }
 
@@ -32,14 +25,24 @@ export default class SelectText extends HTMLElement {
     if (this._model) {
       const generatedModel = generateModel(this._model) || {};
       const { tokens } = generatedModel;
+      let { selectedTokens } = s || {};
 
-      // make sure initial session tokens are parsed and have correct start and end (according to the regenerated model) - this case was introduced mostly for createCorrectSession
+      selectedTokens = selectedTokens || [];
 
-      // check if the selectedTokens have the correct start and end
-      const areCorrect = (s.selectedTokens || []).filter(({ start, end }) => tokens.find(({ start: tStart, end: tEnd }) => start === tStart && end === tEnd)).length;
+      // This case was introduced mostly for createCorrectSession:
+      // make sure initial session tokens are parsed and have correct start and end (according to the regenerated model)
+      const selectedTokenExistsInGeneratedTokens = (s) =>
+        tokens.find(({ start: tStart, end: tEnd }) => s.start === tStart && s.end === tEnd);
 
-      if (!areCorrect) {
-        const generatedModel = generateModel({ ...this._model, tokens: s.selectedTokens }) || {};
+      // check if ALL the selectedTokens have the correct start and end
+      const allAreCorrect = selectedTokens.reduce(
+        (acc, selectedToken) => acc && selectedTokenExistsInGeneratedTokens(selectedToken),
+        true,
+      );
+
+      if (!allAreCorrect) {
+        // otherwise, make sure to parse selectedTokens as well
+        const generatedModel = generateModel({ ...this._model, tokens: selectedTokens }) || {};
         const { tokens } = generatedModel;
 
         if (tokens) {
@@ -48,11 +51,14 @@ export default class SelectText extends HTMLElement {
       }
     }
 
-
     if (!Array.isArray(this._session.selectedTokens)) {
       this._session.selectedTokens = [];
     }
     this.render();
+  }
+
+  get session() {
+    return this._session;
   }
 
   isSessionComplete() {
@@ -63,12 +69,7 @@ export default class SelectText extends HTMLElement {
   selectionChanged(selection) {
     this._session.selectedTokens = selection;
 
-    this.dispatchEvent(
-      new SessionChangedEvent(
-        this.tagName.toLowerCase(),
-        this.isSessionComplete()
-      )
-    );
+    this.dispatchEvent(new SessionChangedEvent(this.tagName.toLowerCase(), this.isSessionComplete()));
   }
 
   connectedCallback() {
@@ -80,7 +81,7 @@ export default class SelectText extends HTMLElement {
       const el = React.createElement(Main, {
         model: this._model,
         session: this._session,
-        onSelectionChange: this.selectionChanged.bind(this)
+        onSelectionChange: this.selectionChanged.bind(this),
       });
 
       ReactDOM.render(el, this, () => {

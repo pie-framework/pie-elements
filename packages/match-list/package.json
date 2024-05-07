@@ -4,7 +4,7 @@
     "access": "public"
   },
   "repository": "pie-framework/pie-elements",
-  "version": "1.12.18",
+  "version": "2.11.1",
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -14,16 +14,13 @@
     "@material-ui/core": "^3.9.2",
     "@material-ui/icons": "^3.0.2",
     "@pie-framework/pie-player-events": "^0.1.0",
-    "@pie-lib/correct-answer-toggle": "^2.3.34",
-    "@pie-lib/drag": "^1.1.52",
-    "@pie-lib/math-rendering": "^2.3.12",
-    "@pie-lib/render-ui": "^4.12.4",
+    "@pie-lib/pie-toolbox": "1.17.1",
     "classnames": "^2.2.5",
     "debug": "^4.1.1",
     "lodash": "^4.17.10",
     "prop-types": "^15.6.1",
     "react": "^16.8.1",
-    "react-dnd": "^9.3.2",
+    "react-dnd": "^14.0.5",
     "react-dom": "^16.8.1"
   },
   "author": "",

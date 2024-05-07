@@ -2,14 +2,7 @@ const path = require('path');
 const fs = require('fs-extra');
 const _ = require('lodash');
 
-const blacklist = [
-  'pie-models',
-  'math-inline',
-  'protractor',
-  'ruler',
-  'calculator',
-  'select-text',
-];
+const blacklist = ['pie-models', 'math-inline', 'protractor', 'ruler', 'calculator', 'select-text'];
 
 const packagesDir = path.resolve(__dirname, '../packages');
 /** Pslb will only support pie packages that have a configure and controller subpkg */
@@ -26,14 +19,12 @@ const listPackages = () => {
       .filter((f) => !blacklist.includes(f))
       .map((f) => {
         try {
-          const rootPkg = fs.readJsonSync(
-            path.join(packagesDir, f, 'package.json')
-          );
+          const rootPkg = fs.readJsonSync(path.join(packagesDir, f, 'package.json'));
           return rootPkg.name;
         } catch (e) {
           console.warn(`error for: ${f}, ${e.message}`);
         }
-      })
+      }),
   );
 };
 
@@ -50,17 +41,12 @@ module.exports = {
     commonJs: {},
   },
   mode: 'development',
-  range: '^',
+  range: 'exact',
   minify: false,
   libs: {
     repository: 'pie-framework/pie-elements',
     packages: [
-      { name: '@pie-lib/drag-module', version: '^1.0.0' },
-      { name: '@pie-lib/math-rendering-module', version: '^1.0.0' },
-      { name: '@pie-lib/math-edit-module', version: '^1.0.0' },
-      { name: '@pie-lib/shared-module', version: '^1.1.0' },
-      { name: '@pie-lib/editable-html-module', version: '^1.0.0' },
-      { name: '@pie-lib/config-module', version: '^1.0.0' },
+      { name: '@pie-lib/pie-toolbox-module', version: '4.12.0' }
     ],
   },
 };

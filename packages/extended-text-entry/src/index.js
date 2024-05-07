@@ -1,17 +1,13 @@
 import Main from './main';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {
-  ModelSetEvent,
-  SessionChangedEvent
-} from '@pie-framework/pie-player-events';
-import { renderMath } from '@pie-lib/math-rendering';
+import { renderMath } from '@pie-lib/pie-toolbox/math-rendering-accessible';
+import { ModelSetEvent, SessionChangedEvent } from '@pie-framework/pie-player-events';
 import debug from 'debug';
 
 const log = debug('@pie-ui:extended-text-entry');
 
-const domParser =
-  typeof window !== undefined ? new DOMParser() : { parseFromString: v => v };
+const domParser = typeof window !== undefined ? new DOMParser() : { parseFromString: (v) => v };
 
 export function textContent(value) {
   if (typeof value !== 'string') {
@@ -45,9 +41,7 @@ export default class RootExtendedTextEntry extends HTMLElement {
 
   set model(m) {
     this._model = m;
-    this.dispatchEvent(
-      new ModelSetEvent(this.tagName.toLowerCase(), false, !!this._model)
-    );
+    this.dispatchEvent(new ModelSetEvent(this.tagName.toLowerCase(), false, !!this._model));
 
     this.render();
   }
@@ -57,8 +51,14 @@ export default class RootExtendedTextEntry extends HTMLElement {
     this.render();
   }
 
+  get session() {
+    return this._session;
+  }
+
   valueChange(value) {
     this._session.value = value;
+
+    this.dispatchEvent(new SessionChangedEvent(this.tagName.toLowerCase(), isComplete(value)));
     this.dispatchEvent(
       new SessionChangedEvent(this.tagName.toLowerCase(), isComplete(value))
     );
@@ -85,6 +85,9 @@ export default class RootExtendedTextEntry extends HTMLElement {
   }
 
   connectedCallback() {
+    this.setAttribute('aria-label', 'Written Response Question');
+    this.setAttribute('role', 'region');
+
     this.render();
   }
 

@@ -2,9 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
-import classNames from 'classnames';
-import { PreviewLayout } from '@pie-lib/render-ui';
+import { PreviewLayout } from '@pie-lib/pie-toolbox/render-ui';
 import MultipleChoice from './multiple-choice';
+
+const styles = () => ({});
 
 class Main extends React.Component {
   static propTypes = {
@@ -23,25 +24,18 @@ class Main extends React.Component {
   }
 
   render() {
-    const { model, onChoiceChanged, session, classes } = this.props;
+    const { model, onChoiceChanged, session } = this.props;
 
     // model.partLabel is a property used for ebsr
     return (
       <PreviewLayout>
-        {model.partLabel && <p>{model.partLabel}</p>}
-        <div className={classNames(classes.root, classes[model.className])}>
-          <MultipleChoice
-            {...model}
-            session={session}
-            onChoiceChanged={onChoiceChanged}
-          />
-        </div>
+        <MultipleChoice {...model} session={session} onChoiceChanged={onChoiceChanged} />
       </PreviewLayout>
     );
   }
 }
 
-const Styled = withStyles({}, { name: 'Main' })(Main);
+const Styled = withStyles(styles, { name: 'Main' })(Main);
 
 const theme = createMuiTheme({
   typography: {

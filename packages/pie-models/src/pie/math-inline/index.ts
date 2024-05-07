@@ -2,7 +2,15 @@ import { PieModel } from '../../PieModel';
 import { PromptConfig } from '../../PromptConfig';
 import { CommonConfigSettings } from '../../CommonConfigSettings';
 import { ComplexFeedbackType } from '../../Feedback';
-import { ConfigureProp, ConfigurePropWithEnabled } from '../ConfigurationProp';
+import {
+  ConfigureLanguageOptionsProp,
+  ConfigureMathMLProp,
+  ConfigureMaxImageDimensionsProp,
+  ConfigureProp,
+  ConfigurePropWithEnabled,
+  EditableHtmlConfigureProp,
+  EditableHtmlPluginConfigureRequired,
+} from '../ConfigurationProp';
 
 interface Alternate {
   /** The id for the alternative response */
@@ -76,17 +84,28 @@ export interface MathInlinePie extends PieModel {
    * 3 for Grade 3 - 5
    * 6 for Grade 6 - 7
    * 8 for Grade 8 - HS
-   * @default - miscellaneous
+   * non-negative-integers
+   * integers
+   * decimals
+   * fractions
+   * geometry
+   * advanced-algebra
+   * statistics
+   * @default - item-authoring
    */
   equationEditor?:
     | 'geometry'
     | 'advanced-algebra'
     | 'statistics'
-    | 'miscellaneous'
+    | 'item-authoring'
     | 1
     | 3
     | 6
-    | 8;
+    | 8
+    | 'non-negative-integers'
+    | 'integers'
+    | 'decimals'
+    | 'fractions';
 
   /** Feedback configuration for the responses */
   feedback?: ComplexFeedbackType;
@@ -139,6 +158,9 @@ export interface MathInlinePie extends PieModel {
   /** Indicates if Rationale are enabled */
   rationaleEnabled: boolean;
 
+  /** Indicates if spellcheck is enabled for the author. Default value is true */
+  spellCheckEnabled: boolean;
+
   /** Indicates if Student Instructions are enabled */
   studentInstructionsEnabled: boolean;
 
@@ -153,19 +175,31 @@ export interface MathInlinePie extends PieModel {
    * @default: 'bottom'
    */
   toolbarEditorPosition?: 'bottom' | 'top';
+
+  /** Indicates if Rubric is enabled */
+  rubricEnabled: boolean;
+
+  /** Indicates the language of the component
+   * Supported options: en, es, en_US, en-US, es_ES, es-ES, es_MX, es-MX
+   */
+  language?: string;
 }
 
 /**
  * Config Object for @pie-elements/math-inline
  * @additionalProperties false
  */
-export interface MathInlineConfigure
-  extends PromptConfig,
-    CommonConfigSettings {
+export interface MathInlineConfigure extends PromptConfig, CommonConfigSettings {
+  /**
+   * Base editable html input configuration regarding plugins that are enabled/disabled
+   * E.g. audio, video, image
+   */
+  baseInputConfiguration?: EditableHtmlConfigureProp;
+
   /**
    * Configuration for prompt
    */
-  prompt?: ConfigureProp;
+  prompt?: EditableHtmlPluginConfigureRequired;
 
   /**
    * Configuration for response type
@@ -180,7 +214,17 @@ export interface MathInlineConfigure
   /**
    * Rationale configuration
    */
-  rationale?: ConfigureProp;
+  rationale?: EditableHtmlPluginConfigureRequired;
+
+  /**
+   * Indicates if the settings panel is not available
+   */
+  settingsPanelDisabled?: boolean;
+
+  /**
+   * Configuration for the author's spellcheck
+   */
+  spellCheck?: ConfigureProp;
 
   /**
    * Scoring Type configuration
@@ -195,7 +239,7 @@ export interface MathInlineConfigure
   /**
    * Teacher Instructions configuration
    */
-  teacherInstructions?: ConfigureProp;
+  teacherInstructions?: EditableHtmlPluginConfigureRequired;
 
   /**
    * Ignore Order configuration
@@ -206,4 +250,41 @@ export interface MathInlineConfigure
    * Allow Trailing Zeros configuration
    */
   allowTrailingZeros?: ConfigurePropWithEnabled;
+
+  /**
+   * Maximum number of response areas
+   */
+  maxResponseAreas?: number;
+
+  /**
+   * Maximum image width for input fields
+   */
+  maxImageWidth?: ConfigureMaxImageDimensionsProp;
+
+  /**
+   * Maximum image height for input fields
+   */
+  maxImageHeight?: ConfigureMaxImageDimensionsProp;
+
+  /**
+   * Rubric configuration - only relevant in environments that use pie-player-components
+   */
+  withRubric?: ConfigureProp;
+
+  /** Configuration for editable-html */
+  mathMlOptions?: ConfigureMathMLProp;
+
+  /**
+   * Language configuration
+   */
+  language?: ConfigurePropWithEnabled;
+
+  /**
+   * Language choices configuration
+   * Only available if language is enabled
+   */
+  languageChoices?: {
+    label: string;
+    options: ConfigureLanguageOptionsProp[];
+  };
 }

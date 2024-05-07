@@ -1,7 +1,7 @@
 {
   "name": "@pie-element/extended-text-entry-configure",
   "private": true,
-  "version": "5.4.8",
+  "version": "9.11.1",
   "description": "",
   "main": "lib/index.js",
   "module": "src/index.js",
@@ -9,9 +9,8 @@
   "license": "ISC",
   "dependencies": {
     "@material-ui/core": "^3.9.2",
-    "@pie-framework/pie-configure-events": "^1.2.0",
-    "@pie-lib/config-ui": "^10.10.22",
-    "@pie-lib/editable-html": "^7.19.1",
+    "@pie-framework/pie-configure-events": "^1.3.0",
+    "@pie-lib/pie-toolbox": "1.17.1",
     "lodash": "^4.17.15",
     "prop-types": "^15.6.2",
     "react": "^16.8.1",

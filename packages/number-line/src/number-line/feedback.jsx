@@ -1,19 +1,13 @@
-import {
-  Correct,
-  Incorrect,
-  NothingSubmitted,
-  PartiallyCorrect,
-  ShowRationale
-} from '@pie-lib/icons';
+import { Correct, Incorrect, NothingSubmitted, PartiallyCorrect, ShowRationale } from '@pie-lib/pie-toolbox/icons';
 import PropTypes from 'prop-types';
-import { color } from '@pie-lib/render-ui';
+import { color } from '@pie-lib/pie-toolbox/render-ui';
 
 import React from 'react';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import classNames from 'classnames';
 import injectSheet from 'react-jss';
 
-let getIcon = t => {
+let getIcon = (t) => {
   switch (t) {
     case 'unanswered':
       return NothingSubmitted;
@@ -30,7 +24,7 @@ let getIcon = t => {
   }
 };
 
-const Feedback = props => {
+const Feedback = (props) => {
   const { classes, type } = props;
   let className = classNames(classes[type], classes.feedback);
   let Icon = getIcon(props.type);
@@ -40,10 +34,7 @@ const Feedback = props => {
       <CSSTransition classNames={'fb'} key="fb" timeout={300}>
         <div key="panel" className={className} style={{ width: props.width }}>
           <Icon iconSet="emoji" shape="square" />
-          <span
-            className={classes.message}
-            dangerouslySetInnerHTML={{ __html: props.message }}
-          />
+          <span className={classes.message} dangerouslySetInnerHTML={{ __html: props.message }} />
         </div>
       </CSSTransition>
     </TransitionGroup>
@@ -54,7 +45,7 @@ Feedback.propTypes = {
   width: PropTypes.number,
   message: PropTypes.string,
   classes: PropTypes.object.isRequired,
-  type: PropTypes.string
+  type: PropTypes.string,
 };
 
 const styles = {
@@ -65,23 +56,23 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     '& svg': {
-      height: '30px'
+      height: '30px',
     },
     '& h1': {
       padding: '0px',
-      margin: '0px'
-    }
+      margin: '0px',
+    },
   },
   message: {
     paddingLeft: '5px',
-    userSelect: 'none'
+    userSelect: 'none',
   },
   correct: {
-    backgroundColor: color.correct()
+    backgroundColor: color.correct(),
   },
   incorrect: {
-    backgroundColor: color.incorrect()
-  }
+    backgroundColor: color.incorrect(),
+  },
 };
 
 export default injectSheet(styles)(Feedback);

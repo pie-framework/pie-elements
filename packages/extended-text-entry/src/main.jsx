@@ -1,27 +1,43 @@
 import React from 'react';
-import EditableHTML from '@pie-lib/editable-html';
+import {EditableHtml} from '@pie-lib/pie-toolbox/editable-html';
 import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import debug from 'debug';
 import debounce from 'lodash/debounce';
-import { color, Feedback, Collapsible, PreviewPrompt } from '@pie-lib/render-ui';
-import { renderMath } from '@pie-lib/math-rendering';
+import { color, Feedback, Collapsible, PreviewPrompt } from '@pie-lib/pie-toolbox/render-ui';
+import { renderMath } from '@pie-lib/pie-toolbox/math-rendering';
+import classnames from 'classnames';
 import AnnotationEditor from './annotation/annotation-editor';
 
 const log = debug('@pie-ui:extended-text-entry');
 
-const style = theme => ({
+const style = (theme) => ({
   main: {
     backgroundColor: color.background(),
-    color: color.text()
+    color: color.text(),
   },
   prompt: {
     width: '100%',
     color: color.text(),
     marginBottom: theme.spacing.unit * 2,
-    fontSize: 'inherit'
-  }
+    fontSize: 'inherit',
+  },
+  teacherInstructions: {
+    marginBottom: theme.spacing.unit * 2,
+  },
+  editor: {
+    marginBottom: theme.spacing.unit * 2,
+    borderRadius: '4px',
+  },
+  srOnly: {
+    position: 'absolute',
+    left: '-10000px',
+    top: 'auto',
+    width: '1px',
+    height: '1px',
+    overflow: 'hidden',
+  },
 });
 
 export class Main extends React.Component {
@@ -37,12 +53,6 @@ export class Main extends React.Component {
       comment: PropTypes.string
     }).isRequired
   };
-
-  componentDidUpdate() {
-    if (this.containerRef) {
-      renderMath(this.containerRef);
-    }
-  }
 
   changeSessionValue = debounce(this.props.onValueChange, 1500);
 
@@ -60,56 +70,65 @@ export class Main extends React.Component {
       equationEditor,
       feedback,
       mathInput,
+      playersToolbarPosition,
       predefinedAnnotations,
       prompt,
+      spanishInput,
+      specialInput,
+      spellCheckEnabled,
       teacherInstructions,
-      playersToolbarPosition
     } = model;
     const { annotations, comment, value } = session;
     const { width, height } = dimensions || {};
     const maxHeight = '40vh';
-    const toolbarOpts = {};
+    const toolbarOpts = { position: playersToolbarPosition === 'top' ? 'top' : 'bottom' };
 
     log('[render] disabled? ', disabled);
 
-    const teacherInstructionsDiv = <PreviewPrompt defaultClassName="teacher-instructions" prompt={teacherInstructions} />;
+    const teacherInstructionsDiv = (
+      <PreviewPrompt defaultClassName="teacher-instructions" prompt={teacherInstructions} />
+    );
 
-    switch (playersToolbarPosition) {
-      case 'top':
-        toolbarOpts.position = 'top';
-        break;
-      default:
-        toolbarOpts.position = 'bottom';
-        break;
+    const languageCharactersProps = [];
+
+    if (spanishInput) {
+      languageCharactersProps.push({ language: 'spanish' });
+    }
+
+    if (specialInput) {
+      languageCharactersProps.push({ language: 'special' });
     }
 
     return (
       <div
         className={classes.main}
-        ref={ref => {
+        ref={(ref) => {
           this.containerRef = ref;
         }}
       >
-        {
-          teacherInstructions && (
-            <div>
-              {!animationsDisabled ? (
-                <Collapsible
-                  labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}
-                  className={classes.collapsible}
-                >
-                  {teacherInstructionsDiv}
-                </Collapsible>
-              ) : teacherInstructionsDiv }
-              <br/>
-            </div>
-          )
-        }
+        <h2 className={classes.srOnly}>Constructed Response Question</h2>
+
+        {teacherInstructions && (
+          <div className={classes.teacherInstructions}>
+            {!animationsDisabled ? (
+              <Collapsible
+                labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}
+                className={classes.collapsible}
+              >
+                {teacherInstructionsDiv}
+              </Collapsible>
+            ) : (
+              teacherInstructionsDiv
+            )}
+          </div>
+        )}
+
         {prompt && (
-          <Typography className={classes.prompt} >
-            <PreviewPrompt defaultClassName="prompt" prompt={prompt} />
+          <Typography component={'span'} className={classes.prompt}>
+            <PreviewPrompt defaultClassName="prompt" prompt={model.prompt} />
           </Typography>
         )}
+
         {annotatorMode ? (
           <AnnotationEditor
             text={value || ''}
@@ -127,38 +146,36 @@ export class Main extends React.Component {
             keypadMode={equationEditor}
           />
         ) : (
-          <EditableHTML
-            className="response-area-editor"
-            onChange={this.changeSessionValue}
-            markup={value || ''}
-            width={width && width.toString()}
-            minHeight={height && height.toString()}
-            maxHeight={maxHeight}
-            disabled={disabled}
-            highlightShape={true}
-            toolbarOpts={toolbarOpts}
-            pluginProps={{
-              math: {
-                disabled: !mathInput,
-                customKeys: customKeys,
-                keypadMode: equationEditor,
-                controlledKeypadMode: false
-              },
-              video: {
-                disabled: true
-              },
-              audio: {
-                disabled: true
-              }
-            }}
-          />
+        <EditableHtml
+          className={classnames(classes.editor, 'response-area-editor')}
+          onChange={this.changeSessionValue}
+          markup={value || ''}
+          width={width && width.toString()}
+          minHeight={height && height.toString()}
+          maxHeight={maxHeight}
+          disabled={disabled}
+          highlightShape={true}
+          toolbarOpts={toolbarOpts}
+          spellCheck={spellCheckEnabled}
+          pluginProps={{
+            math: {
+              disabled: !mathInput,
+              customKeys: this.props.model.customKeys,
+              keypadMode: this.props.model.equationEditor,
+              controlledKeypadMode: false,
+            },
+            video: {
+              disabled: true,
+            },
+            audio: {
+              disabled: true,
+            },
+          }}
+          languageCharactersProps={languageCharactersProps}
+        />
         )}
-        {feedback && (
-          <div>
-            <br />
-            <Feedback correctness="correct" feedback={feedback} />
-          </div>
-        )}
+
+        {feedback && <Feedback correctness="correct" feedback={feedback} />}
       </div>
     );
   }

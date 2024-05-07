@@ -1,6 +1,6 @@
 module.exports = [
   {
     id: '1',
-    element: 'match-list'
-  }
+    element: 'match-list',
+  },
 ];

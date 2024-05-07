@@ -1,10 +1,9 @@
-import React from 'react';
 import cloneDeep from 'lodash/cloneDeep';
 import MultipleChoice from '@pie-element/multiple-choice';
 import debug from 'debug';
 import get from 'lodash/get';
 
-import {SessionChangedEvent} from '@pie-framework/pie-player-events';
+import { SessionChangedEvent } from '@pie-framework/pie-player-events';
 const MC_TAG_NAME = 'ebsr-multiple-choice';
 const SESSION_CHANGED = SessionChangedEvent.TYPE;
 
@@ -22,10 +21,11 @@ const preparePrintModel = (model, opts) => {
   const instr = opts.role === 'instructor';
 
   model.prompt = model.promptEnabled !== false ? model.prompt : undefined;
-  model.teacherInstructions = instr && model.teacherInstructionsEnabled !== false ? model.teacherInstructions : undefined;
+  model.teacherInstructions =
+    instr && model.teacherInstructionsEnabled !== false ? model.teacherInstructions : undefined;
   model.showTeacherInstructions = instr;
   model.alwaysShowCorrect = instr;
-  model.mode = instr ? 'evaluate' : model.mode;
+  model.mode = instr ? 'evaluate' : 'gather';
 
   model.disabled = true;
   model.animationsDisabled = true;
@@ -113,12 +113,9 @@ export default class Ebsr extends HTMLElement {
   }
 
   setPartModel(part, key) {
-    if (this._model && this._model[key]) {
-      const { mode } = this._model;
-
+    if (this._model && this._model[key] && part) {
       part.model = {
         ...preparePrintModel(this._model[key], this._options),
-        mode,
         keyMode: this._model[key].choicePrefix,
       };
 
@@ -136,7 +133,7 @@ export default class Ebsr extends HTMLElement {
   }
 
   setPartSession(part, key) {
-    if (this._session && this._model) {
+    if (this._session && this._model && part) {
       const { value } = this._session;
       part.session = value && value[key] ? value[key] : { id: key };
     }
@@ -150,9 +147,7 @@ export default class Ebsr extends HTMLElement {
 
     log('[onSessionChanged] session: ', this._session);
     const complete = isSessionComplete(this._session);
-    this.dispatchEvent(
-      new SessionChangedEvent(this.tagName.toLowerCase(), complete)
-    );
+    this.dispatchEvent(new SessionChangedEvent(this.tagName.toLowerCase(), complete));
   }
 
   get partA() {

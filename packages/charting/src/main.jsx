@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import {color, Collapsible, hasText, PreviewPrompt} from '@pie-lib/render-ui';
-import { Chart, chartTypes } from '@pie-lib/charting';
+import { color, Collapsible, hasText, PreviewPrompt } from '@pie-lib/pie-toolbox/render-ui';
+import { Chart, chartTypes } from '@pie-lib/pie-toolbox/charting';
+import isArray from 'lodash/isArray';
 import isEqual from 'lodash/isEqual';
-import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
+import {CorrectAnswerToggle} from '@pie-lib/pie-toolbox/correct-answer-toggle';
 
 export class Main extends React.Component {
   static propTypes = {
@@ -25,21 +26,21 @@ export class Main extends React.Component {
     };
   }
 
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    const { model: { data: nextData = [] } = {} } = nextProps;
-    const { model: { data = [] } = {} } = this.props;
-
-    if (!isEqual(nextData, data)) {
-      this.setState({ categories: nextData });
+  componentDidUpdate(prevProps) {
+    if (!isEqual(prevProps.categories, this.props.categories)) {
+        this.setState({ categories: this.props.categories });
+    } else if (!isEqual(prevProps.model.data, this.props.model.data)) {
+        this.setState({ categories: this.props.model.data });
     }
-  }
+}
+
 
   changeData = (data) =>
     this.setState(
       {
         categories: data,
       },
-      () => this.props.onAnswersChange(data)
+      () => this.props.onAnswersChange(data),
     );
 
   toggleCorrect = (showingCorrect) => this.setState({ showingCorrect });
@@ -55,12 +56,12 @@ export class Main extends React.Component {
       domain,
       range,
       title,
-      editCategoryEnabled,
       addCategoryEnabled,
-      categoryDefaultLabel,
+      studentNewCategoryDefaultLabel,
       rationale,
       correctedAnswer,
       correctAnswer,
+      language
     } = model;
 
     const correctData =
@@ -78,35 +79,30 @@ export class Main extends React.Component {
 
     return (
       <div className={classes.mainContainer}>
+        {teacherInstructions && hasText(teacherInstructions) && (
+          <Collapsible
+            className={classes.collapsible}
+            labels={{
+              hidden: 'Show Teacher Instructions',
+              visible: 'Hide Teacher Instructions',
+            }}
+          >
+            <PreviewPrompt prompt={teacherInstructions} />
+          </Collapsible>
+        )}
+
+        {prompt && <PreviewPrompt className="prompt" prompt={prompt} />}
+
         <CorrectAnswerToggle
           show={showToggle}
           toggled={showingCorrect}
           onToggle={this.toggleCorrect}
+          language={language}
         />
-
-        {teacherInstructions && hasText(teacherInstructions) && (
-          <React.Fragment>
-            <Collapsible
-              labels={{
-                hidden: 'Show Teacher Instructions',
-                visible: 'Hide Teacher Instructions',
-              }}
-            >
-              <PreviewPrompt prompt={teacherInstructions} />
-            </Collapsible>
-            <br />
-          </React.Fragment>
-        )}
-
-        {prompt && (
-          <React.Fragment>
-            <PreviewPrompt className="prompt" prompt={prompt} />
-            <br />
-          </React.Fragment>
-        )}
 
         {showingCorrect && showToggle ? (
           <Chart
+            className={classes.chart}
             chartType={chartType}
             size={size}
             domain={domain}
@@ -122,12 +118,13 @@ export class Main extends React.Component {
             data={correctData || categories}
             title={title}
             onDataChange={this.changeData}
-            editCategoryEnabled={false}
             addCategoryEnabled={false}
-            categoryDefaultLabel={categoryDefaultLabel}
+            categoryDefaultLabel={studentNewCategoryDefaultLabel}
+            language={language}
           />
         ) : (
           <Chart
+            className={classes.chart}
             chartType={chartType}
             size={size}
             domain={domain}
@@ -143,17 +140,14 @@ export class Main extends React.Component {
             data={correctedAnswer || categories}
             title={title}
             onDataChange={this.changeData}
-            editCategoryEnabled={editCategoryEnabled}
             addCategoryEnabled={addCategoryEnabled}
-            categoryDefaultLabel={categoryDefaultLabel}
+            categoryDefaultLabel={studentNewCategoryDefaultLabel}
+            language={language}
           />
         )}
 
-        <br />
         {rationale && hasText(rationale) && (
-          <Collapsible
-            labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }}
-          >
+          <Collapsible labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }}>
             <PreviewPrompt prompt={rationale} />
           </Collapsible>
         )}
@@ -164,11 +158,18 @@ export class Main extends React.Component {
 
 const styles = (theme) => ({
   mainContainer: {
-    padding: theme.spacing.unit,
     color: color.text(),
     backgroundColor: color.background(),
-    overflow: 'hidden'
-  }
+    overflowX: 'scroll',
+    overflowY: 'hidden',
+  },
+  chart: {
+    marginTop: theme.spacing.unit * 2,
+    marginBottom: theme.spacing.unit * 2,
+  },
+  collapsible: {
+    marginBottom: theme.spacing.unit * 2,
+  },
 });
 
 export default withStyles(styles)(Main);

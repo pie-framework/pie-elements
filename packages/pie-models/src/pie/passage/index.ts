@@ -1,19 +1,19 @@
-import {PieModel} from '../../PieModel';
+import { PieModel } from '../../PieModel';
 
 /**
-* Model for the @pie-elements/passage
-* @additionalProperties false
-*/
+ * Model for the @pie-elements/passage
+ * @additionalProperties false
+ */
 export interface PassagePie extends PieModel {
-    passages: Passage[];
+  passages: Passage[];
 }
 
 export interface Passage {
-    /** The title of the passage */
-    title: string;
+  /** The title of the passage */
+  title: string;
 
-    /** The content of the passage */
-    text: string;
+  /** The content of the passage */
+  text: string;
 }
 
 /**

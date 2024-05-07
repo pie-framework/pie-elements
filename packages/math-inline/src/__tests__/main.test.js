@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { shallow } from 'enzyme';
 import Main from '../main';
-import { mq, HorizontalKeypad } from '@pie-lib/math-input';
-import { shallowChild } from '@pie-lib/test-utils';
-import { Feedback } from '@pie-lib/render-ui';
-import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
+import { mq, HorizontalKeypad } from '@pie-lib/pie-toolbox/math-input';
+import { shallowChild } from '@pie-lib/pie-toolbox/test-utils';
+import { Feedback } from '@pie-lib/pie-toolbox/render-ui';
+import {CorrectAnswerToggle} from '@pie-lib/pie-toolbox/correct-answer-toggle';
 import SimpleQuestionBlock from '../simple-question-block';
 
 const Mathquill = require('@pie-framework/mathquill');
@@ -107,7 +107,7 @@ describe('Math-Inline Main', () => {
     it('prepares latex correctly and answer blocks and turns them into inputs', () => {
       expect(wrapper.dive().find(mq.Static).length).toEqual(1);
       expect(wrapper.dive().find(mq.Static).props().latex).toEqual(
-        '\\text{A family sized box contains} \\MathQuillMathField[r1]{} \\text{less than} \\MathQuillMathField[r2]{} \\text{times the number  }  \\frac{3}{6}=\\frac{ \\MathQuillMathField[r3]{} }{4} + \\frac{ \\MathQuillMathField[r4]{} }{4}'
+        '\\text{A family sized box contains} \\MathQuillMathField[r1]{} \\text{less than} \\MathQuillMathField[r2]{} \\text{times the number  }  \\frac{3}{6}=\\frac{ \\MathQuillMathField[r3]{} }{4} + \\frac{ \\MathQuillMathField[r4]{} }{4}',
       );
     });
 
@@ -157,7 +157,7 @@ describe('Math-Inline Main', () => {
       expect(wrapper.find(HorizontalKeypad).length).toEqual(0);
       wrapper.instance().onSubFieldFocus('r1');
       wrapper.instance().onBlur({
-        relatedTarget: { offsetParent: { children: [{ attributes: { 'data-keypad': true } }] } },
+        relatedTarget: { offsetParent: { getAttribute: () => 'tooltip', children: [{ attributes: { 'data-keypad': true } }] } },
         currentTarget: { offsetParent: 'editor1' },
       });
       expect(wrapper.state().activeAnswerBlock).toEqual('r1');
@@ -168,7 +168,7 @@ describe('Math-Inline Main', () => {
 
       expect(wrapper.find(HorizontalKeypad).length).toEqual(0);
       wrapper.instance().onBlur({
-        relatedTarget: { offsetParent: { children: [{ attributes: { 'data-keypad': false } }] } },
+        relatedTarget: { offsetParent: { getAttribute: () => 'tooltip', children: [{ attributes: { 'data-keypad': false } }] } },
         currentTarget: { offsetParent: 'editor2' },
       });
       expect(wrapper.state().activeAnswerBlock).toEqual('');

@@ -5,6 +5,7 @@ import isEmpty from 'lodash/isEmpty';
 import isUndefined from 'lodash/isUndefined';
 import find from 'lodash/find';
 import { DragAnswer } from './answer';
+import { MatchDroppablePlaceholder } from '@pie-lib/pie-toolbox/drag';
 
 export class ChoicesList extends React.Component {
   static propTypes = {
@@ -12,57 +13,69 @@ export class ChoicesList extends React.Component {
     session: PropTypes.object.isRequired,
     instanceId: PropTypes.string.isRequired,
     model: PropTypes.object.isRequired,
-    disabled: PropTypes.bool.isRequired
+    disabled: PropTypes.bool.isRequired,
+    onRemoveAnswer: PropTypes.func,
   };
 
   render() {
-    const {
-      model,
-      classes,
-      disabled,
-      session,
-      instanceId
-    } = this.props;
+    const { model, classes, disabled, session, instanceId, onRemoveAnswer } = this.props;
     const { config } = model;
     const { duplicates } = config;
 
+    const filteredAnswers = config.answers
+      .filter(
+        (answer) =>
+          duplicates ||
+          isEmpty(session) ||
+          !session.value ||
+          isUndefined(find(session.value, (val) => val === answer.id)),
+      )
+      .map((answer) => (
+        <DragAnswer
+          key={answer.id}
+          instanceId={instanceId}
+          className={classes.choice}
+          draggable={true}
+          disabled={disabled}
+          session={session}
+          type="choice"
+          {...answer}
+        />
+      ));
+
     return (
-      <div className={classes.answersContainer}>
-        {
-          config.answers
-            .filter(answer => (duplicates || isEmpty(session) || !session.value || isUndefined(find(session.value, val => val === answer.id))))
-            .map((answer) => (
-              <DragAnswer
-                key={answer.id}
-                instanceId={instanceId}
-                className={classes.choice}
-                draggable={true}
-                disabled={disabled}
-                session={session}
-                type={'choice'}
-                {...answer}
-              />
-            ))
-        }
+      <div className={classes.choicesContainer}>
+        {MatchDroppablePlaceholder ? (
+          <MatchDroppablePlaceholder disabled={disabled} onRemoveAnswer={onRemoveAnswer}>
+            {filteredAnswers}
+          </MatchDroppablePlaceholder>
+        ) : (
+          <div className={classes.answersContainer}>{filteredAnswers}</div>
+        )}
       </div>
     );
   }
 }
 
-const styles = () => ({
+const styles = (theme) => ({
+  choicesContainer: {
+    marginBottom: theme.spacing.unit * 2,
+  },
   answersContainer: {
     alignItems: 'center',
     display: 'flex',
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-between',
-    marginTop: 50
+    marginTop: theme.spacing.unit,
+    marginBottom: theme.spacing.unit,
   },
   choice: {
     minHeight: '40px',
     minWidth: '200px',
-    height: 'initial'
-  }
+    height: 'initial',
+    margin: theme.spacing.unit / 2,
+  },
 });
 
 export default withStyles(styles)(ChoicesList);

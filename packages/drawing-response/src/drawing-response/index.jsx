@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Typography from '@material-ui/core/Typography';
-import {Collapsible, PreviewPrompt} from '@pie-lib/render-ui';
+import { color, Collapsible, PreviewPrompt } from '@pie-lib/pie-toolbox/render-ui';
 import { withStyles } from '@material-ui/core/styles';
 
 import Container from './container';
@@ -11,7 +10,7 @@ class DrawingResponseComponent extends React.Component {
     super(props);
     this.state = {
       showCorrect: false,
-      hasError: false
+      hasError: false,
     };
   }
 
@@ -27,36 +26,34 @@ class DrawingResponseComponent extends React.Component {
         imageUrl,
         prompt,
         mode,
-        teacherInstructions
+        teacherInstructions,
+        backgroundImageEnabled,
+        language
       },
       session,
       onSessionChange,
-      classes
+      classes,
     } = this.props;
     const { hasError, errorMessage } = this.state;
     const isEvaluateMode = mode === 'evaluate';
 
     return hasError ? (
-      <div>An error occured: {errorMessage}</div>
+      <div className={classes.main}>An error occured: {errorMessage}</div>
     ) : (
-      <div>
+      <div className={classes.main}>
         {teacherInstructions && (
-          <React.Fragment>
-            <Collapsible
-              labels={{
-                hidden: 'Show Teacher Instructions',
-                visible: 'Hide Teacher Instructions'
-              }}
-            >
-              <PreviewPrompt prompt={teacherInstructions} />
-            </Collapsible>
-            <br />
-          </React.Fragment>
+          <Collapsible
+            className={classes.collapsible}
+            labels={{
+              hidden: 'Show Teacher Instructions',
+              visible: 'Hide Teacher Instructions',
+            }}
+          >
+            <PreviewPrompt prompt={teacherInstructions} />
+          </Collapsible>
         )}
 
-        <Typography className={classes.prompt}>
-          <PreviewPrompt tagName="span" prompt={prompt} />
-        </Typography>
+        {prompt && <PreviewPrompt tagName="span" prompt={prompt} />}
 
         <Container
           session={session}
@@ -64,7 +61,9 @@ class DrawingResponseComponent extends React.Component {
           isEvaluateMode={isEvaluateMode}
           imageDimensions={imageDimensions}
           imageUrl={imageUrl}
+          backgroundImageEnabled={backgroundImageEnabled}
           disabled={disabled}
+          language={language}
         />
       </div>
     );
@@ -75,13 +74,17 @@ DrawingResponseComponent.propTypes = {
   classes: PropTypes.object,
   model: PropTypes.object.isRequired,
   onSessionChange: PropTypes.func.isRequired,
-  session: PropTypes.object.isRequired
+  session: PropTypes.object.isRequired,
 };
 
-const styles = () => ({
-  prompt: {
-    fontSize: 'inherit'
-  }
+const styles = (theme) => ({
+  main: {
+    color: color.text(),
+    backgroundColor: color.background(),
+  },
+  collapsible: {
+    marginBottom: theme.spacing.unit * 2,
+  },
 });
 
 export default withStyles(styles)(DrawingResponseComponent);

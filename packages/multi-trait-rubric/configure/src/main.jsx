@@ -1,61 +1,142 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import cloneDeep from 'lodash/cloneDeep';
 import isEmpty from 'lodash/isEmpty';
 
 import { withStyles } from '@material-ui/core/styles';
 
-import { withDragContext } from '@pie-lib/drag';
-import { layout, settings } from '@pie-lib/config-ui';
+import { withDragContext } from '@pie-lib/pie-toolbox/drag';
+import { layout, settings } from '@pie-lib/pie-toolbox/config-ui';
 
 import Scale from './scale';
 import { MultiTraitButton } from './common';
-import { ExcludeZeroDialog, excludeZeroTypes, IncludeZeroDialog } from './modals';
+import { ExcludeZeroDialog, excludeZeroTypes, IncludeZeroDialog, InfoDialog } from './modals';
 
 const { Panel, toggle } = settings;
-const MIN_WIDTH = '730px';
+const MIN_WIDTH = '650px';
 
-const styles = {
+const styles = (theme) => ({
   design: {
     fontFamily: 'Cerebri Sans',
-    fontSize: '14px',
+    fontSize: theme.typography.fontSize,
+  },
+});
+
+const ShowModal = ({ showExcludeZeroDialog, excludeZero, changeExcludeZero, cancel }) => {
+  if (showExcludeZeroDialog && !excludeZero) {
+    return (
+      <ExcludeZeroDialog
+        open={showExcludeZeroDialog && !excludeZero}
+        changeExcludeZero={changeExcludeZero}
+        cancel={cancel}
+      />
+    );
+  } else if (showExcludeZeroDialog && excludeZero) {
+    return (
+      <IncludeZeroDialog
+        open={showExcludeZeroDialog && excludeZero}
+        changeExcludeZero={changeExcludeZero}
+        cancel={cancel}
+      />
+    );
+  } else {
+    return null;
   }
 };
 
+ShowModal.propTypes = {
+  showExcludeZeroDialog: PropTypes.bool,
+  excludeZero: PropTypes.bool,
+  changeExcludeZero: PropTypes.func,
+  cancel: PropTypes.func,
+};
+
 export class Main extends React.Component {
+  constructor(props) {
+    super(props);
+    this.divRef = React.createRef();
+    this.updateDivWidth = this.updateDivWidth.bind(this);
+  }
+
   state = {
     showDecreaseMaxPointsDialog: false,
     showDeleteScaleDialog: false,
     showDeleteTraitDialog: false,
     showExcludeZeroDialog: false,
+    showInfoDialog: false,
+    infoDialogText: '',
+    adjustedWidth: MIN_WIDTH,
+    initialUpdateCompleted: false, // flag to track the initial update of the div width
   };
 
+  componentDidMount() {
+    this.updateDivWidth();
+
+    window.addEventListener('resize', this.updateDivWidth);
+    window.addEventListener('load', this.updateDivWidth);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateDivWidth);
+    window.removeEventListener('load', this.updateDivWidth);
+  }
+
+  componentDidUpdate() {
+    if (!this.state.initialUpdateCompleted) {
+      this.updateDivWidth();
+      this.setState({ initialUpdateCompleted: true });
+    }
+  }
+
+  updateDivWidth() {
+    if (this.divRef && this.divRef.current) {
+      const divWidth = this.divRef.current.offsetWidth;
+      this.set({
+        adjustedWidth: divWidth,
+      });
+    }
+  }
+
   onScaleAdded = () => {
-    const { model, onModelChanged } = this.props;
-    let { scales } = model || {};
+    const { model, onModelChanged, configuration } = this.props;
+    let { scales, excludeZero } = model || {};
+    const { maxNoOfScales } = configuration || {};
+    let { defaultTraitLabel } = configuration || '';
 
     if (!scales.length) {
       scales = [];
     }
 
+    // if no default trait label is defined, take the trait label of the first scale
+    defaultTraitLabel = typeof defaultTraitLabel === 'string' ? defaultTraitLabel : scales[0]?.traitLabel || '';
+
+    if (scales.length === maxNoOfScales) {
+      this.set({
+        infoDialogText: `There can't be more than ${maxNoOfScales} scales.`,
+        showInfoDialog: true,
+      });
+
+      return false;
+    }
+
     scales.push({
-      excludeZero: false,
       maxPoints: 1,
-      scorePointsLabels: ['', ''],
-      traitLabel: '',
-      traits: []
+      scorePointsLabels: excludeZero ? [''] : ['', ''],
+      traitLabel: defaultTraitLabel,
+      traits: [],
     });
 
     onModelChanged({ ...model, scales });
-  }
+  };
 
   onScaleChanged = (scaleIndex, params) => {
     const { model, onModelChanged } = this.props;
-    const { scales } = model || {};
+    const scales = cloneDeep((model || {}).scales);
 
     if (scaleIndex < 0 || scaleIndex >= scales.length || isEmpty(params)) return false;
 
-    Object.keys(params).forEach(key => {
+    Object.keys(params).forEach((key) => {
       scales[scaleIndex][key] = params[key];
     });
 
@@ -63,15 +144,22 @@ export class Main extends React.Component {
   };
 
   onScaleRemoved = (scaleIndex) => {
-    const { model, onModelChanged } = this.props;
+    const { model, onModelChanged, configuration } = this.props;
     let { scales } = model || {};
+    const { minNoOfScales } = configuration || {};
 
     if (scaleIndex < 0 || scaleIndex >= scales.length) return false;
 
-    scales = [
-      ...scales.slice(0, scaleIndex),
-      ...scales.slice(scaleIndex + 1)
-    ];
+    if (scales.length === minNoOfScales) {
+      this.set({
+        infoDialogText: `There can't be less than ${minNoOfScales} scales.`,
+        showInfoDialog: true,
+      });
+
+      return false;
+    }
+
+    scales = [...scales.slice(0, scaleIndex), ...scales.slice(scaleIndex + 1)];
 
     onModelChanged({ ...model, scales });
   };
@@ -99,7 +187,7 @@ export class Main extends React.Component {
     pointLabels = !pointLabels;
 
     onModelChanged({ ...model, pointLabels });
-  }
+  };
 
   changeShowDescription = () => {
     const { model, onModelChanged } = this.props || {};
@@ -108,7 +196,7 @@ export class Main extends React.Component {
     description = !description;
 
     onModelChanged({ ...model, description });
-  }
+  };
 
   changeShowStandards = () => {
     const { model, onModelChanged } = this.props || {};
@@ -117,12 +205,16 @@ export class Main extends React.Component {
     standards = !standards;
 
     onModelChanged({ ...model, standards });
-  }
+  };
 
   // Exclude Zero
   showToggleExcludeZeroModal = () => this.set({ showExcludeZeroDialog: true });
 
-  hideToggleExcludeZeroModal = () => this.set({ showExcludeZeroDialog: false });
+  hideToggleExcludeZeroModal = () => {
+    this.set({ showExcludeZeroDialog: false });
+  };
+
+  onCloseInfoDialog = () => this.set({ showInfoDialog: false });
 
   changeExcludeZero = (excludeZeroType) => {
     const { model, onModelChanged } = this.props || {};
@@ -144,50 +236,50 @@ export class Main extends React.Component {
           scorePointsLabels = scorePointsLabels.slice(1);
           traits = traits.map(({ scorePointsDescriptors, ...trait }) => ({
             ...trait,
-            scorePointsDescriptors: scorePointsDescriptors.slice(1)
+            scorePointsDescriptors: scorePointsDescriptors.slice(1),
           }));
 
           break;
         }
+
         case excludeZeroTypes.add0: {
           // adds empty column at start
           scorePointsLabels = ['', ...scorePointsLabels];
           traits = traits.map(({ scorePointsDescriptors, ...trait }) => ({
             ...trait,
-            scorePointsDescriptors: ['', ...scorePointsDescriptors]
+            scorePointsDescriptors: ['', ...scorePointsDescriptors],
           }));
 
           break;
         }
+
         case excludeZeroTypes.shiftLeft: {
           // removes last column
           scorePointsLabels = scorePointsLabels.slice(0, -1);
           traits = traits.map(({ scorePointsDescriptors, ...trait }) => ({
             ...trait,
-            scorePointsDescriptors: scorePointsDescriptors.slice(0, -1)
+            scorePointsDescriptors: scorePointsDescriptors.slice(0, -1),
           }));
 
           break;
         }
+
         case excludeZeroTypes.shiftRight: {
           // adds empty column at end
           scorePointsLabels = [...scorePointsLabels, ''];
           traits = traits.map(({ scorePointsDescriptors, ...trait }) => ({
             ...trait,
-            scorePointsDescriptors: [...scorePointsDescriptors, '']
+            scorePointsDescriptors: [...scorePointsDescriptors, ''],
           }));
 
           break;
         }
+
         default:
           break;
       }
 
-      acc.push({
-        ...scale,
-        scorePointsLabels,
-        traits
-      });
+      acc.push({ ...scale, scorePointsLabels, traits });
 
       return acc;
     }, []);
@@ -195,7 +287,7 @@ export class Main extends React.Component {
     onModelChanged({ ...model, scales: newScales, excludeZero });
 
     this.hideToggleExcludeZeroModal();
-  }
+  };
 
   onModelChanged = (updatedModel, updatedProperty) => {
     const { onModelChanged } = this.props || {};
@@ -205,89 +297,132 @@ export class Main extends React.Component {
     } else {
       onModelChanged(updatedModel);
     }
-  }
+  };
 
   render() {
-    const { model, classes, configuration, onConfigurationChanged } = this.props || {};
+    const { model, configuration, onConfigurationChanged, uploadSoundSupport, imageSupport } = this.props || {};
     const {
-      showStandards,
+      addScale,
+      baseInputConfiguration = {},
+      dragAndDrop,
+      contentDimensions = {},
+      showDescription,
       showExcludeZero,
       showLevelTagInput,
-      showDescription,
-      showVisibleToStudent,
+      showStandards,
       showHalfScoring,
+      showMaxPoint,
       showScorePointLabels,
-      dragAndDrop,
-      width
+      showVisibleToStudent,
+      spellCheck = {},
+      settingsPanelDisabled,
+      maxNoOfTraits,
+      minNoOfTraits,
+      width,
+      mathMlOptions = {},
+      maxMaxPoints,
+      expandedInput = {},
+      labelInput = {},
     } = configuration || {};
-    const { scales, excludeZero, description, pointLabels, standards } = model || {};
-    const { showExcludeZeroDialog } = this.state || {};
-    const adjustedWidth = parseInt(width) > parseInt(MIN_WIDTH) ? width : MIN_WIDTH;
+    const {
+      errors,
+      scales,
+      excludeZero,
+      description,
+      pointLabels,
+      standards,
+      spellCheckEnabled,
+      maxPointsEnabled,
+      addScaleEnabled,
+    } = model || {};
+    const { showExcludeZeroDialog, showInfoDialog, infoDialogText, adjustedWidth } = this.state || {};
+
+    const panelSettings = {
+      standards: showStandards.settings && toggle(showStandards.label),
+      'showLevelTagInput.enabled': showLevelTagInput.settings && toggle(showLevelTagInput.label, true),
+      visibleToStudent: showVisibleToStudent.settings && toggle(showVisibleToStudent.label),
+      excludeZero: showExcludeZero.settings && toggle(showExcludeZero.label),
+      halfScoring: showHalfScoring.settings && toggle(showHalfScoring.label),
+      'dragAndDrop.enabled': dragAndDrop.settings && toggle(dragAndDrop.label, true),
+    };
+    const panelProperties = {
+      description: showDescription.settings && toggle(showDescription.label),
+      pointLabels: showScorePointLabels.settings && toggle(showScorePointLabels.label),
+      spellCheckEnabled: spellCheck.settings && toggle(spellCheck.label),
+      maxPointsEnabled: showMaxPoint.settings && toggle(showMaxPoint.label),
+      addScaleEnabled: addScale.settings && toggle(addScale.label),
+    };
+
+    const getPluginProps = (props) => {
+      return Object.assign(
+        {
+          ...baseInputConfiguration,
+        },
+        props || {},
+      );
+    };
 
     return (
-      <div className={classes.design}>
-        <layout.ConfigLayout
-          settings={
-            <Panel
-              model={model}
-              onChangeModel={this.onModelChanged}
-              configuration={configuration}
-              onChangeConfiguration={onConfigurationChanged}
-              groups={{
-                Settings: {
-                  standards: showStandards.settings && toggle(showStandards.label),
-                  'showLevelTagInput.enabled': showLevelTagInput.settings && toggle(showLevelTagInput.label, true),
-                  visibleToStudent: showVisibleToStudent.settings && toggle(showVisibleToStudent.label),
-                  excludeZero: showExcludeZero.settings && toggle(showExcludeZero.label),
-                  halfScoring: showHalfScoring.settings && toggle(showHalfScoring.label),
-                  'dragAndDrop.enabled': dragAndDrop.settings && toggle(dragAndDrop.label, true)
-                },
-                Properties: {
-                  description: showDescription.settings && toggle(showDescription.label),
-                  pointLabels: showScorePointLabels.settings && toggle(showScorePointLabels.label)
-                }
-              }}
-            />
-          }
-        >
-          <div style={{ width: adjustedWidth }}>
-            {(scales || []).map((scale, scaleIndex) => (
-              <Scale
-                key={`scale-${scaleIndex}`}
-                scale={scale}
-                scaleIndex={scaleIndex}
-                onScaleRemoved={this.onScaleRemoved}
-                onScaleChanged={this.onScaleChanged}
-                showStandards={standards}
-                showScorePointLabels={pointLabels}
-                showDescription={description}
-                showLevelTagInput={showLevelTagInput.enabled}
+      <layout.ConfigLayout
+        dimensions={contentDimensions}
+        hideSettings={settingsPanelDisabled}
+        settings={
+          <Panel
+            model={model}
+            onChangeModel={this.onModelChanged}
+            configuration={configuration}
+            onChangeConfiguration={onConfigurationChanged}
+            groups={{
+              Settings: panelSettings,
+              Properties: panelProperties,
+            }}
+            modal={
+              <ShowModal
+                showExcludeZeroDialog={showExcludeZeroDialog}
                 excludeZero={excludeZero}
-                enableDragAndDrop={dragAndDrop.enabled}
-                width={adjustedWidth}
-                {...this.props}
-                classes={{}}
-              />
-            ))}
+                changeExcludeZero={this.changeExcludeZero}
+                cancel={this.hideToggleExcludeZeroModal}
+              ></ShowModal>
+            }
+          />
+        }
+      >
+        <div style={{ width: '100%' }} ref={this.divRef} />
+        <div style={{ width: width || adjustedWidth }}>
+          {(scales || []).map((scale, scaleIndex) => (
+            <Scale
+              key={`scale-${scaleIndex}`}
+              scale={scale}
+              scaleIndex={scaleIndex}
+              errors={errors}
+              onScaleRemoved={this.onScaleRemoved}
+              onScaleChanged={this.onScaleChanged}
+              showStandards={standards}
+              showScorePointLabels={pointLabels}
+              showDescription={description}
+              showLevelTagInput={showLevelTagInput.enabled}
+              excludeZero={excludeZero}
+              enableDragAndDrop={dragAndDrop.enabled}
+              spellCheck={spellCheckEnabled}
+              width={adjustedWidth}
+              uploadSoundSupport={uploadSoundSupport}
+              maxPointsEnabled={maxPointsEnabled}
+              maxNoOfTraits={maxNoOfTraits}
+              minNoOfTraits={minNoOfTraits}
+              imageSupport={imageSupport}
+              {...this.props}
+              classes={{}}
+              mathMlOptions={mathMlOptions}
+              maxMaxPoints={maxMaxPoints}
+              expandedPluginProps={getPluginProps(expandedInput?.inputConfiguration)}
+              labelPluginProps={getPluginProps(labelInput?.inputConfiguration)}
+            />
+          ))}
+          {addScaleEnabled && <MultiTraitButton onClick={this.onScaleAdded}>Add Scale</MultiTraitButton>}
+        </div>
 
-            <MultiTraitButton onClick={this.onScaleAdded}>
-              Add Scale
-            </MultiTraitButton>
-          </div>
-        </layout.ConfigLayout>
-
-        <ExcludeZeroDialog
-          open={showExcludeZeroDialog && !excludeZero}
-          changeExcludeZero={this.changeExcludeZero}
-          cancel={this.hideToggleExcludeZeroModal}
-        />
-
-        <IncludeZeroDialog
-          open={showExcludeZeroDialog && excludeZero}
-          changeExcludeZero={this.changeExcludeZero}
-          cancel={this.hideToggleExcludeZeroModal}
-        />
-      </div>
+        <InfoDialog open={showInfoDialog} text={infoDialogText} onClose={() => this.set({ showInfoDialog: false })} />
+      </layout.ConfigLayout>
     );
   }
 }
@@ -295,9 +430,14 @@ export class Main extends React.Component {
 Main.propTypes = {
   classes: PropTypes.object,
   model: PropTypes.object,
+  uploadSoundSupport: PropTypes.object,
   configuration: PropTypes.object,
   onModelChanged: PropTypes.func,
   onConfigurationChanged: PropTypes.func,
-}
+  imageSupport: PropTypes.shape({
+    add: PropTypes.func.isRequired,
+    delete: PropTypes.func.isRequired,
+  }),
+};
 
 export default withDragContext(withStyles(styles)(Main));

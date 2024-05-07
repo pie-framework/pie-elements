@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Main from './main';
-import { SessionChangedEvent } from '@pie-framework/pie-player-events';
-import { renderMath } from '@pie-lib/math-rendering';
+import { SessionChangedEvent, ModelSetEvent } from '@pie-framework/pie-player-events';
+import { renderMath } from '@pie-lib/pie-toolbox/math-rendering-accessible';
 
 export { Main as Component };
 
@@ -13,6 +13,13 @@ export default class Graphing extends HTMLElement {
 
   set model(m) {
     this._model = m;
+
+    if (this._session && this.isComplete(this._session.answer)) {
+      this.dispatchEvent(new ModelSetEvent(this.tagName.toLowerCase(), true, !!this._model));
+    } else {
+      this.dispatchEvent(new ModelSetEvent(this.tagName.toLowerCase(), false, !!this._model));
+    }
+
     this._render();
   }
 
@@ -21,21 +28,20 @@ export default class Graphing extends HTMLElement {
     this._render();
   }
 
+  get session() {
+    return this._session;
+  }
+
   connectedCallback() {
     this._render();
   }
 
-  isComplete = answer => Array.isArray(answer) && answer.length > 0;
+  isComplete = (answer) => Array.isArray(answer) && answer.length > 0;
 
-  changeAnswers = answer => {
+  changeAnswers = (answer) => {
     this._session.answer = answer;
 
-    this.dispatchEvent(
-      new SessionChangedEvent(
-        this.tagName.toLowerCase(),
-        this.isComplete(this._session.answer)
-      )
-    );
+    this.dispatchEvent(new SessionChangedEvent(this.tagName.toLowerCase(), this.isComplete(this._session.answer)));
 
     this._render();
   };
@@ -48,7 +54,7 @@ export default class Graphing extends HTMLElement {
     const el = React.createElement(Main, {
       model: this._model,
       categories: this._session.answer,
-      onAnswersChange: this.changeAnswers
+      onAnswersChange: this.changeAnswers,
     });
 
     ReactDOM.render(el, this, () => {

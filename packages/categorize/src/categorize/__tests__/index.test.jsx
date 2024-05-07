@@ -2,25 +2,25 @@ import { shallow } from 'enzyme';
 import React from 'react';
 import { Categorize } from '../index';
 
-jest.mock('@pie-lib/drag', () => ({
+jest.mock('@pie-lib/pie-toolbox/drag', () => ({
   uid: {
-    withUid: jest.fn(a => a),
-    Provider: jest.fn(a => a),
-    generateId: jest.fn().mockReturnValue('1')
+    withUid: jest.fn((a) => a),
+    Provider: jest.fn((a) => a),
+    generateId: jest.fn().mockReturnValue('1'),
   },
-  withDragContext: jest.fn(n => n)
+  withDragContext: jest.fn((n) => n),
 }));
 
 describe('categorize', () => {
   const defaultProps = {
     classes: {},
     session: {
-      answers: []
+      answers: [],
     },
     model: {
       choices: [],
-      categories: []
-    }
+      categories: [],
+    },
   };
   let onAnswersChange;
   let onShowCorrectToggle;
@@ -29,11 +29,11 @@ describe('categorize', () => {
     onAnswersChange = jest.fn();
     onShowCorrectToggle = jest.fn();
   });
-  const wrapper = extras => {
+  const wrapper = (extras) => {
     const defaults = {
       ...defaultProps,
       onAnswersChange,
-      onShowCorrectToggle
+      onShowCorrectToggle,
     };
     const props = { ...defaults, ...extras };
 
@@ -46,26 +46,28 @@ describe('categorize', () => {
     });
 
     it('renders with feedback', () => {
-      expect(wrapper({
-        model: {
-          ...defaultProps.model,
-          correctness: 'correct',
-          feedback: {
-            correct: {
-              type: 'default',
-              default: 'Correct'
+      expect(
+        wrapper({
+          model: {
+            ...defaultProps.model,
+            correctness: 'correct',
+            feedback: {
+              correct: {
+                type: 'default',
+                default: 'Correct',
+              },
+              incorrect: {
+                type: 'default',
+                default: 'Incorrect',
+              },
+              partial: {
+                type: 'default',
+                default: 'Nearly',
+              },
             },
-            incorrect: {
-              type: 'default',
-              default: 'Incorrect'
-            },
-            partial: {
-              type: 'default',
-              default: 'Nearly'
-            }
           },
-        }
-      })).toMatchSnapshot();
+        }),
+      ).toMatchSnapshot();
     });
 
     it('incorrect', () => {
@@ -79,30 +81,26 @@ describe('categorize', () => {
         const w = wrapper();
 
         w.instance().dropChoice('1', { id: '1', choiceIndex: 0 });
-        expect(onAnswersChange).toBeCalledWith([
-          { category: '1', choices: ['1'] }
-        ]);
+        expect(onAnswersChange).toBeCalledWith([{ category: '1', choices: ['1'] }]);
       });
     });
 
     describe('removeChoice', () => {
       it('calls onAnswersChange', () => {
         const w = wrapper({
-          session: { answers: [{ category: '1', choices: ['1'] }] }
+          session: { answers: [{ category: '1', choices: ['1'] }] },
         });
 
         w.instance().removeChoice({ id: '1', categoryId: '1', choiceIndex: 0 });
 
-        expect(onAnswersChange).toBeCalledWith([
-          { category: '1', choices: [] }
-        ]);
+        expect(onAnswersChange).toBeCalledWith([{ category: '1', choices: [] }]);
       });
     });
 
     describe('showAnswers', () => {
       it('calls onShowCorrectToggle', () => {
         const w = wrapper({
-          session: { answers: [{ category: '1', choices: ['1'] }] }
+          session: { answers: [{ category: '1', choices: ['1'] }] },
         });
 
         w.instance().toggleShowCorrect();

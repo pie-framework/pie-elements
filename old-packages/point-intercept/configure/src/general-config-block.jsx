@@ -3,23 +3,23 @@ import { InputRadio, InputCheckbox } from '@pie-lib/config-ui';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 
-const styles = theme => ({
+const styles = (theme) => ({
   optionsCheckbox: {
     display: 'flex',
     flexWrap: 'wrap',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
   },
   withLabelsContainer: {
-    display: 'flex'
+    display: 'flex',
   },
   withLabelsRadioControl: {
-    display: 'flex'
+    display: 'flex',
   },
   displayOptionsContainer: {
     display: 'inline-block',
     marginTop: theme.spacing.unit,
-    width: '50%'
-  }
+    width: '50%',
+  },
 });
 
 class GeneralConfigBlock extends React.Component {
@@ -51,24 +51,28 @@ class GeneralConfigBlock extends React.Component {
           />
         </div>
         <div style={{ display: 'flex' }}>
-        {withLabels && <div className={classes.displayOptionsContainer}>
-          <div className={classes.optionsCheckbox}>
-            <InputCheckbox
-              label="Points Must Match Labels"
-              checked={config.pointsMustMatchLabels}
-              onChange={onModelConfigChange('pointsMustMatchLabels')}/>
-          </div>
-        </div>}
-        <div className={classes.displayOptionsContainer}>
-          <div className={classes.optionsCheckbox}>
-            <InputCheckbox
-              label="Allow Partial Scoring"
-              checked={config.allowPartialScoring}
-              onChange={onModelConfigChange('allowPartialScoring')}/>
+          {withLabels && (
+            <div className={classes.displayOptionsContainer}>
+              <div className={classes.optionsCheckbox}>
+                <InputCheckbox
+                  label="Points Must Match Labels"
+                  checked={config.pointsMustMatchLabels}
+                  onChange={onModelConfigChange('pointsMustMatchLabels')}
+                />
+              </div>
+            </div>
+          )}
+          <div className={classes.displayOptionsContainer}>
+            <div className={classes.optionsCheckbox}>
+              <InputCheckbox
+                label="Allow Partial Scoring"
+                checked={config.allowPartialScoring}
+                onChange={onModelConfigChange('allowPartialScoring')}
+              />
+            </div>
           </div>
         </div>
       </div>
-    </div>
     );
   }
 }

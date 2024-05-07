@@ -9,16 +9,24 @@ const allTools = [
   'ray',
   'segment',
   'sine',
-  'vector'];
+  'vector',
+  // 'absolute', // - not available as default
+  // 'exponential', // - not available as default
+];
 
 /* model defaults */
 export default {
-  answers: {},
+  answers: {
+    correctAnswer: {
+      name: 'Correct Answer',
+      marks: [],
+    },
+  },
   arrows: {
     left: true,
     right: true,
     up: true,
-    down: true
+    down: true,
   },
   backgroundMarks: [],
   domain: {
@@ -26,13 +34,15 @@ export default {
     max: 5,
     step: 1,
     labelStep: 1,
-    axisLabel: 'x'
+    axisLabel: 'x',
   },
   graph: {
     width: 500,
-    height: 500
+    height: 500,
   },
+  includeAxes: true,
   labels: {},
+  labelsEnabled: true,
   coordinatesOnHover: false,
   padding: true,
   prompt: '',
@@ -41,13 +51,15 @@ export default {
     max: 5,
     step: 1,
     labelStep: 1,
-    axisLabel: 'y'
+    axisLabel: 'y',
   },
   rationale: '',
+  standardGrid: false,
   title: '',
+  titleEnabled: true,
   toolbarTools: allTools,
   promptEnabled: true,
   rationaleEnabled: true,
   teacherInstructionsEnabled: true,
-  studentInstructionsEnabled: true
+  studentInstructionsEnabled: true,
 };

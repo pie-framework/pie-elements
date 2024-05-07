@@ -3,7 +3,7 @@ import { Main } from '../main';
 import { shallow } from 'enzyme/build';
 
 jest.mock('lodash/uniq', () => {
-  return () => ([]);
+  return () => [];
 });
 
 describe('Main', () => {
@@ -14,14 +14,14 @@ describe('Main', () => {
       correctMarks: [],
     },
     onAnswersChange,
-    session: {}
+    session: {},
   };
 
   describe('render', () => {
     let w;
 
     beforeEach(() => {
-      w = props => shallow(<Main { ...props } />);
+      w = (props) => shallow(<Main {...props} />);
     });
 
     it('snapshot', () => {
@@ -33,7 +33,7 @@ describe('Main', () => {
     let w;
 
     beforeEach(() => {
-      w = props => shallow(<Main { ...props } />);
+      w = (props) => shallow(<Main {...props} />);
     });
 
     it('calls onAnswersChange', () => {
@@ -41,5 +41,4 @@ describe('Main', () => {
       expect(onAnswersChange).toHaveBeenCalledWith([]);
     });
   });
-
 });

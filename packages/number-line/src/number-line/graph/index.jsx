@@ -1,7 +1,7 @@
 import React from 'react';
 import { scaleLinear } from 'd3-scale';
 import { select, mouse } from 'd3-selection';
-import { color } from '@pie-lib/render-ui';
+import { color } from '@pie-lib/pie-toolbox/render-ui';
 import Point from './elements/point';
 import Line from './elements/line';
 import Ray from './elements/ray';
@@ -24,7 +24,7 @@ const getXScale = (min, max, width, padding) => {
     .range([padding, width - padding]);
 };
 
-const Debug = props => (
+const Debug = (props) => (
   <g>
     <text x="00" y="20">
       {JSON.stringify(props)}
@@ -35,16 +35,16 @@ const Debug = props => (
 export class NumberLineGraph extends React.Component {
   static childContextTypes = {
     xScale: PropTypes.func.isRequired,
-    snapValue: PropTypes.func.isRequired
+    snapValue: PropTypes.func.isRequired,
   };
 
   static propTypes = {
     domain: PropTypes.shape({
       min: PropTypes.number.isRequired,
-      max: PropTypes.number.isRequired
+      max: PropTypes.number.isRequired,
     }).isRequired,
-    ticks: PropTypes.shape({ minor: PropTypes.number, major: PropTypes.number })
-      .isRequired,
+    ticks: PropTypes.shape({ minor: PropTypes.number, major: PropTypes.number }).isRequired,
+    fraction: PropTypes.bool,
     width: PropTypes.number.isRequired,
     height: PropTypes.number.isRequired,
     onToggleElement: PropTypes.func.isRequired,
@@ -54,11 +54,11 @@ export class NumberLineGraph extends React.Component {
     elements: PropTypes.array,
     disabled: PropTypes.bool,
     onDeselectElements: PropTypes.func,
-    arrows: PropTypes.shape({ left: PropTypes.bool, right: PropTypes.bool })
+    arrows: PropTypes.shape({ left: PropTypes.bool, right: PropTypes.bool }),
   };
 
   static defaultProps = {
-    debug: false
+    debug: false,
   };
 
   constructor(props) {
@@ -87,7 +87,7 @@ export class NumberLineGraph extends React.Component {
   getChildContext() {
     return {
       xScale: this.xScaleFn(),
-      snapValue: this.snapValueFn()
+      snapValue: this.snapValueFn(),
     };
   }
 
@@ -102,7 +102,7 @@ export class NumberLineGraph extends React.Component {
       return;
     }
 
-    const anyElementSelected = elements.some(e => e.selected);
+    const anyElementSelected = elements.some((e) => e.selected);
 
     if (anyElementSelected) {
       this.props.onDeselectElements();
@@ -125,16 +125,7 @@ export class NumberLineGraph extends React.Component {
   }
 
   render() {
-    const {
-      domain,
-      width,
-      ticks,
-      height,
-      onToggleElement,
-      onMoveElement,
-      disabled,
-      fraction
-    } = this.props;
+    const { domain, width, ticks, height, onToggleElement, onMoveElement, disabled, fraction } = this.props;
     let { arrows } = this.props;
 
     arrows = arrows || { left: true, right: true };
@@ -166,7 +157,7 @@ export class NumberLineGraph extends React.Component {
           selected: el.selected && !disabled,
           interval: ticks.minor,
           disabled,
-          correct: el.correct
+          correct: el.correct,
         };
 
         const toggleElement = onToggleElement.bind(null, index, el);
@@ -175,7 +166,7 @@ export class NumberLineGraph extends React.Component {
         if (el.type === 'line') {
           const empty = {
             left: el.leftPoint === 'empty',
-            right: el.rightPoint === 'empty'
+            right: el.rightPoint === 'empty',
           };
 
           return (
@@ -191,7 +182,7 @@ export class NumberLineGraph extends React.Component {
         } else if (el.type === 'point') {
           const bounds = {
             left: min - el.position,
-            right: max - el.position
+            right: max - el.position,
           };
 
           return (
@@ -226,14 +217,9 @@ export class NumberLineGraph extends React.Component {
           <BaseLine y={lineY} width={width} />
           {arrows.left && <Arrow y={lineY} />}
           {arrows.right && <Arrow x={width} y={lineY} direction="right" />}
-          <Ticks
-            y={lineY}
-            domain={domain}
-            ticks={ticks}
-            fraction={fraction}
-          />
+          <Ticks y={lineY} domain={domain} width={width} ticks={ticks} fraction={fraction} />
           <rect
-            ref={rect => (this.rect = rect)}
+            ref={(rect) => (this.rect = rect)}
             //need to have a fill for it to be clickable
             fill={color.primary()}
             fillOpacity="0.0"

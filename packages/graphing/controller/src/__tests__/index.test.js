@@ -36,7 +36,10 @@ describe('getAnswerCorrected', () => {
     [
       [{ type: 'point', x: 0, y: 1 }],
       [{ type: 'point', x: 1, y: 1 }],
-      [{ type: 'point', x: 0, y: 1, correctness: 'incorrect' }],
+      [
+        { type: 'point', x: 0, y: 1, correctness: 'incorrect' },
+        { correctness: 'missing', type: 'point', x: 1, y: 1 },
+      ],
     ],
     [
       [
@@ -63,16 +66,12 @@ describe('getAnswerCorrected', () => {
           y: 1,
           correctness: 'incorrect',
         },
+        { correctness: 'missing', type: 'point', x: 1, y: 1 },
       ],
     ],
-  ])(
-    'sessionAnswers = %j, marks = %j => correctedMarks = %j',
-    (sessionAnswers, marks, correctedMarks) => {
-      expect(getAnswerCorrected({ sessionAnswers, marks })).toEqual(
-        correctedMarks
-      );
-    }
-  );
+  ])('sessionAnswers = %j, marks = %j => correctedMarks = %j', (sessionAnswers, marks, correctedMarks) => {
+    expect(getAnswerCorrected({ sessionAnswers, marks })).toEqual(correctedMarks);
+  });
 });
 
 describe('model', () => {
@@ -111,12 +110,7 @@ describe('model', () => {
       },
       {},
     ],
-    [
-      { mode: 'view', role: 'instructor' },
-      { promptEnabled: true },
-      { disabled: true, showToggle: false },
-      {},
-    ],
+    [{ mode: 'view', role: 'instructor' }, { promptEnabled: true }, { disabled: true, showToggle: false }, {}],
     [
       { mode: 'view', role: 'instructor' },
       {
@@ -146,33 +140,31 @@ describe('model', () => {
     ],
     [
       { mode: 'evaluate', role: 'instructor' },
-      { answers: { a1: { marks: [{ type: 'point', x: 1, y: 1 }] } } },
+      { answers: { correctAnswer: { marks: [{ type: 'point', x: 1, y: 1 }] } } },
       {
         disabled: true,
         showToggle: true,
-        answersCorrected: [],
+        answersCorrected: [{ correctness: 'missing', type: 'point', x: 1, y: 1 }],
         correctResponse: [{ type: 'point', x: 1, y: 1 }],
       },
       {},
     ],
     [
       { mode: 'evaluate' },
-      { answers: { a1: { marks: [{ type: 'point', x: 1, y: 1 }] } } },
+      { answers: { correctAnswer: { marks: [{ type: 'point', x: 1, y: 1 }] } } },
       {
         disabled: true,
         rationale: null,
         teacherInstructions: null,
         showToggle: false,
-        answersCorrected: [
-          { type: 'point', x: 1, y: 1, correctness: 'correct' },
-        ],
+        answersCorrected: [{ type: 'point', x: 1, y: 1, correctness: 'correct' }],
         correctResponse: [{ type: 'point', x: 1, y: 1 }],
       },
       { answer: [{ type: 'point', x: 1, y: 1 }] },
     ],
     [
       { mode: 'evaluate' },
-      { answers: { a1: { marks: [{ type: 'point', x: 1, y: 1 }] } } },
+      { answers: { correctAnswer: { marks: [{ type: 'point', x: 1, y: 1 }] } } },
       {
         disabled: true,
         rationale: null,
@@ -180,6 +172,7 @@ describe('model', () => {
         showToggle: true,
         answersCorrected: [
           { type: 'point', x: 0, y: 1, correctness: 'incorrect' },
+          { correctness: 'missing', type: 'point', x: 1, y: 1 },
         ],
         correctResponse: [{ type: 'point', x: 1, y: 1 }],
       },
@@ -191,48 +184,41 @@ describe('model', () => {
       {
         disabled: true,
         rationale: null,
-         teacherInstructions: null,
+        teacherInstructions: null,
         showToggle: false,
         answersCorrected: [],
-        correctResponse: []
+        correctResponse: [],
       },
-      undefined
+      undefined,
     ],
-  ])(
-    'model env = %j',
-    async (env, extraQuestionProps, expectedResult, session) => {
-      const question = {
-        ...defaults,
-        prompt: 'This is prompt',
-        rationale: 'Rationale',
-        teacherInstructions: 'Teacher Instructions',
-        ...extraQuestionProps,
-      };
-      const {
-        prompt,
-        promptEnabled,
-        graph,
-        answers,
-        ...questionProps
-      } = question;
+  ])('model env = %j', async (env, extraQuestionProps, expectedResult, session) => {
+    const question = {
+      ...defaults,
+      answers: {},
+      prompt: 'This is prompt',
+      rationale: 'Rationale',
+      teacherInstructions: 'Teacher Instructions',
+      defaultTool: 'circle',
+      ...extraQuestionProps,
+    };
+    const { prompt, promptEnabled, graph, answers, ...questionProps } = question;
 
-      const result = await model(question, session || {}, env);
-      const expected = {
-        ...questionProps,
-        answers,
-        prompt,
-        size: question.graph,
-        ...expectedResult,
-      };
+    const result = await model(question, session || {}, env);
+    const expected = {
+      ...questionProps,
+      answers,
+      prompt,
+      size: question.graph,
+      ...expectedResult,
+    };
 
-      expect(result).toEqual(expected);
-    }
-  );
+    expect(result).toEqual(expected);
+  });
 });
 
 describe('getBestAnswer', () => {
   const answers = {
-    a1: {
+    correctAnswer: {
       marks: [
         { x: 1, y: 1, type: 'point' },
         { x: 2, y: 2, type: 'point' },
@@ -262,21 +248,18 @@ describe('getBestAnswer', () => {
       [{ scoringType: 'dichotomous' }, undefined, 0],
       [{ scoringType: 'dichotomous' }, true, 0],
       [{ scoringType: 'partial scoring' }, false, 0],
-    ])(
-      '%j & env.partialScoring = %j => score = %d',
-      (extraQuestionProps, partialScoring, expectedScore) => {
-        const result = getBestAnswer(
-          { answers, ...extraQuestionProps },
-          { answer },
-          {
-            mode: 'evaluate',
-            partialScoring,
-          }
-        );
+    ])('%j & env.partialScoring = %j => score = %d', (extraQuestionProps, partialScoring, expectedScore) => {
+      const result = getBestAnswer(
+        { answers, ...extraQuestionProps },
+        { answer },
+        {
+          mode: 'evaluate',
+          partialScoring,
+        },
+      );
 
-        expect(result.bestScore).toEqual(expectedScore);
-      }
-    );
+      expect(result.bestScore).toEqual(expectedScore);
+    });
   });
 
   describe('returns proper results', () => {
@@ -327,6 +310,20 @@ describe('getBestAnswer', () => {
         type: 'segment',
         correctness: 'correct',
       },
+      { correctness: 'missing', type: 'point', x: 2, y: 2 },
+      { correctness: 'missing', type: 'point', x: 3, y: 3 },
+    ];
+
+    const correctMarksPartial = [
+      { x: 1, y: 1, type: 'point', correctness: 'correct' },
+      { x: 4, y: 4, type: 'point', correctness: 'incorrect' },
+      {
+        from: { x: 1, y: 1 },
+        to: { x: 2, y: 2 },
+        type: 'segment',
+        correctness: 'correct',
+      },
+      { correctness: 'missing', type: 'point', x: 2, y: 2 },
     ];
 
     test.each([
@@ -335,16 +332,13 @@ describe('getBestAnswer', () => {
       ['dichotomous', answer2, correctMarks2, 1],
       ['partial scoring', answer2, correctMarks2, 1],
       ['dichotomous', answer3, correctMarks3, 0],
-      ['partial scoring', answer3, correctMarks3, 0.67],
-    ])(
-      'scoringType = %s, answer = %j, correctMarks = %j => score = %d',
-      (scoringType, answer, correctMarks, score) => {
-        const result = getBestAnswer({ ...question, scoringType }, { answer });
+      ['partial scoring', answer3, correctMarksPartial, 0.67],
+    ])('scoringType = %s, answer = %j, correctMarks = %j => score = %d', (scoringType, answer, correctMarks, score) => {
+      const result = getBestAnswer({ ...question, scoringType }, { answer });
 
-        expect(result.bestScore).toEqual(score);
-        expect(result.answersCorrected).toEqual(correctMarks);
-      }
-    );
+      expect(result.bestScore).toEqual(score);
+      expect(result.answersCorrected).toEqual(correctMarks);
+    });
   });
 
   describe('returns proper results if params are incorrectly defined', () => {
@@ -364,19 +358,16 @@ describe('getBestAnswer', () => {
       ${undefined}
       ${null}
       ${{}}
-    `(
-      'returns score: 0, answersCorrected: [] if question = $question',
-      ({ question }) => {
-        const result = getBestAnswer(question, {});
+    `('returns score: 0, answersCorrected: [] if question = $question', ({ question }) => {
+      const result = getBestAnswer(question, {});
 
-        expect(result).toEqual({
-          answersCorrected: [],
-          bestScore: 0,
-          bestScoreAnswerKey: null,
-          foundOneSolution: false,
-        });
-      }
-    );
+      expect(result).toEqual({
+        answersCorrected: [],
+        bestScore: 0,
+        bestScoreAnswerKey: null,
+        foundOneSolution: false,
+      });
+    });
 
     it.each`
       answers
@@ -384,19 +375,16 @@ describe('getBestAnswer', () => {
       ${undefined}
       ${null}
       ${{}}
-    `(
-      'returns score: 0, answersCorrected: [] if answers = $answers',
-      ({ answers }) => {
-        const result = getBestAnswer({ ...question, answers }, {});
+    `('returns score: 0, answersCorrected: [] if answers = $answers', ({ answers }) => {
+      const result = getBestAnswer({ ...question, answers }, {});
 
-        expect(result).toEqual({
-          answersCorrected: [],
-          bestScore: 0,
-          bestScoreAnswerKey: null,
-          foundOneSolution: false,
-        });
-      }
-    );
+      expect(result).toEqual({
+        answersCorrected: [],
+        bestScore: 0,
+        bestScoreAnswerKey: null,
+        foundOneSolution: false,
+      });
+    });
   });
 });
 
@@ -427,7 +415,7 @@ describe('outcome', () => {
     async ({ mode, partialScoring, scoringType, expected }) => {
       const env = { mode, partialScoring };
       const answers = {
-        a1: {
+        correctAnswer: {
           marks: [
             { x: 1, y: 1, type: 'point' },
             { x: 2, y: 2, type: 'point' },
@@ -457,7 +445,7 @@ describe('outcome', () => {
       const result = await outcome(mod, session, env);
 
       expect(result.score).toEqual(expected);
-    }
+    },
   );
 
   it.each`
@@ -465,14 +453,11 @@ describe('outcome', () => {
     ${undefined}
     ${null}
     ${{}}
-  `(
-    'returns score: 0 and empty: true if session is $session',
-    async ({ session }) => {
-      const o = await outcome({}, session, { mode: 'evaluate' });
+  `('returns score: 0 and empty: true if session is $session', async ({ session }) => {
+    const o = await outcome({}, session, { mode: 'evaluate' });
 
-      expect(o).toEqual({ score: 0, empty: true });
-    }
-  );
+    expect(o).toEqual({ score: 0, empty: true });
+  });
 
   it('Lines are correctly scored (ch3729)', async () => {
     const m = {
@@ -533,9 +518,7 @@ describe('outcome', () => {
       graph: { width: 500, height: 500 },
       answers: {
         correctAnswer: {
-          marks: [
-            { edge: { x: 0.5, y: 5 }, root: { y: 3, x: 0 }, type: 'sine' },
-          ],
+          marks: [{ edge: { x: 0.5, y: 5 }, root: { y: 3, x: 0 }, type: 'sine' }],
         },
       },
       toolbarTools: ['sine'],
@@ -615,9 +598,7 @@ describe('outcome', () => {
       ],
     };
 
-    expect(
-      (await outcome(await model(m, session2, env), session2, env)).score
-    ).toEqual(0.67);
+    expect((await outcome(await model(m, session2, env), session2, env)).score).toEqual(0.67);
 
     const session3 = {
       answer: [
@@ -627,37 +608,22 @@ describe('outcome', () => {
       ],
     };
 
-    expect(
-      (await outcome(await model(m, session3, env), session3, env)).score
-    ).toEqual(1);
+    expect((await outcome(await model(m, session3, env), session3, env)).score).toEqual(1);
 
     const session4 = {
-     answer: [],
+      answer: [],
     };
 
-    expect(
-      (await outcome(await model(m, session4, env), session4, env)).score
-    ).toEqual(0);
+    expect((await outcome(await model(m, session4, env), session4, env)).score).toEqual(0);
   });
 });
 
 describe('createCorrectResponseSession', () => {
   const question = {
-    toolbarTools: [
-      'point',
-      'circle',
-      'polygon',
-      'segment',
-      'ray',
-      'vector',
-      'line',
-      'sine',
-      'parabola',
-      'label',
-    ],
+    toolbarTools: ['point', 'circle', 'polygon', 'segment', 'ray', 'vector', 'line', 'sine', 'parabola', 'label'],
     answers: {
       alternate1: {
-        pname: 'Alternate 1',
+        name: 'Alternate 1',
         marks: [
           {
             type: 'segment',
@@ -699,16 +665,9 @@ describe('createCorrectResponseSession', () => {
     expect(sess).toEqual({
       answer: [
         {
-          type: 'segment',
-          from: { x: 0, y: 0 },
-          to: { x: 1, y: 1 },
-        },
-        {
           type: 'point',
-          x: 3,
-          y: 3,
-          label: 'Point',
-          showLabel: true,
+          x: 0,
+          y: 0,
         },
       ],
       id: '1',
@@ -724,16 +683,9 @@ describe('createCorrectResponseSession', () => {
     expect(sess).toEqual({
       answer: [
         {
-          type: 'segment',
-          from: { x: 0, y: 0 },
-          to: { x: 1, y: 1 },
-        },
-        {
           type: 'point',
-          x: 3,
-          y: 3,
-          label: 'Point',
-          showLabel: true,
+          x: 0,
+          y: 0,
         },
       ],
       id: '1',
@@ -757,153 +709,4 @@ describe('createCorrectResponseSession', () => {
 
     expect(noResult).toBeNull();
   });
-});
-
-describe('orderCorrectAnswers', () => {
-
-  it('orderCorrectAnswers should return ordered object, with correctAnswer first, if answers has correctAnswer key', () => {
-
-    const questionPossibleAnswers = {
-      aCorrectAnswer: {
-        name: 'Correct Answer',
-        marks: [{
-          type: 'point',
-          x: 0,
-          y: 0
-        }]
-      },
-      correctAnswer: {
-        name: 'Correct Answer',
-        marks: [{
-          type: 'point',
-          x: 0,
-          y: 0
-        }]
-      },
-      alternate1: {
-        name: 'Alternate 1',
-        marks: [{
-          type: 'segment',
-          from: { x: 0, y: 0 },
-          to: { x: 1, y: 1 },
-        },
-        {
-          type: 'point',
-          x: 3,
-          y: 3,
-          label: 'Point',
-          showLabel: true
-        }]
-      }
-    };
-
-    const orderedAnswers = {
-      correctAnswer: {
-        name: 'Correct Answer',
-        marks: [{
-          type: 'point',
-          x: 0,
-          y: 0
-        }]
-      },
-      aCorrectAnswer: {
-        name: 'Correct Answer',
-        marks: [{
-          type: 'point',
-          x: 0,
-          y: 0
-        }]
-      },
-      alternate1: {
-        name: 'Alternate 1',
-        marks: [{
-          type: 'segment',
-          from: { x: 0, y: 0 },
-          to: { x: 1, y: 1 },
-        },
-        {
-          type: 'point',
-          x: 3,
-          y: 3,
-          label: 'Point',
-          showLabel: true
-        }]
-      }
-    };
-
-    expect(orderCorrectAnswers(questionPossibleAnswers)).toEqual(orderedAnswers);
-  });
-
-  it('orderCorrectAnswers should return alphabetically ordered object if answers does not have correctAnswer key', () => {
-
-    const questionPossibleAnswers = {
-      aCorrectAnswer: {
-        name: 'Correct Answer',
-        marks: [{
-          type: 'point',
-          x: 0,
-          y: 0
-        }]
-      },
-      alternate2: {
-        name: 'Correct Answer',
-        marks: [{
-          type: 'point',
-          x: 0,
-          y: 0
-        }]
-      },
-      alternate1: {
-        name: 'Alternate 1',
-        marks: [{
-          type: 'segment',
-          from: { x: 0, y: 0 },
-          to: { x: 1, y: 1 },
-        },
-        {
-          type: 'point',
-          x: 3,
-          y: 3,
-          label: 'Point',
-          showLabel: true
-        }]
-      }
-    };
-
-    const sortedAnswers = {
-      aCorrectAnswer: {
-        name: 'Correct Answer',
-        marks: [{
-          type: 'point',
-          x: 0,
-          y: 0
-        }]
-      },
-      alternate1: {
-        name: 'Alternate 1',
-        marks: [{
-          type: 'segment',
-          from: { x: 0, y: 0 },
-          to: { x: 1, y: 1 },
-        },
-        {
-          type: 'point',
-          x: 3,
-          y: 3,
-          label: 'Point',
-          showLabel: true
-        }]
-      },
-      alternate2: {
-        name: 'Correct Answer',
-        marks: [{
-          type: 'point',
-          x: 0,
-          y: 0
-        }]
-      },
-    };
-
-    expect(orderCorrectAnswers(questionPossibleAnswers)).toEqual(sortedAnswers);
-  })
 });

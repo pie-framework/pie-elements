@@ -1,5 +1,12 @@
 import { shallow } from 'enzyme';
 import React from 'react';
+
+global.MutationObserver = class {
+  constructor(callback) {}
+  disconnect() {}
+  observe(element, initObject) {}
+};
+
 import { Container } from '../container';
 
 beforeEach(() => {
@@ -15,12 +22,12 @@ describe('Container', () => {
       onSessionChange,
       imageDimensions: {},
       imageUrl: 'url',
-      session: {}
+      session: {},
     };
     const props = { ...defaults, ...extras };
     return shallow(<Container {...props} />, {
       disableLifecycleMethods: false,
-      ...renderOpts
+      ...renderOpts,
     });
   };
 

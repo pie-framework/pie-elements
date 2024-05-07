@@ -1,16 +1,32 @@
 import isEmpty from 'lodash/isEmpty';
-import { buildState, score } from '@pie-lib/categorize';
-import { getFeedbackForCorrectness } from '@pie-lib/feedback';
-import {
-  lockChoices,
-  getShuffledChoices,
-  partialScoring,
-} from '@pie-lib/controller-utils';
+import { buildState, score } from '@pie-lib/pie-toolbox/categorize';
+import { getFeedbackForCorrectness } from '@pie-lib/pie-toolbox/feedback';
+import { lockChoices, getShuffledChoices, partialScoring } from '@pie-lib/pie-toolbox/controller-utils';
+import Translator from '@pie-lib/pie-toolbox/translator';
+
+const { translator } = Translator;
 import defaults from './defaults';
+import { isAlternateDuplicated, isCorrectResponseDuplicated } from './utils';
 
 // eslint-disable-next-line no-console
 
 export { score };
+
+// PD-2960: make sure we don't have alternates in model or possibility to add them (temporary solution)
+// this function is used in configure part, too
+const disableAlternateResponses = (question) => {
+  let { correctResponse } = question || {};
+  correctResponse = correctResponse || [];
+  const mappedCorrectResponse = correctResponse.map((cr) => {
+    const { alternateResponses, ...response } = cr;
+    return response;
+  });
+  return {
+    ...question,
+    correctResponse: mappedCorrectResponse,
+    allowAlternateEnabled: false,
+  };
+};
 
 export const getPartialScore = (correctResponse, builtCategories) => {
   // in the resulted best scenario we make a sum with all the correct responses
@@ -20,7 +36,7 @@ export const getPartialScore = (correctResponse, builtCategories) => {
       placements: acc.placements + choices.length,
       score: acc.score + choices.filter((ch) => ch.correct).length,
     }),
-    { placements: 0, score: 0 }
+    { placements: 0, score: 0 },
   );
 
   // in the correct response, we make a sum of the max possible score
@@ -28,7 +44,7 @@ export const getPartialScore = (correctResponse, builtCategories) => {
     (acc, { choices }) => ({
       maxScore: acc.maxScore + choices.length,
     }),
-    { maxScore: 0 }
+    { maxScore: 0 },
   );
 
   // if there are any extra placements, we subtract from the obtained score
@@ -38,9 +54,8 @@ export const getPartialScore = (correctResponse, builtCategories) => {
   return totalScore < 0 ? 0 : parseFloat(totalScore.toFixed(2));
 };
 
-const getAlternates = correctResponse => correctResponse
-  .map((c) => c.alternateResponses)
-  .filter((alternate) => alternate);
+const getAlternates = (correctResponse) =>
+  correctResponse.map((c) => c.alternateResponses).filter((alternate) => alternate);
 
 export const getTotalScore = (question, session, env) => {
   if (!session) {
@@ -58,12 +73,7 @@ export const getTotalScore = (question, session, env) => {
 
   // this function is used in pie-ui/categorize as well, in order to get the best scenario
   // so we get the best scenario and calculate the score
-  const { categories: builtCategories, correct } = buildState(
-    categories,
-    choices,
-    answers,
-    correctResponse
-  );
+  const { categories: builtCategories, correct } = buildState(categories, choices, answers, correctResponse);
 
   const alternates = getAlternates(correctResponse);
   const enabled = partialScoring.enabled(question, env);
@@ -103,14 +113,13 @@ export const createDefaultModel = (model = {}) =>
     });
   });
 
-export const normalize = (question) => ({
-  feedbackEnabled: true,
-  rationaleEnabled: true,
-  promptEnabled: true,
-  teacherInstructionsEnabled: true,
-  studentInstructionsEnabled: true,
-  ...question,
-});
+export const normalize = (question) => {
+  const newQuestion = disableAlternateResponses(question);
+  return {
+    ...defaults,
+    ...newQuestion,
+  };
+};
 
 /**
  *
@@ -136,34 +145,41 @@ export const model = (question, session, env, updateSession) =>
       feedbackEnabled,
       promptEnabled,
       prompt,
-      removeTilesAfterPlacing,
       rowLabels,
       rationaleEnabled,
       rationale,
-      note,
       teacherInstructionsEnabled,
       teacherInstructions,
+      language,
+      maxChoicesPerCategory,
     } = normalizedQuestion;
-    let { choices } = normalizedQuestion;
+    let { choices, note } = normalizedQuestion;
     let fb;
 
     const lockChoiceOrder = lockChoices(normalizedQuestion, session, env);
 
+    const filteredCorrectResponse = correctResponse.map((response) => {
+      const filteredChoices = (response.choices || []).filter((choice) => choice !== 'null');
+      return { ...response, choices: filteredChoices };
+    });
+
     if (mode === 'evaluate' && feedbackEnabled) {
-      fb = await getFeedbackForCorrectness(
-        answerCorrectness,
-        feedback
-      );
+      fb = await getFeedbackForCorrectness(answerCorrectness, feedback);
     }
 
     if (!lockChoiceOrder) {
       choices = await getShuffledChoices(choices, session, updateSession, 'id');
     }
 
-    const alternates = getAlternates(correctResponse);
+    if (!note) {
+      note = translator.t('common:commonCorrectAnswerWithAlternates', { lng: language });
+    }
+
+    const alternates = getAlternates(filteredCorrectResponse);
     const out = {
       categories: categories || [],
       categoriesPerRow: categoriesPerRow || 2,
+      maxChoicesPerCategory,
       correctness: answerCorrectness,
       choices: choices || [],
       choicesLabel: choicesLabel || '',
@@ -172,19 +188,17 @@ export const model = (question, session, env, updateSession) =>
       feedback: fb,
       lockChoiceOrder,
       prompt: promptEnabled ? prompt : null,
-      removeTilesAfterPlacing,
       rowLabels,
       note,
       env,
       showNote: alternates && alternates.length > 0,
-      correctResponse: mode === 'evaluate' ? correctResponse : undefined,
+      correctResponse: mode === 'evaluate' ? filteredCorrectResponse : undefined,
+      language
     };
 
     if (role === 'instructor' && (mode === 'view' || mode === 'evaluate')) {
       out.rationale = rationaleEnabled ? rationale : null;
-      out.teacherInstructions = teacherInstructionsEnabled
-        ? teacherInstructions
-        : null;
+      out.teacherInstructions = teacherInstructionsEnabled ? teacherInstructions : null;
     } else {
       out.rationale = null;
       out.teacherInstructions = null;
@@ -195,9 +209,7 @@ export const model = (question, session, env, updateSession) =>
 
 export const outcome = (question, session, env) => {
   if (env.mode !== 'evaluate') {
-    return Promise.reject(
-      new Error('Can not call outcome when mode is not evaluate')
-    );
+    return Promise.reject(new Error('Can not call outcome when mode is not evaluate'));
   } else {
     return new Promise((resolve) => {
       resolve({
@@ -220,4 +232,125 @@ export const createCorrectResponseSession = (question, env) => {
       return resolve(null);
     }
   });
+};
+
+// remove all html tags
+const getInnerText = (html) => (html || '').replaceAll(/<[^>]*>/g, '');
+
+// remove all html tags except img and iframe
+const getContent = (html) => (html || '').replace(/(<(?!img|iframe)([^>]+)>)/gi, '');
+
+export const validate = (model = {}, config = {}) => {
+  const { categories, choices, correctResponse } = model;
+  const {
+    minChoices = 1,
+    maxChoices = 15,
+    minCategories = 1,
+    maxCategories = 12,
+    maxLengthPerChoice = 300,
+    maxLengthPerCategory = 150,
+  } = config;
+  const reversedChoices = [...(choices || [])].reverse();
+  const errors = {};
+  const choicesErrors = {};
+  const categoriesErrors = {};
+
+  ['teacherInstructions', 'prompt', 'rationale'].forEach((field) => {
+    if (config[field]?.required && !getContent(model[field])) {
+      errors[field] = 'This field is required.';
+    }
+  });
+
+  (categories || []).forEach((category) => {
+    const { id, label } = category;
+
+    if (getInnerText(label).length > maxLengthPerCategory) {
+      categoriesErrors[id] = `Category labels should be no more than ${maxLengthPerCategory} characters long.`;
+    }
+  });
+
+  (reversedChoices || []).forEach((choice, index) => {
+    const { id, content } = choice;
+
+    if (getInnerText(content).length > maxLengthPerChoice) {
+      choicesErrors[id] = `Tokens should be no more than ${maxLengthPerChoice} characters long.`;
+    }
+
+    if (!getContent(content)) {
+      choicesErrors[id] = 'Tokens should not be empty.';
+    } else {
+      const identicalAnswer = reversedChoices.slice(index + 1).some((c) => c.content === content);
+
+      if (identicalAnswer) {
+        choicesErrors[id] = 'Tokens content should be unique.';
+      }
+    }
+  });
+
+  const nbOfCategories = (categories || []).length;
+  const nbOfChoices = (choices || []).length;
+
+  if (nbOfCategories > maxCategories) {
+    errors.categoriesError = `No more than ${maxCategories} categories should be defined.`;
+  } else if (nbOfCategories < minCategories) {
+    errors.categoriesError = `There should be at least ${minCategories} category defined.`;
+  }
+
+  if (nbOfChoices < minChoices) {
+    errors.choicesError = `There should be at least ${minChoices} choices defined.`;
+  } else if (nbOfChoices > maxChoices) {
+    errors.choicesError = `No more than ${maxChoices} choices should be defined.`;
+  }
+
+  if (nbOfChoices && nbOfCategories) {
+    let hasAssociations = false;
+
+    (correctResponse || []).forEach((response) => {
+      const { choices = [], alternateResponses = [] } = response;
+
+      if (choices.length) {
+        hasAssociations = true;
+      } else {
+        alternateResponses.forEach((alternate) => {
+          if ((alternate || []).length) {
+            hasAssociations = true;
+          }
+        });
+      }
+    });
+
+    let duplicateAlternateIndex = -1;
+    let duplicateCategory = '';
+    (correctResponse || []).forEach((response) => {
+      const { choices = [], alternateResponses = [], category } = response;
+
+      if (duplicateAlternateIndex === -1) {
+        duplicateAlternateIndex = isCorrectResponseDuplicated(choices, alternateResponses);
+
+        if (duplicateAlternateIndex === -1) {
+          duplicateAlternateIndex = isAlternateDuplicated(alternateResponses);
+        }
+
+        duplicateCategory = category;
+      }
+    });
+
+    if (duplicateAlternateIndex > -1) {
+      errors.duplicateAlternate = { index: duplicateAlternateIndex, category: duplicateCategory };
+    }
+
+    if (!hasAssociations) {
+      errors.associationError = 'At least one token should be assigned to at least one category.';
+    }
+  }
+
+  if (!isEmpty(choicesErrors)) {
+    errors.choicesErrors = choicesErrors;
+  }
+
+  if (!isEmpty(categoriesErrors)) {
+    errors.categoriesErrors = categoriesErrors;
+  }
+
+  return errors;
 };

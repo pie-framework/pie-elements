@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/matrix-controller@0.0.14...@pie-element/matrix-controller@0.1.0) (2024-03-28)
+
+
+### Features
+
+* **matrix:** add required fields functionality PD-3596 ([356233e](https://github.com/pie-framework/pie-elements/commit/356233ea58c9bc1366b706fa6a86305e5d48bb8f))
+
+
+
+
+
+## [0.0.14](https://github.com/pie-framework/pie-elements/compare/@pie-element/matrix-controller@0.0.13...@pie-element/matrix-controller@0.0.14) (2023-05-02)
+
+
+### Bug Fixes
+
+* **pie-elements:** avoid logs pbs and add fragments as containers ([b4bd2b7](https://github.com/pie-framework/pie-elements/commit/b4bd2b7f994d7affdac443bd486047e5a629b763))
+
+
+
+
+
+## [0.0.13](https://github.com/pie-framework/pie-elements/compare/@pie-element/matrix-controller@0.0.12...@pie-element/matrix-controller@0.0.13) (2022-12-07)
+
+**Note:** Version bump only for package @pie-element/matrix-controller
+
+
+
+
+
 ## [0.0.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/matrix-controller@0.0.7...@pie-element/matrix-controller@0.0.9) (2021-11-11)
 
 **Note:** Version bump only for package @pie-element/matrix-controller

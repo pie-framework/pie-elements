@@ -4,11 +4,13 @@ exports[`Header snapshot renders 1`] = `
 <div
   className="header className"
 >
-  <WithStyles(Typography)
-    variant="title"
-  >
-    Header
-  </WithStyles(Typography)>
+  <div>
+    <WithStyles(Typography)
+      variant="title"
+    >
+      Header
+    </WithStyles(Typography)>
+  </div>
   <WithStyles(RawAddButton)
     onClick={[MockFunction]}
   />

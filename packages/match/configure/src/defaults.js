@@ -17,64 +17,140 @@ export default {
       {
         id: 1,
         title: 'Question Text 1',
-        values: [false, false]
-      }
+        values: [false, false],
+      },
     ],
     scoringType: 'auto',
-    feedbackEnabled: true,
+    feedbackEnabled: false,
     promptEnabled: true,
     rationaleEnabled: true,
     teacherInstructionsEnabled: true,
-    studentInstructionsEnabled: true
+    studentInstructionsEnabled: true,
   },
   configuration: {
+    baseInputConfiguration: {
+      audio: { disabled: false },
+      video: { disabled: false },
+      image: { disabled: false },
+    },
+    rows: {
+      inputConfiguration: {
+        audio: { disabled: true },
+        video: { disabled: true },
+        image: { disabled: false },
+      },
+    },
     enableImages: {
       settings: true,
-      label: 'Enable Images'
+      label: 'Enable Images',
     },
     feedback: {
       settings: true,
       label: 'Feedback',
-      enabled: true
+      enabled: true,
     },
     headers: {
-      settings: true
+      settings: true,
+      inputConfiguration: {
+        audio: { disabled: true },
+        video: { disabled: true },
+        image: { disabled: false },
+      },
     },
     layout: {
       settings: true,
-      label: 'Layout'
+      label: 'Layout',
     },
     lockChoiceOrder: {
       settings: false,
-      label: 'Lock Choice Order'
+      label: 'Lock Choice Order',
     },
     partialScoring: {
       settings: false,
-      label: 'Allow Partial Scoring'
+      label: 'Allow Partial Scoring',
     },
     choiceMode: {
       settings: true,
-      label: 'Response Type'
+      label: 'Response Type',
     },
     prompt: {
       settings: true,
-      label: 'Prompt'
+      label: 'Prompt',
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
+      required: false,
     },
     rationale: {
       settings: true,
-      label: 'Rationale'
+      label: 'Rationale',
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
+      required: false,
+    },
+    settingsPanelDisabled: false,
+    spellCheck: {
+      label: 'Spellcheck',
+      settings: false,
+      enabled: true,
     },
     scoringType: {
       settings: false,
-      label: 'Scoring Type'
+      label: 'Scoring Type',
     },
     studentInstructions: {
       settings: false,
-      label: 'Student Instructions'
+      label: 'Student Instructions',
     },
     teacherInstructions: {
       settings: true,
-      label: 'Teacher Instructions'
-    }
-  }
+      label: 'Teacher Instructions',
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
+      required: false
+    },
+    maxImageWidth: {
+      teacherInstructions: 300,
+      prompt: 300,
+      rationale: 300,
+      rowTitles: 300,
+    },
+    maxImageHeight: {
+      teacherInstructions: 300,
+      prompt: 300,
+      rationale: 300,
+      rowTitles: 150,
+    },
+    withRubric: {
+      settings: false,
+      label: 'Add Rubric',
+    },
+    minQuestions: 2,
+    maxQuestions: 5,
+    maxLengthQuestionsHeading: 100,
+    maxAnswers: 5,
+    maxLengthAnswers: 100,
+    maxLengthFirstColumnHeading: 100,
+    mathMlOptions: {
+      mmlOutput: false,
+      mmlEditing: false,
+    },
+    language: {
+      settings: false,
+      label: 'Specify Language',
+      enabled: false,
+    },
+    languageChoices: {
+      label: 'Language Choices',
+      options: [],
+    },
+  },
 };

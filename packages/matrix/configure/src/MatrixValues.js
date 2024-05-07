@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import MatrixLabelEditableButton, {ACTION_TYPE} from './MatrixLabelEditableButton';
+import MatrixLabelEditableButton, { ACTION_TYPE } from './MatrixLabelEditableButton';
 import isNumeric from './isNumeric';
 import NumberInput from './NumberInput';
 import PropTypes from 'prop-types';
@@ -78,7 +78,7 @@ export const Content = styled.div`
 
 const MatrixValues = (props) => {
   const { model, onChangeModel } = props;
-  const { rowLabels, columnLabels, matrixValues } = model;
+  const { rowLabels, columnLabels, matrixValues, spellCheckEnabled } = model;
 
   const onSetMatrixValue = (matrixValueIndex, value) => {
     const matrixValuesClone = {
@@ -91,8 +91,8 @@ const MatrixValues = (props) => {
     }
     onChangeModel({
       ...model,
-      matrixValues: matrixValuesClone
-    })
+      matrixValues: matrixValuesClone,
+    });
   };
 
   const onSetColumnLabel = (index, labelValue) => {
@@ -100,18 +100,17 @@ const MatrixValues = (props) => {
     columnLabelsClone[index] = labelValue;
     onChangeModel({
       ...model,
-      columnLabels: columnLabelsClone
-    })
+      columnLabels: columnLabelsClone,
+    });
   };
-
 
   const onSetRowLabel = (index, labelValue) => {
     const rowLabelsClone = [...rowLabels];
     rowLabelsClone[index] = labelValue;
     onChangeModel({
       ...model,
-      rowLabels: rowLabelsClone
-    })
+      rowLabels: rowLabelsClone,
+    });
   };
 
   const onActionByColumn = ({ resourceIndex, actionType, setValue }) => {
@@ -133,13 +132,12 @@ const MatrixValues = (props) => {
           break;
         default:
           throw 'Incorrect actionType';
-
       }
     });
     onChangeModel({
       ...model,
-      matrixValues: matrixValuesClone
-    })
+      matrixValues: matrixValuesClone,
+    });
   };
 
   const onActionByRow = ({ resourceIndex, actionType, setValue }) => {
@@ -161,51 +159,48 @@ const MatrixValues = (props) => {
           break;
         default:
           throw 'Incorrect actionType';
-
       }
     });
     onChangeModel({
       ...model,
-      matrixValues: matrixValuesClone
-    })
+      matrixValues: matrixValuesClone,
+    });
   };
 
   return (
     <ScoringContainer>
-      <div/>
-      <GridSeparatorVertical/>
+      <div />
+      <GridSeparatorVertical />
       <MatrixColumns>
-        {
-          columnLabels.map((value, columnLabelIndex) => (
-            <ColumnLabelWrapper key={columnLabelIndex}>
-              <MatrixLabelEditableButton
-                resourceIndex={columnLabelIndex}
-                onAction={onActionByColumn}
-                value={value}
-                onLabelUpdate={(labelValue) => onSetColumnLabel(columnLabelIndex, labelValue)}
-              />
-            </ColumnLabelWrapper>
-          ))
-        }
+        {columnLabels.map((value, columnLabelIndex) => (
+          <ColumnLabelWrapper key={columnLabelIndex}>
+            <MatrixLabelEditableButton
+              resourceIndex={columnLabelIndex}
+              onAction={onActionByColumn}
+              value={value}
+              onLabelUpdate={(labelValue) => onSetColumnLabel(columnLabelIndex, labelValue)}
+              spellCheck={spellCheckEnabled}
+            />
+          </ColumnLabelWrapper>
+        ))}
       </MatrixColumns>
-      <GridSeparatorHorizontal/>
-      <GridSeparatorVertical/>
-      <GridSeparatorHorizontal/>
+      <GridSeparatorHorizontal />
+      <GridSeparatorVertical />
+      <GridSeparatorHorizontal />
       <ScoringRows>
-        {
-          rowLabels.map((value, rowLabelIndex) => (
-            <RowLabelWrapper key={rowLabelIndex}>
-              <MatrixLabelEditableButton
-                resourceIndex={rowLabelIndex}
-                onAction={onActionByRow}
-                value={value}
-                onLabelUpdate={(labelValue) => onSetRowLabel(rowLabelIndex, labelValue)}
-              />
-            </RowLabelWrapper>
-          ))
-        }
+        {rowLabels.map((value, rowLabelIndex) => (
+          <RowLabelWrapper key={rowLabelIndex}>
+            <MatrixLabelEditableButton
+              resourceIndex={rowLabelIndex}
+              onAction={onActionByRow}
+              value={value}
+              onLabelUpdate={(labelValue) => onSetRowLabel(rowLabelIndex, labelValue)}
+              spellCheck={spellCheckEnabled}
+            />
+          </RowLabelWrapper>
+        ))}
       </ScoringRows>
-      <GridSeparatorVertical/>
+      <GridSeparatorVertical />
       <Content>
         {rowLabels.map((row, rowIndex) => {
           return (
@@ -218,14 +213,14 @@ const MatrixValues = (props) => {
                       <NumberInput
                         onFieldUpdate={(e) => onSetMatrixValue(matrixValueIndex, e)}
                         name={matrixValueIndex}
-                        placeholder='#'
+                        placeholder="#"
                         fieldValue={{
-                          value: isNumeric(matrixValues[matrixValueIndex]) ? matrixValues[matrixValueIndex] : ''
+                          value: isNumeric(matrixValues[matrixValueIndex]) ? matrixValues[matrixValueIndex] : '',
                         }}
                       />
                     </ScoringNumberInputWrapper>
                   </ValueItemWrapper>
-                )
+                );
               })}
             </ValueRowWrapper>
           );
@@ -237,7 +232,7 @@ const MatrixValues = (props) => {
 
 MatrixValues.propTypes = {
   model: PropTypes.object.isRequired,
-  onChangeModel: PropTypes.func.isRequired
+  onChangeModel: PropTypes.func.isRequired,
 };
 
 export default MatrixValues;

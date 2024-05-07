@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {SessionChangedEvent} from '@pie-framework/pie-player-events';
-import {renderMath} from '@pie-lib/math-rendering';
+import { SessionChangedEvent } from '@pie-framework/pie-player-events';
+import { renderMath } from '@pie-lib/pie-toolbox/math-rendering-accessible';
 import Main from './Main';
 
-export const isComplete = session => {
+export const isComplete = (session) => {
   if (!session || !session.value) {
     return false;
   }
-  return !!(Object.keys(session.value).length);
+  return !!Object.keys(session.value).length;
 };
 
 export default class Matrix extends HTMLElement {
@@ -26,22 +26,23 @@ export default class Matrix extends HTMLElement {
     this._render();
   }
 
-  sessionChanged({matrixKey, matrixValue}) {
+  get session() {
+    return this._session;
+  }
+
+  sessionChanged({ matrixKey, matrixValue }) {
     const matrixRowKey = matrixKey.split('-')[0];
-    const sessionValueClone = Object
-      .keys(this._session.value || {})
-      .reduce((acc, key) => {
-        if (!key.startsWith(matrixRowKey)) {
-          acc[key] = this._session.value[key];
-        }
-        return acc;
-      }, {});
+    const sessionValueClone = Object.keys(this._session.value || {}).reduce((acc, key) => {
+      if (!key.startsWith(matrixRowKey)) {
+        acc[key] = this._session.value[key];
+      }
+      return acc;
+    }, {});
     sessionValueClone[matrixKey] = matrixValue;
     this._session.value = sessionValueClone;
     const complete = isComplete(this._session, this._model);
-    this.dispatchEvent(
-      new SessionChangedEvent(this.tagName.toLowerCase(), complete)
-    );
+
+    this.dispatchEvent(new SessionChangedEvent(this.tagName.toLowerCase(), complete));
     this._render();
   }
 

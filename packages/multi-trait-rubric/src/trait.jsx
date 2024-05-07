@@ -1,50 +1,46 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {withStyles} from '@material-ui/core/styles';
-import {color} from '@pie-lib/render-ui';
+import { withStyles } from '@material-ui/core/styles';
+import { color } from '@pie-lib/pie-toolbox/render-ui';
 
 const styles = () => ({
   trait: {
     '&$traitName': {
       color: color.primaryDark(),
-      verticalAlign: 'middle'
-    }
+      verticalAlign: 'middle',
+    },
   },
   noDescription: {
     color: color.secondaryBackground(),
-    textAlign: 'center'
+    textAlign: 'center',
   },
-  traitName: {}
+  traitName: {},
 });
 
 const Trait = (props) => {
-  const {trait, traitIndex, scaleIndex, showStandards, showDescription, scorePointsValues, classes} = props;
-  const {name, standards, scorePointsDescriptors, description} = trait || {};
+  const { trait, traitIndex, scaleIndex, showStandards, showDescription, scorePointsValues, classes } = props;
+  const { name, standards, scorePointsDescriptors, description } = trait || {};
 
   return (
     <tr key={`scale-${scaleIndex}-trait-${traitIndex}`}>
       <td className={`${classes.trait} ${classes.traitName}`}>
-        <div dangerouslySetInnerHTML={{__html: name}}/>
+        <div dangerouslySetInnerHTML={{ __html: name }} />
       </td>
 
-      {showStandards
-        ?
+      {showStandards ? (
         <td>
-          <div dangerouslySetInnerHTML={{__html: standards.join(',')}}/>
+          <div dangerouslySetInnerHTML={{ __html: standards.join(',') }} />
         </td>
-        : null
-      }
+      ) : null}
 
-      {showDescription
-        ?
+      {showDescription ? (
         <td>
-          <div dangerouslySetInnerHTML={{__html: description}}/>
+          <div dangerouslySetInnerHTML={{ __html: description }} />
         </td>
-        : null
-      }
+      ) : null}
 
-      {
-        scorePointsValues && scorePointsValues.map((scorePointValue, index) => {
+      {scorePointsValues &&
+        scorePointsValues.map((scorePointValue, index) => {
           let scoreDescriptor;
 
           try {
@@ -55,13 +51,13 @@ const Trait = (props) => {
 
           return (
             <td key={`table-cell-${index}`}>
-              <div className={!scoreDescriptor ? classes.noDescription : ''}
-                   dangerouslySetInnerHTML={{__html: scoreDescriptor || 'No Description'}}
+              <div
+                className={!scoreDescriptor ? classes.noDescription : ''}
+                dangerouslySetInnerHTML={{ __html: scoreDescriptor || 'No Description' }}
               />
             </td>
           );
-        })
-      }
+        })}
     </tr>
   );
 };
@@ -78,7 +74,7 @@ Trait.propTypes = {
     standards: PropTypes.arrayOf(PropTypes.string),
     scorePointsDescriptors: PropTypes.arrayOf(PropTypes.string),
     description: PropTypes.string,
-  })
+  }),
 };
 
 export default withStyles(styles)(Trait);

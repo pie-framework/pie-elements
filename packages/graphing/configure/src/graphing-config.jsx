@@ -1,213 +1,318 @@
 import * as React from 'react';
-import { NumberTextField } from '@pie-lib/config-ui';
-import classnames from 'classnames';
 import PropTypes from 'prop-types';
+import { GraphContainer, GridSetup } from '@pie-lib/pie-toolbox/graphing';
+import { AlertDialog } from '@pie-lib/pie-toolbox/config-ui';
+import { MenuItem, Select, Typography, OutlinedInput } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
-import { GraphContainer } from '@pie-lib/graphing';
-import { TextField } from '@material-ui/core';
+import { applyConstraints, filterPlotableMarks, getGridValues, getLabelValues } from './utils';
+import { isEqual } from 'lodash';
 
-import { get, set } from 'lodash';
-import Typography from '@material-ui/core/Typography';
-
-export const AuthoringColumn = ({ columnKey, axis, classes, model }) => {
-  const rows = [{
-    key: '${columnKey}-min-max',
-    inputs: [
-      {
-        key: `${columnKey}.min`,
-        label: 'Min value',
-        className: classes.smallInput
-      },
-      {
-        key: `${columnKey}.max`,
-        label: 'Max value',
-        className: classes.smallInput
-      }
-    ]
-  }, {
-    key: `${columnKey}-tick-frequency`,
-    inputs: [
-      {
-        key: `${columnKey}.step`,
-        label: 'Tick frequency'
-      }
-    ]
-  },
-    {
-      key: `${columnKey}-tick-label-frequency`,
-      inputs: [
-        {
-          key: `${columnKey}.labelStep`,
-          label: 'Tick label frequency'
-        }
-      ]
-    },
-    {
-      key: `${columnKey}-axis-label`,
-      inputs: [
-        {
-          type: 'text',
-          key: `${axis}-axis-label-input`,
-          label: `${axis} Axis Label`
-        }
-      ]
-    }
-  ];
-
-  return (
-    <div className={classes.column} key={columnKey}>
-      {`${columnKey.toUpperCase()} (${axis.toUpperCase()})`}
-
-      {rows.map(row => (
-        <div className={classes.row} key={row.key}>
-          {row.inputs.map(input => {
-            if (input.type === 'text') {
-              return (
-                <TextField
-                  className={classes.input}
-                  label={input.label.toUpperCase()}
-                  value={model[`${axis}AxisLabel`]}
-                  onChange={({ target }) => this.onChangeInputValue(`${axis}AxisLabel`, target.value)}
-                />
-              );
-            }
-
-            return (
-              <TextField
-                type="number"
-                key={input.key}
-                label={input.label.toUpperCase()}
-                onChange={(event, value) => this.onChangeInputValue(input.key, value)}
-                value={get(model, input.key)}
-                className={input.className || classes.input}
-              />
-            );
-          })}
-        </div>
-      ))}
-    </div>
-  );
-};
-
-AuthoringColumn.propTypes = {
-  axis: PropTypes.String,
-  classes: PropTypes.object,
-  columnKey: PropTypes.String,
-  model: PropTypes.object,
-};
-
-const styles = theme => ({
+const styles = (theme) => ({
   container: {
-    marginTop: theme.spacing.unit * 3,
-    marginBottom: theme.spacing.unit * 3,
     display: 'flex',
-    flex: 1,
+    flexWrap: 'wrap',
+    marginBottom: theme.spacing.unit * 2.5,
   },
-  column: {
-    flex: 1
-  },
-  row: {
-    marginTop: theme.spacing.unit * 2,
-    flex: 1
-  },
-  settings: {
+  gridConfigWrapper: {
     display: 'flex',
-    flexDirection: 'row'
+    flexDirection: 'column',
+    marginRight: theme.spacing.unit * 3,
+    marginBottom: theme.spacing.unit * 2.5,
   },
-  input: {
-    width: 'calc(100% -  32px)'
+  graphConfig: {
+    display: 'flex',
+    flexDirection: 'column',
   },
-  smallInput: {
-    width: 'calc(50% -  32px)'
-  }
+  subtitleText: {
+    marginTop: theme.spacing.unit * 1.5,
+    marginBottom: theme.spacing.unit,
+  },
+  gridConfig: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    alignItems: 'center',
+    width: '100%',
+    marginBottom: theme.spacing.unit * 2.5,
+  },
+  gridConfigLabel: {
+    padding: `0 ${theme.spacing.unit}px`,
+  },
+  gridConfigSelect: {
+    flex: '1',
+  },
 });
 
 export class GraphingConfig extends React.Component {
   static propTypes = {
+    availableTools: PropTypes.array,
     classes: PropTypes.object.isRequired,
+    authoring: PropTypes.object,
+    dimensionsEnabled: PropTypes.bool,
+    graphDimensions: PropTypes.object,
+    gridConfigurations: PropTypes.array,
+    labelsPlaceholders: PropTypes.object,
     model: PropTypes.object.isRequired,
     onChange: PropTypes.func.isRequired,
-    authoringEnabled: PropTypes.bool,
+    showLabels: PropTypes.bool,
+    showTitle: PropTypes.bool,
+    titlePlaceholder: PropTypes.string,
   };
 
-  onChangeInputValue = (key, value) => {
-    const { model } = this.props;
+  constructor(props) {
+    super(props);
+    const { domain, range, graph } = props.model || {};
 
-    set(model, key, value);
-    this.props.onChange(model);
-  };
+    const gridValues = {
+      domain: getGridValues(domain, graph.width, true),
+      range: getGridValues(range, graph.height, true),
+    };
+    const labelValues = {
+      domain: getLabelValues(domain.step),
+      range: getLabelValues(range.step),
+    };
 
-  renderInput = (key, label, className) => {
-    const { classes, model } = this.props;
+    this.state = {
+      gridValues,
+      labelValues,
+      showPixelGuides: false,
+      dialog: { isOpened: false },
+      domain: { ...domain },
+      range: { ...range },
+    };
+  }
 
-    return (
-      <NumberTextField
-        key={key}
-        label={label.toUpperCase()}
-        onChange={(event, value) => this.onChangeInputValue(key, value)}
-        value={get(model, key)}
-        className={className || classes.input}
-      />
-    )
-  };
-
-  renderRow = (key, content) => {
-    const { classes } = this.props;
-
-    return (
-      <div className={classes.row} key={key}>
-        {content}
-      </div>
-    );
-  };
-
-  changeBackgroundMarks = backgroundMarks => {
+  changeBackgroundMarks = (backgroundMarks) => {
     const model = { ...this.props.model, backgroundMarks };
+
     this.props.onChange(model);
+  };
+
+  changeLabels = (labels) => {
+    const { model, onChange } = this.props;
+
+    onChange({ ...model, labels });
+  };
+
+  changeTitle = (title) => {
+    const { model, onChange } = this.props;
+
+    onChange({ ...model, title });
+  };
+
+  onConfigChange = (config, newSelectedGrid) => {
+    const { model, onChange } = this.props;
+    const { defaultGridConfiguration: oldSelectedGrid = 0 } = model;
+    const { gridValues: oldGridValues, labelValues: oldLabelValues, domain: oldDomain, range: oldRange } = this.state;
+    const updatedModel = { ...model, ...config };
+    const { answers, domain, includeAxes, graph, range, standardGrid } = updatedModel;
+    const gridValues = { domain: [], range: [] };
+    const labelValues = { domain: [], range: [] };
+    const selectedGrid = newSelectedGrid >= 0 ? newSelectedGrid : oldSelectedGrid;
+
+    if (includeAxes) {
+      const domainConstraints = applyConstraints(domain, graph.width, oldGridValues.domain, oldLabelValues.domain);
+
+      gridValues.domain = domainConstraints.gridValues || [];
+      labelValues.domain = domainConstraints.labelValues || [];
+    }
+
+    if (standardGrid) {
+      gridValues.range = gridValues.domain;
+      labelValues.range = labelValues.domain;
+      range.step = domain.step;
+      range.labelStep = domain.labelStep;
+    } else {
+      if (includeAxes) {
+        const rangeConstraints = applyConstraints(range, graph.height, oldGridValues.range, oldLabelValues.range);
+
+        gridValues.range = rangeConstraints.gridValues || [];
+        labelValues.range = rangeConstraints.labelValues || [];
+      }
+    }
+
+    const plotableAnswers = filterPlotableMarks(domain, range, answers);
+
+    if (!isEqual(answers, plotableAnswers)) {
+      this.setState({
+        dialog: {
+          isOpened: true,
+          onClose: () =>
+            this.setState({ dialog: { isOpened: false } }, onChange({ ...model, domain: oldDomain, range: oldRange })),
+          onConfirm: () => {
+            this.setState(
+              {
+                gridValues,
+                labelValues,
+                dialog: { isOpened: false },
+                domain: { ...domain },
+                range: { ...range },
+              },
+              onChange({ ...updatedModel, answers: plotableAnswers, defaultGridConfiguration: selectedGrid }),
+            );
+          },
+        },
+      });
+
+      return;
+    }
+
+    this.setState({ gridValues, labelValues, domain: { ...domain }, range: { ...range } });
+    onChange({ ...updatedModel, defaultGridConfiguration: selectedGrid });
+  };
+
+  onChangeView = (event, expanded) => {
+    const { graphDimensions: { enabled } = {} } = this.props;
+
+    if (enabled) {
+      this.setState({ showPixelGuides: expanded });
+    }
+  };
+
+  changeGridConfiguration = (event) => {
+    const { gridConfigurations } = this.props;
+    const { value } = event.target;
+
+    this.onConfigChange(gridConfigurations?.[value] || {}, value);
   };
 
   render() {
-    const { classes, model, authoringEnabled } = this.props;
-    let { graph } = model || {};
-    const { arrows, backgroundMarks, coordinatesOnHover, domain, labels, range, title, toolbarTools } = model || {};
-    graph = graph || {};
+    const {
+      authoring = {},
+      availableTools = [],
+      classes,
+      gridConfigurations = [],
+      graphDimensions = {},
+      labelsPlaceholders,
+      model,
+      showLabels,
+      dimensionsEnabled,
+      showTitle,
+      titlePlaceholder,
+      mathMlOptions = {},
+      removeIncompleteTool,
+    } = this.props;
+    const {
+      arrows,
+      backgroundMarks,
+      coordinatesOnHover,
+      defaultGridConfiguration,
+      domain,
+      includeAxes,
+      labels,
+      range,
+      standardGrid,
+      title,
+    } = model || {};
+    const graph = (model || {}).graph || {};
+    const { min, max, step } = graphDimensions || {};
+    const { dialog = {}, gridValues, labelValues, showPixelGuides } = this.state;
+
+    const sizeConstraints = {
+      min: Math.max(150, min),
+      max: Math.min(800, max),
+      step: step >= 1 ? Math.min(200, step) : 20,
+    };
+
+    const displayedFields = {
+      axisLabel: authoring.axisLabel,
+      dimensionsEnabled,
+      includeAxesEnabled: authoring.includeAxesEnabled,
+      labelStep: authoring.labelStep,
+      min: authoring.min,
+      max: authoring.max,
+      standardGridEnabled: authoring.standardGridEnabled,
+      step: authoring.step,
+    };
+
+    const displayGridSetup =
+      authoring.enabled &&
+      Object.values(displayedFields).some((field) => (typeof field === 'object' ? field.enabled : field));
 
     return (
-      <div>
-        Define Graph Attributes
+      <div className={classes.container}>
+        <div className={classes.gridConfigWrapper}>
+          {gridConfigurations && gridConfigurations.length ? (
+            <div className={classes.gridConfig}>
+              <Typography component="div" variant="subheading" className={classes.gridConfigLabel}>
+                Grid Configuration
+              </Typography>
 
-        <div className={classes.container}>
-          {
-            authoringEnabled && (
-              <div className={classnames(classes.column, classes.settings)} key="settings">
-                <AuthoringColumn columnKey="domain" axis="x" classes={classes} model={model} />
-                <AuthoringColumn columnKey="range" axis="y" classes={classes} model={model} />
-              </div>
-            )
-          }
+              <Select
+                input={<OutlinedInput />}
+                className={classes.gridConfigSelect}
+                displayEmpty
+                onChange={this.changeGridConfiguration}
+                value={defaultGridConfiguration}
+              >
+                {(gridConfigurations || []).map((config, index) => (
+                  <MenuItem key={index} value={index}>
+                    {config.label}
+                  </MenuItem>
+                ))}
+              </Select>
+            </div>
+          ) : null}
 
-          <div className={classes.column} key="graph">
-            <Typography component="div" type="body1">
-              <span>Use the tools below to set background shapes</span>
-            </Typography>
-
-            <GraphContainer
-              axesSettings={{ includeArrows: arrows }}
-              backgroundMarks={[]}
-              coordinatesOnHover={coordinatesOnHover}
+          {displayGridSetup && (
+            <GridSetup
+              displayedFields={displayedFields}
               domain={domain}
-              key="graphing-config"
-              labels={labels}
-              marks={backgroundMarks}
-              onChangeMarks={this.changeBackgroundMarks}
+              gridValues={gridValues}
+              includeAxes={includeAxes}
+              labelValues={labelValues}
               range={range}
-              size={{ width: graph.width, height: graph.height }}
-              title={title}
-              toolbarTools={toolbarTools}
+              size={graph}
+              sizeConstraints={sizeConstraints}
+              standardGrid={standardGrid}
+              onChange={this.onConfigChange}
+              onChangeView={this.onChangeView}
             />
-          </div>
-
+          )}
         </div>
+
+        <div className={classes.graphConfig} key="graph">
+          <Typography component="div" variant="subheading">
+            Define Graph Attributes
+          </Typography>
+
+          <Typography component="div" variant="body1" className={classes.subtitleText}>
+            Use this interface to add/edit a title and/or labels, and to set background shapes
+          </Typography>
+
+          <GraphContainer
+            axesSettings={{ includeArrows: arrows }}
+            backgroundMarks={[]}
+            coordinatesOnHover={coordinatesOnHover}
+            collapsibleToolbar={true}
+            collapsibleToolbarTitle={'Add Background Shapes to Graph'}
+            domain={domain}
+            key="graphing-config"
+            labels={labels}
+            labelsPlaceholders={labelsPlaceholders}
+            marks={backgroundMarks}
+            onChangeLabels={this.changeLabels}
+            onChangeMarks={this.changeBackgroundMarks}
+            onChangeTitle={this.changeTitle}
+            range={range}
+            showLabels={showLabels}
+            showPixelGuides={showPixelGuides}
+            showTitle={showTitle}
+            size={{ width: graph.width, height: graph.height }}
+            title={title}
+            titlePlaceholder={titlePlaceholder}
+            toolbarTools={availableTools}
+            mathMlOptions={mathMlOptions}
+            removeIncompleteTool={removeIncompleteTool}
+          />
+        </div>
+
+        <AlertDialog
+          open={dialog.isOpened}
+          title="Warning"
+          text="This change would make it impossible for students to plot one or more graph objects in the current correct answers. If you proceed, all such graph objects will be removed from the correct answers."
+          onClose={dialog.onClose}
+          onConfirm={dialog.onConfirm}
+        />
       </div>
     );
   }

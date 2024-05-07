@@ -3,14 +3,18 @@ import reduce from 'lodash/reduce';
 import find from 'lodash/find';
 import isEmpty from 'lodash/isEmpty';
 import debug from 'debug';
-import { partialScoring } from '@pie-lib/controller-utils';
+import { partialScoring } from '@pie-lib/pie-toolbox/controller-utils';
+import defaults from './defaults';
+import Translator from '@pie-lib/pie-toolbox/translator';
+
+const { translator } = Translator;
 
 const log = debug('explicit-constructed-response:controller');
 
-export const prepareChoice = (mode, defaultFeedback) => choice => {
+export const prepareChoice = (mode, defaultFeedback) => (choice) => {
   const out = {
     label: choice.label,
-    value: choice.value
+    value: choice.value,
   };
 
   if (mode === 'evaluate') {
@@ -28,7 +32,7 @@ export const prepareChoice = (mode, defaultFeedback) => choice => {
   return out;
 };
 
-const getFeedback = value => {
+const getFeedback = (value) => {
   if (value) {
     return 'correct';
   }
@@ -37,7 +41,7 @@ const getFeedback = value => {
 };
 
 // also used in configure/src/markupUtils.js
-const getAdjustedLength = length => {
+const getAdjustedLength = (length) => {
   if (length <= 2) {
     return length + 2;
   }
@@ -53,13 +57,7 @@ const getAdjustedLength = length => {
   return length + 5;
 };
 
-export const normalize = question => ({
-  rationaleEnabled: true,
-  promptEnabled: true,
-  teacherInstructionsEnabled: true,
-  studentInstructionsEnabled: true,
-  ...question,
-});
+export const normalize = (question) => ({ ...defaults, ...question });
 
 /**
  *
@@ -68,11 +66,11 @@ export const normalize = question => ({
  * @param {*} env
  */
 export function model(question, session, env) {
-  return new Promise(async resolve => {
+  return new Promise(async (resolve) => {
     // this was added to treat an exception, when the model has choices without the "value" property
     // like: { label: 'test' }
     if (question.choices) {
-      Object.keys(question.choices).forEach(key => {
+      Object.keys(question.choices).forEach((key) => {
         question.choices[key] = (question.choices[key] || []).map((item, index) => {
           if (!item.value) {
             log('Choice does not contain "value" property, which is required.', item);
@@ -80,14 +78,14 @@ export function model(question, session, env) {
           }
 
           return item;
-        })
+        });
       });
     }
 
     const normalizedQuestion = normalize(question);
     const defaultFeedback = Object.assign(
       { correct: 'Correct', incorrect: 'Incorrect' },
-      normalizedQuestion.defaultFeedback
+      normalizedQuestion.defaultFeedback,
     );
 
     const { value = {} } = session || {};
@@ -101,42 +99,52 @@ export function model(question, session, env) {
 
         return obj;
       },
-      {}
+      {},
     );
     let feedback = {};
 
     if (env.mode === 'evaluate') {
-      feedback = reduce(normalizedQuestion.choices, (obj, respArea, key) => {
-        const chosenValue = value && value[key];
-        const val = !isEmpty(chosenValue) && find(respArea, c => prepareVal(c.label) === prepareVal(chosenValue));
+      feedback = reduce(
+        normalizedQuestion.choices,
+        (obj, respArea, key) => {
+          const chosenValue = value && value[key];
+          const val = !isEmpty(chosenValue) && find(respArea, (c) => prepareVal(c.label) === prepareVal(chosenValue));
 
-        obj[key] = getFeedback(val);
+          obj[key] = getFeedback(val);
 
-        return obj;
-      }, {});
+          return obj;
+        },
+        {},
+      );
     }
 
     let showNote = false;
     // check if a choice has an alternate
-    Object.values(choices).forEach(choice => {
-       if (choice && choice.length > 1) {
-         showNote = true;
-       }
+    Object.values(choices).forEach((choice) => {
+      if (choice && choice.length > 1) {
+        showNote = true;
+      }
     });
+
+    let { note } = normalizedQuestion;
+
+    if (!note) {
+      note = translator.t('common:commonCorrectAnswerWithAlternates', { lng: normalizedQuestion.language });
+    }
 
     const { maxLengthPerChoice = [], maxLengthPerChoiceEnabled } = normalizedQuestion;
     const undefinedLengths = !maxLengthPerChoice.length;
 
     // calculate maxLengthPerChoice array if it is not defined or defined incorrectly
     Object.values(choices).forEach((choice, index) => {
-      const labelLengthsArr = (choice || []).map(choice => (choice.label || '').length);
+      const labelLengthsArr = (choice || []).map((choice) => (choice.label || '').length);
       const length = Math.max(...labelLengthsArr);
 
       if (
-        undefinedLengths
-        || !maxLengthPerChoice[index]
-        || maxLengthPerChoice[index] < length
-        || maxLengthPerChoice[index] > length + 10
+        undefinedLengths ||
+        !maxLengthPerChoice[index] ||
+        maxLengthPerChoice[index] < length ||
+        maxLengthPerChoice[index] > length + 10
       ) {
         maxLengthPerChoice[index] = getAdjustedLength(length);
       }
@@ -150,21 +158,21 @@ export function model(question, session, env) {
       choices,
       feedback,
       env,
-      note: normalizedQuestion.note,
+      note,
       showNote,
       maxLengthPerChoice,
       maxLengthPerChoiceEnabled,
       displayType: normalizedQuestion.displayType,
-      responseCorrect:
-        env.mode === 'evaluate' ? getScore(normalizedQuestion, session) === 1 : undefined
+      playerSpellCheckEnabled: normalizedQuestion.playerSpellCheckEnabled,
+      responseCorrect: env.mode === 'evaluate' ? getScore(normalizedQuestion, session) === 1 : undefined,
+      language: normalizedQuestion.language,
     };
 
-    if (
-      env.role === 'instructor' &&
-      (env.mode === 'view' || env.mode === 'evaluate')
-    ) {
+    if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
       out.rationale = normalizedQuestion.rationaleEnabled ? normalizedQuestion.rationale : null;
-      out.teacherInstructions = normalizedQuestion.teacherInstructionsEnabled ? normalizedQuestion.teacherInstructions : null;
+      out.teacherInstructions = normalizedQuestion.teacherInstructionsEnabled
+        ? normalizedQuestion.teacherInstructions
+        : null;
     } else {
       out.rationale = null;
       out.teacherInstructions = null;
@@ -178,7 +186,7 @@ const getTextFromHTML = (html) => {
   return (html || '').replace(/<\/?[^>]+(>|$)/g, '');
 };
 
-export const prepareVal = html => {
+export const prepareVal = (html) => {
   const value = getTextFromHTML(html);
 
   return value.trim();
@@ -193,15 +201,19 @@ export const getScore = (config, session) => {
 
   const responseAreas = config.markup && config.markup.match(/\{\{(.)\}\}/g);
   const maxScore = responseAreas ? responseAreas.length : 0;
-  const correctCount = reduce(config.choices, (total, respArea, key) => {
-    const chosenValue = value && value[key];
+  const correctCount = reduce(
+    config.choices,
+    (total, respArea, key) => {
+      const chosenValue = value && value[key];
 
-    if (isEmpty(chosenValue) || !find(respArea, c => prepareVal(c.label) === prepareVal(chosenValue))) {
-      return total;
-    }
+      if (isEmpty(chosenValue) || !find(respArea, (c) => prepareVal(c.label) === prepareVal(chosenValue))) {
+        return total;
+      }
 
-    return total + 1;
-  }, 0);
+      return total + 1;
+    },
+    0,
+  );
 
   const str = maxScore ? (correctCount / maxScore).toFixed(2) : 0;
 
@@ -221,7 +233,7 @@ export const getScore = (config, session) => {
  *   `model.partialScoring`.
  */
 export function outcome(model, session, env = {}) {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     const partialScoringEnabled = partialScoring.enabled(model, env);
     const score = getScore(model, session);
 
@@ -230,7 +242,7 @@ export function outcome(model, session, env = {}) {
 }
 
 export const createCorrectResponseSession = (question, env) => {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     if (env.mode !== 'evaluate' && env.role === 'instructor') {
       const { choices } = question;
       const value = {};
@@ -241,10 +253,66 @@ export const createCorrectResponseSession = (question, env) => {
 
       resolve({
         id: '1',
-        value
+        value,
       });
     } else {
       resolve(null);
     }
   });
+};
+
+// remove all html tags
+const getInnerText = (html) => (html || '').replaceAll(/<[^>]*>/g, '');
+
+// remove all html tags except img and iframe
+const getContent = (html) => (html || '').replace(/(<(?!img|iframe)([^>]+)>)/gi, '');
+
+export const validate = (model = {}, config = {}) => {
+  const { choices, markup } = model;
+  const { maxResponseAreas } = config;
+  const allChoicesErrors = {};
+  const errors = {};
+
+  ['teacherInstructions', 'prompt', 'rationale'].forEach((field) => {
+    if (config[field]?.required && !getContent(model[field])) {
+      errors[field] = 'This field is required.';
+    }
+  });
+
+  Object.entries(choices || {}).forEach(([key, values]) => {
+    const reversedChoices = [...(values || [])].reverse();
+    const choicesErrors = {};
+
+    reversedChoices.forEach((choice, index) => {
+      const { value, label } = choice;
+
+      if (label === '' || label === '<div></div>') {
+        choicesErrors[value] = 'Content should not be empty.';
+      } else {
+        const identicalAnswer = reversedChoices.slice(index + 1).some((c) => c.label === label);
+
+        if (identicalAnswer) {
+          choicesErrors[value] = 'Content should be unique.';
+        }
+      }
+    });
+
+    if (!isEmpty(choicesErrors)) {
+      allChoicesErrors[key] = choicesErrors;
+    }
+  });
+
+  const nbOfResponseAreas = (markup.match(/\{\{(\d+)\}\}/g) || []).length;
+
+  if (nbOfResponseAreas > maxResponseAreas) {
+    errors.responseAreas = `No more than ${maxResponseAreas} response areas should be defined.`;
+  } else if (nbOfResponseAreas < 1) {
+    errors.responseAreas = 'There should be at least 1 response area defined.';
+  }
+
+  if (!isEmpty(allChoicesErrors)) {
+    errors.choices = allChoicesErrors;
+  }
+
+  return errors;
 };

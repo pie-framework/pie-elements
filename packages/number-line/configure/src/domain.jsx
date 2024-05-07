@@ -1,15 +1,15 @@
 import { MiniField } from './number-text-field';
 import PropTypes from 'prop-types';
 import React from 'react';
+import { withStyles } from '@material-ui/core/styles';
 
 const DOMAIN_BEGIN = 'domainBegin';
 const DOMAIN_END = 'domainEnd';
 
-const sort = domain => {
+const sort = (domain) => {
   if (domain.min <= domain.max) {
     return domain;
   }
-
   return { min: domain.max, max: domain.min };
 };
 
@@ -23,34 +23,47 @@ export class Domain extends React.Component {
 
   change(key, event, value) {
     const { onChange } = this.props;
-    const update = { ...this.props.domain, [key]: value };
+    let update;
+    //Added condition when min and max is same, then it should not update the value
+    if ((key === 'min' && value === this.props.domain.max) || (key === 'max' && value === this.props.domain.min)) {
+      update = { ...this.props.domain };
+    } else {
+      update = { ...this.props.domain, [key]: value };
+    }
     onChange(sort(update));
   }
 
   render() {
-    const { domain } = this.props;
+    const { classes, domain } = this.props;
 
     return (
-      <div>
-        {/* <Typography>Domain</Typography> */}
-        <MiniField
-          label="Minimum"
-          value={domain.min}
-          name={DOMAIN_BEGIN}
-          onChange={this.changeMin}
-        />
-        <MiniField
-          label="Maximum"
-          value={domain.max}
-          name={DOMAIN_END}
-          onChange={this.changeMax}
-        />
+      <div className={classes.displayFlex}>
+        <div className={classes.flexRow}>
+          <label>Min Value</label>
+          <MiniField min={-100000} max={99999} value={domain.min} name={DOMAIN_BEGIN} onChange={this.changeMin} />
+        </div>
+        <div className={classes.flexRow}>
+          <label>Max Value</label>
+          <MiniField min={-99999} max={100000} value={domain.max} name={DOMAIN_END} onChange={this.changeMax} />
+        </div>
       </div>
     );
   }
 }
 Domain.propTypes = {
+  classes: PropTypes.object.isRequired,
   domain: PropTypes.shape({ min: PropTypes.number, max: PropTypes.number }),
-  onChange: PropTypes.func.isRequired
+  onChange: PropTypes.func.isRequired,
 };
-export default Domain;
+const styles = (theme) => ({
+  displayFlex: {
+    display: 'flex',
+    gap: '20px',
+  },
+  flexRow: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '10px',
+  },
+});
+export default withStyles(styles)(Domain);

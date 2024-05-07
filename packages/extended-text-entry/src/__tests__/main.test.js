@@ -40,5 +40,4 @@ describe('Render Main Component', () => {
     );
     expect(wrapper).toMatchSnapshot();
   });
-
 });

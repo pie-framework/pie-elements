@@ -1,5 +1,5 @@
 import React from 'react';
-import { Ruler } from '@pie-lib/tools';
+import { Ruler } from '@pie-lib/pie-toolbox/tools';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Toggle from './toggle';
@@ -7,14 +7,15 @@ import Toggle from './toggle';
 const styles = {
   ruler: {
     position: 'absolute',
-    left: '200px'
-  }
+    left: '200px',
+    zIndex: '101',
+  },
 };
 
 export class Root extends React.Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
-    model: PropTypes.object.isRequired
+    model: PropTypes.object.isRequired,
   };
 
   constructor(props) {
@@ -27,9 +28,11 @@ export class Root extends React.Component {
   render() {
     const { show } = this.state;
     const { classes, model } = this.props;
+
     return (
       <div>
         <Toggle active={show} onToggle={this.onToggle} />
+
         {show && (
           <Ruler
             className={classes.ruler}

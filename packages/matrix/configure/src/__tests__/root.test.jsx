@@ -4,7 +4,7 @@ import React from 'react';
 import { Main } from '../Main';
 import defaults from '../defaults';
 
-jest.mock('@pie-lib/config-ui', () => ({
+jest.mock('@pie-lib/pie-toolbox/config-ui', () => ({
   settings: {
     Panel: (props) => <div {...props} />,
   },
@@ -63,20 +63,12 @@ describe('Main', () => {
       it('adds a row label', () => {
         w.instance().onChangeModel({
           ...initialModel,
-          rowLabels: [
-            "I'm interested in politics.",
-            "I'm interested in economics.",
-            'c',
-          ],
+          rowLabels: ["I'm interested in politics.", "I'm interested in economics.", 'c'],
         });
 
         expect(onModelChanged).toBeCalledWith({
           ...initialModel,
-          rowLabels: [
-            "I'm interested in politics.",
-            "I'm interested in economics.",
-            'c',
-          ],
+          rowLabels: ["I'm interested in politics.", "I'm interested in economics.", 'c'],
         });
       });
     });

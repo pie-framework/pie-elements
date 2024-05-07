@@ -1,10 +1,6 @@
 import isEmpty from 'lodash/isEmpty';
-import { getFeedbackForCorrectness } from '@pie-lib/feedback';
-import {
-  lockChoices,
-  getShuffledChoices,
-  partialScoring,
-} from '@pie-lib/controller-utils';
+import { getFeedbackForCorrectness } from '@pie-lib/pie-toolbox/feedback';
+import { lockChoices, getShuffledChoices, partialScoring } from '@pie-lib/pie-toolbox/controller-utils';
 import debug from 'debug';
 
 const log = debug('@pie-element:match-list:controller');
@@ -65,11 +61,7 @@ const getPartialScore = (question, answers) => {
 const getOutComeScore = (question, env, answers) => {
   const correctness = getCorrectness(question, env, answers);
 
-  return correctness === 'correct'
-    ? 1
-    : correctness === 'partial' && true
-    ? getPartialScore(question, answers)
-    : 0;
+  return correctness === 'correct' ? 1 : correctness === 'partial' && true ? getPartialScore(question, answers) : 0;
 };
 
 export const outcome = (question, session, env) => {
@@ -110,9 +102,7 @@ export function model(question, session, env, updateSession) {
   return new Promise(async (resolve) => {
     const correctness = getCorrectness(question, env, session && session.value);
     const correctResponse = {};
-    const score = `${
-      getOutComeScore(question, env, session && session.value) * 100
-    }%`;
+    const score = `${getOutComeScore(question, env, session && session.value) * 100}%`;
     const correctInfo = {
       score,
       correctness,
@@ -136,13 +126,13 @@ export function model(question, session, env, updateSession) {
         prompts,
         { shuffledValues: ((session && session.shuffledValues) || {}).prompts },
         us('prompts'),
-        'id'
+        'id',
       );
       answers = await getShuffledChoices(
         answers,
         { shuffledValues: ((session && session.shuffledValues) || {}).answers },
         us('answers'),
-        'id'
+        'id',
       );
     }
 
@@ -151,6 +141,7 @@ export function model(question, session, env, updateSession) {
         updateSession(session.id, session.element, {
           shuffledValues,
         }).catch((e) => {
+          // eslint-disable-next-line no-console
           console.error('update session failed', e);
         });
       }
@@ -179,10 +170,7 @@ export function model(question, session, env, updateSession) {
         mode: env.mode,
       };
 
-      if (
-        env.role === 'instructor' &&
-        (env.mode === 'view' || env.mode === 'evaluate')
-      ) {
+      if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
         base.rationale = question.rationale;
       } else {
         base.rationale = null;

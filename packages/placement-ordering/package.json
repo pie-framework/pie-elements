@@ -1,6 +1,6 @@
 {
   "name": "@pie-element/placement-ordering",
-  "version": "7.7.9",
+  "version": "9.12.1",
   "description": "",
   "repository": "pie-framework/pie-elements",
   "publishConfig": {
@@ -8,16 +8,14 @@
   },
   "dependencies": {
     "@material-ui/core": "^3.9.2",
-    "@pie-lib/correct-answer-toggle": "^2.3.34",
-    "@pie-lib/drag": "^1.1.52",
-    "@pie-lib/math-rendering": "^2.3.12",
-    "@pie-lib/render-ui": "^4.12.4",
+    "@pie-framework/pie-player-events": "^0.1.0",
+    "@pie-lib/pie-toolbox": "1.17.1",
     "debug": "^4.1.1",
     "decimal.js": "^10.0.0",
     "lodash": "^4.17.10",
     "prop-types": "^15.6.1",
     "react": "^16.8.1",
-    "react-dnd": "^9.3.2",
+    "react-dnd": "^14.0.5",
     "react-dom": "^16.8.1",
     "react-jss": "^8.4.0",
     "react-transition-group": "^2.3.1"

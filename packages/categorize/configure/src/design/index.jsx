@@ -1,28 +1,27 @@
+import { getPluginProps } from './utils';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import classNames from 'classnames';
-import {
-  FeedbackConfig,
-  InputContainer,
-  layout,
-  settings
-} from '@pie-lib/config-ui';
+import { FeedbackConfig, InputContainer, layout, settings } from '@pie-lib/pie-toolbox/config-ui';
 import {
   countInAnswer,
-  ensureNoExtraChoicesInAnswer
-} from '@pie-lib/categorize';
-import EditableHtml from '@pie-lib/editable-html';
-import { uid, withDragContext } from '@pie-lib/drag';
+  ensureNoExtraChoicesInAnswer,
+  ensureNoExtraChoicesInAlternate,
+} from '@pie-lib/pie-toolbox/categorize';
+import { EditableHtml } from '@pie-lib/pie-toolbox/editable-html';
+import { uid, withDragContext } from '@pie-lib/pie-toolbox/drag';
 
 import Categories from './categories';
 import AlternateResponses from './categories/alternateResponses';
 import Choices from './choices';
-import { Divider } from './buttons';
 import { buildAlternateResponses, buildCategories } from './builder';
 import Header from './header';
+import { getMaxCategoryChoices, multiplePlacements } from '../utils';
+import { AlertDialog } from '@pie-lib/pie-toolbox/config-ui';
+import Translator from '@pie-lib/pie-toolbox/translator';
 
-const { Panel, toggle, radio } = settings;
+const { translator } = Translator;
+const { dropdown, Panel, toggle, radio, numberField } = settings;
 const { Provider: IdProvider } = uid;
 
 export class Design extends React.Component {
@@ -36,8 +35,12 @@ export class Design extends React.Component {
     uid: PropTypes.string,
     imageSupport: PropTypes.shape({
       add: PropTypes.func.isRequired,
-      delete: PropTypes.func.isRequired
-    })
+      delete: PropTypes.func.isRequired,
+    }),
+    uploadSoundSupport: PropTypes.shape({
+      add: PropTypes.func.isRequired,
+      delete: PropTypes.func.isRequired,
+    }),
   };
 
   constructor(props) {
@@ -45,331 +48,438 @@ export class Design extends React.Component {
     this.uid = props.uid || uid.generateId();
   }
 
-  updateModel = props => {
+  updateModel = (props) => {
     const { model, onChange } = this.props;
 
     const updatedModel = {
       ...model,
-      ...props
+      ...props,
     };
+
+    updatedModel.choices = updatedModel.choices.map((c) => ({
+      ...c,
+      categoryCount: this.checkAllowMultiplePlacements(updatedModel.allowMultiplePlacementsEnabled, c),
+    }));
 
     //Ensure that there are no extra choices in correctResponse, if the user has decided that only one choice may be used.
     updatedModel.correctResponse = ensureNoExtraChoicesInAnswer(
       updatedModel.correctResponse || [],
-      updatedModel.choices
+      updatedModel.choices,
+    );
+
+    //Ensure that there are no extra choices in alternate responses, if the user has decided that only one choice may be used.
+    updatedModel.correctResponse = ensureNoExtraChoicesInAlternate(
+      updatedModel.correctResponse || [],
+      updatedModel.choices,
     );
 
     //clean categories
-    updatedModel.categories = updatedModel.categories.map(c => ({
+    updatedModel.categories = updatedModel.categories.map((c) => ({
       id: c.id,
-      label: c.label
+      label: c.label,
     }));
 
-    updatedModel.choices = updatedModel.choices.map(h => ({
+    updatedModel.choices = updatedModel.choices.map((h) => ({
       id: h.id,
       content: h.content,
-      categoryCount: h.categoryCount
+      categoryCount: h.categoryCount,
     }));
+
+    // ensure that maxChoicesPerCategory is reset if author switch back the corresponding switch (allowMaxChoicesPerCategory)
+    updatedModel.maxChoicesPerCategory = updatedModel.allowMaxChoicesPerCategory
+      ? updatedModel.maxChoicesPerCategory
+      : 0;
 
     onChange(updatedModel);
   };
 
-  changeRationale = rationale => {
+  changeRationale = (rationale) => {
     const { model, onChange } = this.props;
 
     onChange({
       ...model,
-      rationale
+      rationale,
     });
   };
 
-  changeTeacherInstructions = teacherInstructions => {
+  changeTeacherInstructions = (teacherInstructions) => {
     const { model, onChange } = this.props;
 
     onChange({
       ...model,
-      teacherInstructions
+      teacherInstructions,
     });
   };
 
-  changeFeedback = feedback => {
+  changeFeedback = (feedback) => {
     this.updateModel({ feedback });
   };
 
   onAddAlternateResponse = () => {
     const {
-      model: { correctResponse }
+      model: { correctResponse },
     } = this.props;
 
     this.updateModel({
-      correctResponse: (correctResponse || []).map(cr => ({
+      correctResponse: (correctResponse || []).map((cr) => ({
         ...cr,
-        alternateResponses: [...(cr.alternateResponses || []), []]
-      }))
+        alternateResponses: [...(cr.alternateResponses || []), []],
+      })),
     });
   };
 
-  onPromptChanged = prompt => this.updateModel({ prompt });
+  onPromptChanged = (prompt) => this.updateModel({ prompt });
 
-  onRemoveAlternateResponse = index => {
+  onRemoveAlternateResponse = (index) => {
     const {
-      model: { correctResponse }
+      model: { correctResponse },
     } = this.props;
 
     this.updateModel({
-      correctResponse: (correctResponse || []).map(cr => ({
+      correctResponse: (correctResponse || []).map((cr) => ({
         ...cr,
-        alternateResponses: (cr.alternateResponses || []).filter(
-          (alt, altIndex) => altIndex !== index
-        )
-      }))
+        alternateResponses: (cr.alternateResponses || []).filter((alt, altIndex) => altIndex !== index),
+      })),
     });
   };
 
-  countChoiceInCorrectResponse = choice => {
+  countChoiceInCorrectResponse = (choice) => {
     const { model } = this.props;
 
     return countInAnswer(choice.id, model.correctResponse);
   };
 
+  checkAllowMultiplePlacements = (allowMultiplePlacements, c) => {
+    if (allowMultiplePlacements === multiplePlacements.enabled) {
+      return 0;
+    }
+
+    if (allowMultiplePlacements === multiplePlacements.disabled) {
+      return 1;
+    }
+
+    return c.categoryCount || 0;
+  };
+
+  isAlertModalOpened = () => {
+    const { model } = this.props;
+    const { maxChoicesPerCategory = 0 } = model || {};
+    const maxChoices = getMaxCategoryChoices(model);
+    // when maxChoicesPerCategory is set to 0, there is no limit so modal should not be opened
+    return maxChoicesPerCategory !== 0 ? maxChoices > maxChoicesPerCategory : false;
+  };
+
+  onAlertModalCancel = () => {
+    const { model } = this.props;
+    const maxChoices = getMaxCategoryChoices(model);
+    this.updateModel({ maxChoicesPerCategory: maxChoices });
+  };
+
   render() {
+    const { classes, configuration, imageSupport, model, uploadSoundSupport, onConfigurationChanged } = this.props;
     const {
-      classes,
-      className,
-      model,
-      imageSupport,
-      configuration,
-      onChange,
-      onConfigurationChanged
-    } = this.props;
-    const {
-      partialScoring = {},
+      allowMultiplePlacements = {},
+      baseInputConfiguration = {},
+      categoriesPerRow = {},
+      choicesPosition = {},
+      contentDimensions = {},
+      feedback = {},
       lockChoiceOrder = {},
-      teacherInstructions = {},
-      studentInstructions = {},
+      maxImageHeight = {},
+      maxImageWidth = {},
+      maxPlacements = {},
+      minCategoriesPerRow = 1,
+      partialScoring = {},
+      prompt = {},
       rationale = {},
       scoringType = {},
-      feedback = {},
-      prompt = {}
+      settingsPanelDisabled,
+      spellCheck = {},
+      studentInstructions = {},
+      teacherInstructions = {},
+      withRubric = {},
+      mathMlOptions = {},
+      language = {},
+      languageChoices = {},
     } = configuration || {};
     const {
-      teacherInstructionsEnabled,
+      allowAlternateEnabled,
+      allowMaxChoicesPerCategory,
+      errors,
+      feedbackEnabled,
+      maxChoicesPerCategory,
       promptEnabled,
       rationaleEnabled,
-      feedbackEnabled
+      spellCheckEnabled,
+      teacherInstructionsEnabled,
+      toolbarEditorPosition,
     } = model || {};
+    const {
+      prompt: promptError,
+      rationale: rationaleError,
+      teacherInstructions: teacherInstructionsError,
+    } = errors || {};
 
-    const toolbarOpts = {};
-
-    switch (model.toolbarEditorPosition) {
-      case 'top':
-        toolbarOpts.position = 'top';
-        break;
-      default:
-        toolbarOpts.position = 'bottom';
-        break;
-    }
+    const toolbarOpts = {
+      position: toolbarEditorPosition === 'top' ? 'top' : 'bottom',
+    };
 
     const config = model.config || {};
     config.choices = config.choices || { label: '', columns: 2 };
 
-    const categories = buildCategories(
-      model.categories || [],
-      model.choices || [],
-      model.correctResponse || []
-    );
+    const categories = buildCategories(model.categories || [], model.choices || [], model.correctResponse || []);
 
     const alternateResponses = buildAlternateResponses(
       model.categories || [],
       model.choices || [],
-      model.correctResponse || []
+      model.correctResponse || [],
     );
 
-    const choices = model.choices.map(c => {
+    const choices = model.choices.map((c) => {
       c.correctResponseCount = this.countChoiceInCorrectResponse(c);
+      // ensure categoryCount is set even though updatedModel hasn't been called
+      c.categoryCount = this.checkAllowMultiplePlacements(model.allowMultiplePlacementsEnabled, c);
       return c;
+    });
+
+    const defaultImageMaxWidth = maxImageWidth && maxImageWidth.prompt;
+    const defaultImageMaxHeight = maxImageHeight && maxImageHeight.prompt;
+
+    const panelSettings = {
+      partialScoring: partialScoring.settings && toggle(partialScoring.label),
+      lockChoiceOrder: lockChoiceOrder.settings && toggle(lockChoiceOrder.label),
+      categoriesPerRow:
+        categoriesPerRow.settings &&
+        numberField(categoriesPerRow.label, {
+          label: categoriesPerRow.label,
+          min: minCategoriesPerRow,
+          max: 6,
+        }),
+      choicesPosition: choicesPosition.settings && radio(choicesPosition.label, ['below', 'above', 'left', 'right']),
+      allowMultiplePlacementsEnabled:
+        allowMultiplePlacements.settings &&
+        dropdown(allowMultiplePlacements.label, [
+          multiplePlacements.enabled,
+          multiplePlacements.disabled,
+          multiplePlacements.perChoice,
+        ]),
+      allowMaxChoicesPerCategory: maxPlacements.settings && toggle(maxPlacements.label),
+      maxChoicesPerCategory:
+        allowMaxChoicesPerCategory === true &&
+        numberField(maxPlacements.label, {
+          label: '',
+          min: 0,
+          max: 30,
+        }),
+      promptEnabled: prompt.settings && toggle(prompt.label),
+      feedbackEnabled: feedback.settings && toggle(feedback.label),
+      // PD-2960: deleted temporary from settings panel
+      // allowAlternateEnabled: allowAlternate.settings && toggle(allowAlternate.label),
+      'language.enabled': language.settings && toggle(language.label, true),
+      language: language.settings && language.enabled && dropdown(languageChoices.label, languageChoices.options),
+    };
+
+    const panelProperties = {
+      teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
+      studentInstructionsEnabled: studentInstructions.settings && toggle(studentInstructions.label),
+      rationaleEnabled: rationale.settings && toggle(rationale.label),
+      spellCheckEnabled: spellCheck.settings && toggle(spellCheck.label),
+      scoringType: scoringType.settings && radio(scoringType.label, ['auto', 'rubric']),
+      rubricEnabled: withRubric?.settings && toggle(withRubric?.label),
+    };
+
+    const isOpened = this.isAlertModalOpened();
+    const alertMaxChoicesMsg = translator.t('translation:categorize:maxChoicesPerCategoryRestriction', {
+      lng: model.language,
+      maxChoicesPerCategory,
     });
 
     return (
       <IdProvider value={this.uid}>
         <layout.ConfigLayout
+          dimensions={contentDimensions}
+          hideSettings={settingsPanelDisabled}
           settings={
             <Panel
               model={model}
-              onChangeModel={onChange}
+              onChangeModel={this.updateModel}
               configuration={configuration}
               onChangeConfiguration={onConfigurationChanged}
               groups={{
-                Settings: {
-                  partialScoring:
-                    partialScoring.settings && toggle(partialScoring.label),
-                  lockChoiceOrder:
-                    lockChoiceOrder.settings && toggle(lockChoiceOrder.label),
-                  promptEnabled: prompt.settings && toggle(prompt.label),
-                  feedbackEnabled:
-                    feedback.settings && toggle(feedback.label)
-                },
-                Properties: {
-                  teacherInstructionsEnabled:
-                    teacherInstructions.settings &&
-                    toggle(teacherInstructions.label),
-                  studentInstructionsEnabled:
-                    studentInstructions.settings &&
-                    toggle(studentInstructions.label),
-                  rationaleEnabled:
-                    rationale.settings && toggle(rationale.label),
-                  scoringType:
-                    scoringType.settings &&
-                    radio(scoringType.label, ['auto', 'rubric'])
-                }
+                Settings: panelSettings,
+                Properties: panelProperties,
               }}
+              modal={
+                <AlertDialog
+                  title={'Warning'}
+                  text={alertMaxChoicesMsg}
+                  open={isOpened}
+                  onClose={this.onAlertModalCancel}
+                />
+              }
             />
           }
         >
-          <div className={classNames(classes.design, className)}>
-            {promptEnabled && (
-              <InputContainer
-                label={prompt.label}
-                className={classes.promptHolder}
-              >
-                <EditableHtml
-                  className={classes.prompt}
-                  markup={model.prompt || ''}
-                  onChange={this.onPromptChanged}
-                  imageSupport={imageSupport}
-                  nonEmpty={false}
-                  disableUnderline
-                  toolbarOpts={toolbarOpts}
-                />
-              </InputContainer>
-            )}
+          {teacherInstructionsEnabled && (
+            <InputContainer label={teacherInstructions.label} className={classes.inputContainer}>
+              <EditableHtml
+                className={classes.input}
+                markup={model.teacherInstructions || ''}
+                onChange={this.changeTeacherInstructions}
+                imageSupport={imageSupport}
+                error={teacherInstructionsError}
+                nonEmpty={false}
+                toolbarOpts={toolbarOpts}
+                pluginProps={getPluginProps(teacherInstructions?.inputConfiguration, baseInputConfiguration)}
+                spellCheck={spellCheckEnabled}
+                maxImageWidth={(maxImageWidth && maxImageWidth.teacherInstructions) || defaultImageMaxWidth}
+                maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
+                uploadSoundSupport={uploadSoundSupport}
+                languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+                mathMlOptions={mathMlOptions}
+              />
+              {teacherInstructionsError && <div className={classes.errorText}>{teacherInstructionsError}</div>}
+            </InputContainer>
+          )}
 
-            {teacherInstructionsEnabled && (
-              <InputContainer
-                label={teacherInstructions.label}
-                className={classes.inputHolder}
-              >
-                <EditableHtml
-                  className={classes.input}
-                  markup={model.teacherInstructions || ''}
-                  onChange={this.changeTeacherInstructions}
-                  imageSupport={imageSupport}
-                  nonEmpty={false}
-                  toolbarOpts={toolbarOpts}
-                />
-              </InputContainer>
-            )}
+          {promptEnabled && (
+            <InputContainer label={prompt.label} className={classes.inputContainer}>
+              <EditableHtml
+                className={classes.input}
+                markup={model.prompt || ''}
+                onChange={this.onPromptChanged}
+                imageSupport={imageSupport}
+                error={promptError}
+                nonEmpty={false}
+                disableUnderline
+                toolbarOpts={toolbarOpts}
+                pluginProps={getPluginProps(prompt?.inputConfiguration, baseInputConfiguration)}
+                spellCheck={spellCheckEnabled}
+                maxImageWidth={maxImageWidth && maxImageWidth.prompt}
+                maxImageHeight={maxImageHeight && maxImageHeight.prompt}
+                uploadSoundSupport={uploadSoundSupport}
+                languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+                mathMlOptions={mathMlOptions}
+              />
+              {promptError && <div className={classes.errorText}>{promptError}</div>}
+            </InputContainer>
+          )}
 
-            {rationaleEnabled && (
-              <InputContainer
-                label={rationale.label}
-                className={classes.inputHolder}
-              >
-                <EditableHtml
-                  className={classes.input}
-                  markup={model.rationale || ''}
-                  onChange={this.changeRationale}
-                  imageSupport={imageSupport}
-                  nonEmpty={false}
-                  toolbarOpts={toolbarOpts}
-                />
-              </InputContainer>
-            )}
+          <Categories
+            imageSupport={imageSupport}
+            uploadSoundSupport={uploadSoundSupport}
+            model={model}
+            categories={categories || []}
+            onModelChanged={this.updateModel}
+            toolbarOpts={toolbarOpts}
+            spellCheck={spellCheckEnabled}
+            configuration={configuration}
+            defaultImageMaxWidth={defaultImageMaxWidth}
+            defaultImageMaxHeight={defaultImageMaxHeight}
+            mathMlOptions={mathMlOptions}
+          />
 
-            <Categories
-              imageSupport={imageSupport}
-              model={model}
-              categories={categories || []}
-              onModelChanged={this.updateModel}
-              toolbarOpts={toolbarOpts}
-            />
+          <Choices
+            imageSupport={imageSupport}
+            uploadSoundSupport={uploadSoundSupport}
+            choices={choices}
+            model={model}
+            onModelChanged={this.updateModel}
+            toolbarOpts={toolbarOpts}
+            spellCheck={spellCheckEnabled}
+            configuration={configuration}
+            defaultImageMaxWidth={defaultImageMaxWidth}
+            defaultImageMaxHeight={defaultImageMaxHeight}
+          />
 
+          {allowAlternateEnabled && (
             <Header
               className={classes.alternatesHeader}
               label="Alternate Responses"
               buttonLabel="ADD AN ALTERNATE RESPONSE"
               onAdd={this.onAddAlternateResponse}
             />
-
-            {alternateResponses.map((categoriesList, index) => {
+          )}
+          {allowAlternateEnabled &&
+            alternateResponses.map((categoriesList, index) => {
               return (
                 <React.Fragment key={index}>
                   <Header
                     className={classes.alternatesHeader}
+                    variant={'subtitle1'}
                     label="Alternate Response"
                     buttonLabel="REMOVE ALTERNATE RESPONSE"
                     onAdd={() => this.onRemoveAlternateResponse(index)}
                   />
-
                   <AlternateResponses
                     altIndex={index}
                     imageSupport={imageSupport}
                     model={model}
+                    configuration={configuration}
                     categories={categoriesList}
                     onModelChanged={this.updateModel}
+                    uploadSoundSupport={uploadSoundSupport}
+                    toolbarOpts={toolbarOpts}
+                    defaultImageMaxWidth={defaultImageMaxWidth}
+                    defaultImageMaxHeight={defaultImageMaxHeight}
+                    mathMlOptions={mathMlOptions}
                   />
                 </React.Fragment>
               );
             })}
 
-            <Divider />
-            <Choices
-              imageSupport={imageSupport}
-              choices={choices}
-              model={model}
-              onModelChanged={this.updateModel}
-              toolbarOpts={toolbarOpts}
-            />
-
-            {feedbackEnabled && (
-              <FeedbackConfig
-                feedback={model.feedback}
-                onChange={this.changeFeedback}
+          {rationaleEnabled && (
+            <InputContainer label={rationale.label} className={classes.inputContainer}>
+              <EditableHtml
+                className={classes.input}
+                markup={model.rationale || ''}
+                onChange={this.changeRationale}
+                imageSupport={imageSupport}
+                error={rationaleError}
+                nonEmpty={false}
                 toolbarOpts={toolbarOpts}
+                pluginProps={getPluginProps(prompt?.inputConfiguration, baseInputConfiguration)}
+                spellCheck={spellCheckEnabled}
+                maxImageWidth={(maxImageWidth && maxImageWidth.rationale) || defaultImageMaxWidth}
+                maxImageHeight={(maxImageHeight && maxImageHeight.rationale) || defaultImageMaxHeight}
+                uploadSoundSupport={uploadSoundSupport}
+                languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+                mathMlOptions={mathMlOptions}
               />
-            )}
-          </div>
+              {rationaleError && <div className={classes.errorText}>{rationaleError}</div>}
+            </InputContainer>
+          )}
+
+          {feedbackEnabled && (
+            <FeedbackConfig feedback={model.feedback} onChange={this.changeFeedback} toolbarOpts={toolbarOpts} />
+          )}
         </layout.ConfigLayout>
       </IdProvider>
     );
   }
 }
 
-const styles = theme => ({
+const styles = (theme) => ({
   alternatesHeader: {
-    paddingTop: theme.spacing.unit * 2,
-    paddingBottom: theme.spacing.unit * 2
+    marginBottom: theme.spacing.unit * 2,
   },
   text: {
     paddingTop: theme.spacing.unit * 2,
-    paddingBottom: theme.spacing.unit * 2
-  },
-  design: {
-    paddingTop: theme.spacing.unit,
-    paddingBottom: theme.spacing.unit
-  },
-  inputHolder: {
-    width: '100%',
     paddingBottom: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit * 2
   },
-  input: {
-    paddingTop: theme.spacing.unit * 2,
+  inputContainer: {
     width: '100%',
-    maxWidth: '600px'
-  },
-  prompt: {
     paddingTop: theme.spacing.unit * 2,
-    width: '100%'
-  },
-  promptHolder: {
-    width: '100%',
-    paddingBottom: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit * 2
+    marginBottom: theme.spacing.unit * 2,
   },
   title: {
-    marginBottom: '30px'
-  }
+    marginBottom: theme.spacing.unit * 4,
+  },
+  errorText: {
+    fontSize: theme.typography.fontSize - 2,
+    color: theme.palette.error.main,
+    paddingTop: theme.spacing.unit,
+  },
 });
 
 export default withDragContext(withStyles(styles)(Design));

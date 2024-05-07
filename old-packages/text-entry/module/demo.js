@@ -8,55 +8,55 @@ var model = (id, element) => ({
   feedback: {
     correct: {
       type: 'custom',
-      custom: 'correct-o'
+      custom: 'correct-o',
     },
     incorrect: {
       type: 'custom',
-      custom: 'custom feedback'
+      custom: 'custom feedback',
     },
     partial: {
       type: 'custom',
-      custom: 'foo'
-    }
+      custom: 'foo',
+    },
   },
   correctResponses: {
     values: ['mutt', 'hound'],
     ignoreWhitespace: true,
-    ignoreCase: false
+    ignoreCase: false,
   },
   partialResponses: {
     values: ['mutty'],
     ignoreWhitespace: true,
     ignoreCase: true,
-    awardPercentage: '50'
+    awardPercentage: '50',
   },
   answerBlankSize: '10',
   answerAlignment: 'left',
   prompt: 'Question Prompt goes here',
   allowDecimal: true,
   allowIntegersOnly: false,
-  allowThousandsSeparator: true
+  allowThousandsSeparator: true,
 });
 
 var generate = {
-	model: model
+  model: model,
 };
 
 const { model: model$1 } = generate;
 
 var config = {
   elements: {
-    'text-entry': '../..'
+    'text-entry': '../..',
   },
-  models: [model$1('1', 'text-entry')]
+  models: [model$1('1', 'text-entry')],
 };
 
 //Note: demo-el is a custom element loaded in the markup.
-      customElements.whenDefined('demo-el').then(() => {
-        config.models.forEach(m => {
-          const de = document.createElement('demo-el');
-          document.body.appendChild(de);
-          de.def = { tagName: m.element, Element, Configure, controller };
-          de.model = m;
-        });
-      });
+customElements.whenDefined('demo-el').then(() => {
+  config.models.forEach((m) => {
+    const de = document.createElement('demo-el');
+    document.body.appendChild(de);
+    de.def = { tagName: m.element, Element, Configure, controller };
+    de.model = m;
+  });
+});

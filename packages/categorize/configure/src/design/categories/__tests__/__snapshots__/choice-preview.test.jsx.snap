@@ -4,8 +4,17 @@ exports[`ChoicePreview snapshot renders 1`] = `
 <div
   className="className"
 >
-  <Component>
+  <Wrapped
+    choice={
+      Object {
+        "content": "content",
+        "id": "1",
+      }
+    }
+    onRemoveChoice={[Function]}
+  >
     <HtmlAndMath
+      className="undefined"
       html="content"
       tag="div"
     />
@@ -14,8 +23,8 @@ exports[`ChoicePreview snapshot renders 1`] = `
       color="secondary"
       onClick={[Function]}
     >
-      <pure(DeleteIcon) />
+      <pure(RemoveCircleOutlineIcon) />
     </WithStyles(IconButton)>
-  </Component>
+  </Wrapped>
 </div>
 `;

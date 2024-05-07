@@ -1,214 +1,171 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Root render renders 1`] = `
-<div>
-  <ConfigLayout
-    settings={
-      <Panel
-        configuration={
-          Object {
-            "multipleCorrect": Object {
-              "label": "Multiple Correct Responses",
-              "settings": true,
+<ConfigLayout
+  dimensions={Object {}}
+  hideSettings={false}
+  settings={
+    <Panel
+      configuration={
+        Object {
+          "baseInputConfiguration": Object {
+            "audio": Object {
+              "disabled": false,
             },
-            "partialScoring": Object {
-              "label": "Allow Partial Scoring",
-              "settings": false,
+            "image": Object {
+              "disabled": false,
             },
-            "preserveAspectRatio": Object {
-              "enabled": true,
-              "label": "Preserve aspect ratio",
-              "settings": false,
+            "video": Object {
+              "disabled": false,
             },
-            "prompt": Object {
-              "label": "Prompt",
-              "settings": true,
+          },
+          "language": Object {
+            "enabled": false,
+            "label": "Specify Language",
+            "settings": false,
+          },
+          "languageChoices": Object {
+            "label": "Language Choices",
+            "options": Array [],
+          },
+          "mathMlOptions": Object {
+            "mmlEditing": false,
+            "mmlOutput": false,
+          },
+          "maxImageHeight": Object {
+            "prompt": 300,
+            "rationale": 300,
+            "teacherInstructions": 300,
+          },
+          "maxImageWidth": Object {
+            "prompt": 300,
+            "rationale": 300,
+            "teacherInstructions": 300,
+          },
+          "minShapes": 2,
+          "multipleCorrect": Object {
+            "label": "Multiple Correct Responses",
+            "settings": true,
+          },
+          "partialScoring": Object {
+            "label": "Allow Partial Scoring",
+            "settings": false,
+          },
+          "preserveAspectRatio": Object {
+            "enabled": true,
+            "label": "Preserve aspect ratio",
+            "settings": false,
+          },
+          "prompt": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": false,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": false,
+              },
             },
-            "rationale": Object {
-              "label": "Rationale",
-              "settings": true,
+            "label": "Prompt",
+            "required": false,
+            "settings": true,
+          },
+          "rationale": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": false,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": false,
+              },
             },
-            "teacherInstructions": Object {
-              "label": "Teacher Instructions",
-              "settings": true,
+            "label": "Rationale",
+            "required": false,
+            "settings": true,
+          },
+          "settingsPanelDisabled": false,
+          "spellCheck": Object {
+            "enabled": true,
+            "label": "Spellcheck",
+            "settings": false,
+          },
+          "teacherInstructions": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": false,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": false,
+              },
             },
-          }
+            "label": "Teacher Instructions",
+            "required": false,
+            "settings": true,
+          },
+          "withRubric": Object {
+            "label": "Add Rubric",
+            "settings": false,
+          },
         }
-        groups={
-          Object {
-            "Properties": Object {
-              "rationaleEnabled": undefined,
-              "teacherInstructionsEnabled": undefined,
-            },
-            "Settings": Object {
-              "multipleCorrect": undefined,
-              "partialScoring": false,
-              "promptEnabled": undefined,
-            },
-          }
-        }
-        model={
-          Object {
-            "configure": Object {},
-            "dimensions": Object {
-              "height": 300,
-              "width": 400,
-            },
-            "hotspotColor": "rgba(137, 183, 244, 0.65)",
-            "hotspotList": Array [
-              "rgba(137, 183, 244, 0.65)",
-              "rgba(217, 30, 24, 0.65)",
-              "rgba(254, 241, 96, 0.65)",
-            ],
-            "imageUrl": "https://cdn.fluence.net/image/0240eb1455ce4c4bb6180232347b6aef_W",
-            "multipleCorrect": true,
-            "outlineColor": "blue",
-            "outlineList": Array [
-              "blue",
-              "red",
-              "yellow",
-            ],
+      }
+      groups={
+        Object {
+          "Properties": Object {
+            "rationaleEnabled": undefined,
+            "rubricEnabled": false,
+            "spellCheckEnabled": false,
+            "teacherInstructionsEnabled": undefined,
+          },
+          "Settings": Object {
+            "language": false,
+            "language.enabled": false,
+            "multipleCorrect": undefined,
             "partialScoring": false,
-            "prompt": "This is the question prompt",
-            "shapes": Object {
-              "polygons": Array [
-                Object {
-                  "correct": true,
-                  "id": "3",
-                  "points": Array [
-                    Object {
-                      "x": 1,
-                      "y": 148,
-                    },
-                    Object {
-                      "x": 1,
-                      "y": 288,
-                    },
-                    Object {
-                      "x": 129,
-                      "y": 288,
-                    },
-                    Object {
-                      "x": 129,
-                      "y": 148,
-                    },
-                  ],
-                },
-                Object {
-                  "correct": false,
-                  "id": "4",
-                  "points": Array [
-                    Object {
-                      "x": 141,
-                      "y": 151,
-                    },
-                    Object {
-                      "x": 141,
-                      "y": 289,
-                    },
-                    Object {
-                      "x": 269,
-                      "y": 289,
-                    },
-                    Object {
-                      "x": 269,
-                      "y": 151,
-                    },
-                  ],
-                },
-                Object {
-                  "correct": false,
-                  "id": "5",
-                  "points": Array [
-                    Object {
-                      "x": 279,
-                      "y": 149.99999999999997,
-                    },
-                    Object {
-                      "x": 279,
-                      "y": 289,
-                    },
-                    Object {
-                      "x": 407,
-                      "y": 289,
-                    },
-                    Object {
-                      "x": 407,
-                      "y": 149.99999999999997,
-                    },
-                  ],
-                },
-              ],
-              "rectangles": Array [
-                Object {
-                  "correct": true,
-                  "height": 140,
-                  "id": "0",
-                  "width": 130,
-                  "x": 1,
-                  "y": 1,
-                },
-                Object {
-                  "height": 140,
-                  "id": "1",
-                  "width": 130,
-                  "x": 140,
-                  "y": 1,
-                },
-                Object {
-                  "height": 140,
-                  "id": "2",
-                  "width": 130,
-                  "x": 280,
-                  "y": 1,
-                },
-              ],
-            },
-          }
+            "promptEnabled": undefined,
+          },
         }
-      />
-    }
-  >
-    <div>
-      <WithStyles(Typography)
-        variant="subheading"
-      >
-        Define Hotspot
-      </WithStyles(Typography)>
-      <WithStyles(Palette)
-        hotspotColor="rgba(137, 183, 244, 0.65)"
-        hotspotList={
-          Array [
+      }
+      model={
+        Object {
+          "configure": Object {},
+          "dimensions": Object {
+            "height": 300,
+            "width": 400,
+          },
+          "hotspotColor": "rgba(137, 183, 244, 0.65)",
+          "hotspotList": Array [
             "rgba(137, 183, 244, 0.65)",
             "rgba(217, 30, 24, 0.65)",
             "rgba(254, 241, 96, 0.65)",
-          ]
-        }
-        onHotspotColorChange={[Function]}
-        onOutlineColorChange={[Function]}
-        outlineColor="blue"
-        outlineList={
-          Array [
+          ],
+          "imageUrl": "https://cdn.fluence.net/image/0240eb1455ce4c4bb6180232347b6aef_W",
+          "multipleCorrect": true,
+          "outlineColor": "blue",
+          "outlineList": Array [
             "blue",
             "red",
             "yellow",
-          ]
-        }
-      />
-      <WithStyles(Container)
-        dimensions={
-          Object {
-            "height": 300,
-            "width": 400,
-          }
-        }
-        hotspotColor="rgba(137, 183, 244, 0.65)"
-        imageUrl="https://cdn.fluence.net/image/0240eb1455ce4c4bb6180232347b6aef_W"
-        multipleCorrect={true}
-        outlineColor="blue"
-        preserveAspectRatioEnabled={true}
-        shapes={
-          Object {
+          ],
+          "partialScoring": false,
+          "prompt": "This is the question prompt",
+          "shapes": Object {
+            "circles": Array [
+              Object {
+                "correct": false,
+                "id": "6",
+                "radius": 70,
+                "x": 100,
+                "y": 100,
+              },
+            ],
             "polygons": Array [
               Object {
                 "correct": true,
@@ -301,35 +258,203 @@ exports[`Root render renders 1`] = `
                 "y": 1,
               },
             ],
+          },
+        }
+      }
+    />
+  }
+>
+  <div>
+    <WithStyles(Typography)
+      variant="subheading"
+    >
+      Define Hotspot
+    </WithStyles(Typography)>
+    <WithStyles(Tooltip)
+      classes={
+        Object {
+          "tooltip": undefined,
+        }
+      }
+      disableFocusListener={true}
+      disableTouchListener={true}
+      placement="left"
+      title="Validation requirements:
+There should be at least 2 shapes defined.
+There should be at least 1 shape selected."
+    >
+      <pure(InfoIcon)
+        color="primary"
+        fontSize="small"
+        style={
+          Object {
+            "float": "right",
           }
         }
       />
-      <div>
-        <WithStyles(Typography)
-          variant="subheading"
-        >
-          Image Dimensions
-        </WithStyles(Typography)>
-        <div>
-          <Component
-            key="hotspot-manual-width"
-            label="Width"
-            min={0}
-            onChange={[Function]}
-            showErrorWhenOutsideRange={true}
-            value={400}
-          />
-          <Component
-            key="hotspot-manual-height"
-            label="Height"
-            min={0}
-            onChange={[Function]}
-            showErrorWhenOutsideRange={true}
-            value={300}
-          />
-        </div>
-      </div>
-    </div>
-  </ConfigLayout>
-</div>
+    </WithStyles(Tooltip)>
+  </div>
+  <WithStyles(Palette)
+    hotspotColor="rgba(137, 183, 244, 0.65)"
+    hotspotList={
+      Array [
+        "rgba(137, 183, 244, 0.65)",
+        "rgba(217, 30, 24, 0.65)",
+        "rgba(254, 241, 96, 0.65)",
+      ]
+    }
+    onHotspotColorChange={[Function]}
+    onOutlineColorChange={[Function]}
+    outlineColor="blue"
+    outlineList={
+      Array [
+        "blue",
+        "red",
+        "yellow",
+      ]
+    }
+  />
+  <WithStyles(Container)
+    dimensions={
+      Object {
+        "height": 300,
+        "width": 400,
+      }
+    }
+    hasErrors={false}
+    hotspotColor="rgba(137, 183, 244, 0.65)"
+    imageUrl="https://cdn.fluence.net/image/0240eb1455ce4c4bb6180232347b6aef_W"
+    multipleCorrect={true}
+    outlineColor="blue"
+    preserveAspectRatioEnabled={true}
+    shapes={
+      Object {
+        "circles": Array [
+          Object {
+            "correct": false,
+            "id": "6",
+            "radius": 70,
+            "x": 100,
+            "y": 100,
+          },
+        ],
+        "polygons": Array [
+          Object {
+            "correct": true,
+            "id": "3",
+            "points": Array [
+              Object {
+                "x": 1,
+                "y": 148,
+              },
+              Object {
+                "x": 1,
+                "y": 288,
+              },
+              Object {
+                "x": 129,
+                "y": 288,
+              },
+              Object {
+                "x": 129,
+                "y": 148,
+              },
+            ],
+          },
+          Object {
+            "correct": false,
+            "id": "4",
+            "points": Array [
+              Object {
+                "x": 141,
+                "y": 151,
+              },
+              Object {
+                "x": 141,
+                "y": 289,
+              },
+              Object {
+                "x": 269,
+                "y": 289,
+              },
+              Object {
+                "x": 269,
+                "y": 151,
+              },
+            ],
+          },
+          Object {
+            "correct": false,
+            "id": "5",
+            "points": Array [
+              Object {
+                "x": 279,
+                "y": 149.99999999999997,
+              },
+              Object {
+                "x": 279,
+                "y": 289,
+              },
+              Object {
+                "x": 407,
+                "y": 289,
+              },
+              Object {
+                "x": 407,
+                "y": 149.99999999999997,
+              },
+            ],
+          },
+        ],
+        "rectangles": Array [
+          Object {
+            "correct": true,
+            "height": 140,
+            "id": "0",
+            "width": 130,
+            "x": 1,
+            "y": 1,
+          },
+          Object {
+            "height": 140,
+            "id": "1",
+            "width": 130,
+            "x": 140,
+            "y": 1,
+          },
+          Object {
+            "height": 140,
+            "id": "2",
+            "width": 130,
+            "x": 280,
+            "y": 1,
+          },
+        ],
+      }
+    }
+  />
+  <WithStyles(Typography)
+    variant="subheading"
+  >
+    Image Dimensions
+  </WithStyles(Typography)>
+  <div>
+    <Component
+      key="hotspot-manual-width"
+      label="Width"
+      min={0}
+      onChange={[Function]}
+      showErrorWhenOutsideRange={true}
+      value={400}
+    />
+    <Component
+      key="hotspot-manual-height"
+      label="Height"
+      min={0}
+      onChange={[Function]}
+      showErrorWhenOutsideRange={true}
+      value={300}
+    />
+  </div>
+</ConfigLayout>
 `;

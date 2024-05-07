@@ -42,9 +42,9 @@ describe('removeInvalidAnswers', () => {
         { type: 'polygon', points: null },
         { type: 'polygon', points: [] },
         { type: 'polygon', points: [{}] },
-        { type: 'polygon', points: [{ x: 1, a: 'v'}] },
-        { type: 'polygon', points: [{ x: 1, y: 'v'}] },
-        { type: 'polygon', points: [{ x: NaN, y: 'v'}] },
+        { type: 'polygon', points: [{ x: 1, a: 'v' }] },
+        { type: 'polygon', points: [{ x: 1, y: 'v' }] },
+        { type: 'polygon', points: [{ x: NaN, y: 'v' }] },
         { type: 'polygon', points: [{ x: 0, y: 0 }] },
         { type: 'polygon', points: [{ x: 0, y: 0 }, {}] },
         { type: 'circle' },
@@ -83,10 +83,7 @@ describe('removeInvalidAnswers', () => {
         { type: 'sine', edge: { x: 0, y: 0 }, root: { x: 1, y: 1 } },
       ],
     ],
-  ])(
-    'answers: %j, only valid answers: %j',
-    (answers, validAnswers) => {
-      expect(removeInvalidAnswers(answers)).toEqual(validAnswers);
-    }
-  );
-})
+  ])('answers: %j, only valid answers: %j', (answers, validAnswers) => {
+    expect(removeInvalidAnswers(answers)).toEqual(validAnswers);
+  });
+});

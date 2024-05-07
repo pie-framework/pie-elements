@@ -1,25 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { DragSource } from '@pie-lib/drag';
+import { DragSource } from '@pie-lib/pie-toolbox/drag';
 import { withStyles } from '@material-ui/core/styles';
-import { color } from '@pie-lib/render-ui';
+import { color } from '@pie-lib/pie-toolbox/render-ui';
 import classNames from 'classnames';
-
+import { PreviewPrompt } from '@pie-lib/pie-toolbox/render-ui';
 import EvaluationIcon from './evaluation-icon';
 import c from './constants';
 
 export class PossibleResponse extends React.Component {
   getClassname = () => {
-    const { classes, data: { isCorrect } } = this.props;
+    const {
+      classes,
+      data: { isCorrect },
+    } = this.props;
     let styleProp;
 
     switch (isCorrect) {
       case undefined:
-        styleProp = null; break;
+        styleProp = null;
+        break;
       case true:
-        styleProp = 'baseCorrect'; break;
+        styleProp = 'baseCorrect';
+        break;
       default:
-        styleProp = 'baseIncorrect'; break;
+        styleProp = 'baseIncorrect';
+        break;
     }
     return styleProp ? classes[styleProp] : '';
   };
@@ -31,20 +37,14 @@ export class PossibleResponse extends React.Component {
       fontSize: 14,
       position: 'absolute',
       bottom: '3px',
-      right: '3px'
+      right: '3px',
     };
 
     return connectDragSource(
       <div className={`${classes.base} ${additionalClass}`} style={containerStyle}>
-        <span
-          className={classNames([classes.span, { [classes.hiddenSpan]: data.hidden }])}
-          dangerouslySetInnerHTML={{__html: data.value}}
-        />
-        <EvaluationIcon
-          isCorrect={data.isCorrect}
-          containerStyle={evaluationStyle}
-        />
-      </div>
+        <PreviewPrompt className={classNames([classes.span, { [classes.hiddenSpan]: data.hidden }])} prompt={data.value} tagName="span" />
+        <EvaluationIcon isCorrect={data.isCorrect} containerStyle={evaluationStyle} />
+      </div>,
     );
   }
 }
@@ -56,13 +56,13 @@ PossibleResponse.propTypes = {
   containerStyle: PropTypes.object,
   data: PropTypes.object.isRequired,
   onDragBegin: PropTypes.func.isRequired,
-  onDragEnd: PropTypes.func.isRequired
+  onDragEnd: PropTypes.func.isRequired,
 };
 
 PossibleResponse.defaultProps = {
   classes: {},
   connectDragSource: () => {},
-  containerStyle: {}
+  containerStyle: {},
 };
 
 const styles = () => ({
@@ -77,20 +77,24 @@ const styles = () => ({
     padding: '0 3px',
     marginLeft: 2,
     marginTop: 2,
-    width: 'fit-content'
+    width: 'fit-content',
   },
   baseCorrect: {
-    border: `2px solid ${color.correct()}`
+    border: `2px solid ${color.correct()}`,
   },
   baseIncorrect: {
-    border: `2px solid ${color.incorrect()}`
+    border: `2px solid ${color.incorrect()}`,
   },
   span: {
-    backgroundColor: color.background()
+    backgroundColor: color.background(),
+    // Added for touch devices, for image content.
+    // This will prevent the context menu from appearing and not allowing other interactions with the image.
+    // If interactions with the image in the token will be requested we should handle only the context Menu.
+    pointerEvents: 'none',
   },
   hiddenSpan: {
-    visibility: 'hidden'
-  }
+    visibility: 'hidden',
+  },
 });
 
 const Styled = withStyles(styles)(PossibleResponse);
@@ -101,20 +105,24 @@ const tileSource = {
     return canDrag;
   },
   beginDrag(props) {
-    const { data, data: { id, value, containerIndex }, onDragBegin } = props;
+    const {
+      data,
+      data: { id, value, containerIndex },
+      onDragBegin,
+    } = props;
     onDragBegin(data);
     return {
       id,
       value,
-      containerIndex
+      containerIndex,
     };
   },
   endDrag(props) {
     props.onDragEnd();
-  }
+  },
 };
 
 export default DragSource(c.types.response, tileSource, (connect, monitor) => ({
   connectDragSource: connect.dragSource(),
-  isDragging: monitor.isDragging()
+  isDragging: monitor.isDragging(),
 }))(Styled);

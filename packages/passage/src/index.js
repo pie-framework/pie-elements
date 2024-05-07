@@ -6,20 +6,14 @@ export default class PiePassage extends HTMLElement {
   constructor() {
     super();
     this._model = {
-      passages: []
+      passages: [],
     };
     this._session = null;
   }
 
   set model(s) {
     this._model = s;
-    this.dispatchEvent(
-      new ModelSetEvent(
-        this.tagName.toLowerCase(),
-        this._session,
-        !!this._model
-      )
-    );
+    this.dispatchEvent(new ModelSetEvent(this.tagName.toLowerCase(), this._session, !!this._model));
 
     this._render();
   }
@@ -29,19 +23,27 @@ export default class PiePassage extends HTMLElement {
   }
 
   connectedCallback() {
+    this.setAttribute('aria-label', 'Passage');
+    this.setAttribute('role', 'region');
     this._render();
   }
 
   _render() {
+    const { showTeacherInstructions = false } = this._model;
+
     if (this._model.passages.length > 0) {
       const passagesTabs = this._model.passages.map((passage, index) => {
         return {
           id: index,
           title: passage.title,
-          text: passage.text
+          text: passage.text,
+          teacherInstructions: passage.teacherInstructions || '',
         };
       });
-      let elem = React.createElement(StimulusTabs, { tabs: passagesTabs });
+      let elem = React.createElement(StimulusTabs, {
+        tabs: passagesTabs,
+        showTeacherInstructions,
+      });
       ReactDOM.render(elem, this);
     }
   }

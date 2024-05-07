@@ -1,19 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { InputContainer } from '@pie-lib/render-ui';
+import { InputContainer } from '@pie-lib/pie-toolbox/render-ui';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import { withStyles } from '@material-ui/core/styles';
+import classnames from 'classnames';
+import Translator from '@pie-lib/pie-toolbox/translator';
+
+const { translator } = Translator;
 
 // TODO: Change Palette so will render inputs and colors dynamically
 class Palette extends React.Component {
-  onChange = name => event => {
+  onChange = (name) => (event) => {
     const { value } = event.target;
-    const {
-      onFillColorChange,
-      onOutlineColorChange,
-      onPaintColorChange
-    } = this.props;
+    const { onFillColorChange, onOutlineColorChange, onPaintColorChange } = this.props;
 
     if (name === 'fill') {
       onFillColorChange(value);
@@ -25,27 +25,19 @@ class Palette extends React.Component {
   };
 
   render() {
-    const {
-      classes,
-      fillColor,
-      outlineColor,
-      fillList,
-      outlineList
-    } = this.props;
+    const { classes, fillColor, outlineColor, fillList, outlineList, language } = this.props;
 
     return (
       <div className={classes.base}>
-        <InputContainer label="Fill Color" className={classes.input}>
-          <Select
-            className={classes.select}
-            onChange={this.onChange('fill')}
-            value={fillColor}
-          >
+        <InputContainer label={translator.t('drawingResponse.fillColor', { lng: language })} className={classes.input}>
+          <Select className={classes.select} onChange={this.onChange('fill')} value={fillColor}>
             {fillList.map(({ value, label }) => (
               <MenuItem
                 key={value}
                 value={value}
-                className={classes.item}
+                className={classnames(classes.item, {
+                  [classes.blackColorItem]: value === 'black',
+                })}
                 style={{ backgroundColor: value }}
               >
                 {label}
@@ -54,19 +46,10 @@ class Palette extends React.Component {
           </Select>
         </InputContainer>
 
-        <InputContainer label="Outline Color" className={classes.input}>
-          <Select
-            className={classes.select}
-            onChange={this.onChange('outline')}
-            value={outlineColor}
-          >
+        <InputContainer label={translator.t('drawingResponse.outlineColor', { lng: language })} className={classes.input}>
+          <Select className={classes.select} onChange={this.onChange('outline')} value={outlineColor}>
             {outlineList.map(({ value, label }) => (
-              <MenuItem
-                key={value}
-                value={value}
-                className={classes.item}
-                style={{ border: `2px solid ${value}` }}
-              >
+              <MenuItem key={value} value={value} className={classes.item} style={{ border: `2px solid ${value}` }}>
                 {label}
               </MenuItem>
             ))}
@@ -77,10 +60,10 @@ class Palette extends React.Component {
   }
 }
 
-const styles = theme => ({
+const styles = (theme) => ({
   base: {
     marginTop: theme.spacing.unit * 2,
-    display: 'flex'
+    display: 'flex',
   },
   input: {
     flex: 1,
@@ -93,12 +76,15 @@ const styles = theme => ({
     height: '22px',
     marginLeft: theme.spacing.unit * 2,
     marginRight: theme.spacing.unit * 2,
-    marginTop: theme.spacing.unit * 2
+    marginTop: theme.spacing.unit * 2,
+  },
+  blackColorItem: {
+    color: theme.palette.background.paper,
   },
   select: {
     fontSize: 'inherit',
     transform: 'translate(0%, 40%)',
-  }
+  },
 });
 
 Palette.propTypes = {
@@ -109,7 +95,8 @@ Palette.propTypes = {
   onOutlineColorChange: PropTypes.func.isRequired,
   onPaintColorChange: PropTypes.func.isRequired,
   outlineColor: PropTypes.string.isRequired,
-  outlineList: PropTypes.array.isRequired
+  outlineList: PropTypes.array.isRequired,
+  language: PropTypes.string,
 };
 
 export default withStyles(styles)(Palette);

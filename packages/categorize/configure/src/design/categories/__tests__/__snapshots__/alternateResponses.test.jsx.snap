@@ -12,7 +12,16 @@ exports[`AlternateResponses snapshot renders 1`] = `
       }
     }
   >
+    <WithStyles(Component)
+      categoriesPerRow={2}
+      disabled={true}
+      markup=""
+      mathMlOptions={Object {}}
+      onChange={[Function]}
+      rowIndex={0}
+    />
     <WithStyles(Category)
+      alternateResponseIndex={0}
       category={
         Object {
           "choices": Array [],
@@ -20,9 +29,12 @@ exports[`AlternateResponses snapshot renders 1`] = `
           "label": "foo",
         }
       }
+      isDuplicated={false}
       key="0"
+      mathMlOptions={Object {}}
       onAddChoice={[Function]}
       onDeleteChoice={[Function]}
+      onMoveChoice={[Function]}
     />
   </div>
 </div>

@@ -1,773 +1,1392 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Main snapshot renders with teacher instructions, prompt and rationale even if not set 1`] = `
-<div>
-  <ConfigLayout
-    settings={
-      <Panel
-        configuration={
-          Object {
-            "choiceRationale": Object {
-              "label": "Choice Rationale",
-              "settings": true,
+<ConfigLayout
+  dimensions={Object {}}
+  hideSettings={false}
+  settings={
+    <Panel
+      configuration={
+        Object {
+          "baseInputConfiguration": Object {
+            "audio": Object {
+              "disabled": false,
             },
-            "lockChoiceOrder": Object {
-              "label": "Lock Choice Order",
-              "settings": true,
+            "image": Object {
+              "disabled": false,
             },
-            "partialScoring": Object {
-              "label": "Allow Partial Scoring",
-              "settings": false,
+            "video": Object {
+              "disabled": false,
             },
-            "prompt": Object {
-              "label": "Prompt",
-              "settings": true,
+          },
+          "choiceRationale": Object {
+            "label": "Choice Rationale",
+            "settings": true,
+          },
+          "language": Object {
+            "enabled": false,
+            "label": "Specify Language",
+            "settings": false,
+          },
+          "languageChoices": Object {
+            "label": "Language Choices",
+            "options": Array [],
+          },
+          "lockChoiceOrder": Object {
+            "label": "Lock Choice Order",
+            "settings": true,
+          },
+          "mathMlOptions": Object {
+            "mmlEditing": false,
+            "mmlOutput": false,
+          },
+          "maxImageHeight": Object {
+            "prompt": 300,
+            "rationale": 300,
+            "teacherInstructions": 300,
+          },
+          "maxImageWidth": Object {
+            "prompt": 300,
+            "rationale": 300,
+            "teacherInstructions": 300,
+          },
+          "maxResponseAreaChoices": 10,
+          "maxResponseAreas": 10,
+          "partialScoring": Object {
+            "label": "Allow Partial Scoring",
+            "settings": false,
+          },
+          "prompt": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": false,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": false,
+              },
             },
-            "rationale": Object {
-              "label": "Rationale",
-              "settings": true,
+            "label": "Prompt",
+            "required": false,
+            "settings": true,
+          },
+          "rationale": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": false,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": false,
+              },
             },
-            "teacherInstructions": Object {
-              "label": "Teacher Instructions",
-              "settings": true,
+            "label": "Rationale",
+            "required": false,
+            "settings": true,
+          },
+          "settingsPanelDisabled": false,
+          "spellCheck": Object {
+            "enabled": true,
+            "label": "Spellcheck",
+            "settings": false,
+          },
+          "teacherInstructions": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": false,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": false,
+              },
             },
-            "toolbarEditorPosition": Object {
-              "label": "Toolbar Editor Position",
-              "settings": false,
+            "label": "Teacher Instructions",
+            "required": false,
+            "settings": true,
+          },
+          "template": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": false,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": false,
+              },
             },
-          }
+          },
+          "toolbarEditorPosition": Object {
+            "label": "Toolbar Editor Position",
+            "settings": false,
+          },
+          "withRubric": Object {
+            "label": "Add Rubric",
+            "settings": false,
+          },
         }
-        groups={
-          Object {
-            "Properties": Object {
-              "choiceRationaleEnabled": undefined,
-              "promptEnabled": undefined,
-              "rationaleEnabled": undefined,
-              "teacherInstructionsEnabled": undefined,
-            },
-            "Settings": Object {
-              "lockChoiceOrder": undefined,
-              "partialScoring": false,
-            },
-          }
+      }
+      groups={
+        Object {
+          "Properties": Object {
+            "choiceRationaleEnabled": undefined,
+            "promptEnabled": undefined,
+            "rationaleEnabled": undefined,
+            "rubricEnabled": false,
+            "spellCheckEnabled": false,
+            "teacherInstructionsEnabled": undefined,
+          },
+          "Settings": Object {
+            "language": false,
+            "language.enabled": false,
+            "lockChoiceOrder": undefined,
+            "partialScoring": false,
+          },
         }
-        model={
-          Object {
-            "alternateResponse": Object {
-              "2": Array [
-                "2",
-              ],
-            },
-            "choiceRationaleEnabled": true,
-            "choices": Object {
-              "0": Array [
-                Object {
-                  "correct": true,
-                  "label": "cow ",
-                  "rationale": "rationale for cow",
-                  "value": "0",
-                },
-                Object {
-                  "correct": false,
-                  "label": "dog ",
-                  "value": "1",
-                },
-                Object {
-                  "correct": false,
-                  "label": "cat ",
-                  "value": "2",
-                },
-              ],
-              "1": Array [
-                Object {
-                  "correct": true,
-                  "label": "over ",
-                  "rationale": "rationale for over",
-                  "value": "0",
-                },
-                Object {
-                  "correct": false,
-                  "label": "under ",
-                  "value": "1",
-                },
-                Object {
-                  "correct": false,
-                  "label": "across ",
-                  "value": "2",
-                },
-              ],
-              "2": Array [
-                Object {
-                  "correct": true,
-                  "label": "moon ",
-                  "rationale": "rationale for moon",
-                  "value": "0",
-                },
-                Object {
-                  "correct": false,
-                  "label": "sun",
-                  "value": "2",
-                },
-                Object {
-                  "correct": false,
-                  "label": "house ",
-                  "value": "3",
-                },
-              ],
-            },
-            "disabled": false,
-            "displayType": "block",
-            "markup": "<div><p>The {{0}} jumped {{1}} the {{2}}</p></div>",
-            "mode": "gather",
-            "prompt": "Use the dropdowns to complete the sentence",
-            "promptEnabled": true,
-            "rationaleEnabled": true,
-            "shuffle": true,
-            "slateMarkup": "<div><p>The <span data-type=\\"inline_dropdown\\" data-index=\\"0\\" data-value=\\"cow \\"></span> jumped <span data-type=\\"inline_dropdown\\" data-index=\\"1\\" data-value=\\"over \\"></span> the <span data-type=\\"inline_dropdown\\" data-index=\\"2\\" data-value=\\"moon \\"></span></p></div>",
-            "studentInstructionsEnabled": true,
-            "teacherInstructionsEnabled": true,
-            "toolbarEditorPosition": "bottom",
-          }
+      }
+      model={
+        Object {
+          "alternateResponse": Object {
+            "2": Array [
+              "2",
+            ],
+          },
+          "choiceRationaleEnabled": true,
+          "choices": Object {
+            "0": Array [
+              Object {
+                "correct": true,
+                "label": "cow",
+                "rationale": "rationale for cow",
+                "value": "0",
+              },
+              Object {
+                "correct": false,
+                "label": "dog",
+                "value": "1",
+              },
+              Object {
+                "correct": false,
+                "label": "cat",
+                "value": "2",
+              },
+            ],
+            "1": Array [
+              Object {
+                "correct": true,
+                "label": "over",
+                "rationale": "rationale for over",
+                "value": "0",
+              },
+              Object {
+                "correct": false,
+                "label": "under",
+                "value": "1",
+              },
+              Object {
+                "correct": false,
+                "label": "across",
+                "value": "2",
+              },
+            ],
+            "2": Array [
+              Object {
+                "correct": true,
+                "label": "moon",
+                "rationale": "rationale for moon",
+                "value": "0",
+              },
+              Object {
+                "correct": false,
+                "label": "sun",
+                "value": "2",
+              },
+              Object {
+                "correct": false,
+                "label": "house",
+                "value": "3",
+              },
+            ],
+          },
+          "disabled": false,
+          "displayType": "block",
+          "markup": "<div><p>The {{0}} jumped {{1}} the {{2}}</p></div>",
+          "mode": "gather",
+          "prompt": "Use the dropdowns to complete the sentence",
+          "promptEnabled": true,
+          "rationaleEnabled": true,
+          "shuffle": true,
+          "slateMarkup": "<div><p>The <span data-type=\\"inline_dropdown\\" data-index=\\"0\\" data-value=\\"cow\\"></span> jumped <span data-type=\\"inline_dropdown\\" data-index=\\"1\\" data-value=\\"over\\"></span> the <span data-type=\\"inline_dropdown\\" data-index=\\"2\\" data-value=\\"moon\\"></span></p></div>",
+          "studentInstructionsEnabled": true,
+          "teacherInstructionsEnabled": true,
+          "toolbarEditorPosition": "bottom",
         }
-        onChangeConfiguration={[Function]}
-        onChangeModel={[Function]}
-      />
-    }
+      }
+      onChangeConfiguration={[Function]}
+      onChangeModel={[Function]}
+    />
+  }
+>
+  <InputContainer
+    label="Teacher Instructions"
   >
-    <div>
-      <InputContainer
-        label="Teacher Instructions"
-      >
-        <EditableHtml
-          markup=""
-          nonEmpty={false}
-          onChange={[Function]}
-          toolbarOpts={
-            Object {
-              "position": "bottom",
-            }
-          }
-        />
-      </InputContainer>
-      <InputContainer
-        label="Prompt"
-      >
-        <EditableHtml
-          disableUnderline={true}
-          markup="Use the dropdowns to complete the sentence"
-          nonEmpty={false}
-          onChange={[Function]}
-          toolbarOpts={
-            Object {
-              "position": "bottom",
-            }
-          }
-        />
-      </InputContainer>
-      <InputContainer
-        label="Rationale"
-      >
-        <EditableHtml
-          markup=""
-          onChange={[Function]}
-          toolbarOpts={
-            Object {
-              "position": "bottom",
-            }
-          }
-        />
-      </InputContainer>
-      <WithStyles(Typography)>
-        Define Template, Choices, and Correct Responses
-      </WithStyles(Typography)>
-      <InfoDialog
-        open={false}
-      />
-      <EditableHtml
-        disabled={false}
-        highlightShape={false}
-        markup="<div><p>The <span data-type=\\"inline_dropdown\\" data-index=\\"0\\" data-value=\\"cow \\"></span> jumped <span data-type=\\"inline_dropdown\\" data-index=\\"1\\" data-value=\\"over \\"></span> the <span data-type=\\"inline_dropdown\\" data-index=\\"2\\" data-value=\\"moon \\"></span></p></div>"
-        onChange={[Function]}
-        responseAreaProps={
+    <EditableHtml
+      allowValidation={false}
+      languageCharactersProps={
+        Array [
           Object {
-            "options": Object {
-              "duplicates": true,
-            },
-            "respAreaToolbar": [Function],
-            "type": "inline-dropdown",
-          }
-        }
-        toolbarOpts={
+            "language": "spanish",
+          },
           Object {
-            "position": "top",
-          }
+            "language": "special",
+          },
+        ]
+      }
+      markup=""
+      mathMlOptions={
+        Object {
+          "mmlEditing": false,
+          "mmlOutput": false,
         }
+      }
+      maxImageHeight={300}
+      maxImageWidth={300}
+      nonEmpty={false}
+      onChange={[Function]}
+      onDone={[Function]}
+      pluginProps={
+        Object {
+          "audio": Object {
+            "disabled": false,
+          },
+          "image": Object {
+            "disabled": false,
+          },
+          "video": Object {
+            "disabled": false,
+          },
+        }
+      }
+      toolbarOpts={
+        Object {
+          "position": "bottom",
+        }
+      }
+    />
+  </InputContainer>
+  <InputContainer
+    label="Prompt"
+  >
+    <EditableHtml
+      allowValidation={false}
+      disableUnderline={true}
+      languageCharactersProps={
+        Array [
+          Object {
+            "language": "spanish",
+          },
+          Object {
+            "language": "special",
+          },
+        ]
+      }
+      markup="Use the dropdowns to complete the sentence"
+      mathMlOptions={
+        Object {
+          "mmlEditing": false,
+          "mmlOutput": false,
+        }
+      }
+      maxImageHeight={300}
+      maxImageWidth={300}
+      nonEmpty={false}
+      onChange={[Function]}
+      onDone={[Function]}
+      pluginProps={
+        Object {
+          "audio": Object {
+            "disabled": false,
+          },
+          "image": Object {
+            "disabled": false,
+          },
+          "video": Object {
+            "disabled": false,
+          },
+        }
+      }
+      toolbarOpts={
+        Object {
+          "position": "bottom",
+        }
+      }
+    />
+  </InputContainer>
+  <div>
+    <WithStyles(Typography)>
+      Define Template, Choices, and Correct Responses
+    </WithStyles(Typography)>
+    <WithStyles(Tooltip)
+      classes={
+        Object {
+          "tooltip": undefined,
+        }
+      }
+      disableFocusListener={true}
+      disableTouchListener={true}
+      placement="right"
+      title="Validation requirements:
+There should be at least 1 and at most 10 response areas defined.
+There should be at most 10 choices defined per response area."
+    >
+      <pure(InfoIcon)
+        color="primary"
+        fontSize="small"
       />
-      <br />
-      <div
-        key="0"
+    </WithStyles(Tooltip)>
+  </div>
+  <div>
+    <EditableHtml
+      activePlugins={
+        Array [
+          "bold",
+          "html",
+          "italic",
+          "underline",
+          "strikethrough",
+          "bulleted-list",
+          "numbered-list",
+          "image",
+          "math",
+          "languageCharacters",
+          "table",
+          "video",
+          "audio",
+          "responseArea",
+        ]
+      }
+      allowValidation={false}
+      disableImageAlignmentButtons={true}
+      disabled={false}
+      highlightShape={false}
+      languageCharactersProps={
+        Array [
+          Object {
+            "language": "spanish",
+          },
+          Object {
+            "language": "special",
+          },
+        ]
+      }
+      markup="<div><p>The <span data-type=\\"inline_dropdown\\" data-index=\\"0\\" data-value=\\"cow\\"></span> jumped <span data-type=\\"inline_dropdown\\" data-index=\\"1\\" data-value=\\"over\\"></span> the <span data-type=\\"inline_dropdown\\" data-index=\\"2\\" data-value=\\"moon\\"></span></p></div>"
+      mathMlOptions={
+        Object {
+          "mmlEditing": false,
+          "mmlOutput": false,
+        }
+      }
+      onChange={[Function]}
+      onDone={[Function]}
+      pluginProps={
+        Object {
+          "audio": Object {
+            "disabled": false,
+          },
+          "image": Object {
+            "disabled": false,
+          },
+          "video": Object {
+            "disabled": false,
+          },
+        }
+      }
+      responseAreaProps={
+        Object {
+          "maxResponseAreas": 10,
+          "options": Object {
+            "duplicates": true,
+          },
+          "respAreaToolbar": [Function],
+          "type": "inline-dropdown",
+        }
+      }
+      toolbarOpts={
+        Object {
+          "position": "top",
+        }
+      }
+    />
+  </div>
+  <div
+    key="0"
+  >
+    <WithStyles(ExpansionPanel)>
+      <WithStyles(ExpansionPanelSummary)
+        expandIcon={<pure(ExpandMoreIcon) />}
       >
-        <WithStyles(ExpansionPanel)>
-          <WithStyles(ExpansionPanelSummary)
-            expandIcon={<pure(ExpandMoreIcon) />}
-          >
-            <WithStyles(Typography)>
-              Rationale for response area #1
-            </WithStyles(Typography)>
-          </WithStyles(ExpansionPanelSummary)>
-          <WithStyles(ExpansionPanelDetails)>
-            <InputContainer
-              key="cow "
-              label={
-                <span
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "Rationale for cow  (correct)",
-                    }
-                  }
-                />
+        <WithStyles(Typography)>
+          Rationale for response area #1
+        </WithStyles(Typography)>
+      </WithStyles(ExpansionPanelSummary)>
+      <WithStyles(ExpansionPanelDetails)>
+        <InputContainer
+          key="cow"
+          label={
+            <span
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "Rationale for cow (correct)",
+                }
               }
-            >
-              <EditableHtml
-                markup="rationale for cow"
-                onChange={[Function]}
-              />
-            </InputContainer>
-            <InputContainer
-              key="dog "
-              label={
-                <span
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "Rationale for dog  (incorrect)",
-                    }
-                  }
-                />
+            />
+          }
+        >
+          <EditableHtml
+            allowValidation={false}
+            markup="rationale for cow"
+            mathMlOptions={
+              Object {
+                "mmlEditing": false,
+                "mmlOutput": false,
               }
-            >
-              <EditableHtml
-                markup=""
-                onChange={[Function]}
-              />
-            </InputContainer>
-            <InputContainer
-              key="cat "
-              label={
-                <span
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "Rationale for cat  (incorrect)",
-                    }
-                  }
-                />
+            }
+            maxImageHeight={300}
+            maxImageWidth={300}
+            onChange={[Function]}
+            onDone={[Function]}
+          />
+        </InputContainer>
+        <InputContainer
+          key="dog"
+          label={
+            <span
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "Rationale for dog (incorrect)",
+                }
               }
-            >
-              <EditableHtml
-                markup=""
-                onChange={[Function]}
-              />
-            </InputContainer>
-          </WithStyles(ExpansionPanelDetails)>
-        </WithStyles(ExpansionPanel)>
-      </div>
-      <div
-        key="1"
+            />
+          }
+        >
+          <EditableHtml
+            allowValidation={false}
+            markup=""
+            mathMlOptions={
+              Object {
+                "mmlEditing": false,
+                "mmlOutput": false,
+              }
+            }
+            maxImageHeight={300}
+            maxImageWidth={300}
+            onChange={[Function]}
+            onDone={[Function]}
+          />
+        </InputContainer>
+        <InputContainer
+          key="cat"
+          label={
+            <span
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "Rationale for cat (incorrect)",
+                }
+              }
+            />
+          }
+        >
+          <EditableHtml
+            allowValidation={false}
+            markup=""
+            mathMlOptions={
+              Object {
+                "mmlEditing": false,
+                "mmlOutput": false,
+              }
+            }
+            maxImageHeight={300}
+            maxImageWidth={300}
+            onChange={[Function]}
+            onDone={[Function]}
+          />
+        </InputContainer>
+      </WithStyles(ExpansionPanelDetails)>
+    </WithStyles(ExpansionPanel)>
+  </div>
+  <div
+    key="1"
+  >
+    <WithStyles(ExpansionPanel)>
+      <WithStyles(ExpansionPanelSummary)
+        expandIcon={<pure(ExpandMoreIcon) />}
       >
-        <WithStyles(ExpansionPanel)>
-          <WithStyles(ExpansionPanelSummary)
-            expandIcon={<pure(ExpandMoreIcon) />}
-          >
-            <WithStyles(Typography)>
-              Rationale for response area #2
-            </WithStyles(Typography)>
-          </WithStyles(ExpansionPanelSummary)>
-          <WithStyles(ExpansionPanelDetails)>
-            <InputContainer
-              key="over "
-              label={
-                <span
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "Rationale for over  (correct)",
-                    }
-                  }
-                />
+        <WithStyles(Typography)>
+          Rationale for response area #2
+        </WithStyles(Typography)>
+      </WithStyles(ExpansionPanelSummary)>
+      <WithStyles(ExpansionPanelDetails)>
+        <InputContainer
+          key="over"
+          label={
+            <span
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "Rationale for over (correct)",
+                }
               }
-            >
-              <EditableHtml
-                markup="rationale for over"
-                onChange={[Function]}
-              />
-            </InputContainer>
-            <InputContainer
-              key="under "
-              label={
-                <span
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "Rationale for under  (incorrect)",
-                    }
-                  }
-                />
+            />
+          }
+        >
+          <EditableHtml
+            allowValidation={false}
+            markup="rationale for over"
+            mathMlOptions={
+              Object {
+                "mmlEditing": false,
+                "mmlOutput": false,
               }
-            >
-              <EditableHtml
-                markup=""
-                onChange={[Function]}
-              />
-            </InputContainer>
-            <InputContainer
-              key="across "
-              label={
-                <span
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "Rationale for across  (incorrect)",
-                    }
-                  }
-                />
+            }
+            maxImageHeight={300}
+            maxImageWidth={300}
+            onChange={[Function]}
+            onDone={[Function]}
+          />
+        </InputContainer>
+        <InputContainer
+          key="under"
+          label={
+            <span
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "Rationale for under (incorrect)",
+                }
               }
-            >
-              <EditableHtml
-                markup=""
-                onChange={[Function]}
-              />
-            </InputContainer>
-          </WithStyles(ExpansionPanelDetails)>
-        </WithStyles(ExpansionPanel)>
-      </div>
-      <div
-        key="2"
+            />
+          }
+        >
+          <EditableHtml
+            allowValidation={false}
+            markup=""
+            mathMlOptions={
+              Object {
+                "mmlEditing": false,
+                "mmlOutput": false,
+              }
+            }
+            maxImageHeight={300}
+            maxImageWidth={300}
+            onChange={[Function]}
+            onDone={[Function]}
+          />
+        </InputContainer>
+        <InputContainer
+          key="across"
+          label={
+            <span
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "Rationale for across (incorrect)",
+                }
+              }
+            />
+          }
+        >
+          <EditableHtml
+            allowValidation={false}
+            markup=""
+            mathMlOptions={
+              Object {
+                "mmlEditing": false,
+                "mmlOutput": false,
+              }
+            }
+            maxImageHeight={300}
+            maxImageWidth={300}
+            onChange={[Function]}
+            onDone={[Function]}
+          />
+        </InputContainer>
+      </WithStyles(ExpansionPanelDetails)>
+    </WithStyles(ExpansionPanel)>
+  </div>
+  <div
+    key="2"
+  >
+    <WithStyles(ExpansionPanel)>
+      <WithStyles(ExpansionPanelSummary)
+        expandIcon={<pure(ExpandMoreIcon) />}
       >
-        <WithStyles(ExpansionPanel)>
-          <WithStyles(ExpansionPanelSummary)
-            expandIcon={<pure(ExpandMoreIcon) />}
-          >
-            <WithStyles(Typography)>
-              Rationale for response area #3
-            </WithStyles(Typography)>
-          </WithStyles(ExpansionPanelSummary)>
-          <WithStyles(ExpansionPanelDetails)>
-            <InputContainer
-              key="moon "
-              label={
-                <span
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "Rationale for moon  (correct)",
-                    }
-                  }
-                />
+        <WithStyles(Typography)>
+          Rationale for response area #3
+        </WithStyles(Typography)>
+      </WithStyles(ExpansionPanelSummary)>
+      <WithStyles(ExpansionPanelDetails)>
+        <InputContainer
+          key="moon"
+          label={
+            <span
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "Rationale for moon (correct)",
+                }
               }
-            >
-              <EditableHtml
-                markup="rationale for moon"
-                onChange={[Function]}
-              />
-            </InputContainer>
-            <InputContainer
-              key="sun"
-              label={
-                <span
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "Rationale for sun (incorrect)",
-                    }
-                  }
-                />
+            />
+          }
+        >
+          <EditableHtml
+            allowValidation={false}
+            markup="rationale for moon"
+            mathMlOptions={
+              Object {
+                "mmlEditing": false,
+                "mmlOutput": false,
               }
-            >
-              <EditableHtml
-                markup=""
-                onChange={[Function]}
-              />
-            </InputContainer>
-            <InputContainer
-              key="house "
-              label={
-                <span
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "Rationale for house  (incorrect)",
-                    }
-                  }
-                />
+            }
+            maxImageHeight={300}
+            maxImageWidth={300}
+            onChange={[Function]}
+            onDone={[Function]}
+          />
+        </InputContainer>
+        <InputContainer
+          key="sun"
+          label={
+            <span
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "Rationale for sun (incorrect)",
+                }
               }
-            >
-              <EditableHtml
-                markup=""
-                onChange={[Function]}
-              />
-            </InputContainer>
-          </WithStyles(ExpansionPanelDetails)>
-        </WithStyles(ExpansionPanel)>
-      </div>
-    </div>
-  </ConfigLayout>
-</div>
+            />
+          }
+        >
+          <EditableHtml
+            allowValidation={false}
+            markup=""
+            mathMlOptions={
+              Object {
+                "mmlEditing": false,
+                "mmlOutput": false,
+              }
+            }
+            maxImageHeight={300}
+            maxImageWidth={300}
+            onChange={[Function]}
+            onDone={[Function]}
+          />
+        </InputContainer>
+        <InputContainer
+          key="house"
+          label={
+            <span
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "Rationale for house (incorrect)",
+                }
+              }
+            />
+          }
+        >
+          <EditableHtml
+            allowValidation={false}
+            markup=""
+            mathMlOptions={
+              Object {
+                "mmlEditing": false,
+                "mmlOutput": false,
+              }
+            }
+            maxImageHeight={300}
+            maxImageWidth={300}
+            onChange={[Function]}
+            onDone={[Function]}
+          />
+        </InputContainer>
+      </WithStyles(ExpansionPanelDetails)>
+    </WithStyles(ExpansionPanel)>
+  </div>
+  <InputContainer
+    label="Rationale"
+  >
+    <EditableHtml
+      allowValidation={false}
+      languageCharactersProps={
+        Array [
+          Object {
+            "language": "spanish",
+          },
+          Object {
+            "language": "special",
+          },
+        ]
+      }
+      markup=""
+      mathMlOptions={
+        Object {
+          "mmlEditing": false,
+          "mmlOutput": false,
+        }
+      }
+      maxImageHeight={300}
+      maxImageWidth={300}
+      onChange={[Function]}
+      onDone={[Function]}
+      pluginProps={
+        Object {
+          "audio": Object {
+            "disabled": false,
+          },
+          "image": Object {
+            "disabled": false,
+          },
+          "video": Object {
+            "disabled": false,
+          },
+        }
+      }
+      toolbarOpts={
+        Object {
+          "position": "bottom",
+        }
+      }
+    />
+  </InputContainer>
+  <Component
+    open={false}
+    title="Warning"
+  />
+</ConfigLayout>
 `;
 
 exports[`Main snapshot renders without teacher instructions, prompt and rationale 1`] = `
-<div>
-  <ConfigLayout
-    settings={
-      <Panel
-        configuration={
-          Object {
-            "choiceRationale": Object {
-              "label": "Choice Rationale",
-              "settings": true,
+<ConfigLayout
+  dimensions={Object {}}
+  hideSettings={false}
+  settings={
+    <Panel
+      configuration={
+        Object {
+          "baseInputConfiguration": Object {
+            "audio": Object {
+              "disabled": false,
             },
-            "lockChoiceOrder": Object {
-              "label": "Lock Choice Order",
-              "settings": true,
+            "image": Object {
+              "disabled": false,
             },
-            "partialScoring": Object {
-              "label": "Allow Partial Scoring",
-              "settings": false,
+            "video": Object {
+              "disabled": false,
             },
-            "prompt": Object {
-              "label": "Prompt",
-              "settings": true,
+          },
+          "choiceRationale": Object {
+            "label": "Choice Rationale",
+            "settings": true,
+          },
+          "language": Object {
+            "enabled": false,
+            "label": "Specify Language",
+            "settings": false,
+          },
+          "languageChoices": Object {
+            "label": "Language Choices",
+            "options": Array [],
+          },
+          "lockChoiceOrder": Object {
+            "label": "Lock Choice Order",
+            "settings": true,
+          },
+          "mathMlOptions": Object {
+            "mmlEditing": false,
+            "mmlOutput": false,
+          },
+          "maxImageHeight": Object {
+            "prompt": 300,
+            "rationale": 300,
+            "teacherInstructions": 300,
+          },
+          "maxImageWidth": Object {
+            "prompt": 300,
+            "rationale": 300,
+            "teacherInstructions": 300,
+          },
+          "maxResponseAreaChoices": 10,
+          "maxResponseAreas": 10,
+          "partialScoring": Object {
+            "label": "Allow Partial Scoring",
+            "settings": false,
+          },
+          "prompt": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": false,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": false,
+              },
             },
-            "rationale": Object {
-              "label": "Rationale",
-              "settings": true,
+            "label": "Prompt",
+            "required": false,
+            "settings": true,
+          },
+          "rationale": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": false,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": false,
+              },
             },
-            "teacherInstructions": Object {
-              "label": "Teacher Instructions",
-              "settings": true,
+            "label": "Rationale",
+            "required": false,
+            "settings": true,
+          },
+          "settingsPanelDisabled": false,
+          "spellCheck": Object {
+            "enabled": true,
+            "label": "Spellcheck",
+            "settings": false,
+          },
+          "teacherInstructions": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": false,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": false,
+              },
             },
-            "toolbarEditorPosition": Object {
-              "label": "Toolbar Editor Position",
-              "settings": false,
+            "label": "Teacher Instructions",
+            "required": false,
+            "settings": true,
+          },
+          "template": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": false,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": false,
+              },
             },
-          }
+          },
+          "toolbarEditorPosition": Object {
+            "label": "Toolbar Editor Position",
+            "settings": false,
+          },
+          "withRubric": Object {
+            "label": "Add Rubric",
+            "settings": false,
+          },
         }
-        groups={
-          Object {
-            "Properties": Object {
-              "choiceRationaleEnabled": undefined,
-              "promptEnabled": undefined,
-              "rationaleEnabled": undefined,
-              "teacherInstructionsEnabled": undefined,
-            },
-            "Settings": Object {
-              "lockChoiceOrder": undefined,
-              "partialScoring": false,
-            },
-          }
+      }
+      groups={
+        Object {
+          "Properties": Object {
+            "choiceRationaleEnabled": undefined,
+            "promptEnabled": undefined,
+            "rationaleEnabled": undefined,
+            "rubricEnabled": false,
+            "spellCheckEnabled": false,
+            "teacherInstructionsEnabled": undefined,
+          },
+          "Settings": Object {
+            "language": false,
+            "language.enabled": false,
+            "lockChoiceOrder": undefined,
+            "partialScoring": false,
+          },
         }
-        model={
+      }
+      model={
+        Object {
+          "alternateResponse": Object {
+            "2": Array [
+              "2",
+            ],
+          },
+          "choiceRationaleEnabled": true,
+          "choices": Object {
+            "0": Array [
+              Object {
+                "correct": true,
+                "label": "cow",
+                "rationale": "rationale for cow",
+                "value": "0",
+              },
+              Object {
+                "correct": false,
+                "label": "dog",
+                "value": "1",
+              },
+              Object {
+                "correct": false,
+                "label": "cat",
+                "value": "2",
+              },
+            ],
+            "1": Array [
+              Object {
+                "correct": true,
+                "label": "over",
+                "rationale": "rationale for over",
+                "value": "0",
+              },
+              Object {
+                "correct": false,
+                "label": "under",
+                "value": "1",
+              },
+              Object {
+                "correct": false,
+                "label": "across",
+                "value": "2",
+              },
+            ],
+            "2": Array [
+              Object {
+                "correct": true,
+                "label": "moon",
+                "rationale": "rationale for moon",
+                "value": "0",
+              },
+              Object {
+                "correct": false,
+                "label": "sun",
+                "value": "2",
+              },
+              Object {
+                "correct": false,
+                "label": "house",
+                "value": "3",
+              },
+            ],
+          },
+          "disabled": false,
+          "displayType": "block",
+          "markup": "<div><p>The {{0}} jumped {{1}} the {{2}}</p></div>",
+          "mode": "gather",
+          "prompt": "Use the dropdowns to complete the sentence",
+          "promptEnabled": false,
+          "rationaleEnabled": false,
+          "shuffle": true,
+          "slateMarkup": "<div><p>The <span data-type=\\"inline_dropdown\\" data-index=\\"0\\" data-value=\\"cow\\"></span> jumped <span data-type=\\"inline_dropdown\\" data-index=\\"1\\" data-value=\\"over\\"></span> the <span data-type=\\"inline_dropdown\\" data-index=\\"2\\" data-value=\\"moon\\"></span></p></div>",
+          "studentInstructionsEnabled": true,
+          "teacherInstructionsEnabled": false,
+          "toolbarEditorPosition": "bottom",
+        }
+      }
+      onChangeConfiguration={[Function]}
+      onChangeModel={[Function]}
+    />
+  }
+>
+  <div>
+    <WithStyles(Typography)>
+      Define Template, Choices, and Correct Responses
+    </WithStyles(Typography)>
+    <WithStyles(Tooltip)
+      classes={
+        Object {
+          "tooltip": undefined,
+        }
+      }
+      disableFocusListener={true}
+      disableTouchListener={true}
+      placement="right"
+      title="Validation requirements:
+There should be at least 1 and at most 10 response areas defined.
+There should be at most 10 choices defined per response area."
+    >
+      <pure(InfoIcon)
+        color="primary"
+        fontSize="small"
+      />
+    </WithStyles(Tooltip)>
+  </div>
+  <div>
+    <EditableHtml
+      activePlugins={
+        Array [
+          "bold",
+          "html",
+          "italic",
+          "underline",
+          "strikethrough",
+          "bulleted-list",
+          "numbered-list",
+          "image",
+          "math",
+          "languageCharacters",
+          "table",
+          "video",
+          "audio",
+          "responseArea",
+        ]
+      }
+      allowValidation={false}
+      disableImageAlignmentButtons={true}
+      disabled={false}
+      highlightShape={false}
+      languageCharactersProps={
+        Array [
           Object {
-            "alternateResponse": Object {
-              "2": Array [
-                "2",
-              ],
-            },
-            "choiceRationaleEnabled": true,
-            "choices": Object {
-              "0": Array [
-                Object {
-                  "correct": true,
-                  "label": "cow ",
-                  "rationale": "rationale for cow",
-                  "value": "0",
-                },
-                Object {
-                  "correct": false,
-                  "label": "dog ",
-                  "value": "1",
-                },
-                Object {
-                  "correct": false,
-                  "label": "cat ",
-                  "value": "2",
-                },
-              ],
-              "1": Array [
-                Object {
-                  "correct": true,
-                  "label": "over ",
-                  "rationale": "rationale for over",
-                  "value": "0",
-                },
-                Object {
-                  "correct": false,
-                  "label": "under ",
-                  "value": "1",
-                },
-                Object {
-                  "correct": false,
-                  "label": "across ",
-                  "value": "2",
-                },
-              ],
-              "2": Array [
-                Object {
-                  "correct": true,
-                  "label": "moon ",
-                  "rationale": "rationale for moon",
-                  "value": "0",
-                },
-                Object {
-                  "correct": false,
-                  "label": "sun",
-                  "value": "2",
-                },
-                Object {
-                  "correct": false,
-                  "label": "house ",
-                  "value": "3",
-                },
-              ],
-            },
+            "language": "spanish",
+          },
+          Object {
+            "language": "special",
+          },
+        ]
+      }
+      markup="<div><p>The <span data-type=\\"inline_dropdown\\" data-index=\\"0\\" data-value=\\"cow\\"></span> jumped <span data-type=\\"inline_dropdown\\" data-index=\\"1\\" data-value=\\"over\\"></span> the <span data-type=\\"inline_dropdown\\" data-index=\\"2\\" data-value=\\"moon\\"></span></p></div>"
+      mathMlOptions={
+        Object {
+          "mmlEditing": false,
+          "mmlOutput": false,
+        }
+      }
+      onChange={[Function]}
+      onDone={[Function]}
+      pluginProps={
+        Object {
+          "audio": Object {
             "disabled": false,
-            "displayType": "block",
-            "markup": "<div><p>The {{0}} jumped {{1}} the {{2}}</p></div>",
-            "mode": "gather",
-            "prompt": "Use the dropdowns to complete the sentence",
-            "promptEnabled": false,
-            "rationaleEnabled": false,
-            "shuffle": true,
-            "slateMarkup": "<div><p>The <span data-type=\\"inline_dropdown\\" data-index=\\"0\\" data-value=\\"cow \\"></span> jumped <span data-type=\\"inline_dropdown\\" data-index=\\"1\\" data-value=\\"over \\"></span> the <span data-type=\\"inline_dropdown\\" data-index=\\"2\\" data-value=\\"moon \\"></span></p></div>",
-            "studentInstructionsEnabled": true,
-            "teacherInstructionsEnabled": false,
-            "toolbarEditorPosition": "bottom",
-          }
+          },
+          "image": Object {
+            "disabled": false,
+          },
+          "video": Object {
+            "disabled": false,
+          },
         }
-        onChangeConfiguration={[Function]}
-        onChangeModel={[Function]}
-      />
-    }
+      }
+      responseAreaProps={
+        Object {
+          "maxResponseAreas": 10,
+          "options": Object {
+            "duplicates": true,
+          },
+          "respAreaToolbar": [Function],
+          "type": "inline-dropdown",
+        }
+      }
+      toolbarOpts={
+        Object {
+          "position": "top",
+        }
+      }
+    />
+  </div>
+  <div
+    key="0"
   >
-    <div>
-      <WithStyles(Typography)>
-        Define Template, Choices, and Correct Responses
-      </WithStyles(Typography)>
-      <InfoDialog
-        open={false}
-      />
-      <EditableHtml
-        disabled={false}
-        highlightShape={false}
-        markup="<div><p>The <span data-type=\\"inline_dropdown\\" data-index=\\"0\\" data-value=\\"cow \\"></span> jumped <span data-type=\\"inline_dropdown\\" data-index=\\"1\\" data-value=\\"over \\"></span> the <span data-type=\\"inline_dropdown\\" data-index=\\"2\\" data-value=\\"moon \\"></span></p></div>"
-        onChange={[Function]}
-        responseAreaProps={
-          Object {
-            "options": Object {
-              "duplicates": true,
-            },
-            "respAreaToolbar": [Function],
-            "type": "inline-dropdown",
+    <WithStyles(ExpansionPanel)>
+      <WithStyles(ExpansionPanelSummary)
+        expandIcon={<pure(ExpandMoreIcon) />}
+      >
+        <WithStyles(Typography)>
+          Rationale for response area #1
+        </WithStyles(Typography)>
+      </WithStyles(ExpansionPanelSummary)>
+      <WithStyles(ExpansionPanelDetails)>
+        <InputContainer
+          key="cow"
+          label={
+            <span
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "Rationale for cow (correct)",
+                }
+              }
+            />
           }
-        }
-        toolbarOpts={
-          Object {
-            "position": "top",
+        >
+          <EditableHtml
+            allowValidation={false}
+            markup="rationale for cow"
+            mathMlOptions={
+              Object {
+                "mmlEditing": false,
+                "mmlOutput": false,
+              }
+            }
+            maxImageHeight={300}
+            maxImageWidth={300}
+            onChange={[Function]}
+            onDone={[Function]}
+          />
+        </InputContainer>
+        <InputContainer
+          key="dog"
+          label={
+            <span
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "Rationale for dog (incorrect)",
+                }
+              }
+            />
           }
-        }
-      />
-      <br />
-      <div
-        key="0"
+        >
+          <EditableHtml
+            allowValidation={false}
+            markup=""
+            mathMlOptions={
+              Object {
+                "mmlEditing": false,
+                "mmlOutput": false,
+              }
+            }
+            maxImageHeight={300}
+            maxImageWidth={300}
+            onChange={[Function]}
+            onDone={[Function]}
+          />
+        </InputContainer>
+        <InputContainer
+          key="cat"
+          label={
+            <span
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "Rationale for cat (incorrect)",
+                }
+              }
+            />
+          }
+        >
+          <EditableHtml
+            allowValidation={false}
+            markup=""
+            mathMlOptions={
+              Object {
+                "mmlEditing": false,
+                "mmlOutput": false,
+              }
+            }
+            maxImageHeight={300}
+            maxImageWidth={300}
+            onChange={[Function]}
+            onDone={[Function]}
+          />
+        </InputContainer>
+      </WithStyles(ExpansionPanelDetails)>
+    </WithStyles(ExpansionPanel)>
+  </div>
+  <div
+    key="1"
+  >
+    <WithStyles(ExpansionPanel)>
+      <WithStyles(ExpansionPanelSummary)
+        expandIcon={<pure(ExpandMoreIcon) />}
       >
-        <WithStyles(ExpansionPanel)>
-          <WithStyles(ExpansionPanelSummary)
-            expandIcon={<pure(ExpandMoreIcon) />}
-          >
-            <WithStyles(Typography)>
-              Rationale for response area #1
-            </WithStyles(Typography)>
-          </WithStyles(ExpansionPanelSummary)>
-          <WithStyles(ExpansionPanelDetails)>
-            <InputContainer
-              key="cow "
-              label={
-                <span
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "Rationale for cow  (correct)",
-                    }
-                  }
-                />
+        <WithStyles(Typography)>
+          Rationale for response area #2
+        </WithStyles(Typography)>
+      </WithStyles(ExpansionPanelSummary)>
+      <WithStyles(ExpansionPanelDetails)>
+        <InputContainer
+          key="over"
+          label={
+            <span
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "Rationale for over (correct)",
+                }
               }
-            >
-              <EditableHtml
-                markup="rationale for cow"
-                onChange={[Function]}
-              />
-            </InputContainer>
-            <InputContainer
-              key="dog "
-              label={
-                <span
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "Rationale for dog  (incorrect)",
-                    }
-                  }
-                />
+            />
+          }
+        >
+          <EditableHtml
+            allowValidation={false}
+            markup="rationale for over"
+            mathMlOptions={
+              Object {
+                "mmlEditing": false,
+                "mmlOutput": false,
               }
-            >
-              <EditableHtml
-                markup=""
-                onChange={[Function]}
-              />
-            </InputContainer>
-            <InputContainer
-              key="cat "
-              label={
-                <span
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "Rationale for cat  (incorrect)",
-                    }
-                  }
-                />
+            }
+            maxImageHeight={300}
+            maxImageWidth={300}
+            onChange={[Function]}
+            onDone={[Function]}
+          />
+        </InputContainer>
+        <InputContainer
+          key="under"
+          label={
+            <span
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "Rationale for under (incorrect)",
+                }
               }
-            >
-              <EditableHtml
-                markup=""
-                onChange={[Function]}
-              />
-            </InputContainer>
-          </WithStyles(ExpansionPanelDetails)>
-        </WithStyles(ExpansionPanel)>
-      </div>
-      <div
-        key="1"
+            />
+          }
+        >
+          <EditableHtml
+            allowValidation={false}
+            markup=""
+            mathMlOptions={
+              Object {
+                "mmlEditing": false,
+                "mmlOutput": false,
+              }
+            }
+            maxImageHeight={300}
+            maxImageWidth={300}
+            onChange={[Function]}
+            onDone={[Function]}
+          />
+        </InputContainer>
+        <InputContainer
+          key="across"
+          label={
+            <span
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "Rationale for across (incorrect)",
+                }
+              }
+            />
+          }
+        >
+          <EditableHtml
+            allowValidation={false}
+            markup=""
+            mathMlOptions={
+              Object {
+                "mmlEditing": false,
+                "mmlOutput": false,
+              }
+            }
+            maxImageHeight={300}
+            maxImageWidth={300}
+            onChange={[Function]}
+            onDone={[Function]}
+          />
+        </InputContainer>
+      </WithStyles(ExpansionPanelDetails)>
+    </WithStyles(ExpansionPanel)>
+  </div>
+  <div
+    key="2"
+  >
+    <WithStyles(ExpansionPanel)>
+      <WithStyles(ExpansionPanelSummary)
+        expandIcon={<pure(ExpandMoreIcon) />}
       >
-        <WithStyles(ExpansionPanel)>
-          <WithStyles(ExpansionPanelSummary)
-            expandIcon={<pure(ExpandMoreIcon) />}
-          >
-            <WithStyles(Typography)>
-              Rationale for response area #2
-            </WithStyles(Typography)>
-          </WithStyles(ExpansionPanelSummary)>
-          <WithStyles(ExpansionPanelDetails)>
-            <InputContainer
-              key="over "
-              label={
-                <span
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "Rationale for over  (correct)",
-                    }
-                  }
-                />
+        <WithStyles(Typography)>
+          Rationale for response area #3
+        </WithStyles(Typography)>
+      </WithStyles(ExpansionPanelSummary)>
+      <WithStyles(ExpansionPanelDetails)>
+        <InputContainer
+          key="moon"
+          label={
+            <span
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "Rationale for moon (correct)",
+                }
               }
-            >
-              <EditableHtml
-                markup="rationale for over"
-                onChange={[Function]}
-              />
-            </InputContainer>
-            <InputContainer
-              key="under "
-              label={
-                <span
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "Rationale for under  (incorrect)",
-                    }
-                  }
-                />
+            />
+          }
+        >
+          <EditableHtml
+            allowValidation={false}
+            markup="rationale for moon"
+            mathMlOptions={
+              Object {
+                "mmlEditing": false,
+                "mmlOutput": false,
               }
-            >
-              <EditableHtml
-                markup=""
-                onChange={[Function]}
-              />
-            </InputContainer>
-            <InputContainer
-              key="across "
-              label={
-                <span
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "Rationale for across  (incorrect)",
-                    }
-                  }
-                />
+            }
+            maxImageHeight={300}
+            maxImageWidth={300}
+            onChange={[Function]}
+            onDone={[Function]}
+          />
+        </InputContainer>
+        <InputContainer
+          key="sun"
+          label={
+            <span
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "Rationale for sun (incorrect)",
+                }
               }
-            >
-              <EditableHtml
-                markup=""
-                onChange={[Function]}
-              />
-            </InputContainer>
-          </WithStyles(ExpansionPanelDetails)>
-        </WithStyles(ExpansionPanel)>
-      </div>
-      <div
-        key="2"
-      >
-        <WithStyles(ExpansionPanel)>
-          <WithStyles(ExpansionPanelSummary)
-            expandIcon={<pure(ExpandMoreIcon) />}
-          >
-            <WithStyles(Typography)>
-              Rationale for response area #3
-            </WithStyles(Typography)>
-          </WithStyles(ExpansionPanelSummary)>
-          <WithStyles(ExpansionPanelDetails)>
-            <InputContainer
-              key="moon "
-              label={
-                <span
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "Rationale for moon  (correct)",
-                    }
-                  }
-                />
+            />
+          }
+        >
+          <EditableHtml
+            allowValidation={false}
+            markup=""
+            mathMlOptions={
+              Object {
+                "mmlEditing": false,
+                "mmlOutput": false,
               }
-            >
-              <EditableHtml
-                markup="rationale for moon"
-                onChange={[Function]}
-              />
-            </InputContainer>
-            <InputContainer
-              key="sun"
-              label={
-                <span
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "Rationale for sun (incorrect)",
-                    }
-                  }
-                />
+            }
+            maxImageHeight={300}
+            maxImageWidth={300}
+            onChange={[Function]}
+            onDone={[Function]}
+          />
+        </InputContainer>
+        <InputContainer
+          key="house"
+          label={
+            <span
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "Rationale for house (incorrect)",
+                }
               }
-            >
-              <EditableHtml
-                markup=""
-                onChange={[Function]}
-              />
-            </InputContainer>
-            <InputContainer
-              key="house "
-              label={
-                <span
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "Rationale for house  (incorrect)",
-                    }
-                  }
-                />
+            />
+          }
+        >
+          <EditableHtml
+            allowValidation={false}
+            markup=""
+            mathMlOptions={
+              Object {
+                "mmlEditing": false,
+                "mmlOutput": false,
               }
-            >
-              <EditableHtml
-                markup=""
-                onChange={[Function]}
-              />
-            </InputContainer>
-          </WithStyles(ExpansionPanelDetails)>
-        </WithStyles(ExpansionPanel)>
-      </div>
-    </div>
-  </ConfigLayout>
-</div>
+            }
+            maxImageHeight={300}
+            maxImageWidth={300}
+            onChange={[Function]}
+            onDone={[Function]}
+          />
+        </InputContainer>
+      </WithStyles(ExpansionPanelDetails)>
+    </WithStyles(ExpansionPanel)>
+  </div>
+  <Component
+    open={false}
+    title="Warning"
+  />
+</ConfigLayout>
 `;

@@ -2,14 +2,14 @@
 
 exports[`Main render renders correctly 1`] = `
 <div>
+  <WithStyles(PreviewPrompt)
+    className="prompt"
+    prompt="Your prompt goes here"
+  />
   <WithStyles(CorrectAnswerToggle)
     onToggle={[Function]}
     show={false}
     toggled={false}
-  />
-  <WithStyles(PreviewPrompt)
-    className="prompt"
-    prompt="Your prompt goes here"
   />
   <WithStyles(AnswerArea)
     disabled={true}
@@ -147,6 +147,7 @@ exports[`Main render renders correctly 1`] = `
         "id": "1",
       }
     }
+    onRemoveAnswer={[Function]}
     session={
       Object {
         "value": Array [

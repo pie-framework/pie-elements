@@ -7,9 +7,7 @@ export const uid = {
 export const DragSource = jest.fn().mockReturnValue(() => ({}));
 export const DropTarget = jest.fn().mockReturnValue(() => ({}));
 
-export const PlaceHolder = (props) => (
-  <div componentName="placeholder">{props.children}</div>
-);
+export const PlaceHolder = (props) => <div componentName="placeholder">{props.children}</div>;
 
 export const withDragContext = jest.fn((i) => i);
 

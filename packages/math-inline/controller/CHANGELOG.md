@@ -3,6 +3,526 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.10.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@6.10.0...@pie-element/math-inline-controller@6.10.1) (2024-04-29)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3683, PD-3644 ([73734c5](https://github.com/pie-framework/pie-elements/commit/73734c50a1e4fcda6be4f67c725816d75aea222f))
+
+
+
+
+
+# [6.10.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@6.9.1...@pie-element/math-inline-controller@6.10.0) (2024-04-22)
+
+
+### Features
+
+* update pie-lib/pie-toolbox PD-2449 ([2a0b40a](https://github.com/pie-framework/pie-elements/commit/2a0b40a826f0338b5eda2e8301f79870be3d0073))
+
+
+
+
+
+## [6.9.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@6.9.0...@pie-element/math-inline-controller@6.9.1) (2024-04-22)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3644, PD-3673 ([5e28ce0](https://github.com/pie-framework/pie-elements/commit/5e28ce0dab4a7ecd93ef7bba45ddb20f768b450b))
+
+
+
+
+
+# [6.9.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@6.8.1...@pie-element/math-inline-controller@6.9.0) (2024-04-18)
+
+
+### Features
+
+* update pie-lib/pie-toolbox SC-30530, SC-30682, PD-3607, PD-3655 ([f08bccf](https://github.com/pie-framework/pie-elements/commit/f08bccf86fcb430e75e410116b000b3affc252c0))
+
+
+
+
+
+## [6.8.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@6.8.0...@pie-element/math-inline-controller@6.8.1) (2024-04-01)
+
+**Note:** Version bump only for package @pie-element/math-inline-controller
+
+
+
+
+
+# [6.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@6.7.0...@pie-element/math-inline-controller@6.8.0) (2024-04-01)
+
+
+### Features
+
+* **inline-dropdown:** upgrade pie-toolbox PD-2465 ([828d1c1](https://github.com/pie-framework/pie-elements/commit/828d1c1bc9e9221c1e141baaa8f89a4929ad0eb9))
+
+
+
+
+
+# [6.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@6.6.0...@pie-element/math-inline-controller@6.7.0) (2024-04-01)
+
+
+### Features
+
+* update pie-lib/pie-toolbox PD-3567, PD-3426 ([2a706d7](https://github.com/pie-framework/pie-elements/commit/2a706d799bb000c60b7a77a790de9dc66345ebf5))
+
+
+
+
+
+# [6.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@6.5.1...@pie-element/math-inline-controller@6.6.0) (2024-03-28)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3603 ([8fc82ab](https://github.com/pie-framework/pie-elements/commit/8fc82ab19baf45aecb40e4b364a7c307a9840130))
+
+
+### Features
+
+* **math-inline:** add required fields functionality PD-3576 ([a16cf4f](https://github.com/pie-framework/pie-elements/commit/a16cf4f40788cd33b48fa714ce5528e220df3765))
+
+
+
+
+
+## [6.5.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@6.5.0...@pie-element/math-inline-controller@6.5.1) (2024-03-26)
+
+**Note:** Version bump only for package @pie-element/math-inline-controller
+
+
+
+
+
+# [6.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@6.4.0...@pie-element/math-inline-controller@6.5.0) (2024-03-20)
+
+
+### Bug Fixes
+
+* updated pie-lib/pie-toolbox SC-28500 ([a8e4e6a](https://github.com/pie-framework/pie-elements/commit/a8e4e6ab27584435ce7ac3e964ccac2747402777))
+
+
+### Features
+
+* updated pie-lib/pie-toolbox SC-27890 and reverted once again math-rendering-accessible ([fd312e1](https://github.com/pie-framework/pie-elements/commit/fd312e1336999893025231946649496d290883e4))
+* use math-rendering-accessible everywhere PD-1870 ([d52e660](https://github.com/pie-framework/pie-elements/commit/d52e6607ad8847d704bd9cb9b7e3107c130f0500))
+
+
+
+
+
+# [6.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@6.3.2...@pie-element/math-inline-controller@6.4.0) (2024-03-15)
+
+
+### Features
+
+* update pie-lib/pie-toolbox SC-27890,PD-2461 ([13d94fa](https://github.com/pie-framework/pie-elements/commit/13d94faaf0cf9cf923bbc64587cdd4202154ea33))
+
+
+
+
+
+## [6.3.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@6.3.1...@pie-element/math-inline-controller@6.3.2) (2024-03-13)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3549 ([b5d7d13](https://github.com/pie-framework/pie-elements/commit/b5d7d1352169cc67eaedcd56898a5806b0a8812a))
+
+
+
+
+
+## [6.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@6.3.0...@pie-element/math-inline-controller@6.3.1) (2024-03-12)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3509, PD-3465 ([b1745aa](https://github.com/pie-framework/pie-elements/commit/b1745aa981722b5561aab1f4495ac81ac7bc4155))
+
+
+
+
+
+# [6.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@6.2.2...@pie-element/math-inline-controller@6.3.0) (2024-03-04)
+
+
+### Features
+
+* update pie-lib/pie-toolbox version PD-1870 and PD-3501 ([8df1d8d](https://github.com/pie-framework/pie-elements/commit/8df1d8d281a0d6023d5a9c0e6fdd29fea71b6ac1))
+
+
+
+
+
+## [6.2.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@6.2.1...@pie-element/math-inline-controller@6.2.2) (2024-02-20)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3372, PD-3385, PD-3439 ([a79d800](https://github.com/pie-framework/pie-elements/commit/a79d800bb69af0d175793bc737282100168c4c60))
+* update pie-lib/pie-toolbox PD-3455 ([4ff9971](https://github.com/pie-framework/pie-elements/commit/4ff9971e65b680aea180c94f9e85cab7249af2fb))
+
+
+
+
+
+## [6.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@6.2.0...@pie-element/math-inline-controller@6.2.1) (2024-02-14)
+
+
+### Bug Fixes
+
+* pie-lib/pie-toolbox with slate updates ([a8f8707](https://github.com/pie-framework/pie-elements/commit/a8f8707b2c197c2b40fb6632cee0ba4c27aa9aa4))
+* update pie-lib/pie-toolbox ([cec328c](https://github.com/pie-framework/pie-elements/commit/cec328caf5b69d9fee00473c502aed62d6e27462))
+
+
+
+
+
+# [6.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@6.1.8...@pie-element/math-inline-controller@6.2.0) (2024-02-09)
+
+
+### Features
+
+* update pie-toolbox version SC-28868 ([5745f50](https://github.com/pie-framework/pie-elements/commit/5745f502c89d730e72d4cdb83e96c9465a81ae19))
+
+
+
+
+
+## [6.1.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@6.1.7...@pie-element/math-inline-controller@6.1.8) (2024-02-07)
+
+
+### Bug Fixes
+
+* update pie-toolbox version PD-3423 ([053ad69](https://github.com/pie-framework/pie-elements/commit/053ad690619980bce68b1b44e51975fcf91054ec))
+
+
+
+
+
+## [6.1.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@6.1.6...@pie-element/math-inline-controller@6.1.7) (2024-01-24)
+
+
+### Bug Fixes
+
+* update to pie-lib/pie-toolbox 1.5.7 PD-3404 ([eae668d](https://github.com/pie-framework/pie-elements/commit/eae668d980ef4731af5eceb3e70329b7621a232b))
+
+
+
+
+
+## [6.1.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@6.1.5...@pie-element/math-inline-controller@6.1.6) (2024-01-24)
+
+
+### Bug Fixes
+
+* update to pie-lib/pie-toolbox 1.5.6 to fix issue introduced by fix for PD-3392 ([8d0a33f](https://github.com/pie-framework/pie-elements/commit/8d0a33f51a5ebe442eb824749cb419bf23c44d28))
+
+
+
+
+
+## [6.1.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@6.1.4...@pie-element/math-inline-controller@6.1.5) (2024-01-23)
+
+
+### Bug Fixes
+
+* update to pie-lib/pie-toolbox 1.5.4 for PD-3387, PD-3384, PD-3383, PD-3392 ([2278f9a](https://github.com/pie-framework/pie-elements/commit/2278f9a3fdf1bc89ab590f240d926a857339179e))
+* update to pie-lib/pie-toolbox 1.5.5 for PD-3392 ([d4286e0](https://github.com/pie-framework/pie-elements/commit/d4286e08a060a73e6de098f87173baaaa88cc997))
+
+
+
+
+
+## [6.1.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@6.1.3...@pie-element/math-inline-controller@6.1.4) (2024-01-15)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3366, PD-3367, PD-3381 ([8c9d35f](https://github.com/pie-framework/pie-elements/commit/8c9d35ff6f0dad1a161d6a2dba203a169169e562))
+
+
+
+
+
+## [6.1.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@6.1.2...@pie-element/math-inline-controller@6.1.3) (2024-01-08)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-2068, PD-2060 ([b63f783](https://github.com/pie-framework/pie-elements/commit/b63f78371452e265f31f721dcfa5f8ba9789089c))
+* update pie-lib/pie-toolbox PD-3352 ([c40c326](https://github.com/pie-framework/pie-elements/commit/c40c326209315b57ce8da802b8e00616256e3bd6))
+* update pie-lib/pie-toolbox SC-27396, SC-27398 ([658a553](https://github.com/pie-framework/pie-elements/commit/658a55358181271b508f7d550467eefadcd71544))
+
+
+
+
+
+## [6.1.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@6.1.1...@pie-element/math-inline-controller@6.1.2) (2024-01-08)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3352,PD-3348, PD-3296 ([48b1952](https://github.com/pie-framework/pie-elements/commit/48b1952831835ead598b692abb3d492ec9adb564))
+
+
+
+
+
+## [6.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@6.1.0...@pie-element/math-inline-controller@6.1.1) (2024-01-04)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-2068, PD-2060 ([e918850](https://github.com/pie-framework/pie-elements/commit/e9188502ffeaefe41bf0f23895d4bb2daf839364))
+* update pie-lib/pie-toolbox PD-3037 ([b2f689a](https://github.com/pie-framework/pie-elements/commit/b2f689a416c2c39d7ed423a22db02dd32415ba82))
+
+
+
+
+
+# [6.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@6.0.3...@pie-element/math-inline-controller@6.1.0) (2023-12-19)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-2068 ([34eccd5](https://github.com/pie-framework/pie-elements/commit/34eccd52c44259eddf3e2b816b00b82f83bc2bf8))
+
+
+### Features
+
+* update pie-lib/pie-toolbox PD-2555 ([86d4fd9](https://github.com/pie-framework/pie-elements/commit/86d4fd909180dd1fcbc446bd8b29c23af21a1c69))
+* update pie-lib/pie-toolbox PD-3307, PD-2067, PD-3271, PD-3041, PD-2068 ([2eabcbd](https://github.com/pie-framework/pie-elements/commit/2eabcbd036e318bb24552f4140ca7384ad865951))
+
+
+
+
+
+## [6.0.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@6.0.2...@pie-element/math-inline-controller@6.0.3) (2023-11-27)
+
+
+### Bug Fixes
+
+* update pie-lib ([74283d7](https://github.com/pie-framework/pie-elements/commit/74283d71b12ab9c82875ce995368e5e39f4face6))
+
+
+
+
+
+## [6.0.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@6.0.1...@pie-element/math-inline-controller@6.0.2) (2023-11-27)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-597 ([1ec84aa](https://github.com/pie-framework/pie-elements/commit/1ec84aadae515088ef65b99f780a5e5dca516f99))
+* update pie-libs PD-2996 ([cd092c6](https://github.com/pie-framework/pie-elements/commit/cd092c6b5c4db91645394cd23febc1f9a07f46f9))
+
+
+
+
+
+## [6.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@6.0.0...@pie-element/math-inline-controller@6.0.1) (2023-11-09)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3221, PD-3249, PD-2765 ([9de1563](https://github.com/pie-framework/pie-elements/commit/9de1563d636983c3ddceee0279c0709d396d4f96))
+
+
+
+
+
+# [6.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@5.9.1...@pie-element/math-inline-controller@6.0.0) (2023-11-07)
+
+
+### Bug Fixes
+
+* update pie-lib version to fix imports for pie-lib/pie-toolbox/editable-html ([a90cbf6](https://github.com/pie-framework/pie-elements/commit/a90cbf6be81824e7266df23c2dc49b259337c1b6))
+* update pie-lib/pie-toolbox version ([212cbfa](https://github.com/pie-framework/pie-elements/commit/212cbfad27b29f0b1b2a3706ba82f6fb59147001))
+* update pie-lib/pie-toolbox version ([b791e10](https://github.com/pie-framework/pie-elements/commit/b791e10857928766e2d73c6aa80b3fb50fd1afac))
+* update pie-lib/pie-toolbox version ([7f64f9f](https://github.com/pie-framework/pie-elements/commit/7f64f9f2b874fd08bd8f6f05c1c4292c34ac6338))
+
+
+### Code Refactoring
+
+* replaced all pie-lib packages with the new pie-toolbox package that contains all of them. ([073d7e5](https://github.com/pie-framework/pie-elements/commit/073d7e5175f7a73069f09d2ceda799682acce494))
+
+
+### BREAKING CHANGES
+
+* using pie-lib/pie-toolbox now, instead of any other pie-lib package.
+
+
+
+
+
+## [5.9.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@5.9.0...@pie-element/math-inline-controller@5.9.1) (2023-09-25)
+
+
+### Bug Fixes
+
+* update pie-libs PD-3167, PD-3105, PD-3162, PD-2765 ([26199b2](https://github.com/pie-framework/pie-elements/commit/26199b255ddbcb9255f2769091c7ba58f8b1dae0))
+
+
+
+
+
+# [5.9.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@5.8.6...@pie-element/math-inline-controller@5.9.0) (2023-08-15)
+
+
+### Bug Fixes
+
+* conflicts with develop ([eb27ce2](https://github.com/pie-framework/pie-elements/commit/eb27ce2d4005a64d66caf311f5349d7e7ad30950))
+
+
+### Features
+
+* **math-inline:** add note logic for translations PD-2802 ([ed83f78](https://github.com/pie-framework/pie-elements/commit/ed83f783b255b1045b485a60ac673003ae1265a6))
+* **math-inline:** add translator PD-2795 PD-2802 ([2ab3ce9](https://github.com/pie-framework/pie-elements/commit/2ab3ce99c43d937d8cd5e6dd1925f0d89c74c537))
+* **math-inline:** small tweaks PD-2802 ([d48b2f9](https://github.com/pie-framework/pie-elements/commit/d48b2f914efa1580cc18ef2b1a98a90a29479e92))
+* **math-inline:** wip PD-2802 ([ba331be](https://github.com/pie-framework/pie-elements/commit/ba331be2e3cd58ce069a8a85e582318675325e40))
+
+
+
+
+
+## [5.8.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@5.8.5...@pie-element/math-inline-controller@5.8.6) (2023-07-06)
+
+
+### Bug Fixes
+
+* updated editable-html dependent packages for PD-2150 ([ffa6297](https://github.com/pie-framework/pie-elements/commit/ffa62977a9e329c1e12ea1dfcb2af4ba4c993bca))
+
+
+
+
+
+## [5.8.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@5.8.4...@pie-element/math-inline-controller@5.8.5) (2023-05-23)
+
+
+### Bug Fixes
+
+* **math-inline:** show note when multiple responses are defined PD-2044 ([20360e1](https://github.com/pie-framework/pie-elements/commit/20360e1536a7d972cec5da656e506dd25abe127e))
+
+
+
+
+
+## [5.8.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@5.8.3...@pie-element/math-inline-controller@5.8.4) (2023-05-02)
+
+
+### Bug Fixes
+
+* update pie-libs (fix eslint problems PD-2732) ([3fa630e](https://github.com/pie-framework/pie-elements/commit/3fa630eb96b116cb685ab58fbf216fb572d1c333))
+* **math-inline:** enable custom keys in advanced multi PD-1865 ([d7f29de](https://github.com/pie-framework/pie-elements/commit/d7f29def38bf6db8023fa8fe178964f022b89855))
+* **pie-elements:** avoid logs pbs and add fragments as containers ([b4bd2b7](https://github.com/pie-framework/pie-elements/commit/b4bd2b7f994d7affdac443bd486047e5a629b763))
+
+
+
+
+
+## [5.8.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@5.8.2...@pie-element/math-inline-controller@5.8.3) (2023-04-25)
+
+
+### Bug Fixes
+
+* update pie-libs PD-2762 ([7ac4313](https://github.com/pie-framework/pie-elements/commit/7ac431346b822fe3bbb0d13375f044f6ce1f426b))
+
+
+
+
+
+## [5.8.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@5.8.1...@pie-element/math-inline-controller@5.8.2) (2023-04-10)
+
+
+### Bug Fixes
+
+* **all elements:** fix eslint problems-PD-2732 ([eaeabfb](https://github.com/pie-framework/pie-elements/commit/eaeabfbbe3a868a1f9828ef831a7ea864dee75a9))
+* **math-inline:** remove trailling escape from correct createCorrectResponseSession return answer value PD-2727 ([af9fd9d](https://github.com/pie-framework/pie-elements/commit/af9fd9ddaa6e5283820e0970c464f8ad94a37499))
+
+
+
+
+
+## [5.8.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@5.8.0...@pie-element/math-inline-controller@5.8.1) (2023-02-14)
+
+
+### Bug Fixes
+
+* **math-inline:** set feedback false if it is not defined - PD-2509 ([7c19513](https://github.com/pie-framework/pie-elements/commit/7c19513f94d510f769092a4f7dddf42fd3551a8d))
+
+
+
+
+
+# [5.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@5.7.0...@pie-element/math-inline-controller@5.8.0) (2023-02-01)
+
+
+### Features
+
+* update pie-libs ([0af590d](https://github.com/pie-framework/pie-elements/commit/0af590d624f4b2c0af58039e935531cef52e2a86))
+
+
+
+
+
+# [5.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@5.6.9...@pie-element/math-inline-controller@5.7.0) (2022-12-07)
+
+
+### Bug Fixes
+
+* update libs ([441f403](https://github.com/pie-framework/pie-elements/commit/441f403870b7bec0d61fab58b8d93dbe0ead4c32))
+
+
+### Features
+
+* **math-inline:** added configurable validation PD-1704 ([9275fb0](https://github.com/pie-framework/pie-elements/commit/9275fb0a13df7872706b17d61945854d9c6b93a2))
+* **math-inline:** implement ui/ux for validation PD-1705 ([74b9682](https://github.com/pie-framework/pie-elements/commit/74b968278cbe07fffd6979889bae91d137d334c3))
+
+
+
+
+
+## [5.6.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@5.6.8...@pie-element/math-inline-controller@5.6.9) (2022-05-16)
+
+**Note:** Version bump only for package @pie-element/math-inline-controller
+
+
+
+
+
+## [5.6.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@5.6.7...@pie-element/math-inline-controller@5.6.8) (2022-03-28)
+
+**Note:** Version bump only for package @pie-element/math-inline-controller
+
+
+
+
+
+## [5.6.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@5.6.6...@pie-element/math-inline-controller@5.6.7) (2022-03-22)
+
+**Note:** Version bump only for package @pie-element/math-inline-controller
+
+
+
+
+
+## [5.6.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@5.6.5...@pie-element/math-inline-controller@5.6.6) (2022-03-08)
+
+**Note:** Version bump only for package @pie-element/math-inline-controller
+
+
+
+
+
 ## [5.6.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@5.6.1...@pie-element/math-inline-controller@5.6.2) (2021-11-29)
 
 **Note:** Version bump only for package @pie-element/math-inline-controller

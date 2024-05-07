@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import debounce from 'lodash/debounce';
 import Main from './main';
-import { renderMath } from '@pie-lib/math-rendering';
+import { renderMath } from '@pie-lib/pie-toolbox/math-rendering-accessible';
 import debug from 'debug';
 
 const log = debug('pie-element:select-text:print');
@@ -19,7 +19,8 @@ const preparePrintModel = (model, opts) => {
   const instr = opts.role === 'instructor';
 
   model.prompt = model.promptEnabled !== false ? model.prompt : undefined;
-  model.teacherInstructions = instr && model.teacherInstructionsEnabled !== false ? model.teacherInstructions : undefined;
+  model.teacherInstructions =
+    instr && model.teacherInstructionsEnabled !== false ? model.teacherInstructions : undefined;
   model.rationale = instr && model.rationaleEnabled !== false ? model.rationale : undefined;
   model.showTeacherInstructions = instr;
   model.alwaysShowCorrect = instr;
@@ -49,7 +50,8 @@ export default class SelectTextPrint extends HTMLElement {
             this._options &&
             React.createElement(Main, {
               model: printModel,
-              session: { selectedTokens: [] }
+              session: { selectedTokens: [] },
+              onSelectionChange: () => {},
             });
 
           ReactDOM.render(element, this, () => {
@@ -61,7 +63,7 @@ export default class SelectTextPrint extends HTMLElement {
         }
       },
       50,
-      { leading: false, trailing: true }
+      { leading: false, trailing: true },
     );
   }
   set options(o) {

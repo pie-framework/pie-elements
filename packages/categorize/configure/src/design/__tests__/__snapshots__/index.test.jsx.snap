@@ -1,28 +1,46 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Design snapshot renders 1`] = `
-<mockConstructor
+<ContextProvider
   value="1"
 >
   <ConfigLayout
+    dimensions={Object {}}
     settings={
       <Panel
         groups={
           Object {
             "Properties": Object {
               "rationaleEnabled": undefined,
+              "rubricEnabled": undefined,
               "scoringType": undefined,
+              "spellCheckEnabled": undefined,
               "studentInstructionsEnabled": undefined,
               "teacherInstructionsEnabled": undefined,
             },
             "Settings": Object {
+              "allowMaxChoicesPerCategory": undefined,
+              "allowMultiplePlacementsEnabled": undefined,
+              "categoriesPerRow": undefined,
+              "choicesPosition": undefined,
               "feedbackEnabled": undefined,
+              "language": undefined,
+              "language.enabled": undefined,
               "lockChoiceOrder": undefined,
+              "maxChoicesPerCategory": false,
               "partialScoring": undefined,
               "promptEnabled": undefined,
             },
           }
         }
+        modal={
+          <UNDEFINED
+            onClose={[Function]}
+            open={false}
+            text="To change this value to , each category must have  or fewer answer choice[s]."
+            title="Warning"
+          />
+        }
         model={
           Object {
             "categories": Array [
@@ -33,6 +51,7 @@ exports[`Design snapshot renders 1`] = `
             ],
             "choices": Array [
               Object {
+                "categoryCount": 0,
                 "content": "content",
                 "correctResponseCount": 1,
                 "id": "1",
@@ -48,109 +67,103 @@ exports[`Design snapshot renders 1`] = `
             ],
           }
         }
-        onChangeModel={[MockFunction]}
+        onChangeModel={[Function]}
       />
     }
   >
-    <div
-      className="design className"
-    >
-      <WithStyles(Categories)
-        categories={
-          Array [
-            Object {
-              "choices": Array [
-                Object {
-                  "content": "content",
-                  "id": "1",
-                },
-              ],
-              "id": "1",
-              "label": "Category Title",
-            },
-          ]
-        }
-        model={
+    <WithStyles(Categories)
+      categories={
+        Array [
           Object {
-            "categories": Array [
-              Object {
-                "id": "1",
-                "label": "Category Title",
-              },
-            ],
             "choices": Array [
               Object {
                 "content": "content",
-                "correctResponseCount": 1,
                 "id": "1",
               },
             ],
-            "correctResponse": Array [
-              Object {
-                "category": "1",
-                "choices": Array [
-                  "1",
-                ],
-              },
-            ],
-          }
-        }
-        onModelChanged={[Function]}
-        toolbarOpts={
-          Object {
-            "position": "bottom",
-          }
-        }
-      />
-      <WithStyles(Header)
-        buttonLabel="ADD AN ALTERNATE RESPONSE"
-        label="Alternate Responses"
-        onAdd={[Function]}
-      />
-      <WithStyles(Component) />
-      <WithStyles(Choices)
-        choices={
-          Array [
+            "id": "1",
+            "label": "Category Title",
+          },
+        ]
+      }
+      mathMlOptions={Object {}}
+      model={
+        Object {
+          "categories": Array [
             Object {
+              "id": "1",
+              "label": "Category Title",
+            },
+          ],
+          "choices": Array [
+            Object {
+              "categoryCount": 0,
               "content": "content",
               "correctResponseCount": 1,
               "id": "1",
             },
-          ]
+          ],
+          "correctResponse": Array [
+            Object {
+              "category": "1",
+              "choices": Array [
+                "1",
+              ],
+            },
+          ],
         }
-        model={
+      }
+      onModelChanged={[Function]}
+      toolbarOpts={
+        Object {
+          "position": "bottom",
+        }
+      }
+    />
+    <WithStyles(Choices)
+      choices={
+        Array [
           Object {
-            "categories": Array [
-              Object {
-                "id": "1",
-                "label": "Category Title",
-              },
-            ],
-            "choices": Array [
-              Object {
-                "content": "content",
-                "correctResponseCount": 1,
-                "id": "1",
-              },
-            ],
-            "correctResponse": Array [
-              Object {
-                "category": "1",
-                "choices": Array [
-                  "1",
-                ],
-              },
-            ],
-          }
+            "categoryCount": 0,
+            "content": "content",
+            "correctResponseCount": 1,
+            "id": "1",
+          },
+        ]
+      }
+      model={
+        Object {
+          "categories": Array [
+            Object {
+              "id": "1",
+              "label": "Category Title",
+            },
+          ],
+          "choices": Array [
+            Object {
+              "categoryCount": 0,
+              "content": "content",
+              "correctResponseCount": 1,
+              "id": "1",
+            },
+          ],
+          "correctResponse": Array [
+            Object {
+              "category": "1",
+              "choices": Array [
+                "1",
+              ],
+            },
+          ],
         }
-        onModelChanged={[Function]}
-        toolbarOpts={
-          Object {
-            "position": "bottom",
-          }
+      }
+      onModelChanged={[Function]}
+      toolbarOpts={
+        Object {
+          "position": "bottom",
         }
-      />
-    </div>
+      }
+    />
   </ConfigLayout>
-</mockConstructor>
+</ContextProvider>
 `;

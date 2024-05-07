@@ -4,7 +4,7 @@ import debug from 'debug';
 import Main from './main';
 
 import { SessionChangedEvent } from '@pie-framework/pie-player-events';
-import { renderMath } from '@pie-lib/math-rendering';
+import { renderMath } from '@pie-lib/pie-toolbox/math-rendering-accessible';
 
 const log = debug('pie-ui:graph-lines');
 
@@ -19,11 +19,11 @@ export const isComplete = (session, model) => {
   let complete = true;
 
   if (value) {
-    (model.config.prompts || []).forEach(prompt => {
+    (model.config.prompts || []).forEach((prompt) => {
       if (!Number.isFinite(value[prompt.id])) {
         complete = false;
       }
-    })
+    });
   }
 
   return complete;
@@ -44,15 +44,14 @@ export default class MatchList extends HTMLElement {
     this._render();
   }
 
+  get session() {
+    return this._session;
+  }
+
   sessionChanged(s) {
     this._session.value = s.value;
 
-    this.dispatchEvent(
-      new SessionChangedEvent(
-        this.tagName.toLowerCase(),
-        isComplete(this._session, this._model)
-      )
-    );
+    this.dispatchEvent(new SessionChangedEvent(this.tagName.toLowerCase(), isComplete(this._session, this._model)));
 
     log('session: ', this._session);
     this._render();
@@ -70,7 +69,7 @@ export default class MatchList extends HTMLElement {
     const el = React.createElement(Main, {
       model: this._model,
       session: this._session,
-      onSessionChange: this.sessionChanged.bind(this)
+      onSessionChange: this.sessionChanged.bind(this),
     });
 
     ReactDOM.render(el, this, () => {

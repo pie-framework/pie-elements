@@ -15,9 +15,9 @@ describe('Possible Response', () => {
         containerStyle: {},
         data: {},
         onDragBegin: jest.fn(),
-        onDragEnd: jest.fn()
+        onDragEnd: jest.fn(),
       },
-      opts
+      opts,
     );
 
     return shallow(<PossibleResponse {...opts} />);

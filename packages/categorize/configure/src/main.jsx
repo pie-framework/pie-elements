@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import classNames from 'classnames';
 import Design from './design';
 
 export class Main extends React.Component {
@@ -12,37 +11,29 @@ export class Main extends React.Component {
     onConfigurationChanged: PropTypes.func,
     model: PropTypes.object.isRequired,
     onModelChanged: PropTypes.func.isRequired,
-    imageSupport: PropTypes.object
+    imageSupport: PropTypes.object,
+    uploadSoundSupport: PropTypes.object,
   };
 
   static defaultProps = {};
 
   render() {
-    const {
-      classes,
-      className,
-      model,
-      onModelChanged,
-      configuration,
-      onConfigurationChanged
-    } = this.props;
+    const { model, onModelChanged, configuration, onConfigurationChanged, imageSupport, uploadSoundSupport } =
+      this.props;
 
     return (
-      <div className={classNames(classes.main, className)}>
-        <Design
-          imageSupport={this.props.imageSupport}
-          title="Design"
-          model={model}
-          configuration={configuration}
-          onChange={onModelChanged}
-          onConfigurationChanged={onConfigurationChanged}
-        />
-      </div>
+      <Design
+        imageSupport={imageSupport}
+        uploadSoundSupport={uploadSoundSupport}
+        title="Design"
+        model={model}
+        configuration={configuration}
+        onChange={onModelChanged}
+        onConfigurationChanged={onConfigurationChanged}
+      />
     );
   }
 }
-const styles = () => ({
-  main: {}
-});
+const styles = () => ({});
 
 export default withStyles(styles)(Main);

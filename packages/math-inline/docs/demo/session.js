@@ -7,5 +7,5 @@ module.exports = [
     //   r2: { value: '2' }
     // },
     // completeAnswer: '72\\div12=6',
-  }
+  },
 ];

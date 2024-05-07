@@ -2,9 +2,10 @@ version: 2
 
 defaults: &defaults
   docker:
-    - image: cimg/node:14.17.4
+    - image: cimg/node:18.12
       environment:
         - NODE_OPTIONS=--max_old_space_size=4096
+  resource_class: medium+
   working_directory: ~/repo
 
 save_src_cache: &save_src_cache
@@ -101,7 +102,8 @@ workflows:
           filters:
             branches:
               only:
-                - develop
+                - feat/PD-1886-testing
+#                - develop
 
   release:
     jobs:

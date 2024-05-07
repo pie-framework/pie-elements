@@ -8,26 +8,26 @@ exports.model = (id, element) => ({
     {
       correct: true,
       value: 'sweden',
-      label: 'Sweden'
+      label: 'Sweden',
     },
     {
       value: 'iceland',
       label: 'Iceland',
       feedback: {
-        type: 'default'
-      }
+        type: 'default',
+      },
     },
     {
       value: 'norway',
-      label: 'Norway'
+      label: 'Norway',
     },
     {
       value: 'finland',
       label: 'Finland',
       feedback: {
         type: 'custom',
-        value: 'Nokia was founded in Finland.'
-      }
-    }
-  ]
+        value: 'Nokia was founded in Finland.',
+      },
+    },
+  ],
 });

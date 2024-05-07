@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/likert-controller@0.0.15...@pie-element/likert-controller@0.1.0) (2024-03-28)
+
+
+### Features
+
+* **likert:** add required fields functionality PD-3595 ([629eb63](https://github.com/pie-framework/pie-elements/commit/629eb633c074156286a47239c5a5d29e796b4c16))
+
+
+
+
+
+## [0.0.15](https://github.com/pie-framework/pie-elements/compare/@pie-element/likert-controller@0.0.14...@pie-element/likert-controller@0.0.15) (2022-12-07)
+
+**Note:** Version bump only for package @pie-element/likert-controller
+
+
+
+
+
 ## [0.0.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/likert-controller@0.0.9...@pie-element/likert-controller@0.0.11) (2021-11-11)
 
 **Note:** Version bump only for package @pie-element/likert-controller

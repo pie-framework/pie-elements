@@ -8,50 +8,50 @@ import AddLineButton from './add-line';
 import { withStyles } from '@material-ui/core/styles';
 import EditableHtml from '@pie-lib/editable-html';
 
-const styles = theme => ({
+const styles = (theme) => ({
   container: {
     marginTop: theme.spacing.unit * 2,
     display: 'flex',
-    flexDirection: 'column'
+    flexDirection: 'column',
   },
   inputContainer: {
     display: 'flex',
     alignItems: 'center',
     marginTop: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit * 2
+    marginBottom: theme.spacing.unit * 2,
   },
   inputItem: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    flex: 1
+    flex: 1,
   },
   exhibitOnly: {
     flex: 'initial',
-    width: '50%'
+    width: '50%',
   },
   input: {
-    width: '90%'
+    width: '90%',
   },
   prompt: {
-    paddingTop: theme.spacing.unit * 2
+    paddingTop: theme.spacing.unit * 2,
   },
   rationale: {
-    paddingTop: theme.spacing.unit * 2
+    paddingTop: theme.spacing.unit * 2,
   },
   equationLabel: {
-    marginRight: theme.spacing.unit
+    marginRight: theme.spacing.unit,
   },
   checkboxContainer: {
     display: 'flex',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
   },
   optionsCheckbox: {
     flex: 1,
     display: 'flex',
     flexWrap: 'wrap',
-    justifyContent: 'space-between'
-  }
+    justifyContent: 'space-between',
+  },
 });
 
 export class GeneralConfigBlock extends React.Component {
@@ -67,16 +67,17 @@ export class GeneralConfigBlock extends React.Component {
     prompt: PropTypes.string,
     rationale: PropTypes.string,
     imageSupport: PropTypes.object,
+    uploadSoundSupport: PropTypes.object,
     onRationaleChange: PropTypes.func,
     promptEnabled: PropTypes.bool,
-    rationaleEnabled: PropTypes.bool
+    rationaleEnabled: PropTypes.bool,
   };
 
   static defaultProps = {
-    configuration: {}
+    configuration: {},
   };
 
-  onChange = (name, isBoolean) => event => {
+  onChange = (name, isBoolean) => (event) => {
     const { config, onChange } = this.props;
     const newConfig = { ...config };
 
@@ -85,7 +86,7 @@ export class GeneralConfigBlock extends React.Component {
     onChange(newConfig, name);
   };
 
-  onLineChange = (lineIndex, name) => event => {
+  onLineChange = (lineIndex, name) => (event) => {
     const { config, onChange } = this.props;
     const newConfig = { ...config };
 
@@ -105,13 +106,13 @@ export class GeneralConfigBlock extends React.Component {
       rationale,
       prompt,
       imageSupport,
+      uploadSoundSupport,
       onPromptChange,
       onRationaleChange,
       promptEnabled,
-      rationaleEnabled
+      rationaleEnabled,
     } = this.props;
-    const { rationale: cRationale = {}, prompt: cPrompt = {} } =
-      configuration || {};
+    const { rationale: cRationale = {}, prompt: cPrompt = {} } = configuration || {};
 
     return (
       <div className={classes.container}>
@@ -122,6 +123,7 @@ export class GeneralConfigBlock extends React.Component {
               markup={prompt || ''}
               onChange={onPromptChange}
               imageSupport={imageSupport}
+              uploadSoundSupport={uploadSoundSupport}
             />
           </InputContainer>
         )}
@@ -157,7 +159,7 @@ export class GeneralConfigBlock extends React.Component {
 
             <div
               className={classnames(classes.inputItem, {
-                [classes.exhibitOnly]: config.exhibitOnly
+                [classes.exhibitOnly]: config.exhibitOnly,
               })}
             >
               <Typography type="body1">
@@ -178,11 +180,7 @@ export class GeneralConfigBlock extends React.Component {
         {multiple && <AddLineButton onAddClick={onAddLine} />}
         <div className={classes.checkboxContainer}>
           <div className={classes.optionsCheckbox}>
-            <InputCheckbox
-              label="Multiple Line Graph"
-              checked={multiple}
-              onChange={onMultipleToggle}
-            />
+            <InputCheckbox label="Multiple Line Graph" checked={multiple} onChange={onMultipleToggle} />
           </div>
           <div className={classes.optionsCheckbox}>
             <InputCheckbox
@@ -199,6 +197,7 @@ export class GeneralConfigBlock extends React.Component {
               markup={rationale || ''}
               onChange={onRationaleChange}
               imageSupport={imageSupport}
+              uploadSoundSupport={uploadSoundSupport}
             />
           </InputContainer>
         )}

@@ -77,39 +77,81 @@
 //   toolbarTools: ['line']
 // };
 
-exports.model = (id, element) => ({
-  id,
-  element,
+const SCmodel = {
+  promptEnabled: true,
+  domain: { min: -10, max: 10, step: 1, labelStep: 1, axisLabel: 'x' },
+  range: { min: -10, max: 10, step: 1, labelStep: 1, axisLabel: 'y' },
+  backgroundMarks: [],
+  answers: { correctAnswer: { name: 'Correct Answer', marks: [] } },
+  arrows: { left: true, right: true, up: true, down: true },
+  defaultGridConfiguration: 0,
+  graph: { width: 480, height: 480 },
+  includeAxes: true,
+  labels: {},
+  labelsEnabled: true,
+  padding: true,
+  prompt: '',
+  rationale: '',
+  standardGrid: true,
+  title: '',
+  toolbarTools: [
+    'circle',
+    'line',
+    'label',
+    'parabola',
+    'point',
+    'polygon',
+    'ray',
+    'segment',
+    'sine',
+    'vector',
+    'absolute',
+    'exponential',
+  ],
+  coordinatesOnHover: false,
+  rationaleEnabled: false,
+  teacherInstructionsEnabled: false,
+  studentInstructionsEnabled: false,
+  defaultTool: 'line',
+  titleEnabled: true,
+  dimensionsEnabled: true,
+};
+
+const oldModel = {
   answers: {
     correctAnswer: {
       name: 'Correct Answer',
-      marks: [{
-        type: 'point',
-        x: 0,
-        y: 0
-      }]
+      marks: [
+        {
+          type: 'point',
+          x: 0,
+          y: 0,
+        },
+      ],
     },
     alternate1: {
       name: 'Alternate 1',
-      marks: [{
-        type: 'segment',
-        from: { x: 0, y: 0 },
-        to: { x: 1, y: 1 },
-      },
+      marks: [
+        {
+          type: 'segment',
+          from: { x: 0, y: 0 },
+          to: { x: 1, y: 1 },
+        },
         {
           type: 'point',
           x: 3,
           y: 3,
           label: 'Point',
-          showLabel: true
-        }]
-    }
+          showLabel: true,
+        },
+      ],
+    },
   },
   arrows: {
     left: true,
     right: true,
     up: true,
-    down: true
+    down: true,
   },
   backgroundMarks: [
     {
@@ -117,8 +159,8 @@ exports.model = (id, element) => ({
       x: 2,
       y: 2,
       label: 'Point',
-      showLabel: true
-    }
+      showLabel: true,
+    },
   ],
   domain: {
     min: -10,
@@ -126,11 +168,12 @@ exports.model = (id, element) => ({
     padding: 0,
     step: 1,
     labelStep: 1,
-    axisLabel: 'x'
+    axisLabel: 'x',
   },
+  defaultTool: 'point',
   graph: {
     width: 480,
-    height: 480
+    height: 480,
   },
   coordinatesOnHover: false,
   labels: { top: 'top', left: 'left', bottom: 'bottom', right: 'right' },
@@ -143,8 +186,15 @@ exports.model = (id, element) => ({
     padding: 0,
     step: 1,
     labelStep: 1,
-    axisLabel: 'y'
+    axisLabel: 'y',
   },
   rationale: 'Rationale goes here',
   title: 'Graph title',
+  rubricEnabled: false,
+};
+
+exports.model = (id, element) => ({
+  id,
+  element,
+  ...oldModel,
 });

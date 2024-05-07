@@ -1,12 +1,11 @@
 import React from 'react';
 import { Text } from 'react-konva';
+import Translator from '@pie-lib/pie-toolbox/translator';
 
+const { translator } = Translator;
 import Transformer from './drawable-transformer';
 
-export const generateId = () =>
-  Math.random()
-    .toString(36)
-    .substring(2) + new Date().getTime().toString(36);
+export const generateId = () => Math.random().toString(36).substring(2) + new Date().getTime().toString(36);
 
 export default class TextDrawable {
   static getTextareaNode(id) {
@@ -26,22 +25,21 @@ export default class TextDrawable {
     this.eventListenersDetachArray = [];
   }
 
-  removeEventListeners = () =>
-    this.eventListenersDetachArray.forEach(fn => fn());
+  removeEventListeners = () => this.eventListenersDetachArray.forEach((fn) => fn());
 
-  setAll = all => {
+  setAll = (all) => {
     this.all = all;
     this.props.forceUpdate();
   };
 
-  addNewTextEntry = () => {
+  addNewTextEntry = (language) => {
     const all = this.all;
     const id = generateId();
 
     all.push({
       id: id,
       isDefault: true,
-      label: 'Double click to edit this text. Press Enter to submit.',
+      label: translator.t('drawingResponse.onDoubleClick', { lng: language }),
       width: 200,
       x: (all.length + 1) * 5 + 50,
       y: (all.length + 1) * 5 + 50,
@@ -49,14 +47,14 @@ export default class TextDrawable {
       transformerVisible: true,
       textareaVisible: false,
       createdAt: new Date(),
-      type: 'text-entry'
+      type: 'text-entry',
     });
 
     this.props.handleSessionChange();
   };
 
   showOnlyTextNodes() {
-    this.all.map(item => {
+    this.all.map((item) => {
       item.textVisible = true;
       item.transformerVisible = false;
       item.textareaVisible = false;
@@ -64,13 +62,13 @@ export default class TextDrawable {
   }
 
   toggleTextarea(id, value) {
-    this.all = this.all.map(item => {
+    this.all = this.all.map((item) => {
       if (item.id === id) {
         return {
           ...item,
           textVisible: !value,
           transformerVisible: !value,
-          textareaVisible: value
+          textareaVisible: value,
         };
       }
       return item;
@@ -80,7 +78,7 @@ export default class TextDrawable {
 
   initializeDefault(id, isDefault) {
     if (isDefault) {
-      const current = this.all.filter(item => item.id === id)[0];
+      const current = this.all.filter((item) => item.id === id)[0];
       current.isDefault = false;
     }
   }
@@ -89,7 +87,7 @@ export default class TextDrawable {
     if (textareaNode.value) {
       textNode.text(textareaNode.value);
     } else {
-      this.all = this.all.filter(text => text.id !== id);
+      this.all = this.all.filter((text) => text.id !== id);
       this.props.forceUpdate();
     }
 
@@ -100,7 +98,7 @@ export default class TextDrawable {
   handleMouseUp = () => this.props.toggleTextSelected(false);
 
   handleClick = (e, id) => {
-    const current = this.all.filter(item => item.id === id)[0];
+    const current = this.all.filter((item) => item.id === id)[0];
     current.transformerVisible = true;
     this.props.forceUpdate();
   };
@@ -119,8 +117,7 @@ export default class TextDrawable {
     textareaNode.style.top = areaPosition.y + 'px';
     textareaNode.style.left = areaPosition.x + 'px';
     textareaNode.style.width = textNode.width() - textNode.padding() * 2 + 'px';
-    textareaNode.style.height =
-      textNode.height() - textNode.padding() * 2 + 5 + 'px';
+    textareaNode.style.height = textNode.height() - textNode.padding() * 2 + 5 + 'px';
     textareaNode.style.fontSize = textNode.fontSize() + 'px';
     textareaNode.style.border = 'none';
     textareaNode.style.padding = '0px';
@@ -156,7 +153,7 @@ export default class TextDrawable {
 
     textareaNode.focus();
 
-    const keyDownHandler = e => {
+    const keyDownHandler = (e) => {
       // hide on enter but don't hide on shift + enter
       if (e.keyCode === 13 && !e.shiftKey) {
         this.toggleTextarea(id, false);
@@ -171,9 +168,7 @@ export default class TextDrawable {
 
     textareaNode.addEventListener('keydown', keyDownHandler);
 
-    this.eventListenersDetachArray.push(() =>
-      textareaNode.removeEventListener('keydown', keyDownHandler)
-    );
+    this.eventListenersDetachArray.push(() => textareaNode.removeEventListener('keydown', keyDownHandler));
 
     const blurHandler = () => {
       this.showOnlyTextNodes();
@@ -182,9 +177,7 @@ export default class TextDrawable {
 
     textareaNode.addEventListener('blur', blurHandler);
 
-    this.eventListenersDetachArray.push(() =>
-      textareaNode.removeEventListener('blur', blurHandler)
-    );
+    this.eventListenersDetachArray.push(() => textareaNode.removeEventListener('blur', blurHandler));
 
     this.initializeDefault(id, isDefault);
     this.props.forceUpdate();
@@ -193,19 +186,19 @@ export default class TextDrawable {
   handleTransform = (e, textNode) => {
     this[textNode].setAttrs({
       width: this[textNode].width() * this[textNode].scaleX(),
-      scaleX: 1
+      scaleX: this.props.scale,
     });
   };
 
   renderTextareas() {
-    return this.all.map(text => {
+    return this.all.map((text) => {
       const { id, textareaVisible } = text;
       const textareaNode = `textarea_${id}`;
 
       return (
         <textarea
           key={textareaNode}
-          ref={textarea => {
+          ref={(textarea) => {
             this[textareaNode] = textarea;
           }}
           style={{ display: `${textareaVisible ? 'block' : 'none'}` }}
@@ -228,7 +221,7 @@ export default class TextDrawable {
 
       // setting the handler only once
       if (newStage !== this.stage) {
-        const stageClickHandler = e => {
+        const stageClickHandler = (e) => {
           if (e.target !== this.stage) {
             return;
           }
@@ -239,25 +232,14 @@ export default class TextDrawable {
 
         newStage.on('click', stageClickHandler);
 
-        this.eventListenersDetachArray.push(() =>
-          newStage.off('click', stageClickHandler)
-        );
+        this.eventListenersDetachArray.push(() => newStage.off('click', stageClickHandler));
       }
 
       this.stage = newStage;
     }
 
-    return this.all.map(text => {
-      const {
-        id,
-        label,
-        x,
-        y,
-        width,
-        textVisible,
-        rotation,
-        transformerVisible
-      } = text;
+    return this.all.map((text) => {
+      const { id, label, x, y, width, textVisible, rotation, transformerVisible } = text;
 
       const textNode = `text_${id}`;
       const transformerNode = `transformer_${id}`;
@@ -265,16 +247,20 @@ export default class TextDrawable {
 
       if (!props.disabled) {
         extraProps = {
-          onClick: e => this.handleClick(e, id),
-          onDblClick: e => this.handleDblClick(e, text),
-          onTransform: e => this.handleTransform(e, textNode),
+          onClick: (e) => this.handleClick(e, id),
+          onTap: (e) => this.handleClick(e, id),
+          onDblClick: (e) => this.handleDblClick(e, text),
+          onDblTap: (e) => this.handleDblClick(e, text),
+          onTransform: (e) => this.handleTransform(e, textNode),
           onTransformEnd: this.props.handleSessionChange,
           onMouseDown: this.handleMouseDown,
+          onTouchStart: this.handleMouseDown,
           onMouseUp: this.handleMouseUp,
+          onTouchEnd: this.handleMouseUp,
           onDragEnd: this.props.handleSessionChange,
           onMouseEnter: this.props.onMouseOverElement,
           onMouseLeave: this.props.onMouseOutElement,
-        }
+        };
       }
 
       if (rotation) {
@@ -286,7 +272,7 @@ export default class TextDrawable {
           key={id}
           bubbles={true}
           id={id}
-          ref={text => {
+          ref={(text) => {
             this[textNode] = text;
           }}
           text={text.text || label}
@@ -302,14 +288,16 @@ export default class TextDrawable {
         transformerVisible && (
           <Transformer
             key={`transformer_${id}`}
-            ref={text => {
+            ref={(text) => {
               this[transformerNode] = text;
             }}
             selectedShapeName={textNode}
             onMouseDown={this.handleMouseDown}
+            onTouchStart={this.handleMouseDown}
             onMouseUp={this.handleMouseUp}
+            onTouchEnd={this.handleMouseUp}
           />
-        )
+        ),
       ];
     });
   }

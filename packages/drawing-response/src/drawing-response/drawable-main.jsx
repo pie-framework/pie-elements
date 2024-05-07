@@ -6,7 +6,9 @@ import isEqual from 'lodash/isEqual';
 import classnames from 'classnames';
 import { Layer, Stage } from 'react-konva';
 import { withStyles } from '@material-ui/core/styles';
+import Translator from '@pie-lib/pie-toolbox/translator';
 
+const { translator } = Translator;
 import ImageBackground from './drawable-image';
 import Button from './button';
 import factory from './factory';
@@ -17,7 +19,7 @@ export class DrawableMain extends React.Component {
     this.state = {
       drawables: [],
       newDrawable: [],
-      textIsSelected: false
+      textIsSelected: false,
     };
   }
 
@@ -29,27 +31,20 @@ export class DrawableMain extends React.Component {
       if (nextProps.session.drawables) {
         const newDrawables = cloneDeep(nextProps.session.drawables);
         const drawablesString = JSON.stringify(currentDrawables);
-        const sessionDrawableString = JSON.stringify(
-          (newDrawables || []).map(drawable => omit(drawable, 'type'))
-        );
+        const sessionDrawableString = JSON.stringify((newDrawables || []).map((drawable) => omit(drawable, 'type')));
 
         if (drawablesString !== sessionDrawableString) {
           const drawableArray = nextProps.session.drawables;
 
           this.setState({
-            drawables: drawableArray.map(drawable =>
-              factory(drawable.type, drawable)
-            )
+            drawables: drawableArray.map((drawable) => factory(drawable.type, drawable)),
           });
         }
 
-        const currentTexts = TextEntry.all.map(text => ({
+        const currentTexts = TextEntry.all.map((text) => ({
           ...text,
-          ...(TextEntry[`text_${text.id}`] &&
-            TextEntry[`text_${text.id}`].attrs),
-          value:
-            TextEntry[`textarea_${text.id}`] &&
-            TextEntry[`textarea_${text.id}`].value
+          ...(TextEntry[`text_${text.id}`] && TextEntry[`text_${text.id}`].attrs),
+          value: TextEntry[`textarea_${text.id}`] && TextEntry[`textarea_${text.id}`].value,
         }));
 
         if (!isEqual(currentTexts, nextProps.session.texts)) {
@@ -66,20 +61,18 @@ export class DrawableMain extends React.Component {
     const { drawables } = this.state;
 
     const newSession = {
-      drawables: drawables.map(d => d.toJson()),
-      texts: TextEntry.all.map(text => ({
+      drawables: drawables.map((d) => d.toJson()),
+      texts: TextEntry.all.map((text) => ({
         ...text,
         ...(TextEntry[`text_${text.id}`] && TextEntry[`text_${text.id}`].attrs),
-        value:
-          TextEntry[`textarea_${text.id}`] &&
-          TextEntry[`textarea_${text.id}`].value
-      }))
+        value: TextEntry[`textarea_${text.id}`] && TextEntry[`textarea_${text.id}`].value,
+      })),
     };
 
     if (!isEqual(newSession, session)) {
       onSessionChange({
         ...session,
-        ...newSession
+        ...newSession,
       });
     }
   };
@@ -88,57 +81,66 @@ export class DrawableMain extends React.Component {
 
   onMouseOutElement = () => this.setState({ isOver: false });
 
-  handleMouseDown = e => {
+  handleMouseDown = (e) => {
+    // ONLY IF MOBILE?
+    document.body.style.overflow = 'hidden';
+
     const { newDrawable, textIsSelected } = this.state;
-    const { toolActive, fillColor, outlineColor } = this.props;
+    const { toolActive, fillColor, outlineColor, scale } = this.props;
 
     if (newDrawable.length === 0 && !textIsSelected) {
       const { x, y } = e.target.getStage().getPointerPosition();
+
       const newDrawable = factory(toolActive.type, {
-        startx: x,
-        starty: y,
+        startx: x / scale,
+        starty: y / scale,
         fillColor,
         outlineColor,
-        createdAt: new Date()
+        createdAt: new Date(),
       });
 
       this.setState({
-        newDrawable: [newDrawable]
+        newDrawable: [newDrawable],
       });
     }
   };
 
-  handleMouseUp = e => {
+  handleMouseUp = (e) => {
+    // ONLY IF MOBILE?
+    document.body.style.overflow = 'initial';
+
     const { newDrawable, drawables } = this.state;
+    const { scale } = this.props;
 
     if (newDrawable.length === 1) {
       const { x, y } = e.target.getStage().getPointerPosition();
       const drawableToAdd = newDrawable[0];
 
-      drawableToAdd.registerMovement(x, y);
+      drawableToAdd.registerMovement(x / scale, y / scale);
       drawables.push(drawableToAdd);
 
       this.setState(
         {
           newDrawable: [],
-          drawables
+          drawables,
         },
-        this.handleSessionChange.bind(this, drawableToAdd)
+        this.handleSessionChange.bind(this, drawableToAdd),
       );
     }
   };
 
-  handleMouseMove = e => {
+  handleMouseMove = (e) => {
     const { newDrawable } = this.state;
+    const { scale } = this.props;
 
     if (newDrawable.length === 1) {
       const { x, y } = e.target.getStage().getPointerPosition();
       const updatedNewDrawable = newDrawable[0];
 
-      updatedNewDrawable.registerMovement(x, y);
+      updatedNewDrawable.registerMovement(x / scale, y / scale);
 
       this.setState({
-        newDrawable: [updatedNewDrawable]
+        newDrawable: [updatedNewDrawable],
       });
     }
   };
@@ -166,13 +168,10 @@ export class DrawableMain extends React.Component {
     const { TextEntry } = this.props;
 
     TextEntry.all = [];
-    this.setState(
-      { drawables: [], updatedAt: new Date() },
-      this.handleSessionChange
-    );
+    this.setState({ drawables: [], updatedAt: new Date() }, this.handleSessionChange);
   };
 
-  toggleTextSelected = textIsSelected => this.setState({ textIsSelected });
+  toggleTextSelected = (textIsSelected) => this.setState({ textIsSelected });
 
   render() {
     const {
@@ -185,7 +184,10 @@ export class DrawableMain extends React.Component {
       paintColor,
       outlineColor,
       TextEntry,
-      toolActive: { type }
+      backgroundImageEnabled = true,
+      toolActive: { type },
+      scale,
+      language
     } = this.props;
     const { isOver, newDrawable } = this.state;
 
@@ -205,7 +207,8 @@ export class DrawableMain extends React.Component {
       handleSessionChange: this.handleSessionChange,
       stage: this.stage,
       onMouseOverElement: this.onMouseOverElement,
-      onMouseOutElement: this.onMouseOutElement
+      onMouseOutElement: this.onMouseOutElement,
+      scale
     };
 
     let listeners = {};
@@ -213,48 +216,52 @@ export class DrawableMain extends React.Component {
     if (!disabled) {
       listeners = {
         onMouseUp: this.handleMouseUp,
-        onMouseMove: this.handleMouseMove
+        onTouchEnd: this.handleMouseUp,
+        onMouseMove: this.handleMouseMove,
+        onTouchMove: this.handleMouseMove,
       };
 
       if (!draggable) {
         listeners.onMouseDown = this.handleMouseDown;
+        listeners.onTouchStart = this.handleMouseDown;
       }
     }
 
+    const imageHeight = imageDimensions?.height * scale;
+    const imageWidth = imageDimensions?.width * scale;
+
     return (
-      <div>
+      <div className={classes.wrapper}>
         <div className={classes.undoControls}>
-          <Button disabled={disabled} onClick={this.handleUndo} label="Undo" />
-          <Button disabled={disabled} onClick={this.handleClearAll} label="Clear all" />
+          <Button disabled={disabled} onClick={this.handleUndo} label={translator.t('common:undo', { lng: language })} />
+          <Button disabled={disabled} onClick={this.handleClearAll} label={translator.t('common:clearAll', { lng: language })} />
         </div>
         <div className={classes.base}>
-          {imageUrl && (
-            <ImageBackground dimensions={imageDimensions} url={imageUrl} />
+          {backgroundImageEnabled && imageUrl && (
+            <ImageBackground dimensions={{ height: imageHeight, width: imageWidth }} url={imageUrl} />
           )}
 
           {TextEntry.renderTextareas()}
 
           <Stage
-            ref={ref => {
+            scaleX={scale}
+            scaleY={scale}
+            ref={(ref) => {
               this.stage = ref;
             }}
             className={classnames(classes.stage, {
-              [classes.active]:
-                draggable &&
-                (isOver || (newDrawable && newDrawable.length === 1))
+              [classes.active]: draggable && (isOver || (newDrawable && newDrawable.length === 1)),
             })}
             height={drawableDimensions.height}
             width={drawableDimensions.width}
             {...listeners}
           >
             <Layer
-              ref={ref => {
+              ref={(ref) => {
                 this.layer = ref;
               }}
             >
-              {drawables.map((drawable, key) =>
-                drawable.render({ ...drawableProps, key })
-              )}
+              {drawables.map((drawable, key) => drawable.render({ ...drawableProps, key }))}
               {/* Text Entry is a special case  */}
               {TextEntry.render(drawableProps)}
             </Layer>
@@ -266,23 +273,28 @@ export class DrawableMain extends React.Component {
 }
 
 const styles = () => ({
+  wrapper: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'flex-end',
+  },
   base: {
     position: 'relative',
-    width: '100%'
+    width: '100%',
   },
   stage: {
     left: 0,
     position: 'absolute',
-    top: 0
+    touchAction: 'none',
+    top: 0,
   },
   active: {
-    cursor: 'pointer'
+    cursor: 'pointer',
   },
   undoControls: {
-    float: 'right',
     marginTop: -43,
-    width: 163
-  }
+    marginRight: 10,
+  },
 });
 
 DrawableMain.propTypes = {
@@ -297,7 +309,10 @@ DrawableMain.propTypes = {
   imageUrl: PropTypes.string.isRequired,
   TextEntry: PropTypes.object.isRequired,
   toolActive: PropTypes.object.isRequired,
-  session: PropTypes.object.isRequired
+  session: PropTypes.object.isRequired,
+  backgroundImageEnabled: PropTypes.bool.isRequired,
+  scale: PropTypes.number.isRequired,
+  language: PropTypes.string,
 };
 
 export default withStyles(styles)(DrawableMain);

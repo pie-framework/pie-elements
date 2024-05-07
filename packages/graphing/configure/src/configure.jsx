@@ -1,37 +1,38 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 
-import { settings, layout, InputContainer } from '@pie-lib/config-ui';
+import { settings, layout, InputContainer } from '@pie-lib/pie-toolbox/config-ui';
 import PropTypes from 'prop-types';
 import debug from 'debug';
 import Typography from '@material-ui/core/Typography';
-import EditableHtml from '@pie-lib/editable-html';
+import { EditableHtml } from '@pie-lib/pie-toolbox/editable-html';
 import GraphingConfig from './graphing-config';
 import CorrectResponse from './correct-response';
+import intersection from 'lodash/intersection';
 
-const { Panel, toggle, radio, checkboxes } = settings;
+const { Panel, toggle, radio, checkboxes, textField, dropdown } = settings;
 const log = debug('@pie-element:graphing:configure');
 
-const styles = theme => ({
+const styles = (theme) => ({
   title: {
     fontSize: '1.1rem',
     display: 'block',
     marginTop: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit
-  },
-  content: {
-    marginTop: theme.spacing.unit * 2
+    marginBottom: theme.spacing.unit,
   },
   promptHolder: {
     width: '100%',
-    paddingBottom: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit * 2,
-    marginTop: theme.spacing.unit * 2
-  },
-  prompt: {
     paddingTop: theme.spacing.unit * 2,
-    width: '100%'
-  }
+    marginBottom: theme.spacing.unit * 2,
+  },
+  description: {
+    marginBottom: theme.spacing.unit * 2.5,
+  },
+  errorText: {
+    fontSize: theme.typography.fontSize - 2,
+    color: theme.palette.error.main,
+    paddingTop: theme.spacing.unit,
+  },
 });
 
 export class Configure extends React.Component {
@@ -40,87 +41,151 @@ export class Configure extends React.Component {
     onConfigurationChanged: PropTypes.func,
     classes: PropTypes.object,
     imageSupport: PropTypes.object,
+    uploadSoundSupport: PropTypes.object,
     model: PropTypes.object.isRequired,
-    configuration: PropTypes.object.isRequired
+    configuration: PropTypes.object.isRequired,
   };
 
   static defaultProps = { classes: {} };
 
   componentDidMount() {
+    const { configuration, onModelChanged, model } = this.props;
+    const { availableTools, title, graphDimensions } = configuration || {};
+    let { arrows, titleEnabled: showTitle, dimensionsEnabled: showDimensions } = model || {};
+
     // This is used for offering support for old models which have the property arrows: boolean
     // Same thing is set in the controller: packages/graphing/controller/src/index.js - model
-    const { onModelChanged, model } = this.props;
-    let { arrows } = model || {};
-
     if (typeof arrows === 'boolean') {
       if (arrows) {
-        arrows = {
-          left: true,
-          right: true,
-          up: true,
-          down: true
-        };
+        arrows = { left: true, right: true, up: true, down: true };
       } else {
-        arrows = {
-          left: false,
-          right: false,
-          up: false,
-          down: false
-        };
+        arrows = { left: false, right: false, up: false, down: false };
       }
-
-      onModelChanged({ ...model, arrows });
     }
+
+    const toolbarTools = intersection(availableTools || [], model.toolbarTools || []);
+    const titleEnabled = showTitle === undefined || showTitle === null ? title.enabled : showTitle;
+    const dimensionsEnabled =
+      showDimensions === undefined || showDimensions === null ? graphDimensions.enabled : showDimensions;
+
+    onModelChanged && onModelChanged({ ...model, arrows, toolbarTools, titleEnabled, dimensionsEnabled });
   }
 
-  onRationaleChange = rationale => {
+  onRationaleChange = (rationale) => {
     const { onModelChanged, model } = this.props;
 
     onModelChanged({ ...model, rationale });
   };
 
-  onPromptChange = prompt => {
+  onPromptChange = (prompt) => {
     const { onModelChanged, model } = this.props;
 
     onModelChanged({ ...model, prompt });
   };
 
-  onTeacherInstructionsChange = teacherInstructions => {
+  onTeacherInstructionsChange = (teacherInstructions) => {
     const { onModelChanged, model } = this.props;
 
     onModelChanged({ ...model, teacherInstructions });
   };
 
   render() {
-    const {
-      classes,
-      model,
-      configuration,
-      onConfigurationChanged,
-      onModelChanged,
-      imageSupport
-    } = this.props;
-    const config = model.graph;
-
+    const { classes, model, configuration, onConfigurationChanged, onModelChanged, imageSupport, uploadSoundSupport } =
+      this.props;
     const {
       arrows = {},
-      title = {},
-      padding = {},
+      authoring = {},
+      availableTools = [],
+      baseInputConfiguration = {},
+      coordinatesOnHover = {},
+      contentDimensions = {},
+      gridConfigurations = [],
+      graphDimensions = {},
+      instruction = {},
       labels = {},
+      padding = {},
+      prompt = {},
       rationale = {},
       scoringType = {},
+      settingsPanelDisabled,
+      spellCheck = {},
       studentInstructions = {},
       teacherInstructions = {},
-      coordinatesOnHover = {},
-      prompt = {},
-      authoring = {}
+      title = {},
+      maxImageWidth = {},
+      maxImageHeight = {},
+      withRubric = {},
+      language = {},
+      languageChoices = {},
+      mathMlOptions = {},
+      removeIncompleteTool = false,
     } = configuration || {};
+    const {
+      errors = {},
+      labelsEnabled,
+      dimensionsEnabled,
+      promptEnabled,
+      rationaleEnabled,
+      spellCheckEnabled,
+      teacherInstructionsEnabled,
+      titleEnabled,
+    } = model || {};
+    const {
+      prompt: promptError,
+      rationale: rationaleError,
+      teacherInstructions: teacherInstructionsError,
+    } = errors || {};
+
     log('[render] model', model);
-    const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled } =
-      model || {};
+
+    const defaultImageMaxWidth = maxImageWidth && maxImageWidth.prompt;
+    const defaultImageMaxHeight = maxImageHeight && maxImageHeight.prompt;
+    const labelsPlaceholders = {
+      top: labels.top,
+      right: labels.right,
+      bottom: labels.bottom,
+      left: labels.left,
+    };
+
+    const panelItemType = {
+      arrows:
+        arrows.settings &&
+        checkboxes(arrows.label, {
+          left: arrows.left,
+          right: arrows.right,
+          up: arrows.up,
+          down: arrows.down,
+        }),
+      titleEnabled: title.settings && toggle(title.label),
+      padding: padding.settings && toggle(padding.label),
+      labelsEnabled: labels.settings && toggle(labels.label),
+      'language.enabled': language.settings && toggle(language.label, true),
+      language: language.settings && language.enabled && dropdown(languageChoices.label, languageChoices.options),
+      dimensionsEnabled: graphDimensions.settings && toggle(graphDimensions.label),
+      coordinatesOnHover: coordinatesOnHover.settings && toggle(coordinatesOnHover.label),
+    };
+
+    const panelProperties = {
+      'authoring.enabled': authoring.settings && toggle(authoring.label, true),
+      teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
+      studentInstructionsEnabled: studentInstructions.settings && toggle(studentInstructions.label),
+      promptEnabled: prompt.settings && toggle(prompt.label),
+      rationaleEnabled: rationale.settings && toggle(rationale.label),
+      spellCheckEnabled: spellCheck.settings && toggle(spellCheck.label),
+      scoringType: scoringType.settings && radio(scoringType.label, ['dichotomous', 'partial scoring']),
+      rubricEnabled: withRubric?.settings && toggle(withRubric?.label),
+      instruction: instruction.settings && textField(instruction.label),
+    };
+
+    const getPluginProps = (props = {}) => ({
+      ...baseInputConfiguration,
+      ...props,
+    });
 
     return (
       <layout.ConfigLayout
+        dimensions={contentDimensions}
+        hideSettings={settingsPanelDisabled}
         settings={
           <Panel
             model={model}
@@ -128,104 +193,103 @@ export class Configure extends React.Component {
             onChangeModel={onModelChanged}
             onChangeConfiguration={onConfigurationChanged}
             groups={{
-              'Item Type': {
-                arrows: arrows.settings && checkboxes(arrows.label, {
-                  left: arrows.left,
-                  right: arrows.right,
-                  up: arrows.up,
-                  down: arrows.down
-                }),
-                'title.enabled': title.settings && toggle(title.label, true),
-                padding: padding.settings && toggle(padding.label),
-                labels: labels.settings && toggle(labels.label),
-                coordinatesOnHover: coordinatesOnHover.settings && toggle(coordinatesOnHover.label),
-              },
-              Properties: {
-                'authoring.enabled':
-                  authoring.settings && toggle(authoring.label, true),
-                teacherInstructionsEnabled:
-                  teacherInstructions.settings &&
-                  toggle(teacherInstructions.label),
-                studentInstructionsEnabled:
-                  studentInstructions.settings &&
-                  toggle(studentInstructions.label),
-                promptEnabled: prompt.settings && toggle(prompt.label),
-                rationaleEnabled: rationale.settings && toggle(rationale.label),
-                scoringType:
-                  scoringType.settings &&
-                  radio(scoringType.label, ['dichotomous', 'partial scoring'])
-              }
+              Settings: panelItemType,
+              Properties: panelProperties,
             }}
           />
         }
       >
-        <div className={classes.content}>
-          <Typography component="div" type="body1">
-            <span>
-              This interaction asks a student to draw a line that meets specific
-              criteria. The student will draw the line by clicking on two points
-              on the graph.
-            </span>
-          </Typography>
+        <Typography component="div" type="body1" className={classes.description}>
+          {instruction?.label || ''}
+        </Typography>
 
-          {teacherInstructionsEnabled && (
-            <InputContainer
-              label={teacherInstructions.label}
-              className={classes.promptHolder}
-            >
-              <EditableHtml
-                className={classes.prompt}
-                markup={model.teacherInstructions || ''}
-                onChange={this.onTeacherInstructionsChange}
-                imageSupport={imageSupport}
-                nonEmpty={false}
-              />
-            </InputContainer>
-          )}
+        {teacherInstructionsEnabled && (
+          <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
+            <EditableHtml
+              className={classes.prompt}
+              markup={model.teacherInstructions || ''}
+              onChange={this.onTeacherInstructionsChange}
+              imageSupport={imageSupport}
+              error={teacherInstructionsError}
+              nonEmpty={false}
+              pluginProps={getPluginProps(teacherInstructions?.inputConfiguration)}
+              spellCheck={spellCheckEnabled}
+              maxImageWidth={(maxImageWidth && maxImageWidth.teacherInstructions) || defaultImageMaxWidth}
+              maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
+              uploadSoundSupport={uploadSoundSupport}
+              languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+              mathMlOptions={mathMlOptions}
+            />
+            {teacherInstructionsError && <div className={classes.errorText}>{teacherInstructionsError}</div>}
+          </InputContainer>
+        )}
 
-          {promptEnabled && (
-            <InputContainer
-              label={prompt.label}
-              className={classes.promptHolder}
-            >
-              <EditableHtml
-                className={classes.prompt}
-                markup={model.prompt}
-                onChange={this.onPromptChange}
-                imageSupport={imageSupport}
-                nonEmpty={false}
-                disableUnderline
-              />
-            </InputContainer>
-          )}
+        {promptEnabled && (
+          <InputContainer label={prompt.label} className={classes.promptHolder}>
+            <EditableHtml
+              className={classes.prompt}
+              markup={model.prompt}
+              onChange={this.onPromptChange}
+              imageSupport={imageSupport}
+              error={promptError}
+              nonEmpty={false}
+              spellCheck={spellCheckEnabled}
+              pluginProps={getPluginProps(prompt?.inputConfiguration)}
+              disableUnderline
+              maxImageWidth={defaultImageMaxWidth}
+              maxImageHeight={defaultImageMaxHeight}
+              uploadSoundSupport={uploadSoundSupport}
+              languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+              mathMlOptions={mathMlOptions}
+            />
+            {promptError && <div className={classes.errorText}>{promptError}</div>}
+          </InputContainer>
+        )}
 
-          {rationaleEnabled && (
-            <InputContainer
-              label={rationale.label || 'Rationale'}
-              className={classes.promptHolder}
-            >
-              <EditableHtml
-                className={classes.prompt}
-                markup={model.rationale || ''}
-                onChange={this.onRationaleChange}
-                imageSupport={imageSupport}
-              />
-            </InputContainer>
-          )}
+        <GraphingConfig
+          authoring={authoring}
+          availableTools={availableTools}
+          gridConfigurations={gridConfigurations}
+          graphDimensions={graphDimensions}
+          labelsPlaceholders={labelsPlaceholders}
+          model={model}
+          showLabels={labelsEnabled}
+          dimensionsEnabled={dimensionsEnabled}
+          showTitle={titleEnabled}
+          titlePlaceholder={title.placeholder}
+          onChange={this.props.onModelChanged}
+          mathMlOptions={mathMlOptions}
+          removeIncompleteTool={removeIncompleteTool}
+        />
 
-          <GraphingConfig
-            authoringEnabled={authoring && authoring.enabled}
-            config={config}
-            model={model}
-            onChange={this.props.onModelChanged}
-          />
+        <CorrectResponse
+          availableTools={availableTools}
+          errors={errors}
+          model={model}
+          onChange={this.props.onModelChanged}
+          mathMlOptions={mathMlOptions}
+          removeIncompleteTool={removeIncompleteTool}
+        />
 
-          <CorrectResponse
-            config={config}
-            model={model}
-            onChange={this.props.onModelChanged}
-          />
-        </div>
+        {rationaleEnabled && (
+          <InputContainer label={rationale.label || 'Rationale'} className={classes.promptHolder}>
+            <EditableHtml
+              className={classes.prompt}
+              markup={model.rationale || ''}
+              onChange={this.onRationaleChange}
+              imageSupport={imageSupport}
+              error={rationaleError}
+              spellCheck={spellCheckEnabled}
+              pluginProps={getPluginProps(rationale?.inputConfiguration)}
+              maxImageWidth={(maxImageWidth && maxImageWidth.rationale) || defaultImageMaxWidth}
+              maxImageHeight={(maxImageHeight && maxImageHeight.rationale) || defaultImageMaxHeight}
+              uploadSoundSupport={uploadSoundSupport}
+              languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+              mathMlOptions={mathMlOptions}
+            />
+            {rationaleError && <div className={classes.errorText}>{rationaleError}</div>}
+          </InputContainer>
+        )}
       </layout.ConfigLayout>
     );
   }

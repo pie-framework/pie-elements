@@ -2,6 +2,7 @@ import { SessionChangedEvent } from '@pie-framework/pie-player-events';
 import MultipleChoice from '@pie-element/multiple-choice';
 import get from 'lodash/get';
 import debug from 'debug';
+
 const SESSION_CHANGED = SessionChangedEvent.TYPE;
 const MC_TAG_NAME = 'ebsr-multiple-choice';
 const log = debug('pie-elements:ebsr');
@@ -71,8 +72,12 @@ export default class Ebsr extends HTMLElement {
     });
   }
 
+  get session() {
+    return this._session;
+  }
+
   setPartModel(part, key) {
-    if (this._model && this._model[key]) {
+    if (this._model && this._model[key] && part) {
       const { mode } = this._model;
 
       part.model = {
@@ -84,7 +89,7 @@ export default class Ebsr extends HTMLElement {
   }
 
   setPartSession(part, key) {
-    if (this._session && this._model) {
+    if (this._session && this._model && part) {
       const { value } = this._session;
       part.session = value && value[key] ? value[key] : { id: key };
     }
@@ -98,9 +103,7 @@ export default class Ebsr extends HTMLElement {
 
     log('[onSessionChanged] session: ', this._session);
     const complete = isSessionComplete(this._session);
-    this.dispatchEvent(
-      new SessionChangedEvent(this.tagName.toLowerCase(), complete)
-    );
+    this.dispatchEvent(new SessionChangedEvent(this.tagName.toLowerCase(), complete));
   }
 
   get partA() {
@@ -121,11 +124,33 @@ export default class Ebsr extends HTMLElement {
   }
 
   _render() {
+    this.ariaLabel = 'Two-Part Question';
+    this.role = 'region';
     this.innerHTML = `
-      <div>
+      <style>
+        .srOnly {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        left: -10000px;
+        top: auto;
+      }
+      </style>
+        <h2 class="srOnly">Two-Part Question</h2>
         <${MC_TAG_NAME} id="a"></${MC_TAG_NAME}>
         <${MC_TAG_NAME} id="b"></${MC_TAG_NAME}>
-      </div>
     `;
+
+    // when item is re-rendered (due to connectedCallback), if the custom element is already defined,
+    // we need to set the model and session, otherwise the setters are not reached again
+    if (customElements.get(MC_TAG_NAME)) {
+      this.setPartModel(this.partA, 'partA');
+      this.setPartModel(this.partB, 'partB');
+      this.setPartSession(this.partA, 'partA');
+      this.setPartSession(this.partB, 'partB');
+    }
   }
 }

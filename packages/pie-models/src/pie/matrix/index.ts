@@ -1,7 +1,11 @@
-import {PieModel} from '../../PieModel';
-import {PromptConfig} from '../../PromptConfig';
-import {ConfigureProp} from '../ConfigurationProp';
-
+import { PieModel } from '../../PieModel';
+import { PromptConfig } from '../../PromptConfig';
+import {
+  ConfigureProp,
+  EditableHtmlConfigureProp,
+  EditableHtmlPluginConfigureRequired,
+} from '../ConfigurationProp';
+import { CommonConfigSettings } from '../../CommonConfigSettings';
 
 /**
  * NOTE: teacherInstruction functionality is not defined yet - the value for
@@ -24,16 +28,38 @@ export interface MatrixPie extends PieModel {
   labelType?: 'agreement' | 'frequency' | 'yesNo' | 'importance' | 'likelihood' | 'like';
   /** Indicates if Teacher Instructions are enabled */
   teacherInstructionsEnabled: boolean;
+  /** Indicates if spellcheck is enabled for the author. Default value is true */
+  spellCheckEnabled: boolean;
 }
-
 
 /**
  * Config Object for @pie-elements/matrix
  * @additionalProperties false
  */
-export interface MatrixConfigure extends PromptConfig {
+export interface MatrixConfigure extends PromptConfig, CommonConfigSettings {
+  /**
+   * Base editable html input configuration regarding plugins that are enabled/disabled
+   * E.g. audio, video, image
+   */
+  baseInputConfiguration?: EditableHtmlConfigureProp;
+
+  /**
+   * Indicates if the settings panel is not available
+   */
+  settingsPanelDisabled?: boolean;
+
+  /**
+   * Configuration for the author's spellcheck
+   */
+  spellCheck?: ConfigureProp;
+
   /**
    * Teacher Instructions configuration
    */
-  teacherInstructions?: ConfigureProp;
+  teacherInstructions?: EditableHtmlPluginConfigureRequired;
+
+  /**
+   * Configuration for the prompt
+   */
+  prompt?: EditableHtmlPluginConfigureRequired;
 }

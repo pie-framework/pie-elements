@@ -1,120 +1,87 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import EditableHtml, { ALL_PLUGINS } from '@pie-lib/editable-html';
-import { InputContainer, layout, settings } from '@pie-lib/config-ui';
-import { renderMath } from '@pie-lib/math-rendering';
+import { EditableHtml, ALL_PLUGINS } from '@pie-lib/pie-toolbox/editable-html';
+import { AlertDialog, InputContainer, layout, settings } from '@pie-lib/pie-toolbox/config-ui';
+import { renderMath } from '@pie-lib/pie-toolbox/math-rendering-accessible';
 import cloneDeep from 'lodash/cloneDeep';
 import isEqual from 'lodash/isEqual';
 import isUndefined from 'lodash/isUndefined';
 import isEmpty from 'lodash/isEmpty';
 import reduce from 'lodash/reduce';
+import max from 'lodash/max';
 import { withStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
-import Dialog from '@material-ui/core/Dialog';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import DialogActions from '@material-ui/core/DialogActions';
+import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import Info from '@material-ui/icons/Info';
 import InlineDropdownToolbar from './inline-dropdown-toolbar';
-import max from 'lodash/max';
+import { generateValidationMessage } from './utils';
 
-const { toggle, Panel } = settings;
+const { toggle, Panel, dropdown } = settings;
 
-const InfoDialog = ({ open, onCancel, onOk, title }) => (
-  <Dialog open={open}>
-    <DialogTitle>{title}</DialogTitle>
-    <DialogActions>
-      {onOk && (
-        <Button onClick={onOk} color="primary">
-          OK
-        </Button>
-      )}
-      {onCancel && (
-        <Button onClick={onCancel} color="primary">
-          Cancel
-        </Button>
-      )}
-    </DialogActions>
-  </Dialog>
-);
-
-InfoDialog.propTypes = {
-  open: PropTypes.bool,
-  onCancel: PropTypes.func,
-  onOk: PropTypes.func,
-  title: PropTypes.string
-};
-
-const styles = theme => ({
+const styles = (theme) => ({
   promptHolder: {
     width: '100%',
-    paddingBottom: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit * 2
-  },
-  prompt: {
     paddingTop: theme.spacing.unit * 2,
-    width: '100%'
+    marginBottom: theme.spacing.unit * 2,
   },
   markup: {
     minHeight: '100px',
-    paddingTop: theme.spacing.unit * 2,
     width: '100%',
     '& [data-slate-editor="true"]': {
-      minHeight: '100px'
-    }
-  },
-  design: {
-    paddingTop: theme.spacing.unit * 3
+      minHeight: '100px',
+    },
   },
   choiceConfiguration: {
     paddingTop: theme.spacing.unit * 2,
-    paddingBottom: theme.spacing.unit * 2
-  },
-  switchElement: {
-    justifyContent: 'space-between',
-    margin: 0
-  },
-  addButton: {
-    float: 'right'
+    paddingBottom: theme.spacing.unit * 2,
   },
   text: {
-    fontFamily: 'Cerebri Sans',
-    fontSize: '16px',
-    lineHeight: '19px',
-    color: '#495B8F'
+    fontSize: theme.typography.fontSize + 2,
+    marginRight: theme.spacing.unit,
   },
   rationaleLabel: {
     display: 'flex',
-    whiteSpace: 'break-spaces'
+    whiteSpace: 'break-spaces',
   },
   rationaleChoices: {
-    marginTop: '16px'
+    marginBottom: theme.spacing.unit * 2.5,
+  },
+  responseArea: {
+    paddingBottom: theme.spacing.unit * 2.5,
   },
   panelDetails: {
-   display: 'block'
-  }
+    display: 'block',
+    paddingTop: 0,
+    paddingBottom: 0,
+  },
+  flexContainer: {
+    display: 'flex',
+    alignItems: 'center',
+    marginBottom: theme.spacing.unit,
+  },
+  tooltip: {
+    fontSize: theme.typography.fontSize - 2,
+    whiteSpace: 'pre',
+    maxWidth: '500px',
+  },
+  errorText: {
+    fontSize: theme.typography.fontSize - 2,
+    color: theme.palette.error.main,
+    paddingTop: theme.spacing.unit,
+  },
 });
 
-const createElementFromHTML = htmlString => {
+const createElementFromHTML = (htmlString) => {
   const div = document.createElement('div');
 
   div.innerHTML = (htmlString || '').trim();
 
   return div;
-};
-
-const prepareVal = html => {
-  const tmp = document.createElement('DIV');
-
-  tmp.innerHTML = html;
-
-  const value = tmp.textContent || tmp.innerText || '';
-
-  return value.trim();
 };
 
 export class Main extends React.Component {
@@ -127,19 +94,21 @@ export class Main extends React.Component {
     classes: PropTypes.object.isRequired,
     imageSupport: PropTypes.shape({
       add: PropTypes.func.isRequired,
-      delete: PropTypes.func.isRequired
-    })
+      delete: PropTypes.func.isRequired,
+    }),
+    uploadSoundSupport: PropTypes.shape({
+      add: PropTypes.func.isRequired,
+      delete: PropTypes.func.isRequired,
+    }),
   };
 
   state = {
-    dialog: {
-      open: false
-    }
+    warning: { open: false },
   };
 
   componentDidMount() {
     const {
-      model: { choices }
+      model: { choices },
     } = this.props;
 
     this.setState({ respAreaChoices: cloneDeep(choices) });
@@ -167,75 +136,60 @@ export class Main extends React.Component {
     renderMath(domNode);
   }
 
-  onModelChange = newVal => {
-    this.props.onModelChanged({
-      ...this.props.model,
-      ...newVal
-    });
+  onModelChange = (newVal) => {
+    this.props.onModelChanged({ ...this.props.model, ...newVal });
   };
 
-  onPromptChanged = prompt => {
+  onPromptChanged = (prompt) => {
     this.onModelChange({ prompt });
   };
 
-  onRationaleChanged = rationale => {
+  onRationaleChanged = (rationale) => {
     this.onModelChange({ rationale });
   };
 
   onChoiceRationaleChanged = (index, choice) => {
     const { model } = this.props;
-    const indexOfChoice = model.choices && model.choices[index] && model.choices[index]
-      .findIndex(elem => elem.label === choice.label && elem.value === choice.value);
+    const indexOfChoice =
+      model.choices &&
+      model.choices[index] &&
+      model.choices[index].findIndex((elem) => elem.label === choice.label && elem.value === choice.value);
 
     model.choices[index] && model.choices[index].splice(indexOfChoice, 1, choice);
 
     this.onModelChange(model);
   };
 
-  onTeacherInstructionsChanged = teacherInstructions => {
+  onTeacherInstructionsChanged = (teacherInstructions) => {
     this.onModelChange({ teacherInstructions });
   };
 
-  onMarkupChanged = slateMarkup => {
+  onMarkupChanged = (slateMarkup) => {
     this.onModelChange({ slateMarkup });
   };
 
-  onCheck = callback => {
+  onCheck = (callback) => {
     this.setState({
-      dialog: {
+      warning: {
         open: true,
-        message:
-          'Response areas with under 2 options or with no correct answers will be discarded',
-        onOk: () => {
-          this.setState(
-            {
-              dialog: {
-                open: false
-              }
-            },
-            callback
-          );
+        text: 'Response areas with under 2 options or with no correct answers will be discarded.',
+        onClose: () => {
+          this.setState({ warning: { open: false } });
         },
-        onCancel: () =>
-          this.setState({
-            dialog: {
-              open: false
-            }
-          })
-      }
+        onConfirm: () => {
+          this.setState({ warning: { open: false } }, callback);
+        },
+      },
     });
   };
 
-  onChange = markup => {
+  onChange = (markup) => {
     const { respAreaChoices } = this.state;
     const domMarkup = createElementFromHTML(markup);
-    const allRespAreas = domMarkup.querySelectorAll(
-      '[data-type="inline_dropdown"]'
-    );
-
+    const allRespAreas = domMarkup.querySelectorAll('[data-type="inline_dropdown"]');
     const allChoices = {};
 
-    allRespAreas.forEach(el => {
+    allRespAreas.forEach((el) => {
       allChoices[el.dataset.index] = el.dataset.value || '';
     });
 
@@ -248,7 +202,7 @@ export class Main extends React.Component {
 
         return obj;
       },
-      {}
+      {},
     );
 
     const newRespAreaChoices = {};
@@ -257,88 +211,97 @@ export class Main extends React.Component {
     allRespAreas.forEach((el, index) => {
       const newChoices = existingRespAreaChoices[el.dataset.index] || [];
 
-      if (newChoices.length < 2 || !newChoices.find(c => c.correct)) {
+      if (newChoices.length < 2 || !newChoices.find((c) => c.correct)) {
         el.remove();
         shouldWarn = true;
       } else {
-        newRespAreaChoices[index] =
-          existingRespAreaChoices[el.dataset.index] || [];
+        newRespAreaChoices[index] = existingRespAreaChoices[el.dataset.index] || [];
         el.dataset.index = index;
       }
     });
 
     if (shouldWarn) {
       this.setState({
-        dialog: {
+        warning: {
           open: true,
-          message:
-            'Response areas with under 2 options or with no correct answers will be discarded',
-          onOk: () => {
-            this.setState(
-              {
-                dialog: {
-                  open: false
-                }
-              },
-              () =>
-                this.onModelChange({
-                  choices: cloneDeep(newRespAreaChoices),
-                  slateMarkup: domMarkup.innerHTML
-                })
+          text: 'Response areas with under 2 options or with no correct answers will be discarded.',
+          onClose: () => {
+            this.setState({ warning: { open: false } });
+          },
+          onConfirm: () => {
+            this.setState({ warning: { open: false } }, () =>
+              this.onModelChange({
+                choices: cloneDeep(newRespAreaChoices),
+                slateMarkup: domMarkup.innerHTML,
+              }),
             );
           },
-          onCancel: () =>
-            this.setState({
-              dialog: {
-                open: false
-              }
-            })
-        }
+        },
       });
     } else {
       this.onModelChange({
         choices: cloneDeep(newRespAreaChoices),
-        slateMarkup: domMarkup.innerHTML
+        slateMarkup: domMarkup.innerHTML,
       });
     }
   };
 
-  onAddChoice = (index, label) => {
+  onAddChoice = (index, label, choiceIndex) => {
     const { respAreaChoices } = this.state;
+    const { maxResponseAreaChoices } = this.props.configuration;
 
-    if (!respAreaChoices[index]) {
-      respAreaChoices[index] = [];
-    }
-
-    if (
-      (respAreaChoices[index] || []).find(
-        r => prepareVal(r.label) === prepareVal(label)
-      )
-    ) {
+    if (respAreaChoices[index] && respAreaChoices[index].length >= maxResponseAreaChoices) {
       this.setState({
-        dialog: {
+        warning: {
           open: true,
-          message: 'Duplicate answers are not allowed.',
-          onOk: () => {
-            this.setState({
-              dialog: {
-                open: false
-              }
-            });
-          }
-        }
+          text: `There are only ${maxResponseAreaChoices} answers allowed per choice.`,
+          onClose: undefined,
+          onConfirm: () => {
+            this.setState({ warning: { open: false } });
+          },
+        },
       });
 
       return;
     }
 
-    const value = (respAreaChoices[index] && max(respAreaChoices[index].map(c => parseInt(c.value)).filter(val => !isNaN(val)))) || 0;
+    if (!respAreaChoices[index]) {
+      respAreaChoices[index] = [];
+    }
 
-    respAreaChoices[index].push({
-      label,
-      value: `${value + 1}`,
-      correct: false
-    });
+    // check for duplicate answer, but exclude the one that is currently edited
+    if ((respAreaChoices[index] || []).find((r, idx) => r.label === label && idx !== choiceIndex)) {
+      // show warning for duplicated answers
+      this.setState({
+        warning: {
+          open: true,
+          text: 'Duplicate answers are not allowed.',
+          onClose: undefined,
+          onConfirm: () => {
+            this.setState({ warning: { open: false } });
+          },
+        },
+      });
+
+      return;
+    }
+
+    if (choiceIndex >= 0 && respAreaChoices[index]?.[choiceIndex]) {
+      // we need to update the choice label with the new value
+      respAreaChoices[index][choiceIndex].label = label;
+    } else {
+      // add a new choice
+      const value =
+        (respAreaChoices[index] &&
+          max(respAreaChoices[index].map((c) => parseInt(c.value)).filter((val) => !isNaN(val)))) ||
+        0;
+
+      respAreaChoices[index].push({
+        label,
+        value: `${value + 1}`,
+        correct: false,
+      });
+    }
 
     this.onModelChange({ choices: cloneDeep(respAreaChoices) });
   };
@@ -354,223 +317,278 @@ export class Main extends React.Component {
   onSelectChoice = (respIndex, selectedIndex) => {
     const { respAreaChoices } = this.state;
 
-    respAreaChoices[respIndex] = respAreaChoices[respIndex].map(
-      (ch, index) => ({ ...ch, correct: index === selectedIndex })
-    );
+    respAreaChoices[respIndex] = respAreaChoices[respIndex].map((choice, index) => ({
+      ...choice,
+      correct: index === selectedIndex,
+    }));
 
     this.onModelChange({ choices: cloneDeep(respAreaChoices) });
   };
 
   render() {
-    const { dialog } = this.state;
+    const { warning } = this.state;
+    const { classes, model, configuration, onConfigurationChanged, imageSupport, uploadSoundSupport } = this.props;
     const {
-      classes,
-      model,
-      configuration,
-      onConfigurationChanged,
-      imageSupport
-    } = this.props;
-    const {
-      prompt = {},
-      partialScoring = {},
-      lockChoiceOrder = {},
-      rationale = {},
+      baseInputConfiguration = {},
       choiceRationale = {},
-      teacherInstructions = {}
+      contentDimensions = {},
+      lockChoiceOrder = {},
+      maxResponseAreas,
+      maxImageWidth = {},
+      maxImageHeight = {},
+      partialScoring = {},
+      prompt = {},
+      rationale = {},
+      settingsPanelDisabled,
+      spellCheck = {},
+      teacherInstructions = {},
+      template = {},
+      withRubric = {},
+      mathMlOptions = {},
+      language = {},
+      languageChoices = {},
     } = configuration || {};
     const {
-      rationaleEnabled,
       choiceRationaleEnabled,
+      choices,
+      errors,
       promptEnabled,
+      rationaleEnabled,
+      spellCheckEnabled,
       teacherInstructionsEnabled,
-      choices
-    } =
-    model || {};
+      toolbarEditorPosition,
+    } = model || {};
+    const {
+      prompt: promptError,
+      rationale: rationaleError,
+      responseAreasError,
+      responseAreaChoicesError,
+      teacherInstructions: teacherInstructionsError,
+    } = errors || {};
 
-    const renderChoiceRationale = () => (Object.keys(choices) || []).map(key =>
-      <div key={key} className={classes.rationaleChoices}>
-        <ExpansionPanel>
-          <ExpansionPanelSummary expandIcon={<ExpandMoreIcon/>}>
-            <Typography className={classes.text}>
-              {`Rationale for response area #${parseInt(key) + 1}`}
-            </Typography>
-          </ExpansionPanelSummary>
-          <ExpansionPanelDetails className={classes.panelDetails}>
-            {(choices[key] || []).map(choice =>
-              <InputContainer
-                key={choice.label}
-                label={
-                  <span
-                    className={classes.rationaleLabel}
-                    dangerouslySetInnerHTML={{
-                      __html:
-                        `${rationale.label} for ${choice.label} (${choice.correct ? 'correct' : 'incorrect'})`
-                    }}
-                  />
-                }
-                className={classes.promptHolder}
-              >
-                <EditableHtml
-                  className={classes.prompt}
-                  markup={choice.rationale || ''}
-                  onChange={c =>
-                    this.onChoiceRationaleChanged(key, {
-                      ...choice,
-                      rationale: c
-                    })
+    const defaultImageMaxWidth = maxImageWidth && maxImageWidth.prompt;
+    const defaultImageMaxHeight = maxImageHeight && maxImageHeight.prompt;
+
+    const renderChoiceRationale = () =>
+      (Object.keys(choices) || []).map((key, index) => (
+        <div key={key} className={classes.rationaleChoices}>
+          <ExpansionPanel>
+            <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+              <Typography className={classes.text}>{`Rationale for response area #${index + 1}`}</Typography>
+            </ExpansionPanelSummary>
+
+            <ExpansionPanelDetails className={classes.panelDetails}>
+              {(choices[key] || []).map((choice) => (
+                <InputContainer
+                  key={choice.label}
+                  label={
+                    <span
+                      className={classes.rationaleLabel}
+                      dangerouslySetInnerHTML={{
+                        __html: `${rationale.label} for ${choice.label} (${choice.correct ? 'correct' : 'incorrect'})`,
+                      }}
+                    />
                   }
-                  imageSupport={imageSupport}
-                />
-              </InputContainer>
-            )}
-          </ExpansionPanelDetails>
-        </ExpansionPanel>
-      </div>
-    )
+                  className={classes.promptHolder}
+                >
+                  <EditableHtml
+                    className={classes.prompt}
+                    markup={choice.rationale || ''}
+                    spellCheck={spellCheckEnabled}
+                    onChange={(c) => this.onChoiceRationaleChanged(key, { ...choice, rationale: c })}
+                    imageSupport={imageSupport}
+                    maxImageWidth={(maxImageWidth && maxImageWidth.rationale) || defaultImageMaxWidth}
+                    maxImageHeight={(maxImageHeight && maxImageHeight.rationale) || defaultImageMaxHeight}
+                    uploadSoundSupport={uploadSoundSupport}
+                    mathMlOptions={mathMlOptions}
+                  />
+                </InputContainer>
+              ))}
+            </ExpansionPanelDetails>
+          </ExpansionPanel>
+        </div>
+      ));
 
-    const toolbarOpts = {};
+    const toolbarOpts = {
+      position: toolbarEditorPosition === 'top' ? 'top' : 'bottom',
+    };
 
-    switch (model.toolbarEditorPosition) {
-      case 'top':
-        toolbarOpts.position = 'top';
-        break;
-      default:
-        toolbarOpts.position = 'bottom';
-        break;
-    }
+    const validationMessage = generateValidationMessage(configuration);
+
+    const panelSettings = {
+      partialScoring: partialScoring.settings && toggle(partialScoring.label),
+      lockChoiceOrder: lockChoiceOrder.settings && toggle(lockChoiceOrder.label),
+      'language.enabled': language.settings && toggle(language.label, true),
+      language: language.settings && language.enabled && dropdown(languageChoices.label, languageChoices.options),
+    };
+    const panelProperties = {
+      teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
+      rationaleEnabled: rationale.settings && toggle(rationale.label),
+      choiceRationaleEnabled: choiceRationale.settings && toggle(choiceRationale.label),
+      promptEnabled: prompt.settings && toggle(prompt.label),
+      spellCheckEnabled: spellCheck.settings && toggle(spellCheck.label),
+      rubricEnabled: withRubric?.settings && toggle(withRubric?.label),
+    };
+
+    const getPluginProps = (props = {}) => ({
+      ...baseInputConfiguration,
+      ...props,
+    });
 
     return (
-      <div className={classes.design}>
-        <layout.ConfigLayout
-          settings={
-            <Panel
-              model={model}
-              configuration={configuration}
-              onChangeModel={model => this.onModelChange(model)}
-              onChangeConfiguration={configuration =>
-                onConfigurationChanged(configuration, true)
-              }
-              groups={{
-                Settings: {
-                  partialScoring:
-                    partialScoring.settings && toggle(partialScoring.label),
-                  lockChoiceOrder:
-                    lockChoiceOrder.settings && toggle(lockChoiceOrder.label)
-                },
-                Properties: {
-                  teacherInstructionsEnabled:
-                    teacherInstructions.settings &&
-                    toggle(teacherInstructions.label),
-                  rationaleEnabled:
-                    rationale.settings && toggle(rationale.label),
-                  choiceRationaleEnabled:
-                    choiceRationale.settings && toggle(choiceRationale.label),
-                  promptEnabled: prompt.settings && toggle(prompt.label)
-                }
-              }}
-            />
-          }
-        >
-          <div>
-            {teacherInstructionsEnabled && (
-              <InputContainer
-                label={teacherInstructions.label}
-                className={classes.promptHolder}
-              >
-                <EditableHtml
-                  className={classes.prompt}
-                  markup={model.teacherInstructions || ''}
-                  onChange={this.onTeacherInstructionsChanged}
-                  imageSupport={imageSupport}
-                  nonEmpty={false}
-                  toolbarOpts={toolbarOpts}
-                />
-              </InputContainer>
-            )}
-
-            {promptEnabled && (
-              <InputContainer
-                label={prompt.label}
-                className={classes.promptHolder}
-              >
-                <EditableHtml
-                  className={classes.prompt}
-                  markup={model.prompt}
-                  onChange={this.onPromptChanged}
-                  imageSupport={imageSupport}
-                  nonEmpty={false}
-                  disableUnderline
-                  toolbarOpts={toolbarOpts}
-                />
-              </InputContainer>
-            )}
-
-            {rationaleEnabled && (
-              <InputContainer
-                label={rationale.label}
-                className={classes.promptHolder}
-              >
-                <EditableHtml
-                  className={classes.prompt}
-                  markup={model.rationale || ''}
-                  onChange={this.onRationaleChanged}
-                  imageSupport={imageSupport}
-                  toolbarOpts={toolbarOpts}
-                />
-              </InputContainer>
-            )}
-
-            <Typography className={classes.text}>
-              Define Template, Choices, and Correct Responses
-            </Typography>
-            <InfoDialog
-              open={dialog.open}
-              title={dialog.message}
-              onCancel={dialog.onCancel}
-              onOk={dialog.onOk}
-            />
+      <layout.ConfigLayout
+        dimensions={contentDimensions}
+        hideSettings={settingsPanelDisabled}
+        settings={
+          <Panel
+            model={model}
+            configuration={configuration}
+            onChangeModel={(model) => this.onModelChange(model)}
+            onChangeConfiguration={(configuration) => onConfigurationChanged(configuration, true)}
+            groups={{
+              Settings: panelSettings,
+              Properties: panelProperties,
+            }}
+          />
+        }
+      >
+        {teacherInstructionsEnabled && (
+          <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
             <EditableHtml
-              activePlugins={ALL_PLUGINS}
-              toolbarOpts={{ position: 'top' }}
-              responseAreaProps={{
-                type: 'inline-dropdown',
-                options: {
-                  duplicates: true
-                },
-                respAreaToolbar: (node, value, onToolbarDone) => {
-                  const { respAreaChoices } = this.state;
-
-                  return () => (
-                    <InlineDropdownToolbar
-                      onAddChoice={this.onAddChoice}
-                      onCheck={this.onCheck}
-                      onRemoveChoice={index =>
-                        this.onRemoveChoice(node.data.get('index'), index)
-                      }
-                      onSelectChoice={index =>
-                        this.onSelectChoice(node.data.get('index'), index)
-                      }
-                      node={node}
-                      value={value}
-                      onToolbarDone={onToolbarDone}
-                      choices={respAreaChoices[node.data.get('index')]}
-                    />
-                  );
-                }
-              }}
-              className={classes.markup}
-              markup={model.slateMarkup || ''}
-              onChange={this.onChange}
+              className={classes.prompt}
+              markup={model.teacherInstructions || ''}
+              onChange={this.onTeacherInstructionsChanged}
               imageSupport={imageSupport}
-              onBlur={this.onBlur}
-              disabled={false}
-              highlightShape={false}
+              nonEmpty={false}
+              error={teacherInstructionsError}
+              toolbarOpts={toolbarOpts}
+              pluginProps={getPluginProps(teacherInstructions?.inputConfiguration)}
+              spellCheck={spellCheckEnabled}
+              maxImageWidth={(maxImageWidth && maxImageWidth.teacherInstructions) || defaultImageMaxWidth}
+              maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
+              uploadSoundSupport={uploadSoundSupport}
+              languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+              mathMlOptions={mathMlOptions}
             />
-            <br />
-            {choiceRationaleEnabled && renderChoiceRationale()}
-          </div>
-        </layout.ConfigLayout>
-      </div>
+            {teacherInstructionsError && <div className={classes.errorText}>{teacherInstructionsError}</div>}
+          </InputContainer>
+        )}
+
+        {promptEnabled && (
+          <InputContainer label={prompt.label} className={classes.promptHolder}>
+            <EditableHtml
+              className={classes.prompt}
+              markup={model.prompt}
+              onChange={this.onPromptChanged}
+              imageSupport={imageSupport}
+              nonEmpty={false}
+              disableUnderline
+              error={promptError}
+              toolbarOpts={toolbarOpts}
+              pluginProps={getPluginProps(prompt?.inputConfiguration)}
+              spellCheck={spellCheckEnabled}
+              maxImageWidth={defaultImageMaxWidth}
+              maxImageHeight={defaultImageMaxHeight}
+              uploadSoundSupport={uploadSoundSupport}
+              languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+              mathMlOptions={mathMlOptions}
+            />
+            {promptError && <div className={classes.errorText}>{promptError}</div>}
+          </InputContainer>
+        )}
+
+        <div className={classes.flexContainer}>
+          <Typography className={classes.text}>Define Template, Choices, and Correct Responses</Typography>
+          <Tooltip
+            classes={{ tooltip: classes.tooltip }}
+            disableFocusListener
+            disableTouchListener
+            placement={'right'}
+            title={validationMessage}
+          >
+            <Info fontSize={'small'} color={'primary'} />
+          </Tooltip>
+        </div>
+
+        <div className={classes.responseArea}>
+          <EditableHtml
+            pluginProps={getPluginProps(template?.inputConfiguration)}
+            activePlugins={ALL_PLUGINS}
+            toolbarOpts={{ position: 'top' }}
+            responseAreaProps={{
+              type: 'inline-dropdown',
+              options: {
+                duplicates: true,
+              },
+              maxResponseAreas: maxResponseAreas,
+              respAreaToolbar: (node, value, onToolbarDone) => {
+                const { respAreaChoices } = this.state;
+
+                return () => (
+                  <InlineDropdownToolbar
+                    onAddChoice={this.onAddChoice}
+                    onCheck={this.onCheck}
+                    onRemoveChoice={(index) => this.onRemoveChoice(node.data.get('index'), index)}
+                    onSelectChoice={(index) => this.onSelectChoice(node.data.get('index'), index)}
+                    node={node}
+                    value={value}
+                    onToolbarDone={onToolbarDone}
+                    choices={respAreaChoices[node.data.get('index')]}
+                    spellCheck={spellCheckEnabled}
+                    uploadSoundSupport={uploadSoundSupport}
+                    mathMlOptions={mathMlOptions}
+                  />
+                );
+              },
+            }}
+            spellCheck={spellCheckEnabled}
+            className={classes.markup}
+            markup={model.slateMarkup || ''}
+            onChange={this.onChange}
+            imageSupport={imageSupport}
+            disableImageAlignmentButtons={true}
+            disabled={false}
+            highlightShape={false}
+            error={responseAreasError}
+            uploadSoundSupport={uploadSoundSupport}
+            languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+            mathMlOptions={mathMlOptions}
+          />
+          {responseAreasError && <div className={classes.errorText}>{responseAreasError}</div>}
+          {responseAreaChoicesError && <div className={classes.errorText}>{responseAreaChoicesError}</div>}
+        </div>
+
+        {choiceRationaleEnabled && renderChoiceRationale()}
+
+        {rationaleEnabled && (
+          <InputContainer label={rationale.label} className={classes.promptHolder}>
+            <EditableHtml
+              className={classes.prompt}
+              markup={model.rationale || ''}
+              onChange={this.onRationaleChanged}
+              imageSupport={imageSupport}
+              error={rationaleError}
+              toolbarOpts={toolbarOpts}
+              pluginProps={getPluginProps(rationale?.inputConfiguration)}
+              spellCheck={spellCheckEnabled}
+              maxImageWidth={(maxImageWidth && maxImageWidth.rationale) || defaultImageMaxWidth}
+              maxImageHeight={(maxImageHeight && maxImageHeight.rationale) || defaultImageMaxHeight}
+              uploadSoundSupport={uploadSoundSupport}
+              languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+              mathMlOptions={mathMlOptions}
+            />
+            {rationaleError && <div className={classes.errorText}>{rationaleError}</div>}
+          </InputContainer>
+        )}
+
+        <AlertDialog
+          open={warning.open}
+          title="Warning"
+          text={warning.text}
+          onClose={warning.onClose}
+          onConfirm={warning.onConfirm}
+        />
+      </layout.ConfigLayout>
     );
   }
 }

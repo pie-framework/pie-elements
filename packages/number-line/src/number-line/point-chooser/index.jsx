@@ -5,6 +5,9 @@ import injectSheet from 'react-jss';
 import styles from './styles';
 import PropTypes from 'prop-types';
 import Button from './button';
+import Translator from '@pie-lib/pie-toolbox/translator';
+
+const { translator } = Translator;
 
 const DeleteIcon = ({ classes }) => {
   return (
@@ -23,10 +26,10 @@ const DeleteIcon = ({ classes }) => {
 };
 
 DeleteIcon.propTypes = {
-  classes: PropTypes.object
+  classes: PropTypes.object,
 };
 
-const RawPoint = props => {
+const RawPoint = (props) => {
   const { iconKey, active, classes, onClick } = props;
   const names = classNames(classes[iconKey], { active });
   return (
@@ -40,23 +43,16 @@ RawPoint.propTypes = {
   iconKey: PropTypes.string.isRequired,
   active: PropTypes.bool,
   classes: PropTypes.object,
-  onClick: PropTypes.func
+  onClick: PropTypes.func,
 };
 
 export const Point = injectSheet(styles)(RawPoint);
 
 const Points = ({ selectPoint, classes, selected, icons }) => {
-  const iconTags = icons.map(key => {
+  const iconTags = icons.map((key) => {
     let active = key === selected;
     let onClick = active ? () => {} : selectPoint.bind(null, key);
-    return (
-      <Point
-        key={key.toLowerCase()}
-        iconKey={key.toLowerCase()}
-        active={active}
-        onClick={onClick}
-      />
-    ); //icon(key, active);
+    return <Point key={key.toLowerCase()} iconKey={key.toLowerCase()} active={active} onClick={onClick} />; //icon(key, active);
   });
 
   return <div className={classes.elementSelector}>{iconTags}</div>;
@@ -66,14 +62,14 @@ Points.propTypes = {
   selectPoint: PropTypes.func.isRequired,
   classes: PropTypes.object.isRequired,
   selected: PropTypes.string,
-  icons: PropTypes.array
+  icons: PropTypes.array,
 };
 
 export class PointChooser extends React.Component {
   static defaultProps = {
     showDeleteButton: false,
     elementType: PointChooser.DEFAULT_TYPE,
-    icons: ['pf', 'lff', 'lef', 'lfe', 'lee', 'rfn', 'rfp', 'ren', 'rep']
+    icons: ['pf', 'lff', 'lef', 'lfe', 'lee', 'rfn', 'rfp', 'ren', 'rep'],
   };
 
   static propTypes = {
@@ -84,7 +80,8 @@ export class PointChooser extends React.Component {
     onElementType: PropTypes.func.isRequired,
     onUndoElement: PropTypes.func.isRequired,
     onClearElements: PropTypes.func.isRequired,
-    icons: PropTypes.array
+    icons: PropTypes.array,
+    language: PropTypes.string,
   };
 
   render() {
@@ -96,25 +93,29 @@ export class PointChooser extends React.Component {
       onClearElements,
       icons,
       classes,
-      onElementType
+      onElementType,
+      language,
     } = this.props;
 
     return (
       <div className={classes.pointChooser}>
-        <Points
-          selected={elementType}
-          classes={classes}
-          selectPoint={onElementType}
-          icons={icons}
-        />
+        <Points selected={elementType} classes={classes} selectPoint={onElementType} icons={icons} />
         <div className={classes.controls}>
           {showDeleteButton && (
             <span className={classes.deleteIconHolder} onClick={onDeleteClick}>
-            <DeleteIcon classes={classes} />
-          </span>
+              <DeleteIcon classes={classes} />
+            </span>
           )}
-          <Button onClick={onUndoElement} label="Undo" />
-          <Button onClick={onClearElements} label="Clear all" />
+          <Button
+            className={classes.buttonText}
+            onClick={onUndoElement}
+            label={translator.t('common:undo', { lng: language })}
+          />
+          <Button
+            className={classes.buttonText}
+            onClick={onClearElements}
+            label={translator.t('numberLine.clearAll', { lng: language })}
+          />
         </div>
       </div>
     );

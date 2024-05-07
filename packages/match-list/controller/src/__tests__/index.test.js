@@ -54,9 +54,7 @@ describe('controller', () => {
 
     describe('mode: evaluate', () => {
       const returnCorrectness = (session) => {
-        it(`returns correctness and score: 0 if session is ${JSON.stringify(
-          session
-        )}`, async () => {
+        it(`returns correctness and score: 0 if session is ${JSON.stringify(session)}`, async () => {
           const m = await model(question, session, { mode: 'evaluate' });
 
           expect(m).toEqual(
@@ -65,7 +63,7 @@ describe('controller', () => {
                 correctness: 'unanswered',
                 score: '0%',
               },
-            })
+            }),
           );
         });
       };
@@ -109,15 +107,11 @@ describe('controller', () => {
           },
           session,
           env,
-          updateSession
+          updateSession,
         );
 
         expect(result.config.prompts).toEqual([prompt(2, 2), prompt(1, 1)]);
-        expect(result.config.answers).toEqual([
-          answer(4),
-          answer(5),
-          answer(3),
-        ]);
+        expect(result.config.answers).toEqual([answer(4), answer(5), answer(3)]);
       });
     });
   });
@@ -132,7 +126,7 @@ describe('controller', () => {
             answers: [answer(1), answer(2), answer(3)],
           },
           sessionValue,
-          env
+          env,
         );
 
         expect(result).toEqual(expect.objectContaining(expected));
@@ -149,7 +143,7 @@ describe('controller', () => {
         },
       },
       { mode: 'evaluate' },
-      { score: 0.5 }
+      { score: 0.5 },
     );
 
     assertOutcome(
@@ -162,7 +156,7 @@ describe('controller', () => {
         },
       },
       { mode: 'evaluate' },
-      { score: 0 }
+      { score: 0 },
     );
 
     assertOutcome(
@@ -178,7 +172,7 @@ describe('controller', () => {
         mode: 'evaluate',
         partialScoring: true,
       },
-      { score: 0 }
+      { score: 0 },
     );
 
     assertOutcome(
@@ -194,23 +188,21 @@ describe('controller', () => {
         mode: 'evaluate',
         partialScoring: false,
       },
-      { score: 0 }
+      { score: 0 },
     );
   });
 
   describe('outcome', () => {
     describe('mode: evaluate', () => {
       const returnOutcome = (session) => {
-        it(`returns empty: true and score: 0 if session is ${JSON.stringify(
-          session
-        )}`, async () => {
+        it(`returns empty: true and score: 0 if session is ${JSON.stringify(session)}`, async () => {
           const o = await outcome(question, session, { mode: 'evaluate' });
 
           expect(o).toEqual(
             expect.objectContaining({
               score: 0,
               empty: true,
-            })
+            }),
           );
         });
       };

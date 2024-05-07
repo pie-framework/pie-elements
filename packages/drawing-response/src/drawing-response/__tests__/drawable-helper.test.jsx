@@ -17,7 +17,7 @@ describe('DrawableHelper', () => {
 
       expect(o).toEqual({
         type: 'FOO_TYPE',
-        foo: 'bar'
+        foo: 'bar',
       });
     });
   });

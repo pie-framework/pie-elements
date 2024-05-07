@@ -3,35 +3,35 @@ import React from 'react';
 
 import { Main } from '../main';
 
-jest.mock('@pie-lib/config-ui', () => ({
+jest.mock('@pie-lib/pie-toolbox/config-ui', () => ({
   layout: {
-    ConfigLayout: props => <div {...props} />
+    ConfigLayout: (props) => <div {...props} />,
   },
   choiceUtils: {
-    firstAvailableIndex: jest.fn()
+    firstAvailableIndex: jest.fn(),
   },
   settings: {
-    Panel: props => <div {...props} />,
+    Panel: (props) => <div {...props} />,
     toggle: jest.fn(),
-    radio: jest.fn()
-  }
+    radio: jest.fn(),
+  },
 }));
 
 const model = () => ({
   correctResponse: [],
   choices: [],
-  categories: []
+  categories: [],
 });
 
 describe('Main', () => {
   let w;
   let onModelChanged = jest.fn();
-  const wrapper = extras => {
+  const wrapper = (extras) => {
     const defaults = {
       classes: {},
       className: 'className',
       onModelChanged,
-      model: model()
+      model: model(),
     };
     const props = { ...defaults, ...extras };
 

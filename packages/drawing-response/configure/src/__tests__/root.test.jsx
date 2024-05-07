@@ -4,16 +4,16 @@ import React from 'react';
 import { Root } from '../root';
 import defaults from '../defaults';
 
-jest.mock('@pie-lib/config-ui', () => ({
+jest.mock('@pie-lib/pie-toolbox/config-ui', () => ({
   settings: {
-    Panel: props => <div {...props} />,
+    Panel: (props) => <div {...props} />,
     toggle: jest.fn(),
     radio: jest.fn(),
-    dropdown: jest.fn()
+    dropdown: jest.fn(),
   },
   layout: {
-    ConfigLayout: props => <div>{props.children}</div>
-  }
+    ConfigLayout: (props) => <div>{props.children}</div>,
+  },
 }));
 
 const model = {
@@ -22,8 +22,8 @@ const model = {
   imageUrl: '',
   imageDimensions: {
     height: 100,
-    width: 100
-  }
+    width: 100,
+  },
 };
 
 describe('Root', () => {
@@ -58,37 +58,37 @@ describe('Root', () => {
     it('onPromptChanged calls onModelChanged', () => {
       w.instance().onPromptChanged('New Prompt');
 
-      expect(onModelChanged).toHaveBeenCalledWith(
-          expect.objectContaining({ prompt: 'New Prompt' }))
+      expect(onModelChanged).toHaveBeenCalledWith(expect.objectContaining({ prompt: 'New Prompt' }));
     });
 
     it('onTeacherInstructionsChanged calls onModelChanged', () => {
       w.instance().onTeacherInstructionsChanged('New Teacher Instructions');
 
       expect(onModelChanged).toHaveBeenCalledWith(
-          expect.objectContaining({ teacherInstructions: 'New Teacher Instructions' }))
+        expect.objectContaining({ teacherInstructions: 'New Teacher Instructions' }),
+      );
     });
 
     it('onUpdateImageDimension calls onModelChanged', () => {
       w.instance().onUpdateImageDimension({
         height: 200,
-        width: 200
+        width: 200,
       });
 
       expect(onModelChanged).toHaveBeenCalledWith(
-          expect.objectContaining({ imageDimensions: {
-              height: 200,
-              width: 200
-            }
-          }))
+        expect.objectContaining({
+          imageDimensions: {
+            height: 200,
+            width: 200,
+          },
+        }),
+      );
     });
 
     it('onImageUpload calls onModelChanged', () => {
       w.instance().onImageUpload('url');
 
-      expect(onModelChanged).toHaveBeenCalledWith(
-          expect.objectContaining({ imageUrl: 'url' }))
+      expect(onModelChanged).toHaveBeenCalledWith(expect.objectContaining({ imageUrl: 'url' }));
     });
   });
 });
-

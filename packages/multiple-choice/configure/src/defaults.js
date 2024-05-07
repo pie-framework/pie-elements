@@ -11,7 +11,7 @@ export default {
     lockChoiceOrder: true,
     partialScoring: true,
     scoringType: 'auto',
-    feedbackEnabled: true,
+    feedbackEnabled: false,
     promptEnabled: true,
     rationaleEnabled: true,
     teacherInstructionsEnabled: true,
@@ -21,6 +21,23 @@ export default {
     gridColumns: '2',
   },
   configuration: {
+    baseInputConfiguration: {
+      audio: { disabled: false },
+      video: { disabled: false },
+      image: { disabled: false },
+    },
+    choices: {
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
+    },
+    spellCheck: {
+      label: 'Spellcheck',
+      settings: false,
+      enabled: true,
+    },
     choicesLayout: {
       settings: false,
       label: 'Choices Layout',
@@ -51,6 +68,12 @@ export default {
     prompt: {
       settings: true,
       label: 'Prompt',
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
+      required: false,
     },
     lockChoiceOrder: {
       settings: true,
@@ -63,10 +86,21 @@ export default {
     rationale: {
       settings: true,
       label: 'Rationale',
+      inputConfiguration: {
+        audio: { disabled: true },
+        video: { disabled: true },
+        image: { disabled: false },
+      },
+      required: false,
     },
     accessibility: {
       settings: false,
-      label: 'Accessibility Label'
+      label: 'Accessibility Label',
+      inputConfiguration: {
+        audio: { disabled: true },
+        video: { disabled: true },
+        image: { disabled: false },
+      },
     },
     scoringType: {
       settings: false,
@@ -79,12 +113,47 @@ export default {
     teacherInstructions: {
       settings: true,
       label: 'Teacher Instructions',
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
+      required: false,
     },
     toolbarEditorPosition: {
       settings: false,
       label: 'Toolbar Editor Position',
     },
     minAnswerChoices: 2,
-    maxAnswerChoices: 5
+    maxAnswerChoices: 5,
+    maxImageWidth: {
+      teacherInstructions: 300,
+      prompt: 300,
+      rationale: 636,
+      choices: 900,
+    },
+    maxImageHeight: {
+      teacherInstructions: 300,
+      prompt: 300,
+      rationale: 300,
+      choices: 300,
+    },
+    withRubric: {
+      settings: false,
+      label: 'Add Rubric',
+    },
+    mathMlOptions: {
+      mmlOutput: false,
+      mmlEditing: false,
+    },
+    language: {
+      settings: false,
+      label: 'Specify Language',
+      enabled: false,
+    },
+    languageChoices: {
+      label: 'Language Choices',
+      options: [],
+    },
   },
 };

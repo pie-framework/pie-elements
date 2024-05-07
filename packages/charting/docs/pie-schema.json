@@ -8,11 +8,6 @@
       "type": "boolean",
       "title": "addCategoryEnabled"
     },
-    "categoryDefaultLabel": {
-      "description": "Indicates default value for a new category's label",
-      "type": "string",
-      "title": "categoryDefaultLabel"
-    },
     "chartType": {
       "enum": [
         "bar",
@@ -52,13 +47,8 @@
                   "type": "number",
                   "title": "value"
                 },
-                "initial": {
-                  "description": "Indicates if category is default category",
-                  "type": "boolean",
-                  "title": "initial"
-                },
                 "interactive": {
-                  "description": "Indicates if category label & value are interactive",
+                  "description": "Indicates if category value is interactive",
                   "type": "boolean",
                   "title": "interactive"
                 },
@@ -104,7 +94,6 @@
                 "correctness",
                 "deletable",
                 "editable",
-                "initial",
                 "interactive",
                 "label",
                 "value"
@@ -128,13 +117,8 @@
                     "type": "number",
                     "title": "value"
                   },
-                  "initial": {
-                    "description": "Indicates if category is default category",
-                    "type": "boolean",
-                    "title": "initial"
-                  },
                   "interactive": {
-                    "description": "Indicates if category label & value are interactive",
+                    "description": "Indicates if category value is interactive",
                     "type": "boolean",
                     "title": "interactive"
                   },
@@ -180,7 +164,6 @@
                   "correctness",
                   "deletable",
                   "editable",
-                  "initial",
                   "interactive",
                   "label",
                   "value"
@@ -214,13 +197,8 @@
               "type": "number",
               "title": "value"
             },
-            "initial": {
-              "description": "Indicates if category is default category",
-              "type": "boolean",
-              "title": "initial"
-            },
             "interactive": {
-              "description": "Indicates if category label & value are interactive",
+              "description": "Indicates if category value is interactive",
               "type": "boolean",
               "title": "interactive"
             },
@@ -266,7 +244,6 @@
             "correctness",
             "deletable",
             "editable",
-            "initial",
             "interactive",
             "label",
             "value"
@@ -290,13 +267,8 @@
                 "type": "number",
                 "title": "value"
               },
-              "initial": {
-                "description": "Indicates if category is default category",
-                "type": "boolean",
-                "title": "initial"
-              },
               "interactive": {
-                "description": "Indicates if category label & value are interactive",
+                "description": "Indicates if category value is interactive",
                 "type": "boolean",
                 "title": "interactive"
               },
@@ -342,7 +314,6 @@
               "correctness",
               "deletable",
               "editable",
-              "initial",
               "interactive",
               "label",
               "value"
@@ -389,11 +360,6 @@
         "min",
         "step"
       ]
-    },
-    "editCategoryEnabled": {
-      "description": "Indicates if user can edit default categories",
-      "type": "boolean",
-      "title": "editCategoryEnabled"
     },
     "graph": {
       "title": "Chart",
@@ -492,10 +458,35 @@
       "type": "string",
       "title": "title"
     },
+    "placeholderMessages": {
+      "title": "Placeholder",
+      "type": "object",
+      "properties": {
+        "title": {
+          "description": "Indicates placeholder message if title is not defined",
+          "type": "string",
+          "title": "title"
+        },
+        "labels": {
+          "description": "Indicates placeholder message if labels for range or domain are not defined",
+          "type": "string",
+          "title": "labels"
+        }
+      },
+      "required": [
+        "labels",
+        "title"
+      ]
+    },
     "rationaleEnabled": {
       "description": "Indicates if Rationale are enabled",
       "type": "boolean",
       "title": "rationaleEnabled"
+    },
+    "spellCheckEnabled": {
+      "description": "Indicates if spellcheck is enabled for the author. Default value is true",
+      "type": "boolean",
+      "title": "spellCheckEnabled"
     },
     "studentInstructionsEnabled": {
       "description": "Indicates if Student Instructions are enabled",
@@ -506,6 +497,36 @@
       "description": "Indicates if Teacher Instructions are enabled",
       "type": "boolean",
       "title": "teacherInstructionsEnabled"
+    },
+    "rubricEnabled": {
+      "description": "Indicates if Rubric is enabled",
+      "type": "boolean",
+      "title": "rubricEnabled"
+    },
+    "changeInteractiveEnabled": {
+      "description": "Indicates if teacher can enable/disable data[]:interactive. Default value is false",
+      "type": "boolean",
+      "title": "changeInteractiveEnabled"
+    },
+    "changeEditableEnabled": {
+      "description": "Indicates if teacher can enable/disable data[]:editable. Default value is false",
+      "type": "boolean",
+      "title": "changeEditableEnabled"
+    },
+    "changeAddCategoryEnabled": {
+      "description": "Indicates if teacher can enable/disable addCategoryEnabled. Default value is false",
+      "type": "boolean",
+      "title": "changeAddCategoryEnabled"
+    },
+    "studentNewCategoryDefaultLabel": {
+      "description": "Label for new category in correct response and player's chart",
+      "type": "string",
+      "title": "studentNewCategoryDefaultLabel"
+    },
+    "language": {
+      "description": "Indicates the language of the component\nSupported options: en, es, en_US, en-US, es_ES, es-ES, es_MX, es-MX",
+      "type": "string",
+      "title": "language"
     },
     "id": {
       "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
@@ -520,21 +541,263 @@
   },
   "required": [
     "addCategoryEnabled",
-    "categoryDefaultLabel",
+    "changeAddCategoryEnabled",
+    "changeEditableEnabled",
+    "changeInteractiveEnabled",
     "chartType",
     "correctAnswer",
     "data",
     "domain",
-    "editCategoryEnabled",
     "element",
     "graph",
     "id",
     "range",
     "rationaleEnabled",
+    "rubricEnabled",
+    "spellCheckEnabled",
     "studentInstructionsEnabled",
+    "studentNewCategoryDefaultLabel",
     "teacherInstructionsEnabled"
   ],
   "definitions": {
+    "EditableHtmlConfigureProp": {
+      "title": "EditableHtmlConfigureProp",
+      "type": "object",
+      "properties": {
+        "math": {
+          "title": "EditableHtmlButtonConfigure",
+          "type": "object",
+          "properties": {
+            "disabled": {
+              "description": "Indicates if the plugin is disabled or not",
+              "type": "boolean",
+              "title": "disabled"
+            }
+          }
+        },
+        "audio": {
+          "title": "EditableHtmlButtonConfigure",
+          "type": "object",
+          "properties": {
+            "disabled": {
+              "description": "Indicates if the plugin is disabled or not",
+              "type": "boolean",
+              "title": "disabled"
+            }
+          }
+        },
+        "video": {
+          "title": "EditableHtmlButtonConfigure",
+          "type": "object",
+          "properties": {
+            "disabled": {
+              "description": "Indicates if the plugin is disabled or not",
+              "type": "boolean",
+              "title": "disabled"
+            }
+          }
+        },
+        "image": {
+          "title": "EditableHtmlButtonConfigure",
+          "type": "object",
+          "properties": {
+            "disabled": {
+              "description": "Indicates if the plugin is disabled or not",
+              "type": "boolean",
+              "title": "disabled"
+            }
+          }
+        },
+        "customPlugins": {
+          "description": "An array of objects that determine custom plugins.\nA custom plugin is an object which determines how the button will look like (icon) and the event name that will be triggered when button gets pressed (event).\nExample can be found at https://github.com/pie-framework/pie-lib/blob/develop/packages/demo/pages/editable-html.js#L425.",
+          "type": "array",
+          "items": {
+            "title": "CustomPlugin",
+            "type": "object",
+            "properties": {
+              "event": {
+                "description": "The name of the custom event. It needs to be valid (only letters, numbers and \"_\" can be used).\nPIE will emit the event prefixed with \"PIE-\".\nEg: event = 'client_custom_event_A' => the emitted event will be \"PIE-client_custom_event_A\"",
+                "type": "string",
+                "title": "event"
+              },
+              "iconAlt": {
+                "description": "The alt for the custom button icon",
+                "type": "string",
+                "title": "iconAlt"
+              },
+              "iconType": {
+                "description": "The icon type.\nCurrently, only \"SVG\" is supported.",
+                "type": "string",
+                "title": "iconType"
+              },
+              "icon": {
+                "description": "The icon string. Currently, only \"SVG\" is supported, so it needs to be a valid svg.",
+                "type": "string",
+                "title": "icon"
+              }
+            },
+            "required": [
+              "event",
+              "icon",
+              "iconAlt",
+              "iconType"
+            ]
+          },
+          "title": "customPlugins"
+        }
+      }
+    },
+    "EditableHtmlButtonConfigure": {
+      "title": "EditableHtmlButtonConfigure",
+      "type": "object",
+      "properties": {
+        "disabled": {
+          "description": "Indicates if the plugin is disabled or not",
+          "type": "boolean",
+          "title": "disabled"
+        }
+      }
+    },
+    "CustomPlugin": {
+      "title": "CustomPlugin",
+      "type": "object",
+      "properties": {
+        "event": {
+          "description": "The name of the custom event. It needs to be valid (only letters, numbers and \"_\" can be used).\nPIE will emit the event prefixed with \"PIE-\".\nEg: event = 'client_custom_event_A' => the emitted event will be \"PIE-client_custom_event_A\"",
+          "type": "string",
+          "title": "event"
+        },
+        "iconAlt": {
+          "description": "The alt for the custom button icon",
+          "type": "string",
+          "title": "iconAlt"
+        },
+        "iconType": {
+          "description": "The icon type.\nCurrently, only \"SVG\" is supported.",
+          "type": "string",
+          "title": "iconType"
+        },
+        "icon": {
+          "description": "The icon string. Currently, only \"SVG\" is supported, so it needs to be a valid svg.",
+          "type": "string",
+          "title": "icon"
+        }
+      },
+      "required": [
+        "event",
+        "icon",
+        "iconAlt",
+        "iconType"
+      ]
+    },
+    "EditableHtmlPluginConfigureRequired": {
+      "title": "EditableHtmlPluginConfigureRequired",
+      "type": "object",
+      "properties": {
+        "inputConfiguration": {
+          "title": "EditableHtmlConfigureProp",
+          "type": "object",
+          "properties": {
+            "math": {
+              "title": "EditableHtmlButtonConfigure",
+              "type": "object",
+              "properties": {
+                "disabled": {
+                  "description": "Indicates if the plugin is disabled or not",
+                  "type": "boolean",
+                  "title": "disabled"
+                }
+              }
+            },
+            "audio": {
+              "title": "EditableHtmlButtonConfigure",
+              "type": "object",
+              "properties": {
+                "disabled": {
+                  "description": "Indicates if the plugin is disabled or not",
+                  "type": "boolean",
+                  "title": "disabled"
+                }
+              }
+            },
+            "video": {
+              "title": "EditableHtmlButtonConfigure",
+              "type": "object",
+              "properties": {
+                "disabled": {
+                  "description": "Indicates if the plugin is disabled or not",
+                  "type": "boolean",
+                  "title": "disabled"
+                }
+              }
+            },
+            "image": {
+              "title": "EditableHtmlButtonConfigure",
+              "type": "object",
+              "properties": {
+                "disabled": {
+                  "description": "Indicates if the plugin is disabled or not",
+                  "type": "boolean",
+                  "title": "disabled"
+                }
+              }
+            },
+            "customPlugins": {
+              "description": "An array of objects that determine custom plugins.\nA custom plugin is an object which determines how the button will look like (icon) and the event name that will be triggered when button gets pressed (event).\nExample can be found at https://github.com/pie-framework/pie-lib/blob/develop/packages/demo/pages/editable-html.js#L425.",
+              "type": "array",
+              "items": {
+                "title": "CustomPlugin",
+                "type": "object",
+                "properties": {
+                  "event": {
+                    "description": "The name of the custom event. It needs to be valid (only letters, numbers and \"_\" can be used).\nPIE will emit the event prefixed with \"PIE-\".\nEg: event = 'client_custom_event_A' => the emitted event will be \"PIE-client_custom_event_A\"",
+                    "type": "string",
+                    "title": "event"
+                  },
+                  "iconAlt": {
+                    "description": "The alt for the custom button icon",
+                    "type": "string",
+                    "title": "iconAlt"
+                  },
+                  "iconType": {
+                    "description": "The icon type.\nCurrently, only \"SVG\" is supported.",
+                    "type": "string",
+                    "title": "iconType"
+                  },
+                  "icon": {
+                    "description": "The icon string. Currently, only \"SVG\" is supported, so it needs to be a valid svg.",
+                    "type": "string",
+                    "title": "icon"
+                  }
+                },
+                "required": [
+                  "event",
+                  "icon",
+                  "iconAlt",
+                  "iconType"
+                ]
+              },
+              "title": "customPlugins"
+            }
+          }
+        },
+        "required": {
+          "description": "Indicates if the item is required and the value cannot be empty",
+          "type": "boolean",
+          "title": "required"
+        },
+        "settings": {
+          "description": "Indicates if the item has to be displayed in the Settings Panel",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+          "type": "string",
+          "title": "label"
+        }
+      }
+    },
     "ConfigureProp": {
       "title": "ConfigureProp",
       "type": "object",
@@ -551,10 +814,35 @@
         }
       }
     },
-    "ConfigurePropWithEnabled": {
-      "title": "ConfigurePropWithEnabled",
+    "LabelsPlaceholderConfigProp": {
+      "title": "LabelsPlaceholderConfigProp",
       "type": "object",
       "properties": {
+        "top": {
+          "description": "This value is empty for charting. The property exist in order to be consistent with graphing configuration.",
+          "type": "string",
+          "title": "top"
+        },
+        "right": {
+          "description": "This value is empty for charting. The property exist in order to be consistent with graphing configuration.",
+          "type": "string",
+          "title": "right"
+        },
+        "bottom": {
+          "description": "Indicates the placeholder for the bottom label",
+          "type": "string",
+          "title": "bottom"
+        },
+        "left": {
+          "description": "Indicates the placeholder for the left label",
+          "type": "string",
+          "title": "left"
+        },
+        "enabled": {
+          "description": "Indicates the value of the item if it affects config-ui\n(eg.: if item is a switch and displaying an input on the config-ui depends on the switch value: on/off)",
+          "type": "boolean",
+          "title": "enabled"
+        },
         "settings": {
           "description": "Indicates if the item has to be displayed in the Settings Panel",
           "type": "boolean",
@@ -564,13 +852,246 @@
           "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
           "type": "string",
           "title": "label"
-        },
+        }
+      }
+    },
+    "ConfigurePropWithEnabled": {
+      "title": "ConfigurePropWithEnabled",
+      "type": "object",
+      "properties": {
         "enabled": {
           "description": "Indicates the value of the item if it affects config-ui\n(eg.: if item is a switch and displaying an input on the config-ui depends on the switch value: on/off)",
           "type": "boolean",
           "title": "enabled"
+        },
+        "settings": {
+          "description": "Indicates if the item has to be displayed in the Settings Panel",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+          "type": "string",
+          "title": "label"
         }
       }
+    },
+    "AuthorNewCategoryDefaults": {
+      "title": "AuthorNewCategoryDefaults",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "Indicates if the item has to be displayed in the Settings Panel",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the new category",
+          "type": "string",
+          "title": "label"
+        },
+        "interactive": {
+          "description": "Indicates if new category is interactive",
+          "type": "boolean",
+          "title": "interactive"
+        },
+        "editable": {
+          "description": "Indicates if new category is editable",
+          "type": "boolean",
+          "title": "editable"
+        }
+      }
+    },
+    "ConfigureMathMLProp": {
+      "title": "ConfigureMathMLProp",
+      "type": "object",
+      "properties": {
+        "mmlOutput": {
+          "description": "Indicates if model should have mathML output instead of latex",
+          "type": "number",
+          "title": "mmlOutput"
+        },
+        "mmlEditing": {
+          "description": "Indicates if mathML that's already in model should be editable",
+          "type": "number",
+          "title": "mmlEditing"
+        }
+      }
+    },
+    "ConfigureMaxImageDimensionsProp": {
+      "title": "ConfigureMaxImageDimensionsProp",
+      "type": "object",
+      "properties": {
+        "teacherInstructions": {
+          "description": "Indicates the max dimension for images in teacher instructions",
+          "type": "number",
+          "title": "teacherInstructions"
+        },
+        "prompt": {
+          "description": "Indicates the max dimension for images in prompt - this is also the default dimension for all other input fields if it's not specified",
+          "type": "number",
+          "title": "prompt"
+        },
+        "rationale": {
+          "description": "Indicates the max dimension for images in rationale",
+          "type": "number",
+          "title": "rationale"
+        }
+      }
+    },
+    "ChartingOptions": {
+      "title": "ChartingOptions",
+      "type": "object",
+      "properties": {
+        "changeInteractive": {
+          "title": "ChartingOption",
+          "type": "object",
+          "properties": {
+            "settings": {
+              "description": "Indicates if the item has to be displayed in the Settings Panel",
+              "type": "boolean",
+              "title": "settings"
+            },
+            "authoringLabel": {
+              "description": "Indicates the label for the option",
+              "type": "string",
+              "title": "authoringLabel"
+            },
+            "settingsLabel": {
+              "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+              "type": "string",
+              "title": "settingsLabel"
+            }
+          }
+        },
+        "changeEditable": {
+          "title": "ChartingOption",
+          "type": "object",
+          "properties": {
+            "settings": {
+              "description": "Indicates if the item has to be displayed in the Settings Panel",
+              "type": "boolean",
+              "title": "settings"
+            },
+            "authoringLabel": {
+              "description": "Indicates the label for the option",
+              "type": "string",
+              "title": "authoringLabel"
+            },
+            "settingsLabel": {
+              "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+              "type": "string",
+              "title": "settingsLabel"
+            }
+          }
+        },
+        "addCategory": {
+          "title": "ChartingOption",
+          "type": "object",
+          "properties": {
+            "settings": {
+              "description": "Indicates if the item has to be displayed in the Settings Panel",
+              "type": "boolean",
+              "title": "settings"
+            },
+            "authoringLabel": {
+              "description": "Indicates the label for the option",
+              "type": "string",
+              "title": "authoringLabel"
+            },
+            "settingsLabel": {
+              "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+              "type": "string",
+              "title": "settingsLabel"
+            }
+          }
+        }
+      }
+    },
+    "ChartingOption": {
+      "title": "ChartingOption",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "Indicates if the item has to be displayed in the Settings Panel",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "authoringLabel": {
+          "description": "Indicates the label for the option",
+          "type": "string",
+          "title": "authoringLabel"
+        },
+        "settingsLabel": {
+          "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+          "type": "string",
+          "title": "settingsLabel"
+        }
+      }
+    },
+    "AvailableChartTypes": {
+      "title": "AvailableChartTypes",
+      "type": "object",
+      "properties": {
+        "bar": {
+          "description": "Indicates if bar chart is available and the label used for it.",
+          "type": "string",
+          "title": "bar"
+        },
+        "histogram": {
+          "description": "Indicates if histogram is available and the label used for it.",
+          "type": "string",
+          "title": "histogram"
+        },
+        "lineDot": {
+          "description": "Indicates if line chart with dots is available and the label used for it.",
+          "type": "string",
+          "title": "lineDot"
+        },
+        "lineCross": {
+          "description": "Indicates if line chart with crosses is available and the label used for it.",
+          "type": "string",
+          "title": "lineCross"
+        },
+        "dotPlot": {
+          "description": "Indicates if dot plot is available and the label used for it.",
+          "type": "string",
+          "title": "dotPlot"
+        },
+        "linePlot": {
+          "description": "Indicates if line plot is available and the label used for it.",
+          "type": "string",
+          "title": "linePlot"
+        }
+      },
+      "required": [
+        "bar",
+        "dotPlot",
+        "histogram",
+        "lineCross",
+        "lineDot",
+        "linePlot"
+      ]
+    },
+    "ConfigureLanguageOptionsProp": {
+      "title": "ConfigureLanguageOptionsProp",
+      "type": "object",
+      "properties": {
+        "value": {
+          "description": "Value of the language option",
+          "type": "string",
+          "title": "value"
+        },
+        "label": {
+          "description": "Label of the language option",
+          "type": "string",
+          "title": "label"
+        }
+      },
+      "required": [
+        "label",
+        "value"
+      ]
     },
     "Answer": {
       "title": "Answer",
@@ -599,13 +1120,8 @@
                   "type": "number",
                   "title": "value"
                 },
-                "initial": {
-                  "description": "Indicates if category is default category",
-                  "type": "boolean",
-                  "title": "initial"
-                },
                 "interactive": {
-                  "description": "Indicates if category label & value are interactive",
+                  "description": "Indicates if category value is interactive",
                   "type": "boolean",
                   "title": "interactive"
                 },
@@ -651,7 +1167,6 @@
                 "correctness",
                 "deletable",
                 "editable",
-                "initial",
                 "interactive",
                 "label",
                 "value"
@@ -675,13 +1190,8 @@
                     "type": "number",
                     "title": "value"
                   },
-                  "initial": {
-                    "description": "Indicates if category is default category",
-                    "type": "boolean",
-                    "title": "initial"
-                  },
                   "interactive": {
-                    "description": "Indicates if category label & value are interactive",
+                    "description": "Indicates if category value is interactive",
                     "type": "boolean",
                     "title": "interactive"
                   },
@@ -727,7 +1237,6 @@
                   "correctness",
                   "deletable",
                   "editable",
-                  "initial",
                   "interactive",
                   "label",
                   "value"
@@ -757,13 +1266,8 @@
           "type": "number",
           "title": "value"
         },
-        "initial": {
-          "description": "Indicates if category is default category",
-          "type": "boolean",
-          "title": "initial"
-        },
         "interactive": {
-          "description": "Indicates if category label & value are interactive",
+          "description": "Indicates if category value is interactive",
           "type": "boolean",
           "title": "interactive"
         },
@@ -809,7 +1313,6 @@
         "correctness",
         "deletable",
         "editable",
-        "initial",
         "interactive",
         "label",
         "value"
@@ -871,6 +1374,26 @@
       "required": [
         "height",
         "width"
+      ]
+    },
+    "Placeholder": {
+      "title": "Placeholder",
+      "type": "object",
+      "properties": {
+        "title": {
+          "description": "Indicates placeholder message if title is not defined",
+          "type": "string",
+          "title": "title"
+        },
+        "labels": {
+          "description": "Indicates placeholder message if labels for range or domain are not defined",
+          "type": "string",
+          "title": "labels"
+        }
+      },
+      "required": [
+        "labels",
+        "title"
       ]
     }
   },

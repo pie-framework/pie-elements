@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { SessionChangedEvent } from '@pie-framework/pie-player-events';
-import { renderMath } from '@pie-lib/math-rendering';
+import { renderMath } from '@pie-lib/pie-toolbox/math-rendering-accessible';
 
-import {  removeInvalidAnswers } from './utils';
+import { removeInvalidAnswers } from './utils';
 import Main from './main';
 
 export { Main as Component };
@@ -23,21 +23,26 @@ export default class Graphing extends HTMLElement {
     this._render();
   }
 
+  get session() {
+    return this._session;
+  }
+
   connectedCallback() {
     this._render();
   }
 
-  isComplete = answer => Array.isArray(answer) && answer.length > 0;
+  isComplete = (answer) => Array.isArray(answer) && answer.length > 0;
 
-  changeAnswers = answer => {
-    this._session.answer = removeInvalidAnswers(answer);
+  changeAnswers = (answer, isUndoOperation) => {
+    // avoid removeInvalidObjects when undo or redo operations are executed
+    // in order to preserve the logic of undo and redo
+    if (!isUndoOperation) {
+      this._session.answer = removeInvalidAnswers(answer);
+    } else {
+      this._session.answer = answer;
+    }
 
-    this.dispatchEvent(
-      new SessionChangedEvent(
-        this.tagName.toLowerCase(),
-        this.isComplete(this._session.answer)
-      )
-    );
+    this.dispatchEvent(new SessionChangedEvent(this.tagName.toLowerCase(), this.isComplete(this._session.answer)));
 
     this._render();
   };
@@ -50,7 +55,7 @@ export default class Graphing extends HTMLElement {
     const el = React.createElement(Main, {
       model: this._model,
       session: this._session,
-      onAnswersChange: this.changeAnswers
+      onAnswersChange: this.changeAnswers,
     });
 
     ReactDOM.render(el, this, () => {

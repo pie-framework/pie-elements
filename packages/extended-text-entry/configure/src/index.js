@@ -1,7 +1,9 @@
 import {
   ModelUpdatedEvent,
   DeleteImageEvent,
-  InsertImageEvent
+  InsertImageEvent,
+  InsertSoundEvent,
+  DeleteSoundEvent,
 } from '@pie-framework/pie-configure-events';
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -10,27 +12,58 @@ import Main from './main';
 import defaults from './defaults';
 
 export default class ExtendedTextEntry extends HTMLElement {
-  static createDefaultModel = (model = {}) => ({
-    ...defaults.model,
-    ...model
-  });
+  static createDefaultModel = (model = {}, config) => {
+    const defaultModel = {
+      ...defaults.model,
+      ...model,
+    };
+
+    // if configuration.withRubric.forceEnabled is true, then we update the model (rubricEnabled)
+    // without triggering the Model Updated event (for more details, check documentation)
+    if (config?.withRubric?.forceEnabled && !defaultModel.rubricEnabled) {
+      defaultModel.rubricEnabled = true;
+    }
+
+    return defaultModel;
+  };
+
 
   constructor() {
     super();
-    this._model = ExtendedTextEntry.createDefaultModel();
     this._configuration = defaults.configuration;
+
+    // if configuration.withRubric.forceEnabled is true, then we
+    // update the configuration (we do not want to display the toggle in the Settings Panel)
+    if (this._configuration.withRubric?.forceEnabled) {
+      this._configuration.withRubric.settings = false;
+    }
+
+    this._model = ExtendedTextEntry.createDefaultModel({}, this._configuration);
   }
 
   set model(m) {
-    this._model = ExtendedTextEntry.createDefaultModel(m);
+    this._model = ExtendedTextEntry.createDefaultModel(m, this._configuration);
     this.render();
   }
 
   set configuration(c) {
     this._configuration = {
       ...defaults.configuration,
-      ...c
+      ...c,
     };
+
+    const { withRubric = {} } = c || {};
+
+    // if configuration.withRubric.forceEnabled is true, then we update the model (rubricEnabled)
+    // without triggering the Model Updated event (for more details, check documentation)
+    // and also update the configuration (we do not want to display the toggle in the Settings Panel)
+    if (withRubric?.forceEnabled) {
+      this._configuration.withRubric.settings = false;
+
+      if (!this._model.rubricEnabled) {
+        this._model.rubricEnabled = true;
+      }
+    }
 
     this.render();
   }
@@ -44,7 +77,7 @@ export default class ExtendedTextEntry extends HTMLElement {
   onConfigurationChanged(c) {
     this._configuration = {
       ...defaults.configuration,
-      ...c
+      ...c,
     };
 
     if (this._model) {
@@ -53,7 +86,6 @@ export default class ExtendedTextEntry extends HTMLElement {
 
     this.render();
   }
-
 
   /**
    *
@@ -67,6 +99,14 @@ export default class ExtendedTextEntry extends HTMLElement {
     this.dispatchEvent(new DeleteImageEvent(src, done));
   }
 
+  insertSound(handler) {
+    this.dispatchEvent(new InsertSoundEvent(handler));
+  }
+
+  onDeleteSound(src, done) {
+    this.dispatchEvent(new DeleteSoundEvent(src, done));
+  }
+
   render() {
     if (this._model) {
       const element = React.createElement(Main, {
@@ -76,9 +116,14 @@ export default class ExtendedTextEntry extends HTMLElement {
         onConfigurationChanged: this.onConfigurationChanged.bind(this),
         imageSupport: {
           add: this.insertImage.bind(this),
-          delete: this.onDeleteImage.bind(this)
-        }
+          delete: this.onDeleteImage.bind(this),
+        },
+        uploadSoundSupport: {
+          add: this.insertSound.bind(this),
+          delete: this.onDeleteSound.bind(this),
+        },
       });
+
       ReactDOM.render(element, this);
     }
   }

@@ -2,7 +2,15 @@ import { PromptConfig } from '../../PromptConfig';
 import { CommonConfigSettings } from '../../CommonConfigSettings';
 import { PieModel } from '../../PieModel';
 import { ComplexFeedbackType } from '../../Feedback';
-import { ConfigureProp } from '../ConfigurationProp';
+import {
+  ConfigureLanguageOptionsProp,
+  ConfigureMathMLProp,
+  ConfigureProp,
+  ConfigurePropWithEnabled,
+  EditableHtmlConfigureProp,
+  EditableHtmlPluginConfigure,
+  EditableHtmlPluginConfigureRequired,
+} from '../ConfigurationProp';
 
 /**
  * One row in the match list.
@@ -27,7 +35,9 @@ export interface MatchRow {
  * @additionalProperties false
  */
 export interface MatchPie extends PieModel {
-  /** Indicates if questions can contain images */
+  /** Indicates if questions can contain images
+   * @Deprecated since we added rows.inputConfiguration
+   * */
   enableImages?: boolean;
 
   /** Feedback for student responses */
@@ -76,6 +86,9 @@ export interface MatchPie extends PieModel {
   /** Indicates if Rationale are enabled */
   rationaleEnabled: boolean;
 
+  /** Indicates if spellcheck is enabled for the author. Default value is true */
+  spellCheckEnabled: boolean;
+
   /** Indicates if Student Instructions are enabled */
   studentInstructionsEnabled: boolean;
 
@@ -87,6 +100,28 @@ export interface MatchPie extends PieModel {
    * @default: 'bottom'
    */
   toolbarEditorPosition?: 'bottom' | 'top';
+
+  /** Indicates if Rubric is enabled */
+  rubricEnabled: boolean;
+
+  /** Indicates the language of the component
+   * Supported options: en, es, en_US, en-US, es_ES, es-ES, es_MX, es-MX
+   */
+  language?: string;
+}
+
+interface ConfigureMaxImageDimensionsProp {
+  /** Indicates the max dimension for images in teacher instructions */
+  teacherInstructions?: number;
+
+  /** Indicates the max dimension for images in prompt - this is also the default dimension for all other input fields if it's not specified */
+  prompt?: number;
+
+  /** Indicates the max dimension for images in rationale */
+  rationale?: number;
+
+  /** Indicates the max dimension for images in row labels */
+  rowTitles?: number;
 }
 
 /**
@@ -95,9 +130,22 @@ export interface MatchPie extends PieModel {
  */
 export interface MatchConfigure extends PromptConfig, CommonConfigSettings {
   /**
+   * Base editable html input configuration regarding plugins that are enabled/disabled
+   * E.g. audio, video, image
+   */
+  baseInputConfiguration?: EditableHtmlConfigureProp;
+
+  /**
    * Configuration for enable images
    */
   enableImages?: ConfigureProp;
+
+  /**
+   * Configuration for html input configuration regarding plugins that are enabled/disabled
+   * on each question row
+   * E.g. audio, video, image
+   */
+  rows?: EditableHtmlPluginConfigure;
 
   /**
    * Configuration for feedback
@@ -107,7 +155,7 @@ export interface MatchConfigure extends PromptConfig, CommonConfigSettings {
   /**
    * Configuration for headers
    */
-  headers?: ConfigureProp;
+  headers?: EditableHtmlPluginConfigure;
 
   /**
    * Configuration for layout
@@ -132,12 +180,22 @@ export interface MatchConfigure extends PromptConfig, CommonConfigSettings {
   /**
    * Configuration for the prompt
    */
-  prompt?: ConfigureProp;
+  prompt?: EditableHtmlPluginConfigureRequired;
+
+  /**
+   * Indicates if the settings panel is not available
+   */
+  settingsPanelDisabled?: boolean;
+
+  /**
+   * Configuration for the author's spellcheck
+   */
+  spellCheck?: ConfigureProp;
 
   /**
    * Rationale configuration
    */
-  rationale?: ConfigureProp;
+  rationale?: EditableHtmlPluginConfigureRequired;
 
   /**
    * Scoring Type configuration
@@ -152,5 +210,73 @@ export interface MatchConfigure extends PromptConfig, CommonConfigSettings {
   /**
    * Teacher Instructions configuration
    */
-  teacherInstructions?: ConfigureProp;
+  teacherInstructions?: EditableHtmlPluginConfigureRequired;
+
+  /**
+   * Maximum image width for input fields
+   */
+  maxImageWidth?: ConfigureMaxImageDimensionsProp;
+
+  /**
+   * Maximum image height for input fields
+   */
+  maxImageHeight?: ConfigureMaxImageDimensionsProp;
+
+  /**
+   * Rubric configuration - only relevant in environments that use pie-player-components
+   */
+  withRubric?: ConfigureProp;
+
+  /**
+
+   * Indicates the minimum number of question rows
+   */
+  minQuestions?: number;
+
+  /**
+   * Indicates the maximum number of question rows
+   */
+  maxQuestions?: number;
+
+  /**
+   * Indicates the maximum length of question rows headings
+   */
+  maxLengthQuestionsHeading?: number;
+
+  /**
+   * Indicates the maximum number of answer columns
+   */
+  maxAnswers?: number;
+
+  /**
+   * Indicates the maximum length of answer columns headings
+   */
+  maxLengthAnswers?: number;
+
+  /**
+   * Indicates the maximum length of first column headings
+   */
+  maxLengthFirstColumnHeading?: number;
+
+  /**
+   * How large (in px) should match be
+   */
+  width: string;
+
+  /** Configuration for editable-html */
+  mathMlOptions?: ConfigureMathMLProp;
+
+  /**
+   * Language configuration
+   */
+  language?: ConfigurePropWithEnabled;
+
+  /**
+   * Language choices configuration
+   * Only available if language is enabled
+   */
+  languageChoices?: {
+    label: string;
+    options: ConfigureLanguageOptionsProp[];
+  };
 }

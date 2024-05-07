@@ -1,6 +1,10 @@
-import {PieModel} from '../../PieModel';
-import {ConfigureProp} from '../ConfigurationProp';
-
+import { PieModel } from '../../PieModel';
+import {
+  ConfigureMathMLProp,
+  ConfigureProp,
+  EditableHtmlConfigureProp,
+  EditableHtmlPluginConfigure,
+} from '../ConfigurationProp';
 
 interface Trait {
   /** Trait name */
@@ -14,7 +18,6 @@ interface Trait {
 
   /** Score point descriptors. Starting from 0 to max. */
   scorePointsDescriptors: string[];
-
 }
 
 interface Scale {
@@ -30,7 +33,6 @@ interface Scale {
   /** Traits */
   traits: Trait[];
 }
-
 
 /**
  * Model for the MultiTraitRubric Interaction
@@ -55,6 +57,9 @@ export interface MultiTraitRubricPie extends PieModel {
   /** Indicates if scoring should start at 0 or 1 */
   excludeZero?: boolean;
 
+  /** Indicates if spellcheck is enabled for the author. Default value is true */
+  spellCheckEnabled: boolean;
+
   /** scales */
   scales: Scale[];
 }
@@ -73,6 +78,22 @@ interface DialogContent {
  */
 export interface MultiTraitRubricConfigure {
   /**
+   * Base editable html input configuration regarding plugins that are enabled/disabled
+   * E.g. audio, video, image
+   */
+  baseInputConfiguration?: EditableHtmlConfigureProp;
+
+  /**
+   * Expanded input configurations
+   */
+  expandedInput?: EditableHtmlPluginConfigure;
+
+  /**
+   * Label input configurations
+   */
+  labelInput?: EditableHtmlPluginConfigure;
+
+  /**
    * Configuration for Excluding Zero Dialog Box
    */
   excludeZeroDialogBoxContent?: DialogContent;
@@ -83,11 +104,6 @@ export interface MultiTraitRubricConfigure {
   includeZeroDialogBoxContent?: DialogContent;
 
   /**
-   * Configuration for Deleting Trait Dialog Box
-   */
-  deleteTraitDialogBoxContent?: DialogContent;
-
-  /**
    * Configuration for Deleting Scale Dialog Box
    */
   deleteScaleDialogBoxContent?: DialogContent;
@@ -96,6 +112,11 @@ export interface MultiTraitRubricConfigure {
    * Configuration for Decreasing Max Points Dialog Box
    */
   maxPointsDialogBoxContent?: DialogContent;
+
+  /**
+   * Indicates if the settings panel is not available
+   */
+  settingsPanelDisabled?: boolean;
 
   /**
    * Configuration for Excluding Zero Column
@@ -123,10 +144,14 @@ export interface MultiTraitRubricConfigure {
   showHalfScoring?: ConfigureProp;
 
   /**
+   * Configuration for the author's spellcheck
+   */
+  spellCheck?: ConfigureProp;
+
+  /**
    * How large (in px) should multi-trait-rubric be
    */
-  width: string
-
+  width: string;
 
   // these should not be set to true (should not be used) for now
   //
@@ -144,4 +169,36 @@ export interface MultiTraitRubricConfigure {
   //  * Configuration for allowing drag & drop per traits
   //  */
   // dragAndDrop?: ConfigurePropWithEnabled;
+
+  /**
+   * Minimum number of traits
+   */
+  minNoOfTraits?: number;
+
+  /**
+   * Maximum number of traits
+   */
+  maxNoOfTraits?: number;
+
+  /**
+   * Minimum number of scales
+   */
+  minNoOfScales?: number;
+
+  /**
+   * Maximum number of scales
+   */
+  maxNoOfScales?: number;
+
+  /**
+   * The default trait label for new created scales.
+   * If it's not defined, it will default to the label of the first trait.
+   */
+  defaultTraitLabel?: string;
+
+  /** Configuration for editable-html */
+  mathMlOptions?: ConfigureMathMLProp;
+
+  /** Indicates the max limit for scoring points */
+  maxMaxPoints?: number;
 }

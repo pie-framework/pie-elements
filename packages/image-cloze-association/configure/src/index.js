@@ -1,4 +1,10 @@
-import { DeleteImageEvent, InsertImageEvent, ModelUpdatedEvent } from '@pie-framework/pie-configure-events';
+import {
+  ModelUpdatedEvent,
+  DeleteImageEvent,
+  InsertImageEvent,
+  InsertSoundEvent,
+  DeleteSoundEvent,
+} from '@pie-framework/pie-configure-events';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -66,8 +72,17 @@ export default class ImageClozeAssociationConfigure extends HTMLElement {
     this.dispatchEvent(new DeleteImageEvent(src, done));
   }
 
+  insertSound(handler) {
+    this.dispatchEvent(new InsertSoundEvent(handler));
+  }
+
+  onDeleteSound(src, done) {
+    this.dispatchEvent(new DeleteSoundEvent(src, done));
+  }
+
   _render() {
     log('_render');
+
     let element = React.createElement(Root, {
       disableSidePanel: this._disableSidePanel,
       model: this._model,
@@ -76,9 +91,14 @@ export default class ImageClozeAssociationConfigure extends HTMLElement {
       onConfigurationChanged: this.onConfigurationChanged.bind(this),
       imageSupport: {
         add: this.insertImage.bind(this),
-        delete: this.onDeleteImage.bind(this)
-      }
+        delete: this.onDeleteImage.bind(this),
+      },
+      uploadSoundSupport: {
+        add: this.insertSound.bind(this),
+        delete: this.onDeleteSound.bind(this),
+      },
     });
+
     ReactDOM.render(element, this);
   }
 }

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 
-const findSlateNode = key => {
+const findSlateNode = (key) => {
   return window.document.querySelector('[data-key="' + key + '"]');
 };
 
@@ -18,13 +18,14 @@ export class ECRToolbar extends React.Component {
     value: PropTypes.shape({
       change: PropTypes.func.isRequired,
       document: PropTypes.shape({
-        getNextText: PropTypes.func.isRequired
-      })
-    })
+        getNextText: PropTypes.func.isRequired,
+      }),
+    }),
+    maxLengthPerChoiceEnabled: PropTypes.bool,
   };
 
   state = {
-    markup: ''
+    markup: '',
   };
 
   componentDidMount() {
@@ -47,8 +48,8 @@ export class ECRToolbar extends React.Component {
           position: 'absolute',
           top: `${top + domNodeRect.height + 20}px`,
           left: `${left + 20}px`,
-          width: domNodeRect.width
-        }
+          width: domNodeRect.width,
+        },
       });
     }
   }
@@ -67,17 +68,18 @@ export class ECRToolbar extends React.Component {
     onChangeResponse(newValue);
   };
 
-  onChange = e => this.setState({ markup: e.target.value });
+  onChange = (e) => this.setState({ markup: e.target.value });
 
   render() {
-    const { classes } = this.props;
+    const { classes, maxLengthPerChoiceEnabled } = this.props;
     const { markup, toolbarStyle } = this.state;
+    const inputProps = maxLengthPerChoiceEnabled ? {} : { maxLength: 25 };
 
     return (
       <div
         style={{
           ...toolbarStyle,
-          backgroundColor: '#E0E1E6'
+          backgroundColor: '#E0E1E6',
         }}
       >
         <OutlinedInput
@@ -85,25 +87,29 @@ export class ECRToolbar extends React.Component {
           autoFocus
           labelWidth={0}
           classes={{
-            input: classes.input
+            input: classes.input,
           }}
           onChange={this.onChange}
           onBlur={this.onDone}
           value={markup || ''}
+          inputProps={inputProps}
         />
       </div>
     );
   }
 }
 
-const StyledECRToolbar = withStyles({
+const StyledECRToolbar = withStyles((theme) => ({
   respArea: {
-    backgroundColor: '#fff'
+    backgroundColor: theme.palette.common.white,
   },
   input: {
-    backgroundColor: '#fff',
-    padding: '10px 20px 10px 10px'
-  }
-})(ECRToolbar);
+    backgroundColor: theme.palette.common.white,
+    padding: '10px 20px 10px 10px',
+  },
+  errorInput: {
+    border: `2px solid ${theme.palette.error.main}`,
+  },
+}))(ECRToolbar);
 
 export default StyledECRToolbar;

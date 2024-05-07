@@ -1,13 +1,13 @@
 import React from 'react';
 import injectSheet from 'react-jss';
 import PropTypes from 'prop-types';
-import { color } from '@pie-lib/render-ui';
+import { color } from '@pie-lib/pie-toolbox/render-ui';
 
 const style = {
   root: {
     strokeWidth: 2,
-    stroke: color.primary()
-  }
+    stroke: color.primary(),
+  },
 };
 
 export function Line({ y, width, classes }) {
@@ -17,7 +17,7 @@ export function Line({ y, width, classes }) {
 Line.propTypes = {
   y: PropTypes.number.isRequired,
   width: PropTypes.number.isRequired,
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
 };
 
 export default injectSheet(style)(Line);

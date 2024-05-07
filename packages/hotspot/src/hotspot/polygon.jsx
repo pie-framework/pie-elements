@@ -2,8 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Line, Group } from 'react-konva';
 import { withStyles } from '@material-ui/core/styles';
-
-import Image from './image';
+import { ImageComponent } from '@pie-lib/pie-toolbox/icons';
 import { faCorrect, faWrong } from './icons';
 
 class PolygonComponent extends React.Component {
@@ -14,10 +13,10 @@ class PolygonComponent extends React.Component {
   getPolygonCenter = (points) => {
     const x = points.map(({ x }) => x);
     const y = points.map(({ y }) => y);
-    const minX = Math.min.apply (null, x);
-    const maxX = Math.max.apply (null, x);
-    const minY = Math.min.apply (null, y);
-    const maxY = Math.max.apply (null, y);
+    const minX = Math.min.apply(null, x);
+    const maxX = Math.max.apply(null, x);
+    const minY = Math.min.apply(null, y);
+    const maxY = Math.max.apply(null, y);
     return [(minX + maxX) / 2, (minY + maxY) / 2];
   };
 
@@ -51,9 +50,11 @@ class PolygonComponent extends React.Component {
     document.body.style.cursor = 'default';
   };
 
-  getEvaluateOutlineColor = (isCorrect, outlineColor) => isCorrect ? outlineColor : 'red';
+  getEvaluateOutlineColor = (isCorrect, markAsCorrect, outlineColor) =>
+    markAsCorrect ? 'green' : isCorrect ? outlineColor : 'red';
 
-  getOutlineWidth = (selected, strokeWidth) => selected ? strokeWidth : 0;
+  getOutlineWidth = (showCorrectEnabled, selected, markAsCorrect, strokeWidth) =>
+    markAsCorrect || (!markAsCorrect && !showCorrectEnabled && selected) ? strokeWidth : 0;
 
   render() {
     const {
@@ -66,33 +67,51 @@ class PolygonComponent extends React.Component {
       points,
       evaluateText,
       strokeWidth,
-      scale
+      scale,
+      markAsCorrect,
+      showCorrectEnabled,
     } = this.props;
 
     const outlineColorParsed = isEvaluateMode
-      ? this.getEvaluateOutlineColor(isCorrect, outlineColor)
+      ? this.getEvaluateOutlineColor(isCorrect, markAsCorrect, outlineColor)
       : outlineColor;
-    const outlineWidth = this.getOutlineWidth(selected, strokeWidth);
+    const outlineWidth = this.getOutlineWidth(showCorrectEnabled, selected, markAsCorrect, strokeWidth);
 
     const pointsParsed = this.parsePointsForKonva(points);
     const center = this.getPolygonCenter(points);
     const iconX = center[0];
     const iconY = center[1];
 
-    // Correctly selected hotspot: white checkmark in green circle (plus the selected hotspot will have a heavy outline, as on “Gather”)
-    // Correctly not selected hotspot: none
-    // Incorrectly selected hostpot: white “X” in red circle, plus the heavy outline around the selection should appear in red
-    // Incorrectly not selected hotspot: white “X” in red circle
+    // "Show Correct Answer" Enabled:
+    //   - Correctly Selected: white checkmark in green circle
+    //   - Correctly Not Selected: none
+    //   - Incorrectly Selected: none
+    //   - Incorrectly Not Selected: white checkmark in green circle
+    // "Show Correct Answer" Disabled:
+    //   - Correctly Selected:
+    //     - white checkmark in green circle
+    //     - heavy outline, as on “Gather”
+    //   - Correctly Not Selected: none
+    //   - Incorrectly Selected:
+    //     - white "X" in red circle
+    //     - heavy outline around the selection should appear in red
+    //   - Incorrectly Not Selected: white "X" in red circle
     let iconSrc;
 
-    if (selected) {
-      if (isCorrect) {
+    if (showCorrectEnabled) {
+      if ((selected && isCorrect) || (!selected && !isCorrect)) {
         iconSrc = faCorrect;
-      } else {
+      }
+    } else {
+      if (selected) {
+        if (isCorrect) {
+          iconSrc = faCorrect;
+        } else {
+          iconSrc = faWrong;
+        }
+      } else if (!isCorrect) {
         iconSrc = faWrong;
       }
-    } else if (!isCorrect) {
-      iconSrc = faWrong;
     }
 
     return (
@@ -110,14 +129,7 @@ class PolygonComponent extends React.Component {
           onMouseLeave={this.handleMouseLeave}
           onMouseEnter={this.handleMouseEnter}
         />
-        {(isEvaluateMode && iconSrc) ? (
-          <Image
-            src={iconSrc}
-            x={iconX}
-            y={iconY}
-            tooltip={evaluateText}
-          />
-        ): null}
+        {isEvaluateMode && iconSrc ? <ImageComponent src={iconSrc} x={iconX} y={iconY} tooltip={evaluateText} /> : null}
       </Group>
     );
   }
@@ -127,7 +139,7 @@ const styles = () => ({
   base: {
     cursor: 'pointer',
     opacity: 0.5,
-    position: 'relative'
+    position: 'relative',
   },
 });
 
@@ -144,13 +156,15 @@ PolygonComponent.propTypes = {
   selected: PropTypes.bool.isRequired,
   evaluateText: PropTypes.string,
   strokeWidth: PropTypes.number,
-  scale: PropTypes.number
+  scale: PropTypes.number,
+  markAsCorrect: PropTypes.bool.isRequired,
+  showCorrectEnabled: PropTypes.bool.isRequired,
 };
 
 PolygonComponent.defaultProps = {
   evaluateText: null,
   strokeWidth: 5,
-  scale: 1
+  scale: 1,
 };
 
 export default withStyles(styles)(PolygonComponent);

@@ -5,6 +5,10 @@ import classNames from 'classnames';
 import ChoiceInput from './choice-input';
 
 export class Choice extends React.Component {
+  static propTypes = {
+   updateSession: PropTypes.func,
+  };
+
   onChange = (choice) => {
     const { disabled, onChoiceChanged } = this.props;
 
@@ -28,6 +32,7 @@ export class Choice extends React.Component {
       classes,
       choicesLayout,
       gridColumns,
+      updateSession,
     } = this.props;
     const choiceClass = 'choice' + (index === choicesLength - 1 ? ' last' : '');
 
@@ -41,15 +46,17 @@ export class Choice extends React.Component {
       feedback,
       correctness,
       displayKey,
+      index,
       choicesLayout,
       gridColumns,
+      updateSession,
       onChange: this.onChange,
       isEvaluateMode,
     };
 
     const names = classNames(classes.choice, {
-      [classes.noBorder]:
-        index === choicesLength - 1 || choicesLayout !== 'vertical',
+      [classes.noBorder]: index === choicesLength - 1 || choicesLayout !== 'vertical',
+      [classes.horizontalLayout]: choicesLayout === 'horizontal',
     });
 
     return (
@@ -77,13 +84,22 @@ Choice.propTypes = {
   gridColumns: PropTypes.string,
 };
 
-export default withStyles({
+export default withStyles((theme) => ({
   choice: {
-    paddingTop: '20px',
-    paddingBottom: '10px',
-    borderBottom: '1px solid #E0DEE0',
+    paddingTop: theme.spacing.unit * 2.5,
+    paddingBottom: theme.spacing.unit + 2,
+    borderBottom: `1px solid ${theme.palette.grey[300]}`,
   },
   noBorder: {
     borderBottom: 'none',
   },
-})(Choice);
+  horizontalLayout: {
+    paddingRight: theme.spacing.unit * 2.5,
+    '& label': {
+      marginRight: theme.spacing.unit,
+      // '& span:first-child': {
+      //   paddingRight: 0
+      // }
+    },
+  },
+}))(Choice);

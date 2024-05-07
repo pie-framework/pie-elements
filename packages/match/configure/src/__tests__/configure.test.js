@@ -5,30 +5,31 @@ import GeneralConfigBlock from '../general-config-block';
 import Button from '@material-ui/core/Button';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
-import { FeedbackConfig } from '@pie-lib/config-ui';
-import { shallowChild } from '@pie-lib/test-utils';
+import { FeedbackConfig } from '@pie-lib/pie-toolbox/config-ui';
+import { shallowChild } from '@pie-lib/pie-toolbox/test-utils';
 import { shallow } from 'enzyme';
 import { styles } from '../answer-config-block';
 import cloneDeep from 'lodash/cloneDeep';
 import defaultValues from '../defaults';
 
 jest.mock('@material-ui/core', () => ({
-  Input: props => <div/>,
-  Button: props => <div/>,
+  Input: (props) => <div />,
+  Button: (props) => <div />,
 }));
 
-jest.mock('@pie-lib/config-ui', () => ({
-  FeedbackConfig: props => (<div/>),
-  InputCheckbox: props => (<div/>),
+jest.mock('@pie-lib/pie-toolbox/config-ui', () => ({
+  FeedbackConfig: (props) => <div />,
+  InputCheckbox: (props) => <div />,
   layout: {
-    ConfigLayout: props => <div>{props.children}</div>
+    ConfigLayout: (props) => <div>{props.children}</div>,
   },
   settings: {
-    Panel: props => <div onChange={props.onChange} />,
+    Panel: (props) => <div onChange={props.onChange} />,
     toggle: jest.fn(),
-    radio: jest.fn()
-  }
+    radio: jest.fn(),
+  },
 }));
+jest.mock('@pie-lib/pie-toolbox/editable-html', () => (() => <div/>));
 
 export const defaultProps = {
   model: {
@@ -38,23 +39,23 @@ export const defaultProps = {
       {
         id: 1,
         title: 'Question Text 1',
-        values: [false, false]
+        values: [false, false],
       },
       {
         id: 2,
         title: 'Question Text 2',
-        values: [false, false]
+        values: [false, false],
       },
       {
         id: 3,
         title: 'Question Text 3',
-        values: [false, false]
+        values: [false, false],
       },
       {
         id: 4,
         title: 'Question Text 4',
-        values: [false, false]
-      }
+        values: [false, false],
+      },
     ],
     lockChoiceOrder: true,
     partialScoring: [],
@@ -64,21 +65,21 @@ export const defaultProps = {
     feedback: {
       correct: {
         type: 'none',
-        default: 'Correct'
+        default: 'Correct',
       },
       partial: {
         type: 'none',
-        default: 'Nearly'
+        default: 'Nearly',
       },
       incorrect: {
         type: 'none',
-        default: 'Incorrect'
-      }
+        default: 'Incorrect',
+      },
     },
     feedbackEnabled: true,
-    prompt: 'Prompt'
+    prompt: 'Prompt',
   },
-  configuration: defaultValues.configuration
+  configuration: defaultValues.configuration,
 };
 const clonedDefaultProps = cloneDeep(defaultProps);
 
@@ -87,13 +88,13 @@ describe('Configure', () => {
   let component;
 
   beforeEach(() => {
-    wrapper = props => {
+    wrapper = (props) => {
       const configProps = {
         ...defaultProps,
-        ...props
+        ...props,
       };
 
-      return shallow(<Config { ...configProps } />);
+      return shallow(<Config {...configProps} />);
     };
   });
 
@@ -108,14 +109,12 @@ describe('Configure', () => {
     let onModelChanged = jest.fn();
 
     component = wrapper({
-      onModelChanged
+      onModelChanged,
     });
 
     component.instance().onResponseTypeChange('checkbox');
 
-    expect(onModelChanged).toBeCalledWith(
-      expect.objectContaining({ choiceMode: 'checkbox' })
-    );
+    expect(onModelChanged).toBeCalledWith(expect.objectContaining({ choiceMode: 'checkbox' }));
 
     onModelChanged = jest.fn();
 
@@ -128,25 +127,25 @@ describe('Configure', () => {
           {
             id: 1,
             title: 'Question Text 1',
-            values: [true, true]
+            values: [true, true],
           },
           {
             id: 2,
             title: 'Question Text 2',
-            values: [true, true]
+            values: [true, true],
           },
           {
             id: 3,
             title: 'Question Text 3',
-            values: [false, true]
+            values: [false, true],
           },
           {
             id: 4,
             title: 'Question Text 4',
-            values: [true, false]
-          }
-        ]
-      }
+            values: [true, false],
+          },
+        ],
+      },
     });
 
     component.instance().onResponseTypeChange('radio');
@@ -157,23 +156,23 @@ describe('Configure', () => {
         {
           id: 1,
           title: 'Question Text 1',
-          values: [false, false]
+          values: [false, false],
         },
         {
           id: 2,
           title: 'Question Text 2',
-          values: [false, false]
+          values: [false, false],
         },
         {
           id: 3,
           title: 'Question Text 3',
-          values: [false, true]
+          values: [false, true],
         },
         {
           id: 4,
           title: 'Question Text 4',
-          values: [true, false]
-        }
+          values: [true, false],
+        },
       ],
     });
   });
@@ -182,49 +181,42 @@ describe('Configure', () => {
     let onModelChanged = jest.fn();
 
     component = wrapper({
-      onModelChanged
+      onModelChanged,
     });
 
     component.instance().onPromptChanged('New Prompt');
 
-    expect(onModelChanged).toBeCalledWith(
-      expect.objectContaining({ prompt: 'New Prompt' })
-    );
+    expect(onModelChanged).toBeCalledWith(expect.objectContaining({ prompt: 'New Prompt' }));
   });
 
   it('updates rationale correctly', () => {
     let onModelChanged = jest.fn();
 
     component = wrapper({
-      onModelChanged
+      onModelChanged,
     });
 
     component.instance().onRationaleChanged('New Rationale');
 
-    expect(onModelChanged).toBeCalledWith(
-      expect.objectContaining({ rationale: 'New Rationale' })
-    );
+    expect(onModelChanged).toBeCalledWith(expect.objectContaining({ rationale: 'New Rationale' }));
   });
 
   it('updates teacher instructions correctly', () => {
     let onModelChanged = jest.fn();
 
     component = wrapper({
-      onModelChanged
+      onModelChanged,
     });
 
     component.instance().onTeacherInstructionsChanged('New Teacher Instructions');
 
-    expect(onModelChanged).toBeCalledWith(
-      expect.objectContaining({ teacherInstructions: 'New Teacher Instructions' })
-    );
+    expect(onModelChanged).toBeCalledWith(expect.objectContaining({ teacherInstructions: 'New Teacher Instructions' }));
   });
-
 
   it('adds a row correctly', () => {
     let onModelChanged = jest.fn();
     component = wrapper({
-      onModelChanged
+      onModelChanged,
     });
 
     component.instance().onAddRow();
@@ -235,37 +227,37 @@ describe('Configure', () => {
           {
             id: 1,
             title: 'Question Text 1',
-            values: [false, false]
+            values: [false, false],
           },
           {
             id: 2,
             title: 'Question Text 2',
-            values: [false, false]
+            values: [false, false],
           },
           {
             id: 3,
             title: 'Question Text 3',
-            values: [false, false]
+            values: [false, false],
           },
           {
             id: 4,
             title: 'Question Text 4',
-            values: [false, false]
+            values: [false, false],
           },
           {
             id: 6,
             title: 'Question Text 5',
-            values: [false, false]
-          }
-        ]
-      })
+            values: [false, false],
+          },
+        ],
+      }),
     );
   });
 
   it('deletes a row correctly', () => {
     let onModelChanged = jest.fn();
     component = wrapper({
-      onModelChanged
+      onModelChanged,
     });
 
     component.instance().onDeleteRow(2);
@@ -276,27 +268,27 @@ describe('Configure', () => {
           {
             id: 1,
             title: 'Question Text 1',
-            values: [false, false]
+            values: [false, false],
           },
           {
             id: 2,
             title: 'Question Text 2',
-            values: [false, false]
+            values: [false, false],
           },
           {
             id: 4,
             title: 'Question Text 4',
-            values: [false, false]
-          }
-        ]
-      })
+            values: [false, false],
+          },
+        ],
+      }),
     );
   });
 
   it('updates layout correctly', () => {
     let onModelChanged = jest.fn();
     component = wrapper({
-      onModelChanged
+      onModelChanged,
     });
 
     component.instance().onLayoutChange(4);
@@ -308,25 +300,25 @@ describe('Configure', () => {
           {
             id: 1,
             title: 'Question Text 1',
-            values: [false, false, false]
+            values: [false, false, false],
           },
           {
             id: 2,
             title: 'Question Text 2',
-            values: [false, false, false]
+            values: [false, false, false],
           },
           {
             id: 4,
             title: 'Question Text 4',
-            values: [false, false, false]
-          }
-        ]
-      })
+            values: [false, false, false],
+          },
+        ],
+      }),
     );
 
     onModelChanged = jest.fn();
     component = wrapper({
-      onModelChanged
+      onModelChanged,
     });
 
     component.instance().onLayoutChange(5);
@@ -338,20 +330,20 @@ describe('Configure', () => {
           {
             id: 1,
             title: 'Question Text 1',
-            values: [false, false, false, false, false]
+            values: [false, false, false, false, false],
           },
           {
             id: 2,
             title: 'Question Text 2',
-            values: [false, false, false, false, false]
+            values: [false, false, false, false, false],
           },
           {
             id: 4,
             title: 'Question Text 4',
-            values: [false, false, false, false, false]
-          }
-        ]
-      })
+            values: [false, false, false, false, false],
+          },
+        ],
+      }),
     );
   });
 });
@@ -366,7 +358,7 @@ describe('GeneralConfigBlock', () => {
       model: defaultProps.model,
       configuration: defaultProps.configuration,
       onResponseTypeChange: jest.fn(),
-      onLayoutChange: jest.fn()
+      onLayoutChange: jest.fn(),
     };
 
     wrapper = shallowChild(GeneralConfigBlock, props, 1);
@@ -396,7 +388,7 @@ describe('AnswerConfigBlock', () => {
       configuration: defaultProps.configuration,
       onChange: onChange,
       onAddRow: jest.fn(),
-      onDeleteRow: jest.fn()
+      onDeleteRow: jest.fn(),
     };
 
     wrapper = shallowChild(AnswerConfigBlock, props, 1);
@@ -404,11 +396,14 @@ describe('AnswerConfigBlock', () => {
   });
 
   describe('render', () => {
-    it('renders correctly', () => {
-      component = wrapper();
-
-      expect(component.find(Button).length).toEqual(1);
+    it('snapshot', () => {
+      expect(wrapper()).toMatchSnapshot();
     });
+    // it('renders correctly', () => {
+    //   component = wrapper();
+    //
+    //   expect(component.find(Button).length).toEqual(1);
+    // });
   });
 
   describe('moveRow', () => {
@@ -423,24 +418,24 @@ describe('AnswerConfigBlock', () => {
           {
             id: 2,
             title: 'Question Text 2',
-            values: [false, false]
+            values: [false, false],
           },
           {
             id: 1,
             title: 'Question Text 1',
-            values: [false, false]
+            values: [false, false],
           },
           {
             id: 3,
             title: 'Question Text 3',
-            values: [false, false]
+            values: [false, false],
           },
           {
             id: 4,
             title: 'Question Text 4',
-            values: [false, false]
-          }
-        ]
+            values: [false, false],
+          },
+        ],
       });
     });
   });

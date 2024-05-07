@@ -3,37 +3,45 @@ import React from 'react';
 import { Design } from '../index';
 import util from 'util';
 
-const model = extras => ({
+const model = (extras) => ({
   choices: [{ id: '1', content: 'content' }],
   correctResponse: [{ category: '1', choices: ['1'] }],
   categories: [{ id: '1', label: 'Category Title' }],
-  ...extras
+  ...extras,
 });
 
-jest.mock('@pie-lib/config-ui', () => ({
+jest.mock('@pie-lib/pie-toolbox/config-ui', () => ({
   layout: {
-    ConfigLayout: props => <div {...props} />
+    ConfigLayout: (props) => <div {...props} />,
   },
   choiceUtils: {
-    firstAvailableIndex: jest.fn()
+    firstAvailableIndex: jest.fn(),
   },
   settings: {
-    Panel: props => <div {...props} />,
+    Panel: (props) => <div {...props} />,
     toggle: jest.fn(),
-    radio: jest.fn()
-  }
-}));
+    radio: jest.fn(),
+  },
+}))
+
+jest.mock('@pie-lib/pie-toolbox/categorize', () => ({
+  ensureNoExtraChoicesInAlternate: jest.fn(),
+  countInAnswer: jest.fn().mockReturnValue(1),
+  ensureNoExtraChoicesInAnswer: jest.fn()
+}))
+
+
 
 describe('Design', () => {
   let w;
   let onChange = jest.fn();
-  const wrapper = extras => {
+  const wrapper = (extras) => {
     const defaults = {
       classes: { design: 'design', text: 'text' },
       className: 'className',
       onChange,
       model: model(),
-      uid: '1'
+      uid: '1',
     };
     const props = { ...defaults, ...extras };
 
@@ -51,7 +59,7 @@ describe('Design', () => {
       w = wrapper();
     });
 
-    const callsOnChange = function() {
+    const callsOnChange = function () {
       let args = Array.prototype.slice.call(arguments);
       if (typeof args[0] === 'string') {
         args = [wrapper()].concat(args);
@@ -60,11 +68,9 @@ describe('Design', () => {
       const method = args[1];
       const expected = args[args.length - 1];
       const fnArgs = args.splice(2, args.length - 3);
-      const argString = fnArgs
-        .map(o => util.inspect(o, { colors: true }))
-        .join(', ');
+      const argString = fnArgs.map((o) => util.inspect(o, { colors: true })).join(', ');
       it(`${method}(${argString}) calls onChange with ${util.inspect(expected, {
-        colors: true
+        colors: true,
       })}`, () => {
         onChange.mockReset();
         er.instance()[method].apply(w.instance(), fnArgs);
@@ -77,7 +83,9 @@ describe('Design', () => {
       it('calls onChange', () => {
         w.instance().changeTeacherInstructions('Teacher Instructions Updated.');
 
-        expect(onChange).toHaveBeenCalledWith(expect.objectContaining({ teacherInstructions: 'Teacher Instructions Updated.' }))
+        expect(onChange).toHaveBeenCalledWith(
+          expect.objectContaining({ teacherInstructions: 'Teacher Instructions Updated.' }),
+        );
       });
     });
 
@@ -87,33 +95,33 @@ describe('Design', () => {
         {
           correct: {
             type: 'none',
-            default: 'Correct'
+            default: 'Correct',
           },
           incorrect: {
             type: 'none',
-            default: 'Incorrect'
+            default: 'Incorrect',
           },
           partial: {
             type: 'default',
-            default: 'Nearly'
-          }
+            default: 'Nearly',
+          },
         },
         {
           feedback: {
             correct: {
               type: 'none',
-              default: 'Correct'
+              default: 'Correct',
             },
             incorrect: {
               type: 'none',
-              default: 'Incorrect'
+              default: 'Incorrect',
             },
             partial: {
               type: 'default',
-              default: 'Nearly'
-            }
-          }
-        }
+              default: 'Nearly',
+            },
+          },
+        },
       );
     });
 

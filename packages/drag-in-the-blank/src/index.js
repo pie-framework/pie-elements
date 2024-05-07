@@ -1,9 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {
-  ModelSetEvent,
-  SessionChangedEvent
-} from '@pie-framework/pie-player-events';
+import { renderMath } from '@pie-lib/pie-toolbox/math-rendering-accessible';
+import { ModelSetEvent, SessionChangedEvent } from '@pie-framework/pie-player-events';
 import Main from './main';
 
 export default class InlineDropdown extends HTMLElement {
@@ -16,11 +14,7 @@ export default class InlineDropdown extends HTMLElement {
   set model(m) {
     this._model = m;
     this.dispatchEvent(
-      new ModelSetEvent(
-        this.tagName.toLowerCase(),
-        this.session && !!this.session.value,
-        !!this._model
-      )
+      new ModelSetEvent(this.tagName.toLowerCase(), this.session && !!this.session.value, !!this._model),
     );
 
     this._render();
@@ -40,22 +34,20 @@ export default class InlineDropdown extends HTMLElement {
       let elem = React.createElement(Main, {
         model: this._model,
         value: this._session.value,
-        onChange: this.changeSession
+        onChange: this.changeSession,
       });
-      ReactDOM.render(elem, this);
+
+      ReactDOM.render(elem, this, () => {
+        renderMath(this);
+      });
     }
   };
 
   dispatchChangedEvent = () => {
-    this.dispatchEvent(
-      new SessionChangedEvent(
-        this.tagName.toLowerCase(),
-        this.session && !!this.session.value
-      )
-    );
+    this.dispatchEvent(new SessionChangedEvent(this.tagName.toLowerCase(), this.session && !!this.session.value));
   };
 
-  changeSession = value => {
+  changeSession = (value) => {
     this.session.value = value;
     this.dispatchChangedEvent();
     this._render();

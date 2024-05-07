@@ -2,7 +2,7 @@ const { model } = require('./generate');
 
 module.exports = {
   elements: {
-    'hotspot-element': '../..'
+    'hotspot-element': '../..',
   },
-  models: [model('1', 'hotspot-element')]
+  models: [model('1', 'hotspot-element')],
 };

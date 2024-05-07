@@ -1,15 +1,8 @@
-import {
-  model,
-  getScore,
-  outcome,
-  prepareVal,
-  createCorrectResponseSession,
-  prepareChoice
-} from '../index';
+import { model, getScore, outcome, prepareVal, createCorrectResponseSession, prepareChoice } from '../index';
 
-jest.mock('@pie-lib/controller-utils', () => ({
+jest.mock('@pie-lib/pie-toolbox/controller-utils', () => ({
   getShuffledChoices: (choices, session, updateSession, key) => {
-    const currentShuffled = ((session || {}).shuffledValues || []).filter(v => v);
+    const currentShuffled = ((session || {}).shuffledValues || []).filter((v) => v);
 
     if (session && !currentShuffled.length && updateSession && typeof updateSession === 'function') {
       updateSession();
@@ -31,16 +24,15 @@ jest.mock('@pie-lib/controller-utils', () => ({
       }
 
       return true;
-    }
-  }
+    },
+  },
 }));
-
 
 const choice = (l, v) => ({ label: l, value: v });
 const choices = {
   0: [choice('cow', '0'), choice('cattle', '1'), choice('calf', '2')],
   1: [choice('over', '0'), choice('past', '1'), choice('beyond', '2')],
-  2: [choice('moon', '0')]
+  2: [choice('moon', '0')],
 };
 
 const question = {
@@ -48,7 +40,7 @@ const question = {
   disabled: false,
   choices,
   prompt: 'Complete the sentence',
-  note: 'The answer shown above is the most common correct answer for this item.'
+  note: 'The answer shown above is the most common correct answer for this item.',
 };
 
 describe('controller', () => {
@@ -56,28 +48,26 @@ describe('controller', () => {
     let q, env;
 
     it('output when session is defined', async () => {
-      const m = await model(question,
-        { value: { 0: 'cow', 1: 'over', 2: 'moon' } },
-        { mode: 'evaluate' }
-      );
+      const m = await model(question, { value: { 0: 'cow', 1: 'over', 2: 'moon' } }, { mode: 'evaluate' });
 
-      expect(m).toEqual(expect.objectContaining({
-        feedback: { 0: 'correct', 1: 'correct', 2: 'correct' },
-        responseCorrect: true
-      }))
+      expect(m).toEqual(
+        expect.objectContaining({
+          feedback: { 0: 'correct', 1: 'correct', 2: 'correct' },
+          responseCorrect: true,
+        }),
+      );
     });
 
     const returnModel = (session) => {
       it(`output when session is ${JSON.stringify(session)}`, async () => {
-        const m = await model(question,
-          session,
-          { mode: 'evaluate' }
-        );
+        const m = await model(question, session, { mode: 'evaluate' });
 
-        expect(m).toEqual(expect.objectContaining({
-          feedback: { 0: 'incorrect', 1: 'incorrect', 2: 'incorrect' },
-          responseCorrect: false
-        }))
+        expect(m).toEqual(
+          expect.objectContaining({
+            feedback: { 0: 'incorrect', 1: 'incorrect', 2: 'incorrect' },
+            responseCorrect: false,
+          }),
+        );
       });
     };
 
@@ -91,15 +81,19 @@ describe('controller', () => {
           ...question,
           teacherInstructions: 'Teacher Instructions',
           rationale: 'Rationale',
-          ...extra
+          ...extra,
         };
         env = { mode: 'gather' };
 
-        const result = await model(q, {
-          id: '1',
-          element: 'explicit-constructed-response',
-          ...session
-        }, env);
+        const result = await model(
+          q,
+          {
+            id: '1',
+            element: 'explicit-constructed-response',
+            ...session,
+          },
+          env,
+        );
 
         expect(result).toEqual({
           ...question,
@@ -109,7 +103,7 @@ describe('controller', () => {
           responseCorrect: undefined,
           maxLengthPerChoice: [10, 10, 7],
           env,
-          ...expected
+          ...expected,
         });
       });
     };
@@ -121,8 +115,9 @@ describe('controller', () => {
       {
         rationale: null,
         showNote: true,
-        teacherInstructions: null
-      });
+        teacherInstructions: null,
+      },
+    );
 
     assertGather(
       'promptEnabled, rationaleEnabled and teacherInstructionsEnabled set to false',
@@ -137,8 +132,9 @@ describe('controller', () => {
         prompt: null,
         rationale: null,
         showNote: true,
-        teacherInstructions: null
-      });
+        teacherInstructions: null,
+      },
+    );
 
     const assertView = (label, extra, session, expected) => {
       it(`'mode: view, ${label}'`, async () => {
@@ -146,15 +142,19 @@ describe('controller', () => {
           ...question,
           teacherInstructions: 'Teacher Instructions',
           rationale: 'Rationale',
-          ...extra
+          ...extra,
         };
         env = { mode: 'view', role: 'instructor' };
 
-        const result = await model(q, {
-          id: '1',
-          element: 'explicit-constructed-response',
-          ...session
-        }, env);
+        const result = await model(
+          q,
+          {
+            id: '1',
+            element: 'explicit-constructed-response',
+            ...session,
+          },
+          env,
+        );
 
         expect(result).toEqual({
           ...question,
@@ -164,7 +164,7 @@ describe('controller', () => {
           responseCorrect: undefined,
           env,
           maxLengthPerChoice: [10, 10, 7],
-          ...expected
+          ...expected,
         });
       });
     };
@@ -182,8 +182,8 @@ describe('controller', () => {
         prompt: null,
         rationale: null,
         showNote: true,
-        teacherInstructions: null
-      }
+        teacherInstructions: null,
+      },
     );
 
     assertView(
@@ -194,7 +194,7 @@ describe('controller', () => {
         teacherInstructions: 'Teacher Instructions',
         showNote: true,
         rationale: 'Rationale',
-      }
+      },
     );
 
     const assertViewStudent = (label, extra, session, expected) => {
@@ -203,15 +203,19 @@ describe('controller', () => {
           ...question,
           teacherInstructions: 'Teacher Instructions',
           rationale: 'Rationale',
-          ...extra
+          ...extra,
         };
-        env = { mode: 'view', role: ' student'};
+        env = { mode: 'view', role: ' student' };
 
-        const result = await model(q, {
-          id: '1',
-          element: 'explicit-constructed-response',
-          ...session
-        }, env);
+        const result = await model(
+          q,
+          {
+            id: '1',
+            element: 'explicit-constructed-response',
+            ...session,
+          },
+          env,
+        );
 
         expect(result).toEqual({
           ...question,
@@ -221,7 +225,7 @@ describe('controller', () => {
           responseCorrect: undefined,
           maxLengthPerChoice: [10, 10, 7],
           env,
-          ...expected
+          ...expected,
         });
       });
     };
@@ -239,8 +243,8 @@ describe('controller', () => {
         prompt: null,
         rationale: null,
         showNote: true,
-        teacherInstructions: null
-      }
+        teacherInstructions: null,
+      },
     );
 
     assertViewStudent(
@@ -250,8 +254,8 @@ describe('controller', () => {
       {
         rationale: null,
         showNote: true,
-        teacherInstructions: null
-      }
+        teacherInstructions: null,
+      },
     );
 
     const assertEvaluate = (label, extra, session, expected) => {
@@ -260,15 +264,19 @@ describe('controller', () => {
           ...question,
           teacherInstructions: 'Teacher Instructions',
           rationale: 'Rationale',
-          ...extra
+          ...extra,
         };
         env = { mode: 'evaluate', role: 'instructor' };
 
-        const result = await model(q, {
-          id: '1',
-          element: 'explicit-constructed-response',
-          ...session
-        }, env);
+        const result = await model(
+          q,
+          {
+            id: '1',
+            element: 'explicit-constructed-response',
+            ...session,
+          },
+          env,
+        );
 
         expect(result).toEqual({
           ...question,
@@ -279,19 +287,19 @@ describe('controller', () => {
           choices: {
             0: [
               { label: 'cow', value: '0', correct: true },
-              { label: 'cattle', value: '1' , correct: true},
-              { label: 'calf', value: '2', correct: true }
+              { label: 'cattle', value: '1', correct: true },
+              { label: 'calf', value: '2', correct: true },
             ],
             1: [
               { label: 'over', value: '0', correct: true },
               { label: 'past', value: '1', correct: true },
-              { label: 'beyond', value: '2', correct: true }
+              { label: 'beyond', value: '2', correct: true },
             ],
-            2: [{ label: 'moon', value: '0', correct: true }]
+            2: [{ label: 'moon', value: '0', correct: true }],
           },
           maxLengthPerChoice: [10, 10, 7],
           env,
-          ...expected
+          ...expected,
         });
       });
     };
@@ -303,62 +311,65 @@ describe('controller', () => {
         value: {
           0: 'cow',
           1: 'over',
-          2: 'moon'
-        }
+          2: 'moon',
+        },
       },
       {
         feedback: { 0: 'correct', 1: 'correct', 2: 'correct' },
         showNote: true,
         responseCorrect: true,
-      }
+      },
     );
 
     assertEvaluate(
       '- partially correct answer',
       {},
-      { value: {
+      {
+        value: {
           0: 'cow',
           1: 'over',
-          2: 'sun'
-        }
+          2: 'sun',
+        },
       },
       {
         feedback: { 0: 'correct', 1: 'correct', 2: 'incorrect' },
         showNote: true,
         responseCorrect: false,
-      }
+      },
     );
 
     assertEvaluate(
       '- partially correct answer using alternates',
       {},
-      { value: {
+      {
+        value: {
           0: 'calf',
           1: 'over',
-          2: 'sun'
-        }
+          2: 'sun',
+        },
       },
       {
         feedback: { 0: 'correct', 1: 'correct', 2: 'incorrect' },
         showNote: true,
         responseCorrect: false,
-      }
+      },
     );
 
     assertEvaluate(
       '- incorrect answer',
       {},
-      { value: {
+      {
+        value: {
           0: 'han',
           1: 'above',
-          2: 'chicken'
-        }
+          2: 'chicken',
+        },
       },
       {
         feedback: { 0: 'incorrect', 1: 'incorrect', 2: 'incorrect' },
         showNote: true,
         responseCorrect: false,
-      }
+      },
     );
   });
 
@@ -399,45 +410,67 @@ describe('controller', () => {
   describe('outcome partialScoring test', () => {
     const assertOutcome = (message, extra, sessionValue, env, expected) => {
       it(message, async () => {
-        const result = await outcome({
+        const result = await outcome(
+          {
             ...question,
-            ...extra
+            ...extra,
           },
           sessionValue,
-          env
+          env,
         );
 
         expect(result).toEqual(expect.objectContaining(expected));
       });
     };
 
-    assertOutcome('element.partialScoring = true',
-      { partialScoring: true }, { value: { 0: 'calf', 1: 'under', 2: 'moon' } }, { mode: 'evaluate' }, { score: 0.67 });
+    assertOutcome(
+      'element.partialScoring = true',
+      { partialScoring: true },
+      { value: { 0: 'calf', 1: 'under', 2: 'moon' } },
+      { mode: 'evaluate' },
+      { score: 0.67 },
+    );
 
-    assertOutcome('element.partialScoring = false',
-      { partialScoring: false }, { value: { 0: 'calf', 1: 'under', 2: 'moon' } }, { mode: 'evaluate' }, { score: 0 });
+    assertOutcome(
+      'element.partialScoring = false',
+      { partialScoring: false },
+      { value: { 0: 'calf', 1: 'under', 2: 'moon' } },
+      { mode: 'evaluate' },
+      { score: 0 },
+    );
 
-    assertOutcome('element.partialScoring = false, env.partialScoring = true',
-      { partialScoring: false }, { value: { 0: 'calf', 1: 'under', 2: 'moon' } }, {
+    assertOutcome(
+      'element.partialScoring = false, env.partialScoring = true',
+      { partialScoring: false },
+      { value: { 0: 'calf', 1: 'under', 2: 'moon' } },
+      {
         mode: 'evaluate',
-        partialScoring: true
-      }, { score: 0 });
+        partialScoring: true,
+      },
+      { score: 0 },
+    );
 
-    assertOutcome('element.partialScoring = true, env.partialScoring = false',
-      { partialScoring: true }, { value: { 0: 'calf', 1: 'under', 2: 'moon' } }, {
+    assertOutcome(
+      'element.partialScoring = true, env.partialScoring = false',
+      { partialScoring: true },
+      { value: { 0: 'calf', 1: 'under', 2: 'moon' } },
+      {
         mode: 'evaluate',
-        partialScoring: false
-      }, { score: 0 });
+        partialScoring: false,
+      },
+      { score: 0 },
+    );
   });
 
   describe('outcome', () => {
     const assertOutcome = (partialScoring, sessionValue, expected) => {
       it(`partial score ${partialScoring ? 'enabled' : ''}`, async () => {
-        const result = await outcome({
+        const result = await outcome(
+          {
             ...question,
-            partialScoring
+            partialScoring,
           },
-          sessionValue
+          sessionValue,
         );
 
         expect(result).toEqual(expected);
@@ -474,7 +507,7 @@ describe('controller', () => {
       it(`empty: true when session is ${JSON.stringify(session)}`, async () => {
         const m = await outcome(question, session);
 
-        expect(m).toEqual(expect.objectContaining({ score: 0, empty: true }))
+        expect(m).toEqual(expect.objectContaining({ score: 0, empty: true }));
       });
     };
 
@@ -504,9 +537,9 @@ describe('controller', () => {
       it('returns correct response if env is correct', async () => {
         const sess = await createCorrectResponseSession(question, {
           mode: 'gather',
-          role: 'instructor'
+          role: 'instructor',
         });
-        expect(sess).toEqual({ 'id': '1', 'value': { '0': 'cow', '1': 'over', '2': 'moon' } });
+        expect(sess).toEqual({ id: '1', value: { 0: 'cow', 1: 'over', 2: 'moon' } });
       });
 
       it('returns null env is student', async () => {
@@ -520,19 +553,19 @@ describe('controller', () => {
     it('returns correct response if role is instructor and mode is gather', async () => {
       const sess = await createCorrectResponseSession(question, {
         mode: 'gather',
-        role: 'instructor'
+        role: 'instructor',
       });
 
-      expect(sess).toEqual({ 'id': '1', 'value': { 0: 'cow', 1: 'over', 2: 'moon' } });
+      expect(sess).toEqual({ id: '1', value: { 0: 'cow', 1: 'over', 2: 'moon' } });
     });
 
     it('returns correct response if role is instructor and mode is view', async () => {
       const sess = await createCorrectResponseSession(question, {
         mode: 'view',
-        role: 'instructor'
+        role: 'instructor',
       });
 
-      expect(sess).toEqual({ 'id': '1', 'value': { 0: 'cow', 1: 'over', 2: 'moon' } });
+      expect(sess).toEqual({ id: '1', value: { 0: 'cow', 1: 'over', 2: 'moon' } });
     });
 
     it('returns null if mode is evaluate', async () => {
@@ -546,7 +579,6 @@ describe('controller', () => {
 
       expect(noResult).toBeNull();
     });
-
   });
 
   describe('prepareChoice', () => {
@@ -561,43 +593,43 @@ describe('controller', () => {
     assertPrepareChoice(
       { mode: 'gather' },
       { correct: 'Correct', incorrect: 'Incorrect' },
-      { value: '0', label: 'cow'},
-      { value: '0', label: 'cow' }
+      { value: '0', label: 'cow' },
+      { value: '0', label: 'cow' },
     );
 
     assertPrepareChoice(
       { mode: 'view' },
       { correct: 'Correct', incorrect: 'Incorrect' },
-      { value: '0', label: 'cow'},
-      { value: '0', label: 'cow' }
+      { value: '0', label: 'cow' },
+      { value: '0', label: 'cow' },
     );
 
     assertPrepareChoice(
       { mode: 'evaluate' },
       { correct: 'Correct', incorrect: 'Incorrect' },
-      { value: '0', label: 'cow'},
-      { value: '0', label: 'cow', correct: true }
+      { value: '0', label: 'cow' },
+      { value: '0', label: 'cow', correct: true },
     );
 
     assertPrepareChoice(
       { mode: 'evaluate' },
       { correct: 'Correct', incorrect: 'Incorrect' },
-      { value: '0', label: 'cow', feedback: { type: 'default' }},
-      { value: '0', label: 'cow', correct: true, feedback: 'Correct' }
+      { value: '0', label: 'cow', feedback: { type: 'default' } },
+      { value: '0', label: 'cow', correct: true, feedback: 'Correct' },
     );
 
     assertPrepareChoice(
       { mode: 'evaluate' },
       { correct: 'Correct', incorrect: 'Incorrect' },
-      { value: '0', label: 'cow', feedback: { type: 'custom' }},
-      { value: '0', label: 'cow', correct: true, feedback: undefined }
+      { value: '0', label: 'cow', feedback: { type: 'custom' } },
+      { value: '0', label: 'cow', correct: true, feedback: undefined },
     );
 
     assertPrepareChoice(
       { mode: 'evaluate' },
       { correct: 'Correct', incorrect: 'Incorrect' },
-      { value: '0', label: 'cow', feedback: { type: 'custom', value: 'Custom Feedback' }},
-      { value: '0', label: 'cow', correct: true, feedback: 'Custom Feedback' }
+      { value: '0', label: 'cow', feedback: { type: 'custom', value: 'Custom Feedback' } },
+      { value: '0', label: 'cow', correct: true, feedback: 'Custom Feedback' },
     );
   });
 });

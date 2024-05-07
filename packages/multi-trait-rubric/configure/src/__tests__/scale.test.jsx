@@ -18,19 +18,19 @@ const scale = () => ({
         'Handwriting is generally legible\n' + '\n' + 'Overall appearance is acceptable or better',
       ],
     },
-  ]
+  ],
 });
 
 describe('Scale', () => {
   let w;
 
-  const wrapper = extras => {
+  const wrapper = (extras) => {
     const defaults = {
       classes: {},
       scale: scale(),
       scaleIndex: 0,
       showStandards: true,
-      ...extras
+      ...extras,
     };
     return shallow(<Scale {...defaults} />);
   };
@@ -75,7 +75,6 @@ describe('Scale', () => {
       w = wrapper({ onScaleChanged });
     });
 
-
     describe('updateMaxPointsFieldValue', () => {
       it('shows alert box is number less then max points', () => {
         const { maxPoints } = w.instance().props.scale;
@@ -90,16 +89,13 @@ describe('Scale', () => {
 
         w.instance().updateMaxPointsFieldValue({ target: { value: maxPoints + 1 } });
 
-        expect(onScaleChanged).toBeCalledWith(0, {
-          maxPoints: maxPoints + 1,
-          scorePointsLabels,
-          traits
-        });
+        expect(onScaleChanged).toBeCalledWith(0, { maxPoints: maxPoints + 1 });
       });
     });
 
     describe('changeMaxPoints', () => {
       it('removes zero', () => {
+        const { scorePointsLabels } = w.instance().props?.scale || {};
         w.instance().setState({ newMaxPoints: 10 });
         w.instance().changeMaxPoints();
 
@@ -174,11 +170,7 @@ describe('Scale', () => {
         w.instance().onTraitDropped({ index: length - 2 }, length - 1);
 
         expect(onScaleChanged).toBeCalledWith(0, {
-          traits: [
-            ...traits.slice(0, length - 2),
-            last,
-            lastButOne
-          ]
+          traits: [...traits.slice(0, length - 2), last, lastButOne],
         });
       });
     });

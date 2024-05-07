@@ -4,79 +4,80 @@ import { shallow } from 'enzyme';
 import { Configure } from '../configure';
 import defaultValues from '../defaults';
 
-jest.mock('@pie-lib/config-ui', () => ({
-  InputContainer: props => <div>{props.children}</div>,
-  InputCheckbox: props => <div>{props.children}</div>,
-  FeedbackConfig: props => <div>{props.children}</div>,
+jest.mock('@pie-lib/pie-toolbox/config-ui', () => ({
+  InputContainer: (props) => <div>{props.children}</div>,
+  InputCheckbox: (props) => <div>{props.children}</div>,
+  FeedbackConfig: (props) => <div>{props.children}</div>,
   layout: {
-    ConfigLayout: props => <div>{props.children}</div>
+    ConfigLayout: (props) => <div>{props.children}</div>,
   },
   settings: {
-    Panel: props => <div onChange={props.onChange} />,
+    Panel: (props) => <div onChange={props.onChange} />,
     toggle: jest.fn(),
     radio: jest.fn(),
     numberFields: jest.fn(),
-    checkboxes: jest.fn()
-  }
+    checkboxes: jest.fn(),
+    textField: jest.fn(),
+  },
 }));
 
-jest.mock('@pie-lib/graphing', () => ({
-  GraphContainer: props => <div>{props.children}</div>,
+jest.mock('@pie-lib/pie-toolbox/graphing', () => ({
+  GraphContainer: (props) => <div>{props.children}</div>,
   tools: {
     point: () => ({
       Component: () => <div />,
-      type: 'point'
+      type: 'point',
     }),
     circle: () => ({
       Component: () => <div />,
-      type: 'circle'
+      type: 'circle',
     }),
     polygon: () => ({
       Component: () => <div />,
-      type: 'polygon'
+      type: 'polygon',
     }),
     segment: () => ({
       Component: () => <div />,
-      type: 'segment'
+      type: 'segment',
     }),
     vector: () => ({
       Component: () => <div />,
-      type: 'vector'
+      type: 'vector',
     }),
     ray: () => ({
       Component: () => <div />,
-      type: 'ray'
+      type: 'ray',
     }),
     line: () => ({
       Component: () => <div />,
-      type: 'line'
+      type: 'line',
     }),
     sine: () => ({
       Component: () => <div />,
-      type: 'sine'
+      type: 'sine',
     }),
     parabola: () => ({
       Component: () => <div />,
-      type: 'parabola'
+      type: 'parabola',
     }),
-  }
+  },
 }));
 
 describe('Configure', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = props => {
+    wrapper = (props) => {
       const configureProps = { ...defaultValues, ...props };
 
-      return shallow(<Configure { ...configureProps } />);
+      return shallow(<Configure {...configureProps} />);
     };
   });
 
   describe('renders', () => {
     it('snapshot', () => {
       expect(wrapper()).toMatchSnapshot();
-    })
+    });
   });
 
   describe('logic', () => {
@@ -86,10 +87,12 @@ describe('Configure', () => {
 
       component.instance().onRationaleChange('New Rationale');
 
-      expect(onModelChanged).toBeCalledWith(expect.objectContaining({
-        ...defaultValues.model,
-        rationale: 'New Rationale',
-      }));
+      expect(onModelChanged).toBeCalledWith(
+        expect.objectContaining({
+          ...defaultValues.model,
+          rationale: 'New Rationale',
+        }),
+      );
     });
 
     it('updates prompt', () => {
@@ -98,10 +101,12 @@ describe('Configure', () => {
 
       component.instance().onPromptChange('New Prompt');
 
-      expect(onModelChanged).toBeCalledWith(expect.objectContaining({
-        ...defaultValues.model,
-        prompt: 'New Prompt',
-      }));
+      expect(onModelChanged).toBeCalledWith(
+        expect.objectContaining({
+          ...defaultValues.model,
+          prompt: 'New Prompt',
+        }),
+      );
     });
 
     it('updates teacher instructions', () => {
@@ -110,11 +115,12 @@ describe('Configure', () => {
 
       component.instance().onTeacherInstructionsChange('New Teacher Instructions');
 
-      expect(onModelChanged).toBeCalledWith(expect.objectContaining({
-        ...defaultValues.model,
-        teacherInstructions: 'New Teacher Instructions',
-      }));
+      expect(onModelChanged).toBeCalledWith(
+        expect.objectContaining({
+          ...defaultValues.model,
+          teacherInstructions: 'New Teacher Instructions',
+        }),
+      );
     });
   });
 });
-

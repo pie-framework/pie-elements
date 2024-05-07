@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { mq } from '@pie-lib/math-input';
-import { shallowChild } from '@pie-lib/test-utils';
-import { MathToolbar } from '@pie-lib/math-toolbar';
+import { mq } from '@pie-lib/pie-toolbox/math-input';
+import { shallowChild } from '@pie-lib/pie-toolbox/test-utils';
+import { MathToolbar } from '@pie-lib/pie-toolbox/math-toolbar';
 import SimpleQuestionBlock from '../simple-question-block';
 
 describe('SimpleQuestionBlock', () => {
@@ -12,16 +12,16 @@ describe('SimpleQuestionBlock', () => {
         feedback: {
           correct: {
             default: 'Correct',
-            type: 'none'
+            type: 'none',
           },
           incorrect: {
             default: 'Incorrect',
-            type: 'none'
+            type: 'none',
           },
           partial: {
             default: 'Nearly',
-            type: 'none'
-          }
+            type: 'none',
+          },
         },
         equationEditor: 'miscellaneous',
         expression: 'n = {\\embed{answerBlock}[answerBlock1]}',
@@ -33,23 +33,23 @@ describe('SimpleQuestionBlock', () => {
             answer: 'n=-11',
             id: 'answerBlock1',
             alternates: {},
-            validation: 'literal'
-          }
+            validation: 'literal',
+          },
         ],
         response: {
           answer: 'n=-11',
           id: 'answerBlock1',
           alternates: {},
-          validation: 'literal'
-        }
-      }
+          validation: 'literal',
+        },
+      },
     },
     correctness: {},
     showCorrect: false,
     session: {
       response: 'sessionResponse',
     },
-    onSimpleResponseChange: jest.fn()
+    onSimpleResponseChange: jest.fn(),
   };
 
   let wrapper;
@@ -80,10 +80,11 @@ describe('SimpleQuestionBlock', () => {
 
     component.instance().onFocus();
     expect(component.state().showKeypad).toEqual(true);
-    component.instance().onBlur({
-      relatedTarget: { offsetParent: 'editor1'},
-      currentTarget: { offsetParent: 'editor1'}
-    });
+
+    // hardcoded
+    component.instance().mathToolBarContainsTarget = () => true;
+    component.instance().handleClick();
+
     expect(component.state().showKeypad).toEqual(true);
   });
 
@@ -92,11 +93,11 @@ describe('SimpleQuestionBlock', () => {
 
     component.instance().onFocus();
     expect(component.state().showKeypad).toEqual(true);
-    component.instance().onBlur({
-      relatedTarget: { offsetParent: 'editor1'},
-      currentTarget: { offsetParent: 'editor2'}
-    });
-    expect(component.state().showKeypad).toEqual(false);
 
+    // hardcoded
+    component.instance().mathToolBarContainsTarget = () => false;
+    component.instance().handleClick();
+
+    expect(component.state().showKeypad).toEqual(false);
   });
 });

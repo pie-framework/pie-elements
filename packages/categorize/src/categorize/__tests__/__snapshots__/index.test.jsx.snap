@@ -11,6 +11,7 @@ exports[`categorize snapshots incorrect 1`] = `
     style={
       Object {
         "flexDirection": "column-reverse",
+        "gap": "8px",
       }
     }
   >
@@ -32,6 +33,7 @@ exports[`categorize snapshots incorrect 1`] = `
         }
         onDropChoice={[Function]}
         onRemoveChoice={[Function]}
+        rowLabels={Array []}
       />
     </div>
     <WithStyles(Choices)
@@ -43,8 +45,16 @@ exports[`categorize snapshots incorrect 1`] = `
           "choices": Array [],
         }
       }
+      onDropChoice={[Function]}
+      onRemoveChoice={[Function]}
     />
   </div>
+  <WithStyles(AlertDialog)
+    onClose={[Function]}
+    open={false}
+    text="You've reached the limit of  responses per area. To add another response, one must first be removed."
+    title="Warning"
+  />
 </div>
 `;
 
@@ -59,6 +69,7 @@ exports[`categorize snapshots renders 1`] = `
     style={
       Object {
         "flexDirection": "column-reverse",
+        "gap": "8px",
       }
     }
   >
@@ -80,6 +91,7 @@ exports[`categorize snapshots renders 1`] = `
         }
         onDropChoice={[Function]}
         onRemoveChoice={[Function]}
+        rowLabels={Array []}
       />
     </div>
     <WithStyles(Choices)
@@ -91,8 +103,16 @@ exports[`categorize snapshots renders 1`] = `
           "choices": Array [],
         }
       }
+      onDropChoice={[Function]}
+      onRemoveChoice={[Function]}
     />
   </div>
+  <WithStyles(AlertDialog)
+    onClose={[Function]}
+    open={false}
+    text="You've reached the limit of  responses per area. To add another response, one must first be removed."
+    title="Warning"
+  />
 </div>
 `;
 
@@ -107,6 +127,7 @@ exports[`categorize snapshots renders with feedback 1`] = `
     style={
       Object {
         "flexDirection": "column-reverse",
+        "gap": "8px",
       }
     }
   >
@@ -143,6 +164,7 @@ exports[`categorize snapshots renders with feedback 1`] = `
         }
         onDropChoice={[Function]}
         onRemoveChoice={[Function]}
+        rowLabels={Array []}
       />
     </div>
     <WithStyles(Choices)
@@ -169,6 +191,8 @@ exports[`categorize snapshots renders with feedback 1`] = `
           },
         }
       }
+      onDropChoice={[Function]}
+      onRemoveChoice={[Function]}
     />
   </div>
   <WithStyles(Feedback)
@@ -189,6 +213,12 @@ exports[`categorize snapshots renders with feedback 1`] = `
         },
       }
     }
+  />
+  <WithStyles(AlertDialog)
+    onClose={[Function]}
+    open={false}
+    text="You've reached the limit of  responses per area. To add another response, one must first be removed."
+    title="Warning"
   />
 </div>
 `;

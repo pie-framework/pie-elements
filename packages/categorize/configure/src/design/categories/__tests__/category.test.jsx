@@ -10,25 +10,24 @@ describe('category', () => {
   let onDeleteChoice = jest.fn();
   let onAddChoice = jest.fn();
 
-  const wrapper = extras => {
+  const wrapper = (extras) => {
     const defaults = {
       classes: {},
       className: 'className',
       category: {
         id: '1',
-        label: 'Category title'
+        label: 'Category title',
       },
       onChange,
       onDelete,
       onDeleteChoice,
-      onAddChoice
+      onAddChoice,
     };
     const props = { ...defaults, ...extras };
     return shallow(<Category {...props} />);
   };
 
   describe('snapshot', () => {
-
     it('renders with default props', () => {
       w = wrapper();
       expect(w).toMatchSnapshot();
@@ -37,11 +36,10 @@ describe('category', () => {
     it('renders without some components if no handlers are provided', () => {
       w = wrapper({
         onChange: undefined,
-        onDelete: undefined
+        onDelete: undefined,
       });
       expect(w).toMatchSnapshot();
     });
-
   });
 
   describe('logic', () => {

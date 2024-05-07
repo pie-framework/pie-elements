@@ -4,10 +4,7 @@ import Main from './main';
 import debug from 'debug';
 import _ from 'lodash';
 
-import {
-  ModelSetEvent,
-  SessionChangedEvent,
-} from '@pie-framework/pie-player-events';
+import { ModelSetEvent, SessionChangedEvent } from '@pie-framework/pie-player-events';
 import defaults from '../configure/lib/defaults';
 
 const log = debug('pie-ui:math-inline');
@@ -18,8 +15,8 @@ export default class MathInline extends HTMLElement {
   constructor() {
     super();
     this._configuration = defaults.configuration;
-    this.sessionChangedEventCaller = _.debounce((session) => {
-      this.dispatchEvent(new SessionChangedEvent(session, true));
+    this.sessionChangedEventCaller = _.debounce(() => {
+      this.dispatchEvent(new SessionChangedEvent(this.tagName.toLowerCase(), true));
     }, 1000);
   }
 
@@ -34,21 +31,28 @@ export default class MathInline extends HTMLElement {
     this._render();
   }
 
+  get session() {
+    return this._session;
+  }
+
   set configuration(c) {
     this._configuration = c;
     this._render();
   }
 
   sessionChanged(s) {
-    Object.keys(s).map(key => {
+    Object.keys(s).map((key) => {
       this._session[key] = s[key];
     });
 
-    this.sessionChangedEventCaller(this._session);
+    this.sessionChangedEventCaller();
     log('session: ', this._session);
   }
 
   connectedCallback() {
+    this.setAttribute('aria-label', 'Math Response Question'); 
+    this.setAttribute('role', 'region');
+
     this._render();
   }
 

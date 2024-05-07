@@ -1,19 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { InputContainer } from '@pie-lib/config-ui';
+import { InputContainer } from '@pie-lib/pie-toolbox/config-ui';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import { withStyles } from '@material-ui/core/styles';
 
 class Palette extends React.Component {
-  onChange = (name) => event => {
+  onChange = (name) => (event) => {
     const { value } = event.target;
     const { onHotspotColorChange, onOutlineColorChange } = this.props;
 
     if (name === 'hotspot') {
       onHotspotColorChange(value);
     } else {
-      onOutlineColorChange(value)
+      onOutlineColorChange(value);
     }
   };
 
@@ -23,18 +23,9 @@ class Palette extends React.Component {
     return (
       <div className={classes.base}>
         <InputContainer label="Hot Spot" className={classes.input}>
-          <Select
-            className={classes.select}
-            onChange={this.onChange('hotspot')}
-            value={hotspotColor}
-          >
-            {hotspotList.map(hotspot => (
-              <MenuItem
-                key={hotspot}
-                value={hotspot}
-                className={classes.item}
-                style={{ backgroundColor: hotspot }}
-              >
+          <Select className={classes.select} onChange={this.onChange('hotspot')} value={hotspotColor}>
+            {hotspotList.map((hotspot) => (
+              <MenuItem key={hotspot} value={hotspot} className={classes.item} style={{ backgroundColor: hotspot }}>
                 {hotspot}
               </MenuItem>
             ))}
@@ -42,12 +33,8 @@ class Palette extends React.Component {
         </InputContainer>
 
         <InputContainer label="Response Outline" className={classes.input}>
-          <Select
-            className={classes.select}
-            onChange={this.onChange('outline')}
-            value={outlineColor}
-          >
-            {outlineList.map(outline => (
+          <Select className={classes.select} onChange={this.onChange('outline')} value={outlineColor}>
+            {outlineList.map((outline) => (
               <MenuItem
                 key={outline}
                 value={outline}
@@ -64,21 +51,21 @@ class Palette extends React.Component {
   }
 }
 
-const styles = theme => ({
+const styles = (theme) => ({
   base: {
     marginTop: theme.spacing.unit * 2,
-    display: 'flex'
+    display: 'flex',
   },
   input: {
     flex: 1,
-    width: '90%'
+    width: '90%',
   },
   item: {
     borderRadius: '2px',
     height: '22px',
     marginLeft: theme.spacing.unit * 2,
     marginRight: theme.spacing.unit * 2,
-    marginTop: theme.spacing.unit * 2
+    marginTop: theme.spacing.unit * 2,
   },
 });
 
@@ -89,7 +76,7 @@ Palette.propTypes = {
   onHotspotColorChange: PropTypes.func.isRequired,
   onOutlineColorChange: PropTypes.func.isRequired,
   outlineColor: PropTypes.string.isRequired,
-  outlineList: PropTypes.array.isRequired
+  outlineList: PropTypes.array.isRequired,
 };
 
 export default withStyles(styles)(Palette);

@@ -19,20 +19,35 @@ export default {
     scoringType: 'auto',
     targetLabel: '',
     rationaleEnabled: true,
-    feedbackEnabled: true,
+    feedbackEnabled: false,
     promptEnabled: true,
     teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true,
-    toolbarEditorPosition: 'bottom'
+    toolbarEditorPosition: 'bottom',
   },
   configuration: {
+    baseInputConfiguration: {
+      audio: { disabled: false },
+      video: { disabled: false },
+      image: { disabled: false },
+    },
     choiceLabel: {
       settings: true,
-      label: 'Choice label'
+      label: 'Choice label',
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
     },
     choices: {
       settings: true,
       label: 'Choices',
+      inputConfiguration: {
+        audio: { disabled: true },
+        video: { disabled: true },
+        image: { disabled: true },
+      },
     },
     enableImages: {
       settings: true,
@@ -41,11 +56,17 @@ export default {
     feedback: {
       settings: true,
       label: 'Feedback',
-      enabled: true
+      enabled: true,
     },
     prompt: {
       settings: true,
-      label: 'Item Stem'
+      label: 'Item Stem',
+      required: false,
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
     },
     numberedGuides: {
       settings: true,
@@ -57,7 +78,7 @@ export default {
     },
     partialScoring: {
       settings: false,
-      label: 'Allow Partial Scoring'
+      label: 'Allow Partial Scoring',
     },
     placementArea: {
       settings: true,
@@ -66,11 +87,18 @@ export default {
     rationale: {
       settings: true,
       label: 'Rationale',
+      required: false,
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
     },
     removeTilesAfterPlacing: {
       settings: false,
-      label: 'Remove Tiles after placing'
+      label: 'Remove Tiles after placing',
     },
+    settingsPanelDisabled: false,
     scoringType: {
       settings: false,
       label: 'Scoring Type',
@@ -83,9 +111,50 @@ export default {
       settings: true,
       label: 'Target label',
     },
+    spellCheck: {
+      label: 'Spellcheck',
+      settings: false,
+      enabled: true,
+    },
     teacherInstructions: {
       settings: true,
       label: 'Teacher Instructions',
+      required: false,
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
     },
-  }
+    maxImageWidth: {
+      teacherInstructions: 300,
+      prompt: 300,
+      rationale: 300,
+      choicesWithPlacementArea: 240,
+      choicesWithoutPlacementArea: 300,
+    },
+    maxImageHeight: {
+      teacherInstructions: 300,
+      prompt: 300,
+      rationale: 300,
+      choices: 150,
+    },
+    withRubric: {
+      settings: false,
+      label: 'Add Rubric',
+    },
+    mathMlOptions: {
+      mmlOutput: false,
+      mmlEditing: false,
+    },
+    language: {
+      settings: false,
+      label: 'Specify Language',
+      enabled: false,
+    },
+    languageChoices: {
+      label: 'Language Choices',
+      options: [],
+    },
+  },
 };

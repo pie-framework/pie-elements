@@ -1,7 +1,16 @@
 import { PieModel } from '../../PieModel';
 import { PromptConfig } from '../../PromptConfig';
 import { CommonConfigSettings } from '../../CommonConfigSettings';
-import { ConfigureProp } from '../ConfigurationProp';
+import {
+  ConfigureLanguageOptionsProp,
+  ConfigureMathMLProp,
+  ConfigureMaxImageDimensionsProp,
+  ConfigureProp,
+  ConfigurePropWithEnabled,
+  EditableHtmlConfigureProp,
+  EditableHtmlPluginConfigure,
+  EditableHtmlPluginConfigureRequired,
+} from '../ConfigurationProp';
 
 export interface Choice {
   /** The value for the choice */
@@ -74,6 +83,9 @@ export interface InlineDropdownPie extends PieModel {
   /** Indicates if Rationale are enabled */
   rationaleEnabled: boolean;
 
+  /** Indicates if spellcheck is enabled for the author. Default value is true */
+  spellCheckEnabled: boolean;
+
   /** Indicates if Choice Level Rationales are enabled */
   choiceRationaleEnabled: boolean;
 
@@ -91,15 +103,27 @@ export interface InlineDropdownPie extends PieModel {
    * @default: 'bottom'
    */
   toolbarEditorPosition?: 'bottom' | 'top';
+
+  /** Indicates if Rubric is enabled */
+  rubricEnabled: boolean;
+
+  /** Indicates the language of the component
+   * Supported options: en, es, en_US, en-US, es_ES, es-ES, es_MX, es-MX
+   */
+  language?: string;
 }
 
 /**
  * Config Object for @pie-elements/inline-dropdown
  * @additionalProperties false
  */
-export interface InlineDropdownConfigure
-  extends PromptConfig,
-    CommonConfigSettings {
+export interface InlineDropdownConfigure extends PromptConfig, CommonConfigSettings {
+  /**
+   * Base editable html input configuration regarding plugins that are enabled/disabled
+   * E.g. audio, video, image
+   */
+  baseInputConfiguration?: EditableHtmlConfigureProp;
+
   /**
    * Choices configuration
    */
@@ -108,7 +132,7 @@ export interface InlineDropdownConfigure
   /**
    * Item Stem configuration
    */
-  prompt?: ConfigureProp;
+  prompt?: EditableHtmlPluginConfigureRequired;
 
   /**
    * Lock Choice Order configuration
@@ -123,12 +147,22 @@ export interface InlineDropdownConfigure
   /**
    * Rationale configuration
    */
-  rationale?: ConfigureProp;
+  rationale?: EditableHtmlPluginConfigureRequired;
+
+  /**
+   * Configuration for the author's spellcheck
+   */
+  spellCheck?: ConfigureProp;
 
   /**
    * Choice Level Rationales configuration
    */
   choiceRationale?: ConfigureProp;
+
+  /**
+   * Indicates if the settings panel is not available
+   */
+  settingsPanelDisabled?: boolean;
 
   /**
    * Scoring Type configuration
@@ -143,5 +177,52 @@ export interface InlineDropdownConfigure
   /**
    * Teacher Instructions configuration
    */
-  teacherInstructions?: ConfigureProp;
+  teacherInstructions?: EditableHtmlPluginConfigureRequired;
+
+  /**
+   * Template configuration
+   */
+  template?: EditableHtmlPluginConfigure;
+
+  /**
+   * Maximum number of response areas
+   */
+  maxResponseAreas?: number;
+
+  /**
+   * Maximum number of choices per response area
+   */
+  maxResponseAreaChoices?: number;
+
+  /**
+   * Maximum image width for input fields
+   */
+  maxImageWidth?: ConfigureMaxImageDimensionsProp;
+
+  /**
+   * Maximum image height for input fields
+   */
+  maxImageHeight?: ConfigureMaxImageDimensionsProp;
+
+  /**
+   * Rubric configuration - only relevant in environments that use pie-player-components
+   */
+  withRubric?: ConfigureProp;
+
+  /** Configuration for editable-html */
+  mathMlOptions?: ConfigureMathMLProp;
+
+  /**
+   * Language configuration
+   */
+  language?: ConfigurePropWithEnabled;
+
+  /**
+   * Language choices configuration
+   * Only available if language is enabled
+   */
+  languageChoices?: {
+    label: string;
+    options: ConfigureLanguageOptionsProp[];
+  };
 }

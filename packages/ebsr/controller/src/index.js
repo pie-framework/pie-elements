@@ -1,19 +1,19 @@
 import defaults from './defaults';
-import { lockChoices, getShuffledChoices } from '@pie-lib/controller-utils';
+import { lockChoices, getShuffledChoices, partialScoring } from '@pie-lib/pie-toolbox/controller-utils';
 import { isResponseCorrect } from './utils';
 import get from 'lodash/get';
 import isEmpty from 'lodash/isEmpty';
+import Translator from '@pie-lib/pie-toolbox/translator';
 
-const prepareChoice = (model, env, defaultFeedback) => choice => {
+const { translator } = Translator;
+
+const prepareChoice = (model, env, defaultFeedback) => (choice) => {
   const out = {
     label: choice.label,
-    value: choice.value
+    value: choice.value,
   };
 
-  if (
-    env.role === 'instructor' &&
-    (env.mode === 'view' || env.mode === 'evaluate')
-  ) {
+  if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
     out.rationale = model.rationaleEnabled ? choice.rationale : null;
   } else {
     out.rationale = null;
@@ -37,26 +37,18 @@ const prepareChoice = (model, env, defaultFeedback) => choice => {
 };
 
 const parsePart = (part, key, session, env) => {
-  const defaultFeedback = Object.assign(
-    { correct: 'Correct', incorrect: 'Incorrect' },
-    part.defaultFeedback
-  );
+  const defaultFeedback = Object.assign({ correct: 'Correct', incorrect: 'Incorrect' }, part.defaultFeedback);
 
-  let choices = part.choices
-    ? part.choices.map(prepareChoice(part, env, defaultFeedback))
-    : [];
+  let choices = part.choices ? part.choices.map(prepareChoice(part, env, defaultFeedback)) : [];
 
   return {
     ...part,
     choices,
     disabled: env.mode !== 'gather',
     complete: {
-      min: part.choices.filter(c => c.correct).length
+      min: part.choices.filter((c) => c.correct).length,
     },
-    responseCorrect:
-      env.mode === 'evaluate'
-        ? isResponseCorrect(part, key, session)
-        : undefined
+    responseCorrect: env.mode === 'evaluate' ? isResponseCorrect(part, key, session) : undefined,
   };
 };
 
@@ -67,25 +59,25 @@ export const normalize = ({ partA = {}, partB = {}, ...question }) => ({
   partA: {
     ...defaults.partA,
     rationaleEnabled: true,
-    feedbackEnabled: true,
+    feedbackEnabled: false,
     promptEnabled: true,
     teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true,
     gridColumns: '2',
     ...partA,
-    choicesLayout: partA.choicesLayout || (partA.verticalMode === false && 'horizontal') || 'vertical'
+    choicesLayout: partA.choicesLayout || (partA.verticalMode === false && 'horizontal') || 'vertical',
   },
   partB: {
     ...defaults.partB,
     rationaleEnabled: true,
     promptEnabled: true,
-    feedbackEnabled: true,
+    feedbackEnabled: false,
     teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true,
     gridColumns: '2',
     ...partB,
-    choicesLayout: partB.choicesLayout || (partB.verticalMode === false && 'horizontal') || 'vertical'
-  }
+    choicesLayout: partB.choicesLayout || (partB.verticalMode === false && 'horizontal') || 'vertical',
+  },
 });
 
 /**
@@ -102,8 +94,8 @@ export async function model(question, session, env, updateSession) {
 
   const shuffledValues = {};
 
-  const us = part => (id, element, update) =>
-    new Promise(resolve => {
+  const us = (part) => (id, element, update) =>
+    new Promise((resolve) => {
       shuffledValues[part] = update.shuffledValues;
       resolve();
     });
@@ -119,7 +111,7 @@ export async function model(question, session, env, updateSession) {
       partAChoices,
       { shuffledValues: (session.shuffledValues || {}).partA },
       us('partA'),
-      'value'
+      'value',
     );
   }
 
@@ -131,40 +123,35 @@ export async function model(question, session, env, updateSession) {
       partBChoices,
       { shuffledValues: (session.shuffledValues || {}).partB },
       us('partB'),
-      'value'
+      'value',
     );
   }
 
   if (!isEmpty(shuffledValues)) {
     if (updateSession && typeof updateSession === 'function') {
       updateSession(session.id, session.element, {
-        shuffledValues
-      }).catch(e => {
+        shuffledValues,
+      }).catch((e) => {
+        // eslint-disable-next-line no-console
         console.error('update session failed', e);
       });
     }
   }
 
   if (normalizedQuestion.partLabels) {
-    partA.partLabel =
-      normalizedQuestion.partLabelType === 'Letters' ? 'Part A' : 'Part 1';
-    partB.partLabel =
-      normalizedQuestion.partLabelType === 'Letters' ? 'Part B' : 'Part 2';
+    const language = normalizedQuestion.language;
+    partA.partLabel = translator.t('ebsr.part', {lng: language, index: normalizedQuestion.partLabelType === 'Letters' ? 'A' : '1'});
+    partB.partLabel = translator.t('ebsr.part', {lng: language, index: normalizedQuestion.partLabelType === 'Letters' ? 'B' : '2'});
   } else {
     partA.partLabel = undefined;
     partB.partLabel = undefined;
   }
 
-  if (
-    env.role === 'instructor' &&
-    (env.mode === 'view' || env.mode === 'evaluate')
-  ) {
-    partA.teacherInstructions = normalizedQuestion.partA
-      .teacherInstructionsEnabled
+  if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
+    partA.teacherInstructions = normalizedQuestion.partA.teacherInstructionsEnabled
       ? normalizedQuestion.partA.teacherInstructions
       : null;
-    partB.teacherInstructions = normalizedQuestion.partB
-      .teacherInstructionsEnabled
+    partB.teacherInstructions = normalizedQuestion.partB.teacherInstructionsEnabled
       ? normalizedQuestion.partB.teacherInstructions
       : null;
   } else {
@@ -172,41 +159,37 @@ export async function model(question, session, env, updateSession) {
     partB.teacherInstructions = null;
   }
 
-  partA.prompt = normalizedQuestion.partA.promptEnabled
-    ? normalizedQuestion.partA.prompt
-    : null;
-  partB.prompt = normalizedQuestion.partB.promptEnabled
-    ? normalizedQuestion.partB.prompt
-    : null;
+  partA.prompt = normalizedQuestion.partA.promptEnabled ? normalizedQuestion.partA.prompt : null;
+  partB.prompt = normalizedQuestion.partB.promptEnabled ? normalizedQuestion.partB.prompt : null;
 
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     resolve({
       disabled: env.mode !== 'gather',
       mode: env.mode,
       partA,
-      partB
+      partB,
     });
   });
 }
 
 export const createDefaultModel = (model = {}) =>
-  new Promise(resolve => {
+  new Promise((resolve) => {
     resolve({
       ...defaults,
-      ...model
+      ...model,
     });
   });
 
-const isCorrect = c => c.correct === true;
+const isCorrect = (c) => c.correct === true;
 
-const getScore = (config, sessionPart, key) => {
+const getScore = (config, sessionPart, key, partialScoringEnabled) => {
   const { choices = [] } = (config && config[key]) || {};
   const maxScore = choices.length;
   const { value: sessionPartValue } = sessionPart || {};
 
-  const chosen = c => !!(sessionPartValue || []).find(v => v === c.value);
-  const correctAndNotChosen = c => isCorrect(c) && !chosen(c);
-  const incorrectAndChosen = c => !isCorrect(c) && chosen(c);
+  const chosen = (c) => !!(sessionPartValue || []).find((v) => v === c.value);
+  const correctAndNotChosen = (c) => isCorrect(c) && !chosen(c);
+  const incorrectAndChosen = (c) => !isCorrect(c) && chosen(c);
   const correctChoices = choices.reduce((total, choice) => {
     if (correctAndNotChosen(choice) || incorrectAndChosen(choice)) {
       return total - 1;
@@ -216,15 +199,15 @@ const getScore = (config, sessionPart, key) => {
   }, choices.length);
 
   // determine score for a part
-  if (!config.partialScoring && correctChoices < maxScore) {
+  if (!partialScoringEnabled && correctChoices < maxScore) {
     return 0;
   }
 
   return parseFloat(maxScore ? (correctChoices / maxScore).toFixed(2) : 0);
 };
 
-export function outcome(config, session) {
-  return new Promise(resolve => {
+export function outcome(config, session, env) {
+  return new Promise((resolve) => {
     const { value } = session || {};
 
     if (!session || !value) {
@@ -234,13 +217,15 @@ export function outcome(config, session) {
     if (value) {
       const { partA, partB } = value || {};
 
-      const scoreA = getScore(config, partA, 'partA');
-      const scoreB = getScore(config, partB, 'partB');
+      const partialScoringEnabled = partialScoring.enabled(config, env);
 
-      if (!config.partialScoring) {
+      const scoreA = getScore(config, partA, 'partA', partialScoringEnabled);
+      const scoreB = getScore(config, partB, 'partB', partialScoringEnabled);
+
+      if (!partialScoringEnabled) {
         // The EBSR item is worth 1 point
         // That point is awarded if and only if both parts are fully correct, otherwise no points are awarded
-        resolve({ score: (scoreA === 1 && scoreB === 1) ? 1 : 0, scoreA, scoreB, max: 1 });
+        resolve({ score: scoreA === 1 && scoreB === 1 ? 1 : 0, scoreA, scoreB, max: 1 });
       } else {
         // The EBSR item is worth 2 points
         if (scoreA === 1) {
@@ -260,10 +245,10 @@ export function outcome(config, session) {
   });
 }
 
-const returnPartCorrect = choices => {
+const returnPartCorrect = (choices) => {
   let answers = [];
 
-  choices.forEach(i => {
+  choices.forEach((i) => {
     const { correct, value } = i;
     if (correct) {
       answers.push(value);
@@ -273,7 +258,7 @@ const returnPartCorrect = choices => {
 };
 
 export const createCorrectResponseSession = (question, env) => {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     if (env.mode !== 'evaluate' && env.role === 'instructor') {
       const { partA, partB } = question;
 
@@ -284,17 +269,93 @@ export const createCorrectResponseSession = (question, env) => {
         value: {
           partA: {
             id: 'partA',
-            value: partACorrect
+            value: partACorrect,
           },
           partB: {
             id: 'partB',
-            value: partBCorrect
-          }
+            value: partBCorrect,
+          },
         },
-        id: '1'
+        id: '1',
       });
     } else {
       resolve(null);
     }
   });
+};
+
+// remove all html tags
+const getInnerText = (html) => (html || '').replaceAll(/<[^>]*>/g, '');
+
+// remove all html tags except img and iframe
+const getContent = (html) => (html || '').replace(/(<(?!img|iframe)([^>]+)>)/gi, '');
+
+const validatePart = (model = {}, config = {}) => {
+  const { choices } = model;
+  const { minAnswerChoices = 2, maxAnswerChoices } = config;
+  const reversedChoices = [...(choices || [])].reverse();
+  const errors = {};
+  const choicesErrors = {};
+  const rationaleErrors = {};
+  let hasCorrectResponse = false;
+
+  ['teacherInstructions', 'prompt'].forEach((field) => {
+    if (config[field]?.required && !getContent(model[field])) {
+      errors[field] = 'This field is required.';
+    }
+  });
+
+  reversedChoices.forEach((choice, index) => {
+    const { correct, value, label, rationale } = choice;
+
+    if (correct) {
+      hasCorrectResponse = true;
+    }
+
+    if (!getContent(label)) {
+      choicesErrors[value] = 'Content should not be empty.';
+    } else {
+      const identicalAnswer = reversedChoices.slice(index + 1).some((c) => c.label === label);
+
+      if (identicalAnswer) {
+        choicesErrors[value] = 'Content should be unique.';
+      }
+    }
+
+    if (config.rationale?.required && !getContent(rationale)) {
+      rationaleErrors[value] = 'This field is required.';
+    }
+  });
+
+  const nbOfChoices = (choices || []).length;
+
+  if (nbOfChoices < minAnswerChoices) {
+    errors.answerChoices = `There should be at least ${minAnswerChoices} choices defined.`;
+  } else if (nbOfChoices > maxAnswerChoices) {
+    errors.answerChoices = `No more than ${maxAnswerChoices} choices should be defined.`;
+  }
+
+  if (!hasCorrectResponse) {
+    errors.correctResponse = 'No correct response defined.';
+  }
+
+  if (!isEmpty(choicesErrors)) {
+    errors.choices = choicesErrors;
+  }
+
+  if (!isEmpty(rationaleErrors)) {
+    errors.rationale = rationaleErrors;
+  }
+
+  return errors;
+};
+
+export const validate = (model = {}, config = {}) => {
+  const { partA, partB } = model || {};
+  const { partA: partAConfig, partB: partBConfig } = config || {};
+
+  const partAErrors = validatePart(partA, partAConfig);
+  const partBErrors = validatePart(partB, partBConfig);
+
+  return { partA: partAErrors, partB: partBErrors };
 };

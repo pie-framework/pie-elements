@@ -2,23 +2,23 @@ import { shallow } from 'enzyme';
 import React from 'react';
 
 import { Main } from '../main';
-import sensibleDefaults from "../defaults";
-import { createSlateMarkup, processMarkup } from "../markupUtils";
+import sensibleDefaults from '../defaults';
+import { createSlateMarkup, processMarkup } from '../markupUtils';
 
-jest.mock('@pie-lib/config-ui', () => ({
+jest.mock('@pie-lib/pie-toolbox/config-ui', () => ({
   choiceUtils: {
-    firstAvailableIndex: jest.fn()
+    firstAvailableIndex: jest.fn(),
   },
   settings: {
-    Panel: props => <div {...props} />,
+    Panel: (props) => <div {...props} />,
     toggle: jest.fn(),
     radio: jest.fn(),
-    dropdown: jest.fn()
+    dropdown: jest.fn(),
   },
   layout: {
-    ConfigLayout: props => <div>{props.children}</div>
+    ConfigLayout: (props) => <div>{props.children}</div>,
   },
-  InputContainer: props => <div>{props.children}</div>
+  InputContainer: (props) => <div>{props.children}</div>,
 }));
 
 const model = {
@@ -26,35 +26,33 @@ const model = {
   prompt: '<p>Solve the equation below.</p>',
   choices: [
     { value: '<div>6</div>', id: '0' },
-    { value: '<div>9</div>', id: '1' }
+    { value: '<div>9</div>', id: '1' },
   ],
   choicesPosition: 'below',
   correctResponse: {
-    '0': '0',
-    '1': '1'
+    0: '0',
+    1: '1',
   },
   duplicates: true,
-  alternateResponses: [
-    ['1'],
-    ['0']
-  ],
-  rationale: '<p>A correct response is shown below:</p><ul><li>2/6 = 1/3</li><li>4/8 = 1/2</li><li>6/10 = 3/5</li><li>9/12 = 3/4</li></ul>'
+  alternateResponses: [['1'], ['0']],
+  rationale:
+    '<p>A correct response is shown below:</p><ul><li>2/6 = 1/3</li><li>4/8 = 1/2</li><li>6/10 = 3/5</li><li>9/12 = 3/4</li></ul>',
 };
 
 const prepareModel = (model = {}) => {
   const joinedObj = {
     ...sensibleDefaults.model,
-    ...model
+    ...model,
   };
-  const slateMarkup = model.slateMarkup ||
-    createSlateMarkup(joinedObj.markup, joinedObj.choices, joinedObj.correctResponse);
+  const slateMarkup =
+    model.slateMarkup || createSlateMarkup(joinedObj.markup, joinedObj.choices, joinedObj.correctResponse);
   const processedMarkup = processMarkup(slateMarkup);
 
   return {
     ...joinedObj,
     slateMarkup,
     markup: processedMarkup.markup,
-    correctResponse: processedMarkup.correctResponse
+    correctResponse: processedMarkup.correctResponse,
   };
 };
 
@@ -62,16 +60,16 @@ describe('Main', () => {
   let onModelChanged = jest.fn();
   let onConfigurationChanged = jest.fn();
 
-  const wrapper = extras => {
+  const wrapper = (extras) => {
     const defaults = {
       onModelChanged,
       onConfigurationChanged,
       classes: {},
       model: prepareModel({
         ...model,
-        ...extras
+        ...extras,
       }),
-      configuration: sensibleDefaults.configuration
+      configuration: sensibleDefaults.configuration,
     };
     const props = { ...defaults };
 
@@ -84,11 +82,13 @@ describe('Main', () => {
     });
 
     it('renders without teacher instructions, prompt and rationale', () => {
-      expect(wrapper({
-        promptEnabled: false,
-        teacherInstructionsEnabled: false,
-        rationaleEnabled: false
-      })).toMatchSnapshot();
+      expect(
+        wrapper({
+          promptEnabled: false,
+          teacherInstructionsEnabled: false,
+          rationaleEnabled: false,
+        }),
+      ).toMatchSnapshot();
     });
   });
 
@@ -105,7 +105,7 @@ describe('Main', () => {
 
         expect(onModelChanged).toBeCalledWith({
           ...prepareModel(model),
-          promptEnabled: false
+          promptEnabled: false,
         });
       });
     });
@@ -116,7 +116,7 @@ describe('Main', () => {
 
         expect(onModelChanged).toBeCalledWith({
           ...prepareModel(model),
-          prompt: 'This is the new prompt'
+          prompt: 'This is the new prompt',
         });
       });
     });
@@ -127,7 +127,7 @@ describe('Main', () => {
 
         expect(onModelChanged).toBeCalledWith({
           ...prepareModel(model),
-          rationale: 'New Rationale'
+          rationale: 'New Rationale',
         });
       });
     });
@@ -138,20 +138,21 @@ describe('Main', () => {
 
         expect(onModelChanged).toBeCalledWith({
           ...prepareModel(model),
-          teacherInstructions: 'New Teacher Instructions'
+          teacherInstructions: 'New Teacher Instructions',
         });
       });
     });
 
     describe('onMarkupChanged', () => {
       it('changes slate markup value', () => {
-        const slateMarkup = '<span data-type="drag_in_the_blank" data-index="0" data-id="0" data-value="&lt;div&gt;6&lt;/div&gt;"></span> + <span data-type="drag_in_the_blank" data-index="1" data-id="1" data-value="&lt;div&gt;9&lt;/div&gt;"></span> = 15eggs';
+        const slateMarkup =
+          '<span data-type="drag_in_the_blank" data-index="0" data-id="0" data-value="&lt;div&gt;6&lt;/div&gt;"></span> + <span data-type="drag_in_the_blank" data-index="1" data-id="1" data-value="&lt;div&gt;9&lt;/div&gt;"></span> = 15eggs';
 
         w.instance().onMarkupChanged(slateMarkup);
 
         expect(onModelChanged).toBeCalledWith({
           ...prepareModel(model),
-          slateMarkup
+          slateMarkup,
         });
       });
     });
@@ -160,15 +161,16 @@ describe('Main', () => {
       it('changes choices and slateMarkup as well', () => {
         const newChoices = [
           { value: '<div>6</div>', id: '0' },
-          { value: '<div>3^2</div>', id: '1' }
+          { value: '<div>3^2</div>', id: '1' },
         ];
 
         w.instance().onResponsesChanged(newChoices);
 
         expect(onModelChanged).toBeCalledWith({
           ...prepareModel(model),
-          slateMarkup: '<span data-type="drag_in_the_blank" data-index="0" data-id="0" data-value="&lt;div&gt;6&lt;/div&gt;"></span> + <span data-type="drag_in_the_blank" data-index="1" data-id="1" data-value="&lt;div&gt;3^2&lt;/div&gt;"></span> = 15',
-          choices: newChoices
+          slateMarkup:
+            '<span data-type="drag_in_the_blank" data-index="0" data-id="0" data-value="&lt;div&gt;6&lt;/div&gt;"></span> + <span data-type="drag_in_the_blank" data-index="1" data-id="1" data-value="&lt;div&gt;3^2&lt;/div&gt;"></span> = 15',
+          choices: newChoices,
         });
       });
     });

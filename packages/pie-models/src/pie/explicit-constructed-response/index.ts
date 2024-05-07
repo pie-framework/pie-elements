@@ -1,14 +1,23 @@
-import {PieModel} from '../../PieModel';
+import { PieModel } from '../../PieModel';
 import { PromptConfig } from '../../PromptConfig';
 import { CommonConfigSettings } from '../../CommonConfigSettings';
-import { ConfigureProp } from '../ConfigurationProp';
+import {
+  ConfigureLanguageOptionsProp,
+  ConfigureMathMLProp,
+  ConfigureMaxImageDimensionsProp,
+  ConfigureProp,
+  ConfigurePropWithEnabled,
+  EditableHtmlConfigureProp,
+  EditableHtmlPluginConfigure,
+  EditableHtmlPluginConfigureRequired,
+} from '../ConfigurationProp';
 
 export interface Choice {
-    /** The value for the choice */
-    value: string;
+  /** The value for the choice */
+  value: string;
 
-    /** The label of the choice */
-    label: string;
+  /** The label of the choice */
+  label: string;
 }
 
 export interface Choices {
@@ -25,59 +34,73 @@ export interface Choices {
  * @additionalProperties false
  */
 export interface ExplicitConstructedResponsePie extends PieModel {
-    /**
-     * * Object with all the available choices for each response area.
-     * * Keys need to be integers from 0 to n - 1 (where n is the number of areas)
-     */
-    choices: Choices;
+  /**
+   * * Object with all the available choices for each response area.
+   * * Keys need to be integers from 0 to n - 1 (where n is the number of areas)
+   */
+  choices: Choices;
 
-    /** The type of display the container of the pie-ui element will be used */
-    displayType: string;
+  /** The type of display the container of the pie-ui element will be used */
+  displayType: string;
 
-    /** The markup for the pie-ui element */
-    markup: string;
+  /** The markup for the pie-ui element */
+  markup: string;
 
-    /** The item stem for the question */
-    prompt?: string;
+  /** The item stem for the question */
+  prompt?: string;
 
-    /**  Indicates if the prompt is enabled */
-    promptEnabled?: boolean;
+  /**  Indicates if the prompt is enabled */
+  promptEnabled?: boolean;
 
-    /** Indicates correct answer rationale */
-    rationale: string;
+  /** Indicates if spellcheck is enabled for the author. Default value is true */
+  spellCheckEnabled: boolean;
 
-    /** Indicates auto scoring type */
-    autoScoring: 'allOrNothing' | 'partial';
+  /** Indicates if spellcheck is enabled for the player. Default value is true */
+  playerSpellCheckEnabled: boolean;
 
-    /** Indicates student instructions */
-    studentInstructions?: string;
+  /** Indicates correct answer rationale */
+  rationale: string;
 
-    /** Indicates teacher instructions */
-    teacherInstructions?: string;
+  /** Indicates auto scoring type */
+  autoScoring: 'allOrNothing' | 'partial';
 
-    /** Indicates value for rubric */
-    rubric: string;
+  /** Indicates student instructions */
+  studentInstructions?: string;
 
-    /** Indicates if Rationale are enabled */
-    rationaleEnabled: boolean;
+  /** Indicates teacher instructions */
+  teacherInstructions?: string;
 
-    /** Indicates if Student Instructions are enabled */
-    studentInstructionsEnabled: boolean;
+  /** Indicates value for rubric */
+  rubric: string;
 
-    /** Indicates if Teacher Instructions are enabled */
-    teacherInstructionsEnabled: boolean;
+  /** Indicates if Rationale are enabled */
+  rationaleEnabled: boolean;
 
-    /** Indicates the note for the answer */
-    note?: string;
+  /** Indicates if Student Instructions are enabled */
+  studentInstructionsEnabled: boolean;
 
-    /**
-     * Indicates the editor's toolbar position which can be 'bottom' or 'top'
-     * @default: 'bottom'
-     */
-    toolbarEditorPosition?: 'bottom' | 'top';
+  /** Indicates if Teacher Instructions are enabled */
+  teacherInstructionsEnabled: boolean;
 
-    /** Indicates the maximum length for each response area */
-    maxLengthPerChoice?: number[];
+  /** Indicates the note for the answer */
+  note?: string;
+
+  /**
+   * Indicates the editor's toolbar position which can be 'bottom' or 'top'
+   * @default: 'bottom'
+   */
+  toolbarEditorPosition?: 'bottom' | 'top';
+
+  /** Indicates the maximum length for each response area */
+  maxLengthPerChoice?: number[];
+
+  /** Indicates if Rubric is enabled */
+  rubricEnabled: boolean;
+
+  /** Indicates the language of the component
+   * Supported options: en, es, en_US, en-US, es_ES, es-ES, es_MX, es-MX
+   */
+  language?: string;
 }
 
 /**
@@ -85,43 +108,105 @@ export interface ExplicitConstructedResponsePie extends PieModel {
  * @additionalProperties false
  */
 export interface ExplicitConstructedResponseConfigure extends PromptConfig, CommonConfigSettings {
+  /**
+   * Base editable html input configuration regarding plugins that are enabled/disabled
+   * E.g. audio, video, image
+   */
+  baseInputConfiguration?: EditableHtmlConfigureProp;
 
-    /**
-     * Choices configuration
-     */
-    choices?: ConfigureProp;
+  /**
+   * Choices configuration
+   */
+  choices?: ConfigureProp;
 
-    /**
-     * Item Stem configuration
-     */
-    prompt?: ConfigureProp;
+  /**
+   * Item Stem configuration
+   */
+  prompt?: EditableHtmlPluginConfigureRequired;
 
-    /**
-     * Rationale configuration
-     */
-    rationale?: ConfigureProp;
+  /**
+   * Rationale configuration
+   */
+  rationale?: EditableHtmlPluginConfigureRequired;
 
-    /**
-     * Auto Scoring Type configuration
-     */
-    autoScoring?: ConfigureProp;
+  /**
+   * Indicates if the settings panel is not available
+   */
+  settingsPanelDisabled?: boolean;
 
-    /**
-     * Student Instructions configuration
-     */
-    studentInstructions?: ConfigureProp;
+  /**
+   * Configuration for the author's spellcheck
+   */
+  spellCheck?: ConfigureProp;
 
-    /**
-     * Teacher Instructions configuration
-     */
-    teacherInstructions?: ConfigureProp;
+  /**
+   * Configuration for the player's spellcheck
+   */
+  playerSpellCheck?: ConfigureProp;
 
-    /** Rubric configuration */
-    rubric?: ConfigureProp;
+  /**
+   * Auto Scoring Type configuration
+   */
+  autoScoring?: ConfigureProp;
 
-    /** Alternates Configuration */
-    alternates?: ConfigureProp;
+  /**
+   * Student Instructions configuration
+   */
+  studentInstructions?: ConfigureProp;
 
-    /** Maximum Length Per Choice Configuration */
-    maxLengthPerChoice?: ConfigureProp;
+  /**
+   * Teacher Instructions configuration
+   */
+  teacherInstructions?: EditableHtmlPluginConfigureRequired;
+
+  /**
+   * Template configuration
+   */
+  template?: EditableHtmlPluginConfigure;
+
+  /** Rubric configuration */
+  rubric?: ConfigureProp;
+
+  /** Alternates Configuration */
+  alternates?: ConfigureProp;
+
+  /** Maximum Length Per Choice Configuration */
+  maxLengthPerChoice?: ConfigureProp;
+
+  /**
+   * Maximum number of response areas
+   */
+  maxResponseAreas?: number;
+
+  /**
+   * Maximum image width for input fields
+   */
+  maxImageWidth?: ConfigureMaxImageDimensionsProp;
+
+  /**
+   * Maximum image height for input fields
+   */
+  maxImageHeight?: ConfigureMaxImageDimensionsProp;
+
+  /**
+   * Rubric configuration - only relevant in environments that use pie-player-components
+   */
+  withRubric?: ConfigureProp;
+
+  /** Configuration for editable-html */
+  mathMlOptions?: ConfigureMathMLProp;
+
+  /**
+   * Language configuration
+   */
+  language?: ConfigurePropWithEnabled;
+
+  /**
+   * Language choices configuration
+   * Only available if language is enabled
+   */
+  languageChoices?: {
+    label: string;
+    options: ConfigureLanguageOptionsProp[];
+  };
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import debounce from 'lodash/debounce';
 import Main from './main';
-import { renderMath } from '@pie-lib/math-rendering';
+import { renderMath } from '@pie-lib/pie-toolbox/math-rendering-accessible';
 
 import debug from 'debug';
 
@@ -12,7 +12,8 @@ const preparePrintModel = (model, opts) => {
   const instr = opts.role === 'instructor';
 
   model.prompt = model.promptEnabled !== false ? model.prompt : undefined;
-  model.teacherInstructions = instr && model.teacherInstructionsEnabled !== false ? model.teacherInstructions : undefined;
+  model.teacherInstructions =
+    instr && model.teacherInstructionsEnabled !== false ? model.teacherInstructions : undefined;
   model.showTeacherInstructions = instr;
   model.mode = instr ? 'evaluate' : model.mode;
 
@@ -20,7 +21,7 @@ const preparePrintModel = (model, opts) => {
 
   model.dimensions = {
     ...defaultDimensions,
-    ...model.dimensions
+    ...model.dimensions,
   };
 
   model.disabled = true;
@@ -46,9 +47,8 @@ export default class ExtendedTextEntryPrint extends HTMLElement {
             React.createElement(Main, {
               model: printModel,
               session: {},
-              onChange: () => {}
+              onChange: () => {},
             });
-
 
           ReactDOM.render(element, this, () => {
             log('render complete - render math');
@@ -59,7 +59,7 @@ export default class ExtendedTextEntryPrint extends HTMLElement {
         }
       },
       50,
-      { leading: false, trailing: true }
+      { leading: false, trailing: true },
     );
   }
   set options(o) {

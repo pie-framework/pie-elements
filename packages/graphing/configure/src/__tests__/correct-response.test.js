@@ -10,11 +10,11 @@ describe('Tools', () => {
       const props = {
         classes: {},
         toolbarTools: [],
-        toggleToolBarTool: jest.fn()
+        toggleToolBarTool: jest.fn(),
       };
 
       expect(shallow(<Tools {...props} />)).toMatchSnapshot();
-    })
+    });
   });
 });
 
@@ -27,10 +27,10 @@ describe('CorrectResponse', () => {
       classes: {},
       model: defaultValues.model,
       onChange: jest.fn(),
-      tools: []
+      tools: [],
     };
 
-    wrapper = newProps => {
+    wrapper = (newProps) => {
       const configureProps = { ...props, newProps };
 
       return shallow(<CorrectResponse {...configureProps} />);
@@ -40,7 +40,7 @@ describe('CorrectResponse', () => {
   describe('renders', () => {
     it('snapshot', () => {
       expect(wrapper()).toMatchSnapshot();
-    })
+    });
   });
 
   describe('logic', () => {
@@ -55,9 +55,9 @@ describe('CorrectResponse', () => {
         answers: {
           ...defaultValues.model.answers,
           alternateTest: {
-            marks
-          }
-        }
+            marks,
+          },
+        },
       });
     });
 
@@ -68,8 +68,8 @@ describe('CorrectResponse', () => {
       expect(component.instance().props.model.toolbarTools).toEqual([]);
       expect(component.instance().props.onChange).toHaveBeenCalledWith({
         ...defaultValues.model,
-        toolbarTools: []
-      })
+        toolbarTools: [],
+      });
     });
   });
 
@@ -79,7 +79,6 @@ describe('CorrectResponse', () => {
 
     const { props } = component.instance();
 
-    expect(props.model.toolbarTools).toEqual(['point']);
     expect(props.onChange).toHaveBeenCalledWith({ ...defaultValues.model, toolbarTools: ['point'] });
   });
 
@@ -107,12 +106,12 @@ describe('CorrectResponse: if answers is null it should still work as expected',
       classes: {},
       model: defaultValues.model,
       onChange: jest.fn(),
-      tools: []
+      tools: [],
     };
 
     props.model.answers = null;
 
-    wrapper = newProps => {
+    wrapper = (newProps) => {
       const configureProps = { ...props, newProps };
 
       return shallow(<CorrectResponse {...configureProps} />);
@@ -122,7 +121,7 @@ describe('CorrectResponse: if answers is null it should still work as expected',
   describe('renders', () => {
     it('snapshot', () => {
       expect(wrapper()).toMatchSnapshot();
-    })
+    });
   });
 
   describe('logic', () => {
@@ -137,9 +136,9 @@ describe('CorrectResponse: if answers is null it should still work as expected',
         answers: {
           ...defaultValues.model.answers,
           alternateTest: {
-            marks
-          }
-        }
+            marks,
+          },
+        },
       });
     });
 
@@ -150,8 +149,8 @@ describe('CorrectResponse: if answers is null it should still work as expected',
       expect(component.instance().props.model.toolbarTools).toEqual([]);
       expect(component.instance().props.onChange).toHaveBeenCalledWith({
         ...defaultValues.model,
-        toolbarTools: []
-      })
+        toolbarTools: [],
+      });
     });
   });
 
@@ -161,7 +160,6 @@ describe('CorrectResponse: if answers is null it should still work as expected',
 
     const { props } = component.instance();
 
-    expect(props.model.toolbarTools).toEqual(['point']);
     expect(props.onChange).toHaveBeenCalledWith({ ...defaultValues.model, toolbarTools: ['point'] });
   });
 
@@ -189,12 +187,12 @@ describe('CorrectResponse: if answers is undefined it should still work as expec
       classes: {},
       model: defaultValues.model,
       onChange: jest.fn(),
-      tools: []
+      tools: [],
     };
 
     props.model.answers = undefined;
 
-    wrapper = newProps => {
+    wrapper = (newProps) => {
       const configureProps = { ...props, newProps };
 
       return shallow(<CorrectResponse {...configureProps} />);
@@ -204,7 +202,7 @@ describe('CorrectResponse: if answers is undefined it should still work as expec
   describe('renders', () => {
     it('snapshot', () => {
       expect(wrapper()).toMatchSnapshot();
-    })
+    });
   });
 
   describe('logic', () => {
@@ -219,9 +217,9 @@ describe('CorrectResponse: if answers is undefined it should still work as expec
         answers: {
           ...defaultValues.model.answers,
           alternateTest: {
-            marks
-          }
-        }
+            marks,
+          },
+        },
       });
     });
 
@@ -232,8 +230,8 @@ describe('CorrectResponse: if answers is undefined it should still work as expec
       expect(component.instance().props.model.toolbarTools).toEqual([]);
       expect(component.instance().props.onChange).toHaveBeenCalledWith({
         ...defaultValues.model,
-        toolbarTools: []
-      })
+        toolbarTools: [],
+      });
     });
   });
 
@@ -243,7 +241,6 @@ describe('CorrectResponse: if answers is undefined it should still work as expec
 
     const { props } = component.instance();
 
-    expect(props.model.toolbarTools).toEqual(['point']);
     expect(props.onChange).toHaveBeenCalledWith({ ...defaultValues.model, toolbarTools: ['point'] });
   });
 

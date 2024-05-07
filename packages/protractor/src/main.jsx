@@ -1,5 +1,5 @@
 import React from 'react';
-import { Protractor } from '@pie-lib/tools';
+import { Protractor } from '@pie-lib/pie-toolbox/tools';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Toggle from './toggle';
@@ -8,13 +8,13 @@ const styles = {
   protractor: {
     position: 'absolute',
     left: '200px',
-    zIndex: '101'
-  }
+    zIndex: '101',
+  },
 };
 
 class Main extends React.Component {
   static propTypes = {
-    classes: PropTypes.object.isRequired
+    classes: PropTypes.object.isRequired,
   };
 
   constructor(props) {
@@ -27,15 +27,12 @@ class Main extends React.Component {
   render() {
     const { show } = this.state;
     const { classes } = this.props;
+
     return (
       <div>
         <Toggle active={show} onToggle={this.onToggle} />
-        {show && (
-          <Protractor
-            className={classes.protractor}
-            startPosition={{ left: 100, top: 100 }}
-          />
-        )}
+
+        {show && <Protractor className={classes.protractor} startPosition={{ left: 100, top: 100 }} />}
       </div>
     );
   }

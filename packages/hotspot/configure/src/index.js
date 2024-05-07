@@ -5,6 +5,8 @@ import {
   ModelUpdatedEvent,
   DeleteImageEvent,
   InsertImageEvent,
+  InsertSoundEvent,
+  DeleteSoundEvent,
 } from '@pie-framework/pie-configure-events';
 
 import Root from './root';
@@ -18,7 +20,7 @@ export default class HotspotConfigure extends HTMLElement {
     ...model,
     hotspotList: model.hotspotList || [model.hotspotColor] || sensibleDefaults.model.hotspotList,
     outlineList: model.outlineList || [model.outlineColor] || sensibleDefaults.model.outlineList,
-    shapes: model.shapes || sensibleDefaults.model.shapes || {}
+    shapes: model.shapes || sensibleDefaults.model.shapes || {},
   });
 
   constructor() {
@@ -34,7 +36,40 @@ export default class HotspotConfigure extends HTMLElement {
   }
 
   set configuration(c) {
-    this._configuration = c;
+    const newConfiguration = {
+      ...sensibleDefaults.configuration,
+      ...c,
+    };
+
+    this._configuration = newConfiguration;
+
+    // if language:enabled is true, then the corresponding default item model should include a language value;
+    // if it is false, then the language field should be omitted from the item model.
+    // if a default item model includes a language value (e.g., en_US) and the corresponding authoring view settings have language:settings = true,
+    // then (a) language:enabled should also be true, and (b) that default language value should be represented in languageChoices[] (as a key).
+    if (newConfiguration?.language?.enabled) {
+      if (newConfiguration?.languageChoices?.options?.length) {
+        this._model.language = newConfiguration?.languageChoices.options[0].value;
+      }
+    } else if (newConfiguration.language.settings && this._model.language) {
+      this._configuration.language.enabled = true;
+
+      if (!this._configuration.languageChoices.options || !this._configuration.languageChoices.options.length) {
+        this._configuration.languageChoices.options = [];
+      }
+
+      // check if the language is already included in the languageChoices.options array
+      // and if not, then add it.
+      if (!this._configuration.languageChoices.options.find((option) => option.value === this._model.language)) {
+        this._configuration.languageChoices.options.push({
+          value: this._model.language,
+          label: this._model.language,
+        });
+      }
+    } else {
+      delete this._model.language;
+    }
+
     this._render();
   }
 
@@ -59,10 +94,11 @@ export default class HotspotConfigure extends HTMLElement {
     const _model = m;
 
     if (propertyType === 'multipleCorrect') {
-      const { rectangles = [], polygons = [] } = _model.shapes || {};
+      const { rectangles = [], polygons = [], circles = [] } = _model.shapes || {};
 
-      _model.shapes.rectangles = rectangles.map(shape => ({ ...shape, correct: false }));
-      _model.shapes.polygons = polygons.map(shape => ({ ...shape, correct: false }));
+      _model.shapes.rectangles = rectangles.map((shape) => ({ ...shape, correct: false }));
+      _model.shapes.polygons = polygons.map((shape) => ({ ...shape, correct: false }));
+      _model.shapes.circles = circles.map((shape) => ({ ...shape, correct: false }));
     }
 
     this.onModelChanged(_model);
@@ -71,59 +107,67 @@ export default class HotspotConfigure extends HTMLElement {
   onColorChanged = (colorType, color) => {
     this.onModelChanged({
       ...this._model,
-      [colorType]: color
+      [colorType]: color,
     });
   };
 
-  onPromptChanged = prompt => {
+  onPromptChanged = (prompt) => {
     this.onModelChanged({
       ...this._model,
-      prompt
+      prompt,
     });
   };
 
-  onRationaleChanged = rationale => {
+  onRationaleChanged = (rationale) => {
     this.onModelChanged({
       ...this._model,
-      rationale
+      rationale,
     });
   };
 
-  onTeacherInstructionsChanged = teacherInstructions => {
+  onTeacherInstructionsChanged = (teacherInstructions) => {
     this.onModelChanged({
       ...this._model,
-      teacherInstructions
+      teacherInstructions,
     });
   };
 
-  onUpdateImageDimension = dimensions => {
+  onUpdateImageDimension = (dimensions) => {
     this.onModelChanged({
       ...this._model,
-      dimensions
+      dimensions,
     });
   };
 
-  onUpdateShapes = shapes => {
+  onUpdateShapes = (shapes) => {
     this.onModelChanged({
       ...this._model,
-      shapes
+      shapes,
     });
   };
 
-  onImageUpload = imageUrl => {
+  onImageUpload = (imageUrl) => {
     this.onModelChanged({
       ...this._model,
-      imageUrl
+      imageUrl,
     });
   };
 
-  insertImage = handler => {
+  insertImage = (handler) => {
     this.dispatchEvent(new InsertImageEvent(handler));
   };
 
   onDeleteImage = (src, done) => {
     this.dispatchEvent(new DeleteImageEvent(src, done));
   };
+
+  insertSound(handler) {
+    this.dispatchEvent(new InsertSoundEvent(handler));
+  }
+
+  onDeleteSound(src, done) {
+    this.dispatchEvent(new DeleteSoundEvent(src, done));
+  }
 
   _render() {
     log('_render');
@@ -138,7 +182,11 @@ export default class HotspotConfigure extends HTMLElement {
       onUpdateImageDimension: this.onUpdateImageDimension,
       imageSupport: {
         add: this.insertImage,
-        delete: this.onDeleteImage
+        delete: this.onDeleteImage,
+      },
+      uploadSoundSupport: {
+        add: this.insertSound.bind(this),
+        delete: this.onDeleteSound.bind(this),
       },
       onUpdateShapes: this.onUpdateShapes,
       onModelChangedByConfig: this.onModelChangedByConfig,

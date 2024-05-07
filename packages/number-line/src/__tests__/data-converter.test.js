@@ -9,8 +9,8 @@ describe('data-converter', () => {
         rightPoint: 'full',
         position: {
           left: -2,
-          right: -1
-        }
+          right: -1,
+        },
       };
 
       const result = converter.switchGraphLine(line);
@@ -24,8 +24,8 @@ describe('data-converter', () => {
         rightPoint: 'full',
         position: {
           left: 0,
-          right: -1
-        }
+          right: -1,
+        },
       };
 
       const result = converter.switchGraphLine(line);
@@ -35,8 +35,8 @@ describe('data-converter', () => {
         rightPoint: 'empty',
         position: {
           left: -1,
-          right: 0
-        }
+          right: 0,
+        },
       });
     });
   });
@@ -46,13 +46,13 @@ describe('data-converter', () => {
       point: {
         position: 1,
         type: 'point',
-        pointType: 'full'
+        pointType: 'full',
       },
       ray: {
         position: 1,
         direction: 'positive',
         pointType: 'full',
-        type: 'ray'
+        type: 'ray',
       },
       line: {
         type: 'line',
@@ -60,9 +60,9 @@ describe('data-converter', () => {
         rightPoint: 'empty',
         position: {
           left: 0,
-          right: 1
-        }
-      }
+          right: 1,
+        },
+      },
     };
 
     const session = {
@@ -71,19 +71,19 @@ describe('data-converter', () => {
         leftPoint: 'full',
         rightPoint: 'empty',
         domainPosition: 0,
-        size: 1
+        size: 1,
       },
       point: {
         type: 'point',
         domainPosition: 1,
-        pointType: 'full'
+        pointType: 'full',
       },
       ray: {
         type: 'ray',
         domainPosition: 1,
         direction: 'positive',
-        pointType: 'full'
-      }
+        pointType: 'full',
+      },
     };
 
     describe('toSessionFormat', () => {

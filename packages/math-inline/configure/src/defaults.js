@@ -27,13 +27,11 @@ export default {
     equationEditor: '8',
     expression: '',
     rationale: 'Rationale goes here.',
-    note:
-      'The answer shown above is the primary correct answer specified by the author for this item, but other answers may also be recognized as correct.',
     prompt: '',
     responses: [],
     customKeys: [],
     scoringType: 'auto',
-    feedbackEnabled: true,
+    feedbackEnabled: false,
     promptEnabled: true,
     rationaleEnabled: true,
     teacherInstructionsEnabled: true,
@@ -44,9 +42,20 @@ export default {
     allowTrailingZerosDefault: false,
   },
   configuration: {
+    baseInputConfiguration: {
+      audio: { disabled: false },
+      video: { disabled: false },
+      image: { disabled: false },
+    },
     prompt: {
       settings: true,
       label: 'Prompt',
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
+      required: false,
     },
     feedback: {
       settings: true,
@@ -59,6 +68,18 @@ export default {
     rationale: {
       settings: true,
       label: 'Rationale',
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
+      required: false,
+    },
+    settingsPanelDisabled: false,
+    spellCheck: {
+      label: 'Spellcheck',
+      settings: false,
+      enabled: true,
     },
     scoringType: {
       settings: false,
@@ -71,6 +92,12 @@ export default {
     teacherInstructions: {
       settings: true,
       label: 'Teacher Instructions',
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
+      required: false,
     },
     partialScoring: {
       settings: false,
@@ -84,7 +111,34 @@ export default {
     allowTrailingZeros: {
       settings: false,
       label: 'Allow Trailing Zeros',
-      enabled: true
+      enabled: true,
+    },
+    maxImageWidth: {
+      teacherInstructions: 300,
+      prompt: 300,
+      rationale: 300,
+    },
+    maxImageHeight: {
+      teacherInstructions: 300,
+      prompt: 300,
+      rationale: 300,
+    },
+    withRubric: {
+      settings: false,
+      label: 'Add Rubric',
+    },
+    mathMlOptions: {
+      mmlOutput: false,
+      mmlEditing: false,
+    },
+    language: {
+      settings: false,
+      label: 'Specify Language',
+      enabled: false,
+    },
+    languageChoices: {
+      label: 'Language Choices',
+      options: [],
     },
   },
 };

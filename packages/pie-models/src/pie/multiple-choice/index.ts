@@ -1,8 +1,16 @@
-import {Choice}  from '../../Choice';
-import {PieModel} from '../../PieModel';
+import { Choice } from '../../Choice';
+import { PieModel } from '../../PieModel';
+import { CommonConfigSettings } from '../../CommonConfigSettings';
 import { PromptConfig } from '../../PromptConfig';
-import { ConfigureProp, ConfigurePropWithEnabled } from '../ConfigurationProp';
-
+import {
+  ConfigureLanguageOptionsProp,
+  ConfigureMathMLProp,
+  ConfigureProp,
+  ConfigurePropWithEnabled,
+  EditableHtmlConfigureProp,
+  EditableHtmlPluginConfigure,
+  EditableHtmlPluginConfigureRequired,
+} from '../ConfigurationProp';
 
 /**
  * NOTE: teacherInstructions, studentInstructions, rationale & scoringType
@@ -48,7 +56,11 @@ export interface MultipleChoicePie extends PieModel {
    */
   toolbarEditorPosition?: 'bottom' | 'top';
 
-  /**  Indicates the order of choices should be randomly ordered when presented to user */
+  /**
+   * Indicates the order of choices presented to user
+   * if true, answer choices will be presented in the order they are defined in the model
+   * If false, answer choices may be presented in a random order (depending upon the value of the lockChoiceOrder environment variable)
+   */
   lockChoiceOrder?: boolean;
 
   /** Indicates that the item should use partial scoring */
@@ -69,6 +81,9 @@ export interface MultipleChoicePie extends PieModel {
   /** Indicates if Rationale are enabled */
   rationaleEnabled: boolean;
 
+  /** Indicates if spellcheck is enabled for the author. Default value is true */
+  spellCheckEnabled: boolean;
+
   /** Indicates if Student Instructions are enabled */
   studentInstructionsEnabled: boolean;
 
@@ -77,14 +92,35 @@ export interface MultipleChoicePie extends PieModel {
 
   /** Indicates if Accessibility Labels are enabled */
   accessibilityLabelsEnabled: boolean;
+
+  /** Indicates if Rubric is enabled */
+  rubricEnabled: boolean;
+
+  /** Indicates the language of the component
+   * Supported options: en, es, en_US, en-US, es_ES, es-ES, es_MX, es-MX
+   */
+  language?: string;
 }
 
+interface ConfigureMaxImageDimensionsProp {
+  /** Indicates the max dimension for images in teacher instructions */
+  teacherInstructions?: number;
+
+  /** Indicates the max dimension for images in prompt - this is also the default dimension for all other input fields if it's not specified */
+  prompt?: number;
+
+  /** Indicates the max dimension for images in rationale */
+  rationale?: number;
+
+  /** Indicates the max dimension for images in choices */
+  choices?: number;
+}
 
 /**
  * Config Object for @pie-elements/multiple-choice
  * @additionalProperties false
  */
-export interface MultipleChoiceConfigure extends PromptConfig {
+export interface MultipleChoiceConfigure extends PromptConfig, CommonConfigSettings {
   /**
    * The number of empty choices to show in config view if no choice model is provided
    * @minimum 1
@@ -96,6 +132,18 @@ export interface MultipleChoiceConfigure extends PromptConfig {
    * Configuration for a button that allows an author to add more choices
    */
   addChoiceButton?: ConfigureProp;
+
+  /**
+   * Base editable html input configuration regarding plugins that are enabled/disabled
+   * E.g. audio, video, image
+   */
+  baseInputConfiguration?: EditableHtmlConfigureProp;
+
+  /**
+   * Editable html input configuration regarding plugins that are enabled/disabled
+   * E.g. audio, video, image
+   */
+  choices?: EditableHtmlPluginConfigure;
 
   /**
    * Indicates whether the settings panel will allow an author to modify the choice
@@ -124,7 +172,12 @@ export interface MultipleChoiceConfigure extends PromptConfig {
   /**
    * Configuration for the prompt
    */
-  prompt?: ConfigureProp;
+  prompt?: EditableHtmlPluginConfigureRequired;
+
+  /**
+   * Configuration for the author's spellcheck
+   */
+  spellCheck?: ConfigureProp;
 
   /** Indicates the layout of choices for player
    * @default: 'vertical'
@@ -149,12 +202,17 @@ export interface MultipleChoiceConfigure extends PromptConfig {
   /**
    * Rationale configuration
    */
-  rationale?: ConfigureProp;
+  rationale?: EditableHtmlPluginConfigureRequired;
 
   /**
    * Scoring Type configuration
    */
   scoringType?: ConfigureProp;
+
+  /**
+   * Indicates if the settings panel is not available
+   */
+  settingsPanelDisabled?: boolean;
 
   /**
    * Student Instructions configuration
@@ -164,7 +222,7 @@ export interface MultipleChoiceConfigure extends PromptConfig {
   /**
    * Teacher Instructions configuration
    */
-  teacherInstructions?: ConfigureProp;
+  teacherInstructions?: EditableHtmlPluginConfigureRequired;
 
   /**
    * Indicates if sequential choice labels configuration (currently not used)
@@ -174,7 +232,7 @@ export interface MultipleChoiceConfigure extends PromptConfig {
   /**
    * Accessibility configuration
    */
-  accessibility?: ConfigureProp;
+  accessibility?: EditableHtmlPluginConfigure;
 
   /**
    * Minimum number of answer choices
@@ -185,4 +243,36 @@ export interface MultipleChoiceConfigure extends PromptConfig {
    * Maximum number of answer choices
    */
   maxAnswerChoices?: number;
+
+  /**
+   * Maximum image width for input fields
+   */
+  maxImageWidth?: ConfigureMaxImageDimensionsProp;
+
+  /**
+   * Maximum image height for input fields
+   */
+  maxImageHeight?: ConfigureMaxImageDimensionsProp;
+
+  /**
+   * Rubric configuration - only relevant in environments that use pie-player-components
+   */
+  withRubric?: ConfigureProp;
+
+  /** Configuration for editable-html */
+  mathMlOptions?: ConfigureMathMLProp;
+
+  /**
+   * Language configuration
+   */
+  language?: ConfigurePropWithEnabled;
+
+  /**
+   * Language choices configuration
+   * Only available if language is enabled
+   */
+  languageChoices?: {
+    label: string;
+    options: ConfigureLanguageOptionsProp[];
+  };
 }

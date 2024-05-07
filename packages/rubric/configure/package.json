@@ -1,13 +1,14 @@
 {
   "name": "@pie-element/rubric-configure",
   "private": true,
-  "version": "1.2.35",
+  "version": "3.9.1",
   "description": "Rubric authoring view",
   "main": "lib/index.js",
   "author": "Pie Framework Authors",
   "dependencies": {
-    "@pie-framework/pie-configure-events": "^1.2.0",
-    "@pie-lib/rubric": "^0.4.12",
+    "@material-ui/core": "^3.9.2",
+    "@pie-framework/pie-configure-events": "^1.3.0",
+    "@pie-lib/pie-toolbox": "1.17.1",
     "debug": "^4.1.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"

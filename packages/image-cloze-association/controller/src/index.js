@@ -1,13 +1,15 @@
 import debug from 'debug';
 import isEmpty from 'lodash/isEmpty';
+import shuffle from 'lodash/shuffle';
 import { camelizeKeys } from 'humps';
-import { partialScoring } from '@pie-lib/controller-utils';
+import { partialScoring } from '@pie-lib/pie-toolbox/controller-utils';
 
 import { getAllUniqueCorrectness } from './utils';
+import { cloneDeep } from 'lodash';
 
 const log = debug('pie-elements:image-cloze-association:controller');
 
-export const normalize = question => ({
+export const normalize = (question) => ({
   rationaleEnabled: true,
   teacherInstructionsEnabled: true,
   studentInstructionsEnabled: true,
@@ -18,21 +20,26 @@ export function model(question, session, env) {
   const questionNormalized = normalize(question);
   const questionCamelized = camelizeKeys(questionNormalized);
 
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     const out = {
       disabled: env.mode !== 'gather',
       mode: env.mode,
       ...questionCamelized,
-      responseCorrect:
-        env.mode === 'evaluate'
-          ? getScore(questionCamelized, session) === 1
-          : undefined,
+      responseCorrect: env.mode === 'evaluate' ? getScore(questionCamelized, session) === 1 : undefined,
     };
 
+    if (questionNormalized.shuffle) {
+      out.possibleResponses = shuffle(questionNormalized.possible_responses);
+    }
+
     if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
-      out.teacherInstructions = questionCamelized.teacherInstructionsEnabled ? questionCamelized.teacherInstructions : null;
+      out.teacherInstructions = questionCamelized.teacherInstructionsEnabled
+        ? questionCamelized.teacherInstructions
+        : null;
+      out.rationale = questionCamelized.rationale ? questionCamelized.rationale : null;
     } else {
       out.teacherInstructions = null;
+      out.rationale = null;
     }
 
     resolve(out);
@@ -47,11 +54,13 @@ export const isResponseCorrect = (responses, session) => {
     return false;
   }
 
-  responses.forEach(value => totalValidResponses += (value.images || []).length);
+  responses.forEach((value) => (totalValidResponses += (value.images || []).length));
 
   if (session.answers && totalValidResponses === session.answers.length) {
-    session.answers.forEach(answer => {
-      if (!(responses[answer.containerIndex].images || []).includes(answer.value)) {
+    session.answers.forEach((answer) => {
+      if (
+        !((responses[answer.containerIndex] && responses[answer.containerIndex].images) || []).includes(answer.value)
+      ) {
         isCorrect = false;
       }
     });
@@ -61,15 +70,28 @@ export const isResponseCorrect = (responses, session) => {
   return isCorrect;
 };
 
+// This applies for correct responses that have empty values
+const keepNonEmptyResponses = (responses) => {
+  const filtered = responses.filter((response) => response.images && response.images.length);
+  return cloneDeep(filtered);
+};
+
 // This applies for items that don't support partial scoring.
 const isDefaultOrAltResponseCorrect = (question, session) => {
-  const { validation: { validResponse: { value }, altResponses } } = question;
+  const {
+    validation: { altResponses },
+  } = question;
+  let {
+    validation: {
+      validResponse: { value },
+    },
+  } = question;
 
   let isCorrect = isResponseCorrect(value, session);
 
   // Look for correct answers in alternate responses.
-  if (!isCorrect && (altResponses && altResponses.length)) {
-    altResponses.forEach(altResponse => {
+  if (!isCorrect && altResponses && altResponses.length) {
+    altResponses.forEach((altResponse) => {
       if (isResponseCorrect(altResponse.value, session)) {
         isCorrect = true;
       }
@@ -80,8 +102,8 @@ const isDefaultOrAltResponseCorrect = (question, session) => {
 
 // Deduct only the items that exceeded the maximum valid response per container.
 const getDeductionPerContainer = (containerIndex, answers, valid) => {
-  const totalStack = answers.filter(item => item.containerIndex === containerIndex);
-  const incorrectStack = totalStack.filter(item => !item.isCorrect);
+  const totalStack = answers.filter((item) => item.containerIndex === containerIndex);
+  const incorrectStack = totalStack.filter((item) => !item.isCorrect);
   const maxValid = (valid.value[containerIndex].images || []).length;
 
   if (totalStack.length > maxValid) {
@@ -92,27 +114,32 @@ const getDeductionPerContainer = (containerIndex, answers, valid) => {
 };
 
 export const getPartialScore = (question, session) => {
-  const { validation: { validResponse }, maxResponsePerZone, responseContainers } = question;
+  const {
+    validation: { validResponse },
+    maxResponsePerZone,
+  } = question;
   let correctAnswers = 0;
+  let incorrectAnswers = 0;
   let possibleResponses = 0;
 
   if (!session || isEmpty(session)) {
     return 0;
   }
 
-  validResponse.value.forEach(value => possibleResponses += (value.images || []).length);
+  validResponse.value.forEach((value) => (possibleResponses += (value.images || []).length));
 
   if (session.answers && session.answers.length) {
     const all = getAllUniqueCorrectness(session.answers, validResponse.value);
-    correctAnswers = all.filter(item => item.isCorrect).length;
+    correctAnswers = all.filter((item) => item.isCorrect).length;
+    incorrectAnswers = all.filter((item) => !item.isCorrect).length;
 
     // deduction rules: https://docs.google.com/document/d/1Oprm8Qs5fg_Dwoj2pNpsfu4D63QgCZgvcqTgeaVel7I/edit
-    session.answers.forEach(answer => {
+    session.answers.forEach((answer) => {
       if (maxResponsePerZone > 1) {
         const deductionList = getDeductionPerContainer(answer.containerIndex, all, validResponse);
 
         if (deductionList.length) {
-          deductionList.forEach(item => {
+          deductionList.forEach((item) => {
             if (item.id === answer.id) {
               correctAnswers -= 1;
             }
@@ -120,13 +147,19 @@ export const getPartialScore = (question, session) => {
         }
       }
     });
+
+    if (!maxResponsePerZone || maxResponsePerZone <= 1) {
+      correctAnswers -= incorrectAnswers;
+    }
   } else {
     correctAnswers = 0;
   }
   // negative values will implicitly make the score equal to zero
   correctAnswers = correctAnswers < 0 ? 0 : correctAnswers;
 
-  const denominator = maxResponsePerZone > 1 ? possibleResponses : responseContainers.length;
+  // use length of validResponse since some containers can be left empty
+  const nonEmptyResponses = keepNonEmptyResponses(validResponse.value);
+  const denominator = maxResponsePerZone > 1 ? possibleResponses : (nonEmptyResponses || []).length;
   const str = (correctAnswers / denominator).toFixed(2);
 
   return parseFloat(str);
@@ -136,11 +169,11 @@ const getScore = (config, session, env = {}) => {
   const isPartialScoring = partialScoring.enabled(config, env);
   const correct = isDefaultOrAltResponseCorrect(config, session);
 
-  return isPartialScoring ? getPartialScore(config, session) : (correct ? 1 : 0);
+  return isPartialScoring ? getPartialScore(config, session) : correct ? 1 : 0;
 };
 
 export function outcome(config, session, env = {}) {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     log('outcome...');
     if (!session || isEmpty(session)) {
       resolve({ score: 0, empty: true });
@@ -156,17 +189,21 @@ export function outcome(config, session, env = {}) {
 }
 
 export const createCorrectResponseSession = (question, env) => {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     if (env.mode !== 'evaluate' && env.role === 'instructor') {
-      const { validation: { valid_response: { value } } } = question;
+      const {
+        validation: {
+          valid_response: { value },
+        },
+      } = question;
       const answers = [];
 
       if (value) {
         value.forEach((container, i) => {
-          (container.images || []).forEach(v => {
+          (container.images || []).forEach((v) => {
             answers.push({
               value: v,
-              containerIndex: i
+              containerIndex: i,
             });
           });
         });
@@ -174,10 +211,28 @@ export const createCorrectResponseSession = (question, env) => {
 
       resolve({
         answers,
-        id: '1'
+        id: '1',
       });
     } else {
       resolve(null);
     }
   });
+};
+
+// remove all html tags
+const getInnerText = (html) => (html || '').replaceAll(/<[^>]*>/g, '');
+
+// remove all html tags except img and iframe
+const getContent = (html) => (html || '').replace(/(<(?!img|iframe)([^>]+)>)/gi, '');
+
+export const validate = (model = {}, config = {}) => {
+  const errors = {};
+
+  ['teacherInstructions'].forEach((field) => {
+    if (config[field]?.required && !getContent(model[field])) {
+      errors[field] = 'This field is required.';
+    }
+  });
+
+  return errors;
 };

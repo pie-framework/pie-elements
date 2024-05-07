@@ -1,0 +1,2147 @@
+{
+  "description": "Model for the ComplexRubricPie Interaction",
+  "additionalProperties": false,
+  "type": "object",
+  "properties": {
+    "rubricType": {
+      "title": "RubricType",
+      "enum": [
+        "multiTraitRubric",
+        "rubricless",
+        "simpleRubric"
+      ],
+      "type": "string"
+    },
+    "rubrics": {
+      "title": "RubricModels",
+      "type": "object",
+      "properties": {
+        "simpleRubric": {
+          "description": "Model for the RubricPie Interaction",
+          "additionalProperties": false,
+          "title": "RubricPie",
+          "type": "object",
+          "properties": {
+            "points": {
+              "description": "Indicates the score points labels. Starting from 0 to max",
+              "type": "array",
+              "items": {
+                "description": "Allows manipulation and formatting of text strings and determination and location of substrings within strings.",
+                "type": "object",
+                "additionalProperties": false,
+                "patternProperties": {
+                  "^[0-9]+$": {
+                    "type": "string"
+                  }
+                }
+              },
+              "title": "points"
+            },
+            "sampleAnswers": {
+              "description": "Indicates the sample answers labels. Starting from 0 to max",
+              "type": "array",
+              "items": {
+                "description": "Allows manipulation and formatting of text strings and determination and location of substrings within strings.",
+                "type": "object",
+                "additionalProperties": false,
+                "patternProperties": {
+                  "^[0-9]+$": {
+                    "type": "string"
+                  }
+                }
+              },
+              "title": "sampleAnswers"
+            },
+            "maxPoints": {
+              "description": "Indicates the max limit for scoring points",
+              "type": "number",
+              "title": "maxPoints"
+            },
+            "excludeZeros": {
+              "description": "Indicates if point 0 should be shown",
+              "type": "boolean",
+              "title": "excludeZeros"
+            },
+            "id": {
+              "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
+              "type": "string",
+              "title": "id"
+            },
+            "element": {
+              "description": "The html Element tag name",
+              "type": "string",
+              "title": "element"
+            }
+          },
+          "required": [
+            "element",
+            "id"
+          ]
+        },
+        "multiTraitRubric": {
+          "description": "Model for the MultiTraitRubric Interaction",
+          "additionalProperties": false,
+          "title": "MultiTraitRubricPie",
+          "type": "object",
+          "properties": {
+            "halfScoring": {
+              "description": "Indicates if half scoring is enabled",
+              "type": "boolean",
+              "title": "halfScoring"
+            },
+            "pointLabels": {
+              "description": "Indicates if point labels should be shown",
+              "type": "boolean",
+              "title": "pointLabels"
+            },
+            "visibleToStudent": {
+              "description": "Indicates if should be visible to student",
+              "type": "boolean",
+              "title": "visibleToStudent"
+            },
+            "description": {
+              "description": "Indicates if description should be shown",
+              "type": "boolean",
+              "title": "description"
+            },
+            "standards": {
+              "description": "Indicates if standards should be shown",
+              "type": "boolean",
+              "title": "standards"
+            },
+            "excludeZero": {
+              "description": "Indicates if scoring should start at 0 or 1",
+              "type": "boolean",
+              "title": "excludeZero"
+            },
+            "spellCheckEnabled": {
+              "description": "Indicates if spellcheck is enabled for the author. Default value is true",
+              "type": "boolean",
+              "title": "spellCheckEnabled"
+            },
+            "scales": {
+              "description": "scales",
+              "type": "array",
+              "items": {
+                "title": "Scale",
+                "type": "object",
+                "properties": {
+                  "maxPoints": {
+                    "description": "Indicates max limit for scoring points",
+                    "type": "number",
+                    "title": "maxPoints"
+                  },
+                  "scorePointsLabels": {
+                    "description": "Score labels. Starting from 0 to max.",
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "title": "scorePointsLabels"
+                  },
+                  "traitLabel": {
+                    "description": "Trait label",
+                    "type": "string",
+                    "title": "traitLabel"
+                  },
+                  "traits": {
+                    "description": "Traits",
+                    "type": "array",
+                    "items": {
+                      "title": "Trait",
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "description": "Trait name",
+                          "type": "string",
+                          "title": "name"
+                        },
+                        "standards": {
+                          "description": "Trait standards",
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          },
+                          "title": "standards"
+                        },
+                        "description": {
+                          "description": "Trait description",
+                          "type": "string",
+                          "title": "description"
+                        },
+                        "scorePointsDescriptors": {
+                          "description": "Score point descriptors. Starting from 0 to max.",
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          },
+                          "title": "scorePointsDescriptors"
+                        }
+                      },
+                      "required": [
+                        "description",
+                        "name",
+                        "scorePointsDescriptors",
+                        "standards"
+                      ]
+                    },
+                    "title": "traits"
+                  }
+                },
+                "required": [
+                  "maxPoints",
+                  "scorePointsLabels",
+                  "traitLabel",
+                  "traits"
+                ]
+              },
+              "title": "scales"
+            },
+            "id": {
+              "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
+              "type": "string",
+              "title": "id"
+            },
+            "element": {
+              "description": "The html Element tag name",
+              "type": "string",
+              "title": "element"
+            }
+          },
+          "required": [
+            "element",
+            "id",
+            "scales",
+            "spellCheckEnabled"
+          ]
+        },
+        "rubricless": {
+          "title": "RubriclessPie",
+          "type": "object",
+          "properties": {
+            "maxPoints": {
+              "description": "Indicates the max limit for scoring points",
+              "type": "number",
+              "title": "maxPoints"
+            },
+            "excludeZeros": {
+              "description": "Indicates if point 0 should be shown",
+              "type": "boolean",
+              "title": "excludeZeros"
+            },
+            "rubriclessInstructionEnabled": {
+              "description": "Indicates that rubricInstruction is enabled",
+              "type": "boolean",
+              "title": "rubriclessInstructionEnabled"
+            },
+            "id": {
+              "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
+              "type": "string",
+              "title": "id"
+            },
+            "element": {
+              "description": "The html Element tag name",
+              "type": "string",
+              "title": "element"
+            }
+          },
+          "required": [
+            "element",
+            "id",
+            "rubriclessInstructionEnabled"
+          ]
+        }
+      },
+      "required": [
+        "multiTraitRubric",
+        "rubricless",
+        "simpleRubric"
+      ]
+    },
+    "id": {
+      "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
+      "type": "string",
+      "title": "id"
+    },
+    "element": {
+      "description": "The html Element tag name",
+      "type": "string",
+      "title": "element"
+    }
+  },
+  "required": [
+    "element",
+    "id",
+    "rubricType",
+    "rubrics"
+  ],
+  "definitions": {
+    "RubricConfigure": {
+      "title": "RubricConfigure",
+      "type": "object",
+      "properties": {
+        "baseInputConfiguration": {
+          "title": "EditableHtmlConfigureProp",
+          "type": "object",
+          "properties": {
+            "math": {
+              "title": "EditableHtmlButtonConfigure",
+              "type": "object",
+              "properties": {
+                "disabled": {
+                  "description": "Indicates if the plugin is disabled or not",
+                  "type": "boolean",
+                  "title": "disabled"
+                }
+              }
+            },
+            "audio": {
+              "title": "EditableHtmlButtonConfigure",
+              "type": "object",
+              "properties": {
+                "disabled": {
+                  "description": "Indicates if the plugin is disabled or not",
+                  "type": "boolean",
+                  "title": "disabled"
+                }
+              }
+            },
+            "video": {
+              "title": "EditableHtmlButtonConfigure",
+              "type": "object",
+              "properties": {
+                "disabled": {
+                  "description": "Indicates if the plugin is disabled or not",
+                  "type": "boolean",
+                  "title": "disabled"
+                }
+              }
+            },
+            "image": {
+              "title": "EditableHtmlButtonConfigure",
+              "type": "object",
+              "properties": {
+                "disabled": {
+                  "description": "Indicates if the plugin is disabled or not",
+                  "type": "boolean",
+                  "title": "disabled"
+                }
+              }
+            },
+            "customPlugins": {
+              "description": "An array of objects that determine custom plugins.\nA custom plugin is an object which determines how the button will look like (icon) and the event name that will be triggered when button gets pressed (event).\nExample can be found at https://github.com/pie-framework/pie-lib/blob/develop/packages/demo/pages/editable-html.js#L425.",
+              "type": "array",
+              "items": {
+                "title": "CustomPlugin",
+                "type": "object",
+                "properties": {
+                  "event": {
+                    "description": "The name of the custom event. It needs to be valid (only letters, numbers and \"_\" can be used).\nPIE will emit the event prefixed with \"PIE-\".\nEg: event = 'client_custom_event_A' => the emitted event will be \"PIE-client_custom_event_A\"",
+                    "type": "string",
+                    "title": "event"
+                  },
+                  "iconAlt": {
+                    "description": "The alt for the custom button icon",
+                    "type": "string",
+                    "title": "iconAlt"
+                  },
+                  "iconType": {
+                    "description": "The icon type.\nCurrently, only \"SVG\" is supported.",
+                    "type": "string",
+                    "title": "iconType"
+                  },
+                  "icon": {
+                    "description": "The icon string. Currently, only \"SVG\" is supported, so it needs to be a valid svg.",
+                    "type": "string",
+                    "title": "icon"
+                  }
+                },
+                "required": [
+                  "event",
+                  "icon",
+                  "iconAlt",
+                  "iconType"
+                ]
+              },
+              "title": "customPlugins"
+            }
+          }
+        },
+        "settingsPanelDisabled": {
+          "description": "Indicates if the settings panel is not available",
+          "type": "boolean",
+          "title": "settingsPanelDisabled"
+        },
+        "showExcludeZero": {
+          "title": "ConfigureProp",
+          "type": "object",
+          "properties": {
+            "settings": {
+              "description": "Indicates if the item has to be displayed in the Settings Panel",
+              "type": "boolean",
+              "title": "settings"
+            },
+            "label": {
+              "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+              "type": "string",
+              "title": "label"
+            }
+          }
+        },
+        "showMaxPoint": {
+          "title": "ConfigureProp",
+          "type": "object",
+          "properties": {
+            "settings": {
+              "description": "Indicates if the item has to be displayed in the Settings Panel",
+              "type": "boolean",
+              "title": "settings"
+            },
+            "label": {
+              "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+              "type": "string",
+              "title": "label"
+            }
+          }
+        },
+        "width": {
+          "description": "How large can the rubric be",
+          "type": "string",
+          "title": "width"
+        },
+        "mathMlOptions": {
+          "title": "ConfigureMathMLProp",
+          "type": "object",
+          "properties": {
+            "mmlOutput": {
+              "description": "Indicates if model should have mathML output instead of latex",
+              "type": "number",
+              "title": "mmlOutput"
+            },
+            "mmlEditing": {
+              "description": "Indicates if mathML that's already in model should be editable",
+              "type": "number",
+              "title": "mmlEditing"
+            }
+          }
+        },
+        "maxMaxPoints": {
+          "description": "Indicates the max limit for scoring points",
+          "type": "number",
+          "title": "maxMaxPoints"
+        },
+        "showPrompt": {
+          "description": "Determines whether prompt field will be displayed or not",
+          "default": true,
+          "type": "boolean",
+          "title": "showPrompt"
+        },
+        "promptLabel": {
+          "description": "The label for the item stem/prompt field",
+          "default": "Item Stemm",
+          "type": "string",
+          "title": "promptLabel"
+        },
+        "contentDimensions": {
+          "description": "Indicates the dimensions configuration for the authoring container\nNote: Some items have a default minimum width because of their content, but if\nthe minWidth is lower than this, the overflow behavior will take care of that",
+          "default": ": {}",
+          "type": "object",
+          "properties": {
+            "maxHeight": {
+              "description": "Indicates the max height of the authoring container",
+              "default": "undefined",
+              "type": [
+                "string",
+                "number"
+              ],
+              "title": "maxHeight"
+            },
+            "maxWidth": {
+              "description": "Indicates the max width of the authoring container",
+              "default": "undefined",
+              "type": [
+                "string",
+                "number"
+              ],
+              "title": "maxWidth"
+            },
+            "minHeight": {
+              "description": "Indicates the min height of the authoring container",
+              "default": "undefined",
+              "type": [
+                "string",
+                "number"
+              ],
+              "title": "minHeight"
+            },
+            "minWidth": {
+              "description": "Indicates the min width of the authoring container",
+              "default": "undefined",
+              "type": [
+                "string",
+                "number"
+              ],
+              "title": "minWidth"
+            }
+          },
+          "title": "contentDimensions"
+        },
+        "settingsPartialScoring": {
+          "description": "Indicates whether the settings panel wil allow the author to modify settings for partial scoring",
+          "default": true,
+          "type": "boolean",
+          "title": "settingsPartialScoring"
+        }
+      }
+    },
+    "EditableHtmlConfigureProp": {
+      "title": "EditableHtmlConfigureProp",
+      "type": "object",
+      "properties": {
+        "math": {
+          "title": "EditableHtmlButtonConfigure",
+          "type": "object",
+          "properties": {
+            "disabled": {
+              "description": "Indicates if the plugin is disabled or not",
+              "type": "boolean",
+              "title": "disabled"
+            }
+          }
+        },
+        "audio": {
+          "title": "EditableHtmlButtonConfigure",
+          "type": "object",
+          "properties": {
+            "disabled": {
+              "description": "Indicates if the plugin is disabled or not",
+              "type": "boolean",
+              "title": "disabled"
+            }
+          }
+        },
+        "video": {
+          "title": "EditableHtmlButtonConfigure",
+          "type": "object",
+          "properties": {
+            "disabled": {
+              "description": "Indicates if the plugin is disabled or not",
+              "type": "boolean",
+              "title": "disabled"
+            }
+          }
+        },
+        "image": {
+          "title": "EditableHtmlButtonConfigure",
+          "type": "object",
+          "properties": {
+            "disabled": {
+              "description": "Indicates if the plugin is disabled or not",
+              "type": "boolean",
+              "title": "disabled"
+            }
+          }
+        },
+        "customPlugins": {
+          "description": "An array of objects that determine custom plugins.\nA custom plugin is an object which determines how the button will look like (icon) and the event name that will be triggered when button gets pressed (event).\nExample can be found at https://github.com/pie-framework/pie-lib/blob/develop/packages/demo/pages/editable-html.js#L425.",
+          "type": "array",
+          "items": {
+            "title": "CustomPlugin",
+            "type": "object",
+            "properties": {
+              "event": {
+                "description": "The name of the custom event. It needs to be valid (only letters, numbers and \"_\" can be used).\nPIE will emit the event prefixed with \"PIE-\".\nEg: event = 'client_custom_event_A' => the emitted event will be \"PIE-client_custom_event_A\"",
+                "type": "string",
+                "title": "event"
+              },
+              "iconAlt": {
+                "description": "The alt for the custom button icon",
+                "type": "string",
+                "title": "iconAlt"
+              },
+              "iconType": {
+                "description": "The icon type.\nCurrently, only \"SVG\" is supported.",
+                "type": "string",
+                "title": "iconType"
+              },
+              "icon": {
+                "description": "The icon string. Currently, only \"SVG\" is supported, so it needs to be a valid svg.",
+                "type": "string",
+                "title": "icon"
+              }
+            },
+            "required": [
+              "event",
+              "icon",
+              "iconAlt",
+              "iconType"
+            ]
+          },
+          "title": "customPlugins"
+        }
+      }
+    },
+    "EditableHtmlButtonConfigure": {
+      "title": "EditableHtmlButtonConfigure",
+      "type": "object",
+      "properties": {
+        "disabled": {
+          "description": "Indicates if the plugin is disabled or not",
+          "type": "boolean",
+          "title": "disabled"
+        }
+      }
+    },
+    "CustomPlugin": {
+      "title": "CustomPlugin",
+      "type": "object",
+      "properties": {
+        "event": {
+          "description": "The name of the custom event. It needs to be valid (only letters, numbers and \"_\" can be used).\nPIE will emit the event prefixed with \"PIE-\".\nEg: event = 'client_custom_event_A' => the emitted event will be \"PIE-client_custom_event_A\"",
+          "type": "string",
+          "title": "event"
+        },
+        "iconAlt": {
+          "description": "The alt for the custom button icon",
+          "type": "string",
+          "title": "iconAlt"
+        },
+        "iconType": {
+          "description": "The icon type.\nCurrently, only \"SVG\" is supported.",
+          "type": "string",
+          "title": "iconType"
+        },
+        "icon": {
+          "description": "The icon string. Currently, only \"SVG\" is supported, so it needs to be a valid svg.",
+          "type": "string",
+          "title": "icon"
+        }
+      },
+      "required": [
+        "event",
+        "icon",
+        "iconAlt",
+        "iconType"
+      ]
+    },
+    "ConfigureProp": {
+      "title": "ConfigureProp",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "Indicates if the item has to be displayed in the Settings Panel",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+          "type": "string",
+          "title": "label"
+        }
+      }
+    },
+    "ConfigureMathMLProp": {
+      "title": "ConfigureMathMLProp",
+      "type": "object",
+      "properties": {
+        "mmlOutput": {
+          "description": "Indicates if model should have mathML output instead of latex",
+          "type": "number",
+          "title": "mmlOutput"
+        },
+        "mmlEditing": {
+          "description": "Indicates if mathML that's already in model should be editable",
+          "type": "number",
+          "title": "mmlEditing"
+        }
+      }
+    },
+    "MultiTraitRubricConfigure": {
+      "description": "Config Object for @pie-elements/multi-trait-rubric",
+      "additionalProperties": false,
+      "title": "MultiTraitRubricConfigure",
+      "type": "object",
+      "properties": {
+        "baseInputConfiguration": {
+          "title": "EditableHtmlConfigureProp",
+          "type": "object",
+          "properties": {
+            "math": {
+              "title": "EditableHtmlButtonConfigure",
+              "type": "object",
+              "properties": {
+                "disabled": {
+                  "description": "Indicates if the plugin is disabled or not",
+                  "type": "boolean",
+                  "title": "disabled"
+                }
+              }
+            },
+            "audio": {
+              "title": "EditableHtmlButtonConfigure",
+              "type": "object",
+              "properties": {
+                "disabled": {
+                  "description": "Indicates if the plugin is disabled or not",
+                  "type": "boolean",
+                  "title": "disabled"
+                }
+              }
+            },
+            "video": {
+              "title": "EditableHtmlButtonConfigure",
+              "type": "object",
+              "properties": {
+                "disabled": {
+                  "description": "Indicates if the plugin is disabled or not",
+                  "type": "boolean",
+                  "title": "disabled"
+                }
+              }
+            },
+            "image": {
+              "title": "EditableHtmlButtonConfigure",
+              "type": "object",
+              "properties": {
+                "disabled": {
+                  "description": "Indicates if the plugin is disabled or not",
+                  "type": "boolean",
+                  "title": "disabled"
+                }
+              }
+            },
+            "customPlugins": {
+              "description": "An array of objects that determine custom plugins.\nA custom plugin is an object which determines how the button will look like (icon) and the event name that will be triggered when button gets pressed (event).\nExample can be found at https://github.com/pie-framework/pie-lib/blob/develop/packages/demo/pages/editable-html.js#L425.",
+              "type": "array",
+              "items": {
+                "title": "CustomPlugin",
+                "type": "object",
+                "properties": {
+                  "event": {
+                    "description": "The name of the custom event. It needs to be valid (only letters, numbers and \"_\" can be used).\nPIE will emit the event prefixed with \"PIE-\".\nEg: event = 'client_custom_event_A' => the emitted event will be \"PIE-client_custom_event_A\"",
+                    "type": "string",
+                    "title": "event"
+                  },
+                  "iconAlt": {
+                    "description": "The alt for the custom button icon",
+                    "type": "string",
+                    "title": "iconAlt"
+                  },
+                  "iconType": {
+                    "description": "The icon type.\nCurrently, only \"SVG\" is supported.",
+                    "type": "string",
+                    "title": "iconType"
+                  },
+                  "icon": {
+                    "description": "The icon string. Currently, only \"SVG\" is supported, so it needs to be a valid svg.",
+                    "type": "string",
+                    "title": "icon"
+                  }
+                },
+                "required": [
+                  "event",
+                  "icon",
+                  "iconAlt",
+                  "iconType"
+                ]
+              },
+              "title": "customPlugins"
+            }
+          }
+        },
+        "expandedInput": {
+          "title": "EditableHtmlPluginConfigure",
+          "type": "object",
+          "properties": {
+            "inputConfiguration": {
+              "title": "EditableHtmlConfigureProp",
+              "type": "object",
+              "properties": {
+                "math": {
+                  "title": "EditableHtmlButtonConfigure",
+                  "type": "object",
+                  "properties": {
+                    "disabled": {
+                      "description": "Indicates if the plugin is disabled or not",
+                      "type": "boolean",
+                      "title": "disabled"
+                    }
+                  }
+                },
+                "audio": {
+                  "title": "EditableHtmlButtonConfigure",
+                  "type": "object",
+                  "properties": {
+                    "disabled": {
+                      "description": "Indicates if the plugin is disabled or not",
+                      "type": "boolean",
+                      "title": "disabled"
+                    }
+                  }
+                },
+                "video": {
+                  "title": "EditableHtmlButtonConfigure",
+                  "type": "object",
+                  "properties": {
+                    "disabled": {
+                      "description": "Indicates if the plugin is disabled or not",
+                      "type": "boolean",
+                      "title": "disabled"
+                    }
+                  }
+                },
+                "image": {
+                  "title": "EditableHtmlButtonConfigure",
+                  "type": "object",
+                  "properties": {
+                    "disabled": {
+                      "description": "Indicates if the plugin is disabled or not",
+                      "type": "boolean",
+                      "title": "disabled"
+                    }
+                  }
+                },
+                "customPlugins": {
+                  "description": "An array of objects that determine custom plugins.\nA custom plugin is an object which determines how the button will look like (icon) and the event name that will be triggered when button gets pressed (event).\nExample can be found at https://github.com/pie-framework/pie-lib/blob/develop/packages/demo/pages/editable-html.js#L425.",
+                  "type": "array",
+                  "items": {
+                    "title": "CustomPlugin",
+                    "type": "object",
+                    "properties": {
+                      "event": {
+                        "description": "The name of the custom event. It needs to be valid (only letters, numbers and \"_\" can be used).\nPIE will emit the event prefixed with \"PIE-\".\nEg: event = 'client_custom_event_A' => the emitted event will be \"PIE-client_custom_event_A\"",
+                        "type": "string",
+                        "title": "event"
+                      },
+                      "iconAlt": {
+                        "description": "The alt for the custom button icon",
+                        "type": "string",
+                        "title": "iconAlt"
+                      },
+                      "iconType": {
+                        "description": "The icon type.\nCurrently, only \"SVG\" is supported.",
+                        "type": "string",
+                        "title": "iconType"
+                      },
+                      "icon": {
+                        "description": "The icon string. Currently, only \"SVG\" is supported, so it needs to be a valid svg.",
+                        "type": "string",
+                        "title": "icon"
+                      }
+                    },
+                    "required": [
+                      "event",
+                      "icon",
+                      "iconAlt",
+                      "iconType"
+                    ]
+                  },
+                  "title": "customPlugins"
+                }
+              }
+            },
+            "settings": {
+              "description": "Indicates if the item has to be displayed in the Settings Panel",
+              "type": "boolean",
+              "title": "settings"
+            },
+            "label": {
+              "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+              "type": "string",
+              "title": "label"
+            }
+          }
+        },
+        "labelInput": {
+          "title": "EditableHtmlPluginConfigure",
+          "type": "object",
+          "properties": {
+            "inputConfiguration": {
+              "title": "EditableHtmlConfigureProp",
+              "type": "object",
+              "properties": {
+                "math": {
+                  "title": "EditableHtmlButtonConfigure",
+                  "type": "object",
+                  "properties": {
+                    "disabled": {
+                      "description": "Indicates if the plugin is disabled or not",
+                      "type": "boolean",
+                      "title": "disabled"
+                    }
+                  }
+                },
+                "audio": {
+                  "title": "EditableHtmlButtonConfigure",
+                  "type": "object",
+                  "properties": {
+                    "disabled": {
+                      "description": "Indicates if the plugin is disabled or not",
+                      "type": "boolean",
+                      "title": "disabled"
+                    }
+                  }
+                },
+                "video": {
+                  "title": "EditableHtmlButtonConfigure",
+                  "type": "object",
+                  "properties": {
+                    "disabled": {
+                      "description": "Indicates if the plugin is disabled or not",
+                      "type": "boolean",
+                      "title": "disabled"
+                    }
+                  }
+                },
+                "image": {
+                  "title": "EditableHtmlButtonConfigure",
+                  "type": "object",
+                  "properties": {
+                    "disabled": {
+                      "description": "Indicates if the plugin is disabled or not",
+                      "type": "boolean",
+                      "title": "disabled"
+                    }
+                  }
+                },
+                "customPlugins": {
+                  "description": "An array of objects that determine custom plugins.\nA custom plugin is an object which determines how the button will look like (icon) and the event name that will be triggered when button gets pressed (event).\nExample can be found at https://github.com/pie-framework/pie-lib/blob/develop/packages/demo/pages/editable-html.js#L425.",
+                  "type": "array",
+                  "items": {
+                    "title": "CustomPlugin",
+                    "type": "object",
+                    "properties": {
+                      "event": {
+                        "description": "The name of the custom event. It needs to be valid (only letters, numbers and \"_\" can be used).\nPIE will emit the event prefixed with \"PIE-\".\nEg: event = 'client_custom_event_A' => the emitted event will be \"PIE-client_custom_event_A\"",
+                        "type": "string",
+                        "title": "event"
+                      },
+                      "iconAlt": {
+                        "description": "The alt for the custom button icon",
+                        "type": "string",
+                        "title": "iconAlt"
+                      },
+                      "iconType": {
+                        "description": "The icon type.\nCurrently, only \"SVG\" is supported.",
+                        "type": "string",
+                        "title": "iconType"
+                      },
+                      "icon": {
+                        "description": "The icon string. Currently, only \"SVG\" is supported, so it needs to be a valid svg.",
+                        "type": "string",
+                        "title": "icon"
+                      }
+                    },
+                    "required": [
+                      "event",
+                      "icon",
+                      "iconAlt",
+                      "iconType"
+                    ]
+                  },
+                  "title": "customPlugins"
+                }
+              }
+            },
+            "settings": {
+              "description": "Indicates if the item has to be displayed in the Settings Panel",
+              "type": "boolean",
+              "title": "settings"
+            },
+            "label": {
+              "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+              "type": "string",
+              "title": "label"
+            }
+          }
+        },
+        "excludeZeroDialogBoxContent": {
+          "title": "DialogContent",
+          "type": "object",
+          "properties": {
+            "title": {
+              "description": "Dialog box title",
+              "type": "string",
+              "title": "title"
+            },
+            "text": {
+              "description": "Dialog box text",
+              "type": "string",
+              "title": "text"
+            }
+          }
+        },
+        "includeZeroDialogBoxContent": {
+          "title": "DialogContent",
+          "type": "object",
+          "properties": {
+            "title": {
+              "description": "Dialog box title",
+              "type": "string",
+              "title": "title"
+            },
+            "text": {
+              "description": "Dialog box text",
+              "type": "string",
+              "title": "text"
+            }
+          }
+        },
+        "deleteScaleDialogBoxContent": {
+          "title": "DialogContent",
+          "type": "object",
+          "properties": {
+            "title": {
+              "description": "Dialog box title",
+              "type": "string",
+              "title": "title"
+            },
+            "text": {
+              "description": "Dialog box text",
+              "type": "string",
+              "title": "text"
+            }
+          }
+        },
+        "maxPointsDialogBoxContent": {
+          "title": "DialogContent",
+          "type": "object",
+          "properties": {
+            "title": {
+              "description": "Dialog box title",
+              "type": "string",
+              "title": "title"
+            },
+            "text": {
+              "description": "Dialog box text",
+              "type": "string",
+              "title": "text"
+            }
+          }
+        },
+        "settingsPanelDisabled": {
+          "description": "Indicates if the settings panel is not available",
+          "type": "boolean",
+          "title": "settingsPanelDisabled"
+        },
+        "showExcludeZero": {
+          "title": "ConfigureProp",
+          "type": "object",
+          "properties": {
+            "settings": {
+              "description": "Indicates if the item has to be displayed in the Settings Panel",
+              "type": "boolean",
+              "title": "settings"
+            },
+            "label": {
+              "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+              "type": "string",
+              "title": "label"
+            }
+          }
+        },
+        "showScorePointLabels": {
+          "title": "ConfigureProp",
+          "type": "object",
+          "properties": {
+            "settings": {
+              "description": "Indicates if the item has to be displayed in the Settings Panel",
+              "type": "boolean",
+              "title": "settings"
+            },
+            "label": {
+              "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+              "type": "string",
+              "title": "label"
+            }
+          }
+        },
+        "showDescription": {
+          "title": "ConfigureProp",
+          "type": "object",
+          "properties": {
+            "settings": {
+              "description": "Indicates if the item has to be displayed in the Settings Panel",
+              "type": "boolean",
+              "title": "settings"
+            },
+            "label": {
+              "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+              "type": "string",
+              "title": "label"
+            }
+          }
+        },
+        "showVisibleToStudent": {
+          "title": "ConfigureProp",
+          "type": "object",
+          "properties": {
+            "settings": {
+              "description": "Indicates if the item has to be displayed in the Settings Panel",
+              "type": "boolean",
+              "title": "settings"
+            },
+            "label": {
+              "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+              "type": "string",
+              "title": "label"
+            }
+          }
+        },
+        "showHalfScoring": {
+          "title": "ConfigureProp",
+          "type": "object",
+          "properties": {
+            "settings": {
+              "description": "Indicates if the item has to be displayed in the Settings Panel",
+              "type": "boolean",
+              "title": "settings"
+            },
+            "label": {
+              "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+              "type": "string",
+              "title": "label"
+            }
+          }
+        },
+        "spellCheck": {
+          "title": "ConfigureProp",
+          "type": "object",
+          "properties": {
+            "settings": {
+              "description": "Indicates if the item has to be displayed in the Settings Panel",
+              "type": "boolean",
+              "title": "settings"
+            },
+            "label": {
+              "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+              "type": "string",
+              "title": "label"
+            }
+          }
+        },
+        "width": {
+          "description": "How large (in px) should multi-trait-rubric be",
+          "type": "string",
+          "title": "width"
+        },
+        "minNoOfTraits": {
+          "description": "Minimum number of traits",
+          "type": "number",
+          "title": "minNoOfTraits"
+        },
+        "maxNoOfTraits": {
+          "description": "Maximum number of traits",
+          "type": "number",
+          "title": "maxNoOfTraits"
+        },
+        "minNoOfScales": {
+          "description": "Minimum number of scales",
+          "type": "number",
+          "title": "minNoOfScales"
+        },
+        "maxNoOfScales": {
+          "description": "Maximum number of scales",
+          "type": "number",
+          "title": "maxNoOfScales"
+        },
+        "defaultTraitLabel": {
+          "description": "The default trait label for new created scales.\nIf it's not defined, it will default to the label of the first trait.",
+          "type": "string",
+          "title": "defaultTraitLabel"
+        },
+        "mathMlOptions": {
+          "title": "ConfigureMathMLProp",
+          "type": "object",
+          "properties": {
+            "mmlOutput": {
+              "description": "Indicates if model should have mathML output instead of latex",
+              "type": "number",
+              "title": "mmlOutput"
+            },
+            "mmlEditing": {
+              "description": "Indicates if mathML that's already in model should be editable",
+              "type": "number",
+              "title": "mmlEditing"
+            }
+          }
+        },
+        "maxMaxPoints": {
+          "description": "Indicates the max limit for scoring points",
+          "type": "number",
+          "title": "maxMaxPoints"
+        }
+      },
+      "required": [
+        "width"
+      ]
+    },
+    "EditableHtmlPluginConfigure": {
+      "title": "EditableHtmlPluginConfigure",
+      "type": "object",
+      "properties": {
+        "inputConfiguration": {
+          "title": "EditableHtmlConfigureProp",
+          "type": "object",
+          "properties": {
+            "math": {
+              "title": "EditableHtmlButtonConfigure",
+              "type": "object",
+              "properties": {
+                "disabled": {
+                  "description": "Indicates if the plugin is disabled or not",
+                  "type": "boolean",
+                  "title": "disabled"
+                }
+              }
+            },
+            "audio": {
+              "title": "EditableHtmlButtonConfigure",
+              "type": "object",
+              "properties": {
+                "disabled": {
+                  "description": "Indicates if the plugin is disabled or not",
+                  "type": "boolean",
+                  "title": "disabled"
+                }
+              }
+            },
+            "video": {
+              "title": "EditableHtmlButtonConfigure",
+              "type": "object",
+              "properties": {
+                "disabled": {
+                  "description": "Indicates if the plugin is disabled or not",
+                  "type": "boolean",
+                  "title": "disabled"
+                }
+              }
+            },
+            "image": {
+              "title": "EditableHtmlButtonConfigure",
+              "type": "object",
+              "properties": {
+                "disabled": {
+                  "description": "Indicates if the plugin is disabled or not",
+                  "type": "boolean",
+                  "title": "disabled"
+                }
+              }
+            },
+            "customPlugins": {
+              "description": "An array of objects that determine custom plugins.\nA custom plugin is an object which determines how the button will look like (icon) and the event name that will be triggered when button gets pressed (event).\nExample can be found at https://github.com/pie-framework/pie-lib/blob/develop/packages/demo/pages/editable-html.js#L425.",
+              "type": "array",
+              "items": {
+                "title": "CustomPlugin",
+                "type": "object",
+                "properties": {
+                  "event": {
+                    "description": "The name of the custom event. It needs to be valid (only letters, numbers and \"_\" can be used).\nPIE will emit the event prefixed with \"PIE-\".\nEg: event = 'client_custom_event_A' => the emitted event will be \"PIE-client_custom_event_A\"",
+                    "type": "string",
+                    "title": "event"
+                  },
+                  "iconAlt": {
+                    "description": "The alt for the custom button icon",
+                    "type": "string",
+                    "title": "iconAlt"
+                  },
+                  "iconType": {
+                    "description": "The icon type.\nCurrently, only \"SVG\" is supported.",
+                    "type": "string",
+                    "title": "iconType"
+                  },
+                  "icon": {
+                    "description": "The icon string. Currently, only \"SVG\" is supported, so it needs to be a valid svg.",
+                    "type": "string",
+                    "title": "icon"
+                  }
+                },
+                "required": [
+                  "event",
+                  "icon",
+                  "iconAlt",
+                  "iconType"
+                ]
+              },
+              "title": "customPlugins"
+            }
+          }
+        },
+        "settings": {
+          "description": "Indicates if the item has to be displayed in the Settings Panel",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+          "type": "string",
+          "title": "label"
+        }
+      }
+    },
+    "DialogContent": {
+      "title": "DialogContent",
+      "type": "object",
+      "properties": {
+        "title": {
+          "description": "Dialog box title",
+          "type": "string",
+          "title": "title"
+        },
+        "text": {
+          "description": "Dialog box text",
+          "type": "string",
+          "title": "text"
+        }
+      }
+    },
+    "RubriclessConfigure": {
+      "title": "RubriclessConfigure",
+      "type": "object",
+      "properties": {
+        "settingsPanelDisabled": {
+          "description": "Indicates if the settings panel is not available",
+          "type": "boolean",
+          "title": "settingsPanelDisabled"
+        },
+        "showExcludeZero": {
+          "title": "ConfigureProp",
+          "type": "object",
+          "properties": {
+            "settings": {
+              "description": "Indicates if the item has to be displayed in the Settings Panel",
+              "type": "boolean",
+              "title": "settings"
+            },
+            "label": {
+              "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+              "type": "string",
+              "title": "label"
+            }
+          }
+        },
+        "showMaxPoint": {
+          "title": "ConfigureProp",
+          "type": "object",
+          "properties": {
+            "settings": {
+              "description": "Indicates if the item has to be displayed in the Settings Panel",
+              "type": "boolean",
+              "title": "settings"
+            },
+            "label": {
+              "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+              "type": "string",
+              "title": "label"
+            }
+          }
+        },
+        "width": {
+          "description": "How large can the rubric be",
+          "type": "string",
+          "title": "width"
+        },
+        "mathMlOptions": {
+          "title": "ConfigureMathMLProp",
+          "type": "object",
+          "properties": {
+            "mmlOutput": {
+              "description": "Indicates if model should have mathML output instead of latex",
+              "type": "number",
+              "title": "mmlOutput"
+            },
+            "mmlEditing": {
+              "description": "Indicates if mathML that's already in model should be editable",
+              "type": "number",
+              "title": "mmlEditing"
+            }
+          }
+        },
+        "maxMaxPoints": {
+          "description": "Indicates the max limit for scoring points",
+          "type": "number",
+          "title": "maxMaxPoints"
+        },
+        "rubricless": {
+          "description": "Indicates that it is rubricless",
+          "type": "boolean",
+          "enum": [
+            true
+          ],
+          "title": "rubricless"
+        },
+        "rubriclessInstruction": {
+          "title": "EditableHtmlPluginConfigure",
+          "type": "object",
+          "properties": {
+            "inputConfiguration": {
+              "title": "EditableHtmlConfigureProp",
+              "type": "object",
+              "properties": {
+                "math": {
+                  "title": "EditableHtmlButtonConfigure",
+                  "type": "object",
+                  "properties": {
+                    "disabled": {
+                      "description": "Indicates if the plugin is disabled or not",
+                      "type": "boolean",
+                      "title": "disabled"
+                    }
+                  }
+                },
+                "audio": {
+                  "title": "EditableHtmlButtonConfigure",
+                  "type": "object",
+                  "properties": {
+                    "disabled": {
+                      "description": "Indicates if the plugin is disabled or not",
+                      "type": "boolean",
+                      "title": "disabled"
+                    }
+                  }
+                },
+                "video": {
+                  "title": "EditableHtmlButtonConfigure",
+                  "type": "object",
+                  "properties": {
+                    "disabled": {
+                      "description": "Indicates if the plugin is disabled or not",
+                      "type": "boolean",
+                      "title": "disabled"
+                    }
+                  }
+                },
+                "image": {
+                  "title": "EditableHtmlButtonConfigure",
+                  "type": "object",
+                  "properties": {
+                    "disabled": {
+                      "description": "Indicates if the plugin is disabled or not",
+                      "type": "boolean",
+                      "title": "disabled"
+                    }
+                  }
+                },
+                "customPlugins": {
+                  "description": "An array of objects that determine custom plugins.\nA custom plugin is an object which determines how the button will look like (icon) and the event name that will be triggered when button gets pressed (event).\nExample can be found at https://github.com/pie-framework/pie-lib/blob/develop/packages/demo/pages/editable-html.js#L425.",
+                  "type": "array",
+                  "items": {
+                    "title": "CustomPlugin",
+                    "type": "object",
+                    "properties": {
+                      "event": {
+                        "description": "The name of the custom event. It needs to be valid (only letters, numbers and \"_\" can be used).\nPIE will emit the event prefixed with \"PIE-\".\nEg: event = 'client_custom_event_A' => the emitted event will be \"PIE-client_custom_event_A\"",
+                        "type": "string",
+                        "title": "event"
+                      },
+                      "iconAlt": {
+                        "description": "The alt for the custom button icon",
+                        "type": "string",
+                        "title": "iconAlt"
+                      },
+                      "iconType": {
+                        "description": "The icon type.\nCurrently, only \"SVG\" is supported.",
+                        "type": "string",
+                        "title": "iconType"
+                      },
+                      "icon": {
+                        "description": "The icon string. Currently, only \"SVG\" is supported, so it needs to be a valid svg.",
+                        "type": "string",
+                        "title": "icon"
+                      }
+                    },
+                    "required": [
+                      "event",
+                      "icon",
+                      "iconAlt",
+                      "iconType"
+                    ]
+                  },
+                  "title": "customPlugins"
+                }
+              }
+            },
+            "settings": {
+              "description": "Indicates if the item has to be displayed in the Settings Panel",
+              "type": "boolean",
+              "title": "settings"
+            },
+            "label": {
+              "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+              "type": "string",
+              "title": "label"
+            }
+          }
+        },
+        "showPrompt": {
+          "description": "Determines whether prompt field will be displayed or not",
+          "default": true,
+          "type": "boolean",
+          "title": "showPrompt"
+        },
+        "promptLabel": {
+          "description": "The label for the item stem/prompt field",
+          "default": "Item Stemm",
+          "type": "string",
+          "title": "promptLabel"
+        },
+        "contentDimensions": {
+          "description": "Indicates the dimensions configuration for the authoring container\nNote: Some items have a default minimum width because of their content, but if\nthe minWidth is lower than this, the overflow behavior will take care of that",
+          "default": ": {}",
+          "type": "object",
+          "properties": {
+            "maxHeight": {
+              "description": "Indicates the max height of the authoring container",
+              "default": "undefined",
+              "type": [
+                "string",
+                "number"
+              ],
+              "title": "maxHeight"
+            },
+            "maxWidth": {
+              "description": "Indicates the max width of the authoring container",
+              "default": "undefined",
+              "type": [
+                "string",
+                "number"
+              ],
+              "title": "maxWidth"
+            },
+            "minHeight": {
+              "description": "Indicates the min height of the authoring container",
+              "default": "undefined",
+              "type": [
+                "string",
+                "number"
+              ],
+              "title": "minHeight"
+            },
+            "minWidth": {
+              "description": "Indicates the min width of the authoring container",
+              "default": "undefined",
+              "type": [
+                "string",
+                "number"
+              ],
+              "title": "minWidth"
+            }
+          },
+          "title": "contentDimensions"
+        },
+        "settingsPartialScoring": {
+          "description": "Indicates whether the settings panel wil allow the author to modify settings for partial scoring",
+          "default": true,
+          "type": "boolean",
+          "title": "settingsPartialScoring"
+        }
+      },
+      "required": [
+        "rubricless",
+        "rubriclessInstruction"
+      ]
+    },
+    "RubricType": {
+      "title": "RubricType",
+      "enum": [
+        "multiTraitRubric",
+        "rubricless",
+        "simpleRubric"
+      ],
+      "type": "string"
+    },
+    "RubricModels": {
+      "title": "RubricModels",
+      "type": "object",
+      "properties": {
+        "simpleRubric": {
+          "description": "Model for the RubricPie Interaction",
+          "additionalProperties": false,
+          "title": "RubricPie",
+          "type": "object",
+          "properties": {
+            "points": {
+              "description": "Indicates the score points labels. Starting from 0 to max",
+              "type": "array",
+              "items": {
+                "description": "Allows manipulation and formatting of text strings and determination and location of substrings within strings.",
+                "type": "object",
+                "additionalProperties": false,
+                "patternProperties": {
+                  "^[0-9]+$": {
+                    "type": "string"
+                  }
+                }
+              },
+              "title": "points"
+            },
+            "sampleAnswers": {
+              "description": "Indicates the sample answers labels. Starting from 0 to max",
+              "type": "array",
+              "items": {
+                "description": "Allows manipulation and formatting of text strings and determination and location of substrings within strings.",
+                "type": "object",
+                "additionalProperties": false,
+                "patternProperties": {
+                  "^[0-9]+$": {
+                    "type": "string"
+                  }
+                }
+              },
+              "title": "sampleAnswers"
+            },
+            "maxPoints": {
+              "description": "Indicates the max limit for scoring points",
+              "type": "number",
+              "title": "maxPoints"
+            },
+            "excludeZeros": {
+              "description": "Indicates if point 0 should be shown",
+              "type": "boolean",
+              "title": "excludeZeros"
+            },
+            "id": {
+              "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
+              "type": "string",
+              "title": "id"
+            },
+            "element": {
+              "description": "The html Element tag name",
+              "type": "string",
+              "title": "element"
+            }
+          },
+          "required": [
+            "element",
+            "id"
+          ]
+        },
+        "multiTraitRubric": {
+          "description": "Model for the MultiTraitRubric Interaction",
+          "additionalProperties": false,
+          "title": "MultiTraitRubricPie",
+          "type": "object",
+          "properties": {
+            "halfScoring": {
+              "description": "Indicates if half scoring is enabled",
+              "type": "boolean",
+              "title": "halfScoring"
+            },
+            "pointLabels": {
+              "description": "Indicates if point labels should be shown",
+              "type": "boolean",
+              "title": "pointLabels"
+            },
+            "visibleToStudent": {
+              "description": "Indicates if should be visible to student",
+              "type": "boolean",
+              "title": "visibleToStudent"
+            },
+            "description": {
+              "description": "Indicates if description should be shown",
+              "type": "boolean",
+              "title": "description"
+            },
+            "standards": {
+              "description": "Indicates if standards should be shown",
+              "type": "boolean",
+              "title": "standards"
+            },
+            "excludeZero": {
+              "description": "Indicates if scoring should start at 0 or 1",
+              "type": "boolean",
+              "title": "excludeZero"
+            },
+            "spellCheckEnabled": {
+              "description": "Indicates if spellcheck is enabled for the author. Default value is true",
+              "type": "boolean",
+              "title": "spellCheckEnabled"
+            },
+            "scales": {
+              "description": "scales",
+              "type": "array",
+              "items": {
+                "title": "Scale",
+                "type": "object",
+                "properties": {
+                  "maxPoints": {
+                    "description": "Indicates max limit for scoring points",
+                    "type": "number",
+                    "title": "maxPoints"
+                  },
+                  "scorePointsLabels": {
+                    "description": "Score labels. Starting from 0 to max.",
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "title": "scorePointsLabels"
+                  },
+                  "traitLabel": {
+                    "description": "Trait label",
+                    "type": "string",
+                    "title": "traitLabel"
+                  },
+                  "traits": {
+                    "description": "Traits",
+                    "type": "array",
+                    "items": {
+                      "title": "Trait",
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "description": "Trait name",
+                          "type": "string",
+                          "title": "name"
+                        },
+                        "standards": {
+                          "description": "Trait standards",
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          },
+                          "title": "standards"
+                        },
+                        "description": {
+                          "description": "Trait description",
+                          "type": "string",
+                          "title": "description"
+                        },
+                        "scorePointsDescriptors": {
+                          "description": "Score point descriptors. Starting from 0 to max.",
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          },
+                          "title": "scorePointsDescriptors"
+                        }
+                      },
+                      "required": [
+                        "description",
+                        "name",
+                        "scorePointsDescriptors",
+                        "standards"
+                      ]
+                    },
+                    "title": "traits"
+                  }
+                },
+                "required": [
+                  "maxPoints",
+                  "scorePointsLabels",
+                  "traitLabel",
+                  "traits"
+                ]
+              },
+              "title": "scales"
+            },
+            "id": {
+              "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
+              "type": "string",
+              "title": "id"
+            },
+            "element": {
+              "description": "The html Element tag name",
+              "type": "string",
+              "title": "element"
+            }
+          },
+          "required": [
+            "element",
+            "id",
+            "scales",
+            "spellCheckEnabled"
+          ]
+        },
+        "rubricless": {
+          "title": "RubriclessPie",
+          "type": "object",
+          "properties": {
+            "maxPoints": {
+              "description": "Indicates the max limit for scoring points",
+              "type": "number",
+              "title": "maxPoints"
+            },
+            "excludeZeros": {
+              "description": "Indicates if point 0 should be shown",
+              "type": "boolean",
+              "title": "excludeZeros"
+            },
+            "rubriclessInstructionEnabled": {
+              "description": "Indicates that rubricInstruction is enabled",
+              "type": "boolean",
+              "title": "rubriclessInstructionEnabled"
+            },
+            "id": {
+              "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
+              "type": "string",
+              "title": "id"
+            },
+            "element": {
+              "description": "The html Element tag name",
+              "type": "string",
+              "title": "element"
+            }
+          },
+          "required": [
+            "element",
+            "id",
+            "rubriclessInstructionEnabled"
+          ]
+        }
+      },
+      "required": [
+        "multiTraitRubric",
+        "rubricless",
+        "simpleRubric"
+      ]
+    },
+    "RubricPie": {
+      "description": "Model for the RubricPie Interaction",
+      "additionalProperties": false,
+      "title": "RubricPie",
+      "type": "object",
+      "properties": {
+        "points": {
+          "description": "Indicates the score points labels. Starting from 0 to max",
+          "type": "array",
+          "items": {
+            "description": "Allows manipulation and formatting of text strings and determination and location of substrings within strings.",
+            "type": "object",
+            "additionalProperties": false,
+            "patternProperties": {
+              "^[0-9]+$": {
+                "type": "string"
+              }
+            }
+          },
+          "title": "points"
+        },
+        "sampleAnswers": {
+          "description": "Indicates the sample answers labels. Starting from 0 to max",
+          "type": "array",
+          "items": {
+            "description": "Allows manipulation and formatting of text strings and determination and location of substrings within strings.",
+            "type": "object",
+            "additionalProperties": false,
+            "patternProperties": {
+              "^[0-9]+$": {
+                "type": "string"
+              }
+            }
+          },
+          "title": "sampleAnswers"
+        },
+        "maxPoints": {
+          "description": "Indicates the max limit for scoring points",
+          "type": "number",
+          "title": "maxPoints"
+        },
+        "excludeZeros": {
+          "description": "Indicates if point 0 should be shown",
+          "type": "boolean",
+          "title": "excludeZeros"
+        },
+        "id": {
+          "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
+          "type": "string",
+          "title": "id"
+        },
+        "element": {
+          "description": "The html Element tag name",
+          "type": "string",
+          "title": "element"
+        }
+      },
+      "required": [
+        "element",
+        "id"
+      ]
+    },
+    "MultiTraitRubricPie": {
+      "description": "Model for the MultiTraitRubric Interaction",
+      "additionalProperties": false,
+      "title": "MultiTraitRubricPie",
+      "type": "object",
+      "properties": {
+        "halfScoring": {
+          "description": "Indicates if half scoring is enabled",
+          "type": "boolean",
+          "title": "halfScoring"
+        },
+        "pointLabels": {
+          "description": "Indicates if point labels should be shown",
+          "type": "boolean",
+          "title": "pointLabels"
+        },
+        "visibleToStudent": {
+          "description": "Indicates if should be visible to student",
+          "type": "boolean",
+          "title": "visibleToStudent"
+        },
+        "description": {
+          "description": "Indicates if description should be shown",
+          "type": "boolean",
+          "title": "description"
+        },
+        "standards": {
+          "description": "Indicates if standards should be shown",
+          "type": "boolean",
+          "title": "standards"
+        },
+        "excludeZero": {
+          "description": "Indicates if scoring should start at 0 or 1",
+          "type": "boolean",
+          "title": "excludeZero"
+        },
+        "spellCheckEnabled": {
+          "description": "Indicates if spellcheck is enabled for the author. Default value is true",
+          "type": "boolean",
+          "title": "spellCheckEnabled"
+        },
+        "scales": {
+          "description": "scales",
+          "type": "array",
+          "items": {
+            "title": "Scale",
+            "type": "object",
+            "properties": {
+              "maxPoints": {
+                "description": "Indicates max limit for scoring points",
+                "type": "number",
+                "title": "maxPoints"
+              },
+              "scorePointsLabels": {
+                "description": "Score labels. Starting from 0 to max.",
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "title": "scorePointsLabels"
+              },
+              "traitLabel": {
+                "description": "Trait label",
+                "type": "string",
+                "title": "traitLabel"
+              },
+              "traits": {
+                "description": "Traits",
+                "type": "array",
+                "items": {
+                  "title": "Trait",
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "description": "Trait name",
+                      "type": "string",
+                      "title": "name"
+                    },
+                    "standards": {
+                      "description": "Trait standards",
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "title": "standards"
+                    },
+                    "description": {
+                      "description": "Trait description",
+                      "type": "string",
+                      "title": "description"
+                    },
+                    "scorePointsDescriptors": {
+                      "description": "Score point descriptors. Starting from 0 to max.",
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "title": "scorePointsDescriptors"
+                    }
+                  },
+                  "required": [
+                    "description",
+                    "name",
+                    "scorePointsDescriptors",
+                    "standards"
+                  ]
+                },
+                "title": "traits"
+              }
+            },
+            "required": [
+              "maxPoints",
+              "scorePointsLabels",
+              "traitLabel",
+              "traits"
+            ]
+          },
+          "title": "scales"
+        },
+        "id": {
+          "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
+          "type": "string",
+          "title": "id"
+        },
+        "element": {
+          "description": "The html Element tag name",
+          "type": "string",
+          "title": "element"
+        }
+      },
+      "required": [
+        "element",
+        "id",
+        "scales",
+        "spellCheckEnabled"
+      ]
+    },
+    "Scale": {
+      "title": "Scale",
+      "type": "object",
+      "properties": {
+        "maxPoints": {
+          "description": "Indicates max limit for scoring points",
+          "type": "number",
+          "title": "maxPoints"
+        },
+        "scorePointsLabels": {
+          "description": "Score labels. Starting from 0 to max.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "scorePointsLabels"
+        },
+        "traitLabel": {
+          "description": "Trait label",
+          "type": "string",
+          "title": "traitLabel"
+        },
+        "traits": {
+          "description": "Traits",
+          "type": "array",
+          "items": {
+            "title": "Trait",
+            "type": "object",
+            "properties": {
+              "name": {
+                "description": "Trait name",
+                "type": "string",
+                "title": "name"
+              },
+              "standards": {
+                "description": "Trait standards",
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "title": "standards"
+              },
+              "description": {
+                "description": "Trait description",
+                "type": "string",
+                "title": "description"
+              },
+              "scorePointsDescriptors": {
+                "description": "Score point descriptors. Starting from 0 to max.",
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "title": "scorePointsDescriptors"
+              }
+            },
+            "required": [
+              "description",
+              "name",
+              "scorePointsDescriptors",
+              "standards"
+            ]
+          },
+          "title": "traits"
+        }
+      },
+      "required": [
+        "maxPoints",
+        "scorePointsLabels",
+        "traitLabel",
+        "traits"
+      ]
+    },
+    "Trait": {
+      "title": "Trait",
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "Trait name",
+          "type": "string",
+          "title": "name"
+        },
+        "standards": {
+          "description": "Trait standards",
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "standards"
+        },
+        "description": {
+          "description": "Trait description",
+          "type": "string",
+          "title": "description"
+        },
+        "scorePointsDescriptors": {
+          "description": "Score point descriptors. Starting from 0 to max.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "scorePointsDescriptors"
+        }
+      },
+      "required": [
+        "description",
+        "name",
+        "scorePointsDescriptors",
+        "standards"
+      ]
+    },
+    "RubriclessPie": {
+      "title": "RubriclessPie",
+      "type": "object",
+      "properties": {
+        "maxPoints": {
+          "description": "Indicates the max limit for scoring points",
+          "type": "number",
+          "title": "maxPoints"
+        },
+        "excludeZeros": {
+          "description": "Indicates if point 0 should be shown",
+          "type": "boolean",
+          "title": "excludeZeros"
+        },
+        "rubriclessInstructionEnabled": {
+          "description": "Indicates that rubricInstruction is enabled",
+          "type": "boolean",
+          "title": "rubriclessInstructionEnabled"
+        },
+        "id": {
+          "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
+          "type": "string",
+          "title": "id"
+        },
+        "element": {
+          "description": "The html Element tag name",
+          "type": "string",
+          "title": "element"
+        }
+      },
+      "required": [
+        "element",
+        "id",
+        "rubriclessInstructionEnabled"
+      ]
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

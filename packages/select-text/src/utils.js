@@ -1,4 +1,4 @@
-import React from 'react';
+
 
 var createElementFromHTML = function createElementFromHTML() {
   var htmlString = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
@@ -83,15 +83,14 @@ export default (model) => {
         end: newEnd,
         // needed for getScore when tokens position is recalculated
         oldStart: token.start,
-        oldEnd: token.end
-      }
+        oldEnd: token.end,
+      },
     ];
   }, []);
-
 
   return {
     ...model,
     tokens: newTokens,
-    text: modelText
+    text: modelText,
   };
 };

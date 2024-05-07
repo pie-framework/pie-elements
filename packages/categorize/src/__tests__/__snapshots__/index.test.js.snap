@@ -11,6 +11,7 @@ exports[`categorize renders snapshot 1`] = `
     style={
       Object {
         "flexDirection": "column-reverse",
+        "gap": "8px",
       }
     }
   >
@@ -33,6 +34,7 @@ exports[`categorize renders snapshot 1`] = `
         }
         onDropChoice={[Function]}
         onRemoveChoice={[Function]}
+        rowLabels={Array []}
       />
     </div>
     <WithStyles(Choices)
@@ -45,8 +47,16 @@ exports[`categorize renders snapshot 1`] = `
           "correctResponse": Array [],
         }
       }
+      onDropChoice={[Function]}
+      onRemoveChoice={[Function]}
     />
   </div>
+  <WithStyles(AlertDialog)
+    onClose={[Function]}
+    open={false}
+    text="You've reached the limit of  responses per area. To add another response, one must first be removed."
+    title="Warning"
+  />
 </div>
 `;
 
@@ -61,6 +71,7 @@ exports[`categorize renders snapshot with rationale 1`] = `
     style={
       Object {
         "flexDirection": "column-reverse",
+        "gap": "8px",
       }
     }
   >
@@ -84,6 +95,7 @@ exports[`categorize renders snapshot with rationale 1`] = `
         }
         onDropChoice={[Function]}
         onRemoveChoice={[Function]}
+        rowLabels={Array []}
       />
     </div>
     <WithStyles(Choices)
@@ -97,6 +109,8 @@ exports[`categorize renders snapshot with rationale 1`] = `
           "rationale": "This is rationale",
         }
       }
+      onDropChoice={[Function]}
+      onRemoveChoice={[Function]}
     />
   </div>
   <WithStyles(Collapsible)
@@ -111,6 +125,12 @@ exports[`categorize renders snapshot with rationale 1`] = `
       prompt="This is rationale"
     />
   </WithStyles(Collapsible)>
+  <WithStyles(AlertDialog)
+    onClose={[Function]}
+    open={false}
+    text="You've reached the limit of  responses per area. To add another response, one must first be removed."
+    title="Warning"
+  />
 </div>
 `;
 
@@ -128,7 +148,6 @@ exports[`categorize renders snapshot with teacherInstructions 1`] = `
       prompt="These are teacher instructions"
     />
   </WithStyles(Collapsible)>
-  <br />
   <WithStyles(CorrectAnswerToggle)
     onToggle={[Function]}
     show={false}
@@ -138,6 +157,7 @@ exports[`categorize renders snapshot with teacherInstructions 1`] = `
     style={
       Object {
         "flexDirection": "column-reverse",
+        "gap": "8px",
       }
     }
   >
@@ -161,6 +181,7 @@ exports[`categorize renders snapshot with teacherInstructions 1`] = `
         }
         onDropChoice={[Function]}
         onRemoveChoice={[Function]}
+        rowLabels={Array []}
       />
     </div>
     <WithStyles(Choices)
@@ -174,7 +195,15 @@ exports[`categorize renders snapshot with teacherInstructions 1`] = `
           "teacherInstructions": "These are teacher instructions",
         }
       }
+      onDropChoice={[Function]}
+      onRemoveChoice={[Function]}
     />
   </div>
+  <WithStyles(AlertDialog)
+    onClose={[Function]}
+    open={false}
+    text="You've reached the limit of  responses per area. To add another response, one must first be removed."
+    title="Warning"
+  />
 </div>
 `;

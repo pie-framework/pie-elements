@@ -11,16 +11,16 @@ import GeneralConfigBlock from './general-config-block';
 const { Panel, toggle, radio } = settings;
 const log = debug('@pie-element:graph-lines:configure');
 
-const styles = theme => ({
+const styles = (theme) => ({
   title: {
     fontSize: '1.1rem',
     display: 'block',
     marginTop: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit
+    marginBottom: theme.spacing.unit,
   },
   content: {
-    marginTop: theme.spacing.unit * 2
-  }
+    marginTop: theme.spacing.unit * 2,
+  },
 });
 
 export class Configure extends React.Component {
@@ -29,12 +29,13 @@ export class Configure extends React.Component {
     onConfigurationChanged: PropTypes.func,
     classes: PropTypes.object,
     imageSupport: PropTypes.object,
+    uploadSoundSupport: PropTypes.object,
     model: PropTypes.object.isRequired,
-    configuration: PropTypes.object.isRequired
+    configuration: PropTypes.object.isRequired,
   };
 
   static defaultProps = {
-    classes: {}
+    classes: {},
   };
 
   constructor(props) {
@@ -43,7 +44,7 @@ export class Configure extends React.Component {
     this.defaults = JSON.parse(JSON.stringify(props.model));
 
     this.state = {
-      activeTab: 0
+      activeTab: 0,
     };
   }
 
@@ -51,7 +52,7 @@ export class Configure extends React.Component {
     this.setState({ activeTab: value });
   };
 
-  onChangeTabIndex = index => {
+  onChangeTabIndex = (index) => {
     this.setState({ activeTab: index });
   };
 
@@ -59,31 +60,31 @@ export class Configure extends React.Component {
     this.props.onModelChanged(JSON.parse(JSON.stringify(this.defaults)));
   };
 
-  onChange = graph => {
+  onChange = (graph) => {
     this.props.model.graph = { ...graph };
 
     this.props.onModelChanged(this.props.model);
   };
 
-  onRationaleChange = rationale => {
+  onRationaleChange = (rationale) => {
     const { onModelChanged, model } = this.props;
 
     onModelChanged({
       ...model,
-      rationale
+      rationale,
     });
   };
 
-  onPromptChange = prompt => {
+  onPromptChange = (prompt) => {
     const { onModelChanged, model } = this.props;
 
     onModelChanged({
       ...model,
-      prompt
+      prompt,
     });
   };
 
-  onFeedbackChange = feedback => {
+  onFeedbackChange = (feedback) => {
     const { model, onModelChanged } = this.props;
     model.feedback = feedback;
     onModelChanged(model);
@@ -96,14 +97,14 @@ export class Configure extends React.Component {
       lines: model.graph.lines.concat({
         initialView: '',
         correctLine: '',
-        label: ''
-      })
+        label: '',
+      }),
     };
 
     this.onChange(newGraph);
   };
 
-  onMultipleToggle = event => {
+  onMultipleToggle = (event) => {
     const { model, onModelChanged } = this.props;
 
     model.multiple = event.target.checked;
@@ -115,24 +116,18 @@ export class Configure extends React.Component {
     onModelChanged(model);
   };
 
-  onPartialScoringChange = partialScoring => {
-    this.props.model.partialScoring = partialScoring.map(partialScore => ({
+  onPartialScoringChange = (partialScoring) => {
+    this.props.model.partialScoring = partialScoring.map((partialScore) => ({
       numberOfCorrect: partialScore.numberOfCorrect || '',
-      scorePercentage: partialScore.scorePercentage || ''
+      scorePercentage: partialScore.scorePercentage || '',
     }));
 
     this.props.onModelChanged(this.props.model);
   };
 
   render() {
-    const {
-      classes,
-      model,
-      configuration,
-      onConfigurationChanged,
-      onModelChanged,
-      imageSupport
-    } = this.props;
+    const { classes, model, configuration, onConfigurationChanged, onModelChanged, imageSupport, uploadSoundSupport } =
+      this.props;
     const config = model.graph;
 
     const {
@@ -145,7 +140,7 @@ export class Configure extends React.Component {
       prompt = {},
       scoringType = {},
       studentInstructions = {},
-      teacherInstructions = {}
+      teacherInstructions = {},
     } = configuration || {};
     log('[render] model', model);
 
@@ -160,24 +155,17 @@ export class Configure extends React.Component {
             groups={{
               Settings: {
                 arrows: arrows.settings && toggle(arrows.label),
-                'graphTitle.enabled':
-                  graphTitle.settings && toggle(graphTitle.label, true),
+                'graphTitle.enabled': graphTitle.settings && toggle(graphTitle.label, true),
                 padding: padding.settings && toggle(padding.label),
-                labels: labels.settings && toggle(labels.label)
+                labels: labels.settings && toggle(labels.label),
               },
               Properties: {
-                teacherInstructionsEnabled:
-                  teacherInstructions.settings &&
-                  toggle(teacherInstructions.label),
+                teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
                 promptEnabled: prompt.settings && toggle(prompt.label),
-                studentInstructionsEnabled:
-                  studentInstructions.settings &&
-                  toggle(studentInstructions.label),
+                studentInstructionsEnabled: studentInstructions.settings && toggle(studentInstructions.label),
                 rationaleEnabled: rationale.settings && toggle(rationale.label),
-                scoringType:
-                  scoringType.settings &&
-                  radio(scoringType.label, ['auto', 'rubric'])
-              }
+                scoringType: scoringType.settings && radio(scoringType.label, ['auto', 'rubric']),
+              },
             }}
           />
         }
@@ -185,15 +173,11 @@ export class Configure extends React.Component {
         <div className={classes.content}>
           <Typography component="div" type="body1">
             <span>
-              This interaction asks a student to draw a line that meets specific
-              criteria. The student will draw the line by clicking on two points
-              on the graph.
+              This interaction asks a student to draw a line that meets specific criteria. The student will draw the
+              line by clicking on two points on the graph.
             </span>
             <h2>Lines</h2>
-            <span>
-              Line equations must be in y=mx+b form. Only whole number
-              coordinates can be plotted.
-            </span>
+            <span>Line equations must be in y=mx+b form. Only whole number coordinates can be plotted.</span>
           </Typography>
           <GeneralConfigBlock
             onMultipleToggle={this.onMultipleToggle}
@@ -208,22 +192,15 @@ export class Configure extends React.Component {
             promptEnabled={model && model.promptEnabled}
             onChange={this.onChange}
             imageSupport={imageSupport}
+            uploadSoundSupport={uploadSoundSupport}
           />
-          <ChartConfig
-            config={config}
-            onChange={this.onChange}
-            resetToDefaults={this.resetToDefaults}
-          />
+          <ChartConfig config={config} onChange={this.onChange} resetToDefaults={this.resetToDefaults} />
           <PartialScoringConfig
             numberOfCorrectResponses={config.lines.length}
             partialScoring={!!model.partialScoring}
             onChange={this.onPartialScoringChange}
           />
-          <FeedbackConfig
-            allowPartial={false}
-            feedback={model.feedback}
-            onChange={this.onFeedbackChange}
-          />
+          <FeedbackConfig allowPartial={false} feedback={model.feedback} onChange={this.onFeedbackChange} />
         </div>
       </layout.ConfigLayout>
     );

@@ -3,9 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import debug from 'debug';
 
-
 export default class RubricRender extends HTMLElement {
-
   constructor() {
     super();
     debug.log('constructor called');
@@ -28,9 +26,8 @@ export default class RubricRender extends HTMLElement {
 
   _render() {
     if (this._model) {
-      const el = (
-        <Rubric value={this._model}/>
-      );
+      const el = <Rubric value={this._model} />;
+
       ReactDOM.render(el, this);
     }
   }

@@ -8,16 +8,47 @@ export default {
     likertType: 'agreement',
     likertOrientation: 'horizontal',
     choices: [],
-    teacherInstructionsEnabled: true
+    teacherInstructionsEnabled: true,
   },
   configuration: {
-    teacherInstructions: {
-      settings: true,
-      label: 'Teacher Instructions'
+    baseInputConfiguration: {
+      audio: { disabled: false },
+      video: { disabled: false },
+      image: { disabled: false },
     },
     prompt: {
       settings: true,
-      label: 'Prompt'
-    }
-  }
+      label: 'Prompt',
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
+      required: false,
+    },
+    settingsPanelDisabled: false,
+    spellCheck: {
+      label: 'Spellcheck',
+      settings: false,
+      enabled: true,
+    },
+    teacherInstructions: {
+      settings: true,
+      label: 'Teacher Instructions',
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
+      required: false,
+    },
+    likertChoice: {
+      label: 'Choice',
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
+    },
+  },
 };

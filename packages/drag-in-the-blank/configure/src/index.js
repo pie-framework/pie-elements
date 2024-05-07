@@ -1,7 +1,9 @@
 import {
+  ModelUpdatedEvent,
   DeleteImageEvent,
   InsertImageEvent,
-  ModelUpdatedEvent
+  InsertSoundEvent,
+  DeleteSoundEvent,
 } from '@pie-framework/pie-configure-events';
 
 import React from 'react';
@@ -11,7 +13,7 @@ import debug from 'debug';
 import defaults from 'lodash/defaults';
 
 import sensibleDefaults from './defaults';
-import { processMarkup, createSlateMarkup } from './markupUtils'
+import { processMarkup, createSlateMarkup } from './markupUtils';
 
 const log = debug('multiple-choice:configure');
 
@@ -19,17 +21,17 @@ export default class DragInTheBlank extends HTMLElement {
   static prepareModel = (model = {}) => {
     const joinedObj = {
       ...sensibleDefaults.model,
-      ...model
+      ...model,
     };
-    const slateMarkup = model.slateMarkup ||
-      createSlateMarkup(joinedObj.markup, joinedObj.choices, joinedObj.correctResponse);
+    const slateMarkup =
+      model.slateMarkup || createSlateMarkup(joinedObj.markup, joinedObj.choices, joinedObj.correctResponse);
     const processedMarkup = processMarkup(slateMarkup);
 
     return {
       ...joinedObj,
       slateMarkup,
       markup: processedMarkup.markup,
-      correctResponse: processedMarkup.correctResponse
+      correctResponse: processedMarkup.correctResponse,
     };
   };
 
@@ -41,10 +43,10 @@ export default class DragInTheBlank extends HTMLElement {
     this.onConfigurationChanged = this.onConfigurationChanged.bind(this);
   }
 
-  set model(s) {
+  set model(m) {
     const formModel = {
-      ...s,
-      markup: `<span>${s.markup || sensibleDefaults.model.markup}</span>`
+      ...m,
+      markup: `<span>${m.markup || sensibleDefaults.model.markup}</span>`,
     };
 
     this._model = DragInTheBlank.prepareModel(formModel);
@@ -52,7 +54,37 @@ export default class DragInTheBlank extends HTMLElement {
   }
 
   set configuration(c) {
-    this._configuration = defaults(c, sensibleDefaults.configuration);
+    const newConfiguration = defaults(c, sensibleDefaults.configuration);
+
+    this._configuration = newConfiguration;
+
+    // if language:enabled is true, then the corresponding default item model should include a language value;
+    // if it is false, then the language field should be omitted from the item model.
+    // if a default item model includes a language value (e.g., en_US) and the corresponding authoring view settings have language:settings = true,
+    // then (a) language:enabled should also be true, and (b) that default language value should be represented in languageChoices[] (as a key).
+    if (newConfiguration?.language?.enabled) {
+      if (newConfiguration?.languageChoices?.options?.length) {
+        this._model.language = newConfiguration?.languageChoices.options[0].value;
+      }
+    } else if (newConfiguration.language.settings && this._model.language) {
+      this._configuration.language.enabled = true;
+
+      if (!this._configuration.languageChoices.options || !this._configuration.languageChoices.options.length) {
+        this._configuration.languageChoices.options = [];
+      }
+
+      // check if the language is already included in the languageChoices.options array
+      // and if not, then add it.
+      if (!this._configuration.languageChoices.options.find(option => option.value === this._model.language)) {
+        this._configuration.languageChoices.options.push({
+          value: this._model.language,
+          label: this._model.language,
+        });
+      }
+    } else {
+      delete this._model.language;
+    }
+
     this._render();
   }
 
@@ -87,8 +119,17 @@ export default class DragInTheBlank extends HTMLElement {
     this.dispatchEvent(new DeleteImageEvent(src, done));
   }
 
+  insertSound(handler) {
+    this.dispatchEvent(new InsertSoundEvent(handler));
+  }
+
+  onDeleteSound(src, done) {
+    this.dispatchEvent(new DeleteSoundEvent(src, done));
+  }
+
   _render() {
     log('_render');
+
     let element = React.createElement(Main, {
       model: this._model,
       configuration: this._configuration,
@@ -97,9 +138,14 @@ export default class DragInTheBlank extends HTMLElement {
       disableSidePanel: this._disableSidePanel,
       imageSupport: {
         add: this.insertImage.bind(this),
-        delete: this.onDeleteImage.bind(this)
-      }
+        delete: this.onDeleteImage.bind(this),
+      },
+      uploadSoundSupport: {
+        add: this.insertSound.bind(this),
+        delete: this.onDeleteSound.bind(this),
+      },
     });
+
     ReactDOM.render(element, this);
   }
 }

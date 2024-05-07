@@ -1,6 +1,6 @@
 import * as React from 'react';
 import AnswerGrid from '../answer-grid';
-import { shallowChild } from '@pie-lib/test-utils';
+import { shallowChild } from '@pie-lib/pie-toolbox/test-utils';
 import Radio from '@material-ui/core/Radio';
 import Checkbox from '@material-ui/core/Checkbox';
 import Typography from '@material-ui/core/Typography';
@@ -16,36 +16,41 @@ describe('AnswerGrid', () => {
       1: [true, false],
       2: [false, false],
       3: [true, false],
-      4: [false, false]
+      4: [false, false],
     },
     view: false,
     showCorrect: false,
     disabled: false,
     onAnswerChange: jest.fn(),
     choiceMode: 'radio',
-    rows: [{
-      id: 1,
-      title: 'Question Text 1',
-      values: [false, false]
-    }, {
-      id: 2,
-      title: 'Question Text 2',
-      values: [false, false]
-    }, {
-      id: 3,
-      title: 'Question Text 3',
-      values: [false, false]
-    }, {
-      id: 4,
-      title: 'Question Text 4',
-      values: [false, false]
-    }],
+    rows: [
+      {
+        id: 1,
+        title: 'Question Text 1',
+        values: [false, false],
+      },
+      {
+        id: 2,
+        title: 'Question Text 2',
+        values: [false, false],
+      },
+      {
+        id: 3,
+        title: 'Question Text 3',
+        values: [false, false],
+      },
+      {
+        id: 4,
+        title: 'Question Text 4',
+        values: [false, false],
+      },
+    ],
     headers: ['Column 1', 'Column 2', 'Column 3'],
     answers: {
       1: [false, false],
       2: [false, false],
       3: [true, false],
-      4: [false, false]
+      4: [false, false],
     },
   };
 
@@ -76,7 +81,7 @@ describe('AnswerGrid', () => {
       allowFeedback: true,
       showCorrect: true,
       disabled: true,
-      view: false
+      view: false,
     });
 
     expect(component.instance().answerIsCorrect(1, false, 1)).toEqual(false);
@@ -90,7 +95,7 @@ describe('AnswerGrid', () => {
       allowFeedback: true,
       showCorrect: true,
       disabled: true,
-      view: false
+      view: false,
     });
 
     expect(component.instance().answerIsCorrect(1, false, 1)).toEqual(false);
@@ -104,12 +109,11 @@ describe('AnswerGrid', () => {
       allowFeedback: true,
       showCorrect: true,
       disabled: true,
-      view: false
+      view: false,
     });
 
     expect(component.instance().answerIsCorrect(1, false, 1)).toEqual(false);
     expect(component.instance().answerIsCorrect(3, true, 0)).toEqual(true);
     expect(component.find(Radio).at(0).props().className.includes('incorrect')).toEqual(true);
   });
-
 });

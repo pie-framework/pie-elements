@@ -6,14 +6,14 @@ describe('InputHeader', () => {
   let w;
   let onChange = jest.fn();
   let onDelete = jest.fn();
-  const wrapper = extras => {
+  const wrapper = (extras) => {
     const defaults = {
       classes: { inputHeader: 'inputHeader', editor: 'editor' },
       className: 'className',
       onChange,
-      onDelete
+      onDelete,
     };
-    const props = { ...defaults, ...extras };
+    const props = { ...defaults, ...extras, configuration: {} };
     return shallow(<InputHeader {...props} />);
   };
   describe('snapshot', () => {

@@ -4,19 +4,16 @@ import TextField from '@material-ui/core/TextField';
 import { withStyles } from '@material-ui/core/styles';
 import cloneDeep from 'lodash/cloneDeep';
 import debounce from 'lodash/debounce';
-import { Tokenizer } from '@pie-lib/text-select';
-import {
-  InputContainer,
-  NumberTextField,
-  FeedbackConfig,
-  settings,
-  layout
-} from '@pie-lib/config-ui';
+import { Tokenizer } from '@pie-lib/pie-toolbox/text-select';
+import { InputContainer, NumberTextField, FeedbackConfig, settings, layout } from '@pie-lib/pie-toolbox/config-ui';
 import Chip from '@material-ui/core/Chip';
+import Info from '@material-ui/icons/Info';
 import debug from 'debug';
-import EditableHtml from '@pie-lib/editable-html';
+import { EditableHtml } from '@pie-lib/pie-toolbox/editable-html';
+import Tooltip from '@material-ui/core/Tooltip';
+import { generateValidationMessage } from './utils';
 
-const { Panel, toggle, radio } = settings;
+const { Panel, toggle, radio, dropdown } = settings;
 
 const log = debug('@pie-element:select-text:configure');
 
@@ -29,8 +26,9 @@ export class Design extends React.Component {
     onConfigurationChanged: PropTypes.func.isRequired,
     imageSupport: PropTypes.shape({
       add: PropTypes.func.isRequired,
-      delete: PropTypes.func.isRequired
-    })
+      delete: PropTypes.func.isRequired,
+    }),
+    uploadSoundSupport: PropTypes.object,
   };
 
   static defaultProps = {};
@@ -41,7 +39,7 @@ export class Design extends React.Component {
     const { model } = this.props;
 
     this.state = {
-      text: (model && model.text) || ''
+      text: (model && model.text) || '',
     };
   }
 
@@ -50,34 +48,26 @@ export class Design extends React.Component {
 
     if (model && model.text) {
       this.setState({
-        text: model.text
+        text: model.text,
       });
     }
   }
 
-  updateText = debounce(val => {
-    this.apply(u => {
+  updateText = debounce((val) => {
+    this.apply((u) => {
       u.text = val;
       u.tokens = [];
     });
   }, 200);
 
-  changeText = event => {
-    const value = event.target.value;
-    const preparedText = value;
-
-    this.setState({
-      text: value
-    });
-    this.updateText(preparedText);
-  };
+  changeText = (event) => this.updateText(event.target.value);
 
   changeTokens = (tokens, mode) => {
-    this.apply(u => {
+    this.apply((u) => {
       u.tokens = tokens;
       u.mode = mode;
 
-      const correctTokenCount = tokens.filter(t => t.correct).length;
+      const correctTokenCount = tokens.filter((t) => t.correct).length;
       const max = isFinite(u.maxSelections) ? u.maxSelections : 0;
 
       u.maxSelections = Math.max(max, correctTokenCount);
@@ -85,28 +75,30 @@ export class Design extends React.Component {
   };
 
   changeMaxSelections = (event, max) => {
-    this.apply(u => (u.maxSelections = max));
+    this.apply((u) => (u.maxSelections = max));
   };
 
-  apply = fn => {
+  apply = (fn) => {
     const { onModelChanged, model } = this.props;
     const update = cloneDeep(model);
+
     fn(update);
     onModelChanged(update);
   };
 
-  changeFeedback = feedback => {
-    this.apply(u => (u.feedback = feedback));
+  changeFeedback = (feedback) => {
+    this.apply((u) => (u.feedback = feedback));
   };
 
-  changePartialScoring = partialScoring => {
+  changePartialScoring = (partialScoring) => {
     const { onModelChanged, model } = this.props;
     const update = cloneDeep(model);
     update.partialScoring = partialScoring;
+
     onModelChanged(update);
   };
 
-  onPromptChanged = prompt => {
+  onPromptChanged = (prompt) => {
     const { onModelChanged, model } = this.props;
     const update = cloneDeep(model);
 
@@ -114,7 +106,7 @@ export class Design extends React.Component {
     onModelChanged(update);
   };
 
-  onTeacherInstructionsChanged = teacherInstructions => {
+  onTeacherInstructionsChanged = (teacherInstructions) => {
     const { onModelChanged, model } = this.props;
     const update = cloneDeep(model);
 
@@ -122,190 +114,210 @@ export class Design extends React.Component {
     onModelChanged(update);
   };
 
-  onRationaleChanged = rationale => {
+  onRationaleChanged = (rationale) => {
     const { onModelChanged, model } = this.props;
 
-    onModelChanged({
-      ...model,
-      rationale
-    });
+    onModelChanged({ ...model, rationale });
   };
 
   render() {
     const { text: textValue } = this.state;
+    const { classes, configuration, imageSupport, model, onConfigurationChanged, onModelChanged, uploadSoundSupport } =
+      this.props;
     const {
-      model,
-      classes,
-      imageSupport,
-      onModelChanged,
-      configuration,
-      onConfigurationChanged
-    } = this.props;
-    const {
+      baseInputConfiguration = {},
+      correctAnswer = {},
+      contentDimensions = {},
+      feedback = {},
+      highlightChoices = {},
+      mode = {},
+      partialScoring = {},
       prompt = {},
+      rationale = {},
+      selectionCount = {},
+      selections = {},
+      settingsPanelDisabled,
+      scoringType = {},
+      spellCheck = {},
+      studentInstructions = {},
+      teacherInstructions = {},
       text = {},
       tokens = {},
-      mode = {},
-      feedback = {},
-      partialScoring = {},
-      selections = {},
-      selectionCount = {},
-      correctAnswer = {},
-      teacherInstructions = {},
-      studentInstructions = {},
-      rationale = {},
-      scoringType = {},
-      highlightChoices = {}
+      maxImageWidth = {},
+      maxImageHeight = {},
+      withRubric = {},
+      mathMlOptions = {},
+      language = {},
+      languageChoices = {},
     } = configuration || {};
     const {
-      teacherInstructionsEnabled, promptEnabled, rationaleEnabled, feedbackEnabled
+      errors,
+      feedbackEnabled,
+      promptEnabled,
+      rationaleEnabled,
+      spellCheckEnabled,
+      teacherInstructionsEnabled,
+      toolbarEditorPosition,
     } = model || {};
-    const toolbarOpts = {};
 
-    switch (model.toolbarEditorPosition) {
-      case 'top':
-        toolbarOpts.position = 'top';
-        break;
-      default:
-        toolbarOpts.position = 'bottom';
-        break;
-    }
+    const {
+      prompt: promptError,
+      rationale: rationaleError,
+      selectionsError,
+      teacherInstructions: teacherInstructionsError,
+      tokensError,
+    } = errors || {};
+    const validationMessage = generateValidationMessage(configuration);
+
+    const defaultImageMaxWidth = maxImageWidth && maxImageWidth.prompt;
+    const defaultImageMaxHeight = maxImageHeight && maxImageHeight.prompt;
+
     let { tokens: tokensModel } = model;
     tokensModel = tokensModel || [];
 
+    const toolbarOpts = {
+      position: toolbarEditorPosition === 'top' ? 'top' : 'bottom',
+    };
+
     log('[render] maxSelections:', model.maxSelections);
+
+    const panelSettings = {
+      partialScoring: partialScoring.settings && toggle(partialScoring.label),
+      highlightChoices: highlightChoices.settings && toggle(highlightChoices.label),
+      feedbackEnabled: feedback.settings && toggle(feedback.label),
+      'language.enabled': language.settings && toggle(language.label, true),
+      language: language.settings && language.enabled && dropdown(languageChoices.label, languageChoices.options),
+    };
+
+    const panelProperties = {
+      teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
+      studentInstructionsEnabled: studentInstructions.settings && toggle(studentInstructions.label),
+      promptEnabled: prompt.settings && toggle(prompt.label),
+      rationaleEnabled: rationale.settings && toggle(rationale.label),
+      spellCheckEnabled: spellCheck.settings && toggle(spellCheck.label),
+      scoringType: scoringType.settings && radio(scoringType.label, ['auto', 'rubric']),
+      rubricEnabled: withRubric?.settings && toggle(withRubric?.label),
+    };
+
+    const getPluginProps = (props = {}) => ({
+      ...baseInputConfiguration,
+      ...props,
+    });
 
     return (
       <layout.ConfigLayout
+        dimensions={contentDimensions}
+        hideSettings={settingsPanelDisabled}
         settings={
           <Panel
             model={model}
             configuration={configuration}
-            onChangeModel={model => onModelChanged(model)}
+            onChangeModel={(model) => onModelChanged(model)}
             onChangeConfiguration={onConfigurationChanged}
             groups={{
-              Settings: {
-                partialScoring:
-                  partialScoring.settings && toggle(partialScoring.label),
-                highlightChoices:
-                  highlightChoices.settings && toggle(highlightChoices.label),
-                feedbackEnabled:
-                  feedback.settings && toggle(feedback.label)
-              },
-              Properties: {
-                teacherInstructionsEnabled:
-                  teacherInstructions.settings &&
-                  toggle(teacherInstructions.label),
-                studentInstructionsEnabled:
-                  studentInstructions.settings &&
-                  toggle(studentInstructions.label),
-                promptEnabled: prompt.settings && toggle(prompt.label),
-                rationaleEnabled: rationale.settings && toggle(rationale.label),
-                scoringType:
-                  scoringType.settings &&
-                  radio(scoringType.label, ['auto', 'rubric'])
-              }
+              Settings: panelSettings,
+              Properties: panelProperties,
             }}
           />
         }
       >
-        <div className={classes.container}>
-          {teacherInstructionsEnabled && (
-            <InputContainer
-              label={teacherInstructions.label}
-              className={classes.promptHolder}
-            >
-              <EditableHtml
-                className={classes.prompt}
-                markup={model.teacherInstructions || ''}
-                onChange={this.onTeacherInstructionsChanged}
-                imageSupport={imageSupport}
-                nonEmpty={false}
-                toolbarOpts={toolbarOpts}
-              />
-            </InputContainer>
-          )}
+        {teacherInstructionsEnabled && (
+          <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
+            <EditableHtml
+              className={classes.prompt}
+              markup={model.teacherInstructions || ''}
+              onChange={this.onTeacherInstructionsChanged}
+              imageSupport={imageSupport}
+              nonEmpty={false}
+              error={teacherInstructionsError}
+              toolbarOpts={toolbarOpts}
+              pluginProps={getPluginProps(configuration?.teacherInstructions?.inputConfiguration)}
+              spellCheck={spellCheckEnabled}
+              maxImageWidth={(maxImageWidth && maxImageWidth.teacherInstructions) || defaultImageMaxWidth}
+              maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
+              uploadSoundSupport={uploadSoundSupport}
+              languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+              mathMlOptions={mathMlOptions}
+            />
+            {teacherInstructionsError && <div className={classes.errorText}>{teacherInstructionsError}</div>}
+          </InputContainer>
+        )}
 
-          {promptEnabled && (
-            <InputContainer
-              label={prompt.label || ''}
-              className={classes.promptHolder}
-            >
-              <EditableHtml
-                className={classes.prompt}
-                markup={model.prompt}
-                onChange={this.onPromptChanged}
-                imageSupport={imageSupport}
-                toolbarOpts={toolbarOpts}
-              />
-            </InputContainer>
-          )}
+        {promptEnabled && (
+          <InputContainer label={prompt.label || ''} className={classes.promptHolder}>
+            <EditableHtml
+              className={classes.prompt}
+              markup={model.prompt}
+              onChange={this.onPromptChanged}
+              imageSupport={imageSupport}
+              error={promptError}
+              toolbarOpts={toolbarOpts}
+              pluginProps={getPluginProps(configuration?.prompt?.inputConfiguration)}
+              spellCheck={spellCheckEnabled}
+              maxImageWidth={defaultImageMaxWidth}
+              maxImageHeight={defaultImageMaxHeight}
+              uploadSoundSupport={uploadSoundSupport}
+              languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+              mathMlOptions={mathMlOptions}
+            />
+            {promptError && <div className={classes.errorText}>{promptError}</div>}
+          </InputContainer>
+        )}
 
-          {rationaleEnabled && (
-            <InputContainer
-              label={rationale.label || ''}
-              className={classes.promptHolder}
-            >
-              <EditableHtml
-                className={classes.prompt}
-                markup={model.rationale || ''}
-                onChange={this.onRationaleChanged}
-                imageSupport={imageSupport}
-                toolbarOpts={toolbarOpts}
-              />
-            </InputContainer>
-          )}
-
-          {text.settings && (
+        {text.settings && (
+          <InputContainer label={text.label || ''} className={classes.promptHolder}>
             <TextField
-              label={text.label}
               className={classes.input}
               multiline
-              value={textValue}
+              defaultValue={textValue}
               onChange={this.changeText}
+              spellCheck={spellCheckEnabled}
             />
-          )}
+          </InputContainer>
+        )}
 
-          {tokens.settings && (
-            <InputContainer
-              label={tokens.label || ''}
-              className={classes.tokenizerContainer}
+        {tokens.settings && (
+          <InputContainer label={tokens.label || ''} className={classes.tokenizerContainer}>
+            <Tooltip
+              classes={{ tooltip: classes.tooltip }}
+              disableFocusListener
+              disableTouchListener
+              placement={'right'}
+              title={validationMessage}
             >
-              <Tokenizer
-                className={classes.tokenizer}
-                text={model.text}
-                tokens={tokensModel}
-                onChange={this.changeTokens}
-              />
-            </InputContainer>
-          )}
+              <Info fontSize={'small'} color={'primary'} style={{ position: 'absolute', left: '48px', top: '-3px' }} />
+            </Tooltip>
 
-          {mode.settings && (
-            <Chip
-              label={`${mode.label}: ${model.mode ? model.mode : 'None'}`}
-              className={classes.chip}
+            <Tokenizer
+              className={classes.tokenizer}
+              text={model.text}
+              tokens={tokensModel}
+              onChange={this.changeTokens}
             />
+          </InputContainer>
+        )}
+        {tokensError && <div className={classes.errorText}>{tokensError}</div>}
+        {selectionsError && <div className={classes.errorText}>{selectionsError}</div>}
+
+        <div className={classes.tokensDetails}>
+          {mode.settings && (
+            <Chip label={`${mode.label}: ${model.mode ? model.mode : 'None'}`} className={classes.chip} />
           )}
 
           {selections.settings && (
-            <Chip
-              label={`${selections.label}: ${tokensModel.length}`}
-              className={classes.chip}
-            />
+            <Chip label={`${selections.label}: ${tokensModel.length}`} className={classes.chip} />
           )}
 
           {correctAnswer.settings && (
             <Chip
-              label={`${correctAnswer.label}: ${
-                tokensModel.filter(t => t.correct).length
-              }`}
+              label={`${correctAnswer.label}: ${tokensModel.filter((t) => t.correct).length}`}
               className={classes.chip}
             />
           )}
 
           {selectionCount.settings && (
             <NumberTextField
-              min={tokensModel.filter(t => t.correct).length || 0}
+              min={tokensModel.filter((t) => t.correct).length || 0}
               label={`${selectionCount.label} (0:any)`}
               max={tokensModel.length}
               value={model.maxSelections}
@@ -313,23 +325,38 @@ export class Design extends React.Component {
               className={classes.numberField}
             />
           )}
-
-          {feedbackEnabled && (
-            <FeedbackConfig
-              feedback={model.feedback}
-              onChange={this.changeFeedback}
-              toolbarOpts={toolbarOpts}
-            />
-          )}
         </div>
+
+        {rationaleEnabled && (
+          <InputContainer label={rationale.label || ''} className={classes.promptHolder}>
+            <EditableHtml
+              className={classes.prompt}
+              markup={model.rationale || ''}
+              onChange={this.onRationaleChanged}
+              imageSupport={imageSupport}
+              error={rationaleError}
+              toolbarOpts={toolbarOpts}
+              pluginProps={getPluginProps(configuration?.rationale?.inputConfiguration)}
+              spellCheck={spellCheckEnabled}
+              maxImageWidth={(maxImageWidth && maxImageWidth.rationale) || defaultImageMaxWidth}
+              maxImageHeight={(maxImageHeight && maxImageHeight.rationale) || defaultImageMaxHeight}
+              uploadSoundSupport={uploadSoundSupport}
+              languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+              mathMlOptions={mathMlOptions}
+            />
+            {rationaleError && <div className={classes.errorText}>{rationaleError}</div>}
+          </InputContainer>
+        )}
+
+        {feedbackEnabled && (
+          <FeedbackConfig feedback={model.feedback} onChange={this.changeFeedback} toolbarOpts={toolbarOpts} />
+        )}
       </layout.ConfigLayout>
     );
   }
 }
-export default withStyles(theme => ({
-  container: {
-    paddingTop: theme.spacing.unit
-  },
+
+export default withStyles((theme) => ({
   tokenizerContainer: {
     paddingRight: 0,
     marginRight: 0,
@@ -340,36 +367,49 @@ export default withStyles(theme => ({
       right: 0,
       height: '1px',
       content: '""',
-      backgroundColor: theme.palette.primary.main
+      backgroundColor: theme.palette.primary.main,
     },
-    marginBottom: theme.spacing.unit
+    marginBottom: theme.spacing.unit,
   },
   chip: {
-    marginRight: theme.spacing.unit * 2
+    marginTop: theme.spacing.unit / 2,
+    marginRight: theme.spacing.unit * 2,
   },
   input: {
     width: '100%',
-    paddingBottom: theme.spacing.unit * 3
   },
   tokenizer: {
-    marginTop: theme.spacing.unit * 2
+    marginTop: theme.spacing.unit * 2,
   },
   mainOpts: {
     width: '100%',
     justifyContent: 'space-between',
     display: 'flex',
-    alignItems: 'baseline'
+    alignItems: 'baseline',
   },
   promptHolder: {
     width: '100%',
-    paddingBottom: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit * 2
-  },
-  prompt: {
     paddingTop: theme.spacing.unit * 2,
-    width: '100%'
+    marginBottom: theme.spacing.unit * 2,
+  },
+  tokensDetails: {
+    display: 'flex',
+    alignItems: 'center',
+    flexWrap: 'wrap',
+    marginBottom: theme.spacing.unit * 2.5,
   },
   numberField: {
-    width: '180px'
-  }
+    width: '180px',
+    margin: `${theme.spacing.unit / 2}px auto 0`,
+  },
+  tooltip: {
+    fontSize: theme.typography.fontSize - 2,
+    whiteSpace: 'pre',
+    maxWidth: '500px',
+  },
+  errorText: {
+    fontSize: theme.typography.fontSize - 2,
+    color: theme.palette.error.main,
+    paddingTop: theme.spacing.unit,
+  },
 }))(Design);

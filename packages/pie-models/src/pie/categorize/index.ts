@@ -1,8 +1,15 @@
-import {PromptConfig} from '../../PromptConfig';
-import {PieModel} from '../../PieModel';
+import { PieModel } from '../../PieModel';
 import { CommonConfigSettings } from '../../CommonConfigSettings';
 import { ComplexFeedbackType } from '../../Feedback';
-import { ConfigureProp } from '../ConfigurationProp';
+import {
+  ConfigureLanguageOptionsProp,
+  ConfigureMathMLProp,
+  ConfigureProp,
+  EditableHtmlConfigureProp,
+  EditableHtmlPluginConfigure,
+  ConfigurePropWithEnabled,
+  EditableHtmlPluginConfigureRequired,
+} from '../ConfigurationProp';
 
 interface CategoryChoice {
   /** Identifier for the choice */
@@ -19,14 +26,14 @@ interface CategoryChoice {
 }
 
 interface Category {
-    /** Identifier for the category */
-    id: string;
+  /** Identifier for the category */
+  id: string;
 
-    /** The label to display with the category. */
-    label: string;
+  /** The label to display with the category. */
+  label: string;
 
-    /** The choices presented in this category */
-    choices: CategoryChoice[];
+  /** The choices presented in this category */
+  choices: CategoryChoice[];
 }
 
 type AlternateResponse = string[];
@@ -40,14 +47,13 @@ interface CategoryCorrectResponse {
 
   /** Array of alternatives correct choices */
   alternateResponses?: AlternateResponse[];
-
 }
 
 enum ChoicesPosition {
   above = 'above',
   below = 'below',
   left = 'left',
-  right = 'right'
+  right = 'right',
 }
 
 /**
@@ -55,6 +61,8 @@ enum ChoicesPosition {
  * @additionalProperties false
  */
 export interface CategorizePie extends PieModel {
+  /** Indicates if author has the possibility to set maxChoicesPerCategory */
+  allowMaxChoicesPerCategory: boolean;
 
   /** The available choices */
   choices: CategoryChoice[];
@@ -82,12 +90,6 @@ export interface CategorizePie extends PieModel {
   /**  Indicates if the prompt is enabled */
   promptEnabled?: boolean;
 
-  /**
-   * Indicates if the choice, after it is dragged into a category, should be removed from the choices
-   * area or should remain in place.
-   */
-  removeTilesAfterPlacing?: boolean;
-
   /** The categories in which choices may be placed */
   categories: Category[];
 
@@ -96,6 +98,9 @@ export interface CategorizePie extends PieModel {
 
   /** Feedback configuration */
   feedback?: ComplexFeedbackType;
+
+  /** Indicates the maximum number of choices from a category */
+  maxChoicesPerCategory: number;
 
   /** Indicates the value for rationale */
   rationale?: string;
@@ -109,9 +114,11 @@ export interface CategorizePie extends PieModel {
   /** Indicates if Rationale are enabled */
   rationaleEnabled: boolean;
 
+  /** Indicates if spellcheck is enabled for the author. Default value is true */
+  spellCheckEnabled: boolean;
+
   /** Indicates if Student Instructions are enabled */
   studentInstructionsEnabled: boolean;
-
   /** Indicates if Teacher Instructions are enabled */
   teacherInstructionsEnabled: boolean;
 
@@ -123,13 +130,47 @@ export interface CategorizePie extends PieModel {
    * @default: 'bottom'
    */
   toolbarEditorPosition?: 'bottom' | 'top';
+
+  /** Indicates if Rubric is enabled */
+  rubricEnabled: boolean;
+
+  /** Indicates the language of the component
+   * Supported options: en, es, en_US, en-US, es_ES, es-ES, es_MX, es-MX
+   */
+  language?: string;
+}
+
+interface ConfigureMaxImageDimensionsProp {
+  /** Indicates the max dimension for images in teacher instructions */
+  teacherInstructions?: number;
+
+  /** Indicates the max dimension for images in prompt - this is also the default dimension for all other input fields if it's not specified */
+  prompt?: number;
+
+  /** Indicates the max dimension for images in rationale */
+  rationale?: number;
+
+  /** Indicates the max dimension for images in choices */
+  choices?: number;
+
+  /** Indicates the max dimension for images in row labels */
+  rowLabel?: number;
+
+  /** Indicates the max dimension for images in category labels */
+  categoryLabel?: number;
 }
 
 /**
  * Config Object for @pie-elements/categorize
  * @additionalProperties false
  */
-export interface CategorizeConfigure extends PromptConfig ,CommonConfigSettings {
+export interface CategorizeConfigure extends CommonConfigSettings {
+  /**
+   * Base editable html input configuration regarding plugins that are enabled/disabled
+   * E.g. audio, video, image
+   */
+  baseInputConfiguration?: EditableHtmlConfigureProp;
+
   /**
    * Partial Scoring configuration
    */
@@ -138,12 +179,22 @@ export interface CategorizeConfigure extends PromptConfig ,CommonConfigSettings 
   /**
    * Rationale configuration
    */
-  rationale?: ConfigureProp;
+  rationale?: EditableHtmlPluginConfigureRequired;
+
+  /**
+   * Configuration for the author's spellcheck
+   */
+  spellCheck?: ConfigureProp;
 
   /**
    * Scoring Type configuration
    */
   scoringType?: ConfigureProp;
+
+  /**
+   * Indicates if the settings panel is not available
+   */
+  settingsPanelDisabled?: boolean;
 
   /**
    * Student Instructions configuration
@@ -153,6 +204,77 @@ export interface CategorizeConfigure extends PromptConfig ,CommonConfigSettings 
   /**
    * Teacher Instructions configuration
    */
-  teacherInstructions?: ConfigureProp;
-}
+  teacherInstructions?: EditableHtmlPluginConfigureRequired;
 
+  /**
+   * Configuration for the prompt
+   */
+  prompt?: EditableHtmlPluginConfigureRequired;
+
+  /**
+   * Configuration for the headers
+   */
+  headers?: EditableHtmlPluginConfigure;
+
+  /**
+   * Configuration for the row labels
+   */
+  rowLabels?: EditableHtmlPluginConfigure;
+
+  /**
+   * Minimum number of choices
+   */
+  minChoices?: number;
+
+  /**
+   * Maximum number of choices
+   */
+  maxChoices?: number;
+
+  /**
+   * Position of the choices
+   */
+  choicesPosition?: ConfigureProp;
+
+  /** Configuration for editable-html */
+  mathMlOptions?: ConfigureMathMLProp;
+
+  /**
+   * Maximum number of categories
+   */
+  maxCategories?: number;
+
+  /**
+   *  Minimum value of categories per row
+   */
+  minCategoriesPerRow?: number;
+
+  /**
+   * Maximum image width for input fields
+   */
+  maxImageWidth?: ConfigureMaxImageDimensionsProp;
+
+  /**
+   * Maximum image height for input fields
+   */
+  maxImageHeight?: ConfigureMaxImageDimensionsProp;
+
+  /**
+   * Rubric configuration - only relevant in environments that use pie-player-components
+   */
+  withRubric?: ConfigureProp;
+
+  /**
+   * Language configuration
+   */
+  language?: ConfigurePropWithEnabled;
+
+  /**
+   * Language choices configuration
+   * Only available if language is enabled
+   */
+  languageChoices?: {
+    label: string;
+    options: ConfigureLanguageOptionsProp[];
+  };
+}

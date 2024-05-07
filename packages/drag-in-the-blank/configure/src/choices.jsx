@@ -1,68 +1,57 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import EditableHtml from '@pie-lib/editable-html';
-import { renderMath } from '@pie-lib/math-rendering';
+import { EditableHtml } from '@pie-lib/pie-toolbox/editable-html';
+import { renderMath } from '@pie-lib/pie-toolbox/math-rendering-accessible';
 import find from 'lodash/find';
 import Button from '@material-ui/core/Button';
 import Choice from './choice';
 import { choiceIsEmpty } from './markupUtils';
 import { withStyles } from '@material-ui/core/styles';
-import Dialog from '@material-ui/core/Dialog';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import DialogActions from '@material-ui/core/DialogActions';
+import { AlertDialog } from '@pie-lib/pie-toolbox/config-ui';
 
-window.renMath = renderMath;
-
-const InfoDialog = ({ open, title, onOk }) => (
-  <Dialog open={open}>
-    <DialogTitle>{title || ''}</DialogTitle>
-    <DialogActions>
-      {onOk && (
-        <Button onClick={onOk} color="primary">
-          OK
-        </Button>
-      )}
-    </DialogActions>
-  </Dialog>
-);
-
-InfoDialog.propTypes = {
-  open: PropTypes.bool,
-  onOk: PropTypes.func,
-  title: PropTypes.string
-};
-
-const styles = theme => ({
+const styles = (theme) => ({
   design: {
-    marginTop: theme.spacing.unit * 2
+    display: 'flex',
+    flexDirection: 'column',
+    marginBottom: theme.spacing.unit * 1.5,
+  },
+  addButton: {
+    marginLeft: 'auto',
   },
   altChoices: {
     alignItems: 'flex-start',
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'space-evenly',
-    padding: '20px 0 0 0',
+    marginTop: theme.spacing.unit,
+
     '& > *': {
-      marginBottom: '20px'
-    }
-  }
+      margin: theme.spacing.unit,
+    },
+  },
+  errorText: {
+    fontSize: theme.typography.fontSize - 2,
+    color: theme.palette.error.main,
+    paddingBottom: theme.spacing.unit * 2,
+  },
 });
 
 export class Choices extends React.Component {
   static propTypes = {
     duplicates: PropTypes.bool,
+    error: PropTypes.string,
     model: PropTypes.object.isRequired,
     onChange: PropTypes.func.isRequired,
     classes: PropTypes.object.isRequired,
-    toolbarOpts: PropTypes.object
+    toolbarOpts: PropTypes.object,
+    pluginProps: PropTypes.object,
+    maxChoices: PropTypes.number,
+    uploadSoundSupport: PropTypes.object,
   };
 
-  state = {
-    dialog: {
-      open: false
-    }
-  };
+  state = { warning: { open: false } };
+  preventDone = false;
 
   componentDidMount() {
     this.rerenderMath();
@@ -81,104 +70,115 @@ export class Choices extends React.Component {
     const domNode = ReactDOM.findDOMNode(this);
 
     renderMath(domNode);
-  }
+  };
 
   onChoiceChanged = (prevValue, val, key) => {
     const { onChange, model } = this.props;
     const { choices, correctResponse, alternateResponses } = model;
-    const duplicatedValue = (choices || []).find(c => c.value === val && c.id !== key);
+    const duplicatedValue = (choices || []).find((c) => c.value === val && c.id !== key);
 
     // discard the new added choice or the changes if the choice would be a duplicate to one that already exists
     if (duplicatedValue) {
       if (prevValue === '') {
         // remove the new added choice from choices
-        const newChoices = (choices || []).filter(c => c.id !== key);
+        const newChoices = (choices || []).filter((c) => c.id !== key);
 
         onChange(newChoices);
       }
 
       this.setState({
-        dialog: {
+        warning: {
           open: true,
-          message: 'Identical answer choices are not allowed and the changes will be discarded',
-          onOk: () => this.setState({ dialog: { open: false }})
-        }
+          text: 'Identical answer choices are not allowed and the changes will be discarded.',
+        },
       });
 
       return;
     }
 
-    const newChoices = choices
-      ? choices.map(c => {
-        if (c.id === key) {
-          return { ...c, value: val };
-        }
+    const newChoices = choices?.map((choice) => (choice.id === key ? { ...choice, value: val } : choice)) || [];
 
-        return c;
-      })
-      : [];
-
-    if (choiceIsEmpty({ value: val })) {
-      // if the edited content is empty, its usage has to be searched in the correct response definitions
-      let usedForResponse = false;
-
-      if (correctResponse) {
-        Object.keys(correctResponse).forEach(responseKey => {
-          if (correctResponse[responseKey] === key) {
-            usedForResponse = true;
-          }
-        });
-      }
-
-      if (alternateResponses) {
-        Object.values(alternateResponses).forEach(alternate => {
-          if (alternate.indexOf(key) >= 0) {
-            usedForResponse = true;
-          }
-        });
-      }
-
-      if (usedForResponse) {
-        alert('Answer choices cannot be blank.');
-      } else {
-        if (!choiceIsEmpty({ value: prevValue })) {
-          // if the previous value was not empty, it means that the choice can be deleted
-          const newChoicesWithoutTheEmptyOne = newChoices.filter(choice => choice.id !== key);
-
-          onChange(newChoicesWithoutTheEmptyOne);
-        } else {
-          onChange(newChoices);
-        }
-      }
-    } else {
+    if (!choiceIsEmpty({ value: val })) {
       onChange(newChoices);
+
+      return;
     }
-  };
 
-  onChoiceFocus = id => this.setState({
-    focusedEl: id
-  });
+    // if the edited content is empty, its usage has to be searched in the correct response definitions
+    let usedForResponse = false;
 
-  onAddChoice = () => {
-    const { model: { choices: oldChoices }, onChange } = this.props;
+    if (correctResponse) {
+      Object.keys(correctResponse).forEach((responseKey) => {
+        if (correctResponse[responseKey] === key) {
+          usedForResponse = true;
+        }
+      });
+    }
+
+    if (alternateResponses && !usedForResponse) {
+      Object.values(alternateResponses).forEach((alternate) => {
+        if (alternate.indexOf(key) >= 0) {
+          usedForResponse = true;
+        }
+      });
+    }
+
+    if (usedForResponse) {
+      this.setState({
+        warning: {
+          open: true,
+          text: 'Answer choices cannot be blank and the changes will be discarded.',
+        },
+      });
+
+      return;
+    }
+
+    const newChoicesWithoutTheEmptyOne = newChoices.filter((choice) => choice.id !== key);
+
+    onChange(newChoicesWithoutTheEmptyOne);
 
     this.setState({
-      focusedEl: `${oldChoices.length}`
-    }, () => {
-      onChange([
-          ...oldChoices,
-          {
-            id: `${oldChoices.length}`,
-            value: ''
-          }
-        ]
-      );
+      warning: {
+        open: true,
+        text: 'Answer choices cannot be blank.',
+      },
     });
   };
 
-  handleChoiceRemove = id => {
-    const { onChange, model: { choices } } = this.props;
-    const newChoices = choices.filter(c => c.id !== id);
+  onChoiceFocus = (id) =>
+    this.setState({
+      focusedEl: id,
+    });
+
+  onAddChoice = () => {
+    const {
+      model: { choices: oldChoices },
+      onChange,
+    } = this.props;
+
+    this.setState(
+      {
+        focusedEl: `${oldChoices.length}`,
+      },
+      () => {
+        onChange([
+          ...oldChoices,
+          {
+            id: `${oldChoices.length}`,
+            value: '',
+          },
+        ]);
+      },
+    );
+  };
+
+  onChoiceRemove = (id) => {
+    const {
+      onChange,
+      model: { choices },
+    } = this.props;
+    const newChoices = (choices || []).filter((choice) => choice.id !== id);
 
     onChange(newChoices);
   };
@@ -186,7 +186,7 @@ export class Choices extends React.Component {
   getVisibleChoices = () => {
     const {
       duplicates,
-      model: { choices, correctResponse }
+      model: { choices, correctResponse },
     } = this.props;
 
     if (!choices) {
@@ -198,85 +198,102 @@ export class Choices extends React.Component {
     }
 
     // if duplicates not allowed, remove the choices that are used to define the correct response
-    return choices.filter(choice => !find(correctResponse, v => v === choice.id));
+    return choices.filter((choice) => !find(correctResponse, (v) => v === choice.id));
   };
 
   render() {
-    const { focusedEl, dialog } = this.state;
+    const { focusedEl, warning } = this.state;
     const {
       classes,
       duplicates,
-      toolbarOpts
+      error,
+      mathMlOptions = {},
+      maxChoices,
+      model: { choices },
+      toolbarOpts,
+      uploadSoundSupport,
+      imageSupport = {},
+      pluginProps = {},
     } = this.props;
     const visibleChoices = this.getVisibleChoices() || [];
 
     return (
       <div className={classes.design}>
-        <InfoDialog
-          open={dialog.open}
-          title={dialog.message}
-          onOk={dialog.onOk}
-        />
         <Button
           className={classes.addButton}
           variant="contained"
           color="primary"
           onClick={this.onAddChoice}
+          disabled={maxChoices && choices && maxChoices === choices.length}
         >
           Add Choice
         </Button>
-        <div
-          className={classes.altChoices}
-        >
-          {
-            visibleChoices.map((c, index) => {
-              if (focusedEl === c.id) {
-                return (
-                  <div
-                    key={index}
-                    style={{
-                      minWidth: '100%',
-                      zIndex: '100'
-                    }}
-                  >
-                    <EditableHtml
-                      ref={ref => (this.focusedNodeRef = ref)}
-                      className={classes.prompt}
-                      markup={c.value}
-                      pluginProps={{
-                        video: {
-                          disabled: true
-                        },
-                        audio: {
-                          disabled: true
-                        }
-                      }}
-                      onChange={val => this.onChoiceChanged(c.value, val, c.id)}
-                      onDone={() => {
-                        this.setState({
-                          focusedEl: undefined
-                        });
-                      }}
-                      disableUnderline
-                      toolbarOpts={toolbarOpts}
-                    />
-                  </div>
-                );
-              }
 
-              return (
-                <Choice
-                  key={index}
-                  duplicates={duplicates}
-                  targetId="0"
-                  choice={c}
-                  onClick={() => this.onChoiceFocus(c.id)}
-                  onRemoveChoice={() => this.handleChoiceRemove(c.id)}
+        <div className={classes.altChoices}>
+          {visibleChoices.map((choice, index) =>
+            focusedEl === choice.id ? (
+              <div
+                key={index}
+                style={{
+                  minWidth: '100%',
+                  zIndex: '100',
+                }}
+              >
+                <EditableHtml
+                  ref={(ref) => (this.focusedNodeRef = ref)}
+                  className={classes.prompt}
+                  imageSupport={imageSupport}
+                  markup={choice.value}
+                  pluginProps={pluginProps}
+                  languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+                  onChange={(val) => {
+                    if (this.preventDone) {
+                      return;
+                    }
+
+                    this.onChoiceChanged(choice.value, val, choice.id);
+                  }}
+                  onDone={() => {
+                    if (this.preventDone) {
+                      return;
+                    }
+
+                    this.setState({
+                      focusedEl: undefined,
+                    });
+                  }}
+                  onBlur={(e) => {
+                    const inInInsertCharacter = e.relatedTarget && e.relatedTarget.closest('.insert-character-dialog');
+
+                    this.preventDone = inInInsertCharacter;
+                  }}
+                  disableUnderline
+                  toolbarOpts={toolbarOpts}
+                  uploadSoundSupport={uploadSoundSupport}
+                  mathMlOptions={mathMlOptions}
                 />
-              );
-            })
-          }
+              </div>
+            ) : (
+              <Choice
+                key={index}
+                duplicates={duplicates}
+                targetId="0"
+                choice={choice}
+                error={error}
+                onClick={() => this.onChoiceFocus(choice.id)}
+                onRemoveChoice={() => this.onChoiceRemove(choice.id)}
+              />
+            ),
+          )}
         </div>
+        {error && <div className={classes.errorText}>{error}</div>}
+
+        <AlertDialog
+          open={warning.open}
+          title="Warning"
+          text={warning.text}
+          onConfirm={() => this.setState({ warning: { open: false } })}
+        />
       </div>
     );
   }

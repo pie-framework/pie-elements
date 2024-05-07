@@ -2,10 +2,22 @@
 
 exports[`design snapshot renders all items except feedback 1`] = `
 <ConfigLayout
+  dimensions={Object {}}
   settings={
     <Panel
       configuration={
         Object {
+          "baseInputConfiguration": Object {
+            "audio": Object {
+              "disabled": false,
+            },
+            "image": Object {
+              "disabled": false,
+            },
+            "video": Object {
+              "disabled": false,
+            },
+          },
           "correctAnswer": Object {
             "label": "Correct Answers",
             "settings": true,
@@ -18,6 +30,30 @@ exports[`design snapshot renders all items except feedback 1`] = `
             "label": "Highlight choices",
             "settings": true,
           },
+          "language": Object {
+            "enabled": false,
+            "label": "Specify Language",
+            "settings": false,
+          },
+          "languageChoices": Object {
+            "label": "Language Choices",
+            "options": Array [],
+          },
+          "mathMlOptions": Object {
+            "mmlEditing": false,
+            "mmlOutput": false,
+          },
+          "maxImageHeight": Object {
+            "prompt": 300,
+            "rationale": 300,
+            "teacherInstructions": 300,
+          },
+          "maxImageWidth": Object {
+            "prompt": 300,
+            "rationale": 300,
+            "teacherInstructions": 300,
+          },
+          "minTokens": 2,
           "mode": Object {
             "label": "Mode",
             "settings": true,
@@ -27,11 +63,35 @@ exports[`design snapshot renders all items except feedback 1`] = `
             "settings": false,
           },
           "prompt": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": false,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": false,
+              },
+            },
             "label": "Prompt",
+            "required": false,
             "settings": true,
           },
           "rationale": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": false,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": false,
+              },
+            },
             "label": "Rationale",
+            "required": false,
             "settings": true,
           },
           "scoringType": Object {
@@ -46,12 +106,29 @@ exports[`design snapshot renders all items except feedback 1`] = `
             "label": "Selections Available",
             "settings": true,
           },
+          "spellCheck": Object {
+            "enabled": true,
+            "label": "Spellcheck",
+            "settings": false,
+          },
           "studentInstructions": Object {
             "label": "Student Instructions",
             "settings": false,
           },
           "teacherInstructions": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": false,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": false,
+              },
+            },
             "label": "Teacher Instructions",
+            "required": false,
             "settings": true,
           },
           "text": Object {
@@ -62,6 +139,10 @@ exports[`design snapshot renders all items except feedback 1`] = `
             "label": "Tokens",
             "settings": true,
           },
+          "withRubric": Object {
+            "label": "Add Rubric",
+            "settings": false,
+          },
         }
       }
       groups={
@@ -69,13 +150,17 @@ exports[`design snapshot renders all items except feedback 1`] = `
           "Properties": Object {
             "promptEnabled": undefined,
             "rationaleEnabled": undefined,
+            "rubricEnabled": false,
             "scoringType": false,
+            "spellCheckEnabled": false,
             "studentInstructionsEnabled": false,
             "teacherInstructionsEnabled": undefined,
           },
           "Settings": Object {
             "feedbackEnabled": false,
             "highlightChoices": undefined,
+            "language": false,
+            "language.enabled": false,
             "partialScoring": false,
           },
         }
@@ -89,24 +174,52 @@ exports[`design snapshot renders all items except feedback 1`] = `
     />
   }
 >
-  <div>
+  <Component
+    label="Content"
+  >
     <TextField
-      label="Content"
+      defaultValue=""
       multiline={true}
       onChange={[Function]}
       required={false}
       select={false}
-      value=""
       variant="standard"
     />
-    <Component
-      label="Tokens"
+  </Component>
+  <Component
+    label="Tokens"
+  >
+    <WithStyles(Tooltip)
+      classes={
+        Object {
+          "tooltip": undefined,
+        }
+      }
+      disableFocusListener={true}
+      disableTouchListener={true}
+      placement="right"
+      title="Validation requirements:
+There should be at least 2 tokens defined.
+There should be at least 1 token selected."
     >
-      <WithStyles(Tokenizer)
-        onChange={[Function]}
-        tokens={Array []}
+      <pure(InfoIcon)
+        color="primary"
+        fontSize="small"
+        style={
+          Object {
+            "left": "48px",
+            "position": "absolute",
+            "top": "-3px",
+          }
+        }
       />
-    </Component>
+    </WithStyles(Tooltip)>
+    <WithStyles(Tokenizer)
+      onChange={[Function]}
+      tokens={Array []}
+    />
+  </Component>
+  <div>
     <WithStyles(Chip)
       label="Mode: None"
     />
@@ -128,10 +241,22 @@ exports[`design snapshot renders all items except feedback 1`] = `
 
 exports[`design snapshot renders all items except the content input 1`] = `
 <ConfigLayout
+  dimensions={Object {}}
   settings={
     <Panel
       configuration={
         Object {
+          "baseInputConfiguration": Object {
+            "audio": Object {
+              "disabled": false,
+            },
+            "image": Object {
+              "disabled": false,
+            },
+            "video": Object {
+              "disabled": false,
+            },
+          },
           "correctAnswer": Object {
             "label": "Correct Answers",
             "settings": true,
@@ -144,6 +269,30 @@ exports[`design snapshot renders all items except the content input 1`] = `
             "label": "Highlight choices",
             "settings": true,
           },
+          "language": Object {
+            "enabled": false,
+            "label": "Specify Language",
+            "settings": false,
+          },
+          "languageChoices": Object {
+            "label": "Language Choices",
+            "options": Array [],
+          },
+          "mathMlOptions": Object {
+            "mmlEditing": false,
+            "mmlOutput": false,
+          },
+          "maxImageHeight": Object {
+            "prompt": 300,
+            "rationale": 300,
+            "teacherInstructions": 300,
+          },
+          "maxImageWidth": Object {
+            "prompt": 300,
+            "rationale": 300,
+            "teacherInstructions": 300,
+          },
+          "minTokens": 2,
           "mode": Object {
             "label": "Mode",
             "settings": true,
@@ -153,11 +302,35 @@ exports[`design snapshot renders all items except the content input 1`] = `
             "settings": false,
           },
           "prompt": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": false,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": false,
+              },
+            },
             "label": "Prompt",
+            "required": false,
             "settings": true,
           },
           "rationale": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": false,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": false,
+              },
+            },
             "label": "Rationale",
+            "required": false,
             "settings": true,
           },
           "scoringType": Object {
@@ -172,12 +345,29 @@ exports[`design snapshot renders all items except the content input 1`] = `
             "label": "Selections Available",
             "settings": true,
           },
+          "spellCheck": Object {
+            "enabled": true,
+            "label": "Spellcheck",
+            "settings": false,
+          },
           "studentInstructions": Object {
             "label": "Student Instructions",
             "settings": false,
           },
           "teacherInstructions": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": false,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": false,
+              },
+            },
             "label": "Teacher Instructions",
+            "required": false,
             "settings": true,
           },
           "text": Object {
@@ -188,6 +378,10 @@ exports[`design snapshot renders all items except the content input 1`] = `
             "label": "Tokens",
             "settings": true,
           },
+          "withRubric": Object {
+            "label": "Add Rubric",
+            "settings": false,
+          },
         }
       }
       groups={
@@ -195,13 +389,17 @@ exports[`design snapshot renders all items except the content input 1`] = `
           "Properties": Object {
             "promptEnabled": undefined,
             "rationaleEnabled": undefined,
+            "rubricEnabled": false,
             "scoringType": false,
+            "spellCheckEnabled": false,
             "studentInstructionsEnabled": false,
             "teacherInstructionsEnabled": undefined,
           },
           "Settings": Object {
             "feedbackEnabled": false,
             "highlightChoices": undefined,
+            "language": false,
+            "language.enabled": false,
             "partialScoring": false,
           },
         }
@@ -215,15 +413,40 @@ exports[`design snapshot renders all items except the content input 1`] = `
     />
   }
 >
-  <div>
-    <Component
-      label="Tokens"
+  <Component
+    label="Tokens"
+  >
+    <WithStyles(Tooltip)
+      classes={
+        Object {
+          "tooltip": undefined,
+        }
+      }
+      disableFocusListener={true}
+      disableTouchListener={true}
+      placement="right"
+      title="Validation requirements:
+There should be at least 2 tokens defined.
+There should be at least 1 token selected."
     >
-      <WithStyles(Tokenizer)
-        onChange={[Function]}
-        tokens={Array []}
+      <pure(InfoIcon)
+        color="primary"
+        fontSize="small"
+        style={
+          Object {
+            "left": "48px",
+            "position": "absolute",
+            "top": "-3px",
+          }
+        }
       />
-    </Component>
+    </WithStyles(Tooltip)>
+    <WithStyles(Tokenizer)
+      onChange={[Function]}
+      tokens={Array []}
+    />
+  </Component>
+  <div>
     <WithStyles(Chip)
       label="Mode: None"
     />
@@ -245,10 +468,22 @@ exports[`design snapshot renders all items except the content input 1`] = `
 
 exports[`design snapshot renders all items with defaultProps 1`] = `
 <ConfigLayout
+  dimensions={Object {}}
   settings={
     <Panel
       configuration={
         Object {
+          "baseInputConfiguration": Object {
+            "audio": Object {
+              "disabled": false,
+            },
+            "image": Object {
+              "disabled": false,
+            },
+            "video": Object {
+              "disabled": false,
+            },
+          },
           "correctAnswer": Object {
             "label": "Correct Answers",
             "settings": true,
@@ -261,6 +496,30 @@ exports[`design snapshot renders all items with defaultProps 1`] = `
             "label": "Highlight choices",
             "settings": true,
           },
+          "language": Object {
+            "enabled": false,
+            "label": "Specify Language",
+            "settings": false,
+          },
+          "languageChoices": Object {
+            "label": "Language Choices",
+            "options": Array [],
+          },
+          "mathMlOptions": Object {
+            "mmlEditing": false,
+            "mmlOutput": false,
+          },
+          "maxImageHeight": Object {
+            "prompt": 300,
+            "rationale": 300,
+            "teacherInstructions": 300,
+          },
+          "maxImageWidth": Object {
+            "prompt": 300,
+            "rationale": 300,
+            "teacherInstructions": 300,
+          },
+          "minTokens": 2,
           "mode": Object {
             "label": "Mode",
             "settings": true,
@@ -270,11 +529,35 @@ exports[`design snapshot renders all items with defaultProps 1`] = `
             "settings": false,
           },
           "prompt": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": false,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": false,
+              },
+            },
             "label": "Prompt",
+            "required": false,
             "settings": true,
           },
           "rationale": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": false,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": false,
+              },
+            },
             "label": "Rationale",
+            "required": false,
             "settings": true,
           },
           "scoringType": Object {
@@ -289,12 +572,29 @@ exports[`design snapshot renders all items with defaultProps 1`] = `
             "label": "Selections Available",
             "settings": true,
           },
+          "spellCheck": Object {
+            "enabled": true,
+            "label": "Spellcheck",
+            "settings": false,
+          },
           "studentInstructions": Object {
             "label": "Student Instructions",
             "settings": false,
           },
           "teacherInstructions": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": false,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": false,
+              },
+            },
             "label": "Teacher Instructions",
+            "required": false,
             "settings": true,
           },
           "text": Object {
@@ -305,6 +605,10 @@ exports[`design snapshot renders all items with defaultProps 1`] = `
             "label": "Tokens",
             "settings": true,
           },
+          "withRubric": Object {
+            "label": "Add Rubric",
+            "settings": false,
+          },
         }
       }
       groups={
@@ -312,13 +616,17 @@ exports[`design snapshot renders all items with defaultProps 1`] = `
           "Properties": Object {
             "promptEnabled": undefined,
             "rationaleEnabled": undefined,
+            "rubricEnabled": false,
             "scoringType": false,
+            "spellCheckEnabled": false,
             "studentInstructionsEnabled": false,
             "teacherInstructionsEnabled": undefined,
           },
           "Settings": Object {
             "feedbackEnabled": undefined,
             "highlightChoices": undefined,
+            "language": false,
+            "language.enabled": false,
             "partialScoring": false,
           },
         }
@@ -332,24 +640,52 @@ exports[`design snapshot renders all items with defaultProps 1`] = `
     />
   }
 >
-  <div>
+  <Component
+    label="Content"
+  >
     <TextField
-      label="Content"
+      defaultValue=""
       multiline={true}
       onChange={[Function]}
       required={false}
       select={false}
-      value=""
       variant="standard"
     />
-    <Component
-      label="Tokens"
+  </Component>
+  <Component
+    label="Tokens"
+  >
+    <WithStyles(Tooltip)
+      classes={
+        Object {
+          "tooltip": undefined,
+        }
+      }
+      disableFocusListener={true}
+      disableTouchListener={true}
+      placement="right"
+      title="Validation requirements:
+There should be at least 2 tokens defined.
+There should be at least 1 token selected."
     >
-      <WithStyles(Tokenizer)
-        onChange={[Function]}
-        tokens={Array []}
+      <pure(InfoIcon)
+        color="primary"
+        fontSize="small"
+        style={
+          Object {
+            "left": "48px",
+            "position": "absolute",
+            "top": "-3px",
+          }
+        }
       />
-    </Component>
+    </WithStyles(Tooltip)>
+    <WithStyles(Tokenizer)
+      onChange={[Function]}
+      tokens={Array []}
+    />
+  </Component>
+  <div>
     <WithStyles(Chip)
       label="Mode: None"
     />
@@ -371,10 +707,22 @@ exports[`design snapshot renders all items with defaultProps 1`] = `
 
 exports[`design snapshot tokenizer renders with html entities 1`] = `
 <ConfigLayout
+  dimensions={Object {}}
   settings={
     <Panel
       configuration={
         Object {
+          "baseInputConfiguration": Object {
+            "audio": Object {
+              "disabled": false,
+            },
+            "image": Object {
+              "disabled": false,
+            },
+            "video": Object {
+              "disabled": false,
+            },
+          },
           "correctAnswer": Object {
             "label": "Correct Answers",
             "settings": true,
@@ -387,6 +735,30 @@ exports[`design snapshot tokenizer renders with html entities 1`] = `
             "label": "Highlight choices",
             "settings": true,
           },
+          "language": Object {
+            "enabled": false,
+            "label": "Specify Language",
+            "settings": false,
+          },
+          "languageChoices": Object {
+            "label": "Language Choices",
+            "options": Array [],
+          },
+          "mathMlOptions": Object {
+            "mmlEditing": false,
+            "mmlOutput": false,
+          },
+          "maxImageHeight": Object {
+            "prompt": 300,
+            "rationale": 300,
+            "teacherInstructions": 300,
+          },
+          "maxImageWidth": Object {
+            "prompt": 300,
+            "rationale": 300,
+            "teacherInstructions": 300,
+          },
+          "minTokens": 2,
           "mode": Object {
             "label": "Mode",
             "settings": true,
@@ -396,11 +768,35 @@ exports[`design snapshot tokenizer renders with html entities 1`] = `
             "settings": false,
           },
           "prompt": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": false,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": false,
+              },
+            },
             "label": "Prompt",
+            "required": false,
             "settings": true,
           },
           "rationale": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": false,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": false,
+              },
+            },
             "label": "Rationale",
+            "required": false,
             "settings": true,
           },
           "scoringType": Object {
@@ -415,12 +811,29 @@ exports[`design snapshot tokenizer renders with html entities 1`] = `
             "label": "Selections Available",
             "settings": true,
           },
+          "spellCheck": Object {
+            "enabled": true,
+            "label": "Spellcheck",
+            "settings": false,
+          },
           "studentInstructions": Object {
             "label": "Student Instructions",
             "settings": false,
           },
           "teacherInstructions": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": false,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": false,
+              },
+            },
             "label": "Teacher Instructions",
+            "required": false,
             "settings": true,
           },
           "text": Object {
@@ -431,6 +844,10 @@ exports[`design snapshot tokenizer renders with html entities 1`] = `
             "label": "Tokens",
             "settings": true,
           },
+          "withRubric": Object {
+            "label": "Add Rubric",
+            "settings": false,
+          },
         }
       }
       groups={
@@ -438,13 +855,17 @@ exports[`design snapshot tokenizer renders with html entities 1`] = `
           "Properties": Object {
             "promptEnabled": undefined,
             "rationaleEnabled": undefined,
+            "rubricEnabled": false,
             "scoringType": false,
+            "spellCheckEnabled": false,
             "studentInstructionsEnabled": false,
             "teacherInstructionsEnabled": undefined,
           },
           "Settings": Object {
             "feedbackEnabled": undefined,
             "highlightChoices": undefined,
+            "language": false,
+            "language.enabled": false,
             "partialScoring": false,
           },
         }
@@ -459,25 +880,53 @@ exports[`design snapshot tokenizer renders with html entities 1`] = `
     />
   }
 >
-  <div>
+  <Component
+    label="Content"
+  >
     <TextField
-      label="Content"
+      defaultValue="<p>&#8220;Lucy?&#63; Are you using your time wisely to plan your project?&#33;&#33;&#33;&#8221; Mr. Wilson asked.</p><p>Lucy looked a little confused at first. &#195; Then she grinned and proudly stated, &#8220;Why, yes I am! I plan to make a bird feeder for that tree out our window!&#8221;</p>"
       multiline={true}
       onChange={[Function]}
       required={false}
       select={false}
-      value="<p>&#8220;Lucy?&#63; Are you using your time wisely to plan your project?&#33;&#33;&#33;&#8221; Mr. Wilson asked.</p><p>Lucy looked a little confused at first. &#195; Then she grinned and proudly stated, &#8220;Why, yes I am! I plan to make a bird feeder for that tree out our window!&#8221;</p>"
       variant="standard"
     />
-    <Component
-      label="Tokens"
+  </Component>
+  <Component
+    label="Tokens"
+  >
+    <WithStyles(Tooltip)
+      classes={
+        Object {
+          "tooltip": undefined,
+        }
+      }
+      disableFocusListener={true}
+      disableTouchListener={true}
+      placement="right"
+      title="Validation requirements:
+There should be at least 2 tokens defined.
+There should be at least 1 token selected."
     >
-      <WithStyles(Tokenizer)
-        onChange={[Function]}
-        text="<p>&#8220;Lucy?&#63; Are you using your time wisely to plan your project?&#33;&#33;&#33;&#8221; Mr. Wilson asked.</p><p>Lucy looked a little confused at first. &#195; Then she grinned and proudly stated, &#8220;Why, yes I am! I plan to make a bird feeder for that tree out our window!&#8221;</p>"
-        tokens={Array []}
+      <pure(InfoIcon)
+        color="primary"
+        fontSize="small"
+        style={
+          Object {
+            "left": "48px",
+            "position": "absolute",
+            "top": "-3px",
+          }
+        }
       />
-    </Component>
+    </WithStyles(Tooltip)>
+    <WithStyles(Tokenizer)
+      onChange={[Function]}
+      text="<p>&#8220;Lucy?&#63; Are you using your time wisely to plan your project?&#33;&#33;&#33;&#8221; Mr. Wilson asked.</p><p>Lucy looked a little confused at first. &#195; Then she grinned and proudly stated, &#8220;Why, yes I am! I plan to make a bird feeder for that tree out our window!&#8221;</p>"
+      tokens={Array []}
+    />
+  </Component>
+  <div>
     <WithStyles(Chip)
       label="Mode: None"
     />

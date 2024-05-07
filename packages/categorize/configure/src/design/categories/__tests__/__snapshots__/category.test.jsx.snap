@@ -4,12 +4,22 @@ exports[`category snapshot renders with default props 1`] = `
 <WithStyles(Card)
   className="className"
 >
-  <WithStyles(InputHeader)
-    label="Category title"
-    onChange={[Function]}
-    onDelete={[MockFunction]}
-  />
-  <DropTarget(WithStyles(DroppablePlaceHolder))
+  <span>
+    <WithStyles(InputHeader)
+      disabled={false}
+      label="Category title"
+      mathMlOptions={Object {}}
+      onChange={[Function]}
+      onDelete={[MockFunction]}
+    />
+  </span>
+  <Wrapped
+    category={
+      Object {
+        "id": "1",
+        "label": "Category title",
+      }
+    }
     categoryId="1"
     onDeleteChoice={[MockFunction]}
     onDropChoice={[MockFunction]}
@@ -27,7 +37,21 @@ exports[`category snapshot renders without some components if no handlers are pr
 <WithStyles(Card)
   className="className"
 >
-  <DropTarget(WithStyles(DroppablePlaceHolder))
+  <span>
+    <WithStyles(InputHeader)
+      disabled={false}
+      label="Category title"
+      mathMlOptions={Object {}}
+      onChange={[Function]}
+    />
+  </span>
+  <Wrapped
+    category={
+      Object {
+        "id": "1",
+        "label": "Category title",
+      }
+    }
     categoryId="1"
     onDeleteChoice={[MockFunction]}
     onDropChoice={[MockFunction]}

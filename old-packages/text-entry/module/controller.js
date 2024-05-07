@@ -10,7 +10,7 @@ var objectProto = Object.prototype;
  */
 function isPrototype(value) {
   var Ctor = value && value.constructor,
-      proto = (typeof Ctor == 'function' && Ctor.prototype) || objectProto;
+    proto = (typeof Ctor == 'function' && Ctor.prototype) || objectProto;
 
   return value === proto;
 }
@@ -26,7 +26,7 @@ var _isPrototype = isPrototype;
  * @returns {Function} Returns the new function.
  */
 function overArg(func, transform) {
-  return function(arg) {
+  return function (arg) {
     return func(transform(arg));
   };
 }
@@ -66,14 +66,24 @@ function baseKeys(object) {
 
 var _baseKeys = baseKeys;
 
-var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
+var commonjsGlobal =
+  typeof globalThis !== 'undefined'
+    ? globalThis
+    : typeof window !== 'undefined'
+    ? window
+    : typeof global !== 'undefined'
+    ? global
+    : typeof self !== 'undefined'
+    ? self
+    : {};
 
 function createCommonjsModule(fn, module) {
-	return module = { exports: {} }, fn(module, module.exports), module.exports;
+  return (module = { exports: {} }), fn(module, module.exports), module.exports;
 }
 
 /** Detect free variable `global` from Node.js. */
-var freeGlobal = typeof commonjsGlobal == 'object' && commonjsGlobal && commonjsGlobal.Object === Object && commonjsGlobal;
+var freeGlobal =
+  typeof commonjsGlobal == 'object' && commonjsGlobal && commonjsGlobal.Object === Object && commonjsGlobal;
 
 var _freeGlobal = freeGlobal;
 
@@ -115,7 +125,7 @@ var symToStringTag = _Symbol ? _Symbol.toStringTag : undefined;
  */
 function getRawTag(value) {
   var isOwn = hasOwnProperty$1.call(value, symToStringTag),
-      tag = value[symToStringTag];
+    tag = value[symToStringTag];
 
   try {
     value[symToStringTag] = undefined;
@@ -160,7 +170,7 @@ var _objectToString = objectToString;
 
 /** `Object#toString` result references. */
 var nullTag = '[object Null]',
-    undefinedTag = '[object Undefined]';
+  undefinedTag = '[object Undefined]';
 
 /** Built-in value references. */
 var symToStringTag$1 = _Symbol ? _Symbol.toStringTag : undefined;
@@ -176,9 +186,7 @@ function baseGetTag(value) {
   if (value == null) {
     return value === undefined ? undefinedTag : nullTag;
   }
-  return (symToStringTag$1 && symToStringTag$1 in Object(value))
-    ? _getRawTag(value)
-    : _objectToString(value);
+  return symToStringTag$1 && symToStringTag$1 in Object(value) ? _getRawTag(value) : _objectToString(value);
 }
 
 var _baseGetTag = baseGetTag;
@@ -217,9 +225,9 @@ var isObject_1 = isObject;
 
 /** `Object#toString` result references. */
 var asyncTag = '[object AsyncFunction]',
-    funcTag = '[object Function]',
-    genTag = '[object GeneratorFunction]',
-    proxyTag = '[object Proxy]';
+  funcTag = '[object Function]',
+  genTag = '[object GeneratorFunction]',
+  proxyTag = '[object Proxy]';
 
 /**
  * Checks if `value` is classified as a `Function` object.
@@ -256,10 +264,10 @@ var coreJsData = _root['__core-js_shared__'];
 var _coreJsData = coreJsData;
 
 /** Used to detect methods masquerading as native. */
-var maskSrcKey = (function() {
-  var uid = /[^.]+$/.exec(_coreJsData && _coreJsData.keys && _coreJsData.keys.IE_PROTO || '');
-  return uid ? ('Symbol(src)_1.' + uid) : '';
-}());
+var maskSrcKey = (function () {
+  var uid = /[^.]+$/.exec((_coreJsData && _coreJsData.keys && _coreJsData.keys.IE_PROTO) || '');
+  return uid ? 'Symbol(src)_1.' + uid : '';
+})();
 
 /**
  * Checks if `func` has its source masked.
@@ -269,7 +277,7 @@ var maskSrcKey = (function() {
  * @returns {boolean} Returns `true` if `func` is masked, else `false`.
  */
 function isMasked(func) {
-  return !!maskSrcKey && (maskSrcKey in func);
+  return !!maskSrcKey && maskSrcKey in func;
 }
 
 var _isMasked = isMasked;
@@ -293,7 +301,7 @@ function toSource(func) {
       return funcToString.call(func);
     } catch (e) {}
     try {
-      return (func + '');
+      return func + '';
     } catch (e) {}
   }
   return '';
@@ -312,7 +320,7 @@ var reIsHostCtor = /^\[object .+?Constructor\]$/;
 
 /** Used for built-in method references. */
 var funcProto$1 = Function.prototype,
-    objectProto$4 = Object.prototype;
+  objectProto$4 = Object.prototype;
 
 /** Used to resolve the decompiled source of functions. */
 var funcToString$1 = funcProto$1.toString;
@@ -321,9 +329,13 @@ var funcToString$1 = funcProto$1.toString;
 var hasOwnProperty$2 = objectProto$4.hasOwnProperty;
 
 /** Used to detect if a method is native. */
-var reIsNative = RegExp('^' +
-  funcToString$1.call(hasOwnProperty$2).replace(reRegExpChar, '\\$&')
-  .replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g, '$1.*?') + '$'
+var reIsNative = RegExp(
+  '^' +
+    funcToString$1
+      .call(hasOwnProperty$2)
+      .replace(reRegExpChar, '\\$&')
+      .replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g, '$1.*?') +
+    '$',
 );
 
 /**
@@ -400,19 +412,19 @@ var _WeakMap = WeakMap;
 
 /** `Object#toString` result references. */
 var mapTag = '[object Map]',
-    objectTag = '[object Object]',
-    promiseTag = '[object Promise]',
-    setTag = '[object Set]',
-    weakMapTag = '[object WeakMap]';
+  objectTag = '[object Object]',
+  promiseTag = '[object Promise]',
+  setTag = '[object Set]',
+  weakMapTag = '[object WeakMap]';
 
 var dataViewTag = '[object DataView]';
 
 /** Used to detect maps, sets, and weakmaps. */
 var dataViewCtorString = _toSource(_DataView),
-    mapCtorString = _toSource(_Map),
-    promiseCtorString = _toSource(_Promise),
-    setCtorString = _toSource(_Set),
-    weakMapCtorString = _toSource(_WeakMap);
+  mapCtorString = _toSource(_Map),
+  promiseCtorString = _toSource(_Promise),
+  setCtorString = _toSource(_Set),
+  weakMapCtorString = _toSource(_WeakMap);
 
 /**
  * Gets the `toStringTag` of `value`.
@@ -424,23 +436,30 @@ var dataViewCtorString = _toSource(_DataView),
 var getTag = _baseGetTag;
 
 // Fallback for data views, maps, sets, and weak maps in IE 11 and promises in Node.js < 6.
-if ((_DataView && getTag(new _DataView(new ArrayBuffer(1))) != dataViewTag) ||
-    (_Map && getTag(new _Map) != mapTag) ||
-    (_Promise && getTag(_Promise.resolve()) != promiseTag) ||
-    (_Set && getTag(new _Set) != setTag) ||
-    (_WeakMap && getTag(new _WeakMap) != weakMapTag)) {
-  getTag = function(value) {
+if (
+  (_DataView && getTag(new _DataView(new ArrayBuffer(1))) != dataViewTag) ||
+  (_Map && getTag(new _Map()) != mapTag) ||
+  (_Promise && getTag(_Promise.resolve()) != promiseTag) ||
+  (_Set && getTag(new _Set()) != setTag) ||
+  (_WeakMap && getTag(new _WeakMap()) != weakMapTag)
+) {
+  getTag = function (value) {
     var result = _baseGetTag(value),
-        Ctor = result == objectTag ? value.constructor : undefined,
-        ctorString = Ctor ? _toSource(Ctor) : '';
+      Ctor = result == objectTag ? value.constructor : undefined,
+      ctorString = Ctor ? _toSource(Ctor) : '';
 
     if (ctorString) {
       switch (ctorString) {
-        case dataViewCtorString: return dataViewTag;
-        case mapCtorString: return mapTag;
-        case promiseCtorString: return promiseTag;
-        case setCtorString: return setTag;
-        case weakMapCtorString: return weakMapTag;
+        case dataViewCtorString:
+          return dataViewTag;
+        case mapCtorString:
+          return mapTag;
+        case promiseCtorString:
+          return promiseTag;
+        case setCtorString:
+          return setTag;
+        case weakMapCtorString:
+          return weakMapTag;
       }
     }
     return result;
@@ -522,10 +541,17 @@ var propertyIsEnumerable = objectProto$5.propertyIsEnumerable;
  * _.isArguments([1, 2, 3]);
  * // => false
  */
-var isArguments = _baseIsArguments(function() { return arguments; }()) ? _baseIsArguments : function(value) {
-  return isObjectLike_1(value) && hasOwnProperty$3.call(value, 'callee') &&
-    !propertyIsEnumerable.call(value, 'callee');
-};
+var isArguments = _baseIsArguments(
+  (function () {
+    return arguments;
+  })(),
+)
+  ? _baseIsArguments
+  : function (value) {
+      return (
+        isObjectLike_1(value) && hasOwnProperty$3.call(value, 'callee') && !propertyIsEnumerable.call(value, 'callee')
+      );
+    };
 
 var isArguments_1 = isArguments;
 
@@ -586,8 +612,7 @@ var MAX_SAFE_INTEGER = 9007199254740991;
  * // => false
  */
 function isLength(value) {
-  return typeof value == 'number' &&
-    value > -1 && value % 1 == 0 && value <= MAX_SAFE_INTEGER;
+  return typeof value == 'number' && value > -1 && value % 1 == 0 && value <= MAX_SAFE_INTEGER;
 }
 
 var isLength_1 = isLength;
@@ -643,85 +668,98 @@ function stubFalse() {
 var stubFalse_1 = stubFalse;
 
 var isBuffer_1 = createCommonjsModule(function (module, exports) {
-/** Detect free variable `exports`. */
-var freeExports =  exports && !exports.nodeType && exports;
+  /** Detect free variable `exports`. */
+  var freeExports = exports && !exports.nodeType && exports;
 
-/** Detect free variable `module`. */
-var freeModule = freeExports && 'object' == 'object' && module && !module.nodeType && module;
+  /** Detect free variable `module`. */
+  var freeModule = freeExports && 'object' == 'object' && module && !module.nodeType && module;
 
-/** Detect the popular CommonJS extension `module.exports`. */
-var moduleExports = freeModule && freeModule.exports === freeExports;
+  /** Detect the popular CommonJS extension `module.exports`. */
+  var moduleExports = freeModule && freeModule.exports === freeExports;
 
-/** Built-in value references. */
-var Buffer = moduleExports ? _root.Buffer : undefined;
+  /** Built-in value references. */
+  var Buffer = moduleExports ? _root.Buffer : undefined;
 
-/* Built-in method references for those with the same name as other `lodash` methods. */
-var nativeIsBuffer = Buffer ? Buffer.isBuffer : undefined;
+  /* Built-in method references for those with the same name as other `lodash` methods. */
+  var nativeIsBuffer = Buffer ? Buffer.isBuffer : undefined;
 
-/**
- * Checks if `value` is a buffer.
- *
- * @static
- * @memberOf _
- * @since 4.3.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a buffer, else `false`.
- * @example
- *
- * _.isBuffer(new Buffer(2));
- * // => true
- *
- * _.isBuffer(new Uint8Array(2));
- * // => false
- */
-var isBuffer = nativeIsBuffer || stubFalse_1;
+  /**
+   * Checks if `value` is a buffer.
+   *
+   * @static
+   * @memberOf _
+   * @since 4.3.0
+   * @category Lang
+   * @param {*} value The value to check.
+   * @returns {boolean} Returns `true` if `value` is a buffer, else `false`.
+   * @example
+   *
+   * _.isBuffer(new Buffer(2));
+   * // => true
+   *
+   * _.isBuffer(new Uint8Array(2));
+   * // => false
+   */
+  var isBuffer = nativeIsBuffer || stubFalse_1;
 
-module.exports = isBuffer;
+  module.exports = isBuffer;
 });
 
 /** `Object#toString` result references. */
 var argsTag$1 = '[object Arguments]',
-    arrayTag = '[object Array]',
-    boolTag = '[object Boolean]',
-    dateTag = '[object Date]',
-    errorTag = '[object Error]',
-    funcTag$1 = '[object Function]',
-    mapTag$1 = '[object Map]',
-    numberTag = '[object Number]',
-    objectTag$1 = '[object Object]',
-    regexpTag = '[object RegExp]',
-    setTag$1 = '[object Set]',
-    stringTag = '[object String]',
-    weakMapTag$1 = '[object WeakMap]';
+  arrayTag = '[object Array]',
+  boolTag = '[object Boolean]',
+  dateTag = '[object Date]',
+  errorTag = '[object Error]',
+  funcTag$1 = '[object Function]',
+  mapTag$1 = '[object Map]',
+  numberTag = '[object Number]',
+  objectTag$1 = '[object Object]',
+  regexpTag = '[object RegExp]',
+  setTag$1 = '[object Set]',
+  stringTag = '[object String]',
+  weakMapTag$1 = '[object WeakMap]';
 
 var arrayBufferTag = '[object ArrayBuffer]',
-    dataViewTag$1 = '[object DataView]',
-    float32Tag = '[object Float32Array]',
-    float64Tag = '[object Float64Array]',
-    int8Tag = '[object Int8Array]',
-    int16Tag = '[object Int16Array]',
-    int32Tag = '[object Int32Array]',
-    uint8Tag = '[object Uint8Array]',
-    uint8ClampedTag = '[object Uint8ClampedArray]',
-    uint16Tag = '[object Uint16Array]',
-    uint32Tag = '[object Uint32Array]';
+  dataViewTag$1 = '[object DataView]',
+  float32Tag = '[object Float32Array]',
+  float64Tag = '[object Float64Array]',
+  int8Tag = '[object Int8Array]',
+  int16Tag = '[object Int16Array]',
+  int32Tag = '[object Int32Array]',
+  uint8Tag = '[object Uint8Array]',
+  uint8ClampedTag = '[object Uint8ClampedArray]',
+  uint16Tag = '[object Uint16Array]',
+  uint32Tag = '[object Uint32Array]';
 
 /** Used to identify `toStringTag` values of typed arrays. */
 var typedArrayTags = {};
-typedArrayTags[float32Tag] = typedArrayTags[float64Tag] =
-typedArrayTags[int8Tag] = typedArrayTags[int16Tag] =
-typedArrayTags[int32Tag] = typedArrayTags[uint8Tag] =
-typedArrayTags[uint8ClampedTag] = typedArrayTags[uint16Tag] =
-typedArrayTags[uint32Tag] = true;
-typedArrayTags[argsTag$1] = typedArrayTags[arrayTag] =
-typedArrayTags[arrayBufferTag] = typedArrayTags[boolTag] =
-typedArrayTags[dataViewTag$1] = typedArrayTags[dateTag] =
-typedArrayTags[errorTag] = typedArrayTags[funcTag$1] =
-typedArrayTags[mapTag$1] = typedArrayTags[numberTag] =
-typedArrayTags[objectTag$1] = typedArrayTags[regexpTag] =
-typedArrayTags[setTag$1] = typedArrayTags[stringTag] =
-typedArrayTags[weakMapTag$1] = false;
+typedArrayTags[float32Tag] =
+  typedArrayTags[float64Tag] =
+  typedArrayTags[int8Tag] =
+  typedArrayTags[int16Tag] =
+  typedArrayTags[int32Tag] =
+  typedArrayTags[uint8Tag] =
+  typedArrayTags[uint8ClampedTag] =
+  typedArrayTags[uint16Tag] =
+  typedArrayTags[uint32Tag] =
+    true;
+typedArrayTags[argsTag$1] =
+  typedArrayTags[arrayTag] =
+  typedArrayTags[arrayBufferTag] =
+  typedArrayTags[boolTag] =
+  typedArrayTags[dataViewTag$1] =
+  typedArrayTags[dateTag] =
+  typedArrayTags[errorTag] =
+  typedArrayTags[funcTag$1] =
+  typedArrayTags[mapTag$1] =
+  typedArrayTags[numberTag] =
+  typedArrayTags[objectTag$1] =
+  typedArrayTags[regexpTag] =
+  typedArrayTags[setTag$1] =
+  typedArrayTags[stringTag] =
+  typedArrayTags[weakMapTag$1] =
+    false;
 
 /**
  * The base implementation of `_.isTypedArray` without Node.js optimizations.
@@ -731,8 +769,7 @@ typedArrayTags[weakMapTag$1] = false;
  * @returns {boolean} Returns `true` if `value` is a typed array, else `false`.
  */
 function baseIsTypedArray(value) {
-  return isObjectLike_1(value) &&
-    isLength_1(value.length) && !!typedArrayTags[_baseGetTag(value)];
+  return isObjectLike_1(value) && isLength_1(value.length) && !!typedArrayTags[_baseGetTag(value)];
 }
 
 var _baseIsTypedArray = baseIsTypedArray;
@@ -745,7 +782,7 @@ var _baseIsTypedArray = baseIsTypedArray;
  * @returns {Function} Returns the new capped function.
  */
 function baseUnary(func) {
-  return function(value) {
+  return function (value) {
     return func(value);
   };
 }
@@ -753,34 +790,34 @@ function baseUnary(func) {
 var _baseUnary = baseUnary;
 
 var _nodeUtil = createCommonjsModule(function (module, exports) {
-/** Detect free variable `exports`. */
-var freeExports =  exports && !exports.nodeType && exports;
+  /** Detect free variable `exports`. */
+  var freeExports = exports && !exports.nodeType && exports;
 
-/** Detect free variable `module`. */
-var freeModule = freeExports && 'object' == 'object' && module && !module.nodeType && module;
+  /** Detect free variable `module`. */
+  var freeModule = freeExports && 'object' == 'object' && module && !module.nodeType && module;
 
-/** Detect the popular CommonJS extension `module.exports`. */
-var moduleExports = freeModule && freeModule.exports === freeExports;
+  /** Detect the popular CommonJS extension `module.exports`. */
+  var moduleExports = freeModule && freeModule.exports === freeExports;
 
-/** Detect free variable `process` from Node.js. */
-var freeProcess = moduleExports && _freeGlobal.process;
+  /** Detect free variable `process` from Node.js. */
+  var freeProcess = moduleExports && _freeGlobal.process;
 
-/** Used to access faster Node.js helpers. */
-var nodeUtil = (function() {
-  try {
-    // Use `util.types` for Node.js 10+.
-    var types = freeModule && freeModule.require && freeModule.require('util').types;
+  /** Used to access faster Node.js helpers. */
+  var nodeUtil = (function () {
+    try {
+      // Use `util.types` for Node.js 10+.
+      var types = freeModule && freeModule.require && freeModule.require('util').types;
 
-    if (types) {
-      return types;
-    }
+      if (types) {
+        return types;
+      }
 
-    // Legacy `process.binding('util')` for Node.js < 10.
-    return freeProcess && freeProcess.binding && freeProcess.binding('util');
-  } catch (e) {}
-}());
+      // Legacy `process.binding('util')` for Node.js < 10.
+      return freeProcess && freeProcess.binding && freeProcess.binding('util');
+    } catch (e) {}
+  })();
 
-module.exports = nodeUtil;
+  module.exports = nodeUtil;
 });
 
 /* Node.js helper references. */
@@ -809,7 +846,7 @@ var isTypedArray_1 = isTypedArray;
 
 /** `Object#toString` result references. */
 var mapTag$2 = '[object Map]',
-    setTag$2 = '[object Set]';
+  setTag$2 = '[object Set]';
 
 /** Used for built-in method references. */
 var objectProto$6 = Object.prototype;
@@ -854,9 +891,15 @@ function isEmpty(value) {
   if (value == null) {
     return true;
   }
-  if (isArrayLike_1(value) &&
-      (isArray_1(value) || typeof value == 'string' || typeof value.splice == 'function' ||
-        isBuffer_1(value) || isTypedArray_1(value) || isArguments_1(value))) {
+  if (
+    isArrayLike_1(value) &&
+    (isArray_1(value) ||
+      typeof value == 'string' ||
+      typeof value.splice == 'function' ||
+      isBuffer_1(value) ||
+      isTypedArray_1(value) ||
+      isArguments_1(value))
+  ) {
     return !value.length;
   }
   var tag = _getTag(value);
@@ -883,8 +926,8 @@ const defaults = {
   unanswered: {
     type: 'default',
     default: 'You have not entered a response',
-    custom: 'You have not entered a response'
-  }
+    custom: 'You have not entered a response',
+  },
 };
 
 /**
@@ -899,7 +942,7 @@ const defaults = {
  *  @property {FeedbackConfig} partial
  */
 
-const normalizeCorrectness = c => {
+const normalizeCorrectness = (c) => {
   if (c === 'partially-correct') {
     return 'partial';
   }
@@ -913,12 +956,12 @@ const normalizeCorrectness = c => {
  * @param {Feedback} feedback
  */
 const getFeedbackForCorrectness = (correctness, feedback) =>
-  new Promise(resolve => {
+  new Promise((resolve) => {
     feedback = { ...defaults, ...feedback };
     correctness = normalizeCorrectness(correctness);
     const fb = feedback[correctness] || defaults[correctness] || {};
     const d = defaults[correctness] || {};
-    getFeedback(fb, d[fb.type || 'default']).then(result => resolve(result));
+    getFeedback(fb, d[fb.type || 'default']).then((result) => resolve(result));
   });
 
 /**
@@ -928,7 +971,7 @@ const getFeedbackForCorrectness = (correctness, feedback) =>
  * @param {string} fallback
  */
 const getFeedback = (feedback, fallback) =>
-  new Promise(resolve => {
+  new Promise((resolve) => {
     if (!feedback || feedback.type === 'none') {
       resolve(undefined);
       return;
@@ -946,9 +989,7 @@ const process = (v, ignoreCase, ignoreWhitespace) => {
 };
 
 const inResponses = (responses, value) => {
-  const processedValues = responses.values.map(c =>
-    process(c, responses.ignoreCase, responses.ignoreWhitespace)
-  );
+  const processedValues = responses.values.map((c) => process(c, responses.ignoreCase, responses.ignoreWhitespace));
   const v = process(value, responses.ignoreCase, responses.ignoreWhitespace);
   return processedValues.indexOf(v) !== -1;
 };
@@ -960,10 +1001,7 @@ const getCorrectness = (question, session, env) => {
     }
 
     const correct = inResponses(question.correctResponses, session.value);
-    const partiallyCorrect = inResponses(
-      question.partialResponses,
-      session.value
-    );
+    const partiallyCorrect = inResponses(question.partialResponses, session.value);
 
     if (correct) {
       return 'correct';
@@ -975,13 +1013,13 @@ const getCorrectness = (question, session, env) => {
   }
 };
 
-const normalize = question => ({
+const normalize = (question) => ({
   feedbackEnabled: true,
   rationaleEnabled: true,
   promptEnabled: true,
   teacherInstructionsEnabled: true,
   studentInstructionsEnabled: true,
-  ...question
+  ...question,
 });
 
 function model(question, session, env) {
@@ -989,41 +1027,36 @@ function model(question, session, env) {
     const normalizedQuestion = normalize(question);
     const correctness = getCorrectness(normalizedQuestion, session, env);
 
-    getFeedbackForCorrectness(correctness, normalizedQuestion.feedback).then(
-      feedback => {
-        const out = {
-          prompt: normalizedQuestion.prompt,
-          numbersOnlyWarning: undefined,
-          colorContrast: 'black_on_white',
-          correctness,
-          feedback,
-          disabled: env.mode !== 'gather',
-          answerBlankSize: normalizedQuestion.answerBlankSize,
-          answerAlignment: normalizedQuestion.answerAlignment,
-          allowDecimal: normalizedQuestion.allowDecimal,
-          allowIntegersOnly: normalizedQuestion.allowIntegersOnly,
-          allowThousandsSeparator: normalizedQuestion.allowThousandsSeparator
-        };
+    getFeedbackForCorrectness(correctness, normalizedQuestion.feedback).then((feedback) => {
+      const out = {
+        prompt: normalizedQuestion.prompt,
+        numbersOnlyWarning: undefined,
+        colorContrast: 'black_on_white',
+        correctness,
+        feedback,
+        disabled: env.mode !== 'gather',
+        answerBlankSize: normalizedQuestion.answerBlankSize,
+        answerAlignment: normalizedQuestion.answerAlignment,
+        allowDecimal: normalizedQuestion.allowDecimal,
+        allowIntegersOnly: normalizedQuestion.allowIntegersOnly,
+        allowThousandsSeparator: normalizedQuestion.allowThousandsSeparator,
+      };
 
-        if (
-          env.role === 'instructor' &&
-          (env.mode === 'view' || env.mode === 'evaluate')
-        ) {
-          out.teacherInstructions = normalizedQuestion.teacherInstructionsEnabled
-            ? normalizedQuestion.teacherInstructions
-            : null;
-        } else {
-          out.teacherInstructions = null;
-        }
-
-        resolve(out);
+      if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
+        out.teacherInstructions = normalizedQuestion.teacherInstructionsEnabled
+          ? normalizedQuestion.teacherInstructions
+          : null;
+      } else {
+        out.teacherInstructions = null;
       }
-    );
+
+      resolve(out);
+    });
   });
 }
 
 const outcome = (question, session, env) =>
-  new Promise(resolve => {
+  new Promise((resolve) => {
     if (!session || isEmpty_1(session)) {
       resolve({ score: 0, empty: true });
     }
@@ -1038,16 +1071,16 @@ const outcome = (question, session, env) =>
   });
 
 const createCorrectResponseSession = (question, env) => {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     if (env.mode !== 'evaluate' && env.role === 'instructor') {
       const {
-        correctResponses: { values }
+        correctResponses: { values },
       } = question;
       const value = values[0];
 
       resolve({
         id: '1',
-        value
+        value,
       });
     } else {
       resolve(null);

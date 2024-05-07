@@ -4,13 +4,13 @@ const mkQuestion = () => ({
   equation: '3x+2',
   feedback: {
     correct: {
-      type: 'default'
+      type: 'default',
     },
     incorrect: {
       type: 'custom',
-      custom: 'foo'
-    }
-  }
+      custom: 'foo',
+    },
+  },
 });
 
 describe('model', () => {
@@ -127,7 +127,7 @@ describe('model', () => {
     const question = mkQuestion();
     const env = { mode: 'evaluate' };
 
-    const returnsOutput = session => {
+    const returnsOutput = (session) => {
       it(`empty when session is ${JSON.stringify(session)}`, async () => {
         const m = await model(question, session, env);
         expect(m.correctness).toEqual('empty');
@@ -144,7 +144,7 @@ describe('outcome', () => {
   const question = mkQuestion();
   const env = { mode: 'evaluate' };
 
-  const returnsOutput = session => {
+  const returnsOutput = (session) => {
     it(`score: 0 when session is ${JSON.stringify(session)}`, async () => {
       const m = await outcome(question, session, env);
       expect(m).toEqual({ score: 0, empty: true });
@@ -159,6 +159,4 @@ describe('outcome', () => {
     const m = await outcome(question, { value: '3+3x+2-3' }, env);
     expect(m).toEqual({ score: 1 });
   });
-
 });
-

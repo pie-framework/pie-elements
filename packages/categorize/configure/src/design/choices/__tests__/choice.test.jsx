@@ -7,28 +7,31 @@ describe('choice', () => {
   let onDelete;
   let connectDragSource;
   let connectDragPreview;
+  let connectDropTarget;
 
   beforeEach(() => {
     onChange = jest.fn();
     onDelete = jest.fn();
     connectDragSource = jest.fn();
     connectDragPreview = jest.fn();
+    connectDropTarget = jest.fn();
   });
 
-  const wrapper = extras => {
+  const wrapper = (extras) => {
     const props = {
       classes: {},
       correctResponseCount: 0,
       className: 'classname',
       choice: {
         content: 'hi',
-        id: '1'
+        id: '1',
       },
       onChange,
       onDelete,
       connectDragSource,
       connectDragPreview,
-      ...extras
+      connectDropTarget,
+      ...extras,
     };
 
     return shallow(<Choice {...props} />);
@@ -55,7 +58,7 @@ describe('choice', () => {
         expect(onChange).toBeCalledWith({
           content: 'hi',
           id: '1',
-          categoryCount: 1
+          categoryCount: 1,
         });
       });
     });
@@ -67,7 +70,7 @@ describe('spec', () => {
     it('returns true for categoryCount 0 and correctResponseCount: 100', () => {
       const result = spec.canDrag({
         choice: { categoryCount: 0 },
-        correctResponseCount: 100
+        correctResponseCount: 100,
       });
       expect(result).toEqual(true);
     });
@@ -75,7 +78,7 @@ describe('spec', () => {
     it('returns true for categoryCount 1 and correctResponseCount: 0', () => {
       const result = spec.canDrag({
         choice: { categoryCount: 1 },
-        correctResponseCount: 0
+        correctResponseCount: 0,
       });
       expect(result).toEqual(true);
     });
@@ -83,7 +86,7 @@ describe('spec', () => {
     it('returns false for categoryCount 1 and correctResponseCount: 1', () => {
       const result = spec.canDrag({
         choice: { categoryCount: 1 },
-        correctResponseCount: 1
+        correctResponseCount: 1,
       });
       expect(result).toEqual(false);
     });
@@ -101,17 +104,17 @@ describe('spec', () => {
     let item;
     beforeEach(() => {
       item = {
-        categoryId: '2'
+        categoryId: '2',
       };
       monitor = {
         didDrop: jest.fn().mockReturnValue(false),
-        getItem: jest.fn().mockReturnValue(item)
+        getItem: jest.fn().mockReturnValue(item),
       };
     });
 
     it('calls onRemoveChoice if !didDrop is false and categoryId is defined', () => {
       const props = {
-        onRemoveChoice: jest.fn()
+        onRemoveChoice: jest.fn(),
       };
       spec.endDrag(props, monitor);
       expect(props.onRemoveChoice).toBeCalledWith(item);

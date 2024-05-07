@@ -2,12 +2,18 @@
 
 exports[`Render Main Component should match snapshot 1`] = `
 <div>
+  <h2>
+    Constructed Response Question
+  </h2>
   <EditableHtml
+    allowValidation={false}
     className="response-area-editor"
     highlightShape={true}
+    languageCharactersProps={Array []}
     markup="hi"
     maxHeight="40vh"
     onChange={[Function]}
+    onDone={[Function]}
     pluginProps={
       Object {
         "audio": Object {
@@ -35,6 +41,9 @@ exports[`Render Main Component should match snapshot 1`] = `
 
 exports[`Render Main Component should match snapshot with teacher instructions 1`] = `
 <div>
+  <h2>
+    Constructed Response Question
+  </h2>
   <div>
     <WithStyles(Collapsible)
       labels={
@@ -49,14 +58,16 @@ exports[`Render Main Component should match snapshot with teacher instructions 1
         prompt="Teacher Instructions"
       />
     </WithStyles(Collapsible)>
-    <br />
   </div>
   <EditableHtml
+    allowValidation={false}
     className="response-area-editor"
     highlightShape={true}
+    languageCharactersProps={Array []}
     markup="hi"
     maxHeight="40vh"
     onChange={[Function]}
+    onDone={[Function]}
     pluginProps={
       Object {
         "audio": Object {

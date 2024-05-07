@@ -1,8 +1,16 @@
-import {PromptConfig} from '../../PromptConfig';
-import {PieModel} from '../../PieModel';
+import { PromptConfig } from '../../PromptConfig';
+import { PieModel } from '../../PieModel';
 import { CommonConfigSettings } from '../../CommonConfigSettings';
 import { ComplexFeedbackType } from '../../Feedback';
-import { ConfigureProp } from '../ConfigurationProp';
+import {
+  ConfigureLanguageOptionsProp,
+  ConfigureMathMLProp,
+  ConfigureMaxImageDimensionsProp,
+  ConfigureProp,
+  ConfigurePropWithEnabled,
+  EditableHtmlConfigureProp,
+  EditableHtmlPluginConfigureRequired,
+} from '../ConfigurationProp';
 
 interface TextToken {
   /** The token text */
@@ -79,14 +87,24 @@ export interface SelectTextPie extends PieModel {
 
   /** Indicates if Teacher Instructions are enabled */
   teacherInstructionsEnabled: boolean;
-  
+
+  /** Indicates if spellcheck is enabled */
+  spellCheckEnabled: boolean;
+
   /**
    * Indicates the editor's toolbar position which can be 'bottom' or 'top'
    * @default: 'bottom'
    */
   toolbarEditorPosition?: 'bottom' | 'top';
-}
 
+  /** Indicates if Rubric is enabled */
+  rubricEnabled: boolean;
+
+  /** Indicates the language of the component
+   * Supported options: en, es, en_US, en-US, es_ES, es-ES, es_MX, es-MX
+   */
+  language?: string;
+}
 
 /**
  * Config Object for @pie-elements/select-text
@@ -95,7 +113,13 @@ export interface SelectTextPie extends PieModel {
  * @TJS-title this is the title
  * @additionalProperties false
  */
-export interface SelectTextConfigure extends PromptConfig ,CommonConfigSettings {
+export interface SelectTextConfigure extends PromptConfig, CommonConfigSettings {
+  /**
+   * Base editable html input configuration regarding plugins that are enabled/disabled
+   * E.g. audio, video, image
+   */
+  baseInputConfiguration?: EditableHtmlConfigureProp;
+
   /**
    * Selection Count configuration
    */
@@ -105,7 +129,6 @@ export interface SelectTextConfigure extends PromptConfig ,CommonConfigSettings 
    * Selections configuration
    */
   selections?: ConfigureProp;
-
 
   /**
    * Mode configuration
@@ -135,7 +158,7 @@ export interface SelectTextConfigure extends PromptConfig ,CommonConfigSettings 
   /**
    * Prompt configuration
    */
-  prompt?: ConfigureProp;
+  prompt?: EditableHtmlPluginConfigureRequired;
 
   /**
    * Highlight Choices configuration
@@ -145,7 +168,17 @@ export interface SelectTextConfigure extends PromptConfig ,CommonConfigSettings 
   /**
    * Rationale configuration
    */
-  rationale?: ConfigureProp;
+  rationale?: EditableHtmlPluginConfigureRequired;
+
+  /**
+   * Indicates if the settings panel is not available
+   */
+  settingsPanelDisabled?: boolean;
+
+  /**
+   * Configuration for the spellcheck
+   */
+  spellCheck?: ConfigureProp;
 
   /**
    * Scoring Type configuration
@@ -160,6 +193,52 @@ export interface SelectTextConfigure extends PromptConfig ,CommonConfigSettings 
   /**
    * Teacher Instructions configuration
    */
-  teacherInstructions?: ConfigureProp;
-}
+  teacherInstructions?: EditableHtmlPluginConfigureRequired;
 
+  /**
+   * Maximum number of selected tokens in correct answer
+   */
+  maxSelections?: number;
+
+  /**
+   * Minimum number of tokens
+   */
+  minTokens?: number;
+
+  /**
+   * Maximum number of tokens
+   */
+  maxTokens?: number;
+
+  /**
+   * Maximum image width for input fields
+   */
+  maxImageWidth?: ConfigureMaxImageDimensionsProp;
+
+  /**
+   * Maximum image height for input fields
+   */
+  maxImageHeight?: ConfigureMaxImageDimensionsProp;
+
+  /**
+   * Rubric configuration - only relevant in environments that use pie-player-components
+   */
+  withRubric?: ConfigureProp;
+
+  /** Configuration for editable-html */
+  mathMlOptions?: ConfigureMathMLProp;
+
+  /**
+   * Language configuration
+   */
+  language?: ConfigurePropWithEnabled;
+
+  /**
+   * Language choices configuration
+   * Only available if language is enabled
+   */
+  languageChoices?: {
+    label: string;
+    options: ConfigureLanguageOptionsProp[];
+  };
+}

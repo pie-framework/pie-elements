@@ -4,7 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
 import Choice from './choice';
 import PlaceHolder from './droppable-placeholder';
-import { color } from '@pie-lib/render-ui';
+import { color } from '@pie-lib/pie-toolbox/render-ui';
 
 export const CategoryType = {
   id: PropTypes.string.isRequired,
@@ -24,30 +24,14 @@ export class Category extends React.Component {
   static defaultProps = {};
 
   render() {
-    const {
-      classes,
-      className,
-      choices = [],
-      disabled,
-      onDropChoice,
-      onRemoveChoice,
-      id,
-      correct,
-    } = this.props;
+    const { classes, className, choices = [], disabled, onDropChoice, onRemoveChoice, id, correct } = this.props;
 
     const names = classNames(classes.category, className);
-    const placeholderNames = classNames(
-      classes.placeholder,
-      correct === false && classes.incorrect
-    );
+    const placeholderNames = classNames(classes.placeholder, correct === false && classes.incorrect);
 
     return (
       <div className={names}>
-        <PlaceHolder
-          onDropChoice={onDropChoice}
-          disabled={disabled}
-          className={placeholderNames}
-        >
+        <PlaceHolder onDropChoice={onDropChoice} disabled={disabled} className={placeholderNames}>
           {choices.map((c, index) => (
             <Choice
               onRemoveChoice={onRemoveChoice}
@@ -78,11 +62,12 @@ const styles = (theme) => ({
     flexWrap: 'wrap',
     justifyContent: 'center',
     alignItems: 'center',
-    alignContent: 'flex-start'
+    alignContent: 'flex-start',
   },
   category: {
     display: 'flex',
     flexDirection: 'column',
+    flex: 2
   },
 });
 

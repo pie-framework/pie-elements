@@ -1,16 +1,16 @@
+import { getPluginProps } from './utils';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
-import { Checkbox } from '@pie-lib/config-ui';
+import { AlertDialog, Checkbox } from '@pie-lib/pie-toolbox/config-ui';
 import DragHandle from '@material-ui/icons/DragHandle';
 import Radio from '@material-ui/core/Radio';
-import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
 import Delete from '@material-ui/icons/Delete';
 import { DragSource, DropTarget } from 'react-dnd';
 import debug from 'debug';
-import EditableHtml, { DEFAULT_PLUGINS } from '@pie-lib/editable-html';
-import { InfoDialog } from './common';
+import { EditableHtml, DEFAULT_PLUGINS } from '@pie-lib/pie-toolbox/editable-html';
 
 const log = debug('@pie-element:categorize:configure:choice');
 
@@ -23,6 +23,8 @@ export class Row extends React.Component {
     row: PropTypes.object.isRequired,
     idx: PropTypes.number.isRequired,
     isDragging: PropTypes.bool.isRequired,
+    maxImageWidth: PropTypes.object,
+    maxImageHeight: PropTypes.object,
     onDeleteRow: PropTypes.func.isRequired,
     onChange: PropTypes.func.isRequired,
     connectDragSource: PropTypes.func.isRequired,
@@ -30,10 +32,18 @@ export class Row extends React.Component {
     onMoveRow: PropTypes.func.isRequired,
     imageSupport: PropTypes.shape({
       add: PropTypes.func.isRequired,
-      delete: PropTypes.func.isRequired
+      delete: PropTypes.func.isRequired,
     }),
+    uploadSoundSupport: PropTypes.shape({
+      add: PropTypes.func.isRequired,
+      delete: PropTypes.func.isRequired,
+    }),
+    inputConfiguration: PropTypes.object,
     enableImages: PropTypes.bool,
-    toolbarOpts: PropTypes.object
+    toolbarOpts: PropTypes.object,
+    error: PropTypes.string,
+    spellCheck: PropTypes.bool,
+    minQuestions: PropTypes.number,
   };
 
   static defaultProps = {};
@@ -41,54 +51,23 @@ export class Row extends React.Component {
   state = {
     dialog: {
       open: false,
-      message: ''
-    }
+      text: '',
+    },
   };
 
   componentDidMount() {
     document.addEventListener('mouseup', this.onMouseUpOnHandle);
   }
 
-  onRowTitleChange = rowIndex => value => {
+  onRowTitleChange = (rowIndex) => (value) => {
     const { model, onChange } = this.props;
     const newModel = { ...model };
 
-    const rows = newModel.rows || []
-    const currentRow =  rows[rowIndex] && rows[rowIndex].title;
-
-    const sameValue = rows.filter(row => {
-      const wasChanged = currentRow !== value && `<div>${currentRow}</div>` !== value;
-      const sameValueEntered = row.title === value || `<div>${row.title}</div>` === value;
-
-      return wasChanged && sameValueEntered;
-    });
-
-    const empty = value === '<div></div>';
-
-    if (sameValue.length || empty) {
-      this.setState({
-        dialog: {
-          open: true,
-          message: 'The question row headings must be non-blank and unique.',
-          onOk: () => {
-            this.setState(
-              {
-                dialog: {
-                  open: false,
-                }
-              }
-            );
-          }
-        }
-      });
-    } else {
-      newModel.rows[rowIndex].title = value;
-
-      onChange(newModel);
-    }
+    newModel.rows[rowIndex].title = value;
+    onChange(newModel);
   };
 
-  onRowValueChange = (rowIndex, rowValueIndex) => event => {
+  onRowValueChange = (rowIndex, rowValueIndex) => (event) => {
     const { model, onChange } = this.props;
     const newModel = { ...model };
 
@@ -104,23 +83,14 @@ export class Row extends React.Component {
   };
 
   onDeleteRow = (idx) => () => {
-    const { model, onDeleteRow } = this.props;
+    const { model, onDeleteRow, minQuestions } = this.props;
 
-    if(model.rows && model.rows.length === 1) {
+    if (model.rows && model.rows.length === minQuestions) {
       this.setState({
         dialog: {
           open: true,
-          message: 'There has to be at least one question row.',
-          onOk: () => {
-            this.setState(
-              {
-                dialog: {
-                  open: false,
-                }
-              }
-            );
-          }
-        }
+          text: `There should be at least ${minQuestions} question row` + (minQuestions > 1 ? 's' : '') + '.',
+        },
       });
     } else {
       onDeleteRow(idx);
@@ -145,33 +115,29 @@ export class Row extends React.Component {
       model,
       row,
       idx,
+      inputConfiguration = {},
       enableImages,
-      toolbarOpts
+      toolbarOpts,
+      spellCheck,
+      error,
+      maxImageWidth,
+      maxImageHeight,
+      uploadSoundSupport,
+      mathMlOptions = {},
     } = this.props;
     const { dialog } = this.state;
     const opacity = isDragging ? 0 : 1;
 
-    const rowPlugins = {
-      image: {
-        disabled: !enableImages
-      },
-      audio: { disabled: true },
-      video: { disabled: true }
-    };
-    const filteredDefaultPlugins = (DEFAULT_PLUGINS || [])
-      .filter(p => p !== 'bulleted-list' && p !== 'numbered-list');
+    const filteredDefaultPlugins = (DEFAULT_PLUGINS || []).filter(
+      (p) => p !== 'bulleted-list' && p !== 'numbered-list',
+    );
 
     const content = (
-      <div style={{
-        opacity: opacity
-      }}>
-        <span
-          itemID={'handle'}
-          className={classes.dragHandle}
-          onMouseDown={this.onMouseDownOnHandle}
-        >
+      <div style={{ opacity: opacity, width: '100%' }}>
+        <span itemID={'handle'} className={classes.dragHandle} onMouseDown={this.onMouseDownOnHandle}>
           <DragHandle color={'primary'} />
         </span>
+
         <div className={classes.rowContainer}>
           <div className={classNames(classes.rowItem, classes.questionText)}>
             <EditableHtml
@@ -182,16 +148,24 @@ export class Row extends React.Component {
               markup={row.title}
               onChange={this.onRowTitleChange(idx)}
               className={classes.editor}
-              pluginProps={rowPlugins}
+              pluginProps={inputConfiguration}
               toolbarOpts={toolbarOpts}
-              allowValidation
               activePlugins={filteredDefaultPlugins}
+              spellCheck={spellCheck}
+              maxImageWidth={maxImageWidth}
+              maxImageHeight={maxImageHeight}
+              uploadSoundSupport={uploadSoundSupport}
+              languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+              error={error && error !== 'No correct response defined.'}
+              mathMlOptions={mathMlOptions}
             />
           </div>
+
           {row.values.map((rowValue, rowIdx) => (
             <div key={rowIdx} className={classes.rowItem}>
               {model.choiceMode === 'radio' ? (
                 <Radio
+                  className={classNames({ [classes.errorResponse]: error?.includes('No correct response defined.') })}
                   onChange={this.onRowValueChange(idx, rowIdx)}
                   checked={rowValue === true}
                 />
@@ -200,21 +174,27 @@ export class Row extends React.Component {
                   onChange={this.onRowValueChange(idx, rowIdx)}
                   checked={rowValue === true}
                   label={''}
+                  error={error?.includes('No correct response defined.')}
                 />
               )}
             </div>
           ))}
+
           <div className={classes.deleteIcon}>
-            <Button onClick={this.onDeleteRow(idx)}>
-              <Delete className={classes.deleteIcon} />
-            </Button>
+            <IconButton onClick={this.onDeleteRow(idx)} aria-label="Delete">
+              <Delete />
+            </IconButton>
           </div>
         </div>
+
+        {error && <div className={classes.errorText}>{error}</div>}
         <hr className={classes.separator} />
-        <InfoDialog
-          title={dialog.message}
+
+        <AlertDialog
           open={dialog.open}
-          onOk={dialog.onOk}
+          title="Warning"
+          text={dialog.text}
+          onConfirm={() => this.setState({ dialog: { open: false } })}
         />
       </div>
     );
@@ -222,56 +202,76 @@ export class Row extends React.Component {
     return connectDragSource(connectDropTarget(content));
   }
 }
-const styles = theme => ({
+
+const styles = (theme) => ({
   actions: {
     padding: 0,
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
   },
   choice: {
     padding: theme.spacing.unit,
-    overflow: 'visible'
+    overflow: 'visible',
   },
   dragHandle: {
-    cursor: 'move'
+    cursor: 'move',
   },
   dragDisabled: {
-    cursor: 'inherit'
+    cursor: 'inherit',
   },
 
   container: {
     marginTop: theme.spacing.unit * 2,
     display: 'flex',
-    flexDirection: 'column'
+    flexDirection: 'column',
   },
   rowContainer: {
     marginTop: theme.spacing.unit * 2,
     display: 'flex',
     alignItems: 'center',
-    flex: 1
+    flex: 1,
   },
   rowItem: {
     flex: 1,
     display: 'flex',
     justifyContent: 'center',
-    '&> div': {
-      width: '100%'
-    }
+    alignItems: 'center',
+    minWidth: '150px',
+    padding: `0 ${theme.spacing.unit}px`,
   },
   deleteIcon: {
     flex: 0.5,
-    minWidth: '88px',
+    display: 'flex',
+    justifyContent: 'center',
+    minWidth: '48px',
+    padding: `0 ${theme.spacing.unit}px`,
   },
   questionText: {
     flex: 2,
     display: 'flex',
-    justifyContent: 'flex-start'
+    justifyContent: 'flex-start',
+    padding: 0,
+    maxWidth: 'unset',
+    textAlign: 'left',
+    minWidth: '350px',
+    marginRight: theme.spacing.unit,
+    '&> div': {
+      width: '100%',
+    },
   },
   separator: {
     marginTop: theme.spacing.unit * 2,
     border: 0,
-    borderTop: '2px solid lightgray',
-    width: '100%'
-  }
+    borderTop: `2px solid ${theme.palette.grey['A100']}`,
+    width: '100%',
+  },
+  errorText: {
+    fontSize: theme.typography.fontSize - 2,
+    color: theme.palette.error.main,
+    paddingTop: theme.spacing.unit,
+  },
+  errorResponse: {
+    color: theme.palette.error.main,
+  },
 });
 
 const StyledRow = withStyles(styles)(Row);
@@ -285,14 +285,14 @@ export const choiceSource = {
   beginDrag(props) {
     return {
       id: props.row.id,
-      index: props.idx
+      index: props.idx,
     };
-  }
+  },
 };
 
 const StyledSource = DragSource(NAME, choiceSource, (connect, monitor) => ({
   connectDragSource: connect.dragSource(),
-  isDragging: monitor.isDragging()
+  isDragging: monitor.isDragging(),
 }))(StyledRow);
 
 export const choiceTarget = {
@@ -301,13 +301,15 @@ export const choiceTarget = {
   },
   drop(props, monitor) {
     const item = monitor.getItem();
+
     log('[drop] item: ', item, 'didDrop?', monitor.didDrop());
+
     props.onMoveRow(item.index, props.idx);
-  }
+  },
 };
 
-const StyledSourceAndTarget = DropTarget(NAME, choiceTarget, connect => ({
-  connectDropTarget: connect.dropTarget()
+const StyledSourceAndTarget = DropTarget(NAME, choiceTarget, (connect) => ({
+  connectDropTarget: connect.dropTarget(),
 }))(StyledSource);
 
 export default StyledSourceAndTarget;

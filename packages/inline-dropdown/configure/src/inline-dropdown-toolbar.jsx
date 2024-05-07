@@ -1,13 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import EditableHtml from '@pie-lib/editable-html';
-import { renderMath } from '@pie-lib/math-rendering';
+import {EditableHtml} from '@pie-lib/pie-toolbox/editable-html';
+import { renderMath } from '@pie-lib/pie-toolbox/math-rendering-accessible';
 import { withStyles } from '@material-ui/core/styles';
 import isEqual from 'lodash/isEqual';
 import isEmpty from 'lodash/isEmpty';
 import classnames from 'classnames';
-import { DEFAULT_PLUGINS } from '@pie-lib/editable-html';
+import { DEFAULT_PLUGINS } from '@pie-lib/pie-toolbox/editable-html';
+import { color } from '@pie-lib/pie-toolbox/render-ui';
+
+import AddIcon from '@material-ui/icons/Add';
+import CheckIcon from '@material-ui/icons/Check';
+import CloseIcon from '@material-ui/icons/Close';
+import EditIcon from '@material-ui/icons/Edit';
+import IconButton from '@material-ui/core/IconButton';
 
 class MenuItemComp extends React.Component {
   static propTypes = {
@@ -15,10 +22,11 @@ class MenuItemComp extends React.Component {
     correct: PropTypes.bool.isRequired,
     onClick: PropTypes.func.isRequired,
     onRemoveChoice: PropTypes.func.isRequired,
-    value: PropTypes.string.isRequired
+    onEditChoice: PropTypes.func.isRequired,
+    value: PropTypes.string.isRequired,
   };
 
-  onRemoveClick = e => {
+  onRemoveClick = (e) => {
     const { onRemoveChoice } = this.props;
 
     e.preventDefault();
@@ -27,59 +35,95 @@ class MenuItemComp extends React.Component {
     onRemoveChoice();
   };
 
+  onEditClick = (e) => {
+    const { onEditChoice } = this.props;
+
+    e.preventDefault();
+    e.stopPropagation();
+
+    onEditChoice();
+  };
+
   render() {
     const { classes, correct, onClick, value } = this.props;
 
     return (
-      <div className={classnames(classes.wrapper, { [classes.correct]: correct })} onClick={onClick}>
+      <div className={classes.wrapper}>
+        {correct && (
+          <div className={classes.selectedIcon} onClick={onClick}>
+            <CheckIcon fontSize="inherit" />
+          </div>
+        )}
         <div
-          className={classes.valueHolder}
+          className={classnames(classes.valueHolder, { [classes.correct]: correct })}
+          onClick={onClick}
           dangerouslySetInnerHTML={{
-            __html: value
+            __html: value,
           }}
         />
-        <i className={classes.removeIcon} onClick={this.onRemoveClick}>
-          x
-        </i>
+        <div className={classes.actionButtons}>
+          <IconButton className={classes.iconButton} onClick={this.onEditClick} size="small" aria-label="Edit">
+            <EditIcon fontSize="inherit" />
+          </IconButton>
+          <IconButton className={classes.iconButton} onClick={this.onRemoveClick} size="small" aria-label="Remove">
+            <CloseIcon fontSize="inherit" />
+          </IconButton>
+        </div>
       </div>
     );
   }
 }
 
-const MenuItem = withStyles({
+const MenuItem = withStyles((theme) => ({
   wrapper: {
-    background: '#fff',
-    borderBottom: '1px solid black',
-    boxSizing: 'border-box',
-    display: 'block',
-    cursor: 'pointer',
-    lineHeight: '30px',
-    padding: '10px 25px 10px 10px',
-    position: 'relative'
+    display: 'flex',
+    alignItems: 'flex-start',
+    position: 'relative',
+    background: theme.palette.common.white,
+    borderBottom: `1px solid ${theme.palette.grey[400]}`,
+
+    '&:last-child': {
+      borderRadius: '0 0 4px 4px',
+    },
   },
   correct: {
-    background: '#C4DCFA'
+    background: color.correctSecondary(),
   },
-  removeIcon: {
-    cursor: 'pointer',
-    fontSize: '20px',
+  actionButtons: {
+    margin: theme.spacing.unit / 2,
+    display: 'flex',
+  },
+  iconButton: {
+    fontSize: theme.typography.fontSize,
+    padding: theme.spacing.unit / 2,
+    color: theme.palette.common.black,
+  },
+  selectedIcon: {
+    display: 'flex',
+    justifyContent: 'center',
+    color: theme.palette.common.white,
+    fontSize: theme.typography.fontSize,
     fontStyle: 'normal',
     position: 'absolute',
     transform: 'translate(0, -50%)',
-    top: '50%',
-    right: '5px',
-    zIndex: 3
+    backgroundColor: color.correct(),
+    borderRadius: '50%',
+    top: theme.spacing.unit * 2,
+    left: theme.spacing.unit,
+    zIndex: 3,
   },
   valueHolder: {
-    wordBreak: 'break-all'
-  }
-})(MenuItemComp);
+    flex: 1,
+    padding: theme.spacing.unit * 0.75,
+    paddingLeft: theme.spacing.unit * 3.5,
+  },
+}))(MenuItemComp);
 
-const findSlateNode = key => {
+const findSlateNode = (key) => {
   return window.document.querySelector('[data-key="' + key + '"]');
 };
 
-const createElementFromHTML = htmlString => {
+const createElementFromHTML = (htmlString) => {
   const div = document.createElement('div');
 
   div.innerHTML = (htmlString || '').trim();
@@ -91,22 +135,28 @@ export class RespAreaToolbar extends React.Component {
   static propTypes = {
     classes: PropTypes.object,
     node: PropTypes.object,
+    uploadSoundSupport: PropTypes.object,
     onDone: PropTypes.func,
     choices: PropTypes.array,
     onAddChoice: PropTypes.func.isRequired,
+    onCheck: PropTypes.func,
     onRemoveChoice: PropTypes.func.isRequired,
     onSelectChoice: PropTypes.func.isRequired,
     onToolbarDone: PropTypes.func.isRequired,
     value: PropTypes.shape({
       change: PropTypes.func.isRequired,
       document: PropTypes.shape({
-        getNextText: PropTypes.func.isRequired
-      })
-    })
+        getNextText: PropTypes.func.isRequired,
+      }),
+    }),
+    spellCheck: PropTypes.bool,
   };
+  clickedInside = false;
+  preventDone = false;
 
   state = {
-    respAreaMarkup: ''
+    respAreaMarkup: '',
+    editedChoiceIndex: -1,
   };
 
   componentDidMount() {
@@ -127,8 +177,7 @@ export class RespAreaToolbar extends React.Component {
           position: 'absolute',
           top: `${top + domNodeRect.height + 60}px`,
           left: `${left + 25}px`,
-          width: domNodeRect.width
-        }
+        },
       });
     }
   }
@@ -140,7 +189,7 @@ export class RespAreaToolbar extends React.Component {
     renderMath(domNode);
   }
 
-  onRespAreaChange = respAreaMarkup => {
+  onRespAreaChange = (respAreaMarkup) => {
     this.setState({ respAreaMarkup });
   };
 
@@ -151,12 +200,22 @@ export class RespAreaToolbar extends React.Component {
   };
 
   onDone = (val) => {
-    const { node, onAddChoice } = this.props;
+    const { choices, node, value, onAddChoice, onToolbarDone } = this.props;
+    const { editedChoiceIndex } = this.state;
     const onlyText = createElementFromHTML(val).textContent.trim();
 
-    if (!isEmpty(onlyText)) {
-      onAddChoice(node.data.get('index'), val);
+    if (editedChoiceIndex >= 0 && choices?.[editedChoiceIndex]?.correct) {
+      const update = { ...node.data.toJSON(), value: val };
+      const change = value.change().setNodeByKey(node.key, { data: update });
+
+      onToolbarDone(change, false);
     }
+
+    if (!isEmpty(onlyText)) {
+      onAddChoice(node.data.get('index'), val, editedChoiceIndex);
+    }
+
+    this.setState({ editedChoiceIndex: -1 });
   };
 
   onSelectChoice = (newValue, index) => {
@@ -186,7 +245,12 @@ export class RespAreaToolbar extends React.Component {
     onRemoveChoice(index);
   };
 
-  onKeyDown = event => {
+  onEditChoice = (val, index) => {
+    this.onRespAreaChange(val);
+    this.setState({ editedChoiceIndex: index });
+  };
+
+  onKeyDown = (event) => {
     if (event.key === 'Enter') {
       this.onAddChoice();
       // Cancelling event
@@ -201,7 +265,7 @@ export class RespAreaToolbar extends React.Component {
     }
 
     const { node, choices, onCheck, onToolbarDone, value } = this.props;
-    const correctResponse = (choices || []).find(choice => choice.correct);
+    const correctResponse = (choices || []).find((choice) => choice.correct);
 
     this.onAddChoice();
     if (!choices || (choices && choices.length < 2) || !correctResponse) {
@@ -229,13 +293,15 @@ export class RespAreaToolbar extends React.Component {
   };
 
   render() {
-    const { classes, choices } = this.props;
+    const { classes, choices, spellCheck, uploadSoundSupport, mathMlOptions = {} } = this.props;
     const { respAreaMarkup, toolbarStyle } = this.state;
 
-    const filteredDefaultPlugins = (DEFAULT_PLUGINS || []).filter(p => p !== 'table' && p !== 'bulleted-list' && p !== 'numbered-list');
+    const filteredDefaultPlugins = (DEFAULT_PLUGINS || []).filter(
+      (p) => p !== 'table' && p !== 'bulleted-list' && p !== 'numbered-list',
+    );
     const labelPlugins = {
       audio: { disabled: true },
-      video: { disabled: true }
+      video: { disabled: true },
     };
 
     if (!toolbarStyle) {
@@ -244,15 +310,16 @@ export class RespAreaToolbar extends React.Component {
 
     return (
       <div
+        className={classes.responseContainer}
         style={{
           ...toolbarStyle,
-          backgroundColor: '#E0E1E6'
+          backgroundColor: '#E0E1E6',
         }}
         onMouseDown={this.onClickInside}
       >
         <div className={classes.itemBuilder}>
           <EditableHtml
-            ref={ref => {
+            ref={(ref) => {
               if (ref) {
                 this.editorRef = ref;
               }
@@ -264,34 +331,50 @@ export class RespAreaToolbar extends React.Component {
               position: 'top',
               alwaysVisible: false,
               showDone: false,
-              doneOn: 'blur'
+              doneOn: 'blur',
             }}
             markup={respAreaMarkup}
             onKeyDown={this.onKeyDown}
-            onChange={this.onRespAreaChange}
-            onDone={this.onDone}
+            languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+            onChange={(respAreaMarkup) => {
+              if (this.preventDone) {
+                return;
+              }
+
+              this.onRespAreaChange(respAreaMarkup);
+            }}
+            onDone={(val) => {
+              if (this.preventDone) {
+                return;
+              }
+
+              this.onDone(val);
+            }}
+            onBlur={(e) => {
+              const inInInsertCharacter = e.relatedTarget && e.relatedTarget.closest('.insert-character-dialog');
+
+              this.preventDone = inInInsertCharacter;
+
+              this.onBlur(e);
+            }}
             placeholder="Add Choice"
             activePlugins={filteredDefaultPlugins}
             pluginProps={labelPlugins}
-            onBlur={this.onBlur}
+            spellCheck={spellCheck}
+            uploadSoundSupport={uploadSoundSupport}
+            mathMlOptions={mathMlOptions}
           />
-          <i
-            style={{
-              cursor: 'pointer',
-              fontSize: '20px',
-              fontStyle: 'normal',
-              position: 'absolute',
-              top: '50%',
-              right: '15px',
-              transform: 'translate(0, -50%)'
-            }}
-            contentEditable={false}
+          <IconButton
+            className={classes.addButton}
             onMouseDown={() => this.focusInput()}
             onClick={() => this.onAddChoice()}
+            size="small"
+            aria-label="Add"
           >
-            +
-          </i>
+            <AddIcon fontSize="inherit" />
+          </IconButton>
         </div>
+
         {choices && (
           <div className={classes.choicesHolder}>
             {choices.map(({ label, correct }, index) => (
@@ -299,6 +382,7 @@ export class RespAreaToolbar extends React.Component {
                 key={index}
                 onClick={() => this.onSelectChoice(label, index)}
                 onRemoveChoice={() => this.onRemoveChoice(label, index)}
+                onEditChoice={() => this.onEditChoice(label, index)}
                 value={label}
                 correct={correct}
               />
@@ -310,24 +394,39 @@ export class RespAreaToolbar extends React.Component {
   }
 }
 
-const StyledRespAreaToolbar = withStyles({
+const StyledRespAreaToolbar = withStyles((theme) => ({
+  responseContainer: {
+    boxShadow: theme.shadows[2],
+    borderRadius: '4px',
+    width: '400px',
+  },
   respArea: {
-    backgroundColor: '#fff',
+    borderRadius: '4px',
+    backgroundColor: theme.palette.common.white,
     '& [data-slate-editor="true"]': {
-      minHeight: 'initial !important'
-    }
+      minHeight: 'initial !important',
+    },
+  },
+  addButton: {
+    fontSize: theme.typography.fontSize + 2,
+    padding: theme.spacing.unit / 2,
+    color: theme.palette.common.black,
+    position: 'absolute',
+    top: '50%',
+    right: theme.spacing.unit * 2,
+    transform: 'translate(0, -50%)',
   },
   choicesHolder: {
     display: 'flex',
     flexDirection: 'column',
     '& > div:last-child': {
-      border: 'none'
-    }
+      border: 'none',
+    },
   },
   itemBuilder: {
-    padding: '8px',
-    position: 'relative'
-  }
-})(RespAreaToolbar);
+    padding: theme.spacing.unit / 2,
+    position: 'relative',
+  },
+}))(RespAreaToolbar);
 
 export default StyledRespAreaToolbar;

@@ -1,10 +1,10 @@
 import React from 'react';
-import { MathToolbar } from '@pie-lib/math-toolbar';
-import { mq } from '@pie-lib/math-input';
+import { MathToolbar } from '@pie-lib/pie-toolbox/math-toolbar';
+import { mq } from '@pie-lib/pie-toolbox/math-input';
 import cx from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
-import { color } from '@pie-lib/render-ui';
+import { color } from '@pie-lib/pie-toolbox/render-ui';
 
 export class SimpleQuestionBlockRaw extends React.Component {
   static propTypes = {
@@ -13,41 +13,49 @@ export class SimpleQuestionBlockRaw extends React.Component {
     model: PropTypes.object.isRequired,
     emptyResponse: PropTypes.bool,
     session: PropTypes.object.isRequired,
-    showCorrect: PropTypes.bool
+    showCorrect: PropTypes.bool,
   };
 
-  state = {
-    showKeypad: true
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      showKeypad: true,
+    };
+    this.mathToolBarId = `math-toolbar-${new Date().getTime()}`;
+  }
+
+  componentDidMount() {
+    window.addEventListener('click', this.handleClick);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('click', this.handleClick);
+  }
+
+  mathToolBarContainsTarget = (e) => document.getElementById(this.mathToolBarId).contains(e.target);
+
+  handleClick = (e) => {
+    try {
+      if (!this.mathToolBarContainsTarget(e)) {
+        this.setState({ showKeypad: false });
+      }
+    } catch (e) {
+      // console.log(e.toString());
+    }
   };
 
   onFocus = () => this.setState({ showKeypad: true });
 
-  onBlur = (e) => {
-    const { relatedTarget, currentTarget } = e || {};
-
-    if (!relatedTarget || !currentTarget || (relatedTarget.offsetParent !== currentTarget.offsetParent)) {
-      this.setState({ showKeypad: false });
-    }
-  };
-
   render() {
-    const {
-      classes,
-      model,
-      showCorrect,
-      session,
-      emptyResponse,
-      onSimpleResponseChange
-    } = this.props;
-    const { config, disabled, correctness, view } = model || {};
+    const { classes, model, showCorrect, session, emptyResponse, onSimpleResponseChange } = this.props;
+    const { config, disabled, correctness } = model || {};
 
     if (!config) {
       return;
     }
 
     const correct = correctness && correctness.correct;
-    const showAsCorrect = !emptyResponse && (showCorrect || correct);
-    const showAsIncorrect = !emptyResponse && !correct && !showCorrect && !view;
     const { responses, equationEditor } = config;
 
     return (
@@ -56,34 +64,34 @@ export class SimpleQuestionBlockRaw extends React.Component {
           <div
             className={cx(classes.static, {
               [classes.incorrect]: !emptyResponse && !correct && !showCorrect,
-                  [classes.correct]: !emptyResponse && (correct || showCorrect)
+              [classes.correct]: !emptyResponse && (correct || showCorrect),
             })}
           >
             <mq.Static
-              latex={
-                showCorrect ? (responses && responses.length && responses[0].answer) : (session.response || '')
-              }
+              latex={showCorrect ? responses && responses.length && responses[0].answer : session.response || ''}
             />
           </div>
         ) : (
-          <MathToolbar
-            classNames={{ editor: classes.responseEditor }}
-            latex={session.response || ''}
-            keypadMode={equationEditor}
-            onChange={onSimpleResponseChange}
-            onDone={() => {}}
-            onFocus={this.onFocus}
-            onBlur={this.onBlur}
-            controlledKeypad={true}
-            showKeypad={this.state.showKeypad}
-            hideDoneButton={true}
-          />
+          <div id={this.mathToolBarId}>
+            <MathToolbar
+              classNames={{ editor: classes.responseEditor }}
+              latex={session.response || ''}
+              keypadMode={equationEditor}
+              onChange={onSimpleResponseChange}
+              onDone={() => {}}
+              onFocus={this.onFocus}
+              controlledKeypad={true}
+              showKeypad={this.state.showKeypad}
+              hideDoneButton={true}
+            />
+          </div>
         )}
       </div>
     );
   }
 }
-const SimpleQuestionBlock = withStyles(theme => ({
+
+const SimpleQuestionBlock = withStyles((theme) => ({
   responseEditor: {
     display: 'flex',
     justifyContent: 'center',
@@ -93,13 +101,13 @@ const SimpleQuestionBlock = withStyles(theme => ({
     textAlign: 'left',
     padding: theme.spacing.unit,
     '&.mq-math-mode': {
-      border: `1px solid ${color.primaryLight()}`
-    }
+      border: `1px solid ${color.primaryLight()}`,
+    },
   },
   expression: {
     marginTop: theme.spacing.unit * 2,
     marginBottom: theme.spacing.unit * 2,
-    padding: theme.spacing.unit
+    padding: theme.spacing.unit,
   },
   static: {
     color: color.text(),
@@ -111,10 +119,10 @@ const SimpleQuestionBlock = withStyles(theme => ({
     '& > .mq-math-mode': {
       '& > .mq-hasCursor': {
         '& > .mq-cursor': {
-          display: 'none'
-        }
-      }
-    }
+          display: 'none',
+        },
+      },
+    },
   },
   correct: {
     border: `2px solid ${color.correct()} !important`,
@@ -125,7 +133,7 @@ const SimpleQuestionBlock = withStyles(theme => ({
     border: `2px solid ${color.incorrect()} !important`,
     padding: theme.spacing.unit,
     letterSpacing: '0.5px',
-  }
+  },
 }))(SimpleQuestionBlockRaw);
 
 export default SimpleQuestionBlock;

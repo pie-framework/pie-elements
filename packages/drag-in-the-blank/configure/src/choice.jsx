@@ -9,11 +9,7 @@ import PropTypes from 'prop-types';
 const GripIcon = ({ style }) => {
   return (
     <span style={style}>
-      <MoreVert
-        style={{
-          margin: '0 -16px'
-        }}
-      />
+      <MoreVert style={{ margin: '0 -16px' }} />
       <MoreVert />
     </span>
   );
@@ -23,52 +19,50 @@ GripIcon.propTypes = {
   style: PropTypes.object,
 };
 
-export const BlankContent = withStyles(theme => ({
+export const BlankContent = withStyles((theme) => ({
   choice: {
-    border: `solid 0px ${theme.palette.primary.main}`
+    display: 'inline-flex',
+    minWidth: '178px',
+    minHeight: '36px',
+    background: theme.palette.common.white,
+    boxSizing: 'border-box',
+    borderRadius: '3px',
+    overflow: 'hidden',
+    position: 'relative',
+    padding: '8px 35px 8px 35px',
+    cursor: 'grab',
   },
-  disabled: {}
-}))(props => {
-  const { connectDragSource, choice, onClick, onRemoveChoice } = props;
+  deleteIcon: {
+    position: 'absolute',
+    top: '6px',
+    right: '0',
+    color: theme.palette.grey[500],
+    zIndex: 2,
+
+    '& :hover': {
+      cursor: 'pointer',
+      color: theme.palette.common.black,
+    },
+  },
+}))((props) => {
+  const { classes, connectDragSource, choice, onClick, onRemoveChoice, error } = props;
 
   return connectDragSource(
-    <div
-      style={{
-        display: 'inline-flex',
-        minWidth: '178px',
-        minHeight: '36px',
-        background: '#FFF',
-        border: '1px solid #C0C3CF',
-        boxSizing: 'border-box',
-        borderRadius: '3px',
-        overflow: 'hidden',
-        position: 'relative',
-        padding: '8px 35px 8px 35px'
-      }}
-      onClick={onClick}
-    >
+    <div className={classes.choice} style={{ border: `1px solid ${error ? '#f44336' : '#C0C3CF'}` }} onClick={onClick}>
       <GripIcon
         style={{
           position: 'absolute',
           top: '6px',
           left: '15px',
-          color: '#9B9B9B',
-          zIndex: 2
+          color: '#9e9e9e',
+          zIndex: 2,
         }}
       />
-      <span
-        dangerouslySetInnerHTML={{
-          __html: choice.value
-        }}
-      />
+
+      <span dangerouslySetInnerHTML={{ __html: choice.value }} />
+
       <Delete
-        style={{
-          position: 'absolute',
-          top: '6px',
-          right: '0',
-          color: '#9B9B9B',
-          zIndex: 2
-        }}
+        className={classes.deleteIcon}
         onClick={(e) => {
           e.preventDefault();
           e.stopPropagation();
@@ -76,7 +70,7 @@ export const BlankContent = withStyles(theme => ({
           onRemoveChoice(e);
         }}
       />
-    </div>
+    </div>,
   );
 });
 
@@ -93,12 +87,12 @@ export const tileSource = {
     return {
       id: props.targetId,
       value: props.choice,
-      instanceId: props.instanceId
+      instanceId: props.instanceId,
     };
-  }
+  },
 };
 
 export default DragSource('drag-in-the-blank-choice', tileSource, (connect, monitor) => ({
   connectDragSource: connect.dragSource(),
-  isDragging: monitor.isDragging()
+  isDragging: monitor.isDragging(),
 }))(BlankContent);

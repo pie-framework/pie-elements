@@ -5,62 +5,100 @@ import { getAllShapes, groupShapes } from '../utils';
 
 const model = () => ({
   imageUrl: 'https://cdn.fluence.net/image/0240eb1455ce4c4bb6180232347b6aef_W',
-  shapes: groupShapes(getAllShapes({
-    rectangles: [
-      {
-        id: '0',
-        height: 140,
-        width: 130,
-        x: 1,
-        y: 1,
-        correct: true
-      }, {
-        id: '1',
-        height: 140,
-        width: 130,
-        x: 140,
-        y: 1
-      }, {
-        id: '2',
-        height: 140,
-        width: 130,
-        x: 280,
-        y: 1
-      }
-    ],
-    polygons: [
-      {
-        id: '3',
-        points: [{ x: 1, y: 148 }, { x: 1, y: 288 }, { y: 288, x: 129 }, { y: 148, x: 129 }],
-        correct: true
-      }, {
-        id: '4',
-        points: [{ y: 151, x: 141 }, { y: 289, x: 141 }, { y: 289, x: 269 }, { x: 269, y: 151 }],
-        correct: false
-      }, {
-        id: '5',
-        points: [{ x: 279, y: 150 }, { x: 279, y: 289 }, { x: 407, y: 289 }, { x: 407, y: 150 }],
-        correct: false
-      }]
-  })),
+  shapes: groupShapes(
+    getAllShapes({
+      rectangles: [
+        {
+          id: '0',
+          height: 140,
+          width: 130,
+          x: 1,
+          y: 1,
+          correct: true,
+        },
+        {
+          id: '1',
+          height: 140,
+          width: 130,
+          x: 140,
+          y: 1,
+        },
+        {
+          id: '2',
+          height: 140,
+          width: 130,
+          x: 280,
+          y: 1,
+        },
+      ],
+      polygons: [
+        {
+          id: '3',
+          points: [
+            { x: 1, y: 148 },
+            { x: 1, y: 288 },
+            { y: 288, x: 129 },
+            { y: 148, x: 129 },
+          ],
+          correct: true,
+        },
+        {
+          id: '4',
+          points: [
+            { y: 151, x: 141 },
+            { y: 289, x: 141 },
+            { y: 289, x: 269 },
+            { x: 269, y: 151 },
+          ],
+          correct: false,
+        },
+        {
+          id: '5',
+          points: [
+            { x: 279, y: 150 },
+            { x: 279, y: 289 },
+            { x: 407, y: 289 },
+            { x: 407, y: 150 },
+          ],
+          correct: false,
+        },
+      ],
+      circles: [
+        {
+          id: '6',
+          radius: 70,
+          x: 100,
+          y: 100,
+          correct: false,
+        },
+        {
+          id: '7',
+          radius: 30,
+          x: 200,
+          y: 150,
+          correct: true,
+        },
+      ],
+    }),
+  ),
   dimensions: {
-    height: 291, width: 410
+    height: 291,
+    width: 410,
   },
   hotspotColor: 'rgba(137, 183, 244, 0.65)',
   outlineColor: 'blue',
-  multipleCorrect: true
+  multipleCorrect: true,
 });
 
 describe('HotspotContainer', () => {
   let w,
     onImageUpload = jest.fn(),
     onUpdateImageDimension = jest.fn(),
+    onDeleteShape = jest.fn(),
     onUpdateShapes = jest.fn(),
-    initialModel = model()
-  ;
-
+    initialModel = model();
   beforeEach(() => {
-    w = extras => {
+    w = (extras) => {
       const props = {
         classes: {},
         dimensions: initialModel.dimensions,
@@ -70,19 +108,20 @@ describe('HotspotContainer', () => {
         outlineColor: initialModel.outlineColor,
         onUpdateImageDimension: onUpdateImageDimension,
         onUpdateShapes: onUpdateShapes,
+        onDeleteShape: onDeleteShape,
         onImageUpload: onImageUpload,
         shapes: initialModel.shapes,
-        ...extras
+        ...extras,
       };
 
       return shallow(<Container {...props} />);
-    }
+    };
   });
 
   describe('render', () => {
     it('renders', () => {
       expect(w()).toMatchSnapshot();
-    })
+    });
   });
 
   describe('logic', () => {
@@ -96,23 +135,25 @@ describe('HotspotContainer', () => {
         y: 1,
         correct: true,
         group: 'rectangles',
-        index: 0
-      }, {
+        index: 0,
+      },
+      {
         id: '1',
         height: 140,
         width: 130,
         x: 140,
         y: 1,
         group: 'rectangles',
-        index: 1
-      }, {
+        index: 1,
+      },
+      {
         id: '2',
         height: 140,
         width: 130,
         x: 280,
         y: 1,
         group: 'rectangles',
-        index: 2
+        index: 2,
       },
       {
         id: '3',
@@ -120,32 +161,54 @@ describe('HotspotContainer', () => {
           { x: 1, y: 148 },
           { x: 1, y: 288 },
           { y: 288, x: 129 },
-          { y: 148, x: 129 }],
+          { y: 148, x: 129 },
+        ],
         correct: true,
         group: 'polygons',
-        index: 3
-      }, {
+        index: 3,
+      },
+      {
         id: '4',
         points: [
           { y: 151, x: 141 },
           { y: 289, x: 141 },
           { y: 289, x: 269 },
-          { x: 269, y: 151 }],
+          { x: 269, y: 151 },
+        ],
         correct: false,
         group: 'polygons',
-        index: 4
-      }, {
+        index: 4,
+      },
+      {
         id: '5',
         points: [
           { x: 279, y: 150 },
           { x: 279, y: 289 },
           { x: 407, y: 289 },
-          { x: 407, y: 150 }
+          { x: 407, y: 150 },
         ],
         correct: false,
         group: 'polygons',
-        index: 5
-      }
+        index: 5,
+      },
+      {
+        id: '6',
+        radius: 70,
+        x: 100,
+        y: 100,
+        correct: false,
+        group: 'circles',
+        index: 6,
+      },
+      {
+        id: '7',
+        radius: 30,
+        x: 200,
+        y: 150,
+        correct: true,
+        group: 'circles',
+        index: 7,
+      },
     ];
 
     beforeEach(() => {
@@ -158,12 +221,12 @@ describe('HotspotContainer', () => {
 
     it('onUpdateShapes with new added shape', () => {
       const newShape = {
-        id: '7',
+        id: '8',
         height: 140,
         width: 130,
         x: 280,
         y: 1,
-        group: 'rectangles'
+        group: 'rectangles',
       };
 
       wrapper.instance().onUpdateShapes([...formattedShapes, newShape]);
@@ -172,15 +235,82 @@ describe('HotspotContainer', () => {
         rectangles: [
           ...initialModel.shapes.rectangles,
           {
-            id: '7',
+            id: '8',
             height: 140,
             width: 130,
             x: 280,
             y: 1,
-          }
+          },
         ],
-        polygons: initialModel.shapes.polygons
-      })
+        polygons: initialModel.shapes.polygons,
+        circles: initialModel.shapes.circles,
+      });
+    });
+
+    it('onDeleteShape by id', () => {
+      console.log('wrapper', wrapper.instance());
+      wrapper.instance().onDeleteShape('8');
+      expect(onUpdateShapes).toHaveBeenCalledWith(
+        groupShapes([
+          { correct: true, group: 'rectangles', height: 140, id: '0', index: 0, width: 130, x: 1, y: 1 },
+          { group: 'rectangles', height: 140, id: '1', index: 1, width: 130, x: 140, y: 1 },
+          { group: 'rectangles', height: 140, id: '2', index: 2, width: 130, x: 280, y: 1 },
+          {
+            correct: true,
+            group: 'polygons',
+            id: '3',
+            index: 3,
+            points: [
+              { x: 1, y: 148 },
+              { x: 1, y: 288 },
+              { x: 129, y: 288 },
+              { x: 129, y: 148 },
+            ],
+          },
+          {
+            correct: false,
+            group: 'polygons',
+            id: '4',
+            index: 4,
+            points: [
+              { x: 141, y: 151 },
+              { x: 141, y: 289 },
+              { x: 269, y: 289 },
+              { x: 269, y: 151 },
+            ],
+          },
+          {
+            correct: false,
+            group: 'polygons',
+            id: '5',
+            index: 5,
+            points: [
+              { x: 279, y: 150 },
+              { x: 279, y: 289 },
+              { x: 407, y: 289 },
+              { x: 407, y: 150 },
+            ],
+          },
+          {
+            id: '6',
+            radius: 70,
+            x: 100,
+            y: 100,
+            correct: false,
+            group: 'circles',
+            index: 6,
+          },
+          {
+            id: '7',
+            radius: 30,
+            x: 200,
+            y: 150,
+            correct: true,
+            group: 'circles',
+            index: 7,
+          },
+        ]),
+      );
     });
 
     it('onUpdateShapes with no shapes', () => {
@@ -188,42 +318,17 @@ describe('HotspotContainer', () => {
 
       expect(onUpdateShapes).toHaveBeenLastCalledWith({
         rectangles: [],
-        polygons: []
-      })
-    });
-
-    it('handleUndo if no new shape was added', () => {
-      wrapper.instance().handleUndo();
-      expect(onUpdateShapes).toHaveBeenLastCalledWith({
-        ...initialModel.shapes,
-        polygons: initialModel.shapes.polygons.slice(0, -1)
+        polygons: [],
+        circles: [],
       });
-    });
-
-    it('handleUndo if new shape was added', () => {
-      const newShape = {
-        id: '7',
-        height: 140,
-        width: 130,
-        x: 280,
-        y: 1,
-        index: 6
-      };
-
-      // first, add a new shape
-      wrapper.instance().state.shapes = getAllShapes({
-        ...initialModel.shapes,
-        rectangles: [ ...initialModel.shapes.rectangles, newShape],
-      });
-      wrapper.instance().handleUndo();
-      expect(onUpdateShapes).toBeCalledWith(initialModel.shapes);
     });
 
     it('handleClearAll', () => {
       wrapper.instance().handleClearAll();
       expect(onUpdateShapes).toHaveBeenLastCalledWith({
         rectangles: [],
-        polygons: []
+        polygons: [],
+        circles: [],
       });
     });
   });

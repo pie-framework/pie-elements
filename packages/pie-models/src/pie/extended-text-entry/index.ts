@@ -1,9 +1,16 @@
-import {PromptConfig} from '../../PromptConfig';
-import {CommonConfigSettings} from '../../CommonConfigSettings';
-import {PieModel} from '../../PieModel';
+import { PromptConfig } from '../../PromptConfig';
+import { CommonConfigSettings } from '../../CommonConfigSettings';
+import { PieModel } from '../../PieModel';
 import { DefaultFeedbackType } from '../../Feedback';
-import { ConfigureProp, ConfigurePropWithEnabled } from '../ConfigurationProp';
-
+import {
+  ConfigureProp,
+  ConfigurePropWithEnabled,
+  ConfigureMaxImageDimensionsProp,
+  ConfigureWithForceProp,
+  ConfigureMathMLProp,
+  EditableHtmlPluginConfigure,
+  EditableHtmlConfigureProp, EditableHtmlPluginConfigureRequired,
+} from '../ConfigurationProp';
 
 interface Dimensions {
   /**
@@ -43,9 +50,9 @@ interface PredefinedAnnotation  {
  */
 
 /**
-* Model for the @pie-elements/extended-text-entry Interaction
-* @additionalProperties false
-*/
+ * Model for the @pie-elements/extended-text-entry Interaction
+ * @additionalProperties false
+ */
 export interface ExtendedTextEntryPie extends PieModel {
   /**
    * Dimensions the editor should take
@@ -53,7 +60,15 @@ export interface ExtendedTextEntryPie extends PieModel {
   dimensions: Dimensions;
 
   /** Indicates if equation editor is enabled */
-  equationEditor?: 'miscellaneous' | 'statistics' | 'advanced-algebra' | 'geometry' | 'Grade 8 - HS' | 'Grade 6 - 7' | 'Grade 3 - 5' | 'Grade 1 - 2';
+  equationEditor?:
+    | 'miscellaneous'
+    | 'statistics'
+    | 'advanced-algebra'
+    | 'geometry'
+    | 'Grade 8 - HS'
+    | 'Grade 6 - 7'
+    | 'Grade 3 - 5'
+    | 'Grade 1 - 2';
 
   /** Feedback configuration */
   feedback?: DefaultFeedbackType;
@@ -63,6 +78,18 @@ export interface ExtendedTextEntryPie extends PieModel {
    * @default false
    */
   mathInput?: boolean;
+
+  /**
+   * Whether a control to allow insertion of spanish characters should be displayed
+   * @default false
+   */
+  spanishInput?: boolean;
+
+  /**
+   * Whether a control to allow insertion of special characters should be displayed
+   * @default false
+   */
+  specialInput?: boolean;
 
   /** Indicates if multiple parts are enabled */
   multiple?: boolean;
@@ -85,25 +112,34 @@ export interface ExtendedTextEntryPie extends PieModel {
   /** Indicates if Rationale are enabled */
   rationaleEnabled: boolean;
 
+  /** Indicates if spellcheck is enabled for the author. Default value is true */
+  spellCheckEnabled: boolean;
+
+  /** Indicates if spellcheck is disabled for the player. Default value is true */
+  playerSpellCheckDisabled: boolean;
+
   /** Indicates if Student Instructions are enabled */
   studentInstructionsEnabled: boolean;
 
   /** Indicates if Teacher Instructions are enabled */
-  teacherInstructionsEnabled: boolean;  /**
+  teacherInstructionsEnabled: boolean /**
 
    * Indicates the editor's toolbar position which can be 'bottom' or 'top'
    * @default: 'bottom'
-   */
+   */;
   toolbarEditorPosition?: 'bottom' | 'top';
 
   /** Indicates the predefined annotations for the annotation menu*/
   predefinedAnnotations?: Array<PredefinedAnnotation>
 
   /**
-  * Indicates the editor's toolbar position for the player, which can be 'bottom' or 'top'
-  * @default: 'bottom'
-  */
+   * Indicates the editor's toolbar position for the player, which can be 'bottom' or 'top'
+   * @default: 'bottom'
+   */
   playersToolbarPosition?: 'bottom' | 'top';
+
+  /** Indicates if Rubric is enabled */
+  rubricEnabled: boolean;
 }
 
 /**
@@ -122,6 +158,21 @@ export interface ExtendedTextEntryConfigure extends PromptConfig, CommonConfigSe
   mathInput?: ConfigureProp;
 
   /**
+   * Indicates if the settings panel is not available
+   */
+  settingsPanelDisabled?: boolean;
+
+  /**
+   * Spanish Input configuration
+   */
+  spanishInput?: ConfigureProp;
+
+  /**
+   * Special Input configuration
+   */
+  specialInput?: ConfigureProp;
+
+  /**
    * Multiple Parts configuration
    */
   multiple?: ConfigurePropWithEnabled;
@@ -134,11 +185,49 @@ export interface ExtendedTextEntryConfigure extends PromptConfig, CommonConfigSe
   /**
    * Teacher Instructions configuration
    */
-  teacherInstructions?: ConfigureProp;
+  teacherInstructions?: EditableHtmlPluginConfigureRequired;
+
+  /**
+   * Prompt configuration
+   */
+  prompt?: EditableHtmlPluginConfigureRequired;
+
+  /**
+   * Configuration for the author's spellcheck
+   */
+  spellCheck?: ConfigureProp;
+
+  /**
+   * Configuration for the player's spellcheck
+   */
+  playerSpellCheck?: ConfigureProp;
 
   /**
    * Dimensions configuration
    */
   dimensions?: ConfigureProp;
 
+  /**
+   * Maximum image width for input fields
+   */
+  maxImageWidth?: ConfigureMaxImageDimensionsProp;
+
+  /**
+   * Maximum image height for input fields
+   */
+  maxImageHeight?: ConfigureMaxImageDimensionsProp;
+
+  /**
+   * Rubric configuration - only relevant in environments that use pie-player-components
+   */
+  withRubric?: ConfigureWithForceProp;
+
+  /** Configuration for editable-html */
+  mathMlOptions?: ConfigureMathMLProp;
+
+  /**
+   * Base editable html input configuration regarding plugins that are enabled/disabled
+   * E.g. audio, video, image
+   */
+  baseInputConfiguration?: EditableHtmlConfigureProp;
 }

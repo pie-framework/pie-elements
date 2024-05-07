@@ -9,19 +9,18 @@ describe('choices', () => {
     choices: [
       {
         id: '0',
-        content: 'Choice 0'
+        content: 'Choice 0',
       },
     ],
     choicesPosition: 'below',
     choicesLabel: '',
     lockChoiceOrder: true,
-    removeTilesAfterPlacing: false,
     categoriesPerRow: 2,
     categories: [
       {
         id: '0',
         label: 'Category 0',
-        choices: []
+        choices: [],
       },
     ],
     rowLabels: [''],
@@ -38,13 +37,13 @@ describe('choices', () => {
     onDelete = jest.fn();
   });
 
-  const wrapper = extras => {
+  const wrapper = (extras) => {
     const props = {
       onModelChanged,
       model,
       classes: {},
       choices: [{ id: '0', content: 'Choice 0' }],
-      ...extras
+      ...extras,
     };
     return shallow(<Choices {...props} />);
   };
@@ -87,17 +86,24 @@ describe('choices', () => {
       w = wrapper();
       w.instance().addChoice();
 
-      expect(onModelChanged).toBeCalledWith({ choices: [{ id: '0', content: 'Choice 0' }, { id: '1', content: 'Choice 1' }] });
+      expect(onModelChanged).toBeCalledWith({
+        choices: [
+          { id: '0', content: 'Choice 0' },
+          { id: '1', content: 'Choice 1' },
+        ],
+      });
     });
 
     describe('deleteChoice', () => {
       w = wrapper();
       w.instance().deleteChoice({ id: '0' });
 
-      expect(onModelChanged).toBeCalledWith(expect.objectContaining({
-        choices: [],
-        correctResponse: []
-      }));
+      expect(onModelChanged).toBeCalledWith(
+        expect.objectContaining({
+          choices: [],
+          correctResponse: [],
+        }),
+      );
     });
   });
 });

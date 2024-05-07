@@ -10,8 +10,6 @@ exports[`choices snapshot renders 1`] = `
     onAdd={[Function]}
   />
   <WithStyles(Config)
-    allChoicesHaveCount={[Function]}
-    categoryCountIsOne={false}
     config={
       Object {
         "categories": Array [
@@ -28,7 +26,6 @@ exports[`choices snapshot renders 1`] = `
         "correctResponse": Array [],
         "lockChoiceOrder": true,
         "partialScoring": true,
-        "removeTilesAfterPlacing": false,
         "rowLabels": Array [
           "",
         ],
@@ -67,7 +64,6 @@ exports[`choices snapshot renders 1`] = `
               "correctResponse": Array [],
               "lockChoiceOrder": true,
               "partialScoring": true,
-              "removeTilesAfterPlacing": false,
               "rowLabels": Array [
                 "",
               ],
@@ -94,18 +90,22 @@ exports[`choices snapshot renders 1`] = `
       }
     }
   >
-    <DragSource(WithStyles(Choice))
+    <Wrapped
       choice={
         Object {
           "content": "Choice 0",
           "id": "0",
         }
       }
+      deleteFocusedEl={[Function]}
+      focusedEl={null}
+      index={0}
       key="0"
+      lockChoiceOrder={true}
       onChange={[Function]}
       onDelete={[Function]}
+      rearrangeChoices={[Function]}
     />
   </div>
-  <WithStyles(Component) />
 </div>
 `;

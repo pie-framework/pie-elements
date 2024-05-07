@@ -20,17 +20,14 @@ exports[`InlineDropdown render should render in evaluate mode 1`] = `
       prompt="Teacher Instructions"
     />
   </WithStyles(Collapsible)>
-  <br />
+  <WithStyles(PreviewPrompt)
+    prompt="Prompt"
+  />
   <WithStyles(CorrectAnswerToggle)
     onToggle={[Function]}
     show={true}
     toggled={false}
   />
-  <br />
-  <WithStyles(PreviewPrompt)
-    prompt="Prompt"
-  />
-  <br />
   <WithMask
     choices={
       Object {
@@ -117,6 +114,72 @@ exports[`InlineDropdown render should render in evaluate mode 1`] = `
   <WithStyles(Collapsible)
     labels={
       Object {
+        "hidden": "Show Rationale for choices",
+        "visible": "Hide Rationale for choices",
+      }
+    }
+  >
+    <div
+      key="0"
+    >
+      <div
+        key="cow "
+      >
+        <div
+          className="correct"
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "cow : ",
+            }
+          }
+        />
+        <WithStyles(PreviewPrompt)
+          prompt="rationale cow"
+        />
+      </div>
+    </div>
+    <div
+      key="1"
+    >
+      <div
+        key="over "
+      >
+        <div
+          className="correct"
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "over : ",
+            }
+          }
+        />
+        <WithStyles(PreviewPrompt)
+          prompt="rationale over"
+        />
+      </div>
+    </div>
+    <div
+      key="2"
+    >
+      <div
+        key="moon "
+      >
+        <div
+          className="correct"
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "moon : ",
+            }
+          }
+        />
+        <WithStyles(PreviewPrompt)
+          prompt="rationale moon"
+        />
+      </div>
+    </div>
+  </WithStyles(Collapsible)>
+  <WithStyles(Collapsible)
+    labels={
+      Object {
         "hidden": "Show Rationale",
         "visible": "Hide Rationale",
       }
@@ -125,78 +188,6 @@ exports[`InlineDropdown render should render in evaluate mode 1`] = `
     <WithStyles(PreviewPrompt)
       prompt="Rationale"
     />
-  </WithStyles(Collapsible)>
-  <br />
-  <WithStyles(Collapsible)
-    labels={
-      Object {
-        "hidden": "Show Rationale for choices",
-        "visible": "Hide Rationale for choices",
-      }
-    }
-  >
-    <div>
-      <div
-        key="0"
-      >
-        <div
-          key="cow "
-        >
-          <div
-            className="correct"
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "cow : ",
-              }
-            }
-          />
-          <WithStyles(PreviewPrompt)
-            prompt="rationale cow"
-          />
-        </div>
-        <br />
-      </div>
-      <div
-        key="1"
-      >
-        <div
-          key="over "
-        >
-          <div
-            className="correct"
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "over : ",
-              }
-            }
-          />
-          <WithStyles(PreviewPrompt)
-            prompt="rationale over"
-          />
-        </div>
-        <br />
-      </div>
-      <div
-        key="2"
-      >
-        <div
-          key="moon "
-        >
-          <div
-            className="correct"
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "moon : ",
-              }
-            }
-          />
-          <WithStyles(PreviewPrompt)
-            prompt="rationale moon"
-          />
-        </div>
-        <br />
-      </div>
-    </div>
   </WithStyles(Collapsible)>
 </div>
 `;
@@ -209,6 +200,9 @@ exports[`InlineDropdown render should render in gather mode 1`] = `
     }
   }
 >
+  <h2>
+    Inline Dropdown Question
+  </h2>
   <WithStyles(Collapsible)
     labels={
       Object {
@@ -221,16 +215,14 @@ exports[`InlineDropdown render should render in gather mode 1`] = `
       prompt="Teacher Instructions"
     />
   </WithStyles(Collapsible)>
-  <br />
+  <WithStyles(PreviewPrompt)
+    prompt="Prompt"
+  />
   <WithStyles(CorrectAnswerToggle)
     onToggle={[Function]}
     show={false}
     toggled={false}
   />
-  <WithStyles(PreviewPrompt)
-    prompt="Prompt"
-  />
-  <br />
   <WithMask
     choices={
       Object {
@@ -317,6 +309,72 @@ exports[`InlineDropdown render should render in gather mode 1`] = `
   <WithStyles(Collapsible)
     labels={
       Object {
+        "hidden": "Show Rationale for choices",
+        "visible": "Hide Rationale for choices",
+      }
+    }
+  >
+    <div
+      key="0"
+    >
+      <div
+        key="cow "
+      >
+        <div
+          className="correct"
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "cow : ",
+            }
+          }
+        />
+        <WithStyles(PreviewPrompt)
+          prompt="rationale cow"
+        />
+      </div>
+    </div>
+    <div
+      key="1"
+    >
+      <div
+        key="over "
+      >
+        <div
+          className="correct"
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "over : ",
+            }
+          }
+        />
+        <WithStyles(PreviewPrompt)
+          prompt="rationale over"
+        />
+      </div>
+    </div>
+    <div
+      key="2"
+    >
+      <div
+        key="moon "
+      >
+        <div
+          className="correct"
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "moon : ",
+            }
+          }
+        />
+        <WithStyles(PreviewPrompt)
+          prompt="rationale moon"
+        />
+      </div>
+    </div>
+  </WithStyles(Collapsible)>
+  <WithStyles(Collapsible)
+    labels={
+      Object {
         "hidden": "Show Rationale",
         "visible": "Hide Rationale",
       }
@@ -325,78 +383,6 @@ exports[`InlineDropdown render should render in gather mode 1`] = `
     <WithStyles(PreviewPrompt)
       prompt="Rationale"
     />
-  </WithStyles(Collapsible)>
-  <br />
-  <WithStyles(Collapsible)
-    labels={
-      Object {
-        "hidden": "Show Rationale for choices",
-        "visible": "Hide Rationale for choices",
-      }
-    }
-  >
-    <div>
-      <div
-        key="0"
-      >
-        <div
-          key="cow "
-        >
-          <div
-            className="correct"
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "cow : ",
-              }
-            }
-          />
-          <WithStyles(PreviewPrompt)
-            prompt="rationale cow"
-          />
-        </div>
-        <br />
-      </div>
-      <div
-        key="1"
-      >
-        <div
-          key="over "
-        >
-          <div
-            className="correct"
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "over : ",
-              }
-            }
-          />
-          <WithStyles(PreviewPrompt)
-            prompt="rationale over"
-          />
-        </div>
-        <br />
-      </div>
-      <div
-        key="2"
-      >
-        <div
-          key="moon "
-        >
-          <div
-            className="correct"
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "moon : ",
-              }
-            }
-          />
-          <WithStyles(PreviewPrompt)
-            prompt="rationale moon"
-          />
-        </div>
-        <br />
-      </div>
-    </div>
   </WithStyles(Collapsible)>
 </div>
 `;
@@ -421,16 +407,14 @@ exports[`InlineDropdown render should render in view mode 1`] = `
       prompt="Teacher Instructions"
     />
   </WithStyles(Collapsible)>
-  <br />
+  <WithStyles(PreviewPrompt)
+    prompt="Prompt"
+  />
   <WithStyles(CorrectAnswerToggle)
     onToggle={[Function]}
     show={false}
     toggled={false}
   />
-  <WithStyles(PreviewPrompt)
-    prompt="Prompt"
-  />
-  <br />
   <WithMask
     choices={
       Object {
@@ -517,6 +501,72 @@ exports[`InlineDropdown render should render in view mode 1`] = `
   <WithStyles(Collapsible)
     labels={
       Object {
+        "hidden": "Show Rationale for choices",
+        "visible": "Hide Rationale for choices",
+      }
+    }
+  >
+    <div
+      key="0"
+    >
+      <div
+        key="cow "
+      >
+        <div
+          className="correct"
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "cow : ",
+            }
+          }
+        />
+        <WithStyles(PreviewPrompt)
+          prompt="rationale cow"
+        />
+      </div>
+    </div>
+    <div
+      key="1"
+    >
+      <div
+        key="over "
+      >
+        <div
+          className="correct"
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "over : ",
+            }
+          }
+        />
+        <WithStyles(PreviewPrompt)
+          prompt="rationale over"
+        />
+      </div>
+    </div>
+    <div
+      key="2"
+    >
+      <div
+        key="moon "
+      >
+        <div
+          className="correct"
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "moon : ",
+            }
+          }
+        />
+        <WithStyles(PreviewPrompt)
+          prompt="rationale moon"
+        />
+      </div>
+    </div>
+  </WithStyles(Collapsible)>
+  <WithStyles(Collapsible)
+    labels={
+      Object {
         "hidden": "Show Rationale",
         "visible": "Hide Rationale",
       }
@@ -525,78 +575,6 @@ exports[`InlineDropdown render should render in view mode 1`] = `
     <WithStyles(PreviewPrompt)
       prompt="Rationale"
     />
-  </WithStyles(Collapsible)>
-  <br />
-  <WithStyles(Collapsible)
-    labels={
-      Object {
-        "hidden": "Show Rationale for choices",
-        "visible": "Hide Rationale for choices",
-      }
-    }
-  >
-    <div>
-      <div
-        key="0"
-      >
-        <div
-          key="cow "
-        >
-          <div
-            className="correct"
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "cow : ",
-              }
-            }
-          />
-          <WithStyles(PreviewPrompt)
-            prompt="rationale cow"
-          />
-        </div>
-        <br />
-      </div>
-      <div
-        key="1"
-      >
-        <div
-          key="over "
-        >
-          <div
-            className="correct"
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "over : ",
-              }
-            }
-          />
-          <WithStyles(PreviewPrompt)
-            prompt="rationale over"
-          />
-        </div>
-        <br />
-      </div>
-      <div
-        key="2"
-      >
-        <div
-          key="moon "
-        >
-          <div
-            className="correct"
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "moon : ",
-              }
-            }
-          />
-          <WithStyles(PreviewPrompt)
-            prompt="rationale moon"
-          />
-        </div>
-        <br />
-      </div>
-    </div>
   </WithStyles(Collapsible)>
 </div>
 `;
@@ -609,6 +587,9 @@ exports[`InlineDropdown render should render without prompt 1`] = `
     }
   }
 >
+  <h2>
+    Inline Dropdown Question
+  </h2>
   <WithStyles(Collapsible)
     labels={
       Object {
@@ -621,7 +602,6 @@ exports[`InlineDropdown render should render without prompt 1`] = `
       prompt="Teacher Instructions"
     />
   </WithStyles(Collapsible)>
-  <br />
   <WithStyles(CorrectAnswerToggle)
     onToggle={[Function]}
     show={false}
@@ -713,6 +693,72 @@ exports[`InlineDropdown render should render without prompt 1`] = `
   <WithStyles(Collapsible)
     labels={
       Object {
+        "hidden": "Show Rationale for choices",
+        "visible": "Hide Rationale for choices",
+      }
+    }
+  >
+    <div
+      key="0"
+    >
+      <div
+        key="cow "
+      >
+        <div
+          className="correct"
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "cow : ",
+            }
+          }
+        />
+        <WithStyles(PreviewPrompt)
+          prompt="rationale cow"
+        />
+      </div>
+    </div>
+    <div
+      key="1"
+    >
+      <div
+        key="over "
+      >
+        <div
+          className="correct"
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "over : ",
+            }
+          }
+        />
+        <WithStyles(PreviewPrompt)
+          prompt="rationale over"
+        />
+      </div>
+    </div>
+    <div
+      key="2"
+    >
+      <div
+        key="moon "
+      >
+        <div
+          className="correct"
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "moon : ",
+            }
+          }
+        />
+        <WithStyles(PreviewPrompt)
+          prompt="rationale moon"
+        />
+      </div>
+    </div>
+  </WithStyles(Collapsible)>
+  <WithStyles(Collapsible)
+    labels={
+      Object {
         "hidden": "Show Rationale",
         "visible": "Hide Rationale",
       }
@@ -721,78 +767,6 @@ exports[`InlineDropdown render should render without prompt 1`] = `
     <WithStyles(PreviewPrompt)
       prompt="Rationale"
     />
-  </WithStyles(Collapsible)>
-  <br />
-  <WithStyles(Collapsible)
-    labels={
-      Object {
-        "hidden": "Show Rationale for choices",
-        "visible": "Hide Rationale for choices",
-      }
-    }
-  >
-    <div>
-      <div
-        key="0"
-      >
-        <div
-          key="cow "
-        >
-          <div
-            className="correct"
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "cow : ",
-              }
-            }
-          />
-          <WithStyles(PreviewPrompt)
-            prompt="rationale cow"
-          />
-        </div>
-        <br />
-      </div>
-      <div
-        key="1"
-      >
-        <div
-          key="over "
-        >
-          <div
-            className="correct"
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "over : ",
-              }
-            }
-          />
-          <WithStyles(PreviewPrompt)
-            prompt="rationale over"
-          />
-        </div>
-        <br />
-      </div>
-      <div
-        key="2"
-      >
-        <div
-          key="moon "
-        >
-          <div
-            className="correct"
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "moon : ",
-              }
-            }
-          />
-          <WithStyles(PreviewPrompt)
-            prompt="rationale moon"
-          />
-        </div>
-        <br />
-      </div>
-    </div>
   </WithStyles(Collapsible)>
 </div>
 `;
@@ -805,6 +779,9 @@ exports[`InlineDropdown render should render without rationale 1`] = `
     }
   }
 >
+  <h2>
+    Inline Dropdown Question
+  </h2>
   <WithStyles(Collapsible)
     labels={
       Object {
@@ -817,16 +794,14 @@ exports[`InlineDropdown render should render without rationale 1`] = `
       prompt="Teacher Instructions"
     />
   </WithStyles(Collapsible)>
-  <br />
+  <WithStyles(PreviewPrompt)
+    prompt="Prompt"
+  />
   <WithStyles(CorrectAnswerToggle)
     onToggle={[Function]}
     show={false}
     toggled={false}
   />
-  <WithStyles(PreviewPrompt)
-    prompt="Prompt"
-  />
-  <br />
   <WithMask
     choices={
       Object {
@@ -910,7 +885,6 @@ exports[`InlineDropdown render should render without rationale 1`] = `
       }
     }
   />
-  <br />
   <WithStyles(Collapsible)
     labels={
       Object {
@@ -919,66 +893,61 @@ exports[`InlineDropdown render should render without rationale 1`] = `
       }
     }
   >
-    <div>
+    <div
+      key="0"
+    >
       <div
-        key="0"
+        key="cow "
       >
         <div
-          key="cow "
-        >
-          <div
-            className="correct"
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "cow : ",
-              }
+          className="correct"
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "cow : ",
             }
-          />
-          <WithStyles(PreviewPrompt)
-            prompt="rationale cow"
-          />
-        </div>
-        <br />
+          }
+        />
+        <WithStyles(PreviewPrompt)
+          prompt="rationale cow"
+        />
       </div>
+    </div>
+    <div
+      key="1"
+    >
       <div
-        key="1"
+        key="over "
       >
         <div
-          key="over "
-        >
-          <div
-            className="correct"
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "over : ",
-              }
+          className="correct"
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "over : ",
             }
-          />
-          <WithStyles(PreviewPrompt)
-            prompt="rationale over"
-          />
-        </div>
-        <br />
+          }
+        />
+        <WithStyles(PreviewPrompt)
+          prompt="rationale over"
+        />
       </div>
+    </div>
+    <div
+      key="2"
+    >
       <div
-        key="2"
+        key="moon "
       >
         <div
-          key="moon "
-        >
-          <div
-            className="correct"
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "moon : ",
-              }
+          className="correct"
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "moon : ",
             }
-          />
-          <WithStyles(PreviewPrompt)
-            prompt="rationale moon"
-          />
-        </div>
-        <br />
+          }
+        />
+        <WithStyles(PreviewPrompt)
+          prompt="rationale moon"
+        />
       </div>
     </div>
   </WithStyles(Collapsible)>
@@ -993,15 +962,17 @@ exports[`InlineDropdown render should render without teacher instructions 1`] = 
     }
   }
 >
+  <h2>
+    Inline Dropdown Question
+  </h2>
+  <WithStyles(PreviewPrompt)
+    prompt="Prompt"
+  />
   <WithStyles(CorrectAnswerToggle)
     onToggle={[Function]}
     show={false}
     toggled={false}
   />
-  <WithStyles(PreviewPrompt)
-    prompt="Prompt"
-  />
-  <br />
   <WithMask
     choices={
       Object {
@@ -1088,6 +1059,72 @@ exports[`InlineDropdown render should render without teacher instructions 1`] = 
   <WithStyles(Collapsible)
     labels={
       Object {
+        "hidden": "Show Rationale for choices",
+        "visible": "Hide Rationale for choices",
+      }
+    }
+  >
+    <div
+      key="0"
+    >
+      <div
+        key="cow "
+      >
+        <div
+          className="correct"
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "cow : ",
+            }
+          }
+        />
+        <WithStyles(PreviewPrompt)
+          prompt="rationale cow"
+        />
+      </div>
+    </div>
+    <div
+      key="1"
+    >
+      <div
+        key="over "
+      >
+        <div
+          className="correct"
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "over : ",
+            }
+          }
+        />
+        <WithStyles(PreviewPrompt)
+          prompt="rationale over"
+        />
+      </div>
+    </div>
+    <div
+      key="2"
+    >
+      <div
+        key="moon "
+      >
+        <div
+          className="correct"
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "moon : ",
+            }
+          }
+        />
+        <WithStyles(PreviewPrompt)
+          prompt="rationale moon"
+        />
+      </div>
+    </div>
+  </WithStyles(Collapsible)>
+  <WithStyles(Collapsible)
+    labels={
+      Object {
         "hidden": "Show Rationale",
         "visible": "Hide Rationale",
       }
@@ -1096,78 +1133,6 @@ exports[`InlineDropdown render should render without teacher instructions 1`] = 
     <WithStyles(PreviewPrompt)
       prompt="Rationale"
     />
-  </WithStyles(Collapsible)>
-  <br />
-  <WithStyles(Collapsible)
-    labels={
-      Object {
-        "hidden": "Show Rationale for choices",
-        "visible": "Hide Rationale for choices",
-      }
-    }
-  >
-    <div>
-      <div
-        key="0"
-      >
-        <div
-          key="cow "
-        >
-          <div
-            className="correct"
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "cow : ",
-              }
-            }
-          />
-          <WithStyles(PreviewPrompt)
-            prompt="rationale cow"
-          />
-        </div>
-        <br />
-      </div>
-      <div
-        key="1"
-      >
-        <div
-          key="over "
-        >
-          <div
-            className="correct"
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "over : ",
-              }
-            }
-          />
-          <WithStyles(PreviewPrompt)
-            prompt="rationale over"
-          />
-        </div>
-        <br />
-      </div>
-      <div
-        key="2"
-      >
-        <div
-          key="moon "
-        >
-          <div
-            className="correct"
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "moon : ",
-              }
-            }
-          />
-          <WithStyles(PreviewPrompt)
-            prompt="rationale moon"
-          />
-        </div>
-        <br />
-      </div>
-    </div>
   </WithStyles(Collapsible)>
 </div>
 `;

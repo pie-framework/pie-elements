@@ -5,32 +5,28 @@ import React from 'react';
 import classNames from 'classnames';
 import debug from 'debug';
 import { withStyles } from '@material-ui/core/styles';
-import { PlaceHolder } from '@pie-lib/drag';
+import { PlaceHolder } from '@pie-lib/pie-toolbox/drag';
 import isEmpty from 'lodash/isEmpty';
-import { color } from '@pie-lib/render-ui';
+import { color } from '@pie-lib/pie-toolbox/render-ui';
 
 const log = debug('pie-elements:match-title:answer');
 
-const Holder = withStyles(() => ({
+const Holder = withStyles((theme) => ({
   number: {
     width: '100%',
     fontSize: '18px',
     textAlign: 'center',
-    color: 'rgba(0,0,0,0.6)'
+    color: `rgba(${theme.palette.common.black}, 0.6)`,
   },
   placeholder: {
     display: 'flex',
     padding: '0',
     alignItems: 'center',
     justifyContent: 'center',
-    height: '40px'
-  }
+    height: '40px',
+  },
 }))(({ classes, index, isOver, disabled }) => (
-  <PlaceHolder
-    className={classes.placeholder}
-    disabled={disabled}
-    isOver={isOver}
-  >
+  <PlaceHolder className={classes.placeholder} disabled={disabled} isOver={isOver}>
     {index !== undefined && <div className={classes.number}>{index}</div>}
   </PlaceHolder>
 ));
@@ -38,73 +34,58 @@ const Holder = withStyles(() => ({
 Holder.propTypes = {
   index: PropTypes.number,
   isOver: PropTypes.bool,
-  disabled: PropTypes.bool
+  disabled: PropTypes.bool,
 };
 
-const AnswerContent = withStyles({
+const AnswerContent = withStyles((theme) => ({
   over: {
-    opacity: 0.2
+    opacity: 0.2,
   },
   answerContent: {
     color: color.text(),
     backgroundColor: color.background(),
-    border: '1px solid #c2c2c2', // TODO hardcoded color
+    border: `1px solid ${theme.palette.grey[400]}`,
     cursor: 'pointer',
     width: '100%',
     padding: '10px',
     boxSizing: 'border-box',
     overflow: 'hidden',
     transition: 'opacity 200ms linear',
-    wordBreak: 'break-word'
+    wordBreak: 'break-word',
+    // Added for touch devices, for image content.
+    // This will prevent the context menu from appearing and not allowing other interactions with the image.
+    // If interactions with the image in the token will be requested we should handle only the context Menu.
+    pointerEvents: 'none',
   },
   dragging: {
-    opacity: 0.5
+    opacity: 0.5,
   },
   disabled: {
     backgroundColor: color.background(),
     opacity: 0.6,
-    cursor: 'not-allowed'
+    cursor: 'not-allowed',
   },
   incorrect: {
-    border: `1px solid ${color.incorrect()}`
+    border: `1px solid ${color.incorrect()}`,
   },
   correct: {
-    border: `1px solid ${color.correct()}`
-  }
-})(props => {
-  const {
-    classes,
-    isDragging,
-    isOver,
-    title,
-    disabled,
-    empty,
-    outcome,
-    guideIndex,
-    type
-  } = props;
+    border: `1px solid ${color.correct()}`,
+  },
+}))((props) => {
+  const { classes, isDragging, isOver, title, disabled, empty, outcome, guideIndex, type } = props;
 
   if (empty) {
-    return (
-      <Holder
-        index={guideIndex}
-        isOver={isOver}
-        disabled={disabled}
-        type={type}
-      />
-    );
+    return <Holder index={guideIndex} isOver={isOver} disabled={disabled} type={type} />;
   } else {
     const names = classNames(
       classes.answerContent,
       isDragging && !disabled && classes.dragging,
       isOver && !disabled && classes.over,
       disabled && classes.disabled,
-      outcome && classes[outcome]
+      outcome && classes[outcome],
     );
 
-    return (
-      <div className={names} dangerouslySetInnerHTML={{ __html: title }} />
-    );
+    return <div className={names} dangerouslySetInnerHTML={{ __html: title }} />;
   }
 });
 
@@ -121,7 +102,7 @@ export class Answer extends React.Component {
     empty: PropTypes.bool,
     type: PropTypes.string,
     disabled: PropTypes.bool,
-    correct: PropTypes.bool
+    correct: PropTypes.bool,
   };
 
   render() {
@@ -136,14 +117,14 @@ export class Answer extends React.Component {
       classes,
       isOver,
       type,
-      correct
+      correct,
     } = this.props;
 
     log('[render], props: ', this.props);
 
     const name = classNames(className, classes.answer, {
       [classes.correct]: correct === true,
-      [classes.incorrect]: correct === false
+      [classes.incorrect]: correct === false,
     });
 
     const content = (
@@ -173,14 +154,14 @@ const StyledAnswer = withStyles({
     overflow: 'hidden',
     margin: '10px 0',
     padding: '0px',
-    textAlign: 'center'
+    textAlign: 'center',
   },
   incorrect: {
-    border: `1px solid var(--feedback-incorrect-bg-color, ${color.incorrect()})`
+    border: `1px solid var(--feedback-incorrect-bg-color, ${color.incorrect()})`,
   },
   correct: {
-    border: `1px solid var(--feedback-correct-bg-color, ${color.correct()})`
-  }
+    border: `1px solid var(--feedback-correct-bg-color, ${color.correct()})`,
+  },
 })(Answer);
 
 const answerTarget = {
@@ -195,12 +176,12 @@ const answerTarget = {
     const draggedItem = monitor.getItem();
 
     return draggedItem.instanceId === props.instanceId;
-  }
+  },
 };
 
 export const DropAnswer = DropTarget('Answer', answerTarget, (connect, monitor) => ({
   connectDropTarget: connect.dropTarget(),
-  isOver: monitor.isOver()
+  isOver: monitor.isOver(),
 }))(StyledAnswer);
 
 const answerSource = {
@@ -211,7 +192,9 @@ const answerSource = {
     return {
       id: props.id,
       type: props.type,
-      instanceId: props.instanceId
+      instanceId: props.instanceId,
+      value: props.title,
+      promptId: props.promptId,
     };
   },
   endDrag(props, monitor) {
@@ -220,17 +203,17 @@ const answerSource = {
         props.onRemoveChoice(monitor.getItem());
       }
     }
-  }
+  },
 };
 
 export const DragAnswer = DragSource('Answer', answerSource, (connect, monitor) => ({
   connectDragSource: connect.dragSource(),
-  isDragging: monitor.isDragging()
+  isDragging: monitor.isDragging(),
 }))(StyledAnswer);
 
 const DragAndDropAnswer = DragSource('Answer', answerSource, (connect, monitor) => ({
   connectDragSource: connect.dragSource(),
-  isDragging: monitor.isDragging()
+  isDragging: monitor.isDragging(),
 }))(DropAnswer);
 
 export default DragAndDropAnswer;

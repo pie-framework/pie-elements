@@ -1,14 +1,8 @@
-import {
-  getPartialScore,
-  getCorrectness,
-  model,
-  outcome,
-  createCorrectResponseSession,
-} from '../index';
+import { getPartialScore, getCorrectness, model, outcome, createCorrectResponseSession } from '../index';
 import isFunction from 'lodash/isFunction';
 
-jest.mock('@pie-lib/text-select', () => ({
-  prepareText: jest.fn()
+jest.mock('@pie-lib/pie-toolbox/text-select', () => ({
+  prepareText: jest.fn(),
 }));
 
 const token = (start, end, text, correct) => ({ start, end, text, correct });
@@ -16,35 +10,19 @@ const token = (start, end, text, correct) => ({ start, end, text, correct });
 describe('getCorrectness', () => {
   const assert = (tokens, selected, expected) => {
     //set tokens to be correct if not set
-    tokens = tokens.map((t) =>
-      t.correct !== undefined ? t : { ...t, correct: true }
-    );
+    tokens = tokens.map((t) => (t.correct !== undefined ? t : { ...t, correct: true }));
 
-    it(`${JSON.stringify(tokens)}, ${JSON.stringify(
-      selected
-    )} => ${JSON.stringify(expected)}`, () => {
+    it(`${JSON.stringify(tokens)}, ${JSON.stringify(selected)} => ${JSON.stringify(expected)}`, () => {
       const c = getCorrectness(tokens, selected);
       expect(c).toEqual(expected);
     });
   };
   assert([token(0, 1, 'a')], [token(0, 1, 'a')], 'correct');
-  assert(
-    [token(0, 1, 'a'), token(1, 2, 'b', false)],
-    [token(1, 2, 'b')],
-    'incorrect'
-  );
+  assert([token(0, 1, 'a'), token(1, 2, 'b', false)], [token(1, 2, 'b')], 'incorrect');
   assert([token(0, 1, 'a')], [], 'incorrect');
   assert([token(0, 1, 'a')], [token(1, 2, 'b')], 'incorrect');
-  assert(
-    [token(0, 1, 'a'), token(1, 2, 'b')],
-    [token(0, 1, 'a')],
-    'partially-correct'
-  );
-  assert(
-    [token(0, 1, 'a'), token(1, 2, 'b')],
-    [token(1, 2, 'b')],
-    'partially-correct'
-  );
+  assert([token(0, 1, 'a'), token(1, 2, 'b')], [token(0, 1, 'a')], 'partially-correct');
+  assert([token(0, 1, 'a'), token(1, 2, 'b')], [token(1, 2, 'b')], 'partially-correct');
 
   describe('with markup', () => {
     const markupArrayToTokens = (arr, correctIndicies) => {
@@ -115,7 +93,7 @@ const assertFn = (fn) => (label, question, session, env, expected) => {
       } else {
         expect(r).toMatchObject(expected);
       }
-    })
+    }),
   );
 };
 
@@ -145,24 +123,14 @@ describe('correct response', () => {
 
 describe('outcome', () => {
   it('handles empty session', async () => {
-    const result = await outcome(
-      { tokens: [] },
-      { id: '1' },
-      { mode: 'evaluate' }
-    );
+    const result = await outcome({ tokens: [] }, { id: '1' }, { mode: 'evaluate' });
     console.log('result:', result);
     expect(result).toEqual({ score: 0 });
   });
 
   const assert = assertFn(outcome);
 
-  assert(
-    'score: 0 and empty: true if session is undefined',
-    q(),
-    undefined,
-    e(),
-    { score: 0, empty: true }
-  );
+  assert('score: 0 and empty: true if session is undefined', q(), undefined, e(), { score: 0, empty: true });
   assert('score: 0 and empty: true if session is null', q(), null, e(), {
     score: 0,
     empty: true,
@@ -183,7 +151,7 @@ describe('outcome', () => {
     e({ mode: 'evaluate' }),
     {
       score: 1,
-    }
+    },
   );
   assert(
     'score 0.5 when partialScoring is not defined (on by default)',
@@ -192,7 +160,7 @@ describe('outcome', () => {
     e({ mode: 'evaluate' }),
     {
       score: 0.5,
-    }
+    },
   );
   assert(
     'score 0 for partially-correct',
@@ -201,7 +169,7 @@ describe('outcome', () => {
     e({ mode: 'evaluate' }),
     {
       score: 0,
-    }
+    },
   );
   assert(
     'score 0.50 for partially-correct and partialScoring config',
@@ -212,7 +180,7 @@ describe('outcome', () => {
     e({ mode: 'evaluate' }),
     {
       score: 0.5,
-    }
+    },
   );
   assert(
     'score 0 for partially-correct and partialScoring config with deduction',
@@ -223,7 +191,7 @@ describe('outcome', () => {
     e({ mode: 'evaluate' }),
     {
       score: 0,
-    }
+    },
   );
   assert(
     'score 0.50 for partially-correct and partialScoring config with deduction',
@@ -234,7 +202,7 @@ describe('outcome', () => {
     e({ mode: 'evaluate' }),
     {
       score: 0.5,
-    }
+    },
   );
 });
 
@@ -278,25 +246,13 @@ describe('model', () => {
       incorrect: undefined,
     });
 
-    assert(
-      'correctness undefined in view',
-      q(),
-      undefined,
-      e({ mode: 'evaluate' }),
-      {
-        correctness: 'incorrect',
-      }
-    );
+    assert('correctness undefined in view', q(), undefined, e({ mode: 'evaluate' }), {
+      correctness: 'incorrect',
+    });
 
-    assert(
-      'correctness undefined in view',
-      q(),
-      null,
-      e({ mode: 'evaluate' }),
-      {
-        correctness: 'incorrect',
-      }
-    );
+    assert('correctness undefined in view', q(), null, e({ mode: 'evaluate' }), {
+      correctness: 'incorrect',
+    });
 
     assert('correctness undefined in view', q(), {}, e({ mode: 'evaluate' }), {
       correctness: 'incorrect',
@@ -310,15 +266,9 @@ describe('model', () => {
     assert('feedback is undefined in view', q(), s(), e({ mode: 'view' }), {
       feedback: undefined,
     });
-    assert(
-      'feedback is defined in evaluate',
-      q(),
-      s(),
-      e({ mode: 'evaluate' }),
-      {
-        feedback: 'Incorrect',
-      }
-    );
+    assert('feedback is defined in evaluate', q(), s(), e({ mode: 'evaluate' }), {
+      feedback: 'Incorrect',
+    });
     assert(
       'correct feedback is defined in evaluate',
       q(),
@@ -331,45 +281,21 @@ describe('model', () => {
       e({ mode: 'evaluate' }),
       {
         feedback: 'Correct',
-      }
+      },
     );
   });
 
   describe('tokens', () => {
-    assert(
-      'tokens.$.correct missing in gather',
-      q(),
-      s(),
-      e({ mode: 'gather' }),
-      (r) => {
-        expect(r.tokens.filter((t) => t.correct === undefined).length).toEqual(
-          r.tokens.length
-        );
-      }
-    );
+    assert('tokens.$.correct missing in gather', q(), s(), e({ mode: 'gather' }), (r) => {
+      expect(r.tokens.filter((t) => t.correct === undefined).length).toEqual(r.tokens.length);
+    });
 
-    assert(
-      'tokens.$.correct missing in view',
-      q(),
-      s(),
-      e({ mode: 'view' }),
-      (r) => {
-        expect(r.tokens.filter((t) => t.correct === undefined).length).toEqual(
-          r.tokens.length
-        );
-      }
-    );
-    assert(
-      'tokens.$.correct present in evaluate',
-      q(),
-      s(),
-      e({ mode: 'evaluate' }),
-      (r) => {
-        expect(r.tokens.filter((t) => t.correct === undefined).length).toEqual(
-          0
-        );
-      }
-    );
+    assert('tokens.$.correct missing in view', q(), s(), e({ mode: 'view' }), (r) => {
+      expect(r.tokens.filter((t) => t.correct === undefined).length).toEqual(r.tokens.length);
+    });
+    assert('tokens.$.correct present in evaluate', q(), s(), e({ mode: 'evaluate' }), (r) => {
+      expect(r.tokens.filter((t) => t.correct === undefined).length).toEqual(0);
+    });
   });
 
   describe('edge cases', () => {
@@ -384,8 +310,7 @@ describe('model', () => {
         teacherInstructions: true,
         studentInstructions: false,
         partialScoring: false,
-        text:
-          '<span>Estaba muy enojado.</span><span>-Pedro,¿cómo pudiste hacer eso?</span><span>¡No debes usar cosas ajenas sin preguntar primero!</span><span>De pronto me sentí terrible.</span><span>¡Estaba acusando a mi hermano de hacer la misma cosa que yo había hecho!</span><span>Mi mamá me miró de una forma muy extraña.</span><span>Ella podía ver que yo sabía lo que había hecho.</span>',
+        text: '<span>Estaba muy enojado.</span><span>-Pedro,¿cómo pudiste hacer eso?</span><span>¡No debes usar cosas ajenas sin preguntar primero!</span><span>De pronto me sentí terrible.</span><span>¡Estaba acusando a mi hermano de hacer la misma cosa que yo había hecho!</span><span>Mi mamá me miró de una forma muy extraña.</span><span>Ella podía ver que yo sabía lo que había hecho.</span>',
         id: '2414982',
         mode: 'sentence',
         feedback: {
@@ -415,8 +340,7 @@ describe('model', () => {
             start: 90,
             correct: true,
             end: 159,
-            text:
-              '<span>¡No debes usar cosas ajenas sin preguntar primero!</span>',
+            text: '<span>¡No debes usar cosas ajenas sin preguntar primero!</span>',
           },
           {
             start: 159,
@@ -425,8 +349,7 @@ describe('model', () => {
             text: '<span>De pronto me sentí terrible.</span>',
           },
           {
-            text:
-              '<span>¡Estaba acusando a mi hermano de hacer la misma cosa que yo había hecho!</span>',
+            text: '<span>¡Estaba acusando a mi hermano de hacer la misma cosa que yo había hecho!</span>',
             start: 207,
             correct: false,
             end: 305,
@@ -441,8 +364,7 @@ describe('model', () => {
             start: 380,
             correct: false,
             end: 461,
-            text:
-              '<span>Ella podía ver que yo sabía lo que había hecho.</span>',
+            text: '<span>Ella podía ver que yo sabía lo que había hecho.</span>',
           },
         ],
       };
@@ -452,239 +374,19 @@ describe('model', () => {
     });
   });
 
-  describe("partialScoring", () => {
+  describe('partialScoring', () => {
     const model = {
       tokens: [
         {
-          text: "Benedict",
+          text: 'Benedict',
           start: 0,
           end: 8,
           correct: false,
         },
         {
-          text: "Arnold",
+          text: 'Arnold',
           start: 9,
           end: 15,
-          correct: false,
-        },
-        {
-          text: "is",
-          start: 16,
-          end: 18,
-          correct: false,
-        },
-        {
-          text: "remembered",
-          start: 19,
-          end: 29,
-          correct: false,
-        },
-        {
-          text: "for",
-          start: 30,
-          end: 33,
-          correct: false,
-        },
-        {
-          text: "betraying",
-          start: 34,
-          end: 43,
-          correct: true,
-        },
-        {
-          text: "the",
-          start: 44,
-          end: 47,
-          correct: false,
-        },
-        {
-          text: "American",
-          start: 48,
-          end: 56,
-          correct: false,
-        },
-        {
-          text: "patriots",
-          start: 57,
-          end: 65,
-          correct: true,
-        },
-        {
-          text: "during",
-          start: 66,
-          end: 72,
-          correct: false,
-        },
-        {
-          text: "the",
-          start: 73,
-          end: 76,
-          correct: false,
-        },
-        {
-          text: "Revolutionary",
-          start: 77,
-          end: 90,
-          correct: true,
-        },
-        {
-          text: "War.",
-          start: 91,
-          end: 95,
-          correct: true,
-        }
-      ],
-      highlightChoices: false,
-      text: "Benedict Arnold is remembered for betraying the American patriots during the Revolutionary War.",
-      disabled: false,
-      rationale: null,
-      partialScoring: true
-    };
-
-    it('returns a score of 0', async () => {
-      const result = await outcome(model, {
-        id: 1,
-        selectedTokens: [{
-          text: 'the',
-          start: 73,
-          end: 76,
-          correct: false,
-        }]
-      }, {mode: 'evaluate'});
-      expect(result.score).toEqual(0);
-    });
-
-    it('returns a score of 1', async () => {
-      const result = await outcome(model, {
-        id: 1,
-        selectedTokens: [{
-            text: 'Revolutionary',
-            start: 77,
-            end: 90,
-            correct: true,
-          },
-          {
-            text: 'War.',
-            start: 91,
-            end: 95,
-            correct: true,
-          },
-          {
-            text: "patriots",
-            start: 57,
-            end: 65,
-            correct: true,
-          },
-          {
-            text: "betraying",
-            start: 34,
-            end: 43,
-            correct: true,
-          }]
-      }, {mode: 'evaluate'});
-      expect(result.score).toEqual(1);
-    });
-
-    it('returns a score of 0.75', async () => {
-      const result = await outcome(model, {
-        id: 1,
-        selectedTokens: [{
-          text: 'Revolutionary',
-          start: 77,
-          end: 90,
-          correct: true,
-        },
-        {
-          text: 'patriots',
-          start: 57,
-          end: 65,
-          correct: true,
-        },
-        {
-          text: 'betraying',
-          start: 34,
-          end: 43,
-          correct: true,
-        }]
-      }, {mode: 'evaluate'});
-      expect(result.score).toEqual(0.75);
-    });
-
-    it('returns a score of 0.5', async () => {
-      const result = await outcome(model, {
-        id: 1,
-        selectedTokens: [{
-          text: "during",
-          start: 66,
-          end: 72,
-          correct: false,
-        },
-        {
-          text: "the",
-          start: 73,
-          end: 76,
-          correct: false,
-        },
-        {
-          text: 'Revolutionary',
-          start: 77,
-          end: 90,
-          correct: true,
-        },
-        {
-          text: 'betraying',
-          start: 34,
-          end: 43,
-          correct: true,
-        }]
-      }, {mode: 'evaluate'});
-      expect(result.score).toEqual(0.5);
-    });
-
-    it('returns a score of 0.25', async () => {
-      const result = await outcome(model, {
-        id: 1,
-        selectedTokens: [{
-          text: 'Revolutionary',
-          start: 77,
-          end: 90,
-          correct: true,
-        },
-        {
-          text: "during",
-          start: 66,
-          end: 72,
-          correct: false,
-        },
-        {
-          text: "the",
-          start: 73,
-          end: 76,
-          correct: false,
-        }]
-      }, {mode: 'evaluate'});
-      expect(result.score).toEqual(0.25);
-    });
-
-    it('returns a score of 0 for 1/4 correct answer an 4 incorrect answers', async () => {
-      const result = await outcome(model, {
-        id: 1,
-        selectedTokens: [{
-          text: 'Revolutionary',
-          start: 77,
-          end: 90,
-          correct: true,
-        },
-        {
-          text: "during",
-          start: 66,
-          end: 72,
-          correct: false,
-        },
-        {
-          text: "the",
-          start: 73,
-          end: 76,
           correct: false,
         },
         {
@@ -704,8 +406,264 @@ describe('model', () => {
           start: 30,
           end: 33,
           correct: false,
-        }]
-      }, {mode: 'evaluate'});
+        },
+        {
+          text: 'betraying',
+          start: 34,
+          end: 43,
+          correct: true,
+        },
+        {
+          text: 'the',
+          start: 44,
+          end: 47,
+          correct: false,
+        },
+        {
+          text: 'American',
+          start: 48,
+          end: 56,
+          correct: false,
+        },
+        {
+          text: 'patriots',
+          start: 57,
+          end: 65,
+          correct: true,
+        },
+        {
+          text: 'during',
+          start: 66,
+          end: 72,
+          correct: false,
+        },
+        {
+          text: 'the',
+          start: 73,
+          end: 76,
+          correct: false,
+        },
+        {
+          text: 'Revolutionary',
+          start: 77,
+          end: 90,
+          correct: true,
+        },
+        {
+          text: 'War.',
+          start: 91,
+          end: 95,
+          correct: true,
+        },
+      ],
+      highlightChoices: false,
+      text: 'Benedict Arnold is remembered for betraying the American patriots during the Revolutionary War.',
+      disabled: false,
+      rationale: null,
+      partialScoring: true,
+    };
+
+    it('returns a score of 0', async () => {
+      const result = await outcome(
+        model,
+        {
+          id: 1,
+          selectedTokens: [
+            {
+              text: 'the',
+              start: 73,
+              end: 76,
+              correct: false,
+            },
+          ],
+        },
+        { mode: 'evaluate' },
+      );
+      expect(result.score).toEqual(0);
+    });
+
+    it('returns a score of 1', async () => {
+      const result = await outcome(
+        model,
+        {
+          id: 1,
+          selectedTokens: [
+            {
+              text: 'Revolutionary',
+              start: 77,
+              end: 90,
+              correct: true,
+            },
+            {
+              text: 'War.',
+              start: 91,
+              end: 95,
+              correct: true,
+            },
+            {
+              text: 'patriots',
+              start: 57,
+              end: 65,
+              correct: true,
+            },
+            {
+              text: 'betraying',
+              start: 34,
+              end: 43,
+              correct: true,
+            },
+          ],
+        },
+        { mode: 'evaluate' },
+      );
+      expect(result.score).toEqual(1);
+    });
+
+    it('returns a score of 0.75', async () => {
+      const result = await outcome(
+        model,
+        {
+          id: 1,
+          selectedTokens: [
+            {
+              text: 'Revolutionary',
+              start: 77,
+              end: 90,
+              correct: true,
+            },
+            {
+              text: 'patriots',
+              start: 57,
+              end: 65,
+              correct: true,
+            },
+            {
+              text: 'betraying',
+              start: 34,
+              end: 43,
+              correct: true,
+            },
+          ],
+        },
+        { mode: 'evaluate' },
+      );
+      expect(result.score).toEqual(0.75);
+    });
+
+    it('returns a score of 0.5', async () => {
+      const result = await outcome(
+        model,
+        {
+          id: 1,
+          selectedTokens: [
+            {
+              text: 'during',
+              start: 66,
+              end: 72,
+              correct: false,
+            },
+            {
+              text: 'the',
+              start: 73,
+              end: 76,
+              correct: false,
+            },
+            {
+              text: 'Revolutionary',
+              start: 77,
+              end: 90,
+              correct: true,
+            },
+            {
+              text: 'betraying',
+              start: 34,
+              end: 43,
+              correct: true,
+            },
+          ],
+        },
+        { mode: 'evaluate' },
+      );
+      expect(result.score).toEqual(0.5);
+    });
+
+    it('returns a score of 0.25', async () => {
+      const result = await outcome(
+        model,
+        {
+          id: 1,
+          selectedTokens: [
+            {
+              text: 'Revolutionary',
+              start: 77,
+              end: 90,
+              correct: true,
+            },
+            {
+              text: 'during',
+              start: 66,
+              end: 72,
+              correct: false,
+            },
+            {
+              text: 'the',
+              start: 73,
+              end: 76,
+              correct: false,
+            },
+          ],
+        },
+        { mode: 'evaluate' },
+      );
+      expect(result.score).toEqual(0.25);
+    });
+
+    it('returns a score of 0 for 1/4 correct answer an 4 incorrect answers', async () => {
+      const result = await outcome(
+        model,
+        {
+          id: 1,
+          selectedTokens: [
+            {
+              text: 'Revolutionary',
+              start: 77,
+              end: 90,
+              correct: true,
+            },
+            {
+              text: 'during',
+              start: 66,
+              end: 72,
+              correct: false,
+            },
+            {
+              text: 'the',
+              start: 73,
+              end: 76,
+              correct: false,
+            },
+            {
+              text: 'is',
+              start: 16,
+              end: 18,
+              correct: false,
+            },
+            {
+              text: 'remembered',
+              start: 19,
+              end: 29,
+              correct: false,
+            },
+            {
+              text: 'for',
+              start: 30,
+              end: 33,
+              correct: false,
+            },
+          ],
+        },
+        { mode: 'evaluate' },
+      );
       expect(result.score).toEqual(0);
     });
   });

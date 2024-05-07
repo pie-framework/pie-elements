@@ -5,27 +5,26 @@ import * as React from 'react';
 import defaultValues from '../defaults';
 import { Root } from '../root';
 
-
 jest.mock('react-dom', () => ({
-  render: jest.fn()
+  render: jest.fn(),
 }));
 
-jest.mock('@pie-lib/config-ui', () => ({
-  FeedbackConfig: props => (<div/>),
-  InputCheckbox: props => (<div/>),
+jest.mock('@pie-lib/pie-toolbox/config-ui', () => ({
+  FeedbackConfig: (props) => <div />,
+  InputCheckbox: (props) => <div />,
   layout: {
-    ConfigLayout: props => <div>{props.children}</div>
+    ConfigLayout: (props) => <div>{props.children}</div>,
   },
   settings: {
-    Panel: props => <div onChange={props.onChange} />,
+    Panel: (props) => <div onChange={props.onChange} />,
     toggle: jest.fn(),
-  }
+  },
 }));
 
 export const defaultProps = {
   classes: {},
   model: {},
-  configuration: defaultValues.configuration
+  configuration: defaultValues.configuration,
 };
 
 describe('Root', () => {
@@ -33,13 +32,13 @@ describe('Root', () => {
   let component;
 
   beforeEach(() => {
-    wrapper = props => {
+    wrapper = (props) => {
       const configProps = {
         ...defaultProps,
-        ...props
+        ...props,
       };
 
-      return shallow(<Root { ...configProps } />);
+      return shallow(<Root {...configProps} />);
     };
   });
 
@@ -51,14 +50,12 @@ describe('Root', () => {
     let onModelChanged = jest.fn();
 
     component = wrapper({
-      onModelChanged
+      onModelChanged,
     });
 
     component.instance().onTeacherInstructionsChanged('New Teacher Instructions');
 
-    expect(onModelChanged).toBeCalledWith(
-      expect.objectContaining({ teacherInstructions: 'New Teacher Instructions' })
-    );
+    expect(onModelChanged).toBeCalledWith(expect.objectContaining({ teacherInstructions: 'New Teacher Instructions' }));
   });
 });
 

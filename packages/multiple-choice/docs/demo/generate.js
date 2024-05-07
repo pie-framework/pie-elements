@@ -10,29 +10,29 @@ exports.model = (id, element) => ({
       label: 'Sweden',
       feedback: {
         type: 'none',
-        value: ''
+        value: '',
       },
-      accessibility: 'sweden'
+      accessibility: 'sweden',
     },
     {
       value: 'iceland',
       label: 'Iceland',
       feedback: {
         type: 'none',
-        value: ''
+        value: '',
       },
       rationale: 'Rationale for Iceland',
-      accessibility: 'iceland'
+      accessibility: 'iceland',
     },
     {
       value: 'norway',
       label: 'Norway',
       feedback: {
         type: 'none',
-        value: ''
+        value: '',
       },
       rationale: 'Rationale for Norway',
-      accessibility: 'norway'
+      accessibility: 'norway',
     },
     {
       correct: true,
@@ -40,13 +40,14 @@ exports.model = (id, element) => ({
       label: 'Finland',
       feedback: {
         type: 'none',
-        value: ''
+        value: '',
       },
       rationale: 'Rationale for Finland',
-      accessibility: 'finland'
-    }
+      accessibility: 'finland',
+    },
   ],
-  prompt: 'Which of these northern European countries are EU members? <math><mstack><msrow><mn>111</mn></msrow><msline/></mstack></math>',
+  prompt: "",
   promptEnabled: true,
-  toolbarEditorPosition: 'bottom'
+  toolbarEditorPosition: 'bottom',
+  rubricEnabled: false,
 });

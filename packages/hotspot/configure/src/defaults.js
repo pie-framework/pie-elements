@@ -1,57 +1,111 @@
 export default {
   model: {
-    prompt: 'This is the question prompt',
+    prompt: '',
     toolbarEditorPosition: 'bottom',
-    promptEnabled: true,
     imageUrl: '',
     shapes: {
       rectangles: [],
-      polygons: []
+      polygons: [],
+      circles: [],
     },
     multipleCorrect: true,
     partialScoring: false,
     dimensions: {
       height: 0,
-      width: 0
+      width: 0,
     },
-    hotspotColor: 'rgba(137, 183, 244, 0.65)',
-    hotspotList: [
-      'rgba(137, 183, 244, 0.65)'
-    ],
+    hotspotColor: 'rgba(137, 183, 244, 0.25)',
+    hotspotList: ['rgba(137, 183, 244, 0.25)'],
     outlineColor: 'blue',
-    outlineList: [
-      'blue'
-    ],
+    outlineList: ['blue'],
+    promptEnabled: true,
     rationaleEnabled: true,
     teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true,
-    strokeWidth: 5
+    strokeWidth: 5,
   },
   configuration: {
+    baseInputConfiguration: {
+      audio: { disabled: false },
+      video: { disabled: false },
+      image: { disabled: false },
+    },
     multipleCorrect: {
       settings: true,
-      label: 'Multiple Correct Responses'
+      label: 'Multiple Correct Responses',
     },
     partialScoring: {
       settings: false,
-      label: 'Allow Partial Scoring'
+      label: 'Allow Partial Scoring',
     },
     rationale: {
       settings: true,
-      label: 'Rationale'
+      label: 'Rationale',
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
+      required: false,
     },
     prompt: {
       settings: true,
-      label: 'Prompt'
+      label: 'Prompt',
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
+      required: false,
+    },
+    settingsPanelDisabled: false,
+    spellCheck: {
+      label: 'Spellcheck',
+      settings: false,
+      enabled: true,
     },
     teacherInstructions: {
       settings: true,
-      label: 'Teacher Instructions'
+      label: 'Teacher Instructions',
+      inputConfiguration: {
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
+      required: false,
     },
     preserveAspectRatio: {
       settings: false,
       enabled: true,
-      label: 'Preserve aspect ratio'
-    }
-  }
+      label: 'Preserve aspect ratio',
+    },
+    minShapes: 2,
+    maxImageWidth: {
+      teacherInstructions: 300,
+      prompt: 300,
+      rationale: 300,
+    },
+    maxImageHeight: {
+      teacherInstructions: 300,
+      prompt: 300,
+      rationale: 300,
+    },
+    withRubric: {
+      settings: false,
+      label: 'Add Rubric',
+    },
+    mathMlOptions: {
+      mmlOutput: false,
+      mmlEditing: false,
+    },
+    language: {
+      settings: false,
+      label: 'Specify Language',
+      enabled: false,
+    },
+    languageChoices: {
+      label: 'Language Choices',
+      options: [],
+    },
+  },
 };

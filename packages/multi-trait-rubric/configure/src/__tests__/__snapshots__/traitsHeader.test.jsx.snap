@@ -6,34 +6,18 @@ exports[`Trait Header snapshot renders 1`] = `
 >
   <WithStyles(Component)>
     <WithStyles(Component)
+      imageSupport={Object {}}
       label="Level Label"
       markup="Category"
+      mathMlOptions={Object {}}
       onChange={[Function]}
-      pluginProps={
-        Object {
-          "audio": Object {
-            "disabled": true,
-          },
-          "image": Object {
-            "disabled": true,
-          },
-          "math": Object {
-            "disabled": true,
-          },
-          "video": Object {
-            "disabled": true,
-          },
-        }
-      }
+      pluginProps={Object {}}
     />
     <WithStyles(Component)>
       <div>
         Scale 
         1
       </div>
-      <WithStyles(Component)
-        maxPoints={2}
-      />
       <div>
         <WithStyles(IconButton)
           aria-controls="long-menu"
@@ -79,23 +63,11 @@ exports[`Trait Header snapshot renders 1`] = `
     >
       <WithStyles(Component)
         alignToRight={false}
+        error=""
+        imageSupport={Object {}}
+        mathMlOptions={Object {}}
         onChange={[Function]}
-        pluginProps={
-          Object {
-            "audio": Object {
-              "disabled": true,
-            },
-            "image": Object {
-              "disabled": true,
-            },
-            "math": Object {
-              "disabled": true,
-            },
-            "video": Object {
-              "disabled": true,
-            },
-          }
-        }
+        pluginProps={Object {}}
         scoreDescriptor="C"
         scorePointsValue={0}
         showScorePointLabels={true}
@@ -106,23 +78,11 @@ exports[`Trait Header snapshot renders 1`] = `
     >
       <WithStyles(Component)
         alignToRight={false}
+        error=""
+        imageSupport={Object {}}
+        mathMlOptions={Object {}}
         onChange={[Function]}
-        pluginProps={
-          Object {
-            "audio": Object {
-              "disabled": true,
-            },
-            "image": Object {
-              "disabled": true,
-            },
-            "math": Object {
-              "disabled": true,
-            },
-            "video": Object {
-              "disabled": true,
-            },
-          }
-        }
+        pluginProps={Object {}}
         scoreDescriptor="B"
         scorePointsValue={1}
         showScorePointLabels={true}
@@ -133,23 +93,11 @@ exports[`Trait Header snapshot renders 1`] = `
     >
       <WithStyles(Component)
         alignToRight={false}
+        error=""
+        imageSupport={Object {}}
+        mathMlOptions={Object {}}
         onChange={[Function]}
-        pluginProps={
-          Object {
-            "audio": Object {
-              "disabled": true,
-            },
-            "image": Object {
-              "disabled": true,
-            },
-            "math": Object {
-              "disabled": true,
-            },
-            "video": Object {
-              "disabled": true,
-            },
-          }
-        }
+        pluginProps={Object {}}
         scoreDescriptor="A"
         scorePointsValue={2}
         showScorePointLabels={true}
@@ -165,34 +113,18 @@ exports[`Trait Header snapshot renders without description 1`] = `
 >
   <WithStyles(Component)>
     <WithStyles(Component)
+      imageSupport={Object {}}
       label="Level Label"
       markup="Category"
+      mathMlOptions={Object {}}
       onChange={[Function]}
-      pluginProps={
-        Object {
-          "audio": Object {
-            "disabled": true,
-          },
-          "image": Object {
-            "disabled": true,
-          },
-          "math": Object {
-            "disabled": true,
-          },
-          "video": Object {
-            "disabled": true,
-          },
-        }
-      }
+      pluginProps={Object {}}
     />
     <WithStyles(Component)>
       <div>
         Scale 
         1
       </div>
-      <WithStyles(Component)
-        maxPoints={2}
-      />
       <div>
         <WithStyles(IconButton)
           aria-controls="long-menu"
@@ -233,23 +165,11 @@ exports[`Trait Header snapshot renders without description 1`] = `
     >
       <WithStyles(Component)
         alignToRight={false}
+        error=""
+        imageSupport={Object {}}
+        mathMlOptions={Object {}}
         onChange={[Function]}
-        pluginProps={
-          Object {
-            "audio": Object {
-              "disabled": true,
-            },
-            "image": Object {
-              "disabled": true,
-            },
-            "math": Object {
-              "disabled": true,
-            },
-            "video": Object {
-              "disabled": true,
-            },
-          }
-        }
+        pluginProps={Object {}}
         scoreDescriptor="C"
         scorePointsValue={0}
         showScorePointLabels={true}
@@ -260,23 +180,11 @@ exports[`Trait Header snapshot renders without description 1`] = `
     >
       <WithStyles(Component)
         alignToRight={false}
+        error=""
+        imageSupport={Object {}}
+        mathMlOptions={Object {}}
         onChange={[Function]}
-        pluginProps={
-          Object {
-            "audio": Object {
-              "disabled": true,
-            },
-            "image": Object {
-              "disabled": true,
-            },
-            "math": Object {
-              "disabled": true,
-            },
-            "video": Object {
-              "disabled": true,
-            },
-          }
-        }
+        pluginProps={Object {}}
         scoreDescriptor="B"
         scorePointsValue={1}
         showScorePointLabels={true}
@@ -287,23 +195,11 @@ exports[`Trait Header snapshot renders without description 1`] = `
     >
       <WithStyles(Component)
         alignToRight={false}
+        error=""
+        imageSupport={Object {}}
+        mathMlOptions={Object {}}
         onChange={[Function]}
-        pluginProps={
-          Object {
-            "audio": Object {
-              "disabled": true,
-            },
-            "image": Object {
-              "disabled": true,
-            },
-            "math": Object {
-              "disabled": true,
-            },
-            "video": Object {
-              "disabled": true,
-            },
-          }
-        }
+        pluginProps={Object {}}
         scoreDescriptor="A"
         scorePointsValue={2}
         showScorePointLabels={true}
@@ -323,9 +219,6 @@ exports[`Trait Header snapshot renders without level tag input 1`] = `
         Scale 
         1
       </div>
-      <WithStyles(Component)
-        maxPoints={2}
-      />
       <div>
         <WithStyles(IconButton)
           aria-controls="long-menu"
@@ -371,23 +264,11 @@ exports[`Trait Header snapshot renders without level tag input 1`] = `
     >
       <WithStyles(Component)
         alignToRight={false}
+        error=""
+        imageSupport={Object {}}
+        mathMlOptions={Object {}}
         onChange={[Function]}
-        pluginProps={
-          Object {
-            "audio": Object {
-              "disabled": true,
-            },
-            "image": Object {
-              "disabled": true,
-            },
-            "math": Object {
-              "disabled": true,
-            },
-            "video": Object {
-              "disabled": true,
-            },
-          }
-        }
+        pluginProps={Object {}}
         scoreDescriptor="C"
         scorePointsValue={0}
         showScorePointLabels={true}
@@ -398,23 +279,11 @@ exports[`Trait Header snapshot renders without level tag input 1`] = `
     >
       <WithStyles(Component)
         alignToRight={false}
+        error=""
+        imageSupport={Object {}}
+        mathMlOptions={Object {}}
         onChange={[Function]}
-        pluginProps={
-          Object {
-            "audio": Object {
-              "disabled": true,
-            },
-            "image": Object {
-              "disabled": true,
-            },
-            "math": Object {
-              "disabled": true,
-            },
-            "video": Object {
-              "disabled": true,
-            },
-          }
-        }
+        pluginProps={Object {}}
         scoreDescriptor="B"
         scorePointsValue={1}
         showScorePointLabels={true}
@@ -425,23 +294,11 @@ exports[`Trait Header snapshot renders without level tag input 1`] = `
     >
       <WithStyles(Component)
         alignToRight={false}
+        error=""
+        imageSupport={Object {}}
+        mathMlOptions={Object {}}
         onChange={[Function]}
-        pluginProps={
-          Object {
-            "audio": Object {
-              "disabled": true,
-            },
-            "image": Object {
-              "disabled": true,
-            },
-            "math": Object {
-              "disabled": true,
-            },
-            "video": Object {
-              "disabled": true,
-            },
-          }
-        }
+        pluginProps={Object {}}
         scoreDescriptor="A"
         scorePointsValue={2}
         showScorePointLabels={true}
@@ -457,34 +314,18 @@ exports[`Trait Header snapshot renders without score point labels 1`] = `
 >
   <WithStyles(Component)>
     <WithStyles(Component)
+      imageSupport={Object {}}
       label="Level Label"
       markup="Category"
+      mathMlOptions={Object {}}
       onChange={[Function]}
-      pluginProps={
-        Object {
-          "audio": Object {
-            "disabled": true,
-          },
-          "image": Object {
-            "disabled": true,
-          },
-          "math": Object {
-            "disabled": true,
-          },
-          "video": Object {
-            "disabled": true,
-          },
-        }
-      }
+      pluginProps={Object {}}
     />
     <WithStyles(Component)>
       <div>
         Scale 
         1
       </div>
-      <WithStyles(Component)
-        maxPoints={2}
-      />
       <div>
         <WithStyles(IconButton)
           aria-controls="long-menu"
@@ -530,23 +371,11 @@ exports[`Trait Header snapshot renders without score point labels 1`] = `
     >
       <WithStyles(Component)
         alignToRight={false}
+        error=""
+        imageSupport={Object {}}
+        mathMlOptions={Object {}}
         onChange={[Function]}
-        pluginProps={
-          Object {
-            "audio": Object {
-              "disabled": true,
-            },
-            "image": Object {
-              "disabled": true,
-            },
-            "math": Object {
-              "disabled": true,
-            },
-            "video": Object {
-              "disabled": true,
-            },
-          }
-        }
+        pluginProps={Object {}}
         scoreDescriptor="C"
         scorePointsValue={0}
         showScorePointLabels={false}
@@ -557,23 +386,11 @@ exports[`Trait Header snapshot renders without score point labels 1`] = `
     >
       <WithStyles(Component)
         alignToRight={false}
+        error=""
+        imageSupport={Object {}}
+        mathMlOptions={Object {}}
         onChange={[Function]}
-        pluginProps={
-          Object {
-            "audio": Object {
-              "disabled": true,
-            },
-            "image": Object {
-              "disabled": true,
-            },
-            "math": Object {
-              "disabled": true,
-            },
-            "video": Object {
-              "disabled": true,
-            },
-          }
-        }
+        pluginProps={Object {}}
         scoreDescriptor="B"
         scorePointsValue={1}
         showScorePointLabels={false}
@@ -584,23 +401,11 @@ exports[`Trait Header snapshot renders without score point labels 1`] = `
     >
       <WithStyles(Component)
         alignToRight={false}
+        error=""
+        imageSupport={Object {}}
+        mathMlOptions={Object {}}
         onChange={[Function]}
-        pluginProps={
-          Object {
-            "audio": Object {
-              "disabled": true,
-            },
-            "image": Object {
-              "disabled": true,
-            },
-            "math": Object {
-              "disabled": true,
-            },
-            "video": Object {
-              "disabled": true,
-            },
-          }
-        }
+        pluginProps={Object {}}
         scoreDescriptor="A"
         scorePointsValue={2}
         showScorePointLabels={false}
@@ -616,34 +421,18 @@ exports[`Trait Header snapshot renders without score point values 1`] = `
 >
   <WithStyles(Component)>
     <WithStyles(Component)
+      imageSupport={Object {}}
       label="Level Label"
       markup="Category"
+      mathMlOptions={Object {}}
       onChange={[Function]}
-      pluginProps={
-        Object {
-          "audio": Object {
-            "disabled": true,
-          },
-          "image": Object {
-            "disabled": true,
-          },
-          "math": Object {
-            "disabled": true,
-          },
-          "video": Object {
-            "disabled": true,
-          },
-        }
-      }
+      pluginProps={Object {}}
     />
     <WithStyles(Component)>
       <div>
         Scale 
         1
       </div>
-      <WithStyles(Component)
-        maxPoints={2}
-      />
       <div>
         <WithStyles(IconButton)
           aria-controls="long-menu"
@@ -694,34 +483,18 @@ exports[`Trait Header snapshot renders without standards 1`] = `
 >
   <WithStyles(Component)>
     <WithStyles(Component)
+      imageSupport={Object {}}
       label="Level Label"
       markup="Category"
+      mathMlOptions={Object {}}
       onChange={[Function]}
-      pluginProps={
-        Object {
-          "audio": Object {
-            "disabled": true,
-          },
-          "image": Object {
-            "disabled": true,
-          },
-          "math": Object {
-            "disabled": true,
-          },
-          "video": Object {
-            "disabled": true,
-          },
-        }
-      }
+      pluginProps={Object {}}
     />
     <WithStyles(Component)>
       <div>
         Scale 
         1
       </div>
-      <WithStyles(Component)
-        maxPoints={2}
-      />
       <div>
         <WithStyles(IconButton)
           aria-controls="long-menu"
@@ -762,23 +535,11 @@ exports[`Trait Header snapshot renders without standards 1`] = `
     >
       <WithStyles(Component)
         alignToRight={false}
+        error=""
+        imageSupport={Object {}}
+        mathMlOptions={Object {}}
         onChange={[Function]}
-        pluginProps={
-          Object {
-            "audio": Object {
-              "disabled": true,
-            },
-            "image": Object {
-              "disabled": true,
-            },
-            "math": Object {
-              "disabled": true,
-            },
-            "video": Object {
-              "disabled": true,
-            },
-          }
-        }
+        pluginProps={Object {}}
         scoreDescriptor="C"
         scorePointsValue={0}
         showScorePointLabels={true}
@@ -789,23 +550,11 @@ exports[`Trait Header snapshot renders without standards 1`] = `
     >
       <WithStyles(Component)
         alignToRight={false}
+        error=""
+        imageSupport={Object {}}
+        mathMlOptions={Object {}}
         onChange={[Function]}
-        pluginProps={
-          Object {
-            "audio": Object {
-              "disabled": true,
-            },
-            "image": Object {
-              "disabled": true,
-            },
-            "math": Object {
-              "disabled": true,
-            },
-            "video": Object {
-              "disabled": true,
-            },
-          }
-        }
+        pluginProps={Object {}}
         scoreDescriptor="B"
         scorePointsValue={1}
         showScorePointLabels={true}
@@ -816,23 +565,11 @@ exports[`Trait Header snapshot renders without standards 1`] = `
     >
       <WithStyles(Component)
         alignToRight={false}
+        error=""
+        imageSupport={Object {}}
+        mathMlOptions={Object {}}
         onChange={[Function]}
-        pluginProps={
-          Object {
-            "audio": Object {
-              "disabled": true,
-            },
-            "image": Object {
-              "disabled": true,
-            },
-            "math": Object {
-              "disabled": true,
-            },
-            "video": Object {
-              "disabled": true,
-            },
-          }
-        }
+        pluginProps={Object {}}
         scoreDescriptor="A"
         scorePointsValue={2}
         showScorePointLabels={true}

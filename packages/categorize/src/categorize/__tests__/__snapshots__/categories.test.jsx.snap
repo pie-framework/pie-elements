@@ -5,26 +5,36 @@ exports[`categories snapshots disabled 1`] = `
   columns={1}
   rows={2}
 >
-  <WithStyles(Typography)
-    key="category-label-0-0"
-  >
-    <span
-      dangerouslySetInnerHTML={
-        Object {
-          "__html": "category label",
-        }
+  <div
+    style={
+      Object {
+        "display": "flex",
       }
-    />
-  </WithStyles(Typography)>
-  <WithStyles(Category)
-    choices={Array []}
-    disabled={true}
-    id="1"
-    key="category-element-0-0"
-    label="category label"
-    onDropChoice={[Function]}
-    onRemoveChoice={[MockFunction]}
-  />
+    }
+  >
+    <div>
+      <WithStyles(Typography)
+        key="category-label-0-0"
+      >
+        <span
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "category label",
+            }
+          }
+        />
+      </WithStyles(Typography)>
+      <WithStyles(Category)
+        choices={Array []}
+        disabled={true}
+        id="1"
+        key="category-element-0-0"
+        label="category label"
+        onDropChoice={[Function]}
+        onRemoveChoice={[MockFunction]}
+      />
+    </div>
+  </div>
 </WithStyles(GridContent)>
 `;
 
@@ -33,24 +43,34 @@ exports[`categories snapshots renders 1`] = `
   columns={1}
   rows={2}
 >
-  <WithStyles(Typography)
-    key="category-label-0-0"
-  >
-    <span
-      dangerouslySetInnerHTML={
-        Object {
-          "__html": "category label",
-        }
+  <div
+    style={
+      Object {
+        "display": "flex",
       }
-    />
-  </WithStyles(Typography)>
-  <WithStyles(Category)
-    choices={Array []}
-    id="1"
-    key="category-element-0-0"
-    label="category label"
-    onDropChoice={[Function]}
-    onRemoveChoice={[MockFunction]}
-  />
+    }
+  >
+    <div>
+      <WithStyles(Typography)
+        key="category-label-0-0"
+      >
+        <span
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "category label",
+            }
+          }
+        />
+      </WithStyles(Typography)>
+      <WithStyles(Category)
+        choices={Array []}
+        id="1"
+        key="category-element-0-0"
+        label="category label"
+        onDropChoice={[Function]}
+        onRemoveChoice={[MockFunction]}
+      />
+    </div>
+  </div>
 </WithStyles(GridContent)>
 `;

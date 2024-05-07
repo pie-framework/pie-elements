@@ -2,18 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import cn from 'classnames';
-import { InputCheckbox } from '@pie-lib/config-ui';
+import { InputCheckbox } from '@pie-lib/pie-toolbox/config-ui';
 
 export class Arrows extends React.Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
     className: PropTypes.string,
-    arrows: PropTypes.shape({ left: PropTypes.bool, right: PropTypes.bool })
-      .isRequired,
-    onChange: PropTypes.func
+    arrows: PropTypes.shape({ left: PropTypes.bool, right: PropTypes.bool }).isRequired,
+    onChange: PropTypes.func,
   };
   static defaultProps = {
-    arrows: { left: true, right: true }
+    arrows: { left: true, right: true },
   };
 
   constructor(props) {
@@ -30,27 +29,30 @@ export class Arrows extends React.Component {
   render() {
     const { classes, className, arrows } = this.props;
     return (
-      <div className={cn(classes.arrows, className)}>
-        <InputCheckbox
-          className={classes.checkbox}
-          label={'Left'}
-          checked={arrows.left}
-          onChange={this.changeLeft}
-        />
-        &nbsp;
-        <InputCheckbox
-          className={classes.checkbox}
-          label={'Right'}
-          checked={arrows.right}
-          onChange={this.changeRight}
-        />
+      <div className={classes.flexRow}>
+        <label>Arrows</label>
+        <div className={cn(classes.arrows, className)}>
+          <InputCheckbox className={classes.checkbox} label={'Left'} checked={arrows.left} onChange={this.changeLeft} />
+          &nbsp;
+          <InputCheckbox
+            className={classes.checkbox}
+            label={'Right'}
+            checked={arrows.right}
+            onChange={this.changeRight}
+          />
+        </div>
       </div>
     );
   }
 }
-const styles = theme => ({
+const styles = (theme) => ({
   arrows: {
-    paddingTop: theme.spacing.unit * 2
-  }
+    paddingTop: theme.spacing.unit * 2,
+  },
+  flexRow: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '10px',
+  },
 });
 export default withStyles(styles)(Arrows);

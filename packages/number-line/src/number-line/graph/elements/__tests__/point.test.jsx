@@ -20,13 +20,13 @@ describe('point', () => {
         selected: 'selected',
         correct: 'correct',
         incorrect: 'incorrect',
-        empty: 'empty'
+        empty: 'empty',
       },
       interval: 10,
       position: 1,
       bounds: {
         left: -1,
-        right: 9
+        right: 9,
       },
       selected: false,
       disabled: false,
@@ -37,7 +37,7 @@ describe('point', () => {
       onClick,
       onDragStart,
       onDragStop,
-      onDrag
+      onDrag,
     };
 
     props = _.merge(defaults, props);
@@ -46,24 +46,16 @@ describe('point', () => {
   };
 
   describe('className', () => {
-    const f = opts => () => mkWrapper(opts).find('circle');
+    const f = (opts) => () => mkWrapper(opts).find('circle').last();
 
     assertProp(f({ selected: true }), 'className', 'point selected incorrect');
     assertProp(f({ selected: false }), 'className', 'point incorrect');
-    assertProp(
-      f({ selected: true, correct: true }),
-      'className',
-      'point selected correct'
-    );
-    assertProp(
-      f({ empty: true, selected: true, correct: true }),
-      'className',
-      'point selected correct empty'
-    );
+    assertProp(f({ selected: true, correct: true }), 'className', 'point selected correct');
+    assertProp(f({ empty: true, selected: true, correct: true }), 'className', 'point selected correct empty');
   });
 
   describe('Draggable', () => {
-    const f = opts => () => mkWrapper(opts).find(Draggable);
+    const f = (opts) => () => mkWrapper(opts).find(Draggable);
     assertProp(f(), 'axis', 'x');
     assertProp(f(), 'grid', [10]);
     assertProp(f(), 'bounds', { left: -1, right: 9 });

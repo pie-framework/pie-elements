@@ -1,136 +1,137 @@
-import {PromptConfig} from '../../PromptConfig';
-import {CommonConfigSettings} from '../../CommonConfigSettings';
-import {PieModel} from '../../PieModel';
-import { ConfigureProp, ConfigurePropWithEnabled } from '../ConfigurationProp';
+import { PromptConfig } from '../../PromptConfig';
+import { CommonConfigSettings } from '../../CommonConfigSettings';
+import { PieModel } from '../../PieModel';
+import {
+  ConfigureLanguageOptionsProp,
+  ConfigureMathMLProp,
+  ConfigureMaxImageDimensionsProp,
+  ConfigureProp,
+  ConfigurePropWithEnabled,
+  EditableHtmlConfigureProp,
+  EditableHtmlPluginConfigureRequired,
+} from '../ConfigurationProp';
 
 interface Graph {
-    /** Width for graph representation */
-    width: number;
+  /** Width for graph representation */
+  width: number;
 
-    /** Height for graph representation */
-    height: number;
+  /** Height for graph representation */
+  height: number;
 }
 
 interface GraphSettings {
-    /** Min value */
-    min: number;
+  /** Min value */
+  min: number;
 
-    /** Max value */
-    max: number;
+  /** Max value */
+  max: number;
 
-    /** Padding value */
-    padding: number;
+  /** Padding value */
+  padding: number;
 
-    /** Step value */
-    step: number;
+  /** Step value */
+  step: number;
 
-    /** Label step value */
-    labelStep: number;
+  /** Label step value */
+  labelStep: number;
 
-    /** Axis Label */
-    axisLabel: string;
+  /** Axis Label */
+  axisLabel: string;
 }
 
 interface Point {
-    /** Indicates x coordinate */
-    x: number;
+  /** Indicates x coordinate */
+  x: number;
 
-    /** Indicates y coordinate */
-    y: number;
+  /** Indicates y coordinate */
+  y: number;
 }
 
 interface Mark {
-    /** Indicates type of mark */
-    type: 'point' | 'segment' | 'line' | 'vector' | 'circle' | 'sine' | 'polygon' | 'ray' | 'parabola';
+  /** Indicates type of mark */
+  type: 'point' | 'segment' | 'line' | 'vector' | 'circle' | 'sine' | 'polygon' | 'ray' | 'parabola';
 
-    /** Indicates if label should be visible */
-    showLabel?: boolean;
+  /** Indicates if label should be visible */
+  showLabel?: boolean;
 
-    /** Indicates label value for mark */
-    label?: string;
+  /** Indicates label value for mark */
+  label?: string;
 
-    /** Indicates if mark is in build process */
-    building: boolean;
+  /** Indicates if mark is in build process */
+  building: boolean;
 
-    /** Indicates x coordinate if type is point */
-    x?: number;
+  /** Indicates x coordinate if type is point */
+  x?: number;
 
-    /** Indicates y coordinate if type is point */
-    y?: number;
+  /** Indicates y coordinate if type is point */
+  y?: number;
 
-    /** Indicates where starts the mark if type is line, segment, ray, vector */
-    from?: Point;
+  /** Indicates where starts the mark if type is line, segment, ray, vector */
+  from?: Point;
 
-    /** Indicates where end the mark if type is line, segment, ray, vector */
-    to?: Point;
+  /** Indicates where end the mark if type is line, segment, ray, vector */
+  to?: Point;
 
-    /** Indicates the center of circle if type is circle */
-    center?: Point;
+  /** Indicates if mark is closed if type is polygon, sine */
+  closed?: boolean;
 
-    /** Indicates a point on circle's exterior if type is circle  */
-    outerPoint?: Point;
+  /** Indicates all mark's points if type is polygon */
+  points?: [Point];
 
-    /** Indicates if mark is closed if type is polygon, sine */
-    closed?: boolean;
+  /** Indicated the root of mark if type is sine, parabola */
+  root?: Point;
 
-    /** Indicates all mark's points if type is polygon */
-    points?: [Point];
-
-    /** Indicated the root of mark if type is sine, parabola */
-    root?: Point;
-
-    /** Indicated the edge of mark if type is sine, parabola */
-    edge?: Point;
-
+  /** Indicated the edge of mark if type is sine, parabola */
+  edge?: Point;
 }
 
 interface Answer {
-    /** Indicates name of answer */
-    name: string;
+  /** Indicates name of answer */
+  name: string;
 
-    /** Indicates marks for the answer */
-    marks: [Mark];
+  /** Indicates marks for the answer */
+  marks: [Mark];
 }
 
 interface Labels {
-    /** Label for top side of the graph */
-    top: string;
+  /** Label for top side of the graph */
+  top: string;
 
-    /** Label for bottom side of the graph */
-    bottom: string;
+  /** Label for bottom side of the graph */
+  bottom: string;
 
-    /** Label for left side of the graph */
-    left: string;
+  /** Label for left side of the graph */
+  left: string;
 
-    /** Label for right side of the graph */
-    right: string;
+  /** Label for right side of the graph */
+  right: string;
 }
 
 enum Tool {
-    point = 'point',
-    circle = 'circle',
-    polygon = 'polygon',
-    segment = 'segment',
-    ray = 'ray',
-    vector = 'vector',
-    line = 'line',
-    sine = 'sine',
-    parabola = 'parabola',
-    label = 'label'
+  point = 'point',
+  circle = 'circle',
+  polygon = 'polygon',
+  segment = 'segment',
+  ray = 'ray',
+  vector = 'vector',
+  line = 'line',
+  sine = 'sine',
+  parabola = 'parabola',
+  label = 'label',
 }
 
 interface Arrows {
-    /** Indicates if left arrow is enabled */
-    left: boolean;
+  /** Indicates if left arrow is enabled */
+  left: boolean;
 
-    /** Indicates if right arrow is enabled */
-    right: boolean;
+  /** Indicates if right arrow is enabled */
+  right: boolean;
 
-    /** Indicates if up arrow is enabled */
-    up: boolean;
+  /** Indicates if up arrow is enabled */
+  up: boolean;
 
-    /** Indicates if down arrow is enabled */
-    down: boolean;
+  /** Indicates if down arrow is enabled */
+  down: boolean;
 }
 
 /**
@@ -143,99 +144,258 @@ interface Arrows {
  * @additionalProperties false
  */
 export interface GraphingPie extends PieModel {
-    /** Indicates marks that are set as answers; Note: alternates can be added having this form: alternateIndex */
-    answers: {
-        correctAnswer: Answer,
-        alternate1: Answer
-    };
+  /** Indicates marks that are set as answers; Note: alternates can be added having this form: alternateIndex */
+  answers: {
+    correctAnswer: Answer;
+    alternate1: Answer;
+  };
 
-    /** Indicates if arrows are enabled */
-    arrows?: Arrows;
+  /** Indicates if arrows are enabled */
+  arrows?: Arrows;
 
-    /** Indicates marks that have to be displayed in background */
-    backgroundMarks: [Mark];
+  /** Indicates marks that have to be displayed in background */
+  backgroundMarks: [Mark];
 
-    /** Indicates if coordinates of a point are displayed on hover */
-    coordinatesOnHover?: boolean;
+  /** Indicates the default grid configuration */
+  defaultGridConfiguration: Number;
 
-    /** Indicates domain settings for the graph */
-    domain: GraphSettings;
+  /** Indicates if coordinates of a point are displayed on hover */
+  coordinatesOnHover?: boolean;
 
-    /** Indicates the graph line model */
-    graph: Graph;
+  /** Indicates the default selected tool for the graph */
+  defaultTool: 'point' | 'segment' | 'line' | 'vector' | 'circle' | 'sine' | 'polygon' | 'ray' | 'parabola';
 
-    /** Indicates labels */
-    labels?: Labels;
+  /** Indicates domain settings for the graph */
+  domain: GraphSettings;
 
-    /** Indicates if padding is enabled */
-    padding?: boolean;
+  /** Indicates the graph line model */
+  graph: Graph;
 
-    /** Indicates prompt value */
-    prompt?: string;
+  /** Indicates if the graph axes and labels are enabled */
+  includeAxes?: boolean;
 
-    /**  Indicates if the prompt is enabled */
-    promptEnabled?: boolean;
+  /** Indicates labels */
+  labels?: Labels;
 
-    /** Indicates range settings for the graph */
-    range: GraphSettings;
+  /** Indicates the language of the component
+   * Supported options: en, es, en_US, en-US, es_ES, es-ES, es_MX, es-MX
+   */
+  language?: string;
 
-    /** Indicates rationale for the answer */
-    rationale?: string;
+  /** Indicates if padding is enabled */
+  padding?: boolean;
 
-    /** Indicates scoring type */
-    scoringType?: 'dichotomous' | 'partial scoring';
+  /** Indicates prompt value */
+  prompt?: string;
 
-    /** Indicates student instructions */
-    studentInstructions?: string;
+  /**  Indicates if the prompt is enabled */
+  promptEnabled?: boolean;
 
-    /** Indicates teacher instructions */
-    teacherInstructions?: string;
+  /** Indicates range settings for the graph */
+  range: GraphSettings;
 
-    /** Indicates graph title */
-    title?: string;
+  /** Indicates rationale for the answer */
+  rationale?: string;
 
-    /** Indicates the tools that have to be displayed in toolbar */
-    toolbarTools?: [Tool]
+  /** Indicates scoring type */
+  scoringType?: 'dichotomous' | 'partial scoring';
 
-    /** Indicates if Rationale are enabled */
-    rationaleEnabled: boolean;
+  /** Indicates student instructions */
+  studentInstructions?: string;
 
-    /** Indicates if Student Instructions are enabled */
-    studentInstructionsEnabled: boolean;
+  /** Indicates teacher instructions */
+  teacherInstructions?: string;
 
-    /** Indicates if Teacher Instructions are enabled */
-    teacherInstructionsEnabled: boolean;
+  /** Indicates graph title */
+  title?: string;
+
+  /** Indicates if the graph labels are displayed */
+  labelsEnabled?: boolean;
+
+  /** Indicates if the graph dimensions are displayed */
+  dimensionsEnabled?: boolean;
+
+  /** Indicates if the graph title is displayed */
+  titleEnabled?: boolean;
+
+  /** Indicates the tools that have to be displayed in toolbar */
+  toolbarTools?: [Tool];
+
+  /** Indicates if Rationale are enabled */
+  rationaleEnabled: boolean;
+
+  /** Indicates if spellcheck is enabled for the author. Default value is true */
+  spellCheckEnabled: boolean;
+
+  /** Indicates if some domain values will be synched to the range values */
+  standardGrid?: boolean;
+
+  /** Indicates if Student Instructions are enabled */
+  studentInstructionsEnabled: boolean;
+
+  /** Indicates if Teacher Instructions are enabled */
+  teacherInstructionsEnabled: boolean;
+
+  /** Indicates if Rubric is enabled */
+  rubricEnabled: boolean;
 }
 
 interface ArrowsProp {
-    /**
-     * Indicates the label for the arrow that has to be displayed in the Settings Panel
-     */
-    label?: string;
+  /**
+   * Indicates the label for the arrow that has to be displayed in the Settings Panel
+   */
+  label?: string;
 }
 
 interface ArrowsConfigProp {
-    /**
-     * Indicates if the item has to be displayed in the Settings Panel
-     */
-    settings?: boolean;
+  /**
+   * Indicates if the item has to be displayed in the Settings Panel
+   */
+  settings?: boolean;
 
-    /**
-     * Indicates the label for the item that has to be displayed in the Settings Panel
-     */
-    label?: string;
+  /**
+   * Indicates the label for the item that has to be displayed in the Settings Panel
+   */
+  label?: string;
 
-    /** Indicates the props of the left arrow for the Settings Panel*/
-    left?: ArrowsProp;
+  /** Indicates the props of the left arrow for the Settings Panel*/
+  left?: ArrowsProp;
 
-    /** Indicates the props of the right arrow for the Settings Panel*/
-    right?: ArrowsProp;
+  /** Indicates the props of the right arrow for the Settings Panel*/
+  right?: ArrowsProp;
 
-    /** Indicates the props of the up arrow for the Settings Panel*/
-    up?: ArrowsProp
+  /** Indicates the props of the up arrow for the Settings Panel*/
+  up?: ArrowsProp;
 
-    /** Indicates the props of the down arrow for the Settings Panel*/
-    down?: ArrowsProp
+  /** Indicates the props of the down arrow for the Settings Panel*/
+  down?: ArrowsProp;
+}
+
+interface DimensionsConfigProp {
+  /**
+   * Indicates if the item has to be displayed in the Settings Panel
+   */
+  settings?: boolean;
+
+  /**
+   * Indicates the label for the item that has to be displayed in the Settings Panel
+   */
+  label?: string;
+
+  /**
+   * Indicates if the graph dimensions are included in the Grid Setup Panel
+   */
+  enabled?: boolean;
+
+  /** Indicates the minimum value for the graph width and height */
+  min?: number;
+
+  /** Indicates the maximum value for the graph width and height */
+  max?: number;
+
+  /** Indicates the increase/decrease value for the graph width and height */
+  step?: number;
+}
+
+interface GridPanelConfigProp {
+  /** Indicates the label for the item that is displayed in the Grid Setup Panel */
+  label?: string;
+
+  /** Indicates if the item is displayed in the Grid Setup Panel */
+  enabled?: boolean;
+}
+
+interface AuthoringConfigProp {
+  /** Indicates if the item is displayed in the Settings Panel */
+  settings?: boolean;
+
+  /** Indicates the label for the item that is displayed in the Settings Panel */
+  label?: string;
+
+  /** Indicates if the Grid Setup Panel is displayed */
+  enabled?: boolean;
+
+  /** Indicates if the "includeAxes" toggle is displayed in the Grid Setup Panel */
+  includeAxesEnabled?: boolean;
+
+  /** Indicates if the "standardGrid" toggle is displayed in the Grid Setup Panel */
+  standardGridEnabled?: boolean;
+
+  /** Axes minimum values configuration */
+  min?: GridPanelConfigProp;
+
+  /** Axes maximum values configuration */
+  max?: GridPanelConfigProp;
+
+  /** Axes labels configuration */
+  axisLabel?: GridPanelConfigProp;
+
+  /** Axes step values configuration */
+  step?: GridPanelConfigProp;
+
+  /** Axes label step values configuration */
+  labelStep?: GridPanelConfigProp;
+}
+
+interface GridConfigurationsProp {
+  /** Indicates the label for the configuration */
+  label?: string;
+
+  /** Indicates if arrows are enabled */
+  arrows?: Arrows;
+
+  /** Indicates domain settings for the graph */
+  domain: GraphSettings;
+
+  /** Indicates the graph line model */
+  graph: Graph;
+
+  /** Indicates if the graph axes and labels are enabled */
+  includeAxes?: boolean;
+
+  /** Indicates labels */
+  labels?: Labels;
+
+  /** Indicates if padding is enabled */
+  padding?: boolean;
+
+  /** Indicates range settings for the graph */
+  range: GraphSettings;
+
+  /** Indicates if some domain values will be synched to the range values */
+  standardGrid?: boolean;
+
+  /** Indicates graph title */
+  title?: string;
+}
+
+interface LabelsConfigProp extends ConfigurePropWithEnabled {
+  /**
+   * Indicates the placeholder for the top label
+   */
+  top?: string;
+
+  /**
+   * Indicates the placeholder for the right label
+   */
+  right?: string;
+
+  /**
+   * Indicates the placeholder for the bottom label
+   */
+  bottom?: string;
+
+  /**
+   * Indicates the placeholder for the left label
+   */
+  left?: string;
+}
+
+interface TitleConfigProp extends ConfigurePropWithEnabled {
+  /**
+   * Indicates the placeholder for the title label
+   */
+  placeholder?: string;
 }
 
 /**
@@ -243,58 +403,124 @@ interface ArrowsConfigProp {
  * @additionalProperties false
  */
 export interface GraphingConfigure extends PromptConfig, CommonConfigSettings {
-    /**
-     * Authoring configuration
-     */
-    authoring?: ConfigurePropWithEnabled;
+  /**
+   * Base editable html input configuration regarding plugins that are enabled/disabled
+   * E.g. audio, video, image
+   */
+  baseInputConfiguration?: EditableHtmlConfigureProp;
 
-    /**
-     * Arrows configuration
-     */
-    arrows?: ArrowsConfigProp;
+  /**
+   * Grid Setup Panel configuration
+   */
+  authoring?: AuthoringConfigProp;
 
-    /**
-     *  Coordinates configuration
-     */
-    coordinatesOnHover?: ConfigureProp;
+  /**
+   * Arrows configuration
+   */
+  arrows?: ArrowsConfigProp;
 
-    /**
-     * Padding configuration
-     */
-    padding?: ConfigureProp;
+  /**
+   * Graph toolbar tools configuration
+   */
+  availableTools?: string[];
 
-    /**
-     * Labels configuration
-     */
-    labels?: ConfigureProp;
+  /**
+   * Coordinates configuration
+   */
+  coordinatesOnHover?: ConfigureProp;
 
-    /**
-     * Rationale configuration
-     */
-    prompt?: ConfigureProp;
+  /**
+   * Graph dimensions configuration
+   */
+  graphDimensions?: DimensionsConfigProp;
 
-    /**
-     * Prompt configuration
-     */
-    rationale?: ConfigureProp;
+  /**
+   * Grid default configurations
+   */
+  gridConfigurations: GridConfigurationsProp[];
 
-    /**
-     * Scoring Type configuration
-     */
-    scoringType?: ConfigureProp;
+  /**
+   * Padding configuration
+   */
+  padding?: ConfigureProp;
 
-    /**
-     * Student Instructions configuration
-     */
-    studentInstructions?: ConfigureProp;
+  /**
+   * Labels configuration
+   */
+  labels?: LabelsConfigProp;
 
-    /**
-     * Teacher Instructions configuration
-     */
-    teacherInstructions?: ConfigureProp;
+  /**
+   * Language configuration
+   */
+  language?: ConfigurePropWithEnabled;
 
-    /**
-     * Graph title configuration
-     */
-    title?: ConfigurePropWithEnabled;
+  /**
+   * Language choices configuration
+   * Only available if language is enabled
+   */
+  languageChoices?: {
+    label: string;
+    options: ConfigureLanguageOptionsProp[];
+  };
+
+  /**
+   * Rationale configuration
+   */
+  prompt?: EditableHtmlPluginConfigureRequired;
+
+  /**
+   * Indicates if the settings panel is not available
+   */
+  settingsPanelDisabled?: boolean;
+
+  /**
+   * Configuration for the author's spellcheck
+   */
+  spellCheck?: ConfigureProp;
+
+  /**
+   * Prompt configuration
+   */
+  rationale?: EditableHtmlPluginConfigureRequired;
+
+  /**
+   * Scoring Type configuration
+   */
+  scoringType?: ConfigureProp;
+
+  /**
+   * Student Instructions configuration
+   */
+  studentInstructions?: ConfigureProp;
+
+  /**
+   * Teacher Instructions configuration
+   */
+  teacherInstructions?: EditableHtmlPluginConfigureRequired;
+
+  /**
+   * Graph title configuration
+   */
+  title?: TitleConfigProp;
+
+  /**
+   * Maximum image width for input fields
+   */
+  maxImageWidth?: ConfigureMaxImageDimensionsProp;
+
+  /**
+   * Maximum image height for input fields
+   */
+  maxImageHeight?: ConfigureMaxImageDimensionsProp;
+
+  /**
+   * Rubric configuration - only relevant in environments that use pie-player-components
+   */
+  withRubric?: ConfigureProp;
+
+  /** Configuration for editable-html */
+  mathMlOptions?: ConfigureMathMLProp;
+
+  /** Ability to remove incomplete tool added after switching current tool. */
+  removeIncompleteTool?: boolean;
 }

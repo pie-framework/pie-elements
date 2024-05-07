@@ -1,21 +1,33 @@
 import debug from 'debug';
 import isEmpty from 'lodash/isEmpty';
-import { getFeedbackForCorrectness } from '@pie-lib/feedback';
-import { partialScoring } from '@pie-lib/controller-utils';
+import { getFeedbackForCorrectness } from '@pie-lib/pie-toolbox/feedback';
+import { partialScoring } from '@pie-lib/pie-toolbox/controller-utils';
 import defaults from './defaults';
 
 const log = debug('@pie-element:select-text:controller');
 
-const buildTokens = (tokens, evaluateMode) => {
-  tokens = tokens || [];
+const isAnswerSelected = (token, selectedToken) =>
+  token &&
+  selectedToken &&
+  token.correct === true &&
+  !(
+    (token.start === selectedToken.start && token.end === selectedToken.end) ||
+    (token.start === selectedToken.oldStart && token.end === selectedToken.oldEnd)
+  );
 
-  return tokens.map((t) =>
-    Object.assign(
+const buildTokens = (tokens, selectedTokens, evaluateMode) => {
+  tokens = tokens || [];
+  selectedTokens = selectedTokens || [];
+
+  return tokens.map((t) => {
+    // map the correct answer that are missing from session
+    const isNotSelected = selectedTokens.findIndex((selectedToken) => isAnswerSelected(t, selectedToken)) === -1;
+    return Object.assign(
       {},
       t,
-      evaluateMode ? { correct: !!t.correct } : { correct: undefined }
-    )
-  );
+      evaluateMode ? { correct: !!t.correct, isMissing: !isNotSelected } : { correct: undefined, isMissing: undefined },
+    );
+  });
 };
 
 export const getCorrectness = (tokens, selected) => {
@@ -45,19 +57,18 @@ export const getCorrectness = (tokens, selected) => {
 const getCorrectSelected = (tokens, selected) => {
   return (selected || []).filter((s) => {
     const index = tokens.findIndex((c) => {
-      return c.correct &&
-        (
-          (c.start === s.start && c.end === s.end) ||
+      return (
+        c.correct &&
+        ((c.start === s.start && c.end === s.end) ||
           // this case is used for the cases when the token's start & end were recalculated
-          (c.start === s.oldStart && c.end === s.oldEnd)
-        );
+          (c.start === s.oldStart && c.end === s.oldEnd))
+      );
     });
     return index !== -1;
   });
 };
 
-const getCorrectCount = (tokens, selected) =>
-  getCorrectSelected(tokens, selected).length;
+const getCorrectCount = (tokens, selected) => getCorrectSelected(tokens, selected).length;
 
 export const getPartialScore = (question, session, totalCorrect) => {
   if (!session || isEmpty(session)) {
@@ -71,9 +82,7 @@ export const getPartialScore = (question, session, totalCorrect) => {
   const count = correctCount - incorrectCount;
   const positiveCount = count < 0 ? 0 : count;
 
-  return totalCorrect.length
-    ? parseFloat((positiveCount / totalCorrect.length).toFixed(2))
-    : 0;
+  return totalCorrect.length ? parseFloat((positiveCount / totalCorrect.length).toFixed(2)) : 0;
 };
 
 export const outcome = (question, session, env) =>
@@ -111,7 +120,7 @@ export const normalizeSession = (s) => ({
 });
 
 export const normalize = (question) => ({
-  feedbackEnabled: true,
+  feedbackEnabled: false,
   rationaleEnabled: true,
   promptEnabled: true,
   teacherInstructionsEnabled: true,
@@ -123,18 +132,14 @@ export const model = (question, session, env) => {
   session = session || { selectedToken: [] };
   session.selectedTokens = session.selectedTokens || [];
   const normalizedQuestion = normalize(question);
+
   return new Promise((resolve) => {
     log('[model]', 'normalizedQuestion: ', normalizedQuestion);
     log('[model]', 'session: ', session);
-    const tokens = buildTokens(
-      normalizedQuestion.tokens,
-      env.mode === 'evaluate'
-    );
+    const tokens = buildTokens(normalizedQuestion.tokens, session.selectedTokens, env.mode === 'evaluate');
     log('tokens:', tokens);
     const correctness =
-      env.mode === 'evaluate'
-        ? getCorrectness(normalizedQuestion.tokens, session.selectedTokens)
-        : undefined;
+      env.mode === 'evaluate' ? getCorrectness(normalizedQuestion.tokens, session.selectedTokens) : undefined;
 
     const fb =
       env.mode === 'evaluate' && normalizedQuestion.feedbackEnabled
@@ -145,25 +150,19 @@ export const model = (question, session, env) => {
       const out = {
         tokens,
         highlightChoices: normalizedQuestion.highlightChoices,
-        prompt: normalizedQuestion.promptEnabled
-          ? normalizedQuestion.prompt
-          : null,
+        prompt: normalizedQuestion.promptEnabled ? normalizedQuestion.prompt : null,
         text: normalizedQuestion.text,
         disabled: env.mode !== 'gather',
         maxSelections: normalizedQuestion.maxSelections,
         correctness,
+        env,
         feedback,
-        incorrect:
-          env.mode === 'evaluate' ? correctness !== 'correct' : undefined,
+        incorrect: env.mode === 'evaluate' ? correctness !== 'correct' : undefined,
+        language: normalizedQuestion.language,
       };
 
-      if (
-        env.role === 'instructor' &&
-        (env.mode === 'view' || env.mode === 'evaluate')
-      ) {
-        out.rationale = normalizedQuestion.rationaleEnabled
-          ? normalizedQuestion.rationale
-          : null;
+      if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
+        out.rationale = normalizedQuestion.rationaleEnabled ? normalizedQuestion.rationale : null;
         out.teacherInstructions = normalizedQuestion.teacherInstructionsEnabled
           ? normalizedQuestion.teacherInstructions
           : null;
@@ -191,4 +190,39 @@ export const createCorrectResponseSession = (question, env) => {
       resolve(null);
     }
   });
+};
+
+// remove all html tags
+const getInnerText = (html) => (html || '').replaceAll(/<[^>]*>/g, '');
+
+// remove all html tags except img and iframe
+const getContent = (html) => (html || '').replace(/(<(?!img|iframe)([^>]+)>)/gi, '');
+
+export const validate = (model = {}, config = {}) => {
+  const { tokens } = model;
+  const { minTokens = 2, maxTokens, maxSelections } = config;
+  const errors = {};
+  const nbOfTokens = (tokens || []).length;
+
+  ['teacherInstructions', 'prompt', 'rationale'].forEach((field) => {
+    if (config[field]?.required && !getContent(model[field])) {
+      errors[field] = 'This field is required.';
+    }
+  });
+
+  const nbOfSelections = (tokens || []).reduce((acc, token) => (token.correct ? acc + 1 : acc), 0);
+
+  if (nbOfTokens < minTokens) {
+    errors.tokensError = `There should be at least ${minTokens} tokens defined.`;
+  } else if (nbOfTokens > maxTokens) {
+    errors.tokensError = `No more than ${maxTokens} tokens should be defined.`;
+  }
+
+  if (nbOfSelections < 1) {
+    errors.selectionsError = 'There should be at least 1 token selected.';
+  } else if (nbOfSelections > maxSelections) {
+    errors.selectionsError = `No more than ${maxSelections} tokens should be selected.`;
+  }
+
+  return errors;
 };
