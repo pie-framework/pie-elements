@@ -1,11 +1,12 @@
 import Main from './main';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { renderMath } from '@pie-lib/pie-toolbox/math-rendering-accessible';
-import { ModelSetEvent, SessionChangedEvent } from '@pie-framework/pie-player-events';
 import debug from 'debug';
 
-const log = debug('@pie-ui:extended-text-entry');
+import { renderMath } from '@pie-lib/pie-toolbox/math-rendering-accessible';
+import { ModelSetEvent, SessionChangedEvent } from '@pie-framework/pie-player-events';
+
+const log = debug('@pie-elements:extended-text-entry');
 
 const domParser = typeof window !== undefined ? new DOMParser() : { parseFromString: (v) => v };
 
@@ -59,27 +60,22 @@ export default class RootExtendedTextEntry extends HTMLElement {
     this._session.value = value;
 
     this.dispatchEvent(new SessionChangedEvent(this.tagName.toLowerCase(), isComplete(value)));
-    this.dispatchEvent(
-      new SessionChangedEvent(this.tagName.toLowerCase(), isComplete(value))
-    );
 
     this.render();
   }
 
   annotationsChange(annotations) {
     this._session.annotations = annotations;
-    this.dispatchEvent(
-      new SessionChangedEvent(this.tagName.toLowerCase(), true)
-    );
+
+    this.dispatchEvent(new SessionChangedEvent(this.tagName.toLowerCase(), true));
 
     this.render();
   }
 
   commentChange(comment) {
     this._session.comment = comment;
-    this.dispatchEvent(
-      new SessionChangedEvent(this.tagName.toLowerCase(), isComplete(comment))
-    );
+
+    this.dispatchEvent(new SessionChangedEvent(this.tagName.toLowerCase(), isComplete(comment)));
 
     this.render();
   }

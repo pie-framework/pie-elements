@@ -4,13 +4,13 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { Popover } from '@material-ui/core';
 
-const styles = {
+const styles = (theme) => ({
   mainWrapper: {
     width: '300px',
     overflow: 'hidden',
     borderRadius: '4px',
-    backgroundColor: '#ffffff',
-    border: '2px solid #d3d3d3'
+    backgroundColor: theme.palette.common.white,
+    border: `2px solid ${theme.palette.grey[100]}`,
   },
   annotationsWrapper: {
     display: 'flex',
@@ -19,40 +19,40 @@ const styles = {
   controlsWrapper: {
     display: 'flex',
     flexWrap: 'wrap',
-    borderTop: '2px solid #d3d3d3'
+    borderTop: `2px solid ${theme.palette.grey[100]}`,
   },
   button: {
     width: '22%',
     textAlign: 'center',
     padding: '4px',
     cursor: 'pointer',
-    borderBottom: '1px solid #d3d3d3',
+    borderBottom: `1px solid ${theme.palette.grey[100]}`,
     '&:not(:nth-child(4n))': {
-      borderRight: '1px solid #d3d3d3',
+      borderRight: `1px solid ${theme.palette.grey[100]}`,
     },
     '&:nth-child(4n)': {
-      flexGrow: 1
+      flexGrow: 1,
     },
     '&:hover': {
-      backgroundColor: '#d3d3d3'
+      backgroundColor: theme.palette.grey[100],
     },
   },
   positive: {
     backgroundColor: 'rgb(153, 255, 153) !important',
     '&:hover': {
-      filter: 'brightness(85%)'
-    }
+      filter: 'brightness(85%)',
+    },
   },
   negative: {
     backgroundColor: 'rgb(255, 204, 238) !important',
     '&:hover': {
-      filter: 'brightness(85%)'
-    }
+      filter: 'brightness(85%)',
+    },
   },
   holder: {
     display: 'flex',
     flexWrap: 'wrap',
-    borderTop: '2px solid #d3d3d3'
+    borderTop: `2px solid ${theme.palette.grey[100]}`,
   },
   arrow: {
     overflowX: 'unset',
@@ -68,10 +68,10 @@ const styles = {
       width: 0,
       pointerEvents: 'none',
       borderWidth: '7px',
-      borderTopColor: 'black'
-    }
-  }
-};
+      borderTopColor: 'black',
+    },
+  },
+});
 
 class AnnotationMenu extends React.Component {
   static propTypes = {
@@ -87,25 +87,15 @@ class AnnotationMenu extends React.Component {
   };
 
   render() {
-    const {
-      anchorEl,
-      annotations,
-      classes,
-      isNewAnnotation,
-      onAnnotate,
-      onClose,
-      onEdit,
-      onDelete,
-      onWrite,
-      open
-    } = this.props;
+    const { anchorEl, annotations, classes, isNewAnnotation, onAnnotate, onClose, onEdit, onDelete, onWrite, open } =
+      this.props;
 
     return (
       <Popover
         anchorEl={anchorEl}
         open={open}
         onClose={onClose}
-        classes={{paper: classes.arrow}}
+        classes={{ paper: classes.arrow }}
         elevation={5}
         anchorOrigin={{
           vertical: 'top',
@@ -123,29 +113,25 @@ class AnnotationMenu extends React.Component {
                 key={`annotation-${index}`}
                 className={classNames(
                   classes.button,
-                  annotation.type === 'positive' ? classes.positive : classes.negative
+                  annotation.type === 'positive' ? classes.positive : classes.negative,
                 )}
                 onClick={() => onAnnotate(annotation)}
-              >{annotation.label}</div>
+              >
+                {annotation.label}
+              </div>
             ))}
           </div>
           <div className={classes.controlsWrapper}>
             <div className={classes.button} onClick={onClose}>
               Cancel
             </div>
-            <div style={{pointerEvents: 'none'}} className={classes.button}/>
+            <div style={{ pointerEvents: 'none' }} className={classes.button} />
             {isNewAnnotation ? (
               <React.Fragment>
-                <div
-                  className={classNames(classes.button, classes.positive)}
-                  onClick={() => onWrite('positive')}
-                >
+                <div className={classNames(classes.button, classes.positive)} onClick={() => onWrite('positive')}>
                   Write
                 </div>
-                <div
-                  className={classNames(classes.button, classes.negative)}
-                  onClick={() => onWrite('negative')}
-                >
+                <div className={classNames(classes.button, classes.negative)} onClick={() => onWrite('negative')}>
                   Write
                 </div>
               </React.Fragment>
@@ -164,6 +150,6 @@ class AnnotationMenu extends React.Component {
       </Popover>
     );
   }
-};
+}
 
 export default withStyles(styles)(AnnotationMenu);

@@ -1,13 +1,15 @@
 import React from 'react';
-import {EditableHtml} from '@pie-lib/pie-toolbox/editable-html';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
+import debounce from 'lodash/debounce';
+import debug from 'debug';
+
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
-import debug from 'debug';
-import debounce from 'lodash/debounce';
+
+import { EditableHtml } from '@pie-lib/pie-toolbox/editable-html';
 import { color, Feedback, Collapsible, PreviewPrompt } from '@pie-lib/pie-toolbox/render-ui';
-import { renderMath } from '@pie-lib/pie-toolbox/math-rendering';
-import classnames from 'classnames';
+
 import AnnotationEditor from './annotation/annotation-editor';
 
 const log = debug('@pie-ui:extended-text-entry');
@@ -50,8 +52,8 @@ export class Main extends React.Component {
     session: PropTypes.shape({
       value: PropTypes.string,
       annotations: PropTypes.array,
-      comment: PropTypes.string
-    }).isRequired
+      comment: PropTypes.string,
+    }).isRequired,
   };
 
   changeSessionValue = debounce(this.props.onValueChange, 1500);
@@ -146,33 +148,33 @@ export class Main extends React.Component {
             keypadMode={equationEditor}
           />
         ) : (
-        <EditableHtml
-          className={classnames(classes.editor, 'response-area-editor')}
-          onChange={this.changeSessionValue}
-          markup={value || ''}
-          width={width && width.toString()}
-          minHeight={height && height.toString()}
-          maxHeight={maxHeight}
-          disabled={disabled}
-          highlightShape={true}
-          toolbarOpts={toolbarOpts}
-          spellCheck={spellCheckEnabled}
-          pluginProps={{
-            math: {
-              disabled: !mathInput,
-              customKeys: this.props.model.customKeys,
-              keypadMode: this.props.model.equationEditor,
-              controlledKeypadMode: false,
-            },
-            video: {
-              disabled: true,
-            },
-            audio: {
-              disabled: true,
-            },
-          }}
-          languageCharactersProps={languageCharactersProps}
-        />
+          <EditableHtml
+            className={classnames(classes.editor, 'response-area-editor')}
+            onChange={this.changeSessionValue}
+            markup={value || ''}
+            width={width && width.toString()}
+            minHeight={height && height.toString()}
+            maxHeight={maxHeight}
+            disabled={disabled}
+            highlightShape={true}
+            toolbarOpts={toolbarOpts}
+            spellCheck={spellCheckEnabled}
+            pluginProps={{
+              math: {
+                disabled: !mathInput,
+                customKeys: this.props.model.customKeys,
+                keypadMode: this.props.model.equationEditor,
+                controlledKeypadMode: false,
+              },
+              video: {
+                disabled: true,
+              },
+              audio: {
+                disabled: true,
+              },
+            }}
+            languageCharactersProps={languageCharactersProps}
+          />
         )}
 
         {feedback && <Feedback correctness="correct" feedback={feedback} />}

@@ -4,36 +4,36 @@ import PropTypes from 'prop-types';
 import { Popover, TextField } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
-const styles = {
+const styles = theme =>({
   wrapper: {
     width: '200px',
     overflow: 'hidden',
     borderRadius: '4px',
     backgroundColor: '#ffffff',
-    border: '4px solid #d3d3d3',
+    border: `4px solid ${theme.palette.grey[100]}`,
     '&.negative': {
-      borderColor: 'rgb(255, 204, 238) !important'
+      borderColor: 'rgb(255, 204, 238) !important',
     },
     '&.positive': {
-      borderColor: 'rgb(153, 255, 153) !important'
-    }
+      borderColor: 'rgb(153, 255, 153) !important',
+    },
   },
   holder: {
     display: 'flex',
     flexWrap: 'wrap',
-    borderTop: '2px solid #d3d3d3'
+    borderTop: `2px solid ${theme.palette.grey[100]}`,
   },
   positive: {
     backgroundColor: 'rgb(153, 255, 153) !important',
     '&:hover': {
-      filter: 'brightness(85%)'
-    }
+      filter: 'brightness(85%)',
+    },
   },
   negative: {
     backgroundColor: 'rgb(255, 204, 238) !important',
     '&:hover': {
-      filter: 'brightness(85%)'
-    }
+      filter: 'brightness(85%)',
+    },
   },
   button: {
     flexGrow: 1,
@@ -42,17 +42,17 @@ const styles = {
     padding: '4px',
     cursor: 'pointer',
     '&:not(:nth-child(3n))': {
-      borderRight: '1px solid #d3d3d3',
+      borderRight: `1px solid ${theme.palette.grey[100]}`,
     },
     '&:hover': {
-      backgroundColor: '#d3d3d3'
+      backgroundColor: theme.palette.grey[100],
     },
     '&.negative:hover': {
       backgroundColor: 'rgb(153, 255, 153) !important',
     },
     '&.positive:hover': {
       backgroundColor: 'rgb(255, 204, 238) !important',
-    }
+    },
   },
   arrow: {
     overflowX: 'unset',
@@ -68,16 +68,16 @@ const styles = {
       width: 0,
       pointerEvents: 'none',
       borderWidth: '7px',
-      borderRightColor: '#d3d3d3'
+      borderRightColor: theme.palette.grey[100],
     },
     '&.negative::before': {
-      borderRightColor: 'rgb(255, 204, 238) !important'
+      borderRightColor: 'rgb(255, 204, 238) !important',
     },
     '&.positive::before': {
-      borderRightColor: 'rgb(153, 255, 153) !important'
-    }
-  }
-};
+      borderRightColor: 'rgb(153, 255, 153) !important',
+    },
+  },
+});
 
 class FreeformEditor extends React.Component {
   static propTypes = {
@@ -95,7 +95,7 @@ class FreeformEditor extends React.Component {
   constructor(props) {
     super(props);
     this.state = { value: props.value };
-  };
+  }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
     const { value } = nextProps;
@@ -104,9 +104,9 @@ class FreeformEditor extends React.Component {
     if (value !== propsValue) {
       this.setState({ value });
     }
-  };
+  }
 
-  onValueChange = event => this.setState({ value: event.target.value });
+  onValueChange = (event) => this.setState({ value: event.target.value });
 
   handleSave = () => {
     const { value: oldValue, onSave, onClose, onDelete } = this.props;
@@ -163,7 +163,7 @@ class FreeformEditor extends React.Component {
             id="annotation-editor"
             style={{
               padding: '2px 5px',
-              width: '95%'
+              width: '95%',
             }}
             autoFocus
             multiline
@@ -177,10 +177,10 @@ class FreeformEditor extends React.Component {
             <div className={classes.button} onClick={onDelete}>
               Delete
             </div>
-            <div className={classNames(classes.button, type)} onClick={this.handleTypeChange} >
-              { type === 'negative' ? 'Green' : 'Pink' }
+            <div className={classNames(classes.button, type)} onClick={this.handleTypeChange}>
+              {type === 'negative' ? 'Green' : 'Pink'}
             </div>
-            <div className={classes.button} onClick={this.handleSave} >
+            <div className={classes.button} onClick={this.handleSave}>
               Save
             </div>
           </div>
@@ -188,6 +188,6 @@ class FreeformEditor extends React.Component {
       </Popover>
     );
   }
-};
+}
 
 export default withStyles(styles)(FreeformEditor);
