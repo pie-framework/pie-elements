@@ -21,13 +21,15 @@ exports[`freeform editor snapshots renders 1`] = `
     />
     <div />
   </div>
-  <Component
+  <WithStyles(RawInputContainer)
     label="Comment"
   >
     <EditableHtml
+      allowValidation={false}
       disabled={false}
       markup=""
       onChange={[MockFunction]}
+      onDone={[Function]}
       pluginProps={
         Object {
           "audio": Object {
@@ -46,7 +48,7 @@ exports[`freeform editor snapshots renders 1`] = `
       }
       width="604"
     />
-  </Component>
+  </WithStyles(RawInputContainer)>
   <WithStyles(AnnotationMenu)
     anchorEl={null}
     annotations={Array []}
@@ -92,13 +94,15 @@ exports[`freeform editor snapshots renders disabled 1`] = `
     />
     <div />
   </div>
-  <Component
+  <WithStyles(RawInputContainer)
     label="Comment"
   >
     <EditableHtml
+      allowValidation={false}
       disabled={true}
       markup=""
       onChange={[MockFunction]}
+      onDone={[Function]}
       pluginProps={
         Object {
           "audio": Object {
@@ -117,7 +121,7 @@ exports[`freeform editor snapshots renders disabled 1`] = `
       }
       width="604"
     />
-  </Component>
+  </WithStyles(RawInputContainer)>
   <WithStyles(AnnotationMenu)
     anchorEl={null}
     annotations={Array []}
@@ -163,13 +167,15 @@ exports[`freeform editor snapshots renders with complex text and nested annotati
     />
     <div />
   </div>
-  <Component
+  <WithStyles(RawInputContainer)
     label="Comment"
   >
     <EditableHtml
+      allowValidation={false}
       disabled={false}
       markup=""
       onChange={[MockFunction]}
+      onDone={[Function]}
       pluginProps={
         Object {
           "audio": Object {
@@ -188,7 +194,7 @@ exports[`freeform editor snapshots renders with complex text and nested annotati
       }
       width="604"
     />
-  </Component>
+  </WithStyles(RawInputContainer)>
   <WithStyles(AnnotationMenu)
     anchorEl={null}
     annotations={Array []}
@@ -234,13 +240,15 @@ exports[`freeform editor snapshots renders with predefined annotations 1`] = `
     />
     <div />
   </div>
-  <Component
+  <WithStyles(RawInputContainer)
     label="Comment"
   >
     <EditableHtml
+      allowValidation={false}
       disabled={false}
       markup=""
       onChange={[MockFunction]}
+      onDone={[Function]}
       pluginProps={
         Object {
           "audio": Object {
@@ -259,7 +267,7 @@ exports[`freeform editor snapshots renders with predefined annotations 1`] = `
       }
       width="604"
     />
-  </Component>
+  </WithStyles(RawInputContainer)>
   <WithStyles(AnnotationMenu)
     anchorEl={null}
     annotations={
@@ -328,13 +336,15 @@ exports[`freeform editor snapshots renders with text and annotations 1`] = `
     />
     <div />
   </div>
-  <Component
+  <WithStyles(RawInputContainer)
     label="Comment"
   >
     <EditableHtml
+      allowValidation={false}
       disabled={false}
       markup=""
       onChange={[MockFunction]}
+      onDone={[Function]}
       pluginProps={
         Object {
           "audio": Object {
@@ -353,7 +363,7 @@ exports[`freeform editor snapshots renders with text and annotations 1`] = `
       }
       width="604"
     />
-  </Component>
+  </WithStyles(RawInputContainer)>
   <WithStyles(AnnotationMenu)
     anchorEl={null}
     annotations={Array []}
@@ -399,13 +409,15 @@ exports[`freeform editor snapshots renders with text and comment 1`] = `
     />
     <div />
   </div>
-  <Component
+  <WithStyles(RawInputContainer)
     label="Comment"
   >
     <EditableHtml
+      allowValidation={false}
       disabled={false}
       markup="<div>Very good</div>"
       onChange={[MockFunction]}
+      onDone={[Function]}
       pluginProps={
         Object {
           "audio": Object {
@@ -424,7 +436,7 @@ exports[`freeform editor snapshots renders with text and comment 1`] = `
       }
       width="604"
     />
-  </Component>
+  </WithStyles(RawInputContainer)>
   <WithStyles(AnnotationMenu)
     anchorEl={null}
     annotations={Array []}
