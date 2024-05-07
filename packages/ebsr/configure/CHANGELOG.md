@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.10.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-configure@9.10.2...@pie-element/ebsr-configure@9.10.3) (2024-05-07)
+
+**Note:** Version bump only for package @pie-element/ebsr-configure
+
+
+
+
+
 ## [9.10.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-configure@9.10.1...@pie-element/ebsr-configure@9.10.2) (2024-05-03)
 
 
