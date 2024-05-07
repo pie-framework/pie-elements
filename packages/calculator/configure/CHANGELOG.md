@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.9.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/calculator-configure@3.9.2...@pie-element/calculator-configure@3.9.3) (2024-05-07)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3731 ([2b5d6c9](https://github.com/pie-framework/pie-elements/commit/2b5d6c932280981a0fd636bcb30d7fbc181ac311))
+
+
+
+
+
 ## [3.9.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/calculator-configure@3.9.1...@pie-element/calculator-configure@3.9.2) (2024-05-03)
 
 

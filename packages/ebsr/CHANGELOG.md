@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.12.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@9.12.3...@pie-element/ebsr@9.12.4) (2024-05-07)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3731 ([2b5d6c9](https://github.com/pie-framework/pie-elements/commit/2b5d6c932280981a0fd636bcb30d7fbc181ac311))
+
+
+
+
+
 ## [9.12.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@9.12.2...@pie-element/ebsr@9.12.3) (2024-05-07)
 
 **Note:** Version bump only for package @pie-element/ebsr

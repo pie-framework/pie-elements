@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.10.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric@3.10.2...@pie-element/multi-trait-rubric@3.10.3) (2024-05-07)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3731 ([2b5d6c9](https://github.com/pie-framework/pie-elements/commit/2b5d6c932280981a0fd636bcb30d7fbc181ac311))
+
+
+
+
+
 ## [3.10.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric@3.10.1...@pie-element/multi-trait-rubric@3.10.2) (2024-05-03)
 
 
