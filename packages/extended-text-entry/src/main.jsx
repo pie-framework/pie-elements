@@ -127,6 +127,7 @@ export class Main extends React.Component {
           highlightShape={true}
           toolbarOpts={toolbarOpts}
           spellCheck={spellCheckEnabled}
+          charactersLimit={50000}
           pluginProps={{
             math: {
               disabled: !mathInput,
