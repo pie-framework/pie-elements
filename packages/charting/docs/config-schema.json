@@ -853,10 +853,6 @@
     "promptLabel": {
       "description": "The label for the item stem/prompt field",
       "default": "Item Stemm",
-      "examples": [
-        "Question Prompt",
-        "Item Stem"
-      ],
       "type": "string",
       "title": "promptLabel"
     },
