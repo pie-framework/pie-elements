@@ -13,22 +13,25 @@ const defaults = {
     {
       label: 'good',
       text: 'good',
-      type: 'positive'
-    }, {
+      type: 'positive',
+    },
+    {
       label: 'creative',
       text: 'creative',
-      type: 'positive'
-    }, {
+      type: 'positive',
+    },
+    {
       label: 'run-on',
       text: 'run-on',
-      type: 'negative'
-    }, {
+      type: 'negative',
+    },
+    {
       label: 'frag',
       text: 'fragment',
-      type: 'negative'
-    }
+      type: 'negative',
+    },
   ],
-  teacherInstructions: 'Teacher Instructions'
+  teacherInstructions: 'Teacher Instructions',
 };
 
 const q = (extras) => ({ ...defaults, ...extras });
@@ -171,7 +174,8 @@ describe('controller', () => {
     });
 
     it('evaluate mode, student role', async () => {
-      const result = await model({...question, feedbackEnabled: true}, session, { mode: 'evaluate' });
+      const result = await model({ ...question, feedbackEnabled: true }, session, { mode: 'evaluate' });
+
       expect(result).toEqual({
         annotatorMode: true,
         customKeys: [],
@@ -190,7 +194,10 @@ describe('controller', () => {
     });
 
     it('evaluate mode, instructor role, teacherInstructions enabled', async () => {
-      const result = await model({...question, feedbackEnabled: true}, session, { mode: 'evaluate', role: 'instructor' });
+      const result = await model({ ...question, feedbackEnabled: true }, session, {
+        mode: 'evaluate',
+        role: 'instructor',
+      });
 
       expect(result).toEqual({
         annotatorMode: true,

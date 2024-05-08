@@ -3,71 +3,92 @@ export default {
     height: 100,
     width: 500,
   },
+  feedbackEnabled: false,
+  promptEnabled: true,
+  rationaleEnabled: true,
+  teacherInstructionsEnabled: true,
+  studentInstructionsEnabled: true,
+  playerSpellCheckDisabled: true,
   predefinedAnnotations: [
     {
       label: 'good',
       text: 'good',
-      type: 'positive'
-    }, {
+      type: 'positive',
+    },
+    {
       label: '★',
       text: '★',
-      type: 'positive'
-    }, {
+      type: 'positive',
+    },
+    {
       label: ':-)',
       text: ':-)',
-      type: 'positive'
-    }, {
+      type: 'positive',
+    },
+    {
       label: 'creative',
       text: 'creative',
-      type: 'positive'
-    }, {
+      type: 'positive',
+    },
+    {
       label: 'run-on',
       text: 'run-on',
-      type: 'negative'
-    }, {
+      type: 'negative',
+    },
+    {
       label: 'frag',
       text: 'fragment',
-      type: 'negative'
-    }, {
+      type: 'negative',
+    },
+    {
       label: 'tran',
       text: 'transition',
-      type: 'negative'
-    }, {
+      type: 'negative',
+    },
+    {
       label: 'supp',
       text: 'support needed',
-      type: 'negative'
-    }, {
+      type: 'negative',
+    },
+    {
       label: 'punc',
       text: 'punctuation',
-      type: 'negative'
-    }, {
+      type: 'negative',
+    },
+    {
       label: 'agr',
       text: 'agreement wrong',
-      type: 'negative'
-    }, {
+      type: 'negative',
+    },
+    {
       label: 'unclear',
       text: 'unclear',
-      type: 'negative'
-    }, {
+      type: 'negative',
+    },
+    {
       label: 'cut',
       text: 'cut',
-      type: 'negative'
-    }, {
+      type: 'negative',
+    },
+    {
       label: 'sp',
       text: 'spelling',
-      type: 'negative'
-    }, {
+      type: 'negative',
+    },
+    {
       label: 'cap',
       text: 'capitalization',
-      type: 'negative'
-    }, {
+      type: 'negative',
+    },
+    {
       label: 'inf',
       text: 'informal',
-      type: 'negative'
-    }, {
+      type: 'negative',
+    },
+    {
       label: 'awk',
       text: 'awkward',
-      type: 'negative'
-    }
-  ]
+      type: 'negative',
+    },
+  ],
 };

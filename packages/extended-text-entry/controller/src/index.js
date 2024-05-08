@@ -1,29 +1,16 @@
 import debug from 'debug';
+import { getFeedback } from '@pie-lib/pie-toolbox/feedback';
+import defaults from './defaults';
 
 const log = debug('@pie-element:extended-text-entry:controller');
-import { getFeedback } from '@pie-lib/pie-toolbox/feedback';
-
-import defaults from './defaults';
 
 export async function createDefaultModel(model = {}) {
   log('[createDefaultModel]', model);
 
-  return {
-    ...defaults,
-    ...model,
-  };
+  return { ...defaults, ...model };
 }
 
-export const normalize = (question) => ({
-  ...defaults,
-  feedbackEnabled: false,
-  rationaleEnabled: true,
-  promptEnabled: true,
-  teacherInstructionsEnabled: true,
-  studentInstructionsEnabled: true,
-  playerSpellCheckDisabled: true,
-  ...question,
-});
+export const normalize = (question) => ({ ...defaults, ...question });
 
 export async function model(question, session, env) {
   log('[question]', question);
@@ -63,7 +50,7 @@ export async function model(question, session, env) {
   const annotatorMode = env.role === 'instructor' || env.mode === 'evaluate';
   const disabledAnnotator = env.role !== 'instructor';
 
-  return fb.then(feedback => ({
+  return fb.then((feedback) => ({
     prompt: normalizedQuestion.promptEnabled ? normalizedQuestion.prompt : null,
     dimensions: normalizedQuestion.dimensions,
     customKeys: normalizedQuestion.customKeys || [],
