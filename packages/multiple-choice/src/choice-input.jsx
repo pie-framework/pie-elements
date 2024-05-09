@@ -41,11 +41,22 @@ const formStyleSheet = {
     color: `${color.text()} !important`, //'var(--choice-input-color, black)'
     backgroundColor: color.background(),
   },
+  disabled: {
+    // apply to all children
+    '& *': {
+      cursor: 'not-allowed !important',
+    }
+  }
 };
 
 export const StyledFormControlLabel = withStyles(formStyleSheet, {
   name: 'FormControlLabel',
-})((props) => <FormControlLabel {...props} classes={{ label: props.classes.label }} />);
+})((props) => (
+  <FormControlLabel
+    {...props}
+    classes={{ label: props.classes.label, disabled: props.classes.disabled }}
+  />
+));
 
 const colorStyle = (varName, fallback) => ({
   [`&.${CLASS_NAME}`]: {
