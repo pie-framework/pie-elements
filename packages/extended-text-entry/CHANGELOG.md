@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.12.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.12.3...@pie-element/extended-text-entry@10.12.4) (2024-05-13)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3650, PD-3651, PD-3621, PD-3620, PD-2127,PD-3709, PD-3726, PD-3191 ([2ef6881](https://github.com/pie-framework/pie-elements/commit/2ef688118b9099c7338cbe88afcdeed228fae11e))
+* **extended-text-entry:** add characters limit of 50000 PD-3709 ([9151b0e](https://github.com/pie-framework/pie-elements/commit/9151b0ea030a8ef4a34c0e335c35d288bc439fd1))
+* **extended-text-entry:** add characters limit of 50000 PD-3709 ([2579501](https://github.com/pie-framework/pie-elements/commit/25795018680edc3edb28014805a28a2f556cf62e))
+
+
+
+
+
 ## [10.12.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.12.2...@pie-element/extended-text-entry@10.12.3) (2024-05-07)
 
 

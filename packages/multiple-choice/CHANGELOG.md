@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.14.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@8.14.4...@pie-element/multiple-choice@8.14.5) (2024-05-13)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3650, PD-3651, PD-3621, PD-3620, PD-2127,PD-3709, PD-3726, PD-3191 ([2ef6881](https://github.com/pie-framework/pie-elements/commit/2ef688118b9099c7338cbe88afcdeed228fae11e))
+* **multiple-choice:** fix styling for disabled choices PD-3626 ([998c00d](https://github.com/pie-framework/pie-elements/commit/998c00de1d005cd047146639a9b75f488b957d44))
+
+
+
+
+
 ## [8.14.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@8.14.3...@pie-element/multiple-choice@8.14.4) (2024-05-07)
 
 
