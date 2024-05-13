@@ -1,7 +1,7 @@
 {
   "name": "@pie-element/hotspot-controller",
   "private": true,
-  "version": "4.11.1",
+  "version": "4.11.3",
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,7 +11,7 @@
   "main": "lib/index.js",
   "module": "src/index.js",
   "dependencies": {
-    "@pie-lib/pie-toolbox": "1.17.1",
+    "@pie-lib/pie-toolbox": "1.17.3",
     "debug": "^4.1.1",
     "lodash": "^4.17.15"
   }

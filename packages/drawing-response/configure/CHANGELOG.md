@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.12.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response-configure@7.12.2...@pie-element/drawing-response-configure@7.12.3) (2024-05-07)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3731 ([2b5d6c9](https://github.com/pie-framework/pie-elements/commit/2b5d6c932280981a0fd636bcb30d7fbc181ac311))
+
+
+
+
+
+## [7.12.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response-configure@7.12.1...@pie-element/drawing-response-configure@7.12.2) (2024-05-03)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3537, PD-3538, PD-3539, PD-3540,PD-3680 ([d9cb471](https://github.com/pie-framework/pie-elements/commit/d9cb47148a8fec71d5de29f2cf2b92ec7b479470))
+
+
+
+
+
 ## [7.12.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response-configure@7.12.0...@pie-element/drawing-response-configure@7.12.1) (2024-04-29)
 
 

@@ -1,13 +1,13 @@
 {
   "name": "@pie-element/multiple-choice",
   "repository": "pie-framework/pie-elements",
-  "version": "8.14.1",
+  "version": "8.14.4",
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
     "@material-ui/core": "^3.9.2",
-    "@pie-lib/pie-toolbox": "1.17.1",
+    "@pie-lib/pie-toolbox": "1.17.3",
     "classnames": "^2.2.5",
     "debug": "^4.1.1",
     "enzyme-to-json": "^3.3.3",
