@@ -2596,9 +2596,9 @@
     unist-util-inspect "^4.1.3"
 
 "@pie-lib/pie-toolbox@next":
-  version "1.16.5-next.50"
-  resolved "https://registry.yarnpkg.com/@pie-lib/pie-toolbox/-/pie-toolbox-1.16.5-next.50.tgz#28748657b50ad2830dc5b8604b2824ab09292c78"
-  integrity sha512-ECANoomPbN3xfruOVFOWyiJ6drDzaHjVQpqjG9IrVxmugHAcWCdsl0hO8vUNiV+VggAaw6GhqmX3WiubwC19+g==
+  version "1.16.5-next.55"
+  resolved "https://registry.yarnpkg.com/@pie-lib/pie-toolbox/-/pie-toolbox-1.16.5-next.55.tgz#cf598133ad1888ab56ecab04b2584cb18aefef11"
+  integrity sha512-MpGeexQda0dSNW9KK8h7QaEc+5NJ+P7iueRqwW6yeVG6rICT0PTb+MrAhBFBzh25svpSScE3r6q8sboJWcl+AQ==
   dependencies:
     "@convertkit/slate-lists" "^0.2.11"
     "@emotion/css" "^11.10.0"
