@@ -3,6 +3,41 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.15.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@8.15.3...@pie-element/categorize@8.15.4) (2024-05-13)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3650, PD-3651, PD-3621, PD-3620, PD-2127,PD-3709, PD-3726, PD-3191 ([2ef6881](https://github.com/pie-framework/pie-elements/commit/2ef688118b9099c7338cbe88afcdeed228fae11e))
+
+
+
+
+
+## [8.15.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@8.15.2...@pie-element/categorize@8.15.3) (2024-05-07)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3731 ([2b5d6c9](https://github.com/pie-framework/pie-elements/commit/2b5d6c932280981a0fd636bcb30d7fbc181ac311))
+
+
+
+
+
+## [8.15.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@8.15.1...@pie-element/categorize@8.15.2) (2024-05-03)
+
+
+### Bug Fixes
+
+* tests ([1dbdd63](https://github.com/pie-framework/pie-elements/commit/1dbdd630e80a28e0a854bb65f7d14384d37c33f2))
+* update pie-lib/pie-toolbox PD-3537, PD-3538, PD-3539, PD-3540,PD-3680 ([d9cb471](https://github.com/pie-framework/pie-elements/commit/d9cb47148a8fec71d5de29f2cf2b92ec7b479470))
+* **categorize:** tweak style of the "pool" of answer choices to be more compact PD-3680 ([64839e7](https://github.com/pie-framework/pie-elements/commit/64839e73e09b0be3bfedecc762d7ad5ca63099d7))
+
+
+
+
+
 ## [8.15.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@8.15.0...@pie-element/categorize@8.15.1) (2024-04-29)
 
 

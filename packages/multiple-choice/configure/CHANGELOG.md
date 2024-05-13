@@ -3,6 +3,50 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.12.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@6.12.4...@pie-element/multiple-choice-configure@6.12.5) (2024-05-13)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3650, PD-3651, PD-3621, PD-3620, PD-2127,PD-3709, PD-3726, PD-3191 ([2ef6881](https://github.com/pie-framework/pie-elements/commit/2ef688118b9099c7338cbe88afcdeed228fae11e))
+
+
+
+
+
+## [6.12.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@6.12.3...@pie-element/multiple-choice-configure@6.12.4) (2024-05-07)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3731 ([2b5d6c9](https://github.com/pie-framework/pie-elements/commit/2b5d6c932280981a0fd636bcb30d7fbc181ac311))
+
+
+
+
+
+## [6.12.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@6.12.2...@pie-element/multiple-choice-configure@6.12.3) (2024-05-07)
+
+
+### Bug Fixes
+
+* add logs PD-3731 ([0785a79](https://github.com/pie-framework/pie-elements/commit/0785a799fde39c01525daf8d95618bfd8ea926a2))
+
+
+
+
+
+## [6.12.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@6.12.1...@pie-element/multiple-choice-configure@6.12.2) (2024-05-03)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3537, PD-3538, PD-3539, PD-3540,PD-3680 ([d9cb471](https://github.com/pie-framework/pie-elements/commit/d9cb47148a8fec71d5de29f2cf2b92ec7b479470))
+
+
+
+
+
 ## [6.12.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@6.12.0...@pie-element/multiple-choice-configure@6.12.1) (2024-04-29)
 
 
