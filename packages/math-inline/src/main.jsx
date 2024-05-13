@@ -551,6 +551,7 @@ export class Main extends React.Component {
                                 >
                                     <Tooltip
                                         ref={(ref) => this.setTooltipRef(ref)}
+                                        enterTouchDelay={0}
                                         interactive
                                         open={!!activeAnswerBlock}
                                         classes={{
@@ -623,6 +624,7 @@ export class Main extends React.Component {
             return (
                 <Tooltip
                     interactive
+                    enterTouchDelay={0}
                     classes={{
                         tooltip: classes.tooltip,
                         popper: classes.tooltipPopper,
