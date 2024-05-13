@@ -10,4 +10,5 @@ exports.model = (id, element) => ({
   toolbarEditorPosition: 'bottom',
   spellCheckEnabled: true,
   rubricEnabled: false,
+  annotationsEnabled: false,
 });

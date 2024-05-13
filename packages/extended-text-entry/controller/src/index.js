@@ -1,29 +1,16 @@
 import debug from 'debug';
+import { getFeedback } from '@pie-lib/pie-toolbox/feedback';
+import defaults from './defaults';
 
 const log = debug('@pie-element:extended-text-entry:controller');
-import { getFeedback } from '@pie-lib/pie-toolbox/feedback';
-
-import defaults from './defaults';
 
 export async function createDefaultModel(model = {}) {
   log('[createDefaultModel]', model);
 
-  return {
-    ...defaults,
-    ...model,
-  };
+  return { ...defaults, ...model };
 }
 
-export const normalize = (question) => ({
-  ...defaults,
-  feedbackEnabled: false,
-  rationaleEnabled: true,
-  promptEnabled: true,
-  teacherInstructionsEnabled: true,
-  studentInstructionsEnabled: true,
-  playerSpellCheckDisabled: true,
-  ...question,
-});
+export const normalize = (question) => ({ ...defaults, ...question });
 
 export async function model(question, session, env) {
   log('[question]', question);
@@ -60,10 +47,13 @@ export async function model(question, session, env) {
       break;
   }
 
+  const annotatorMode = normalizedQuestion.annotationsEnabled && (env.role === 'instructor' || env.mode === 'evaluate');
+
   return fb.then((feedback) => ({
     prompt: normalizedQuestion.promptEnabled ? normalizedQuestion.prompt : null,
     dimensions: normalizedQuestion.dimensions,
     customKeys: normalizedQuestion.customKeys || [],
+    id: normalizedQuestion.id,
     disabled: env.mode !== 'gather',
     feedback,
     teacherInstructions,
@@ -73,6 +63,9 @@ export async function model(question, session, env) {
     equationEditor,
     spellCheckEnabled: !normalizedQuestion.playerSpellCheckDisabled,
     playersToolbarPosition: normalizedQuestion.playersToolbarPosition || 'bottom',
+    annotatorMode,
+    disabledAnnotator: normalizedQuestion.annotationsEnabled ? env.role !== 'instructor' : true,
+    predefinedAnnotations: normalizedQuestion.annotationsEnabled ? normalizedQuestion.predefinedAnnotations : [],
   }));
 }
 

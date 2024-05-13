@@ -8,6 +8,10 @@ exports[`Render Main Component Match Snapshot 1`] = `
     <Panel
       configuration={
         Object {
+          "annotations": Object {
+            "label": "Annotations",
+            "settings": false,
+          },
           "baseInputConfiguration": Object {
             "audio": Object {
               "disabled": false,
@@ -125,6 +129,7 @@ exports[`Render Main Component Match Snapshot 1`] = `
             "teacherInstructionsEnabled": undefined,
           },
           "Settings": Object {
+            "annotationsEnabled": false,
             "dimensions": undefined,
             "equationEditor": false,
             "feedbackEnabled": undefined,
@@ -140,6 +145,7 @@ exports[`Render Main Component Match Snapshot 1`] = `
       }
       model={
         Object {
+          "annotationsEnabled": false,
           "dimensions": Object {
             "height": 100,
             "width": 500,
