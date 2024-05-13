@@ -100,6 +100,11 @@
       "type": "string",
       "title": "teacherInstructions"
     },
+    "annotationsEnabled": {
+      "description": "Indicates if the annotations are enabled",
+      "type": "boolean",
+      "title": "annotationsEnabled"
+    },
     "feedbackEnabled": {
       "description": "Indicates if Feedback is enabled",
       "type": "boolean",
@@ -137,6 +142,41 @@
       ],
       "type": "string",
       "title": "toolbarEditorPosition"
+    },
+    "predefinedAnnotations": {
+      "description": "Indicates the predefined annotations for the annotation menu",
+      "type": "array",
+      "items": {
+        "title": "PredefinedAnnotation",
+        "type": "object",
+        "properties": {
+          "label": {
+            "description": "Indicates the value displayed in the annotation button",
+            "type": "string",
+            "title": "label"
+          },
+          "text": {
+            "description": "Indicates the annotation value",
+            "type": "string",
+            "title": "text"
+          },
+          "type": {
+            "description": "Indicates the type of the annotation",
+            "enum": [
+              "negative",
+              "positive"
+            ],
+            "type": "string",
+            "title": "type"
+          }
+        },
+        "required": [
+          "label",
+          "text",
+          "type"
+        ]
+      },
+      "title": "predefinedAnnotations"
     },
     "playersToolbarPosition": {
       "description": "Indicates the editor's toolbar position for the player, which can be 'bottom' or 'top'",
@@ -546,6 +586,36 @@
         }
       },
       "required": [
+        "type"
+      ]
+    },
+    "PredefinedAnnotation": {
+      "title": "PredefinedAnnotation",
+      "type": "object",
+      "properties": {
+        "label": {
+          "description": "Indicates the value displayed in the annotation button",
+          "type": "string",
+          "title": "label"
+        },
+        "text": {
+          "description": "Indicates the annotation value",
+          "type": "string",
+          "title": "text"
+        },
+        "type": {
+          "description": "Indicates the type of the annotation",
+          "enum": [
+            "negative",
+            "positive"
+          ],
+          "type": "string",
+          "title": "type"
+        }
+      },
+      "required": [
+        "label",
+        "text",
         "type"
       ]
     }
