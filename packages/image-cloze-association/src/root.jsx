@@ -88,6 +88,14 @@ class ImageClozeAssociationComponent extends React.Component {
     });
   };
 
+  filterPossibleAnswers = (possibleResponses, answer) => {
+    const index = possibleResponses.findIndex(response => response.value === answer.value);
+    return [
+      ...possibleResponses.slice(0, index),       // Elements before the found item
+      ...possibleResponses.slice(index + 1)       // Elements after the found item
+    ];
+  };
+
   handleOnAnswerSelect = (answer, responseContainerIndex) => {
     const {
       model: { duplicateResponses },
@@ -151,7 +159,6 @@ class ImageClozeAssociationComponent extends React.Component {
         },
       ];
     }
-
     this.setState({
       maxResponsePerZoneWarning: false,
       answers: answersToStore,
@@ -159,7 +166,7 @@ class ImageClozeAssociationComponent extends React.Component {
         // for single response per container remove answer from possible responses
         duplicateResponses
           ? possibleResponses
-          : possibleResponses.filter((response) => response.value !== answer.value),
+          : this.filterPossibleAnswers(possibleResponses, answer)
     });
     updateAnswer(answersToStore);
   };
