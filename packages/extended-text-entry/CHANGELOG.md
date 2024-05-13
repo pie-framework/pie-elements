@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.13.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.12.4...@pie-element/extended-text-entry@10.13.0) (2024-05-13)
+
+
+### Bug Fixes
+
+* **extended-text-entry:** Fixed annotations rendering ([794b3e8](https://github.com/pie-framework/pie-elements/commit/794b3e87fa0f5dbc3128844d6e6e251b6b9c8327))
+* **extended-text-entry:** Fixed multi-lines annotation that gets single-spaced PD-1583 ([b1377db](https://github.com/pie-framework/pie-elements/commit/b1377db2fe15330d45f0179bbef0f7a8274712fe))
+* **extended-text-entry:** Removed line-height that caused multi-lines annotation to get single-spaced PD-1583 ([8e67ef6](https://github.com/pie-framework/pie-elements/commit/8e67ef6fe1b57b4892e4e1f3c2eccd7e35b9f6b5))
+* **extended-text-entry:** Tighten up the right spacing PD-1587 ([914b8ba](https://github.com/pie-framework/pie-elements/commit/914b8baad1882625336cca07a932e47ab80ce290))
+
+
+### Features
+
+* Re-added annotation fixes after they were removed in develop branch. ([1f16518](https://github.com/pie-framework/pie-elements/commit/1f165182e1ecff26e28e76afaca1638128c56b08))
+
+
+
+
+
 ## [10.12.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.12.3...@pie-element/extended-text-entry@10.12.4) (2024-05-13)
 
 
