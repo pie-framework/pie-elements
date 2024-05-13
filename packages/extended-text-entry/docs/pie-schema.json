@@ -100,6 +100,11 @@
       "type": "string",
       "title": "teacherInstructions"
     },
+    "annotationsEnabled": {
+      "description": "Indicates if the annotations are enabled",
+      "type": "boolean",
+      "title": "annotationsEnabled"
+    },
     "feedbackEnabled": {
       "description": "Indicates if Feedback is enabled",
       "type": "boolean",

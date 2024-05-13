@@ -84,6 +84,10 @@ Indicates student instructions
 
 Indicates teacher instructions
 
+# `annotationsEnabled` (boolean)
+
+Indicates if the annotations are enabled
+
 # `feedbackEnabled` (boolean, required)
 
 Indicates if Feedback is enabled

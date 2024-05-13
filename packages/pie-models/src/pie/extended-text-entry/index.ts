@@ -8,8 +8,8 @@ import {
   ConfigureMaxImageDimensionsProp,
   ConfigureWithForceProp,
   ConfigureMathMLProp,
-  EditableHtmlPluginConfigure,
-  EditableHtmlConfigureProp, EditableHtmlPluginConfigureRequired,
+  EditableHtmlConfigureProp,
+  EditableHtmlPluginConfigureRequired,
 } from '../ConfigurationProp';
 
 interface Dimensions {
@@ -26,7 +26,7 @@ interface Dimensions {
   height?: string;
 }
 
-interface PredefinedAnnotation  {
+interface PredefinedAnnotation {
   /**
    * Indicates the value displayed in the annotation button
    */
@@ -106,6 +106,9 @@ export interface ExtendedTextEntryPie extends PieModel {
   /** Indicates teacher instructions */
   teacherInstructions?: string;
 
+  /**  Indicates if the annotations are enabled */
+  annotationsEnabled?: boolean;
+
   /** Indicates if Feedback is enabled */
   feedbackEnabled: boolean;
 
@@ -130,7 +133,7 @@ export interface ExtendedTextEntryPie extends PieModel {
   toolbarEditorPosition?: 'bottom' | 'top';
 
   /** Indicates the predefined annotations for the annotation menu*/
-  predefinedAnnotations?: Array<PredefinedAnnotation>
+  predefinedAnnotations?: Array<PredefinedAnnotation>;
 
   /**
    * Indicates the editor's toolbar position for the player, which can be 'bottom' or 'top'
@@ -147,6 +150,11 @@ export interface ExtendedTextEntryPie extends PieModel {
  * @additionalProperties false
  */
 export interface ExtendedTextEntryConfigure extends PromptConfig, CommonConfigSettings {
+  /**
+   * Annotations configuration
+   */
+  annotations?: ConfigureProp;
+
   /**
    * Equation Editor configuration
    */
