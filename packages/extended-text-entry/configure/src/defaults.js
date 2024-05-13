@@ -17,8 +17,13 @@ export default {
     spellCheckEnabled: true,
     playerSpellCheckDisabled: true,
     toolbarEditorPosition: 'bottom',
+    annotationsEnabled: false,
   },
   configuration: {
+    annotations: {
+      settings: false,
+      label: 'Annotations',
+    },
     baseInputConfiguration: {
       audio: { disabled: false },
       video: { disabled: false },

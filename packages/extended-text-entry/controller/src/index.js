@@ -47,8 +47,7 @@ export async function model(question, session, env) {
       break;
   }
 
-  const annotatorMode = env.role === 'instructor' || env.mode === 'evaluate';
-  const disabledAnnotator = env.role !== 'instructor';
+  const annotatorMode = normalizedQuestion.annotationsEnabled && (env.role === 'instructor' || env.mode === 'evaluate');
 
   return fb.then((feedback) => ({
     prompt: normalizedQuestion.promptEnabled ? normalizedQuestion.prompt : null,
@@ -65,8 +64,8 @@ export async function model(question, session, env) {
     spellCheckEnabled: !normalizedQuestion.playerSpellCheckDisabled,
     playersToolbarPosition: normalizedQuestion.playersToolbarPosition || 'bottom',
     annotatorMode,
-    disabledAnnotator,
-    predefinedAnnotations: normalizedQuestion.predefinedAnnotations,
+    disabledAnnotator: normalizedQuestion.annotationsEnabled ? env.role !== 'instructor' : true,
+    predefinedAnnotations: normalizedQuestion.annotationsEnabled ? normalizedQuestion.predefinedAnnotations : [],
   }));
 }
 

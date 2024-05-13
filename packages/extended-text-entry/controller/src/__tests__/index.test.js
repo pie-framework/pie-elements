@@ -10,26 +10,10 @@ const defaults = {
     height: '150',
   },
   predefinedAnnotations: [
-    {
-      label: 'good',
-      text: 'good',
-      type: 'positive',
-    },
-    {
-      label: 'creative',
-      text: 'creative',
-      type: 'positive',
-    },
-    {
-      label: 'run-on',
-      text: 'run-on',
-      type: 'negative',
-    },
-    {
-      label: 'frag',
-      text: 'fragment',
-      type: 'negative',
-    },
+    { label: 'good', text: 'good', type: 'positive' },
+    { label: 'creative', text: 'creative', type: 'positive' },
+    { label: 'run-on', text: 'run-on', type: 'negative' },
+    { label: 'frag', text: 'fragment', type: 'negative' },
   ],
   teacherInstructions: 'Teacher Instructions',
 };
@@ -80,7 +64,7 @@ describe('controller', () => {
         dimensions: defaults.dimensions,
         disabled: false,
         disabledAnnotator: true,
-        predefinedAnnotations: defaults.predefinedAnnotations,
+        predefinedAnnotations: [],
         feedback: undefined,
         teacherInstructions: null,
         spellCheckEnabled: false,
@@ -100,7 +84,7 @@ describe('controller', () => {
         dimensions: defaults.dimensions,
         disabled: false,
         disabledAnnotator: true,
-        predefinedAnnotations: defaults.predefinedAnnotations,
+        predefinedAnnotations: [],
         feedback: undefined,
         teacherInstructions: null,
         mathInput: defaults.mathInput,
@@ -110,8 +94,48 @@ describe('controller', () => {
       });
     });
 
+    it('gather mode, annotations enabled', async () => {
+      const result = await model(q({ annotationsEnabled: true }), session, env);
+
+      expect(result).toEqual({
+        annotatorMode: false,
+        customKeys: [],
+        prompt: defaults.prompt,
+        dimensions: defaults.dimensions,
+        disabled: false,
+        disabledAnnotator: true,
+        predefinedAnnotations: defaults.predefinedAnnotations,
+        feedback: undefined,
+        teacherInstructions: null,
+        spellCheckEnabled: false,
+        mathInput: defaults.mathInput,
+        playersToolbarPosition: 'bottom',
+        equationEditor: 'miscellaneous',
+      });
+    });
+
     it('view mode, student role', async () => {
       const result = await model(question, session, { mode: 'view' });
+
+      expect(result).toEqual({
+        annotatorMode: false,
+        customKeys: [],
+        prompt: defaults.prompt,
+        dimensions: defaults.dimensions,
+        disabled: true,
+        disabledAnnotator: true,
+        predefinedAnnotations: [],
+        feedback: undefined,
+        teacherInstructions: null,
+        spellCheckEnabled: false,
+        mathInput: defaults.mathInput,
+        playersToolbarPosition: 'bottom',
+        equationEditor: 'miscellaneous',
+      });
+    });
+
+    it('view mode, student role, annotations enabled', async () => {
+      const result = await model(q({ annotationsEnabled: true }), session, { mode: 'view' });
 
       expect(result).toEqual({
         annotatorMode: false,
@@ -134,13 +158,13 @@ describe('controller', () => {
       const result = await model(question, session, { mode: 'view', role: 'instructor' });
 
       expect(result).toEqual({
-        annotatorMode: true,
+        annotatorMode: false,
         customKeys: [],
         prompt: defaults.prompt,
         dimensions: defaults.dimensions,
         disabled: true,
-        disabledAnnotator: false,
-        predefinedAnnotations: defaults.predefinedAnnotations,
+        disabledAnnotator: true,
+        predefinedAnnotations: [],
         feedback: undefined,
         teacherInstructions: defaults.teacherInstructions,
         mathInput: defaults.mathInput,
@@ -157,6 +181,29 @@ describe('controller', () => {
       });
 
       expect(result).toEqual({
+        annotatorMode: false,
+        customKeys: [],
+        prompt: defaults.prompt,
+        dimensions: defaults.dimensions,
+        disabled: true,
+        disabledAnnotator: true,
+        predefinedAnnotations: [],
+        feedback: undefined,
+        teacherInstructions: null,
+        mathInput: defaults.mathInput,
+        spellCheckEnabled: false,
+        playersToolbarPosition: 'bottom',
+        equationEditor: 'miscellaneous',
+      });
+    });
+
+    it('view mode, instructor role, annotations enabled', async () => {
+      const result = await model(q({ annotationsEnabled: true }), session, {
+        mode: 'view',
+        role: 'instructor',
+      });
+
+      expect(result).toEqual({
         annotatorMode: true,
         customKeys: [],
         prompt: defaults.prompt,
@@ -165,7 +212,7 @@ describe('controller', () => {
         disabledAnnotator: false,
         predefinedAnnotations: defaults.predefinedAnnotations,
         feedback: undefined,
-        teacherInstructions: null,
+        teacherInstructions: defaults.teacherInstructions,
         mathInput: defaults.mathInput,
         spellCheckEnabled: false,
         playersToolbarPosition: 'bottom',
@@ -177,6 +224,28 @@ describe('controller', () => {
       const result = await model({ ...question, feedbackEnabled: true }, session, { mode: 'evaluate' });
 
       expect(result).toEqual({
+        annotatorMode: false,
+        customKeys: [],
+        prompt: defaults.prompt,
+        dimensions: defaults.dimensions,
+        disabled: true,
+        disabledAnnotator: true,
+        predefinedAnnotations: [],
+        feedback: defaults.feedback.default,
+        teacherInstructions: null,
+        mathInput: defaults.mathInput,
+        spellCheckEnabled: false,
+        playersToolbarPosition: 'bottom',
+        equationEditor: 'miscellaneous',
+      });
+    });
+
+    it('evaluate mode, student role, annotations enabled', async () => {
+      const result = await model({ ...question, feedbackEnabled: true, annotationsEnabled: true }, session, {
+        mode: 'evaluate',
+      });
+
+      expect(result).toEqual({
         annotatorMode: true,
         customKeys: [],
         prompt: defaults.prompt,
@@ -184,7 +253,7 @@ describe('controller', () => {
         disabled: true,
         disabledAnnotator: true,
         predefinedAnnotations: defaults.predefinedAnnotations,
-        feedback: 'this is default feedback',
+        feedback: defaults.feedback.default,
         teacherInstructions: null,
         mathInput: defaults.mathInput,
         spellCheckEnabled: false,
@@ -200,14 +269,14 @@ describe('controller', () => {
       });
 
       expect(result).toEqual({
-        annotatorMode: true,
+        annotatorMode: false,
         customKeys: [],
         prompt: defaults.prompt,
         dimensions: defaults.dimensions,
         disabled: true,
-        disabledAnnotator: false,
-        predefinedAnnotations: defaults.predefinedAnnotations,
-        feedback: 'this is default feedback',
+        disabledAnnotator: true,
+        predefinedAnnotations: [],
+        feedback: defaults.feedback.default,
         spellCheckEnabled: false,
         teacherInstructions: defaults.teacherInstructions,
         mathInput: defaults.mathInput,
@@ -223,6 +292,26 @@ describe('controller', () => {
       });
 
       expect(result).toEqual({
+        annotatorMode: false,
+        customKeys: [],
+        prompt: defaults.prompt,
+        dimensions: defaults.dimensions,
+        disabled: true,
+        disabledAnnotator: true,
+        predefinedAnnotations: [],
+        feedback: defaults.feedback.default,
+        spellCheckEnabled: false,
+        teacherInstructions: null,
+        mathInput: defaults.mathInput,
+        playersToolbarPosition: 'bottom',
+        equationEditor: 'miscellaneous',
+      });
+    });
+
+    it('evaluate mode, instructor role, annotations enabled', async () => {
+      const result = await model(q({ annotationsEnabled: true }), session, { mode: 'evaluate', role: 'instructor' });
+
+      expect(result).toEqual({
         annotatorMode: true,
         customKeys: [],
         prompt: defaults.prompt,
@@ -230,9 +319,9 @@ describe('controller', () => {
         disabled: true,
         disabledAnnotator: false,
         predefinedAnnotations: defaults.predefinedAnnotations,
-        feedback: 'this is default feedback',
+        feedback: undefined,
         spellCheckEnabled: false,
-        teacherInstructions: null,
+        teacherInstructions: defaults.teacherInstructions,
         mathInput: defaults.mathInput,
         playersToolbarPosition: 'bottom',
         equationEditor: 'miscellaneous',

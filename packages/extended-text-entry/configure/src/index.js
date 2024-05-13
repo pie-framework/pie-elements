@@ -13,10 +13,7 @@ import defaults from './defaults';
 
 export default class ExtendedTextEntry extends HTMLElement {
   static createDefaultModel = (model = {}, config) => {
-    const defaultModel = {
-      ...defaults.model,
-      ...model,
-    };
+    const defaultModel = { ...defaults.model, ...model };
 
     // if configuration.withRubric.forceEnabled is true, then we update the model (rubricEnabled)
     // without triggering the Model Updated event (for more details, check documentation)
@@ -26,7 +23,6 @@ export default class ExtendedTextEntry extends HTMLElement {
 
     return defaultModel;
   };
-
 
   constructor() {
     super();
