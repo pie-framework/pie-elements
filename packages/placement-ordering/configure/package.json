@@ -1,6 +1,6 @@
 {
   "name": "@pie-element/placement-ordering-configure",
-  "version": "7.11.4",
+  "version": "7.11.5",
   "private": true,
   "main": "lib/index.js",
   "module": "src/index.js",

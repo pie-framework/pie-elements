@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.8.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-configure@7.8.4...@pie-element/number-line-configure@7.8.5) (2024-05-14)
+
+
+### Bug Fixes
+
+* update pie-toolbox PD-3640 ([707c240](https://github.com/pie-framework/pie-elements/commit/707c24031bc0cb05bb070605d4bc27384334eaac))
+
+
+
+
+
 ## [7.8.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-configure@7.8.3...@pie-element/number-line-configure@7.8.4) (2024-05-13)
 
 

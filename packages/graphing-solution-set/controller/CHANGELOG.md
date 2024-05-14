@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.6.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-solution-set-controller@1.6.4...@pie-element/graphing-solution-set-controller@1.6.5) (2024-05-14)
+
+
+### Bug Fixes
+
+* update pie-toolbox PD-3640 ([707c240](https://github.com/pie-framework/pie-elements/commit/707c24031bc0cb05bb070605d4bc27384334eaac))
+
+
+
+
+
 ## [1.6.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-solution-set-controller@1.6.3...@pie-element/graphing-solution-set-controller@1.6.4) (2024-05-13)
 
 
