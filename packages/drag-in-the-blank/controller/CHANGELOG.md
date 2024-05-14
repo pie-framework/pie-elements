@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.10.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-controller@5.10.4...@pie-element/drag-in-the-blank-controller@5.10.5) (2024-05-14)
+
+
+### Bug Fixes
+
+* update pie-toolbox PD-3640 ([707c240](https://github.com/pie-framework/pie-elements/commit/707c24031bc0cb05bb070605d4bc27384334eaac))
+
+
+
+
+
 ## [5.10.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-controller@5.10.3...@pie-element/drag-in-the-blank-controller@5.10.4) (2024-05-13)
 
 

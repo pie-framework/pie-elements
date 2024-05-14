@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.12.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@6.12.5...@pie-element/multiple-choice-configure@6.12.6) (2024-05-14)
+
+
+### Bug Fixes
+
+* update pie-toolbox PD-3640 ([707c240](https://github.com/pie-framework/pie-elements/commit/707c24031bc0cb05bb070605d4bc27384334eaac))
+
+
+
+
+
 ## [6.12.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@6.12.4...@pie-element/multiple-choice-configure@6.12.5) (2024-05-13)
 
 

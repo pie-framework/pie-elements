@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.10.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-controller@4.10.5...@pie-element/multiple-choice-controller@4.10.6) (2024-05-14)
+
+
+### Bug Fixes
+
+* update pie-toolbox PD-3640 ([707c240](https://github.com/pie-framework/pie-elements/commit/707c24031bc0cb05bb070605d4bc27384334eaac))
+
+
+
+
+
 ## [4.10.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-controller@4.10.4...@pie-element/multiple-choice-controller@4.10.5) (2024-05-13)
 
 
