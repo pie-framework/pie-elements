@@ -3,6 +3,71 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.13.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.13.0...@pie-element/extended-text-entry@10.13.1) (2024-05-14)
+
+
+### Bug Fixes
+
+* update pie-toolbox PD-3640 ([707c240](https://github.com/pie-framework/pie-elements/commit/707c24031bc0cb05bb070605d4bc27384334eaac))
+
+
+
+
+
+# [10.13.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.12.4...@pie-element/extended-text-entry@10.13.0) (2024-05-13)
+
+
+### Bug Fixes
+
+* **extended-text-entry:** Fixed annotations rendering ([794b3e8](https://github.com/pie-framework/pie-elements/commit/794b3e87fa0f5dbc3128844d6e6e251b6b9c8327))
+* **extended-text-entry:** Fixed multi-lines annotation that gets single-spaced PD-1583 ([b1377db](https://github.com/pie-framework/pie-elements/commit/b1377db2fe15330d45f0179bbef0f7a8274712fe))
+* **extended-text-entry:** Removed line-height that caused multi-lines annotation to get single-spaced PD-1583 ([8e67ef6](https://github.com/pie-framework/pie-elements/commit/8e67ef6fe1b57b4892e4e1f3c2eccd7e35b9f6b5))
+* **extended-text-entry:** Tighten up the right spacing PD-1587 ([914b8ba](https://github.com/pie-framework/pie-elements/commit/914b8baad1882625336cca07a932e47ab80ce290))
+
+
+### Features
+
+* Re-added annotation fixes after they were removed in develop branch. ([1f16518](https://github.com/pie-framework/pie-elements/commit/1f165182e1ecff26e28e76afaca1638128c56b08))
+
+
+
+
+
+## [10.12.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.12.3...@pie-element/extended-text-entry@10.12.4) (2024-05-13)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3650, PD-3651, PD-3621, PD-3620, PD-2127,PD-3709, PD-3726, PD-3191 ([2ef6881](https://github.com/pie-framework/pie-elements/commit/2ef688118b9099c7338cbe88afcdeed228fae11e))
+* **extended-text-entry:** add characters limit of 50000 PD-3709 ([9151b0e](https://github.com/pie-framework/pie-elements/commit/9151b0ea030a8ef4a34c0e335c35d288bc439fd1))
+* **extended-text-entry:** add characters limit of 50000 PD-3709 ([2579501](https://github.com/pie-framework/pie-elements/commit/25795018680edc3edb28014805a28a2f556cf62e))
+
+
+
+
+
+## [10.12.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.12.2...@pie-element/extended-text-entry@10.12.3) (2024-05-07)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3731 ([2b5d6c9](https://github.com/pie-framework/pie-elements/commit/2b5d6c932280981a0fd636bcb30d7fbc181ac311))
+
+
+
+
+
+## [10.12.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.12.1...@pie-element/extended-text-entry@10.12.2) (2024-05-03)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3537, PD-3538, PD-3539, PD-3540,PD-3680 ([d9cb471](https://github.com/pie-framework/pie-elements/commit/d9cb47148a8fec71d5de29f2cf2b92ec7b479470))
+
+
+
+
+
 ## [10.12.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.12.0...@pie-element/extended-text-entry@10.12.1) (2024-04-29)
 
 

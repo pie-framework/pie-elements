@@ -3,6 +3,51 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.16.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@7.16.4...@pie-element/math-inline@7.16.5) (2024-05-14)
+
+
+### Bug Fixes
+
+* update pie-toolbox PD-3640 ([707c240](https://github.com/pie-framework/pie-elements/commit/707c24031bc0cb05bb070605d4bc27384334eaac))
+* **math-inline:** on touch event set the delay to 0 instead of 700ms default ([1f2819f](https://github.com/pie-framework/pie-elements/commit/1f2819f5c0616494a9edef638ca20e455102b6bd))
+
+
+
+
+
+## [7.16.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@7.16.3...@pie-element/math-inline@7.16.4) (2024-05-13)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3650, PD-3651, PD-3621, PD-3620, PD-2127,PD-3709, PD-3726, PD-3191 ([2ef6881](https://github.com/pie-framework/pie-elements/commit/2ef688118b9099c7338cbe88afcdeed228fae11e))
+
+
+
+
+
+## [7.16.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@7.16.2...@pie-element/math-inline@7.16.3) (2024-05-07)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3731 ([2b5d6c9](https://github.com/pie-framework/pie-elements/commit/2b5d6c932280981a0fd636bcb30d7fbc181ac311))
+
+
+
+
+
+## [7.16.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@7.16.1...@pie-element/math-inline@7.16.2) (2024-05-03)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3537, PD-3538, PD-3539, PD-3540,PD-3680 ([d9cb471](https://github.com/pie-framework/pie-elements/commit/d9cb47148a8fec71d5de29f2cf2b92ec7b479470))
+
+
+
+
+
 ## [7.16.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@7.16.0...@pie-element/math-inline@7.16.1) (2024-04-29)
 
 

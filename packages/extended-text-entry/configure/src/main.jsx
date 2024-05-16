@@ -52,6 +52,7 @@ export class Main extends React.Component {
     const { model, classes, configuration, imageSupport, onConfigurationChanged, onModelChanged, uploadSoundSupport } =
       this.props;
     const {
+      annotations= {},
       contentDimensions = {},
       dimensions = {},
       equationEditor = {},
@@ -117,6 +118,7 @@ export class Main extends React.Component {
       'multiple.enabled': multiple.settings && toggle(multiple.label, true),
       promptEnabled: prompt.settings && toggle(prompt.label),
       feedbackEnabled: feedback.settings && toggle(feedback.label),
+      annotationsEnabled: annotations.settings && toggle(annotations.label),
       spellCheckEnabled: spellCheck.settings && toggle(spellCheck.label),
       playerSpellCheckDisabled: playerSpellCheck.settings && toggle(playerSpellCheck.label),
     };

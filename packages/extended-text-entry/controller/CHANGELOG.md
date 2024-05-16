@@ -3,6 +3,61 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.11.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-controller@5.11.0...@pie-element/extended-text-entry-controller@5.11.1) (2024-05-14)
+
+
+### Bug Fixes
+
+* update pie-toolbox PD-3640 ([707c240](https://github.com/pie-framework/pie-elements/commit/707c24031bc0cb05bb070605d4bc27384334eaac))
+
+
+
+
+
+# [5.11.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-controller@5.10.4...@pie-element/extended-text-entry-controller@5.11.0) (2024-05-13)
+
+
+### Features
+
+* Re-added annotation fixes after they were removed in develop branch. ([1f16518](https://github.com/pie-framework/pie-elements/commit/1f165182e1ecff26e28e76afaca1638128c56b08))
+
+
+
+
+
+## [5.10.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-controller@5.10.3...@pie-element/extended-text-entry-controller@5.10.4) (2024-05-13)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3650, PD-3651, PD-3621, PD-3620, PD-2127,PD-3709, PD-3726, PD-3191 ([2ef6881](https://github.com/pie-framework/pie-elements/commit/2ef688118b9099c7338cbe88afcdeed228fae11e))
+
+
+
+
+
+## [5.10.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-controller@5.10.2...@pie-element/extended-text-entry-controller@5.10.3) (2024-05-07)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3731 ([2b5d6c9](https://github.com/pie-framework/pie-elements/commit/2b5d6c932280981a0fd636bcb30d7fbc181ac311))
+
+
+
+
+
+## [5.10.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-controller@5.10.1...@pie-element/extended-text-entry-controller@5.10.2) (2024-05-03)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3537, PD-3538, PD-3539, PD-3540,PD-3680 ([d9cb471](https://github.com/pie-framework/pie-elements/commit/d9cb47148a8fec71d5de29f2cf2b92ec7b479470))
+
+
+
+
+
 ## [5.10.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-controller@5.10.0...@pie-element/extended-text-entry-controller@5.10.1) (2024-04-29)
 
 

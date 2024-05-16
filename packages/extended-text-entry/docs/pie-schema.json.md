@@ -84,6 +84,10 @@ Indicates student instructions
 
 Indicates teacher instructions
 
+# `annotationsEnabled` (boolean)
+
+Indicates if the annotations are enabled
+
 # `feedbackEnabled` (boolean, required)
 
 Indicates if Feedback is enabled
@@ -114,6 +118,31 @@ This element must be one of the following enum values:
 
 * `bottom`
 * `top`
+
+# `predefinedAnnotations` (array)
+
+Indicates the predefined annotations for the annotation menu
+
+The object is an array with all elements of the type `object`.
+
+The array object has the following properties:
+
+## `label` (string, required)
+
+Indicates the value displayed in the annotation button
+
+## `text` (string, required)
+
+Indicates the annotation value
+
+## `type` (string, enum, required)
+
+Indicates the type of the annotation
+
+This element must be one of the following enum values:
+
+* `negative`
+* `positive`
 
 # `playersToolbarPosition` (string, enum)
 
@@ -425,3 +454,24 @@ This element must be one of the following enum values:
 ### `default` (string)
 
 Indicates the feedback value
+
+## `PredefinedAnnotation` (object)
+
+Properties of the `PredefinedAnnotation` object:
+
+### `label` (string, required)
+
+Indicates the value displayed in the annotation button
+
+### `text` (string, required)
+
+Indicates the annotation value
+
+### `type` (string, enum, required)
+
+Indicates the type of the annotation
+
+This element must be one of the following enum values:
+
+* `negative`
+* `positive`

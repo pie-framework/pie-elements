@@ -6,7 +6,20 @@ describe('Render Main Component', () => {
   let model = { width: 100, height: 50 };
 
   it('should match snapshot', () => {
-    let wrapper = shallow(<Main model={model} session={{ value: 'hi' }} onChange={() => {}} classes={{}} />);
+    let wrapper = shallow(
+      <Main
+        model={model}
+        session={{
+          value: 'hi',
+          annotations: [],
+          comment: 'hello'
+        }}
+        onValueChange={() => {}}
+        onAnnotationsChange={() => {}}
+        onCommentChange={() => {}}
+        classes={{}}
+      />
+    );
     expect(wrapper).toMatchSnapshot();
   });
 
@@ -14,10 +27,16 @@ describe('Render Main Component', () => {
     let wrapper = shallow(
       <Main
         model={{ ...model, teacherInstructions: 'Teacher Instructions' }}
-        session={{ value: 'hi' }}
-        onChange={() => {}}
+        session={{
+          value: 'hi',
+          annotations: [],
+          comment: 'hello'
+        }}
+        onValueChange={() => {}}
+        onAnnotationsChange={() => {}}
+        onCommentChange={() => {}}
         classes={{}}
-      />,
+      />
     );
     expect(wrapper).toMatchSnapshot();
   });

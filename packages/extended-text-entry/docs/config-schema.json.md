@@ -2,6 +2,18 @@ Config Object for @pie-elements/extended-text-entry
 
 The schema defines the following properties:
 
+# `annotations` (object)
+
+Properties of the `annotations` object:
+
+## `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+## `label` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
+
 # `equationEditor` (object)
 
 Properties of the `equationEditor` object:
