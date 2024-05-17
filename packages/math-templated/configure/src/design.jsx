@@ -13,12 +13,19 @@ import {
 } from '@pie-lib/pie-toolbox/editable-html';
 import { dropdown } from '@pie-lib/pie-toolbox/code/config-ui/settings';
 import Typography from '@material-ui/core/Typography';
-import { MathTemplatedToolbar } from './math-templated-toolbar';
+import MathTemplatedToolbar from './math-templated-toolbar';
 import Response from '@pie-element/math-inline-configure/src/response';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 
 const { Panel, toggle } = settings;
+
+const createElementFromHTML = (htmlString) => {
+  const div = document.createElement('div');
+  div.innerHTML = htmlString.trim();
+
+  return div;
+};
 
 class Design extends React.Component {
   static propTypes = {
@@ -34,6 +41,15 @@ class Design extends React.Component {
     uploadSoundSupport: PropTypes.object,
   };
 
+  state = {};
+
+  componentDidMount() {
+    const { model: { slateMarkup } } = this.props;
+
+    this.setState({ markup: slateMarkup });
+
+  }
+
   handleChange = (key, value) => {
     const { onModelChanged, model } = this.props;
     const updatedModel = cloneDeep(model);
@@ -47,6 +63,57 @@ class Design extends React.Component {
 
     newModel.responses[index] = response;
     onModelChanged(newModel);
+  };
+
+  onChangeResponse = (index, newVal) => {
+    const { model, onModelChanged } = this.props;
+    const { reponses } = model;
+
+    if (!reponses[index]) {
+      reponses[index] = [{ answer: newVal || '', id: '0', allowSpaces: true }];
+    } else {
+      reponses[index][0].answer = newVal || '';
+    }
+
+    onModelChanged({ ...model, reponses });
+  };
+
+  onResponsesChanged = (choices) => {
+    this.props.onModelChanged({ ...this.props.model, choices });
+  };
+
+  onChange = (markup) => {
+    const {
+      model: { responses },
+      onModelChanged,
+    } = this.props;
+    const domMarkup = createElementFromHTML(markup);
+    const allRespAreas = domMarkup.querySelectorAll('[data-type="explicit_constructed_response"]');
+
+    const allResponses = {};
+
+    allRespAreas.forEach((el, index) => {
+      const newResponses = cloneDeep(responses[el.dataset.index]);
+
+      if (newResponses) {
+        newResponses[0] = {
+          answer: el.dataset.value || '',
+          allowSpaces: true
+        };
+      }
+
+      allResponses[index] = newResponses;
+      el.dataset.index = index;
+    });
+
+    const callback = () =>
+      onModelChanged({
+        ...this.props.model,
+        responses: allResponses,
+        slateMarkup: domMarkup.innerHTML,
+      });
+
+    this.setState({ cachedChoices: undefined }, callback);
   };
 
   render() {
@@ -230,11 +297,11 @@ class Design extends React.Component {
             },
             respAreaToolbar: (node, value, onToolbarDone) => {
               const { model } = this.props;
-              const correctChoice = (model.choices[node.data.get('index')] || [])[0];
+              const correctChoice = (model.responses[node.data.get('index')] || [])[0];
 
               return () => (
                 <MathTemplatedToolbar
-                  onChangeResponse={(newVal) => {}}
+                  onChangeResponse={() => {}}
                   node={node}
                   value={value}
                   onToolbarDone={onToolbarDone}
@@ -244,7 +311,8 @@ class Design extends React.Component {
               );
             },
             error: () => choicesErrors,
-            onHandleAreaChange: () => {},
+            onHandleAreaChange: () => {
+            },
           }}
           className={classes.markup}
           markup={model.slateMarkup}
@@ -267,7 +335,7 @@ class Design extends React.Component {
           className={classes.flexContainer}
           style={{ justifyContent: 'flex-start' }}
         >
-          <Typography>Define Correct Response</Typography>
+          <Typography>Define Correct Responses</Typography>
         </div>
 
         <InputContainer
@@ -300,19 +368,27 @@ class Design extends React.Component {
           </Select>
         </InputContainer>
 
-        {responses.map((response, idx) => (
-          <Response
-            key={response.id}
-            mode={equationEditor}
-            response={response}
-            defaultResponse={true}
-            onResponseChange={this.onResponseChange}
-            index={idx}
-            cIgnoreOrder={true}
-            cAllowTrailingZeros={true}
-            error={responsesErrors && responsesErrors[idx]}
-          />
-        ))}
+        {Object.values(responses).map((responseArray, idx) => {
+          if (!responseArray || responseArray.length === 0) {
+            return null;
+          }
+
+          const primaryResponse = responseArray.length ? responseArray[0] : responseArray;
+
+          return (
+            <Response
+              key={primaryResponse.id}
+              mode={equationEditor}
+              response={primaryResponse}
+              defaultResponse={true}
+              onResponseChange={this.onResponseChange}
+              index={idx}
+              cIgnoreOrder={true}
+              cAllowTrailingZeros={true}
+              error={responsesErrors && responsesErrors[idx]}
+            />
+          );
+        })}
 
         {rationaleEnabled && (
           <InputContainer

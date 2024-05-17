@@ -21,7 +21,6 @@ export class MathTemplatedToolbar extends React.Component {
         getNextText: PropTypes.func.isRequired,
       }),
     }),
-    maxLengthPerChoiceEnabled: PropTypes.bool,
   };
 
   state = {
@@ -54,26 +53,9 @@ export class MathTemplatedToolbar extends React.Component {
     }
   }
 
-  onDone = () => {
-    const { markup: newValue } = this.state;
-    const { node, value, onToolbarDone, onChangeResponse } = this.props;
-    const update = { ...node.data.toJSON(), value: newValue };
-    const change = value.change().setNodeByKey(node.key, { data: update });
-
-    const nextText = value.document.getNextText(node.key);
-
-    change.moveFocusTo(nextText.key, 0).moveAnchorTo(nextText.key, 0);
-
-    onToolbarDone(change, true);
-    onChangeResponse(newValue);
-  };
-
-  onChange = (e) => this.setState({ markup: e.target.value });
-
   render() {
-    const { classes, maxLengthPerChoiceEnabled } = this.props;
+    const { classes } = this.props;
     const { markup, toolbarStyle } = this.state;
-    const inputProps = maxLengthPerChoiceEnabled ? {} : { maxLength: 25 };
 
     return (
       <div
@@ -84,15 +66,11 @@ export class MathTemplatedToolbar extends React.Component {
       >
         <OutlinedInput
           style={{ width: '100%' }}
-          autoFocus
           labelWidth={0}
           classes={{
             input: classes.input,
           }}
-          onChange={this.onChange}
-          onBlur={this.onDone}
           value={markup || ''}
-          inputProps={inputProps}
         />
       </div>
     );
