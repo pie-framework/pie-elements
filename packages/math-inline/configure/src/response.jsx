@@ -13,9 +13,6 @@ import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import { withStyles } from '@material-ui/core/styles';
 
-// TODO once we support individual response correctness, we need to remove this constant
-const INDIVIDUAL_RESPONSE_CORRECTNESS_SUPPORTED = false;
-
 const styles = (theme) => ({
   responseContainer: {
     marginBottom: theme.spacing.unit * 2.5,
@@ -108,52 +105,52 @@ class Response extends React.Component {
   }
 
   onChange = (name) => (evt) => {
-    const { response, onResponseChange, index } = this.props;
+    const { response, onResponseChange, responseKey } = this.props;
     const newResponse = { ...response };
 
     newResponse[name] = evt.target.value;
 
-    onResponseChange(newResponse, index);
+    onResponseChange(newResponse, responseKey);
   };
 
   onConfigChanged = (name) => (evt) => {
-    const { response, onResponseChange, index } = this.props;
+    const { response, onResponseChange, responseKey } = this.props;
     const newResponse = { ...response };
 
     newResponse[name] = evt.target.checked;
 
-    onResponseChange(newResponse, index);
+    onResponseChange(newResponse, responseKey);
   };
 
   onLiteralOptionsChange = (name) => () => {
-    const { response, onResponseChange, index } = this.props;
+    const { response, onResponseChange, responseKey } = this.props;
     const newResponse = { ...response };
 
     newResponse[name] = !response[name];
 
-    onResponseChange(newResponse, index);
+    onResponseChange(newResponse, responseKey);
   };
 
   onAnswerChange = (answer) => {
-    const { response, onResponseChange, index } = this.props;
+    const { response, onResponseChange, responseKey } = this.props;
     const newResponse = { ...response };
 
     newResponse.answer = answer;
 
-    onResponseChange(newResponse, index);
+    onResponseChange(newResponse, responseKey);
   };
 
   onAlternateAnswerChange = (alternateId) => (answer) => {
-    const { response, onResponseChange, index } = this.props;
+    const { response, onResponseChange, responseKey } = this.props;
     const newResponse = { ...response };
 
     newResponse.alternates[alternateId] = answer;
 
-    onResponseChange(newResponse, index);
+    onResponseChange(newResponse, responseKey);
   };
 
   onAddAlternate = () => {
-    const { response, onResponseChange, index } = this.props;
+    const { response, onResponseChange, responseKey } = this.props;
     const { alternateIdCounter } = this.state;
     const newResponse = { ...response };
 
@@ -163,7 +160,7 @@ class Response extends React.Component {
 
     newResponse.alternates[alternateIdCounter] = '';
 
-    onResponseChange(newResponse, index);
+    onResponseChange(newResponse, responseKey);
 
     this.setState({
       alternateIdCounter: alternateIdCounter + 1,
@@ -171,12 +168,12 @@ class Response extends React.Component {
   };
 
   onRemoveAlternate = (alternateId) => () => {
-    const { response, onResponseChange, index } = this.props;
+    const { response, onResponseChange, responseKey } = this.props;
     const newResponse = { ...response };
 
     delete newResponse.alternates[alternateId];
 
-    onResponseChange(newResponse, index);
+    onResponseChange(newResponse, responseKey);
 
     this.setState((state) => ({
       showKeypad: {
@@ -227,7 +224,7 @@ class Response extends React.Component {
   };
 
   render() {
-    const { classes, mode, defaultResponse, index, response, cAllowTrailingZeros, cIgnoreOrder, error } = this.props;
+    const { classes, mode, response, cAllowTrailingZeros, cIgnoreOrder, error, responseKey } = this.props;
 
     const { showKeypad } = this.state;
     const { validation, answer, alternates, ignoreOrder, allowTrailingZeros } = response;
@@ -245,7 +242,7 @@ class Response extends React.Component {
         <CardContent className={classes.cardContent}>
           <div className={classes.titleBar}>
             <Typography className={classes.title} component="div">
-              Response {INDIVIDUAL_RESPONSE_CORRECTNESS_SUPPORTED ? (defaultResponse ? '' : index + 1) : ''}
+              Response for Area {responseKey}
             </Typography>
 
             <InputContainer label="Validation" className={classes.selectContainer}>

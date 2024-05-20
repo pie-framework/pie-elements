@@ -19,6 +19,7 @@ import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import throttle from 'lodash/throttle';
 import pick from 'lodash/pick';
+import { processMarkup } from './markupUtils';
 
 const { Panel, toggle } = settings;
 
@@ -89,34 +90,49 @@ class Design extends React.Component {
       model: { responses },
       onModelChanged,
     } = this.props;
+    const newResponses = {};
+    console.log('markup', markup);
     const domMarkup = createElementFromHTML(markup);
     const allRespAreas = domMarkup.querySelectorAll('[data-type="explicit_constructed_response"]');
 
-    const allResponses = {};
+    allRespAreas.forEach((el, idx) => {
+      const { value, index } = allRespAreas[idx].dataset;
 
-    allRespAreas.forEach((el, index) => {
-      const newResponses = cloneDeep(responses[el.dataset.index]);
-
-      if (newResponses) {
-        newResponses[0] = {
-          answer: el.dataset.value || '',
-          allowSpaces: true
-        };
+      if (!value) {
+        // Add a new response area
+        allRespAreas[idx].dataset.value = `Response Area ${index}`;
       }
 
-      allResponses[index] = newResponses;
+      newResponses[index] = responses[index];
+
+      if (!newResponses[index]) {
+        newResponses[index] = {
+          // TODO initialize with some customizable defaults
+          'allowSpaces': true,
+          'validation': 'symbolic',
+          'allowTrailingZeros': false,
+          'ignoreOrder': false,
+          'answer': '',
+          'alternates': {},
+        }
+      }
+
       el.dataset.index = index;
     });
+
+    const processedMarkup = processMarkup(markup);
+    console.log({ newResponses, processedMarkup });
 
     const callback = () =>
       onModelChanged({
         ...this.props.model,
-        responses: allResponses,
         slateMarkup: domMarkup.innerHTML,
+        responses: newResponses,
+        markup: processedMarkup
       });
 
-    this.setState({ cachedResponses: undefined }, callback);
-  };
+    this.setState({ cachedChoices: undefined }, callback);
+  }
 
   onHandleAreaChange = throttle(
     (nodes) => {
@@ -453,19 +469,15 @@ class Design extends React.Component {
           </Select>
         </InputContainer>
 
-        {Object.values(responses).map((responseArray, idx) => {
-          if (!responseArray || responseArray.length === 0) {
-            return null;
-          }
-
-          const primaryResponse = responseArray.length ? responseArray[0] : responseArray;
+        {Object.keys(responses || {}).map((responseKey,idx ) => {
+          const response = responses[responseKey];
 
           return (
             <Response
-              key={primaryResponse.id}
+              key={responseKey}
+              responseKey={responseKey}
               mode={equationEditor}
-              response={primaryResponse}
-              defaultResponse={true}
+              response={response}
               onResponseChange={this.onResponseChange}
               index={idx}
               cIgnoreOrder={true}

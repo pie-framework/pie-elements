@@ -1,3 +1,5 @@
+import escape from 'lodash/escape';
+
 // do not remove \t from \times, \triangle, \tan, \theta or \therefore
 const tSymbols = 'imes|riangle|an|heta|herefore';
 // do not remove \n from \nthroot, \nparallel, \ncong, \napprox, \neq, \ne or \nsim
@@ -22,10 +24,11 @@ const createElementFromHTML = (htmlString = '') => {
 export const processMarkup = (markup) => {
   const newMarkup = removeUnwantedCharacters(markup || '');
   const slateMarkup = createElementFromHTML(newMarkup || '');
-  let index = 0;
+  // let index = 0;
 
+  // TODO defined data-type "math-templated" in editable-html and use it
   slateMarkup.querySelectorAll('[data-type="explicit_constructed_response"]').forEach((s) => {
-    s.replaceWith(`{{${index++}}}`);
+    s.replaceWith(`{{${s.dataset.index}}}`);
   });
 
   return slateMarkup.innerHTML;
@@ -39,7 +42,9 @@ export const createSlateMarkup = (markup) => {
   }
 
   const newMarkup = removeUnwantedCharacters(markup);
-  return newMarkup.replace(REGEX, (match, g) =>
-    `<span data-type="explicit_constructed_response" data-index="${g}" data-value="response ${parseInt(g) + 1}"></span>`
-  );
+
+  return newMarkup.replace(REGEX, (match, g) => {
+    // TODO defined data-type "math-templated" in editable-html and use it
+    return `<span data-type="explicit_constructed_response" data-index="${g}" data-value="Response Area ${g}"></span>`;
+  });
 };
