@@ -24,11 +24,11 @@ const createElementFromHTML = (htmlString = '') => {
 export const processMarkup = (markup) => {
   const newMarkup = removeUnwantedCharacters(markup || '');
   const slateMarkup = createElementFromHTML(newMarkup || '');
-  let index = 0;
+  // let index = 0;
 
   // TODO defined data-type "math-templated" in editable-html and use it
   slateMarkup.querySelectorAll('[data-type="explicit_constructed_response"]').forEach((s) => {
-    s.replaceWith(`{{${index++}}}`);
+    s.replaceWith(`{{${s.dataset.index}}}`);
   });
 
   return slateMarkup.innerHTML;

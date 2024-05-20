@@ -235,14 +235,14 @@ class Design extends React.Component {
           )}
           responseAreaProps={{
             type: 'explicit-constructed-response',
-            respAreaToolbar: (node, value, onToolbarDone) => {
-              return () => (
-                <MathTemplatedToolbar
-                  node={node}
-                  onToolbarDone={onToolbarDone}
-                />
-              );
-            },
+            // respAreaToolbar: (node, value, onToolbarDone) => {
+            //   return () => (
+            //     <MathTemplatedToolbar
+            //       node={node}
+            //       onToolbarDone={onToolbarDone}
+            //     />
+            //   );
+            // },
             error: () => choicesErrors,
             onHandleAreaChange: () => {},
           }}
