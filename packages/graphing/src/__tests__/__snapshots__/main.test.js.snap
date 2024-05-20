@@ -15,6 +15,7 @@ exports[`Main render snapshot 1`] = `
     backgroundMarks={Array []}
     disabledLabels={true}
     disabledTitle={true}
+    limitLabeling={true}
     marks={Array []}
     onChangeMarks={[MockFunction]}
     size={Object {}}
