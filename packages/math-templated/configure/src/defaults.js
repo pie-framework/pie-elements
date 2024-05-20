@@ -6,16 +6,6 @@ export default {
     teacherInstructionsEnabled: true,
     rationale: 'Rationale goes here',
     rationaleEnabled: true,
-    responses: [{
-      allowSpaces: true,
-      answer: '100',
-      id: '1',
-    },
-      {
-        allowSpaces: true,
-        answer: '120',
-        id: '2',
-      }],
     element: 'math-templated',
     equationEditor: '8',
   },

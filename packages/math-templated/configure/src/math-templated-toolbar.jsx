@@ -9,19 +9,9 @@ const findSlateNode = (key) => {
 
 export class MathTemplatedToolbar extends React.Component {
   static propTypes = {
-    correctChoice: PropTypes.object,
     classes: PropTypes.object,
     node: PropTypes.object,
-    onDone: PropTypes.func,
-    onChangeResponse: PropTypes.func.isRequired,
-    onToolbarDone: PropTypes.func.isRequired,
-    value: PropTypes.shape({
-      change: PropTypes.func.isRequired,
-      document: PropTypes.shape({
-        getNextText: PropTypes.func.isRequired,
-      }),
-    }),
-    maxLengthPerChoiceEnabled: PropTypes.bool,
+    onToolbarDone: PropTypes.func.isRequired
   };
 
   state = {
@@ -29,8 +19,8 @@ export class MathTemplatedToolbar extends React.Component {
   };
 
   componentDidMount() {
-    const { correctChoice, node } = this.props;
-    const choice = correctChoice || {};
+    const { node } = this.props;
+    const value = node.data.get('value');
 
     const domNode = findSlateNode(node.key);
 
@@ -43,7 +33,7 @@ export class MathTemplatedToolbar extends React.Component {
       const left = domNodeRect.left - editorRect.left;
 
       this.setState({
-        markup: choice.label,
+        markup: value,
         toolbarStyle: {
           position: 'absolute',
           top: `${top + domNodeRect.height + 20}px`,
@@ -54,26 +44,10 @@ export class MathTemplatedToolbar extends React.Component {
     }
   }
 
-  onDone = () => {
-    const { markup: newValue } = this.state;
-    const { node, value, onToolbarDone, onChangeResponse } = this.props;
-    const update = { ...node.data.toJSON(), value: newValue };
-    const change = value.change().setNodeByKey(node.key, { data: update });
-
-    const nextText = value.document.getNextText(node.key);
-
-    change.moveFocusTo(nextText.key, 0).moveAnchorTo(nextText.key, 0);
-
-    onToolbarDone(change, true);
-    onChangeResponse(newValue);
-  };
-
-  onChange = (e) => this.setState({ markup: e.target.value });
-
   render() {
-    const { classes, maxLengthPerChoiceEnabled } = this.props;
-    const { markup, toolbarStyle } = this.state;
-    const inputProps = maxLengthPerChoiceEnabled ? {} : { maxLength: 25 };
+    const { classes, node } = this.props;
+    const {  toolbarStyle } = this.state;
+    const value = node.data.get('value');
 
     return (
       <div
@@ -84,15 +58,13 @@ export class MathTemplatedToolbar extends React.Component {
       >
         <OutlinedInput
           style={{ width: '100%' }}
+          disabled={true}
           autoFocus
           labelWidth={0}
           classes={{
             input: classes.input,
           }}
-          onChange={this.onChange}
-          onBlur={this.onDone}
-          value={markup || ''}
-          inputProps={inputProps}
+          value={value}
         />
       </div>
     );

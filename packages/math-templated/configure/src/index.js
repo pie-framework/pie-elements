@@ -9,21 +9,36 @@ import {
   DeleteSoundEvent,
 } from '@pie-framework/pie-configure-events';
 import defaultValues from './defaults';
+import {createSlateMarkup, processMarkup} from './markupUtils';
 
 export default class MathTemplateConfigure extends HTMLElement {
-  static createDefaultModel = (model = {}) => ({
-    ...defaultValues.model,
-    ...model,
-  });
+  static createDefaultModel = (model = {}) => {
+    const joinedObj = {
+      ...defaultValues.model,
+      ...model,
+    };
+    const slateMarkup = joinedObj.slateMarkup || createSlateMarkup(joinedObj.markup);
+    const processedMarkup = processMarkup(slateMarkup);
+
+    return {
+      ...joinedObj,
+      slateMarkup,
+      markup: processedMarkup,
+    };
+  };
+
+
 
   constructor() {
     super();
     this._model = MathTemplateConfigure.createDefaultModel();
+
     this._configuration = defaultValues.configuration;
   }
 
   set model(m) {
     this._model = MathTemplateConfigure.createDefaultModel(m);
+
     this.render();
   }
 
@@ -38,6 +53,7 @@ export default class MathTemplateConfigure extends HTMLElement {
 
   modelChanged(m) {
     this._model = m;
+
     this.dispatchEvent(new ModelUpdatedEvent(this._model), true);
     this.render();
   }
@@ -65,6 +81,8 @@ export default class MathTemplateConfigure extends HTMLElement {
   }
 
   render() {
+    console.log(this._model.markup);
+    console.log(this._model.responses);
     if (this._model) {
       const el = React.createElement(Main, {
         model: this._model,

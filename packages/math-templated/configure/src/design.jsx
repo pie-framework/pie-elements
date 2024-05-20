@@ -13,12 +13,22 @@ import {
 } from '@pie-lib/pie-toolbox/editable-html';
 import { dropdown } from '@pie-lib/pie-toolbox/code/config-ui/settings';
 import Typography from '@material-ui/core/Typography';
-import { MathTemplatedToolbar } from './math-templated-toolbar';
+import MathTemplatedToolbar from './math-templated-toolbar';
 import Response from '@pie-element/math-inline-configure/src/response';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
+import {getAdjustedLength} from '@pie-element/explicit-constructed-response-configure/src/markupUtils';
+import {processMarkup} from './markupUtils';
 
 const { Panel, toggle } = settings;
+
+const createElementFromHTML = (htmlString) => {
+  const div = document.createElement('div');
+  div.innerHTML = htmlString.trim();
+
+  return div;
+};
+
 
 class Design extends React.Component {
   static propTypes = {
@@ -225,21 +235,11 @@ class Design extends React.Component {
           )}
           responseAreaProps={{
             type: 'explicit-constructed-response',
-            options: {
-              duplicates: true,
-            },
             respAreaToolbar: (node, value, onToolbarDone) => {
-              const { model } = this.props;
-              const correctChoice = (model.choices[node.data.get('index')] || [])[0];
-
               return () => (
                 <MathTemplatedToolbar
-                  onChangeResponse={(newVal) => {}}
                   node={node}
-                  value={value}
                   onToolbarDone={onToolbarDone}
-                  correctChoice={correctChoice}
-                  maxLengthPerChoiceEnabled={maxLengthPerChoiceEnabled}
                 />
               );
             },
@@ -248,7 +248,54 @@ class Design extends React.Component {
           }}
           className={classes.markup}
           markup={model.slateMarkup}
-          onChange={() => {}}
+          onChange={(markup) => {
+            const {
+              model: { responses },
+              onModelChanged,
+            } = this.props;
+            const newResponses = {};
+            console.log('markup', markup);
+            const domMarkup = createElementFromHTML(markup);
+            const allRespAreas = domMarkup.querySelectorAll('[data-type="explicit_constructed_response"]');
+
+            allRespAreas.forEach((el, idx) => {
+              const { value, index } = allRespAreas[idx].dataset;
+
+              if (!value) {
+                // Add a new response area
+                allRespAreas[idx].dataset.value = `Response Area ${index}`;
+              }
+
+              newResponses[index] = responses[index];
+
+              if (!newResponses[index]) {
+                newResponses[index] = {
+                  // tODO initialize with some customizable defaults
+                  "allowSpaces": true,
+                  "validation": "symbolic",
+                  "allowTrailingZeros": false,
+                  "ignoreOrder": false,
+                  "answer": "",
+                  "alternates": {},
+                }
+              }
+
+              el.dataset.index = index;
+            });
+
+            const processedMarkup = processMarkup(markup);
+            console.log({ newResponses, processedMarkup });
+
+            const callback = () =>
+                onModelChanged({
+                  ...this.props.model,
+                  slateMarkup: domMarkup.innerHTML,
+                  responses: newResponses,
+                  markup: processedMarkup
+                });
+
+            this.setState({ cachedChoices: undefined }, callback);
+          }}
           imageSupport={imageSupport}
           disableImageAlignmentButtons={true}
           onBlur={this.onBlur}
@@ -300,19 +347,23 @@ class Design extends React.Component {
           </Select>
         </InputContainer>
 
-        {responses.map((response, idx) => (
-          <Response
-            key={response.id}
-            mode={equationEditor}
-            response={response}
-            defaultResponse={true}
-            onResponseChange={this.onResponseChange}
-            index={idx}
-            cIgnoreOrder={true}
-            cAllowTrailingZeros={true}
-            error={responsesErrors && responsesErrors[idx]}
-          />
-        ))}
+        {Object.keys(responses || {}).map((responseKey,idx ) => {
+          const response = responses[responseKey];
+
+          return (
+              <Response
+                  key={responseKey}
+                  responseKey={responseKey}
+                  mode={equationEditor}
+                  response={response}
+                  onResponseChange={this.onResponseChange}
+                  index={idx}
+                  cIgnoreOrder={true}
+                  cAllowTrailingZeros={true}
+                  error={responsesErrors && responsesErrors[idx]}
+              />
+          );
+        })}
 
         {rationaleEnabled && (
           <InputContainer
