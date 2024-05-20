@@ -111,6 +111,7 @@ export class Main extends React.Component {
             title={title}
             toolbarTools={toolbarTools}
             language={language}
+            limitLabeling={true}
           />
         )}
 
