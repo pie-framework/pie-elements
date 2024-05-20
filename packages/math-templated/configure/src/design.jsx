@@ -17,6 +17,8 @@ import MathTemplatedToolbar from './math-templated-toolbar';
 import Response from '@pie-element/math-inline-configure/src/response';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
+import throttle from 'lodash/throttle';
+import pick from 'lodash/pick';
 
 const { Panel, toggle } = settings;
 
@@ -113,8 +115,90 @@ class Design extends React.Component {
         slateMarkup: domMarkup.innerHTML,
       });
 
-    this.setState({ cachedChoices: undefined }, callback);
+    this.setState({ cachedResponses: undefined }, callback);
   };
+
+  onHandleAreaChange = throttle(
+    (nodes) => {
+      const {
+        model: { responses },
+        onModelChanged,
+      } = this.props;
+      const { cachedResponses } = this.state;
+
+      if (!nodes) {
+        return;
+      }
+
+      const newChoices = responses ? cloneDeep(responses) : {};
+      const newCachedResponses = cachedResponses ? cloneDeep(cachedResponses) : {};
+
+      nodes.forEach((node) => {
+        const keyForNode = node.data.get('index');
+
+        if (!newChoices[keyForNode] && newCachedResponses[keyForNode]) {
+          Object.assign(newChoices, pick(newCachedResponses, keyForNode));
+
+          if (newCachedResponses.hasOwnProperty(keyForNode)) {
+            delete newCachedResponses[keyForNode];
+          }
+        } else {
+          Object.assign(newCachedResponses, pick(newChoices, keyForNode));
+
+          if (newChoices.hasOwnProperty(keyForNode)) {
+            delete newChoices[keyForNode];
+          }
+        }
+      });
+
+      const callback = () => onModelChanged({ ...this.props.model, responses: newChoices });
+
+      this.setState({ cachedResponses: newCachedResponses }, callback);
+    },
+    500,
+    { trailing: false, leading: true },
+  );
+
+  onBlur = (e) => {
+    const {relatedTarget, currentTarget} = e || {};
+
+    function getParentWithRoleTooltip(element, depth = 0) {
+      // only run this max 16 times
+      if (!element || depth >= 16) return null;
+
+      const parent = element.offsetParent;
+
+      if (!parent) return null;
+
+      if (parent.getAttribute('role') === 'tooltip') {
+        return parent;
+      }
+
+      return getParentWithRoleTooltip(parent, depth + 1);
+    }
+
+    function getDeepChildDataKeypad(element, depth = 0) {
+      // only run this max 4 times
+      if (!element || depth >= 4) return null;
+
+      const child = element?.children?.[0];
+
+      if (!child) return null;
+
+      if (child.attributes && child.attributes['data-keypad']) {
+        return child;
+      }
+
+      return getDeepChildDataKeypad(child, depth + 1);
+    }
+
+    const parentWithTooltipRole = getParentWithRoleTooltip(relatedTarget);
+    const childWithDataKeypad = parentWithTooltipRole ? getDeepChildDataKeypad(parentWithTooltipRole) : null;
+
+    if (!relatedTarget || !currentTarget || !childWithDataKeypad?.attributes['data-keypad']) {
+      this.setState({activeAnswerBlock: ''});
+    }
+  }
 
   render() {
     const {
@@ -142,6 +226,7 @@ class Design extends React.Component {
       maxImageHeight = {},
       mathMlOptions = {},
       template = {},
+      editSource = {},
     } = configuration || {};
 
     const {
@@ -176,6 +261,7 @@ class Design extends React.Component {
       promptEnabled: prompt.settings && toggle(prompt.label),
       spellCheckEnabled: spellCheck.settings && toggle(spellCheck.label),
       playerSpellCheckEnabled: playerSpellCheck.settings && toggle(playerSpellCheck.label),
+      'editSource.enabled': editSource?.settings && toggle(editSource.label, true),
     };
 
     const defaultImageMaxWidth = maxImageWidth && maxImageWidth.prompt;
@@ -189,6 +275,8 @@ class Design extends React.Component {
       ...baseInputConfiguration,
       ...props,
     });
+
+    console.log('response', responses);
 
     return (
       <layout.ConfigLayout
@@ -280,7 +368,7 @@ class Design extends React.Component {
           </InputContainer>
         )}
 
-        <Typography>Define Template</Typography>
+        <Typography className={classes.title}>Define Template</Typography>
 
         <EditableHtml
           activePlugins={ALL_PLUGINS}
@@ -311,12 +399,11 @@ class Design extends React.Component {
               );
             },
             error: () => choicesErrors,
-            onHandleAreaChange: () => {
-            },
+            onHandleAreaChange: this.onHandleAreaChange,
           }}
           className={classes.markup}
           markup={model.slateMarkup}
-          onChange={() => {}}
+          onChange={this.onChange}
           imageSupport={imageSupport}
           disableImageAlignmentButtons={true}
           onBlur={this.onBlur}
@@ -335,7 +422,7 @@ class Design extends React.Component {
           className={classes.flexContainer}
           style={{ justifyContent: 'flex-start' }}
         >
-          <Typography>Define Correct Responses</Typography>
+          <Typography className={classes.title}>Define Correct Responses</Typography>
         </div>
 
         <InputContainer
@@ -466,4 +553,8 @@ export default withStyles((theme) => ({
   select: {
     width: '100%',
   },
+  title: {
+    fontSize: theme.typography.fontSize * 1.25,
+    fontWeight: 'bold',
+  }
 }))(Design);
