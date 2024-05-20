@@ -69,19 +69,19 @@ class Design extends React.Component {
 
   onChangeResponse = (index, newVal) => {
     const { model, onModelChanged } = this.props;
-    const { reponses } = model;
+    const { responses } = model;
 
-    if (!reponses[index]) {
-      reponses[index] = [{ answer: newVal || '', id: '0', allowSpaces: true }];
+    if (!responses[index]) {
+      responses[index] = [{ answer: newVal || '', id: 'response' + index, allowSpaces: true }];
     } else {
-      reponses[index][0].answer = newVal || '';
+      responses[index][0].answer = newVal || '';
     }
 
-    onModelChanged({ ...model, reponses });
+    onModelChanged({ ...model, responses });
   };
 
-  onResponsesChanged = (choices) => {
-    this.props.onModelChanged({ ...this.props.model, choices });
+  onResponsesChanged = (responses) => {
+    this.props.onModelChanged({ ...this.props.model, responses });
   };
 
   onChange = (markup) => {
@@ -160,7 +160,7 @@ class Design extends React.Component {
   );
 
   onBlur = (e) => {
-    const {relatedTarget, currentTarget} = e || {};
+    const { relatedTarget, currentTarget } = e || {};
 
     function getParentWithRoleTooltip(element, depth = 0) {
       // only run this max 16 times
@@ -196,7 +196,7 @@ class Design extends React.Component {
     const childWithDataKeypad = parentWithTooltipRole ? getDeepChildDataKeypad(parentWithTooltipRole) : null;
 
     if (!relatedTarget || !currentTarget || !childWithDataKeypad?.attributes['data-keypad']) {
-      this.setState({activeAnswerBlock: ''});
+      this.setState({ activeAnswerBlock: '' });
     }
   }
 
@@ -231,7 +231,6 @@ class Design extends React.Component {
 
     const {
       errors,
-      maxLengthPerChoiceEnabled,
       promptEnabled,
       rationaleEnabled,
       spellCheckEnabled,
@@ -389,12 +388,11 @@ class Design extends React.Component {
 
               return () => (
                 <MathTemplatedToolbar
-                  onChangeResponse={() => {}}
+                  onChangeResponse={(newVal) => this.onChangeResponse(node.data.get('index'), newVal)}
                   node={node}
                   value={value}
                   onToolbarDone={onToolbarDone}
                   correctChoice={correctChoice}
-                  maxLengthPerChoiceEnabled={maxLengthPerChoiceEnabled}
                 />
               );
             },
