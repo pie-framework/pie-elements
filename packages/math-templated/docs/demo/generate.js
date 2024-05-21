@@ -3,7 +3,7 @@ exports.model = (id, element) => ({
   element,
   "rationale": "",
   "partialScoring": true,
-  "prompt": "",
+  "prompt": "Tst",
   "scoringType": "auto",
   "feedbackEnabled": false,
   "promptEnabled": true,
