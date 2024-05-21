@@ -13,8 +13,7 @@ import {
 } from '@pie-lib/pie-toolbox/editable-html';
 import { dropdown } from '@pie-lib/pie-toolbox/code/config-ui/settings';
 import Typography from '@material-ui/core/Typography';
-import MathTemplatedToolbar from './math-templated-toolbar';
-import Response from '@pie-element/math-inline-configure/src/response';
+import Response from './response';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import throttle from 'lodash/throttle';
@@ -91,16 +90,15 @@ class Design extends React.Component {
       onModelChanged,
     } = this.props;
     const newResponses = {};
-    console.log('markup', markup);
     const domMarkup = createElementFromHTML(markup);
-    const allRespAreas = domMarkup.querySelectorAll('[data-type="explicit_constructed_response"]');
+    const allRespAreas = domMarkup.querySelectorAll('[data-type="math_templated"]');
 
     allRespAreas.forEach((el, idx) => {
       const { value, index } = allRespAreas[idx].dataset;
 
       if (!value) {
         // Add a new response area
-        allRespAreas[idx].dataset.value = `Response Area ${index}`;
+        allRespAreas[idx].dataset.value = `R ${index}`;
       }
 
       newResponses[index] = responses[index];
@@ -291,7 +289,8 @@ class Design extends React.Component {
       ...props,
     });
 
-    console.log('response', responses);
+    console.log('markup', model.markup);
+    console.log('responses', model.responses);
 
     return (
       <layout.ConfigLayout
@@ -394,24 +393,8 @@ class Design extends React.Component {
             baseInputConfiguration
           )}
           responseAreaProps={{
-            type: 'explicit-constructed-response',
-            options: {
-              duplicates: true,
-            },
-            respAreaToolbar: (node, value, onToolbarDone) => {
-              const { model } = this.props;
-              const correctChoice = (model.responses[node.data.get('index')] || [])[0];
-
-              return () => (
-                <MathTemplatedToolbar
-                  onChangeResponse={(newVal) => this.onChangeResponse(node.data.get('index'), newVal)}
-                  node={node}
-                  value={value}
-                  onToolbarDone={onToolbarDone}
-                  correctChoice={correctChoice}
-                />
-              );
-            },
+            type: 'math-templated',
+            respAreaToolbar: null,
             error: () => choicesErrors,
             onHandleAreaChange: this.onHandleAreaChange,
           }}

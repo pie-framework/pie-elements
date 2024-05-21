@@ -1,20 +1,15 @@
 // Should be exactly the same as controller/defaults.js
 export default {
   model: {
-    markup: '<p>a is {{0}} <br> b is {{1}} <br> c is {{2}}</p>',
-    prompt: 'Question Prompt goes here',
+    markup: '',
+    prompt: '',
     promptEnabled: true,
     teacherInstructionsEnabled: true,
     rationale: 'Rationale goes here',
     rationaleEnabled: true,
     spellCheckEnabled: true,
     playerSpellCheckEnabled: true,
-    responses: {
-      0: [{ id: 'response0', allowSpaces: true, answer: '100' }, { id: 'response0', allowSpaces: true, answer: '120' }],
-      1: [{ id: 'response1', allowSpaces: true, answer: '200' }],
-      2: [{ id: 'response2', allowSpaces: true, answer: '250' }]
-
-    },
+    responses: {},
     element: 'math-templated',
     equationEditor: '8',
   },
