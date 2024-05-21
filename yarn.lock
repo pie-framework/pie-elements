@@ -2381,10 +2381,10 @@
     keycode "^2.2.0"
     lodash "^4.17.11"
 
-"@pie-lib/pie-toolbox@1.17.1":
-  version "1.17.1"
-  resolved "https://registry.yarnpkg.com/@pie-lib/pie-toolbox/-/pie-toolbox-1.17.1.tgz#8863c1e90661950ab21795d6e764065266da9907"
-  integrity sha512-mrh9Ns1vs1qVqPivujbTNTx8gI+X5RCSJd/MlLl4dWH9+zA5fONHUPL39w0RJl5UCdDc8uvYvP6C1q6uVW/ppw==
+"@pie-lib/pie-toolbox@1.17.5":
+  version "1.17.5"
+  resolved "https://registry.yarnpkg.com/@pie-lib/pie-toolbox/-/pie-toolbox-1.17.5.tgz#21ab6cbaa3109a657e147ccea2e9781ede38da8d"
+  integrity sha512-DshKgrraau+JnTnDnTe5JGUC1dtEQeKBrPDd0RJQasE36Rw2/6rEOeTWFFE+uxhuceiKqbOlGDhJ7BCTETZZRg==
   dependencies:
     "@mapbox/point-geometry" "^0.1.0"
     "@material-ui/core" "^3.8.3"
@@ -2449,10 +2449,10 @@
     trigonometry-calculator "^2.0.0"
     unist-util-inspect "^4.1.3"
 
-"@pie-lib/pie-toolbox@1.17.5":
-  version "1.17.5"
-  resolved "https://registry.yarnpkg.com/@pie-lib/pie-toolbox/-/pie-toolbox-1.17.5.tgz#21ab6cbaa3109a657e147ccea2e9781ede38da8d"
-  integrity sha512-DshKgrraau+JnTnDnTe5JGUC1dtEQeKBrPDd0RJQasE36Rw2/6rEOeTWFFE+uxhuceiKqbOlGDhJ7BCTETZZRg==
+"@pie-lib/pie-toolbox@1.18.0":
+  version "1.18.0"
+  resolved "https://registry.yarnpkg.com/@pie-lib/pie-toolbox/-/pie-toolbox-1.18.0.tgz#69ef5e56904d23ab640f7bbcaea94c22af78e079"
+  integrity sha512-eUbA0hAKqsBlULHQZQwZ034YLa2l/Ny05JObrQwMYvCYrOrjAa1zTC/CdhULzQMJM+Bed3478ry2EXjguidWXA==
   dependencies:
     "@mapbox/point-geometry" "^0.1.0"
     "@material-ui/core" "^3.8.3"
