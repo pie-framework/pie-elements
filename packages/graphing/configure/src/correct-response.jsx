@@ -259,14 +259,6 @@ export class CorrectResponse extends React.Component {
     if (index >= 0) {
       const updatedAnswers = this.filterMarks(tool);
       updatedToolbarTools.splice(index, 1);
-      // the author toggles off the Point tool, the Label tool should toggle off as well.
-      if(tool === 'point') {
-        const index = toolbarTools.findIndex((t) => 'label' === t);
-        if(index >= 0){
-          updatedToolbarTools.splice(index, 1);
-        }
-      }
-
       if (tool === defaultTool) {
         const toolbarToolsNoLabel = (updatedToolbarTools || []).filter((tool) => tool !== 'label');
         newDefaultTool = (toolbarToolsNoLabel.length && toolbarToolsNoLabel[0]) || '';
@@ -295,13 +287,6 @@ export class CorrectResponse extends React.Component {
       }
     } else {
       updatedToolbarTools.push(tool);
-      //  Point tool is not currently available, and the author toggles on the Label tool, the Point tool should toggle on as well.
-      if(tool === 'label') {
-        const index = toolbarTools.findIndex((t) => 'point' === t);
-        if(index < 0){
-          updatedToolbarTools.push('point');
-        }
-      }
 
       if (defaultTool === '' && tool !== 'label') {
         newDefaultTool = tool;
