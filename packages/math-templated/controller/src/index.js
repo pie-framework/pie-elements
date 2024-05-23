@@ -57,7 +57,68 @@ export const model = (question, session, env) => {
       env,
     };
 
-    resolve(out);
+    // I just pasted some math-input content for now, just dummy stuff here, and replaced expression with markup
+    // the plan is to stop using config, and send props directly
+    resolve({
+      "markup": "<p>{{1}} + {{2}} = {{3}}</p>",
+      "responseType": "Advanced Multi",
+      "element": "math-inline",
+      "equationEditor": 3,
+      "question": "",
+      "customKeys": [],
+      "feedbackEnabled": false,
+      "promptEnabled": true,
+      "rationaleEnabled": true,
+      "teacherInstructionsEnabled": true,
+      "studentInstructionsEnabled": true,
+      "partialScoring": true,
+      "rationale": null,
+      "prompt": "<p><strong>B.</strong> Find the value of the expression that you wrote in part A to find how much money the band members made.</p>\n\n<p>Use the on-screen keyboard to type your answer in the box below.</p>\n",
+      "scoringType": "auto",
+      "toolbarEditorPosition": "bottom",
+      "validationDefault": "literal",
+      "ignoreOrderDefault": false,
+      "allowTrailingZerosDefault": false,
+      "rubricEnabled": false,
+      "id": "1",
+      "responses": [],
+      "showNote": false,
+      "teacherInstructions": null,
+      "env": {
+        "mode": "gather"
+      },
+      config: {
+        "responseType": "Advanced Multi",
+        "element": "math-inline",
+        "equationEditor": 3,
+        "question": "",
+        "customKeys": [],
+        "feedbackEnabled": false,
+        "promptEnabled": true,
+        "rationaleEnabled": true,
+        "teacherInstructionsEnabled": true,
+        "studentInstructionsEnabled": true,
+        "partialScoring": true,
+        "rationale": null,
+        "prompt": "<p><strong>B.</strong> Find the value of the expression that you wrote in part A to find how much money the band members made.</p>\n\n<p>Use the on-screen keyboard to type your answer in the box below.</p>\n",
+        "scoringType": "auto",
+        "toolbarEditorPosition": "bottom",
+        "validationDefault": "literal",
+        "ignoreOrderDefault": false,
+        "allowTrailingZerosDefault": false,
+        "rubricEnabled": false,
+        "id": "1",
+        "responses": [],
+        "showNote": false,
+        "teacherInstructions": null,
+        "env": {
+          "mode": "gather"
+        },
+      },
+
+      "disabled": false,
+      "view": false,
+    });
   });
 };
 

@@ -5,7 +5,7 @@ import Main from './main';
 import { renderMath } from '@pie-lib/pie-toolbox/math-rendering-accessible';
 import debug from 'debug';
 
-const log = debug('pie-element:math-inline:print');
+const log = debug('pie-element:math-templated:print');
 
 /**
  * Live in same package as main element - so we can access some of the shared comps!
@@ -16,30 +16,10 @@ const log = debug('pie-element:math-inline:print');
  */
 
 const preparePrintModel = (model, opts) => {
-  const instr = opts.role === 'instructor';
-
-  model.prompt = model.promptEnabled !== false ? model.prompt : undefined;
-  model.teacherInstructions =
-    instr && model.teacherInstructionsEnabled !== false ? model.teacherInstructions : undefined;
-  model.rationale = instr && model.rationaleEnabled !== false ? model.rationale : undefined;
-  model.showTeacherInstructions = instr;
-  model.alwaysShowCorrect = instr;
-  model.printMode = true;
-  model.feedback = undefined;
-  model.expression = model.expression || '{{response}}';
-
-  model.animationsDisabled = true;
-  return {
-    ...model,
-    disabled: true,
-    config: {
-      ...model,
-      env: { mode: instr ? 'evaluate' : model.mode, role: opts.role },
-    },
-  };
+  return model;
 };
 
-export default class MathInlinePrint extends HTMLElement {
+export default class MathTemplatedPrint extends HTMLElement {
   constructor() {
     super();
     this._options = null;
