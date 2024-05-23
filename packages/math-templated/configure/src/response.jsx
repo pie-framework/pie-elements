@@ -19,7 +19,6 @@ class Response extends React.Component {
     defaultResponse: PropTypes.bool,
     error: PropTypes.object,
     mode: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    index: PropTypes.number,
     onResponseChange: PropTypes.func.isRequired,
     response: PropTypes.object.isRequired,
     cIgnoreOrder: PropTypes.object.isRequired,
@@ -47,52 +46,52 @@ class Response extends React.Component {
   }
 
   onChange = (name) => (evt) => {
-    const { response, onResponseChange, index } = this.props;
+    const { response, onResponseChange, responseKey } = this.props;
     const newResponse = { ...response };
 
     newResponse[name] = evt.target.value;
 
-    onResponseChange(newResponse, index);
+    onResponseChange(newResponse, responseKey);
   };
 
   onConfigChanged = (name) => (evt) => {
-    const { response, onResponseChange, index } = this.props;
+    const { response, onResponseChange, responseKey } = this.props;
     const newResponse = { ...response };
 
     newResponse[name] = evt.target.checked;
 
-    onResponseChange(newResponse, index);
+    onResponseChange(newResponse, responseKey);
   };
 
   onLiteralOptionsChange = (name) => () => {
-    const { response, onResponseChange, index } = this.props;
+    const { response, onResponseChange, responseKey } = this.props;
     const newResponse = { ...response };
 
     newResponse[name] = !response[name];
 
-    onResponseChange(newResponse, index);
+    onResponseChange(newResponse, responseKey);
   };
 
   onAnswerChange = (answer) => {
-    const { response, onResponseChange, index } = this.props;
+    const { response, onResponseChange, responseKey } = this.props;
     const newResponse = { ...response };
 
     newResponse.answer = answer;
 
-    onResponseChange(newResponse, index);
+    onResponseChange(newResponse, responseKey);
   };
 
   onAlternateAnswerChange = (alternateId) => (answer) => {
-    const { response, onResponseChange, index } = this.props;
+    const { response, onResponseChange, responseKey } = this.props;
     const newResponse = { ...response };
 
     newResponse.alternates[alternateId] = answer;
 
-    onResponseChange(newResponse, index);
+    onResponseChange(newResponse, responseKey);
   };
 
   onAddAlternate = () => {
-    const { response, onResponseChange, index } = this.props;
+    const { response, onResponseChange, responseKey } = this.props;
     const { alternateIdCounter } = this.state;
     const newResponse = { ...response };
 
@@ -102,7 +101,7 @@ class Response extends React.Component {
 
     newResponse.alternates[alternateIdCounter] = '';
 
-    onResponseChange(newResponse, index);
+    onResponseChange(newResponse, responseKey);
 
     this.setState({
       alternateIdCounter: alternateIdCounter + 1,
@@ -110,12 +109,12 @@ class Response extends React.Component {
   };
 
   onRemoveAlternate = (alternateId) => () => {
-    const { response, onResponseChange, index } = this.props;
+    const { response, onResponseChange, responseKey } = this.props;
     const newResponse = { ...response };
 
     delete newResponse.alternates[alternateId];
 
-    onResponseChange(newResponse, index);
+    onResponseChange(newResponse, responseKey);
 
     this.setState((state) => ({
       showKeypad: {
@@ -166,7 +165,7 @@ class Response extends React.Component {
   };
 
   render() {
-    const { classes, mode, defaultResponse, index, response, cAllowTrailingZeros, cIgnoreOrder, error } = this.props;
+    const { classes, mode, responseKey, response, cAllowTrailingZeros, cIgnoreOrder, error } = this.props;
 
     const { showKeypad } = this.state;
     const { validation, answer, alternates, ignoreOrder, allowTrailingZeros } = response;
@@ -184,7 +183,7 @@ class Response extends React.Component {
         <CardContent className={classes.cardContent}>
           <div className={classes.titleBar}>
             <Typography className={classes.title} component="div">
-              Response {INDIVIDUAL_RESPONSE_CORRECTNESS_SUPPORTED ? (defaultResponse ? '' : index + 1) : ''}
+              Response for <div className={classes.responseBox}>R {responseKey}</div>
             </Typography>
 
             <InputContainer label="Validation" className={classes.selectContainer}>
@@ -331,6 +330,14 @@ const styles = (theme) => ({
     color: theme.palette.error.main,
     paddingTop: theme.spacing.unit,
   },
+  responseBox: {
+    background: theme.palette.grey['A100'],
+    color: theme.palette.grey['A700'],
+    display: 'inline',
+    minWidth: '50px',
+    padding: '8px',
+    border: '1px solid #C0C3CF',
+  }
 });
 
 export default withStyles(styles)(Response);

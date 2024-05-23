@@ -27,7 +27,7 @@ export const processMarkup = (markup) => {
   // let index = 0;
 
   // TODO defined data-type "math-templated" in editable-html and use it
-  slateMarkup.querySelectorAll('[data-type="explicit_constructed_response"]').forEach((s) => {
+  slateMarkup.querySelectorAll('[data-type="math_templated"]').forEach((s) => {
     s.replaceWith(`{{${s.dataset.index}}}`);
   });
 
@@ -45,6 +45,6 @@ export const createSlateMarkup = (markup) => {
 
   return newMarkup.replace(REGEX, (match, g) => {
     // TODO defined data-type "math-templated" in editable-html and use it
-    return `<span data-type="explicit_constructed_response" data-index="${g}" data-value="Response Area ${g}"></span>`;
+    return `<span data-type="math_templated" data-index="${g}" data-value="R ${g}"></span>`;
   });
 };
