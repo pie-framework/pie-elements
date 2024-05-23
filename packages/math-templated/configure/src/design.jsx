@@ -241,6 +241,8 @@ class Design extends React.Component {
       mathMlOptions = {},
       template = {},
       editSource = {},
+      ignoreOrder: cIgnoreOrder = {},
+      allowTrailingZeros: cAllowTrailingZeros = {},
     } = configuration || {};
 
     const {
@@ -463,8 +465,8 @@ class Design extends React.Component {
               response={response}
               onResponseChange={this.onResponseChange}
               index={idx}
-              cIgnoreOrder={true}
-              cAllowTrailingZeros={true}
+              cIgnoreOrder={cIgnoreOrder}
+              cAllowTrailingZeros={cAllowTrailingZeros}
               error={responsesErrors && responsesErrors[idx]}
             />
           );
