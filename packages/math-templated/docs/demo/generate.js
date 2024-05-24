@@ -19,7 +19,7 @@ exports.model = (id, element) => ({
   "customKeys": [], // these have effect on player only?
   "equationEditor": "geometry",
 
-  "markup": "<p>{{0}} + {{1}} = {{2}}</p>",
+  "markup": "<p>{{0}} + {{1}} = {{2}}<span data-latex=\"\" data-raw=\"\\theta\">\\theta</span></p>",
   "responses": {
     "0": {
       "allowSpaces": true,

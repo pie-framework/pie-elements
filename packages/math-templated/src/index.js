@@ -36,6 +36,7 @@ export default class MathTemplated extends HTMLElement {
   onSessionChange(session) {
     // you can add an extra step here to validate session
     this._session = session;
+    console.log('onSessionChange', session);
 
     this.dispatchEvent(new SessionChangedEvent(this.tagName.toLowerCase(), this.isSessionComplete()));
   }
@@ -74,22 +75,6 @@ export default class MathTemplated extends HTMLElement {
     //   "rationale": null,
     //   "teacherInstructions": null
     // };
-    this._session = {
-      "id": "1",
-      "element": "math-templated",
-      "answers": {
-        "r0": {
-          "value": "2"
-        },
-        "r1": {
-          "value": "5"
-        },
-        "r2": {
-          "value": "6"
-        }
-      },
-      "completeAnswer": "\\$2+5=6"
-    };
 
     if (this._model && this._session) {
       const el = React.createElement(Main, {
