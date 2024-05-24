@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.11.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-configure@6.11.6...@pie-element/explicit-constructed-response-configure@6.11.7) (2024-05-24)
+
+
+### Bug Fixes
+
+* **explicit-constructed-response:** update default values and cleanup PD-3544 ([1043774](https://github.com/pie-framework/pie-elements/commit/1043774a10cfff36b868c6ee0179610259ca0850))
+
+
+
+
+
 ## [6.11.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-configure@6.11.5...@pie-element/explicit-constructed-response-configure@6.11.6) (2024-05-14)
 
 
