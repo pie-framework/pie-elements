@@ -55,10 +55,9 @@ export const model = (question, session, env) => {
     const out = {
       prompt: normalizedQuestion.promptEnabled ? normalizedQuestion.prompt : null,
       markup: normalizedQuestion.markup,
-      // TODO I guess these shouldn't be sent in gather mode
-      responses: normalizedQuestion.responses,
+      responses: env.mode ==='gather' ? null : normalizedQuestion.responses,
       language: normalizedQuestion.language,
-      // there's no functionality for this as I don't know how this is supposed to work
+      // todo I don't know how this is supposed to work
       // note: '',
       env,
 
@@ -67,10 +66,12 @@ export const model = (question, session, env) => {
       disabled: env.mode !== 'gather',
       view: env.mode === 'view',
 
+      // todo
       // feedback
     //   correctness
     };
 
+    // todo
     // if (env.mode === 'evaluate') {
     //   out.correctResponse = {};
     //   out.config.showNote = showNote;
@@ -90,8 +91,6 @@ export const model = (question, session, env) => {
       out.teacherInstructions = null;
     }
 
-    // I just pasted some math-input content for now, just dummy stuff here, and replaced expression with markup
-    // the plan is to stop using config, and send props directly
     resolve(out);
   });
 };
