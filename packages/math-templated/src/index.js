@@ -78,13 +78,13 @@ export default class MathTemplated extends HTMLElement {
       "id": "1",
       "element": "math-templated",
       "answers": {
-        "r1": {
+        "r0": {
           "value": "2"
         },
-        "r2": {
+        "r1": {
           "value": "5"
         },
-        "r3": {
+        "r2": {
           "value": "6"
         }
       },

@@ -1,9 +1,9 @@
 exports.model = (id, element) => ({
   id,
   element,
-  "rationale": "",
+  "rationale": "Rationale",
   "partialScoring": true,
-  "prompt": "",
+  "prompt": "Prompt",
   "scoringType": "auto",
   "feedbackEnabled": false,
   "promptEnabled": true,
@@ -14,9 +14,8 @@ exports.model = (id, element) => ({
   "validationDefault": "literal",
   "ignoreOrderDefault": false,
   "allowTrailingZerosDefault": false,
-  "teacherInstructions": "",
+  "teacherInstructions": "TeacherInstructions",
 
-  "responseType": "Advanced Multi",
   "customKeys": [], // these have effect on player only?
   "equationEditor": "geometry",
 

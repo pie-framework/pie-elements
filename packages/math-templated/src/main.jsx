@@ -6,10 +6,8 @@ import {Feedback, Collapsible, Readable, hasText, PreviewPrompt} from '@pie-lib/
 import {renderMath} from '@pie-lib/pie-toolbox/math-rendering-accessible';
 import {withStyles} from '@material-ui/core/styles';
 import Tooltip from '@material-ui/core/Tooltip';
-import {ResponseTypes} from './utils';
 import isEqual from 'lodash/isEqual';
 import cx from 'classnames';
-import SimpleQuestionBlock from './simple-question-block';
 import MathQuill from '@pie-framework/mathquill';
 import {color} from '@pie-lib/pie-toolbox/render-ui';
 import isEmpty from 'lodash/isEmpty';
@@ -44,12 +42,13 @@ function getKeyPadWidth(additionalKeys = [], equationEditor) {
 }
 
 function prepareForStatic(model, state) {
-    const {responses, printMode, alwaysShowCorrect, disabled, markup} = model || {};
+    const {responses, disabled, markup} = model || {};
 
     if (markup) {
         const modelExpression = markup;
 
         if (state.showCorrect) {
+            // tODO
             return responses && responses.length && responses[0].answer;
         }
 
@@ -58,12 +57,6 @@ function prepareForStatic(model, state) {
             .replace(REGEX, function (response) {
                 const responseKey = Main.getResponseKey(response);
                 const answer = state.session.answers[`r${responseKey}`];
-
-                if (printMode && !alwaysShowCorrect) {
-                    const blankSpace = '\\ \\ '.repeat(30) + '\\newline ';
-
-                    return `\\MathQuillMathField[r${responseKey}]{${blankSpace.repeat(3)}}`;
-                }
 
                 if (disabled) {
                     return `\\embed{answerBlock}[r${responseKey}]`;
@@ -186,25 +179,14 @@ export class Main extends React.Component {
 
 
     UNSAFE_componentWillReceiveProps(nextProps) {
-        const {config, markup} = this.props.model;
-        const {config: nextConfig = {}, markup: nextMarkup} = nextProps.model || {};
-        // check if the note is the default one for prev language and change to the default one for new language
-        // this check is necessary in order to diferanciate between default and authour defined note
-        // and only change between languages for default ones
-        if (
-            config.note &&
-            config.language &&
-            config.language !== nextConfig.language &&
-            config.note === translator.t('mathInline.primaryCorrectWithAlternates', {lng: config.language})
-        ) {
-            config.note = translator.t('mathInline.primaryCorrectWithAlternates', {lng: nextConfig.language});
-        }
+        const {env, responses, markup} = this.props.model;
+        const {markup: nextMarkup, env: nextEnv, alwaysShowCorrect, responses: nextResponses } = nextProps.model || {};
 
-        if ((config.env && config.env.mode !== 'evaluate') || (nextConfig.env && nextConfig.env.mode !== 'evaluate')) {
+        if ((env && env.mode !== 'evaluate') || (nextEnv && nextEnv.mode !== 'evaluate')) {
             this.setState({...this.state.session, showCorrect: false});
         }
 
-        if (nextConfig.alwaysShowCorrect) {
+        if (alwaysShowCorrect) {
             this.setState({showCorrect: true});
         }
 
@@ -213,9 +195,9 @@ export class Main extends React.Component {
         }
 
         if (
-            (config && config.responses && config.responses.length !== nextConfig.responses.length) ||
-            (!config && nextConfig && nextConfig.responses) ||
-            (config && nextConfig && markup !== nextMarkup)
+            (responses && Object.keys(responses || {}).length !== Object.keys(nextResponses || {}).length) ||
+            (isEmpty(responses) && !isEmpty(nextResponses)) ||
+            (markup !== nextMarkup)
         ) {
             const newAnswers = {};
             const answers = this.state.session.answers;
@@ -434,7 +416,6 @@ export class Main extends React.Component {
         const {model, classes} = this.props;
         const {activeAnswerBlock, showCorrect, session} = this.state;
         const {
-            config,
             correctness,
             disabled,
             view,
@@ -442,26 +423,14 @@ export class Main extends React.Component {
             rationale,
             feedback,
             animationsDisabled,
-            printMode,
-            alwaysShowCorrect,
             language,
-        } = model || {};
-
-        if (!config) {
-            return null;
-        }
-
-        const {
-            showNote,
-            note,
             prompt,
             responses,
-            responseType,
             equationEditor,
             customKeys,
-            env: {mode, role} = {},
-        } = config || {};
-        const displayNote = (showCorrect || (mode === 'view' && role === 'instructor')) && showNote && note;
+            env: {mode} = {},
+        } = model || {};
+
         const emptyResponse = isEmpty(responses);
         const showCorrectAnswerToggle = !emptyResponse && correctness && correctness.correctness !== 'correct';
         const tooltipModeEnabled = disabled && correctness;
@@ -469,27 +438,6 @@ export class Main extends React.Component {
         const correct = correctness && correctness.correct;
         const staticLatex = prepareForStatic(model, this.state) || '';
         const viewMode = disabled && !correctness;
-        const studentPrintMode = printMode && !alwaysShowCorrect;
-
-        const printView = (
-            <div className={classes.printContainer}>
-                <mq.Static
-                    className={classes.static}
-                    ref={(mqStatic) => (this.mqStatic = mqStatic || this.mqStatic)}
-                    latex={staticLatex}
-                    onSubFieldChange={() => {
-                    }}
-                    getFieldName={() => {
-                    }}
-                    setInput={() => {
-                    }}
-                    onSubFieldFocus={() => {
-                    }}
-                    onBlur={() => {
-                    }}
-                />
-            </div>
-        );
 
         const midContent = (
             <div className={classes.main}>
@@ -515,83 +463,61 @@ export class Main extends React.Component {
                     </div>
                 )}
 
-                {studentPrintMode ? (
-                    printView
-                ) : (
-                    <Readable false>
-                        <div className={classes.inputAndKeypadContainer}>
-                            {responseType === ResponseTypes.simple && (
-                                <SimpleQuestionBlock
-                                    onSimpleResponseChange={this.onSimpleResponseChange}
-                                    showCorrect={showCorrect}
-                                    emptyResponse={emptyResponse}
-                                    model={model}
-                                    session={session}
+                <Readable false>
+                    <div className={classes.inputAndKeypadContainer}>
+                        <div
+                            className={cx(classes.expression, {
+                                [classes.incorrect]: !emptyResponse && !correct && !showCorrect,
+                                [classes.correct]: !emptyResponse && (correct || showCorrect),
+                                [classes.showCorrectness]: !emptyResponse && disabled && correctness && !view,
+                                [classes.correctAnswerShown]: showCorrect,
+                            })}
+                        >
+                            <Tooltip
+                                ref={(ref) => this.setTooltipRef(ref)}
+                                enterTouchDelay={0}
+                                interactive
+                                open={!!activeAnswerBlock}
+                                classes={{
+                                    tooltip: classes.keypadTooltip,
+                                    popper: classes.keypadTooltipPopper,
+                                }}
+                                title={Object.keys(session.answers).map(
+                                    (answerId) =>
+                                        (answerId === activeAnswerBlock && !(showCorrect || disabled) && (
+                                            <div
+                                                data-keypad={true}
+                                                key={answerId}
+                                                className={classes.responseContainer}
+                                                style={{
+                                                    // marginTop: this.mqStatic && this.mqStatic.input.offsetHeight - 20,
+                                                    width: getKeyPadWidth(additionalKeys, equationEditor),
+                                                }}
+                                            >
+                                                <HorizontalKeypad
+                                                    additionalKeys={additionalKeys}
+                                                    mode={equationEditor || DEFAULT_KEYPAD_VARIANT}
+                                                    onClick={this.onClick}
+                                                />
+                                            </div>
+                                        )) ||
+                                        null,
+                                )}
+                            >
+                                <mq.Static
+                                    className={classes.static}
+                                    ref={(mqStatic) => (this.mqStatic = mqStatic || this.mqStatic)}
+                                    latex={staticLatex}
+                                    onSubFieldChange={this.subFieldChanged}
+                                    getFieldName={this.getFieldName}
+                                    setInput={this.setInput}
+                                    onSubFieldFocus={this.onSubFieldFocus}
+                                    onBlur={this.onBlur}
                                 />
-                            )}
-
-                            {responseType === ResponseTypes.advanced && (
-                                <div
-                                    className={cx(classes.expression, {
-                                        [classes.incorrect]: !emptyResponse && !correct && !showCorrect,
-                                        [classes.correct]: !emptyResponse && (correct || showCorrect),
-                                        [classes.showCorrectness]: !emptyResponse && disabled && correctness && !view,
-                                        [classes.correctAnswerShown]: showCorrect,
-                                        [classes.printCorrect]: printMode && alwaysShowCorrect,
-                                    })}
-                                >
-                                    <Tooltip
-                                        ref={(ref) => this.setTooltipRef(ref)}
-                                        enterTouchDelay={0}
-                                        interactive
-                                        open={!!activeAnswerBlock}
-                                        classes={{
-                                            tooltip: classes.keypadTooltip,
-                                            popper: classes.keypadTooltipPopper,
-                                        }}
-                                        title={Object.keys(session.answers).map(
-                                            (answerId) =>
-                                                (answerId === activeAnswerBlock && !(showCorrect || disabled) && (
-                                                    <div
-                                                        data-keypad={true}
-                                                        key={answerId}
-                                                        className={classes.responseContainer}
-                                                        style={{
-                                                            // marginTop: this.mqStatic && this.mqStatic.input.offsetHeight - 20,
-                                                            width: getKeyPadWidth(additionalKeys, equationEditor),
-                                                        }}
-                                                    >
-                                                        <HorizontalKeypad
-                                                            additionalKeys={additionalKeys}
-                                                            mode={equationEditor || DEFAULT_KEYPAD_VARIANT}
-                                                            onClick={this.onClick}
-                                                        />
-                                                    </div>
-                                                )) ||
-                                                null,
-                                        )}
-                                    >
-                                        <mq.Static
-                                            className={classes.static}
-                                            ref={(mqStatic) => (this.mqStatic = mqStatic || this.mqStatic)}
-                                            latex={staticLatex}
-                                            onSubFieldChange={this.subFieldChanged}
-                                            getFieldName={this.getFieldName}
-                                            setInput={this.setInput}
-                                            onSubFieldFocus={this.onSubFieldFocus}
-                                            onBlur={this.onBlur}
-                                        />
-                                    </Tooltip>
-                                </div>
-                            )}
+                            </Tooltip>
                         </div>
-                    </Readable>
-                )}
-
-                {viewMode && displayNote && (
-                    <div className={classes.note} dangerouslySetInnerHTML={{__html: `<strong>Note:</strong> ${note}`}}/>
-                )}
-
+                    </div>
+                </Readable>
                 {viewMode &&
                     rationale &&
                     hasText(rationale) &&
@@ -644,18 +570,6 @@ export class Main extends React.Component {
                                     }}
                                 >
                                     <PreviewPrompt prompt={teacherInstructions}/>
-                                </Collapsible>
-                            )}
-                            {displayNote && hasText(note) && (
-                                <Collapsible
-                                    className={classes.collapsible}
-                                    key="collapsible-note"
-                                    labels={{
-                                        hidden: translator.t('common:showNote', {lng: language}),
-                                        visible: translator.t('common:hideNote', {lng: language}),
-                                    }}
-                                >
-                                    <PreviewPrompt prompt={note}/>
                                 </Collapsible>
                             )}
 
@@ -739,9 +653,6 @@ const styles = (theme) => ({
         marginTop: theme.spacing.unit * 2,
         marginBottom: theme.spacing.unit,
     },
-    note: {
-        paddingBottom: theme.spacing.unit * 2,
-    },
     collapsible: {
         marginBottom: theme.spacing.unit * 2,
     },
@@ -824,9 +735,6 @@ const styles = (theme) => ({
         padding: theme.spacing.unit,
         letterSpacing: '0.5px',
     },
-    printCorrect: {
-        border: `2px solid ${color.correct()} !important`,
-    },
     correct: {
         borderColor: `${color.correct()} !important`,
     },
@@ -868,10 +776,6 @@ const styles = (theme) => ({
                 },
             },
         },
-    },
-    printContainer: {
-        marginBottom: theme.spacing.unit,
-        pointerEvents: 'none',
     },
     srOnly: {
         position: 'absolute',

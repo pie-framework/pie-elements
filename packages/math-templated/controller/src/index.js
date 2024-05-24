@@ -54,71 +54,45 @@ export const model = (question, session, env) => {
 
     const out = {
       prompt: normalizedQuestion.promptEnabled ? normalizedQuestion.prompt : null,
+      markup: normalizedQuestion.markup,
+      // TODO I guess these shouldn't be sent in gather mode
+      responses: normalizedQuestion.responses,
+      language: normalizedQuestion.language,
+      // there's no functionality for this as I don't know how this is supposed to work
+      // note: '',
       env,
+
+      equationEditor: normalizedQuestion.equationEditor,
+      customKeys: normalizedQuestion.customKeys,
+      disabled: env.mode !== 'gather',
+      view: env.mode === 'view',
+
+      // feedback
+    //   correctness
     };
+
+    // if (env.mode === 'evaluate') {
+    //   out.correctResponse = {};
+    //   out.config.showNote = showNote;
+    //   out.config.note = note;
+    // } else {
+    //   out.config.responses = [];
+    //   out.config.showNote = false;
+    // }
+
+    if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
+      out.rationale = normalizedQuestion.rationaleEnabled ? normalizedQuestion.rationale : null;
+      out.teacherInstructions = normalizedQuestion.teacherInstructionsEnabled
+          ? normalizedQuestion.teacherInstructions
+          : null;
+    } else {
+      out.rationale = null;
+      out.teacherInstructions = null;
+    }
 
     // I just pasted some math-input content for now, just dummy stuff here, and replaced expression with markup
     // the plan is to stop using config, and send props directly
-    resolve({
-      "markup": "<p>{{1}} + {{2}} = {{3}}</p>",
-      "responseType": "Advanced Multi",
-      "element": "math-inline",
-      "equationEditor": 3,
-      "question": "",
-      "customKeys": [],
-      "feedbackEnabled": false,
-      "promptEnabled": true,
-      "rationaleEnabled": true,
-      "teacherInstructionsEnabled": true,
-      "studentInstructionsEnabled": true,
-      "partialScoring": true,
-      "rationale": null,
-      "prompt": "<p><strong>B.</strong> Find the value of the expression that you wrote in part A to find how much money the band members made.</p>\n\n<p>Use the on-screen keyboard to type your answer in the box below.</p>\n",
-      "scoringType": "auto",
-      "toolbarEditorPosition": "bottom",
-      "validationDefault": "literal",
-      "ignoreOrderDefault": false,
-      "allowTrailingZerosDefault": false,
-      "rubricEnabled": false,
-      "id": "1",
-      "responses": [],
-      "showNote": false,
-      "teacherInstructions": null,
-      "env": {
-        "mode": "gather"
-      },
-      config: {
-        "responseType": "Advanced Multi",
-        "element": "math-inline",
-        "equationEditor": 3,
-        "question": "",
-        "customKeys": [],
-        "feedbackEnabled": false,
-        "promptEnabled": true,
-        "rationaleEnabled": true,
-        "teacherInstructionsEnabled": true,
-        "studentInstructionsEnabled": true,
-        "partialScoring": true,
-        "rationale": null,
-        "prompt": "<p><strong>B.</strong> Find the value of the expression that you wrote in part A to find how much money the band members made.</p>\n\n<p>Use the on-screen keyboard to type your answer in the box below.</p>\n",
-        "scoringType": "auto",
-        "toolbarEditorPosition": "bottom",
-        "validationDefault": "literal",
-        "ignoreOrderDefault": false,
-        "allowTrailingZerosDefault": false,
-        "rubricEnabled": false,
-        "id": "1",
-        "responses": [],
-        "showNote": false,
-        "teacherInstructions": null,
-        "env": {
-          "mode": "gather"
-        },
-      },
-
-      "disabled": false,
-      "view": false,
-    });
+    resolve(out);
   });
 };
 
