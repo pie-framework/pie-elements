@@ -54,8 +54,42 @@ export const model = (question, session, env) => {
 
     const out = {
       prompt: normalizedQuestion.promptEnabled ? normalizedQuestion.prompt : null,
+      markup: normalizedQuestion.markup,
+      responses: env.mode ==='gather' ? null : normalizedQuestion.responses,
+      language: normalizedQuestion.language,
+      // todo I don't know how this is supposed to work
+      // note: '',
       env,
+
+      equationEditor: normalizedQuestion.equationEditor,
+      customKeys: normalizedQuestion.customKeys,
+      disabled: env.mode !== 'gather',
+      view: env.mode === 'view',
+
+      // todo
+      // feedback
+    //   correctness
     };
+
+    // todo
+    // if (env.mode === 'evaluate') {
+    //   out.correctResponse = {};
+    //   out.config.showNote = showNote;
+    //   out.config.note = note;
+    // } else {
+    //   out.config.responses = [];
+    //   out.config.showNote = false;
+    // }
+
+    if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
+      out.rationale = normalizedQuestion.rationaleEnabled ? normalizedQuestion.rationale : null;
+      out.teacherInstructions = normalizedQuestion.teacherInstructionsEnabled
+          ? normalizedQuestion.teacherInstructions
+          : null;
+    } else {
+      out.rationale = null;
+      out.teacherInstructions = null;
+    }
 
     resolve(out);
   });

@@ -36,6 +36,7 @@ export default class MathTemplated extends HTMLElement {
   onSessionChange(session) {
     // you can add an extra step here to validate session
     this._session = session;
+    console.log('onSessionChange', session);
 
     this.dispatchEvent(new SessionChangedEvent(this.tagName.toLowerCase(), this.isSessionComplete()));
   }
@@ -45,6 +46,36 @@ export default class MathTemplated extends HTMLElement {
   }
 
   render() {
+    // this._model = {
+    //   "config": {
+    //     "responses": [
+    //       {
+    //         "allowSpaces": true,
+    //         "answer": "1+2=3",
+    //         "id": "1",
+    //         "validation": "literal",
+    //         "allowTrailingZeros": false,
+    //         "ignoreOrder": false
+    //       }
+    //     ],
+    //     "showNote": false,
+    //     "note": "Note: The answer shown above is the primary correct answer specified by the author for this item, but other answers may also be recognized as correct.",
+    //     "env": {
+    //       "mode": "evaluate"
+    //     }
+    //   },
+    //   "correctness": {
+    //     "correctness": "incorrect",
+    //     "score": "0%",
+    //     "correct": false
+    //   },
+    //   "disabled": true,
+    //   "view": false,
+    //   "correctResponse": {},
+    //   "rationale": null,
+    //   "teacherInstructions": null
+    // };
+
     if (this._model && this._session) {
       const el = React.createElement(Main, {
         model: this._model,

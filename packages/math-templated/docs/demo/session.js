@@ -1,6 +1,17 @@
 module.exports = [
   {
-    id: '1',
-    element: 'math-templated'
+    "id": "1",
+    "element": "math-templated",
+    "answers": {
+      "r0": {
+        "value": "2"
+      },
+      "r1": {
+        "value": "5"
+      },
+      "r2": {
+        "value": "6"
+      }
+    }
   },
 ];
