@@ -1,64 +1,18 @@
 export default {
   model: {
-    disabled: false,
-    mode: 'gather',
-    prompt: 'Use the inputs to complete the sentence',
-    shuffle: true,
-    markup: '<p>The {{0}} jumped {{1}} the {{2}}</p>',
-    toolbarEditorPosition: 'bottom',
+    choices: {},
     displayType: 'block',
-    spellCheckEnabled: true,
-    playerSpellCheckEnabled: true,
-    choices: {
-      0: [
-        {
-          label: 'cow',
-          value: '0',
-        },
-        {
-          label: 'cattle',
-          value: '1',
-        },
-        {
-          label: 'calf',
-          value: '2',
-          correct: false,
-        },
-      ],
-      1: [
-        {
-          label: 'over',
-          value: '0',
-        },
-        {
-          label: 'past',
-          value: '1',
-        },
-        {
-          label: 'beyond',
-          value: '2',
-        },
-      ],
-      2: [
-        {
-          label: 'moon',
-          value: '0',
-        },
-        {
-          label: 'satellite',
-          value: '2',
-        },
-        {
-          label: 'house ',
-          value: '3',
-        },
-      ],
-    },
+    markup: '',
     maxLengthPerChoiceEnabled: true,
-    rationaleEnabled: true,
+    playerSpellCheckEnabled: true,
+    prompt: '',
     promptEnabled: true,
-    teacherInstructionsEnabled: true,
+    rationale: '',
+    rationaleEnabled: true,
+    spellCheckEnabled: true,
     studentInstructionsEnabled: true,
+    teacherInstructionsEnabled: true,
+    toolbarEditorPosition: 'bottom',
   },
   configuration: {
     baseInputConfiguration: {

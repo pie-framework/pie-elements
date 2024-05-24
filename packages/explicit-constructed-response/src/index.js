@@ -33,24 +33,24 @@ export default class InlineDropdown extends HTMLElement {
   _render = () => {
     if (this._model && this._session) {
       let elem = React.createElement(Main, {
-        teacherInstructions: this._model.teacherInstructions,
-        prompt: this._model.prompt,
-        note: this._model.note,
-        showNote: this._model.showNote,
-        env: this._model.env,
-        rationale: this._model.rationale,
-        disabled: this._model.disabled,
         choices: this._model.choices,
+        disabled: this._model.disabled,
+        displayType: this._model.displayType,
+        feedback: this._model.feedback,
+        language: this._model.language,
         markup: this._model.markup,
-        mode: this._model.mode,
         maxLengthPerChoice: this._model.maxLengthPerChoice,
         maxLengthPerChoiceEnabled: this._model.maxLengthPerChoiceEnabled,
-        playerSpellCheckEnabled: this._model.playerSpellCheckEnabled,
-        value: this._session.value,
-        feedback: this._model.feedback,
-        displayType: this._model.displayType,
-        language: this._model.language,
+        mode: this._model.mode,
+        note: this._model.note,
         onChange: this.changeSession,
+        playerSpellCheckEnabled: this._model.playerSpellCheckEnabled,
+        prompt: this._model.prompt,
+        rationale: this._model.rationale,
+        role: this._model.role,
+        showNote: this._model.showNote,
+        teacherInstructions: this._model.teacherInstructions,
+        value: this._session.value,
       });
 
       ReactDOM.render(elem, this, () => {

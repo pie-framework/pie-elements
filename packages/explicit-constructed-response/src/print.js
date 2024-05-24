@@ -8,16 +8,14 @@ import debug from 'debug';
 const log = debug('pie-element:explicit-constructed-response:print');
 
 const preparePrintModel = (model, opts) => {
-  const instr = opts.role === 'instructor';
+  const isInstructor = opts.role === 'instructor';
 
   model.prompt = model.promptEnabled !== false ? model.prompt : undefined;
   model.teacherInstructions =
-    instr && model.teacherInstructionsEnabled !== false ? model.teacherInstructions : undefined;
-  model.rationale = instr && model.rationaleEnabled !== false ? model.rationale : undefined;
-
-  model.alwaysShowCorrect = instr;
-  model.mode = instr ? 'evaluate' : model.mode;
-
+    isInstructor && model.teacherInstructionsEnabled !== false ? model.teacherInstructions : undefined;
+  model.rationale = isInstructor && model.rationaleEnabled !== false ? model.rationale : undefined;
+  model.alwaysShowCorrect = isInstructor;
+  model.mode = isInstructor ? 'evaluate' : model.mode;
   model.disabled = true;
   model.animationsDisabled = true;
 
@@ -30,6 +28,7 @@ export default class ExplicitConstructedResponsePrint extends HTMLElement {
     this._options = null;
     this._model = null;
     this._session = [];
+
     this._rerender = debounce(
       () => {
         if (this._model && this._session) {
@@ -54,6 +53,7 @@ export default class ExplicitConstructedResponsePrint extends HTMLElement {
       { leading: false, trailing: true },
     );
   }
+
   set options(o) {
     this._options = o;
   }

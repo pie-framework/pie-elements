@@ -1,5 +1,7 @@
 import { model, getScore, outcome, prepareVal, createCorrectResponseSession, prepareChoice } from '../index';
 
+import defaults from '../defaults';
+
 jest.mock('@pie-lib/pie-toolbox/controller-utils', () => ({
   getShuffledChoices: (choices, session, updateSession, key) => {
     const currentShuffled = ((session || {}).shuffledValues || []).filter((v) => v);
@@ -98,11 +100,10 @@ describe('controller', () => {
         expect(result).toEqual({
           ...question,
           disabled: false,
-          mode: 'gather',
           feedback: {},
           responseCorrect: undefined,
           maxLengthPerChoice: [10, 10, 7],
-          env,
+          ...env,
           ...expected,
         });
       });
@@ -113,9 +114,9 @@ describe('controller', () => {
       {},
       {},
       {
-        rationale: null,
+        rationale: defaults.rationale,
         showNote: true,
-        teacherInstructions: null,
+        teacherInstructions: defaults.teacherInstructions,
       },
     );
 
@@ -129,10 +130,10 @@ describe('controller', () => {
       },
       {},
       {
-        prompt: null,
-        rationale: null,
+        prompt: defaults.prompt,
+        rationale: defaults.rationale,
         showNote: true,
-        teacherInstructions: null,
+        teacherInstructions: defaults.teacherInstructions,
       },
     );
 
@@ -158,12 +159,11 @@ describe('controller', () => {
 
         expect(result).toEqual({
           ...question,
-          mode: 'view',
           disabled: true,
           feedback: {},
           responseCorrect: undefined,
-          env,
           maxLengthPerChoice: [10, 10, 7],
+          ...env,
           ...expected,
         });
       });
@@ -179,10 +179,10 @@ describe('controller', () => {
       },
       {},
       {
-        prompt: null,
-        rationale: null,
+        prompt: defaults.prompt,
+        rationale: defaults.rationale,
         showNote: true,
-        teacherInstructions: null,
+        teacherInstructions: defaults.teacherInstructions,
       },
     );
 
@@ -219,12 +219,11 @@ describe('controller', () => {
 
         expect(result).toEqual({
           ...question,
-          mode: 'view',
           disabled: true,
           feedback: {},
           responseCorrect: undefined,
           maxLengthPerChoice: [10, 10, 7],
-          env,
+          ...env,
           ...expected,
         });
       });
@@ -240,10 +239,10 @@ describe('controller', () => {
       },
       {},
       {
-        prompt: null,
-        rationale: null,
+        prompt: defaults.prompt,
+        rationale: defaults.rationale,
         showNote: true,
-        teacherInstructions: null,
+        teacherInstructions: defaults.teacherInstructions,
       },
     );
 
@@ -252,9 +251,9 @@ describe('controller', () => {
       {},
       {},
       {
-        rationale: null,
+        rationale: defaults.rationale,
         showNote: true,
-        teacherInstructions: null,
+        teacherInstructions: defaults.teacherInstructions,
       },
     );
 
@@ -282,7 +281,6 @@ describe('controller', () => {
           ...question,
           teacherInstructions: 'Teacher Instructions',
           rationale: 'Rationale',
-          mode: 'evaluate',
           disabled: true,
           choices: {
             0: [
@@ -298,7 +296,7 @@ describe('controller', () => {
             2: [{ label: 'moon', value: '0', correct: true }],
           },
           maxLengthPerChoice: [10, 10, 7],
-          env,
+          ...env,
           ...expected,
         });
       });

@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import debounce from 'lodash/debounce';
-import isEmpty from 'lodash/isEmpty';
-import isEqual from 'lodash/isEqual';
-import {CorrectAnswerToggle} from '@pie-lib/pie-toolbox/correct-answer-toggle';
+import { debounce, isEmpty, isEqual } from 'lodash';
+import { CorrectAnswerToggle } from '@pie-lib/pie-toolbox/correct-answer-toggle';
 import { ConstructedResponse } from '@pie-lib/pie-toolbox/mask-markup';
 import { color, Collapsible, hasText, PreviewPrompt } from '@pie-lib/pie-toolbox/render-ui';
 import { withStyles } from '@material-ui/core/styles';
@@ -14,26 +12,26 @@ const { translator } = Translator;
 
 export class Main extends React.Component {
   static propTypes = {
-    classes: PropTypes.object.isRequired,
-    prompt: PropTypes.string,
-    note: PropTypes.string,
-    showNote: PropTypes.bool,
-    env: PropTypes.object,
-    rationale: PropTypes.string,
-    disabled: PropTypes.bool,
-    displayType: PropTypes.string,
-    markup: PropTypes.string,
-    mode: PropTypes.string,
-    teacherInstructions: PropTypes.string,
-    value: PropTypes.object,
-    feedback: PropTypes.object,
-    onChange: PropTypes.func,
     alwaysShowCorrect: PropTypes.bool,
     animationsDisabled: PropTypes.bool,
+    classes: PropTypes.object.isRequired,
+    disabled: PropTypes.bool,
+    displayType: PropTypes.string,
+    feedback: PropTypes.object,
+    language: PropTypes.string,
+    markup: PropTypes.string,
     maxLengthPerChoice: PropTypes.array,
     maxLengthPerChoiceEnabled: PropTypes.bool,
+    mode: PropTypes.string,
+    note: PropTypes.string,
+    onChange: PropTypes.func,
     playerSpellCheckEnabled: PropTypes.bool,
-    language: PropTypes.string,
+    prompt: PropTypes.string,
+    rationale: PropTypes.string,
+    role: PropTypes.string,
+    showNote: PropTypes.bool,
+    teacherInstructions: PropTypes.string,
+    value: PropTypes.object,
   };
 
   static defaultProps = {
@@ -70,8 +68,12 @@ export class Main extends React.Component {
     // check if the note is the default one for prev language and change to the default one for new language
     // this check is necessary in order to diferanciate between default and authour defined note
     // and only change between languages for default ones
-    if (note && language && language !== nextProps.language &&
-      note === translator.t('common:commonCorrectAnswerWithAlternates', { lng: language })) {
+    if (
+      note &&
+      language &&
+      language !== nextProps.language &&
+      note === translator.t('common:commonCorrectAnswerWithAlternates', { lng: language })
+    ) {
       note = translator.t('common:commonCorrectAnswerWithAlternates', { lng: nextProps.language });
     }
   }
@@ -91,24 +93,23 @@ export class Main extends React.Component {
   render() {
     const { showCorrectAnswer, value } = this.state;
     const {
+      alwaysShowCorrect,
+      animationsDisabled,
       classes,
       mode,
-      prompt,
-      rationale,
-      teacherInstructions,
-      note,
-      showNote,
-      env,
-      animationsDisabled,
-      alwaysShowCorrect,
+      displayType,
+      role,
+      language,
       maxLengthPerChoice,
       maxLengthPerChoiceEnabled,
-      displayType,
+      note,
       playerSpellCheckEnabled,
-      language
+      prompt,
+      rationale,
+      showNote,
+      teacherInstructions,
     } = this.props;
 
-    const { role } = env || {};
     const displayNote = (showCorrectAnswer || (mode === 'view' && role === 'instructor')) && showNote && note;
     const mainClasses = classNames([
       classes.mainContainer,
@@ -160,12 +161,7 @@ export class Main extends React.Component {
           spellCheck={playerSpellCheckEnabled}
         />
 
-        {displayNote && (
-          <div
-            className={classNames(classes.note, 'note')}
-            dangerouslySetInnerHTML={{ __html: note }}
-          />
-        )}
+        {displayNote && <div className={classNames(classes.note, 'note')} dangerouslySetInnerHTML={{ __html: note }} />}
 
         {rationale && hasText(rationale) && (
           <div className={classes.collapsible}>
