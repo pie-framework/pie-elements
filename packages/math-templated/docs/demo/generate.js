@@ -29,20 +29,20 @@ exports.model = (id, element) => ({
       "answer": "a",
       "alternates": { "0": "test", "1": "alternate" },
     },
-    "1": {
-      "allowSpaces": true,
-      "validation": "symbolic",
-      "allowTrailingZeros": false,
-      "ignoreOrder": false,
-      "answer": "b",
-      "alternates": { "0": "test 2" },
+    1: {
+      allowSpaces: true,
+      validation: 'symbolic',
+      allowTrailingZeros: false,
+      ignoreOrder: false,
+      answer: 'b',
+      alternates: { 0: 'test 2' },
     },
-    "2": {
-      "allowSpaces": true,
-      "validation": "symbolic",
-      "allowTrailingZeros": false,
-      "ignoreOrder": false,
-      "answer": "c",
+    2: {
+      allowSpaces: true,
+      validation: 'symbolic',
+      allowTrailingZeros: false,
+      ignoreOrder: false,
+      answer: 'c',
     },
   }
 });

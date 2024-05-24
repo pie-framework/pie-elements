@@ -12,8 +12,26 @@ export default {
     responses: {},
     element: 'math-templated',
     equationEditor: '8',
+    ignoreOrderDefault: false,
+    allowTrailingZerosDefault: false,
+    toolbarEditorPosition: 'bottom',
+    validationDefault: 'literal',
   },
   configuration: {
+    ignoreOrder: {
+      settings: false,
+      label: 'Ignore Order',
+      enabled: true
+    },
+    allowTrailingZeros: {
+      settings: false,
+      label: 'Allow Trailing Zeros',
+      enabled: true
+    },
+    partialScoring: {
+      settings: false,
+      label: 'Allow Partial Scoring',
+    },
     baseInputConfiguration: {
       html: { disabled: true },
       audio: { disabled: false },
