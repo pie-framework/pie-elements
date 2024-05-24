@@ -4,7 +4,7 @@ export default {
   promptEnabled: true,
   rationale: '',
   rationaleEnabled: true,
+  studentInstructionsEnabled: true,
   teacherInstructions: '',
   teacherInstructionsEnabled: true,
-  studentInstructionsEnabled: true,
 };
