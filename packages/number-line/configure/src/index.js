@@ -5,6 +5,7 @@ import { ModelUpdatedEvent, InsertSoundEvent, DeleteSoundEvent } from '@pie-fram
 import * as defaults from './defaults';
 import * as math from 'mathjs';
 import cloneDeep from 'lodash/cloneDeep';
+import { tickUtils } from '@pie-element/number-line';
 
 // this function is duplicated in controller; at some point, use the same shared function
 const updateTicks = (model) => {
@@ -45,6 +46,7 @@ export default class NumberLine extends HTMLElement {
     const normalizedModel = {
       ...defaults.model,
       ...model,
+      test: tickUtils.testSharedFunction('configure'),
       language,
     };
 

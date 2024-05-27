@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.10.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-configure@9.10.6...@pie-element/ebsr-configure@9.10.7) (2024-05-27)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3740, PD-2126 ([5573a4e](https://github.com/pie-framework/pie-elements/commit/5573a4e2f4524839525679df319bb92c7c841916))
+
+
+
+
+
 ## [9.10.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-configure@9.10.5...@pie-element/ebsr-configure@9.10.6) (2024-05-14)
 
 

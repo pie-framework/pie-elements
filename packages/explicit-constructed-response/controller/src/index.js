@@ -1,11 +1,8 @@
-import map from 'lodash/map';
-import reduce from 'lodash/reduce';
-import find from 'lodash/find';
-import isEmpty from 'lodash/isEmpty';
 import debug from 'debug';
+import { find, isEmpty, map, reduce } from 'lodash';
 import { partialScoring } from '@pie-lib/pie-toolbox/controller-utils';
-import defaults from './defaults';
 import Translator from '@pie-lib/pie-toolbox/translator';
+import defaults from './defaults';
 
 const { translator } = Translator;
 
@@ -67,8 +64,8 @@ export const normalize = (question) => ({ ...defaults, ...question });
  */
 export function model(question, session, env) {
   return new Promise(async (resolve) => {
-    // this was added to treat an exception, when the model has choices without the "value" property
-    // like: { label: 'test' }
+    // this was added to treat an exception, when the model has choices without
+    // the "value" property like: { label: 'test' }
     if (question.choices) {
       Object.keys(question.choices).forEach((key) => {
         question.choices[key] = (question.choices[key] || []).map((item, index) => {
@@ -87,50 +84,40 @@ export function model(question, session, env) {
       { correct: 'Correct', incorrect: 'Incorrect' },
       normalizedQuestion.defaultFeedback,
     );
-
-    const { value = {} } = session || {};
-
-    const preparChoiceFn = prepareChoice(env.mode, defaultFeedback);
-
-    let choices = reduce(
+    const prepareChoiceFn = prepareChoice(env.mode, defaultFeedback);
+    const choices = reduce(
       normalizedQuestion.choices,
       (obj, area, key) => {
-        obj[key] = map(area, preparChoiceFn);
+        obj[key] = map(area, prepareChoiceFn);
 
         return obj;
       },
       {},
     );
-    let feedback = {};
 
-    if (env.mode === 'evaluate') {
-      feedback = reduce(
-        normalizedQuestion.choices,
-        (obj, respArea, key) => {
-          const chosenValue = value && value[key];
-          const val = !isEmpty(chosenValue) && find(respArea, (c) => prepareVal(c.label) === prepareVal(chosenValue));
+    const { value = {} } = session || {};
+    const feedback =
+      env.mode === 'evaluate'
+        ? reduce(
+            normalizedQuestion.choices,
+            (obj, respArea, key) => {
+              const chosenValue = value && value[key];
+              const val =
+                !isEmpty(chosenValue) && find(respArea, (c) => prepareVal(c.label) === prepareVal(chosenValue));
 
-          obj[key] = getFeedback(val);
+              obj[key] = getFeedback(val);
 
-          return obj;
-        },
-        {},
-      );
-    }
+              return obj;
+            },
+            {},
+          )
+        : {};
 
-    let showNote = false;
-    // check if a choice has an alternate
-    Object.values(choices).forEach((choice) => {
-      if (choice && choice.length > 1) {
-        showNote = true;
-      }
-    });
-
-    let { note } = normalizedQuestion;
-
-    if (!note) {
-      note = translator.t('common:commonCorrectAnswerWithAlternates', { lng: normalizedQuestion.language });
-    }
+    // check if at least one choice has an alternate
+    const showNote = Object.values(choices).some((choice) => choice?.length > 1);
+    const note =
+      normalizedQuestion.note ||
+      translator.t('common:commonCorrectAnswerWithAlternates', { lng: normalizedQuestion.language });
 
     const { maxLengthPerChoice = [], maxLengthPerChoiceEnabled } = normalizedQuestion;
     const undefinedLengths = !maxLengthPerChoice.length;
@@ -151,45 +138,38 @@ export function model(question, session, env) {
     });
 
     const out = {
-      disabled: env.mode !== 'gather',
-      mode: env.mode,
-      prompt: normalizedQuestion.promptEnabled ? normalizedQuestion.prompt : null,
-      markup: normalizedQuestion.markup,
       choices,
+      disabled: env.mode !== 'gather',
+      displayType: normalizedQuestion.displayType,
+      mode: env.mode,
+      role: env.role,
       feedback,
-      env,
-      note,
-      showNote,
+      language: normalizedQuestion.language,
+      markup: normalizedQuestion.markup,
       maxLengthPerChoice,
       maxLengthPerChoiceEnabled,
-      displayType: normalizedQuestion.displayType,
+      note,
       playerSpellCheckEnabled: normalizedQuestion.playerSpellCheckEnabled,
+      prompt: normalizedQuestion.promptEnabled ? normalizedQuestion.prompt : defaults.prompt,
+      rationale: defaults.rationale,
       responseCorrect: env.mode === 'evaluate' ? getScore(normalizedQuestion, session) === 1 : undefined,
-      language: normalizedQuestion.language,
+      showNote,
+      teacherInstructions: defaults.teacherInstructions,
     };
 
     if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
-      out.rationale = normalizedQuestion.rationaleEnabled ? normalizedQuestion.rationale : null;
+      out.rationale = normalizedQuestion.rationaleEnabled ? normalizedQuestion.rationale : defaults.rationale;
       out.teacherInstructions = normalizedQuestion.teacherInstructionsEnabled
         ? normalizedQuestion.teacherInstructions
-        : null;
-    } else {
-      out.rationale = null;
-      out.teacherInstructions = null;
+        : defaults.teacherInstructions;
     }
 
     resolve(out);
   });
 }
 
-const getTextFromHTML = (html) => {
-  return (html || '').replace(/<\/?[^>]+(>|$)/g, '');
-};
-
 export const prepareVal = (html) => {
-  const value = getTextFromHTML(html);
-
-  return value.trim();
+  return getInnerText(html).trim();
 };
 
 export const getScore = (config, session) => {
@@ -221,7 +201,6 @@ export const getScore = (config, session) => {
 };
 
 /**
- *
  * The score is partial by default for checkbox mode, allOrNothing for radio mode.
  * To disable partial scoring for checkbox mode you either set model.partialScoring = false or env.partialScoring =
  * false. the value in `env` will override the value in `model`.
@@ -251,10 +230,7 @@ export const createCorrectResponseSession = (question, env) => {
         value[i] = choices[key][0].label;
       });
 
-      resolve({
-        id: '1',
-        value,
-      });
+      resolve({ id: '1', value });
     } else {
       resolve(null);
     }
