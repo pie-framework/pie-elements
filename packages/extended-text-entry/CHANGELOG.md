@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.13.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.13.1...@pie-element/extended-text-entry@10.13.2) (2024-05-27)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3740, PD-2126 ([5573a4e](https://github.com/pie-framework/pie-elements/commit/5573a4e2f4524839525679df319bb92c7c841916))
+
+
+
+
+
 ## [10.13.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.13.0...@pie-element/extended-text-entry@10.13.1) (2024-05-14)
 
 
