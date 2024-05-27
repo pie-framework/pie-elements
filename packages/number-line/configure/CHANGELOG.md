@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.8.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-configure@7.8.5...@pie-element/number-line-configure@7.8.6) (2024-05-27)
+
+
+### Bug Fixes
+
+* **number-line:** test shared function PD-3738 ([1649f97](https://github.com/pie-framework/pie-elements/commit/1649f971a327ebca0ab45f3e41fe167890296f3f))
+
+
+
+
+
 ## [7.8.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-configure@7.8.4...@pie-element/number-line-configure@7.8.5) (2024-05-14)
 
 
