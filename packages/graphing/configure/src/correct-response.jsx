@@ -259,7 +259,6 @@ export class CorrectResponse extends React.Component {
     if (index >= 0) {
       const updatedAnswers = this.filterMarks(tool);
       updatedToolbarTools.splice(index, 1);
-
       if (tool === defaultTool) {
         const toolbarToolsNoLabel = (updatedToolbarTools || []).filter((tool) => tool !== 'label');
         newDefaultTool = (toolbarToolsNoLabel.length && toolbarToolsNoLabel[0]) || '';
@@ -442,6 +441,7 @@ export class CorrectResponse extends React.Component {
                 onChangeTools={(toolbarTools) => this.updateModel({ toolbarTools })}
                 mathMlOptions={mathMlOptions}
                 removeIncompleteTool={removeIncompleteTool}
+                limitLabeling={true}
               />
 
               {correctAnswerErrors[key] && <div className={classes.errorMessage}>{correctAnswerErrors[key]}</div>}
