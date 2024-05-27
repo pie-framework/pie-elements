@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.15.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@5.14.6...@pie-element/graphing-configure@5.15.0) (2024-05-27)
+
+
+### Features
+
+* update pie-lib/pie-toolbox PD-3736, PD-3734, PD-2488 ([3c44f06](https://github.com/pie-framework/pie-elements/commit/3c44f06d96e609246acde257a8223dc16192c2c4))
+* **graphing:** limit using label tool only with point PD-3736 ([0db1008](https://github.com/pie-framework/pie-elements/commit/0db10089d4f418c34de6a12ce51d3519697a01a2))
+* **graphing:** update logic based on req PD-3736 ([faf0fd4](https://github.com/pie-framework/pie-elements/commit/faf0fd4659c81b3ee8038e2c9c6d791a06e12b58))
+* **graphing:** update snapshots in tests PD-3736 ([9b2582d](https://github.com/pie-framework/pie-elements/commit/9b2582d2eb919fccf52cf1bea1381b6cece0ee49))
+
+
+
+
+
 ## [5.14.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@5.14.5...@pie-element/graphing-configure@5.14.6) (2024-05-27)
 
 
