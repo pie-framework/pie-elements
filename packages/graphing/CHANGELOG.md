@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.16.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@5.15.6...@pie-element/graphing@5.16.0) (2024-05-27)
+
+
+### Features
+
+* update pie-lib/pie-toolbox PD-3736, PD-3734, PD-2488 ([3c44f06](https://github.com/pie-framework/pie-elements/commit/3c44f06d96e609246acde257a8223dc16192c2c4))
+* **graphing:** limit labels in student view PD-3736 ([6ca9099](https://github.com/pie-framework/pie-elements/commit/6ca909959a66074ac99730a3ce161804fe710edd))
+* **graphing:** limit using label tool only with point PD-3736 ([0db1008](https://github.com/pie-framework/pie-elements/commit/0db10089d4f418c34de6a12ce51d3519697a01a2))
+* **graphing:** update logic based on req PD-3736 ([faf0fd4](https://github.com/pie-framework/pie-elements/commit/faf0fd4659c81b3ee8038e2c9c6d791a06e12b58))
+* **graphing:** update snapshots in tests PD-3736 ([9b2582d](https://github.com/pie-framework/pie-elements/commit/9b2582d2eb919fccf52cf1bea1381b6cece0ee49))
+
+
+
+
+
 ## [5.15.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@5.15.5...@pie-element/graphing@5.15.6) (2024-05-27)
 
 
