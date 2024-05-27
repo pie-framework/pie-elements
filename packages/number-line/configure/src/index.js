@@ -46,7 +46,6 @@ export default class NumberLine extends HTMLElement {
     const normalizedModel = {
       ...defaults.model,
       ...model,
-      test: tickUtils.testSharedFunction('configure'),
       language,
     };
 
