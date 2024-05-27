@@ -8,6 +8,7 @@ import omitBy from 'lodash/omitBy';
 import { getFeedbackForCorrectness } from '@pie-lib/pie-toolbox/feedback';
 import { partialScoring } from '@pie-lib/pie-toolbox/controller-utils';
 import * as math from 'mathjs';
+import { tickUtils } from '@pie-element/number-line';
 
 import defaults from './defaults';
 
@@ -271,6 +272,7 @@ export function model(question, session, env) {
           },
           colorContrast: (env.accessibility && env.accessibility.colorContrast) || 'black_on_white',
           language: normalizedQuestion.language,
+          test: tickUtils.testSharedFunction('controller')
         };
 
         resolve(omitBy(out, (v) => !v));
