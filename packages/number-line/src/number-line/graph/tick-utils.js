@@ -30,7 +30,7 @@ export const fractionTickValues = [
   '1/2',
 ];
 
-/*This const will store possible multiplier for label interval that needs to be multiplied 
+/*This const will store possible multiplier for label interval that needs to be multiplied
 with tick interval with denominator represented with object key.*/
 export const labelMultiplier = {
   1: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
@@ -348,4 +348,8 @@ export const snapElements = (domain, ticks, elements) => {
 
     return out;
   });
+};
+
+export const testSharedFunction = (param) =>{
+  return 'test' + param;
 };
