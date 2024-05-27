@@ -9,9 +9,6 @@ module.exports = [
       "r1": {
         "value": "5"
       },
-      "r2": {
-        "value": "6"
-      }
     }
   },
 ];

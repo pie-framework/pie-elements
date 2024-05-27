@@ -1,18 +1,94 @@
+import debug from 'debug';
 import isEmpty from 'lodash/isEmpty';
+import Translator from '@pie-lib/pie-toolbox/translator';
+import * as mv from '@pie-framework/math-validation';
+import { getFeedbackForCorrectness } from '@pie-lib/pie-toolbox/feedback';
+
 import defaults from './defaults';
 
-export const getCorrectness = (model) => {
-  const correctnessCondition = 'c';
+const { translator } = Translator;
+const log = debug('@pie-element:math-templated:controller');
 
-  switch (correctnessCondition) {
-    case 'c':
-      return 'correct';
-    case 'pc':
-      return 'partially-correct';
-    case 'i':
-      return 'incorrect';
-    default:
-      return 'unknown';
+const getIsAnswerCorrect = (correctResponse, answerItem) => {
+  let answerCorrect = false;
+
+  let opts = {
+    mode: correctResponse.validation || defaults.validationDefault,
+  };
+
+  if (opts.mode === 'literal') {
+    opts.literal = {
+      allowTrailingZeros: correctResponse.allowTrailingZeros || false,
+      ignoreOrder: correctResponse.ignoreOrder || false,
+    };
+  }
+
+  if (!answerCorrect) {
+    const acceptedValues =
+      [correctResponse.answer].concat(
+        Object.keys(correctResponse.alternates || {}).map((alternateId) => correctResponse.alternates[alternateId]),
+      ) || [];
+
+    try {
+      for (let i = 0; i < acceptedValues.length; i++) {
+        console.log(answerItem, acceptedValues[i])
+        answerCorrect = mv.latexEqual(answerItem.value, acceptedValues[i], opts);
+
+        if (answerCorrect) {
+          break;
+        }
+      }
+    } catch (e) {
+      log('Parse failure when evaluating math', e, correctResponse, answerItem);
+
+      answerCorrect = false;
+    }
+  }
+
+  return answerCorrect;
+};
+
+const getResponseCorrectness = (question, sessionResponse) => {
+  const correctResponses = question.responses;
+
+  console.log('sessionResponse ---->', sessionResponse);
+  if (!sessionResponse) {
+    return {
+      correctness: 'unanswered',
+      score: 0,
+      correct: false,
+    };
+  } else {
+    let correctAnswers= 0;
+    let score = 0;
+    let correct = false;
+    Object.keys(correctResponses).forEach((responseId) => {
+      const answerItem = sessionResponse['r' + responseId];
+      const correctResponse = correctResponses[responseId];
+
+      const answerCorrect = getIsAnswerCorrect(correctResponse, answerItem);
+      if (answerCorrect) {
+        correctAnswers++;
+      }
+    });
+
+    return {
+      //todo: need to update this to return 'partially-correct' if correctAnswers > 0 but < total responses
+      // and calculate the score accordingly
+      correctness: correctAnswers > 0 ? 'correct' : 'incorrect',
+      score: correctAnswers > 0 ? 1 : 0,
+      correct
+    };
+  }
+};
+
+export const getCorrectness = (question, env, session) => {
+  console.log('session ---->', session);
+  if (env.mode === 'evaluate') {
+    return getResponseCorrectness(
+      question,
+      session && session.answers,
+    );
   }
 };
 
@@ -35,7 +111,9 @@ export const outcome = (question, session, env) =>
     if (env.mode !== 'evaluate') {
       resolve({ score: undefined, completed: undefined });
     } else {
-      resolve({ score: 1 });
+      const correctness = getCorrectness(question, env, session, true);
+
+      resolve({ score: correctness.score });
     }
   });
 
@@ -51,47 +129,57 @@ export const model = (question, session, env) => {
   return new Promise((resolve) => {
     session = session || {};
     const normalizedQuestion = createDefaultModel(question);
+    const correctness = getCorrectness(normalizedQuestion, env, session);
+    const { responses, language } = normalizedQuestion;
+    let { note } = normalizedQuestion;
+    let showNote = (responses?.length > 1);
 
-    const out = {
-      prompt: normalizedQuestion.promptEnabled ? normalizedQuestion.prompt : null,
-      markup: normalizedQuestion.markup,
-      responses: env.mode ==='gather' ? null : normalizedQuestion.responses,
-      language: normalizedQuestion.language,
-      // todo I don't know how this is supposed to work
-      // note: '',
-      env,
-
-      equationEditor: normalizedQuestion.equationEditor,
-      customKeys: normalizedQuestion.customKeys,
-      disabled: env.mode !== 'gather',
-      view: env.mode === 'view',
-
-      // todo
-      // feedback
-    //   correctness
-    };
-
-    // todo
-    // if (env.mode === 'evaluate') {
-    //   out.correctResponse = {};
-    //   out.config.showNote = showNote;
-    //   out.config.note = note;
-    // } else {
-    //   out.config.responses = [];
-    //   out.config.showNote = false;
-    // }
-
-    if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
-      out.rationale = normalizedQuestion.rationaleEnabled ? normalizedQuestion.rationale : null;
-      out.teacherInstructions = normalizedQuestion.teacherInstructionsEnabled
-          ? normalizedQuestion.teacherInstructions
-          : null;
-    } else {
-      out.rationale = null;
-      out.teacherInstructions = null;
+    if (!note) {
+      note = translator.t('mathInline.primaryCorrectWithAlternates', { lng: language });
     }
 
-    resolve(out);
+    const fbPromise =
+      env.mode === 'evaluate' && normalizedQuestion.feedbackEnabled
+        ? getFeedbackForCorrectness(correctness, normalizedQuestion.feedback)
+        : Promise.resolve(undefined);
+
+    fbPromise.then((feedback) => {
+      const out = {
+        prompt: normalizedQuestion.promptEnabled ? normalizedQuestion.prompt : null,
+        markup: normalizedQuestion.markup,
+        responses: env.mode === 'gather' ? null : normalizedQuestion.responses,
+        language: normalizedQuestion.language,
+        env,
+        equationEditor: normalizedQuestion.equationEditor,
+        customKeys: normalizedQuestion.customKeys,
+        disabled: env.mode !== 'gather',
+        view: env.mode === 'view',
+        correctness,
+        feedback
+      };
+
+      if (env.mode === 'evaluate') {
+        out.correctResponse = {};
+        out.showNote = showNote;
+        out.note = note;
+      } else {
+        out.responses = {};
+        out.showNote = false;
+      }
+
+      if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
+        out.rationale = normalizedQuestion.rationaleEnabled ? normalizedQuestion.rationale : null;
+        out.teacherInstructions = normalizedQuestion.teacherInstructionsEnabled
+          ? normalizedQuestion.teacherInstructions
+          : null;
+      } else {
+        out.rationale = null;
+        out.teacherInstructions = null;
+      }
+
+      log('out: ', out);
+      resolve(out);
+    });
   });
 };
 
