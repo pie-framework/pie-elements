@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.6.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-solution-set-controller@1.6.5...@pie-element/graphing-solution-set-controller@1.6.6) (2024-05-27)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3740, PD-2126 ([5573a4e](https://github.com/pie-framework/pie-elements/commit/5573a4e2f4524839525679df319bb92c7c841916))
+
+
+
+
+
 ## [1.6.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-solution-set-controller@1.6.4...@pie-element/graphing-solution-set-controller@1.6.5) (2024-05-14)
 
 
