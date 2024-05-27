@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.9.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-configure@7.9.0...@pie-element/number-line-configure@7.9.1) (2024-05-27)
+
+
+### Bug Fixes
+
+* remove experiment introduced in 8.9.6, as it's breaking the item ([6ed8f2b](https://github.com/pie-framework/pie-elements/commit/6ed8f2b7adc89bca308bd7bc293301b6e0e44c98))
+
+
+
+
+
 # [7.9.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-configure@7.8.7...@pie-element/number-line-configure@7.9.0) (2024-05-27)
 
 
