@@ -119,7 +119,6 @@ class Design extends React.Component {
     });
 
     const processedMarkup = processMarkup(markup);
-    console.log({ newResponses, processedMarkup });
 
     const callback = () =>
       onModelChanged({
@@ -290,9 +289,6 @@ class Design extends React.Component {
       ...baseInputConfiguration,
       ...props,
     });
-
-    console.log('markup', model.markup);
-    console.log('responses', model.responses);
 
     return (
       <layout.ConfigLayout

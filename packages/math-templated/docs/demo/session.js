@@ -4,10 +4,10 @@ module.exports = [
     "element": "math-templated",
     "answers": {
       "r0": {
-        "value": "2"
+        "value": "0"
       },
       "r1": {
-        "value": "5"
+        "value": "1"
       },
     }
   },

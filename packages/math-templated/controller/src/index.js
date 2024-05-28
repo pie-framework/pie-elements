@@ -177,6 +177,12 @@ export const model = (question, session, env) => {
         out.teacherInstructions = null;
       }
 
+      // TODO this is just hardcoded for now:
+      out.feedback = {};
+      (Object.keys(responses || {})).forEach((key, index) => {
+        out.feedback[key] = index % 2 === 0;
+      });
+
       log('out: ', out);
       resolve(out);
     });
