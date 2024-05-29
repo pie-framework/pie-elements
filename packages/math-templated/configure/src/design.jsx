@@ -242,6 +242,7 @@ class Design extends React.Component {
       editSource = {},
       ignoreOrder: cIgnoreOrder = {},
       allowTrailingZeros: cAllowTrailingZeros = {},
+      partialScoring = {},
     } = configuration || {};
 
     const {
@@ -276,6 +277,7 @@ class Design extends React.Component {
       spellCheckEnabled: spellCheck.settings && toggle(spellCheck.label),
       playerSpellCheckEnabled: playerSpellCheck.settings && toggle(playerSpellCheck.label),
       'editSource.enabled': editSource?.settings && toggle(editSource.label, true),
+      partialScoring: partialScoring.settings && toggle(partialScoring.label),
     };
 
     const defaultImageMaxWidth = maxImageWidth && maxImageWidth.prompt;

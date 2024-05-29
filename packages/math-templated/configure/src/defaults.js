@@ -29,7 +29,7 @@ export default {
       enabled: true
     },
     partialScoring: {
-      settings: false,
+      settings: true,
       label: 'Allow Partial Scoring',
     },
     baseInputConfiguration: {
