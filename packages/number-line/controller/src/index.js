@@ -10,6 +10,7 @@ import { partialScoring } from '@pie-lib/pie-toolbox/controller-utils';
 import * as math from 'mathjs';
 
 import defaults from './defaults';
+import {reloadTicksData} from './utils';
 
 const score = (number) => {
   return {
@@ -241,7 +242,9 @@ export function model(question, session, env) {
 
   return new Promise(async (resolve, reject) => {
     const normalizedQuestion = await normalize(question);
-    const { graph } = updateTicks(normalizedQuestion);
+    let { graph } = updateTicks(normalizedQuestion);
+    // this function is also called in configure, it is a duplicate to maintain consistency and correctness
+    graph = reloadTicksData(graph);
 
     if (graph) {
       const evaluateMode = env.mode === 'evaluate';

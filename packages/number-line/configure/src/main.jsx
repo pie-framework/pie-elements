@@ -217,6 +217,7 @@ export class Main extends React.Component {
   };
 
   /*
+   * This function is duplicated in controller/index.js
    * This function will reload ticks data whenever graph object is changed and also sets required tick object
    * for rendering Ticks Components.
    * @param graph object containing domain, ticks and width value
@@ -340,6 +341,7 @@ export class Main extends React.Component {
   };
 
   /*
+   * This function is duplicated in controller/index.js
    * This function will update major value whenever minor value is changed or tick type is changed
    * @param graph object containing domain, ticks and width value
    * @return graph object with updated ticks values
