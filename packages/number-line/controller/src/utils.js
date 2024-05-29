@@ -32,7 +32,7 @@ const updateMajorValue = (graph) => {
    * */
 
 export const reloadTicksData = (graph) => {
-    const { domain, ticks, width } = graph;
+    const { domain, ticks = {}, width } = graph;
     //Set tick interval type if not present for legacy number line models depending upon minor value
     if (!ticks.tickIntervalType) {
         if (ticks.minor > 0.5) {

@@ -1,6 +1,11 @@
 export default {
   graph: {
     domain: [-5, 5],
+    ticks: {
+      major: 2,
+      minor: 1,
+    },
+    width: 500,
     initialElements: [
       {
         type: 'point',

@@ -1,7 +1,6 @@
 import cloneDeep from 'lodash/cloneDeep';
 import find from 'lodash/find';
 import isEmpty from 'lodash/isEmpty';
-import isEqual from 'lodash/isEqual';
 import isEqualWith from 'lodash/isEqualWith';
 import merge from 'lodash/merge';
 import omitBy from 'lodash/omitBy';
@@ -184,15 +183,9 @@ export const getCorrectness = (corrected) => {
  * https://github.com/pie-framework/pie-elements/issues/21
  */
 export function normalize(question) {
-  return new Promise((resolve) => {
-    const feedback = merge(defaults.feedback, question.feedback);
+  const feedback = merge(defaults.feedback, question.feedback);
 
-    if (isEqual(feedback, question.feedback)) {
-      return resolve({ ...question });
-    } else {
-      resolve({ ...question, feedback });
-    }
-  });
+  return {...defaults, ...question, feedback};
 }
 
 export function createDefaultModel(model = {}) {
@@ -275,7 +268,6 @@ export function model(question, session, env) {
           colorContrast: (env.accessibility && env.accessibility.colorContrast) || 'black_on_white',
           language: normalizedQuestion.language
         };
-
         resolve(omitBy(out, (v) => !v));
       });
     } else {
