@@ -23,6 +23,7 @@
   "main": "lib/index.js",
   "module": "src/index.js",
   "exports": {
-    ".": "./src/index.js"
+    ".": "./src/index.js",
+    "./print": "./src/print.js"
   }
 }

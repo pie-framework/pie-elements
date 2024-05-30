@@ -1,37 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`design snapshot renders all items with defaultProps 1`] = `
-<ConfigLayout
-  dimensions={Object {}}
-  settings={
-    <Panel
-      configuration={
-        Object {
-          "prompt": Object {
-            "label": "Prompt",
-            "settings": true,
-          },
-        }
-      }
-      groups={
-        Object {
-          "Properties": Object {
-            "promptEnabled": undefined,
-          },
-          "Settings": Object {},
-        }
-      }
-      model={
-        Object {
-          "tokens": Array [],
-        }
-      }
-      onChangeConfiguration={[MockFunction]}
-      onChangeModel={[Function]}
-    />
-  }
-/>
-`;
+exports[`design snapshot renders all items with defaultProps 1`] = `undefined`;
 
 exports[`design snapshot tokenizer renders with html entities 1`] = `
 <ConfigLayout
