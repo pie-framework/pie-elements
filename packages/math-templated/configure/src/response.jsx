@@ -25,11 +25,12 @@ class Response extends React.Component {
     response: PropTypes.object.isRequired,
     cIgnoreOrder: PropTypes.object.isRequired,
     cAllowTrailingZeros: PropTypes.object.isRequired,
+    responseKey: PropTypes.string.isRequired,
   };
 
   static defaultProps = {
     defaultResponse: false,
-    mode: 'miscellaneous',
+    mode: '8',
   };
 
   constructor(props) {
@@ -213,7 +214,7 @@ class Response extends React.Component {
               {cIgnoreOrder.enabled && (
                 <FormControlLabel
                   label={cIgnoreOrder.label}
-                  control={<Checkbox checked={ignoreOrder} onChange={this.onLiteralOptionsChange('ignoreOrder')} />}
+                  control={<Checkbox checked={ignoreOrder} onChange={this.onLiteralOptionsChange('ignoreOrder')}/>}
                 />
               )}
             </div>
@@ -238,30 +239,29 @@ class Response extends React.Component {
           {hasAlternates &&
             Object.keys(alternates).map((alternateId, altIdx) => (
               <div className={classes.inputContainer} key={alternateId}>
+                <InputLabel>
+                  Alternate
+                  {Object.keys(alternates).length > 1 ? ` ${altIdx + 1}` : ''}
+                </InputLabel>
                 <div className={classes.alternateBar}>
-                  <InputLabel>
-                    Alternate
-                    {Object.keys(alternates).length > 1 ? ` ${altIdx + 1}` : ''}
-                  </InputLabel>
+                  <MathToolbar
+                    classNames={classNames}
+                    controlledKeypad
+                    keypadMode={mode}
+                    showKeypad={showKeypad[alternateId] || false}
+                    latex={alternates[alternateId] || ''}
+                    onChange={this.onAlternateAnswerChange(alternateId)}
+                    onFocus={this.onAlternateFocus(alternateId)}
+                    onDone={this.onAlternateDone(alternateId)}
+                    error={error && error[alternateId]}
+                  />
                   <IconButton
                     className={classes.removeAlternateButton}
                     onClick={this.onRemoveAlternate(alternateId)}
                   >
-                    <Delete />
+                    <Delete/>
                   </IconButton>
                 </div>
-
-                <MathToolbar
-                  classNames={classNames}
-                  controlledKeypad
-                  keypadMode={mode}
-                  showKeypad={showKeypad[alternateId] || false}
-                  latex={alternates[alternateId] || ''}
-                  onChange={this.onAlternateAnswerChange(alternateId)}
-                  onFocus={this.onAlternateFocus(alternateId)}
-                  onDone={this.onAlternateDone(alternateId)}
-                  error={error && error[alternateId]}
-                />
                 {error && error[alternateId] ? <div className={classes.errorText}>{error[alternateId]}</div> : null}
               </div>
             ))}
@@ -271,7 +271,7 @@ class Response extends React.Component {
           </Button>
         </CardContent>
       </Card>
-    );
+    )
   }
 }
 
@@ -321,8 +321,7 @@ const styles = (theme) => ({
     border: `1px solid ${theme.palette.grey['A100']}`,
   },
   removeAlternateButton: {
-    marginLeft: theme.spacing.unit * 2,
-    fontSize: '0.8rem',
+    marginLeft: theme.spacing.unit,
   },
   errorText: {
     fontSize: theme.typography.fontSize - 2,
