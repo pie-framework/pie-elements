@@ -49,44 +49,21 @@ export default class MathTemplated extends HTMLElement {
     }
 
     connectedCallback() {
+        // TODO set accessibility labels
+
         this.render();
     }
 
     render() {
         console.log('In Player Render, session.answers', this._session?.answers);
-        // this._model = {
-        //   "config": {
-        //     "responses": [
-        //       {
-        //         "allowSpaces": true,
-        //         "answer": "1+2=3",
-        //         "id": "1",
-        //         "validation": "literal",
-        //         "allowTrailingZeros": false,
-        //         "ignoreOrder": false
-        //       }
-        //     ],
-        //     "showNote": false,
-        //     "note": "Note: The answer shown above is the primary correct answer specified by the author for this item, but other answers may also be recognized as correct.",
-        //     "env": {
-        //       "mode": "evaluate"
-        //     }
-        //   },
-        //   "correctness": {
-        //     "correctness": "incorrect",
-        //     "score": "0%",
-        //     "correct": false
-        //   },
-        //   "disabled": true,
-        //   "view": false,
-        //   "correctResponse": {},
-        //   "rationale": null,
-        //   "teacherInstructions": null
-        // };
+
+        if (!this._model || !this._session) {
+            return;
+        }
 
         if (this._model && this._session) {
             const el = React.createElement(Main, {
-        model: this._model,
+                model: this._model,
                 session: this._session,
                 onSessionChange: this.onSessionChange.bind(this),
             });
