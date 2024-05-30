@@ -12,6 +12,8 @@ import Checkbox from '@material-ui/core/Checkbox';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import { withStyles } from '@material-ui/core/styles';
+import IconButton from '@material-ui/core/IconButton';
+import Delete from '@material-ui/icons/Delete';
 
 class Response extends React.Component {
   static propTypes = {
@@ -241,13 +243,12 @@ class Response extends React.Component {
                     Alternate
                     {Object.keys(alternates).length > 1 ? ` ${altIdx + 1}` : ''}
                   </InputLabel>
-                  <Button
+                  <IconButton
                     className={classes.removeAlternateButton}
-                    type="secondary"
                     onClick={this.onRemoveAlternate(alternateId)}
                   >
-                    Remove
-                  </Button>
+                    <Delete />
+                  </IconButton>
                 </div>
 
                 <MathToolbar
@@ -266,7 +267,7 @@ class Response extends React.Component {
             ))}
 
           <Button className={classes.alternateButton} type="primary" onClick={this.onAddAlternate}>
-            ADD ALTERNATE
+            ADD
           </Button>
         </CardContent>
       </Card>
@@ -321,8 +322,6 @@ const styles = (theme) => ({
   },
   removeAlternateButton: {
     marginLeft: theme.spacing.unit * 2,
-    border: `1px solid ${theme.palette.grey['A100']}`,
-    color: 'gray',
     fontSize: '0.8rem',
   },
   errorText: {
@@ -337,6 +336,11 @@ const styles = (theme) => ({
     minWidth: '50px',
     padding: '8px',
     border: '1px solid #C0C3CF',
+  },
+  alternateBar: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   }
 });
 

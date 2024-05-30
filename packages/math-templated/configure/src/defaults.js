@@ -113,5 +113,6 @@ export default {
       label: 'Language Choices',
       options: [],
     },
+    maxResponseAreas: 10,
   },
 };
