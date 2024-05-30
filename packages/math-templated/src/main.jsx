@@ -68,7 +68,7 @@ function prepareForStatic(model, state) {
                 const answer = state.session.answers[`r${responseKey}`];
 
                 if (printMode && !alwaysShowCorrect) {
-                    const blankSpace = '\\ \\ '.repeat(30) + '\\newline ';
+                    const blankSpace = '\\ \\ '.repeat(30) + '\\embed{newLine}[] ';
 
                     return {
                         ...acc,
