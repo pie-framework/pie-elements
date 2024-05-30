@@ -134,7 +134,17 @@ export const model = (question, session, env) => {
     const correctness = getCorrectness(normalizedQuestion, env, session);
     const { responses, language } = normalizedQuestion;
     let { note } = normalizedQuestion;
-    let showNote = (responses?.length > 1);
+    let showNote = false;
+
+    // check if there is at least one alternate response or if the validation for at least one response is not literal
+    Object.keys(responses).forEach((responseId) => {
+      const correctResponse = responses[responseId];
+      if (correctResponse.alternates && Object.keys(correctResponse.alternates).length > 0) {
+        showNote = true;
+      } else if (correctResponse.validation !== 'literal') {
+        showNote = true;
+      }
+    });
 
     if (!note) {
       note = translator.t('mathInline.primaryCorrectWithAlternates', { lng: language });
