@@ -9,7 +9,7 @@ import { partialScoring } from '@pie-lib/pie-toolbox/controller-utils';
 import * as math from 'mathjs';
 
 import defaults from './defaults';
-import {reloadTicksData} from './utils';
+import { reloadTicksData } from './utils';
 
 const score = (number) => {
   return {
@@ -185,7 +185,7 @@ export const getCorrectness = (corrected) => {
 export function normalize(question) {
   const feedback = merge(defaults.feedback, question.feedback);
 
-  return {...defaults, ...question, feedback};
+  return { ...defaults, ...question, feedback };
 }
 
 export function createDefaultModel(model = {}) {
@@ -266,7 +266,7 @@ export function model(question, session, env) {
             message: feedbackMessage,
           },
           colorContrast: (env.accessibility && env.accessibility.colorContrast) || 'black_on_white',
-          language: normalizedQuestion.language
+          language: normalizedQuestion.language,
         };
         resolve(omitBy(out, (v) => !v));
       });

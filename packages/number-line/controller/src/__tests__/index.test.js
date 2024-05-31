@@ -313,8 +313,8 @@ describe('controller', () => {
         {
           graph: {
             exhibitOnly: true,
-            domain: {max:1, min: 0},
-            ticks: {major: 0, minor: 1},
+            domain: { max: 1, min: 0 },
+            ticks: { major: 0, minor: 1 },
             width: 500,
           },
         },
@@ -332,10 +332,10 @@ describe('controller', () => {
         {
           graph: {
             domain: { min: -1, max: 1 },
-            ticks: {major: 0, minor: 1,},
+            ticks: { major: 0, minor: 1 },
             width: 500,
-          }
           },
+        },
         {},
         {},
         {
