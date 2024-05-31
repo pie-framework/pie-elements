@@ -12,7 +12,6 @@ import MathQuill from '@pie-framework/mathquill';
 import { color } from '@pie-lib/pie-toolbox/render-ui';
 import { Customizable } from '@pie-lib/pie-toolbox/mask-markup';
 import { CorrectAnswerToggle } from '@pie-lib/pie-toolbox/correct-answer-toggle';
-import classNames from 'classnames';
 
 let registered = false;
 
@@ -139,18 +138,16 @@ export class Main extends React.Component {
       let MQ = MathQuill.getInterface(2);
 
       if (!registered) {
-        MQ.registerEmbed('answerBlock', (data) => {
-          return {
-            htmlString: `<div class="${classes.blockContainer}">
-                <div class="${classes.blockResponse}" id="${data}Index">R</div>
-                <div class="${classes.blockMath}">
-                  <span id="${data}"></span>
-                </div>
-              </div>`,
-            text: () => 'text',
-            latex: () => `\\embed{answerBlock}[${data}]`,
-          };
-        });
+        MQ.registerEmbed('answerBlock', (data) => ({
+          htmlString: `<div class="${classes.blockContainer}">
+              <div class="${classes.blockResponse}" id="${data}Index">R</div>
+              <div class="${classes.blockMath}">
+                <span id="${data}"></span>
+              </div>
+            </div>`,
+          text: () => 'text',
+          latex: () => `\\embed{answerBlock}[${data}]`,
+        }));
 
         registered = true;
       }
@@ -240,13 +237,6 @@ export class Main extends React.Component {
     this.handleAnswerBlockDomUpdate();
   }
 
-  onDone = () => {
-  };
-
-  onSimpleResponseChange = (response) => {
-    this.setState((state) => ({ session: { ...state.session, response } }), this.callOnSessionChange);
-  };
-
   onSubFieldFocus = (id) => {
     this.setState({ activeAnswerBlock: id });
   };
@@ -258,15 +248,13 @@ export class Main extends React.Component {
 
     const { type, value } = data;
 
-    if (type === 'command' || type === 'cursor') {
-      return data;
-    } else if (type === 'answer') {
-      return { type: 'answer', ...data };
-    } else if (value === 'clear') {
-      return { type: 'clear' };
-    } else {
-      return { type: 'write', value };
-    }
+    if (type === 'command' || type === 'cursor') return data;
+
+    if (type === 'answer') return { type: 'answer', ...data };
+
+    if (value === 'clear') return { type: 'clear' };
+
+    return { type: 'write', value };
   };
 
   setInput = (input) => {
@@ -572,7 +560,7 @@ export class Main extends React.Component {
 
           {displayNote && (
             <div
-              className={classNames(classes.note, 'note')}
+              className={cx(classes.note, 'note')}
               dangerouslySetInnerHTML={{ __html: note }}
             />
           )}
@@ -637,8 +625,6 @@ const styles = (theme) => ({
   },
   responseContainer: {
     zIndex: 10,
-    // position: 'absolute',
-    // right: 0,
     minWidth: '400px',
     marginTop: theme.spacing.unit * 2,
   },

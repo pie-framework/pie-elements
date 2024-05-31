@@ -202,7 +202,12 @@ export const model = (question, session, env) => {
 export const createCorrectResponseSession = (question, env) =>
   new Promise((resolve) => {
     if (env.mode !== 'evaluate' && env.role === 'instructor') {
-      resolve({ id: '1' });
+      const correctResponse = Object.keys(question.responses).reduce((acc, responseId) => {
+        acc['r' + responseId] = { value: question.responses[responseId].answer };
+        return acc;
+      }, {});
+
+      resolve({ id: '1', answers: correctResponse });
     } else {
       resolve(null);
     }
