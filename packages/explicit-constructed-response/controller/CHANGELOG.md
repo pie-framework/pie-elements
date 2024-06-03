@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.11.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-controller@4.11.0...@pie-element/explicit-constructed-response-controller@4.11.1) (2024-06-03)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3788, PD-1273 ([f4b6aba](https://github.com/pie-framework/pie-elements/commit/f4b6aba5c741fbf6305dba71bf47d2226f39f2ee))
+
+
+
+
+
 # [4.11.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-controller@4.10.8...@pie-element/explicit-constructed-response-controller@4.11.0) (2024-05-27)
 
 
