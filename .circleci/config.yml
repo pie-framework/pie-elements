@@ -102,8 +102,7 @@ workflows:
           filters:
             branches:
               only:
-                - feat/PD-1886-testing
-#                - develop
+                - develop
 
   release:
     jobs:
