@@ -2,15 +2,14 @@ import * as math from 'mathjs';
 import uniqWith from 'lodash/uniqWith';
 import isObject from 'lodash/isObject';
 import isNumber from 'lodash/isNumber';
-import { tickUtils } from '../../index';
 
-// All these functions are duplicated in  controller/src/tickUtils
+// All these functions are duplicated in  src/number-line/graph/tick-utils
 
 /*This will store the possible decimal tick values*/
-export const decimalTickValues = [0.001, 0.01, 0.02, 0.04, 0.05, 0.1, 0.125, 0.2, 0.25, 0.5];
+const decimalTickValues = [0.001, 0.01, 0.02, 0.04, 0.05, 0.1, 0.125, 0.2, 0.25, 0.5];
 
 /*This will store the possible fraction tick values*/
-export const fractionTickValues = [
+const fractionTickValues = [
   '1/1000',
   '1/100',
   '1/64',
@@ -34,7 +33,7 @@ export const fractionTickValues = [
 
 /*This const will store possible multiplier for label interval that needs to be multiplied
 with tick interval with denominator represented with object key.*/
-export const labelMultiplier = {
+const labelMultiplier = {
   1: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
   2: [1, 2, 4, 6, 8, 10],
   3: [1, 3, 6, 9],
@@ -57,29 +56,7 @@ export const labelMultiplier = {
   1000: [1, 2, 4, 5, 8, 10],
 };
 
-export const fractionSnapTo = (min, max, interval, value) => {
-  value = fmax(fmin(value, max), min);
-  const mod = value.mod(interval);
-  let v;
-
-  const half = interval.div(2);
-  if (math.largerEq(math.abs(mod), half)) {
-    const d = interval.sub(math.abs(mod));
-    const fn = math.largerEq(value, 0) ? 'add' : 'sub';
-    v = value[fn](d);
-  } else {
-    const fn2 = math.largerEq(value, 0) ? 'sub' : 'add';
-    v = value[fn2](math.abs(mod));
-  }
-  return v;
-};
-
-export const snapTo = (min, max, interval, value) => {
-  const out = fractionSnapTo(math.fraction(min), math.fraction(max), math.fraction(interval), math.fraction(value));
-  return math.number(out);
-};
-
-export const fractionRange = (start, end, interval) => {
+const fractionRange = (start, end, interval) => {
   const m = math.mod(math.abs(start), math.abs(interval));
   if (!math.equal(m, 0)) {
     throw new Error('start point must be divisible by interval');
@@ -110,10 +87,10 @@ export const fractionRange = (start, end, interval) => {
   return out;
 };
 
-export const zbrErrorMessage = (start, end) =>
+const zbrErrorMessage = (start, end) =>
   `Can only do a positive or negative range, but got: start: ${start} and end:${end}`;
 
-export const zeroBasedRange = (start, end, interval) => {
+const zeroBasedRange = (start, end, interval) => {
   start = math.fraction(start);
   end = math.fraction(end);
   interval = math.fraction(interval);
@@ -158,7 +135,7 @@ const fmax = (a, b) => {
  * such that it was hard to round the numbers.
  * This is a more simplistic version but makes rounding work.
  */
-export const simpleRange = (start, end, interval) => {
+const simpleRange = (start, end, interval) => {
   start = math.fraction(start);
   end = math.fraction(end);
   interval = math.fraction(interval);
@@ -172,7 +149,7 @@ export const simpleRange = (start, end, interval) => {
   return out;
 };
 
-export const closeTo = (a, b, precision) => {
+const closeTo = (a, b, precision) => {
   precision = precision || 2;
   const expectedDiff = Math.pow(10, -precision) / 2;
   const receivedDiff = Math.abs(a - b);
@@ -191,22 +168,7 @@ const limit = (v, min, max) => {
   return v;
 };
 
-/*
- * Function to get tick interval limits based on min, max and width entered by the user.
- * @param domain object containing max and min value.
- * @param width number represents width of number line.
- * */
-export const getMinorLimits = (domain, width) => {
-  const end = domain.max - domain.min;
-  const min = math.number(math.multiply(10, math.divide(math.fraction(end), width)));
-  const max = math.number(math.multiply(20, min));
-  return {
-    min: min,
-    max: max,
-  };
-};
-
-export const isMultiple = (multiple, src) => {
+const isMultiple = (multiple, src) => {
   const mod = math.mod(multiple, src);
   return math.equal(mod, 0);
 };
@@ -216,7 +178,7 @@ export const isMultiple = (multiple, src) => {
  * @param {*} v
  * @return mathjs.fraction
  */
-export const fraction = (v) => {
+const fraction = (v) => {
   if (isObject(v)) {
     return math.fraction(v.n * v.s, v.d);
   } else if (isNumber(v)) {
@@ -224,7 +186,7 @@ export const fraction = (v) => {
   }
 };
 
-export const normalizeTicks = (domain, width, ticks, opts) => {
+const normalizeTicks = (domain, width, ticks, opts) => {
   const useLimit = opts ? opts.limit !== false : true;
   const minorLimits = getMinorLimits(domain, width);
 
@@ -247,7 +209,7 @@ export const normalizeTicks = (domain, width, ticks, opts) => {
 /**
  * Build ticks as an array of mathjs Fractions
  */
-export const buildTickDataAsFractions = (domain, width, ticks, opts) => {
+const buildTickDataAsFractions = (domain, width, ticks, opts) => {
   ticks = normalizeTicks(domain, width, ticks, opts);
   const rng = simpleRange(domain.min, domain.max, ticks.minor);
 
@@ -265,6 +227,71 @@ export const buildTickDataAsFractions = (domain, width, ticks, opts) => {
     });
 
   return o;
+};
+
+const buildTickData = (domain, width, ticks, opts) => {
+  const result = buildTickDataAsFractions(domain, width, ticks, opts);
+
+  const out = result.map((o) => (opts.fraction ? o : { ...o, x: math.number(o.x) || 0 }));
+
+  return out;
+};
+
+/*
+ * Function to get tick interval limits based on min, max and width entered by the user.
+ * @param domain object containing max and min value.
+ * @param width number represents width of number line.
+ * */
+export const getMinorLimits = (domain, width) => {
+  const end = domain.max - domain.min;
+  const min = math.number(math.multiply(10, math.divide(math.fraction(end), width)));
+  const max = math.number(math.multiply(20, min));
+  return {
+    min: min,
+    max: max,
+  };
+};
+
+/*
+ * This function will generate label interval values for provided tick interval value.
+ * @param minor number representing tick interval value.
+ * @param domain object containing min and max values.
+ * @param width number representing width of number line.
+ * @return out object containing three arrays 1. fraction values, 2. decimal values,
+ * */
+export const generateMajorValuesForMinor = (minor, domain, width) => {
+  let out = { decimal: [], fraction: [] };
+  let fraction = math.fraction(math.number(math.number(minor)));
+  let n = fraction.n;
+  let d = fraction.d;
+  if (n >= 1 && d === 1) {
+    for (let i = 1; i <= 10; i++) {
+      let num = math.number(math.multiply(n, i));
+      //Here we check if this major value can plot at least 2 points on number line.
+      let ticksData = { minor: minor, major: num };
+      let output = buildTickData(domain, width, ticksData, { fraction: undefined });
+      if (output.filter((x) => x.type === 'major').length > 1) {
+        out.fraction.push(num.toString());
+        out.decimal.push(num);
+      }
+    }
+  } else {
+    for (const multiplierKey in labelMultiplier[d]) {
+      let num = math.multiply(math.fraction(n, d), labelMultiplier[d][multiplierKey]);
+      //Here we check if this major value can plot at least 2 points on number line.
+      let ticksData = { minor: minor, major: math.number(num) };
+      let output = buildTickData(domain, width, ticksData, { fraction: undefined });
+      if (output.filter((x) => x.type === 'major').length > 1) {
+        if (num.d !== 1) {
+          out.fraction.push(num.n + '/' + num.d);
+        } else {
+          out.fraction.push(num.n.toString());
+        }
+        out.decimal.push(math.number(num));
+      }
+    }
+  }
+  return out;
 };
 
 /*
@@ -286,72 +313,4 @@ export const generateMinorValues = (minorLimits) => {
     }
   });
   return out;
-};
-
-/*
- * This function will generate label interval values for provided tick interval value.
- * @param minor number representing tick interval value.
- * @param domain object containing min and max values.
- * @param width number representing width of number line.
- * @return out object containing three arrays 1. fraction values, 2. decimal values,
- * */
-export const generateMajorValuesForMinor = (minor, domain, width) => {
-  let out = { decimal: [], fraction: [] };
-  let fraction = math.fraction(math.number(math.number(minor)));
-  let n = fraction.n;
-  let d = fraction.d;
-  if (n >= 1 && d === 1) {
-    for (let i = 1; i <= 10; i++) {
-      let num = math.number(math.multiply(n, i));
-      //Here we check if this major value can plot at least 2 points on number line.
-      let ticksData = { minor: minor, major: num };
-      let output = tickUtils.buildTickData(domain, width, ticksData, { fraction: undefined });
-      if (output.filter((x) => x.type === 'major').length > 1) {
-        out.fraction.push(num.toString());
-        out.decimal.push(num);
-      }
-    }
-  } else {
-    for (const multiplierKey in labelMultiplier[d]) {
-      let num = math.multiply(math.fraction(n, d), labelMultiplier[d][multiplierKey]);
-      //Here we check if this major value can plot at least 2 points on number line.
-      let ticksData = { minor: minor, major: math.number(num) };
-      let output = tickUtils.buildTickData(domain, width, ticksData, { fraction: undefined });
-      if (output.filter((x) => x.type === 'major').length > 1) {
-        if (num.d !== 1) {
-          out.fraction.push(num.n + '/' + num.d);
-        } else {
-          out.fraction.push(num.n.toString());
-        }
-        out.decimal.push(math.number(num));
-      }
-    }
-  }
-  return out;
-};
-
-export const buildTickData = (domain, width, ticks, opts) => {
-  const result = buildTickDataAsFractions(domain, width, ticks, opts);
-
-  const out = result.map((o) => (opts.fraction ? o : { ...o, x: math.number(o.x) || 0 }));
-
-  return out;
-};
-
-export const snapElements = (domain, ticks, elements) => {
-  return elements.map((e) => {
-    const size = Number.isFinite(e.size) ? snapTo(0, e.size, ticks.minor, e.size) : undefined;
-    const domainPosition = snapTo(domain.min, domain.max, ticks.minor, e.domainPosition);
-    const out = { ...e, domainPosition };
-
-    if (Number.isFinite(size)) {
-      out.size = size;
-    }
-
-    return out;
-  });
-};
-
-export const testSharedFunction = (param) =>{
-  return 'test' + param;
 };

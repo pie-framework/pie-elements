@@ -19,6 +19,11 @@ const mkQuestion = (extras) => ({
   ],
   graph: {
     domain: { min: 0, max: 1 },
+    ticks: {
+      major: 0,
+      minor: 1,
+    },
+    width: 500,
   },
   feedback: {
     correct: {
@@ -308,6 +313,9 @@ describe('controller', () => {
         {
           graph: {
             exhibitOnly: true,
+            domain: { max: 1, min: 0 },
+            ticks: { major: 0, minor: 1 },
+            width: 500,
           },
         },
         {},
@@ -321,7 +329,13 @@ describe('controller', () => {
     describe('graph', () => {
       assertModel(
         'graph is returned',
-        { graph: { domain: { min: -1, max: 1 } } },
+        {
+          graph: {
+            domain: { min: -1, max: 1 },
+            ticks: { major: 0, minor: 1 },
+            width: 500,
+          },
+        },
         {},
         {},
         {
