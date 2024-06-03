@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 1.1.0 (2024-06-03)
+
+
+### Bug Fixes
+
+* don't reset session when Panel gets updated ([19edf14](https://github.com/pie-framework/pie-elements/commit/19edf1466b826bdabb9b5648f8c1a29c8429bc18))
+* **math-templated:** allow trailing zeros and ignore order not working in response ([67ffebf](https://github.com/pie-framework/pie-elements/commit/67ffebf00c94d405d67e7cca9d8d427d04562063))
+* typo ([8e38039](https://github.com/pie-framework/pie-elements/commit/8e380395f61631acac4a00ba6becc0f6520862bc))
+
+
+### Features
+
+* add new Response Area Type: math-templated PD-632 ([d45574b](https://github.com/pie-framework/pie-elements/commit/d45574b31265aae82805511ec11be81abc1c29e8))
+* add new Response Area Type: math-templated update pie-toolbox PD-632 ([a8c0544](https://github.com/pie-framework/pie-elements/commit/a8c054419ea5d5473eaab96236cd4a94d04c3e5f))
+* authoring - more design tweaks ([216500f](https://github.com/pie-framework/pie-elements/commit/216500f19cdd86406b13a54c5122f5005e6acc5c))
+* render responses, add/delete response area ([891fda5](https://github.com/pie-framework/pie-elements/commit/891fda5fbb4d013eb7b94a1f9e2e644e6a5a87b7))
+* show correctness, fix: update sessions according to model ([7f2eb24](https://github.com/pie-framework/pie-elements/commit/7f2eb241aa20dd8c909a638add93016071b84788))
+* started working on print ([f7ce5bf](https://github.com/pie-framework/pie-elements/commit/f7ce5bfdbcb73e7c9399db92842a6d995950eebe))
+* update pie-lib/pie-toolbox PD-3733, PD-2455 ([a507dcb](https://github.com/pie-framework/pie-elements/commit/a507dcb30bf2de72614aaba8ee576edf0c953d05))
+* use pie-toolbox that contains the customizable mask PD-632 ([5356e45](https://github.com/pie-framework/pie-elements/commit/5356e452e4d386ec54be6447a84544ce4d1bc8fa))
+* wip controller refactor, feedback and score calculations PD-632 ([335e603](https://github.com/pie-framework/pie-elements/commit/335e6030cb97666378eae665cbb9730af319b00c))
+* wip PD-632 ([3cb17f9](https://github.com/pie-framework/pie-elements/commit/3cb17f989db3b3ae87aacf8b67d834ade66ed38d))
+* wip PD-632 ([f091a3a](https://github.com/pie-framework/pie-elements/commit/f091a3a1494b377e4937903a1dacceef6bf4ab9e))
+* wip PD-632, refactored configure, changed titles, spaces, added delete icon. Added maxResponseArea support ([cd64cca](https://github.com/pie-framework/pie-elements/commit/cd64cca29df43e4b03b54ef9d613a5bb73829ee3))
+* **math-templated:** created new item type, initial setup mapping components in authoring PD-632 ([f94dc33](https://github.com/pie-framework/pie-elements/commit/f94dc33d0b476df6cd1b287c73fde17bedf1e828))
+
+
+
+
+
 ## [2.10.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/boilerplate-item-type-configure@2.10.0...@pie-element/boilerplate-item-type-configure@2.10.1) (2024-04-29)
 
 

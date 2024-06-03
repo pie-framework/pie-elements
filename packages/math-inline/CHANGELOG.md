@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.18.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@7.17.1...@pie-element/math-inline@7.18.0) (2024-06-03)
+
+
+### Bug Fixes
+
+* revert math-inline changes, those were pushed by mistake ([8dfb1b1](https://github.com/pie-framework/pie-elements/commit/8dfb1b19289a5d51c411c95983fafdbf19fca4b0))
+
+
+### Features
+
+* update pie-lib/pie-toolbox PD-3733, PD-2455 ([a507dcb](https://github.com/pie-framework/pie-elements/commit/a507dcb30bf2de72614aaba8ee576edf0c953d05))
+
+
+
+
+
 ## [7.17.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@7.17.0...@pie-element/math-inline@7.17.1) (2024-06-03)
 
 

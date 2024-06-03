@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 2.10.0 (2024-06-03)
+
+
+### Features
+
+* add new Response Area Type: math-templated update pie-toolbox PD-632 ([a8c0544](https://github.com/pie-framework/pie-elements/commit/a8c054419ea5d5473eaab96236cd4a94d04c3e5f))
+* show correctness, fix: update sessions according to model ([7f2eb24](https://github.com/pie-framework/pie-elements/commit/7f2eb241aa20dd8c909a638add93016071b84788))
+* started on player, this is wip ([234e8ad](https://github.com/pie-framework/pie-elements/commit/234e8adcc9066db6aedde11b029204dc528c3d7c))
+* update pie-lib/pie-toolbox PD-3733, PD-2455 ([a507dcb](https://github.com/pie-framework/pie-elements/commit/a507dcb30bf2de72614aaba8ee576edf0c953d05))
+* use pie-toolbox that contains the customizable mask PD-632 ([5356e45](https://github.com/pie-framework/pie-elements/commit/5356e452e4d386ec54be6447a84544ce4d1bc8fa))
+* wip added note in player and controller ([d88557b](https://github.com/pie-framework/pie-elements/commit/d88557baf6d51cbe76fb1c4adfe9aa0edea352e2))
+* wip controller refactor, feedback and score calculations PD-632 ([335e603](https://github.com/pie-framework/pie-elements/commit/335e6030cb97666378eae665cbb9730af319b00c))
+* **math-templated:** created new item type, initial setup mapping components in authoring PD-632 ([f94dc33](https://github.com/pie-framework/pie-elements/commit/f94dc33d0b476df6cd1b287c73fde17bedf1e828))
+* **math-templated:** wip implementing controller logic PD-632 ([59ba8e5](https://github.com/pie-framework/pie-elements/commit/59ba8e586cbb2d059295b9d052264aa796baa500))
+
+
+
+
+
 ## [2.9.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/boilerplate-item-type-controller@2.9.0...@pie-element/boilerplate-item-type-controller@2.9.1) (2024-04-29)
 
 

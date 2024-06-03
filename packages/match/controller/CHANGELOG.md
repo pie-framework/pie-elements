@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.9.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-controller@6.8.1...@pie-element/match-controller@6.9.0) (2024-06-03)
+
+
+### Features
+
+* update pie-lib/pie-toolbox PD-3733, PD-2455 ([a507dcb](https://github.com/pie-framework/pie-elements/commit/a507dcb30bf2de72614aaba8ee576edf0c953d05))
+
+
+
+
+
 ## [6.8.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-controller@6.8.0...@pie-element/match-controller@6.8.1) (2024-06-03)
 
 
