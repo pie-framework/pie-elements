@@ -241,97 +241,97 @@ class Response extends React.Component {
     };
 
     return (
-      <Card className={classes.responseContainer} style={styles}>
-        <CardContent className={classes.cardContent}>
-          <div className={classes.titleBar}>
-            <Typography className={classes.title} component="div">
-              Response {INDIVIDUAL_RESPONSE_CORRECTNESS_SUPPORTED ? (defaultResponse ? '' : index + 1) : ''}
-            </Typography>
+        <Card className={classes.responseContainer} style={styles}>
+          <CardContent className={classes.cardContent}>
+            <div className={classes.titleBar}>
+              <Typography className={classes.title} component="div">
+                Response {INDIVIDUAL_RESPONSE_CORRECTNESS_SUPPORTED ? (defaultResponse ? '' : index + 1) : ''}
+              </Typography>
 
-            <InputContainer label="Validation" className={classes.selectContainer}>
-              <Select className={classes.select} onChange={this.onChange('validation')} value={validation || 'literal'}>
-                <MenuItem value="literal">Literal Validation</MenuItem>
-                <MenuItem value="symbolic">Symbolic Validation</MenuItem>
-              </Select>
-            </InputContainer>
-          </div>
-
-          {validation === 'literal' && (
-            <div className={classes.flexContainer}>
-              {cAllowTrailingZeros.enabled && (
-                <FormControlLabel
-                  label={cAllowTrailingZeros.label}
-                  control={
-                    <Checkbox
-                      checked={allowTrailingZeros}
-                      onChange={this.onLiteralOptionsChange('allowTrailingZeros')}
-                    />
-                  }
-                />
-              )}
-
-              {cIgnoreOrder.enabled && (
-                <FormControlLabel
-                  label={cIgnoreOrder.label}
-                  control={<Checkbox checked={ignoreOrder} onChange={this.onLiteralOptionsChange('ignoreOrder')} />}
-                />
-              )}
+              <InputContainer label="Validation" className={classes.selectContainer}>
+                <Select className={classes.select} onChange={this.onChange('validation')} value={validation || 'literal'}>
+                  <MenuItem value="literal">Literal Validation</MenuItem>
+                  <MenuItem value="symbolic">Symbolic Validation</MenuItem>
+                </Select>
+              </InputContainer>
             </div>
-          )}
 
-          <div className={classes.inputContainer}>
-            <InputLabel>Correct Answer</InputLabel>
-            <MathToolbar
-              keypadMode={mode}
-              classNames={classNames}
-              controlledKeypad
-              showKeypad={showKeypad.main}
-              latex={answer || ''}
-              onChange={this.onAnswerChange}
-              onFocus={this.onFocus}
-              onDone={this.onDone}
-              error={error && error.answer}
-            />
-            {error && error.answer ? <div className={classes.errorText}>{error.answer}</div> : null}
-          </div>
+            {validation === 'literal' && (
+                <div className={classes.flexContainer}>
+                  {cAllowTrailingZeros.enabled && (
+                      <FormControlLabel
+                          label={cAllowTrailingZeros.label}
+                          control={
+                            <Checkbox
+                                checked={allowTrailingZeros}
+                                onChange={this.onLiteralOptionsChange('allowTrailingZeros')}
+                            />
+                          }
+                      />
+                  )}
 
-          {hasAlternates &&
-            Object.keys(alternates).map((alternateId, altIdx) => (
-              <div className={classes.inputContainer} key={alternateId}>
-                <div className={classes.alternateBar}>
-                  <InputLabel>
-                    Alternate
-                    {Object.keys(alternates).length > 1 ? ` ${altIdx + 1}` : ''}
-                  </InputLabel>
-                  <Button
-                    className={classes.removeAlternateButton}
-                    type="secondary"
-                    onClick={this.onRemoveAlternate(alternateId)}
-                  >
-                    Remove
-                  </Button>
+                  {cIgnoreOrder.enabled && (
+                      <FormControlLabel
+                          label={cIgnoreOrder.label}
+                          control={<Checkbox checked={ignoreOrder} onChange={this.onLiteralOptionsChange('ignoreOrder')} />}
+                      />
+                  )}
                 </div>
+            )}
 
-                <MathToolbar
+            <div className={classes.inputContainer}>
+              <InputLabel>Correct Answer</InputLabel>
+              <MathToolbar
+                  keypadMode={mode}
                   classNames={classNames}
                   controlledKeypad
-                  keypadMode={mode}
-                  showKeypad={showKeypad[alternateId] || false}
-                  latex={alternates[alternateId] || ''}
-                  onChange={this.onAlternateAnswerChange(alternateId)}
-                  onFocus={this.onAlternateFocus(alternateId)}
-                  onDone={this.onAlternateDone(alternateId)}
-                  error={error && error[alternateId]}
-                />
-                {error && error[alternateId] ? <div className={classes.errorText}>{error[alternateId]}</div> : null}
-              </div>
-            ))}
+                  showKeypad={showKeypad.main}
+                  latex={answer || ''}
+                  onChange={this.onAnswerChange}
+                  onFocus={this.onFocus}
+                  onDone={this.onDone}
+                  error={error && error.answer}
+              />
+              {error && error.answer ? <div className={classes.errorText}>{error.answer}</div> : null}
+            </div>
 
-          <Button className={classes.alternateButton} type="primary" onClick={this.onAddAlternate}>
-            ADD ALTERNATE
-          </Button>
-        </CardContent>
-      </Card>
+            {hasAlternates &&
+                Object.keys(alternates).map((alternateId, altIdx) => (
+                    <div className={classes.inputContainer} key={alternateId}>
+                      <div className={classes.alternateBar}>
+                        <InputLabel>
+                          Alternate
+                          {Object.keys(alternates).length > 1 ? ` ${altIdx + 1}` : ''}
+                        </InputLabel>
+                        <Button
+                            className={classes.removeAlternateButton}
+                            type="secondary"
+                            onClick={this.onRemoveAlternate(alternateId)}
+                        >
+                          Remove
+                        </Button>
+                      </div>
+
+                      <MathToolbar
+                          classNames={classNames}
+                          controlledKeypad
+                          keypadMode={mode}
+                          showKeypad={showKeypad[alternateId] || false}
+                          latex={alternates[alternateId] || ''}
+                          onChange={this.onAlternateAnswerChange(alternateId)}
+                          onFocus={this.onAlternateFocus(alternateId)}
+                          onDone={this.onAlternateDone(alternateId)}
+                          error={error && error[alternateId]}
+                      />
+                      {error && error[alternateId] ? <div className={classes.errorText}>{error[alternateId]}</div> : null}
+                    </div>
+                ))}
+
+            <Button className={classes.alternateButton} type="primary" onClick={this.onAddAlternate}>
+              ADD ALTERNATE
+            </Button>
+          </CardContent>
+        </Card>
     );
   }
 }
