@@ -654,7 +654,8 @@ const styles = (theme) => ({
     position: 'relative',
     '& > div > div': {
       display: 'flex',
-      alignItems: 'baseline'
+      alignItems: 'baseline',
+      flexWrap: 'wrap'
     },
     '& .mq-overarrow-inner': {
       border: 'none !important',
