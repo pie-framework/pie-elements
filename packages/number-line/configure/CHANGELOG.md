@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.9.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-configure@7.9.1...@pie-element/number-line-configure@7.9.2) (2024-06-03)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3788, PD-1273 ([f4b6aba](https://github.com/pie-framework/pie-elements/commit/f4b6aba5c741fbf6305dba71bf47d2226f39f2ee))
+* **number-line:** reload graph in controller PD-3738 ([2bc6593](https://github.com/pie-framework/pie-elements/commit/2bc6593596d969e9334fca7f6a66b28a4ffac515))
+
+
+
+
+
 ## [7.9.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-configure@7.9.0...@pie-element/number-line-configure@7.9.1) (2024-05-27)
 
 

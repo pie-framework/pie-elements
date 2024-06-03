@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.17.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@7.17.0...@pie-element/math-inline@7.17.1) (2024-06-03)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3788, PD-1273 ([f4b6aba](https://github.com/pie-framework/pie-elements/commit/f4b6aba5c741fbf6305dba71bf47d2226f39f2ee))
+* **math-inline:** update how feedback is generated PD-1273 ([930015e](https://github.com/pie-framework/pie-elements/commit/930015e417d58767761fdb7dae573fac2a59e374))
+
+
+
+
+
 # [7.17.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@7.16.6...@pie-element/math-inline@7.17.0) (2024-05-27)
 
 
