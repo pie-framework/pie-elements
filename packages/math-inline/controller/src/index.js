@@ -1,6 +1,7 @@
 import debug from 'debug';
 import isEmpty from 'lodash/isEmpty';
-import { getFeedbackForCorrectness } from '@pie-lib/pie-toolbox/feedback';
+import { getActualFeedbackForCorrectness } from '@pie-lib/pie-toolbox/feedback';
+
 import { ResponseTypes } from './utils';
 import Translator from '@pie-lib/pie-toolbox/translator';
 
@@ -90,6 +91,8 @@ const getCorrectness = (question, env, session, isOutcome) => {
       isOutcome,
     );
   }
+
+  return undefined;
 };
 
 export function createDefaultModel(model = {}) {
@@ -141,76 +144,62 @@ export const normalize = (question) => {
   };
 };
 
-export function model(question, session, env) {
-  return new Promise((resolve) => {
+export const model = (question, session, env) =>
+  new Promise((resolve) => {
     const normalizedQuestion = normalize(question);
     const correctness = getCorrectness(normalizedQuestion, env, session);
     const { responses, language, ...config } = normalizedQuestion;
-    let { note } = normalizedQuestion;
 
-    if (config.responseType === ResponseTypes.simple) {
-      config.responses = responses.slice(0, 1);
+    config.responses = config.responseType === ResponseTypes.simple ? responses.slice(0, 1) : responses;
+
+    const feedback =
+      env.mode === 'evaluate' && normalizedQuestion.feedbackEnabled
+        ? getActualFeedbackForCorrectness(correctness?.correctness, normalizedQuestion.feedback)
+        : undefined;
+
+    const out = {
+      config,
+      correctness,
+      feedback,
+      disabled: env.mode !== 'gather',
+      view: env.mode === 'view',
+    };
+
+    const note = normalizedQuestion.note || translator.t('mathInline.primaryCorrectWithAlternates', { lng: language });
+    const showNote =
+      config?.responses?.length > 1 ||
+      (config?.responses || []).some(
+        (response) => response.validation === 'symbolic' || Object.keys(response.alternates || {}).length > 0,
+      );
+
+    if (env.mode === 'evaluate') {
+      out.correctResponse = {};
+      out.config.showNote = showNote;
+      out.config.note = note;
     } else {
-      config.responses = responses;
+      out.config.responses = [];
+      out.config.showNote = false;
     }
 
-    const fb =
-      env.mode === 'evaluate' && normalizedQuestion.feedbackEnabled
-        ? getFeedbackForCorrectness(correctness, normalizedQuestion.feedback)
-        : Promise.resolve(undefined);
+    if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
+      out.rationale = normalizedQuestion.rationaleEnabled ? normalizedQuestion.rationale : null;
+      out.teacherInstructions = normalizedQuestion.teacherInstructionsEnabled
+        ? normalizedQuestion.teacherInstructions
+        : null;
+    } else {
+      out.rationale = null;
+      out.teacherInstructions = null;
+      out.config.rationale = null;
+      out.config.teacherInstructions = null;
+    }
 
-    fb.then((feedback) => {
-      const base = {
-        config,
-        correctness,
-        feedback,
-        disabled: env.mode !== 'gather',
-        view: env.mode === 'view',
-      };
+    out.config.env = env;
+    out.config.prompt = normalizedQuestion.promptEnabled ? normalizedQuestion.prompt : null;
+    out.language = language;
 
-      const out = base;
-      let showNote = !!(config?.responses?.length > 1);
-
-      if (!note) {
-        note = translator.t('mathInline.primaryCorrectWithAlternates', { lng: language });
-      }
-      ((config && config.responses) || []).forEach((response) => {
-        if (response.validation === 'symbolic' || Object.keys(response.alternates || {}).length > 0) {
-          showNote = true;
-          return;
-        }
-      });
-
-      if (env.mode === 'evaluate') {
-        out.correctResponse = {};
-        out.config.showNote = showNote;
-        out.config.note = note;
-      } else {
-        out.config.responses = [];
-        out.config.showNote = false;
-      }
-
-      if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
-        out.rationale = normalizedQuestion.rationaleEnabled ? normalizedQuestion.rationale : null;
-        out.teacherInstructions = normalizedQuestion.teacherInstructionsEnabled
-          ? normalizedQuestion.teacherInstructions
-          : null;
-      } else {
-        out.rationale = null;
-        out.teacherInstructions = null;
-        out.config.rationale = null;
-        out.config.teacherInstructions = null;
-      }
-
-      out.config.env = env;
-      out.config.prompt = normalizedQuestion.promptEnabled ? normalizedQuestion.prompt : null;
-      out.language = language;
-
-      log('out: ', out);
-      resolve(out);
-    });
+    log('out: ', out);
+    resolve(out);
   });
-}
 
 const escape = (string) => string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
 
@@ -227,9 +216,7 @@ const simpleSessionResponse = (question) =>
   });
 
 // use this for items like E672793
-const removeTrailingEscape = (str) => {
-  return str.endsWith('\\') ? str.slice(0, -1) : str;
-};
+const removeTrailingEscape = (str) => (str.endsWith('\\') ? str.slice(0, -1) : str);
 
 const advancedSessionResponse = (question) =>
   new Promise((resolve) => {
