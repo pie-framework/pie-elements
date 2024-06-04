@@ -448,19 +448,23 @@ class Design extends React.Component {
         {Object.keys(responses || {}).map((responseKey, idx) => {
           const response = responses[responseKey];
 
-          return (
-            <Response
-              key={responseKey}
-              responseKey={responseKey}
-              mode={equationEditor}
-              response={response}
-              onResponseChange={this.onResponseChange}
-              index={idx}
-              cIgnoreOrder={cIgnoreOrder}
-              cAllowTrailingZeros={cAllowTrailingZeros}
-              error={responsesErrors && responsesErrors[idx]}
-            />
-          );
+          if (response) {
+            return (
+                <Response
+                    key={responseKey}
+                    responseKey={responseKey}
+                    mode={equationEditor}
+                    response={response}
+                    onResponseChange={this.onResponseChange}
+                    index={idx}
+                    cIgnoreOrder={cIgnoreOrder}
+                    cAllowTrailingZeros={cAllowTrailingZeros}
+                    error={responsesErrors && responsesErrors[idx]}
+                />
+            );
+          }
+
+          return null;
         })}
 
         {rationaleEnabled && (

@@ -62,7 +62,7 @@ const getResponseCorrectness = (question, sessionResponse) => {
 
     Object.keys(correctResponses).forEach((responseId) => {
       const answerItem = sessionResponse['r' + responseId];
-      const correctResponse = correctResponses[responseId];
+      const correctResponse = correctResponses[responseId] || {};
 
       const answerCorrect = getIsAnswerCorrect(correctResponse, answerItem);
       if (answerCorrect) {
@@ -142,7 +142,7 @@ export const model = (question, session, env) => {
 
     // check if there is at least one alternate response or if the validation for at least one response is not literal
     Object.keys(responses).forEach((responseId) => {
-      const correctResponse = responses[responseId];
+      const correctResponse = responses[responseId] || {};
       if (correctResponse.alternates && Object.keys(correctResponse.alternates).length > 0) {
         showNote = true;
       } else if (correctResponse.validation !== 'literal') {

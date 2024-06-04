@@ -55,8 +55,6 @@ export default class MathTemplated extends HTMLElement {
     }
 
     render() {
-        console.log('In Player Render, session.answers', this._session?.answers);
-
         if (!this._model || !this._session) {
             return;
         }
