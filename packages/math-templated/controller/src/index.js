@@ -58,9 +58,11 @@ const getResponseCorrectness = (question, sessionResponse) => {
     let correctAnswers = 0;
     let score = 0;
     let correct = false;
+    const correctResponsesCount = Object.keys(correctResponses || {}).length;
+
     Object.keys(correctResponses).forEach((responseId) => {
       const answerItem = sessionResponse['r' + responseId];
-      const correctResponse = correctResponses[responseId];
+      const correctResponse = correctResponses[responseId] || {};
 
       const answerCorrect = getIsAnswerCorrect(correctResponse, answerItem);
       if (answerCorrect) {
@@ -68,12 +70,14 @@ const getResponseCorrectness = (question, sessionResponse) => {
       }
     });
 
+    const fullyCorrect = correctAnswers === correctResponsesCount;
+
     // partial credit scoring: each correct answer is worth 1 / total answers point
     // dichotomous scoring: for credit to be awarded, a correct answer must be entered for every response area
     score = (correctAnswers / Object.keys(correctResponses).length).toFixed(2);
 
     return {
-      correctness: correctAnswers > 0 ? 'correct' : 'incorrect',
+      correctness: fullyCorrect ? 'correct' : 'incorrect',
       score: correctAnswers > 0 ? score : 0,
       correct
     };
@@ -138,7 +142,7 @@ export const model = (question, session, env) => {
 
     // check if there is at least one alternate response or if the validation for at least one response is not literal
     Object.keys(responses).forEach((responseId) => {
-      const correctResponse = responses[responseId];
+      const correctResponse = responses[responseId] || {};
       if (correctResponse.alternates && Object.keys(correctResponse.alternates).length > 0) {
         showNote = true;
       } else if (correctResponse.validation !== 'literal') {
