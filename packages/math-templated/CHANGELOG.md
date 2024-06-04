@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.13.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-templated@2.12.1...@pie-element/math-templated@2.13.0) (2024-06-04)
+
+
+### Features
+
+* **math-templated:** add validation method PD-3805 ([b4ae58a](https://github.com/pie-framework/pie-elements/commit/b4ae58a7f4b65d848d1c003cd964e6cf7f50ce45))
+
+
+
+
+
 ## [2.12.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-templated@2.12.0...@pie-element/math-templated@2.12.1) (2024-06-04)
 
 
