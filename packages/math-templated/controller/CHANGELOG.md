@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.10.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-templated-controller@2.10.0...@pie-element/math-templated-controller@2.10.1) (2024-06-04)
+
+
+### Bug Fixes
+
+* answer correctness is "correct" only if it's fully correct PD-3806, PD-3812 ([72e1655](https://github.com/pie-framework/pie-elements/commit/72e1655c64f038ab7fbbb45e7f0b6e885e41de66))
+* sanity checks PD-3820 ([f3306b6](https://github.com/pie-framework/pie-elements/commit/f3306b69bd77dda7c3b330ab10d912380991888c))
+
+
+
+
+
 # 2.10.0 (2024-06-03)
 
 
