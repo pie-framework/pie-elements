@@ -254,12 +254,11 @@ class Design extends React.Component {
     } = model || {};
 
     const {
-      choices: choicesErrors = {},
       prompt: promptError,
       rationale: rationaleError,
       responseAreas: responseAreasError,
       teacherInstructions: teacherInstructionsError,
-      responses: responsesErrors,
+      responses: responsesErrors = {},
     } = errors || {};
 
     const panelSettings = {
@@ -392,7 +391,7 @@ class Design extends React.Component {
           responseAreaProps={{
             type: 'math-templated',
             respAreaToolbar: null,
-            error: () => choicesErrors,
+            error: () => responsesErrors,
             onHandleAreaChange: this.onHandleAreaChange,
             maxResponseAreas: maxResponseAreas,
           }}
@@ -412,6 +411,9 @@ class Design extends React.Component {
           ]}
           mathMlOptions={mathMlOptions}
         />
+        {responseAreasError && (
+          <div className={classes.responseAreaError}>{responseAreasError}</div>
+        )}
 
         <Typography className={classes.title}>Define Response</Typography>
 
@@ -525,6 +527,11 @@ export default withStyles((theme) => ({
     color: theme.palette.error.main,
     fontSize: '0.75rem',
     marginTop: theme.spacing.unit,
+  },
+  responseAreaError: {
+    color: theme.palette.error.main,
+    fontSize: '0.75rem',
+    marginBottom: theme.spacing.unit,
   },
   markup: {
     width: '100%',
