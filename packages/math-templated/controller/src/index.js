@@ -2,7 +2,6 @@ import debug from 'debug';
 import isEmpty from 'lodash/isEmpty';
 import Translator from '@pie-lib/pie-toolbox/translator';
 import * as mv from '@pie-framework/math-validation';
-import { getFeedbackForCorrectness } from '@pie-lib/pie-toolbox/feedback';
 
 import defaults from './defaults';
 import { partialScoring } from '@pie-lib/pie-toolbox/controller-utils';
@@ -11,6 +10,7 @@ const { translator } = Translator;
 const log = debug('@pie-element:math-templated:controller');
 
 const getFeedback = value => value ? 'correct' : 'incorrect';
+const getContent = (html) => (html || '').replace(/(<(?!img|iframe)([^>]+)>)/gi, '');
 
 const getIsAnswerCorrect = (correctResponse, answerItem) => {
   let answerCorrect = false;
@@ -214,7 +214,56 @@ export const createCorrectResponseSession = (question, env) =>
   });
 
 export const validate = (model = {}, config = {}) => {
+  const { responses, markup } = model;
+  const { maxResponseAreas } = config;
+  const responsesErrors = {};
   const errors = {};
+
+  ['teacherInstructions', 'prompt', 'rationale'].forEach((field) => {
+    if (config[field]?.required && !getContent(model[field])) {
+      errors[field] = 'This field is required.';
+    }
+  });
+
+  Object.entries(responses || {}).forEach(([key, response], index) => {
+    const { answer } = response;
+    const reversedAlternates = [...Object.entries(response.alternates || {})].reverse();
+    const alternatesErrors = {};
+    const responseError = {};
+
+    if (answer === '') {
+      responseError.answer = 'Content should not be empty.';
+    }
+
+    reversedAlternates.forEach(([key, value], index) => {
+      if (value === '') {
+        alternatesErrors[key] = 'Content should not be empty.';
+      } else {
+        const identicalAnswer =
+          answer === value || reversedAlternates.slice(index + 1).some(([, val]) => val === value);
+
+        if (identicalAnswer) {
+          alternatesErrors[key] = 'Content should be unique.';
+        }
+      }
+    });
+
+    if (!isEmpty(responseError) || !isEmpty(alternatesErrors)) {
+      responsesErrors[index] = { ...responseError, ...alternatesErrors };
+    }
+  });
+
+  const nbOfResponseAreas = (markup.match(/\{\{(\d+)\}\}/g) || []).length;
+
+  if (nbOfResponseAreas > maxResponseAreas) {
+    errors.responseAreas = `No more than ${maxResponseAreas} response areas should be defined.`;
+  } else if (nbOfResponseAreas < 1) {
+    errors.responseAreas = 'There should be at least 1 response area defined.';
+  }
+
+  if (!isEmpty(responsesErrors)) {
+    errors.responses = responsesErrors;
+  }
 
   return errors;
 };
