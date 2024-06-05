@@ -4,6 +4,8 @@ import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
+import Info from '@material-ui/icons/Info';
+import Tooltip from '@material-ui/core/Tooltip';
 import cloneDeep from 'lodash/cloneDeep';
 import pick from 'lodash/pick';
 import throttle from 'lodash/throttle';
@@ -20,9 +22,7 @@ import { dropdown } from '@pie-lib/pie-toolbox/code/config-ui/settings';
 
 import Response from './response';
 import { processMarkup } from './markupUtils';
-import { generateValidationMessage } from '@pie-element/explicit-constructed-response-configure/src/utils';
-import Info from '@material-ui/icons/Info';
-import Tooltip from '@material-ui/core/Tooltip';
+import { generateValidationMessage } from './utils';
 
 const { Panel, toggle } = settings;
 
