@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.11.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-templated-controller@2.11.0...@pie-element/math-templated-controller@2.11.1) (2024-06-05)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3811 ([a74ed7d](https://github.com/pie-framework/pie-elements/commit/a74ed7d3b31d532266306ea02ec94692fed80690))
+
+
+
+
+
 # [2.11.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-templated-controller@2.10.1...@pie-element/math-templated-controller@2.11.0) (2024-06-04)
 
 
