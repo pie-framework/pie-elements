@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-templated-configure@1.2.0...@pie-element/math-templated-configure@1.3.0) (2024-06-05)
+
+
+### Bug Fixes
+
+* imports ([8d15170](https://github.com/pie-framework/pie-elements/commit/8d151702fe58e6154041b08270121a2ca8c76142))
+* update pie-lib/pie-toolbox PD-3811 ([a74ed7d](https://github.com/pie-framework/pie-elements/commit/a74ed7d3b31d532266306ea02ec94692fed80690))
+
+
+### Features
+
+* **math-templated:** info tooltip for validation PD-3828 ([b690e77](https://github.com/pie-framework/pie-elements/commit/b690e775f11ad4b563d7cf1805c8a466b62a5e1b))
+
+
+
+
+
 # [1.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-templated-configure@1.1.1...@pie-element/math-templated-configure@1.2.0) (2024-06-04)
 
 
