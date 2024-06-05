@@ -4,6 +4,8 @@ import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
+import Info from '@material-ui/icons/Info';
+import Tooltip from '@material-ui/core/Tooltip';
 import cloneDeep from 'lodash/cloneDeep';
 import pick from 'lodash/pick';
 import throttle from 'lodash/throttle';
@@ -20,6 +22,7 @@ import { dropdown } from '@pie-lib/pie-toolbox/code/config-ui/settings';
 
 import Response from './response';
 import { processMarkup } from './markupUtils';
+import { generateValidationMessage } from './utils';
 
 const { Panel, toggle } = settings;
 
@@ -260,6 +263,7 @@ class Design extends React.Component {
       teacherInstructions: teacherInstructionsError,
       responses: responsesErrors = {},
     } = errors || {};
+    const validationMessage = generateValidationMessage(configuration);
 
     const panelSettings = {
       'language.enabled': language.settings && toggle(language.label, true),
@@ -377,9 +381,18 @@ class Design extends React.Component {
             )}
           </InputContainer>
         )}
-
-        <Typography className={classes.title}>Response Template</Typography>
-
+        <div className={classes.tooltipContainer}>
+          <Typography className={classes.title}>Response Template</Typography>
+          <Tooltip
+            classes={{ tooltip: classes.tooltip }}
+            disableFocusListener
+            disableTouchListener
+            placement={'right'}
+            title={validationMessage}
+          >
+            <Info fontSize={'small'} color={'primary'} />
+          </Tooltip>
+        </div>
         <EditableHtml
           activePlugins={ALL_PLUGINS}
           toolbarOpts={{ position: 'top' }}
@@ -548,5 +561,15 @@ export default withStyles((theme) => ({
   title: {
     fontSize: theme.typography.fontSize * 1.25,
     fontWeight: 'bold',
-  }
+  },
+  tooltipContainer: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '8px',
+  },
+  tooltip: {
+    fontSize: theme.typography.fontSize - 2,
+    whiteSpace: 'pre',
+    maxWidth: '500px',
+  },
 }))(Design);
