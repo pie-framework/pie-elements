@@ -24,6 +24,12 @@ const initializeGraphMap = () => ({
   exponential: [],
 });
 
+const graphObjectsOrder = {
+  "incorrect": 0,
+  "correct": 1,
+  "missing": 2
+};
+
 export const compareMarks = (mark1, mark2) => {
   // marks can be compared with equalMarks[type] function only if they have the same type;
   // if type is different, they are clearly not equal
@@ -36,6 +42,10 @@ export const compareMarks = (mark1, mark2) => {
   );
 };
 
+export const comparLabelMarks = (mark1, mark2) => {
+  return mark1.label === mark2.label ? 'correct' : 'incorrect';
+}
+
 export const getAnswerCorrected = ({ sessionAnswers, marks: correctAnswers }) => {
   sessionAnswers = sessionAnswers || [];
   correctAnswers = correctAnswers || [];
@@ -44,7 +54,11 @@ export const getAnswerCorrected = ({ sessionAnswers, marks: correctAnswers }) =>
     const answerIsCorrect = correctAnswers.find((mark) => compareMarks(answer, mark));
 
     answer.correctness = answerIsCorrect ? 'correct' : 'incorrect';
-
+    if(answerIsCorrect) {
+      answer.correctnesslabel = comparLabelMarks(answer, answerIsCorrect);
+      answer.correctlabel = answerIsCorrect.label ? answerIsCorrect.label : "";
+      answer.label = answer.label ? answer.label : "";
+    }
     return [...correctedAnswer, answer];
   }, []);
 
@@ -239,7 +253,7 @@ export function model(question, session, env) {
       ) {
         const { answersCorrected, bestScoreAnswerKey, bestScore } = getBestAnswer(normalizedQuestion, session, env);
         // array of marks from session with 'correctness' property set
-        base.answersCorrected = answersCorrected;
+        base.answersCorrected = answersCorrected.sort((a, b) => graphObjectsOrder[a.correctness] - graphObjectsOrder[b.correctness]);
         base.correctResponse = bestScoreAnswerKey ? (answers[bestScoreAnswerKey] || {}).marks : [];
         base.showToggle = base.showToggle && bestScore !== 1;
       } else {
