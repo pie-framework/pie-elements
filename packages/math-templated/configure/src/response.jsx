@@ -267,7 +267,7 @@ class Response extends React.Component {
             ))}
 
           <Button className={classes.alternateButton} type="primary" onClick={this.onAddAlternate}>
-            ADD
+            ADD ALTERNATE
           </Button>
         </CardContent>
       </Card>
