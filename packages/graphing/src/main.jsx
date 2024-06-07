@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { GraphContainer } from '@pie-lib/pie-toolbox/graphing';
+import { GraphContainer, KeyLegend } from '@pie-lib/pie-toolbox/graphing';
 import { color, Collapsible, hasText, PreviewPrompt } from '@pie-lib/pie-toolbox/render-ui';
 import { CorrectAnswerToggle } from '@pie-lib/pie-toolbox/correct-answer-toggle';
 
@@ -48,7 +48,7 @@ export class Main extends React.Component {
     } = model || {};
     const size = model?.size || model?.graph || {}; // need this for models that are not processed by controller
     const marks = answersCorrected || answer || [];
-
+    const isLabelAvailable = toolbarTools.includes('label');
     return (
       <div className={classes.mainContainer}>
         {teacherInstructions && hasText(teacherInstructions) && (
@@ -114,7 +114,7 @@ export class Main extends React.Component {
             limitLabeling={true}
           />
         )}
-
+        <KeyLegend isLabelAvailable={isLabelAvailable}></KeyLegend>
         {rationale && hasText(rationale) && (
           <Collapsible labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }}>
             <PreviewPrompt prompt={rationale} />
