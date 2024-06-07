@@ -178,6 +178,7 @@ export class Design extends React.Component {
   render() {
     const { classes, configuration, imageSupport, model, uploadSoundSupport, onConfigurationChanged } = this.props;
     const {
+      allowAlternate = {},
       allowMultiplePlacements = {},
       baseInputConfiguration = {},
       categoriesPerRow = {},
@@ -273,8 +274,7 @@ export class Design extends React.Component {
         }),
       promptEnabled: prompt.settings && toggle(prompt.label),
       feedbackEnabled: feedback.settings && toggle(feedback.label),
-      // PD-2960: deleted temporary from settings panel
-      // allowAlternateEnabled: allowAlternate.settings && toggle(allowAlternate.label),
+      allowAlternateEnabled: allowAlternate.settings && toggle(allowAlternate.label),
       'language.enabled': language.settings && toggle(language.label, true),
       language: language.settings && language.enabled && dropdown(languageChoices.label, languageChoices.options),
     };

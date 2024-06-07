@@ -114,10 +114,9 @@ export const createDefaultModel = (model = {}) =>
   });
 
 export const normalize = (question) => {
-  const newQuestion = disableAlternateResponses(question);
   return {
     ...defaults,
-    ...newQuestion,
+    ...question,
   };
 };
 
@@ -193,7 +192,7 @@ export const model = (question, session, env, updateSession) =>
       env,
       showNote: alternates && alternates.length > 0,
       correctResponse: mode === 'evaluate' ? filteredCorrectResponse : undefined,
-      language
+      language,
     };
 
     if (role === 'instructor' && (mode === 'view' || mode === 'evaluate')) {
