@@ -48,7 +48,7 @@ export class Main extends React.Component {
     } = model || {};
     const size = model?.size || model?.graph || {}; // need this for models that are not processed by controller
     const marks = answersCorrected || answer || [];
-    const isLabelAvailable = toolbarTools.includes('label');
+    const isLabelAvailable = toolbarTools?.includes('label') || false;
     return (
       <div className={classes.mainContainer}>
         {teacherInstructions && hasText(teacherInstructions) && (
