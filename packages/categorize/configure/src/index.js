@@ -41,7 +41,7 @@ export default class CategorizeConfigure extends HTMLElement {
   }
 
   set model(m) {
-    this._model = CategorizeConfigure.disableAlternateResponses(CategorizeConfigure.createDefaultModel(m));
+    this._model = CategorizeConfigure.createDefaultModel(m);
     this.render();
   }
 
@@ -70,7 +70,7 @@ export default class CategorizeConfigure extends HTMLElement {
 
       // check if the language is already included in the languageChoices.options array
       // and if not, then add it.
-      if (!this._configuration.languageChoices.options.find(option => option.value === this._model.language)) {
+      if (!this._configuration.languageChoices.options.find((option) => option.value === this._model.language)) {
         this._configuration.languageChoices.options.push({
           value: this._model.language,
           label: this._model.language,
