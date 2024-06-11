@@ -264,18 +264,39 @@ export class Main extends React.Component {
     }
 
     updateAria = () => {
+        const {classes} = this.props;
+        
         if (this.root) {
             // Update aria-hidden for .mq-selectable elements
             const selectableElements = this.root.querySelectorAll('.mq-selectable');
             selectableElements.forEach(elem => elem.setAttribute('aria-hidden', 'true'));
-
-            // Update aria-label for textarea elements
+    
+            // Update aria-label for textarea elements and add aria-describedby
             const textareaElements = this.root.querySelectorAll('textarea');
             textareaElements.forEach(elem => {
-                elem.setAttribute('aria-label', 'Enter answer using math editor buttons or keyboard.');
+                elem.setAttribute('aria-label', 'Enter answer.');
+    
+                // Find the parent element that contains the textarea
+                const parent = elem.closest('.mq-textarea');
+    
+                if (parent) {
+                    // Create or find the instructions element within the parent
+                    let instructionsElement = parent.querySelector('#instructions');
+    
+                    if (!instructionsElement) {
+                        instructionsElement = document.createElement('span');
+                        instructionsElement.id = 'instructions';
+                        instructionsElement.className = classes.srOnly
+                        instructionsElement.textContent = 'This field automatically displays a math keypad. Both keypad and keyboard input are accepted, and keyboard entry accepts LaTeX markup.';
+                        parent.insertBefore(instructionsElement, elem);
+                    }
+    
+                    elem.setAttribute('aria-describedby', 'instructions');
+                }
             });
         }
     };
+    
 
   onDone = () => {};
 
