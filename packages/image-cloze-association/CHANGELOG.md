@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.18.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@5.17.2...@pie-element/image-cloze-association@5.18.0) (2024-06-13)
+
+
+### Features
+
+* update pie-toolbox PD-3735 ([7a38768](https://github.com/pie-framework/pie-elements/commit/7a38768b320640de853e90e137082e141ee4ad1f))
+
+
+
+
+
 ## [5.17.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@5.17.1...@pie-element/image-cloze-association@5.17.2) (2024-06-13)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.13.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@7.12.2...@pie-element/select-text-configure@7.13.0) (2024-06-13)
+
+
+### Features
+
+* update pie-toolbox PD-3735 ([7a38768](https://github.com/pie-framework/pie-elements/commit/7a38768b320640de853e90e137082e141ee4ad1f))
+
+
+
+
+
 ## [7.12.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@7.12.1...@pie-element/select-text-configure@7.12.2) (2024-06-13)
 
 

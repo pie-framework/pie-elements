@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.15.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-templated@2.14.2...@pie-element/math-templated@2.15.0) (2024-06-13)
+
+
+### Features
+
+* update pie-toolbox PD-3735 ([7a38768](https://github.com/pie-framework/pie-elements/commit/7a38768b320640de853e90e137082e141ee4ad1f))
+* **math-templated:** use validationDefault, allowTrailingZerosDefault, and ignoreOrderDefault for new answers and missing props PD-3819 ([6ab15ac](https://github.com/pie-framework/pie-elements/commit/6ab15ace31464dde52d42460f392f4e4a9d15e5f))
+
+
+
+
+
 ## [2.14.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-templated@2.14.1...@pie-element/math-templated@2.14.2) (2024-06-13)
 
 
