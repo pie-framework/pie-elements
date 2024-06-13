@@ -20,5 +20,8 @@ exports[`Main render snapshot 1`] = `
     onChangeMarks={[MockFunction]}
     size={Object {}}
   />
+  <Component
+    isLabelAvailable={false}
+  />
 </div>
 `;
