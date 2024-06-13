@@ -186,8 +186,20 @@ export class Main extends React.Component {
   };
 
   UNSAFE_componentWillReceiveProps(nextProps) {
-    const { markup } = this.props.model;
-    const { markup: nextMarkup } = nextProps.model || {};
+    const { model } = this.props;
+    const { model: nextModel = {} } = nextProps || {};
+    const { markup = '', env = {} } = model || {};
+    const { markup: nextMarkup = '', env: nextEnv = {}, alwaysShowCorrect: nextAlwaysShowCorrect = false } = nextModel;
+
+    const isEvaluateMode = (env) => env && env.mode === 'evaluate';
+
+    if (!isEvaluateMode(env) || !isEvaluateMode(nextEnv)) {
+      this.setState((prevState) => ({ ...prevState.session, showCorrect: false }));
+    }
+
+    if (nextAlwaysShowCorrect) {
+      this.setState({ showCorrect: true });
+    }
 
     const matches = markup.match(REGEX);
     const nextMatches = nextMarkup.match(REGEX);
