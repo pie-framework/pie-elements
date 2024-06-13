@@ -31,6 +31,8 @@ export default class MultipleChoice extends HTMLElement {
             this._model.choiceMode === 'radio' ? 'Multiple Choice Question' : 'Multiple Correct Answer Question',
           );
           this.setAttribute('role', 'region');
+       
+          this.setLangAttribute();
 
           ReactDOM.render(element, this, () => {
             log('render complete - render math');
@@ -74,6 +76,12 @@ export default class MultipleChoice extends HTMLElement {
       50,
       { leading: false, trailing: true },
     );
+  }
+
+  setLangAttribute() {
+    const language = this._model && typeof this._model.language ? this._model.language : '';
+    const lang = language ? language.slice(0, 2) : 'en';
+    this.setAttribute('lang', lang);
   }
 
   set model(s) {

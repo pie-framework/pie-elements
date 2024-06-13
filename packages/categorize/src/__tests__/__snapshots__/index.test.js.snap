@@ -51,8 +51,10 @@ exports[`categorize renders snapshot 1`] = `
       onRemoveChoice={[Function]}
     />
   </div>
-  <WithStyles(AlertDialog)
+  <AlertDialog
     onClose={[Function]}
+    onCloseText="CANCEL"
+    onConfirmText="OK"
     open={false}
     text="You've reached the limit of  responses per area. To add another response, one must first be removed."
     title="Warning"
@@ -125,8 +127,10 @@ exports[`categorize renders snapshot with rationale 1`] = `
       prompt="This is rationale"
     />
   </WithStyles(Collapsible)>
-  <WithStyles(AlertDialog)
+  <AlertDialog
     onClose={[Function]}
+    onCloseText="CANCEL"
+    onConfirmText="OK"
     open={false}
     text="You've reached the limit of  responses per area. To add another response, one must first be removed."
     title="Warning"
@@ -199,8 +203,10 @@ exports[`categorize renders snapshot with teacherInstructions 1`] = `
       onRemoveChoice={[Function]}
     />
   </div>
-  <WithStyles(AlertDialog)
+  <AlertDialog
     onClose={[Function]}
+    onCloseText="CANCEL"
+    onConfirmText="OK"
     open={false}
     text="You've reached the limit of  responses per area. To add another response, one must first be removed."
     title="Warning"

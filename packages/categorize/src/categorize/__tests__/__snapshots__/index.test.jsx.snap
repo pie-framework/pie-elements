@@ -49,8 +49,10 @@ exports[`categorize snapshots incorrect 1`] = `
       onRemoveChoice={[Function]}
     />
   </div>
-  <WithStyles(AlertDialog)
+  <AlertDialog
     onClose={[Function]}
+    onCloseText="CANCEL"
+    onConfirmText="OK"
     open={false}
     text="You've reached the limit of  responses per area. To add another response, one must first be removed."
     title="Warning"
@@ -107,8 +109,10 @@ exports[`categorize snapshots renders 1`] = `
       onRemoveChoice={[Function]}
     />
   </div>
-  <WithStyles(AlertDialog)
+  <AlertDialog
     onClose={[Function]}
+    onCloseText="CANCEL"
+    onConfirmText="OK"
     open={false}
     text="You've reached the limit of  responses per area. To add another response, one must first be removed."
     title="Warning"
@@ -214,8 +218,10 @@ exports[`categorize snapshots renders with feedback 1`] = `
       }
     }
   />
-  <WithStyles(AlertDialog)
+  <AlertDialog
     onClose={[Function]}
+    onCloseText="CANCEL"
+    onConfirmText="OK"
     open={false}
     text="You've reached the limit of  responses per area. To add another response, one must first be removed."
     title="Warning"
