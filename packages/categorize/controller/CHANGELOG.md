@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.13.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-controller@6.13.0...@pie-element/categorize-controller@6.13.1) (2024-06-13)
+
+
+### Bug Fixes
+
+* update pie-toolbox PD-3839 ([dcdc0bf](https://github.com/pie-framework/pie-elements/commit/dcdc0bf9a7cc341d257de831e87915fb9425e4a2))
+* **categorize:** allow alternate PD-3102 ([415648f](https://github.com/pie-framework/pie-elements/commit/415648f57ed23ad716e7a05fbe9d95d9e3128af4))
+
+
+
+
+
 # [6.13.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-controller@6.12.1...@pie-element/categorize-controller@6.13.0) (2024-06-03)
 
 

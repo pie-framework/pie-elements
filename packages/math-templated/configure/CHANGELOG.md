@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-templated-configure@1.3.0...@pie-element/math-templated-configure@1.3.1) (2024-06-13)
+
+
+### Bug Fixes
+
+* update pie-toolbox PD-3839 ([dcdc0bf](https://github.com/pie-framework/pie-elements/commit/dcdc0bf9a7cc341d257de831e87915fb9425e4a2))
+* **math-templated:** fixed correct answer bug PD-3829. Change button label PD-3816 ([77e5614](https://github.com/pie-framework/pie-elements/commit/77e56148c32de484f9db2f49d0eb79cb74377982))
+
+
+
+
+
 # [1.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-templated-configure@1.2.0...@pie-element/math-templated-configure@1.3.0) (2024-06-05)
 
 
