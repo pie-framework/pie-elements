@@ -120,10 +120,28 @@ export const outcome = (question, session, env) =>
     }
   });
 
-export const createDefaultModel = (model = {}) => ({
-  ...defaults.model,
-  ...model,
-});
+export const createDefaultModel = (model = {}) => {
+  const { validationDefault, allowTrailingZerosDefault, ignoreOrderDefault, responses = {} } = model;
+
+  const updatedResponses = Object.keys(responses).reduce((acc, responseId) => {
+    const correctResponse = responses[responseId];
+
+    acc[responseId] = {
+      ...correctResponse,
+      validation: correctResponse.validation || validationDefault,
+      allowTrailingZeros: correctResponse.allowTrailingZeros || allowTrailingZerosDefault,
+      ignoreOrder: correctResponse.ignoreOrder || ignoreOrderDefault,
+    };
+
+    return acc;
+  }, {});
+
+  return {
+    ...defaults.model,
+    ...model,
+    responses: updatedResponses
+  };
+};
 
 export const normalizeSession = (s) => ({ ...s });
 
