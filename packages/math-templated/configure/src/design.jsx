@@ -90,7 +90,7 @@ class Design extends React.Component {
 
   onChange = (markup) => {
     const {
-      model: { responses },
+      model: { responses, validationDefault, allowTrailingZerosDefault, ignoreOrderDefault },
       onModelChanged,
     } = this.props;
     const newResponses = {};
@@ -105,11 +105,10 @@ class Design extends React.Component {
       }
 
       newResponses[dataIndex] = responses[dataIndex] || {
-        // TODO: Initialize with customizable defaults
         allowSpaces: true,
-        validation: 'symbolic',
-        allowTrailingZeros: false,
-        ignoreOrder: false,
+        validation: validationDefault || 'symbolic',
+        allowTrailingZeros: allowTrailingZerosDefault || false,
+        ignoreOrder: ignoreOrderDefault || false,
         answer: '',
         alternates: {},
       };
