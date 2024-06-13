@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.13.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-controller@5.13.0...@pie-element/extended-text-entry-controller@5.13.1) (2024-06-13)
+
+
+### Bug Fixes
+
+* update pie-toolbox PD-3839 ([dcdc0bf](https://github.com/pie-framework/pie-elements/commit/dcdc0bf9a7cc341d257de831e87915fb9425e4a2))
+
+
+
+
+
 # [5.13.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-controller@5.12.1...@pie-element/extended-text-entry-controller@5.13.0) (2024-06-03)
 
 
