@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.17.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@5.17.1...@pie-element/graphing@5.17.2) (2024-06-13)
+
+
+### Bug Fixes
+
+* update pie-toolbox PD-3180, PD-3391 ([f888f35](https://github.com/pie-framework/pie-elements/commit/f888f350468fca91379d4216c9c696c30695add3))
+
+
+
+
+
 ## [5.17.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@5.17.0...@pie-element/graphing@5.17.1) (2024-06-13)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.12.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@2.12.1...@pie-element/passage@2.12.2) (2024-06-13)
+
+
+### Bug Fixes
+
+* update pie-toolbox PD-3180, PD-3391 ([f888f35](https://github.com/pie-framework/pie-elements/commit/f888f350468fca91379d4216c9c696c30695add3))
+
+
+
+
+
 ## [2.12.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@2.12.0...@pie-element/passage@2.12.1) (2024-06-13)
 
 
