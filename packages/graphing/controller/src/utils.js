@@ -20,7 +20,7 @@ export const equalPoint = (A, B) => {
     equalLabel = isEqual(A.label, B.label);
   }
 
-  return isEqual(A.x, B.x) && isEqual(A.y, B.y) && equalLabel;
+  return isEqual(A.x, B.x) && isEqual(A.y, B.y);
 };
 
 export const equalSegment = (segment1, segment2) => {

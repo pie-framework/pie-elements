@@ -3,6 +3,43 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.19.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@7.18.2...@pie-element/math-inline@7.19.0) (2024-06-13)
+
+
+### Features
+
+* update pie-toolbox PD-3735 ([7a38768](https://github.com/pie-framework/pie-elements/commit/7a38768b320640de853e90e137082e141ee4ad1f))
+* **math-inline:** Add aria-describedby and screen-reader-only instructions to textarea in MER response areas PD-2482 ([2ba1830](https://github.com/pie-framework/pie-elements/commit/2ba183075cbf6550f4a49faa49d915b587e191e4))
+* **math-inline:** Ensure screen-reader instructions are read when using keyboard (tab) to navigate the player PD-2482 ([4c857cf](https://github.com/pie-framework/pie-elements/commit/4c857cffc2d470c8c588a9a2f2dbdb7e720ef429))
+* **math-inline:** Ensure screen-reader instructions are read when using keyboard (tab) to navigate the player PD-2482 ([2939292](https://github.com/pie-framework/pie-elements/commit/293929202f6529ce5af05521ea5f3ece9209f8cb))
+
+
+
+
+
+## [7.18.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@7.18.1...@pie-element/math-inline@7.18.2) (2024-06-13)
+
+
+### Bug Fixes
+
+* update pie-toolbox PD-3180, PD-3391 ([f888f35](https://github.com/pie-framework/pie-elements/commit/f888f350468fca91379d4216c9c696c30695add3))
+
+
+
+
+
+## [7.18.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@7.18.0...@pie-element/math-inline@7.18.1) (2024-06-13)
+
+
+### Bug Fixes
+
+* update pie-toolbox PD-3839 ([dcdc0bf](https://github.com/pie-framework/pie-elements/commit/dcdc0bf9a7cc341d257de831e87915fb9425e4a2))
+* **math-inline:** add sanity check to prevent player crash if response template content is deleted ([f7415d7](https://github.com/pie-framework/pie-elements/commit/f7415d755284f6b4422fd3f6b1daeb5a793cf5f6))
+
+
+
+
+
 # [7.18.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@7.17.1...@pie-element/math-inline@7.18.0) (2024-06-03)
 
 

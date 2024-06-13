@@ -20,10 +20,27 @@ const log = debug('math-templated:configure');
 
 export default class MathTemplateConfigure extends HTMLElement {
   static prepareModel = (model = {}) => {
+    const { validationDefault, allowTrailingZerosDefault, ignoreOrderDefault, responses = {} } = model;
+
+    const updatedResponses = Object.keys(responses).reduce((acc, responseId) => {
+      const correctResponse = responses[responseId];
+
+      acc[responseId] = {
+        ...correctResponse,
+        validation: correctResponse.validation || validationDefault,
+        allowTrailingZeros: correctResponse.allowTrailingZeros || allowTrailingZerosDefault,
+        ignoreOrder: correctResponse.ignoreOrder || ignoreOrderDefault,
+      };
+
+      return acc;
+    }, {});
+
     const joinedObj = {
       ...sensibleDefaults.model,
       ...model,
+      responses: updatedResponses
     };
+
     const slateMarkup = joinedObj.slateMarkup || createSlateMarkup(joinedObj.markup, joinedObj.responses);
     const processedMarkup = processMarkup(slateMarkup);
 
