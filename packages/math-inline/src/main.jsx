@@ -182,7 +182,7 @@ export class Main extends React.Component {
 
     countResponseOccurrences(expression) {
         const pattern = /\{\{response\}\}/g;
-        const matches = expression.match(pattern);
+        const matches = expression?.match(pattern);
 
         return matches ? matches.length : 0;
     }
