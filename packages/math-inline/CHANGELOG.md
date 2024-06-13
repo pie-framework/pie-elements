@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.19.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@7.18.2...@pie-element/math-inline@7.19.0) (2024-06-13)
+
+
+### Features
+
+* update pie-toolbox PD-3735 ([7a38768](https://github.com/pie-framework/pie-elements/commit/7a38768b320640de853e90e137082e141ee4ad1f))
+* **math-inline:** Add aria-describedby and screen-reader-only instructions to textarea in MER response areas PD-2482 ([2ba1830](https://github.com/pie-framework/pie-elements/commit/2ba183075cbf6550f4a49faa49d915b587e191e4))
+* **math-inline:** Ensure screen-reader instructions are read when using keyboard (tab) to navigate the player PD-2482 ([4c857cf](https://github.com/pie-framework/pie-elements/commit/4c857cffc2d470c8c588a9a2f2dbdb7e720ef429))
+* **math-inline:** Ensure screen-reader instructions are read when using keyboard (tab) to navigate the player PD-2482 ([2939292](https://github.com/pie-framework/pie-elements/commit/293929202f6529ce5af05521ea5f3ece9209f8cb))
+
+
+
+
+
 ## [7.18.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@7.18.1...@pie-element/math-inline@7.18.2) (2024-06-13)
 
 
