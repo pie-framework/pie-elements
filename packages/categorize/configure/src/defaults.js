@@ -7,7 +7,7 @@ export default {
     choicesLabel: '',
     lockChoiceOrder: true,
     allowMultiplePlacementsEnabled: multiplePlacements.enabled,
-    allowAlternateEnabled: false,
+    allowAlternateEnabled: true,
     allowMaxChoicesPerCategory: false,
     maxChoicesPerCategory: 0,
     categoriesPerRow: 2,
