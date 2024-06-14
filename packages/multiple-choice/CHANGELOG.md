@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.18.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@8.17.0...@pie-element/multiple-choice@8.18.0) (2024-06-14)
+
+
+### Features
+
+* **multiple-choice:** Add dynamic language attribute to indicate content language PD-2483 ([66e0545](https://github.com/pie-framework/pie-elements/commit/66e0545c1aabeaec2c762637ac311f271bb4f367))
+
+
+
+
+
 # [8.17.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@8.16.2...@pie-element/multiple-choice@8.17.0) (2024-06-13)
 
 

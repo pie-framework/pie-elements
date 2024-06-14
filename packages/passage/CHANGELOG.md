@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.14.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@2.13.0...@pie-element/passage@2.14.0) (2024-06-14)
+
+
+### Features
+
+* **passage:** add support for subtitle and author + cleanup PD-2928 ([aa82ce0](https://github.com/pie-framework/pie-elements/commit/aa82ce0c388bd3bae37940fb8705675824f9460a))
+
+
+
+
+
 # [2.13.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@2.12.2...@pie-element/passage@2.13.0) (2024-06-13)
 
 
