@@ -1,72 +1,224 @@
-Model for the @pie-elements/passage
+Config Object for @pie-elements/passage-configure
 
 The schema defines the following properties:
 
-# `passages` (array, required)
+# `settingsPanelDisabled` (boolean)
+
+Indicates if the settings panel is not available
+
+# `spanishInput` (object)
+
+Properties of the `spanishInput` object:
+
+## `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+## `label` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
+
+# `specialInput` (object)
+
+Properties of the `specialInput` object:
+
+## `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+## `label` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
+
+# `teacherInstructions` (object)
+
+Properties of the `teacherInstructions` object:
+
+## `inputConfiguration` (object)
+
+Properties of the `inputConfiguration` object:
+
+### `math` (object)
+
+Properties of the `math` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `audio` (object)
+
+Properties of the `audio` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `video` (object)
+
+Properties of the `video` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `image` (object)
+
+Properties of the `image` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `customPlugins` (array)
+
+An array of objects that determine custom plugins.
+A custom plugin is an object which determines how the button will look like (icon) and the event name that will be triggered when button gets pressed (event).
+Example can be found at https://github.com/pie-framework/pie-lib/blob/develop/packages/demo/pages/editable-html.js#L425.
 
 The object is an array with all elements of the type `object`.
 
 The array object has the following properties:
 
-## `title` (string, required)
+#### `event` (string, required)
 
-The title of the passage
+The name of the custom event. It needs to be valid (only letters, numbers and "_" can be used).
+PIE will emit the event prefixed with "PIE-".
+Eg: event = 'client_custom_event_A' => the emitted event will be "PIE-client_custom_event_A"
 
-## `subtitle` (string, required)
+#### `iconAlt` (string, required)
 
-The subtitle of the passage
+The alt for the custom button icon
 
-## `author` (string, required)
+#### `iconType` (string, required)
 
-The author of the passage
+The icon type.
+Currently, only "SVG" is supported.
 
-## `text` (string, required)
+#### `icon` (string, required)
 
-The content of the passage
+The icon string. Currently, only "SVG" is supported, so it needs to be a valid svg.
 
-## `teacherInstructions` (string)
+## `required` (boolean)
 
-Indicates teacher instructions
+Indicates if the item is required and the value cannot be empty
 
-# `teacherInstructionsEnabled` (boolean, required)
+## `settings` (boolean)
 
-Indicates if Teacher Instructions are enabled
+Indicates if the item has to be displayed in the Settings Panel
 
-# `titleEnabled` (boolean, required)
+## `label` (string)
 
-Indicates if title is enabled
+Indicates the label for the item that has to be displayed in the Settings Panel
 
-# `subtitleEnabled` (boolean, required)
+# `maxImageWidth` (object)
 
-Indicates if subtitle is enabled
+Properties of the `maxImageWidth` object:
 
-# `textEnabled` (boolean, required)
+## `teacherInstructions` (number)
 
-Indicates if text is enabled
+Indicates the max dimension for images in teacher instructions
 
-# `authorEnabled` (boolean, required)
+## `prompt` (number)
 
-Indicates if author is enabled
+Indicates the max dimension for images in prompt - this is also the default dimension for all other input fields if it's not specified
 
-# `spanishInput` (boolean)
+## `rationale` (number)
 
-Whether a control to allow insertion of spanish characters should be displayed
+Indicates the max dimension for images in rationale
 
-Default: `false`
+# `maxImageHeight` (object)
 
-# `specialInput` (boolean)
+Properties of the `maxImageHeight` object:
 
-Whether a control to allow insertion of special characters should be displayed
+## `teacherInstructions` (number)
 
-Default: `false`
+Indicates the max dimension for images in teacher instructions
 
-# `id` (string, required)
+## `prompt` (number)
 
-Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.
+Indicates the max dimension for images in prompt - this is also the default dimension for all other input fields if it's not specified
 
-# `element` (string, required)
+## `rationale` (number)
 
-The html Element tag name
+Indicates the max dimension for images in rationale
+
+# `mathMlOptions` (object)
+
+Properties of the `mathMlOptions` object:
+
+## `mmlOutput` (number)
+
+Indicates if model should have mathML output instead of latex
+
+## `mmlEditing` (number)
+
+Indicates if mathML that's already in model should be editable
+
+# `baseInputConfiguration` (object)
+
+Properties of the `baseInputConfiguration` object:
+
+## `math` (object)
+
+Properties of the `math` object:
+
+### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+## `audio` (object)
+
+Properties of the `audio` object:
+
+### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+## `video` (object)
+
+Properties of the `video` object:
+
+### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+## `image` (object)
+
+Properties of the `image` object:
+
+### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+## `customPlugins` (array)
+
+An array of objects that determine custom plugins.
+A custom plugin is an object which determines how the button will look like (icon) and the event name that will be triggered when button gets pressed (event).
+Example can be found at https://github.com/pie-framework/pie-lib/blob/develop/packages/demo/pages/editable-html.js#L425.
+
+The object is an array with all elements of the type `object`.
+
+The array object has the following properties:
+
+### `event` (string, required)
+
+The name of the custom event. It needs to be valid (only letters, numbers and "_" can be used).
+PIE will emit the event prefixed with "PIE-".
+Eg: event = 'client_custom_event_A' => the emitted event will be "PIE-client_custom_event_A"
+
+### `iconAlt` (string, required)
+
+The alt for the custom button icon
+
+### `iconType` (string, required)
+
+The icon type.
+Currently, only "SVG" is supported.
+
+### `icon` (string, required)
+
+The icon string. Currently, only "SVG" is supported, so it needs to be a valid svg.
 
 ---
 
@@ -290,27 +442,3 @@ Indicates if model should have mathML output instead of latex
 ### `mmlEditing` (number)
 
 Indicates if mathML that's already in model should be editable
-
-## `Passage` (object)
-
-Properties of the `Passage` object:
-
-### `title` (string, required)
-
-The title of the passage
-
-### `subtitle` (string, required)
-
-The subtitle of the passage
-
-### `author` (string, required)
-
-The author of the passage
-
-### `text` (string, required)
-
-The content of the passage
-
-### `teacherInstructions` (string)
-
-Indicates teacher instructions
