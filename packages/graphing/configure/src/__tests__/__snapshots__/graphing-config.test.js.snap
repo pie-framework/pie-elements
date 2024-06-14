@@ -69,7 +69,9 @@ exports[`GraphingConfig renders snapshot 1`] = `
       toolbarTools={Array []}
     />
   </div>
-  <WithStyles(AlertDialog)
+  <AlertDialog
+    onCloseText="CANCEL"
+    onConfirmText="OK"
     open={false}
     text="This change would make it impossible for students to plot one or more graph objects in the current correct answers. If you proceed, all such graph objects will be removed from the correct answers."
     title="Warning"

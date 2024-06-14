@@ -26,7 +26,8 @@ exports[`Main render snapshot 1`] = `
       ]
     }
   />
-  <WithStyles(AlertDialog)
+  <AlertDialog
+    onCloseText="CANCEL"
     onConfirmText="OK"
     open={false}
   />
