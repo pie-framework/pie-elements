@@ -3,39 +3,42 @@ import PropTypes from 'prop-types';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import { withStyles } from '@material-ui/core/styles';
-import { Collapsible, color, PreviewPrompt, Purpose } from '@pie-lib/pie-toolbox/render-ui';
+import { Collapsible, color, PreviewPrompt } from '@pie-lib/pie-toolbox/render-ui';
 import classNames from 'classnames';
 
 const styles = (theme) => ({
-  root: {
+  passages: {
     flexGrow: 1,
     backgroundColor: color.background(),
     color: color.text(),
+  },
+  passage: {
+    backgroundColor: color.background(),
+    color: color.text(),
+    padding: theme.spacing.unit * 2,
+  },
+  passageTitle: {
+    fontSize: '1.75rem',
+  },
+  passageSubtitle: {
+    fontSize: '1.5rem',
+  },
+  passageAuthor: {
+    fontSize: '1.25rem',
+  },
+  passageText: {},
+  stickyTabs: {
+    background: color.background(),
+    position: 'sticky',
+    top: 0,
   },
   tab: {
     background: theme.palette.common.white, // replace with color.background() once PD-2801 is DONE
     fontSize: 'inherit',
     color: theme.palette.common.black, // remove when PD-2801 is DONE
   },
-  stickyTabs: {
-    background: color.background(),
-    position: 'sticky',
-    top: 0,
-  },
-  title: {
-    textTransform: 'uppercase',
-    padding: `${theme.spacing.unit}px ${theme.spacing.unit * 3}px`,
-    borderBottom: `2px solid ${color.secondary()}`,
-    width: 'fit-content',
-    marginBottom: theme.spacing.unit,
-  },
-  buttonContainer: {
+  tabButton: {
     background: theme.palette.common.white, // replace with color.background() once PD-2801 is DONE
-  },
-  tabContainer: {
-    backgroundColor: color.background(),
-    color: color.text(),
-    padding: theme.spacing.unit * 2,
   },
   breakSpaces: {
     whiteSpace: 'break-spaces',
@@ -52,11 +55,10 @@ class StimulusTabs extends React.Component {
 
   handleChange = (event, activeTab) => {
     this.setState(() => ({ activeTab }));
+
     setTimeout(() => {
       const tabChangeEvent = new CustomEvent('pie-ui-passage-tabChanged', {
-        detail: {
-          tab: activeTab,
-        },
+        detail: { tab: activeTab },
       });
 
       window.dispatchEvent(tabChangeEvent);
@@ -99,12 +101,13 @@ class StimulusTabs extends React.Component {
     }
   };
 
-  parsedText = (text) => {
+  parsedText = (text = '') => {
     // fix imported audio content for Safari PD-1391
     const div = document.createElement('div');
     div.innerHTML = text.replace(/(<br\/>\n)/g, '<br/>');
 
     const audio = div.querySelector('audio');
+
     if (audio) {
       const source = document.createElement('source');
 
@@ -148,99 +151,85 @@ class StimulusTabs extends React.Component {
     );
   }
 
+  renderTab(tab, showTeacherInstructions, disabledTabs) {
+    const { classes } = this.props;
+
+    return (
+      <div
+        className={classNames(classes.passage, 'passage')}
+        key={tab.id}
+        id={`tabpanel-${tab.id}`}
+        role="tabpanel"
+        aria-labelledby={`button-${tab.id}`}
+      >
+        {this.renderInstructions(showTeacherInstructions, tab.teacherInstructions, disabledTabs)}
+        <h2>
+          <div
+            className={classNames(classes.passageTitle, 'title')}
+            dangerouslySetInnerHTML={{ __html: this.parsedText(tab.title) }}
+          />
+          <div
+            className={classNames(classes.passageSubtitle, 'subtitle')}
+            dangerouslySetInnerHTML={{ __html: this.parsedText(tab.subtitle) }}
+          />
+        </h2>
+        <div
+          className={classNames(classes.passageAuthor, 'author')}
+          dangerouslySetInnerHTML={{ __html: this.parsedText(tab.author) }}
+        />
+        <div
+          key={tab.id}
+          className={classNames(classes.passageText, 'text')}
+          dangerouslySetInnerHTML={{ __html: this.parsedText(tab.text) }}
+        />
+      </div>
+    );
+  }
+
   render() {
     const { classes, tabs, disabledTabs, showTeacherInstructions } = this.props;
     const { activeTab } = this.state;
 
-    if (tabs && tabs.length > 1) {
-      return disabledTabs ? (
-        <div className={classNames(classes.root, 'passages')}>
-          {tabs.map((tab) => (
-            <div
-              key={tab.id}
-              className={`passage-${tab.id}`}
-              id={`tabpanel-${tab.id}`}
-              aria-labelledby={`tab-${tab.id}`}
-              aria-controls={`tabpanel-${tab.id}`}
-              tabIndex="0"
-            >
-              <div
-                className={classes.tabContainer}
-                id={`tabpanel-${tab.id}`}
-                role="tabpanel"
-                aria-labelledby={`button-${tab.id}`}
-              >
-                <div
-                  className={classNames(classes.title, 'title')}
-                  dangerouslySetInnerHTML={{ __html: this.parsedText(tab.title) }}
-                />
-                {this.renderInstructions(showTeacherInstructions, tab.teacherInstructions, disabledTabs)}
-                <Purpose purpose="passage-text">
-                  <div className="text" key={tab.id} dangerouslySetInnerHTML={{ __html: this.parsedText(tab.text) }} />
-                </Purpose>
-              </div>
-            </div>
-          ))}
-        </div>
-      ) : (
-        <div className={classNames(classes.root, 'passages')}>
-          <Tabs
-            classes={{
-              root: classes.stickyTabs,
-              flexContainer: classes.buttonContainer,
-            }}
-            value={activeTab}
-            onChange={this.handleChange}
-          >
-            {tabs.map((tab) => (
-              <Tab
-                className={classes.tab}
-                key={tab.id}
-                id={`button-${tab.id}`}
-                label={
-                  <Purpose purpose="passage-title">
-                    <span dangerouslySetInnerHTML={{ __html: this.parsedText(tab.title) }} />
-                  </Purpose>
-                }
-                value={tab.id}
-                tabIndex={activeTab === tab.id ? 0 : -1}
-                aria-controls={`tabpanel-${tab.id}`}
-                aria-selected={activeTab === tab.id}
-                onFocus={() => this.handleChange(null, tab.id)}
-                onKeyDown={(event) => this.handleKeyDown(event, tab.id)}
-              />
-            ))}
-          </Tabs>
-
-          {tabs.map((tab) =>
-            activeTab === tab.id ? (
-              <div
-                className={classes.tabContainer}
-                key={tab.id}
-                id={`tabpanel-${tab.id}`}
-                role="tabpanel"
-                aria-labelledby={`button-${tab.id}`}
-              >
-                {this.renderInstructions(showTeacherInstructions, tab.teacherInstructions)}
-
-                <Purpose purpose="passage-text">
-                  <div key={tab.id} dangerouslySetInnerHTML={{ __html: this.parsedText(tab.text) }} />
-                </Purpose>
-              </div>
-            ) : null,
-          )}
-        </div>
-      );
-    } else if (tabs && tabs[0]) {
-      return (
-        <>
-          {this.renderInstructions(showTeacherInstructions, tabs[0].teacherInstructions, disabledTabs)}
-          <div className={classNames(classes.root, classes.tabContainer, classes.breakSpaces, 'passage')}>
-            <div className="text" dangerouslySetInnerHTML={{ __html: this.parsedText(tabs[0].text) }} />
-          </div>
-        </>
-      );
+    if (!tabs?.length) {
+      return;
     }
+
+    const selectedTab = (tabs || []).find((tab) => tab.id === activeTab);
+
+    return (
+      <div className={classNames(classes.passages, { [classes.breakSpaces]: tabs.length === 1 }, 'passages')}>
+        {disabledTabs || tabs.length === 1 ? (
+          tabs.map((tab) => this.renderTab(tab, showTeacherInstructions, disabledTabs))
+        ) : (
+          <>
+            <Tabs
+              classes={{
+                root: classes.stickyTabs,
+                flexContainer: classes.tabButton,
+              }}
+              value={activeTab}
+              onChange={this.handleChange}
+            >
+              {tabs.map((tab) => (
+                <Tab
+                  className={classes.tab}
+                  key={tab.id}
+                  id={`button-${tab.id}`}
+                  label={<span dangerouslySetInnerHTML={{ __html: this.parsedText(tab.title) }} />}
+                  value={tab.id}
+                  tabIndex={activeTab === tab.id ? 0 : -1}
+                  aria-controls={`tabpanel-${tab.id}`}
+                  aria-selected={activeTab === tab.id}
+                  onFocus={() => this.handleChange(null, tab.id)}
+                  onKeyDown={(event) => this.handleKeyDown(event, tab.id)}
+                />
+              ))}
+            </Tabs>
+            {selectedTab ? this.renderTab(selectedTab, showTeacherInstructions, disabledTabs) : null}
+          </>
+        )}
+      </div>
+    );
   }
 }
 
@@ -250,6 +239,8 @@ StimulusTabs.propTypes = {
     PropTypes.shape({
       id: PropTypes.number.isRequired,
       title: PropTypes.string.isRequired,
+      subtitle: PropTypes.string,
+      author: PropTypes.string,
       text: PropTypes.string.isRequired,
       teacherInstructions: PropTypes.string,
     }).isRequired,
