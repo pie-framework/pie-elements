@@ -129,9 +129,7 @@ exports[`CorrectResponse renders snapshot 1`] = `
   >
     ADD ALTERNATE
   </div>
-  <AlertDialog
-    onCloseText="CANCEL"
-    onConfirmText="OK"
+  <WithStyles(AlertDialog)
     open={false}
   />
 </div>
@@ -163,9 +161,7 @@ exports[`CorrectResponse: if answers is null it should still work as expected re
   >
     ADD ALTERNATE
   </div>
-  <AlertDialog
-    onCloseText="CANCEL"
-    onConfirmText="OK"
+  <WithStyles(AlertDialog)
     open={false}
   />
 </div>
@@ -197,9 +193,7 @@ exports[`CorrectResponse: if answers is undefined it should still work as expect
   >
     ADD ALTERNATE
   </div>
-  <AlertDialog
-    onCloseText="CANCEL"
-    onConfirmText="OK"
+  <WithStyles(AlertDialog)
     open={false}
   />
 </div>
