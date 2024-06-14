@@ -1,5 +1,21 @@
 import cloneDeep from 'lodash/cloneDeep';
+import defaults from './defaults';
 
+const getContent = (html) => (html || '').replace(/(<(?!img|iframe)([^>]+)>)/gi, '');
+
+export function createDefaultModel(model = {}) {
+  return new Promise((resolve) => {
+    resolve({
+      ...defaults,
+      ...model,
+    });
+  });
+}
+
+export const normalize = (question) => ({
+  ...defaults,
+  ...question,
+});
 /**
  *
  * @param {*} question
@@ -21,3 +37,15 @@ export async function model(question, session, env) {
 
   return response;
 }
+
+export const validate = (model = {}, config = {}) => {
+  const errors = {};
+
+  ['teacherInstructions', 'title', 'subtitle', 'author', 'text'].forEach((field) => {
+    if (config[field]?.required && !getContent(model[field])) {
+      errors[field] = 'This field is required.';
+    }
+  });
+
+  return errors;
+};
