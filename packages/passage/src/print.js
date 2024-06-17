@@ -7,16 +7,16 @@ import debug from 'debug';
 const log = debug('pie-element:passage:print');
 
 const preparePrintPassage = (model, opts) => {
-  const instr = opts.role === 'instructor';
+  const isInstructor = opts.role === 'instructor';
 
-  return model.passages.map((passage, index) => {
-    return {
-      id: index,
-      title: passage.title,
-      text: passage.text,
-      teacherInstructions: instr && passage.teacherInstructions,
-    };
-  });
+  return model.passages.map((passage, index) => ({
+    id: index,
+    title: passage.title,
+    subtitle: passage.subtitle,
+    author: passage.author,
+    text: passage.text,
+    teacherInstructions: isInstructor && passage.teacherInstructions,
+  }));
 };
 
 export default class PassagePrint extends HTMLElement {

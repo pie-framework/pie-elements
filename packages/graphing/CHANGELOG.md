@@ -3,6 +3,42 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.18.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@5.17.2...@pie-element/graphing@5.18.0) (2024-06-13)
+
+
+### Features
+
+* update pie-toolbox PD-3735 ([7a38768](https://github.com/pie-framework/pie-elements/commit/7a38768b320640de853e90e137082e141ee4ad1f))
+* **graphing:** Add KeyLegend to player view for graphing & send isLabelAvailable property PD-3787 ([54ce1b1](https://github.com/pie-framework/pie-elements/commit/54ce1b101effab82307f4a0bc172b886c9718356))
+* **graphing:** change logic when evaluate graph objects PD-3735 ([734f6b8](https://github.com/pie-framework/pie-elements/commit/734f6b832dddea1a458783a7754863aa789a3738))
+* **graphing:** clean up, refactor & update tests PD-3735 ([76e7754](https://github.com/pie-framework/pie-elements/commit/76e7754dc572517d2276bdc0676d28ea32401890))
+
+
+
+
+
+## [5.17.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@5.17.1...@pie-element/graphing@5.17.2) (2024-06-13)
+
+
+### Bug Fixes
+
+* update pie-toolbox PD-3180, PD-3391 ([f888f35](https://github.com/pie-framework/pie-elements/commit/f888f350468fca91379d4216c9c696c30695add3))
+
+
+
+
+
+## [5.17.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@5.17.0...@pie-element/graphing@5.17.1) (2024-06-13)
+
+
+### Bug Fixes
+
+* update pie-toolbox PD-3839 ([dcdc0bf](https://github.com/pie-framework/pie-elements/commit/dcdc0bf9a7cc341d257de831e87915fb9425e4a2))
+
+
+
+
+
 # [5.17.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@5.16.1...@pie-element/graphing@5.17.0) (2024-06-03)
 
 

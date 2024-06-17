@@ -3,6 +3,39 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.12.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/boilerplate-item-type-controller@2.11.2...@pie-element/boilerplate-item-type-controller@2.12.0) (2024-06-13)
+
+
+### Features
+
+* update pie-toolbox PD-3735 ([7a38768](https://github.com/pie-framework/pie-elements/commit/7a38768b320640de853e90e137082e141ee4ad1f))
+
+
+
+
+
+## [2.11.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/boilerplate-item-type-controller@2.11.1...@pie-element/boilerplate-item-type-controller@2.11.2) (2024-06-13)
+
+
+### Bug Fixes
+
+* update pie-toolbox PD-3180, PD-3391 ([f888f35](https://github.com/pie-framework/pie-elements/commit/f888f350468fca91379d4216c9c696c30695add3))
+
+
+
+
+
+## [2.11.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/boilerplate-item-type-controller@2.11.0...@pie-element/boilerplate-item-type-controller@2.11.1) (2024-06-13)
+
+
+### Bug Fixes
+
+* update pie-toolbox PD-3839 ([dcdc0bf](https://github.com/pie-framework/pie-elements/commit/dcdc0bf9a7cc341d257de831e87915fb9425e4a2))
+
+
+
+
+
 # [2.11.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/boilerplate-item-type-controller@2.10.1...@pie-element/boilerplate-item-type-controller@2.11.0) (2024-06-03)
 
 

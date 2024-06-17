@@ -2,14 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Choices from './choices';
 import Categories from './categories';
-import {CorrectAnswerToggle} from '@pie-lib/pie-toolbox/correct-answer-toggle';
+import { CorrectAnswerToggle } from '@pie-lib/pie-toolbox/correct-answer-toggle';
 import { withStyles } from '@material-ui/core/styles';
 import { buildState, removeChoiceFromCategory, moveChoiceToCategory } from '@pie-lib/pie-toolbox/categorize';
 import { withDragContext, uid } from '@pie-lib/pie-toolbox/drag';
 import { color, Feedback, Collapsible, hasText, PreviewPrompt } from '@pie-lib/pie-toolbox/render-ui';
 import debug from 'debug';
 import Translator from '@pie-lib/pie-toolbox/translator';
-import { AlertDialog }  from '@pie-lib/pie-toolbox/config-ui';
+import { AlertDialog } from '@pie-lib/pie-toolbox/config-ui';
 const { translator } = Translator;
 
 const log = debug('@pie-ui:categorize');
@@ -61,47 +61,54 @@ export class Categorize extends React.Component {
       log('[dropChoice] category: ', undefined, 'choice: ', undefined);
     }
 
-    const answer = answers.find(answer => answer.category === categoryId);
+    const answer = answers.find((answer) => answer.category === categoryId);
 
     // treat special case to replace the existing choice with the new one when maxChoicesPerCategory = 1
-    if (draggedChoice && maxChoicesPerCategory === 1 && answer && answer.choices &&  answer.choices.length === 1) {
-        newAnswers = moveChoiceToCategory(
-            draggedChoice.id,
-            draggedChoice.categoryId,
-            categoryId,
-            draggedChoice.choiceIndex,
-            answers,
-        );
-        newAnswers = removeChoiceFromCategory(answer.choices[0], categoryId, 0, answers)
+    if (draggedChoice && maxChoicesPerCategory === 1 && answer && answer.choices && answer.choices.length === 1) {
+      newAnswers = moveChoiceToCategory(
+        draggedChoice.id,
+        draggedChoice.categoryId,
+        categoryId,
+        draggedChoice.choiceIndex,
+        answers,
+      );
+      newAnswers = removeChoiceFromCategory(answer.choices[0], categoryId, 0, answers);
     }
 
     // treat special case when there are as many choices as maxChoicesPerCategory is
-    else if (draggedChoice && maxChoicesPerCategory > 1 && answer && answer.choices &&  answer.choices.length === maxChoicesPerCategory ) {
-      newAnswers = draggedChoice.categoryId ? moveChoiceToCategory(
-          draggedChoice.id,
-          draggedChoice.categoryId,
-          draggedChoice.categoryId,
-          draggedChoice.choiceIndex,
-          answers,
-      ) : removeChoiceFromCategory(draggedChoice.id, draggedChoice.categoryId, draggedChoice.choiceIndex, answers);
-      this.setState({ showMaxChoiceAlert: true })
+    else if (
+      draggedChoice &&
+      maxChoicesPerCategory > 1 &&
+      answer &&
+      answer.choices &&
+      answer.choices.length === maxChoicesPerCategory
+    ) {
+      newAnswers = draggedChoice.categoryId
+        ? moveChoiceToCategory(
+            draggedChoice.id,
+            draggedChoice.categoryId,
+            draggedChoice.categoryId,
+            draggedChoice.choiceIndex,
+            answers,
+          )
+        : removeChoiceFromCategory(draggedChoice.id, draggedChoice.categoryId, draggedChoice.choiceIndex, answers);
+      this.setState({ showMaxChoiceAlert: true });
     }
 
     // treat special case when there are more choices that maxChoicesPerCategory is (testing purpose in pits)
     else if (maxChoicesPerCategory !== 0 && answer && answer.choices && answer.choices.length > maxChoicesPerCategory) {
       newAnswers = answers;
       this.setState({ showMaxChoiceAlert: true });
-    }
-    else {
+    } else {
       newAnswers = draggedChoice
-          ? moveChoiceToCategory(
-              draggedChoice.id,
-              draggedChoice.categoryId,
-              categoryId,
-              draggedChoice.choiceIndex,
-              answers,
+        ? moveChoiceToCategory(
+            draggedChoice.id,
+            draggedChoice.categoryId,
+            categoryId,
+            draggedChoice.choiceIndex,
+            answers,
           )
-          : this.removeChoice(categoryId);
+        : this.removeChoice(categoryId);
     }
 
     if (draggedChoice) {
@@ -116,8 +123,12 @@ export class Categorize extends React.Component {
     // check if the note is the default one for prev language and change to the default one for new language
     // this check is necessary in order to diferanciate between default and authour defined note
     // and only change between languages for default ones
-    if (model.note && model.language && model.language !== nextModel.language
-      && model.note === translator.t('common:commonCorrectAnswerWithAlternates', { lng: model.language })) {
+    if (
+      model.note &&
+      model.language &&
+      model.language !== nextModel.language &&
+      model.note === translator.t('common:commonCorrectAnswerWithAlternates', { lng: model.language })
+    ) {
       model.note = translator.t('common:commonCorrectAnswerWithAlternates', { lng: nextModel.language });
     }
 
@@ -163,7 +174,7 @@ export class Categorize extends React.Component {
 
     const style = {
       flexDirection: this.getPositionDirection(choicePosition),
-      gap: '8px'
+      gap: '8px',
     };
 
     const { categories, choices, correct } = buildState(
@@ -180,7 +191,18 @@ export class Categorize extends React.Component {
     const existAlternate = this.existAlternateResponse(correctResponse) || false;
     const displayNote =
       (showCorrect || (mode === 'view' && role === 'instructor')) && showNote && note && existAlternate;
-    const alertMessage = translator.t('translation:categorize:limitMaxChoicesPerCategory', { lng: model.language, maxChoicesPerCategory });
+    const alertMessage = translator.t('translation:categorize:limitMaxChoicesPerCategory', {
+      lng: model.language,
+      maxChoicesPerCategory,
+    });
+
+    const alertTitle = translator.t('common:warning', {
+      lng: model.language,
+    });
+
+    const onCloseText = translator.t('common:cancel', {
+      lng: model.language,
+    });
 
     return (
       <div className={classes.mainContainer}>
@@ -247,12 +269,12 @@ export class Categorize extends React.Component {
           <Feedback correctness={model.correctness} feedback={model.feedback} />
         )}
         <AlertDialog
-            title={'Warning'}
-            text={alertMessage}
-            open={showMaxChoiceAlert}
-            onClose={() => this.setState({ showMaxChoiceAlert: false })}
-              >
-        </AlertDialog>
+          title={alertTitle}
+          text={alertMessage}
+          open={showMaxChoiceAlert}
+          onCloseText={onCloseText}
+          onClose={() => this.setState({ showMaxChoiceAlert: false })}
+        ></AlertDialog>
       </div>
     );
   }
