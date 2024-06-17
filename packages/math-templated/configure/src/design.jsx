@@ -44,7 +44,9 @@ class Design extends React.Component {
     uploadSoundSupport: PropTypes.object,
   };
 
-  state = {};
+  state = {
+    responseAreaProps: {},
+  };
 
   componentDidMount() {
     const { model: { slateMarkup } } = this.props;
@@ -249,7 +251,7 @@ class Design extends React.Component {
       spellCheckEnabled,
       teacherInstructionsEnabled,
       toolbarEditorPosition,
-      responses,
+      responses = {},
       equationEditor,
     } = model || {};
 
@@ -288,6 +290,17 @@ class Design extends React.Component {
       ...props,
     });
 
+    const getResponseAreaProps = () => ({
+      type: 'math-templated',
+      respAreaToolbar: null,
+      error: () => responsesErrors,
+      onHandleAreaChange: this.onHandleAreaChange,
+      maxResponseAreas: maxResponseAreas,
+      responses: responses,
+      responsesToDisplay: () => responses,
+    });
+
+    console.log('render', JSON.stringify(responses));
     return (
       <layout.ConfigLayout
         dimensions={contentDimensions}
@@ -388,13 +401,7 @@ class Design extends React.Component {
             template?.inputConfiguration,
             baseInputConfiguration
           )}
-          responseAreaProps={{
-            type: 'math-templated',
-            respAreaToolbar: null,
-            error: () => responsesErrors,
-            onHandleAreaChange: this.onHandleAreaChange,
-            maxResponseAreas: maxResponseAreas,
-          }}
+          responseAreaProps={getResponseAreaProps()}
           className={classes.markup}
           markup={model.slateMarkup}
           onChange={this.onChange}
