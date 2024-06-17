@@ -173,22 +173,6 @@ export class Main extends React.Component {
               />
             }
         >
-        {teacherInstructionsEnabled && (
-              <InputContainer label={teacherInstructions.label} className={classes.inputContainer}>
-                <EditableHtml
-                    markup={model.teacherInstructions || ''}
-                    onChange={this.changeTeacherInstructions}
-                    nonEmpty={false}
-                    error={teacherInstructionsError}
-                    maxImageWidth={(maxImageWidth && maxImageWidth.teacherInstructions) || defaultImageMaxWidth}
-                    maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
-                    mathMlOptions={mathMlOptions}
-                    languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
-                    pluginProps={getPluginProps(teacherInstructions?.inputConfiguration)}
-                />
-                {teacherInstructionsError && <div className={classes.errorText}>{teacherInstructionsError}</div>}
-              </InputContainer>
-        )}
           {titleEnabled && (
               <InputContainer label={title.label} className={classes.inputContainer}>
                 <EditableHtml
@@ -229,6 +213,22 @@ export class Main extends React.Component {
                     pluginProps={getPluginProps(author?.inputConfiguration)}
                 />
                 {authorError && <div className={classes.errorText}>{authorError}</div>}
+              </InputContainer>
+          )}
+          {teacherInstructionsEnabled && (
+              <InputContainer label={teacherInstructions.label} className={classes.inputContainer}>
+                <EditableHtml
+                    markup={model.teacherInstructions || ''}
+                    onChange={this.changeTeacherInstructions}
+                    nonEmpty={false}
+                    error={teacherInstructionsError}
+                    maxImageWidth={(maxImageWidth && maxImageWidth.teacherInstructions) || defaultImageMaxWidth}
+                    maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
+                    mathMlOptions={mathMlOptions}
+                    languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+                    pluginProps={getPluginProps(teacherInstructions?.inputConfiguration)}
+                />
+                {teacherInstructionsError && <div className={classes.errorText}>{teacherInstructionsError}</div>}
               </InputContainer>
           )}
           {textEnabled && (

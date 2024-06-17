@@ -101,7 +101,7 @@ exports[`Render Main Component Match Snapshot 1`] = `
               },
             },
             "label": "Text",
-            "required": false,
+            "required": true,
             "settings": true,
           },
           "title": Object {
@@ -117,7 +117,7 @@ exports[`Render Main Component Match Snapshot 1`] = `
               },
             },
             "label": "Title",
-            "required": false,
+            "required": true,
             "settings": true,
           },
         }
@@ -150,7 +150,7 @@ exports[`Render Main Component Match Snapshot 1`] = `
             },
           ],
           "subtitleEnabled": true,
-          "teacherInstructionsEnabled": false,
+          "teacherInstructionsEnabled": true,
           "textEnabled": true,
           "titleEnabled": true,
         }
@@ -278,6 +278,49 @@ exports[`Render Main Component Match Snapshot 1`] = `
           },
           "video": Object {
             "disabled": true,
+          },
+        }
+      }
+    />
+  </InputContainer>
+  <InputContainer
+    className="mockInputContainer"
+    label="Teacher Instructions"
+  >
+    <EditableHtml
+      allowValidation={false}
+      languageCharactersProps={
+        Array [
+          Object {
+            "language": "spanish",
+          },
+          Object {
+            "language": "special",
+          },
+        ]
+      }
+      markup=""
+      mathMlOptions={
+        Object {
+          "mmlEditing": false,
+          "mmlOutput": false,
+        }
+      }
+      maxImageHeight={300}
+      maxImageWidth={300}
+      nonEmpty={false}
+      onChange={[Function]}
+      onDone={[Function]}
+      pluginProps={
+        Object {
+          "audio": Object {
+            "disabled": false,
+          },
+          "image": Object {
+            "disabled": false,
+          },
+          "video": Object {
+            "disabled": false,
           },
         }
       }

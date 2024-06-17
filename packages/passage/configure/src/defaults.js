@@ -1,6 +1,6 @@
 export default {
   model: {
-    teacherInstructionsEnabled: false,
+    teacherInstructionsEnabled: true,
     titleEnabled: true,
     subtitleEnabled: true,
     textEnabled: true,
@@ -30,7 +30,7 @@ export default {
         video: { disabled: true },
         image: { disabled: true },
       },
-      required: false,
+      required: true,
     },
     subtitle: {
       settings: true,
@@ -60,7 +60,7 @@ export default {
         video: { disabled: false },
         image: { disabled: false },
       },
-      required: false
+      required: true
     },
     teacherInstructions: {
       settings: true,

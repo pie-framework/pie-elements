@@ -104,16 +104,6 @@ describe('Render Main Component', () => {
   });
 
   describe('UI Rendering', () => {
-    it('renders teacher instructions input when enabled', () => {
-      wrapper.setProps({
-        model: { ...model, teacherInstructionsEnabled: true },
-        configuration: {
-          ...configuration,
-          teacherInstructions: { label: 'Teacher Instructions' }
-        }
-      });
-      expect(wrapper.find(InputContainer).at(0).prop('label')).toEqual('Teacher Instructions');
-    });
 
     it('renders title input when enabled', () => {
       wrapper.setProps({
@@ -139,12 +129,23 @@ describe('Render Main Component', () => {
       expect(wrapper.find(InputContainer).at(2).prop('label')).toEqual('Author');
     });
 
+    it('renders teacher instructions input when enabled', () => {
+      wrapper.setProps({
+        model: { ...model, teacherInstructionsEnabled: true },
+        configuration: {
+          ...configuration,
+          teacherInstructions: { label: 'Teacher Instructions' }
+        }
+      });
+      expect(wrapper.find(InputContainer).at(3).prop('label')).toEqual('Teacher Instructions');
+    });
+
     it('renders text input when enabled', () => {
       wrapper.setProps({
         model: { ...model, textEnabled: true },
         configuration: { ...configuration, text: { label: 'Text' } }
       });
-      expect(wrapper.find(InputContainer).at(3).prop('label')).toEqual('Text');
+      expect(wrapper.find(InputContainer).at(4).prop('label')).toEqual('Text');
     });
   });
 
