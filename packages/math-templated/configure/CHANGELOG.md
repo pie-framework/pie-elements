@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-templated-configure@1.4.0...@pie-element/math-templated-configure@1.5.0) (2024-06-19)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox fix build ([75777e1](https://github.com/pie-framework/pie-elements/commit/75777e189786cb9041bd0d2f843c023a1ea5b8b1))
+
+
+### Features
+
+* update pie-lib/pie-toolbox PD-3179, PD-3206, PD-3186, PD-1311, PD-3771, PD-3772, PD-3817 ([14e175c](https://github.com/pie-framework/pie-elements/commit/14e175cd62770ab4d7ba8bf83e6d0c9ad683f595))
+* **math-templated:** display correct answers in response areas PD-3817 ([a91bbc3](https://github.com/pie-framework/pie-elements/commit/a91bbc3a228c30bf19239b6076f882c4b0ff1c3d))
+* update slate markup when responses get changed PD-3817 ([46baf68](https://github.com/pie-framework/pie-elements/commit/46baf68c6b83f95ff2f1e667ab15ac0a65aa96f1))
+
+
+
+
+
 # [1.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-templated-configure@1.3.2...@pie-element/math-templated-configure@1.4.0) (2024-06-13)
 
 
