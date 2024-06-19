@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.12.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-solution-set@1.12.0...@pie-element/graphing-solution-set@1.12.1) (2024-06-19)
+
+
+### Bug Fixes
+
+* **graphing-solution-set:** Fixed issue with Alert PopUp ([27bebff](https://github.com/pie-framework/pie-elements/commit/27bebffb0d3fb4769a44b164a8fed999be2cd368))
+
+
+
+
+
 # [1.12.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-solution-set@1.11.2...@pie-element/graphing-solution-set@1.12.0) (2024-06-13)
 
 
