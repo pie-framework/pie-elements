@@ -9,7 +9,7 @@
   "dependencies": {
     "@material-ui/core": "^3.9.2",
     "@pie-framework/pie-configure-events": "^1.3.0",
-    "@pie-lib/pie-toolbox": "1.22.0",
+    "@pie-lib/pie-toolbox": "1.23.0",
     "debug": "^4.1.1",
     "prop-types": "^15.6.2",
     "react": "^16.8.1",
