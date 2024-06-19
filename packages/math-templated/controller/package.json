@@ -7,7 +7,7 @@
   "module": "src/index.js",
   "dependencies": {
     "@pie-framework/math-validation": "^1.2.2",
-    "@pie-lib/pie-toolbox": "1.23.0",
+    "@pie-lib/pie-toolbox": "1.23.1",
     "debug": "^3.1.0",
     "lodash": "^4.17.15"
   },
