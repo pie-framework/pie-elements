@@ -5,7 +5,7 @@ import { AlertDialog } from '@pie-lib/pie-toolbox/config-ui';
 import { MenuItem, Select, Typography, OutlinedInput } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import { applyConstraints, filterPlotableMarks, getGridValues, getLabelValues } from './utils';
-import { isEqual } from 'lodash';
+import { isEqual, cloneDeep } from 'lodash';
 
 const styles = (theme) => ({
   container: {
@@ -128,14 +128,18 @@ export class GraphingConfig extends React.Component {
         labelValues.range = rangeConstraints.labelValues || [];
       }
     }
-    const plotableAnswers = filterPlotableMarks(domain, range, answers);
-    if (!isEqual(answers, plotableAnswers)) {
+    const filteredAnswers = cloneDeep(answers);
+    filteredAnswers.correctAnswer.marks = answers.correctAnswer.marks.filter((mark) => mark.type !== 'polygon');
+    const plotableAnswers = filterPlotableMarks(domain, range, filteredAnswers);
+    if (!isEqual(filteredAnswers, plotableAnswers)) {
       this.setState({
         dialog: {
           isOpened: true,
           onClose: () =>
             this.setState({ dialog: { isOpened: false } }, onChange({ ...model, domain: oldDomain, range: oldRange })),
           onConfirm: () => {
+            updatedModel.gssLineData.sections = [];
+            updatedModel.gssLineData.selectedTool = 'lineA';
             this.setState(
               {
                 gridValues,
