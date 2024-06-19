@@ -31,7 +31,7 @@ export const processMarkup = (markup) => {
 
 const REGEX = /\{\{(\d+)\}\}/g;
 
-export const createSlateMarkup = (markup) => {
+export const createSlateMarkup = (markup, responses) => {
   if (!markup) {
     return '';
   }
@@ -39,6 +39,6 @@ export const createSlateMarkup = (markup) => {
   const newMarkup = removeUnwantedCharacters(markup);
 
   return newMarkup.replace(REGEX, (match, g) => {
-    return `<span data-type="math_templated" data-index="${g}" data-value="R ${g}"></span>`;
+    return `<span data-type="math_templated" data-index="${g}" data-value=${responses?.[g] ? responses[g].answer : `R ${g}`}></span>`;
   });
 };

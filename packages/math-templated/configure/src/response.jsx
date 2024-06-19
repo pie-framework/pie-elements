@@ -135,6 +135,7 @@ class Response extends React.Component {
         main: false,
       },
     }));
+    this.props.onResponseDone();
   };
 
   onFocus = () => {

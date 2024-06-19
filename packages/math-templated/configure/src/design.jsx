@@ -21,7 +21,7 @@ import {
 import { dropdown } from '@pie-lib/pie-toolbox/code/config-ui/settings';
 
 import Response from './response';
-import { processMarkup } from './markupUtils';
+import { processMarkup, createSlateMarkup } from './markupUtils';
 import { generateValidationMessage } from './utils';
 
 const { Panel, toggle } = settings;
@@ -69,6 +69,15 @@ class Design extends React.Component {
 
     newModel.responses[index] = response;
     onModelChanged(newModel);
+  };
+
+  onResponseDone = () => {
+    const { model, onModelChanged } = this.props;
+
+    onModelChanged({
+      ...model,
+      slateMarkup: createSlateMarkup(model.markup, model.responses)
+    });
   };
 
   onChangeResponse = (index, newVal) => {
@@ -470,6 +479,7 @@ class Design extends React.Component {
                     mode={equationEditor}
                     response={response}
                     onResponseChange={this.onResponseChange}
+                    onResponseDone={this.onResponseDone}
                     index={idx}
                     cIgnoreOrder={cIgnoreOrder}
                     cAllowTrailingZeros={cAllowTrailingZeros}
