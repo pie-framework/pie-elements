@@ -31,14 +31,15 @@ export const processMarkup = (markup) => {
 
 const REGEX = /\{\{(\d+)\}\}/g;
 
-export const createSlateMarkup = (markup) => {
+export const createSlateMarkup = (markup, responses) => {
   if (!markup) {
     return '';
   }
 
   const newMarkup = removeUnwantedCharacters(markup);
 
-  return newMarkup.replace(REGEX, (match, g) => {
-    return `<span data-type="math_templated" data-index="${g}" data-value="R ${g}"></span>`;
+  return newMarkup.replace(REGEX, (match, groupIndex) => {
+    const responseValue = responses[groupIndex]?.answer || '';
+    return `<span data-type="math_templated" data-index="${groupIndex}" data-value="${responseValue}"></span>`;
   });
 };
