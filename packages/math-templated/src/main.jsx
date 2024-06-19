@@ -646,7 +646,6 @@ const styles = (theme) => ({
       '& > .mq-root-block': {
         '& > .mq-editable-field': {
           minWidth: '10px',
-          margin: (theme.spacing.unit * 2) / 3,
           padding: theme.spacing.unit / 4,
         },
       },
