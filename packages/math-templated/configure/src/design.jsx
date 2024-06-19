@@ -33,7 +33,7 @@ const createElementFromHTML = (htmlString) => {
   return div;
 };
 
-class Design extends React.Component {
+export class Design extends React.Component {
   static propTypes = {
     model: PropTypes.object.isRequired,
     configuration: PropTypes.object.isRequired,

@@ -1,0 +1,516 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render Main Component Match Snapshot 1`] = `
+<ConfigLayout
+  dimensions={Object {}}
+  settings={
+    <Panel
+      configuration={
+        Object {
+          "allowTrailingZeros": Object {
+            "enabled": true,
+            "label": "Allow Trailing Zeros",
+            "settings": false,
+          },
+          "baseInputConfiguration": Object {
+            "audio": Object {
+              "disabled": false,
+            },
+            "html": Object {
+              "disabled": true,
+            },
+            "image": Object {
+              "disabled": false,
+            },
+            "video": Object {
+              "disabled": false,
+            },
+          },
+          "editSource": Object {
+            "enabled": false,
+            "label": "Edit Source",
+            "settings": false,
+          },
+          "ignoreOrder": Object {
+            "enabled": true,
+            "label": "Ignore Order",
+            "settings": false,
+          },
+          "language": Object {
+            "enabled": false,
+            "label": "Specify Language",
+            "settings": false,
+          },
+          "languageChoices": Object {
+            "label": "Language Choices",
+            "options": Array [],
+          },
+          "mathMlOptions": Object {
+            "mmlEditing": false,
+            "mmlOutput": false,
+          },
+          "maxImageHeight": Object {
+            "prompt": 300,
+            "rationale": 300,
+            "teacherInstructions": 300,
+          },
+          "maxImageWidth": Object {
+            "prompt": 300,
+            "rationale": 300,
+            "teacherInstructions": 300,
+          },
+          "maxResponseAreas": 10,
+          "partialScoring": Object {
+            "label": "Allow Partial Scoring",
+            "settings": true,
+          },
+          "playerSpellCheck": Object {
+            "enabled": true,
+            "label": "Student Spellcheck",
+            "settings": true,
+          },
+          "prompt": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": false,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": false,
+              },
+            },
+            "label": "Prompt",
+            "required": false,
+            "settings": true,
+          },
+          "rationale": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": false,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": false,
+              },
+            },
+            "label": "Rationale",
+            "required": false,
+            "settings": true,
+          },
+          "spellCheck": Object {
+            "enabled": true,
+            "label": "Spellcheck",
+            "settings": false,
+          },
+          "teacherInstructions": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": false,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": false,
+              },
+            },
+            "label": "Teacher Instructions",
+            "required": false,
+            "settings": true,
+          },
+          "template": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": false,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": false,
+              },
+            },
+          },
+        }
+      }
+      groups={
+        Object {
+          "Properties": Object {
+            "editSource.enabled": false,
+            "partialScoring": undefined,
+            "playerSpellCheckEnabled": undefined,
+            "promptEnabled": undefined,
+            "rationaleEnabled": undefined,
+            "spellCheckEnabled": false,
+            "teacherInstructionsEnabled": undefined,
+          },
+          "Settings": Object {
+            "language": false,
+            "language.enabled": false,
+          },
+        }
+      }
+      model={
+        Object {
+          "allowTrailingZerosDefault": false,
+          "element": "math-templated",
+          "equationEditor": "8",
+          "ignoreOrderDefault": false,
+          "markup": "",
+          "playerSpellCheckEnabled": true,
+          "prompt": "",
+          "promptEnabled": true,
+          "rationale": "Rationale goes here",
+          "rationaleEnabled": true,
+          "responses": Object {},
+          "spellCheckEnabled": true,
+          "teacherInstructionsEnabled": true,
+          "toolbarEditorPosition": "bottom",
+          "validationDefault": "literal",
+        }
+      }
+      onChangeModel={[Function]}
+    />
+  }
+>
+  <InputContainer
+    label="Teacher Instructions"
+  >
+    <EditableHtml
+      allowValidation={false}
+      imageSupport={Object {}}
+      languageCharactersProps={
+        Array [
+          Object {
+            "language": "spanish",
+          },
+          Object {
+            "language": "special",
+          },
+        ]
+      }
+      markup=""
+      mathMlOptions={
+        Object {
+          "mmlEditing": false,
+          "mmlOutput": false,
+        }
+      }
+      maxImageHeight={300}
+      maxImageWidth={300}
+      nonEmpty={false}
+      onChange={[Function]}
+      onDone={[Function]}
+      pluginProps={
+        Object {
+          "audio": Object {
+            "disabled": false,
+          },
+          "html": Object {
+            "disabled": true,
+          },
+          "image": Object {
+            "disabled": false,
+          },
+          "video": Object {
+            "disabled": false,
+          },
+        }
+      }
+      spellCheck={true}
+      toolbarOpts={
+        Object {
+          "position": "bottom",
+        }
+      }
+      uploadSoundSupport={Object {}}
+    />
+  </InputContainer>
+  <InputContainer
+    label="Prompt"
+  >
+    <EditableHtml
+      allowValidation={false}
+      disableUnderline={true}
+      imageSupport={Object {}}
+      languageCharactersProps={
+        Array [
+          Object {
+            "language": "spanish",
+          },
+          Object {
+            "language": "special",
+          },
+        ]
+      }
+      markup=""
+      mathMlOptions={
+        Object {
+          "mmlEditing": false,
+          "mmlOutput": false,
+        }
+      }
+      maxImageHeight={300}
+      maxImageWidth={300}
+      nonEmpty={false}
+      onChange={[Function]}
+      onDone={[Function]}
+      pluginProps={
+        Object {
+          "audio": Object {
+            "disabled": false,
+          },
+          "html": Object {
+            "disabled": true,
+          },
+          "image": Object {
+            "disabled": false,
+          },
+          "video": Object {
+            "disabled": false,
+          },
+        }
+      }
+      spellCheck={true}
+      toolbarOpts={
+        Object {
+          "position": "bottom",
+        }
+      }
+      uploadSoundSupport={Object {}}
+    />
+  </InputContainer>
+  <div>
+    <WithStyles(Typography)>
+      Response Template
+    </WithStyles(Typography)>
+    <WithStyles(Tooltip)
+      classes={
+        Object {
+          "tooltip": undefined,
+        }
+      }
+      disableFocusListener={true}
+      disableTouchListener={true}
+      placement="right"
+      title="Validation requirements:
+Correct answers should not be blank.
+Each answer defined for a response area should be unique.
+There should be at least 1 and at most 10 response areas defined."
+    >
+      <pure(InfoIcon)
+        color="primary"
+        fontSize="small"
+      />
+    </WithStyles(Tooltip)>
+  </div>
+  <EditableHtml
+    activePlugins={
+      Array [
+        "bold",
+        "html",
+        "italic",
+        "underline",
+        "strikethrough",
+        "bulleted-list",
+        "numbered-list",
+        "image",
+        "math",
+        "languageCharacters",
+        "table",
+        "video",
+        "audio",
+        "responseArea",
+      ]
+    }
+    allowValidation={false}
+    disableImageAlignmentButtons={true}
+    disabled={false}
+    highlightShape={false}
+    imageSupport={Object {}}
+    languageCharactersProps={
+      Array [
+        Object {
+          "language": "spanish",
+        },
+        Object {
+          "language": "special",
+        },
+      ]
+    }
+    mathMlOptions={
+      Object {
+        "mmlEditing": false,
+        "mmlOutput": false,
+      }
+    }
+    onBlur={[Function]}
+    onChange={[Function]}
+    onDone={[Function]}
+    pluginProps={
+      Object {
+        "audio": Object {
+          "disabled": false,
+        },
+        "html": Object {
+          "disabled": true,
+        },
+        "image": Object {
+          "disabled": false,
+        },
+        "video": Object {
+          "disabled": false,
+        },
+      }
+    }
+    responseAreaProps={
+      Object {
+        "error": [Function],
+        "maxResponseAreas": 10,
+        "onHandleAreaChange": [Function],
+        "respAreaToolbar": null,
+        "type": "math-templated",
+      }
+    }
+    spellCheck={true}
+    toolbarOpts={
+      Object {
+        "position": "top",
+      }
+    }
+    uploadSoundSupport={Object {}}
+  />
+  <WithStyles(Typography)>
+    Define Response
+  </WithStyles(Typography)>
+  <InputContainer
+    label="Response Template Equation Editor"
+  >
+    <WithStyles(WithFormControlContext(Select))
+      onChange={[Function]}
+      value="8"
+    >
+      <WithStyles(MenuItem)
+        value="non-negative-integers"
+      >
+        Numeric - Non-Negative Integers
+      </WithStyles(MenuItem)>
+      <WithStyles(MenuItem)
+        value="integers"
+      >
+        Numeric - Integers
+      </WithStyles(MenuItem)>
+      <WithStyles(MenuItem)
+        value="decimals"
+      >
+        Numeric - Decimals
+      </WithStyles(MenuItem)>
+      <WithStyles(MenuItem)
+        value="fractions"
+      >
+        Numeric - Fractions
+      </WithStyles(MenuItem)>
+      <WithStyles(MenuItem)
+        value={1}
+      >
+        Grade 1 - 2
+      </WithStyles(MenuItem)>
+      <WithStyles(MenuItem)
+        value={3}
+      >
+        Grade 3 - 5
+      </WithStyles(MenuItem)>
+      <WithStyles(MenuItem)
+        value={6}
+      >
+        Grade 6 - 7
+      </WithStyles(MenuItem)>
+      <WithStyles(MenuItem)
+        value={8}
+      >
+        Grade 8 - HS
+      </WithStyles(MenuItem)>
+      <WithStyles(MenuItem)
+        value="geometry"
+      >
+        Geometry
+      </WithStyles(MenuItem)>
+      <WithStyles(MenuItem)
+        value="advanced-algebra"
+      >
+        Advanced Algebra
+      </WithStyles(MenuItem)>
+      <WithStyles(MenuItem)
+        value="statistics"
+      >
+        Statistics
+      </WithStyles(MenuItem)>
+      <WithStyles(MenuItem)
+        value="item-authoring"
+      >
+        Item Authoring
+      </WithStyles(MenuItem)>
+    </WithStyles(WithFormControlContext(Select))>
+  </InputContainer>
+  <InputContainer
+    label="Rationale"
+  >
+    <EditableHtml
+      allowValidation={false}
+      imageSupport={Object {}}
+      languageCharactersProps={
+        Array [
+          Object {
+            "language": "spanish",
+          },
+          Object {
+            "language": "special",
+          },
+        ]
+      }
+      markup="Rationale goes here"
+      mathMlOptions={
+        Object {
+          "mmlEditing": false,
+          "mmlOutput": false,
+        }
+      }
+      maxImageHeight={300}
+      maxImageWidth={300}
+      nonEmpty={false}
+      onChange={[Function]}
+      onDone={[Function]}
+      pluginProps={
+        Object {
+          "audio": Object {
+            "disabled": false,
+          },
+          "html": Object {
+            "disabled": true,
+          },
+          "image": Object {
+            "disabled": false,
+          },
+          "math": Object {
+            "controlledKeypadMode": false,
+          },
+          "video": Object {
+            "disabled": false,
+          },
+        }
+      }
+      spellCheck={true}
+      toolbarOpts={
+        Object {
+          "position": "bottom",
+        }
+      }
+      uploadSoundSupport={Object {}}
+    />
+  </InputContainer>
+</ConfigLayout>
+`;
