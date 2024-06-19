@@ -22,6 +22,7 @@ class Response extends React.Component {
     error: PropTypes.object,
     mode: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     onResponseChange: PropTypes.func.isRequired,
+    onResponseDone: PropTypes.func.isRequired,
     response: PropTypes.object.isRequired,
     cIgnoreOrder: PropTypes.object.isRequired,
     cAllowTrailingZeros: PropTypes.object.isRequired,
@@ -128,6 +129,7 @@ class Response extends React.Component {
   };
 
   onDone = () => {
+    const { onResponseDone } = this.props;
     this.setState((state) => ({
       showKeypad: {
         ...state.showKeypad,
@@ -135,7 +137,8 @@ class Response extends React.Component {
         main: false,
       },
     }));
-    this.props.onResponseDone();
+
+    onResponseDone();
   };
 
   onFocus = () => {
@@ -170,7 +173,6 @@ class Response extends React.Component {
 
   render() {
     const { classes, mode, responseKey, response, cAllowTrailingZeros, cIgnoreOrder, error } = this.props;
-
     const { showKeypad } = this.state;
     const { validation, answer, alternates, ignoreOrder, allowTrailingZeros } = response;
     const hasAlternates = Object.keys(alternates || {}).length > 0;

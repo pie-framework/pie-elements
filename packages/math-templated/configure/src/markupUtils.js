@@ -38,7 +38,8 @@ export const createSlateMarkup = (markup, responses) => {
 
   const newMarkup = removeUnwantedCharacters(markup);
 
-  return newMarkup.replace(REGEX, (match, g) => {
-    return `<span data-type="math_templated" data-index="${g}" data-value=${responses?.[g] ? responses[g].answer : `R ${g}`}></span>`;
+  return newMarkup.replace(REGEX, (match, groupIndex) => {
+    const responseValue = responses[groupIndex]?.answer || '';
+    return `<span data-type="math_templated" data-index="${groupIndex}" data-value="${responseValue}"></span>`;
   });
 };

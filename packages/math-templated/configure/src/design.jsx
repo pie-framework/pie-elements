@@ -110,7 +110,7 @@ class Design extends React.Component {
       const { value, index: dataIndex } = element.dataset;
 
       if (!value) {
-        element.dataset.value = `R ${dataIndex}`;
+        element.dataset.value = '';
       }
 
       newResponses[dataIndex] = responses[dataIndex] || {
