@@ -57,7 +57,7 @@ const getResponseCorrectness = (question, sessionResponse) => {
   } else {
     let correctAnswers = 0;
     let score = 0;
-    let correct = false;
+    let correct = false; //TODO check correct
     const correctResponsesCount = Object.keys(correctResponses || {}).length;
 
     Object.keys(correctResponses).forEach((responseId) => {
