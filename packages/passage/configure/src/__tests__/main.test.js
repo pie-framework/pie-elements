@@ -54,7 +54,7 @@ describe('Render Main Component', () => {
           { ...model.passages[0], teacherInstructions: 'Teacher Instructions' }
         ]
       };
-      instance.changeTeacherInstructions('Teacher Instructions', 0);
+      instance.handleChange('teacherInstructions','Teacher Instructions', 0);
       expect(onChange).toBeCalledWith(updatedModel);
     });
 
@@ -65,7 +65,7 @@ describe('Render Main Component', () => {
           { ...model.passages[0], title: 'New Title' }
         ]
       };
-      instance.changeTitle('New Title', 0);
+      instance.handleChange('title','New Title', 0);
       expect(onChange).toBeCalledWith(updatedModel);
     });
 
@@ -76,7 +76,7 @@ describe('Render Main Component', () => {
           { ...model.passages[0], subtitle: 'New Subtitle' }
         ]
       };
-      instance.changeSubtitle('New Subtitle', 0);
+      instance.handleChange('subtitle','New Subtitle', 0);
       expect(onChange).toBeCalledWith(updatedModel);
     });
 
@@ -87,7 +87,7 @@ describe('Render Main Component', () => {
           { ...model.passages[0], author: 'New Author' }
         ]
       };
-      instance.changeAuthor('New Author', 0);
+      instance.handleChange('author','New Author', 0);
       expect(onChange).toBeCalledWith(updatedModel);
     });
 
@@ -98,13 +98,12 @@ describe('Render Main Component', () => {
           { ...model.passages[0], text: 'New Text' }
         ]
       };
-      instance.changeText('New Text', 0);
+      instance.handleChange('text','New Text', 0);
       expect(onChange).toBeCalledWith(updatedModel);
     });
   });
 
   describe('UI Rendering', () => {
-
     it('renders title input when enabled', () => {
       wrapper.setProps({
         model: { ...model, titleEnabled: true },

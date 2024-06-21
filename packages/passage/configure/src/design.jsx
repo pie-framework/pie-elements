@@ -23,79 +23,15 @@ export class Main extends React.Component {
     this.state = { setDimensions: true };
   }
 
-  changeTeacherInstructions = (teacherInstructions, index = 0) => {
+  handleChange = (fieldName, value, index = 0) => {
     const { model, onModelChanged } = this.props;
+    if (!model || !onModelChanged || !model.passages || index < 0 || index >= model.passages.length) {
+      return;
+    }
+    const updatedPassages = [...model.passages];
+    updatedPassages[index] = { ...updatedPassages[index], [fieldName]: value };
 
-    const updatedPassages = model.passages.map((passage, i) => {
-      if (i === index) {
-        return { ...passage, teacherInstructions: teacherInstructions };
-      }
-      return passage;
-    });
-
-    const updatedModel = { ...model, passages: updatedPassages };
-
-    onModelChanged(updatedModel);
-  };
-
-  changeTitle = (title, index = 0) => {
-    const { model, onModelChanged } = this.props;
-
-    const updatedPassages = model.passages.map((passage, i) => {
-      if (i === index) {
-        return { ...passage, title: title };
-      }
-      return passage;
-    });
-
-    const updatedModel = { ...model, passages: updatedPassages };
-
-    onModelChanged(updatedModel);
-  };
-  
-  changeSubtitle = (subtitle, index = 0) => {
-    const { model, onModelChanged } = this.props;
-
-    const updatedPassages = model.passages.map((passage, i) => {
-      if (i === index) {
-        return { ...passage, subtitle: subtitle };
-      }
-      return passage;
-    });
-
-    const updatedModel = { ...model, passages: updatedPassages };
-
-    onModelChanged(updatedModel);
-  };
-
-  changeAuthor = (author, index = 0) => {
-    const { model, onModelChanged } = this.props;
-
-    const updatedPassages = model.passages.map((passage, i) => {
-      if (i === index) {
-        return { ...passage, author: author };
-      }
-      return passage;
-    });
-
-    const updatedModel = { ...model, passages: updatedPassages };
-
-    onModelChanged(updatedModel);
-  };
-
-  changeText = (text, index = 0) => {
-    const { model, onModelChanged } = this.props;
-
-    const updatedPassages = model.passages.map((passage, i) => {
-      if (i === index) {
-        return { ...passage, text: text };
-      }
-      return passage;
-    });
-
-    const updatedModel = { ...model, passages: updatedPassages };
-
-    onModelChanged(updatedModel);
+    onModelChanged({ ...model, passages: updatedPassages });
   };
 
   render() {
@@ -130,22 +66,22 @@ export class Main extends React.Component {
         teacherInstructions,
       }]
     } = model || {};
-    const { teacherInstructions: teacherInstructionsError, title: titleError, subtitle: subtitleError, author: authorError, text: textError } = errors;
+    const { teacherInstructions: teacherInstructionsError, title: titleError, subtitle: subtitleError, author: authorError, text: textError } = errors || {};
 
     const defaultImageMaxWidth = maxImageWidth && maxImageWidth.prompt;
     const defaultImageMaxHeight = maxImageHeight && maxImageHeight.prompt;
 
     const panelSettings = {
-      titleEnabled: title.settings && toggle(title.label),
-      subtitleEnabled: subtitle.settings && toggle(subtitle.label),
-      authorEnabled: author.settings && toggle(author.label),
-      textEnabled: text.settings && toggle(text.label),
+      titleEnabled: title && title.settings && toggle(title.label),
+      subtitleEnabled: subtitle && subtitle.settings && toggle(subtitle.label),
+      authorEnabled: author && author.settings && toggle(author.label),
+      textEnabled: text && text.settings && toggle(text.label),
     };
 
     const panelProperties = {
-      teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
-      'language.enabled': language.settings && toggle(language.label, true),
-      language: language.settings && language.enabled && dropdown(languageChoices.label, languageChoices.options),
+      teacherInstructionsEnabled: teacherInstructions && teacherInstructions.settings && toggle(teacherInstructions.label),
+      'language.enabled': language && language.settings && toggle(language.label, true),
+      language: language && language.settings && language.enabled && dropdown(languageChoices.label, languageChoices.options),
     };
 
     const getPluginProps = (props) => {
@@ -177,7 +113,7 @@ export class Main extends React.Component {
               <InputContainer label={title.label} className={classes.inputContainer}>
                 <EditableHtml
                     markup={model.passages[0].title || ''}
-                    onChange={this.changeTitle}
+                    onChange={(value) => this.handleChange('title', value, index)}
                     nonEmpty={false}
                     error={titleError}
                     mathMlOptions={mathMlOptions}
@@ -191,7 +127,7 @@ export class Main extends React.Component {
               <InputContainer label={subtitle.label} className={classes.inputContainer}>
                 <EditableHtml
                     markup={model.passages[0].subtitle || ''}
-                    onChange={this.changeSubtitle}
+                    onChange={(value) => this.handleChange('subtitle', value, index)}
                     nonEmpty={false}
                     error={subtitleError}
                     mathMlOptions={mathMlOptions}
@@ -205,7 +141,7 @@ export class Main extends React.Component {
               <InputContainer label={author.label} className={classes.inputContainer}>
                 <EditableHtml
                     markup={model.passages[0].author || ''}
-                    onChange={this.changeAuthor}
+                    onChange={(value) => this.handleChange('author', value, index)}
                     nonEmpty={false}
                     error={authorError}
                     mathMlOptions={mathMlOptions}
@@ -218,8 +154,8 @@ export class Main extends React.Component {
           {teacherInstructionsEnabled && (
               <InputContainer label={teacherInstructions.label} className={classes.inputContainer}>
                 <EditableHtml
-                    markup={model.teacherInstructions || ''}
-                    onChange={this.changeTeacherInstructions}
+                    markup={model.passages[0].teacherInstructions || ''}
+                    onChange={(value) => this.handleChange('teacherInstructions', value, index)}
                     nonEmpty={false}
                     error={teacherInstructionsError}
                     maxImageWidth={(maxImageWidth && maxImageWidth.teacherInstructions) || defaultImageMaxWidth}
@@ -236,7 +172,7 @@ export class Main extends React.Component {
                 <EditableHtml
                     activePlugins={ALL_PLUGINS}
                     markup={model.passages[0].text || '' }
-                    onChange={this.changeText}
+                    onChange={(value) => this.handleChange('text', value, index)}
                     imageSupport={imageSupport}
                     uploadSoundSupport={uploadSoundSupport}
                     nonEmpty={false}

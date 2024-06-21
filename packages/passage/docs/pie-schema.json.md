@@ -12,11 +12,11 @@ The array object has the following properties:
 
 The title of the passage
 
-## `subtitle` (string, required)
+## `subtitle` (string)
 
 The subtitle of the passage
 
-## `author` (string, required)
+## `author` (string)
 
 The author of the passage
 
@@ -48,18 +48,6 @@ Indicates if text is enabled
 
 Indicates if author is enabled
 
-# `spanishInput` (boolean)
-
-Whether a control to allow insertion of spanish characters should be displayed
-
-Default: `false`
-
-# `specialInput` (boolean)
-
-Whether a control to allow insertion of special characters should be displayed
-
-Default: `false`
-
 # `id` (string, required)
 
 Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.
@@ -73,18 +61,6 @@ The html Element tag name
 # Sub Schemas
 
 The schema defines the following additional types:
-
-## `ConfigureProp` (object)
-
-Properties of the `ConfigureProp` object:
-
-### `settings` (boolean)
-
-Indicates if the item has to be displayed in the Settings Panel
-
-### `label` (string)
-
-Indicates the label for the item that has to be displayed in the Settings Panel
 
 ## `EditableHtmlPluginConfigureRequired` (object)
 
@@ -291,6 +267,35 @@ Indicates if model should have mathML output instead of latex
 
 Indicates if mathML that's already in model should be editable
 
+## `ConfigurePropWithEnabled` (object)
+
+Properties of the `ConfigurePropWithEnabled` object:
+
+### `enabled` (boolean)
+
+Indicates the value of the item if it affects config-ui
+(eg.: if item is a switch and displaying an input on the config-ui depends on the switch value: on/off)
+
+### `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+### `label` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
+
+## `ConfigureLanguageOptionsProp` (object)
+
+Properties of the `ConfigureLanguageOptionsProp` object:
+
+### `value` (string, required)
+
+Value of the language option
+
+### `label` (string, required)
+
+Label of the language option
+
 ## `Passage` (object)
 
 Properties of the `Passage` object:
@@ -299,11 +304,11 @@ Properties of the `Passage` object:
 
 The title of the passage
 
-### `subtitle` (string, required)
+### `subtitle` (string)
 
 The subtitle of the passage
 
-### `author` (string, required)
+### `author` (string)
 
 The author of the passage
 

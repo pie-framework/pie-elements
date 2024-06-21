@@ -36,10 +36,10 @@ export interface Passage {
   title: string;
 
   /** The subtitle of the passage */
-  subtitle: string;
+  subtitle?: string;
 
   /** The author of the passage */
-  author: string;
+  author?: string;
 
   /** The content of the passage */
   text: string;
@@ -53,13 +53,11 @@ export interface Passage {
  * @additionalProperties false
  */
 export interface PassageConfigure {
-
   /**
    * Indicates if the settings panel is not available
    */
   settingsPanelDisabled?: boolean;
-
-
+  
   /**
    * Teacher Instructions configuration
    */

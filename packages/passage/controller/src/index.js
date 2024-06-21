@@ -16,6 +16,7 @@ export const normalize = (question) => ({
   ...defaults,
   ...question,
 });
+
 /**
  *
  * @param {*} question
@@ -24,18 +25,20 @@ export const normalize = (question) => ({
  */
 export async function model(question, session, env) {
   const { role, mode } = env || {};
-  const response = cloneDeep(question);
+  const normalizedQuestion = normalize(question);
 
-  response.showTeacherInstructions = role === 'instructor' && (mode === 'view' || mode === 'evaluate');
+  const out = {
+    ...normalizedQuestion,
+    teacherInstructions: null
+  };
 
-  // if we don't show the teacher instructions don't pass them on
-  if (!response.showTeacherInstructions) {
-    response.passages.forEach((passage) => {
-      delete passage.teacherInstructions;
-    });
+  if (role === 'instructor' && (mode === 'view' || mode === 'evaluate')) {
+    if (normalizedQuestion.teacherInstructionsEnabled) {
+      out.teacherInstructions = normalizedQuestion.teacherInstructions;
+    }
   }
 
-  return response;
+  return out;
 }
 
 export const validate = (model = {}, config = {}) => {

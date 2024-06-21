@@ -6,30 +6,6 @@ The schema defines the following properties:
 
 Indicates if the settings panel is not available
 
-# `spanishInput` (object)
-
-Properties of the `spanishInput` object:
-
-## `settings` (boolean)
-
-Indicates if the item has to be displayed in the Settings Panel
-
-## `label` (string)
-
-Indicates the label for the item that has to be displayed in the Settings Panel
-
-# `specialInput` (object)
-
-Properties of the `specialInput` object:
-
-## `settings` (boolean)
-
-Indicates if the item has to be displayed in the Settings Panel
-
-## `label` (string)
-
-Indicates the label for the item that has to be displayed in the Settings Panel
-
 # `teacherInstructions` (object)
 
 Properties of the `teacherInstructions` object:
@@ -220,23 +196,51 @@ Currently, only "SVG" is supported.
 
 The icon string. Currently, only "SVG" is supported, so it needs to be a valid svg.
 
+# `language` (object)
+
+Properties of the `language` object:
+
+## `enabled` (boolean)
+
+Indicates the value of the item if it affects config-ui
+(eg.: if item is a switch and displaying an input on the config-ui depends on the switch value: on/off)
+
+## `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+## `label` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
+
+# `languageChoices` (object)
+
+Language choices configuration
+Only available if language is enabled
+
+Properties of the `languageChoices` object:
+
+## `label` (string, required)
+
+## `options` (array, required)
+
+The object is an array with all elements of the type `object`.
+
+The array object has the following properties:
+
+### `value` (string, required)
+
+Value of the language option
+
+### `label` (string, required)
+
+Label of the language option
+
 ---
 
 # Sub Schemas
 
 The schema defines the following additional types:
-
-## `ConfigureProp` (object)
-
-Properties of the `ConfigureProp` object:
-
-### `settings` (boolean)
-
-Indicates if the item has to be displayed in the Settings Panel
-
-### `label` (string)
-
-Indicates the label for the item that has to be displayed in the Settings Panel
 
 ## `EditableHtmlPluginConfigureRequired` (object)
 
@@ -442,3 +446,32 @@ Indicates if model should have mathML output instead of latex
 ### `mmlEditing` (number)
 
 Indicates if mathML that's already in model should be editable
+
+## `ConfigurePropWithEnabled` (object)
+
+Properties of the `ConfigurePropWithEnabled` object:
+
+### `enabled` (boolean)
+
+Indicates the value of the item if it affects config-ui
+(eg.: if item is a switch and displaying an input on the config-ui depends on the switch value: on/off)
+
+### `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+### `label` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
+
+## `ConfigureLanguageOptionsProp` (object)
+
+Properties of the `ConfigureLanguageOptionsProp` object:
+
+### `value` (string, required)
+
+Value of the language option
+
+### `label` (string, required)
+
+Label of the language option

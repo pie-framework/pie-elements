@@ -36,8 +36,6 @@
           }
         },
         "required": [
-          "author",
-          "subtitle",
           "text",
           "title"
         ]
@@ -69,18 +67,6 @@
       "type": "boolean",
       "title": "authorEnabled"
     },
-    "spanishInput": {
-      "description": "Whether a control to allow insertion of spanish characters should be displayed",
-      "default": false,
-      "type": "boolean",
-      "title": "spanishInput"
-    },
-    "specialInput": {
-      "description": "Whether a control to allow insertion of special characters should be displayed",
-      "default": false,
-      "type": "boolean",
-      "title": "specialInput"
-    },
     "id": {
       "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
       "type": "string",
@@ -103,22 +89,6 @@
     "titleEnabled"
   ],
   "definitions": {
-    "ConfigureProp": {
-      "title": "ConfigureProp",
-      "type": "object",
-      "properties": {
-        "settings": {
-          "description": "Indicates if the item has to be displayed in the Settings Panel",
-          "type": "boolean",
-          "title": "settings"
-        },
-        "label": {
-          "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
-          "type": "string",
-          "title": "label"
-        }
-      }
-    },
     "EditableHtmlPluginConfigureRequired": {
       "title": "EditableHtmlPluginConfigureRequired",
       "type": "object",
@@ -394,6 +364,47 @@
         }
       }
     },
+    "ConfigurePropWithEnabled": {
+      "title": "ConfigurePropWithEnabled",
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "description": "Indicates the value of the item if it affects config-ui\n(eg.: if item is a switch and displaying an input on the config-ui depends on the switch value: on/off)",
+          "type": "boolean",
+          "title": "enabled"
+        },
+        "settings": {
+          "description": "Indicates if the item has to be displayed in the Settings Panel",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+          "type": "string",
+          "title": "label"
+        }
+      }
+    },
+    "ConfigureLanguageOptionsProp": {
+      "title": "ConfigureLanguageOptionsProp",
+      "type": "object",
+      "properties": {
+        "value": {
+          "description": "Value of the language option",
+          "type": "string",
+          "title": "value"
+        },
+        "label": {
+          "description": "Label of the language option",
+          "type": "string",
+          "title": "label"
+        }
+      },
+      "required": [
+        "label",
+        "value"
+      ]
+    },
     "Passage": {
       "title": "Passage",
       "type": "object",
@@ -425,8 +436,6 @@
         }
       },
       "required": [
-        "author",
-        "subtitle",
         "text",
         "title"
       ]
