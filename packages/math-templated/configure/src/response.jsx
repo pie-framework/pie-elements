@@ -175,7 +175,6 @@ class Response extends React.Component {
     const { classes, mode, responseKey, response, cAllowTrailingZeros, cIgnoreOrder, error } = this.props;
     const { showKeypad } = this.state;
     const { validation, answer, alternates, ignoreOrder, allowTrailingZeros } = response;
-    console.log('answer ----->',answer, 'key ----->', responseKey)
     const hasAlternates = Object.keys(alternates || {}).length > 0;
     const classNames = {
       editor: classes.responseEditor,
