@@ -20,7 +20,7 @@ exports[`Main render snapshot 1`] = `
     onChangeMarks={[MockFunction]}
     size={Object {}}
   />
-  <Component
+  <WithStyles(KeyLegend)
     isLabelAvailable={false}
   />
 </div>

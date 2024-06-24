@@ -113,7 +113,7 @@ export class Main extends React.Component {
               <InputContainer label={title.label} className={classes.inputContainer}>
                 <EditableHtml
                     markup={model.passages[0].title || ''}
-                    onChange={(value) => this.handleChange('title', value, index)}
+                    onChange={(value) => this.handleChange('title', value)}
                     nonEmpty={false}
                     error={titleError}
                     mathMlOptions={mathMlOptions}
@@ -127,7 +127,7 @@ export class Main extends React.Component {
               <InputContainer label={subtitle.label} className={classes.inputContainer}>
                 <EditableHtml
                     markup={model.passages[0].subtitle || ''}
-                    onChange={(value) => this.handleChange('subtitle', value, index)}
+                    onChange={(value) => this.handleChange('subtitle', value)}
                     nonEmpty={false}
                     error={subtitleError}
                     mathMlOptions={mathMlOptions}
@@ -141,7 +141,7 @@ export class Main extends React.Component {
               <InputContainer label={author.label} className={classes.inputContainer}>
                 <EditableHtml
                     markup={model.passages[0].author || ''}
-                    onChange={(value) => this.handleChange('author', value, index)}
+                    onChange={(value) => this.handleChange('author', value)}
                     nonEmpty={false}
                     error={authorError}
                     mathMlOptions={mathMlOptions}
@@ -155,7 +155,7 @@ export class Main extends React.Component {
               <InputContainer label={teacherInstructions.label} className={classes.inputContainer}>
                 <EditableHtml
                     markup={model.passages[0].teacherInstructions || ''}
-                    onChange={(value) => this.handleChange('teacherInstructions', value, index)}
+                    onChange={(value) => this.handleChange('teacherInstructions', value)}
                     nonEmpty={false}
                     error={teacherInstructionsError}
                     maxImageWidth={(maxImageWidth && maxImageWidth.teacherInstructions) || defaultImageMaxWidth}
@@ -172,7 +172,7 @@ export class Main extends React.Component {
                 <EditableHtml
                     activePlugins={ALL_PLUGINS}
                     markup={model.passages[0].text || '' }
-                    onChange={(value) => this.handleChange('text', value, index)}
+                    onChange={(value) => this.handleChange('text', value)}
                     imageSupport={imageSupport}
                     uploadSoundSupport={uploadSoundSupport}
                     nonEmpty={false}
