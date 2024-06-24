@@ -1,11 +1,10 @@
 import React from 'react';
-import { FeedbackSelector, InputContainer, settings, layout } from '@pie-lib/pie-toolbox/config-ui';
+import { InputContainer, settings, layout } from '@pie-lib/pie-toolbox/config-ui';
 import PropTypes from 'prop-types';
-import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import { EditableHtml, ALL_PLUGINS } from '@pie-lib/pie-toolbox/editable-html';
 
-const { Panel, toggle, numberFields, dropdown } = settings;
+const { Panel, toggle, dropdown } = settings;
 
 export class Main extends React.Component {
   static propTypes = {
@@ -58,13 +57,6 @@ export class Main extends React.Component {
       subtitleEnabled,
       authorEnabled,
       textEnabled,
-      passages = [{
-        title,
-        subtitle,
-        text,
-        author,
-        teacherInstructions,
-      }]
     } = model || {};
     const { teacherInstructions: teacherInstructionsError, title: titleError, subtitle: subtitleError, author: authorError, text: textError } = errors || {};
 
