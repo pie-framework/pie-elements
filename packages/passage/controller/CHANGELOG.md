@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage-controller@1.2.0...@pie-element/passage-controller@1.3.0) (2024-06-24)
+
+
+### Features
+
+* **passage:** added validation model for passage PD-3770 ([dfcd62f](https://github.com/pie-framework/pie-elements/commit/dfcd62f8abb79226a8875f938328a97372bfcc79))
+* **passage:** Improvements for passage configure & controller ([ba8f690](https://github.com/pie-framework/pie-elements/commit/ba8f690d60a2faca8eaacf36bae5b80cff18f894))
+
+
+
+
+
 # [1.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage-controller@1.1.0...@pie-element/passage-controller@1.2.0) (2024-03-04)
 
 

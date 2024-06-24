@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.30.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.29.0...@pie-element/pie-models@13.30.0) (2024-06-24)
+
+
+### Features
+
+* update pie-lib/pie-toolbox ability to enabled/disable blockquote and h3 (PD-3772, PD-3771) and PD-3813 ([c2cfd9b](https://github.com/pie-framework/pie-elements/commit/c2cfd9b323acdf3d456c05806c1f97f9067bb4fe))
+* **passage:** Add passage configure + initial UI & unit tests PD-3770 ([68a0413](https://github.com/pie-framework/pie-elements/commit/68a041323a9b3e24de0691c30f987bccbaa9e0d7))
+* **passage:** Improvements for passage configure & controller ([ba8f690](https://github.com/pie-framework/pie-elements/commit/ba8f690d60a2faca8eaacf36bae5b80cff18f894))
+
+
+
+
+
 # [13.29.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.28.0...@pie-element/pie-models@13.29.0) (2024-05-13)
 
 

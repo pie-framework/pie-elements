@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.20.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@5.19.0...@pie-element/image-cloze-association@5.20.0) (2024-06-24)
+
+
+### Features
+
+* update pie-lib/pie-toolbox ability to enabled/disable blockquote and h3 (PD-3772, PD-3771) and PD-3813 ([c2cfd9b](https://github.com/pie-framework/pie-elements/commit/c2cfd9b323acdf3d456c05806c1f97f9067bb4fe))
+
+
+
+
+
 # [5.19.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@5.18.0...@pie-element/image-cloze-association@5.19.0) (2024-06-19)
 
 
