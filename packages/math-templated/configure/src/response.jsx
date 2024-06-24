@@ -26,7 +26,7 @@ class Response extends React.Component {
     response: PropTypes.object.isRequired,
     cIgnoreOrder: PropTypes.object.isRequired,
     cAllowTrailingZeros: PropTypes.object.isRequired,
-    responseKey: PropTypes.string.isRequired,
+    responseKey: PropTypes.number.isRequired,
   };
 
   static defaultProps = {
@@ -183,13 +183,15 @@ class Response extends React.Component {
     const styles = {
       minHeight: `${showKeypad.openCount > 0 ? 430 : 230}px`,
     };
+    // add 1 to index to display R 1 instead of R 0
+    const keyToDisplay = `R ${parseInt(responseKey) + 1}`;
 
     return (
       <Card className={classes.responseContainer} style={styles}>
         <CardContent className={classes.cardContent}>
           <div className={classes.titleBar}>
             <Typography className={classes.title} component="div">
-              Response for <div className={classes.responseBox}>R {responseKey}</div>
+              Response for <div className={classes.responseBox}>{keyToDisplay}</div>
             </Typography>
 
             <InputContainer label="Validation" className={classes.selectContainer}>

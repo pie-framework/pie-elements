@@ -106,14 +106,14 @@ class Design extends React.Component {
     const domMarkup = createElementFromHTML(markup);
     const responseAreas = domMarkup.querySelectorAll('[data-type="math_templated"]');
 
-    responseAreas.forEach((element) => {
+    responseAreas.forEach((element, index) => {
       const { value, index: dataIndex } = element.dataset;
 
       if (!value) {
         element.dataset.value = '';
       }
 
-      newResponses[dataIndex] = responses[dataIndex] || {
+      newResponses[index] = responses[dataIndex] || {
         allowSpaces: true,
         validation: validationDefault || 'symbolic',
         allowTrailingZeros: allowTrailingZerosDefault || false,
@@ -122,8 +122,10 @@ class Design extends React.Component {
         alternates: {},
       };
 
-      element.dataset.index = dataIndex;
+      element.dataset.index = index.toString();
     });
+
+    console.log('newResponses', newResponses);
 
     const processedMarkup = processMarkup(markup);
 
@@ -135,7 +137,7 @@ class Design extends React.Component {
         markup: processedMarkup
       });
 
-    this.setState({ cachedChoices: undefined }, callback);
+    this.setState({ cachedResponses: undefined }, callback);
   };
 
   onHandleAreaChange = throttle(
@@ -469,13 +471,13 @@ class Design extends React.Component {
         </InputContainer>
 
         {Object.keys(responses || {}).map((responseKey, idx) => {
-          const response = responses[responseKey];
+          const response = responses[idx];
 
           if (response) {
             return (
                 <Response
-                    key={responseKey}
-                    responseKey={responseKey}
+                    key={idx}
+                    responseKey={idx}
                     mode={equationEditor}
                     response={response}
                     onResponseChange={this.onResponseChange}
