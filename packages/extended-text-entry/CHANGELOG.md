@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.18.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.17.0...@pie-element/extended-text-entry@10.18.0) (2024-06-24)
+
+
+### Features
+
+* update pie-lib/pie-toolbox ability to enabled/disable blockquote and h3 (PD-3772, PD-3771) and PD-3813 ([c2cfd9b](https://github.com/pie-framework/pie-elements/commit/c2cfd9b323acdf3d456c05806c1f97f9067bb4fe))
+
+
+
+
+
 # [10.17.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.16.0...@pie-element/extended-text-entry@10.17.0) (2024-06-19)
 
 

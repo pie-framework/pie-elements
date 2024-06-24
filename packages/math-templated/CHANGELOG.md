@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.17.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-templated@2.16.0...@pie-element/math-templated@2.17.0) (2024-06-24)
+
+
+### Bug Fixes
+
+* remove logs ([826b9dc](https://github.com/pie-framework/pie-elements/commit/826b9dc25474d99f971544db725fcda398167c1a))
+
+
+### Features
+
+* update pie-lib/pie-toolbox ability to enabled/disable blockquote and h3 (PD-3772, PD-3771) and PD-3813 ([c2cfd9b](https://github.com/pie-framework/pie-elements/commit/c2cfd9b323acdf3d456c05806c1f97f9067bb4fe))
+* **math-templated:** use response area numbering based on order and not when they were created PD-3813 ([02116bc](https://github.com/pie-framework/pie-elements/commit/02116bc7e4592bd6f5e20595b9e66afedffe62a0))
+
+
+
+
+
 # [2.16.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-templated@2.15.0...@pie-element/math-templated@2.16.0) (2024-06-19)
 
 
