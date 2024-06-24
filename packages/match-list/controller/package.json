@@ -1,7 +1,7 @@
 {
   "name": "@pie-element/match-list-controller",
   "private": true,
-  "version": "2.14.0",
+  "version": "2.15.0",
   "description": "",
   "main": "lib/index.js",
   "module": "src/index.js",

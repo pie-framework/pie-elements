@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.19.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.18.0...@pie-element/extended-text-entry@10.19.0) (2024-06-24)
+
+
+### Features
+
+* update pie-lib/pie-toolbox PD-3868, PD-3771, PD-3772, PD-3775 ([4475c65](https://github.com/pie-framework/pie-elements/commit/4475c658be5489a0f66be27af24e01c03b32b294))
+* update pie-lib/pie-toolbox PD-3868, PD-3771, PD-3772, PD-3775 - fixed tests ([ae244d6](https://github.com/pie-framework/pie-elements/commit/ae244d64a5621e0bda273b48d20b86a2fdd87ab3))
+
+
+
+
+
 # [10.18.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.17.0...@pie-element/extended-text-entry@10.18.0) (2024-06-24)
 
 
