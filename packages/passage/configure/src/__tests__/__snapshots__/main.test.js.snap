@@ -1,0 +1,393 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render Main Component Match Snapshot 1`] = `
+<ConfigLayout
+  hideSettings={false}
+  settings={
+    <Panel
+      configuration={
+        Object {
+          "author": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": true,
+              },
+              "image": Object {
+                "disabled": true,
+              },
+              "video": Object {
+                "disabled": true,
+              },
+            },
+            "label": "Author",
+            "required": false,
+            "settings": true,
+          },
+          "baseInputConfiguration": Object {
+            "audio": Object {
+              "disabled": false,
+            },
+            "image": Object {
+              "disabled": false,
+            },
+            "video": Object {
+              "disabled": false,
+            },
+          },
+          "language": Object {
+            "enabled": true,
+            "label": "Specify Language",
+            "settings": true,
+          },
+          "languageChoices": Object {
+            "label": "Language Choices",
+            "options": Array [],
+          },
+          "mathMlOptions": Object {
+            "mmlEditing": false,
+            "mmlOutput": false,
+          },
+          "maxImageHeight": Object {
+            "teacherInstructions": 300,
+            "text": 300,
+          },
+          "maxImageWidth": Object {
+            "teacherInstructions": 300,
+            "text": 300,
+          },
+          "settingsPanelDisabled": false,
+          "subtitle": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": true,
+              },
+              "image": Object {
+                "disabled": true,
+              },
+              "video": Object {
+                "disabled": true,
+              },
+            },
+            "label": "Subtitle",
+            "required": false,
+            "settings": true,
+          },
+          "teacherInstructions": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": false,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": false,
+              },
+            },
+            "label": "Teacher Instructions",
+            "required": false,
+            "settings": true,
+          },
+          "text": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": false,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": false,
+              },
+            },
+            "label": "Text",
+            "required": true,
+            "settings": true,
+          },
+          "title": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": true,
+              },
+              "image": Object {
+                "disabled": true,
+              },
+              "video": Object {
+                "disabled": true,
+              },
+            },
+            "label": "Title",
+            "required": true,
+            "settings": true,
+          },
+        }
+      }
+      groups={
+        Object {
+          "Properties": Object {
+            "language": undefined,
+            "language.enabled": undefined,
+            "teacherInstructionsEnabled": undefined,
+          },
+          "Settings": Object {
+            "authorEnabled": undefined,
+            "subtitleEnabled": undefined,
+            "textEnabled": undefined,
+            "titleEnabled": undefined,
+          },
+        }
+      }
+      model={
+        Object {
+          "authorEnabled": true,
+          "passages": Array [
+            Object {
+              "author": "",
+              "subtitle": "",
+              "teacherInstructions": "",
+              "text": "",
+              "title": "",
+            },
+          ],
+          "subtitleEnabled": true,
+          "teacherInstructionsEnabled": true,
+          "textEnabled": true,
+          "titleEnabled": true,
+        }
+      }
+      onChangeConfiguration={[Function]}
+      onChangeModel={[Function]}
+    />
+  }
+>
+  <InputContainer
+    className="mockInputContainer"
+    label="Title"
+  >
+    <EditableHtml
+      allowValidation={false}
+      languageCharactersProps={
+        Array [
+          Object {
+            "language": "spanish",
+          },
+          Object {
+            "language": "special",
+          },
+        ]
+      }
+      markup=""
+      mathMlOptions={
+        Object {
+          "mmlEditing": false,
+          "mmlOutput": false,
+        }
+      }
+      nonEmpty={false}
+      onChange={[Function]}
+      onDone={[Function]}
+      pluginProps={
+        Object {
+          "audio": Object {
+            "disabled": true,
+          },
+          "image": Object {
+            "disabled": true,
+          },
+          "video": Object {
+            "disabled": true,
+          },
+        }
+      }
+    />
+  </InputContainer>
+  <InputContainer
+    className="mockInputContainer"
+    label="Subtitle"
+  >
+    <EditableHtml
+      allowValidation={false}
+      languageCharactersProps={
+        Array [
+          Object {
+            "language": "spanish",
+          },
+          Object {
+            "language": "special",
+          },
+        ]
+      }
+      markup=""
+      mathMlOptions={
+        Object {
+          "mmlEditing": false,
+          "mmlOutput": false,
+        }
+      }
+      nonEmpty={false}
+      onChange={[Function]}
+      onDone={[Function]}
+      pluginProps={
+        Object {
+          "audio": Object {
+            "disabled": true,
+          },
+          "image": Object {
+            "disabled": true,
+          },
+          "video": Object {
+            "disabled": true,
+          },
+        }
+      }
+    />
+  </InputContainer>
+  <InputContainer
+    className="mockInputContainer"
+    label="Author"
+  >
+    <EditableHtml
+      allowValidation={false}
+      languageCharactersProps={
+        Array [
+          Object {
+            "language": "spanish",
+          },
+          Object {
+            "language": "special",
+          },
+        ]
+      }
+      markup=""
+      mathMlOptions={
+        Object {
+          "mmlEditing": false,
+          "mmlOutput": false,
+        }
+      }
+      nonEmpty={false}
+      onChange={[Function]}
+      onDone={[Function]}
+      pluginProps={
+        Object {
+          "audio": Object {
+            "disabled": true,
+          },
+          "image": Object {
+            "disabled": true,
+          },
+          "video": Object {
+            "disabled": true,
+          },
+        }
+      }
+    />
+  </InputContainer>
+  <InputContainer
+    className="mockInputContainer"
+    label="Teacher Instructions"
+  >
+    <EditableHtml
+      allowValidation={false}
+      languageCharactersProps={
+        Array [
+          Object {
+            "language": "spanish",
+          },
+          Object {
+            "language": "special",
+          },
+        ]
+      }
+      markup=""
+      mathMlOptions={
+        Object {
+          "mmlEditing": false,
+          "mmlOutput": false,
+        }
+      }
+      maxImageHeight={300}
+      maxImageWidth={300}
+      nonEmpty={false}
+      onChange={[Function]}
+      onDone={[Function]}
+      pluginProps={
+        Object {
+          "audio": Object {
+            "disabled": false,
+          },
+          "image": Object {
+            "disabled": false,
+          },
+          "video": Object {
+            "disabled": false,
+          },
+        }
+      }
+    />
+  </InputContainer>
+  <InputContainer
+    className="mockInputContainer"
+    label="Text"
+  >
+    <EditableHtml
+      activePlugins={
+        Array [
+          "bold",
+          "html",
+          "italic",
+          "underline",
+          "strikethrough",
+          "bulleted-list",
+          "numbered-list",
+          "image",
+          "math",
+          "languageCharacters",
+          "table",
+          "video",
+          "audio",
+          "responseArea",
+        ]
+      }
+      allowValidation={false}
+      imageSupport={Object {}}
+      languageCharactersProps={
+        Array [
+          Object {
+            "language": "spanish",
+          },
+          Object {
+            "language": "special",
+          },
+        ]
+      }
+      markup=""
+      mathMlOptions={
+        Object {
+          "mmlEditing": false,
+          "mmlOutput": false,
+        }
+      }
+      maxImageHeight={300}
+      maxImageWidth={300}
+      nonEmpty={false}
+      onChange={[Function]}
+      onDone={[Function]}
+      pluginProps={
+        Object {
+          "audio": Object {
+            "disabled": false,
+          },
+          "image": Object {
+            "disabled": false,
+          },
+          "video": Object {
+            "disabled": false,
+          },
+        }
+      }
+      uploadSoundSupport={Object {}}
+    />
+  </InputContainer>
+</ConfigLayout>
+`;
