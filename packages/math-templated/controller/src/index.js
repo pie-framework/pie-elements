@@ -57,7 +57,6 @@ const getResponseCorrectness = (question, sessionResponse) => {
   } else {
     let correctAnswers = 0;
     let score = 0;
-    let correct = false; //TODO check correct
     const correctResponsesCount = Object.keys(correctResponses || {}).length;
 
     Object.keys(correctResponses).forEach((responseId) => {
@@ -77,9 +76,9 @@ const getResponseCorrectness = (question, sessionResponse) => {
     score = (correctAnswers / Object.keys(correctResponses).length).toFixed(2);
 
     return {
-      correctness: fullyCorrect ? 'correct' : 'incorrect',
+      correctness: getFeedback(fullyCorrect),
       score: correctAnswers > 0 ? score : 0,
-      correct
+      correct: fullyCorrect
     };
   }
 };
@@ -107,7 +106,6 @@ export const outcome = (question, session, env) =>
       resolve({ score: 0, empty: true });
     }
     const partialScoringEnabled = partialScoring.enabled(question, env);
-    console.log('partialScoringEnabled: ', partialScoringEnabled);
     session = normalizeSession(session);
 
     if (env.mode !== 'evaluate') {

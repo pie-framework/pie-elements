@@ -38,7 +38,6 @@ describe('getResponseCorrectness', () => {
         });
     });
 
-    //TODO check correct
     it('should return "correct" when all responses are correct', () => {
         const sessionResponse = {
             answers: {
@@ -116,8 +115,8 @@ describe('outcome', () => {
     assertOutcome(true, { answers: { r1: { value: '2' }, r2: { value: '3' }}}, { score: "1.00" });
     // correct alternate
     assertOutcome(true, { answers: { r1: { value: '2' }, r2: { value: '4' }}}, { score: "1.00" });
-    // partial scoring 
-    assertOutcome(true, { answers: { r1: { value: '2' }, r2: { value: '5' }}}, { score: "0.50" }); 
+    // partial scoring
+    assertOutcome(true, { answers: { r1: { value: '2' }, r2: { value: '5' }}}, { score: "0.50" });
     assertOutcome(true, { answers: { r1: { value: '3' }, r2: { value: '5' }}}, { score: 0 });
     // partial correct but no score as partial scoring is disabled
     assertOutcome(false, { answers: { r1: { value: '2' }, r2: { value: '5' }}}, { score: 0 });
@@ -151,7 +150,7 @@ describe('createCorrectResponseSession', () => {
             }
         });
     });
-    
+
     it('should resolve with null when mode is "evaluate"', async () => {
         const question = {
             responses: {
@@ -162,7 +161,7 @@ describe('createCorrectResponseSession', () => {
         const result = await createCorrectResponseSession(question, env2);
         expect(result).toBeNull();
     });
-        
+
     it('should resolve with correct responses even if question has no responses', async () => {
         const question = {
             responses: {}
