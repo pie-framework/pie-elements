@@ -68,7 +68,17 @@ export interface EditableHtmlConfigureProp {
    * A custom plugin is an object which determines how the button will look like (icon) and the event name that will be triggered when button gets pressed (event).
    * Example can be found at https://github.com/pie-framework/pie-lib/blob/develop/packages/demo/pages/editable-html.js#L425.
    */
-  customPlugins?: CustomPlugin[]
+  customPlugins?: CustomPlugin[];
+
+  /**
+   * Indicates if the blockquote plugin is disabled or not
+   */
+  blockquote?: EditableHtmlButtonConfigure;
+
+  /**
+   * Indicates if the h3 plugin is disabled or not
+   */
+  h3?: EditableHtmlButtonConfigure;
 }
 
 export interface EditableHtmlPluginConfigure extends ConfigureProp {

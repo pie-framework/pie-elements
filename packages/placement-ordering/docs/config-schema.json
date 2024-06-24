@@ -87,6 +87,28 @@
             ]
           },
           "title": "customPlugins"
+        },
+        "blockquote": {
+          "title": "EditableHtmlButtonConfigure",
+          "type": "object",
+          "properties": {
+            "disabled": {
+              "description": "Indicates if the plugin is disabled or not",
+              "type": "boolean",
+              "title": "disabled"
+            }
+          }
+        },
+        "h3": {
+          "title": "EditableHtmlButtonConfigure",
+          "type": "object",
+          "properties": {
+            "disabled": {
+              "description": "Indicates if the plugin is disabled or not",
+              "type": "boolean",
+              "title": "disabled"
+            }
+          }
         }
       }
     },
@@ -178,6 +200,28 @@
                 ]
               },
               "title": "customPlugins"
+            },
+            "blockquote": {
+              "title": "EditableHtmlButtonConfigure",
+              "type": "object",
+              "properties": {
+                "disabled": {
+                  "description": "Indicates if the plugin is disabled or not",
+                  "type": "boolean",
+                  "title": "disabled"
+                }
+              }
+            },
+            "h3": {
+              "title": "EditableHtmlButtonConfigure",
+              "type": "object",
+              "properties": {
+                "disabled": {
+                  "description": "Indicates if the plugin is disabled or not",
+                  "type": "boolean",
+                  "title": "disabled"
+                }
+              }
             }
           }
         },
@@ -281,6 +325,28 @@
                 ]
               },
               "title": "customPlugins"
+            },
+            "blockquote": {
+              "title": "EditableHtmlButtonConfigure",
+              "type": "object",
+              "properties": {
+                "disabled": {
+                  "description": "Indicates if the plugin is disabled or not",
+                  "type": "boolean",
+                  "title": "disabled"
+                }
+              }
+            },
+            "h3": {
+              "title": "EditableHtmlButtonConfigure",
+              "type": "object",
+              "properties": {
+                "disabled": {
+                  "description": "Indicates if the plugin is disabled or not",
+                  "type": "boolean",
+                  "title": "disabled"
+                }
+              }
             }
           }
         },
@@ -416,6 +482,28 @@
                 ]
               },
               "title": "customPlugins"
+            },
+            "blockquote": {
+              "title": "EditableHtmlButtonConfigure",
+              "type": "object",
+              "properties": {
+                "disabled": {
+                  "description": "Indicates if the plugin is disabled or not",
+                  "type": "boolean",
+                  "title": "disabled"
+                }
+              }
+            },
+            "h3": {
+              "title": "EditableHtmlButtonConfigure",
+              "type": "object",
+              "properties": {
+                "disabled": {
+                  "description": "Indicates if the plugin is disabled or not",
+                  "type": "boolean",
+                  "title": "disabled"
+                }
+              }
             }
           }
         },
@@ -599,6 +687,28 @@
                 ]
               },
               "title": "customPlugins"
+            },
+            "blockquote": {
+              "title": "EditableHtmlButtonConfigure",
+              "type": "object",
+              "properties": {
+                "disabled": {
+                  "description": "Indicates if the plugin is disabled or not",
+                  "type": "boolean",
+                  "title": "disabled"
+                }
+              }
+            },
+            "h3": {
+              "title": "EditableHtmlButtonConfigure",
+              "type": "object",
+              "properties": {
+                "disabled": {
+                  "description": "Indicates if the plugin is disabled or not",
+                  "type": "boolean",
+                  "title": "disabled"
+                }
+              }
             }
           }
         },
@@ -792,6 +902,28 @@
                 ]
               },
               "title": "customPlugins"
+            },
+            "blockquote": {
+              "title": "EditableHtmlButtonConfigure",
+              "type": "object",
+              "properties": {
+                "disabled": {
+                  "description": "Indicates if the plugin is disabled or not",
+                  "type": "boolean",
+                  "title": "disabled"
+                }
+              }
+            },
+            "h3": {
+              "title": "EditableHtmlButtonConfigure",
+              "type": "object",
+              "properties": {
+                "disabled": {
+                  "description": "Indicates if the plugin is disabled or not",
+                  "type": "boolean",
+                  "title": "disabled"
+                }
+              }
             }
           }
         },
@@ -1124,6 +1256,28 @@
             ]
           },
           "title": "customPlugins"
+        },
+        "blockquote": {
+          "title": "EditableHtmlButtonConfigure",
+          "type": "object",
+          "properties": {
+            "disabled": {
+              "description": "Indicates if the plugin is disabled or not",
+              "type": "boolean",
+              "title": "disabled"
+            }
+          }
+        },
+        "h3": {
+          "title": "EditableHtmlButtonConfigure",
+          "type": "object",
+          "properties": {
+            "disabled": {
+              "description": "Indicates if the plugin is disabled or not",
+              "type": "boolean",
+              "title": "disabled"
+            }
+          }
         }
       }
     },
@@ -1258,6 +1412,28 @@
                 ]
               },
               "title": "customPlugins"
+            },
+            "blockquote": {
+              "title": "EditableHtmlButtonConfigure",
+              "type": "object",
+              "properties": {
+                "disabled": {
+                  "description": "Indicates if the plugin is disabled or not",
+                  "type": "boolean",
+                  "title": "disabled"
+                }
+              }
+            },
+            "h3": {
+              "title": "EditableHtmlButtonConfigure",
+              "type": "object",
+              "properties": {
+                "disabled": {
+                  "description": "Indicates if the plugin is disabled or not",
+                  "type": "boolean",
+                  "title": "disabled"
+                }
+              }
             }
           }
         },
@@ -1377,6 +1553,28 @@
                 ]
               },
               "title": "customPlugins"
+            },
+            "blockquote": {
+              "title": "EditableHtmlButtonConfigure",
+              "type": "object",
+              "properties": {
+                "disabled": {
+                  "description": "Indicates if the plugin is disabled or not",
+                  "type": "boolean",
+                  "title": "disabled"
+                }
+              }
+            },
+            "h3": {
+              "title": "EditableHtmlButtonConfigure",
+              "type": "object",
+              "properties": {
+                "disabled": {
+                  "description": "Indicates if the plugin is disabled or not",
+                  "type": "boolean",
+                  "title": "disabled"
+                }
+              }
             }
           }
         },
