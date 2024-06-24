@@ -141,7 +141,7 @@ describe('normalizeSession', () => {
 });
 
 describe('createCorrectResponseSession', () => {
-    it('should resolve with correct responses when mode is not "evaluate" and role is "instructor"', async () => {
+    it('should resolve with correct responses when mode is not "evaluate"', async () => {
         const result = await createCorrectResponseSession(question, env);
         expect(result).toEqual({
             id: '1',
@@ -176,7 +176,7 @@ describe('createCorrectResponseSession', () => {
 });
 
 describe('validate', () => {
-    it('should validate the model and return errors', () => {
+    it('should validate the model and return validation errors', () => {
         const result = validate(question);
         expect(result).toEqual(expect.objectContaining({responseAreas: "There should be at least 1 response area defined."}
         ));

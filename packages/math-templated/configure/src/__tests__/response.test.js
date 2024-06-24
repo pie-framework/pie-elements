@@ -128,7 +128,7 @@ describe('Response component', () => {
     });
 
     it('changes the main answer', () => {
-        const mathToolbar = wrapper.find(MathToolbar).at(0); // Ensure MathToolbar is correctly found
+        const mathToolbar = wrapper.find(MathToolbar).at(0);
         mathToolbar.props().onChange('new main answer');
 
         expect(mockOnResponseChange).toHaveBeenCalledWith(
@@ -202,7 +202,7 @@ describe('Response component', () => {
         const wrapper = mount(<ResponseWithStyles {...propsWithEmptyResponse} />);
         expect(wrapper.exists()).toBe(true);
 
-        const addButton = wrapper.find('Button.alternateButton');
+        const addButton = wrapper.find(Button);
         addButton.simulate('click');
 
         expect(mockOnResponseChange).toHaveBeenCalledWith(

@@ -4,6 +4,8 @@ import { Design } from '../design';
 import defaults from '../defaults';
 import { InputContainer } from '@pie-lib/pie-toolbox/config-ui';
 import { EditableHtml } from '@pie-lib/pie-toolbox/editable-html';
+import Select from '@material-ui/core/Select';
+import Tooltip from '@material-ui/core/Tooltip';
 
 jest.mock('@pie-lib/pie-toolbox/config-ui', () => ({
     layout: {
@@ -19,7 +21,7 @@ jest.mock('@pie-lib/pie-toolbox/config-ui', () => ({
 }));
 
 describe('Render Main Component', () => {
-    let wrapper, instance, onChange;
+    let wrapper, onChange;
     let model = defaults.model;
     let configuration = defaults.configuration;
 
@@ -36,8 +38,7 @@ describe('Render Main Component', () => {
                 uploadSoundSupport={{}}
             />,
         );
-
-        instance = wrapper.instance();
+        
     });
 
     it('Match Snapshot', () => {
@@ -80,12 +81,12 @@ describe('Render Main Component', () => {
             const inputContainer = wrapper.find(InputContainer).findWhere(node => node.prop('label') === 'Response Template Equation Editor');
             expect(inputContainer.exists()).toBe(true);
 
-            const select = inputContainer.find('WithStyles(WithFormControlContext(Select))');
+            const select = inputContainer.find(Select);
             expect(select.exists()).toBe(true);
         });
 
         it('renders tooltip with correct title', () => {
-            const tooltip = wrapper.find('WithStyles(Tooltip)');
+            const tooltip = wrapper.find(Tooltip);
             expect(tooltip.exists()).toBe(true);
             expect(tooltip.prop('title')).toEqual(
                 'Validation requirements:\nCorrect answers should not be blank.\nEach answer defined for a response area should be unique.\nThere should be at least 1 and at most 10 response areas defined.'
@@ -121,10 +122,9 @@ describe('Render Main Component', () => {
             expect(onChange).toHaveBeenCalledWith({ ...model, rationale: '<p>New rationale</p>' });
         });
 
-        it('handles changes in model', () => {
+        it('not renders prompt input when disabled', () => {
             wrapper.setProps({ model: { ...model, promptEnabled: false } });
 
-            console.log(wrapper.configuration);
             expect(wrapper.find(InputContainer).at(1).prop('label')).not.toEqual('Prompt');
         });
 
@@ -141,7 +141,7 @@ describe('Render Main Component', () => {
         it('updates model correctly when equation editor value changes', () => {
             const newValue = 'integers';
             const inputContainer = wrapper.find(InputContainer).findWhere(node => node.prop('label') === 'Response Template Equation Editor');
-            const select = inputContainer.find('WithStyles(WithFormControlContext(Select))');
+            const select = inputContainer.find(Select);
 
             select.simulate('change', { target: { value: newValue } });
 
