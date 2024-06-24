@@ -343,6 +343,8 @@ exports[`Render Main Component Match Snapshot 1`] = `
           "image",
           "math",
           "languageCharacters",
+          "blockquote",
+          "h3",
           "table",
           "video",
           "audio",
