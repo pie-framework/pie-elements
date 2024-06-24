@@ -67,6 +67,22 @@ Currently, only "SVG" is supported.
 
 The icon string. Currently, only "SVG" is supported, so it needs to be a valid svg.
 
+## `blockquote` (object)
+
+Properties of the `blockquote` object:
+
+### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+## `h3` (object)
+
+Properties of the `h3` object:
+
+### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
 # `instruction` (object)
 
 Properties of the `instruction` object:
@@ -153,6 +169,22 @@ Currently, only "SVG" is supported.
 
 The icon string. Currently, only "SVG" is supported, so it needs to be a valid svg.
 
+### `blockquote` (object)
+
+Properties of the `blockquote` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `h3` (object)
+
+Properties of the `h3` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
 ## `required` (boolean)
 
 Indicates if the item is required and the value cannot be empty
@@ -234,6 +266,22 @@ Currently, only "SVG" is supported.
 
 The icon string. Currently, only "SVG" is supported, so it needs to be a valid svg.
 
+### `blockquote` (object)
+
+Properties of the `blockquote` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `h3` (object)
+
+Properties of the `h3` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
 ## `required` (boolean)
 
 Indicates if the item is required and the value cannot be empty
@@ -314,6 +362,22 @@ Currently, only "SVG" is supported.
 #### `icon` (string, required)
 
 The icon string. Currently, only "SVG" is supported, so it needs to be a valid svg.
+
+### `blockquote` (object)
+
+Properties of the `blockquote` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `h3` (object)
+
+Properties of the `h3` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
 
 ## `settings` (boolean)
 
@@ -540,6 +604,22 @@ Currently, only "SVG" is supported.
 
 The icon string. Currently, only "SVG" is supported, so it needs to be a valid svg.
 
+### `blockquote` (object)
+
+Properties of the `blockquote` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `h3` (object)
+
+Properties of the `h3` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
 ## `EditableHtmlButtonConfigure` (object)
 
 Properties of the `EditableHtmlButtonConfigure` object:
@@ -657,6 +737,22 @@ Currently, only "SVG" is supported.
 
 The icon string. Currently, only "SVG" is supported, so it needs to be a valid svg.
 
+#### `blockquote` (object)
+
+Properties of the `blockquote` object:
+
+##### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+#### `h3` (object)
+
+Properties of the `h3` object:
+
+##### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
 ### `required` (boolean)
 
 Indicates if the item is required and the value cannot be empty
@@ -737,6 +833,22 @@ Currently, only "SVG" is supported.
 ##### `icon` (string, required)
 
 The icon string. Currently, only "SVG" is supported, so it needs to be a valid svg.
+
+#### `blockquote` (object)
+
+Properties of the `blockquote` object:
+
+##### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+#### `h3` (object)
+
+Properties of the `h3` object:
+
+##### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
 
 ### `settings` (boolean)
 
