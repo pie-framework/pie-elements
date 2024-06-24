@@ -124,14 +124,14 @@ export const outcome = (question, session, env) => {
 
 export const normalize = (question) => {
   // making sure that defaults are set
-  if (!isEmpty(question.responses)) {
-    question.responses = question.responses.map((correctResponse) => ({
-      ...correctResponse,
-      validation: correctResponse.validation || question.validationDefault,
-      allowTrailingZeros: correctResponse.allowTrailingZeros || question.allowTrailingZerosDefault,
-      ignoreOrder: correctResponse.ignoreOrder || question.ignoreOrderDefault,
-    }));
-  }
+  // if (!isEmpty(question.responses)) {
+  //   question.responses = question.responses.map((correctResponse) => ({
+  //     ...correctResponse,
+  //     validation: correctResponse.validation || question.validationDefault,
+  //     allowTrailingZeros: correctResponse.allowTrailingZeros || question.allowTrailingZerosDefault,
+  //     ignoreOrder: correctResponse.ignoreOrder || question.ignoreOrderDefault,
+  //   }));
+  // }
 
   return {
     ...defaults,
@@ -147,35 +147,35 @@ export const normalize = (question) => {
 export const model = (question, session, env) =>
   new Promise((resolve) => {
     const normalizedQuestion = normalize(question);
-    const correctness = getCorrectness(normalizedQuestion, env, session);
+    // const correctness = getCorrectness(normalizedQuestion, env, session);
     const { responses, language, ...config } = normalizedQuestion;
 
     config.responses = config.responseType === ResponseTypes.simple ? responses.slice(0, 1) : responses;
 
-    const feedback =
-      env.mode === 'evaluate' && normalizedQuestion.feedbackEnabled
-        ? getActualFeedbackForCorrectness(correctness?.correctness, normalizedQuestion.feedback)
-        : undefined;
+    // const feedback =
+    //   env.mode === 'evaluate' && normalizedQuestion.feedbackEnabled
+    //     ? getActualFeedbackForCorrectness(correctness?.correctness, normalizedQuestion.feedback)
+    //     : undefined;
 
     const out = {
       config,
-      correctness,
-      feedback,
+      // correctness,
+      // feedback,
       disabled: env.mode !== 'gather',
       view: env.mode === 'view',
     };
 
-    const note = normalizedQuestion.note || translator.t('mathInline.primaryCorrectWithAlternates', { lng: language });
-    const showNote =
-      config?.responses?.length > 1 ||
-      (config?.responses || []).some(
-        (response) => response.validation === 'symbolic' || Object.keys(response.alternates || {}).length > 0,
-      );
+    // const note = normalizedQuestion.note || translator.t('mathInline.primaryCorrectWithAlternates', { lng: language });
+    // const showNote =
+    //   config?.responses?.length > 1 ||
+    //   (config?.responses || []).some(
+    //     (response) => response.validation === 'symbolic' || Object.keys(response.alternates || {}).length > 0,
+    //   );
 
     if (env.mode === 'evaluate') {
       out.correctResponse = {};
-      out.config.showNote = showNote;
-      out.config.note = note;
+      // out.config.showNote = showNote;
+      // out.config.note = note;
     } else {
       out.config.responses = [];
       out.config.showNote = false;
