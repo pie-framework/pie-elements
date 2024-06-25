@@ -10,6 +10,7 @@ export async function createDefaultModel(model = {}) {
   return { ...defaults, ...model };
 }
 
+
 export const normalize = (question) => ({ ...defaults, ...question });
 
 export async function model(question, session, env) {
@@ -57,6 +58,7 @@ export async function model(question, session, env) {
     disabled: env.mode !== 'gather',
     feedback,
     teacherInstructions,
+    language:normalizedQuestion.language,
     mathInput: normalizedQuestion.mathInput,
     spanishInput: normalizedQuestion.spanishInput,
     specialInput: normalizedQuestion.specialInput,
