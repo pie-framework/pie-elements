@@ -6,7 +6,7 @@ import merge from 'lodash/merge';
 import omitBy from 'lodash/omitBy';
 import { getFeedbackForCorrectness } from '@pie-lib/pie-toolbox/feedback';
 import { partialScoring } from '@pie-lib/pie-toolbox/controller-utils';
-import * as math from 'mathjs';
+import { evaluate } from 'mathjs';
 
 import defaults from './defaults';
 import { reloadTicksData } from './utils';
@@ -217,7 +217,7 @@ const updateTicks = (model) => {
     model.graph.fraction = true;
 
     // update the ticks frequency and label value to match the label step if needed
-    const step = math.evaluate(labelStep);
+    const step = evaluate(labelStep);
 
     if (step !== major) {
       ticks.major = step;
