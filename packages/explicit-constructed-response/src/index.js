@@ -12,11 +12,18 @@ export default class InlineDropdown extends HTMLElement {
     this._session = null;
   }
 
+  setLangAttribute() {
+    const language = this._model && typeof this._model.language ? this._model.language : '';
+    const lang = language ? language.slice(0, 2) : 'en';
+    this.setAttribute('lang', lang);
+  }
+
   set model(m) {
     this._model = m;
     this.dispatchEvent(
       new ModelSetEvent(this.tagName.toLowerCase(), this.session && !!this.session.value, !!this._model),
     );
+    this.setLangAttribute();
 
     this._render();
   }
