@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import debounce from 'lodash/debounce';
-import StimulusTabs from './stimulus-tabs';
 import debug from 'debug';
+
+import StimulusTabs from './stimulus-tabs';
 
 const log = debug('pie-element:passage:print');
 
