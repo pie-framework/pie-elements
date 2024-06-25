@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.31.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.30.0...@pie-element/pie-models@13.31.0) (2024-06-25)
+
+
+### Features
+
+* **math-templated:** Added documentation PD-3838 ([8474da7](https://github.com/pie-framework/pie-elements/commit/8474da73340acf5adb069d9a5c5f0be179eed2cb))
+
+
+
+
+
 # [13.30.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.29.0...@pie-element/pie-models@13.30.0) (2024-06-24)
 
 

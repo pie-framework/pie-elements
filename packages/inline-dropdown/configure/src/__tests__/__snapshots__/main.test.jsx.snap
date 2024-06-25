@@ -372,6 +372,8 @@ There should be at most 10 choices defined per response area."
           "video",
           "audio",
           "responseArea",
+          "redo",
+          "undo",
         ]
       }
       allowValidation={false}
@@ -1045,6 +1047,8 @@ There should be at most 10 choices defined per response area."
           "video",
           "audio",
           "responseArea",
+          "redo",
+          "undo",
         ]
       }
       allowValidation={false}

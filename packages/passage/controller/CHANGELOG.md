@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage-controller@1.3.0...@pie-element/passage-controller@1.4.0) (2024-06-25)
+
+
+### Features
+
+* **passage:** add dynamic language attribute to indicate content language PD-2483. ([70fcec1](https://github.com/pie-framework/pie-elements/commit/70fcec177c1a920ccc1ea024875e82d2050afa50))
+
+
+
+
+
 # [1.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage-controller@1.2.0...@pie-element/passage-controller@1.3.0) (2024-06-24)
 
 

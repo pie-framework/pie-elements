@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.17.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-configure@6.16.0...@pie-element/explicit-constructed-response-configure@6.17.0) (2024-06-24)
+
+
+### Features
+
+* update pie-lib/pie-toolbox PD-3868, PD-3771, PD-3772, PD-3775 ([4475c65](https://github.com/pie-framework/pie-elements/commit/4475c658be5489a0f66be27af24e01c03b32b294))
+* update pie-lib/pie-toolbox PD-3868, PD-3771, PD-3772, PD-3775 - fixed tests ([ae244d6](https://github.com/pie-framework/pie-elements/commit/ae244d64a5621e0bda273b48d20b86a2fdd87ab3))
+
+
+
+
+
 # [6.16.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-configure@6.15.0...@pie-element/explicit-constructed-response-configure@6.16.0) (2024-06-24)
 
 

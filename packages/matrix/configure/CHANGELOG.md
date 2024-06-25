@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.31.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/matrix-configure@0.30.0...@pie-element/matrix-configure@0.31.0) (2024-06-24)
+
+
+### Features
+
+* update pie-lib/pie-toolbox PD-3868, PD-3771, PD-3772, PD-3775 ([4475c65](https://github.com/pie-framework/pie-elements/commit/4475c658be5489a0f66be27af24e01c03b32b294))
+
+
+
+
+
 # [0.30.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/matrix-configure@0.29.0...@pie-element/matrix-configure@0.30.0) (2024-06-24)
 
 

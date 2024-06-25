@@ -15,7 +15,7 @@ import { withStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import Delete from '@material-ui/icons/Delete';
 
-class Response extends React.Component {
+export class Response extends React.Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
     defaultResponse: PropTypes.bool,
