@@ -1,9 +1,9 @@
-import { latexEqual } from '@pie-framework/math-validation';
+// import { latexEqual } from '@pie-framework/math-validation';
 import { model, outcome, createCorrectResponseSession } from '../index';
 
-jest.mock('@pie-framework/math-validation/lib/latex-equal', () => ({
-  latexEqual: jest.fn().mockReturnValue(true),
-}));
+// jest.mock('@pie-framework/math-validation/lib/latex-equal', () => ({
+//   latexEqual: jest.fn().mockReturnValue(true),
+// }));
 
 const defaultModel = {
   responseType: 'Advanced Multi',
