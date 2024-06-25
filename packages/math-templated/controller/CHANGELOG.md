@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.16.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-templated-controller@2.15.0...@pie-element/math-templated-controller@2.16.0) (2024-06-25)
+
+
+### Bug Fixes
+
+* fixed getResponseCorrectness return object not being updated correctly ([14d557f](https://github.com/pie-framework/pie-elements/commit/14d557fc17b166a66c5083a30a60229fd57cc15d))
+
+
+### Features
+
+* **math-templated:** Added unit tests for controller ([cb41fbd](https://github.com/pie-framework/pie-elements/commit/cb41fbd35d665f51b615a54167bbd9b874aee17a))
+
+
+
+
+
 # [2.15.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-templated-controller@2.14.0...@pie-element/math-templated-controller@2.15.0) (2024-06-24)
 
 
