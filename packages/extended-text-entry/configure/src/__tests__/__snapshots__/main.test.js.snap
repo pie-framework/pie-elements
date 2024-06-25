@@ -241,6 +241,8 @@ exports[`Render Main Component Match Snapshot 1`] = `
           "video",
           "audio",
           "responseArea",
+          "redo",
+          "undo",
         ]
       }
       allowValidation={false}

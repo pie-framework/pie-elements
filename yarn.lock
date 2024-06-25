@@ -2228,10 +2228,10 @@
     lodash "^4.17.21"
     mathjs "^9.4.2"
 
-"@pie-framework/mathml-to-latex@1.4.3":
-  version "1.4.3"
-  resolved "https://registry.yarnpkg.com/@pie-framework/mathml-to-latex/-/mathml-to-latex-1.4.3.tgz#fa9476fc9dfd2071a2573e523d6aa1419b6ef22b"
-  integrity sha512-ts7YybHaT1Y4OwoeuIUHIvN2cDCcM4gpLkIOegeeMylieuDvGAPjnX6K1vcGEDJCQ88w3yShy2Lx3Nfft9CMsw==
+"@pie-framework/mathml-to-latex@1.4.4":
+  version "1.4.4"
+  resolved "https://registry.yarnpkg.com/@pie-framework/mathml-to-latex/-/mathml-to-latex-1.4.4.tgz#9b41933a45f0d4c6f253655ae5354ff052aa71e9"
+  integrity sha512-jXOUH2NsfUEK+D8d5kVgIj3FANth9soCw6fXTLDDCss8IGnQ1RlFgXv9ReNfRnt9uCFYhlqRbNyU+k+c6J8nAA==
   dependencies:
     "@xmldom/xmldom" "^0.8.10"
 
@@ -2388,17 +2388,17 @@
     keycode "^2.2.0"
     lodash "^4.17.11"
 
-"@pie-lib/pie-toolbox@1.24.0":
-  version "1.24.0"
-  resolved "https://registry.yarnpkg.com/@pie-lib/pie-toolbox/-/pie-toolbox-1.24.0.tgz#ed6df898c7a53d5edef315256ad2349af8e4171c"
-  integrity sha512-agNjiWMf8swf+enU4rKXj0BDr0MlvcZn8vY8P2AnLrkeFReEtCfABAiGQ6WeFJAu4CFCv0KxW4d10qsBGrqjxw==
+"@pie-lib/pie-toolbox@1.24.2":
+  version "1.24.2"
+  resolved "https://registry.yarnpkg.com/@pie-lib/pie-toolbox/-/pie-toolbox-1.24.2.tgz#2e64d1d16a577505d2064e4c5fc1fbf183fbf41c"
+  integrity sha512-hlZXFZHvc97xhFiH8p9+2IB8jyN7fHn/vhRF1iHfJWDcinrr2Bmv3EE++CSM+gvdz0Dbks7UAnzbRnIy8oZctg==
   dependencies:
     "@mapbox/point-geometry" "^0.1.0"
     "@material-ui/core" "^3.8.3"
     "@material-ui/icons" "^3.0.2"
     "@material-ui/styles" "^3.0.0-alpha.10"
     "@pie-framework/math-expressions" "^3.0.0"
-    "@pie-framework/mathml-to-latex" "1.4.3"
+    "@pie-framework/mathml-to-latex" "1.4.4"
     "@pie-framework/mathquill" "1.1.4"
     "@pie-framework/parse-english" "^1.0.0"
     "@vx/axis" "^0.0.183"
