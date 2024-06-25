@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.18.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-controller@5.17.0...@pie-element/extended-text-entry-controller@5.18.0) (2024-06-25)
+
+
+### Features
+
+* **extended-text-entry,inline-dropdown:** Add dynamic language attribute to indicate content language PD-2483 ([500f285](https://github.com/pie-framework/pie-elements/commit/500f2850c4c80f7f31a6508aa48cd04ebfdbe8d4))
+
+
+
+
+
+# [5.17.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-controller@5.16.0...@pie-element/extended-text-entry-controller@5.17.0) (2024-06-24)
+
+
+### Features
+
+* update pie-lib/pie-toolbox PD-3868, PD-3771, PD-3772, PD-3775 ([4475c65](https://github.com/pie-framework/pie-elements/commit/4475c658be5489a0f66be27af24e01c03b32b294))
+
+
+
+
+
 # [5.16.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-controller@5.15.0...@pie-element/extended-text-entry-controller@5.16.0) (2024-06-24)
 
 

@@ -57,6 +57,7 @@ export async function model(question, session, env) {
     disabled: env.mode !== 'gather',
     feedback,
     teacherInstructions,
+    language:normalizedQuestion.language,
     mathInput: normalizedQuestion.mathInput,
     spanishInput: normalizedQuestion.spanishInput,
     specialInput: normalizedQuestion.specialInput,

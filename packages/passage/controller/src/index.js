@@ -1,4 +1,3 @@
-import cloneDeep from 'lodash/cloneDeep';
 import defaults from './defaults';
 
 const getContent = (html) => (html || '').replace(/(<(?!img|iframe)([^>]+)>)/gi, '');

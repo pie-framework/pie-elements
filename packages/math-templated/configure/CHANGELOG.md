@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-templated-configure@1.7.0...@pie-element/math-templated-configure@1.8.0) (2024-06-25)
+
+
+### Features
+
+* **math-templated:** Added unit tests for math-templated-configure PD-3807 ([cadcac5](https://github.com/pie-framework/pie-elements/commit/cadcac523ef36aeef89421ee9103f36d53cbd7d3))
+
+
+
+
+
+# [1.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-templated-configure@1.6.0...@pie-element/math-templated-configure@1.7.0) (2024-06-24)
+
+
+### Features
+
+* update pie-lib/pie-toolbox PD-3868, PD-3771, PD-3772, PD-3775 ([4475c65](https://github.com/pie-framework/pie-elements/commit/4475c658be5489a0f66be27af24e01c03b32b294))
+
+
+
+
+
 # [1.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-templated-configure@1.5.0...@pie-element/math-templated-configure@1.6.0) (2024-06-24)
 
 

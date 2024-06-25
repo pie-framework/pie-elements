@@ -371,6 +371,8 @@ There should be at least 1 and at most 10 response areas defined."
         "video",
         "audio",
         "responseArea",
+        "redo",
+        "undo",
       ]
     }
     allowValidation={false}
@@ -823,6 +825,8 @@ There should be at least 1 and at most 10 response areas defined."
         "video",
         "audio",
         "responseArea",
+        "redo",
+        "undo",
       ]
     }
     allowValidation={false}

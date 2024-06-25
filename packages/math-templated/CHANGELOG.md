@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.19.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-templated@2.18.0...@pie-element/math-templated@2.19.0) (2024-06-25)
+
+
+### Bug Fixes
+
+* fixed getResponseCorrectness return object not being updated correctly ([14d557f](https://github.com/pie-framework/pie-elements/commit/14d557fc17b166a66c5083a30a60229fd57cc15d))
+
+
+### Features
+
+* **math-templated:** Added documentation PD-3838 ([8474da7](https://github.com/pie-framework/pie-elements/commit/8474da73340acf5adb069d9a5c5f0be179eed2cb))
+* **math-templated:** Added unit tests for controller ([cb41fbd](https://github.com/pie-framework/pie-elements/commit/cb41fbd35d665f51b615a54167bbd9b874aee17a))
+* **math-templated:** Added unit tests for math-templated-configure PD-3807 ([cadcac5](https://github.com/pie-framework/pie-elements/commit/cadcac523ef36aeef89421ee9103f36d53cbd7d3))
+* **math-templated:** Added unit tests for player side PD-3807 ([219a736](https://github.com/pie-framework/pie-elements/commit/219a7365b61e6c4d9e76fbc06601e59ea65af115))
+
+
+
+
+
+# [2.18.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-templated@2.17.0...@pie-element/math-templated@2.18.0) (2024-06-24)
+
+
+### Features
+
+* update pie-lib/pie-toolbox PD-3868, PD-3771, PD-3772, PD-3775 ([4475c65](https://github.com/pie-framework/pie-elements/commit/4475c658be5489a0f66be27af24e01c03b32b294))
+
+
+
+
+
 # [2.17.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-templated@2.16.0...@pie-element/math-templated@2.17.0) (2024-06-24)
 
 

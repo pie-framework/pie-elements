@@ -339,6 +339,8 @@ There should be at least 2 tokens defined."
         "video",
         "audio",
         "responseArea",
+        "redo",
+        "undo",
       ]
     }
     allowValidation={false}
@@ -739,6 +741,8 @@ There should be at least 2 tokens defined."
         "video",
         "audio",
         "responseArea",
+        "redo",
+        "undo",
       ]
     }
     allowValidation={false}

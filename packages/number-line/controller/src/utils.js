@@ -1,4 +1,9 @@
-import * as math from 'mathjs';
+import {
+  number as mathjsNumber,
+  fraction as mathjsFraction,
+  ceil as mathjsCeil,
+  floor as mathjsFloor
+} from 'mathjs';
 import { generateMajorValuesForMinor, generateMinorValues, getMinorLimits } from './tickUtils';
 
 /*
@@ -51,11 +56,11 @@ export const reloadTicksData = (graph) => {
     ticks.tickIntervalType = 'Integer';
     ticks.minor =
       ticks.minor < 1
-        ? math.number(math.ceil(minorLimits.min))
-        : ticks.minor >= math.number(math.ceil(minorLimits.min)) &&
-          ticks.minor <= math.number(math.floor(minorLimits.max))
+        ? mathjsNumber(mathjsCeil(minorLimits.min))
+        : ticks.minor >= mathjsNumber(mathjsCeil(minorLimits.min)) &&
+          ticks.minor <= mathjsNumber(mathjsFloor(minorLimits.max))
         ? ticks.minor
-        : math.number(math.ceil(minorLimits.min));
+        : mathjsNumber(mathjsCeil(minorLimits.min));
     ticks.integerTick = ticks.minor;
     const minorValues = { decimal: [], fraction: [] };
     ticks.fractionTick = '0';
@@ -68,12 +73,12 @@ export const reloadTicksData = (graph) => {
       ticks.tickIntervalType = 'Fraction';
     }
     const minorValues = generateMinorValues(minorLimits);
-    let minValue = math.number(math.fraction(minorValues.fraction[0]));
-    let maxValue = math.number(math.fraction(minorValues.fraction[minorValues.fraction.length - 1]));
+    let minValue = mathjsNumber(mathjsFraction(minorValues.fraction[0]));
+    let maxValue = mathjsNumber(mathjsFraction(minorValues.fraction[minorValues.fraction.length - 1]));
     if (ticks.minor < minValue || ticks.minor > maxValue) {
       switch (ticks.tickIntervalType) {
         case 'Fraction':
-          ticks.minor = math.number(math.fraction(minorValues.fraction[minorValues.fraction.length - 1]));
+          ticks.minor = mathjsNumber(mathjsFraction(minorValues.fraction[minorValues.fraction.length - 1]));
           ticks.fractionTick = minorValues.fraction[minorValues.fraction.length - 1];
           ticks.decimalTick = minorValues.decimal[0];
           break;
@@ -86,7 +91,7 @@ export const reloadTicksData = (graph) => {
     } else {
       switch (ticks.tickIntervalType) {
         case 'Fraction':
-          let fraction = math.fraction(math.number(ticks.minor));
+          let fraction = mathjsFraction(mathjsNumber(ticks.minor));
           ticks.fractionTick = fraction.n + '/' + fraction.d;
           ticks.decimalTick = ticks.decimalTick ? ticks.decimalTick : minorValues.decimal[0];
           break;
@@ -108,7 +113,7 @@ export const reloadTicksData = (graph) => {
       }
       switch (ticks.tickIntervalType) {
         case 'Integer':
-          ticks.minor = math.number(math.ceil(minorLimits.min));
+          ticks.minor = mathjsNumber(mathjsCeil(minorLimits.min));
           ticks.integerTick = ticks.minor;
           ticks.decimalTick = minorLimits.min > 0.5 ? 0 : minorValues.decimal[0];
           ticks.fractionTick = minorLimits.min > 0.5 ? '0' : minorValues.fraction[0];
@@ -120,7 +125,7 @@ export const reloadTicksData = (graph) => {
           ticks.fractionTick = minorValues.fraction[0];
           break;
         case 'Fraction':
-          ticks.minor = math.number(math.fraction(minorValues.fraction[0]));
+          ticks.minor = mathjsNumber(mathjsFraction(minorValues.fraction[0]));
           ticks.integerTick = 1;
           ticks.decimalTick = minorValues.decimal[0];
           ticks.fractionTick = minorValues.fraction[0];
@@ -140,7 +145,7 @@ export const reloadTicksData = (graph) => {
         case 'Fraction':
           ticks.integerTick = 1;
           ticks.decimalTick = minorValues.decimal[0];
-          let fraction = math.fraction(math.number(ticks.minor));
+          let fraction = mathjsFraction(mathjsNumber(ticks.minor));
           ticks.fractionTick = fraction.n + '/' + fraction.d;
       }
     }
