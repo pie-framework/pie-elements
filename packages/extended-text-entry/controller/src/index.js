@@ -10,6 +10,7 @@ export async function createDefaultModel(model = {}) {
   return { ...defaults, ...model };
 }
 
+
 export const normalize = (question) => ({ ...defaults, ...question });
 
 export async function model(question, session, env) {

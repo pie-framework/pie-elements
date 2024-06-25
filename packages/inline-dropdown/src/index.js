@@ -69,6 +69,12 @@ export default class RootInlineDropdown extends HTMLElement {
     this._render();
   };
 
+  setLangAttribute() {
+    const language = this._model && typeof this._model.language ? this._model.language : '';
+    const lang = language ? language.slice(0, 2) : 'en';
+    this.setAttribute('lang', lang);
+  }
+
   connectedCallback() {
     this.setAttribute('aria-label', 'Inline Dropdown Question');
     this.setAttribute('role', 'region');
