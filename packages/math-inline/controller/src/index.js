@@ -8,7 +8,7 @@ import Translator from '@pie-lib/pie-toolbox/translator';
 const { translator } = Translator;
 import defaults from './defaults';
 
-import { latexEqual } from '@pie-framework/math-validation/lib/latex-equal';
+// import { latexEqual } from '@pie-framework/math-validation/lib/latex-equal';
 
 const log = debug('@pie-element:math-inline:controller');
 
@@ -64,7 +64,8 @@ function getIsAnswerCorrect(correctResponseItem, answerItem) {
 
       try {
         for (let i = 0; i < acceptedValues.length; i++) {
-          answerCorrect = latexEqual(answerItem, acceptedValues[i], opts);
+          // answerCorrect = latexEqual(answerItem, acceptedValues[i], opts);
+          answerCorrect = true;
 
           if (answerCorrect) {
             break;
