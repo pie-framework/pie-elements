@@ -152,13 +152,13 @@ export default {
     },
     settingsPanelDisabled: false,
     language: {
-      settings: false,
+      settings: true,
       label: 'Specify Language',
       enabled: false,
     },
     languageChoices: {
       label: 'Language Choices',
-      options: [],
+      options: ['en','es'],
     }
   },
 };

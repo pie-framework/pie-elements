@@ -52,7 +52,7 @@ const parsePart = (part, key, session, env) => {
   };
 };
 
-export const normalize = ({ partA = {}, partB = {}, ...question }) => ({
+export const normalize = ({ partA = {}, partB = {}, language, ...question }) => ({
   partLabels: true,
   partLabelType: 'Letters',
   ...question,
@@ -64,6 +64,7 @@ export const normalize = ({ partA = {}, partB = {}, ...question }) => ({
     teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true,
     gridColumns: '2',
+    language: language,
     ...partA,
     choicesLayout: partA.choicesLayout || (partA.verticalMode === false && 'horizontal') || 'vertical',
   },
@@ -75,6 +76,7 @@ export const normalize = ({ partA = {}, partB = {}, ...question }) => ({
     teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true,
     gridColumns: '2',
+    language: language,
     ...partB,
     choicesLayout: partB.choicesLayout || (partB.verticalMode === false && 'horizontal') || 'vertical',
   },
@@ -140,8 +142,14 @@ export async function model(question, session, env, updateSession) {
 
   if (normalizedQuestion.partLabels) {
     const language = normalizedQuestion.language;
-    partA.partLabel = translator.t('ebsr.part', {lng: language, index: normalizedQuestion.partLabelType === 'Letters' ? 'A' : '1'});
-    partB.partLabel = translator.t('ebsr.part', {lng: language, index: normalizedQuestion.partLabelType === 'Letters' ? 'B' : '2'});
+    partA.partLabel = translator.t('ebsr.part', {
+      lng: language,
+      index: normalizedQuestion.partLabelType === 'Letters' ? 'A' : '1',
+    });
+    partB.partLabel = translator.t('ebsr.part', {
+      lng: language,
+      index: normalizedQuestion.partLabelType === 'Letters' ? 'B' : '2',
+    });
   } else {
     partA.partLabel = undefined;
     partB.partLabel = undefined;
