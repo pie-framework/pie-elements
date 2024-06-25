@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.18.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@2.17.0...@pie-element/passage@2.18.0) (2024-06-25)
+
+
+### Bug Fixes
+
+* test ([1bb5ef9](https://github.com/pie-framework/pie-elements/commit/1bb5ef914a9642f3c93924f1426aded302519417))
+
+
+### Features
+
+* **passage:** add dynamic language attribute to indicate content language PD-2483. ([70fcec1](https://github.com/pie-framework/pie-elements/commit/70fcec177c1a920ccc1ea024875e82d2050afa50))
+
+
+
+
+
 # [2.17.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@2.16.0...@pie-element/passage@2.17.0) (2024-06-24)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.20.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.19.0...@pie-element/extended-text-entry@10.20.0) (2024-06-25)
+
+
+### Features
+
+* **extended-text-entry,inline-dropdown:** Add dynamic language attribute to indicate content language PD-2483 ([500f285](https://github.com/pie-framework/pie-elements/commit/500f2850c4c80f7f31a6508aa48cd04ebfdbe8d4))
+
+
+
+
+
 # [10.19.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.18.0...@pie-element/extended-text-entry@10.19.0) (2024-06-24)
 
 
