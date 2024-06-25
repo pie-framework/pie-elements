@@ -35,9 +35,9 @@ exports[`Render Main Component Match Snapshot 1`] = `
             },
           },
           "language": Object {
-            "enabled": true,
+            "enabled": false,
             "label": "Specify Language",
-            "settings": true,
+            "settings": false,
           },
           "languageChoices": Object {
             "label": "Language Choices",
@@ -125,8 +125,8 @@ exports[`Render Main Component Match Snapshot 1`] = `
       groups={
         Object {
           "Properties": Object {
-            "language": undefined,
-            "language.enabled": undefined,
+            "language": false,
+            "language.enabled": false,
             "teacherInstructionsEnabled": undefined,
           },
           "Settings": Object {

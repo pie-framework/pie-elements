@@ -85,9 +85,9 @@ export default {
       mmlEditing: false,
     },
     language: {
-      settings: true,
+      settings: false,
       label: 'Specify Language',
-      enabled: true,
+      enabled: false,
     },
     languageChoices: {
       label: 'Language Choices',

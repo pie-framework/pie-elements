@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Main from './design';
 import {
   ModelUpdatedEvent,
   DeleteImageEvent,
@@ -8,6 +7,8 @@ import {
   InsertSoundEvent,
   DeleteSoundEvent,
 } from '@pie-framework/pie-configure-events';
+
+import Main from './design';
 import defaultValues from './defaults';
 
 export default class PassageConfigure extends HTMLElement {
