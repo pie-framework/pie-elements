@@ -321,10 +321,14 @@ There should be at least 1 and at most 10 response areas defined."
         "image",
         "math",
         "languageCharacters",
+        "blockquote",
+        "h3",
         "table",
         "video",
         "audio",
         "responseArea",
+        "redo",
+        "undo",
       ]
     }
     allowValidation={false}

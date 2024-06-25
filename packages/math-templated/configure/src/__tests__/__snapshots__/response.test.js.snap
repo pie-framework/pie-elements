@@ -634,8 +634,7 @@ exports[`Response component Match Snapshot 1`] = `
                             <div
                               className="Response-responseBox-12 responseBox"
                             >
-                              R 
-                              1
+                              R 2
                             </div>
                           </div>
                         </Typography>
