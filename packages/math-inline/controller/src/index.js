@@ -8,7 +8,7 @@ import Translator from '@pie-lib/pie-toolbox/translator';
 const { translator } = Translator;
 import defaults from './defaults';
 
-import { latexEqual } from '@pie-framework/math-validation';
+import { latexEqual } from '@pie-framework/math-validation/lib/latex-equal';
 
 const log = debug('@pie-element:math-inline:controller');
 
