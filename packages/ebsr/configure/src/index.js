@@ -21,7 +21,6 @@ defineMultipleChoice();
 
 const prepareCustomizationObject = (config, model) => {
   const configuration = defaults(config, sensibleDefaults.configuration);
-  configuration.settingsPanelDisabled = true;
 
   return {
     configuration,

@@ -53,7 +53,7 @@ exports[`categorize renders snapshot 1`] = `
   </div>
   <WithStyles(AlertDialog)
     onClose={[Function]}
-    onCloseText="cancel"
+    onCloseText="Cancel"
     open={false}
     text="You've reached the limit of  responses per area. To add another response, one must first be removed."
     title="Warning"
@@ -128,7 +128,7 @@ exports[`categorize renders snapshot with rationale 1`] = `
   </WithStyles(Collapsible)>
   <WithStyles(AlertDialog)
     onClose={[Function]}
-    onCloseText="cancel"
+    onCloseText="Cancel"
     open={false}
     text="You've reached the limit of  responses per area. To add another response, one must first be removed."
     title="Warning"
@@ -203,7 +203,7 @@ exports[`categorize renders snapshot with teacherInstructions 1`] = `
   </div>
   <WithStyles(AlertDialog)
     onClose={[Function]}
-    onCloseText="cancel"
+    onCloseText="Cancel"
     open={false}
     text="You've reached the limit of  responses per area. To add another response, one must first be removed."
     title="Warning"
