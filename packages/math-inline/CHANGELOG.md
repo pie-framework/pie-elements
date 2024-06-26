@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.23.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@7.22.0...@pie-element/math-inline@7.23.0) (2024-06-26)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3028, PD-3773 ([61bc47c](https://github.com/pie-framework/pie-elements/commit/61bc47c18d2becea321f18462f5cd486db0115e1))
+
+
+### Features
+
+* **math-inline:** add dynamic language attribute to indicate content language PD-2483. fixed import order ([4ef619b](https://github.com/pie-framework/pie-elements/commit/4ef619b4c7cb9f1ac93c91b42723f7d2014c826c))
+
+
+
+
+
 # [7.22.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@7.21.0...@pie-element/math-inline@7.22.0) (2024-06-24)
 
 
