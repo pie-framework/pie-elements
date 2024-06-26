@@ -1,22 +1,16 @@
 import debug from 'debug';
-import isEmpty from 'lodash/isEmpty';
-import shuffle from 'lodash/shuffle';
 import { camelizeKeys } from 'humps';
 import { partialScoring } from '@pie-lib/pie-toolbox/controller-utils';
+import { cloneDeep, isEmpty, shuffle } from 'lodash';
 
+import defaults from './defaults';
 import { getAllUniqueCorrectness } from './utils';
-import { cloneDeep } from 'lodash';
 
 const log = debug('pie-elements:image-cloze-association:controller');
 
-export const normalize = (question) => ({
-  rationaleEnabled: true,
-  teacherInstructionsEnabled: true,
-  studentInstructionsEnabled: true,
-  ...question,
-});
+export const normalize = (question) => ({ ...defaults, ...question });
 
-export function model(question, session, env) {
+export const model = (question, session, env) => {
   const questionNormalized = normalize(question);
   const questionCamelized = camelizeKeys(questionNormalized);
 
@@ -44,9 +38,10 @@ export function model(question, session, env) {
 
     resolve(out);
   });
-}
+};
 
-export const isResponseCorrect = (responses, session) => {
+export const isResponseCorrect = (correctResponses, session) => {
+  const responses = cloneDeep(correctResponses);
   let isCorrect = true;
   let totalValidResponses = 0;
 
@@ -58,15 +53,19 @@ export const isResponseCorrect = (responses, session) => {
 
   if (session.answers && totalValidResponses === session.answers.length) {
     session.answers.forEach((answer) => {
-      if (
-        !((responses[answer.containerIndex] && responses[answer.containerIndex].images) || []).includes(answer.value)
-      ) {
+      const index = (responses[answer.containerIndex]?.images || []).indexOf(answer.value);
+
+      if (index >= 0) {
+        // remove response from correct responses array to ensure that duplicates are evaluated correctly
+        responses[answer.containerIndex].images.splice(index, 1);
+      } else {
         isCorrect = false;
       }
     });
   } else {
     isCorrect = false;
   }
+
   return isCorrect;
 };
 
@@ -172,7 +171,7 @@ const getScore = (config, session, env = {}) => {
   return isPartialScoring ? getPartialScore(config, session) : correct ? 1 : 0;
 };
 
-export function outcome(config, session, env = {}) {
+export const outcome = (config, session, env = {}) => {
   return new Promise((resolve) => {
     log('outcome...');
     if (!session || isEmpty(session)) {
@@ -186,7 +185,7 @@ export function outcome(config, session, env = {}) {
       resolve({ score });
     }
   });
-}
+};
 
 export const createCorrectResponseSession = (question, env) => {
   return new Promise((resolve) => {

@@ -1,10 +1,17 @@
-const getAllCorrectness = (answers, responses) => (answers || []).map((answer) => ({
+// functions also used in src/utils-correctness.js
+
+const getAllCorrectness = (answers, responses) =>
+  (answers || []).map((answer) => ({
     ...answer,
-    isCorrect: (responses[answer.containerIndex] && responses[answer.containerIndex].images || []).includes(answer.value),
-}));
+    isCorrect: ((responses[answer.containerIndex] && responses[answer.containerIndex].images) || []).includes(
+      answer.value,
+    ),
+  }));
 
 const getValidAnswer = (answer, response) =>
-  (response[answer.containerIndex] && response[answer.containerIndex].images || []).filter((res) => res === answer.value);
+  ((response[answer.containerIndex] && response[answer.containerIndex].images) || []).filter(
+    (res) => res === answer.value,
+  );
 
 export const getAllUniqueCorrectness = (answers, validResponses) => {
   let allCorrectness = getAllCorrectness(answers, validResponses);
