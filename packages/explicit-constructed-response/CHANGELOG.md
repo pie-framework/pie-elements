@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.19.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@6.18.0...@pie-element/explicit-constructed-response@6.19.0) (2024-06-26)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3028, PD-3773 ([61bc47c](https://github.com/pie-framework/pie-elements/commit/61bc47c18d2becea321f18462f5cd486db0115e1))
+
+
+### Features
+
+* **explicit-constructed-response:** add dynamic language attribute to indicate content lan… ([14ed454](https://github.com/pie-framework/pie-elements/commit/14ed45497fa81f2d0da13130562cfa4ec25ce13d))
+
+
+
+
+
 # [6.18.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@6.17.0...@pie-element/explicit-constructed-response@6.18.0) (2024-06-24)
 
 

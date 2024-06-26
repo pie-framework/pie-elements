@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.18.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@9.18.0...@pie-element/ebsr@9.18.1) (2024-06-26)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3028, PD-3773 ([61bc47c](https://github.com/pie-framework/pie-elements/commit/61bc47c18d2becea321f18462f5cd486db0115e1))
+* **ebsr:** add support for the language field in the item part model, and avoid setting settingsPanelDisabled to true on config changes PD-2795, PD-2483 ([40c19d2](https://github.com/pie-framework/pie-elements/commit/40c19d2a3cf969c294f4f696cbc2078f57da10e1))
+
+
+
+
+
 # [9.18.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@9.17.0...@pie-element/ebsr@9.18.0) (2024-06-24)
 
 
