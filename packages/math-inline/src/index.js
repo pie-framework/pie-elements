@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Main from './main';
 import debug from 'debug';
 import _ from 'lodash';
-
 import { ModelSetEvent, SessionChangedEvent } from '@pie-framework/pie-player-events';
+
 import defaults from '../configure/lib/defaults';
+import Main from './main';
 
 const log = debug('pie-ui:math-inline');
 
@@ -20,9 +20,22 @@ export default class MathInline extends HTMLElement {
     }, 1000);
   }
 
+  setLangAttribute() {
+    const language = this._model && typeof this._model.language ? this._model.language : '';
+    const lang = language ? language.slice(0, 2) : 'en';
+    this.setAttribute('lang', lang);
+
+    // set the lang attribute for the nearest parent div with class 'player-container' for MPI items as per PD-2483
+    const playerContainer = this.closest('.player-container');
+    if (playerContainer) {
+      playerContainer.setAttribute('lang', lang);
+    }
+  }
+
   set model(m) {
     this._model = m;
     this.dispatchEvent(new ModelSetEvent(this._model, true, !!this._model));
+    this.setLangAttribute();
     this._render();
   }
 
@@ -50,7 +63,7 @@ export default class MathInline extends HTMLElement {
   }
 
   connectedCallback() {
-    this.setAttribute('aria-label', 'Math Response Question'); 
+    this.setAttribute('aria-label', 'Math Response Question');
     this.setAttribute('role', 'region');
 
     this._render();
