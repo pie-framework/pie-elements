@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.16.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-configure@3.16.1...@pie-element/multi-trait-rubric-configure@3.16.2) (2024-06-28)
+
+
+### Bug Fixes
+
+* delay updateDivWidth to avoid having this.divRef.current = null at first load PD-3908 ([ccaa944](https://github.com/pie-framework/pie-elements/commit/ccaa944dd1175c64ea486bb00482a726dadd3ab5))
+
+
+
+
+
 ## [3.16.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-configure@3.16.0...@pie-element/multi-trait-rubric-configure@3.16.1) (2024-06-26)
 
 
