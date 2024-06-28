@@ -71,10 +71,11 @@ export class Main extends React.Component {
   };
 
   componentDidMount() {
-    this.updateDivWidth();
-
     window.addEventListener('resize', this.updateDivWidth);
     window.addEventListener('load', this.updateDivWidth);
+
+    // delay updateDivWidth to avoid having this.divRef.current = null at first load
+    setTimeout(this.updateDivWidth, 0);
   }
 
   componentWillUnmount() {
