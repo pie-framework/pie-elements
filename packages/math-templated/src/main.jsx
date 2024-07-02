@@ -462,7 +462,7 @@ export class Main extends React.Component {
         // TODO remove the need of value?
         value={{}}
         customMarkMarkupComponent={(id) => {
-          const responseIsCorrect = mode === 'evaluate' && feedback[id];
+          const responseIsCorrect = mode === 'evaluate' && feedback && feedback[id];
 
           const MQStatic = <mq.Static
             className={classes.static}
