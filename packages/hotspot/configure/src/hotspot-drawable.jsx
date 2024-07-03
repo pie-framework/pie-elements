@@ -158,10 +158,50 @@ export class Drawable extends React.Component {
   };
 
   handleOnDragEnd = (id, updatedProps) => {
-    const { shapes, onUpdateShapes } = this.props;
-    const newShapes = shapes.map((shape) => {
+    const { shapes, onUpdateShapes, dimensions } = this.props;
+    const { width: canvasWidth, height: canvasHeight } = dimensions;
+
+    const newShapes = shapes.filter((shape) => {
       if (shape.id === id) {
-        return { ...shape, ...updatedProps };
+        let newX = updatedProps.x;
+        let newY = updatedProps.y;
+
+        if (shape.group === 'rectangles') {
+          if (newX < 0 || newX + shape.width > canvasWidth || newY < 0 || newY + shape.height > canvasHeight) {
+            return false; // remove shape
+          }
+        } else if (shape.group === 'circles') {
+          const radius = shape.radius;
+          if (newX - radius < 0 || newX + radius > canvasWidth || newY - radius < 0 || newY + radius > canvasHeight) {
+            return false; // remove shape
+          }
+        } else if (shape.group === 'polygons') {
+          const points = shape.points;
+          const minX = Math.min(...points.filter((_, index) => index % 2 === 0));
+          const minY = Math.min(...points.filter((_, index) => index % 2 !== 0));
+          const maxX = Math.max(...points.filter((_, index) => index % 2 === 0));
+          const maxY = Math.max(...points.filter((_, index) => index % 2 !== 0));
+
+          const deltaX = updatedProps.x - shape.x;
+          const deltaY = updatedProps.y - shape.y;
+
+          const newMinX = minX + deltaX;
+          const newMinY = minY + deltaY;
+          const newMaxX = maxX + deltaX;
+          const newMaxY = maxY + deltaY;
+
+          if (newMinX < 0 || newMaxX > canvasWidth || newMinY < 0 || newMaxY > canvasHeight) {
+            return false; // remove shape
+          }
+
+          const newPoints = points.map((point, index) =>
+            index % 2 === 0 ? point + deltaX : point + deltaY
+          );
+
+          return { ...shape, points: newPoints, x: newX, y: newY };
+        }
+
+        return { ...shape, x: newX, y: newY };
       }
       return shape;
     });
@@ -387,6 +427,51 @@ export class Drawable extends React.Component {
                   imageHeight={heightFromState || height}
                   imageWidth={widthFromState || width}
                   {...(shape.group === 'polygons' ? { addPolygonPoint: (e) => this.addPolygonPoint(e) } : {})}
+                  dragBoundFunc={(pos) => {
+                    let newX = pos.x;
+                    let newY = pos.y;
+
+                    if (shape.group === 'rectangles') {
+                      newX = Math.max(0, Math.min(pos.x, (widthFromState || width) - shape.width));
+                      newY = Math.max(0, Math.min(pos.y, (heightFromState || height) - shape.height));
+                    } else if (shape.group === 'circles') {
+                      const radius = shape.radius;
+                      newX = Math.max(radius, Math.min(pos.x, (widthFromState || width) - radius));
+                      newY = Math.max(radius, Math.min(pos.y, (heightFromState || height) - radius));
+                    } else if (shape.group === 'polygons') {
+                      const points = shape.points;
+                      const minX = Math.min(...points.filter((_, index) => index % 2 === 0));
+                      const minY = Math.min(...points.filter((_, index) => index % 2 !== 0));
+                      const maxX = Math.max(...points.filter((_, index) => index % 2 === 0));
+                      const maxY = Math.max(...points.filter((_, index) => index % 2 !== 0));
+
+                      const deltaX = pos.x - shape.x;
+                      const deltaY = pos.y - shape.y;
+
+                      let constrainedDeltaX = deltaX;
+                      let constrainedDeltaY = deltaY;
+
+                      if (minX + deltaX < 0) constrainedDeltaX = -minX;
+                      if (maxX + deltaX > (widthFromState || width)) constrainedDeltaX = (widthFromState || width) - maxX;
+                      if (minY + deltaY < 0) constrainedDeltaY = -minY;
+                      if (maxY + deltaY > (heightFromState || height)) constrainedDeltaY = (heightFromState || height) - maxY;
+
+                      const newPoints = points.map((point, index) =>
+                        index % 2 === 0 ? point + constrainedDeltaX : point + constrainedDeltaY
+                      );
+
+                      return {
+                        x: shape.x + constrainedDeltaX,
+                        y: shape.y + constrainedDeltaY,
+                        points: newPoints,
+                      };
+                    }
+
+                    return {
+                      x: newX,
+                      y: newY,
+                    };
+                  }}
                 />
               );
             })}
