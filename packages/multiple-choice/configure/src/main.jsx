@@ -266,7 +266,7 @@ const Design = withStyles(styles)((props) => {
       )}
 
       <div className={classes.flexContainer}>
-        <Typography className={classes.titleText}>Choices</Typography>
+        <Typography className={classes.titleText} component={'div'}>Choices</Typography>
         <Tooltip
           classes={{ tooltip: classes.tooltip }}
           disableFocusListener
