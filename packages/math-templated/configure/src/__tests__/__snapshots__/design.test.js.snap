@@ -285,7 +285,9 @@ exports[`Render Main Component Match Snapshot 1`] = `
     />
   </InputContainer>
   <div>
-    <WithStyles(Typography)>
+    <WithStyles(Typography)
+      component="div"
+    >
       Response Template
     </WithStyles(Typography)>
     <WithStyles(Tooltip)

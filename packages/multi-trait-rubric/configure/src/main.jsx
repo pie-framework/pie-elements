@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import cloneDeep from 'lodash/cloneDeep';
 import isEmpty from 'lodash/isEmpty';
+import debounce from 'lodash/debounce';
 
 import { withStyles } from '@material-ui/core/styles';
 
@@ -71,7 +72,7 @@ export class Main extends React.Component {
   };
 
   componentDidMount() {
-    window.addEventListener('resize', this.updateDivWidth);
+    window.addEventListener('resize', this.updateDivWidthDebounced);
     window.addEventListener('load', this.updateDivWidth);
 
     // delay updateDivWidth to avoid having this.divRef.current = null at first load
@@ -79,7 +80,7 @@ export class Main extends React.Component {
   }
 
   componentWillUnmount() {
-    window.removeEventListener('resize', this.updateDivWidth);
+    window.removeEventListener('resize', this.updateDivWidthDebounced);
     window.removeEventListener('load', this.updateDivWidth);
   }
 
@@ -93,11 +94,15 @@ export class Main extends React.Component {
   updateDivWidth() {
     if (this.divRef && this.divRef.current) {
       const divWidth = this.divRef.current.offsetWidth;
-      this.set({
-        adjustedWidth: divWidth,
-      });
+      if (divWidth !== this.state.adjustedWidth) {
+        this.set({
+          adjustedWidth: divWidth,
+        });
+      }
     }
   }
+
+  updateDivWidthDebounced = debounce(() => this.updateDivWidth(), 50);
 
   onScaleAdded = () => {
     const { model, onModelChanged, configuration } = this.props;

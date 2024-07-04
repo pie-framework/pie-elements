@@ -392,7 +392,7 @@ export class Design extends React.Component {
           </InputContainer>
         )}
         <div className={classes.tooltipContainer}>
-          <Typography className={classes.title}>Response Template</Typography>
+          <Typography className={classes.title} component={'div'}>Response Template</Typography>
           <Tooltip
             classes={{ tooltip: classes.tooltip }}
             disableFocusListener

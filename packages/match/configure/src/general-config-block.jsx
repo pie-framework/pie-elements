@@ -75,7 +75,7 @@ class GeneralConfigBlock extends React.Component {
     return (
       <React.Fragment>
         <div className={classes.flexContainer}>
-          <Typography className={classes.titleText}>Define questions</Typography>
+          <Typography className={classes.titleText} component={'div'}>Define questions</Typography>
           <Tooltip
             classes={{ tooltip: classes.tooltip }}
             disableFocusListener
