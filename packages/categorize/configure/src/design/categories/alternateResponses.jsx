@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
 import Category from './category';
-import { moveChoiceToAlternate } from '@pie-lib/pie-toolbox/categorize';
+import { moveChoiceToAlternate, removeChoiceFromAlternate } from '@pie-lib/pie-toolbox/categorize';
 import { RowLabel } from './RowLabel';
+import { getMaxCategoryChoices } from '../../utils';
 
 const styles = (theme) => ({
   categories: {
@@ -58,7 +59,7 @@ export class AlternateResponses extends React.Component {
   addChoiceToCategory = (addedChoice, categoryId) => {
     const {
       altIndex,
-      model: { correctResponse, choices },
+      model: { correctResponse, choices, maxChoicesPerCategory = 0 },
       onModelChanged,
     } = this.props;
 
@@ -99,12 +100,20 @@ export class AlternateResponses extends React.Component {
       return a;
     });
 
-    onModelChanged({ correctResponse });
+    const maxCategoryChoices = getMaxCategoryChoices(this.props.model);
+    // when maxChoicesPerCategory is set to 0, there is no limit so it should not be updated
+    onModelChanged({
+      correctResponse,
+      maxChoicesPerCategory:
+        maxChoicesPerCategory !== 0 && maxChoicesPerCategory < maxCategoryChoices
+          ? maxChoicesPerCategory + 1
+          : maxChoicesPerCategory,
+    });
   };
 
   moveChoice = (choiceId, from, to, choiceIndex, alternateIndex) => {
     const { model, onModelChanged } = this.props;
-    let { choices, correctResponse = [] } = model || {};
+    let { choices, correctResponse = [], maxChoicesPerCategory = 0 } = model || {};
     const choice = (choices || []).find((choice) => choice.id === choiceId);
     correctResponse = moveChoiceToAlternate(
       choiceId,
@@ -116,25 +125,27 @@ export class AlternateResponses extends React.Component {
       choice?.categoryCount,
     );
 
-    onModelChanged({ correctResponse });
+    const maxCategoryChoices = getMaxCategoryChoices(this.props.model);
+    // when maxChoicesPerCategory is set to 0, there is no limit so it should not be updated
+    onModelChanged({
+      correctResponse,
+      maxChoicesPerCategory:
+        maxChoicesPerCategory !== 0 && maxChoicesPerCategory < maxCategoryChoices
+          ? maxChoicesPerCategory + 1
+          : maxChoicesPerCategory,
+    });
   };
 
-  deleteChoiceFromCategory = (category, choice) => {
-    const {
+  deleteChoiceFromCategory = (category, choice, choiceIndex) => {
+    const { model, altIndex, onModelChanged } = this.props;
+
+    const correctResponse = removeChoiceFromAlternate(
+      choice.id,
+      category.id,
+      choiceIndex,
       altIndex,
-      model: { correctResponse },
-      onModelChanged,
-    } = this.props;
-
-    correctResponse.forEach((a) => {
-      if (a.category === category.id) {
-        if (a.alternateResponses[altIndex]) {
-          a.alternateResponses[altIndex] = a.alternateResponses[altIndex].filter((altId) => altId !== choice.id);
-        }
-      }
-
-      return a;
-    });
+      model.correctResponse,
+    );
 
     onModelChanged({ correctResponse });
   };
