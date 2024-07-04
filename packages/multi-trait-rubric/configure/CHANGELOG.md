@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.16.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-configure@3.16.2...@pie-element/multi-trait-rubric-configure@3.16.3) (2024-07-04)
+
+
+### Bug Fixes
+
+* add a debounce to resize functionality and check if the value is different to prevent calling setState when it's not needed PD-3909 ([60f7373](https://github.com/pie-framework/pie-elements/commit/60f7373f096a4d43249e59241d62618dce1e3c54))
+
+
+
+
+
 ## [3.16.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-configure@3.16.1...@pie-element/multi-trait-rubric-configure@3.16.2) (2024-06-28)
 
 

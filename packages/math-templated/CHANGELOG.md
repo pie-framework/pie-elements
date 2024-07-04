@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.19.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-templated@2.19.1...@pie-element/math-templated@2.19.2) (2024-07-04)
+
+
+### Bug Fixes
+
+* tests ([cd4fbb5](https://github.com/pie-framework/pie-elements/commit/cd4fbb548e293b6cdc179f7a4423d2bce59ebee4))
+* **inline-dropdown, match, math-templated, multiple-choice:** set Typography component to div to prevent overriting of p styling in client platforms PD-3913 ([5688e02](https://github.com/pie-framework/pie-elements/commit/5688e02a0a63d7e57382f616b5507a1f386ab54c))
+* **math-templated:** print not working for instructor PD-3893 ([b49272a](https://github.com/pie-framework/pie-elements/commit/b49272ae820cf264f1c8bcb0709560f3d5354169))
+
+
+
+
+
 ## [2.19.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-templated@2.19.0...@pie-element/math-templated@2.19.1) (2024-06-26)
 
 
