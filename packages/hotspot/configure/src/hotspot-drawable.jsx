@@ -7,7 +7,7 @@ import { withStyles } from '@material-ui/core/styles/index';
 import Rectangle from './hotspot-rectangle';
 import Polygon from './hotspot-polygon';
 import Circle from './hotspot-circle';
-import { updateImageDimensions } from './utils';
+import { getUpdatedShapes, updateImageDimensions } from './utils';
 import { RectangleShape, CircleShape, PolygonShape, SUPPORTED_SHAPES, SHAPE_GROUPS } from './shapes';
 const IMAGE_MAX_WIDTH = 800;
 
@@ -262,42 +262,10 @@ export class Drawable extends React.Component {
       box.style.width = `${width}px`;
       box.style.height = `${height}px`;
 
-      const scale = width / dimensions.width;
-
-      const updatedShapes = shapes.map(shape => {
-        switch (shape.group) {
-          case SHAPE_GROUPS.CIRCLES:
-            return {
-              ...shape,
-              x: shape.x * scale,
-              y: shape.y * scale,
-              radius: shape.radius * scale,
-            };
-          case SHAPE_GROUPS.RECTANGLES:
-            return {
-              ...shape,
-              x: shape.x * scale,
-              y: shape.y * scale,
-              width: shape.width * scale,
-              height: shape.height * scale,
-            };
-          case SHAPE_GROUPS.POLYGONS:
-            return {
-              ...shape,
-              points: shape.points.map(point => ({
-                x: point.x * scale,
-                y: point.y * scale,
-              })),
-            };
-          default:
-            return shape;
-        }
-      });
-
       this.setState({
         resizing: true,
         dimensions: { height: height, width: width },
-        stateShapes: updatedShapes,
+        stateShapes: getUpdatedShapes(dimensions, { width, height }, shapes),
       });
     }
 

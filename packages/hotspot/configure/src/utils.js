@@ -44,12 +44,12 @@ const getUpdatedRectangle = (initialDim, nextDim, shape) => ({
 
 const getUpdatedCircles = (initialDim, nextDim, shape) => ({
   ...shape,
-  radius: getDelta(initialDim.radius, nextDim.radius, shape.radius),
+  radius: getDelta(initialDim.width, nextDim.width, shape.radius),
   x: getDelta(initialDim.width, nextDim.width, shape.x),
   y: getDelta(initialDim.height, nextDim.height, shape.y),
 });
 
-const getUpdatedPlygon = (initialDim, nextDim, shape) => ({
+const getUpdatedPolygon = (initialDim, nextDim, shape) => ({
   ...shape,
   points: shape.points.map((point) => ({
     x: getDelta(initialDim.width, nextDim.width, point.x),
@@ -67,7 +67,7 @@ const getUpdatedShapes = (initialDim, nextDim, shapes) => {
     }
 
     if (shape.group === SHAPE_GROUPS.POLYGONS) {
-      return getUpdatedPlygon(initialDim, nextDim, shape);
+      return getUpdatedPolygon(initialDim, nextDim, shape);
     }
 
     if (shape.group === SHAPE_GROUPS.CIRCLES) {
@@ -206,5 +206,5 @@ export {
   getAllShapes,
   groupShapes,
   getUpdatedRectangle,
-  getUpdatedPlygon,
+  getUpdatedPolygon,
 };
