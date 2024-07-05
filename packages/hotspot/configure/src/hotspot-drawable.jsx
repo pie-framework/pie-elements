@@ -48,6 +48,10 @@ export class Drawable extends React.Component {
       return;
     }
 
+    if (!['rectangle', 'circle', 'poligon'].includes(shapeType)) {
+      return;
+    }
+
     switch (shapeType) {
       case 'rectangle':
         newState = RectangleShape.create(shapes, e);
@@ -73,7 +77,6 @@ export class Drawable extends React.Component {
         }
         break;
       default:
-        console.error(`Unsupported shape type: ${shapeType}`);
         return;
     }
 
@@ -114,7 +117,6 @@ export class Drawable extends React.Component {
         newState = CircleShape.finalizeCreation(this.state, this.props);
         break;
       default:
-        console.error(`Unsupported shape type: ${shapeType}`);
         return;
     }
 
@@ -130,25 +132,26 @@ export class Drawable extends React.Component {
     const { shapeType, onUpdateShapes, shapes } = this.props;
     let newState;
 
-    if (this.state.isDrawing) {
-      switch (shapeType) {
-        case 'rectangle':
-          newState = RectangleShape.handleMouseMove(this.state, e);
-          break;
-        case 'circle':
-          newState = CircleShape.handleMouseMove(this.state, e);
-          break;
-        case 'polygon':
-          newState = PolygonShape.handleMouseMove(this.state, e);
-          break;
-        default:
-          console.error(`Unsupported shape type: ${shapeType}`);
-          return;
-      }
-
-      this.setState(newState);
-      onUpdateShapes(newState.shapes);
+    if (!this.state.isDrawing || !['rectangle', 'circle', 'polygon'].includes(shapeType)) {
+      return;
     }
+
+    switch (shapeType) {
+      case 'rectangle':
+        newState = RectangleShape.handleMouseMove(this.state, e);
+        break;
+      case 'circle':
+        newState = CircleShape.handleMouseMove(this.state, e);
+        break;
+      case 'polygon':
+        newState = PolygonShape.handleMouseMove(this.state, e);
+        break;
+      default:
+        return;
+    }
+
+    this.setState(newState);
+    onUpdateShapes(newState.shapes);
   };
 
   handleOnMouseOutOrLeave = (e) => {
@@ -167,6 +170,7 @@ export class Drawable extends React.Component {
     });
 
     onUpdateShapes(cloneDeep(newShapes));
+    this.setState({ shapes: cloneDeep(newShapes) });
   };
 
   handleOnSetAsCorrect = (shape) => {
@@ -244,7 +248,6 @@ export class Drawable extends React.Component {
     const box = this.image;
     const { disableDrag, preserveAspectRatioEnabled, dimensions, shapes } = this.props;
 
-    // todo previously we had state.dimensions, is it needed?
     const { width, height } = updateImageDimensions(
       dimensions,
       {
@@ -261,10 +264,42 @@ export class Drawable extends React.Component {
       box.style.width = `${width}px`;
       box.style.height = `${height}px`;
 
+      const scale = width / dimensions.width;
+
+      const updatedShapes = shapes.map(shape => {
+        switch (shape.group) {
+          case 'circles':
+            return {
+              ...shape,
+              x: shape.x * scale,
+              y: shape.y * scale,
+              radius: shape.radius * scale,
+            };
+          case 'rectangles':
+            return {
+              ...shape,
+              x: shape.x * scale,
+              y: shape.y * scale,
+              width: shape.width * scale,
+              height: shape.height * scale,
+            };
+          case 'polygons':
+            return {
+              ...shape,
+              points: shape.points.map(point => ({
+                x: point.x * scale,
+                y: point.y * scale,
+              })),
+            };
+          default:
+            return shape;
+        }
+      });
+
       this.setState({
         resizing: true,
         dimensions: { height: height, width: width },
-        stateShapes: getUpdatedShapes(dimensions, { width, height }, shapes),
+        stateShapes: updatedShapes,
       });
     }
 
@@ -377,6 +412,7 @@ export class Drawable extends React.Component {
                   key={i}
                   onClick={() => this.handleOnSetAsCorrect(shape)}
                   onDragEnd={this.handleOnDragEnd}
+                  points={shape.points}
                   onDeleteShape={this.deleteShape}
                   outlineColor={outlineColor}
                   width={shape.width}
