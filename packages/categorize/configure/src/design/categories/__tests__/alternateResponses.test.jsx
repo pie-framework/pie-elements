@@ -33,7 +33,6 @@ describe('AlternateResponses', () => {
   };
 
   const wrapper = (extras) => {
-    console.log('Andreea extrassssss', extras);
     model = { ...model, ...extras };
     const defaults = {
       altIndex: 0,
