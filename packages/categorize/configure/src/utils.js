@@ -28,7 +28,9 @@ export const maxLength = (array) =>
 export const getMaxCategoryChoices = (model) => {
   const { correctResponse = [] } = model || {};
   return correctResponse.reduce((max, correctRes) => {
-    const choicesLength = Math.max(correctRes.choices.length, maxLength(correctRes.alternateResponses));
-    return choicesLength > max ? choicesLength : max;
+    const correctRespLength = correctRes?.choices?.length || 0;
+    const alternates = correctRes?.alternateResponses || [];
+    const maxChoices = Math.max(correctRespLength, maxLength(alternates));
+    return maxChoices > max ? maxChoices : max;
   }, 0);
 };
