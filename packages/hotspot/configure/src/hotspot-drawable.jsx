@@ -354,7 +354,6 @@ export class Drawable extends React.Component {
         {imageUrl && (
           <div className={classes.imageContainer}>
             <img
-              alt={imageUrl}
               className={classes.image}
               onLoad={this.handleOnImageLoad}
               ref={(ref) => {
@@ -401,7 +400,6 @@ export class Drawable extends React.Component {
 
               return (
                 <Tag
-                  classes={{ base: classes.base, group: classes.group }}
                   {...(shape.group === SHAPE_GROUPS.CIRCLES ? { radius: shape.radius } : {})}
                   {...(shape.group === SHAPE_GROUPS.RECTANGLES ? { height: shape.height, width: shape.width } : {})}
                   {...(shape.group === SHAPE_GROUPS.POLYGONS ? { points: shape.points, addPolygonPoint: (e) => this.addPolygonPoint(e) } : {})}
