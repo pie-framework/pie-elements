@@ -7,10 +7,8 @@ import { withStyles } from '@material-ui/core/styles/index';
 import Rectangle from './hotspot-rectangle';
 import Polygon from './hotspot-polygon';
 import Circle from './hotspot-circle';
-import { updateImageDimensions, getUpdatedShapes } from './utils';
-import RectangleShape from './shapes/rectagle';
-import CircleShape from './shapes/circle';
-import PolygonShape from './shapes/polygon';
+import { updateImageDimensions } from './utils';
+import { RectangleShape, CircleShape, PolygonShape, SUPPORTED_SHAPES, SHAPE_GROUPS } from './shapes';
 const IMAGE_MAX_WIDTH = 800;
 
 export class Drawable extends React.Component {
@@ -48,18 +46,18 @@ export class Drawable extends React.Component {
       return;
     }
 
-    if (!['rectangle', 'circle', 'poligon'].includes(shapeType)) {
+    if (!Object.values(SUPPORTED_SHAPES).includes(shapeType)) {
       return;
     }
 
     switch (shapeType) {
-      case 'rectangle':
+      case SUPPORTED_SHAPES.RECTANGLE:
         newState = RectangleShape.create(shapes, e);
         break;
-      case 'circle':
+      case SUPPORTED_SHAPES.CIRCLE:
         newState = CircleShape.create(shapes, e);
         break;
-      case 'polygon':
+      case SUPPORTED_SHAPES.POLYGON:
         newShapeId = this.state.isDrawingShapeId;
 
         if (newShapeId) {
@@ -105,15 +103,15 @@ export class Drawable extends React.Component {
     const { shapeType, onUpdateShapes } = this.props;
     let newState;
 
-    if (shapeType === 'polygon') {
+    if (shapeType === SUPPORTED_SHAPES.POLYGON) {
       return;
     }
 
     switch (shapeType) {
-      case 'rectangle':
+      case SUPPORTED_SHAPES.RECTANGLE:
         newState = RectangleShape.finalizeCreation(this.state, this.props);
         break;
-      case 'circle':
+      case SUPPORTED_SHAPES.CIRCLE:
         newState = CircleShape.finalizeCreation(this.state, this.props);
         break;
       default:
@@ -129,21 +127,21 @@ export class Drawable extends React.Component {
   };
 
   handleMouseMove = (e) => {
-    const { shapeType, onUpdateShapes, shapes } = this.props;
+    const { shapeType, onUpdateShapes } = this.props;
     let newState;
 
-    if (!this.state.isDrawing || !['rectangle', 'circle', 'polygon'].includes(shapeType)) {
+    if (!this.state.isDrawing || !Object.values(SUPPORTED_SHAPES).includes(shapeType)) {
       return;
     }
 
     switch (shapeType) {
-      case 'rectangle':
+      case SUPPORTED_SHAPES.RECTANGLE:
         newState = RectangleShape.handleMouseMove(this.state, e);
         break;
-      case 'circle':
+      case SUPPORTED_SHAPES.CIRCLE:
         newState = CircleShape.handleMouseMove(this.state, e);
         break;
-      case 'polygon':
+      case SUPPORTED_SHAPES.POLYGON:
         newState = PolygonShape.handleMouseMove(this.state, e);
         break;
       default:
@@ -177,7 +175,7 @@ export class Drawable extends React.Component {
     const { id } = shape;
     const { multipleCorrect, shapes, onUpdateShapes } = this.props;
 
-    let newShapes = [];
+    let newShapes;
 
     if (multipleCorrect) {
       newShapes = shapes.map((shape) => {
@@ -268,14 +266,14 @@ export class Drawable extends React.Component {
 
       const updatedShapes = shapes.map(shape => {
         switch (shape.group) {
-          case 'circles':
+          case SHAPE_GROUPS.CIRCLES:
             return {
               ...shape,
               x: shape.x * scale,
               y: shape.y * scale,
               radius: shape.radius * scale,
             };
-          case 'rectangles':
+          case SHAPE_GROUPS.RECTANGLES:
             return {
               ...shape,
               x: shape.x * scale,
@@ -283,7 +281,7 @@ export class Drawable extends React.Component {
               width: shape.width * scale,
               height: shape.height * scale,
             };
-          case 'polygons':
+          case SHAPE_GROUPS.POLYGONS:
             return {
               ...shape,
               points: shape.points.map(point => ({
@@ -342,8 +340,8 @@ export class Drawable extends React.Component {
       outlineColor,
       shapes,
       strokeWidth,
-      onDeleteShape,
     } = this.props;
+
     const {
       stateShapes,
       isDrawing,
@@ -356,6 +354,7 @@ export class Drawable extends React.Component {
         {imageUrl && (
           <div className={classes.imageContainer}>
             <img
+              alt={imageUrl}
               className={classes.image}
               onLoad={this.handleOnImageLoad}
               ref={(ref) => {
@@ -387,13 +386,13 @@ export class Drawable extends React.Component {
             {shapesToUse.map((shape, i) => {
               let Tag;
               switch (shape.group) {
-                case 'rectangles':
+                case SHAPE_GROUPS.RECTANGLES:
                   Tag = Rectangle;
                   break;
-                case 'circles':
+                case SHAPE_GROUPS.CIRCLES:
                   Tag = Circle;
                   break;
-                case 'polygons':
+                case SHAPE_GROUPS.POLYGONS:
                   Tag = Polygon;
                   break;
                 default:
@@ -402,27 +401,25 @@ export class Drawable extends React.Component {
 
               return (
                 <Tag
+                  classes={{ base: classes.base, group: classes.group }}
+                  {...(shape.group === SHAPE_GROUPS.CIRCLES ? { radius: shape.radius } : {})}
+                  {...(shape.group === SHAPE_GROUPS.RECTANGLES ? { height: shape.height, width: shape.width } : {})}
+                  {...(shape.group === SHAPE_GROUPS.POLYGONS ? { points: shape.points, addPolygonPoint: (e) => this.addPolygonPoint(e) } : {})}
                   correct={shape.correct}
                   isDrawing={isDrawing}
-                  {...(shape.group === 'circles'
-                    ? { radius: shape.radius }
-                    : { height: shape.height, width: shape.width })}
                   hotspotColor={hotspotColor}
                   id={shape.id}
                   key={i}
                   onClick={() => this.handleOnSetAsCorrect(shape)}
                   onDragEnd={this.handleOnDragEnd}
-                  points={shape.points}
                   onDeleteShape={this.deleteShape}
                   outlineColor={outlineColor}
                   width={shape.width}
                   x={shape.x}
                   y={shape.y}
-                  {...(shape.group === 'polygons' ? { points: shape.points } : {})}
                   strokeWidth={strokeWidth}
                   imageHeight={heightFromState || height}
                   imageWidth={widthFromState || width}
-                  {...(shape.group === 'polygons' ? { addPolygonPoint: (e) => this.addPolygonPoint(e) } : {})}
                 />
               );
             })}
@@ -468,7 +465,7 @@ Drawable.propTypes = {
   disableDrag: PropTypes.func.isRequired,
   dimensions: PropTypes.object.isRequired,
   enableDrag: PropTypes.func.isRequired,
-  shapeType: PropTypes.oneOf(['rectangle', 'circle', 'polygon']),
+  shapeType: PropTypes.oneOf(Object.values(SUPPORTED_SHAPES)),
   imageUrl: PropTypes.string.isRequired,
   handleFinishDrawing: PropTypes.func.isRequired,
   hotspotColor: PropTypes.string.isRequired,

@@ -1,4 +1,5 @@
 import cloneDeep from 'lodash/cloneDeep';
+import { SHAPE_GROUPS } from './shapes';
 
 const updateImageDimensions = (initialDim, nextDim, keepAspectRatio, resizeType) => {
   // if we want to keep image aspect ratio
@@ -61,15 +62,15 @@ const getUpdatedPlygon = (initialDim, nextDim, shape) => ({
 // shapes = array of shapes that have to be re-sized and re-positioned
 const getUpdatedShapes = (initialDim, nextDim, shapes) => {
   return shapes.map((shape) => {
-    if (shape.group === 'rectangles') {
+    if (shape.group === SHAPE_GROUPS.RECTANGLES) {
       return getUpdatedRectangle(initialDim, nextDim, shape);
     }
 
-    if (shape.group === 'polygons') {
+    if (shape.group === SHAPE_GROUPS.POLYGONS) {
       return getUpdatedPlygon(initialDim, nextDim, shape);
     }
 
-    if (shape.group === 'circles') {
+    if (shape.group === SHAPE_GROUPS.CIRCLES) {
       return getUpdatedCircles(initialDim, nextDim, shape);
     }
   });
