@@ -1,4 +1,6 @@
-export default class CircleShape {
+export class CircleShape {
+  static name = 'circle'
+
   static create(shapes, e) {
     const newShapes = [...shapes];
     const highestId = Math.max(...newShapes.map((shape) => parseInt(shape.id)), 0);
