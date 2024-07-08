@@ -19,10 +19,18 @@ export const generateValidationMessage = (config) => {
 // used in controller too, for consistency modify it there too
 export const multiplePlacements = { enabled: 'Yes', disabled: 'No', perChoice: 'Set Per Choice' };
 
-export const  getMaxCategoryChoices = (model) => {
+// Find the length of the largest array from an array
+export const maxLength = (array) =>
+  (array || []).reduce((max, arr) => {
+    return Math.max(max, arr.length);
+  }, 0);
+
+export const getMaxCategoryChoices = (model) => {
   const { correctResponse = [] } = model || {};
   return correctResponse.reduce((max, correctRes) => {
-    const choicesLength = correctRes.choices.length;
-    return choicesLength > max ? choicesLength : max;
+    const correctRespLength = correctRes?.choices?.length || 0;
+    const alternates = correctRes?.alternateResponses || [];
+    const maxChoices = Math.max(correctRespLength, maxLength(alternates));
+    return maxChoices > max ? maxChoices : max;
   }, 0);
 };

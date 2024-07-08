@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.21.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@8.21.2...@pie-element/categorize@8.21.3) (2024-07-05)
+
+
+### Bug Fixes
+
+* **categorize:** add sanity checks for computing max length of a response PD-3895 ([a294c97](https://github.com/pie-framework/pie-elements/commit/a294c979cedbf4767147fc141a47a2986eabf151))
+* **categorize:** correct deletion of a choice from alternates, setMaxChoicesPerCategory alternates PD-3895 ([76af815](https://github.com/pie-framework/pie-elements/commit/76af8154643985e72fc052f9ee0e817c43d25405))
+* **categorize:** remove commented code PD-3895 ([b17e81c](https://github.com/pie-framework/pie-elements/commit/b17e81c2c24597c64c3bce5dfa83f107ca97c0a6))
+
+
+
+
+
+## [8.21.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@8.21.1...@pie-element/categorize@8.21.2) (2024-07-04)
+
+**Note:** Version bump only for package @pie-element/categorize
+
+
+
+
+
 ## [8.21.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@8.21.0...@pie-element/categorize@8.21.1) (2024-06-26)
 
 

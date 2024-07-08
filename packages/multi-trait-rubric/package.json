@@ -1,14 +1,14 @@
 {
   "name": "@pie-element/multi-trait-rubric",
   "repository": "pie-framework/pie-elements",
-  "version": "3.16.2",
+  "version": "3.16.3",
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
     "@material-ui/core": "^3.9.2",
     "@pie-framework/pie-player-events": "^0.1.0",
-    "@pie-lib/pie-toolbox": "1.25.0",
+    "@pie-lib/pie-toolbox": "1.25.1",
     "clsx": "^1.1.1",
     "enzyme-to-json": "^3.3.5",
     "prop-types": "^15.6.1",

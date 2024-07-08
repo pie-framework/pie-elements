@@ -1,13 +1,13 @@
 {
   "name": "@pie-element/ebsr-controller",
   "private": true,
-  "version": "7.15.1",
+  "version": "7.15.2",
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@pie-lib/pie-toolbox": "1.25.0",
+    "@pie-lib/pie-toolbox": "1.25.1",
     "lodash": "^4.17.15"
   },
   "author": "",
