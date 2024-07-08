@@ -16,6 +16,7 @@ import Category from './category';
 import Header from '../header';
 import { generateValidationMessage, getMaxCategoryChoices } from '../../utils';
 import { RowLabel } from './RowLabel';
+import isEmpty from 'lodash/isEmpty';
 
 const styles = (theme) => ({
   categories: {
@@ -81,7 +82,8 @@ export class Categories extends React.Component {
 
   add = () => {
     const { model, categories: oldCategories } = this.props;
-    const { categoriesPerRow } = model;
+    const { categoriesPerRow, correctResponse, allowAlternateEnabled } = model;
+
     const id = utils.firstAvailableIndex(
       model.categories.map((a) => a.id),
       0,
@@ -102,6 +104,9 @@ export class Categories extends React.Component {
         this.props.onModelChanged({
           rowLabels,
           categories: model.categories.concat([data]),
+          correctResponse: allowAlternateEnabled
+            ? [...correctResponse, { category: id, choices: [], alternateResponses: [] }]
+            : correctResponse,
         });
       },
     );
