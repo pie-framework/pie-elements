@@ -16,7 +16,6 @@ import Category from './category';
 import Header from '../header';
 import { generateValidationMessage, getMaxCategoryChoices } from '../../utils';
 import { RowLabel } from './RowLabel';
-import isEmpty from 'lodash/isEmpty';
 
 const styles = (theme) => ({
   categories: {
