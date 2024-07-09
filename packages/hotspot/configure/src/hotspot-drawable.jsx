@@ -162,53 +162,64 @@ export class Drawable extends React.Component {
     const { shapes, onUpdateShapes, dimensions } = this.props;
     const { width: canvasWidth, height: canvasHeight } = dimensions;
 
-    const newShapes = shapes.filter((shape) => {
-      if (shape.id === id) {
-        let newX = updatedProps.x;
-        let newY = updatedProps.y;
+    // when a shape is moved completely outside the canvas
+    // remove that shape
+    const newShapes = shapes.map((shape) => {
+      if (shape.id !== id) {
+        return shape;
+      }
 
-        if (shape.group === 'rectangles') {
-          if (newX < 0 || newX + shape.width > canvasWidth || newY < 0 || newY + shape.height > canvasHeight) {
-            return false; // remove shape
-          }
-        } else if (shape.group === 'circles') {
-          const radius = shape.radius;
-          if (newX - radius < 0 || newX + radius > canvasWidth || newY - radius < 0 || newY + radius > canvasHeight) {
-            return false; // remove shape
-          }
-        } else if (shape.group === 'polygons') {
-          const points = shape.points;
-          const minX = Math.min(...points.filter((_, index) => index % 2 === 0));
-          const minY = Math.min(...points.filter((_, index) => index % 2 !== 0));
-          const maxX = Math.max(...points.filter((_, index) => index % 2 === 0));
-          const maxY = Math.max(...points.filter((_, index) => index % 2 !== 0));
+      let newX = updatedProps.x;
+      let newY = updatedProps.y;
 
-          const deltaX = updatedProps.x - shape.x;
-          const deltaY = updatedProps.y - shape.y;
-
-          const newMinX = minX + deltaX;
-          const newMinY = minY + deltaY;
-          const newMaxX = maxX + deltaX;
-          const newMaxY = maxY + deltaY;
-
-          if (newMinX < 0 || newMaxX > canvasWidth || newMinY < 0 || newMaxY > canvasHeight) {
-            return false; // remove shape
-          }
-
-          const newPoints = points.map((point, index) =>
-            index % 2 === 0 ? point + deltaX : point + deltaY
-          );
-
-          return { ...shape, points: newPoints, x: newX, y: newY };
+      if (shape.group === 'rectangles') {
+        if (newX + shape.width < 0 || newX > canvasWidth || newY + shape.height < 0 || newY > canvasHeight) {
+          return null;
         }
 
-        return { ...shape, x: newX, y: newY };
+        return { ...shape, ...updatedProps };
       }
+
+
+      if (shape.group === 'circles') {
+        const radius = shape.radius;
+        if (newX + radius < 0 || newX - radius > canvasWidth || newY + radius < 0 || newY - radius > canvasHeight) {
+          return null;
+        }
+
+        return { ...shape,...updatedProps};
+      }
+
+      if (shape.group === 'polygons') {
+        const points = shape.points;
+        const xValues = points.map(point => point.x);
+        const yValues = points.map(point => point.y);
+
+        let minX = Math.min(...xValues);
+        let minY = Math.min(...yValues);
+        let maxX = Math.max(...xValues);
+        let maxY = Math.max(...yValues);
+
+        // Calculate deltas based on the first point as a reference
+        const deltaX = updatedProps['points'][0].x - points[0].x;
+        const deltaY = updatedProps['points'][0].y - points[0].y;
+
+        minX = minX + deltaX;
+        maxX = maxX + deltaX;
+        minY = minY + deltaY;
+        maxY = maxY + deltaY;
+
+        if (maxX < 0 || minX > canvasWidth || maxY < 0 || minY > canvasHeight) {
+          return null;
+        }
+
+        return { ...shape, ...updatedProps };
+      }
+
       return shape;
-    });
+    }).filter(shape => shape !== null);
 
     onUpdateShapes(cloneDeep(newShapes));
-    this.setState({ shapes: cloneDeep(newShapes) });
   };
 
   handleOnSetAsCorrect = (shape) => {
@@ -427,51 +438,6 @@ export class Drawable extends React.Component {
                   imageHeight={heightFromState || height}
                   imageWidth={widthFromState || width}
                   {...(shape.group === 'polygons' ? { addPolygonPoint: (e) => this.addPolygonPoint(e) } : {})}
-                  dragBoundFunc={(pos) => {
-                    let newX = pos.x;
-                    let newY = pos.y;
-
-                    if (shape.group === 'rectangles') {
-                      newX = Math.max(0, Math.min(pos.x, (widthFromState || width) - shape.width));
-                      newY = Math.max(0, Math.min(pos.y, (heightFromState || height) - shape.height));
-                    } else if (shape.group === 'circles') {
-                      const radius = shape.radius;
-                      newX = Math.max(radius, Math.min(pos.x, (widthFromState || width) - radius));
-                      newY = Math.max(radius, Math.min(pos.y, (heightFromState || height) - radius));
-                    } else if (shape.group === 'polygons') {
-                      const points = shape.points;
-                      const minX = Math.min(...points.filter((_, index) => index % 2 === 0));
-                      const minY = Math.min(...points.filter((_, index) => index % 2 !== 0));
-                      const maxX = Math.max(...points.filter((_, index) => index % 2 === 0));
-                      const maxY = Math.max(...points.filter((_, index) => index % 2 !== 0));
-
-                      const deltaX = pos.x - shape.x;
-                      const deltaY = pos.y - shape.y;
-
-                      let constrainedDeltaX = deltaX;
-                      let constrainedDeltaY = deltaY;
-
-                      if (minX + deltaX < 0) constrainedDeltaX = -minX;
-                      if (maxX + deltaX > (widthFromState || width)) constrainedDeltaX = (widthFromState || width) - maxX;
-                      if (minY + deltaY < 0) constrainedDeltaY = -minY;
-                      if (maxY + deltaY > (heightFromState || height)) constrainedDeltaY = (heightFromState || height) - maxY;
-
-                      const newPoints = points.map((point, index) =>
-                        index % 2 === 0 ? point + constrainedDeltaX : point + constrainedDeltaY
-                      );
-
-                      return {
-                        x: shape.x + constrainedDeltaX,
-                        y: shape.y + constrainedDeltaY,
-                        points: newPoints,
-                      };
-                    }
-
-                    return {
-                      x: newX,
-                      y: newY,
-                    };
-                  }}
                 />
               );
             })}
