@@ -20,6 +20,8 @@ export default {
       audio: { disabled: false },
       video: { disabled: false },
       image: { disabled: false },
+      h3: { disabled: true },
+      blockquote: { disabled: true },
     },
     settingsPanelDisabled: false,
     title: {
@@ -59,6 +61,8 @@ export default {
         audio: { disabled: false },
         video: { disabled: false },
         image: { disabled: false },
+        h3: { disabled: false },
+        blockquote: { disabled: false },
       },
       required: true
     },

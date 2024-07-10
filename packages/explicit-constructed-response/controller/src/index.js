@@ -1,5 +1,8 @@
 import debug from 'debug';
-import { find, isEmpty, map, reduce } from 'lodash';
+import map from 'lodash/map';
+import reduce from 'lodash/reduce';
+import find from 'lodash/find';
+import isEmpty from 'lodash/isEmpty';
 import { partialScoring } from '@pie-lib/pie-toolbox/controller-utils';
 import Translator from '@pie-lib/pie-toolbox/translator';
 import defaults from './defaults';

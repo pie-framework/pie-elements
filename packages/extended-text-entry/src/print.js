@@ -48,6 +48,9 @@ export default class ExtendedTextEntryPrint extends HTMLElement {
               model: printModel,
               session: {},
               onChange: () => {},
+              onValueChange: () => {},
+              onAnnotationsChange: () => {},
+              onCommentChange: () => {},
             });
 
           ReactDOM.render(element, this, () => {
