@@ -13,6 +13,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 import Choices from './choices';
 import { createSlateMarkup } from './markupUtils';
 import { generateValidationMessage } from '../utils';
+
 const { dropdown, toggle, Panel } = settings;
 
 const styles = (theme) => ({
@@ -49,7 +50,7 @@ const styles = (theme) => ({
   },
   flexContainer: {
     display: 'flex',
-    alignItems: 'end',
+    alignItems: 'center',
   },
 });
 
@@ -264,7 +265,9 @@ export class Main extends React.Component {
         )}
 
         <div className={classes.flexContainer}>
-          <Typography className={classes.text}>Define Template, Choices, and Correct Responses</Typography>
+          <Typography className={classes.text} component={'div'}>
+            Define Template, Choices, and Correct Responses
+          </Typography>
           <Tooltip
             classes={{ tooltip: classes.tooltip }}
             disableFocusListener
