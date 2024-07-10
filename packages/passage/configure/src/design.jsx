@@ -76,13 +76,11 @@ export class Main extends React.Component {
       language: language && language.settings && language.enabled && dropdown(languageChoices.label, languageChoices.options),
     };
 
-    const getPluginProps = (props) => {
-      return Object.assign(
-          {
-            ...baseInputConfiguration,
-          },
-          props || {},
-      );
+    const getPluginProps = (customConfiguration) => {
+      return {
+        ...baseInputConfiguration,
+        ...customConfiguration,
+      };
     };
 
     return (
@@ -104,6 +102,7 @@ export class Main extends React.Component {
           {titleEnabled && (
               <InputContainer label={title.label} className={classes.inputContainer}>
                 <EditableHtml
+                    activePlugins={ALL_PLUGINS}
                     markup={model.passages[0].title || ''}
                     onChange={(value) => this.handleChange('title', value)}
                     nonEmpty={false}
@@ -118,6 +117,7 @@ export class Main extends React.Component {
           {subtitleEnabled && (
               <InputContainer label={subtitle.label} className={classes.inputContainer}>
                 <EditableHtml
+                    activePlugins={ALL_PLUGINS}
                     markup={model.passages[0].subtitle || ''}
                     onChange={(value) => this.handleChange('subtitle', value)}
                     nonEmpty={false}
@@ -132,6 +132,7 @@ export class Main extends React.Component {
           {authorEnabled && (
               <InputContainer label={author.label} className={classes.inputContainer}>
                 <EditableHtml
+                    activePlugins={ALL_PLUGINS}
                     markup={model.passages[0].author || ''}
                     onChange={(value) => this.handleChange('author', value)}
                     nonEmpty={false}
@@ -146,6 +147,7 @@ export class Main extends React.Component {
           {teacherInstructionsEnabled && (
               <InputContainer label={teacherInstructions.label} className={classes.inputContainer}>
                 <EditableHtml
+                    activePlugins={ALL_PLUGINS}
                     markup={model.passages[0].teacherInstructions || ''}
                     onChange={(value) => this.handleChange('teacherInstructions', value)}
                     nonEmpty={false}
