@@ -87,8 +87,9 @@ class HTiler extends React.Component {
   }
 }
 
-const horizontalStyles = {
-  htiler: common.tiler,
+const horizontalStyles = (theme) => ({
+  htiler: { ...common.tiler, paddingBottom: theme.spacing.unit * 2 },
+  paddingBottom: theme.spacing.unit * 4,
   choiceLabel: {
     textAlign: 'center',
   },
@@ -99,7 +100,7 @@ const horizontalStyles = {
   withGap: {
     gridGap: '10px',
   },
-};
+});
 
 export const HorizontalTiler = withStyles(horizontalStyles)(HTiler);
 
