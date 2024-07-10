@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.23.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@6.23.2...@pie-element/hotspot@6.23.3) (2024-07-10)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3799, PD-3924, PD-3878 ([2f276fb](https://github.com/pie-framework/pie-elements/commit/2f276fb29f121005cecd81459469ff9f5a06740d))
+* **hostspot:** refactor supported shapes and groups PD-3628 ([e50f19f](https://github.com/pie-framework/pie-elements/commit/e50f19fe8a6868d8c8899b3b7dde557db73638bd))
+* **hostspot:** refactor supported shapes and groups PD-3628 ([26ecc0b](https://github.com/pie-framework/pie-elements/commit/26ecc0bab42b25561812fb0a4e6325efc323f82f))
+* **hostspot:** refactor supported shapes and groups PD-3628 ([b4f3d29](https://github.com/pie-framework/pie-elements/commit/b4f3d296a047ff3e4efc8cf1faa5ff8893b9fb2f))
+* **hostspot:** remove shapes outside of canvas fix/PD-3892 ([0cf1c75](https://github.com/pie-framework/pie-elements/commit/0cf1c75eb5b158a3425718d15cad5c7e04c2f97d))
+* **hostspot:** update canvas resize and polygon move PD-3628 ([03d6069](https://github.com/pie-framework/pie-elements/commit/03d6069b712a083dfdb3217f87d51f3ec4fb3a28))
+* **hotspot:** remove shapes moved outside the canvas PD-3892 ([0aa05d6](https://github.com/pie-framework/pie-elements/commit/0aa05d657714ae7bbd0758497656fd20c62073bf))
+
+
+
+
+
 ## [6.23.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@6.23.1...@pie-element/hotspot@6.23.2) (2024-07-04)
 
 **Note:** Version bump only for package @pie-element/hotspot

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.15.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/ruler@5.15.2...@pie-element/ruler@5.15.3) (2024-07-10)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3799, PD-3924, PD-3878 ([2f276fb](https://github.com/pie-framework/pie-elements/commit/2f276fb29f121005cecd81459469ff9f5a06740d))
+
+
+
+
+
 ## [5.15.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/ruler@5.15.1...@pie-element/ruler@5.15.2) (2024-07-04)
 
 **Note:** Version bump only for package @pie-element/ruler

@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.21.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@8.21.3...@pie-element/categorize@8.21.4) (2024-07-10)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3799, PD-3924, PD-3878 ([2f276fb](https://github.com/pie-framework/pie-elements/commit/2f276fb29f121005cecd81459469ff9f5a06740d))
+* **categorize:** remove unused import PD-3890 ([f6b4355](https://github.com/pie-framework/pie-elements/commit/f6b43551c248a8bee01cf920857514f04aa76982))
+* **categorize:** when add categorize adjust correctResponse too PD-3890 ([3c36ca3](https://github.com/pie-framework/pie-elements/commit/3c36ca398631096d521a0c7f060ecfdbdfc80d6a))
+
+
+
+
+
 ## [8.21.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@8.21.2...@pie-element/categorize@8.21.3) (2024-07-05)
 
 
