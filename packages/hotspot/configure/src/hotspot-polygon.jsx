@@ -11,39 +11,28 @@ class PolComponent extends React.Component {
     const { id, points, imageHeight, imageWidth } = nextProps;
     // we execute this code only if image dimensions changed or an hotspot was added/deleted
     if (
-      prevState.imageHeight !== nextProps.imageHeight ||
-      prevState.imageWidth !== nextProps.imageWidth ||
+      prevState.imageHeight !== imageHeight ||
+      prevState.imageWidth !== imageWidth ||
       prevState.id !== nextProps.id ||
-      prevState.points.length !== points.length
+      JSON.stringify(prevState.points) !== JSON.stringify(points)
     ) {
-      if (points.length) {
-        const xList = points.map((p) => p.x);
-        const yList = points.map((p) => p.y);
+      const xList = points.map((p) => p.x);
+      const yList = points.map((p) => p.y);
 
-        const x = Math.min(...xList);
-        const y = Math.max(...yList);
-
-        return {
-          id,
-          x,
-          y,
-          points,
-          imageHeight,
-          imageWidth,
-        };
-      }
+      const x = Math.min(...xList);
+      const y = Math.max(...yList);
 
       return {
-        id: '',
-        x: 0,
-        y: 0,
-        points: [],
+        id,
+        x,
+        y,
+        points,
         imageHeight,
         imageWidth,
       };
-    } else {
-      return null;
     }
+
+    return null;
   }
 
   getOffset = (points) => {
@@ -143,6 +132,10 @@ class PolComponent extends React.Component {
       ...this.getOffset(newPoints),
       isDragging: updateModel ? false : this.state.isDragging,
     });
+
+    if (updateModel) {
+      onDragEnd(id, { points: newPoints });
+    }
   };
 
   handleOnDragVertex = (e, changedIndex, updateModel) => {

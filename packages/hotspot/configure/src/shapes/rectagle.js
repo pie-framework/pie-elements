@@ -1,4 +1,6 @@
-export default class RectangleShape {
+export class RectangleShape {
+  static name = 'rectangle'
+
   static create(shapes, e) {
     const newShapes = [...shapes];
     const highestId = Math.max(...newShapes.map((shape) => parseInt(shape.id)), 0) || 0;

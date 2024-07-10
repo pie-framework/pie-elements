@@ -1,5 +1,5 @@
 import React from 'react';
-import { updateImageDimensions, getUpdatedRectangle, getUpdatedPlygon, getAllShapes, groupShapes } from '../utils';
+import { updateImageDimensions, getUpdatedRectangle, getUpdatedPolygon, getAllShapes, groupShapes } from '../utils';
 
 const width = 200;
 const height = 100;
@@ -116,7 +116,7 @@ describe('getUpdatedPolygon', () => {
   `(
     'initialDimensions = $initialDimensions, nextDimensions = $nextDimensions, shape = $shape => $expected',
     async ({ initialDimensions, nextDimensions, shape, expected }) => {
-      const result = getUpdatedPlygon(initialDimensions, nextDimensions, shape);
+      const result = getUpdatedPolygon(initialDimensions, nextDimensions, shape);
 
       expect(result).toEqual(expected);
     },

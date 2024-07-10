@@ -1,5 +1,6 @@
 import { withStyles } from '@material-ui/core/styles/index';
 import classNames from 'classnames';
+import { SUPPORTED_SHAPES } from './shapes';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import Button from './button';
@@ -33,7 +34,7 @@ export class Container extends Component {
       dragEnabled: true,
       // always transform shapes map into shapes array at this level
       shapes: getAllShapes(props.shapes),
-      selectedShape: 'none',
+      selectedShape: SUPPORTED_SHAPES.NONE,
     };
     this.fakeImageHandler = {
       cancel: () => {},
@@ -141,7 +142,7 @@ export class Container extends Component {
   handleFinishDrawing = () => {
     // Explicitly end the current shape drawing session
     // This would cause the finalizeCreation method to be called in the HotspotDrawable component
-    this.setState({ selectedShape: 'none' });
+    this.setState({ selectedShape: SUPPORTED_SHAPES.NONE });
   };
 
   render() {
@@ -179,22 +180,22 @@ export class Container extends Component {
         >
           <div className={classes.toolbar}>
             <div
-              onClick={() => this.setState({ selectedShape: selectedShape === 'rectangle' ? 'none' : 'rectangle' })}
+              onClick={() => this.setState({ selectedShape: selectedShape === SUPPORTED_SHAPES.RECTANGLE ? SUPPORTED_SHAPES.NONE : SUPPORTED_SHAPES.RECTANGLE })}
               className={classes.buttonShape}
             >
-              <RectangleButton isActive={selectedShape === 'rectangle'} />
+              <RectangleButton isActive={selectedShape === SUPPORTED_SHAPES.RECTANGLE} />
             </div>
             <div
-              onClick={() => this.setState({ selectedShape: selectedShape === 'polygon' ? 'none' : 'polygon' })}
+              onClick={() => this.setState({ selectedShape: selectedShape === SUPPORTED_SHAPES.POLYGON ? SUPPORTED_SHAPES.NONE : SUPPORTED_SHAPES.POLYGON })}
               className={classes.buttonShape}
             >
-              <PolygonButton isActive={selectedShape === 'polygon'} />
+              <PolygonButton isActive={selectedShape === SUPPORTED_SHAPES.POLYGON} />
             </div>
             <div
-              onClick={() => this.setState({ selectedShape: selectedShape === 'circle' ? 'none' : 'circle' })}
+              onClick={() => this.setState({ selectedShape: selectedShape === SUPPORTED_SHAPES.CIRCLE ? SUPPORTED_SHAPES.NONE : SUPPORTED_SHAPES.CIRCLE })}
               className={classes.buttonShape}
             >
-              <CircleButton isActive={selectedShape === 'circle'} />
+              <CircleButton isActive={selectedShape === SUPPORTED_SHAPES.CIRCLE} />
             </div>
 
             {imageUrl && (

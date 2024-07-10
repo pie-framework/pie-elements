@@ -1,4 +1,5 @@
 import cloneDeep from 'lodash/cloneDeep';
+import { SHAPE_GROUPS } from './shapes';
 
 const updateImageDimensions = (initialDim, nextDim, keepAspectRatio, resizeType) => {
   // if we want to keep image aspect ratio
@@ -43,12 +44,12 @@ const getUpdatedRectangle = (initialDim, nextDim, shape) => ({
 
 const getUpdatedCircles = (initialDim, nextDim, shape) => ({
   ...shape,
-  radius: getDelta(initialDim.radius, nextDim.radius, shape.radius),
+  radius: getDelta(initialDim.width, nextDim.width, shape.radius),
   x: getDelta(initialDim.width, nextDim.width, shape.x),
   y: getDelta(initialDim.height, nextDim.height, shape.y),
 });
 
-const getUpdatedPlygon = (initialDim, nextDim, shape) => ({
+const getUpdatedPolygon = (initialDim, nextDim, shape) => ({
   ...shape,
   points: shape.points.map((point) => ({
     x: getDelta(initialDim.width, nextDim.width, point.x),
@@ -61,15 +62,15 @@ const getUpdatedPlygon = (initialDim, nextDim, shape) => ({
 // shapes = array of shapes that have to be re-sized and re-positioned
 const getUpdatedShapes = (initialDim, nextDim, shapes) => {
   return shapes.map((shape) => {
-    if (shape.group === 'rectangles') {
+    if (shape.group === SHAPE_GROUPS.RECTANGLES) {
       return getUpdatedRectangle(initialDim, nextDim, shape);
     }
 
-    if (shape.group === 'polygons') {
-      return getUpdatedPlygon(initialDim, nextDim, shape);
+    if (shape.group === SHAPE_GROUPS.POLYGONS) {
+      return getUpdatedPolygon(initialDim, nextDim, shape);
     }
 
-    if (shape.group === 'circles') {
+    if (shape.group === SHAPE_GROUPS.CIRCLES) {
       return getUpdatedCircles(initialDim, nextDim, shape);
     }
   });
@@ -205,5 +206,5 @@ export {
   getAllShapes,
   groupShapes,
   getUpdatedRectangle,
-  getUpdatedPlygon,
+  getUpdatedPolygon,
 };

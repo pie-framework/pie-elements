@@ -78,12 +78,15 @@ class CircleComponent extends React.Component {
   render() {
     const { classes, correct, radius, hotspotColor, id, outlineColor, x, y, strokeWidth = 5 } = this.props;
 
+    // Ensure radius is valid
+    const validRadius = isNaN(radius) || radius <= 0 ? 5 : radius;
+
     return (
       <Group classes={classes.group} onMouseLeave={this.handleMouseLeave} onMouseEnter={this.handleMouseEnter}>
         <Circle
           classes={classes.base}
           ref={this.shapeRef}
-          radius={radius}
+          radius={validRadius}
           fill={hotspotColor}
           onClick={this.handleClick}
           onTap={this.handleClick}
@@ -98,7 +101,7 @@ class CircleComponent extends React.Component {
           y={y}
         />
         {!this.state.isDragging && this.state.hovered && (
-          <DeleteWidget id={id} radius={radius} x={x} y={y} handleWidgetClick={this.handleDelete} isCircle={true} />
+          <DeleteWidget id={id} radius={validRadius} x={x} y={y} handleWidgetClick={this.handleDelete} isCircle={true} />
         )}
         {this.state.hovered && (
           <Transformer

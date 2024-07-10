@@ -1,4 +1,6 @@
-export default class PolygonShape {
+export class PolygonShape {
+  static name = 'polygon'
+
   static create(shapes, e) {
     const newShapes = [...shapes];
     const newPolygon = {
