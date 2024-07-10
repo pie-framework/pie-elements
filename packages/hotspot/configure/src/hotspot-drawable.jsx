@@ -159,16 +159,67 @@ export class Drawable extends React.Component {
   };
 
   handleOnDragEnd = (id, updatedProps) => {
-    const { shapes, onUpdateShapes } = this.props;
+    const { shapes, onUpdateShapes, dimensions } = this.props;
+    const { width: canvasWidth, height: canvasHeight } = dimensions;
+
+    // when a shape is moved completely outside the canvas
+    // remove that shape
     const newShapes = shapes.map((shape) => {
-      if (shape.id === id) {
+      if (shape.id !== id) {
+        return shape;
+      }
+
+      let newX = updatedProps.x;
+      let newY = updatedProps.y;
+
+      if (shape.group === 'rectangles') {
+        if (newX + shape.width < 0 || newX > canvasWidth || newY + shape.height < 0 || newY > canvasHeight) {
+          return null;
+        }
+
         return { ...shape, ...updatedProps };
       }
+
+
+      if (shape.group === 'circles') {
+        const radius = shape.radius;
+        if (newX + radius < 0 || newX - radius > canvasWidth || newY + radius < 0 || newY - radius > canvasHeight) {
+          return null;
+        }
+
+        return { ...shape,...updatedProps};
+      }
+
+      if (shape.group === 'polygons') {
+        const points = shape.points;
+        const xValues = points.map(point => point.x);
+        const yValues = points.map(point => point.y);
+
+        let minX = Math.min(...xValues);
+        let minY = Math.min(...yValues);
+        let maxX = Math.max(...xValues);
+        let maxY = Math.max(...yValues);
+
+        // Calculate deltas based on the first point as a reference
+        const deltaX = updatedProps['points'][0].x - points[0].x;
+        const deltaY = updatedProps['points'][0].y - points[0].y;
+
+        minX = minX + deltaX;
+        maxX = maxX + deltaX;
+        minY = minY + deltaY;
+        maxY = maxY + deltaY;
+
+        if (maxX < 0 || minX > canvasWidth || maxY < 0 || minY > canvasHeight) {
+          return null;
+        }
+
+        return { ...shape, ...updatedProps };
+      }
+
       return shape;
-    });
+    }).filter(shape => shape !== null);
 
     onUpdateShapes(cloneDeep(newShapes));
-    this.setState({ shapes: cloneDeep(newShapes) });
   };
 
   handleOnSetAsCorrect = (shape) => {
@@ -386,6 +437,7 @@ export class Drawable extends React.Component {
                   strokeWidth={strokeWidth}
                   imageHeight={heightFromState || height}
                   imageWidth={widthFromState || width}
+                  {...(shape.group === 'polygons' ? { addPolygonPoint: (e) => this.addPolygonPoint(e) } : {})}
                 />
               );
             })}

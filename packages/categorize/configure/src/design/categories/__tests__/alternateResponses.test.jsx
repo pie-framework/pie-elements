@@ -11,7 +11,10 @@ describe('AlternateResponses', () => {
       {
         id: '0',
         content: 'Choice 0',
+        categoryCount: 0,
       },
+      { id: '2', content: 'foo', categoryCount: 0 },
+      { id: '3', content: 'foo1', categoryCount: 0 },
     ],
     choicesPosition: 'below',
     choicesLabel: '',
@@ -30,6 +33,7 @@ describe('AlternateResponses', () => {
   };
 
   const wrapper = (extras) => {
+    model = { ...model, ...extras };
     const defaults = {
       altIndex: 0,
       classes: {
@@ -41,7 +45,10 @@ describe('AlternateResponses', () => {
       className: 'className',
       model: {
         ...model,
-        choices:[{id:'1', categoryCount:0}, {id:'2', categoryCount: 0}],
+        choices: [
+          { id: '1', categoryCount: 0 },
+          { id: '2', categoryCount: 0 },
+        ],
         correctResponse: [{ category: '0', choices: ['1'] }],
       },
       onModelChanged,
@@ -64,6 +71,18 @@ describe('AlternateResponses', () => {
       w.instance().addChoiceToCategory({ id: '2', content: 'foo' }, '0');
 
       expect(onModelChanged).toBeCalledWith({
+        correctResponse: [{ category: '0', choices: ['1'], alternateResponses: [['2']] }],
+        maxChoicesPerCategory: 0,
+      });
+    });
+
+    describe('addChoiceToCategory-MaxChoicePerCategory', () => {
+      const newModel = { maxChoicesPerCategory: 1 };
+      w = wrapper(newModel);
+      w.instance().addChoiceToCategory({ id: '2', content: 'foo', categoryCount: 0 }, '0');
+
+      expect(onModelChanged).toBeCalledWith({
+        maxChoicesPerCategory: 1,
         correctResponse: [{ category: '0', choices: ['1'], alternateResponses: [['2']] }],
       });
     });
