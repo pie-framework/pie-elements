@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.16.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-configure@3.16.3...@pie-element/multi-trait-rubric-configure@3.16.4) (2024-07-10)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3799, PD-3924, PD-3878 ([2f276fb](https://github.com/pie-framework/pie-elements/commit/2f276fb29f121005cecd81459469ff9f5a06740d))
+
+
+
+
+
 ## [3.16.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-configure@3.16.2...@pie-element/multi-trait-rubric-configure@3.16.3) (2024-07-04)
 
 

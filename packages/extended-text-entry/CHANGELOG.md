@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.20.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.20.2...@pie-element/extended-text-entry@10.20.3) (2024-07-10)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3799, PD-3924, PD-3878 ([2f276fb](https://github.com/pie-framework/pie-elements/commit/2f276fb29f121005cecd81459469ff9f5a06740d))
+* **extended-text-entry:** print not rendering because of undefined props PD-3912 ([59875ef](https://github.com/pie-framework/pie-elements/commit/59875ef4eb90e689a03f3292ae5a661f7e71d327))
+
+
+
+
+
 ## [10.20.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@10.20.1...@pie-element/extended-text-entry@10.20.2) (2024-07-04)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry

@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.19.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@6.19.1...@pie-element/explicit-constructed-response@6.19.2) (2024-07-10)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3799, PD-3924, PD-3878 ([2f276fb](https://github.com/pie-framework/pie-elements/commit/2f276fb29f121005cecd81459469ff9f5a06740d))
+* **drag-in-the-blank, explicit-constructed-response:** set Typography component to div to prevent overwriting of p styling in client platforms PD-3913 ([2c7ec53](https://github.com/pie-framework/pie-elements/commit/2c7ec5386591cdcdf3ee652bf2e9d3d23dfc0cc8))
+* **ECR:** using specific imports PD-3798 ([e858178](https://github.com/pie-framework/pie-elements/commit/e858178fbd8324a35f44cf0162a7846748a19389))
+
+
+
+
+
 ## [6.19.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@6.19.0...@pie-element/explicit-constructed-response@6.19.1) (2024-07-04)
 
 **Note:** Version bump only for package @pie-element/explicit-constructed-response

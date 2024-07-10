@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.18.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-configure@5.18.2...@pie-element/drag-in-the-blank-configure@5.18.3) (2024-07-10)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3799, PD-3924, PD-3878 ([2f276fb](https://github.com/pie-framework/pie-elements/commit/2f276fb29f121005cecd81459469ff9f5a06740d))
+* **drag-in-the-blank, explicit-constructed-response:** set Typography component to div to prevent overwriting of p styling in client platforms PD-3913 ([2c7ec53](https://github.com/pie-framework/pie-elements/commit/2c7ec5386591cdcdf3ee652bf2e9d3d23dfc0cc8))
+
+
+
+
+
 ## [5.18.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-configure@5.18.1...@pie-element/drag-in-the-blank-configure@5.18.2) (2024-07-04)
 
 **Note:** Version bump only for package @pie-element/drag-in-the-blank-configure
