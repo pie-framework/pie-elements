@@ -3,9 +3,8 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { color, Collapsible, hasText, PreviewPrompt } from '@pie-lib/pie-toolbox/render-ui';
 import { Chart, chartTypes } from '@pie-lib/pie-toolbox/charting';
-import isArray from 'lodash/isArray';
 import isEqual from 'lodash/isEqual';
-import {CorrectAnswerToggle} from '@pie-lib/pie-toolbox/correct-answer-toggle';
+import { CorrectAnswerToggle } from '@pie-lib/pie-toolbox/correct-answer-toggle';
 
 export class Main extends React.Component {
   static propTypes = {
@@ -28,12 +27,11 @@ export class Main extends React.Component {
 
   componentDidUpdate(prevProps) {
     if (!isEqual(prevProps.categories, this.props.categories)) {
-        this.setState({ categories: this.props.categories });
+      this.setState({ categories: this.props.categories });
     } else if (!isEqual(prevProps.model.data, this.props.model.data)) {
-        this.setState({ categories: this.props.model.data });
+      this.setState({ categories: this.props.model.data });
     }
-}
-
+  }
 
   changeData = (data) =>
     this.setState(
@@ -58,24 +56,14 @@ export class Main extends React.Component {
       title,
       addCategoryEnabled,
       studentNewCategoryDefaultLabel,
+      showToggle,
       rationale,
       correctedAnswer,
       correctAnswer,
-      language
+      language,
     } = model;
 
-    const correctData =
-      correctAnswer && correctAnswer.data
-        ? correctAnswer.data.map((data) => {
-            return {
-              ...data,
-              interactive: false,
-              editable: false,
-            };
-          })
-        : [];
-
-    const showToggle = correctData && correctData.length > 0;
+    const correctData = (correctAnswer?.data || []).map((data) => ({ ...data, interactive: false, editable: false }));
 
     return (
       <div className={classes.mainContainer}>
