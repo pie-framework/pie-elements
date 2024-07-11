@@ -39,6 +39,7 @@ export class Main extends React.Component {
       prompt,
       range,
       rationale,
+      showKeyLegend,
       showToggle,
       title,
       titleEnabled,
@@ -114,7 +115,7 @@ export class Main extends React.Component {
             limitLabeling={true}
           />
         )}
-        <KeyLegend isLabelAvailable={isLabelAvailable}></KeyLegend>
+        {showKeyLegend && !showingCorrect && <KeyLegend isLabelAvailable={isLabelAvailable}></KeyLegend>}
         {rationale && hasText(rationale) && (
           <Collapsible labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }}>
             <PreviewPrompt prompt={rationale} />
