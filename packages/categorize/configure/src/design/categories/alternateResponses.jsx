@@ -185,21 +185,27 @@ export class AlternateResponses extends React.Component {
             return (
               <React.Fragment key={index}>
                 {hasRowLabel && (
-                  <RowLabel
-                    categoriesPerRow={categoriesPerRow}
-                    disabled={true}
-                    rowIndex={rowIndex}
-                    markup={rowLabels[rowIndex] || ''}
-                    onChange={(val) => this.changeRowLabel(val, rowIndex)}
-                    imageSupport={imageSupport}
-                    toolbarOpts={toolbarOpts}
-                    spellCheck={spellCheck}
-                    maxImageWidth={(maxImageWidth && maxImageWidth.rowLabel) || defaultImageMaxWidth}
-                    maxImageHeight={(maxImageHeight && maxImageHeight.rowLabel) || defaultImageMaxHeight}
-                    uploadSoundSupport={uploadSoundSupport}
-                    mathMlOptions={mathMlOptions}
-                    configuration={configuration}
-                  />
+                  <div
+                    className={classes.rowLabel}
+                    dangerouslySetInnerHTML={{
+                      __html: rowLabels[rowIndex] || '',
+                    }}
+                  ></div>
+                  // <RowLabel
+                  //   categoriesPerRow={categoriesPerRow}
+                  //   disabled={true}
+                  //   rowIndex={rowIndex}
+                  //   markup={rowLabels[rowIndex] || ''}
+                  //   onChange={(val) => this.changeRowLabel(val, rowIndex)}
+                  //   imageSupport={imageSupport}
+                  //   toolbarOpts={toolbarOpts}
+                  //   spellCheck={spellCheck}
+                  //   maxImageWidth={(maxImageWidth && maxImageWidth.rowLabel) || defaultImageMaxWidth}
+                  //   maxImageHeight={(maxImageHeight && maxImageHeight.rowLabel) || defaultImageMaxHeight}
+                  //   uploadSoundSupport={uploadSoundSupport}
+                  //   mathMlOptions={mathMlOptions}
+                  //   configuration={configuration}
+                  // />
                 )}
 
                 <Category
