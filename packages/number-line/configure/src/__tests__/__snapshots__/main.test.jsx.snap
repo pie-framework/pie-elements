@@ -3,8 +3,259 @@
 exports[`main snapshot renders 1`] = `
 <ConfigLayout
   dimensions={Object {}}
-  hideSettings={true}
-  settings={null}
+  hideSettings={false}
+  settings={
+    <Panel
+      configuration={
+        Object {
+          "availableTools": Array [
+            "PF",
+            "LFF",
+            "LEF",
+            "LFE",
+            "LEE",
+            "RFN",
+            "RFP",
+            "REN",
+            "REP",
+          ],
+          "baseInputConfiguration": Object {
+            "audio": Object {
+              "disabled": false,
+            },
+            "image": Object {
+              "disabled": false,
+            },
+            "video": Object {
+              "disabled": false,
+            },
+          },
+          "hidePointConfigButtons": false,
+          "instruction": Object {
+            "enabled": true,
+            "label": "Number line questions involve plotting points or other objects. To create one, first set up the number line, then select the plotting tools students will be offered and use them to define the correct answer.",
+            "settings": false,
+          },
+          "language": Object {
+            "enabled": false,
+            "label": "Specify Language",
+            "settings": false,
+          },
+          "languageChoices": Object {
+            "label": "Language Choices",
+            "options": Array [],
+          },
+          "mathMlOptions": Object {
+            "mmlEditing": false,
+            "mmlOutput": false,
+          },
+          "maxMaxElements": 20,
+          "numberLineDimensions": Object {
+            "enabled": true,
+            "label": "Width",
+            "max": 800,
+            "min": 200,
+            "settings": true,
+            "step": 20,
+          },
+          "prompt": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": false,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": false,
+              },
+            },
+            "label": "Item Stem",
+            "required": false,
+            "settings": true,
+          },
+          "rationale": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": false,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": false,
+              },
+            },
+            "label": "Rationale",
+            "required": false,
+            "settings": true,
+          },
+          "spellCheck": Object {
+            "enabled": true,
+            "label": "Spellcheck",
+            "settings": false,
+          },
+          "teacherInstructions": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": false,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": false,
+              },
+            },
+            "label": "Teacher Instructions",
+            "required": false,
+            "settings": true,
+          },
+          "title": Object {
+            "enabled": true,
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": false,
+              },
+              "image": Object {
+                "disabled": false,
+              },
+              "video": Object {
+                "disabled": false,
+              },
+            },
+            "label": "Title",
+            "settings": true,
+          },
+        }
+      }
+      groups={
+        Object {
+          "Properties": Object {
+            "promptEnabled": undefined,
+            "rationaleEnabled": undefined,
+            "spellCheckEnabled": false,
+            "teacherInstructionsEnabled": undefined,
+            "titleEnabled": undefined,
+          },
+        }
+      }
+      model={
+        Object {
+          "correctResponse": Array [],
+          "graph": Object {
+            "arrows": Object {
+              "left": true,
+              "right": true,
+            },
+            "availableTypes": Object {
+              "PF": true,
+            },
+            "domain": Object {
+              "max": 1,
+              "min": -1,
+            },
+            "exhibitOnly": false,
+            "initialElements": Array [],
+            "initialType": "PF",
+            "maxNumberOfPoints": 1,
+            "ticks": Object {
+              "decimalTick": 0.125,
+              "fractionTick": "1/25",
+              "integerTick": 1,
+              "major": 0.5,
+              "minor": 0.125,
+              "tickIntervalType": "Decimal",
+            },
+            "toolbarEditorPosition": "bottom",
+            "width": 500,
+          },
+        }
+      }
+      onChangeModel={
+        [MockFunction] {
+          "calls": Array [
+            Array [
+              Object {
+                "graph": Object {
+                  "arrows": Object {
+                    "left": true,
+                    "right": true,
+                  },
+                  "availableTypes": Object {
+                    "PF": true,
+                  },
+                  "domain": Object {
+                    "max": 1,
+                    "min": -1,
+                  },
+                  "exhibitOnly": false,
+                  "fraction": false,
+                  "height": 100,
+                  "initialElements": Array [],
+                  "initialType": "PF",
+                  "maxNumberOfPoints": 1,
+                  "ticks": Object {
+                    "decimalTick": 0.125,
+                    "fractionTick": "1/25",
+                    "integerTick": 1,
+                    "major": 0.5,
+                    "minor": 0.125,
+                    "tickIntervalType": "Decimal",
+                  },
+                  "toolbarEditorPosition": "bottom",
+                  "width": 500,
+                },
+              },
+            ],
+            Array [
+              Object {
+                "correctResponse": Array [],
+                "graph": Object {
+                  "arrows": Object {
+                    "left": true,
+                    "right": true,
+                  },
+                  "availableTypes": Object {
+                    "PF": true,
+                  },
+                  "domain": Object {
+                    "max": 1,
+                    "min": -1,
+                  },
+                  "exhibitOnly": false,
+                  "initialElements": Array [],
+                  "initialType": "PF",
+                  "maxNumberOfPoints": 1,
+                  "ticks": Object {
+                    "decimalTick": 0.125,
+                    "fractionTick": "1/25",
+                    "integerTick": 1,
+                    "major": 0.5,
+                    "minor": 0.125,
+                    "tickIntervalType": "Decimal",
+                  },
+                  "toolbarEditorPosition": "bottom",
+                  "width": 500,
+                },
+                "titleEnabled": true,
+              },
+            ],
+          ],
+          "results": Array [
+            Object {
+              "isThrow": false,
+              "value": undefined,
+            },
+            Object {
+              "isThrow": false,
+              "value": undefined,
+            },
+          ],
+        }
+      }
+    />
+  }
 >
   <WithStyles(Typography)
     component="div"
@@ -12,98 +263,6 @@ exports[`main snapshot renders 1`] = `
   >
     Number line questions involve plotting points or other objects. To create one, first set up the number line, then select the plotting tools students will be offered and use them to define the correct answer.
   </WithStyles(Typography)>
-  <Component
-    label="Teacher Instructions"
-  >
-    <EditableHtml
-      allowValidation={false}
-      disableUnderline={true}
-      languageCharactersProps={
-        Array [
-          Object {
-            "language": "spanish",
-          },
-          Object {
-            "language": "special",
-          },
-        ]
-      }
-      markup=""
-      mathMlOptions={
-        Object {
-          "mmlEditing": false,
-          "mmlOutput": false,
-        }
-      }
-      nonEmpty={false}
-      onChange={[Function]}
-      onDone={[Function]}
-      pluginProps={
-        Object {
-          "audio": Object {
-            "disabled": false,
-          },
-          "image": Object {
-            "disabled": false,
-          },
-          "video": Object {
-            "disabled": false,
-          },
-        }
-      }
-      toolbarOpts={
-        Object {
-          "position": "bottom",
-        }
-      }
-    />
-  </Component>
-  <Component
-    label="Item Stem"
-  >
-    <EditableHtml
-      allowValidation={false}
-      disableUnderline={true}
-      languageCharactersProps={
-        Array [
-          Object {
-            "language": "spanish",
-          },
-          Object {
-            "language": "special",
-          },
-        ]
-      }
-      markup=""
-      mathMlOptions={
-        Object {
-          "mmlEditing": false,
-          "mmlOutput": false,
-        }
-      }
-      nonEmpty={false}
-      onChange={[Function]}
-      onDone={[Function]}
-      pluginProps={
-        Object {
-          "audio": Object {
-            "disabled": false,
-          },
-          "image": Object {
-            "disabled": false,
-          },
-          "video": Object {
-            "disabled": false,
-          },
-        }
-      }
-      toolbarOpts={
-        Object {
-          "position": "bottom",
-        }
-      }
-    />
-  </Component>
   <WithStyles(CardBar)
     header="Set Up Number Line"
     info={
@@ -273,63 +432,6 @@ The correct answer should include at least one number line object."
     onMoveElement={[Function]}
     onUndoElement={[Function]}
   />
-  <FormSection
-    label="Title"
-  >
-    <EditableHtml
-      activePlugins={
-        Array [
-          "bold",
-          "html",
-          "italic",
-          "underline",
-          "strikethrough",
-          "image",
-          "math",
-          "languageCharacters",
-          "responseArea",
-        ]
-      }
-      allowValidation={false}
-      languageCharactersProps={
-        Array [
-          Object {
-            "language": "spanish",
-          },
-          Object {
-            "language": "special",
-          },
-        ]
-      }
-      markup=""
-      mathMlOptions={
-        Object {
-          "mmlEditing": false,
-          "mmlOutput": false,
-        }
-      }
-      onChange={[Function]}
-      onDone={[Function]}
-      pluginProps={
-        Object {
-          "audio": Object {
-            "disabled": false,
-          },
-          "image": Object {
-            "disabled": false,
-          },
-          "video": Object {
-            "disabled": false,
-          },
-        }
-      }
-      toolbarOpts={
-        Object {
-          "position": "bottom",
-        }
-      }
-    />
-  </FormSection>
   <WithStyles(CardBar)
     header="Define Tool Set and Correct Response"
   >

@@ -182,6 +182,18 @@ export interface NumberLinePie extends PieModel {
   /** Indicates if spellcheck is enabled for the author. Default value is true */
   spellCheckEnabled: boolean;
 
+  /**  Indicates if the prompt is enabled */
+  promptEnabled?: boolean;
+
+  /** Indicates rationale for the answer */
+  rationale?: string;
+
+  /** Indicates if Rationale are enabled */
+  rationaleEnabled: boolean;
+
+  /** Indicates if Teacher Instructions are enabled */
+  teacherInstructionsEnabled: boolean;
+
   /**
    * Indicates the editor's toolbar position which can be 'bottom' or 'top'
    * @default: 'bottom'
@@ -214,6 +226,11 @@ export interface NumberLineConfigure extends PromptConfig, CommonConfigSettings 
    * Configuration for the prompt
    */
   prompt?: EditableHtmlPluginConfigureRequired;
+
+    /**
+   * Rationale configuration
+   */
+    rationale?: EditableHtmlPluginConfigureRequired;
 
   /**
    * Configuration for the teacher instructions

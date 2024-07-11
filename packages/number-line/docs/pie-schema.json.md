@@ -168,6 +168,22 @@ The question prompt or item stem
 
 Indicates if spellcheck is enabled for the author. Default value is true
 
+# `promptEnabled` (boolean)
+
+Indicates if the prompt is enabled
+
+# `rationale` (string)
+
+Indicates rationale for the answer
+
+# `rationaleEnabled` (boolean, required)
+
+Indicates if Rationale are enabled
+
+# `teacherInstructionsEnabled` (boolean, required)
+
+Indicates if Teacher Instructions are enabled
+
 # `toolbarEditorPosition` (string, enum)
 
 Indicates the editor's toolbar position which can be 'bottom' or 'top'
