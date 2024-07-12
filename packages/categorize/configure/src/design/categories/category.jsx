@@ -75,7 +75,8 @@ export class Category extends React.Component {
       mathMlOptions = {},
     } = this.props;
 
-    console.log({category: configuration});
+    console.log({ category: configuration });
+    const isCategoryHeaderDisabled = !!alternateResponseIndex || alternateResponseIndex === 0;
     return (
       <Card
         className={classNames(classes.category, className, {
@@ -83,24 +84,33 @@ export class Category extends React.Component {
         })}
       >
         <span>
-          <InputHeader
-            label={category.label}
-            focusedEl={focusedEl}
-            deleteFocusedEl={deleteFocusedEl}
-            index={index}
-            disabled={!!alternateResponseIndex || alternateResponseIndex === 0}
-            error={error}
-            onChange={this.changeLabel}
-            onDelete={onDelete}
-            imageSupport={imageSupport}
-            toolbarOpts={toolbarOpts}
-            spellCheck={spellCheck}
-            maxImageWidth={maxImageWidth}
-            maxImageHeight={maxImageHeight}
-            uploadSoundSupport={uploadSoundSupport}
-            mathMlOptions={mathMlOptions}
-            configuration={configuration}
-          />
+          {!isCategoryHeaderDisabled ? (
+            <InputHeader
+              label={category.label}
+              focusedEl={focusedEl}
+              deleteFocusedEl={deleteFocusedEl}
+              index={index}
+              disabled={!!alternateResponseIndex || alternateResponseIndex === 0}
+              error={error}
+              onChange={this.changeLabel}
+              onDelete={onDelete}
+              imageSupport={imageSupport}
+              toolbarOpts={toolbarOpts}
+              spellCheck={spellCheck}
+              maxImageWidth={maxImageWidth}
+              maxImageHeight={maxImageHeight}
+              uploadSoundSupport={uploadSoundSupport}
+              mathMlOptions={mathMlOptions}
+              configuration={configuration}
+            />
+          ) : (
+            <div
+              className={classes.categoryHeader}
+              dangerouslySetInnerHTML={{
+                __html: category.label,
+              }}
+            ></div>
+          )}
           {error && <div className={classes.errorText}>{error}</div>}
         </span>
         <PlaceHolder
@@ -146,6 +156,10 @@ const styles = (theme) => ({
     minWidth: '196px',
     padding: theme.spacing.unit,
     overflow: 'visible',
+  },
+  categoryHeader: {
+    display: 'flex',
+    padding: theme.spacing.unit * 2,
   },
   duplicateError: {
     border: '1px solid red',
