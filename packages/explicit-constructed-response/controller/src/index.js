@@ -241,7 +241,18 @@ export const createCorrectResponseSession = (question, env) => {
 };
 
 // remove all html tags
-const getInnerText = (html) => (html || '').replaceAll(/<[^>]*>/g, '');
+// const getInnerText = (html) => (html || '').replaceAll(/<[^>]*>/g, '');
+const getInnerText = (html) => {
+  if (typeof html !== 'string') {
+    return '';
+  }
+  if (typeof html.replaceAll === 'function') {
+    return html.replaceAll(/<[^>]*>/g, '');
+  } else {
+        // Polyfill for replaceAll using replace and a global regex
+    return html.replace(/<[^>]*>/g, '');
+  }
+};
 
 // remove all html tags except img and iframe
 const getContent = (html) => (html || '').replace(/(<(?!img|iframe)([^>]+)>)/gi, '');
