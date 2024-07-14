@@ -12,6 +12,12 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
             "audio": Object {
               "disabled": false,
             },
+            "blockquote": Object {
+              "disabled": true,
+            },
+            "h3": Object {
+              "disabled": true,
+            },
             "image": Object {
               "disabled": false,
             },
@@ -266,6 +272,12 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
           "audio": Object {
             "disabled": false,
           },
+          "blockquote": Object {
+            "disabled": true,
+          },
+          "h3": Object {
+            "disabled": true,
+          },
           "image": Object {
             "disabled": false,
           },
@@ -313,6 +325,12 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
         Object {
           "audio": Object {
             "disabled": false,
+          },
+          "blockquote": Object {
+            "disabled": true,
+          },
+          "h3": Object {
+            "disabled": true,
           },
           "image": Object {
             "disabled": false,
@@ -405,6 +423,12 @@ There should be at most 10 choices defined per response area."
         Object {
           "audio": Object {
             "disabled": false,
+          },
+          "blockquote": Object {
+            "disabled": true,
+          },
+          "h3": Object {
+            "disabled": true,
           },
           "image": Object {
             "disabled": false,
@@ -750,6 +774,12 @@ There should be at most 10 choices defined per response area."
           "audio": Object {
             "disabled": false,
           },
+          "blockquote": Object {
+            "disabled": true,
+          },
+          "h3": Object {
+            "disabled": true,
+          },
           "image": Object {
             "disabled": false,
           },
@@ -783,6 +813,12 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
           "baseInputConfiguration": Object {
             "audio": Object {
               "disabled": false,
+            },
+            "blockquote": Object {
+              "disabled": true,
+            },
+            "h3": Object {
+              "disabled": true,
             },
             "image": Object {
               "disabled": false,
@@ -1082,6 +1118,12 @@ There should be at most 10 choices defined per response area."
         Object {
           "audio": Object {
             "disabled": false,
+          },
+          "blockquote": Object {
+            "disabled": true,
+          },
+          "h3": Object {
+            "disabled": true,
           },
           "image": Object {
             "disabled": false,

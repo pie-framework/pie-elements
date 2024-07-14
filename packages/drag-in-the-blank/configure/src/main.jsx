@@ -288,6 +288,7 @@ export class Main extends React.Component {
             },
             maxResponseAreas: maxResponseAreas,
           }}
+          pluginProps={getPluginProps()}
           className={classes.markup}
           markup={model.slateMarkup}
           onChange={this.onMarkupChanged}

@@ -16,6 +16,12 @@ exports[`Render Main Component Match Snapshot 1`] = `
             "audio": Object {
               "disabled": false,
             },
+            "blockquote": Object {
+              "disabled": true,
+            },
+            "h3": Object {
+              "disabled": true,
+            },
             "html": Object {
               "disabled": true,
             },
@@ -210,6 +216,12 @@ exports[`Render Main Component Match Snapshot 1`] = `
           "audio": Object {
             "disabled": false,
           },
+          "blockquote": Object {
+            "disabled": true,
+          },
+          "h3": Object {
+            "disabled": true,
+          },
           "html": Object {
             "disabled": true,
           },
@@ -263,6 +275,12 @@ exports[`Render Main Component Match Snapshot 1`] = `
         Object {
           "audio": Object {
             "disabled": false,
+          },
+          "blockquote": Object {
+            "disabled": true,
+          },
+          "h3": Object {
+            "disabled": true,
           },
           "html": Object {
             "disabled": true,
@@ -361,6 +379,12 @@ There should be at least 1 and at most 10 response areas defined."
       Object {
         "audio": Object {
           "disabled": false,
+        },
+        "blockquote": Object {
+          "disabled": true,
+        },
+        "h3": Object {
+          "disabled": true,
         },
         "html": Object {
           "disabled": true,
@@ -494,6 +518,12 @@ There should be at least 1 and at most 10 response areas defined."
         Object {
           "audio": Object {
             "disabled": false,
+          },
+          "blockquote": Object {
+            "disabled": true,
+          },
+          "h3": Object {
+            "disabled": true,
           },
           "html": Object {
             "disabled": true,
