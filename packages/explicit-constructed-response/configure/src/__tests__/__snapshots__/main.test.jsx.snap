@@ -123,6 +123,12 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
               "audio": Object {
                 "disabled": false,
               },
+              "blockquote": Object {
+                "disabled": true,
+              },
+              "h3": Object {
+                "disabled": true,
+              },
               "image": Object {
                 "disabled": false,
               },
@@ -405,6 +411,12 @@ There should be at least 1 and at most 10 response areas defined."
         "audio": Object {
           "disabled": false,
         },
+        "blockquote": Object {
+          "disabled": true,
+        },
+        "h3": Object {
+          "disabled": true,
+        },
         "html": Object {
           "disabled": true,
         },
@@ -682,6 +694,12 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
               "audio": Object {
                 "disabled": false,
               },
+              "blockquote": Object {
+                "disabled": true,
+              },
+              "h3": Object {
+                "disabled": true,
+              },
               "image": Object {
                 "disabled": false,
               },
@@ -860,6 +878,12 @@ There should be at least 1 and at most 10 response areas defined."
       Object {
         "audio": Object {
           "disabled": false,
+        },
+        "blockquote": Object {
+          "disabled": true,
+        },
+        "h3": Object {
+          "disabled": true,
         },
         "html": Object {
           "disabled": true,
