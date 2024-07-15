@@ -320,4 +320,4 @@ export class NumberLine extends React.Component {
   }
 }
 
-export default  withStyles(styles)(NumberLine);
+export default withStyles(styles)(NumberLine);
