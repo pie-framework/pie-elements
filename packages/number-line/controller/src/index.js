@@ -248,6 +248,11 @@ export function model(question, session, env) {
 
       const { exhibitOnly } = graph;
       const disabled = env.mode !== 'gather' || exhibitOnly === true;
+      let teacherInstructions = null;
+
+      if (env.role === 'instructor' && (env.mode === 'view' || evaluateMode)) {
+        teacherInstructions =  normalizedQuestion.teacherInstructions;
+      }
 
       const fb = evaluateMode
         ? getFeedbackForCorrectness(correctness, normalizedQuestion.feedback)
@@ -256,6 +261,7 @@ export function model(question, session, env) {
       fb.then((feedbackMessage) => {
         const out = {
           prompt: normalizedQuestion.prompt,
+          teacherInstructions,
           graph,
           disabled,
           corrected,
@@ -268,6 +274,8 @@ export function model(question, session, env) {
           colorContrast: (env.accessibility && env.accessibility.colorContrast) || 'black_on_white',
           language: normalizedQuestion.language,
         };
+
+        console.log('out', out);
         resolve(omitBy(out, (v) => !v));
       });
     } else {
