@@ -31,7 +31,7 @@ describe('getAnswerCorrected', () => {
     [
       [{ type: 'point', x: 1, y: 1 }],
       [{ type: 'point', x: 1, y: 1 }],
-      [{ type: 'point', x: 1, y: 1, correctness: 'correct', correctlabel: "", correctnesslabel: "correct", label: "" }],
+      [{ type: 'point', x: 1, y: 1, correctness: 'correct', correctlabel: '', correctnesslabel: 'correct', label: '' }],
     ],
     [
       [{ type: 'point', x: 0, y: 1 }],
@@ -48,7 +48,7 @@ describe('getAnswerCorrected', () => {
       ],
       [{ type: 'point', x: 1, y: 1 }],
       [
-        { type: 'point', x: 1, y: 1, correctness: 'correct', correctlabel: "", correctnesslabel: "correct", label: "" },
+        { type: 'point', x: 1, y: 1, correctness: 'correct', correctlabel: '', correctnesslabel: 'correct', label: '' },
         { type: 'point', x: 0, y: 1, correctness: 'incorrect' },
       ],
     ],
@@ -83,6 +83,7 @@ describe('model', () => {
         disabled: false,
         rationale: null,
         showToggle: false,
+        showKeyLegend: false,
         teacherInstructions: null,
       },
       {},
@@ -95,6 +96,7 @@ describe('model', () => {
         rationale: null,
         prompt: null,
         showToggle: false,
+        showKeyLegend: false,
         teacherInstructions: null,
       },
       {},
@@ -106,11 +108,17 @@ describe('model', () => {
         disabled: true,
         rationale: null,
         showToggle: false,
+        showKeyLegend: false,
         teacherInstructions: null,
       },
       {},
     ],
-    [{ mode: 'view', role: 'instructor' }, { promptEnabled: true }, { disabled: true, showToggle: false }, {}],
+    [
+      { mode: 'view', role: 'instructor' },
+      { promptEnabled: true },
+      { disabled: true, showToggle: false, showKeyLegend: false },
+      {},
+    ],
     [
       { mode: 'view', role: 'instructor' },
       {
@@ -124,6 +132,7 @@ describe('model', () => {
         rationale: null,
         teacherInstructions: null,
         showToggle: false,
+        showKeyLegend: false,
       },
       {},
     ],
@@ -133,6 +142,7 @@ describe('model', () => {
       {
         disabled: true,
         showToggle: false,
+        showKeyLegend: true,
         answersCorrected: [],
         correctResponse: [],
       },
@@ -144,6 +154,7 @@ describe('model', () => {
       {
         disabled: true,
         showToggle: true,
+        showKeyLegend: true,
         answersCorrected: [{ correctness: 'missing', type: 'point', x: 1, y: 1 }],
         correctResponse: [{ type: 'point', x: 1, y: 1 }],
       },
@@ -157,7 +168,18 @@ describe('model', () => {
         rationale: null,
         teacherInstructions: null,
         showToggle: false,
-        answersCorrected: [{ correctlabel: "", correctnesslabel: "correct", label: "", correctness: 'correct', type: 'point', x: 1, y: 1 }],
+        showKeyLegend: true,
+        answersCorrected: [
+          {
+            correctlabel: '',
+            correctnesslabel: 'correct',
+            label: '',
+            correctness: 'correct',
+            type: 'point',
+            x: 1,
+            y: 1,
+          },
+        ],
         correctResponse: [{ type: 'point', x: 1, y: 1 }],
       },
       { answer: [{ type: 'point', x: 1, y: 1 }] },
@@ -170,6 +192,7 @@ describe('model', () => {
         rationale: null,
         teacherInstructions: null,
         showToggle: true,
+        showKeyLegend: true,
         answersCorrected: [
           { type: 'point', x: 0, y: 1, correctness: 'incorrect' },
           { correctness: 'missing', type: 'point', x: 1, y: 1 },
@@ -186,6 +209,7 @@ describe('model', () => {
         rationale: null,
         teacherInstructions: null,
         showToggle: false,
+        showKeyLegend: true,
         answersCorrected: [],
         correctResponse: [],
       },
@@ -281,59 +305,59 @@ describe('getBestAnswer', () => {
     ];
 
     const correctMarks1 = [
-      { x: 1, y: 1, type: 'point', correctness: 'correct', correctlabel: "", correctnesslabel: "correct", label: "" },
-      { x: 2, y: 2, type: 'point', correctness: 'correct', correctlabel: "", correctnesslabel: "correct", label: "" },
+      { x: 1, y: 1, type: 'point', correctness: 'correct', correctlabel: '', correctnesslabel: 'correct', label: '' },
+      { x: 2, y: 2, type: 'point', correctness: 'correct', correctlabel: '', correctnesslabel: 'correct', label: '' },
       {
         from: { x: 1, y: 1 },
         to: { x: 2, y: 2 },
         type: 'segment',
         correctness: 'correct',
-        correctlabel: "", 
-        correctnesslabel: "correct", 
-        label: ""
+        correctlabel: '',
+        correctnesslabel: 'correct',
+        label: '',
       },
     ];
     const correctMarks2 = [
-      { x: 1, y: 1, type: 'point', correctness: 'correct', correctlabel: "", correctnesslabel: "correct", label: "" },
-      { x: 2, y: 2, type: 'point', correctness: 'correct', correctlabel: "", correctnesslabel: "correct", label: "" },
-      { x: 3, y: 3, type: 'point', correctness: 'correct', correctlabel: "", correctnesslabel: "correct", label: "" },
+      { x: 1, y: 1, type: 'point', correctness: 'correct', correctlabel: '', correctnesslabel: 'correct', label: '' },
+      { x: 2, y: 2, type: 'point', correctness: 'correct', correctlabel: '', correctnesslabel: 'correct', label: '' },
+      { x: 3, y: 3, type: 'point', correctness: 'correct', correctlabel: '', correctnesslabel: 'correct', label: '' },
       {
         from: { x: 1, y: 1 },
         to: { x: 2, y: 2 },
         type: 'segment',
         correctness: 'correct',
-        correctlabel: "", 
-        correctnesslabel: "correct", 
-        label: ""
+        correctlabel: '',
+        correctnesslabel: 'correct',
+        label: '',
       },
     ];
     const correctMarks3 = [
-      { x: 1, y: 1, type: 'point', correctness: 'correct', correctlabel: "", correctnesslabel: "correct", label: "" },
+      { x: 1, y: 1, type: 'point', correctness: 'correct', correctlabel: '', correctnesslabel: 'correct', label: '' },
       { x: 4, y: 4, type: 'point', correctness: 'incorrect' },
       {
         from: { x: 1, y: 1 },
         to: { x: 2, y: 2 },
         type: 'segment',
         correctness: 'correct',
-        correctlabel: "", 
-        correctnesslabel: "correct", 
-        label: ""
+        correctlabel: '',
+        correctnesslabel: 'correct',
+        label: '',
       },
       { correctness: 'missing', type: 'point', x: 2, y: 2 },
       { correctness: 'missing', type: 'point', x: 3, y: 3 },
     ];
 
     const correctMarksPartial = [
-      { x: 1, y: 1, type: 'point', correctness: 'correct', correctlabel: "", correctnesslabel: "correct", label: "" },
+      { x: 1, y: 1, type: 'point', correctness: 'correct', correctlabel: '', correctnesslabel: 'correct', label: '' },
       { x: 4, y: 4, type: 'point', correctness: 'incorrect' },
       {
         from: { x: 1, y: 1 },
         to: { x: 2, y: 2 },
         type: 'segment',
         correctness: 'correct',
-        correctlabel: "", 
-        correctnesslabel: "correct", 
-        label: ""
+        correctlabel: '',
+        correctnesslabel: 'correct',
+        label: '',
       },
       { correctness: 'missing', type: 'point', x: 2, y: 2 },
     ];

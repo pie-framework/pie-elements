@@ -1,5 +1,5 @@
 import React from 'react';
-import { FormSection, InputContainer, AlertDialog, layout } from '@pie-lib/pie-toolbox/config-ui';
+import { FormSection, InputContainer, AlertDialog, settings, layout } from '@pie-lib/pie-toolbox/config-ui';
 import { EditableHtml } from '@pie-lib/pie-toolbox/editable-html';
 import { NumberLineComponent, dataConverter, tickUtils } from '@pie-element/number-line';
 import NumberTextField from './number-text-field';
@@ -29,6 +29,8 @@ const trimModel = (model) => ({
 });
 
 const { lineIsSwitched, switchGraphLine, toGraphFormat, toSessionFormat } = dataConverter;
+const { Panel, toggle } = settings;
+
 let minorLimits = {};
 let minorValues = {};
 let majorValues = {};
@@ -106,6 +108,7 @@ export class Main extends React.Component {
     classes: PropTypes.object.isRequired,
     model: PropTypes.object.isRequired,
     configuration: PropTypes.object.isRequired,
+    onConfigurationChanged: PropTypes.func.isRequired,
     onChange: PropTypes.func.isRequired,
     uploadSoundSupport: PropTypes.object.isRequired,
   };
@@ -129,6 +132,16 @@ export class Main extends React.Component {
       },
     };
     this.graphChange({ height });
+  }
+
+  componentDidMount() {
+    const { configuration, model, onChange } = this.props;
+    const { title } = configuration || {};
+    const { titleEnabled: showTitle } = model || {};
+
+    const titleEnabled = showTitle === undefined || showTitle === null ? title.enabled : showTitle;
+
+    onChange && onChange({ ...model, titleEnabled });
   }
 
   graphChange = (obj) => {
@@ -431,7 +444,7 @@ export class Main extends React.Component {
   };
 
   render() {
-    const { classes, model, onChange, configuration, uploadSoundSupport } = this.props;
+    const { classes, model, onChange, configuration, onConfigurationChanged, uploadSoundSupport } = this.props;
     const {
       baseInputConfiguration = {},
       contentDimensions = {},
@@ -439,15 +452,28 @@ export class Main extends React.Component {
       teacherInstructions = {},
       title = {},
       prompt = {},
+      rationale = {},
+      spellCheck = {},
       mathMlOptions = {},
       numberLineDimensions = {},
       maxMaxElements = 20,
       hidePointConfigButtons = false,
       availableTools = ['PF'],
+      settingsPanelDisabled = false,
     } = configuration || {};
-    const { errors = {}, spellCheckEnabled, toolbarEditorPosition } = model || {};
+    const {
+      errors = {},
+      spellCheckEnabled,
+      toolbarEditorPosition,
+      teacherInstructionsEnabled,
+      titleEnabled,
+      promptEnabled,
+      rationaleEnabled,
+    } = model || {};
+
     let { graph } = model;
     graph = this.reloadTicksData(graph);
+
     const { dialog, correctAnswerDialog } = this.state;
     const {
       correctResponseError,
@@ -455,6 +481,7 @@ export class Main extends React.Component {
       maxError,
       pointsError,
       prompt: promptError,
+      rationale: rationaleError,
       teacherInstructions: teacherInstructionsError,
       widthError,
     } = errors || {};
@@ -466,18 +493,40 @@ export class Main extends React.Component {
       position: toolbarEditorPosition === 'top' ? 'top' : 'bottom',
     };
 
+    const panelProperties = {
+      teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
+      titleEnabled: title.settings && toggle(title.label),
+      promptEnabled: prompt.settings && toggle(prompt.label),
+      rationaleEnabled: rationale.settings && toggle(rationale.label),
+      spellCheckEnabled: spellCheck.settings && toggle(spellCheck.label),
+    };
+
     const getPluginProps = (props = {}) => ({
       ...baseInputConfiguration,
       ...props,
     });
 
     return (
-      <layout.ConfigLayout dimensions={contentDimensions} hideSettings={true} settings={null}>
+      <layout.ConfigLayout
+        dimensions={contentDimensions}
+        hideSettings={settingsPanelDisabled}
+        settings={
+          <Panel
+            model={model}
+            configuration={configuration}
+            onChangeModel={onChange}
+            onChangeConfiguration={onConfigurationChanged}
+            groups={{
+              Properties: panelProperties,
+            }}
+          />
+        }
+      >
         <Typography component="div" type="body1" className={classes.description}>
           {instruction.label}
         </Typography>
 
-        {teacherInstructions.settings && (
+        {teacherInstructionsEnabled && (
           <InputContainer label={teacherInstructions.label} className={classes.promptContainer}>
             <EditableHtml
               className={classes.teacherInstructions}
@@ -497,7 +546,7 @@ export class Main extends React.Component {
           </InputContainer>
         )}
 
-        {prompt.settings && (
+        {promptEnabled && (
           <InputContainer label={prompt.label} className={classes.promptContainer}>
             <EditableHtml
               className={classes.prompt}
@@ -582,29 +631,31 @@ export class Main extends React.Component {
           model={trimModel(initialModel)}
         />
 
-        <FormSection label={title?.label || 'Title'} className={classes.title}>
-          <EditableHtml
-            markup={graph.title || ''}
-            onChange={this.changeGraphTitle}
-            toolbarOpts={toolbarOpts}
-            activePlugins={[
-              'bold',
-              'html',
-              'italic',
-              'underline',
-              'strikethrough',
-              'image',
-              'math',
-              'languageCharacters',
-              'responseArea',
-            ]}
-            pluginProps={getPluginProps(title?.inputConfiguration)}
-            spellCheck={spellCheckEnabled}
-            uploadSoundSupport={uploadSoundSupport}
-            languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
-            mathMlOptions={mathMlOptions}
-          />
-        </FormSection>
+        {titleEnabled && (
+          <FormSection label={title?.label || 'Title'} className={classes.title}>
+            <EditableHtml
+              markup={graph.title || ''}
+              onChange={this.changeGraphTitle}
+              toolbarOpts={toolbarOpts}
+              activePlugins={[
+                'bold',
+                'html',
+                'italic',
+                'underline',
+                'strikethrough',
+                'image',
+                'math',
+                'languageCharacters',
+                'responseArea',
+              ]}
+              pluginProps={getPluginProps(title?.inputConfiguration)}
+              spellCheck={spellCheckEnabled}
+              uploadSoundSupport={uploadSoundSupport}
+              languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+              mathMlOptions={mathMlOptions}
+            />
+          </FormSection>
+        )}
 
         {!graph.exhibitOnly && (
           <React.Fragment>
@@ -681,6 +732,23 @@ export class Main extends React.Component {
           onConfirmText={'OK'}
           onCloseText={'Cancel'}
         />
+        {rationaleEnabled && (
+          <InputContainer label={rationale.label || 'Rationale'} className={classes.promptContainer}>
+            <EditableHtml
+              className={classes.prompt}
+              markup={model.rationale || ''}
+              onChange={(rationale) => onChange({ rationale })}
+              error={rationaleError}
+              toolbarOpts={toolbarOpts}
+              spellCheck={spellCheckEnabled}
+              pluginProps={getPluginProps(rationale?.inputConfiguration)}
+              uploadSoundSupport={uploadSoundSupport}
+              languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+              mathMlOptions={mathMlOptions}
+            />
+            {rationaleError && <div className={classes.errorText}>{rationaleError}</div>}
+          </InputContainer>
+        )}
       </layout.ConfigLayout>
     );
   }

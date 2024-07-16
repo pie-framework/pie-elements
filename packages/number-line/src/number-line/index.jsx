@@ -1,24 +1,25 @@
-import Feedback from './feedback';
-import Graph from './graph';
-import PropTypes from 'prop-types';
-import PointChooser from './point-chooser';
 import React from 'react';
 import Toggle from '@pie-lib/pie-toolbox/correct-answer-toggle';
-import { buildElementModel } from './graph/elements/builder';
 import classNames from 'classnames';
 import cloneDeep from 'lodash/cloneDeep';
-import { color, PreviewPrompt } from '@pie-lib/pie-toolbox/render-ui';
-import injectSheet from 'react-jss';
 import isArray from 'lodash/isArray';
 import isNumber from 'lodash/isNumber';
 import isEqual from 'lodash/isEqual';
 import Translator from '@pie-lib/pie-toolbox/translator';
+import { Collapsible, color, hasText, PreviewPrompt } from '@pie-lib/pie-toolbox/render-ui';
+import { withStyles } from '@material-ui/core/styles';
+
+import Feedback from './feedback';
+import Graph from './graph';
+import PropTypes from 'prop-types';
+import PointChooser from './point-chooser';
+import { buildElementModel } from './graph/elements/builder';
 
 const { translator } = Translator;
 
 export { Graph };
 
-const styles = {
+const styles = (theme) => ({
   mainContainer: {
     color: color.text(),
     backgroundColor: color.background(),
@@ -50,7 +51,10 @@ const styles = {
     verticalAlign: 'middle',
     marginBottom: '16px',
   },
-};
+  collapsible: {
+    paddingBottom: theme.spacing.unit * 2,
+  },
+});
 
 export class NumberLine extends React.Component {
   static propTypes = {
@@ -183,11 +187,13 @@ export class NumberLine extends React.Component {
       feedback,
       colorContrast,
       language,
+      teacherInstructions
     } = model;
     let addElement = this.addElement.bind(this);
     let elementsSelected = !disabled && selectedElements && selectedElements.length > 0;
     const { ticks, domain, arrows, maxNumberOfPoints, height = 100, availableTypes, title, fraction } = graph;
     const width = this.getSize('width', minWidth, maxWidth, 600);
+
     const graphProps = {
       disabled,
       domain,
@@ -254,22 +260,34 @@ export class NumberLine extends React.Component {
 
     return (
       <div className={containerNames}>
+        {teacherInstructions && hasText(teacherInstructions) && (
+          <Collapsible
+            labels={{
+              hidden: 'Show Teacher Instructions',
+              visible: 'Hide Teacher Instructions',
+            }}
+            className={classes.collapsible}
+          >
+            <PreviewPrompt prompt={teacherInstructions}/>
+          </Collapsible>
+        )}
+
         {prompt && (
           <div className={classes.prompt}>
-            <PreviewPrompt prompt={prompt}/>
+            <PreviewPrompt prompt={prompt} />
           </div>
         )}
 
         <div className={numberLineContainerNames} style={{ width }}>
-            <div style={{ width: adjustedWidth }} className={classes.toggle}>
-              <Toggle
-                show={isArray(correctResponse) && correctResponse.length && !emptyAnswer}
-                toggled={showCorrectAnswer}
-                onToggle={onShowCorrectAnswer}
-                initialValue={false}
-                language={language}
-              />
-            </div>
+          <div style={{ width: adjustedWidth }} className={classes.toggle}>
+            <Toggle
+              show={isArray(correctResponse) && correctResponse.length && !emptyAnswer}
+              toggled={showCorrectAnswer}
+              onToggle={onShowCorrectAnswer}
+              initialValue={false}
+              language={language}
+            />
+          </div>
 
           {!disabled && (
             <PointChooser
@@ -293,14 +311,14 @@ export class NumberLine extends React.Component {
             onDeselectElements={this.deselectElements.bind(this)}
             debug={false}
           />
-          {title && <div className={classes.graphTitle} dangerouslySetInnerHTML={{ __html: title }}/>}
+          {title && <div className={classes.graphTitle} dangerouslySetInnerHTML={{ __html: title }} />}
 
-          {showMaxPointsWarning && <Feedback type="info" width={adjustedWidth} message={maxPointsMessage()}/>}
-          {feedback && !showCorrectAnswer && <Feedback {...feedback} width={adjustedWidth}/>}
+          {showMaxPointsWarning && <Feedback type="info" width={adjustedWidth} message={maxPointsMessage()} />}
+          {feedback && !showCorrectAnswer && <Feedback {...feedback} width={adjustedWidth} />}
         </div>
       </div>
     );
   }
 }
 
-export default injectSheet(styles)(NumberLine);
+export default withStyles(styles)(NumberLine);

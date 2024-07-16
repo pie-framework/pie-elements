@@ -19,6 +19,8 @@ export default {
       audio: { disabled: false },
       video: { disabled: false },
       image: { disabled: false },
+      h3: { disabled: true },
+      blockquote: { disabled: true },
     },
     spellCheck: {
       label: 'Spellcheck',

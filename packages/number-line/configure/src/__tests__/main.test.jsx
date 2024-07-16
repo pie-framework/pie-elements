@@ -11,6 +11,10 @@ jest.mock('@pie-lib/pie-toolbox/config-ui', () => ({
   layout: {
     ConfigLayout: (props) => <div>{props.children}</div>,
   },
+  settings: {
+    Panel: (props) => <div onChange={props.onChange} />,
+    toggle: jest.fn(),
+  },
 }));
 
 describe('main', () => {

@@ -131,6 +131,11 @@ export default class NumberLine extends HTMLElement {
     this._rerender();
   };
 
+  onConfigurationChanged = (config) => {
+    this._configuration = config;
+    this._render();
+  };
+
   insertSound(handler) {
     this.dispatchEvent(new InsertSoundEvent(handler));
   }
@@ -144,6 +149,7 @@ export default class NumberLine extends HTMLElement {
       model: this._model,
       configuration: this._configuration,
       onChange: this.onChange,
+      onConfigurationChanged: this.onConfigurationChanged,
       uploadSoundSupport: {
         add: this.insertSound.bind(this),
         delete: this.onDeleteSound.bind(this),
