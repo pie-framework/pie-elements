@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.18.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@9.18.4...@pie-element/placement-ordering@9.18.5) (2024-07-16)
+
+
+### Bug Fixes
+
+* **placement-ordering:** show feedback based on score PD-3889 ([db61a62](https://github.com/pie-framework/pie-elements/commit/db61a62ef56fa6bfb2442c814cd145d5580cca1f))
+
+
+
+
+
 ## [9.18.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@9.18.3...@pie-element/placement-ordering@9.18.4) (2024-07-16)
 
 
