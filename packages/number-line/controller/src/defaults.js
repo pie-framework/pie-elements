@@ -6,13 +6,7 @@ export default {
       minor: 1,
     },
     width: 500,
-    initialElements: [
-      {
-        type: 'point',
-        pointType: 'empty',
-        domainPosition: -1,
-      },
-    ],
+    initialElements: [],
     maxNumberOfPoints: 20,
     tickLabelOverrides: [],
     initialType: 'PF',
