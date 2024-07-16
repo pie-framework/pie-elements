@@ -23,6 +23,7 @@ export default class MultipleChoice extends HTMLElement {
             model: this._model,
             session: this._session,
             onChoiceChanged: this._onChange.bind(this),
+            onShowCorrectToggle: this.onShowCorrectToggle.bind(this),
           });
 
           //TODO: aria-label is set in the _rerender because we need to change it when the model.choiceMode is updated. Consider revisiting the placement of the aria-label setting in the _rerender
@@ -76,6 +77,10 @@ export default class MultipleChoice extends HTMLElement {
       50,
       { leading: false, trailing: true },
     );
+  }
+
+  onShowCorrectToggle() {
+    renderMath(this);
   }
 
   setLangAttribute() {

@@ -13,6 +13,7 @@ class Main extends React.Component {
     session: PropTypes.object,
     onChoiceChanged: PropTypes.func,
     classes: PropTypes.object.isRequired,
+    onShowCorrectToggle: PropTypes.func,
   };
 
   static defaultProps = {
@@ -24,12 +25,17 @@ class Main extends React.Component {
   }
 
   render() {
-    const { model, onChoiceChanged, session } = this.props;
+    const { model, onChoiceChanged, session, onShowCorrectToggle } = this.props;
 
     // model.partLabel is a property used for ebsr
     return (
       <PreviewLayout>
-        <MultipleChoice {...model} session={session} onChoiceChanged={onChoiceChanged} />
+        <MultipleChoice
+          {...model}
+          session={session}
+          onChoiceChanged={onChoiceChanged}
+          onShowCorrectToggle={onShowCorrectToggle}
+        />
       </PreviewLayout>
     );
   }
