@@ -25,9 +25,9 @@ const initializeGraphMap = () => ({
 });
 
 const graphObjectsOrder = {
-  "incorrect": 0,
-  "correct": 1,
-  "missing": 2
+  incorrect: 0,
+  correct: 1,
+  missing: 2,
 };
 
 export const compareMarks = (mark1, mark2) => {
@@ -44,7 +44,7 @@ export const compareMarks = (mark1, mark2) => {
 
 export const comparLabelMarks = (mark1, mark2) => {
   return mark1.label === mark2.label ? 'correct' : 'incorrect';
-}
+};
 
 export const getAnswerCorrected = ({ sessionAnswers, marks: correctAnswers }) => {
   sessionAnswers = sessionAnswers || [];
@@ -54,10 +54,10 @@ export const getAnswerCorrected = ({ sessionAnswers, marks: correctAnswers }) =>
     const answerIsCorrect = correctAnswers.find((mark) => compareMarks(answer, mark));
 
     answer.correctness = answerIsCorrect ? 'correct' : 'incorrect';
-    if(answerIsCorrect) {
+    if (answerIsCorrect) {
       answer.correctnesslabel = comparLabelMarks(answer, answerIsCorrect);
-      answer.correctlabel = answerIsCorrect.label ? answerIsCorrect.label : "";
-      answer.label = answer.label ? answer.label : "";
+      answer.correctlabel = answerIsCorrect.label ? answerIsCorrect.label : '';
+      answer.label = answer.label ? answer.label : '';
     }
     return [...correctedAnswer, answer];
   }, []);
@@ -227,6 +227,7 @@ export function model(question, session, env) {
       prompt: promptEnabled ? prompt : null,
       rationale: null,
       size: graph,
+      showKeyLegend: env.mode === 'evaluate',
       showToggle:
         env.mode === 'evaluate' &&
         !isEmpty(answers) &&
@@ -253,7 +254,9 @@ export function model(question, session, env) {
       ) {
         const { answersCorrected, bestScoreAnswerKey, bestScore } = getBestAnswer(normalizedQuestion, session, env);
         // array of marks from session with 'correctness' property set
-        base.answersCorrected = answersCorrected.sort((a, b) => graphObjectsOrder[a.correctness] - graphObjectsOrder[b.correctness]);
+        base.answersCorrected = answersCorrected.sort(
+          (a, b) => graphObjectsOrder[a.correctness] - graphObjectsOrder[b.correctness],
+        );
         base.correctResponse = bestScoreAnswerKey ? (answers[bestScoreAnswerKey] || {}).marks : [];
         base.showToggle = base.showToggle && bestScore !== 1;
       } else {
