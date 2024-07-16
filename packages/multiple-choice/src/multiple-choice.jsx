@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {CorrectAnswerToggle} from '@pie-lib/pie-toolbox/correct-answer-toggle';
+import { CorrectAnswerToggle } from '@pie-lib/pie-toolbox/correct-answer-toggle';
 import classNames from 'classnames';
-import {withStyles} from '@material-ui/core/styles';
-import {color, Collapsible, PreviewPrompt} from '@pie-lib/pie-toolbox/render-ui';
+import { withStyles } from '@material-ui/core/styles';
+import { color, Collapsible, PreviewPrompt } from '@pie-lib/pie-toolbox/render-ui';
 import StyledChoice from './choice';
 
 // MultipleChoice
@@ -71,6 +71,7 @@ export class MultipleChoice extends React.Component {
         alwaysShowCorrect: PropTypes.bool,
         animationsDisabled: PropTypes.bool,
         language: PropTypes.string,
+        onShowCorrectToggle: PropTypes.func,
     };
 
     constructor(props) {
@@ -114,21 +115,27 @@ export class MultipleChoice extends React.Component {
         });
     };
 
-    onToggle() {
-        if (this.props.mode === 'evaluate') {
-            this.setState({showCorrect: !this.state.showCorrect});
-        }
+  onToggle = () => {
+    if (this.props.mode === 'evaluate') {
+      this.setState({ showCorrect: !this.state.showCorrect }, () => {
+        this.props.onShowCorrectToggle();
+      });
+    }
+  };
+
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    if (!nextProps.correctResponse) {
+      this.setState({ showCorrect: false }, () => {
+        this.props.onShowCorrectToggle();
+      });
     }
 
-    UNSAFE_componentWillReceiveProps(nextProps) {
-        if (!nextProps.correctResponse) {
-            this.setState({showCorrect: false});
-        }
-
-        if (nextProps.alwaysShowCorrect) {
-            this.setState({showCorrect: true});
-        }
+    if (nextProps.alwaysShowCorrect) {
+      this.setState({ showCorrect: true }, () => {
+        this.props.onShowCorrectToggle();
+      });
     }
+  }
 
     indexToSymbol(index) {
         if (this.props.keyMode === 'numbers') {
