@@ -6,29 +6,23 @@ import defaults from './defaults';
 
 const log = debug('@pie-element:select-text:controller');
 
-const isAnswerSelected = (token, selectedToken) =>
-  token &&
-  selectedToken &&
-  token.correct === true &&
-  !(
-    (token.start === selectedToken.start && token.end === selectedToken.end) ||
-    (token.start === selectedToken.oldStart && token.end === selectedToken.oldEnd)
-  );
+const equalTokens = (token1 = {}, token2 = {}) =>
+  (token1?.start === token2?.start && token1?.end === token2?.end) ||
+  // this case is used for the cases when the token's start & end were recalculated
+  (token1?.start === token2?.oldStart && token1?.end === token2?.oldEnd);
 
-const buildTokens = (tokens, selectedTokens, evaluateMode) => {
-  tokens = tokens || [];
-  selectedTokens = selectedTokens || [];
+const normalizeTokens = (tokens = [], selectedTokens = [], evaluateMode = false) =>
+  (tokens || []).map((token) => {
+    const isCorrect = !!token.correct;
+    // search if correct token is missing from session
+    const isMissing = isCorrect && !(selectedTokens || []).find((selectedToken) => equalTokens(token, selectedToken));
 
-  return tokens.map((t) => {
-    // map the correct answer that are missing from session
-    const isNotSelected = selectedTokens.findIndex((selectedToken) => isAnswerSelected(t, selectedToken)) === -1;
-    return Object.assign(
-      {},
-      t,
-      evaluateMode ? { correct: !!t.correct, isMissing: !isNotSelected } : { correct: undefined, isMissing: undefined },
-    );
+    return {
+      ...token,
+      correct: evaluateMode ? isCorrect : undefined,
+      isMissing: evaluateMode ? isMissing : undefined,
+    };
   });
-};
 
 export const getCorrectness = (tokens, selected) => {
   const correct = tokens.filter((t) => t.correct === true);
@@ -54,28 +48,15 @@ export const getCorrectness = (tokens, selected) => {
   return 'incorrect';
 };
 
-const getCorrectSelected = (tokens, selected) => {
-  return (selected || []).filter((s) => {
-    const index = tokens.findIndex((c) => {
-      return (
-        c.correct &&
-        ((c.start === s.start && c.end === s.end) ||
-          // this case is used for the cases when the token's start & end were recalculated
-          (c.start === s.oldStart && c.end === s.oldEnd))
-      );
-    });
-    return index !== -1;
-  });
-};
-
-const getCorrectCount = (tokens, selected) => getCorrectSelected(tokens, selected).length;
+const getCorrectSelected = (tokens, selected) =>
+  (selected || []).filter((s) => tokens.findIndex((token) => token.correct && equalTokens(token, s)) !== -1);
 
 export const getPartialScore = (question, session, totalCorrect) => {
   if (!session || isEmpty(session)) {
     return 0;
   }
 
-  const correctCount = getCorrectCount(question.tokens, session.selectedTokens);
+  const correctCount = getCorrectSelected(question.tokens, session.selectedTokens).length;
   const correctTokens = (question.tokens || []).filter((t) => t.correct === true);
   const extraSelected = session.selectedTokens ? session.selectedTokens.length > correctTokens.length : 0;
   const incorrectCount = extraSelected ? session.selectedTokens && session.selectedTokens.length - correctCount : 0;
@@ -114,10 +95,7 @@ export function createDefaultModel(model = {}) {
   });
 }
 
-export const normalizeSession = (s) => ({
-  selectedTokens: [],
-  ...s,
-});
+export const normalizeSession = (session) => ({ selectedTokens: [], ...session });
 
 export const normalize = (question) => ({
   feedbackEnabled: false,
@@ -136,8 +114,10 @@ export const model = (question, session, env) => {
   return new Promise((resolve) => {
     log('[model]', 'normalizedQuestion: ', normalizedQuestion);
     log('[model]', 'session: ', session);
-    const tokens = buildTokens(normalizedQuestion.tokens, session.selectedTokens, env.mode === 'evaluate');
-    log('tokens:', tokens);
+
+    const tokens = normalizeTokens(normalizedQuestion.tokens, session.selectedTokens, env.mode === 'evaluate');
+    log('[model] tokens:', tokens);
+
     const correctness =
       env.mode === 'evaluate' ? getCorrectness(normalizedQuestion.tokens, session.selectedTokens) : undefined;
 
