@@ -189,8 +189,6 @@ export class NumberLine extends React.Component {
     const { ticks, domain, arrows, maxNumberOfPoints, height = 100, availableTypes, title, fraction } = graph;
     const width = this.getSize('width', minWidth, maxWidth, 600);
 
-    console.log('height', height);
-    console.log('maxHeight', maxHeight);
     const graphProps = {
       disabled,
       domain,
@@ -200,8 +198,6 @@ export class NumberLine extends React.Component {
       arrows,
       fraction,
     };
-
-    console.log('graphProps.height', graphProps.height);
 
     let getAnswerElements = () => {
       return (answers || []).map((e, index) => {
