@@ -459,6 +459,7 @@ export class Main extends React.Component {
       maxMaxElements = 20,
       hidePointConfigButtons = false,
       availableTools = ['PF'],
+      settingsPanelDisabled = false,
     } = configuration || {};
     const {
       errors = {},
@@ -508,7 +509,7 @@ export class Main extends React.Component {
     return (
       <layout.ConfigLayout
         dimensions={contentDimensions}
-        hideSettings={false}
+        hideSettings={settingsPanelDisabled}
         settings={
           <Panel
             model={model}

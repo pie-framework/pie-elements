@@ -248,6 +248,11 @@ export interface NumberLineConfigure extends PromptConfig, CommonConfigSettings 
   /** Configuration for the author's spellcheck */
   spellCheck?: ConfigureProp;
 
+  /**
+   * Indicates if the settings panel is not available
+   */
+  settingsPanelDisabled?: boolean;
+
   /** Holds numeric value for maximum number of elements allowed on number line. */
   maxMaxElements?: number;
 

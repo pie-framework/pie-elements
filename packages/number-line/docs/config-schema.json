@@ -702,6 +702,11 @@
         }
       }
     },
+    "settingsPanelDisabled": {
+      "description": "Indicates if the settings panel is not available",
+      "type": "boolean",
+      "title": "settingsPanelDisabled"
+    },
     "maxMaxElements": {
       "description": "Holds numeric value for maximum number of elements allowed on number line.",
       "type": "number",

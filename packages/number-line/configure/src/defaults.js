@@ -125,4 +125,5 @@ export const configuration = {
   maxMaxElements: 20,
   hidePointConfigButtons: false,
   availableTools: ['PF', 'LFF', 'LEF', 'LFE', 'LEE', 'RFN', 'RFP', 'REN', 'REP'],
+  settingsPanelDisabled: false,
 };

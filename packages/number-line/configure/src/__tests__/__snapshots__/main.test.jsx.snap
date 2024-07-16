@@ -90,6 +90,7 @@ exports[`main snapshot renders 1`] = `
             "required": false,
             "settings": true,
           },
+          "settingsPanelDisabled": false,
           "spellCheck": Object {
             "enabled": true,
             "label": "Spellcheck",
