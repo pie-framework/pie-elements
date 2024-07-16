@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.16.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@8.15.3...@pie-element/number-line@8.16.0) (2024-07-16)
+
+
+### Bug Fixes
+
+* tests and removed console logs ([7ed58af](https://github.com/pie-framework/pie-elements/commit/7ed58af1a1c1b58b8dfa8a575de77493795a2a45))
+* udate pie-lib/pie-toolbox PD-3622, PD-3627, PD-3629, PD-3630, PD-3631 ([1e50c85](https://github.com/pie-framework/pie-elements/commit/1e50c859e2b5133e1ff9ef81f4169e49e76d9e4b))
+* **number-line:** clean up controller defaults initialElements PD-3934 ([e5d0b59](https://github.com/pie-framework/pie-elements/commit/e5d0b5964d58a9a01d0a990df5c049eb5158a12d))
+* **passage:** render math content in student side PD-3885 ([36207b8](https://github.com/pie-framework/pie-elements/commit/36207b8b28f0cdea42e881124cf0d0f79294cb7c))
+
+
+### Features
+
+* **number-line:** add Settings Panel and authoring view settings PD-3932 ([4bb438a](https://github.com/pie-framework/pie-elements/commit/4bb438a8dd9b00ab91af4a6f7c2390004f41f1f6))
+* **number-line:** add settingsPanelDisabled configuration to control visibility of Settings Panel PD-3932 ([fef917e](https://github.com/pie-framework/pie-elements/commit/fef917e9c94f3964cb715a91b8b852fa4e16f120))
+* **number-line:** add teacher instructions to player side PD-3933 ([7b30987](https://github.com/pie-framework/pie-elements/commit/7b30987bec201acba1306a9124354a774bf2e4fd))
+* **number-line:** update schemas & update snapshots PD-3932 ([d45ac6c](https://github.com/pie-framework/pie-elements/commit/d45ac6c560109067863159d65c23decc366e1037))
+
+
+
+
+
 ## [8.15.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@8.15.2...@pie-element/number-line@8.15.3) (2024-07-10)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.36.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/matrix@0.36.3...@pie-element/matrix@0.36.4) (2024-07-16)
+
+
+### Bug Fixes
+
+* udate pie-lib/pie-toolbox PD-3622, PD-3627, PD-3629, PD-3630, PD-3631 ([1e50c85](https://github.com/pie-framework/pie-elements/commit/1e50c859e2b5133e1ff9ef81f4169e49e76d9e4b))
+
+
+
+
+
 ## [0.36.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/matrix@0.36.2...@pie-element/matrix@0.36.3) (2024-07-10)
 
 

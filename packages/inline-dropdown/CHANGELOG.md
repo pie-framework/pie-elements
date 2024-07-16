@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.19.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@5.19.3...@pie-element/inline-dropdown@5.19.4) (2024-07-16)
+
+
+### Bug Fixes
+
+* removed h3 and blockquote from dragintheblank, extendedtextentry, inlinedropdown, math-templated ([49b0a8f](https://github.com/pie-framework/pie-elements/commit/49b0a8f7ba7c8c8e186e5f4b32c955dce4ad49e1))
+* udate pie-lib/pie-toolbox PD-3622, PD-3627, PD-3629, PD-3630, PD-3631 ([1e50c85](https://github.com/pie-framework/pie-elements/commit/1e50c859e2b5133e1ff9ef81f4169e49e76d9e4b))
+
+
+
+
+
 ## [5.19.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@5.19.2...@pie-element/inline-dropdown@5.19.3) (2024-07-10)
 
 

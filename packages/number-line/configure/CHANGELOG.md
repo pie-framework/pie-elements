@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.15.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-configure@7.14.3...@pie-element/number-line-configure@7.15.0) (2024-07-16)
+
+
+### Bug Fixes
+
+* tests and removed console logs ([7ed58af](https://github.com/pie-framework/pie-elements/commit/7ed58af1a1c1b58b8dfa8a575de77493795a2a45))
+* udate pie-lib/pie-toolbox PD-3622, PD-3627, PD-3629, PD-3630, PD-3631 ([1e50c85](https://github.com/pie-framework/pie-elements/commit/1e50c859e2b5133e1ff9ef81f4169e49e76d9e4b))
+
+
+### Features
+
+* **number-line:** add Settings Panel and authoring view settings PD-3932 ([4bb438a](https://github.com/pie-framework/pie-elements/commit/4bb438a8dd9b00ab91af4a6f7c2390004f41f1f6))
+* **number-line:** add settingsPanelDisabled configuration to control visibility of Settings Panel PD-3932 ([fef917e](https://github.com/pie-framework/pie-elements/commit/fef917e9c94f3964cb715a91b8b852fa4e16f120))
+* **number-line:** update schemas & update snapshots PD-3932 ([d45ac6c](https://github.com/pie-framework/pie-elements/commit/d45ac6c560109067863159d65c23decc366e1037))
+
+
+
+
+
 ## [7.14.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-configure@7.14.2...@pie-element/number-line-configure@7.14.3) (2024-07-10)
 
 
