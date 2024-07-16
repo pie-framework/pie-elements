@@ -36,7 +36,7 @@ exports.model = (id, element) => ({
       editable: false,
     },
     {
-      label: 'D',
+      label: 'C',
       value: 2,
       interactive: true,
       editable: false,
