@@ -188,6 +188,7 @@ export class NumberLine extends React.Component {
     let elementsSelected = !disabled && selectedElements && selectedElements.length > 0;
     const { ticks, domain, arrows, maxNumberOfPoints, height = 100, availableTypes, title, fraction } = graph;
     const width = this.getSize('width', minWidth, maxWidth, 600);
+
     const graphProps = {
       disabled,
       domain,
@@ -256,20 +257,20 @@ export class NumberLine extends React.Component {
       <div className={containerNames}>
         {prompt && (
           <div className={classes.prompt}>
-            <PreviewPrompt prompt={prompt}/>
+            <PreviewPrompt prompt={prompt} />
           </div>
         )}
 
         <div className={numberLineContainerNames} style={{ width }}>
-            <div style={{ width: adjustedWidth }} className={classes.toggle}>
-              <Toggle
-                show={isArray(correctResponse) && correctResponse.length && !emptyAnswer}
-                toggled={showCorrectAnswer}
-                onToggle={onShowCorrectAnswer}
-                initialValue={false}
-                language={language}
-              />
-            </div>
+          <div style={{ width: adjustedWidth }} className={classes.toggle}>
+            <Toggle
+              show={isArray(correctResponse) && correctResponse.length && !emptyAnswer}
+              toggled={showCorrectAnswer}
+              onToggle={onShowCorrectAnswer}
+              initialValue={false}
+              language={language}
+            />
+          </div>
 
           {!disabled && (
             <PointChooser
@@ -293,10 +294,10 @@ export class NumberLine extends React.Component {
             onDeselectElements={this.deselectElements.bind(this)}
             debug={false}
           />
-          {title && <div className={classes.graphTitle} dangerouslySetInnerHTML={{ __html: title }}/>}
+          {title && <div className={classes.graphTitle} dangerouslySetInnerHTML={{ __html: title }} />}
 
-          {showMaxPointsWarning && <Feedback type="info" width={adjustedWidth} message={maxPointsMessage()}/>}
-          {feedback && !showCorrectAnswer && <Feedback {...feedback} width={adjustedWidth}/>}
+          {showMaxPointsWarning && <Feedback type="info" width={adjustedWidth} message={maxPointsMessage()} />}
+          {feedback && !showCorrectAnswer && <Feedback {...feedback} width={adjustedWidth} />}
         </div>
       </div>
     );
