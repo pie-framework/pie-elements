@@ -75,7 +75,6 @@ export class Category extends React.Component {
       mathMlOptions = {},
     } = this.props;
 
-    console.log({ category: configuration });
     const isCategoryHeaderDisabled = !!alternateResponseIndex || alternateResponseIndex === 0;
     return (
       <Card
