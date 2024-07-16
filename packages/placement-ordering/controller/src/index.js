@@ -131,24 +131,22 @@ export function model(question, session, env) {
         { arr: [], score: 0 },
       );
 
-      base.outcomes = _.map(value, function (c, idx) {
+      base.outcomes = _.map(value, (c, idx) => {
         return {
           id: c,
           outcome: bestSetOfResponses.arr[idx] === c ? 'correct' : 'incorrect',
         };
       });
 
-      const allCorrect = allCorrectResponses.reduce((correct, cr) => {
-        if (_.isEqual(cr, value)) {
-          return true;
-        }
+      const isResponseCorrect = allCorrectResponses.some((response) => _.isEqual(response, value));
+      const responseScore = score(question, session);
+      const isCorrect = responseScore === 1;
+      const isPartialCorrect =
+        !isCorrect && partialScoring.enabled(normalizedQuestion, env || {}) && responseScore !== 0;
 
-        return correct;
-      }, false);
+      base.correctness = isCorrect ? 'correct' : isPartialCorrect ? 'partial' : 'incorrect';
 
-      base.correctness = allCorrect ? 'correct' : 'incorrect';
-
-      if (!allCorrect) {
+      if (!isResponseCorrect) {
         base.correctResponse = flattenCorrect(normalizedQuestion);
       }
 
