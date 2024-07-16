@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.19.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@7.19.3...@pie-element/charting@7.19.4) (2024-07-16)
+
+
+### Bug Fixes
+
+* udate pie-lib/pie-toolbox PD-3622, PD-3627, PD-3629, PD-3630, PD-3631 ([1e50c85](https://github.com/pie-framework/pie-elements/commit/1e50c859e2b5133e1ff9ef81f4169e49e76d9e4b))
+* **charting:** hide correct answer toggle when answer is correct PD-3898 ([7b59e9c](https://github.com/pie-framework/pie-elements/commit/7b59e9c0559cd5951acdfdd0e94af41d5c8c5954))
+
+
+
+
+
 ## [7.19.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@7.19.2...@pie-element/charting@7.19.3) (2024-07-10)
 
 

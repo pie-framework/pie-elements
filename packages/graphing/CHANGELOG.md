@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.21.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@5.21.3...@pie-element/graphing@5.21.4) (2024-07-16)
+
+
+### Bug Fixes
+
+* udate pie-lib/pie-toolbox PD-3622, PD-3627, PD-3629, PD-3630, PD-3631 ([1e50c85](https://github.com/pie-framework/pie-elements/commit/1e50c859e2b5133e1ff9ef81f4169e49e76d9e4b))
+* **graphing:** key legend only in evaluate, adjust model function controller PD-3937 ([deaad0e](https://github.com/pie-framework/pie-elements/commit/deaad0e07b89a3375ad207eb2ad7e15b02f07381))
+
+
+
+
+
 ## [5.21.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@5.21.2...@pie-element/graphing@5.21.3) (2024-07-10)
 
 

@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.17.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-controller@5.16.3...@pie-element/number-line-controller@5.17.0) (2024-07-16)
+
+
+### Bug Fixes
+
+* tests and removed console logs ([7ed58af](https://github.com/pie-framework/pie-elements/commit/7ed58af1a1c1b58b8dfa8a575de77493795a2a45))
+* udate pie-lib/pie-toolbox PD-3622, PD-3627, PD-3629, PD-3630, PD-3631 ([1e50c85](https://github.com/pie-framework/pie-elements/commit/1e50c859e2b5133e1ff9ef81f4169e49e76d9e4b))
+* **number-line:** clean up controller defaults initialElements PD-3934 ([e5d0b59](https://github.com/pie-framework/pie-elements/commit/e5d0b5964d58a9a01d0a990df5c049eb5158a12d))
+
+
+### Features
+
+* **number-line:** add teacher instructions to player side PD-3933 ([7b30987](https://github.com/pie-framework/pie-elements/commit/7b30987bec201acba1306a9124354a774bf2e4fd))
+
+
+
+
+
 ## [5.16.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-controller@5.16.2...@pie-element/number-line-controller@5.16.3) (2024-07-10)
 
 

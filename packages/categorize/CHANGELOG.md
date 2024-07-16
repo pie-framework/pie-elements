@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.21.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@8.21.4...@pie-element/categorize@8.21.5) (2024-07-16)
+
+
+### Bug Fixes
+
+* udate pie-lib/pie-toolbox PD-3622, PD-3627, PD-3629, PD-3630, PD-3631 ([1e50c85](https://github.com/pie-framework/pie-elements/commit/1e50c859e2b5133e1ff9ef81f4169e49e76d9e4b))
+* **categorize:** change presentatin of row labels and categories, uneditable PD-3922 ([b5be8ca](https://github.com/pie-framework/pie-elements/commit/b5be8ca8a45675a71601a72889369d9ee6a7536e))
+* **categorize:** Row labels of alternates should not be input fields PD-3922 ([cd138b8](https://github.com/pie-framework/pie-elements/commit/cd138b807c26c402820e7c5b36830d629c1c2cc4))
+
+
+
+
+
 ## [8.21.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@8.21.3...@pie-element/categorize@8.21.4) (2024-07-10)
 
 

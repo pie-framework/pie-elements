@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.32.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.31.0...@pie-element/pie-models@13.32.0) (2024-07-16)
+
+
+### Features
+
+* **number-line:** add settingsPanelDisabled configuration to control visibility of Settings Panel PD-3932 ([fef917e](https://github.com/pie-framework/pie-elements/commit/fef917e9c94f3964cb715a91b8b852fa4e16f120))
+* **number-line:** update schemas & update snapshots PD-3932 ([d45ac6c](https://github.com/pie-framework/pie-elements/commit/d45ac6c560109067863159d65c23decc366e1037))
+
+
+
+
+
 # [13.31.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.30.0...@pie-element/pie-models@13.31.0) (2024-06-25)
 
 
