@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.19.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@6.19.2...@pie-element/explicit-constructed-response@6.19.3) (2024-07-12)
+
+
+### Bug Fixes
+
+* expand getInnerText with more sanity checks PD-3798 ([d04740a](https://github.com/pie-framework/pie-elements/commit/d04740aea8245c6f29cf8ba4d19cebba5466593e))
+
+
+
+
+
 ## [6.19.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@6.19.1...@pie-element/explicit-constructed-response@6.19.2) (2024-07-10)
 
 

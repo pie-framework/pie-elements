@@ -203,6 +203,7 @@ export function model(question, session, env) {
       rationale,
       title,
       size: graph,
+      showToggle: false,
       correctness: correctInfo,
       disabled: env.mode !== 'gather',
       scoringType,
@@ -210,7 +211,8 @@ export function model(question, session, env) {
       language,
     };
 
-    const answers = filterCategories(getScore(normalizedQuestion, session, env).answers);
+    const scoreObject = getScore(normalizedQuestion, session, env);
+    const answers = filterCategories(scoreObject.answers);
 
     if (env.mode === 'view') {
       // eslint-disable-next-line no-unused-vars
@@ -224,6 +226,7 @@ export function model(question, session, env) {
     if (env.mode === 'evaluate') {
       base.correctedAnswer = answers;
       base.correctAnswer = correctAnswer;
+      base.showToggle = !!correctAnswer?.data?.length && scoreObject.score !== 1;
       base.addCategoryEnabled = false;
     }
 

@@ -1,4 +1,5 @@
 import { ModelSetEvent } from '@pie-framework/pie-player-events';
+import { renderMath } from '@pie-lib/pie-toolbox/math-rendering-accessible';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
@@ -54,7 +55,7 @@ export default class PiePassage extends HTMLElement {
         showTeacherInstructions,
       });
 
-      ReactDOM.render(elem, this);
+      ReactDOM.render(elem, this, () => renderMath(this));
     }
   }
 }

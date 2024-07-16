@@ -16,6 +16,12 @@ exports[`Render Main Component Match Snapshot 1`] = `
             "audio": Object {
               "disabled": false,
             },
+            "blockquote": Object {
+              "disabled": true,
+            },
+            "h3": Object {
+              "disabled": true,
+            },
             "image": Object {
               "disabled": false,
             },
@@ -203,6 +209,12 @@ exports[`Render Main Component Match Snapshot 1`] = `
           "audio": Object {
             "disabled": false,
           },
+          "blockquote": Object {
+            "disabled": true,
+          },
+          "h3": Object {
+            "disabled": true,
+          },
           "image": Object {
             "disabled": false,
           },
@@ -273,6 +285,12 @@ exports[`Render Main Component Match Snapshot 1`] = `
         Object {
           "audio": Object {
             "disabled": false,
+          },
+          "blockquote": Object {
+            "disabled": true,
+          },
+          "h3": Object {
+            "disabled": true,
           },
           "image": Object {
             "disabled": false,

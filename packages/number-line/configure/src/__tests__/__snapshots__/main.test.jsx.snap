@@ -384,7 +384,7 @@ The correct answer should include at least one number line object."
       onChange={[Function]}
     />
   </div>
-  <Jss(NumberLine)
+  <WithStyles(NumberLine)
     maxHeight={70}
     maxWidth={800}
     minWidth={200}
@@ -485,7 +485,7 @@ The correct answer should include at least one number line object."
   <label>
     Correct Answer
   </label>
-  <Jss(NumberLine)
+  <WithStyles(NumberLine)
     answer={Array []}
     maxWidth={800}
     minWidth={200}
