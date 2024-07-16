@@ -25,6 +25,9 @@ export const model = {
     initialElements: [],
   },
   widthEnabled: true,
+  promptEnabled: true,
+  rationaleEnabled: true,
+  teacherInstructionsEnabled: true,
   feedback: {
     correct: {
       default: 'Correct',
@@ -63,6 +66,16 @@ export const configuration = {
       image: { disabled: false },
     },
   },
+  rationale: {
+    settings: true,
+    label: 'Rationale',
+    required: false,
+    inputConfiguration: {
+      audio: { disabled: false },
+      video: { disabled: false },
+      image: { disabled: false },
+    },
+  },
   teacherInstructions: {
     settings: true,
     label: 'Teacher Instructions',
@@ -75,6 +88,8 @@ export const configuration = {
   },
   title: {
     label: 'Title',
+    settings: true,
+    enabled: true,
     inputConfiguration: {
       audio: { disabled: false },
       video: { disabled: false },
@@ -89,11 +104,6 @@ export const configuration = {
     max: 800,
     step: 20,
   },
-  spellCheck: {
-    label: 'Spellcheck',
-    settings: false,
-    enabled: true,
-  },
   mathMlOptions: {
     mmlOutput: false,
     mmlEditing: false,
@@ -107,7 +117,13 @@ export const configuration = {
     label: 'Language Choices',
     options: [],
   },
+  spellCheck: {
+    label: 'Spellcheck',
+    settings: false,
+    enabled: true,
+  },
   maxMaxElements: 20,
   hidePointConfigButtons: false,
   availableTools: ['PF', 'LFF', 'LEF', 'LFE', 'LEE', 'RFN', 'RFP', 'REN', 'REP'],
+  settingsPanelDisabled: false,
 };

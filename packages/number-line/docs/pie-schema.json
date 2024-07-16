@@ -678,6 +678,26 @@
       "type": "boolean",
       "title": "spellCheckEnabled"
     },
+    "promptEnabled": {
+      "description": "Indicates if the prompt is enabled",
+      "type": "boolean",
+      "title": "promptEnabled"
+    },
+    "rationale": {
+      "description": "Indicates rationale for the answer",
+      "type": "string",
+      "title": "rationale"
+    },
+    "rationaleEnabled": {
+      "description": "Indicates if Rationale are enabled",
+      "type": "boolean",
+      "title": "rationaleEnabled"
+    },
+    "teacherInstructionsEnabled": {
+      "description": "Indicates if Teacher Instructions are enabled",
+      "type": "boolean",
+      "title": "teacherInstructionsEnabled"
+    },
     "toolbarEditorPosition": {
       "description": "Indicates the editor's toolbar position which can be 'bottom' or 'top'",
       "default": ": 'bottom'",
@@ -710,7 +730,9 @@
     "graph",
     "id",
     "partialScoring",
-    "spellCheckEnabled"
+    "rationaleEnabled",
+    "spellCheckEnabled",
+    "teacherInstructionsEnabled"
   ],
   "definitions": {
     "EditableHtmlConfigureProp": {
