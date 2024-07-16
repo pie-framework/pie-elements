@@ -124,13 +124,13 @@ export class MultipleChoice extends React.Component {
   };
 
   UNSAFE_componentWillReceiveProps(nextProps) {
-    if (!nextProps.correctResponse) {
+    if (!nextProps.correctResponse && this.state.showCorrect !== false) {
       this.setState({ showCorrect: false }, () => {
         this.props.onShowCorrectToggle();
       });
     }
 
-    if (nextProps.alwaysShowCorrect) {
+    if (nextProps.alwaysShowCorrect && this.state.showCorrect !== true) {
       this.setState({ showCorrect: true }, () => {
         this.props.onShowCorrectToggle();
       });
