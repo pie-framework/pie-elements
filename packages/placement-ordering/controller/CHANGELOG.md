@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.15.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-controller@7.15.5...@pie-element/placement-ordering-controller@7.15.6) (2024-07-17)
+
+
+### Bug Fixes
+
+* udate pie-lib/pie-toolbox PD-3945, PD-3627 ([c37e8aa](https://github.com/pie-framework/pie-elements/commit/c37e8aaa6c7e561707a2ed9ec76deb313380c6ba))
+
+
+
+
+
 ## [7.15.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-controller@7.15.4...@pie-element/placement-ordering-controller@7.15.5) (2024-07-16)
 
 

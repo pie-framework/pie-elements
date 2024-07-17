@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.17.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-configure@9.17.4...@pie-element/extended-text-entry-configure@9.17.5) (2024-07-17)
+
+
+### Bug Fixes
+
+* udate pie-lib/pie-toolbox PD-3945, PD-3627 ([c37e8aa](https://github.com/pie-framework/pie-elements/commit/c37e8aaa6c7e561707a2ed9ec76deb313380c6ba))
+
+
+
+
+
 ## [9.17.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-configure@9.17.3...@pie-element/extended-text-entry-configure@9.17.4) (2024-07-16)
 
 
