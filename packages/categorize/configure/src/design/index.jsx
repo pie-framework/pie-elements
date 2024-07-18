@@ -202,6 +202,7 @@ export class Design extends React.Component {
       mathMlOptions = {},
       language = {},
       languageChoices = {},
+      allowMaxAnswerChoices = {},
     } = configuration || {};
     const {
       allowAlternateEnabled,
@@ -214,6 +215,7 @@ export class Design extends React.Component {
       spellCheckEnabled,
       teacherInstructionsEnabled,
       toolbarEditorPosition,
+      maxAnswerChoices,
     } = model || {};
     const {
       prompt: promptError,
@@ -264,6 +266,11 @@ export class Design extends React.Component {
           multiplePlacements.disabled,
           multiplePlacements.perChoice,
         ]),
+      maxAnswerChoices: allowMaxAnswerChoices.settings && numberField(allowMaxAnswerChoices.label, {
+        label: '',
+        min: 0,
+        max: 30,
+      }),
       allowMaxChoicesPerCategory: maxPlacements.settings && toggle(maxPlacements.label),
       maxChoicesPerCategory:
         allowMaxChoicesPerCategory === true &&

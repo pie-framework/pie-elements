@@ -138,6 +138,11 @@ export interface CategorizePie extends PieModel {
    * Supported options: en, es, en_US, en-US, es_ES, es-ES, es_MX, es-MX
    */
   language?: string;
+
+  /**
+   * Maximum number of choices
+   */
+  maxAnswerChoices?: number;
 }
 
 interface ConfigureMaxImageDimensionsProp {
@@ -277,4 +282,9 @@ export interface CategorizeConfigure extends CommonConfigSettings {
     label: string;
     options: ConfigureLanguageOptionsProp[];
   };
+
+  /**
+   * Configuration for maximum number of choices
+   */
+  allowMaxAnswerChoices?: ConfigureProp
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
@@ -15,12 +16,13 @@ export class Header extends React.Component {
     info: PropTypes.any,
     buttonDisabled: PropTypes.bool,
     variant: PropTypes.string,
+    tooltip: PropTypes.string,
   };
 
   static defaultProps = {};
 
   render() {
-    const { classes, className, onAdd, label, buttonLabel, info, buttonDisabled, variant } = this.props;
+    const { classes, className, onAdd, label, buttonLabel, info, buttonDisabled, variant, tooltip } = this.props;
     return (
       <div className={classNames(classes.header, className)}>
         <div className={classes.titleContainer}>
@@ -29,8 +31,11 @@ export class Header extends React.Component {
           </Typography>
           {info}
         </div>
-
-        <AddButton onClick={onAdd} label={buttonLabel} disabled={buttonDisabled} />
+        <Tooltip title={tooltip || ''} classes={{ tooltip: classes.tooltip }}>
+          <span>
+            <AddButton onClick={onAdd} label={buttonLabel} disabled={buttonDisabled} />
+          </span>
+        </Tooltip>
       </div>
     );
   }
@@ -44,6 +49,11 @@ const styles = (theme) => ({
   titleContainer: {
     display: 'flex',
     alignItems: 'center',
+  },
+  tooltip: {
+    fontSize: theme.typography.fontSize - 2,
+    whiteSpace: 'pre',
+    maxWidth: '500px',
   },
 });
 export default withStyles(styles)(Header);
