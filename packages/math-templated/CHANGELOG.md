@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.19.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-templated@2.19.5...@pie-element/math-templated@2.19.6) (2024-07-19)
+
+
+### Bug Fixes
+
+* udate pie-lib/pie-toolbox to revert PD-3630 ([7858313](https://github.com/pie-framework/pie-elements/commit/785831349bb7830a3df8f35971958ebf616527f3))
+
+
+
+
+
 ## [2.19.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-templated@2.19.4...@pie-element/math-templated@2.19.5) (2024-07-17)
 
 
