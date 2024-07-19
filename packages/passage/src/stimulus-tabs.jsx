@@ -3,50 +3,59 @@ import PropTypes from 'prop-types';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import { withStyles } from '@material-ui/core/styles';
-import { Collapsible, color, PreviewPrompt } from '@pie-lib/pie-toolbox/render-ui';
+import Typography from '@material-ui/core/Typography';
+import { color, Purpose } from '@pie-lib/render-ui';
 import classNames from 'classnames';
 
 const styles = (theme) => ({
-  passages: {
+  root: {
     flexGrow: 1,
     backgroundColor: color.background(),
     color: color.text(),
   },
-  passage: {
-    backgroundColor: color.background(),
-    color: color.text(),
-    padding: theme.spacing.unit * 2,
+  tab: {
+    fontSize: '0.8125em',
   },
-  passageTitle: {
-    fontSize: '1.75rem',
-  },
-  passageSubtitle: {
-    fontSize: '1.5rem',
-  },
-  passageAuthor: {
-    fontSize: '1.25rem',
-  },
-  passageText: {},
   stickyTabs: {
     background: color.background(),
+    paddingBottom: theme.spacing.unit * 2.5,
     position: 'sticky',
     top: 0,
   },
-  tab: {
-    background: theme.palette.common.white, // replace with color.background() once PD-2801 is DONE
-    fontSize: 'inherit',
-    color: theme.palette.common.black, // remove when PD-2801 is DONE
+  title: {
+    textTransform: 'uppercase',
+    padding: `${theme.spacing.unit}px ${theme.spacing.unit * 3}px`,
+    borderBottom: `2px solid ${color.secondary()}`,
+    width: 'fit-content',
+    marginBottom: theme.spacing.unit,
   },
-  tabButton: {
-    background: theme.palette.common.white, // replace with color.background() once PD-2801 is DONE
-  },
-  breakSpaces: {
-    whiteSpace: 'break-spaces',
-  },
-  teacherInstructions: {
-    marginBottom: theme.spacing.unit * 2,
+  buttonContainer: {
+    background: theme.palette.common.white,
   },
 });
+
+function TabContainer(props) {
+  const padding = props.multiple ? '0 24px 24px 24px' : '24px';
+
+  return (
+    <Typography
+      component="div"
+      style={{
+        padding,
+        fontSize: '0.875em',
+        backgroundColor: color.background(),
+        color: color.text(),
+      }}
+    >
+      {props.children}
+    </Typography>
+  );
+}
+
+TabContainer.propTypes = {
+  children: PropTypes.node.isRequired,
+  multiple: PropTypes.bool,
+};
 
 class StimulusTabs extends React.Component {
   state = {
@@ -55,10 +64,11 @@ class StimulusTabs extends React.Component {
 
   handleChange = (event, activeTab) => {
     this.setState(() => ({ activeTab }));
-
     setTimeout(() => {
       const tabChangeEvent = new CustomEvent('pie-ui-passage-tabChanged', {
-        detail: { tab: activeTab },
+        detail: {
+          tab: activeTab,
+        },
       });
 
       window.dispatchEvent(tabChangeEvent);
@@ -74,21 +84,33 @@ class StimulusTabs extends React.Component {
 
     switch (key) {
       case 'ArrowRight':
-      case 'ArrowDown':
+        // Move to the next tab
         newTabIndex = (currentIndex + 1) % tabs.length;
         break;
       case 'ArrowLeft':
-      case 'ArrowUp':
+        // Move to the previous tab
         newTabIndex = (currentIndex - 1 + tabs.length) % tabs.length;
         break;
+      // Commented out ArrowDown and ArrowUp for future vertical tab navigation
+      // case 'ArrowDown':
+      //   // Move to the next tab (for vertical alignment)
+      //   newTabIndex = (currentIndex + 1) % tabs.length;
+      //   break;
+      // case 'ArrowUp':
+      //   // Move to the previous tab (for vertical alignment)
+      //   newTabIndex = (currentIndex - 1 + tabs.length) % tabs.length;
+      //   break;
       case 'Home':
+        // Move to the first tab
         newTabIndex = 0;
         break;
       case 'End':
+        // Move to the last tab
         newTabIndex = tabs.length - 1;
         break;
       case 'Enter':
       case ' ':
+        // Activate the current tab
         newTabIndex = currentIndex;
         break;
       default:
@@ -98,16 +120,16 @@ class StimulusTabs extends React.Component {
     if (newTabIndex !== -1) {
       event.preventDefault();
       this.handleChange(event, tabs[newTabIndex].id);
+      document.getElementById(`tab-${tabs[newTabIndex].id}`).focus();
     }
   };
 
-  parsedText = (text = '') => {
+  parsedText = (text) => {
     // fix imported audio content for Safari PD-1391
     const div = document.createElement('div');
     div.innerHTML = text.replace(/(<br\/>\n)/g, '<br/>');
 
     const audio = div.querySelector('audio');
-
     if (audio) {
       const source = document.createElement('source');
 
@@ -121,115 +143,76 @@ class StimulusTabs extends React.Component {
     return div.innerHTML;
   };
 
-  renderInstructions(showTeacherInstructions, teacherInstructions, disabledTabs = false) {
-    if (!showTeacherInstructions || !teacherInstructions) {
-      return;
-    }
-
-    const teacherInstructionsDiv = (
-      <PreviewPrompt
-        tagName="div"
-        className="prompt"
-        defaultClassName="teacher-instructions"
-        prompt={teacherInstructions}
-      />
-    );
-
-    if (disabledTabs) {
-      return teacherInstructionsDiv;
-    }
-
-    return (
-      <Collapsible
-        labels={{
-          hidden: 'Show Teacher Instructions',
-          visible: 'Hide Teacher Instructions',
-        }}
-      >
-        {teacherInstructionsDiv}
-      </Collapsible>
-    );
-  }
-
-  renderTab(tab, showTeacherInstructions, disabledTabs) {
-    const { classes } = this.props;
-
-    return (
-      <div
-        className={classNames(classes.passage, 'passage')}
-        key={tab.id}
-        id={`tabpanel-${tab.id}`}
-        role="tabpanel"
-        aria-labelledby={`button-${tab.id}`}
-      >
-        {this.renderInstructions(showTeacherInstructions, tab.teacherInstructions, disabledTabs)}
-        <h2>
-          <div
-            className={classNames(classes.passageTitle, 'title')}
-            dangerouslySetInnerHTML={{ __html: this.parsedText(tab.title) }}
-          />
-          <div
-            className={classNames(classes.passageSubtitle, 'subtitle')}
-            dangerouslySetInnerHTML={{ __html: this.parsedText(tab.subtitle) }}
-          />
-        </h2>
-        <div
-          className={classNames(classes.passageAuthor, 'author')}
-          dangerouslySetInnerHTML={{ __html: this.parsedText(tab.author) }}
-        />
-        <div
-          key={tab.id}
-          className={classNames(classes.passageText, 'text')}
-          dangerouslySetInnerHTML={{ __html: this.parsedText(tab.text) }}
-        />
-      </div>
-    );
-  }
-
   render() {
-    const { classes, tabs, disabledTabs, showTeacherInstructions } = this.props;
+    const { classes, tabs, disabledTabs } = this.props;
     const { activeTab } = this.state;
 
-    if (!tabs?.length) {
-      return;
-    }
-
-    const selectedTab = (tabs || []).find((tab) => tab.id === activeTab);
-
-    return (
-      <div className={classNames(classes.passages, { [classes.breakSpaces]: tabs.length === 1 }, 'passages')}>
-        {disabledTabs || tabs.length === 1 ? (
-          tabs.map((tab) => this.renderTab(tab, showTeacherInstructions, disabledTabs))
-        ) : (
-          <>
-            <Tabs
-              classes={{
-                root: classes.stickyTabs,
-                flexContainer: classes.tabButton,
-              }}
-              value={activeTab}
-              onChange={this.handleChange}
-            >
-              {tabs.map((tab) => (
-                <Tab
-                  className={classes.tab}
-                  key={tab.id}
-                  id={`button-${tab.id}`}
-                  label={<span dangerouslySetInnerHTML={{ __html: this.parsedText(tab.title) }} />}
-                  value={tab.id}
-                  tabIndex={activeTab === tab.id ? 0 : -1}
-                  aria-controls={`tabpanel-${tab.id}`}
-                  aria-selected={activeTab === tab.id}
-                  onFocus={() => this.handleChange(null, tab.id)}
-                  onKeyDown={(event) => this.handleKeyDown(event, tab.id)}
+    if (tabs && tabs.length > 1) {
+      return disabledTabs ? (
+        <div className="passages">
+          {tabs.map((tab) => (
+            <div key={tab.id} className={`passage-${tab.id}`}>
+              <TabContainer multiple>
+                <div
+                  className={classNames(classes.title, 'title')}
+                  dangerouslySetInnerHTML={{ __html: this.parsedText(tab.title) }}
                 />
-              ))}
-            </Tabs>
-            {selectedTab ? this.renderTab(selectedTab, showTeacherInstructions, disabledTabs) : null}
-          </>
-        )}
-      </div>
-    );
+                <Purpose purpose="passage-text">
+                  <div className="text" key={tab.id} dangerouslySetInnerHTML={{ __html: this.parsedText(tab.text) }} />
+                </Purpose>
+              </TabContainer>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div className={classes.root}>
+          <Tabs
+            classes={{
+              root: classes.stickyTabs,
+              flexContainer: classes.buttonContainer,
+            }}
+            value={activeTab}
+            onChange={this.handleChange}
+          >
+            {tabs.map((tab) => (
+              <Tab
+                className={classes.tab}
+                key={tab.id}
+                id={`tab-${tab.id}`}
+                label={
+                  <Purpose purpose="passage-title">
+                    <span dangerouslySetInnerHTML={{ __html: this.parsedText(tab.title) }} />
+                  </Purpose>
+                }
+                value={tab.id}
+                tabIndex={activeTab === tab.id ? 0 : -1}
+                aria-selected={activeTab === tab.id}
+                onFocus={() => this.handleChange(null, tab.id)}
+                onKeyDown={(event) => this.handleKeyDown(event, tab.id)}
+              />
+            ))}
+          </Tabs>
+
+          {tabs.map((tab) =>
+            activeTab === tab.id ? (
+              <TabContainer multiple key={tab.id}>
+                <Purpose purpose="passage-text">
+                  <div key={tab.id} dangerouslySetInnerHTML={{ __html: this.parsedText(tab.text) }} />
+                </Purpose>
+              </TabContainer>
+            ) : null,
+          )}
+        </div>
+      );
+    } else if (tabs && tabs[0]) {
+      return (
+        <div className="passage" style={{ whiteSpace: 'break-spaces' }}>
+          <TabContainer>
+            <div className="text" dangerouslySetInnerHTML={{ __html: this.parsedText(tabs[0].text) }} />
+          </TabContainer>
+        </div>
+      );
+    }
   }
 }
 
@@ -239,14 +222,10 @@ StimulusTabs.propTypes = {
     PropTypes.shape({
       id: PropTypes.number.isRequired,
       title: PropTypes.string.isRequired,
-      subtitle: PropTypes.string,
-      author: PropTypes.string,
       text: PropTypes.string.isRequired,
-      teacherInstructions: PropTypes.string,
     }).isRequired,
   ).isRequired,
   disabledTabs: PropTypes.bool,
-  showTeacherInstructions: PropTypes.bool,
 };
 
 export default withStyles(styles)(StimulusTabs);
