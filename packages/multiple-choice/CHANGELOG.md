@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.21.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@8.21.5...@pie-element/multiple-choice@8.21.6) (2024-07-19)
+
+
+### Bug Fixes
+
+* udate pie-lib/pie-toolbox to revert PD-3630 ([7858313](https://github.com/pie-framework/pie-elements/commit/785831349bb7830a3df8f35971958ebf616527f3))
+
+
+
+
+
 ## [8.21.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@8.21.4...@pie-element/multiple-choice@8.21.5) (2024-07-17)
 
 

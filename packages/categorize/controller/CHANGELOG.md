@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.17.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-controller@6.17.5...@pie-element/categorize-controller@6.17.6) (2024-07-19)
+
+
+### Bug Fixes
+
+* udate pie-lib/pie-toolbox to revert PD-3630 ([7858313](https://github.com/pie-framework/pie-elements/commit/785831349bb7830a3df8f35971958ebf616527f3))
+
+
+
+
+
 ## [6.17.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-controller@6.17.4...@pie-element/categorize-controller@6.17.5) (2024-07-17)
 
 

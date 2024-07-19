@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.18.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@9.18.6...@pie-element/placement-ordering@9.18.7) (2024-07-19)
+
+
+### Bug Fixes
+
+* udate pie-lib/pie-toolbox to revert PD-3630 ([7858313](https://github.com/pie-framework/pie-elements/commit/785831349bb7830a3df8f35971958ebf616527f3))
+
+
+
+
+
 ## [9.18.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@9.18.5...@pie-element/placement-ordering@9.18.6) (2024-07-17)
 
 
