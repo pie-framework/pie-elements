@@ -43,7 +43,7 @@ const AnswerContent = withStyles((theme) => ({
   },
   answerContent: {
     color: color.text(),
-    backgroundColor: color.background(),
+    backgroundColor: '#ffffff',
     border: `1px solid ${theme.palette.grey[400]}`,
     cursor: 'pointer',
     width: '100%',

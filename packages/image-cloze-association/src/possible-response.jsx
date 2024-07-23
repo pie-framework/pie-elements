@@ -68,7 +68,7 @@ PossibleResponse.defaultProps = {
 const styles = () => ({
   base: {
     position: 'relative',
-    backgroundColor: color.background(),
+    backgroundColor: '#ffffff',
     border: `1px solid ${color.primary()}`,
     display: 'flex',
     alignItems: 'center',

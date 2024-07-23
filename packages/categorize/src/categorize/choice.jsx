@@ -79,7 +79,7 @@ const styles = (theme) => ({
   },
   card: {
     color: color.text(),
-    backgroundColor: color.background(),
+    backgroundColor: '#ffffff',
     width: '100%',
   },
 });
