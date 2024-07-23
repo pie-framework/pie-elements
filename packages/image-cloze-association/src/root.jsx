@@ -207,6 +207,7 @@ class ImageClozeAssociationComponent extends React.Component {
         disabled,
         duplicateResponses,
         image,
+        responseAreaFill,
         stimulus,
         responseCorrect,
         validation,
@@ -288,6 +289,7 @@ class ImageClozeAssociationComponent extends React.Component {
               onDragAnswerEnd={this.handleOnDragEnd}
               responseContainers={responseContainers}
               showDashedBorder={showDashedBorder}
+              responseAreaFill={responseAreaFill}
             />
           </InteractiveSection>
         ) : (
@@ -303,6 +305,7 @@ class ImageClozeAssociationComponent extends React.Component {
               onDragAnswerEnd={this.handleOnDragEnd}
               responseContainers={responseContainers}
               showDashedBorder={showDashedBorder}
+              responseAreaFill={responseAreaFill}
             />
 
             {maxResponsePerZoneWarning && <WarningInfo message={warningMessage} />}

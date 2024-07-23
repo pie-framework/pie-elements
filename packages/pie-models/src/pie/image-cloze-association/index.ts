@@ -134,6 +134,9 @@ export interface ImageClozeAssociationPie extends PieModel {
     possibilityListPosition?: ChoicesPosition;
     fontsize: string;
   };
+
+  /** Indicates the background color of the response area */
+  responseAreaFill?: string;
 }
 
 /**
