@@ -22,7 +22,6 @@ const ImageDropTarget = ({
   // dnd-related props
   connectDropTarget,
 }) => {
-
   const containerClasses = cx(classes.responseContainer, {
     [classes.responseContainerDashed]: showDashedBorder && !draggingElement.id,
     [classes.responseContainerActive]: draggingElement.id,
