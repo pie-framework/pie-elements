@@ -90,10 +90,15 @@ class ImageClozeAssociationComponent extends React.Component {
 
   filterPossibleAnswers = (possibleResponses, answer) => {
     const index = possibleResponses.findIndex(response => response.value === answer.value);
-    return [
-      ...possibleResponses.slice(0, index),       // Elements before the found item
-      ...possibleResponses.slice(index + 1)       // Elements after the found item
-    ];
+
+    if (index >= 0) {
+      return [
+        ...possibleResponses.slice(0, index),       // Elements before the found item
+        ...possibleResponses.slice(index + 1)       // Elements after the found item
+      ];
+    }
+
+    return possibleResponses;
   };
 
   handleOnAnswerSelect = (answer, responseContainerIndex) => {
