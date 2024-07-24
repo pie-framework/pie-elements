@@ -218,6 +218,7 @@ class ImageClozeAssociationComponent extends React.Component {
         rationale,
         language,
         uiStyle = {},
+        choicesPosition = 'bottom'
       },
     } = this.props;
     const {
@@ -232,6 +233,7 @@ class ImageClozeAssociationComponent extends React.Component {
     const isEvaluateMode = mode === 'evaluate';
     const showToggle = isEvaluateMode && !responseCorrect;
 
+    console.log('choicesPosition', choicesPosition);
     const { validResponse } = validation || {};
     const correctAnswers = [];
 
@@ -277,7 +279,7 @@ class ImageClozeAssociationComponent extends React.Component {
         <CorrectAnswerToggle show={showToggle} toggled={showCorrect} onToggle={this.toggleCorrect} language={language}/>
 
         {showCorrect && showToggle ? (
-          <InteractiveSection responseCorrect={true} uiStyle={uiStyle}>
+          <InteractiveSection responseCorrect={true} uiStyle={uiStyle} choicesPosition={choicesPosition}>
             <Image
               canDrag={false}
               answers={correctAnswers}
@@ -293,7 +295,7 @@ class ImageClozeAssociationComponent extends React.Component {
             />
           </InteractiveSection>
         ) : (
-          <InteractiveSection responseCorrect={responseCorrect} uiStyle={uiStyle}>
+          <InteractiveSection responseCorrect={responseCorrect} uiStyle={uiStyle} choicesPosition={choicesPosition}>
             <Image
               canDrag={!disabled}
               answers={answersToShow}

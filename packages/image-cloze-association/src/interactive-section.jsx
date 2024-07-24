@@ -47,11 +47,14 @@ class InteractiveSection extends React.Component {
   };
 
   render() {
-    const { children, responseCorrect, uiStyle } = this.props;
+    const { children, responseCorrect, uiStyle, choicesPosition } = this.props;
     const classname = this.getClassname();
-    const { possibilityListPosition = 'bottom'} = uiStyle || {};
+    const { possibilityListPosition } = uiStyle || {};
+
+    const position = possibilityListPosition || choicesPosition;
+
     const style = {
-      flexDirection: this.getPositionDirection(possibilityListPosition),
+      flexDirection: this.getPositionDirection(position),
     };
     const evaluationStyle = {
       display: 'flex',
@@ -73,6 +76,7 @@ InteractiveSection.propTypes = {
   children: PropTypes.oneOfType([PropTypes.element, PropTypes.array]).isRequired,
   responseCorrect: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
   uiStyle: PropTypes.object,
+  choicesPosition: PropTypes.string
 };
 
 InteractiveSection.defaultProps = {

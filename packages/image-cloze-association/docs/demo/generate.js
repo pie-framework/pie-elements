@@ -2,6 +2,7 @@ exports.model = (id, element) => ({
   id,
   element,
   prompt: 'This is the question prompt',
+  choicesPosition: 'top',
   image: {
     src: 'https://app.fluence.net/ia/image/6412223997a34018b15f8512bee6c04c',
     width: 465,
@@ -44,7 +45,7 @@ exports.model = (id, element) => ({
   metadatadistractor_rationale:
     '<p>A correct response is shown below.&#160;This response best shows how this decision will likely affect the number tire pieces collected.<img alt="image 03de38019abe41b1bc95d1199658327f" id="03de38019abe41b1bc95d1199658327f" src="https://localhost:8443/ia/image/03de38019abe41b1bc95d1199658327f" /></p>',
   ui_style: {
-    possibility_list_position: 'bottom',
+    // possibility_list_position: 'bottom',
     // this is not used
     fontsize: 'small',
   },
