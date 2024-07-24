@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.21.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@5.21.6...@pie-element/image-cloze-association@5.21.7) (2024-07-24)
+
+
+### Bug Fixes
+
+* add sanity check PD-3966 ([20f7c70](https://github.com/pie-framework/pie-elements/commit/20f7c704928c13ea40109649f869ba7eb3ffc2a5))
+
+
+
+
+
 ## [5.21.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@5.21.5...@pie-element/image-cloze-association@5.21.6) (2024-07-19)
 
 
