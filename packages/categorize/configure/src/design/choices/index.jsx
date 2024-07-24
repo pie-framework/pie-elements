@@ -57,7 +57,7 @@ export class Choices extends React.Component {
 
     const id = utils.firstAvailableIndex(
       model.choices.map((a) => a.id),
-      0,
+      1,
     );
     const data = { id, content: 'Choice ' + id };
 
