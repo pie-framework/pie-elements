@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { DropTarget } from '@pie-lib/pie-toolbox/drag';
 import { withStyles } from '@material-ui/core/styles';
 import { color } from '@pie-lib/pie-toolbox/render-ui';
+import cx from 'classnames';
 
 import PossibleResponse from './possible-response';
 import c from './constants';
@@ -17,17 +18,24 @@ const ImageDropTarget = ({
   onDragAnswerBegin,
   onDragAnswerEnd,
   showDashedBorder,
+  responseAreaFill,
   // dnd-related props
   connectDropTarget,
-}) =>
-  connectDropTarget(
+}) => {
+  const containerClasses = cx(classes.responseContainer, {
+    [classes.responseContainerDashed]: showDashedBorder && !draggingElement.id,
+    [classes.responseContainerActive]: draggingElement.id,
+  });
+
+  const updatedContainerStyle = {
+    ...containerStyle,
+    ...(responseAreaFill ? { backgroundColor: responseAreaFill } : {})
+  };
+
+  return connectDropTarget(
     <div
-      className={`
-        ${classes.responseContainer}
-        ${showDashedBorder && !draggingElement.id ? classes.responseContainerDashed : ''}
-        ${draggingElement.id ? classes.responseContainerActive : ''}
-      `}
-      style={containerStyle}
+      className={containerClasses}
+      style={updatedContainerStyle}
     >
       {answers.length || (duplicateResponses && answers.length) ? (
         <div className={classes.answers}>
@@ -45,6 +53,7 @@ const ImageDropTarget = ({
       ) : null}
     </div>,
   );
+}
 
 ImageDropTarget.propTypes = {
   answer: PropTypes.object,
@@ -56,6 +65,7 @@ ImageDropTarget.propTypes = {
   onDragAnswerEnd: PropTypes.func.isRequired,
   onDrop: PropTypes.func.isRequired,
   showDashedBorder: PropTypes.bool,
+  responseAreaFill: PropTypes.string
 };
 
 ImageDropTarget.defaultProps = {
