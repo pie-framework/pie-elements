@@ -3,6 +3,11 @@
   "additionalProperties": false,
   "type": "object",
   "properties": {
+    "answerChoiceTransparency": {
+      "description": "Indicates in answer choices should have a transparent background. Default value is undefined.",
+      "type": "boolean",
+      "title": "answerChoiceTransparency"
+    },
     "prompt": {
       "description": "The question prompt or item stem",
       "type": "string",

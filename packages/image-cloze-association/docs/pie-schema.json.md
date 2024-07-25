@@ -2,6 +2,10 @@ Model for the @pie-elements/image-cloze-association Interaction
 
 The schema defines the following properties:
 
+# `answerChoiceTransparency` (boolean)
+
+Indicates in answer choices should have a transparent background. Default value is undefined.
+
 # `prompt` (string)
 
 The question prompt or item stem
