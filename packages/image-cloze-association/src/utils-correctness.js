@@ -1,4 +1,7 @@
 // functions also used in controller/src/utils.js
+// camelize keys is needed to convert the keys from snake_case to camelCase
+// this is also done in the controller
+import { camelizeKeys } from 'humps';
 
 const getAllCorrectAnswers = (answers, responses) =>
   (answers || []).map((answer) => ({
@@ -42,7 +45,8 @@ const getUniqueCorrectAnswers = (answers, validResponses) => {
 };
 
 export const getUnansweredAnswers = (answers, validation) => {
-  const { validResponse: { value } = {} } = validation;
+  const camelizedValidation = camelizeKeys(validation);
+  const { validResponse: { value } = {} } = camelizedValidation;
 
   return (value || []).reduce((unanswered, response, index) => {
     const isAnswered = !!answers.find((answer) => answer.containerIndex === index);
@@ -66,10 +70,11 @@ export const getUnansweredAnswers = (answers, validation) => {
 };
 
 export const getAnswersCorrectness = (answers, validation) => {
+  const camelizedValidation = camelizeKeys(validation);
   const {
     validResponse: { value },
     altResponses,
-  } = validation;
+  } = camelizedValidation;
 
   const allCorrect = getAllCorrectAnswers(answers, value);
   const uniqueAnswers = getUniqueCorrectAnswers(allCorrect, value);
