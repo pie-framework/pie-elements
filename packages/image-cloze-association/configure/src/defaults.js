@@ -1,6 +1,5 @@
 export default {
   model: {
-    answerChoiceTransparency: true,
     rationaleEnabled: true,
     teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true,
