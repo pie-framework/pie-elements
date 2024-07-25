@@ -74,21 +74,33 @@ class StimulusTabs extends React.Component {
 
     switch (key) {
       case 'ArrowRight':
-      case 'ArrowDown':
+        // Move to the next tab
         newTabIndex = (currentIndex + 1) % tabs.length;
         break;
       case 'ArrowLeft':
-      case 'ArrowUp':
+        // Move to the previous tab
         newTabIndex = (currentIndex - 1 + tabs.length) % tabs.length;
         break;
+      // Commented out ArrowDown and ArrowUp for future vertical tab navigation
+      // case 'ArrowDown':
+      //   // Move to the next tab (for vertical alignment)
+      //   newTabIndex = (currentIndex + 1) % tabs.length;
+      //   break;
+      // case 'ArrowUp':
+      //   // Move to the previous tab (for vertical alignment)
+      //   newTabIndex = (currentIndex - 1 + tabs.length) % tabs.length;
+      //   break;
       case 'Home':
+        // Move to the first tab
         newTabIndex = 0;
         break;
       case 'End':
+        // Move to the last tab
         newTabIndex = tabs.length - 1;
         break;
       case 'Enter':
       case ' ':
+        // Activate the current tab
         newTabIndex = currentIndex;
         break;
       default:
@@ -98,6 +110,7 @@ class StimulusTabs extends React.Component {
     if (newTabIndex !== -1) {
       event.preventDefault();
       this.handleChange(event, tabs[newTabIndex].id);
+      document.getElementById(`button-${tabs[newTabIndex].id}`).focus();
     }
   };
 
