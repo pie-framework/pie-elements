@@ -223,6 +223,7 @@ class ImageClozeAssociationComponent extends React.Component {
         rationale,
         language,
         uiStyle = {},
+        answerChoiceTransparency
       },
     } = this.props;
     const {
@@ -311,6 +312,7 @@ class ImageClozeAssociationComponent extends React.Component {
               responseContainers={responseContainers}
               showDashedBorder={showDashedBorder}
               responseAreaFill={responseAreaFill}
+              answerChoiceTransparency={answerChoiceTransparency}
             />
 
             {maxResponsePerZoneWarning && <WarningInfo message={warningMessage} />}
@@ -321,6 +323,7 @@ class ImageClozeAssociationComponent extends React.Component {
               onAnswerRemove={this.handleOnAnswerRemove}
               onDragBegin={this.beginDrag}
               onDragEnd={this.handleOnDragEnd}
+              answerChoiceTransparency={answerChoiceTransparency}
             />
           </InteractiveSection>
         )}

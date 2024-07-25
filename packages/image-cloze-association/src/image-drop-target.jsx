@@ -21,6 +21,7 @@ const ImageDropTarget = ({
   responseAreaFill,
   // dnd-related props
   connectDropTarget,
+  answerChoiceTransparency
 }) => {
   const containerClasses = cx(classes.responseContainer, {
     [classes.responseContainerDashed]: showDashedBorder && !draggingElement.id,
@@ -42,11 +43,11 @@ const ImageDropTarget = ({
           {(answers || []).map((answer) => (
             <PossibleResponse
               canDrag={canDrag}
-              containerStyle={answer.isCorrect === undefined ? { borderWidth: 0 } : {}}
               key={answer.id}
               data={answer}
               onDragBegin={() => onDragAnswerBegin(answer)}
               onDragEnd={onDragAnswerEnd}
+              answerChoiceTransparency={answerChoiceTransparency}
             />
           ))}
         </div>
@@ -65,7 +66,8 @@ ImageDropTarget.propTypes = {
   onDragAnswerEnd: PropTypes.func.isRequired,
   onDrop: PropTypes.func.isRequired,
   showDashedBorder: PropTypes.bool,
-  responseAreaFill: PropTypes.string
+  responseAreaFill: PropTypes.string,
+  answerChoiceTransparency: PropTypes.bool
 };
 
 ImageDropTarget.defaultProps = {
