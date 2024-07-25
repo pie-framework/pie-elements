@@ -130,7 +130,7 @@ export class Choices extends React.Component {
           label="Choices"
           buttonLabel="ADD A CHOICE"
           onAdd={this.addChoice}
-          buttonDisabled={maxAnswerChoices && choices && maxAnswerChoices === choices?.length}
+          buttonDisabled={maxAnswerChoices && choices && choices?.length >= maxAnswerChoices}
           tooltip={addChoiceButtonTooltip}
         />
 
