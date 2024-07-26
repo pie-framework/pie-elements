@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { DropTarget } from '@pie-lib/pie-toolbox/drag';
 import { withStyles } from '@material-ui/core/styles';
 import { color } from '@pie-lib/pie-toolbox/render-ui';
+import cx from 'classnames';
 
 import PossibleResponse from './possible-response';
 import c from './constants';
@@ -17,34 +18,43 @@ const ImageDropTarget = ({
   onDragAnswerBegin,
   onDragAnswerEnd,
   showDashedBorder,
+  responseAreaFill,
   // dnd-related props
   connectDropTarget,
-}) =>
-  connectDropTarget(
+  answerChoiceTransparency
+}) => {
+  const containerClasses = cx(classes.responseContainer, {
+    [classes.responseContainerDashed]: showDashedBorder && !draggingElement.id,
+    [classes.responseContainerActive]: draggingElement.id,
+  });
+
+  const updatedContainerStyle = {
+    ...containerStyle,
+    ...(responseAreaFill ? { backgroundColor: responseAreaFill } : {})
+  };
+
+  return connectDropTarget(
     <div
-      className={`
-        ${classes.responseContainer}
-        ${showDashedBorder && !draggingElement.id ? classes.responseContainerDashed : ''}
-        ${draggingElement.id ? classes.responseContainerActive : ''}
-      `}
-      style={containerStyle}
+      className={containerClasses}
+      style={updatedContainerStyle}
     >
       {answers.length || (duplicateResponses && answers.length) ? (
         <div className={classes.answers}>
           {(answers || []).map((answer) => (
             <PossibleResponse
               canDrag={canDrag}
-              containerStyle={answer.isCorrect === undefined ? { borderWidth: 0 } : {}}
               key={answer.id}
               data={answer}
               onDragBegin={() => onDragAnswerBegin(answer)}
               onDragEnd={onDragAnswerEnd}
+              answerChoiceTransparency={answerChoiceTransparency}
             />
           ))}
         </div>
       ) : null}
     </div>,
   );
+}
 
 ImageDropTarget.propTypes = {
   answer: PropTypes.object,
@@ -56,6 +66,8 @@ ImageDropTarget.propTypes = {
   onDragAnswerEnd: PropTypes.func.isRequired,
   onDrop: PropTypes.func.isRequired,
   showDashedBorder: PropTypes.bool,
+  responseAreaFill: PropTypes.string,
+  answerChoiceTransparency: PropTypes.bool
 };
 
 ImageDropTarget.defaultProps = {

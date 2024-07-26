@@ -18,7 +18,7 @@ const Holder = withStyles((theme) => ({
     color: `rgba(${theme.palette.common.black}, 0.6)`,
   },
 }))(({ classes, type, index, isOver, disabled }) => (
-  <PlaceHolder isOver={isOver} disabled={disabled}>
+  <PlaceHolder type={type} isOver={isOver} disabled={disabled}>
     {type === 'target' && index !== undefined && <div className={classes.number}>{index}</div>}
   </PlaceHolder>
 ));

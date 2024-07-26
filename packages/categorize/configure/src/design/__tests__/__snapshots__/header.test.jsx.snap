@@ -11,8 +11,19 @@ exports[`Header snapshot renders 1`] = `
       Header
     </WithStyles(Typography)>
   </div>
-  <WithStyles(RawAddButton)
-    onClick={[MockFunction]}
-  />
+  <WithStyles(Tooltip)
+    classes={
+      Object {
+        "tooltip": undefined,
+      }
+    }
+    title=""
+  >
+    <span>
+      <WithStyles(RawAddButton)
+        onClick={[MockFunction]}
+      />
+    </span>
+  </WithStyles(Tooltip)>
 </div>
 `;

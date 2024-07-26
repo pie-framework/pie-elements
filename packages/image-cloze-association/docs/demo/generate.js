@@ -8,6 +8,7 @@ exports.model = (id, element) => ({
     scale: false, // this is not used
     height: 313,
   },
+  responseAreaFill: 'rgba(240,255,224,0.9)',
   response_container: {
     // this is not used
     wordwrap: true,
@@ -65,7 +66,6 @@ exports.model = (id, element) => ({
       ],
     },
   },
-  showDashedBorder: false,
   partialScoring: false,
   shuffle: true,
   rubricEnabled: false,

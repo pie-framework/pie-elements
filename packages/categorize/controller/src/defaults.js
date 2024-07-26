@@ -8,6 +8,7 @@ export default {
   allowMultiplePlacementsEnabled: multiplePlacements.enabled,
   categoriesPerRow: 2,
   maxChoicesPerCategory: 0,
+  maxAnswerChoices: 6,
   categories: [],
   alternates: [],
   correctResponse: [],

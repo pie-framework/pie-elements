@@ -85,7 +85,7 @@ export class Categories extends React.Component {
 
     const id = utils.firstAvailableIndex(
       model.categories.map((a) => a.id),
-      0,
+      1,
     );
     const data = { id, label: 'Category ' + id };
     const addRowLabel = model.categories.length % categoriesPerRow === 0;
