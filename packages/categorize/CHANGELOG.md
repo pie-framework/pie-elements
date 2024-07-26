@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.22.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@8.21.7...@pie-element/categorize@8.22.0) (2024-07-26)
+
+
+### Bug Fixes
+
+* **categorize:** default names starting from 1 categories and choices PD-2953 ([cb34665](https://github.com/pie-framework/pie-elements/commit/cb346651fbb756a7629de9402cd0bb0b17a1fc56))
+
+
+### Features
+
+* **categorize:** Prevent Decrease in maxAnswerChoices & add warning in case of invalid model PD-3003 ([22a3c14](https://github.com/pie-framework/pie-elements/commit/22a3c14836f483063083b198c65deca9ad22249e))
+* update pie-lib/pie-toolbox PD-2451, PD-3950, PD-3845 ([278d705](https://github.com/pie-framework/pie-elements/commit/278d7052dc7c17796ba196a2e397739e2e882b7f))
+* update pie-lib/pie-toolbox PD-3944, PD-3946, Pd-2450 ([ac34d93](https://github.com/pie-framework/pie-elements/commit/ac34d93fcc97e79cacddcd38c7509f3c96b69976))
+* **categorize:** Categorize authoring view settings should include a maxAnswerChoices property PD-3003 ([03e37d7](https://github.com/pie-framework/pie-elements/commit/03e37d7420ad11396b9b7c7dfb8488b9ebbba39e))
+* **categorize:** Update snapshots PD-3003 ([cdb25fe](https://github.com/pie-framework/pie-elements/commit/cdb25fe4ad3967efd9d15f03881f913fa5de18fb))
+
+
+
+
+
 ## [8.21.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@8.21.6...@pie-element/categorize@8.21.7) (2024-07-19)
 
 

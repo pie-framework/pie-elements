@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.22.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@5.21.7...@pie-element/image-cloze-association@5.22.0) (2024-07-26)
+
+
+### Bug Fixes
+
+* spacing ([ede3fee](https://github.com/pie-framework/pie-elements/commit/ede3fee87b6acf3f9f54cd508e323e5aed1ace36))
+* **image-cloze-association:** fixed controller duplicate methods in player to also use camelizeKeys method PD-3942 ([ba37a0c](https://github.com/pie-framework/pie-elements/commit/ba37a0c5591208f7bd5fe118cb067172b4db2495))
+
+
+### Features
+
+* add answerChoiceTransparency PD-3853 ([50859c3](https://github.com/pie-framework/pie-elements/commit/50859c37911345497c4dac3738d01ca748a87a2e))
+* update pie-lib/pie-toolbox PD-2451, PD-3950, PD-3845 ([278d705](https://github.com/pie-framework/pie-elements/commit/278d7052dc7c17796ba196a2e397739e2e882b7f))
+* update pie-lib/pie-toolbox PD-3944, PD-3946, Pd-2450 ([ac34d93](https://github.com/pie-framework/pie-elements/commit/ac34d93fcc97e79cacddcd38c7509f3c96b69976))
+* **image-cloze-association:** added new responseAreaFill property that sets a background color PD-3947 ([c9a3e1b](https://github.com/pie-framework/pie-elements/commit/c9a3e1bf1986dfe229fefcd468cbca6df59c6d19))
+
+
+
+
+
 ## [5.21.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@5.21.6...@pie-element/image-cloze-association@5.21.7) (2024-07-24)
 
 

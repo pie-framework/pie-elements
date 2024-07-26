@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.19.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@2.18.6...@pie-element/passage@2.19.0) (2024-07-26)
+
+
+### Bug Fixes
+
+* **passage:** ensured keyboard users are able to use the left and right arrow keys to return to the previous tab PD-3832 ([e0d69d1](https://github.com/pie-framework/pie-elements/commit/e0d69d1cf3e292916c721f106249ecff3ac83ee8))
+
+
+### Features
+
+* update pie-lib/pie-toolbox PD-2451, PD-3950, PD-3845 ([278d705](https://github.com/pie-framework/pie-elements/commit/278d7052dc7c17796ba196a2e397739e2e882b7f))
+* update pie-lib/pie-toolbox PD-3944, PD-3946, Pd-2450 ([ac34d93](https://github.com/pie-framework/pie-elements/commit/ac34d93fcc97e79cacddcd38c7509f3c96b69976))
+
+
+
+
+
 ## [2.18.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@2.18.5...@pie-element/passage@2.18.6) (2024-07-19)
 
 
