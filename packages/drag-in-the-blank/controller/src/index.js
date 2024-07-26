@@ -2,12 +2,10 @@ import reduce from 'lodash/reduce';
 import isEmpty from 'lodash/isEmpty';
 import { getAllCorrectResponses, choiceIsEmpty } from './utils';
 import { lockChoices, getShuffledChoices, partialScoring } from '@pie-lib/pie-toolbox/controller-utils';
+import defaults from './defaults';
 
 export const normalize = (question) => ({
-  rationaleEnabled: true,
-  promptEnabled: true,
-  teacherInstructionsEnabled: true,
-  studentInstructionsEnabled: true,
+  ...defaults,
   ...question,
 });
 
@@ -21,6 +19,8 @@ export const normalize = (question) => ({
 export function model(question, session, env, updateSession) {
   return new Promise(async (resolve) => {
     const normalizedQuestion = normalize(question);
+    console.log('normalizedQuestion', normalizedQuestion.emptyResponseAreaWidth);
+    console.log('normalizedQuestion', normalizedQuestion.emptyResponseAreaHeight);
     let feedback = {};
 
     if (env.mode === 'evaluate') {
