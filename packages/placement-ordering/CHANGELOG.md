@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.19.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@9.18.7...@pie-element/placement-ordering@9.19.0) (2024-07-26)
+
+
+### Features
+
+* update pie-lib/pie-toolbox PD-2451, PD-3950, PD-3845 ([278d705](https://github.com/pie-framework/pie-elements/commit/278d7052dc7c17796ba196a2e397739e2e882b7f))
+* update pie-lib/pie-toolbox PD-3944, PD-3946, Pd-2450 ([ac34d93](https://github.com/pie-framework/pie-elements/commit/ac34d93fcc97e79cacddcd38c7509f3c96b69976))
+* **placement-ordering:** send type to placeholder in order to apply styles differently PD-3946 ([6f30307](https://github.com/pie-framework/pie-elements/commit/6f303077ed5b9dc1bea23b846302359e7ba8d089))
+
+
+
+
+
 ## [9.18.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@9.18.6...@pie-element/placement-ordering@9.18.7) (2024-07-19)
 
 

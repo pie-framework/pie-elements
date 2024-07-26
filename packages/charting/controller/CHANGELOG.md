@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.17.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-controller@4.16.6...@pie-element/charting-controller@4.17.0) (2024-07-26)
+
+
+### Features
+
+* update pie-lib/pie-toolbox PD-2451, PD-3950, PD-3845 ([278d705](https://github.com/pie-framework/pie-elements/commit/278d7052dc7c17796ba196a2e397739e2e882b7f))
+* update pie-lib/pie-toolbox PD-3944, PD-3946, Pd-2450 ([ac34d93](https://github.com/pie-framework/pie-elements/commit/ac34d93fcc97e79cacddcd38c7509f3c96b69976))
+
+
+
+
+
 ## [4.16.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-controller@4.16.5...@pie-element/charting-controller@4.16.6) (2024-07-19)
 
 
