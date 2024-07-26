@@ -42,6 +42,12 @@ export default class CategorizeConfigure extends HTMLElement {
 
   set model(m) {
     this._model = CategorizeConfigure.createDefaultModel(m);
+
+    if (m.choices && m.choices.length >= m.maxAnswerChoices) {
+      this._model.maxAnswerChoices = m.choices.length;
+      console.warn("Max Answer Choices can't be less than choices length!");
+    }
+
     this.render();
   }
 

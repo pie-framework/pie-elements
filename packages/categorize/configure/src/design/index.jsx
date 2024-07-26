@@ -268,7 +268,7 @@ export class Design extends React.Component {
         ]),
       maxAnswerChoices: allowMaxAnswerChoices.settings && numberField(allowMaxAnswerChoices.label, {
         label: '',
-        min: 0,
+        min: choices?.length || 0,
         max: 30,
       }),
       allowMaxChoicesPerCategory: maxPlacements.settings && toggle(maxPlacements.label),
