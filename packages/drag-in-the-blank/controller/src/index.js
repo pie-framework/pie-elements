@@ -19,8 +19,6 @@ export const normalize = (question) => ({
 export function model(question, session, env, updateSession) {
   return new Promise(async (resolve) => {
     const normalizedQuestion = normalize(question);
-    console.log('normalizedQuestion', normalizedQuestion.emptyResponseAreaWidth);
-    console.log('normalizedQuestion', normalizedQuestion.emptyResponseAreaHeight);
     let feedback = {};
 
     if (env.mode === 'evaluate') {
