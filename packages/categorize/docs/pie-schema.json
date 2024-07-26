@@ -418,6 +418,11 @@
       "type": "string",
       "title": "language"
     },
+    "maxAnswerChoices": {
+      "description": "Maximum number of choices",
+      "type": "number",
+      "title": "maxAnswerChoices"
+    },
     "id": {
       "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
       "type": "string",

@@ -1021,6 +1021,22 @@
       ],
       "title": "languageChoices"
     },
+    "allowMaxAnswerChoices": {
+      "title": "ConfigureProp",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "Indicates if the item has to be displayed in the Settings Panel",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+          "type": "string",
+          "title": "label"
+        }
+      }
+    },
     "contentDimensions": {
       "description": "Indicates the dimensions configuration for the authoring container\nNote: Some items have a default minimum width because of their content, but if\nthe minWidth is lower than this, the overflow behavior will take care of that",
       "default": ": {}",
