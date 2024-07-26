@@ -90,11 +90,11 @@ describe('choices', () => {
         w.instance().addChoice();
         expect(onModelChanged).toBeCalledWith({
           choices: [
-            { id: '0', content: 'Choice 0' }
+            { id: '1', content: 'Choice 1' }
           ],
         });
       });
-      
+
       it('does not add choice when maxAnswerChoices is reached', () => {
         const newModel = { ...model, maxAnswerChoices: 1, choices: [{ id: '0', content: 'Choice 0' }] };
         w = wrapper({ model: newModel });
