@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.22.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@5.22.0...@pie-element/image-cloze-association@5.22.1) (2024-07-29)
+
+
+### Bug Fixes
+
+* avoid assigning to const ([523fbf7](https://github.com/pie-framework/pie-elements/commit/523fbf7b1e030aa8b556d788bc44632b06b59e7a))
+
+
+
+
+
 # [5.22.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@5.21.7...@pie-element/image-cloze-association@5.22.0) (2024-07-26)
 
 
