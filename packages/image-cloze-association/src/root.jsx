@@ -106,7 +106,8 @@ class ImageClozeAssociationComponent extends React.Component {
       model: { duplicateResponses },
       updateAnswer,
     } = this.props;
-    const { answers, possibleResponses, maxResponsePerZone } = this.state;
+    const { answers, maxResponsePerZone } = this.state;
+    let { possibleResponses } = this.state;
     let answersToStore;
 
     if (maxResponsePerZone === answers.filter((a) => a.containerIndex === responseContainerIndex).length) {
