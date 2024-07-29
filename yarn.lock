@@ -2260,9 +2260,9 @@
     unist-util-visit-children "^1.0.0"
 
 "@pie-framework/pie-configure-events@^1.2.0", "@pie-framework/pie-configure-events@^1.3.0":
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/@pie-framework/pie-configure-events/-/pie-configure-events-1.3.0.tgz#51c0a57868880ae09296736344fa31fb02619594"
-  integrity sha512-H+lizaOPvgDEqTw+dmLwM/w8eDdxSaOV5tlK8OtPq5m7lt5iih6ZoQyg9V6FI9zgDdqUP3N8X5DyxHbzU9qTzQ==
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/@pie-framework/pie-configure-events/-/pie-configure-events-1.4.1.tgz#992caa98ead9c7fa45e8d41b2337ede19491df99"
+  integrity sha512-lpVYLltoNqzafqGHiFovx6VBiT7TGUFf7QzccHogc0hkTuOQvqTA1nfqnjw0LVSJ9umJXXDBo6pTxTm5iXBR5w==
 
 "@pie-framework/pie-player-events@^0.1.0":
   version "0.1.0"
