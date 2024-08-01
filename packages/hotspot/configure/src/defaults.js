@@ -1,5 +1,7 @@
 export default {
   model: {
+    selectedHotspotColor: 'rgb(255, 215, 0, 0.25)',
+    hoverOutlineColor: 'rgb(50, 205, 50)',
     prompt: '',
     toolbarEditorPosition: 'bottom',
     imageUrl: '',

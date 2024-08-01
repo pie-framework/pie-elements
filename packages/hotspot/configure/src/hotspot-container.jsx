@@ -157,7 +157,10 @@ export class Container extends Component {
       outlineColor,
       strokeWidth,
       preserveAspectRatioEnabled,
+      hoverOutlineColor,
+      selectedHotspotColor,
     } = this.props;
+    
     const { dropzoneActive, dragEnabled } = this.state;
     const { shapes, selectedShape } = this.state;
 
@@ -227,6 +230,8 @@ export class Container extends Component {
                 handleFinishDrawing={this.handleFinishDrawing}
                 imageUrl={imageUrl}
                 hotspotColor={hotspotColor}
+                selectedHotspotColor={selectedHotspotColor}
+                hoverOutlineColor={hoverOutlineColor}
                 multipleCorrect={multipleCorrect}
                 onUpdateImageDimension={onUpdateImageDimension}
                 onUpdateShapes={this.onUpdateShapes}
@@ -317,6 +322,8 @@ Container.propTypes = {
   dimensions: PropTypes.object.isRequired,
   imageUrl: PropTypes.string.isRequired,
   hotspotColor: PropTypes.string.isRequired,
+  selectedHotspotColor: PropTypes.string,
+  hoverOutlineColor: PropTypes.string,
   multipleCorrect: PropTypes.bool.isRequired,
   onImageUpload: PropTypes.func.isRequired,
   onUpdateImageDimension: PropTypes.func.isRequired,

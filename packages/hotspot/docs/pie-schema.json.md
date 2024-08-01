@@ -110,6 +110,14 @@ the width of the section
 
 The color that fills the hotspot
 
+# `selectedHotspotColor` (string)
+
+The color that fills the hotspot
+
+# `hoverOutlineColor` (string)
+
+The color of the rectangular outline
+
 # `hotspotList` (array)
 
 The filling hotspot color options

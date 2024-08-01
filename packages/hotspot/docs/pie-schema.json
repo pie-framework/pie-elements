@@ -164,6 +164,16 @@
       "type": "string",
       "title": "hotspotColor"
     },
+    "selectedHotspotColor": {
+      "description": "The color that fills the hotspot",
+      "type": "string",
+      "title": "selectedHotspotColor"
+    },
+    "hoverOutlineColor": {
+      "description": "The color of the rectangular outline",
+      "type": "string",
+      "title": "hoverOutlineColor"
+    },
     "hotspotList": {
       "description": "The filling hotspot color options",
       "type": "array",
