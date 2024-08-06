@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Circle, Group, Transformer } from 'react-konva';
+import { Circle, Group, Rect, Transformer } from 'react-konva';
 import { withStyles } from '@material-ui/core/styles';
 import DeleteWidget from './DeleteWidget';
 
@@ -76,8 +76,21 @@ class CircleComponent extends React.Component {
   };
 
   render() {
-    const { classes, correct, radius, hotspotColor, id, outlineColor, x, y, strokeWidth = 5 } = this.props;
+    const {
+      classes,
+      correct,
+      radius,
+      hotspotColor,
+      id,
+      outlineColor,
+      x,
+      y,
+      strokeWidth = 5,
+      selectedHotspotColor,
+      hoverOutlineColor,
+    } = this.props;
 
+    const { hovered, isDragging } = this.state;
     // Ensure radius is valid
     const validRadius = isNaN(radius) || radius <= 0 ? 5 : radius;
 
@@ -87,7 +100,7 @@ class CircleComponent extends React.Component {
           classes={classes.base}
           ref={this.shapeRef}
           radius={validRadius}
-          fill={hotspotColor}
+          fill={correct ? selectedHotspotColor : hotspotColor}
           onClick={this.handleClick}
           onTap={this.handleClick}
           draggable
@@ -100,11 +113,20 @@ class CircleComponent extends React.Component {
           x={x}
           y={y}
         />
-        {!this.state.isDragging && this.state.hovered && (
-          <DeleteWidget id={id} radius={validRadius} x={x} y={y} handleWidgetClick={this.handleDelete} isCircle={true} />
+
+        {!isDragging && hovered && (
+          <DeleteWidget
+            id={id}
+            radius={validRadius}
+            x={x}
+            y={y}
+            handleWidgetClick={this.handleDelete}
+            isCircle={true}
+          />
         )}
         {this.state.hovered && (
           <Transformer
+            borderStroke={hoverOutlineColor || null}
             ref={this.trRef}
             rotateEnabled={false}
             keepRatio={true}
@@ -154,6 +176,8 @@ CircleComponent.propTypes = {
   id: PropTypes.string.isRequired,
   radius: PropTypes.number.isRequired,
   hotspotColor: PropTypes.string.isRequired,
+  selectedHotspotColor: PropTypes.string,
+  hoverOutlineColor: PropTypes.string,
   onClick: PropTypes.func.isRequired,
   onDeleteShape: PropTypes.func.isRequired,
   onDragEnd: PropTypes.func.isRequired,

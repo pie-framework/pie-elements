@@ -290,6 +290,8 @@ PolComponent.propTypes = {
   imageHeight: PropTypes.number,
   imageWidth: PropTypes.number,
   hotspotColor: PropTypes.string.isRequired,
+  selectedHotspotColor: PropTypes.string,
+  hoverOutlineColor: PropTypes.string,
   onClick: PropTypes.func.isRequired,
   addPolygonPoint: PropTypes.func.isRequired,
   onDeleteShape: PropTypes.func.isRequired,

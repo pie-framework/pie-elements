@@ -162,6 +162,8 @@ RectComponent.propTypes = {
   id: PropTypes.string.isRequired,
   height: PropTypes.number.isRequired,
   hotspotColor: PropTypes.string.isRequired,
+  selectedHotspotColor: PropTypes.string,
+  hoverOutlineColor: PropTypes.string,
   onClick: PropTypes.func.isRequired,
   onDeleteShape: PropTypes.func.isRequired,
   onDragEnd: PropTypes.func.isRequired,
