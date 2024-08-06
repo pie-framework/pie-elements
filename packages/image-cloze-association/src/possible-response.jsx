@@ -75,9 +75,6 @@ const styles = () => ({
     alignItems: 'center',
     justifyContent: 'center',
     minHeight: '28px',
-    padding: '0 3px',
-    marginLeft: 2,
-    marginTop: 2,
     width: 'fit-content',
   },
   answerChoiceTransparency: {

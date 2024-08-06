@@ -2,7 +2,7 @@ export default {
   model: {
     disabled: false,
     mode: 'gather',
-    prompt: 'Use the inputs to complete the sentence',
+    prompt: '',
     markup: '',
     choices: [],
     choicesPosition: 'below',
