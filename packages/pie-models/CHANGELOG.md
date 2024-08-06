@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.34.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.33.0...@pie-element/pie-models@13.34.0) (2024-08-06)
+
+
+### Features
+
+* **hotspot:** Add selectedHotspotColor and hoverOutlineColor support PD-3852 ([fd148d4](https://github.com/pie-framework/pie-elements/commit/fd148d423dfca651b8c420d2e2913c7df4dda0b7))
+
+
+
+
+
 # [13.33.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.32.0...@pie-element/pie-models@13.33.0) (2024-07-26)
 
 

@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.24.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@6.23.0...@pie-element/hotspot-configure@6.24.0) (2024-08-06)
+
+
+### Features
+
+* **hotspot:** Add selectedHotspotColor and hoverOutlineColor support PD-3852 ([e6f8ed8](https://github.com/pie-framework/pie-elements/commit/e6f8ed887a0ceaaaaf11d78d5a736c723f19600c))
+* **hotspot:** Add selectedHotspotColor and hoverOutlineColor support PD-3852 ([422a426](https://github.com/pie-framework/pie-elements/commit/422a426e0189e7b4110216a8ef3599bbf74db17f))
+* update pie-lib PD-3996, PD-3792, Pd-3791, PD-3841, PD-3956, PD-3569, PD-3855 ([6343d1b](https://github.com/pie-framework/pie-elements/commit/6343d1b00c5a4a3d88de70ed13a8aa5c1a43002d))
+* **hotspot:** Add selectedHotspotColor and hoverOutlineColor support PD-3852 ([fd148d4](https://github.com/pie-framework/pie-elements/commit/fd148d423dfca651b8c420d2e2913c7df4dda0b7))
+
+
+
+
+
 # [6.23.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@6.22.6...@pie-element/hotspot-configure@6.23.0) (2024-07-26)
 
 
