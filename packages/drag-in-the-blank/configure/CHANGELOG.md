@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.20.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-configure@5.19.0...@pie-element/drag-in-the-blank-configure@5.20.0) (2024-08-06)
+
+
+### Features
+
+* update pie-lib PD-3996, PD-3792, Pd-3791, PD-3841, PD-3956, PD-3569, PD-3855 ([6343d1b](https://github.com/pie-framework/pie-elements/commit/6343d1b00c5a4a3d88de70ed13a8aa5c1a43002d))
+* **drag-in-the-blank:** adjust defaults in controller PD-3841 ([08b5e8b](https://github.com/pie-framework/pie-elements/commit/08b5e8b47d4078230fa05a8c3ae0297984956d54))
+
+
+
+
+
 # [5.19.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-configure@5.18.6...@pie-element/drag-in-the-blank-configure@5.19.0) (2024-07-26)
 
 

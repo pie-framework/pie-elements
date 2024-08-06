@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.23.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@5.22.1...@pie-element/image-cloze-association@5.23.0) (2024-08-06)
+
+
+### Features
+
+* update pie-lib PD-3996, PD-3792, Pd-3791, PD-3841, PD-3956, PD-3569, PD-3855 ([6343d1b](https://github.com/pie-framework/pie-elements/commit/6343d1b00c5a4a3d88de70ed13a8aa5c1a43002d))
+* use a larger padding if there's enough room, use smaller padding otherwise PD-3871 ([ee37484](https://github.com/pie-framework/pie-elements/commit/ee37484a5dbbdb9616bd3a82f15e6db2cdc7ca95))
+
+
+
+
+
 ## [5.22.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@5.22.0...@pie-element/image-cloze-association@5.22.1) (2024-07-29)
 
 
