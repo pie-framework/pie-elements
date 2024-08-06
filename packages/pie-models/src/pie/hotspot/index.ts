@@ -42,6 +42,12 @@ export interface HotspotPie extends PieModel {
   /**  The color that fills the hotspot */
   hotspotColor?: string;
 
+  /**  The color that fills the hotspot */
+  selectedHotspotColor?: string;
+
+  /**  The color of the rectangular outline */
+  hoverOutlineColor?: string;
+
   /**  The filling hotspot color options  */
   hotspotList?: string[];
 

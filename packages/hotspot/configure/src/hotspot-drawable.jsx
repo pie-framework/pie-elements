@@ -164,60 +164,61 @@ export class Drawable extends React.Component {
 
     // when a shape is moved completely outside the canvas
     // remove that shape
-    const newShapes = shapes.map((shape) => {
-      if (shape.id !== id) {
+    const newShapes = shapes
+      .map((shape) => {
+        if (shape.id !== id) {
+          return shape;
+        }
+
+        let newX = updatedProps.x;
+        let newY = updatedProps.y;
+
+        if (shape.group === 'rectangles') {
+          if (newX + shape.width < 0 || newX > canvasWidth || newY + shape.height < 0 || newY > canvasHeight) {
+            return null;
+          }
+
+          return { ...shape, ...updatedProps };
+        }
+
+        if (shape.group === 'circles') {
+          const radius = shape.radius;
+          if (newX + radius < 0 || newX - radius > canvasWidth || newY + radius < 0 || newY - radius > canvasHeight) {
+            return null;
+          }
+
+          return { ...shape, ...updatedProps };
+        }
+
+        if (shape.group === 'polygons') {
+          const points = shape.points;
+          const xValues = points.map((point) => point.x);
+          const yValues = points.map((point) => point.y);
+
+          let minX = Math.min(...xValues);
+          let minY = Math.min(...yValues);
+          let maxX = Math.max(...xValues);
+          let maxY = Math.max(...yValues);
+
+          // Calculate deltas based on the first point as a reference
+          const deltaX = updatedProps['points'][0].x - points[0].x;
+          const deltaY = updatedProps['points'][0].y - points[0].y;
+
+          minX = minX + deltaX;
+          maxX = maxX + deltaX;
+          minY = minY + deltaY;
+          maxY = maxY + deltaY;
+
+          if (maxX < 0 || minX > canvasWidth || maxY < 0 || minY > canvasHeight) {
+            return null;
+          }
+
+          return { ...shape, ...updatedProps };
+        }
+
         return shape;
-      }
-
-      let newX = updatedProps.x;
-      let newY = updatedProps.y;
-
-      if (shape.group === 'rectangles') {
-        if (newX + shape.width < 0 || newX > canvasWidth || newY + shape.height < 0 || newY > canvasHeight) {
-          return null;
-        }
-
-        return { ...shape, ...updatedProps };
-      }
-
-
-      if (shape.group === 'circles') {
-        const radius = shape.radius;
-        if (newX + radius < 0 || newX - radius > canvasWidth || newY + radius < 0 || newY - radius > canvasHeight) {
-          return null;
-        }
-
-        return { ...shape,...updatedProps};
-      }
-
-      if (shape.group === 'polygons') {
-        const points = shape.points;
-        const xValues = points.map(point => point.x);
-        const yValues = points.map(point => point.y);
-
-        let minX = Math.min(...xValues);
-        let minY = Math.min(...yValues);
-        let maxX = Math.max(...xValues);
-        let maxY = Math.max(...yValues);
-
-        // Calculate deltas based on the first point as a reference
-        const deltaX = updatedProps['points'][0].x - points[0].x;
-        const deltaY = updatedProps['points'][0].y - points[0].y;
-
-        minX = minX + deltaX;
-        maxX = maxX + deltaX;
-        minY = minY + deltaY;
-        maxY = maxY + deltaY;
-
-        if (maxX < 0 || minX > canvasWidth || maxY < 0 || minY > canvasHeight) {
-          return null;
-        }
-
-        return { ...shape, ...updatedProps };
-      }
-
-      return shape;
-    }).filter(shape => shape !== null);
+      })
+      .filter((shape) => shape !== null);
 
     onUpdateShapes(cloneDeep(newShapes));
   };
@@ -347,7 +348,8 @@ export class Drawable extends React.Component {
       isDrawingShapeId: undefined,
     });
     this.props.onDeleteShape(id);
-  }
+  };
+
   /// end of handling Image section
 
   render() {
@@ -359,6 +361,8 @@ export class Drawable extends React.Component {
       outlineColor,
       shapes,
       strokeWidth,
+      hoverOutlineColor,
+      selectedHotspotColor,
     } = this.props;
 
     const {
@@ -421,10 +425,14 @@ export class Drawable extends React.Component {
                 <Tag
                   {...(shape.group === SHAPE_GROUPS.CIRCLES ? { radius: shape.radius } : {})}
                   {...(shape.group === SHAPE_GROUPS.RECTANGLES ? { height: shape.height, width: shape.width } : {})}
-                  {...(shape.group === SHAPE_GROUPS.POLYGONS ? { points: shape.points, addPolygonPoint: (e) => this.addPolygonPoint(e) } : {})}
+                  {...(shape.group === SHAPE_GROUPS.POLYGONS
+                    ? { points: shape.points, addPolygonPoint: (e) => this.addPolygonPoint(e) }
+                    : {})}
                   correct={shape.correct}
                   isDrawing={isDrawing}
                   hotspotColor={hotspotColor}
+                  hoverOutlineColor={hoverOutlineColor}
+                  selectedHotspotColor={selectedHotspotColor}
                   id={shape.id}
                   key={i}
                   onClick={() => this.handleOnSetAsCorrect(shape)}
@@ -487,6 +495,8 @@ Drawable.propTypes = {
   imageUrl: PropTypes.string.isRequired,
   handleFinishDrawing: PropTypes.func.isRequired,
   hotspotColor: PropTypes.string.isRequired,
+  selectedHotspotColor: PropTypes.string,
+  hoverOutlineColor: PropTypes.string,
   multipleCorrect: PropTypes.bool.isRequired,
   onUpdateImageDimension: PropTypes.func.isRequired,
   onUpdateShapes: PropTypes.func.isRequired,

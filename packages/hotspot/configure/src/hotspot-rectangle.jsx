@@ -74,20 +74,48 @@ class RectComponent extends React.Component {
   };
 
   render() {
-    const { classes, correct, height, hotspotColor, id, outlineColor, width, x, y, strokeWidth = 5 } = this.props;
+    const {
+      classes,
+      correct,
+      height,
+      hotspotColor,
+      id,
+      outlineColor,
+      width,
+      x,
+      y,
+      strokeWidth = 5,
+      selectedHotspotColor,
+      hoverOutlineColor,
+    } = this.props;
+
+    const { hovered } = this.state;
+
     return (
       <Group classes={classes.group} onMouseLeave={this.handleMouseLeave} onMouseEnter={this.handleMouseEnter}>
+        {hoverOutlineColor && hovered && (
+          <Rect
+            x={x}
+            y={y}
+            width={width}
+            height={height}
+            stroke={hoverOutlineColor}
+            strokeWidth={2}
+            listening={false}
+          />
+        )}
+
         <Rect
           classes={classes.base}
           ref={this.shapeRef}
           width={width}
           height={height}
-          fill={hotspotColor}
+          fill={correct ? selectedHotspotColor : hotspotColor}
           onClick={this.handleClick}
           onTap={this.handleClick}
           draggable
-          stroke={outlineColor}
-          strokeWidth={correct ? strokeWidth : 0}
+          stroke={hovered ? 'transparent' : outlineColor}
+          strokeWidth={correct && !hovered ? strokeWidth : 0}
           onDragStart={() => this.setState({ isDragging: true })}
           onDragEnd={this.handleOnDragEnd}
           onTransformStart={() => this.setState({ isDragging: true })}
@@ -134,6 +162,8 @@ RectComponent.propTypes = {
   id: PropTypes.string.isRequired,
   height: PropTypes.number.isRequired,
   hotspotColor: PropTypes.string.isRequired,
+  selectedHotspotColor: PropTypes.string,
+  hoverOutlineColor: PropTypes.string,
   onClick: PropTypes.func.isRequired,
   onDeleteShape: PropTypes.func.isRequired,
   onDragEnd: PropTypes.func.isRequired,

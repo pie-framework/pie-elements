@@ -214,6 +214,8 @@ export class Root extends React.Component {
           hasErrors={!!shapesError || !!selectionsError}
           hotspotColor={model.hotspotColor}
           outlineColor={model.outlineColor}
+          selectedHotspotColor={model.selectedHotspotColor}
+          hoverOutlineColor={model.hoverOutlineColor}
           onUpdateImageDimension={onUpdateImageDimension}
           onUpdateShapes={onUpdateShapes}
           onImageUpload={onImageUpload}
