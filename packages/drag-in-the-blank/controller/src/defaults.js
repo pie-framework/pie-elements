@@ -1,6 +1,15 @@
 export default {
-  prompt: 'Which of these northern European countries are EU members?',
-  choiceMode: 'checkbox',
-  choicePrefix: 'numbers',
+  disabled: false,
+  mode: 'gather',
+  prompt: '',
+  markup: '',
   choices: [],
+  choicesPosition: 'below',
+  correctResponse: {},
+  duplicates: true,
+  rationaleEnabled: true,
+  promptEnabled: true,
+  teacherInstructionsEnabled: true,
+  studentInstructionsEnabled: true,
+  toolbarEditorPosition: 'bottom',
 };
