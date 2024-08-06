@@ -174,8 +174,9 @@ class PolComponent extends React.Component {
     const calculatedStrokeWidth = correct ? strokeWidth : hovered ? 1 : 0;
     const calculatedStroke = correct ? outlineColor : hovered ? HOVERED_COLOR : '';
 
-    return (
-      <Group classes={classes.group} onMouseLeave={this.handleMouseLeave} onMouseEnter={this.handleMouseEnter}>
+    return (<Group classes={classes.group} onMouseLeave={this.handleMouseLeave} onMouseEnter={this.handleMouseEnter}
+                   onClick={() => this.props.onClick(this.state)}
+      >
         <Line
           classes={classes.base}
           points={this.serialize(points)}
@@ -201,7 +202,7 @@ class PolComponent extends React.Component {
               x={point.x}
               y={point.y}
               radius={5}
-              fill={'white'}
+              fill={index === 0 && id === 'newPolygon' ? 'blue' : 'white'}
               stroke={HOVERED_COLOR}
               strokeWidth={1}
               onClick={this.handleClick}
