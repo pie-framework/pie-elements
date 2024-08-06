@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.17.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric-controller@2.17.0...@pie-element/rubric-controller@2.17.1) (2024-08-06)
+
+
+### Bug Fixes
+
+* update pie-lib ([6ed3619](https://github.com/pie-framework/pie-elements/commit/6ed3619e0c670165ab45518e5bdbb40586c5adf8))
+
+
+
+
+
 # [2.17.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric-controller@2.16.0...@pie-element/rubric-controller@2.17.0) (2024-08-06)
 
 

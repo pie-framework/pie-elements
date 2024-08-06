@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.20.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@5.20.0...@pie-element/drag-in-the-blank@5.20.1) (2024-08-06)
+
+
+### Bug Fixes
+
+* update pie-lib ([6ed3619](https://github.com/pie-framework/pie-elements/commit/6ed3619e0c670165ab45518e5bdbb40586c5adf8))
+
+
+
+
+
 # [5.20.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@5.19.0...@pie-element/drag-in-the-blank@5.20.0) (2024-08-06)
 
 
