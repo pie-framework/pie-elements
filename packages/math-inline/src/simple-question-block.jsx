@@ -14,41 +14,24 @@ export class SimpleQuestionBlockRaw extends React.Component {
     emptyResponse: PropTypes.bool,
     session: PropTypes.object.isRequired,
     showCorrect: PropTypes.bool,
+    onSubFieldFocus: PropTypes.func.isRequired,
+    showKeypad: PropTypes.bool.isRequired,
   };
 
   constructor(props) {
     super(props);
 
-    this.state = {
-      showKeypad: true,
-    };
     this.mathToolBarId = `math-toolbar-${new Date().getTime()}`;
   }
 
-  componentDidMount() {
-    window.addEventListener('click', this.handleClick);
-  }
+  onFocus = () => {
+    const { onSubFieldFocus } = this.props;
 
-  componentWillUnmount() {
-    window.removeEventListener('click', this.handleClick);
-  }
-
-  mathToolBarContainsTarget = (e) => document.getElementById(this.mathToolBarId).contains(e.target);
-
-  handleClick = (e) => {
-    try {
-      if (!this.mathToolBarContainsTarget(e)) {
-        this.setState({ showKeypad: false });
-      }
-    } catch (e) {
-      // console.log(e.toString());
-    }
+    onSubFieldFocus(this.mathToolBarId);
   };
 
-  onFocus = () => this.setState({ showKeypad: true });
-
   render() {
-    const { classes, model, showCorrect, session, emptyResponse, onSimpleResponseChange } = this.props;
+    const { classes, model, showCorrect, session, emptyResponse, onSimpleResponseChange, showKeypad } = this.props;
     const { config, disabled, correctness } = model || {};
 
     if (!config) {
@@ -59,7 +42,7 @@ export class SimpleQuestionBlockRaw extends React.Component {
     const { responses, equationEditor } = config;
 
     return (
-      <div className={classes.expression}>
+      <div className={classes.expression}  data-keypad={true}>
         {showCorrect || disabled ? (
           <div
             className={cx(classes.static, {
@@ -81,7 +64,7 @@ export class SimpleQuestionBlockRaw extends React.Component {
               onDone={() => {}}
               onFocus={this.onFocus}
               controlledKeypad={true}
-              showKeypad={this.state.showKeypad}
+              showKeypad={showKeypad}
               hideDoneButton={true}
             />
           </div>
