@@ -259,8 +259,15 @@ export class Main extends React.Component {
         setTimeout(() => renderMath(this.root), 100);
     }
 
-    componentDidUpdate() {
+    componentDidUpdate(prevProps, prevState) {
         this.handleAnswerBlockDomUpdate();
+
+        const prevResponseType = prevProps.model?.config?.responseType;
+        const currentResponseType = this.props.model?.config?.responseType;
+    
+        if (prevResponseType !== currentResponseType) {
+          this.updateAria();
+        }
     }
 
     updateAria = () => {
@@ -299,15 +306,68 @@ export class Main extends React.Component {
             });
         }
     };
+
+    focusFirstKeypadElement = () => {
+        setTimeout(() => {
+          const keypadElement = document.querySelector('[data-keypad]');
+
+          if (keypadElement) {
+            const firstButton = keypadElement.querySelector("button, [role='button']");
+
+            if (firstButton) {
+              firstButton.focus();
+            }
+          }
+        }, 0);
+    };
+
+    handleKeyDown = (event, id) => {
+        const isAnswerInputFocused = document.activeElement.getAttribute('aria-label') === 'Enter answer.';
+        const isClickOrTouchEvent = event.type === 'click' || event.type === 'touchstart';
+    
+        if (isAnswerInputFocused && (event.key === 'ArrowDown' || isClickOrTouchEvent)) {
+          this.setState({ activeAnswerBlock: id }, () => {
+            if (event.key === 'ArrowDown') {
+              this.focusFirstKeypadElement();
+            }
+          });
+        }
+    
+        if (!isAnswerInputFocused && isClickOrTouchEvent) {
+          this.setState({ activeAnswerBlock: '' });
+        }
+    
+        if (event.key === 'Escape') {
+          this.setState({ activeAnswerBlock: '' });
+        }
+      };
+
+      onSubFieldFocus = (id) => {
+        const handleEvent = (event) => {
+          this.handleKeyDown(event, id);
+        };
+    
+        document.addEventListener('keydown', handleEvent);
+        document.addEventListener('click', handleEvent);
+        document.addEventListener('touchstart', handleEvent);
+      };
+    
+      cleanupKeyDownListener = () => {
+        document.removeEventListener('keydown', this.handleEvent);
+        document.removeEventListener('click', this.handleEvent);
+        document.removeEventListener('touchstart', this.handleEvent);
+      };
+    
+      componentWillUnmount() {
+        if (this.cleanupKeyDownListener) {
+          this.cleanupKeyDownListener();
+        }
+      }
     
   onDone = () => {};
 
     onSimpleResponseChange = (response) => {
         this.setState((state) => ({session: {...state.session, response}}), this.callOnSessionChange);
-    };
-
-    onSubFieldFocus = (id) => {
-        this.setState({activeAnswerBlock: id});
     };
 
     toNodeData = (data) => {
@@ -559,6 +619,8 @@ export class Main extends React.Component {
                                     emptyResponse={emptyResponse}
                                     model={model}
                                     session={session}
+                                    onSubFieldFocus={this.onSubFieldFocus}
+                                    showKeypad={!!activeAnswerBlock}
                                 />
                             )}
 
