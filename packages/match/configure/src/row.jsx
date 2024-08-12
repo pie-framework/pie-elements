@@ -165,7 +165,7 @@ export class Row extends React.Component {
             <div key={rowIdx} className={classes.rowItem}>
               {model.choiceMode === 'radio' ? (
                 <Radio
-                  className={classNames({ [classes.errorResponse]: error?.includes('No correct response defined.') })}
+                  className={classNames(classes.radioButton, 'cioco', { [classes.errorResponse]: error?.includes('No correct response defined.') })}
                   onChange={this.onRowValueChange(idx, rowIdx)}
                   checked={rowValue === true}
                 />
@@ -237,6 +237,11 @@ const styles = (theme) => ({
     alignItems: 'center',
     minWidth: '150px',
     padding: `0 ${theme.spacing.unit}px`,
+  },
+  radioButton: {
+    '& input': {
+      width: '100% !important',
+    },
   },
   deleteIcon: {
     flex: 0.5,
