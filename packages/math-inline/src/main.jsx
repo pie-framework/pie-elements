@@ -334,11 +334,7 @@ export class Main extends React.Component {
           });
         }
     
-        if (!isAnswerInputFocused && isClickOrTouchEvent) {
-          this.setState({ activeAnswerBlock: '' });
-        }
-    
-        if (event.key === 'Escape') {
+        if ((!isAnswerInputFocused && isClickOrTouchEvent) || event.key === 'Escape') {
           this.setState({ activeAnswerBlock: '' });
         }
       };
