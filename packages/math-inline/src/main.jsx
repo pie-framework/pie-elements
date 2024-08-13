@@ -297,7 +297,8 @@ export class Main extends React.Component {
                         instructionsElement = document.createElement('span');
                         instructionsElement.id = instructionsId;
                         instructionsElement.className = classes.srOnly;
-                        instructionsElement.textContent = 'This field automatically displays a math keypad. Both keypad and keyboard input are accepted, and keyboard entry accepts LaTeX markup.';
+                        instructionsElement.textContent =
+                        'This field supports both keypad and keyboard input. Use the keyboard to access and interact with the on-screen math keypad, which accepts LaTeX markup. Use the down arrow key to open the keypad and navigate its buttons. Use the escape key to close the keypad and return to the input field.';
                         parent.insertBefore(instructionsElement, elem);
                     }
     
