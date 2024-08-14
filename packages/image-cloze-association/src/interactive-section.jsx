@@ -24,7 +24,7 @@ class InteractiveSection extends React.Component {
     return classes[styleProp];
   }
 
-  getPositionDirection (choicePosition) {
+  getPositionDirection(choicePosition) {
     let flexDirection;
 
     switch (choicePosition) {
@@ -44,15 +44,13 @@ class InteractiveSection extends React.Component {
     }
 
     return flexDirection;
-  };
+  }
 
   render() {
     const { children, responseCorrect, uiStyle } = this.props;
     const classname = this.getClassname();
-    const { possibilityListPosition = 'bottom'} = uiStyle || {};
-    const style = {
-      flexDirection: this.getPositionDirection(possibilityListPosition),
-    };
+    const { possibilityListPosition = 'bottom' } = uiStyle || {};
+    const style = { flexDirection: this.getPositionDirection(possibilityListPosition) };
     const evaluationStyle = {
       display: 'flex',
       margin: '0 auto',

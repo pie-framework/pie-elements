@@ -5,7 +5,7 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { ShowRationale } from '@pie-lib/pie-toolbox/icons';
 import { color, Collapsible, PreviewPrompt, hasText } from '@pie-lib/pie-toolbox/render-ui';
 import { withStyles } from '@material-ui/core/styles';
-import {CorrectAnswerToggle} from '@pie-lib/pie-toolbox/correct-answer-toggle';
+import { CorrectAnswerToggle } from '@pie-lib/pie-toolbox/correct-answer-toggle';
 import Translator from '@pie-lib/pie-toolbox/translator';
 
 const { translator } = Translator;
@@ -30,7 +30,7 @@ const styles = (theme) => ({
   },
   rationale: {
     marginTop: theme.spacing.unit * 2,
-  }
+  },
 });
 
 class ImageClozeAssociationComponent extends React.Component {
@@ -89,12 +89,12 @@ class ImageClozeAssociationComponent extends React.Component {
   };
 
   filterPossibleAnswers = (possibleResponses, answer) => {
-    const index = possibleResponses.findIndex(response => response.value === answer.value);
+    const index = possibleResponses.findIndex((response) => response.value === answer.value);
 
     if (index >= 0) {
       return [
-        ...possibleResponses.slice(0, index),       // Elements before the found item
-        ...possibleResponses.slice(index + 1)       // Elements after the found item
+        ...possibleResponses.slice(0, index), // Elements before the found item
+        ...possibleResponses.slice(index + 1), // Elements after the found item
       ];
     }
 
@@ -170,9 +170,7 @@ class ImageClozeAssociationComponent extends React.Component {
       answers: answersToStore,
       possibleResponses:
         // for single response per container remove answer from possible responses
-        duplicateResponses
-          ? possibleResponses
-          : this.filterPossibleAnswers(possibleResponses, answer)
+        duplicateResponses ? possibleResponses : this.filterPossibleAnswers(possibleResponses, answer),
     });
     updateAnswer(answersToStore);
   };
@@ -224,7 +222,7 @@ class ImageClozeAssociationComponent extends React.Component {
         rationale,
         language,
         uiStyle = {},
-        answerChoiceTransparency
+        answerChoiceTransparency,
       },
     } = this.props;
     const {
@@ -253,8 +251,10 @@ class ImageClozeAssociationComponent extends React.Component {
       });
     }
 
-    const warningMessage = translator.t('imageClozeAssociation.reachedLimit_other',
-      { lng: language, count: maxResponsePerZone });
+    const warningMessage = translator.t('imageClozeAssociation.reachedLimit_other', {
+      lng: language,
+      count: maxResponsePerZone,
+    });
 
     let answersToShow =
       responseCorrect !== undefined ? getAnswersCorrectness(answers, validation, duplicateResponses) : answers;
@@ -281,7 +281,12 @@ class ImageClozeAssociationComponent extends React.Component {
 
         <PreviewPrompt defaultClassName={classes.stimulus} prompt={stimulus} />
 
-        <CorrectAnswerToggle show={showToggle} toggled={showCorrect} onToggle={this.toggleCorrect} language={language}/>
+        <CorrectAnswerToggle
+          show={showToggle}
+          toggled={showCorrect}
+          onToggle={this.toggleCorrect}
+          language={language}
+        />
 
         {showCorrect && showToggle ? (
           <InteractiveSection responseCorrect={true} uiStyle={uiStyle}>
@@ -325,6 +330,7 @@ class ImageClozeAssociationComponent extends React.Component {
               onDragBegin={this.beginDrag}
               onDragEnd={this.handleOnDragEnd}
               answerChoiceTransparency={answerChoiceTransparency}
+              customStyle={{ minWidth: image?.width || 'fit-content' }}
             />
           </InteractiveSection>
         )}
