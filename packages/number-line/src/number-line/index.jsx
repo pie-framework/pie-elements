@@ -209,7 +209,6 @@ export class NumberLine extends React.Component {
       fraction,
     };
 
-    console.log('this.props', this.props);
     let getAnswerElements = () => {
       return (answers || []).map((e, index) => {
         let out = cloneDeep(e);
