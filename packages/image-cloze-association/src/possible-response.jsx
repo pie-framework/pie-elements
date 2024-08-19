@@ -32,17 +32,21 @@ export class PossibleResponse extends React.Component {
     }
 
     return connectDragSource(
-      <div className={
-          classNames([
-              classes.base,
-              {
-                  [classes.answerChoiceTransparency]: answerChoiceTransparency,
-                  [classes[correctnessClass]]: !!correctnessClass,
-              }
-            ])}
-           style={containerStyle}
+      <div
+        className={classNames([
+          classes.base,
+          {
+            [classes.answerChoiceTransparency]: answerChoiceTransparency,
+            [classes[correctnessClass]]: !!correctnessClass,
+          },
+        ])}
+        style={containerStyle}
       >
-        <PreviewPrompt className={classNames([classes.span, { [classes.hiddenSpan]: data.hidden }])} prompt={data.value} tagName="span" />
+        <PreviewPrompt
+          className={classNames([classes.span, { [classes.hiddenSpan]: data.hidden }])}
+          prompt={data.value}
+          tagName="span"
+        />
         <EvaluationIcon isCorrect={data.isCorrect} containerStyle={evaluationStyle} />
       </div>,
     );
@@ -57,7 +61,7 @@ PossibleResponse.propTypes = {
   data: PropTypes.object.isRequired,
   onDragBegin: PropTypes.func.isRequired,
   onDragEnd: PropTypes.func.isRequired,
-  answerChoiceTransparency: PropTypes.bool
+  answerChoiceTransparency: PropTypes.bool,
 };
 
 PossibleResponse.defaultProps = {
@@ -82,8 +86,8 @@ const styles = () => ({
     backgroundColor: `${color.transparent()}`,
 
     '&:hover': {
-      border: `1px solid ${color.borderDark()}`
-    }
+      border: `1px solid ${color.borderDark()}`,
+    },
   },
   baseCorrect: {
     border: `2px solid ${color.correct()} !important`,
