@@ -17,12 +17,7 @@ const PossibleResponses = ({
   customStyle,
 }) => (
   <div className={classes.base} style={customStyle}>
-    <ICADroppablePlaceholder
-      classes={classes.pool}
-      disabled={!canDrag}
-      id="pula-in-pisda"
-      onRemoveAnswer={onAnswerRemove}
-    >
+    <ICADroppablePlaceholder classes={classes.pool} disabled={!canDrag} onRemoveAnswer={onAnswerRemove}>
       {(data || []).map((item) => (
         <PossibleResponse
           canDrag={canDrag}
