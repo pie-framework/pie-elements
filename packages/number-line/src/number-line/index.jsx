@@ -104,7 +104,12 @@ export class NumberLine extends React.Component {
       return;
     }
 
-    const { ticks, domain } = this.props.model.graph;
+    const { ticks, domain, availableTypes } = this.props.model.graph;
+
+    // check if the element type is enabled in availableTypes
+    if (availableTypes && !availableTypes[this.state.elementType.toUpperCase()]) {
+      return;
+    }
 
     let elementData = buildElementModel(x, this.state.elementType, domain, ticks.minor);
 
@@ -204,6 +209,7 @@ export class NumberLine extends React.Component {
       fraction,
     };
 
+    console.log('this.props', this.props);
     let getAnswerElements = () => {
       return (answers || []).map((e, index) => {
         let out = cloneDeep(e);
