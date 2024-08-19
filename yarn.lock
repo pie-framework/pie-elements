@@ -9105,10 +9105,10 @@ jquery@^3.3.1:
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.6.0.tgz#c72a09f15c1bdce142f49dbf1170bdf8adac2470"
   integrity sha512-JVzAR/AjBvVt2BmYhxRCSYysDsPcssdmTFnzyLEts9qNwmjmu4JTAMYubEfwVOSwpQ1I1sKKFcxhZCI2buerfw==
 
-js-combinatorics@^0.5.4:
-  version "0.5.5"
-  resolved "https://registry.yarnpkg.com/js-combinatorics/-/js-combinatorics-0.5.5.tgz#78d68a6db24bbd58173ded714deee75bc4335e75"
-  integrity sha512-WglFY9EQvwndNhuJLxxyjnC16649lfZly/G3M3zgQMwcWlJDJ0Jn9niPWeYjnLXwWOEycYVxR2Tk98WLeFkrcw==
+js-combinatorics@^2.1.2:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/js-combinatorics/-/js-combinatorics-2.1.2.tgz#1434bce70c6e3b46f01c6b214626e95ff7905f81"
+  integrity sha512-/1AY2bYwxajoaKjPzvgQ80U7lcucU71ubzFPVgZGmzbDGn3R18ZQUZfD69+4Idg4JfNcq6trwD6I+dRfVnr/tg==
 
 "js-tokens@^3.0.0 || ^4.0.0", js-tokens@^4.0.0:
   version "4.0.0"
