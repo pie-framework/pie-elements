@@ -19,12 +19,13 @@ class ImageContainer extends Component {
       responseContainers,
       showDashedBorder,
       responseAreaFill,
-      answerChoiceTransparency
+      answerChoiceTransparency,
     } = this.props;
 
     return (
       <div className={classes.base}>
         <img src={src} height={height} width={width} />
+
         {(responseContainers || []).map((r, i) => {
           const rHeight = (r.height.replace('%', '') / 100) * height;
           const rWidth = (r.width.replace('%', '') / 100) * width;
@@ -84,6 +85,8 @@ const styles = (theme) => ({
   base: {
     margin: theme.spacing.unit * 2,
     position: 'relative',
+    width: 'fit-content',
   },
 });
+
 export default withStyles(styles)(ImageContainer);

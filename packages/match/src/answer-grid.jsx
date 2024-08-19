@@ -103,11 +103,10 @@ export class AnswerGrid extends React.Component {
                   <td key={`td-${idx}-${answerIndex}`} className={classes.column} data-colno={`${answerIndex + 1}`}>
                     <div className={classes.rowItem}>
                       <Tag
-                        className={cx({
+                        className={cx(classes.tag, {
                           [classes.correct]:
                             (showCorrect && rowItem === true) ||
                             (evaluate && this.answerIsCorrect(row.id, rowItem, answerIndex)),
-                          [classes.tag]: true,
                           [classes.checked]: rowItem === true && !evaluate,
                           [classes.tagDisabled]: disabled,
                           [classes.incorrect]: evaluate && this.answerIsIncorrect(row.id, rowItem, answerIndex),
@@ -169,6 +168,9 @@ const styles = (theme) => ({
     '&:hover': {
       color: color.primaryLight(),
     },
+    '& input': {
+      width: '100% !important'
+    }
   },
   checked: {
     color: `${color.primary()} !important`,
