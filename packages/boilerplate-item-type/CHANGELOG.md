@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.19.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/boilerplate-item-type@2.19.1...@pie-element/boilerplate-item-type@2.19.2) (2024-08-19)
+
+
+### Bug Fixes
+
+* update pie-lib PD-3855, PD-3841 ([29ed50e](https://github.com/pie-framework/pie-elements/commit/29ed50ec75c3deedfe765f776dc24a6ecd6af284))
+
+
+
+
+
 ## [2.19.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/boilerplate-item-type@2.19.0...@pie-element/boilerplate-item-type@2.19.1) (2024-08-06)
 
 

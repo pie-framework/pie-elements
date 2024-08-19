@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.22.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@7.22.1...@pie-element/categorize-configure@7.22.2) (2024-08-19)
+
+
+### Bug Fixes
+
+* update pie-lib PD-3855, PD-3841 ([29ed50e](https://github.com/pie-framework/pie-elements/commit/29ed50ec75c3deedfe765f776dc24a6ecd6af284))
+
+
+
+
+
 ## [7.22.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@7.22.0...@pie-element/categorize-configure@7.22.1) (2024-08-06)
 
 
