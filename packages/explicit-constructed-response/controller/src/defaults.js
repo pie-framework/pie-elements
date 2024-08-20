@@ -8,3 +8,7 @@ export default {
   teacherInstructions: '',
   teacherInstructionsEnabled: true,
 };
+
+prompt: '',
+rationale: '',
+teacherInstructions: '',
