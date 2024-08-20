@@ -199,6 +199,7 @@ class PolComponent extends React.Component {
     } = this.props;
 
     const { points, x, y, hovered } = this.state;
+    const isInProgress = id === 'newPolygon';
     const showPoints = hovered || id === 'newPolygon';
 
     const hoverColor = hoverOutlineColor || HOVERED_COLOR;
@@ -207,9 +208,23 @@ class PolComponent extends React.Component {
     const calculatedStroke = correct ? outlineColor : hovered ? HOVERED_COLOR : '';
     // const calculatedStroke = correct ? outlineColor : hovered ? hoverColor : '';
     const boundingBox = this.getBoundingBox(points);
+    const calculatedFill = correct ? selectedHotspotColor : hotspotColor;
 
-    return (<Group classes={classes.group} onMouseLeave={this.handleMouseLeave} onMouseEnter={this.handleMouseEnter}
-                   onClick={() => this.props.onClick(this.state)}
+    console.log({ points });
+    let lastPoint = {
+      x: 0,
+      y: 0,
+    };
+    if (points.length) {
+      lastPoint = points[points.length - 1];
+    }
+
+    return (
+      <Group
+        classes={classes.group}
+        onMouseLeave={this.handleMouseLeave}
+        onMouseEnter={this.handleMouseEnter}
+        // onClick={() => this.props.onClick(this.state)}
       >
         {hoverOutlineColor && hovered && (
           <Rect
@@ -225,13 +240,13 @@ class PolComponent extends React.Component {
         <Line
           classes={classes.base}
           points={this.serialize(points)}
-          closed={true}
-          fill={correct ? selectedHotspotColor : hotspotColor}
+          closed={!isInProgress}
+          fill={isInProgress ? 'transparent' : calculatedFill}
           onClick={this.handleClick}
           onTap={this.handleClick}
           draggable
-          stroke={calculatedStroke}
-          strokeWidth={calculatedStrokeWidth}
+          stroke={isInProgress ? outlineColor : calculatedStroke}
+          strokeWidth={isInProgress ? 1 : calculatedStrokeWidth}
           onDragStart={this.onDragStart}
           onDragMove={this.handleOnDragEnd}
           onDragEnd={(e) => this.handleOnDragEnd(e, true)}
