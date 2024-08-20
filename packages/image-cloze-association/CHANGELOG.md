@@ -3,6 +3,95 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.23.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@5.23.1...@pie-element/image-cloze-association@5.23.2) (2024-08-19)
+
+
+### Bug Fixes
+
+* update pie-lib PD-3855, PD-3841 ([29ed50e](https://github.com/pie-framework/pie-elements/commit/29ed50ec75c3deedfe765f776dc24a6ecd6af284))
+* **ICA:** Refactored interactive styles to reduce duplication and added 'width: fit-content' PD-3658 ([fd5bc21](https://github.com/pie-framework/pie-elements/commit/fd5bc21d898eebe5a9fe96d8214a693066cb0c48))
+* **image-cloze-association:** adjust possible response area width PD-3955 ([43c0829](https://github.com/pie-framework/pie-elements/commit/43c0829d58b4698cfc2fc587699cd28972df8265))
+
+
+
+
+
+## [5.23.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@5.23.0...@pie-element/image-cloze-association@5.23.1) (2024-08-06)
+
+
+### Bug Fixes
+
+* update pie-lib ([6ed3619](https://github.com/pie-framework/pie-elements/commit/6ed3619e0c670165ab45518e5bdbb40586c5adf8))
+
+
+
+
+
+# [5.23.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@5.22.1...@pie-element/image-cloze-association@5.23.0) (2024-08-06)
+
+
+### Features
+
+* update pie-lib PD-3996, PD-3792, Pd-3791, PD-3841, PD-3956, PD-3569, PD-3855 ([6343d1b](https://github.com/pie-framework/pie-elements/commit/6343d1b00c5a4a3d88de70ed13a8aa5c1a43002d))
+* use a larger padding if there's enough room, use smaller padding otherwise PD-3871 ([ee37484](https://github.com/pie-framework/pie-elements/commit/ee37484a5dbbdb9616bd3a82f15e6db2cdc7ca95))
+
+
+
+
+
+## [5.22.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@5.22.0...@pie-element/image-cloze-association@5.22.1) (2024-07-29)
+
+
+### Bug Fixes
+
+* avoid assigning to const ([523fbf7](https://github.com/pie-framework/pie-elements/commit/523fbf7b1e030aa8b556d788bc44632b06b59e7a))
+
+
+
+
+
+# [5.22.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@5.21.7...@pie-element/image-cloze-association@5.22.0) (2024-07-26)
+
+
+### Bug Fixes
+
+* spacing ([ede3fee](https://github.com/pie-framework/pie-elements/commit/ede3fee87b6acf3f9f54cd508e323e5aed1ace36))
+* **image-cloze-association:** fixed controller duplicate methods in player to also use camelizeKeys method PD-3942 ([ba37a0c](https://github.com/pie-framework/pie-elements/commit/ba37a0c5591208f7bd5fe118cb067172b4db2495))
+
+
+### Features
+
+* add answerChoiceTransparency PD-3853 ([50859c3](https://github.com/pie-framework/pie-elements/commit/50859c37911345497c4dac3738d01ca748a87a2e))
+* update pie-lib/pie-toolbox PD-2451, PD-3950, PD-3845 ([278d705](https://github.com/pie-framework/pie-elements/commit/278d7052dc7c17796ba196a2e397739e2e882b7f))
+* update pie-lib/pie-toolbox PD-3944, PD-3946, Pd-2450 ([ac34d93](https://github.com/pie-framework/pie-elements/commit/ac34d93fcc97e79cacddcd38c7509f3c96b69976))
+* **image-cloze-association:** added new responseAreaFill property that sets a background color PD-3947 ([c9a3e1b](https://github.com/pie-framework/pie-elements/commit/c9a3e1bf1986dfe229fefcd468cbca6df59c6d19))
+
+
+
+
+
+## [5.21.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@5.21.6...@pie-element/image-cloze-association@5.21.7) (2024-07-24)
+
+
+### Bug Fixes
+
+* add sanity check PD-3966 ([20f7c70](https://github.com/pie-framework/pie-elements/commit/20f7c704928c13ea40109649f869ba7eb3ffc2a5))
+
+
+
+
+
+## [5.21.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@5.21.5...@pie-element/image-cloze-association@5.21.6) (2024-07-19)
+
+
+### Bug Fixes
+
+* udate pie-lib/pie-toolbox to revert PD-3630 ([7858313](https://github.com/pie-framework/pie-elements/commit/785831349bb7830a3df8f35971958ebf616527f3))
+
+
+
+
+
 ## [5.21.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@5.21.4...@pie-element/image-cloze-association@5.21.5) (2024-07-17)
 
 

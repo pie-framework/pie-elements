@@ -24,7 +24,7 @@ class InteractiveSection extends React.Component {
     return classes[styleProp];
   }
 
-  getPositionDirection (choicePosition) {
+  getPositionDirection(choicePosition) {
     let flexDirection;
 
     switch (choicePosition) {
@@ -44,15 +44,13 @@ class InteractiveSection extends React.Component {
     }
 
     return flexDirection;
-  };
+  }
 
   render() {
     const { children, responseCorrect, uiStyle } = this.props;
     const classname = this.getClassname();
-    const { possibilityListPosition = 'bottom'} = uiStyle || {};
-    const style = {
-      flexDirection: this.getPositionDirection(possibilityListPosition),
-    };
+    const { possibilityListPosition = 'bottom' } = uiStyle || {};
+    const style = { flexDirection: this.getPositionDirection(possibilityListPosition) };
     const evaluationStyle = {
       display: 'flex',
       margin: '0 auto',
@@ -80,22 +78,27 @@ InteractiveSection.defaultProps = {
   responseCorrect: undefined,
 };
 
-const styles = (theme) => ({
-  interactiveDefault: {
+const styles = (theme) => {
+  const baseInteractiveStyle = {
     marginTop: theme.spacing.unit * 2,
-    border: `1px solid ${color.disabled()}`,
     display: 'flex',
-  },
-  interactiveCorrect: {
-    marginTop: theme.spacing.unit * 2,
-    border: `2px solid ${color.correct()}`,
-    display: 'flex',
-  },
-  interactiveIncorrect: {
-    marginTop: theme.spacing.unit * 2,
-    border: `2px solid ${color.incorrect()}`,
-    display: 'flex',
-  },
-});
+    width: 'fit-content',
+  };
+
+  return {
+    interactiveDefault: {
+      ...baseInteractiveStyle,
+      border: `1px solid ${color.disabled()}`,
+    },
+    interactiveCorrect: {
+      ...baseInteractiveStyle,
+      border: `2px solid ${color.correct()}`,
+    },
+    interactiveIncorrect: {
+      ...baseInteractiveStyle,
+      border: `2px solid ${color.incorrect()}`,
+    },
+  };
+};
 
 export default withStyles(styles)(InteractiveSection);

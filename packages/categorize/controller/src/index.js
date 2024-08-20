@@ -240,10 +240,9 @@ const getInnerText = (html) => (html || '').replaceAll(/<[^>]*>/g, '');
 const getContent = (html) => (html || '').replace(/(<(?!img|iframe)([^>]+)>)/gi, '');
 
 export const validate = (model = {}, config = {}) => {
-  const { categories, choices, correctResponse } = model;
+  const { categories, choices, correctResponse, maxAnswerChoices } = model;
   const {
     minChoices = 1,
-    maxChoices = 15,
     minCategories = 1,
     maxCategories = 12,
     maxLengthPerChoice = 300,
@@ -297,8 +296,8 @@ export const validate = (model = {}, config = {}) => {
 
   if (nbOfChoices < minChoices) {
     errors.choicesError = `There should be at least ${minChoices} choices defined.`;
-  } else if (nbOfChoices > maxChoices) {
-    errors.choicesError = `No more than ${maxChoices} choices should be defined.`;
+  } else if (nbOfChoices > maxAnswerChoices) {
+    errors.choicesError = `No more than ${maxAnswerChoices} choices should be defined.`;
   }
 
   if (nbOfChoices && nbOfCategories) {

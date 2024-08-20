@@ -18,11 +18,14 @@ class ImageContainer extends Component {
       onDragAnswerEnd,
       responseContainers,
       showDashedBorder,
+      responseAreaFill,
+      answerChoiceTransparency,
     } = this.props;
 
     return (
       <div className={classes.base}>
         <img src={src} height={height} width={width} />
+
         {(responseContainers || []).map((r, i) => {
           const rHeight = (r.height.replace('%', '') / 100) * height;
           const rWidth = (r.width.replace('%', '') / 100) * width;
@@ -47,6 +50,8 @@ class ImageContainer extends Component {
               onDragAnswerBegin={onDragAnswerBegin}
               onDragAnswerEnd={onDragAnswerEnd}
               showDashedBorder={showDashedBorder}
+              responseAreaFill={responseAreaFill}
+              answerChoiceTransparency={answerChoiceTransparency}
             />
           );
         })}
@@ -67,6 +72,8 @@ ImageContainer.propTypes = {
   onDragAnswerEnd: PropTypes.func.isRequired,
   responseContainers: PropTypes.array.isRequired,
   showDashedBorder: PropTypes.bool,
+  answerChoiceTransparency: PropTypes.bool,
+  responseAreaFill: PropTypes.string,
 };
 
 ImageContainer.defaultProps = {
@@ -78,6 +85,8 @@ const styles = (theme) => ({
   base: {
     margin: theme.spacing.unit * 2,
     position: 'relative',
+    width: 'fit-content',
   },
 });
+
 export default withStyles(styles)(ImageContainer);

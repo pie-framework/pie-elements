@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.34.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.33.0...@pie-element/pie-models@13.34.0) (2024-08-06)
+
+
+### Features
+
+* **hotspot:** Add selectedHotspotColor and hoverOutlineColor support PD-3852 ([fd148d4](https://github.com/pie-framework/pie-elements/commit/fd148d423dfca651b8c420d2e2913c7df4dda0b7))
+
+
+
+
+
+# [13.33.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.32.0...@pie-element/pie-models@13.33.0) (2024-07-26)
+
+
+### Features
+
+* add answerChoiceTransparency PD-3853 ([50859c3](https://github.com/pie-framework/pie-elements/commit/50859c37911345497c4dac3738d01ca748a87a2e))
+* **categorize:** Categorize authoring view settings should include a maxAnswerChoices property PD-3003 ([03e37d7](https://github.com/pie-framework/pie-elements/commit/03e37d7420ad11396b9b7c7dfb8488b9ebbba39e))
+* **image-cloze-association:** added new responseAreaFill property that sets a background color PD-3947 ([c9a3e1b](https://github.com/pie-framework/pie-elements/commit/c9a3e1bf1986dfe229fefcd468cbca6df59c6d19))
+
+
+
+
+
 # [13.32.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.31.0...@pie-element/pie-models@13.32.0) (2024-07-16)
 
 

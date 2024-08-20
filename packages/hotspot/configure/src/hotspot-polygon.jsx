@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Group, Line, Circle } from 'react-konva';
 import { withStyles } from '@material-ui/core/styles/index';
+import { Rect } from 'react-konva/lib/ReactKonvaCore';
 import DeleteWidget from './DeleteWidget';
 
 const HOVERED_COLOR = '#00BFFF';
@@ -166,22 +167,66 @@ class PolComponent extends React.Component {
     onDeleteShape(id);
   };
 
+  // serialize(points) {
+  //   return points.reduce((acc, point) => [...acc, point.x, point.y], []);
+  // }
+
+  getBoundingBox(points) {
+    const xValues = points.map((point) => point.x);
+    const yValues = points.map((point) => point.y);
+    const minX = Math.min(...xValues);
+    const maxX = Math.max(...xValues);
+    const minY = Math.min(...yValues);
+    const maxY = Math.max(...yValues);
+    return {
+      x: minX,
+      y: minY,
+      width: maxX - minX,
+      height: maxY - minY,
+    };
+  }
+
   render() {
-    const { classes, correct, id, hotspotColor, outlineColor, strokeWidth = 5 } = this.props;
+    const {
+      classes,
+      correct,
+      id,
+      hotspotColor,
+      outlineColor,
+      selectedHotspotColor,
+      hoverOutlineColor,
+      strokeWidth = 5,
+    } = this.props;
+
     const { points, x, y, hovered } = this.state;
     const showPoints = hovered || id === 'newPolygon';
 
+    const hoverColor = hoverOutlineColor || HOVERED_COLOR;
+
     const calculatedStrokeWidth = correct ? strokeWidth : hovered ? 1 : 0;
     const calculatedStroke = correct ? outlineColor : hovered ? HOVERED_COLOR : '';
+    // const calculatedStroke = correct ? outlineColor : hovered ? hoverColor : '';
+    const boundingBox = this.getBoundingBox(points);
 
     return (<Group classes={classes.group} onMouseLeave={this.handleMouseLeave} onMouseEnter={this.handleMouseEnter}
                    onClick={() => this.props.onClick(this.state)}
       >
+        {hoverOutlineColor && hovered && (
+          <Rect
+            x={boundingBox.x}
+            y={boundingBox.y}
+            width={boundingBox.width}
+            height={boundingBox.height}
+            stroke={hoverOutlineColor}
+            strokeWidth={2}
+            listening={false}
+          />
+        )}
         <Line
           classes={classes.base}
           points={this.serialize(points)}
           closed={true}
-          fill={hotspotColor}
+          fill={correct ? selectedHotspotColor : hotspotColor}
           onClick={this.handleClick}
           onTap={this.handleClick}
           draggable
@@ -245,6 +290,8 @@ PolComponent.propTypes = {
   imageHeight: PropTypes.number,
   imageWidth: PropTypes.number,
   hotspotColor: PropTypes.string.isRequired,
+  selectedHotspotColor: PropTypes.string,
+  hoverOutlineColor: PropTypes.string,
   onClick: PropTypes.func.isRequired,
   addPolygonPoint: PropTypes.func.isRequired,
   onDeleteShape: PropTypes.func.isRequired,

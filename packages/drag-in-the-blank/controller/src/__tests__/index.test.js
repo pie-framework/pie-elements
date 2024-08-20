@@ -18,6 +18,13 @@ describe('controller', () => {
       },
       duplicates: true,
       alternateResponses: [['1'], ['0']],
+      disabled: true,
+      markup: '',
+      rationaleEnabled: true,
+      promptEnabled: true,
+      teacherInstructionsEnabled: true,
+      studentInstructionsEnabled: true,
+      toolbarEditorPosition: 'bottom',
     };
   });
 

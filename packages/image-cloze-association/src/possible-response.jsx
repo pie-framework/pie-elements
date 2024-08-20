@@ -9,40 +9,44 @@ import EvaluationIcon from './evaluation-icon';
 import c from './constants';
 
 export class PossibleResponse extends React.Component {
-  getClassname = () => {
-    const {
-      classes,
-      data: { isCorrect },
-    } = this.props;
-    let styleProp;
-
-    switch (isCorrect) {
-      case undefined:
-        styleProp = null;
-        break;
-      case true:
-        styleProp = 'baseCorrect';
-        break;
-      default:
-        styleProp = 'baseIncorrect';
-        break;
-    }
-    return styleProp ? classes[styleProp] : '';
-  };
-
   render() {
-    const { classes, connectDragSource, containerStyle, data } = this.props;
-    const additionalClass = this.getClassname();
+    const { classes, connectDragSource, containerStyle, data, answerChoiceTransparency } = this.props;
+    const { isCorrect } = data || {};
     const evaluationStyle = {
       fontSize: 14,
       position: 'absolute',
       bottom: '3px',
       right: '3px',
     };
+    let correctnessClass;
+
+    switch (isCorrect) {
+      case true:
+        correctnessClass = 'baseCorrect';
+        break;
+      case false:
+        correctnessClass = 'baseIncorrect';
+        break;
+      default:
+        break;
+    }
 
     return connectDragSource(
-      <div className={`${classes.base} ${additionalClass}`} style={containerStyle}>
-        <PreviewPrompt className={classNames([classes.span, { [classes.hiddenSpan]: data.hidden }])} prompt={data.value} tagName="span" />
+      <div
+        className={classNames([
+          classes.base,
+          {
+            [classes.answerChoiceTransparency]: answerChoiceTransparency,
+            [classes[correctnessClass]]: !!correctnessClass,
+          },
+        ])}
+        style={containerStyle}
+      >
+        <PreviewPrompt
+          className={classNames([classes.span, { [classes.hiddenSpan]: data.hidden }])}
+          prompt={data.value}
+          tagName="span"
+        />
         <EvaluationIcon isCorrect={data.isCorrect} containerStyle={evaluationStyle} />
       </div>,
     );
@@ -57,6 +61,7 @@ PossibleResponse.propTypes = {
   data: PropTypes.object.isRequired,
   onDragBegin: PropTypes.func.isRequired,
   onDragEnd: PropTypes.func.isRequired,
+  answerChoiceTransparency: PropTypes.bool,
 };
 
 PossibleResponse.defaultProps = {
@@ -68,22 +73,27 @@ PossibleResponse.defaultProps = {
 const styles = () => ({
   base: {
     position: 'relative',
-    backgroundColor: color.background(),
-    border: `1px solid ${color.primary()}`,
+    backgroundColor: color.white(),
+    border: `1px solid ${color.borderDark()}`,
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     minHeight: '28px',
-    padding: '0 3px',
-    marginLeft: 2,
-    marginTop: 2,
     width: 'fit-content',
   },
+  answerChoiceTransparency: {
+    border: 'none',
+    backgroundColor: `${color.transparent()}`,
+
+    '&:hover': {
+      border: `1px solid ${color.borderDark()}`,
+    },
+  },
   baseCorrect: {
-    border: `2px solid ${color.correct()}`,
+    border: `2px solid ${color.correct()} !important`,
   },
   baseIncorrect: {
-    border: `2px solid ${color.incorrect()}`,
+    border: `2px solid ${color.incorrect()} !important`,
   },
   span: {
     backgroundColor: color.background(),

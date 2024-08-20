@@ -2,10 +2,12 @@ import cloneDeep from 'lodash/cloneDeep';
 import MultipleChoice from '@pie-element/multiple-choice';
 import debug from 'debug';
 import get from 'lodash/get';
-
 import { SessionChangedEvent } from '@pie-framework/pie-player-events';
 const MC_TAG_NAME = 'ebsr-multiple-choice';
 const SESSION_CHANGED = SessionChangedEvent.TYPE;
+import Translator from '@pie-lib/pie-toolbox/translator';
+
+const { translator } = Translator;
 
 const log = debug('pie-element:ebsr:print');
 
@@ -114,9 +116,30 @@ export default class Ebsr extends HTMLElement {
 
   setPartModel(part, key) {
     if (this._model && this._model[key] && part) {
+      let labels = {
+        'partA': undefined,
+        'partB': undefined
+      };
+
+      if (this._model.partLabels) {
+        const language = this._model.language;
+
+        labels = {
+          'partA': translator.t('ebsr.part', {
+            lng: language,
+            index: this._model.partLabelType === 'Letters' ? 'A' : '1'
+          }),
+          'partB': translator.t('ebsr.part', {
+            lng: language,
+            index: this._model.partLabelType === 'Letters' ? 'B' : '2'
+          })
+        };
+      }
+
       part.model = {
         ...preparePrintModel(this._model[key], this._options),
         keyMode: this._model[key].choicePrefix,
+        partLabel: labels[key]
       };
 
       if (!part._session) {

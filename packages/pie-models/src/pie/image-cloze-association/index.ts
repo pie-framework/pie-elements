@@ -68,6 +68,9 @@ interface Image {
  * @additionalProperties false
  */
 export interface ImageClozeAssociationPie extends PieModel {
+  /** Indicates in answer choices should have a transparent background. Default value is undefined. */
+  answerChoiceTransparency?: boolean;
+
   /** The question prompt or item stem*/
   prompt?: string;
 
@@ -134,6 +137,9 @@ export interface ImageClozeAssociationPie extends PieModel {
     possibilityListPosition?: ChoicesPosition;
     fontsize: string;
   };
+
+  /** Indicates the background color of the response area */
+  responseAreaFill?: string;
 }
 
 /**

@@ -54,10 +54,15 @@ export class Choices extends React.Component {
 
   addChoice = () => {
     const { onModelChanged, model, choices: oldChoices } = this.props;
+    let { maxAnswerChoices } = model || {};
+
+    if (maxAnswerChoices && model.choices?.length >= maxAnswerChoices) {
+      return;
+    }
 
     const id = utils.firstAvailableIndex(
       model.choices.map((a) => a.id),
-      0,
+      1,
     );
     const data = { id, content: 'Choice ' + id };
 
@@ -110,13 +115,14 @@ export class Choices extends React.Component {
       defaultImageMaxWidth,
       defaultImageMaxHeight,
     } = this.props;
-    const { errors, allowMultiplePlacementsEnabled, lockChoiceOrder } = model;
+    const { errors, allowMultiplePlacementsEnabled, lockChoiceOrder, maxAnswerChoices } = model;
     const { choicesError, choicesErrors } = errors || {};
-    const { maxChoices, maxImageWidth = {}, maxImageHeight = {} } = configuration || {};
-
+    const { maxImageWidth = {}, maxImageHeight = {} } = configuration || {};
     const choiceHolderStyle = {
       gridTemplateColumns: `repeat(${model.categoriesPerRow}, 1fr)`,
     };
+    const addChoiceButtonTooltip =
+        maxAnswerChoices && choices?.length >= maxAnswerChoices ? `Only ${maxAnswerChoices} allowed maximum` : '';
 
     return (
       <div className={classNames(classes.choices, className)}>
@@ -124,7 +130,8 @@ export class Choices extends React.Component {
           label="Choices"
           buttonLabel="ADD A CHOICE"
           onAdd={this.addChoice}
-          buttonDisabled={maxChoices && choices && maxChoices === choices.length}
+          buttonDisabled={maxAnswerChoices && choices && choices?.length >= maxAnswerChoices}
+          tooltip={addChoiceButtonTooltip}
         />
 
         <Config config={model} onModelChanged={onModelChanged} spellCheck={spellCheck} />

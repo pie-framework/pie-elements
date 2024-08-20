@@ -6,11 +6,28 @@ import { ICADroppablePlaceholder } from '@pie-lib/pie-toolbox/drag';
 
 import PossibleResponse from './possible-response';
 
-const PossibleResponses = ({ canDrag, classes, data, onAnswerRemove, onDragBegin, onDragEnd }) => (
-  <div className={classes.base}>
-    <ICADroppablePlaceholder disabled={!canDrag} onRemoveAnswer={onAnswerRemove}>
+const PossibleResponses = ({
+  canDrag,
+  classes,
+  data,
+  onAnswerRemove,
+  onDragBegin,
+  onDragEnd,
+  answerChoiceTransparency,
+  customStyle,
+}) => (
+  <div className={classes.base} style={customStyle}>
+    <ICADroppablePlaceholder classes={classes.pool} disabled={!canDrag} onRemoveAnswer={onAnswerRemove}>
       {(data || []).map((item) => (
-        <PossibleResponse canDrag={canDrag} key={item.id} data={item} onDragBegin={onDragBegin} onDragEnd={onDragEnd} />
+        <PossibleResponse
+          canDrag={canDrag}
+          key={item.id}
+          data={item}
+          onDragBegin={onDragBegin}
+          onDragEnd={onDragEnd}
+          answerChoiceTransparency={answerChoiceTransparency}
+          containerStyle={{ margin: '4px' }}
+        />
       ))}
     </ICADroppablePlaceholder>
   </div>
@@ -23,6 +40,7 @@ PossibleResponses.propTypes = {
   onAnswerRemove: PropTypes.func.isRequired,
   onDragBegin: PropTypes.func.isRequired,
   onDragEnd: PropTypes.func.isRequired,
+  answerChoiceTransparency: PropTypes.bool,
 };
 
 PossibleResponses.defaultProps = {
@@ -35,6 +53,7 @@ const styles = (theme) => ({
     padding: theme.spacing.unit * 2,
     display: 'flex',
     alignItems: 'center',
+    width: 'fit-content',
   },
 });
 

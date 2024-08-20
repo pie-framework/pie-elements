@@ -760,6 +760,18 @@ Value of the language option
 
 Label of the language option
 
+# `allowMaxAnswerChoices` (object)
+
+Properties of the `allowMaxAnswerChoices` object:
+
+## `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+## `label` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
+
 # `contentDimensions` (object)
 
 Indicates the dimensions configuration for the authoring container

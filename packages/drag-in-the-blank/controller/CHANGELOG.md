@@ -3,6 +3,65 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.18.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-controller@5.18.1...@pie-element/drag-in-the-blank-controller@5.18.2) (2024-08-19)
+
+
+### Bug Fixes
+
+* update pie-lib PD-3855, PD-3841 ([29ed50e](https://github.com/pie-framework/pie-elements/commit/29ed50ec75c3deedfe765f776dc24a6ecd6af284))
+
+
+
+
+
+## [5.18.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-controller@5.18.0...@pie-element/drag-in-the-blank-controller@5.18.1) (2024-08-06)
+
+
+### Bug Fixes
+
+* update pie-lib ([6ed3619](https://github.com/pie-framework/pie-elements/commit/6ed3619e0c670165ab45518e5bdbb40586c5adf8))
+
+
+
+
+
+# [5.18.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-controller@5.17.0...@pie-element/drag-in-the-blank-controller@5.18.0) (2024-08-06)
+
+
+### Features
+
+* update pie-lib PD-3996, PD-3792, Pd-3791, PD-3841, PD-3956, PD-3569, PD-3855 ([6343d1b](https://github.com/pie-framework/pie-elements/commit/6343d1b00c5a4a3d88de70ed13a8aa5c1a43002d))
+* **drag-in-the-blank:** adjust defaults in controller PD-3841 ([08b5e8b](https://github.com/pie-framework/pie-elements/commit/08b5e8b47d4078230fa05a8c3ae0297984956d54))
+* **drag-in-the-blank:** delete  logs PD-3841 ([dd50a42](https://github.com/pie-framework/pie-elements/commit/dd50a421045b4d80327d23c16635188f17f1d6da))
+* **drag-in-the-blank:** update tests for new defaults in controller PD-3841 ([10dd642](https://github.com/pie-framework/pie-elements/commit/10dd6427fce393ebc5b033eb155fee047baff94a))
+
+
+
+
+
+# [5.17.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-controller@5.16.6...@pie-element/drag-in-the-blank-controller@5.17.0) (2024-07-26)
+
+
+### Features
+
+* update pie-lib/pie-toolbox PD-2451, PD-3950, PD-3845 ([278d705](https://github.com/pie-framework/pie-elements/commit/278d7052dc7c17796ba196a2e397739e2e882b7f))
+* update pie-lib/pie-toolbox PD-3944, PD-3946, Pd-2450 ([ac34d93](https://github.com/pie-framework/pie-elements/commit/ac34d93fcc97e79cacddcd38c7509f3c96b69976))
+
+
+
+
+
+## [5.16.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-controller@5.16.5...@pie-element/drag-in-the-blank-controller@5.16.6) (2024-07-19)
+
+
+### Bug Fixes
+
+* udate pie-lib/pie-toolbox to revert PD-3630 ([7858313](https://github.com/pie-framework/pie-elements/commit/785831349bb7830a3df8f35971958ebf616527f3))
+
+
+
+
+
 ## [5.16.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-controller@5.16.4...@pie-element/drag-in-the-blank-controller@5.16.5) (2024-07-17)
 
 

@@ -28,6 +28,7 @@ exports[`Design snapshot renders 1`] = `
               "language": undefined,
               "language.enabled": undefined,
               "lockChoiceOrder": undefined,
+              "maxAnswerChoices": undefined,
               "maxChoicesPerCategory": false,
               "partialScoring": undefined,
               "promptEnabled": undefined,

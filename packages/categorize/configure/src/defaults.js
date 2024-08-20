@@ -10,6 +10,7 @@ export default {
     allowAlternateEnabled: true,
     allowMaxChoicesPerCategory: false,
     maxChoicesPerCategory: 0,
+    maxAnswerChoices: 6,
     categoriesPerRow: 2,
     categories: [],
     alternates: [],
@@ -145,6 +146,10 @@ export default {
       label: 'Add Rubric',
     },
     minCategoriesPerRow: 1,
+    allowMaxAnswerChoices: {
+      settings: true,
+      label: 'Max answer choices',
+    },
     mathMlOptions: {
       mmlOutput: false,
       mmlEditing: false,

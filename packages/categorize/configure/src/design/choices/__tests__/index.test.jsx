@@ -1,7 +1,7 @@
 import { shallow } from 'enzyme';
 import React from 'react';
-
 import { Choices } from '../index';
+import Header from '../../header';
 
 describe('choices', () => {
   let onModelChanged = jest.fn();
@@ -26,6 +26,7 @@ describe('choices', () => {
     rowLabels: [''],
     correctResponse: [],
     partialScoring: true,
+    maxAnswerChoices: 3,
   };
   let onConfigChange;
   let onAdd;
@@ -35,6 +36,7 @@ describe('choices', () => {
     onConfigChange = jest.fn();
     onAdd = jest.fn();
     onDelete = jest.fn();
+    onModelChanged.mockClear();
   });
 
   const wrapper = (extras) => {
@@ -83,14 +85,21 @@ describe('choices', () => {
     });
 
     describe('addChoice', () => {
-      w = wrapper();
-      w.instance().addChoice();
+      it('adds choice when maxAnswerChoices is not reached', () => {
+        w = wrapper();
+        w.instance().addChoice();
+        expect(onModelChanged).toBeCalledWith({
+          choices: [
+            { id: '1', content: 'Choice 1' }
+          ],
+        });
+      });
 
-      expect(onModelChanged).toBeCalledWith({
-        choices: [
-          { id: '0', content: 'Choice 0' },
-          { id: '1', content: 'Choice 1' },
-        ],
+      it('does not add choice when maxAnswerChoices is reached', () => {
+        const newModel = { ...model, maxAnswerChoices: 1, choices: [{ id: '0', content: 'Choice 0' }] };
+        w = wrapper({ model: newModel });
+        w.instance().addChoice();
+        expect(onModelChanged).not.toBeCalled();
       });
     });
 
@@ -104,6 +113,36 @@ describe('choices', () => {
           correctResponse: [],
         }),
       );
+    });
+
+    describe('buttonDisabled', () => {
+      it('disables add button when maxAnswerChoices is reached', () => {
+        const newModel = { ...model, maxAnswerChoices: 1 };
+        w = wrapper({ model: newModel });
+        const header = w.find(Header);
+        expect(header.prop('buttonDisabled')).toBe(true);
+      });
+
+      it('enables add button when maxAnswerChoices is not reached', () => {
+        w = wrapper();
+        const header = w.find(Header);
+        expect(header.prop('buttonDisabled')).toBe(false);
+      });
+    });
+
+    describe('tooltip', () => {
+      it('sets tooltip when maxAnswerChoices is reached', () => {
+        const newModel = { ...model, maxAnswerChoices: 1 };
+        w = wrapper({ model: newModel });
+        const header = w.find(Header);
+        expect(header.prop('tooltip')).toBe('Only 1 allowed maximum');
+      });
+
+      it('sets tooltip to empty string when maxAnswerChoices is not reached', () => {
+        w = wrapper();
+        const header = w.find(Header);
+        expect(header.prop('tooltip')).toBe('');
+      });
     });
   });
 });
