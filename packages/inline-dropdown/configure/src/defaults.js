@@ -1,19 +1,19 @@
 export default {
   model: {
-    disabled: false,
-    mode: 'gather',
-    prompt: 'Use the dropdowns to complete the sentence',
-    shuffle: true,
-    markup: '',
-    choices: {},
     alternateResponse: {},
+    choiceRationaleEnabled: true,
+    choices: {},
+    disabled: false,
+    displayType: 'block',
+    markup: '',
+    mode: 'gather',
+    prompt: '',
     promptEnabled: true,
     rationaleEnabled: true,
-    choiceRationaleEnabled: true,
-    teacherInstructionsEnabled: true,
+    shuffle: true,
     studentInstructionsEnabled: true,
+    teacherInstructionsEnabled: true,
     toolbarEditorPosition: 'bottom',
-    displayType: 'block',
   },
   configuration: {
     baseInputConfiguration: {

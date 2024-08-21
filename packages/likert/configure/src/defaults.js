@@ -4,10 +4,13 @@
  */
 export default {
   model: {
+    choices: [],
+    likertOrientation: 'horizontal',
     likertScale: 'likert3',
     likertType: 'agreement',
-    likertOrientation: 'horizontal',
-    choices: [],
+    prompt: '',
+    promptEnabled: true,
+    teacherInstructions: '',
     teacherInstructionsEnabled: true,
   },
   configuration: {

@@ -1,16 +1,37 @@
 export default {
   model: {
-    visibleToStudent: true,
-    halfScoring: false,
-    pointLabels: true,
-    description: false,
-    standards: false,
-    scales: [],
-    excludeZero: false,
-    maxPointsEnabled: true,
     addScaleEnabled: true,
+    description: false,
+    excludeZero: false,
+    halfScoring: false,
+    maxPointsEnabled: true,
+    pointLabels: true,
+    scales: [],
+    standards: false,
+    visibleToStudent: true,
   },
   configuration: {
+    baseInputConfiguration: {
+      audio: { disabled: false },
+      video: { disabled: false },
+      image: { disabled: false },
+    },
+    expandedInput: {
+      inputConfiguration: {
+        math: { disabled: true },
+        audio: { disabled: false },
+        video: { disabled: false },
+        image: { disabled: false },
+      },
+    },
+    labelInput: {
+      inputConfiguration: {
+        math: { disabled: true },
+        audio: { disabled: true },
+        video: { disabled: true },
+        image: { disabled: true },
+      },
+    },
     excludeZeroDialogBoxContent: {
       title: 'Exclude 0 (Zero) from Score Point Values.',
       text: `<div>
@@ -83,7 +104,8 @@ export default {
       settings: true,
       label: 'Half Scoring',
     },
-    width: '900px',
+    // commenting this in order to use the dynamic width if the width was not set by the client (PD-3203)
+    // width: '900px',
     // these should not be set to true (should not be used) for now
     showStandards: {
       settings: false,
@@ -109,8 +131,13 @@ export default {
     },
     minNoOfTraits: 1,
     maxNoOfTraits: 10,
-    minNoOfScales: 2,
+    minNoOfScales: 1,
     maxNoOfScales: 10,
     defaultTraitLabel: 'Trait',
+    mathMlOptions: {
+      mmlOutput: false,
+      mmlEditing: false,
+    },
+    maxMaxPoints: 10,
   },
 };

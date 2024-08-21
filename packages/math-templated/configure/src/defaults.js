@@ -1,19 +1,19 @@
 // Should be exactly the same as controller/defaults.js
 export default {
   model: {
+    allowTrailingZerosDefault: false,
+    equationEditor: 8,
+    ignoreOrderDefault: false,
     markup: '',
+    playerSpellCheckEnabled: true,
     prompt: '',
     promptEnabled: true,
-    teacherInstructionsEnabled: true,
-    rationale: 'Rationale goes here',
+    rationale: '',
     rationaleEnabled: true,
-    spellCheckEnabled: true,
-    playerSpellCheckEnabled: true,
     responses: {},
-    element: 'math-templated',
-    equationEditor: '8',
-    ignoreOrderDefault: false,
-    allowTrailingZerosDefault: false,
+    spellCheckEnabled: true,
+    teacherInstructions: '',
+    teacherInstructionsEnabled: true,
     toolbarEditorPosition: 'bottom',
     validationDefault: 'literal',
   },
@@ -21,12 +21,12 @@ export default {
     ignoreOrder: {
       settings: false,
       label: 'Ignore Order',
-      enabled: true
+      enabled: true,
     },
     allowTrailingZeros: {
       settings: false,
       label: 'Allow Trailing Zeros',
-      enabled: true
+      enabled: true,
     },
     partialScoring: {
       settings: true,

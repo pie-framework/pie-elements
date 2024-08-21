@@ -1,3 +1,16 @@
 export default {
+  alternateResponse: {},
+  choiceRationaleEnabled: true,
   choices: {},
+  disabled: false,
+  displayType: 'block',
+  markup: '',
+  mode: 'gather',
+  prompt: '',
+  promptEnabled: true,
+  rationaleEnabled: true,
+  shuffle: true,
+  studentInstructionsEnabled: true,
+  teacherInstructionsEnabled: true,
+  toolbarEditorPosition: 'bottom',
 };

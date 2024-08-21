@@ -1,25 +1,28 @@
 import { ResponseTypes } from './utils';
 
 export default {
-  responseType: ResponseTypes.advanced,
-  element: 'math-inline',
-  feedback: {
-    correct: {
-      default: 'Correct',
-      type: 'none',
-    },
-    incorrect: {
-      default: 'Incorrect',
-      type: 'none',
-    },
-    partial: {
-      default: 'Nearly',
-      type: 'none',
-    },
-  },
-  equationEditor: '8',
-  expression: '',
-  question: '',
-  responses: [],
+  allowTrailingZerosDefault: false,
   customKeys: [],
+  equationEditor: 8,
+  expression: '',
+  feedback: {
+    correct: { default: 'Correct', type: 'none' },
+    incorrect: { default: 'Incorrect', type: 'none' },
+    partial: { default: 'Nearly', type: 'none' },
+  },
+  feedbackEnabled: false,
+  ignoreOrderDefault: false,
+  partialScoring: true,
+  prompt: '',
+  promptEnabled: true,
+  rationale: '',
+  rationaleEnabled: true,
+  responseType: ResponseTypes.advanced,
+  responses: [],
+  scoringType: 'auto',
+  studentInstructionsEnabled: true,
+  teacherInstructions: '',
+  teacherInstructionsEnabled: true,
+  toolbarEditorPosition: 'bottom',
+  validationDefault: 'literal',
 };

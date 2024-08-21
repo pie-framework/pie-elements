@@ -1,14 +1,14 @@
 export default {
   model: {
-    visibleToStudent: true,
-    halfScoring: false,
-    pointLabels: true,
-    description: false,
-    standards: false,
-    scales: [],
-    excludeZero: false,
-    maxPointsEnabled: true,
     addScaleEnabled: true,
+    description: false,
+    excludeZero: false,
+    halfScoring: false,
+    maxPointsEnabled: true,
+    pointLabels: true,
+    scales: [],
+    standards: false,
+    visibleToStudent: true,
   },
   configuration: {
     baseInputConfiguration: {

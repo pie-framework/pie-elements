@@ -1,8 +1,4 @@
 export default {
-  teacherInstructionsEnabled: false,
-  titleEnabled: true,
-  subtitleEnabled: true,
-  textEnabled: true,
   authorEnabled: true,
   passages: [
     {
@@ -13,4 +9,8 @@ export default {
       text: '',
     }
   ],
+  subtitleEnabled: true,
+  teacherInstructionsEnabled: false,
+  textEnabled: true,
+  titleEnabled: true,
 };
