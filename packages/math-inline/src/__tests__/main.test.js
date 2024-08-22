@@ -4,8 +4,9 @@ import Main from '../main';
 import { mq, HorizontalKeypad } from '@pie-lib/pie-toolbox/math-input';
 import { shallowChild } from '@pie-lib/pie-toolbox/test-utils';
 import { Feedback } from '@pie-lib/pie-toolbox/render-ui';
-import {CorrectAnswerToggle} from '@pie-lib/pie-toolbox/correct-answer-toggle';
+import { CorrectAnswerToggle } from '@pie-lib/pie-toolbox/correct-answer-toggle';
 import SimpleQuestionBlock from '../simple-question-block';
+import { mount } from 'enzyme';
 
 const Mathquill = require('@pie-framework/mathquill');
 
@@ -97,6 +98,7 @@ describe('Math-Inline Main', () => {
           },
         },
         showCorrect: false,
+        tooltipContainerRef: expect.any(Object),
       });
 
       expect(Mathquill.getInterface().registerEmbed).toHaveBeenCalled();
@@ -148,6 +150,7 @@ describe('Math-Inline Main', () => {
           },
         },
         showCorrect: false,
+        tooltipContainerRef: expect.any(Object),
       });
     });
 
@@ -157,7 +160,9 @@ describe('Math-Inline Main', () => {
       expect(wrapper.find(HorizontalKeypad).length).toEqual(0);
       wrapper.instance().onSubFieldFocus('r1');
       wrapper.instance().onBlur({
-        relatedTarget: { offsetParent: { getAttribute: () => 'tooltip', children: [{ attributes: { 'data-keypad': true } }] } },
+        relatedTarget: {
+          offsetParent: { getAttribute: () => 'tooltip', children: [{ attributes: { 'data-keypad': true } }] },
+        },
         currentTarget: { offsetParent: 'editor1' },
       });
       expect(wrapper.state().activeAnswerBlock).toEqual('r1');
@@ -168,7 +173,9 @@ describe('Math-Inline Main', () => {
 
       expect(wrapper.find(HorizontalKeypad).length).toEqual(0);
       wrapper.instance().onBlur({
-        relatedTarget: { offsetParent: { getAttribute: () => 'tooltip', children: [{ attributes: { 'data-keypad': false } }] } },
+        relatedTarget: {
+          offsetParent: { getAttribute: () => 'tooltip', children: [{ attributes: { 'data-keypad': false } }] },
+        },
         currentTarget: { offsetParent: 'editor2' },
       });
       expect(wrapper.state().activeAnswerBlock).toEqual('');
@@ -203,6 +210,7 @@ describe('Math-Inline Main', () => {
           },
         },
         showCorrect: false,
+        tooltipContainerRef: expect.any(Object),
       });
     });
 
@@ -229,6 +237,7 @@ describe('Math-Inline Main', () => {
           },
         },
         showCorrect: false,
+        tooltipContainerRef: expect.any(Object),
       });
     });
 
@@ -254,6 +263,7 @@ describe('Math-Inline Main', () => {
           },
         },
         showCorrect: false,
+        tooltipContainerRef: expect.any(Object),
       });
 
       const newProps = { ...defaultProps };
@@ -281,6 +291,7 @@ describe('Math-Inline Main', () => {
           },
         },
         showCorrect: false,
+        tooltipContainerRef: expect.any(Object),
       });
     });
   });
