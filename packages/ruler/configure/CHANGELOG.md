@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.17.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/ruler-configure@4.17.2...@pie-element/ruler-configure@4.17.3) (2024-08-22)
+
+
+### Bug Fixes
+
+* update pie-lib PD-4021 ([07d6e85](https://github.com/pie-framework/pie-elements/commit/07d6e8560ddfe25f95dfbafc2d3155b93eb85404))
+
+
+
+
+
 ## [4.17.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/ruler-configure@4.17.1...@pie-element/ruler-configure@4.17.2) (2024-08-19)
 
 
