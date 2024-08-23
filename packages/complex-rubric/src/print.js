@@ -66,6 +66,11 @@ class ComplexRubricPrint extends HTMLElement {
           this.setMultiTraitRubricModel(this.multiTraitRubric);
         });
         break;
+      case RUBRIC_TYPES.RUBRICLESS:
+        customElements.whenDefined(RUBRIC_TAG_NAME).then(() => {
+          this.setRubriclessModel(this.rubricless);
+        });
+        break;
     }
 
     if (oldType !== this.type) {
@@ -93,6 +98,12 @@ class ComplexRubricPrint extends HTMLElement {
     }
   }
 
+  setRubriclessModel(rubricless) {
+    if (this._model && this._model.rubrics && this._model.rubrics.rubricless) {
+      rubricless.model = preparePrintModel(this._model.rubrics.rubricless, this._options);
+    }
+  }
+
   set options(o) {
     this._options = o;
   }
@@ -104,15 +115,25 @@ class ComplexRubricPrint extends HTMLElement {
   get simpleRubric() {
     return this.querySelector(`${RUBRIC_TAG_NAME}#simpleRubric`);
   }
+  get rubricless() {
+    return this.querySelector(`${RUBRIC_TAG_NAME}#rubricless`);
+  }
 
   connectedCallback() {
     this._render();
   }
 
   _render() {
-    this.innerHTML = this._type === RUBRIC_TYPES.SIMPLE_RUBRIC
-      ? `<${RUBRIC_TAG_NAME} id="simpleRubric" />`
-      : `<${MULTI_TRAIT_RUBRIC_TAG_NAME} id="multiTraitRubric" />`;
+    let rubricTag;
+    if (this._type === RUBRIC_TYPES.SIMPLE_RUBRIC) {
+      rubricTag = `<${RUBRIC_TAG_NAME} id="simpleRubric" />`;
+    } else if (this._type === RUBRIC_TYPES.RUBRICLESS) {
+      rubricTag = `<${RUBRIC_TAG_NAME} id="rubricless" />`;
+    } else {
+      rubricTag = `<${MULTI_TRAIT_RUBRIC_TAG_NAME} id="multiTraitRubric" />`;
+    }
+
+    this.innerHTML = rubricTag;
   }
 }
 
