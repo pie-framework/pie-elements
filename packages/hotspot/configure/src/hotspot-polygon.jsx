@@ -202,30 +202,13 @@ class PolComponent extends React.Component {
     const isInProgress = id === 'newPolygon';
     const showPoints = hovered || id === 'newPolygon';
 
-    const hoverColor = hoverOutlineColor || HOVERED_COLOR;
-
     const calculatedStrokeWidth = correct ? strokeWidth : hovered ? 1 : 0;
     const calculatedStroke = correct ? outlineColor : hovered ? HOVERED_COLOR : '';
-    // const calculatedStroke = correct ? outlineColor : hovered ? hoverColor : '';
     const boundingBox = this.getBoundingBox(points);
     const calculatedFill = correct ? selectedHotspotColor : hotspotColor;
 
-    console.log({ points });
-    let lastPoint = {
-      x: 0,
-      y: 0,
-    };
-    if (points.length) {
-      lastPoint = points[points.length - 1];
-    }
-
     return (
-      <Group
-        classes={classes.group}
-        onMouseLeave={this.handleMouseLeave}
-        onMouseEnter={this.handleMouseEnter}
-        // onClick={() => this.props.onClick(this.state)}
-      >
+      <Group classes={classes.group} onMouseLeave={this.handleMouseLeave} onMouseEnter={this.handleMouseEnter}>
         {hoverOutlineColor && hovered && (
           <Rect
             x={boundingBox.x}
