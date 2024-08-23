@@ -8,6 +8,12 @@ const MULTI_TRAIT_RUBRIC_TAG_NAME = 'complex-rubric-multi-trait';
 class ComplexRubricSimple extends Rubric {}
 class ComplexRubricMultiTrait extends MultiTraitRubric {}
 
+const rubricTags = {
+  [RUBRIC_TYPES.SIMPLE_RUBRIC]: `<${RUBRIC_TAG_NAME} id="simpleRubric" />`,
+  [RUBRIC_TYPES.RUBRICLESS]: `<${RUBRIC_TAG_NAME} id="rubricless" />`,
+  [RUBRIC_TYPES.MULTI_TRAIT_RUBRIC]: `<${MULTI_TRAIT_RUBRIC_TAG_NAME} id="multiTraitRubric" />`,
+};
+
 const preparePrintModel = (model, opts) => {
   const instr = opts.role === 'instructor';
 
@@ -115,6 +121,7 @@ class ComplexRubricPrint extends HTMLElement {
   get simpleRubric() {
     return this.querySelector(`${RUBRIC_TAG_NAME}#simpleRubric`);
   }
+
   get rubricless() {
     return this.querySelector(`${RUBRIC_TAG_NAME}#rubricless`);
   }
@@ -124,16 +131,7 @@ class ComplexRubricPrint extends HTMLElement {
   }
 
   _render() {
-    let rubricTag;
-    if (this._type === RUBRIC_TYPES.SIMPLE_RUBRIC) {
-      rubricTag = `<${RUBRIC_TAG_NAME} id="simpleRubric" />`;
-    } else if (this._type === RUBRIC_TYPES.RUBRICLESS) {
-      rubricTag = `<${RUBRIC_TAG_NAME} id="rubricless" />`;
-    } else {
-      rubricTag = `<${MULTI_TRAIT_RUBRIC_TAG_NAME} id="multiTraitRubric" />`;
-    }
-
-    this.innerHTML = rubricTag;
+    this.innerHTML = rubricTags[this._type] || '';
   }
 }
 
