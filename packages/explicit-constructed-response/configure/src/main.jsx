@@ -281,6 +281,7 @@ export class Main extends React.Component {
       mathMlOptions = {},
       language = {},
       languageChoices = {},
+      spanishInput = {},
     } = configuration || {};
     const {
       errors,
@@ -290,6 +291,7 @@ export class Main extends React.Component {
       spellCheckEnabled,
       teacherInstructionsEnabled,
       toolbarEditorPosition,
+      spanishInputEnabled
     } = model || {};
 
     const {
@@ -313,6 +315,7 @@ export class Main extends React.Component {
       maxLengthPerChoiceEnabled: maxLengthPerChoice.settings && toggle(maxLengthPerChoice.label),
       'language.enabled': language.settings && toggle(language.label, true),
       language: language.settings && language.enabled && dropdown(languageChoices.label, languageChoices.options),
+      spanishInputEnabled: spanishInput.settings && toggle(spanishInput.label),
     };
     const panelProperties = {
       teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
@@ -429,6 +432,8 @@ export class Main extends React.Component {
                   onToolbarDone={onToolbarDone}
                   correctChoice={correctChoice}
                   maxLengthPerChoiceEnabled={maxLengthPerChoiceEnabled}
+                  spanishInputEnabled={spanishInputEnabled}
+                  spellCheck={spellCheckEnabled}
                 />
               );
             },
@@ -462,6 +467,7 @@ export class Main extends React.Component {
           maxLengthPerChoiceEnabled={maxLengthPerChoiceEnabled}
           spellCheck={spellCheckEnabled}
           choicesErrors={choicesErrors}
+          spanishInputEnabled={spanishInputEnabled}
         />
 
         {rationaleEnabled && (

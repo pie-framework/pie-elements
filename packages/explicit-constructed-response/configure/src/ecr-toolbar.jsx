@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import OutlinedInput from '@material-ui/core/OutlinedInput';
+import { EditableHtml } from '@pie-lib/pie-toolbox/editable-html';
+import { stripHtmlTags } from './markupUtils';
 
 const findSlateNode = (key) => {
   return window.document.querySelector('[data-key="' + key + '"]');
@@ -22,11 +23,14 @@ export class ECRToolbar extends React.Component {
       }),
     }),
     maxLengthPerChoiceEnabled: PropTypes.bool,
+    spanishInputEnabled: PropTypes.bool,
+    spellCheck: PropTypes.bool,
   };
 
-  state = {
-    markup: '',
-  };
+    state = {
+        markup: '',
+        toolbarStyle: {},
+    };
 
   componentDidMount() {
     const { correctChoice, node } = this.props;
@@ -48,68 +52,96 @@ export class ECRToolbar extends React.Component {
           position: 'absolute',
           top: `${top + domNodeRect.height + 20}px`,
           left: `${left + 20}px`,
-          width: domNodeRect.width,
+          width: `${domNodeRect.width - 4}px`,
         },
       });
     }
   }
 
-  onDone = () => {
-    const { markup: newValue } = this.state;
-    const { node, value, onToolbarDone, onChangeResponse } = this.props;
-    const update = { ...node.data.toJSON(), value: newValue };
-    const change = value.change().setNodeByKey(node.key, { data: update });
+    onDone = (markup) => {
+        const { node, value, onToolbarDone, onChangeResponse } = this.props;
+        const sanitizedMarkup = stripHtmlTags(markup);
+        this.setState({ markup: sanitizedMarkup });
 
-    const nextText = value.document.getNextText(node.key);
+        const updatedData = { ...node.data.toJSON(), value: sanitizedMarkup };
+        const change = value.change().setNodeByKey(node.key, { data: updatedData });
+        const nextText = value.document.getNextText(node.key);
 
-    change.moveFocusTo(nextText.key, 0).moveAnchorTo(nextText.key, 0);
+        change.moveFocusTo(nextText.key, 0).moveAnchorTo(nextText.key, 0);
+        onToolbarDone(change, true);
+        onChangeResponse(sanitizedMarkup);
+    };
 
-    onToolbarDone(change, true);
-    onChangeResponse(newValue);
-  };
+    onRespAreaChange = (respAreaMarkup) => {
+        this.setState({ respAreaMarkup });
+    };
 
-  onChange = (e) => this.setState({ markup: e.target.value });
+    onKeyDown = (event) => {
+        if (event.key === 'Enter') {
+            this.onAddChoice();
+            return false;
+        }
+    };
 
-  render() {
-    const { classes, maxLengthPerChoiceEnabled } = this.props;
-    const { markup, toolbarStyle } = this.state;
-    const inputProps = maxLengthPerChoiceEnabled ? {} : { maxLength: 25 };
+    onBlur = () => {
+        if (this.clickedInside) {
+            this.clickedInside = false;
+            return;
+        }
+    };
 
-    return (
-      <div
-        style={{
-          ...toolbarStyle,
-          backgroundColor: '#E0E1E6',
-        }}
-      >
-        <OutlinedInput
-          style={{ width: '100%' }}
-          autoFocus
-          labelWidth={0}
-          classes={{
-            input: classes.input,
-          }}
-          onChange={this.onChange}
-          onBlur={this.onDone}
-          value={markup || ''}
-          inputProps={inputProps}
-        />
-      </div>
-    );
-  }
+    render() {
+        const { classes, maxLengthPerChoiceEnabled, spanishInputEnabled, spellCheck } = this.props;
+        const { markup, toolbarStyle } = this.state;
+        const inputProps = maxLengthPerChoiceEnabled ? {} : { maxLength: 25 };
+        const languageCharactersProps = spanishInputEnabled ? [{ language: 'spanish' }] : [];
+
+        return (
+            <div style={toolbarStyle}>
+                <EditableHtml
+                    autoFocus={true}
+                    className={classes.markup}
+                    disableUnderline
+                    onChange={(respAreaMarkup) => {
+                        if (this.preventDone) {
+                            return;
+                        }
+
+                        this.onRespAreaChange(respAreaMarkup);
+                    }}
+                    onDone={(val) => {
+                        if (this.preventDone) {
+                            return;
+                        }
+
+                        this.onDone(val);
+                    }}
+                    onBlur={(e) => {
+                        const inInInsertCharacter = e.relatedTarget && e.relatedTarget.closest('.insert-character-dialog');
+
+                        this.preventDone = inInInsertCharacter;
+
+                        this.onBlur(e);
+                    }}
+                    onKeyDown={this.onKeyDown}
+                    markup={markup || ''}
+                    activePlugins={['languageCharacters']}
+                    languageCharactersProps={languageCharactersProps}
+                    minHeight={'10px'}
+                    maxHeight={'10px'}
+                    spellCheck={spellCheck}
+                    {...inputProps}
+                />
+            </div>
+        );
+    }
 }
 
 const StyledECRToolbar = withStyles((theme) => ({
-  respArea: {
-    backgroundColor: theme.palette.common.white,
-  },
-  input: {
-    backgroundColor: theme.palette.common.white,
-    padding: '10px 20px 10px 10px',
-  },
-  errorInput: {
-    border: `2px solid ${theme.palette.error.main}`,
-  },
+    markup: {
+        backgroundColor: theme.palette.common.white,
+        outline: 'none',
+    },
 }))(ECRToolbar);
 
 export default StyledECRToolbar;

@@ -34,6 +34,7 @@ export class Main extends React.Component {
     showNote: PropTypes.bool,
     teacherInstructions: PropTypes.string,
     value: PropTypes.object,
+    spanishInputEnabled: PropTypes.bool
   };
 
   static defaultProps = {
@@ -110,6 +111,7 @@ export class Main extends React.Component {
       rationale,
       showNote,
       teacherInstructions,
+      spanishInputEnabled
     } = this.props;
 
     const displayNote = (showCorrectAnswer || (mode === 'view' && role === 'instructor')) && showNote && note;
@@ -161,6 +163,7 @@ export class Main extends React.Component {
           maxLength={maxLengthPerChoice}
           adjustedLimit={maxLengthPerChoiceEnabled}
           spellCheck={playerSpellCheckEnabled}
+          spanishInputEnabled={spanishInputEnabled}
         />
 
         {displayNote && <div className={classNames(classes.note, 'note')} dangerouslySetInnerHTML={{ __html: note }} />}
