@@ -17,7 +17,7 @@
     "lodash": "^4.17.15",
     "prop-types": "^15.6.1",
     "react": "^16.8.1",
-    "react-dnd": "^14.0.5",
+    "react-dnd": "^16.0.1",
     "react-dom": "^16.8.1"
   },
   "gitHead": "0e14ff981bcdc8a89a0e58484026496701bfdbc3",
