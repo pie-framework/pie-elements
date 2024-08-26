@@ -2,7 +2,7 @@
 export default {
   model: {
     allowTrailingZerosDefault: false,
-    equationEditor: 8,
+    equationEditor: '8',
     ignoreOrderDefault: false,
     markup: '',
     playerSpellCheckEnabled: true,

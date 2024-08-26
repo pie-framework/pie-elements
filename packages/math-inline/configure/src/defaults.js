@@ -9,7 +9,7 @@ export default {
   model: {
     allowTrailingZerosDefault: false,
     customKeys: [],
-    equationEditor: 8,
+    equationEditor: '8',
     expression: '',
     feedback: {
       correct: { default: 'Correct', type: 'none' },

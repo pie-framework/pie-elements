@@ -163,17 +163,17 @@ exports[`Render Main Component Match Snapshot 1`] = `
       model={
         Object {
           "allowTrailingZerosDefault": false,
-          "element": "math-templated",
           "equationEditor": "8",
           "ignoreOrderDefault": false,
           "markup": "",
           "playerSpellCheckEnabled": true,
           "prompt": "",
           "promptEnabled": true,
-          "rationale": "Rationale goes here",
+          "rationale": "",
           "rationaleEnabled": true,
           "responses": Object {},
           "spellCheckEnabled": true,
+          "teacherInstructions": "",
           "teacherInstructionsEnabled": true,
           "toolbarEditorPosition": "bottom",
           "validationDefault": "literal",
@@ -502,7 +502,7 @@ There should be at least 1 and at most 10 response areas defined."
           },
         ]
       }
-      markup="Rationale goes here"
+      markup=""
       mathMlOptions={
         Object {
           "mmlEditing": false,

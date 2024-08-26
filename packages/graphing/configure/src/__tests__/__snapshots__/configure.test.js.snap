@@ -468,8 +468,10 @@ exports[`Configure renders snapshot 1`] = `
           "rationaleEnabled": true,
           "standardGrid": false,
           "studentInstructionsEnabled": true,
+          "teacherInstructions": "",
           "teacherInstructionsEnabled": true,
           "title": "",
+          "titleEnabled": true,
           "toolbarTools": Array [
             "circle",
             "line",
@@ -890,8 +892,10 @@ exports[`Configure renders snapshot 1`] = `
         "rationaleEnabled": true,
         "standardGrid": false,
         "studentInstructionsEnabled": true,
+        "teacherInstructions": "",
         "teacherInstructionsEnabled": true,
         "title": "",
+        "titleEnabled": true,
         "toolbarTools": Array [
           "circle",
           "line",
@@ -908,6 +912,7 @@ exports[`Configure renders snapshot 1`] = `
     }
     removeIncompleteTool={false}
     showLabels={true}
+    showTitle={true}
     titlePlaceholder="Click here to add a title for this graph"
   />
   <WithStyles(CorrectResponse)
@@ -977,8 +982,10 @@ exports[`Configure renders snapshot 1`] = `
         "rationaleEnabled": true,
         "standardGrid": false,
         "studentInstructionsEnabled": true,
+        "teacherInstructions": "",
         "teacherInstructionsEnabled": true,
         "title": "",
+        "titleEnabled": true,
         "toolbarTools": Array [
           "circle",
           "line",

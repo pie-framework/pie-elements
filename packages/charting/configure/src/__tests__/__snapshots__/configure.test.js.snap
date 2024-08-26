@@ -32,6 +32,7 @@ exports[`ChartingConfig renders snapshot 1`] = `
         range={
           Object {
             "label": "",
+            "labelStep": 1,
             "max": 1,
             "min": 0,
           }
@@ -272,6 +273,7 @@ exports[`Configure renders snapshot 1`] = `
           "promptEnabled": true,
           "range": Object {
             "label": "",
+            "labelStep": 1,
             "max": 1,
             "min": 0,
           },
@@ -280,6 +282,7 @@ exports[`Configure renders snapshot 1`] = `
           "scoringType": "all or nothing",
           "studentInstructionsEnabled": true,
           "studentNewCategoryDefaultLabel": "New Category",
+          "teacherInstructions": "",
           "teacherInstructionsEnabled": true,
           "title": "",
         }
@@ -466,6 +469,7 @@ exports[`Configure renders snapshot 1`] = `
         "promptEnabled": true,
         "range": Object {
           "label": "",
+          "labelStep": 1,
           "max": 1,
           "min": 0,
         },
@@ -474,6 +478,7 @@ exports[`Configure renders snapshot 1`] = `
         "scoringType": "all or nothing",
         "studentInstructionsEnabled": true,
         "studentNewCategoryDefaultLabel": "New Category",
+        "teacherInstructions": "",
         "teacherInstructionsEnabled": true,
         "title": "",
       }
@@ -568,6 +573,7 @@ exports[`Configure renders snapshot 1`] = `
         "promptEnabled": true,
         "range": Object {
           "label": "",
+          "labelStep": 1,
           "max": 1,
           "min": 0,
         },
@@ -576,6 +582,7 @@ exports[`Configure renders snapshot 1`] = `
         "scoringType": "all or nothing",
         "studentInstructionsEnabled": true,
         "studentNewCategoryDefaultLabel": "New Category",
+        "teacherInstructions": "",
         "teacherInstructionsEnabled": true,
         "title": "",
       }
@@ -642,6 +649,7 @@ exports[`Configure renders snapshot 1`] = `
         "promptEnabled": true,
         "range": Object {
           "label": "",
+          "labelStep": 1,
           "max": 1,
           "min": 0,
         },
@@ -650,6 +658,7 @@ exports[`Configure renders snapshot 1`] = `
         "scoringType": "all or nothing",
         "studentInstructionsEnabled": true,
         "studentNewCategoryDefaultLabel": "New Category",
+        "teacherInstructions": "",
         "teacherInstructionsEnabled": true,
         "title": "",
       }
@@ -726,6 +735,7 @@ exports[`CorrectResponse renders snapshot 1`] = `
           range={
             Object {
               "label": "",
+              "labelStep": 1,
               "max": 1,
               "min": 0,
             }

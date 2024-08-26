@@ -193,6 +193,7 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
           "rationaleEnabled": true,
           "slateMarkup": "<span data-type=\\"drag_in_the_blank\\" data-index=\\"0\\" data-id=\\"0\\" data-value=\\"&lt;div&gt;6&lt;/div&gt;\\"></span> + <span data-type=\\"drag_in_the_blank\\" data-index=\\"1\\" data-id=\\"1\\" data-value=\\"&lt;div&gt;9&lt;/div&gt;\\"></span> = 15",
           "studentInstructionsEnabled": true,
+          "teacherInstructions": "",
           "teacherInstructionsEnabled": true,
           "toolbarEditorPosition": "bottom",
         }
@@ -463,6 +464,7 @@ There should be at least 2 tokens defined."
         "rationaleEnabled": true,
         "slateMarkup": "<span data-type=\\"drag_in_the_blank\\" data-index=\\"0\\" data-id=\\"0\\" data-value=\\"&lt;div&gt;6&lt;/div&gt;\\"></span> + <span data-type=\\"drag_in_the_blank\\" data-index=\\"1\\" data-id=\\"1\\" data-value=\\"&lt;div&gt;9&lt;/div&gt;\\"></span> = 15",
         "studentInstructionsEnabled": true,
+        "teacherInstructions": "",
         "teacherInstructionsEnabled": true,
         "toolbarEditorPosition": "bottom",
       }
@@ -741,6 +743,7 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
           "rationaleEnabled": false,
           "slateMarkup": "<span data-type=\\"drag_in_the_blank\\" data-index=\\"0\\" data-id=\\"0\\" data-value=\\"&lt;div&gt;6&lt;/div&gt;\\"></span> + <span data-type=\\"drag_in_the_blank\\" data-index=\\"1\\" data-id=\\"1\\" data-value=\\"&lt;div&gt;9&lt;/div&gt;\\"></span> = 15",
           "studentInstructionsEnabled": true,
+          "teacherInstructions": "",
           "teacherInstructionsEnabled": false,
           "toolbarEditorPosition": "bottom",
         }
@@ -904,6 +907,7 @@ There should be at least 2 tokens defined."
         "rationaleEnabled": false,
         "slateMarkup": "<span data-type=\\"drag_in_the_blank\\" data-index=\\"0\\" data-id=\\"0\\" data-value=\\"&lt;div&gt;6&lt;/div&gt;\\"></span> + <span data-type=\\"drag_in_the_blank\\" data-index=\\"1\\" data-id=\\"1\\" data-value=\\"&lt;div&gt;9&lt;/div&gt;\\"></span> = 15",
         "studentInstructionsEnabled": true,
+        "teacherInstructions": "",
         "teacherInstructionsEnabled": false,
         "toolbarEditorPosition": "bottom",
       }
