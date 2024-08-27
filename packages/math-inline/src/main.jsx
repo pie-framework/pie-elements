@@ -265,27 +265,27 @@ export class Main extends React.Component {
 
     updateAria = () => {
         const {classes} = this.props;
-    
+
         if (this.root) {
             // Update aria-hidden for .mq-selectable elements
             const selectableElements = this.root.querySelectorAll('.mq-selectable');
             selectableElements.forEach(elem => elem.setAttribute('aria-hidden', 'true'));
-    
+
             // Update aria-label for textarea elements and add aria-describedby
             const textareaElements = this.root.querySelectorAll('textarea');
             textareaElements.forEach((elem, index) => {
                 elem.setAttribute('aria-label', 'Enter answer.');
-    
+
                 // Create a unique id for each instructions element
                 const instructionsId = `instructions-${index}`;
-    
+
                 // Find the parent element that contains the textarea
                 const parent = elem.closest('.mq-textarea');
-    
+
                 if (parent) {
                     // Create or find the instructions element within the parent
                     let instructionsElement = parent.querySelector(`#${instructionsId}`);
-    
+
                     if (!instructionsElement) {
                         instructionsElement = document.createElement('span');
                         instructionsElement.id = instructionsId;
@@ -293,13 +293,13 @@ export class Main extends React.Component {
                         instructionsElement.textContent = 'This field automatically displays a math keypad. Both keypad and keyboard input are accepted, and keyboard entry accepts LaTeX markup.';
                         parent.insertBefore(instructionsElement, elem);
                     }
-    
+
                     elem.setAttribute('aria-describedby', instructionsId);
                 }
             });
         }
     };
-    
+
   onDone = () => {};
 
     onSimpleResponseChange = (response) => {
@@ -871,7 +871,6 @@ const styles = (theme) => ({
         border: '2px solid grey !important',
     },
     blockResponse: {
-        flex: 2,
         color: 'grey',
         background: theme.palette.grey['A100'],
         fontSize: '0.8rem !important',
@@ -880,6 +879,9 @@ const styles = (theme) => ({
         alignItems: 'center',
         justifyContent: 'center',
         borderRight: `2px solid ${color.disabled()} !important`,
+        flexShrink: 0,
+        flexGrow: 0,
+        flexBasis: 'auto', // take only the space needed for content + padding
     },
     toggle: {
         color: color.text(),
@@ -892,7 +894,7 @@ const styles = (theme) => ({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        flex: 8,
+        flexGrow: 1, // take all the remaining space
         '& > .mq-math-mode': {
             '& > .mq-hasCursor': {
                 '& > .mq-cursor': {
