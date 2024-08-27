@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.23.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@5.23.2...@pie-element/image-cloze-association@5.23.3) (2024-08-22)
+
+
+### Bug Fixes
+
+* update pie-lib PD-4021 ([07d6e85](https://github.com/pie-framework/pie-elements/commit/07d6e8560ddfe25f95dfbafc2d3155b93eb85404))
+
+
+
+
+
+## [5.23.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@5.23.1...@pie-element/image-cloze-association@5.23.2) (2024-08-19)
+
+
+### Bug Fixes
+
+* update pie-lib PD-3855, PD-3841 ([29ed50e](https://github.com/pie-framework/pie-elements/commit/29ed50ec75c3deedfe765f776dc24a6ecd6af284))
+* **ICA:** Refactored interactive styles to reduce duplication and added 'width: fit-content' PD-3658 ([fd5bc21](https://github.com/pie-framework/pie-elements/commit/fd5bc21d898eebe5a9fe96d8214a693066cb0c48))
+* **image-cloze-association:** adjust possible response area width PD-3955 ([43c0829](https://github.com/pie-framework/pie-elements/commit/43c0829d58b4698cfc2fc587699cd28972df8265))
+
+
+
+
+
 ## [5.23.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@5.23.0...@pie-element/image-cloze-association@5.23.1) (2024-08-06)
 
 

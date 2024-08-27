@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.18.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@8.18.2...@pie-element/number-line@8.18.3) (2024-08-22)
+
+
+### Bug Fixes
+
+* update pie-lib PD-4021 ([07d6e85](https://github.com/pie-framework/pie-elements/commit/07d6e8560ddfe25f95dfbafc2d3155b93eb85404))
+* **number-line:** don't allow plotting a tool if it's not in availableTypes PD-4014 ([aac5f5c](https://github.com/pie-framework/pie-elements/commit/aac5f5ca9091108b19cd08da55eef4f7b5da6bf0))
+* **number-line:** remove console log ([bde586b](https://github.com/pie-framework/pie-elements/commit/bde586be7ee86138f372c8f8d254aa62ad94e024))
+
+
+
+
+
+## [8.18.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@8.18.1...@pie-element/number-line@8.18.2) (2024-08-19)
+
+
+### Bug Fixes
+
+* update pie-lib PD-3855, PD-3841 ([29ed50e](https://github.com/pie-framework/pie-elements/commit/29ed50ec75c3deedfe765f776dc24a6ecd6af284))
+
+
+
+
+
 ## [8.18.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@8.18.0...@pie-element/number-line@8.18.1) (2024-08-06)
 
 
