@@ -3,6 +3,39 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.26.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@7.25.4...@pie-element/math-inline@7.26.0) (2024-08-27)
+
+
+### Features
+
+* update pie-lib PD-4026, PD-3990 ([395d7d7](https://github.com/pie-framework/pie-elements/commit/395d7d779caae57a810cc19c1d676319d1c19ded))
+
+
+
+
+
+## [7.25.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@7.25.3...@pie-element/math-inline@7.25.4) (2024-08-27)
+
+
+### Bug Fixes
+
+* **math-inline:** tweak flex style in order to fix PD-4024 ([debb271](https://github.com/pie-framework/pie-elements/commit/debb2711d99cdb81fb38cf196e2acc19a27bcf2c))
+
+
+
+
+
+## [7.25.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@7.25.2...@pie-element/math-inline@7.25.3) (2024-08-22)
+
+
+### Bug Fixes
+
+* update pie-lib PD-4021 ([07d6e85](https://github.com/pie-framework/pie-elements/commit/07d6e8560ddfe25f95dfbafc2d3155b93eb85404))
+
+
+
+
+
 ## [7.25.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@7.25.1...@pie-element/math-inline@7.25.2) (2024-08-19)
 
 

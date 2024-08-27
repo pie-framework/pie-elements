@@ -259,8 +259,15 @@ export class Main extends React.Component {
     setTimeout(() => renderMath(this.root), 100);
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps, prevState) {
     this.handleAnswerBlockDomUpdate();
+
+    const prevResponseType = prevProps.model?.config?.responseType;
+    const currentResponseType = this.props.model?.config?.responseType;
+
+    if (prevResponseType !== currentResponseType) {
+      this.updateAria();
+    }
   }
 
   updateAria = () => {
@@ -291,7 +298,7 @@ export class Main extends React.Component {
             instructionsElement.id = instructionsId;
             instructionsElement.className = classes.srOnly;
             instructionsElement.textContent =
-              'This field automatically displays a math keypad. Both keypad and keyboard input are accepted, and keyboard entry accepts LaTeX markup.';
+              'This field supports both keypad and keyboard input. Use the keyboard to access and interact with the on-screen math keypad, which accepts LaTeX markup. Use the down arrow key to open the keypad and navigate its buttons. Use the escape key to close the keypad and return to the input field.';
             parent.insertBefore(instructionsElement, elem);
           }
 
@@ -301,14 +308,63 @@ export class Main extends React.Component {
     }
   };
 
+  focusFirstKeypadElement = () => {
+    setTimeout(() => {
+      const keypadElement = document.querySelector('[data-keypad]');
+
+      if (keypadElement) {
+        const firstButton = keypadElement.querySelector("button, [role='button']");
+
+        if (firstButton) {
+          firstButton.focus();
+        }
+      }
+    }, 0);
+  };
+
+  handleKeyDown = (event, id) => {
+    const isAnswerInputFocused = document.activeElement.getAttribute('aria-label') === 'Enter answer.';
+    const isClickOrTouchEvent = event.type === 'click' || event.type === 'touchstart';
+
+    if (isAnswerInputFocused && (event.key === 'ArrowDown' || isClickOrTouchEvent)) {
+      this.setState({ activeAnswerBlock: id }, () => {
+        if (event.key === 'ArrowDown') {
+          this.focusFirstKeypadElement();
+        }
+      });
+    }
+
+    if ((!isAnswerInputFocused && isClickOrTouchEvent) || event.key === 'Escape') {
+      this.setState({ activeAnswerBlock: '' });
+    }
+  };
+
+  onSubFieldFocus = (id) => {
+    const handleEvent = (event) => {
+      this.handleKeyDown(event, id);
+    };
+
+    document.addEventListener('keydown', handleEvent);
+    document.addEventListener('click', handleEvent);
+    document.addEventListener('touchstart', handleEvent);
+  };
+
+  cleanupKeyDownListener = () => {
+    document.removeEventListener('keydown', this.handleEvent);
+    document.removeEventListener('click', this.handleEvent);
+    document.removeEventListener('touchstart', this.handleEvent);
+  };
+
+  componentWillUnmount() {
+    if (this.cleanupKeyDownListener) {
+      this.cleanupKeyDownListener();
+    }
+  }
+
   onDone = () => {};
 
   onSimpleResponseChange = (response) => {
     this.setState((state) => ({ session: { ...state.session, response } }), this.callOnSessionChange);
-  };
-
-  onSubFieldFocus = (id) => {
-    this.setState({ activeAnswerBlock: id });
   };
 
   toNodeData = (data) => {
@@ -560,6 +616,8 @@ export class Main extends React.Component {
                   emptyResponse={emptyResponse}
                   model={model}
                   session={session}
+                  onSubFieldFocus={this.onSubFieldFocus}
+                  showKeypad={!!activeAnswerBlock}
                 />
               )}
 
@@ -876,7 +934,6 @@ const styles = (theme) => ({
     border: '2px solid grey !important',
   },
   blockResponse: {
-    flex: 2,
     color: 'grey',
     background: theme.palette.grey['A100'],
     fontSize: '0.8rem !important',
@@ -885,6 +942,9 @@ const styles = (theme) => ({
     alignItems: 'center',
     justifyContent: 'center',
     borderRight: `2px solid ${color.disabled()} !important`,
+    flexShrink: 0,
+    flexGrow: 0,
+    flexBasis: 'auto', // take only the space needed for content + padding
   },
   toggle: {
     color: color.text(),
@@ -897,7 +957,7 @@ const styles = (theme) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    flex: 8,
+    flexGrow: 1, // take all the remaining space
     '& > .mq-math-mode': {
       '& > .mq-hasCursor': {
         '& > .mq-cursor': {

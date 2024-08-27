@@ -105,6 +105,64 @@ describe('Math-Inline Main', () => {
     });
   });
 
+  describe('handleKeyDown', () => {
+    let instance;
+    let textarea;
+
+    beforeEach(() => {
+      wrapper = component();
+      instance = wrapper.instance();
+
+      textarea = document.createElement('textarea');
+      textarea.setAttribute('aria-label', 'Enter answer.');
+      document.body.appendChild(textarea);
+      textarea.focus();
+    });
+
+    afterEach(() => {
+      document.body.innerHTML = '';
+    });
+
+    it('should have handleKeyDown method', () => {
+      expect(instance.handleKeyDown).toBeInstanceOf(Function);
+    });
+
+    it('should activate the keypad when ArrowDown is pressed', () => {
+      const event = { key: 'ArrowDown', target: document.activeElement };
+      instance.handleKeyDown(event, 'r1');
+      expect(wrapper.state('activeAnswerBlock')).toEqual('r1');
+    });
+
+    it('should activate the keypad on click or touch event', () => {
+      const clickEvent = { type: 'click', target: document.activeElement };
+      instance.handleKeyDown(clickEvent, 'r1');
+      expect(wrapper.state('activeAnswerBlock')).toEqual('r1');
+
+      wrapper.setState({ activeAnswerBlock: '' });
+      const touchEvent = { type: 'touchstart', target: document.activeElement };
+      instance.handleKeyDown(touchEvent, 'r1');
+      expect(wrapper.state('activeAnswerBlock')).toEqual('r1');
+    });
+
+    it('should deactivate the keypad on Escape key press', () => {
+      wrapper.setState({ activeAnswerBlock: 'r1' });
+      instance.handleKeyDown({ key: 'Escape', target: document.activeElement }, 'r1');
+      expect(wrapper.state('activeAnswerBlock')).toEqual('');
+    });
+
+    it('should deactivate the keypad if the input is not focused and a click or touch event occurs', () => {
+      textarea.blur();
+      wrapper.setState({ activeAnswerBlock: 'r1' });
+
+      const differentElement = document.createElement('div');
+      document.body.appendChild(differentElement);
+
+      instance.handleKeyDown({ type: 'click', target: differentElement }, 'r2');
+
+      expect(wrapper.state('activeAnswerBlock')).toEqual('');
+    });
+  });
+
   describe('logic', () => {
     it('prepares latex correctly and answer blocks and turns them into inputs', () => {
       expect(wrapper.dive().find(mq.Static).length).toEqual(1);
@@ -124,61 +182,6 @@ describe('Math-Inline Main', () => {
 
       expect(wrapper.dive().find(mq.Static).length).toEqual(0);
       expect(wrapper.dive().find(SimpleQuestionBlock).length).toEqual(1);
-    });
-
-    it('correctly shows the keypad', () => {
-      wrapper = component();
-
-      expect(wrapper.find(HorizontalKeypad).length).toEqual(0);
-      wrapper.instance().onSubFieldFocus('r1');
-      expect(wrapper.state()).toEqual({
-        activeAnswerBlock: 'r1',
-        session: {
-          answers: {
-            r1: {
-              value: '',
-            },
-            r2: {
-              value: '',
-            },
-            r3: {
-              value: '',
-            },
-            r4: {
-              value: '',
-            },
-          },
-        },
-        showCorrect: false,
-        tooltipContainerRef: expect.any(Object),
-      });
-    });
-
-    it('correctly keeps the keypad open', () => {
-      wrapper = component();
-
-      expect(wrapper.find(HorizontalKeypad).length).toEqual(0);
-      wrapper.instance().onSubFieldFocus('r1');
-      wrapper.instance().onBlur({
-        relatedTarget: {
-          offsetParent: { getAttribute: () => 'tooltip', children: [{ attributes: { 'data-keypad': true } }] },
-        },
-        currentTarget: { offsetParent: 'editor1' },
-      });
-      expect(wrapper.state().activeAnswerBlock).toEqual('r1');
-    });
-
-    it('correctly hides the keypad', () => {
-      wrapper = component();
-
-      expect(wrapper.find(HorizontalKeypad).length).toEqual(0);
-      wrapper.instance().onBlur({
-        relatedTarget: {
-          offsetParent: { getAttribute: () => 'tooltip', children: [{ attributes: { 'data-keypad': false } }] },
-        },
-        currentTarget: { offsetParent: 'editor2' },
-      });
-      expect(wrapper.state().activeAnswerBlock).toEqual('');
     });
 
     it('correctly pre-populates answers from session', () => {
@@ -293,6 +296,173 @@ describe('Math-Inline Main', () => {
         showCorrect: false,
         tooltipContainerRef: expect.any(Object),
       });
+    });
+  });
+
+  describe('Main component additional functions', () => {
+    let instance;
+    let textarea;
+
+    beforeEach(() => {
+      wrapper = component();
+      instance = wrapper.instance();
+
+      textarea = document.createElement('textarea');
+      textarea.setAttribute('aria-label', 'Enter answer.');
+      document.body.appendChild(textarea);
+      textarea.focus();
+    });
+
+    afterEach(() => {
+      document.body.innerHTML = '';
+    });
+
+    it('should handle answer block DOM update correctly', () => {
+      const mockRoot = document.createElement('div');
+      mockRoot.innerHTML = `
+        <div id="r1"></div>
+        <div id="r1Index"></div>
+      `;
+      instance.root = mockRoot;
+
+      instance.handleAnswerBlockDomUpdate();
+
+      expect(mockRoot.querySelector('#r1').textContent).toEqual('');
+    });
+
+    it('should count response occurrences correctly', () => {
+      const expression = '{{response}} + {{response}} = {{response}}';
+      const count = instance.countResponseOccurrences(expression);
+      expect(count).toEqual(3);
+    });
+
+    it('should update aria attributes correctly', () => {
+      const mockRoot = document.createElement('div');
+      mockRoot.innerHTML = `
+        <div class="mq-selectable"></div>
+        <div class="mq-selectable"></div>
+        <div class="mq-textarea">
+          <textarea></textarea>
+        </div>
+      `;
+      instance.root = mockRoot;
+
+      instance.updateAria();
+
+      const textareaElements = mockRoot.querySelectorAll('textarea');
+      textareaElements.forEach((elem, index) => {
+        expect(elem.getAttribute('aria-label')).toEqual('Enter answer.');
+        expect(elem.getAttribute('aria-describedby')).not.toBeNull();
+        const describedById = elem.getAttribute('aria-describedby');
+        const describedByElement = mockRoot.querySelector(`#${describedById}`);
+        expect(describedByElement).not.toBeNull();
+      });
+    });
+
+    it('should focus first keypad element correctly', () => {
+      jest.useFakeTimers();
+
+      const mockRoot = document.createElement('div');
+      mockRoot.innerHTML = `
+        <div data-keypad="true">
+          <button>Button 1</button>
+          <button>Button 2</button>
+        </div>
+      `;
+
+      document.body.appendChild(mockRoot);
+
+      instance.root = mockRoot;
+
+      instance.focusFirstKeypadElement();
+
+      jest.runAllTimers();
+
+      const focusedElement = document.activeElement;
+      expect(focusedElement.textContent).toEqual('Button 1');
+
+      document.body.removeChild(mockRoot);
+
+      jest.useRealTimers();
+    });
+
+    it('should handle blur correctly', () => {
+      wrapper.setState({ activeAnswerBlock: 'r1' });
+
+      const mockRelatedTarget = document.createElement('div');
+      const parentWithTooltip = document.createElement('div');
+      parentWithTooltip.setAttribute('role', 'tooltip');
+
+      const childWithKeypad = document.createElement('div');
+      childWithKeypad.setAttribute('data-keypad', 'true');
+
+      parentWithTooltip.appendChild(childWithKeypad);
+
+      Object.defineProperty(mockRelatedTarget, 'offsetParent', {
+        get: function () {
+          return parentWithTooltip;
+        },
+      });
+
+      const event = {
+        relatedTarget: mockRelatedTarget,
+        currentTarget: document.createElement('div'),
+      };
+
+      instance.onBlur(event);
+
+      expect(wrapper.state('activeAnswerBlock')).toEqual('r1');
+
+      event.relatedTarget = null;
+      instance.onBlur(event);
+
+      expect(wrapper.state('activeAnswerBlock')).toEqual('');
+    });
+
+    it('should call onSessionChange correctly', () => {
+      wrapper.setState({
+        session: {
+          answers: {
+            r1: { value: 'test' },
+          },
+        },
+      });
+
+      instance.callOnSessionChange();
+
+      expect(defaultProps.onSessionChange).toHaveBeenCalledWith({
+        answers: {
+          r1: { value: 'test' },
+        },
+      });
+    });
+
+    it('should toggle show correct state correctly', () => {
+      instance.toggleShowCorrect(true);
+      expect(wrapper.state('showCorrect')).toEqual(true);
+
+      instance.toggleShowCorrect(false);
+      expect(wrapper.state('showCorrect')).toEqual(false);
+    });
+
+    it('should handle subFieldChanged correctly', () => {
+      instance.subFieldChanged('r1', 'new value');
+
+      expect(wrapper.state('session').answers.r1.value).toEqual('new value');
+    });
+
+    it('should get the correct field name', () => {
+      const fields = { r1: { id: 1 }, r2: { id: 2 } };
+      wrapper.setState({
+        session: {
+          answers: {
+            r1: { value: 'test' },
+          },
+        },
+      });
+
+      const fieldName = instance.getFieldName({ id: 1 }, fields);
+      expect(fieldName).toEqual('r1');
     });
   });
 });

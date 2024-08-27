@@ -223,6 +223,23 @@ export class Drawable extends React.Component {
     onUpdateShapes(cloneDeep(newShapes));
   };
 
+  closeInProgressPolygons = (id) => {
+    const { shapes, onUpdateShapes } = this.props;
+
+    const inProgressPolygon = (shapes || []).find((shape) => shape.id === 'newPolygon');
+    if (id === 'newPolygon' || (inProgressPolygon && this.state.isDrawing)) {
+      PolygonShape.finalizeCreation(this.state, (newShapes) => {
+        this.setState({
+          isDrawing: false,
+          shapes: newShapes,
+          isDrawingShapeId: undefined,
+        });
+
+        onUpdateShapes(cloneDeep(newShapes));
+      });
+    }
+  }
+
   handleOnSetAsCorrect = (shape) => {
     const { id } = shape;
     const { multipleCorrect, shapes, onUpdateShapes } = this.props;
@@ -244,6 +261,8 @@ export class Drawable extends React.Component {
     }
 
     onUpdateShapes(cloneDeep(newShapes));
+
+    this.closeInProgressPolygons(id);
   };
   /// end of handling HotSpots section
 

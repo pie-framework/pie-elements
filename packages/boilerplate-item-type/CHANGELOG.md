@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.20.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/boilerplate-item-type@2.19.3...@pie-element/boilerplate-item-type@2.20.0) (2024-08-27)
+
+
+### Features
+
+* update pie-lib PD-4026, PD-3990 ([395d7d7](https://github.com/pie-framework/pie-elements/commit/395d7d779caae57a810cc19c1d676319d1c19ded))
+
+
+
+
+
+## [2.19.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/boilerplate-item-type@2.19.2...@pie-element/boilerplate-item-type@2.19.3) (2024-08-22)
+
+
+### Bug Fixes
+
+* update pie-lib PD-4021 ([07d6e85](https://github.com/pie-framework/pie-elements/commit/07d6e8560ddfe25f95dfbafc2d3155b93eb85404))
+
+
+
+
+
 ## [2.19.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/boilerplate-item-type@2.19.1...@pie-element/boilerplate-item-type@2.19.2) (2024-08-19)
 
 

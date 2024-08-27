@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.19.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@2.18.4...@pie-element/complex-rubric@2.19.0) (2024-08-27)
+
+
+### Features
+
+* update pie-lib PD-4026, PD-3990 ([395d7d7](https://github.com/pie-framework/pie-elements/commit/395d7d779caae57a810cc19c1d676319d1c19ded))
+
+
+
+
+
+## [2.18.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@2.18.3...@pie-element/complex-rubric@2.18.4) (2024-08-27)
+
+
+### Bug Fixes
+
+* use object and map tag by type PD-3977 ([f6f4fe6](https://github.com/pie-framework/pie-elements/commit/f6f4fe6c5b268c73383ccb7fb18ccffecfecda9b))
+* **complex-rubric:** handle rubricless for print functionality PD-3977 ([b5dd7a3](https://github.com/pie-framework/pie-elements/commit/b5dd7a37c1f048acf1672e943e713530e6a0f009))
+
+
+
+
+
+## [2.18.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@2.18.2...@pie-element/complex-rubric@2.18.3) (2024-08-22)
+
+
+### Bug Fixes
+
+* update pie-lib PD-4021 ([07d6e85](https://github.com/pie-framework/pie-elements/commit/07d6e8560ddfe25f95dfbafc2d3155b93eb85404))
+
+
+
+
+
 ## [2.18.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@2.18.1...@pie-element/complex-rubric@2.18.2) (2024-08-19)
 
 
