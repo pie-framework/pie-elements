@@ -349,6 +349,8 @@ There should be at least 1 and at most 10 response areas defined."
         "responseArea",
         "redo",
         "undo",
+        "superscript",
+        "subscript",
       ]
     }
     allowValidation={false}
