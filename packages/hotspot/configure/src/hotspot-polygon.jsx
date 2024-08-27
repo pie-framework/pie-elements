@@ -199,14 +199,13 @@ class PolComponent extends React.Component {
     } = this.props;
 
     const { points, x, y, hovered } = this.state;
+    const isInProgress = id === 'newPolygon';
     const showPoints = hovered || id === 'newPolygon';
-
-    const hoverColor = hoverOutlineColor || HOVERED_COLOR;
 
     const calculatedStrokeWidth = correct ? strokeWidth : hovered ? 1 : 0;
     const calculatedStroke = correct ? outlineColor : hovered ? HOVERED_COLOR : '';
-    // const calculatedStroke = correct ? outlineColor : hovered ? hoverColor : '';
     const boundingBox = this.getBoundingBox(points);
+    const calculatedFill = correct ? selectedHotspotColor : hotspotColor;
 
     return (
       <Group classes={classes.group} onMouseLeave={this.handleMouseLeave} onMouseEnter={this.handleMouseEnter}>
@@ -221,17 +220,16 @@ class PolComponent extends React.Component {
             listening={false}
           />
         )}
-
         <Line
           classes={classes.base}
           points={this.serialize(points)}
-          closed={true}
-          fill={correct ? selectedHotspotColor : hotspotColor}
+          closed={!isInProgress}
+          fill={isInProgress ? 'transparent' : calculatedFill}
           onClick={this.handleClick}
           onTap={this.handleClick}
           draggable
-          stroke={calculatedStroke}
-          strokeWidth={calculatedStrokeWidth}
+          stroke={isInProgress ? outlineColor : calculatedStroke}
+          strokeWidth={isInProgress ? 1 : calculatedStrokeWidth}
           onDragStart={this.onDragStart}
           onDragMove={this.handleOnDragEnd}
           onDragEnd={(e) => this.handleOnDragEnd(e, true)}
@@ -247,7 +245,7 @@ class PolComponent extends React.Component {
               x={point.x}
               y={point.y}
               radius={5}
-              fill={'white'}
+              fill={index === 0 && id === 'newPolygon' ? 'blue' : 'white'}
               stroke={HOVERED_COLOR}
               strokeWidth={1}
               onClick={this.handleClick}
