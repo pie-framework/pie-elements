@@ -361,8 +361,6 @@ There should be at least 2 tokens defined."
         "responseArea",
         "redo",
         "undo",
-        "superscript",
-        "subscript",
       ]
     }
     allowValidation={false}
@@ -804,8 +802,6 @@ There should be at least 2 tokens defined."
         "responseArea",
         "redo",
         "undo",
-        "superscript",
-        "subscript",
       ]
     }
     allowValidation={false}

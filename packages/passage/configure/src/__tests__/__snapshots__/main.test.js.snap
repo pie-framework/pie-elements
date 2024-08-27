@@ -197,8 +197,6 @@ exports[`Render Main Component Match Snapshot 1`] = `
           "responseArea",
           "redo",
           "undo",
-          "superscript",
-          "subscript",
         ]
       }
       allowValidation={false}
@@ -268,8 +266,6 @@ exports[`Render Main Component Match Snapshot 1`] = `
           "responseArea",
           "redo",
           "undo",
-          "superscript",
-          "subscript",
         ]
       }
       allowValidation={false}
@@ -339,8 +335,6 @@ exports[`Render Main Component Match Snapshot 1`] = `
           "responseArea",
           "redo",
           "undo",
-          "superscript",
-          "subscript",
         ]
       }
       allowValidation={false}
@@ -410,8 +404,6 @@ exports[`Render Main Component Match Snapshot 1`] = `
           "responseArea",
           "redo",
           "undo",
-          "superscript",
-          "subscript",
         ]
       }
       allowValidation={false}
@@ -483,8 +475,6 @@ exports[`Render Main Component Match Snapshot 1`] = `
           "responseArea",
           "redo",
           "undo",
-          "superscript",
-          "subscript",
         ]
       }
       allowValidation={false}

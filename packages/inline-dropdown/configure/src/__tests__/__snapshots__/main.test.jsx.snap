@@ -394,8 +394,6 @@ There should be at most 10 choices defined per response area."
           "responseArea",
           "redo",
           "undo",
-          "superscript",
-          "subscript",
         ]
       }
       allowValidation={false}
@@ -1091,8 +1089,6 @@ There should be at most 10 choices defined per response area."
           "responseArea",
           "redo",
           "undo",
-          "superscript",
-          "subscript",
         ]
       }
       allowValidation={false}
