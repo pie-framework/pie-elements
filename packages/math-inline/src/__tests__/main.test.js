@@ -6,6 +6,7 @@ import { shallowChild } from '@pie-lib/pie-toolbox/test-utils';
 import { Feedback } from '@pie-lib/pie-toolbox/render-ui';
 import { CorrectAnswerToggle } from '@pie-lib/pie-toolbox/correct-answer-toggle';
 import SimpleQuestionBlock from '../simple-question-block';
+import { mount } from 'enzyme';
 
 const Mathquill = require('@pie-framework/mathquill');
 
@@ -97,6 +98,7 @@ describe('Math-Inline Main', () => {
           },
         },
         showCorrect: false,
+        tooltipContainerRef: expect.any(Object),
       });
 
       expect(Mathquill.getInterface().registerEmbed).toHaveBeenCalled();
@@ -211,6 +213,7 @@ describe('Math-Inline Main', () => {
           },
         },
         showCorrect: false,
+        tooltipContainerRef: expect.any(Object),
       });
     });
 
@@ -237,6 +240,7 @@ describe('Math-Inline Main', () => {
           },
         },
         showCorrect: false,
+        tooltipContainerRef: expect.any(Object),
       });
     });
 
@@ -262,6 +266,7 @@ describe('Math-Inline Main', () => {
           },
         },
         showCorrect: false,
+        tooltipContainerRef: expect.any(Object),
       });
 
       const newProps = { ...defaultProps };
@@ -289,6 +294,7 @@ describe('Math-Inline Main', () => {
           },
         },
         showCorrect: false,
+        tooltipContainerRef: expect.any(Object),
       });
     });
   });

@@ -111,6 +111,7 @@ export class Main extends React.Component {
       session: { ...props.session, answers },
       activeAnswerBlock: '',
       showCorrect: this.props.model.config.alwaysShowCorrect || false,
+      tooltipContainerRef: React.createRef(),
     };
   }
 
@@ -525,7 +526,7 @@ export class Main extends React.Component {
 
   render() {
     const { model, classes } = this.props;
-    const { activeAnswerBlock, showCorrect, session } = this.state;
+    const { activeAnswerBlock, showCorrect, session, tooltipContainerRef } = this.state;
     const {
       config,
       correctness,
@@ -622,6 +623,7 @@ export class Main extends React.Component {
 
               {responseType === ResponseTypes.advanced && (
                 <div
+                  ref={tooltipContainerRef}
                   className={cx(classes.expression, {
                     [classes.incorrect]: !emptyResponse && !correct && !showCorrect,
                     [classes.correct]: !emptyResponse && (correct || showCorrect),
@@ -638,6 +640,9 @@ export class Main extends React.Component {
                     classes={{
                       tooltip: classes.keypadTooltip,
                       popper: classes.keypadTooltipPopper,
+                    }}
+                    PopperProps={{
+                      container: tooltipContainerRef?.current || undefined,
                     }}
                     title={Object.keys(session.answers).map(
                       (answerId) =>
