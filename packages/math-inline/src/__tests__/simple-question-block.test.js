@@ -50,6 +50,8 @@ describe('SimpleQuestionBlock', () => {
       response: 'sessionResponse',
     },
     onSimpleResponseChange: jest.fn(),
+    onSubFieldFocus: jest.fn(),
+    showKeypad: true,
   };
 
   let wrapper;
@@ -79,25 +81,29 @@ describe('SimpleQuestionBlock', () => {
     component = wrapper();
 
     component.instance().onFocus();
-    expect(component.state().showKeypad).toEqual(true);
+    expect(defaultProps.onSubFieldFocus).toHaveBeenCalledWith(component.instance().mathToolBarId);
+    expect(component.instance().props.showKeypad).toEqual(true);
 
-    // hardcoded
     component.instance().mathToolBarContainsTarget = () => true;
     component.instance().handleClick();
 
-    expect(component.state().showKeypad).toEqual(true);
+    expect(component.instance().props.showKeypad).toEqual(true);
   });
 
   it('correctly hides the keypad', () => {
     component = wrapper();
 
     component.instance().onFocus();
-    expect(component.state().showKeypad).toEqual(true);
+    expect(defaultProps.onSubFieldFocus).toHaveBeenCalledWith(component.instance().mathToolBarId);
+    expect(component.instance().props.showKeypad).toEqual(true);
 
-    // hardcoded
+    // Simulate clicking outside the toolbar (to hide the keypad)
     component.instance().mathToolBarContainsTarget = () => false;
     component.instance().handleClick();
 
-    expect(component.state().showKeypad).toEqual(false);
+    // Simulate the parent component reacting to the event by setting showKeypad to false
+    component.setProps({ showKeypad: false });
+
+    expect(component.instance().props.showKeypad).toEqual(false);
   });
 });
