@@ -1,7 +1,7 @@
 {
   "name": "@pie-element/select-text-controller",
   "private": true,
-  "version": "5.17.3",
+  "version": "5.18.0",
   "description": "",
   "main": "lib/index.js",
   "module": "src/index.js",
