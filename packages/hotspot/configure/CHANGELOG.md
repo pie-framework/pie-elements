@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.24.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@6.24.3...@pie-element/hotspot-configure@6.24.4) (2024-08-27)
+
+
+### Bug Fixes
+
+* **hotspot:** close inprogress polygons improvements PD-3915 ([8a8d4c3](https://github.com/pie-framework/pie-elements/commit/8a8d4c3bf6876ba58feda93fe5669f76dc28639d))
+* **hotspot:** update in progress polygon PD-3915 ([e94daa3](https://github.com/pie-framework/pie-elements/commit/e94daa31ce426dbee0467bb515cf458c81e86767))
+* **hotspot:** update in progress polygon PD-3915 ([e18d3f8](https://github.com/pie-framework/pie-elements/commit/e18d3f838796a353854a305c2fed9d2d1459dcf8))
+
+
+
+
+
 ## [6.24.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@6.24.2...@pie-element/hotspot-configure@6.24.3) (2024-08-22)
 
 
