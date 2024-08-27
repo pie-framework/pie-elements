@@ -226,7 +226,7 @@ export class Drawable extends React.Component {
   closeInProgressPolygons = (id) => {
     const { shapes, onUpdateShapes } = this.props;
 
-    const inProgressPolygon = shapes.find((shape) => shape.id === 'newPolygon');
+    const inProgressPolygon = (shapes || []).find((shape) => shape.id === 'newPolygon');
     if (id === 'newPolygon' || (inProgressPolygon && this.state.isDrawing)) {
       PolygonShape.finalizeCreation(this.state, (newShapes) => {
         this.setState({
