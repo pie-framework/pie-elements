@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.11.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-templated-configure@1.10.3...@pie-element/math-templated-configure@1.11.0) (2024-08-27)
+
+
+### Features
+
+* update pie-lib PD-4026, PD-3990 ([395d7d7](https://github.com/pie-framework/pie-elements/commit/395d7d779caae57a810cc19c1d676319d1c19ded))
+
+
+
+
+
 ## [1.10.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-templated-configure@1.10.2...@pie-element/math-templated-configure@1.10.3) (2024-08-22)
 
 
