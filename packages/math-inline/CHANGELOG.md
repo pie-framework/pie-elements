@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.27.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@7.26.0...@pie-element/math-inline@7.27.0) (2024-08-27)
+
+
+### Features
+
+* **math-inline:** Adjust tooltip positioning with PopperProps for enhanced accessibility, Ensure logical DOM placement and improve screen reader support PD-2452 ([76421f3](https://github.com/pie-framework/pie-elements/commit/76421f34c2637c848954e1121c1eca9b8251b459))
+* **math-inline:** Enhance keyboard navigation, focus and aria attributes for math editors PD-2453 ([9fff559](https://github.com/pie-framework/pie-elements/commit/9fff559ef4e138cea76972bd20f3e245b30c1c03))
+
+
+
+
+
 # [7.26.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@7.25.4...@pie-element/math-inline@7.26.0) (2024-08-27)
 
 
