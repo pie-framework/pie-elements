@@ -31,14 +31,18 @@ class ImageDropTarget extends React.Component {
     } = this.props;
     const { shouldHaveSmallPadding } = this.state;
 
+    const responseContainerPadding = '10px';
+    const imageDropTargetPadding = '10px';
+
     const containerClasses = cx(classes.responseContainer, {
       [classes.responseContainerDashed]: showDashedBorder && !draggingElement.id,
-      [classes.responseContainerActive]: draggingElement.id,
+      [classes.responseContainerActive]: !!draggingElement.id,
     });
 
     const updatedContainerStyle = {
+      padding: responseContainerPadding,
       ...containerStyle,
-      ...(responseAreaFill ? { backgroundColor: responseAreaFill } : {})
+      ...(responseAreaFill && { backgroundColor: responseAreaFill })
     };
 
     return connectDropTarget(
@@ -59,20 +63,26 @@ class ImageDropTarget extends React.Component {
           {answers.length || (duplicateResponses && answers.length) ? (
               <div
                   className={classes.answers}
-                   ref={ref => {
-                     this.dropContainerResponsesHeight = ref?.getBoundingClientRect().height;
-                   }}
+                  ref={ref => {
+                    this.dropContainerResponsesHeight = ref?.getBoundingClientRect().height;
+                  }}
               >
-                {(answers || []).map((answer) => (
-                    <PossibleResponse
-                        canDrag={canDrag}
-                        key={answer.id}
-                        data={answer}
-                        onDragBegin={() => onDragAnswerBegin(answer)}
-                        onDragEnd={onDragAnswerEnd}
-                        answerChoiceTransparency={answerChoiceTransparency}
-                        containerStyle={shouldHaveSmallPadding ? { padding: '2px'} : { padding: '6px 10px' }}
-                    />
+                {answers.map((answer) => (
+                  <PossibleResponse
+                    key={answer.id}
+                    data={answer}
+                    canDrag={canDrag}
+                    onDragBegin={() => onDragAnswerBegin(answer)}
+                    onDragEnd={onDragAnswerEnd}
+                    answerChoiceTransparency={answerChoiceTransparency}
+                    containerStyle={{
+                      padding: imageDropTargetPadding
+                        ? imageDropTargetPadding
+                        : shouldHaveSmallPadding
+                          ? '2px'
+                          : '6px 10px',
+                    }}
+                  />
                 ))}
               </div>
           ) : null}
@@ -83,6 +93,7 @@ class ImageDropTarget extends React.Component {
 
 ImageDropTarget.propTypes = {
   answer: PropTypes.object,
+  answers: PropTypes.array,
   canDrag: PropTypes.bool.isRequired,
   classes: PropTypes.object,
   containerStyle: PropTypes.object.isRequired,
@@ -90,9 +101,11 @@ ImageDropTarget.propTypes = {
   onDragAnswerBegin: PropTypes.func.isRequired,
   onDragAnswerEnd: PropTypes.func.isRequired,
   onDrop: PropTypes.func.isRequired,
+  connectDropTarget: PropTypes.func.isRequired,
   showDashedBorder: PropTypes.bool,
   responseAreaFill: PropTypes.string,
-  answerChoiceTransparency: PropTypes.bool
+  answerChoiceTransparency: PropTypes.bool,
+  duplicateResponses: PropTypes.bool,
 };
 
 ImageDropTarget.defaultProps = {
@@ -111,7 +124,6 @@ const styles = () => ({
     width: 'fit-content',
   },
   responseContainer: {
-    padding: '10px',
     position: 'absolute',
     boxSizing: 'border-box'
   },
