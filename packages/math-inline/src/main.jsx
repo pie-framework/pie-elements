@@ -643,6 +643,16 @@ export class Main extends React.Component {
                     }}
                     PopperProps={{
                       container: tooltipContainerRef?.current || undefined,
+                      placement: 'bottom-start',
+                      modifiers: {
+                        preventOverflow: {
+                          enabled: true,
+                          boundariesElement: 'body',
+                        },
+                        flip: {
+                          enabled: true,
+                        },
+                      },
                     }}
                     title={Object.keys(session.answers).map(
                       (answerId) =>
