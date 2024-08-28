@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.27.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@7.27.0...@pie-element/math-inline@7.27.1) (2024-08-28)
+
+
+### Bug Fixes
+
+* **math-inline:** enhance keypad visibility by setting Popper boundariesElement to body, adjusting placement to bottom-start, and enabling flip PD-2452 ([4d4a389](https://github.com/pie-framework/pie-elements/commit/4d4a389d084614216268a7ca73535a3c54b96acb))
+
+
+
+
+
 # [7.27.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@7.26.0...@pie-element/math-inline@7.27.0) (2024-08-27)
 
 
