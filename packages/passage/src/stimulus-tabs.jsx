@@ -40,9 +40,6 @@ const styles = (theme) => ({
   tabButton: {
     background: theme.palette.common.white, // replace with color.background() once PD-2801 is DONE
   },
-  breakSpaces: {
-    whiteSpace: 'break-spaces',
-  },
   teacherInstructions: {
     marginBottom: theme.spacing.unit * 2,
   },
@@ -210,7 +207,7 @@ class StimulusTabs extends React.Component {
     const selectedTab = (tabs || []).find((tab) => tab.id === activeTab);
 
     return (
-      <div className={classNames(classes.passages, { [classes.breakSpaces]: tabs.length === 1 }, 'passages')}>
+      <div className={classNames(classes.passages, 'passages')}>
         {disabledTabs || tabs.length === 1 ? (
           tabs.map((tab) => this.renderTab(tab, showTeacherInstructions, disabledTabs))
         ) : (
