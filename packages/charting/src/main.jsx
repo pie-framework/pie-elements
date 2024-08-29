@@ -109,6 +109,7 @@ export class Main extends React.Component {
             addCategoryEnabled={false}
             categoryDefaultLabel={studentNewCategoryDefaultLabel}
             language={language}
+            labelsPlaceholders={{}}
           />
         ) : (
           <Chart
@@ -131,6 +132,7 @@ export class Main extends React.Component {
             addCategoryEnabled={addCategoryEnabled}
             categoryDefaultLabel={studentNewCategoryDefaultLabel}
             language={language}
+            labelsPlaceholders={{}}
           />
         )}
 

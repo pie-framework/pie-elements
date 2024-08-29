@@ -125,7 +125,7 @@ export const getUpdatedCategories = (nextProps, prevProps, prevState) => {
         break;
       }
     }
-    
+
     nextCategories = removeCategory(categoriesCopy, nextData, removedIndex);
     return nextCategories;
   }
@@ -196,6 +196,7 @@ export class CorrectResponse extends React.Component {
       studentNewCategoryDefaultLabel,
       correctAnswerErrors,
       mathMlOptions = {},
+      labelsPlaceholders = {}
     } = this.props;
     const { categories } = this.state;
 
@@ -228,6 +229,7 @@ export class CorrectResponse extends React.Component {
                 categoryDefaultLabel={studentNewCategoryDefaultLabel}
                 error={error}
                 mathMlOptions={mathMlOptions}
+                labelsPlaceholders={labelsPlaceholders}
               />
             </div>
 

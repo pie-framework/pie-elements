@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.23.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@5.23.0...@pie-element/graphing-configure@5.23.1) (2024-08-29)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4052 ([50be4dd](https://github.com/pie-framework/pie-elements/commit/50be4dd9f1ad16a20a4ec64c90ce2b3d5d9b3748))
+
+
+
+
+
 # [5.23.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@5.22.3...@pie-element/graphing-configure@5.23.0) (2024-08-27)
 
 
