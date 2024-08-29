@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.21.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@2.21.2...@pie-element/passage@2.21.3) (2024-08-29)
+
+
+### Bug Fixes
+
+* **passage:** collapse normal spaces PD-4006 ([a7d4e1f](https://github.com/pie-framework/pie-elements/commit/a7d4e1f2989cc38d26d526896486d9df8c1aa953))
+
+
+
+
+
 ## [2.21.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@2.21.1...@pie-element/passage@2.21.2) (2024-08-29)
 
 
