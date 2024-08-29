@@ -223,7 +223,9 @@ export class Main extends React.Component {
     const { model, onChange } = this.props;
     let { ticks } = object;
     const correctResponse = tickUtils.snapElements(model.graph.domain, ticks, model.correctResponse);
-    const initialElements = tickUtils.snapElements(model.graph.domain, ticks, model.graph.initialElements);
+    const initialElements = model.graph.initialElements
+      ? tickUtils.snapElements(model.graph.domain, ticks, model.graph.initialElements)
+      : [];
     let updatedGraph = this.updateMajorValue({ ...model.graph, ticks });
     const graph = { ...updatedGraph, initialElements };
     onChange({ graph, correctResponse });
@@ -258,9 +260,9 @@ export class Main extends React.Component {
         ticks.minor < 1
           ? math.number(math.ceil(minorLimits.min))
           : ticks.minor >= math.number(math.ceil(minorLimits.min)) &&
-            ticks.minor <= math.number(math.floor(minorLimits.max))
-          ? ticks.minor
-          : math.number(math.ceil(minorLimits.min));
+          ticks.minor <= math.number(math.floor(minorLimits.max))
+            ? ticks.minor
+            : math.number(math.ceil(minorLimits.min));
       ticks.integerTick = ticks.minor;
       minorValues = { decimal: [], fraction: [] };
       ticks.fractionTick = '0';
@@ -576,7 +578,7 @@ export class Main extends React.Component {
               placement={'right'}
               title={validationMessage}
             >
-              <Info fontSize={'small'} color={'primary'} style={{ marginLeft: '8px' }} />
+              <Info fontSize={'small'} color={'primary'} style={{ marginLeft: '8px' }}/>
             </Tooltip>
           }
         >
@@ -585,7 +587,7 @@ export class Main extends React.Component {
         </CardBar>
 
         <div className={classes.row}>
-          <Domain domain={graph.domain} errors={errors} onChange={(domain) => this.graphChange({ domain })} />
+          <Domain domain={graph.domain} errors={errors} onChange={(domain) => this.graphChange({ domain })}/>
         </div>
 
         {maxError && <div className={classes.errorText}>{maxError}</div>}
@@ -614,17 +616,22 @@ export class Main extends React.Component {
             />
           )}
           <div></div>
-          <Arrows arrows={graph.arrows} onChange={this.changeArrows} />
+          <Arrows arrows={graph.arrows} onChange={this.changeArrows}/>
         </div>
 
         {widthError && <div className={classes.errorText}>{widthError}</div>}
 
         <NumberLineComponent
-          onMoveElement={() => {}}
-          onDeleteElements={() => {}}
-          onAddElement={() => {}}
-          onClearElements={() => {}}
-          onUndoElement={() => {}}
+          onMoveElement={() => {
+          }}
+          onDeleteElements={() => {
+          }}
+          onAddElement={() => {
+          }}
+          onClearElements={() => {
+          }}
+          onUndoElement={() => {
+          }}
           minWidth={numberLineDimensions.min}
           maxWidth={numberLineDimensions.max}
           maxHeight={70}
