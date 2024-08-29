@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.20.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-configure@6.20.0...@pie-element/explicit-constructed-response-configure@6.20.1) (2024-08-29)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4052 ([ebbbe2d](https://github.com/pie-framework/pie-elements/commit/ebbbe2dc584829abe8f1b4d6e8a9031e27f30dce))
+
+
+
+
+
 # [6.20.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-configure@6.19.3...@pie-element/explicit-constructed-response-configure@6.20.0) (2024-08-27)
 
 

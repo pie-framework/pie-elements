@@ -4,7 +4,7 @@
     "access": "public"
   },
   "repository": "pie-framework/pie-elements",
-  "version": "5.22.0",
+  "version": "5.22.1",
   "description": "",
   "scripts": {
     "postpublish": "../../scripts/postpublish"

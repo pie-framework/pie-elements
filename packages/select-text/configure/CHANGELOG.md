@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.19.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@7.19.0...@pie-element/select-text-configure@7.19.1) (2024-08-29)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4052 ([ebbbe2d](https://github.com/pie-framework/pie-elements/commit/ebbbe2dc584829abe8f1b4d6e8a9031e27f30dce))
+
+
+
+
+
 # [7.19.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@7.18.3...@pie-element/select-text-configure@7.19.0) (2024-08-27)
 
 
