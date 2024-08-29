@@ -273,6 +273,7 @@ export class Configure extends React.Component {
           correctAnswerErrors={correctAnswerErrors}
           studentNewCategoryDefaultLabel={studentNewCategoryDefaultLabel}
           mathMlOptions={mathMlOptions}
+          labelsPlaceholders={labelsPlaceholders}
         />
 
         {rationaleEnabled && (
