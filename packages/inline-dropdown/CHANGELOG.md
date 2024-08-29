@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.22.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@5.22.1...@pie-element/inline-dropdown@5.22.2) (2024-08-29)
+
+
+### Bug Fixes
+
+* trigger build PD-4052 ([24783c4](https://github.com/pie-framework/pie-elements/commit/24783c43a97db9c9a2b665f2c784ccd4ce8511ca))
+
+
+
+
+
 ## [5.22.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@5.22.0...@pie-element/inline-dropdown@5.22.1) (2024-08-29)
 
 
