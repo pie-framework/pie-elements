@@ -578,7 +578,7 @@ export class Main extends React.Component {
               placement={'right'}
               title={validationMessage}
             >
-              <Info fontSize={'small'} color={'primary'} style={{ marginLeft: '8px' }}/>
+              <Info fontSize={'small'} color={'primary'} style={{ marginLeft: '8px' }} />
             </Tooltip>
           }
         >
@@ -587,7 +587,7 @@ export class Main extends React.Component {
         </CardBar>
 
         <div className={classes.row}>
-          <Domain domain={graph.domain} errors={errors} onChange={(domain) => this.graphChange({ domain })}/>
+          <Domain domain={graph.domain} errors={errors} onChange={(domain) => this.graphChange({ domain })} />
         </div>
 
         {maxError && <div className={classes.errorText}>{maxError}</div>}
@@ -616,22 +616,17 @@ export class Main extends React.Component {
             />
           )}
           <div></div>
-          <Arrows arrows={graph.arrows} onChange={this.changeArrows}/>
+          <Arrows arrows={graph.arrows} onChange={this.changeArrows} />
         </div>
 
         {widthError && <div className={classes.errorText}>{widthError}</div>}
 
         <NumberLineComponent
-          onMoveElement={() => {
-          }}
-          onDeleteElements={() => {
-          }}
-          onAddElement={() => {
-          }}
-          onClearElements={() => {
-          }}
-          onUndoElement={() => {
-          }}
+          onMoveElement={() => {}}
+          onDeleteElements={() => {}}
+          onAddElement={() => {}}
+          onClearElements={() => {}}
+          onUndoElement={() => {}}
           minWidth={numberLineDimensions.min}
           maxWidth={numberLineDimensions.max}
           maxHeight={70}
