@@ -28,7 +28,7 @@
     "command-line-args": "^5.0.2",
     "docson": "^2.1.0",
     "fs-extra": "^7.0.1",
-    "json-schema-deref-sync": "^0.7.0",
+    "json-schema-deref-sync": "^0.14.0",
     "json-schema-to-markdown": "^1.0.3",
     "lodash": "^4.17.15",
     "ts-node": "^7.0.1",
