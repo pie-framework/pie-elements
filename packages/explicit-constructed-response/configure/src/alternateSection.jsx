@@ -87,7 +87,6 @@ export class Choice extends React.Component {
   }
 
   onChange = (e) => {
-    console.log(e);
     const strippedValue = stripHtmlTags(e);
     this.setState({ value: strippedValue });
     this.updateText(strippedValue);

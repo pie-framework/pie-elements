@@ -433,7 +433,6 @@ export class Main extends React.Component {
                   correctChoice={correctChoice}
                   maxLengthPerChoiceEnabled={maxLengthPerChoiceEnabled}
                   spanishInputEnabled={spanishInputEnabled}
-                  spellCheck={spellCheckEnabled}
                 />
               );
             },
