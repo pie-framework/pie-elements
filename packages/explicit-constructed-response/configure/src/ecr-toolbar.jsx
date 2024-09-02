@@ -130,6 +130,9 @@ export class ECRToolbar extends React.Component {
                     minHeight={'10px'}
                     maxHeight={'10px'}
                     spellCheck={spellCheck}
+                    toolbarOpts={{
+                        width: 'auto'
+                    }}
                     {...inputProps}
                 />
             </div>

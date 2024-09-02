@@ -13,7 +13,7 @@ export default {
     studentInstructionsEnabled: true,
     teacherInstructionsEnabled: true,
     toolbarEditorPosition: 'bottom',
-    spanishInputEnabled: false
+    spanishInputEnabled: true
   },
   configuration: {
     baseInputConfiguration: {
