@@ -67,5 +67,5 @@ export const getAdjustedLength = (length) => {
 };
 
 export const stripHtmlTags = (markup) => {
-  return markup.replace(/<\/?[^>]+(>|$)/g, "");
+  return (markup || '').replace(/<\/?[^>]+(>|$)/g, "");
 };

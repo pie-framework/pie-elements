@@ -34,6 +34,7 @@ exports[`AlternateResponses snapshot renders 1`] = `
       ]
     }
     showMaxLength={true}
+    spanishInputEnabled={true}
     value="0"
   />
   <WithStyles(AlternateSection)
@@ -68,6 +69,7 @@ exports[`AlternateResponses snapshot renders 1`] = `
       ]
     }
     showMaxLength={true}
+    spanishInputEnabled={true}
     value="0"
   />
   <WithStyles(AlternateSection)
@@ -91,6 +93,7 @@ exports[`AlternateResponses snapshot renders 1`] = `
       ]
     }
     showMaxLength={true}
+    spanishInputEnabled={true}
   />
   <WithStyles(AlternateSection)
     choiceChanged={[Function]}
@@ -104,6 +107,7 @@ exports[`AlternateResponses snapshot renders 1`] = `
         },
       ]
     }
+    spanishInputEnabled={true}
     value=""
   />
 </div>

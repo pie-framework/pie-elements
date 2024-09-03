@@ -98,6 +98,12 @@ Indicates if Rubric is enabled
 Indicates the language of the component
 Supported options: en, es, en_US, en-US, es_ES, es-ES, es_MX, es-MX
 
+# `spanishInputEnabled` (boolean)
+
+Whether a control to allow insertion of spanish characters should be displayed
+
+Default: `true`
+
 # `id` (string, required)
 
 Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.

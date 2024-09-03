@@ -65,9 +65,13 @@ describe('ECRToolbar', () => {
     it('onChange', () => {
       const w = wrapper();
 
-      w.instance().onChange({ target: { value: 'test' } });
+      w.instance().onRespAreaChange('test');
 
-      expect(w.instance().state).toEqual({ markup: 'test' });
+      expect(w.instance().state).toEqual({
+        markup: '',
+        respAreaMarkup: 'test',
+        toolbarStyle: {},
+      });
     });
   });
 });
