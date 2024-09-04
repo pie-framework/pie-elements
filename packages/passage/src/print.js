@@ -12,11 +12,12 @@ const preparePrintPassage = (model, opts) => {
 
   return model.passages.map((passage, index) => ({
     id: index,
-    title: passage.title,
-    subtitle: passage.subtitle,
-    author: passage.author,
-    text: passage.text,
-    teacherInstructions: isInstructor && passage.teacherInstructions,
+    teacherInstructions: model.teacherInstructionsEnabled ? (isInstructor && passage.teacherInstructions) || '' : '',
+    label: passage.title || `Passage ${index + 1}`,
+    title: model.titleEnabled ? passage.title || '' : '',
+    author: model.authorEnabled ? passage.author || '' : '',
+    subtitle: model.subtitleEnabled ? passage.subtitle || '' : '',
+    text: model.textEnabled ? passage.text || '' : '',
   }));
 };
 
@@ -34,9 +35,8 @@ export default class PassagePrint extends HTMLElement {
             const printPassage = preparePrintPassage(this._model, this._options);
 
             const element = React.createElement(StimulusTabs, {
-              tabs: printPassage,
               disabledTabs: true,
-              showTeacherInstructions: this._options.role === 'instructor',
+              tabs: printPassage,
             });
 
             ReactDOM.render(element, this);

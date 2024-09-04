@@ -45,6 +45,8 @@ const styles = (theme) => ({
   },
 });
 
+const getContent = (html) => (html || '').replace(/(<(?!img|iframe)([^>]+)>)/gi, '');
+
 class StimulusTabs extends React.Component {
   state = {
     activeTab: 0,
@@ -131,8 +133,8 @@ class StimulusTabs extends React.Component {
     return div.innerHTML;
   };
 
-  renderInstructions(showTeacherInstructions, teacherInstructions, disabledTabs = false) {
-    if (!showTeacherInstructions || !teacherInstructions) {
+  renderInstructions(teacherInstructions, disabledTabs = false) {
+    if (!getContent(teacherInstructions)) {
       return;
     }
 
@@ -161,7 +163,7 @@ class StimulusTabs extends React.Component {
     );
   }
 
-  renderTab(tab, showTeacherInstructions, disabledTabs) {
+  renderTab(tab, disabledTabs) {
     const { classes } = this.props;
 
     return (
@@ -172,32 +174,45 @@ class StimulusTabs extends React.Component {
         role="tabpanel"
         aria-labelledby={`button-${tab.id}`}
       >
-        {this.renderInstructions(showTeacherInstructions, tab.teacherInstructions, disabledTabs)}
-        <h2>
+        {this.renderInstructions(tab.teacherInstructions, disabledTabs)}
+
+        {(getContent(tab.title) || getContent(tab.subtitle)) && (
+          <h2>
+            {getContent(tab.title) && (
+              <div
+                className={classNames(classes.passageTitle, 'title')}
+                dangerouslySetInnerHTML={{ __html: this.parsedText(tab.title) }}
+              />
+            )}
+            {getContent(tab.subtitle) && (
+              <div
+                className={classNames(classes.passageSubtitle, 'subtitle')}
+                dangerouslySetInnerHTML={{ __html: this.parsedText(tab.subtitle) }}
+              />
+            )}
+          </h2>
+        )}
+
+        {getContent(tab.author) && (
           <div
-            className={classNames(classes.passageTitle, 'title')}
-            dangerouslySetInnerHTML={{ __html: this.parsedText(tab.title) }}
+            className={classNames(classes.passageAuthor, 'author')}
+            dangerouslySetInnerHTML={{ __html: this.parsedText(tab.author) }}
           />
+        )}
+
+        {getContent(tab.text) && (
           <div
-            className={classNames(classes.passageSubtitle, 'subtitle')}
-            dangerouslySetInnerHTML={{ __html: this.parsedText(tab.subtitle) }}
+            key={tab.id}
+            className={classNames(classes.passageText, 'text')}
+            dangerouslySetInnerHTML={{ __html: this.parsedText(tab.text) }}
           />
-        </h2>
-        <div
-          className={classNames(classes.passageAuthor, 'author')}
-          dangerouslySetInnerHTML={{ __html: this.parsedText(tab.author) }}
-        />
-        <div
-          key={tab.id}
-          className={classNames(classes.passageText, 'text')}
-          dangerouslySetInnerHTML={{ __html: this.parsedText(tab.text) }}
-        />
+        )}
       </div>
     );
   }
 
   render() {
-    const { classes, tabs, disabledTabs, showTeacherInstructions } = this.props;
+    const { classes, tabs, disabledTabs } = this.props;
     const { activeTab } = this.state;
 
     if (!tabs?.length) {
@@ -209,7 +224,7 @@ class StimulusTabs extends React.Component {
     return (
       <div className={classNames(classes.passages, 'passages')}>
         {disabledTabs || tabs.length === 1 ? (
-          tabs.map((tab) => this.renderTab(tab, showTeacherInstructions, disabledTabs))
+          tabs.map((tab) => this.renderTab(tab, disabledTabs))
         ) : (
           <>
             <Tabs
@@ -225,7 +240,7 @@ class StimulusTabs extends React.Component {
                   className={classes.tab}
                   key={tab.id}
                   id={`button-${tab.id}`}
-                  label={<span dangerouslySetInnerHTML={{ __html: this.parsedText(tab.title) }} />}
+                  label={<span dangerouslySetInnerHTML={{ __html: this.parsedText(tab.label) }} />}
                   value={tab.id}
                   tabIndex={activeTab === tab.id ? 0 : -1}
                   aria-controls={`tabpanel-${tab.id}`}
@@ -235,7 +250,7 @@ class StimulusTabs extends React.Component {
                 />
               ))}
             </Tabs>
-            {selectedTab ? this.renderTab(selectedTab, showTeacherInstructions, disabledTabs) : null}
+            {selectedTab ? this.renderTab(selectedTab, disabledTabs) : null}
           </>
         )}
       </div>
@@ -248,6 +263,7 @@ StimulusTabs.propTypes = {
   tabs: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
+      label: PropTypes.string.isRequired,
       title: PropTypes.string.isRequired,
       subtitle: PropTypes.string,
       author: PropTypes.string,
@@ -256,7 +272,6 @@ StimulusTabs.propTypes = {
     }).isRequired,
   ).isRequired,
   disabledTabs: PropTypes.bool,
-  showTeacherInstructions: PropTypes.bool,
 };
 
 export default withStyles(styles)(StimulusTabs);
