@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.21.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@2.21.3...@pie-element/passage@2.21.4) (2024-09-05)
+
+
+### Bug Fixes
+
+* **passage:** add possibility to enable/disable fields in player PD-4006 PD-4058 ([3b379b1](https://github.com/pie-framework/pie-elements/commit/3b379b18684c3a337b3405a3517e429b4017b51f))
+
+
+
+
+
 ## [2.21.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@2.21.2...@pie-element/passage@2.21.3) (2024-08-29)
 
 

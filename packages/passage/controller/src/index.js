@@ -4,17 +4,21 @@ const getContent = (html) => (html || '').replace(/(<(?!img|iframe)([^>]+)>)/gi,
 
 export function createDefaultModel(model = {}) {
   return new Promise((resolve) => {
-    resolve({
-      ...defaults,
-      ...model,
-    });
+    resolve({ ...defaults, ...model });
   });
 }
 
-export const normalize = (question) => ({
-  ...defaults,
-  ...question,
-});
+export const normalize = (question) => ({ ...defaults, ...question });
+
+const normalizeTeacherInstructions = (instructions, env) => {
+  const { role, mode } = env;
+
+  if (role === 'instructor' && (mode === 'view' || mode === 'evaluate')) {
+    return instructions || '';
+  }
+
+  return '';
+};
 
 /**
  *
@@ -23,21 +27,23 @@ export const normalize = (question) => ({
  * @param {*} env
  */
 export async function model(question, session, env) {
-  const { role, mode } = env || {};
   const normalizedQuestion = normalize(question);
 
-  const out = {
+  const normalizedPassages = normalizedQuestion.passages.map((passage, index) => ({
+    teacherInstructions: normalizedQuestion.teacherInstructionsEnabled
+      ? normalizeTeacherInstructions(passage.teacherInstructions, env)
+      : '',
+    label: passage.titles || `Passage ${index + 1}`,
+    title: normalizedQuestion.titleEnabled ? passage.title || '' : '',
+    subtitle: normalizedQuestion.subtitleEnabled ? passage.subtitle || '' : '',
+    author: normalizedQuestion.authorEnabled ? passage.author || '' : '',
+    text: normalizedQuestion.textEnabled ? passage.text || '' : '',
+  }));
+
+  return {
     ...normalizedQuestion,
-    teacherInstructions: null
+    passages: normalizedPassages,
   };
-
-  if (role === 'instructor' && (mode === 'view' || mode === 'evaluate')) {
-    if (normalizedQuestion.teacherInstructionsEnabled) {
-      out.teacherInstructions = normalizedQuestion.teacherInstructions;
-    }
-  }
-
-  return out;
 }
 
 export const validate = (model = {}, config = {}) => {

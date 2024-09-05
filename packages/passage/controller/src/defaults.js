@@ -1,5 +1,5 @@
 export default {
-  teacherInstructionsEnabled: false,
+  teacherInstructionsEnabled: true,
   titleEnabled: true,
   subtitleEnabled: true,
   textEnabled: true,
@@ -11,6 +11,6 @@ export default {
       subtitle: '',
       author: '',
       text: '',
-    }
+    },
   ],
 };

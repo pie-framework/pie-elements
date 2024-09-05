@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage-controller@1.4.0...@pie-element/passage-controller@1.4.1) (2024-09-05)
+
+
+### Bug Fixes
+
+* **passage:** add possibility to enable/disable fields in player PD-4006 PD-4058 ([3b379b1](https://github.com/pie-framework/pie-elements/commit/3b379b18684c3a337b3405a3517e429b4017b51f))
+
+
+
+
+
 # [1.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage-controller@1.3.0...@pie-element/passage-controller@1.4.0) (2024-06-25)
 
 
