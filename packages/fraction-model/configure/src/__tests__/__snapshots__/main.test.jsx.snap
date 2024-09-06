@@ -1,68 +1,225 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`design snapshot renders all items with defaultProps 1`] = `
+exports[`Main snapshot renders 1`] = `
 <ConfigLayout
   dimensions={Object {}}
-  settings={
-    <Panel
-      configuration={
+  hideSettings={true}
+>
+  <WithStyles(CardBar)
+    header="Set Up"
+  />
+  <FormSection
+    label="Title"
+  >
+    <EditableHtml
+      activePlugins={
+        Array [
+          "bold",
+          "html",
+          "italic",
+          "underline",
+          "strikethrough",
+          "image",
+          "math",
+          "languageCharacters",
+          "responseArea",
+        ]
+      }
+      languageCharactersProps={
+        Array [
+          Object {
+            "language": "spanish",
+          },
+          Object {
+            "language": "special",
+          },
+        ]
+      }
+      markup=""
+      mathMlOptions={
         Object {
-          "prompt": Object {
-            "label": "Prompt",
-            "settings": true,
+          "mmlEditing": false,
+          "mmlOutput": false,
+        }
+      }
+      onChange={[Function]}
+      pluginProps={
+        Object {
+          "audio": Object {
+            "disabled": false,
+          },
+          "image": Object {
+            "disabled": false,
+          },
+          "video": Object {
+            "disabled": false,
           },
         }
       }
-      groups={
+      toolbarOpts={
         Object {
-          "Properties": Object {
-            "promptEnabled": undefined,
-          },
-          "Settings": Object {},
+          "position": "bottom",
         }
       }
+      uploadSoundSupport={
+        Object {
+          "addMatchers": [Function],
+          "advanceTimersByTime": [Function],
+          "autoMockOff": [Function],
+          "autoMockOn": [Function],
+          "clearAllMocks": [Function],
+          "clearAllTimers": [Function],
+          "deepUnmock": [Function],
+          "disableAutomock": [Function],
+          "doMock": [Function],
+          "dontMock": [Function],
+          "enableAutomock": [Function],
+          "fn": [Function],
+          "genMockFromModule": [Function],
+          "isMockFunction": [Function],
+          "mock": [Function],
+          "requireActual": [Function],
+          "requireMock": [Function],
+          "resetAllMocks": [Function],
+          "resetModuleRegistry": [Function],
+          "resetModules": [Function],
+          "restoreAllMocks": [Function],
+          "retryTimes": [Function],
+          "runAllImmediates": [Function],
+          "runAllTicks": [Function],
+          "runAllTimers": [Function],
+          "runOnlyPendingTimers": [Function],
+          "runTimersToTime": [Function],
+          "setMock": [Function],
+          "setTimeout": [Function],
+          "spyOn": [Function],
+          "unmock": [Function],
+          "useFakeTimers": [Function],
+          "useRealTimers": [Function],
+        }
+      }
+    />
+  </FormSection>
+  <FormSection
+    label="Question"
+  >
+    <EditableHtml
+      languageCharactersProps={
+        Array [
+          Object {
+            "language": "spanish",
+          },
+          Object {
+            "language": "special",
+          },
+        ]
+      }
+      markup=""
+      mathMlOptions={
+        Object {
+          "mmlEditing": false,
+          "mmlOutput": false,
+        }
+      }
+      minHeight={60}
+      onChange={[Function]}
+      pluginProps={
+        Object {
+          "audio": Object {
+            "disabled": false,
+          },
+          "image": Object {
+            "disabled": false,
+          },
+          "video": Object {
+            "disabled": false,
+          },
+        }
+      }
+      toolbarOpts={
+        Object {
+          "position": "bottom",
+        }
+      }
+      uploadSoundSupport={
+        Object {
+          "addMatchers": [Function],
+          "advanceTimersByTime": [Function],
+          "autoMockOff": [Function],
+          "autoMockOn": [Function],
+          "clearAllMocks": [Function],
+          "clearAllTimers": [Function],
+          "deepUnmock": [Function],
+          "disableAutomock": [Function],
+          "doMock": [Function],
+          "dontMock": [Function],
+          "enableAutomock": [Function],
+          "fn": [Function],
+          "genMockFromModule": [Function],
+          "isMockFunction": [Function],
+          "mock": [Function],
+          "requireActual": [Function],
+          "requireMock": [Function],
+          "resetAllMocks": [Function],
+          "resetModuleRegistry": [Function],
+          "resetModules": [Function],
+          "restoreAllMocks": [Function],
+          "retryTimes": [Function],
+          "runAllImmediates": [Function],
+          "runAllTicks": [Function],
+          "runAllTimers": [Function],
+          "runOnlyPendingTimers": [Function],
+          "runTimersToTime": [Function],
+          "setMock": [Function],
+          "setTimeout": [Function],
+          "spyOn": [Function],
+          "unmock": [Function],
+          "useFakeTimers": [Function],
+          "useRealTimers": [Function],
+        }
+      }
+    />
+  </FormSection>
+  <FormSection>
+    <WithStyles(ModelOptions)
       model={
         Object {
-          "tokens": Array [],
+          "allowedStudentConfig": false,
+          "correctResponse": Array [],
+          "maxModelSelected": 1,
+          "modelTypeSelected": "bar",
+          "partsPerModel": 5,
+          "question": "",
+          "showGraphLabels": false,
+          "title": "",
         }
       }
-      onChangeConfiguration={[MockFunction]}
-      onChangeModel={[Function]}
-    />
-  }
-/>
-`;
-
-exports[`design snapshot tokenizer renders with html entities 1`] = `
-<ConfigLayout
-  dimensions={Object {}}
-  settings={
-    <Panel
-      configuration={
+      modelOptions={
         Object {
-          "prompt": Object {
-            "label": "Prompt",
-            "settings": true,
+          "maxOfModel": Object {
+            "default": 1,
+            "max": 9,
+            "min": 1,
+          },
+          "modelTypeChoices": Array [
+            Object {
+              "label": "Bar",
+              "value": "bar",
+            },
+            Object {
+              "label": "Pie",
+              "value": "pie",
+            },
+          ],
+          "partsPerModel": Object {
+            "default": 5,
+            "max": 9,
+            "min": 1,
           },
         }
       }
-      groups={
-        Object {
-          "Properties": Object {
-            "promptEnabled": undefined,
-          },
-          "Settings": Object {},
-        }
-      }
-      model={
-        Object {
-          "text": "<p>&#8220;Lucy?&#63; Are you using your time wisely to plan your project?&#33;&#33;&#33;&#8221; Mr. Wilson asked.</p><p>Lucy looked a little confused at first. &#195; Then she grinned and proudly stated, &#8220;Why, yes I am! I plan to make a bird feeder for that tree out our window!&#8221;</p>",
-          "tokens": Array [],
-        }
-      }
-      onChangeConfiguration={[MockFunction]}
-      onChangeModel={[Function]}
+      onChange={[MockFunction]}
     />
-  }
-/>
+  </FormSection>
+</ConfigLayout>
 `;

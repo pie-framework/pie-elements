@@ -1,15 +1,13 @@
 export default {
   model: {
-    correctResponse: {
-      partsPerModel: 5,
-      noOfModels: 1,
-      selections: [],
-    },
+    correctResponse: [],
     title: '',
     question: '',
     modelTypeSelected: 'bar',
     maxModelSelected: 1,
+    partsPerModel: 5,
     allowedStudentConfig: false,
+    showGraphLabels: false,
   },
   configuration: {
     baseInputConfiguration: {

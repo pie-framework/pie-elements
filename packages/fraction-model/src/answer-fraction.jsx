@@ -7,7 +7,7 @@ export class AnswerFraction extends React.Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
     model: PropTypes.object.isRequired,
-    correctAnswers: PropTypes.object,
+    correctAnswers: PropTypes.array,
     view: PropTypes.bool.isRequired,
     showCorrect: PropTypes.bool.isRequired,
     onAnswerChange: PropTypes.func.isRequired,

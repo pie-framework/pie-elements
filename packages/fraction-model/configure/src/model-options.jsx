@@ -33,7 +33,7 @@ export class ModelOptions extends React.Component {
     if(key === 'max') {
       model.maxModelSelected = value;
     } else if(key === 'part') {
-      model.correctResponse.partsPerModel = value;
+      model.partsPerModel = value;
     } else if(key === 'student-config') {
       model.allowedStudentConfig = value;
     }
@@ -77,7 +77,7 @@ export class ModelOptions extends React.Component {
           <div className={classes.group}>
             <label className={classes.inputLabel}>Parts per Model</label>
             <MiniField min={partsPerModel.min} max={partsPerModel.max} 
-              value={model.correctResponse.partsPerModel} name="model-parts" onChange={this.changePartModel} />
+              value={model.partsPerModel} name="model-parts" onChange={this.changePartModel} />
           </div>
         </div>
         <div className={classes.checkbox}>

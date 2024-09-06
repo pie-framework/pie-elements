@@ -1,50 +1,23 @@
 import FractionModel from '..';
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { SessionChangedEvent } from '@pie-framework/pie-player-events';
 
-import { renderMath } from '@pie-lib/pie-toolbox/math-rendering-accessible';
-jest.mock('@pie-lib/pie-toolbox/math-rendering-accessible', () => ({
-  renderMath: jest.fn(),
-}));
-jest.mock('../main', () => jest.fn());
+const component = new FractionModel();
+const session = (answers) => ({
+  answers,
+});
 
-jest.mock('react', () => ({
-  createElement: jest.fn(),
-}));
-
-jest.mock('react-dom', () => ({
-  render: jest.fn((r, el, cb) => {
-    cb();
-  }),
-}));
-
-describe('fraction-model', () => {
-  let c;
-  beforeEach(() => {
-    c = new FractionModel();
-    c.dispatchEvent = jest.fn();
-    c.tagName = 'fraction-model';
-    c.model = {};
-    c.session = {};
-  });
-
-  describe('init', () => {
-    it('calls createElement', () => {
-      expect(React.createElement).toBeCalled();
+describe('isSessionComplete', () => {
+  const assertIsComplete = (session, model, expected) => {
+    it(`${JSON.stringify(session.answers)}, ${JSON.stringify(model.allowedStudentConfig)} = ${expected}`, () => {
+      const result = component.isSessionComplete(session, model);
+      expect(result).toEqual(expected);
     });
-    it('calls render', () => {
-      expect(ReactDOM.render).toBeCalledWith(undefined, expect.anything(), expect.any(Function));
-    });
+  };
 
-    it('calls renderMath', () => {
-      expect(renderMath).toHaveBeenCalled();
-    });
-  });
-
-  describe('isSessionComplete', () => {
-    it('returns true', () => {
-      expect(c.isSessionComplete()).toEqual(true);
-    });
-  });
+  assertIsComplete(session({ selection: [3,5] }), { allowedStudentConfig: false }, true);
+  assertIsComplete(session({ selection: [] }), { allowedStudentConfig: false }, false);
+  assertIsComplete(session({ noOfModel: 3, partsPerModel: 5, selection: [3,5] }), { allowedStudentConfig: true }, true);
+  assertIsComplete(session({ noOfModel: 0, partsPerModel: 0, selection: [] }), { allowedStudentConfig: true }, false);
+  // assertIsComplete(session({ 0: [false, false] }), { allowedStudentConfig: [{ id: '0' }] }, false);
+  // assertIsComplete(session({ 0: [true, false] }), { allowedStudentConfig: [{ id: '1' }] }, false);
+  // assertIsComplete(session({ 0: [true, false], 1: [false, true] }), { rows: [{ id: '0' }, { id: '1' }] }, true);
 });

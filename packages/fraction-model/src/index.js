@@ -29,7 +29,7 @@ export default class FractionModel extends HTMLElement {
     let answers = session && session.answers;
     let complete = model.allowedStudentConfig ? (answers.noOfModel > 0 && answers.partsPerModel > 0) : true;
     complete = complete && Array.isArray(answers.selection) && answers.selection.length > 0;
-    return false;
+    return complete;
   }
 
   onSessionChange(session) {

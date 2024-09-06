@@ -1,14 +1,68 @@
-Pie Model Object for @pie-elements/fraction-model
-
 The schema defines the following properties:
 
-# `prompt` (string, required)
+# `correctResponse` (array, required)
 
-The user prompt/item stem
+Array of ResponseObject for correct response
 
-# `promptEnabled` (boolean)
+The object is an array with all elements of the type `object`.
 
-Determines if prompt should show
+The array object has the following properties:
+
+## `id` (number, required)
+
+Indicates the response id for bar or pie model
+
+## `value` (number, required)
+
+Indicates the selected response sector for model value
+
+# `title` (string, required)
+
+The title prompt of the item
+
+# `question` (string, required)
+
+The question prompt or item stem
+
+# `modelTypeSelected` (string, enum)
+
+Indicates if the model type should be Bar or Pie model
+
+This element must be one of the following enum values:
+
+* `bar`
+* `pie`
+
+Default: `": 'bar'"`
+
+# `maxModelSelected` (number)
+
+Indicates max no of models to be selected
+
+Default: `": 1"`
+
+# `partsPerModel` (number)
+
+Indicates parts per model to be selected
+
+Default: `": 5"`
+
+# `allowedStudentConfig` (boolean)
+
+Indicates if student can configure no of models and parts per model
+
+Default: `": false"`
+
+# `showGraphLabels` (boolean)
+
+Determines if graph labels visible or not
+
+Default: `": false"`
+
+# `language` (string)
+
+Indicates the language of the component
+Supported options: en, es, en_US, en-US, es_ES, es-ES, es_MX, es-MX
 
 # `id` (string, required)
 
@@ -24,14 +78,16 @@ The html Element tag name
 
 The schema defines the following additional types:
 
-## `ConfigureProp` (object)
+## `ResponseObject` (object)
 
-Properties of the `ConfigureProp` object:
+Model for the
 
-### `settings` (boolean)
+Properties of the `ResponseObject` object:
 
-Indicates if the item has to be displayed in the Settings Panel
+### `id` (number, required)
 
-### `label` (string)
+Indicates the response id for bar or pie model
 
-Indicates the label for the item that has to be displayed in the Settings Panel
+### `value` (number, required)
+
+Indicates the selected response sector for model value

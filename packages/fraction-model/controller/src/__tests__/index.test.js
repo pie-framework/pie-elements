@@ -21,10 +21,17 @@ describe('outcome', () => {
 describe('model', () => {
   it('returns object', async () => {
     const result =await model({}, {}, {});
-    console.log(result);
     expect(result).toEqual({
-      prompt: 'Question Prompt goes here',
-      env: {}
+      env: {},
+      correctResponse: [],
+      title: '',
+      question: '',
+      modelTypeSelected: 'bar',
+      maxModelSelected: 1,
+      partsPerModel: 5,
+      allowedStudentConfig: false,
+      showGraphLabels: false,
+      view: false
     })
   })
 });
