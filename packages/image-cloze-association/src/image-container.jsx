@@ -20,6 +20,8 @@ class ImageContainer extends Component {
       showDashedBorder,
       responseAreaFill,
       answerChoiceTransparency,
+      responseContainerPadding,
+      imageDropTargetPadding,
     } = this.props;
 
     return (
@@ -52,6 +54,8 @@ class ImageContainer extends Component {
               showDashedBorder={showDashedBorder}
               responseAreaFill={responseAreaFill}
               answerChoiceTransparency={answerChoiceTransparency}
+              responseContainerPadding={responseContainerPadding}
+              imageDropTargetPadding={imageDropTargetPadding}
             />
           );
         })}
@@ -74,6 +78,8 @@ ImageContainer.propTypes = {
   showDashedBorder: PropTypes.bool,
   answerChoiceTransparency: PropTypes.bool,
   responseAreaFill: PropTypes.string,
+  responseContainerPadding: PropTypes.string,
+  imageDropTargetPadding: PropTypes.string,
 };
 
 ImageContainer.defaultProps = {

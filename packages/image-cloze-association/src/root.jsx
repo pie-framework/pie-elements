@@ -223,6 +223,8 @@ class ImageClozeAssociationComponent extends React.Component {
         language,
         uiStyle = {},
         answerChoiceTransparency,
+        responseContainerPadding,
+        imageDropTargetPadding,
       },
     } = this.props;
     const {
@@ -263,6 +265,7 @@ class ImageClozeAssociationComponent extends React.Component {
       answersToShow = [...answersToShow, ...getUnansweredAnswers(answersToShow, validation)];
     }
 
+    console.log('model', this.props.model)
     return (
       <div className={classes.main}>
         {teacherInstructions && hasText(teacherInstructions) && (
@@ -302,6 +305,8 @@ class ImageClozeAssociationComponent extends React.Component {
               responseContainers={responseContainers}
               showDashedBorder={showDashedBorder}
               responseAreaFill={responseAreaFill}
+              responseContainerPadding={responseContainerPadding}
+              imageDropTargetPadding={imageDropTargetPadding}
             />
           </InteractiveSection>
         ) : (
@@ -319,6 +324,8 @@ class ImageClozeAssociationComponent extends React.Component {
               showDashedBorder={showDashedBorder}
               responseAreaFill={responseAreaFill}
               answerChoiceTransparency={answerChoiceTransparency}
+              responseContainerPadding={responseContainerPadding}
+              imageDropTargetPadding={imageDropTargetPadding}
             />
 
             {maxResponsePerZoneWarning && <WarningInfo message={warningMessage} />}

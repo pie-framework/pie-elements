@@ -9,9 +9,12 @@ import PossibleResponse from './possible-response';
 import c from './constants';
 
 class ImageDropTarget extends React.Component {
-  state = {
-    shouldHaveSmallPadding: false
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      shouldHaveSmallPadding: false,
+    };
+  }
 
   render() {
     const {
@@ -25,14 +28,13 @@ class ImageDropTarget extends React.Component {
       onDragAnswerEnd,
       showDashedBorder,
       responseAreaFill,
+      responseContainerPadding,
+      imageDropTargetPadding,
       // dnd-related props
       connectDropTarget,
       answerChoiceTransparency
     } = this.props;
     const { shouldHaveSmallPadding } = this.state;
-
-    const responseContainerPadding = '10px';
-    const imageDropTargetPadding = '10px';
 
     const containerClasses = cx(classes.responseContainer, {
       [classes.responseContainerDashed]: showDashedBorder && !draggingElement.id,
@@ -46,47 +48,47 @@ class ImageDropTarget extends React.Component {
     };
 
     return connectDropTarget(
-        <div
-            className={containerClasses}
-            style={updatedContainerStyle}
-            ref={ref => {
-              this.dropContainerHeight = ref?.getBoundingClientRect().height;
+      <div
+        className={containerClasses}
+        style={updatedContainerStyle}
+        ref={ref => {
+          this.dropContainerHeight = ref?.getBoundingClientRect().height;
 
-              // If answers area is higher than the initial established response zone,
-              // then make sure to use a smaller padding.
-              // Only reset the state if needed to prevent maximum callstack exceeded
-              if (this.dropContainerHeight < this.dropContainerResponsesHeight && !shouldHaveSmallPadding) {
-                this.setState({ shouldHaveSmallPadding: true });
-              }
+          // If answers area is higher than the initial established response zone,
+          // then make sure to use a smaller padding.
+          // Only reset the state if needed to prevent maximum callstack exceeded
+          if (this.dropContainerHeight < this.dropContainerResponsesHeight && !shouldHaveSmallPadding) {
+            this.setState({ shouldHaveSmallPadding: true });
+          }
+        }}
+      >
+        {answers.length || (duplicateResponses && answers.length) ? (
+          <div
+            className={classes.answers}
+            ref={ref => {
+              this.dropContainerResponsesHeight = ref?.getBoundingClientRect().height;
             }}
-        >
-          {answers.length || (duplicateResponses && answers.length) ? (
-              <div
-                  className={classes.answers}
-                  ref={ref => {
-                    this.dropContainerResponsesHeight = ref?.getBoundingClientRect().height;
-                  }}
-              >
-                {answers.map((answer) => (
-                  <PossibleResponse
-                    key={answer.id}
-                    data={answer}
-                    canDrag={canDrag}
-                    onDragBegin={() => onDragAnswerBegin(answer)}
-                    onDragEnd={onDragAnswerEnd}
-                    answerChoiceTransparency={answerChoiceTransparency}
-                    containerStyle={{
-                      padding: imageDropTargetPadding
-                        ? imageDropTargetPadding
-                        : shouldHaveSmallPadding
-                          ? '2px'
-                          : '6px 10px',
-                    }}
-                  />
-                ))}
-              </div>
-          ) : null}
-        </div>,
+          >
+            {answers.map((answer) => (
+              <PossibleResponse
+                key={answer.id}
+                data={answer}
+                canDrag={canDrag}
+                onDragBegin={() => onDragAnswerBegin(answer)}
+                onDragEnd={onDragAnswerEnd}
+                answerChoiceTransparency={answerChoiceTransparency}
+                containerStyle={{
+                  padding: imageDropTargetPadding
+                    ? imageDropTargetPadding
+                    : shouldHaveSmallPadding
+                      ? '2px'
+                      : '6px 10px',
+                }}
+              />
+            ))}
+          </div>
+        ) : null}
+      </div>,
     );
   }
 }
@@ -106,11 +108,14 @@ ImageDropTarget.propTypes = {
   responseAreaFill: PropTypes.string,
   answerChoiceTransparency: PropTypes.bool,
   duplicateResponses: PropTypes.bool,
+  responseContainerPadding: PropTypes.string,
+  imageDropTargetPadding: PropTypes.string,
 };
 
 ImageDropTarget.defaultProps = {
   answer: {},
   classes: {},
+  responseContainerPadding: '10px',
 };
 
 const styles = () => ({

@@ -140,6 +140,12 @@ export interface ImageClozeAssociationPie extends PieModel {
 
   /** Indicates the background color of the response area */
   responseAreaFill?: string;
+
+  /** Indicates padding of the response container */
+  responseContainerPadding?: string;
+
+  /** Indicates the padding of the image drop target */
+  imageDropTargetPadding?: string;
 }
 
 /**
