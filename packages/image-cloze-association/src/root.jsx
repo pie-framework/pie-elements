@@ -265,7 +265,6 @@ class ImageClozeAssociationComponent extends React.Component {
       answersToShow = [...answersToShow, ...getUnansweredAnswers(answersToShow, validation)];
     }
 
-    console.log('model', this.props.model)
     return (
       <div className={classes.main}>
         {teacherInstructions && hasText(teacherInstructions) && (

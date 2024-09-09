@@ -26,7 +26,7 @@ class ImageContainer extends Component {
 
     return (
       <div className={classes.base}>
-        <img src={src} height={height} width={width} />
+        <img src={src} height={height} width={width} alt={'Image not found'} />
 
         {(responseContainers || []).map((r, i) => {
           const rHeight = (r.height.replace('%', '') / 100) * height;
