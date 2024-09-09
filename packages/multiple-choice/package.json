@@ -7,7 +7,7 @@
   },
   "dependencies": {
     "@material-ui/core": "^3.9.2",
-    "@pie-lib/pie-toolbox": "next",
+    "@pie-lib/pie-toolbox": "1.31.2",
     "classnames": "^2.2.5",
     "debug": "^4.1.1",
     "enzyme-to-json": "^3.3.3",
