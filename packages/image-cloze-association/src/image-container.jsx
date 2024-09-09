@@ -11,7 +11,6 @@ class ImageContainer extends Component {
       canDrag,
       classes,
       draggingElement,
-      duplicateResponses,
       image: { height, src, width } = {},
       onAnswerSelect,
       onDragAnswerBegin,
@@ -45,7 +44,6 @@ class ImageContainer extends Component {
                 left: rLeft,
                 top: rTop,
               }}
-              duplicateResponses={duplicateResponses}
               key={r.id + i}
               draggingElement={draggingElement}
               onDrop={(item) => onAnswerSelect(item, r.index)}
@@ -69,7 +67,6 @@ ImageContainer.propTypes = {
   canDrag: PropTypes.bool.isRequired,
   classes: PropTypes.object,
   draggingElement: PropTypes.shape({}).isRequired,
-  duplicateResponses: PropTypes.bool,
   image: PropTypes.object.isRequired,
   onAnswerSelect: PropTypes.func.isRequired,
   onDragAnswerBegin: PropTypes.func.isRequired,
@@ -84,7 +81,6 @@ ImageContainer.propTypes = {
 
 ImageContainer.defaultProps = {
   classes: {},
-  duplicateResponses: false,
 };
 
 const styles = (theme) => ({

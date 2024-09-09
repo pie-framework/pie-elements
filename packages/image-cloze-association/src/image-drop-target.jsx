@@ -9,11 +9,8 @@ import PossibleResponse from './possible-response';
 import c from './constants';
 
 class ImageDropTarget extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      shouldHaveSmallPadding: false,
-    };
+  state = {
+    shouldHaveSmallPadding: false,
   }
 
   render() {
@@ -23,7 +20,6 @@ class ImageDropTarget extends React.Component {
       classes,
       containerStyle,
       draggingElement,
-      duplicateResponses,
       onDragAnswerBegin,
       onDragAnswerEnd,
       showDashedBorder,
@@ -62,7 +58,7 @@ class ImageDropTarget extends React.Component {
           }
         }}
       >
-        {answers.length || (duplicateResponses && answers.length) ? (
+        {answers.length ? (
           <div
             className={classes.answers}
             ref={ref => {
@@ -107,7 +103,6 @@ ImageDropTarget.propTypes = {
   showDashedBorder: PropTypes.bool,
   responseAreaFill: PropTypes.string,
   answerChoiceTransparency: PropTypes.bool,
-  duplicateResponses: PropTypes.bool,
   responseContainerPadding: PropTypes.string,
   imageDropTargetPadding: PropTypes.string,
 };

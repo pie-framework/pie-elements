@@ -3,7 +3,6 @@ export default {
     rationaleEnabled: true,
     teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true,
-    selectedResponsePadding: 10,
   },
   configuration: {
     baseInputConfiguration: {
