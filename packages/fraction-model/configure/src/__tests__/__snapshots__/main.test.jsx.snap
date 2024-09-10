@@ -1,0 +1,306 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Main snapshot renders 1`] = `
+<ConfigLayout
+  dimensions={{}}
+  hideSettings={true}
+>
+  <WithStyles(CardBar)
+    header="Set Up"
+  />
+  <FormSection
+    label="Title"
+  >
+    <EditableHtml
+      activePlugins={
+        [
+          "bold",
+          "html",
+          "italic",
+          "underline",
+          "strikethrough",
+          "image",
+          "math",
+          "languageCharacters",
+          "responseArea",
+        ]
+      }
+      languageCharactersProps={
+        [
+          {
+            "language": "spanish",
+          },
+          {
+            "language": "special",
+          },
+        ]
+      }
+      markup=""
+      mathMlOptions={
+        {
+          "mmlEditing": false,
+          "mmlOutput": false,
+        }
+      }
+      onChange={[Function]}
+      pluginProps={
+        {
+          "audio": {
+            "disabled": false,
+          },
+          "image": {
+            "disabled": false,
+          },
+          "video": {
+            "disabled": false,
+          },
+        }
+      }
+      toolbarOpts={
+        {
+          "position": "bottom",
+        }
+      }
+      uploadSoundSupport={
+        {
+          "advanceTimersByTime": [Function],
+          "advanceTimersByTimeAsync": [Function],
+          "advanceTimersToNextTimer": [Function],
+          "advanceTimersToNextTimerAsync": [Function],
+          "autoMockOff": [Function],
+          "autoMockOn": [Function],
+          "clearAllMocks": [Function],
+          "clearAllTimers": [Function],
+          "createMockFromModule": [Function],
+          "deepUnmock": [Function],
+          "disableAutomock": [Function],
+          "doMock": [Function],
+          "dontMock": [Function],
+          "enableAutomock": [Function],
+          "fn": [Function],
+          "genMockFromModule": [Function],
+          "getRealSystemTime": [Function],
+          "getSeed": [Function],
+          "getTimerCount": [Function],
+          "isEnvironmentTornDown": [Function],
+          "isMockFunction": [Function],
+          "isolateModules": [Function],
+          "isolateModulesAsync": [Function],
+          "mock": [Function],
+          "mocked": [Function],
+          "now": [Function],
+          "replaceProperty": [Function],
+          "requireActual": [Function],
+          "requireMock": [Function],
+          "resetAllMocks": [Function],
+          "resetModules": [Function],
+          "restoreAllMocks": [Function],
+          "retryTimes": [Function],
+          "runAllImmediates": [Function],
+          "runAllTicks": [Function],
+          "runAllTimers": [Function],
+          "runAllTimersAsync": [Function],
+          "runOnlyPendingTimers": [Function],
+          "runOnlyPendingTimersAsync": [Function],
+          "setMock": [Function],
+          "setSystemTime": [Function],
+          "setTimeout": [Function],
+          "spyOn": [Function],
+          "unmock": [Function],
+          "unstable_mockModule": [Function],
+          "useFakeTimers": [Function],
+          "useRealTimers": [Function],
+        }
+      }
+    />
+  </FormSection>
+  <FormSection
+    label="Question"
+  >
+    <EditableHtml
+      languageCharactersProps={
+        [
+          {
+            "language": "spanish",
+          },
+          {
+            "language": "special",
+          },
+        ]
+      }
+      markup=""
+      mathMlOptions={
+        {
+          "mmlEditing": false,
+          "mmlOutput": false,
+        }
+      }
+      minHeight={60}
+      onChange={[Function]}
+      pluginProps={
+        {
+          "audio": {
+            "disabled": false,
+          },
+          "image": {
+            "disabled": false,
+          },
+          "video": {
+            "disabled": false,
+          },
+        }
+      }
+      toolbarOpts={
+        {
+          "position": "bottom",
+        }
+      }
+      uploadSoundSupport={
+        {
+          "advanceTimersByTime": [Function],
+          "advanceTimersByTimeAsync": [Function],
+          "advanceTimersToNextTimer": [Function],
+          "advanceTimersToNextTimerAsync": [Function],
+          "autoMockOff": [Function],
+          "autoMockOn": [Function],
+          "clearAllMocks": [Function],
+          "clearAllTimers": [Function],
+          "createMockFromModule": [Function],
+          "deepUnmock": [Function],
+          "disableAutomock": [Function],
+          "doMock": [Function],
+          "dontMock": [Function],
+          "enableAutomock": [Function],
+          "fn": [Function],
+          "genMockFromModule": [Function],
+          "getRealSystemTime": [Function],
+          "getSeed": [Function],
+          "getTimerCount": [Function],
+          "isEnvironmentTornDown": [Function],
+          "isMockFunction": [Function],
+          "isolateModules": [Function],
+          "isolateModulesAsync": [Function],
+          "mock": [Function],
+          "mocked": [Function],
+          "now": [Function],
+          "replaceProperty": [Function],
+          "requireActual": [Function],
+          "requireMock": [Function],
+          "resetAllMocks": [Function],
+          "resetModules": [Function],
+          "restoreAllMocks": [Function],
+          "retryTimes": [Function],
+          "runAllImmediates": [Function],
+          "runAllTicks": [Function],
+          "runAllTimers": [Function],
+          "runAllTimersAsync": [Function],
+          "runOnlyPendingTimers": [Function],
+          "runOnlyPendingTimersAsync": [Function],
+          "setMock": [Function],
+          "setSystemTime": [Function],
+          "setTimeout": [Function],
+          "spyOn": [Function],
+          "unmock": [Function],
+          "unstable_mockModule": [Function],
+          "useFakeTimers": [Function],
+          "useRealTimers": [Function],
+        }
+      }
+    />
+  </FormSection>
+  <FormSection>
+    <WithStyles(ModelOptions)
+      model={
+        {
+          "allowedStudentConfig": false,
+          "correctResponse": [],
+          "maxModelSelected": 1,
+          "modelTypeSelected": "bar",
+          "partsPerModel": 5,
+          "question": "",
+          "showGraphLabels": false,
+          "title": "",
+        }
+      }
+      modelOptions={
+        {
+          "maxOfModel": {
+            "default": 1,
+            "max": 9,
+            "min": 1,
+          },
+          "modelTypeChoices": [
+            {
+              "label": "Bar",
+              "value": "bar",
+            },
+            {
+              "label": "Pie",
+              "value": "pie",
+            },
+          ],
+          "partsPerModel": {
+            "default": 5,
+            "max": 9,
+            "min": 1,
+          },
+        }
+      }
+      onChange={[Function]}
+    />
+  </FormSection>
+  <FormSection>
+    <WithStyles(CardBar)
+      header="Correct Answer"
+      info={
+        <WithStyles(Tooltip)
+          classes={
+            {
+              "tooltip": undefined,
+            }
+          }
+          disableFocusListener={true}
+          disableTouchListener={true}
+          placement="right"
+          title="The correct answer should include no more than one partially-filled model"
+        >
+          <pure(InfoIcon)
+            color="primary"
+            fontSize="small"
+            style={
+              {
+                "marginLeft": "8px",
+              }
+            }
+          />
+        </WithStyles(Tooltip)>
+      }
+    />
+    <br />
+    <label>
+      Click/touch the number of parts to represent the correct fraction model
+    </label>
+    <br />
+    <div>
+      <WithStyles(FractionModelChart)
+        key="0"
+        modelType="bar"
+        noOfModels={1}
+        onChange={[Function]}
+        partsPerModel={5}
+        showLabel={false}
+        value={[]}
+      />
+    </div>
+  </FormSection>
+  <Component
+    onClose={[Function]}
+    onCloseText="Cancel"
+    onConfirm={[Function]}
+    onConfirmText="OK"
+    open={false}
+    text=""
+    title="Warning"
+  />
+</ConfigLayout>
+`;
