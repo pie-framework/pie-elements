@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.23.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@5.23.0...@pie-element/inline-dropdown@5.23.1) (2024-09-10)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3652, PD-2451 ([8a00529](https://github.com/pie-framework/pie-elements/commit/8a00529f67a8e27e78e4c16de5d04e11ec8c4d16))
+
+
+
+
+
 # [5.23.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@5.22.2...@pie-element/inline-dropdown@5.23.0) (2024-09-10)
 
 
