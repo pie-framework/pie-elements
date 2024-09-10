@@ -2,20 +2,20 @@
 
 exports[`AnswerFraction render snapshot 1`] = `
 <AnswerFraction
-  answers={{}}
+  answers={Object {}}
   classes={
-    {
+    Object {
       "group": "AnswerFraction-group-2",
       "groupInline": "AnswerFraction-groupInline-1",
       "inputLabel": "AnswerFraction-inputLabel-3",
       "textField": "AnswerFraction-textField-4",
     }
   }
-  correctAnswers={{}}
+  correctAnswers={Object {}}
   model={
-    {
+    Object {
       "allowedStudentConfig": true,
-      "correctResponse": [],
+      "correctResponse": Array [],
       "maxModelSelected": 1,
       "modelTypeSelected": "bar",
       "partsPerModel": 5,

@@ -2,7 +2,7 @@
 
 exports[`Main snapshot renders 1`] = `
 <ConfigLayout
-  dimensions={{}}
+  dimensions={Object {}}
   hideSettings={true}
 >
   <WithStyles(CardBar)
@@ -13,7 +13,7 @@ exports[`Main snapshot renders 1`] = `
   >
     <EditableHtml
       activePlugins={
-        [
+        Array [
           "bold",
           "html",
           "italic",
@@ -26,52 +26,49 @@ exports[`Main snapshot renders 1`] = `
         ]
       }
       languageCharactersProps={
-        [
-          {
+        Array [
+          Object {
             "language": "spanish",
           },
-          {
+          Object {
             "language": "special",
           },
         ]
       }
       markup=""
       mathMlOptions={
-        {
+        Object {
           "mmlEditing": false,
           "mmlOutput": false,
         }
       }
       onChange={[Function]}
       pluginProps={
-        {
-          "audio": {
+        Object {
+          "audio": Object {
             "disabled": false,
           },
-          "image": {
+          "image": Object {
             "disabled": false,
           },
-          "video": {
+          "video": Object {
             "disabled": false,
           },
         }
       }
       toolbarOpts={
-        {
+        Object {
           "position": "bottom",
         }
       }
       uploadSoundSupport={
-        {
+        Object {
+          "addMatchers": [Function],
           "advanceTimersByTime": [Function],
-          "advanceTimersByTimeAsync": [Function],
-          "advanceTimersToNextTimer": [Function],
-          "advanceTimersToNextTimerAsync": [Function],
           "autoMockOff": [Function],
           "autoMockOn": [Function],
           "clearAllMocks": [Function],
           "clearAllTimers": [Function],
-          "createMockFromModule": [Function],
           "deepUnmock": [Function],
           "disableAutomock": [Function],
           "doMock": [Function],
@@ -79,35 +76,24 @@ exports[`Main snapshot renders 1`] = `
           "enableAutomock": [Function],
           "fn": [Function],
           "genMockFromModule": [Function],
-          "getRealSystemTime": [Function],
-          "getSeed": [Function],
-          "getTimerCount": [Function],
-          "isEnvironmentTornDown": [Function],
           "isMockFunction": [Function],
-          "isolateModules": [Function],
-          "isolateModulesAsync": [Function],
           "mock": [Function],
-          "mocked": [Function],
-          "now": [Function],
-          "replaceProperty": [Function],
           "requireActual": [Function],
           "requireMock": [Function],
           "resetAllMocks": [Function],
+          "resetModuleRegistry": [Function],
           "resetModules": [Function],
           "restoreAllMocks": [Function],
           "retryTimes": [Function],
           "runAllImmediates": [Function],
           "runAllTicks": [Function],
           "runAllTimers": [Function],
-          "runAllTimersAsync": [Function],
           "runOnlyPendingTimers": [Function],
-          "runOnlyPendingTimersAsync": [Function],
+          "runTimersToTime": [Function],
           "setMock": [Function],
-          "setSystemTime": [Function],
           "setTimeout": [Function],
           "spyOn": [Function],
           "unmock": [Function],
-          "unstable_mockModule": [Function],
           "useFakeTimers": [Function],
           "useRealTimers": [Function],
         }
@@ -119,18 +105,18 @@ exports[`Main snapshot renders 1`] = `
   >
     <EditableHtml
       languageCharactersProps={
-        [
-          {
+        Array [
+          Object {
             "language": "spanish",
           },
-          {
+          Object {
             "language": "special",
           },
         ]
       }
       markup=""
       mathMlOptions={
-        {
+        Object {
           "mmlEditing": false,
           "mmlOutput": false,
         }
@@ -138,34 +124,31 @@ exports[`Main snapshot renders 1`] = `
       minHeight={60}
       onChange={[Function]}
       pluginProps={
-        {
-          "audio": {
+        Object {
+          "audio": Object {
             "disabled": false,
           },
-          "image": {
+          "image": Object {
             "disabled": false,
           },
-          "video": {
+          "video": Object {
             "disabled": false,
           },
         }
       }
       toolbarOpts={
-        {
+        Object {
           "position": "bottom",
         }
       }
       uploadSoundSupport={
-        {
+        Object {
+          "addMatchers": [Function],
           "advanceTimersByTime": [Function],
-          "advanceTimersByTimeAsync": [Function],
-          "advanceTimersToNextTimer": [Function],
-          "advanceTimersToNextTimerAsync": [Function],
           "autoMockOff": [Function],
           "autoMockOn": [Function],
           "clearAllMocks": [Function],
           "clearAllTimers": [Function],
-          "createMockFromModule": [Function],
           "deepUnmock": [Function],
           "disableAutomock": [Function],
           "doMock": [Function],
@@ -173,35 +156,24 @@ exports[`Main snapshot renders 1`] = `
           "enableAutomock": [Function],
           "fn": [Function],
           "genMockFromModule": [Function],
-          "getRealSystemTime": [Function],
-          "getSeed": [Function],
-          "getTimerCount": [Function],
-          "isEnvironmentTornDown": [Function],
           "isMockFunction": [Function],
-          "isolateModules": [Function],
-          "isolateModulesAsync": [Function],
           "mock": [Function],
-          "mocked": [Function],
-          "now": [Function],
-          "replaceProperty": [Function],
           "requireActual": [Function],
           "requireMock": [Function],
           "resetAllMocks": [Function],
+          "resetModuleRegistry": [Function],
           "resetModules": [Function],
           "restoreAllMocks": [Function],
           "retryTimes": [Function],
           "runAllImmediates": [Function],
           "runAllTicks": [Function],
           "runAllTimers": [Function],
-          "runAllTimersAsync": [Function],
           "runOnlyPendingTimers": [Function],
-          "runOnlyPendingTimersAsync": [Function],
+          "runTimersToTime": [Function],
           "setMock": [Function],
-          "setSystemTime": [Function],
           "setTimeout": [Function],
           "spyOn": [Function],
           "unmock": [Function],
-          "unstable_mockModule": [Function],
           "useFakeTimers": [Function],
           "useRealTimers": [Function],
         }
@@ -211,9 +183,9 @@ exports[`Main snapshot renders 1`] = `
   <FormSection>
     <WithStyles(ModelOptions)
       model={
-        {
+        Object {
           "allowedStudentConfig": false,
-          "correctResponse": [],
+          "correctResponse": Array [],
           "maxModelSelected": 1,
           "modelTypeSelected": "bar",
           "partsPerModel": 5,
@@ -223,23 +195,23 @@ exports[`Main snapshot renders 1`] = `
         }
       }
       modelOptions={
-        {
-          "maxOfModel": {
+        Object {
+          "maxOfModel": Object {
             "default": 1,
             "max": 9,
             "min": 1,
           },
-          "modelTypeChoices": [
-            {
+          "modelTypeChoices": Array [
+            Object {
               "label": "Bar",
               "value": "bar",
             },
-            {
+            Object {
               "label": "Pie",
               "value": "pie",
             },
           ],
-          "partsPerModel": {
+          "partsPerModel": Object {
             "default": 5,
             "max": 9,
             "min": 1,
@@ -255,7 +227,7 @@ exports[`Main snapshot renders 1`] = `
       info={
         <WithStyles(Tooltip)
           classes={
-            {
+            Object {
               "tooltip": undefined,
             }
           }
@@ -268,7 +240,7 @@ exports[`Main snapshot renders 1`] = `
             color="primary"
             fontSize="small"
             style={
-              {
+              Object {
                 "marginLeft": "8px",
               }
             }
@@ -289,7 +261,7 @@ exports[`Main snapshot renders 1`] = `
         onChange={[Function]}
         partsPerModel={5}
         showLabel={false}
-        value={[]}
+        value={Array []}
       />
     </div>
   </FormSection>

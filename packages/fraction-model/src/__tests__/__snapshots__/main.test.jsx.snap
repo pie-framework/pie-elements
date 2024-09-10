@@ -3,16 +3,16 @@
 exports[`Main render snapshot 1`] = `
 <Main
   classes={
-    {
+    Object {
       "modelPreview": "Main-modelPreview-2",
       "previewHeading": "Main-previewHeading-1",
       "titleContainer": "Main-titleContainer-3",
     }
   }
   model={
-    {
+    Object {
       "allowedStudentConfig": false,
-      "correctResponse": [],
+      "correctResponse": Array [],
       "maxModelSelected": 1,
       "modelTypeSelected": "bar",
       "partsPerModel": 5,
@@ -22,6 +22,6 @@ exports[`Main render snapshot 1`] = `
     }
   }
   onSessionChange={[MockFunction]}
-  session={{}}
+  session={Object {}}
 />
 `;
