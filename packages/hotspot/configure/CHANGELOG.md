@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.25.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@6.25.2...@pie-element/hotspot-configure@6.25.3) (2024-09-10)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox: ability to disable table and lists PD-4065 ([49f1ce4](https://github.com/pie-framework/pie-elements/commit/49f1ce4000bc45d0eb8032f6538c0c780940a503))
+
+
+
+
+
 ## [6.25.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@6.25.1...@pie-element/hotspot-configure@6.25.2) (2024-08-29)
 
 

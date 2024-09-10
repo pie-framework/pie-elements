@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.23.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@5.23.2...@pie-element/graphing-configure@5.23.3) (2024-09-10)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox: ability to disable table and lists PD-4065 ([49f1ce4](https://github.com/pie-framework/pie-elements/commit/49f1ce4000bc45d0eb8032f6538c0c780940a503))
+
+
+
+
+
 ## [5.23.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@5.23.1...@pie-element/graphing-configure@5.23.2) (2024-08-29)
 
 
