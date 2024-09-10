@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import {EditableHtml} from '@pie-lib/pie-toolbox/editable-html';
+import { EditableHtml } from '@pie-lib/pie-toolbox/editable-html';
 import { renderMath } from '@pie-lib/pie-toolbox/math-rendering-accessible';
 import { withStyles } from '@material-ui/core/styles';
 import isEqual from 'lodash/isEqual';
@@ -293,16 +293,15 @@ export class RespAreaToolbar extends React.Component {
   };
 
   render() {
-    const { classes, choices, spellCheck, uploadSoundSupport, mathMlOptions = {} } = this.props;
+    const {
+      classes,
+      choices,
+      spellCheck,
+      uploadSoundSupport,
+      mathMlOptions = {},
+      toolbarInputConfiguration = {},
+    } = this.props;
     const { respAreaMarkup, toolbarStyle } = this.state;
-
-    const filteredDefaultPlugins = (DEFAULT_PLUGINS || []).filter(
-      (p) => p !== 'table' && p !== 'bulleted-list' && p !== 'numbered-list',
-    );
-    const labelPlugins = {
-      audio: { disabled: true },
-      video: { disabled: true },
-    };
 
     if (!toolbarStyle) {
       return null;
@@ -358,8 +357,7 @@ export class RespAreaToolbar extends React.Component {
               this.onBlur(e);
             }}
             placeholder="Add Choice"
-            activePlugins={filteredDefaultPlugins}
-            pluginProps={labelPlugins}
+            pluginProps={toolbarInputConfiguration}
             spellCheck={spellCheck}
             uploadSoundSupport={uploadSoundSupport}
             mathMlOptions={mathMlOptions}

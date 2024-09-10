@@ -347,7 +347,9 @@ export class Main extends React.Component {
       mathMlOptions = {},
       language = {},
       languageChoices = {},
+      toolbarInputConfiguration = {},
     } = configuration || {};
+
     const {
       choiceRationaleEnabled,
       choices,
@@ -498,7 +500,9 @@ export class Main extends React.Component {
         )}
 
         <div className={classes.flexContainer}>
-          <Typography className={classes.text} component={'div'}>Define Template, Choices, and Correct Responses</Typography>
+          <Typography className={classes.text} component={'div'}>
+            Define Template, Choices, and Correct Responses
+          </Typography>
           <Tooltip
             classes={{ tooltip: classes.tooltip }}
             disableFocusListener
@@ -537,6 +541,7 @@ export class Main extends React.Component {
                     spellCheck={spellCheckEnabled}
                     uploadSoundSupport={uploadSoundSupport}
                     mathMlOptions={mathMlOptions}
+                    toolbarInputConfiguration={toolbarInputConfiguration}
                   />
                 );
               },
