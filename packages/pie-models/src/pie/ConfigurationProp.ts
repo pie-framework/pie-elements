@@ -23,23 +23,23 @@ export interface CustomPlugin {
    * PIE will emit the event prefixed with "PIE-".
    * Eg: event = 'client_custom_event_A' => the emitted event will be "PIE-client_custom_event_A"
    */
-  event: string,
+  event: string;
 
   /**
    * The alt for the custom button icon
    */
-  iconAlt: string,
+  iconAlt: string;
 
   /**
    * The icon type.
    * Currently, only "SVG" is supported.
    */
-  iconType: string,
+  iconType: string;
 
   /**
    * The icon string. Currently, only "SVG" is supported, so it needs to be a valid svg.
    */
-  icon: string,
+  icon: string;
 }
 
 export interface EditableHtmlConfigureProp {
@@ -79,6 +79,71 @@ export interface EditableHtmlConfigureProp {
    * Indicates if the h3 plugin is disabled or not
    */
   h3?: EditableHtmlButtonConfigure;
+
+  /**
+   * Indicates if the language characters plugins are disabled or not (overwrites configuration.language)
+   */
+  languageCharacters?: EditableHtmlButtonConfigure;
+
+  /**
+   * Indicates if the bold plugin is disabled or not
+   */
+  bold?: EditableHtmlButtonConfigure;
+
+  /**
+   * Indicates if the html plugin is disabled or not
+   */
+  html?: EditableHtmlButtonConfigure;
+
+  /**
+   * Indicates if the italic plugin is disabled or not
+   */
+  italic?: EditableHtmlButtonConfigure;
+
+  /**
+   * Indicates if the ordered list plugin is disabled or not
+   */
+  ol_list?: EditableHtmlButtonConfigure;
+
+  /**
+   * Indicates if the redo plugin is disabled or not
+   */
+  redo?: EditableHtmlButtonConfigure;
+
+  /**
+   * Indicates if the strike through plugin is disabled or not
+   */
+  strikethrough?: EditableHtmlButtonConfigure;
+
+  /**
+   * Indicates if the sub plugin is disabled or not
+   */
+  sub?: EditableHtmlButtonConfigure;
+
+  /**
+   * Indicates if the sup plugin is disabled or not
+   */
+  sup?: EditableHtmlButtonConfigure;
+
+  /**
+   * Indicates if the table plugin is disabled or not
+   */
+  table?: EditableHtmlButtonConfigure;
+
+  /**
+   * Indicates if the unordered list plugin is disabled or not
+   */
+  ul_list?: EditableHtmlButtonConfigure;
+
+  /**
+   * Indicates if the underline plugin is disabled or not
+   */
+  underline?: EditableHtmlButtonConfigure;
+
+  /**
+   * Indicates if the undo plugin is disabled or not
+   */
+  undo?: EditableHtmlButtonConfigure;
 }
 
 export interface EditableHtmlPluginConfigure extends ConfigureProp {

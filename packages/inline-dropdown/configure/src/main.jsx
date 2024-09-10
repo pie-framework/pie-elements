@@ -347,7 +347,9 @@ export class Main extends React.Component {
       mathMlOptions = {},
       language = {},
       languageChoices = {},
+      responseAreaInputConfiguration = {},
     } = configuration || {};
+
     const {
       choiceRationaleEnabled,
       choices,
@@ -467,7 +469,11 @@ export class Main extends React.Component {
               maxImageWidth={(maxImageWidth && maxImageWidth.teacherInstructions) || defaultImageMaxWidth}
               maxImageHeight={(maxImageHeight && maxImageHeight.teacherInstructions) || defaultImageMaxHeight}
               uploadSoundSupport={uploadSoundSupport}
-              languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+              languageCharactersProps={
+                getPluginProps(teacherInstructions?.inputConfiguration).languageCharacters?.disabled
+                  ? [{ language: 'spanish' }, { language: 'special' }]
+                  : []
+              }
               mathMlOptions={mathMlOptions}
             />
             {teacherInstructionsError && <div className={classes.errorText}>{teacherInstructionsError}</div>}
@@ -490,7 +496,11 @@ export class Main extends React.Component {
               maxImageWidth={defaultImageMaxWidth}
               maxImageHeight={defaultImageMaxHeight}
               uploadSoundSupport={uploadSoundSupport}
-              languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+              languageCharactersProps={
+                getPluginProps(prompt?.inputConfiguration).languageCharacters?.disabled
+                  ? [{ language: 'spanish' }, { language: 'special' }]
+                  : []
+              }
               mathMlOptions={mathMlOptions}
             />
             {promptError && <div className={classes.errorText}>{promptError}</div>}
@@ -498,7 +508,9 @@ export class Main extends React.Component {
         )}
 
         <div className={classes.flexContainer}>
-          <Typography className={classes.text} component={'div'}>Define Template, Choices, and Correct Responses</Typography>
+          <Typography className={classes.text} component={'div'}>
+            Define Template, Choices, and Correct Responses
+          </Typography>
           <Tooltip
             classes={{ tooltip: classes.tooltip }}
             disableFocusListener
@@ -537,6 +549,8 @@ export class Main extends React.Component {
                     spellCheck={spellCheckEnabled}
                     uploadSoundSupport={uploadSoundSupport}
                     mathMlOptions={mathMlOptions}
+                    baseInputConfiguration={baseInputConfiguration}
+                    responseAreaInputConfiguration={responseAreaInputConfiguration}
                   />
                 );
               },
@@ -551,7 +565,11 @@ export class Main extends React.Component {
             highlightShape={false}
             error={responseAreasError}
             uploadSoundSupport={uploadSoundSupport}
-            languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+            languageCharactersProps={
+              getPluginProps(template?.inputConfiguration).languageCharacters?.disabled
+                ? [{ language: 'spanish' }, { language: 'special' }]
+                : []
+            }
             mathMlOptions={mathMlOptions}
           />
           {responseAreasError && <div className={classes.errorText}>{responseAreasError}</div>}
@@ -574,7 +592,11 @@ export class Main extends React.Component {
               maxImageWidth={(maxImageWidth && maxImageWidth.rationale) || defaultImageMaxWidth}
               maxImageHeight={(maxImageHeight && maxImageHeight.rationale) || defaultImageMaxHeight}
               uploadSoundSupport={uploadSoundSupport}
-              languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+              languageCharactersProps={
+                getPluginProps(rationale?.inputConfiguration).languageCharacters?.disabled
+                  ? [{ language: 'spanish' }, { language: 'special' }]
+                  : []
+              }
               mathMlOptions={mathMlOptions}
             />
             {rationaleError && <div className={classes.errorText}>{rationaleError}</div>}
