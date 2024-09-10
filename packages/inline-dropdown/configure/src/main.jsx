@@ -347,7 +347,7 @@ export class Main extends React.Component {
       mathMlOptions = {},
       language = {},
       languageChoices = {},
-      toolbarInputConfiguration = {},
+      responseAreaInputConfiguration = {},
     } = configuration || {};
 
     const {
@@ -541,7 +541,7 @@ export class Main extends React.Component {
                     spellCheck={spellCheckEnabled}
                     uploadSoundSupport={uploadSoundSupport}
                     mathMlOptions={mathMlOptions}
-                    toolbarInputConfiguration={toolbarInputConfiguration}
+                    responseAreaInputConfiguration={responseAreaInputConfiguration}
                   />
                 );
               },

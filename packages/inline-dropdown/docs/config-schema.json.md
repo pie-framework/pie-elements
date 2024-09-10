@@ -659,9 +659,9 @@ Value of the language option
 
 Label of the language option
 
-# `toolbarInputConfiguration` (object)
+# `responseAreaInputConfiguration` (object)
 
-Properties of the `toolbarInputConfiguration` object:
+Properties of the `responseAreaInputConfiguration` object:
 
 ## `math` (object)
 

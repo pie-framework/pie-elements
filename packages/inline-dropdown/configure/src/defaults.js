@@ -33,13 +33,13 @@ export default {
         image: { disabled: false },
       },
     },
-    toolbarInputConfiguration: {
+    responseAreaInputConfiguration: {
       audio: { disabled: true },
       video: { disabled: true },
       image: { disabled: true },
       table: { disabled: true },
-      'bulleted-list': { disabled: true },
-      'numbered-list': { disabled: true },
+      'ul-list': { disabled: true },
+      'ol-list': { disabled: true },
     },
     settingsPanelDisabled: false,
     spellCheck: {

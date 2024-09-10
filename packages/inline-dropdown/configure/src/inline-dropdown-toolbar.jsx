@@ -299,7 +299,7 @@ export class RespAreaToolbar extends React.Component {
       spellCheck,
       uploadSoundSupport,
       mathMlOptions = {},
-      toolbarInputConfiguration = {},
+      responseAreaInputConfiguration = {},
     } = this.props;
     const { respAreaMarkup, toolbarStyle } = this.state;
 
@@ -357,7 +357,7 @@ export class RespAreaToolbar extends React.Component {
               this.onBlur(e);
             }}
             placeholder="Add Choice"
-            pluginProps={toolbarInputConfiguration}
+            pluginProps={responseAreaInputConfiguration}
             spellCheck={spellCheck}
             uploadSoundSupport={uploadSoundSupport}
             mathMlOptions={mathMlOptions}
