@@ -5,6 +5,7 @@ import AnswerFraction from './answer-fraction';
 import { CorrectAnswerToggle } from '@pie-lib/pie-toolbox/correct-answer-toggle';
 import FractionModelChart from './fraction-model-chart';
 import { AlertDialog } from '@pie-lib/pie-toolbox/config-ui';
+import cloneDeep from 'lodash/cloneDeep';
 
 export class Main extends React.Component {
   static propTypes = {
@@ -60,7 +61,7 @@ export class Main extends React.Component {
    * @param {object} newAnswers contains updated answer model
    */
   onAnswerChange = (newAnswers) => {
-    let oldSession = _.cloneDeep(this.state.session);
+    let oldSession = cloneDeep(this.state.session);
     let newSession = {
       ...this.state.session,
       answers: newAnswers,
