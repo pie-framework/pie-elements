@@ -5,7 +5,7 @@ import AnswerFraction from '../answer-fraction';
 import { TextField } from '@material-ui/core';
 
 jest.mock('@material-ui/core', () => ({
-  TextField: (props) => <div {...props}/>,
+  TextField: (props) => <div {...props} />,
 }));
 
 describe('AnswerFraction', () => {
@@ -53,10 +53,8 @@ describe('AnswerFraction', () => {
 
     it('onValueChange correctly update answers', () => {
       component = wrapper();
-      component.instance().onValueChange('partsPerModel')
-      component.instance().onValueChange('noOfModel')
+      component.instance().onValueChange('partsPerModel');
+      component.instance().onValueChange('noOfModel');
     });
-
   });
-
 });

@@ -6,7 +6,7 @@ import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import CardBar from './card-bar';
 import { Checkbox } from '@pie-lib/pie-toolbox/config-ui';
-import _ from 'lodash';
+import cloneDeep from 'lodash/cloneDeep';
 
 export class ModelOptions extends React.Component {
   static propTypes = {
@@ -31,8 +31,8 @@ export class ModelOptions extends React.Component {
    */
   change(key, event, value) {
     const { model, onChange } = this.props;
-    const oldModel = _.cloneDeep(model);
-    let newModel = _.cloneDeep(model);
+    const oldModel = cloneDeep(model);
+    let newModel = cloneDeep(model);
     let showDiag = false;
     if (key === 'max') {
       newModel.maxModelSelected = value;
