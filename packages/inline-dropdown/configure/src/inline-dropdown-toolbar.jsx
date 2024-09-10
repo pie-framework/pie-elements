@@ -1,13 +1,13 @@
+import { getPluginProps } from './utils';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import {EditableHtml} from '@pie-lib/pie-toolbox/editable-html';
+import { EditableHtml } from '@pie-lib/pie-toolbox/editable-html';
 import { renderMath } from '@pie-lib/pie-toolbox/math-rendering-accessible';
 import { withStyles } from '@material-ui/core/styles';
 import isEqual from 'lodash/isEqual';
 import isEmpty from 'lodash/isEmpty';
 import classnames from 'classnames';
-import { DEFAULT_PLUGINS } from '@pie-lib/pie-toolbox/editable-html';
 import { color } from '@pie-lib/pie-toolbox/render-ui';
 
 import AddIcon from '@material-ui/icons/Add';
@@ -293,20 +293,22 @@ export class RespAreaToolbar extends React.Component {
   };
 
   render() {
-    const { classes, choices, spellCheck, uploadSoundSupport, mathMlOptions = {} } = this.props;
+    const {
+      classes,
+      choices,
+      spellCheck,
+      uploadSoundSupport,
+      mathMlOptions = {},
+      baseInputConfiguration = {},
+      responseAreaInputConfiguration = {},
+    } = this.props;
     const { respAreaMarkup, toolbarStyle } = this.state;
-
-    const filteredDefaultPlugins = (DEFAULT_PLUGINS || []).filter(
-      (p) => p !== 'table' && p !== 'bulleted-list' && p !== 'numbered-list',
-    );
-    const labelPlugins = {
-      audio: { disabled: true },
-      video: { disabled: true },
-    };
 
     if (!toolbarStyle) {
       return null;
     }
+
+    const responseAreaPluginProps = getPluginProps(responseAreaInputConfiguration?.inputConfiguration, baseInputConfiguration);
 
     return (
       <div
@@ -335,7 +337,7 @@ export class RespAreaToolbar extends React.Component {
             }}
             markup={respAreaMarkup}
             onKeyDown={this.onKeyDown}
-            languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
+            languageCharactersProps={responseAreaPluginProps.languageCharacters?.disabled ? [] : [{ language: 'spanish' }, { language: 'special' }]}
             onChange={(respAreaMarkup) => {
               if (this.preventDone) {
                 return;
@@ -358,8 +360,7 @@ export class RespAreaToolbar extends React.Component {
               this.onBlur(e);
             }}
             placeholder="Add Choice"
-            activePlugins={filteredDefaultPlugins}
-            pluginProps={labelPlugins}
+            pluginProps={responseAreaPluginProps}
             spellCheck={spellCheck}
             uploadSoundSupport={uploadSoundSupport}
             mathMlOptions={mathMlOptions}
