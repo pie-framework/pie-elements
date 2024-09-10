@@ -79,6 +79,11 @@ export interface EditableHtmlConfigureProp {
    * Indicates if the h3 plugin is disabled or not
    */
   h3?: EditableHtmlButtonConfigure;
+
+  /**
+   * Indicates if the language characters plugins are disabled or not (overwrites configuration.language)
+   */
+  languageCharacters?: EditableHtmlButtonConfigure;
 }
 
 export interface EditableHtmlPluginConfigure extends ConfigureProp {
