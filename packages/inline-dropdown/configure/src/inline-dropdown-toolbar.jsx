@@ -1,3 +1,4 @@
+import { getPluginProps } from './utils';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
@@ -7,7 +8,6 @@ import { withStyles } from '@material-ui/core/styles';
 import isEqual from 'lodash/isEqual';
 import isEmpty from 'lodash/isEmpty';
 import classnames from 'classnames';
-import { DEFAULT_PLUGINS } from '@pie-lib/pie-toolbox/editable-html';
 import { color } from '@pie-lib/pie-toolbox/render-ui';
 
 import AddIcon from '@material-ui/icons/Add';
@@ -299,6 +299,7 @@ export class RespAreaToolbar extends React.Component {
       spellCheck,
       uploadSoundSupport,
       mathMlOptions = {},
+      baseInputConfiguration = {},
       responseAreaInputConfiguration = {},
     } = this.props;
     const { respAreaMarkup, toolbarStyle } = this.state;
@@ -357,7 +358,7 @@ export class RespAreaToolbar extends React.Component {
               this.onBlur(e);
             }}
             placeholder="Add Choice"
-            pluginProps={responseAreaInputConfiguration}
+            pluginProps={getPluginProps(responseAreaInputConfiguration?.inputConfiguration, baseInputConfiguration)}
             spellCheck={spellCheck}
             uploadSoundSupport={uploadSoundSupport}
             mathMlOptions={mathMlOptions}

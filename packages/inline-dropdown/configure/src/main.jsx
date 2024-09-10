@@ -541,6 +541,7 @@ export class Main extends React.Component {
                     spellCheck={spellCheckEnabled}
                     uploadSoundSupport={uploadSoundSupport}
                     mathMlOptions={mathMlOptions}
+                    baseInputConfiguration={baseInputConfiguration}
                     responseAreaInputConfiguration={responseAreaInputConfiguration}
                   />
                 );

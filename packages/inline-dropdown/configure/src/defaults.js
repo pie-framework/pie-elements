@@ -34,12 +34,14 @@ export default {
       },
     },
     responseAreaInputConfiguration: {
-      audio: { disabled: true },
-      video: { disabled: true },
-      image: { disabled: true },
-      table: { disabled: true },
-      'ul-list': { disabled: true },
-      'ol-list': { disabled: true },
+      inputConfiguration: {
+        audio: { disabled: true },
+        video: { disabled: true },
+        image: { disabled: true },
+        table: { disabled: true },
+        ul_list: { disabled: true },
+        ol_list: { disabled: true },
+      },
     },
     settingsPanelDisabled: false,
     spellCheck: {
