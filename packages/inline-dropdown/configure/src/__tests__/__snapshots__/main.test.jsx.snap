@@ -94,6 +94,28 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
             "required": false,
             "settings": true,
           },
+          "responseAreaInputConfiguration": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": true,
+              },
+              "image": Object {
+                "disabled": true,
+              },
+              "ol_list": Object {
+                "disabled": true,
+              },
+              "table": Object {
+                "disabled": true,
+              },
+              "ul_list": Object {
+                "disabled": true,
+              },
+              "video": Object {
+                "disabled": true,
+              },
+            },
+          },
           "settingsPanelDisabled": false,
           "spellCheck": Object {
             "enabled": true,
@@ -897,6 +919,28 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
             "label": "Rationale",
             "required": false,
             "settings": true,
+          },
+          "responseAreaInputConfiguration": Object {
+            "inputConfiguration": Object {
+              "audio": Object {
+                "disabled": true,
+              },
+              "image": Object {
+                "disabled": true,
+              },
+              "ol_list": Object {
+                "disabled": true,
+              },
+              "table": Object {
+                "disabled": true,
+              },
+              "ul_list": Object {
+                "disabled": true,
+              },
+              "video": Object {
+                "disabled": true,
+              },
+            },
           },
           "settingsPanelDisabled": false,
           "spellCheck": Object {
