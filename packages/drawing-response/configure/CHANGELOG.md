@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.22.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response-configure@7.21.4...@pie-element/drawing-response-configure@7.22.0) (2024-09-11)
+
+
+### Features
+
+* upload images for drawing-response and only store url in db, not full base64 PD-4067 ([429b47d](https://github.com/pie-framework/pie-elements/commit/429b47d309052cbec17cb592df0ae9bc878e590a))
+
+
+
+
+
 ## [7.21.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response-configure@7.21.3...@pie-element/drawing-response-configure@7.21.4) (2024-09-10)
 
 
