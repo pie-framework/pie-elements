@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.21.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@2.21.6...@pie-element/passage@2.21.7) (2024-09-11)
+
+
+### Bug Fixes
+
+* **passage:** fix validation and update controller default values PD-4068 PD-4006 ([c4976b6](https://github.com/pie-framework/pie-elements/commit/c4976b664a441b225f5ebe47273a5a309cdfa9f7))
+
+
+
+
+
 ## [2.21.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@2.21.5...@pie-element/passage@2.21.6) (2024-09-10)
 
 
