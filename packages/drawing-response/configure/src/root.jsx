@@ -156,6 +156,7 @@ export class Root extends React.Component {
               onUpdateImageDimension={this.onUpdateImageDimension}
               onImageUpload={this.onImageUpload}
               imageDimensions={model.imageDimensions}
+              insertImage={imageSupport && imageSupport.add}
             />
           </React.Fragment>
         )}

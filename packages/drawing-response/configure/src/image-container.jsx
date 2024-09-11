@@ -25,6 +25,12 @@ export class ImageContainer extends Component {
       dragEnabled: true,
       dropzoneActive: false,
     };
+    this.fakeImageHandler = {
+      cancel: () => {},
+      done: (a, url) => this.props.onImageUpload(url),
+      fileChosen: () => {},
+      progress: () => {},
+    };
   }
 
   componentDidMount() {
@@ -39,12 +45,19 @@ export class ImageContainer extends Component {
   }
 
   handleFileRead = (file) => {
-    const { onImageUpload } = this.props;
+    const { onImageUpload, insertImage } = this.props;
     const reader = new FileReader();
-    reader.onloadend = () => {
-      onImageUpload(reader.result);
-    };
+
+    reader.onloadend = () => onImageUpload(reader.result);
     reader.readAsDataURL(file);
+
+    if (insertImage) {
+      insertImage({
+        ...this.fakeImageHandler,
+        getChosenFile: () => file,
+        isPasted: true,
+      });
+    }
   };
 
   handleUploadImage = (e) => {
@@ -89,7 +102,13 @@ export class ImageContainer extends Component {
 
   handleEnableDrag = () => this.setState({ dragEnabled: true });
   handleDisableDrag = () => this.setState({ dragEnabled: false });
-  handleInputClick = () => this.input.click();
+  handleInputClick = () => {
+    const { insertImage } = this.props;
+
+    if (insertImage) {
+      insertImage(this.fakeImageHandler);
+    }
+  };
 
   handleOnImageLoad = ({ target: { offsetHeight, offsetWidth, naturalHeight, naturalWidth } }) => {
     const { onUpdateImageDimension, imageDimensions } = this.props;
@@ -295,6 +314,7 @@ ImageContainer.propTypes = {
   imageUrl: PropTypes.string.isRequired,
   onImageUpload: PropTypes.func.isRequired,
   onUpdateImageDimension: PropTypes.func.isRequired,
+  insertImage: PropTypes.func,
 };
 
 export default withStyles(styles)(ImageContainer);
