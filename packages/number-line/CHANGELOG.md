@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.19.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@8.19.4...@pie-element/number-line@8.19.5) (2024-09-11)
+
+
+### Bug Fixes
+
+* revert unwanted changes ([17dc5b0](https://github.com/pie-framework/pie-elements/commit/17dc5b0fdaedc6f23d2a220eca357de76c53e9c7))
+* **number-line:** add sanity check for initialElements map to fix crash PD-4056 ([05bb752](https://github.com/pie-framework/pie-elements/commit/05bb752863b0d507e31c2b29b66242c6e6491030))
+
+
+
+
+
 ## [8.19.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@8.19.3...@pie-element/number-line@8.19.4) (2024-09-10)
 
 
