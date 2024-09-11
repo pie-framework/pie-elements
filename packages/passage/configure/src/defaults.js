@@ -3,8 +3,8 @@ export default {
     teacherInstructionsEnabled: true,
     titleEnabled: true,
     subtitleEnabled: true,
-    textEnabled: true,
     authorEnabled: true,
+    textEnabled: true,
     passages: [
       {
         teacherInstructions: '',
@@ -12,7 +12,7 @@ export default {
         subtitle: '',
         author: '',
         text: '',
-      }
+      },
     ],
   },
   configuration: {
@@ -42,7 +42,7 @@ export default {
         video: { disabled: true },
         image: { disabled: true },
       },
-      required: false
+      required: false,
     },
     author: {
       settings: true,
@@ -52,7 +52,7 @@ export default {
         video: { disabled: true },
         image: { disabled: true },
       },
-      required: false
+      required: false,
     },
     text: {
       settings: true,
@@ -64,7 +64,7 @@ export default {
         h3: { disabled: false },
         blockquote: { disabled: false },
       },
-      required: true
+      required: true,
     },
     teacherInstructions: {
       settings: true,
@@ -78,7 +78,7 @@ export default {
     },
     maxImageWidth: {
       teacherInstructions: 300,
-      text:300,
+      text: 300,
     },
     maxImageHeight: {
       teacherInstructions: 300,

@@ -174,6 +174,79 @@ exports[`Render Main Component Match Snapshot 1`] = `
 >
   <InputContainer
     className="mockInputContainer"
+    label="Teacher Instructions"
+  >
+    <EditableHtml
+      activePlugins={
+        Array [
+          "bold",
+          "html",
+          "italic",
+          "underline",
+          "strikethrough",
+          "bulleted-list",
+          "numbered-list",
+          "image",
+          "math",
+          "languageCharacters",
+          "blockquote",
+          "h3",
+          "table",
+          "video",
+          "audio",
+          "responseArea",
+          "redo",
+          "undo",
+          "superscript",
+          "subscript",
+        ]
+      }
+      allowValidation={false}
+      languageCharactersProps={
+        Array [
+          Object {
+            "language": "spanish",
+          },
+          Object {
+            "language": "special",
+          },
+        ]
+      }
+      markup=""
+      mathMlOptions={
+        Object {
+          "mmlEditing": false,
+          "mmlOutput": false,
+        }
+      }
+      maxImageHeight={300}
+      maxImageWidth={300}
+      nonEmpty={false}
+      onChange={[Function]}
+      onDone={[Function]}
+      pluginProps={
+        Object {
+          "audio": Object {
+            "disabled": false,
+          },
+          "blockquote": Object {
+            "disabled": true,
+          },
+          "h3": Object {
+            "disabled": true,
+          },
+          "image": Object {
+            "disabled": false,
+          },
+          "video": Object {
+            "disabled": false,
+          },
+        }
+      }
+    />
+  </InputContainer>
+  <InputContainer
+    className="mockInputContainer"
     label="Title"
   >
     <EditableHtml
@@ -380,79 +453,6 @@ exports[`Render Main Component Match Snapshot 1`] = `
           },
           "video": Object {
             "disabled": true,
-          },
-        }
-      }
-    />
-  </InputContainer>
-  <InputContainer
-    className="mockInputContainer"
-    label="Teacher Instructions"
-  >
-    <EditableHtml
-      activePlugins={
-        Array [
-          "bold",
-          "html",
-          "italic",
-          "underline",
-          "strikethrough",
-          "bulleted-list",
-          "numbered-list",
-          "image",
-          "math",
-          "languageCharacters",
-          "blockquote",
-          "h3",
-          "table",
-          "video",
-          "audio",
-          "responseArea",
-          "redo",
-          "undo",
-          "superscript",
-          "subscript",
-        ]
-      }
-      allowValidation={false}
-      languageCharactersProps={
-        Array [
-          Object {
-            "language": "spanish",
-          },
-          Object {
-            "language": "special",
-          },
-        ]
-      }
-      markup=""
-      mathMlOptions={
-        Object {
-          "mmlEditing": false,
-          "mmlOutput": false,
-        }
-      }
-      maxImageHeight={300}
-      maxImageWidth={300}
-      nonEmpty={false}
-      onChange={[Function]}
-      onDone={[Function]}
-      pluginProps={
-        Object {
-          "audio": Object {
-            "disabled": false,
-          },
-          "blockquote": Object {
-            "disabled": true,
-          },
-          "h3": Object {
-            "disabled": true,
-          },
-          "image": Object {
-            "disabled": false,
-          },
-          "video": Object {
-            "disabled": false,
           },
         }
       }
