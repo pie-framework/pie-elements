@@ -83,6 +83,110 @@ Properties of the `h3` object:
 
 Indicates if the plugin is disabled or not
 
+## `languageCharacters` (object)
+
+Properties of the `languageCharacters` object:
+
+### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+## `bold` (object)
+
+Properties of the `bold` object:
+
+### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+## `html` (object)
+
+Properties of the `html` object:
+
+### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+## `italic` (object)
+
+Properties of the `italic` object:
+
+### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+## `ol_list` (object)
+
+Properties of the `ol_list` object:
+
+### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+## `redo` (object)
+
+Properties of the `redo` object:
+
+### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+## `strikethrough` (object)
+
+Properties of the `strikethrough` object:
+
+### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+## `sub` (object)
+
+Properties of the `sub` object:
+
+### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+## `sup` (object)
+
+Properties of the `sup` object:
+
+### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+## `table` (object)
+
+Properties of the `table` object:
+
+### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+## `ul_list` (object)
+
+Properties of the `ul_list` object:
+
+### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+## `underline` (object)
+
+Properties of the `underline` object:
+
+### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+## `undo` (object)
+
+Properties of the `undo` object:
+
+### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
 # `prompt` (object)
 
 Properties of the `prompt` object:
@@ -163,6 +267,110 @@ Indicates if the plugin is disabled or not
 ### `h3` (object)
 
 Properties of the `h3` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `languageCharacters` (object)
+
+Properties of the `languageCharacters` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `bold` (object)
+
+Properties of the `bold` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `html` (object)
+
+Properties of the `html` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `italic` (object)
+
+Properties of the `italic` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `ol_list` (object)
+
+Properties of the `ol_list` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `redo` (object)
+
+Properties of the `redo` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `strikethrough` (object)
+
+Properties of the `strikethrough` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `sub` (object)
+
+Properties of the `sub` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `sup` (object)
+
+Properties of the `sup` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `table` (object)
+
+Properties of the `table` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `ul_list` (object)
+
+Properties of the `ul_list` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `underline` (object)
+
+Properties of the `underline` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `undo` (object)
+
+Properties of the `undo` object:
 
 #### `disabled` (boolean)
 
@@ -260,6 +468,110 @@ Indicates if the plugin is disabled or not
 ### `h3` (object)
 
 Properties of the `h3` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `languageCharacters` (object)
+
+Properties of the `languageCharacters` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `bold` (object)
+
+Properties of the `bold` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `html` (object)
+
+Properties of the `html` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `italic` (object)
+
+Properties of the `italic` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `ol_list` (object)
+
+Properties of the `ol_list` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `redo` (object)
+
+Properties of the `redo` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `strikethrough` (object)
+
+Properties of the `strikethrough` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `sub` (object)
+
+Properties of the `sub` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `sup` (object)
+
+Properties of the `sup` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `table` (object)
+
+Properties of the `table` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `ul_list` (object)
+
+Properties of the `ul_list` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `underline` (object)
+
+Properties of the `underline` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `undo` (object)
+
+Properties of the `undo` object:
 
 #### `disabled` (boolean)
 
@@ -442,6 +754,110 @@ Indicates if the plugin is disabled or not
 ### `h3` (object)
 
 Properties of the `h3` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `languageCharacters` (object)
+
+Properties of the `languageCharacters` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `bold` (object)
+
+Properties of the `bold` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `html` (object)
+
+Properties of the `html` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `italic` (object)
+
+Properties of the `italic` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `ol_list` (object)
+
+Properties of the `ol_list` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `redo` (object)
+
+Properties of the `redo` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `strikethrough` (object)
+
+Properties of the `strikethrough` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `sub` (object)
+
+Properties of the `sub` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `sup` (object)
+
+Properties of the `sup` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `table` (object)
+
+Properties of the `table` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `ul_list` (object)
+
+Properties of the `ul_list` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `underline` (object)
+
+Properties of the `underline` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `undo` (object)
+
+Properties of the `undo` object:
 
 #### `disabled` (boolean)
 
@@ -831,6 +1247,110 @@ Properties of the `h3` object:
 
 Indicates if the plugin is disabled or not
 
+### `languageCharacters` (object)
+
+Properties of the `languageCharacters` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `bold` (object)
+
+Properties of the `bold` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `html` (object)
+
+Properties of the `html` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `italic` (object)
+
+Properties of the `italic` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `ol_list` (object)
+
+Properties of the `ol_list` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `redo` (object)
+
+Properties of the `redo` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `strikethrough` (object)
+
+Properties of the `strikethrough` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `sub` (object)
+
+Properties of the `sub` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `sup` (object)
+
+Properties of the `sup` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `table` (object)
+
+Properties of the `table` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `ul_list` (object)
+
+Properties of the `ul_list` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `underline` (object)
+
+Properties of the `underline` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `undo` (object)
+
+Properties of the `undo` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
 ## `EditableHtmlButtonConfigure` (object)
 
 Properties of the `EditableHtmlButtonConfigure` object:
@@ -942,6 +1462,110 @@ Indicates if the plugin is disabled or not
 #### `h3` (object)
 
 Properties of the `h3` object:
+
+##### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+#### `languageCharacters` (object)
+
+Properties of the `languageCharacters` object:
+
+##### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+#### `bold` (object)
+
+Properties of the `bold` object:
+
+##### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+#### `html` (object)
+
+Properties of the `html` object:
+
+##### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+#### `italic` (object)
+
+Properties of the `italic` object:
+
+##### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+#### `ol_list` (object)
+
+Properties of the `ol_list` object:
+
+##### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+#### `redo` (object)
+
+Properties of the `redo` object:
+
+##### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+#### `strikethrough` (object)
+
+Properties of the `strikethrough` object:
+
+##### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+#### `sub` (object)
+
+Properties of the `sub` object:
+
+##### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+#### `sup` (object)
+
+Properties of the `sup` object:
+
+##### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+#### `table` (object)
+
+Properties of the `table` object:
+
+##### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+#### `ul_list` (object)
+
+Properties of the `ul_list` object:
+
+##### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+#### `underline` (object)
+
+Properties of the `underline` object:
+
+##### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+#### `undo` (object)
+
+Properties of the `undo` object:
 
 ##### `disabled` (boolean)
 

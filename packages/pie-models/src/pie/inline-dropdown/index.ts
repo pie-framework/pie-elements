@@ -225,4 +225,9 @@ export interface InlineDropdownConfigure extends PromptConfig, CommonConfigSetti
     label: string;
     options: ConfigureLanguageOptionsProp[];
   };
+
+  /**
+   * Configuration for editable-html inside inline-dropdown toolbar
+   * */
+  responseAreaInputConfiguration?: EditableHtmlConfigureProp;
 }
