@@ -1,3 +1,5 @@
+import isEmpty from 'lodash/isEmpty';
+
 import defaults from './defaults';
 
 const getContent = (html) => (html || '').replace(/(<(?!img|iframe)([^>]+)>)/gi, '');
@@ -33,7 +35,7 @@ export async function model(question, session, env) {
     teacherInstructions: normalizedQuestion.teacherInstructionsEnabled
       ? normalizeTeacherInstructions(passage.teacherInstructions, env)
       : '',
-    label: passage.titles || `Passage ${index + 1}`,
+    label: getContent(passage.title) ? passage.title : `Passage ${index + 1}`,
     title: normalizedQuestion.titleEnabled ? passage.title || '' : '',
     subtitle: normalizedQuestion.subtitleEnabled ? passage.subtitle || '' : '',
     author: normalizedQuestion.authorEnabled ? passage.author || '' : '',
@@ -48,12 +50,31 @@ export async function model(question, session, env) {
 
 export const validate = (model = {}, config = {}) => {
   const errors = {};
+  const passagesErrors = {};
 
-  ['teacherInstructions', 'title', 'subtitle', 'author', 'text'].forEach((field) => {
-    if (config[field]?.required && !getContent(model[field])) {
-      errors[field] = 'This field is required.';
+  (model.passages || []).forEach((passage, index) => {
+    // validate only the first passage
+    // TODO: remove when authoring is updated to support multiple passages
+    if (index !== 0) {
+      return;
+    }
+
+    const err = {};
+
+    ['teacherInstructions', 'title', 'subtitle', 'author', 'text'].forEach((field) => {
+      if (config[field]?.required && !getContent(passage[field])) {
+        err[field] = 'This field is required.';
+      }
+    });
+
+    if (!isEmpty(err)) {
+      passagesErrors[index] = err;
     }
   });
+
+  if (!isEmpty(passagesErrors)) {
+    errors.passages = passagesErrors;
+  }
 
   return errors;
 };

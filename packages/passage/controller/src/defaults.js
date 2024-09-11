@@ -1,9 +1,9 @@
 export default {
   teacherInstructionsEnabled: true,
-  titleEnabled: true,
-  subtitleEnabled: true,
+  titleEnabled: false,
+  subtitleEnabled: false,
+  authorEnabled: false,
   textEnabled: true,
-  authorEnabled: true,
   passages: [
     {
       teacherInstructions: '',
