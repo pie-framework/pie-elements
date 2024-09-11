@@ -29,14 +29,14 @@ describe('Render Main Component', () => {
     };
 
     wrapper = shallow(
-        <Main
-            classes={classes}
-            model={model}
-            configuration={configuration}
-            onModelChanged={onChange}
-            imageSupport={{}}
-            uploadSoundSupport={{}}
-        />,
+      <Main
+        classes={classes}
+        model={model}
+        configuration={configuration}
+        onModelChanged={onChange}
+        imageSupport={{}}
+        uploadSoundSupport={{}}
+      />,
     );
 
     instance = wrapper.instance();
@@ -50,99 +50,89 @@ describe('Render Main Component', () => {
     it('changeTeacherInstructions calls onModelChanged', () => {
       const updatedModel = {
         ...model,
-        passages: [
-          { ...model.passages[0], teacherInstructions: 'Teacher Instructions' }
-        ]
+        passages: [{ ...model.passages[0], teacherInstructions: 'Teacher Instructions' }],
       };
-      instance.handleChange('teacherInstructions','Teacher Instructions', 0);
+      instance.handleChange('teacherInstructions', 'Teacher Instructions', 0);
       expect(onChange).toBeCalledWith(updatedModel);
     });
 
     it('changeTitle calls onModelChanged', () => {
       const updatedModel = {
         ...model,
-        passages: [
-          { ...model.passages[0], title: 'New Title' }
-        ]
+        passages: [{ ...model.passages[0], title: 'New Title' }],
       };
-      instance.handleChange('title','New Title', 0);
+      instance.handleChange('title', 'New Title', 0);
       expect(onChange).toBeCalledWith(updatedModel);
     });
 
     it('changeSubtitle calls onModelChanged', () => {
       const updatedModel = {
         ...model,
-        passages: [
-          { ...model.passages[0], subtitle: 'New Subtitle' }
-        ]
+        passages: [{ ...model.passages[0], subtitle: 'New Subtitle' }],
       };
-      instance.handleChange('subtitle','New Subtitle', 0);
+      instance.handleChange('subtitle', 'New Subtitle', 0);
       expect(onChange).toBeCalledWith(updatedModel);
     });
 
     it('changeAuthor calls onModelChanged', () => {
       const updatedModel = {
         ...model,
-        passages: [
-          { ...model.passages[0], author: 'New Author' }
-        ]
+        passages: [{ ...model.passages[0], author: 'New Author' }],
       };
-      instance.handleChange('author','New Author', 0);
+      instance.handleChange('author', 'New Author', 0);
       expect(onChange).toBeCalledWith(updatedModel);
     });
 
     it('changeText calls onModelChanged', () => {
       const updatedModel = {
         ...model,
-        passages: [
-          { ...model.passages[0], text: 'New Text' }
-        ]
+        passages: [{ ...model.passages[0], text: 'New Text' }],
       };
-      instance.handleChange('text','New Text', 0);
+      instance.handleChange('text', 'New Text', 0);
       expect(onChange).toBeCalledWith(updatedModel);
     });
   });
 
   describe('UI Rendering', () => {
-    it('renders title input when enabled', () => {
-      wrapper.setProps({
-        model: { ...model, titleEnabled: true },
-        configuration: { ...configuration, title: { label: 'Title' } }
-      });
-      expect(wrapper.find(InputContainer).at(0).prop('label')).toEqual('Title');
-    });
-
-    it('renders subtitle input when enabled', () => {
-      wrapper.setProps({
-        model: { ...model, subtitleEnabled: true },
-        configuration: { ...configuration, subtitle: { label: 'Subtitle' } }
-      });
-      expect(wrapper.find(InputContainer).at(1).prop('label')).toEqual('Subtitle');
-    });
-
-    it('renders author input when enabled', () => {
-      wrapper.setProps({
-        model: { ...model, authorEnabled: true },
-        configuration: { ...configuration, author: { label: 'Author' } }
-      });
-      expect(wrapper.find(InputContainer).at(2).prop('label')).toEqual('Author');
-    });
-
     it('renders teacher instructions input when enabled', () => {
       wrapper.setProps({
         model: { ...model, teacherInstructionsEnabled: true },
         configuration: {
           ...configuration,
-          teacherInstructions: { label: 'Teacher Instructions' }
-        }
+          teacherInstructions: { label: 'Teacher Instructions' },
+        },
       });
-      expect(wrapper.find(InputContainer).at(3).prop('label')).toEqual('Teacher Instructions');
+      expect(wrapper.find(InputContainer).at(0).prop('label')).toEqual('Teacher Instructions');
+    });
+
+    it('renders title input when enabled', () => {
+      wrapper.setProps({
+        model: { ...model, titleEnabled: true },
+        configuration: { ...configuration, title: { label: 'Title' } },
+      });
+      expect(wrapper.find(InputContainer).at(1).prop('label')).toEqual('Title');
+    });
+
+    it('renders subtitle input when enabled', () => {
+      wrapper.setProps({
+        model: { ...model, subtitleEnabled: true },
+        configuration: { ...configuration, subtitle: { label: 'Subtitle' } },
+      });
+      expect(wrapper.find(InputContainer).at(2).prop('label')).toEqual('Subtitle');
+    });
+
+    it('renders author input when enabled', () => {
+      wrapper.setProps({
+        model: { ...model, authorEnabled: true },
+        configuration: { ...configuration, author: { label: 'Author' } },
+      });
+      expect(wrapper.find(InputContainer).at(3).prop('label')).toEqual('Author');
     });
 
     it('renders text input when enabled', () => {
       wrapper.setProps({
         model: { ...model, textEnabled: true },
-        configuration: { ...configuration, text: { label: 'Text' } }
+        configuration: { ...configuration, text: { label: 'Text' } },
       });
       expect(wrapper.find(InputContainer).at(4).prop('label')).toEqual('Text');
     });
@@ -153,13 +143,17 @@ describe('Render Main Component', () => {
       wrapper.setProps({
         model: {
           ...model,
-          errors: { teacherInstructions: 'Teacher Instructions is required' },
-          teacherInstructionsEnabled: true
+          errors: {
+            passages: {
+              0: { teacherInstructions: 'Teacher Instructions is required' },
+            },
+          },
+          teacherInstructionsEnabled: true,
         },
         configuration: {
           ...configuration,
-          teacherInstructions: { label: 'Teacher Instructions' }
-        }
+          teacherInstructions: { label: 'Teacher Instructions' },
+        },
       });
       expect(wrapper.find('.mockErrorText').text()).toEqual('Teacher Instructions is required');
     });
@@ -168,46 +162,62 @@ describe('Render Main Component', () => {
       wrapper.setProps({
         model: {
           ...model,
-          errors: { title: 'Title is required' },
-          titleEnabled: true
+          errors: {
+            passages: {
+              0: { title: 'Title is required' },
+            },
+          },
+          titleEnabled: true,
         },
-        configuration: { ...configuration, title: { label: 'Title' } }
+        configuration: { ...configuration, title: { label: 'Title' } },
       });
-      expect(wrapper.find('.mockErrorText').at(0).text()).toEqual('Title is required');
+      expect(wrapper.find('.mockErrorText').text()).toEqual('Title is required');
     });
 
     it('displays subtitle error when provided', () => {
       wrapper.setProps({
         model: {
           ...model,
-          errors: { subtitle: 'Subtitle is required' },
-          subtitleEnabled: true
+          errors: {
+            passages: {
+              0: { subtitle: 'Subtitle is required' },
+            },
+          },
+          subtitleEnabled: true,
         },
-        configuration: { ...configuration, subtitle: { label: 'Subtitle' } }
+        configuration: { ...configuration, subtitle: { label: 'Subtitle' } },
       });
-      expect(wrapper.find('.mockErrorText').at(0).text()).toEqual('Subtitle is required');
+      expect(wrapper.find('.mockErrorText').text()).toEqual('Subtitle is required');
     });
 
     it('displays author error when provided', () => {
       wrapper.setProps({
         model: {
           ...model,
-          errors: { author: 'Author is required' },
-          authorEnabled: true
+          errors: {
+            passages: {
+              0: { author: 'Author is required' },
+            },
+          },
+          authorEnabled: true,
         },
-        configuration: { ...configuration, author: { label: 'Author' } }
+        configuration: { ...configuration, author: { label: 'Author' } },
       });
-      expect(wrapper.find('.mockErrorText').at(0).text()).toEqual('Author is required');
+      expect(wrapper.find('.mockErrorText').text()).toEqual('Author is required');
     });
 
     it('displays text error when provided', () => {
       wrapper.setProps({
         model: {
           ...model,
-          errors: { text: 'Text is required' },
-          textEnabled: true
+          errors: {
+            passages: {
+              0: { text: 'Text is required' },
+            },
+          },
+          textEnabled: true,
         },
-        configuration: { ...configuration, text: { label: 'Text' } }
+        configuration: { ...configuration, text: { label: 'Text' } },
       });
       expect(wrapper.find('.mockErrorText').at(0).text()).toEqual('Text is required');
     });
