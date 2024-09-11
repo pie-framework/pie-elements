@@ -197,9 +197,11 @@ export class Main extends React.Component {
           onConfirm={() => {
             let newModel = this.state.correctAnswerChangeDialog.newModel;
             newModel.correctResponse = [];
-            this.setState({ fractionModelKey: this.state.fractionModelKey + 1 });
             onChange({ ...newModel });
-            this.setState({ correctAnswerChangeDialog: { open: false } });
+            this.setState({
+              fractionModelKey: this.state.fractionModelKey + 1,
+              correctAnswerChangeDialog: { open: false },
+            });
           }}
           onClose={() => {
             const oldModel = this.state.correctAnswerChangeDialog.oldModel;

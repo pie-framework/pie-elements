@@ -29,10 +29,9 @@ const miniStyles = () => ({
     marginTop: '0',
     '& [class^="MuiInputBase-root"]': {
       height: 40,
-      fontSize: '0.875rem',
+      fontSize: '14px',
     },
   },
-  
 });
 export const MiniField = withStyles(miniStyles)(NumberTextField);
 

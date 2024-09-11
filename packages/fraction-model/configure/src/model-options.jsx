@@ -110,14 +110,14 @@ const styles = () => ({
   groupInline: {
     alignItems: 'center',
     display: 'flex',
-    gap: '1.25rem',
+    gap: '20px',
   },
   group: {
-    margin: '0.75rem 0',
+    margin: '12px 0',
   },
   inputLabel: {
     display: 'block',
-    marginBottom: '0.25rem',
+    marginBottom: '4px',
   },
   labelWidth: {
     width: '35%',

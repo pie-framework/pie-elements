@@ -90,8 +90,7 @@ export class Main extends React.Component {
    * @param {boolean} show contains boolean value to show correct answer
    * */
   toggleShowCorrect = (show) => {
-    this.setState({ showCorrect: show });
-    this.setState({ fractionModelKey: this.state.fractionModelKey + 1 });
+    this.setState({ showCorrect: show, fractionModelKey: this.state.fractionModelKey + 1 });
   };
 
   /*
@@ -170,23 +169,23 @@ export class Main extends React.Component {
             onConfirm={() => {
               let newSession = this.state.answerChangeDialog.newSession;
               newSession.answers.response = [];
-              this.setState({ fractionModelKey: this.state.fractionModelKey + 1 });
               this.setState(
-                (state) => ({
+                (prevState) => ({
+                  fractionModelKey: prevState.fractionModelKey + 1,
                   session: newSession,
+                  answerChangeDialog: { open: false },
                 }),
                 this.callOnSessionChange,
               );
-              this.setState({ answerChangeDialog: { open: false } });
             }}
             onClose={() => {
               this.setState(
-                (state) => ({
-                  session: this.state.answerChangeDialog.oldSession,
+                (prevState) => ({
+                  session: prevState.answerChangeDialog.oldSession,
+                  answerChangeDialog: { open: false },
                 }),
                 this.callOnSessionChange,
               );
-              this.setState({ answerChangeDialog: { open: false } });
             }}
             onConfirmText={'OK'}
             onCloseText={'Cancel'}
@@ -200,15 +199,15 @@ export class Main extends React.Component {
 const styles = () => ({
   previewHeading: {
     fontWeight: '400',
-    fontSize: '1.5rem',
-    margin: '0.875rem 0',
+    fontSize: '24px',
+    margin: '14px 0',
   },
   modelPreview: {
-    padding: '1rem',
+    padding: '16px',
   },
   titleContainer: {
     textAlign: 'center',
-    fontSize: '1.25rem',
+    fontSize: '20px',
   },
 });
 

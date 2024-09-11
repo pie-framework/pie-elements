@@ -76,21 +76,21 @@ const styles = () => ({
   groupInline: {
     alignItems: 'center',
     display: 'flex',
-    gap: '1.25rem',
+    gap: '20px',
   },
   group: {
-    margin: '0.75rem 0',
+    margin: '12px 0',
   },
   inputLabel: {
     display: 'block',
-    marginBottom: '0.25rem',
+    marginBottom: '4px',
   },
   textField: {
     width: '120px',
     maxHeight: '40px',
     '& [class^="MuiInputBase-root"]': {
       height: 40,
-      fontSize: '0.875rem',
+      fontSize: '14px',
     },
   },
 });
