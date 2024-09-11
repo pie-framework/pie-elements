@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { color } from '@pie-lib/pie-toolbox/render-ui';
-import Draggable from '../../../draggable';
 import classNames from 'classnames';
 import injectSheet from 'react-jss';
+import { color } from '@pie-lib/pie-toolbox/render-ui';
+
+import Draggable from '../../../draggable';
 
 const duration = '150ms';
 
@@ -170,7 +171,14 @@ export class Point extends React.Component {
         bounds={scaledBounds}
       >
         <g>
-          <circle r="20" strokeWidth="3" style={{ fill: 'transparent' }} cx={xScale(position)} cy={y} />
+          <circle
+            r="20"
+            strokeWidth="3"
+            style={{ fill: 'transparent' }}
+            cx={xScale(position)}
+            cy={y}
+            stroke={selected ? color.primaryDark() : 'none'}
+          />
           <circle r="5" strokeWidth="3" className={circleClass} cx={xScale(position)} cy={y} />
         </g>
       </Draggable>

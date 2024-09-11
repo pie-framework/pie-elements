@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Draggable from '../../../draggable';
-import Point from './point';
-import { basePropTypes } from './base';
 import classNames from 'classnames';
 import injectSheet from 'react-jss';
 import isEqual from 'lodash/isEqual';
 import isNumber from 'lodash/isNumber';
 import { color } from '@pie-lib/pie-toolbox/render-ui';
+
+import Draggable from '../../../draggable';
+import Point from './point';
+import { basePropTypes } from './base';
 
 const duration = '150ms';
 
@@ -35,9 +36,6 @@ const style = {
   },
   selected: {
     '& .line-handle': {
-      stroke: color.primaryDark(),
-    },
-    '& circle': {
       stroke: color.primaryDark(),
     },
   },
