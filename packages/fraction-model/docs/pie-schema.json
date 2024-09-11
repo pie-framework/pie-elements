@@ -1,0 +1,123 @@
+{
+  "type": "object",
+  "properties": {
+    "correctResponse": {
+      "description": "Array of ResponseObject for correct response",
+      "type": "array",
+      "items": {
+        "description": "Model for the",
+        "additionalProperties": false,
+        "title": "ResponseObject",
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "Indicates the response id for bar or pie model",
+            "type": "number",
+            "title": "id"
+          },
+          "value": {
+            "description": "Indicates the selected response sector for model value",
+            "type": "number",
+            "title": "value"
+          }
+        },
+        "required": [
+          "id",
+          "value"
+        ]
+      },
+      "title": "correctResponse"
+    },
+    "title": {
+      "description": "The title prompt of the item",
+      "type": "string",
+      "title": "title"
+    },
+    "question": {
+      "description": "The question prompt or item stem",
+      "type": "string",
+      "title": "question"
+    },
+    "modelTypeSelected": {
+      "description": "Indicates if the model type should be Bar or Pie model",
+      "default": ": 'bar'",
+      "enum": [
+        "bar",
+        "pie"
+      ],
+      "type": "string",
+      "title": "modelTypeSelected"
+    },
+    "maxModelSelected": {
+      "description": "Indicates max no of models to be selected",
+      "default": ": 1",
+      "type": "number",
+      "title": "maxModelSelected"
+    },
+    "partsPerModel": {
+      "description": "Indicates parts per model to be selected",
+      "default": ": 5",
+      "type": "number",
+      "title": "partsPerModel"
+    },
+    "allowedStudentConfig": {
+      "description": "Indicates if student can configure no of models and parts per model",
+      "default": ": false",
+      "type": "boolean",
+      "title": "allowedStudentConfig"
+    },
+    "showGraphLabels": {
+      "description": "Determines if graph labels visible or not",
+      "default": ": false",
+      "type": "boolean",
+      "title": "showGraphLabels"
+    },
+    "language": {
+      "description": "Indicates the language of the component\nSupported options: en, es, en_US, en-US, es_ES, es-ES, es_MX, es-MX",
+      "type": "string",
+      "title": "language"
+    },
+    "id": {
+      "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
+      "type": "string",
+      "title": "id"
+    },
+    "element": {
+      "description": "The html Element tag name",
+      "type": "string",
+      "title": "element"
+    }
+  },
+  "required": [
+    "correctResponse",
+    "element",
+    "id",
+    "question",
+    "title"
+  ],
+  "definitions": {
+    "ResponseObject": {
+      "description": "Model for the",
+      "additionalProperties": false,
+      "title": "ResponseObject",
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "Indicates the response id for bar or pie model",
+          "type": "number",
+          "title": "id"
+        },
+        "value": {
+          "description": "Indicates the selected response sector for model value",
+          "type": "number",
+          "title": "value"
+        }
+      },
+      "required": [
+        "id",
+        "value"
+      ]
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}
