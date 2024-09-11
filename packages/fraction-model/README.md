@@ -1,5 +1,4 @@
 # fraction-model-item-type
-![demo](./demo-fm.gif)
 
 A [pie](https://www.npmjs.com/package/pie) interaction that renders an interactive fraction model item type.
 
