@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.6.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage-configure@1.6.4...@pie-element/passage-configure@1.6.5) (2024-09-11)
+
+
+### Bug Fixes
+
+* **passage:** fix validation and update controller default values PD-4068 PD-4006 ([c4976b6](https://github.com/pie-framework/pie-elements/commit/c4976b664a441b225f5ebe47273a5a309cdfa9f7))
+
+
+
+
+
 ## [1.6.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage-configure@1.6.3...@pie-element/passage-configure@1.6.4) (2024-09-10)
 
 
