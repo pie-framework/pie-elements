@@ -5,13 +5,13 @@ import { withStyles } from '@material-ui/core/styles';
 const styles = (theme) => ({
   pieChartParentDiv: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(3, 1fr)',
+    gridTemplateColumns: '200px 200px 200px',
     gap: '10px',
     padding: '5px 0',
   },
   barChartParentDiv: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(3, 1fr)',
+    gridTemplateColumns: '200px 200px 200px',
     gap: '20px',
     padding: '10px 0',
   },
