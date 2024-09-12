@@ -56,16 +56,25 @@ export class Main extends React.Component {
         open: false,
         text: '',
       },
-      fractionModelKey: 0,
     };
   }
 
+  /*
+   * Method to handle correct answer change
+   * @param {array} correctResponse - correct response
+   * */
   onCorrectAnswerChange = (correctResponse) => {
     const { model, onChange } = this.props;
     model.correctResponse = correctResponse;
     onChange({ ...model });
   };
 
+  /*
+   * Method to handle model options change
+   * @param {object} oldModel - old model
+   * @param {object} newModel - new model
+   * @param {boolean} showDiag - show dialog or not
+   * */
   onModelOptionsChange = (oldModel, newModel, showDiag) => {
     const { onChange } = this.props;
     if (showDiag && oldModel.correctResponse.length > 0) {
@@ -80,6 +89,13 @@ export class Main extends React.Component {
     } else {
       onChange({ ...newModel });
     }
+  };
+
+  /*
+   * Method to generate random key
+   * */
+  generateRandomKey = () => {
+    return Math.floor(Math.random() * 10000);
   };
 
   render() {
@@ -105,6 +121,8 @@ export class Main extends React.Component {
       ...baseInputConfiguration,
       ...props,
     });
+
+    const fractionModelChartKey = this.generateRandomKey();
 
     return (
       <layout.ConfigLayout dimensions={contentDimensions} hideSettings={true}>
@@ -177,7 +195,7 @@ export class Main extends React.Component {
 
           <div className={errors.correctResponse && classes.modelError}>
             <FractionModelChart
-              key={this.state.fractionModelKey}
+              key={fractionModelChartKey}
               value={model.correctResponse}
               modelType={model.modelTypeSelected}
               noOfModels={model.maxModelSelected}
@@ -199,7 +217,6 @@ export class Main extends React.Component {
             newModel.correctResponse = [];
             onChange({ ...newModel });
             this.setState({
-              fractionModelKey: this.state.fractionModelKey + 1,
               correctAnswerChangeDialog: { open: false },
             });
           }}
