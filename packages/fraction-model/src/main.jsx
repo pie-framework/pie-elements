@@ -26,7 +26,6 @@ export class Main extends React.Component {
         open: false,
         text: '',
       },
-      fractionModelKey: 0,
     };
     this.callOnSessionChange();
   }
@@ -90,7 +89,7 @@ export class Main extends React.Component {
    * @param {boolean} show contains boolean value to show correct answer
    * */
   toggleShowCorrect = (show) => {
-    this.setState({ showCorrect: show, fractionModelKey: this.state.fractionModelKey + 1 });
+    this.setState({ showCorrect: show });
   };
 
   /*
@@ -112,11 +111,19 @@ export class Main extends React.Component {
     );
   };
 
+  /*
+   * Method to generate random key
+   * */
+  generateRandomKey = () => {
+    return Math.floor(Math.random() * 10000);
+  };
+
   render() {
     const { model, classes } = this.props;
     const { showCorrect, session, answerChangeDialog } = this.state;
     const { correctness = {}, language } = model;
     const showCorrectAnswerToggle = correctness.correctness && correctness.correctness !== 'correct';
+    const fractionModelChartKey = this.generateRandomKey();
 
     return (
       <div>
@@ -140,7 +147,7 @@ export class Main extends React.Component {
           />
 
           <FractionModelChart
-            key={this.state.fractionModelKey}
+            key={fractionModelChartKey}
             disabled={model.view}
             value={showCorrect ? model.correctResponse : session.answers.response}
             modelType={model.modelTypeSelected}
@@ -170,8 +177,7 @@ export class Main extends React.Component {
               let newSession = this.state.answerChangeDialog.newSession;
               newSession.answers.response = [];
               this.setState(
-                (prevState) => ({
-                  fractionModelKey: prevState.fractionModelKey + 1,
+                () => ({
                   session: newSession,
                   answerChangeDialog: { open: false },
                 }),
