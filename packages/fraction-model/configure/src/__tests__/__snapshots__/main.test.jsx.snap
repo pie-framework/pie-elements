@@ -254,7 +254,7 @@ exports[`Main snapshot renders 1`] = `
     </label>
     <br />
     <div>
-      <FractionModel
+      <WithStyles(FractionModelChart)
         key="0"
         modelType="bar"
         noOfModels={1}

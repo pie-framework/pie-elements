@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import CardBar from './card-bar';
 import ModelOptions from './model-options';
-import FractionModelChart from '@pie-element/fraction-model';
+import { FractionModelChart } from '@pie-element/fraction-model';
 import Tooltip from '@material-ui/core/Tooltip';
 import Info from '@material-ui/icons/Info';
 
