@@ -48,7 +48,6 @@ describe('Main', () => {
           open: false,
           text: '',
         },
-        fractionModelKey: 0,
         session: {
           answers: {
             response: [],
@@ -79,7 +78,6 @@ describe('Main', () => {
           open: false,
           text: '',
         },
-        fractionModelKey: 0,
         session: {
           answers: {
             noOfModel: 2,
@@ -147,7 +145,6 @@ describe('Main', () => {
           open: true,
           text: 'Changing either the Number of Models or Parts per Model will remove added answer. Are you sure you want to continue?',
         },
-        fractionModelKey: 0,
       });
     });
   });

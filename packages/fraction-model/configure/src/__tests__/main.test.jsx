@@ -20,6 +20,8 @@ jest.mock('@pie-lib/pie-toolbox/editable-html', () => ({
 
 jest.mock('lodash/debounce', () => (fn) => fn);
 
+jest.spyOn(Math, 'random').mockReturnValue(0);
+
 const defaultProps = {
   model: {
     correctResponse: [],

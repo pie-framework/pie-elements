@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/fraction-model@1.1.1...@pie-element/fraction-model@1.1.2) (2024-09-12)
+
+
+### Bug Fixes
+
+* **fraction-model:** Fixed chart not rendering after saving item SC-30716 ([aa49103](https://github.com/pie-framework/pie-elements/commit/aa4910388c8e300a13c57ef2ebba8a89baf380fd))
+
+
+
+
+
 ## [1.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/fraction-model@1.1.0...@pie-element/fraction-model@1.1.1) (2024-09-12)
 
 
