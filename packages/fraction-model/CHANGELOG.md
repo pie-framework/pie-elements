@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/fraction-model@1.1.0...@pie-element/fraction-model@1.1.1) (2024-09-12)
+
+
+### Bug Fixes
+
+* **fraction-model:** update wrong import SC-30716 ([b65f1a2](https://github.com/pie-framework/pie-elements/commit/b65f1a245dcd2c82fda93e7c2c578f880244af62))
+
+
+
+
+
 # 1.1.0 (2024-09-12)
 
 
