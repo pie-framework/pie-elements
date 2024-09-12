@@ -8,6 +8,7 @@ import FractionModelChart from './fraction-model-chart';
 
 // Export FractionModelChart for use in configure
 export { FractionModelChart };
+
 export default class FractionModel extends HTMLElement {
   constructor() {
     super();
