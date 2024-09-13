@@ -43,7 +43,7 @@ const AnswerContent = withStyles((theme) => ({
   },
   answerContent: {
     color: color.text(),
-    backgroundColor: color.background(),
+    backgroundColor: color.white(),
     border: `1px solid ${theme.palette.grey[400]}`,
     cursor: 'pointer',
     width: '100%',
@@ -61,7 +61,7 @@ const AnswerContent = withStyles((theme) => ({
     opacity: 0.5,
   },
   disabled: {
-    backgroundColor: color.background(),
+    backgroundColor: color.white(),
     opacity: 0.6,
     cursor: 'not-allowed',
   },
