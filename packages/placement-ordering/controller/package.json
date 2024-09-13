@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "module": "src/index.js",
   "dependencies": {
-    "@pie-lib/pie-toolbox": "next",
+    "@pie-lib/pie-toolbox": "1.31.5-next.4",
     "debug": "^3.1.0",
     "js-combinatorics": "^0.5.4",
     "lodash": "^4.17.19"
