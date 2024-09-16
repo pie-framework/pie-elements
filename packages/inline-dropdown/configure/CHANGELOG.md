@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.22.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-configure@5.22.2...@pie-element/inline-dropdown-configure@5.22.3) (2024-09-16)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4061, PD-4021 ([ef8e3d0](https://github.com/pie-framework/pie-elements/commit/ef8e3d0d5fca4ca57c89c7c8ef8e74ec5600551e))
+
+
+
+
+
 ## [5.22.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-configure@5.22.1...@pie-element/inline-dropdown-configure@5.22.2) (2024-09-16)
 
 

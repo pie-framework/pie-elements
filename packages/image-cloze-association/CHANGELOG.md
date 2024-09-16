@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.25.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@5.24.5...@pie-element/image-cloze-association@5.25.0) (2024-09-16)
+
+
+### Bug Fixes
+
+* more refactoring, removed unwanted changes ([37ee70b](https://github.com/pie-framework/pie-elements/commit/37ee70b512dc347d60d60da827ea257030930988))
+* remove log ([5c65a7d](https://github.com/pie-framework/pie-elements/commit/5c65a7d02fd67ad2735c5a2a0419cd17949755d4))
+* tests ([54eaf43](https://github.com/pie-framework/pie-elements/commit/54eaf4333b6cec576e68e43d2b82559bafa27719))
+* update pie-lib/pie-toolbox PD-4061, PD-4021 ([ef8e3d0](https://github.com/pie-framework/pie-elements/commit/ef8e3d0d5fca4ca57c89c7c8ef8e74ec5600551e))
+
+
+### Features
+
+* **image-cloze-association:** exposed new responseContainerPadding and imageDropTargetPadding props in model PD-4003 ([e328870](https://github.com/pie-framework/pie-elements/commit/e328870daac795e197cc0ac491d153f7810da9b0))
+
+
+
+
+
 ## [5.24.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@5.24.4...@pie-element/image-cloze-association@5.24.5) (2024-09-16)
 
 
