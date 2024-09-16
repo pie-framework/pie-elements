@@ -33,7 +33,7 @@
     "lodash": "^4.17.15",
     "ts-node": "^7.0.1",
     "typescript": "^3.2.2",
-    "typescript-json-schema": "^0.34.0",
+    "typescript-json-schema": "^0.65.1",
     "wetzel": "0.0.5"
   }
 }
