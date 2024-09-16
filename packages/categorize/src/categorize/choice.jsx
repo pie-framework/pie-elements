@@ -81,6 +81,9 @@ const styles = (theme) => ({
     color: color.text(),
     backgroundColor: color.background(),
     width: '100%',
+    // Added for touch devices, for image content.
+    // This will prevent the context menu from appearing and not allowing other interactions with the image.
+    pointerEvents: 'none',
   },
 });
 
