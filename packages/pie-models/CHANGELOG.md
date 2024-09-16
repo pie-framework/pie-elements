@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.36.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.36.0...@pie-element/pie-models@13.36.1) (2024-09-16)
+
+
+### Bug Fixes
+
+* **inline-dropdown:** delete unecessary logic to hide characters toolbar PD-4066 ([0fdfd87](https://github.com/pie-framework/pie-elements/commit/0fdfd87289aab33cb5beb6223b646b82c6b3da49))
+
+
+
+
+
 # [13.36.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.35.0...@pie-element/pie-models@13.36.0) (2024-09-12)
 
 

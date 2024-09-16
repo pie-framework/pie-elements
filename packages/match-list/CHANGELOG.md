@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.21.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@2.20.4...@pie-element/match-list@2.21.0) (2024-09-16)
+
+
+### Bug Fixes
+
+* experiment with mra ([d62f2b4](https://github.com/pie-framework/pie-elements/commit/d62f2b4526eeda1f90d3660d97bf278ac1ae72da))
+* experiment with mra ([d9487a5](https://github.com/pie-framework/pie-elements/commit/d9487a5394c9b71bb7d7d69a836ed629ae13f7b1))
+* experiment with mra ([a2e933c](https://github.com/pie-framework/pie-elements/commit/a2e933cd27bb052046e245672d3e01cb5ba1b518))
+* update pie-lib/pie-toolbox PD-4027, PD-4042,PD-4039, PD-4073 ([68306be](https://github.com/pie-framework/pie-elements/commit/68306be02254a6019916637fd9b75427cae1c0ed))
+
+
+### Features
+
+* **categorize,match-list:** white background for answer choices PD-4042 ([fd2ed70](https://github.com/pie-framework/pie-elements/commit/fd2ed7057f9e1eeb5b6d37fe504e3cdbbc102eb8))
+
+
+
+
+
 ## [2.20.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@2.20.3...@pie-element/match-list@2.20.4) (2024-09-10)
 
 
