@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.25.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@6.25.5...@pie-element/hotspot-configure@6.25.6) (2024-09-16)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4061, PD-4021 ([ef8e3d0](https://github.com/pie-framework/pie-elements/commit/ef8e3d0d5fca4ca57c89c7c8ef8e74ec5600551e))
+
+
+
+
+
 ## [6.25.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@6.25.4...@pie-element/hotspot-configure@6.25.5) (2024-09-16)
 
 

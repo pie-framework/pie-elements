@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.21.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-controller@5.21.5...@pie-element/extended-text-entry-controller@5.21.6) (2024-09-16)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4061, PD-4021 ([ef8e3d0](https://github.com/pie-framework/pie-elements/commit/ef8e3d0d5fca4ca57c89c7c8ef8e74ec5600551e))
+
+
+
+
+
 ## [5.21.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-controller@5.21.4...@pie-element/extended-text-entry-controller@5.21.5) (2024-09-16)
 
 

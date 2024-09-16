@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.37.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.36.1...@pie-element/pie-models@13.37.0) (2024-09-16)
+
+
+### Features
+
+* **image-cloze-association:** exposed new responseContainerPadding and imageDropTargetPadding props in model PD-4003 ([e328870](https://github.com/pie-framework/pie-elements/commit/e328870daac795e197cc0ac491d153f7810da9b0))
+
+
+
+
+
 ## [13.36.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.36.0...@pie-element/pie-models@13.36.1) (2024-09-16)
 
 

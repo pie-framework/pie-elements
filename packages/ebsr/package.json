@@ -1,13 +1,13 @@
 {
   "name": "@pie-element/ebsr",
-  "version": "9.21.5",
+  "version": "9.21.6",
   "description": "",
   "repository": "pie-framework/pie-elements",
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
-    "@pie-element/multiple-choice": "^8.24.5",
+    "@pie-element/multiple-choice": "^8.24.6",
     "@pie-framework/pie-player-events": "^0.1.0",
     "@pie-lib/pie-toolbox": "1.32.1",
     "classnames": "^2.2.5",
