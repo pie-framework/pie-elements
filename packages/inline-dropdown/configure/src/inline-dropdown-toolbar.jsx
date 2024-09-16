@@ -308,8 +308,6 @@ export class RespAreaToolbar extends React.Component {
       return null;
     }
 
-    const responseAreaPluginProps = getPluginProps(responseAreaInputConfiguration?.inputConfiguration, baseInputConfiguration);
-
     return (
       <div
         className={classes.responseContainer}
@@ -337,7 +335,7 @@ export class RespAreaToolbar extends React.Component {
             }}
             markup={respAreaMarkup}
             onKeyDown={this.onKeyDown}
-            languageCharactersProps={responseAreaPluginProps.languageCharacters?.disabled ? [] : [{ language: 'spanish' }, { language: 'special' }]}
+            languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
             onChange={(respAreaMarkup) => {
               if (this.preventDone) {
                 return;
@@ -360,7 +358,7 @@ export class RespAreaToolbar extends React.Component {
               this.onBlur(e);
             }}
             placeholder="Add Choice"
-            pluginProps={responseAreaPluginProps}
+            pluginProps={getPluginProps(responseAreaInputConfiguration?.inputConfiguration, baseInputConfiguration)}
             spellCheck={spellCheck}
             uploadSoundSupport={uploadSoundSupport}
             mathMlOptions={mathMlOptions}
