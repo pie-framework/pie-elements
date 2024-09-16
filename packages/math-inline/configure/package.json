@@ -1,7 +1,7 @@
 {
   "name": "@pie-element/math-inline-configure",
   "private": true,
-  "version": "7.21.4",
+  "version": "7.21.5",
   "description": "",
   "main": "lib/index.js",
   "module": "src/index.js",

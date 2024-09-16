@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.22.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-configure@5.22.1...@pie-element/inline-dropdown-configure@5.22.2) (2024-09-16)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4027, PD-4042,PD-4039, PD-4073 ([68306be](https://github.com/pie-framework/pie-elements/commit/68306be02254a6019916637fd9b75427cae1c0ed))
+* **inline-dropdown:** delete unecessary logic to hide characters toolbar PD-4066 ([0fdfd87](https://github.com/pie-framework/pie-elements/commit/0fdfd87289aab33cb5beb6223b646b82c6b3da49))
+* experiment with mra ([d62f2b4](https://github.com/pie-framework/pie-elements/commit/d62f2b4526eeda1f90d3660d97bf278ac1ae72da))
+* experiment with mra ([d9487a5](https://github.com/pie-framework/pie-elements/commit/d9487a5394c9b71bb7d7d69a836ed629ae13f7b1))
+* experiment with mra ([a2e933c](https://github.com/pie-framework/pie-elements/commit/a2e933cd27bb052046e245672d3e01cb5ba1b518))
+
+
+
+
+
 ## [5.22.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-configure@5.22.0...@pie-element/inline-dropdown-configure@5.22.1) (2024-09-10)
 
 
