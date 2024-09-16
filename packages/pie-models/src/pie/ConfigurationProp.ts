@@ -83,7 +83,7 @@ export interface EditableHtmlConfigureProp {
   /**
    * Indicates if the language characters plugins are disabled or not (overwrites configuration.language)
    */
-  languageCharacters?: EditableHtmlButtonConfigure;
+  characters?: EditableHtmlButtonConfigure;
 
   /**
    * Indicates if the bold plugin is disabled or not
