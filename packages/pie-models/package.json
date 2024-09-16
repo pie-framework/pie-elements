@@ -25,7 +25,7 @@
     "@types/lodash": "^4.14.119",
     "@types/node": "^10.12.18",
     "change-case": "^3.1.0",
-    "command-line-args": "^5.0.2",
+    "command-line-args": "^6.0.0",
     "docson": "^2.1.0",
     "fs-extra": "^7.0.1",
     "json-schema-deref-sync": "^0.7.0",
