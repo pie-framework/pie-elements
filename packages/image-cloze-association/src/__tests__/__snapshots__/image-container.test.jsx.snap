@@ -24,7 +24,6 @@ exports[`Image Container snapshots answers renders 1`] = `
     }
   }
   draggingElement={Object {}}
-  duplicateResponses={false}
   image={Object {}}
   onAnswerSelect={[Function]}
   onDragAnswerBegin={[Function]}
@@ -43,7 +42,6 @@ exports[`Image Container snapshots canDrag renders 1`] = `
     }
   }
   draggingElement={Object {}}
-  duplicateResponses={false}
   image={Object {}}
   onAnswerSelect={[Function]}
   onDragAnswerBegin={[Function]}
@@ -68,7 +66,6 @@ exports[`Image Container snapshots draggingElement renders 1`] = `
       "value": "2",
     }
   }
-  duplicateResponses={false}
   image={Object {}}
   onAnswerSelect={[Function]}
   onDragAnswerBegin={[Function]}
@@ -87,7 +84,6 @@ exports[`Image Container snapshots image renders 1`] = `
     }
   }
   draggingElement={Object {}}
-  duplicateResponses={false}
   height={0}
   image={Object {}}
   onAnswerSelect={[Function]}
@@ -126,7 +122,6 @@ exports[`Image Container snapshots responseContainers renders 1`] = `
     }
   }
   draggingElement={Object {}}
-  duplicateResponses={false}
   image={Object {}}
   onAnswerSelect={[Function]}
   onDragAnswerBegin={[Function]}
@@ -145,7 +140,6 @@ exports[`Image Container snapshots showDashedBorder renders 1`] = `
     }
   }
   draggingElement={Object {}}
-  duplicateResponses={false}
   image={Object {}}
   onAnswerSelect={[Function]}
   onDragAnswerBegin={[Function]}

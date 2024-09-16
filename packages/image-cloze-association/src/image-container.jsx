@@ -11,7 +11,6 @@ class ImageContainer extends Component {
       canDrag,
       classes,
       draggingElement,
-      duplicateResponses,
       image: { height, src, width } = {},
       onAnswerSelect,
       onDragAnswerBegin,
@@ -20,11 +19,13 @@ class ImageContainer extends Component {
       showDashedBorder,
       responseAreaFill,
       answerChoiceTransparency,
+      responseContainerPadding,
+      imageDropTargetPadding,
     } = this.props;
 
     return (
       <div className={classes.base}>
-        <img src={src} height={height} width={width} />
+        <img src={src} height={height} width={width} alt={'Image not found'} />
 
         {(responseContainers || []).map((r, i) => {
           const rHeight = (r.height.replace('%', '') / 100) * height;
@@ -43,7 +44,6 @@ class ImageContainer extends Component {
                 left: rLeft,
                 top: rTop,
               }}
-              duplicateResponses={duplicateResponses}
               key={r.id + i}
               draggingElement={draggingElement}
               onDrop={(item) => onAnswerSelect(item, r.index)}
@@ -52,6 +52,8 @@ class ImageContainer extends Component {
               showDashedBorder={showDashedBorder}
               responseAreaFill={responseAreaFill}
               answerChoiceTransparency={answerChoiceTransparency}
+              responseContainerPadding={responseContainerPadding}
+              imageDropTargetPadding={imageDropTargetPadding}
             />
           );
         })}
@@ -65,7 +67,6 @@ ImageContainer.propTypes = {
   canDrag: PropTypes.bool.isRequired,
   classes: PropTypes.object,
   draggingElement: PropTypes.shape({}).isRequired,
-  duplicateResponses: PropTypes.bool,
   image: PropTypes.object.isRequired,
   onAnswerSelect: PropTypes.func.isRequired,
   onDragAnswerBegin: PropTypes.func.isRequired,
@@ -74,11 +75,12 @@ ImageContainer.propTypes = {
   showDashedBorder: PropTypes.bool,
   answerChoiceTransparency: PropTypes.bool,
   responseAreaFill: PropTypes.string,
+  responseContainerPadding: PropTypes.string,
+  imageDropTargetPadding: PropTypes.string,
 };
 
 ImageContainer.defaultProps = {
   classes: {},
-  duplicateResponses: false,
 };
 
 const styles = (theme) => ({

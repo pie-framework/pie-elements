@@ -41,6 +41,7 @@ PossibleResponses.propTypes = {
   onDragBegin: PropTypes.func.isRequired,
   onDragEnd: PropTypes.func.isRequired,
   answerChoiceTransparency: PropTypes.bool,
+  customStyle: PropTypes.object,
 };
 
 PossibleResponses.defaultProps = {

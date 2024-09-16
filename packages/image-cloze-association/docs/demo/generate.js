@@ -69,4 +69,6 @@ exports.model = (id, element) => ({
   partialScoring: false,
   shuffle: true,
   rubricEnabled: false,
+  imageDropTargetPadding: '2px',
+  responseContainerPadding: '8px',
 });

@@ -180,6 +180,14 @@ This element must be one of the following enum values:
 
 Indicates the background color of the response area
 
+# `responseContainerPadding` (string)
+
+Indicates padding of the response container
+
+# `imageDropTargetPadding` (string)
+
+Indicates the padding of the image drop target
+
 # `id` (string, required)
 
 Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.
