@@ -8,9 +8,11 @@ export default {
   mode: 'gather',
   prompt: '',
   promptEnabled: true,
+  rationale: '',
   rationaleEnabled: true,
   shuffle: true,
   studentInstructionsEnabled: true,
+  teacherInstructions: '',
   teacherInstructionsEnabled: true,
   toolbarEditorPosition: 'bottom',
 };
