@@ -33,6 +33,16 @@ export default {
         image: { disabled: false },
       },
     },
+    responseAreaInputConfiguration: {
+      inputConfiguration: {
+        audio: { disabled: true },
+        video: { disabled: true },
+        image: { disabled: true },
+        table: { disabled: true },
+        ul_list: { disabled: true },
+        ol_list: { disabled: true },
+      },
+    },
     settingsPanelDisabled: false,
     spellCheck: {
       label: 'Spellcheck',

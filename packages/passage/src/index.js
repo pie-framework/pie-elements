@@ -39,20 +39,16 @@ export default class PiePassage extends HTMLElement {
   }
 
   _render() {
-    const { passages = [], showTeacherInstructions = false } = this._model;
+    const { passages = [] } = this._model;
 
     if (this._model.passages.length > 0) {
       const passagesTabs = passages.map((passage, index) => ({
         id: index,
-        title: passage.title,
-        subtitle: passage.subtitle,
-        author: passage.author,
-        text: passage.text,
-        teacherInstructions: passage.teacherInstructions || '',
+        ...passage,
       }));
+
       const elem = React.createElement(StimulusTabs, {
         tabs: passagesTabs,
-        showTeacherInstructions,
       });
 
       ReactDOM.render(elem, this, () => renderMath(this));

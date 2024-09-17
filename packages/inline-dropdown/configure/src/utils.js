@@ -15,3 +15,8 @@ export const generateValidationMessage = (config) => {
 
   return message;
 };
+
+export const getPluginProps = (props = {}, baseInputConfiguration = {}) => ({
+  ...baseInputConfiguration,
+  ...props,
+});

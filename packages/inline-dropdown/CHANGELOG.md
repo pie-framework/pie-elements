@@ -3,6 +3,109 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.23.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@5.23.2...@pie-element/inline-dropdown@5.23.3) (2024-09-16)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4061, PD-4021 ([ef8e3d0](https://github.com/pie-framework/pie-elements/commit/ef8e3d0d5fca4ca57c89c7c8ef8e74ec5600551e))
+
+
+
+
+
+## [5.23.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@5.23.1...@pie-element/inline-dropdown@5.23.2) (2024-09-16)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4027, PD-4042,PD-4039, PD-4073 ([68306be](https://github.com/pie-framework/pie-elements/commit/68306be02254a6019916637fd9b75427cae1c0ed))
+* **inline-dropdown:** delete unecessary logic to hide characters toolbar PD-4066 ([0fdfd87](https://github.com/pie-framework/pie-elements/commit/0fdfd87289aab33cb5beb6223b646b82c6b3da49))
+* experiment with mra ([d62f2b4](https://github.com/pie-framework/pie-elements/commit/d62f2b4526eeda1f90d3660d97bf278ac1ae72da))
+* experiment with mra ([d9487a5](https://github.com/pie-framework/pie-elements/commit/d9487a5394c9b71bb7d7d69a836ed629ae13f7b1))
+* experiment with mra ([a2e933c](https://github.com/pie-framework/pie-elements/commit/a2e933cd27bb052046e245672d3e01cb5ba1b518))
+
+
+
+
+
+## [5.23.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@5.23.0...@pie-element/inline-dropdown@5.23.1) (2024-09-10)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3652, PD-2451 ([8a00529](https://github.com/pie-framework/pie-elements/commit/8a00529f67a8e27e78e4c16de5d04e11ec8c4d16))
+
+
+
+
+
+# [5.23.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@5.22.2...@pie-element/inline-dropdown@5.23.0) (2024-09-10)
+
+
+### Bug Fixes
+
+* **inline-dropdown:** add all available fields in docs PD-4065 ([2c4c243](https://github.com/pie-framework/pie-elements/commit/2c4c24344d11ab66e0a67b5ccc630fa43dafc200))
+* **inline-dropdown:** add configs for toolbar inside inline-dropdown PD-4065 ([ce63489](https://github.com/pie-framework/pie-elements/commit/ce63489a08e090599c7190885a756206ab3c1d95))
+* **inline-dropdown:** fix PR comments PD-4065 ([e02536e](https://github.com/pie-framework/pie-elements/commit/e02536e25330a483f4eb1f6638bf2d6cd56e4a74))
+* **inline-dropdown:** fix PR comments PD-4065 ([0af0e51](https://github.com/pie-framework/pie-elements/commit/0af0e514ae362453d04eaa0f61a1ccb2b6e13876))
+* **inline-dropdown:** updated snapshot PD-4065 ([6c87af5](https://github.com/pie-framework/pie-elements/commit/6c87af506e3ba798d56914f747a48e2cbe6f3762))
+* **inline-dropdown:** updated snapshot PD-4065 ([500e113](https://github.com/pie-framework/pie-elements/commit/500e1133237e81d92ab700d08ff6d4cc2c8c55e3))
+* update pie-lib/pie-toolbox: ability to disable table and lists PD-4065 ([49f1ce4](https://github.com/pie-framework/pie-elements/commit/49f1ce4000bc45d0eb8032f6538c0c780940a503))
+
+
+### Features
+
+* use inputConfiguration.languageCharacters to determine if languageCharactersProps buttons should show up in toolbar PD-4065 ([3e32c58](https://github.com/pie-framework/pie-elements/commit/3e32c58261951d5d150bb93acdcca66eab0308f7))
+
+
+
+
+
+## [5.22.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@5.22.1...@pie-element/inline-dropdown@5.22.2) (2024-08-29)
+
+
+### Bug Fixes
+
+* trigger build PD-4052 ([24783c4](https://github.com/pie-framework/pie-elements/commit/24783c43a97db9c9a2b665f2c784ccd4ce8511ca))
+
+
+
+
+
+## [5.22.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@5.22.0...@pie-element/inline-dropdown@5.22.1) (2024-08-29)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4052 ([ebbbe2d](https://github.com/pie-framework/pie-elements/commit/ebbbe2dc584829abe8f1b4d6e8a9031e27f30dce))
+
+
+
+
+
+# [5.22.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@5.21.3...@pie-element/inline-dropdown@5.22.0) (2024-08-27)
+
+
+### Features
+
+* update pie-lib PD-4026, PD-3990 ([395d7d7](https://github.com/pie-framework/pie-elements/commit/395d7d779caae57a810cc19c1d676319d1c19ded))
+
+
+
+
+
+## [5.21.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@5.21.2...@pie-element/inline-dropdown@5.21.3) (2024-08-22)
+
+
+### Bug Fixes
+
+* update pie-lib PD-4021 ([07d6e85](https://github.com/pie-framework/pie-elements/commit/07d6e8560ddfe25f95dfbafc2d3155b93eb85404))
+
+
+
+
+
 ## [5.21.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@5.21.1...@pie-element/inline-dropdown@5.21.2) (2024-08-19)
 
 

@@ -3,6 +3,132 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.27.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@7.27.6...@pie-element/math-inline@7.27.7) (2024-09-16)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4061, PD-4021 ([ef8e3d0](https://github.com/pie-framework/pie-elements/commit/ef8e3d0d5fca4ca57c89c7c8ef8e74ec5600551e))
+
+
+
+
+
+## [7.27.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@7.27.5...@pie-element/math-inline@7.27.6) (2024-09-16)
+
+
+### Bug Fixes
+
+* experiment with mra ([d62f2b4](https://github.com/pie-framework/pie-elements/commit/d62f2b4526eeda1f90d3660d97bf278ac1ae72da))
+* experiment with mra ([d9487a5](https://github.com/pie-framework/pie-elements/commit/d9487a5394c9b71bb7d7d69a836ed629ae13f7b1))
+* experiment with mra ([a2e933c](https://github.com/pie-framework/pie-elements/commit/a2e933cd27bb052046e245672d3e01cb5ba1b518))
+* update pie-lib/pie-toolbox PD-4027, PD-4042,PD-4039, PD-4073 ([68306be](https://github.com/pie-framework/pie-elements/commit/68306be02254a6019916637fd9b75427cae1c0ed))
+
+
+
+
+
+## [7.27.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@7.27.4...@pie-element/math-inline@7.27.5) (2024-09-10)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3652, PD-2451 ([8a00529](https://github.com/pie-framework/pie-elements/commit/8a00529f67a8e27e78e4c16de5d04e11ec8c4d16))
+
+
+
+
+
+## [7.27.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@7.27.3...@pie-element/math-inline@7.27.4) (2024-09-10)
+
+
+### Bug Fixes
+
+* **inline-dropdown:** add all available fields in docs PD-4065 ([2c4c243](https://github.com/pie-framework/pie-elements/commit/2c4c24344d11ab66e0a67b5ccc630fa43dafc200))
+* update pie-lib/pie-toolbox: ability to disable table and lists PD-4065 ([49f1ce4](https://github.com/pie-framework/pie-elements/commit/49f1ce4000bc45d0eb8032f6538c0c780940a503))
+
+
+
+
+
+## [7.27.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@7.27.2...@pie-element/math-inline@7.27.3) (2024-08-29)
+
+
+### Bug Fixes
+
+* trigger build PD-4052 ([24783c4](https://github.com/pie-framework/pie-elements/commit/24783c43a97db9c9a2b665f2c784ccd4ce8511ca))
+
+
+
+
+
+## [7.27.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@7.27.1...@pie-element/math-inline@7.27.2) (2024-08-29)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4052 ([ebbbe2d](https://github.com/pie-framework/pie-elements/commit/ebbbe2dc584829abe8f1b4d6e8a9031e27f30dce))
+
+
+
+
+
+## [7.27.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@7.27.0...@pie-element/math-inline@7.27.1) (2024-08-28)
+
+
+### Bug Fixes
+
+* **math-inline:** enhance keypad visibility by setting Popper boundariesElement to body, adjusting placement to bottom-start, and enabling flip PD-2452 ([4d4a389](https://github.com/pie-framework/pie-elements/commit/4d4a389d084614216268a7ca73535a3c54b96acb))
+
+
+
+
+
+# [7.27.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@7.26.0...@pie-element/math-inline@7.27.0) (2024-08-27)
+
+
+### Features
+
+* **math-inline:** Adjust tooltip positioning with PopperProps for enhanced accessibility, Ensure logical DOM placement and improve screen reader support PD-2452 ([76421f3](https://github.com/pie-framework/pie-elements/commit/76421f34c2637c848954e1121c1eca9b8251b459))
+* **math-inline:** Enhance keyboard navigation, focus and aria attributes for math editors PD-2453 ([9fff559](https://github.com/pie-framework/pie-elements/commit/9fff559ef4e138cea76972bd20f3e245b30c1c03))
+
+
+
+
+
+# [7.26.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@7.25.4...@pie-element/math-inline@7.26.0) (2024-08-27)
+
+
+### Features
+
+* update pie-lib PD-4026, PD-3990 ([395d7d7](https://github.com/pie-framework/pie-elements/commit/395d7d779caae57a810cc19c1d676319d1c19ded))
+
+
+
+
+
+## [7.25.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@7.25.3...@pie-element/math-inline@7.25.4) (2024-08-27)
+
+
+### Bug Fixes
+
+* **math-inline:** tweak flex style in order to fix PD-4024 ([debb271](https://github.com/pie-framework/pie-elements/commit/debb2711d99cdb81fb38cf196e2acc19a27bcf2c))
+
+
+
+
+
+## [7.25.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@7.25.2...@pie-element/math-inline@7.25.3) (2024-08-22)
+
+
+### Bug Fixes
+
+* update pie-lib PD-4021 ([07d6e85](https://github.com/pie-framework/pie-elements/commit/07d6e8560ddfe25f95dfbafc2d3155b93eb85404))
+
+
+
+
+
 ## [7.25.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@7.25.1...@pie-element/math-inline@7.25.2) (2024-08-19)
 
 

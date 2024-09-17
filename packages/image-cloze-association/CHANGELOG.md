@@ -3,6 +3,106 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.25.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@5.24.5...@pie-element/image-cloze-association@5.25.0) (2024-09-16)
+
+
+### Bug Fixes
+
+* more refactoring, removed unwanted changes ([37ee70b](https://github.com/pie-framework/pie-elements/commit/37ee70b512dc347d60d60da827ea257030930988))
+* remove log ([5c65a7d](https://github.com/pie-framework/pie-elements/commit/5c65a7d02fd67ad2735c5a2a0419cd17949755d4))
+* tests ([54eaf43](https://github.com/pie-framework/pie-elements/commit/54eaf4333b6cec576e68e43d2b82559bafa27719))
+* update pie-lib/pie-toolbox PD-4061, PD-4021 ([ef8e3d0](https://github.com/pie-framework/pie-elements/commit/ef8e3d0d5fca4ca57c89c7c8ef8e74ec5600551e))
+
+
+### Features
+
+* **image-cloze-association:** exposed new responseContainerPadding and imageDropTargetPadding props in model PD-4003 ([e328870](https://github.com/pie-framework/pie-elements/commit/e328870daac795e197cc0ac491d153f7810da9b0))
+
+
+
+
+
+## [5.24.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@5.24.4...@pie-element/image-cloze-association@5.24.5) (2024-09-16)
+
+
+### Bug Fixes
+
+* experiment with mra ([d62f2b4](https://github.com/pie-framework/pie-elements/commit/d62f2b4526eeda1f90d3660d97bf278ac1ae72da))
+* experiment with mra ([d9487a5](https://github.com/pie-framework/pie-elements/commit/d9487a5394c9b71bb7d7d69a836ed629ae13f7b1))
+* experiment with mra ([a2e933c](https://github.com/pie-framework/pie-elements/commit/a2e933cd27bb052046e245672d3e01cb5ba1b518))
+* update pie-lib/pie-toolbox PD-4027, PD-4042,PD-4039, PD-4073 ([68306be](https://github.com/pie-framework/pie-elements/commit/68306be02254a6019916637fd9b75427cae1c0ed))
+
+
+
+
+
+## [5.24.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@5.24.3...@pie-element/image-cloze-association@5.24.4) (2024-09-10)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3652, PD-2451 ([8a00529](https://github.com/pie-framework/pie-elements/commit/8a00529f67a8e27e78e4c16de5d04e11ec8c4d16))
+
+
+
+
+
+## [5.24.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@5.24.2...@pie-element/image-cloze-association@5.24.3) (2024-09-10)
+
+
+### Bug Fixes
+
+* **inline-dropdown:** add all available fields in docs PD-4065 ([2c4c243](https://github.com/pie-framework/pie-elements/commit/2c4c24344d11ab66e0a67b5ccc630fa43dafc200))
+* update pie-lib/pie-toolbox: ability to disable table and lists PD-4065 ([49f1ce4](https://github.com/pie-framework/pie-elements/commit/49f1ce4000bc45d0eb8032f6538c0c780940a503))
+
+
+
+
+
+## [5.24.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@5.24.1...@pie-element/image-cloze-association@5.24.2) (2024-08-29)
+
+
+### Bug Fixes
+
+* trigger build PD-4052 ([24783c4](https://github.com/pie-framework/pie-elements/commit/24783c43a97db9c9a2b665f2c784ccd4ce8511ca))
+
+
+
+
+
+## [5.24.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@5.24.0...@pie-element/image-cloze-association@5.24.1) (2024-08-29)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4052 ([ebbbe2d](https://github.com/pie-framework/pie-elements/commit/ebbbe2dc584829abe8f1b4d6e8a9031e27f30dce))
+
+
+
+
+
+# [5.24.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@5.23.3...@pie-element/image-cloze-association@5.24.0) (2024-08-27)
+
+
+### Features
+
+* update pie-lib PD-4026, PD-3990 ([395d7d7](https://github.com/pie-framework/pie-elements/commit/395d7d779caae57a810cc19c1d676319d1c19ded))
+
+
+
+
+
+## [5.23.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@5.23.2...@pie-element/image-cloze-association@5.23.3) (2024-08-22)
+
+
+### Bug Fixes
+
+* update pie-lib PD-4021 ([07d6e85](https://github.com/pie-framework/pie-elements/commit/07d6e8560ddfe25f95dfbafc2d3155b93eb85404))
+
+
+
+
+
 ## [5.23.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@5.23.1...@pie-element/image-cloze-association@5.23.2) (2024-08-19)
 
 

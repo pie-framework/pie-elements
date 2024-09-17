@@ -226,6 +226,16 @@
       "type": "string",
       "title": "responseAreaFill"
     },
+    "responseContainerPadding": {
+      "description": "Indicates padding of the response container",
+      "type": "string",
+      "title": "responseContainerPadding"
+    },
+    "imageDropTargetPadding": {
+      "description": "Indicates the padding of the image drop target",
+      "type": "string",
+      "title": "imageDropTargetPadding"
+    },
     "id": {
       "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
       "type": "string",
@@ -341,6 +351,149 @@
           }
         },
         "h3": {
+          "title": "EditableHtmlButtonConfigure",
+          "type": "object",
+          "properties": {
+            "disabled": {
+              "description": "Indicates if the plugin is disabled or not",
+              "type": "boolean",
+              "title": "disabled"
+            }
+          }
+        },
+        "languageCharacters": {
+          "title": "EditableHtmlButtonConfigure",
+          "type": "object",
+          "properties": {
+            "disabled": {
+              "description": "Indicates if the plugin is disabled or not",
+              "type": "boolean",
+              "title": "disabled"
+            }
+          }
+        },
+        "bold": {
+          "title": "EditableHtmlButtonConfigure",
+          "type": "object",
+          "properties": {
+            "disabled": {
+              "description": "Indicates if the plugin is disabled or not",
+              "type": "boolean",
+              "title": "disabled"
+            }
+          }
+        },
+        "html": {
+          "title": "EditableHtmlButtonConfigure",
+          "type": "object",
+          "properties": {
+            "disabled": {
+              "description": "Indicates if the plugin is disabled or not",
+              "type": "boolean",
+              "title": "disabled"
+            }
+          }
+        },
+        "italic": {
+          "title": "EditableHtmlButtonConfigure",
+          "type": "object",
+          "properties": {
+            "disabled": {
+              "description": "Indicates if the plugin is disabled or not",
+              "type": "boolean",
+              "title": "disabled"
+            }
+          }
+        },
+        "ol_list": {
+          "title": "EditableHtmlButtonConfigure",
+          "type": "object",
+          "properties": {
+            "disabled": {
+              "description": "Indicates if the plugin is disabled or not",
+              "type": "boolean",
+              "title": "disabled"
+            }
+          }
+        },
+        "redo": {
+          "title": "EditableHtmlButtonConfigure",
+          "type": "object",
+          "properties": {
+            "disabled": {
+              "description": "Indicates if the plugin is disabled or not",
+              "type": "boolean",
+              "title": "disabled"
+            }
+          }
+        },
+        "strikethrough": {
+          "title": "EditableHtmlButtonConfigure",
+          "type": "object",
+          "properties": {
+            "disabled": {
+              "description": "Indicates if the plugin is disabled or not",
+              "type": "boolean",
+              "title": "disabled"
+            }
+          }
+        },
+        "sub": {
+          "title": "EditableHtmlButtonConfigure",
+          "type": "object",
+          "properties": {
+            "disabled": {
+              "description": "Indicates if the plugin is disabled or not",
+              "type": "boolean",
+              "title": "disabled"
+            }
+          }
+        },
+        "sup": {
+          "title": "EditableHtmlButtonConfigure",
+          "type": "object",
+          "properties": {
+            "disabled": {
+              "description": "Indicates if the plugin is disabled or not",
+              "type": "boolean",
+              "title": "disabled"
+            }
+          }
+        },
+        "table": {
+          "title": "EditableHtmlButtonConfigure",
+          "type": "object",
+          "properties": {
+            "disabled": {
+              "description": "Indicates if the plugin is disabled or not",
+              "type": "boolean",
+              "title": "disabled"
+            }
+          }
+        },
+        "ul_list": {
+          "title": "EditableHtmlButtonConfigure",
+          "type": "object",
+          "properties": {
+            "disabled": {
+              "description": "Indicates if the plugin is disabled or not",
+              "type": "boolean",
+              "title": "disabled"
+            }
+          }
+        },
+        "underline": {
+          "title": "EditableHtmlButtonConfigure",
+          "type": "object",
+          "properties": {
+            "disabled": {
+              "description": "Indicates if the plugin is disabled or not",
+              "type": "boolean",
+              "title": "disabled"
+            }
+          }
+        },
+        "undo": {
           "title": "EditableHtmlButtonConfigure",
           "type": "object",
           "properties": {
@@ -534,6 +687,149 @@
               }
             },
             "h3": {
+              "title": "EditableHtmlButtonConfigure",
+              "type": "object",
+              "properties": {
+                "disabled": {
+                  "description": "Indicates if the plugin is disabled or not",
+                  "type": "boolean",
+                  "title": "disabled"
+                }
+              }
+            },
+            "languageCharacters": {
+              "title": "EditableHtmlButtonConfigure",
+              "type": "object",
+              "properties": {
+                "disabled": {
+                  "description": "Indicates if the plugin is disabled or not",
+                  "type": "boolean",
+                  "title": "disabled"
+                }
+              }
+            },
+            "bold": {
+              "title": "EditableHtmlButtonConfigure",
+              "type": "object",
+              "properties": {
+                "disabled": {
+                  "description": "Indicates if the plugin is disabled or not",
+                  "type": "boolean",
+                  "title": "disabled"
+                }
+              }
+            },
+            "html": {
+              "title": "EditableHtmlButtonConfigure",
+              "type": "object",
+              "properties": {
+                "disabled": {
+                  "description": "Indicates if the plugin is disabled or not",
+                  "type": "boolean",
+                  "title": "disabled"
+                }
+              }
+            },
+            "italic": {
+              "title": "EditableHtmlButtonConfigure",
+              "type": "object",
+              "properties": {
+                "disabled": {
+                  "description": "Indicates if the plugin is disabled or not",
+                  "type": "boolean",
+                  "title": "disabled"
+                }
+              }
+            },
+            "ol_list": {
+              "title": "EditableHtmlButtonConfigure",
+              "type": "object",
+              "properties": {
+                "disabled": {
+                  "description": "Indicates if the plugin is disabled or not",
+                  "type": "boolean",
+                  "title": "disabled"
+                }
+              }
+            },
+            "redo": {
+              "title": "EditableHtmlButtonConfigure",
+              "type": "object",
+              "properties": {
+                "disabled": {
+                  "description": "Indicates if the plugin is disabled or not",
+                  "type": "boolean",
+                  "title": "disabled"
+                }
+              }
+            },
+            "strikethrough": {
+              "title": "EditableHtmlButtonConfigure",
+              "type": "object",
+              "properties": {
+                "disabled": {
+                  "description": "Indicates if the plugin is disabled or not",
+                  "type": "boolean",
+                  "title": "disabled"
+                }
+              }
+            },
+            "sub": {
+              "title": "EditableHtmlButtonConfigure",
+              "type": "object",
+              "properties": {
+                "disabled": {
+                  "description": "Indicates if the plugin is disabled or not",
+                  "type": "boolean",
+                  "title": "disabled"
+                }
+              }
+            },
+            "sup": {
+              "title": "EditableHtmlButtonConfigure",
+              "type": "object",
+              "properties": {
+                "disabled": {
+                  "description": "Indicates if the plugin is disabled or not",
+                  "type": "boolean",
+                  "title": "disabled"
+                }
+              }
+            },
+            "table": {
+              "title": "EditableHtmlButtonConfigure",
+              "type": "object",
+              "properties": {
+                "disabled": {
+                  "description": "Indicates if the plugin is disabled or not",
+                  "type": "boolean",
+                  "title": "disabled"
+                }
+              }
+            },
+            "ul_list": {
+              "title": "EditableHtmlButtonConfigure",
+              "type": "object",
+              "properties": {
+                "disabled": {
+                  "description": "Indicates if the plugin is disabled or not",
+                  "type": "boolean",
+                  "title": "disabled"
+                }
+              }
+            },
+            "underline": {
+              "title": "EditableHtmlButtonConfigure",
+              "type": "object",
+              "properties": {
+                "disabled": {
+                  "description": "Indicates if the plugin is disabled or not",
+                  "type": "boolean",
+                  "title": "disabled"
+                }
+              }
+            },
+            "undo": {
               "title": "EditableHtmlButtonConfigure",
               "type": "object",
               "properties": {

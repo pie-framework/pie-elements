@@ -1,13 +1,13 @@
 {
   "name": "@pie-element/math-templated-controller",
   "private": true,
-  "version": "2.18.2",
+  "version": "2.19.6",
   "description": "",
   "main": "lib/index.js",
   "module": "src/index.js",
   "dependencies": {
     "@pie-framework/math-validation": "^1.2.2",
-    "@pie-lib/pie-toolbox": "1.29.2",
+    "@pie-lib/pie-toolbox": "1.32.1",
     "debug": "^3.1.0",
     "lodash": "^4.17.15"
   },

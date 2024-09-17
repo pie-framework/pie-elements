@@ -223,7 +223,9 @@ export class Main extends React.Component {
     const { model, onChange } = this.props;
     let { ticks } = object;
     const correctResponse = tickUtils.snapElements(model.graph.domain, ticks, model.correctResponse);
-    const initialElements = tickUtils.snapElements(model.graph.domain, ticks, model.graph.initialElements);
+    const initialElements = model.graph.initialElements
+      ? tickUtils.snapElements(model.graph.domain, ticks, model.graph.initialElements)
+      : [];
     let updatedGraph = this.updateMajorValue({ ...model.graph, ticks });
     const graph = { ...updatedGraph, initialElements };
     onChange({ graph, correctResponse });
@@ -258,9 +260,9 @@ export class Main extends React.Component {
         ticks.minor < 1
           ? math.number(math.ceil(minorLimits.min))
           : ticks.minor >= math.number(math.ceil(minorLimits.min)) &&
-            ticks.minor <= math.number(math.floor(minorLimits.max))
-          ? ticks.minor
-          : math.number(math.ceil(minorLimits.min));
+          ticks.minor <= math.number(math.floor(minorLimits.max))
+            ? ticks.minor
+            : math.number(math.ceil(minorLimits.min));
       ticks.integerTick = ticks.minor;
       minorValues = { decimal: [], fraction: [] };
       ticks.fractionTick = '0';

@@ -1,5 +1,5 @@
 export default {
-  authorEnabled: true,
+  authorEnabled: false,
   passages: [
     {
       teacherInstructions: '',
@@ -7,10 +7,10 @@ export default {
       subtitle: '',
       author: '',
       text: '',
-    }
+    },
   ],
-  subtitleEnabled: true,
-  teacherInstructionsEnabled: false,
+  subtitleEnabled: false,
+  teacherInstructionsEnabled: true,
   textEnabled: true,
-  titleEnabled: true,
+  titleEnabled: false,
 };

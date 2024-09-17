@@ -3,6 +3,57 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.37.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.36.1...@pie-element/pie-models@13.37.0) (2024-09-16)
+
+
+### Features
+
+* **image-cloze-association:** exposed new responseContainerPadding and imageDropTargetPadding props in model PD-4003 ([e328870](https://github.com/pie-framework/pie-elements/commit/e328870daac795e197cc0ac491d153f7810da9b0))
+
+
+
+
+
+## [13.36.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.36.0...@pie-element/pie-models@13.36.1) (2024-09-16)
+
+
+### Bug Fixes
+
+* **inline-dropdown:** delete unecessary logic to hide characters toolbar PD-4066 ([0fdfd87](https://github.com/pie-framework/pie-elements/commit/0fdfd87289aab33cb5beb6223b646b82c6b3da49))
+
+
+
+
+
+# [13.36.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.35.0...@pie-element/pie-models@13.36.0) (2024-09-12)
+
+
+### Features
+
+* **fraction-model:** Implementation of new Fraction Model | SC-30716 ([17deff0](https://github.com/pie-framework/pie-elements/commit/17deff0d85ebd7dd4ac0fd2cec7e64a272ec71ba))
+
+
+
+
+
+# [13.35.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.34.0...@pie-element/pie-models@13.35.0) (2024-09-10)
+
+
+### Bug Fixes
+
+* **inline-dropdown:** add all available fields in docs PD-4065 ([2c4c243](https://github.com/pie-framework/pie-elements/commit/2c4c24344d11ab66e0a67b5ccc630fa43dafc200))
+* **inline-dropdown:** add configs for toolbar inside inline-dropdown PD-4065 ([ce63489](https://github.com/pie-framework/pie-elements/commit/ce63489a08e090599c7190885a756206ab3c1d95))
+* **inline-dropdown:** fix PR comments PD-4065 ([0af0e51](https://github.com/pie-framework/pie-elements/commit/0af0e514ae362453d04eaa0f61a1ccb2b6e13876))
+
+
+### Features
+
+* use inputConfiguration.languageCharacters to determine if languageCharactersProps buttons should show up in toolbar PD-4065 ([3e32c58](https://github.com/pie-framework/pie-elements/commit/3e32c58261951d5d150bb93acdcca66eab0308f7))
+
+
+
+
+
 # [13.34.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.33.0...@pie-element/pie-models@13.34.0) (2024-08-06)
 
 

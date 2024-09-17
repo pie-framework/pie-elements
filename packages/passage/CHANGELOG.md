@@ -3,6 +3,131 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.21.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@2.21.8...@pie-element/passage@2.21.9) (2024-09-16)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4061, PD-4021 ([ef8e3d0](https://github.com/pie-framework/pie-elements/commit/ef8e3d0d5fca4ca57c89c7c8ef8e74ec5600551e))
+
+
+
+
+
+## [2.21.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@2.21.7...@pie-element/passage@2.21.8) (2024-09-16)
+
+
+### Bug Fixes
+
+* experiment with mra ([d62f2b4](https://github.com/pie-framework/pie-elements/commit/d62f2b4526eeda1f90d3660d97bf278ac1ae72da))
+* experiment with mra ([d9487a5](https://github.com/pie-framework/pie-elements/commit/d9487a5394c9b71bb7d7d69a836ed629ae13f7b1))
+* experiment with mra ([a2e933c](https://github.com/pie-framework/pie-elements/commit/a2e933cd27bb052046e245672d3e01cb5ba1b518))
+* update pie-lib/pie-toolbox PD-4027, PD-4042,PD-4039, PD-4073 ([68306be](https://github.com/pie-framework/pie-elements/commit/68306be02254a6019916637fd9b75427cae1c0ed))
+
+
+
+
+
+## [2.21.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@2.21.6...@pie-element/passage@2.21.7) (2024-09-11)
+
+
+### Bug Fixes
+
+* **passage:** fix validation and update controller default values PD-4068 PD-4006 ([c4976b6](https://github.com/pie-framework/pie-elements/commit/c4976b664a441b225f5ebe47273a5a309cdfa9f7))
+
+
+
+
+
+## [2.21.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@2.21.5...@pie-element/passage@2.21.6) (2024-09-10)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-3652, PD-2451 ([8a00529](https://github.com/pie-framework/pie-elements/commit/8a00529f67a8e27e78e4c16de5d04e11ec8c4d16))
+
+
+
+
+
+## [2.21.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@2.21.4...@pie-element/passage@2.21.5) (2024-09-10)
+
+
+### Bug Fixes
+
+* **inline-dropdown:** add all available fields in docs PD-4065 ([2c4c243](https://github.com/pie-framework/pie-elements/commit/2c4c24344d11ab66e0a67b5ccc630fa43dafc200))
+* update pie-lib/pie-toolbox: ability to disable table and lists PD-4065 ([49f1ce4](https://github.com/pie-framework/pie-elements/commit/49f1ce4000bc45d0eb8032f6538c0c780940a503))
+
+
+
+
+
+## [2.21.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@2.21.3...@pie-element/passage@2.21.4) (2024-09-05)
+
+
+### Bug Fixes
+
+* **passage:** add possibility to enable/disable fields in player PD-4006 PD-4058 ([3b379b1](https://github.com/pie-framework/pie-elements/commit/3b379b18684c3a337b3405a3517e429b4017b51f))
+
+
+
+
+
+## [2.21.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@2.21.2...@pie-element/passage@2.21.3) (2024-08-29)
+
+
+### Bug Fixes
+
+* **passage:** collapse normal spaces PD-4006 ([a7d4e1f](https://github.com/pie-framework/pie-elements/commit/a7d4e1f2989cc38d26d526896486d9df8c1aa953))
+
+
+
+
+
+## [2.21.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@2.21.1...@pie-element/passage@2.21.2) (2024-08-29)
+
+
+### Bug Fixes
+
+* trigger build PD-4052 ([24783c4](https://github.com/pie-framework/pie-elements/commit/24783c43a97db9c9a2b665f2c784ccd4ce8511ca))
+
+
+
+
+
+## [2.21.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@2.21.0...@pie-element/passage@2.21.1) (2024-08-29)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4052 ([ebbbe2d](https://github.com/pie-framework/pie-elements/commit/ebbbe2dc584829abe8f1b4d6e8a9031e27f30dce))
+
+
+
+
+
+# [2.21.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@2.20.3...@pie-element/passage@2.21.0) (2024-08-27)
+
+
+### Features
+
+* update pie-lib PD-4026, PD-3990 ([395d7d7](https://github.com/pie-framework/pie-elements/commit/395d7d779caae57a810cc19c1d676319d1c19ded))
+
+
+
+
+
+## [2.20.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@2.20.2...@pie-element/passage@2.20.3) (2024-08-22)
+
+
+### Bug Fixes
+
+* update pie-lib PD-4021 ([07d6e85](https://github.com/pie-framework/pie-elements/commit/07d6e8560ddfe25f95dfbafc2d3155b93eb85404))
+
+
+
+
+
 ## [2.20.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@2.20.1...@pie-element/passage@2.20.2) (2024-08-19)
 
 
