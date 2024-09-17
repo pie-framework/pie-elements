@@ -87,8 +87,11 @@ describe('controller', () => {
       it('calls updateSession', async () => {
         session = { id: '1', element: 'multiple-choice' };
         env = { mode: 'gather' };
+        question = { ...question, lockChoiceOrder: false };
         const updateSession = jest.fn().mockResolvedValue();
+
         await model(question, session, env, updateSession);
+
         expect(updateSession).toHaveBeenCalledWith('1', 'multiple-choice', {
           shuffledValues: expect.arrayContaining(['apple', 'banana']),
         });
