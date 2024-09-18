@@ -86,9 +86,6 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
               "image": Object {
                 "disabled": false,
               },
-              "languageCharacters": Object {
-                "disabled": true,
-              },
               "video": Object {
                 "disabled": false,
               },
@@ -775,7 +772,16 @@ There should be at most 10 choices defined per response area."
   >
     <EditableHtml
       allowValidation={false}
-      languageCharactersProps={Array []}
+      languageCharactersProps={
+        Array [
+          Object {
+            "language": "spanish",
+          },
+          Object {
+            "language": "special",
+          },
+        ]
+      }
       markup=""
       mathMlOptions={
         Object {
@@ -800,9 +806,6 @@ There should be at most 10 choices defined per response area."
           },
           "image": Object {
             "disabled": false,
-          },
-          "languageCharacters": Object {
-            "disabled": true,
           },
           "video": Object {
             "disabled": false,
@@ -908,9 +911,6 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
               },
               "image": Object {
                 "disabled": false,
-              },
-              "languageCharacters": Object {
-                "disabled": true,
               },
               "video": Object {
                 "disabled": false,
