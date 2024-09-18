@@ -471,8 +471,8 @@ export class Main extends React.Component {
               uploadSoundSupport={uploadSoundSupport}
               languageCharactersProps={
                 getPluginProps(teacherInstructions?.inputConfiguration).languageCharacters?.disabled
-                  ? [{ language: 'spanish' }, { language: 'special' }]
-                  : []
+                  ? []
+                  : [{ language: 'spanish' }, { language: 'special' }]
               }
               mathMlOptions={mathMlOptions}
             />
@@ -498,8 +498,8 @@ export class Main extends React.Component {
               uploadSoundSupport={uploadSoundSupport}
               languageCharactersProps={
                 getPluginProps(prompt?.inputConfiguration).languageCharacters?.disabled
-                  ? [{ language: 'spanish' }, { language: 'special' }]
-                  : []
+                  ? []
+                  : [{ language: 'spanish' }, { language: 'special' }]
               }
               mathMlOptions={mathMlOptions}
             />
@@ -567,8 +567,8 @@ export class Main extends React.Component {
             uploadSoundSupport={uploadSoundSupport}
             languageCharactersProps={
               getPluginProps(template?.inputConfiguration).languageCharacters?.disabled
-                ? [{ language: 'spanish' }, { language: 'special' }]
-                : []
+                ? []
+                : [{ language: 'spanish' }, { language: 'special' }]
             }
             mathMlOptions={mathMlOptions}
           />
@@ -594,8 +594,8 @@ export class Main extends React.Component {
               uploadSoundSupport={uploadSoundSupport}
               languageCharactersProps={
                 getPluginProps(rationale?.inputConfiguration).languageCharacters?.disabled
-                  ? [{ language: 'spanish' }, { language: 'special' }]
-                  : []
+                  ? []
+                  : [{ language: 'spanish' }, { language: 'special' }]
               }
               mathMlOptions={mathMlOptions}
             />

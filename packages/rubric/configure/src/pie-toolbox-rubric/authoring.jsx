@@ -125,6 +125,7 @@ export const PointConfig = withStyles((theme) => ({
           onChange={props.onChange}
           mathMlOptions={mathMlOptions}
           imageSupport={imageSupport}
+          languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
         />
         <PointMenu
           classes={{
@@ -147,6 +148,7 @@ export const PointConfig = withStyles((theme) => ({
             onChange={props.onSampleChange}
             mathMlOptions={mathMlOptions}
             imageSupport={imageSupport}
+            languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
           />
         </div>
       )}
