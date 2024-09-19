@@ -22,4 +22,6 @@ export default {
   teacherInstructionsEnabled: true,
   studentInstructionsEnabled: true,
   strokeWidth: 5,
+  selectedHotspotColor: 'rgba(255, 229, 67, 0.3)',
+  hoverOutlineColor: 'green',
 };

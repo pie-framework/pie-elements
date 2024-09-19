@@ -8,6 +8,9 @@ import { faCorrect, faWrong } from './icons';
 class CircleComponent extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      hovered: false,
+    };
   }
 
   handleClick = (e) => {
@@ -25,10 +28,12 @@ class CircleComponent extends React.Component {
     if (!disabled) {
       document.body.style.cursor = 'pointer';
     }
+    this.setState({ hovered: true });
   };
 
   handleMouseLeave = () => {
     document.body.style.cursor = 'default';
+    this.setState({ hovered: false });
   };
 
   getEvaluateOutlineColor = (isCorrect, markAsCorrect, outlineColor) =>
@@ -44,6 +49,7 @@ class CircleComponent extends React.Component {
       hotspotColor,
       isCorrect,
       isEvaluateMode,
+      hoverOutlineColor,
       outlineColor,
       selected,
       x,
@@ -52,8 +58,11 @@ class CircleComponent extends React.Component {
       strokeWidth,
       scale,
       markAsCorrect,
+      selectedHotspotColor,
       showCorrectEnabled,
     } = this.props;
+
+    const { hovered } = this.state;
 
     const outlineColorParsed = isEvaluateMode
       ? this.getEvaluateOutlineColor(isCorrect, markAsCorrect, outlineColor)
@@ -83,15 +92,18 @@ class CircleComponent extends React.Component {
 
     return (
       <Group scaleX={scale} scaleY={scale}>
+        {hoverOutlineColor && hovered && (
+          <Circle radius={radius} x={x} y={y} stroke={hoverOutlineColor} strokeWidth={2} listening={false} />
+        )}
         <Circle
           classes={classes.base}
           radius={radius}
-          fill={hotspotColor}
+          fill={selected ? selectedHotspotColor : hotspotColor}
           onClick={this.handleClick}
           onTap={this.handleClick}
           draggable={false}
-          stroke={outlineColorParsed}
-          strokeWidth={outlineWidth}
+          stroke={hovered && hoverOutlineColor ? 'transparent' : outlineColorParsed}
+          strokeWidth={!(hovered && hoverOutlineColor) ? outlineWidth : 0}
           onMouseLeave={this.handleMouseLeave}
           onMouseEnter={this.handleMouseEnter}
           x={x}
@@ -119,6 +131,7 @@ CircleComponent.propTypes = {
   isCorrect: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
   isEvaluateMode: PropTypes.bool.isRequired,
   disabled: PropTypes.bool.isRequired,
+  hoverOutlineColor: PropTypes.string,
   onClick: PropTypes.func.isRequired,
   outlineColor: PropTypes.string.isRequired,
   selected: PropTypes.bool.isRequired,
@@ -127,6 +140,7 @@ CircleComponent.propTypes = {
   evaluateText: PropTypes.string,
   strokeWidth: PropTypes.number,
   scale: PropTypes.number,
+  selectedHotspotColor: PropTypes.string,
   markAsCorrect: PropTypes.bool.isRequired,
   showCorrectEnabled: PropTypes.bool.isRequired,
 };

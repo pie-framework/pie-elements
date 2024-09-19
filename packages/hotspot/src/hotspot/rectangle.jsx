@@ -8,6 +8,9 @@ import { faCorrect, faWrong } from './icons';
 class RectComponent extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      hovered: false,
+    };
   }
 
   handleClick = (e) => {
@@ -25,10 +28,12 @@ class RectComponent extends React.Component {
     if (!disabled) {
       document.body.style.cursor = 'pointer';
     }
+    this.setState({ hovered: true });
   };
 
   handleMouseLeave = () => {
     document.body.style.cursor = 'default';
+    this.setState({ hovered: false });
   };
 
   getEvaluateOutlineColor = (isCorrect, markAsCorrect, outlineColor) =>
@@ -42,6 +47,8 @@ class RectComponent extends React.Component {
       classes,
       height,
       hotspotColor,
+      hoverOutlineColor,
+      selectedHotspotColor,
       isCorrect,
       isEvaluateMode,
       outlineColor,
@@ -97,18 +104,31 @@ class RectComponent extends React.Component {
       }
     }
 
+    const { hovered } = this.state;
+
     return (
       <Group scaleX={scale} scaleY={scale}>
+        {hoverOutlineColor && hovered && (
+          <Rect
+            x={x}
+            y={y}
+            width={width}
+            height={height}
+            stroke={hoverOutlineColor}
+            strokeWidth={2}
+            listening={false}
+          />
+        )}
         <Rect
           classes={classes.base}
           width={width}
           height={height}
-          fill={hotspotColor}
+          fill={selected ? selectedHotspotColor : hotspotColor}
           onClick={this.handleClick}
           onTap={this.handleClick}
           draggable={false}
-          stroke={outlineColorParsed}
-          strokeWidth={outlineWidth}
+          stroke={hovered && hoverOutlineColor ? 'transparent' : outlineColorParsed}
+          strokeWidth={!(hovered && hoverOutlineColor) ? strokeWidth : 0}
           onMouseLeave={this.handleMouseLeave}
           onMouseEnter={this.handleMouseEnter}
           x={x}
@@ -135,6 +155,7 @@ RectComponent.propTypes = {
   id: PropTypes.string.isRequired,
   isCorrect: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
   isEvaluateMode: PropTypes.bool.isRequired,
+  hoverOutlineColor: PropTypes.string,
   disabled: PropTypes.bool.isRequired,
   onClick: PropTypes.func.isRequired,
   outlineColor: PropTypes.string.isRequired,
@@ -145,6 +166,7 @@ RectComponent.propTypes = {
   evaluateText: PropTypes.string,
   strokeWidth: PropTypes.number,
   scale: PropTypes.number,
+  selectedHotspotColor: PropTypes.string,
   markAsCorrect: PropTypes.bool.isRequired,
   showCorrectEnabled: PropTypes.bool.isRequired,
 };

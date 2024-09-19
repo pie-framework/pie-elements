@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Line, Group } from 'react-konva';
+import { Line, Group, Rect } from 'react-konva';
 import { withStyles } from '@material-ui/core/styles';
 import { ImageComponent } from '@pie-lib/pie-toolbox/icons';
 import { faCorrect, faWrong } from './icons';
@@ -8,6 +8,9 @@ import { faCorrect, faWrong } from './icons';
 class PolygonComponent extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      hovered: false,
+    };
   }
 
   getPolygonCenter = (points) => {
@@ -44,10 +47,12 @@ class PolygonComponent extends React.Component {
     if (!disabled) {
       document.body.style.cursor = 'pointer';
     }
+    this.setState({ hovered: true });
   };
 
   handleMouseLeave = () => {
     document.body.style.cursor = 'default';
+    this.setState({ hovered: false });
   };
 
   getEvaluateOutlineColor = (isCorrect, markAsCorrect, outlineColor) =>
@@ -62,6 +67,7 @@ class PolygonComponent extends React.Component {
       hotspotColor,
       isCorrect,
       isEvaluateMode,
+      hoverOutlineColor,
       outlineColor,
       selected,
       points,
@@ -69,8 +75,11 @@ class PolygonComponent extends React.Component {
       strokeWidth,
       scale,
       markAsCorrect,
+      selectedHotspotColor,
       showCorrectEnabled,
     } = this.props;
+
+    const { hovered } = this.state;
 
     const outlineColorParsed = isEvaluateMode
       ? this.getEvaluateOutlineColor(isCorrect, markAsCorrect, outlineColor)
@@ -116,16 +125,26 @@ class PolygonComponent extends React.Component {
 
     return (
       <Group scaleX={scale} scaleY={scale}>
+        {hoverOutlineColor && hovered && (
+          <Line
+            closed={true}
+            draggable={false}
+            points={pointsParsed}
+            stroke={hoverOutlineColor}
+            strokeWidth={2}
+            listening={false}
+          />
+        )}
         <Line
           points={pointsParsed}
           closed={true}
           classes={classes.base}
-          fill={hotspotColor}
+          fill={selected ? selectedHotspotColor : hotspotColor}
           onClick={this.handleClick}
           onTap={this.handleClick}
           draggable={false}
-          stroke={outlineColorParsed}
-          strokeWidth={outlineWidth}
+          stroke={hovered && hoverOutlineColor ? 'transparent' : outlineColorParsed}
+          strokeWidth={!(hovered && hoverOutlineColor) ? outlineWidth : 0}
           onMouseLeave={this.handleMouseLeave}
           onMouseEnter={this.handleMouseEnter}
         />
@@ -149,12 +168,14 @@ PolygonComponent.propTypes = {
   id: PropTypes.string.isRequired,
   isCorrect: PropTypes.bool.isRequired,
   isEvaluateMode: PropTypes.bool.isRequired,
+  hoverOutlineColor: PropTypes.string,
   disabled: PropTypes.bool.isRequired,
   onClick: PropTypes.func.isRequired,
   outlineColor: PropTypes.string.isRequired,
   points: PropTypes.array.isRequired,
   selected: PropTypes.bool.isRequired,
   evaluateText: PropTypes.string,
+  selectedHotspotColor: PropTypes.string,
   strokeWidth: PropTypes.number,
   scale: PropTypes.number,
   markAsCorrect: PropTypes.bool.isRequired,
