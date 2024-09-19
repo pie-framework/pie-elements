@@ -128,7 +128,7 @@ class RectComponent extends React.Component {
           onTap={this.handleClick}
           draggable={false}
           stroke={hovered && hoverOutlineColor ? 'transparent' : outlineColorParsed}
-          strokeWidth={!(hovered && hoverOutlineColor) ? strokeWidth : 0}
+          strokeWidth={!(hovered && hoverOutlineColor) ? outlineWidth : 0}
           onMouseLeave={this.handleMouseLeave}
           onMouseEnter={this.handleMouseEnter}
           x={x}
