@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/fraction-model@1.1.4...@pie-element/fraction-model@1.1.5) (2024-09-20)
+
+
+### Bug Fixes
+
+* "recharts" version was causing issues in the documentation building process (npm run prepare); reverted the version to one that is not causing issues. ([9659003](https://github.com/pie-framework/pie-elements/commit/9659003c2764feec625b299926ccd8dc6e2948fb))
+
+
+
+
+
 ## [1.1.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/fraction-model@1.1.3...@pie-element/fraction-model@1.1.4) (2024-09-16)
 
 
