@@ -83,9 +83,9 @@ Properties of the `h3` object:
 
 Indicates if the plugin is disabled or not
 
-## `languageCharacters` (object)
+## `characters` (object)
 
-Properties of the `languageCharacters` object:
+Properties of the `characters` object:
 
 ### `disabled` (boolean)
 
@@ -289,9 +289,9 @@ Properties of the `h3` object:
 
 Indicates if the plugin is disabled or not
 
-### `languageCharacters` (object)
+### `characters` (object)
 
-Properties of the `languageCharacters` object:
+Properties of the `characters` object:
 
 #### `disabled` (boolean)
 
@@ -490,9 +490,9 @@ Properties of the `h3` object:
 
 Indicates if the plugin is disabled or not
 
-### `languageCharacters` (object)
+### `characters` (object)
 
-Properties of the `languageCharacters` object:
+Properties of the `characters` object:
 
 #### `disabled` (boolean)
 
@@ -691,9 +691,9 @@ Properties of the `h3` object:
 
 Indicates if the plugin is disabled or not
 
-### `languageCharacters` (object)
+### `characters` (object)
 
-Properties of the `languageCharacters` object:
+Properties of the `characters` object:
 
 #### `disabled` (boolean)
 
@@ -892,9 +892,9 @@ Properties of the `h3` object:
 
 Indicates if the plugin is disabled or not
 
-### `languageCharacters` (object)
+### `characters` (object)
 
-Properties of the `languageCharacters` object:
+Properties of the `characters` object:
 
 #### `disabled` (boolean)
 
@@ -1241,9 +1241,9 @@ Properties of the `h3` object:
 
 Indicates if the plugin is disabled or not
 
-### `languageCharacters` (object)
+### `characters` (object)
 
-Properties of the `languageCharacters` object:
+Properties of the `characters` object:
 
 #### `disabled` (boolean)
 
@@ -1478,9 +1478,9 @@ Properties of the `h3` object:
 
 Indicates if the plugin is disabled or not
 
-#### `languageCharacters` (object)
+#### `characters` (object)
 
-Properties of the `languageCharacters` object:
+Properties of the `characters` object:
 
 ##### `disabled` (boolean)
 
@@ -1679,9 +1679,9 @@ Properties of the `h3` object:
 
 Indicates if the plugin is disabled or not
 
-#### `languageCharacters` (object)
+#### `characters` (object)
 
-Properties of the `languageCharacters` object:
+Properties of the `characters` object:
 
 ##### `disabled` (boolean)
 
