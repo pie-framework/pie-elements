@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.16.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-controller@6.16.6...@pie-element/match-controller@6.16.7) (2024-09-23)
+
+
+### Bug Fixes
+
+* **match:** Validation fix for duplicate column header ([0c54cf0](https://github.com/pie-framework/pie-elements/commit/0c54cf001936b797fdc92556953a7002724e9866))
+
+
+
+
+
 ## [6.16.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-controller@6.16.5...@pie-element/match-controller@6.16.6) (2024-09-16)
 
 
