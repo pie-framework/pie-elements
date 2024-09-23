@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.18.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@7.18.6...@pie-element/match@7.18.7) (2024-09-23)
+
+
+### Bug Fixes
+
+* **match:** Validation fix for duplicate column header ([0c54cf0](https://github.com/pie-framework/pie-elements/commit/0c54cf001936b797fdc92556953a7002724e9866))
+
+
+
+
+
 ## [7.18.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@7.18.5...@pie-element/match@7.18.6) (2024-09-16)
 
 
