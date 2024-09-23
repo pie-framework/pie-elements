@@ -9348,7 +9348,7 @@ jsonpointer.js@^0.4.0:
   resolved "https://registry.yarnpkg.com/jsonpointer.js/-/jsonpointer.js-0.4.0.tgz#002cb123f767aafdeb0196132ce5c4f9941ccaba"
   integrity sha1-ACyxI/dnqv3rAZYTLOXE+ZQcyro=
 
-jsonpointer@^4.0.1:
+jsonpointer@^4.0.1, jsonpointer@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/jsonpointer/-/jsonpointer-4.1.0.tgz#501fb89986a2389765ba09e6053299ceb4f2c2cc"
   integrity sha512-CXcRvMyTlnR53xMcKnuMzfCA5i/nfblTnnr74CZb6C4vG39eu6w51t7nKmU5MfLfbTgGItliNyjO/ciNPDqClg==
@@ -14897,11 +14897,12 @@ webidl-conversions@^4.0.2:
   resolved "https://registry.yarnpkg.com/webidl-conversions/-/webidl-conversions-4.0.2.tgz#a855980b1f0b6b359ba1d5d9fb39ae941faa63ad"
   integrity sha512-YQ+BmxuTgd6UXZW3+ICGfyqRyHXVlD5GtQr5+qjiNW7bF0cqrzX500HVXPBOvgXb5YnzDd+h0zqyv61KUD7+Sg==
 
-wetzel@0.0.5:
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/wetzel/-/wetzel-0.0.5.tgz#27bcf08da2bd9e4dcb0ad1738db521a225b67a5c"
-  integrity sha1-J7zwjaK9nk3LCtFzjbUhoiW2elw=
+wetzel@0.2.3:
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/wetzel/-/wetzel-0.2.3.tgz#414f9860800bc9223b56b04f7eb1418181f9f069"
+  integrity sha512-eDu1nhDS0WSSMtkuG1Mgi4Vb8UqFW3pTod6csfJsYmTtyWJhSkogbDPxWQ0dzEUz5qZXdsnOeLFM4MBlYlXQtw==
   dependencies:
+    jsonpointer "^4.1.0"
     minimist "1.1.0"
 
 whatwg-encoding@^1.0.1, whatwg-encoding@^1.0.3, whatwg-encoding@^1.0.5:

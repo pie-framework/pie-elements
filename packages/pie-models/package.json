@@ -34,6 +34,6 @@
     "ts-node": "^7.0.1",
     "typescript": "^3.2.2",
     "typescript-json-schema": "^0.34.0",
-    "wetzel": "0.0.5"
+    "wetzel": "0.2.3"
   }
 }
