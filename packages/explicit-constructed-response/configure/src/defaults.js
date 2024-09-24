@@ -13,7 +13,7 @@ export default {
     studentInstructionsEnabled: true,
     teacherInstructionsEnabled: true,
     toolbarEditorPosition: 'bottom',
-    spanishInputEnabled: true
+    responseAreaInputConfiguration: {},
   },
   configuration: {
     baseInputConfiguration: {
@@ -113,9 +113,16 @@ export default {
       label: 'Language Choices',
       options: [],
     },
-    spanishInput: {
+    responseAreaInputConfiguration: {
+      inputConfiguration: {
+        characters: {
+          disabled: true
+        },
+      },
+    },
+    spanishButton: {
       settings: true,
-      label: 'Insert Spanish Character',
+      label: 'Disable Spanish Characters',
     },
   },
 };

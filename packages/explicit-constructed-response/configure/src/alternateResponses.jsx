@@ -15,7 +15,7 @@ export class AlternateResponses extends React.Component {
     onLengthChange: PropTypes.func.isRequired,
     maxLengthPerChoiceEnabled: PropTypes.bool.isRequired,
     spellCheck: PropTypes.bool,
-    spanishInputEnabled: PropTypes.bool
+    pluginProps: PropTypes.object
   };
 
   state = { maxLengthPerChoice: cloneDeep(this.props.model.maxLengthPerChoice) };
@@ -166,9 +166,10 @@ export class AlternateResponses extends React.Component {
   render() {
     const { choices } = this.state;
     const {
-      model: { maxLengthPerChoice, maxLengthPerChoiceEnabled, spanishInputEnabled },
+      model: { maxLengthPerChoice, maxLengthPerChoiceEnabled },
       spellCheck,
       choicesErrors,
+      pluginProps
     } = this.props;
 
     return (
@@ -192,7 +193,7 @@ export class AlternateResponses extends React.Component {
                 maxLength={maxLengthPerChoice[key]}
                 showMaxLength={maxLengthPerChoiceEnabled}
                 spellCheck={spellCheck}
-                spanishInputEnabled={spanishInputEnabled}
+                pluginProps={pluginProps}
               />
             );
           }
@@ -206,7 +207,7 @@ export class AlternateResponses extends React.Component {
             choiceRemoved={(value) => this.onChoiceRemoved(value)}
             selectChoices={this.getRemainingChoices()}
             spellCheck={spellCheck}
-            spanishInputEnabled={spanishInputEnabled}
+            pluginProps={pluginProps}
           />
         )}
       </div>

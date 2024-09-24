@@ -23,7 +23,7 @@ export class ECRToolbar extends React.Component {
       }),
     }),
     maxLengthPerChoiceEnabled: PropTypes.bool,
-    spanishInputEnabled: PropTypes.bool,
+    pluginProps: PropTypes.object,
     spellCheck: PropTypes.bool,
   };
 
@@ -91,10 +91,9 @@ export class ECRToolbar extends React.Component {
     };
 
     render() {
-        const { classes, maxLengthPerChoiceEnabled, spanishInputEnabled, spellCheck } = this.props;
+        const { classes, maxLengthPerChoiceEnabled, pluginProps, spellCheck } = this.props;
         const { markup, toolbarStyle } = this.state;
         const inputProps = maxLengthPerChoiceEnabled ? {} : { maxLength: 25 };
-        const languageCharactersProps = spanishInputEnabled ? [{ language: 'spanish' }] : [];
 
         return (
             <div style={toolbarStyle}>
@@ -126,12 +125,13 @@ export class ECRToolbar extends React.Component {
                     onKeyDown={this.onKeyDown}
                     markup={markup || ''}
                     activePlugins={['languageCharacters']}
-                    languageCharactersProps={languageCharactersProps}
+                    pluginProps={pluginProps}
+                    languageCharactersProps={[{ language: 'spanish' }]}
                     minHeight={'10px'}
                     maxHeight={'10px'}
                     spellCheck={spellCheck}
                     toolbarOpts={{
-                        width: 'auto'
+                        minWidth: 'auto'
                     }}
                     {...inputProps}
                 />

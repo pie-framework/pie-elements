@@ -71,7 +71,7 @@ export class Choice extends React.Component {
     value: PropTypes.string,
     spellCheck: PropTypes.bool,
     showMaxLength: PropTypes.bool,
-    spanishInputEnabled: PropTypes.bool
+    pluginProps: PropTypes.object
   };
 
   state = {
@@ -94,9 +94,8 @@ export class Choice extends React.Component {
 
   render() {
     const { value } = this.state;
-    const { classes, onDelete, spellCheck, error, showMaxLength, spanishInputEnabled } = this.props;
+    const { classes, onDelete, spellCheck, error, showMaxLength, pluginProps } = this.props;
     const inputProps = showMaxLength ? {} : { maxLength: 25 };
-    const languageCharactersProps = spanishInputEnabled ? [{ language: 'spanish' }] : [];
 
     return (
         <React.Fragment>
@@ -113,7 +112,8 @@ export class Choice extends React.Component {
                 onChange={this.onChange}
                 markup={value || ''}
                 activePlugins={['languageCharacters']}
-                languageCharactersProps={languageCharactersProps}
+                pluginProps={pluginProps}
+                languageCharactersProps={[{ language: 'spanish' }]}
                 spellCheck={spellCheck}
                 {...inputProps}
             />
@@ -141,7 +141,7 @@ export class AlternateSection extends React.Component {
     maxLength: PropTypes.number,
     showMaxLength: PropTypes.bool,
     spellCheck: PropTypes.bool,
-    spanishInputEnabled: PropTypes.bool
+    pluginProps: PropTypes.object
   };
 
   state = {};
@@ -238,7 +238,7 @@ export class AlternateSection extends React.Component {
   };
 
   render() {
-    const { classes, selectChoices, maxLength, showMaxLength, value, spellCheck, errors, spanishInputEnabled } = this.props;
+    const { classes, selectChoices, maxLength, showMaxLength, value, spellCheck, errors, pluginProps } = this.props;
     const { choices } = this.state;
     const minLength = this.getChoicesMaxLength();
 
@@ -299,7 +299,7 @@ export class AlternateSection extends React.Component {
                     spellCheck={spellCheck}
                     error={errors && errors[index]}
                     showMaxLength={showMaxLength}
-                    spanishInputEnabled={spanishInputEnabled}
+                    pluginProps={pluginProps}
                   />
                 ),
             )}

@@ -122,7 +122,7 @@ export function model(question, session, env) {
       normalizedQuestion.note ||
       translator.t('common:commonCorrectAnswerWithAlternates', { lng: normalizedQuestion.language });
 
-    const { maxLengthPerChoice = [], maxLengthPerChoiceEnabled, spanishInputEnabled } = normalizedQuestion;
+    const { maxLengthPerChoice = [], maxLengthPerChoiceEnabled } = normalizedQuestion;
     const undefinedLengths = !maxLengthPerChoice.length;
 
     // calculate maxLengthPerChoice array if it is not defined or defined incorrectly
@@ -158,7 +158,7 @@ export function model(question, session, env) {
       responseCorrect: env.mode === 'evaluate' ? getScore(normalizedQuestion, session) === 1 : undefined,
       showNote,
       teacherInstructions: defaults.teacherInstructions,
-      spanishInputEnabled
+      responseAreaInputConfiguration: normalizedQuestion.responseAreaInputConfiguration
     };
 
     if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
