@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@8.24.6...@pie-element/multiple-choice@9.0.0) (2024-09-25)
+
+
+### Bug Fixes
+
+* update math-rendering-accessible ([a5588cf](https://github.com/pie-framework/pie-elements/commit/a5588cfdccb40e970e93736dea60de4b01f1a85d))
+* update pie-toolbox and @pie-lib/pie-toolbox-module ([8fa1e13](https://github.com/pie-framework/pie-elements/commit/8fa1e132d97ccc92093e789e4349610c2be21edb))
+
+
+### Features
+
+* update math-rendering-accessible PD-3989, PD-4103, PD-3865 ([01590fe](https://github.com/pie-framework/pie-elements/commit/01590fe0f6ac36d14983cc144ef03f9cff397dfc))
+
+
+### BREAKING CHANGES
+
+* big refactoring on the implementation of math-rendering-accessible
+
+
+
+
+
 ## [8.24.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@8.24.5...@pie-element/multiple-choice@8.24.6) (2024-09-16)
 
 
