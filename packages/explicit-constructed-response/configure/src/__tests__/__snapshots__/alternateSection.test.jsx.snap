@@ -71,7 +71,13 @@ exports[`Choice snapshot renders 1`] = `
       allowValidation={false}
       className=""
       disableUnderline={true}
-      languageCharactersProps={Array []}
+      languageCharactersProps={
+        Array [
+          Object {
+            "language": "spanish",
+          },
+        ]
+      }
       markup="cow"
       maxLength={25}
       onChange={[Function]}

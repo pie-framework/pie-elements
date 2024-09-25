@@ -13,7 +13,13 @@ exports[`ECRToolbar snapshot renders 1`] = `
     allowValidation={false}
     autoFocus={true}
     disableUnderline={true}
-    languageCharactersProps={Array []}
+    languageCharactersProps={
+      Array [
+        Object {
+          "language": "spanish",
+        },
+      ]
+    }
     markup=""
     maxHeight="10px"
     maxLength={25}
@@ -24,7 +30,7 @@ exports[`ECRToolbar snapshot renders 1`] = `
     onKeyDown={[Function]}
     toolbarOpts={
       Object {
-        "width": "auto",
+        "minWidth": "auto",
       }
     }
   />

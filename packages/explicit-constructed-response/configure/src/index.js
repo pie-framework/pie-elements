@@ -52,7 +52,6 @@ export default class ExplicitConstructedResponse extends HTMLElement {
   };
 
   constructor() {
-    console.log("constructor");
     super();
     this._model = ExplicitConstructedResponse.prepareModel();
     this._configuration = sensibleDefaults.configuration;
@@ -61,13 +60,14 @@ export default class ExplicitConstructedResponse extends HTMLElement {
   }
 
   set model(s) {
-    console.log("model");
     this._model = ExplicitConstructedResponse.prepareModel(s);
+    if (this._model.responseAreaInputConfiguration) {
+      this._model.responseAreaInputConfiguration = this._configuration.responseAreaInputConfiguration?.inputConfiguration;
+    }
     this._render();
   }
 
   set configuration(c) {
-    console.log("set config");
     this._configuration = defaults(c, sensibleDefaults.configuration);
 
     // if language:enabled is true, then the corresponding default item model should include a language value;
@@ -112,14 +112,12 @@ export default class ExplicitConstructedResponse extends HTMLElement {
   }
 
   onModelChanged(m, reset) {
-    console.log("onModelChange",m,reset);
     this._model = ExplicitConstructedResponse.prepareModel(m);
     this._render();
     this.dispatchModelUpdated(reset);
   }
 
   onConfigurationChanged(c) {
-    console.log(this._model);
     const previousInputConfig = this._model?.responseAreaInputConfiguration;
 
     this._configuration = c;
@@ -127,10 +125,13 @@ export default class ExplicitConstructedResponse extends HTMLElement {
     const newInputConfig = this._configuration?.responseAreaInputConfiguration?.inputConfiguration;
 
     if (previousInputConfig !== newInputConfig) {
-      this.onModelChanged(this._model, {
+      this._model = {
         ...this._model,
         responseAreaInputConfiguration: newInputConfig
-      });
+      };
+
+      this.onModelChanged(this._model);
+
     } else {
       this._render();
     }
