@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@9.0.0...@pie-element/number-line@9.0.1) (2024-09-26)
+
+
+### Bug Fixes
+
+* update pie-toolbox and @pie-lib/pie-toolbox-module ([c363be4](https://github.com/pie-framework/pie-elements/commit/c363be48f9428024d4acc1eed05cd598840ffe3a))
+* update pie-toolbox and @pie-lib/pie-toolbox-module ([fe83296](https://github.com/pie-framework/pie-elements/commit/fe83296445f9785e67c9643642221b28b4485921))
+* update pie-toolbox and @pie-lib/pie-toolbox-module ([321147b](https://github.com/pie-framework/pie-elements/commit/321147b4072f2a6200d155f7f09c712960fe078c))
+* update pie-toolbox and @pie-lib/pie-toolbox-module ([d3e24e8](https://github.com/pie-framework/pie-elements/commit/d3e24e83d74e93f0720eff8841ebac1d0493b769))
+* update pie-toolbox and @pie-lib/pie-toolbox-module ([a3dd8d6](https://github.com/pie-framework/pie-elements/commit/a3dd8d65a754acadd95134ee825b769355a08a45))
+
+
+
+
+
 # [9.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@8.20.1...@pie-element/number-line@9.0.0) (2024-09-25)
 
 
