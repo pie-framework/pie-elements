@@ -17,7 +17,7 @@ const preparePrintPassage = (model, opts) => {
     title: model.titleEnabled ? passage.title || '' : '',
     author: model.authorEnabled ? passage.author || '' : '',
     subtitle: model.subtitleEnabled ? passage.subtitle || '' : '',
-    text: model.textEnabled ? passage.text || '' : '',
+    text: (model.textEnabled ?? true) ? passage.text || '' : '',
   }));
 };
 
