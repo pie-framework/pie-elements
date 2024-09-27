@@ -1,3 +1,4 @@
+// TODO: also update '../../src/print.js' when updating defaults
 export default {
   teacherInstructionsEnabled: true,
   titleEnabled: false,
