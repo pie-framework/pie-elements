@@ -252,6 +252,7 @@ export class RespAreaToolbar extends React.Component {
 
   onKeyDown = (event) => {
     if (event.key === 'Enter') {
+      this.preventDone = false; 
       this.onAddChoice();
       // Cancelling event
       return false;
@@ -351,10 +352,17 @@ export class RespAreaToolbar extends React.Component {
               this.onDone(val);
             }}
             onBlur={(e) => {
-              const inInInsertCharacter = e.relatedTarget && e.relatedTarget.closest('.insert-character-dialog');
+              if (!e.relatedTarget) {
+                return;
+              }
 
-              this.preventDone = inInInsertCharacter;
+              const isInInsertCharacter = !!(e.relatedTarget && e.relatedTarget.closest('.insert-character-dialog'));
+              const isInDoneButton = !!(e.relatedTarget && e.relatedTarget.closest('[aria-label="Done"]'));
 
+              this.preventDone = isInInsertCharacter || isInDoneButton;
+              if (isInInsertCharacter || isInDoneButton) {
+                this.clickedInside = true;
+              }
               this.onBlur(e);
             }}
             placeholder="Add Choice"
