@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Line, Group, Rect } from 'react-konva';
+import { Line, Group } from 'react-konva';
 import { withStyles } from '@material-ui/core/styles';
 import { ImageComponent } from '@pie-lib/pie-toolbox/icons';
 import { faCorrect, faWrong } from './icons';
