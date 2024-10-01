@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@9.0.1...@pie-element/categorize@9.1.0) (2024-10-01)
+
+
+### Bug Fixes
+
+* update pie-toolbox and @pie-lib/pie-toolbox-module ([ddb9d44](https://github.com/pie-framework/pie-elements/commit/ddb9d444243b881b3a468ecfb5bab551511a2495))
+
+
+### Features
+
+* update documentation (languageCharachters -> characters inside inputConfiguration object ([9e7dceb](https://github.com/pie-framework/pie-elements/commit/9e7dceb5291be261df0eb0bebe1e04f932dc327d))
+
+
+
+
+
 ## [9.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@9.0.0...@pie-element/categorize@9.0.1) (2024-09-26)
 
 

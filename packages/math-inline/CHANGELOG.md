@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@8.0.1...@pie-element/math-inline@8.1.0) (2024-10-01)
+
+
+### Bug Fixes
+
+* update pie-toolbox and @pie-lib/pie-toolbox-module ([ddb9d44](https://github.com/pie-framework/pie-elements/commit/ddb9d444243b881b3a468ecfb5bab551511a2495))
+* **math-inline:** resolve issue where math editor closes when interacting with the keypad PD-4155 DNA-22415 ([b7c9aef](https://github.com/pie-framework/pie-elements/commit/b7c9aef112982eff1cbb5a4ba8b32b039000f3d3))
+
+
+### Features
+
+* update documentation (languageCharachters -> characters inside inputConfiguration object ([9e7dceb](https://github.com/pie-framework/pie-elements/commit/9e7dceb5291be261df0eb0bebe1e04f932dc327d))
+
+
+
+
+
 ## [8.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@8.0.0...@pie-element/math-inline@8.0.1) (2024-09-26)
 
 
