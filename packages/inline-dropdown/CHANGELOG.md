@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.0.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@6.0.1...@pie-element/inline-dropdown@6.0.2) (2024-10-01)
+
+
+### Bug Fixes
+
+* **inline-dropdown:** fix insert spanish/special characters for response areas PD-4138 ([47b096c](https://github.com/pie-framework/pie-elements/commit/47b096c6f18767dc687d41fd5df545be3ce2f07a))
+* language characters props ([a8f1878](https://github.com/pie-framework/pie-elements/commit/a8f1878e7608e098978cf71b642466344c102910))
+* tests ([79d84ae](https://github.com/pie-framework/pie-elements/commit/79d84aecc39b625689a3a7729d0a1e655a6a3aa7))
+* tests ([2141856](https://github.com/pie-framework/pie-elements/commit/21418568306dd6f93e4bbc0eecc0eaabd47afc68))
+* **inline-dropdown, rubric:** add language and special characters to inline-dropdown if not disabled. Add them to rubric PD-4089 ([15a0c03](https://github.com/pie-framework/pie-elements/commit/15a0c03e241ab250d2b95265f26314a60125916e))
+
+
+
+
+
 ## [6.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@6.0.0...@pie-element/inline-dropdown@6.0.1) (2024-09-26)
 
 

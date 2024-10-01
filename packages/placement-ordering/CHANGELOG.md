@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.0.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@10.0.1...@pie-element/placement-ordering@10.0.2) (2024-10-01)
+
+
+### Bug Fixes
+
+* **placement-ordering:** Added translateZ(0) to body to resolve rendering issues in Chrome v106+ for drag n drop PD-3656 ([0a76049](https://github.com/pie-framework/pie-elements/commit/0a760490f25fd9e5beb33638b8e8b73952870358))
+
+
+
+
+
 ## [10.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@10.0.0...@pie-element/placement-ordering@10.0.1) (2024-09-26)
 
 
