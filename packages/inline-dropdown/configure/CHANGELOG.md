@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.0.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-configure@6.0.2...@pie-element/inline-dropdown-configure@6.0.3) (2024-10-01)
+
+
+### Bug Fixes
+
+* update pie-toolbox and @pie-lib/pie-toolbox-module ([ddb9d44](https://github.com/pie-framework/pie-elements/commit/ddb9d444243b881b3a468ecfb5bab551511a2495))
+
+
+
+
+
 ## [6.0.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-configure@6.0.1...@pie-element/inline-dropdown-configure@6.0.2) (2024-10-01)
 
 
