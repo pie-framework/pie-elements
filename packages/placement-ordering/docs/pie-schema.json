@@ -508,7 +508,7 @@
             }
           }
         },
-        "languageCharacters": {
+        "characters": {
           "title": "EditableHtmlButtonConfigure",
           "type": "object",
           "properties": {
@@ -807,7 +807,7 @@
                 }
               }
             },
-            "languageCharacters": {
+            "characters": {
               "title": "EditableHtmlButtonConfigure",
               "type": "object",
               "properties": {
@@ -1091,7 +1091,7 @@
                 }
               }
             },
-            "languageCharacters": {
+            "characters": {
               "title": "EditableHtmlButtonConfigure",
               "type": "object",
               "properties": {

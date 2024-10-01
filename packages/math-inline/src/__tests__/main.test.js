@@ -151,13 +151,10 @@ describe('Math-Inline Main', () => {
     });
 
     it('should deactivate the keypad if the input is not focused and a click or touch event occurs', () => {
-      textarea.blur();
+      const event = { key: 'ArrowDown', target: document.activeElement };
       wrapper.setState({ activeAnswerBlock: 'r1' });
 
-      const differentElement = document.createElement('div');
-      document.body.appendChild(differentElement);
-
-      instance.handleKeyDown({ type: 'click', target: differentElement }, 'r2');
+      instance.onBlur(event);
 
       expect(wrapper.state('activeAnswerBlock')).toEqual('');
     });
