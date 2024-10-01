@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@9.0.1...@pie-element/multiple-choice@9.1.0) (2024-10-01)
+
+
+### Features
+
+* **multiple-choice:** set letter spacing to normal to fix PD-4037 ([5d72a4c](https://github.com/pie-framework/pie-elements/commit/5d72a4ce90841a402981cc5fd72cc24a435c64ac))
+
+
+
+
+
 ## [9.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@9.0.0...@pie-element/multiple-choice@9.0.1) (2024-09-26)
 
 

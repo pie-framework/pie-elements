@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.0.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-configure@8.0.1...@pie-element/number-line-configure@8.0.2) (2024-10-01)
+
+
+### Bug Fixes
+
+* **number-line:** add image support events PD-4088 ([2aed43b](https://github.com/pie-framework/pie-elements/commit/2aed43bfd17c4a634ae00dfdea06b6b1d3e0f5ac))
+
+
+
+
+
 ## [8.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-configure@8.0.0...@pie-element/number-line-configure@8.0.1) (2024-09-26)
 
 

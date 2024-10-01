@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric-configure@4.0.1...@pie-element/rubric-configure@4.0.2) (2024-10-01)
+
+
+### Bug Fixes
+
+* **inline-dropdown, rubric:** add language and special characters to inline-dropdown if not disabled. Add them to rubric PD-4089 ([15a0c03](https://github.com/pie-framework/pie-elements/commit/15a0c03e241ab250d2b95265f26314a60125916e))
+
+
+
+
+
 ## [4.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric-configure@4.0.0...@pie-element/rubric-configure@4.0.1) (2024-09-26)
 
 

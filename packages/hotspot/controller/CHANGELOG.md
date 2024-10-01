@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-controller@5.0.1...@pie-element/hotspot-controller@5.0.2) (2024-10-01)
+
+
+### Bug Fixes
+
+* **hotspot:** delete default values used for testing PD-4029 ([c39cb8f](https://github.com/pie-framework/pie-elements/commit/c39cb8f7bd6fbafb60c2a03dce168642cbaeedda))
+* **hotspot:** handle selectedHotapotColor and hoverOutlineColor student view PD-4029 ([ab4867b](https://github.com/pie-framework/pie-elements/commit/ab4867bc5659b94b6133843082a664fcb7e9aa5c))
+
+
+
+
+
 ## [5.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-controller@5.0.0...@pie-element/hotspot-controller@5.0.1) (2024-09-26)
 
 
