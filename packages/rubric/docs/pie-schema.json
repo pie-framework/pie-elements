@@ -166,7 +166,7 @@
             }
           }
         },
-        "languageCharacters": {
+        "characters": {
           "title": "EditableHtmlButtonConfigure",
           "type": "object",
           "properties": {
