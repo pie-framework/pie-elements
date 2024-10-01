@@ -67,6 +67,8 @@ class HotspotComponent extends React.Component {
         shapes,
         outlineColor,
         hotspotColor,
+        hoverOutlineColor,
+        selectedHotspotColor,
         dimensions,
         rationale,
         teacherInstructions,
@@ -110,6 +112,8 @@ class HotspotComponent extends React.Component {
             dimensions={dimensions}
             imageUrl={imageUrl}
             hotspotColor={hotspotColor}
+            hoverOutlineColor={hoverOutlineColor}
+            selectedHotspotColor={selectedHotspotColor}
             multipleCorrect={multipleCorrect}
             outlineColor={outlineColor}
             onSelectChoice={onSelectChoice}
