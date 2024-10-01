@@ -1,7 +1,13 @@
 import Main from './main';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { ModelUpdatedEvent, InsertSoundEvent, DeleteSoundEvent } from '@pie-framework/pie-configure-events';
+import {
+  ModelUpdatedEvent,
+  InsertSoundEvent,
+  DeleteSoundEvent,
+  InsertImageEvent,
+  DeleteImageEvent,
+} from '@pie-framework/pie-configure-events';
 import * as defaults from './defaults';
 import * as math from 'mathjs';
 import cloneDeep from 'lodash/cloneDeep';
@@ -72,7 +78,7 @@ export default class NumberLine extends HTMLElement {
     // Therefore, in such environments, we will make sure to keep a modelCopy (initialised in set model) and use it to reset
     // the model in set configuration (resetModelAfterConfigurationIsSet) if set configuration is ever called
     const pieAuthors = document.querySelectorAll('pie-author');
-    this.hasPlayerAsParent = Array.from(pieAuthors).some(author => author.contains(this));
+    this.hasPlayerAsParent = Array.from(pieAuthors).some((author) => author.contains(this));
 
     if (this.hasPlayerAsParent) {
       if (this._modelCopy) {
@@ -81,7 +87,7 @@ export default class NumberLine extends HTMLElement {
         delete this._modelCopy;
       }
     }
-  }
+  };
 
   set configuration(c) {
     const newConfiguration = {
@@ -136,6 +142,14 @@ export default class NumberLine extends HTMLElement {
     this._render();
   };
 
+  insertImage(handler) {
+    this.dispatchEvent(new InsertImageEvent(handler));
+  }
+
+  onDeleteImage(src, done) {
+    this.dispatchEvent(new DeleteImageEvent(src, done));
+  }
+
   insertSound(handler) {
     this.dispatchEvent(new InsertSoundEvent(handler));
   }
@@ -150,6 +164,10 @@ export default class NumberLine extends HTMLElement {
       configuration: this._configuration,
       onChange: this.onChange,
       onConfigurationChanged: this.onConfigurationChanged,
+      imageSupport: {
+        add: this.insertImage.bind(this),
+        delete: this.onDeleteImage.bind(this),
+      },
       uploadSoundSupport: {
         add: this.insertSound.bind(this),
         delete: this.onDeleteSound.bind(this),
