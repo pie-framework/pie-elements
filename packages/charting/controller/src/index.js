@@ -217,7 +217,7 @@ export function model(question, session, env) {
     if (env.mode === 'view') {
       // eslint-disable-next-line no-unused-vars
       base.correctedAnswer = answers.map(({ correctness, ...rest }) => {
-        return { ...rest, interactive: false };
+        return { ...rest, interactive: false, editable: false };
       });
 
       base.addCategoryEnabled = false;
