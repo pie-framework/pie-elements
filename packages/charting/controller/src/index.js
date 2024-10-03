@@ -209,6 +209,7 @@ export function model(question, session, env) {
       scoringType,
       studentNewCategoryDefaultLabel,
       language,
+      env,
     };
 
     const scoreObject = getScore(normalizedQuestion, session, env);
@@ -217,7 +218,7 @@ export function model(question, session, env) {
     if (env.mode === 'view') {
       // eslint-disable-next-line no-unused-vars
       base.correctedAnswer = answers.map(({ correctness, ...rest }) => {
-        return { ...rest, interactive: false, editable: false };
+        return { ...rest, interactive: false };
       });
 
       base.addCategoryEnabled = false;
