@@ -129,7 +129,7 @@ export class Main extends React.Component {
       <div>
         <div className={classes.modelPreview}>
           <h3 className={classes.titleContainer} dangerouslySetInnerHTML={{ __html: model.title }}></h3>
-          <p dangerouslySetInnerHTML={{ __html: model.question }}></p>
+          <p dangerouslySetInnerHTML={{ __html: model.prompt }}></p>
 
           <CorrectAnswerToggle
             language={language}

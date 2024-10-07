@@ -20,7 +20,7 @@ Indicates the selected response sector for model value
 
 The title prompt of the item
 
-# `question` (string, required)
+# `prompt` (string, required)
 
 The question prompt or item stem
 
