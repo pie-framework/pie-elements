@@ -61,6 +61,6 @@
     "rollup-plugin-analyzer": "^4.0.0"
   },
   "resolutions": {
-    "mathjs": "2.1.1"
+    "complex.js": "2.1.1"
   }
 }
