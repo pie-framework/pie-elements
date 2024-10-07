@@ -22,10 +22,12 @@ export class AnswerFraction extends React.Component {
     let value = parseInt(event.target.value);
     const { model, onAnswerChange, answers } = this.props;
     const newAnswers = { ...answers };
-    if(key === 'noOfModel' && value > model.maxModelSelected) {
-      value = model.maxModelSelected;
-    } else if(key === 'partsPerModel' && value > 9) {
-      value = 9;
+    let min = 1;
+    let max = (key === 'noOfModel') ? model.maxModelSelected : 9;
+    if(value > max) {
+      value = max;
+    } else if(value < min) {
+      value = min;
     }
     newAnswers[key] = value;
     onAnswerChange(newAnswers);
