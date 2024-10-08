@@ -13,7 +13,8 @@
     "prop-types": "^15.6.1",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
-    "recharts": "2.2.0"
+    "recharts": "2.2.0",
+    "complex.js": "2.1.1"
   },
   "author": "",
   "license": "ISC",
@@ -25,8 +26,5 @@
   "module": "src/index.js",
   "exports": {
     ".": "./src/index.js"
-  },
-  "resolutions": {
-    "complex.js": "2.1.1"
   }
 }

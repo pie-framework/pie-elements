@@ -20,7 +20,8 @@
     "lodash": "^4.17.10",
     "prop-types": "^15.6.1",
     "react": "^16.8.1",
-    "react-dom": "^16.8.1"
+    "react-dom": "^16.8.1",
+    "complex.js": "2.1.1"
   },
   "author": "",
   "license": "ISC",
@@ -29,8 +30,5 @@
   "exports": {
     ".": "./src/index.js",
     "./print": "./src/print.js"
-  },
-  "resolutions": {
-    "complex.js": "2.1.1"
   }
 }

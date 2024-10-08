@@ -8,9 +8,7 @@
     "@pie-lib/pie-toolbox": "2.0.11",
     "debug": "^3.1.0",
     "js-combinatorics": "^0.5.4",
-    "lodash": "^4.17.19"
-  },
-  "resolutions": {
+    "lodash": "^4.17.19",
     "complex.js": "2.1.1"
   }
 }

@@ -8,13 +8,11 @@
   },
   "dependencies": {
     "@pie-lib/pie-toolbox": "2.0.11",
-    "lodash": "^4.17.15"
+    "lodash": "^4.17.15",
+    "complex.js": "2.1.1"
   },
   "author": "",
   "license": "ISC",
   "main": "lib/index.js",
-  "module": "src/index.js",
-  "resolutions": {
-    "complex.js": "2.1.1"
-  }
+  "module": "src/index.js"
 }
