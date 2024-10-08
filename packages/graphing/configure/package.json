@@ -20,5 +20,8 @@
   "scripts": {
     "test": "./node_modules/.bin/jest"
   },
-  "license": "ISC"
+  "license": "ISC",
+  "resolutions": {
+    "complex.js": "2.1.1"
+  }
 }

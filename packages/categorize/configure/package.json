@@ -22,5 +22,8 @@
     "react-dnd-html5-backend": "^14.0.2",
     "react-dom": "^16.8.1"
   },
-  "gitHead": "a53e5e851a76da9c1d1a919b277ca0c4c8a8bff2"
+  "gitHead": "a53e5e851a76da9c1d1a919b277ca0c4c8a8bff2",
+  "resolutions": {
+    "complex.js": "2.1.1"
+  }
 }

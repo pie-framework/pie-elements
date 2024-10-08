@@ -22,5 +22,8 @@
   "exports": {
     ".": "./src/index.js",
     "./print": "./src/print.js"
+  },
+  "resolutions": {
+    "complex.js": "2.1.1"
   }
 }

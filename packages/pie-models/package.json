@@ -35,5 +35,8 @@
     "typescript": "^3.2.2",
     "typescript-json-schema": "^0.34.0",
     "wetzel": "0.0.5"
+  },
+  "resolutions": {
+    "complex.js": "2.1.1"
   }
 }
