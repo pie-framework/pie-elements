@@ -12,8 +12,8 @@ import TextField from '@material-ui/core/TextField';
 import { withStyles } from '@material-ui/core/styles';
 import max from 'lodash/max';
 import classnames from 'classnames';
-
-import { getAdjustedLength } from './markupUtils';
+import { EditableHtml } from '@pie-lib/pie-toolbox/editable-html';
+import { stripHtmlTags, getAdjustedLength } from './markupUtils';
 
 const styles = (theme) => ({
   design: {
@@ -71,6 +71,7 @@ export class Choice extends React.Component {
     value: PropTypes.string,
     spellCheck: PropTypes.bool,
     showMaxLength: PropTypes.bool,
+    pluginProps: PropTypes.object
   };
 
   state = {
@@ -86,42 +87,42 @@ export class Choice extends React.Component {
   }
 
   onChange = (e) => {
-    const { value } = e.target;
-
-    this.setState({ value });
-    this.updateText(value);
+    const strippedValue = stripHtmlTags(e);
+    this.setState({ value: strippedValue });
+    this.updateText(strippedValue);
   };
 
   render() {
     const { value } = this.state;
-    const { classes, onDelete, spellCheck, error, showMaxLength } = this.props;
+    const { classes, onDelete, spellCheck, error, showMaxLength, pluginProps } = this.props;
     const inputProps = showMaxLength ? {} : { maxLength: 25 };
 
-
     return (
-      <React.Fragment>
-        <div
-          style={{
-            alignItems: 'center',
-            display: 'flex',
-            justifyContent: 'space-between',
-          }}
-        >
-          <OutlinedInput
-            className={classnames(classes.choice, error && classes.inputError)}
-            value={value}
-            onChange={this.onChange}
-            labelWidth={0}
-            disableUnderline
-            spellCheck={spellCheck}
-            inputProps={inputProps}
-          />
-          <IconButton aria-label="delete" className={classes.deleteBtn} onClick={onDelete}>
-            <Delete />
-          </IconButton>
-        </div>
-        {error && <div className={classes.errorText}>{error}</div>}
-      </React.Fragment>
+        <React.Fragment>
+          <div
+              style={{
+                alignItems: 'center',
+                display: 'flex',
+                justifyContent: 'space-between',
+              }}
+          >
+            <EditableHtml
+                className={classnames(classes.choice, error && classes.inputError)}
+                disableUnderline
+                onChange={this.onChange}
+                markup={value || ''}
+                activePlugins={['languageCharacters']}
+                pluginProps={pluginProps}
+                languageCharactersProps={[{ language: 'spanish' }]}
+                spellCheck={spellCheck}
+                {...inputProps}
+            />
+            <IconButton aria-label="delete" className={classes.deleteBtn} onClick={onDelete}>
+              <Delete />
+            </IconButton>
+          </div>
+          {error && <div className={classes.errorText}>{error}</div>}
+        </React.Fragment>
     );
   }
 }
@@ -140,6 +141,7 @@ export class AlternateSection extends React.Component {
     maxLength: PropTypes.number,
     showMaxLength: PropTypes.bool,
     spellCheck: PropTypes.bool,
+    pluginProps: PropTypes.object
   };
 
   state = {};
@@ -236,7 +238,7 @@ export class AlternateSection extends React.Component {
   };
 
   render() {
-    const { classes, selectChoices, maxLength, showMaxLength, value, spellCheck, errors } = this.props;
+    const { classes, selectChoices, maxLength, showMaxLength, value, spellCheck, errors, pluginProps } = this.props;
     const { choices } = this.state;
     const minLength = this.getChoicesMaxLength();
 
@@ -297,6 +299,7 @@ export class AlternateSection extends React.Component {
                     spellCheck={spellCheck}
                     error={errors && errors[index]}
                     showMaxLength={showMaxLength}
+                    pluginProps={pluginProps}
                   />
                 ),
             )}

@@ -141,6 +141,12 @@
       "type": "string",
       "title": "language"
     },
+    "spanishInputEnabled": {
+      "description": "Whether a control to allow insertion of spanish characters should be displayed",
+      "default": true,
+      "type": "boolean",
+      "title": "spanishInputEnabled"
+    },
     "id": {
       "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
       "type": "string",
