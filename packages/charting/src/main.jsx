@@ -58,12 +58,19 @@ export class Main extends React.Component {
       studentNewCategoryDefaultLabel,
       showToggle,
       rationale,
-      correctedAnswer,
       correctAnswer,
       language,
+      env,
     } = model;
 
+    let { correctedAnswer } = model;
+
     const correctData = (correctAnswer?.data || []).map((data) => ({ ...data, interactive: false, editable: false }));
+    const { mode } = env || {};
+    // need to make labels disabled in view mode PD-3928
+    if (mode === 'view') {
+      correctedAnswer = (correctedAnswer || []).map((data) => ({ ...data, editable: false }));
+    }
 
     return (
       <div className={classes.mainContainer}>

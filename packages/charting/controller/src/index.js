@@ -209,6 +209,7 @@ export function model(question, session, env) {
       scoringType,
       studentNewCategoryDefaultLabel,
       language,
+      env,
     };
 
     const scoreObject = getScore(normalizedQuestion, session, env);
