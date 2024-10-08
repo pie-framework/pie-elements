@@ -20,5 +20,8 @@
     "jest": "^22.4.0"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "resolutions": {
+    "complex.js": "2.1.1"
+  }
 }

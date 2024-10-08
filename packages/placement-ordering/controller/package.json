@@ -9,5 +9,8 @@
     "debug": "^3.1.0",
     "js-combinatorics": "^0.5.4",
     "lodash": "^4.17.19"
+  },
+  "resolutions": {
+    "complex.js": "2.1.1"
   }
 }

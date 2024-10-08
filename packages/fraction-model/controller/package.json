@@ -14,5 +14,8 @@
     "lodash": "^4.17.15"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "resolutions": {
+    "complex.js": "2.1.1"
+  }
 }

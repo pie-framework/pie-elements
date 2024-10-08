@@ -15,5 +15,8 @@
     "debug": "^4.1.1",
     "humps": "^2.0.1",
     "lodash": "^4.17.15"
+  },
+  "resolutions": {
+    "complex.js": "2.1.1"
   }
 }
