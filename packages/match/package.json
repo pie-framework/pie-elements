@@ -19,13 +19,11 @@
     "lodash": "^4.17.10",
     "prop-types": "^15.6.1",
     "react": "^16.8.1",
-    "react-dom": "^16.8.1"
+    "react-dom": "^16.8.1",
+    "complex.js": "2.1.1"
   },
   "author": "",
   "license": "ISC",
   "gitHead": "0e14ff981bcdc8a89a0e58484026496701bfdbc3",
-  "module": "src/index.js",
-  "resolutions": {
-    "complex.js": "2.1.1"
-  }
+  "module": "src/index.js"
 }

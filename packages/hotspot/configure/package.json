@@ -18,10 +18,8 @@
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-konva": "^16.9.0-0"
-  },
-  "license": "ISC",
-  "resolutions": {
+    "react-konva": "^16.9.0-0",
     "complex.js": "2.1.1"
-  }
+  },
+  "license": "ISC"
 }

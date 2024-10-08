@@ -15,10 +15,8 @@
     "lodash": "^4.17.15",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
-  },
-  "license": "ISC",
-  "resolutions": {
+    "react-dom": "^16.8.6",
     "complex.js": "2.1.1"
-  }
+  },
+  "license": "ISC"
 }

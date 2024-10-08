@@ -18,10 +18,8 @@
     "react": "^16.8.1",
     "react-dnd": "^14.0.5",
     "react-dom": "^16.8.1",
-    "react-swipeable-views": "^0.12.17"
-  },
-  "license": "ISC",
-  "resolutions": {
+    "react-swipeable-views": "^0.12.17",
     "complex.js": "2.1.1"
-  }
+  },
+  "license": "ISC"
 }

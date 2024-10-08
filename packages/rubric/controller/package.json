@@ -8,9 +8,7 @@
   },
   "dependencies": {
     "@pie-lib/pie-toolbox": "2.0.11",
-    "lodash": "^4.17.15"
-  },
-  "resolutions": {
+    "lodash": "^4.17.15",
     "complex.js": "2.1.1"
   }
 }
