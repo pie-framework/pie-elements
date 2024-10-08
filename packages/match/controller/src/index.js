@@ -347,7 +347,7 @@ export const validate = (model = {}, config = {}) => {
     columnsErrors[headerIndex] = '';
 
     if (maxLengthAnswers && getInnerText(heading).length > maxLengthAnswers) {
-      columnsErrors[headerIndex] += `Content length should be maximum ${maxLengthQuestionsHeading} characters. `;
+      columnsErrors[headerIndex] += `Content length should be maximum ${maxLengthAnswers} characters. `;
     }
 
     if (!heading) {
