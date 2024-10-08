@@ -12,5 +12,8 @@
     "react-dom": "^16.8.1"
   },
   "author": "Pie framework developers",
-  "license": "ISC"
+  "license": "ISC",
+  "resolutions": {
+    "complex.js": "2.1.1"
+  }
 }

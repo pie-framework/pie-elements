@@ -27,5 +27,8 @@
   "license": "ISC",
   "gitHead": "0e14ff981bcdc8a89a0e58484026496701bfdbc3",
   "main": "lib/index.js",
-  "module": "src/index.js"
+  "module": "src/index.js",
+  "resolutions": {
+    "complex.js": "2.1.1"
+  }
 }
