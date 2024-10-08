@@ -13,5 +13,8 @@
   "author": "",
   "license": "ISC",
   "main": "lib/index.js",
-  "module": "src/index.js"
+  "module": "src/index.js",
+  "resolutions": {
+    "complex.js": "2.1.1"
+  }
 }
