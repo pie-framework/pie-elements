@@ -12,8 +12,7 @@
     "@pie-lib/pie-toolbox": "2.0.11",
     "classnames": "^2.2.5",
     "debug": "^4.1.1",
-    "lodash": "^4.17.11",
-    "complex.js": "2.1.1"
+    "lodash": "^4.17.11"
   },
   "author": "pie framework developers",
   "license": "ISC",

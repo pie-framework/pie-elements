@@ -16,8 +16,7 @@
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
     "react-test-renderer": "^16.3.2",
-    "react-transition-group": "^2.3.1",
-    "complex.js": "2.1.1"
+    "react-transition-group": "^2.3.1"
   },
   "gitHead": "0e14ff981bcdc8a89a0e58484026496701bfdbc3",
   "scripts": {

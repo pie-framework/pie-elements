@@ -19,8 +19,7 @@
     "react-dom": "^16.8.1",
     "react-draggable": "^3.3.0",
     "react-jss": "^8.4.0",
-    "react-transition-group": "^2.3.1",
-    "complex.js": "2.1.1"
+    "react-transition-group": "^2.3.1"
   },
   "author": "pie framework developers",
   "license": "ISC",

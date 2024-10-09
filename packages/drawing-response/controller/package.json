@@ -11,7 +11,6 @@
   "main": "lib/index.js",
   "module": "src/index.js",
   "dependencies": {
-    "debug": "^4.1.1",
-    "complex.js": "2.1.1"
+    "debug": "^4.1.1"
   }
 }

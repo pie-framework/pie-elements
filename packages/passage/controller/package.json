@@ -8,7 +8,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "lodash": "^4.17.15",
-    "complex.js": "2.1.1"
+    "lodash": "^4.17.15"
   }
 }
