@@ -19,10 +19,17 @@ export class AnswerFraction extends React.Component {
    * @returns updated answer change object
    */
   onValueChange = (key) => (event) => {
-    const { onAnswerChange, answers } = this.props;
+    let value = parseInt(event?.target?.value);
+    const { model, onAnswerChange, answers } = this.props;
     const newAnswers = { ...answers };
-
-    newAnswers[key] = parseInt(event.target.value);
+    const min = 1;
+    const max = (key === 'noOfModel') ? model.maxModelSelected : 9;
+    if(value > max) {
+      value = max;
+    } else if(value < min) {
+      value = min;
+    }
+    newAnswers[key] = value;
     onAnswerChange(newAnswers);
   };
 

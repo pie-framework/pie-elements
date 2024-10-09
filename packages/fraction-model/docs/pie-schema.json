@@ -33,7 +33,7 @@
       "type": "string",
       "title": "title"
     },
-    "question": {
+    "prompt": {
       "description": "The question prompt or item stem",
       "type": "string",
       "title": "question"
@@ -92,7 +92,7 @@
     "correctResponse",
     "element",
     "id",
-    "question",
+    "prompt",
     "title"
   ],
   "definitions": {
