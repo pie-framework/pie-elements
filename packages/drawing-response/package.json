@@ -19,8 +19,7 @@
     "prop-types": "^15.6.1",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
-    "react-konva": "^16.10.1-0",
-    "complex.js": "2.1.1"
+    "react-konva": "^16.10.1-0"
   },
   "author": "pie framework developers",
   "license": "ISC",

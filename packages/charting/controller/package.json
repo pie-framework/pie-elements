@@ -11,8 +11,7 @@
   "dependencies": {
     "@pie-lib/pie-toolbox": "2.0.11",
     "debug": "^4.1.1",
-    "lodash": "^4.17.15",
-    "complex.js": "2.1.1"
+    "lodash": "^4.17.15"
   },
   "devDependencies": {
     "babel-jest": "^22.4.0",

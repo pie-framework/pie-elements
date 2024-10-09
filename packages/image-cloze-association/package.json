@@ -15,8 +15,7 @@
     "humps": "^2.0.1",
     "prop-types": "^15.6.1",
     "react": "^16.8.1",
-    "react-dom": "^16.8.1",
-    "complex.js": "2.1.1"
+    "react-dom": "^16.8.1"
   },
   "author": "pie framework developers",
   "license": "ISC",

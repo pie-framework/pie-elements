@@ -14,7 +14,6 @@
     "prop-types": "^15.6.2",
     "react": "^16.8.1",
     "react-dnd": "^14.0.5",
-    "react-dom": "^16.8.1",
-    "complex.js": "2.1.1"
+    "react-dom": "^16.8.1"
   }
 }
