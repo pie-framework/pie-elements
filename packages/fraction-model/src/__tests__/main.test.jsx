@@ -9,7 +9,7 @@ describe('Main', () => {
     model: {
       correctResponse: [],
       title: '',
-      question: '',
+      prompt: '',
       modelTypeSelected: 'bar',
       maxModelSelected: 1,
       partsPerModel: 5,
@@ -99,8 +99,8 @@ describe('Main', () => {
           allowedStudentConfig: true,
         }),
       ).toEqual({
-        noOfModel: 0,
-        partsPerModel: 0,
+        noOfModel: '',
+        partsPerModel: '',
         response: [],
       });
     });

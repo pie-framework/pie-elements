@@ -384,9 +384,9 @@ Indicates if the item has to be displayed in the Settings Panel
 
 Indicates the label for the item that has to be displayed in the Settings Panel
 
-# `question` (object)
+# `prompt` (object)
 
-Properties of the `question` object:
+Properties of the `prompt` object:
 
 ## `inputConfiguration` (object)
 

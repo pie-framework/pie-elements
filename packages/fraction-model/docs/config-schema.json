@@ -523,7 +523,7 @@
         }
       }
     },
-    "question": {
+    "prompt": {
       "title": "EditableHtmlPluginConfigure",
       "type": "object",
       "properties": {

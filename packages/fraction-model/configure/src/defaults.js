@@ -2,7 +2,7 @@ export default {
   model: {
     correctResponse: [],
     title: '',
-    question: '',
+    prompt: '',
     modelTypeSelected: 'bar',
     maxModelSelected: 1,
     partsPerModel: 5,
@@ -25,7 +25,7 @@ export default {
         image: { disabled: false },
       },
     },
-    question: {
+    prompt: {
       label: 'Question',
       settings: true,
       enabled: true,

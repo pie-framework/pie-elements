@@ -31,7 +31,7 @@ export interface FractionModelPie extends PieModel {
   title: string;
 
   /** The question prompt or item stem */
-  question: string;
+  prompt: string;
 
   /** Indicates if the model type should be Bar or Pie model
    * @default: 'bar'
@@ -117,7 +117,7 @@ export interface FractionModelConfigure extends PromptConfig, CommonConfigSettin
    * on question stem
    * E.g. audio, video, image
    */
-  question?: EditableHtmlPluginConfigure;
+  prompt?: EditableHtmlPluginConfigure;
 
   /** Configuration for model options selection like Parts per model, max no. of models etc */
   modelOptions?: FractionModelOptionsConfigure;

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Bar, BarChart, Cell, LabelList, Pie, PieChart, YAxis } from 'recharts';
 import { withStyles } from '@material-ui/core/styles';
 
@@ -178,6 +178,8 @@ const FractionModelChart = (props) => {
     return <div className={classes.barChartParentDiv}>{barItems}</div>;
   };
 
+  const pieChartRef = useRef(null);
+  
   /*
    * Function to create and return pie fraction model
    * */
@@ -221,13 +223,25 @@ const FractionModelChart = (props) => {
         </PieChart>,
       );
     });
-    return <div className={classes.pieChartParentDiv}>{pieItems}</div>;
+    return <div ref={pieChartRef} className={classes.pieChartParentDiv}>{pieItems}</div>;
   };
 
   //Render bar or pie models as per model type
   if (modelType === 'bar') {
     return getBarFractionModel();
   } else if (modelType === 'pie') {
+    //Remove the last sector line of pie chart if parts per model is 1
+    useEffect(() => {
+      if (pieChartRef?.current && partsPerModel === 1){
+        const paths = pieChartRef.current.querySelectorAll('path');
+        if (paths.length > 0) {
+          paths.forEach((path) => {
+            let d = path.getAttribute('d');
+            path.setAttribute('d', d.replaceAll('L 100,100', ''));
+          });
+        }
+      }
+    }, []);
     return getPieFractionModel();
   }
 };

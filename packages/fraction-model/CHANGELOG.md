@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/fraction-model@2.1.1...@pie-element/fraction-model@2.1.2) (2024-10-09)
+
+
+### Bug Fixes
+
+* **fraction-model:** change question property to prompt for TTS issue | SC-32705 ([4087f88](https://github.com/pie-framework/pie-elements/commit/4087f884813c64b83e3190aa447c8b2ac7771a71))
+
+
+
+
+
 ## [2.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/fraction-model@2.1.0...@pie-element/fraction-model@2.1.1) (2024-10-03)
 
 

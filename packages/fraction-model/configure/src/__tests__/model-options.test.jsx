@@ -28,7 +28,7 @@ export const defaultProps = {
   model: {
     correctResponse: [],
     title: '',
-    question: '',
+    prompt: '',
     modelTypeSelected: 'bar',
     maxModelSelected: 1,
     partsPerModel: 5,
