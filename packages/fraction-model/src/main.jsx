@@ -50,7 +50,7 @@ export class Main extends React.Component {
       response: [],
     };
     if (model.allowedStudentConfig) {
-      (answers.noOfModel = 0), (answers.partsPerModel = 0);
+      (answers.noOfModel = ''), (answers.partsPerModel = '');
     }
     return answers;
   };
