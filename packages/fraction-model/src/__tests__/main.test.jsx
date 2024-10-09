@@ -99,8 +99,8 @@ describe('Main', () => {
           allowedStudentConfig: true,
         }),
       ).toEqual({
-        noOfModel: 0,
-        partsPerModel: 0,
+        noOfModel: '',
+        partsPerModel: '',
         response: [],
       });
     });

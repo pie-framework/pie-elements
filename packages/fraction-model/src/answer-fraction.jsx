@@ -19,7 +19,7 @@ export class AnswerFraction extends React.Component {
    * @returns updated answer change object
    */
   onValueChange = (key) => (event) => {
-    let value = parseInt(event.target.value);
+    let value = parseInt(event.target?.value);
     const { model, onAnswerChange, answers } = this.props;
     const newAnswers = { ...answers };
     const min = 1;
