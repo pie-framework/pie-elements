@@ -232,7 +232,7 @@ const FractionModelChart = (props) => {
   } else if (modelType === 'pie') {
     //Remove the last sector line of pie chart if parts per model is 1
     useEffect(() => {
-      if (pieChartRef.current && partsPerModel === 1){
+      if (pieChartRef?.current && partsPerModel === 1){
         const paths = pieChartRef.current.querySelectorAll('path');
         if (paths.length > 0) {
           paths.forEach((path) => {
