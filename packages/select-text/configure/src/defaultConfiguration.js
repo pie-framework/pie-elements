@@ -1,26 +1,20 @@
-const tokens = () => [
-  {
-    text: '',
-    start: 0,
-    end: 0,
-  },
-];
-
 export default {
   model: {
+    feedbackEnabled: false,
     highlightChoices: false,
-    partialScoring: false,
     maxSelections: 2,
     mode: 'sentence',
-    prompt: 'Question Prompt goes here',
-    text: '',
-    tokens: tokens(),
-    scoringType: 'auto',
-    feedbackEnabled: false,
-    rationaleEnabled: true,
+    partialScoring: false,
+    prompt: '',
     promptEnabled: true,
-    teacherInstructionsEnabled: true,
+    rationale: '',
+    rationaleEnabled: true,
+    scoringType: 'auto',
     studentInstructionsEnabled: true,
+    teacherInstructions: '',
+    teacherInstructionsEnabled: true,
+    text: '',
+    tokens: [],
     toolbarEditorPosition: 'bottom',
   },
   configuration: {

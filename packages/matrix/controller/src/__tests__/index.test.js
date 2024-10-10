@@ -75,6 +75,7 @@ describe('controller', () => {
           promptEnabled: true,
           rowLabels: ["I'm interested in politics.", "I'm interested in economics."],
           teacherInstructions: null,
+          teacherInstructionsEnabled: true,
         });
       });
     });

@@ -3,13 +3,7 @@ import defaults from './defaults';
 
 const log = debug('pie-elements:drawing-response:controller');
 
-export const normalize = (question) => ({
-  promptEnabled: true,
-  teacherInstructionsEnabled: true,
-  studentInstructionsEnabled: true,
-  backgroundImageEnabled: true,
-  ...question,
-});
+export const normalize = (question) => ({ ...defaults, ...question });
 
 export function model(question, session, env) {
   const normalizedQuestion = normalize(question);

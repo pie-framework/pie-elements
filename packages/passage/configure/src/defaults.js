@@ -1,10 +1,6 @@
 export default {
   model: {
-    teacherInstructionsEnabled: true,
-    titleEnabled: true,
-    subtitleEnabled: true,
     authorEnabled: true,
-    textEnabled: true,
     passages: [
       {
         teacherInstructions: '',
@@ -14,6 +10,10 @@ export default {
         text: '',
       },
     ],
+    subtitleEnabled: true,
+    teacherInstructionsEnabled: true,
+    textEnabled: true,
+    titleEnabled: true,
   },
   configuration: {
     baseInputConfiguration: {

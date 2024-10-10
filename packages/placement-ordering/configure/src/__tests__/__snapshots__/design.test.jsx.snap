@@ -213,13 +213,15 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
           "orientation": "vertical",
           "partialScoring": true,
           "placementArea": false,
-          "prompt": "Item Stem goes here",
+          "prompt": "",
           "promptEnabled": true,
+          "rationale": "",
           "rationaleEnabled": true,
           "removeTilesAfterPlacing": true,
           "scoringType": "auto",
           "studentInstructionsEnabled": true,
           "targetLabel": "",
+          "teacherInstructions": "",
           "teacherInstructionsEnabled": true,
           "toolbarEditorPosition": "bottom",
         }
@@ -291,7 +293,7 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
           },
         ]
       }
-      markup="Item Stem goes here"
+      markup=""
       mathMlOptions={
         Object {
           "mmlEditing": false,
@@ -703,13 +705,15 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
           "orientation": "vertical",
           "partialScoring": true,
           "placementArea": false,
-          "prompt": "Item Stem goes here",
+          "prompt": "",
           "promptEnabled": true,
+          "rationale": "",
           "rationaleEnabled": true,
           "removeTilesAfterPlacing": true,
           "scoringType": "auto",
           "studentInstructionsEnabled": true,
           "targetLabel": "",
+          "teacherInstructions": "",
           "teacherInstructionsEnabled": true,
           "toolbarEditorPosition": "bottom",
         }
@@ -781,7 +785,7 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
           },
         ]
       }
-      markup="Item Stem goes here"
+      markup=""
       mathMlOptions={
         Object {
           "mmlEditing": false,

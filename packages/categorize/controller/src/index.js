@@ -113,12 +113,7 @@ export const createDefaultModel = (model = {}) =>
     });
   });
 
-export const normalize = (question) => {
-  return {
-    ...defaults,
-    ...question,
-  };
-};
+export const normalize = (question) => ({ ...defaults, ...question });
 
 /**
  *

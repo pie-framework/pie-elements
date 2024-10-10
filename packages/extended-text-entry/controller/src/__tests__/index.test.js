@@ -1,21 +1,11 @@
 import { model } from '../index';
 import isFunction from 'lodash/isFunction';
 
+import defaultValues from '../defaults';
+
 const defaults = {
+  ...defaultValues,
   feedback: { type: 'default', default: 'this is default feedback' },
-  mathInput: false,
-  prompt: 'Prompt',
-  dimensions: {
-    width: '150',
-    height: '150',
-  },
-  predefinedAnnotations: [
-    { label: 'good', text: 'good', type: 'positive' },
-    { label: 'creative', text: 'creative', type: 'positive' },
-    { label: 'run-on', text: 'run-on', type: 'negative' },
-    { label: 'frag', text: 'fragment', type: 'negative' },
-  ],
-  teacherInstructions: 'Teacher Instructions',
 };
 
 const q = (extras) => ({ ...defaults, ...extras });
@@ -70,7 +60,7 @@ describe('controller', () => {
         spellCheckEnabled: false,
         mathInput: defaults.mathInput,
         playersToolbarPosition: 'bottom',
-        equationEditor: 'miscellaneous',
+        equationEditor: 8,
       });
     });
 
@@ -90,7 +80,7 @@ describe('controller', () => {
         mathInput: defaults.mathInput,
         spellCheckEnabled: false,
         playersToolbarPosition: 'bottom',
-        equationEditor: 'miscellaneous',
+        equationEditor: 8,
       });
     });
 
@@ -110,7 +100,7 @@ describe('controller', () => {
         spellCheckEnabled: false,
         mathInput: defaults.mathInput,
         playersToolbarPosition: 'bottom',
-        equationEditor: 'miscellaneous',
+        equationEditor: 8,
       });
     });
 
@@ -130,7 +120,7 @@ describe('controller', () => {
         spellCheckEnabled: false,
         mathInput: defaults.mathInput,
         playersToolbarPosition: 'bottom',
-        equationEditor: 'miscellaneous',
+        equationEditor: 8,
       });
     });
 
@@ -150,7 +140,7 @@ describe('controller', () => {
         spellCheckEnabled: false,
         mathInput: defaults.mathInput,
         playersToolbarPosition: 'bottom',
-        equationEditor: 'miscellaneous',
+        equationEditor: 8,
       });
     });
 
@@ -170,7 +160,7 @@ describe('controller', () => {
         mathInput: defaults.mathInput,
         spellCheckEnabled: false,
         playersToolbarPosition: 'bottom',
-        equationEditor: 'miscellaneous',
+        equationEditor: 8,
       });
     });
 
@@ -193,7 +183,7 @@ describe('controller', () => {
         mathInput: defaults.mathInput,
         spellCheckEnabled: false,
         playersToolbarPosition: 'bottom',
-        equationEditor: 'miscellaneous',
+        equationEditor: 8,
       });
     });
 
@@ -216,7 +206,7 @@ describe('controller', () => {
         mathInput: defaults.mathInput,
         spellCheckEnabled: false,
         playersToolbarPosition: 'bottom',
-        equationEditor: 'miscellaneous',
+        equationEditor: 8,
       });
     });
 
@@ -236,7 +226,7 @@ describe('controller', () => {
         mathInput: defaults.mathInput,
         spellCheckEnabled: false,
         playersToolbarPosition: 'bottom',
-        equationEditor: 'miscellaneous',
+        equationEditor: 8,
       });
     });
 
@@ -258,7 +248,7 @@ describe('controller', () => {
         mathInput: defaults.mathInput,
         spellCheckEnabled: false,
         playersToolbarPosition: 'bottom',
-        equationEditor: 'miscellaneous',
+        equationEditor: 8,
       });
     });
 
@@ -281,7 +271,7 @@ describe('controller', () => {
         teacherInstructions: defaults.teacherInstructions,
         mathInput: defaults.mathInput,
         playersToolbarPosition: 'bottom',
-        equationEditor: 'miscellaneous',
+        equationEditor: 8,
       });
     });
 
@@ -304,7 +294,7 @@ describe('controller', () => {
         teacherInstructions: null,
         mathInput: defaults.mathInput,
         playersToolbarPosition: 'bottom',
-        equationEditor: 'miscellaneous',
+        equationEditor: 8,
       });
     });
 
@@ -324,7 +314,7 @@ describe('controller', () => {
         teacherInstructions: defaults.teacherInstructions,
         mathInput: defaults.mathInput,
         playersToolbarPosition: 'bottom',
-        equationEditor: 'miscellaneous',
+        equationEditor: 8,
       });
     });
   });

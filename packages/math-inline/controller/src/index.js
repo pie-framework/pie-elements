@@ -133,15 +133,7 @@ export const normalize = (question) => {
     }));
   }
 
-  return {
-    ...defaults,
-    feedbackEnabled: false,
-    promptEnabled: true,
-    rationaleEnabled: true,
-    teacherInstructionsEnabled: true,
-    studentInstructionsEnabled: true,
-    ...question,
-  };
+  return { ...defaults, ...question };
 };
 
 export const model = (question, session, env) =>

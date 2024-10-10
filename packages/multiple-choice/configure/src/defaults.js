@@ -4,21 +4,24 @@
  */
 export default {
   model: {
+    accessibilityLabelsEnabled: false,
     choiceMode: 'checkbox',
     choicePrefix: 'letters',
     choices: [],
-    prompt: 'Question Prompt goes here',
+    choicesLayout: 'vertical',
+    feedbackEnabled: false,
+    gridColumns: 2,
     lockChoiceOrder: true,
     partialScoring: true,
-    scoringType: 'auto',
-    feedbackEnabled: false,
+    prompt: '',
     promptEnabled: true,
+    rationale: '',
     rationaleEnabled: true,
-    teacherInstructionsEnabled: true,
+    scoringType: 'auto',
     studentInstructionsEnabled: true,
+    teacherInstructions: '',
+    teacherInstructionsEnabled: true,
     toolbarEditorPosition: 'bottom',
-    choicesLayout: 'vertical',
-    gridColumns: '2',
   },
   configuration: {
     baseInputConfiguration: {
