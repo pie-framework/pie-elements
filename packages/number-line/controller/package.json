@@ -16,7 +16,7 @@
   "dependencies": {
     "@pie-lib/pie-toolbox": "2.0.12",
     "lodash": "^4.17.15",
-    "mathjs": "^7.5.1"
+    "mathjs": "^13.2.0"
   },
   "author": "",
   "license": "ISC"
