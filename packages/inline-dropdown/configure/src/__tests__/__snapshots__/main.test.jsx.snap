@@ -394,10 +394,10 @@ There should be at most 10 choices defined per response area."
       />
     </WithStyles(Tooltip)>
   </div>
-  <div>
-    <EditableHtml
-      activePlugins={
-        Array [
+  <WithStyles(ResponseAreaComponent)
+    editableHtmlProps={
+      Object {
+        "activePlugins": Array [
           "bold",
           "html",
           "italic",
@@ -418,33 +418,28 @@ There should be at most 10 choices defined per response area."
           "undo",
           "superscript",
           "subscript",
-        ]
-      }
-      allowValidation={false}
-      disableImageAlignmentButtons={true}
-      disabled={false}
-      highlightShape={false}
-      languageCharactersProps={
-        Array [
+        ],
+        "className": undefined,
+        "disableImageAlignmentButtons": true,
+        "disabled": false,
+        "error": undefined,
+        "highlightShape": false,
+        "imageSupport": undefined,
+        "languageCharactersProps": Array [
           Object {
             "language": "spanish",
           },
           Object {
             "language": "special",
           },
-        ]
-      }
-      markup="<div><p>The <span data-type=\\"inline_dropdown\\" data-index=\\"0\\" data-value=\\"cow\\"></span> jumped <span data-type=\\"inline_dropdown\\" data-index=\\"1\\" data-value=\\"over\\"></span> the <span data-type=\\"inline_dropdown\\" data-index=\\"2\\" data-value=\\"moon\\"></span></p></div>"
-      mathMlOptions={
-        Object {
+        ],
+        "markup": "<div><p>The <span data-type=\\"inline_dropdown\\" data-index=\\"0\\" data-value=\\"cow\\"></span> jumped <span data-type=\\"inline_dropdown\\" data-index=\\"1\\" data-value=\\"over\\"></span> the <span data-type=\\"inline_dropdown\\" data-index=\\"2\\" data-value=\\"moon\\"></span></p></div>",
+        "mathMlOptions": Object {
           "mmlEditing": false,
           "mmlOutput": false,
-        }
-      }
-      onChange={[Function]}
-      onDone={[Function]}
-      pluginProps={
-        Object {
+        },
+        "onChange": [Function],
+        "pluginProps": Object {
           "audio": Object {
             "disabled": false,
           },
@@ -460,25 +455,23 @@ There should be at most 10 choices defined per response area."
           "video": Object {
             "disabled": false,
           },
-        }
-      }
-      responseAreaProps={
-        Object {
+        },
+        "responseAreaProps": Object {
           "maxResponseAreas": 10,
           "options": Object {
             "duplicates": true,
           },
           "respAreaToolbar": [Function],
           "type": "inline-dropdown",
-        }
-      }
-      toolbarOpts={
-        Object {
+        },
+        "spellCheck": undefined,
+        "toolbarOpts": Object {
           "position": "top",
-        }
+        },
+        "uploadSoundSupport": undefined,
       }
-    />
-  </div>
+    }
+  />
   <div
     key="0"
   >
@@ -1113,10 +1106,10 @@ There should be at most 10 choices defined per response area."
       />
     </WithStyles(Tooltip)>
   </div>
-  <div>
-    <EditableHtml
-      activePlugins={
-        Array [
+  <WithStyles(ResponseAreaComponent)
+    editableHtmlProps={
+      Object {
+        "activePlugins": Array [
           "bold",
           "html",
           "italic",
@@ -1137,33 +1130,28 @@ There should be at most 10 choices defined per response area."
           "undo",
           "superscript",
           "subscript",
-        ]
-      }
-      allowValidation={false}
-      disableImageAlignmentButtons={true}
-      disabled={false}
-      highlightShape={false}
-      languageCharactersProps={
-        Array [
+        ],
+        "className": undefined,
+        "disableImageAlignmentButtons": true,
+        "disabled": false,
+        "error": undefined,
+        "highlightShape": false,
+        "imageSupport": undefined,
+        "languageCharactersProps": Array [
           Object {
             "language": "spanish",
           },
           Object {
             "language": "special",
           },
-        ]
-      }
-      markup="<div><p>The <span data-type=\\"inline_dropdown\\" data-index=\\"0\\" data-value=\\"cow\\"></span> jumped <span data-type=\\"inline_dropdown\\" data-index=\\"1\\" data-value=\\"over\\"></span> the <span data-type=\\"inline_dropdown\\" data-index=\\"2\\" data-value=\\"moon\\"></span></p></div>"
-      mathMlOptions={
-        Object {
+        ],
+        "markup": "<div><p>The <span data-type=\\"inline_dropdown\\" data-index=\\"0\\" data-value=\\"cow\\"></span> jumped <span data-type=\\"inline_dropdown\\" data-index=\\"1\\" data-value=\\"over\\"></span> the <span data-type=\\"inline_dropdown\\" data-index=\\"2\\" data-value=\\"moon\\"></span></p></div>",
+        "mathMlOptions": Object {
           "mmlEditing": false,
           "mmlOutput": false,
-        }
-      }
-      onChange={[Function]}
-      onDone={[Function]}
-      pluginProps={
-        Object {
+        },
+        "onChange": [Function],
+        "pluginProps": Object {
           "audio": Object {
             "disabled": false,
           },
@@ -1179,25 +1167,23 @@ There should be at most 10 choices defined per response area."
           "video": Object {
             "disabled": false,
           },
-        }
-      }
-      responseAreaProps={
-        Object {
+        },
+        "responseAreaProps": Object {
           "maxResponseAreas": 10,
           "options": Object {
             "duplicates": true,
           },
           "respAreaToolbar": [Function],
           "type": "inline-dropdown",
-        }
-      }
-      toolbarOpts={
-        Object {
+        },
+        "spellCheck": undefined,
+        "toolbarOpts": Object {
           "position": "top",
-        }
+        },
+        "uploadSoundSupport": undefined,
       }
-    />
-  </div>
+    }
+  />
   <div
     key="0"
   >
