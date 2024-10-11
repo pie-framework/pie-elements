@@ -20,6 +20,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Info from '@material-ui/icons/Info';
 import InlineDropdownToolbar from './inline-dropdown-toolbar';
 import { generateValidationMessage } from './utils';
+import ResponseAreaComponent from './response-area';
 
 const { toggle, Panel, dropdown } = settings;
 
@@ -51,9 +52,6 @@ const styles = (theme) => ({
   rationaleChoices: {
     marginBottom: theme.spacing.unit * 2.5,
   },
-  responseArea: {
-    paddingBottom: theme.spacing.unit * 2.5,
-  },
   panelDetails: {
     display: 'block',
     paddingTop: 0,
@@ -73,7 +71,7 @@ const styles = (theme) => ({
     fontSize: theme.typography.fontSize - 2,
     color: theme.palette.error.main,
     paddingTop: theme.spacing.unit,
-  },
+  }
 });
 
 const createElementFromHTML = (htmlString) => {
@@ -82,35 +80,6 @@ const createElementFromHTML = (htmlString) => {
   div.innerHTML = (htmlString || '').trim();
 
   return div;
-};
-
-class ResponseAreaComponent extends React.Component {
-  componentDidMount() {
-    // eslint-disable-next-line react/no-find-dom-node
-    const domNode = ReactDOM.findDOMNode(this);
-
-    renderMath(domNode);
-  }
-
-  componentDidUpdate(prevProps, prevState, snapshot) {
-    // eslint-disable-next-line react/no-find-dom-node
-    const domNode = ReactDOM.findDOMNode(this);
-
-    renderMath(domNode);
-  }
-
-  render() {
-    // tODO we don't need to send classes as a prop, we could create our own styled ResponseAreaComponent with those 2 classes
-    console.log('ResponseAreaComponent rerender');
-    const { editableHtmlProps, responseAreasError, responseAreaChoicesError, classes } = this.props;
-    return (
-        <div className={classes.responseArea}>
-          <EditableHtml {...editableHtmlProps}/>
-          {responseAreasError && <div className={classes.errorText}>{responseAreasError}</div>}
-          {responseAreaChoicesError && <div className={classes.errorText}>{responseAreaChoicesError}</div>}
-        </div>
-    )
-  }
 };
 
 export class Main extends React.Component {
@@ -355,7 +324,6 @@ export class Main extends React.Component {
   };
 
   render() {
-    console.log('Main render')
     const { warning } = this.state;
     const { classes, model, configuration, onConfigurationChanged, imageSupport, uploadSoundSupport } = this.props;
     const {
@@ -546,8 +514,7 @@ export class Main extends React.Component {
 
         <ResponseAreaComponent
             responseAreasError={responseAreasError}
-            responseAreaChoicesError={responseAreasError}
-            classes={classes}
+            responseAreaChoicesError={responseAreaChoicesError}
             editableHtmlProps={{
               pluginProps: getPluginProps(template?.inputConfiguration),
               activePlugins: ALL_PLUGINS,
