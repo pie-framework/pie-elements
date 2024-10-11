@@ -84,6 +84,35 @@ const createElementFromHTML = (htmlString) => {
   return div;
 };
 
+class ResponseAreaComponent extends React.Component {
+  componentDidMount() {
+    // eslint-disable-next-line react/no-find-dom-node
+    const domNode = ReactDOM.findDOMNode(this);
+
+    renderMath(domNode);
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    // eslint-disable-next-line react/no-find-dom-node
+    const domNode = ReactDOM.findDOMNode(this);
+
+    renderMath(domNode);
+  }
+
+  render() {
+    // tODO we don't need to send classes as a prop, we could create our own styled ResponseAreaComponent with those 2 classes
+    console.log('ResponseAreaComponent rerender');
+    const { editableHtmlProps, responseAreasError, responseAreaChoicesError, classes } = this.props;
+    return (
+        <div className={classes.responseArea}>
+          <EditableHtml {...editableHtmlProps}/>
+          {responseAreasError && <div className={classes.errorText}>{responseAreasError}</div>}
+          {responseAreaChoicesError && <div className={classes.errorText}>{responseAreaChoicesError}</div>}
+        </div>
+    )
+  }
+};
+
 export class Main extends React.Component {
   static propTypes = {
     configuration: PropTypes.object.isRequired,
@@ -326,6 +355,7 @@ export class Main extends React.Component {
   };
 
   render() {
+    console.log('Main render')
     const { warning } = this.state;
     const { classes, model, configuration, onConfigurationChanged, imageSupport, uploadSoundSupport } = this.props;
     const {
@@ -514,55 +544,56 @@ export class Main extends React.Component {
           </Tooltip>
         </div>
 
-        <div className={classes.responseArea}>
-          <EditableHtml
-            pluginProps={getPluginProps(template?.inputConfiguration)}
-            activePlugins={ALL_PLUGINS}
-            toolbarOpts={{ position: 'top' }}
-            responseAreaProps={{
-              type: 'inline-dropdown',
-              options: {
-                duplicates: true,
-              },
-              maxResponseAreas: maxResponseAreas,
-              respAreaToolbar: (node, value, onToolbarDone) => {
-                const { respAreaChoices } = this.state;
+        <ResponseAreaComponent
+            responseAreasError={responseAreasError}
+            responseAreaChoicesError={responseAreasError}
+            classes={classes}
+            editableHtmlProps={{
+              pluginProps: getPluginProps(template?.inputConfiguration),
+              activePlugins: ALL_PLUGINS,
+              toolbarOpts: { position: 'top' },
+              responseAreaProps: {
+                type: 'inline-dropdown',
+                options: {
+                  duplicates: true,
+                },
+                maxResponseAreas: maxResponseAreas,
+                respAreaToolbar: (node, value, onToolbarDone) => {
+                  const { respAreaChoices } = this.state;
 
-                return () => (
-                  <InlineDropdownToolbar
-                    onAddChoice={this.onAddChoice}
-                    onCheck={this.onCheck}
-                    onRemoveChoice={(index) => this.onRemoveChoice(node.data.get('index'), index)}
-                    onSelectChoice={(index) => this.onSelectChoice(node.data.get('index'), index)}
-                    node={node}
-                    value={value}
-                    onToolbarDone={onToolbarDone}
-                    choices={respAreaChoices[node.data.get('index')]}
-                    spellCheck={spellCheckEnabled}
-                    uploadSoundSupport={uploadSoundSupport}
-                    mathMlOptions={mathMlOptions}
-                    baseInputConfiguration={baseInputConfiguration}
-                    responseAreaInputConfiguration={responseAreaInputConfiguration}
-                  />
-                );
+                  return () => (
+                      <InlineDropdownToolbar
+                          onAddChoice={this.onAddChoice}
+                          onCheck={this.onCheck}
+                          onRemoveChoice={(index) => this.onRemoveChoice(node.data.get('index'), index)}
+                          onSelectChoice={(index) => this.onSelectChoice(node.data.get('index'), index)}
+                          node={node}
+                          value={value}
+                          onToolbarDone={onToolbarDone}
+                          choices={respAreaChoices[node.data.get('index')]}
+                          spellCheck={spellCheckEnabled}
+                          uploadSoundSupport={uploadSoundSupport}
+                          mathMlOptions={mathMlOptions}
+                          baseInputConfiguration={baseInputConfiguration}
+                          responseAreaInputConfiguration={responseAreaInputConfiguration}
+                      />
+                  );
+                },
               },
+              spellCheck: spellCheckEnabled,
+              className: classes.markup,
+              markup: model.slateMarkup || '',
+              onChange: this.onChange,
+              imageSupport: imageSupport,
+              disableImageAlignmentButtons: true,
+              disabled: false,
+              highlightShape: false,
+              error: responseAreasError,
+              uploadSoundSupport: uploadSoundSupport,
+              languageCharactersProps: [{ language: 'spanish' }, { language: 'special' }],
+              mathMlOptions: mathMlOptions,
             }}
-            spellCheck={spellCheckEnabled}
-            className={classes.markup}
-            markup={model.slateMarkup || ''}
-            onChange={this.onChange}
-            imageSupport={imageSupport}
-            disableImageAlignmentButtons={true}
-            disabled={false}
-            highlightShape={false}
-            error={responseAreasError}
-            uploadSoundSupport={uploadSoundSupport}
-            languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
-            mathMlOptions={mathMlOptions}
-          />
-          {responseAreasError && <div className={classes.errorText}>{responseAreasError}</div>}
-          {responseAreaChoicesError && <div className={classes.errorText}>{responseAreaChoicesError}</div>}
-        </div>
+        />
 
         {choiceRationaleEnabled && renderChoiceRationale()}
 
