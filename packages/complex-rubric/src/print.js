@@ -1,4 +1,6 @@
+// here it is actually using rubric/src/index.js, instead of using rubric/src/print.js
 import Rubric from '@pie-element/rubric';
+// here it is actually using multi-trait-rubric/src/index.js, instead of using multi-trait-rubric/src/print.js
 import MultiTraitRubric from '@pie-element/multi-trait-rubric';
 import { RUBRIC_TYPES } from '@pie-lib/pie-toolbox/rubric';
 
