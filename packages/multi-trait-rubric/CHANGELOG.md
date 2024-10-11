@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.1.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric@4.1.1...@pie-element/multi-trait-rubric@4.1.2) (2024-10-11)
+
+
+### Bug Fixes
+
+* use renderMath in both rubric and multi-trait-rubric PD-4218 ([66ca80f](https://github.com/pie-framework/pie-elements/commit/66ca80f3541fad59d988030240886a762c0c9992))
+
+
+
+
+
 ## [4.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric@4.1.0...@pie-element/multi-trait-rubric@4.1.1) (2024-10-03)
 
 
