@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 
 import { Tools, CorrectResponse } from '../correct-response';
 import defaultValues from '../defaults';
@@ -33,7 +33,7 @@ describe('CorrectResponse', () => {
     wrapper = (newProps) => {
       const configureProps = { ...props, newProps };
 
-      return shallow(<CorrectResponse {...configureProps} />);
+      return mount(<CorrectResponse {...configureProps} />);
     };
   });
 
@@ -114,7 +114,7 @@ describe('CorrectResponse: if answers is null it should still work as expected',
     wrapper = (newProps) => {
       const configureProps = { ...props, newProps };
 
-      return shallow(<CorrectResponse {...configureProps} />);
+      return mount(<CorrectResponse {...configureProps} />);
     };
   });
 
@@ -195,7 +195,7 @@ describe('CorrectResponse: if answers is undefined it should still work as expec
     wrapper = (newProps) => {
       const configureProps = { ...props, newProps };
 
-      return shallow(<CorrectResponse {...configureProps} />);
+      return mount(<CorrectResponse {...configureProps} />);
     };
   });
 
