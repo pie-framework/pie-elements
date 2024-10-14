@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.0.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-configure@6.0.4...@pie-element/inline-dropdown-configure@6.0.5) (2024-10-14)
+
+
+### Bug Fixes
+
+* **inline-dropdown:** extracted ResponseArea into a separate component to ensure renderMath is called on re-render PD-4232 ([d4d2b39](https://github.com/pie-framework/pie-elements/commit/d4d2b39142a6bc79ef3c44197738d3ac49399eb1))
+
+
+
+
+
 ## [6.0.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-configure@6.0.3...@pie-element/inline-dropdown-configure@6.0.4) (2024-10-03)
 
 

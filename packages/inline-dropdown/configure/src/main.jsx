@@ -20,6 +20,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Info from '@material-ui/icons/Info';
 import InlineDropdownToolbar from './inline-dropdown-toolbar';
 import { generateValidationMessage } from './utils';
+import ResponseAreaComponent from './response-area';
 
 const { toggle, Panel, dropdown } = settings;
 
@@ -51,9 +52,6 @@ const styles = (theme) => ({
   rationaleChoices: {
     marginBottom: theme.spacing.unit * 2.5,
   },
-  responseArea: {
-    paddingBottom: theme.spacing.unit * 2.5,
-  },
   panelDetails: {
     display: 'block',
     paddingTop: 0,
@@ -73,7 +71,7 @@ const styles = (theme) => ({
     fontSize: theme.typography.fontSize - 2,
     color: theme.palette.error.main,
     paddingTop: theme.spacing.unit,
-  },
+  }
 });
 
 const createElementFromHTML = (htmlString) => {
@@ -514,55 +512,55 @@ export class Main extends React.Component {
           </Tooltip>
         </div>
 
-        <div className={classes.responseArea}>
-          <EditableHtml
-            pluginProps={getPluginProps(template?.inputConfiguration)}
-            activePlugins={ALL_PLUGINS}
-            toolbarOpts={{ position: 'top' }}
-            responseAreaProps={{
-              type: 'inline-dropdown',
-              options: {
-                duplicates: true,
-              },
-              maxResponseAreas: maxResponseAreas,
-              respAreaToolbar: (node, value, onToolbarDone) => {
-                const { respAreaChoices } = this.state;
+        <ResponseAreaComponent
+            responseAreasError={responseAreasError}
+            responseAreaChoicesError={responseAreaChoicesError}
+            editableHtmlProps={{
+              pluginProps: getPluginProps(template?.inputConfiguration),
+              activePlugins: ALL_PLUGINS,
+              toolbarOpts: { position: 'top' },
+              responseAreaProps: {
+                type: 'inline-dropdown',
+                options: {
+                  duplicates: true,
+                },
+                maxResponseAreas: maxResponseAreas,
+                respAreaToolbar: (node, value, onToolbarDone) => {
+                  const { respAreaChoices } = this.state;
 
-                return () => (
-                  <InlineDropdownToolbar
-                    onAddChoice={this.onAddChoice}
-                    onCheck={this.onCheck}
-                    onRemoveChoice={(index) => this.onRemoveChoice(node.data.get('index'), index)}
-                    onSelectChoice={(index) => this.onSelectChoice(node.data.get('index'), index)}
-                    node={node}
-                    value={value}
-                    onToolbarDone={onToolbarDone}
-                    choices={respAreaChoices[node.data.get('index')]}
-                    spellCheck={spellCheckEnabled}
-                    uploadSoundSupport={uploadSoundSupport}
-                    mathMlOptions={mathMlOptions}
-                    baseInputConfiguration={baseInputConfiguration}
-                    responseAreaInputConfiguration={responseAreaInputConfiguration}
-                  />
-                );
+                  return () => (
+                      <InlineDropdownToolbar
+                          onAddChoice={this.onAddChoice}
+                          onCheck={this.onCheck}
+                          onRemoveChoice={(index) => this.onRemoveChoice(node.data.get('index'), index)}
+                          onSelectChoice={(index) => this.onSelectChoice(node.data.get('index'), index)}
+                          node={node}
+                          value={value}
+                          onToolbarDone={onToolbarDone}
+                          choices={respAreaChoices[node.data.get('index')]}
+                          spellCheck={spellCheckEnabled}
+                          uploadSoundSupport={uploadSoundSupport}
+                          mathMlOptions={mathMlOptions}
+                          baseInputConfiguration={baseInputConfiguration}
+                          responseAreaInputConfiguration={responseAreaInputConfiguration}
+                      />
+                  );
+                },
               },
+              spellCheck: spellCheckEnabled,
+              className: classes.markup,
+              markup: model.slateMarkup || '',
+              onChange: this.onChange,
+              imageSupport: imageSupport,
+              disableImageAlignmentButtons: true,
+              disabled: false,
+              highlightShape: false,
+              error: responseAreasError,
+              uploadSoundSupport: uploadSoundSupport,
+              languageCharactersProps: [{ language: 'spanish' }, { language: 'special' }],
+              mathMlOptions: mathMlOptions,
             }}
-            spellCheck={spellCheckEnabled}
-            className={classes.markup}
-            markup={model.slateMarkup || ''}
-            onChange={this.onChange}
-            imageSupport={imageSupport}
-            disableImageAlignmentButtons={true}
-            disabled={false}
-            highlightShape={false}
-            error={responseAreasError}
-            uploadSoundSupport={uploadSoundSupport}
-            languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
-            mathMlOptions={mathMlOptions}
-          />
-          {responseAreasError && <div className={classes.errorText}>{responseAreasError}</div>}
-          {responseAreaChoicesError && <div className={classes.errorText}>{responseAreaChoicesError}</div>}
-        </div>
+        />
 
         {choiceRationaleEnabled && renderChoiceRationale()}
 
