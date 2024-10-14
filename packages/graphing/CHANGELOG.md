@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.1.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@6.1.1...@pie-element/graphing@6.1.2) (2024-10-14)
+
+
+### Bug Fixes
+
+* **graphing:** ensure renderMath is called on component mount for correctResponse when switching between tabs ( from SETTINGS to DESIGN or from Preview to Build)  PD-4208 ([1c891ab](https://github.com/pie-framework/pie-elements/commit/1c891abe7a093396cc7549d5d7116ebe67a3d61b))
+
+
+
+
+
 ## [6.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@6.1.0...@pie-element/graphing@6.1.1) (2024-10-03)
 
 
