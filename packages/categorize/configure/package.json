@@ -3,7 +3,7 @@
   "private": true,
   "main": "lib/index.js",
   "module": "src/index.js",
-  "version": "8.0.3",
+  "version": "8.0.4",
   "description": "",
   "scripts": {},
   "author": "pie framework developers",

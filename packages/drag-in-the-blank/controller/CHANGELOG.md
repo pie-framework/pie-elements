@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.0.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-controller@6.0.3...@pie-element/drag-in-the-blank-controller@6.0.4) (2024-10-15)
+
+
+### Bug Fixes
+
+* added complexjs as dependency [PD-4200] ([da393d5](https://github.com/pie-framework/pie-elements/commit/da393d5ae8ef52f17b47ccf32967410a9263180e))
+* added resolutions in controller as well [PD-4200] ([020edc5](https://github.com/pie-framework/pie-elements/commit/020edc5f0bb5de6bf8f344efd0a3b9b0b16b9dc7))
+* reverting changes since the issue is fixed in the latest complex.js [PD-4200] ([42c9f21](https://github.com/pie-framework/pie-elements/commit/42c9f216c4d29b051156489beb43fa7093667eb7))
+* update pie toolbox ([ba98798](https://github.com/pie-framework/pie-elements/commit/ba987984ebc2f856950611874436cf148a9a3963))
+* update pie-lib/pie-toolbox PD-4200 ([a41a620](https://github.com/pie-framework/pie-elements/commit/a41a62036afe6aa8ef70493900c08875cff8eec2))
+* update pie-lib/pie-toolbox PD-4241 ([b24d439](https://github.com/pie-framework/pie-elements/commit/b24d43945457792d403d0da62ce3e4b5b898ca46))
+
+
+
+
+
 ## [6.0.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-controller@6.0.2...@pie-element/drag-in-the-blank-controller@6.0.3) (2024-10-03)
 
 
