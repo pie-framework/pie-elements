@@ -2,6 +2,7 @@ import map from 'lodash/map';
 import reduce from 'lodash/reduce';
 import isEmpty from 'lodash/isEmpty';
 import { lockChoices, getShuffledChoices, partialScoring } from '@pie-lib/pie-toolbox/controller-utils';
+import defaults from './defaults';
 
 import { getAllCorrectResponses } from './utils';
 
@@ -13,14 +14,7 @@ const getFeedback = (correct) => {
   return 'incorrect';
 };
 
-export const normalize = (question) => ({
-  promptEnabled: true,
-  rationaleEnabled: true,
-  teacherInstructionsEnabled: true,
-  studentInstructionsEnabled: true,
-  choiceRationaleEnabled: true,
-  ...question,
-});
+export const normalize = (question) => ({ ...defaults, ...question });
 
 /**
  *

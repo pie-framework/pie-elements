@@ -12,6 +12,7 @@ exports[`Main snapshot renders with choicePrefix="letters" as default 1`] = `
     classes={Object {}}
     model={
       Object {
+        "accessibilityLabelsEnabled": false,
         "choiceMode": "checkbox",
         "choicePrefix": "letters",
         "choices": Array [
@@ -53,14 +54,16 @@ exports[`Main snapshot renders with choicePrefix="letters" as default 1`] = `
         "choicesLayout": "vertical",
         "configure": Object {},
         "feedbackEnabled": false,
-        "gridColumns": "2",
+        "gridColumns": 2,
         "lockChoiceOrder": true,
         "partialScoring": false,
         "prompt": "Which of these northern European countries are EU members?",
         "promptEnabled": true,
+        "rationale": "",
         "rationaleEnabled": true,
         "scoringType": "auto",
         "studentInstructionsEnabled": true,
+        "teacherInstructions": "",
         "teacherInstructionsEnabled": true,
         "toolbarEditorPosition": "bottom",
       }
@@ -89,6 +92,7 @@ exports[`Main snapshot renders with choicePrefix="numbers" 1`] = `
     classes={Object {}}
     model={
       Object {
+        "accessibilityLabelsEnabled": false,
         "choiceMode": "checkbox",
         "choicePrefix": "numbers",
         "choices": Array [
@@ -130,14 +134,16 @@ exports[`Main snapshot renders with choicePrefix="numbers" 1`] = `
         "choicesLayout": "vertical",
         "configure": Object {},
         "feedbackEnabled": false,
-        "gridColumns": "2",
+        "gridColumns": 2,
         "lockChoiceOrder": true,
         "partialScoring": false,
         "prompt": "Which of these northern European countries are EU members?",
         "promptEnabled": true,
+        "rationale": "",
         "rationaleEnabled": true,
         "scoringType": "auto",
         "studentInstructionsEnabled": true,
+        "teacherInstructions": "",
         "teacherInstructionsEnabled": true,
         "toolbarEditorPosition": "bottom",
       }

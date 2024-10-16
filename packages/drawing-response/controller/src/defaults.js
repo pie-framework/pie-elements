@@ -1,8 +1,12 @@
 export default {
-  prompt: 'This is the question prompt',
+  backgroundImageEnabled: true,
+  imageDimensions: { height: 0, width: 0 },
   imageUrl: '',
-  imageDimensions: {
-    height: 0,
-    width: 0,
-  },
+  prompt: '',
+  promptEnabled: true,
+  spellCheckEnabled: true,
+  studentInstructionsEnabled: true,
+  teacherInstructions: '',
+  teacherInstructionsEnabled: true,
+  toolbarEditorPosition: 'bottom',
 };

@@ -1,10 +1,13 @@
 import { getScore, outcome, createCorrectResponseSession, model } from '../index';
+import defaults from '../defaults';
 
 describe('inline-dropdown', () => {
   let result, question, session, env;
 
   beforeEach(() => {
     question = {
+      displayType: 'block',
+      language: 'english',
       lockChoiceOrder: false,
       choices: {
         0: [
@@ -68,6 +71,8 @@ describe('inline-dropdown', () => {
 });
 
 const question = {
+  displayType: 'block',
+  language: 'english',
   prompt: 'Use the drop-downs to complete the sentence',
   markup: '<div><p>The {{0}} jumped {{1}} the {{2}}</p></div>',
   choices: {

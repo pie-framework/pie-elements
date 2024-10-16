@@ -2,6 +2,7 @@ import debug from 'debug';
 import isEqual from 'lodash/isEqual';
 import isEmpty from 'lodash/isEmpty';
 import pick from 'lodash/pick';
+import defaults from './defaults';
 
 import { partialScoring } from '@pie-lib/pie-toolbox/controller-utils';
 
@@ -23,14 +24,7 @@ export const setCorrectness = (answers, partialScoring) =>
       }))
     : [];
 
-export const normalize = (question) => ({
-  addCategoryEnabled: true,
-  promptEnabled: true,
-  rationaleEnabled: true,
-  teacherInstructionsEnabled: true,
-  studentInstructionsEnabled: true,
-  ...question,
-});
+export const normalize = (question) => ({ ...defaults, ...question });
 
 export const getScore = (question, session, env = {}) => {
   const { correctAnswer, data: initialData = [], scoringType } = question;

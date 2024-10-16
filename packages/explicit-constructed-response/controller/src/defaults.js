@@ -1,10 +1,16 @@
 export default {
+  choices: {},
+  displayType: 'block',
   markup: '',
+  maxLengthPerChoiceEnabled: true,
+  playerSpellCheckEnabled: true,
   prompt: '',
   promptEnabled: true,
   rationale: '',
   rationaleEnabled: true,
+  spellCheckEnabled: true,
   studentInstructionsEnabled: true,
   teacherInstructions: '',
   teacherInstructionsEnabled: true,
+  toolbarEditorPosition: 'bottom',
 };

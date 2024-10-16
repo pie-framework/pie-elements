@@ -1,8 +1,10 @@
 export default {
   model: {
+    rationale: '',
     rationaleEnabled: true,
-    teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true,
+    teacherInstructions: '',
+    teacherInstructionsEnabled: true,
   },
   configuration: {
     baseInputConfiguration: {

@@ -5,27 +5,23 @@
 
 export default {
   model: {
+    choiceMode: 'radio',
     enableImages: true,
+    feedbackEnabled: false,
     headers: ['Column 1', 'Column 2', 'Column 3'],
     layout: 3,
     lockChoiceOrder: true,
     partialScoring: false,
-    choiceMode: 'radio',
-    prompt: 'Prompt goes here',
-    toolbarEditorPosition: 'bottom',
-    rows: [
-      {
-        id: 1,
-        title: 'Question Text 1',
-        values: [false, false],
-      },
-    ],
-    scoringType: 'auto',
-    feedbackEnabled: false,
+    prompt: '',
     promptEnabled: true,
+    rationale: '',
     rationaleEnabled: true,
-    teacherInstructionsEnabled: true,
+    rows: [],
+    scoringType: 'auto',
     studentInstructionsEnabled: true,
+    teacherInstructions: '',
+    teacherInstructionsEnabled: true,
+    toolbarEditorPosition: 'bottom',
   },
   configuration: {
     baseInputConfiguration: {
@@ -115,7 +111,7 @@ export default {
         video: { disabled: false },
         image: { disabled: false },
       },
-      required: false
+      required: false,
     },
     maxImageWidth: {
       teacherInstructions: 300,

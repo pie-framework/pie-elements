@@ -2,7 +2,7 @@ import { model } from '../index';
 import defaultModel from '../defaults';
 
 describe('complex rubric model', () => {
-  let state = { ...defaultModel.model };
+  let state = { ...defaultModel };
   let session = {};
   let env, result;
 
@@ -48,7 +48,7 @@ describe('complex rubric model', () => {
         rubricless: {
           ...state.rubrics.rubricless,
           visible: false,
-        }
+        },
       },
     });
   });

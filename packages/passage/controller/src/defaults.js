@@ -1,10 +1,6 @@
 // TODO: also update '../../src/print.js' when updating defaults
 export default {
-  teacherInstructionsEnabled: true,
-  titleEnabled: false,
-  subtitleEnabled: false,
   authorEnabled: false,
-  textEnabled: true,
   passages: [
     {
       teacherInstructions: '',
@@ -14,4 +10,8 @@ export default {
       text: '',
     },
   ],
+  subtitleEnabled: false,
+  teacherInstructionsEnabled: true,
+  textEnabled: true,
+  titleEnabled: false,
 };

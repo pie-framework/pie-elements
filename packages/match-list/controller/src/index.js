@@ -91,6 +91,8 @@ export function createDefaultModel(model = {}) {
   });
 }
 
+export const normalize = (model) => ({ ...defaults, ...model });
+
 /**
  *
  * @param {*} question
@@ -100,6 +102,7 @@ export function createDefaultModel(model = {}) {
  */
 export function model(question, session, env, updateSession) {
   return new Promise(async (resolve) => {
+    question = normalize(question);
     const correctness = getCorrectness(question, env, session && session.value);
     const correctResponse = {};
     const score = `${getOutComeScore(question, env, session && session.value) * 100}%`;

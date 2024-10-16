@@ -43,6 +43,10 @@ const question = {
   choices,
   prompt: 'Complete the sentence',
   note: 'The answer shown above is the most common correct answer for this item.',
+  language: 'english',
+  maxLengthPerChoiceEnabled: true,
+  playerSpellCheckEnabled: true,
+  displayType: 'block',
 };
 
 describe('controller', () => {

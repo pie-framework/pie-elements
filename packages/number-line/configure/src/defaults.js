@@ -1,47 +1,32 @@
 export const model = {
   correctResponse: [],
+  feedback: {
+    correct: { default: 'Correct', type: 'none' },
+    incorrect: { default: 'Incorrect', type: 'none' },
+    partial: { default: 'Nearly', type: 'none' },
+  },
   graph: {
-    domain: {
-      min: -1,
-      max: 1,
-    },
-    ticks: {
-      minor: 0.125,
-      major: 0.5,
-      tickIntervalType: 'Decimal',
-    },
-    arrows: {
-      left: true,
-      right: true,
-    },
-    maxNumberOfPoints: 1,
-    width: 500,
-    initialType: 'PF',
-    exhibitOnly: false,
-    toolbarEditorPosition: 'bottom',
+    arrows: { left: true, right: true },
     availableTypes: {
       PF: true,
     },
+    domain: { min: -1, max: 1 },
+    exhibitOnly: false,
     initialElements: [],
+    initialType: 'PF',
+    maxNumberOfPoints: 1,
+    ticks: { minor: 0.125, major: 0.5, tickIntervalType: 'Decimal' },
+    title: '',
+    width: 500,
   },
-  widthEnabled: true,
+  prompt: '',
   promptEnabled: true,
+  rationale: '',
   rationaleEnabled: true,
+  teacherInstructions: '',
   teacherInstructionsEnabled: true,
-  feedback: {
-    correct: {
-      default: 'Correct',
-      type: 'none',
-    },
-    incorrect: {
-      default: 'Incorrect',
-      type: 'none',
-    },
-    partial: {
-      default: 'Nearly',
-      type: 'none',
-    },
-  },
+  toolbarEditorPosition: 'bottom',
+  widthEnabled: true,
 };
 
 export const configuration = {
