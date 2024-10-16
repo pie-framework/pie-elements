@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.2.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@9.2.2...@pie-element/multiple-choice@9.2.3) (2024-10-16)
+
+
+### Bug Fixes
+
+* add sanity checks for PD-4259 ([b9f8efc](https://github.com/pie-framework/pie-elements/commit/b9f8efc56d7dd4d616212a1aefdf012e6f4ada37))
+
+
+
+
+
 ## [9.2.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@9.2.1...@pie-element/multiple-choice@9.2.2) (2024-10-15)
 
 
