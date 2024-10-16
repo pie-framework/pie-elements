@@ -3,6 +3,34 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.2.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@9.2.2...@pie-element/multiple-choice@9.2.3) (2024-10-16)
+
+
+### Bug Fixes
+
+* add sanity checks for PD-4259 ([b9f8efc](https://github.com/pie-framework/pie-elements/commit/b9f8efc56d7dd4d616212a1aefdf012e6f4ada37))
+
+
+
+
+
+## [9.2.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@9.2.1...@pie-element/multiple-choice@9.2.2) (2024-10-15)
+
+
+### Bug Fixes
+
+* added complexjs as dependency [PD-4200] ([da393d5](https://github.com/pie-framework/pie-elements/commit/da393d5ae8ef52f17b47ccf32967410a9263180e))
+* added resolutions in controller as well [PD-4200] ([020edc5](https://github.com/pie-framework/pie-elements/commit/020edc5f0bb5de6bf8f344efd0a3b9b0b16b9dc7))
+* added resolutions to every package [PD-4200] ([480bed5](https://github.com/pie-framework/pie-elements/commit/480bed5eddfc91ec9dbc7ca7e3f6d09b2a199e7d))
+* reverting changes since the issue is fixed in the latest complex.js [PD-4200] ([42c9f21](https://github.com/pie-framework/pie-elements/commit/42c9f216c4d29b051156489beb43fa7093667eb7))
+* update pie toolbox ([ba98798](https://github.com/pie-framework/pie-elements/commit/ba987984ebc2f856950611874436cf148a9a3963))
+* update pie-lib/pie-toolbox PD-4200 ([a41a620](https://github.com/pie-framework/pie-elements/commit/a41a62036afe6aa8ef70493900c08875cff8eec2))
+* update pie-lib/pie-toolbox PD-4241 ([b24d439](https://github.com/pie-framework/pie-elements/commit/b24d43945457792d403d0da62ce3e4b5b898ca46))
+
+
+
+
+
 ## [9.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@9.2.0...@pie-element/multiple-choice@9.2.1) (2024-10-03)
 
 
