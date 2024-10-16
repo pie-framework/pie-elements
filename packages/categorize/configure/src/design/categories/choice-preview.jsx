@@ -29,7 +29,13 @@ export class ChoicePreview extends React.Component {
     return (
       <div className={classNames(classes.choicePreview, className)}>
         {choice ? (
-          <Choice alternateResponseIndex={alternateResponseIndex} category={category} choice={choice} choiceIndex={choiceIndex} onRemoveChoice={() => this.delete()}>
+          <Choice
+            alternateResponseIndex={alternateResponseIndex}
+            category={category}
+            choice={choice}
+            choiceIndex={choiceIndex}
+            onRemoveChoice={() => this.delete()}
+          >
             <HtmlAndMath html={choice?.content} className={`${classes.breakWord}`} />
             <IconButton color="secondary" aria-label="delete" className={classes.delete} onClick={this.delete}>
               <RemoveCircleOutlineIcon />
@@ -51,7 +57,7 @@ const styles = () => ({
   },
   breakWord: {
     maxWidth: '90%',
-    wordWrap: 'break-word',
-  }
+    wordBreak: 'break-all',
+  },
 });
 export default withStyles(styles)(ChoicePreview);
