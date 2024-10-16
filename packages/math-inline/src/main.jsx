@@ -328,7 +328,9 @@ export class Main extends React.Component {
   
     if (isAnswerInputFocused && (event.key === 'ArrowDown' || isClickOrTouchEvent)) {
       if (this.state.activeAnswerBlock !== id) {
+        this.cleanupKeyDownListener();
         this.setState({ activeAnswerBlock: id });
+        this.onSubFieldFocus(id)
       }
   
       if (event.key === 'ArrowDown') {
