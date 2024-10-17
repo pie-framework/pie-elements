@@ -31,7 +31,12 @@ export class Header extends React.Component {
           </Typography>
           {info}
         </div>
-        <Tooltip title={tooltip || ''} classes={{ tooltip: classes.tooltip }}>
+        <Tooltip
+            title={tooltip || ''}
+            classes={{ tooltip: classes.tooltip }}
+            enterTouchDelay={50} // Appear quickly after a touch
+            leaveTouchDelay={3000} // Stay visible for 3 seconds
+        >
           <span>
             <AddButton onClick={onAdd} label={buttonLabel} disabled={buttonDisabled} />
           </span>

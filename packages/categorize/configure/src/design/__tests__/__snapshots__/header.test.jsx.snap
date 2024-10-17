@@ -17,6 +17,8 @@ exports[`Header snapshot renders 1`] = `
         "tooltip": undefined,
       }
     }
+    enterTouchDelay={50}
+    leaveTouchDelay={3000}
     title=""
   >
     <span>
