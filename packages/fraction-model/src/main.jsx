@@ -5,6 +5,7 @@ import AnswerFraction from './answer-fraction';
 import { CorrectAnswerToggle } from '@pie-lib/pie-toolbox/correct-answer-toggle';
 import FractionModelChart from './fraction-model-chart';
 import { AlertDialog } from '@pie-lib/pie-toolbox/config-ui';
+import { PreviewPrompt } from '@pie-lib/pie-toolbox/render-ui';
 import cloneDeep from 'lodash/cloneDeep';
 
 export class Main extends React.Component {
@@ -121,15 +122,19 @@ export class Main extends React.Component {
   render() {
     const { model, classes } = this.props;
     const { showCorrect, session, answerChangeDialog } = this.state;
-    const { correctness = {}, language } = model;
+    const { prompt, title, correctness = {}, language } = model;
     const showCorrectAnswerToggle = correctness.correctness && correctness.correctness !== 'correct';
     const fractionModelChartKey = this.generateRandomKey();
 
     return (
       <div>
         <div className={classes.modelPreview}>
-          <h3 className={classes.titleContainer} dangerouslySetInnerHTML={{ __html: model.title }}></h3>
-          <p dangerouslySetInnerHTML={{ __html: model.prompt }}></p>
+          <h3 className={classes.titleContainer}>
+            <PreviewPrompt className="prompt" prompt={title} />
+          </h3>
+          <p>
+            <PreviewPrompt className="prompt" prompt={prompt} />
+          </p>
 
           <CorrectAnswerToggle
             language={language}
