@@ -129,12 +129,10 @@ export class Main extends React.Component {
     return (
       <div>
         <div className={classes.modelPreview}>
-          <h3 className={classes.titleContainer}>
-            <PreviewPrompt className="prompt" prompt={title} />
-          </h3>
-          <p>
-            <PreviewPrompt className="prompt" prompt={prompt} />
-          </p>
+          <div className={classes.titleContainer}>
+            <PreviewPrompt className="prompt" prompt={title} tagName="h3" />
+          </div>
+          <PreviewPrompt className="prompt" prompt={prompt} tagName="p" />
 
           <CorrectAnswerToggle
             language={language}
