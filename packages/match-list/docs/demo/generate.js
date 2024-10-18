@@ -1,58 +1,54 @@
-const twoZeroOne = (id, element) => ({
+exports.model = (id, element) => ({
   id,
   element,
+  lockChoiceOrder: true,
   answers: [
     {
-      title: 'All right angles',
-      id: 0,
-    },
-    {
-      id: 1,
-      title: 'All acute angles',
-    },
-    {
       id: 2,
-      title: 'Two obtuse angles',
+      title: 'Battle of Lexington and Concord'
     },
     {
       id: 3,
-      title: 'One pair of perpendicular lines',
+      title: 'Declaration of Independence'
     },
     {
-      title: 'One pair of parallel lines',
-      id: 4,
+      id: 1,
+      title: 'Boston Tea Party'
     },
+    {
+      id: 0,
+      title: 'French and Indian War'
+    },
+    {
+      id: 4,
+      title: 'Constitutional Convention'
+    }
   ],
-  prompt:
-    '<p>Look at the shapes below.</p><p><img alt="image 8c7d142a9af94abf80b021426879a815" id="8c7d142a9af94abf80b021426879a815" src="https://storage.googleapis.com/pie-staging-221718-assets/image/4ec622c1-51d0-4c4b-8282-cd9b7eb9ca22"></p><p></p><p>Each property describes one of the shapes. Drag and drop the property&nbsp;to its shape.</p>',
-  shuffled: false,
-  prompts: [
-    {
-      id: 0,
-      title: 'Shape A',
-      relatedAnswer: 3,
-    },
-    {
-      id: 1,
-      title: 'Shape B',
-      relatedAnswer: 2,
-    },
+  prompt: '<p>Match each year to the corresponding historical event. Drag and drop the events.</p>',
+  prompts: [          {
+    id: 1,
+    title: '1754',
+    relatedAnswer: 0
+  },
     {
       id: 2,
-      title: 'Shape C',
-      relatedAnswer: 1,
+      title: '1773',
+      relatedAnswer: 1
     },
     {
       id: 3,
-      title: 'Shape D',
-      relatedAnswer: 4,
+      title: '1775',
+      relatedAnswer: 2
     },
     {
       id: 4,
-      title: 'Shape E',
-      relatedAnswer: 0,
+      title: '1776',
+      relatedAnswer: 3
     },
+    {
+      id: 5,
+      title: '1787',
+      relatedAnswer: 4
+    }
   ],
 });
-
-exports.model = twoZeroOne;
