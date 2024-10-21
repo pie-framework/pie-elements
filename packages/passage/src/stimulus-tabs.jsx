@@ -45,8 +45,6 @@ const styles = (theme) => ({
   },
 });
 
-const getContent = (html) => (html || '').replace(/(<(?!img|iframe)([^>]+)>)/gi, '');
-
 class StimulusTabs extends React.Component {
   state = {
     activeTab: 0,
@@ -134,7 +132,7 @@ class StimulusTabs extends React.Component {
   };
 
   renderInstructions(teacherInstructions, disabledTabs = false) {
-    if (!getContent(teacherInstructions)) {
+    if (!teacherInstructions) {
       return;
     }
 
@@ -176,9 +174,9 @@ class StimulusTabs extends React.Component {
       >
         {this.renderInstructions(tab.teacherInstructions, disabledTabs)}
 
-        {(getContent(tab.title) || getContent(tab.subtitle)) && (
+        {(tab.title || tab.subtitle) && (
           <h2>
-            {getContent(tab.title) && (
+            {tab.title && (
               <Purpose purpose="passage-title">
                 <div
                   className={classNames(classes.passageTitle, 'title')}
@@ -186,7 +184,7 @@ class StimulusTabs extends React.Component {
                 />
               </Purpose>
             )}
-            {getContent(tab.subtitle) && (
+            {tab.subtitle && (
               <Purpose purpose="passage-subtitle">
                 <div
                   className={classNames(classes.passageSubtitle, 'subtitle')}
@@ -197,7 +195,7 @@ class StimulusTabs extends React.Component {
           </h2>
         )}
 
-        {getContent(tab.author) && (
+        {tab.author && (
           <Purpose purpose="passage-author">
             <div
               className={classNames(classes.passageAuthor, 'author')}
@@ -206,7 +204,7 @@ class StimulusTabs extends React.Component {
           </Purpose>
         )}
 
-        {getContent(tab.text) && (
+        {tab.text && (
           <Purpose purpose="passage-text">
             <div
               key={tab.id}
