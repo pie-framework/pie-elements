@@ -363,6 +363,7 @@ export class Main extends React.Component {
               uploadSoundSupport={uploadSoundSupport}
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               mathMlOptions={mathMlOptions}
+              autoWidthToolbar
             />
             {teacherInstructionsError && <div className={classes.errorText}>{teacherInstructionsError}</div>}
           </InputContainer>
@@ -386,6 +387,7 @@ export class Main extends React.Component {
               uploadSoundSupport={uploadSoundSupport}
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               mathMlOptions={mathMlOptions}
+              autoWidthToolbar
             />
             {promptError && <div className={classes.errorText}>{promptError}</div>}
           </InputContainer>
@@ -447,6 +449,7 @@ export class Main extends React.Component {
           uploadSoundSupport={uploadSoundSupport}
           languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
           mathMlOptions={mathMlOptions}
+          autoWidthToolbar
         />
         {responseAreasError && <div className={classes.errorText}>{responseAreasError}</div>}
 
@@ -480,6 +483,7 @@ export class Main extends React.Component {
               uploadSoundSupport={uploadSoundSupport}
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               mathMlOptions={mathMlOptions}
+              autoWidthToolbar
             />
             {rationaleError && <div className={classes.errorText}>{rationaleError}</div>}
           </InputContainer>
