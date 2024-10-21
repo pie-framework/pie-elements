@@ -69,6 +69,7 @@ const styles = (theme) => ({
     },
     borderRadius: '4px',
     border: '1px solid',
+    overflow: 'auto',
   },
   disabled: {
     cursor: 'not-allowed',
@@ -83,7 +84,7 @@ const styles = (theme) => ({
     width: '100%',
     // Added for touch devices, for image content.
     // This will prevent the context menu from appearing and not allowing other interactions with the image.
-    pointerEvents: 'none',
+    // pointerEvents: 'none',
   },
 });
 
