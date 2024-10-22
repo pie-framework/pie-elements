@@ -151,6 +151,10 @@ export default class FractionModelConfigure extends HTMLElement {
         configuration: this._configuration,
         onConfigurationChanged: this.onConfigurationChanged,
         onChange: this.onChange,
+        imageSupport: {
+          add: this.insertImage.bind(this),
+          delete: this.onDeleteImage.bind(this),
+        },
         uploadSoundSupport: {
           add: this.insertSound.bind(this),
           delete: this.onDeleteSound.bind(this),

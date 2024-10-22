@@ -40,11 +40,13 @@ describe('Main', () => {
   let onChange;
   let onConfigurationChanged;
   let uploadSoundSupport;
+  let imageSupport;
 
   beforeEach(() => {
     onChange = jest.fn();
     onConfigurationChanged = jest.fn();
     uploadSoundSupport = jest.mock();
+    imageSupport = jest.mock();
   });
 
   const wrapper = (props) => {
@@ -56,6 +58,7 @@ describe('Main', () => {
         model={defaultProps.model}
         configuration={defaultProps.configuration}
         uploadSoundSupport={uploadSoundSupport}
+        imageSupport={imageSupport}
         {...props}
       />,
     );
