@@ -38,6 +38,8 @@ export class Container extends React.Component {
       dimensions: { width: withProp, height: heightProp },
       disabled,
       hotspotColor,
+      hoverOutlineColor,
+      selectedHotspotColor,
       imageUrl,
       isEvaluateMode,
       outlineColor,
@@ -89,6 +91,8 @@ export class Container extends React.Component {
                   selected={selected}
                   height={shape.height}
                   hotspotColor={hotspotColor}
+                  hoverOutlineColor={hoverOutlineColor}
+                  selectedHotspotColor={selectedHotspotColor}
                   id={shape.id}
                   key={shape.id}
                   onClick={onSelectChoice}
@@ -124,6 +128,8 @@ export class Container extends React.Component {
                   points={polygon.points}
                   strokeWidth={strokeWidth}
                   markAsCorrect={markAsCorrect}
+                  selectedHotspotColor={selectedHotspotColor}
+                  hoverOutlineColor={hoverOutlineColor}
                   showCorrectEnabled={showCorrect}
                 />
               );
@@ -153,6 +159,8 @@ export class Container extends React.Component {
                   y={shape.y}
                   strokeWidth={strokeWidth}
                   markAsCorrect={markAsCorrect}
+                  selectedHotspotColor={selectedHotspotColor}
+                  hoverOutlineColor={hoverOutlineColor}
                   showCorrectEnabled={showCorrect}
                 />
               );
@@ -204,10 +212,12 @@ Container.propTypes = {
   dimensions: PropTypes.object.isRequired,
   disabled: PropTypes.bool.isRequired,
   hotspotColor: PropTypes.string.isRequired,
+  hoverOutlineColor: PropTypes.string,
   imageUrl: PropTypes.string.isRequired,
   isEvaluateMode: PropTypes.bool.isRequired,
   onSelectChoice: PropTypes.func.isRequired,
   outlineColor: PropTypes.string.isRequired,
+  selectedHotspotColor: PropTypes.string,
   session: PropTypes.object.isRequired,
   shapes: PropTypes.object.isRequired,
   strokeWidth: PropTypes.number,

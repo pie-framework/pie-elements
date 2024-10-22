@@ -40,6 +40,7 @@ const formStyleSheet = {
   label: {
     color: `${color.text()} !important`, //'var(--choice-input-color, black)'
     backgroundColor: color.background(),
+    letterSpacing: 'normal'
   },
   disabled: {
     // apply to all children

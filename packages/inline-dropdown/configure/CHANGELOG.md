@@ -3,6 +3,107 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.0.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-configure@6.0.5...@pie-element/inline-dropdown-configure@6.0.6) (2024-10-15)
+
+
+### Bug Fixes
+
+* added complexjs as dependency [PD-4200] ([da393d5](https://github.com/pie-framework/pie-elements/commit/da393d5ae8ef52f17b47ccf32967410a9263180e))
+* added resolutions to every package [PD-4200] ([480bed5](https://github.com/pie-framework/pie-elements/commit/480bed5eddfc91ec9dbc7ca7e3f6d09b2a199e7d))
+* reverting changes since the issue is fixed in the latest complex.js [PD-4200] ([42c9f21](https://github.com/pie-framework/pie-elements/commit/42c9f216c4d29b051156489beb43fa7093667eb7))
+* update pie toolbox ([ba98798](https://github.com/pie-framework/pie-elements/commit/ba987984ebc2f856950611874436cf148a9a3963))
+* update pie-lib/pie-toolbox PD-4200 ([a41a620](https://github.com/pie-framework/pie-elements/commit/a41a62036afe6aa8ef70493900c08875cff8eec2))
+* update pie-lib/pie-toolbox PD-4241 ([b24d439](https://github.com/pie-framework/pie-elements/commit/b24d43945457792d403d0da62ce3e4b5b898ca46))
+
+
+
+
+
+## [6.0.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-configure@6.0.4...@pie-element/inline-dropdown-configure@6.0.5) (2024-10-14)
+
+
+### Bug Fixes
+
+* **inline-dropdown:** extracted ResponseArea into a separate component to ensure renderMath is called on re-render PD-4232 ([d4d2b39](https://github.com/pie-framework/pie-elements/commit/d4d2b39142a6bc79ef3c44197738d3ac49399eb1))
+
+
+
+
+
+## [6.0.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-configure@6.0.3...@pie-element/inline-dropdown-configure@6.0.4) (2024-10-03)
+
+
+### Bug Fixes
+
+* update pie-toolbox and @pie-lib/pie-toolbox-module PD-4018 ([2d60730](https://github.com/pie-framework/pie-elements/commit/2d60730eb6c3ade08e522c58218cff2f6cb496cb))
+
+
+
+
+
+## [6.0.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-configure@6.0.2...@pie-element/inline-dropdown-configure@6.0.3) (2024-10-01)
+
+
+### Bug Fixes
+
+* update pie-toolbox and @pie-lib/pie-toolbox-module ([ddb9d44](https://github.com/pie-framework/pie-elements/commit/ddb9d444243b881b3a468ecfb5bab551511a2495))
+
+
+
+
+
+## [6.0.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-configure@6.0.1...@pie-element/inline-dropdown-configure@6.0.2) (2024-10-01)
+
+
+### Bug Fixes
+
+* **inline-dropdown:** fix insert spanish/special characters for response areas PD-4138 ([47b096c](https://github.com/pie-framework/pie-elements/commit/47b096c6f18767dc687d41fd5df545be3ce2f07a))
+* language characters props ([a8f1878](https://github.com/pie-framework/pie-elements/commit/a8f1878e7608e098978cf71b642466344c102910))
+* tests ([79d84ae](https://github.com/pie-framework/pie-elements/commit/79d84aecc39b625689a3a7729d0a1e655a6a3aa7))
+* tests ([2141856](https://github.com/pie-framework/pie-elements/commit/21418568306dd6f93e4bbc0eecc0eaabd47afc68))
+* **inline-dropdown, rubric:** add language and special characters to inline-dropdown if not disabled. Add them to rubric PD-4089 ([15a0c03](https://github.com/pie-framework/pie-elements/commit/15a0c03e241ab250d2b95265f26314a60125916e))
+
+
+
+
+
+## [6.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-configure@6.0.0...@pie-element/inline-dropdown-configure@6.0.1) (2024-09-26)
+
+
+### Bug Fixes
+
+* update pie-toolbox and @pie-lib/pie-toolbox-module ([c363be4](https://github.com/pie-framework/pie-elements/commit/c363be48f9428024d4acc1eed05cd598840ffe3a))
+* update pie-toolbox and @pie-lib/pie-toolbox-module ([fe83296](https://github.com/pie-framework/pie-elements/commit/fe83296445f9785e67c9643642221b28b4485921))
+* update pie-toolbox and @pie-lib/pie-toolbox-module ([321147b](https://github.com/pie-framework/pie-elements/commit/321147b4072f2a6200d155f7f09c712960fe078c))
+* update pie-toolbox and @pie-lib/pie-toolbox-module ([d3e24e8](https://github.com/pie-framework/pie-elements/commit/d3e24e83d74e93f0720eff8841ebac1d0493b769))
+* update pie-toolbox and @pie-lib/pie-toolbox-module ([a3dd8d6](https://github.com/pie-framework/pie-elements/commit/a3dd8d65a754acadd95134ee825b769355a08a45))
+
+
+
+
+
+# [6.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-configure@5.22.3...@pie-element/inline-dropdown-configure@6.0.0) (2024-09-25)
+
+
+### Bug Fixes
+
+* update math-rendering-accessible ([a5588cf](https://github.com/pie-framework/pie-elements/commit/a5588cfdccb40e970e93736dea60de4b01f1a85d))
+* update pie-toolbox and @pie-lib/pie-toolbox-module ([8fa1e13](https://github.com/pie-framework/pie-elements/commit/8fa1e132d97ccc92093e789e4349610c2be21edb))
+
+
+### Features
+
+* update math-rendering-accessible PD-3989, PD-4103, PD-3865 ([01590fe](https://github.com/pie-framework/pie-elements/commit/01590fe0f6ac36d14983cc144ef03f9cff397dfc))
+
+
+### BREAKING CHANGES
+
+* big refactoring on the implementation of math-rendering-accessible
+
+
+
+
+
 ## [5.22.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-configure@5.22.2...@pie-element/inline-dropdown-configure@5.22.3) (2024-09-16)
 
 

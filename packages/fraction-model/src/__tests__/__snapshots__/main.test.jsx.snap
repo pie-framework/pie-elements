@@ -16,7 +16,7 @@ exports[`Main render snapshot 1`] = `
       "maxModelSelected": 1,
       "modelTypeSelected": "bar",
       "partsPerModel": 5,
-      "question": "",
+      "prompt": "",
       "showGraphLabels": false,
       "title": "",
     }

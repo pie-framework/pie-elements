@@ -18,6 +18,12 @@ exports[`AlternateResponses snapshot renders 1`] = `
           "__html": "",
         }
       }
+      style={
+        Object {
+          "gridColumn": "1/3",
+          "width": "100%",
+        }
+      }
     />
     <WithStyles(Category)
       alternateResponseIndex={0}

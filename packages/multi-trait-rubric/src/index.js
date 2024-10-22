@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { ModelSetEvent } from '@pie-framework/pie-player-events';
 import Main from './main';
+import { renderMath } from '@pie-lib/pie-toolbox/math-rendering-accessible';
 
 export default class MultiTraitRubric extends HTMLElement {
   constructor() {
@@ -32,6 +33,8 @@ export default class MultiTraitRubric extends HTMLElement {
   _render() {
     const el = React.createElement(Main, { model: this._model, session: this._session });
 
-    ReactDOM.render(el, this);
+    ReactDOM.render(el, this, () => {
+      renderMath(this);
+    });
   }
 }

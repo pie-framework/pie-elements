@@ -104,7 +104,7 @@ export class Main extends React.Component {
       baseInputConfiguration = {},
       contentDimensions = {},
       title = {},
-      question = {},
+      prompt = {},
       modelOptions = {},
       mathMlOptions = {},
     } = configuration || {};
@@ -153,13 +153,13 @@ export class Main extends React.Component {
           />
         </FormSection>
 
-        <FormSection label={question?.label || 'Question'} className={classes.label}>
+        <FormSection label={prompt?.label || 'Question'} className={classes.label}>
           <EditableHtml
-            markup={model.question || ''}
+            markup={model.prompt || ''}
             minHeight={60}
-            onChange={(question) => onChange({ question })}
+            onChange={(prompt) => onChange({ prompt })}
             toolbarOpts={toolbarOpts}
-            pluginProps={getPluginProps(question?.inputConfiguration)}
+            pluginProps={getPluginProps(prompt?.inputConfiguration)}
             spellCheck={spellCheckEnabled}
             uploadSoundSupport={uploadSoundSupport}
             languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}

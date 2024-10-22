@@ -110,6 +110,7 @@ export class Main extends React.Component {
     configuration: PropTypes.object.isRequired,
     onConfigurationChanged: PropTypes.func.isRequired,
     onChange: PropTypes.func.isRequired,
+    imageSupport: PropTypes.object.isRequired,
     uploadSoundSupport: PropTypes.object.isRequired,
   };
 
@@ -260,9 +261,9 @@ export class Main extends React.Component {
         ticks.minor < 1
           ? math.number(math.ceil(minorLimits.min))
           : ticks.minor >= math.number(math.ceil(minorLimits.min)) &&
-          ticks.minor <= math.number(math.floor(minorLimits.max))
-            ? ticks.minor
-            : math.number(math.ceil(minorLimits.min));
+            ticks.minor <= math.number(math.floor(minorLimits.max))
+          ? ticks.minor
+          : math.number(math.ceil(minorLimits.min));
       ticks.integerTick = ticks.minor;
       minorValues = { decimal: [], fraction: [] };
       ticks.fractionTick = '0';
@@ -446,7 +447,8 @@ export class Main extends React.Component {
   };
 
   render() {
-    const { classes, model, onChange, configuration, onConfigurationChanged, uploadSoundSupport } = this.props;
+    const { classes, model, onChange, configuration, onConfigurationChanged, uploadSoundSupport, imageSupport } =
+      this.props;
     const {
       baseInputConfiguration = {},
       contentDimensions = {},
@@ -540,6 +542,7 @@ export class Main extends React.Component {
               toolbarOpts={toolbarOpts}
               pluginProps={getPluginProps(teacherInstructions?.inputConfiguration)}
               spellCheck={spellCheckEnabled}
+              imageSupport={imageSupport}
               uploadSoundSupport={uploadSoundSupport}
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               mathMlOptions={mathMlOptions}
@@ -560,6 +563,7 @@ export class Main extends React.Component {
               toolbarOpts={toolbarOpts}
               pluginProps={getPluginProps(prompt?.inputConfiguration)}
               spellCheck={spellCheckEnabled}
+              imageSupport={imageSupport}
               uploadSoundSupport={uploadSoundSupport}
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               mathMlOptions={mathMlOptions}
@@ -652,6 +656,7 @@ export class Main extends React.Component {
               ]}
               pluginProps={getPluginProps(title?.inputConfiguration)}
               spellCheck={spellCheckEnabled}
+              imageSupport={imageSupport}
               uploadSoundSupport={uploadSoundSupport}
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               mathMlOptions={mathMlOptions}
@@ -744,6 +749,7 @@ export class Main extends React.Component {
               toolbarOpts={toolbarOpts}
               spellCheck={spellCheckEnabled}
               pluginProps={getPluginProps(rationale?.inputConfiguration)}
+              imageSupport={imageSupport}
               uploadSoundSupport={uploadSoundSupport}
               languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
               mathMlOptions={mathMlOptions}

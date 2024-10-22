@@ -186,6 +186,10 @@ export class AlternateResponses extends React.Component {
               <React.Fragment key={index}>
                 {hasRowLabel && (
                   <div
+                    style={{
+                      gridColumn: `1/${categoriesPerRow + 1}`,
+                      width: '100%',
+                    }}
                     className={classes.rowLabel}
                     dangerouslySetInnerHTML={{
                       __html: rowLabels[rowIndex] || '',

@@ -1,4 +1,4 @@
-Config Object for
+Config Object for @pie-elements/fraction-model
 
 The schema defines the following properties:
 
@@ -66,6 +66,126 @@ Currently, only "SVG" is supported.
 ### `icon` (string, required)
 
 The icon string. Currently, only "SVG" is supported, so it needs to be a valid svg.
+
+## `blockquote` (object)
+
+Properties of the `blockquote` object:
+
+### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+## `h3` (object)
+
+Properties of the `h3` object:
+
+### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+## `characters` (object)
+
+Properties of the `characters` object:
+
+### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+## `bold` (object)
+
+Properties of the `bold` object:
+
+### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+## `html` (object)
+
+Properties of the `html` object:
+
+### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+## `italic` (object)
+
+Properties of the `italic` object:
+
+### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+## `ol_list` (object)
+
+Properties of the `ol_list` object:
+
+### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+## `redo` (object)
+
+Properties of the `redo` object:
+
+### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+## `strikethrough` (object)
+
+Properties of the `strikethrough` object:
+
+### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+## `sub` (object)
+
+Properties of the `sub` object:
+
+### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+## `sup` (object)
+
+Properties of the `sup` object:
+
+### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+## `table` (object)
+
+Properties of the `table` object:
+
+### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+## `ul_list` (object)
+
+Properties of the `ul_list` object:
+
+### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+## `underline` (object)
+
+Properties of the `underline` object:
+
+### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+## `undo` (object)
+
+Properties of the `undo` object:
+
+### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
 
 # `title` (object)
 
@@ -136,6 +256,126 @@ Currently, only "SVG" is supported.
 
 The icon string. Currently, only "SVG" is supported, so it needs to be a valid svg.
 
+### `blockquote` (object)
+
+Properties of the `blockquote` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `h3` (object)
+
+Properties of the `h3` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `characters` (object)
+
+Properties of the `characters` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `bold` (object)
+
+Properties of the `bold` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `html` (object)
+
+Properties of the `html` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `italic` (object)
+
+Properties of the `italic` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `ol_list` (object)
+
+Properties of the `ol_list` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `redo` (object)
+
+Properties of the `redo` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `strikethrough` (object)
+
+Properties of the `strikethrough` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `sub` (object)
+
+Properties of the `sub` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `sup` (object)
+
+Properties of the `sup` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `table` (object)
+
+Properties of the `table` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `ul_list` (object)
+
+Properties of the `ul_list` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `underline` (object)
+
+Properties of the `underline` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `undo` (object)
+
+Properties of the `undo` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
 ## `settings` (boolean)
 
 Indicates if the item has to be displayed in the Settings Panel
@@ -144,9 +384,9 @@ Indicates if the item has to be displayed in the Settings Panel
 
 Indicates the label for the item that has to be displayed in the Settings Panel
 
-# `question` (object)
+# `prompt` (object)
 
-Properties of the `question` object:
+Properties of the `prompt` object:
 
 ## `inputConfiguration` (object)
 
@@ -212,6 +452,126 @@ Currently, only "SVG" is supported.
 #### `icon` (string, required)
 
 The icon string. Currently, only "SVG" is supported, so it needs to be a valid svg.
+
+### `blockquote` (object)
+
+Properties of the `blockquote` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `h3` (object)
+
+Properties of the `h3` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `characters` (object)
+
+Properties of the `characters` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `bold` (object)
+
+Properties of the `bold` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `html` (object)
+
+Properties of the `html` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `italic` (object)
+
+Properties of the `italic` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `ol_list` (object)
+
+Properties of the `ol_list` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `redo` (object)
+
+Properties of the `redo` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `strikethrough` (object)
+
+Properties of the `strikethrough` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `sub` (object)
+
+Properties of the `sub` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `sup` (object)
+
+Properties of the `sup` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `table` (object)
+
+Properties of the `table` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `ul_list` (object)
+
+Properties of the `ul_list` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `underline` (object)
+
+Properties of the `underline` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `undo` (object)
+
+Properties of the `undo` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
 
 ## `settings` (boolean)
 
@@ -476,6 +836,126 @@ Currently, only "SVG" is supported.
 
 The icon string. Currently, only "SVG" is supported, so it needs to be a valid svg.
 
+### `blockquote` (object)
+
+Properties of the `blockquote` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `h3` (object)
+
+Properties of the `h3` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `characters` (object)
+
+Properties of the `characters` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `bold` (object)
+
+Properties of the `bold` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `html` (object)
+
+Properties of the `html` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `italic` (object)
+
+Properties of the `italic` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `ol_list` (object)
+
+Properties of the `ol_list` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `redo` (object)
+
+Properties of the `redo` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `strikethrough` (object)
+
+Properties of the `strikethrough` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `sub` (object)
+
+Properties of the `sub` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `sup` (object)
+
+Properties of the `sup` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `table` (object)
+
+Properties of the `table` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `ul_list` (object)
+
+Properties of the `ul_list` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `underline` (object)
+
+Properties of the `underline` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+### `undo` (object)
+
+Properties of the `undo` object:
+
+#### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
 ## `EditableHtmlButtonConfigure` (object)
 
 Properties of the `EditableHtmlButtonConfigure` object:
@@ -575,6 +1055,126 @@ Currently, only "SVG" is supported.
 ##### `icon` (string, required)
 
 The icon string. Currently, only "SVG" is supported, so it needs to be a valid svg.
+
+#### `blockquote` (object)
+
+Properties of the `blockquote` object:
+
+##### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+#### `h3` (object)
+
+Properties of the `h3` object:
+
+##### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+#### `characters` (object)
+
+Properties of the `characters` object:
+
+##### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+#### `bold` (object)
+
+Properties of the `bold` object:
+
+##### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+#### `html` (object)
+
+Properties of the `html` object:
+
+##### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+#### `italic` (object)
+
+Properties of the `italic` object:
+
+##### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+#### `ol_list` (object)
+
+Properties of the `ol_list` object:
+
+##### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+#### `redo` (object)
+
+Properties of the `redo` object:
+
+##### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+#### `strikethrough` (object)
+
+Properties of the `strikethrough` object:
+
+##### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+#### `sub` (object)
+
+Properties of the `sub` object:
+
+##### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+#### `sup` (object)
+
+Properties of the `sup` object:
+
+##### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+#### `table` (object)
+
+Properties of the `table` object:
+
+##### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+#### `ul_list` (object)
+
+Properties of the `ul_list` object:
+
+##### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+#### `underline` (object)
+
+Properties of the `underline` object:
+
+##### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
+
+#### `undo` (object)
+
+Properties of the `undo` object:
+
+##### `disabled` (boolean)
+
+Indicates if the plugin is disabled or not
 
 ### `settings` (boolean)
 

@@ -27,7 +27,8 @@ export class Category extends React.Component {
     const { classes, className, choices = [], disabled, onDropChoice, onRemoveChoice, id, correct } = this.props;
 
     const names = classNames(classes.category, className);
-    const placeholderNames = classNames(classes.placeholder, correct === false && classes.incorrect);
+    const placeholderNames = classNames(classes.placeholder, correct === false && classes.incorrect,
+      correct === true && classes.correct);
 
     return (
       <div className={names}>
@@ -51,6 +52,9 @@ export class Category extends React.Component {
 const styles = (theme) => ({
   incorrect: {
     border: `solid 2px ${color.incorrect()}`,
+  },
+  correct: {
+    border: `solid 2px ${color.correct()}`
   },
   placeholder: {
     minHeight: '80px',

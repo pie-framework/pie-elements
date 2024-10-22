@@ -325,24 +325,26 @@ export class Main extends React.Component {
   handleKeyDown = (event, id) => {
     const isAnswerInputFocused = document.activeElement.getAttribute('aria-label') === 'Enter answer.';
     const isClickOrTouchEvent = event.type === 'click' || event.type === 'touchstart';
-
+  
     if (isAnswerInputFocused && (event.key === 'ArrowDown' || isClickOrTouchEvent)) {
-      this.setState({ activeAnswerBlock: id }, () => {
-        if (event.key === 'ArrowDown') {
-          this.focusFirstKeypadElement();
-        }
-      });
+      if (this.state.activeAnswerBlock !== id) {
+        this.setState({ activeAnswerBlock: id });
+      }
+  
+      if (event.key === 'ArrowDown') {
+        this.focusFirstKeypadElement();
+      }
+    } else if ( event.key === 'Escape') {
+         this.setState({ activeAnswerBlock: '' });
     }
-
-    if ((!isAnswerInputFocused && isClickOrTouchEvent) || event.key === 'Escape') {
-      this.setState({ activeAnswerBlock: '' });
-    }
-  };
+  };  
 
   onSubFieldFocus = (id) => {
     const handleEvent = (event) => {
       this.handleKeyDown(event, id);
     };
+
+    this.handleEvent = handleEvent;
 
     document.addEventListener('keydown', handleEvent);
     document.addEventListener('click', handleEvent);
@@ -350,9 +352,12 @@ export class Main extends React.Component {
   };
 
   cleanupKeyDownListener = () => {
-    document.removeEventListener('keydown', this.handleEvent);
-    document.removeEventListener('click', this.handleEvent);
-    document.removeEventListener('touchstart', this.handleEvent);
+    if (this.handleEvent) {
+      document.removeEventListener('keydown', this.handleEvent);
+      document.removeEventListener('click', this.handleEvent);
+      document.removeEventListener('touchstart', this.handleEvent);
+      this.handleEvent = null;
+    }
   };
 
   componentWillUnmount() {

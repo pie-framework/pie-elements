@@ -7,17 +7,24 @@ import StimulusTabs from './stimulus-tabs';
 
 const log = debug('pie-element:passage:print');
 
+// replace nullish coalescing operator '??'
+const checkNullish = (value) => value !== null && value !== undefined;
+
 const preparePrintPassage = (model, opts) => {
   const isInstructor = opts.role === 'instructor';
+  const teacherInstructionsEnabled = checkNullish(model.teacherInstructionsEnabled)
+    ? model.teacherInstructionsEnabled
+    : true;
+  const textEnabled = checkNullish(model.textEnabled) ? model.textEnabled : true;
 
   return model.passages.map((passage, index) => ({
     id: index,
-    teacherInstructions: model.teacherInstructionsEnabled ? (isInstructor && passage.teacherInstructions) || '' : '',
+    teacherInstructions: teacherInstructionsEnabled ? (isInstructor && passage.teacherInstructions) || '' : '',
     label: passage.title || `Passage ${index + 1}`,
     title: model.titleEnabled ? passage.title || '' : '',
     author: model.authorEnabled ? passage.author || '' : '',
     subtitle: model.subtitleEnabled ? passage.subtitle || '' : '',
-    text: model.textEnabled ? passage.text || '' : '',
+    text: textEnabled ? passage.text || '' : '',
   }));
 };
 
