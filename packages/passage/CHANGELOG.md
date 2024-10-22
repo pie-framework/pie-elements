@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@3.1.3...@pie-element/passage@3.1.4) (2024-10-22)
+
+
+### Bug Fixes
+
+* **passage:** check for content value as it is PD-4274 ([47e937a](https://github.com/pie-framework/pie-elements/commit/47e937ac7f2ad885798dc624e00d5b728bf07e69))
+
+
+
+
+
 ## [3.1.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@3.1.2...@pie-element/passage@3.1.3) (2024-10-15)
 
 
