@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/fraction-model@2.1.3...@pie-element/fraction-model@2.1.4) (2024-10-22)
+
+
+### Bug Fixes
+
+* update pie-toolbox PD-4220, PD-4194, PD-4201, PD-4189, PD-4193, PD-4018, PD-4187 ([47b14fb](https://github.com/pie-framework/pie-elements/commit/47b14fbd80a04494511bc0ae44196b4e0175f0bb))
+* **Fraction-model:** added image support for question prompt ([daf2e74](https://github.com/pie-framework/pie-elements/commit/daf2e7447420a284ae082d60647858d712444ecd))
+* preview prompt used for title and prompt to fix TTS issue | SC-32705 ([99f7f88](https://github.com/pie-framework/pie-elements/commit/99f7f882eb7f4b33e398a59d7b72bdac1a142b97))
+
+
+
+
+
 ## [2.1.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/fraction-model@2.1.2...@pie-element/fraction-model@2.1.3) (2024-10-15)
 
 

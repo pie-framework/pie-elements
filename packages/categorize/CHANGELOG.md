@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.1.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@9.1.2...@pie-element/categorize@9.1.3) (2024-10-22)
+
+
+### Bug Fixes
+
+* update pie-toolbox PD-4220, PD-4194, PD-4201, PD-4189, PD-4193, PD-4018, PD-4187 ([47b14fb](https://github.com/pie-framework/pie-elements/commit/47b14fbd80a04494511bc0ae44196b4e0175f0bb))
+* **categorize:** Added  and  to improve UX on touch devices PD-4184 ([649ea00](https://github.com/pie-framework/pie-elements/commit/649ea003d282d3ccec82d43fc9c1c16035c77240))
+* **categorize:** avoid choices overwriting PD-4224 ([ab8855b](https://github.com/pie-framework/pie-elements/commit/ab8855bb4978bc703a1c14d6af1d8b5db1c27611))
+* **categorize:** update snapshots PD-4184 ([0110257](https://github.com/pie-framework/pie-elements/commit/011025732465623662b57108f0df035cfd2cfb4d))
+
+
+
+
+
 ## [9.1.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@9.1.1...@pie-element/categorize@9.1.2) (2024-10-15)
 
 

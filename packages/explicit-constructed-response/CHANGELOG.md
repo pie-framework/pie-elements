@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.1.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@7.1.2...@pie-element/explicit-constructed-response@7.1.3) (2024-10-22)
+
+
+### Bug Fixes
+
+* update pie-toolbox PD-4220, PD-4194, PD-4201, PD-4189, PD-4193, PD-4018, PD-4187 ([47b14fb](https://github.com/pie-framework/pie-elements/commit/47b14fbd80a04494511bc0ae44196b4e0175f0bb))
+* **ECR:** add autoWidthToolbar to all ECR input toolbars PD-4187 ([d5ea660](https://github.com/pie-framework/pie-elements/commit/d5ea6604e4864630e6bba0ac2d20250d9f1f8cde))
+* **ECR:** update snapshots PD-4187 ([a8037b0](https://github.com/pie-framework/pie-elements/commit/a8037b0316809b4992f82443b418e9b33c29bf9b))
+
+
+
+
+
 ## [7.1.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@7.1.1...@pie-element/explicit-constructed-response@7.1.2) (2024-10-15)
 
 
