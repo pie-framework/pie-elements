@@ -1,4 +1,10 @@
-import { RUBRIC_TYPES } from '@pie-lib/pie-toolbox/rubric';
+// todo the import from pie-lib/rubric WILL break pslb
+//  so don't use it unless you also test "yarn build"
+const RUBRIC_TYPES = {
+  SIMPLE_RUBRIC: 'simpleRubric',
+  MULTI_TRAIT_RUBRIC: 'multiTraitRubric',
+  'rubricless': 'rubricless',
+};
 
 const multiTraitDefaultModel = {
   description: false,

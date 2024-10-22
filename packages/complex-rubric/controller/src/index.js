@@ -1,6 +1,14 @@
-import { RUBRIC_TYPES } from '@pie-lib/pie-toolbox/rubric';
 import defaults from './defaults';
 import { markupToText } from './utils';
+
+
+// todo the import from pie-lib/rubric WILL break pslb
+//  so don't use it unless you also test "yarn build"
+const RUBRIC_TYPES = {
+  SIMPLE_RUBRIC: 'simpleRubric',
+  MULTI_TRAIT_RUBRIC: 'multiTraitRubric',
+  'rubricless': 'rubricless',
+};
 
 export function createDefaultModel(model = {}) {
   return new Promise((resolve) => resolve({ ...defaults, ...model }));
