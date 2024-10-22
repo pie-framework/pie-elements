@@ -1,16 +1,19 @@
 export default {
-  rows: [
-    {
-      id: 1,
-      title: 'Question Text 1',
-      values: [false, false],
-    },
-    {
-      id: 2,
-      title: 'Question Text 2',
-      values: [false, false],
-    },
-  ],
-  layout: 3,
+  choiceMode: 'radio',
+  enableImages: true,
+  feedbackEnabled: false,
   headers: ['Column 1', 'Column 2', 'Column 3'],
+  layout: 3,
+  lockChoiceOrder: true,
+  partialScoring: false,
+  prompt: '',
+  promptEnabled: true,
+  rationale: '',
+  rationaleEnabled: true,
+  rows: [],
+  scoringType: 'auto',
+  studentInstructionsEnabled: true,
+  teacherInstructions: '',
+  teacherInstructionsEnabled: true,
+  toolbarEditorPosition: 'bottom',
 };

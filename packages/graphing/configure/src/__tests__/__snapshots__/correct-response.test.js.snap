@@ -102,6 +102,7 @@ exports[`CorrectResponse renders snapshot 1`] = `
       }
     }
     showLabels={true}
+    showTitle={true}
     size={
       Object {
         "height": 500,

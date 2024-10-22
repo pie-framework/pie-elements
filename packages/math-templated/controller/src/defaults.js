@@ -1,13 +1,21 @@
 // Should be exactly the same as configure/defaults.js
 export default {
   model: {
-    prompt: 'Question Prompt goes here',
-    promptEnabled: true
+    allowTrailingZerosDefault: false,
+    equationEditor: '8',
+    ignoreOrderDefault: false,
+    markup: '',
+    playerSpellCheckEnabled: true,
+    prompt: '',
+    promptEnabled: true,
+    rationale: '',
+    rationaleEnabled: true,
+    responses: {},
+    spellCheckEnabled: true,
+    teacherInstructions: '',
+    teacherInstructionsEnabled: true,
+    toolbarEditorPosition: 'bottom',
+    validationDefault: 'literal',
   },
-  configuration: {
-    prompt: {
-      label: 'Prompt',
-      settings: true,
-    }
-  },
+  configuration: {},
 };

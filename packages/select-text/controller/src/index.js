@@ -88,23 +88,13 @@ export const outcome = (question, session, env) =>
 
 export function createDefaultModel(model = {}) {
   return new Promise((resolve) => {
-    resolve({
-      ...defaults,
-      ...model,
-    });
+    resolve({ ...defaults, ...model });
   });
 }
 
 export const normalizeSession = (session) => ({ selectedTokens: [], ...session });
 
-export const normalize = (question) => ({
-  feedbackEnabled: false,
-  rationaleEnabled: true,
-  promptEnabled: true,
-  teacherInstructionsEnabled: true,
-  studentInstructionsEnabled: true,
-  ...question,
-});
+export const normalize = (question) => ({ ...defaults, ...question });
 
 export const model = (question, session, env) => {
   session = session || { selectedToken: [] };

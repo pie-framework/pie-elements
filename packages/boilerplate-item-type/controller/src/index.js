@@ -39,13 +39,9 @@ export const outcome = (question, session, env) =>
     }
   });
 
-export const createDefaultModel = (model = {}) => ({
-  ...defaults.model,
-  ...model,
-});
-export const normalizeSession = (s) => ({
-  ...s,
-});
+export const createDefaultModel = (model = {}) => ({ ...defaults.model, ...model });
+
+export const normalizeSession = (s) => ({ ...s });
 
 export const model = (question, session, env) => {
   return new Promise((resolve) => {

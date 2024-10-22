@@ -160,13 +160,97 @@ exports[`Render Main Component Match Snapshot 1`] = `
           "feedbackEnabled": false,
           "mathInput": false,
           "playerSpellCheckDisabled": true,
-          "prompt": "This is the question prompt",
+          "predefinedAnnotations": Array [
+            Object {
+              "label": "good",
+              "text": "good",
+              "type": "positive",
+            },
+            Object {
+              "label": "★",
+              "text": "★",
+              "type": "positive",
+            },
+            Object {
+              "label": ":-)",
+              "text": ":-)",
+              "type": "positive",
+            },
+            Object {
+              "label": "creative",
+              "text": "creative",
+              "type": "positive",
+            },
+            Object {
+              "label": "run-on",
+              "text": "run-on",
+              "type": "negative",
+            },
+            Object {
+              "label": "frag",
+              "text": "fragment",
+              "type": "negative",
+            },
+            Object {
+              "label": "tran",
+              "text": "transition",
+              "type": "negative",
+            },
+            Object {
+              "label": "supp",
+              "text": "support needed",
+              "type": "negative",
+            },
+            Object {
+              "label": "punc",
+              "text": "punctuation",
+              "type": "negative",
+            },
+            Object {
+              "label": "agr",
+              "text": "agreement wrong",
+              "type": "negative",
+            },
+            Object {
+              "label": "unclear",
+              "text": "unclear",
+              "type": "negative",
+            },
+            Object {
+              "label": "cut",
+              "text": "cut",
+              "type": "negative",
+            },
+            Object {
+              "label": "sp",
+              "text": "spelling",
+              "type": "negative",
+            },
+            Object {
+              "label": "cap",
+              "text": "capitalization",
+              "type": "negative",
+            },
+            Object {
+              "label": "inf",
+              "text": "informal",
+              "type": "negative",
+            },
+            Object {
+              "label": "awk",
+              "text": "awkward",
+              "type": "negative",
+            },
+          ],
+          "prompt": "",
           "promptEnabled": true,
+          "rationale": "",
           "rationaleEnabled": true,
           "spanishInput": false,
           "specialInput": false,
           "spellCheckEnabled": true,
           "studentInstructionsEnabled": true,
+          "teacherInstructions": "",
           "teacherInstructionsEnabled": true,
           "toolbarEditorPosition": "bottom",
         }
@@ -271,7 +355,7 @@ exports[`Render Main Component Match Snapshot 1`] = `
           },
         ]
       }
-      markup="This is the question prompt"
+      markup=""
       mathMlOptions={
         Object {
           "mmlEditing": false,
