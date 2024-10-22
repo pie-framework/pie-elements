@@ -99,7 +99,7 @@ export class Main extends React.Component {
   };
 
   render() {
-    const { classes, model, onChange, configuration, uploadSoundSupport } = this.props;
+    const { classes, model, onChange, configuration, imageSupport, uploadSoundSupport } = this.props;
     const {
       baseInputConfiguration = {},
       contentDimensions = {},
@@ -162,6 +162,7 @@ export class Main extends React.Component {
             pluginProps={getPluginProps(prompt?.inputConfiguration)}
             spellCheck={spellCheckEnabled}
             uploadSoundSupport={uploadSoundSupport}
+            imageSupport={imageSupport}
             languageCharactersProps={[{ language: 'spanish' }, { language: 'special' }]}
             mathMlOptions={mathMlOptions}
           />
