@@ -1,14 +1,9 @@
 export default {
   annotationsEnabled: false,
-  dimensions: {
-    height: 100,
-    width: 500,
-  },
+  dimensions: { height: 100, width: 500 },
+  equationEditor: 'Grade 8 - HS',
   feedbackEnabled: false,
-  promptEnabled: true,
-  rationaleEnabled: true,
-  teacherInstructionsEnabled: true,
-  studentInstructionsEnabled: true,
+  mathInput: false,
   playerSpellCheckDisabled: true,
   predefinedAnnotations: [
     { label: 'good', text: 'good', type: 'positive' },
@@ -28,4 +23,12 @@ export default {
     { label: 'inf', text: 'informal', type: 'negative' },
     { label: 'awk', text: 'awkward', type: 'negative' },
   ],
+  prompt: '',
+  promptEnabled: true,
+  rationale: '',
+  rationaleEnabled: true,
+  studentInstructionsEnabled: true,
+  teacherInstructions: '',
+  teacherInstructionsEnabled: true,
+  toolbarEditorPosition: 'bottom',
 };

@@ -103,19 +103,20 @@ const defaultConfig = {
 
 const partModel = (base) => ({
   choiceMode: 'radio',
-  choices: [],
   choicePrefix: 'numbers',
-  prompt: 'Prompt',
-  rationaleEnabled: true,
-  feedbackEnabled: false,
-  promptEnabled: true,
-  teacherInstructions: '',
-  rationale: '',
-  teacherInstructionsEnabled: true,
-  studentInstructionsEnabled: true,
-  spellCheckEnabled: true,
+  choices: [],
   choicesLayout: 'vertical',
-  gridColumns: '2',
+  feedbackEnabled: false,
+  gridColumns: 2,
+  prompt: '',
+  promptEnabled: true,
+  rationale: '',
+  rationaleEnabled: true,
+  spellCheckEnabled: true,
+  studentInstructionsEnabled: true,
+  teacherInstructions: '',
+  teacherInstructionsEnabled: true,
+  toolbarEditorPosition: 'bottom',
   ...base,
 });
 
@@ -124,8 +125,8 @@ export default {
     partLabels: true,
     partLabelType: 'Letters',
     // partialScoring: false,
-    partA: partModel({ prompt: 'Prompt A' }),
-    partB: partModel({ prompt: 'Prompt B' }),
+    partA: partModel(),
+    partB: partModel(),
   },
   configuration: {
     baseInputConfiguration: {
@@ -159,6 +160,6 @@ export default {
     languageChoices: {
       label: 'Language Choices',
       options: [],
-    }
+    },
   },
 };

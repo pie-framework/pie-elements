@@ -52,34 +52,17 @@ const parsePart = (part, key, session, env) => {
   };
 };
 
+const normalizePart = (model, base) => ({
+  ...base,
+  ...model,
+  choicesLayout: model.choicesLayout || (model.verticalMode === false && 'horizontal') || 'vertical',
+});
+
 export const normalize = ({ partA = {}, partB = {}, language, ...question }) => ({
-  partLabels: true,
-  partLabelType: 'Letters',
+  ...defaults,
   ...question,
-  partA: {
-    ...defaults.partA,
-    rationaleEnabled: true,
-    feedbackEnabled: false,
-    promptEnabled: true,
-    teacherInstructionsEnabled: true,
-    studentInstructionsEnabled: true,
-    gridColumns: '2',
-    language: language,
-    ...partA,
-    choicesLayout: partA.choicesLayout || (partA.verticalMode === false && 'horizontal') || 'vertical',
-  },
-  partB: {
-    ...defaults.partB,
-    rationaleEnabled: true,
-    promptEnabled: true,
-    feedbackEnabled: false,
-    teacherInstructionsEnabled: true,
-    studentInstructionsEnabled: true,
-    gridColumns: '2',
-    language: language,
-    ...partB,
-    choicesLayout: partB.choicesLayout || (partB.verticalMode === false && 'horizontal') || 'vertical',
-  },
+  partA: normalizePart(partA, { ...defaults.partA, language }),
+  partB: normalizePart(partB, { ...defaults.partB, language }),
 });
 
 /**
@@ -142,8 +125,14 @@ export async function model(question, session, env, updateSession) {
 
   if (normalizedQuestion.partLabels) {
     const language = normalizedQuestion.language;
-    partA.partLabel = translator.t('ebsr.part', {lng: language, index: normalizedQuestion.partLabelType === 'Letters' ? 'A' : '1'});
-    partB.partLabel = translator.t('ebsr.part', {lng: language, index: normalizedQuestion.partLabelType === 'Letters' ? 'B' : '2'});
+    partA.partLabel = translator.t('ebsr.part', {
+      lng: language,
+      index: normalizedQuestion.partLabelType === 'Letters' ? 'A' : '1',
+    });
+    partB.partLabel = translator.t('ebsr.part', {
+      lng: language,
+      index: normalizedQuestion.partLabelType === 'Letters' ? 'B' : '2',
+    });
   } else {
     partA.partLabel = undefined;
     partB.partLabel = undefined;

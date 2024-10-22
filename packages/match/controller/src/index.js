@@ -164,14 +164,7 @@ export function createDefaultModel(model = {}) {
   });
 }
 
-export const normalize = (question) => ({
-  feedbackEnabled: false,
-  promptEnabled: true,
-  rationaleEnabled: true,
-  teacherInstructionsEnabled: true,
-  studentInstructionsEnabled: true,
-  ...question,
-});
+export const normalize = (question) => ({ ...defaults, ...question });
 
 /**
  *

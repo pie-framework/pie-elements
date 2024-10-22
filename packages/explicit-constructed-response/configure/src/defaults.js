@@ -11,6 +11,7 @@ export default {
     rationaleEnabled: true,
     spellCheckEnabled: true,
     studentInstructionsEnabled: true,
+    teacherInstructions: '',
     teacherInstructionsEnabled: true,
     toolbarEditorPosition: 'bottom',
   },

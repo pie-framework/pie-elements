@@ -1,13 +1,13 @@
 import { RUBRIC_TYPES } from '@pie-lib/pie-toolbox/rubric';
 
 const multiTraitDefaultModel = {
-  visibleToStudent: true,
+  description: false,
+  excludeZero: false,
   halfScoring: false,
   pointLabels: true,
-  description: false,
-  standards: false,
   scales: [],
-  excludeZero: false,
+  standards: false,
+  visibleToStudent: true,
 };
 
 const rubricDefaultModel = {
