@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage-controller@1.4.3...@pie-element/passage-controller@1.4.4) (2024-10-22)
+
+
+### Bug Fixes
+
+* added complexjs as dependency [PD-4200] ([da393d5](https://github.com/pie-framework/pie-elements/commit/da393d5ae8ef52f17b47ccf32967410a9263180e))
+* added resolutions in controller as well [PD-4200] ([020edc5](https://github.com/pie-framework/pie-elements/commit/020edc5f0bb5de6bf8f344efd0a3b9b0b16b9dc7))
+* reverting changes since the issue is fixed in the latest complex.js [PD-4200] ([42c9f21](https://github.com/pie-framework/pie-elements/commit/42c9f216c4d29b051156489beb43fa7093667eb7))
+
+
+
+
+
 ## [1.4.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage-controller@1.4.2...@pie-element/passage-controller@1.4.3) (2024-10-01)
 
 **Note:** Version bump only for package @pie-element/passage-controller

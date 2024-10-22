@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@3.0.4...@pie-element/match-list@3.0.5) (2024-10-22)
+
+
+### Bug Fixes
+
+* update pie-toolbox PD-4220, PD-4194, PD-4201, PD-4189, PD-4193, PD-4018, PD-4187 ([47b14fb](https://github.com/pie-framework/pie-elements/commit/47b14fbd80a04494511bc0ae44196b4e0175f0bb))
+* **match-list:** update demo model. current one was broken PD-4188 ([b7ec94a](https://github.com/pie-framework/pie-elements/commit/b7ec94ad06270b3af1cbf5e797aa22f9a1a96d6b))
+
+
+
+
+
 ## [3.0.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@3.0.3...@pie-element/match-list@3.0.4) (2024-10-15)
 
 

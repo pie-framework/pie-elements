@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.1.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@10.1.2...@pie-element/placement-ordering@10.1.3) (2024-10-22)
+
+
+### Bug Fixes
+
+* update pie-toolbox PD-4220, PD-4194, PD-4201, PD-4189, PD-4193, PD-4018, PD-4187 ([47b14fb](https://github.com/pie-framework/pie-elements/commit/47b14fbd80a04494511bc0ae44196b4e0175f0bb))
+* **placement-ordering:** added autoWidthToolbar to fix choices toolbar PD-4206 ([3ef30e6](https://github.com/pie-framework/pie-elements/commit/3ef30e63ca3ccac25e90a259fc58b9379a4bb007))
+
+
+
+
+
 ## [10.1.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@10.1.1...@pie-element/placement-ordering@10.1.2) (2024-10-15)
 
 

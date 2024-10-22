@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@3.1.3...@pie-element/complex-rubric@3.1.4) (2024-10-22)
+
+
+### Bug Fixes
+
+* pslb fix ([2137958](https://github.com/pie-framework/pie-elements/commit/2137958adc303c2f08bc53bf6537469158220c1f))
+* update pie-toolbox PD-4220, PD-4194, PD-4201, PD-4189, PD-4193, PD-4018, PD-4187 ([47b14fb](https://github.com/pie-framework/pie-elements/commit/47b14fbd80a04494511bc0ae44196b4e0175f0bb))
+
+
+
+
+
 ## [3.1.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@3.1.2...@pie-element/complex-rubric@3.1.3) (2024-10-15)
 
 
