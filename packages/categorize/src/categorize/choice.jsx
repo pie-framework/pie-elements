@@ -66,6 +66,13 @@ const styles = (theme) => ({
     fontSize: theme.typography.fontSize + 2,
     '&:last-child': {
       paddingBottom: theme.spacing.unit * 2,
+
+      '& img': {
+        maxWidth: '100%',
+        maxHeight: '100%',
+        objectFit: 'contain'
+
+      }
     },
     borderRadius: '4px',
     border: '1px solid',

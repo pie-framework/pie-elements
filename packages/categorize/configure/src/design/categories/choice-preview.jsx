@@ -59,5 +59,12 @@ const styles = () => ({
     maxWidth: '90%',
     wordBreak: 'break-all',
   },
+
+    '& img': {
+      maxWidth: '100%',
+      maxHeight: '100%',
+      objectFit: 'contain'
+
+    }
 });
 export default withStyles(styles)(ChoicePreview);
