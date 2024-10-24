@@ -118,7 +118,9 @@ export class MultipleChoice extends React.Component {
   onToggle = () => {
     if (this.props.mode === 'evaluate') {
       this.setState({ showCorrect: !this.state.showCorrect }, () => {
-        this.props.onShowCorrectToggle();
+        if (this.props.onShowCorrectToggle) {
+          this.props.onShowCorrectToggle();
+        }
       });
     }
   };
@@ -126,13 +128,17 @@ export class MultipleChoice extends React.Component {
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (!nextProps.correctResponse && this.state.showCorrect !== false) {
       this.setState({ showCorrect: false }, () => {
-        this.props.onShowCorrectToggle();
+        if (this.props.onShowCorrectToggle) {
+          this.props.onShowCorrectToggle();
+        }
       });
     }
 
     if (nextProps.alwaysShowCorrect && this.state.showCorrect !== true) {
       this.setState({ showCorrect: true }, () => {
-        this.props.onShowCorrectToggle();
+        if (this.props.onShowCorrectToggle) {
+          this.props.onShowCorrectToggle();
+        }
       });
     }
   }

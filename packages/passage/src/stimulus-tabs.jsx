@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import { withStyles } from '@material-ui/core/styles';
-import { Collapsible, color, PreviewPrompt } from '@pie-lib/pie-toolbox/render-ui';
+import { Collapsible, color, PreviewPrompt, Purpose } from '@pie-lib/pie-toolbox/render-ui';
 import classNames from 'classnames';
 
 const styles = (theme) => ({
@@ -179,33 +179,41 @@ class StimulusTabs extends React.Component {
         {(getContent(tab.title) || getContent(tab.subtitle)) && (
           <h2>
             {getContent(tab.title) && (
-              <div
-                className={classNames(classes.passageTitle, 'title')}
-                dangerouslySetInnerHTML={{ __html: this.parsedText(tab.title) }}
-              />
+              <Purpose purpose="passage-title">
+                <div
+                  className={classNames(classes.passageTitle, 'title')}
+                  dangerouslySetInnerHTML={{ __html: this.parsedText(tab.title) }}
+                />
+              </Purpose>
             )}
             {getContent(tab.subtitle) && (
-              <div
-                className={classNames(classes.passageSubtitle, 'subtitle')}
-                dangerouslySetInnerHTML={{ __html: this.parsedText(tab.subtitle) }}
-              />
+              <Purpose purpose="passage-subtitle">
+                <div
+                  className={classNames(classes.passageSubtitle, 'subtitle')}
+                  dangerouslySetInnerHTML={{ __html: this.parsedText(tab.subtitle) }}
+                />
+              </Purpose>
             )}
           </h2>
         )}
 
         {getContent(tab.author) && (
-          <div
-            className={classNames(classes.passageAuthor, 'author')}
-            dangerouslySetInnerHTML={{ __html: this.parsedText(tab.author) }}
-          />
+          <Purpose purpose="passage-author">
+            <div
+              className={classNames(classes.passageAuthor, 'author')}
+              dangerouslySetInnerHTML={{ __html: this.parsedText(tab.author) }}
+            />
+          </Purpose>
         )}
 
         {getContent(tab.text) && (
-          <div
-            key={tab.id}
-            className={classNames(classes.passageText, 'text')}
-            dangerouslySetInnerHTML={{ __html: this.parsedText(tab.text) }}
-          />
+          <Purpose purpose="passage-text">
+            <div
+              key={tab.id}
+              className={classNames(classes.passageText, 'text')}
+              dangerouslySetInnerHTML={{ __html: this.parsedText(tab.text) }}
+            />
+          </Purpose>
         )}
       </div>
     );
@@ -240,7 +248,11 @@ class StimulusTabs extends React.Component {
                   className={classes.tab}
                   key={tab.id}
                   id={`button-${tab.id}`}
-                  label={<span dangerouslySetInnerHTML={{ __html: this.parsedText(tab.label) }} />}
+                  label={
+                    <Purpose purpose="passage-label">
+                      <span dangerouslySetInnerHTML={{ __html: this.parsedText(tab.label) }} />
+                    </Purpose>
+                  }
                   value={tab.id}
                   tabIndex={activeTab === tab.id ? 0 : -1}
                   aria-controls={`tabpanel-${tab.id}`}

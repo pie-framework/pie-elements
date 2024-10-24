@@ -1,9 +1,11 @@
 import * as React from 'react';
+import ReactDOM from 'react-dom';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { GraphContainer as Graph } from '@pie-lib/pie-toolbox/graphing';
 import { AlertDialog } from '@pie-lib/pie-toolbox/config-ui';
+import { renderMath } from '@pie-lib/pie-toolbox/math-rendering-accessible';
 import Delete from '@material-ui/icons/Delete';
 import { set, isEqual } from 'lodash';
 import { MenuItem, Select, Tooltip, Typography } from '@material-ui/core';
@@ -200,6 +202,18 @@ export class CorrectResponse extends React.Component {
       open: false,
     },
   };
+
+  componentDidMount() {
+    try {
+      // eslint-disable-next-line react/no-find-dom-node
+      const domNode = ReactDOM.findDOMNode(this);
+
+      renderMath(domNode);
+    } catch (e) {
+      // Added try-catch block to handle "Unable to find node on an unmounted component" error from tests, thrown because of the usage of shallow
+      console.error('DOM not mounted');
+    }
+  }
 
   handleAlertDialog = (open, callback) =>
     this.setState(

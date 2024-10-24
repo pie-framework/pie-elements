@@ -4,7 +4,7 @@
     "access": "public"
   },
   "repository": "pie-framework/pie-elements",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -13,7 +13,7 @@
   "dependencies": {
     "@material-ui/core": "^3.9.2",
     "@pie-framework/pie-player-events": "^0.1.0",
-    "@pie-lib/pie-toolbox": "2.0.12",
+    "@pie-lib/pie-toolbox": "2.0.13",
     "classnames": "^2.2.5",
     "debug": "^4.1.1",
     "react": "^16.8.1",
