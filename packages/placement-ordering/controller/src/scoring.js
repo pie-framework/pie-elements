@@ -73,7 +73,7 @@ export const getAllCorrectResponses = (question) => {
     }
 
     return alternate.response;
-  });
+  }).filter(item => item !== undefined);
 
   return [flattenCorrect(question), ...alternates];
 };
