@@ -48,6 +48,9 @@ export class Choices extends React.Component {
     pluginProps: PropTypes.object,
     maxChoices: PropTypes.number,
     uploadSoundSupport: PropTypes.object,
+    maxImageWidth: PropTypes.number,
+    maxImageHeight: PropTypes.number,
+    maxLength: PropTypes.number
   };
 
   state = { warning: { open: false } };
@@ -214,9 +217,12 @@ export class Choices extends React.Component {
       uploadSoundSupport,
       imageSupport = {},
       pluginProps = {},
+      maxImageWidth,
+      maxImageHeight,
+      maxLength,
     } = this.props;
     const visibleChoices = this.getVisibleChoices() || [];
-
+    console.log(this.props);
     return (
       <div className={classes.design}>
         <Button
@@ -271,6 +277,9 @@ export class Choices extends React.Component {
                   toolbarOpts={toolbarOpts}
                   uploadSoundSupport={uploadSoundSupport}
                   mathMlOptions={mathMlOptions}
+                  maxImageHeight={maxImageHeight}
+                  maxImageWidth={maxImageWidth}
+                  charactersLimit={maxLength}
                 />
               </div>
             ) : (

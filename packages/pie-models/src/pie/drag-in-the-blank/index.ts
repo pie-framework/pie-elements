@@ -219,4 +219,9 @@ export interface DragInTheBlankConfigure extends PromptConfig, CommonConfigSetti
     label: string;
     options: ConfigureLanguageOptionsProp[];
   };
+  
+  /**
+   * Maximum character limit for each answer choice
+   */
+  maxLength?: number;
 }
