@@ -222,7 +222,6 @@ export class Choices extends React.Component {
       maxLength,
     } = this.props;
     const visibleChoices = this.getVisibleChoices() || [];
-    console.log(this.props);
     return (
       <div className={classes.design}>
         <Button
