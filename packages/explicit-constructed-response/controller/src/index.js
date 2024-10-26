@@ -158,6 +158,7 @@ export function model(question, session, env) {
       responseCorrect: env.mode === 'evaluate' ? getScore(normalizedQuestion, session) === 1 : undefined,
       showNote,
       teacherInstructions: defaults.teacherInstructions,
+      extraCSSRules: normalizedQuestion.extraCSSRules,
     };
 
     if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {

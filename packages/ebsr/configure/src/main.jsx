@@ -62,7 +62,7 @@ export class Main extends React.Component {
 
   render() {
     const { classes, model, configuration, onConfigurationChanged } = this.props;
-    const { partLabelType, partA: modelPartA, partB: modelPartB } = model;
+    const { partLabelType, partA: modelPartA, partB: modelPartB, extraCSSRules } = model;
     const {
       contentDimensions = {},
       partA = {},
@@ -169,6 +169,7 @@ export class Main extends React.Component {
 
     return (
       <layout.ConfigLayout
+        extraCSSRules={extraCSSRules}
         dimensions={contentDimensions}
         hideSettings={settingsPanelDisabled}
         settings={

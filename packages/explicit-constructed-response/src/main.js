@@ -5,7 +5,7 @@ import isEmpty from 'lodash/isEmpty';
 import isEqual from 'lodash/isEqual';
 import { CorrectAnswerToggle } from '@pie-lib/pie-toolbox/correct-answer-toggle';
 import { ConstructedResponse } from '@pie-lib/pie-toolbox/mask-markup';
-import { color, Collapsible, hasText, PreviewPrompt } from '@pie-lib/pie-toolbox/render-ui';
+import { color, Collapsible, hasText, PreviewPrompt, UiLayout } from '@pie-lib/pie-toolbox/render-ui';
 import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
 import Translator from '@pie-lib/pie-toolbox/translator';
@@ -110,8 +110,10 @@ export class Main extends React.Component {
       rationale,
       showNote,
       teacherInstructions,
+      model,
     } = this.props;
 
+    const { extraCSSRules } = model;
     const displayNote = (showCorrectAnswer || (mode === 'view' && role === 'instructor')) && showNote && note;
     const mainClasses = classNames([
       classes.mainContainer,
@@ -127,7 +129,7 @@ export class Main extends React.Component {
     const rationaleDiv = <PreviewPrompt prompt={rationale} />;
 
     return (
-      <div className={mainClasses} style={{ display: `${displayType}` }}>
+      <UiLayout extraCSSRules={extraCSSRules} className={mainClasses} style={{ display: `${displayType}` }}>
         {mode === 'gather' && <h2 className={classes.srOnly}>Fill in the Blank Question</h2>}
 
         {teacherInstructions && hasText(teacherInstructions) && (
@@ -174,7 +176,7 @@ export class Main extends React.Component {
             )}
           </div>
         )}
-      </div>
+      </UiLayout>
     );
   }
 }

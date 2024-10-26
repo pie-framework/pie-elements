@@ -142,6 +142,7 @@ const Design = withStyles(styles)((props) => {
     choices,
     errors,
     toolbarEditorPosition,
+    extraCSSRules,
   } = model || {};
 
   const {
@@ -207,6 +208,7 @@ const Design = withStyles(styles)((props) => {
     <layout.ConfigLayout
       dimensions={contentDimensions}
       hideSettings={settingsPanelDisabled}
+      extraCSSRules={extraCSSRules}
       settings={
         <Panel
           model={model}
@@ -245,6 +247,7 @@ const Design = withStyles(styles)((props) => {
       {promptEnabled && (
         <InputContainer label={prompt.label} className={classes.promptHolder}>
           <EditableHtml
+            extraCSSRules={extraCSSRules}
             className={classes.prompt}
             markup={model.prompt}
             onChange={onPromptChanged}

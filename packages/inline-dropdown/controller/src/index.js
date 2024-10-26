@@ -125,6 +125,7 @@ export function model(question, session, env, updateSession) {
       rationale,
       teacherInstructions,
       language: normalizedQuestion.language,
+      extraCSSRules: normalizedQuestion.extraCSSRules,
     };
 
     resolve(out);

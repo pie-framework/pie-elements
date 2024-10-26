@@ -70,13 +70,13 @@ export class Main extends React.Component {
 
   render() {
     const { model, classes } = this.props;
-    const { imperialTicks, label, measure, units, width } = model || {};
+    const { extraCSSRules, imperialTicks, label, measure, units, width } = model || {};
 
     const pixelsPerUnit = width / units;
     const labelOpts = measure === 'metric' ? metricLabels : imperialLabels;
 
     return (
-      <layout.ConfigLayout hideSettings={true} settings={null}>
+      <layout.ConfigLayout extraCSSRules={extraCSSRules} hideSettings={true} settings={null}>
         <div>
           <TwoChoice
             header="Type"

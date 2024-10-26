@@ -46,7 +46,19 @@ exports.model = (id, element) => ({
       accessibility: 'finland',
     },
   ],
-  prompt: "",
+  extraCSSRules: {
+    names: ['red', 'blue'],
+    rules: `
+      .red {
+        color: red !important;
+      }
+
+      .blue {
+        color: blue !important;
+      }
+    `
+  },
+  prompt: '',
   promptEnabled: true,
   toolbarEditorPosition: 'bottom',
   rubricEnabled: false,

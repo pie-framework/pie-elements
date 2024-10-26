@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { withDragContext } from '@pie-lib/pie-toolbox/drag';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { ShowRationale } from '@pie-lib/pie-toolbox/icons';
-import { color, Collapsible, PreviewPrompt, hasText } from '@pie-lib/pie-toolbox/render-ui';
+import { color, Collapsible, PreviewPrompt, UiLayout, hasText } from '@pie-lib/pie-toolbox/render-ui';
 import { withStyles } from '@material-ui/core/styles';
 import { CorrectAnswerToggle } from '@pie-lib/pie-toolbox/correct-answer-toggle';
 import Translator from '@pie-lib/pie-toolbox/translator';
@@ -210,6 +210,7 @@ class ImageClozeAssociationComponent extends React.Component {
       model: {
         disabled,
         duplicateResponses,
+        extraCSSRules,
         image,
         responseAreaFill,
         stimulus,
@@ -266,7 +267,7 @@ class ImageClozeAssociationComponent extends React.Component {
     }
 
     return (
-      <div className={classes.main}>
+      <UiLayout extraCSSRules={extraCSSRules} className={classes.main}>
         {teacherInstructions && hasText(teacherInstructions) && (
           <Collapsible
             className={classes.teacherInstructions}
@@ -352,7 +353,7 @@ class ImageClozeAssociationComponent extends React.Component {
             <PreviewPrompt prompt={rationale} />
           </Collapsible>
         )}
-      </div>
+      </UiLayout>
     );
   }
 }

@@ -6,10 +6,9 @@ import isEmpty from 'lodash/isEmpty';
 import { withStyles } from '@material-ui/core/styles';
 import Tooltip from '@material-ui/core/Tooltip';
 import { mq, HorizontalKeypad, updateSpans } from '@pie-lib/pie-toolbox/math-input';
-import { Collapsible, Readable, hasText, PreviewPrompt } from '@pie-lib/pie-toolbox/render-ui';
+import { color, Collapsible, Readable, hasText, PreviewPrompt, UiLayout } from '@pie-lib/pie-toolbox/render-ui';
 import { renderMath } from '@pie-lib/pie-toolbox/math-rendering-accessible';
 import MathQuill from '@pie-framework/mathquill';
-import { color } from '@pie-lib/pie-toolbox/render-ui';
 import { Customizable } from '@pie-lib/pie-toolbox/mask-markup';
 import { CorrectAnswerToggle } from '@pie-lib/pie-toolbox/correct-answer-toggle';
 
@@ -530,6 +529,7 @@ export class Main extends React.Component {
     const {
       prompt,
       env: { mode, role } = {},
+      extraCSSRules,
       correctness,
       responses,
       language,
@@ -541,7 +541,7 @@ export class Main extends React.Component {
     const displayNote = (showCorrect || (mode === 'view' && role === 'instructor')) && showNote && note;
 
     return (
-      <div className={classes.mainContainer} ref={(r) => (this.root = r || this.root)}>
+      <UiLayout extraCSSRules={extraCSSRules} className={classes.mainContainer} ref={(r) => (this.root = r || this.root)}>
         <div className={classes.main}>
           {/* what is srOnly ? */}
           {mode === 'gather' && <h2 className={classes.srOnly}>Math Equation Response Question</h2>}
@@ -579,7 +579,7 @@ export class Main extends React.Component {
 
           {this.renderRationale()}
         </div>
-      </div>
+      </UiLayout>
     );
   }
 }

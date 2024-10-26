@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { GraphContainer } from '@pie-lib/pie-toolbox/graphing-solution-set';
-import { color, Collapsible, hasText, PreviewPrompt } from '@pie-lib/pie-toolbox/render-ui';
+import { color, Collapsible, hasText, PreviewPrompt, UiLayout } from '@pie-lib/pie-toolbox/render-ui';
 import { CorrectAnswerToggle } from '@pie-lib/pie-toolbox/correct-answer-toggle';
 import { findSectionsInSolutionSet, pointInsidePolygon, checkIfLinesAreAdded } from './utils';
 import { AlertDialog } from '@pie-lib/pie-toolbox/config-ui';
@@ -209,6 +209,7 @@ export class Main extends React.Component {
       defaultTool,
       disabled,
       domain,
+      extraCSSRules,
       labels,
       labelsEnabled,
       prompt,
@@ -225,7 +226,7 @@ export class Main extends React.Component {
     } = model || {};
     const marks = answersCorrected || answer || [];
     return (
-      <div className={classes.mainContainer}>
+      <UiLayout extraCSSRules={extraCSSRules} className={classes.mainContainer}>
         {teacherInstructions && hasText(teacherInstructions) && (
           <Collapsible
             className={classes.teacherInstructions}
@@ -303,7 +304,7 @@ export class Main extends React.Component {
           onConfirm={dialog.onConfirm}
           onConfirmText={dialog.onConfirmText ? dialog.onConfirmText : 'OK'}
         />
-      </div>
+      </UiLayout>
     );
   }
 }

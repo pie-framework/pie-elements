@@ -181,6 +181,7 @@ export const model = (question, session, env) => {
       view: env.mode === 'view',
       correctness,
       env,
+      extraCSSRules: normalizedQuestion.extraCSSRules,
     };
 
     const { answers = {} } = session || {};

@@ -157,6 +157,7 @@ export async function model(question, session, env, updateSession) {
     resolve({
       disabled: env.mode !== 'gather',
       mode: env.mode,
+      extraCSSRules: normalizedQuestion.extraCSSRules,
       partA,
       partB,
     });

@@ -157,6 +157,7 @@ export class Main extends React.Component {
       spellCheckEnabled,
       toolbarEditorPosition,
       errors,
+      extraCSSRules,
     } = model || {};
 
     const {
@@ -204,6 +205,7 @@ export class Main extends React.Component {
 
     return (
       <layout.ConfigLayout
+        extraCSSRules={extraCSSRules}
         dimensions={contentDimensions}
         hideSettings={settingsPanelDisabled}
         settings={

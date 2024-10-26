@@ -257,6 +257,7 @@ export class Design extends React.Component {
 
     const {
       errors,
+      extraCSSRules,
       promptEnabled,
       rationaleEnabled,
       spellCheckEnabled,
@@ -304,6 +305,7 @@ export class Design extends React.Component {
 
     return (
       <layout.ConfigLayout
+        extraCSSRules={extraCSSRules}
         dimensions={contentDimensions}
         hideSettings={settingsPanelDisabled}
         settings={

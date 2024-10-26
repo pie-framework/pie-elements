@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { TextSelect, Legend } from '@pie-lib/pie-toolbox/text-select';
 import {CorrectAnswerToggle} from '@pie-lib/pie-toolbox/correct-answer-toggle';
-import { color, Feedback, Collapsible, hasText, PreviewPrompt } from '@pie-lib/pie-toolbox/render-ui';
+import { color, Feedback, Collapsible, hasText, PreviewPrompt, UiLayout } from '@pie-lib/pie-toolbox/render-ui';
 import { withStyles } from '@material-ui/core/styles';
 import generateModel from './utils';
 
@@ -50,7 +50,7 @@ export class Main extends React.Component {
   render() {
     const { session, onSelectionChange, classes } = this.props;
     const { showCorrectAnswer, model } = this.state;
-    const { env } = model;
+    const { env, extraCSSRules } = model;
     const { mode } = env || {};
 
 
@@ -59,7 +59,7 @@ export class Main extends React.Component {
     log('[render] selectedTokens:', selectedTokens);
 
     return (
-      <div className={classes.mainContainer}>
+      <UiLayout extraCSSRules={extraCSSRules} className={classes.mainContainer}>
         {model.teacherInstructions &&
           hasText(model.teacherInstructions) &&
           (!model.animationsDisabled ? (
@@ -132,7 +132,7 @@ export class Main extends React.Component {
         {model.correctness && model.feedback && !showCorrectAnswer && (
           <Feedback correctness={model.correctness} feedback={model.feedback} />
         )}
-      </div>
+      </UiLayout>
     );
   }
 }

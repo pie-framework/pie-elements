@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { color, Collapsible, PreviewPrompt } from '@pie-lib/pie-toolbox/render-ui';
+import { color, Collapsible, PreviewPrompt, UiLayout } from '@pie-lib/pie-toolbox/render-ui';
 import { withStyles } from '@material-ui/core/styles';
 
 import Container from './container';
@@ -21,6 +21,7 @@ class DrawingResponseComponent extends React.Component {
   render() {
     const {
       model: {
+        extraCSSRules,
         disabled,
         imageDimensions,
         imageUrl,
@@ -40,7 +41,7 @@ class DrawingResponseComponent extends React.Component {
     return hasError ? (
       <div className={classes.main}>An error occured: {errorMessage}</div>
     ) : (
-      <div className={classes.main}>
+      <UiLayout extraCSSRules={extraCSSRules} className={classes.main}>
         {teacherInstructions && (
           <Collapsible
             className={classes.collapsible}
@@ -65,7 +66,7 @@ class DrawingResponseComponent extends React.Component {
           disabled={disabled}
           language={language}
         />
-      </div>
+      </UiLayout>
     );
   }
 }

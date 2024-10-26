@@ -1,6 +1,6 @@
 import { HorizontalTiler, VerticalTiler } from './tiler';
 import { buildState, reducer } from './ordering';
-import { color, Feedback, Collapsible, hasText, PreviewPrompt } from '@pie-lib/pie-toolbox/render-ui';
+import { color, Feedback, Collapsible, hasText, PreviewPrompt, UiLayout } from '@pie-lib/pie-toolbox/render-ui';
 import {CorrectAnswerToggle} from '@pie-lib/pie-toolbox/correct-answer-toggle';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -225,6 +225,7 @@ export class PlacementOrdering extends React.Component {
     const {
       correctResponse,
       correctness,
+      extraCSSRules,
       prompt,
       rationale,
       feedback,
@@ -251,7 +252,7 @@ export class PlacementOrdering extends React.Component {
     const displayNote = (showingCorrect || (mode === 'view' && role === 'instructor')) && showNote && note;
 
     return (
-      <div className={classes.placementOrdering}>
+      <UiLayout extraCSSRules={extraCSSRules} className={classes.placementOrdering}>
         {teacherInstructions && hasText(teacherInstructions) && (
           <Collapsible
             labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}
@@ -299,7 +300,7 @@ export class PlacementOrdering extends React.Component {
         )}
 
         {!showingCorrect && <Feedback correctness={correctness} feedback={feedback}/>}
-      </div>
+      </UiLayout>
     );
   }
 }

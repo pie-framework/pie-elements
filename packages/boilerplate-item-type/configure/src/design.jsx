@@ -39,7 +39,7 @@ export class Design extends React.Component {
       prompt = {},
       settingsPanelDisabled,
     } = configuration || {};
-    const { promptEnabled } = model || {};
+    const { extraCSSRules, promptEnabled } = model || {};
 
     const panelSettings = {};
 
@@ -49,6 +49,7 @@ export class Design extends React.Component {
 
     return (
       <layout.ConfigLayout
+        extraCSSRules={extraCSSRules}
         dimensions={contentDimensions}
         hideSettings={settingsPanelDisabled}
         settings={
