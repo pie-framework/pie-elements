@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.0.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-controller@8.0.5...@pie-element/placement-ordering-controller@8.0.6) (2024-10-28)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4322, PD-4215, PD-4209 ([08eac95](https://github.com/pie-framework/pie-elements/commit/08eac95fd3e1a79b420fbc88cd0c7436ba284c3c))
+* **placement-ordering:** add sanity check on scoring PD-4211 ([a5c153a](https://github.com/pie-framework/pie-elements/commit/a5c153a8a9328233f604afc84c8e929289cfd0e9))
+
+
+
+
+
 ## [8.0.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-controller@8.0.4...@pie-element/placement-ordering-controller@8.0.5) (2024-10-22)
 
 
