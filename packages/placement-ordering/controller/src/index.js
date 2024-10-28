@@ -117,7 +117,7 @@ export function model(question, session, env) {
 
       const bestSetOfResponses = allCorrectResponses.reduce(
         (info, cr) => {
-          const currentScore = _.reduce(value, (acc, c, idx) => acc + (cr[idx] === c ? 1 : 0), 0);
+          const currentScore = _.reduce(value, (acc, c, idx) => acc + (Array.isArray(cr) && cr[idx] === c ? 1 : 0), 0);
 
           if (currentScore > info.score) {
             return {
