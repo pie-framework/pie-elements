@@ -34,6 +34,7 @@ export class Main extends React.Component {
     showNote: PropTypes.bool,
     teacherInstructions: PropTypes.string,
     value: PropTypes.object,
+    model: PropTypes.object.isRequired,
   };
 
   static defaultProps = {
@@ -113,7 +114,7 @@ export class Main extends React.Component {
       model,
     } = this.props;
 
-    const { extraCSSRules } = model;
+    const { extraCSSRules } = model || {};
     const displayNote = (showCorrectAnswer || (mode === 'view' && role === 'instructor')) && showNote && note;
     const mainClasses = classNames([
       classes.mainContainer,

@@ -29,6 +29,7 @@ class Rubric extends React.Component {
 
   static propTypes = {
     classes: PropTypes.object.isRequired,
+    model: PropTypes.object.isRequired,
     animationsDisabled: PropTypes.bool,
     value: RubricType,
   };
@@ -52,7 +53,7 @@ class Rubric extends React.Component {
     animationsDisabled = animationsDisabled || value.animationsDisabled;
 
     if (value && value.points) {
-      const { extraCSSRules } = model;
+      const { extraCSSRules } = model || {};
       const { points, sampleAnswers } = value;
 
       const rubricList = (

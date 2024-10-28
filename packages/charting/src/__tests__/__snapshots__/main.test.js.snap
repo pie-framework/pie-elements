@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Main render snapshot 1`] = `
-<div>
+<Component>
   <WithStyles(CorrectAnswerToggle)
     onToggle={[Function]}
     toggled={false}
@@ -44,5 +44,5 @@ exports[`Main render snapshot 1`] = `
     labelsPlaceholders={Object {}}
     onDataChange={[Function]}
   />
-</div>
+</Component>
 `;

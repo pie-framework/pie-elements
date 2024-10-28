@@ -19,6 +19,7 @@ export class InlineDropdown extends React.Component {
     displayType: PropTypes.string,
     rationale: PropTypes.string,
     teacherInstructions: PropTypes.string,
+    model: PropTypes.object.isRequired,
     choices: PropTypes.object,
     value: PropTypes.object,
     feedback: PropTypes.object,
@@ -53,7 +54,7 @@ export class InlineDropdown extends React.Component {
   render() {
     const { showCorrectAnswer } = this.state;
     const { classes, prompt, mode, model, rationale, teacherInstructions, choices, displayType, language } = this.props;
-    const { extraCSSRules } = model;
+    const { extraCSSRules } = model || {};
     const showCorrectAnswerToggle = mode === 'evaluate';
     let choiceRationalesHaveText = false;
 

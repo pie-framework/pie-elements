@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Main render should render in evaluate mode 1`] = `
-<div
+<Component
   className=""
   style={
     Object {
@@ -109,11 +109,11 @@ exports[`Main render should render in evaluate mode 1`] = `
       />
     </WithStyles(Collapsible)>
   </div>
-</div>
+</Component>
 `;
 
 exports[`Main render should render in gather mode 1`] = `
-<div
+<Component
   className=""
   style={
     Object {
@@ -224,11 +224,11 @@ exports[`Main render should render in gather mode 1`] = `
       />
     </WithStyles(Collapsible)>
   </div>
-</div>
+</Component>
 `;
 
 exports[`Main render should render in view mode 1`] = `
-<div
+<Component
   className=""
   style={
     Object {
@@ -336,11 +336,11 @@ exports[`Main render should render in view mode 1`] = `
       />
     </WithStyles(Collapsible)>
   </div>
-</div>
+</Component>
 `;
 
 exports[`Main render should render without prompt 1`] = `
-<div
+<Component
   className=""
   style={
     Object {
@@ -448,11 +448,11 @@ exports[`Main render should render without prompt 1`] = `
       />
     </WithStyles(Collapsible)>
   </div>
-</div>
+</Component>
 `;
 
 exports[`Main render should render without rationale 1`] = `
-<div
+<Component
   className=""
   style={
     Object {
@@ -549,11 +549,11 @@ exports[`Main render should render without rationale 1`] = `
       }
     }
   />
-</div>
+</Component>
 `;
 
 exports[`Main render should render without teacher instructions 1`] = `
-<div
+<Component
   className=""
   style={
     Object {
@@ -649,5 +649,5 @@ exports[`Main render should render without teacher instructions 1`] = `
       />
     </WithStyles(Collapsible)>
   </div>
-</div>
+</Component>
 `;

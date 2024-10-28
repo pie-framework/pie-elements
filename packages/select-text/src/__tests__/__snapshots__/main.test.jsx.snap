@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`main snapshot renders 1`] = `
-<div>
+<Component>
   <div>
     <WithStyles(PreviewPrompt) />
   </div>
@@ -33,11 +33,11 @@ exports[`main snapshot renders 1`] = `
       ]
     }
   />
-</div>
+</Component>
 `;
 
 exports[`main snapshot renders rationale 1`] = `
-<div>
+<Component>
   <div>
     <WithStyles(PreviewPrompt) />
   </div>
@@ -69,11 +69,11 @@ exports[`main snapshot renders rationale 1`] = `
       ]
     }
   />
-</div>
+</Component>
 `;
 
 exports[`main snapshot renders showCorrect 1`] = `
-<div>
+<Component>
   <div>
     <WithStyles(PreviewPrompt) />
   </div>
@@ -97,5 +97,5 @@ exports[`main snapshot renders showCorrect 1`] = `
       ]
     }
   />
-</div>
+</Component>
 `;
