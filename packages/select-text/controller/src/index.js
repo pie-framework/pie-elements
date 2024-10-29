@@ -129,6 +129,7 @@ export const model = (question, session, env) => {
         feedback,
         incorrect: env.mode === 'evaluate' ? correctness !== 'correct' : undefined,
         language: normalizedQuestion.language,
+        extraCSSRules: normalizedQuestion.extraCSSRules,
       };
 
       if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {

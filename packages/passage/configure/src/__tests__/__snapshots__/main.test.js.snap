@@ -181,6 +181,7 @@ exports[`Render Main Component Match Snapshot 1`] = `
         Array [
           "bold",
           "html",
+          "extraCSSRules",
           "italic",
           "underline",
           "strikethrough",
@@ -254,6 +255,7 @@ exports[`Render Main Component Match Snapshot 1`] = `
         Array [
           "bold",
           "html",
+          "extraCSSRules",
           "italic",
           "underline",
           "strikethrough",
@@ -325,6 +327,7 @@ exports[`Render Main Component Match Snapshot 1`] = `
         Array [
           "bold",
           "html",
+          "extraCSSRules",
           "italic",
           "underline",
           "strikethrough",
@@ -396,6 +399,7 @@ exports[`Render Main Component Match Snapshot 1`] = `
         Array [
           "bold",
           "html",
+          "extraCSSRules",
           "italic",
           "underline",
           "strikethrough",
@@ -467,6 +471,7 @@ exports[`Render Main Component Match Snapshot 1`] = `
         Array [
           "bold",
           "html",
+          "extraCSSRules",
           "italic",
           "underline",
           "strikethrough",

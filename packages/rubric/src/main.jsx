@@ -5,7 +5,7 @@ import List from '@material-ui/core/List';
 import ListItemText from '@material-ui/core/ListItemText';
 import Link from '@material-ui/core/Link';
 import Collapse from '@material-ui/core/Collapse';
-import { color } from '@pie-lib/pie-toolbox/render-ui';
+import { color, UiLayout } from '@pie-lib/pie-toolbox/render-ui';
 import PropTypes from 'prop-types';
 
 export const RubricType = PropTypes.shape({
@@ -29,6 +29,7 @@ class Rubric extends React.Component {
 
   static propTypes = {
     classes: PropTypes.object.isRequired,
+    model: PropTypes.object.isRequired,
     animationsDisabled: PropTypes.bool,
     value: RubricType,
   };
@@ -47,11 +48,12 @@ class Rubric extends React.Component {
   };
 
   render() {
-    const { value, classes } = this.props;
+    const { model, value, classes } = this.props;
     let { animationsDisabled } = this.props;
     animationsDisabled = animationsDisabled || value.animationsDisabled;
 
     if (value && value.points) {
+      const { extraCSSRules } = model || {};
       const { points, sampleAnswers } = value;
 
       const rubricList = (
@@ -98,7 +100,7 @@ class Rubric extends React.Component {
       );
 
       return (
-        <div className={classes.root}>
+        <UiLayout extraCSSRules={extraCSSRules} className={classes.root}>
           {!animationsDisabled ? (
             <React.Fragment>
               <Link href={this.dudUrl} onClick={this.toggleRubric}>
@@ -111,7 +113,7 @@ class Rubric extends React.Component {
           ) : (
             rubricList
           )}
-        </div>
+        </UiLayout>
       );
     } else {
       return null;

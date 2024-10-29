@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import Main from '../main'; 
+import Main from '../main';
 import { withStyles } from '@material-ui/core/styles';
 import { Collapsible, Readable, hasText, PreviewPrompt } from '@pie-lib/pie-toolbox/render-ui';
 import MathQuill from '@pie-framework/mathquill';
@@ -21,8 +21,8 @@ const defaultModel = {
     rationale: '',
     responses: {
         0: {
-            allowTrailingZeros: false,  
-            answer: "2",    
+            allowTrailingZeros: false,
+            answer: "2",
             id: "1",
             validation: "symbolic",
             ignoreOrder: false,
@@ -36,7 +36,7 @@ const defaultModel = {
             ignoreOrder: false,
             alternates: {},
         }
-        
+
     },
     env: {mode: 'evaluate', role: 'instructor'},
     markup: '<p>If the unit price of a notebook in Store A is $1.50, what is the unit price of a binder? ${{0}} ${{1}}</p',
@@ -75,7 +75,7 @@ describe('Main component', () => {
     beforeEach(() => {
         wrapper = mount(<Main {...defaultProps} />);
     });
-    
+
     it('Match Snapshot', () => {
         expect(wrapper).toMatchSnapshot();
     });
@@ -85,7 +85,7 @@ describe('Main component', () => {
         const wrapper = mount(<Main {...defaultProps} model={{ ...defaultModel, prompt }} />);
         expect(wrapper.find(PreviewPrompt).text()).toContain(prompt);
     });
-    
+
     it('updates component when receiving new props', () => {
         const newMarkup = 'Solve {{0}}';
         wrapper.setProps({ model: { ...defaultModel, markup: newMarkup } });
@@ -112,14 +112,14 @@ describe('Main component', () => {
         expect(firstResponseArea.prop('latex')).toContain('[r0]{2}');
         expect(secondResponseArea.prop('latex')).toContain('[r1]{3}');
     });
-    
+
     it('toggles CorrectAnswerToggle correctly', () => {
-        const updatedToggleComponent = simulateToggleClick(wrapper, '.CorrectAnswerToggle-content-26');
+        const updatedToggleComponent = simulateToggleClick(wrapper, '.CorrectAnswerToggle-content-27');
         expect(updatedToggleComponent.props().toggled).toBe(true);
     });
 
     it('show correct answers when correct answer toggle is true', () => {
-        const updatedToggleComponent = simulateToggleClick(wrapper, '.CorrectAnswerToggle-content-26');
+        const updatedToggleComponent = simulateToggleClick(wrapper, '.CorrectAnswerToggle-content-27');
         const firstResponseArea = wrapper.find('Static').at(0);
         const secondResponseArea = wrapper.find('Static').at(1);
         expect(firstResponseArea.prop('latex')).toContain('2');

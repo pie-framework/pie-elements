@@ -6,7 +6,7 @@ import { CorrectAnswerToggle } from '@pie-lib/pie-toolbox/correct-answer-toggle'
 import { withStyles } from '@material-ui/core/styles';
 import { buildState, removeChoiceFromCategory, moveChoiceToCategory } from '@pie-lib/pie-toolbox/categorize';
 import { withDragContext, uid } from '@pie-lib/pie-toolbox/drag';
-import { color, Feedback, Collapsible, hasText, PreviewPrompt } from '@pie-lib/pie-toolbox/render-ui';
+import { color, Feedback, Collapsible, hasText, PreviewPrompt, UiLayout } from '@pie-lib/pie-toolbox/render-ui';
 import debug from 'debug';
 import Translator from '@pie-lib/pie-toolbox/translator';
 import { AlertDialog } from '@pie-lib/pie-toolbox/config-ui';
@@ -168,7 +168,7 @@ export class Categorize extends React.Component {
   render() {
     const { classes, model, session } = this.props;
     const { showCorrect, showMaxChoiceAlert } = this.state;
-    const { choicesPosition, note, showNote, env, language, maxChoicesPerCategory } = model;
+    const { choicesPosition, extraCSSRules, note, showNote, env, language, maxChoicesPerCategory } = model;
     const { mode, role } = env || {};
     const choicePosition = choicesPosition || 'above';
 
@@ -205,7 +205,7 @@ export class Categorize extends React.Component {
     });
 
     return (
-      <div className={classes.mainContainer}>
+      <UiLayout extraCSSRules={extraCSSRules} className={classes.mainContainer}>
         {model.teacherInstructions && hasText(model.teacherInstructions) && (
           <React.Fragment>
             <Collapsible
@@ -275,7 +275,7 @@ export class Categorize extends React.Component {
           onCloseText={onCloseText}
           onClose={() => this.setState({ showMaxChoiceAlert: false })}
         ></AlertDialog>
-      </div>
+      </UiLayout>
     );
   }
 }

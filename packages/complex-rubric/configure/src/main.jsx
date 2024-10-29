@@ -49,7 +49,7 @@ export class Main extends React.Component {
   render() {
     const { model, configuration, canUpdateModel, classes } = this.props;
 
-    const { rubrics = {} } = model || {};
+    const { extraCSSRules, rubrics = {} } = model || {};
     let { rubricType } = model;
     const { contentDimensions = {}, rubricOptions = [], multiTraitRubric, simpleRubric, rubricless, width } = configuration;
     let rubricTag = '';
@@ -116,7 +116,7 @@ export class Main extends React.Component {
     }
 
     return (
-      <layout.ConfigLayout dimensions={contentDimensions} hideSettings={true} settings={null}>
+      <layout.ConfigLayout extraCSSRules={extraCSSRules} dimensions={contentDimensions} hideSettings={true} settings={null}>
         <RadioGroup
           aria-label="rubric-type"
           name="rubricType"

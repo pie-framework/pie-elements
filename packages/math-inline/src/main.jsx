@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { CorrectAnswerToggle } from '@pie-lib/pie-toolbox/correct-answer-toggle';
 import { mq, HorizontalKeypad, updateSpans } from '@pie-lib/pie-toolbox/math-input';
-import { Feedback, Collapsible, Readable, hasText, PreviewPrompt } from '@pie-lib/pie-toolbox/render-ui';
+import { Feedback, Collapsible, Readable, hasText, PreviewPrompt, UiLayout } from '@pie-lib/pie-toolbox/render-ui';
 import { renderMath } from '@pie-lib/pie-toolbox/math-rendering-accessible';
 import { withStyles } from '@material-ui/core/styles';
 import Tooltip from '@material-ui/core/Tooltip';
@@ -325,21 +325,21 @@ export class Main extends React.Component {
   handleKeyDown = (event, id) => {
     const isAnswerInputFocused = document.activeElement.getAttribute('aria-label') === 'Enter answer.';
     const isClickOrTouchEvent = event.type === 'click' || event.type === 'touchstart';
-  
+
     if (isAnswerInputFocused && (event.key === 'ArrowDown' || isClickOrTouchEvent)) {
       if (this.state.activeAnswerBlock !== id) {
         this.cleanupKeyDownListener();
         this.setState({ activeAnswerBlock: id });
         this.onSubFieldFocus(id)
       }
-  
+
       if (event.key === 'ArrowDown') {
         this.focusFirstKeypadElement();
       }
     } else if ( event.key === 'Escape') {
          this.setState({ activeAnswerBlock: '' });
     }
-  };  
+  };
 
   onSubFieldFocus = (id) => {
     const handleEvent = (event) => {
@@ -538,6 +538,7 @@ export class Main extends React.Component {
       config,
       correctness,
       disabled,
+      extraCSSRules,
       view,
       teacherInstructions,
       rationale,
@@ -725,80 +726,82 @@ export class Main extends React.Component {
         feedback)
     ) {
       return (
-        <Tooltip
-          interactive
-          enterTouchDelay={0}
-          classes={{
-            tooltip: classes.tooltip,
-            popper: classes.tooltipPopper,
-          }}
-          title={
-            <div>
-              <div className={classes.main}>
-                {showCorrectAnswerToggle && (
-                  <CorrectAnswerToggle
-                    language={language}
-                    className={classes.toggle}
-                    show
-                    toggled={showCorrect}
-                    onToggle={this.toggleShowCorrect}
-                  />
+        <UiLayout extraCSSRules={extraCSSRules}>
+          <Tooltip
+            interactive
+            enterTouchDelay={0}
+            classes={{
+              tooltip: classes.tooltip,
+              popper: classes.tooltipPopper,
+            }}
+            title={
+              <div>
+                <div className={classes.main}>
+                  {showCorrectAnswerToggle && (
+                    <CorrectAnswerToggle
+                      language={language}
+                      className={classes.toggle}
+                      show
+                      toggled={showCorrect}
+                      onToggle={this.toggleShowCorrect}
+                    />
+                  )}
+                </div>
+
+                {teacherInstructions && hasText(teacherInstructions) && (
+                  <Collapsible
+                    className={classes.collapsible}
+                    key="collapsible-teacher-instructions"
+                    labels={{
+                      hidden: 'Show Teacher Instructions',
+                      visible: 'Hide Teacher Instructions',
+                    }}
+                  >
+                    <PreviewPrompt prompt={teacherInstructions} />
+                  </Collapsible>
                 )}
+                {displayNote && hasText(note) && (
+                  <Collapsible
+                    className={classes.collapsible}
+                    key="collapsible-note"
+                    labels={{
+                      hidden: translator.t('common:showNote', { lng: language }),
+                      visible: translator.t('common:hideNote', { lng: language }),
+                    }}
+                  >
+                    <PreviewPrompt prompt={note} />
+                  </Collapsible>
+                )}
+
+                {rationale && hasText(rationale) && (
+                  <Collapsible
+                    className={classes.collapsible}
+                    key="collapsible-rationale"
+                    labels={{
+                      hidden: 'Show Rationale',
+                      visible: 'Hide Rationale',
+                    }}
+                  >
+                    <PreviewPrompt prompt={rationale} />
+                  </Collapsible>
+                )}
+
+                {feedback && <Feedback correctness={correctness.correctness} feedback={feedback} />}
               </div>
-
-              {teacherInstructions && hasText(teacherInstructions) && (
-                <Collapsible
-                  className={classes.collapsible}
-                  key="collapsible-teacher-instructions"
-                  labels={{
-                    hidden: 'Show Teacher Instructions',
-                    visible: 'Hide Teacher Instructions',
-                  }}
-                >
-                  <PreviewPrompt prompt={teacherInstructions} />
-                </Collapsible>
-              )}
-              {displayNote && hasText(note) && (
-                <Collapsible
-                  className={classes.collapsible}
-                  key="collapsible-note"
-                  labels={{
-                    hidden: translator.t('common:showNote', { lng: language }),
-                    visible: translator.t('common:hideNote', { lng: language }),
-                  }}
-                >
-                  <PreviewPrompt prompt={note} />
-                </Collapsible>
-              )}
-
-              {rationale && hasText(rationale) && (
-                <Collapsible
-                  className={classes.collapsible}
-                  key="collapsible-rationale"
-                  labels={{
-                    hidden: 'Show Rationale',
-                    visible: 'Hide Rationale',
-                  }}
-                >
-                  <PreviewPrompt prompt={rationale} />
-                </Collapsible>
-              )}
-
-              {feedback && <Feedback correctness={correctness.correctness} feedback={feedback} />}
+            }
+          >
+            <div className={classes.mainContainer} ref={(r) => (this.root = r || this.root)}>
+              {midContent}
             </div>
-          }
-        >
-          <div className={classes.mainContainer} ref={(r) => (this.root = r || this.root)}>
-            {midContent}
-          </div>
-        </Tooltip>
+          </Tooltip>
+        </UiLayout>
       );
     }
 
     return (
-      <div className={classes.mainContainer} ref={(r) => (this.root = r || this.root)}>
+      <UiLayout extraCSSRules={extraCSSRules} className={classes.mainContainer} ref={(r) => (this.root = r || this.root)}>
         {midContent}
-      </div>
+      </UiLayout>
     );
   }
 }

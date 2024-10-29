@@ -352,6 +352,7 @@ export class Main extends React.Component {
       choiceRationaleEnabled,
       choices,
       errors,
+      extraCSSRules,
       promptEnabled,
       rationaleEnabled,
       spellCheckEnabled,
@@ -437,6 +438,7 @@ export class Main extends React.Component {
 
     return (
       <layout.ConfigLayout
+        extraCSSRules={extraCSSRules}
         dimensions={contentDimensions}
         hideSettings={settingsPanelDisabled}
         settings={

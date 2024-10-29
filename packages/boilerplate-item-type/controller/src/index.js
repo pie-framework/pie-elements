@@ -50,6 +50,7 @@ export const model = (question, session, env) => {
 
     const out = {
       prompt: normalizedQuestion.promptEnabled ? normalizedQuestion.prompt : null,
+      extraCSSRules: normalizedQuestion.extraCSSRules,
       env,
     };
 

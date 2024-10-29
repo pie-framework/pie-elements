@@ -75,6 +75,7 @@ export function model(question, session, env) {
     }
 
     base.env = env;
+    base.extraCSSRules = normalizedQuestion.extraCSSRules;
     base.outcomes = [];
     base.completeLength = (normalizedQuestion.correctResponse || []).length;
     base.choices = (normalizedQuestion.choices || []).filter((choice) => choice.label);

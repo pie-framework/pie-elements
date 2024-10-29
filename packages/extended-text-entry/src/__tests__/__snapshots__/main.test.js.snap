@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Render Main Component should match snapshot 1`] = `
-<div>
+<WithStyles(UiLayout)>
   <h2>
     Constructed Response Question
   </h2>
@@ -37,11 +37,11 @@ exports[`Render Main Component should match snapshot 1`] = `
       }
     }
   />
-</div>
+</WithStyles(UiLayout)>
 `;
 
 exports[`Render Main Component should match snapshot with teacher instructions 1`] = `
-<div>
+<WithStyles(UiLayout)>
   <h2>
     Constructed Response Question
   </h2>
@@ -92,5 +92,5 @@ exports[`Render Main Component should match snapshot with teacher instructions 1
       }
     }
   />
-</div>
+</WithStyles(UiLayout)>
 `;

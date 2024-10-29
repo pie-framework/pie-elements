@@ -109,7 +109,7 @@ export class Main extends React.Component {
       mathMlOptions = {},
     } = configuration || {};
 
-    const { errors = {}, spellCheckEnabled, toolbarEditorPosition } = model || {};
+    const { errors = {}, extraCSSRules, spellCheckEnabled, toolbarEditorPosition } = model || {};
 
     const { correctAnswerChangeDialog } = this.state;
 
@@ -125,7 +125,7 @@ export class Main extends React.Component {
     const fractionModelChartKey = this.generateRandomKey();
 
     return (
-      <layout.ConfigLayout dimensions={contentDimensions} hideSettings={true}>
+      <layout.ConfigLayout extraCSSRules={extraCSSRules} dimensions={contentDimensions} hideSettings={true}>
         <CardBar header="Set Up"></CardBar>
 
         <FormSection label={title?.label || 'Title'} className={classes.label}>

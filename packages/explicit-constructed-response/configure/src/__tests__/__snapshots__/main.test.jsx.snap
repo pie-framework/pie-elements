@@ -381,6 +381,7 @@ There should be at least 1 and at most 10 response areas defined."
       Array [
         "bold",
         "html",
+        "extraCSSRules",
         "italic",
         "underline",
         "strikethrough",
@@ -888,6 +889,7 @@ There should be at least 1 and at most 10 response areas defined."
       Array [
         "bold",
         "html",
+        "extraCSSRules",
         "italic",
         "underline",
         "strikethrough",

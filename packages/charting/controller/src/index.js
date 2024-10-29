@@ -182,6 +182,7 @@ export function model(question, session, env) {
       scoringType,
       studentNewCategoryDefaultLabel,
       language,
+      extraCSSRules,
     } = normalizedQuestion;
 
     const correctInfo = { correctness: 'incorrect', score: '0%' };
@@ -204,6 +205,7 @@ export function model(question, session, env) {
       studentNewCategoryDefaultLabel,
       language,
       env,
+      extraCSSRules,
     };
 
     const scoreObject = getScore(normalizedQuestion, session, env);

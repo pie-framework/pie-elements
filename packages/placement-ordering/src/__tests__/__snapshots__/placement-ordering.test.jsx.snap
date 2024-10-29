@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PlacementOrdering render shows toggle 1`] = `
-<div
+<WithStyles(UiLayout)
   className="placementOrdering"
 >
   <div>
@@ -21,11 +21,11 @@ exports[`PlacementOrdering render shows toggle 1`] = `
     tiler={[Function]}
   />
   <WithStyles(Feedback) />
-</div>
+</WithStyles(UiLayout)>
 `;
 
 exports[`PlacementOrdering render snapshot 1`] = `
-<div
+<WithStyles(UiLayout)
   className="placementOrdering"
 >
   <div>
@@ -44,11 +44,11 @@ exports[`PlacementOrdering render snapshot 1`] = `
     tiler={[Function]}
   />
   <WithStyles(Feedback) />
-</div>
+</WithStyles(UiLayout)>
 `;
 
 exports[`PlacementOrdering render snapshot with rationale 1`] = `
-<div
+<WithStyles(UiLayout)
   className="placementOrdering"
 >
   <div>
@@ -79,5 +79,5 @@ exports[`PlacementOrdering render snapshot with rationale 1`] = `
     />
   </WithStyles(Collapsible)>
   <WithStyles(Feedback) />
-</div>
+</WithStyles(UiLayout)>
 `;

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`InlineDropdown render should render in evaluate mode 1`] = `
-<div
+<WithStyles(UiLayout)
   style={
     Object {
       "display": "undefined",
@@ -189,11 +189,11 @@ exports[`InlineDropdown render should render in evaluate mode 1`] = `
       prompt="Rationale"
     />
   </WithStyles(Collapsible)>
-</div>
+</WithStyles(UiLayout)>
 `;
 
 exports[`InlineDropdown render should render in gather mode 1`] = `
-<div
+<WithStyles(UiLayout)
   style={
     Object {
       "display": "undefined",
@@ -384,11 +384,11 @@ exports[`InlineDropdown render should render in gather mode 1`] = `
       prompt="Rationale"
     />
   </WithStyles(Collapsible)>
-</div>
+</WithStyles(UiLayout)>
 `;
 
 exports[`InlineDropdown render should render in view mode 1`] = `
-<div
+<WithStyles(UiLayout)
   style={
     Object {
       "display": "undefined",
@@ -576,11 +576,11 @@ exports[`InlineDropdown render should render in view mode 1`] = `
       prompt="Rationale"
     />
   </WithStyles(Collapsible)>
-</div>
+</WithStyles(UiLayout)>
 `;
 
 exports[`InlineDropdown render should render without prompt 1`] = `
-<div
+<WithStyles(UiLayout)
   style={
     Object {
       "display": "undefined",
@@ -768,11 +768,11 @@ exports[`InlineDropdown render should render without prompt 1`] = `
       prompt="Rationale"
     />
   </WithStyles(Collapsible)>
-</div>
+</WithStyles(UiLayout)>
 `;
 
 exports[`InlineDropdown render should render without rationale 1`] = `
-<div
+<WithStyles(UiLayout)
   style={
     Object {
       "display": "undefined",
@@ -951,11 +951,11 @@ exports[`InlineDropdown render should render without rationale 1`] = `
       </div>
     </div>
   </WithStyles(Collapsible)>
-</div>
+</WithStyles(UiLayout)>
 `;
 
 exports[`InlineDropdown render should render without teacher instructions 1`] = `
-<div
+<WithStyles(UiLayout)
   style={
     Object {
       "display": "undefined",
@@ -1134,5 +1134,5 @@ exports[`InlineDropdown render should render without teacher instructions 1`] = 
       prompt="Rationale"
     />
   </WithStyles(Collapsible)>
-</div>
+</WithStyles(UiLayout)>
 `;

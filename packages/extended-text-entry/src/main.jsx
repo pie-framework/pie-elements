@@ -8,7 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 
 import { EditableHtml } from '@pie-lib/pie-toolbox/editable-html';
-import { color, Feedback, Collapsible, PreviewPrompt } from '@pie-lib/pie-toolbox/render-ui';
+import { color, Feedback, Collapsible, PreviewPrompt, UiLayout } from '@pie-lib/pie-toolbox/render-ui';
 
 import AnnotationEditor from './annotation/annotation-editor';
 
@@ -70,6 +70,7 @@ export class Main extends React.Component {
       disabled,
       disabledAnnotator,
       equationEditor,
+      extraCSSRules,
       feedback,
       mathInput,
       playersToolbarPosition,
@@ -102,7 +103,8 @@ export class Main extends React.Component {
     }
 
     return (
-      <div
+      <UiLayout
+        extraCSSRules={extraCSSRules}
         className={classes.main}
         ref={(ref) => {
           this.containerRef = ref;
@@ -179,7 +181,7 @@ export class Main extends React.Component {
         )}
 
         {feedback && <Feedback correctness="correct" feedback={feedback} />}
-      </div>
+      </UiLayout>
     );
   }
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { color, Collapsible, hasText, PreviewPrompt } from '@pie-lib/pie-toolbox/render-ui';
+import { color, Collapsible, hasText, PreviewPrompt, UiLayout } from '@pie-lib/pie-toolbox/render-ui';
 import { Chart, chartTypes } from '@pie-lib/pie-toolbox/charting';
 import isEqual from 'lodash/isEqual';
 import { CorrectAnswerToggle } from '@pie-lib/pie-toolbox/correct-answer-toggle';
@@ -63,7 +63,7 @@ export class Main extends React.Component {
       env,
     } = model;
 
-    let { correctedAnswer } = model;
+    let { correctedAnswer, extraCSSRules } = model;
 
     const correctData = (correctAnswer?.data || []).map((data) => ({ ...data, interactive: false, editable: false }));
     const { mode } = env || {};
@@ -73,7 +73,7 @@ export class Main extends React.Component {
     }
 
     return (
-      <div className={classes.mainContainer}>
+      <UiLayout extraCSSRules={extraCSSRules} className={classes.mainContainer}>
         {teacherInstructions && hasText(teacherInstructions) && (
           <Collapsible
             className={classes.collapsible}
@@ -148,7 +148,7 @@ export class Main extends React.Component {
             <PreviewPrompt prompt={rationale} />
           </Collapsible>
         )}
-      </div>
+      </UiLayout>
     );
   }
 }

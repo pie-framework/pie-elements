@@ -83,6 +83,7 @@ export class Root extends React.Component {
     } = configuration || {};
     const {
       errors,
+      extraCSSRules,
       promptEnabled,
       rationaleEnabled,
       spellCheckEnabled,
@@ -126,6 +127,7 @@ export class Root extends React.Component {
 
     return (
       <layout.ConfigLayout
+        extraCSSRules={extraCSSRules}
         dimensions={contentDimensions}
         hideSettings={settingsPanelDisabled}
         settings={

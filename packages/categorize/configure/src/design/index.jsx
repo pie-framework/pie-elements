@@ -216,6 +216,7 @@ export class Design extends React.Component {
       teacherInstructionsEnabled,
       toolbarEditorPosition,
       maxAnswerChoices,
+      extraCSSRules,
     } = model || {};
     const {
       prompt: promptError,
@@ -304,6 +305,7 @@ export class Design extends React.Component {
     return (
       <IdProvider value={this.uid}>
         <layout.ConfigLayout
+          extraCSSRules={extraCSSRules}
           dimensions={contentDimensions}
           hideSettings={settingsPanelDisabled}
           settings={

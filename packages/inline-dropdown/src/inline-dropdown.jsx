@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import isEmpty from 'lodash/isEmpty';
 import {CorrectAnswerToggle} from '@pie-lib/pie-toolbox/correct-answer-toggle';
 import { InlineDropdown as DropDown } from '@pie-lib/pie-toolbox/mask-markup';
-import { color, Collapsible, hasText, PreviewPrompt } from '@pie-lib/pie-toolbox/render-ui';
+import { color, Collapsible, hasText, PreviewPrompt, UiLayout } from '@pie-lib/pie-toolbox/render-ui';
 import { renderMath } from '@pie-lib/pie-toolbox/math-rendering-accessible';
 import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
@@ -19,6 +19,7 @@ export class InlineDropdown extends React.Component {
     displayType: PropTypes.string,
     rationale: PropTypes.string,
     teacherInstructions: PropTypes.string,
+    model: PropTypes.object.isRequired,
     choices: PropTypes.object,
     value: PropTypes.object,
     feedback: PropTypes.object,
@@ -52,7 +53,8 @@ export class InlineDropdown extends React.Component {
 
   render() {
     const { showCorrectAnswer } = this.state;
-    const { classes, prompt, mode, rationale, teacherInstructions, choices, displayType, language } = this.props;
+    const { classes, prompt, mode, model, rationale, teacherInstructions, choices, displayType, language } = this.props;
+    const { extraCSSRules } = model || {};
     const showCorrectAnswerToggle = mode === 'evaluate';
     let choiceRationalesHaveText = false;
 
@@ -69,7 +71,7 @@ export class InlineDropdown extends React.Component {
     );
 
     return (
-      <div className={classes.mainContainer} style={{ display: `${displayType}` }}>
+      <UiLayout extraCSSRules={extraCSSRules} className={classes.mainContainer} style={{ display: `${displayType}` }}>
         {mode === 'gather' && <h2 className={classes.srOnly}>Inline Dropdown Question</h2>}
 
         {teacherInstructions && hasText(teacherInstructions) && (
@@ -119,7 +121,7 @@ export class InlineDropdown extends React.Component {
             <PreviewPrompt prompt={rationale} />
           </Collapsible>
         )}
-      </div>
+      </UiLayout>
     );
   }
 }

@@ -6,7 +6,7 @@ import isArray from 'lodash/isArray';
 import isNumber from 'lodash/isNumber';
 import isEqual from 'lodash/isEqual';
 import Translator from '@pie-lib/pie-toolbox/translator';
-import { Collapsible, color, hasText, PreviewPrompt } from '@pie-lib/pie-toolbox/render-ui';
+import { Collapsible, color, hasText, PreviewPrompt, UiLayout } from '@pie-lib/pie-toolbox/render-ui';
 import { withStyles } from '@material-ui/core/styles';
 
 import Feedback from './feedback';
@@ -185,6 +185,7 @@ export class NumberLine extends React.Component {
     let {
       corrected = { correct: [], incorrect: [] },
       disabled,
+      extraCSSRules,
       graph,
       correctResponse,
       prompt,
@@ -264,7 +265,7 @@ export class NumberLine extends React.Component {
     const numberLineContainerNames = classNames(classes.numberLine, classes.mainContainer, classes[colorContrast]);
 
     return (
-      <div className={containerNames}>
+      <UiLayout extraCSSRules={extraCSSRules} className={containerNames}>
         {teacherInstructions && hasText(teacherInstructions) && (
           <Collapsible
             labels={{
@@ -321,7 +322,7 @@ export class NumberLine extends React.Component {
           {showMaxPointsWarning && <Feedback type="info" width={adjustedWidth} message={maxPointsMessage()} />}
           {feedback && !showCorrectAnswer && <Feedback {...feedback} width={adjustedWidth} />}
         </div>
-      </div>
+      </UiLayout>
     );
   }
 }
