@@ -14,6 +14,7 @@ export default {
     teacherInstructions: '',
     teacherInstructionsEnabled: true,
     toolbarEditorPosition: 'bottom',
+    responseAreaInputConfiguration: {},
   },
   configuration: {
     baseInputConfiguration: {
@@ -112,6 +113,17 @@ export default {
     languageChoices: {
       label: 'Language Choices',
       options: [],
+    },
+    responseAreaInputConfiguration: {
+      inputConfiguration: {
+        characters: {
+          disabled: true
+        },
+      },
+    },
+    spanishButton: {
+      settings: true,
+      label: 'Disable Spanish Characters',
     },
   },
 };

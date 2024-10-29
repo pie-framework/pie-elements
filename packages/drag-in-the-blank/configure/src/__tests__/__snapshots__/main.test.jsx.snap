@@ -64,15 +64,18 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
             "mmlOutput": false,
           },
           "maxImageHeight": Object {
+            "choice": 300,
             "prompt": 300,
             "rationale": 300,
             "teacherInstructions": 300,
           },
           "maxImageWidth": Object {
+            "choice": 300,
             "prompt": 300,
             "rationale": 300,
             "teacherInstructions": 300,
           },
+          "maxLength": 200,
           "maxResponseAreas": 10,
           "minChoices": 2,
           "partialScoring": Object {
@@ -431,6 +434,9 @@ There should be at least 2 tokens defined."
         "mmlOutput": false,
       }
     }
+    maxImageHeight={300}
+    maxImageWidth={300}
+    maxLength={200}
     model={
       Object {
         "alternateResponses": Array [
@@ -616,15 +622,18 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
             "mmlOutput": false,
           },
           "maxImageHeight": Object {
+            "choice": 300,
             "prompt": 300,
             "rationale": 300,
             "teacherInstructions": 300,
           },
           "maxImageWidth": Object {
+            "choice": 300,
             "prompt": 300,
             "rationale": 300,
             "teacherInstructions": 300,
           },
+          "maxLength": 200,
           "maxResponseAreas": 10,
           "minChoices": 2,
           "partialScoring": Object {
@@ -876,6 +885,9 @@ There should be at least 2 tokens defined."
         "mmlOutput": false,
       }
     }
+    maxImageHeight={300}
+    maxImageWidth={300}
+    maxLength={200}
     model={
       Object {
         "alternateResponses": Array [

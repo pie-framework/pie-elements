@@ -1159,6 +1159,10 @@ Value of the language option
 
 Label of the language option
 
+# `maxLength` (number)
+
+Maximum character limit for each answer choice
+
 # `showPrompt` (boolean)
 
 Determines whether prompt field will be displayed or not

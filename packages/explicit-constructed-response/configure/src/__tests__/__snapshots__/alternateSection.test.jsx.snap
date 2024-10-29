@@ -62,17 +62,26 @@ exports[`Choice snapshot renders 1`] = `
       }
     }
   >
-    <WithStyles(OutlinedInput)
+    <EditableHtml
+      activePlugins={
+        Array [
+          "languageCharacters",
+        ]
+      }
+      allowValidation={false}
       className=""
       disableUnderline={true}
-      inputProps={
-        Object {
-          "maxLength": 25,
-        }
+      languageCharactersProps={
+        Array [
+          Object {
+            "language": "spanish",
+          },
+        ]
       }
-      labelWidth={0}
+      markup="cow"
+      maxLength={25}
       onChange={[Function]}
-      value="cow"
+      onDone={[Function]}
     />
     <WithStyles(IconButton)
       aria-label="delete"

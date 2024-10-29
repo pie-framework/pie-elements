@@ -101,6 +101,11 @@ export interface ExplicitConstructedResponsePie extends PieModel {
    * Supported options: en, es, en_US, en-US, es_ES, es-ES, es_MX, es-MX
    */
   language?: string;
+  /**
+   * Whether a control to allow insertion of spanish characters should be displayed
+   * @default true
+   */
+  spanishInputEnabled?: boolean;
 }
 
 /**
@@ -209,4 +214,8 @@ export interface ExplicitConstructedResponseConfigure extends PromptConfig, Comm
     label: string;
     options: ConfigureLanguageOptionsProp[];
   };
+  /**
+   * Spanish Input configuration
+   */
+  spanishInput?: ConfigureProp;
 }

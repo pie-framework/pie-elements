@@ -281,6 +281,8 @@ export class Main extends React.Component {
       mathMlOptions = {},
       language = {},
       languageChoices = {},
+      spanishButton = {},
+      responseAreaInputConfiguration = {},
     } = configuration || {};
     const {
       errors,
@@ -314,6 +316,7 @@ export class Main extends React.Component {
       maxLengthPerChoiceEnabled: maxLengthPerChoice.settings && toggle(maxLengthPerChoice.label),
       'language.enabled': language.settings && toggle(language.label, true),
       language: language.settings && language.enabled && dropdown(languageChoices.label, languageChoices.options),
+      'responseAreaInputConfiguration.inputConfiguration.characters.disabled': spanishButton.settings && toggle(spanishButton.label,true),
     };
     const panelProperties = {
       teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
@@ -323,13 +326,13 @@ export class Main extends React.Component {
       playerSpellCheckEnabled: playerSpellCheck.settings && toggle(playerSpellCheck.label),
       rubricEnabled: withRubric?.settings && toggle(withRubric?.label),
       'editSource.enabled': editSource?.settings && toggle(editSource.label, true),
+
     };
 
     const getPluginProps = (props = {}) => ({
       ...baseInputConfiguration,
       ...props,
     });
-
     return (
       <layout.ConfigLayout
         extraCSSRules={extraCSSRules}
@@ -424,7 +427,6 @@ export class Main extends React.Component {
             respAreaToolbar: (node, value, onToolbarDone) => {
               const { model } = this.props;
               const correctChoice = (model.choices[node.data.get('index')] || [])[0];
-
               return () => (
                 <ECRToolbar
                   onChangeResponse={(newVal) => this.onChangeResponse(node.data.get('index'), newVal)}
@@ -433,6 +435,7 @@ export class Main extends React.Component {
                   onToolbarDone={onToolbarDone}
                   correctChoice={correctChoice}
                   maxLengthPerChoiceEnabled={maxLengthPerChoiceEnabled}
+                  pluginProps={getPluginProps(responseAreaInputConfiguration?.inputConfiguration)}
                 />
               );
             },
@@ -467,6 +470,7 @@ export class Main extends React.Component {
           maxLengthPerChoiceEnabled={maxLengthPerChoiceEnabled}
           spellCheck={spellCheckEnabled}
           choicesErrors={choicesErrors}
+          pluginProps={getPluginProps(responseAreaInputConfiguration?.inputConfiguration)}
         />
 
         {rationaleEnabled && (

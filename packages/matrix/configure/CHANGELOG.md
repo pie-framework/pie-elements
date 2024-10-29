@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.35.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/matrix-configure@0.35.5...@pie-element/matrix-configure@0.35.6) (2024-10-28)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4322, PD-4215, PD-4209 ([08eac95](https://github.com/pie-framework/pie-elements/commit/08eac95fd3e1a79b420fbc88cd0c7436ba284c3c))
+
+
+
+
+
 ## [0.35.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/matrix-configure@0.35.4...@pie-element/matrix-configure@0.35.5) (2024-10-22)
 
 
