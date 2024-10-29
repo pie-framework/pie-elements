@@ -2390,7 +2390,7 @@
 
 "@pie-lib/pie-toolbox@2.1.0":
   version "2.1.0"
-  resolved "https://anthill-code-artifacts-078173794644.d.codeartifact.eu-west-1.amazonaws.com/npm/AnthillActivatorRepo/@pie-lib/pie-toolbox/-/pie-toolbox-2.1.0.tgz#e92f059d95b403aa967fa8abc0d304c28fb508e5"
+  resolved "https://registry.yarnpkg.com/@pie-lib/pie-toolbox/-/pie-toolbox-2.1.0.tgz#e92f059d95b403aa967fa8abc0d304c28fb508e5"
   integrity sha512-hwRqQDXG0bAqQlbtmcnGjuU05l19S0BLkb3X541IrbU9pCTV6WtsQ67YvEpXJw5XAE/aIqGavgG88B1dvE31qw==
   dependencies:
     "@mapbox/point-geometry" "^0.1.0"
