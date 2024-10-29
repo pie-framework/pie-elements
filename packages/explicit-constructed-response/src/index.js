@@ -58,6 +58,7 @@ export default class InlineDropdown extends HTMLElement {
         showNote: this._model.showNote,
         teacherInstructions: this._model.teacherInstructions,
         value: this._session.value,
+        responseAreaInputConfiguration: this._model.responseAreaInputConfiguration,
       });
 
       ReactDOM.render(elem, this, () => {

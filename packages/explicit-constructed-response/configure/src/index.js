@@ -61,6 +61,9 @@ export default class ExplicitConstructedResponse extends HTMLElement {
 
   set model(s) {
     this._model = ExplicitConstructedResponse.prepareModel(s);
+    if (this._model.responseAreaInputConfiguration) {
+      this._model.responseAreaInputConfiguration = this._configuration.responseAreaInputConfiguration?.inputConfiguration;
+    }
     this._render();
   }
 
@@ -115,9 +118,25 @@ export default class ExplicitConstructedResponse extends HTMLElement {
   }
 
   onConfigurationChanged(c) {
+    const previousInputConfig = this._model?.responseAreaInputConfiguration;
+
     this._configuration = c;
-    this._render();
+
+    const newInputConfig = this._configuration?.responseAreaInputConfiguration?.inputConfiguration;
+
+    if (previousInputConfig !== newInputConfig) {
+      this._model = {
+        ...this._model,
+        responseAreaInputConfiguration: newInputConfig
+      };
+
+      this.onModelChanged(this._model);
+
+    } else {
+      this._render();
+    }
   }
+
 
   /** @param {done, progress, file} handler */
   insertImage(handler) {
