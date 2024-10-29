@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import { withStyles } from '@material-ui/core/styles';
-import { Collapsible, color, PreviewPrompt, Purpose } from '@pie-lib/pie-toolbox/render-ui';
+import { Collapsible, color, PreviewPrompt, Purpose, UiLayout } from '@pie-lib/pie-toolbox/render-ui';
 import classNames from 'classnames';
 
 const styles = (theme) => ({
@@ -218,17 +218,18 @@ class StimulusTabs extends React.Component {
   }
 
   render() {
-    const { classes, tabs, disabledTabs } = this.props;
+    const { classes, model, tabs, disabledTabs } = this.props;
     const { activeTab } = this.state;
 
     if (!tabs?.length) {
       return;
     }
 
+    const { extraCSSRules } = model;
     const selectedTab = (tabs || []).find((tab) => tab.id === activeTab);
 
     return (
-      <div className={classNames(classes.passages, 'passages')}>
+      <UiLayout extraCSSRules={extraCSSRules} className={classNames(classes.passages, 'passages')}>
         {disabledTabs || tabs.length === 1 ? (
           tabs.map((tab) => this.renderTab(tab, disabledTabs))
         ) : (
@@ -263,7 +264,7 @@ class StimulusTabs extends React.Component {
             {selectedTab ? this.renderTab(selectedTab, disabledTabs) : null}
           </>
         )}
-      </div>
+      </UiLayout>
     );
   }
 }

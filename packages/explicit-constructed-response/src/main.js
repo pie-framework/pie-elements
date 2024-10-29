@@ -5,7 +5,7 @@ import isEmpty from 'lodash/isEmpty';
 import isEqual from 'lodash/isEqual';
 import { CorrectAnswerToggle } from '@pie-lib/pie-toolbox/correct-answer-toggle';
 import { ConstructedResponse } from '@pie-lib/pie-toolbox/mask-markup';
-import { color, Collapsible, hasText, PreviewPrompt } from '@pie-lib/pie-toolbox/render-ui';
+import { color, Collapsible, hasText, PreviewPrompt, UiLayout } from '@pie-lib/pie-toolbox/render-ui';
 import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
 import Translator from '@pie-lib/pie-toolbox/translator';
@@ -34,6 +34,8 @@ export class Main extends React.Component {
     showNote: PropTypes.bool,
     teacherInstructions: PropTypes.string,
     value: PropTypes.object,
+    responseAreaInputConfiguration: PropTypes.object,
+    model: PropTypes.object.isRequired,
   };
 
   static defaultProps = {
@@ -110,8 +112,11 @@ export class Main extends React.Component {
       rationale,
       showNote,
       teacherInstructions,
+      responseAreaInputConfiguration,
+      model,
     } = this.props;
 
+    const { extraCSSRules } = model || {};
     const displayNote = (showCorrectAnswer || (mode === 'view' && role === 'instructor')) && showNote && note;
     const mainClasses = classNames([
       classes.mainContainer,
@@ -127,7 +132,7 @@ export class Main extends React.Component {
     const rationaleDiv = <PreviewPrompt prompt={rationale} />;
 
     return (
-      <div className={mainClasses} style={{ display: `${displayType}` }}>
+      <UiLayout extraCSSRules={extraCSSRules} className={mainClasses} style={{ display: `${displayType}` }}>
         {mode === 'gather' && <h2 className={classes.srOnly}>Fill in the Blank Question</h2>}
 
         {teacherInstructions && hasText(teacherInstructions) && (
@@ -161,6 +166,7 @@ export class Main extends React.Component {
           maxLength={maxLengthPerChoice}
           adjustedLimit={maxLengthPerChoiceEnabled}
           spellCheck={playerSpellCheckEnabled}
+          pluginProps={responseAreaInputConfiguration}
         />
 
         {displayNote && <div className={classNames(classes.note, 'note')} dangerouslySetInnerHTML={{ __html: note }} />}
@@ -174,7 +180,7 @@ export class Main extends React.Component {
             )}
           </div>
         )}
-      </div>
+      </UiLayout>
     );
   }
 }

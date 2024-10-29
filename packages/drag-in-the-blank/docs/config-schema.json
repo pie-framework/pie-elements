@@ -1576,6 +1576,11 @@
       ],
       "title": "languageChoices"
     },
+    "maxLength": {
+      "description": "Maximum character limit for each answer choice",
+      "type": "number",
+      "title": "maxLength"
+    },
     "showPrompt": {
       "description": "Determines whether prompt field will be displayed or not",
       "default": true,

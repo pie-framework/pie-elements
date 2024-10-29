@@ -17,8 +17,9 @@ class Main extends React.Component {
 
   render() {
     const { model, onSessionChange, session } = this.props;
+    const { extraCSSRules } = model;
     return (
-      <PreviewLayout>
+      <PreviewLayout extraCSSRules={extraCSSRules}>
         <Matrix {...model} session={session} onSessionChange={onSessionChange} />
       </PreviewLayout>
     );

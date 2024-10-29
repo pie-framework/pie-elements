@@ -14,6 +14,10 @@ class Main extends React.Component {
     onChoiceChanged: PropTypes.func,
     classes: PropTypes.object.isRequired,
     onShowCorrectToggle: PropTypes.func,
+    extraCSSRules: PropTypes.shape({
+      names: PropTypes.arrayOf(PropTypes.string),
+      rules: PropTypes.string,
+    }),
   };
 
   static defaultProps = {
@@ -26,10 +30,11 @@ class Main extends React.Component {
 
   render() {
     const { model, onChoiceChanged, session, onShowCorrectToggle } = this.props;
+    const { extraCSSRules } = model;
 
     // model.partLabel is a property used for ebsr
     return (
-      <PreviewLayout>
+      <PreviewLayout extraCSSRules={extraCSSRules}>
         <MultipleChoice
           {...model}
           session={session}

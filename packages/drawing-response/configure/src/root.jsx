@@ -57,6 +57,7 @@ export class Root extends React.Component {
     const {
       backgroundImageEnabled,
       errors = {},
+      extraCSSRules,
       promptEnabled,
       spellCheckEnabled,
       teacherInstructionsEnabled,
@@ -91,6 +92,7 @@ export class Root extends React.Component {
 
     return (
       <layout.ConfigLayout
+        extraCSSRules={extraCSSRules}
         dimensions={contentDimensions}
         hideSettings={settingsPanelDisabled}
         settings={

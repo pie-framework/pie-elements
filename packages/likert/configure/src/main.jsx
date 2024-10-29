@@ -198,7 +198,7 @@ const Design = withStyles(styles)((props) => {
     baseInputConfiguration = {},
     likertChoice = {},
   } = configuration || {};
-  const { errors = {}, spellCheckEnabled, teacherInstructionsEnabled } = model || {};
+  const { errors = {}, extraCSSRules, spellCheckEnabled, teacherInstructionsEnabled } = model || {};
   const { prompt: promptError, teacherInstructions: teacherInstructionsError } = errors;
 
   const valuesMap = buildValuesMap(model);
@@ -219,6 +219,7 @@ const Design = withStyles(styles)((props) => {
 
   return (
     <layout.ConfigLayout
+      extraCSSRules={extraCSSRules}
       dimensions={contentDimensions}
       hideSettings={settingsPanelDisabled}
       settings={

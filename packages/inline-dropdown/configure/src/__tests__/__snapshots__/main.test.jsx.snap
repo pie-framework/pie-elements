@@ -402,6 +402,7 @@ There should be at most 10 choices defined per response area."
         "activePlugins": Array [
           "bold",
           "html",
+          "extraCSSRules",
           "italic",
           "underline",
           "strikethrough",
@@ -1116,6 +1117,7 @@ There should be at most 10 choices defined per response area."
         "activePlugins": Array [
           "bold",
           "html",
+          "extraCSSRules",
           "italic",
           "underline",
           "strikethrough",

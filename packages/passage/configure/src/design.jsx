@@ -54,6 +54,7 @@ export class Main extends React.Component {
     } = configuration || {};
     const {
       errors = {},
+      extraCSSRules,
       passages = [],
       teacherInstructionsEnabled,
       titleEnabled,
@@ -98,6 +99,7 @@ export class Main extends React.Component {
 
     return (
       <layout.ConfigLayout
+        extraCSSRules={extraCSSRules}
         hideSettings={settingsPanelDisabled}
         settings={
           <Panel

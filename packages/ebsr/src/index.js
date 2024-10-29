@@ -138,6 +138,7 @@ export default class Ebsr extends HTMLElement {
         left: -10000px;
         top: auto;
       }
+      ${this._model?.extraCSSRules?.rules}
       </style>
         <h2 class="srOnly">Two-Part Question</h2>
         <${MC_TAG_NAME} id="a"></${MC_TAG_NAME}>

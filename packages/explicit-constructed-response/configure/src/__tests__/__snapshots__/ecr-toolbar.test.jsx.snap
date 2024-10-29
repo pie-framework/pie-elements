@@ -2,33 +2,37 @@
 
 exports[`ECRToolbar snapshot renders 1`] = `
 <div
-  style={
-    Object {
-      "backgroundColor": "#E0E1E6",
-    }
-  }
+  style={Object {}}
 >
-  <WithStyles(OutlinedInput)
+  <EditableHtml
+    activePlugins={
+      Array [
+        "languageCharacters",
+      ]
+    }
+    allowValidation={false}
     autoFocus={true}
-    classes={
-      Object {
-        "input": undefined,
-      }
+    disableUnderline={true}
+    languageCharactersProps={
+      Array [
+        Object {
+          "language": "spanish",
+        },
+      ]
     }
-    inputProps={
-      Object {
-        "maxLength": 25,
-      }
-    }
-    labelWidth={0}
+    markup=""
+    maxHeight="10px"
+    maxLength={25}
+    minHeight="10px"
     onBlur={[Function]}
     onChange={[Function]}
-    style={
+    onDone={[Function]}
+    onKeyDown={[Function]}
+    toolbarOpts={
       Object {
-        "width": "100%",
+        "minWidth": "auto",
       }
     }
-    value=""
   />
 </div>
 `;

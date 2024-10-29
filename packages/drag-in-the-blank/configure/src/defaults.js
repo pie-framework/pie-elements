@@ -89,11 +89,13 @@ export default {
       teacherInstructions: 300,
       prompt: 300,
       rationale: 300,
+      choice: 300,
     },
     maxImageHeight: {
       teacherInstructions: 300,
       prompt: 300,
       rationale: 300,
+      choice: 300,
     },
     withRubric: {
       settings: false,
@@ -112,5 +114,6 @@ export default {
       label: 'Language Choices',
       options: [],
     },
+    maxLength: 200
   },
 };

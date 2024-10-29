@@ -27,7 +27,7 @@ export class Root extends React.Component {
       language = {},
       languageChoices = {},
     } = configuration || {};
-    const { errors = {}, spellCheckEnabled } = model || {};
+    const { errors = {}, extraCSSRules, spellCheckEnabled } = model || {};
     const { teacherInstructions: teacherInstructionsError } = errors;
 
     const panelProperties = {
@@ -45,6 +45,7 @@ export class Root extends React.Component {
 
     return (
       <layout.ConfigLayout
+        extraCSSRules={extraCSSRules}
         dimensions={contentDimensions}
         hideSettings={settingsPanelDisabled}
         settings={

@@ -273,6 +273,7 @@ export function model(question, session, env) {
           },
           colorContrast: (env.accessibility && env.accessibility.colorContrast) || 'black_on_white',
           language: normalizedQuestion.language,
+          extraCSSRules: normalizedQuestion.extraCSSRules,
         };
         resolve(omitBy(out, (v) => !v));
       });

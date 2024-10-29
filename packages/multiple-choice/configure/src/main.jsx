@@ -142,6 +142,7 @@ const Design = withStyles(styles)((props) => {
     choices,
     errors,
     toolbarEditorPosition,
+    extraCSSRules,
   } = model || {};
 
   const {
@@ -207,6 +208,7 @@ const Design = withStyles(styles)((props) => {
     <layout.ConfigLayout
       dimensions={contentDimensions}
       hideSettings={settingsPanelDisabled}
+      extraCSSRules={extraCSSRules}
       settings={
         <Panel
           model={model}

@@ -212,9 +212,10 @@ export function model(question, session, env, updateSession) {
         : Promise.resolve(undefined);
 
     fb.then((feedback) => {
-      const { feedbackEnabled, promptEnabled, prompt, lockChoiceOrder, ...essentials } = normalizedQuestion;
+      const { extraCSSRules, feedbackEnabled, promptEnabled, prompt, lockChoiceOrder, ...essentials } = normalizedQuestion;
       const out = {
         ...essentials,
+        extraCSSRules,
         allowFeedback: feedbackEnabled,
         prompt: promptEnabled ? prompt : null,
         shuffled: !lockChoiceOrder,

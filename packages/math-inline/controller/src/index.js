@@ -140,7 +140,7 @@ export const model = (question, session, env) =>
   new Promise((resolve) => {
     const normalizedQuestion = normalize(question);
     const correctness = getCorrectness(normalizedQuestion, env, session);
-    const { responses, language, ...config } = normalizedQuestion;
+    const { extraCSSRules, responses, language, ...config } = normalizedQuestion;
 
     config.responses = config.responseType === ResponseTypes.simple ? responses.slice(0, 1) : responses;
 
@@ -150,6 +150,7 @@ export const model = (question, session, env) =>
         : undefined;
 
     const out = {
+      extraCSSRules,
       config,
       correctness,
       feedback,

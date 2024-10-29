@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { CorrectAnswerToggle } from '@pie-lib/pie-toolbox/correct-answer-toggle';
-import { color, Collapsible, hasText, PreviewPrompt } from '@pie-lib/pie-toolbox/render-ui';
+import { color, Collapsible, hasText, PreviewPrompt, UiLayout } from '@pie-lib/pie-toolbox/render-ui';
 import { withStyles } from '@material-ui/core/styles';
 
 import Container from './container';
@@ -60,6 +60,7 @@ class HotspotComponent extends React.Component {
       session,
       model: {
         disabled,
+        extraCSSRules,
         imageUrl,
         prompt,
         mode,
@@ -84,7 +85,7 @@ class HotspotComponent extends React.Component {
     const showCorrectAnswerToggle = isEvaluateMode && !responseCorrect;
 
     return (
-      <div className={classes.main}>
+      <UiLayout extraCSSRules={extraCSSRules} className={classes.main}>
         {teacherInstructions && hasText(teacherInstructions) && (
           <Collapsible
             labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}
@@ -130,7 +131,7 @@ class HotspotComponent extends React.Component {
             <PreviewPrompt className="prompt" prompt={rationale} />
           </Collapsible>
         )}
-      </div>
+      </UiLayout>
     );
   }
 }

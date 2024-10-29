@@ -53,6 +53,7 @@ export function model(question, session, env) {
         circles: (circles || []).map(({ index, ...circleProps }) => ({ ...circleProps })),
       },
       responseCorrect: env.mode === 'evaluate' ? isResponseCorrect(normalizedQuestion, session) : undefined,
+      extraCSSRules: normalizedQuestion.extraCSSRules,
     };
 
     if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {

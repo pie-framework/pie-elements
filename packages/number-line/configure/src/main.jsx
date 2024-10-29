@@ -467,6 +467,7 @@ export class Main extends React.Component {
     } = configuration || {};
     const {
       errors = {},
+      extraCSSRules,
       spellCheckEnabled,
       toolbarEditorPosition,
       teacherInstructionsEnabled,
@@ -512,6 +513,7 @@ export class Main extends React.Component {
 
     return (
       <layout.ConfigLayout
+        extraCSSRules={extraCSSRules}
         dimensions={contentDimensions}
         hideSettings={settingsPanelDisabled}
         settings={

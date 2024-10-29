@@ -144,7 +144,7 @@ export function model(question, session, env) {
     // need this if undo redo was last operation
     session.answer = removeInvalidAnswers(session.answer);
     // console.log('normalizedQuestion', normalizedQuestion);
-    const { defaultTool, prompt, promptEnabled, graph, answers, toolbarTools, ...questionProps } =
+    const { defaultTool, extraCSSRules, prompt, promptEnabled, graph, answers, toolbarTools, ...questionProps } =
       normalizedQuestion || {};
     let { arrows } = normalizedQuestion;
     const { mode, role } = env || {};
@@ -186,6 +186,7 @@ export function model(question, session, env) {
         !isEmpty(answers.correctAnswer.marks),
       teacherInstructions: null,
       toolbarTools,
+      extraCSSRules,
     };
 
     if (role === 'instructor' && (mode === 'view' || mode === 'evaluate')) {

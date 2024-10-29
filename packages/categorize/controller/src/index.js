@@ -146,6 +146,7 @@ export const model = (question, session, env, updateSession) =>
       teacherInstructions,
       language,
       maxChoicesPerCategory,
+      extraCSSRules,
     } = normalizedQuestion;
     let { choices, note } = normalizedQuestion;
     let fb;
@@ -188,6 +189,7 @@ export const model = (question, session, env, updateSession) =>
       showNote: alternates && alternates.length > 0,
       correctResponse: mode === 'evaluate' ? filteredCorrectResponse : undefined,
       language,
+      extraCSSRules,
     };
 
     if (role === 'instructor' && (mode === 'view' || mode === 'evaluate')) {

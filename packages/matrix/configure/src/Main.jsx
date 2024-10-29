@@ -51,7 +51,7 @@ const Design = withStyles(styles)((props) => {
     spellCheck = {},
     teacherInstructions = {},
   } = configuration || {};
-  const { errors = {}, teacherInstructionsEnabled, spellCheckEnabled } = model || {};
+  const { errors = {}, extraCSSRules, teacherInstructionsEnabled, spellCheckEnabled } = model || {};
   const { prompt: promptError, teacherInstructions: teacherInstructionsError } = errors;
 
   const panelProperties = {
@@ -67,6 +67,7 @@ const Design = withStyles(styles)((props) => {
 
   return (
     <layout.ConfigLayout
+      extraCSSRules={extraCSSRules}
       dimensions={contentDimensions}
       hideSettings={settingsPanelDisabled}
       settings={

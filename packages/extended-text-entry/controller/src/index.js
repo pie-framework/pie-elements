@@ -67,6 +67,7 @@ export async function model(question, session, env) {
     annotatorMode,
     disabledAnnotator: normalizedQuestion.annotationsEnabled ? env.role !== 'instructor' : true,
     predefinedAnnotations: normalizedQuestion.annotationsEnabled ? normalizedQuestion.predefinedAnnotations : [],
+    extraCSSRules: normalizedQuestion.extraCSSRules,
   }));
 }
 

@@ -34,6 +34,7 @@ class Main extends React.Component {
 
     // ensure to eliminate points and sampleAnswers in case of rubricless
     const value = this.verifyRubriclessModel(model, configuration);
+    const { extraCSSRules } = model;
 
     const panelProperties = {
       excludeZeroEnabled: showExcludeZero.settings && toggle(showExcludeZero.label),
@@ -52,6 +53,7 @@ class Main extends React.Component {
 
     return (
       <layout.ConfigLayout
+        extraCSSRules={extraCSSRules}
         dimensions={contentDimensions}
         hideSettings={settingsPanelDisabled}
         settings={

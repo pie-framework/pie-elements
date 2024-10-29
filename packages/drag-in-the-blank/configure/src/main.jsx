@@ -149,6 +149,7 @@ export class Main extends React.Component {
       mathMlOptions = {},
       language = {},
       languageChoices = {},
+      maxLength = {},
     } = configuration || {};
     const {
       rationaleEnabled,
@@ -157,6 +158,7 @@ export class Main extends React.Component {
       spellCheckEnabled,
       toolbarEditorPosition,
       errors,
+      extraCSSRules,
     } = model || {};
 
     const {
@@ -204,6 +206,7 @@ export class Main extends React.Component {
 
     return (
       <layout.ConfigLayout
+        extraCSSRules={extraCSSRules}
         dimensions={contentDimensions}
         hideSettings={settingsPanelDisabled}
         settings={
@@ -317,6 +320,9 @@ export class Main extends React.Component {
           uploadSoundSupport={uploadSoundSupport}
           mathMlOptions={mathMlOptions}
           pluginProps={getPluginProps(addChoice?.inputConfiguration)}
+          maxImageWidth={(maxImageWidth && maxImageWidth.choice) || defaultImageMaxWidth}
+          maxImageHeight={(maxImageHeight && maxImageHeight.choice) || defaultImageMaxHeight}
+          maxLength={maxLength}
         />
 
         {rationaleEnabled && (
