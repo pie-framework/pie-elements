@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`categorize renders snapshot 1`] = `
-<Component>
+<WithStyles(UiLayout)>
   <WithStyles(CorrectAnswerToggle)
     onToggle={[Function]}
     show={false}
@@ -58,11 +58,11 @@ exports[`categorize renders snapshot 1`] = `
     text="You've reached the limit of  responses per area. To add another response, one must first be removed."
     title="Warning"
   />
-</Component>
+</WithStyles(UiLayout)>
 `;
 
 exports[`categorize renders snapshot with rationale 1`] = `
-<Component>
+<WithStyles(UiLayout)>
   <WithStyles(CorrectAnswerToggle)
     onToggle={[Function]}
     show={false}
@@ -133,11 +133,11 @@ exports[`categorize renders snapshot with rationale 1`] = `
     text="You've reached the limit of  responses per area. To add another response, one must first be removed."
     title="Warning"
   />
-</Component>
+</WithStyles(UiLayout)>
 `;
 
 exports[`categorize renders snapshot with teacherInstructions 1`] = `
-<Component>
+<WithStyles(UiLayout)>
   <WithStyles(Collapsible)
     labels={
       Object {
@@ -208,5 +208,5 @@ exports[`categorize renders snapshot with teacherInstructions 1`] = `
     text="You've reached the limit of  responses per area. To add another response, one must first be removed."
     title="Warning"
   />
-</Component>
+</WithStyles(UiLayout)>
 `;

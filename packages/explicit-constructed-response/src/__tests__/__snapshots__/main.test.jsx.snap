@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Main render should render in evaluate mode 1`] = `
-<Component
+<WithStyles(UiLayout)
   className=""
   style={
     Object {
@@ -32,7 +32,7 @@ exports[`Main render should render in evaluate mode 1`] = `
     show={true}
     toggled={false}
   />
-  <WithMask
+  <WithStyles(WithMask)
     choices={
       Object {
         "0": Array [
@@ -109,11 +109,11 @@ exports[`Main render should render in evaluate mode 1`] = `
       />
     </WithStyles(Collapsible)>
   </div>
-</Component>
+</WithStyles(UiLayout)>
 `;
 
 exports[`Main render should render in gather mode 1`] = `
-<Component
+<WithStyles(UiLayout)
   className=""
   style={
     Object {
@@ -147,7 +147,7 @@ exports[`Main render should render in gather mode 1`] = `
     show={false}
     toggled={false}
   />
-  <WithMask
+  <WithStyles(WithMask)
     choices={
       Object {
         "0": Array [
@@ -224,11 +224,11 @@ exports[`Main render should render in gather mode 1`] = `
       />
     </WithStyles(Collapsible)>
   </div>
-</Component>
+</WithStyles(UiLayout)>
 `;
 
 exports[`Main render should render in view mode 1`] = `
-<Component
+<WithStyles(UiLayout)
   className=""
   style={
     Object {
@@ -259,7 +259,7 @@ exports[`Main render should render in view mode 1`] = `
     show={false}
     toggled={false}
   />
-  <WithMask
+  <WithStyles(WithMask)
     choices={
       Object {
         "0": Array [
@@ -336,11 +336,11 @@ exports[`Main render should render in view mode 1`] = `
       />
     </WithStyles(Collapsible)>
   </div>
-</Component>
+</WithStyles(UiLayout)>
 `;
 
 exports[`Main render should render without prompt 1`] = `
-<Component
+<WithStyles(UiLayout)
   className=""
   style={
     Object {
@@ -371,7 +371,7 @@ exports[`Main render should render without prompt 1`] = `
     show={false}
     toggled={false}
   />
-  <WithMask
+  <WithStyles(WithMask)
     choices={
       Object {
         "0": Array [
@@ -448,11 +448,11 @@ exports[`Main render should render without prompt 1`] = `
       />
     </WithStyles(Collapsible)>
   </div>
-</Component>
+</WithStyles(UiLayout)>
 `;
 
 exports[`Main render should render without rationale 1`] = `
-<Component
+<WithStyles(UiLayout)
   className=""
   style={
     Object {
@@ -486,7 +486,7 @@ exports[`Main render should render without rationale 1`] = `
     show={false}
     toggled={false}
   />
-  <WithMask
+  <WithStyles(WithMask)
     choices={
       Object {
         "0": Array [
@@ -549,11 +549,11 @@ exports[`Main render should render without rationale 1`] = `
       }
     }
   />
-</Component>
+</WithStyles(UiLayout)>
 `;
 
 exports[`Main render should render without teacher instructions 1`] = `
-<Component
+<WithStyles(UiLayout)
   className=""
   style={
     Object {
@@ -572,7 +572,7 @@ exports[`Main render should render without teacher instructions 1`] = `
     show={false}
     toggled={false}
   />
-  <WithMask
+  <WithStyles(WithMask)
     choices={
       Object {
         "0": Array [
@@ -649,5 +649,5 @@ exports[`Main render should render without teacher instructions 1`] = `
       />
     </WithStyles(Collapsible)>
   </div>
-</Component>
+</WithStyles(UiLayout)>
 `;

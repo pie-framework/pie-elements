@@ -349,6 +349,7 @@ There should be at least 2 tokens defined."
       Array [
         "bold",
         "html",
+        "extraCSSRules",
         "italic",
         "underline",
         "strikethrough",
@@ -800,6 +801,7 @@ There should be at least 2 tokens defined."
       Array [
         "bold",
         "html",
+        "extraCSSRules",
         "italic",
         "underline",
         "strikethrough",
