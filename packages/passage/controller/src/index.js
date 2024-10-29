@@ -4,6 +4,10 @@ import defaults from './defaults';
 
 const getContent = (html) => (html || '').replace(/(<(?!img|iframe)([^>]+)>)/gi, '');
 
+const checkNullish = (value) => value !== null && value !== undefined;
+
+const isEnabled = (value, defaultValue) => (checkNullish(value) ? value : defaultValue);
+
 export function createDefaultModel(model = {}) {
   return new Promise((resolve) => {
     resolve({ ...defaults, ...model });
@@ -32,14 +36,14 @@ export async function model(question, session, env) {
   const normalizedQuestion = normalize(question);
 
   const normalizedPassages = normalizedQuestion.passages.map((passage, index) => ({
-    teacherInstructions: normalizedQuestion.teacherInstructionsEnabled
+    teacherInstructions: isEnabled(passage.teacherInstructionsEnabled, normalizedQuestion.teacherInstructionsEnabled)
       ? normalizeTeacherInstructions(passage.teacherInstructions, env)
       : '',
     label: getContent(passage.title) ? passage.title : `Passage ${index + 1}`,
-    title: normalizedQuestion.titleEnabled ? passage.title || '' : '',
-    subtitle: normalizedQuestion.subtitleEnabled ? passage.subtitle || '' : '',
-    author: normalizedQuestion.authorEnabled ? passage.author || '' : '',
-    text: normalizedQuestion.textEnabled ? passage.text || '' : '',
+    title: isEnabled(passage.titleEnabled, normalizedQuestion.titleEnabled) ? passage.title || '' : '',
+    subtitle: isEnabled(passage.subtitleEnabled, normalizedQuestion.subtitleEnabled) ? passage.subtitle || '' : '',
+    author: isEnabled(passage.authorEnabled, normalizedQuestion.authorEnabled) ? passage.author || '' : '',
+    text: isEnabled(passage.textEnabled, normalizedQuestion.textEnabled) ? passage.text || '' : '',
   }));
 
   return {
