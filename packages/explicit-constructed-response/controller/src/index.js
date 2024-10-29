@@ -158,7 +158,7 @@ export function model(question, session, env) {
       responseCorrect: env.mode === 'evaluate' ? getScore(normalizedQuestion, session) === 1 : undefined,
       showNote,
       teacherInstructions: defaults.teacherInstructions,
-      responseAreaInputConfiguration: normalizedQuestion.responseAreaInputConfiguration
+      responseAreaInputConfiguration: normalizedQuestion.responseAreaInputConfiguration,
       extraCSSRules: normalizedQuestion.extraCSSRules,
     };
 
