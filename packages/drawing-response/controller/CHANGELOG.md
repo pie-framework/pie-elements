@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response-controller@3.4.1...@pie-element/drawing-response-controller@3.5.0) (2024-10-29)
+
+
+### Features
+
+* used configlayout, preview layout or uilayout to enable extraCSSRules inside author and player elements [PD-1460] ([eeebb02](https://github.com/pie-framework/pie-elements/commit/eeebb02f200208620c1af56366a22bf65944ba3e))
+
+
+
+
+
 ## [3.4.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response-controller@3.4.0...@pie-element/drawing-response-controller@3.4.1) (2024-10-22)
 
 **Note:** Version bump only for package @pie-element/drawing-response-controller

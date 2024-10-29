@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@7.1.4...@pie-element/explicit-constructed-response@7.2.0) (2024-10-29)
+
+
+### Bug Fixes
+
+* fixed all tests after updating pie-toolbox [PD-1460] ([9f5293d](https://github.com/pie-framework/pie-elements/commit/9f5293d618edc06f69fabb27a042ec5eee66e151))
+* fixed lint [PD-1460] ([a62f40f](https://github.com/pie-framework/pie-elements/commit/a62f40f94d411512f98708b37b862c1ee4b87625))
+
+
+### Features
+
+* fixed most of the tests, waiting on PR merge to fix the rest [PD-1460] ([9b12daf](https://github.com/pie-framework/pie-elements/commit/9b12dafc8e7d8dd8cd9bef71dce37d0c62760355))
+* used configlayout, preview layout or uilayout to enable extraCSSRules inside author and player elements [PD-1460] ([eeebb02](https://github.com/pie-framework/pie-elements/commit/eeebb02f200208620c1af56366a22bf65944ba3e))
+* **ECR:** adjust toolbarOpts with width property PD-4004 ([02d3383](https://github.com/pie-framework/pie-elements/commit/02d33831951dfeb873994a9ba01b24b665ce3873))
+* **ECR:** changed response area for ECR from simple input into editable-html PD-4004 ([f3bd806](https://github.com/pie-framework/pie-elements/commit/f3bd806d5e425fa327874e28e350afa077d93f9d))
+* **ECR:** fix stripHtmlTags PD-4004 ([5940f12](https://github.com/pie-framework/pie-elements/commit/5940f1240557ed377334860395b7a69cb3114f1d))
+* **ECR:** fix tests + update documentation PD-4004 ([240db29](https://github.com/pie-framework/pie-elements/commit/240db291fca0d28581c11930bdb4648abedf2a42))
+* **ECR:** remove unnecessary code PD-4004 ([44ad03d](https://github.com/pie-framework/pie-elements/commit/44ad03dc4168515faf8e96cb626a6a772cbe4bde))
+* **ECR:** update snapshots PD-4004 ([9b393de](https://github.com/pie-framework/pie-elements/commit/9b393dedb5bdada1813f02f670eff7179de5dfa7))
+
+
+
+
+
 ## [7.1.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@7.1.3...@pie-element/explicit-constructed-response@7.1.4) (2024-10-28)
 
 
