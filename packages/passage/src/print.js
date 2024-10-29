@@ -7,24 +7,30 @@ import StimulusTabs from './stimulus-tabs';
 
 const log = debug('pie-element:passage:print');
 
-// replace nullish coalescing operator '??'
 const checkNullish = (value) => value !== null && value !== undefined;
+
+const isEnabled = (value, defaultValue) => (checkNullish(value) ? value : defaultValue);
 
 const preparePrintPassage = (model, opts) => {
   const isInstructor = opts.role === 'instructor';
-  const teacherInstructionsEnabled = checkNullish(model.teacherInstructionsEnabled)
-    ? model.teacherInstructionsEnabled
-    : true;
-  const textEnabled = checkNullish(model.textEnabled) ? model.textEnabled : true;
+
+  // TODO: also update '../../controller/src/defaults.js' when updating defaultValue
+  const teacherInstructionsEnabled = isEnabled(model.teacherInstructionsEnabled, true);
+  const titleEnabled = isEnabled(model.titleEnabled, false);
+  const authorEnabled = isEnabled(model.authorEnabled, false);
+  const subtitleEnabled = isEnabled(model.subtitleEnabled, false);
+  const textEnabled = isEnabled(model.textEnabled, true);
 
   return model.passages.map((passage, index) => ({
     id: index,
-    teacherInstructions: teacherInstructionsEnabled ? (isInstructor && passage.teacherInstructions) || '' : '',
+    teacherInstructions: isEnabled(passage.teacherInstructionsEnabled, teacherInstructionsEnabled)
+      ? (isInstructor && passage.teacherInstructions) || ''
+      : '',
     label: passage.title || `Passage ${index + 1}`,
-    title: model.titleEnabled ? passage.title || '' : '',
-    author: model.authorEnabled ? passage.author || '' : '',
-    subtitle: model.subtitleEnabled ? passage.subtitle || '' : '',
-    text: textEnabled ? passage.text || '' : '',
+    title: isEnabled(passage.titleEnabled, titleEnabled) ? passage.title || '' : '',
+    author: isEnabled(passage.authorEnabled, authorEnabled) ? passage.author || '' : '',
+    subtitle: isEnabled(passage.subtitleEnabled, subtitleEnabled) ? passage.subtitle || '' : '',
+    text: isEnabled(passage.textEnabled, textEnabled) ? passage.text || '' : '',
   }));
 };
 
