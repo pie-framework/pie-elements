@@ -5,7 +5,7 @@
     "@pie-lib/pie-toolbox": "2.1.0",
     "lodash": "^4.17.15"
   },
-  "version": "7.0.6",
+  "version": "7.1.0",
   "description": "",
   "scripts": {},
   "main": "lib/index.js",

@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.38.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.37.1...@pie-element/pie-models@13.38.0) (2024-10-29)
+
+
+### Features
+
+* **ditb:** added 2 new properties to limit text and images in answer choices PD-4207 ([d010ea0](https://github.com/pie-framework/pie-elements/commit/d010ea054d042b717ceffbe10be54c445fdb521c))
+* **ECR:** fix tests + update documentation PD-4004 ([0e48b5d](https://github.com/pie-framework/pie-elements/commit/0e48b5d147382c074cf52a466c77d72e7bcd5741))
+
+
+
+
+
 ## [13.37.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.37.0...@pie-element/pie-models@13.37.1) (2024-10-09)
 
 

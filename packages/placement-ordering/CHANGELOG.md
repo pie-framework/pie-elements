@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@10.1.4...@pie-element/placement-ordering@10.2.0) (2024-10-29)
+
+
+### Bug Fixes
+
+* fixed all tests after updating pie-toolbox [PD-1460] ([9f5293d](https://github.com/pie-framework/pie-elements/commit/9f5293d618edc06f69fabb27a042ec5eee66e151))
+
+
+### Features
+
+* fixed most of the tests, waiting on PR merge to fix the rest [PD-1460] ([9b12daf](https://github.com/pie-framework/pie-elements/commit/9b12dafc8e7d8dd8cd9bef71dce37d0c62760355))
+* used configlayout, preview layout or uilayout to enable extraCSSRules inside author and player elements [PD-1460] ([eeebb02](https://github.com/pie-framework/pie-elements/commit/eeebb02f200208620c1af56366a22bf65944ba3e))
+
+
+
+
+
 ## [10.1.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@10.1.3...@pie-element/placement-ordering@10.1.4) (2024-10-28)
 
 

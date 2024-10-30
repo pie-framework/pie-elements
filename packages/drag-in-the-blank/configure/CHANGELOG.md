@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-configure@6.0.6...@pie-element/drag-in-the-blank-configure@6.1.0) (2024-10-29)
+
+
+### Bug Fixes
+
+* fixed all tests after updating pie-toolbox [PD-1460] ([9f5293d](https://github.com/pie-framework/pie-elements/commit/9f5293d618edc06f69fabb27a042ec5eee66e151))
+
+
+### Features
+
+* used configlayout, preview layout or uilayout to enable extraCSSRules inside author and player elements [PD-1460] ([eeebb02](https://github.com/pie-framework/pie-elements/commit/eeebb02f200208620c1af56366a22bf65944ba3e))
+* **ditb:** added 2 new properties to limit text and images in answer choices PD-4207 ([d010ea0](https://github.com/pie-framework/pie-elements/commit/d010ea054d042b717ceffbe10be54c445fdb521c))
+* **ditb:** update snapshots & doc PD-4207 ([8d19484](https://github.com/pie-framework/pie-elements/commit/8d19484225f4bc3db8fe82afe247570586a121f6))
+
+
+
+
+
 ## [6.0.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-configure@6.0.5...@pie-element/drag-in-the-blank-configure@6.0.6) (2024-10-28)
 
 
