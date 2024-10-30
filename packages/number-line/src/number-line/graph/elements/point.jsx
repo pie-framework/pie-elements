@@ -174,7 +174,7 @@ export class Point extends React.Component {
           <circle
             r="20"
             strokeWidth="3"
-            style={{ fill: 'transparent', pointerEvents: 'none' }}
+            style={{ fill: 'transparent', pointerEvents: 'visibleStroke' }}
             cx={xScale(position)}
             cy={y}
             stroke={selected ? color.primaryDark() : 'none'}
