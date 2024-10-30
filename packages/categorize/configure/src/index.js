@@ -7,6 +7,7 @@ import {
   InsertSoundEvent,
   DeleteSoundEvent,
 } from '@pie-framework/pie-configure-events';
+import { renderMath } from '@pie-lib/pie-toolbox/math-rendering-accessible';
 
 import Main from './main';
 
@@ -139,6 +140,8 @@ export default class CategorizeConfigure extends HTMLElement {
       },
     });
 
-    ReactDOM.render(el, this);
+    ReactDOM.render(el, this, () => {
+      renderMath(this);
+    });
   }
 }
