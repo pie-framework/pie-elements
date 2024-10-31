@@ -1,6 +1,5 @@
 export default {
   choiceMode: 'radio',
-  enableImages: true,
   feedbackEnabled: false,
   headers: ['Column 1', 'Column 2', 'Column 3'],
   layout: 3,

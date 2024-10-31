@@ -9,7 +9,6 @@ export default {
     choiceLabelEnabled: true,
     choices: [],
     correctResponse: [],
-    enableImages: false,
     feedbackEnabled: false,
     numberedGuides: false,
     orientation: 'vertical',
@@ -50,10 +49,6 @@ export default {
         video: { disabled: true },
         image: { disabled: true },
       },
-    },
-    enableImages: {
-      settings: true,
-      label: 'Enable Images',
     },
     feedback: {
       settings: true,

@@ -3,7 +3,6 @@ export default {
   choiceLabelEnabled: true,
   choices: [],
   correctResponse: [],
-  enableImages: false,
   feedbackEnabled: false,
   numberedGuides: false,
   orientation: 'vertical',

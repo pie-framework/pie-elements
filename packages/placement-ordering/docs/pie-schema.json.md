@@ -53,10 +53,6 @@ Array that contains the alternate response ids
 
 The object is an array with all elements of the type `string`.
 
-# `enableImages` (boolean)
-
-Indicates if the choices editor can use images
-
 # `feedback` (object)
 
 Properties of the `feedback` object:
