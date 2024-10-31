@@ -105,21 +105,17 @@ export class ECRToolbar extends React.Component {
                         if (this.preventDone) {
                             return;
                         }
-
                         this.onRespAreaChange(respAreaMarkup);
                     }}
                     onDone={(val) => {
                         if (this.preventDone) {
                             return;
                         }
-
                         this.onDone(val);
                     }}
                     onBlur={(e) => {
                         const inInInsertCharacter = e.relatedTarget && e.relatedTarget.closest('.insert-character-dialog');
-
                         this.preventDone = inInInsertCharacter;
-
                         this.onBlur(e);
                     }}
                     onKeyDown={this.onKeyDown}
@@ -144,6 +140,7 @@ const StyledECRToolbar = withStyles((theme) => ({
     markup: {
         backgroundColor: theme.palette.common.white,
         outline: 'none',
+        lineHeight: '10px'
     },
 }))(ECRToolbar);
 
