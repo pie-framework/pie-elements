@@ -157,8 +157,10 @@ const styles = (theme) => ({
     overflow: 'visible',
   },
   categoryHeader: {
-    display: 'flex',
     padding: theme.spacing.unit * 2,
+    '& p': {
+      margin: 0
+    }
   },
   duplicateError: {
     border: '1px solid red',
