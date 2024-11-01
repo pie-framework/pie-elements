@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-configure@7.1.0...@pie-element/explicit-constructed-response-configure@7.1.1) (2024-11-01)
+
+
+### Bug Fixes
+
+* update pie-lib PD-4361 ([0ed2a71](https://github.com/pie-framework/pie-elements/commit/0ed2a7156d3fef55b9c25ab9c60d0df836b86ee5))
+* update pie-lib/pie-toolbox PD-4319, PD-1460, PD-4004 ([db03ac7](https://github.com/pie-framework/pie-elements/commit/db03ac7473960cedef2c83c79920e77db06f605d))
+* update pie-lib/pie-toolbox PD-4372 ([dc73470](https://github.com/pie-framework/pie-elements/commit/dc734705a6aefa0f69eb29d3d695c57e31671ab8))
+* **ECR:** adjust style for ECR response area PD-4004 ([3ff3abc](https://github.com/pie-framework/pie-elements/commit/3ff3abcb7cf1262d81dafbad2cd6588971fa3c90))
+
+
+
+
+
 # [7.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-configure@7.0.6...@pie-element/explicit-constructed-response-configure@7.1.0) (2024-10-29)
 
 
