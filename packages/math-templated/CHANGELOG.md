@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.2.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-templated@3.2.1...@pie-element/math-templated@3.2.2) (2024-11-01)
+
+
+### Bug Fixes
+
+* use proper node PD-4377 ([473f053](https://github.com/pie-framework/pie-elements/commit/473f053a6166e3f9d0240ed92059fbf3a3b49cf2))
+
+
+
+
+
 ## [3.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-templated@3.2.0...@pie-element/math-templated@3.2.1) (2024-11-01)
 
 
