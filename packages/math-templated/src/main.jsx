@@ -11,6 +11,7 @@ import { renderMath } from '@pie-lib/pie-toolbox/math-rendering-accessible';
 import MathQuill from '@pie-framework/mathquill';
 import { Customizable } from '@pie-lib/pie-toolbox/mask-markup';
 import { CorrectAnswerToggle } from '@pie-lib/pie-toolbox/correct-answer-toggle';
+import ReactDOM from 'react-dom';
 
 let registered = false;
 
@@ -541,7 +542,12 @@ export class Main extends React.Component {
     const displayNote = (showCorrect || (mode === 'view' && role === 'instructor')) && showNote && note;
 
     return (
-      <UiLayout extraCSSRules={extraCSSRules} className={classes.mainContainer} ref={(r) => (this.root = r || this.root)}>
+      <UiLayout extraCSSRules={extraCSSRules} className={classes.mainContainer} ref={(r) => {
+        // eslint-disable-next-line react/no-find-dom-node
+        const domNode = ReactDOM.findDOMNode(r);
+
+        this.root = domNode || this.root;
+      }}>
         <div className={classes.main}>
           {/* what is srOnly ? */}
           {mode === 'gather' && <h2 className={classes.srOnly}>Math Equation Response Question</h2>}

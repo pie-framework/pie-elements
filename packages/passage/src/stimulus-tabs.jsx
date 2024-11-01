@@ -225,7 +225,7 @@ class StimulusTabs extends React.Component {
       return;
     }
 
-    const { extraCSSRules } = model;
+    const { extraCSSRules } = model || {};
     const selectedTab = (tabs || []).find((tab) => tab.id === activeTab);
 
     return (
