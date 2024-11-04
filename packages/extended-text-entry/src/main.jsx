@@ -177,7 +177,7 @@ export class Main extends React.Component {
               },
               table: {
                 disabled: true,
-              }
+              },
             }}
             languageCharactersProps={languageCharactersProps}
           />

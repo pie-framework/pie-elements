@@ -47,7 +47,6 @@ export default {
       image: { disabled: false },
       h3: { disabled: true },
       blockquote: { disabled: true },
-      table: { disabled: true }
     },
     dimensions: {
       settings: true,
