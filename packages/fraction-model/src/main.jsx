@@ -5,7 +5,7 @@ import AnswerFraction from './answer-fraction';
 import { CorrectAnswerToggle } from '@pie-lib/pie-toolbox/correct-answer-toggle';
 import FractionModelChart from './fraction-model-chart';
 import { AlertDialog } from '@pie-lib/pie-toolbox/config-ui';
-import { PreviewPrompt, UiLayout } from '@pie-lib/pie-toolbox/render-ui';
+import { PreviewPrompt } from '@pie-lib/pie-toolbox/render-ui';
 import cloneDeep from 'lodash/cloneDeep';
 
 export class Main extends React.Component {
@@ -127,7 +127,7 @@ export class Main extends React.Component {
     const fractionModelChartKey = this.generateRandomKey();
 
     return (
-      <UiLayout extraCSSRules={extraCSSRules}>
+      <div>
         <div className={classes.modelPreview}>
           <div className={classes.titleContainer}>
             <PreviewPrompt className="prompt" prompt={title} tagName="h3" />
@@ -200,7 +200,7 @@ export class Main extends React.Component {
             onCloseText={'Cancel'}
           />
         </div>
-      </UiLayout>
+      </div>
     );
   }
 }
