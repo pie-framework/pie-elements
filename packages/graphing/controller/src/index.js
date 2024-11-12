@@ -103,6 +103,9 @@ export const getBestAnswer = (question, session, env = {}) => {
 
   // initialize answer if no values
   answer = answer || [];
+  
+  //filter the incomplete objects for student response - Fix for SC-33160
+  answer = answer.filter((mark) => !mark.building);
 
   // initialize one possible answer if no values
   if (isEmpty(questionPossibleAnswers)) {
