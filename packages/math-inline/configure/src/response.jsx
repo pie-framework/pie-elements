@@ -12,6 +12,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import { withStyles } from '@material-ui/core/styles';
+import { color } from '@pie-lib/pie-toolbox/render-ui';
 
 // TODO once we support individual response correctness, we need to remove this constant
 const INDIVIDUAL_RESPONSE_CORRECTNESS_SUPPORTED = false;
@@ -71,6 +72,9 @@ const styles = (theme) => ({
     fontSize: theme.typography.fontSize - 2,
     color: theme.palette.error.main,
     paddingTop: theme.spacing.unit,
+  },
+  customColor: {
+    color: `${color.tertiary()} !important`
   },
 });
 
@@ -263,6 +267,7 @@ class Response extends React.Component {
                           label={cAllowTrailingZeros.label}
                           control={
                             <Checkbox
+                                className={classes.customColor}
                                 checked={allowTrailingZeros}
                                 onChange={this.onLiteralOptionsChange('allowTrailingZeros')}
                             />
@@ -273,7 +278,11 @@ class Response extends React.Component {
                   {cIgnoreOrder.enabled && (
                       <FormControlLabel
                           label={cIgnoreOrder.label}
-                          control={<Checkbox checked={ignoreOrder} onChange={this.onLiteralOptionsChange('ignoreOrder')} />}
+                          control={
+                        <Checkbox 
+                            className={classes.customColor} 
+                            checked={ignoreOrder} 
+                            onChange={this.onLiteralOptionsChange('ignoreOrder')} />}
                       />
                   )}
                 </div>

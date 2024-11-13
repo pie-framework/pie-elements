@@ -9,6 +9,7 @@ import { withStyles } from '@material-ui/core/styles';
 import merge from 'lodash/merge';
 import { LIKERT_TYPE, LIKERT_SCALE, LIKERT_ORIENTATION } from './likertEntities';
 import generateChoices from './choiceGenerator';
+import { color } from '@pie-lib/pie-toolbox/render-ui';
 
 const { Panel, toggle, radio } = settings;
 
@@ -69,6 +70,9 @@ const styles = (theme) => ({
     color: theme.palette.error.main,
     paddingTop: theme.spacing.unit,
   },
+  customColor: {
+    color: `${color.tertiary()} !important`
+  },
 });
 
 const LikertOrientation = withStyles(styles)((props) => {
@@ -89,8 +93,8 @@ const LikertOrientation = withStyles(styles)((props) => {
         value={model.likertOrientation}
         onChange={onChangeLikertOrientation}
       >
-        <FormControlLabel value={LIKERT_ORIENTATION.horizontal} control={<Radio />} label="Horizontal" />
-        <FormControlLabel value={LIKERT_ORIENTATION.vertical} control={<Radio />} label="Vertical" />
+        <FormControlLabel value={LIKERT_ORIENTATION.horizontal} control={<Radio className={classes.customColor} />} label="Horizontal" />
+        <FormControlLabel value={LIKERT_ORIENTATION.vertical} control={<Radio className={classes.customColor} />} label="Vertical" />
       </RadioGroup>
     </div>
   );
@@ -112,9 +116,9 @@ const LikertScale = withStyles(styles)((props) => {
     <div className={classes.radioButtonsWrapper}>
       <p className={classes.radioButtonsColumnHeader}>Likert Scale</p>
       <RadioGroup aria-label="likertScale" name="likertScale" value={model.likertScale} onChange={onChangeLikertScale}>
-        <FormControlLabel value={LIKERT_SCALE.likert3} control={<Radio />} label="Likert 3" />
-        <FormControlLabel value={LIKERT_SCALE.likert5} control={<Radio />} label="Likert 5" />
-        <FormControlLabel value={LIKERT_SCALE.likert7} control={<Radio />} label="Likert 7" />
+        <FormControlLabel value={LIKERT_SCALE.likert3} control={<Radio className={classes.customColor} />} label="Likert 3" />
+        <FormControlLabel value={LIKERT_SCALE.likert5} control={<Radio className={classes.customColor} />} label="Likert 5" />
+        <FormControlLabel value={LIKERT_SCALE.likert7} control={<Radio className={classes.customColor} />} label="Likert 7" />
       </RadioGroup>
     </div>
   );
@@ -143,9 +147,9 @@ const LikertType = withStyles(styles)((props) => {
           value={model.likertType}
           onChange={onChangeLikertType}
         >
-          <FormControlLabel value={LIKERT_TYPE.agreement} control={<Radio />} label="Agreement" />
-          <FormControlLabel value={LIKERT_TYPE.frequency} control={<Radio />} label="Frequency" />
-          <FormControlLabel value={LIKERT_TYPE.yesNo} control={<Radio />} label="Yes/No" />
+          <FormControlLabel value={LIKERT_TYPE.agreement} control={<Radio className={classes.customColor} />} label="Agreement" />
+          <FormControlLabel value={LIKERT_TYPE.frequency} control={<Radio className={classes.customColor} />} label="Frequency" />
+          <FormControlLabel value={LIKERT_TYPE.yesNo} control={<Radio className={classes.customColor} />} label="Yes/No" />
         </RadioGroup>
 
         <RadioGroup
@@ -154,9 +158,9 @@ const LikertType = withStyles(styles)((props) => {
           value={model.likertType}
           onChange={onChangeLikertType}
         >
-          <FormControlLabel value={LIKERT_TYPE.importance} control={<Radio />} label="Importance" />
-          <FormControlLabel value={LIKERT_TYPE.likelihood} control={<Radio />} label="Likelihood" />
-          <FormControlLabel value={LIKERT_TYPE.like} control={<Radio />} label="Like" />
+          <FormControlLabel value={LIKERT_TYPE.importance} control={<Radio className={classes.customColor} />} label="Importance" />
+          <FormControlLabel value={LIKERT_TYPE.likelihood} control={<Radio className={classes.customColor} />} label="Likelihood" />
+          <FormControlLabel value={LIKERT_TYPE.like} control={<Radio className={classes.customColor} />} label="Like" />
         </RadioGroup>
       </div>
     </div>

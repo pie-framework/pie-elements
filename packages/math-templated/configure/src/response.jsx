@@ -14,6 +14,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import { withStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import Delete from '@material-ui/icons/Delete';
+import { color } from '@pie-lib/pie-toolbox/render-ui';
 
 export class Response extends React.Component {
   static propTypes = {
@@ -208,7 +209,8 @@ export class Response extends React.Component {
                 <FormControlLabel
                   label={cAllowTrailingZeros.label}
                   control={
-                    <Checkbox
+                  <Checkbox
+                      className={classes.customColor}
                       checked={allowTrailingZeros}
                       onChange={this.onLiteralOptionsChange('allowTrailingZeros')}
                     />
@@ -219,7 +221,11 @@ export class Response extends React.Component {
               {cIgnoreOrder.enabled && (
                 <FormControlLabel
                   label={cIgnoreOrder.label}
-                  control={<Checkbox checked={ignoreOrder} onChange={this.onLiteralOptionsChange('ignoreOrder')}/>}
+                  control={
+                  <Checkbox
+                      className={classes.customColor}
+                      checked={ignoreOrder}
+                      onChange={this.onLiteralOptionsChange('ignoreOrder')}/>}
                 />
               )}
             </div>
@@ -345,7 +351,10 @@ const styles = (theme) => ({
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-  }
+  },
+  customColor: {
+    color: `${color.tertiary()} !important`
+  },
 });
 
 export default withStyles(styles)(Response);
