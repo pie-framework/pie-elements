@@ -172,7 +172,6 @@ export class Row extends React.Component {
                 />
               ) : (
                   <Checkbox
-                      customClass={classNames(classes.customColor)}
                       onChange={this.onRowValueChange(idx, rowIdx)}
                       checked={rowValue === true}
                       label={''}
