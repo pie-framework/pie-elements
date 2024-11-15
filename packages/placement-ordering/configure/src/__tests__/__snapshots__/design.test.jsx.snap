@@ -49,10 +49,6 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
             "label": "Choices",
             "settings": true,
           },
-          "enableImages": Object {
-            "label": "Enable Images",
-            "settings": true,
-          },
           "feedback": Object {
             "enabled": true,
             "label": "Feedback",
@@ -189,7 +185,6 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
           },
           "Settings": Object {
             "choiceLabelEnabled": undefined,
-            "enableImages": undefined,
             "feedbackEnabled": undefined,
             "language": false,
             "language.enabled": false,
@@ -207,7 +202,6 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
           "choiceLabelEnabled": true,
           "choices": Array [],
           "correctResponse": Array [],
-          "enableImages": false,
           "feedbackEnabled": false,
           "numberedGuides": false,
           "orientation": "vertical",
@@ -541,10 +535,6 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
             "label": "Choices",
             "settings": true,
           },
-          "enableImages": Object {
-            "label": "Enable Images",
-            "settings": true,
-          },
           "feedback": Object {
             "enabled": true,
             "label": "Feedback",
@@ -681,7 +671,6 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
           },
           "Settings": Object {
             "choiceLabelEnabled": undefined,
-            "enableImages": undefined,
             "feedbackEnabled": undefined,
             "language": false,
             "language.enabled": false,
@@ -699,7 +688,6 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
           "choiceLabelEnabled": true,
           "choices": Array [],
           "correctResponse": Array [],
-          "enableImages": false,
           "feedbackEnabled": false,
           "numberedGuides": false,
           "orientation": "vertical",

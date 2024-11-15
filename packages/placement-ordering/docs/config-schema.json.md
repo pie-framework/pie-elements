@@ -581,18 +581,6 @@ Indicates if the item has to be displayed in the Settings Panel
 
 Indicates the label for the item that has to be displayed in the Settings Panel
 
-# `enableImages` (object)
-
-Properties of the `enableImages` object:
-
-## `settings` (boolean)
-
-Indicates if the item has to be displayed in the Settings Panel
-
-## `label` (string)
-
-Indicates the label for the item that has to be displayed in the Settings Panel
-
 # `feedback` (object)
 
 Properties of the `feedback` object:

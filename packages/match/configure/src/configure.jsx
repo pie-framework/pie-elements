@@ -217,7 +217,6 @@ class Configure extends React.Component {
     const {
       baseInputConfiguration = {},
       contentDimensions = {},
-      enableImages = {},
       feedback = {},
       lockChoiceOrder = {},
       maxImageWidth = {},
@@ -259,7 +258,6 @@ class Configure extends React.Component {
     const defaultImageMaxHeight = maxImageHeight && maxImageHeight.prompt;
 
     const panelSettings = {
-      enableImages: enableImages.settings && toggle(enableImages.label),
       partialScoring: partialScoring.settings && toggle(partialScoring.label),
       lockChoiceOrder: lockChoiceOrder.settings && toggle(lockChoiceOrder.label),
       feedbackEnabled: feedback.settings && toggle(feedback.label),
