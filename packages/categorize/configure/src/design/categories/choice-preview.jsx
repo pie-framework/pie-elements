@@ -6,6 +6,7 @@ import { Choice } from '@pie-lib/pie-toolbox/drag';
 import IconButton from '@material-ui/core/IconButton';
 import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
 import { HtmlAndMath } from '@pie-lib/pie-toolbox/render-ui';
+import { color } from '@pie-lib/pie-toolbox/render-ui';
 
 export class ChoicePreview extends React.Component {
   static propTypes = {
@@ -37,7 +38,7 @@ export class ChoicePreview extends React.Component {
             onRemoveChoice={() => this.delete()}
           >
             <HtmlAndMath html={choice?.content} className={`${classes.breakWord}`} />
-            <IconButton color="secondary" aria-label="delete" className={classes.delete} onClick={this.delete}>
+            <IconButton aria-label="delete" className={classNames(classes.delete, classes.customColor)} onClick={this.delete}>
               <RemoveCircleOutlineIcon />
             </IconButton>
           </Choice>
@@ -58,6 +59,9 @@ const styles = () => ({
   breakWord: {
     maxWidth: '90%',
     wordBreak: 'break-all',
+  },
+  customColor: {
+    color: `${color.tertiary()} !important`
   },
 });
 export default withStyles(styles)(ChoicePreview);

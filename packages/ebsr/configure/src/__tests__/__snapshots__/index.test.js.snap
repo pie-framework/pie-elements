@@ -4,7 +4,7 @@ exports[`index createDefaultModel default-snapshot 1`] = `
 Object {
   "partA": Object {
     "choiceMode": "radio",
-    "choicePrefix": "numbers",
+    "choicePrefix": "letters",
     "choices": Array [],
     "choicesLayout": "vertical",
     "feedbackEnabled": false,
@@ -21,7 +21,7 @@ Object {
   },
   "partB": Object {
     "choiceMode": "radio",
-    "choicePrefix": "numbers",
+    "choicePrefix": "letters",
     "choices": Array [],
     "choicesLayout": "vertical",
     "feedbackEnabled": false,
@@ -45,7 +45,7 @@ exports[`index createDefaultModel with-overrides-snapshot 1`] = `
 Object {
   "partA": Object {
     "choiceMode": "radio",
-    "choicePrefix": "numbers",
+    "choicePrefix": "letters",
     "choices": Array [],
     "choicesLayout": "vertical",
     "feedbackEnabled": false,
@@ -62,7 +62,7 @@ Object {
   },
   "partB": Object {
     "choiceMode": "radio",
-    "choicePrefix": "numbers",
+    "choicePrefix": "letters",
     "choices": Array [],
     "choicesLayout": "vertical",
     "feedbackEnabled": false,

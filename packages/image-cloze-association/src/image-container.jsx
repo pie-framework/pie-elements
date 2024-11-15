@@ -21,6 +21,7 @@ class ImageContainer extends Component {
       answerChoiceTransparency,
       responseContainerPadding,
       imageDropTargetPadding,
+      maxResponsePerZone,
     } = this.props;
 
     return (
@@ -54,6 +55,7 @@ class ImageContainer extends Component {
               answerChoiceTransparency={answerChoiceTransparency}
               responseContainerPadding={responseContainerPadding}
               imageDropTargetPadding={imageDropTargetPadding}
+              maxResponsePerZone={maxResponsePerZone}
             />
           );
         })}
@@ -77,6 +79,7 @@ ImageContainer.propTypes = {
   responseAreaFill: PropTypes.string,
   responseContainerPadding: PropTypes.string,
   imageDropTargetPadding: PropTypes.string,
+  maxResponsePerZone: PropTypes.number,
 };
 
 ImageContainer.defaultProps = {

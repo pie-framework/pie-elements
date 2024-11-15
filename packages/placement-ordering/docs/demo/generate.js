@@ -22,7 +22,6 @@ exports.model = (id, element) => ({
   ],
   correctResponse: ['c1', 'c2', 'c3', 'c4'],
   alternateResponses: [{ response: ['c4', 'c3', 'c2', 'c1'] }],
-  enableImages: false,
   feedback: {
     correct: {
       type: 'custom',

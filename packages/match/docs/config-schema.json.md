@@ -187,18 +187,6 @@ Properties of the `undo` object:
 
 Indicates if the plugin is disabled or not
 
-# `enableImages` (object)
-
-Properties of the `enableImages` object:
-
-## `settings` (boolean)
-
-Indicates if the item has to be displayed in the Settings Panel
-
-## `label` (string)
-
-Indicates the label for the item that has to be displayed in the Settings Panel
-
 # `rows` (object)
 
 Properties of the `rows` object:
@@ -1702,18 +1690,6 @@ Currently, only "SVG" is supported.
 
 The icon string. Currently, only "SVG" is supported, so it needs to be a valid svg.
 
-## `ConfigureProp` (object)
-
-Properties of the `ConfigureProp` object:
-
-### `settings` (boolean)
-
-Indicates if the item has to be displayed in the Settings Panel
-
-### `label` (string)
-
-Indicates the label for the item that has to be displayed in the Settings Panel
-
 ## `EditableHtmlPluginConfigure` (object)
 
 Properties of the `EditableHtmlPluginConfigure` object:
@@ -1902,6 +1878,18 @@ Properties of the `undo` object:
 ##### `disabled` (boolean)
 
 Indicates if the plugin is disabled or not
+
+### `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+### `label` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
+
+## `ConfigureProp` (object)
+
+Properties of the `ConfigureProp` object:
 
 ### `settings` (boolean)
 

@@ -6,6 +6,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import Radio from '@material-ui/core/Radio';
 import * as math from 'mathjs';
+import { color } from '@pie-lib/pie-toolbox/render-ui';
 
 // This const will store available tick interval types.
 export const TickIntervals = ['Integer', 'Fraction', 'Decimal'];
@@ -117,7 +118,7 @@ export const Ticks = (props) => {
                 <td className={classes.labelWidth}>
                   <FormControlLabel
                     value="Integer"
-                    control={<Radio checked={ticks.tickIntervalType === 'Integer'} />}
+                    control={<Radio className={classes.customColor} checked={ticks.tickIntervalType === 'Integer'} />}
                     label="Integer"
                     disabled={minorLimits.max < 1}
                   />
@@ -145,7 +146,7 @@ export const Ticks = (props) => {
                 <td className={classes.labelWidth}>
                   <FormControlLabel
                     value="Fraction"
-                    control={<Radio checked={ticks.tickIntervalType === 'Fraction'} />}
+                    control={<Radio className={classes.customColor} checked={ticks.tickIntervalType === 'Fraction'} />}
                     label="Unit Fraction"
                     disabled={minorValues.fraction.length === 0}
                   />
@@ -172,7 +173,7 @@ export const Ticks = (props) => {
                 <td className={classes.labelWidth}>
                   <FormControlLabel
                     value="Decimal"
-                    control={<Radio checked={ticks.tickIntervalType === 'Decimal'} />}
+                    control={<Radio className={classes.customColor} checked={ticks.tickIntervalType === 'Decimal'} />}
                     label="Decimal"
                     disabled={minorValues.decimal.length === 0}
                   />
@@ -254,6 +255,9 @@ const styles = () => ({
   },
   labelWidth: {
     width: '35%',
+  },
+  customColor: {
+    color: `${color.tertiary()} !important`
   },
 });
 export default withStyles(styles)(Ticks);

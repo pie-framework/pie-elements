@@ -235,7 +235,6 @@ class AnswerConfigBlock extends React.Component {
               onChange={this.props.onChange}
               onMoveRow={this.moveRow}
               imageSupport={imageSupport}
-              enableImages={model.enableImages}
               toolbarOpts={toolbarOpts}
               spellCheck={spellCheck}
               error={rowsErrors?.[row.id]}

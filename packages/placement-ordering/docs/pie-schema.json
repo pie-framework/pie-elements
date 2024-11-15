@@ -78,11 +78,6 @@
       },
       "title": "alternateResponses"
     },
-    "enableImages": {
-      "description": "Indicates if the choices editor can use images",
-      "type": "boolean",
-      "title": "enableImages"
-    },
     "feedback": {
       "title": "ComplexFeedbackType",
       "type": "object",

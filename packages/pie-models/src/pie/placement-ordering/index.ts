@@ -58,9 +58,6 @@ export interface PlacementOrderingPie extends PieModel {
   /** Array that contains the correct alternate responses */
   alternateResponses: AlternateResponse[];
 
-  /** Indicates if the choices editor can use images */
-  enableImages?: boolean;
-
   /** Feedback for student answer */
   feedback?: ComplexFeedbackType;
 
@@ -179,11 +176,6 @@ export interface PlacementOrderingConfigure extends PromptConfig, CommonConfigSe
    * Choices configuration
    */
   choices?: EditableHtmlPluginConfigure;
-
-  /**
-   * Numbered Guides configuration
-   */
-  enableImages?: ConfigureProp;
 
   /**
    * Indicates whether feedback is enabled

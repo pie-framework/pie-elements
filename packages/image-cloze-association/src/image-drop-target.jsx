@@ -28,7 +28,8 @@ class ImageDropTarget extends React.Component {
       imageDropTargetPadding,
       // dnd-related props
       connectDropTarget,
-      answerChoiceTransparency
+      answerChoiceTransparency,
+      maxResponsePerZone,
     } = this.props;
     const { shouldHaveSmallPadding } = this.state;
 
@@ -38,7 +39,7 @@ class ImageDropTarget extends React.Component {
     });
 
     const updatedContainerStyle = {
-      padding: responseContainerPadding,
+      padding: maxResponsePerZone === 1 ? '0' : responseContainerPadding,
       ...containerStyle,
       ...(responseAreaFill && { backgroundColor: responseAreaFill })
     };
@@ -105,6 +106,7 @@ ImageDropTarget.propTypes = {
   answerChoiceTransparency: PropTypes.bool,
   responseContainerPadding: PropTypes.string,
   imageDropTargetPadding: PropTypes.string,
+  maxResponsePerZone: PropTypes.number,
 };
 
 ImageDropTarget.defaultProps = {

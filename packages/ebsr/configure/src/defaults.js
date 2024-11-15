@@ -103,7 +103,7 @@ const defaultConfig = {
 
 const partModel = (base) => ({
   choiceMode: 'radio',
-  choicePrefix: 'numbers',
+  choicePrefix: 'letters',
   choices: [],
   choicesLayout: 'vertical',
   feedbackEnabled: false,

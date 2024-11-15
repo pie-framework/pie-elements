@@ -6,7 +6,6 @@
 export default {
   model: {
     choiceMode: 'radio',
-    enableImages: true,
     feedbackEnabled: false,
     headers: ['Column 1', 'Column 2', 'Column 3'],
     layout: 3,
@@ -35,10 +34,6 @@ export default {
         video: { disabled: true },
         image: { disabled: false },
       },
-    },
-    enableImages: {
-      settings: true,
-      label: 'Enable Images',
     },
     feedback: {
       settings: true,

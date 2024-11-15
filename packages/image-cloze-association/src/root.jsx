@@ -307,6 +307,7 @@ class ImageClozeAssociationComponent extends React.Component {
               responseAreaFill={responseAreaFill}
               responseContainerPadding={responseContainerPadding}
               imageDropTargetPadding={imageDropTargetPadding}
+              maxResponsePerZone={maxResponsePerZone}
             />
           </InteractiveSection>
         ) : (
@@ -326,6 +327,7 @@ class ImageClozeAssociationComponent extends React.Component {
               answerChoiceTransparency={answerChoiceTransparency}
               responseContainerPadding={responseContainerPadding}
               imageDropTargetPadding={imageDropTargetPadding}
+              maxResponsePerZone={maxResponsePerZone}
             />
 
             {maxResponsePerZoneWarning && <WarningInfo message={warningMessage} />}

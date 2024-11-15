@@ -255,22 +255,6 @@
         }
       }
     },
-    "enableImages": {
-      "title": "ConfigureProp",
-      "type": "object",
-      "properties": {
-        "settings": {
-          "description": "Indicates if the item has to be displayed in the Settings Panel",
-          "type": "boolean",
-          "title": "settings"
-        },
-        "label": {
-          "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
-          "type": "string",
-          "title": "label"
-        }
-      }
-    },
     "rows": {
       "title": "EditableHtmlPluginConfigure",
       "type": "object",
@@ -2300,22 +2284,6 @@
         "iconType"
       ]
     },
-    "ConfigureProp": {
-      "title": "ConfigureProp",
-      "type": "object",
-      "properties": {
-        "settings": {
-          "description": "Indicates if the item has to be displayed in the Settings Panel",
-          "type": "boolean",
-          "title": "settings"
-        },
-        "label": {
-          "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
-          "type": "string",
-          "title": "label"
-        }
-      }
-    },
     "EditableHtmlPluginConfigure": {
       "title": "EditableHtmlPluginConfigure",
       "type": "object",
@@ -2572,6 +2540,22 @@
             }
           }
         },
+        "settings": {
+          "description": "Indicates if the item has to be displayed in the Settings Panel",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+          "type": "string",
+          "title": "label"
+        }
+      }
+    },
+    "ConfigureProp": {
+      "title": "ConfigureProp",
+      "type": "object",
+      "properties": {
         "settings": {
           "description": "Indicates if the item has to be displayed in the Settings Panel",
           "type": "boolean",

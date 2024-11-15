@@ -1,7 +1,6 @@
 exports.model = (id, element) => ({
   id,
   element,
-  enableImages: true,
   feedback: {
     correct: {
       type: 'none',

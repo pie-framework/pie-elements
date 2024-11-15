@@ -11,6 +11,7 @@ import Delete from '@material-ui/icons/Delete';
 import { DragSource, DropTarget } from 'react-dnd';
 import debug from 'debug';
 import { EditableHtml, DEFAULT_PLUGINS } from '@pie-lib/pie-toolbox/editable-html';
+import { color } from '@pie-lib/pie-toolbox/render-ui';
 
 const log = debug('@pie-element:categorize:configure:choice');
 
@@ -39,7 +40,6 @@ export class Row extends React.Component {
       delete: PropTypes.func.isRequired,
     }),
     inputConfiguration: PropTypes.object,
-    enableImages: PropTypes.bool,
     toolbarOpts: PropTypes.object,
     error: PropTypes.string,
     spellCheck: PropTypes.bool,
@@ -116,7 +116,6 @@ export class Row extends React.Component {
       row,
       idx,
       inputConfiguration = {},
-      enableImages,
       toolbarOpts,
       spellCheck,
       error,
@@ -165,17 +164,17 @@ export class Row extends React.Component {
             <div key={rowIdx} className={classes.rowItem}>
               {model.choiceMode === 'radio' ? (
                 <Radio
-                  className={classNames(classes.radioButton, { [classes.errorResponse]: error?.includes('No correct response defined.') })}
+                  className={classNames(classes.radioButton, classes.customColor, { [classes.errorResponse]: error?.includes('No correct response defined.') })}
                   onChange={this.onRowValueChange(idx, rowIdx)}
                   checked={rowValue === true}
                 />
               ) : (
-                <Checkbox
-                  onChange={this.onRowValueChange(idx, rowIdx)}
-                  checked={rowValue === true}
-                  label={''}
-                  error={error?.includes('No correct response defined.')}
-                />
+                  <Checkbox
+                      onChange={this.onRowValueChange(idx, rowIdx)}
+                      checked={rowValue === true}
+                      label={''}
+                      error={error?.includes('No correct response defined.')}
+                  />
               )}
             </div>
           ))}
@@ -242,6 +241,9 @@ const styles = (theme) => ({
     '& input': {
       width: '100% !important',
     },
+  },
+  customColor: {
+    color: `${color.tertiary()} !important`
   },
   deleteIcon: {
     flex: 0.5,

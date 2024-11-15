@@ -6,6 +6,8 @@ import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { withStyles } from '@material-ui/core/styles';
+import { color } from '@pie-lib/pie-toolbox/render-ui';
+import classNames from 'classnames';
 
 const styles = {
   root: {
@@ -15,7 +17,10 @@ const styles = {
     '&:hover': {
       background: 'var(--pie-secondary-background, rgba(241,241,241,1))'
     }
-  }
+  },
+  customColor: {
+    color: `${color.tertiary()} !important`
+  },
 };
 const rubricLabels = {
   [RUBRIC_TYPES.MULTI_TRAIT_RUBRIC]: 'Multi Trait Rubric',
@@ -128,7 +133,7 @@ export class Main extends React.Component {
               <FormControlLabel
                 key={i}
                 value={availableRubric}
-                control={<Radio checked={rubricType === availableRubric} />}
+                control={<Radio className={classes.customColor} checked={rubricType === availableRubric} />}
                 label={rubricLabels[availableRubric]}
                 classes={{ root: classes.root }}
             />

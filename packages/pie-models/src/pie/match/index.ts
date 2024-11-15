@@ -35,11 +35,6 @@ export interface MatchRow {
  * @additionalProperties false
  */
 export interface MatchPie extends PieModel {
-  /** Indicates if questions can contain images
-   * @Deprecated since we added rows.inputConfiguration
-   * */
-  enableImages?: boolean;
-
   /** Feedback for student responses */
   feedback?: ComplexFeedbackType;
 
@@ -134,11 +129,6 @@ export interface MatchConfigure extends PromptConfig, CommonConfigSettings {
    * E.g. audio, video, image
    */
   baseInputConfiguration?: EditableHtmlConfigureProp;
-
-  /**
-   * Configuration for enable images
-   */
-  enableImages?: ConfigureProp;
 
   /**
    * Configuration for html input configuration regarding plugins that are enabled/disabled

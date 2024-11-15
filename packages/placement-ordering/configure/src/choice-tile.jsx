@@ -107,7 +107,7 @@ export class ChoiceTile extends React.Component {
 
           {editable && (
             <div className={classes.controls}>
-              <IconButton color="default" onClick={onDelete}>
+              <IconButton className={classes.customColor} onClick={onDelete}>
                 <RemoveCircle classes={{ root: classes.removeCircle }} />
               </IconButton>
             </div>
@@ -159,6 +159,9 @@ const Styled = withStyles((theme) => ({
     top: 0,
     fontSize: theme.typography.fontSize - 2,
     color: color.disabled(),
+  },
+  customColor: {
+    color: `${color.tertiary()} !important`
   },
 }))(ChoiceTile);
 
