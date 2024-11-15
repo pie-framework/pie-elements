@@ -110,13 +110,6 @@ export class Tile extends React.Component {
     guideIndex: PropTypes.number,
   };
 
-  componentDidMount() {
-    // Workaround for Chrome's rendering issue post version 106.
-    // Adding 'translateZ(0)' forces the browser to use hardware-accelerated rendering
-    // which fixes the issue of disappearing elements during drag and drop.
-    document.body.style.transform = 'translateZ(0)';
-  }
-
   render() {
     const {
       label,
