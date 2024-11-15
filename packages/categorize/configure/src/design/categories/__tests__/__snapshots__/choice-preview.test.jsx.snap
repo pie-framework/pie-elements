@@ -20,7 +20,7 @@ exports[`ChoicePreview snapshot renders 1`] = `
     />
     <WithStyles(IconButton)
       aria-label="delete"
-      color="secondary"
+      className=""
       onClick={[Function]}
     >
       <pure(RemoveCircleOutlineIcon) />
