@@ -10,6 +10,11 @@ jest.mock('@pie-lib/pie-toolbox/config-ui', () => ({
     radio: jest.fn(),
   },
 }));
+jest.mock('@pie-lib/pie-toolbox/render-ui', () => ({
+  color: {
+    tertiary: jest.fn(() => '#146EB3'),
+  },
+}));
 
 const model = () => ({ ...defaults.model });
 

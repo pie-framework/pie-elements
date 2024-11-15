@@ -4,6 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { Chart } from '@pie-lib/pie-toolbox/charting';
 import { AlertDialog } from '@pie-lib/pie-toolbox/config-ui';
 import Checkbox from '@material-ui/core/Checkbox';
+import { color } from '@pie-lib/pie-toolbox/render-ui';
 
 import Typography from '@material-ui/core/Typography';
 
@@ -18,6 +19,9 @@ const styles = (theme) => ({
   },
   column: {
     flex: 1,
+  },
+  customColor: {
+    color: `${color.tertiary()} !important`
   },
 });
 
@@ -173,6 +177,7 @@ export class ChartingConfig extends React.Component {
             {model.changeAddCategoryEnabled && (
               <div>
                 <Checkbox
+                  className={classes.customColor}
                   checked={model.addCategoryEnabled}
                   onChange={(e) => {
                     this.changeAddRemoveEnabled(e.target.checked);

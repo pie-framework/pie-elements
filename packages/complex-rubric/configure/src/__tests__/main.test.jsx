@@ -9,6 +9,11 @@ jest.mock('@pie-lib/pie-toolbox/config-ui', () => ({
     ConfigLayout: (props) => <div>{props.children}</div>,
   },
 }));
+jest.mock('@pie-lib/pie-toolbox/render-ui', () => ({
+  color: {
+    tertiary: jest.fn(() => '#146EB3'),
+  },
+}));
 
 jest.mock('@pie-lib/pie-toolbox/rubric', () => ({
   RUBRIC_TYPES: {
