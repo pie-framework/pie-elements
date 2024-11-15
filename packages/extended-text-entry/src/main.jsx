@@ -175,6 +175,9 @@ export class Main extends React.Component {
               audio: {
                 disabled: true,
               },
+              table: {
+                disabled: true,
+              },
             }}
             languageCharactersProps={languageCharactersProps}
           />
