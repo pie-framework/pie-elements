@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.38.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.38.0...@pie-element/pie-models@13.38.1) (2024-11-15)
+
+
+### Bug Fixes
+
+* **match, placement-ordering:** remove deprecated "enableImages" property that is no longer used PD-4261 ([ffac042](https://github.com/pie-framework/pie-elements/commit/ffac0421dda668d2b37ec0519e9f51cd9d1d55a9))
+
+
+
+
+
 # [13.38.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.37.1...@pie-element/pie-models@13.38.0) (2024-10-29)
 
 

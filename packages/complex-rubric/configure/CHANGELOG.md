@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric-configure@2.3.1...@pie-element/complex-rubric-configure@2.4.0) (2024-11-15)
+
+
+### Features
+
+* **complex-rubric:** update failing tests PD-4334 ([b3ce908](https://github.com/pie-framework/pie-elements/commit/b3ce908158da8e0bee236b2edad5b156ab750ece))
+* Adjust all elements to support custom color for controls in authoring PD-4334 ([d6b3dc5](https://github.com/pie-framework/pie-elements/commit/d6b3dc5963824d0a1ce7bf36a8c590e27761c86c))
+
+
+
+
+
 ## [2.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric-configure@2.3.0...@pie-element/complex-rubric-configure@2.3.1) (2024-11-01)
 
 **Note:** Version bump only for package @pie-element/complex-rubric-configure

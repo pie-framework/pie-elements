@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@3.2.1...@pie-element/complex-rubric@3.3.0) (2024-11-15)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4401, PD-4441, PD-4319, PD-4394, PD-3687 ([f1f0af3](https://github.com/pie-framework/pie-elements/commit/f1f0af31f3c6fba54ca3a378dea3b8b32d8ebb87))
+
+
+### Features
+
+* **complex-rubric:** update failing tests PD-4334 ([b3ce908](https://github.com/pie-framework/pie-elements/commit/b3ce908158da8e0bee236b2edad5b156ab750ece))
+* Adjust all elements to support custom color for controls in authoring PD-4334 ([d6b3dc5](https://github.com/pie-framework/pie-elements/commit/d6b3dc5963824d0a1ce7bf36a8c590e27761c86c))
+
+
+
+
+
 ## [3.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/complex-rubric@3.2.0...@pie-element/complex-rubric@3.2.1) (2024-11-01)
 
 

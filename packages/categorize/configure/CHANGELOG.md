@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@8.1.1...@pie-element/categorize-configure@8.2.0) (2024-11-15)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4401, PD-4441, PD-4319, PD-4394, PD-3687 ([f1f0af3](https://github.com/pie-framework/pie-elements/commit/f1f0af31f3c6fba54ca3a378dea3b8b32d8ebb87))
+
+
+### Features
+
+* Adjust all elements to support custom color for controls in authoring PD-4334 ([d6b3dc5](https://github.com/pie-framework/pie-elements/commit/d6b3dc5963824d0a1ce7bf36a8c590e27761c86c))
+* update snapshots PD-4334 ([7094224](https://github.com/pie-framework/pie-elements/commit/7094224b5e467fa46237476d07770f84bccbf735))
+
+
+
+
+
 ## [8.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@8.1.0...@pie-element/categorize-configure@8.1.1) (2024-11-01)
 
 
