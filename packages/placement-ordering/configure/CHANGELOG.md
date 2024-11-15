@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-configure@8.1.1...@pie-element/placement-ordering-configure@8.2.0) (2024-11-15)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4401, PD-4441, PD-4319, PD-4394, PD-3687 ([f1f0af3](https://github.com/pie-framework/pie-elements/commit/f1f0af31f3c6fba54ca3a378dea3b8b32d8ebb87))
+* **match, placement-ordering:** remove deprecated "enableImages" property that is no longer used PD-4261 ([ffac042](https://github.com/pie-framework/pie-elements/commit/ffac0421dda668d2b37ec0519e9f51cd9d1d55a9))
+
+
+### Features
+
+* Adjust all elements to support custom color for controls in authoring PD-4334 ([d6b3dc5](https://github.com/pie-framework/pie-elements/commit/d6b3dc5963824d0a1ce7bf36a8c590e27761c86c))
+
+
+
+
+
 ## [8.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-configure@8.1.0...@pie-element/placement-ordering-configure@8.1.1) (2024-11-01)
 
 

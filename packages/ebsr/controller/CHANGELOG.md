@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.1.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-controller@8.1.1...@pie-element/ebsr-controller@8.1.2) (2024-11-15)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4401, PD-4441, PD-4319, PD-4394, PD-3687 ([f1f0af3](https://github.com/pie-framework/pie-elements/commit/f1f0af31f3c6fba54ca3a378dea3b8b32d8ebb87))
+* **ebsr:** change default choicePrefix to letters instead of numbers PD-4447 ([cada8fb](https://github.com/pie-framework/pie-elements/commit/cada8fb841b11de9c22f0d11069720ba8052746c))
+
+
+
+
+
 ## [8.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-controller@8.1.0...@pie-element/ebsr-controller@8.1.1) (2024-11-01)
 
 

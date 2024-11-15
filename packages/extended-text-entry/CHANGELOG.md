@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@11.2.1...@pie-element/extended-text-entry@11.3.0) (2024-11-15)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4401, PD-4441, PD-4319, PD-4394, PD-3687 ([f1f0af3](https://github.com/pie-framework/pie-elements/commit/f1f0af31f3c6fba54ca3a378dea3b8b32d8ebb87))
+
+
+### Features
+
+* **extended-text-entry:** disable table from editable-html toolbar PD-4329 ([5b1ad15](https://github.com/pie-framework/pie-elements/commit/5b1ad1509cfe652b26a7181d857f5906f1bebdd8))
+* **extended-text-entry:** disable table just for gathering view & update snapshots PD-4329 ([1240810](https://github.com/pie-framework/pie-elements/commit/12408104e33df0f830f5e33578527d035dde5cbf))
+
+
+
+
+
 ## [11.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@11.2.0...@pie-element/extended-text-entry@11.2.1) (2024-11-01)
 
 

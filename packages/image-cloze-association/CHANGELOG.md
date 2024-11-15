@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.2.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@6.2.1...@pie-element/image-cloze-association@6.2.2) (2024-11-15)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4401, PD-4441, PD-4319, PD-4394, PD-3687 ([f1f0af3](https://github.com/pie-framework/pie-elements/commit/f1f0af31f3c6fba54ca3a378dea3b8b32d8ebb87))
+* **ica:** Misalignment of answer choices and response areas PD-4386 ([c89b494](https://github.com/pie-framework/pie-elements/commit/c89b49441b65ea4c87091ff2fecdb74a5d9b0f38))
+
+
+
+
+
 ## [6.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@6.2.0...@pie-element/image-cloze-association@6.2.1) (2024-11-01)
 
 
