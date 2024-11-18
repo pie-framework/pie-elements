@@ -90,10 +90,19 @@ class CircleComponent extends React.Component {
       }
     }
 
+    const useHoveredStyle = hovered && hoverOutlineColor;
+
     return (
       <Group scaleX={scale} scaleY={scale}>
-        {hoverOutlineColor && hovered && (
-          <Circle radius={radius} x={x} y={y} stroke={hoverOutlineColor} strokeWidth={2} listening={false} />
+        {useHoveredStyle && (
+          <Circle
+            radius={radius}
+            x={x}
+            y={y}
+            stroke={selected ? outlineColor : hoverOutlineColor}
+            strokeWidth={selected ? outlineWidth : 2}
+            listening={false}
+          />
         )}
         <Circle
           classes={classes.base}
@@ -102,8 +111,8 @@ class CircleComponent extends React.Component {
           onClick={this.handleClick}
           onTap={this.handleClick}
           draggable={false}
-          stroke={hovered && hoverOutlineColor ? 'transparent' : outlineColorParsed}
-          strokeWidth={!(hovered && hoverOutlineColor) ? outlineWidth : 0}
+          stroke={useHoveredStyle ? 'transparent' : outlineColorParsed}
+          strokeWidth={useHoveredStyle ? 0 : outlineWidth}
           onMouseLeave={this.handleMouseLeave}
           onMouseEnter={this.handleMouseEnter}
           x={x}
