@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.1.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-controller@6.1.2...@pie-element/select-text-controller@6.1.3) (2024-11-19)
+
+
+### Bug Fixes
+
+* **select-text:** allow students to select multiple answers when maxSelection is missing from the model PD-4450 ([65dcdc1](https://github.com/pie-framework/pie-elements/commit/65dcdc1e4049e66aa707e01f4212c3d14efb0e4d))
+
+
+
+
+
 ## [6.1.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-controller@6.1.1...@pie-element/select-text-controller@6.1.2) (2024-11-15)
 
 

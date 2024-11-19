@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-configure@7.2.0...@pie-element/match-configure@7.2.1) (2024-11-19)
+
+
+### Bug Fixes
+
+* **match:** correct logic for setting inputConfiguration to Rows PD-4486 ([9d5871b](https://github.com/pie-framework/pie-elements/commit/9d5871b2a61459ad46f363c252fd2a6f9e4bf52d))
+
+
+
+
+
 # [7.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-configure@7.1.1...@pie-element/match-configure@7.2.0) (2024-11-15)
 
 
