@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@8.3.0...@pie-element/match@8.3.1) (2024-11-19)
+
+
+### Bug Fixes
+
+* **match:** correct logic for setting inputConfiguration to Rows PD-4486 ([9d5871b](https://github.com/pie-framework/pie-elements/commit/9d5871b2a61459ad46f363c252fd2a6f9e4bf52d))
+
+
+
+
+
 # [8.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@8.2.1...@pie-element/match@8.3.0) (2024-11-15)
 
 
