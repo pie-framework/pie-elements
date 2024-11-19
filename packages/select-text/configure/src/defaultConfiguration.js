@@ -2,7 +2,7 @@ export default {
   model: {
     feedbackEnabled: false,
     highlightChoices: false,
-    maxSelections: 2,
+    maxSelections: 0,
     mode: 'sentence',
     partialScoring: false,
     prompt: '',
