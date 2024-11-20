@@ -14,11 +14,11 @@ const isEnabled = (value, defaultValue) => (checkNullish(value) ? value : defaul
 const preparePrintPassage = (model, opts) => {
   const isInstructor = opts.role === 'instructor';
 
-  // TODO: also update '../../controller/src/defaults.js' when updating defaultValue
+  // TODO: also update '../../configure/src/defaults.js' and '../../controller/src/defaults.js' when updating defaultValue
   const teacherInstructionsEnabled = isEnabled(model.teacherInstructionsEnabled, true);
-  const titleEnabled = isEnabled(model.titleEnabled, false);
+  const titleEnabled = isEnabled(model.titleEnabled, true);
   const authorEnabled = isEnabled(model.authorEnabled, false);
-  const subtitleEnabled = isEnabled(model.subtitleEnabled, false);
+  const subtitleEnabled = isEnabled(model.subtitleEnabled, true);
   const textEnabled = isEnabled(model.textEnabled, true);
 
   return model.passages.map((passage, index) => ({
