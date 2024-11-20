@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage-configure@2.1.2...@pie-element/passage-configure@2.1.3) (2024-11-20)
+
+
+### Bug Fixes
+
+* **passage:** enable title and subtitle from controller by default PD-4515 ([954091c](https://github.com/pie-framework/pie-elements/commit/954091cf92cad508ad3b7200f40c92951752ec0d))
+
+
+
+
+
 ## [2.1.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage-configure@2.1.1...@pie-element/passage-configure@2.1.2) (2024-11-15)
 
 
