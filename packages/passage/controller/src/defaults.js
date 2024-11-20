@@ -1,6 +1,6 @@
-// TODO: also update '../../src/print.js' when updating defaults
+// TODO: also update '../../configure/src/defaults.js' and '../../src/print.js' when updating defaults
 export default {
-  authorEnabled: false,
+  authorEnabled: false, // TODO: should be set to true when all Studio content is updated
   passages: [
     {
       teacherInstructions: '',
@@ -10,8 +10,8 @@ export default {
       text: '',
     },
   ],
-  subtitleEnabled: false,
+  subtitleEnabled: true,
   teacherInstructionsEnabled: true,
   textEnabled: true,
-  titleEnabled: false,
+  titleEnabled: true,
 };
