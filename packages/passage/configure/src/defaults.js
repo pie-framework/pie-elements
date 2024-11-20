@@ -1,3 +1,4 @@
+// TODO: also update '../../controller/src/defaults.js' and '../../src/print.js' when updating defaults
 export default {
   model: {
     authorEnabled: true,
