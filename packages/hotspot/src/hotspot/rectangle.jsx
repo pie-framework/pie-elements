@@ -105,17 +105,18 @@ class RectComponent extends React.Component {
     }
 
     const { hovered } = this.state;
+    const useHoveredStyle = hovered && hoverOutlineColor;
 
     return (
       <Group scaleX={scale} scaleY={scale}>
-        {hoverOutlineColor && hovered && (
+        {useHoveredStyle && (
           <Rect
             x={x}
             y={y}
             width={width}
             height={height}
-            stroke={hoverOutlineColor}
-            strokeWidth={2}
+            stroke={selected ? 'transparent' : hoverOutlineColor}
+            strokeWidth={strokeWidth}
             listening={false}
           />
         )}
@@ -127,8 +128,8 @@ class RectComponent extends React.Component {
           onClick={this.handleClick}
           onTap={this.handleClick}
           draggable={false}
-          stroke={hovered && hoverOutlineColor ? 'transparent' : outlineColorParsed}
-          strokeWidth={!(hovered && hoverOutlineColor) ? outlineWidth : 0}
+          stroke={useHoveredStyle && !selected ? 'transparent' : outlineColorParsed}
+          strokeWidth={useHoveredStyle && !selected ? 0 : outlineWidth}
           onMouseLeave={this.handleMouseLeave}
           onMouseEnter={this.handleMouseEnter}
           x={x}
