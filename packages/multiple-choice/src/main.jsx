@@ -30,11 +30,11 @@ class Main extends React.Component {
 
   render() {
     const { model, onChoiceChanged, session, onShowCorrectToggle } = this.props;
-    const { extraCSSRules } = model;
+    const { extraCSSRules, fontSizeFactor } = model;
 
     // model.partLabel is a property used for ebsr
     return (
-      <PreviewLayout extraCSSRules={extraCSSRules}>
+      <PreviewLayout extraCSSRules={extraCSSRules} fontSizeFactor={fontSizeFactor}>
         <MultipleChoice
           {...model}
           session={session}
