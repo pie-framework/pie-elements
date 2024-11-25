@@ -239,6 +239,8 @@ class ImageClozeAssociationComponent extends React.Component {
     } = this.state;
     const isEvaluateMode = mode === 'evaluate';
     const showToggle = isEvaluateMode && !responseCorrect;
+    const { possibilityListPosition = 'bottom' } = uiStyle || {};
+    const isVertical = possibilityListPosition === 'left' || possibilityListPosition === 'right';
 
     const { validResponse } = validation || {};
     const correctAnswers = [];
@@ -339,7 +341,11 @@ class ImageClozeAssociationComponent extends React.Component {
               onDragBegin={this.beginDrag}
               onDragEnd={this.handleOnDragEnd}
               answerChoiceTransparency={answerChoiceTransparency}
-              customStyle={{ minWidth: image?.width || 'fit-content' }}
+              customStyle={{
+                minWidth: isVertical ? '130px' : image?.width || 'fit-content',
+              }}
+              isVertical={isVertical}
+              minHeight={isVertical ? image?.height : undefined}
             />
           </InteractiveSection>
         )}
