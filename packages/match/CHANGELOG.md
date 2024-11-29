@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.3.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@8.3.1...@pie-element/match@8.3.2) (2024-11-29)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4387, PD-4388 ([0416caf](https://github.com/pie-framework/pie-elements/commit/0416caf1188a62367a893c1e2bcfd138303c1d6d))
+
+
+
+
+
 ## [8.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@8.3.0...@pie-element/match@8.3.1) (2024-11-19)
 
 

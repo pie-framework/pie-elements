@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@6.2.2...@pie-element/image-cloze-association@6.3.0) (2024-11-29)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4387, PD-4388 ([0416caf](https://github.com/pie-framework/pie-elements/commit/0416caf1188a62367a893c1e2bcfd138303c1d6d))
+
+
+### Features
+
+* **image-cloze-association:** style choice pool based on possibilityListPosition left or right PD-4387 ([7c3593d](https://github.com/pie-framework/pie-elements/commit/7c3593d8d9d53e21dd25f34ccd2b084e46f7ea56))
+
+
+
+
+
 ## [6.2.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@6.2.1...@pie-element/image-cloze-association@6.2.2) (2024-11-15)
 
 

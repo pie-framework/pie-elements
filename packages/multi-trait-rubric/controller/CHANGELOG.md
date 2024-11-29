@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-controller@3.0.9...@pie-element/multi-trait-rubric-controller@3.0.10) (2024-11-29)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4387, PD-4388 ([0416caf](https://github.com/pie-framework/pie-elements/commit/0416caf1188a62367a893c1e2bcfd138303c1d6d))
+
+
+
+
+
 ## [3.0.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-controller@3.0.8...@pie-element/multi-trait-rubric-controller@3.0.9) (2024-11-15)
 
 
