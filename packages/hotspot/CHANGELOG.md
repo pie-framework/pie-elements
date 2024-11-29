@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.2.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@7.2.2...@pie-element/hotspot@7.2.3) (2024-11-29)
+
+
+### Bug Fixes
+
+* remove unwanted changes ([e69ef23](https://github.com/pie-framework/pie-elements/commit/e69ef239c3dbc0525c6999bd2511cedc822f514e))
+* update pie-lib/pie-toolbox PD-4387, PD-4388 ([0416caf](https://github.com/pie-framework/pie-elements/commit/0416caf1188a62367a893c1e2bcfd138303c1d6d))
+* **hotspot:** use rectangular shape for all hover shapes, show select outline when hover is in effect and selected PD-4492, PD-4367 ([263d85d](https://github.com/pie-framework/pie-elements/commit/263d85d7ac5cf5ed65336935bafc61649cab3efc))
+
+
+
+
+
 ## [7.2.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@7.2.1...@pie-element/hotspot@7.2.2) (2024-11-15)
 
 

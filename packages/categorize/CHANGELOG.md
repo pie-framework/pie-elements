@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@9.3.0...@pie-element/categorize@9.4.0) (2024-11-29)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4387, PD-4388 ([0416caf](https://github.com/pie-framework/pie-elements/commit/0416caf1188a62367a893c1e2bcfd138303c1d6d))
+
+
+### Features
+
+* **categorize:** add minRowHeight on model PD-4368 ([91ac600](https://github.com/pie-framework/pie-elements/commit/91ac60060cf3b6a267f8d7ef83fb7f4be10f5995))
+* **categorize:** add minRowHeight on model PD-4368 ([a4cbbd1](https://github.com/pie-framework/pie-elements/commit/a4cbbd1c549670c16bb834c23ecd8f49fcc0649c))
+
+
+
+
+
 # [9.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@9.2.1...@pie-element/categorize@9.3.0) (2024-11-15)
 
 

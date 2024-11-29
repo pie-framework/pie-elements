@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@6.2.2...@pie-element/drag-in-the-blank@6.3.0) (2024-11-29)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4387, PD-4388 ([0416caf](https://github.com/pie-framework/pie-elements/commit/0416caf1188a62367a893c1e2bcfd138303c1d6d))
+
+
+### Features
+
+* **multiple-choice, drag-in-the-blank:** send fontSizeFactor to ui layout component PD-4388 ([cf65bdb](https://github.com/pie-framework/pie-elements/commit/cf65bdbd16200af928d6e6c221cb223293644ed2))
+
+
+
+
+
 ## [6.2.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@6.2.1...@pie-element/drag-in-the-blank@6.2.2) (2024-11-15)
 
 
