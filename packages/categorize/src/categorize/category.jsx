@@ -19,12 +19,13 @@ export class Category extends React.Component {
     classes: PropTypes.object.isRequired,
     onDropChoice: PropTypes.func,
     onRemoveChoice: PropTypes.func,
+    minRowHeight: PropTypes.string,
   };
 
   static defaultProps = {};
 
   render() {
-    const { classes, className, choices = [], disabled, onDropChoice, onRemoveChoice, id, correct } = this.props;
+    const { classes, className, choices = [], disabled, onDropChoice, onRemoveChoice, id, correct, minRowHeight } = this.props;
 
     const names = classNames(classes.category, className);
     const placeholderNames = classNames(classes.placeholder, correct === false && classes.incorrect,
@@ -32,7 +33,7 @@ export class Category extends React.Component {
 
     return (
       <div className={names}>
-        <PlaceHolder onDropChoice={onDropChoice} disabled={disabled} className={placeholderNames}>
+        <PlaceHolder onDropChoice={onDropChoice} disabled={disabled} className={placeholderNames} minRowHeight={minRowHeight}>
           {choices.map((c, index) => (
             <Choice
               onRemoveChoice={onRemoveChoice}
@@ -57,7 +58,6 @@ const styles = (theme) => ({
     border: `solid 2px ${color.correct()}`
   },
   placeholder: {
-    minHeight: '80px',
     padding: theme.spacing.unit / 2,
     borderRadius: theme.spacing.unit / 2,
     gridColumnGap: 0,

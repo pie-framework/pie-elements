@@ -16,6 +16,7 @@ export class DroppablePlaceholder extends React.Component {
     className: PropTypes.string,
     grid: PropTypes.object,
     disabled: PropTypes.bool,
+    minRowHeight: PropTypes.string,
   };
   render() {
     const {
@@ -25,11 +26,12 @@ export class DroppablePlaceholder extends React.Component {
       className,
       grid,
       disabled,
-      choiceBoard
+      choiceBoard,
+      minRowHeight
     } = this.props;
 
     return connectDropTarget(
-      <div style={{ flex: 1 }}>
+      <div style={{ flex: 1, minHeight: minRowHeight || '80px' }}>
         <PlaceHolder
           className={className}
           isOver={isOver}

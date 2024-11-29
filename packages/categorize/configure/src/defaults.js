@@ -23,6 +23,7 @@ export default {
     studentInstructionsEnabled: true,
     teacherInstructionsEnabled: true,
     toolbarEditorPosition: 'bottom',
+    minRowHeight: '80px',
   },
   configuration: {
     baseInputConfiguration: {
