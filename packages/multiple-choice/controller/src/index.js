@@ -89,6 +89,7 @@ export async function model(question, session, env, updateSession) {
     responseCorrect: env.mode === 'evaluate' ? isResponseCorrect(normalizedQuestion, session) : undefined,
     language: normalizedQuestion.language,
     extraCSSRules: normalizedQuestion.extraCSSRules,
+    fontSizeFactor: normalizedQuestion.fontSizeFactor,
   };
 
   const { role, mode } = env || {};

@@ -5,6 +5,7 @@ exports[`droppable-placeholder snapshot className 1`] = `
   style={
     Object {
       "flex": 1,
+      "minHeight": "80px",
     }
   }
 >
@@ -22,6 +23,7 @@ exports[`droppable-placeholder snapshot disabled 1`] = `
   style={
     Object {
       "flex": 1,
+      "minHeight": "80px",
     }
   }
 >
@@ -39,6 +41,7 @@ exports[`droppable-placeholder snapshot grid 1`] = `
   style={
     Object {
       "flex": 1,
+      "minHeight": "80px",
     }
   }
 >
@@ -60,6 +63,7 @@ exports[`droppable-placeholder snapshot renders 1`] = `
   style={
     Object {
       "flex": 1,
+      "minHeight": "80px",
     }
   }
 >

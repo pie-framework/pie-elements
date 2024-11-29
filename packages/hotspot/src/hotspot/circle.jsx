@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Circle, Group } from 'react-konva';
+import { Circle, Group, Rect } from 'react-konva';
 import { withStyles } from '@material-ui/core/styles';
 import { ImageComponent } from '@pie-lib/pie-toolbox/icons';
 import { faCorrect, faWrong } from './icons';
@@ -90,10 +90,19 @@ class CircleComponent extends React.Component {
       }
     }
 
+    const useHoveredStyle = hovered && hoverOutlineColor;
+
     return (
       <Group scaleX={scale} scaleY={scale}>
-        {hoverOutlineColor && hovered && (
-          <Circle radius={radius} x={x} y={y} stroke={hoverOutlineColor} strokeWidth={2} listening={false} />
+        {useHoveredStyle && (
+          <Rect
+            x={x - radius}
+            y={y - radius}
+            width={radius * 2}
+            height={radius * 2}
+            stroke={selected ? 'transparent' : hoverOutlineColor}
+            strokeWidth={strokeWidth}
+          />
         )}
         <Circle
           classes={classes.base}
@@ -102,8 +111,8 @@ class CircleComponent extends React.Component {
           onClick={this.handleClick}
           onTap={this.handleClick}
           draggable={false}
-          stroke={hovered && hoverOutlineColor ? 'transparent' : outlineColorParsed}
-          strokeWidth={!(hovered && hoverOutlineColor) ? outlineWidth : 0}
+          stroke={useHoveredStyle && !selected ? 'transparent' : outlineColorParsed}
+          strokeWidth={useHoveredStyle && !selected ? 0 : outlineWidth}
           onMouseLeave={this.handleMouseLeave}
           onMouseEnter={this.handleMouseEnter}
           x={x}

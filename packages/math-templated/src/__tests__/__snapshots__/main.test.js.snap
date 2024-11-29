@@ -151,9 +151,15 @@ exports[`Main component Match Snapshot 1`] = `
           }
         }
         extraCSSRules={Object {}}
+        fontSizeFactor={1}
       >
         <div
           className="Main-mainContainer-1 UiLayout-extraCSSRules-25"
+          style={
+            Object {
+              "fontSize": "NaNpx",
+            }
+          }
         >
           <div
             className="Main-main-7"

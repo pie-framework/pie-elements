@@ -32,12 +32,12 @@ export class Main extends React.Component {
   render() {
     const { showCorrectAnswer } = this.state;
     const { model, onChange, value, classes } = this.props;
-    const { extraCSSRules, prompt, mode, language } = model;
+    const { extraCSSRules, prompt, mode, language, fontSizeFactor } = model;
     const modelWithValue = { ...model, value };
     const showCorrectAnswerToggle = mode === 'evaluate';
 
     return (
-      <UiLayout extraCSSRules={extraCSSRules} className={classes.mainContainer}>
+      <UiLayout extraCSSRules={extraCSSRules} className={classes.mainContainer} fontSizeFactor={fontSizeFactor}>
         {model.teacherInstructions && hasText(model.teacherInstructions) && (
           <Collapsible
             className={classes.collapsible}

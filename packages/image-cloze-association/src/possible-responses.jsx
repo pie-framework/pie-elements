@@ -15,23 +15,31 @@ const PossibleResponses = ({
   onDragEnd,
   answerChoiceTransparency,
   customStyle,
-}) => (
-  <div className={classes.base} style={customStyle}>
-    <ICADroppablePlaceholder classes={classes.pool} disabled={!canDrag} onRemoveAnswer={onAnswerRemove}>
-      {(data || []).map((item) => (
-        <PossibleResponse
-          canDrag={canDrag}
-          key={item.id}
-          data={item}
-          onDragBegin={onDragBegin}
-          onDragEnd={onDragEnd}
-          answerChoiceTransparency={answerChoiceTransparency}
-          containerStyle={{ margin: '4px' }}
-        />
-      ))}
-    </ICADroppablePlaceholder>
-  </div>
-);
+  isVertical,
+  minHeight
+}) =>
+  (
+    <div className={classes.base} style={customStyle}>
+      <ICADroppablePlaceholder
+        classes={classes.pool}
+        disabled={!canDrag}
+        onRemoveAnswer={onAnswerRemove}
+        isVerticalPool={isVertical}
+        minHeight={minHeight}>
+        {(data || []).map((item) => (
+          <PossibleResponse
+            canDrag={canDrag}
+            key={item.id}
+            data={item}
+            onDragBegin={onDragBegin}
+            onDragEnd={onDragEnd}
+            answerChoiceTransparency={answerChoiceTransparency}
+            containerStyle={{ margin: '4px' }}
+          />
+        ))}
+      </ICADroppablePlaceholder>
+    </div>
+  );
 
 PossibleResponses.propTypes = {
   canDrag: PropTypes.bool.isRequired,
@@ -42,6 +50,8 @@ PossibleResponses.propTypes = {
   onDragEnd: PropTypes.func.isRequired,
   answerChoiceTransparency: PropTypes.bool,
   customStyle: PropTypes.object,
+  isVertical: PropTypes.bool,
+  minHeight: PropTypes.number
 };
 
 PossibleResponses.defaultProps = {

@@ -32,7 +32,7 @@ export class Categories extends React.Component {
 
   render() {
     const { classes, categories, model, disabled, onDropChoice, onRemoveChoice, rowLabels } = this.props;
-    const { categoriesPerRow } = model;
+    const { categoriesPerRow, minRowHeight } = model;
 
     // split categories into an array of arrays (inner array),
     // where each inner array represents how many categories should be displayed on one row
@@ -76,6 +76,7 @@ export class Categories extends React.Component {
                     <span dangerouslySetInnerHTML={{ __html: c.label }}/>
                   </Typography>
                   <Category
+                    minRowHeight={minRowHeight}
                     onDropChoice={(h) => onDropChoice(c.id, h)}
                     onRemoveChoice={onRemoveChoice}
                     disabled={disabled}
