@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Line, Group } from 'react-konva';
+import { Line, Group, Rect } from 'react-konva';
 import { withStyles } from '@material-ui/core/styles';
 import { ImageComponent } from '@pie-lib/pie-toolbox/icons';
 import { faCorrect, faWrong } from './icons';
@@ -122,17 +122,31 @@ class PolygonComponent extends React.Component {
         iconSrc = faWrong;
       }
     }
+    const useHoveredStyle = hovered && hoverOutlineColor;
+
+    const xValues = pointsParsed.filter((_, index) => index % 2 === 0); // Even indices are x-coordinates
+    const yValues = pointsParsed.filter((_, index) => index % 2 !== 0); // Odd indices are y-coordinates
+
+    const minX = Math.min(...xValues);
+    const maxX = Math.max(...xValues);
+    const minY = Math.min(...yValues);
+    const maxY = Math.max(...yValues);
+
+    const rectX = minX;
+    const rectY = minY;
+    const rectWidth = maxX - minX;
+    const rectHeight = maxY - minY;
 
     return (
       <Group scaleX={scale} scaleY={scale}>
-        {hoverOutlineColor && hovered && (
-          <Line
-            closed={true}
-            draggable={false}
-            points={pointsParsed}
-            stroke={hoverOutlineColor}
-            strokeWidth={2}
-            listening={false}
+        {useHoveredStyle && (
+          <Rect
+            x={rectX}
+            y={rectY}
+            width={rectWidth}
+            height={rectHeight}
+            stroke={selected ? 'transparent' : hoverOutlineColor}
+            strokeWidth={strokeWidth}
           />
         )}
         <Line
@@ -143,8 +157,8 @@ class PolygonComponent extends React.Component {
           onClick={this.handleClick}
           onTap={this.handleClick}
           draggable={false}
-          stroke={hovered && hoverOutlineColor ? 'transparent' : outlineColorParsed}
-          strokeWidth={!(hovered && hoverOutlineColor) ? outlineWidth : 0}
+          stroke={useHoveredStyle && !selected ? 'transparent' : outlineColorParsed}
+          strokeWidth={useHoveredStyle && !selected ? 0 : outlineWidth}
           onMouseLeave={this.handleMouseLeave}
           onMouseEnter={this.handleMouseEnter}
         />
