@@ -34,6 +34,18 @@ const styleSheet = (theme) => ({
       paddingRight: theme.spacing.unit,
     },
   },
+  belowLayout: {
+    '& > label': {
+      alignItems: 'flex-start'
+    }
+  },
+  belowSelectionComponent: {
+    display: 'flex',
+    alignItems: 'center',
+    '& > span': {
+      paddingLeft: 0
+    }
+  }
 });
 
 const formStyleSheet = {
@@ -160,6 +172,7 @@ export class ChoiceInput extends React.Component {
     isEvaluateMode: PropTypes.bool,
     choicesLayout: PropTypes.oneOf(['vertical', 'grid', 'horizontal']),
     updateSession: PropTypes.func,
+    selectionButtonPosition: PropTypes.oneOf(['left', 'below'])
   };
 
   static defaultProps = {
@@ -204,6 +217,7 @@ export class ChoiceInput extends React.Component {
       choicesLayout,
       value,
       checked,
+      selectionButtonPosition
     } = this.props;
 
     const Tag = choiceMode === 'checkbox' ? StyledCheckbox : StyledRadio;
@@ -211,11 +225,12 @@ export class ChoiceInput extends React.Component {
 
     const holderClassNames = classNames(classes.checkboxHolder, {
       [classes.horizontalLayout]: choicesLayout === 'horizontal',
+      [classes.belowLayout]: selectionButtonPosition === 'below',
     });
 
     const choicelabel = (
       <>
-        {displayKey ? (
+        {displayKey && selectionButtonPosition !== 'below'? (
           <span className={classes.row}>
             {displayKey}.{'\u00A0'}
             <PreviewPrompt className="label" prompt={label} tagName="span" />
@@ -229,28 +244,50 @@ export class ChoiceInput extends React.Component {
     return (
       <div className={classNames(className, 'corespring-' + classSuffix, 'choice-input')}>
         <div className={classes.row}>
-          {!hideTick && isEvaluateMode && <FeedbackTick correctness={correctness} />}
+          {!hideTick && isEvaluateMode && <FeedbackTick correctness={correctness}/>}
           <div className={classNames(holderClassNames, 'checkbox-holder')}>
-            <StyledFormControlLabel
-              label={choicelabel}
-              value={value}
-              htmlFor={this.choiceId}
-              control={
-                <Tag
-                  accessibility={accessibility}
-                  disabled={disabled}
-                  checked={checked}
-                  correctness={correctness}
-                  value={value}
-                  id={this.choiceId}
-                  onChange={this.onToggleChoice}
-                />
-              }
-            />
+            {selectionButtonPosition === 'below' ? (
+              <StyledFormControlLabel
+                label={choicelabel}
+                value={value}
+                htmlFor={this.choiceId}
+                labelPlacement={'top'}
+                control={
+                  <span className={classes.belowSelectionComponent}>
+                    <Tag
+                      accessibility={accessibility}
+                      disabled={disabled}
+                      checked={checked}
+                      correctness={correctness}
+                      value={value}
+                      id={this.choiceId}
+                      onChange={this.onToggleChoice}
+                      style={{ padding: 0 }}
+                    />
+                    {displayKey}.
+                  </span>
+                }
+              />
+            ) : (
+              <StyledFormControlLabel
+                label={choicelabel}
+                value={value}
+                htmlFor={this.choiceId}
+                control={
+                  <Tag
+                    accessibility={accessibility}
+                    disabled={disabled}
+                    checked={checked}
+                    correctness={correctness}
+                    value={value}
+                    id={this.choiceId}
+                    onChange={this.onToggleChoice}
+                  />}
+              />)}
           </div>
         </div>
-        {rationale && <PreviewPrompt className="rationale" defaultClassName="rationale" prompt={rationale} />}
-        <Feedback feedback={feedback} correctness={correctness} />
+        {rationale && <PreviewPrompt className="rationale" defaultClassName="rationale" prompt={rationale}/>}
+        <Feedback feedback={feedback} correctness={correctness}/>
       </div>
     );
   }

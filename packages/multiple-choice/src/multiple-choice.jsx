@@ -72,6 +72,7 @@ export class MultipleChoice extends React.Component {
         animationsDisabled: PropTypes.bool,
         language: PropTypes.string,
         onShowCorrectToggle: PropTypes.func,
+        selectionButtonPosition: PropTypes.oneOf(['left', 'below']),
     };
 
     constructor(props) {
@@ -227,7 +228,8 @@ export class MultipleChoice extends React.Component {
             classes,
             alwaysShowCorrect,
             animationsDisabled,
-            language
+            language,
+            selectionButtonPosition
         } = this.props;
         const {showCorrect} = this.state;
         const isEvaluateMode = mode === 'evaluate';
@@ -303,6 +305,7 @@ export class MultipleChoice extends React.Component {
                                 checked={this.getChecked(choice)}
                                 correctness={isEvaluateMode ? this.getCorrectness(choice) : undefined}
                                 displayKey={this.indexToSymbol(index)}
+                                selectionButtonPosition={selectionButtonPosition}
                             />
                         ))}
                     </div>

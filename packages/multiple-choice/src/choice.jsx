@@ -33,6 +33,7 @@ export class Choice extends React.Component {
       choicesLayout,
       gridColumns,
       updateSession,
+      selectionButtonPosition
     } = this.props;
     const choiceClass = 'choice' + (index === choicesLength - 1 ? ' last' : '');
 
@@ -52,6 +53,7 @@ export class Choice extends React.Component {
       updateSession,
       onChange: this.onChange,
       isEvaluateMode,
+      selectionButtonPosition
     };
 
     const names = classNames(classes.choice, {
@@ -82,6 +84,7 @@ Choice.propTypes = {
   displayKey: PropTypes.string,
   choicesLayout: PropTypes.oneOf(['vertical', 'grid', 'horizontal']),
   gridColumns: PropTypes.string,
+  selectionButtonPosition: PropTypes.oneOf(['left', 'below']),
 };
 
 export default withStyles((theme) => ({

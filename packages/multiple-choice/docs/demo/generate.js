@@ -3,6 +3,7 @@ exports.model = (id, element) => ({
   element,
   choiceMode: 'checkbox',
   choicePrefix: 'numbers',
+  selectionButtonPosition: 'below',
   choices: [
     {
       correct: true,
@@ -26,7 +27,7 @@ exports.model = (id, element) => ({
     },
     {
       value: 'norway',
-      label: 'Norway',
+      label: 'Norway testing layout',
       feedback: {
         type: 'none',
         value: '',
@@ -37,7 +38,7 @@ exports.model = (id, element) => ({
     {
       correct: true,
       value: 'finland',
-      label: 'Finland',
+      label: 'Longer answer choice for testing',
       feedback: {
         type: 'none',
         value: '',
