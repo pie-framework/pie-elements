@@ -242,8 +242,6 @@ export class ImageClozeAssociationComponent extends React.Component {
     const { possibilityListPosition = 'bottom' } = uiStyle || {};
     const isVertical = possibilityListPosition === 'left' || possibilityListPosition === 'right';
 
-    console.log(possibleResponses, "possibleResponses")
-
     const { validResponse } = validation || {};
     const correctAnswers = [];
 
