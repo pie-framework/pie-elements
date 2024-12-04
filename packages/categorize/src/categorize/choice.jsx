@@ -63,7 +63,7 @@ const styles = (theme) => ({
   cardRoot: {
     color: color.text(),
     backgroundColor: color.white(),
-    fontSize: theme.typography.fontSize + 2,
+    // fontSize: theme.typography.fontSize + 2,
     '&:last-child': {
       paddingBottom: theme.spacing.unit * 2,
     },

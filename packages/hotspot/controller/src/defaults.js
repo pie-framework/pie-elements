@@ -16,4 +16,5 @@ export default {
   teacherInstructions: '',
   teacherInstructionsEnabled: true,
   toolbarEditorPosition: 'bottom',
+  fontSizeFactor: 2,
 };

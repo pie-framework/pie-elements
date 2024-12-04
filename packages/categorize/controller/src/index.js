@@ -148,6 +148,7 @@ export const model = (question, session, env, updateSession) =>
       maxChoicesPerCategory,
       extraCSSRules,
       minRowHeight,
+        fontSizeFactor,
     } = normalizedQuestion;
     let { choices, note } = normalizedQuestion;
     let fb;
@@ -192,6 +193,7 @@ export const model = (question, session, env, updateSession) =>
       language,
       extraCSSRules,
       minRowHeight,
+      fontSizeFactor
     };
 
     if (role === 'instructor' && (mode === 'view' || mode === 'evaluate')) {
