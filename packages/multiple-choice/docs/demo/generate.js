@@ -27,7 +27,7 @@ exports.model = (id, element) => ({
     },
     {
       value: 'norway',
-      label: 'Norway testing layout',
+      label: 'Norway',
       feedback: {
         type: 'none',
         value: '',
@@ -38,7 +38,7 @@ exports.model = (id, element) => ({
     {
       correct: true,
       value: 'finland',
-      label: 'Longer answer choice for testing',
+      label: 'Finland',
       feedback: {
         type: 'none',
         value: '',

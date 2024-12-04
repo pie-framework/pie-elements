@@ -39,6 +39,12 @@ const styleSheet = (theme) => ({
       alignItems: 'flex-start'
     }
   },
+  belowLayoutCenter: {
+    justifyContent: 'center',
+    '& > label': {
+      alignItems: 'center'
+    }
+  },
   belowSelectionComponent: {
     display: 'flex',
     alignItems: 'center',
@@ -172,7 +178,7 @@ export class ChoiceInput extends React.Component {
     isEvaluateMode: PropTypes.bool,
     choicesLayout: PropTypes.oneOf(['vertical', 'grid', 'horizontal']),
     updateSession: PropTypes.func,
-    selectionButtonPosition: PropTypes.oneOf(['left', 'below'])
+    isSelectionButtonBelow: PropTypes.bool
   };
 
   static defaultProps = {
@@ -217,7 +223,7 @@ export class ChoiceInput extends React.Component {
       choicesLayout,
       value,
       checked,
-      selectionButtonPosition
+      isSelectionButtonBelow
     } = this.props;
 
     const Tag = choiceMode === 'checkbox' ? StyledCheckbox : StyledRadio;
@@ -225,12 +231,14 @@ export class ChoiceInput extends React.Component {
 
     const holderClassNames = classNames(classes.checkboxHolder, {
       [classes.horizontalLayout]: choicesLayout === 'horizontal',
-      [classes.belowLayout]: selectionButtonPosition === 'below',
+      [classes.belowLayout]: isSelectionButtonBelow && choicesLayout !== 'grid',
+      [classes.belowLayoutCenter]: isSelectionButtonBelow && choicesLayout === 'grid',
+
     });
 
     const choicelabel = (
       <>
-        {displayKey && selectionButtonPosition !== 'below'? (
+        {displayKey && !isSelectionButtonBelow ? (
           <span className={classes.row}>
             {displayKey}.{'\u00A0'}
             <PreviewPrompt className="label" prompt={label} tagName="span" />
@@ -246,7 +254,7 @@ export class ChoiceInput extends React.Component {
         <div className={classes.row}>
           {!hideTick && isEvaluateMode && <FeedbackTick correctness={correctness}/>}
           <div className={classNames(holderClassNames, 'checkbox-holder')}>
-            {selectionButtonPosition === 'below' ? (
+            {isSelectionButtonBelow ? (
               <StyledFormControlLabel
                 label={choicelabel}
                 value={value}
