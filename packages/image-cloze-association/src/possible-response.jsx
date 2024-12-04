@@ -76,6 +76,12 @@ const styles = () => ({
     justifyContent: 'center',
     minHeight: '28px',
     width: 'fit-content',
+    '& span img':{
+      // Added for touch devices, for image content.
+      // This will prevent the context menu from appearing and not allowing other interactions with the image.
+      // If interactions with the image in the token will be requested we should handle only the context Menu.
+      pointerEvents: 'none',
+    }
   },
   answerChoiceTransparency: {
     border: 'none',
@@ -93,10 +99,6 @@ const styles = () => ({
   },
   span: {
     backgroundColor: color.background(),
-    // Added for touch devices, for image content.
-    // This will prevent the context menu from appearing and not allowing other interactions with the image.
-    // If interactions with the image in the token will be requested we should handle only the context Menu.
-    pointerEvents: 'none',
   },
   hiddenSpan: {
     visibility: 'hidden',
