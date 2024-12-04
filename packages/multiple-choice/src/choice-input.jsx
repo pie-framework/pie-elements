@@ -2,12 +2,12 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-
 import Checkbox from '@material-ui/core/Checkbox';
 import { Feedback, color, PreviewPrompt } from '@pie-lib/pie-toolbox/render-ui';
-import FeedbackTick from './feedback-tick';
 import Radio from '@material-ui/core/Radio';
 import classNames from 'classnames';
+
+import FeedbackTick from './feedback-tick';
 
 const CLASS_NAME = 'multiple-choice-component';
 

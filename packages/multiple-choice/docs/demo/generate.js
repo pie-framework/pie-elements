@@ -3,7 +3,6 @@ exports.model = (id, element) => ({
   element,
   choiceMode: 'checkbox',
   choicePrefix: 'numbers',
-  selectionButtonPosition: 'below',
   choices: [
     {
       correct: true,
