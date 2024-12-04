@@ -169,6 +169,10 @@ Indicates if Rubric is enabled
 Indicates the language of the component
 Supported options: en, es, en_US, en-US, es_ES, es-ES, es_MX, es-MX
 
+# `isSelectionButtonBelow` (boolean)
+
+Indicates if the selection button and choice prefix should be positioned below the corresponding answer choice
+
 # `id` (string, required)
 
 Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.
