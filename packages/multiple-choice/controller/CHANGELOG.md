@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-controller@5.2.0...@pie-element/multiple-choice-controller@5.3.0) (2024-12-05)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4393, PD-4388, PD-4550, PD-4394, PD-4165 ([afafda4](https://github.com/pie-framework/pie-elements/commit/afafda4a504ecae6e4c85a45817b7f73a4b81244))
+
+
+### Features
+
+* **multiple-choice:** use isSelectionButtonBelow property PD-3842 ([8b63ad0](https://github.com/pie-framework/pie-elements/commit/8b63ad0b300a8b8540aab87c4aa352b939fad7e5))
+* **multiple-choice:** wip PD-3842 ([4e439ba](https://github.com/pie-framework/pie-elements/commit/4e439ba5272516801305dacc7fc038fe67f6ff3d))
+
+
+
+
+
 # [5.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-controller@5.1.2...@pie-element/multiple-choice-controller@5.2.0) (2024-11-29)
 
 

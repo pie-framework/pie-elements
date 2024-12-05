@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@9.4.0...@pie-element/multiple-choice@9.5.0) (2024-12-05)
+
+
+### Bug Fixes
+
+* clean up ([8a1fb40](https://github.com/pie-framework/pie-elements/commit/8a1fb40d53ec5fa8a049f385ec0f7692f005d328))
+* update pie-lib/pie-toolbox PD-4393, PD-4388, PD-4550, PD-4394, PD-4165 ([afafda4](https://github.com/pie-framework/pie-elements/commit/afafda4a504ecae6e4c85a45817b7f73a4b81244))
+
+
+### Features
+
+* **multiple-choice:** add documentation for isSelectionButtonBelow PD-3842 ([a15ef64](https://github.com/pie-framework/pie-elements/commit/a15ef64878053b7bdac12e620495ccc9a82b413c))
+* **multiple-choice:** use isSelectionButtonBelow property PD-3842 ([8b63ad0](https://github.com/pie-framework/pie-elements/commit/8b63ad0b300a8b8540aab87c4aa352b939fad7e5))
+* **multiple-choice:** wip PD-3842 ([4e439ba](https://github.com/pie-framework/pie-elements/commit/4e439ba5272516801305dacc7fc038fe67f6ff3d))
+
+
+
+
+
 # [9.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@9.3.2...@pie-element/multiple-choice@9.4.0) (2024-11-29)
 
 

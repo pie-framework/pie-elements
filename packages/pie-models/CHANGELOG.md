@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.39.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.38.1...@pie-element/pie-models@13.39.0) (2024-12-05)
+
+
+### Features
+
+* **multiple-choice:** add documentation for isSelectionButtonBelow PD-3842 ([a15ef64](https://github.com/pie-framework/pie-elements/commit/a15ef64878053b7bdac12e620495ccc9a82b413c))
+
+
+
+
+
 ## [13.38.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@13.38.0...@pie-element/pie-models@13.38.1) (2024-11-15)
 
 
