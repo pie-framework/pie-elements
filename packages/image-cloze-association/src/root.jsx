@@ -33,7 +33,7 @@ const styles = (theme) => ({
   },
 });
 
-class ImageClozeAssociationComponent extends React.Component {
+export class ImageClozeAssociationComponent extends React.Component {
   constructor(props) {
     super(props);
     const {
@@ -128,8 +128,8 @@ class ImageClozeAssociationComponent extends React.Component {
 
         possibleResponses.push({
           ...shiftedItem,
-          containerIndex: '',
-          id: `${_.max(possibleResponses.map((c) => parseInt(c.id)).filter((id) => !isNaN(id))) + 1}`,
+          containerIndex: undefined,
+          id: shiftedItem.id || generateId(),
         });
       }
 

@@ -1,53 +1,70 @@
 import React from 'react';
-import _ from 'lodash';
 import { shallow } from 'enzyme';
-import toJson from 'enzyme-to-json';
-
-import Root from '../root';
-
-const answer1 = { id: 1, value: '1', containerIndex: 0 };
-const answer2 = { id: 2, value: '2', containerIndex: 1 };
+import { ImageClozeAssociationComponent as Root } from '../root';
 
 const model = {
-  answers: [],
-  canDrag: true,
-  draggingElement: {},
-  image: {},
-  onAnswerSelect: () => {},
-  onDragAnswerBegin: () => {},
-  onDragAnswerEnd: () => {},
-  responseContainers: [],
-  possibleResponses: [],
+  possibleResponses: ['firstImage', 'secondImage'],
+  responseContainers: [{ index: 0 }, { index: 1 }],
   duplicateResponses: false,
-  maxResponsePerZone: 5,
-  showDashedBorder: true,
+  maxResponsePerZone: 1,
 };
 
 describe('Root', () => {
   let wrapper;
+  const updateAnswer = jest.fn();
 
   const mkWrapper = (opts = {}) => {
-    opts = _.extend(
-      {
-        model,
-        updateAnswer: () => {},
-      },
-      opts,
-    );
-
-    return shallow(<Root {...opts} />);
+    const props = {
+      model,
+      session: { answers: [] },
+      updateAnswer,
+      ...opts,
+    };
+    return shallow(<Root {...props} />);
   };
 
   beforeEach(() => {
     wrapper = mkWrapper();
   });
 
+  describe('initialization', () => {
+    it('initializes with correct possible responses', () => {
+      const instance = wrapper.instance();
+      expect(instance.state.possibleResponses).toEqual([
+        { value: 'firstImage', id: '0' },
+        { value: 'secondImage', id: '1' },
+      ]);
+    });
+  });
+
+  describe('handleOnAnswerSelect', () => {
+    it('removes response from possibleResponses on answer select', () => {
+      const instance = wrapper.instance();
+      instance.handleOnAnswerSelect({ value: 'firstImage', id: '0' }, 0);
+      expect(instance.state.possibleResponses).toEqual([{ value: 'secondImage', id: '1' }]);
+    });
+
+    it('adds response back to possibleResponses on answer remove', () => {
+      const instance = wrapper.instance();
+      instance.handleOnAnswerSelect({ value: 'firstImage', id: '0' }, 0);
+      instance.handleOnAnswerRemove({ value: 'firstImage', id: '0', containerIndex: 0 });
+      expect(instance.state.possibleResponses).toEqual([
+        { value: 'secondImage', id: '1' },
+        { value: 'firstImage', id: '0' },
+      ]);
+    });
+
+    it('preserves id when adding back to possibleResponses', () => {
+      const instance = wrapper.instance();
+      instance.handleOnAnswerSelect({ value: 'firstImage', id: '0' }, 0);
+      instance.handleOnAnswerRemove({ value: 'firstImage', id: '0', containerIndex: 0 });
+      expect(instance.state.possibleResponses[1].id).toBe('0');
+    });
+  });
+
   describe('snapshots', () => {
-    describe('model', () => {
-      it('renders', () => {
-        const wrapper = mkWrapper({ model: { ...model, answers: [answer1, answer2] } });
-        expect(toJson(wrapper)).toMatchSnapshot();
-      });
+    it('renders correctly', () => {
+      expect(wrapper).toMatchSnapshot();
     });
   });
 });
