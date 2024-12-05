@@ -100,6 +100,9 @@ export interface MultipleChoicePie extends PieModel {
    * Supported options: en, es, en_US, en-US, es_ES, es-ES, es_MX, es-MX
    */
   language?: string;
+
+  /** Indicates if the selection button and choice prefix should be positioned below the corresponding answer choice */
+  isSelectionButtonBelow?: boolean;
 }
 
 interface ConfigureMaxImageDimensionsProp {

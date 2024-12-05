@@ -30,10 +30,11 @@ class ImageDropTarget extends React.Component {
       connectDropTarget,
       answerChoiceTransparency,
       maxResponsePerZone,
+      isOver,
     } = this.props;
     const { shouldHaveSmallPadding } = this.state;
 
-    const containerClasses = cx(classes.responseContainer, {
+    const containerClasses = cx(classes.responseContainer, isOver && classes.isOver, {
       [classes.responseContainerDashed]: showDashedBorder && !draggingElement.id,
       [classes.responseContainerActive]: !!draggingElement.id,
     });
@@ -104,6 +105,7 @@ ImageDropTarget.propTypes = {
   showDashedBorder: PropTypes.bool,
   responseAreaFill: PropTypes.string,
   answerChoiceTransparency: PropTypes.bool,
+  isOver: PropTypes.bool,
   responseContainerPadding: PropTypes.string,
   imageDropTargetPadding: PropTypes.string,
   maxResponsePerZone: PropTypes.number,
@@ -136,6 +138,10 @@ const styles = () => ({
   responseContainerDashed: {
     border: `2px dashed ${color.text()}`,
   },
+  isOver: {
+    border: '1px solid rgb(158, 158, 158)',
+    backgroundColor: 'rgb(224, 224, 224)',
+  }
 });
 
 const Styled = withStyles(styles)(ImageDropTarget);

@@ -148,13 +148,14 @@ exports[`Main component Match Snapshot 1`] = `
         classes={
           Object {
             "extraCSSRules": "UiLayout-extraCSSRules-25",
+            "uiLayoutContainer": "UiLayout-uiLayoutContainer-26",
           }
         }
         extraCSSRules={Object {}}
         fontSizeFactor={1}
       >
         <div
-          className="Main-mainContainer-1 UiLayout-extraCSSRules-25"
+          className="Main-mainContainer-1 UiLayout-extraCSSRules-25 UiLayout-uiLayoutContainer-26"
           style={
             Object {
               "fontSize": "NaNpx",
@@ -177,15 +178,15 @@ exports[`Main component Match Snapshot 1`] = `
                   className="Main-toggle-20"
                   classes={
                     Object {
-                      "content": "CorrectAnswerToggle-content-27",
-                      "enter": "CorrectAnswerToggle-enter-31",
-                      "enterActive": "CorrectAnswerToggle-enterActive-32",
-                      "exit": "CorrectAnswerToggle-exit-33",
-                      "exitActive": "CorrectAnswerToggle-exitActive-34",
-                      "icon": "CorrectAnswerToggle-icon-29",
-                      "iconHolder": "CorrectAnswerToggle-iconHolder-30",
-                      "label": "CorrectAnswerToggle-label-28",
-                      "root": "CorrectAnswerToggle-root-26",
+                      "content": "CorrectAnswerToggle-content-28",
+                      "enter": "CorrectAnswerToggle-enter-32",
+                      "enterActive": "CorrectAnswerToggle-enterActive-33",
+                      "exit": "CorrectAnswerToggle-exit-34",
+                      "exitActive": "CorrectAnswerToggle-exitActive-35",
+                      "icon": "CorrectAnswerToggle-icon-30",
+                      "iconHolder": "CorrectAnswerToggle-iconHolder-31",
+                      "label": "CorrectAnswerToggle-label-29",
+                      "root": "CorrectAnswerToggle-root-27",
                     }
                   }
                   hideMessage="Hide correct answer"
@@ -195,7 +196,7 @@ exports[`Main component Match Snapshot 1`] = `
                   toggled={false}
                 >
                   <div
-                    className="CorrectAnswerToggle-root-26 Main-toggle-20"
+                    className="CorrectAnswerToggle-root-27 Main-toggle-20"
                   >
                     <WithStyles(Expander)
                       show={true}
@@ -203,11 +204,11 @@ exports[`Main component Match Snapshot 1`] = `
                       <Expander
                         classes={
                           Object {
-                            "enter": "Expander-enter-36",
-                            "enterDone": "Expander-enterDone-37",
-                            "exit": "Expander-exit-38",
-                            "exitDone": "Expander-exitDone-39",
-                            "expander": "Expander-expander-35",
+                            "enter": "Expander-enter-37",
+                            "enterDone": "Expander-enterDone-38",
+                            "exit": "Expander-exit-39",
+                            "exitDone": "Expander-exitDone-40",
+                            "expander": "Expander-expander-36",
                           }
                         }
                         show={true}
@@ -216,11 +217,11 @@ exports[`Main component Match Snapshot 1`] = `
                           appear={true}
                           classNames={
                             Object {
-                              "enter": "Expander-enter-36",
-                              "enterDone": "Expander-enterDone-37",
-                              "exit": "Expander-exit-38",
-                              "exitDone": "Expander-exitDone-39",
-                              "expander": "Expander-expander-35",
+                              "enter": "Expander-enter-37",
+                              "enterDone": "Expander-enterDone-38",
+                              "exit": "Expander-exit-39",
+                              "exitDone": "Expander-exitDone-40",
+                              "expander": "Expander-expander-36",
                             }
                           }
                           in={true}
@@ -243,28 +244,28 @@ exports[`Main component Match Snapshot 1`] = `
                             unmountOnExit={false}
                           >
                             <div
-                              className="Expander-expander-35"
+                              className="Expander-expander-36"
                             >
                               <div
-                                className="CorrectAnswerToggle-content-27"
+                                className="CorrectAnswerToggle-content-28"
                                 onClick={[Function]}
                                 onTouchEnd={[Function]}
                               >
                                 <div
-                                  className="CorrectAnswerToggle-iconHolder-30"
+                                  className="CorrectAnswerToggle-iconHolder-31"
                                 >
                                   <CSSTransition
                                     classNames={
                                       Object {
-                                        "content": "CorrectAnswerToggle-content-27",
-                                        "enter": "CorrectAnswerToggle-enter-31",
-                                        "enterActive": "CorrectAnswerToggle-enterActive-32",
-                                        "exit": "CorrectAnswerToggle-exit-33",
-                                        "exitActive": "CorrectAnswerToggle-exitActive-34",
-                                        "icon": "CorrectAnswerToggle-icon-29",
-                                        "iconHolder": "CorrectAnswerToggle-iconHolder-30",
-                                        "label": "CorrectAnswerToggle-label-28",
-                                        "root": "CorrectAnswerToggle-root-26",
+                                        "content": "CorrectAnswerToggle-content-28",
+                                        "enter": "CorrectAnswerToggle-enter-32",
+                                        "enterActive": "CorrectAnswerToggle-enterActive-33",
+                                        "exit": "CorrectAnswerToggle-exit-34",
+                                        "exitActive": "CorrectAnswerToggle-exitActive-35",
+                                        "icon": "CorrectAnswerToggle-icon-30",
+                                        "iconHolder": "CorrectAnswerToggle-iconHolder-31",
+                                        "label": "CorrectAnswerToggle-label-29",
+                                        "root": "CorrectAnswerToggle-root-27",
                                       }
                                     }
                                     exit={true}
@@ -287,31 +288,31 @@ exports[`Main component Match Snapshot 1`] = `
                                       unmountOnExit={false}
                                     >
                                       <WithStyles(CorrectResponse)
-                                        className="CorrectAnswerToggle-icon-29"
+                                        className="CorrectAnswerToggle-icon-30"
                                         key="correct-open"
                                         open={false}
                                       >
                                         <CorrectResponse
-                                          className="CorrectAnswerToggle-icon-29"
+                                          className="CorrectAnswerToggle-icon-30"
                                           classes={
                                             Object {
-                                              "hideIconBg": "CorrectResponse-hideIconBg-41",
-                                              "hideIconFg": "CorrectResponse-hideIconFg-42",
-                                              "root": "CorrectResponse-root-40",
-                                              "showIconBg": "CorrectResponse-showIconBg-43",
-                                              "showIconBorder": "CorrectResponse-showIconBorder-45",
-                                              "showIconFg": "CorrectResponse-showIconFg-44",
+                                              "hideIconBg": "CorrectResponse-hideIconBg-42",
+                                              "hideIconFg": "CorrectResponse-hideIconFg-43",
+                                              "root": "CorrectResponse-root-41",
+                                              "showIconBg": "CorrectResponse-showIconBg-44",
+                                              "showIconBorder": "CorrectResponse-showIconBorder-46",
+                                              "showIconFg": "CorrectResponse-showIconFg-45",
                                             }
                                           }
                                           open={false}
                                         >
                                           <div
-                                            className="CorrectAnswerToggle-icon-29 CorrectResponse-root-40"
+                                            className="CorrectAnswerToggle-icon-30 CorrectResponse-root-41"
                                           >
                                             <CloseIcon
-                                              bg="CorrectResponse-showIconBg-43"
-                                              border="CorrectResponse-showIconBorder-45"
-                                              fg="CorrectResponse-showIconFg-44"
+                                              bg="CorrectResponse-showIconBg-44"
+                                              border="CorrectResponse-showIconBorder-46"
+                                              fg="CorrectResponse-showIconFg-45"
                                             >
                                               <svg
                                                 preserveAspectRatio="xMinYMin meet"
@@ -348,17 +349,17 @@ exports[`Main component Match Snapshot 1`] = `
                                                   }
                                                 />
                                                 <circle
-                                                  className="CorrectResponse-showIconBg-43"
+                                                  className="CorrectResponse-showIconBg-44"
                                                   cx="-114.2"
                                                   cy="143.5"
                                                   r="14"
                                                 />
                                                 <path
-                                                  className="CorrectResponse-showIconBorder-45"
+                                                  className="CorrectResponse-showIconBorder-46"
                                                   d="M-114.2,158c-8,0-14.5-6.5-14.5-14.5s6.5-14.5,14.5-14.5s14.5,6.5,14.5,14.5S-106.2,158-114.2,158z M-114.2,130c-7.4,0-13.5,6.1-13.5,13.5s6.1,13.5,13.5,13.5s13.5-6.1,13.5-13.5S-106.8,130-114.2,130z"
                                                 />
                                                 <polygon
-                                                  className="CorrectResponse-showIconFg-44"
+                                                  className="CorrectResponse-showIconFg-45"
                                                   points="-114.8,150.7 -121.6,144.8 -119,141.8 -115.9,144.5 -111.3,136.3 -107.8,138.2"
                                                 />
                                               </svg>
@@ -371,15 +372,15 @@ exports[`Main component Match Snapshot 1`] = `
                                   <CSSTransition
                                     classNames={
                                       Object {
-                                        "content": "CorrectAnswerToggle-content-27",
-                                        "enter": "CorrectAnswerToggle-enter-31",
-                                        "enterActive": "CorrectAnswerToggle-enterActive-32",
-                                        "exit": "CorrectAnswerToggle-exit-33",
-                                        "exitActive": "CorrectAnswerToggle-exitActive-34",
-                                        "icon": "CorrectAnswerToggle-icon-29",
-                                        "iconHolder": "CorrectAnswerToggle-iconHolder-30",
-                                        "label": "CorrectAnswerToggle-label-28",
-                                        "root": "CorrectAnswerToggle-root-26",
+                                        "content": "CorrectAnswerToggle-content-28",
+                                        "enter": "CorrectAnswerToggle-enter-32",
+                                        "enterActive": "CorrectAnswerToggle-enterActive-33",
+                                        "exit": "CorrectAnswerToggle-exit-34",
+                                        "exitActive": "CorrectAnswerToggle-exitActive-35",
+                                        "icon": "CorrectAnswerToggle-icon-30",
+                                        "iconHolder": "CorrectAnswerToggle-iconHolder-31",
+                                        "label": "CorrectAnswerToggle-label-29",
+                                        "root": "CorrectAnswerToggle-root-27",
                                       }
                                     }
                                     exit={false}
@@ -402,31 +403,31 @@ exports[`Main component Match Snapshot 1`] = `
                                       unmountOnExit={false}
                                     >
                                       <WithStyles(CorrectResponse)
-                                        className="CorrectAnswerToggle-icon-29"
+                                        className="CorrectAnswerToggle-icon-30"
                                         key="correct-closed"
                                         open={false}
                                       >
                                         <CorrectResponse
-                                          className="CorrectAnswerToggle-icon-29"
+                                          className="CorrectAnswerToggle-icon-30"
                                           classes={
                                             Object {
-                                              "hideIconBg": "CorrectResponse-hideIconBg-41",
-                                              "hideIconFg": "CorrectResponse-hideIconFg-42",
-                                              "root": "CorrectResponse-root-40",
-                                              "showIconBg": "CorrectResponse-showIconBg-43",
-                                              "showIconBorder": "CorrectResponse-showIconBorder-45",
-                                              "showIconFg": "CorrectResponse-showIconFg-44",
+                                              "hideIconBg": "CorrectResponse-hideIconBg-42",
+                                              "hideIconFg": "CorrectResponse-hideIconFg-43",
+                                              "root": "CorrectResponse-root-41",
+                                              "showIconBg": "CorrectResponse-showIconBg-44",
+                                              "showIconBorder": "CorrectResponse-showIconBorder-46",
+                                              "showIconFg": "CorrectResponse-showIconFg-45",
                                             }
                                           }
                                           open={false}
                                         >
                                           <div
-                                            className="CorrectAnswerToggle-icon-29 CorrectResponse-root-40"
+                                            className="CorrectAnswerToggle-icon-30 CorrectResponse-root-41"
                                           >
                                             <CloseIcon
-                                              bg="CorrectResponse-showIconBg-43"
-                                              border="CorrectResponse-showIconBorder-45"
-                                              fg="CorrectResponse-showIconFg-44"
+                                              bg="CorrectResponse-showIconBg-44"
+                                              border="CorrectResponse-showIconBorder-46"
+                                              fg="CorrectResponse-showIconFg-45"
                                             >
                                               <svg
                                                 preserveAspectRatio="xMinYMin meet"
@@ -463,17 +464,17 @@ exports[`Main component Match Snapshot 1`] = `
                                                   }
                                                 />
                                                 <circle
-                                                  className="CorrectResponse-showIconBg-43"
+                                                  className="CorrectResponse-showIconBg-44"
                                                   cx="-114.2"
                                                   cy="143.5"
                                                   r="14"
                                                 />
                                                 <path
-                                                  className="CorrectResponse-showIconBorder-45"
+                                                  className="CorrectResponse-showIconBorder-46"
                                                   d="M-114.2,158c-8,0-14.5-6.5-14.5-14.5s6.5-14.5,14.5-14.5s14.5,6.5,14.5,14.5S-106.2,158-114.2,158z M-114.2,130c-7.4,0-13.5,6.1-13.5,13.5s6.1,13.5,13.5,13.5s13.5-6.1,13.5-13.5S-106.8,130-114.2,130z"
                                                 />
                                                 <polygon
-                                                  className="CorrectResponse-showIconFg-44"
+                                                  className="CorrectResponse-showIconFg-45"
                                                   points="-114.8,150.7 -121.6,144.8 -119,141.8 -115.9,144.5 -111.3,136.3 -107.8,138.2"
                                                 />
                                               </svg>
@@ -489,7 +490,7 @@ exports[`Main component Match Snapshot 1`] = `
                                 >
                                   <div
                                     aria-hidden={false}
-                                    className="CorrectAnswerToggle-label-28"
+                                    className="CorrectAnswerToggle-label-29"
                                     data-pie-readable={false}
                                     key=".0"
                                   >
@@ -515,18 +516,18 @@ exports[`Main component Match Snapshot 1`] = `
                 <PreviewPrompt
                   classes={
                     Object {
-                      "label": "PreviewPrompt-label-49",
-                      "legend": "PreviewPrompt-legend-47",
-                      "prompt": "PreviewPrompt-prompt-46",
-                      "promptTable": "PreviewPrompt-promptTable-50",
-                      "rationale": "PreviewPrompt-rationale-48",
+                      "label": "PreviewPrompt-label-50",
+                      "legend": "PreviewPrompt-legend-48",
+                      "prompt": "PreviewPrompt-prompt-47",
+                      "promptTable": "PreviewPrompt-promptTable-51",
+                      "rationale": "PreviewPrompt-rationale-49",
                     }
                   }
                   onClick={[Function]}
                   prompt="Solve the equation:"
                 >
                   <div
-                    className="PreviewPrompt-promptTable-50   "
+                    className="PreviewPrompt-promptTable-51   "
                     dangerouslySetInnerHTML={
                       Object {
                         "__html": "Solve the equation:",
@@ -623,12 +624,12 @@ exports[`Main component Match Snapshot 1`] = `
                       <Component
                         classes={
                           Object {
-                            "main": "Component-main-51",
+                            "main": "Component-main-52",
                           }
                         }
                       >
                         <div
-                          className="Component-main-51"
+                          className="Component-main-52"
                         >
                           <WithStyles(Component)
                             key="p-0"
@@ -636,12 +637,12 @@ exports[`Main component Match Snapshot 1`] = `
                             <Component
                               classes={
                                 Object {
-                                  "para": "Component-para-52",
+                                  "para": "Component-para-53",
                                 }
                               }
                             >
                               <div
-                                className="Component-para-52"
+                                className="Component-para-53"
                               >
                                 If the unit price of a notebook in Store A is $1.50, what is the unit price of a binder? $
                                 <div
@@ -668,14 +669,14 @@ exports[`Main component Match Snapshot 1`] = `
                                       TransitionComponent={[Function]}
                                       classes={
                                         Object {
-                                          "popper": "MuiTooltip-popper-53 Main-keypadTooltipPopper-5",
-                                          "popperInteractive": "MuiTooltip-popperInteractive-54",
-                                          "tooltip": "MuiTooltip-tooltip-55 Main-keypadTooltip-4",
-                                          "tooltipPlacementBottom": "MuiTooltip-tooltipPlacementBottom-60",
-                                          "tooltipPlacementLeft": "MuiTooltip-tooltipPlacementLeft-57",
-                                          "tooltipPlacementRight": "MuiTooltip-tooltipPlacementRight-58",
-                                          "tooltipPlacementTop": "MuiTooltip-tooltipPlacementTop-59",
-                                          "touch": "MuiTooltip-touch-56",
+                                          "popper": "MuiTooltip-popper-54 Main-keypadTooltipPopper-5",
+                                          "popperInteractive": "MuiTooltip-popperInteractive-55",
+                                          "tooltip": "MuiTooltip-tooltip-56 Main-keypadTooltip-4",
+                                          "tooltipPlacementBottom": "MuiTooltip-tooltipPlacementBottom-61",
+                                          "tooltipPlacementLeft": "MuiTooltip-tooltipPlacementLeft-58",
+                                          "tooltipPlacementRight": "MuiTooltip-tooltipPlacementRight-59",
+                                          "tooltipPlacementTop": "MuiTooltip-tooltipPlacementTop-60",
+                                          "touch": "MuiTooltip-touch-57",
                                         }
                                       }
                                       disableFocusListener={false}
@@ -1084,7 +1085,7 @@ exports[`Main component Match Snapshot 1`] = `
                                         </Static>
                                       </RootRef>
                                       <Popper
-                                        className="MuiTooltip-popper-53 Main-keypadTooltipPopper-5 MuiTooltip-popperInteractive-54"
+                                        className="MuiTooltip-popper-54 Main-keypadTooltipPopper-5 MuiTooltip-popperInteractive-55"
                                         disablePortal={false}
                                         id={null}
                                         onBlur={[Function]}
@@ -1123,14 +1124,14 @@ exports[`Main component Match Snapshot 1`] = `
                                       TransitionComponent={[Function]}
                                       classes={
                                         Object {
-                                          "popper": "MuiTooltip-popper-53 Main-keypadTooltipPopper-5",
-                                          "popperInteractive": "MuiTooltip-popperInteractive-54",
-                                          "tooltip": "MuiTooltip-tooltip-55 Main-keypadTooltip-4",
-                                          "tooltipPlacementBottom": "MuiTooltip-tooltipPlacementBottom-60",
-                                          "tooltipPlacementLeft": "MuiTooltip-tooltipPlacementLeft-57",
-                                          "tooltipPlacementRight": "MuiTooltip-tooltipPlacementRight-58",
-                                          "tooltipPlacementTop": "MuiTooltip-tooltipPlacementTop-59",
-                                          "touch": "MuiTooltip-touch-56",
+                                          "popper": "MuiTooltip-popper-54 Main-keypadTooltipPopper-5",
+                                          "popperInteractive": "MuiTooltip-popperInteractive-55",
+                                          "tooltip": "MuiTooltip-tooltip-56 Main-keypadTooltip-4",
+                                          "tooltipPlacementBottom": "MuiTooltip-tooltipPlacementBottom-61",
+                                          "tooltipPlacementLeft": "MuiTooltip-tooltipPlacementLeft-58",
+                                          "tooltipPlacementRight": "MuiTooltip-tooltipPlacementRight-59",
+                                          "tooltipPlacementTop": "MuiTooltip-tooltipPlacementTop-60",
+                                          "touch": "MuiTooltip-touch-57",
                                         }
                                       }
                                       disableFocusListener={false}
@@ -1539,7 +1540,7 @@ exports[`Main component Match Snapshot 1`] = `
                                         </Static>
                                       </RootRef>
                                       <Popper
-                                        className="MuiTooltip-popper-53 Main-keypadTooltipPopper-5 MuiTooltip-popperInteractive-54"
+                                        className="MuiTooltip-popper-54 Main-keypadTooltipPopper-5 MuiTooltip-popperInteractive-55"
                                         disablePortal={false}
                                         id={null}
                                         onBlur={[Function]}

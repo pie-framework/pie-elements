@@ -193,6 +193,11 @@
       "type": "string",
       "title": "language"
     },
+    "isSelectionButtonBelow": {
+      "description": "Indicates if the selection button and choice prefix should be positioned below the corresponding answer choice",
+      "type": "boolean",
+      "title": "isSelectionButtonBelow"
+    },
     "id": {
       "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
       "type": "string",
