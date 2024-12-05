@@ -4,6 +4,7 @@ import { CorrectAnswerToggle } from '@pie-lib/pie-toolbox/correct-answer-toggle'
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import { color, Collapsible, PreviewPrompt } from '@pie-lib/pie-toolbox/render-ui';
+
 import StyledChoice from './choice';
 
 // MultipleChoice
@@ -72,6 +73,7 @@ export class MultipleChoice extends React.Component {
         animationsDisabled: PropTypes.bool,
         language: PropTypes.string,
         onShowCorrectToggle: PropTypes.func,
+        isSelectionButtonBelow: PropTypes.bool,
     };
 
     constructor(props) {
@@ -227,7 +229,8 @@ export class MultipleChoice extends React.Component {
             classes,
             alwaysShowCorrect,
             animationsDisabled,
-            language
+            language,
+            isSelectionButtonBelow
         } = this.props;
         const {showCorrect} = this.state;
         const isEvaluateMode = mode === 'evaluate';
@@ -303,6 +306,7 @@ export class MultipleChoice extends React.Component {
                                 checked={this.getChecked(choice)}
                                 correctness={isEvaluateMode ? this.getCorrectness(choice) : undefined}
                                 displayKey={this.indexToSymbol(index)}
+                                isSelectionButtonBelow={isSelectionButtonBelow}
                             />
                         ))}
                     </div>
