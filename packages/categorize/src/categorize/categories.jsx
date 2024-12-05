@@ -21,7 +21,7 @@ export class Categories extends React.Component {
     disabled: PropTypes.bool,
     onDropChoice: PropTypes.func.isRequired,
     onRemoveChoice: PropTypes.func.isRequired,
-    rowLabels: PropTypes.array,
+    rowLabels: PropTypes.array
   };
 
   static defaultProps = {
@@ -41,7 +41,7 @@ export class Categories extends React.Component {
     const hasNonEmptyString = (array) => {
       let found = false;
 
-      (array || []).forEach((element) => {
+      (array || []).forEach(element => {
         if (typeof element === 'string' && element.trim() !== '' && element.trim() !== '<div></div>') {
           found = true;
         }
@@ -115,7 +115,6 @@ const styles = (theme) => ({
   label: {
     color: color.text(),
     backgroundColor: color.background(),
-    // fontSize: theme.typography.fontSize,
     textAlign: 'center',
     paddingTop: theme.spacing.unit,
   },

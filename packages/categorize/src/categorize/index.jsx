@@ -204,8 +204,6 @@ export class Categorize extends React.Component {
       lng: model.language,
     });
 
-    console.log('fontSizeFactor Andreea', fontSizeFactor);
-
     return (
       <UiLayout extraCSSRules={extraCSSRules} className={classes.mainContainer} fontSizeFactor={fontSizeFactor}>
         {model.teacherInstructions && hasText(model.teacherInstructions) && (

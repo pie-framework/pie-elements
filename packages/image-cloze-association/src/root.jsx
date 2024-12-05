@@ -37,7 +37,7 @@ class ImageClozeAssociationComponent extends React.Component {
   constructor(props) {
     super(props);
     const {
-      model: { possibleResponses, responseContainers, duplicateResponses, maxResponsePerZone},
+      model: { possibleResponses, responseContainers, duplicateResponses, maxResponsePerZone },
       session,
     } = props;
     let { answers } = session || {};
@@ -226,7 +226,7 @@ class ImageClozeAssociationComponent extends React.Component {
         answerChoiceTransparency,
         responseContainerPadding,
         imageDropTargetPadding,
-          fontSizeFactor,
+        fontSizeFactor,
       },
     } = this.props;
     const {

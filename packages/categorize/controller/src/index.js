@@ -148,7 +148,7 @@ export const model = (question, session, env, updateSession) =>
       maxChoicesPerCategory,
       extraCSSRules,
       minRowHeight,
-        fontSizeFactor,
+      fontSizeFactor,
     } = normalizedQuestion;
     let { choices, note } = normalizedQuestion;
     let fb;

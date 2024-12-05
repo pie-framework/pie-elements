@@ -4,5 +4,4 @@ export default {
   studentInstructionsEnabled: true,
   teacherInstructions: '',
   teacherInstructionsEnabled: true,
-  fontSizeFactor: 2,
 };
