@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
+
 import ChoiceInput from './choice-input';
 
 export class Choice extends React.Component {
@@ -33,6 +34,7 @@ export class Choice extends React.Component {
       choicesLayout,
       gridColumns,
       updateSession,
+      isSelectionButtonBelow
     } = this.props;
     const choiceClass = 'choice' + (index === choicesLength - 1 ? ' last' : '');
 
@@ -52,6 +54,7 @@ export class Choice extends React.Component {
       updateSession,
       onChange: this.onChange,
       isEvaluateMode,
+      isSelectionButtonBelow
     };
 
     const names = classNames(classes.choice, {
@@ -82,6 +85,7 @@ Choice.propTypes = {
   displayKey: PropTypes.string,
   choicesLayout: PropTypes.oneOf(['vertical', 'grid', 'horizontal']),
   gridColumns: PropTypes.string,
+  isSelectionButtonBelow: PropTypes.bool
 };
 
 export default withStyles((theme) => ({

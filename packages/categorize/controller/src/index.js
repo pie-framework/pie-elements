@@ -149,6 +149,7 @@ export const model = (question, session, env, updateSession) =>
       extraCSSRules,
       minRowHeight,
       fontSizeFactor,
+      ui_style,
     } = normalizedQuestion;
     let { choices, note } = normalizedQuestion;
     let fb;
@@ -194,6 +195,7 @@ export const model = (question, session, env, updateSession) =>
       extraCSSRules,
       minRowHeight,
       fontSizeFactor
+      minRowHeight: ui_style && ui_style.row_min_height || minRowHeight,
     };
 
     if (role === 'instructor' && (mode === 'view' || mode === 'evaluate')) {
