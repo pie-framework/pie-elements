@@ -193,8 +193,7 @@ export const model = (question, session, env, updateSession) =>
       correctResponse: mode === 'evaluate' ? filteredCorrectResponse : undefined,
       language,
       extraCSSRules,
-      minRowHeight,
-      fontSizeFactor
+      fontSizeFactor,
       minRowHeight: ui_style && ui_style.row_min_height || minRowHeight,
     };
 
