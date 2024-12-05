@@ -123,12 +123,12 @@ const styles = (theme) => ({
     display: 'flex',
     justifyContent: 'center',
     flex: 0.5,
-    marginRight: '12px',
+    marginRight: '12px'
   },
   categoryWrapper: {
     display: 'flex',
     flex: '2',
-    flexDirection: 'column',
+    flexDirection: 'column'
   },
 });
 export default withStyles(styles)(Categories);

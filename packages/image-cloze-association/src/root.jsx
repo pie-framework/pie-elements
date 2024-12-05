@@ -22,9 +22,6 @@ const styles = (theme) => ({
     color: color.text(),
     backgroundColor: color.background(),
   },
-  stimulus: {
-    // fontSize: theme.typography.fontSize,
-  },
   teacherInstructions: {
     marginBottom: theme.spacing.unit * 2,
   },
