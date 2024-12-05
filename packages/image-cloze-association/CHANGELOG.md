@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@6.3.0...@pie-element/image-cloze-association@6.4.0) (2024-12-05)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4393, PD-4388, PD-4550, PD-4394, PD-4165 ([afafda4](https://github.com/pie-framework/pie-elements/commit/afafda4a504ecae6e4c85a45817b7f73a4b81244))
+* **ica:** Fix Chrome behavior on iPads for image cloze association items by disabling image interactions in answer choices PD-4553 ([38164b0](https://github.com/pie-framework/pie-elements/commit/38164b071bad2acb6b0cbf307d59cb752e876ef1))
+* clean up ([2735fb0](https://github.com/pie-framework/pie-elements/commit/2735fb000ff76c7fa806cee353808c3ac57b94e8))
+* **image-cloze-association:** preserve response ids when moved back to possibleResponses, Added fallback to generate new ids only when shifted responses lack an id PD-4538 ([09751a0](https://github.com/pie-framework/pie-elements/commit/09751a0ba6b5ed356081d3e117e5857889c77796))
+
+
+### Features
+
+* **image-cloze-association:** change target droppable area on hover PD-4554 ([88894cd](https://github.com/pie-framework/pie-elements/commit/88894cdc4c6fce8890536428fb56fa7ff00b838e))
+
+
+
+
+
 # [6.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@6.2.2...@pie-element/image-cloze-association@6.3.0) (2024-11-29)
 
 

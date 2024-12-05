@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-controller@7.2.0...@pie-element/categorize-controller@7.3.0) (2024-12-05)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4393, PD-4388, PD-4550, PD-4394, PD-4165 ([afafda4](https://github.com/pie-framework/pie-elements/commit/afafda4a504ecae6e4c85a45817b7f73a4b81244))
+
+
+### Features
+
+* **categorize:** migrate ui_style row_min_height to minRowHeight PD-4499 ([026d359](https://github.com/pie-framework/pie-elements/commit/026d359c571c8c958a2e660e9e9266f60c574435))
+
+
+
+
+
 # [7.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-controller@7.1.2...@pie-element/categorize-controller@7.2.0) (2024-11-29)
 
 

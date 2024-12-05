@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.36.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/likert-configure@0.36.1...@pie-element/likert-configure@0.36.2) (2024-12-05)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4393, PD-4388, PD-4550, PD-4394, PD-4165 ([afafda4](https://github.com/pie-framework/pie-elements/commit/afafda4a504ecae6e4c85a45817b7f73a4b81244))
+
+
+
+
+
 ## [0.36.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/likert-configure@0.36.0...@pie-element/likert-configure@0.36.1) (2024-11-29)
 
 
