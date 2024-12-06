@@ -11,6 +11,8 @@ import debug from 'debug';
 import Translator from '@pie-lib/pie-toolbox/translator';
 import { AlertDialog } from '@pie-lib/pie-toolbox/config-ui';
 const { translator } = Translator;
+import { TouchBackend } from 'react-dnd-touch-backend';
+import { DndProvider, useDrag, useDrop } from 'react-dnd';
 
 const log = debug('@pie-ui:categorize');
 
@@ -230,24 +232,26 @@ export class Categorize extends React.Component {
         />
 
         <div className={classes.categorize} style={style}>
-          <div style={{ display: 'flex', flex: 1 }}>
-            <Categories
-              model={model}
+          <DndProvider backend={TouchBackend} options={{ enableMouseEvents: true }}>
+            <div style={{ display: 'flex', flex: 1 }}>
+              <Categories
+                model={model}
+                disabled={model.disabled}
+                categories={categories}
+                onDropChoice={this.dropChoice}
+                onRemoveChoice={this.removeChoice}
+                rowLabels={(rowLabels || []).slice(0, nbOfRows)}
+              />
+            </div>
+            <Choices
               disabled={model.disabled}
-              categories={categories}
+              model={model}
+              choices={choices}
+              choicePosition={choicePosition}
               onDropChoice={this.dropChoice}
               onRemoveChoice={this.removeChoice}
-              rowLabels={(rowLabels || []).slice(0, nbOfRows)}
             />
-          </div>
-          <Choices
-            disabled={model.disabled}
-            model={model}
-            choices={choices}
-            choicePosition={choicePosition}
-            onDropChoice={this.dropChoice}
-            onRemoveChoice={this.removeChoice}
-          />
+          </DndProvider>
         </div>
 
         {displayNote && (
