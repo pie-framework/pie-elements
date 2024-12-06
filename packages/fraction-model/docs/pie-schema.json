@@ -36,7 +36,7 @@
     "prompt": {
       "description": "The question prompt or item stem",
       "type": "string",
-      "title": "question"
+      "title": "prompt"
     },
     "modelTypeSelected": {
       "description": "Indicates if the model type should be Bar or Pie model",

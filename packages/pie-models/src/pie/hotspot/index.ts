@@ -88,6 +88,11 @@ export interface HotspotPie extends PieModel {
    * Supported options: en, es, en_US, en-US, es_ES, es-ES, es_MX, es-MX
    */
   language?: string;
+
+  /**
+   * Indicates font size adjustment factor
+   */
+  fontSizeFactor?: number;
 }
 
 /**

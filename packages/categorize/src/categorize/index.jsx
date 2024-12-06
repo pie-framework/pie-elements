@@ -186,7 +186,7 @@ export class Categorize extends React.Component {
 
     log('[render] disabled: ', model.disabled);
 
-    const { rowLabels, categoriesPerRow, correctResponse } = model;
+    const { rowLabels, categoriesPerRow, correctResponse, fontSizeFactor } = model;
     const nbOfRows = (categories && Math.ceil(categories.length / categoriesPerRow)) || 0;
     const existAlternate = this.existAlternateResponse(correctResponse) || false;
     const displayNote =
@@ -205,7 +205,7 @@ export class Categorize extends React.Component {
     });
 
     return (
-      <UiLayout extraCSSRules={extraCSSRules} className={classes.mainContainer}>
+      <UiLayout extraCSSRules={extraCSSRules} className={classes.mainContainer} fontSizeFactor={fontSizeFactor}>
         {model.teacherInstructions && hasText(model.teacherInstructions) && (
           <React.Fragment>
             <Collapsible

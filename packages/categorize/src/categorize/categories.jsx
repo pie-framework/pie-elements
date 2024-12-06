@@ -64,17 +64,22 @@ export class Categories extends React.Component {
           cat.forEach((c, columnIndex) => {
             items.push(
               <div style={{ display: 'flex' }}>
-                {columnIndex === 0 && hasNonEmptyString(rowLabels) ? <div
-                  key={rowIndex}
-                  className={classes.rowLabel}
-                  dangerouslySetInnerHTML={{
-                    __html: rowLabels[rowIndex] || '',
-                  }}
-                /> : null}
+                {columnIndex === 0 && hasNonEmptyString(rowLabels) ? (
+                  <div
+                    key={rowIndex}
+                    className={classes.rowLabel}
+                    dangerouslySetInnerHTML={{
+                      __html: rowLabels[rowIndex] || '',
+                    }}
+                  />
+                ) : null}
                 <div className={classes.categoryWrapper}>
-                  <Typography className={classes.label} key={`category-label-${rowIndex}-${columnIndex}`}>
-                    <span dangerouslySetInnerHTML={{ __html: c.label }}/>
-                  </Typography>
+                  <div
+                    className={classes.label}
+                    key={`category-label-${rowIndex}-${columnIndex}`}
+                    dangerouslySetInnerHTML={{ __html: c.label }}
+                  />
+
                   <Category
                     minRowHeight={minRowHeight}
                     onDropChoice={(h) => onDropChoice(c.id, h)}
@@ -85,13 +90,16 @@ export class Categories extends React.Component {
                     {...c}
                   />
                 </div>
-              </div>
+              </div>,
             );
           });
 
           // if the last row has fewer categories than max on a row, fill the spaces with divs
-          items = items.concat(Array(categoriesPerRow - cat.length).fill(<div/>).map((value, index) => <div
-            key={`fill-space-final-${index}`}/>));
+          items = items.concat(
+            Array(categoriesPerRow - cat.length)
+              .fill(<div />)
+              .map((value, index) => <div key={`fill-space-final-${index}`} />),
+          );
 
           return items;
         })}
@@ -107,7 +115,6 @@ const styles = (theme) => ({
   label: {
     color: color.text(),
     backgroundColor: color.background(),
-    fontSize: theme.typography.fontSize,
     textAlign: 'center',
     paddingTop: theme.spacing.unit,
   },
@@ -122,6 +129,6 @@ const styles = (theme) => ({
     display: 'flex',
     flex: '2',
     flexDirection: 'column'
-  }
+  },
 });
 export default withStyles(styles)(Categories);

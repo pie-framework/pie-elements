@@ -76,6 +76,7 @@ class HotspotComponent extends React.Component {
         strokeWidth,
         responseCorrect,
         language,
+        fontSizeFactor,
       },
       onSelectChoice,
       classes,
@@ -85,7 +86,7 @@ class HotspotComponent extends React.Component {
     const showCorrectAnswerToggle = isEvaluateMode && !responseCorrect;
 
     return (
-      <UiLayout extraCSSRules={extraCSSRules} className={classes.main}>
+      <UiLayout extraCSSRules={extraCSSRules} className={classes.main} fontSizeFactor={fontSizeFactor}>
         {teacherInstructions && hasText(teacherInstructions) && (
           <Collapsible
             labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}

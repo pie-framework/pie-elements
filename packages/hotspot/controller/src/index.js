@@ -27,6 +27,7 @@ export function model(question, session, env) {
     prompt,
     shapes,
     language,
+    fontSizeFactor,
   } = normalizedQuestion;
   const { rectangles, polygons, circles } = shapes || {};
 
@@ -43,6 +44,7 @@ export function model(question, session, env) {
       multipleCorrect,
       partialScoring,
       language,
+      fontSizeFactor,
       shapes: {
         ...shapes,
         // eslint-disable-next-line no-unused-vars

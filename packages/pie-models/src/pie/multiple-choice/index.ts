@@ -103,6 +103,11 @@ export interface MultipleChoicePie extends PieModel {
 
   /** Indicates if the selection button and choice prefix should be positioned below the corresponding answer choice */
   isSelectionButtonBelow?: boolean;
+
+  /**
+   * Indicates font size adjustment factor
+   */
+  fontSizeFactor?: number;
 }
 
 interface ConfigureMaxImageDimensionsProp {
