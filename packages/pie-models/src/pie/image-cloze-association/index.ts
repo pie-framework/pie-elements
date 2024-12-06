@@ -146,6 +146,11 @@ export interface ImageClozeAssociationPie extends PieModel {
 
   /** Indicates the padding of the image drop target */
   imageDropTargetPadding?: string;
+
+  /**
+   * Indicates font size adjustment factor
+   */
+  fontSizeFactor?: number;
 }
 
 /**

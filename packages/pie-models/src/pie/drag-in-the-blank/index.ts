@@ -112,6 +112,11 @@ export interface DragInTheBlankPie extends PieModel {
    * Supported options: en, es, en_US, en-US, es_ES, es-ES, es_MX, es-MX
    */
   language?: string;
+
+  /**
+   * Indicates font size adjustment factor
+   */
+  fontSizeFactor?: number;
 }
 
 /**
@@ -219,7 +224,7 @@ export interface DragInTheBlankConfigure extends PromptConfig, CommonConfigSetti
     label: string;
     options: ConfigureLanguageOptionsProp[];
   };
-  
+
   /**
    * Maximum character limit for each answer choice
    */

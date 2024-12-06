@@ -143,6 +143,11 @@ export interface CategorizePie extends PieModel {
    * Maximum number of choices
    */
   maxAnswerChoices?: number;
+
+  /**
+   * Indicates font size adjustment factor
+   */
+  fontSizeFactor?: number;
 }
 
 interface ConfigureMaxImageDimensionsProp {
