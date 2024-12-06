@@ -282,7 +282,7 @@ export class ImageClozeAssociationComponent extends React.Component {
 
         <PreviewPrompt className="prompt" prompt={prompt} />
 
-        <PreviewPrompt defaultClassName={classes.stimulus} prompt={stimulus} />
+        <PreviewPrompt prompt={stimulus} />
 
         <CorrectAnswerToggle
           show={showToggle}
