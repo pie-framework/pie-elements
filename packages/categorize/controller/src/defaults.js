@@ -24,4 +24,5 @@ export default {
   teacherInstructionsEnabled: true,
   toolbarEditorPosition: 'bottom',
   minRowHeight: '80px',
+  fontSizeFactor: 1,
 };

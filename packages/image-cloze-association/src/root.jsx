@@ -23,7 +23,7 @@ const styles = (theme) => ({
     backgroundColor: color.background(),
   },
   stimulus: {
-    fontSize: theme.typography.fontSize,
+    // fontSize: theme.typography.fontSize,
   },
   teacherInstructions: {
     marginBottom: theme.spacing.unit * 2,
@@ -37,7 +37,7 @@ export class ImageClozeAssociationComponent extends React.Component {
   constructor(props) {
     super(props);
     const {
-      model: { possibleResponses, responseContainers, duplicateResponses, maxResponsePerZone },
+      model: { possibleResponses, responseContainers, duplicateResponses, maxResponsePerZone},
       session,
     } = props;
     let { answers } = session || {};
@@ -226,6 +226,7 @@ export class ImageClozeAssociationComponent extends React.Component {
         answerChoiceTransparency,
         responseContainerPadding,
         imageDropTargetPadding,
+          fontSizeFactor,
       },
     } = this.props;
     const {
@@ -269,7 +270,7 @@ export class ImageClozeAssociationComponent extends React.Component {
     }
 
     return (
-      <UiLayout extraCSSRules={extraCSSRules} className={classes.main}>
+      <UiLayout extraCSSRules={extraCSSRules} className={classes.main} fontSizeFactor={fontSizeFactor}>
         {teacherInstructions && hasText(teacherInstructions) && (
           <Collapsible
             className={classes.teacherInstructions}
