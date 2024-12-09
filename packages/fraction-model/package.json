@@ -13,7 +13,7 @@
     "prop-types": "^15.6.1",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
-    "recharts": "2.2.0"
+    "recharts": "2.14.1"
   },
   "author": "",
   "license": "ISC",
