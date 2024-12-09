@@ -124,7 +124,7 @@ class RectComponent extends React.Component {
           classes={classes.base}
           width={width}
           height={height}
-          fill={selected ? selectedHotspotColor : hotspotColor}
+          fill={selected && selectedHotspotColor ? selectedHotspotColor : hotspotColor}
           onClick={this.handleClick}
           onTap={this.handleClick}
           draggable={false}

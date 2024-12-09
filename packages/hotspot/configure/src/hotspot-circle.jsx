@@ -100,7 +100,7 @@ class CircleComponent extends React.Component {
           classes={classes.base}
           ref={this.shapeRef}
           radius={validRadius}
-          fill={correct ? selectedHotspotColor : hotspotColor}
+          fill={correct && selectedHotspotColor ? selectedHotspotColor : hotspotColor}
           onClick={this.handleClick}
           onTap={this.handleClick}
           draggable

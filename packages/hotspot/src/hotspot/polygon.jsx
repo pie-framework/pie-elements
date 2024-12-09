@@ -153,7 +153,7 @@ class PolygonComponent extends React.Component {
           points={pointsParsed}
           closed={true}
           classes={classes.base}
-          fill={selected ? selectedHotspotColor : hotspotColor}
+          fill={selected && selectedHotspotColor? selectedHotspotColor : hotspotColor}
           onClick={this.handleClick}
           onTap={this.handleClick}
           draggable={false}
