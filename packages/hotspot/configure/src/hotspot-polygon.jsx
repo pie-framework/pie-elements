@@ -205,7 +205,7 @@ class PolComponent extends React.Component {
     const calculatedStrokeWidth = correct ? strokeWidth : hovered ? 1 : 0;
     const calculatedStroke = correct ? outlineColor : hovered ? HOVERED_COLOR : '';
     const boundingBox = this.getBoundingBox(points);
-    const calculatedFill = correct ? selectedHotspotColor : hotspotColor;
+    const calculatedFill = correct && selectedHotspotColor ? selectedHotspotColor : hotspotColor;
 
     return (
       <Group classes={classes.group} onMouseLeave={this.handleMouseLeave} onMouseEnter={this.handleMouseEnter}>
