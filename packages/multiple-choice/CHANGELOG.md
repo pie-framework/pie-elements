@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.5.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@9.5.0...@pie-element/multiple-choice@9.5.1) (2024-12-10)
+
+
+### Bug Fixes
+
+* conclude merge with develop ([522c122](https://github.com/pie-framework/pie-elements/commit/522c122050c2b2a9c158f838f8dffc8d77ff1fdf))
+* update pie-lib/pie-toolbox PD-4388, PD-4548 ([0e7dad4](https://github.com/pie-framework/pie-elements/commit/0e7dad48f541e7c5c10212e58c6ae846c60be93c))
+
+
+
+
+
 # [9.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@9.4.0...@pie-element/multiple-choice@9.5.0) (2024-12-05)
 
 

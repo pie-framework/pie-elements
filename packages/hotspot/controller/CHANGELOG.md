@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-controller@5.1.4...@pie-element/hotspot-controller@5.2.0) (2024-12-10)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4388, PD-4548 ([0e7dad4](https://github.com/pie-framework/pie-elements/commit/0e7dad48f541e7c5c10212e58c6ae846c60be93c))
+
+
+### Features
+
+* **categorize, hotspot, image-cloze-association:** extent fontSizeFactor to new elements PD-4389 ([c6480fb](https://github.com/pie-framework/pie-elements/commit/c6480fb201b6fd35edf50f46ef8e50b9f711f4be))
+
+
+
+
+
 ## [5.1.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-controller@5.1.3...@pie-element/hotspot-controller@5.1.4) (2024-12-05)
 
 

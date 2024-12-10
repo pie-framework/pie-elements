@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.1.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@7.1.4...@pie-element/hotspot-configure@7.1.5) (2024-12-10)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4388, PD-4548 ([0e7dad4](https://github.com/pie-framework/pie-elements/commit/0e7dad48f541e7c5c10212e58c6ae846c60be93c))
+* **hotspot:** apply hotspotColor when selectedColor not provided PD-4399 ([ae3c228](https://github.com/pie-framework/pie-elements/commit/ae3c2282a0222fd13ba12f29c420673a8218b504))
+
+
+
+
+
 ## [7.1.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@7.1.3...@pie-element/hotspot-configure@7.1.4) (2024-12-05)
 
 

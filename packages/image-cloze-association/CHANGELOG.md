@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@6.4.0...@pie-element/image-cloze-association@6.5.0) (2024-12-10)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4388, PD-4548 ([0e7dad4](https://github.com/pie-framework/pie-elements/commit/0e7dad48f541e7c5c10212e58c6ae846c60be93c))
+* **categorize:** delete class PD-4389 ([a04fbf3](https://github.com/pie-framework/pie-elements/commit/a04fbf3663fadb6b094bbcd72cd3778f62568124))
+* conclude merge with develop ([522c122](https://github.com/pie-framework/pie-elements/commit/522c122050c2b2a9c158f838f8dffc8d77ff1fdf))
+* delete unused style ([66d9601](https://github.com/pie-framework/pie-elements/commit/66d96015f37a0c72bf7de6332db947661f3d68e3))
+
+
+### Features
+
+* **categorize, hotspot, image-cloze-association:** extent fontSizeFactor to new elements PD-4389 ([c6480fb](https://github.com/pie-framework/pie-elements/commit/c6480fb201b6fd35edf50f46ef8e50b9f711f4be))
+* **image-cloze-association:** increase padding and margins for non-image reponse PD-4375 ([a089e28](https://github.com/pie-framework/pie-elements/commit/a089e28aa7a4161e2dd14b87a848bfc9cdc85911))
+
+
+
+
+
 # [6.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@6.3.0...@pie-element/image-cloze-association@6.4.0) (2024-12-05)
 
 

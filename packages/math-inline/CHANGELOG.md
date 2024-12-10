@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.3.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@8.3.2...@pie-element/math-inline@8.3.3) (2024-12-10)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4388, PD-4548 ([0e7dad4](https://github.com/pie-framework/pie-elements/commit/0e7dad48f541e7c5c10212e58c6ae846c60be93c))
+
+
+
+
+
 ## [8.3.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@8.3.1...@pie-element/math-inline@8.3.2) (2024-12-05)
 
 

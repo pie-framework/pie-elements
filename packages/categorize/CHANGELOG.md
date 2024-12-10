@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@9.5.0...@pie-element/categorize@9.6.0) (2024-12-10)
+
+
+### Bug Fixes
+
+* conclude merge with develop ([0a3c348](https://github.com/pie-framework/pie-elements/commit/0a3c3482c77b02c916b72d51bfe878cc86a74e68))
+* conclude merge with develop ([522c122](https://github.com/pie-framework/pie-elements/commit/522c122050c2b2a9c158f838f8dffc8d77ff1fdf))
+* delete unused style ([66d9601](https://github.com/pie-framework/pie-elements/commit/66d96015f37a0c72bf7de6332db947661f3d68e3))
+* update pie-lib/pie-toolbox PD-4388, PD-4548 ([0e7dad4](https://github.com/pie-framework/pie-elements/commit/0e7dad48f541e7c5c10212e58c6ae846c60be93c))
+
+
+### Features
+
+* **categorize, hotspot, image-cloze-association:** extent fontSizeFactor to new elements PD-4389 ([c6480fb](https://github.com/pie-framework/pie-elements/commit/c6480fb201b6fd35edf50f46ef8e50b9f711f4be))
+
+
+
+
+
 # [9.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@9.4.0...@pie-element/categorize@9.5.0) (2024-12-05)
 
 
