@@ -193,6 +193,10 @@ Supported options: en, es, en_US, en-US, es_ES, es-ES, es_MX, es-MX
 
 Maximum number of choices
 
+# `fontSizeFactor` (number)
+
+Indicates font size adjustment factor
+
 # `id` (string, required)
 
 Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.

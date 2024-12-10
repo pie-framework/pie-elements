@@ -245,6 +245,11 @@
       "type": "string",
       "title": "language"
     },
+    "fontSizeFactor": {
+      "description": "Indicates font size adjustment factor",
+      "type": "number",
+      "title": "fontSizeFactor"
+    },
     "id": {
       "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
       "type": "string",
