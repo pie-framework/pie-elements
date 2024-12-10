@@ -188,6 +188,10 @@ Indicates padding of the response container
 
 Indicates the padding of the image drop target
 
+# `fontSizeFactor` (number)
+
+Indicates font size adjustment factor
+
 # `id` (string, required)
 
 Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.
