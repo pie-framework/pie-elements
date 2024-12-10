@@ -110,7 +110,7 @@ class RectComponent extends React.Component {
           ref={this.shapeRef}
           width={width}
           height={height}
-          fill={correct ? selectedHotspotColor : hotspotColor}
+          fill={correct && selectedHotspotColor ? selectedHotspotColor : hotspotColor}
           onClick={this.handleClick}
           onTap={this.handleClick}
           draggable
