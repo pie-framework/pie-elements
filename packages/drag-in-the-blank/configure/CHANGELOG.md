@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.1.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-configure@6.1.5...@pie-element/drag-in-the-blank-configure@6.1.6) (2024-12-11)
+
+
+### Bug Fixes
+
+* made sure top level element is block, not inline [PD-4623] ([a915b51](https://github.com/pie-framework/pie-elements/commit/a915b5197e2a8eb2b49392abc9ee92dbe0819af2))
+
+
+
+
+
 ## [6.1.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-configure@6.1.4...@pie-element/drag-in-the-blank-configure@6.1.5) (2024-12-10)
 
 
