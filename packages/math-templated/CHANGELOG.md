@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.3.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-templated@3.3.2...@pie-element/math-templated@3.3.3) (2024-12-10)
+
+
+### Bug Fixes
+
+* made sure CorrectAnswer element is found dynamically [PD-3807] ([b4f6920](https://github.com/pie-framework/pie-elements/commit/b4f69203d6c8fe25c35226c6ded1097d18c0ba53))
+* update pie-lib/pie-toolbox PD-4388, PD-4548 ([0e7dad4](https://github.com/pie-framework/pie-elements/commit/0e7dad48f541e7c5c10212e58c6ae846c60be93c))
+
+
+
+
+
 ## [3.3.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-templated@3.3.1...@pie-element/math-templated@3.3.2) (2024-12-05)
 
 

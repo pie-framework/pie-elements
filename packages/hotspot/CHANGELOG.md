@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@7.2.4...@pie-element/hotspot@7.3.0) (2024-12-10)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4388, PD-4548 ([0e7dad4](https://github.com/pie-framework/pie-elements/commit/0e7dad48f541e7c5c10212e58c6ae846c60be93c))
+* **hotspot:** apply hotspotColor when selectedColor not provided PD-4399 ([ae3c228](https://github.com/pie-framework/pie-elements/commit/ae3c2282a0222fd13ba12f29c420673a8218b504))
+
+
+### Features
+
+* **categorize, hotspot, image-cloze-association:** extent fontSizeFactor to new elements PD-4389 ([c6480fb](https://github.com/pie-framework/pie-elements/commit/c6480fb201b6fd35edf50f46ef8e50b9f711f4be))
+
+
+
+
+
 ## [7.2.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@7.2.3...@pie-element/hotspot@7.2.4) (2024-12-05)
 
 

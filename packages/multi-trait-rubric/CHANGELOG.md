@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.2.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric@4.2.4...@pie-element/multi-trait-rubric@4.2.5) (2024-12-10)
+
+
+### Bug Fixes
+
+* update pie-lib/pie-toolbox PD-4388, PD-4548 ([0e7dad4](https://github.com/pie-framework/pie-elements/commit/0e7dad48f541e7c5c10212e58c6ae846c60be93c))
+
+
+
+
+
 ## [4.2.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric@4.2.3...@pie-element/multi-trait-rubric@4.2.4) (2024-12-05)
 
 
