@@ -2220,10 +2220,10 @@
     mathjs "^7.0.1"
     numeric "^1.2.6"
 
-"@pie-framework/math-validation@^1.2.2":
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/@pie-framework/math-validation/-/math-validation-1.2.2.tgz#34402109b073f014287eb6c9451188819cc76645"
-  integrity sha512-QgLAZmi15SWL6jxUpYSOwhPODRUjuN2MCuC1My8HxoqyPoruUB6jcz8iton1t3wUOPG+eIp78v4GmU2KqHrokg==
+"@pie-framework/math-validation@^1.2.3":
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/@pie-framework/math-validation/-/math-validation-1.2.3.tgz#af61994b22159b56aac31645f52f43f174c10087"
+  integrity sha512-TbuAOHGhJRAGx0vQ086P2EOHrH9cFTgAag7beDKMunrud4RE09hLCqwzkle9OBWeiCuotO8/nUg4C4aihu1H9Q==
   dependencies:
     lodash "^4.17.21"
     mathjs "^9.4.2"
