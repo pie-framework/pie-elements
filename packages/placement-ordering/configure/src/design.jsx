@@ -268,6 +268,7 @@ export class Design extends React.Component {
                 className={classes.promptHolder}
               >
                 <EditableHtml
+                  {...(model.placementArea && { autoWidthToolbar: true })}
                   className={classes.prompt}
                   markup={model.choiceLabel}
                   onChange={this.onChoiceAreaLabelChange}
@@ -289,6 +290,7 @@ export class Design extends React.Component {
                 className={classes.promptHolder}
               >
                 <EditableHtml
+                  autoWidthToolbar
                   className={classes.prompt}
                   markup={model.targetLabel}
                   onChange={this.onAnswerAreaLabelChange}
