@@ -31,6 +31,9 @@ export const BlankContent = withStyles((theme) => ({
     position: 'relative',
     padding: '8px 35px 8px 35px',
     cursor: 'grab',
+    '& img': {
+        display: 'flex'
+    }
   },
   deleteIcon: {
     position: 'absolute',
