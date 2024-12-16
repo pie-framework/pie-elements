@@ -659,7 +659,7 @@ export class Main extends React.Component {
                           boundariesElement: 'body',
                         },
                         flip: {
-                          enabled: true,
+                          enabled: false,
                         },
                       },
                     }}
