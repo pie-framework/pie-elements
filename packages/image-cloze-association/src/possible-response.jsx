@@ -41,7 +41,7 @@ export class PossibleResponse extends React.Component {
     return connectDragSource(
       <div className={containerClassNames} style={containerStyle}>
         <PreviewPrompt
-          className={promptClassNames}
+          defaultClassName={promptClassNames}
           prompt={data.value}
           tagName="span"
         />
