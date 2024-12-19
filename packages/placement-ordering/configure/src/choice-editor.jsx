@@ -349,6 +349,7 @@ const styles = (theme) => ({
     gridAutoFlow: 'column',
     display: 'grid',
     gridGap: '10px',
+    alignItems: 'center'
   },
   columnLabel: {
     width: '100%',
