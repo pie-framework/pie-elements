@@ -14,11 +14,17 @@ export default class Categorize extends HTMLElement {
   }
 
   isComplete() {
-    if (!this._session) {
+    if (!this._session || !this._session.answers) {
       return false;
     }
 
-    return Array.isArray(this._session.answers) && this._session.answers.length > 0;
+    if (!Array.isArray(this._session.answers)) {
+      return false;
+    }
+
+    const answered = this._session.answers.some((answer) => answer.choices && answer.choices.length > 0);
+
+    return answered;
   }
 
   set session(s) {
@@ -34,16 +40,19 @@ export default class Categorize extends HTMLElement {
     return this._session;
   }
 
-  eliminateBlindAnswersFromSession(){
+  eliminateBlindAnswersFromSession() {
     const { answers = [] } = this._session || {};
     const { choices = [] } = this._model || {};
-    const mappedChoices  = choices.map(c => c.id) || [];
-    const filteredAnswers = answers.map(answer => {
+
+    const mappedChoices = choices.map((c) => c.id) || [];
+    const filteredAnswers = answers.map((answer) => {
       const answerChoices = answer?.choices || [];
-      answer.choices = answerChoices.filter(c => mappedChoices.includes(c));
+      answer.choices = answerChoices.filter((c) => mappedChoices.includes(c));
+
       return answer;
-    })
-    if(filteredAnswers.length > 0){
+    });
+
+    if (filteredAnswers.length > 0) {
       this.changeAnswers(filteredAnswers);
     }
   }
