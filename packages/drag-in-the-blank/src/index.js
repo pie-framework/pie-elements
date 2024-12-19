@@ -9,9 +9,7 @@ export const isComplete = (session, model) => {
     return false;
   }
 
-  const answered = Object.values(session.value || {}).some((value) => !!value);
-
-  return answered;
+  return Object.values(session.value || {}).some((value) => !!value);
 };
 
 export default class InlineDropdown extends HTMLElement {

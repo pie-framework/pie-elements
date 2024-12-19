@@ -22,9 +22,7 @@ export default class Categorize extends HTMLElement {
       return false;
     }
 
-    const answered = this._session.answers.some((answer) => answer.choices && answer.choices.length > 0);
-
-    return answered;
+    return this._session.answers.some((answer) => answer.choices && answer.choices.length > 0);
   }
 
   set session(s) {
