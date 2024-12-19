@@ -63,6 +63,12 @@ export interface MultipleChoicePie extends PieModel {
    */
   lockChoiceOrder?: boolean;
 
+  /** Indicates that minimum selections that should be made (only for choice mode 'checkbox') */
+  minSelections?: number;
+
+  /** Indicates that maximum selections that should be made (only for choice mode 'checkbox') */
+  maxSelections?: number;
+
   /** Indicates that the item should use partial scoring */
   partialScoring?: boolean;
 

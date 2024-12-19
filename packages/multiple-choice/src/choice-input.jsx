@@ -24,9 +24,9 @@ const styleSheet = (theme) => ({
     flex: 1,
     '& label': {
       color: color.text(),
-      '& > span':{
+      '& > span': {
         fontSize: 'inherit',
-      }
+      },
     },
   },
   horizontalLayout: {
@@ -36,45 +36,42 @@ const styleSheet = (theme) => ({
   },
   belowLayout: {
     '& > label': {
-      alignItems: 'flex-start'
-    }
+      alignItems: 'flex-start',
+    },
   },
   belowLayoutCenter: {
     justifyContent: 'center',
     '& > label': {
-      alignItems: 'center'
-    }
+      alignItems: 'center',
+    },
   },
   belowSelectionComponent: {
     display: 'flex',
     alignItems: 'center',
     '& > span': {
-      paddingLeft: 0
-    }
-  }
+      paddingLeft: 0,
+    },
+  },
 });
 
 const formStyleSheet = {
   label: {
     color: `${color.text()} !important`, //'var(--choice-input-color, black)'
     backgroundColor: color.background(),
-    letterSpacing: 'normal'
+    letterSpacing: 'normal',
   },
   disabled: {
     // apply to all children
     '& *': {
       cursor: 'not-allowed !important',
-    }
-  }
+    },
+  },
 };
 
 export const StyledFormControlLabel = withStyles(formStyleSheet, {
   name: 'FormControlLabel',
 })((props) => (
-  <FormControlLabel
-    {...props}
-    classes={{ label: props.classes.label, disabled: props.classes.disabled }}
-  />
+  <FormControlLabel {...props} classes={{ label: props.classes.label, disabled: props.classes.disabled }} />
 ));
 
 const colorStyle = (varName, fallback) => ({
@@ -177,8 +174,7 @@ export class ChoiceInput extends React.Component {
     hideTick: PropTypes.bool,
     isEvaluateMode: PropTypes.bool,
     choicesLayout: PropTypes.oneOf(['vertical', 'grid', 'horizontal']),
-    updateSession: PropTypes.func,
-    isSelectionButtonBelow: PropTypes.bool
+    isSelectionButtonBelow: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -196,10 +192,6 @@ export class ChoiceInput extends React.Component {
 
   onToggleChoice(event) {
     this.props.onChange(event);
-    this.props.updateSession({
-      value: this.props.value,
-      selected: !this.props.checked,
-    });
   }
 
   generateChoiceId() {
@@ -223,7 +215,7 @@ export class ChoiceInput extends React.Component {
       choicesLayout,
       value,
       checked,
-      isSelectionButtonBelow
+      isSelectionButtonBelow,
     } = this.props;
 
     const Tag = choiceMode === 'checkbox' ? StyledCheckbox : StyledRadio;
@@ -233,7 +225,6 @@ export class ChoiceInput extends React.Component {
       [classes.horizontalLayout]: choicesLayout === 'horizontal',
       [classes.belowLayout]: isSelectionButtonBelow && choicesLayout !== 'grid',
       [classes.belowLayoutCenter]: isSelectionButtonBelow && choicesLayout === 'grid',
-
     });
 
     const choicelabel = (
@@ -252,7 +243,7 @@ export class ChoiceInput extends React.Component {
     return (
       <div className={classNames(className, 'corespring-' + classSuffix, 'choice-input')}>
         <div className={classes.row}>
-          {!hideTick && isEvaluateMode && <FeedbackTick correctness={correctness}/>}
+          {!hideTick && isEvaluateMode && <FeedbackTick correctness={correctness} />}
           <div className={classNames(holderClassNames, 'checkbox-holder')}>
             {isSelectionButtonBelow ? (
               <StyledFormControlLabel
@@ -290,12 +281,14 @@ export class ChoiceInput extends React.Component {
                     value={value}
                     id={this.choiceId}
                     onChange={this.onToggleChoice}
-                  />}
-              />)}
+                  />
+                }
+              />
+            )}
           </div>
         </div>
-        {rationale && <PreviewPrompt className="rationale" defaultClassName="rationale" prompt={rationale}/>}
-        <Feedback feedback={feedback} correctness={correctness}/>
+        {rationale && <PreviewPrompt className="rationale" defaultClassName="rationale" prompt={rationale} />}
+        <Feedback feedback={feedback} correctness={correctness} />
       </div>
     );
   }
