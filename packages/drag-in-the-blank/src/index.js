@@ -4,6 +4,16 @@ import { renderMath } from '@pie-lib/pie-toolbox/math-rendering-accessible';
 import { ModelSetEvent, SessionChangedEvent } from '@pie-framework/pie-player-events';
 import Main from './main';
 
+export const isComplete = (session, model) => {
+  if (!session || !session.value) {
+    return false;
+  }
+
+  const answered = Object.values(session.value || {}).some((value) => !!value);
+
+  return answered;
+};
+
 export default class InlineDropdown extends HTMLElement {
   constructor() {
     super();
@@ -13,9 +23,7 @@ export default class InlineDropdown extends HTMLElement {
 
   set model(m) {
     this._model = m;
-    this.dispatchEvent(
-      new ModelSetEvent(this.tagName.toLowerCase(), this.session && !!this.session.value, !!this._model),
-    );
+    this.dispatchEvent(new ModelSetEvent(this.tagName.toLowerCase(), isComplete(this._session), !!this._model));
 
     this._render();
   }
@@ -44,7 +52,7 @@ export default class InlineDropdown extends HTMLElement {
   };
 
   dispatchChangedEvent = () => {
-    this.dispatchEvent(new SessionChangedEvent(this.tagName.toLowerCase(), this.session && !!this.session.value));
+    this.dispatchEvent(new SessionChangedEvent(this.tagName.toLowerCase(), isComplete(this._session)));
   };
 
   changeSession = (value) => {
