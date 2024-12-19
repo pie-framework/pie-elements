@@ -51,8 +51,6 @@ export default class ImageClozeAssociation extends HTMLElement {
   }
 
   _render() {
-    console.log('>> this._session', this._session);
-    console.log('>> this.isComplete()', this.isComplete());
     if (this._model && this._session) {
       const el = React.createElement(ImageClozeAssociationComponent, {
         model: this._model,
